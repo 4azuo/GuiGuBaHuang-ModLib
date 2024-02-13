@@ -16,9 +16,7 @@ Simple ModLib for game 鬼谷八荒 (guigubahuang)
 
 ![image](https://github.com/4azuo/GuiGuBaHuang-ModLib/assets/11677054/3b2f1d21-177d-4605-8e97-b969dc4ae61b)
 
-`
-xcopy "$(ProjectDir)\bin\Release\*.dll" "$(ProjectDir)\..\ModMain\bin\Release\" /y
-`
+`xcopy "$(ProjectDir)\bin\Release\*.dll" "$(ProjectDir)\..\ModMain\bin\Release\" /y`
 
 Add BuildEvent for copying dll to your project.
 
@@ -63,6 +61,7 @@ If **IsGlobal**=false then, the event will be created when load save.
 ![image](https://github.com/4azuo/GuiGuBaHuang-ModLib/assets/11677054/3c404677-54fe-4e5f-af2e-8ec0618480f0)
 
 Can declare same ModEvent by adding **multi** CacheAttribute to the ModEvent.
+
 ※I wrote some events which i need. You can add more to ModMaster.
 
 
@@ -72,11 +71,11 @@ You can use DebugHelper to write a log which will be saved to ↓ folder.
 
 ![image](https://github.com/4azuo/GuiGuBaHuang-ModLib/assets/11677054/7cf4688f-8890-41e7-bf0a-aa6519bbf325)
 
-`
-xxx\AppData\LocalLow\guigugame\guigubahuang\mod\{MOD_NAME}`
+`xxx\AppData\LocalLow\guigugame\guigubahuang\mod\{MOD_NAME}`
+
 **InGame** filelog: `{g.world.playerUnit.GetUnitId()}_debug-{DateTime.Now:yyyyMMdd}.log`
-**Global** filelog: `debug-{DateTime.Now:yyyyMMdd}.log
-`
+
+**Global** filelog: `debug-{DateTime.Now:yyyyMMdd}.log`
 
 Also, you can use **TraceAttribute**/**TraceIgnoreAttribute** which catch calling method.
 
@@ -101,7 +100,7 @@ Create a folder **ModConf** in **ModProject**, copy samples from below folder to
 `Steam\steamapps\common\鬼谷八荒\Mod\modFQA\配置修改教程\配置（只读）Json格式`
 
 ## ModConf - Notes
-1. About filename, split by **_**. The last part is the name of conf.
+1. About filename, split by '**_**'. The last part is the name of conf.
 
 ![image](https://github.com/4azuo/GuiGuBaHuang-ModLib/assets/11677054/a1ff96de-6850-466d-a3fd-682faf38a7f3)
 
