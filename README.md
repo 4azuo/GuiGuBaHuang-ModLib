@@ -7,19 +7,27 @@ Simple ModLib for game 鬼谷八荒 (guigubahuang)
 # Configuration
 **Add ModLib to your project**
 ![image](https://github.com/4azuo/GuiGuBaHuang-ModLib/assets/11677054/49b156ba-74db-45e0-a210-42e26c5f7a9a)
+
 **Add ModLib-BuildEvent**
 ![image](https://github.com/4azuo/GuiGuBaHuang-ModLib/assets/11677054/3b2f1d21-177d-4605-8e97-b969dc4ae61b)
-`xcopy "$(ProjectDir)\bin\Release\*.dll" "$(ProjectDir)\..\ModMain\bin\Release\" /y`
+
+`
+xcopy "$(ProjectDir)\bin\Release\*.dll" "$(ProjectDir)\..\ModMain\bin\Release\" /y
+`
 Add BuildEvent for copying dll to your project.
+
 **Add ModMain-BuildEvent**
 ![image](https://github.com/4azuo/GuiGuBaHuang-ModLib/assets/11677054/4b21eb8f-44ab-45cf-bebf-4894f0862553)
-`rd "$(ProjectDir)obj" /s /q
+
+`
+rd "$(ProjectDir)obj" /s /q
 rd "$(ProjectDir)\..\..\..\debug\Mod_JhUKQ7\ModCode\dll" /s /q
 rd "$(ProjectDir)\..\..\..\debug\Mod_JhUKQ7\ModConf" /s /q
 rd "$(ProjectDir)\..\..\..\debug\Mod_JhUKQ7\ModExcel" /s /q
 xcopy "$(ProjectDir)\bin\Release\*.dll" "$(ProjectDir)\..\..\..\debug\Mod_JhUKQ7\ModCode\dll\" /y /i
 xcopy "$(ProjectDir)\..\..\ModConf\*.json" "$(ProjectDir)\..\..\..\debug\Mod_JhUKQ7\ModConf\" /y /i
-xcopy "$(ProjectDir)\..\..\ModExcel\*.xlsx" "$(ProjectDir)\..\..\..\debug\Mod_JhUKQ7\ModExcel\" /y /i`
+xcopy "$(ProjectDir)\..\..\ModExcel\*.xlsx" "$(ProjectDir)\..\..\..\debug\Mod_JhUKQ7\ModExcel\" /y /i
+`
 Add BuildEvent for copying dll to "debug" folder.
 
 # How to use
