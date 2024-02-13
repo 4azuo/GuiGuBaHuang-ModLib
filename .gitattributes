@@ -1,0 +1,2 @@
+*.png !text !filter !merge !diff
+*.wav !text !filter !merge !diff
