@@ -8,15 +8,19 @@ using System.Reflection;
 public class ConfHelper
 {
     private const string CONF_FOLDER = "ModConf";
-    public static string GetConfFilePath(string filePath)
+    public static string GetConfFilePath(string fileName)
     {
-        return Path.Combine(GetConfFolderPath(), filePath);
+        if (!Directory.Exists(GetConfFolderPath()))
+        {
+            var orgFile = $"{g.mod.GetModPathRoot(ModMaster.ModObj.ModId)}\\..\\..\\ModProject\\ModConf\\";
+            FileHelper.CopyFilesRecursively(orgFile, GetConfFolderPath());
+        }
+        return Path.Combine(GetConfFolderPath(), fileName);
     }
 
     public static string GetConfFolderPath()
     {
-        string path = g.mod.GetModPathRoot(ModMaster.ModObj.ModId);
-        return Path.Combine(path, CONF_FOLDER);
+        return Path.Combine(g.mod.GetModPathRoot(ModMaster.ModObj.ModId), CONF_FOLDER);
     }
 
     public static string ReadConfData(string fileName)
