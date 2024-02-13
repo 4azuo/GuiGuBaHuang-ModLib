@@ -48,7 +48,6 @@
     <Compile Include="Helper\ConfHelper.cs" />
     <Compile Include="Helper\EnumerableHelper.cs" />
     <Compile Include="Helper\EventHelper.cs" />
-    <Compile Include="Helper\FileHelper.cs" />
     <Compile Include="Helper\UIHelper.cs" />
     <Compile Include="Helper\GameHelper.cs" />
     <Compile Include="Helper\TraceHelper.cs" />

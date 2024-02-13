@@ -10,11 +10,6 @@ public class ConfHelper
     private const string CONF_FOLDER = "ModConf";
     public static string GetConfFilePath(string fileName)
     {
-        if (!Directory.Exists(GetConfFolderPath()))
-        {
-            var orgFile = $"{g.mod.GetModPathRoot(ModMaster.ModObj.ModId)}\\..\\..\\ModProject\\ModConf\\";
-            FileHelper.CopyFilesRecursively(orgFile, GetConfFolderPath());
-        }
         return Path.Combine(GetConfFolderPath(), fileName);
     }
 
