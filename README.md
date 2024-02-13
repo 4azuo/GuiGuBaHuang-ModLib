@@ -117,3 +117,5 @@ Create a folder **ModConf** in **ModProject**, copy samples from below folder to
 ![image](https://github.com/4azuo/GuiGuBaHuang-ModLib/assets/11677054/cb95e58a-daf2-45f4-88d1-6ee1cb6cca1b)
 
 ※Sorry for my english.
+
+Hashtag: 鬼谷八荒, guigubahuang, mod
