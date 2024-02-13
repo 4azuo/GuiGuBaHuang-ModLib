@@ -47,6 +47,7 @@ Add BuildEvent for copying dll to "debug" folder.
 ![image](https://github.com/4azuo/GuiGuBaHuang-ModLib/assets/11677054/84f35501-d6f2-4b8d-9cd6-2606bf397e59)
 
 Just inherit **ModMaster** then you can use declared on-events.
+
 But you should use **ModEvent**↓↓↓ to process your mod. And use **ModMain**↑↑↑ to config your mod.
 
 ![image](https://github.com/4azuo/GuiGuBaHuang-ModLib/assets/11677054/e8da9fd1-89d0-4870-ace4-b7153dace9f2)
@@ -54,7 +55,9 @@ But you should use **ModEvent**↓↓↓ to process your mod. And use **ModMain*
 ![image](https://github.com/4azuo/GuiGuBaHuang-ModLib/assets/11677054/84af2edc-fa41-4e27-a4fa-01f3caaf1865)
 
 About **ModEvent**, you should declare `Cache(string cacheId, bool isGlobal = false)`
+
 If **IsGlobal**=true then, the event will be created when start game (application).
+
 If **IsGlobal**=false then, the event will be created when load save.
 
 ![image](https://github.com/4azuo/GuiGuBaHuang-ModLib/assets/11677054/3c404677-54fe-4e5f-af2e-8ec0618480f0)
@@ -90,9 +93,13 @@ Same folder with logs.
 
 # ModConf
 I hate to use **.cache**. It could not be read/write directly.
+
 So, i wrote a snipet which i can use **.json** to edit game's conf.
+
 Create a folder **ModConf** in **ModProject**, copy samples from below folder to **ModConf**
+
 `Steam\steamapps\common\鬼谷八荒\Mod\modFQA\配置修改教程\配置（只读）Json格式`
+
 ## ModConf - Notes
 1. About filename, split by **_**. The last part is the name of conf.
 
@@ -105,6 +112,7 @@ Create a folder **ModConf** in **ModProject**, copy samples from below folder to
 ![image](https://github.com/4azuo/GuiGuBaHuang-ModLib/assets/11677054/7f9de987-89a8-441d-addc-a894d37ba746)
 
 ※**"__name"** is my comment.
+
 3. Use **|** to set same value to the properties.
 
 ![image](https://github.com/4azuo/GuiGuBaHuang-ModLib/assets/11677054/cb95e58a-daf2-45f4-88d1-6ee1cb6cca1b)
