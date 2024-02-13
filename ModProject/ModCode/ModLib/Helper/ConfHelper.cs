@@ -27,7 +27,7 @@ public class ConfHelper
     [Trace]
     private static void LoadConf(string filePath, string confName)
     {
-        var confProp = g.conf.GetType().GetProperty(confName, BindingFlags.Public | BindingFlags.Instance);
+        var confProp = g.conf.GetType().GetProperty(confName, BindingFlags.Public | BindingFlags.Instance | BindingFlags.IgnoreCase);
         var confObj = confProp.GetValue(g.conf) as ConfBase;
         dynamic confList = confObj.GetType().GetProperty("allConfList", BindingFlags.Public | BindingFlags.Instance).GetValue(confObj);
         var confListItemType = confList.GetType().GetGenericArguments()[0] as Type;
@@ -62,11 +62,18 @@ public class ConfHelper
 
     public static void LoadCustomConf()
     {
-        var assetFolder = GetConfFolderPath();
-        foreach (var filePath in Directory.GetFiles(assetFolder, "*.json"))
+        try
         {
-            var confName = Path.GetFileNameWithoutExtension(filePath).Split('_').Last();
-            LoadConf(filePath, confName);
+            var assetFolder = GetConfFolderPath();
+            foreach (var filePath in Directory.GetFiles(assetFolder, "*.json"))
+            {
+                var confName = Path.GetFileNameWithoutExtension(filePath).Split('_').Last();
+                LoadConf(filePath, confName);
+            }
+        }
+        catch(Exception ex)
+        {
+            DebugHelper.WriteLine(ex);
         }
     }
 }
