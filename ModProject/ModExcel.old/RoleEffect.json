@@ -1,0 +1,56 @@
+[
+	{
+		"__name": "Power Up: attack +10%",
+		"id": "40010101",
+		"effectType": "1",
+		"value": "atk_0_10"
+	},
+	{
+		"__name": "Power Up: hpMax +20%",
+		"id": "40010102",
+		"effectType": "1",
+		"value": "hpMax_0_20"
+	},
+	{
+		"__name": "Speed Up: moveSpeed +30%",
+		"id": "40010201",
+		"effectType": "1",
+		"value": "msp_0_30"
+	},
+	{
+		"__name": "Taoist: attack +8%",
+		"id": "40010301",
+		"effectType": "1",
+		"value": "atk_0_8"
+	},
+	{
+		"__name": "Taoist: hpMax +15%",
+		"id": "40010302",
+		"effectType": "1",
+		"value": "hpMax_0_15"
+	},
+	{
+		"__name": "Taoist: mpMax +10%",
+		"id": "40010303",
+		"effectType": "1",
+		"value": "mpMax_0_10"
+	},
+	{
+		"__name": "Pro Atk: attack +30%",
+		"id": "40010401",
+		"effectType": "1",
+		"value": "atk_0_30"
+	},
+	{
+		"__name": "Pro Def: hpMax +25%",
+		"id": "40010501",
+		"effectType": "1",
+		"value": "hpMax_0_25"
+	},
+	{
+		"__name": "Pro Def: defense +5%",
+		"id": "40010502",
+		"effectType": "1",
+		"value": "def_0_6"
+	},
+]

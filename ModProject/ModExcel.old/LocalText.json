@@ -1,0 +1,42 @@
+[
+	{
+		"id": "40020100",
+		"key": "unitType40010100",
+		"ch": "Power Up",
+		"tc": "Power Up",
+		"kr": "Power Up",
+		"en": "Power Up",
+	},
+	{
+		"id": "40020200",
+		"key": "unitType40010200",
+		"ch": "Power Up",
+		"tc": "Power Up",
+		"kr": "Power Up",
+		"en": "Speed Up",
+	},
+	{
+		"id": "40020300",
+		"key": "unitType40010300",
+		"ch": "Power Up",
+		"tc": "Power Up",
+		"kr": "Power Up",
+		"en": "Taoist",
+	},
+	{
+		"id": "40020400",
+		"key": "unitType40010400",
+		"ch": "Power Up",
+		"tc": "Power Up",
+		"kr": "Power Up",
+		"en": "Pro Atk",
+	},
+	{
+		"id": "40020500",
+		"key": "unitType40010500",
+		"ch": "Power Up",
+		"tc": "Power Up",
+		"kr": "Power Up",
+		"en": "Pro Def",
+	},
+]
