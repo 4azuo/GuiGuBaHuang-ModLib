@@ -1,9 +1,15 @@
 # GuiGuBaHuang-ModLib
 Simple ModLib for game 鬼谷八荒 (guigubahuang)
 
+
+
+
+
 # How to create a mod
 
 ![image](https://github.com/4azuo/GuiGuBaHuang-ModLib/assets/11677054/91921f05-251a-4f1e-a2e9-d1e5bdd853d3)
+
+
 
 
 
@@ -38,6 +44,8 @@ Add BuildEvent for copying dll to "debug" folder.
 
 
 
+
+
 # How to use
 
 ![image](https://github.com/4azuo/GuiGuBaHuang-ModLib/assets/11677054/33b579c2-5d91-4e97-86ea-ce964edf4379)
@@ -62,7 +70,11 @@ If **IsGlobal**=false then, the event will be created when load save.
 
 Can declare same ModEvent by adding **multi** CacheAttribute to the ModEvent.
 
+Last, All properties of ModEvent will be cached (.json). You can ignore cache and reconstrcut by **JsonIgnoreAttribute**
+
 ※I wrote some events which i need. You can add more to ModMaster.
+
+
 
 
 
@@ -81,12 +93,16 @@ Also, you can use **TraceAttribute**/**TraceIgnoreAttribute** which catch callin
 
 
 
+
+
 # Cache/Save
 `
 xxx\AppData\LocalLow\guigugame\guigubahuang\mod\{MOD_NAME}
 `
 
 Same folder with logs.
+
+
 
 
 
@@ -115,6 +131,8 @@ Create a folder **ModConf** in **ModProject**, copy samples from below folder to
 3. Use **|** to set same value to the properties.
 
 ![image](https://github.com/4azuo/GuiGuBaHuang-ModLib/assets/11677054/cb95e58a-daf2-45f4-88d1-6ee1cb6cca1b)
+
+4. If **"id"** exists, conf will be override. If not exists, then will be created a new one.
 
 ※Sorry for my english.
 
