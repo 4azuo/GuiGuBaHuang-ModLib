@@ -5,7 +5,6 @@ using ModLib.Mod;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
-using System.Numerics;
 using UnityEngine;
 
 namespace MOD_JhUKQ7.Mod

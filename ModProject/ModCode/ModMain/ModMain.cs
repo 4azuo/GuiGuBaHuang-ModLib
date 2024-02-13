@@ -1,6 +1,4 @@
-﻿using MOD_JhUKQ7.Const;
-using MOD_JhUKQ7.Mod;
-using ModLib.Mod;
+﻿using ModLib.Mod;
 
 namespace MOD_JhUKQ7
 {
