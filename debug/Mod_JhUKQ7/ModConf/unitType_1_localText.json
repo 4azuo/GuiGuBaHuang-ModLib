@@ -1,0 +1,37 @@
+[
+	{
+		"id": "410010100",
+		"key": "unitType420010100",
+		"en|ch|tc": "Power Up",
+	},
+	{
+		"id": "410010200",
+		"key": "unitType420010200",
+		"en|ch|tc": "Speed Up",
+	},
+	{
+		"id": "410010300",
+		"key": "unitType420010300",
+		"en|ch|tc": "Taoist",
+	},
+	{
+		"id": "410010400",
+		"key": "unitType420010400",
+		"en|ch|tc": "Pro Atk",
+	},
+	{
+		"id": "410010500",
+		"key": "unitType420010500",
+		"en|ch|tc": "Pro Def",
+	},
+	{
+		"id": "410010600",
+		"key": "unitType420010600",
+		"en|ch|tc": "Angel",
+	},
+	{
+		"id": "410010700",
+		"key": "unitType420010700",
+		"en|ch|tc": "Evil",
+	},
+]
