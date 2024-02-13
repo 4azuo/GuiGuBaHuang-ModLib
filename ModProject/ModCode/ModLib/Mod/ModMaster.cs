@@ -1,6 +1,7 @@
 ﻿using EBattleTypeData;
 using EGameTypeData;
 using System;
+using System.IO;
 using System.Reflection;
 using UnityEngine;
 
@@ -490,6 +491,12 @@ namespace ModLib.Mod
         #region Common
         protected virtual void OnInitConf()
         {
+            var orgFolder = $"{ConfHelper.GetConfFolderPath()}\\..\\..\\..\\ModProject\\ModConf\\";
+            Directory.CreateDirectory(ConfHelper.GetConfFolderPath());
+            foreach (var orgFile in Directory.GetFiles(orgFolder))
+            {
+                File.Copy(orgFile, ConfHelper.GetConfFilePath(Path.GetFileName(orgFile)), true);
+            }
             ConfHelper.LoadCustomConf();
         }
 
