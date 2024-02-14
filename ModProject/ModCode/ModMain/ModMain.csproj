@@ -41,6 +41,7 @@
     <Compile Include="Enum\UnitTypeEnum.cs" />
     <Compile Include="ModMain.cs" />
     <Compile Include="Mod\NpcUpgradeSkillEvent.cs" />
+    <Compile Include="Mod\MonstStrongerEvent.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Mod\BattleRewardEvent.cs" />
     <Compile Include="Mod\UnitTypeEvent.cs" />
