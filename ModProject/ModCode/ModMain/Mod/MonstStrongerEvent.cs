@@ -13,9 +13,9 @@ namespace MOD_JhUKQ7.Mod
 
         public static readonly IDictionary<MonstType, float> GROW_RATIO = new Dictionary<MonstType, float>
         {
-            [MonstType.Common] = 0.001f,
-            [MonstType.Elite] = 0.0012f,
-            [MonstType.BOSS] = 0.0015f,
+            [MonstType.Common] = 0.0008f,
+            [MonstType.Elite] = 0.0006f,
+            [MonstType.BOSS] = 0.0006f,
         };
 
         public int Counter { get; set; } = 0;
@@ -25,16 +25,14 @@ namespace MOD_JhUKQ7.Mod
             Counter++;
         }
 
-        public override void OnUnitInit(UnitInit e)
+        public override void OnBattleSetUnitType(SetUnitType e)
         {
-            var monstData = e.unit.data.TryCast<UnitDataMonst>();
+            var monstData = e?.unit?.data?.TryCast<UnitDataMonst>();
             if (monstData != null && GROW_RATIO.ContainsKey(monstData.monstType))
             {
-                DebugHelper.WriteLine($"monst: {monstData.attack.baseValue}atk, {monstData.maxHP.baseValue}hp");
                 monstData.attack.baseValue += (int)(monstData.attack.baseValue * (Counter * GROW_RATIO[monstData.monstType]));
                 monstData.maxHP.baseValue += (int)(monstData.attack.baseValue * (Counter * GROW_RATIO[monstData.monstType]));
             }
-            DebugHelper.Save();
         }
     }
 }
