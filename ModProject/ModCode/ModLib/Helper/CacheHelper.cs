@@ -87,7 +87,7 @@ public static class CacheHelper
             }
             else
             {
-                GlobalCacheData = new ModLib.Mod.ModData(true);
+                GlobalCacheData = new ModLib.Mod.ModData(true, true);
             }
         }
         return GlobalCacheData;
@@ -112,7 +112,7 @@ public static class CacheHelper
             }
             else
             {
-                GameCacheData = new ModLib.Mod.ModData(false);
+                GameCacheData = new ModLib.Mod.ModData(true, false);
             }
         }
         return GameCacheData;

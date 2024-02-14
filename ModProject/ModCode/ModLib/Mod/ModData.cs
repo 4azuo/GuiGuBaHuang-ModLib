@@ -11,13 +11,22 @@ namespace ModLib.Mod
     public sealed class ModData
     {
         public string SaveTime { get; set; }
-        public IDictionary<string, CachableObject> Data { get; private set; }
+        public IDictionary<string, CachableObject> Data { get; set; }
 
-        public ModData(bool isGlobal)
+        public ModData()
+        {
+            //loaded by json
+            //Data = new Dictionary<string, CachableObject>();
+        }
+
+        public ModData(bool createEvent, bool isGlobal)
         {
             Data = new Dictionary<string, CachableObject>();
-            LoadEvents(Assembly.GetAssembly(typeof(ModMaster)), isGlobal);
-            LoadEvents(Assembly.GetAssembly(ModMaster.ModObj.GetType()), isGlobal);
+            if (createEvent)
+            {
+                LoadEvents(Assembly.GetAssembly(typeof(ModMaster)), isGlobal);
+                LoadEvents(Assembly.GetAssembly(ModMaster.ModObj.GetType()), isGlobal);
+            }
         }
 
         private void LoadEvents(Assembly ass, bool isGlobal)
