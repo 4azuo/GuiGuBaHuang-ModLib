@@ -2,20 +2,17 @@
 using EGameTypeData;
 using ModLib.Object;
 using Newtonsoft.Json;
-using System.Collections.Generic;
-using System.Linq;
 
 namespace ModLib.Mod
 {
     [Trace]
     public abstract class ModEvent : CachableObject
     {
+        [JsonIgnore]
         public virtual int OrderIndex
         {
             [TraceIgnore]
             get;
-            [TraceIgnore]
-            set;
         } = -1;
 
         public virtual void OnOpenUIStart(OpenUIStart e)
@@ -71,6 +68,10 @@ namespace ModLib.Mod
         }
 
         public virtual void OnUnitHit(UnitHit e)
+        {
+        }
+
+        public virtual void OnUnitHitDynIntHandler(UnitHitDynIntHandler e)
         {
         }
 
