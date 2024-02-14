@@ -27,15 +27,14 @@ namespace MOD_JhUKQ7.Mod
 
         public override void OnUnitInit(UnitInit e)
         {
-            if (e.unit.data.unitType == UnitType.Monst)
+            var monstData = e.unit.data.TryCast<UnitDataMonst>();
+            if (monstData != null && GROW_RATIO.ContainsKey(monstData.monstType))
             {
-                var monstData = e.unit.data.TryCast<UnitDataMonst>();
-                if (monstData != null && GROW_RATIO.ContainsKey(monstData.monstType))
-                {
-                    monstData.attack.baseValue += (int)(monstData.attack.baseValue * (Counter * GROW_RATIO[monstData.monstType]));
-                    monstData.maxHP.baseValue += (int)(monstData.attack.baseValue * (Counter * GROW_RATIO[monstData.monstType]));
-                }
+                DebugHelper.WriteLine($"monst: {monstData.attack.baseValue}atk, {monstData.maxHP.baseValue}hp");
+                monstData.attack.baseValue += (int)(monstData.attack.baseValue * (Counter * GROW_RATIO[monstData.monstType]));
+                monstData.maxHP.baseValue += (int)(monstData.attack.baseValue * (Counter * GROW_RATIO[monstData.monstType]));
             }
+            DebugHelper.Save();
         }
     }
 }

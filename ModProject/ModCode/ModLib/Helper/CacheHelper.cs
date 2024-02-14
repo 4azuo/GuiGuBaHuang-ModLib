@@ -40,12 +40,12 @@ public static class CacheHelper
 
     public static string GetGameCacheFilePath()
     {
-        return $"{GetCacheFolderName()}\\{GetGameCacheFileName()}";
+        return Path.Combine(GetCacheFolderName(), GetGameCacheFileName());
     }
 
     public static string GetGlobalCacheFilePath()
     {
-        return $"{GetCacheFolderName()}\\{GetGlobalCacheFileName()}";
+        return Path.Combine(GetCacheFolderName(), GetGlobalCacheFileName());
     }
 
     public static T GetData<T>(string key) where T : CachableObject
