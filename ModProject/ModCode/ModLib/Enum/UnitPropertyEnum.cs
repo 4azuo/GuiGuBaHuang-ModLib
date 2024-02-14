@@ -7,9 +7,9 @@ namespace ModLib.Enum
 {
     public class UnitPropertyEnum : EnumObject
     {
-        //public static PropertyEnum Name { get; } = new PropertyEnum("name", IL2CPP.GetIl2CppField(Il2CppClassPointerStore<PropertyData>.NativeClassPtr, "name"));
-        //public static PropertyEnum BattleModelData { get; } = new PropertyEnum("battleModelData", IL2CPP.GetIl2CppField(Il2CppClassPointerStore<PropertyData>.NativeClassPtr, "battleModelData"));
-        //public static PropertyEnum ModelData { get; } = new PropertyEnum("modelData", IL2CPP.GetIl2CppField(Il2CppClassPointerStore<PropertyData>.NativeClassPtr, "modelData"));
+        //public static UnitPropertyEnum Name { get; } = new UnitPropertyEnum("name", IL2CPP.GetIl2CppField(Il2CppClassPointerStore<PropertyData>.NativeClassPtr, "name"));
+        //public static UnitPropertyEnum BattleModelData { get; } = new UnitPropertyEnum("battleModelData", IL2CPP.GetIl2CppField(Il2CppClassPointerStore<PropertyData>.NativeClassPtr, "battleModelData"));
+        //public static UnitPropertyEnum ModelData { get; } = new UnitPropertyEnum("modelData", IL2CPP.GetIl2CppField(Il2CppClassPointerStore<PropertyData>.NativeClassPtr, "modelData"));
         public static UnitPropertyEnum Sex { get; } = new UnitPropertyEnum("sex", IL2CPP.GetIl2CppField(Il2CppClassPointerStore<PropertyData>.NativeClassPtr, "sex"));
         public static UnitPropertyEnum Race { get; } = new UnitPropertyEnum("race", IL2CPP.GetIl2CppField(Il2CppClassPointerStore<PropertyData>.NativeClassPtr, "race"));
         public static UnitPropertyEnum Age { get; } = new UnitPropertyEnum("age", IL2CPP.GetIl2CppField(Il2CppClassPointerStore<PropertyData>.NativeClassPtr, "age"));
@@ -68,12 +68,12 @@ namespace ModLib.Enum
         public static UnitPropertyEnum Mine { get; } = new UnitPropertyEnum("mine", IL2CPP.GetIl2CppField(Il2CppClassPointerStore<PropertyData>.NativeClassPtr, "mine"));
         public static UnitPropertyEnum Mood { get; } = new UnitPropertyEnum("mood", IL2CPP.GetIl2CppField(Il2CppClassPointerStore<PropertyData>.NativeClassPtr, "mood"));
         public static UnitPropertyEnum MoodMax { get; } = new UnitPropertyEnum("moodMax", IL2CPP.GetIl2CppField(Il2CppClassPointerStore<PropertyData>.NativeClassPtr, "moodMax"));
-        //public static PropertyEnum Hobby { get; } = new PropertyEnum("hobby", IL2CPP.GetIl2CppField(Il2CppClassPointerStore<PropertyData>.NativeClassPtr, "hobby"));
-        //public static PropertyEnum BornLuck { get; } = new PropertyEnum("bornLuck", IL2CPP.GetIl2CppField(Il2CppClassPointerStore<PropertyData>.NativeClassPtr, "bornLuck"));
-        //public static PropertyEnum AddLuck { get; } = new PropertyEnum("addLuck", IL2CPP.GetIl2CppField(Il2CppClassPointerStore<PropertyData>.NativeClassPtr, "addLuck"));
-        //public static PropertyEnum LooksLove { get; } = new PropertyEnum("looksLove", IL2CPP.GetIl2CppField(Il2CppClassPointerStore<PropertyData>.NativeClassPtr, "looksLove"));
-        //public static PropertyEnum UnitInfo { get; } = new PropertyEnum("unitInfo", IL2CPP.GetIl2CppField(Il2CppClassPointerStore<PropertyData>.NativeClassPtr, "unitInfo"));
-        //public static PropertyEnum Unit { get; } = new PropertyEnum("_unit", IL2CPP.GetIl2CppField(Il2CppClassPointerStore<PropertyData>.NativeClassPtr, "_unit"));
+        //public static UnitPropertyEnum Hobby { get; } = new UnitPropertyEnum("hobby", IL2CPP.GetIl2CppField(Il2CppClassPointerStore<PropertyData>.NativeClassPtr, "hobby"));
+        //public static UnitPropertyEnum BornLuck { get; } = new UnitPropertyEnum("bornLuck", IL2CPP.GetIl2CppField(Il2CppClassPointerStore<PropertyData>.NativeClassPtr, "bornLuck"));
+        //public static UnitPropertyEnum AddLuck { get; } = new UnitPropertyEnum("addLuck", IL2CPP.GetIl2CppField(Il2CppClassPointerStore<PropertyData>.NativeClassPtr, "addLuck"));
+        //public static UnitPropertyEnum LooksLove { get; } = new UnitPropertyEnum("looksLove", IL2CPP.GetIl2CppField(Il2CppClassPointerStore<PropertyData>.NativeClassPtr, "looksLove"));
+        //public static UnitPropertyEnum UnitInfo { get; } = new UnitPropertyEnum("unitInfo", IL2CPP.GetIl2CppField(Il2CppClassPointerStore<PropertyData>.NativeClassPtr, "unitInfo"));
+        //public static UnitPropertyEnum Unit { get; } = new UnitPropertyEnum("_unit", IL2CPP.GetIl2CppField(Il2CppClassPointerStore<PropertyData>.NativeClassPtr, "_unit"));
 
         public string PropName { get; private set; }
         public IntPtr PropAddr { get; private set; }
