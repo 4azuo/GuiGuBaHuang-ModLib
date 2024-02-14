@@ -57,15 +57,18 @@ namespace MOD_JhUKQ7.Mod
         public int PlayerRecvDamage { get; set; }
         [JsonIgnore]
         public bool IsPlayerDie { get; set; }
+        [JsonIgnore]
+        public bool IsEnd { get; set; }
 
         public override void OnBattleStart(ETypeData e)
         {
             PlayerDealtDamage = 0;
             PlayerRecvDamage = 0;
             IsPlayerDie = false;
+            IsEnd = false;
         }
 
-        public override void OnUnitHit(UnitHit e)
+        public override void OnBattleUnitHit(UnitHit e)
         {
             var dmg = Math.Abs(e.hitData.hitValue);
             if (e.attackUnit.data.unitType == UnitType.Player)
@@ -124,25 +127,31 @@ namespace MOD_JhUKQ7.Mod
 
         public override void OnBattleEnd(BattleEnd e)
         {
-            var player = g.world.playerUnit;
-            if (IsPlayerDie)
+            if (!IsEnd)
             {
-                player.AddProperty<int>(UnitPropertyEnum.Life, -(Math.Max(PlayerRecvDamage / 1000, 1)));
-                player.SetProperty<int>(UnitPropertyEnum.Exp, 0);
-                DebugHelper.WriteLine($"BattleRewardEvent: player death");
-                return;
-            }
+                DebugHelper.WriteLine($"Damage dealt: {PlayerDealtDamage}dmg");
+                DebugHelper.WriteLine($"Damage recieve: {PlayerRecvDamage}dmg");
+                var player = g.world.playerUnit;
+                if (IsPlayerDie)
+                {
+                    player.AddProperty<int>(UnitPropertyEnum.Life, -(Math.Max(PlayerRecvDamage / 1000, 1)));
+                    player.SetProperty<int>(UnitPropertyEnum.Exp, 0);
+                    DebugHelper.WriteLine($"BattleRewardEvent: player death");
+                    return;
+                }
 
-            if (e.isWin)
-            {
-                var rewardExp1 = Math.Max(PlayerDealtDamage / 100, 1);
-                var rewardExp2 = Math.Max(PlayerRecvDamage / 10, 1);
-                player.AddProperty<int>(UnitPropertyEnum.Exp, rewardExp1 + rewardExp2);
-                DebugHelper.WriteLine($"BattleRewardEvent: +{rewardExp1 + rewardExp2}exp");
+                if (e.isWin)
+                {
+                    var rewardExp1 = Math.Max(PlayerDealtDamage / 100, 1);
+                    var rewardExp2 = Math.Max(PlayerRecvDamage / 10, 1);
+                    player.AddProperty<int>(UnitPropertyEnum.Exp, rewardExp1 + rewardExp2);
+                    DebugHelper.WriteLine($"BattleRewardEvent: +{rewardExp1 + rewardExp2}exp");
+                }
+                IsEnd = true;
             }
         }
 
-        public override void OnUnitDie(UnitDie e)
+        public override void OnBattleUnitDie(UnitDie e)
         {
             var dieUnit = e.unit.data.TryCast<UnitDataHuman>();
             if (dieUnit != null)
