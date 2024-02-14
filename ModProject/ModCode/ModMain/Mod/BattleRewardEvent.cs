@@ -12,6 +12,8 @@ namespace MOD_JhUKQ7.Mod
     [Cache(ModConst.BATTLE_REWARD_EVENT_KEY)]
     public sealed class BattleRewardEvent : ModEvent
     {
+        public override int OrderIndex => 2;
+
         private const string PLAYER_D_DMG_KEY = "PdDmg";
         private const string PLAYER_R_DMG_KEY = "PrDmg";
 
@@ -37,17 +39,17 @@ namespace MOD_JhUKQ7.Mod
             [PLAYER_UP_ATK_FACTOR] = 100,
             [PLAYER_UP_DEF_FACTOR] = 100,
             [PLAYER_UP_MHP_FACTOR] = 10,
-            [PLAYER_UP_MAP_FACTOR] = 200,
+            [PLAYER_UP_MAP_FACTOR] = 300,
 
             [PLAYER_UP_ATK_RATIO] = 1.1,
             [PLAYER_UP_DEF_RATIO] = 1.15,
             [PLAYER_UP_MHP_RATIO] = 1.02,
-            [PLAYER_UP_MAP_RATIO] = 1.2,
+            [PLAYER_UP_MAP_RATIO] = 1.25,
 
             [PLAYER_UP_ATK_LIMIT] = 100, //PLAYER_D_DMG_KEY
             [PLAYER_UP_DEF_LIMIT] = 100, //PLAYER_R_DMG_KEY
             [PLAYER_UP_MHP_LIMIT] = 10,  //PLAYER_R_DMG_KEY
-            [PLAYER_UP_MAP_LIMIT] = 150, //PLAYER_D_DMG_KEY
+            [PLAYER_UP_MAP_LIMIT] = 300, //PLAYER_D_DMG_KEY
         };
         [JsonIgnore]
         public int PlayerDealtDamage { get; set; }
@@ -125,7 +127,8 @@ namespace MOD_JhUKQ7.Mod
             var player = g.world.playerUnit;
             if (IsPlayerDie)
             {
-                player.SetProperty<int>(UnitPropertyEnum.Exp, g.conf.roleGrade.GetGradeItemInExp(player.GetProperty<int>(UnitPropertyEnum.Exp)).exp);
+                player.AddProperty<int>(UnitPropertyEnum.Life, -(Math.Max(PlayerRecvDamage / 1000, 1)));
+                player.SetProperty<int>(UnitPropertyEnum.Exp, 0);
                 DebugHelper.WriteLine($"BattleRewardEvent: player death");
                 return;
             }
@@ -142,6 +145,14 @@ namespace MOD_JhUKQ7.Mod
         public override void OnUnitDie(UnitDie e)
         {
             IsPlayerDie = e.unit.data.unitType == UnitType.Player;
+            if (e.unit.data.unitType == UnitType.Monst && e.hitData.attackUnit.data.unitType == UnitType.Player)
+            {
+                var dieUnit = e.unit.data.TryCast<UnitDataHuman>();
+                if (dieUnit != null)
+                {
+                    g.world.playerUnit.AddProperty<int>(UnitPropertyEnum.Life, dieUnit.worldUnitData.unit.GetProperty<int>(UnitPropertyEnum.Life) / 50);
+                }
+            }
         }
     }
 }
