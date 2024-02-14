@@ -26,7 +26,7 @@ public static class DebugHelper
 
     public static string GetDebugFilePath()
     {
-        return $"{GetDebugFolderName()}\\{GetDebugFileName()}";
+        return Path.Combine(GetDebugFolderName(), GetDebugFileName());
     }
 
     public static void CreateDebugFolder()

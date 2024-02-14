@@ -144,11 +144,11 @@ namespace MOD_JhUKQ7.Mod
 
         public override void OnUnitDie(UnitDie e)
         {
-            IsPlayerDie = e.unit.data.unitType == UnitType.Player;
-            if (e.unit.data.unitType == UnitType.Monst && e.hitData.attackUnit.data.unitType == UnitType.Player)
+            var dieUnit = e.unit.data.TryCast<UnitDataHuman>();
+            if (dieUnit != null)
             {
-                var dieUnit = e.unit.data.TryCast<UnitDataHuman>();
-                if (dieUnit != null)
+                IsPlayerDie = dieUnit.unitType == UnitType.Player;
+                if (!IsPlayerDie)
                 {
                     g.world.playerUnit.AddProperty<int>(UnitPropertyEnum.Life, dieUnit.worldUnitData.unit.GetProperty<int>(UnitPropertyEnum.Life) / 50);
                 }
