@@ -1,5 +1,7 @@
 ﻿using EBattleTypeData;
 using EGameTypeData;
+using EMapTypeData;
+using Steamworks;
 using System;
 using System.IO;
 using System.Reflection;
@@ -35,6 +37,26 @@ namespace ModLib.Mod
             corFrameUpdate = g.timer.Frame(new Action(_OnFrameUpdate), 1, true);
             #endregion
 
+            #region EMapType
+            var callPlayerEquipCloth = (Il2CppSystem.Action<ETypeData>)_OnPlayerEquipCloth;
+            g.events.On(EMapType.PlayerEquipCloth, callPlayerEquipCloth);
+
+            var callPlayerInMonstArea = (Il2CppSystem.Action<ETypeData>)_OnPlayerInMonstArea;
+            g.events.On(EMapType.PlayerInMonstArea, callPlayerInMonstArea);
+
+            var callPlayerRoleEscapeInMap = (Il2CppSystem.Action<ETypeData>)_OnPlayerRoleEscapeInMap;
+            g.events.On(EMapType.PlayerRoleEscapeInMap, callPlayerRoleEscapeInMap);
+
+            var callPlayerRoleUpGradeBig = (Il2CppSystem.Action<ETypeData>)_OnPlayerRoleUpGradeBig;
+            g.events.On(EMapType.PlayerRoleUpGradeBig, callPlayerRoleUpGradeBig);
+
+            var callUpGradeAndCloseFateFeatureUI = (Il2CppSystem.Action<ETypeData>)_OnUpGradeAndCloseFateFeatureUI;
+            g.events.On(EMapType.UpGradeAndCloseFateFeatureUI, callUpGradeAndCloseFateFeatureUI);
+
+            var callUseHobbyProps = (Il2CppSystem.Action<ETypeData>)_OnUseHobbyProps;
+            g.events.On(EMapType.UseHobbyProps, callUseHobbyProps);
+            #endregion
+
             #region EGameType
             var callOpenUIStart = (Il2CppSystem.Action<ETypeData>)_OnOpenUIStart;
             g.events.On(EGameType.OpenUIStart, callOpenUIStart);
@@ -62,26 +84,38 @@ namespace ModLib.Mod
             #endregion
 
             #region EBattleType
-            var callUnitInit = (Il2CppSystem.Action<ETypeData>)_OnUnitInit;
-            g.events.On(EBattleType.UnitInit, callUnitInit);
+            var callBattleUnitInit = (Il2CppSystem.Action<ETypeData>)_OnBattleUnitInit;
+            g.events.On(EBattleType.UnitInit, callBattleUnitInit);
 
-            var callUnitHit = (Il2CppSystem.Action<ETypeData>)_OnUnitHit;
-            g.events.On(EBattleType.UnitHit, callUnitHit);
+            var callBattleUnitHit = (Il2CppSystem.Action<ETypeData>)_OnBattleUnitHit;
+            g.events.On(EBattleType.UnitHit, callBattleUnitHit);
 
-            var callUnitHitDynIntHandler = (Il2CppSystem.Action<ETypeData>)_OnUnitHitDynIntHandler;
-            g.events.On(EBattleType.UnitHitDynIntHandler, callUnitHitDynIntHandler);
+            var callBattleUnitHitDynIntHandler = (Il2CppSystem.Action<ETypeData>)_OnBattleUnitHitDynIntHandler;
+            g.events.On(EBattleType.UnitHitDynIntHandler, callBattleUnitHitDynIntHandler);
 
-            var callUnitUseProp = (Il2CppSystem.Action<ETypeData>)_OnUnitUseProp;
-            g.events.On(EBattleType.UnitUseProp, callUnitUseProp);
+            var callBattleUnitUseProp = (Il2CppSystem.Action<ETypeData>)_OnBattleUnitUseProp;
+            g.events.On(EBattleType.UnitUseProp, callBattleUnitUseProp);
 
-            var callUnitUseSkill = (Il2CppSystem.Action<ETypeData>)_OnUnitUseSkill;
-            g.events.On(EBattleType.UnitUseSkill, callUnitUseSkill);
+            var callBattleUnitUseSkill = (Il2CppSystem.Action<ETypeData>)_OnBattleUnitUseSkill;
+            g.events.On(EBattleType.UnitUseSkill, callBattleUnitUseSkill);
 
-            var callUnitUseStep = (Il2CppSystem.Action<ETypeData>)_OnUnitUseStep;
-            g.events.On(EBattleType.UnitUseStep, callUnitUseStep);
+            var callBattleUnitUseStep = (Il2CppSystem.Action<ETypeData>)_OnBattleUnitUseStep;
+            g.events.On(EBattleType.UnitUseStep, callBattleUnitUseStep);
 
-            var callUnitDie = (Il2CppSystem.Action<ETypeData>)_OnUnitDie;
-            g.events.On(EBattleType.UnitDie, callUnitDie);
+            var callBattleUnitDie = (Il2CppSystem.Action<ETypeData>)_OnBattleUnitDie;
+            g.events.On(EBattleType.UnitDie, callBattleUnitDie);
+
+            var callBattleUnitDieEnd = (Il2CppSystem.Action<ETypeData>)_OnBattleUnitDieEnd;
+            g.events.On(EBattleType.UnitDieEnd, callBattleUnitDieEnd);
+
+            var callBattleUnitAddEffectStart = (Il2CppSystem.Action<ETypeData>)_OnBattleUnitAddEffectStart;
+            g.events.On(EBattleType.UnitAddEffectStart, callBattleUnitAddEffectStart);
+
+            var callBattleUnitAddEffect = (Il2CppSystem.Action<ETypeData>)_OnBattleUnitAddEffect;
+            g.events.On(EBattleType.UnitAddEffect, callBattleUnitAddEffect);
+
+            var callBattleSetUnitType = (Il2CppSystem.Action<ETypeData>)_OnBattleSetUnitType;
+            g.events.On(EBattleType.SetUnitType, callBattleSetUnitType);
 
             var callBattleStart = (Il2CppSystem.Action<ETypeData>)_OnBattleStart;
             g.events.On(EBattleType.BattleStart, callBattleStart);
@@ -141,6 +175,110 @@ namespace ModLib.Mod
                     {
                         OnFrameUpdate();
                     }
+                }
+                catch (Exception ex)
+                {
+                    DebugHelper.WriteLine(ex);
+                }
+            }
+        }
+        #endregion
+
+        #region EMapType
+        protected virtual void _OnPlayerEquipCloth(ETypeData edata)
+        {
+            if (GameHelper.IsInGame())
+            {
+                try
+                {
+                    var e = edata.Cast<PlayerEquipCloth>();
+
+                    OnPlayerEquipCloth(e);
+                }
+                catch (Exception ex)
+                {
+                    DebugHelper.WriteLine(ex);
+                }
+            }
+        }
+
+        protected virtual void _OnPlayerInMonstArea(ETypeData edata)
+        {
+            if (GameHelper.IsInGame())
+            {
+                try
+                {
+                    var e = edata.Cast<PlayerInMonstArea>();
+
+                    OnPlayerInMonstArea(e);
+                }
+                catch (Exception ex)
+                {
+                    DebugHelper.WriteLine(ex);
+                }
+            }
+        }
+
+        protected virtual void _OnPlayerRoleEscapeInMap(ETypeData edata)
+        {
+            if (GameHelper.IsInGame())
+            {
+                try
+                {
+                    var e = edata.Cast<PlayerRoleEscapeInMap>();
+
+                    OnPlayerRoleEscapeInMap(e);
+                }
+                catch (Exception ex)
+                {
+                    DebugHelper.WriteLine(ex);
+                }
+            }
+        }
+
+        protected virtual void _OnPlayerRoleUpGradeBig(ETypeData edata)
+        {
+            if (GameHelper.IsInGame())
+            {
+                try
+                {
+                    var e = edata.Cast<PlayerRoleUpGradeBig>();
+
+                    OnPlayerRoleUpGradeBig(e);
+                }
+                catch (Exception ex)
+                {
+                    DebugHelper.WriteLine(ex);
+                }
+            }
+        }
+
+        protected virtual void _OnUpGradeAndCloseFateFeatureUI(ETypeData edata)
+        {
+            if (GameHelper.IsInGame())
+            {
+                try
+                {
+                    var e = edata.Cast<UpGradeAndCloseFateFeatureUI>();
+
+                    OnUpGradeAndCloseFateFeatureUI(e);
+                }
+                catch (Exception ex)
+                {
+                    DebugHelper.WriteLine(ex);
+                }
+            }
+        }
+
+        protected virtual void _OnUseHobbyProps(ETypeData edata)
+        {
+            if (GameHelper.IsInGame())
+            {
+                try
+                {
+                    var e = edata.Cast<UseHobbyProps>();
+
+                    OnUseHobbyProps(e);
                 }
                 catch (Exception ex)
                 {
@@ -339,7 +477,7 @@ namespace ModLib.Mod
         #endregion
 
         #region EBattleType
-        protected virtual void _OnUnitInit(ETypeData edata)
+        protected virtual void _OnBattleUnitInit(ETypeData edata)
         {
             if (GameHelper.IsInGame())
             {
@@ -347,7 +485,7 @@ namespace ModLib.Mod
                 {
                     var e = edata.Cast<UnitInit>();
 
-                    OnUnitInit(e);
+                    OnBattleUnitInit(e);
                 }
                 catch (Exception ex)
                 {
@@ -356,7 +494,7 @@ namespace ModLib.Mod
             }
         }
 
-        protected virtual void _OnUnitHit(ETypeData edata)
+        protected virtual void _OnBattleUnitHit(ETypeData edata)
         {
             if (GameHelper.IsInGame())
             {
@@ -364,7 +502,7 @@ namespace ModLib.Mod
                 {
                     var e = edata.Cast<UnitHit>();
 
-                    OnUnitHit(e);
+                    OnBattleUnitHit(e);
                 }
                 catch (Exception ex)
                 {
@@ -373,7 +511,7 @@ namespace ModLib.Mod
             }
         }
 
-        protected virtual void _OnUnitHitDynIntHandler(ETypeData edata)
+        protected virtual void _OnBattleUnitHitDynIntHandler(ETypeData edata)
         {
             if (GameHelper.IsInGame())
             {
@@ -381,7 +519,7 @@ namespace ModLib.Mod
                 {
                     var e = edata.Cast<UnitHitDynIntHandler>();
 
-                    OnUnitHitDynIntHandler(e);
+                    OnBattleUnitHitDynIntHandler(e);
                 }
                 catch (Exception ex)
                 {
@@ -390,7 +528,7 @@ namespace ModLib.Mod
             }
         }
 
-        protected virtual void _OnUnitUseProp(ETypeData edata)
+        protected virtual void _OnBattleUnitUseProp(ETypeData edata)
         {
             if (GameHelper.IsInGame())
             {
@@ -398,7 +536,7 @@ namespace ModLib.Mod
                 {
                     var e = edata.Cast<UnitUseProp>();
 
-                    OnUnitUseProp(e);
+                    OnBattleUnitUseProp(e);
                 }
                 catch (Exception ex)
                 {
@@ -407,7 +545,7 @@ namespace ModLib.Mod
             }
         }
 
-        protected virtual void _OnUnitUseSkill(ETypeData edata)
+        protected virtual void _OnBattleUnitUseSkill(ETypeData edata)
         {
             if (GameHelper.IsInGame())
             {
@@ -415,7 +553,7 @@ namespace ModLib.Mod
                 {
                     var e = edata.Cast<UnitUseSkill>();
 
-                    OnUnitUseSkill(e);
+                    OnBattleUnitUseSkill(e);
                 }
                 catch (Exception ex)
                 {
@@ -424,7 +562,7 @@ namespace ModLib.Mod
             }
         }
 
-        protected virtual void _OnUnitUseStep(ETypeData edata)
+        protected virtual void _OnBattleUnitUseStep(ETypeData edata)
         {
             if (GameHelper.IsInGame())
             {
@@ -432,7 +570,7 @@ namespace ModLib.Mod
                 {
                     var e = edata.Cast<UnitUseStep>();
 
-                    OnUnitUseStep(e);
+                    OnBattleUnitUseStep(e);
                 }
                 catch (Exception ex)
                 {
@@ -441,7 +579,7 @@ namespace ModLib.Mod
             }
         }
 
-        protected virtual void _OnUnitDie(ETypeData edata)
+        protected virtual void _OnBattleUnitDie(ETypeData edata)
         {
             if (GameHelper.IsInGame())
             {
@@ -449,7 +587,73 @@ namespace ModLib.Mod
                 {
                     var e = edata.Cast<UnitDie>();
 
-                    OnUnitDie(e);
+                    OnBattleUnitDie(e);
+                }
+                catch (Exception ex)
+                {
+                    DebugHelper.WriteLine(ex);
+                }
+            }
+        }
+
+        protected virtual void _OnBattleUnitDieEnd(ETypeData e)
+        {
+            if (GameHelper.IsInGame())
+            {
+                try
+                {
+                    OnBattleUnitDieEnd(e);
+                }
+                catch (Exception ex)
+                {
+                    DebugHelper.WriteLine(ex);
+                }
+            }
+        }
+
+        protected virtual void _OnBattleUnitAddEffectStart(ETypeData edata)
+        {
+            if (GameHelper.IsInGame())
+            {
+                try
+                {
+                    var e = edata.Cast<UnitAddEffectStart>();
+
+                    OnBattleUnitAddEffectStart(e);
+                }
+                catch (Exception ex)
+                {
+                    DebugHelper.WriteLine(ex);
+                }
+            }
+        }
+
+        protected virtual void _OnBattleUnitAddEffect(ETypeData edata)
+        {
+            if (GameHelper.IsInGame())
+            {
+                try
+                {
+                    var e = edata.Cast<UnitAddEffect>();
+
+                    OnBattleUnitAddEffect(e);
+                }
+                catch (Exception ex)
+                {
+                    DebugHelper.WriteLine(ex);
+                }
+            }
+        }
+
+        protected virtual void _OnBattleSetUnitType(ETypeData edata)
+        {
+            if (GameHelper.IsInGame())
+            {
+                try
+                {
+                    var e = edata.Cast<SetUnitType>();
+
+                    OnBattleSetUnitType(e);
                 }
                 catch (Exception ex)
                 {
@@ -541,6 +745,56 @@ namespace ModLib.Mod
             foreach (var ev in EventHelper.GetEvents("OnFrameUpdate"))
             {
                 ev.OnFrameUpdate();
+            }
+        }
+        #endregion
+
+        #region EMapType
+        protected virtual void OnPlayerEquipCloth(PlayerEquipCloth e)
+        {
+            foreach (var ev in EventHelper.GetEvents("OnPlayerEquipCloth"))
+            {
+                ev.OnPlayerEquipCloth(e);
+            }
+        }
+
+        protected virtual void OnPlayerInMonstArea(PlayerInMonstArea e)
+        {
+            foreach (var ev in EventHelper.GetEvents("OnPlayerInMonstArea"))
+            {
+                ev.OnPlayerInMonstArea(e);
+            }
+        }
+
+        protected virtual void OnPlayerRoleEscapeInMap(PlayerRoleEscapeInMap e)
+        {
+            foreach (var ev in EventHelper.GetEvents("OnPlayerRoleEscapeInMap"))
+            {
+                ev.OnPlayerRoleEscapeInMap(e);
+            }
+        }
+
+        protected virtual void OnPlayerRoleUpGradeBig(PlayerRoleUpGradeBig e)
+        {
+            foreach (var ev in EventHelper.GetEvents("OnPlayerRoleUpGradeBig"))
+            {
+                ev.OnPlayerRoleUpGradeBig(e);
+            }
+        }
+
+        protected virtual void OnUpGradeAndCloseFateFeatureUI(UpGradeAndCloseFateFeatureUI e)
+        {
+            foreach (var ev in EventHelper.GetEvents("OnUpGradeAndCloseFateFeatureUI"))
+            {
+                ev.OnUpGradeAndCloseFateFeatureUI(e);
+            }
+        }
+
+        protected virtual void OnUseHobbyProps(UseHobbyProps e)
+        {
+            foreach (var ev in EventHelper.GetEvents("OnUseHobbyProps"))
+            {
+                ev.OnUseHobbyProps(e);
             }
         }
         #endregion
@@ -655,59 +909,91 @@ namespace ModLib.Mod
         #endregion
 
         #region EBattleType
-        protected virtual void OnUnitInit(UnitInit e)
+        protected virtual void OnBattleUnitInit(UnitInit e)
         {
-            foreach (var ev in EventHelper.GetEvents("OnUnitInit"))
+            foreach (var ev in EventHelper.GetEvents("OnBattleUnitInit"))
             {
-                ev.OnUnitInit(e);
+                ev.OnBattleUnitInit(e);
             }
         }
 
-        protected virtual void OnUnitHit(UnitHit e)
+        protected virtual void OnBattleUnitHit(UnitHit e)
         {
-            foreach (var ev in EventHelper.GetEvents("OnUnitHit"))
+            foreach (var ev in EventHelper.GetEvents("OnBattleUnitHit"))
             {
-                ev.OnUnitHit(e);
+                ev.OnBattleUnitHit(e);
             }
         }
 
-        protected virtual void OnUnitHitDynIntHandler(UnitHitDynIntHandler e)
+        protected virtual void OnBattleUnitHitDynIntHandler(UnitHitDynIntHandler e)
         {
-            foreach (var ev in EventHelper.GetEvents("OnUnitHitDynIntHandler"))
+            foreach (var ev in EventHelper.GetEvents("OnBattleUnitHitDynIntHandler"))
             {
-                ev.OnUnitHitDynIntHandler(e);
+                ev.OnBattleUnitHitDynIntHandler(e);
             }
         }
 
-        protected virtual void OnUnitUseProp(UnitUseProp e)
+        protected virtual void OnBattleUnitUseProp(UnitUseProp e)
         {
-            foreach (var ev in EventHelper.GetEvents("OnUnitUseProp"))
+            foreach (var ev in EventHelper.GetEvents("OnBattleUnitUseProp"))
             {
-                ev.OnUnitUseProp(e);
+                ev.OnBattleUnitUseProp(e);
             }
         }
 
-        protected virtual void OnUnitUseSkill(UnitUseSkill e)
+        protected virtual void OnBattleUnitUseSkill(UnitUseSkill e)
         {
-            foreach (var ev in EventHelper.GetEvents("OnUnitUseSkill"))
+            foreach (var ev in EventHelper.GetEvents("OnBattleUnitUseSkill"))
             {
-                ev.OnUnitUseSkill(e);
+                ev.OnBattleUnitUseSkill(e);
             }
         }
 
-        protected virtual void OnUnitUseStep(UnitUseStep e)
+        protected virtual void OnBattleUnitUseStep(UnitUseStep e)
         {
-            foreach (var ev in EventHelper.GetEvents("OnUnitUseStep"))
+            foreach (var ev in EventHelper.GetEvents("OnBattleUnitUseStep"))
             {
-                ev.OnUnitUseStep(e);
+                ev.OnBattleUnitUseStep(e);
             }
         }
 
-        protected virtual void OnUnitDie(UnitDie e)
+        protected virtual void OnBattleUnitDie(UnitDie e)
         {
-            foreach (var ev in EventHelper.GetEvents("OnUnitDie"))
+            foreach (var ev in EventHelper.GetEvents("OnBattleUnitDie"))
             {
-                ev.OnUnitDie(e);
+                ev.OnBattleUnitDie(e);
+            }
+        }
+
+        protected virtual void OnBattleUnitDieEnd(ETypeData e)
+        {
+            foreach (var ev in EventHelper.GetEvents("OnBattleUnitDieEnd"))
+            {
+                ev.OnBattleUnitDieEnd(e);
+            }
+        }
+
+        protected virtual void OnBattleUnitAddEffectStart(UnitAddEffectStart e)
+        {
+            foreach (var ev in EventHelper.GetEvents("OnBattleUnitAddEffectStart"))
+            {
+                ev.OnBattleUnitAddEffectStart(e);
+            }
+        }
+
+        protected virtual void OnBattleUnitAddEffect(UnitAddEffect e)
+        {
+            foreach (var ev in EventHelper.GetEvents("OnBattleUnitAddEffect"))
+            {
+                ev.OnBattleUnitAddEffect(e);
+            }
+        }
+
+        protected virtual void OnBattleSetUnitType(SetUnitType e)
+        {
+            foreach (var ev in EventHelper.GetEvents("OnBattleSetUnitType"))
+            {
+                ev.OnBattleSetUnitType(e);
             }
         }
 
