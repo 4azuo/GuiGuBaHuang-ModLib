@@ -33,10 +33,7 @@ namespace MOD_JhUKQ7.Mod
 
                     UpProp();
 
-                    var curExp = player.GetProperty<int>(UnitPropertyEnum.Exp);
-                    var nexExp = g.conf.roleGrade.GetNextGradeItem(player.GetProperty<int>(UnitPropertyEnum.GradeID)).exp;
-                    if (curExp == nexExp)
-                        UpGrade();
+                    UpGrade();
                 }
             }
             else
@@ -52,33 +49,36 @@ namespace MOD_JhUKQ7.Mod
         public void UpProp()
         {
             var stt = AnimaIncPropEnum.GetAllEnums<AnimaIncPropEnum>().OrderByDescending(x => x.Value).FirstOrDefault(x => CurAnima > int.Parse(x.Value));
-            if (stt != null )
-            {
-                stt.Cal(g.world.playerUnit);
-            }
+            stt?.Cal(g.world.playerUnit);
         }
 
         public void UpGrade()
         {
+            var player = g.world.playerUnit;
+            var curExp = player.GetProperty<int>(UnitPropertyEnum.Exp);
+            var needExp = g.conf.roleGrade.GetNextGradeItem(player.GetProperty<int>(UnitPropertyEnum.GradeID)).exp - g.conf.roleGrade.GetGradeItemInExp(curExp).exp;
             var settings = AnimaUpGradeEnum.GetAllEnums<AnimaUpGradeEnum>().FirstOrDefault(x => x.Grade.Value.Parse<int>() == g.world.playerUnit.data.unitData.propertyData.gradeID);
-            if (settings != null && CurAnima > settings.MinAnima)
+            if (settings != null && curExp >= needExp && CurAnima > settings.MinAnima)
             {
                 var r = CommonTool.Random(0.00f, 100.00f);
                 if (r <= (((CurAnima - settings.MinAnima) / 100) * settings.RatioPer100Anima))
                 {
-                    var player = g.world.playerUnit;
-                    var playerData = player.data.unitData;
-
-                    g.world.playerUnit.data.unitData.propertyData.gradeID = settings.NextGrade.Value.Parse<int>();
-                    var playerUnitType = EventHelper.GetEvent<UnitTypeEvent>(ModConst.UNIT_TYPE_EVENT_KEY);
-                    for (int i = settings.MinAnima, j = 1; i < CurAnima; i += 100 * j++)
+                    if (DramaTool.OpenDrama(480010100))
                     {
-                        playerUnitType.AddProp(player);
-                    }
+                        var playerData = player.data.unitData;
 
-                    CurAnima = 0;
-                    player.SetProperty(UnitPropertyEnum.Mp, 0);
-                    playerData.pointGridData.SetAnimaValue(CurAnima);
+                        player.SetProperty(UnitPropertyEnum.GradeID, settings.NextGrade.Value.Parse<int>());
+                        player.SetProperty<int>(UnitPropertyEnum.Exp, 0);
+                        var playerUnitType = EventHelper.GetEvent<UnitTypeEvent>(ModConst.UNIT_TYPE_EVENT_KEY);
+                        for (int i = settings.MinAnima, j = 1; i < CurAnima; i += 100 * j++)
+                        {
+                            playerUnitType.AddProp(player);
+                        }
+
+                        CurAnima = 0;
+                        player.SetProperty(UnitPropertyEnum.Mp, 0);
+                        playerData.pointGridData.SetAnimaValue(CurAnima);
+                    }
                 }
             }
         }
