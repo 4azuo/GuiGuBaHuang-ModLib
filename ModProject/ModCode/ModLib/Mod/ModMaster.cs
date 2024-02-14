@@ -68,6 +68,9 @@ namespace ModLib.Mod
             var callUnitHit = (Il2CppSystem.Action<ETypeData>)_OnUnitHit;
             g.events.On(EBattleType.UnitHit, callUnitHit);
 
+            var callUnitHitDynIntHandler = (Il2CppSystem.Action<ETypeData>)_OnUnitHitDynIntHandler;
+            g.events.On(EBattleType.UnitHitDynIntHandler, callUnitHitDynIntHandler);
+
             var callUnitUseProp = (Il2CppSystem.Action<ETypeData>)_OnUnitUseProp;
             g.events.On(EBattleType.UnitUseProp, callUnitUseProp);
 
@@ -150,7 +153,7 @@ namespace ModLib.Mod
         #region EGameType
         protected virtual void _OnOpenUIStart(ETypeData edata)
         {
-            var e = new OpenUIStart(edata.Pointer);
+            var e = edata.Cast<OpenUIStart>();
 
             if (!initMod)
             {
@@ -218,7 +221,7 @@ namespace ModLib.Mod
         {
             try
             {
-                var e = new OpenUIEnd(edata.Pointer);
+                var e = edata.Cast<OpenUIEnd>();
 
                 OnOpenUIEnd(e);
             }
@@ -232,7 +235,7 @@ namespace ModLib.Mod
         {
             try
             {
-                var e = new CloseUIStart(edata.Pointer);
+                var e = edata.Cast<CloseUIStart>();
 
                 OnCloseUIStart(e);
             }
@@ -246,7 +249,7 @@ namespace ModLib.Mod
         {
             try
             {
-                var e = new CloseUIEnd(edata.Pointer);
+                var e = edata.Cast<CloseUIEnd>();
 
                 OnCloseUIEnd(e);
             }
@@ -277,7 +280,7 @@ namespace ModLib.Mod
             {
                 try
                 {
-                    var e = new LoadScene(edata.Pointer);
+                    var e = edata.Cast<LoadScene>();
 
                     OnLoadScene(e);
                 }
@@ -342,7 +345,7 @@ namespace ModLib.Mod
             {
                 try
                 {
-                    var e = new UnitInit(edata.Pointer);
+                    var e = edata.Cast<UnitInit>();
 
                     OnUnitInit(e);
                 }
@@ -359,9 +362,26 @@ namespace ModLib.Mod
             {
                 try
                 {
-                    var e = new UnitHit(edata.Pointer);
+                    var e = edata.Cast<UnitHit>();
 
                     OnUnitHit(e);
+                }
+                catch (Exception ex)
+                {
+                    DebugHelper.WriteLine(ex);
+                }
+            }
+        }
+
+        protected virtual void _OnUnitHitDynIntHandler(ETypeData edata)
+        {
+            if (GameHelper.IsInGame())
+            {
+                try
+                {
+                    var e = edata.Cast<UnitHitDynIntHandler>();
+
+                    OnUnitHitDynIntHandler(e);
                 }
                 catch (Exception ex)
                 {
@@ -376,7 +396,7 @@ namespace ModLib.Mod
             {
                 try
                 {
-                    var e = new UnitUseProp(edata.Pointer);
+                    var e = edata.Cast<UnitUseProp>();
 
                     OnUnitUseProp(e);
                 }
@@ -393,7 +413,7 @@ namespace ModLib.Mod
             {
                 try
                 {
-                    var e = new UnitUseSkill(edata.Pointer);
+                    var e = edata.Cast<UnitUseSkill>();
 
                     OnUnitUseSkill(e);
                 }
@@ -410,7 +430,7 @@ namespace ModLib.Mod
             {
                 try
                 {
-                    var e = new UnitUseStep(edata.Pointer);
+                    var e = edata.Cast<UnitUseStep>();
 
                     OnUnitUseStep(e);
                 }
@@ -427,7 +447,7 @@ namespace ModLib.Mod
             {
                 try
                 {
-                    var e = new UnitDie(edata.Pointer);
+                    var e = edata.Cast<UnitDie>();
 
                     OnUnitDie(e);
                 }
@@ -459,7 +479,7 @@ namespace ModLib.Mod
             {
                 try
                 {
-                    var e = new BattleEnd(edata.Pointer);
+                    var e = edata.Cast<BattleEnd>();
 
                     OnBattleEnd(e);
                 }
@@ -648,6 +668,14 @@ namespace ModLib.Mod
             foreach (var ev in EventHelper.GetEvents("OnUnitHit"))
             {
                 ev.OnUnitHit(e);
+            }
+        }
+
+        protected virtual void OnUnitHitDynIntHandler(UnitHitDynIntHandler e)
+        {
+            foreach (var ev in EventHelper.GetEvents("OnUnitHitDynIntHandler"))
+            {
+                ev.OnUnitHitDynIntHandler(e);
             }
         }
 
