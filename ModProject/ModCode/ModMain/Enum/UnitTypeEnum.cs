@@ -12,10 +12,10 @@ namespace MOD_JhUKQ7.Enum
         {
             PropIncRatio = new List<MultiValue>()
             {
-                MultiValue.Create(UnitPropertyEnum.Attack, MathLogicOptions.Multi, 0.004, 1),
+                MultiValue.Create(UnitPropertyEnum.Attack, MathLogicOptions.Multi, 0.003, 1),
                 MultiValue.Create(UnitPropertyEnum.Defense, MathLogicOptions.Multi, 0.001, 0),
-                MultiValue.Create(UnitPropertyEnum.HpMax, MathLogicOptions.Multi, 0.009, 1),
-                MultiValue.Create(UnitPropertyEnum.MpMax, MathLogicOptions.Multi, 0.003, 0),
+                MultiValue.Create(UnitPropertyEnum.HpMax, MathLogicOptions.Multi, 0.005, 1),
+                MultiValue.Create(UnitPropertyEnum.MpMax, MathLogicOptions.Multi, 0.002, 0),
                 MultiValue.Create(UnitPropertyEnum.MoveSpeed, MathLogicOptions.Multi, 0, 0),
             }
         };
@@ -23,10 +23,10 @@ namespace MOD_JhUKQ7.Enum
         {
             PropIncRatio = new List<MultiValue>()
             {
-                MultiValue.Create(UnitPropertyEnum.Attack, MathLogicOptions.Multi, 0.008, 1),
-                MultiValue.Create(UnitPropertyEnum.Defense, MathLogicOptions.Multi, 0.002, 0),
-                MultiValue.Create(UnitPropertyEnum.HpMax, MathLogicOptions.Multi, 0.01, 1),
-                MultiValue.Create(UnitPropertyEnum.MpMax, MathLogicOptions.Multi, 0.006, 0),
+                MultiValue.Create(UnitPropertyEnum.Attack, MathLogicOptions.Multi, 0.004, 1),
+                MultiValue.Create(UnitPropertyEnum.Defense, MathLogicOptions.Multi, 0.001, 0),
+                MultiValue.Create(UnitPropertyEnum.HpMax, MathLogicOptions.Multi, 0.005, 1),
+                MultiValue.Create(UnitPropertyEnum.MpMax, MathLogicOptions.Multi, 0.002, 0),
                 MultiValue.Create(UnitPropertyEnum.MoveSpeed, MathLogicOptions.Multi, 0, 0),
             }
         };
@@ -34,10 +34,10 @@ namespace MOD_JhUKQ7.Enum
         {
             PropIncRatio = new List<MultiValue>()
             {
-                MultiValue.Create(UnitPropertyEnum.Attack, MathLogicOptions.Multi, 0.015, 1),
+                MultiValue.Create(UnitPropertyEnum.Attack, MathLogicOptions.Multi, 0.008, 1),
                 MultiValue.Create(UnitPropertyEnum.Defense, MathLogicOptions.Multi, 0.001, 0),
-                MultiValue.Create(UnitPropertyEnum.HpMax, MathLogicOptions.Multi, 0.005, 1),
-                MultiValue.Create(UnitPropertyEnum.MpMax, MathLogicOptions.Multi, 0.003, 0),
+                MultiValue.Create(UnitPropertyEnum.HpMax, MathLogicOptions.Multi, 0.004, 1),
+                MultiValue.Create(UnitPropertyEnum.MpMax, MathLogicOptions.Multi, 0.001, 0),
                 MultiValue.Create(UnitPropertyEnum.MoveSpeed, MathLogicOptions.Multi, 0, 0),
             }
         };
@@ -45,9 +45,9 @@ namespace MOD_JhUKQ7.Enum
         {
             PropIncRatio = new List<MultiValue>()
             {
-                MultiValue.Create(UnitPropertyEnum.Attack, MathLogicOptions.Multi, 0.013, 1),
+                MultiValue.Create(UnitPropertyEnum.Attack, MathLogicOptions.Multi, 0.007, 1),
                 MultiValue.Create(UnitPropertyEnum.Defense, MathLogicOptions.Multi, 0, 0),
-                MultiValue.Create(UnitPropertyEnum.HpMax, MathLogicOptions.Multi, 0, 0),
+                MultiValue.Create(UnitPropertyEnum.HpMax, MathLogicOptions.Multi, 0.001, 0),
                 MultiValue.Create(UnitPropertyEnum.MpMax, MathLogicOptions.Multi, 0, 0),
                 MultiValue.Create(UnitPropertyEnum.MoveSpeed, MathLogicOptions.Multi, 0, 1),
             }
@@ -56,10 +56,10 @@ namespace MOD_JhUKQ7.Enum
         {
             PropIncRatio = new List<MultiValue>()
             {
-                MultiValue.Create(UnitPropertyEnum.Attack, MathLogicOptions.Multi, 0.02, 1),
+                MultiValue.Create(UnitPropertyEnum.Attack, MathLogicOptions.Multi, 0.01, 1),
                 MultiValue.Create(UnitPropertyEnum.Defense, MathLogicOptions.Multi, 0, 0),
                 MultiValue.Create(UnitPropertyEnum.HpMax, MathLogicOptions.Multi, 0.004, 1),
-                MultiValue.Create(UnitPropertyEnum.MpMax, MathLogicOptions.Multi, 0.005, 0),
+                MultiValue.Create(UnitPropertyEnum.MpMax, MathLogicOptions.Multi, 0.004, 0),
                 MultiValue.Create(UnitPropertyEnum.MoveSpeed, MathLogicOptions.Multi, 0, 0),
             }
         };
@@ -67,7 +67,7 @@ namespace MOD_JhUKQ7.Enum
         {
             PropIncRatio = new List<MultiValue>()
             {
-                MultiValue.Create(UnitPropertyEnum.Attack, MathLogicOptions.Multi, 0.03, 1),
+                MultiValue.Create(UnitPropertyEnum.Attack, MathLogicOptions.Multi, 0.015, 1),
                 MultiValue.Create(UnitPropertyEnum.Defense, MathLogicOptions.Multi, 0, 0),
                 MultiValue.Create(UnitPropertyEnum.HpMax, MathLogicOptions.Multi, 0.001, 1),
                 MultiValue.Create(UnitPropertyEnum.MpMax, MathLogicOptions.Multi, 0.001, 0),
@@ -78,9 +78,9 @@ namespace MOD_JhUKQ7.Enum
         {
             PropIncRatio = new List<MultiValue>()
             {
-                MultiValue.Create(UnitPropertyEnum.Attack, MathLogicOptions.Multi, 0.01, 1),
-                MultiValue.Create(UnitPropertyEnum.Defense, MathLogicOptions.Multi, 0.005, 0),
-                MultiValue.Create(UnitPropertyEnum.HpMax, MathLogicOptions.Multi, 0.01, 1),
+                MultiValue.Create(UnitPropertyEnum.Attack, MathLogicOptions.Multi, 0.006, 1),
+                MultiValue.Create(UnitPropertyEnum.Defense, MathLogicOptions.Multi, 0.006, 0),
+                MultiValue.Create(UnitPropertyEnum.HpMax, MathLogicOptions.Multi, 0.008, 1),
                 MultiValue.Create(UnitPropertyEnum.MpMax, MathLogicOptions.Multi, 0, 0),
                 MultiValue.Create(UnitPropertyEnum.MoveSpeed, MathLogicOptions.Multi, 0, 0),
             }
@@ -89,10 +89,10 @@ namespace MOD_JhUKQ7.Enum
         {
             PropIncRatio = new List<MultiValue>()
             {
-                MultiValue.Create(UnitPropertyEnum.Attack, MathLogicOptions.Multi, 0.01, 1),
+                MultiValue.Create(UnitPropertyEnum.Attack, MathLogicOptions.Multi, 0.007, 1),
                 MultiValue.Create(UnitPropertyEnum.Defense, MathLogicOptions.Multi, 0.001, 0),
-                MultiValue.Create(UnitPropertyEnum.HpMax, MathLogicOptions.Multi, 0.01, 1),
-                MultiValue.Create(UnitPropertyEnum.MpMax, MathLogicOptions.Multi, 0.01, 1),
+                MultiValue.Create(UnitPropertyEnum.HpMax, MathLogicOptions.Multi, 0.005, 1),
+                MultiValue.Create(UnitPropertyEnum.MpMax, MathLogicOptions.Multi, 0.003, 1),
                 MultiValue.Create(UnitPropertyEnum.MoveSpeed, MathLogicOptions.Multi, 0, 0),
             }
         };
@@ -100,9 +100,9 @@ namespace MOD_JhUKQ7.Enum
         {
             PropIncRatio = new List<MultiValue>()
             {
-                MultiValue.Create(UnitPropertyEnum.Attack, MathLogicOptions.Multi, 0.012, 1),
+                MultiValue.Create(UnitPropertyEnum.Attack, MathLogicOptions.Multi, 0.008, 1),
                 MultiValue.Create(UnitPropertyEnum.Defense, MathLogicOptions.Multi, 0.002, 0),
-                MultiValue.Create(UnitPropertyEnum.HpMax, MathLogicOptions.Multi, 0.015, 1),
+                MultiValue.Create(UnitPropertyEnum.HpMax, MathLogicOptions.Multi, 0.007, 1),
                 MultiValue.Create(UnitPropertyEnum.MpMax, MathLogicOptions.Multi, 0, 0),
                 MultiValue.Create(UnitPropertyEnum.MoveSpeed, MathLogicOptions.Multi, 0, 0),
             }
