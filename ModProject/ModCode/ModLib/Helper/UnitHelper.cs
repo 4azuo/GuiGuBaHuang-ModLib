@@ -95,4 +95,14 @@ public static class UnitHelper
     {
         SetProperty<T>(wunit, propType, MathLogicOptions.Plus.Exe(wunit.GetProperty<T>(propType).Parse<float>(), addValue.Parse<float>()).Parse<T>());
     }
+
+    public static DynInt GetDynProperty(this WorldUnitBase wunit, UnitDynPropertyEnum propType)
+    {
+        return propType.Get(wunit.data.dynUnitData);
+    }
+
+    public static void SetDynProperty(this WorldUnitBase wunit, UnitDynPropertyEnum propType, DynInt newValue)
+    {
+        propType.Set(wunit.data.dynUnitData, newValue);
+    }
 }
