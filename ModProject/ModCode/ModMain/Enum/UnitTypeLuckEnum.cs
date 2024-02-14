@@ -12,10 +12,6 @@ namespace MOD_JhUKQ7.Enum
         public static UnitTypeLuckEnum ProDef { get; } = new UnitTypeLuckEnum(420010500);
         public static UnitTypeLuckEnum Angel { get; } = new UnitTypeLuckEnum(420010600);
         public static UnitTypeLuckEnum Evil { get; } = new UnitTypeLuckEnum(420010700);
-        public static UnitTypeLuckEnum SkillSpeedUp { get; } = new UnitTypeLuckEnum(999700116);
-        public static UnitTypeLuckEnum EnhanceSpell { get; } = new UnitTypeLuckEnum(999700113);
-        public static UnitTypeLuckEnum AgilityUp { get; } = new UnitTypeLuckEnum(999200121);
-        public static UnitTypeLuckEnum BloodPower { get; } = new UnitTypeLuckEnum(999700028);
 
         private UnitTypeLuckEnum(int id) : base(id.ToString())
         {

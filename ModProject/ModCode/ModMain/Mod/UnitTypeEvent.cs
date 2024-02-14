@@ -20,19 +20,6 @@ namespace MOD_JhUKQ7.Mod
                 //add luck
                 if (!UnitTypeDic.ContainsKey(wunit.GetUnitId()))
                 {
-                    if (wunit.IsPlayer())
-                    {
-                        wunit.AddLuck(UnitTypeLuckEnum.SkillSpeedUp.Value.Parse<int>());
-                        wunit.AddLuck(UnitTypeLuckEnum.EnhanceSpell.Value.Parse<int>());
-                        wunit.AddLuck(UnitTypeLuckEnum.AgilityUp.Value.Parse<int>());
-                    }
-                    else
-                    {
-                        wunit.AddLuck(UnitTypeLuckEnum.SkillSpeedUp.Value.Parse<int>());
-                        wunit.AddLuck(UnitTypeLuckEnum.EnhanceSpell.Value.Parse<int>());
-                        wunit.AddLuck(UnitTypeLuckEnum.AgilityUp.Value.Parse<int>());
-                        wunit.AddLuck(UnitTypeLuckEnum.BloodPower.Value.Parse<int>());
-                    }
                     UnitTypeDic.Add(wunit.GetUnitId(), AddRandomUnitType(wunit));
                 }
 
