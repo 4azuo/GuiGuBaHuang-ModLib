@@ -1,0 +1,72 @@
+[
+	{
+		"id": "420010100",
+		"key": "unitType420010100",
+		"en|ch|tc": "Power Up",
+	},
+	{
+		"id": "420010200",
+		"key": "unitType420010200",
+		"en|ch|tc": "Speed Up",
+	},
+	{
+		"id": "420010300",
+		"key": "unitType420010300",
+		"en|ch|tc": "Taoist",
+	},
+	{
+		"id": "420010400",
+		"key": "unitType420010400",
+		"en|ch|tc": "Pro Atk",
+	},
+	{
+		"id": "420010500",
+		"key": "unitType420010500",
+		"en|ch|tc": "Pro Def",
+	},
+	{
+		"id": "420010600",
+		"key": "unitType420010600",
+		"en|ch|tc": "Angel",
+	},
+	{
+		"id": "420010700",
+		"key": "unitType420010700",
+		"en|ch|tc": "Evil",
+	},
+	{
+		"id": "421010100",
+		"key": "unitType420010100desc",
+		"en|ch|tc": "Atk +10%, Hp +20%",
+	},
+	{
+		"id": "421010200",
+		"key": "unitType420010200desc",
+		"en|ch|tc": "Agi +30%",
+	},
+	{
+		"id": "421010300",
+		"key": "unitType420010300desc",
+		"en|ch|tc": "Atk +8%, Hp +15%, Mp +10%",
+	},
+	{
+		"id": "421010400",
+		"key": "unitType420010400desc",
+		"en|ch|tc": "Atk +30%",
+	},
+	{
+		"id": "421010500",
+		"key": "unitType420010500desc",
+		"en|ch|tc": "Hp +25%, Def +5%",
+	},
+	{
+		"id": "421010600",
+		"key": "unitType420010600desc",
+		"en|ch|tc": "Atk +50%, Agi +10%, Hp +20%, Mp +10%, Righteous +100%, Demonic -100%",
+	},
+	{
+		"id": "421010700",
+		"key": "unitType420010700desc",
+		"en|ch|tc": "Atk +30%, Def +10%, Hp +100%, Righteous -100%, Demonic -30%",
+	},
+]
