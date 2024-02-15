@@ -108,7 +108,7 @@ public static class UnitHelper
 
     public static int GetMaxExpCurrentGrade(this WorldUnitBase wunit)
     {
-        return g.conf.roleGrade.GetNextGradeItem(wunit.GetProperty<int>(UnitPropertyEnum.GradeID)).exp - g.conf.roleGrade.GetItem(wunit.GetProperty<int>(UnitPropertyEnum.GradeID)).exp;
+        return g.conf.roleGrade.GetNextGradeItem(wunit.GetProperty<int>(UnitPropertyEnum.GradeID)).exp;
     }
 
     public static int GetMinExpCurrentGrade(this WorldUnitBase wunit)
