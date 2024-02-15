@@ -38,7 +38,9 @@ xcopy "$(ProjectDir)\bin\Release\*.dll" "$(ProjectDir)\..\..\..\debug\Mod_nE7UL2
 xcopy "$(ProjectDir)\..\..\ModConf\*.json" "$(ProjectDir)\..\..\..\debug\Mod_nE7UL2\ModConf\" /y /i
 `
 
-Add BuildEvent for copying dll to "debug" folder.
+Add BuildEvent for copying dll to "debug" folder. 
+
+※"nE7UL2" = mod-id
 
 
 
