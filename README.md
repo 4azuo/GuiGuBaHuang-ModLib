@@ -32,12 +32,10 @@ Add BuildEvent for copying dll to your project.
 
 `
 rd "$(ProjectDir)obj" /s /q
-rd "$(ProjectDir)\..\..\..\debug\Mod_JhUKQ7\ModCode\dll" /s /q
-rd "$(ProjectDir)\..\..\..\debug\Mod_JhUKQ7\ModConf" /s /q
-rd "$(ProjectDir)\..\..\..\debug\Mod_JhUKQ7\ModExcel" /s /q
-xcopy "$(ProjectDir)\bin\Release\*.dll" "$(ProjectDir)\..\..\..\debug\Mod_JhUKQ7\ModCode\dll\" /y /i
-xcopy "$(ProjectDir)\..\..\ModConf\*.json" "$(ProjectDir)\..\..\..\debug\Mod_JhUKQ7\ModConf\" /y /i
-xcopy "$(ProjectDir)\..\..\ModExcel\*.xlsx" "$(ProjectDir)\..\..\..\debug\Mod_JhUKQ7\ModExcel\" /y /i
+rd "$(ProjectDir)\..\..\..\debug\Mod_nE7UL2\ModCode\dll" /s /q
+rd "$(ProjectDir)\..\..\..\debug\Mod_nE7UL2\ModConf" /s /q
+xcopy "$(ProjectDir)\bin\Release\*.dll" "$(ProjectDir)\..\..\..\debug\Mod_nE7UL2\ModCode\dll\" /y /i
+xcopy "$(ProjectDir)\..\..\ModConf\*.json" "$(ProjectDir)\..\..\..\debug\Mod_nE7UL2\ModConf\" /y /i
 `
 
 Add BuildEvent for copying dll to "debug" folder.
