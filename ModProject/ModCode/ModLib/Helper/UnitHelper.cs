@@ -106,8 +106,18 @@ public static class UnitHelper
         propType.Set(wunit.data.dynUnitData, newValue);
     }
 
-    public static int GetNeedExpToLevelUp(this WorldUnitBase wunit)
+    public static int GetMaxExpCurrentGrade(this WorldUnitBase wunit)
     {
         return g.conf.roleGrade.GetNextGradeItem(wunit.GetProperty<int>(UnitPropertyEnum.GradeID)).exp - g.conf.roleGrade.GetItem(wunit.GetProperty<int>(UnitPropertyEnum.GradeID)).exp;
+    }
+
+    public static int GetMinExpCurrentGrade(this WorldUnitBase wunit)
+    {
+        return g.conf.roleGrade.GetItem(wunit.GetProperty<int>(UnitPropertyEnum.GradeID)).exp;
+    }
+
+    public static int GetNeedExpToLevelUp(this WorldUnitBase wunit)
+    {
+        return wunit.GetProperty<int>(UnitPropertyEnum.Exp) - g.conf.roleGrade.GetItem(wunit.GetProperty<int>(UnitPropertyEnum.GradeID)).exp;
     }
 }

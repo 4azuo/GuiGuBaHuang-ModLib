@@ -134,16 +134,17 @@ namespace MOD_JhUKQ7.Mod
                 var player = g.world.playerUnit;
                 if (IsPlayerDie)
                 {
+                    var minExp = player.GetMinExpCurrentGrade();
                     player.AddProperty<int>(UnitPropertyEnum.Life, -(Math.Max(PlayerRecvDamage / 1000, 1)));
-                    player.SetProperty<int>(UnitPropertyEnum.Exp, 0);
+                    player.SetProperty<int>(UnitPropertyEnum.Exp, minExp);
                     DebugHelper.WriteLine($"BattleRewardEvent: player death");
                 }
                 else if (e.isWin)
                 {
-                    var needExp = player.GetNeedExpToLevelUp();
+                    var maxExp = player.GetMaxExpCurrentGrade();
                     var rewardExp1 = Math.Max(PlayerDealtDamage / 100, 1);
                     var rewardExp2 = Math.Max(PlayerRecvDamage / 10, 1);
-                    player.SetProperty<int>(UnitPropertyEnum.Exp, Math.Min(player.GetProperty<int>(UnitPropertyEnum.Exp) + rewardExp1 + rewardExp2, needExp));
+                    player.SetProperty<int>(UnitPropertyEnum.Exp, Math.Min(player.GetProperty<int>(UnitPropertyEnum.Exp) + rewardExp1 + rewardExp2, maxExp));
                     DebugHelper.WriteLine($"BattleRewardEvent: +{rewardExp1 + rewardExp2}exp");
                 }
                 IsEnd = true;
