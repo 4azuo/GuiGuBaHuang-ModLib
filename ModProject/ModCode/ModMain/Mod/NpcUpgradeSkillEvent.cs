@@ -62,19 +62,19 @@ namespace MOD_JhUKQ7.Mod
         {
             foreach (var p in wunit.data.unitData.GetActionMartial(martialType))
             {
-                AddMartialExp(wunit, martialType, p);
+                //AddMartialExp(wunit, martialType, p);
                 UpgradeMartialPrefix(wunit, p);
             }
         }
 
-        public void AddMartialExp(WorldUnitBase wunit, MartialType martialType, DataUnit.ActionMartialData actMartialData)
-        {
-            var insight = wunit.GetProperty<int>(UnitPropertyEnum.Talent);
-            var grade = wunit.GetProperty<int>(UnitPropertyEnum.GradeID);
-            var mExp = (int)((insight * grade) * EXP_RATIO[martialType]);
+        //public void AddMartialExp(WorldUnitBase wunit, MartialType martialType, DataUnit.ActionMartialData actMartialData)
+        //{
+        //    var insight = wunit.GetProperty<int>(UnitPropertyEnum.Talent);
+        //    var grade = wunit.GetProperty<int>(UnitPropertyEnum.GradeID);
+        //    var mExp = (int)((insight * grade) * EXP_RATIO[martialType]);
 
-            actMartialData.exp += mExp;
-        }
+        //    actMartialData.exp += mExp;
+        //}
 
         public void UpgradeMartialPrefix(WorldUnitBase wunit, DataUnit.ActionMartialData actMartialData)
         {

@@ -9,8 +9,6 @@ namespace MOD_JhUKQ7.Mod
     [Cache(ModConst.MONST_STRONGER_EVENT_KEY)]
     public sealed class MonstStrongerEvent : ModEvent
     {
-        public override int OrderIndex => 1;
-
         public static readonly IDictionary<MonstType, float> GROW_RATIO = new Dictionary<MonstType, float>
         {
             [MonstType.Common] = 0.0008f,
