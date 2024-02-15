@@ -8,8 +8,8 @@
     <ProjectGuid>{3591496F-6A4C-477A-A04C-177FB616E439}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>MOD_JhUKQ7</RootNamespace>
-    <AssemblyName>MOD_JhUKQ7</AssemblyName>
+    <RootNamespace>MOD_nE7UL2</RootNamespace>
+    <AssemblyName>MOD_nE7UL2</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <Deterministic>true</Deterministic>
@@ -680,12 +680,10 @@
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
     <PostBuildEvent>rd "$(ProjectDir)obj" /s /q
-rd "$(ProjectDir)\..\..\..\debug\Mod_JhUKQ7\ModCode\dll" /s /q
-rd "$(ProjectDir)\..\..\..\debug\Mod_JhUKQ7\ModConf" /s /q
-rd "$(ProjectDir)\..\..\..\debug\Mod_JhUKQ7\ModExcel" /s /q
-xcopy "$(ProjectDir)\bin\Release\*.dll" "$(ProjectDir)\..\..\..\debug\Mod_JhUKQ7\ModCode\dll\" /y /i
-xcopy "$(ProjectDir)\..\..\ModConf\*.json" "$(ProjectDir)\..\..\..\debug\Mod_JhUKQ7\ModConf\" /y /i
-xcopy "$(ProjectDir)\..\..\ModExcel\*.xlsx" "$(ProjectDir)\..\..\..\debug\Mod_JhUKQ7\ModExcel\" /y /i</PostBuildEvent>
+rd "$(ProjectDir)\..\..\..\debug\Mod_nE7UL2\ModCode\dll" /s /q
+rd "$(ProjectDir)\..\..\..\debug\Mod_nE7UL2\ModConf" /s /q
+xcopy "$(ProjectDir)\bin\Release\*.dll" "$(ProjectDir)\..\..\..\debug\Mod_nE7UL2\ModCode\dll\" /y /i
+xcopy "$(ProjectDir)\..\..\ModConf\*.json" "$(ProjectDir)\..\..\..\debug\Mod_nE7UL2\ModConf\" /y /i</PostBuildEvent>
   </PropertyGroup>
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
     <PropertyGroup>

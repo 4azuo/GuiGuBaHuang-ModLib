@@ -1,5 +1,5 @@
 ﻿using EBattleTypeData;
-using MOD_JhUKQ7.Const;
+using MOD_nE7UL2.Const;
 using ModLib.Enum;
 using ModLib.Mod;
 using Newtonsoft.Json;
@@ -7,7 +7,7 @@ using System;
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace MOD_JhUKQ7.Mod
+namespace MOD_nE7UL2.Mod
 {
     [Cache(ModConst.BATTLE_REWARD_EVENT_KEY)]
     public sealed class BattleRewardEvent : ModEvent

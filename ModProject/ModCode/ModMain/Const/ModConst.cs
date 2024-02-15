@@ -1,4 +1,4 @@
-﻿namespace MOD_JhUKQ7.Const
+﻿namespace MOD_nE7UL2.Const
 {
     public static class ModConst
     {

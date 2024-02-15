@@ -1,7 +1,7 @@
 ﻿using ModLib.Object;
 using System.Management.Instrumentation;
 
-namespace MOD_JhUKQ7.Enum
+namespace MOD_nE7UL2.Enum
 {
     public class UnitTypeLuckEnum : EnumObject
     {

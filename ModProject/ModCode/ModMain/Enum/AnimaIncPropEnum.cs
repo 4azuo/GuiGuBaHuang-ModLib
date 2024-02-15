@@ -3,7 +3,7 @@ using ModLib.Object;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace MOD_JhUKQ7.Enum
+namespace MOD_nE7UL2.Enum
 {
     public class AnimaIncPropEnum : EnumObject
     {
