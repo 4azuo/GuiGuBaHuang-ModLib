@@ -1,13 +1,13 @@
 ﻿using ModLib.Mod;
 using System.Linq;
 
-namespace MOD_JhUKQ7
+namespace MOD_nE7UL2
 {
     public sealed class ModMain : ModMaster
     {
-        public override string ModName => "MOD_JhUKQ7";
+        public override string ModName => "MOD_nE7UL2";
 
-        public override string ModId => "JhUKQ7";
+        public override string ModId => "nE7UL2";
 
         protected override void OnInitConf()
         {

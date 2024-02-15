@@ -1,11 +1,11 @@
-﻿using MOD_JhUKQ7.Const;
-using MOD_JhUKQ7.Enum;
+﻿using MOD_nE7UL2.Const;
+using MOD_nE7UL2.Enum;
 using ModLib.Enum;
 using ModLib.Mod;
 using System.Linq;
 using UnityEngine;
 
-namespace MOD_JhUKQ7.Mod
+namespace MOD_nE7UL2.Mod
 {
     [Cache(ModConst.QI_CUL_EVENT_KEY)]
     public sealed class QiCulEvent : ModEvent

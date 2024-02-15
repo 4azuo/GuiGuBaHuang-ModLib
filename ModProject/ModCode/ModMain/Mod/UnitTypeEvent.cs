@@ -1,10 +1,10 @@
-﻿using MOD_JhUKQ7.Const;
-using MOD_JhUKQ7.Enum;
+﻿using MOD_nE7UL2.Const;
+using MOD_nE7UL2.Enum;
 using ModLib.Enum;
 using ModLib.Mod;
 using System.Collections.Generic;
 
-namespace MOD_JhUKQ7.Mod
+namespace MOD_nE7UL2.Mod
 {
     [Cache(ModConst.UNIT_TYPE_EVENT_KEY)]
     public sealed class UnitTypeEvent : ModEvent

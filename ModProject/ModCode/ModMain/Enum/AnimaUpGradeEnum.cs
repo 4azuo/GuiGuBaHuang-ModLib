@@ -2,7 +2,7 @@
 using ModLib.Object;
 using System.Collections.Generic;
 
-namespace MOD_JhUKQ7.Enum
+namespace MOD_nE7UL2.Enum
 {
     public class AnimaUpGradeEnum : EnumObject
     {

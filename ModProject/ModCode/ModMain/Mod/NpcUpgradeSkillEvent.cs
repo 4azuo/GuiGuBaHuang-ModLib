@@ -1,5 +1,5 @@
-﻿using MOD_JhUKQ7.Const;
-using MOD_JhUKQ7.Enum;
+﻿using MOD_nE7UL2.Const;
+using MOD_nE7UL2.Enum;
 using ModLib.Enum;
 using ModLib.Mod;
 using Newtonsoft.Json;
@@ -7,7 +7,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace MOD_JhUKQ7.Mod
+namespace MOD_nE7UL2.Mod
 {
     [Cache(ModConst.NPC_UPGRADE_SKILL_EVENT_KEY)]
     public sealed class NpcUpgradeSkillEvent : ModEvent
