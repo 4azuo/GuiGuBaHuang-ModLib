@@ -137,14 +137,13 @@ namespace MOD_JhUKQ7.Mod
                     player.AddProperty<int>(UnitPropertyEnum.Life, -(Math.Max(PlayerRecvDamage / 1000, 1)));
                     player.SetProperty<int>(UnitPropertyEnum.Exp, 0);
                     DebugHelper.WriteLine($"BattleRewardEvent: player death");
-                    return;
                 }
-
-                if (e.isWin)
+                else if (e.isWin)
                 {
+                    var needExp = player.GetNeedExpToLevelUp();
                     var rewardExp1 = Math.Max(PlayerDealtDamage / 100, 1);
                     var rewardExp2 = Math.Max(PlayerRecvDamage / 10, 1);
-                    player.AddProperty<int>(UnitPropertyEnum.Exp, rewardExp1 + rewardExp2);
+                    player.SetProperty<int>(UnitPropertyEnum.Exp, Math.Min(player.GetProperty<int>(UnitPropertyEnum.Exp) + rewardExp1 + rewardExp2, needExp));
                     DebugHelper.WriteLine($"BattleRewardEvent: +{rewardExp1 + rewardExp2}exp");
                 }
                 IsEnd = true;

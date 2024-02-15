@@ -56,7 +56,7 @@ namespace MOD_JhUKQ7.Mod
         {
             var player = g.world.playerUnit;
             var curExp = player.GetProperty<int>(UnitPropertyEnum.Exp);
-            var needExp = g.conf.roleGrade.GetNextGradeItem(player.GetProperty<int>(UnitPropertyEnum.GradeID)).exp - g.conf.roleGrade.GetGradeItemInExp(curExp).exp;
+            var needExp = player.GetNeedExpToLevelUp();
             var settings = AnimaUpGradeEnum.GetAllEnums<AnimaUpGradeEnum>().FirstOrDefault(x => x.Grade.Value.Parse<int>() == g.world.playerUnit.data.unitData.propertyData.gradeID);
             if (settings != null && curExp >= needExp && CurAnima > settings.MinAnima)
             {
