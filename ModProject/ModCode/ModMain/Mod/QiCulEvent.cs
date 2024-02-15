@@ -56,9 +56,9 @@ namespace MOD_JhUKQ7.Mod
         {
             var player = g.world.playerUnit;
             var curExp = player.GetProperty<int>(UnitPropertyEnum.Exp);
-            var needExp = player.GetNeedExpToLevelUp();
+            var maxExp = player.GetMaxExpCurrentGrade();
             var settings = AnimaUpGradeEnum.GetAllEnums<AnimaUpGradeEnum>().FirstOrDefault(x => x.Grade.Value.Parse<int>() == g.world.playerUnit.data.unitData.propertyData.gradeID);
-            if (settings != null && curExp >= needExp && CurAnima > settings.MinAnima)
+            if (settings != null && curExp >= maxExp && CurAnima > settings.MinAnima)
             {
                 var r = CommonTool.Random(0.00f, 100.00f);
                 if (r <= (((CurAnima - settings.MinAnima) / 100) * settings.RatioPer100Anima))
@@ -68,7 +68,6 @@ namespace MOD_JhUKQ7.Mod
                         var playerData = player.data.unitData;
 
                         player.SetProperty(UnitPropertyEnum.GradeID, settings.NextGrade.Value.Parse<int>());
-                        player.SetProperty<int>(UnitPropertyEnum.Exp, 0);
                         var playerUnitType = EventHelper.GetEvent<UnitTypeEvent>(ModConst.UNIT_TYPE_EVENT_KEY);
                         for (int i = settings.MinAnima, j = 1; i < CurAnima; i += 100 * j++)
                         {
