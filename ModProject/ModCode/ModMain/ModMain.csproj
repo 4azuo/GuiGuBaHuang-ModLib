@@ -37,9 +37,11 @@
     <Compile Include="Const\ModConst.cs" />
     <Compile Include="Enum\AnimaIncPropEnum.cs" />
     <Compile Include="Enum\AnimaUpGradeEnum.cs" />
+    <Compile Include="Enum\NpcUpGradeRatioEnum.cs" />
     <Compile Include="Enum\UnitTypeLuckEnum.cs" />
     <Compile Include="Enum\UnitTypeEnum.cs" />
     <Compile Include="ModMain.cs" />
+    <Compile Include="Mod\NpcAutoUpGradeEvent.cs" />
     <Compile Include="Mod\NpcUpgradeSkillEvent.cs" />
     <Compile Include="Mod\MonstStrongerEvent.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

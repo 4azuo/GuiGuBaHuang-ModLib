@@ -40,16 +40,6 @@ namespace MOD_nE7UL2.Enum
         public static AnimaUpGradeEnum Enlightenment_Early3 { get; } = new AnimaUpGradeEnum(GradePhaseEnum.Enlightenment_Early3, GradePhaseEnum.Enlightenment_Middle, 10000, 0.3f);
         public static AnimaUpGradeEnum Enlightenment_Early4 { get; } = new AnimaUpGradeEnum(GradePhaseEnum.Enlightenment_Early4, GradePhaseEnum.Enlightenment_Middle, 10000, 0.3f);
         public static AnimaUpGradeEnum Enlightenment_Middle { get; } = new AnimaUpGradeEnum(GradePhaseEnum.Enlightenment_Middle, GradePhaseEnum.Enlightenment_Late, 11000, 0.3f);
-        //public static AnimaUpGradeEnum Enlightenment_Late { get; } = new AnimaUpGradeEnum(GradePhaseEnum.Enlightenment_Late, 4800, 1);
-        //public static AnimaUpGradeEnum Reborn_Early { get; } = new AnimaUpGradeEnum(GradePhaseEnum.Reborn_Early, 100, 1);
-        //public static AnimaUpGradeEnum Reborn_Middle { get; } = new AnimaUpGradeEnum(GradePhaseEnum.Reborn_Middle, 100, 1);
-        //public static AnimaUpGradeEnum Reborn_Late { get; } = new AnimaUpGradeEnum(GradePhaseEnum.Reborn_Late, 100, 1);
-        //public static AnimaUpGradeEnum Transendent_Early1 { get; } = new AnimaUpGradeEnum(GradePhaseEnum.Transendent_Early1, 100, 1);
-        //public static AnimaUpGradeEnum Transendent_Early2 { get; } = new AnimaUpGradeEnum(GradePhaseEnum.Transendent_Early2, 100, 1);
-        //public static AnimaUpGradeEnum Transendent_Early3 { get; } = new AnimaUpGradeEnum(GradePhaseEnum.Transendent_Early3, 100, 1);
-        //public static AnimaUpGradeEnum Transendent_Early4 { get; } = new AnimaUpGradeEnum(GradePhaseEnum.Transendent_Early4, 100, 1);
-        //public static AnimaUpGradeEnum Transendent_Middle { get; } = new AnimaUpGradeEnum(GradePhaseEnum.Transendent_Middle, 100, 1);
-        //public static AnimaUpGradeEnum Transendent_Late { get; } = new AnimaUpGradeEnum(GradePhaseEnum.Transendent_Late, 100, 1);
 
         public GradePhaseEnum Grade { get; private set; }
         public GradePhaseEnum NextGrade { get; private set; }

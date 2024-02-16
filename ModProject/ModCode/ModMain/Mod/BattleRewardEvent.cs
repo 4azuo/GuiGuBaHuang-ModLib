@@ -41,7 +41,7 @@ namespace MOD_nE7UL2.Mod
             [PLAYER_UP_MHP_FACTOR] = 10,
             [PLAYER_UP_MAP_FACTOR] = 300,
 
-            [PLAYER_UP_ATK_RATIO] = 1.1,
+            [PLAYER_UP_ATK_RATIO] = 1.09,
             [PLAYER_UP_DEF_RATIO] = 1.15,
             [PLAYER_UP_MHP_RATIO] = 1.02,
             [PLAYER_UP_MAP_RATIO] = 1.25,
@@ -129,8 +129,7 @@ namespace MOD_nE7UL2.Mod
         {
             if (!IsEnd)
             {
-                DebugHelper.WriteLine($"Damage dealt: {PlayerDealtDamage}dmg");
-                DebugHelper.WriteLine($"Damage recieve: {PlayerRecvDamage}dmg");
+                DebugHelper.WriteLine($"Damage dealt: {PlayerDealtDamage}dmg, Damage recieve: {PlayerRecvDamage}dmg");
                 var player = g.world.playerUnit;
                 if (IsPlayerDie)
                 {
@@ -156,7 +155,7 @@ namespace MOD_nE7UL2.Mod
             var dieUnit = e.unit.data.TryCast<UnitDataHuman>();
             if (dieUnit != null)
             {
-                IsPlayerDie = dieUnit.unitType == UnitType.Player;
+                IsPlayerDie = IsPlayerDie || dieUnit.unitType == UnitType.Player;
                 if (!IsPlayerDie)
                 {
                     g.world.playerUnit.AddProperty<int>(UnitPropertyEnum.Life, dieUnit.worldUnitData.unit.GetProperty<int>(UnitPropertyEnum.Life) / 50);

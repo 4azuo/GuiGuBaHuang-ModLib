@@ -29,27 +29,27 @@ namespace ModLib.Mod
         #endregion
 
         #region EMapType
-        public virtual void OnPlayerEquipCloth(PlayerEquipCloth e)
+        public virtual void OnPlayerEquipCloth(ETypeData e)
         {
         }
 
-        public virtual void OnPlayerInMonstArea(PlayerInMonstArea e)
+        public virtual void OnPlayerInMonstArea(ETypeData e)
         {
         }
 
-        public virtual void OnPlayerRoleEscapeInMap(PlayerRoleEscapeInMap e)
+        public virtual void OnPlayerRoleEscapeInMap(ETypeData e)
         {
         }
 
-        public virtual void OnPlayerRoleUpGradeBig(PlayerRoleUpGradeBig e)
+        public virtual void OnPlayerRoleUpGradeBig(ETypeData e)
         {
         }
 
-        public virtual void OnUpGradeAndCloseFateFeatureUI(UpGradeAndCloseFateFeatureUI e)
+        public virtual void OnUpGradeAndCloseFateFeatureUI(ETypeData e)
         {
         }
 
-        public virtual void OnUseHobbyProps(UseHobbyProps e)
+        public virtual void OnUseHobbyProps(ETypeData e)
         {
         }
         #endregion

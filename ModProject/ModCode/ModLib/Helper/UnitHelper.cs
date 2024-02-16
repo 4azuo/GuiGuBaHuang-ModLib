@@ -35,9 +35,9 @@ public static class UnitHelper
     //    return wunit.GetNatureLuck(luckId) ?? wunit.GetNurtureLuck(luckId);
     //}
 
-    public static void AddLuck(this WorldUnitBase wunit, int luckId, int dur = -1)
+    public static int AddLuck(this WorldUnitBase wunit, int luckId, int dur = -1)
     {
-        wunit.CreateAction(new UnitActionLuckAdd(luckId, dur));
+        return wunit.CreateAction(new UnitActionLuckAdd(luckId, dur));
     }
 
     //public static void AddNatureLuck(this WorldUnitBase wunit, int luckId, AddLuckOptions option = AddLuckOptions.Dup)
