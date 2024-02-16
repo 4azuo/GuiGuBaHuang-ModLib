@@ -8,6 +8,7 @@ using System.Threading.Tasks;
 
 namespace MOD_nE7UL2.Enum
 {
+    [EnumObjectIndex(113000)]
     public class NpcUpGradeRatioEnum : EnumObject
     {
         public static NpcUpGradeRatioEnum QiRefining_Early { get; } = new NpcUpGradeRatioEnum(GradePhaseEnum.QiRefining_Early, new List<MultiValue>()

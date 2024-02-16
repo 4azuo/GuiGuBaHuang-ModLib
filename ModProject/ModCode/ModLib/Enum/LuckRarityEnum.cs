@@ -2,6 +2,7 @@
 
 namespace ModLib.Enum
 {
+    [EnumObjectIndex(516000)]
     public class LuckRarityEnum : EnumObject
     {
         public static LuckRarityEnum Common { get; } = new LuckRarityEnum("1");

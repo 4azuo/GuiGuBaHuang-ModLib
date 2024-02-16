@@ -2,6 +2,7 @@
 
 namespace ModLib.Enum
 {
+    [EnumObjectIndex(514000)]
     public class LuckConcealEnum : EnumObject
     {
         public static LuckConcealEnum NotHidden { get; } = new LuckConcealEnum("0");

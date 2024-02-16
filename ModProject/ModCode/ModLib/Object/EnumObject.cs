@@ -12,7 +12,7 @@ namespace ModLib.Object
 
         #region EnumSeq
         private static int _seq = 0;
-        public int ObjSeq { get; } = _seq++;
+        public int ObjSeq { get; private set; }
         #endregion
 
         public string Value { get; private set; }
@@ -38,6 +38,15 @@ namespace ModLib.Object
 
         private void Init(string value = null)
         {
+            var indexer = this.GetType().GetCustomAttribute<EnumObjectIndexAttribute>();
+            if (indexer != null)
+            {
+                ObjSeq = indexer.Index++;
+            }
+            else
+            {
+                ObjSeq = _seq++;
+            }
             Value = value;
             AllEnums.Add(this);
         }

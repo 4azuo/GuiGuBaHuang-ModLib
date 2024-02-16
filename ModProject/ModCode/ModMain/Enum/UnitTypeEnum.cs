@@ -6,6 +6,7 @@ using System.Linq;
 
 namespace MOD_nE7UL2.Enum
 {
+    [EnumObjectIndex(114000)]
     public class UnitTypeEnum : EnumObject
     {
         public static UnitTypeEnum Default { get; } = new UnitTypeEnum()

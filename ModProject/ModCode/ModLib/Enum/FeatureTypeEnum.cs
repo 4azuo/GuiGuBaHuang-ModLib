@@ -2,6 +2,7 @@
 
 namespace ModLib.Enum
 {
+    [EnumObjectIndex(512000)]
     public class FeatureTypeEnum : EnumObject
     {
         public static FeatureTypeEnum Nature { get; } = new FeatureTypeEnum("1");
