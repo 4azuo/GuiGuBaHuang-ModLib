@@ -2,6 +2,7 @@
 
 namespace ModLib.Enum
 {
+    [EnumObjectIndex(513000)]
     public class GradePhaseEnum : EnumObject
     {
         public static GradePhaseEnum QiRefining_Early { get; } = new GradePhaseEnum(1, GradeEnum.QiRefining);

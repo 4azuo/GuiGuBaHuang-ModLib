@@ -37,6 +37,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="Attribute\CacheAttribute.cs" />
+    <Compile Include="Attribute\EnumObjectIndexAttribute.cs" />
     <Compile Include="Attribute\TraceIgnoreAttribute.cs" />
     <Compile Include="Attribute\TraceAttribute.cs" />
     <Compile Include="Converter\EnumObjectConverter.cs" />

@@ -2,6 +2,7 @@
 
 namespace ModLib.Enum
 {
+    [EnumObjectIndex(515000)]
     public class LuckDurStackTypeEnum : EnumObject
     {
         public static LuckDurStackTypeEnum ExistAtSameTime { get; } = new LuckDurStackTypeEnum("0");

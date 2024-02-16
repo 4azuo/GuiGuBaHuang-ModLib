@@ -5,6 +5,7 @@ using System.Linq;
 
 namespace MOD_nE7UL2.Enum
 {
+    [EnumObjectIndex(111000)]
     public class AnimaIncPropEnum : EnumObject
     {
         public static AnimaIncPropEnum Anima100 { get; } = new AnimaIncPropEnum(100)
