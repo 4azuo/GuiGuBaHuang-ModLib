@@ -185,14 +185,12 @@ namespace ModLib.Mod
         #endregion
 
         #region EMapType
-        protected virtual void _OnPlayerEquipCloth(ETypeData edata)
+        protected virtual void _OnPlayerEquipCloth(ETypeData e)
         {
             if (GameHelper.IsInGame())
             {
                 try
                 {
-                    var e = edata.Cast<PlayerEquipCloth>();
-
                     OnPlayerEquipCloth(e);
                 }
                 catch (Exception ex)
@@ -202,14 +200,12 @@ namespace ModLib.Mod
             }
         }
 
-        protected virtual void _OnPlayerInMonstArea(ETypeData edata)
+        protected virtual void _OnPlayerInMonstArea(ETypeData e)
         {
             if (GameHelper.IsInGame())
             {
                 try
                 {
-                    var e = edata.Cast<PlayerInMonstArea>();
-
                     OnPlayerInMonstArea(e);
                 }
                 catch (Exception ex)
@@ -219,14 +215,12 @@ namespace ModLib.Mod
             }
         }
 
-        protected virtual void _OnPlayerRoleEscapeInMap(ETypeData edata)
+        protected virtual void _OnPlayerRoleEscapeInMap(ETypeData e)
         {
             if (GameHelper.IsInGame())
             {
                 try
                 {
-                    var e = edata.Cast<PlayerRoleEscapeInMap>();
-
                     OnPlayerRoleEscapeInMap(e);
                 }
                 catch (Exception ex)
@@ -236,14 +230,12 @@ namespace ModLib.Mod
             }
         }
 
-        protected virtual void _OnPlayerRoleUpGradeBig(ETypeData edata)
+        protected virtual void _OnPlayerRoleUpGradeBig(ETypeData e)
         {
             if (GameHelper.IsInGame())
             {
                 try
                 {
-                    var e = edata.Cast<PlayerRoleUpGradeBig>();
-
                     OnPlayerRoleUpGradeBig(e);
                 }
                 catch (Exception ex)
@@ -253,14 +245,12 @@ namespace ModLib.Mod
             }
         }
 
-        protected virtual void _OnUpGradeAndCloseFateFeatureUI(ETypeData edata)
+        protected virtual void _OnUpGradeAndCloseFateFeatureUI(ETypeData e)
         {
             if (GameHelper.IsInGame())
             {
                 try
                 {
-                    var e = edata.Cast<UpGradeAndCloseFateFeatureUI>();
-
                     OnUpGradeAndCloseFateFeatureUI(e);
                 }
                 catch (Exception ex)
@@ -270,14 +260,12 @@ namespace ModLib.Mod
             }
         }
 
-        protected virtual void _OnUseHobbyProps(ETypeData edata)
+        protected virtual void _OnUseHobbyProps(ETypeData e)
         {
             if (GameHelper.IsInGame())
             {
                 try
                 {
-                    var e = edata.Cast<UseHobbyProps>();
-
                     OnUseHobbyProps(e);
                 }
                 catch (Exception ex)
@@ -750,7 +738,7 @@ namespace ModLib.Mod
         #endregion
 
         #region EMapType
-        protected virtual void OnPlayerEquipCloth(PlayerEquipCloth e)
+        protected virtual void OnPlayerEquipCloth(ETypeData e)
         {
             foreach (var ev in EventHelper.GetEvents("OnPlayerEquipCloth"))
             {
@@ -758,7 +746,7 @@ namespace ModLib.Mod
             }
         }
 
-        protected virtual void OnPlayerInMonstArea(PlayerInMonstArea e)
+        protected virtual void OnPlayerInMonstArea(ETypeData e)
         {
             foreach (var ev in EventHelper.GetEvents("OnPlayerInMonstArea"))
             {
@@ -766,7 +754,7 @@ namespace ModLib.Mod
             }
         }
 
-        protected virtual void OnPlayerRoleEscapeInMap(PlayerRoleEscapeInMap e)
+        protected virtual void OnPlayerRoleEscapeInMap(ETypeData e)
         {
             foreach (var ev in EventHelper.GetEvents("OnPlayerRoleEscapeInMap"))
             {
@@ -774,7 +762,7 @@ namespace ModLib.Mod
             }
         }
 
-        protected virtual void OnPlayerRoleUpGradeBig(PlayerRoleUpGradeBig e)
+        protected virtual void OnPlayerRoleUpGradeBig(ETypeData e)
         {
             foreach (var ev in EventHelper.GetEvents("OnPlayerRoleUpGradeBig"))
             {
@@ -782,7 +770,7 @@ namespace ModLib.Mod
             }
         }
 
-        protected virtual void OnUpGradeAndCloseFateFeatureUI(UpGradeAndCloseFateFeatureUI e)
+        protected virtual void OnUpGradeAndCloseFateFeatureUI(ETypeData e)
         {
             foreach (var ev in EventHelper.GetEvents("OnUpGradeAndCloseFateFeatureUI"))
             {
@@ -790,7 +778,7 @@ namespace ModLib.Mod
             }
         }
 
-        protected virtual void OnUseHobbyProps(UseHobbyProps e)
+        protected virtual void OnUseHobbyProps(ETypeData e)
         {
             foreach (var ev in EventHelper.GetEvents("OnUseHobbyProps"))
             {

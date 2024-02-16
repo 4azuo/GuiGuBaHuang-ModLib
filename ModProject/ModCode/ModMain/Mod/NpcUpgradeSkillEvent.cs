@@ -36,23 +36,23 @@ namespace MOD_nE7UL2.Mod
         public void UpgradeMartial(WorldUnitBase wunit, float ratio)
         {
             var r = CommonTool.Random(0.00f, 100.00f);
-            if (ValueHelper.IsBetween(r, 0.00f * ratio, 10.00f * ratio))
+            if (ValueHelper.IsBetween(r, 0.00f * ratio, 8.00f * ratio))
             {
                 UpgradeMartial(wunit, MartialType.SkillLeft);
             }
-            else if (ValueHelper.IsBetween(r, 10.00f * ratio, 20.00f * ratio))
+            else if (ValueHelper.IsBetween(r, 8.00f * ratio, 16.00f * ratio))
             {
                 UpgradeMartial(wunit, MartialType.SkillRight);
             }
-            else if (ValueHelper.IsBetween(r, 20.00f * ratio, 35.00f * ratio))
+            else if (ValueHelper.IsBetween(r, 16.00f * ratio, 30.00f * ratio))
             {
                 UpgradeMartial(wunit, MartialType.Step);
             }
-            else if (ValueHelper.IsBetween(r, 35.00f * ratio, 50.00f * ratio))
+            else if (ValueHelper.IsBetween(r, 30.00f * ratio, 40.00f * ratio))
             {
                 UpgradeMartial(wunit, MartialType.Ultimate);
             }
-            else if (ValueHelper.IsBetween(r, 50.00f * ratio, 70.00f * ratio))
+            else if (ValueHelper.IsBetween(r, 40.00f * ratio, 60.00f * ratio))
             {
                 UpgradeMartial(wunit, MartialType.Ability);
             }
@@ -80,13 +80,18 @@ namespace MOD_nE7UL2.Mod
         {
             foreach (var prefix in actMartialData.GetPrefixsUnlock())
             {
+                var rateDec = 0;
                 var insight = wunit.GetDynProperty(UnitDynPropertyEnum.Talent).value;
-                if (CommonTool.Random(0.00f, 100.00f).IsBetween(0.00f, insight / 10))
+                if (CommonTool.Random(0.00f, 100.00f).IsBetween(0.00f, insight / (10 + rateDec)))
                 {
                     var mInfo = new MartialInfoData(actMartialData.data);
                     var martialData = mInfo.martialData;
                     var maxLvl = g.conf.battleSkillPrefixValue.GetPrefixMaxLevel(martialData, prefix.prefixValueItem);
-                    martialData.SetPrefixLevel(prefix.index, g.conf.battleSkillPrefixValue.RandomPrefixLevel(mInfo.level, prefix.prefixValueItem, Math.Min(prefix.prefixLevel + 1, maxLvl)));
+                    if (prefix.prefixLevel < maxLvl)
+                    {
+                        martialData.SetPrefixLevel(prefix.index, g.conf.battleSkillPrefixValue.RandomPrefixLevel(mInfo.level, prefix.prefixValueItem, Math.Min(prefix.prefixLevel + 1, maxLvl)));
+                        rateDec += 2;
+                    }
                 }
             }
         }
