@@ -1,6 +1,10 @@
 # GuiGuBaHuang-ModLib
 Simple ModLib for game 鬼谷八荒 (guigubahuang)
 
+Feel free for using this library to build your mod.
+
+Pls, put me in your credit. And give a like to let me know it useful, tks.
+
 
 
 
