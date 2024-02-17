@@ -4,7 +4,6 @@ using UnhollowerBaseLib;
 
 namespace ModLib.Enum
 {
-    [EnumObjectIndex(518000)]
     public class UnitDynPropertyEnum : EnumObject
     {
         public static UnitDynPropertyEnum Sex { get; } = new UnitDynPropertyEnum("sex", IL2CPP.GetIl2CppField(Il2CppClassPointerStore<WorldUnitDynData>.NativeClassPtr, "sex"));

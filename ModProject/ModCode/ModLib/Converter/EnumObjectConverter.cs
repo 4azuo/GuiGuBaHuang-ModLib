@@ -1,15 +1,8 @@
-﻿using Il2CppSystem.Data;
-using ModLib.Enum;
-using ModLib.Object;
+﻿using ModLib.Object;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Management.Instrumentation;
-using System.Text;
-using System.Threading.Tasks;
-using UnityEngine;
 
 namespace ModLib.Converter
 {
@@ -17,7 +10,6 @@ namespace ModLib.Converter
     {
         private const string TYPE = "$type";
         private const string NAME = "ObjName";
-        private const string KEY = "ObjSeq";
 
         public override bool CanConvert(Type objectType)
         {
@@ -29,12 +21,7 @@ namespace ModLib.Converter
             var jObj = JObject.Load(reader);
             var objType = jObj[TYPE].ToString();
             var objNm = jObj[NAME].ToString();
-            var objSeq = int.Parse(jObj[KEY].ToString());
-            var obj = EnumObject.AllEnums.FirstOrDefault(x => x.ObjSeq == objSeq);
-            if (obj.GetType().FullName != objType)
-                throw new InvalidCastException();
-            if (obj.Name != objNm)
-                throw new InvalidCastException();
+            var obj = EnumObject.AllEnums.FirstOrDefault(x => x.GetType().FullName == objType && x.Name == objNm) ?? throw new InvalidCastException();
             serializer.Populate(jObj.CreateReader(), obj);
             return obj;
         }
@@ -45,7 +32,6 @@ namespace ModLib.Converter
             var o = (JObject)t;
             o.ReplaceAll(new JProperty(TYPE, new JValue(value.GetType().FullName)));
             o.Add(new JProperty(NAME, new JValue((value as EnumObject).Name)));
-            o.Add(new JProperty(KEY, new JValue((value as EnumObject).ObjSeq)));
             o.WriteTo(writer);
         }
     }
