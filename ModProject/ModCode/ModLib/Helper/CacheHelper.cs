@@ -84,10 +84,11 @@ public static class CacheHelper
             {
                 DebugHelper.WriteLine($"Load: GlobalCache: File={cacheFilePath}");
                 GlobalCacheData = Newtonsoft.Json.JsonConvert.DeserializeObject<ModLib.Mod.ModData>(File.ReadAllText(cacheFilePath), CACHE_JSON_SETTINGS);
+                GlobalCacheData.Init(true);
             }
             else
             {
-                GlobalCacheData = new ModLib.Mod.ModData(true, true);
+                GlobalCacheData = new ModLib.Mod.ModData(true);
             }
         }
         return GlobalCacheData;
@@ -109,10 +110,11 @@ public static class CacheHelper
             {
                 DebugHelper.WriteLine($"Load: GameCache: File={cacheFilePath}");
                 GameCacheData = Newtonsoft.Json.JsonConvert.DeserializeObject<ModLib.Mod.ModData>(File.ReadAllText(cacheFilePath), CACHE_JSON_SETTINGS);
+                GlobalCacheData.Init(false);
             }
             else
             {
-                GameCacheData = new ModLib.Mod.ModData(true, false);
+                GameCacheData = new ModLib.Mod.ModData(false);
             }
         }
         return GameCacheData;
