@@ -5,7 +5,6 @@ using static DataUnit;
 
 namespace ModLib.Enum
 {
-    [EnumObjectIndex(519000)]
     public class UnitPropertyEnum : EnumObject
     {
         //public static UnitPropertyEnum Name { get; } = new UnitPropertyEnum("name", IL2CPP.GetIl2CppField(Il2CppClassPointerStore<PropertyData>.NativeClassPtr, "name"));

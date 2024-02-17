@@ -4,7 +4,6 @@ using System.Collections.Generic;
 
 namespace MOD_nE7UL2.Enum
 {
-    [EnumObjectIndex(112000)]
     public class AnimaUpGradeEnum : EnumObject
     {
         public static AnimaUpGradeEnum QiRefining_Early { get; } = new AnimaUpGradeEnum(GradePhaseEnum.QiRefining_Early, GradePhaseEnum.QiRefining_Middle, 200, 1);

@@ -10,11 +10,6 @@ namespace ModLib.Object
         public static List<EnumObject> AllEnums { get; } = new List<EnumObject>();
         #endregion
 
-        #region EnumSeq
-        private static int _seq = 0;
-        public int ObjSeq { get; private set; }
-        #endregion
-
         public string Value { get; private set; }
         public string Name
         {
@@ -38,15 +33,6 @@ namespace ModLib.Object
 
         private void Init(string value = null)
         {
-            var indexer = this.GetType().GetCustomAttribute<EnumObjectIndexAttribute>();
-            if (indexer != null)
-            {
-                ObjSeq = indexer.Index++;
-            }
-            else
-            {
-                ObjSeq = _seq++;
-            }
             Value = value;
             AllEnums.Add(this);
         }
@@ -77,7 +63,7 @@ namespace ModLib.Object
 
         public override string ToString()
         {
-            return $"{this.GetType().Name}.{this.Name}({this.ObjSeq})";
+            return $"{this.GetType().FullName}.{this.Name}";
         }
     }
 }

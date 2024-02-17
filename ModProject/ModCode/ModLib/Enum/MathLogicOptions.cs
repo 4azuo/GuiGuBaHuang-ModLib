@@ -4,7 +4,6 @@ using static ModLib.Enum.MathLogicOptions;
 
 namespace ModLib.Enum
 {
-    [EnumObjectIndex(517000)]
     public class MathLogicOptions : EnumObject, ILogicOptions
     {
         public static ILogicOptions Plus { get; } = new MathLogicOptions("+", (a, b) => a + b);

@@ -3,7 +3,6 @@ using System.Management.Instrumentation;
 
 namespace MOD_nE7UL2.Enum
 {
-    [EnumObjectIndex(115000)]
     public class UnitTypeLuckEnum : EnumObject
     {
         public static UnitTypeLuckEnum PowerUp { get; } = new UnitTypeLuckEnum(420010100);

@@ -2,7 +2,6 @@
 
 namespace ModLib.Enum
 {
-    [EnumObjectIndex(511000)]
     public class EffectChangeTypeEnum : EnumObject
     {
         public static EffectChangeTypeEnum Percentage { get; } = new EffectChangeTypeEnum("0");
