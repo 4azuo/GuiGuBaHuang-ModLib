@@ -37,7 +37,15 @@ public class ConfHelper
             var i = (int)confObj.GetItemIndex(id);
             if (i >= 0 && confList[i].id == id)
             {
-                confItem = confList[i];
+                if (item.DELETE == "1")
+                {
+                    confItem = null;
+                    g.conf.roleGrade.allConfBase.Remove(confList[i]);
+                }
+                else
+                {
+                    confItem = confList[i];
+                }
             }
             else
             {
@@ -49,11 +57,14 @@ public class ConfHelper
                     g.conf.localText.allText.Add(confItem.key, confItem);
                 }
             }
-            foreach (var p in item)
+            if (confItem != null)
             {
-                foreach (var n in p.Name.ToString().Split('|'))
+                foreach (var p in item)
                 {
-                    ObjectHelper.SetValue(confItem, n, p.Value, true);
+                    foreach (var n in p.Name.ToString().Split('|'))
+                    {
+                        ObjectHelper.SetValue(confItem, n, p.Value, true);
+                    }
                 }
             }
         }

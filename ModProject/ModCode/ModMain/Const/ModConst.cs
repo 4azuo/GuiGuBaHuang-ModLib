@@ -8,5 +8,6 @@
         public const string NPC_UPGRADE_SKILL_EVENT_KEY = "NpcUpgradeSkillEvent";
         public const string MONST_STRONGER_EVENT_KEY = "MostStrongerEvent";
         public const string NPC_AUTO_UP_GRADE_EVENT = "NpcAutoUpGradeEvent";
+        public const string MANA_SHIELD_EVENT = "ManaShieldEvent";
     }
 }
