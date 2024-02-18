@@ -93,6 +93,9 @@ namespace ModLib.Mod
             var callBattleUnitHitDynIntHandler = (Il2CppSystem.Action<ETypeData>)_OnBattleUnitHitDynIntHandler;
             g.events.On(EBattleType.UnitHitDynIntHandler, callBattleUnitHitDynIntHandler);
 
+            var callBattleUnitShieldHitDynIntHandler = (Il2CppSystem.Action<ETypeData>)_OnBattleUnitShieldHitDynIntHandler;
+            g.events.On(EBattleType.UnitShieldHitDynIntHandler, callBattleUnitShieldHitDynIntHandler);
+
             var callBattleUnitUseProp = (Il2CppSystem.Action<ETypeData>)_OnBattleUnitUseProp;
             g.events.On(EBattleType.UnitUseProp, callBattleUnitUseProp);
 
@@ -516,6 +519,23 @@ namespace ModLib.Mod
             }
         }
 
+        protected virtual void _OnBattleUnitShieldHitDynIntHandler(ETypeData edata)
+        {
+            if (GameHelper.IsInGame())
+            {
+                try
+                {
+                    var e = edata.Cast<UnitShieldHitDynIntHandler>();
+
+                    OnBattleUnitShieldHitDynIntHandler(e);
+                }
+                catch (Exception ex)
+                {
+                    DebugHelper.WriteLine(ex);
+                }
+            }
+        }
+
         protected virtual void _OnBattleUnitUseProp(ETypeData edata)
         {
             if (GameHelper.IsInGame())
@@ -918,6 +938,14 @@ namespace ModLib.Mod
             foreach (var ev in EventHelper.GetEvents("OnBattleUnitHitDynIntHandler"))
             {
                 ev.OnBattleUnitHitDynIntHandler(e);
+            }
+        }
+
+        protected virtual void OnBattleUnitShieldHitDynIntHandler(UnitShieldHitDynIntHandler e)
+        {
+            foreach (var ev in EventHelper.GetEvents("OnBattleUnitShieldHitDynIntHandler"))
+            {
+                ev.OnBattleUnitShieldHitDynIntHandler(e);
             }
         }
 

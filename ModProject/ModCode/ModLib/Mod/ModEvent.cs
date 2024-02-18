@@ -117,6 +117,10 @@ namespace ModLib.Mod
         {
         }
 
+        public virtual void OnBattleUnitShieldHitDynIntHandler(UnitShieldHitDynIntHandler e)
+        {
+        }
+
         public virtual void OnBattleUnitUseProp(UnitUseProp e)
         {
         }
