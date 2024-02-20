@@ -1,11 +1,13 @@
 ﻿using ModLib.Mod;
 using System;
+using System.Collections.Generic;
 using System.IO;
 using System.Text;
 
 public static class DebugHelper
 {
     public static readonly StringBuilder CurLog = new StringBuilder();
+    public static readonly IList<Exception> Exceptions = new List<Exception>();
 
     public static string GetDebugFileName()
     {
@@ -74,6 +76,9 @@ public static class DebugHelper
 
     public static void WriteLine(Exception e)
     {
+        if (Exceptions.Contains(e))
+            return;
+        Exceptions.Add(e);
         WriteLine($"{e.GetAllInnnerExceptionStr()}");
         Save();
     }
