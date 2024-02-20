@@ -1,4 +1,13 @@
-# GuiGuBaHuang-ModLib
+# About my mod
+
+`https://steamcommunity.com/sharedfiles/filedetails/?id=3161035078`
+
+
+
+
+
+# About GuiGuBaHuang-ModLib
+
 Simple ModLib for game 鬼谷八荒 (guigubahuang)
 
 Feel free for using this library to build your mod.
@@ -18,6 +27,7 @@ Pls, give a like to let me know it useful, tks.
 
 
 # Configuration
+
 **Add ModLib to your project**
 
 ![image](https://github.com/4azuo/GuiGuBaHuang-ModLib/assets/11677054/49b156ba-74db-45e0-a210-42e26c5f7a9a)
@@ -83,6 +93,7 @@ Last, All properties of ModEvent will be cached (.json). You can ignore cache an
 
 
 # Debug/Log
+
 You can use DebugHelper to write a log which will be saved to ↓ folder.
 
 ![image](https://github.com/4azuo/GuiGuBaHuang-ModLib/assets/11677054/7cf4688f-8890-41e7-bf0a-aa6519bbf325)
@@ -111,6 +122,7 @@ Same folder with logs.
 
 
 # ModConf
+
 I hate to use **.cache**. It could not be read/write directly.
 
 So, i wrote a snipet which i can use **.json** to edit game's conf.
@@ -120,6 +132,7 @@ Create a folder **ModConf** in **ModProject**, copy samples from below folder to
 `Steam\steamapps\common\鬼谷八荒\Mod\modFQA\配置修改教程\配置（只读）Json格式`
 
 ## ModConf - Notes
+
 1. About filename, split by '**_**'. The last part is the name of conf.
 
 ![image](https://github.com/4azuo/GuiGuBaHuang-ModLib/assets/11677054/a1ff96de-6850-466d-a3fd-682faf38a7f3)
