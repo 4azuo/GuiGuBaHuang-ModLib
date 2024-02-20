@@ -133,7 +133,8 @@ namespace MOD_nE7UL2.Enum
             propValue += Default.CalProp(pType, propValue);
             if (Value != null)
                 propValue += this.CalProp(pType, propValue);
-            propValue += Hero.CalProp(pType, propValue);
+            if (wunit.IsHero())
+                propValue += Hero.CalProp(pType, propValue);
 
             return propValue;
         }
