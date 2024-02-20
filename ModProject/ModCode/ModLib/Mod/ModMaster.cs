@@ -1,15 +1,11 @@
-﻿using EBattleTypeData;
-using EGameTypeData;
-using EMapTypeData;
-using Steamworks;
-using System;
-using System.IO;
+﻿using System;
 using System.Reflection;
+using UnhollowerBaseLib;
 using UnityEngine;
 
 namespace ModLib.Mod
 {
-    public abstract class ModMaster : MonoBehaviour
+    public abstract partial class ModMaster : MonoBehaviour
     {
         private bool initMod = false;
         protected TimerCoroutine corTimeUpdate;
@@ -81,6 +77,33 @@ namespace ModLib.Mod
 
             var callSave = (Il2CppSystem.Action<ETypeData>)_OnSave;
             g.events.On(EGameType.SaveData, callSave);
+
+            var callOpenDrama = (Il2CppSystem.Action<ETypeData>)_OnOpenDrama;
+            g.events.On(EGameType.OpenDrama, callOpenDrama);
+
+            var callOpenNPCInfoUI = (Il2CppSystem.Action<ETypeData>)_OnOpenNPCInfoUI;
+            g.events.On(EGameType.OpenNPCInfoUI, callOpenNPCInfoUI);
+
+            var callTaskAdd = (Il2CppSystem.Action<ETypeData>)_OnTaskAdd;
+            g.events.On(EGameType.TaskAdd, callTaskAdd);
+
+            var callTaskComplete = (Il2CppSystem.Action<ETypeData>)_OnTaskComplete;
+            g.events.On(EGameType.TaskComplete, callTaskComplete);
+
+            var callTaskFail = (Il2CppSystem.Action<ETypeData>)_OnTaskFail;
+            g.events.On(EGameType.TaskFail, callTaskFail);
+
+            var callTaskGive = (Il2CppSystem.Action<ETypeData>)_OnTaskGive;
+            g.events.On(EGameType.TaskGive, callTaskGive);
+
+            var callTaskOverl = (Il2CppSystem.Action<ETypeData>)_OnTaskOverl;
+            g.events.On(EGameType.TaskOverl, callTaskOverl);
+
+            var callUnitSetGrade = (Il2CppSystem.Action<ETypeData>)_OnUnitSetGrade;
+            g.events.On(EGameType.UnitSetGrade, callUnitSetGrade);
+
+            var callUnitSetHeartState = (Il2CppSystem.Action<ETypeData>)_OnUnitSetHeartState;
+            g.events.On(EGameType.UnitSetHeartState, callUnitSetHeartState);
             #endregion
 
             #region EBattleType
@@ -117,6 +140,12 @@ namespace ModLib.Mod
             var callBattleUnitAddEffect = (Il2CppSystem.Action<ETypeData>)_OnBattleUnitAddEffect;
             g.events.On(EBattleType.UnitAddEffect, callBattleUnitAddEffect);
 
+            var callBattleUnitAddHP = (Il2CppSystem.Action<ETypeData>)_OnBattleUnitAddHP;
+            g.events.On(EBattleType.UnitAddHP, callBattleUnitAddHP);
+
+            var callBattleUnitUpdateProperty = (Il2CppSystem.Action<ETypeData>)_OnBattleUnitUpdateProperty;
+            g.events.On(EBattleType.UnitUpdateProperty, callBattleUnitUpdateProperty);
+
             var callBattleSetUnitType = (Il2CppSystem.Action<ETypeData>)_OnBattleSetUnitType;
             g.events.On(EBattleType.SetUnitType, callBattleSetUnitType);
 
@@ -126,9 +155,20 @@ namespace ModLib.Mod
             var callBattleEnd = (Il2CppSystem.Action<ETypeData>)_OnBattleEnd;
             g.events.On(EBattleType.BattleEnd, callBattleEnd);
 
+            var callBattleEndFront = (Il2CppSystem.Action<ETypeData>)_OnBattleEndFront;
+            g.events.On(EBattleType.BattleEndFront, callBattleEndFront);
+
+            var callBattleEndHandler = (Il2CppSystem.Action<ETypeData>)_OnBattleEndHandler;
+            g.events.On(EBattleType.BattleEndHandler, callBattleEndHandler);
+
+            var callBattleEscapeFailed = (Il2CppSystem.Action<ETypeData>)_OnBattleEscapeFailed;
+            g.events.On(EBattleType.BattleEscapeFailed, callBattleEscapeFailed);
+
             var callBattleExit = (Il2CppSystem.Action<ETypeData>)_OnBattleExit;
             g.events.On(EBattleType.BattleExit, callBattleExit);
             #endregion
+
+            OnInitMod();
         }
 
         //GameEvent
@@ -136,913 +176,54 @@ namespace ModLib.Mod
         {
             if (corTimeUpdate != null)
                 g.timer.Stop(corTimeUpdate);
+            if (corFrameUpdate != null)
+                g.timer.Stop(corFrameUpdate);
         }
 
-        #region ModLib - Handlers
-        #region Timer
-        protected virtual void _OnTimeUpdate()
+        private void CallEvents(string methodName, bool isInGame = false, bool isInBattle = false, Func<bool> predicate = null, Action callback = null)
         {
-            if (GameHelper.IsInGame() && CacheHelper.IsGameCacheLoaded())
-            {
-                try
-                {
-                    var stt = ModSettings.GetSettings<ModSettings>();
-
-                    if (!stt.LoadGameBefore &&
-                        !stt.LoadGame &&
-                        !stt.LoadGameAfter &&
-                        !stt.LoadGameFirst)
-                    {
-                        OnTimeUpdate();
-                    }
-                }
-                catch (Exception ex)
-                {
-                    DebugHelper.WriteLine(ex);
-                }
-            }
+            CallEvents<Il2CppObjectBase>(methodName, null, isInGame, isInBattle, predicate, callback);
         }
 
-        protected virtual void _OnFrameUpdate()
+        private void CallEvents<T>(string methodName, Il2CppObjectBase e, bool isInGame = false, bool isInBattle = false, Func<bool> predicate = null, Action callback = null) where T : Il2CppObjectBase
         {
-            if (GameHelper.IsInGame() && CacheHelper.IsGameCacheLoaded())
-            {
-                try
-                {
-                    var stt = ModSettings.GetSettings<ModSettings>();
-
-                    if (!stt.LoadGameBefore &&
-                        !stt.LoadGame &&
-                        !stt.LoadGameAfter &&
-                        !stt.LoadGameFirst)
-                    {
-                        OnFrameUpdate();
-                    }
-                }
-                catch (Exception ex)
-                {
-                    DebugHelper.WriteLine(ex);
-                }
-            }
-        }
-        #endregion
-
-        #region EMapType
-        protected virtual void _OnPlayerEquipCloth(ETypeData e)
-        {
-            if (GameHelper.IsInGame())
-            {
-                try
-                {
-                    OnPlayerEquipCloth(e);
-                }
-                catch (Exception ex)
-                {
-                    DebugHelper.WriteLine(ex);
-                }
-            }
-        }
-
-        protected virtual void _OnPlayerInMonstArea(ETypeData e)
-        {
-            if (GameHelper.IsInGame())
-            {
-                try
-                {
-                    OnPlayerInMonstArea(e);
-                }
-                catch (Exception ex)
-                {
-                    DebugHelper.WriteLine(ex);
-                }
-            }
-        }
-
-        protected virtual void _OnPlayerRoleEscapeInMap(ETypeData e)
-        {
-            if (GameHelper.IsInGame())
-            {
-                try
-                {
-                    OnPlayerRoleEscapeInMap(e);
-                }
-                catch (Exception ex)
-                {
-                    DebugHelper.WriteLine(ex);
-                }
-            }
-        }
-
-        protected virtual void _OnPlayerRoleUpGradeBig(ETypeData e)
-        {
-            if (GameHelper.IsInGame())
-            {
-                try
-                {
-                    OnPlayerRoleUpGradeBig(e);
-                }
-                catch (Exception ex)
-                {
-                    DebugHelper.WriteLine(ex);
-                }
-            }
-        }
-
-        protected virtual void _OnUpGradeAndCloseFateFeatureUI(ETypeData e)
-        {
-            if (GameHelper.IsInGame())
-            {
-                try
-                {
-                    OnUpGradeAndCloseFateFeatureUI(e);
-                }
-                catch (Exception ex)
-                {
-                    DebugHelper.WriteLine(ex);
-                }
-            }
-        }
-
-        protected virtual void _OnUseHobbyProps(ETypeData e)
-        {
-            if (GameHelper.IsInGame())
-            {
-                try
-                {
-                    OnUseHobbyProps(e);
-                }
-                catch (Exception ex)
-                {
-                    DebugHelper.WriteLine(ex);
-                }
-            }
-        }
-        #endregion
-
-        #region EGameType
-        protected virtual void _OnOpenUIStart(ETypeData edata)
-        {
-            var e = edata.Cast<OpenUIStart>();
-
-            if (!initMod)
-            {
-                try
-                {
-                    OnInitConf();
-                    OnInitEObj();
-                    DebugHelper.Save();
-                    initMod = true;
-                }
-                catch (Exception ex)
-                {
-                    DebugHelper.WriteLine(ex);
-                }
-            }
-
-            if (GameHelper.IsInGame())
-            {
-                try
-                {
-                    var stt = ModSettings.GetSettings<ModSettings>();
-
-                    if (stt.LoadGameBefore)
-                    {
-                        OnLoadGameBefore();
-
-                        stt.LoadGameBefore = false;
-                    }
-
-                    if (stt.LoadGame)
-                    {
-                        OnLoadGame();
-
-                        stt.LoadGame = false;
-                    }
-
-                    if (stt.LoadGameAfter)
-                    {
-                        OnLoadGameAfter();
-
-                        stt.LoadGameAfter = false;
-                    }
-
-                    if (stt.LoadGameFirst)
-                    {
-                        OnLoadGameFirst();
-
-                        stt.LoadGameFirst = false;
-                    }
-                }
-                catch (Exception ex)
-                {
-                    DebugHelper.WriteLine(ex);
-                }
-            }
-            else
-            {
-                CacheHelper.ClearGameCache();
-            }
-
-            OnOpenUIStart(e);
-        }
-
-        protected virtual void _OnOpenUIEnd(ETypeData edata)
-        {
+            if (!(!isInGame || (isInGame && GameHelper.IsInGame())))
+                return;
+            if (!(!isInBattle || (isInBattle && GameHelper.IsInBattlle())))
+                return;
+            if (!(predicate?.Invoke() ?? true))
+                return;
             try
             {
-                var e = edata.Cast<OpenUIEnd>();
-
-                OnOpenUIEnd(e);
+                var method = this.GetType().GetMethod(methodName, BindingFlags.Public | BindingFlags.Instance | BindingFlags.FlattenHierarchy);
+                if (method == null)
+                {
+                    throw new NullReferenceException();
+                }
+                if (method.GetParameters().Length == 0)
+                {
+                    method.Invoke(this, null);
+                }
+                else
+                {
+                    method.Invoke(this, new object[] { e?.TryCast<T>() ?? e });
+                }
+                if (callback != null)
+                {
+                    callback.Invoke();
+                }
             }
             catch (Exception ex)
             {
+                DebugHelper.WriteLine($"CallEvents<{typeof(T).Name}>({methodName}, -, {isInGame}, {isInBattle})");
                 DebugHelper.WriteLine(ex);
             }
         }
-
-        protected virtual void _OnCloseUIStart(ETypeData edata)
-        {
-            try
-            {
-                var e = edata.Cast<CloseUIStart>();
-
-                OnCloseUIStart(e);
-            }
-            catch (Exception ex)
-            {
-                DebugHelper.WriteLine(ex);
-            }
-        }
-
-        protected virtual void _OnCloseUIEnd(ETypeData edata)
-        {
-            try
-            {
-                var e = edata.Cast<CloseUIEnd>();
-
-                OnCloseUIEnd(e);
-            }
-            catch (Exception ex)
-            {
-                DebugHelper.WriteLine(ex);
-            }
-        }
-
-        protected virtual void _OnInitWorld(ETypeData e)
-        {
-            if (GameHelper.IsInGame())
-            {
-                try
-                {
-                    OnInitWorld(e);
-                }
-                catch (Exception ex)
-                {
-                    DebugHelper.WriteLine(ex);
-                }
-            }
-        }
-
-        protected virtual void _OnLoadScene(ETypeData edata)
-        {
-            if (GameHelper.IsInGame())
-            {
-                try
-                {
-                    var e = edata.Cast<LoadScene>();
-
-                    OnLoadScene(e);
-                }
-                catch (Exception ex)
-                {
-                    DebugHelper.WriteLine(ex);
-                }
-            }
-        }
-
-        protected virtual void _OnIntoWorld(ETypeData e)
-        {
-            if (GameHelper.IsInGame())
-            {
-                try
-                {
-                    OnIntoWorld(e);
-                }
-                catch (Exception ex)
-                {
-                    DebugHelper.WriteLine(ex);
-                }
-            }
-        }
-
-        protected virtual void _OnSave(ETypeData e)
-        {
-            if (GameHelper.IsInGame())
-            {
-                try
-                {
-                    //monthly event
-                    var stt = ModSettings.GetSettings<ModSettings>();
-                    if (stt.CurMonth != g.game.world.run.roundMonth)
-                    {
-                        //first month
-                        if (g.game.world.run.roundMonth <= 0)
-                        {
-                            OnFirstMonth();
-                        }
-                        OnMonthly();
-                    }
-
-                    //save
-                    OnSave(e);
-
-                    //next month
-                    stt.CurMonth = g.game.world.run.roundMonth;
-                }
-                catch (Exception ex)
-                {
-                    DebugHelper.WriteLine(ex);
-                }
-            }
-        }
-        #endregion
-
-        #region EBattleType
-        protected virtual void _OnBattleUnitInit(ETypeData edata)
-        {
-            if (GameHelper.IsInGame())
-            {
-                try
-                {
-                    var e = edata.Cast<UnitInit>();
-
-                    OnBattleUnitInit(e);
-                }
-                catch (Exception ex)
-                {
-                    DebugHelper.WriteLine(ex);
-                }
-            }
-        }
-
-        protected virtual void _OnBattleUnitHit(ETypeData edata)
-        {
-            if (GameHelper.IsInGame())
-            {
-                try
-                {
-                    var e = edata.Cast<UnitHit>();
-
-                    OnBattleUnitHit(e);
-                }
-                catch (Exception ex)
-                {
-                    DebugHelper.WriteLine(ex);
-                }
-            }
-        }
-
-        protected virtual void _OnBattleUnitHitDynIntHandler(ETypeData edata)
-        {
-            if (GameHelper.IsInGame())
-            {
-                try
-                {
-                    var e = edata.Cast<UnitHitDynIntHandler>();
-
-                    OnBattleUnitHitDynIntHandler(e);
-                }
-                catch (Exception ex)
-                {
-                    DebugHelper.WriteLine(ex);
-                }
-            }
-        }
-
-        protected virtual void _OnBattleUnitShieldHitDynIntHandler(ETypeData edata)
-        {
-            if (GameHelper.IsInGame())
-            {
-                try
-                {
-                    var e = edata.Cast<UnitShieldHitDynIntHandler>();
-
-                    OnBattleUnitShieldHitDynIntHandler(e);
-                }
-                catch (Exception ex)
-                {
-                    DebugHelper.WriteLine(ex);
-                }
-            }
-        }
-
-        protected virtual void _OnBattleUnitUseProp(ETypeData edata)
-        {
-            if (GameHelper.IsInGame())
-            {
-                try
-                {
-                    var e = edata.Cast<UnitUseProp>();
-
-                    OnBattleUnitUseProp(e);
-                }
-                catch (Exception ex)
-                {
-                    DebugHelper.WriteLine(ex);
-                }
-            }
-        }
-
-        protected virtual void _OnBattleUnitUseSkill(ETypeData edata)
-        {
-            if (GameHelper.IsInGame())
-            {
-                try
-                {
-                    var e = edata.Cast<UnitUseSkill>();
-
-                    OnBattleUnitUseSkill(e);
-                }
-                catch (Exception ex)
-                {
-                    DebugHelper.WriteLine(ex);
-                }
-            }
-        }
-
-        protected virtual void _OnBattleUnitUseStep(ETypeData edata)
-        {
-            if (GameHelper.IsInGame())
-            {
-                try
-                {
-                    var e = edata.Cast<UnitUseStep>();
-
-                    OnBattleUnitUseStep(e);
-                }
-                catch (Exception ex)
-                {
-                    DebugHelper.WriteLine(ex);
-                }
-            }
-        }
-
-        protected virtual void _OnBattleUnitDie(ETypeData edata)
-        {
-            if (GameHelper.IsInGame())
-            {
-                try
-                {
-                    var e = edata.Cast<UnitDie>();
-
-                    OnBattleUnitDie(e);
-                }
-                catch (Exception ex)
-                {
-                    DebugHelper.WriteLine(ex);
-                }
-            }
-        }
-
-        protected virtual void _OnBattleUnitDieEnd(ETypeData e)
-        {
-            if (GameHelper.IsInGame())
-            {
-                try
-                {
-                    OnBattleUnitDieEnd(e);
-                }
-                catch (Exception ex)
-                {
-                    DebugHelper.WriteLine(ex);
-                }
-            }
-        }
-
-        protected virtual void _OnBattleUnitAddEffectStart(ETypeData edata)
-        {
-            if (GameHelper.IsInGame())
-            {
-                try
-                {
-                    var e = edata.Cast<UnitAddEffectStart>();
-
-                    OnBattleUnitAddEffectStart(e);
-                }
-                catch (Exception ex)
-                {
-                    DebugHelper.WriteLine(ex);
-                }
-            }
-        }
-
-        protected virtual void _OnBattleUnitAddEffect(ETypeData edata)
-        {
-            if (GameHelper.IsInGame())
-            {
-                try
-                {
-                    var e = edata.Cast<UnitAddEffect>();
-
-                    OnBattleUnitAddEffect(e);
-                }
-                catch (Exception ex)
-                {
-                    DebugHelper.WriteLine(ex);
-                }
-            }
-        }
-
-        protected virtual void _OnBattleSetUnitType(ETypeData edata)
-        {
-            if (GameHelper.IsInGame())
-            {
-                try
-                {
-                    var e = edata.Cast<SetUnitType>();
-
-                    OnBattleSetUnitType(e);
-                }
-                catch (Exception ex)
-                {
-                    DebugHelper.WriteLine(ex);
-                }
-            }
-        }
-
-        protected virtual void _OnBattleStart(ETypeData e)
-        {
-            if (GameHelper.IsInGame())
-            {
-                try
-                {
-                    OnBattleStart(e);
-                }
-                catch (Exception ex)
-                {
-                    DebugHelper.WriteLine(ex);
-                }
-            }
-        }
-
-        protected virtual void _OnBattleEnd(ETypeData edata)
-        {
-            if (GameHelper.IsInGame())
-            {
-                try
-                {
-                    var e = edata.Cast<BattleEnd>();
-
-                    OnBattleEnd(e);
-                }
-                catch (Exception ex)
-                {
-                    DebugHelper.WriteLine(ex);
-                }
-            }
-        }
-
-        protected virtual void _OnBattleExit(ETypeData e)
-        {
-            if (GameHelper.IsInGame())
-            {
-                try
-                {
-                    OnBattleExit(e);
-                }
-                catch (Exception ex)
-                {
-                    DebugHelper.WriteLine(ex);
-                }
-            }
-        }
-        #endregion
-        #endregion
-
-        #region ModLib - Events
-        #region Common
-        protected virtual void OnInitConf()
-        {
-            var orgFolder = $"{ConfHelper.GetConfFolderPath()}\\..\\..\\..\\ModProject\\ModConf\\";
-            Directory.CreateDirectory(ConfHelper.GetConfFolderPath());
-            foreach (var orgFile in Directory.GetFiles(orgFolder))
-            {
-                File.Copy(orgFile, ConfHelper.GetConfFilePath(Path.GetFileName(orgFile)), true);
-            }
-            ConfHelper.LoadCustomConf();
-        }
-
-        protected virtual void OnInitEObj()
-        {
-            GameHelper.LoadEnumObj(Assembly.GetAssembly(typeof(ModMaster)));
-            GameHelper.LoadEnumObj(Assembly.GetAssembly(ModObj.GetType()));
-        }
-        #endregion
-
-        #region Timer
-        protected virtual void OnTimeUpdate()
-        {
-            foreach (var ev in EventHelper.GetEvents("OnTimeUpdate"))
-            {
-                ev.OnTimeUpdate();
-            }
-        }
-
-        protected virtual void OnFrameUpdate()
-        {
-            foreach (var ev in EventHelper.GetEvents("OnFrameUpdate"))
-            {
-                ev.OnFrameUpdate();
-            }
-        }
-        #endregion
-
-        #region EMapType
-        protected virtual void OnPlayerEquipCloth(ETypeData e)
-        {
-            foreach (var ev in EventHelper.GetEvents("OnPlayerEquipCloth"))
-            {
-                ev.OnPlayerEquipCloth(e);
-            }
-        }
-
-        protected virtual void OnPlayerInMonstArea(ETypeData e)
-        {
-            foreach (var ev in EventHelper.GetEvents("OnPlayerInMonstArea"))
-            {
-                ev.OnPlayerInMonstArea(e);
-            }
-        }
-
-        protected virtual void OnPlayerRoleEscapeInMap(ETypeData e)
-        {
-            foreach (var ev in EventHelper.GetEvents("OnPlayerRoleEscapeInMap"))
-            {
-                ev.OnPlayerRoleEscapeInMap(e);
-            }
-        }
-
-        protected virtual void OnPlayerRoleUpGradeBig(ETypeData e)
-        {
-            foreach (var ev in EventHelper.GetEvents("OnPlayerRoleUpGradeBig"))
-            {
-                ev.OnPlayerRoleUpGradeBig(e);
-            }
-        }
-
-        protected virtual void OnUpGradeAndCloseFateFeatureUI(ETypeData e)
-        {
-            foreach (var ev in EventHelper.GetEvents("OnUpGradeAndCloseFateFeatureUI"))
-            {
-                ev.OnUpGradeAndCloseFateFeatureUI(e);
-            }
-        }
-
-        protected virtual void OnUseHobbyProps(ETypeData e)
-        {
-            foreach (var ev in EventHelper.GetEvents("OnUseHobbyProps"))
-            {
-                ev.OnUseHobbyProps(e);
-            }
-        }
-        #endregion
-
-        #region EGameType
-        protected virtual void OnOpenUIStart(OpenUIStart e)
-        {
-            foreach (var ev in EventHelper.GetEvents("OnOpenUIStart"))
-            {
-                ev.OnOpenUIStart(e);
-            }
-        }
-
-        protected virtual void OnOpenUIEnd(OpenUIEnd e)
-        {
-            foreach (var ev in EventHelper.GetEvents("OnOpenUIEnd"))
-            {
-                ev.OnOpenUIEnd(e);
-            }
-        }
-
-        protected virtual void OnCloseUIStart(CloseUIStart e)
-        {
-            foreach (var ev in EventHelper.GetEvents("OnCloseUIStart"))
-            {
-                ev.OnCloseUIStart(e);
-            }
-        }
-
-        protected virtual void OnCloseUIEnd(CloseUIEnd e)
-        {
-            foreach (var ev in EventHelper.GetEvents("OnCloseUIEnd"))
-            {
-                ev.OnCloseUIEnd(e);
-            }
-        }
-
-        protected virtual void OnLoadGameBefore()
-        {
-        }
-
-        protected virtual void OnLoadGame()
-        {
-            foreach (var ev in EventHelper.GetEvents("OnLoadGame"))
-            {
-                ev.OnLoadGame();
-            }
-        }
-
-        protected virtual void OnLoadGameAfter()
-        {
-        }
-
-        protected virtual void OnLoadGameFirst()
-        {
-            foreach (var ev in EventHelper.GetEvents("OnLoadGameFirst"))
-            {
-                ev.OnLoadGameFirst();
-            }
-        }
-
-        protected virtual void OnInitWorld(ETypeData e)
-        {
-            ModSettings.CreateIfNotExists<ModSettings>();
-            foreach (var ev in EventHelper.GetEvents("OnInitWorld"))
-            {
-                ev.OnInitWorld(e);
-            }
-        }
-
-        protected virtual void OnLoadScene(LoadScene e)
-        {
-            foreach (var ev in EventHelper.GetEvents("OnLoadScene"))
-            {
-                ev.OnLoadScene(e);
-            }
-        }
-
-        protected virtual void OnIntoWorld(ETypeData e)
-        {
-            foreach (var ev in EventHelper.GetEvents("OnIntoWorld"))
-            {
-                ev.OnIntoWorld(e);
-            }
-        }
-
-        protected virtual void OnFirstMonth()
-        {
-            foreach (var ev in EventHelper.GetEvents("OnFirstMonth"))
-            {
-                ev.OnFirstMonth();
-            }
-        }
-
-        protected virtual void OnMonthly()
-        {
-            foreach (var ev in EventHelper.GetEvents("OnMonthly"))
-            {
-                ev.OnMonthly();
-            }
-        }
-
-        protected virtual void OnSave(ETypeData e)
-        {
-            foreach (var ev in EventHelper.GetEvents("OnSave"))
-            {
-                ev.OnSave(e);
-            }
-            CacheHelper.Save();
-            DebugHelper.Save();
-        }
-        #endregion
-
-        #region EBattleType
-        protected virtual void OnBattleUnitInit(UnitInit e)
-        {
-            foreach (var ev in EventHelper.GetEvents("OnBattleUnitInit"))
-            {
-                ev.OnBattleUnitInit(e);
-            }
-        }
-
-        protected virtual void OnBattleUnitHit(UnitHit e)
-        {
-            foreach (var ev in EventHelper.GetEvents("OnBattleUnitHit"))
-            {
-                ev.OnBattleUnitHit(e);
-            }
-        }
-
-        protected virtual void OnBattleUnitHitDynIntHandler(UnitHitDynIntHandler e)
-        {
-            foreach (var ev in EventHelper.GetEvents("OnBattleUnitHitDynIntHandler"))
-            {
-                ev.OnBattleUnitHitDynIntHandler(e);
-            }
-        }
-
-        protected virtual void OnBattleUnitShieldHitDynIntHandler(UnitShieldHitDynIntHandler e)
-        {
-            foreach (var ev in EventHelper.GetEvents("OnBattleUnitShieldHitDynIntHandler"))
-            {
-                ev.OnBattleUnitShieldHitDynIntHandler(e);
-            }
-        }
-
-        protected virtual void OnBattleUnitUseProp(UnitUseProp e)
-        {
-            foreach (var ev in EventHelper.GetEvents("OnBattleUnitUseProp"))
-            {
-                ev.OnBattleUnitUseProp(e);
-            }
-        }
-
-        protected virtual void OnBattleUnitUseSkill(UnitUseSkill e)
-        {
-            foreach (var ev in EventHelper.GetEvents("OnBattleUnitUseSkill"))
-            {
-                ev.OnBattleUnitUseSkill(e);
-            }
-        }
-
-        protected virtual void OnBattleUnitUseStep(UnitUseStep e)
-        {
-            foreach (var ev in EventHelper.GetEvents("OnBattleUnitUseStep"))
-            {
-                ev.OnBattleUnitUseStep(e);
-            }
-        }
-
-        protected virtual void OnBattleUnitDie(UnitDie e)
-        {
-            foreach (var ev in EventHelper.GetEvents("OnBattleUnitDie"))
-            {
-                ev.OnBattleUnitDie(e);
-            }
-        }
-
-        protected virtual void OnBattleUnitDieEnd(ETypeData e)
-        {
-            foreach (var ev in EventHelper.GetEvents("OnBattleUnitDieEnd"))
-            {
-                ev.OnBattleUnitDieEnd(e);
-            }
-        }
-
-        protected virtual void OnBattleUnitAddEffectStart(UnitAddEffectStart e)
-        {
-            foreach (var ev in EventHelper.GetEvents("OnBattleUnitAddEffectStart"))
-            {
-                ev.OnBattleUnitAddEffectStart(e);
-            }
-        }
-
-        protected virtual void OnBattleUnitAddEffect(UnitAddEffect e)
-        {
-            foreach (var ev in EventHelper.GetEvents("OnBattleUnitAddEffect"))
-            {
-                ev.OnBattleUnitAddEffect(e);
-            }
-        }
-
-        protected virtual void OnBattleSetUnitType(SetUnitType e)
-        {
-            foreach (var ev in EventHelper.GetEvents("OnBattleSetUnitType"))
-            {
-                ev.OnBattleSetUnitType(e);
-            }
-        }
-
-        protected virtual void OnBattleStart(ETypeData e)
-        {
-            foreach (var ev in EventHelper.GetEvents("OnBattleStart"))
-            {
-                ev.OnBattleStart(e);
-            }
-        }
-
-        protected virtual void OnBattleEnd(BattleEnd e)
-        {
-            foreach (var ev in EventHelper.GetEvents("OnBattleEnd"))
-            {
-                ev.OnBattleEnd(e);
-            }
-        }
-
-        protected virtual void OnBattleExit(ETypeData e)
-        {
-            foreach (var ev in EventHelper.GetEvents("OnBattleExit"))
-            {
-                ev.OnBattleExit(e);
-            }
-        }
-        #endregion
-        #endregion
     }
 
     public abstract class ModMaster<T> : ModMaster where T : ModSettings
     {
-        protected override void OnInitWorld(ETypeData e)
+        public override void OnInitWorld(ETypeData e)
         {
             ModSettings.CreateIfNotExists<T>();
         }

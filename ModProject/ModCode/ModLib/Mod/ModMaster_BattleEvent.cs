@@ -1,0 +1,228 @@
+﻿using EBattleTypeData;
+using Newtonsoft.Json;
+using System.Collections.Generic;
+using UnityEngine;
+
+namespace ModLib.Mod
+{
+    public abstract partial class ModMaster : MonoBehaviour
+    {
+        private readonly IList<string> BattleCheckList = new List<string>();
+
+        #region ModLib - Handlers
+        public virtual void _OnBattleUnitInit(ETypeData e)
+        {
+            CallEvents<UnitInit>("OnBattleUnitInit", e, true, false);
+        }
+
+        public virtual void _OnBattleUnitHit(ETypeData e)
+        {
+            CallEvents<UnitHit>("OnBattleUnitHit", e, true, false);
+        }
+
+        public virtual void _OnBattleUnitHitDynIntHandler(ETypeData e)
+        {
+            CallEvents<UnitHitDynIntHandler>("OnBattleUnitHitDynIntHandler", e, true, false);
+        }
+
+        public virtual void _OnBattleUnitShieldHitDynIntHandler(ETypeData e)
+        {
+            CallEvents<UnitShieldHitDynIntHandler>("OnBattleUnitShieldHitDynIntHandler", e, true, false);
+        }
+
+        public virtual void _OnBattleUnitUseProp(ETypeData e)
+        {
+            CallEvents<UnitUseProp>("OnBattleUnitUseProp", e, true, false);
+        }
+
+        public virtual void _OnBattleUnitUseSkill(ETypeData e)
+        {
+            CallEvents<UnitUseSkill>("OnBattleUnitUseSkill", e, true, false);
+        }
+
+        public virtual void _OnBattleUnitUseStep(ETypeData e)
+        {
+            CallEvents<UnitUseStep>("OnBattleUnitUseStep", e, true, false);
+        }
+
+        public virtual void _OnBattleUnitDie(ETypeData e)
+        {
+            CallEvents<UnitDie>("OnBattleUnitDie", e, true, false);
+        }
+
+        public virtual void _OnBattleUnitDieEnd(ETypeData e)
+        {
+            CallEvents<ETypeData>("OnBattleUnitDieEnd", e, true, false);
+        }
+
+        public virtual void _OnBattleUnitAddEffectStart(ETypeData e)
+        {
+            CallEvents<UnitAddEffectStart>("OnBattleUnitAddEffectStart", e, true, false);
+        }
+
+        public virtual void _OnBattleUnitAddEffect(ETypeData e)
+        {
+            CallEvents<UnitAddEffect>("OnBattleUnitAddEffect", e, true, false);
+        }
+
+        public virtual void _OnBattleUnitAddHP(ETypeData e)
+        {
+            CallEvents<UnitAddHP>("OnBattleUnitAddHP", e, true, false);
+        }
+
+        public virtual void _OnBattleUnitUpdateProperty(ETypeData e)
+        {
+            CallEvents<UnitUpdateProperty>("OnBattleUnitUpdateProperty", e, true, false);
+        }
+
+        public virtual void _OnBattleSetUnitType(ETypeData e)
+        {
+            var x = e.TryCast<SetUnitType>();
+            if (x != null && !BattleCheckList.Contains(x.unit.data.createUnitSoleID))
+            {
+                BattleCheckList.Add(x.unit.data.createUnitSoleID);
+                CallEvents<UnitCtrlBase>("OnIntoBattleFirst", x.unit, true, false);
+            }
+            CallEvents<SetUnitType>("OnBattleSetUnitType", e, true, false);
+        }
+
+        public virtual void _OnBattleStart(ETypeData e)
+        {
+            BattleCheckList.Clear();
+            CallEvents<ETypeData>("OnBattleStart", e, true, false);
+        }
+
+        public virtual void _OnBattleEnd(ETypeData e)
+        {
+            CallEvents<BattleEnd>("OnBattleEnd", e, true, false);
+        }
+
+        public virtual void _OnBattleEndFront(ETypeData e)
+        {
+            CallEvents<ETypeData>("OnBattleEndFront", e, true, false);
+        }
+
+        public virtual void _OnBattleEndHandler(ETypeData e)
+        {
+            CallEvents<BattleEndHandler>("OnBattleEndHandler", e, true, false);
+        }
+
+        public virtual void _OnBattleEscapeFailed(ETypeData e)
+        {
+            CallEvents<ETypeData>("OnBattleEscapeFailed", e, true, false);
+        }
+
+        public virtual void _OnBattleExit(ETypeData e)
+        {
+            CallEvents<ETypeData>("OnBattleExit", e, true, false);
+        }
+        #endregion
+
+        #region ModLib - Events
+        public virtual void OnBattleUnitInit(UnitInit e)
+        {
+            EventHelper.RunMinorEvents(e);
+        }
+
+        public virtual void OnBattleUnitHit(UnitHit e)
+        {
+            EventHelper.RunMinorEvents(e);
+        }
+
+        public virtual void OnBattleUnitHitDynIntHandler(UnitHitDynIntHandler e)
+        {
+            EventHelper.RunMinorEvents(e);
+        }
+
+        public virtual void OnBattleUnitShieldHitDynIntHandler(UnitShieldHitDynIntHandler e)
+        {
+            EventHelper.RunMinorEvents(e);
+        }
+
+        public virtual void OnBattleUnitUseProp(UnitUseProp e)
+        {
+            EventHelper.RunMinorEvents(e);
+        }
+
+        public virtual void OnBattleUnitUseSkill(UnitUseSkill e)
+        {
+            EventHelper.RunMinorEvents(e);
+        }
+
+        public virtual void OnBattleUnitUseStep(UnitUseStep e)
+        {
+            EventHelper.RunMinorEvents(e);
+        }
+
+        public virtual void OnBattleUnitDie(UnitDie e)
+        {
+            EventHelper.RunMinorEvents(e);
+        }
+
+        public virtual void OnBattleUnitDieEnd(ETypeData e)
+        {
+            EventHelper.RunMinorEvents(e);
+        }
+
+        public virtual void OnBattleUnitAddEffectStart(UnitAddEffectStart e)
+        {
+            EventHelper.RunMinorEvents(e);
+        }
+
+        public virtual void OnBattleUnitAddEffect(UnitAddEffect e)
+        {
+            EventHelper.RunMinorEvents(e);
+        }
+
+        public virtual void OnBattleUnitAddHP(UnitAddHP e)
+        {
+            EventHelper.RunMinorEvents(e);
+        }
+
+        public virtual void OnBattleUnitUpdateProperty(UnitUpdateProperty e)
+        {
+            EventHelper.RunMinorEvents(e);
+        }
+
+        public virtual void OnBattleSetUnitType(SetUnitType e)
+        {
+            EventHelper.RunMinorEvents(e);
+        }
+
+        public virtual void OnIntoBattleFirst(UnitCtrlBase e)
+        {
+            EventHelper.RunMinorEvents(e);
+        }
+
+        public virtual void OnBattleStart(ETypeData e)
+        {
+            EventHelper.RunMinorEvents(e);
+        }
+
+        public virtual void OnBattleEnd(BattleEnd e)
+        {
+            EventHelper.RunMinorEvents(e);
+        }
+
+        public virtual void OnBattleEndFront(ETypeData e)
+        {
+            EventHelper.RunMinorEvents(e);
+        }
+
+        public virtual void OnBattleEndHandler(BattleEndHandler e)
+        {
+            EventHelper.RunMinorEvents(e);
+        }
+
+        public virtual void OnBattleEscapeFailed(ETypeData e)
+        {
+            EventHelper.RunMinorEvents(e);
+        }
+
+        public virtual void OnBattleExit(ETypeData e)
+        {
+            EventHelper.RunMinorEvents(e);
+        }
+        #endregion
+    }
+}
