@@ -2,6 +2,7 @@
 using ModLib.Object;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text;
 
 namespace MOD_nE7UL2.Enum
 {
@@ -85,10 +86,15 @@ namespace MOD_nE7UL2.Enum
 
         public void Cal(WorldUnitBase wunit)
         {
+            var builder = new StringBuilder();
             foreach (var item in PropIncRatio)
             {
-                wunit.AddProperty<int>(item.Values[0] as UnitPropertyEnum, (int)item.Values[1]);
+                var property = item.Values[0] as UnitPropertyEnum;
+                var value = (int)item.Values[1];
+                wunit.AddProperty<int>(property, value);
+                builder.Append($"+{value}{property.Name} ");
             }
+            DebugHelper.WriteLine($"QiCulEvent: {builder}");
         }
     }
 }
