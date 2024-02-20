@@ -8,7 +8,7 @@ using UnityEngine;
 namespace MOD_nE7UL2.Mod
 {
     [Cache(ModConst.QI_CUL_EVENT_KEY)]
-    public sealed class QiCulEvent : ModEvent
+    public class QiCulEvent : ModEvent
     {
         private const int LEAST_ANIMA = 100;
 
@@ -17,8 +17,6 @@ namespace MOD_nE7UL2.Mod
 
         public override void OnMonthly()
         {
-            DebugHelper.WriteLine($"Start: QiCulEvent: CurPoint=({CurPoint.x}, {CurPoint.y}), CurAnima={CurAnima}");
-
             var player = g.world.playerUnit;
             var playerData = player.data.unitData;
             var playerPoint = playerData.GetPoint();
@@ -42,8 +40,6 @@ namespace MOD_nE7UL2.Mod
                 CurAnima = playerData.pointGridData.anima;
                 //playerData.pointGridData.animaMax = int.MaxValue;
             }
-
-            DebugHelper.WriteLine($"End: QiCulEvent: CurPoint=({CurPoint.x}, {CurPoint.y}), CurAnima={CurAnima}");
         }
 
         public void UpProp()

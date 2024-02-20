@@ -1,5 +1,4 @@
-﻿using EBattleTypeData;
-using MOD_nE7UL2.Const;
+﻿using MOD_nE7UL2.Const;
 using ModLib.Mod;
 using System.Collections.Generic;
 using UnityEngine;
@@ -7,7 +6,7 @@ using UnityEngine;
 namespace MOD_nE7UL2.Mod
 {
     [Cache(ModConst.MONST_STRONGER_EVENT_KEY)]
-    public sealed class MonstStrongerEvent : ModEvent
+    public class MonstStrongerEvent : ModEvent
     {
         public static readonly IDictionary<MonstType, float> GROW_RATIO = new Dictionary<MonstType, float>
         {
@@ -23,13 +22,14 @@ namespace MOD_nE7UL2.Mod
             Counter++;
         }
 
-        public override void OnBattleSetUnitType(SetUnitType e)
+        public override void OnIntoBattleFirst(UnitCtrlBase e)
         {
-            var monstData = e?.unit?.data?.TryCast<UnitDataMonst>();
+            var monstData = e?.data?.TryCast<UnitDataMonst>();
             if (monstData != null && GROW_RATIO.ContainsKey(monstData.monstType))
             {
-                monstData.attack.baseValue += (int)(monstData.attack.baseValue * (Counter * GROW_RATIO[monstData.monstType]));
-                monstData.maxHP.baseValue += (int)(monstData.attack.baseValue * (Counter * GROW_RATIO[monstData.monstType]));
+                var ratio = Counter * GROW_RATIO[monstData.monstType];
+                monstData.attack.baseValue += (int)(monstData.attack.baseValue * ratio);
+                monstData.maxHP.baseValue += (int)(monstData.attack.baseValue * ratio);
             }
         }
     }

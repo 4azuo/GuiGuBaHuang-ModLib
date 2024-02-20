@@ -1,4 +1,5 @@
-﻿using ModLib.Mod;
+﻿using EGameTypeData;
+using ModLib.Mod;
 using System.Linq;
 
 namespace MOD_nE7UL2
@@ -9,7 +10,7 @@ namespace MOD_nE7UL2
 
         public override string ModId => "nE7UL2";
 
-        protected override void OnInitConf()
+        public override void OnInitConf()
         {
             base.OnInitConf();
             //skillmastery need more exp
