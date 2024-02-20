@@ -13,6 +13,7 @@ public class TraceAttribute : OnMethodBoundaryAspect
     public string ExitCustomFormatValue { get; set; } = null; //sample: "{1}=PROPERTY_NAME|{2}=PROPERTY_NAME"
     public string ExitDefaultFormat { get; } = " => {0}";
     public bool IgnoreExitMsg { get; set; } = false;
+    public bool IgnoreException { get; set; } = true;
     public static bool Enable { get; set; } = true;
 
     private int _entryPos;
@@ -30,6 +31,14 @@ public class TraceAttribute : OnMethodBoundaryAspect
         if (Enable && !IgnoreExitMsg && args.Method.GetCustomAttribute<TraceIgnoreAttribute>() == null)
         {
             DebugHelper.WriteAt(_entryPos, GetReturnLog(args));
+        }
+    }
+
+    public override void OnException(MethodExecutionArgs args)
+    {
+        if (Enable && !IgnoreException && args.Method.GetCustomAttribute<TraceIgnoreAttribute>() == null)
+        {
+            DebugHelper.WriteLine(args.Exception);
         }
     }
 
