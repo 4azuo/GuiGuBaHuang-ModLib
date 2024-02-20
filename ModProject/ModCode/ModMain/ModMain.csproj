@@ -41,6 +41,9 @@
     <Compile Include="Enum\UnitTypeLuckEnum.cs" />
     <Compile Include="Enum\UnitTypeEnum.cs" />
     <Compile Include="ModMain.cs" />
+    <Compile Include="Mod\RevengeEvent.cs" />
+    <Compile Include="Mod\BattleManashieldEvent.cs" />
+    <Compile Include="Mod\NpcAutoCulEvent.cs" />
     <Compile Include="Mod\NpcAutoUpGradeEvent.cs" />
     <Compile Include="Mod\NpcUpgradeSkillEvent.cs" />
     <Compile Include="Mod\MonstStrongerEvent.cs" />

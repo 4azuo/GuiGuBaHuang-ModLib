@@ -10,7 +10,7 @@ using UnityEngine;
 namespace MOD_nE7UL2.Mod
 {
     [Cache(ModConst.BATTLE_REWARD_EVENT_KEY)]
-    public sealed class BattleRewardEvent : ModEvent
+    public class BattleRewardEvent : ModEvent
     {
         public override int OrderIndex => 2;
 
@@ -152,13 +152,20 @@ namespace MOD_nE7UL2.Mod
 
         public override void OnBattleUnitDie(UnitDie e)
         {
-            var dieUnit = e.unit.data.TryCast<UnitDataHuman>();
-            if (dieUnit != null)
+            var dieUnit = e?.unit?.data?.TryCast<UnitDataHuman>();
+            if (dieUnit?.worldUnitData != null)
             {
-                IsPlayerDie = IsPlayerDie || dieUnit.unitType == UnitType.Player;
-                if (!IsPlayerDie)
+                if (dieUnit.unitType == UnitType.Player)
                 {
-                    g.world.playerUnit.AddProperty<int>(UnitPropertyEnum.Life, dieUnit.worldUnitData.unit.GetProperty<int>(UnitPropertyEnum.Life) / 50);
+                    if (g.world.battle.data.isRealBattle)
+                        IsPlayerDie = true;
+                }
+
+                var attackUnitData = e?.hitData?.attackUnit?.data?.TryCast<UnitDataHuman>();
+                if (attackUnitData?.worldUnitData?.unit?.IsPlayer() ?? false)
+                {
+                    var attackUnit = attackUnitData.worldUnitData.unit;
+                    g.world.playerUnit.AddProperty<int>(UnitPropertyEnum.Life, attackUnit.GetProperty<int>(UnitPropertyEnum.Life) / (50 + (g.game.data.dataWorld.data.gameLevel.Parse<int>() * 25)));
                 }
             }
         }

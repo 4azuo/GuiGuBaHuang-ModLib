@@ -7,14 +7,12 @@ using System.Collections.Generic;
 namespace MOD_nE7UL2.Mod
 {
     [Cache(ModConst.UNIT_TYPE_EVENT_KEY)]
-    public sealed class UnitTypeEvent : ModEvent
+    public class UnitTypeEvent : ModEvent
     {
         public IDictionary<string, UnitTypeEnum> UnitTypeDic { get; set; } = new Dictionary<string, UnitTypeEnum>();
 
         public override void OnMonthly()
         {
-            DebugHelper.WriteLine($"Start: UnitTypeEvent: Count={UnitTypeDic.Count}");
-
             foreach (var wunit in g.world.unit.GetUnits())
             {
                 //add luck
@@ -28,8 +26,6 @@ namespace MOD_nE7UL2.Mod
                     continue;
                 AddProp(wunit);
             }
-
-            DebugHelper.WriteLine($"End: UnitTypeEvent: Count={UnitTypeDic.Count}, PlayerType={UnitTypeDic[g.world.playerUnit.GetUnitId()].Name}");
         }
 
         public static UnitTypeEnum AddRandomUnitType(WorldUnitBase wunit)

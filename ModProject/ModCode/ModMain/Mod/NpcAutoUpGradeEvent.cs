@@ -10,7 +10,7 @@ namespace MOD_nE7UL2.Mod
 {
     //TESTING
     //[Cache(ModConst.NPC_AUTO_UP_GRADE_EVENT)]
-    //public sealed class NpcAutoUpGradeEvent : ModEvent
+    //public class NpcAutoUpGradeEvent : ModEvent
     //{
     //    public IDictionary<string, double> NpcUpGradeRatio { get; set; } = new Dictionary<string, double>();
 
