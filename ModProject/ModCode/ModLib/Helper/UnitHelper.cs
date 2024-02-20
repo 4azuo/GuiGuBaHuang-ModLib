@@ -15,6 +15,11 @@ public static class UnitHelper
         return wunit.data.unitData.unitID == g.world.playerUnit.data.unitData.unitID;
     }
 
+    public static bool IsHero(this WorldUnitBase wunit)
+    {
+        return wunit.data.unitData.heart.IsHeroes();
+    }
+
     //public static DataUnit.LuckData GetNatureLuck(this WorldUnitBase wunit, int luckId)
     //{
     //    return wunit.data.unitData.propertyData.bornLuck.FirstOrDefault(x => x.id == luckId);
