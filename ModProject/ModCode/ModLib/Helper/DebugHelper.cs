@@ -85,6 +85,8 @@ public static class DebugHelper
 
     private static string Now()
     {
-        return $"[{DateTime.Now:HH:mm:ss.fff} ({(g.world.run.roundMonth / 12) + 1:0000}/{(g.world.run.roundMonth % 12) + 1:00}/{g.world.run.roundDay + 1:00})]";
+        if (GameHelper.IsInGame())
+            return $"[{DateTime.Now:HH:mm:ss.fff} ({(g.world.run.roundMonth / 12) + 1:0000}/{(g.world.run.roundMonth % 12) + 1:00}/{g.world.run.roundDay + 1:00})]";
+        return $"[{DateTime.Now:HH:mm:ss.fff}]";
     }
 }

@@ -35,12 +35,16 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="Const\ModConst.cs" />
+    <Compile Include="Enum\ModItemTypeEnum.cs" />
     <Compile Include="Enum\AnimaIncPropEnum.cs" />
     <Compile Include="Enum\AnimaUpGradeEnum.cs" />
     <Compile Include="Enum\NpcUpGradeRatioEnum.cs" />
     <Compile Include="Enum\UnitTypeLuckEnum.cs" />
     <Compile Include="Enum\UnitTypeEnum.cs" />
+    <Compile Include="Helper\PriceHelper.cs" />
     <Compile Include="ModMain.cs" />
+    <Compile Include="Mod\DebugEvent.cs" />
+    <Compile Include="Mod\RealTrialEvent.cs" />
     <Compile Include="Mod\RevengeEvent.cs" />
     <Compile Include="Mod\BattleManashieldEvent.cs" />
     <Compile Include="Mod\NpcAutoCulEvent.cs" />

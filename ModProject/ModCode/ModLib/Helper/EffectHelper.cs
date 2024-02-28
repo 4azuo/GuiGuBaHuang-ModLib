@@ -1,6 +1,4 @@
-﻿using ModLib.Object;
-using System;
-using System.Reflection;
+﻿using System.Reflection;
 
 //Effect3017: Shield
 public static class EffectHelper
@@ -20,5 +18,18 @@ public static class EffectHelper
                 }
             }
         }
+    }
+
+    public static int GetEfx3Value(this ConfRoleEffectItem roleEfx)
+    {
+        var info = roleEfx.value.Split('_');
+        return info[2].Parse<int>();
+    }
+
+    public static void SetEfx3Value(this ConfRoleEffectItem roleEfx, int value)
+    {
+        var info = roleEfx.value.Split('_');
+        info[2] = value.ToString();
+        roleEfx.value = string.Join("_", info);
     }
 }

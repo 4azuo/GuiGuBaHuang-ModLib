@@ -1,18 +1,16 @@
-﻿
-using HarmonyLib;
-using ModLib.Enum;
-using System.Linq;
+﻿using ModLib.Enum;
+using System;
 
 public static class UnitHelper
 {
     public static string GetUnitId(this WorldUnitBase wunit)
     {
-        return wunit.data.unitData.unitID;
+        return wunit?.data?.unitData?.unitID;
     }
 
     public static bool IsPlayer(this WorldUnitBase wunit)
     {
-        return wunit.data.unitData.unitID == g.world.playerUnit.data.unitData.unitID;
+        return wunit.GetUnitId() == g.world.playerUnit.data.unitData.unitID;
     }
 
     public static bool IsHero(this WorldUnitBase wunit)
@@ -43,6 +41,11 @@ public static class UnitHelper
     public static int AddLuck(this WorldUnitBase wunit, int luckId, int dur = -1)
     {
         return wunit.CreateAction(new UnitActionLuckAdd(luckId, dur));
+    }
+
+    public static int DelLuck(this WorldUnitBase wunit, int luckId)
+    {
+        return wunit.CreateAction(new UnitActionLuckDel(luckId));
     }
 
     //public static void AddNatureLuck(this WorldUnitBase wunit, int luckId, AddLuckOptions option = AddLuckOptions.Dup)
@@ -124,5 +127,25 @@ public static class UnitHelper
     public static int GetNeedExpToLevelUp(this WorldUnitBase wunit)
     {
         return wunit.GetProperty<int>(UnitPropertyEnum.Exp) - g.conf.roleGrade.GetItem(wunit.GetProperty<int>(UnitPropertyEnum.GradeID)).exp;
+    }
+
+    public static void AddExp(this WorldUnitBase wunit, int exp)
+    {
+        var curExp = wunit.GetProperty<int>(UnitPropertyEnum.Exp);
+        var addExp = Math.Max(Math.Min(curExp + exp, wunit.GetMaxExpCurrentGrade()), wunit.GetMinExpCurrentGrade());
+        wunit.SetProperty<int>(UnitPropertyEnum.Exp, addExp);
+
+        var gradeEnum = GradePhaseEnum.GetEnumByVal<GradePhaseEnum>(wunit.GetProperty<int>(UnitPropertyEnum.GradeID).ToString());
+        if (gradeEnum != null && gradeEnum.Bottleneck != BottleneckEnum.None)
+        {
+            if (addExp == wunit.GetMaxExpCurrentGrade())
+            {
+                wunit.AddLuck((int)gradeEnum.Bottleneck);
+            }
+            else
+            {
+                wunit.DelLuck((int)gradeEnum.Bottleneck);
+            }
+        }
     }
 }

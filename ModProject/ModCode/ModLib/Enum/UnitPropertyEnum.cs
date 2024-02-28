@@ -77,7 +77,7 @@ namespace ModLib.Enum
 
         public string PropName { get; private set; }
         public IntPtr PropAddr { get; private set; }
-        private UnitPropertyEnum(string propName, IntPtr propAddr) : base()
+        private UnitPropertyEnum(string propName, IntPtr propAddr) : base(propName)
         {
             PropName = propName;
             PropAddr = propAddr;

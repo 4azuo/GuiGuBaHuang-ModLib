@@ -2,7 +2,9 @@
 using MOD_nE7UL2.Enum;
 using ModLib.Enum;
 using ModLib.Mod;
+using System;
 using System.Linq;
+using System.Numerics;
 using UnityEngine;
 
 namespace MOD_nE7UL2.Mod
@@ -44,8 +46,12 @@ namespace MOD_nE7UL2.Mod
 
         public void UpProp()
         {
-            var stt = AnimaIncPropEnum.GetAllEnums<AnimaIncPropEnum>().OrderByDescending(x => x.Value).FirstOrDefault(x => CurAnima > int.Parse(x.Value));
-            stt?.Cal(g.world.playerUnit);
+            //var stt = AnimaIncPropEnum.GetAllEnums<AnimaIncPropEnum>().OrderByDescending(x => x.Value).FirstOrDefault(x => CurAnima > int.Parse(x.Value));
+            //stt?.Cal(g.world.playerUnit);
+
+            var player = g.world.playerUnit;
+            var playerUnitType = EventHelper.GetEvent<UnitTypeEvent>(ModConst.UNIT_TYPE_EVENT_KEY);
+            playerUnitType.AddProp(player, Math.Min(0.30f + (CurAnima / 15000), 1.00f));
         }
 
         public void UpGrade()

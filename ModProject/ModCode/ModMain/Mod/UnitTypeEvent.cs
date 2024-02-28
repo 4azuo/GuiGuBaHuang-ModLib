@@ -28,6 +28,17 @@ namespace MOD_nE7UL2.Mod
             }
         }
 
+        public override void OnYearly()
+        {
+            foreach (var wunit in g.world.unit.GetUnits())
+            {
+                if (!wunit.IsPlayer() && UnitTypeDic.ContainsKey(wunit.GetUnitId()) && UnitTypeDic[wunit.GetUnitId()] == UnitTypeEnum.SpeedUnit)
+                {
+                    wunit.AddProperty<int>(UnitPropertyEnum.MoveSpeed, 1);
+                }
+            }
+        }
+
         public static UnitTypeEnum AddRandomUnitType(WorldUnitBase wunit)
         {
             var r = CommonTool.Random(0.00f, 100.00f);
@@ -70,12 +81,15 @@ namespace MOD_nE7UL2.Mod
             return t;
         }
 
-        public void AddProp(WorldUnitBase wunit)
+        public void AddProp(WorldUnitBase wunit, float ratio = 1.00f)
         {
-            var utype = UnitTypeDic[wunit.GetUnitId()];
-            foreach (var p in utype.PropIncRatio)
+            if (UnitTypeDic.ContainsKey(wunit.GetUnitId()))
             {
-                wunit.SetProperty(p.Values[0] as UnitPropertyEnum, utype.CalType(wunit, p.Values[0] as UnitPropertyEnum));
+                var utype = UnitTypeDic[wunit.GetUnitId()];
+                foreach (var p in utype.PropIncRatio)
+                {
+                    wunit.SetProperty(p.Values[0] as UnitPropertyEnum, utype.CalType(wunit, p.Values[0] as UnitPropertyEnum, ratio));
+                }
             }
         }
     }

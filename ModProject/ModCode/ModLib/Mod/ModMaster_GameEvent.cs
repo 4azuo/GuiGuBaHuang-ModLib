@@ -11,56 +11,38 @@ namespace ModLib.Mod
         {
             if (!initMod)
             {
-                try
-                {
-                    OnInitConf();
-                    OnInitEObj();
-                    DebugHelper.Save();
-                    initMod = true;
-                }
-                catch (Exception ex)
-                {
-                    DebugHelper.WriteLine(ex);
-                }
+                CallEvents("OnInitConf");
+                CallEvents("OnInitEObj");
+                DebugHelper.Save();
+                initMod = true;
             }
 
             if (GameHelper.IsInGame())
             {
-                try
+                var stt = ModSettings.GetSettings<ModSettings>();
+
+                if (stt.LoadGameBefore)
                 {
-                    var stt = ModSettings.GetSettings<ModSettings>();
-
-                    if (stt.LoadGameBefore)
-                    {
-                        OnLoadGameBefore();
-
-                        stt.LoadGameBefore = false;
-                    }
-
-                    if (stt.LoadGame)
-                    {
-                        OnLoadGame();
-
-                        stt.LoadGame = false;
-                    }
-
-                    if (stt.LoadGameAfter)
-                    {
-                        OnLoadGameAfter();
-
-                        stt.LoadGameAfter = false;
-                    }
-
-                    if (stt.LoadGameFirst)
-                    {
-                        OnLoadGameFirst();
-
-                        stt.LoadGameFirst = false;
-                    }
+                    CallEvents("OnLoadGameBefore");
+                    stt.LoadGameBefore = false;
                 }
-                catch (Exception ex)
+
+                if (stt.LoadGame)
                 {
-                    DebugHelper.WriteLine(ex);
+                    CallEvents("OnLoadGame");
+                    stt.LoadGame = false;
+                }
+
+                if (stt.LoadGameAfter)
+                {
+                    CallEvents("OnLoadGameAfter");
+                    stt.LoadGameAfter = false;
+                }
+
+                if (stt.LoadGameFirst)
+                {
+                    CallEvents("OnLoadGameFirst");
+                    stt.LoadGameFirst = false;
                 }
             }
             else
@@ -117,6 +99,10 @@ namespace ModLib.Mod
                             OnFirstMonth();
                         }
                         OnMonthly();
+                        if (g.world.run.roundMonth % 12 == 0)
+                        {
+                            OnYearly();
+                        }
                     }
 
                     //save
@@ -234,6 +220,11 @@ namespace ModLib.Mod
         }
 
         public virtual void OnFirstMonth()
+        {
+            EventHelper.RunMinorEvents();
+        }
+
+        public virtual void OnYearly()
         {
             EventHelper.RunMinorEvents();
         }

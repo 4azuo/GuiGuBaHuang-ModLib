@@ -60,34 +60,27 @@ public static class ObjectHelper
 
     public static object GetValue(this object obj, string fieldNm, bool ignoreError = false)
     {
-        try
-        {
-            return obj.GetType().GetProperty(fieldNm).GetValue(obj, null);
-        }
-        catch (Exception e)
+        var prop = obj.GetType().GetProperty(fieldNm);
+        if (prop == null)
         {
             if (ignoreError)
                 return null;
-            else
-                throw e;
+            throw new NullReferenceException();
         }
+        return prop.GetValue(obj);
     }
 
     public static void SetValue(this object obj, string fieldNm, object newValue, bool ignoreError = false)
     {
-        try
-        {
-            var prop = obj.GetType().GetProperty(fieldNm);
-            var type = prop.PropertyType.IsGenericType && prop.PropertyType.GetGenericTypeDefinition() == typeof(Nullable<>) ? Nullable.GetUnderlyingType(prop.PropertyType) : prop.PropertyType;
-            prop.SetValue(obj, ParseHelper.ParseUnknown(newValue, type), null);
-        }
-        catch (Exception e)
+        var prop = obj.GetType().GetProperty(fieldNm);
+        if (prop == null)
         {
             if (ignoreError)
                 return;
-            else
-                throw e;
+            throw new NullReferenceException();
         }
+        var type = prop.PropertyType.IsGenericType && prop.PropertyType.GetGenericTypeDefinition() == typeof(Nullable<>) ? Nullable.GetUnderlyingType(prop.PropertyType) : prop.PropertyType;
+        prop.SetValue(obj, ParseHelper.ParseUnknown(newValue, type));
     }
 
     public static bool IsDeclaredMethod(this object obj, string medName)
