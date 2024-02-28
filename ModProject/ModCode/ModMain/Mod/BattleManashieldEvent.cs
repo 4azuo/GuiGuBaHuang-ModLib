@@ -23,7 +23,7 @@ namespace MOD_nE7UL2.Mod
                         data = new BattleSkillValueData.Data(),
                     }
                 });
-                Effect3017.AddShield(efx, humanData.unit, MANASHIELD_EFFECT_EFX_ID, humanData.mp / 10, humanData.maxHP.value, int.MaxValue);
+                Effect3017.AddShield(efx, humanData.unit, MANASHIELD_EFFECT_EFX_ID, humanData.mp / 10, humanData.maxHP.value * 2, int.MaxValue);
             }
         }
     }

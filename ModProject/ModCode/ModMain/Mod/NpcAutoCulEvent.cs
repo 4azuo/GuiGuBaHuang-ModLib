@@ -14,14 +14,12 @@ namespace MOD_nE7UL2.Mod
             {
                 if (!wunit.IsPlayer())
                 {
-                    var maxExp = wunit.GetMaxExpCurrentGrade();
-                    var curExp = wunit.GetProperty<int>(UnitPropertyEnum.Exp);
                     var exp = 200.00f * wunit.GetProperty<int>(UnitPropertyEnum.GradeID);
                     if (wunit.IsHero())
                     {
                         exp *= 1.80f;
                     }
-                    wunit.SetProperty<int>(UnitPropertyEnum.Exp, Math.Min(curExp + exp.Parse<int>(), maxExp));
+                    wunit.AddExp(exp.Parse<int>());
                 }
             }
         }

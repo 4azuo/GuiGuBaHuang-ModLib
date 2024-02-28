@@ -23,6 +23,7 @@ namespace ModLib.Mod
         #endregion
 
         #region EMapType
+        public virtual void OnPlayerOpenTreeVault(ETypeData e) { }
         public virtual void OnPlayerEquipCloth(ETypeData e) { }
         public virtual void OnPlayerInMonstArea(ETypeData e) { }
         public virtual void OnPlayerRoleEscapeInMap(ETypeData e) { }
@@ -42,6 +43,7 @@ namespace ModLib.Mod
         public virtual void OnLoadScene(LoadScene e) { }
         public virtual void OnIntoWorld(ETypeData e) { }
         public virtual void OnFirstMonth() { }
+        public virtual void OnYearly() { }
         public virtual void OnMonthly() { }
         public virtual void OnSave(ETypeData e) { }
         public virtual void OnOpenDrama(OpenDrama e) { }

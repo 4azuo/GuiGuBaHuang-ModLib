@@ -13,70 +13,70 @@
 		"removeSave": "0",
 		"rebuildTime": "0",
 		"unlock": "0_0",
-		"dropRate": "300"
+		"dropRate": "250"
 	},
 	{
 		"id": "2",
 		"refillBlockRequire": "90",
 		"blockAttribute": "90",
-		"price": "150",
+		"price": "110",
 		"roleAttr": "0",
 		"fishJade": "9999",
-		"unitAttr": "atk_90|def_85|hp_100|power_120",
+		"unitAttr": "atk_90|def_85|hp_105|power_120",
 		"eliteAttr": "hp_25|skillDmg_20",
 		"bossAttr": "hp_30|skillDmg_30",
 		"totalPoint": "110",
 		"removeSave": "0",
 		"rebuildTime": "0",
 		"unlock": "0_0",
-		"dropRate": "250"
+		"dropRate": "180"
 	},
 	{
 		"id": "3",
 		"refillBlockRequire": "80",
 		"blockAttribute": "80",
-		"price": "200",
+		"price": "120",
 		"roleAttr": "0",
 		"fishJade": "9999",
-		"unitAttr": "atk_90|def_85|hp_140|skillDmg_120|power_150",
+		"unitAttr": "atk_90|def_85|hp_150|skillDmg_120|power_150",
 		"eliteAttr": "atk_6|hp_30|skillDmg_30",
 		"bossAttr": "atk_6|hp_35|skillDmg_50",
 		"totalPoint": "120",
 		"removeSave": "0",
 		"rebuildTime": "0",
 		"unlock": "0_0",
-		"dropRate": "200"
+		"dropRate": "130"
 	},
 	{
 		"id": "4",
 		"refillBlockRequire": "70",
 		"blockAttribute": "70",
-		"price": "300",
+		"price": "135",
 		"roleAttr": "0",
 		"fishJade": "9999",
-		"unitAttr": "atk_95|def_95|hp_170|skillDmg_140|power_180",
-		"eliteAttr": "atk_9|hp_60|skillDmg_50",
-		"bossAttr": "atk_6|hp_55|skillDmg_80",
+		"unitAttr": "atk_97|def_97|hp_180|skillDmg_150|power_200",
+		"eliteAttr": "atk_10|hp_70|skillDmg_55",
+		"bossAttr": "atk_6|hp_60|skillDmg_83",
 		"totalPoint": "150",
 		"removeSave": "0",
 		"rebuildTime": "0",
 		"unlock": "0_0",
-		"dropRate": "150"
+		"dropRate": "100"
 	},
 	{
 		"id": "5",
 		"refillBlockRequire": "70",
 		"blockAttribute": "70",
-		"price": "600",
+		"price": "150",
 		"roleAttr": "0",
 		"fishJade": "9999",
-		"unitAttr": "atk_100|def_100|hp_200|skillDmg_150|power_200",
-		"eliteAttr": "atk_15|hp_100|skillDmg_60",
-		"bossAttr": "atk_10|hp_75|skillDmg_85",
+		"unitAttr": "atk_100|def_105|hp_220|skillDmg_150|power_220",
+		"eliteAttr": "atk_20|def_5|hp_110|skillDmg_65|power_20",
+		"bossAttr": "atk_13|def_2|hp_78|skillDmg_90|power_5",
 		"totalPoint": "200",
 		"removeSave": "0",
 		"rebuildTime": "0",
 		"unlock": "0_0",
-		"dropRate": "100"
+		"dropRate": "80"
 	}
 ]

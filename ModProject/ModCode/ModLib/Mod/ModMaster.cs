@@ -34,6 +34,9 @@ namespace ModLib.Mod
             #endregion
 
             #region EMapType
+            var callPlayerOpenTreeVault = (Il2CppSystem.Action<ETypeData>)_OnPlayerOpenTreeVault;
+            g.events.On(EMapType.PlayerOpenTownBuild(2011), callPlayerOpenTreeVault);
+
             var callPlayerEquipCloth = (Il2CppSystem.Action<ETypeData>)_OnPlayerEquipCloth;
             g.events.On(EMapType.PlayerEquipCloth, callPlayerEquipCloth);
 
@@ -168,7 +171,7 @@ namespace ModLib.Mod
             g.events.On(EBattleType.BattleExit, callBattleExit);
             #endregion
 
-            OnInitMod();
+            CallEvents("OnInitMod");
         }
 
         //GameEvent
@@ -187,14 +190,14 @@ namespace ModLib.Mod
 
         private void CallEvents<T>(string methodName, Il2CppObjectBase e, bool isInGame = false, bool isInBattle = false, Func<bool> predicate = null, Action callback = null) where T : Il2CppObjectBase
         {
-            if (!(!isInGame || (isInGame && GameHelper.IsInGame())))
-                return;
-            if (!(!isInBattle || (isInBattle && GameHelper.IsInBattlle())))
-                return;
-            if (!(predicate?.Invoke() ?? true))
-                return;
             try
             {
+                if (!(!isInGame || (isInGame && GameHelper.IsInGame())))
+                    return;
+                if (!(!isInBattle || (isInBattle && GameHelper.IsInBattlle())))
+                    return;
+                if (!(predicate?.Invoke() ?? true))
+                    return;
                 var method = this.GetType().GetMethod(methodName, BindingFlags.Public | BindingFlags.Instance | BindingFlags.FlattenHierarchy);
                 if (method == null)
                 {
@@ -226,6 +229,7 @@ namespace ModLib.Mod
         public override void OnInitWorld(ETypeData e)
         {
             ModSettings.CreateIfNotExists<T>();
+            EventHelper.RunMinorEvents(e);
         }
     }
 }

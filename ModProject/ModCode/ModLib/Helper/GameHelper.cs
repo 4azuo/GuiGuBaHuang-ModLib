@@ -14,7 +14,7 @@ public static class GameHelper
 
     public static bool IsInGame()
     {
-        return g.world.isIntoWorld;
+        return g.world.isIntoWorld && g.world?.playerUnit?.GetUnitId() != null;
     }
 
     public static bool IsInBattlle()

@@ -20,36 +20,36 @@ namespace MOD_nE7UL2.Mod
         private const string PLAYER_UP_ATK_FACTOR = "UpAtkFactor";
         private const string PLAYER_UP_DEF_FACTOR = "UpDefFactor";
         private const string PLAYER_UP_MHP_FACTOR = "UpMHpFactor";
-        private const string PLAYER_UP_MAP_FACTOR = "UpMApFactor";
+        private const string PLAYER_UP_MMP_FACTOR = "UpMMpFactor";
 
         private const string PLAYER_UP_ATK_RATIO = "UpAtkRatio";
         private const string PLAYER_UP_DEF_RATIO = "UpDefRatio";
         private const string PLAYER_UP_MHP_RATIO = "UpMHpRatio";
-        private const string PLAYER_UP_MAP_RATIO = "UpMApRatio";
+        private const string PLAYER_UP_MMP_RATIO = "UpMMpRatio";
 
         private const string PLAYER_UP_ATK_LIMIT = "UpAtkLimit";
         private const string PLAYER_UP_DEF_LIMIT = "UpDefLimit";
         private const string PLAYER_UP_MHP_LIMIT = "UpMHpLimit";
-        private const string PLAYER_UP_MAP_LIMIT = "UpMApLimit";
+        private const string PLAYER_UP_MMP_LIMIT = "UpMMpLimit";
         public IDictionary<string, double> TraningValues { get; set; } = new Dictionary<string, double>
         {
             [PLAYER_D_DMG_KEY] = 0,
             [PLAYER_R_DMG_KEY] = 0,
 
-            [PLAYER_UP_ATK_FACTOR] = 100,
-            [PLAYER_UP_DEF_FACTOR] = 100,
+            [PLAYER_UP_ATK_FACTOR] = 50,
+            [PLAYER_UP_DEF_FACTOR] = 90,
             [PLAYER_UP_MHP_FACTOR] = 10,
-            [PLAYER_UP_MAP_FACTOR] = 300,
+            [PLAYER_UP_MMP_FACTOR] = 200,
 
-            [PLAYER_UP_ATK_RATIO] = 1.09,
-            [PLAYER_UP_DEF_RATIO] = 1.15,
-            [PLAYER_UP_MHP_RATIO] = 1.02,
-            [PLAYER_UP_MAP_RATIO] = 1.25,
+            [PLAYER_UP_ATK_RATIO] = 1.070,
+            [PLAYER_UP_DEF_RATIO] = 1.130,
+            [PLAYER_UP_MHP_RATIO] = 1.015,
+            [PLAYER_UP_MMP_RATIO] = 1.200,
 
             [PLAYER_UP_ATK_LIMIT] = 100, //PLAYER_D_DMG_KEY
             [PLAYER_UP_DEF_LIMIT] = 100, //PLAYER_R_DMG_KEY
             [PLAYER_UP_MHP_LIMIT] = 10,  //PLAYER_R_DMG_KEY
-            [PLAYER_UP_MAP_LIMIT] = 300, //PLAYER_D_DMG_KEY
+            [PLAYER_UP_MMP_LIMIT] = 200, //PLAYER_D_DMG_KEY
         };
         [JsonIgnore]
         public int PlayerDealtDamage { get; set; }
@@ -71,12 +71,14 @@ namespace MOD_nE7UL2.Mod
         public override void OnBattleUnitHit(UnitHit e)
         {
             var dmg = Math.Abs(e.hitData.hitValue);
-            if (e.attackUnit.data.unitType == UnitType.Player)
+            var attackUnitData = e?.hitData?.attackUnit?.data?.TryCast<UnitDataHuman>();
+            var hitUnitData = e?.hitUnit?.data?.TryCast<UnitDataHuman>();
+            if (attackUnitData?.worldUnitData?.unit?.IsPlayer() ?? false)
             {
                 PlayerDealtDamage += dmg;
                 TraningValues[PLAYER_D_DMG_KEY] += dmg;
             }
-            else if (e.hitUnit.data.unitType == UnitType.Player)
+            else if (hitUnitData?.worldUnitData?.unit?.IsPlayer() ?? false)
             {
                 PlayerRecvDamage += dmg;
                 TraningValues[PLAYER_R_DMG_KEY] += dmg;
@@ -95,7 +97,7 @@ namespace MOD_nE7UL2.Mod
                 player.AddProperty<int>(UnitPropertyEnum.Attack, 1);
                 TraningValues[PLAYER_UP_ATK_FACTOR] *= TraningValues[PLAYER_UP_ATK_RATIO];
                 TraningValues[PLAYER_UP_ATK_LIMIT] += TraningValues[PLAYER_UP_ATK_FACTOR];
-                DebugHelper.WriteLine($"BattleRewardEvent: +1atk, next {TraningValues[PLAYER_UP_ATK_LIMIT]}dmg");
+                //DebugHelper.WriteLine($"BattleRewardEvent: +1atk, next {TraningValues[PLAYER_UP_ATK_LIMIT]}dmg");
                 return true;
             }
             if (TraningValues[PLAYER_R_DMG_KEY] > TraningValues[PLAYER_UP_DEF_LIMIT])
@@ -103,7 +105,7 @@ namespace MOD_nE7UL2.Mod
                 player.AddProperty<int>(UnitPropertyEnum.Defense, 1);
                 TraningValues[PLAYER_UP_DEF_FACTOR] *= TraningValues[PLAYER_UP_DEF_RATIO];
                 TraningValues[PLAYER_UP_DEF_LIMIT] += TraningValues[PLAYER_UP_DEF_FACTOR];
-                DebugHelper.WriteLine($"BattleRewardEvent: +1def, next {TraningValues[PLAYER_UP_DEF_LIMIT]}dmg");
+                //DebugHelper.WriteLine($"BattleRewardEvent: +1def, next {TraningValues[PLAYER_UP_DEF_LIMIT]}dmg");
                 return true;
             }
             if (TraningValues[PLAYER_R_DMG_KEY] > TraningValues[PLAYER_UP_MHP_LIMIT])
@@ -111,15 +113,15 @@ namespace MOD_nE7UL2.Mod
                 player.AddProperty<int>(UnitPropertyEnum.HpMax, 1);
                 TraningValues[PLAYER_UP_MHP_FACTOR] *= TraningValues[PLAYER_UP_MHP_RATIO];
                 TraningValues[PLAYER_UP_MHP_LIMIT] += TraningValues[PLAYER_UP_MHP_FACTOR];
-                DebugHelper.WriteLine($"BattleRewardEvent: +1hp, next {TraningValues[PLAYER_UP_MHP_LIMIT]}dmg");
+                //DebugHelper.WriteLine($"BattleRewardEvent: +1hp, next {TraningValues[PLAYER_UP_MHP_LIMIT]}dmg");
                 return true;
             }
-            if (TraningValues[PLAYER_D_DMG_KEY] > TraningValues[PLAYER_UP_MAP_LIMIT])
+            if (TraningValues[PLAYER_D_DMG_KEY] > TraningValues[PLAYER_UP_MMP_LIMIT])
             {
                 player.AddProperty<int>(UnitPropertyEnum.MpMax, 1);
-                TraningValues[PLAYER_UP_MAP_FACTOR] *= TraningValues[PLAYER_UP_MAP_RATIO];
-                TraningValues[PLAYER_UP_MAP_LIMIT] += TraningValues[PLAYER_UP_MAP_FACTOR];
-                DebugHelper.WriteLine($"BattleRewardEvent: +1ap, next {TraningValues[PLAYER_UP_MAP_LIMIT]}dmg");
+                TraningValues[PLAYER_UP_MMP_FACTOR] *= TraningValues[PLAYER_UP_MMP_RATIO];
+                TraningValues[PLAYER_UP_MMP_LIMIT] += TraningValues[PLAYER_UP_MMP_FACTOR];
+                //DebugHelper.WriteLine($"BattleRewardEvent: +1mp, next {TraningValues[PLAYER_UP_MMP_LIMIT]}dmg");
                 return true;
             }
             return false;
@@ -133,17 +135,15 @@ namespace MOD_nE7UL2.Mod
                 var player = g.world.playerUnit;
                 if (IsPlayerDie)
                 {
-                    var minExp = player.GetMinExpCurrentGrade();
                     player.AddProperty<int>(UnitPropertyEnum.Life, -(Math.Max(PlayerRecvDamage / 1000, 1)));
-                    player.SetProperty<int>(UnitPropertyEnum.Exp, minExp);
+                    player.AddExp(int.MinValue);
                     DebugHelper.WriteLine($"BattleRewardEvent: player death");
                 }
                 else if (e.isWin)
                 {
-                    var maxExp = player.GetMaxExpCurrentGrade();
                     var rewardExp1 = Math.Max(PlayerDealtDamage / 100, 1);
                     var rewardExp2 = Math.Max(PlayerRecvDamage / 10, 1);
-                    player.SetProperty<int>(UnitPropertyEnum.Exp, Math.Min(player.GetProperty<int>(UnitPropertyEnum.Exp) + rewardExp1 + rewardExp2, maxExp));
+                    player.AddExp(rewardExp1 + rewardExp2);
                     DebugHelper.WriteLine($"BattleRewardEvent: +{rewardExp1 + rewardExp2}exp");
                 }
                 IsEnd = true;
@@ -153,12 +153,11 @@ namespace MOD_nE7UL2.Mod
         public override void OnBattleUnitDie(UnitDie e)
         {
             var dieUnit = e?.unit?.data?.TryCast<UnitDataHuman>();
-            if (dieUnit?.worldUnitData != null)
+            if (dieUnit?.worldUnitData != null && g.world.battle.data.isRealBattle)
             {
-                if (dieUnit.unitType == UnitType.Player)
+                if (dieUnit.worldUnitData.unit.IsPlayer())
                 {
-                    if (g.world.battle.data.isRealBattle)
-                        IsPlayerDie = true;
+                    IsPlayerDie = true;
                 }
 
                 var attackUnitData = e?.hitData?.attackUnit?.data?.TryCast<UnitDataHuman>();

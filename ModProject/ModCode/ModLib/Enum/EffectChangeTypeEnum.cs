@@ -1,12 +1,8 @@
-﻿using ModLib.Object;
-
-namespace ModLib.Enum
+﻿namespace ModLib.Enum
 {
-    public class EffectChangeTypeEnum : EnumObject
+    public enum EffectChangeTypeEnum
     {
-        public static EffectChangeTypeEnum Percentage { get; } = new EffectChangeTypeEnum("0");
-        public static EffectChangeTypeEnum FixedValue { get; } = new EffectChangeTypeEnum("1");
-
-        public EffectChangeTypeEnum(string value) : base(value) { }
+        Percentage = 0,
+        FixedValue = 1,
     }
 }

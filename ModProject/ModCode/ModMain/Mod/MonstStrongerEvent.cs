@@ -10,9 +10,9 @@ namespace MOD_nE7UL2.Mod
     {
         public static readonly IDictionary<MonstType, float> GROW_RATIO = new Dictionary<MonstType, float>
         {
-            [MonstType.Common] = 0.0008f,
-            [MonstType.Elite] = 0.0006f,
-            [MonstType.BOSS] = 0.0006f,
+            [MonstType.Common] = 0.0007f,
+            [MonstType.Elite] = 0.0005f,
+            [MonstType.BOSS] = 0.0005f,
         };
 
         public int Counter { get; set; } = 0;

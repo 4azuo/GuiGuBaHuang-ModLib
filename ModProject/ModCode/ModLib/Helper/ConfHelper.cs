@@ -40,11 +40,15 @@ public class ConfHelper
                 if (item.DELETE == "1")
                 {
                     confItem = null;
-                    g.conf.roleGrade.allConfBase.Remove(confList[i]);
+                    confList.Remove(confList[i]);
+                    if (g.conf.localText.GetType() == confObj.GetType())
+                        g.conf.localText.allText.Remove(confItem.key);
                 }
                 else
                 {
                     confItem = confList[i];
+                    //if (g.conf.localText.GetType() == confObj.GetType())
+                    //    g.conf.localText.allText[confItem.key] = confItem;
                 }
             }
             else
@@ -53,9 +57,7 @@ public class ConfHelper
                 confItem.isModExtend = true;
                 confObj.AddItem(confItem);
                 if (g.conf.localText.GetType() == confObj.GetType())
-                {
                     g.conf.localText.allText.Add(confItem.key, confItem);
-                }
             }
             if (confItem != null)
             {

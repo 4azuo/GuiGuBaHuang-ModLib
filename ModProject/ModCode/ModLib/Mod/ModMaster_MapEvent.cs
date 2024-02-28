@@ -5,6 +5,11 @@ namespace ModLib.Mod
     public abstract partial class ModMaster : MonoBehaviour
     {
         #region ModLib - Handlers
+        public virtual void _OnPlayerOpenTreeVault(ETypeData e)
+        {
+            CallEvents<ETypeData>("OnPlayerOpenTreeVault", e, true, false);
+        }
+
         public virtual void _OnPlayerEquipCloth(ETypeData e)
         {
             CallEvents<ETypeData>("OnPlayerEquipCloth", e, true, false);
@@ -37,6 +42,11 @@ namespace ModLib.Mod
         #endregion
 
         #region ModLib - Events
+        public virtual void OnPlayerOpenTreeVault(ETypeData e)
+        {
+            EventHelper.RunMinorEvents(e);
+        }
+
         public virtual void OnPlayerEquipCloth(ETypeData e)
         {
             EventHelper.RunMinorEvents(e);
