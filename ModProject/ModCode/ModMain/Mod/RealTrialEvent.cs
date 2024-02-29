@@ -28,8 +28,7 @@ namespace MOD_nE7UL2.Mod
             var data = e?.data;
             if (IsInTrial && data != null)
             {
-                data.attack.baseValue *= g.world.playerUnit.GetProperty<int>(UnitPropertyEnum.GradeID) / 2;
-                data.attack.baseValue = (data.attack.baseValue.Parse<float>() * (1.00f + g.data.dataWorld.data.gameLevel.Parse<int>() * 0.20f)).Parse<int>();
+                data.attack.baseValue = (g.world.playerUnit.GetProperty<int>(UnitPropertyEnum.Attack) * (1.00f + g.data.dataWorld.data.gameLevel.Parse<int>() * 0.50f)).Parse<int>();
             }
         }
 
