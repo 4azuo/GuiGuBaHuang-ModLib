@@ -14,5 +14,6 @@ namespace MOD_nE7UL2.Const
         public const string BATTLE_MANASHIELD_EVENT = "BattleManashieldEvent";
         public const string REVENGE_EVENT = "RevengeEvent";
         public const string REAL_TRIAL_EVENT = "RealTrialEvent";
+        public const string BORN_LUCK_EVENT = "BornLuckEvent";
     }
 }

@@ -1,8 +1,11 @@
-﻿using MOD_nE7UL2.Enum;
+﻿using EGameTypeData;
+using MOD_nE7UL2.Enum;
 using ModLib.Enum;
 using ModLib.Mod;
 using System;
+using System.Collections.Generic;
 using System.Linq;
+using UnityEngine.UI;
 
 namespace MOD_nE7UL2
 {
@@ -12,9 +15,16 @@ namespace MOD_nE7UL2
 
         public override string ModId => "nE7UL2";
 
+        public readonly IDictionary<string, string[]> HideButtons = new Dictionary<string, string[]>()
+        {
+            ["GameMemu"] = new string[] { "G:btnSave", "G:btnReloadCache" },
+        };
+
         public override void OnInitConf()
         {
             base.OnInitConf();
+            if (g.conf.roleAttributeLimit._allConfList.ToArray().Where(x => x.key.EndsWith("Max")).All(x => x.value == int.MaxValue))
+                return;
             //unlimit attribute
             foreach (var item in g.conf.roleAttributeLimit._allConfList)
             {
@@ -336,6 +346,19 @@ namespace MOD_nE7UL2
                 item.sale = PriceHelper.UpPrice(item.sale, grade, level, ratio);
                 item.worth = PriceHelper.UpPrice(item.worth, grade, level, ratio);
             }
+        }
+
+        public override void OnOpenUIStart(OpenUIStart e)
+        {
+            if (HideButtons.ContainsKey(e.uiType.uiName))
+            {
+                var hideButtons = HideButtons[e.uiType.uiName];
+                foreach (var btn in FindObjectsOfType<Button>().Where(x => hideButtons.Contains(x.name)))
+                {
+                    btn.gameObject.active = false;
+                }
+            }
+            base.OnOpenUIStart(e);
         }
     }
 }
