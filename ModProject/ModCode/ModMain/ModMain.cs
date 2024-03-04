@@ -15,11 +15,6 @@ namespace MOD_nE7UL2
 
         public override string ModId => "nE7UL2";
 
-        public readonly IDictionary<string, string[]> HideButtons = new Dictionary<string, string[]>()
-        {
-            ["GameMemu"] = new string[] { "G:btnSave", "G:btnReloadCache" },
-        };
-
         public override void OnInitConf()
         {
             base.OnInitConf();
@@ -141,6 +136,9 @@ namespace MOD_nE7UL2
             //balance item
             foreach (var props in g.conf.itemProps._allConfList)
             {
+                if (props.sale < 0)
+                    continue;
+
                 var grade = 1;
                 var level = Math.Max(1, Math.Min(6, props.level));
                 var ratio = 1.00f;
@@ -346,19 +344,6 @@ namespace MOD_nE7UL2
                 item.sale = PriceHelper.UpPrice(item.sale, grade, level, ratio);
                 item.worth = PriceHelper.UpPrice(item.worth, grade, level, ratio);
             }
-        }
-
-        public override void OnOpenUIStart(OpenUIStart e)
-        {
-            if (HideButtons.ContainsKey(e.uiType.uiName))
-            {
-                var hideButtons = HideButtons[e.uiType.uiName];
-                foreach (var btn in FindObjectsOfType<Button>().Where(x => hideButtons.Contains(x.name)))
-                {
-                    btn.gameObject.active = false;
-                }
-            }
-            base.OnOpenUIStart(e);
         }
     }
 }

@@ -18,27 +18,27 @@ public static class UIHelper
         return curUI;
     }
 
-    public static GameObject CreateButton()
-    {
-        var go = new GameObject();
-        var btn = g.root.GetComponent<GameObject>().AddComponent<Button>();
-        var text = go.AddComponent<Text>();
+    //public static GameObject CreateButton()
+    //{
+    //    var go = new GameObject();
+    //    var btn = g.root.GetComponent<GameObject>().AddComponent<Button>();
+    //    var text = go.AddComponent<Text>();
 
-        go.SetActive(true);
-        go.transform.SetParent(g.root.transform);
-        go.transform.position = new Vector3(0, 0);
-        go.transform.localScale = new Vector3(1, 1);
-        go.layer = UILayer.FullEffect.ToString().Parse<int>();
+    //    go.SetActive(true);
+    //    go.transform.SetParent(g.root.transform);
+    //    go.transform.position = new Vector3(0, 0);
+    //    go.transform.localScale = new Vector3(1, 1);
+    //    go.layer = UILayer.FullEffect.ToString().Parse<int>();
 
-        btn.transform.SetParent(go.transform);
-        btn.transform.position = new Vector3(0, 0);
-        btn.transform.localScale = new Vector3(1, 1);
+    //    btn.transform.SetParent(go.transform);
+    //    btn.transform.position = new Vector3(0, 0);
+    //    btn.transform.localScale = new Vector3(1, 1);
 
-        text.transform.SetParent(btn.transform);
-        text.transform.position = new Vector3(0, 0);
-        text.transform.localScale = new Vector3(1, 1);
-        text.text = "Hello";
+    //    text.transform.SetParent(btn.transform);
+    //    text.transform.position = new Vector3(0, 0);
+    //    text.transform.localScale = new Vector3(1, 1);
+    //    text.text = "Hello";
 
-        return go;
-    }
+    //    return go;
+    //}
 }

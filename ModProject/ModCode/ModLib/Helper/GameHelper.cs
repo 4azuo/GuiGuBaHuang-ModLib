@@ -14,12 +14,12 @@ public static class GameHelper
 
     public static bool IsInGame()
     {
-        return g.world.isIntoWorld && g.world?.playerUnit?.GetUnitId() != null;
+        return (g.world?.isIntoWorld ?? false) && g.world?.playerUnit?.GetUnitId() != null;
     }
 
     public static bool IsInBattlle()
     {
-        return IsInGame() && g.world.battle.isBattle;
+        return IsInGame() && (g.world?.battle?.isBattle ?? false);
     }
 
     public static void LoadEnumObj(Assembly ass)
