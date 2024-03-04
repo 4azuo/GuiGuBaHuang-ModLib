@@ -192,9 +192,9 @@ namespace ModLib.Mod
         {
             try
             {
-                if (!(!isInGame || (isInGame && GameHelper.IsInGame())))
+                if (isInGame && !GameHelper.IsInGame())
                     return;
-                if (!(!isInBattle || (isInBattle && GameHelper.IsInBattlle())))
+                if (isInBattle && !GameHelper.IsInBattlle())
                     return;
                 if (!(predicate?.Invoke() ?? true))
                     return;

@@ -15,5 +15,7 @@ namespace MOD_nE7UL2.Const
         public const string REVENGE_EVENT = "RevengeEvent";
         public const string REAL_TRIAL_EVENT = "RealTrialEvent";
         public const string BORN_LUCK_EVENT = "BornLuckEvent";
+        public const string HIDE_BUTTON_EVENT = "HideButtonEvent";
+        public const string CONTRIBUTION_EXCHANGE_EVENT = "ContributionExchangeEvent";
     }
 }
