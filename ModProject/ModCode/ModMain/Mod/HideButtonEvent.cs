@@ -4,7 +4,6 @@ using ModLib.Mod;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
-using UnityEngine.UI;
 
 namespace MOD_nE7UL2.Mod
 {
@@ -14,16 +13,18 @@ namespace MOD_nE7UL2.Mod
         public readonly IDictionary<string, string[]> HideButtons = new Dictionary<string, string[]>()
         {
             ["GameMemu"] = new string[] { "G:btnSave", "G:btnReloadCache" },
+            ["MartialPropInfo"] = new string[] { "G:btnPreview" },
         };
 
-        public override void OnOpenUIStart(OpenUIStart e)
+        public override void OnOpenUIEnd(OpenUIEnd e)
         {
             if (HideButtons.ContainsKey(e.uiType.uiName))
             {
+                var ui = g.ui.GetUI(e.uiType);
                 var hideButtons = HideButtons[e.uiType.uiName];
-                foreach (var btn in MonoBehaviour.FindObjectsOfType<Button>().Where(x => hideButtons.Contains(x.name)))
+                foreach (var comp in ui.GetComponentsInChildren<MonoBehaviour>().Where(x => hideButtons.Contains(x.name)))
                 {
-                    btn.gameObject.active = false;
+                    comp.gameObject.active = false;
                 }
             }
         }
