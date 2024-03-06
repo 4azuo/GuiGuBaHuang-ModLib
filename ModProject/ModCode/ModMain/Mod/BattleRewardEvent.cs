@@ -2,127 +2,203 @@
 using MOD_nE7UL2.Const;
 using ModLib.Enum;
 using ModLib.Mod;
+using ModLib.Object;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 namespace MOD_nE7UL2.Mod
 {
     [Cache(ModConst.BATTLE_REWARD_EVENT_KEY)]
-    public class BattleRewardEvent : ModEvent
+    public class BattleRewardEvent : ModBattleEvent
     {
-        public override int OrderIndex => 2;
+        private const string PLAYER_D_DMG_OLDKEY = "PdDmg";
+        private const string PLAYER_R_DMG_OLDKEY = "PrDmg";
 
-        private const string PLAYER_D_DMG_KEY = "PdDmg";
-        private const string PLAYER_R_DMG_KEY = "PrDmg";
-
-        private const string PLAYER_UP_ATK_FACTOR = "UpAtkFactor";
-        private const string PLAYER_UP_DEF_FACTOR = "UpDefFactor";
-        private const string PLAYER_UP_MHP_FACTOR = "UpMHpFactor";
-        private const string PLAYER_UP_MMP_FACTOR = "UpMMpFactor";
-
-        private const string PLAYER_UP_ATK_RATIO = "UpAtkRatio";
-        private const string PLAYER_UP_DEF_RATIO = "UpDefRatio";
-        private const string PLAYER_UP_MHP_RATIO = "UpMHpRatio";
-        private const string PLAYER_UP_MMP_RATIO = "UpMMpRatio";
-
-        private const string PLAYER_UP_ATK_LIMIT = "UpAtkLimit";
-        private const string PLAYER_UP_DEF_LIMIT = "UpDefLimit";
-        private const string PLAYER_UP_MHP_LIMIT = "UpMHpLimit";
-        private const string PLAYER_UP_MMP_LIMIT = "UpMMpLimit";
-        public IDictionary<string, double> TraningValues { get; set; } = new Dictionary<string, double>
+        private static readonly MultiValue[] PLAYER_TRAINING_PROPERTIES_OLDVERSION_KEYS = new MultiValue[]
         {
-            [PLAYER_D_DMG_KEY] = 0,
-            [PLAYER_R_DMG_KEY] = 0,
-
-            [PLAYER_UP_ATK_FACTOR] = 50,
-            [PLAYER_UP_DEF_FACTOR] = 90,
-            [PLAYER_UP_MHP_FACTOR] = 10,
-            [PLAYER_UP_MMP_FACTOR] = 200,
-
-            [PLAYER_UP_ATK_RATIO] = 1.070,
-            [PLAYER_UP_DEF_RATIO] = 1.130,
-            [PLAYER_UP_MHP_RATIO] = 1.015,
-            [PLAYER_UP_MMP_RATIO] = 1.200,
-
-            [PLAYER_UP_ATK_LIMIT] = 100, //PLAYER_D_DMG_KEY
-            [PLAYER_UP_DEF_LIMIT] = 100, //PLAYER_R_DMG_KEY
-            [PLAYER_UP_MHP_LIMIT] = 10,  //PLAYER_R_DMG_KEY
-            [PLAYER_UP_MMP_LIMIT] = 200, //PLAYER_D_DMG_KEY
+            MultiValue.Create(UnitPropertyEnum.Attack, "UpAtkRatio", "UpAtkFactor", "UpAtkLimit"),
+            MultiValue.Create(UnitPropertyEnum.Defense, "UpDefRatio", "UpDefFactor", "UpDefLimit"),
+            MultiValue.Create(UnitPropertyEnum.HpMax, "UpMHpRatio", "UpMHpFactor", "UpMHpLimit"),
+            MultiValue.Create(UnitPropertyEnum.MpMax, "UpMMpRatio", "UpMMpFactor", "UpMMpLimit"),
         };
-        [JsonIgnore]
-        public int PlayerDealtDamage { get; set; }
-        [JsonIgnore]
-        public int PlayerRecvDamage { get; set; }
-        [JsonIgnore]
-        public bool IsPlayerDie { get; set; }
+        private static readonly MultiValue[] PLAYER_TRAINING_PROPERTIES = new MultiValue[]
+        {
+            //common attribute
+            MultiValue.Create(UnitPropertyEnum.Attack, 1.070, 50, 100, new Func<BattleRewardEvent, string, bool>((sender, limitKey) =>
+            {
+                return sender.GetDmg(DmgSaveEnum.Global, GetDmgKey(DmgEnum.DmgDealt, DmgTypeEnum.Damage)) > sender.TraningValues[limitKey];
+            })),
+            MultiValue.Create(UnitPropertyEnum.Defense, 1.130, 90, 100, new Func<BattleRewardEvent, string, bool>((sender, limitKey) =>
+            {
+                return sender.GetDmg(DmgSaveEnum.Global, GetDmgKey(DmgEnum.DmgRecv, DmgTypeEnum.Damage)) > sender.TraningValues[limitKey];
+            })),
+            MultiValue.Create(UnitPropertyEnum.HpMax, 1.015, 10, 10, new Func<BattleRewardEvent, string, bool>((sender, limitKey) =>
+            {
+                return sender.GetDmg(DmgSaveEnum.Global, GetDmgKey(DmgEnum.DmgRecv, DmgTypeEnum.Damage)) > sender.TraningValues[limitKey];
+            })),
+            MultiValue.Create(UnitPropertyEnum.MpMax, 1.200, 200, 200, new Func<BattleRewardEvent, string, bool>((sender, limitKey) =>
+            {
+                return sender.GetDmg(DmgSaveEnum.Global, GetDmgKey(DmgEnum.DmgDealt, DmgTypeEnum.Magic)) + 
+                sender.GetDmg(DmgSaveEnum.Global, GetDmgKey(DmgEnum.DmgRecv, DmgTypeEnum.Magic)) > sender.TraningValues[limitKey];
+            })),
+
+            //physic
+            MultiValue.Create(UnitPropertyEnum.BasisBlade, 1.050, 120, 1000, new Func<BattleRewardEvent, string, bool>((sender, limitKey) =>
+            {
+                return sender.GetDmg(DmgSaveEnum.Local, GetDmgKey(DmgEnum.DmgDealt, DmgTypeEnum.Blade)) +
+                sender.GetDmg(DmgSaveEnum.Local, GetDmgKey(DmgEnum.DmgRecv, DmgTypeEnum.Blade)) > sender.TraningValues[limitKey];
+            })),
+            MultiValue.Create(UnitPropertyEnum.BasisSpear, 1.050, 120, 1000, new Func<BattleRewardEvent, string, bool>((sender, limitKey) =>
+            {
+                return sender.GetDmg(DmgSaveEnum.Local, GetDmgKey(DmgEnum.DmgDealt, DmgTypeEnum.Spear)) +
+                sender.GetDmg(DmgSaveEnum.Local, GetDmgKey(DmgEnum.DmgRecv, DmgTypeEnum.Spear)) > sender.TraningValues[limitKey];
+            })),
+            MultiValue.Create(UnitPropertyEnum.BasisSword, 1.050, 120, 1000, new Func<BattleRewardEvent, string, bool>((sender, limitKey) =>
+            {
+                return sender.GetDmg(DmgSaveEnum.Local, GetDmgKey(DmgEnum.DmgDealt, DmgTypeEnum.Sword)) +
+                sender.GetDmg(DmgSaveEnum.Local, GetDmgKey(DmgEnum.DmgRecv, DmgTypeEnum.Sword)) > sender.TraningValues[limitKey];
+            })),
+            MultiValue.Create(UnitPropertyEnum.BasisFist, 1.050, 120, 1000, new Func<BattleRewardEvent, string, bool>((sender, limitKey) =>
+            {
+                return sender.GetDmg(DmgSaveEnum.Local, GetDmgKey(DmgEnum.DmgDealt, DmgTypeEnum.Fist)) +
+                sender.GetDmg(DmgSaveEnum.Local, GetDmgKey(DmgEnum.DmgRecv, DmgTypeEnum.Fist)) > sender.TraningValues[limitKey];
+            })),
+            MultiValue.Create(UnitPropertyEnum.BasisPalm, 1.050, 120, 1000, new Func<BattleRewardEvent, string, bool>((sender, limitKey) =>
+            {
+                return sender.GetDmg(DmgSaveEnum.Local, GetDmgKey(DmgEnum.DmgDealt, DmgTypeEnum.Palm)) +
+                sender.GetDmg(DmgSaveEnum.Local, GetDmgKey(DmgEnum.DmgRecv, DmgTypeEnum.Palm)) > sender.TraningValues[limitKey];
+            })),
+            MultiValue.Create(UnitPropertyEnum.BasisFinger, 1.050, 120, 1000, new Func<BattleRewardEvent, string, bool>((sender, limitKey) =>
+            {
+                return sender.GetDmg(DmgSaveEnum.Local, GetDmgKey(DmgEnum.DmgDealt, DmgTypeEnum.Finger)) +
+                sender.GetDmg(DmgSaveEnum.Local, GetDmgKey(DmgEnum.DmgRecv, DmgTypeEnum.Finger)) > sender.TraningValues[limitKey];
+            })),
+
+            //magic
+            MultiValue.Create(UnitPropertyEnum.BasisFire, 1.049, 120, 1000, new Func<BattleRewardEvent, string, bool>((sender, limitKey) =>
+            {
+                return sender.GetDmg(DmgSaveEnum.Local, GetDmgKey(DmgEnum.DmgDealt, DmgTypeEnum.Fire)) +
+                sender.GetDmg(DmgSaveEnum.Local, GetDmgKey(DmgEnum.DmgRecv, DmgTypeEnum.Fire)) > sender.TraningValues[limitKey];
+            })),
+            MultiValue.Create(UnitPropertyEnum.BasisFroze, 1.049, 120, 1000, new Func<BattleRewardEvent, string, bool>((sender, limitKey) =>
+            {
+                return sender.GetDmg(DmgSaveEnum.Local, GetDmgKey(DmgEnum.DmgDealt, DmgTypeEnum.Frozen)) +
+                sender.GetDmg(DmgSaveEnum.Local, GetDmgKey(DmgEnum.DmgRecv, DmgTypeEnum.Frozen)) > sender.TraningValues[limitKey];
+            })),
+            MultiValue.Create(UnitPropertyEnum.BasisThunder, 1.049, 120, 1000, new Func<BattleRewardEvent, string, bool>((sender, limitKey) =>
+            {
+                return sender.GetDmg(DmgSaveEnum.Local, GetDmgKey(DmgEnum.DmgDealt, DmgTypeEnum.Thunder)) +
+                sender.GetDmg(DmgSaveEnum.Local, GetDmgKey(DmgEnum.DmgRecv, DmgTypeEnum.Thunder)) > sender.TraningValues[limitKey];
+            })),
+            MultiValue.Create(UnitPropertyEnum.BasisWind, 1.049, 120, 1000, new Func<BattleRewardEvent, string, bool>((sender, limitKey) =>
+            {
+                return sender.GetDmg(DmgSaveEnum.Local, GetDmgKey(DmgEnum.DmgDealt, DmgTypeEnum.Wind)) +
+                sender.GetDmg(DmgSaveEnum.Local, GetDmgKey(DmgEnum.DmgRecv, DmgTypeEnum.Wind)) > sender.TraningValues[limitKey];
+            })),
+            MultiValue.Create(UnitPropertyEnum.BasisEarth, 1.049, 120, 1000, new Func<BattleRewardEvent, string, bool>((sender, limitKey) =>
+            {
+                return sender.GetDmg(DmgSaveEnum.Local, GetDmgKey(DmgEnum.DmgDealt, DmgTypeEnum.Earth)) +
+                sender.GetDmg(DmgSaveEnum.Local, GetDmgKey(DmgEnum.DmgRecv, DmgTypeEnum.Earth)) > sender.TraningValues[limitKey];
+            })),
+            MultiValue.Create(UnitPropertyEnum.BasisWood, 1.049, 120, 1000, new Func<BattleRewardEvent, string, bool>((sender, limitKey) =>
+            {
+                return sender.GetDmg(DmgSaveEnum.Local, GetDmgKey(DmgEnum.DmgDealt, DmgTypeEnum.Wood)) +
+                sender.GetDmg(DmgSaveEnum.Local, GetDmgKey(DmgEnum.DmgRecv, DmgTypeEnum.Wood)) > sender.TraningValues[limitKey];
+            })),
+        };
+
+        public IDictionary<string, double> TraningValues { get; set; } = new Dictionary<string, double>();
+
         [JsonIgnore]
         public bool IsEnd { get; set; }
 
+        #region ###
+        public string GetRatioKey(UnitPropertyEnum propEnum)
+        {
+            var oldKey = PLAYER_TRAINING_PROPERTIES_OLDVERSION_KEYS.FirstOrDefault(x => x.Values[0] == propEnum);
+            if (oldKey != null)
+            {
+                return (string)oldKey.Values[1];
+            }
+            return $"{propEnum.PropName}Ratio";
+        }
+
+        public string GetFactorKey(UnitPropertyEnum propEnum)
+        {
+            var oldKey = PLAYER_TRAINING_PROPERTIES_OLDVERSION_KEYS.FirstOrDefault(x => x.Values[0] == propEnum);
+            if (oldKey != null)
+            {
+                return (string)oldKey.Values[2];
+            }
+            return $"{propEnum.PropName}Factor";
+        }
+
+        public string GetLimitKey(UnitPropertyEnum propEnum)
+        {
+            var oldKey = PLAYER_TRAINING_PROPERTIES_OLDVERSION_KEYS.FirstOrDefault(x => x.Values[0] == propEnum);
+            if (oldKey != null)
+            {
+                return (string)oldKey.Values[3];
+            }
+            return $"{propEnum.PropName}Limit";
+        }
+        #endregion
+
+        public override void OnLoadGame()
+        {
+            base.OnLoadGame();
+            #region old
+            if (GameDmg[GetDmgKey(DmgEnum.DmgDealt, DmgTypeEnum.Damage)] == 0)
+                GameDmg[GetDmgKey(DmgEnum.DmgDealt, DmgTypeEnum.Damage)] = TraningValues[PLAYER_D_DMG_OLDKEY].Parse<long>();
+            if (GameDmg[GetDmgKey(DmgEnum.DmgRecv, DmgTypeEnum.Damage)] == 0)
+                GameDmg[GetDmgKey(DmgEnum.DmgRecv, DmgTypeEnum.Damage)] = TraningValues[PLAYER_R_DMG_OLDKEY].Parse<long>();
+            #endregion
+            foreach (var prop in PLAYER_TRAINING_PROPERTIES)
+            {
+                var propEnum = prop.Values[0] as UnitPropertyEnum;
+                if (!TraningValues.ContainsKey(GetLimitKey(propEnum)))
+                {
+                    TraningValues.Add(GetRatioKey(propEnum), prop.Values[1].Parse<double>());
+                    TraningValues.Add(GetFactorKey(propEnum), prop.Values[2].Parse<double>());
+                    TraningValues.Add(GetLimitKey(propEnum), prop.Values[3].Parse<double>());
+                }
+            }
+        }
+
         public override void OnBattleStart(ETypeData e)
         {
-            PlayerDealtDamage = 0;
-            PlayerRecvDamage = 0;
-            IsPlayerDie = false;
+            base.OnBattleStart(e);
             IsEnd = false;
         }
 
         public override void OnBattleUnitHit(UnitHit e)
         {
-            var dmg = Math.Abs(e.hitData.hitValue);
-            var attackUnitData = e?.hitData?.attackUnit?.data?.TryCast<UnitDataHuman>();
-            var hitUnitData = e?.hitUnit?.data?.TryCast<UnitDataHuman>();
-            if (attackUnitData?.worldUnitData?.unit?.IsPlayer() ?? false)
-            {
-                PlayerDealtDamage += dmg;
-                TraningValues[PLAYER_D_DMG_KEY] += dmg;
-            }
-            else if (hitUnitData?.worldUnitData?.unit?.IsPlayer() ?? false)
-            {
-                PlayerRecvDamage += dmg;
-                TraningValues[PLAYER_R_DMG_KEY] += dmg;
-            }
-
-            while (UpProperty())
+            base.OnBattleUnitHit(e);
+            while (UpProperty(e))
             {
             }
         }
 
-        private bool UpProperty()
+        private bool UpProperty(UnitHit e)
         {
             var player = g.world.playerUnit;
-            if (TraningValues[PLAYER_D_DMG_KEY] > TraningValues[PLAYER_UP_ATK_LIMIT])
+            foreach (var prop in PLAYER_TRAINING_PROPERTIES)
             {
-                player.AddProperty<int>(UnitPropertyEnum.Attack, 1);
-                TraningValues[PLAYER_UP_ATK_FACTOR] *= TraningValues[PLAYER_UP_ATK_RATIO];
-                TraningValues[PLAYER_UP_ATK_LIMIT] += TraningValues[PLAYER_UP_ATK_FACTOR];
-                //DebugHelper.WriteLine($"BattleRewardEvent: +1atk, next {TraningValues[PLAYER_UP_ATK_LIMIT]}dmg");
-                return true;
-            }
-            if (TraningValues[PLAYER_R_DMG_KEY] > TraningValues[PLAYER_UP_DEF_LIMIT])
-            {
-                player.AddProperty<int>(UnitPropertyEnum.Defense, 1);
-                TraningValues[PLAYER_UP_DEF_FACTOR] *= TraningValues[PLAYER_UP_DEF_RATIO];
-                TraningValues[PLAYER_UP_DEF_LIMIT] += TraningValues[PLAYER_UP_DEF_FACTOR];
-                //DebugHelper.WriteLine($"BattleRewardEvent: +1def, next {TraningValues[PLAYER_UP_DEF_LIMIT]}dmg");
-                return true;
-            }
-            if (TraningValues[PLAYER_R_DMG_KEY] > TraningValues[PLAYER_UP_MHP_LIMIT])
-            {
-                player.AddProperty<int>(UnitPropertyEnum.HpMax, 1);
-                TraningValues[PLAYER_UP_MHP_FACTOR] *= TraningValues[PLAYER_UP_MHP_RATIO];
-                TraningValues[PLAYER_UP_MHP_LIMIT] += TraningValues[PLAYER_UP_MHP_FACTOR];
-                //DebugHelper.WriteLine($"BattleRewardEvent: +1hp, next {TraningValues[PLAYER_UP_MHP_LIMIT]}dmg");
-                return true;
-            }
-            if (TraningValues[PLAYER_D_DMG_KEY] > TraningValues[PLAYER_UP_MMP_LIMIT])
-            {
-                player.AddProperty<int>(UnitPropertyEnum.MpMax, 1);
-                TraningValues[PLAYER_UP_MMP_FACTOR] *= TraningValues[PLAYER_UP_MMP_RATIO];
-                TraningValues[PLAYER_UP_MMP_LIMIT] += TraningValues[PLAYER_UP_MMP_FACTOR];
-                //DebugHelper.WriteLine($"BattleRewardEvent: +1mp, next {TraningValues[PLAYER_UP_MMP_LIMIT]}dmg");
-                return true;
+                var propEnum = prop.Values[0] as UnitPropertyEnum;
+                var checkFunc = (Func<BattleRewardEvent, string, bool>)prop.Values[4];
+                var ratioKey = GetRatioKey(propEnum);
+                var factorKey = GetFactorKey(propEnum);
+                var limitKey = GetLimitKey(propEnum);
+                if (checkFunc.Invoke(this, limitKey))
+                {
+                    player.AddProperty<int>(propEnum, 1);
+                    TraningValues[factorKey] *= TraningValues[ratioKey];
+                    TraningValues[limitKey] += TraningValues[factorKey];
+                    return true;
+                }
             }
             return false;
         }
@@ -131,18 +207,20 @@ namespace MOD_nE7UL2.Mod
         {
             if (!IsEnd)
             {
-                DebugHelper.WriteLine($"Damage dealt: {PlayerDealtDamage}dmg, Damage recieve: {PlayerRecvDamage}dmg");
+                var localDmgDealt = GetDmg(DmgSaveEnum.Local, GetDmgKey(DmgEnum.DmgDealt, DmgTypeEnum.Damage));
+                var localDmgRecv = GetDmg(DmgSaveEnum.Local, GetDmgKey(DmgEnum.DmgRecv, DmgTypeEnum.Damage));
+                DebugHelper.WriteLine($"Damage dealt: {localDmgDealt}dmg, Damage recieve: {localDmgRecv}dmg");
                 var player = g.world.playerUnit;
                 if (IsPlayerDie)
                 {
-                    player.AddProperty<int>(UnitPropertyEnum.Life, -(Math.Max(PlayerRecvDamage / 1000, 1)));
+                    player.AddProperty<int>(UnitPropertyEnum.Life, -(Math.Max(localDmgRecv / 1000, 1).Parse<int>()));
                     player.AddExp(int.MinValue);
                     DebugHelper.WriteLine($"BattleRewardEvent: player death");
                 }
                 else if (e.isWin)
                 {
-                    var rewardExp1 = Math.Max(PlayerDealtDamage / 100, 1);
-                    var rewardExp2 = Math.Max(PlayerRecvDamage / 10, 1);
+                    var rewardExp1 = Math.Max(localDmgDealt / 100, 1).Parse<int>();
+                    var rewardExp2 = Math.Max(localDmgRecv / 10, 1).Parse<int>();
                     player.AddExp(rewardExp1 + rewardExp2);
                     DebugHelper.WriteLine($"BattleRewardEvent: +{rewardExp1 + rewardExp2}exp");
                 }
@@ -152,14 +230,10 @@ namespace MOD_nE7UL2.Mod
 
         public override void OnBattleUnitDie(UnitDie e)
         {
+            base.OnBattleUnitDie(e);
             var dieUnit = e?.unit?.data?.TryCast<UnitDataHuman>();
-            if (dieUnit?.worldUnitData != null && g.world.battle.data.isRealBattle)
+            if (dieUnit?.worldUnitData != null && g.world.battle.data.isRealBattle && !IsPlayerDie)
             {
-                if (dieUnit.worldUnitData.unit.IsPlayer())
-                {
-                    IsPlayerDie = true;
-                }
-
                 var attackUnitData = e?.hitData?.attackUnit?.data?.TryCast<UnitDataHuman>();
                 if (attackUnitData?.worldUnitData?.unit?.IsPlayer() ?? false)
                 {

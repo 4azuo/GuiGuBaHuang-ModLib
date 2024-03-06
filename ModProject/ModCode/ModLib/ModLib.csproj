@@ -60,6 +60,7 @@
     <Compile Include="Helper\TraceHelper.cs" />
     <Compile Include="Helper\EffectHelper.cs" />
     <Compile Include="Helper\ValueHelper.cs" />
+    <Compile Include="Mod\ModBattleEvent.cs" />
     <Compile Include="Mod\ModEvent.cs" />
     <Compile Include="Mod\ModMaster_CommonEvent.cs" />
     <Compile Include="Mod\ModMaster_GameEvent.cs" />
