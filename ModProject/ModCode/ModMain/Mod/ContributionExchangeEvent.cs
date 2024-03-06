@@ -11,7 +11,7 @@ namespace MOD_nE7UL2.Mod
     [Cache(ModConst.CONTRIBUTION_EXCHANGE_EVENT)]
     public class ContributionExchangeEvent : ModEvent
     {
-        private const int EXCHANGE_RATIO = 300; //SpiritStone/Contribution
+        private const int EXCHANGE_RATIO = 200; //SpiritStone/Contribution
         private UISchool uiSchool;
         private UIPropSelect uiSelector;
 
