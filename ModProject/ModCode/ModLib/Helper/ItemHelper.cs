@@ -69,6 +69,11 @@ public static class ItemHelper
         return g.conf.artifactShape.GetItem(props.id);
     }
 
+    public static ConfTownFactotySellArtifactItem IsTownRefiningArtifact(this ConfItemPropsItem props)
+    {
+        return g.conf.townFactotySellArtifact.GetItem(props.id);
+    }
+
     public static bool IsCharm(this ConfItemPropsItem props)
     {
         return props.GetItemClassName() == "Charm";

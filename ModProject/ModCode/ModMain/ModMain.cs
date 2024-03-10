@@ -136,31 +136,28 @@ namespace MOD_nE7UL2
             //balance item
             foreach (var props in g.conf.itemProps._allConfList)
             {
-                if (props.sale < 0)
-                    continue;
-
                 var grade = 1;
                 var level = Math.Max(1, Math.Min(6, props.level));
                 var ratio = 1.00f;
 
-                ConfItemPillItem pill;
-                ConfRoleEffectItem roleEfx;
-                ConfBattleEffectItem battleEfx;
-                ConfItemRarityMaterialsItem rarity;
-                ConfRingBaseItem ring;
-                ConfItemHorseItem mount;
-                ConfTownMarketItemItem buyable;
-                ConfRoleGradeItem[] gradeInfo;
-                ConfMakePillFurnaceItem furnace;
-                ConfClothItemItem cloth;
-                ConfItemHobbyItem hobby;
-                ConfArtifactShapeItem artifact;
-                ConfSchoolStockItem school;
-                ConfWorldBlockHerbItem herb;
-                ConfWorldBlockMineItem[] mines;
-                ConfGameItemRewardItem[] battles;
-                ConfRuneFormulaItem[] talismanFormulas;
-                ConfMakePillFormulaItem pillFormula;
+                ConfItemPillItem pill = null;
+                ConfRoleEffectItem roleEfx = null;
+                ConfBattleEffectItem battleEfx = null;
+                ConfItemRarityMaterialsItem rarity = null;
+                ConfRingBaseItem ring = null;
+                ConfItemHorseItem mount = null;
+                ConfTownMarketItemItem buyable = null;
+                ConfRoleGradeItem[] gradeInfo = null;
+                ConfMakePillFurnaceItem furnace = null;
+                ConfClothItemItem cloth = null;
+                ConfItemHobbyItem hobby = null;
+                ConfArtifactShapeItem artifact = null;
+                ConfSchoolStockItem school = null;
+                ConfWorldBlockHerbItem herb = null;
+                ConfWorldBlockMineItem[] mines = null;
+                ConfGameItemRewardItem[] battles = null;
+                ConfRuneFormulaItem[] talismanFormulas = null;
+                ConfMakePillFormulaItem pillFormula = null;
 
                 if ((rarity = props.IsRareItem()) != null)
                 {
@@ -190,21 +187,10 @@ namespace MOD_nE7UL2
                     props.sale = PriceHelper.UpPrice(props.sale, grade, level, ratio);
                     props.worth = PriceHelper.UpPrice(props.worth, grade, level, ratio);
                 }
-                else if ((talismanFormulas = props.IsTalismanRecipe()) != null)
-                {
-                    ratio *= Math.Pow(PriceHelper.ITEM_TYPE_RATIO[ModItemTypeEnum.TalismanRecipe], level).Parse<float>();
-                    props.sale = PriceHelper.UpPrice(props.sale, grade, level, ratio);
-                    props.worth = PriceHelper.UpPrice(props.worth, grade, level, ratio);
-                }
-                else if ((pillFormula = props.IsPillRecipe()) != null)
-                {
-                    ratio *= Math.Pow(PriceHelper.ITEM_TYPE_RATIO[ModItemTypeEnum.PillRecipe], level).Parse<float>();
-                    props.sale = PriceHelper.UpPrice(props.sale, grade, level, ratio);
-                    props.worth = PriceHelper.UpPrice(props.worth, grade, level, ratio);
-                }
                 else if ((artifact = props.IsArtifact()) != null)
                 {
                     ratio *= Math.Pow(PriceHelper.ITEM_TYPE_RATIO[ModItemTypeEnum.Artifact], level).Parse<float>();
+                    grade = artifact.initGrade;
                     props.sale = PriceHelper.UpPrice(props.sale, grade, level, ratio);
                     props.worth = PriceHelper.UpPrice(props.worth, grade, level, ratio);
                 }
@@ -222,7 +208,7 @@ namespace MOD_nE7UL2
                         roleEfx = g.conf.roleEffect.GetItem(efxId.Parse<int>());
                         if (roleEfx != null && (roleEfx.value.StartsWith($"{UnitPropertyEnum.Hp.PropName}_1_") || roleEfx.value.StartsWith($"{UnitPropertyEnum.Mp.PropName}_1_")))
                         {
-                            roleEfx.SetEfx3Value((roleEfx.GetEfx3Value() * (grade * 2.00f + level * 0.10f)).Parse<int>());
+                            roleEfx.SetEfxValue(2, (roleEfx.GetEfxValue<int>(2) * (grade * 2.00f + level * 0.10f)).Parse<int>());
                         }
                     }
                 }
@@ -284,6 +270,22 @@ namespace MOD_nE7UL2
                     ratio *= Math.Pow(PriceHelper.ITEM_TYPE_RATIO[ModItemTypeEnum.Furnace], level).Parse<float>();
                     props.sale = PriceHelper.UpPrice(props.sale, grade, level, ratio);
                     props.worth = PriceHelper.UpPrice(props.worth, grade, level, ratio);
+
+                    //furnace dur x5
+                    var dur = level * 50;
+                    foreach (var efxId in furnace.effectValue.Split('|'))
+                    {
+                        roleEfx = g.conf.roleEffect.GetItem(efxId.Parse<int>());
+                        if (roleEfx != null && roleEfx.value.StartsWith($"randomValue_furnaceDurable_"))
+                        {
+                            roleEfx.SetEfxValue(2, dur);
+                            roleEfx.SetEfxValue(3, dur);
+                        }
+                        else if (roleEfx != null && roleEfx.value.StartsWith($"fixValue_0_"))
+                        {
+                            roleEfx.SetEfxValue(2, dur);
+                        }
+                    }
                 }
                 else if ((herb = props.IsHerbItem()) != null)
                 {
@@ -331,6 +333,79 @@ namespace MOD_nE7UL2
                     props.sale = PriceHelper.UpPrice(props.sale, grade, level, ratio);
                     props.worth = PriceHelper.UpPrice(props.worth, grade, level, ratio);
                 }
+
+                ////debug
+                //var debugId = 6061251;
+                //if (props.id == debugId)
+                //{
+                //    if (pill != null) DebugHelper.WriteLine($"{debugId}: pill");
+                //    if (roleEfx != null) DebugHelper.WriteLine($"{debugId}: roleEfx");
+                //    if (battleEfx != null) DebugHelper.WriteLine($"{debugId}: battleEfx");
+                //    if (rarity != null) DebugHelper.WriteLine($"{debugId}: rarity");
+                //    if (ring != null) DebugHelper.WriteLine($"{debugId}: ring");
+                //    if (mount != null) DebugHelper.WriteLine($"{debugId}: mount");
+                //    if (buyable != null) DebugHelper.WriteLine($"{debugId}: buyable");
+                //    if (gradeInfo != null) DebugHelper.WriteLine($"{debugId}: gradeInfo");
+                //    if (furnace != null) DebugHelper.WriteLine($"{debugId}: furnace");
+                //    if (cloth != null) DebugHelper.WriteLine($"{debugId}: cloth");
+                //    if (hobby != null) DebugHelper.WriteLine($"{debugId}: hobby");
+                //    if (artifact != null) DebugHelper.WriteLine($"{debugId}: artifact");
+                //    if (school != null) DebugHelper.WriteLine($"{debugId}: school");
+                //    if (herb != null) DebugHelper.WriteLine($"{debugId}: herb");
+                //    if (mines != null) DebugHelper.WriteLine($"{debugId}: mines");
+                //    if (battles != null) DebugHelper.WriteLine($"{debugId}: battles");
+                //    if (talismanFormulas != null) DebugHelper.WriteLine($"{debugId}: talismanFormulas");
+                //    if (pillFormula != null) DebugHelper.WriteLine($"{debugId}: pillFormula");
+                //    DebugHelper.WriteLine($"{debugId}: ratio:{ratio}, sale:{props.sale}, worth:{props.worth}");
+                //}
+            }
+            foreach (var props in g.conf.itemProps._allConfList)
+            {
+                if (props.sale < 0)
+                    continue;
+
+                var grade = 1;
+                var level = Math.Max(1, Math.Min(6, props.level));
+                var ratio = 1.00f;
+
+                ConfRuneFormulaItem[] talismanFormulas;
+                ConfMakePillFormulaItem pillFormula;
+                ConfTownFactotySellArtifactItem refiningArtifact;
+
+                if ((talismanFormulas = props.IsTalismanRecipe()) != null)
+                {
+                    ratio *= Math.Pow(PriceHelper.ITEM_TYPE_RATIO[ModItemTypeEnum.TalismanRecipe], level).Parse<float>();
+                    props.sale = PriceHelper.UpPrice(props.sale, grade, level, ratio);
+                    props.worth = PriceHelper.UpPrice(props.worth, grade, level, ratio);
+                }
+                else if ((pillFormula = props.IsPillRecipe()) != null)
+                {
+                    var pills = new string[] { pillFormula.pillA, pillFormula.pillB, pillFormula.pillC, pillFormula.pillD, pillFormula.pillE, pillFormula.pillF };
+                    var expensestPrice = pills.Select(x => g.conf.itemProps.GetItem(x.Parse<int>())).Max(x => x.worth);
+                    var cheapestPrice = pills.Select(x => g.conf.itemProps.GetItem(x.Parse<int>())).Min(x => x.worth);
+                    var avgPrice = (expensestPrice + cheapestPrice) / 2;
+                    ratio *= Math.Pow(PriceHelper.ITEM_TYPE_RATIO[ModItemTypeEnum.PillRecipe], level).Parse<float>();
+                    grade = pillFormula.grade;
+                    props.sale = PriceHelper.UpPrice(avgPrice, grade, level, ratio);
+                    props.worth = PriceHelper.UpPrice(avgPrice, grade, level, ratio);
+
+                    var factory = g.conf.townFactotySell._allConfList.ToArray().FirstOrDefault(x => x.id == props.id);
+                    if (factory != null)
+                        factory.makePrice = props.worth / 6;
+                }
+                else if ((refiningArtifact = props.IsTownRefiningArtifact()) != null)
+                {
+                    var artifactId = g.conf.artifactShapeMaterial.GetItem(refiningArtifact.id).shape;
+                    var productShape = g.conf.artifactShape.GetItem(artifactId);
+                    var productProp = g.conf.itemProps.GetItem(artifactId);
+
+                    props.sale = productProp.sale / 3;
+                    props.worth = productProp.worth / 3;
+                }
+            }
+            foreach (var refine in g.conf.townRefine._allConfList)
+            {
+                refine.moneyCost = g.conf.itemProps.GetItem(refine.rewardID).worth / 4;
             }
             //balance skill
             foreach (var item in g.conf.itemSkill._allConfList)
