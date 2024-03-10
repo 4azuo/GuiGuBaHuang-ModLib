@@ -20,16 +20,16 @@ public static class EffectHelper
         }
     }
 
-    public static int GetEfx3Value(this ConfRoleEffectItem roleEfx)
+    public static T GetEfxValue<T>(this ConfRoleEffectItem roleEfx, int index)
     {
         var info = roleEfx.value.Split('_');
-        return info[2].Parse<int>();
+        return info[index].Parse<T>();
     }
 
-    public static void SetEfx3Value(this ConfRoleEffectItem roleEfx, int value)
+    public static void SetEfxValue<T>(this ConfRoleEffectItem roleEfx, int index, T value)
     {
         var info = roleEfx.value.Split('_');
-        info[2] = value.ToString();
+        info[index] = value.ToString();
         roleEfx.value = string.Join("_", info);
     }
 }

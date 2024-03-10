@@ -2,6 +2,7 @@
 using ModLib.Mod;
 using System.Collections.Generic;
 using UnhollowerBaseLib;
+using UnityEngine.Events;
 
 public static class EventHelper
 {
