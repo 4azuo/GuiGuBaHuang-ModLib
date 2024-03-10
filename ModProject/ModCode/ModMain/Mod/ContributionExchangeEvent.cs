@@ -14,16 +14,31 @@ namespace MOD_nE7UL2.Mod
         private const int EXCHANGE_RATIO = 200; //SpiritStone/Contribution
         private UISchool uiSchool;
         private UIPropSelect uiSelector;
+        private Button btnExchangeContribution;
+        private Text txtExchangeContribution;
 
         public override void OnOpenUIEnd(OpenUIEnd e)
         {
             uiSchool = MonoBehaviour.FindObjectOfType<UISchool>();
             if (uiSchool != null && g.world.playerUnit.data.school.schoolNameID == uiSchool.school.schoolNameID)
             {
-                var btnExchangeContribution = MonoBehaviour.Instantiate(uiSchool.btnGetMoney_En, uiSchool.transform, false);
-                var txtExchangeContribution = btnExchangeContribution.GetComponentInChildren<Text>();
-                txtExchangeContribution.text = "Exchange Contribution";
-                btnExchangeContribution.onClick.AddListener((UnityAction)OpenSelector);
+                if (btnExchangeContribution == null)
+                {
+                    btnExchangeContribution = MonoBehaviour.Instantiate(uiSchool.btnGetMoney_En, uiSchool.transform, false);
+                    btnExchangeContribution.onClick.AddListener((UnityAction)OpenSelector);
+                    txtExchangeContribution = btnExchangeContribution.GetComponentInChildren<Text>();
+                    txtExchangeContribution.text = "Exchange Contribution";
+                }
+            }
+        }
+
+        public override void OnCloseUIEnd(CloseUIEnd e)
+        {
+            uiSchool = MonoBehaviour.FindObjectOfType<UISchool>();
+            if (uiSchool == null)
+            {
+                btnExchangeContribution = null;
+                txtExchangeContribution = null;
             }
         }
 
