@@ -17,6 +17,9 @@ namespace MOD_nE7UL2.Mod
     [Cache(ModConst.REAL_MARKET_EVENT)]
     public class RealMarketEvent : ModEvent
     {
+        private const float MIN_RATE = 85.00f;
+        private const float MAX_RATE = 110.00f;
+
         private UIPropSell uiPropSell;
         private MapBuildBase curMainTown;
         private Text txtMarketST;
@@ -27,7 +30,6 @@ namespace MOD_nE7UL2.Mod
 
         public IDictionary<string, float> MarketPriceRate { get; set; } = new Dictionary<string, float>();
         public IDictionary<string, long> MarketST { get; set; } = new Dictionary<string, long>();
-        public IDictionary<string, int> SoldProps { get; set; } = new Dictionary<string, int>();
 
         public override void OnLoadGame()
         {
@@ -48,7 +50,7 @@ namespace MOD_nE7UL2.Mod
         {
             foreach (var town in g.world.build.GetBuilds().ToArray().Where(x => x.allBuildSub.ContainsKey(MapBuildSubType.TownMarketPill)))
             {
-                MarketPriceRate[town.buildData.id] = CommonTool.Random(75.00f, 120.00f);
+                MarketPriceRate[town.buildData.id] = CommonTool.Random(MIN_RATE, MAX_RATE);
             }
             foreach (var wunit in g.world.unit.GetUnits())
             {
@@ -56,7 +58,7 @@ namespace MOD_nE7UL2.Mod
                 if (town != null && town.allBuildSub.ContainsKey(MapBuildSubType.TownMarketPill))
                 {
                     var x = EventHelper.GetEvent<RealMarketEvent>(ModConst.REAL_MARKET_EVENT);
-                    MarketST[town.buildData.id] += (Math.Pow(2, g.conf.roleGrade.GetItem(wunit.GetProperty<int>(UnitPropertyEnum.GradeID)).grade) * 100 * (x.MarketPriceRate[town.buildData.id] / 100.00f)).Parse<long>();
+                    MarketST[town.buildData.id] += (Math.Pow(2, g.conf.roleGrade.GetItem(wunit.GetProperty<int>(UnitPropertyEnum.GradeID)).grade) * 10 * (x.MarketPriceRate[town.buildData.id] / 100.00f)).Parse<long>();
                 }
             }
         }
@@ -70,17 +72,13 @@ namespace MOD_nE7UL2.Mod
                 //init
                 maxPrice = MarketST[curMainTown.buildData.id];
 
-                //reduce price
+                //fix price
                 uiPropSell.propsPrice = new Il2CppSystem.Collections.Generic.Dictionary<int, int>();
                 foreach (var p in g.world.playerUnit.data.unitData.propData.allProps)
                 {
                     if (!uiPropSell.propsPrice.ContainsKey(p.propsID))
                     {
                         var basePrice = (p.propsInfoBase.sale * (MarketPriceRate[curMainTown.buildData.id] / 100.00f)).Parse<int>();
-                        if (SoldProps.ContainsKey(p.propsInfoBase.name) && p.propsType == DataProps.PropsDataType.Martial)
-                        {
-                            basePrice *= Math.Max(0.600, 1.000 - (Math.Pow(SoldProps[p.propsInfoBase.name], 2) * 0.001)).Parse<int>();
-                        }
                         uiPropSell.propsPrice.Add(p.propsID, basePrice);
                     }
                 }
@@ -161,22 +159,6 @@ namespace MOD_nE7UL2.Mod
 
             MarketST[curMainTown.buildData.id] -= totalPrice;
             maxPrice = MarketST[curMainTown.buildData.id];
-
-            foreach (var p in uiPropSell.selectProps.allProps)
-            {
-                if (p.propsType == DataProps.PropsDataType.Martial)
-                {
-                    if (!SoldProps.ContainsKey(p.propsInfoBase.name))
-                        SoldProps.Add(p.propsInfoBase.name, 0);
-                    SoldProps[p.propsInfoBase.name] += p.propsCount;
-                }
-                else
-                {
-                    if (!SoldProps.ContainsKey(p.propsID.ToString()))
-                        SoldProps.Add(p.propsID.ToString(), 0);
-                    SoldProps[p.propsID.ToString()] += p.propsCount;
-                }
-            }
         }
 
         private long GetTotalPrice()

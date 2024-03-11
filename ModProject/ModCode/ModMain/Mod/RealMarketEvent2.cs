@@ -15,11 +15,15 @@ namespace MOD_nE7UL2.Mod
     [Cache(ModConst.REAL_MARKET_EVENT2)]
     public class RealMarketEvent2 : ModEvent
     {
+        private const float MIN_RATE = 90.00f;
+        private const float MAX_RATE = 115.00f;
+
         private UITownMarketBuy uiTownMarketBuy;
         private UIPropSelectCount uiPropSelectCount;
         private MapBuildBase curMainTown;
         private Text txtMarketST;
         private Text txtInfo;
+        private Text txtInfo2;
         private long marketST;
 
         public IDictionary<string, float> MarketPriceRate { get; set; } = new Dictionary<string, float>();
@@ -39,7 +43,7 @@ namespace MOD_nE7UL2.Mod
         {
             foreach (var town in g.world.build.GetBuilds().ToArray().Where(x => x.allBuildSub.ContainsKey(MapBuildSubType.TownMarketPill)))
             {
-                MarketPriceRate[town.buildData.id] = CommonTool.Random(80.00f, 125.00f);
+                MarketPriceRate[town.buildData.id] = CommonTool.Random(MIN_RATE, MAX_RATE);
             }
         }
 
@@ -81,6 +85,16 @@ namespace MOD_nE7UL2.Mod
                 uiPropSelectCount = MonoBehaviour.FindObjectOfType<UIPropSelectCount>();
                 if (uiPropSelectCount != null)
                 {
+                    uiPropSelectCount.oneCost = (uiPropSelectCount.oneCost.Parse<float>() * MarketPriceRate[curMainTown.buildData.id] / 100f).Parse<int>();
+                    uiPropSelectCount.UpdateCountUI();
+
+                    txtInfo2 = MonoBehaviour.Instantiate(uiPropSelectCount.textName, uiPropSelectCount.transform, false);
+                    txtInfo2.text = $"Price rate: {MarketPriceRate[curMainTown.buildData.id]:0.00}%";
+                    txtInfo2.transform.position = new Vector3(uiPropSelectCount.ptextInfo.transform.position.x, uiPropSelectCount.ptextInfo.transform.position.y + 0.2f);
+                    txtInfo2.verticalOverflow = VerticalWrapMode.Overflow;
+                    txtInfo2.horizontalOverflow = HorizontalWrapMode.Overflow;
+                    txtInfo2.color = Color.red;
+
                     uiPropSelectCount.btnOK.onClick.m_Calls.m_RuntimeCalls.Insert(0, new InvokableCall((UnityAction)BuyEvent));
                 }
             }
