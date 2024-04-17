@@ -8,6 +8,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using static UISchoolChallengeTipsBase;
 
 namespace MOD_nE7UL2.Mod
 {
@@ -151,6 +152,10 @@ namespace MOD_nE7UL2.Mod
         {
             base.OnLoadGame();
             #region old
+            if (!TraningValues.ContainsKey(PLAYER_D_DMG_OLDKEY))
+                TraningValues.Add(PLAYER_D_DMG_OLDKEY, 0);
+            if (!TraningValues.ContainsKey(PLAYER_R_DMG_OLDKEY))
+                TraningValues.Add(PLAYER_R_DMG_OLDKEY, 0);
             if (GameDmg[GetDmgKey(DmgEnum.DmgDealt, DmgTypeEnum.Damage)] == 0)
                 GameDmg[GetDmgKey(DmgEnum.DmgDealt, DmgTypeEnum.Damage)] = TraningValues[PLAYER_D_DMG_OLDKEY].Parse<long>();
             if (GameDmg[GetDmgKey(DmgEnum.DmgRecv, DmgTypeEnum.Damage)] == 0)
