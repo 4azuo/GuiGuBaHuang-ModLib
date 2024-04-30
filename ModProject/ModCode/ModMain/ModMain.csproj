@@ -39,10 +39,15 @@
     <Compile Include="Enum\AnimaIncPropEnum.cs" />
     <Compile Include="Enum\AnimaUpGradeEnum.cs" />
     <Compile Include="Enum\NpcUpGradeRatioEnum.cs" />
+    <Compile Include="Enum\BuildingCostEnum.cs" />
     <Compile Include="Enum\UnitTypeLuckEnum.cs" />
     <Compile Include="Enum\UnitTypeEnum.cs" />
     <Compile Include="Helper\PriceHelper.cs" />
     <Compile Include="ModMain.cs" />
+    <Compile Include="Mod\MapBuildPropertyEvent.cs" />
+    <Compile Include="Mod\BuildingArrangeEvent.cs" />
+    <Compile Include="Mod\MissionDeclareEvent.cs" />
+    <Compile Include="Mod\RealStorageEvent.cs" />
     <Compile Include="Mod\RealMarketEvent2.cs" />
     <Compile Include="Mod\RealMarketEvent.cs" />
     <Compile Include="Mod\HideButtonEvent.cs" />
@@ -56,6 +61,7 @@
     <Compile Include="Mod\NpcUpgradeSkillEvent.cs" />
     <Compile Include="Mod\MonstStrongerEvent.cs" />
     <Compile Include="Mod\BornLuckEvent.cs" />
+    <Compile Include="Object\CommissionTask.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Mod\BattleRewardEvent.cs" />
     <Compile Include="Mod\UnitTypeEvent.cs" />

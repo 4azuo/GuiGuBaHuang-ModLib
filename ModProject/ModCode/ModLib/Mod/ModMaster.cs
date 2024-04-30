@@ -30,12 +30,13 @@ namespace ModLib.Mod
             //declare event
             #region Timer
             corTimeUpdate = g.timer.Time(new Action(_OnTimeUpdate), 0.1f, true);
-            corFrameUpdate = g.timer.Frame(new Action(_OnFrameUpdate), 1, true);
+            corFrameUpdate = g.timer.Frame(new Action(_OnFrameUpdate), 2, true);
             #endregion
 
             #region EMapType
             var callPlayerOpenTreeVault = (Il2CppSystem.Action<ETypeData>)_OnPlayerOpenTreeVault;
-            g.events.On(EMapType.PlayerOpenTownBuild(2011), callPlayerOpenTreeVault);
+            g.events.On(EMapType.PlayerOpenTownBuild((int)MapBuildSubType.TownStorage), callPlayerOpenTreeVault);
+            g.events.On(EMapType.PlayerOpenTownBuild((int)MapBuildSubType.SchoolStorage), callPlayerOpenTreeVault);
 
             var callPlayerEquipCloth = (Il2CppSystem.Action<ETypeData>)_OnPlayerEquipCloth;
             g.events.On(EMapType.PlayerEquipCloth, callPlayerEquipCloth);
@@ -57,6 +58,18 @@ namespace ModLib.Mod
             #endregion
 
             #region EGameType
+            var callTownAuctionStart = (Il2CppSystem.Action<ETypeData>)_OnTownAuctionStart;
+            g.events.On(EGameType.TownAuctionStart(1), callTownAuctionStart);
+            g.events.On(EGameType.TownAuctionStart(2), callTownAuctionStart);
+            g.events.On(EGameType.TownAuctionStart(3), callTownAuctionStart);
+            g.events.On(EGameType.TownAuctionStart(4), callTownAuctionStart);
+            g.events.On(EGameType.TownAuctionStart(5), callTownAuctionStart);
+            g.events.On(EGameType.TownAuctionStart(6), callTownAuctionStart);
+            g.events.On(EGameType.TownAuctionStart(7), callTownAuctionStart);
+            g.events.On(EGameType.TownAuctionStart(8), callTownAuctionStart);
+            g.events.On(EGameType.TownAuctionStart(9), callTownAuctionStart);
+            g.events.On(EGameType.TownAuctionStart(10), callTownAuctionStart);
+
             var callOpenUIStart = (Il2CppSystem.Action<ETypeData>)_OnOpenUIStart;
             g.events.On(EGameType.OpenUIStart, callOpenUIStart);
 

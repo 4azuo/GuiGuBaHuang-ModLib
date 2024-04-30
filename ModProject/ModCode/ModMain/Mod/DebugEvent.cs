@@ -1,13 +1,17 @@
 ﻿//using EGameTypeData;
 //using ModLib.Enum;
 //using ModLib.Mod;
+//using System;
+//using System.Collections.Generic;
 //using System.Linq;
+//using System.Numerics;
 //using System.Reflection;
 //using TMPro;
 //using UnityEngine;
 //using UnityEngine.Events;
 //using UnityEngine.EventSystems;
 //using UnityEngine.UI;
+//using static SpecialBattle83;
 
 //namespace MOD_nE7UL2.Mod
 //{
@@ -22,20 +26,25 @@
 //        //    g.world.playerUnit.AddProperty<int>(UnitPropertyEnum.HpMax, 1000000);
 //        //    g.world.playerUnit.AddProperty<int>(UnitPropertyEnum.MpMax, 1000000);
 //        //    g.world.playerUnit.AddProperty<int>(UnitPropertyEnum.SpMax, 1000000);
-//        //    g.world.playerUnit.data.RewardPropMoney(1000000);
+//        //    g.world.playerUnit.SetUnitMoney(1000000);
+//        //    g.world.playerUnit.SetUnitMayorDegree(100000);
+//        //    g.world.playerUnit.SetUnitContribution(100000);
 
 //        //    g.world.playerUnit.data.unitData.propertyData.footSpeed = 10000;
-//        //    g.world.playerUnit.data.dynUnitData.playerView.baseValue = 1000;
+//        //    g.world.playerUnit.data.dynUnitData.playerView.baseValue = 100;
 //        //}
 
 //        /* === Ui component list === */
-//        //public override void OnOpenUIStart(OpenUIStart e)
+//        //public override void OnOpenUIEnd(OpenUIEnd e)
 //        //{
 //        //    DebugHelper.WriteLine($"UI: {e.uiType.uiName}");
 //        //    foreach (var item in MonoBehaviour.FindObjectsOfType<UIBehaviour>().Where(x => x?.GetComponentInParent<UIBase>()?.name == e.uiType.uiName))
 //        //    {
 //        //        var className = item.GetScriptClassName();
-//        //        DebugHelper.Write($"　{item.name}({className}): ");
+//        //        var uiParent = item.GetComponentInParent<UIBase>();
+//        //        var uiComp1 = item.GetComponentInParent<UIBehaviour>();
+//        //        var uiComp2 = uiComp1.GetComponentInParent<UIBehaviour>();
+//        //        DebugHelper.Write($"　{item.name}({className} extends {uiParent.uiType.uiName}.{uiComp1.name}, {uiComp2.name}): ");
 //        //        switch (className)
 //        //        {
 //        //            case "Text":
@@ -48,6 +57,58 @@
 //        //                break;
 //        //        }
 //        //        DebugHelper.WriteLine();
+//        //    }
+//        //    DebugHelper.Save();
+//        //}
+
+//        /* === Ui component list - details === */
+//        //public override void OnOpenUIEnd(OpenUIEnd e)
+//        //{
+//        //    var ui = MonoBehaviour.FindObjectOfType<UITownStorageProps>();
+//        //    if (ui != null)
+//        //    {
+//        //        DebugHelper.WriteLine($"UI: {ui.uiType.uiName}");
+//        //        PrintChildrenComponents(1, ui, new List<MonoBehaviour>());
+//        //        DebugHelper.Save();
+//        //    }
+//        //}
+//        //private void PrintChildrenComponents(int level, MonoBehaviour parent, List<MonoBehaviour> ignored)
+//        //{
+//        //    foreach (var child in parent.GetComponentsInChildren<MonoBehaviour>())
+//        //    {
+//        //        if (ignored.Contains(child))
+//        //            continue;
+
+//        //        ignored.Add(child);
+//        //        var className = child.GetScriptClassName();
+//        //        DebugHelper.Write($"{new string('\t', level)}{child.name}({className}): ");
+//        //        switch (className)
+//        //        {
+//        //            case "Text":
+//        //                DebugHelper.Write($"text:{child.TryCast<Text>()?.text}", false);
+//        //                break;
+//        //            case "TextMeshProUGUI":
+//        //                DebugHelper.Write($"text:{child.TryCast<TextMeshProUGUI>()?.text}", false);
+//        //                break;
+//        //            default:
+//        //                break;
+//        //        }
+//        //        DebugHelper.WriteLine();
+
+//        //        PrintChildrenComponents(level + 1, child, ignored);
+//        //    }
+//        //}
+
+//        /* === Ui button list === */
+//        //public override void OnOpenUIEnd(OpenUIEnd e)
+//        //{
+//        //    DebugHelper.WriteLine($"UI: {e.uiType.uiName}");
+//        //    foreach (var btn in MonoBehaviour.FindObjectsOfType<Button>())
+//        //    {
+//        //        var btnText = btn.GetComponentInChildren<Text>();
+//        //        var uiParent = btn.GetComponentInParent<UIBase>();
+//        //        var className = btn.GetScriptClassName();
+//        //        DebugHelper.WriteLine($"　{btn.name}({className} extends {uiParent.uiType.uiName}): {btnText?.text}");
 //        //    }
 //        //    DebugHelper.Save();
 //        //}

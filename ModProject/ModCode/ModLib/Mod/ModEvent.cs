@@ -2,6 +2,7 @@
 using EGameTypeData;
 using ModLib.Object;
 using Newtonsoft.Json;
+using System.Collections.Generic;
 
 namespace ModLib.Mod
 {
@@ -14,6 +15,58 @@ namespace ModLib.Mod
             [TraceIgnore]
             get;
         } = -1;
+        [JsonIgnore]
+        public IDictionary<string, uint> UpdateFlg1
+        {
+            [TraceIgnore]
+            get;
+            [TraceIgnore]
+            set;
+        } = new Dictionary<string, uint>();
+        [JsonIgnore]
+        public IDictionary<string, uint> UpdateFlg2
+        {
+            [TraceIgnore]
+            get;
+            [TraceIgnore]
+            set;
+        } = new Dictionary<string, uint>();
+
+        public ModEvent()
+        {
+            foreach (var method in GetType().GetMethods())
+            {
+                if (!UpdateFlg1.ContainsKey(method.Name))
+                    UpdateFlg1.Add(method.Name, uint.MinValue);
+                if (!UpdateFlg2.ContainsKey(method.Name))
+                    UpdateFlg2.Add(method.Name, uint.MinValue);
+            }
+        }
+
+        #region Private methods
+        [TraceIgnore]
+        public bool IsLoading()
+        {
+            var stt = ModSettings.GetSettings<ModSettings>();
+            return 
+                stt.LoadGameBefore ||
+                stt.LoadGame ||
+                stt.LoadGameAfter ||
+                stt.LoadGameFirst;
+        }
+
+        [TraceIgnore]
+        public bool IsFlgUpdate(string method)
+        {
+            return UpdateFlg1[method] != UpdateFlg2[method];
+        }
+
+        [TraceIgnore]
+        public void UpdateFlg(string method)
+        {
+            UpdateFlg1[method]++;
+        }
+        #endregion
 
         #region Timer
         [TraceIgnore]
@@ -33,6 +86,7 @@ namespace ModLib.Mod
         #endregion
 
         #region EGameType
+        public virtual void OnTownAuctionStart(ETypeData e) { }
         public virtual void OnOpenUIStart(OpenUIStart e) { }
         public virtual void OnOpenUIEnd(OpenUIEnd e) { }
         public virtual void OnCloseUIStart(CloseUIStart e) { }

@@ -6,7 +6,7 @@ using UnityEngine;
 
 namespace MOD_nE7UL2.Mod
 {
-    [Cache(ModConst.MONST_STRONGER_EVENT_KEY)]
+    [Cache(ModConst.MONST_STRONGER_EVENT)]
     public class MonstStrongerEvent : ModEvent
     {
         public static readonly IDictionary<MonstType, float> GROW_RATIO = new Dictionary<MonstType, float>

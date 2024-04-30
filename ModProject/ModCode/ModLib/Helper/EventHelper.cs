@@ -3,6 +3,9 @@ using ModLib.Mod;
 using System.Collections.Generic;
 using UnhollowerBaseLib;
 using UnityEngine.Events;
+using System.Reflection;
+using Newtonsoft.Json;
+using ModLib.Enum;
 
 public static class EventHelper
 {
@@ -23,6 +26,20 @@ public static class EventHelper
         foreach (var ev in GetEvents(methodName))
         {
             var method = ev.GetType().GetMethod(methodName);
+            var condAttr = method.GetCustomAttribute<EventConditionAttribute>();
+            if (condAttr != null)
+            {
+                if (
+                    (condAttr.WithLoadState == EvCondLoadEnum.Loaded && ev.IsLoading()) || 
+                    (condAttr.WithLoadState == EvCondLoadEnum.Loading && !ev.IsLoading())
+                    )
+                    return;
+                if (condAttr.NeedFlgUpdate && !ev.IsFlgUpdate(methodName))
+                    return;
+                if (condAttr.CustomCondition != null && !ev.GetType().GetMethod(condAttr.CustomCondition).Invoke(ev, null).Parse<bool>())
+                    return;
+            }
+
             if (method.GetParameters().Length == 0)
             {
                 method.Invoke(ev, null);
@@ -31,6 +48,8 @@ public static class EventHelper
             {
                 method.Invoke(ev, new object[] { e });
             }
+
+            ev.UpdateFlg2[methodName] = ev.UpdateFlg1[methodName];
         }
     }
 

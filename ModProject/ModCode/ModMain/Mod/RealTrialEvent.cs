@@ -4,11 +4,6 @@ using MOD_nE7UL2.Const;
 using ModLib.Enum;
 using ModLib.Mod;
 using Newtonsoft.Json;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace MOD_nE7UL2.Mod
 {

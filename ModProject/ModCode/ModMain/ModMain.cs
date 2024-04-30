@@ -179,6 +179,8 @@ namespace MOD_nE7UL2
                     grade = Math.Max(1, gradeInfo.Select(x => x.grade).Max());
                     props.sale = PriceHelper.UpPrice(props.sale, grade, level, ratio);
                     props.worth = PriceHelper.UpPrice(props.worth, grade, level, ratio);
+                    props.dieDrop = 1;
+                    if (level >= 5) props.auction = 1;
                 }
                 else if ((gradeInfo = props.IsBreakthroughItemB()) != null)
                 {
@@ -186,6 +188,8 @@ namespace MOD_nE7UL2
                     grade = Math.Max(1, gradeInfo.Select(x => x.grade).Max());
                     props.sale = PriceHelper.UpPrice(props.sale, grade, level, ratio);
                     props.worth = PriceHelper.UpPrice(props.worth, grade, level, ratio);
+                    props.dieDrop = 1;
+                    if (level >= 5) props.auction = 1;
                 }
                 else if ((artifact = props.IsArtifact()) != null)
                 {
@@ -193,6 +197,8 @@ namespace MOD_nE7UL2
                     grade = artifact.initGrade;
                     props.sale = PriceHelper.UpPrice(props.sale, grade, level, ratio);
                     props.worth = PriceHelper.UpPrice(props.worth, grade, level, ratio);
+                    props.dieDrop = 1;
+                    if (level >= 5) props.auction = 1;
                 }
                 else if ((pill = props.IsPotion()) != null)
                 {
@@ -250,6 +256,7 @@ namespace MOD_nE7UL2
                     grade = Math.Max(1, pill.grade);
                     props.sale = PriceHelper.UpPrice(props.sale, grade, level, ratio);
                     props.worth = PriceHelper.UpPrice(props.worth, grade, level, ratio);
+                    props.dieDrop = 1;
                 }
                 else if ((ring = props.IsRing()) != null)
                 {
@@ -257,6 +264,7 @@ namespace MOD_nE7UL2
                     grade = Math.Max(1, ring.grade);
                     props.sale = PriceHelper.UpPrice(props.sale, grade, level, ratio);
                     props.worth = PriceHelper.UpPrice(props.worth, grade, level, ratio);
+                    if (level >= 5) props.auction = 1;
                 }
                 else if ((mount = props.IsMount()) != null)
                 {
@@ -264,12 +272,15 @@ namespace MOD_nE7UL2
                     grade = Math.Max(1, mount.grade);
                     props.sale = PriceHelper.UpPrice(props.sale, grade, level, ratio);
                     props.worth = PriceHelper.UpPrice(props.worth, grade, level, ratio);
+                    if (level >= 5) props.auction = 1;
                 }
                 else if ((furnace = props.IsFurnace()) != null)
                 {
                     ratio *= Math.Pow(PriceHelper.ITEM_TYPE_RATIO[ModItemTypeEnum.Furnace], level).Parse<float>();
                     props.sale = PriceHelper.UpPrice(props.sale, grade, level, ratio);
                     props.worth = PriceHelper.UpPrice(props.worth, grade, level, ratio);
+                    props.dieDrop = 1;
+                    if (level >= 5) props.auction = 1;
 
                     //furnace dur x5
                     var dur = level * 50;

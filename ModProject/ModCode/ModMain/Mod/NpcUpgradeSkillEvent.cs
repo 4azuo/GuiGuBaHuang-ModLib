@@ -6,7 +6,7 @@ using System.Collections.Generic;
 
 namespace MOD_nE7UL2.Mod
 {
-    [Cache(ModConst.NPC_UPGRADE_SKILL_EVENT_KEY)]
+    [Cache(ModConst.NPC_UPGRADE_SKILL_EVENT)]
     public class NpcUpgradeSkillEvent : ModEvent
     {
         public static readonly IDictionary<MartialType, float> EXP_RATIO = new Dictionary<MartialType, float>
