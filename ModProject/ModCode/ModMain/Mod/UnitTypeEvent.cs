@@ -6,7 +6,7 @@ using System.Collections.Generic;
 
 namespace MOD_nE7UL2.Mod
 {
-    [Cache(ModConst.UNIT_TYPE_EVENT_KEY)]
+    [Cache(ModConst.UNIT_TYPE_EVENT)]
     public class UnitTypeEvent : ModEvent
     {
         public IDictionary<string, UnitTypeEnum> UnitTypeDic { get; set; } = new Dictionary<string, UnitTypeEnum>();

@@ -7,6 +7,11 @@ namespace ModLib.Mod
     public abstract partial class ModMaster : MonoBehaviour
     {
         #region ModLib - Handlers
+        public virtual void _OnTownAuctionStart(ETypeData e)
+        {
+            CallEvents<ETypeData>("OnTownAuctionStart", e, true, false);
+        }
+
         public virtual void _OnOpenUIStart(ETypeData e)
         {
             if (!initMod)

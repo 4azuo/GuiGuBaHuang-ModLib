@@ -1,5 +1,4 @@
-﻿using System;
-using UnityEngine;
+﻿using UnityEngine;
 
 namespace ModLib.Mod
 {
@@ -8,48 +7,12 @@ namespace ModLib.Mod
         #region ModLib - Handlers
         public virtual void _OnTimeUpdate()
         {
-            if (GameHelper.IsInGame() && CacheHelper.IsGameCacheLoaded())
-            {
-                try
-                {
-                    var stt = ModSettings.GetSettings<ModSettings>();
-
-                    if (!stt.LoadGameBefore &&
-                        !stt.LoadGame &&
-                        !stt.LoadGameAfter &&
-                        !stt.LoadGameFirst)
-                    {
-                        OnTimeUpdate();
-                    }
-                }
-                catch (Exception ex)
-                {
-                    DebugHelper.WriteLine(ex);
-                }
-            }
+            CallEvents("OnTimeUpdate");
         }
 
         public virtual void _OnFrameUpdate()
         {
-            if (GameHelper.IsInGame() && CacheHelper.IsGameCacheLoaded())
-            {
-                try
-                {
-                    var stt = ModSettings.GetSettings<ModSettings>();
-
-                    if (!stt.LoadGameBefore &&
-                        !stt.LoadGame &&
-                        !stt.LoadGameAfter &&
-                        !stt.LoadGameFirst)
-                    {
-                        OnFrameUpdate();
-                    }
-                }
-                catch (Exception ex)
-                {
-                    DebugHelper.WriteLine(ex);
-                }
-            }
+            CallEvents("OnFrameUpdate");
         }
         #endregion
 

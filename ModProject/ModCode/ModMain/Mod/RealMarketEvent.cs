@@ -3,10 +3,8 @@ using MOD_nE7UL2.Const;
 using ModLib.Mod;
 using UnityEngine.Events;
 using UnityEngine;
-using Il2CppSystem;
 using System.Collections.Generic;
 using System.Linq;
-using ModLib.Enum;
 using UnityEngine.UI;
 
 namespace MOD_nE7UL2.Mod
@@ -26,10 +24,11 @@ namespace MOD_nE7UL2.Mod
         private Text txtPrice2;
         private Text txtWarningMsg;
         private Text txtInfo;
-        private long maxPrice;
 
-        public IDictionary<string, float> MarketPriceRate { get; set; } = new Dictionary<string, float>();
+        #region old
         public IDictionary<string, long> MarketST { get; set; } = new Dictionary<string, long>();
+        #endregion
+        public IDictionary<string, float> MarketPriceRate { get; set; } = new Dictionary<string, float>();
 
         public override void OnLoadGame()
         {
@@ -38,10 +37,6 @@ namespace MOD_nE7UL2.Mod
                 if (!MarketPriceRate.ContainsKey(town.buildData.id))
                 {
                     MarketPriceRate.Add(town.buildData.id, 100.00f);
-                }
-                if (!MarketST.ContainsKey(town.buildData.id))
-                {
-                    MarketST.Add(town.buildData.id, Math.Pow(5, town.gridData.areaBaseID).Parse<long>() * 100);
                 }
             }
         }
@@ -52,15 +47,6 @@ namespace MOD_nE7UL2.Mod
             {
                 MarketPriceRate[town.buildData.id] = CommonTool.Random(MIN_RATE, MAX_RATE);
             }
-            foreach (var wunit in g.world.unit.GetUnits())
-            {
-                var town = g.world.build.GetBuild(wunit.data.unitData.GetPoint());
-                if (town != null && town.allBuildSub.ContainsKey(MapBuildSubType.TownMarketPill))
-                {
-                    var x = EventHelper.GetEvent<RealMarketEvent>(ModConst.REAL_MARKET_EVENT);
-                    MarketST[town.buildData.id] += (Math.Pow(2, g.conf.roleGrade.GetItem(wunit.GetProperty<int>(UnitPropertyEnum.GradeID)).grade) * 10 * (x.MarketPriceRate[town.buildData.id] / 100.00f)).Parse<long>();
-                }
-            }
         }
 
         public override void OnOpenUIStart(OpenUIStart e)
@@ -69,9 +55,6 @@ namespace MOD_nE7UL2.Mod
             curMainTown = g.world.build.GetBuild(g.world.playerUnit.data.unitData.GetPoint());
             if (uiPropSell != null && curMainTown != null)
             {
-                //init
-                maxPrice = MarketST[curMainTown.buildData.id];
-
                 //fix price
                 uiPropSell.propsPrice = new Il2CppSystem.Collections.Generic.Dictionary<int, int>();
                 foreach (var p in g.world.playerUnit.data.unitData.propData.allProps)
@@ -95,7 +78,6 @@ namespace MOD_nE7UL2.Mod
                 {
                     //add component
                     txtMarketST = MonoBehaviour.Instantiate(uiPropSell.textMoney, uiPropSell.transform, false);
-                    txtMarketST.text = $"Market: {maxPrice} Spirit Stones";
                     txtMarketST.transform.position = new Vector3(uiPropSell.textMoney.transform.position.x, uiPropSell.textMoney.transform.position.y - 0.2f);
                     txtMarketST.verticalOverflow = VerticalWrapMode.Overflow;
                     txtMarketST.horizontalOverflow = HorizontalWrapMode.Overflow;
@@ -108,7 +90,6 @@ namespace MOD_nE7UL2.Mod
                     txtInfo.color = Color.red;
 
                     txtPrice2 = MonoBehaviour.Instantiate(uiPropSell.textPrice, uiPropSell.transform, false);
-                    txtPrice2.text = $"/{maxPrice} Spirit Stones";
                     txtPrice2.transform.position = new Vector3(uiPropSell.textPrice.transform.position.x, uiPropSell.textPrice.transform.position.y - 0.2f);
                     txtPrice2.verticalOverflow = VerticalWrapMode.Overflow;
                     txtPrice2.horizontalOverflow = HorizontalWrapMode.Overflow;
@@ -136,7 +117,6 @@ namespace MOD_nE7UL2.Mod
                 txtPrice2 = null;
                 txtWarningMsg = null;
                 txtInfo = null;
-                maxPrice = 0;
             }
         }
 
@@ -144,21 +124,20 @@ namespace MOD_nE7UL2.Mod
         {
             if (uiPropSell != null && curMainTown != null && txtMarketST != null)
             {
+                var budget = MapBuildPropertyEvent.GetBuildProperty(curMainTown);
                 var totalPrice = GetTotalPrice();
-                txtMarketST.text = $"Market: {maxPrice} Spirit Stones";
-                txtPrice2.text = $"/{maxPrice} Spirit Stones";
+                txtMarketST.text = $"Market: {budget} Spirit Stones";
+                txtPrice2.text = $"/{budget} Spirit Stones";
                 uiPropSell.textPrice.text = $"Total Price: {totalPrice}";
-                uiPropSell.btnOK.gameObject.SetActive(totalPrice <= maxPrice);
-                txtWarningMsg.gameObject.SetActive(totalPrice > maxPrice);
+                uiPropSell.btnOK.gameObject.SetActive(totalPrice <= budget);
+                txtWarningMsg.gameObject.SetActive(totalPrice > budget);
             }
         }
 
         private void SellEvent()
         {
             var totalPrice = GetTotalPrice().Parse<int>();
-
-            MarketST[curMainTown.buildData.id] -= totalPrice;
-            maxPrice = MarketST[curMainTown.buildData.id];
+            MapBuildPropertyEvent.AddBuildProperty(curMainTown, -totalPrice);
         }
 
         private long GetTotalPrice()

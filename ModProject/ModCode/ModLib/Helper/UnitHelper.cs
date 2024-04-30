@@ -1,5 +1,7 @@
 ﻿using ModLib.Enum;
 using System;
+using System.Collections.Generic;
+using System.Linq;
 
 public static class UnitHelper
 {
@@ -147,5 +149,138 @@ public static class UnitHelper
                 wunit.DelLuck((int)gradeEnum.Bottleneck);
             }
         }
+    }
+
+    public static void ClearExp(this WorldUnitBase wunit)
+    {
+        wunit.AddExp(int.MinValue);
+    }
+
+    public static void AddUnitProp(this WorldUnitBase wunit, int propID, int addCount)
+    {
+        var curProps = wunit.GetUnitProps(propID);
+        if (curProps?.Count == 0)
+        {
+            var conf = g.conf.itemProps.GetItem(propID);
+            if (conf.isOverlay == 1)
+            {
+                wunit.data.unitData.propData.AddProps(propID, addCount);
+            }
+            else
+            {
+                for (var i = 0; i < addCount; i++)
+                {
+                    wunit.data.unitData.propData.AddProps(propID, 1);
+                }
+            }
+            return;
+        }
+
+        var curCount = curProps.Sum(x => x.propsCount);
+        var newCount = curCount + addCount;
+        if (newCount <= 0)
+        {
+            foreach (var prop in curProps)
+            {
+                wunit.data.unitData.propData.allProps.Remove(prop);
+            }
+            return;
+        }
+
+        foreach (var prop in curProps)
+        {
+            if (prop.propsItem.isOverlay == 1)
+            {
+                prop.propsCount = newCount;
+                return;
+            }
+        }
+
+        if (curCount < newCount)
+        {
+            while (curCount < newCount)
+            {
+                wunit.data.unitData.propData.AddProps(propID, 1);
+                curCount++;
+            }
+        }
+        else
+        {
+            while (curCount > newCount)
+            {
+                wunit.data.unitData.propData.allProps.Remove(curProps[curCount - 1]);
+                curCount--;
+            }
+        }
+    }
+
+    public static void RemoveUnitProp(this WorldUnitBase wunit, int propID)
+    {
+        wunit.AddUnitProp(propID, int.MinValue);
+    }
+
+    public static void AddUnitMoney(this WorldUnitBase wunit, int addCount)
+    {
+        wunit.AddUnitProp(10001, addCount);
+    }
+
+    public static void SetUnitMoney(this WorldUnitBase wunit, int setCount)
+    {
+        wunit.AddUnitMoney(setCount - wunit.GetUnitMoney());
+    }
+
+    public static int GetUnitMoney(this WorldUnitBase wunit)
+    {
+        return wunit.GetUnitPropCount(10001);
+    }
+
+    public static void AddUnitContribution(this WorldUnitBase wunit, int addCount)
+    {
+        wunit.AddUnitProp(10011, addCount);
+    }
+
+    public static void SetUnitContribution(this WorldUnitBase wunit, int setCount)
+    {
+        wunit.AddUnitContribution(setCount - wunit.GetUnitContribution());
+    }
+
+    public static int GetUnitContribution(this WorldUnitBase wunit)
+    {
+        return wunit.GetUnitPropCount(10011);
+    }
+
+    public static void AddUnitMayorDegree(this WorldUnitBase wunit, int addCount)
+    {
+        wunit.AddUnitProp(10041, addCount);
+    }
+
+    public static void SetUnitMayorDegree(this WorldUnitBase wunit, int setCount)
+    {
+        wunit.AddUnitMayorDegree(setCount - wunit.GetUnitMayorDegree());
+    }
+
+    public static int GetUnitMayorDegree(this WorldUnitBase wunit)
+    {
+        return wunit.GetUnitPropCount(10041);
+    }
+
+    public static List<DataProps.PropsData> GetUnitProps(this WorldUnitBase wunit)
+    {
+        return wunit.data.unitData.propData.allProps.ToArray().ToList();
+    }
+
+    public static List<DataProps.PropsData> GetUnitProps(this WorldUnitBase wunit, int propID)
+    {
+        return wunit.GetUnitProps().Where(x => x.propsID == propID).ToList();
+    }
+
+    public static int GetUnitPropValue(this WorldUnitBase wunit, int propID)
+    {
+        return wunit.GetUnitProps(propID).Where(x => x.propsID == propID).Sum(x => x.propsCount * x.propsInfoBase.worth);
+    }
+
+    public static int GetUnitPropCount(this WorldUnitBase wunit, int propID)
+    {
+        return wunit.GetUnitProps(propID).Where(x => x.propsID == propID).Sum(x => x.propsCount);
     }
 }

@@ -36,10 +36,12 @@
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="Attribute\EventConditionAttribute.cs" />
     <Compile Include="Attribute\CacheAttribute.cs" />
     <Compile Include="Attribute\TraceIgnoreAttribute.cs" />
     <Compile Include="Attribute\TraceAttribute.cs" />
     <Compile Include="Converter\EnumObjectConverter.cs" />
+    <Compile Include="Enum\EvCondLoadEnum.cs" />
     <Compile Include="Enum\ItemTypeEnum.cs" />
     <Compile Include="Enum\PillTypeEnum.cs" />
     <Compile Include="Enum\EffectTypeEnum.cs" />

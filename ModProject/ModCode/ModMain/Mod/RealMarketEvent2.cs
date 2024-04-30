@@ -20,11 +20,9 @@ namespace MOD_nE7UL2.Mod
 
         private UITownMarketBuy uiTownMarketBuy;
         private UIPropSelectCount uiPropSelectCount;
-        private MapBuildBase curMainTown;
         private Text txtMarketST;
         private Text txtInfo;
         private Text txtInfo2;
-        private long marketST;
 
         public IDictionary<string, float> MarketPriceRate { get; set; } = new Dictionary<string, float>();
 
@@ -47,55 +45,43 @@ namespace MOD_nE7UL2.Mod
             }
         }
 
-        public override void OnOpenUIStart(OpenUIStart e)
-        {
-            uiTownMarketBuy = MonoBehaviour.FindObjectOfType<UITownMarketBuy>();
-            curMainTown = g.world.build.GetBuild(g.world.playerUnit.data.unitData.GetPoint());
-            if (uiTownMarketBuy != null && curMainTown != null)
-            {
-                //init
-                var x = EventHelper.GetEvent<RealMarketEvent>(ModConst.REAL_MARKET_EVENT);
-                marketST = x.MarketST[curMainTown.buildData.id];
-            }
-        }
-
         public override void OnOpenUIEnd(OpenUIEnd e)
         {
             uiTownMarketBuy = MonoBehaviour.FindObjectOfType<UITownMarketBuy>();
-            curMainTown = g.world.build.GetBuild(g.world.playerUnit.data.unitData.GetPoint());
-            if (uiTownMarketBuy != null && curMainTown != null)
+            if (uiTownMarketBuy != null)
             {
                 if (txtMarketST == null)
                 {
                     //add component
                     txtMarketST = MonoBehaviour.Instantiate(uiTownMarketBuy.textMoney, uiTownMarketBuy.transform, false);
-                    txtMarketST.text = $"Market: {marketST} Spirit Stones";
                     txtMarketST.transform.position = new Vector3(uiTownMarketBuy.textMoney.transform.position.x + 1.5f, uiTownMarketBuy.textMoney.transform.position.y);
                     txtMarketST.verticalOverflow = VerticalWrapMode.Overflow;
                     txtMarketST.horizontalOverflow = HorizontalWrapMode.Overflow;
 
                     txtInfo = MonoBehaviour.Instantiate(uiTownMarketBuy.textMoney, uiTownMarketBuy.transform, false);
-                    txtInfo.text = $"Price rate: {MarketPriceRate[curMainTown.buildData.id]:0.00}%";
+                    txtInfo.text = $"Price rate: {MarketPriceRate[uiTownMarketBuy.town.buildData.id]:0.00}%";
                     txtInfo.transform.position = new Vector3(uiTownMarketBuy.textMoney.transform.position.x + 5.0f, uiTownMarketBuy.textMoney.transform.position.y);
                     txtInfo.verticalOverflow = VerticalWrapMode.Overflow;
                     txtInfo.horizontalOverflow = HorizontalWrapMode.Overflow;
                     txtInfo.color = Color.red;
                 }
-
-                uiPropSelectCount = MonoBehaviour.FindObjectOfType<UIPropSelectCount>();
-                if (uiPropSelectCount != null)
+                else
                 {
-                    uiPropSelectCount.oneCost = (uiPropSelectCount.oneCost.Parse<float>() * MarketPriceRate[curMainTown.buildData.id] / 100f).Parse<int>();
-                    uiPropSelectCount.UpdateCountUI();
+                    uiPropSelectCount = MonoBehaviour.FindObjectOfType<UIPropSelectCount>();
+                    if (uiPropSelectCount != null && txtInfo2 == null)
+                    {
+                        uiPropSelectCount.oneCost = (uiPropSelectCount.oneCost.Parse<float>() * MarketPriceRate[uiTownMarketBuy.town.buildData.id] / 100f).Parse<int>();
+                        uiPropSelectCount.UpdateCountUI();
 
-                    txtInfo2 = MonoBehaviour.Instantiate(uiPropSelectCount.textName, uiPropSelectCount.transform, false);
-                    txtInfo2.text = $"Price rate: {MarketPriceRate[curMainTown.buildData.id]:0.00}%";
-                    txtInfo2.transform.position = new Vector3(uiPropSelectCount.ptextInfo.transform.position.x, uiPropSelectCount.ptextInfo.transform.position.y + 0.2f);
-                    txtInfo2.verticalOverflow = VerticalWrapMode.Overflow;
-                    txtInfo2.horizontalOverflow = HorizontalWrapMode.Overflow;
-                    txtInfo2.color = Color.red;
+                        txtInfo2 = MonoBehaviour.Instantiate(uiPropSelectCount.textName, uiPropSelectCount.transform, false);
+                        txtInfo2.text = $"Price rate: {MarketPriceRate[uiTownMarketBuy.town.buildData.id]:0.00}%";
+                        txtInfo2.transform.position = new Vector3(uiPropSelectCount.ptextInfo.transform.position.x, uiPropSelectCount.ptextInfo.transform.position.y + 0.2f);
+                        txtInfo2.verticalOverflow = VerticalWrapMode.Overflow;
+                        txtInfo2.horizontalOverflow = HorizontalWrapMode.Overflow;
+                        txtInfo2.color = Color.red;
 
-                    uiPropSelectCount.btnOK.onClick.m_Calls.m_RuntimeCalls.Insert(0, new InvokableCall((UnityAction)BuyEvent));
+                        uiPropSelectCount.btnOK.onClick.m_Calls.m_RuntimeCalls.Insert(0, new InvokableCall((UnityAction)BuyEvent));
+                    }
                 }
             }
         }
@@ -103,28 +89,26 @@ namespace MOD_nE7UL2.Mod
         public override void OnCloseUIEnd(CloseUIEnd e)
         {
             uiTownMarketBuy = MonoBehaviour.FindObjectOfType<UITownMarketBuy>();
-            curMainTown = g.world.build.GetBuild(g.world.playerUnit.data.unitData.GetPoint());
-            if (uiTownMarketBuy == null || curMainTown == null)
+            if (uiTownMarketBuy == null)
             {
                 txtMarketST = null;
                 txtInfo = null;
-                marketST = 0;
+                txtInfo2 = null;
             }
         }
 
         public override void OnFrameUpdate()
         {
-            if (uiTownMarketBuy != null && curMainTown != null && txtMarketST != null)
+            if (uiTownMarketBuy != null && txtMarketST != null)
             {
-                txtMarketST.text = $"Market: {marketST} Spirit Stones";
+                txtMarketST.text = $"Market: {MapBuildPropertyEvent.GetBuildProperty(uiTownMarketBuy.town)} Spirit Stones";
             }
         }
 
         private void BuyEvent()
         {
-            var x = EventHelper.GetEvent<RealMarketEvent>(ModConst.REAL_MARKET_EVENT);
-            x.MarketST[curMainTown.buildData.id] += uiPropSelectCount.iptNum.text.Parse<int>() * uiPropSelectCount.oneCost;
-            marketST = x.MarketST[curMainTown.buildData.id];
+            var totalPrice = uiPropSelectCount.iptNum.text.Parse<int>() * uiPropSelectCount.oneCost;
+            MapBuildPropertyEvent.AddBuildProperty(uiTownMarketBuy.town, totalPrice);
         }
     }
 }
