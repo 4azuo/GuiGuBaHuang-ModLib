@@ -6,6 +6,7 @@ using System.Linq;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
 using static DataWorld;
+using UnhollowerBaseLib;
 
 namespace MOD_nE7UL2.Mod
 {
@@ -90,7 +91,7 @@ namespace MOD_nE7UL2.Mod
         {
             if (uiTownStorageProps != null && txtFee != null)
             {
-                var props = uiTownStorageProps.townStorage.data.propData.allProps.ToArray();
+                var props = uiTownStorageProps.townStorage?.data?.propData?.allProps?.ToArray() ?? new DataProps.PropsData[0];
                 StorageValue = props.Sum(x => x.propsCount * x.propsInfoBase.worth);
                 var spValue = props.Where(x => x.propsID == 10001).Sum(x => x.propsCount * x.propsInfoBase.worth);
                 txtStorageMoney.text = $"Storage: {StorageValue} Spirit Stones ({spValue} cash, {StorageValue - spValue} items)";
@@ -106,7 +107,7 @@ namespace MOD_nE7UL2.Mod
             {
                 g.world.playerUnit.SetUnitMoney(0);
                 Debt = fee - money;
-                DramaTool.OpenDrama(480010100);
+                DramaTool.OpenDrama(480020100);
             }
             else
             {

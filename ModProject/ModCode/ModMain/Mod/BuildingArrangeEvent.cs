@@ -70,9 +70,7 @@ namespace MOD_nE7UL2.Mod
                     var buildSub = build.GetBuildSub(e.BuildType);
                     if (buildSub == null)
                     {
-                        build.AddBuildSub(e.BuildType);
-
-                        MapBuildPropertyEvent.AddBuildProperty(build, -e.BuildCosts[build.gridData.areaBaseID - 1]);
+                        e.Build(build);
                     }
                 }
             }

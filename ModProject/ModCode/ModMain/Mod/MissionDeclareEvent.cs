@@ -22,7 +22,7 @@ namespace MOD_nE7UL2.Mod
         public const float DEGREE_COST_RATE = 0.001f;
         public const int DEGREE_MIN_COST = 1;
         public static readonly int[] COST_TIME = new int[] { 1, 2, 3, 5, 8, 16 };
-        public static readonly float[] SUCCESS_RATE = new float[] { 100.0f, 98.0f, 96.0f, 92.0f, 86.0f, 80.0f };
+        public static readonly float[] SUCCESS_RATE = new float[] { 100.0f, 98.0f, 96.0f, 94.0f, 90.0f, 85.0f };
 
         //Components
         private UITownBounty uiTownBounty;
@@ -159,7 +159,12 @@ namespace MOD_nE7UL2.Mod
             {
                 var prop = item.Key;
                 var grade = item.Value;
-                if (grade <= uiTownBounty.town.gridData.areaBaseID)
+                if (grade <= uiTownBounty.town.gridData.areaBaseID && 
+                    (
+                        (prop.IsHerbItem() != null && (prop.level + 1) <= uiTownBounty.town.gridData.areaBaseID) ||
+                        (prop.IsMineItem() != null && (prop.level + 1) <= uiTownBounty.town.gridData.areaBaseID) ||
+                        (prop.IsHerbItem() == null && prop.IsMineItem() == null)
+                    ))
                 {
                     if (prop.isOverlay == 1 && prop.IsBreakthroughItem() == null)
                         uiSelector.allItems.AddProps(prop.id, 100);

@@ -1,4 +1,6 @@
-﻿using ModLib.Object;
+﻿using MOD_nE7UL2.Mod;
+using ModLib.Object;
+using System;
 
 namespace MOD_nE7UL2.Enum
 {
@@ -9,40 +11,40 @@ namespace MOD_nE7UL2.Enum
         {
             /*01*/20000,
             /*02*/20000,
-            /*03*/40000,
-            /*04*/40000,
-            /*05*/100000,
-            /*06*/100000,
-            /*07*/300000,
-            /*08*/300000,
-            /*09*/700000,
-            /*10*/700000,
+            /*03*/50000,
+            /*04*/50000,
+            /*05*/150000,
+            /*06*/150000,
+            /*07*/500000,
+            /*08*/500000,
+            /*09*/1000000,
+            /*10*/1000000,
         });
-        public static BuildingCostEnum SchoolStorageBuildCost { get; } = new BuildingCostEnum(10.00f, MapBuildSubType.SchoolStorage, true, false, new long[]
-        {
-            /*01*/10000,
-            /*02*/10000,
-            /*03*/20000,
-            /*04*/20000,
-            /*05*/40000,
-            /*06*/40000,
-            /*07*/100000,
-            /*08*/100000,
-            /*09*/300000,
-            /*10*/300000,
-        });
+        //public static BuildingCostEnum SchoolStorageBuildCost { get; } = new BuildingCostEnum(10.00f, MapBuildSubType.SchoolStorage, true, false, new long[]
+        //{
+        //    /*01*/10000,
+        //    /*02*/10000,
+        //    /*03*/20000,
+        //    /*04*/20000,
+        //    /*05*/40000,
+        //    /*06*/40000,
+        //    /*07*/100000,
+        //    /*08*/100000,
+        //    /*09*/300000,
+        //    /*10*/300000,
+        //});
         public static BuildingCostEnum TownPortalBuildCost { get; } = new BuildingCostEnum(8.00f, MapBuildSubType.TownTransfer, false, false, new long[]
         {
             /*01*/20000,
             /*02*/20000,
-            /*03*/40000,
-            /*04*/40000,
-            /*05*/100000,
-            /*06*/100000,
-            /*07*/300000,
-            /*08*/300000,
-            /*09*/700000,
-            /*10*/700000,
+            /*03*/50000,
+            /*04*/50000,
+            /*05*/150000,
+            /*06*/150000,
+            /*07*/500000,
+            /*08*/500000,
+            /*09*/1000000,
+            /*10*/1000000,
         });
         //public static BuildingCostEnum TownStorageBuildCost { get; } = new BuildingCostEnum(10.00f, MapBuildSubType.TownStorage, false, false, new long[]
         //{
@@ -63,12 +65,12 @@ namespace MOD_nE7UL2.Enum
             /*02*/10000,
             /*03*/15000,
             /*04*/15000,
-            /*05*/30000,
-            /*06*/30000,
-            /*07*/50000,
-            /*08*/50000,
-            /*09*/100000,
-            /*10*/100000,
+            /*05*/50000,
+            /*06*/50000,
+            /*07*/100000,
+            /*08*/100000,
+            /*09*/500000,
+            /*10*/500000,
         });
         public static BuildingCostEnum TownFactoryBuildCost { get; } = new BuildingCostEnum(6.00f, MapBuildSubType.TownFactory, false, false, new long[]
         {
@@ -78,23 +80,23 @@ namespace MOD_nE7UL2.Enum
             /*04*/30000,
             /*05*/70000,
             /*06*/70000,
-            /*07*/150000,
-            /*08*/150000,
-            /*09*/400000,
-            /*10*/400000,
+            /*07*/200000,
+            /*08*/200000,
+            /*09*/1000000,
+            /*10*/1000000,
         });
         public static BuildingCostEnum TownMarketBookBuildCost { get; } = new BuildingCostEnum(2.00f, MapBuildSubType.TownMarketBook, false, false, new long[]
         {
-            /*01*/30000,
-            /*02*/30000,
-            /*03*/100000,
-            /*04*/100000,
-            /*05*/500000,
-            /*06*/500000,
-            /*07*/1200000,
-            /*08*/1200000,
-            /*09*/4000000,
-            /*10*/4000000,
+            /*01*/20000,
+            /*02*/20000,
+            /*03*/50000,
+            /*04*/50000,
+            /*05*/200000,
+            /*06*/200000,
+            /*07*/1000000,
+            /*08*/1000000,
+            /*09*/5000000,
+            /*10*/5000000,
         });
         public static BuildingCostEnum TownMarketDressBuildCost { get; } = new BuildingCostEnum(5.00f, MapBuildSubType.TownMarketDress, false, false, new long[]
         {
@@ -104,10 +106,10 @@ namespace MOD_nE7UL2.Enum
             /*04*/5000,
             /*05*/10000,
             /*06*/10000,
-            /*07*/17000,
-            /*08*/17000,
-            /*09*/30000,
-            /*10*/30000,
+            /*07*/20000,
+            /*08*/20000,
+            /*09*/50000,
+            /*10*/50000,
         });
         public static BuildingCostEnum TownBountyBuildCost { get; } = new BuildingCostEnum(15.00f, MapBuildSubType.TownBounty, false, false, new long[]
         {
@@ -117,10 +119,10 @@ namespace MOD_nE7UL2.Enum
             /*04*/3000,
             /*05*/5000,
             /*06*/5000,
-            /*07*/10000,
-            /*08*/10000,
-            /*09*/20000,
-            /*10*/20000,
+            /*07*/20000,
+            /*08*/20000,
+            /*09*/60000,
+            /*10*/60000,
         });
 
         public float BuildRate { get; private set; }
@@ -128,7 +130,8 @@ namespace MOD_nE7UL2.Enum
         public bool IsSchool { get; private set; }
         public bool IsCity { get; private set; }
         public long[] BuildCosts { get; private set; }
-        private BuildingCostEnum(float rate, MapBuildSubType type, bool isSchool, bool isCity, long[] costs) : base()
+        public Action<BuildingCostEnum, MapBuildSubBase> BuiltAfter { get; private set; }
+        private BuildingCostEnum(float rate, MapBuildSubType type, bool isSchool, bool isCity, long[] costs, Action<BuildingCostEnum, MapBuildSubBase>  after = null) : base()
         {
             BuildRate = rate;
             BuildType = type;
@@ -149,6 +152,8 @@ namespace MOD_nE7UL2.Enum
             {
                 if (town != null)
                 {
+                    if ((this.BuildType == MapBuildSubType.TownStorage || this.BuildType == MapBuildSubType.TownTransfer) && town.buildTownData.isMainTown)
+                        return false;
                     if (IsCity)
                     {
                         return town.buildTownData.isMainTown;
@@ -157,6 +162,13 @@ namespace MOD_nE7UL2.Enum
                 }
                 return false;
             }
+        }
+
+        public void Build(MapBuildBase build)
+        {
+            var subBuild = build.AddBuildSub(BuildType);
+            MapBuildPropertyEvent.AddBuildProperty(build, -BuildCosts[build.gridData.areaBaseID - 1]);
+            BuiltAfter?.Invoke(this, subBuild);
         }
     }
 }
