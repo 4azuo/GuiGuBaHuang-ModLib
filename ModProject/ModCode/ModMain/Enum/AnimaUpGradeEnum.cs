@@ -1,6 +1,5 @@
 ﻿using ModLib.Enum;
 using ModLib.Object;
-using System.Collections.Generic;
 
 namespace MOD_nE7UL2.Enum
 {

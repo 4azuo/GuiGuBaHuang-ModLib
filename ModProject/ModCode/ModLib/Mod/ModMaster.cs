@@ -1,4 +1,9 @@
-﻿using System;
+﻿using ModLib.Object;
+using Newtonsoft.Json;
+using System;
+using System.ComponentModel;
+using System.IO;
+using System.Linq;
 using System.Reflection;
 using UnhollowerBaseLib;
 using UnityEngine;
@@ -14,6 +19,7 @@ namespace ModLib.Mod
 
         public abstract string ModName { get; }
         public abstract string ModId { get; }
+        public InGameSettings InGameSettings => InGameSettings.GetSettings<InGameSettings>();
         public static ModMaster ModObj { get; protected set; }
 
         //GameEvent
@@ -237,12 +243,31 @@ namespace ModLib.Mod
         }
     }
 
-    public abstract class ModMaster<T> : ModMaster where T : ModSettings
+    public abstract class ModMaster<T> : ModMaster where T : InGameSettings
     {
+        public new T InGameSettings => ModLib.Object.InGameSettings.GetSettings<T>();
+
         public override void OnInitWorld(ETypeData e)
         {
-            ModSettings.CreateIfNotExists<T>();
+            ModLib.Object.InGameSettings.CreateIfNotExists<T>();
             EventHelper.RunMinorEvents(e);
+        }
+
+        public override void OnLoadGameBefore()
+        {
+            if (InGameSettings.CustomConfigVersion != ModLib.Object.InGameSettings.ConfCustomConfigVersion)
+            {
+                if (string.IsNullOrEmpty(ModLib.Object.InGameSettings.ConfCustomConfigFile) || !File.Exists(ConfHelper.GetConfFilePath(ModLib.Object.InGameSettings.ConfCustomConfigFile)))
+                {
+                    throw new Exception($"CustomConfigFile ({ModLib.Object.InGameSettings.ConfCustomConfigFile}) was not found!");
+                }
+                var cusStt = JsonConvert.DeserializeObject<T>(ConfHelper.ReadConfData(ModLib.Object.InGameSettings.ConfCustomConfigFile)).InitCustomSettings();
+                foreach (var prop in typeof(T).GetProperties(BindingFlags.Public | BindingFlags.Instance).Where(x => x.GetCustomAttribute<InheritanceAttribute>() != null))
+                {
+                    prop.SetValue(cusStt, prop?.GetValue(InGameSettings), null);
+                }
+                ModLib.Object.InGameSettings.ReplaceData(cusStt);
+            }
         }
     }
 }

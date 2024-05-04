@@ -9,6 +9,7 @@ using UnityEngine;
 
 namespace MOD_nE7UL2.Mod
 {
+    [Obsolete]
     [Cache(ModConst.QI_CUL_EVENT)]
     public class QiCulEvent : ModEvent
     {

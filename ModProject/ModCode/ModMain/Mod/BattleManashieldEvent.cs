@@ -1,4 +1,5 @@
 ﻿using MOD_nE7UL2.Const;
+using MOD_nE7UL2.Object;
 using ModLib.Mod;
 
 namespace MOD_nE7UL2.Mod
@@ -8,6 +9,14 @@ namespace MOD_nE7UL2.Mod
     {
         public const int MANASHIELD_EFFECT_MAIN_ID = 903151120;
         public const int MANASHIELD_EFFECT_EFX_ID = 903151121;
+
+        public static float MANA_SHIELD_RATE
+        {
+            get
+            {
+                return ModMain.ModObj.InGameSettings.BattleManashieldConfigs.ManaShieldRate;
+            }
+        }
 
         public override void OnIntoBattleFirst(UnitCtrlBase e)
         {
@@ -23,7 +32,7 @@ namespace MOD_nE7UL2.Mod
                         data = new BattleSkillValueData.Data(),
                     }
                 });
-                Effect3017.AddShield(efx, humanData.unit, MANASHIELD_EFFECT_EFX_ID, humanData.mp / 10, humanData.maxHP.value * 2, int.MaxValue);
+                Effect3017.AddShield(efx, humanData.unit, MANASHIELD_EFFECT_EFX_ID, (humanData.mp * MANA_SHIELD_RATE).Parse<int>(), humanData.maxHP.value * 2, int.MaxValue);
             }
         }
     }

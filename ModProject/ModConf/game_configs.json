@@ -1,0 +1,94 @@
+{
+	"__name": "Mod configurations",
+	"HideButtonConfigs": {
+		"__select_options": "Hide/Show",
+		"ButtonConfigs": {
+			"GameMemu": {
+				"G:btnSave": "Hide",
+				"G:btnReloadCache": "Hide"
+			},
+			"MartialPropInfo": {
+				"G:btnPreview": "Hide"
+			}
+		}
+	},
+	"ContributionExchangeConfigs": {
+		"__formula": "item-sell-value / {ExchangeRatio}",
+		"ExchangeRatio": 50
+	},
+	"MissionDeclareConfigs": {
+		"FeeRate": 0.2,
+		"FeeMinCost": 100,
+		"DegreeCostRate": 0.001,
+		"DegreeMinCost": 1,
+		"__tip_CostTime": "(month)",
+		"CostTime": [
+			1,
+			2,
+			3,
+			5,
+			8,
+			16
+		],
+		"SuccessRate": [
+			100.0,
+			98.0,
+			96.0,
+			94.0,
+			90.0,
+			85.0
+		]
+	},
+	"BattleManashieldConfigs": {
+		"__tip": "12.5% current-mp will be converted to shield in battle",
+		"__formula": "current-mp * {ManaShieldRate}",
+		"ManaShieldRate": 0.125
+	},
+	"UnitTypeConfigs": {
+		"__tip": "Appearance rate (%)",
+		"UnitTypes": {
+			"PowerUnit": 10.0,
+			"SpeedUnit": 10.0,
+			"TaoistUnit": 10.0,
+			"AtkUnit": 20.0,
+			"DefUnit": 20.0,
+			"Angel": 3.0,
+			"Evil": 5.0
+		}
+	},
+	"RealTrialConfigs": {
+		"__tip": "+50% power base on game level",
+		"PowerUpOnGameLevel": 0.5
+	},
+	"RealStorageConfigs": {
+		"__tip": "-0.1% on total item-worth-value every month",
+		"FeeRate": 0.001
+	},
+	"RealMarketConfigs": {
+		"MinSellRate": 85.0,
+		"MaxSellRate": 110.0,
+		"MinBuyRate": 90.0,
+		"MaxBuyRate": 115.0
+	},
+	"MonstStrongerConfigs": {
+		"GrowRate": {
+			"Common": 0.0007,
+			"Elite": 0.0005,
+			"BOSS": 0.0005
+		},
+		"KillGrowRate": {
+			"Common": 0,
+			"Elite": 0.00004,
+			"BOSS": 0.0001
+		}
+	},
+	"NpcUpgradeSkillConfigs": {
+		"UpgradeRates": {
+			"SkillLeft": 8.0,
+			"SkillRight": 8.0,
+			"Step": 14.0,
+			"Ultimate": 10.0,
+			"Ability": 20.0
+		}
+	}
+}

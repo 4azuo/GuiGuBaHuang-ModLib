@@ -1,5 +1,6 @@
 ﻿using EBattleTypeData;
 using EGameTypeData;
+using ModLib.Mod;
 using ModLib.Object;
 using Newtonsoft.Json;
 using System.Collections.Generic;
@@ -47,12 +48,11 @@ namespace ModLib.Mod
         [TraceIgnore]
         public bool IsLoading()
         {
-            var stt = ModSettings.GetSettings<ModSettings>();
             return 
-                stt.LoadGameBefore ||
-                stt.LoadGame ||
-                stt.LoadGameAfter ||
-                stt.LoadGameFirst;
+                ModMaster.ModObj.InGameSettings.LoadGameBefore ||
+                ModMaster.ModObj.InGameSettings.LoadGame ||
+                ModMaster.ModObj.InGameSettings.LoadGameAfter ||
+                ModMaster.ModObj.InGameSettings.LoadGameFirst;
         }
 
         [TraceIgnore]

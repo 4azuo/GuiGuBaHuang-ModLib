@@ -1,30 +1,38 @@
 ﻿using EGameTypeData;
 using MOD_nE7UL2.Const;
+using MOD_nE7UL2.Object;
 using ModLib.Mod;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using static MOD_nE7UL2.Object.InGameStts._HideButtonConfigs;
 
 namespace MOD_nE7UL2.Mod
 {
     [Cache(ModConst.HIDE_BUTTON_EVENT)]
     public class HideButtonEvent : ModEvent
     {
-        public readonly IDictionary<string, string[]> HideButtons = new Dictionary<string, string[]>()
+        public static InGameStts._HideButtonConfigs HideButtonConfigs
         {
-            ["GameMemu"] = new string[] { "G:btnSave", "G:btnReloadCache" },
-            ["MartialPropInfo"] = new string[] { "G:btnPreview" },
-        };
+            get
+            {
+                return ModMain.ModObj.InGameSettings.HideButtonConfigs;
+            }
+        }
 
         public override void OnOpenUIEnd(OpenUIEnd e)
         {
-            if (HideButtons.ContainsKey(e.uiType.uiName))
+            IDictionary<string, SelectOption> buttonConfigs;
+            if (HideButtonConfigs.ButtonConfigs.TryGetValue(e.uiType.uiName, out buttonConfigs))
             {
                 var ui = g.ui.GetUI(e.uiType);
-                var hideButtons = HideButtons[e.uiType.uiName];
-                foreach (var comp in ui.GetComponentsInChildren<MonoBehaviour>().Where(x => hideButtons.Contains(x.name)))
+                foreach (var buttonConfig in buttonConfigs)
                 {
-                    comp.gameObject.active = false;
+                    var comp = ui.GetComponentsInChildren<MonoBehaviour>().Where(x => buttonConfig.Key == x.name);
+                    foreach (var c in comp)
+                    {
+                        c.gameObject.SetActive(buttonConfig.Value == SelectOption.Show);
+                    }
                 }
             }
         }

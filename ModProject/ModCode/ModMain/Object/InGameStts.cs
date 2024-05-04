@@ -1,0 +1,138 @@
+﻿using MOD_nE7UL2.Enum;
+using ModLib.Object;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Converters;
+using System.Collections.Generic;
+
+namespace MOD_nE7UL2.Object
+{
+    public class InGameStts : InGameSettings
+    {
+        #region HideButtonConfigs
+        public class _HideButtonConfigs
+        {
+            [JsonConverter(typeof(StringEnumConverter))]
+            public enum SelectOption
+            {
+                Hide,
+                Show,
+            }
+            public IDictionary<string, IDictionary<string, SelectOption>> ButtonConfigs { get; set; }
+        }
+        public _HideButtonConfigs HideButtonConfigs { get; set; }
+        #endregion
+
+        #region ContributionExchangeConfigs
+        public class _ContributionExchangeConfigs
+        {
+            public int ExchangeRatio { get; set; }
+        }
+        public _ContributionExchangeConfigs ContributionExchangeConfigs { get; set; }
+        #endregion
+
+        #region MissionDeclareConfigs
+        public class _MissionDeclareConfigs
+        {
+            public float FeeRate { get; set; }
+            public int FeeMinCost { get; set; }
+            public float DegreeCostRate { get; set; }
+            public int DegreeMinCost { get; set; }
+            public int[] CostTime { get; set; }
+            public float[] SuccessRate { get; set; }
+        }
+        public _MissionDeclareConfigs MissionDeclareConfigs { get; set; }
+        #endregion
+
+        #region BattleManashieldConfigs
+        public class _BattleManashieldConfigs
+        {
+            public float ManaShieldRate { get; set; }
+        }
+        public _BattleManashieldConfigs BattleManashieldConfigs { get; set; }
+        #endregion
+
+        #region UnitTypeConfigs
+        public class _UnitTypeConfigs
+        {
+            public Dictionary<string, float> UnitTypes { get; set; }
+
+            public UnitTypeEnum RandomUnitType(float r)
+            {
+                var min = 0.00f;
+                var max = min;
+                foreach (var ut in UnitTypes)
+                {
+                    min += max;
+                    max += ut.Value;
+                    if (ValueHelper.IsBetween(r, min, max))
+                    {
+                        return UnitTypeEnum.GetEnumByProp<UnitTypeEnum>("Name", ut.Key);
+                    }
+                }
+                return UnitTypeEnum.Default;
+            }
+        }
+        public _UnitTypeConfigs UnitTypeConfigs { get; set; }
+        #endregion
+
+        #region RealTrialConfigs
+        public class _RealTrialConfigs
+        {
+            public float PowerUpOnGameLevel { get; set; }
+        }
+        public _RealTrialConfigs RealTrialConfigs { get; set; }
+        #endregion
+
+        #region RealStorageConfigs
+        public class _RealStorageConfigs
+        {
+            public float FeeRate { get; set; }
+        }
+        public _RealStorageConfigs RealStorageConfigs { get; set; }
+        #endregion
+
+        #region RealMarketConfigs
+        public class _RealMarketConfigs
+        {
+            public float MinSellRate { get; set; }
+            public float MaxSellRate { get; set; }
+            public float MinBuyRate { get; set; }
+            public float MaxBuyRate { get; set; }
+        }
+        public _RealMarketConfigs RealMarketConfigs { get; set; }
+        #endregion
+
+        #region MonstStrongerConfigs
+        public class _MonstStrongerConfigs
+        {
+            public Dictionary<MonstType, float> GrowRate { get; set; }
+            public Dictionary<MonstType, float> KillGrowRate { get; set; }
+        }
+        public _MonstStrongerConfigs MonstStrongerConfigs { get; set; }
+        #endregion
+
+        #region NpcUpgradeSkillConfigs
+        public class _NpcUpgradeSkillConfigs
+        {
+            public Dictionary<MartialType, float> UpgradeRates { get; set; }
+
+            public MartialType RandomUpgradingMartial(float r, float ratio)
+            {
+                var min = 0.00f;
+                var max = min;
+                foreach (var ut in UpgradeRates)
+                {
+                    min += max;
+                    max += ut.Value * ratio;
+                    if (ValueHelper.IsBetween(r, min, max))
+                    {
+                        return ut.Key;
+                    }
+                }
+                return MartialType.None;
+            }
+        }
+        public _NpcUpgradeSkillConfigs NpcUpgradeSkillConfigs { get; set; }
+        #endregion
+    }
+}

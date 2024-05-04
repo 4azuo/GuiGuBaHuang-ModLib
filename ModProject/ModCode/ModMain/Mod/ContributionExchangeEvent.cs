@@ -1,5 +1,6 @@
 ﻿using EGameTypeData;
 using MOD_nE7UL2.Const;
+using MOD_nE7UL2.Object;
 using ModLib.Mod;
 using System;
 using System.Linq;
@@ -12,7 +13,14 @@ namespace MOD_nE7UL2.Mod
     [Cache(ModConst.CONTRIBUTION_EXCHANGE_EVENT)]
     public class ContributionExchangeEvent : ModEvent
     {
-        private const int EXCHANGE_RATIO = 50; //SpiritStones (Sell Price) / Contribution
+        public static int EXCHANGE_RATIO
+        {
+            get
+            {
+                return ModMain.ModObj.InGameSettings.ContributionExchangeConfigs.ExchangeRatio;
+            }
+        } //SpiritStones (Sell Price) / Contribution
+
         private UISchool uiSchool;
         private UIPropSelect uiSelector;
         private Button btnExchangeContribution;
