@@ -134,5 +134,14 @@ namespace MOD_nE7UL2.Object
         }
         public _NpcUpgradeSkillConfigs NpcUpgradeSkillConfigs { get; set; }
         #endregion
+
+        #region BattleRewardConfigs
+        public class _BattleRewardConfigs
+        {
+            public float ExpPerDmgDealt { get; set; }
+            public float ExpPerDmgRecv { get; set; }
+        }
+        public _BattleRewardConfigs BattleRewardConfigs { get; set; }
+        #endregion
     }
 }

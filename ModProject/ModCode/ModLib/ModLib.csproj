@@ -36,6 +36,7 @@
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="Attribute\InGameCustomSettingsAttribute.cs" />
     <Compile Include="Attribute\EventConditionAttribute.cs" />
     <Compile Include="Attribute\CacheAttribute.cs" />
     <Compile Include="Attribute\TraceIgnoreAttribute.cs" />
