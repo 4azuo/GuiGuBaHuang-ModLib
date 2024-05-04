@@ -8,22 +8,12 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine.UI;
 using MOD_nE7UL2.Object;
-using ModLib.Enum;
-using static DataBuildSchool;
 
 namespace MOD_nE7UL2.Mod
 {
     [Cache(ModConst.MISSION_DECLARE_EVENT)]
     public class MissionDeclareEvent : ModEvent
     {
-        //Constants
-        public const float FEE_RATE = 0.2f;
-        public const int FEE_MIN_COST = 100;
-        public const float DEGREE_COST_RATE = 0.001f;
-        public const int DEGREE_MIN_COST = 1;
-        public static readonly int[] COST_TIME = new int[] { 1, 2, 3, 5, 8, 16 };
-        public static readonly float[] SUCCESS_RATE = new float[] { 100.0f, 98.0f, 96.0f, 94.0f, 90.0f, 85.0f };
-
         //Components
         private UITownBounty uiTownBounty;
         private UIPropSelect uiSelector;

@@ -16,8 +16,8 @@ public static class CacheHelper
         Converters = new List<Newtonsoft.Json.JsonConverter>() { new EnumObjectConverter() },
     };
 
-    private static ModLib.Mod.ModData GlobalCacheData;
-    private static ModLib.Mod.ModData GameCacheData;
+    private static ModLib.Object.ModData GlobalCacheData;
+    private static ModLib.Object.ModData GameCacheData;
 
     public static string GetGameCacheFileName()
     {
@@ -73,7 +73,7 @@ public static class CacheHelper
         return rs;
     }
 
-    public static ModLib.Mod.ModData GetGlobalCache()
+    public static ModLib.Object.ModData GetGlobalCache()
     {
         if (!IsGlobalCacheLoaded())
         {
@@ -83,18 +83,18 @@ public static class CacheHelper
             if (File.Exists(cacheFilePath))
             {
                 DebugHelper.WriteLine($"Load: GlobalCache: File={cacheFilePath}");
-                GlobalCacheData = Newtonsoft.Json.JsonConvert.DeserializeObject<ModLib.Mod.ModData>(File.ReadAllText(cacheFilePath), CACHE_JSON_SETTINGS);
+                GlobalCacheData = Newtonsoft.Json.JsonConvert.DeserializeObject<ModLib.Object.ModData>(File.ReadAllText(cacheFilePath), CACHE_JSON_SETTINGS);
                 GlobalCacheData.Init(true);
             }
             else
             {
-                GlobalCacheData = new ModLib.Mod.ModData(true);
+                GlobalCacheData = new ModLib.Object.ModData(true);
             }
         }
         return GlobalCacheData;
     }
 
-    public static ModLib.Mod.ModData GetGameCache()
+    public static ModLib.Object.ModData GetGameCache()
     {
         if (!GameHelper.IsInGame())
         {
@@ -109,12 +109,12 @@ public static class CacheHelper
             if (File.Exists(cacheFilePath))
             {
                 DebugHelper.WriteLine($"Load: GameCache: File={cacheFilePath}");
-                GameCacheData = Newtonsoft.Json.JsonConvert.DeserializeObject<ModLib.Mod.ModData>(File.ReadAllText(cacheFilePath), CACHE_JSON_SETTINGS);
+                GameCacheData = Newtonsoft.Json.JsonConvert.DeserializeObject<ModLib.Object.ModData>(File.ReadAllText(cacheFilePath), CACHE_JSON_SETTINGS);
                 GameCacheData.Init(false);
             }
             else
             {
-                GameCacheData = new ModLib.Mod.ModData(false);
+                GameCacheData = new ModLib.Object.ModData(false);
             }
         }
         return GameCacheData;

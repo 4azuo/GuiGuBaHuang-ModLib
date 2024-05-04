@@ -62,6 +62,8 @@
     <Compile Include="Helper\TraceHelper.cs" />
     <Compile Include="Helper\EffectHelper.cs" />
     <Compile Include="Helper\ValueHelper.cs" />
+    <Compile Include="Mod\ModData.cs" />
+    <Compile Include="Mod\ModSettings.cs" />
     <Compile Include="Mod\ModBattleEvent.cs" />
     <Compile Include="Mod\ModEvent.cs" />
     <Compile Include="Mod\ModMaster_CommonEvent.cs" />
@@ -84,9 +86,9 @@
     <Compile Include="Helper\UnitHelper.cs" />
     <Compile Include="Object\CachableObject.cs" />
     <Compile Include="Mod\ModMaster.cs" />
-    <Compile Include="Mod\ModSettings.cs" />
+    <Compile Include="Object\InGameSettings.cs" />
     <Compile Include="Object\MultiValue.cs" />
-    <Compile Include="Mod\ModData.cs" />
+    <Compile Include="Object\ModData.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

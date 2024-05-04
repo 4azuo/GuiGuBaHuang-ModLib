@@ -1,5 +1,4 @@
-﻿using Boo.Lang;
-using ModLib.Object;
+﻿using ModLib.Object;
 
 namespace ModLib.Enum
 {

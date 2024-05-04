@@ -6,6 +6,7 @@ using UnityEngine;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine.UI;
+using MOD_nE7UL2.Object;
 
 namespace MOD_nE7UL2.Mod
 {
@@ -15,8 +16,20 @@ namespace MOD_nE7UL2.Mod
     [Cache(ModConst.REAL_MARKET_EVENT2)]
     public class RealMarketEvent2 : ModEvent
     {
-        private const float MIN_RATE = 90.00f;
-        private const float MAX_RATE = 115.00f;
+        public static float MIN_RATE
+        {
+            get
+            {
+                return ModMain.ModObj.InGameSettings.RealMarketConfigs.MinBuyRate;
+            }
+        }
+        public static float MAX_RATE
+        {
+            get
+            {
+                return ModMain.ModObj.InGameSettings.RealMarketConfigs.MaxBuyRate;
+            }
+        }
 
         private UITownMarketBuy uiTownMarketBuy;
         private UIPropSelectCount uiPropSelectCount;

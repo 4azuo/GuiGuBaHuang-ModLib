@@ -8,7 +8,6 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
-using static UISchoolChallengeTipsBase;
 
 namespace MOD_nE7UL2.Mod
 {
@@ -305,7 +304,7 @@ namespace MOD_nE7UL2.Mod
             if (dieUnit?.worldUnitData != null && g.world.battle.data.isRealBattle && !IsPlayerDie)
             {
                 var attackUnitData = e?.hitData?.attackUnit?.data?.TryCast<UnitDataHuman>();
-                if (attackUnitData?.worldUnitData?.unit?.IsPlayer() ?? false)
+                if (attackUnitData?.worldUnitData?.unit != null && !attackUnitData.worldUnitData.unit.IsPlayer())
                 {
                     var attackUnit = attackUnitData.worldUnitData.unit;
                     g.world.playerUnit.AddProperty<int>(UnitPropertyEnum.Life, attackUnit.GetProperty<int>(UnitPropertyEnum.Life) / (50 + (g.game.data.dataWorld.data.gameLevel.Parse<int>() * 25)));

@@ -1,22 +1,22 @@
 ﻿using MOD_nE7UL2.Const;
+using MOD_nE7UL2.Object;
 using ModLib.Enum;
 using ModLib.Mod;
 using System;
-using System.Collections.Generic;
 
 namespace MOD_nE7UL2.Mod
 {
     [Cache(ModConst.NPC_UPGRADE_SKILL_EVENT)]
     public class NpcUpgradeSkillEvent : ModEvent
     {
-        public static readonly IDictionary<MartialType, float> EXP_RATIO = new Dictionary<MartialType, float>
-        {
-            [MartialType.SkillLeft] = 1.0f,
-            [MartialType.SkillRight] = 0.9f,
-            [MartialType.Step] = 0.8f,
-            [MartialType.Ultimate] = 0.5f,
-            [MartialType.Ability] = 1.2f,
-        };
+        //public static readonly IDictionary<MartialType, float> EXP_RATIO = new Dictionary<MartialType, float>
+        //{
+        //    [MartialType.SkillLeft] = 1.0f,
+        //    [MartialType.SkillRight] = 0.9f,
+        //    [MartialType.Step] = 0.8f,
+        //    [MartialType.Ultimate] = 0.5f,
+        //    [MartialType.Ability] = 1.2f,
+        //};
 
         public override void OnMonthly()
         {
@@ -32,31 +32,13 @@ namespace MOD_nE7UL2.Mod
 
         public void UpgradeMartial(WorldUnitBase wunit, float ratio)
         {
-            var r = CommonTool.Random(0.00f, 100.00f);
-            if (ValueHelper.IsBetween(r, 0.00f * ratio, 8.00f * ratio))
-            {
-                UpgradeMartial(wunit, MartialType.SkillLeft);
-            }
-            else if (ValueHelper.IsBetween(r, 8.00f * ratio, 16.00f * ratio))
-            {
-                UpgradeMartial(wunit, MartialType.SkillRight);
-            }
-            else if (ValueHelper.IsBetween(r, 16.00f * ratio, 30.00f * ratio))
-            {
-                UpgradeMartial(wunit, MartialType.Step);
-            }
-            else if (ValueHelper.IsBetween(r, 30.00f * ratio, 40.00f * ratio))
-            {
-                UpgradeMartial(wunit, MartialType.Ultimate);
-            }
-            else if (ValueHelper.IsBetween(r, 40.00f * ratio, 60.00f * ratio))
-            {
-                UpgradeMartial(wunit, MartialType.Ability);
-            }
+            UpgradeMartial(wunit, ModMain.ModObj.InGameSettings.NpcUpgradeSkillConfigs.RandomUpgradingMartial(CommonTool.Random(0.00f, 100.00f), ratio));
         }
 
         public void UpgradeMartial(WorldUnitBase wunit, MartialType martialType)
         {
+            if (martialType == MartialType.None)
+                return;
             foreach (var p in wunit.data.unitData.GetActionMartial(martialType))
             {
                 //AddMartialExp(wunit, martialType, p);

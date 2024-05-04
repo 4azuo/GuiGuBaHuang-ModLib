@@ -27,6 +27,8 @@ public class ConfHelper
     private static void LoadConf(string filePath, string confName)
     {
         var confProp = g.conf.GetType().GetProperty(confName, BindingFlags.Public | BindingFlags.Instance | BindingFlags.IgnoreCase);
+        if (confProp == null)
+            return;
         var confObj = confProp.GetValue(g.conf) as ConfBase;
         dynamic confList = confObj.GetType().GetProperty("allConfList", BindingFlags.Public | BindingFlags.Instance).GetValue(confObj);
         var confListItemType = confList.GetType().GetGenericArguments()[0] as Type;

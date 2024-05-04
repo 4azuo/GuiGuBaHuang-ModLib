@@ -4,16 +4,19 @@ using ModLib.Mod;
 using UnityEngine;
 using System.Linq;
 using UnityEngine.UI;
-using UnityEngine.EventSystems;
-using static DataWorld;
-using UnhollowerBaseLib;
 
 namespace MOD_nE7UL2.Mod
 {
     [Cache(ModConst.REAL_STORAGE_EVENT)]
     public class RealStorageEvent : ModEvent
     {
-        private const float FEE_RATE = 0.001f;
+        public static float FEE_RATE
+        {
+            get
+            {
+                return ModMain.ModObj.InGameSettings.RealStorageConfigs.FeeRate;
+            }
+        }
 
         private UITownStorageProps uiTownStorageProps;
         private Text txtWarning1;

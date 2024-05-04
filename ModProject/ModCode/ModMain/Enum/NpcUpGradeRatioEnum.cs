@@ -1,10 +1,6 @@
 ﻿using ModLib.Enum;
 using ModLib.Object;
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace MOD_nE7UL2.Enum
 {

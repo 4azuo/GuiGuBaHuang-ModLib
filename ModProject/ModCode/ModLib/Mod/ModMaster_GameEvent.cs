@@ -1,4 +1,5 @@
 ﻿using EGameTypeData;
+using ModLib.Object;
 using System;
 using UnityEngine;
 
@@ -14,48 +15,54 @@ namespace ModLib.Mod
 
         public virtual void _OnOpenUIStart(ETypeData e)
         {
-            if (!initMod)
+            try
             {
-                CallEvents("OnInitConf");
-                CallEvents("OnInitEObj");
+                if (!initMod)
+                {
+                    CallEvents("OnInitConf");
+                    CallEvents("OnInitEObj");
+                    DebugHelper.Save();
+                    initMod = true;
+                }
+
+                if (GameHelper.IsInGame())
+                {
+                    if (InGameSettings.LoadGameBefore)
+                    {
+                        CallEvents("OnLoadGameBefore");
+                        InGameSettings.LoadGameBefore = false;
+                    }
+
+                    if (InGameSettings.LoadGame)
+                    {
+                        CallEvents("OnLoadGame");
+                        InGameSettings.LoadGame = false;
+                    }
+
+                    if (InGameSettings.LoadGameAfter)
+                    {
+                        CallEvents("OnLoadGameAfter");
+                        InGameSettings.LoadGameAfter = false;
+                    }
+
+                    if (InGameSettings.LoadGameFirst)
+                    {
+                        CallEvents("OnLoadGameFirst");
+                        InGameSettings.LoadGameFirst = false;
+                    }
+                }
+                else
+                {
+                    CacheHelper.ClearGameCache();
+                }
+
+                CallEvents<OpenUIStart>("OnOpenUIStart", e, false, false);
+            }
+            catch (Exception ex)
+            {
+                DebugHelper.WriteLine(ex);
                 DebugHelper.Save();
-                initMod = true;
             }
-
-            if (GameHelper.IsInGame())
-            {
-                var stt = ModSettings.GetSettings<ModSettings>();
-
-                if (stt.LoadGameBefore)
-                {
-                    CallEvents("OnLoadGameBefore");
-                    stt.LoadGameBefore = false;
-                }
-
-                if (stt.LoadGame)
-                {
-                    CallEvents("OnLoadGame");
-                    stt.LoadGame = false;
-                }
-
-                if (stt.LoadGameAfter)
-                {
-                    CallEvents("OnLoadGameAfter");
-                    stt.LoadGameAfter = false;
-                }
-
-                if (stt.LoadGameFirst)
-                {
-                    CallEvents("OnLoadGameFirst");
-                    stt.LoadGameFirst = false;
-                }
-            }
-            else
-            {
-                CacheHelper.ClearGameCache();
-            }
-
-            CallEvents<OpenUIStart>("OnOpenUIStart", e, false, false);
         }
 
         public virtual void _OnOpenUIEnd(ETypeData e)
@@ -95,8 +102,7 @@ namespace ModLib.Mod
                 try
                 {
                     //monthly event
-                    var stt = ModSettings.GetSettings<ModSettings>();
-                    if (stt.CurMonth != g.game.world.run.roundMonth)
+                    if (InGameSettings.CurMonth != g.game.world.run.roundMonth)
                     {
                         //first month
                         if (g.game.world.run.roundMonth <= 0)
@@ -114,11 +120,12 @@ namespace ModLib.Mod
                     OnSave(e);
 
                     //next month
-                    stt.CurMonth = g.game.world.run.roundMonth;
+                    InGameSettings.CurMonth = g.game.world.run.roundMonth;
                 }
                 catch (Exception ex)
                 {
                     DebugHelper.WriteLine(ex);
+                    DebugHelper.Save();
                 }
             }
         }
@@ -210,7 +217,7 @@ namespace ModLib.Mod
 
         public virtual void OnInitWorld(ETypeData e)
         {
-            ModSettings.CreateIfNotExists<ModSettings>();
+            InGameSettings.CreateIfNotExists<InGameSettings>();
             EventHelper.RunMinorEvents(e);
         }
 

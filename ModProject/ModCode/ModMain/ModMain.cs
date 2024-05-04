@@ -1,19 +1,17 @@
-﻿using EGameTypeData;
-using MOD_nE7UL2.Enum;
+﻿using MOD_nE7UL2.Enum;
+using MOD_nE7UL2.Object;
 using ModLib.Enum;
 using ModLib.Mod;
 using System;
-using System.Collections.Generic;
 using System.Linq;
-using UnityEngine.UI;
 
 namespace MOD_nE7UL2
 {
-    public sealed class ModMain : ModMaster
+    public sealed class ModMain : ModMaster<InGameStts>
     {
         public override string ModName => "MOD_nE7UL2";
-
         public override string ModId => "nE7UL2";
+        public static new ModMain ModObj => ModMaster.ModObj as ModMain;
 
         public override void OnInitConf()
         {
