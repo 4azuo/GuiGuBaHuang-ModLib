@@ -1,5 +1,5 @@
 {
-	"__name": "Mod configurations",
+	"__name": "In game configurations",
 	"HideButtonConfigs": {
 		"__select_options": "Hide/Show",
 		"ButtonConfigs": {
@@ -90,5 +90,9 @@
 			"Ultimate": 10.0,
 			"Ability": 20.0
 		}
+	},
+	"BattleRewardConfigs": {
+		"ExpPerDmgDealt": 0.001,
+		"ExpPerDmgRecv": 0.01
 	}
 }

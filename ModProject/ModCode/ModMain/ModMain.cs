@@ -2,15 +2,18 @@
 using MOD_nE7UL2.Object;
 using ModLib.Enum;
 using ModLib.Mod;
+using Newtonsoft.Json;
 using System;
 using System.Linq;
 
 namespace MOD_nE7UL2
 {
+    [InGameCustomSettings("game_configs.json", "config ver[1.0.3] update 2024/5/5")]
     public sealed class ModMain : ModMaster<InGameStts>
     {
         public override string ModName => "MOD_nE7UL2";
         public override string ModId => "nE7UL2";
+        public ModStts ModSettings { get; set; }
         public static new ModMain ModObj => ModMaster.ModObj as ModMain;
 
         public override void OnInitConf()
@@ -18,6 +21,11 @@ namespace MOD_nE7UL2
             base.OnInitConf();
             if (g.conf.roleAttributeLimit._allConfList.ToArray().Where(x => x.key.EndsWith("Max")).All(x => x.value == int.MaxValue))
                 return;
+            ModSettings = JsonConvert.DeserializeObject<ModStts>(ConfHelper.ReadConfData("mod_configs.json"));
+            foreach (var item in g.conf.roleGrade._allConfList)
+            {
+                item.exp = (item.exp * ModSettings.LevelExpRatio).Parse<int>();
+            }
             //unlimit attribute
             foreach (var item in g.conf.roleAttributeLimit._allConfList)
             {

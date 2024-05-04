@@ -288,8 +288,8 @@ namespace MOD_nE7UL2.Mod
                 }
                 else if (e.isWin)
                 {
-                    var rewardExp1 = Math.Max(localDmgDealt / 100, 1).Parse<int>();
-                    var rewardExp2 = Math.Max(localDmgRecv / 10, 1).Parse<int>();
+                    var rewardExp1 = Math.Max(localDmgDealt * ModMain.ModObj.InGameSettings.BattleRewardConfigs.ExpPerDmgDealt, 1).Parse<int>();
+                    var rewardExp2 = Math.Max(localDmgRecv * ModMain.ModObj.InGameSettings.BattleRewardConfigs.ExpPerDmgRecv, 1).Parse<int>();
                     player.AddExp(rewardExp1 + rewardExp2);
                     DebugHelper.WriteLine($"BattleRewardEvent: +{rewardExp1 + rewardExp2}exp");
                 }
@@ -301,13 +301,13 @@ namespace MOD_nE7UL2.Mod
         {
             base.OnBattleUnitDie(e);
             var dieUnit = e?.unit?.data?.TryCast<UnitDataHuman>();
-            if (dieUnit?.worldUnitData != null && g.world.battle.data.isRealBattle && !IsPlayerDie)
+            if (dieUnit?.worldUnitData?.unit != null && g.world.battle.data.isRealBattle && !IsPlayerDie)
             {
                 var attackUnitData = e?.hitData?.attackUnit?.data?.TryCast<UnitDataHuman>();
-                if (attackUnitData?.worldUnitData?.unit != null && !attackUnitData.worldUnitData.unit.IsPlayer())
+                if (attackUnitData?.worldUnitData?.unit != null && attackUnitData.worldUnitData.unit.IsPlayer())
                 {
-                    var attackUnit = attackUnitData.worldUnitData.unit;
-                    g.world.playerUnit.AddProperty<int>(UnitPropertyEnum.Life, attackUnit.GetProperty<int>(UnitPropertyEnum.Life) / (50 + (g.game.data.dataWorld.data.gameLevel.Parse<int>() * 25)));
+                    var drainLife = dieUnit.worldUnitData.unit.GetProperty<int>(UnitPropertyEnum.Life) / (50 + (g.game.data.dataWorld.data.gameLevel.Parse<int>() * 25));
+                    g.world.playerUnit.AddProperty<int>(UnitPropertyEnum.Life, drainLife);
                 }
             }
         }

@@ -48,17 +48,8 @@ namespace ModLib.Object
         public int CurMonth { get; set; } = -1;
 
         #region Custom
-        public const string ConfCustomConfigFile = "game_configs.json";
-        public const string ConfCustomConfigVersion = "config ver[1.0.2] update 2024/5/4";
         public string CustomConfigFile { get; set; }
         public string CustomConfigVersion { get; set; }
-
-        public InGameSettings InitCustomSettings()
-        {
-            CustomConfigFile = ConfCustomConfigFile;
-            CustomConfigVersion = ConfCustomConfigVersion;
-            return this;
-        }
         #endregion
     }
 }
