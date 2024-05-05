@@ -66,7 +66,7 @@ namespace MOD_nE7UL2.Object
                     max += ut.Value;
                     if (ValueHelper.IsBetween(r, min, max))
                     {
-                        return UnitTypeEnum.GetEnumByProp<UnitTypeEnum>("Name", ut.Key);
+                        return UnitTypeEnum.GetEnumByName<UnitTypeEnum>(ut.Key);
                     }
                 }
                 return UnitTypeEnum.Default;

@@ -1,6 +1,5 @@
 ﻿using EGameTypeData;
 using MOD_nE7UL2.Const;
-using MOD_nE7UL2.Object;
 using ModLib.Mod;
 using System;
 using System.Linq;
@@ -30,8 +29,8 @@ namespace MOD_nE7UL2.Mod
         public override void OnOpenUIEnd(OpenUIEnd e)
         {
             uiSchool = MonoBehaviour.FindObjectOfType<UISchool>();
-            if (uiSchool != null && g.world.playerUnit.data.school.schoolNameID == uiSchool.school.schoolNameID &&
-                btnExchangeContribution == null)
+            if (uiSchool != null && btnExchangeContribution == null &&
+                g.world?.playerUnit?.data?.school?.schoolNameID == uiSchool.school.schoolNameID)
             {
                 btnExchangeContribution = MonoBehaviour.Instantiate(uiSchool.btnGetMoney_En, uiSchool.transform, false);
                 btnExchangeContribution.onClick.AddListener((UnityAction)OpenSelector);

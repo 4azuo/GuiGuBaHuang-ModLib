@@ -49,6 +49,11 @@ namespace ModLib.Object
             return GetAllEnums<T>().FirstOrDefault(x => x.Value == val);
         }
 
+        public static T GetEnumByName<T>(string nm) where T : EnumObject
+        {
+            return GetAllEnums<T>().FirstOrDefault(x => x.Name == nm);
+        }
+
         public static T GetEnumByProp<T>(string propName, object propValue) where T : EnumObject
         {
             var prop = typeof(T).GetProperty(propName, BindingFlags.Public | BindingFlags.Instance);
