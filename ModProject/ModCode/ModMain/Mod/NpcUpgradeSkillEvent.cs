@@ -32,7 +32,7 @@ namespace MOD_nE7UL2.Mod
 
         public void UpgradeMartial(WorldUnitBase wunit, float ratio)
         {
-            UpgradeMartial(wunit, ModMain.ModObj.InGameSettings.NpcUpgradeSkillConfigs.RandomUpgradingMartial(CommonTool.Random(0.00f, 100.00f), ratio));
+            UpgradeMartial(wunit, ModMain.ModObj.InGameCustomSettings.NpcUpgradeSkillConfigs.RandomUpgradingMartial(CommonTool.Random(0.00f, 100.00f), ratio));
         }
 
         public void UpgradeMartial(WorldUnitBase wunit, MartialType martialType)

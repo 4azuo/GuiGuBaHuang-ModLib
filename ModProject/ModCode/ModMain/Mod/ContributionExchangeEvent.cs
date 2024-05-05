@@ -16,7 +16,7 @@ namespace MOD_nE7UL2.Mod
         {
             get
             {
-                return ModMain.ModObj.InGameSettings.ContributionExchangeConfigs.ExchangeRatio;
+                return ModMain.ModObj.InGameCustomSettings.ContributionExchangeConfigs.ExchangeRatio;
             }
         } //SpiritStones (Sell Price) / Contribution
 

@@ -77,7 +77,7 @@
 			"BOSS": 0.0005
 		},
 		"KillGrowRate": {
-			"Common": 0,
+			"Common": 0.000001,
 			"Elite": 0.00004,
 			"BOSS": 0.0001
 		}

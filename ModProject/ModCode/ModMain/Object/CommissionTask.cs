@@ -12,7 +12,7 @@ namespace MOD_nE7UL2.Object
         {
             get
             {
-                return ModMain.ModObj.InGameSettings.MissionDeclareConfigs;
+                return ModMain.ModObj.InGameCustomSettings.MissionDeclareConfigs;
             }
         }
 

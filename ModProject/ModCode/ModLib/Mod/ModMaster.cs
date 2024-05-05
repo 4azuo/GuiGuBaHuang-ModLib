@@ -19,7 +19,7 @@ namespace ModLib.Mod
 
         public abstract string ModName { get; }
         public abstract string ModId { get; }
-        public InGameSettings InGameSettings => InGameSettings.GetSettings<InGameSettings>();
+        public virtual InGameSettings InGameSettings => InGameSettings.GetSettings<InGameSettings>();
         public static ModMaster ModObj { get; protected set; }
 
         //GameEvent
@@ -64,17 +64,17 @@ namespace ModLib.Mod
             #endregion
 
             #region EGameType
-            var callTownAuctionStart = (Il2CppSystem.Action<ETypeData>)_OnTownAuctionStart;
-            g.events.On(EGameType.TownAuctionStart(1), callTownAuctionStart);
-            g.events.On(EGameType.TownAuctionStart(2), callTownAuctionStart);
-            g.events.On(EGameType.TownAuctionStart(3), callTownAuctionStart);
-            g.events.On(EGameType.TownAuctionStart(4), callTownAuctionStart);
-            g.events.On(EGameType.TownAuctionStart(5), callTownAuctionStart);
-            g.events.On(EGameType.TownAuctionStart(6), callTownAuctionStart);
-            g.events.On(EGameType.TownAuctionStart(7), callTownAuctionStart);
-            g.events.On(EGameType.TownAuctionStart(8), callTownAuctionStart);
-            g.events.On(EGameType.TownAuctionStart(9), callTownAuctionStart);
-            g.events.On(EGameType.TownAuctionStart(10), callTownAuctionStart);
+            //var callTownAuctionStart = (Il2CppSystem.Action<ETypeData>)_OnTownAuctionStart;
+            //g.events.On(EGameType.TownAuctionStart(1), callTownAuctionStart);
+            //g.events.On(EGameType.TownAuctionStart(2), callTownAuctionStart);
+            //g.events.On(EGameType.TownAuctionStart(3), callTownAuctionStart);
+            //g.events.On(EGameType.TownAuctionStart(4), callTownAuctionStart);
+            //g.events.On(EGameType.TownAuctionStart(5), callTownAuctionStart);
+            //g.events.On(EGameType.TownAuctionStart(6), callTownAuctionStart);
+            //g.events.On(EGameType.TownAuctionStart(7), callTownAuctionStart);
+            //g.events.On(EGameType.TownAuctionStart(8), callTownAuctionStart);
+            //g.events.On(EGameType.TownAuctionStart(9), callTownAuctionStart);
+            //g.events.On(EGameType.TownAuctionStart(10), callTownAuctionStart);
 
             var callOpenUIStart = (Il2CppSystem.Action<ETypeData>)_OnOpenUIStart;
             g.events.On(EGameType.OpenUIStart, callOpenUIStart);
@@ -245,22 +245,17 @@ namespace ModLib.Mod
 
     public abstract class ModMaster<T> : ModMaster where T : InGameSettings
     {
-        public new T InGameSettings => ModLib.Object.InGameSettings.GetSettings<T>();
-
-        public override void OnInitWorld(ETypeData e)
-        {
-            ModLib.Object.InGameSettings.CreateIfNotExists<T>();
-            EventHelper.RunMinorEvents(e);
-        }
+        public override InGameSettings InGameSettings => ModLib.Object.InGameSettings.GetSettings<T>();
+        public T InGameCustomSettings => (T)InGameSettings;
 
         public override void OnLoadGameBefore()
         {
-            var customSettings = GetType().GetCustomAttribute<InGameCustomSettingsAttribute>();
+            var customSettings = this.GetType().GetCustomAttribute<InGameCustomSettingsAttribute>();
             if (customSettings == null)
             {
                 throw new Exception($"InGameCustomSettingsAttribute was not declared!");
             }
-            if (InGameSettings.CustomConfigVersion != customSettings.ConfCustomConfigVersion)
+            if (InGameCustomSettings.CustomConfigVersion != customSettings.ConfCustomConfigVersion)
             {
                 if (string.IsNullOrEmpty(customSettings.ConfCustomConfigFile) || !File.Exists(ConfHelper.GetConfFilePath(customSettings.ConfCustomConfigFile)))
                 {
@@ -271,9 +266,9 @@ namespace ModLib.Mod
                 cusStt.CustomConfigVersion = customSettings.ConfCustomConfigVersion;
                 foreach (var prop in typeof(T).GetProperties(BindingFlags.Public | BindingFlags.Instance).Where(x => x.GetCustomAttribute<InheritanceAttribute>() != null))
                 {
-                    prop.SetValue(cusStt, prop?.GetValue(InGameSettings), null);
+                    prop.SetValue(cusStt, prop?.GetValue(InGameCustomSettings), null);
                 }
-                ModLib.Object.InGameSettings.ReplaceData(cusStt);
+                ModLib.Object.InGameSettings.SetSettings(cusStt);
             }
         }
     }

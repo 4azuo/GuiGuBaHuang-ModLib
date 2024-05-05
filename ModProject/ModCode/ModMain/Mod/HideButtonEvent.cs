@@ -1,6 +1,5 @@
 ﻿using EGameTypeData;
 using MOD_nE7UL2.Const;
-using MOD_nE7UL2.Object;
 using ModLib.Mod;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,18 +11,10 @@ namespace MOD_nE7UL2.Mod
     [Cache(ModConst.HIDE_BUTTON_EVENT)]
     public class HideButtonEvent : ModEvent
     {
-        public static InGameStts._HideButtonConfigs HideButtonConfigs
-        {
-            get
-            {
-                return ModMain.ModObj.InGameSettings.HideButtonConfigs;
-            }
-        }
-
         public override void OnOpenUIEnd(OpenUIEnd e)
         {
             IDictionary<string, SelectOption> buttonConfigs;
-            if (HideButtonConfigs.ButtonConfigs.TryGetValue(e.uiType.uiName, out buttonConfigs))
+            if (ModMain.ModObj.InGameCustomSettings.HideButtonConfigs.ButtonConfigs.TryGetValue(e.uiType.uiName, out buttonConfigs))
             {
                 var ui = g.ui.GetUI(e.uiType);
                 foreach (var buttonConfig in buttonConfigs)

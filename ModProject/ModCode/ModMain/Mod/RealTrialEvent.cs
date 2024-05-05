@@ -15,7 +15,7 @@ namespace MOD_nE7UL2.Mod
         {
             get
             {
-                return ModMain.ModObj.InGameSettings.RealTrialConfigs.PowerUpOnGameLevel;
+                return ModMain.ModObj.InGameCustomSettings.RealTrialConfigs.PowerUpOnGameLevel;
             }
         }
 

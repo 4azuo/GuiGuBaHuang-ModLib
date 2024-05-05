@@ -30,9 +30,14 @@ namespace ModLib.Object
             return CreateIfNotExists(sttType);
         }
 
-        public static void ReplaceData(CachableObject replacementValue)
+        public static void SetSettings(CachableObject replacementValue)
         {
             CacheHelper.GetGameCache().SetData(MOD_SETTINGS_KEY, replacementValue);
+        }
+
+        public static void ClearSettings()
+        {
+            CacheHelper.GetGameCache().ClearData(MOD_SETTINGS_KEY);
         }
 
         [JsonIgnore]
