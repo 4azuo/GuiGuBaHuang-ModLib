@@ -14,7 +14,7 @@ namespace MOD_nE7UL2.Mod
         {
             get
             {
-                return ModMain.ModObj.InGameSettings.MonstStrongerConfigs.GrowRate;
+                return ModMain.ModObj.InGameCustomSettings.MonstStrongerConfigs.GrowRate;
             }
         }
 
@@ -22,7 +22,7 @@ namespace MOD_nE7UL2.Mod
         {
             get
             {
-                return ModMain.ModObj.InGameSettings.MonstStrongerConfigs.KillGrowRate;
+                return ModMain.ModObj.InGameCustomSettings.MonstStrongerConfigs.KillGrowRate;
             }
         }
 

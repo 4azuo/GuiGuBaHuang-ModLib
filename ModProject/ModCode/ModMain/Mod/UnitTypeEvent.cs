@@ -41,7 +41,7 @@ namespace MOD_nE7UL2.Mod
 
         public static UnitTypeEnum AddRandomUnitType(WorldUnitBase wunit)
         {
-            var t = ModMain.ModObj.InGameSettings.UnitTypeConfigs.RandomUnitType(CommonTool.Random(0.00f, 100.00f));
+            var t = ModMain.ModObj.InGameCustomSettings.UnitTypeConfigs.RandomUnitType(CommonTool.Random(0.00f, 100.00f));
             if (t.CustomLuck != null)
                 wunit.AddLuck(t.Value.Parse<int>());
             return t;

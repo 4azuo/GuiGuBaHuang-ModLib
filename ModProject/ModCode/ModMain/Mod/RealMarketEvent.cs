@@ -20,14 +20,14 @@ namespace MOD_nE7UL2.Mod
         {
             get
             {
-                return ModMain.ModObj.InGameSettings.RealMarketConfigs.MinSellRate;
+                return ModMain.ModObj.InGameCustomSettings.RealMarketConfigs.MinSellRate;
             }
         }
         public static float MAX_RATE
         {
             get
             {
-                return ModMain.ModObj.InGameSettings.RealMarketConfigs.MaxSellRate;
+                return ModMain.ModObj.InGameCustomSettings.RealMarketConfigs.MaxSellRate;
             }
         }
 

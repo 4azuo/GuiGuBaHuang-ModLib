@@ -14,7 +14,7 @@ namespace MOD_nE7UL2.Mod
         {
             get
             {
-                return ModMain.ModObj.InGameSettings.BattleManashieldConfigs.ManaShieldRate;
+                return ModMain.ModObj.InGameCustomSettings.BattleManashieldConfigs.ManaShieldRate;
             }
         }
 

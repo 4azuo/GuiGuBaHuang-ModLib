@@ -288,8 +288,8 @@ namespace MOD_nE7UL2.Mod
                 }
                 else if (e.isWin)
                 {
-                    var rewardExp1 = Math.Max(localDmgDealt * ModMain.ModObj.InGameSettings.BattleRewardConfigs.ExpPerDmgDealt, 1).Parse<int>();
-                    var rewardExp2 = Math.Max(localDmgRecv * ModMain.ModObj.InGameSettings.BattleRewardConfigs.ExpPerDmgRecv, 1).Parse<int>();
+                    var rewardExp1 = Math.Max(localDmgDealt * ModMain.ModObj.InGameCustomSettings.BattleRewardConfigs.ExpPerDmgDealt, 1).Parse<int>();
+                    var rewardExp2 = Math.Max(localDmgRecv * ModMain.ModObj.InGameCustomSettings.BattleRewardConfigs.ExpPerDmgRecv, 1).Parse<int>();
                     player.AddExp(rewardExp1 + rewardExp2);
                     DebugHelper.WriteLine($"BattleRewardEvent: +{rewardExp1 + rewardExp2}exp");
                 }

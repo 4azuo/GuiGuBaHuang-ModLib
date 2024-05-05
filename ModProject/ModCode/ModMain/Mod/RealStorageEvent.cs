@@ -14,7 +14,7 @@ namespace MOD_nE7UL2.Mod
         {
             get
             {
-                return ModMain.ModObj.InGameSettings.RealStorageConfigs.FeeRate;
+                return ModMain.ModObj.InGameCustomSettings.RealStorageConfigs.FeeRate;
             }
         }
 

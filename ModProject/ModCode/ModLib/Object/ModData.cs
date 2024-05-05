@@ -98,5 +98,11 @@ namespace ModLib.Object
             else
                 Data[key] = replacementValue;
         }
+
+        public void ClearData(string key)
+        {
+            if (Data.ContainsKey(key))
+                Data.Remove(key);
+        }
     }
 }

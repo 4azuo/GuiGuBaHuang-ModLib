@@ -86,7 +86,7 @@ namespace ModLib.Mod
         #endregion
 
         #region EGameType
-        public virtual void OnTownAuctionStart(ETypeData e) { }
+        //public virtual void OnTownAuctionStart() { }
         public virtual void OnOpenUIStart(OpenUIStart e) { }
         public virtual void OnOpenUIEnd(OpenUIEnd e) { }
         public virtual void OnCloseUIStart(CloseUIStart e) { }
