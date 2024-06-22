@@ -118,4 +118,21 @@
 		"introduceText": "0",
 		"weight": "0"
 	},
+	{
+		"__name": "Merchant",
+		"id": "420010800",
+		"type": "2",
+		"group": "420010000",
+		"level": "6",
+		"duration": "-1",
+		"refreshType": "2",
+		"conceal": "0",
+		"name": "unitType420010800",
+		"effect": "420010801|420010802|420010803",
+		"tips": "unitType420010800desc",
+		"iconAndDesc": "0",
+		"lockLuck": "0",
+		"introduceText": "0",
+		"weight": "0"
+	}
 ]

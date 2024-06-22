@@ -28,4 +28,19 @@ public static class GameHelper
             RuntimeHelpers.RunClassConstructor(t.TypeHandle);
         }
     }
+
+    public static int GetGameYear()
+    {
+        return (g.world.run.roundMonth / 12) + 1;
+    }
+
+    public static int GetGameMonth()
+    {
+        return (g.world.run.roundMonth % 12) + 1;
+    }
+
+    public static int GetGameDay()
+    {
+        return g.world.run.roundDay + 1;
+    }
 }

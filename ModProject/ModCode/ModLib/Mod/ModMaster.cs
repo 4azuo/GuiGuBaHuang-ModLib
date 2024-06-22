@@ -251,24 +251,24 @@ namespace ModLib.Mod
         public override void OnLoadGameBefore()
         {
             var customSettings = this.GetType().GetCustomAttribute<InGameCustomSettingsAttribute>();
-            if (customSettings == null)
+            if (customSettings != null)
             {
-                throw new Exception($"InGameCustomSettingsAttribute was not declared!");
-            }
-            if (InGameCustomSettings.CustomConfigVersion != customSettings.ConfCustomConfigVersion)
-            {
-                if (string.IsNullOrEmpty(customSettings.ConfCustomConfigFile) || !File.Exists(ConfHelper.GetConfFilePath(customSettings.ConfCustomConfigFile)))
+                if (InGameCustomSettings.CustomConfigVersion != customSettings.ConfCustomConfigVersion)
                 {
-                    throw new Exception($"CustomConfigFile ({customSettings.ConfCustomConfigFile}) was not found!");
+                    if (!File.Exists(ConfHelper.GetConfFilePath(customSettings.ConfCustomConfigFile)))
+                    {
+                        //throw new Exception($"CustomConfigFile ({customSettings.ConfCustomConfigFile}) was not found!");
+                        return;
+                    }
+                    var cusStt = JsonConvert.DeserializeObject<T>(ConfHelper.ReadConfData(customSettings.ConfCustomConfigFile));
+                    cusStt.CustomConfigFile = customSettings.ConfCustomConfigFile;
+                    cusStt.CustomConfigVersion = customSettings.ConfCustomConfigVersion;
+                    foreach (var prop in typeof(T).GetProperties(BindingFlags.Public | BindingFlags.Instance).Where(x => x.GetCustomAttribute<InheritanceAttribute>() != null))
+                    {
+                        prop.SetValue(cusStt, prop?.GetValue(InGameCustomSettings), null);
+                    }
+                    ModLib.Object.InGameSettings.SetSettings(cusStt);
                 }
-                var cusStt = JsonConvert.DeserializeObject<T>(ConfHelper.ReadConfData(customSettings.ConfCustomConfigFile));
-                cusStt.CustomConfigFile = customSettings.ConfCustomConfigFile;
-                cusStt.CustomConfigVersion = customSettings.ConfCustomConfigVersion;
-                foreach (var prop in typeof(T).GetProperties(BindingFlags.Public | BindingFlags.Instance).Where(x => x.GetCustomAttribute<InheritanceAttribute>() != null))
-                {
-                    prop.SetValue(cusStt, prop?.GetValue(InGameCustomSettings), null);
-                }
-                ModLib.Object.InGameSettings.SetSettings(cusStt);
             }
         }
     }

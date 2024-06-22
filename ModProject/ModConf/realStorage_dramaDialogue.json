@@ -1,20 +1,20 @@
 [
 	{
 		"id": "480020100",
-		"uiType": "1",
+		"uiType": "2",
 		"condition": "0",
 		"weight": "1",
 		"npcLeft": "0",
 		"npcRight": "0",
 		"speaker": "0",
-		"backgroud": "0",
+		"backgroud": "dizizhenjing1",
 		"soundsBg": "0",
 		"soundsEffect": "0",
 		"title": "0",
-		"dialogue": "qicul480020100",
+		"dialogue": "realStorage480020100",
 		"openFunction": "0",
 		"function": "0",
-		"options": "0",
+		"options": "480010101",
 		"nextDialogue": "0"
 	}
 ]

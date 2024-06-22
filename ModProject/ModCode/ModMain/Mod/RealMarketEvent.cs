@@ -6,7 +6,7 @@ using UnityEngine;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine.UI;
-using MOD_nE7UL2.Object;
+using MOD_nE7UL2.Enum;
 
 namespace MOD_nE7UL2.Mod
 {
@@ -56,14 +56,16 @@ namespace MOD_nE7UL2.Mod
 
         public override void OnMonthly()
         {
+            var eventSellRate = ModMain.ModObj.InGameCustomSettings.RealMarketConfigs.GetAddSellRate();
             foreach (var town in g.world.build.GetBuilds().ToArray().Where(x => x.allBuildSub.ContainsKey(MapBuildSubType.TownMarketPill)))
             {
-                MarketPriceRate[town.buildData.id] = CommonTool.Random(MIN_RATE, MAX_RATE);
+                MarketPriceRate[town.buildData.id] = CommonTool.Random(MIN_RATE + eventSellRate, MAX_RATE + eventSellRate);
             }
         }
 
         public override void OnOpenUIStart(OpenUIStart e)
         {
+            var uType = UnitTypeEvent.GetUnitTypeEnum(g.world.playerUnit);
             uiPropSell = MonoBehaviour.FindObjectOfType<UIPropSell>();
             curMainTown = g.world.build.GetBuild(g.world.playerUnit.data.unitData.GetPoint());
             if (uiPropSell != null && curMainTown != null)
@@ -75,6 +77,8 @@ namespace MOD_nE7UL2.Mod
                     if (!uiPropSell.propsPrice.ContainsKey(p.propsID))
                     {
                         var basePrice = (p.propsInfoBase.sale * (MarketPriceRate[curMainTown.buildData.id] / 100.00f)).Parse<int>();
+                        if (uType == UnitTypeEnum.Merchant)
+                            basePrice += (basePrice * uType.CustomLuck.CustomEffects["SellValue"].Value0.Parse<float>()).Parse<int>();
                         uiPropSell.propsPrice.Add(p.propsID, basePrice);
                     }
                 }
@@ -83,6 +87,7 @@ namespace MOD_nE7UL2.Mod
 
         public override void OnOpenUIEnd(OpenUIEnd e)
         {
+            var uType = UnitTypeEvent.GetUnitTypeEnum(g.world.playerUnit);
             uiPropSell = MonoBehaviour.FindObjectOfType<UIPropSell>();
             curMainTown = g.world.build.GetBuild(g.world.playerUnit.data.unitData.GetPoint());
             if (uiPropSell != null && curMainTown != null)
@@ -97,6 +102,8 @@ namespace MOD_nE7UL2.Mod
 
                     txtInfo = MonoBehaviour.Instantiate(uiPropSell.textMoney, uiPropSell.transform, false);
                     txtInfo.text = $"Price rate: {MarketPriceRate[curMainTown.buildData.id]:0.00}%";
+                    if (uType == UnitTypeEnum.Merchant)
+                        txtInfo.text += $" (Merchant +{uType.CustomLuck.CustomEffects["SellValue"].Value0.Parse<float>() * 100.0f:0.00}%)";
                     txtInfo.transform.position = new Vector3(uiPropSell.textMoney.transform.position.x, uiPropSell.textMoney.transform.position.y - 0.4f);
                     txtInfo.verticalOverflow = VerticalWrapMode.Overflow;
                     txtInfo.horizontalOverflow = HorizontalWrapMode.Overflow;

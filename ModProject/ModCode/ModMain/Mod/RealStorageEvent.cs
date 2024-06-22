@@ -4,6 +4,7 @@ using ModLib.Mod;
 using UnityEngine;
 using System.Linq;
 using UnityEngine.UI;
+using MOD_nE7UL2.Enum;
 
 namespace MOD_nE7UL2.Mod
 {
@@ -94,28 +95,35 @@ namespace MOD_nE7UL2.Mod
         {
             if (uiTownStorageProps != null && txtFee != null)
             {
+                var uType = UnitTypeEvent.GetUnitTypeEnum(g.world.playerUnit);
                 var props = uiTownStorageProps.townStorage?.data?.propData?.allProps?.ToArray() ?? new DataProps.PropsData[0];
                 StorageValue = props.Sum(x => x.propsCount * x.propsInfoBase.worth);
                 var spValue = props.Where(x => x.propsID == 10001).Sum(x => x.propsCount * x.propsInfoBase.worth);
                 txtStorageMoney.text = $"Storage: {StorageValue} Spirit Stones ({spValue} cash, {StorageValue - spValue} items)";
-                txtFee.text = $"Fee: {FEE_RATE * 100:0.0}% (-{(StorageValue * FEE_RATE).Parse<int>()} Spirit Stones monthly)";
+                //FreeStorage
+                txtFee.text = uType == UnitTypeEnum.Merchant ? string.Empty : $"Fee: {FEE_RATE * 100:0.0}% (-{(StorageValue * FEE_RATE).Parse<int>()} Spirit Stones monthly)";
             }
         }
 
         public override void OnMonthly()
         {
-            var money = g.world.playerUnit.GetUnitMoney();
-            var fee = ((StorageValue * FEE_RATE) + Debt).Parse<int>();
-            if (money < fee)
+            //FreeStorage
+            var uType = UnitTypeEvent.GetUnitTypeEnum(g.world.playerUnit);
+            if (uType != UnitTypeEnum.Merchant)
             {
-                g.world.playerUnit.SetUnitMoney(0);
-                Debt = fee - money;
-                DramaTool.OpenDrama(480020100);
-            }
-            else
-            {
-                g.world.playerUnit.AddUnitMoney(-fee);
-                Debt = 0L;
+                var money = g.world.playerUnit.GetUnitMoney();
+                var fee = ((StorageValue * FEE_RATE) + Debt).Parse<int>();
+                if (money < fee)
+                {
+                    g.world.playerUnit.SetUnitMoney(0);
+                    Debt = fee - money;
+                    DramaTool.OpenDrama(480020100);
+                }
+                else
+                {
+                    g.world.playerUnit.AddUnitMoney(-fee);
+                    Debt = 0L;
+                }
             }
         }
     }
