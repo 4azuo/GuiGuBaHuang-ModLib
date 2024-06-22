@@ -3,6 +3,7 @@ using ModLib.Object;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace MOD_nE7UL2.Object
 {
@@ -94,10 +95,27 @@ namespace MOD_nE7UL2.Object
         #region RealMarketConfigs
         public class _RealMarketConfigs
         {
+            public class _RealMarketConfigs_Event : InGameEvent
+            {
+                public float AddSellRate { get; set; }
+                public float AddBuyRate { get; set; }
+            }
+
             public float MinSellRate { get; set; }
             public float MaxSellRate { get; set; }
             public float MinBuyRate { get; set; }
             public float MaxBuyRate { get; set; }
+            public Dictionary<string, _RealMarketConfigs_Event> Events { get; set; }
+
+            public float GetAddSellRate()
+            {
+                return Events.Where(e => e.Value.IsRunningEvent()).Sum(e => e.Value.AddSellRate);
+            }
+
+            public float GetAddBuyRate()
+            {
+                return Events.Where(e => e.Value.IsRunningEvent()).Sum(e => e.Value.AddBuyRate);
+            }
         }
         public _RealMarketConfigs RealMarketConfigs { get; set; }
         #endregion

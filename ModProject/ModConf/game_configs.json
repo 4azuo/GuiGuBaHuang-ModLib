@@ -47,13 +47,14 @@
 	"UnitTypeConfigs": {
 		"__tip": "Appearance rate (%)",
 		"UnitTypes": {
-			"PowerUnit": 10.0,
-			"SpeedUnit": 10.0,
-			"TaoistUnit": 10.0,
-			"AtkUnit": 20.0,
-			"DefUnit": 20.0,
-			"Angel": 3.0,
-			"Evil": 5.0
+			"PowerUnit": 8.0,
+			"SpeedUnit": 8.0,
+			"TaoistUnit": 8.0,
+			"AtkUnit": 12.0,
+			"DefUnit": 12.0,
+			"Angel": 2.0,
+			"Evil": 4.0,
+			"Merchant": 16.0
 		}
 	},
 	"RealTrialConfigs": {
@@ -65,10 +66,33 @@
 		"FeeRate": 0.001
 	},
 	"RealMarketConfigs": {
+		"__tip": "(%)",
 		"MinSellRate": 85.0,
 		"MaxSellRate": 110.0,
 		"MinBuyRate": 90.0,
-		"MaxBuyRate": 115.0
+		"MaxBuyRate": 115.0,
+		"Events": {
+			"HappyNewYear": {
+				"Name": "Happy New Year",
+				"__tip1": "Start, Dur, Period (month)",
+				"Start": 1,
+				"Dur": 1,
+				"Period": 12,
+				"__tip2": "AddSellRate, AddBuyRate (%)",
+				"AddSellRate": 25.0,
+				"AddBuyRate": 20.0
+			},
+			"HappyMidYear": {
+				"Name": "Happy Middle Year",
+				"__tip1": "Start, Dur, Period (month)",
+				"Start": 6,
+				"Dur": 1,
+				"Period": 12,
+				"__tip2": "AddSellRate, AddBuyRate (%)",
+				"AddSellRate": -20.0,
+				"AddBuyRate": -25.0
+			}
+		}
 	},
 	"MonstStrongerConfigs": {
 		"GrowRate": {

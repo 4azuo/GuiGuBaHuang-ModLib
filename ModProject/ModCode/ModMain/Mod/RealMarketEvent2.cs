@@ -6,7 +6,7 @@ using UnityEngine;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine.UI;
-using MOD_nE7UL2.Object;
+using MOD_nE7UL2.Enum;
 
 namespace MOD_nE7UL2.Mod
 {
@@ -52,14 +52,16 @@ namespace MOD_nE7UL2.Mod
 
         public override void OnMonthly()
         {
+            var eventBuyRate = ModMain.ModObj.InGameCustomSettings.RealMarketConfigs.GetAddBuyRate();
             foreach (var town in g.world.build.GetBuilds().ToArray().Where(x => x.allBuildSub.ContainsKey(MapBuildSubType.TownMarketPill)))
             {
-                MarketPriceRate[town.buildData.id] = CommonTool.Random(MIN_RATE, MAX_RATE);
+                MarketPriceRate[town.buildData.id] = CommonTool.Random(MIN_RATE + eventBuyRate, MAX_RATE + eventBuyRate);
             }
         }
 
         public override void OnOpenUIEnd(OpenUIEnd e)
         {
+            var uType = UnitTypeEvent.GetUnitTypeEnum(g.world.playerUnit);
             uiTownMarketBuy = MonoBehaviour.FindObjectOfType<UITownMarketBuy>();
             if (uiTownMarketBuy != null)
             {
@@ -73,7 +75,9 @@ namespace MOD_nE7UL2.Mod
 
                     txtInfo = MonoBehaviour.Instantiate(uiTownMarketBuy.textMoney, uiTownMarketBuy.transform, false);
                     txtInfo.text = $"Price rate: {MarketPriceRate[uiTownMarketBuy.town.buildData.id]:0.00}%";
-                    txtInfo.transform.position = new Vector3(uiTownMarketBuy.textMoney.transform.position.x + 5.0f, uiTownMarketBuy.textMoney.transform.position.y);
+                    if (uType == UnitTypeEnum.Merchant)
+                        txtInfo.text += $" (Merchant {uType.CustomLuck.CustomEffects["BuyCost"].Value0.Parse<float>() * 100.0f:0.00}%)";
+                    txtInfo.transform.position = new Vector3(uiTownMarketBuy.textMoney.transform.position.x + 4.5f, uiTownMarketBuy.textMoney.transform.position.y);
                     txtInfo.verticalOverflow = VerticalWrapMode.Overflow;
                     txtInfo.horizontalOverflow = HorizontalWrapMode.Overflow;
                     txtInfo.color = Color.red;
@@ -83,11 +87,16 @@ namespace MOD_nE7UL2.Mod
                     uiPropSelectCount = MonoBehaviour.FindObjectOfType<UIPropSelectCount>();
                     if (uiPropSelectCount != null && txtInfo2 == null)
                     {
-                        uiPropSelectCount.oneCost = (uiPropSelectCount.oneCost.Parse<float>() * MarketPriceRate[uiTownMarketBuy.town.buildData.id] / 100f).Parse<int>();
+                        var basePrice = (uiPropSelectCount.oneCost.Parse<float>() * MarketPriceRate[uiTownMarketBuy.town.buildData.id] / 100f).Parse<int>();
+                        if (uType == UnitTypeEnum.Merchant)
+                            basePrice += (basePrice * uType.CustomLuck.CustomEffects["BuyCost"].Value0.Parse<float>()).Parse<int>();
+                        uiPropSelectCount.oneCost = basePrice;
                         uiPropSelectCount.UpdateCountUI();
 
                         txtInfo2 = MonoBehaviour.Instantiate(uiPropSelectCount.textName, uiPropSelectCount.transform, false);
                         txtInfo2.text = $"Price rate: {MarketPriceRate[uiTownMarketBuy.town.buildData.id]:0.00}%";
+                        if (uType == UnitTypeEnum.Merchant)
+                            txtInfo2.text += $" (Merchant {uType.CustomLuck.CustomEffects["BuyCost"].Value0.Parse<float>() * 100.0f:0.00}%)";
                         txtInfo2.transform.position = new Vector3(uiPropSelectCount.ptextInfo.transform.position.x, uiPropSelectCount.ptextInfo.transform.position.y + 0.2f);
                         txtInfo2.verticalOverflow = VerticalWrapMode.Overflow;
                         txtInfo2.horizontalOverflow = HorizontalWrapMode.Overflow;

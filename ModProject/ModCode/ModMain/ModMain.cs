@@ -8,7 +8,7 @@ using System.Linq;
 
 namespace MOD_nE7UL2
 {
-    [InGameCustomSettings("game_configs.json", "config ver[1.0.3] update 2024/5/5")]
+    [InGameCustomSettings("game_configs.json", "config ver[1.0.4] update 2024/5/12")]
     public sealed class ModMain : ModMaster<InGameStts>
     {
         public override string ModName => "MOD_nE7UL2";

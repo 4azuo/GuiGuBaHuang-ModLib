@@ -39,15 +39,20 @@ namespace MOD_nE7UL2.Mod
         {
             foreach (var wunit in g.world.unit.GetUnits())
             {
+                var income = (
+                        Math.Pow(2, g.conf.roleGrade.GetItem(wunit.GetProperty<int>(UnitPropertyEnum.GradeID)).grade) *
+                        (UnitTypeEvent.GetUnitTypeEnum(wunit) == Enum.UnitTypeEnum.Merchant ? 1.40f : 1.00f) *
+                        6
+                    ).Parse<long>();
                 var town = g.world.build.GetBuild<MapBuildTown>(wunit.data.unitData.GetPoint());
                 if (town != null)
                 {
-                    Budget[town.buildData.id] += (Math.Pow(2, g.conf.roleGrade.GetItem(wunit.GetProperty<int>(UnitPropertyEnum.GradeID)).grade) * 6).Parse<long>();
+                    Budget[town.buildData.id] += income;
                 }
                 var school = g.world.build.GetBuild<MapBuildSchool>(wunit.data.unitData.GetPoint());
                 if (school != null)
                 {
-                    school.buildData.money += (Math.Pow(2, g.conf.roleGrade.GetItem(wunit.GetProperty<int>(UnitPropertyEnum.GradeID)).grade) * 6).Parse<long>();
+                    school.buildData.money += income;
                 }
             }
         }

@@ -3,6 +3,7 @@ using MOD_nE7UL2.Enum;
 using ModLib.Enum;
 using ModLib.Mod;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace MOD_nE7UL2.Mod
 {
@@ -15,10 +16,18 @@ namespace MOD_nE7UL2.Mod
         {
             foreach (var wunit in g.world.unit.GetUnits())
             {
+                var unitId = wunit.GetUnitId();
+
                 //add luck
-                if (!UnitTypeDic.ContainsKey(wunit.GetUnitId()))
+                if (!UnitTypeDic.ContainsKey(unitId))
                 {
-                    UnitTypeDic.Add(wunit.GetUnitId(), AddRandomUnitType(wunit));
+                    UnitTypeDic.Add(unitId, AddRandomUnitType(wunit));
+                }
+
+                //merchant
+                if (UnitTypeDic[unitId] == UnitTypeEnum.Merchant)
+                {
+                    wunit.AddUnitMoney((wunit.GetUnitMoney() * UnitTypeEnum.Merchant.CustomLuck.CustomEffects["PassiveIncome"].Value0.Parse<float>()).Parse<int>());
                 }
 
                 //add property
@@ -57,6 +66,13 @@ namespace MOD_nE7UL2.Mod
                     wunit.SetProperty(p.Values[0] as UnitPropertyEnum, utype.CalType(wunit, p.Values[0] as UnitPropertyEnum, ratio));
                 }
             }
+        }
+
+        public static UnitTypeEnum GetUnitTypeEnum(WorldUnitBase wunit)
+        {
+            var unitId = wunit.GetUnitId();
+            var x = EventHelper.GetEvent<UnitTypeEvent>(ModConst.UNIT_TYPE_EVENT);
+            return x.UnitTypeDic.ContainsKey(unitId) ? x.UnitTypeDic[unitId] : null;
         }
     }
 }

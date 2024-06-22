@@ -1,5 +1,4 @@
 ﻿using Il2CppSystem.Collections.Generic;
-using ModLib.Mod;
 using System;
 using System.Linq;
 using static MOD_nE7UL2.Object.InGameStts;
@@ -8,6 +7,12 @@ namespace MOD_nE7UL2.Object
 {
     public class CommissionTask
     {
+        public enum CommissionTaskStatus
+        {
+            Progressing,
+            Success,
+            Failed
+        }
         public static _MissionDeclareConfigs Configs
         {
             get
@@ -23,6 +28,7 @@ namespace MOD_nE7UL2.Object
         public int CostTime { get; set; }
         public float SuccessRate { get; set; }
         public int PassTime { get; set; } = 0;
+        public CommissionTaskStatus Status { get; set; } = CommissionTaskStatus.Progressing;
 
         public CommissionTask() { }
 

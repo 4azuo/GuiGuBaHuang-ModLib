@@ -1,8 +1,16 @@
-﻿namespace ModLib.Object
+﻿using Newtonsoft.Json;
+
+namespace ModLib.Object
 {
     public class MultiValue
     {
         public object[] Values { get; set; }
+        [JsonIgnore]
+        public object Value0 => Values?.Length >= 1 ? Values[0] : null;
+        [JsonIgnore]
+        public object Value1 => Values?.Length >= 2 ? Values[1] : null;
+        [JsonIgnore]
+        public object Value2 => Values?.Length >= 3 ? Values[2] : null;
 
         public MultiValue()
         {
