@@ -40,9 +40,9 @@
 		]
 	},
 	"BattleManashieldConfigs": {
-		"__tip": "12.5% current-mp will be converted to shield in battle",
-		"__formula": "current-mp * {ManaShieldRate}",
-		"ManaShieldRate": 0.125
+		"__formula": "(cur-mp * {ManaShieldRate1}) + (max-mp * {ManaShieldRate2}) + (cur-hp * 0.05 * {{Blood Energy} Level})",
+		"ManaShieldRate1": 0.150,
+		"ManaShieldRate2": 0.050
 	},
 	"UnitTypeConfigs": {
 		"__tip": "Appearance rate (%)",
@@ -96,14 +96,14 @@
 	},
 	"MonstStrongerConfigs": {
 		"GrowRate": {
-			"Common": 0.0007,
-			"Elite": 0.0005,
-			"BOSS": 0.0005
+			"Common": 0.00075,
+			"Elite": 0.00055,
+			"BOSS": 0.00052
 		},
 		"KillGrowRate": {
 			"Common": 0.000001,
 			"Elite": 0.00004,
-			"BOSS": 0.0001
+			"BOSS": 0.00010
 		}
 	},
 	"NpcUpgradeSkillConfigs": {

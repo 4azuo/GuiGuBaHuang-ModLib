@@ -44,6 +44,7 @@
     <Compile Include="Enum\UnitTypeEnum.cs" />
     <Compile Include="Helper\PriceHelper.cs" />
     <Compile Include="ModMain.cs" />
+    <Compile Include="Mod\BattleModifyEvent.cs" />
     <Compile Include="Mod\MapBuildPropertyEvent.cs" />
     <Compile Include="Mod\BuildingArrangeEvent.cs" />
     <Compile Include="Mod\MissionDeclareEvent.cs" />

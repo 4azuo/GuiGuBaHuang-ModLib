@@ -47,7 +47,8 @@ namespace MOD_nE7UL2.Object
         #region BattleManashieldConfigs
         public class _BattleManashieldConfigs
         {
-            public float ManaShieldRate { get; set; }
+            public float ManaShieldRate1 { get; set; }
+            public float ManaShieldRate2 { get; set; }
         }
         public _BattleManashieldConfigs BattleManashieldConfigs { get; set; }
         #endregion

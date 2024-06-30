@@ -1,6 +1,6 @@
 ﻿using MOD_nE7UL2.Const;
-using MOD_nE7UL2.Object;
 using ModLib.Mod;
+using static MOD_nE7UL2.Object.InGameStts;
 
 namespace MOD_nE7UL2.Mod
 {
@@ -10,11 +10,11 @@ namespace MOD_nE7UL2.Mod
         public const int MANASHIELD_EFFECT_MAIN_ID = 903151120;
         public const int MANASHIELD_EFFECT_EFX_ID = 903151121;
 
-        public static float MANA_SHIELD_RATE
+        public static _BattleManashieldConfigs ManashieldConfigs
         {
             get
             {
-                return ModMain.ModObj.InGameCustomSettings.BattleManashieldConfigs.ManaShieldRate;
+                return ModMain.ModObj.InGameCustomSettings.BattleManashieldConfigs;
             }
         }
 
@@ -32,8 +32,20 @@ namespace MOD_nE7UL2.Mod
                         data = new BattleSkillValueData.Data(),
                     }
                 });
-                Effect3017.AddShield(efx, humanData.unit, MANASHIELD_EFFECT_EFX_ID, (humanData.mp * MANA_SHIELD_RATE).Parse<int>(), humanData.maxHP.value * 2, int.MaxValue);
+                var ms = (humanData.mp * ManashieldConfigs.ManaShieldRate1) + (humanData.maxMP.value * ManashieldConfigs.ManaShieldRate2) + (humanData.hp * (0.05f * GetBloodEnergyLevel(humanData)));
+                Effect3017.AddShield(efx, humanData.unit, MANASHIELD_EFFECT_EFX_ID, ms.Parse<int>(), humanData.maxHP.value * 2, int.MaxValue);
             }
+        }
+
+        private int GetBloodEnergyLevel(UnitDataHuman humanData)
+        {
+            if (humanData.worldUnitData.unit.GetLuck(700094) != null)
+                return 3;
+            if (humanData.worldUnitData.unit.GetLuck(700093) != null)
+                return 2;
+            if (humanData.worldUnitData.unit.GetLuck(700092) != null)
+                return 1;
+            return 0;
         }
     }
 }

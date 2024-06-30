@@ -112,17 +112,15 @@ namespace MOD_nE7UL2.Mod
             if (uType != UnitTypeEnum.Merchant)
             {
                 var money = g.world.playerUnit.GetUnitMoney();
-                var fee = ((StorageValue * FEE_RATE) + Debt).Parse<int>();
-                if (money < fee)
+                Debt += (StorageValue * FEE_RATE).Parse<long>();
+                if (money >= Debt)
                 {
-                    g.world.playerUnit.SetUnitMoney(0);
-                    Debt = fee - money;
-                    DramaTool.OpenDrama(480020100);
-                }
-                else
-                {
-                    g.world.playerUnit.AddUnitMoney(-fee);
+                    g.world.playerUnit.AddUnitMoney(-Debt.Parse<int>());
                     Debt = 0L;
+                }
+                if (Debt > 0)
+                {
+                    DramaTool.OpenDrama(480020100);
                 }
             }
         }
