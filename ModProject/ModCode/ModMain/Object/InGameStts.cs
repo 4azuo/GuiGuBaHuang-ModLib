@@ -64,8 +64,8 @@ namespace MOD_nE7UL2.Object
                 var max = min;
                 foreach (var ut in UnitTypes)
                 {
-                    min += max;
-                    max += ut.Value;
+                    min = max;
+                    max = min + ut.Value;
                     if (ValueHelper.IsBetween(r, min, max))
                     {
                         return UnitTypeEnum.GetEnumByName<UnitTypeEnum>(ut.Key);
@@ -141,8 +141,8 @@ namespace MOD_nE7UL2.Object
                 var max = min;
                 foreach (var ut in UpgradeRates)
                 {
-                    min += max;
-                    max += ut.Value * ratio;
+                    min = max;
+                    max = min + ut.Value * ratio;
                     if (ValueHelper.IsBetween(r, min, max))
                     {
                         return ut.Key;
