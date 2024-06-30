@@ -21,7 +21,7 @@ namespace MOD_nE7UL2.Mod
         public override void OnIntoBattleFirst(UnitCtrlBase e)
         {
             var humanData = e?.data?.TryCast<UnitDataHuman>();
-            if (humanData?.unit != null)
+            if (humanData?.unit != null && humanData?.worldUnitData?.unit != null)
             {
                 var efx = humanData.unit.AddEffect(MANASHIELD_EFFECT_MAIN_ID, humanData.unit, new SkillCreateData
                 {
