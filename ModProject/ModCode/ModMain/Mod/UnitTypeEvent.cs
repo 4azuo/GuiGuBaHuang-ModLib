@@ -25,7 +25,7 @@ namespace MOD_nE7UL2.Mod
                 }
 
                 //merchant
-                if (UnitTypeDic[unitId] == UnitTypeEnum.Merchant)
+                if (wunit.IsPlayer() && UnitTypeDic[unitId] == UnitTypeEnum.Merchant)
                 {
                     wunit.AddUnitMoney((wunit.GetUnitMoney() * UnitTypeEnum.Merchant.CustomLuck.CustomEffects["PassiveIncome"].Value0.Parse<float>()).Parse<int>());
                 }
