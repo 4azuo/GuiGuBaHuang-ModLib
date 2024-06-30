@@ -58,8 +58,8 @@
 		}
 	},
 	"RealTrialConfigs": {
-		"__tip": "+50% power base on game level",
-		"PowerUpOnGameLevel": 0.5
+		"__tip": "+60% power base on game level",
+		"PowerUpOnGameLevel": 0.6
 	},
 	"RealStorageConfigs": {
 		"__tip": "-0.1% on total item-worth-value every month",

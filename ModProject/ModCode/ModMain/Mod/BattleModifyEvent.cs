@@ -24,10 +24,13 @@ namespace MOD_nE7UL2.Mod
 
             if (hitUnitData?.worldUnitData?.unit != null && pEnum != null)
             {
-                var atk = hitUnitData.worldUnitData.unit.GetProperty<int>(UnitPropertyEnum.Attack);
+                var def = hitUnitData.worldUnitData.unit.GetProperty<int>(UnitPropertyEnum.Defense);
                 var subDmg = hitUnitData.worldUnitData.unit.GetProperty<int>(pEnum);
-                e.dynV.baseValue -= (atk * subDmg / 100f).Parse<int>();
+                e.dynV.baseValue -= (def * subDmg / 100f).Parse<int>();
             }
+
+            if (e.dynV.baseValue <= 0)
+                e.dynV.baseValue = 1;
         }
     }
 }
