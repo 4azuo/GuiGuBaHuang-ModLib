@@ -20,11 +20,28 @@ namespace MOD_nE7UL2.Mod
             }
         } //SpiritStones (Sell Price) / Contribution
 
+        public int CurMonthRatio { get; set; }
+
         private UISchool uiSchool;
         private UIPropSelect uiSelector;
         private Button btnExchangeContribution;
         private Text txtExchangeRatio;
         private Text txtExchangeContribution;
+
+        public override void OnLoadGame()
+        {
+            RandomRatio();
+        }
+
+        public override void OnMonthly()
+        {
+            RandomRatio();
+        }
+
+        private void RandomRatio()
+        {
+            CurMonthRatio = (EXCHANGE_RATIO * CommonTool.Random(0.80f, 1.30f)).Parse<int>();
+        }
 
         public override void OnOpenUIEnd(OpenUIEnd e)
         {
@@ -66,7 +83,7 @@ namespace MOD_nE7UL2.Mod
             uiSelector.onOKCall = (Il2CppSystem.Action)Exchange;
 
             txtExchangeRatio = MonoBehaviour.Instantiate(uiSelector.textInfo, uiSelector.transform, false);
-            txtExchangeRatio.text = $"Exchannge Ratio {EXCHANGE_RATIO} Spirit Stones → 1 Contribution";
+            txtExchangeRatio.text = $"Exchannge Ratio {CurMonthRatio} Spirit Stones → 1 Contribution";
             txtExchangeRatio.transform.position = new Vector3(uiSelector.textTitle1.transform.position.x, uiSelector.textTitle1.transform.position.y + 0.3f);
             txtExchangeRatio.verticalOverflow = VerticalWrapMode.Overflow;
             txtExchangeRatio.horizontalOverflow = HorizontalWrapMode.Overflow;
@@ -101,7 +118,7 @@ namespace MOD_nE7UL2.Mod
         {
             if (spiritStones == 0)
                 return 0;
-            return Math.Max(1, spiritStones / EXCHANGE_RATIO);
+            return Math.Max(1, spiritStones / CurMonthRatio);
         }
     }
 }

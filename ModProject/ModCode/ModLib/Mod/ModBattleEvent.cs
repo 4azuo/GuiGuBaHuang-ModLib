@@ -1,4 +1,5 @@
 ﻿using EBattleTypeData;
+using ModLib.Enum;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
@@ -41,34 +42,45 @@ namespace ModLib.Mod
             return $"{dmgEnum}_{dmgTypeEnum}";
         }
 
-        public static DmgTypeEnum GetDmgBasisType(UnitHit unitHit)
+        public static UnitPropertyEnum GetDmgPropertyEnum(DmgTypeEnum dmgTypeEnum)
         {
-            var weaponType = unitHit?.hitData?.skillBase?.data?.weaponType?.value ?? 0;
-            if (weaponType > 0)
+            return UnitPropertyEnum.GetEnumByName<UnitPropertyEnum>($"Basis{dmgTypeEnum}");
+        }
+
+        public static DmgTypeEnum GetDmgBasisType(MartialTool.HitData hitData)
+        {
+            if (hitData != null)
             {
-                var dmgType = (DmgTypeEnum)(((int)DmgTypeEnum.Physic) + weaponType);
-                return dmgType;
-            }
-            var magicType = unitHit?.hitData?.skillBase?.data?.magicType?.value ?? 0;
-            if (magicType > 0)
-            {
-                var dmgType = (DmgTypeEnum)(((int)DmgTypeEnum.Magic) + magicType);
-                return dmgType;
+                var weaponType = hitData?.skillBase?.data?.weaponType?.value ?? 0;
+                if (weaponType > 0)
+                {
+                    var dmgType = (DmgTypeEnum)(((int)DmgTypeEnum.Physic) + weaponType);
+                    return dmgType;
+                }
+                var magicType = hitData?.skillBase?.data?.magicType?.value ?? 0;
+                if (magicType > 0)
+                {
+                    var dmgType = (DmgTypeEnum)(((int)DmgTypeEnum.Magic) + magicType);
+                    return dmgType;
+                }
             }
             return DmgTypeEnum.Damage;
         }
 
-        public static DmgTypeEnum GetDmgType(UnitHit unitHit)
+        public static DmgTypeEnum GetDmgType(MartialTool.HitData hitData)
         {
-            var weaponType = unitHit?.hitData?.skillBase?.data?.weaponType?.value ?? 0;
-            if (weaponType > 0)
+            if (hitData != null)
             {
-                return DmgTypeEnum.Physic;
-            }
-            var magicType = unitHit?.hitData?.skillBase?.data?.magicType?.value ?? 0;
-            if (magicType > 0)
-            {
-                return DmgTypeEnum.Magic;
+                var weaponType = hitData?.skillBase?.data?.weaponType?.value ?? 0;
+                if (weaponType > 0)
+                {
+                    return DmgTypeEnum.Physic;
+                }
+                var magicType = hitData?.skillBase?.data?.magicType?.value ?? 0;
+                if (magicType > 0)
+                {
+                    return DmgTypeEnum.Magic;
+                }
             }
             return DmgTypeEnum.Damage;
         }
@@ -154,13 +166,13 @@ namespace ModLib.Mod
                 GameDmg[commonDmgKey] += dmg;
                 BattleDmg[commonDmgKey] += dmg;
 
-                var dmgType = GetDmgType(e);
+                var dmgType = GetDmgType(e?.hitData);
                 if (dmgType != DmgTypeEnum.Damage)
                 {
                     GameDmg[GetDmgKey(DmgEnum.DmgDealt, dmgType)] += dmg;
                     BattleDmg[GetDmgKey(DmgEnum.DmgDealt, dmgType)] += dmg;
 
-                    var basisKey = GetDmgBasisType(e);
+                    var basisKey = GetDmgBasisType(e?.hitData);
                     GameDmg[GetDmgKey(DmgEnum.DmgDealt, basisKey)] += dmg;
                     BattleDmg[GetDmgKey(DmgEnum.DmgDealt, basisKey)] += dmg;
                 }
@@ -171,13 +183,13 @@ namespace ModLib.Mod
                 GameDmg[commonDmgKey] += dmg;
                 BattleDmg[commonDmgKey] += dmg;
 
-                var dmgType = GetDmgType(e);
+                var dmgType = GetDmgType(e?.hitData);
                 if (dmgType != DmgTypeEnum.Damage)
                 {
                     GameDmg[GetDmgKey(DmgEnum.DmgRecv, dmgType)] += dmg;
                     BattleDmg[GetDmgKey(DmgEnum.DmgRecv, dmgType)] += dmg;
 
-                    var basisKey = GetDmgBasisType(e);
+                    var basisKey = GetDmgBasisType(e?.hitData);
                     GameDmg[GetDmgKey(DmgEnum.DmgRecv, basisKey)] += dmg;
                     BattleDmg[GetDmgKey(DmgEnum.DmgRecv, basisKey)] += dmg;
                 }
