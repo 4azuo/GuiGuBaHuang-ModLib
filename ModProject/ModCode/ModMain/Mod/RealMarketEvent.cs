@@ -124,8 +124,8 @@ namespace MOD_nE7UL2.Mod
                     txtWarningMsg.color = Color.red;
                     txtWarningMsg.gameObject.SetActive(false);
 
-                    uiPropSell.btnOK.onClick.m_Calls.m_RuntimeCalls.Insert(0, new InvokableCall((UnityAction)SellEventBefore));
-                    uiPropSell.btnOK.onClick.AddListener((UnityAction)SellEventAfter);
+                    uiPropSell.btnOK.onClick.m_Calls.Clear();
+                    uiPropSell.btnOK.onClick.m_Calls.m_RuntimeCalls.Insert(0, new InvokableCall((UnityAction)SellEvent));
                 }
             }
         }
@@ -149,26 +149,32 @@ namespace MOD_nE7UL2.Mod
             {
                 var budget = MapBuildPropertyEvent.GetBuildProperty(curMainTown);
                 var totalPrice = GetTotalPrice();
-                var cashback = (totalPrice * (MarketPriceRate[curMainTown.buildData.id] / 100.00f - 1.00f)).Parse<int>();
+                var cashback = (totalPrice * ((MarketPriceRate[curMainTown.buildData.id] - 100.00f) / 100.00f)).Parse<int>();
                 txtMarketST.text = $"Market: {budget} Spirit Stones";
                 txtPrice2.text = $"/{budget} Spirit Stones";
+                uiPropSell.textMoney.text = $"Owned: {g.world.playerUnit.GetUnitMoney()} Spirit Stones";
                 uiPropSell.textPrice.text = $"Total: {totalPrice + cashback} ({cashback})";
                 uiPropSell.btnOK.gameObject.SetActive(totalPrice <= budget);
                 txtWarningMsg.gameObject.SetActive(totalPrice > budget);
             }
         }
 
-        private void SellEventBefore()
+        private void SellEvent()
         {
-            __total = GetTotalPrice().Parse<int>();
-        }
+            var totalPrice = GetTotalPrice();
+            var cashback = (totalPrice * ((MarketPriceRate[curMainTown.buildData.id] - 100.00f) / 100.00f)).Parse<int>();
+            g.world.playerUnit.AddUnitMoney((totalPrice + cashback).Parse<int>());
+            MapBuildPropertyEvent.AddBuildProperty(curMainTown, -totalPrice);
 
-        private int __total;
-        private void SellEventAfter()
-        {
-            var cashback = (__total * (MarketPriceRate[curMainTown.buildData.id] / 100.00f - 1.00f)).Parse<int>();
-            g.world.playerUnit.AddUnitMoney(cashback);
-            MapBuildPropertyEvent.AddBuildProperty(curMainTown, -__total);
+            foreach (var item in uiPropSell.selectProps.allProps.ToArray())
+            {
+                g.world.playerUnit.data.unitData.propData.DelProps(item.soleID, item.propsCount);
+                uiPropSell.selectProps.allProps.Remove(item);
+            }
+
+            uiPropSell.UpdateHasList();
+            uiPropSell.UpdateSellList();
+            uiPropSell.UpdateTitle();
         }
 
         private long GetTotalPrice()

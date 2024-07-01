@@ -222,7 +222,8 @@ public static class UnitHelper
     public static void AddUnitMoney(this WorldUnitBase wunit, int addCount)
     {
         wunit.AddUnitProp(10001, addCount);
-        g.world.playerUnit.data.RewardPropMoney(addCount);
+        if (wunit.GetUnitMoney() <= 0)
+            g.world.playerUnit.data.RewardPropMoney(int.MinValue);
     }
 
     public static void SetUnitMoney(this WorldUnitBase wunit, int setCount)
