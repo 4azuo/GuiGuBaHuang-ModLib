@@ -46,32 +46,32 @@ namespace MOD_nE7UL2.Mod
             })),
 
             //physic
-            MultiValue.Create(UnitPropertyEnum.BasisBlade, 1.050, 120, 1000, new Func<BattleRewardEvent, string, bool>((sender, limitKey) =>
+            MultiValue.Create(UnitPropertyEnum.BasisBlade, 1.050, 125, 1100, new Func<BattleRewardEvent, string, bool>((sender, limitKey) =>
             {
                 return sender.GetDmg(DmgSaveEnum.Local, GetDmgKey(DmgEnum.DmgDealt, DmgTypeEnum.Blade)) +
                 sender.GetDmg(DmgSaveEnum.Local, GetDmgKey(DmgEnum.DmgRecv, DmgTypeEnum.Blade)) > sender.TraningValues[limitKey];
             })),
-            MultiValue.Create(UnitPropertyEnum.BasisSpear, 1.050, 120, 1000, new Func<BattleRewardEvent, string, bool>((sender, limitKey) =>
+            MultiValue.Create(UnitPropertyEnum.BasisSpear, 1.050, 125, 1100, new Func<BattleRewardEvent, string, bool>((sender, limitKey) =>
             {
                 return sender.GetDmg(DmgSaveEnum.Local, GetDmgKey(DmgEnum.DmgDealt, DmgTypeEnum.Spear)) +
                 sender.GetDmg(DmgSaveEnum.Local, GetDmgKey(DmgEnum.DmgRecv, DmgTypeEnum.Spear)) > sender.TraningValues[limitKey];
             })),
-            MultiValue.Create(UnitPropertyEnum.BasisSword, 1.050, 120, 1000, new Func<BattleRewardEvent, string, bool>((sender, limitKey) =>
+            MultiValue.Create(UnitPropertyEnum.BasisSword, 1.050, 125, 1100, new Func<BattleRewardEvent, string, bool>((sender, limitKey) =>
             {
                 return sender.GetDmg(DmgSaveEnum.Local, GetDmgKey(DmgEnum.DmgDealt, DmgTypeEnum.Sword)) +
                 sender.GetDmg(DmgSaveEnum.Local, GetDmgKey(DmgEnum.DmgRecv, DmgTypeEnum.Sword)) > sender.TraningValues[limitKey];
             })),
-            MultiValue.Create(UnitPropertyEnum.BasisFist, 1.050, 120, 1000, new Func<BattleRewardEvent, string, bool>((sender, limitKey) =>
+            MultiValue.Create(UnitPropertyEnum.BasisFist, 1.050, 125, 1100, new Func<BattleRewardEvent, string, bool>((sender, limitKey) =>
             {
                 return sender.GetDmg(DmgSaveEnum.Local, GetDmgKey(DmgEnum.DmgDealt, DmgTypeEnum.Fist)) +
                 sender.GetDmg(DmgSaveEnum.Local, GetDmgKey(DmgEnum.DmgRecv, DmgTypeEnum.Fist)) > sender.TraningValues[limitKey];
             })),
-            MultiValue.Create(UnitPropertyEnum.BasisPalm, 1.050, 120, 1000, new Func<BattleRewardEvent, string, bool>((sender, limitKey) =>
+            MultiValue.Create(UnitPropertyEnum.BasisPalm, 1.050, 125, 1100, new Func<BattleRewardEvent, string, bool>((sender, limitKey) =>
             {
                 return sender.GetDmg(DmgSaveEnum.Local, GetDmgKey(DmgEnum.DmgDealt, DmgTypeEnum.Palm)) +
                 sender.GetDmg(DmgSaveEnum.Local, GetDmgKey(DmgEnum.DmgRecv, DmgTypeEnum.Palm)) > sender.TraningValues[limitKey];
             })),
-            MultiValue.Create(UnitPropertyEnum.BasisFinger, 1.050, 120, 1000, new Func<BattleRewardEvent, string, bool>((sender, limitKey) =>
+            MultiValue.Create(UnitPropertyEnum.BasisFinger, 1.050, 125, 1100, new Func<BattleRewardEvent, string, bool>((sender, limitKey) =>
             {
                 return sender.GetDmg(DmgSaveEnum.Local, GetDmgKey(DmgEnum.DmgDealt, DmgTypeEnum.Finger)) +
                 sender.GetDmg(DmgSaveEnum.Local, GetDmgKey(DmgEnum.DmgRecv, DmgTypeEnum.Finger)) > sender.TraningValues[limitKey];
@@ -110,32 +110,32 @@ namespace MOD_nE7UL2.Mod
             })),
 
             //magic
-            MultiValue.Create(UnitPropertyEnum.BasisFire, 1.049, 120, 1000, new Func<BattleRewardEvent, string, bool>((sender, limitKey) =>
+            MultiValue.Create(UnitPropertyEnum.BasisFire, 1.049, 125, 1100, new Func<BattleRewardEvent, string, bool>((sender, limitKey) =>
             {
                 return sender.GetDmg(DmgSaveEnum.Local, GetDmgKey(DmgEnum.DmgDealt, DmgTypeEnum.Fire)) +
                 sender.GetDmg(DmgSaveEnum.Local, GetDmgKey(DmgEnum.DmgRecv, DmgTypeEnum.Fire)) > sender.TraningValues[limitKey];
             })),
-            MultiValue.Create(UnitPropertyEnum.BasisFroze, 1.049, 120, 1000, new Func<BattleRewardEvent, string, bool>((sender, limitKey) =>
+            MultiValue.Create(UnitPropertyEnum.BasisFroze, 1.049, 125, 1100, new Func<BattleRewardEvent, string, bool>((sender, limitKey) =>
             {
                 return sender.GetDmg(DmgSaveEnum.Local, GetDmgKey(DmgEnum.DmgDealt, DmgTypeEnum.Frozen)) +
                 sender.GetDmg(DmgSaveEnum.Local, GetDmgKey(DmgEnum.DmgRecv, DmgTypeEnum.Frozen)) > sender.TraningValues[limitKey];
             })),
-            MultiValue.Create(UnitPropertyEnum.BasisThunder, 1.049, 120, 1000, new Func<BattleRewardEvent, string, bool>((sender, limitKey) =>
+            MultiValue.Create(UnitPropertyEnum.BasisThunder, 1.049, 125, 1100, new Func<BattleRewardEvent, string, bool>((sender, limitKey) =>
             {
                 return sender.GetDmg(DmgSaveEnum.Local, GetDmgKey(DmgEnum.DmgDealt, DmgTypeEnum.Thunder)) +
                 sender.GetDmg(DmgSaveEnum.Local, GetDmgKey(DmgEnum.DmgRecv, DmgTypeEnum.Thunder)) > sender.TraningValues[limitKey];
             })),
-            MultiValue.Create(UnitPropertyEnum.BasisWind, 1.049, 120, 1000, new Func<BattleRewardEvent, string, bool>((sender, limitKey) =>
+            MultiValue.Create(UnitPropertyEnum.BasisWind, 1.049, 125, 1100, new Func<BattleRewardEvent, string, bool>((sender, limitKey) =>
             {
                 return sender.GetDmg(DmgSaveEnum.Local, GetDmgKey(DmgEnum.DmgDealt, DmgTypeEnum.Wind)) +
                 sender.GetDmg(DmgSaveEnum.Local, GetDmgKey(DmgEnum.DmgRecv, DmgTypeEnum.Wind)) > sender.TraningValues[limitKey];
             })),
-            MultiValue.Create(UnitPropertyEnum.BasisEarth, 1.049, 120, 1000, new Func<BattleRewardEvent, string, bool>((sender, limitKey) =>
+            MultiValue.Create(UnitPropertyEnum.BasisEarth, 1.049, 125, 1100, new Func<BattleRewardEvent, string, bool>((sender, limitKey) =>
             {
                 return sender.GetDmg(DmgSaveEnum.Local, GetDmgKey(DmgEnum.DmgDealt, DmgTypeEnum.Earth)) +
                 sender.GetDmg(DmgSaveEnum.Local, GetDmgKey(DmgEnum.DmgRecv, DmgTypeEnum.Earth)) > sender.TraningValues[limitKey];
             })),
-            MultiValue.Create(UnitPropertyEnum.BasisWood, 1.049, 120, 1000, new Func<BattleRewardEvent, string, bool>((sender, limitKey) =>
+            MultiValue.Create(UnitPropertyEnum.BasisWood, 1.049, 125, 1100, new Func<BattleRewardEvent, string, bool>((sender, limitKey) =>
             {
                 return sender.GetDmg(DmgSaveEnum.Local, GetDmgKey(DmgEnum.DmgDealt, DmgTypeEnum.Wood)) +
                 sender.GetDmg(DmgSaveEnum.Local, GetDmgKey(DmgEnum.DmgRecv, DmgTypeEnum.Wood)) > sender.TraningValues[limitKey];
