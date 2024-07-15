@@ -4,7 +4,9 @@ using MOD_nE7UL2.Const;
 using ModLib.Enum;
 using ModLib.Mod;
 using System;
+using System.Linq;
 using UnityEngine;
+using static DataMap;
 
 namespace MOD_nE7UL2.Mod
 {
@@ -26,6 +28,15 @@ namespace MOD_nE7UL2.Mod
             var humanData = e?.data?.TryCast<UnitDataHuman>();
             if (humanData?.worldUnitData?.unit != null)
             {
+                var artifact = humanData.worldUnitData.unit.data.unitData.propData.GetEquipProps().ToArray().FirstOrDefault(x => x.propsItem.IsArtifact() != null);
+                if (artifact != null)
+                {
+                    var artifactInfo = artifact.propsItem.IsArtifact();
+                    if (artifactInfo.durable > 0)
+                    {
+                        humanData.attack.baseValue += Math.Sqrt(artifactInfo.atk).Parse<int>();
+                    }
+                }
                 humanData.defense.baseValue += humanData.worldUnitData.unit.GetProperty<int>(UnitPropertyEnum.BasisEarth) / 100;
             }
         }

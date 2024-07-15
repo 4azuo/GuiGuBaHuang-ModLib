@@ -35,12 +35,12 @@ namespace MOD_nE7UL2
             //balance artifact attribute
             foreach (var item in g.conf.artifactShape._allConfList)
             {
-                item.durable *= 10;
-                item.spCost *= 5;
+                item.durable *= 8;
+                item.spCost *= 6;
 
-                item.hp *= 3;
-                item.atk *= 2;
-                item.def *= 2;
+                item.hp *= 5;
+                item.atk *= 3;
+                item.def *= 3;
             }
             //skillmastery need more exp
             foreach (var item in g.conf.battleSkillMastery._allConfList)
@@ -58,20 +58,21 @@ namespace MOD_nE7UL2
             }
             //skill need more mpCost
             //skill cooldown faster
+            //skill need more requirements
             foreach (var item in g.conf.battleSkillValue._allConfList)
             {
                 if (item.key.EndsWith("_mpCost"))
                 {
-                    item.value1 = (item.value1.Parse<float>() * 1.5f).Parse<int>().ToString();
-                    item.value2 = (item.value2.Parse<float>() * 1.6f).Parse<int>().ToString();
-                    item.value3 = (item.value3.Parse<float>() * 1.8f).Parse<int>().ToString();
-                    item.value4 = (item.value4.Parse<float>() * 2.0f).Parse<int>().ToString();
-                    item.value5 = (item.value5.Parse<float>() * 2.3f).Parse<int>().ToString();
-                    item.value6 = (item.value6.Parse<float>() * 2.6f).Parse<int>().ToString();
-                    item.value7 = (item.value7.Parse<float>() * 3.0f).Parse<int>().ToString();
-                    item.value8 = (item.value8.Parse<float>() * 3.5f).Parse<int>().ToString();
-                    item.value9 = (item.value9.Parse<float>() * 4.0f).Parse<int>().ToString();
-                    item.value10 = (item.value10.Parse<float>() * 5.0f).Parse<int>().ToString();
+                    item.value1 = (item.value1.Parse<float>() * 1.6f).Parse<int>().ToString();
+                    item.value2 = (item.value2.Parse<float>() * 1.7f).Parse<int>().ToString();
+                    item.value3 = (item.value3.Parse<float>() * 1.9f).Parse<int>().ToString();
+                    item.value4 = (item.value4.Parse<float>() * 2.2f).Parse<int>().ToString();
+                    item.value5 = (item.value5.Parse<float>() * 2.5f).Parse<int>().ToString();
+                    item.value6 = (item.value6.Parse<float>() * 2.9f).Parse<int>().ToString();
+                    item.value7 = (item.value7.Parse<float>() * 3.3f).Parse<int>().ToString();
+                    item.value8 = (item.value8.Parse<float>() * 3.8f).Parse<int>().ToString();
+                    item.value9 = (item.value9.Parse<float>() * 4.5f).Parse<int>().ToString();
+                    item.value10 = (item.value10.Parse<float>() * 6.0f).Parse<int>().ToString();
                 }
                 else if (item.key.EndsWith("_cd"))
                 {
@@ -88,42 +89,42 @@ namespace MOD_nE7UL2
                 }
                 else if (item.key.StartsWith("&zizhiBase_"))
                 {
-                    item.value1 = (item.value1.Parse<float>() * 1.00f).Parse<int>().ToString();
-                    item.value2 = (item.value2.Parse<float>() * 1.20f).Parse<int>().ToString();
-                    item.value3 = (item.value3.Parse<float>() * 2.00f).Parse<int>().ToString();
-                    item.value4 = (item.value4.Parse<float>() * 2.40f).Parse<int>().ToString();
-                    item.value5 = (item.value5.Parse<float>() * 4.00f).Parse<int>().ToString();
-                    item.value6 = (item.value6.Parse<float>() * 4.60f).Parse<int>().ToString();
-                    item.value7 = (item.value7.Parse<float>() * 8.00f).Parse<int>().ToString();
-                    item.value8 = (item.value8.Parse<float>() * 9.00f).Parse<int>().ToString();
-                    item.value9 = (item.value9.Parse<float>() * 13.00f).Parse<int>().ToString();
-                    item.value10 = (item.value10.Parse<float>() * 16.00f).Parse<int>().ToString();
+                    item.value1 = (item.value1.Parse<float>() * 1.10f).Parse<int>().ToString();
+                    item.value2 = (item.value2.Parse<float>() * 1.40f).Parse<int>().ToString();
+                    item.value3 = (item.value3.Parse<float>() * 2.50f).Parse<int>().ToString();
+                    item.value4 = (item.value4.Parse<float>() * 3.00f).Parse<int>().ToString();
+                    item.value5 = (item.value5.Parse<float>() * 5.00f).Parse<int>().ToString();
+                    item.value6 = (item.value6.Parse<float>() * 5.75f).Parse<int>().ToString();
+                    item.value7 = (item.value7.Parse<float>() * 10.00f).Parse<int>().ToString();
+                    item.value8 = (item.value8.Parse<float>() * 12.00f).Parse<int>().ToString();
+                    item.value9 = (item.value9.Parse<float>() * 18.00f).Parse<int>().ToString();
+                    item.value10 = (item.value10.Parse<float>() * 20.00f).Parse<int>().ToString();
                 }
                 else if (item.key.StartsWith("&zizhiAdd_"))
                 {
-                    item.value1 = (item.value1.Parse<float>() * 1.00f).Parse<int>().ToString();
-                    item.value2 = (item.value2.Parse<float>() * 1.05f).Parse<int>().ToString();
-                    item.value3 = (item.value3.Parse<float>() * 1.10f).Parse<int>().ToString();
-                    item.value4 = (item.value4.Parse<float>() * 1.15f).Parse<int>().ToString();
-                    item.value5 = (item.value5.Parse<float>() * 1.25f).Parse<int>().ToString();
-                    item.value6 = (item.value6.Parse<float>() * 1.35f).Parse<int>().ToString();
-                    item.value7 = (item.value7.Parse<float>() * 1.45f).Parse<int>().ToString();
-                    item.value8 = (item.value8.Parse<float>() * 1.60f).Parse<int>().ToString();
-                    item.value9 = (item.value9.Parse<float>() * 1.80f).Parse<int>().ToString();
-                    item.value10 = (item.value10.Parse<float>() * 2.00f).Parse<int>().ToString();
+                    item.value1 = (item.value1.Parse<float>() * 1.10f).Parse<int>().ToString();
+                    item.value2 = (item.value2.Parse<float>() * 1.15f).Parse<int>().ToString();
+                    item.value3 = (item.value3.Parse<float>() * 1.20f).Parse<int>().ToString();
+                    item.value4 = (item.value4.Parse<float>() * 1.25f).Parse<int>().ToString();
+                    item.value5 = (item.value5.Parse<float>() * 1.35f).Parse<int>().ToString();
+                    item.value6 = (item.value6.Parse<float>() * 1.45f).Parse<int>().ToString();
+                    item.value7 = (item.value7.Parse<float>() * 1.65f).Parse<int>().ToString();
+                    item.value8 = (item.value8.Parse<float>() * 1.90f).Parse<int>().ToString();
+                    item.value9 = (item.value9.Parse<float>() * 2.20f).Parse<int>().ToString();
+                    item.value10 = (item.value10.Parse<float>() * 2.50f).Parse<int>().ToString();
                 }
                 else if (item.key.StartsWith("&daodianBase_"))
                 {
-                    item.value1 = (item.value1.Parse<float>() * 1.00f).Parse<int>().ToString();
-                    item.value2 = (item.value2.Parse<float>() * 1.10f).Parse<int>().ToString();
-                    item.value3 = (item.value3.Parse<float>() * 1.20f).Parse<int>().ToString();
-                    item.value4 = (item.value4.Parse<float>() * 1.30f).Parse<int>().ToString();
-                    item.value5 = (item.value5.Parse<float>() * 1.40f).Parse<int>().ToString();
-                    item.value6 = (item.value6.Parse<float>() * 1.50f).Parse<int>().ToString();
-                    item.value7 = (item.value7.Parse<float>() * 1.60f).Parse<int>().ToString();
-                    item.value8 = (item.value8.Parse<float>() * 1.70f).Parse<int>().ToString();
-                    item.value9 = (item.value9.Parse<float>() * 1.80f).Parse<int>().ToString();
-                    item.value10 = (item.value10.Parse<float>() * 2.00f).Parse<int>().ToString();
+                    item.value1 = (item.value1.Parse<float>() * 1.10f).Parse<int>().ToString();
+                    item.value2 = (item.value2.Parse<float>() * 1.20f).Parse<int>().ToString();
+                    item.value3 = (item.value3.Parse<float>() * 1.30f).Parse<int>().ToString();
+                    item.value4 = (item.value4.Parse<float>() * 1.40f).Parse<int>().ToString();
+                    item.value5 = (item.value5.Parse<float>() * 1.50f).Parse<int>().ToString();
+                    item.value6 = (item.value6.Parse<float>() * 1.65f).Parse<int>().ToString();
+                    item.value7 = (item.value7.Parse<float>() * 1.80f).Parse<int>().ToString();
+                    item.value8 = (item.value8.Parse<float>() * 1.95f).Parse<int>().ToString();
+                    item.value9 = (item.value9.Parse<float>() * 2.10f).Parse<int>().ToString();
+                    item.value10 = (item.value10.Parse<float>() * 2.40f).Parse<int>().ToString();
                 }
                 else if (item.key.StartsWith("&daodianAdd_"))
                 {
