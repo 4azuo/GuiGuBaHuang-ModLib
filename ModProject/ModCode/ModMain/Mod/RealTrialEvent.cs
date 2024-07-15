@@ -32,7 +32,9 @@ namespace MOD_nE7UL2.Mod
             var data = e?.data;
             if (IsInTrial && data != null)
             {
-                data.attack.baseValue = (g.world.playerUnit.GetProperty<int>(UnitPropertyEnum.Attack) * (1.00f + g.data.dataWorld.data.gameLevel.Parse<int>() * POWER_UP_ON_GAME_LEVEL)).Parse<int>();
+                var baseDmg = (g.world.playerUnit.GetProperty<int>(UnitPropertyEnum.Attack) * (1.00f + g.data.dataWorld.data.gameLevel.Parse<int>() * POWER_UP_ON_GAME_LEVEL)).Parse<int>();
+                baseDmg -= (g.world.playerUnit.GetProperty<int>(UnitPropertyEnum.BasisThunder) / 10);
+                data.attack.baseValue = baseDmg;
             }
         }
 

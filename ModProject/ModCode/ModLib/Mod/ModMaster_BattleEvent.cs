@@ -88,13 +88,13 @@ namespace ModLib.Mod
 
         public virtual void _OnBattleStart(ETypeData e)
         {
-            BattleCheckList.Clear();
             CallEvents<ETypeData>("OnBattleStart", e, true, false);
         }
 
         public virtual void _OnBattleEnd(ETypeData e)
         {
             CallEvents<BattleEnd>("OnBattleEnd", e, true, false);
+            BattleCheckList.Clear();
         }
 
         public virtual void _OnBattleEndFront(ETypeData e)

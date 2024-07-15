@@ -4,8 +4,8 @@
 		"__select_options": "Hide/Show",
 		"ButtonConfigs": {
 			"GameMemu": {
-				"G:btnSave": "Hide",
-				"G:btnReloadCache": "Hide"
+				"G:btnSave": "Show",
+				"G:btnReloadCache": "Show"
 			},
 			"MartialPropInfo": {
 				"G:btnPreview": "Hide"
@@ -96,14 +96,14 @@
 	},
 	"MonstStrongerConfigs": {
 		"GrowRate": {
-			"Common": 0.00075,
-			"Elite": 0.00055,
-			"BOSS": 0.00052
+			"Common": 0.001,
+			"Elite": 0.001,
+			"BOSS": 0.001
 		},
 		"KillGrowRate": {
-			"Common": 0.000001,
-			"Elite": 0.00004,
-			"BOSS": 0.00010
+			"Common": 0.000005,
+			"Elite": 0.00010,
+			"BOSS": 0.00020
 		}
 	},
 	"NpcUpgradeSkillConfigs": {

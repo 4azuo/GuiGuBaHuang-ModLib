@@ -1,6 +1,5 @@
 ﻿using EBattleTypeData;
 using MOD_nE7UL2.Const;
-using MOD_nE7UL2.Object;
 using ModLib.Mod;
 using System.Collections.Generic;
 using UnityEngine;
@@ -56,7 +55,8 @@ namespace MOD_nE7UL2.Mod
             {
                 var ratio = (Counter * GROW_RATIO[monstData.monstType]) + (KillCounter[monstData.monstType] * KILL_GROW_RATIO[monstData.monstType]);
                 monstData.attack.baseValue += (int)(monstData.attack.baseValue * ratio);
-                monstData.maxHP.baseValue += (int)(monstData.attack.baseValue * ratio);
+                monstData.maxHP.baseValue += (int)(monstData.maxHP.baseValue * ratio);
+                monstData.hp = monstData.maxHP.baseValue;
             }
         }
     }
