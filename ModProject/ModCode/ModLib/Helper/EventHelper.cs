@@ -29,6 +29,10 @@ public static class EventHelper
             var condAttr = method.GetCustomAttribute<EventConditionAttribute>();
             if (condAttr != null)
             {
+                if (condAttr.IsInGame && !GameHelper.IsInGame())
+                    return;
+                if (condAttr.IsInBattle && !GameHelper.IsInBattlle())
+                    return;
                 if (
                     (condAttr.WithLoadState == EvCondLoadEnum.Loaded && ev.IsLoading()) || 
                     (condAttr.WithLoadState == EvCondLoadEnum.Loading && !ev.IsLoading())
