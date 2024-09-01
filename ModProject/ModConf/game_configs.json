@@ -14,7 +14,7 @@
 	},
 	"ContributionExchangeConfigs": {
 		"__formula": "item-sell-value / {ExchangeRatio}",
-		"ExchangeRatio": 50
+		"ExchangeRatio": 40
 	},
 	"MissionDeclareConfigs": {
 		"FeeRate": 0.2,
@@ -35,8 +35,8 @@
 			98.0,
 			96.0,
 			94.0,
-			90.0,
-			85.0
+			92.0,
+			90.0
 		]
 	},
 	"BattleManashieldConfigs": {
@@ -96,14 +96,14 @@
 	},
 	"MonstStrongerConfigs": {
 		"GrowRate": {
-			"Common": 0.001,
-			"Elite": 0.001,
-			"BOSS": 0.001
+			"Common": 0.0005,
+			"Elite": 0.0004,
+			"BOSS": 0.0003
 		},
 		"KillGrowRate": {
-			"Common": 0.000005,
-			"Elite": 0.00010,
-			"BOSS": 0.00020
+			"Common": 0.000003,
+			"Elite": 0.00005,
+			"BOSS": 0.00010
 		}
 	},
 	"NpcUpgradeSkillConfigs": {
