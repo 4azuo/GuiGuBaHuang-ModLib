@@ -101,7 +101,7 @@ namespace MOD_nE7UL2.Mod
                 if (monstData != null)
                 {
                     if (monstData.hp < monstData.maxHP.baseValue)
-                        monstData.hp += Math.Sqrt(Math.Sqrt(monstData.maxHP.value)).Parse<int>();
+                        monstData.hp += Math.Sqrt(Math.Sqrt(monstData.maxHP.value / 2)).Parse<int>();
                 }
 
                 var humanData = unit?.data?.TryCast<UnitDataHuman>();
