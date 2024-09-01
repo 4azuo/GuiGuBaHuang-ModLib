@@ -6,7 +6,6 @@ using ModLib.Mod;
 using System;
 using System.Linq;
 using UnityEngine;
-using static DataMap;
 
 namespace MOD_nE7UL2.Mod
 {
@@ -45,6 +44,8 @@ namespace MOD_nE7UL2.Mod
         {
             var attackUnitData = e?.hitData?.attackUnit?.data?.TryCast<UnitDataHuman>();
             var hitUnitData = e?.hitUnit?.data?.TryCast<UnitDataHuman>();
+            var dType = GetDmgBasisType(e.hitData);
+            var pEnum = GetDmgPropertyEnum(dType);
 
             //evasion
             if (hitUnitData?.worldUnitData?.unit != null)
@@ -60,16 +61,22 @@ namespace MOD_nE7UL2.Mod
             //critical
             if (attackUnitData?.worldUnitData?.unit != null && !e.hitData.isCrit)
             {
-                var basisFire = hitUnitData.worldUnitData.unit.GetProperty<int>(UnitPropertyEnum.BasisFire);
+                var basisFire = attackUnitData.worldUnitData.unit.GetProperty<int>(UnitPropertyEnum.BasisFire);
                 if (ValueHelper.IsBetween(CommonTool.Random(0.00f, 100.00f), 0.00f, Math.Sqrt(basisFire)))
                 {
                     e.hitData.isCrit = true;
                 }
             }
 
-            var pEnum = GetDmgPropertyEnum(GetDmgBasisType(e.hitData));
+            //add dmg (mp)
+            if (attackUnitData?.worldUnitData?.unit != null && IsBasisMagic(dType))
+            {
+                var atk = attackUnitData.worldUnitData.unit.GetProperty<int>(UnitPropertyEnum.Attack);
+                var r = (attackUnitData.mp.Parse<float>() / attackUnitData.maxMP.Parse<float>()) / 5;
+                e.dynV.baseValue += (atk * r).Parse<int>();
+            }
 
-            //add dmg
+            //add dmg (basis)
             if (attackUnitData?.worldUnitData?.unit != null && pEnum != null)
             {
                 var atk = attackUnitData.worldUnitData.unit.GetProperty<int>(UnitPropertyEnum.Attack);
@@ -77,16 +84,13 @@ namespace MOD_nE7UL2.Mod
                 e.dynV.baseValue += atk * addDmg / 100;
             }
 
-            //block dmg
+            //block dmg (basis)
             if (hitUnitData?.worldUnitData?.unit != null && pEnum != null)
             {
                 var def = hitUnitData.worldUnitData.unit.GetProperty<int>(UnitPropertyEnum.Defense);
                 var subDmg = hitUnitData.worldUnitData.unit.GetProperty<int>(pEnum);
                 e.dynV.baseValue -= def * subDmg / 100;
             }
-
-            if (e.dynV.baseValue <= 0)
-                e.dynV.baseValue = 1;
         }
 
         [EventCondition(IsInBattle = true)]

@@ -5,6 +5,7 @@
         public const string QI_CUL_EVENT = "QiCulEvent";
         public const string UNIT_TYPE_EVENT = "UnitTypeEvent";
         public const string BATTLE_REWARD_EVENT = "BattleRewardEvent";
+        public const string BATTLE_REWARD_EVENT_V2 = "BattleRewardEventV2";
         public const string NPC_UPGRADE_SKILL_EVENT = "NpcUpgradeSkillEvent";
         public const string MONST_STRONGER_EVENT = "MostStrongerEvent";
         public const string NPC_AUTO_UP_GRADE_EVENT = "NpcAutoUpGradeEvent";
