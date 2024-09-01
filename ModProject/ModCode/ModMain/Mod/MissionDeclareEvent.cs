@@ -9,8 +9,6 @@ using System.Linq;
 using UnityEngine.UI;
 using MOD_nE7UL2.Object;
 using System.Text;
-using System.Web.WebPages;
-using System.Windows.Interop;
 
 namespace MOD_nE7UL2.Mod
 {

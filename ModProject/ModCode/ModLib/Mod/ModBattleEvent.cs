@@ -84,6 +84,22 @@ namespace ModLib.Mod
             }
             return DmgTypeEnum.Damage;
         }
+
+        public static bool IsBasisDmg(DmgTypeEnum type)
+        {
+            return (type >= DmgTypeEnum.Blade && type <= DmgTypeEnum.Finger) ||
+                (type >= DmgTypeEnum.Fire && type <= DmgTypeEnum.Wood);
+        }
+
+        public static bool IsBasisPhysic(DmgTypeEnum type)
+        {
+            return (type >= DmgTypeEnum.Blade && type <= DmgTypeEnum.Finger);
+        }
+
+        public static bool IsBasisMagic(DmgTypeEnum type)
+        {
+            return (type >= DmgTypeEnum.Fire && type <= DmgTypeEnum.Wood);
+        }
         #endregion
 
         #region DmgInfo
@@ -113,6 +129,10 @@ namespace ModLib.Mod
 
         [JsonIgnore]
         public bool IsPlayerDie { get; set; }
+        [JsonIgnore]
+        public UnitCtrlBase AttackingUnit { get; set; }
+        [JsonIgnore]
+        public UnitCtrlBase HitUnit { get; set; }
 
         public override void OnLoadGame()
         {
@@ -157,6 +177,9 @@ namespace ModLib.Mod
 
         public override void OnBattleUnitHit(UnitHit e)
         {
+            AttackingUnit = e?.hitData?.attackUnit;
+            HitUnit = e?.hitUnit;
+
             var dmg = Math.Abs(e.hitData.hitValue);
             var attackUnitData = e?.hitData?.attackUnit?.data?.TryCast<UnitDataHuman>();
             var hitUnitData = e?.hitUnit?.data?.TryCast<UnitDataHuman>();

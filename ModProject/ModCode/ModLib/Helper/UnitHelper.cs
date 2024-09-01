@@ -285,4 +285,24 @@ public static class UnitHelper
     {
         return wunit.GetUnitProps(propID).Where(x => x.propsID == propID).Sum(x => x.propsCount);
     }
+
+    public static int GetBasisPhysicSum(this WorldUnitBase wunit)
+    {
+        return wunit.GetProperty<int>(UnitPropertyEnum.BasisPalm) +
+            wunit.GetProperty<int>(UnitPropertyEnum.BasisBlade) +
+            wunit.GetProperty<int>(UnitPropertyEnum.BasisFist) +
+            wunit.GetProperty<int>(UnitPropertyEnum.BasisFinger) +
+            wunit.GetProperty<int>(UnitPropertyEnum.BasisSword) +
+            wunit.GetProperty<int>(UnitPropertyEnum.BasisSpear);
+    }
+
+    public static int GetBasisMagicSum(this WorldUnitBase wunit)
+    {
+        return wunit.GetProperty<int>(UnitPropertyEnum.BasisFroze) +
+            wunit.GetProperty<int>(UnitPropertyEnum.BasisFire) +
+            wunit.GetProperty<int>(UnitPropertyEnum.BasisWood) +
+            wunit.GetProperty<int>(UnitPropertyEnum.BasisThunder) +
+            wunit.GetProperty<int>(UnitPropertyEnum.BasisWind) +
+            wunit.GetProperty<int>(UnitPropertyEnum.BasisEarth);
+    }
 }

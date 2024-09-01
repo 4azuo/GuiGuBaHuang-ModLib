@@ -1,10 +1,6 @@
 ﻿using MOD_nE7UL2.Const;
-using MOD_nE7UL2.Enum;
-using ModLib.Enum;
 using ModLib.Mod;
 using System;
-using System.Linq;
-using System.Numerics;
 using UnityEngine;
 
 namespace MOD_nE7UL2.Mod
