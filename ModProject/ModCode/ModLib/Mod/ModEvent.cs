@@ -83,6 +83,7 @@ namespace ModLib.Mod
         public virtual void OnPlayerRoleUpGradeBig(ETypeData e) { }
         public virtual void OnUpGradeAndCloseFateFeatureUI(ETypeData e) { }
         public virtual void OnUseHobbyProps(ETypeData e) { }
+        //public virtual void OnFortuitousTrigger(ETypeData e) { }
         #endregion
 
         #region EGameType
