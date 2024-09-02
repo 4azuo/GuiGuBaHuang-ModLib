@@ -108,11 +108,11 @@
 	},
 	"NpcUpgradeSkillConfigs": {
 		"UpgradeRates": {
-			"SkillLeft": 8.0,
-			"SkillRight": 8.0,
-			"Step": 14.0,
-			"Ultimate": 10.0,
-			"Ability": 20.0
+			"SkillLeft": 7.0,
+			"SkillRight": 7.0,
+			"Step": 12.0,
+			"Ultimate": 8.0,
+			"Ability": 16.0
 		}
 	},
 	"BattleRewardConfigs": {

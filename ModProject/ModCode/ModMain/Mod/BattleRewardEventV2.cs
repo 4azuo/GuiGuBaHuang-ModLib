@@ -13,6 +13,8 @@ namespace MOD_nE7UL2.Mod
     [Cache(ModConst.BATTLE_REWARD_EVENT_V2)]
     public class BattleRewardEventV2 : ModBattleEvent
     {
+        private const int QI_ITEM = 484410100;
+
         private const string RATIO_KEY = "Ratio";
         private const string FACTOR_KEY = "Factor";
         private const string LIMIT_KEY = "Limit";
@@ -37,28 +39,28 @@ namespace MOD_nE7UL2.Mod
                 return sender.GetDmg(DmgSaveEnum.Global, GetDmgKey(DmgEnum.DmgDealt, DmgTypeEnum.Damage)) > sender.TraningValues[limitKey];
             }), "UpAtk"),
             MultiValue.Create("Atk3", UnitPropertyEnum.Attack, 1.080, 100, 200,
-                new Func<BattleRewardEventV2, bool>((sender) => (int)GradePhaseEnum.GetEnumByVal<GradePhaseEnum>(g.world.playerUnit.GetProperty<int>(UnitPropertyEnum.GradeID).ToString()).Grade >= 3),
+                new Func<BattleRewardEventV2, bool>((sender) => g.world.playerUnit.GetGradeLvl() >= 3),
                 new Func<BattleRewardEventV2, MultiValue, bool>((sender, prop) =>
             {
                 var limitKey = sender.GetLimitKey(prop);
                 return sender.GetDmg(DmgSaveEnum.Global, GetDmgKey(DmgEnum.DmgDealt, DmgTypeEnum.Damage)) > sender.TraningValues[limitKey];
             })),
             MultiValue.Create("Atk5",UnitPropertyEnum.Attack, 1.090, 200, 800,
-                new Func<BattleRewardEventV2, bool>((sender) => (int)GradePhaseEnum.GetEnumByVal<GradePhaseEnum>(g.world.playerUnit.GetProperty<int>(UnitPropertyEnum.GradeID).ToString()).Grade >= 5),
+                new Func<BattleRewardEventV2, bool>((sender) => g.world.playerUnit.GetGradeLvl() >= 5),
                 new Func<BattleRewardEventV2, MultiValue, bool>((sender, prop) =>
             {
                 var limitKey = sender.GetLimitKey(prop);
                 return sender.GetDmg(DmgSaveEnum.Global, GetDmgKey(DmgEnum.DmgDealt, DmgTypeEnum.Damage)) > sender.TraningValues[limitKey];
             })),
             MultiValue.Create("Atk7", UnitPropertyEnum.Attack, 1.100, 400, 3200,
-                new Func<BattleRewardEventV2, bool>((sender) => (int)GradePhaseEnum.GetEnumByVal<GradePhaseEnum>(g.world.playerUnit.GetProperty<int>(UnitPropertyEnum.GradeID).ToString()).Grade >= 7),
+                new Func<BattleRewardEventV2, bool>((sender) => g.world.playerUnit.GetGradeLvl() >= 7),
                 new Func<BattleRewardEventV2, MultiValue, bool>((sender, prop) =>
             {
                 var limitKey = sender.GetLimitKey(prop);
                 return sender.GetDmg(DmgSaveEnum.Global, GetDmgKey(DmgEnum.DmgDealt, DmgTypeEnum.Damage)) > sender.TraningValues[limitKey];
             })),
             MultiValue.Create("Atk9", UnitPropertyEnum.Attack, 1.110, 800, 12800,
-                new Func<BattleRewardEventV2, bool>((sender) => (int)GradePhaseEnum.GetEnumByVal<GradePhaseEnum>(g.world.playerUnit.GetProperty<int>(UnitPropertyEnum.GradeID).ToString()).Grade >= 9),
+                new Func<BattleRewardEventV2, bool>((sender) => g.world.playerUnit.GetGradeLvl() >= 9),
                 new Func<BattleRewardEventV2, MultiValue, bool>((sender, prop) =>
             {
                 var limitKey = sender.GetLimitKey(prop);
@@ -72,14 +74,14 @@ namespace MOD_nE7UL2.Mod
                 return sender.GetDmg(DmgSaveEnum.Global, GetDmgKey(DmgEnum.DmgRecv, DmgTypeEnum.Damage)) > sender.TraningValues[limitKey];
             }), "UpDef"),
             MultiValue.Create("Def4", UnitPropertyEnum.Defense, 1.150, 1000, 1000,
-                new Func<BattleRewardEventV2, bool>((sender) => (int)GradePhaseEnum.GetEnumByVal<GradePhaseEnum>(g.world.playerUnit.GetProperty<int>(UnitPropertyEnum.GradeID).ToString()).Grade >= 4),
+                new Func<BattleRewardEventV2, bool>((sender) => g.world.playerUnit.GetGradeLvl() >= 4),
                 new Func<BattleRewardEventV2, MultiValue, bool>((sender, prop) =>
             {
                 var limitKey = sender.GetLimitKey(prop);
                 return sender.GetDmg(DmgSaveEnum.Global, GetDmgKey(DmgEnum.DmgRecv, DmgTypeEnum.Damage)) > sender.TraningValues[limitKey];
             })),
             MultiValue.Create("Def8", UnitPropertyEnum.Defense, 1.200, 10000, 10000,
-                new Func<BattleRewardEventV2, bool>((sender) => (int)GradePhaseEnum.GetEnumByVal<GradePhaseEnum>(g.world.playerUnit.GetProperty<int>(UnitPropertyEnum.GradeID).ToString()).Grade >= 8),
+                new Func<BattleRewardEventV2, bool>((sender) => g.world.playerUnit.GetGradeLvl() >= 8),
                 new Func<BattleRewardEventV2, MultiValue, bool>((sender, prop) =>
             {
                 var limitKey = sender.GetLimitKey(prop);
@@ -518,6 +520,18 @@ namespace MOD_nE7UL2.Mod
                 }
                 else if (e.isWin)
                 {
+                    var insight = g.world.playerUnit.GetDynProperty(UnitDynPropertyEnum.Talent).value;
+                    var aBestBasis = GetDmgPropertyEnum(GetHighestDealtDmgTypeEnum());
+                    if (CommonTool.Random(0.00f, 100.00f).IsBetween(0.00f, insight / 10))
+                    {
+                        g.world.playerUnit.AddProperty<int>(aBestBasis, 1);
+                    }
+                    var bBestBasis = GetDmgPropertyEnum(GetHighestRecvDmgTypeEnum());
+                    if (CommonTool.Random(0.00f, 100.00f).IsBetween(0.00f, insight / 10))
+                    {
+                        g.world.playerUnit.AddProperty<int>(bBestBasis, 1);
+                    }
+
                     var rewardExp1 = Math.Max(localDmgDealt * ModMain.ModObj.InGameCustomSettings.BattleRewardConfigs.ExpPerDmgDealt, 1).Parse<int>();
                     var rewardExp2 = Math.Max(localDmgRecv * ModMain.ModObj.InGameCustomSettings.BattleRewardConfigs.ExpPerDmgRecv, 1).Parse<int>();
                     player.AddExp(rewardExp1 + rewardExp2);
@@ -530,14 +544,26 @@ namespace MOD_nE7UL2.Mod
         public override void OnBattleUnitDie(UnitDie e)
         {
             base.OnBattleUnitDie(e);
-            var dieUnit = e?.unit?.data?.TryCast<UnitDataHuman>();
-            if (dieUnit?.worldUnitData?.unit != null && g.world.battle.data.isRealBattle && !IsPlayerDie)
+
+            var attackUnitData = e?.hitData?.attackUnit?.data?.TryCast<UnitDataHuman>();
+            if (attackUnitData?.worldUnitData?.unit != null && attackUnitData.worldUnitData.unit.IsPlayer())
             {
-                var attackUnitData = e?.hitData?.attackUnit?.data?.TryCast<UnitDataHuman>();
-                if (attackUnitData?.worldUnitData?.unit != null && attackUnitData.worldUnitData.unit.IsPlayer())
+                var dieUnit = e?.unit?.data?.TryCast<UnitDataHuman>();
+                if (dieUnit?.worldUnitData?.unit != null && !IsPlayerDie)
                 {
-                    var drainLife = dieUnit.worldUnitData.unit.GetProperty<int>(UnitPropertyEnum.Life) / (50 + (g.game.data.dataWorld.data.gameLevel.Parse<int>() * 25));
-                    g.world.playerUnit.AddProperty<int>(UnitPropertyEnum.Life, drainLife);
+                    if (g.world.battle.data.isRealBattle)
+                    {
+                        var drainLife = dieUnit.worldUnitData.unit.GetProperty<int>(UnitPropertyEnum.Life) / (50 + (g.game.data.dataWorld.data.gameLevel.Parse<int>() * 25));
+                        g.world.playerUnit.AddProperty<int>(UnitPropertyEnum.Life, drainLife);
+                    }
+
+                    var insight = g.world.playerUnit.GetDynProperty(UnitDynPropertyEnum.Talent).value;
+                    var bBestBasis = dieUnit.worldUnitData.unit.GetBestBasis();
+                    if (CommonTool.Random(0.00f, 100.00f).IsBetween(0.00f, insight / 10) &&
+                        dieUnit.worldUnitData.unit.GetProperty<int>(bBestBasis) - g.world.playerUnit.GetProperty<int>(bBestBasis) >= 6 * g.world.playerUnit.GetGradeLvl())
+                    {
+                        g.world.playerUnit.AddProperty<int>(bBestBasis, 1);
+                    }
                 }
             }
         }

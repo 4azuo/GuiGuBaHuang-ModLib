@@ -102,10 +102,10 @@ namespace MOD_nE7UL2.Mod
                     continue;
 
                 var monstData = unit?.data?.TryCast<UnitDataMonst>();
-                if (monstData != null)
+                if (monstData != null && monstData.grade.value >= 3)
                 {
                     if (monstData.hp < monstData.maxHP.baseValue)
-                        monstData.hp += Math.Sqrt(Math.Sqrt(monstData.maxHP.value / 2)).Parse<int>();
+                        monstData.hp += Math.Sqrt(Math.Sqrt(monstData.maxHP.value / 3)).Parse<int>();
                 }
 
                 var humanData = unit?.data?.TryCast<UnitDataHuman>();

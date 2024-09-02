@@ -61,6 +61,9 @@ namespace ModLib.Mod
 
             var callUseHobbyProps = (Il2CppSystem.Action<ETypeData>)_OnUseHobbyProps;
             g.events.On(EMapType.UseHobbyProps, callUseHobbyProps);
+
+            //var callFortuitousTrigger = (Il2CppSystem.Action<ETypeData>)_OnFortuitousTrigger;
+            //g.events.On(EMapType.FortuitousTrigger, callFortuitousTrigger);
             #endregion
 
             #region EGameType

@@ -3,6 +3,7 @@ using ModLib.Enum;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace ModLib.Mod
 {
@@ -99,6 +100,48 @@ namespace ModLib.Mod
         public static bool IsBasisMagic(DmgTypeEnum type)
         {
             return (type >= DmgTypeEnum.Fire && type <= DmgTypeEnum.Wood);
+        }
+
+        public DmgTypeEnum GetHighestDealtDmgTypeEnum()
+        {
+            var basises = new Dictionary<DmgTypeEnum, long>
+            {
+                [DmgTypeEnum.Palm] = GetDmg(DmgSaveEnum.Local, GetDmgKey(DmgEnum.DmgDealt, DmgTypeEnum.Palm)),
+                [DmgTypeEnum.Blade] = GetDmg(DmgSaveEnum.Local, GetDmgKey(DmgEnum.DmgDealt, DmgTypeEnum.Blade)),
+                [DmgTypeEnum.Fist] = GetDmg(DmgSaveEnum.Local, GetDmgKey(DmgEnum.DmgDealt, DmgTypeEnum.Fist)),
+                [DmgTypeEnum.Finger] = GetDmg(DmgSaveEnum.Local, GetDmgKey(DmgEnum.DmgDealt, DmgTypeEnum.Finger)),
+                [DmgTypeEnum.Sword] = GetDmg(DmgSaveEnum.Local, GetDmgKey(DmgEnum.DmgDealt, DmgTypeEnum.Sword)),
+                [DmgTypeEnum.Spear] = GetDmg(DmgSaveEnum.Local, GetDmgKey(DmgEnum.DmgDealt, DmgTypeEnum.Spear)),
+                [DmgTypeEnum.Frozen] = GetDmg(DmgSaveEnum.Local, GetDmgKey(DmgEnum.DmgDealt, DmgTypeEnum.Frozen)),
+                [DmgTypeEnum.Fire] = GetDmg(DmgSaveEnum.Local, GetDmgKey(DmgEnum.DmgDealt, DmgTypeEnum.Fire)),
+                [DmgTypeEnum.Wood] = GetDmg(DmgSaveEnum.Local, GetDmgKey(DmgEnum.DmgDealt, DmgTypeEnum.Wood)),
+                [DmgTypeEnum.Thunder] = GetDmg(DmgSaveEnum.Local, GetDmgKey(DmgEnum.DmgDealt, DmgTypeEnum.Thunder)),
+                [DmgTypeEnum.Wind] = GetDmg(DmgSaveEnum.Local, GetDmgKey(DmgEnum.DmgDealt, DmgTypeEnum.Wind)),
+                [DmgTypeEnum.Earth] = GetDmg(DmgSaveEnum.Local, GetDmgKey(DmgEnum.DmgDealt, DmgTypeEnum.Earth))
+            };
+            var max = basises.Max(x => x.Value);
+            return basises.FirstOrDefault(x => x.Value == max).Key;
+        }
+
+        public DmgTypeEnum GetHighestRecvDmgTypeEnum()
+        {
+            var basises = new Dictionary<DmgTypeEnum, long>
+            {
+                [DmgTypeEnum.Palm] = GetDmg(DmgSaveEnum.Local, GetDmgKey(DmgEnum.DmgRecv, DmgTypeEnum.Palm)),
+                [DmgTypeEnum.Blade] = GetDmg(DmgSaveEnum.Local, GetDmgKey(DmgEnum.DmgRecv, DmgTypeEnum.Blade)),
+                [DmgTypeEnum.Fist] = GetDmg(DmgSaveEnum.Local, GetDmgKey(DmgEnum.DmgRecv, DmgTypeEnum.Fist)),
+                [DmgTypeEnum.Finger] = GetDmg(DmgSaveEnum.Local, GetDmgKey(DmgEnum.DmgRecv, DmgTypeEnum.Finger)),
+                [DmgTypeEnum.Sword] = GetDmg(DmgSaveEnum.Local, GetDmgKey(DmgEnum.DmgRecv, DmgTypeEnum.Sword)),
+                [DmgTypeEnum.Spear] = GetDmg(DmgSaveEnum.Local, GetDmgKey(DmgEnum.DmgRecv, DmgTypeEnum.Spear)),
+                [DmgTypeEnum.Frozen] = GetDmg(DmgSaveEnum.Local, GetDmgKey(DmgEnum.DmgRecv, DmgTypeEnum.Frozen)),
+                [DmgTypeEnum.Fire] = GetDmg(DmgSaveEnum.Local, GetDmgKey(DmgEnum.DmgRecv, DmgTypeEnum.Fire)),
+                [DmgTypeEnum.Wood] = GetDmg(DmgSaveEnum.Local, GetDmgKey(DmgEnum.DmgRecv, DmgTypeEnum.Wood)),
+                [DmgTypeEnum.Thunder] = GetDmg(DmgSaveEnum.Local, GetDmgKey(DmgEnum.DmgRecv, DmgTypeEnum.Thunder)),
+                [DmgTypeEnum.Wind] = GetDmg(DmgSaveEnum.Local, GetDmgKey(DmgEnum.DmgRecv, DmgTypeEnum.Wind)),
+                [DmgTypeEnum.Earth] = GetDmg(DmgSaveEnum.Local, GetDmgKey(DmgEnum.DmgRecv, DmgTypeEnum.Earth))
+            };
+            var max = basises.Max(x => x.Value);
+            return basises.FirstOrDefault(x => x.Value == max).Key;
         }
         #endregion
 

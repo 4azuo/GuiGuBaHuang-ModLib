@@ -39,10 +39,15 @@ namespace ModLib.Mod
         {
             CallEvents<ETypeData>("OnUseHobbyProps", e, true, false);
         }
-        #endregion
 
-        #region ModLib - Events
-        public virtual void OnPlayerOpenTreeVault(ETypeData e)
+        //public virtual void _OnFortuitousTrigger(ETypeData e)
+        //{
+        //    CallEvents<ETypeData>("OnFortuitousTrigger", e, true, false);
+        //}
+    #endregion
+
+    #region ModLib - Events
+    public virtual void OnPlayerOpenTreeVault(ETypeData e)
         {
             EventHelper.RunMinorEvents(e);
         }
@@ -76,6 +81,11 @@ namespace ModLib.Mod
         {
             EventHelper.RunMinorEvents(e);
         }
+
+        //public virtual void OnFortuitousTrigger(ETypeData e)
+        //{
+        //    EventHelper.RunMinorEvents(e);
+        //}
         #endregion
     }
 }
