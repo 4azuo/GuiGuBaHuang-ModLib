@@ -46,6 +46,7 @@ namespace MOD_nE7UL2.Mod
                 if (ValueHelper.IsBetween(CommonTool.Random(0.00f, 100.00f), 0.00f, Math.Min(20.00f, Math.Sqrt(basisWind))))
                 {
                     e.hitData.isEvade = true;
+                    e.dynV.baseValue = 0;
                     return;
                 }
             }
@@ -54,9 +55,10 @@ namespace MOD_nE7UL2.Mod
             if (attackUnitData?.worldUnitData?.unit != null && !e.hitData.isCrit)
             {
                 var basisFire = attackUnitData.worldUnitData.unit.GetProperty<int>(UnitPropertyEnum.BasisFire);
-                if (ValueHelper.IsBetween(CommonTool.Random(0.00f, 100.00f), 0.00f, Math.Min(20.00f, Math.Sqrt(basisFire))))
+                if (ValueHelper.IsBetween(CommonTool.Random(0.00f, 100.00f), 0.00f, Math.Min(10.00f, Math.Sqrt(basisFire))))
                 {
                     e.hitData.isCrit = true;
+                    e.dynV.baseValue = e.dynV.baseValue + (e.dynV.baseValue.Parse<float>() * (1.000f + basisFire.Parse<float>() / 1000)).Parse<int>();
                 }
             }
 
