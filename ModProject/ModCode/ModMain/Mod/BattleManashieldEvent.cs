@@ -5,7 +5,7 @@ using static MOD_nE7UL2.Object.InGameStts;
 namespace MOD_nE7UL2.Mod
 {
     [Cache(ModConst.BATTLE_MANASHIELD_EVENT)]
-    public class BattleManashieldEvent : ModEvent
+    public class BattleManashieldEvent : ModBattleEvent
     {
         public const int MANASHIELD_EFFECT_MAIN_ID = 903151120;
         public const int MANASHIELD_EFFECT_EFX_ID = 903151121;
@@ -34,6 +34,22 @@ namespace MOD_nE7UL2.Mod
                 });
                 var ms = (humanData.mp * ManashieldConfigs.ManaShieldRate1) + (humanData.maxMP.value * ManashieldConfigs.ManaShieldRate2) + (humanData.hp * (0.05f * GetBloodEnergyLevel(humanData)));
                 Effect3017.AddShield(efx, humanData.unit, MANASHIELD_EFFECT_EFX_ID, ms.Parse<int>(), humanData.maxHP.value * 2, int.MaxValue);
+            }
+        }
+
+        [EventCondition(IsInBattle = true)]
+        public override void OnTimeUpdate()
+        {
+            foreach (var unit in DungeonUnits)
+            {
+                if (!unit.isDie && unit.data.mp <= 0)
+                {
+                    var humanData = unit.data.TryCast<UnitDataHuman>();
+                    if (humanData?.unit != null && humanData?.worldUnitData?.unit != null)
+                    {
+                        Effect3017.AddShieldValue(unit, MANASHIELD_EFFECT_EFX_ID, int.MinValue);
+                    }
+                }
             }
         }
 
