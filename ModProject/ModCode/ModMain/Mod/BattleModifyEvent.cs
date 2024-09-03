@@ -43,7 +43,7 @@ namespace MOD_nE7UL2.Mod
             if (hitUnitData?.worldUnitData?.unit != null)
             {
                 var basisWind = hitUnitData.worldUnitData.unit.GetProperty<int>(UnitPropertyEnum.BasisWind);
-                if (ValueHelper.IsBetween(CommonTool.Random(0.00f, 100.00f), 0.00f, Math.Sqrt(basisWind)))
+                if (ValueHelper.IsBetween(CommonTool.Random(0.00f, 100.00f), 0.00f, Math.Min(20.00f, Math.Sqrt(basisWind))))
                 {
                     e.hitData.isEvade = true;
                     return;
@@ -54,18 +54,10 @@ namespace MOD_nE7UL2.Mod
             if (attackUnitData?.worldUnitData?.unit != null && !e.hitData.isCrit)
             {
                 var basisFire = attackUnitData.worldUnitData.unit.GetProperty<int>(UnitPropertyEnum.BasisFire);
-                if (ValueHelper.IsBetween(CommonTool.Random(0.00f, 100.00f), 0.00f, Math.Sqrt(basisFire)))
+                if (ValueHelper.IsBetween(CommonTool.Random(0.00f, 100.00f), 0.00f, Math.Min(20.00f, Math.Sqrt(basisFire))))
                 {
                     e.hitData.isCrit = true;
                 }
-            }
-
-            //add dmg (mp)
-            if (attackUnitData?.worldUnitData?.unit != null && IsBasisMagic(dType))
-            {
-                var atk = attackUnitData.worldUnitData.unit.GetProperty<int>(UnitPropertyEnum.Attack);
-                var r = (attackUnitData.mp.Parse<float>() / attackUnitData.maxMP.value.Parse<float>()) / 10;
-                e.dynV.baseValue += (atk * r).Parse<int>();
             }
 
             //add dmg (basis)
@@ -76,8 +68,56 @@ namespace MOD_nE7UL2.Mod
                 e.dynV.baseValue += atk * addDmg / 100;
             }
 
+            //add dmg (sp)
+            if (attackUnitData?.worldUnitData?.unit != null && attackUnitData.sp > 0)
+            {
+                var atk = attackUnitData.worldUnitData.unit.GetProperty<int>(UnitPropertyEnum.Attack);
+                var r = (attackUnitData.sp.Parse<float>() / attackUnitData.maxSP.value.Parse<float>()) / 10;
+                e.dynV.baseValue += (atk * r).Parse<int>();
+            }
+
+            //add dmg (dp)
+            if (attackUnitData?.worldUnitData?.unit != null && attackUnitData.dp > 0)
+            {
+                var atk = attackUnitData.worldUnitData.unit.GetProperty<int>(UnitPropertyEnum.Attack);
+                var r = (attackUnitData.dp.Parse<float>() / attackUnitData.maxDP.value.Parse<float>()) / 10;
+                e.dynV.baseValue += (atk * r).Parse<int>();
+            }
+
+            //add dmg (mp)
+            if (attackUnitData?.worldUnitData?.unit != null && attackUnitData.mp > 0 && IsBasisMagic(dType))
+            {
+                var atk = attackUnitData.worldUnitData.unit.GetProperty<int>(UnitPropertyEnum.Attack);
+                var r = (attackUnitData.mp.Parse<float>() / attackUnitData.maxMP.value.Parse<float>()) / 10;
+                e.dynV.baseValue += (atk * r).Parse<int>();
+            }
+
+            //block dmg (sp)
+            if (hitUnitData?.worldUnitData?.unit != null && hitUnitData.sp > 0 && e.dynV.baseValue > 0)
+            {
+                var def = hitUnitData.worldUnitData.unit.GetProperty<int>(UnitPropertyEnum.Defense);
+                var r = hitUnitData.sp.Parse<float>() / hitUnitData.maxSP.value.Parse<float>();
+                e.dynV.baseValue -= (def * r).Parse<int>();
+            }
+
+            //block dmg (dp)
+            if (hitUnitData?.worldUnitData?.unit != null && hitUnitData.dp > 0 && e.dynV.baseValue > 0)
+            {
+                var def = hitUnitData.worldUnitData.unit.GetProperty<int>(UnitPropertyEnum.Defense);
+                var r = hitUnitData.dp.Parse<float>() / hitUnitData.maxDP.value.Parse<float>();
+                e.dynV.baseValue -= (def * r).Parse<int>();
+            }
+
+            //block dmg (basis)
+            if (hitUnitData?.worldUnitData?.unit != null && pEnum != null && e.dynV.baseValue > 0)
+            {
+                var def = hitUnitData.worldUnitData.unit.GetProperty<int>(UnitPropertyEnum.Defense);
+                var subDmg = hitUnitData.worldUnitData.unit.GetProperty<int>(pEnum);
+                e.dynV.baseValue -= def * subDmg / 100;
+            }
+
             //block dmg (mp)
-            if (hitUnitData?.worldUnitData?.unit != null)
+            if (hitUnitData?.worldUnitData?.unit != null && hitUnitData.mp > 0 && e.dynV.baseValue > 0)
             {
                 var def = hitUnitData.worldUnitData.unit.GetProperty<int>(UnitPropertyEnum.Defense);
                 var r = hitUnitData.mp.Parse<float>() / hitUnitData.maxMP.value.Parse<float>();
@@ -85,13 +125,8 @@ namespace MOD_nE7UL2.Mod
                 hitUnitData.AddMP(-1);
             }
 
-            //block dmg (basis)
-            if (hitUnitData?.worldUnitData?.unit != null && pEnum != null)
-            {
-                var def = hitUnitData.worldUnitData.unit.GetProperty<int>(UnitPropertyEnum.Defense);
-                var subDmg = hitUnitData.worldUnitData.unit.GetProperty<int>(pEnum);
-                e.dynV.baseValue -= def * subDmg / 100;
-            }
+            if (e.dynV.baseValue <= 0)
+                e.dynV.baseValue = 1;
         }
 
         [EventCondition(IsInBattle = true)]
