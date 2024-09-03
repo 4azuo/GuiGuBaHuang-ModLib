@@ -328,6 +328,27 @@ public static class UnitHelper
         return basises.FirstOrDefault(x => x.Value == max).Key;
     }
 
+    public static UnitPropertyEnum GetWeaknessBasis(this WorldUnitBase wunit)
+    {
+        var basises = new Dictionary<UnitPropertyEnum, int>
+        {
+            [UnitPropertyEnum.BasisPalm] = wunit.GetProperty<int>(UnitPropertyEnum.BasisPalm),
+            [UnitPropertyEnum.BasisBlade] = wunit.GetProperty<int>(UnitPropertyEnum.BasisBlade),
+            [UnitPropertyEnum.BasisFist] = wunit.GetProperty<int>(UnitPropertyEnum.BasisFist),
+            [UnitPropertyEnum.BasisFinger] = wunit.GetProperty<int>(UnitPropertyEnum.BasisFinger),
+            [UnitPropertyEnum.BasisSword] = wunit.GetProperty<int>(UnitPropertyEnum.BasisSword),
+            [UnitPropertyEnum.BasisSpear] = wunit.GetProperty<int>(UnitPropertyEnum.BasisSpear),
+            [UnitPropertyEnum.BasisFroze] = wunit.GetProperty<int>(UnitPropertyEnum.BasisFroze),
+            [UnitPropertyEnum.BasisFire] = wunit.GetProperty<int>(UnitPropertyEnum.BasisFire),
+            [UnitPropertyEnum.BasisWood] = wunit.GetProperty<int>(UnitPropertyEnum.BasisWood),
+            [UnitPropertyEnum.BasisThunder] = wunit.GetProperty<int>(UnitPropertyEnum.BasisThunder),
+            [UnitPropertyEnum.BasisWind] = wunit.GetProperty<int>(UnitPropertyEnum.BasisWind),
+            [UnitPropertyEnum.BasisEarth] = wunit.GetProperty<int>(UnitPropertyEnum.BasisEarth)
+        };
+        var max = basises.Min(x => x.Value);
+        return basises.FirstOrDefault(x => x.Value == max).Key;
+    }
+
     public static int GetGradeLvl(this WorldUnitBase wunit)
     {
         return (int)GradePhaseEnum.GetEnumByVal<GradePhaseEnum>(wunit.GetProperty<int>(UnitPropertyEnum.GradeID).ToString()).Grade;

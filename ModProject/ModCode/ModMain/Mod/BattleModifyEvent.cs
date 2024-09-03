@@ -12,17 +12,10 @@ namespace MOD_nE7UL2.Mod
     [Cache(ModConst.BATTLE_MODIFY_EVENT)]
     public class BattleModifyEvent : ModBattleEvent
     {
-        private List<UnitCtrlBase> dungeonUnits = new List<UnitCtrlBase>();
-
-        public override void OnBattleEnd(BattleEnd e)
-        {
-            base.OnBattleEnd(e);
-            dungeonUnits.Clear();
-        }
 
         public override void OnIntoBattleFirst(UnitCtrlBase e)
         {
-            dungeonUnits.Add(e);
+            base.OnIntoBattleFirst(e);
 
             var humanData = e?.data?.TryCast<UnitDataHuman>();
             if (humanData?.worldUnitData?.unit != null)
@@ -72,7 +65,7 @@ namespace MOD_nE7UL2.Mod
             if (attackUnitData?.worldUnitData?.unit != null && IsBasisMagic(dType))
             {
                 var atk = attackUnitData.worldUnitData.unit.GetProperty<int>(UnitPropertyEnum.Attack);
-                var r = (attackUnitData.mp.Parse<float>() / attackUnitData.maxMP.Parse<float>()) / 5;
+                var r = (attackUnitData.mp.Parse<float>() / attackUnitData.maxMP.Parse<float>()) / 10;
                 e.dynV.baseValue += (atk * r).Parse<int>();
             }
 
@@ -82,6 +75,15 @@ namespace MOD_nE7UL2.Mod
                 var atk = attackUnitData.worldUnitData.unit.GetProperty<int>(UnitPropertyEnum.Attack);
                 var addDmg = attackUnitData.worldUnitData.unit.GetProperty<int>(pEnum);
                 e.dynV.baseValue += atk * addDmg / 100;
+            }
+
+            //block dmg (mp)
+            if (hitUnitData?.worldUnitData?.unit != null)
+            {
+                var def = hitUnitData.worldUnitData.unit.GetProperty<int>(UnitPropertyEnum.Defense);
+                var r = hitUnitData.mp.Parse<float>() / hitUnitData.maxMP.Parse<float>();
+                e.dynV.baseValue -= (def * r).Parse<int>();
+                hitUnitData.AddMP(-1);
             }
 
             //block dmg (basis)
@@ -96,7 +98,7 @@ namespace MOD_nE7UL2.Mod
         [EventCondition(IsInBattle = true)]
         public override void OnTimeUpdate()
         {
-            foreach (var unit in dungeonUnits)
+            foreach (var unit in DungeonUnits)
             {
                 if (unit.isDie)
                     continue;

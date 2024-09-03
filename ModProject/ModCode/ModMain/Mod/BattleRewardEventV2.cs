@@ -454,7 +454,8 @@ namespace MOD_nE7UL2.Mod
                             TraningValues.Add(GetLimitKey(prop), oldVersion.TraningValues[lKey]);
                         }
                     }
-                    else
+
+                    if (!TraningValues.ContainsKey(GetLimitKey(prop)))
                     {
                         TraningValues.Add(GetRatioKey(prop), prop.Values[P_RATIO].Parse<double>());
                         TraningValues.Add(GetFactorKey(prop), prop.Values[P_FACTOR].Parse<double>());

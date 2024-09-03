@@ -176,6 +176,20 @@ namespace ModLib.Mod
         public UnitCtrlBase AttackingUnit { get; set; }
         [JsonIgnore]
         public UnitCtrlBase HitUnit { get; set; }
+        [JsonIgnore]
+        public List<UnitCtrlBase> DungeonUnits { get; set; } = new List<UnitCtrlBase>();
+
+        public override void OnBattleEnd(BattleEnd e)
+        {
+            base.OnBattleEnd(e);
+            DungeonUnits.Clear();
+        }
+
+        public override void OnIntoBattleFirst(UnitCtrlBase e)
+        {
+            base.OnIntoBattleFirst(e);
+            DungeonUnits.Add(e);
+        }
 
         public override void OnLoadGame()
         {
