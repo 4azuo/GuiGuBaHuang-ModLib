@@ -63,16 +63,16 @@ namespace MOD_nE7UL2
             {
                 if (item.key.EndsWith("_mpCost"))
                 {
-                    item.value1 = (item.value1.Parse<float>() * 1.6f).Parse<int>().ToString();
-                    item.value2 = (item.value2.Parse<float>() * 1.7f).Parse<int>().ToString();
-                    item.value3 = (item.value3.Parse<float>() * 1.9f).Parse<int>().ToString();
-                    item.value4 = (item.value4.Parse<float>() * 2.2f).Parse<int>().ToString();
-                    item.value5 = (item.value5.Parse<float>() * 2.5f).Parse<int>().ToString();
-                    item.value6 = (item.value6.Parse<float>() * 2.9f).Parse<int>().ToString();
-                    item.value7 = (item.value7.Parse<float>() * 3.3f).Parse<int>().ToString();
-                    item.value8 = (item.value8.Parse<float>() * 3.8f).Parse<int>().ToString();
-                    item.value9 = (item.value9.Parse<float>() * 4.5f).Parse<int>().ToString();
-                    item.value10 = (item.value10.Parse<float>() * 6.0f).Parse<int>().ToString();
+                    item.value1 = (item.value1.Parse<float>() * 1.70f).Parse<int>().ToString();
+                    item.value2 = (item.value2.Parse<float>() * 1.85f).Parse<int>().ToString();
+                    item.value3 = (item.value3.Parse<float>() * 2.50f).Parse<int>().ToString();
+                    item.value4 = (item.value4.Parse<float>() * 2.80f).Parse<int>().ToString();
+                    item.value5 = (item.value5.Parse<float>() * 3.50f).Parse<int>().ToString();
+                    item.value6 = (item.value6.Parse<float>() * 5.00f).Parse<int>().ToString();
+                    item.value7 = (item.value7.Parse<float>() * 7.00f).Parse<int>().ToString();
+                    item.value8 = (item.value8.Parse<float>() * 10.00f).Parse<int>().ToString();
+                    item.value9 = (item.value9.Parse<float>() * 15.00f).Parse<int>().ToString();
+                    item.value10 = (item.value10.Parse<float>() * 22.00f).Parse<int>().ToString();
                 }
                 else if (item.key.EndsWith("_cd"))
                 {
@@ -428,6 +428,7 @@ namespace MOD_nE7UL2
             //balance skill
             foreach (var item in g.conf.itemSkill._allConfList)
             {
+                //balance price
                 var grade = Math.Max(1, Math.Min(10, item.grade));
                 var level = Math.Max(1, Math.Min(6, item.level));
                 var ratio = Math.Pow(PriceHelper.ITEM_TYPE_RATIO[ModItemTypeEnum.Skill], level).Parse<float>();

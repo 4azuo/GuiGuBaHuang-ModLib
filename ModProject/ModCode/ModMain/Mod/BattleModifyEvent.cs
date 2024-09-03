@@ -1,5 +1,4 @@
-﻿using Boo.Lang;
-using EBattleTypeData;
+﻿using EBattleTypeData;
 using MOD_nE7UL2.Const;
 using ModLib.Enum;
 using ModLib.Mod;
@@ -65,7 +64,7 @@ namespace MOD_nE7UL2.Mod
             if (attackUnitData?.worldUnitData?.unit != null && IsBasisMagic(dType))
             {
                 var atk = attackUnitData.worldUnitData.unit.GetProperty<int>(UnitPropertyEnum.Attack);
-                var r = (attackUnitData.mp.Parse<float>() / attackUnitData.maxMP.Parse<float>()) / 10;
+                var r = (attackUnitData.mp.Parse<float>() / attackUnitData.maxMP.value.Parse<float>()) / 10;
                 e.dynV.baseValue += (atk * r).Parse<int>();
             }
 
@@ -81,7 +80,7 @@ namespace MOD_nE7UL2.Mod
             if (hitUnitData?.worldUnitData?.unit != null)
             {
                 var def = hitUnitData.worldUnitData.unit.GetProperty<int>(UnitPropertyEnum.Defense);
-                var r = hitUnitData.mp.Parse<float>() / hitUnitData.maxMP.Parse<float>();
+                var r = hitUnitData.mp.Parse<float>() / hitUnitData.maxMP.value.Parse<float>();
                 e.dynV.baseValue -= (def * r).Parse<int>();
                 hitUnitData.AddMP(-1);
             }
@@ -106,16 +105,16 @@ namespace MOD_nE7UL2.Mod
                 var monstData = unit?.data?.TryCast<UnitDataMonst>();
                 if (monstData != null && monstData.grade.value >= 3)
                 {
-                    if (monstData.hp < monstData.maxHP.baseValue)
+                    if (monstData.hp < monstData.maxHP.value)
                         monstData.hp += Math.Sqrt(Math.Sqrt(monstData.maxHP.value / 3)).Parse<int>();
                 }
 
                 var humanData = unit?.data?.TryCast<UnitDataHuman>();
                 if (humanData?.worldUnitData?.unit != null)
                 {
-                    if (humanData.hp < humanData.maxHP.baseValue)
+                    if (humanData.hp < humanData.maxHP.value)
                         humanData.hp += Math.Sqrt(humanData.worldUnitData.unit.GetProperty<int>(UnitPropertyEnum.BasisWood) / 100).Parse<int>();
-                    if (humanData.mp < humanData.maxMP.baseValue)
+                    if (humanData.mp < humanData.maxMP.value)
                         humanData.mp += Math.Sqrt(humanData.worldUnitData.unit.GetProperty<int>(UnitPropertyEnum.BasisFroze) / 100).Parse<int>();
                 }
             }
