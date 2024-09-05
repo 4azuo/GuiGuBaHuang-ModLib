@@ -98,7 +98,7 @@ namespace MOD_nE7UL2.Mod
             if (hitUnitData?.worldUnitData?.unit != null && hitUnitData.sp > 0 && e.dynV.baseValue > 0)
             {
                 var def = hitUnitData.worldUnitData.unit.GetProperty<int>(UnitPropertyEnum.Defense);
-                var r = hitUnitData.sp.Parse<float>() / hitUnitData.maxSP.value.Parse<float>();
+                var r = (hitUnitData.sp.Parse<float>() / hitUnitData.maxSP.value.Parse<float>()) / 2;
                 e.dynV.baseValue -= (def * r).Parse<int>();
             }
 
@@ -106,7 +106,7 @@ namespace MOD_nE7UL2.Mod
             if (hitUnitData?.worldUnitData?.unit != null && hitUnitData.dp > 0 && e.dynV.baseValue > 0)
             {
                 var def = hitUnitData.worldUnitData.unit.GetProperty<int>(UnitPropertyEnum.Defense);
-                var r = hitUnitData.dp.Parse<float>() / hitUnitData.maxDP.value.Parse<float>();
+                var r = (hitUnitData.dp.Parse<float>() / hitUnitData.maxDP.value.Parse<float>()) / 2;
                 e.dynV.baseValue -= (def * r).Parse<int>();
             }
 
@@ -122,7 +122,7 @@ namespace MOD_nE7UL2.Mod
             if (hitUnitData?.worldUnitData?.unit != null && hitUnitData.mp > 0 && e.dynV.baseValue > 0)
             {
                 var def = hitUnitData.worldUnitData.unit.GetProperty<int>(UnitPropertyEnum.Defense);
-                var r = hitUnitData.mp.Parse<float>() / hitUnitData.maxMP.value.Parse<float>();
+                var r = (hitUnitData.mp.Parse<float>() / hitUnitData.maxMP.value.Parse<float>()) / 2;
                 e.dynV.baseValue -= (def * r).Parse<int>();
                 hitUnitData.AddMP(-1);
             }
