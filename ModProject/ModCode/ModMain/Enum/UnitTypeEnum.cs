@@ -14,7 +14,7 @@ namespace MOD_nE7UL2.Enum
             {
                 MultiValue.Create(UnitPropertyEnum.Attack, 0.001, 1),
                 MultiValue.Create(UnitPropertyEnum.Defense, 0.0001, 0),
-                MultiValue.Create(UnitPropertyEnum.HpMax, 0.001, 1),
+                MultiValue.Create(UnitPropertyEnum.HpMax, 0.002, 1),
                 MultiValue.Create(UnitPropertyEnum.MpMax, 0.001, 0),
                 //MultiValue.Create(UnitPropertyEnum.MoveSpeed, 0, 0),
             }
@@ -25,7 +25,7 @@ namespace MOD_nE7UL2.Enum
             {
                 MultiValue.Create(UnitPropertyEnum.Attack, 0.002, 1),
                 MultiValue.Create(UnitPropertyEnum.Defense, 0.0005, 0),
-                MultiValue.Create(UnitPropertyEnum.HpMax, 0.002, 1),
+                MultiValue.Create(UnitPropertyEnum.HpMax, 0.001, 1),
                 MultiValue.Create(UnitPropertyEnum.MpMax, 0.001, 0),
                 //MultiValue.Create(UnitPropertyEnum.MoveSpeed, 0, 0),
             }

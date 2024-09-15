@@ -3,6 +3,7 @@ using MOD_nE7UL2.Const;
 using ModLib.Enum;
 using ModLib.Mod;
 using System;
+using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
@@ -11,6 +12,19 @@ namespace MOD_nE7UL2.Mod
     [Cache(ModConst.BATTLE_MODIFY_EVENT)]
     public class BattleModifyEvent : ModBattleEvent
     {
+        public Dictionary<int, float> BlockRatio { get; set; } = new Dictionary<int, float>()
+        {
+            [1] = 0.50f,
+            [2] = 0.51f,
+            [3] = 0.52f,
+            [4] = 0.53f,
+            [5] = 0.55f,
+            [6] = 0.57f,
+            [7] = 0.59f,
+            [8] = 0.62f,
+            [9] = 0.65f,
+            [10] = 0.70f,
+        };
 
         public override void OnIntoBattleFirst(UnitCtrlBase e)
         {
@@ -38,6 +52,7 @@ namespace MOD_nE7UL2.Mod
             var hitUnitData = e?.hitUnit?.data?.TryCast<UnitDataHuman>();
             var dType = GetDmgBasisType(e.hitData);
             var pEnum = GetDmgPropertyEnum(dType);
+            var grade = hitUnitData.worldUnitData.unit.GetGradeLvl();
 
             //evasion
             if (hitUnitData?.worldUnitData?.unit != null)
@@ -94,22 +109,6 @@ namespace MOD_nE7UL2.Mod
                 e.dynV.baseValue += (atk * r).Parse<int>();
             }
 
-            //block dmg (sp)
-            if (hitUnitData?.worldUnitData?.unit != null && hitUnitData.sp > 0 && e.dynV.baseValue > 0)
-            {
-                var def = hitUnitData.worldUnitData.unit.GetProperty<int>(UnitPropertyEnum.Defense);
-                var r = (hitUnitData.sp.Parse<float>() / hitUnitData.maxSP.value.Parse<float>()) / 2;
-                e.dynV.baseValue -= (def * r).Parse<int>();
-            }
-
-            //block dmg (dp)
-            if (hitUnitData?.worldUnitData?.unit != null && hitUnitData.dp > 0 && e.dynV.baseValue > 0)
-            {
-                var def = hitUnitData.worldUnitData.unit.GetProperty<int>(UnitPropertyEnum.Defense);
-                var r = (hitUnitData.dp.Parse<float>() / hitUnitData.maxDP.value.Parse<float>()) / 2;
-                e.dynV.baseValue -= (def * r).Parse<int>();
-            }
-
             //block dmg (basis)
             if (hitUnitData?.worldUnitData?.unit != null && pEnum != null && e.dynV.baseValue > 0)
             {
@@ -118,13 +117,33 @@ namespace MOD_nE7UL2.Mod
                 e.dynV.baseValue -= def * subDmg / 100;
             }
 
+            //block dmg (sp)
+            if (hitUnitData?.worldUnitData?.unit != null && hitUnitData.sp > 0 && e.dynV.baseValue > 0 && grade >= 4)
+            {
+                var def = hitUnitData.worldUnitData.unit.GetProperty<int>(UnitPropertyEnum.Defense);
+                var r = (hitUnitData.sp.Parse<float>() / hitUnitData.maxSP.value.Parse<float>()) * BlockRatio[grade];
+                e.dynV.baseValue -= (def * r).Parse<int>();
+            }
+
+            //block dmg (dp)
+            if (hitUnitData?.worldUnitData?.unit != null && hitUnitData.dp > 0 && e.dynV.baseValue > 0 && grade >= 8)
+            {
+                var def = hitUnitData.worldUnitData.unit.GetProperty<int>(UnitPropertyEnum.Defense);
+                var r = (hitUnitData.dp.Parse<float>() / hitUnitData.maxDP.value.Parse<float>()) * BlockRatio[grade];
+                e.dynV.baseValue -= (def * r).Parse<int>();
+            }
+
             //block dmg (mp)
             if (hitUnitData?.worldUnitData?.unit != null && hitUnitData.mp > 0 && e.dynV.baseValue > 0)
             {
-                var def = hitUnitData.worldUnitData.unit.GetProperty<int>(UnitPropertyEnum.Defense);
-                var r = (hitUnitData.mp.Parse<float>() / hitUnitData.maxMP.value.Parse<float>()) / 2;
-                e.dynV.baseValue -= (def * r).Parse<int>();
-                hitUnitData.AddMP(-1);
+                var blockTimes = CommonTool.Random(1, grade);
+                for (int i = 0; i < blockTimes && e.dynV.baseValue > 0; i++)
+                {
+                    var def = hitUnitData.worldUnitData.unit.GetProperty<int>(UnitPropertyEnum.Defense);
+                    var r = (hitUnitData.mp.Parse<float>() / hitUnitData.maxMP.value.Parse<float>()) * BlockRatio[grade];
+                    e.dynV.baseValue -= (def * r).Parse<int>();
+                    hitUnitData.AddMP(-Math.Pow(2, grade - 1).Parse<int>());
+                }
             }
 
             if (e.dynV.baseValue <= 0)
