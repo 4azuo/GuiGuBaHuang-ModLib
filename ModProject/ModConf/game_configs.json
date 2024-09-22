@@ -96,14 +96,14 @@
 	},
 	"MonstStrongerConfigs": {
 		"GrowRate": {
-			"Common": 0.0005,
-			"Elite": 0.0004,
-			"BOSS": 0.0003
+			"Common": 0.00090,
+			"Elite": 0.00060,
+			"BOSS": 0.00045
 		},
 		"KillGrowRate": {
-			"Common": 0.000003,
-			"Elite": 0.00005,
-			"BOSS": 0.00010
+			"Common": 0.000004,
+			"Elite": 0.00008,
+			"BOSS": 0.00012
 		}
 	},
 	"NpcUpgradeSkillConfigs": {

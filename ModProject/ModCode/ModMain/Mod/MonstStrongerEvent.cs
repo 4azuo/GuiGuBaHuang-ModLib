@@ -55,6 +55,7 @@ namespace MOD_nE7UL2.Mod
             {
                 var ratio = (Counter * GROW_RATIO[monstData.monstType]) + (KillCounter[monstData.monstType] * KILL_GROW_RATIO[monstData.monstType]);
                 monstData.attack.baseValue += (int)(monstData.attack.baseValue * ratio);
+                monstData.defense.baseValue += (int)(monstData.defense.baseValue * (ratio / 2));
                 monstData.maxHP.baseValue += (int)(monstData.maxHP.baseValue * ratio);
                 monstData.hp = monstData.maxHP.baseValue;
             }
