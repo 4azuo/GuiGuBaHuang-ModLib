@@ -4,6 +4,7 @@ using static MOD_nE7UL2.Object.InGameStts;
 
 namespace MOD_nE7UL2.Mod
 {
+    [TraceIgnore]
     [Cache(ModConst.BATTLE_MANASHIELD_EVENT)]
     public class BattleManashieldEvent : ModBattleEvent
     {

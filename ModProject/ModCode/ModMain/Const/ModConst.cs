@@ -23,5 +23,6 @@
         public const string MAP_BUILD_PROPERTY_EVENT = "MapBuildPropertyEvent";
         public const string MISSION_DECLARE_EVENT = "MissionDeclareEvent";
         public const string BATTLE_MODIFY_EVENT = "BattleModifyEvent";
+        public const string HIDE_MAP_EVENT = "HideMapEvent";
     }
 }

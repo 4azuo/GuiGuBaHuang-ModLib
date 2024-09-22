@@ -55,6 +55,7 @@
     <Compile Include="Mod\HideButtonEvent.cs" />
     <Compile Include="Mod\ContributionExchangeEvent.cs" />
     <Compile Include="Mod\DebugEvent.cs" />
+    <Compile Include="Mod\HideMapEvent.cs" />
     <Compile Include="Mod\RealTrialEvent.cs" />
     <Compile Include="Mod\RevengeEvent.cs" />
     <Compile Include="Mod\BattleManashieldEvent.cs" />

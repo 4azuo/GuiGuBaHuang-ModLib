@@ -7,6 +7,7 @@ using System.Linq;
 
 namespace ModLib.Mod
 {
+    [TraceIgnore]
     public abstract class ModBattleEvent : ModEvent
     {
         #region DmgKey
@@ -171,13 +172,13 @@ namespace ModLib.Mod
         #endregion
 
         [JsonIgnore]
-        public bool IsPlayerDie { get; set; }
+        public static bool IsPlayerDie { get; private set; }
         [JsonIgnore]
-        public UnitCtrlBase AttackingUnit { get; set; }
+        public static UnitCtrlBase AttackingUnit { get; private set; }
         [JsonIgnore]
-        public UnitCtrlBase HitUnit { get; set; }
+        public static UnitCtrlBase HitUnit { get; private set; }
         [JsonIgnore]
-        public List<UnitCtrlBase> DungeonUnits { get; set; } = new List<UnitCtrlBase>();
+        public static List<UnitCtrlBase> DungeonUnits { get; private set; } = new List<UnitCtrlBase>();
 
         public override void OnBattleEnd(BattleEnd e)
         {
