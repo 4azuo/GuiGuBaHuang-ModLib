@@ -40,8 +40,7 @@ namespace MOD_nE7UL2.Mod
 
         public override void OnBattleEnd(BattleEnd e)
         {
-            IsInTrial = false;
-            if (!IsPlayerDie)
+            if (IsInTrial && !IsPlayerDie)
             {
                 foreach (var p in UnitTypeEnum.Trial.PropIncRatio)
                 {
@@ -49,6 +48,7 @@ namespace MOD_nE7UL2.Mod
                     g.world.playerUnit.AddProperty(pType, UnitTypeEnum.Trial.CalProp(pType, g.world.playerUnit.GetProperty<int>(pType)));
                 }
             }
+            IsInTrial = false;
         }
     }
 }
