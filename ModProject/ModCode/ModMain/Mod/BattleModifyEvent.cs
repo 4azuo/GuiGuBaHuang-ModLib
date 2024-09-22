@@ -9,19 +9,20 @@ using UnityEngine;
 
 namespace MOD_nE7UL2.Mod
 {
+    [TraceIgnore]
     [Cache(ModConst.BATTLE_MODIFY_EVENT)]
     public class BattleModifyEvent : ModBattleEvent
     {
         public Dictionary<int, float> BlockRatio { get; set; } = new Dictionary<int, float>()
         {
-            [1] = 0.50f,
-            [2] = 0.51f,
-            [3] = 0.52f,
-            [4] = 0.53f,
-            [5] = 0.55f,
-            [6] = 0.57f,
-            [7] = 0.59f,
-            [8] = 0.62f,
+            [1] = 0.40f,
+            [2] = 0.42f,
+            [3] = 0.44f,
+            [4] = 0.47f,
+            [5] = 0.50f,
+            [6] = 0.53f,
+            [7] = 0.56f,
+            [8] = 0.60f,
             [9] = 0.65f,
             [10] = 0.70f,
         };
@@ -46,7 +47,6 @@ namespace MOD_nE7UL2.Mod
             }
         }
 
-        [TraceIgnore]
         public override void OnBattleUnitHitDynIntHandler(UnitHitDynIntHandler e)
         {
             var attackUnitData = e?.hitData?.attackUnit?.data?.TryCast<UnitDataHuman>();
@@ -54,6 +54,8 @@ namespace MOD_nE7UL2.Mod
             var dType = GetDmgBasisType(e.hitData);
             var pEnum = GetDmgPropertyEnum(dType);
             var grade = hitUnitData?.worldUnitData?.unit?.GetGradeLvl() ?? 1;
+            var atk = attackUnitData?.worldUnitData?.unit?.GetProperty<int>(UnitPropertyEnum.Attack) ?? attackUnitData?.attack.baseValue ?? e?.hitData?.attackUnit?.data?.attack.baseValue ?? 0;
+            var def = hitUnitData?.worldUnitData?.unit?.GetProperty<int>(UnitPropertyEnum.Defense) ?? hitUnitData?.defense.baseValue ?? e?.hitUnit?.data?.defense.baseValue ?? 0;
 
             //evasion
             if (hitUnitData?.worldUnitData?.unit != null)
@@ -72,10 +74,11 @@ namespace MOD_nE7UL2.Mod
             {
                 if (attackUnitData?.worldUnitData?.unit != null)
                 {
-                    var basisFire = attackUnitData.worldUnitData.unit.GetProperty<int>(UnitPropertyEnum.BasisFire);
-                    if (ValueHelper.IsBetween(CommonTool.Random(0.00f, 100.00f), 0.00f, Math.Min(10.00f, Math.Sqrt(basisFire) / 3)))
+                    var basisThunder = attackUnitData.worldUnitData.unit.GetProperty<int>(UnitPropertyEnum.BasisThunder);
+                    if (ValueHelper.IsBetween(CommonTool.Random(0.00f, 100.00f), 0.00f, Math.Min(10.00f, Math.Sqrt(basisThunder) / 3)))
                     {
                         e.hitData.isCrit = true;
+                        var basisFire = attackUnitData.worldUnitData.unit.GetProperty<int>(UnitPropertyEnum.BasisFire);
                         e.dynV.baseValue = e.dynV.baseValue + (e.dynV.baseValue.Parse<float>() * (1.000f + basisFire.Parse<float>() / 1000)).Parse<int>();
                     }
                 }
@@ -98,7 +101,6 @@ namespace MOD_nE7UL2.Mod
             //add dmg (basis)
             if (attackUnitData?.worldUnitData?.unit != null && pEnum != null)
             {
-                var atk = attackUnitData.worldUnitData.unit.GetProperty<int>(UnitPropertyEnum.Attack);
                 var addDmg = attackUnitData.worldUnitData.unit.GetProperty<int>(pEnum);
                 e.dynV.baseValue += atk * addDmg / 200;
             }
@@ -106,7 +108,6 @@ namespace MOD_nE7UL2.Mod
             //add dmg (sp)
             if (attackUnitData?.worldUnitData?.unit != null && attackUnitData.sp > 0)
             {
-                var atk = attackUnitData.worldUnitData.unit.GetProperty<int>(UnitPropertyEnum.Attack);
                 var r = (attackUnitData.sp.Parse<float>() / attackUnitData.maxSP.value.Parse<float>()) / 10;
                 e.dynV.baseValue += (atk * r).Parse<int>();
             }
@@ -114,7 +115,6 @@ namespace MOD_nE7UL2.Mod
             //add dmg (dp)
             if (attackUnitData?.worldUnitData?.unit != null && attackUnitData.dp > 0)
             {
-                var atk = attackUnitData.worldUnitData.unit.GetProperty<int>(UnitPropertyEnum.Attack);
                 var r = (attackUnitData.dp.Parse<float>() / attackUnitData.maxDP.value.Parse<float>()) / 10;
                 e.dynV.baseValue += (atk * r).Parse<int>();
             }
@@ -122,7 +122,6 @@ namespace MOD_nE7UL2.Mod
             //add dmg (mp)
             if (attackUnitData?.worldUnitData?.unit != null && attackUnitData.mp > 0 && IsBasisMagic(dType))
             {
-                var atk = attackUnitData.worldUnitData.unit.GetProperty<int>(UnitPropertyEnum.Attack);
                 var r = (attackUnitData.mp.Parse<float>() / attackUnitData.maxMP.value.Parse<float>()) / 10;
                 e.dynV.baseValue += (atk * r).Parse<int>();
             }
@@ -130,7 +129,6 @@ namespace MOD_nE7UL2.Mod
             //block dmg (basis)
             if (hitUnitData?.worldUnitData?.unit != null && pEnum != null && e.dynV.baseValue > 0)
             {
-                var def = hitUnitData.worldUnitData.unit.GetProperty<int>(UnitPropertyEnum.Defense);
                 var subDmg = hitUnitData.worldUnitData.unit.GetProperty<int>(pEnum);
                 e.dynV.baseValue -= def * subDmg / 100;
             }
@@ -138,7 +136,6 @@ namespace MOD_nE7UL2.Mod
             //block dmg (sp)
             if (hitUnitData?.worldUnitData?.unit != null && hitUnitData.sp > 0 && e.dynV.baseValue > 0 && grade >= 4)
             {
-                var def = hitUnitData.worldUnitData.unit.GetProperty<int>(UnitPropertyEnum.Defense);
                 var r = (hitUnitData.sp.Parse<float>() / hitUnitData.maxSP.value.Parse<float>()) * BlockRatio[grade];
                 e.dynV.baseValue -= (def * r).Parse<int>();
             }
@@ -146,7 +143,6 @@ namespace MOD_nE7UL2.Mod
             //block dmg (dp)
             if (hitUnitData?.worldUnitData?.unit != null && hitUnitData.dp > 0 && e.dynV.baseValue > 0 && grade >= 8)
             {
-                var def = hitUnitData.worldUnitData.unit.GetProperty<int>(UnitPropertyEnum.Defense);
                 var r = (hitUnitData.dp.Parse<float>() / hitUnitData.maxDP.value.Parse<float>()) * BlockRatio[grade];
                 e.dynV.baseValue -= (def * r).Parse<int>();
             }
@@ -157,10 +153,11 @@ namespace MOD_nE7UL2.Mod
                 var blockTimes = CommonTool.Random(1, grade);
                 for (int i = 0; i < blockTimes && hitUnitData.mp > 0 && e.dynV.baseValue > 0; i++)
                 {
-                    var def = hitUnitData.worldUnitData.unit.GetProperty<int>(UnitPropertyEnum.Defense);
                     var r = (hitUnitData.mp.Parse<float>() / hitUnitData.maxMP.value.Parse<float>()) * BlockRatio[grade];
-                    e.dynV.baseValue -= (def * r).Parse<int>();
-                    hitUnitData.AddMP(-grade);
+                    var blockedDmg = (def * r).Parse<int>();
+                    var lostMp = Math.Max(grade, blockedDmg / (100 * grade));
+                    e.dynV.baseValue -= blockedDmg;
+                    hitUnitData.AddMP(-lostMp);
                 }
             }
 

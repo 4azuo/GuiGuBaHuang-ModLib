@@ -1,7 +1,7 @@
 ﻿using EBattleTypeData;
 using EGameTypeData;
 using MOD_nE7UL2.Const;
-using MOD_nE7UL2.Object;
+using MOD_nE7UL2.Enum;
 using ModLib.Enum;
 using ModLib.Mod;
 using Newtonsoft.Json;
@@ -9,7 +9,7 @@ using Newtonsoft.Json;
 namespace MOD_nE7UL2.Mod
 {
     [Cache(ModConst.REAL_TRIAL_EVENT)]
-    public class RealTrialEvent : ModEvent
+    public class RealTrialEvent : ModBattleEvent
     {
         public static float POWER_UP_ON_GAME_LEVEL
         {
@@ -32,8 +32,8 @@ namespace MOD_nE7UL2.Mod
             var data = e?.data;
             if (IsInTrial && data != null)
             {
-                var baseDmg = (g.world.playerUnit.GetProperty<int>(UnitPropertyEnum.Attack) * (1.00f + g.data.dataWorld.data.gameLevel.Parse<int>() * POWER_UP_ON_GAME_LEVEL)).Parse<int>();
-                baseDmg -= (g.world.playerUnit.GetProperty<int>(UnitPropertyEnum.BasisThunder) / 10);
+                var baseDmg = (g.world.playerUnit.GetProperty<int>(UnitPropertyEnum.Attack) * (1.00f + g.data.dataWorld.data.gameLevel.Parse<int>() * POWER_UP_ON_GAME_LEVEL * (g.world.playerUnit.GetGradeLvl() + 1))).Parse<int>();
+                baseDmg -= g.world.playerUnit.GetProperty<int>(UnitPropertyEnum.Defense) * g.world.playerUnit.GetProperty<int>(UnitPropertyEnum.BasisThunder) / 100;
                 data.attack.baseValue = baseDmg;
             }
         }
@@ -41,6 +41,14 @@ namespace MOD_nE7UL2.Mod
         public override void OnBattleEnd(BattleEnd e)
         {
             IsInTrial = false;
+            if (!IsPlayerDie)
+            {
+                foreach (var p in UnitTypeEnum.Trial.PropIncRatio)
+                {
+                    var pType = p.Values[0] as UnitPropertyEnum;
+                    g.world.playerUnit.AddProperty(pType, UnitTypeEnum.Trial.CalProp(pType, g.world.playerUnit.GetProperty<int>(pType)));
+                }
+            }
         }
     }
 }

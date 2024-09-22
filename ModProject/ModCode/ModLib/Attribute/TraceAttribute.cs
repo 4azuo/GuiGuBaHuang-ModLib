@@ -20,7 +20,9 @@ public class TraceAttribute : OnMethodBoundaryAspect
 
     public override void OnEntry(MethodExecutionArgs args)
     {
-        if (Enable && args.Method.GetCustomAttribute<TraceIgnoreAttribute>() == null)
+        if (Enable && 
+            args.Method.GetCustomAttribute<TraceIgnoreAttribute>() == null &&
+            args.Method.DeclaringType.GetCustomAttribute<TraceIgnoreAttribute>() == null)
         {
             _entryPos = DebugHelper.WriteLine(GetCallLog(args));
         }
@@ -28,7 +30,9 @@ public class TraceAttribute : OnMethodBoundaryAspect
 
     public override void OnExit(MethodExecutionArgs args)
     {
-        if (Enable && !IgnoreExitMsg && args.Method.GetCustomAttribute<TraceIgnoreAttribute>() == null)
+        if (Enable && !IgnoreExitMsg && 
+            args.Method.GetCustomAttribute<TraceIgnoreAttribute>() == null &&
+            args.Method.DeclaringType.GetCustomAttribute<TraceIgnoreAttribute>() == null)
         {
             DebugHelper.WriteAt(_entryPos, GetReturnLog(args));
         }
@@ -36,7 +40,9 @@ public class TraceAttribute : OnMethodBoundaryAspect
 
     public override void OnException(MethodExecutionArgs args)
     {
-        if (Enable && !IgnoreException && args.Method.GetCustomAttribute<TraceIgnoreAttribute>() == null)
+        if (Enable && !IgnoreException && 
+            args.Method.GetCustomAttribute<TraceIgnoreAttribute>() == null &&
+            args.Method.DeclaringType.GetCustomAttribute<TraceIgnoreAttribute>() == null)
         {
             DebugHelper.WriteLine(args.Exception);
         }

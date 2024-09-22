@@ -1,4 +1,5 @@
-﻿using MOD_nE7UL2.Const;
+﻿using Commons.Xml.Relaxng.Derivative;
+using MOD_nE7UL2.Const;
 using MOD_nE7UL2.Enum;
 using ModLib.Enum;
 using ModLib.Mod;
@@ -32,8 +33,20 @@ namespace MOD_nE7UL2.Mod
 
                 //add property
                 if (wunit.IsPlayer())
-                    continue;
-                AddProp(wunit);
+                {
+                    if (wunit.GetGradeLvl() >= 5)
+                    {
+                        foreach (var p in UnitTypeEnum.Player.PropIncRatio)
+                        {
+                            var pType = p.Values[0] as UnitPropertyEnum;
+                            wunit.AddProperty(pType, UnitTypeEnum.Player.CalProp(pType, wunit.GetProperty<int>(pType)));
+                        }
+                    }
+                }
+                else
+                {
+                    AddProp(wunit);
+                }
             }
         }
 

@@ -19,6 +19,28 @@ namespace MOD_nE7UL2.Enum
                 //MultiValue.Create(UnitPropertyEnum.MoveSpeed, 0, 0),
             }
         };
+        public static UnitTypeEnum Trial { get; } = new UnitTypeEnum()
+        {
+            PropIncRatio = new List<MultiValue>()
+            {
+                MultiValue.Create(UnitPropertyEnum.Attack, 0.02, 1),
+                MultiValue.Create(UnitPropertyEnum.Defense, 0.02, 1),
+                MultiValue.Create(UnitPropertyEnum.HpMax, 0.05, 100),
+                MultiValue.Create(UnitPropertyEnum.MpMax, 0.02, 10),
+                //MultiValue.Create(UnitPropertyEnum.MoveSpeed, 0, 0),
+            }
+        };
+        public static UnitTypeEnum Player { get; } = new UnitTypeEnum()
+        {
+            PropIncRatio = new List<MultiValue>()
+            {
+                MultiValue.Create(UnitPropertyEnum.Attack, 0.001, 0),
+                MultiValue.Create(UnitPropertyEnum.Defense, 0.0001, 0),
+                MultiValue.Create(UnitPropertyEnum.HpMax, 0.001, 0),
+                MultiValue.Create(UnitPropertyEnum.MpMax, 0.001, 0),
+                //MultiValue.Create(UnitPropertyEnum.MoveSpeed, 0, 0),
+            }
+        };
         public static UnitTypeEnum Hero { get; } = new UnitTypeEnum()
         {
             PropIncRatio = new List<MultiValue>()

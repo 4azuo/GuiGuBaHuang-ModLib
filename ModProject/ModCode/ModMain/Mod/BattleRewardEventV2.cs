@@ -10,6 +10,7 @@ using UnityEngine;
 
 namespace MOD_nE7UL2.Mod
 {
+    [TraceIgnore]
     [Cache(ModConst.BATTLE_REWARD_EVENT_V2)]
     public class BattleRewardEventV2 : ModBattleEvent
     {
