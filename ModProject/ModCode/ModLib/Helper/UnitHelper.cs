@@ -157,6 +157,11 @@ public static class UnitHelper
         wunit.AddExp(int.MinValue);
     }
 
+    public static void AddUnitProp(this WorldUnitBase wunit, DataProps.PropsData prop)
+    {
+        wunit.data.unitData.propData.AddProps(prop);
+    }
+
     public static void AddUnitProp(this WorldUnitBase wunit, int propID, int addCount)
     {
         var curProps = wunit.GetUnitProps(propID);

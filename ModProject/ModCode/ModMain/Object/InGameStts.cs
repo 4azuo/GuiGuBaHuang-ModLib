@@ -124,6 +124,9 @@ namespace MOD_nE7UL2.Object
         #region MonstStrongerConfigs
         public class _MonstStrongerConfigs
         {
+            public float AtkR { get; set; }
+            public float DefR { get; set; }
+            public float MHpR { get; set; }
             public Dictionary<MonstType, float> GrowRate { get; set; }
             public Dictionary<MonstType, float> KillGrowRate { get; set; }
         }
