@@ -95,6 +95,9 @@
 		}
 	},
 	"MonstStrongerConfigs": {
+		"AtkR": 1.00,
+		"DefR": 0.50,
+		"MHpR": 1.10,
 		"GrowRate": {
 			"Common": 0.00090,
 			"Elite": 0.00060,

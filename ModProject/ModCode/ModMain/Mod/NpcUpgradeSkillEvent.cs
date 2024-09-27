@@ -2,7 +2,9 @@
 using MOD_nE7UL2.Object;
 using ModLib.Enum;
 using ModLib.Mod;
+using Newtonsoft.Json;
 using System;
+using System.Linq;
 
 namespace MOD_nE7UL2.Mod
 {
@@ -39,8 +41,15 @@ namespace MOD_nE7UL2.Mod
         {
             if (martialType == MartialType.None)
                 return;
+            //var insight = wunit.GetDynProperty(UnitDynPropertyEnum.Talent).value;
             foreach (var p in wunit.data.unitData.GetActionMartial(martialType))
             {
+                //if (CommonTool.Random(0.00f, 100.00f).IsBetween(0.00f, insight / 100.00f) &&
+                //    p.data.propsInfoBase.grade < wunit.GetGradeLvl() && 
+                //    !wunit.GetUnitProps().Any(x => x.propsInfoBase.baseID == p.data.propsInfoBase.baseID && x.propsInfoBase.grade > p.data.propsInfoBase.grade))
+                //{
+                //    MartialTool.CreateAbilityData(p.data.propsInfoBase.baseID, p.data.propsInfoBase.grade + 1); wrong...
+                //}
                 //AddMartialExp(wunit, martialType, p);
                 UpgradeMartialPrefix(wunit, p);
             }

@@ -1,4 +1,5 @@
 ﻿using MOD_nE7UL2.Const;
+using ModLib.Enum;
 using ModLib.Mod;
 using static MOD_nE7UL2.Object.InGameStts;
 
@@ -22,7 +23,7 @@ namespace MOD_nE7UL2.Mod
         public override void OnIntoBattleFirst(UnitCtrlBase e)
         {
             var humanData = e?.data?.TryCast<UnitDataHuman>();
-            if (humanData?.unit != null && humanData?.worldUnitData?.unit != null)
+            if (humanData?.worldUnitData?.unit != null)
             {
                 var efx = humanData.unit.AddEffect(MANASHIELD_EFFECT_MAIN_ID, humanData.unit, new SkillCreateData
                 {
@@ -33,7 +34,10 @@ namespace MOD_nE7UL2.Mod
                         data = new BattleSkillValueData.Data(),
                     }
                 });
-                var ms = (humanData.mp * ManashieldConfigs.ManaShieldRate1) + (humanData.maxMP.value * ManashieldConfigs.ManaShieldRate2) + (humanData.hp * (0.05f * GetBloodEnergyLevel(humanData)));
+                var ms = (humanData.mp * ManashieldConfigs.ManaShieldRate1) + 
+                    (humanData.maxMP.value * ManashieldConfigs.ManaShieldRate2) + 
+                    (humanData.hp * (0.05f * GetBloodEnergyLevel(humanData))) +
+                    (humanData.basisFist.baseValue / 100.00f * humanData.defense.baseValue).Parse<int>();
                 Effect3017.AddShield(efx, humanData.unit, MANASHIELD_EFFECT_EFX_ID, ms.Parse<int>(), humanData.maxHP.value * 2, int.MaxValue);
             }
         }
@@ -43,12 +47,20 @@ namespace MOD_nE7UL2.Mod
         {
             foreach (var unit in DungeonUnits)
             {
-                if (!unit.isDie && unit.data.mp <= 0)
+                if (!unit.isDie)
                 {
                     var humanData = unit.data.TryCast<UnitDataHuman>();
-                    if (humanData?.unit != null && humanData?.worldUnitData?.unit != null)
+                    if (humanData?.worldUnitData?.unit != null)
                     {
-                        Effect3017.AddShieldValue(unit, MANASHIELD_EFFECT_EFX_ID, int.MinValue);
+                        if (unit.data.mp <= 0 && !IsWarlordPhantom(humanData))
+                        {
+                            Effect3017.AddShieldValue(unit, MANASHIELD_EFFECT_EFX_ID, int.MinValue);
+                        }
+                        else
+                        {
+                            var recoverShield = (((humanData.basisFist.baseValue + humanData.basisPalm.baseValue + humanData.basisFinger.baseValue) / 3.0f) / 1000.00f).Parse<int>();
+                            Effect3017.AddShieldValue(unit, MANASHIELD_EFFECT_EFX_ID, recoverShield);
+                        }
                     }
                 }
             }
@@ -63,6 +75,11 @@ namespace MOD_nE7UL2.Mod
             if (humanData.worldUnitData.unit.GetLuck(700092) != null)
                 return 1;
             return 0;
+        }
+
+        private bool IsWarlordPhantom(UnitDataHuman humanData)
+        {
+            return humanData.worldUnitData.unit.GetLuck(700026) != null;
         }
     }
 }
