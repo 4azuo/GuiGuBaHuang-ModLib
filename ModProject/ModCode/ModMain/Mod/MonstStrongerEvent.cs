@@ -51,6 +51,19 @@ namespace MOD_nE7UL2.Mod
                 monstData.defense.baseValue += (int)(monstData.defense.baseValue * (ratio * Configs.DefR));
                 monstData.maxHP.baseValue += (int)(monstData.maxHP.baseValue * (ratio * Configs.MHpR));
                 monstData.hp = monstData.maxHP.baseValue;
+
+                monstData.basisBlade.baseValue *= monstData.grade.baseValue;
+                monstData.basisEarth.baseValue *= monstData.grade.baseValue;
+                monstData.basisFinger.baseValue *= monstData.grade.baseValue;
+                monstData.basisFire.baseValue *= monstData.grade.baseValue;
+                monstData.basisFist.baseValue *= monstData.grade.baseValue;
+                monstData.basisFroze.baseValue *= monstData.grade.baseValue;
+                monstData.basisPalm.baseValue *= monstData.grade.baseValue;
+                monstData.basisSpear.baseValue *= monstData.grade.baseValue;
+                monstData.basisSword.baseValue *= monstData.grade.baseValue;
+                monstData.basisThunder.baseValue *= monstData.grade.baseValue;
+                monstData.basisWind.baseValue *= monstData.grade.baseValue;
+                monstData.basisWood.baseValue *= monstData.grade.baseValue;
             }
         }
     }

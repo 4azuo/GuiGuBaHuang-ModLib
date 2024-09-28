@@ -31,7 +31,7 @@ namespace MOD_nE7UL2.Mod
         {
             base.OnIntoBattleFirst(e);
 
-            var humanData = e?.data?.TryCast<UnitDataHuman>();
+            var humanData = e.data.TryCast<UnitDataHuman>();
             if (humanData?.worldUnitData?.unit != null)
             {
                 var artifacts = humanData.worldUnitData.unit.data.unitData.propData.GetEquipProps().ToArray().Where(x => x.propsItem.IsArtifact() != null).ToArray();
@@ -54,52 +54,51 @@ namespace MOD_nE7UL2.Mod
 
         public override void OnBattleUnitHitDynIntHandler(UnitHitDynIntHandler e)
         {
-            var attackUnitData = e?.hitData?.attackUnit?.data?.TryCast<UnitDataHuman>();
-            var hitUnitData = e?.hitUnit?.data?.TryCast<UnitDataHuman>();
+            base.OnBattleUnitHitDynIntHandler(e);
+
+            var attackUnitData = AttackingUnit.data.TryCast<UnitDataHuman>();
+            var hitUnitData = HitUnit.data.TryCast<UnitDataHuman>();
             var dType = GetDmgBasisType(e.hitData);
             var pEnum = GetDmgPropertyEnum(dType);
-            var grade = hitUnitData?.worldUnitData?.unit?.GetGradeLvl() ?? 1;
-            var atk = attackUnitData?.attack.baseValue ?? e?.hitData?.attackUnit?.data?.attack.baseValue ?? 0;
-            var def = hitUnitData?.defense.baseValue ?? e?.hitUnit?.data?.defense.baseValue ?? 0;
-            var minDmg = attackUnitData?.worldUnitData?.unit?.GetGradeLvl() ?? e?.hitData?.attackUnit?.data?.grade?.baseValue ?? 1;
+            var defGrade = HitUnit.data.grade.baseValue;
+            var atk = AttackingUnit.data.attack.baseValue;
+            var def = HitUnit.data.defense.baseValue;
+            var minDmg = AttackingUnit.data.grade.baseValue;
 
             //evasion
-            if (hitUnitData?.worldUnitData?.unit != null)
+            var basisWind = GetUnitPropertyValue(HitUnit, UnitPropertyEnum.BasisWind);
+            if (ValueHelper.IsBetween(CommonTool.Random(0.00f, 100.00f), 0.00f, Math.Min(20.00f, Math.Sqrt(basisWind / 10))))
             {
-                var basisWind = hitUnitData.basisWind.baseValue;
-                if (ValueHelper.IsBetween(CommonTool.Random(0.00f, 100.00f), 0.00f, Math.Min(20.00f, Math.Sqrt(basisWind))))
-                {
-                    e.hitData.isEvade = true;
-                    e.dynV.baseValue = 0;
-                    return;
-                }
+                e.hitData.isEvade = true;
+                e.dynV.baseValue = 0;
+                return;
             }
 
             //add dmg (basis)
-            if (attackUnitData?.worldUnitData?.unit != null && pEnum != null)
+            if (pEnum != null)
             {
-                var addDmg = attackUnitData.worldUnitData.unit.GetProperty<int>(pEnum);
-                e.dynV.baseValue += atk * addDmg / 200;
+                var r = GetUnitPropertyValue(AttackingUnit, pEnum);
+                e.dynV.baseValue += atk * r / 200;
             }
 
             //add dmg (sp)
             if (attackUnitData?.worldUnitData?.unit != null && attackUnitData.sp > 0)
             {
-                var r = (attackUnitData.sp.Parse<float>() / attackUnitData.maxSP.value.Parse<float>()) / 10;
+                var r = (attackUnitData.sp.Parse<float>() / attackUnitData.maxSP.value.Parse<float>()) / 10.0f;
                 e.dynV.baseValue += (atk * r).Parse<int>();
             }
 
             //add dmg (dp)
             if (attackUnitData?.worldUnitData?.unit != null && attackUnitData.dp > 0)
             {
-                var r = (attackUnitData.dp.Parse<float>() / attackUnitData.maxDP.value.Parse<float>()) / 10;
+                var r = (attackUnitData.dp.Parse<float>() / attackUnitData.maxDP.value.Parse<float>()) / 10.0f;
                 e.dynV.baseValue += (atk * r).Parse<int>();
             }
 
             //add dmg (mp)
             if (attackUnitData?.worldUnitData?.unit != null && attackUnitData.mp > 0 && IsBasisMagic(dType))
             {
-                var r = (attackUnitData.mp.Parse<float>() / attackUnitData.maxMP.value.Parse<float>()) / 10;
+                var r = (attackUnitData.mp.Parse<float>() / attackUnitData.maxMP.value.Parse<float>()) / 10.0f;
                 e.dynV.baseValue += (atk * r).Parse<int>();
             }
 
@@ -117,49 +116,55 @@ namespace MOD_nE7UL2.Mod
                 //monster
                 else
                 {
-                    if (ValueHelper.IsBetween(CommonTool.Random(0.00f, 100.00f), 0.00f, 8.00f))
+                    var criticalRate = CommonTool.Random(0.00f, 100.00f);
+                    if (ValueHelper.IsBetween(criticalRate, 0.00f, 0.40f))
                     {
                         e.hitData.isCrit = true;
-                        e.dynV.baseValue *= 2;
+                        e.dynV.baseValue *= 4;
                     }
-                    else if (ValueHelper.IsBetween(CommonTool.Random(0.00f, 100.00f), 0.00f, 2.00f))
+                    else if (ValueHelper.IsBetween(criticalRate, 0.00f, 2.00f))
                     {
                         e.hitData.isCrit = true;
                         e.dynV.baseValue *= 3;
+                    }
+                    else if (ValueHelper.IsBetween(criticalRate, 0.00f, 8.00f))
+                    {
+                        e.hitData.isCrit = true;
+                        e.dynV.baseValue *= 2;
                     }
                 }
             }
 
             //block dmg (basis)
-            if (hitUnitData?.worldUnitData?.unit != null && pEnum != null && e.dynV.baseValue > minDmg)
+            if (pEnum != null && e.dynV.baseValue > minDmg)
             {
-                var subDmg = hitUnitData.worldUnitData.unit.GetProperty<int>(pEnum);
-                e.dynV.baseValue -= def * subDmg / 100;
+                var r = GetUnitPropertyValue(HitUnit, pEnum);
+                e.dynV.baseValue -= def * r / 100;
             }
 
             //block dmg (sp)
-            if (hitUnitData?.worldUnitData?.unit != null && hitUnitData.sp > 0 && e.dynV.baseValue > minDmg && grade >= 4)
+            if (hitUnitData?.worldUnitData?.unit != null && hitUnitData.sp > 0 && e.dynV.baseValue > minDmg && defGrade >= 4)
             {
-                var r = (hitUnitData.sp.Parse<float>() / hitUnitData.maxSP.value.Parse<float>()) * BlockRatio[grade];
+                var r = (hitUnitData.sp.Parse<float>() / hitUnitData.maxSP.value.Parse<float>()) * BlockRatio[defGrade];
                 e.dynV.baseValue -= (def * r).Parse<int>();
             }
 
             //block dmg (dp)
-            if (hitUnitData?.worldUnitData?.unit != null && hitUnitData.dp > 0 && e.dynV.baseValue > minDmg && grade >= 8)
+            if (hitUnitData?.worldUnitData?.unit != null && hitUnitData.dp > 0 && e.dynV.baseValue > minDmg && defGrade >= 8)
             {
-                var r = (hitUnitData.dp.Parse<float>() / hitUnitData.maxDP.value.Parse<float>()) * BlockRatio[grade];
+                var r = (hitUnitData.dp.Parse<float>() / hitUnitData.maxDP.value.Parse<float>()) * BlockRatio[defGrade];
                 e.dynV.baseValue -= (def * r).Parse<int>();
             }
 
             //block dmg (mp)
             if (hitUnitData?.worldUnitData?.unit != null && hitUnitData.mp > 0 && e.dynV.baseValue > minDmg)
             {
-                var blockTimes = CommonTool.Random(1, grade);
+                var blockTimes = CommonTool.Random(1, defGrade);
                 for (int i = 0; i < blockTimes && hitUnitData.mp > 0 && e.dynV.baseValue > minDmg; i++)
                 {
-                    var r = (hitUnitData.mp.Parse<float>() / hitUnitData.maxMP.value.Parse<float>()) * BlockRatio[grade];
+                    var r = (hitUnitData.mp.Parse<float>() / hitUnitData.maxMP.value.Parse<float>()) * BlockRatio[defGrade];
                     var blockedDmg = (def * r).Parse<int>();
-                    var lostMp = Math.Max(grade, blockedDmg / (100 * grade));
+                    var lostMp = Math.Max(defGrade, blockedDmg / (100 * defGrade));
                     e.dynV.baseValue -= blockedDmg;
                     hitUnitData.AddMP(-lostMp);
                 }
@@ -181,7 +186,7 @@ namespace MOD_nE7UL2.Mod
                 if (monstData != null && monstData.grade.value >= 3)
                 {
                     if (monstData.hp < monstData.maxHP.value)
-                        monstData.hp += Math.Sqrt(Math.Sqrt(monstData.maxHP.value / 3)).Parse<int>();
+                        monstData.hp += (Math.Sqrt(Math.Sqrt(monstData.maxHP.value / 3)) + Math.Sqrt(monstData.basisWood.baseValue / 100)).Parse<int>();
                 }
 
                 var humanData = unit?.data?.TryCast<UnitDataHuman>();

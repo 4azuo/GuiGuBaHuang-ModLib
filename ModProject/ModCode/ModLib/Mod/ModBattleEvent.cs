@@ -49,6 +49,18 @@ namespace ModLib.Mod
             return UnitPropertyEnum.GetEnumByName<UnitPropertyEnum>($"Basis{dmgTypeEnum}");
         }
 
+        public static int GetUnitPropertyValue(UnitCtrlBase uc, DmgTypeEnum dmgTypeEnum)
+        {
+            return GetUnitPropertyValue(uc, GetDmgPropertyEnum(dmgTypeEnum));
+        }
+
+        public static int GetUnitPropertyValue(UnitCtrlBase uc, UnitPropertyEnum pEnum)
+        {
+            if (pEnum == null)
+                return 0;
+            return (uc.data.GetValue(pEnum.PropName) as DynInt).baseValue;
+        }
+
         public static DmgTypeEnum GetDmgBasisType(MartialTool.HitData hitData)
         {
             if (hitData != null)
@@ -233,14 +245,20 @@ namespace ModLib.Mod
             }
         }
 
+        public override void OnBattleUnitHitDynIntHandler(UnitHitDynIntHandler e)
+        {
+            AttackingUnit = e?.hitData?.attackUnit;
+            HitUnit = e?.hitUnit;
+        }
+
         public override void OnBattleUnitHit(UnitHit e)
         {
             AttackingUnit = e?.hitData?.attackUnit;
             HitUnit = e?.hitUnit;
 
             var dmg = Math.Abs(e.hitData.hitValue);
-            var attackUnitData = e?.hitData?.attackUnit?.data?.TryCast<UnitDataHuman>();
-            var hitUnitData = e?.hitUnit?.data?.TryCast<UnitDataHuman>();
+            var attackUnitData = AttackingUnit.data.TryCast<UnitDataHuman>();
+            var hitUnitData = HitUnit.data.TryCast<UnitDataHuman>();
             if (attackUnitData?.worldUnitData?.unit?.IsPlayer() ?? false)
             {
                 var commonDmgKey = GetDmgKey(DmgEnum.DmgDealt, DmgTypeEnum.Damage);
