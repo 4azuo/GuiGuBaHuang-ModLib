@@ -50,11 +50,11 @@ namespace MOD_nE7UL2.Mod
                         {
                             Effect3017.AddShieldValue(unit, MANASHIELD_EFFECT_EFX_ID, int.MinValue);
                         }
-                        else
-                        {
-                            var recoverShield = (((humanData.basisFist.baseValue + humanData.basisPalm.baseValue + humanData.basisFinger.baseValue) / 3.0f) / 1000.00f).Parse<int>();
-                            Effect3017.AddShieldValue(unit, MANASHIELD_EFFECT_EFX_ID, recoverShield);
-                        }
+                        //if (unit.data.mp > 0)// && EffectTool.GetEffects(unit, MANASHIELD_EFFECT_EFX_ID.ToString()).Count > 0)
+                        //{
+                        //    //var recoverShield = (((humanData.basisFist.baseValue + humanData.basisPalm.baseValue + humanData.basisFinger.baseValue) / 3.0f) / 1000.00f).Parse<int>();
+                        //    //Effect3017.AddShieldValue(unit, MANASHIELD_EFFECT_EFX_ID, 100);
+                        //}
                     }
                 }
             }
