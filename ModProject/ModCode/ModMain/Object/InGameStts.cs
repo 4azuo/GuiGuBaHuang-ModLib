@@ -81,6 +81,7 @@ namespace MOD_nE7UL2.Object
         public class _RealTrialConfigs
         {
             public float PowerUpOnGameLevel { get; set; }
+            public float PowerUpOnGradeLevel { get; set; }
         }
         public _RealTrialConfigs RealTrialConfigs { get; set; }
         #endregion

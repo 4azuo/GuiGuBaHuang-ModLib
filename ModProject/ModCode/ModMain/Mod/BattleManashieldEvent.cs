@@ -12,13 +12,7 @@ namespace MOD_nE7UL2.Mod
         public const int MANASHIELD_EFFECT_MAIN_ID = 903151120;
         public const int MANASHIELD_EFFECT_EFX_ID = 903151121;
 
-        public static _BattleManashieldConfigs ManashieldConfigs
-        {
-            get
-            {
-                return ModMain.ModObj.InGameCustomSettings.BattleManashieldConfigs;
-            }
-        }
+        public static _BattleManashieldConfigs ManashieldConfigs => ModMain.ModObj.InGameCustomSettings.BattleManashieldConfigs;
 
         public override void OnIntoBattleFirst(UnitCtrlBase e)
         {

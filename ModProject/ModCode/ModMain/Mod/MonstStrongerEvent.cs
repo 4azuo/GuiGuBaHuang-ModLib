@@ -10,13 +10,7 @@ namespace MOD_nE7UL2.Mod
     [Cache(ModConst.MONST_STRONGER_EVENT)]
     public class MonstStrongerEvent : ModEvent
     {
-        public static _MonstStrongerConfigs Configs
-        {
-            get
-            {
-                return ModMain.ModObj.InGameCustomSettings.MonstStrongerConfigs;
-            }
-        }
+        public static _MonstStrongerConfigs Configs => ModMain.ModObj.InGameCustomSettings.MonstStrongerConfigs;
 
         public IDictionary<MonstType, int> KillCounter { get; set; } = new Dictionary<MonstType, int>
         {

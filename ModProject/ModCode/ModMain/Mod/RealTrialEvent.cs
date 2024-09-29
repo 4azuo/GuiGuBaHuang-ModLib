@@ -5,6 +5,7 @@ using MOD_nE7UL2.Enum;
 using ModLib.Enum;
 using ModLib.Mod;
 using Newtonsoft.Json;
+using static MOD_nE7UL2.Object.InGameStts;
 
 namespace MOD_nE7UL2.Mod
 {
@@ -13,13 +14,7 @@ namespace MOD_nE7UL2.Mod
     {
         public override int OrderIndex => 8000;
 
-        public static float POWER_UP_ON_GAME_LEVEL
-        {
-            get
-            {
-                return ModMain.ModObj.InGameCustomSettings.RealTrialConfigs.PowerUpOnGameLevel;
-            }
-        }
+        public static _RealTrialConfigs RealTrialConfigs => ModMain.ModObj.InGameCustomSettings.RealTrialConfigs;
 
         [JsonIgnore]
         public bool IsInTrial { get; set; } = false;
@@ -34,8 +29,15 @@ namespace MOD_nE7UL2.Mod
             var data = e?.data;
             if (IsInTrial && data != null)
             {
-                var baseDmg = (g.world.playerUnit.GetProperty<int>(UnitPropertyEnum.Attack) * (1.00f + g.data.dataWorld.data.gameLevel.Parse<int>() * POWER_UP_ON_GAME_LEVEL * (g.world.playerUnit.GetGradeLvl() + 1))).Parse<int>();
-                baseDmg -= g.world.playerUnit.GetProperty<int>(UnitPropertyEnum.Defense) * g.world.playerUnit.GetProperty<int>(UnitPropertyEnum.BasisThunder) / 100;
+                var atk = g.world.playerUnit.GetProperty<int>(UnitPropertyEnum.Attack);
+                var def = g.world.playerUnit.GetProperty<int>(UnitPropertyEnum.Defense);
+                var basisThunder = g.world.playerUnit.GetProperty<int>(UnitPropertyEnum.BasisThunder);
+                var baseDmg = (atk * (
+                        1.00f
+                        + g.data.dataWorld.data.gameLevel.Parse<int>() * RealTrialConfigs.PowerUpOnGameLevel
+                        + g.world.playerUnit.GetGradeLvl() * RealTrialConfigs.PowerUpOnGradeLevel
+                    )).Parse<int>()
+                    - (def * basisThunder / 100);
                 data.attack.baseValue = baseDmg;
             }
         }
