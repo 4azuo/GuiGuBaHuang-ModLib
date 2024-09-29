@@ -10,6 +10,8 @@ namespace MOD_nE7UL2.Mod
     [Cache(ModConst.MONST_STRONGER_EVENT)]
     public class MonstStrongerEvent : ModEvent
     {
+        public override int OrderIndex => 8010;
+
         public static _MonstStrongerConfigs Configs => ModMain.ModObj.InGameCustomSettings.MonstStrongerConfigs;
 
         public IDictionary<MonstType, int> KillCounter { get; set; } = new Dictionary<MonstType, int>
@@ -41,9 +43,9 @@ namespace MOD_nE7UL2.Mod
             if (monstData != null && Configs.GrowRate.ContainsKey(monstData.monstType))
             {
                 var ratio = (Counter * Configs.GrowRate[monstData.monstType]) + (KillCounter[monstData.monstType] * Configs.KillGrowRate[monstData.monstType]);
-                monstData.attack.baseValue += (int)(monstData.attack.baseValue * (ratio * Configs.AtkR));
-                monstData.defense.baseValue += (int)(monstData.defense.baseValue * (ratio * Configs.DefR));
-                monstData.maxHP.baseValue += (int)(monstData.maxHP.baseValue * (ratio * Configs.MHpR));
+                monstData.attack.baseValue += (int)(monstData.attack.baseValue * (ratio * Configs.AtkR * monstData.grade.baseValue * g.data.dataWorld.data.gameLevel.Parse<int>()));
+                monstData.defense.baseValue += (int)(monstData.defense.baseValue * (ratio * Configs.DefR * monstData.grade.baseValue * g.data.dataWorld.data.gameLevel.Parse<int>()));
+                monstData.maxHP.baseValue += (int)(monstData.maxHP.baseValue * (ratio * Configs.MHpR * monstData.grade.baseValue * g.data.dataWorld.data.gameLevel.Parse<int>()));
                 monstData.hp = monstData.maxHP.baseValue;
 
                 monstData.basisBlade.baseValue *= monstData.grade.baseValue;

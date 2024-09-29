@@ -1,11 +1,12 @@
 {
 	"__name": "In game configurations",
 	"HideButtonConfigs": {
+		"__notes": "G:btnSave and G:btnReloadCache should be hiden. Because, Reload can cause error sometimes.",
 		"__select_options": "Hide/Show",
 		"ButtonConfigs": {
 			"GameMemu": {
-				"G:btnSave": "Show",
-				"G:btnReloadCache": "Show"
+				"G:btnSave": "Hide",
+				"G:btnReloadCache": "Hide"
 			},
 			"MartialPropInfo": {
 				"G:btnPreview": "Hide"
@@ -99,14 +100,14 @@
 		"DefR": 0.50,
 		"MHpR": 1.10,
 		"GrowRate": {
-			"Common": 0.00090,
-			"Elite": 0.00060,
-			"BOSS": 0.00045
+			"Common": 0.00070,
+			"Elite": 0.00050,
+			"BOSS": 0.00030
 		},
 		"KillGrowRate": {
-			"Common": 0.000004,
-			"Elite": 0.00008,
-			"BOSS": 0.00012
+			"Common": 0.000001,
+			"Elite": 0.00003,
+			"BOSS": 0.00005
 		}
 	},
 	"NpcUpgradeSkillConfigs": {

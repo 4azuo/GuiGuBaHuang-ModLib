@@ -17,16 +17,16 @@ namespace MOD_nE7UL2.Mod
 
         public Dictionary<int, float> BlockRatio { get; set; } = new Dictionary<int, float>()
         {
-            [1] = 0.40f,
-            [2] = 0.42f,
-            [3] = 0.44f,
-            [4] = 0.47f,
-            [5] = 0.50f,
-            [6] = 0.53f,
-            [7] = 0.56f,
-            [8] = 0.60f,
-            [9] = 0.65f,
-            [10] = 0.70f,
+            [1] = 0.50f,
+            [2] = 0.55f,
+            [3] = 0.60f,
+            [4] = 0.65f,
+            [5] = 0.80f,
+            [6] = 0.90f,
+            [7] = 1.00f,
+            [8] = 1.20f,
+            [9] = 1.40f,
+            [10] = 2.00f,
         };
 
         public override void OnIntoBattleFirst(UnitCtrlBase e)
@@ -42,17 +42,18 @@ namespace MOD_nE7UL2.Mod
                     var artifactInfo = artifact.propsItem.IsArtifact();
                     if (artifactInfo.durable > 0)
                     {
-                        humanData.attack.baseValue += artifactInfo.atk / 2;
+                        humanData.attack.baseValue += artifactInfo.atk / 3;
                         humanData.defense.baseValue += artifactInfo.def / 3;
                     }
                 }
-                //humanData.attack.baseValue += (??? / 100.00f * humanData.attack.baseValue).Parse<int>();
-                var adjustDef1 = ((((humanData.basisFist.baseValue + humanData.basisPalm.baseValue + humanData.basisFinger.baseValue) / 3.0f) / 1000.00f) * humanData.maxHP.baseValue).Parse<int>();
-                var adjustDef2 = ((humanData.basisEarth.baseValue / 1000.00f) * humanData.defense.baseValue).Parse<int>();
-                humanData.defense.baseValue += adjustDef1 + adjustDef2;
-                var adjustMs = (humanData.basisWind.baseValue / 100.00f).Parse<int>();
-                humanData.moveSpeed.baseValue += adjustMs;
             }
+
+            //e.data.attack.baseValue += (??? / 100.00f * e.data.attack.baseValue).Parse<int>();
+            var adjustDef1 = ((((e.data.basisFist.baseValue + e.data.basisPalm.baseValue + e.data.basisFinger.baseValue) / 2.5f) / 1000.00f) * e.data.maxHP.baseValue).Parse<int>();
+            var adjustDef2 = ((e.data.basisEarth.baseValue / 1000.00f) * e.data.defense.baseValue).Parse<int>();
+            e.data.defense.baseValue += adjustDef1 + adjustDef2;
+            var adjustMs = (e.data.basisWind.baseValue / 100.00f).Parse<int>();
+            e.data.moveSpeed.baseValue += adjustMs;
         }
 
         public override void OnBattleUnitHitDynIntHandler(UnitHitDynIntHandler e)
@@ -81,7 +82,7 @@ namespace MOD_nE7UL2.Mod
             if (pEnum != null)
             {
                 var r = GetUnitPropertyValue(AttackingUnit, pEnum);
-                e.dynV.baseValue += atk * r / 200;
+                e.dynV.baseValue += atk * r / 1000;
             }
 
             //add dmg (sp)
@@ -110,10 +111,10 @@ namespace MOD_nE7UL2.Mod
             {
                 if (attackUnitData?.worldUnitData?.unit != null)
                 {
-                    if (ValueHelper.IsBetween(CommonTool.Random(0.00f, 100.00f), 0.00f, Math.Min(10.00f, Math.Sqrt(attackUnitData.basisThunder.baseValue) / 3)))
+                    if (ValueHelper.IsBetween(CommonTool.Random(0.00f, 100.00f), 0.00f, Math.Min(8.00f, Math.Sqrt(attackUnitData.basisThunder.baseValue / 50))))
                     {
                         e.hitData.isCrit = true;
-                        e.dynV.baseValue = e.dynV.baseValue + (e.dynV.baseValue.Parse<float>() * (1.000f + attackUnitData.basisFire.baseValue / 1000.00f)).Parse<int>();
+                        e.dynV.baseValue += (e.dynV.baseValue.Parse<float>() * (1.000f + attackUnitData.basisFire.baseValue / 1000.00f)).Parse<int>();
                     }
                 }
                 //monster
@@ -142,7 +143,7 @@ namespace MOD_nE7UL2.Mod
             if (pEnum != null && e.dynV.baseValue > minDmg)
             {
                 var r = GetUnitPropertyValue(HitUnit, pEnum);
-                e.dynV.baseValue -= def * r / 100;
+                e.dynV.baseValue -= def * r / 50;
             }
 
             //block dmg (sp)
@@ -162,7 +163,7 @@ namespace MOD_nE7UL2.Mod
             //block dmg (mp)
             if (hitUnitData?.worldUnitData?.unit != null && hitUnitData.mp > 0 && e.dynV.baseValue > minDmg)
             {
-                var blockTimes = CommonTool.Random(1, defGradeLvl);
+                var blockTimes = CommonTool.Random(defGradeLvl / 2, defGradeLvl);
                 for (int i = 0; i < blockTimes && hitUnitData.mp > 0 && e.dynV.baseValue > minDmg; i++)
                 {
                     var r = (hitUnitData.mp.Parse<float>() / hitUnitData.maxMP.value.Parse<float>()) * BlockRatio[defGradeLvl];
