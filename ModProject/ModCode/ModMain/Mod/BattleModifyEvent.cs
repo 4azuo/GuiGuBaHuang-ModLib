@@ -63,7 +63,7 @@ namespace MOD_nE7UL2.Mod
             var hitUnitData = HitUnit.data.TryCast<UnitDataHuman>();
             var dType = GetDmgBasisType(e.hitData);
             var pEnum = GetDmgPropertyEnum(dType);
-            var defGrade = HitUnit.data.grade.baseValue;
+            var defGradeLvl = hitUnitData?.worldUnitData?.unit?.GetGradeLvl() ?? 1;
             var atk = AttackingUnit.data.attack.baseValue;
             var def = HitUnit.data.defense.baseValue;
             var minDmg = AttackingUnit.data.grade.baseValue;
@@ -146,28 +146,28 @@ namespace MOD_nE7UL2.Mod
             }
 
             //block dmg (sp)
-            if (hitUnitData?.worldUnitData?.unit != null && hitUnitData.sp > 0 && e.dynV.baseValue > minDmg && defGrade >= 4)
+            if (hitUnitData?.worldUnitData?.unit != null && hitUnitData.sp > 0 && e.dynV.baseValue > minDmg && defGradeLvl >= 4)
             {
-                var r = (hitUnitData.sp.Parse<float>() / hitUnitData.maxSP.value.Parse<float>()) * BlockRatio[defGrade];
+                var r = (hitUnitData.sp.Parse<float>() / hitUnitData.maxSP.value.Parse<float>()) * BlockRatio[defGradeLvl];
                 e.dynV.baseValue -= (def * r).Parse<int>();
             }
 
             //block dmg (dp)
-            if (hitUnitData?.worldUnitData?.unit != null && hitUnitData.dp > 0 && e.dynV.baseValue > minDmg && defGrade >= 8)
+            if (hitUnitData?.worldUnitData?.unit != null && hitUnitData.dp > 0 && e.dynV.baseValue > minDmg && defGradeLvl >= 8)
             {
-                var r = (hitUnitData.dp.Parse<float>() / hitUnitData.maxDP.value.Parse<float>()) * BlockRatio[defGrade];
+                var r = (hitUnitData.dp.Parse<float>() / hitUnitData.maxDP.value.Parse<float>()) * BlockRatio[defGradeLvl];
                 e.dynV.baseValue -= (def * r).Parse<int>();
             }
 
             //block dmg (mp)
             if (hitUnitData?.worldUnitData?.unit != null && hitUnitData.mp > 0 && e.dynV.baseValue > minDmg)
             {
-                var blockTimes = CommonTool.Random(1, defGrade);
+                var blockTimes = CommonTool.Random(1, defGradeLvl);
                 for (int i = 0; i < blockTimes && hitUnitData.mp > 0 && e.dynV.baseValue > minDmg; i++)
                 {
-                    var r = (hitUnitData.mp.Parse<float>() / hitUnitData.maxMP.value.Parse<float>()) * BlockRatio[defGrade];
+                    var r = (hitUnitData.mp.Parse<float>() / hitUnitData.maxMP.value.Parse<float>()) * BlockRatio[defGradeLvl];
                     var blockedDmg = (def * r).Parse<int>();
-                    var lostMp = Math.Max(defGrade, blockedDmg / (100 * defGrade));
+                    var lostMp = Math.Max(defGradeLvl, blockedDmg / (100 * defGradeLvl));
                     e.dynV.baseValue -= blockedDmg;
                     hitUnitData.AddMP(-lostMp);
                 }
