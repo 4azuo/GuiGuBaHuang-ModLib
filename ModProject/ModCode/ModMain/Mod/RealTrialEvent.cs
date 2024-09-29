@@ -11,6 +11,8 @@ namespace MOD_nE7UL2.Mod
     [Cache(ModConst.REAL_TRIAL_EVENT)]
     public class RealTrialEvent : ModBattleEvent
     {
+        public override int OrderIndex => 8000;
+
         public static float POWER_UP_ON_GAME_LEVEL
         {
             get
