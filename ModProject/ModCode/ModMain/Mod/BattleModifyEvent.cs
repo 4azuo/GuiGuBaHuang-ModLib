@@ -13,6 +13,8 @@ namespace MOD_nE7UL2.Mod
     [Cache(ModConst.BATTLE_MODIFY_EVENT)]
     public class BattleModifyEvent : ModBattleEvent
     {
+        public override int OrderIndex => 9000;
+
         public Dictionary<int, float> BlockRatio { get; set; } = new Dictionary<int, float>()
         {
             [1] = 0.40f,
@@ -40,7 +42,8 @@ namespace MOD_nE7UL2.Mod
                     var artifactInfo = artifact.propsItem.IsArtifact();
                     if (artifactInfo.durable > 0)
                     {
-                        humanData.attack.baseValue += artifactInfo.atk;
+                        humanData.attack.baseValue += artifactInfo.atk / 2;
+                        humanData.defense.baseValue += artifactInfo.def / 3;
                     }
                 }
                 //humanData.attack.baseValue += (??? / 100.00f * humanData.attack.baseValue).Parse<int>();

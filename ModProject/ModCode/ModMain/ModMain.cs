@@ -35,7 +35,7 @@ namespace MOD_nE7UL2
             //balance artifact attribute
             foreach (var item in g.conf.artifactShape._allConfList)
             {
-                item.durable *= 8;
+                item.durable *= 5;
                 item.spCost *= 6;
 
                 item.hp *= 5;
