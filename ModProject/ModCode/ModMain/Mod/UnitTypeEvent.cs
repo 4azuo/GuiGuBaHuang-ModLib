@@ -34,18 +34,12 @@ namespace MOD_nE7UL2.Mod
                 //add property
                 if (wunit.IsPlayer())
                 {
-                    if (wunit.GetGradeLvl() >= 5)
-                    {
-                        foreach (var p in UnitTypeEnum.Player.PropIncRatio)
-                        {
-                            var pType = p.Values[0] as UnitPropertyEnum;
-                            wunit.AddProperty(pType, UnitTypeEnum.Player.CalProp(pType, wunit.GetProperty<int>(pType)));
-                        }
-                    }
+                    if (wunit.GetGradeLvl() >= 3)
+                        AddPlayerProp(wunit, wunit.GetGradeLvl() / 3.0f);
                 }
                 else
                 {
-                    AddProp(wunit);
+                    AddNpcProp(wunit, 1.00f + wunit.GetGradeLvl() * 0.02f);
                 }
             }
         }
@@ -69,15 +63,21 @@ namespace MOD_nE7UL2.Mod
             return t;
         }
 
-        public void AddProp(WorldUnitBase wunit, float ratio = 1.00f)
+        public void AddPlayerProp(WorldUnitBase wunit, float ratio = 1.00f)
         {
-            if (UnitTypeDic.ContainsKey(wunit.GetUnitId()))
+            foreach (var p in UnitTypeEnum.Player.PropIncRatio)
             {
-                var utype = UnitTypeDic[wunit.GetUnitId()];
-                foreach (var p in utype.PropIncRatio)
-                {
-                    wunit.SetProperty(p.Values[0] as UnitPropertyEnum, utype.CalType(wunit, p.Values[0] as UnitPropertyEnum, ratio));
-                }
+                var pType = p.Values[0] as UnitPropertyEnum;
+                wunit.AddProperty(pType, (UnitTypeEnum.Player.CalProp(pType, wunit.GetProperty<int>(pType)) * ratio).Parse<int>());
+            }
+        }
+
+        public void AddNpcProp(WorldUnitBase wunit, float ratio = 1.00f)
+        {
+            var utype = UnitTypeDic[wunit.GetUnitId()];
+            foreach (var p in utype.PropIncRatio)
+            {
+                wunit.SetProperty(p.Values[0] as UnitPropertyEnum, utype.CalType(wunit, p.Values[0] as UnitPropertyEnum, ratio));
             }
         }
 
