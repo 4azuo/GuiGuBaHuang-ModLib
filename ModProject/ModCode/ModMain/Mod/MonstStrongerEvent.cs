@@ -42,10 +42,11 @@ namespace MOD_nE7UL2.Mod
             var monstData = e?.data?.TryCast<UnitDataMonst>();
             if (monstData != null && Configs.GrowRate.ContainsKey(monstData.monstType))
             {
+                var gameLvl = g.data.dataWorld.data.gameLevel.Parse<int>();
                 var ratio = (Counter * Configs.GrowRate[monstData.monstType]) + (KillCounter[monstData.monstType] * Configs.KillGrowRate[monstData.monstType]);
-                monstData.attack.baseValue += (int)(monstData.attack.baseValue * (ratio * Configs.AtkR * monstData.grade.baseValue * g.data.dataWorld.data.gameLevel.Parse<int>()));
-                monstData.defense.baseValue += (int)(monstData.defense.baseValue * (ratio * Configs.DefR * monstData.grade.baseValue * g.data.dataWorld.data.gameLevel.Parse<int>()));
-                monstData.maxHP.baseValue += (int)(monstData.maxHP.baseValue * (ratio * Configs.MHpR * monstData.grade.baseValue * g.data.dataWorld.data.gameLevel.Parse<int>()));
+                monstData.attack.baseValue += (int)(monstData.attack.baseValue * (ratio * Configs.AtkR * monstData.grade.baseValue * gameLvl));
+                monstData.defense.baseValue += (int)(monstData.defense.baseValue * (ratio * Configs.DefR * monstData.grade.baseValue * gameLvl));
+                monstData.maxHP.baseValue += (int)(monstData.maxHP.baseValue * (ratio * Configs.MHpR * monstData.grade.baseValue * gameLvl));
                 monstData.hp = monstData.maxHP.baseValue;
 
                 monstData.basisBlade.baseValue *= monstData.grade.baseValue;
@@ -60,7 +61,20 @@ namespace MOD_nE7UL2.Mod
                 monstData.basisThunder.baseValue *= monstData.grade.baseValue;
                 monstData.basisWind.baseValue *= monstData.grade.baseValue;
                 monstData.basisWood.baseValue *= monstData.grade.baseValue;
+
+                //monstData.attack.baseValue += (??? / 100.00f * monstData.attack.baseValue).Parse<int>();
+                var adjustDef1 = ((((monstData.basisFist.baseValue + monstData.basisPalm.baseValue + monstData.basisFinger.baseValue) / 3.0f) / 1000.00f) * monstData.maxHP.baseValue).Parse<int>();
+                var adjustDef2 = ((monstData.basisEarth.baseValue / 1000.00f) * monstData.defense.baseValue).Parse<int>();
+                monstData.defense.baseValue += adjustDef1 + adjustDef2;
+                var adjustMs = (monstData.basisWind.baseValue / 100.00f).Parse<int>();
+                monstData.moveSpeed.baseValue += adjustMs;
             }
         }
+
+        //BattleModifyEventに参照してください。
+        //public override void OnBattleUnitHitDynIntHandler(UnitHitDynIntHandler e)
+        //{
+        //    base.OnBattleUnitHitDynIntHandler(e);
+        //}
     }
 }

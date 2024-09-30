@@ -43,17 +43,17 @@ namespace MOD_nE7UL2.Mod
                     if (artifactInfo.durable > 0)
                     {
                         humanData.attack.baseValue += artifactInfo.atk / 3;
-                        humanData.defense.baseValue += artifactInfo.def / 3;
+                        humanData.defense.baseValue += artifactInfo.def / 2;
                     }
                 }
-            }
 
-            //e.data.attack.baseValue += (??? / 100.00f * e.data.attack.baseValue).Parse<int>();
-            var adjustDef1 = ((((e.data.basisFist.baseValue + e.data.basisPalm.baseValue + e.data.basisFinger.baseValue) / 2.5f) / 1000.00f) * e.data.maxHP.baseValue).Parse<int>();
-            var adjustDef2 = ((e.data.basisEarth.baseValue / 1000.00f) * e.data.defense.baseValue).Parse<int>();
-            e.data.defense.baseValue += adjustDef1 + adjustDef2;
-            var adjustMs = (e.data.basisWind.baseValue / 100.00f).Parse<int>();
-            e.data.moveSpeed.baseValue += adjustMs;
+                //humanData.attack.baseValue += (??? / 100.00f * humanData.attack.baseValue).Parse<int>();
+                var adjustDef1 = ((((humanData.basisFist.baseValue + humanData.basisPalm.baseValue + humanData.basisFinger.baseValue) / 2.0f) / 1000.00f) * humanData.maxHP.baseValue).Parse<int>();
+                var adjustDef2 = ((humanData.basisEarth.baseValue / 1000.00f) * humanData.defense.baseValue).Parse<int>();
+                humanData.defense.baseValue += adjustDef1 + adjustDef2;
+                var adjustMs = (humanData.basisWind.baseValue / 100.00f).Parse<int>();
+                humanData.moveSpeed.baseValue += adjustMs;
+            }
         }
 
         public override void OnBattleUnitHitDynIntHandler(UnitHitDynIntHandler e)
@@ -70,8 +70,8 @@ namespace MOD_nE7UL2.Mod
             var minDmg = AttackingUnit.data.grade.baseValue;
 
             //evasion
-            var basisWind = GetUnitPropertyValue(HitUnit, UnitPropertyEnum.BasisWind);
-            if (ValueHelper.IsBetween(CommonTool.Random(0.00f, 100.00f), 0.00f, Math.Min(20.00f, Math.Sqrt(basisWind / 10))))
+            var evaRate = Math.Sqrt(GetUnitPropertyValue(HitUnit, UnitPropertyEnum.BasisWind) / 18);
+            if (ValueHelper.IsBetween(CommonTool.Random(0.00f, 100.00f), 0.00f, Math.Min(12.00f, evaRate)))
             {
                 e.hitData.isEvade = true;
                 e.dynV.baseValue = 0;
@@ -139,11 +139,19 @@ namespace MOD_nE7UL2.Mod
                 }
             }
 
+            //block
+            var blockRate = Math.Sqrt(GetUnitPropertyValue(HitUnit, pEnum) / 12);
+            if (ValueHelper.IsBetween(CommonTool.Random(0.00f, 100.00f), 0.00f, Math.Min(18.00f, blockRate)))
+            {
+                var r = hitUnitData.hp.Parse<float>() / hitUnitData.maxHP.value.Parse<float>();
+                e.dynV.baseValue -= (def * r).Parse<int>();
+            }
+
             //block dmg (basis)
             if (pEnum != null && e.dynV.baseValue > minDmg)
             {
                 var r = GetUnitPropertyValue(HitUnit, pEnum);
-                e.dynV.baseValue -= def * r / 50;
+                e.dynV.baseValue -= def * r / 200;
             }
 
             //block dmg (sp)
@@ -174,8 +182,19 @@ namespace MOD_nE7UL2.Mod
                 }
             }
 
+            //min-dmg
             if (e.dynV.baseValue <= minDmg)
                 e.dynV.baseValue = minDmg;
+
+            //stronger every hit
+            if (hitUnitData?.worldUnitData?.unit != null)
+            {
+                e.hitData.attackUnit.data.attack.baseValue += (e.hitData.attackUnit.data.attack.baseValue * 0.00001f).Parse<int>();
+            }
+            else
+            {
+                e.hitData.attackUnit.data.attack.baseValue += (e.hitData.attackUnit.data.attack.baseValue * 0.001f).Parse<int>();
+            }
         }
 
         [EventCondition(IsInBattle = true)]
@@ -186,6 +205,7 @@ namespace MOD_nE7UL2.Mod
                 if (unit.isDie)
                     continue;
 
+                //monster recovery
                 var monstData = unit?.data?.TryCast<UnitDataMonst>();
                 if (monstData != null && monstData.grade.value >= 3)
                 {
@@ -193,6 +213,7 @@ namespace MOD_nE7UL2.Mod
                         monstData.hp += (Math.Sqrt(Math.Sqrt(monstData.maxHP.value / 3)) + Math.Sqrt(monstData.basisWood.baseValue / 100)).Parse<int>();
                 }
 
+                //human recovery
                 var humanData = unit?.data?.TryCast<UnitDataHuman>();
                 if (humanData?.worldUnitData?.unit != null)
                 {
