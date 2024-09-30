@@ -14,8 +14,8 @@ namespace MOD_nE7UL2.Enum
             {
                 MultiValue.Create(UnitPropertyEnum.Attack, 0.001, 1),
                 MultiValue.Create(UnitPropertyEnum.Defense, 0.0002, 0),
-                MultiValue.Create(UnitPropertyEnum.HpMax, 0.003, 1),
-                MultiValue.Create(UnitPropertyEnum.MpMax, 0.001, 0),
+                MultiValue.Create(UnitPropertyEnum.HpMax, 0.004, 2),
+                MultiValue.Create(UnitPropertyEnum.MpMax, 0.002, 1),
                 //MultiValue.Create(UnitPropertyEnum.MoveSpeed, 0, 0),
             }
         };
@@ -36,7 +36,7 @@ namespace MOD_nE7UL2.Enum
             {
                 MultiValue.Create(UnitPropertyEnum.Attack, 0.001, 0),
                 MultiValue.Create(UnitPropertyEnum.Defense, 0.0001, 0),
-                MultiValue.Create(UnitPropertyEnum.HpMax, 0.001, 0),
+                MultiValue.Create(UnitPropertyEnum.HpMax, 0.002, 0),
                 MultiValue.Create(UnitPropertyEnum.MpMax, 0.001, 0),
                 //MultiValue.Create(UnitPropertyEnum.MoveSpeed, 0, 0),
             }
@@ -48,7 +48,7 @@ namespace MOD_nE7UL2.Enum
                 MultiValue.Create(UnitPropertyEnum.Attack, 0.001, 1),
                 MultiValue.Create(UnitPropertyEnum.Defense, 0.0005, 0),
                 MultiValue.Create(UnitPropertyEnum.HpMax, 0.002, 1),
-                MultiValue.Create(UnitPropertyEnum.MpMax, 0.001, 0),
+                MultiValue.Create(UnitPropertyEnum.MpMax, 0.001, 1),
                 //MultiValue.Create(UnitPropertyEnum.MoveSpeed, 0, 0),
             }
         };
@@ -58,8 +58,8 @@ namespace MOD_nE7UL2.Enum
             {
                 MultiValue.Create(UnitPropertyEnum.Attack, 0.006, 1),
                 MultiValue.Create(UnitPropertyEnum.Defense, 0.001, 0),
-                MultiValue.Create(UnitPropertyEnum.HpMax, 0.003, 2),
-                MultiValue.Create(UnitPropertyEnum.MpMax, 0.001, 0),
+                MultiValue.Create(UnitPropertyEnum.HpMax, 0.003, 5),
+                MultiValue.Create(UnitPropertyEnum.MpMax, 0.001, 1),
                 //MultiValue.Create(UnitPropertyEnum.MoveSpeed, 0, 0),
             }
         };
@@ -78,10 +78,10 @@ namespace MOD_nE7UL2.Enum
         {
             PropIncRatio = new List<MultiValue>()
             {
-                MultiValue.Create(UnitPropertyEnum.Attack, 0.01, 1),
+                MultiValue.Create(UnitPropertyEnum.Attack, 0.008, 1),
                 MultiValue.Create(UnitPropertyEnum.Defense, 0, 0),
                 MultiValue.Create(UnitPropertyEnum.HpMax, 0.004, 1),
-                MultiValue.Create(UnitPropertyEnum.MpMax, 0.004, 0),
+                MultiValue.Create(UnitPropertyEnum.MpMax, 0.004, 1),
                 //MultiValue.Create(UnitPropertyEnum.MoveSpeed, 0, 0),
             }
         };
@@ -103,7 +103,7 @@ namespace MOD_nE7UL2.Enum
                 MultiValue.Create(UnitPropertyEnum.Attack, 0.006, 1),
                 MultiValue.Create(UnitPropertyEnum.Defense, 0.006, 1),
                 MultiValue.Create(UnitPropertyEnum.HpMax, 0.008, 5),
-                MultiValue.Create(UnitPropertyEnum.MpMax, 0, 0),
+                MultiValue.Create(UnitPropertyEnum.MpMax, 0, 1),
                 //MultiValue.Create(UnitPropertyEnum.MoveSpeed, 0, 0),
             }
         };

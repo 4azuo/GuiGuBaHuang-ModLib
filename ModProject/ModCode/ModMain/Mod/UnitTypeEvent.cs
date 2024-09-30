@@ -39,7 +39,7 @@ namespace MOD_nE7UL2.Mod
                 }
                 else
                 {
-                    AddNpcProp(wunit, 1.00f + wunit.GetGradeLvl() * 0.02f);
+                    AddNpcProp(wunit, 1.00f + wunit.GetGradeLvl() * 0.03f);
                 }
             }
         }
