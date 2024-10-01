@@ -1,5 +1,6 @@
 ﻿using EBattleTypeData;
 using MOD_nE7UL2.Const;
+using ModLib.Enum;
 using ModLib.Mod;
 using System.Collections.Generic;
 using UnityEngine;
@@ -44,9 +45,10 @@ namespace MOD_nE7UL2.Mod
             {
                 var gameLvl = g.data.dataWorld.data.gameLevel.Parse<int>();
                 var ratio = (Counter * Configs.GrowRate[monstData.monstType]) + (KillCounter[monstData.monstType] * Configs.KillGrowRate[monstData.monstType]);
-                monstData.attack.baseValue += (int)(monstData.attack.baseValue * (ratio * Configs.AtkR * monstData.grade.baseValue * gameLvl));
-                monstData.defense.baseValue += (int)(monstData.defense.baseValue * (ratio * Configs.DefR * monstData.grade.baseValue * gameLvl));
-                monstData.maxHP.baseValue += (int)(monstData.maxHP.baseValue * (ratio * Configs.MHpR * monstData.grade.baseValue * gameLvl));
+                monstData.attack.baseValue += (monstData.attack.baseValue * (ratio * Configs.AtkR * monstData.grade.baseValue * gameLvl)).Parse<int>();
+                monstData.defense.baseValue += (monstData.defense.baseValue * (ratio * Configs.DefR * monstData.grade.baseValue * gameLvl)).Parse<int>();
+                monstData.maxHP.baseValue += (monstData.maxHP.baseValue * (ratio * Configs.MHpR * monstData.grade.baseValue * gameLvl)).Parse<int>() +
+                    (g.world.playerUnit.GetProperty<int>(UnitPropertyEnum.Attack) * Configs.PlayerAtk2HpRate[monstData.monstType] * (monstData.grade.baseValue.Parse<float>() / g.world.playerUnit.GetProperty<int>(UnitPropertyEnum.GradeID).Parse<float>())).Parse<int>();
                 monstData.hp = monstData.maxHP.baseValue;
 
                 monstData.basisBlade.baseValue *= monstData.grade.baseValue;

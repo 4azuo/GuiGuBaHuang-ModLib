@@ -515,7 +515,7 @@ namespace MOD_nE7UL2.Mod
                 var player = g.world.playerUnit;
                 if (IsPlayerDie)
                 {
-                    player.AddProperty<int>(UnitPropertyEnum.Life, -(Math.Max(localDmgRecv / 1000, 1).Parse<int>()));
+                    player.AddProperty<int>(UnitPropertyEnum.Life, -(Math.Max(localDmgRecv / 1200, 1).Parse<int>()));
                     player.ClearExp();
                     player.SetUnitMoney(0);
                     DebugHelper.WriteLine($"BattleRewardEvent: player death");
