@@ -130,6 +130,7 @@ namespace MOD_nE7UL2.Object
             public float MHpR { get; set; }
             public Dictionary<MonstType, float> GrowRate { get; set; }
             public Dictionary<MonstType, float> KillGrowRate { get; set; }
+            public Dictionary<MonstType, float> PlayerAtk2HpRate { get; set; }
         }
         public _MonstStrongerConfigs MonstStrongerConfigs { get; set; }
         #endregion

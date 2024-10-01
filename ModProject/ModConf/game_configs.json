@@ -108,6 +108,11 @@
 			"Common": 0.000001,
 			"Elite": 0.00003,
 			"BOSS": 0.00005
+		},
+		"PlayerAtk2HpRate": {
+			"Common": 0.50,
+			"Elite": 5.00,
+			"BOSS": 50.00
 		}
 	},
 	"NpcUpgradeSkillConfigs": {
