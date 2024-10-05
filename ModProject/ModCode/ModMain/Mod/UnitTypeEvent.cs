@@ -15,6 +15,7 @@ namespace MOD_nE7UL2.Mod
 
         public override void OnMonthly()
         {
+            base.OnMonthly();
             foreach (var wunit in g.world.unit.GetUnits())
             {
                 var unitId = wunit.GetUnitId();
@@ -46,6 +47,7 @@ namespace MOD_nE7UL2.Mod
 
         public override void OnYearly()
         {
+            base.OnYearly();
             foreach (var wunit in g.world.unit.GetUnits())
             {
                 if (!wunit.IsPlayer() && UnitTypeDic.ContainsKey(wunit.GetUnitId()) && UnitTypeDic[wunit.GetUnitId()] == UnitTypeEnum.SpeedUnit)

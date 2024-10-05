@@ -41,6 +41,7 @@
     <Compile Include="Attribute\CacheAttribute.cs" />
     <Compile Include="Attribute\TraceIgnoreAttribute.cs" />
     <Compile Include="Attribute\TraceAttribute.cs" />
+    <Compile Include="Const\ModLibConst.cs" />
     <Compile Include="Converter\EnumObjectConverter.cs" />
     <Compile Include="Enum\EvCondLoadEnum.cs" />
     <Compile Include="Enum\ItemTypeEnum.cs" />
@@ -63,8 +64,6 @@
     <Compile Include="Helper\TraceHelper.cs" />
     <Compile Include="Helper\EffectHelper.cs" />
     <Compile Include="Helper\ValueHelper.cs" />
-    <Compile Include="Mod\ModData.cs" />
-    <Compile Include="Mod\ModSettings.cs" />
     <Compile Include="Mod\ModBattleEvent.cs" />
     <Compile Include="Mod\ModEvent.cs" />
     <Compile Include="Mod\ModMaster_CommonEvent.cs" />

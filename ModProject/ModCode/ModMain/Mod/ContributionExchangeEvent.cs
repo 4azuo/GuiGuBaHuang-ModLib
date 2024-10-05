@@ -28,13 +28,9 @@ namespace MOD_nE7UL2.Mod
         private Text txtExchangeRatio;
         private Text txtExchangeContribution;
 
-        public override void OnLoadGame()
-        {
-            RandomRatio();
-        }
-
         public override void OnMonthly()
         {
+            base.OnMonthly();
             RandomRatio();
         }
 
@@ -45,6 +41,7 @@ namespace MOD_nE7UL2.Mod
 
         public override void OnOpenUIEnd(OpenUIEnd e)
         {
+            base.OnOpenUIEnd(e);
             uiSchool = MonoBehaviour.FindObjectOfType<UISchool>();
             if (uiSchool != null && btnExchangeContribution == null &&
                 g.world?.playerUnit?.data?.school?.schoolNameID == uiSchool.school.schoolNameID)
@@ -58,6 +55,7 @@ namespace MOD_nE7UL2.Mod
 
         public override void OnCloseUIEnd(CloseUIEnd e)
         {
+            base.OnCloseUIEnd(e);
             uiSchool = MonoBehaviour.FindObjectOfType<UISchool>();
             if (uiSchool == null)
             {
@@ -69,6 +67,7 @@ namespace MOD_nE7UL2.Mod
 
         public override void OnFrameUpdate()
         {
+            base.OnFrameUpdate();
             if (uiSchool != null && uiSelector != null && txtExchangeContribution != null)
             {
                 var sp = CalExchangeSpiritStones();

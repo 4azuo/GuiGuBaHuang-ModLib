@@ -5,14 +5,14 @@ using ModLib.Mod;
 using ModLib.Object;
 using Newtonsoft.Json;
 using System;
+using System.Linq;
 using System.Collections.Generic;
 using UnityEngine;
 
 namespace MOD_nE7UL2.Mod
 {
-    [TraceIgnore]
     [Cache(ModConst.BATTLE_REWARD_EVENT_V2)]
-    public class BattleRewardEventV2 : ModBattleEvent
+    public class BattleRewardEventV2 : ModEvent
     {
         private const int QI_ITEM = 484410100;
 
@@ -27,7 +27,20 @@ namespace MOD_nE7UL2.Mod
         private const int P_LIMIT = 4;
         private const int P_INVOKE_COND = 5;
         private const int P_UPPROP_COND = 6;
-        private const int P_OLDV = 7;
+
+        private Dictionary<int, int> BodyReconstructions = new Dictionary<int, int>
+        {
+            [4] = 1011721,
+            [5] = 1011722,
+            [6] = 1011722,
+            [7] = 1011723,
+            [8] = 1011723,
+            [9] = 1011724,
+            [10] = 1011724,
+            [8] = 1011725,
+            [9] = 1011726,
+            [10] = 1011726,
+        };
 
         private static readonly MultiValue[] PLAYER_TRAINING_PROPERTIES = new MultiValue[]
         {
@@ -37,161 +50,161 @@ namespace MOD_nE7UL2.Mod
                 new Func<BattleRewardEventV2, MultiValue, bool>((sender, prop) =>
             {
                 var limitKey = sender.GetLimitKey(prop);
-                return sender.GetDmg(DmgSaveEnum.Global, GetDmgKey(DmgEnum.DmgDealt, DmgTypeEnum.Damage)) > sender.TraningValues[limitKey];
-            }), "UpAtk"),
+                return ModBattleEvent.sGetDmg(ModBattleEvent.DmgSaveEnum.Global, ModBattleEvent.GetDmgKey(ModBattleEvent.DmgEnum.DmgDealt, ModBattleEvent.DmgTypeEnum.Damage)) > sender.TraningValues[limitKey];
+            })),
             MultiValue.Create("Atk3", UnitPropertyEnum.Attack, 1.080, 100, 200,
                 new Func<BattleRewardEventV2, bool>((sender) => g.world.playerUnit.GetGradeLvl() >= 3),
                 new Func<BattleRewardEventV2, MultiValue, bool>((sender, prop) =>
             {
                 var limitKey = sender.GetLimitKey(prop);
-                return sender.GetDmg(DmgSaveEnum.Global, GetDmgKey(DmgEnum.DmgDealt, DmgTypeEnum.Damage)) > sender.TraningValues[limitKey];
+                return ModBattleEvent.sGetDmg(ModBattleEvent.DmgSaveEnum.Global, ModBattleEvent.GetDmgKey(ModBattleEvent.DmgEnum.DmgDealt, ModBattleEvent.DmgTypeEnum.Damage)) > sender.TraningValues[limitKey];
             })),
             MultiValue.Create("Atk5",UnitPropertyEnum.Attack, 1.090, 200, 800,
                 new Func<BattleRewardEventV2, bool>((sender) => g.world.playerUnit.GetGradeLvl() >= 5),
                 new Func<BattleRewardEventV2, MultiValue, bool>((sender, prop) =>
             {
                 var limitKey = sender.GetLimitKey(prop);
-                return sender.GetDmg(DmgSaveEnum.Global, GetDmgKey(DmgEnum.DmgDealt, DmgTypeEnum.Damage)) > sender.TraningValues[limitKey];
+                return ModBattleEvent.sGetDmg(ModBattleEvent.DmgSaveEnum.Global, ModBattleEvent.GetDmgKey(ModBattleEvent.DmgEnum.DmgDealt, ModBattleEvent.DmgTypeEnum.Damage)) > sender.TraningValues[limitKey];
             })),
             MultiValue.Create("Atk7", UnitPropertyEnum.Attack, 1.100, 400, 3200,
                 new Func<BattleRewardEventV2, bool>((sender) => g.world.playerUnit.GetGradeLvl() >= 7),
                 new Func<BattleRewardEventV2, MultiValue, bool>((sender, prop) =>
             {
                 var limitKey = sender.GetLimitKey(prop);
-                return sender.GetDmg(DmgSaveEnum.Global, GetDmgKey(DmgEnum.DmgDealt, DmgTypeEnum.Damage)) > sender.TraningValues[limitKey];
+                return ModBattleEvent.sGetDmg(ModBattleEvent.DmgSaveEnum.Global, ModBattleEvent.GetDmgKey(ModBattleEvent.DmgEnum.DmgDealt, ModBattleEvent.DmgTypeEnum.Damage)) > sender.TraningValues[limitKey];
             })),
             MultiValue.Create("Atk9", UnitPropertyEnum.Attack, 1.110, 800, 12800,
                 new Func<BattleRewardEventV2, bool>((sender) => g.world.playerUnit.GetGradeLvl() >= 9),
                 new Func<BattleRewardEventV2, MultiValue, bool>((sender, prop) =>
             {
                 var limitKey = sender.GetLimitKey(prop);
-                return sender.GetDmg(DmgSaveEnum.Global, GetDmgKey(DmgEnum.DmgDealt, DmgTypeEnum.Damage)) > sender.TraningValues[limitKey];
+                return ModBattleEvent.sGetDmg(ModBattleEvent.DmgSaveEnum.Global, ModBattleEvent.GetDmgKey(ModBattleEvent.DmgEnum.DmgDealt, ModBattleEvent.DmgTypeEnum.Damage)) > sender.TraningValues[limitKey];
             })),
             MultiValue.Create("Def1", UnitPropertyEnum.Defense, 1.130, 100, 100,
                 new Func<BattleRewardEventV2, bool>((sender) => true),
                 new Func<BattleRewardEventV2, MultiValue, bool>((sender, prop) =>
             {
                 var limitKey = sender.GetLimitKey(prop);
-                return sender.GetDmg(DmgSaveEnum.Global, GetDmgKey(DmgEnum.DmgRecv, DmgTypeEnum.Damage)) > sender.TraningValues[limitKey];
-            }), "UpDef"),
+                return ModBattleEvent.sGetDmg(ModBattleEvent.DmgSaveEnum.Global, ModBattleEvent.GetDmgKey(ModBattleEvent.DmgEnum.DmgRecv, ModBattleEvent.DmgTypeEnum.Damage)) > sender.TraningValues[limitKey];
+            })),
             MultiValue.Create("Def4", UnitPropertyEnum.Defense, 1.150, 1000, 1000,
                 new Func<BattleRewardEventV2, bool>((sender) => g.world.playerUnit.GetGradeLvl() >= 4),
                 new Func<BattleRewardEventV2, MultiValue, bool>((sender, prop) =>
             {
                 var limitKey = sender.GetLimitKey(prop);
-                return sender.GetDmg(DmgSaveEnum.Global, GetDmgKey(DmgEnum.DmgRecv, DmgTypeEnum.Damage)) > sender.TraningValues[limitKey];
+                return ModBattleEvent.sGetDmg(ModBattleEvent.DmgSaveEnum.Global, ModBattleEvent.GetDmgKey(ModBattleEvent.DmgEnum.DmgRecv, ModBattleEvent.DmgTypeEnum.Damage)) > sender.TraningValues[limitKey];
             })),
             MultiValue.Create("Def8", UnitPropertyEnum.Defense, 1.200, 10000, 10000,
                 new Func<BattleRewardEventV2, bool>((sender) => g.world.playerUnit.GetGradeLvl() >= 8),
                 new Func<BattleRewardEventV2, MultiValue, bool>((sender, prop) =>
             {
                 var limitKey = sender.GetLimitKey(prop);
-                return sender.GetDmg(DmgSaveEnum.Global, GetDmgKey(DmgEnum.DmgRecv, DmgTypeEnum.Damage)) > sender.TraningValues[limitKey];
+                return ModBattleEvent.sGetDmg(ModBattleEvent.DmgSaveEnum.Global, ModBattleEvent.GetDmgKey(ModBattleEvent.DmgEnum.DmgRecv, ModBattleEvent.DmgTypeEnum.Damage)) > sender.TraningValues[limitKey];
             })),
             MultiValue.Create("HpMax", UnitPropertyEnum.HpMax, 1.015, 10, 10,
                 new Func<BattleRewardEventV2, bool>((sender) => true),
                 new Func<BattleRewardEventV2, MultiValue, bool>((sender, prop) =>
             {
                 var limitKey = sender.GetLimitKey(prop);
-                return sender.GetDmg(DmgSaveEnum.Global, GetDmgKey(DmgEnum.DmgRecv, DmgTypeEnum.Damage)) > sender.TraningValues[limitKey];
-            }), "UpMMp"),
+                return ModBattleEvent.sGetDmg(ModBattleEvent.DmgSaveEnum.Global, ModBattleEvent.GetDmgKey(ModBattleEvent.DmgEnum.DmgRecv, ModBattleEvent.DmgTypeEnum.Damage)) > sender.TraningValues[limitKey];
+            })),
             MultiValue.Create("1000P+HpMax", UnitPropertyEnum.HpMax, 1.015, 10, 10,
                 new Func<BattleRewardEventV2, bool>((sender) => g.world.playerUnit.GetBasisPhysicSum() >= 1000),
                 new Func<BattleRewardEventV2, MultiValue, bool>((sender, prop) =>
             {
                 var limitKey = sender.GetLimitKey(prop);
-                return sender.GetDmg(DmgSaveEnum.Global, GetDmgKey(DmgEnum.DmgRecv, DmgTypeEnum.Damage)) > sender.TraningValues[limitKey];
+                return ModBattleEvent.sGetDmg(ModBattleEvent.DmgSaveEnum.Global, ModBattleEvent.GetDmgKey(ModBattleEvent.DmgEnum.DmgRecv, ModBattleEvent.DmgTypeEnum.Damage)) > sender.TraningValues[limitKey];
             })),
             MultiValue.Create("3000P+HpMax", UnitPropertyEnum.HpMax, 1.015, 10, 10,
                 new Func<BattleRewardEventV2, bool>((sender) => g.world.playerUnit.GetBasisPhysicSum() >= 3000),
                 new Func<BattleRewardEventV2, MultiValue, bool>((sender, prop) =>
             {
                 var limitKey = sender.GetLimitKey(prop);
-                return sender.GetDmg(DmgSaveEnum.Global, GetDmgKey(DmgEnum.DmgRecv, DmgTypeEnum.Damage)) > sender.TraningValues[limitKey];
+                return ModBattleEvent.sGetDmg(ModBattleEvent.DmgSaveEnum.Global, ModBattleEvent.GetDmgKey(ModBattleEvent.DmgEnum.DmgRecv, ModBattleEvent.DmgTypeEnum.Damage)) > sender.TraningValues[limitKey];
             })),
             MultiValue.Create("6000P+HpMax", UnitPropertyEnum.HpMax, 1.015, 10, 10,
                 new Func<BattleRewardEventV2, bool>((sender) => g.world.playerUnit.GetBasisPhysicSum() >= 6000),
                 new Func<BattleRewardEventV2, MultiValue, bool>((sender, prop) =>
             {
                 var limitKey = sender.GetLimitKey(prop);
-                return sender.GetDmg(DmgSaveEnum.Global, GetDmgKey(DmgEnum.DmgRecv, DmgTypeEnum.Damage)) > sender.TraningValues[limitKey];
+                return ModBattleEvent.sGetDmg(ModBattleEvent.DmgSaveEnum.Global, ModBattleEvent.GetDmgKey(ModBattleEvent.DmgEnum.DmgRecv, ModBattleEvent.DmgTypeEnum.Damage)) > sender.TraningValues[limitKey];
             })),
             MultiValue.Create("12000P+HpMax", UnitPropertyEnum.HpMax, 1.015, 10, 10,
                 new Func<BattleRewardEventV2, bool>((sender) => g.world.playerUnit.GetBasisPhysicSum() >= 12000),
                 new Func<BattleRewardEventV2, MultiValue, bool>((sender, prop) =>
             {
                 var limitKey = sender.GetLimitKey(prop);
-                return sender.GetDmg(DmgSaveEnum.Global, GetDmgKey(DmgEnum.DmgRecv, DmgTypeEnum.Damage)) > sender.TraningValues[limitKey];
+                return ModBattleEvent.sGetDmg(ModBattleEvent.DmgSaveEnum.Global, ModBattleEvent.GetDmgKey(ModBattleEvent.DmgEnum.DmgRecv, ModBattleEvent.DmgTypeEnum.Damage)) > sender.TraningValues[limitKey];
             })),
             MultiValue.Create("24000P+HpMax", UnitPropertyEnum.HpMax, 1.015, 10, 10,
                 new Func<BattleRewardEventV2, bool>((sender) => g.world.playerUnit.GetBasisPhysicSum() >= 24000),
                 new Func<BattleRewardEventV2, MultiValue, bool>((sender, prop) =>
             {
                 var limitKey = sender.GetLimitKey(prop);
-                return sender.GetDmg(DmgSaveEnum.Global, GetDmgKey(DmgEnum.DmgRecv, DmgTypeEnum.Damage)) > sender.TraningValues[limitKey];
+                return ModBattleEvent.sGetDmg(ModBattleEvent.DmgSaveEnum.Global, ModBattleEvent.GetDmgKey(ModBattleEvent.DmgEnum.DmgRecv, ModBattleEvent.DmgTypeEnum.Damage)) > sender.TraningValues[limitKey];
             })),
             MultiValue.Create("48000P+HpMax", UnitPropertyEnum.HpMax, 1.015, 10, 10,
                 new Func<BattleRewardEventV2, bool>((sender) => g.world.playerUnit.GetBasisPhysicSum() >= 48000),
                 new Func<BattleRewardEventV2, MultiValue, bool>((sender, prop) =>
             {
                 var limitKey = sender.GetLimitKey(prop);
-                return sender.GetDmg(DmgSaveEnum.Global, GetDmgKey(DmgEnum.DmgRecv, DmgTypeEnum.Damage)) > sender.TraningValues[limitKey];
+                return ModBattleEvent.sGetDmg(ModBattleEvent.DmgSaveEnum.Global, ModBattleEvent.GetDmgKey(ModBattleEvent.DmgEnum.DmgRecv, ModBattleEvent.DmgTypeEnum.Damage)) > sender.TraningValues[limitKey];
             })),
             MultiValue.Create("MpMax", UnitPropertyEnum.MpMax, 1.200, 200, 200,
                 new Func<BattleRewardEventV2, bool>((sender) => true),
                 new Func<BattleRewardEventV2, MultiValue, bool>((sender, prop) =>
             {
                 var limitKey = sender.GetLimitKey(prop);
-                return sender.GetDmg(DmgSaveEnum.Global, GetDmgKey(DmgEnum.DmgDealt, DmgTypeEnum.Magic)) + 
-                sender.GetDmg(DmgSaveEnum.Global, GetDmgKey(DmgEnum.DmgRecv, DmgTypeEnum.Magic)) > sender.TraningValues[limitKey];
-            }), "UpDef"),
+                return ModBattleEvent.sGetDmg(ModBattleEvent.DmgSaveEnum.Global, ModBattleEvent.GetDmgKey(ModBattleEvent.DmgEnum.DmgDealt, ModBattleEvent.DmgTypeEnum.Magic)) + 
+                ModBattleEvent.sGetDmg(ModBattleEvent.DmgSaveEnum.Global, ModBattleEvent.GetDmgKey(ModBattleEvent.DmgEnum.DmgRecv, ModBattleEvent.DmgTypeEnum.Magic)) > sender.TraningValues[limitKey];
+            })),
             MultiValue.Create("1000M+MpMax", UnitPropertyEnum.MpMax, 1.200, 200, 200,
                 new Func<BattleRewardEventV2, bool>((sender) => g.world.playerUnit.GetBasisMagicSum() >= 1000),
                 new Func<BattleRewardEventV2, MultiValue, bool>((sender, prop) =>
             {
                 var limitKey = sender.GetLimitKey(prop);
-                return sender.GetDmg(DmgSaveEnum.Global, GetDmgKey(DmgEnum.DmgDealt, DmgTypeEnum.Magic)) +
-                sender.GetDmg(DmgSaveEnum.Global, GetDmgKey(DmgEnum.DmgRecv, DmgTypeEnum.Magic)) > sender.TraningValues[limitKey];
+                return ModBattleEvent.sGetDmg(ModBattleEvent.DmgSaveEnum.Global, ModBattleEvent.GetDmgKey(ModBattleEvent.DmgEnum.DmgDealt, ModBattleEvent.DmgTypeEnum.Magic)) +
+                ModBattleEvent.sGetDmg(ModBattleEvent.DmgSaveEnum.Global, ModBattleEvent.GetDmgKey(ModBattleEvent.DmgEnum.DmgRecv, ModBattleEvent.DmgTypeEnum.Magic)) > sender.TraningValues[limitKey];
             })),
             MultiValue.Create("3000M+MpMax", UnitPropertyEnum.MpMax, 1.200, 200, 200,
                 new Func<BattleRewardEventV2, bool>((sender) => g.world.playerUnit.GetBasisMagicSum() >= 3000),
                 new Func<BattleRewardEventV2, MultiValue, bool>((sender, prop) =>
             {
                 var limitKey = sender.GetLimitKey(prop);
-                return sender.GetDmg(DmgSaveEnum.Global, GetDmgKey(DmgEnum.DmgDealt, DmgTypeEnum.Magic)) +
-                sender.GetDmg(DmgSaveEnum.Global, GetDmgKey(DmgEnum.DmgRecv, DmgTypeEnum.Magic)) > sender.TraningValues[limitKey];
+                return ModBattleEvent.sGetDmg(ModBattleEvent.DmgSaveEnum.Global, ModBattleEvent.GetDmgKey(ModBattleEvent.DmgEnum.DmgDealt, ModBattleEvent.DmgTypeEnum.Magic)) +
+                ModBattleEvent.sGetDmg(ModBattleEvent.DmgSaveEnum.Global, ModBattleEvent.GetDmgKey(ModBattleEvent.DmgEnum.DmgRecv, ModBattleEvent.DmgTypeEnum.Magic)) > sender.TraningValues[limitKey];
             })),
             MultiValue.Create("6000M+MpMax", UnitPropertyEnum.MpMax, 1.200, 200, 200,
                 new Func<BattleRewardEventV2, bool>((sender) => g.world.playerUnit.GetBasisMagicSum() >= 6000),
                 new Func<BattleRewardEventV2, MultiValue, bool>((sender, prop) =>
             {
                 var limitKey = sender.GetLimitKey(prop);
-                return sender.GetDmg(DmgSaveEnum.Global, GetDmgKey(DmgEnum.DmgDealt, DmgTypeEnum.Magic)) +
-                sender.GetDmg(DmgSaveEnum.Global, GetDmgKey(DmgEnum.DmgRecv, DmgTypeEnum.Magic)) > sender.TraningValues[limitKey];
+                return ModBattleEvent.sGetDmg(ModBattleEvent.DmgSaveEnum.Global, ModBattleEvent.GetDmgKey(ModBattleEvent.DmgEnum.DmgDealt, ModBattleEvent.DmgTypeEnum.Magic)) +
+                ModBattleEvent.sGetDmg(ModBattleEvent.DmgSaveEnum.Global, ModBattleEvent.GetDmgKey(ModBattleEvent.DmgEnum.DmgRecv, ModBattleEvent.DmgTypeEnum.Magic)) > sender.TraningValues[limitKey];
             })),
             MultiValue.Create("12000M+MpMax", UnitPropertyEnum.MpMax, 1.200, 200, 200,
                 new Func<BattleRewardEventV2, bool>((sender) => g.world.playerUnit.GetBasisMagicSum() >= 12000),
                 new Func<BattleRewardEventV2, MultiValue, bool>((sender, prop) =>
             {
                 var limitKey = sender.GetLimitKey(prop);
-                return sender.GetDmg(DmgSaveEnum.Global, GetDmgKey(DmgEnum.DmgDealt, DmgTypeEnum.Magic)) +
-                sender.GetDmg(DmgSaveEnum.Global, GetDmgKey(DmgEnum.DmgRecv, DmgTypeEnum.Magic)) > sender.TraningValues[limitKey];
+                return ModBattleEvent.sGetDmg(ModBattleEvent.DmgSaveEnum.Global, ModBattleEvent.GetDmgKey(ModBattleEvent.DmgEnum.DmgDealt, ModBattleEvent.DmgTypeEnum.Magic)) +
+                ModBattleEvent.sGetDmg(ModBattleEvent.DmgSaveEnum.Global, ModBattleEvent.GetDmgKey(ModBattleEvent.DmgEnum.DmgRecv, ModBattleEvent.DmgTypeEnum.Magic)) > sender.TraningValues[limitKey];
             })),
             MultiValue.Create("24000M+MpMax", UnitPropertyEnum.MpMax, 1.200, 200, 200,
                 new Func<BattleRewardEventV2, bool>((sender) => g.world.playerUnit.GetBasisMagicSum() >= 24000),
                 new Func<BattleRewardEventV2, MultiValue, bool>((sender, prop) =>
             {
                 var limitKey = sender.GetLimitKey(prop);
-                return sender.GetDmg(DmgSaveEnum.Global, GetDmgKey(DmgEnum.DmgDealt, DmgTypeEnum.Magic)) +
-                sender.GetDmg(DmgSaveEnum.Global, GetDmgKey(DmgEnum.DmgRecv, DmgTypeEnum.Magic)) > sender.TraningValues[limitKey];
+                return ModBattleEvent.sGetDmg(ModBattleEvent.DmgSaveEnum.Global, ModBattleEvent.GetDmgKey(ModBattleEvent.DmgEnum.DmgDealt, ModBattleEvent.DmgTypeEnum.Magic)) +
+                ModBattleEvent.sGetDmg(ModBattleEvent.DmgSaveEnum.Global, ModBattleEvent.GetDmgKey(ModBattleEvent.DmgEnum.DmgRecv, ModBattleEvent.DmgTypeEnum.Magic)) > sender.TraningValues[limitKey];
             })),
             MultiValue.Create("48000M+MpMax", UnitPropertyEnum.MpMax, 1.200, 200, 200,
                 new Func<BattleRewardEventV2, bool>((sender) => g.world.playerUnit.GetBasisMagicSum() >= 48000),
                 new Func<BattleRewardEventV2, MultiValue, bool>((sender, prop) =>
             {
                 var limitKey = sender.GetLimitKey(prop);
-                return sender.GetDmg(DmgSaveEnum.Global, GetDmgKey(DmgEnum.DmgDealt, DmgTypeEnum.Magic)) +
-                sender.GetDmg(DmgSaveEnum.Global, GetDmgKey(DmgEnum.DmgRecv, DmgTypeEnum.Magic)) > sender.TraningValues[limitKey];
+                return ModBattleEvent.sGetDmg(ModBattleEvent.DmgSaveEnum.Global, ModBattleEvent.GetDmgKey(ModBattleEvent.DmgEnum.DmgDealt, ModBattleEvent.DmgTypeEnum.Magic)) +
+                ModBattleEvent.sGetDmg(ModBattleEvent.DmgSaveEnum.Global, ModBattleEvent.GetDmgKey(ModBattleEvent.DmgEnum.DmgRecv, ModBattleEvent.DmgTypeEnum.Magic)) > sender.TraningValues[limitKey];
             })),
             #endregion
 
@@ -201,49 +214,49 @@ namespace MOD_nE7UL2.Mod
                 new Func<BattleRewardEventV2, MultiValue, bool>((sender, prop) =>
             {
                 var limitKey = sender.GetLimitKey(prop);
-                return sender.GetDmg(DmgSaveEnum.Local, GetDmgKey(DmgEnum.DmgDealt, DmgTypeEnum.Blade)) +
-                sender.GetDmg(DmgSaveEnum.Local, GetDmgKey(DmgEnum.DmgRecv, DmgTypeEnum.Blade)) > sender.TraningValues[limitKey];
-            }), UnitPropertyEnum.BasisBlade.PropName),
+                return ModBattleEvent.sGetDmg(ModBattleEvent.DmgSaveEnum.Local, ModBattleEvent.GetDmgKey(ModBattleEvent.DmgEnum.DmgDealt, ModBattleEvent.DmgTypeEnum.Blade)) +
+                ModBattleEvent.sGetDmg(ModBattleEvent.DmgSaveEnum.Local, ModBattleEvent.GetDmgKey(ModBattleEvent.DmgEnum.DmgRecv, ModBattleEvent.DmgTypeEnum.Blade)) > sender.TraningValues[limitKey];
+            })),
             MultiValue.Create("Spear", UnitPropertyEnum.BasisSpear, 1.050, 125, 1100,
                 new Func<BattleRewardEventV2, bool>((sender) => true),
                 new Func<BattleRewardEventV2, MultiValue, bool>((sender, prop) =>
             {
                 var limitKey = sender.GetLimitKey(prop);
-                return sender.GetDmg(DmgSaveEnum.Local, GetDmgKey(DmgEnum.DmgDealt, DmgTypeEnum.Spear)) +
-                sender.GetDmg(DmgSaveEnum.Local, GetDmgKey(DmgEnum.DmgRecv, DmgTypeEnum.Spear)) > sender.TraningValues[limitKey];
-            }), UnitPropertyEnum.BasisSpear.PropName),
+                return ModBattleEvent.sGetDmg(ModBattleEvent.DmgSaveEnum.Local, ModBattleEvent.GetDmgKey(ModBattleEvent.DmgEnum.DmgDealt, ModBattleEvent.DmgTypeEnum.Spear)) +
+                ModBattleEvent.sGetDmg(ModBattleEvent.DmgSaveEnum.Local, ModBattleEvent.GetDmgKey(ModBattleEvent.DmgEnum.DmgRecv, ModBattleEvent.DmgTypeEnum.Spear)) > sender.TraningValues[limitKey];
+            })),
             MultiValue.Create("Sword", UnitPropertyEnum.BasisSword, 1.050, 125, 1100,
                 new Func<BattleRewardEventV2, bool>((sender) => true),
                 new Func<BattleRewardEventV2, MultiValue, bool>((sender, prop) =>
             {
                 var limitKey = sender.GetLimitKey(prop);
-                return sender.GetDmg(DmgSaveEnum.Local, GetDmgKey(DmgEnum.DmgDealt, DmgTypeEnum.Sword)) +
-                sender.GetDmg(DmgSaveEnum.Local, GetDmgKey(DmgEnum.DmgRecv, DmgTypeEnum.Sword)) > sender.TraningValues[limitKey];
-            }), UnitPropertyEnum.BasisSword.PropName),
+                return ModBattleEvent.sGetDmg(ModBattleEvent.DmgSaveEnum.Local, ModBattleEvent.GetDmgKey(ModBattleEvent.DmgEnum.DmgDealt, ModBattleEvent.DmgTypeEnum.Sword)) +
+                ModBattleEvent.sGetDmg(ModBattleEvent.DmgSaveEnum.Local, ModBattleEvent.GetDmgKey(ModBattleEvent.DmgEnum.DmgRecv, ModBattleEvent.DmgTypeEnum.Sword)) > sender.TraningValues[limitKey];
+            })),
             MultiValue.Create("Fist", UnitPropertyEnum.BasisFist, 1.050, 125, 1100,
                 new Func<BattleRewardEventV2, bool>((sender) => true),
                 new Func<BattleRewardEventV2, MultiValue, bool>((sender, prop) =>
             {
                 var limitKey = sender.GetLimitKey(prop);
-                return sender.GetDmg(DmgSaveEnum.Local, GetDmgKey(DmgEnum.DmgDealt, DmgTypeEnum.Fist)) +
-                sender.GetDmg(DmgSaveEnum.Local, GetDmgKey(DmgEnum.DmgRecv, DmgTypeEnum.Fist)) > sender.TraningValues[limitKey];
-            }), UnitPropertyEnum.BasisFist.PropName),
+                return ModBattleEvent.sGetDmg(ModBattleEvent.DmgSaveEnum.Local, ModBattleEvent.GetDmgKey(ModBattleEvent.DmgEnum.DmgDealt, ModBattleEvent.DmgTypeEnum.Fist)) +
+                ModBattleEvent.sGetDmg(ModBattleEvent.DmgSaveEnum.Local, ModBattleEvent.GetDmgKey(ModBattleEvent.DmgEnum.DmgRecv, ModBattleEvent.DmgTypeEnum.Fist)) > sender.TraningValues[limitKey];
+            })),
             MultiValue.Create("Palm", UnitPropertyEnum.BasisPalm, 1.050, 125, 1100,
                 new Func<BattleRewardEventV2, bool>((sender) => true),
                 new Func<BattleRewardEventV2, MultiValue, bool>((sender, prop) =>
             {
                 var limitKey = sender.GetLimitKey(prop);
-                return sender.GetDmg(DmgSaveEnum.Local, GetDmgKey(DmgEnum.DmgDealt, DmgTypeEnum.Palm)) +
-                sender.GetDmg(DmgSaveEnum.Local, GetDmgKey(DmgEnum.DmgRecv, DmgTypeEnum.Palm)) > sender.TraningValues[limitKey];
-            }), UnitPropertyEnum.BasisPalm.PropName),
+                return ModBattleEvent.sGetDmg(ModBattleEvent.DmgSaveEnum.Local, ModBattleEvent.GetDmgKey(ModBattleEvent.DmgEnum.DmgDealt, ModBattleEvent.DmgTypeEnum.Palm)) +
+                ModBattleEvent.sGetDmg(ModBattleEvent.DmgSaveEnum.Local, ModBattleEvent.GetDmgKey(ModBattleEvent.DmgEnum.DmgRecv, ModBattleEvent.DmgTypeEnum.Palm)) > sender.TraningValues[limitKey];
+            })),
             MultiValue.Create("Finger", UnitPropertyEnum.BasisFinger, 1.050, 125, 1100,
                 new Func<BattleRewardEventV2, bool>((sender) => true),
                 new Func<BattleRewardEventV2, MultiValue, bool>((sender, prop) =>
             {
                 var limitKey = sender.GetLimitKey(prop);
-                return sender.GetDmg(DmgSaveEnum.Local, GetDmgKey(DmgEnum.DmgDealt, DmgTypeEnum.Finger)) +
-                sender.GetDmg(DmgSaveEnum.Local, GetDmgKey(DmgEnum.DmgRecv, DmgTypeEnum.Finger)) > sender.TraningValues[limitKey];
-            }), UnitPropertyEnum.BasisFinger.PropName),
+                return ModBattleEvent.sGetDmg(ModBattleEvent.DmgSaveEnum.Local, ModBattleEvent.GetDmgKey(ModBattleEvent.DmgEnum.DmgDealt, ModBattleEvent.DmgTypeEnum.Finger)) +
+                ModBattleEvent.sGetDmg(ModBattleEvent.DmgSaveEnum.Local, ModBattleEvent.GetDmgKey(ModBattleEvent.DmgEnum.DmgRecv, ModBattleEvent.DmgTypeEnum.Finger)) > sender.TraningValues[limitKey];
+            })),
             #endregion
 
             #region physic (global)
@@ -252,48 +265,48 @@ namespace MOD_nE7UL2.Mod
                 new Func<BattleRewardEventV2, MultiValue, bool>((sender, prop) =>
             {
                 var limitKey = sender.GetLimitKey(prop);
-                return sender.GetDmg(DmgSaveEnum.Global, GetDmgKey(DmgEnum.DmgDealt, DmgTypeEnum.Blade)) +
-                sender.GetDmg(DmgSaveEnum.Global, GetDmgKey(DmgEnum.DmgRecv, DmgTypeEnum.Blade)) > sender.TraningValues[limitKey];
+                return ModBattleEvent.sGetDmg(ModBattleEvent.DmgSaveEnum.Global, ModBattleEvent.GetDmgKey(ModBattleEvent.DmgEnum.DmgDealt, ModBattleEvent.DmgTypeEnum.Blade)) +
+                ModBattleEvent.sGetDmg(ModBattleEvent.DmgSaveEnum.Global, ModBattleEvent.GetDmgKey(ModBattleEvent.DmgEnum.DmgRecv, ModBattleEvent.DmgTypeEnum.Blade)) > sender.TraningValues[limitKey];
             })),
             MultiValue.Create("GSpear", UnitPropertyEnum.BasisSpear, 1.1, 100000, 100000,
                 new Func<BattleRewardEventV2, bool>((sender) => true),
                 new Func<BattleRewardEventV2, MultiValue, bool>((sender, prop) =>
             {
                 var limitKey = sender.GetLimitKey(prop);
-                return sender.GetDmg(DmgSaveEnum.Global, GetDmgKey(DmgEnum.DmgDealt, DmgTypeEnum.Spear)) +
-                sender.GetDmg(DmgSaveEnum.Global, GetDmgKey(DmgEnum.DmgRecv, DmgTypeEnum.Spear)) > sender.TraningValues[limitKey];
+                return ModBattleEvent.sGetDmg(ModBattleEvent.DmgSaveEnum.Global, ModBattleEvent.GetDmgKey(ModBattleEvent.DmgEnum.DmgDealt, ModBattleEvent.DmgTypeEnum.Spear)) +
+                ModBattleEvent.sGetDmg(ModBattleEvent.DmgSaveEnum.Global, ModBattleEvent.GetDmgKey(ModBattleEvent.DmgEnum.DmgRecv, ModBattleEvent.DmgTypeEnum.Spear)) > sender.TraningValues[limitKey];
             })),
             MultiValue.Create("GSword", UnitPropertyEnum.BasisSword, 1.1, 100000, 100000,
                 new Func<BattleRewardEventV2, bool>((sender) => true),
                 new Func<BattleRewardEventV2, MultiValue, bool>((sender, prop) =>
             {
                 var limitKey = sender.GetLimitKey(prop);
-                return sender.GetDmg(DmgSaveEnum.Global, GetDmgKey(DmgEnum.DmgDealt, DmgTypeEnum.Sword)) +
-                sender.GetDmg(DmgSaveEnum.Global, GetDmgKey(DmgEnum.DmgRecv, DmgTypeEnum.Sword)) > sender.TraningValues[limitKey];
+                return ModBattleEvent.sGetDmg(ModBattleEvent.DmgSaveEnum.Global, ModBattleEvent.GetDmgKey(ModBattleEvent.DmgEnum.DmgDealt, ModBattleEvent.DmgTypeEnum.Sword)) +
+                ModBattleEvent.sGetDmg(ModBattleEvent.DmgSaveEnum.Global, ModBattleEvent.GetDmgKey(ModBattleEvent.DmgEnum.DmgRecv, ModBattleEvent.DmgTypeEnum.Sword)) > sender.TraningValues[limitKey];
             })),
             MultiValue.Create("GFist", UnitPropertyEnum.BasisFist, 1.1, 100000, 100000,
                 new Func<BattleRewardEventV2, bool>((sender) => true),
                 new Func<BattleRewardEventV2, MultiValue, bool>((sender, prop) =>
             {
                 var limitKey = sender.GetLimitKey(prop);
-                return sender.GetDmg(DmgSaveEnum.Global, GetDmgKey(DmgEnum.DmgDealt, DmgTypeEnum.Fist)) +
-                sender.GetDmg(DmgSaveEnum.Global, GetDmgKey(DmgEnum.DmgRecv, DmgTypeEnum.Fist)) > sender.TraningValues[limitKey];
+                return ModBattleEvent.sGetDmg(ModBattleEvent.DmgSaveEnum.Global, ModBattleEvent.GetDmgKey(ModBattleEvent.DmgEnum.DmgDealt, ModBattleEvent.DmgTypeEnum.Fist)) +
+                ModBattleEvent.sGetDmg(ModBattleEvent.DmgSaveEnum.Global, ModBattleEvent.GetDmgKey(ModBattleEvent.DmgEnum.DmgRecv, ModBattleEvent.DmgTypeEnum.Fist)) > sender.TraningValues[limitKey];
             })),
             MultiValue.Create("GPalm", UnitPropertyEnum.BasisPalm, 1.1, 100000, 100000,
                 new Func<BattleRewardEventV2, bool>((sender) => true),
                 new Func<BattleRewardEventV2, MultiValue, bool>((sender, prop) =>
             {
                 var limitKey = sender.GetLimitKey(prop);
-                return sender.GetDmg(DmgSaveEnum.Global, GetDmgKey(DmgEnum.DmgDealt, DmgTypeEnum.Palm)) +
-                sender.GetDmg(DmgSaveEnum.Global, GetDmgKey(DmgEnum.DmgRecv, DmgTypeEnum.Palm)) > sender.TraningValues[limitKey];
+                return ModBattleEvent.sGetDmg(ModBattleEvent.DmgSaveEnum.Global, ModBattleEvent.GetDmgKey(ModBattleEvent.DmgEnum.DmgDealt, ModBattleEvent.DmgTypeEnum.Palm)) +
+                ModBattleEvent.sGetDmg(ModBattleEvent.DmgSaveEnum.Global, ModBattleEvent.GetDmgKey(ModBattleEvent.DmgEnum.DmgRecv, ModBattleEvent.DmgTypeEnum.Palm)) > sender.TraningValues[limitKey];
             })),
             MultiValue.Create("GFinger", UnitPropertyEnum.BasisFinger, 1.1, 100000, 100000,
                 new Func<BattleRewardEventV2, bool>((sender) => true),
                 new Func<BattleRewardEventV2, MultiValue, bool>((sender, prop) =>
             {
                 var limitKey = sender.GetLimitKey(prop);
-                return sender.GetDmg(DmgSaveEnum.Global, GetDmgKey(DmgEnum.DmgDealt, DmgTypeEnum.Finger)) +
-                sender.GetDmg(DmgSaveEnum.Global, GetDmgKey(DmgEnum.DmgRecv, DmgTypeEnum.Finger)) > sender.TraningValues[limitKey];
+                return ModBattleEvent.sGetDmg(ModBattleEvent.DmgSaveEnum.Global, ModBattleEvent.GetDmgKey(ModBattleEvent.DmgEnum.DmgDealt, ModBattleEvent.DmgTypeEnum.Finger)) +
+                ModBattleEvent.sGetDmg(ModBattleEvent.DmgSaveEnum.Global, ModBattleEvent.GetDmgKey(ModBattleEvent.DmgEnum.DmgRecv, ModBattleEvent.DmgTypeEnum.Finger)) > sender.TraningValues[limitKey];
             })),
             #endregion
 
@@ -303,49 +316,49 @@ namespace MOD_nE7UL2.Mod
                 new Func<BattleRewardEventV2, MultiValue, bool>((sender, prop) =>
             {
                 var limitKey = sender.GetLimitKey(prop);
-                return sender.GetDmg(DmgSaveEnum.Local, GetDmgKey(DmgEnum.DmgDealt, DmgTypeEnum.Fire)) +
-                sender.GetDmg(DmgSaveEnum.Local, GetDmgKey(DmgEnum.DmgRecv, DmgTypeEnum.Fire)) > sender.TraningValues[limitKey];
-            }), UnitPropertyEnum.BasisFire.PropName),
+                return ModBattleEvent.sGetDmg(ModBattleEvent.DmgSaveEnum.Local, ModBattleEvent.GetDmgKey(ModBattleEvent.DmgEnum.DmgDealt, ModBattleEvent.DmgTypeEnum.Fire)) +
+                ModBattleEvent.sGetDmg(ModBattleEvent.DmgSaveEnum.Local, ModBattleEvent.GetDmgKey(ModBattleEvent.DmgEnum.DmgRecv, ModBattleEvent.DmgTypeEnum.Fire)) > sender.TraningValues[limitKey];
+            })),
             MultiValue.Create("Froze", UnitPropertyEnum.BasisFroze, 1.049, 125, 1100,
                 new Func<BattleRewardEventV2, bool>((sender) => true),
                 new Func<BattleRewardEventV2, MultiValue, bool>((sender, prop) =>
             {
                 var limitKey = sender.GetLimitKey(prop);
-                return sender.GetDmg(DmgSaveEnum.Local, GetDmgKey(DmgEnum.DmgDealt, DmgTypeEnum.Frozen)) +
-                sender.GetDmg(DmgSaveEnum.Local, GetDmgKey(DmgEnum.DmgRecv, DmgTypeEnum.Frozen)) > sender.TraningValues[limitKey];
-            }), UnitPropertyEnum.BasisFroze.PropName),
+                return ModBattleEvent.sGetDmg(ModBattleEvent.DmgSaveEnum.Local, ModBattleEvent.GetDmgKey(ModBattleEvent.DmgEnum.DmgDealt, ModBattleEvent.DmgTypeEnum.Frozen)) +
+                ModBattleEvent.sGetDmg(ModBattleEvent.DmgSaveEnum.Local, ModBattleEvent.GetDmgKey(ModBattleEvent.DmgEnum.DmgRecv, ModBattleEvent.DmgTypeEnum.Frozen)) > sender.TraningValues[limitKey];
+            })),
             MultiValue.Create("Thunder", UnitPropertyEnum.BasisThunder, 1.049, 125, 1100,
                 new Func<BattleRewardEventV2, bool>((sender) => true),
                 new Func<BattleRewardEventV2, MultiValue, bool>((sender, prop) =>
             {
                 var limitKey = sender.GetLimitKey(prop);
-                return sender.GetDmg(DmgSaveEnum.Local, GetDmgKey(DmgEnum.DmgDealt, DmgTypeEnum.Thunder)) +
-                sender.GetDmg(DmgSaveEnum.Local, GetDmgKey(DmgEnum.DmgRecv, DmgTypeEnum.Thunder)) > sender.TraningValues[limitKey];
-            }), UnitPropertyEnum.BasisThunder.PropName),
+                return ModBattleEvent.sGetDmg(ModBattleEvent.DmgSaveEnum.Local, ModBattleEvent.GetDmgKey(ModBattleEvent.DmgEnum.DmgDealt, ModBattleEvent.DmgTypeEnum.Thunder)) +
+                ModBattleEvent.sGetDmg(ModBattleEvent.DmgSaveEnum.Local, ModBattleEvent.GetDmgKey(ModBattleEvent.DmgEnum.DmgRecv, ModBattleEvent.DmgTypeEnum.Thunder)) > sender.TraningValues[limitKey];
+            })),
             MultiValue.Create("Wind", UnitPropertyEnum.BasisWind, 1.049, 125, 1100,
                 new Func<BattleRewardEventV2, bool>((sender) => true),
                 new Func<BattleRewardEventV2, MultiValue, bool>((sender, prop) =>
             {
                 var limitKey = sender.GetLimitKey(prop);
-                return sender.GetDmg(DmgSaveEnum.Local, GetDmgKey(DmgEnum.DmgDealt, DmgTypeEnum.Wind)) +
-                sender.GetDmg(DmgSaveEnum.Local, GetDmgKey(DmgEnum.DmgRecv, DmgTypeEnum.Wind)) > sender.TraningValues[limitKey];
-            }), UnitPropertyEnum.BasisWind.PropName),
+                return ModBattleEvent.sGetDmg(ModBattleEvent.DmgSaveEnum.Local, ModBattleEvent.GetDmgKey(ModBattleEvent.DmgEnum.DmgDealt, ModBattleEvent.DmgTypeEnum.Wind)) +
+                ModBattleEvent.sGetDmg(ModBattleEvent.DmgSaveEnum.Local, ModBattleEvent.GetDmgKey(ModBattleEvent.DmgEnum.DmgRecv, ModBattleEvent.DmgTypeEnum.Wind)) > sender.TraningValues[limitKey];
+            })),
             MultiValue.Create("Earth", UnitPropertyEnum.BasisEarth, 1.049, 125, 1100,
                 new Func<BattleRewardEventV2, bool>((sender) => true),
                 new Func<BattleRewardEventV2, MultiValue, bool>((sender, prop) =>
             {
                 var limitKey = sender.GetLimitKey(prop);
-                return sender.GetDmg(DmgSaveEnum.Local, GetDmgKey(DmgEnum.DmgDealt, DmgTypeEnum.Earth)) +
-                sender.GetDmg(DmgSaveEnum.Local, GetDmgKey(DmgEnum.DmgRecv, DmgTypeEnum.Earth)) > sender.TraningValues[limitKey];
-            }), UnitPropertyEnum.BasisEarth.PropName),
+                return ModBattleEvent.sGetDmg(ModBattleEvent.DmgSaveEnum.Local, ModBattleEvent.GetDmgKey(ModBattleEvent.DmgEnum.DmgDealt, ModBattleEvent.DmgTypeEnum.Earth)) +
+                ModBattleEvent.sGetDmg(ModBattleEvent.DmgSaveEnum.Local, ModBattleEvent.GetDmgKey(ModBattleEvent.DmgEnum.DmgRecv, ModBattleEvent.DmgTypeEnum.Earth)) > sender.TraningValues[limitKey];
+            })),
             MultiValue.Create("Wood", UnitPropertyEnum.BasisWood, 1.049, 125, 1100,
                 new Func<BattleRewardEventV2, bool>((sender) => true),
                 new Func<BattleRewardEventV2, MultiValue, bool>((sender, prop) =>
             {
                 var limitKey = sender.GetLimitKey(prop);
-                return sender.GetDmg(DmgSaveEnum.Local, GetDmgKey(DmgEnum.DmgDealt, DmgTypeEnum.Wood)) +
-                sender.GetDmg(DmgSaveEnum.Local, GetDmgKey(DmgEnum.DmgRecv, DmgTypeEnum.Wood)) > sender.TraningValues[limitKey];
-            }), UnitPropertyEnum.BasisWood.PropName),
+                return ModBattleEvent.sGetDmg(ModBattleEvent.DmgSaveEnum.Local, ModBattleEvent.GetDmgKey(ModBattleEvent.DmgEnum.DmgDealt, ModBattleEvent.DmgTypeEnum.Wood)) +
+                ModBattleEvent.sGetDmg(ModBattleEvent.DmgSaveEnum.Local, ModBattleEvent.GetDmgKey(ModBattleEvent.DmgEnum.DmgRecv, ModBattleEvent.DmgTypeEnum.Wood)) > sender.TraningValues[limitKey];
+            })),
             #endregion
 
             #region magic (global)
@@ -354,48 +367,48 @@ namespace MOD_nE7UL2.Mod
                 new Func<BattleRewardEventV2, MultiValue, bool>((sender, prop) =>
             {
                 var limitKey = sender.GetLimitKey(prop);
-                return sender.GetDmg(DmgSaveEnum.Global, GetDmgKey(DmgEnum.DmgDealt, DmgTypeEnum.Fire)) +
-                sender.GetDmg(DmgSaveEnum.Global, GetDmgKey(DmgEnum.DmgRecv, DmgTypeEnum.Fire)) > sender.TraningValues[limitKey];
+                return ModBattleEvent.sGetDmg(ModBattleEvent.DmgSaveEnum.Global, ModBattleEvent.GetDmgKey(ModBattleEvent.DmgEnum.DmgDealt, ModBattleEvent.DmgTypeEnum.Fire)) +
+                ModBattleEvent.sGetDmg(ModBattleEvent.DmgSaveEnum.Global, ModBattleEvent.GetDmgKey(ModBattleEvent.DmgEnum.DmgRecv, ModBattleEvent.DmgTypeEnum.Fire)) > sender.TraningValues[limitKey];
             })),
             MultiValue.Create("GFroze", UnitPropertyEnum.BasisFroze, 1.1, 100000, 100000,
                 new Func<BattleRewardEventV2, bool>((sender) => true),
                 new Func<BattleRewardEventV2, MultiValue, bool>((sender, prop) =>
             {
                 var limitKey = sender.GetLimitKey(prop);
-                return sender.GetDmg(DmgSaveEnum.Global, GetDmgKey(DmgEnum.DmgDealt, DmgTypeEnum.Frozen)) +
-                sender.GetDmg(DmgSaveEnum.Global, GetDmgKey(DmgEnum.DmgRecv, DmgTypeEnum.Frozen)) > sender.TraningValues[limitKey];
+                return ModBattleEvent.sGetDmg(ModBattleEvent.DmgSaveEnum.Global, ModBattleEvent.GetDmgKey(ModBattleEvent.DmgEnum.DmgDealt, ModBattleEvent.DmgTypeEnum.Frozen)) +
+                ModBattleEvent.sGetDmg(ModBattleEvent.DmgSaveEnum.Global, ModBattleEvent.GetDmgKey(ModBattleEvent.DmgEnum.DmgRecv, ModBattleEvent.DmgTypeEnum.Frozen)) > sender.TraningValues[limitKey];
             })),
             MultiValue.Create("GThunder", UnitPropertyEnum.BasisThunder, 1.1, 100000, 100000,
                 new Func<BattleRewardEventV2, bool>((sender) => true),
                 new Func<BattleRewardEventV2, MultiValue, bool>((sender, prop) =>
             {
                 var limitKey = sender.GetLimitKey(prop);
-                return sender.GetDmg(DmgSaveEnum.Global, GetDmgKey(DmgEnum.DmgDealt, DmgTypeEnum.Thunder)) +
-                sender.GetDmg(DmgSaveEnum.Global, GetDmgKey(DmgEnum.DmgRecv, DmgTypeEnum.Thunder)) > sender.TraningValues[limitKey];
+                return ModBattleEvent.sGetDmg(ModBattleEvent.DmgSaveEnum.Global, ModBattleEvent.GetDmgKey(ModBattleEvent.DmgEnum.DmgDealt, ModBattleEvent.DmgTypeEnum.Thunder)) +
+                ModBattleEvent.sGetDmg(ModBattleEvent.DmgSaveEnum.Global, ModBattleEvent.GetDmgKey(ModBattleEvent.DmgEnum.DmgRecv, ModBattleEvent.DmgTypeEnum.Thunder)) > sender.TraningValues[limitKey];
             })),
             MultiValue.Create("GWind", UnitPropertyEnum.BasisWind, 1.1, 100000, 100000,
                 new Func<BattleRewardEventV2, bool>((sender) => true),
                 new Func<BattleRewardEventV2, MultiValue, bool>((sender, prop) =>
             {
                 var limitKey = sender.GetLimitKey(prop);
-                return sender.GetDmg(DmgSaveEnum.Global, GetDmgKey(DmgEnum.DmgDealt, DmgTypeEnum.Wind)) +
-                sender.GetDmg(DmgSaveEnum.Global, GetDmgKey(DmgEnum.DmgRecv, DmgTypeEnum.Wind)) > sender.TraningValues[limitKey];
+                return ModBattleEvent.sGetDmg(ModBattleEvent.DmgSaveEnum.Global, ModBattleEvent.GetDmgKey(ModBattleEvent.DmgEnum.DmgDealt, ModBattleEvent.DmgTypeEnum.Wind)) +
+                ModBattleEvent.sGetDmg(ModBattleEvent.DmgSaveEnum.Global, ModBattleEvent.GetDmgKey(ModBattleEvent.DmgEnum.DmgRecv, ModBattleEvent.DmgTypeEnum.Wind)) > sender.TraningValues[limitKey];
             })),
             MultiValue.Create("GEarth", UnitPropertyEnum.BasisEarth, 1.1, 100000, 100000,
                 new Func<BattleRewardEventV2, bool>((sender) => true),
                 new Func<BattleRewardEventV2, MultiValue, bool>((sender, prop) =>
             {
                 var limitKey = sender.GetLimitKey(prop);
-                return sender.GetDmg(DmgSaveEnum.Global, GetDmgKey(DmgEnum.DmgDealt, DmgTypeEnum.Earth)) +
-                sender.GetDmg(DmgSaveEnum.Global, GetDmgKey(DmgEnum.DmgRecv, DmgTypeEnum.Earth)) > sender.TraningValues[limitKey];
+                return ModBattleEvent.sGetDmg(ModBattleEvent.DmgSaveEnum.Global, ModBattleEvent.GetDmgKey(ModBattleEvent.DmgEnum.DmgDealt, ModBattleEvent.DmgTypeEnum.Earth)) +
+                ModBattleEvent.sGetDmg(ModBattleEvent.DmgSaveEnum.Global, ModBattleEvent.GetDmgKey(ModBattleEvent.DmgEnum.DmgRecv, ModBattleEvent.DmgTypeEnum.Earth)) > sender.TraningValues[limitKey];
             })),
             MultiValue.Create("GWood", UnitPropertyEnum.BasisWood, 1.1, 100000, 100000,
                 new Func<BattleRewardEventV2, bool>((sender) => true),
                 new Func<BattleRewardEventV2, MultiValue, bool>((sender, prop) =>
             {
                 var limitKey = sender.GetLimitKey(prop);
-                return sender.GetDmg(DmgSaveEnum.Global, GetDmgKey(DmgEnum.DmgDealt, DmgTypeEnum.Wood)) +
-                sender.GetDmg(DmgSaveEnum.Global, GetDmgKey(DmgEnum.DmgRecv, DmgTypeEnum.Wood)) > sender.TraningValues[limitKey];
+                return ModBattleEvent.sGetDmg(ModBattleEvent.DmgSaveEnum.Global, ModBattleEvent.GetDmgKey(ModBattleEvent.DmgEnum.DmgDealt, ModBattleEvent.DmgTypeEnum.Wood)) +
+                ModBattleEvent.sGetDmg(ModBattleEvent.DmgSaveEnum.Global, ModBattleEvent.GetDmgKey(ModBattleEvent.DmgEnum.DmgRecv, ModBattleEvent.DmgTypeEnum.Wood)) > sender.TraningValues[limitKey];
             })),
             #endregion
         };
@@ -435,37 +448,18 @@ namespace MOD_nE7UL2.Mod
         public override void OnLoadGame()
         {
             base.OnLoadGame();
-            var oldVersion = EventHelper.GetEvent<BattleRewardEvent>(ModConst.BATTLE_REWARD_EVENT);
             foreach (var prop in PLAYER_TRAINING_PROPERTIES)
             {
                 if (!TraningValues.ContainsKey(GetLimitKey(prop)))
                 {
-                    var oldValueName = prop.Get(P_OLDV) as string;
-                    if (!string.IsNullOrEmpty(oldValueName))
-                    {
-                        var rKey = GetRatioKey(oldValueName);
-                        var fKey = GetFactorKey(oldValueName);
-                        var lKey = GetLimitKey(oldValueName);
-                        if (oldVersion.TraningValues.ContainsKey(rKey) &&
-                            oldVersion.TraningValues.ContainsKey(fKey) &&
-                            oldVersion.TraningValues.ContainsKey(lKey))
-                        {
-                            TraningValues.Add(GetRatioKey(prop), oldVersion.TraningValues[rKey]);
-                            TraningValues.Add(GetFactorKey(prop), oldVersion.TraningValues[fKey]);
-                            TraningValues.Add(GetLimitKey(prop), oldVersion.TraningValues[lKey]);
-                        }
-                    }
-
-                    if (!TraningValues.ContainsKey(GetLimitKey(prop)))
-                    {
-                        TraningValues.Add(GetRatioKey(prop), prop.Values[P_RATIO].Parse<double>());
-                        TraningValues.Add(GetFactorKey(prop), prop.Values[P_FACTOR].Parse<double>());
-                        TraningValues.Add(GetLimitKey(prop), prop.Values[P_LIMIT].Parse<double>());
-                    }
+                    TraningValues.Add(GetRatioKey(prop), prop.Values[P_RATIO].Parse<double>());
+                    TraningValues.Add(GetFactorKey(prop), prop.Values[P_FACTOR].Parse<double>());
+                    TraningValues.Add(GetLimitKey(prop), prop.Values[P_LIMIT].Parse<double>());
                 }
             }
         }
 
+        [Trace]
         public override void OnBattleStart(ETypeData e)
         {
             base.OnBattleStart(e);
@@ -505,30 +499,51 @@ namespace MOD_nE7UL2.Mod
             return false;
         }
 
+        [Trace]
         public override void OnBattleEnd(BattleEnd e)
         {
+            base.OnBattleEnd(e);
+
             if (!IsEnd)
             {
-                var localDmgDealt = GetDmg(DmgSaveEnum.Local, GetDmgKey(DmgEnum.DmgDealt, DmgTypeEnum.Damage));
-                var localDmgRecv = GetDmg(DmgSaveEnum.Local, GetDmgKey(DmgEnum.DmgRecv, DmgTypeEnum.Damage));
+                var localDmgDealt = ModBattleEvent.sGetDmg(ModBattleEvent.DmgSaveEnum.Local, ModBattleEvent.GetDmgKey(ModBattleEvent.DmgEnum.DmgDealt, ModBattleEvent.DmgTypeEnum.Damage));
+                var localDmgRecv = ModBattleEvent.sGetDmg(ModBattleEvent.DmgSaveEnum.Local, ModBattleEvent.GetDmgKey(ModBattleEvent.DmgEnum.DmgRecv, ModBattleEvent.DmgTypeEnum.Damage));
                 DebugHelper.WriteLine($"Damage dealt: {localDmgDealt}dmg, Damage recieve: {localDmgRecv}dmg");
                 var player = g.world.playerUnit;
-                if (IsPlayerDie)
+                if (ModBattleEvent.IsPlayerDie)
                 {
-                    player.AddProperty<int>(UnitPropertyEnum.Life, -(Math.Max(localDmgRecv / 1200, 1).Parse<int>()));
-                    player.ClearExp();
+                    player.AddProperty<int>(UnitPropertyEnum.Life, -unchecked((int)Math.Max(localDmgRecv / 1200, 1)));
+                    var gradeLvl = player.GetGradeLvl();
+                    var bodyReconstructionItemId = BodyReconstructions.ContainsKey(gradeLvl) ? BodyReconstructions[gradeLvl] : 0;
+                    if (bodyReconstructionItemId != 0 && player.GetUnitPropCount(bodyReconstructionItemId) <= 0)
+                    {
+                        player.ClearExp();
+                    }
+                    else
+                    {
+                        player.RemoveUnitProp(bodyReconstructionItemId);
+                    }
+                    var ring = player.data.unitData.propData.GetEquipProps().ToArray().Where(x => x.propsItem.IsRing() != null).FirstOrDefault();
+                    var luck = g.world.playerUnit.GetDynProperty(UnitDynPropertyEnum.Luck).value;
+                    foreach (var item in player.GetUnitProps())
+                    {
+                        if (!CommonTool.Random(0.00f, 100.00f).IsBetween(0.00f, (luck / 10.0f) + (ring.propsItem.IsRing().lockScore / 100.0f)))
+                        {
+                            player.RemoveUnitProp(item.propsID);
+                        }
+                    }
                     player.SetUnitMoney(0);
                     DebugHelper.WriteLine($"BattleRewardEvent: player death");
                 }
                 else if (e.isWin)
                 {
                     var insight = g.world.playerUnit.GetDynProperty(UnitDynPropertyEnum.Talent).value;
-                    var aBestBasis = GetDmgPropertyEnum(GetHighestDealtDmgTypeEnum());
+                    var aBestBasis = ModBattleEvent.GetDmgPropertyEnum(ModBattleEvent.sGetHighestDealtDmgTypeEnum());
                     if (CommonTool.Random(0.00f, 100.00f).IsBetween(0.00f, insight / 10))
                     {
                         g.world.playerUnit.AddProperty<int>(aBestBasis, 1);
                     }
-                    var bBestBasis = GetDmgPropertyEnum(GetHighestRecvDmgTypeEnum());
+                    var bBestBasis = ModBattleEvent.GetDmgPropertyEnum(ModBattleEvent.sGetHighestRecvDmgTypeEnum());
                     if (CommonTool.Random(0.00f, 100.00f).IsBetween(0.00f, insight / 10))
                     {
                         g.world.playerUnit.AddProperty<int>(bBestBasis, 1);
@@ -551,7 +566,7 @@ namespace MOD_nE7UL2.Mod
             if (attackUnitData?.worldUnitData?.unit != null && attackUnitData.worldUnitData.unit.IsPlayer())
             {
                 var dieUnit = e?.unit?.data?.TryCast<UnitDataHuman>();
-                if (dieUnit?.worldUnitData?.unit != null && !IsPlayerDie)
+                if (dieUnit?.worldUnitData?.unit != null && !ModBattleEvent.IsPlayerDie)
                 {
                     if (g.world.battle.data.isRealBattle)
                     {

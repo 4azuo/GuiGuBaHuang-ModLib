@@ -32,9 +32,12 @@ namespace ModLib.Mod
             [TraceIgnore]
             set;
         } = new Dictionary<string, uint>();
+        [JsonIgnore]
+        public static ModEvent LastestObject { get; private set; }
 
         public ModEvent()
         {
+            LastestObject = this;
             foreach (var method in GetType().GetMethods())
             {
                 if (!UpdateFlg1.ContainsKey(method.Name))

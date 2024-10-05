@@ -10,7 +10,7 @@ using static MOD_nE7UL2.Object.InGameStts;
 namespace MOD_nE7UL2.Mod
 {
     [Cache(ModConst.REAL_TRIAL_EVENT)]
-    public class RealTrialEvent : ModBattleEvent
+    public class RealTrialEvent : ModEvent
     {
         public override int OrderIndex => 8000;
 
@@ -21,11 +21,14 @@ namespace MOD_nE7UL2.Mod
 
         public override void OnOpenDrama(OpenDrama e)
         {
+            base.OnOpenDrama(e);
             IsInTrial = e.dramaID == 20701;
         }
 
         public override void OnIntoBattleFirst(UnitCtrlBase e)
         {
+            base.OnIntoBattleFirst(e);
+
             var data = e?.data;
             if (IsInTrial && data != null)
             {
@@ -44,7 +47,9 @@ namespace MOD_nE7UL2.Mod
 
         public override void OnBattleEnd(BattleEnd e)
         {
-            if (IsInTrial && !IsPlayerDie)
+            base.OnBattleEnd(e);
+
+            if (IsInTrial && !ModBattleEvent.IsPlayerDie)
             {
                 foreach (var p in UnitTypeEnum.Trial.PropIncRatio)
                 {

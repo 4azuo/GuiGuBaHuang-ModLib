@@ -13,6 +13,8 @@ namespace MOD_nE7UL2.Mod
     {
         public override void OnOpenUIEnd(OpenUIEnd e)
         {
+            base.OnOpenUIEnd(e);
+
             if (e?.uiType?.uiName == null || ModMain.ModObj?.InGameCustomSettings?.HideButtonConfigs?.ButtonConfigs == null)
                 return;
 

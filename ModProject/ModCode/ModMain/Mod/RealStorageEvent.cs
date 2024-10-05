@@ -30,6 +30,7 @@ namespace MOD_nE7UL2.Mod
 
         public override void OnOpenUIEnd(OpenUIEnd e)
         {
+            base.OnOpenUIEnd(e);
             uiTownStorageProps = MonoBehaviour.FindObjectOfType<UITownStorageProps>();
             if (uiTownStorageProps != null)
             {
@@ -83,6 +84,7 @@ namespace MOD_nE7UL2.Mod
 
         public override void OnCloseUIEnd(CloseUIEnd e)
         {
+            base.OnCloseUIEnd(e);
             uiTownStorageProps = MonoBehaviour.FindObjectOfType<UITownStorageProps>();
             if (uiTownStorageProps == null)
             {
@@ -93,6 +95,7 @@ namespace MOD_nE7UL2.Mod
 
         public override void OnFrameUpdate()
         {
+            base.OnFrameUpdate();
             if (uiTownStorageProps != null && txtFee != null)
             {
                 var uType = UnitTypeEvent.GetUnitTypeEnum(g.world.playerUnit);
@@ -107,6 +110,7 @@ namespace MOD_nE7UL2.Mod
 
         public override void OnMonthly()
         {
+            base.OnMonthly();
             //FreeStorage
             var uType = UnitTypeEvent.GetUnitTypeEnum(g.world.playerUnit);
             if (uType != UnitTypeEnum.Merchant)

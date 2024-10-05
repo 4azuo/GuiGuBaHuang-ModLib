@@ -14,6 +14,10 @@ public static class CacheHelper
         TypeNameHandling = Newtonsoft.Json.TypeNameHandling.All,
         PreserveReferencesHandling = Newtonsoft.Json.PreserveReferencesHandling.Objects,
         Converters = new List<Newtonsoft.Json.JsonConverter>() { new EnumObjectConverter() },
+        //Error = (sender, args) =>
+        //{
+        //    args.ErrorContext.Handled = true;
+        //},
     };
 
     private static ModLib.Object.ModData GlobalCacheData;

@@ -11,7 +11,7 @@ namespace MOD_nE7UL2.Mod
 {
     [TraceIgnore]
     [Cache(ModConst.BATTLE_MODIFY_EVENT)]
-    public class BattleModifyEvent : ModBattleEvent
+    public class BattleModifyEvent : ModEvent
     {
         public override int OrderIndex => 9000;
 
@@ -60,17 +60,17 @@ namespace MOD_nE7UL2.Mod
         {
             base.OnBattleUnitHitDynIntHandler(e);
 
-            var attackUnitData = AttackingUnit.data.TryCast<UnitDataHuman>();
-            var hitUnitData = HitUnit.data.TryCast<UnitDataHuman>();
-            var dType = GetDmgBasisType(e.hitData);
-            var pEnum = GetDmgPropertyEnum(dType);
+            var attackUnitData = ModBattleEvent.AttackingUnit.data.TryCast<UnitDataHuman>();
+            var hitUnitData = ModBattleEvent.HitUnit.data.TryCast<UnitDataHuman>();
+            var dType = ModBattleEvent.GetDmgBasisType(e.hitData);
+            var pEnum = ModBattleEvent.GetDmgPropertyEnum(dType);
             var defGradeLvl = hitUnitData?.worldUnitData?.unit?.GetGradeLvl() ?? 1;
-            var atk = AttackingUnit.data.attack.baseValue;
-            var def = HitUnit.data.defense.baseValue;
-            var minDmg = AttackingUnit.data.grade.baseValue;
+            var atk = ModBattleEvent.AttackingUnit.data.attack.baseValue;
+            var def = ModBattleEvent.HitUnit.data.defense.baseValue;
+            var minDmg = ModBattleEvent.AttackingUnit.data.grade.baseValue;
 
             //evasion
-            var evaRate = Math.Sqrt(GetUnitPropertyValue(HitUnit, UnitPropertyEnum.BasisWind) / 18);
+            var evaRate = Math.Sqrt(ModBattleEvent.GetUnitPropertyValue(ModBattleEvent.HitUnit, UnitPropertyEnum.BasisWind) / 18);
             if (ValueHelper.IsBetween(CommonTool.Random(0.00f, 100.00f), 0.00f, Math.Min(12.00f, evaRate)))
             {
                 e.hitData.isEvade = true;
@@ -81,7 +81,7 @@ namespace MOD_nE7UL2.Mod
             //add dmg (basis)
             if (pEnum != null)
             {
-                var r = GetUnitPropertyValue(AttackingUnit, pEnum);
+                var r = ModBattleEvent.GetUnitPropertyValue(ModBattleEvent.AttackingUnit, pEnum);
                 e.dynV.baseValue += atk * r / 1000;
             }
 
@@ -100,7 +100,7 @@ namespace MOD_nE7UL2.Mod
             }
 
             //add dmg (mp)
-            if (attackUnitData?.worldUnitData?.unit != null && attackUnitData.mp > 0 && IsBasisMagic(dType))
+            if (attackUnitData?.worldUnitData?.unit != null && attackUnitData.mp > 0 && ModBattleEvent.IsBasisMagic(dType))
             {
                 var r = (attackUnitData.mp.Parse<float>() / attackUnitData.maxMP.value.Parse<float>()) / 10.0f;
                 e.dynV.baseValue += (atk * r).Parse<int>();
@@ -140,7 +140,7 @@ namespace MOD_nE7UL2.Mod
             }
 
             //block
-            var blockRate = Math.Sqrt(GetUnitPropertyValue(HitUnit, pEnum) / 12);
+            var blockRate = Math.Sqrt(ModBattleEvent.GetUnitPropertyValue(ModBattleEvent.HitUnit, pEnum) / 12);
             if (ValueHelper.IsBetween(CommonTool.Random(0.00f, 100.00f), 0.00f, Math.Min(18.00f, blockRate)))
             {
                 var r = hitUnitData.hp.Parse<float>() / hitUnitData.maxHP.value.Parse<float>();
@@ -150,7 +150,7 @@ namespace MOD_nE7UL2.Mod
             //block dmg (basis)
             if (pEnum != null && e.dynV.baseValue > minDmg)
             {
-                var r = GetUnitPropertyValue(HitUnit, pEnum);
+                var r = ModBattleEvent.GetUnitPropertyValue(ModBattleEvent.HitUnit, pEnum);
                 e.dynV.baseValue -= def * r / 200;
             }
 
@@ -200,7 +200,9 @@ namespace MOD_nE7UL2.Mod
         [EventCondition(IsInBattle = true)]
         public override void OnTimeUpdate()
         {
-            foreach (var unit in DungeonUnits)
+            base.OnTimeUpdate();
+
+            foreach (var unit in ModBattleEvent.DungeonUnits)
             {
                 if (unit.isDie)
                     continue;

@@ -1,4 +1,6 @@
-﻿using Newtonsoft.Json;
+﻿using ModLib.Const;
+using ModLib.Mod;
+using Newtonsoft.Json;
 using System;
 using System.ComponentModel;
 
@@ -54,7 +56,8 @@ namespace ModLib.Object
 
         #region Custom
         public string CustomConfigFile { get; set; }
-        public string CustomConfigVersion { get; set; }
+        public int? CustomConfigVersion { get; set; }
+        public bool IsOldVersion { get; set; }
         #endregion
     }
 }

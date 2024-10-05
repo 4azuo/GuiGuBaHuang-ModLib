@@ -41,6 +41,7 @@ namespace MOD_nE7UL2.Mod
 
         public override void OnLoadGame()
         {
+            base.OnLoadGame();
             foreach (var town in g.world.build.GetBuilds().ToArray().Where(x => x.allBuildSub.ContainsKey(MapBuildSubType.TownMarketPill)))
             {
                 if (!MarketPriceRate.ContainsKey(town.buildData.id))
@@ -52,6 +53,7 @@ namespace MOD_nE7UL2.Mod
 
         public override void OnMonthly()
         {
+            base.OnLoadGame();
             var eventBuyRate = ModMain.ModObj.InGameCustomSettings.RealMarketConfigs.GetAddBuyRate();
             foreach (var town in g.world.build.GetBuilds().ToArray().Where(x => x.allBuildSub.ContainsKey(MapBuildSubType.TownMarketPill)))
             {
@@ -61,6 +63,7 @@ namespace MOD_nE7UL2.Mod
 
         public override void OnOpenUIEnd(OpenUIEnd e)
         {
+            base.OnLoadGame();
             var uType = UnitTypeEvent.GetUnitTypeEnum(g.world.playerUnit);
             uiTownMarketBuy = MonoBehaviour.FindObjectOfType<UITownMarketBuy>();
             if (uiTownMarketBuy != null)
@@ -110,6 +113,7 @@ namespace MOD_nE7UL2.Mod
 
         public override void OnCloseUIEnd(CloseUIEnd e)
         {
+            base.OnCloseUIEnd(e);
             uiTownMarketBuy = MonoBehaviour.FindObjectOfType<UITownMarketBuy>();
             if (uiTownMarketBuy == null)
             {
@@ -121,6 +125,7 @@ namespace MOD_nE7UL2.Mod
 
         public override void OnFrameUpdate()
         {
+            base.OnFrameUpdate();
             if (uiTownMarketBuy != null && txtMarketST != null)
             {
                 txtMarketST.text = $"Market: {MapBuildPropertyEvent.GetBuildProperty(uiTownMarketBuy.town)} Spirit Stones";
