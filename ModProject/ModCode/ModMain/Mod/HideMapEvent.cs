@@ -10,6 +10,8 @@ namespace MOD_nE7UL2.Mod
     {
         public override void OnOpenUIEnd(OpenUIEnd e)
         {
+            base.OnOpenUIEnd(e);
+
             var uiBattleInfo = MonoBehaviour.FindObjectOfType<UIBattleInfo>();
             if (uiBattleInfo != null)
             {

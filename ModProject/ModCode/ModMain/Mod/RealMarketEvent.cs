@@ -47,6 +47,7 @@ namespace MOD_nE7UL2.Mod
 
         public override void OnLoadGame()
         {
+            base.OnLoadGame();
             foreach (var town in g.world.build.GetBuilds().ToArray().Where(x => x.allBuildSub.ContainsKey(MapBuildSubType.TownMarketPill)))
             {
                 if (!MarketPriceRate.ContainsKey(town.buildData.id))
@@ -58,6 +59,7 @@ namespace MOD_nE7UL2.Mod
 
         public override void OnMonthly()
         {
+            base.OnMonthly();
             var eventSellRate = ModMain.ModObj.InGameCustomSettings.RealMarketConfigs.GetAddSellRate();
             foreach (var town in g.world.build.GetBuilds().ToArray().Where(x => x.allBuildSub.ContainsKey(MapBuildSubType.TownMarketPill)))
             {
@@ -65,30 +67,32 @@ namespace MOD_nE7UL2.Mod
             }
         }
 
-        public override void OnOpenUIStart(OpenUIStart e)
-        {
-            //var uType = UnitTypeEvent.GetUnitTypeEnum(g.world.playerUnit);
-            //uiPropSell = MonoBehaviour.FindObjectOfType<UIPropSell>();
-            //curMainTown = g.world.build.GetBuild(g.world.playerUnit.data.unitData.GetPoint());
-            //if (uiPropSell != null && curMainTown != null)
-            //{
-            //    //fix price
-            //    uiPropSell.propsPrice = new Il2CppSystem.Collections.Generic.Dictionary<int, int>();
-            //    foreach (var p in g.world.playerUnit.data.unitData.propData.allProps)
-            //    {
-            //        if (!uiPropSell.propsPrice.ContainsKey(p.propsID))
-            //        {
-            //            var basePrice = (p.propsInfoBase.sale * (MarketPriceRate[curMainTown.buildData.id] / 100.00f)).Parse<int>();
-            //            if (uType == UnitTypeEnum.Merchant)
-            //                basePrice += (basePrice * uType.CustomLuck.CustomEffects["SellValue"].Value0.Parse<float>()).Parse<int>();
-            //            uiPropSell.propsPrice.Add(p.propsID, basePrice);
-            //        }
-            //    }
-            //}
-        }
+        //public override void OnOpenUIStart(OpenUIStart e)
+        //{
+        //    //base.OnOpenUIStart(e);
+        //    //var uType = UnitTypeEvent.GetUnitTypeEnum(g.world.playerUnit);
+        //    //uiPropSell = MonoBehaviour.FindObjectOfType<UIPropSell>();
+        //    //curMainTown = g.world.build.GetBuild(g.world.playerUnit.data.unitData.GetPoint());
+        //    //if (uiPropSell != null && curMainTown != null)
+        //    //{
+        //    //    //fix price
+        //    //    uiPropSell.propsPrice = new Il2CppSystem.Collections.Generic.Dictionary<int, int>();
+        //    //    foreach (var p in g.world.playerUnit.data.unitData.propData.allProps)
+        //    //    {
+        //    //        if (!uiPropSell.propsPrice.ContainsKey(p.propsID))
+        //    //        {
+        //    //            var basePrice = (p.propsInfoBase.sale * (MarketPriceRate[curMainTown.buildData.id] / 100.00f)).Parse<int>();
+        //    //            if (uType == UnitTypeEnum.Merchant)
+        //    //                basePrice += (basePrice * uType.CustomLuck.CustomEffects["SellValue"].Value0.Parse<float>()).Parse<int>();
+        //    //            uiPropSell.propsPrice.Add(p.propsID, basePrice);
+        //    //        }
+        //    //    }
+        //    //}
+        //}
 
         public override void OnOpenUIEnd(OpenUIEnd e)
         {
+            base.OnOpenUIEnd(e);
             var uType = UnitTypeEvent.GetUnitTypeEnum(g.world.playerUnit);
             uiPropSell = MonoBehaviour.FindObjectOfType<UIPropSell>();
             curMainTown = g.world.build.GetBuild(g.world.playerUnit.data.unitData.GetPoint());
@@ -132,6 +136,7 @@ namespace MOD_nE7UL2.Mod
 
         public override void OnCloseUIEnd(CloseUIEnd e)
         {
+            base.OnCloseUIEnd(e);
             uiPropSell = MonoBehaviour.FindObjectOfType<UIPropSell>();
             curMainTown = g.world.build.GetBuild(g.world.playerUnit.data.unitData.GetPoint());
             if (uiPropSell == null || curMainTown == null)
@@ -145,6 +150,7 @@ namespace MOD_nE7UL2.Mod
 
         public override void OnFrameUpdate()
         {
+            base.OnFrameUpdate();
             if (uiPropSell != null && curMainTown != null && txtMarketST != null)
             {
                 var budget = MapBuildPropertyEvent.GetBuildProperty(curMainTown);

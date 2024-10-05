@@ -31,6 +31,8 @@ namespace MOD_nE7UL2.Mod
 
         public override void OnBattleUnitDie(UnitDie e)
         {
+            base.OnBattleUnitDie(e);
+
             var monstData = e?.unit?.data?.TryCast<UnitDataMonst>();
             if (monstData != null && Configs.KillGrowRate.ContainsKey(monstData.monstType))
             {
@@ -40,6 +42,8 @@ namespace MOD_nE7UL2.Mod
 
         public override void OnIntoBattleFirst(UnitCtrlBase e)
         {
+            base.OnIntoBattleFirst(e);
+
             var monstData = e?.data?.TryCast<UnitDataMonst>();
             if (monstData != null && Configs.GrowRate.ContainsKey(monstData.monstType))
             {

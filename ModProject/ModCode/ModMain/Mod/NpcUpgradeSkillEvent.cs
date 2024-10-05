@@ -22,6 +22,7 @@ namespace MOD_nE7UL2.Mod
 
         public override void OnMonthly()
         {
+            base.OnMonthly();
             foreach (var wunit in g.world.unit.GetUnits())
             {
                 if (!wunit.IsPlayer())

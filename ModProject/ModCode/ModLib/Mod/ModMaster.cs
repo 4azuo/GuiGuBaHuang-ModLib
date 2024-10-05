@@ -1,4 +1,6 @@
-﻿using ModLib.Object;
+﻿using EGameTypeData;
+using ModLib.Const;
+using ModLib.Object;
 using Newtonsoft.Json;
 using System;
 using System.ComponentModel;
@@ -253,6 +255,7 @@ namespace ModLib.Mod
 
         public override void OnLoadGameBefore()
         {
+            base.OnLoadGameBefore();
             var customSettings = this.GetType().GetCustomAttribute<InGameCustomSettingsAttribute>();
             if (customSettings != null)
             {
@@ -264,6 +267,9 @@ namespace ModLib.Mod
                         return;
                     }
                     var cusStt = JsonConvert.DeserializeObject<T>(ConfHelper.ReadConfData(customSettings.ConfCustomConfigFile));
+                    cusStt.IsOldVersion = cusStt.IsOldVersion ||
+                        !InGameCustomSettings.CustomConfigVersion.HasValue ||
+                        InGameCustomSettings.CustomConfigVersion < ModLibConst.OLD_VERSION_NEED_UPDATE;
                     cusStt.CustomConfigFile = customSettings.ConfCustomConfigFile;
                     cusStt.CustomConfigVersion = customSettings.ConfCustomConfigVersion;
                     foreach (var prop in typeof(T).GetProperties(BindingFlags.Public | BindingFlags.Instance).Where(x => x.GetCustomAttribute<InheritanceAttribute>() != null))
@@ -272,6 +278,16 @@ namespace ModLib.Mod
                     }
                     ModLib.Object.InGameSettings.SetSettings(cusStt);
                 }
+            }
+        }
+
+        public override void OnSave(ETypeData e)
+        {
+            base.OnSave(e);
+            if (InGameCustomSettings.IsOldVersion)
+            {
+                DramaTool.OpenDrama(ModLibConst.OLD_VERSION_DIALOGUE);
+                return;
             }
         }
     }

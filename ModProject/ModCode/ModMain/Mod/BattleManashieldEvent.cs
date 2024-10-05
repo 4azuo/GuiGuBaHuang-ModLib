@@ -7,7 +7,7 @@ namespace MOD_nE7UL2.Mod
 {
     [TraceIgnore]
     [Cache(ModConst.BATTLE_MANASHIELD_EVENT)]
-    public class BattleManashieldEvent : ModBattleEvent
+    public class BattleManashieldEvent : ModEvent
     {
         public const int MANASHIELD_EFFECT_MAIN_ID = 903151120;
         public const int MANASHIELD_EFFECT_EFX_ID = 903151121;
@@ -16,6 +16,8 @@ namespace MOD_nE7UL2.Mod
 
         public override void OnIntoBattleFirst(UnitCtrlBase e)
         {
+            base.OnIntoBattleFirst(e);
+
             var humanData = e?.data?.TryCast<UnitDataHuman>();
             if (humanData?.worldUnitData?.unit != null)
             {
@@ -39,7 +41,9 @@ namespace MOD_nE7UL2.Mod
         [EventCondition(IsInBattle = true)]
         public override void OnTimeUpdate()
         {
-            foreach (var unit in DungeonUnits)
+            base.OnTimeUpdate();
+
+            foreach (var unit in ModBattleEvent.DungeonUnits)
             {
                 if (!unit.isDie)
                 {

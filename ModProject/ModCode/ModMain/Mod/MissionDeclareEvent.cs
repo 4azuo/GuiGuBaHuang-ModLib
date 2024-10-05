@@ -33,6 +33,7 @@ namespace MOD_nE7UL2.Mod
 
         public override void OnLoadGame()
         {
+            base.OnLoadGame();
             _availableItems = new List<KeyValuePair<ConfItemPropsItem, int>>();
             foreach (var prop in g.conf.itemProps._allConfList)
             {
@@ -63,6 +64,7 @@ namespace MOD_nE7UL2.Mod
 
         public override void OnOpenUIEnd(OpenUIEnd e)
         {
+            base.OnOpenUIEnd(e);
             uiTownBounty = e.ui.TryCast<UITownBounty>();
             if (uiTownBounty != null)
             {
@@ -84,6 +86,7 @@ namespace MOD_nE7UL2.Mod
 
         public override void OnCloseUIEnd(CloseUIEnd e)
         {
+            base.OnCloseUIEnd(e);
             uiTownBounty = MonoBehaviour.FindObjectOfType<UITownBounty>();
             if (uiTownBounty == null)
             {
@@ -101,6 +104,7 @@ namespace MOD_nE7UL2.Mod
 
         public override void OnFrameUpdate()
         {
+            base.OnFrameUpdate();
             if (uiTownBounty != null && btnCommission != null)
             {
                 if (btnCommission != null)

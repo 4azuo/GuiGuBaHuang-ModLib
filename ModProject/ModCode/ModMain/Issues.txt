@@ -1,3 +1,4 @@
 - npc learn new skill
 - mod Halo
 - skill expert
+- new game+

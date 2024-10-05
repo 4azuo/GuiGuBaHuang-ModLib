@@ -116,6 +116,8 @@ namespace ModLib.Mod
                         }
                     }
 
+                    DebugHelper.WriteLine($"↑↑↑↑↑↑↑↑↑{GameHelper.GetGameYear()}年{GameHelper.GetGameMonth()}月{GameHelper.GetGameDay()}日↑↑↑↑↑↑↑↑↑");
+
                     //save
                     OnSave(e);
 

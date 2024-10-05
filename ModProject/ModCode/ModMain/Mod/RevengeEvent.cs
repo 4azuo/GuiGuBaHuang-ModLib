@@ -1,7 +1,6 @@
 ﻿using EBattleTypeData;
 using MOD_nE7UL2.Const;
 using ModLib.Mod;
-using System;
 
 namespace MOD_nE7UL2.Mod
 {
@@ -13,6 +12,7 @@ namespace MOD_nE7UL2.Mod
         //player kill npc
         public override void OnBattleUnitDie(UnitDie e)
         {
+            base.OnBattleUnitDie(e);
             var dieUnit = e?.unit?.data?.TryCast<UnitDataHuman>();
             var attackUnitData = e?.hitData?.attackUnit?.data?.TryCast<UnitDataHuman>();
             if (dieUnit?.worldUnitData != null && 
@@ -26,12 +26,13 @@ namespace MOD_nE7UL2.Mod
         //npc revenge player
         public override void OnIntoBattleFirst(UnitCtrlBase e)
         {
+            base.OnIntoBattleFirst(e);
             var humanData = e?.data?.TryCast<UnitDataHuman>();
             if (g.world.battle.data.isRealBattle &&
                 (!humanData?.worldUnitData?.unit?.IsPlayer() ?? false) &&
                 humanData?.worldUnitData?.GetRelationType(g.world.playerUnit) == UnitBothRelationType.Hater)
             {
-                humanData.attack.baseValue += (int)(humanData.attack.baseValue * (Math.Sqrt(Counter) / 100.00f));
+                humanData.attack.baseValue += (int)(humanData.attack.baseValue * (Counter / 100.00f));
             }
         }
     }

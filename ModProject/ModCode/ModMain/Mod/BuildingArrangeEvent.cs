@@ -18,6 +18,8 @@ namespace MOD_nE7UL2.Mod
 
         public override void OnLoadGame()
         {
+            base.OnLoadGame();
+
             foreach (var build in g.world.build.GetBuilds())
             {
                 foreach (var e in BuildingCostEnum.GetAllEnums<BuildingCostEnum>())
@@ -30,6 +32,8 @@ namespace MOD_nE7UL2.Mod
 
         public override void OnMonthly()
         {
+            base.OnMonthly();
+
             foreach (var build in g.world.build.GetBuilds())
             {
                 foreach (var e in BuildingCostEnum.GetAllEnums<BuildingCostEnum>())

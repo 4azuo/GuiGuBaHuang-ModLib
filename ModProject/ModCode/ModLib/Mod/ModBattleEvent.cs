@@ -7,9 +7,11 @@ using System.Linq;
 
 namespace ModLib.Mod
 {
-    [TraceIgnore]
-    public abstract class ModBattleEvent : ModEvent
+    [Cache("$BATTLE$")]
+    public sealed class ModBattleEvent : ModEvent
     {
+        public override int OrderIndex => 110;
+
         #region DmgKey
         public enum DmgEnum
         {
@@ -136,6 +138,11 @@ namespace ModLib.Mod
             return basises.FirstOrDefault(x => x.Value == max).Key;
         }
 
+        public static DmgTypeEnum sGetHighestDealtDmgTypeEnum()
+        {
+            return ModBattleEvent.BattleInfo.GetHighestDealtDmgTypeEnum();
+        }
+
         public DmgTypeEnum GetHighestRecvDmgTypeEnum()
         {
             var basises = new Dictionary<DmgTypeEnum, long>
@@ -155,6 +162,11 @@ namespace ModLib.Mod
             };
             var max = basises.Max(x => x.Value);
             return basises.FirstOrDefault(x => x.Value == max).Key;
+        }
+
+        public static DmgTypeEnum sGetHighestRecvDmgTypeEnum()
+        {
+            return ModBattleEvent.BattleInfo.GetHighestRecvDmgTypeEnum();
         }
         #endregion
 
@@ -181,16 +193,32 @@ namespace ModLib.Mod
                     return 0;
             }
         }
+
+        public static long sGetDmg(DmgSaveEnum dmgSaveEnum, string dmgKey)
+        {
+            return ModBattleEvent.BattleInfo.GetDmg(dmgSaveEnum, dmgKey);
+        }
         #endregion
 
         [JsonIgnore]
         public static bool IsPlayerDie { get; private set; }
+        [JsonIgnore]
+        public static SceneBattle SceneBattle { get; private set; }
+        [JsonIgnore]
+        public static UnitCtrlBase PlayerUnit { get; private set; }
         [JsonIgnore]
         public static UnitCtrlBase AttackingUnit { get; private set; }
         [JsonIgnore]
         public static UnitCtrlBase HitUnit { get; private set; }
         [JsonIgnore]
         public static List<UnitCtrlBase> DungeonUnits { get; private set; } = new List<UnitCtrlBase>();
+        [JsonIgnore]
+        public static ModBattleEvent BattleInfo { get; private set; }
+
+        public ModBattleEvent() : base()
+        {
+            BattleInfo = this;
+        }
 
         public override void OnBattleEnd(BattleEnd e)
         {
@@ -206,6 +234,7 @@ namespace ModLib.Mod
 
         public override void OnLoadGame()
         {
+            base.OnLoadGame();
             foreach (var de in (DmgEnum[])System.Enum.GetValues(typeof(DmgEnum)))
             {
                 foreach (var type in (DmgTypeEnum[])System.Enum.GetValues(typeof(DmgTypeEnum)))
@@ -219,9 +248,15 @@ namespace ModLib.Mod
             }
         }
 
+        [Trace]
         public override void OnBattleStart(ETypeData e)
         {
+            base.OnBattleStart(e);
+
             IsPlayerDie = false;
+            SceneBattle = g.scene.GetScene<SceneBattle>(SceneType.Battle);
+            PlayerUnit = SceneBattle.battleData.playerUnit;
+
             BattleDmg.Clear();
             foreach (var de in (DmgEnum[])System.Enum.GetValues(typeof(DmgEnum)))
             {
@@ -235,24 +270,21 @@ namespace ModLib.Mod
 
         public override void OnBattleUnitDie(UnitDie e)
         {
-            var dieUnit = e?.unit?.data?.TryCast<UnitDataHuman>();
-            if (dieUnit?.worldUnitData != null && g.world.battle.data.isRealBattle)
-            {
-                if (dieUnit.worldUnitData.unit.IsPlayer())
-                {
-                    IsPlayerDie = true;
-                }
-            }
+            base.OnBattleUnitDie(e);
+            IsPlayerDie = PlayerUnit.isDie;
         }
 
         public override void OnBattleUnitHitDynIntHandler(UnitHitDynIntHandler e)
         {
+            base.OnBattleUnitHitDynIntHandler(e);
             AttackingUnit = e?.hitData?.attackUnit;
             HitUnit = e?.hitUnit;
         }
 
         public override void OnBattleUnitHit(UnitHit e)
         {
+            base.OnBattleUnitHit(e);
+
             AttackingUnit = e?.hitData?.attackUnit;
             HitUnit = e?.hitUnit;
 
