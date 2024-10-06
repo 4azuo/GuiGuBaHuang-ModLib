@@ -510,9 +510,11 @@ namespace MOD_nE7UL2.Mod
                 var localDmgRecv = ModBattleEvent.sGetDmg(ModBattleEvent.DmgSaveEnum.Local, ModBattleEvent.GetDmgKey(ModBattleEvent.DmgEnum.DmgRecv, ModBattleEvent.DmgTypeEnum.Damage));
                 DebugHelper.WriteLine($"Damage dealt: {localDmgDealt}dmg, Damage recieve: {localDmgRecv}dmg");
                 var player = g.world.playerUnit;
-                if (ModBattleEvent.IsPlayerDie)
+                if (g.world.battle.data.isRealBattle && ModBattleEvent.PlayerUnit.isDie)
                 {
+                    //life
                     player.AddProperty<int>(UnitPropertyEnum.Life, -unchecked((int)Math.Max(localDmgRecv / 1200, 1)));
+                    //exp
                     var gradeLvl = player.GetGradeLvl();
                     var bodyReconstructionItemId = BodyReconstructions.ContainsKey(gradeLvl) ? BodyReconstructions[gradeLvl] : 0;
                     if (bodyReconstructionItemId != 0 && player.GetUnitPropCount(bodyReconstructionItemId) <= 0)
@@ -521,18 +523,21 @@ namespace MOD_nE7UL2.Mod
                     }
                     else
                     {
-                        player.RemoveUnitProp(bodyReconstructionItemId);
+                        player.RemoveUnitProp(bodyReconstructionItemId, 1);
                     }
+                    //item
                     var ring = player.data.unitData.propData.GetEquipProps().ToArray().Where(x => x.propsItem.IsRing() != null).FirstOrDefault();
                     var luck = g.world.playerUnit.GetDynProperty(UnitDynPropertyEnum.Luck).value;
                     foreach (var item in player.GetUnitProps())
                     {
-                        if (!CommonTool.Random(0.00f, 100.00f).IsBetween(0.00f, (luck / 10.0f) + (ring.propsItem.IsRing().lockScore / 100.0f)))
+                        if (!CommonTool.Random(0.00f, 100.00f).IsBetween(0.00f, (luck / 10.0f) + (ring?.propsItem?.IsRing().lockScore ?? 0.0f / 100.0f)))
                         {
-                            player.RemoveUnitProp(item.propsID);
+                            player.RemoveUnitProp(item.soleID);
                         }
                     }
+                    //spirit stones
                     player.SetUnitMoney(0);
+                    //log
                     DebugHelper.WriteLine($"BattleRewardEvent: player death");
                 }
                 else if (e.isWin)
@@ -566,7 +571,7 @@ namespace MOD_nE7UL2.Mod
             if (attackUnitData?.worldUnitData?.unit != null && attackUnitData.worldUnitData.unit.IsPlayer())
             {
                 var dieUnit = e?.unit?.data?.TryCast<UnitDataHuman>();
-                if (dieUnit?.worldUnitData?.unit != null && !ModBattleEvent.IsPlayerDie)
+                if (dieUnit?.worldUnitData?.unit != null && !ModBattleEvent.PlayerUnit.isDie)
                 {
                     if (g.world.battle.data.isRealBattle)
                     {

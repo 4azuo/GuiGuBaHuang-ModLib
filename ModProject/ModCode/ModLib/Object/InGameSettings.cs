@@ -57,7 +57,7 @@ namespace ModLib.Object
         #region Custom
         public string CustomConfigFile { get; set; }
         public int? CustomConfigVersion { get; set; }
-        public bool IsOldVersion { get; set; }
+        public bool IsOldVersion { get; set; } = false;
         #endregion
     }
 }

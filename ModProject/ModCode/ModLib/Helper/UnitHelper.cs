@@ -220,9 +220,14 @@ public static class UnitHelper
         }
     }
 
-    public static void RemoveUnitProp(this WorldUnitBase wunit, int propID)
+    public static void RemoveUnitProp(this WorldUnitBase wunit, int propID, int count = int.MaxValue)
     {
-        wunit.AddUnitProp(propID, int.MinValue);
+        wunit.data.unitData.propData.DelProps(propID, count);
+    }
+
+    public static void RemoveUnitProp(this WorldUnitBase wunit, string soleID, int count = int.MaxValue)
+    {
+        wunit.data.unitData.propData.DelProps(soleID, count);
     }
 
     public static void AddUnitMoney(this WorldUnitBase wunit, int addCount)

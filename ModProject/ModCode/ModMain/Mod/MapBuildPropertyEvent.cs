@@ -1,10 +1,8 @@
 ﻿using MOD_nE7UL2.Const;
-using ModLib.Enum;
 using ModLib.Mod;
 using System;
 using System.Collections.Generic;
 using UnityEngine;
-using static DataBuildTown;
 
 namespace MOD_nE7UL2.Mod
 {
@@ -17,22 +15,11 @@ namespace MOD_nE7UL2.Mod
         {
             base.OnLoadGame();
 
-            var market = EventHelper.GetEvent<RealMarketEvent>(ModConst.REAL_MARKET_EVENT);
-
             foreach (var town in g.world.build.GetBuilds<MapBuildTown>())
             {
                 if (!Budget.ContainsKey(town.buildData.id))
                 {
-                    #region old
-                    if (market.MarketST.ContainsKey(town.buildData.id))
-                    {
-                        Budget.Add(town.buildData.id, market.MarketST[town.buildData.id]);
-                    }
-                    #endregion
-                    else
-                    {
-                        Budget.Add(town.buildData.id, Math.Pow(3, town.gridData.areaBaseID).Parse<long>() * 200);
-                    }
+                    Budget.Add(town.buildData.id, Math.Pow(2, town.gridData.areaBaseID).Parse<long>() * 300);
                 }
             }
         }
@@ -44,9 +31,8 @@ namespace MOD_nE7UL2.Mod
             foreach (var wunit in g.world.unit.GetUnits())
             {
                 var income = (
-                        Math.Pow(2, g.conf.roleGrade.GetItem(wunit.GetProperty<int>(UnitPropertyEnum.GradeID)).grade) *
-                        (UnitTypeEvent.GetUnitTypeEnum(wunit) == Enum.UnitTypeEnum.Merchant ? 1.40f : 1.00f) *
-                        6
+                        Math.Pow(2, wunit.GetGradeLvl()) * 6.00f *
+                        (UnitTypeEvent.GetUnitTypeEnum(wunit) == Enum.UnitTypeEnum.Merchant ? 1.30f : 1.00f)
                     ).Parse<long>();
                 var town = g.world.build.GetBuild<MapBuildTown>(wunit.data.unitData.GetPoint());
                 if (town != null)

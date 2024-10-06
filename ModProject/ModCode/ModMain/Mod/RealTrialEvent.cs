@@ -49,7 +49,7 @@ namespace MOD_nE7UL2.Mod
         {
             base.OnBattleEnd(e);
 
-            if (IsInTrial && !ModBattleEvent.IsPlayerDie)
+            if (IsInTrial && !ModBattleEvent.PlayerUnit.isDie)
             {
                 foreach (var p in UnitTypeEnum.Trial.PropIncRatio)
                 {

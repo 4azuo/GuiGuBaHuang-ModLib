@@ -40,9 +40,6 @@ namespace MOD_nE7UL2.Mod
         private Text txtWarningMsg;
         private Text txtInfo;
 
-        #region old
-        public IDictionary<string, long> MarketST { get; set; } = new Dictionary<string, long>();
-        #endregion
         public IDictionary<string, float> MarketPriceRate { get; set; } = new Dictionary<string, float>();
 
         public override void OnLoadGame()
