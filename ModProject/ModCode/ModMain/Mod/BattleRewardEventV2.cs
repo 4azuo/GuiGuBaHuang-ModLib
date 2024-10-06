@@ -530,7 +530,7 @@ namespace MOD_nE7UL2.Mod
                     var luck = g.world.playerUnit.GetDynProperty(UnitDynPropertyEnum.Luck).value;
                     foreach (var item in player.GetUnitProps())
                     {
-                        if (item.propsInfoBase.sale > 0 &&
+                        if (item.propsItem.sale > 0 &&
                             !CommonTool.Random(0.00f, 100.00f).IsBetween(0.00f, (luck / 10.0f) + (ring?.propsItem?.IsRing().lockScore ?? 0.0f / 100.0f)))
                         {
                             player.RemoveUnitProp(item.soleID);

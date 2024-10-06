@@ -182,7 +182,6 @@ namespace MOD_nE7UL2.Mod
 
         private long GetTotalPrice()
         {
-            //return uiPropSell.selectProps.allProps.ToArray().Sum(x => (uiPropSell.propsPrice.ContainsKey(x.propsID) ? uiPropSell.propsPrice[x.propsID] : x.propsInfoBase.sale.Parse<long>()) * x.propsCount);
             return uiPropSell.selectProps.allProps.ToArray().Sum(x => x.propsInfoBase.sale.Parse<long>() * x.propsCount);
         }
     }
