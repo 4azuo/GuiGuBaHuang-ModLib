@@ -268,8 +268,10 @@ namespace ModLib.Mod
                     }
                     var cusStt = JsonConvert.DeserializeObject<T>(ConfHelper.ReadConfData(customSettings.ConfCustomConfigFile));
                     cusStt.IsOldVersion = cusStt.IsOldVersion ||
-                        !InGameCustomSettings.CustomConfigVersion.HasValue ||
-                        InGameCustomSettings.CustomConfigVersion < ModLibConst.OLD_VERSION_NEED_UPDATE;
+                        (GameHelper.GetGameMonth() > 1 && (
+                            !InGameCustomSettings.CustomConfigVersion.HasValue ||
+                            InGameCustomSettings.CustomConfigVersion < ModLibConst.OLD_VERSION_NEED_UPDATE
+                        ));
                     cusStt.CustomConfigFile = customSettings.ConfCustomConfigFile;
                     cusStt.CustomConfigVersion = customSettings.ConfCustomConfigVersion;
                     foreach (var prop in typeof(T).GetProperties(BindingFlags.Public | BindingFlags.Instance).Where(x => x.GetCustomAttribute<InheritanceAttribute>() != null))

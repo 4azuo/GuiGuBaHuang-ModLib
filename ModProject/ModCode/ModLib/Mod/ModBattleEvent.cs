@@ -201,8 +201,6 @@ namespace ModLib.Mod
         #endregion
 
         [JsonIgnore]
-        public static bool IsPlayerDie { get; private set; }
-        [JsonIgnore]
         public static SceneBattle SceneBattle { get; private set; }
         [JsonIgnore]
         public static UnitCtrlBase PlayerUnit { get; private set; }
@@ -253,7 +251,6 @@ namespace ModLib.Mod
         {
             base.OnBattleStart(e);
 
-            IsPlayerDie = false;
             SceneBattle = g.scene.GetScene<SceneBattle>(SceneType.Battle);
             PlayerUnit = SceneBattle.battleData.playerUnit;
 
@@ -266,12 +263,6 @@ namespace ModLib.Mod
                     BattleDmg.Add(key, 0);
                 }
             }
-        }
-
-        public override void OnBattleUnitDie(UnitDie e)
-        {
-            base.OnBattleUnitDie(e);
-            IsPlayerDie = PlayerUnit.isDie;
         }
 
         public override void OnBattleUnitHitDynIntHandler(UnitHitDynIntHandler e)
