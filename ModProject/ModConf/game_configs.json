@@ -1,12 +1,11 @@
 {
 	"__name": "In game configurations",
 	"HideButtonConfigs": {
-		"__notes": "G:btnReloadCache should be hiden. Because, Reload can cause error sometimes.",
 		"__select_options": "Hide/Show",
 		"ButtonConfigs": {
 			"GameMemu": {
 				"G:btnSave": "Show",
-				"G:btnReloadCache": "Hide"
+				"G:btnReloadCache": "Show"
 			},
 			"MartialPropInfo": {
 				"G:btnPreview": "Hide"
