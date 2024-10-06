@@ -526,12 +526,12 @@ namespace MOD_nE7UL2.Mod
                         player.RemoveUnitProp(bodyReconstructionItemId, 1);
                     }
                     //item
-                    var ring = player.data.unitData.propData.GetEquipProps().ToArray().Where(x => x.propsItem.IsRing() != null).FirstOrDefault();
+                    var ringLockScore = player.data.unitData.propData.GetEquipProps().ToArray().Where(x => x.propsItem.IsRing() != null).FirstOrDefault()?.propsItem?.IsRing()?.lockScore ?? 0;
                     var luck = g.world.playerUnit.GetDynProperty(UnitDynPropertyEnum.Luck).value;
                     foreach (var item in player.GetUnitProps())
                     {
                         if (item.propsItem.sale > 0 &&
-                            !CommonTool.Random(0.00f, 100.00f).IsBetween(0.00f, (luck / 10.0f) + (ring?.propsItem?.IsRing().lockScore ?? 0.0f / 100.0f)))
+                            !CommonTool.Random(0.00f, 100.00f).IsBetween(0.00f, (luck / 10.0f) + (ringLockScore / 100.0f)))
                         {
                             player.RemoveUnitProp(item.soleID);
                         }
