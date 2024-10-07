@@ -9,7 +9,6 @@ using UnityEngine;
 
 namespace MOD_nE7UL2.Mod
 {
-    [TraceIgnore]
     [Cache(ModConst.BATTLE_MODIFY_EVENT)]
     public class BattleModifyEvent : ModEvent
     {

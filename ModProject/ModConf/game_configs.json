@@ -1,5 +1,6 @@
 {
 	"__name": "In game configurations",
+	"ForceSaveCondition": "${gradelevel} >= (10 - ${gamelevel})",
 	"HideButtonConfigs": {
 		"__select_options": "Hide/Show",
 		"ButtonConfigs": {
@@ -10,6 +11,10 @@
 			"MartialPropInfo": {
 				"G:btnPreview": "Hide"
 			}
+		},
+		"ForceHideConditions": {
+			"GameMemu.G:btnSave": "${gamelevel} >= 5",
+			"GameMemu.G:btnReloadCache": "${gamelevel} >= 4"
 		}
 	},
 	"ContributionExchangeConfigs": {
@@ -99,14 +104,14 @@
 		"DefR": 0.50,
 		"MHpR": 1.10,
 		"GrowRate": {
-			"Common": 0.00070,
-			"Elite": 0.00050,
-			"BOSS": 0.00030
+			"Common": 0.00060,
+			"Elite": 0.00040,
+			"BOSS": 0.00020
 		},
 		"KillGrowRate": {
 			"Common": 0.000001,
-			"Elite": 0.00003,
-			"BOSS": 0.00005
+			"Elite": 0.00002,
+			"BOSS": 0.00004
 		},
 		"PlayerAtk2HpRate": {
 			"Common": 0.50,
