@@ -7,29 +7,24 @@ using System.Collections.Generic;
 
 namespace ModLib.Mod
 {
-    [Trace]
+    [TraceIgnore]
     public abstract class ModEvent : CachableObject
     {
         [JsonIgnore]
         public virtual int OrderIndex
         {
-            [TraceIgnore]
             get;
         } = -1;
         [JsonIgnore]
         public IDictionary<string, uint> UpdateFlg1
         {
-            [TraceIgnore]
             get;
-            [TraceIgnore]
             set;
         } = new Dictionary<string, uint>();
         [JsonIgnore]
         public IDictionary<string, uint> UpdateFlg2
         {
-            [TraceIgnore]
             get;
-            [TraceIgnore]
             set;
         } = new Dictionary<string, uint>();
         [JsonIgnore]
@@ -48,7 +43,6 @@ namespace ModLib.Mod
         }
 
         #region Private methods
-        [TraceIgnore]
         public bool IsLoading()
         {
             return 
@@ -58,13 +52,11 @@ namespace ModLib.Mod
                 ModMaster.ModObj.InGameSettings.LoadGameFirst;
         }
 
-        [TraceIgnore]
         public bool IsFlgUpdate(string method)
         {
             return UpdateFlg1[method] != UpdateFlg2[method];
         }
 
-        [TraceIgnore]
         public void UpdateFlg(string method)
         {
             UpdateFlg1[method]++;
@@ -72,9 +64,7 @@ namespace ModLib.Mod
         #endregion
 
         #region Timer
-        [TraceIgnore]
         public virtual void OnTimeUpdate() { }
-        [TraceIgnore]
         public virtual void OnFrameUpdate() { }
         #endregion
 

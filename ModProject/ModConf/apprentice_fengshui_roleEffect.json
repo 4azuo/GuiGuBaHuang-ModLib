@@ -1,0 +1,62 @@
+[
+	{
+		"__name": "Feng Shui Lvl-1",
+		"id": "420041001",
+		"effectType": "1",
+		"value": "mpMax_0_2"
+	},
+	{
+		"__name": "Feng Shui Lvl-2",
+		"id": "420041002",
+		"effectType": "1",
+		"value": "mpMax_0_4"
+	},
+	{
+		"__name": "Feng Shui Lvl-3",
+		"id": "420041003",
+		"effectType": "1",
+		"value": "mpMax_0_6"
+	},
+	{
+		"__name": "Feng Shui Lvl-4",
+		"id": "420041004",
+		"effectType": "1",
+		"value": "mpMax_0_8"
+	},
+	{
+		"__name": "Feng Shui Lvl-5",
+		"id": "420041005",
+		"effectType": "1",
+		"value": "mpMax_0_10"
+	},
+	{
+		"__name": "Feng Shui Lvl-6",
+		"id": "420041006",
+		"effectType": "1",
+		"value": "mpMax_0_12"
+	},
+	{
+		"__name": "Feng Shui Lvl-7",
+		"id": "420041007",
+		"effectType": "1",
+		"value": "mpMax_0_14"
+	},
+	{
+		"__name": "Feng Shui Lvl-8",
+		"id": "420041008",
+		"effectType": "1",
+		"value": "mpMax_0_16"
+	},
+	{
+		"__name": "Feng Shui Lvl-9",
+		"id": "420041009",
+		"effectType": "1",
+		"value": "mpMax_0_18"
+	},
+	{
+		"__name": "Feng Shui Lvl-10",
+		"id": "420041010",
+		"effectType": "1",
+		"value": "mpMax_0_20"
+	},
+]

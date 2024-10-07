@@ -1,0 +1,62 @@
+[
+	{
+		"__name": "Mining Lvl-1",
+		"id": "420061001",
+		"effectType": "1",
+		"value": "def_0_2"
+	},
+	{
+		"__name": "Mining Lvl-2",
+		"id": "420061002",
+		"effectType": "1",
+		"value": "def_0_4"
+	},
+	{
+		"__name": "Mining Lvl-3",
+		"id": "420061003",
+		"effectType": "1",
+		"value": "def_0_6"
+	},
+	{
+		"__name": "Mining Lvl-4",
+		"id": "420061004",
+		"effectType": "1",
+		"value": "def_0_8"
+	},
+	{
+		"__name": "Mining Lvl-5",
+		"id": "420061005",
+		"effectType": "1",
+		"value": "def_0_10"
+	},
+	{
+		"__name": "Mining Lvl-6",
+		"id": "420061006",
+		"effectType": "1",
+		"value": "def_0_12"
+	},
+	{
+		"__name": "Mining Lvl-7",
+		"id": "420061007",
+		"effectType": "1",
+		"value": "def_0_14"
+	},
+	{
+		"__name": "Mining Lvl-8",
+		"id": "420061008",
+		"effectType": "1",
+		"value": "def_0_16"
+	},
+	{
+		"__name": "Mining Lvl-9",
+		"id": "420061009",
+		"effectType": "1",
+		"value": "def_0_18"
+	},
+	{
+		"__name": "Mining Lvl-10",
+		"id": "420061010",
+		"effectType": "1",
+		"value": "def_0_20"
+	},
+]
