@@ -30,25 +30,26 @@ namespace MOD_nE7UL2.Mod
 
                 foreach (var buttonConfig in buttonConfigs)
                 {
-                    string forceHideConfig;
-                    Configs.ForceHideConditions.TryGetValue($"{e.uiType.uiName}.{buttonConfig.Key}", out forceHideConfig);
+                    //string forceHideConfig;
+                    //Configs.ForceHideConditions.TryGetValue($"{e.uiType.uiName}.{buttonConfig.Key}", out forceHideConfig);
 
                     var comp = ui.GetComponentsInChildren<MonoBehaviour>().Where(x => buttonConfig.Key == x.name);
                     foreach (var c in comp)
                     {
-                        c.gameObject.SetActive(buttonConfig.Value == SelectOption.Show && !IsForeHideConfigOK(forceHideConfig));
+                        c.gameObject.SetActive(buttonConfig.Value == SelectOption.Show);
+                        //c.gameObject.SetActive(buttonConfig.Value == SelectOption.Show && !IsForeHideConfigOK(forceHideConfig));
                     }
                 }
             }
         }
 
-        private bool IsForeHideConfigOK(string conf)
-        {
-            if (string.IsNullOrEmpty(conf))
-                return false;
-            conf = conf.Replace("${gradelevel}", g.world.playerUnit.GetGradeLvl().ToString())
-                .Replace("${gamelevel}", g.data.dataWorld.data.gameLevel.Parse<int>().ToString());
-            return Microsoft.CodeAnalysis.CSharp.Scripting.CSharpScript.EvaluateAsync<bool>(conf).Result;
-        }
+        //private bool IsForeHideConfigOK(string conf)
+        //{
+        //    if (string.IsNullOrEmpty(conf))
+        //        return false;
+        //    conf = conf.Replace("${gradelevel}", g.world.playerUnit.GetGradeLvl().ToString())
+        //        .Replace("${gamelevel}", g.data.dataWorld.data.gameLevel.Parse<int>().ToString());
+        //    return Microsoft.CodeAnalysis.CSharp.Scripting.CSharpScript.EvaluateAsync<bool>(conf).Result;
+        //}
     }
 }
