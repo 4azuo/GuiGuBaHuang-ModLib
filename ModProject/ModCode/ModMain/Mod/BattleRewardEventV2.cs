@@ -568,15 +568,15 @@ namespace MOD_nE7UL2.Mod
             }
         }
 
-        private bool IsForeSaveConfigOK()
-        {
-            var conf = ModMain.ModObj.InGameCustomSettings.ForceSaveCondition;
-            if (string.IsNullOrEmpty(conf))
-                return false;
-            conf = conf.Replace("${gradelevel}", g.world.playerUnit.GetGradeLvl().ToString())
-                .Replace("${gamelevel}", g.data.dataWorld.data.gameLevel.Parse<int>().ToString());
-            return Microsoft.CodeAnalysis.CSharp.Scripting.CSharpScript.EvaluateAsync<bool>(conf).Result;
-        }
+        //private bool IsForeSaveConfigOK()
+        //{
+        //    var conf = ModMain.ModObj.InGameCustomSettings.ForceSaveCondition;
+        //    if (string.IsNullOrEmpty(conf))
+        //        return false;
+        //    conf = conf.Replace("${gradelevel}", g.world.playerUnit.GetGradeLvl().ToString())
+        //        .Replace("${gamelevel}", g.data.dataWorld.data.gameLevel.Parse<int>().ToString());
+        //    return Microsoft.CodeAnalysis.CSharp.Scripting.CSharpScript.EvaluateAsync<bool>(conf).Result;
+        //}
 
         public override void OnBattleUnitDie(UnitDie e)
         {

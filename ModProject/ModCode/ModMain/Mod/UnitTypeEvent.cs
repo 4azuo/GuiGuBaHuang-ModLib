@@ -1,10 +1,8 @@
-﻿using Commons.Xml.Relaxng.Derivative;
-using MOD_nE7UL2.Const;
+﻿using MOD_nE7UL2.Const;
 using MOD_nE7UL2.Enum;
 using ModLib.Enum;
 using ModLib.Mod;
 using System.Collections.Generic;
-using System.Linq;
 
 namespace MOD_nE7UL2.Mod
 {
@@ -25,6 +23,9 @@ namespace MOD_nE7UL2.Mod
                 {
                     UnitTypeDic.Add(unitId, AddRandomUnitType(wunit));
                 }
+
+                //add apprentice luck
+                AddApprenticeLuck(wunit);
 
                 //merchant
                 if (wunit.IsPlayer() && UnitTypeDic[unitId] == UnitTypeEnum.Merchant)
@@ -63,6 +64,22 @@ namespace MOD_nE7UL2.Mod
             if (t.CustomLuck != null)
                 wunit.AddLuck(t.Value.Parse<int>());
             return t;
+        }
+
+        public static void AddApprenticeLuck(WorldUnitBase wunit)
+        {
+            foreach (var apprenticeLuck in ApprenticeLuckEnum.GetAllEnums<ApprenticeLuckEnum>())
+            {
+                var apprenticeLevel = apprenticeLuck.GetApprenticeLevel(wunit);
+
+                var apprenticePrevLuckId = apprenticeLuck.GetApprenticeLuckId(apprenticeLevel - 1);
+                if (apprenticePrevLuckId > 0 && wunit.GetLuck(apprenticePrevLuckId) != null)
+                    wunit.DelLuck(apprenticePrevLuckId);
+
+                var apprenticeLuckId = apprenticeLuck.GetApprenticeLuckId(apprenticeLevel);
+                if (apprenticeLuckId > 0 && wunit.GetLuck(apprenticeLuckId)  == null)
+                    wunit.AddLuck(apprenticeLuckId);
+            }
         }
 
         public void AddPlayerProp(WorldUnitBase wunit, float ratio = 1.00f)
