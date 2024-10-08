@@ -27,6 +27,9 @@ namespace MOD_nE7UL2.Mod
                 //add apprentice luck
                 AddApprenticeLuck(wunit);
 
+                //add trainee luck
+                AddTraineeLuck(wunit);
+
                 //merchant
                 if (wunit.IsPlayer() && UnitTypeDic[unitId] == UnitTypeEnum.Merchant)
                 {
@@ -72,13 +75,33 @@ namespace MOD_nE7UL2.Mod
             {
                 var apprenticeLevel = apprenticeLuck.GetApprenticeLevel(wunit);
 
-                var apprenticePrevLuckId = apprenticeLuck.GetApprenticeLuckId(apprenticeLevel - 1);
-                if (apprenticePrevLuckId > 0 && wunit.GetLuck(apprenticePrevLuckId) != null)
-                    wunit.DelLuck(apprenticePrevLuckId);
-
                 var apprenticeLuckId = apprenticeLuck.GetApprenticeLuckId(apprenticeLevel);
-                if (apprenticeLuckId > 0 && wunit.GetLuck(apprenticeLuckId)  == null)
+                if (apprenticeLuckId > 0 && wunit.GetLuck(apprenticeLuckId) == null)
+                {
+                    for (int i = 1; i <= ApprenticeLuckEnum.ApprenticeLevels.Length; i++)
+                    {
+                        wunit.DelLuck(apprenticeLuck.GetApprenticeLuckId(i));
+                    }
                     wunit.AddLuck(apprenticeLuckId);
+                }
+            }
+        }
+
+        public static void AddTraineeLuck(WorldUnitBase wunit)
+        {
+            foreach (var traineeLuck in TraineeLuckEnum.GetAllEnums<TraineeLuckEnum>())
+            {
+                var traineeLevel = traineeLuck.GetTraineeLevel(wunit);
+
+                var traineeLuckId = traineeLuck.GetTraineeLuckId(traineeLevel);
+                if (traineeLuckId > 0 && wunit.GetLuck(traineeLuckId) == null)
+                {
+                    for (int i = 1; i <= TraineeLuckEnum.TraineeLevels.Length; i++)
+                    {
+                        wunit.DelLuck(traineeLuck.GetTraineeLuckId(i));
+                    }
+                    wunit.AddLuck(traineeLuckId);
+                }
             }
         }
 

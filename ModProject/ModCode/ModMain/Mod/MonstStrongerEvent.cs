@@ -49,30 +49,30 @@ namespace MOD_nE7UL2.Mod
             {
                 var gameLvl = g.data.dataWorld.data.gameLevel.Parse<int>();
                 var ratio = (Counter * Configs.GrowRate[monstData.monstType]) + (KillCounter[monstData.monstType] * Configs.KillGrowRate[monstData.monstType]);
-                monstData.attack.baseValue += (monstData.attack.baseValue * (ratio * Configs.AtkR * monstData.grade.baseValue * gameLvl)).Parse<int>();
-                monstData.defense.baseValue += (monstData.defense.baseValue * (ratio * Configs.DefR * monstData.grade.baseValue * gameLvl)).Parse<int>();
-                monstData.maxHP.baseValue += (monstData.maxHP.baseValue * (ratio * Configs.MHpR * monstData.grade.baseValue * gameLvl)).Parse<int>() +
-                    (g.world.playerUnit.GetProperty<int>(UnitPropertyEnum.Attack) * Configs.PlayerAtk2HpRate[monstData.monstType] * (monstData.grade.baseValue.Parse<float>() / g.world.playerUnit.GetProperty<int>(UnitPropertyEnum.GradeID).Parse<float>())).Parse<int>();
-                monstData.hp = monstData.maxHP.baseValue;
+                monstData.attack.baseValue += (monstData.attack.value * (ratio * Configs.AtkR * monstData.grade.value * gameLvl)).Parse<int>();
+                monstData.defense.baseValue += (monstData.defense.value * (ratio * Configs.DefR * monstData.grade.value * gameLvl)).Parse<int>();
+                monstData.maxHP.baseValue += (monstData.maxHP.value * (ratio * Configs.MHpR * monstData.grade.value * gameLvl)).Parse<int>() +
+                    (g.world.playerUnit.GetDynProperty(UnitDynPropertyEnum.Attack).value * Configs.PlayerAtk2HpRate[monstData.monstType] * (monstData.grade.value.Parse<float>() / g.world.playerUnit.GetDynProperty(UnitDynPropertyEnum.GradeID).value.Parse<float>())).Parse<int>();
+                monstData.hp = monstData.maxHP.value;
 
-                monstData.basisBlade.baseValue *= monstData.grade.baseValue;
-                monstData.basisEarth.baseValue *= monstData.grade.baseValue;
-                monstData.basisFinger.baseValue *= monstData.grade.baseValue;
-                monstData.basisFire.baseValue *= monstData.grade.baseValue;
-                monstData.basisFist.baseValue *= monstData.grade.baseValue;
-                monstData.basisFroze.baseValue *= monstData.grade.baseValue;
-                monstData.basisPalm.baseValue *= monstData.grade.baseValue;
-                monstData.basisSpear.baseValue *= monstData.grade.baseValue;
-                monstData.basisSword.baseValue *= monstData.grade.baseValue;
-                monstData.basisThunder.baseValue *= monstData.grade.baseValue;
-                monstData.basisWind.baseValue *= monstData.grade.baseValue;
-                monstData.basisWood.baseValue *= monstData.grade.baseValue;
+                monstData.basisBlade.baseValue *= monstData.grade.value;
+                monstData.basisEarth.baseValue *= monstData.grade.value;
+                monstData.basisFinger.baseValue *= monstData.grade.value;
+                monstData.basisFire.baseValue *= monstData.grade.value;
+                monstData.basisFist.baseValue *= monstData.grade.value;
+                monstData.basisFroze.baseValue *= monstData.grade.value;
+                monstData.basisPalm.baseValue *= monstData.grade.value;
+                monstData.basisSpear.baseValue *= monstData.grade.value;
+                monstData.basisSword.baseValue *= monstData.grade.value;
+                monstData.basisThunder.baseValue *= monstData.grade.value;
+                monstData.basisWind.baseValue *= monstData.grade.value;
+                monstData.basisWood.baseValue *= monstData.grade.value;
 
-                //monstData.attack.baseValue += (??? / 100.00f * monstData.attack.baseValue).Parse<int>();
-                var adjustDef1 = ((((monstData.basisFist.baseValue + monstData.basisPalm.baseValue + monstData.basisFinger.baseValue) / 3.0f) / 1000.00f) * monstData.maxHP.baseValue).Parse<int>();
-                var adjustDef2 = ((monstData.basisEarth.baseValue / 1000.00f) * monstData.defense.baseValue).Parse<int>();
+                //monstData.attack.baseValue += (??? / 100.00f * monstData.attack.value).Parse<int>();
+                var adjustDef1 = ((((monstData.basisFist.value + monstData.basisPalm.value + monstData.basisFinger.value) / 3.0f) / 1000.00f) * monstData.maxHP.value).Parse<int>();
+                var adjustDef2 = ((monstData.basisEarth.value / 1000.00f) * monstData.defense.value).Parse<int>();
                 monstData.defense.baseValue += adjustDef1 + adjustDef2;
-                var adjustMs = (monstData.basisWind.baseValue / 100.00f).Parse<int>();
+                var adjustMs = (monstData.basisWind.value / 100.00f).Parse<int>();
                 monstData.moveSpeed.baseValue += adjustMs;
             }
         }

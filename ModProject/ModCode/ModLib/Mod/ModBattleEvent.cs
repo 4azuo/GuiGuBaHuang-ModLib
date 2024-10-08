@@ -46,9 +46,9 @@ namespace ModLib.Mod
             return $"{dmgEnum}_{dmgTypeEnum}";
         }
 
-        public static UnitPropertyEnum GetDmgPropertyEnum(DmgTypeEnum dmgTypeEnum)
+        public static UnitDynPropertyEnum GetDmgPropertyEnum(DmgTypeEnum dmgTypeEnum)
         {
-            return UnitPropertyEnum.GetEnumByName<UnitPropertyEnum>($"Basis{dmgTypeEnum}");
+            return UnitDynPropertyEnum.GetEnumByName<UnitDynPropertyEnum>($"Basis{dmgTypeEnum}");
         }
 
         public static int GetUnitPropertyValue(UnitCtrlBase uc, DmgTypeEnum dmgTypeEnum)
@@ -56,11 +56,11 @@ namespace ModLib.Mod
             return GetUnitPropertyValue(uc, GetDmgPropertyEnum(dmgTypeEnum));
         }
 
-        public static int GetUnitPropertyValue(UnitCtrlBase uc, UnitPropertyEnum pEnum)
+        public static int GetUnitPropertyValue(UnitCtrlBase uc, UnitDynPropertyEnum pEnum)
         {
             if (pEnum == null)
                 return 0;
-            return (uc.data.GetValue(pEnum.PropName) as DynInt).baseValue;
+            return (uc.data.GetValue(pEnum.PropName) as DynInt).value;
         }
 
         public static DmgTypeEnum GetDmgBasisType(MartialTool.HitData hitData)

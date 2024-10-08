@@ -5,6 +5,7 @@ using UnityEngine;
 using System.Linq;
 using UnityEngine.UI;
 using MOD_nE7UL2.Enum;
+using ModLib.Const;
 
 namespace MOD_nE7UL2.Mod
 {
@@ -101,7 +102,7 @@ namespace MOD_nE7UL2.Mod
                 var uType = UnitTypeEvent.GetUnitTypeEnum(g.world.playerUnit);
                 var props = uiTownStorageProps.townStorage?.data?.propData?.allProps?.ToArray() ?? new DataProps.PropsData[0];
                 StorageValue = props.Sum(x => x.propsCount * x.propsInfoBase.worth);
-                var spValue = props.Where(x => x.propsID == 10001).Sum(x => x.propsCount * x.propsInfoBase.worth);
+                var spValue = props.Where(x => x.propsID == ModLibConst.MONEY_PROP_ID).Sum(x => x.propsCount * x.propsInfoBase.worth);
                 txtStorageMoney.text = $"Storage: {StorageValue} Spirit Stones ({spValue} cash, {StorageValue - spValue} items)";
                 //FreeStorage
                 txtFee.text = uType == UnitTypeEnum.Merchant ? string.Empty : $"Fee: {FEE_RATE * 100:0.0}% (-{(StorageValue * FEE_RATE).Parse<int>()} Spirit Stones monthly)";

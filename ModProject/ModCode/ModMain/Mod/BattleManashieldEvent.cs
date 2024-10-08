@@ -32,7 +32,7 @@ namespace MOD_nE7UL2.Mod
                 var ms = (humanData.mp * ManashieldConfigs.ManaShieldRate1) + 
                     (humanData.maxMP.value * ManashieldConfigs.ManaShieldRate2) + 
                     (humanData.hp * (0.05f * GetBloodEnergyLevel(humanData))) +
-                    (humanData.basisFist.baseValue / 100.00f * humanData.defense.baseValue).Parse<int>();
+                    (humanData.basisFist.value / 100.00f * humanData.defense.value).Parse<int>();
                 Effect3017.AddShield(efx, humanData.unit, MANASHIELD_EFFECT_EFX_ID, ms.Parse<int>(), humanData.maxHP.value * 3, int.MaxValue);
             }
         }
@@ -55,7 +55,7 @@ namespace MOD_nE7UL2.Mod
                         }
                         //if (unit.data.mp > 0)// && EffectTool.GetEffects(unit, MANASHIELD_EFFECT_EFX_ID.ToString()).Count > 0)
                         //{
-                        //    //var recoverShield = (((humanData.basisFist.baseValue + humanData.basisPalm.baseValue + humanData.basisFinger.baseValue) / 3.0f) / 1000.00f).Parse<int>();
+                        //    //var recoverShield = (((humanData.basisFist.value + humanData.basisPalm.value + humanData.basisFinger.value) / 3.0f) / 1000.00f).Parse<int>();
                         //    //Effect3017.AddShieldValue(unit, MANASHIELD_EFFECT_EFX_ID, 100);
                         //}
                     }

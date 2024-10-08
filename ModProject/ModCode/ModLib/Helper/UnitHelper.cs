@@ -1,4 +1,5 @@
 ﻿using Harmony;
+using ModLib.Const;
 using ModLib.Enum;
 using System;
 using System.Collections.Generic;
@@ -112,33 +113,33 @@ public static class UnitHelper
         return propType.Get(wunit.data.dynUnitData);
     }
 
-    public static void SetDynProperty(this WorldUnitBase wunit, UnitDynPropertyEnum propType, DynInt newValue)
-    {
-        propType.Set(wunit.data.dynUnitData, newValue);
-    }
+    //public static void SetDynProperty(this WorldUnitBase wunit, UnitDynPropertyEnum propType, DynInt newValue)
+    //{
+    //    propType.Set(wunit.data.dynUnitData, newValue);
+    //}
 
     public static int GetMaxExpCurrentGrade(this WorldUnitBase wunit)
     {
-        return g.conf.roleGrade.GetNextGradeItem(wunit.GetProperty<int>(UnitPropertyEnum.GradeID)).exp;
+        return g.conf.roleGrade.GetNextGradeItem(wunit.GetDynProperty(UnitDynPropertyEnum.GradeID).value).exp;
     }
 
     public static int GetMinExpCurrentGrade(this WorldUnitBase wunit)
     {
-        return g.conf.roleGrade.GetItem(wunit.GetProperty<int>(UnitPropertyEnum.GradeID)).exp;
+        return g.conf.roleGrade.GetItem(wunit.GetDynProperty(UnitDynPropertyEnum.GradeID).value).exp;
     }
 
     public static int GetNeedExpToLevelUp(this WorldUnitBase wunit)
     {
-        return wunit.GetProperty<int>(UnitPropertyEnum.Exp) - g.conf.roleGrade.GetItem(wunit.GetProperty<int>(UnitPropertyEnum.GradeID)).exp;
+        return wunit.GetDynProperty(UnitDynPropertyEnum.Exp).value - g.conf.roleGrade.GetItem(wunit.GetDynProperty(UnitDynPropertyEnum.GradeID).value).exp;
     }
 
     public static void AddExp(this WorldUnitBase wunit, int exp)
     {
-        var curExp = wunit.GetProperty<int>(UnitPropertyEnum.Exp);
+        var curExp = wunit.GetDynProperty(UnitDynPropertyEnum.Exp).value;
         var addExp = Math.Max(Math.Min(curExp + exp, wunit.GetMaxExpCurrentGrade()), wunit.GetMinExpCurrentGrade());
         wunit.SetProperty<int>(UnitPropertyEnum.Exp, addExp);
 
-        var gradeEnum = GradePhaseEnum.GetEnumByVal<GradePhaseEnum>(wunit.GetProperty<int>(UnitPropertyEnum.GradeID).ToString());
+        var gradeEnum = GradePhaseEnum.GetEnumByVal<GradePhaseEnum>(wunit.GetDynProperty(UnitDynPropertyEnum.GradeID).value.ToString());
         if (gradeEnum != null && gradeEnum.Bottleneck != BottleneckEnum.None)
         {
             if (addExp == wunit.GetMaxExpCurrentGrade())
@@ -195,7 +196,7 @@ public static class UnitHelper
 
         foreach (var prop in curProps)
         {
-            if (prop.propsItem.isOverlay == 1)
+            if (prop?.propsItem?.isOverlay == 1)
             {
                 prop.propsCount = newCount;
                 return;
@@ -235,7 +236,7 @@ public static class UnitHelper
 
     public static void AddUnitMoney(this WorldUnitBase wunit, int addCount)
     {
-        wunit.AddUnitProp(10001, addCount);
+        wunit.AddUnitProp(ModLibConst.MONEY_PROP_ID, addCount);
         if (wunit.GetUnitMoney() <= 0)
             g.world.playerUnit.data.RewardPropMoney(int.MinValue);
     }
@@ -247,12 +248,12 @@ public static class UnitHelper
 
     public static int GetUnitMoney(this WorldUnitBase wunit)
     {
-        return wunit.GetUnitPropCount(10001);
+        return wunit.GetUnitPropCount(ModLibConst.MONEY_PROP_ID);
     }
 
     public static void AddUnitContribution(this WorldUnitBase wunit, int addCount)
     {
-        wunit.AddUnitProp(10011, addCount);
+        wunit.AddUnitProp(ModLibConst.CONTRIBUTION_PROP_ID, addCount);
     }
 
     public static void SetUnitContribution(this WorldUnitBase wunit, int setCount)
@@ -262,12 +263,12 @@ public static class UnitHelper
 
     public static int GetUnitContribution(this WorldUnitBase wunit)
     {
-        return wunit.GetUnitPropCount(10011);
+        return wunit.GetUnitPropCount(ModLibConst.CONTRIBUTION_PROP_ID);
     }
 
     public static void AddUnitMayorDegree(this WorldUnitBase wunit, int addCount)
     {
-        wunit.AddUnitProp(10041, addCount);
+        wunit.AddUnitProp(ModLibConst.MAYOR_DEGREE_PROP_ID, addCount);
     }
 
     public static void SetUnitMayorDegree(this WorldUnitBase wunit, int setCount)
@@ -277,7 +278,7 @@ public static class UnitHelper
 
     public static int GetUnitMayorDegree(this WorldUnitBase wunit)
     {
-        return wunit.GetUnitPropCount(10041);
+        return wunit.GetUnitPropCount(ModLibConst.MAYOR_DEGREE_PROP_ID);
     }
 
     public static List<DataProps.PropsData> GetUnitProps(this WorldUnitBase wunit)
@@ -302,61 +303,61 @@ public static class UnitHelper
 
     public static int GetBasisPhysicSum(this WorldUnitBase wunit)
     {
-        return wunit.GetProperty<int>(UnitPropertyEnum.BasisPalm) +
-            wunit.GetProperty<int>(UnitPropertyEnum.BasisBlade) +
-            wunit.GetProperty<int>(UnitPropertyEnum.BasisFist) +
-            wunit.GetProperty<int>(UnitPropertyEnum.BasisFinger) +
-            wunit.GetProperty<int>(UnitPropertyEnum.BasisSword) +
-            wunit.GetProperty<int>(UnitPropertyEnum.BasisSpear);
+        return wunit.GetDynProperty(UnitDynPropertyEnum.BasisPalm).value +
+            wunit.GetDynProperty(UnitDynPropertyEnum.BasisBlade).value +
+            wunit.GetDynProperty(UnitDynPropertyEnum.BasisFist).value +
+            wunit.GetDynProperty(UnitDynPropertyEnum.BasisFinger).value +
+            wunit.GetDynProperty(UnitDynPropertyEnum.BasisSword).value +
+            wunit.GetDynProperty(UnitDynPropertyEnum.BasisSpear).value;
     }
 
     public static int GetBasisMagicSum(this WorldUnitBase wunit)
     {
-        return wunit.GetProperty<int>(UnitPropertyEnum.BasisFroze) +
-            wunit.GetProperty<int>(UnitPropertyEnum.BasisFire) +
-            wunit.GetProperty<int>(UnitPropertyEnum.BasisWood) +
-            wunit.GetProperty<int>(UnitPropertyEnum.BasisThunder) +
-            wunit.GetProperty<int>(UnitPropertyEnum.BasisWind) +
-            wunit.GetProperty<int>(UnitPropertyEnum.BasisEarth);
+        return wunit.GetDynProperty(UnitDynPropertyEnum.BasisFroze).value +
+            wunit.GetDynProperty(UnitDynPropertyEnum.BasisFire).value +
+            wunit.GetDynProperty(UnitDynPropertyEnum.BasisWood).value +
+            wunit.GetDynProperty(UnitDynPropertyEnum.BasisThunder).value +
+            wunit.GetDynProperty(UnitDynPropertyEnum.BasisWind).value +
+            wunit.GetDynProperty(UnitDynPropertyEnum.BasisEarth).value;
     }
 
-    public static UnitPropertyEnum GetBestBasis(this WorldUnitBase wunit)
+    public static UnitDynPropertyEnum GetBestBasis(this WorldUnitBase wunit)
     {
-        var basises = new Dictionary<UnitPropertyEnum, int>
+        var basises = new Dictionary<UnitDynPropertyEnum, int>
         {
-            [UnitPropertyEnum.BasisPalm] = wunit.GetProperty<int>(UnitPropertyEnum.BasisPalm),
-            [UnitPropertyEnum.BasisBlade] = wunit.GetProperty < int >(UnitPropertyEnum.BasisBlade),
-            [UnitPropertyEnum.BasisFist] = wunit.GetProperty<int>(UnitPropertyEnum.BasisFist),
-            [UnitPropertyEnum.BasisFinger] = wunit.GetProperty < int >(UnitPropertyEnum.BasisFinger),
-            [UnitPropertyEnum.BasisSword] = wunit.GetProperty<int>(UnitPropertyEnum.BasisSword),
-            [UnitPropertyEnum.BasisSpear] = wunit.GetProperty<int>(UnitPropertyEnum.BasisSpear),
-            [UnitPropertyEnum.BasisFroze] = wunit.GetProperty<int>(UnitPropertyEnum.BasisFroze),
-            [UnitPropertyEnum.BasisFire] = wunit.GetProperty<int>(UnitPropertyEnum.BasisFire),
-            [UnitPropertyEnum.BasisWood] = wunit.GetProperty<int>(UnitPropertyEnum.BasisWood),
-            [UnitPropertyEnum.BasisThunder] = wunit.GetProperty<int>(UnitPropertyEnum.BasisThunder),
-            [UnitPropertyEnum.BasisWind] = wunit.GetProperty<int>(UnitPropertyEnum.BasisWind),
-            [UnitPropertyEnum.BasisEarth] = wunit.GetProperty<int>(UnitPropertyEnum.BasisEarth)
+            [UnitDynPropertyEnum.BasisPalm] = wunit.GetDynProperty(UnitDynPropertyEnum.BasisPalm).value,
+            [UnitDynPropertyEnum.BasisBlade] = wunit.GetDynProperty(UnitDynPropertyEnum.BasisBlade).value,
+            [UnitDynPropertyEnum.BasisFist] = wunit.GetDynProperty(UnitDynPropertyEnum.BasisFist).value,
+            [UnitDynPropertyEnum.BasisFinger] = wunit.GetDynProperty(UnitDynPropertyEnum.BasisFinger).value,
+            [UnitDynPropertyEnum.BasisSword] = wunit.GetDynProperty(UnitDynPropertyEnum.BasisSword).value,
+            [UnitDynPropertyEnum.BasisSpear] = wunit.GetDynProperty(UnitDynPropertyEnum.BasisSpear).value,
+            [UnitDynPropertyEnum.BasisFroze] = wunit.GetDynProperty(UnitDynPropertyEnum.BasisFroze).value,
+            [UnitDynPropertyEnum.BasisFire] = wunit.GetDynProperty(UnitDynPropertyEnum.BasisFire).value,
+            [UnitDynPropertyEnum.BasisWood] = wunit.GetDynProperty(UnitDynPropertyEnum.BasisWood).value,
+            [UnitDynPropertyEnum.BasisThunder] = wunit.GetDynProperty(UnitDynPropertyEnum.BasisThunder).value,
+            [UnitDynPropertyEnum.BasisWind] = wunit.GetDynProperty(UnitDynPropertyEnum.BasisWind).value,
+            [UnitDynPropertyEnum.BasisEarth] = wunit.GetDynProperty(UnitDynPropertyEnum.BasisEarth).value
         };
         var max = basises.Max(x => x.Value);
         return basises.FirstOrDefault(x => x.Value == max).Key;
     }
 
-    public static UnitPropertyEnum GetWeaknessBasis(this WorldUnitBase wunit)
+    public static UnitDynPropertyEnum GetWeaknessBasis(this WorldUnitBase wunit)
     {
-        var basises = new Dictionary<UnitPropertyEnum, int>
+        var basises = new Dictionary<UnitDynPropertyEnum, int>
         {
-            [UnitPropertyEnum.BasisPalm] = wunit.GetProperty<int>(UnitPropertyEnum.BasisPalm),
-            [UnitPropertyEnum.BasisBlade] = wunit.GetProperty<int>(UnitPropertyEnum.BasisBlade),
-            [UnitPropertyEnum.BasisFist] = wunit.GetProperty<int>(UnitPropertyEnum.BasisFist),
-            [UnitPropertyEnum.BasisFinger] = wunit.GetProperty<int>(UnitPropertyEnum.BasisFinger),
-            [UnitPropertyEnum.BasisSword] = wunit.GetProperty<int>(UnitPropertyEnum.BasisSword),
-            [UnitPropertyEnum.BasisSpear] = wunit.GetProperty<int>(UnitPropertyEnum.BasisSpear),
-            [UnitPropertyEnum.BasisFroze] = wunit.GetProperty<int>(UnitPropertyEnum.BasisFroze),
-            [UnitPropertyEnum.BasisFire] = wunit.GetProperty<int>(UnitPropertyEnum.BasisFire),
-            [UnitPropertyEnum.BasisWood] = wunit.GetProperty<int>(UnitPropertyEnum.BasisWood),
-            [UnitPropertyEnum.BasisThunder] = wunit.GetProperty<int>(UnitPropertyEnum.BasisThunder),
-            [UnitPropertyEnum.BasisWind] = wunit.GetProperty<int>(UnitPropertyEnum.BasisWind),
-            [UnitPropertyEnum.BasisEarth] = wunit.GetProperty<int>(UnitPropertyEnum.BasisEarth)
+            [UnitDynPropertyEnum.BasisPalm] = wunit.GetDynProperty(UnitDynPropertyEnum.BasisPalm).value,
+            [UnitDynPropertyEnum.BasisBlade] = wunit.GetDynProperty(UnitDynPropertyEnum.BasisBlade).value,
+            [UnitDynPropertyEnum.BasisFist] = wunit.GetDynProperty(UnitDynPropertyEnum.BasisFist).value,
+            [UnitDynPropertyEnum.BasisFinger] = wunit.GetDynProperty(UnitDynPropertyEnum.BasisFinger).value,
+            [UnitDynPropertyEnum.BasisSword] = wunit.GetDynProperty(UnitDynPropertyEnum.BasisSword).value,
+            [UnitDynPropertyEnum.BasisSpear] = wunit.GetDynProperty(UnitDynPropertyEnum.BasisSpear).value,
+            [UnitDynPropertyEnum.BasisFroze] = wunit.GetDynProperty(UnitDynPropertyEnum.BasisFroze).value,
+            [UnitDynPropertyEnum.BasisFire] = wunit.GetDynProperty(UnitDynPropertyEnum.BasisFire).value,
+            [UnitDynPropertyEnum.BasisWood] = wunit.GetDynProperty(UnitDynPropertyEnum.BasisWood).value,
+            [UnitDynPropertyEnum.BasisThunder] = wunit.GetDynProperty(UnitDynPropertyEnum.BasisThunder).value,
+            [UnitDynPropertyEnum.BasisWind] = wunit.GetDynProperty(UnitDynPropertyEnum.BasisWind).value,
+            [UnitDynPropertyEnum.BasisEarth] = wunit.GetDynProperty(UnitDynPropertyEnum.BasisEarth).value
         };
         var max = basises.Min(x => x.Value);
         return basises.FirstOrDefault(x => x.Value == max).Key;
@@ -364,6 +365,6 @@ public static class UnitHelper
 
     public static int GetGradeLvl(this WorldUnitBase wunit)
     {
-        return (int)GradePhaseEnum.GetEnumByVal<GradePhaseEnum>(wunit.GetProperty<int>(UnitPropertyEnum.GradeID).ToString()).Grade;
+        return (int)GradePhaseEnum.GetEnumByVal<GradePhaseEnum>(wunit.GetDynProperty(UnitDynPropertyEnum.GradeID).value.ToString()).Grade;
     }
 }

@@ -1,5 +1,6 @@
 ﻿using EGameTypeData;
 using MOD_nE7UL2.Const;
+using ModLib.Const;
 using ModLib.Mod;
 using System;
 using System.Linq;
@@ -104,7 +105,7 @@ namespace MOD_nE7UL2.Mod
             {
                 var sp = CalExchangeSpiritStones();
                 uiSchool.school.buildData.AddMoney(sp);
-                g.world.playerUnit.data.RewardPropItem(10011, CalExchangeContributions(sp));
+                g.world.playerUnit.data.RewardPropItem(ModLibConst.CONTRIBUTION_PROP_ID, CalExchangeContributions(sp));
             }
         }
 

@@ -6,7 +6,7 @@ namespace ModLib.Enum
 {
     public class UnitDynPropertyEnum : EnumObject
     {
-        //public static UnitPropertyEnum Example { get; } = new UnitPropertyEnum("example", IL2CPP.GetIl2CppField(Il2CppClassPointerStore<PropertyData>.NativeClassPtr, "example"));
+        //public static UnitDynPropertyEnum Example { get; } = new UnitDynPropertyEnum("example", IL2CPP.GetIl2CppField(Il2CppClassPointerStore<PropertyData>.NativeClassPtr, "example"));
         public static UnitDynPropertyEnum Sex { get; } = new UnitDynPropertyEnum("sex");
         public static UnitDynPropertyEnum Race { get; } = new UnitDynPropertyEnum("race");
         public static UnitDynPropertyEnum Age { get; } = new UnitDynPropertyEnum("age");
@@ -138,6 +138,11 @@ namespace ModLib.Enum
         {
             var num = IL2CPP.Il2CppObjectBaseToPtrNotNull(propData);
             IL2CPP.il2cpp_gc_wbarrier_set_field(num, *(System.IntPtr*)((long)num + PropOffset), IL2CPP.Il2CppObjectBaseToPtr(newValue));
+        }
+
+        public UnitPropertyEnum GetPropertyEnum()
+        {
+            return UnitPropertyEnum.GetEnumByVal<UnitPropertyEnum>(this.PropName);
         }
     }
 }

@@ -101,5 +101,10 @@ namespace ModLib.Enum
             //DebugHelper.WriteLog($"Set Property ({PropName}): {oldValue} → {newValue}");
             *(T*)((long)IL2CPP.Il2CppObjectBaseToPtrNotNull(propData) + PropOffset) = newValue;
         }
+
+        public UnitDynPropertyEnum GetDynPropertyEnum()
+        {
+            return UnitDynPropertyEnum.GetEnumByVal<UnitDynPropertyEnum>(this.PropName);
+        }
     }
 }

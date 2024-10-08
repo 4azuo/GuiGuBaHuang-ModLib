@@ -18,6 +18,22 @@
 //    [Cache("DEBUG", IsGlobal = true)]
 //    public class DebugEvent : ModEvent
 //    {
+//        /* === Test attributes === */
+//        //public override void OnSave(ETypeData e)
+//        //{
+//        //    base.OnSave(e);
+//        //    DebugHelper.WriteLine($"HpMax: {g.world.playerUnit.GetProperty<int>(UnitPropertyEnum.HpMax)}");
+//        //    DebugHelper.WriteLine($"HpMax(Dyn): {g.world.playerUnit.GetDynProperty(UnitDynPropertyEnum.HpMax).value}");
+//        //    DebugHelper.WriteLine($"MpMax: {g.world.playerUnit.GetProperty<int>(UnitPropertyEnum.MpMax)}");
+//        //    DebugHelper.WriteLine($"MpMax(Dyn): {g.world.playerUnit.GetDynProperty(UnitDynPropertyEnum.MpMax).value}");
+//        //    DebugHelper.WriteLine($"RefineElixir: {g.world.playerUnit.GetProperty<int>(UnitPropertyEnum.RefineElixir)}");
+//        //    DebugHelper.WriteLine($"RefineWeapon: {g.world.playerUnit.GetProperty<int>(UnitPropertyEnum.RefineWeapon)}");
+//        //    DebugHelper.WriteLine($"Symbol: {g.world.playerUnit.GetProperty<int>(UnitPropertyEnum.Symbol)}");
+//        //    DebugHelper.WriteLine($"Geomancy: {g.world.playerUnit.GetProperty<int>(UnitPropertyEnum.Geomancy)}");
+//        //    DebugHelper.WriteLine($"Herbal: {g.world.playerUnit.GetProperty<int>(UnitPropertyEnum.Herbal)}");
+//        //    DebugHelper.WriteLine($"Mine: {g.world.playerUnit.GetProperty<int>(UnitPropertyEnum.Mine)}");
+//        //}
+
 //        /* === In game debug === */
 //        //public override void OnLoadGame()
 //        //{

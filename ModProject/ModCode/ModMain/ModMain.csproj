@@ -35,6 +35,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="Const\ModConst.cs" />
+    <Compile Include="Enum\TraineeLuckEnum.cs" />
     <Compile Include="Enum\ModItemTypeEnum.cs" />
     <Compile Include="Enum\AnimaIncPropEnum.cs" />
     <Compile Include="Enum\AnimaUpGradeEnum.cs" />
@@ -690,17 +691,17 @@
     <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\ModLib\ModLib.csproj">
-      <Project>{981071a5-cc5c-4828-b4d0-0bba4aa24ebd}</Project>
-      <Name>ModLib</Name>
-    </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
     <None Include="app.config" />
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Issues.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\ModLib\ModLib.csproj">
+      <Project>{981071a5-cc5c-4828-b4d0-0bba4aa24ebd}</Project>
+      <Name>ModLib</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
