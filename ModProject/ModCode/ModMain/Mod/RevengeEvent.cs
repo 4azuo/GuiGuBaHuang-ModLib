@@ -32,7 +32,7 @@ namespace MOD_nE7UL2.Mod
                 (!humanData?.worldUnitData?.unit?.IsPlayer() ?? false) &&
                 humanData?.worldUnitData?.GetRelationType(g.world.playerUnit) == UnitBothRelationType.Hater)
             {
-                humanData.attack.baseValue += (int)(humanData.attack.baseValue * (Counter / 100.00f));
+                humanData.attack.baseValue += (int)(humanData.attack.value * (Counter / 100.00f));
             }
         }
     }

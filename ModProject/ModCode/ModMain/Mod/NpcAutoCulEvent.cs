@@ -14,7 +14,7 @@ namespace MOD_nE7UL2.Mod
             {
                 if (!wunit.IsPlayer())
                 {
-                    var exp = CommonTool.Random(0.00f, 100.00f) * wunit.GetProperty<int>(UnitPropertyEnum.GradeID);
+                    var exp = CommonTool.Random(0.00f, 100.00f) * wunit.GetDynProperty(UnitDynPropertyEnum.GradeID).value;
                     if (wunit.IsHero())
                         exp *= 1.80f;
                     wunit.AddExp(exp.Parse<int>());

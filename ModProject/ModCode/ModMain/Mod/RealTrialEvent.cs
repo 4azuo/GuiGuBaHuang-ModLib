@@ -32,9 +32,9 @@ namespace MOD_nE7UL2.Mod
             var data = e?.data;
             if (IsInTrial && data != null)
             {
-                var atk = g.world.playerUnit.GetProperty<int>(UnitPropertyEnum.Attack);
-                var def = g.world.playerUnit.GetProperty<int>(UnitPropertyEnum.Defense);
-                var basisThunder = g.world.playerUnit.GetProperty<int>(UnitPropertyEnum.BasisThunder);
+                var atk = g.world.playerUnit.GetDynProperty(UnitDynPropertyEnum.Attack).value;
+                var def = g.world.playerUnit.GetDynProperty(UnitDynPropertyEnum.Defense).value;
+                var basisThunder = g.world.playerUnit.GetDynProperty(UnitDynPropertyEnum.BasisThunder).value;
                 var baseDmg = (atk * (
                         1.00f
                         + g.data.dataWorld.data.gameLevel.Parse<int>() * RealTrialConfigs.PowerUpOnGameLevel
