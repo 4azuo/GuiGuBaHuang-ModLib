@@ -48,6 +48,7 @@
     <Compile Include="ModMain.cs" />
     <Compile Include="Mod\BattleModifyEvent.cs" />
     <Compile Include="Mod\BattleRewardEventV2.cs" />
+    <Compile Include="Mod\HideOvergradeInfoEvent.cs" />
     <Compile Include="Mod\MapBuildPropertyEvent.cs" />
     <Compile Include="Mod\BuildingArrangeEvent.cs" />
     <Compile Include="Mod\MissionDeclareEvent.cs" />

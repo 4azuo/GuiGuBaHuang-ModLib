@@ -186,14 +186,7 @@ namespace MOD_nE7UL2.Mod
                 e.dynV.baseValue = minDmg;
 
             //stronger every hit
-            if (hitUnitData?.worldUnitData?.unit != null)
-            {
-                e.hitData.attackUnit.data.attack.baseValue += (e.hitData.attackUnit.data.attack.baseValue * 0.001f).Parse<int>();
-            }
-            else
-            {
-                e.hitData.attackUnit.data.attack.baseValue += (e.hitData.attackUnit.data.attack.baseValue * 0.01f).Parse<int>();
-            }
+            e.hitData.attackUnit.data.attack.baseValue += (e.hitData.attackUnit.data.attack.baseValue * (attackUnitData?.worldUnitData?.unit != null ? 0.0004f : 0.01f)).Parse<int>();
         }
 
         [EventCondition(IsInBattle = true)]
