@@ -18,7 +18,7 @@ namespace MOD_nE7UL2.Mod
         {
             base.OnOpenUIEnd(e);
 
-            if (e?.uiType?.uiName == null || ModMain.ModObj?.InGameCustomSettings?.HideButtonConfigs?.ButtonConfigs == null)
+            if (e?.uiType?.uiName == null || Configs?.ButtonConfigs == null)
                 return;
 
             IDictionary<string, SelectOption> buttonConfigs;
