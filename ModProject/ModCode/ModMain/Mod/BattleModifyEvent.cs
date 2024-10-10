@@ -41,8 +41,8 @@ namespace MOD_nE7UL2.Mod
                     var artifactInfo = artifact?.propsItem?.IsArtifact();
                     if (artifactInfo.durable > 0)
                     {
-                        humanData.attack.baseValue += artifactInfo.atk / 3;
-                        humanData.defense.baseValue += artifactInfo.def / 2;
+                        humanData.attack.baseValue += artifactInfo.atk / 4;
+                        humanData.defense.baseValue += artifactInfo.def / 3;
                     }
                 }
 

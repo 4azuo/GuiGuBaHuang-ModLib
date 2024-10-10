@@ -24,7 +24,7 @@ namespace MOD_nE7UL2.Mod
                 {
                     valueData = new BattleSkillValueData
                     {
-                        grade = 1,
+                        grade = humanData.worldUnitData.unit.GetGradeLvl(),
                         level = 1,
                         data = new BattleSkillValueData.Data(),
                     }
