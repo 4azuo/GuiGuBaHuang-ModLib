@@ -68,9 +68,10 @@ namespace MOD_nE7UL2.Mod
                 if (a.durable > 0)
                 {
                     var aconf = artifact.propsItem.IsArtifact();
-                    var r = 0.01f + (0.001f * Math.Pow(2, a.level)) + (0.02f * a.grade);
-                    rs[0] += (r * wunit.GetDynProperty(UnitDynPropertyEnum.Attack).value + aconf.atk / 10.0f).Parse<int>();
-                    rs[1] += (r * wunit.GetDynProperty(UnitDynPropertyEnum.Defense).value + aconf.def / 10.0f).Parse<int>();
+                    var r1 = 0.01f + (0.001f * Math.Pow(2, a.level)) + (0.02f * a.grade);
+                    var r2 = (4.00f + (0.006f * Math.Pow(3, a.level)) + (1.00f * a.grade)) / 100.0f;
+                    rs[0] += (r1 * wunit.GetDynProperty(UnitDynPropertyEnum.Attack).value + r2 * aconf.atk).Parse<int>();
+                    rs[1] += (r1 * wunit.GetDynProperty(UnitDynPropertyEnum.Defense).value + r2 * aconf.def).Parse<int>();
                 }
             }
 
