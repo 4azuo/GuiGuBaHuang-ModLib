@@ -7,6 +7,7 @@ using TMPro;
 using UnityEngine.UI;
 using static Il2CppSystem.Uri;
 using ModLib.Enum;
+using System;
 
 namespace MOD_nE7UL2.Mod
 {
@@ -24,13 +25,11 @@ namespace MOD_nE7UL2.Mod
                 var texts = uiInfo1.uiProperty.goItem4.GetComponentsInChildren<Text>();
                 if (artAdjustValues[0] > 0)
                 {
-                    texts[1].text = (uiInfo1.unit.GetDynProperty(UnitDynPropertyEnum.Attack).value + artAdjustValues[0]).ToString();
-                    texts[2].text = $"(+{artAdjustValues[0]})";
+                    texts[1].text = $"{uiInfo1.unit.GetDynProperty(UnitDynPropertyEnum.Attack).value + artAdjustValues[0]} (+{artAdjustValues[0]})";
                 }
                 if (artAdjustValues[1] > 0)
                 {
-                    texts[4].text = (uiInfo1.unit.GetDynProperty(UnitDynPropertyEnum.Defense).value + artAdjustValues[1]).ToString();
-                    texts[5].text = $"(+{artAdjustValues[1]})";
+                    texts[4].text = $"{uiInfo1.unit.GetDynProperty(UnitDynPropertyEnum.Defense).value + artAdjustValues[1]} (+{artAdjustValues[1]})";
                 }
             }
 
@@ -41,23 +40,19 @@ namespace MOD_nE7UL2.Mod
                 var texts = uiInfo2.uiPropertyCommon.goItem4_En.GetComponentsInChildren<Text>();
                 if (artAdjustValues[0] > 0)
                 {
-                    texts[1].text = (uiInfo2.unit.GetDynProperty(UnitDynPropertyEnum.Attack).value + artAdjustValues[0]).ToString();
-                    texts[0].text = $"(+{artAdjustValues[0]})";
+                    texts[1].text = $"{uiInfo2.unit.GetDynProperty(UnitDynPropertyEnum.Attack).value + artAdjustValues[0]} (+{artAdjustValues[0]})";
                 }
                 else
                 {
                     texts[1].text = uiInfo2.unit.GetDynProperty(UnitDynPropertyEnum.Attack).value.ToString();
-                    texts[0].text = string.Empty;
                 }
                 if (artAdjustValues[1] > 0)
                 {
-                    texts[4].text = (uiInfo2.unit.GetDynProperty(UnitDynPropertyEnum.Defense).value + artAdjustValues[1]).ToString();
-                    texts[3].text = $"(+{artAdjustValues[1]})";
+                    texts[4].text = $"{uiInfo2.unit.GetDynProperty(UnitDynPropertyEnum.Defense).value + artAdjustValues[1]} (+{artAdjustValues[1]})";
                 }
                 else
                 {
                     texts[4].text = uiInfo2.unit.GetDynProperty(UnitDynPropertyEnum.Defense).value.ToString();
-                    texts[3].text = string.Empty;
                 }
             }
         }
@@ -69,11 +64,13 @@ namespace MOD_nE7UL2.Mod
             var artifacts = wunit.data.unitData.propData.GetEquipProps().ToArray().Where(x => x?.propsItem?.IsArtifact() != null).ToArray();
             foreach (var artifact in artifacts)
             {
-                var artifactInfo = artifact?.propsItem?.IsArtifact();
-                if (artifactInfo.durable > 0)
+                var a = artifact.To<DataProps.PropsArtifact>();
+                if (a.durable > 0)
                 {
-                    rs[0] += artifact.propsInfoBase.level * artifactInfo.atk / 12;
-                    rs[1] += artifact.propsInfoBase.level * artifactInfo.def / 24;
+                    var aconf = artifact.propsItem.IsArtifact();
+                    var r = 0.01f + (0.001f * Math.Pow(2, a.level)) + (0.02f * a.grade);
+                    rs[0] += (r * wunit.GetDynProperty(UnitDynPropertyEnum.Attack).value + aconf.atk / 10.0f).Parse<int>();
+                    rs[1] += (r * wunit.GetDynProperty(UnitDynPropertyEnum.Defense).value + aconf.def / 10.0f).Parse<int>();
                 }
             }
 
