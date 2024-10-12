@@ -25,5 +25,6 @@
         public const string BATTLE_MODIFY_EVENT = "BattleModifyEvent";
         public const string HIDE_MAP_EVENT = "HideMapEvent";
         public const string HIDE_OVERGRADE_INFO_EVENT = "HideOvergradeInfoEvent";
+        public const string ARTIFACT_AFFECT_EVENT = "ArtifactAffectEvent";
     }
 }

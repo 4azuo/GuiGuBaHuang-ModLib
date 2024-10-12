@@ -512,12 +512,13 @@ namespace MOD_nE7UL2.Mod
                 var player = g.world.playerUnit;
                 if (g.world.battle.data.isRealBattle && ModBattleEvent.PlayerUnit.isDie)
                 {
+                    DebugHelper.WriteLine($"BattleRewardEvent: lose");
                     //life
                     player.AddProperty<int>(UnitPropertyEnum.Life, -unchecked((int)Math.Max(localDmgRecv / 1200, 1)));
                     //exp
                     var gradeLvl = player.GetGradeLvl();
                     var bodyReconstructionItemId = BodyReconstructions.ContainsKey(gradeLvl) ? BodyReconstructions[gradeLvl] : 0;
-                    if (bodyReconstructionItemId != 0 && player.GetUnitPropCount(bodyReconstructionItemId) <= 0)
+                    if (bodyReconstructionItemId == 0 || player.GetUnitPropCount(bodyReconstructionItemId) <= 0)
                     {
                         player.ClearExp();
                     }
@@ -543,6 +544,7 @@ namespace MOD_nE7UL2.Mod
                 }
                 else if (e.isWin)
                 {
+                    DebugHelper.WriteLine($"BattleRewardEvent: win");
                     var insight = g.world.playerUnit.GetDynProperty(UnitDynPropertyEnum.Talent).value;
                     var aBestBasis = ModBattleEvent.GetDmgPropertyEnum(ModBattleEvent.sGetHighestDealtDmgTypeEnum());
                     if (CommonTool.Random(0.00f, 100.00f).IsBetween(0.00f, insight / 10))

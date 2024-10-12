@@ -65,6 +65,7 @@ namespace ModLib.Mod
 
         #region Timer
         public virtual void OnTimeUpdate() { }
+        public virtual void OnTimeUpdate1s() { }
         public virtual void OnFrameUpdate() { }
         #endregion
 

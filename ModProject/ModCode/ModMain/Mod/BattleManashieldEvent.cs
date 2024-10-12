@@ -1,5 +1,4 @@
 ﻿using MOD_nE7UL2.Const;
-using ModLib.Enum;
 using ModLib.Mod;
 using static MOD_nE7UL2.Object.InGameStts;
 
@@ -33,7 +32,7 @@ namespace MOD_nE7UL2.Mod
                     (humanData.maxMP.value * ManashieldConfigs.ManaShieldRate2) + 
                     (humanData.hp * (0.05f * GetBloodEnergyLevel(humanData))) +
                     (humanData.basisFist.value / 100.00f * humanData.defense.value).Parse<int>();
-                Effect3017.AddShield(efx, humanData.unit, MANASHIELD_EFFECT_EFX_ID, ms.Parse<int>(), humanData.maxHP.value * 3, int.MaxValue);
+                Effect3017.AddShield(efx, humanData.unit, MANASHIELD_EFFECT_EFX_ID, ms.Parse<int>(), humanData.maxHP.value * 5, int.MaxValue);
             }
         }
 
