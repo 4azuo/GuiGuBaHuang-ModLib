@@ -545,16 +545,16 @@ namespace MOD_nE7UL2.Mod
                 else if (e.isWin)
                 {
                     DebugHelper.WriteLine($"BattleRewardEvent: win");
-                    var insight = g.world.playerUnit.GetDynProperty(UnitDynPropertyEnum.Talent).value;
+                    var insight = player.GetDynProperty(UnitDynPropertyEnum.Talent).value;
                     var aBestBasis = ModBattleEvent.GetDmgPropertyEnum(ModBattleEvent.sGetHighestDealtDmgTypeEnum());
-                    if (CommonTool.Random(0.00f, 100.00f).IsBetween(0.00f, insight / 10))
+                    if (aBestBasis != null && CommonTool.Random(0.00f, 100.00f).IsBetween(0.00f, insight / 10))
                     {
-                        g.world.playerUnit.AddProperty<int>(aBestBasis.GetPropertyEnum(), 1);
+                        player.AddProperty<int>(aBestBasis.GetPropertyEnum(), 1);
                     }
                     var bBestBasis = ModBattleEvent.GetDmgPropertyEnum(ModBattleEvent.sGetHighestRecvDmgTypeEnum());
-                    if (CommonTool.Random(0.00f, 100.00f).IsBetween(0.00f, insight / 10))
+                    if (bBestBasis != null && CommonTool.Random(0.00f, 100.00f).IsBetween(0.00f, insight / 10))
                     {
-                        g.world.playerUnit.AddProperty<int>(bBestBasis.GetPropertyEnum(), 1);
+                        player.AddProperty<int>(bBestBasis.GetPropertyEnum(), 1);
                     }
 
                     var rewardExp1 = Math.Max(localDmgDealt * ModMain.ModObj.InGameCustomSettings.BattleRewardConfigs.ExpPerDmgDealt, 1).Parse<int>();
