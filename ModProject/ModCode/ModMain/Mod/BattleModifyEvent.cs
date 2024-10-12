@@ -35,16 +35,9 @@ namespace MOD_nE7UL2.Mod
             var humanData = e.data.TryCast<UnitDataHuman>();
             if (humanData?.worldUnitData?.unit != null)
             {
-                var artifacts = humanData.worldUnitData.unit.data.unitData.propData.GetEquipProps().ToArray().Where(x => x?.propsItem?.IsArtifact() != null).ToArray();
-                foreach (var artifact in artifacts)
-                {
-                    var artifactInfo = artifact?.propsItem?.IsArtifact();
-                    if (artifactInfo.durable > 0)
-                    {
-                        humanData.attack.baseValue += artifactInfo.atk / 4;
-                        humanData.defense.baseValue += artifactInfo.def / 3;
-                    }
-                }
+                var artAdjustValues = ArtifactAffectEvent.GetAdjustValues(humanData.worldUnitData.unit);
+                humanData.attack.baseValue += artAdjustValues[0];
+                humanData.defense.baseValue += artAdjustValues[1];
 
                 //humanData.attack.baseValue += (??? / 100.00f * humanData.attack.baseValue).Parse<int>();
                 var adjustDef1 = ((((humanData.basisFist.value + humanData.basisPalm.value + humanData.basisFinger.value) / 2.0f) / 1000.00f) * humanData.defense.baseValue).Parse<int>();
