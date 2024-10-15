@@ -5,8 +5,8 @@ namespace MOD_nE7UL2.Enum
 {
     public class TraineeLuckEnum : EnumObject
     {
-        public static TraineeLuckEnum Martial { get; } = new TraineeLuckEnum(420071001, (wunit) => wunit.GetBasisPhysicSum());
-        public static TraineeLuckEnum Magic { get; } = new TraineeLuckEnum(420081001, (wunit) => wunit.GetBasisMagicSum());
+        public static TraineeLuckEnum Martial { get; } = new TraineeLuckEnum(420071000, (wunit) => wunit.GetBasisPhysicSum());
+        public static TraineeLuckEnum Magic { get; } = new TraineeLuckEnum(420081000, (wunit) => wunit.GetBasisMagicSum());
 
         public static int[] TraineeLevels { get; } = new int[] { 200, 400, 800, 1600, 3200, 6400, 12800, 25600, 51200, 102400 };
 

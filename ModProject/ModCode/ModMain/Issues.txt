@@ -6,16 +6,6 @@
 
 - new game+
 
-- add more features
-Lvl					1		2		3		4		5		6		7		8		9		10
-Alchemy		+HP		5		10		15		20		25		30		35		40		45		50	(%)
-Forge		+DEF	5		10		15		20		25		30		35		40		45		50	(%)
-Talismans	+MP		5		10		15		20		25		30		35		40		45		50	(%)
-Feng Shui	+MP		2		4		6		8		10		12		14		16		18		20	(%)
-Herbology	+HP		2		4		6		8		10		12		14		16		18		20	(%)
-Mining		+DEF	2		4		6		8		10		12		14		16		18		20	(%)
-
-					50				150				350				620				980
-					50		100		150		250		350		500		650		850		1050	1300
-
-- test dynProperty vs Property
+- hp/mp/focus -> %
+- add features +hp/mp/focus
+- learn ability +hp/mp/focus

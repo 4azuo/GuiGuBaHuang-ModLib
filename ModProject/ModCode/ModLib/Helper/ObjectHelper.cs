@@ -87,4 +87,19 @@ public static class ObjectHelper
     {
         return obj.GetType().GetMethod(medName).DeclaringType == obj.GetType();
     }
+
+    public static string GetBackingFieldName(string propertyName)
+    {
+        return string.Format("<{0}>k__BackingField", propertyName);
+    }
+
+    public static FieldInfo GetBackingField(object obj, string propertyName)
+    {
+        return obj.GetType().GetField(GetBackingFieldName(propertyName), BindingFlags.Instance | BindingFlags.NonPublic);
+    }
+
+    public static void SetBackingField(object obj, string propertyName, object value)
+    {
+        GetBackingField(obj, propertyName).SetValue(obj, value);
+    }
 }
