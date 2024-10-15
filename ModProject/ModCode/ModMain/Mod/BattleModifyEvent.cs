@@ -43,7 +43,7 @@ namespace MOD_nE7UL2.Mod
             if (u == null || !BlockRatio.ContainsKey(gradeLvl = u?.worldUnitData?.unit?.GetGradeLvl() ?? 0))
                 return 0;
             var wunit = u.worldUnitData.unit;
-            return 100 * gradeLvl + wunit.GetBasisPhysicSum() / 1000;
+            return 50 * gradeLvl + wunit.GetBasisPhysicSum() / 1000;
         }
 
         public override void OnIntoBattleFirst(UnitCtrlBase e)
@@ -53,7 +53,7 @@ namespace MOD_nE7UL2.Mod
             var humanData = e.data.TryCast<UnitDataHuman>();
             if (humanData?.worldUnitData?.unit != null)
             {
-                var artAdjustValues = ArtifactAffectEvent.GetAdjustValues(humanData.worldUnitData.unit);
+                var artAdjustValues = UIEvent.GetAdjustValues(humanData.worldUnitData.unit);
                 humanData.attack.baseValue += artAdjustValues[0];
                 humanData.defense.baseValue += artAdjustValues[1];
 
@@ -155,7 +155,7 @@ namespace MOD_nE7UL2.Mod
             var blockRate = Math.Sqrt(ModBattleEvent.GetUnitPropertyValue(ModBattleEvent.HitUnit, pEnum) / 12);
             if (ValueHelper.IsBetween(CommonTool.Random(0.00f, 100.00f), 0.00f, Math.Min(18.00f, blockRate)))
             {
-                var r = hitUnitData.hp.Parse<float>() / hitUnitData.maxHP.value.Parse<float>();
+                var r = ModBattleEvent.HitUnit.data.hp.Parse<float>() / ModBattleEvent.HitUnit.data.maxHP.value.Parse<float>();
                 e.dynV.baseValue -= (def * r).Parse<int>();
             }
 
@@ -201,13 +201,13 @@ namespace MOD_nE7UL2.Mod
 
             //stronger every hit
             if (e.dynV.baseValue < ModBattleEvent.HitUnit.data.maxHP.value / 50)
-                e.hitData.attackUnit.data.attack.baseValue += (e.hitData.attackUnit.data.attack.baseValue * (attackUnitData?.worldUnitData?.unit != null ? 0.0004f : 0.01f)).Parse<int>();
+                ModBattleEvent.AttackingUnit.data.attack.baseValue += (ModBattleEvent.AttackingUnit.data.attack.baseValue * (attackUnitData?.worldUnitData?.unit != null ? 0.0004f : 0.01f)).Parse<int>();
         }
 
         [EventCondition(IsInBattle = true)]
-        public override void OnTimeUpdate()
+        public override void OnTimeUpdate200ms()
         {
-            base.OnTimeUpdate();
+            base.OnTimeUpdate200ms();
 
             foreach (var unit in ModBattleEvent.DungeonUnits)
             {

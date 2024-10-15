@@ -64,15 +64,15 @@ namespace MOD_nE7UL2
                 if (item.key.EndsWith("_mpCost"))
                 {
                     item.value1 = (item.value1.Parse<float>() * 1.70f).Parse<int>().ToString();
-                    item.value2 = (item.value2.Parse<float>() * 1.85f).Parse<int>().ToString();
-                    item.value3 = (item.value3.Parse<float>() * 2.50f).Parse<int>().ToString();
-                    item.value4 = (item.value4.Parse<float>() * 2.80f).Parse<int>().ToString();
-                    item.value5 = (item.value5.Parse<float>() * 3.50f).Parse<int>().ToString();
-                    item.value6 = (item.value6.Parse<float>() * 5.00f).Parse<int>().ToString();
-                    item.value7 = (item.value7.Parse<float>() * 7.00f).Parse<int>().ToString();
-                    item.value8 = (item.value8.Parse<float>() * 10.00f).Parse<int>().ToString();
-                    item.value9 = (item.value9.Parse<float>() * 15.00f).Parse<int>().ToString();
-                    item.value10 = (item.value10.Parse<float>() * 22.00f).Parse<int>().ToString();
+                    item.value2 = (item.value2.Parse<float>() * 1.90f).Parse<int>().ToString();
+                    item.value3 = (item.value3.Parse<float>() * 2.60f).Parse<int>().ToString();
+                    item.value4 = (item.value4.Parse<float>() * 3.00f).Parse<int>().ToString();
+                    item.value5 = (item.value5.Parse<float>() * 4.00f).Parse<int>().ToString();
+                    item.value6 = (item.value6.Parse<float>() * 6.00f).Parse<int>().ToString();
+                    item.value7 = (item.value7.Parse<float>() * 9.00f).Parse<int>().ToString();
+                    item.value8 = (item.value8.Parse<float>() * 12.00f).Parse<int>().ToString();
+                    item.value9 = (item.value9.Parse<float>() * 18.00f).Parse<int>().ToString();
+                    item.value10 = (item.value10.Parse<float>() * 25.00f).Parse<int>().ToString();
                 }
                 else if (item.key.EndsWith("_cd"))
                 {

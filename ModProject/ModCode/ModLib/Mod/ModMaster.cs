@@ -16,6 +16,8 @@ namespace ModLib.Mod
     {
         private bool initMod = false;
         protected TimerCoroutine corTimeUpdate;
+        protected TimerCoroutine corTimeUpdate200ms;
+        protected TimerCoroutine corTimeUpdate500ms;
         protected TimerCoroutine corTimeUpdate1s;
         protected TimerCoroutine corFrameUpdate;
         protected static HarmonyLib.Harmony harmony;
@@ -39,6 +41,8 @@ namespace ModLib.Mod
             //declare event
             #region Timer
             corTimeUpdate = g.timer.Time(new Action(_OnTimeUpdate), 0.1f, true);
+            corTimeUpdate200ms = g.timer.Time(new Action(_OnTimeUpdate200ms), 0.2f, true);
+            corTimeUpdate500ms = g.timer.Time(new Action(_OnTimeUpdate500ms), 0.5f, true);
             corTimeUpdate1s = g.timer.Time(new Action(_OnTimeUpdate1s), 1f, true);
             corFrameUpdate = g.timer.Frame(new Action(_OnFrameUpdate), 2, true);
             #endregion
@@ -205,6 +209,10 @@ namespace ModLib.Mod
         {
             if (corTimeUpdate != null)
                 g.timer.Stop(corTimeUpdate);
+            if (corTimeUpdate200ms != null)
+                g.timer.Stop(corTimeUpdate200ms);
+            if (corTimeUpdate500ms != null)
+                g.timer.Stop(corTimeUpdate500ms);
             if (corTimeUpdate1s != null)
                 g.timer.Stop(corTimeUpdate1s);
             if (corFrameUpdate != null)
