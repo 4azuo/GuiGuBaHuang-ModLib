@@ -1,5 +1,6 @@
 ﻿using MOD_nE7UL2.Const;
 using ModLib.Mod;
+using Newtonsoft.Json;
 using static MOD_nE7UL2.Object.InGameStts;
 
 namespace MOD_nE7UL2.Mod
@@ -12,6 +13,9 @@ namespace MOD_nE7UL2.Mod
 
         public static _BattleManashieldConfigs ManashieldConfigs => ModMain.ModObj.InGameCustomSettings.BattleManashieldConfigs;
 
+        [JsonIgnore]
+        public static EffectBase PlayerShieldEfx { get; private set; }
+
         public override void OnIntoBattleFirst(UnitCtrlBase e)
         {
             base.OnIntoBattleFirst(e);
@@ -21,6 +25,7 @@ namespace MOD_nE7UL2.Mod
             {
                 var efx = humanData.unit.AddEffect(MANASHIELD_EFFECT_MAIN_ID, humanData.unit, new SkillCreateData
                 {
+                    mainSkillID = MANASHIELD_EFFECT_MAIN_ID,
                     valueData = new BattleSkillValueData
                     {
                         grade = humanData.worldUnitData.unit.GetGradeLvl(),
@@ -32,7 +37,9 @@ namespace MOD_nE7UL2.Mod
                     (humanData.maxMP.value * ManashieldConfigs.ManaShieldRate2) + 
                     (humanData.hp * (0.05f * GetBloodEnergyLevel(humanData))) +
                     (humanData.basisFist.value / 100.00f * humanData.defense.value).Parse<int>();
-                Effect3017.AddShield(efx, humanData.unit, MANASHIELD_EFFECT_EFX_ID, ms.Parse<int>(), humanData.maxHP.value * 5, int.MaxValue);
+                Effect3017.AddShield(efx, humanData.unit, MANASHIELD_EFFECT_EFX_ID, ms.Parse<int>(), humanData.maxHP.value, int.MaxValue);
+                if (humanData.worldUnitData.unit.IsPlayer())
+                    PlayerShieldEfx = efx;
             }
         }
 

@@ -3,9 +3,11 @@
 - mod Halo
 
 - skill expert
+- mp-cost scale by expert lvl
 
 - new game+
 
-- hp/mp/focus -> %
 - add features +hp/mp/focus
 - learn ability +hp/mp/focus
+
+- pause potmon unit
