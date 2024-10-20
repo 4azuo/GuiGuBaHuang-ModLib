@@ -128,6 +128,15 @@
 			"Ability": 16.0
 		}
 	},
+	"SkillExpertConfigs": {
+		"ExpRates": {
+			"SkillLeft": 1.0,
+			"SkillRight": 0.6,
+			"Step": 0.8,
+			"Ultimate": 0.5,
+			"Ability": 1.2
+		}
+	},
 	"BattleRewardConfigs": {
 		"ExpPerDmgDealt": 0.001,
 		"ExpPerDmgRecv": 0.01

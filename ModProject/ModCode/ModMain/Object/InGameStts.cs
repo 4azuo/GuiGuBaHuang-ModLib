@@ -162,6 +162,14 @@ namespace MOD_nE7UL2.Object
         public _NpcUpgradeSkillConfigs NpcUpgradeSkillConfigs { get; set; }
         #endregion
 
+        #region SkillExpertConfigs
+        public class _SkillExpertConfigs
+        {
+            public Dictionary<MartialType, float> ExpRates { get; set; }
+        }
+        public _SkillExpertConfigs SkillExpertConfigs { get; set; }
+        #endregion
+
         #region BattleRewardConfigs
         public class _BattleRewardConfigs
         {

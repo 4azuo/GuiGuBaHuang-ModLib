@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Reflection;
+using UnityEngine;
 
 public static class ObjectHelper
 {
@@ -101,5 +102,20 @@ public static class ObjectHelper
     public static void SetBackingField(object obj, string propertyName, object value)
     {
         GetBackingField(obj, propertyName).SetValue(obj, value);
+    }
+
+    public static T ReplaceObject<T>(T obj, Transform transform = null, float deltaX = 0f, float deltaY = 0f) where T : MonoBehaviour
+    {
+        var newObj = MonoBehaviour.Instantiate(obj, transform ?? obj.transform, false);
+        newObj.transform.position = new Vector3(obj.transform.position.x + deltaX, obj.transform.position.y + deltaY);
+        obj.enabled = false;
+        return newObj;
+    }
+
+    public static T CreateObject<T>(T obj, Transform transform = null, float deltaX = 0f, float deltaY = 0f) where T : MonoBehaviour
+    {
+        var newObj = MonoBehaviour.Instantiate(obj, transform ?? obj.transform, false);
+        newObj.transform.position = new Vector3(obj.transform.position.x + deltaY, obj.transform.position.y + deltaY);
+        return newObj;
     }
 }
