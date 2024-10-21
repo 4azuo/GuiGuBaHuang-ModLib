@@ -1,5 +1,4 @@
-﻿using Harmony;
-using ModLib.Const;
+﻿using ModLib.Const;
 using ModLib.Enum;
 using System;
 using System.Collections.Generic;
@@ -7,6 +6,31 @@ using System.Linq;
 
 public static class UnitHelper
 {
+    public static DataProps.PropsData[] GetEquippedArtifacts(this WorldUnitBase wunit)
+    {
+        return wunit.GetEquippedProps().Where(x => x?.propsItem?.IsArtifact() != null).ToArray();
+    }
+
+    public static DataProps.PropsData GetEquippedRing(this WorldUnitBase wunit)
+    {
+        return wunit.GetEquippedProps().Where(x => x?.propsItem?.IsRing() != null).FirstOrDefault();
+    }
+
+    public static DataProps.PropsData GetEquippedMount(this WorldUnitBase wunit)
+    {
+        return wunit.GetEquippedProps().Where(x => x?.propsItem?.IsMount() != null).FirstOrDefault();
+    }
+
+    public static DataProps.PropsData GetEquippedOutfit(this WorldUnitBase wunit)
+    {
+        return wunit.GetEquippedProps().Where(x => x?.propsItem?.IsOutfit() != null).FirstOrDefault();
+    }
+
+    public static DataProps.PropsData[] GetEquippedProps(this WorldUnitBase wunit)
+    {
+        return wunit.data.unitData.propData.GetEquipProps().ToArray();
+    }
+
     public static string GetUnitId(this WorldUnitBase wunit)
     {
         return wunit?.data?.unitData?.unitID;

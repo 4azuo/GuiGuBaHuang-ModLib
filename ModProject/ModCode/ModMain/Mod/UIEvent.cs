@@ -26,8 +26,14 @@ namespace MOD_nE7UL2.Mod
 
         private static bool uiArtifactInfo_mod = false;
         private static Text uiArtifactInfo_textExpertLvl;
+        private static Text uiArtifactInfo_textAdjAtk;
+        private static Text uiArtifactInfo_textAdjDef;
         private static bool uiMartialInfo_mod = false;
         private static Text uiMartialInfo_textExpertLvl;
+        private static Text uiMartialInfo_textAdjAtk;
+        private static Text uiMartialInfo_textAdjDef;
+        private static Text uiMartialInfo_textAdjHp;
+        private static Text uiMartialInfo_textAdjMp;
         public static void OnUIOpen(OpenUIEnd e)
         {
             var uiMapMain = MonoBehaviour.FindObjectOfType<UIMapMain>();
@@ -50,18 +56,40 @@ namespace MOD_nE7UL2.Mod
             {
                 if (!uiArtifactInfo_mod)
                 {
-                    var expertLvl = ExpertEvent.GetExpertLvl(uiArtifactInfo.unit, uiArtifactInfo.shapeProp.soleID, uiArtifactInfo.shapeProp.propsInfoBase.grade, uiArtifactInfo.shapeProp.propsInfoBase.level);
-                    var expertExp = ExpertEvent.GetExpertExp(uiArtifactInfo.unit, uiArtifactInfo.shapeProp.soleID);
-                    var expertNeedExp = ExpertEvent.GetSkillExpertNeedExp(expertLvl + 1, uiArtifactInfo.shapeProp.propsInfoBase.grade, uiArtifactInfo.shapeProp.propsInfoBase.level);
+                    var soleId = uiArtifactInfo.shapeProp.soleID;
+                    var propsGrade = uiArtifactInfo.shapeProp.propsInfoBase.grade;
+                    var propsLevel = uiArtifactInfo.shapeProp.propsInfoBase.level;
+                    var expertLvl = ExpertEvent.GetExpertLvl(uiArtifactInfo.unit, soleId, propsGrade, propsLevel);
+                    var expertExp = ExpertEvent.GetExpertExp(uiArtifactInfo.unit, soleId);
+                    var expertNeedExp = ExpertEvent.GetSkillExpertNeedExp(expertLvl + 1, propsGrade, propsLevel);
 
                     uiArtifactInfo_textExpertLvl = MonoBehaviour.Instantiate(uiArtifactInfo.textGrade_En, uiArtifactInfo.transform, false);
                     uiArtifactInfo_textExpertLvl.transform.position = new Vector3(uiArtifactInfo.textGrade_En.transform.position.x, uiArtifactInfo.textGrade_En.transform.position.y - 0.3f);
                     uiArtifactInfo_textExpertLvl.verticalOverflow = VerticalWrapMode.Overflow;
                     uiArtifactInfo_textExpertLvl.horizontalOverflow = HorizontalWrapMode.Overflow;
                     uiArtifactInfo_textExpertLvl.alignment = TextAnchor.MiddleLeft;
-                    uiArtifactInfo_textExpertLvl.fontSize = 15;
-                    uiArtifactInfo_textExpertLvl.color = Color.red;
+                    uiArtifactInfo_textExpertLvl.fontStyle = FontStyle.Bold;
+                    uiArtifactInfo_textExpertLvl.fontSize = 16;
+                    uiArtifactInfo_textExpertLvl.color = Color.white;
                     uiArtifactInfo_textExpertLvl.text = $"Expert Level: {expertLvl} ({expertExp}/{expertNeedExp})";
+
+                    uiArtifactInfo_textAdjAtk = MonoBehaviour.Instantiate(uiArtifactInfo.textGrade_En, uiArtifactInfo.transform, false);
+                    uiArtifactInfo_textAdjAtk.transform.position = new Vector3(uiArtifactInfo.textGrade_En.transform.position.x + 0.2f, uiArtifactInfo.textGrade_En.transform.position.y - 0.5f);
+                    uiArtifactInfo_textAdjAtk.verticalOverflow = VerticalWrapMode.Overflow;
+                    uiArtifactInfo_textAdjAtk.horizontalOverflow = HorizontalWrapMode.Overflow;
+                    uiArtifactInfo_textAdjAtk.alignment = TextAnchor.MiddleLeft;
+                    uiArtifactInfo_textAdjAtk.fontSize = 15;
+                    uiArtifactInfo_textAdjAtk.color = Color.white;
+                    uiArtifactInfo_textAdjAtk.text = $"+Atk: {ExpertEvent.GetArtifactExpertAtkRate(expertLvl, propsGrade, propsLevel) * 100f:0.0}%";
+
+                    uiArtifactInfo_textAdjDef = MonoBehaviour.Instantiate(uiArtifactInfo.textGrade_En, uiArtifactInfo.transform, false);
+                    uiArtifactInfo_textAdjDef.transform.position = new Vector3(uiArtifactInfo.textGrade_En.transform.position.x + 0.2f, uiArtifactInfo.textGrade_En.transform.position.y - 0.7f);
+                    uiArtifactInfo_textAdjDef.verticalOverflow = VerticalWrapMode.Overflow;
+                    uiArtifactInfo_textAdjDef.horizontalOverflow = HorizontalWrapMode.Overflow;
+                    uiArtifactInfo_textAdjDef.alignment = TextAnchor.MiddleLeft;
+                    uiArtifactInfo_textAdjDef.fontSize = 15;
+                    uiArtifactInfo_textAdjDef.color = Color.white;
+                    uiArtifactInfo_textAdjDef.text = $"+Def: {ExpertEvent.GetArtifactExpertDefRate(expertLvl, propsGrade, propsLevel) * 100f:0.0}%";
 
                     uiArtifactInfo_mod = true;
                 }
@@ -72,16 +100,20 @@ namespace MOD_nE7UL2.Mod
             {
                 if (!uiMartialInfo_mod)
                 {
-                    var expertLvl = ExpertEvent.GetExpertLvl(uiMartialInfo.unit, uiMartialInfo.martialData.martialInfo.propsData.soleID, uiMartialInfo.martialData.martialInfo.grade, uiMartialInfo.martialData.martialInfo.level);
-                    var expertExp = ExpertEvent.GetExpertExp(uiMartialInfo.unit, uiMartialInfo.martialData.martialInfo.propsData.soleID);
-                    var expertNeedExp = ExpertEvent.GetSkillExpertNeedExp(expertLvl + 1, uiMartialInfo.martialData.martialInfo.grade, uiMartialInfo.martialData.martialInfo.level);
+                    var soleId = uiMartialInfo.martialData.martialInfo.propsData.soleID;
+                    var propsGrade = uiMartialInfo.martialData.martialInfo.grade;
+                    var propsLevel = uiMartialInfo.martialData.martialInfo.level;
+                    var expertLvl = ExpertEvent.GetExpertLvl(uiMartialInfo.unit, soleId, propsGrade, propsLevel);
+                    var expertExp = ExpertEvent.GetExpertExp(uiMartialInfo.unit, soleId);
+                    var expertNeedExp = ExpertEvent.GetSkillExpertNeedExp(expertLvl + 1, propsGrade, propsLevel);
 
                     uiMartialInfo_textExpertLvl = MonoBehaviour.Instantiate(uiMartialInfo.textGrade_En, uiMartialInfo.transform, false);
                     uiMartialInfo_textExpertLvl.transform.position = new Vector3(uiMartialInfo.textGrade_En.transform.position.x + 2.0f, uiMartialInfo.textGrade_En.transform.position.y);
                     uiMartialInfo_textExpertLvl.verticalOverflow = VerticalWrapMode.Overflow;
                     uiMartialInfo_textExpertLvl.horizontalOverflow = HorizontalWrapMode.Overflow;
                     uiMartialInfo_textExpertLvl.alignment = TextAnchor.MiddleLeft;
-                    uiMartialInfo_textExpertLvl.fontSize = 15;
+                    uiArtifactInfo_textExpertLvl.fontStyle = FontStyle.Bold;
+                    uiArtifactInfo_textExpertLvl.fontSize = 16;
                     uiMartialInfo_textExpertLvl.color = Color.red;
                     uiMartialInfo_textExpertLvl.text = $"Expert Level: {expertLvl} ({expertExp}/{expertNeedExp})";
 
@@ -121,7 +153,6 @@ namespace MOD_nE7UL2.Mod
             }
             else
             {
-
             }
         }
 
