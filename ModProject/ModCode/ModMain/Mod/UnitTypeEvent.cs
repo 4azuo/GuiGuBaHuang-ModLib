@@ -31,7 +31,7 @@ namespace MOD_nE7UL2.Mod
                 AddTraineeLuck(wunit);
 
                 //merchant
-                if (wunit.IsPlayer() && UnitTypeDic[unitId] == UnitTypeEnum.Merchant)
+                if (UnitTypeDic[unitId] == UnitTypeEnum.Merchant)
                 {
                     wunit.AddUnitMoney((wunit.GetUnitMoney() * UnitTypeEnum.Merchant.CustomLuck.CustomEffects["PassiveIncome"].Value0.Parse<float>()).Parse<int>());
                 }
@@ -45,6 +45,14 @@ namespace MOD_nE7UL2.Mod
                 else
                 {
                     AddNpcProp(wunit, 1.00f + wunit.GetGradeLvl() * 0.03f);
+
+                    foreach (var luck in ApprenticeLuckEnum.GetAllEnums<ApprenticeLuckEnum>())
+                    {
+                        if (CommonTool.Random(0.00f, 100.00f).IsBetween(0.00f, 8.00f))
+                        {
+                            wunit.AddProperty<int>(luck.PropertyEnum.GetPropertyEnum(), 1);
+                        }
+                    }
                 }
             }
         }

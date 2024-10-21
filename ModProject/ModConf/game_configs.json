@@ -128,14 +128,22 @@
 			"Ability": 16.0
 		}
 	},
-	"SkillExpertConfigs": {
-		"ExpRates": {
-			"SkillLeft": 1.0,
-			"SkillRight": 0.6,
-			"Step": 0.8,
-			"Ultimate": 0.5,
-			"Ability": 1.2
-		}
+	"ExpertConfigs": {
+		"AutoSkillExpRates": {
+			"SkillLeft": 2.0,
+			"SkillRight": 1.0,
+			"Step": 1.50,
+			"Ultimate": 5.00,
+			"Ability": 12.00
+		},
+		"AutoArtifactExpRate": 4.00,
+		"BattleSkillExpRates": {
+			"SkillLeft": 0.01,
+			"SkillRight": 0.10,
+			"Step": 0.15,
+			"Ultimate": 0.50
+		},
+		"BattleArtifactExpRate": 0.01
 	},
 	"BattleRewardConfigs": {
 		"ExpPerDmgDealt": 0.001,

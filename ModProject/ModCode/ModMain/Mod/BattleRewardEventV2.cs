@@ -527,7 +527,7 @@ namespace MOD_nE7UL2.Mod
                         player.RemoveUnitProp(bodyReconstructionItemId, 1);
                     }
                     //item
-                    var ringLockScore = player.data.unitData.propData.GetEquipProps().ToArray().Where(x => x?.propsItem?.IsRing() != null).FirstOrDefault()?.propsItem?.IsRing()?.lockScore ?? 0;
+                    var ringLockScore = player.GetEquippedRing()?.propsItem?.IsRing()?.lockScore ?? 0;
                     var luck = g.world.playerUnit.GetDynProperty(UnitDynPropertyEnum.Luck).value;
                     foreach (var item in player.GetUnitProps())
                     {
