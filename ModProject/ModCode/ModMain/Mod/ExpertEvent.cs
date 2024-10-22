@@ -20,13 +20,17 @@ namespace MOD_nE7UL2.Mod
             base.OnMonthly();
             foreach (var wunit in g.world.unit.GetUnits())
             {
-                foreach (var martialType in Configs.AutoSkillExpRates.Keys)
+                foreach (var martial in wunit.GetActionMartial())
                 {
-                    if (martialType != MartialType.Ability && wunit.IsPlayer())
-                        continue;
-                    foreach (var abi in wunit.data.unitData.GetActionMartial(martialType))
+                    var martialData = martial.Value.data.To<DataProps.MartialData>();
+                    var martialType = martialData.martialType;
+                    if (martialType == MartialType.Ability)
                     {
-                        AddExpertExp(wunit, abi.data.soleID, Configs.AutoSkillExpRates[martialType]);
+                        AddExpertExp(wunit, martialData.data.soleID, Configs.AutoAbilityExpRate);
+                    }
+                    else if (!wunit.IsPlayer())
+                    {
+                        AddExpertExp(wunit, martialData.data.soleID, Configs.AutoSkillExpRate);
                     }
                 }
 
@@ -57,17 +61,13 @@ namespace MOD_nE7UL2.Mod
                     }
                 }
 
-                var soleId = e?.hitData?.skillBase?.data?.valueData?.data?.abilityBase?.data?.abilityData?.martialInfo?.propsData?.soleID;
-                DebugHelper.WriteLine("4");
-                DebugHelper.WriteLine(soleId);
+                var soleId = e?.hitData?.skillCreateData?.skillCreateSoleID;
                 if (soleId != null)
                 {
-                    var martialType = e.hitData.skillBase.data.valueData.data.abilityBase.data.abilityData.martialType;
-                    DebugHelper.WriteLine(martialType.ToString());
-                    AddExpertExp(wunit, soleId, Configs.BattleSkillExpRates[martialType]);
-                    DebugHelper.WriteLine("5");
+                    AddExpertExp(wunit, soleId, Configs.BattleSkillExpRate);
                 }
             }
+            DebugHelper.Save();
         }
 
         public static IDictionary<string, int> GetExpertExps()
@@ -82,14 +82,12 @@ namespace MOD_nE7UL2.Mod
         {
             var e = GetExpertExps();
             if (!e.ContainsKey(soleId))
-            {
                 e.Add(soleId, 0);
-            }
             var insight = wunit.GetDynProperty(UnitDynPropertyEnum.Talent).value;
-            e[soleId] += (exp * 100.0f * CommonTool.Random(1.0f, 2.0f) * (insight / 100.0f)).Parse<int>();
+            e[soleId] += (exp * 100.0f * wunit.GetGradeLvl() * CommonTool.Random(1.0f, 2.0f) * (insight / 100.0f)).Parse<int>();
         }
 
-        public static int GetExpertExp(WorldUnitBase wunit, string soleId)
+        public static int GetExpertExp(string soleId)
         {
             var e = GetExpertExps();
             if (e.ContainsKey(soleId))
@@ -97,7 +95,7 @@ namespace MOD_nE7UL2.Mod
             return 0;
         }
 
-        public static int GetSkillExpertNeedExp(int expertLvl, int propsGrade, int propsLevel)
+        public static int GetExpertNeedExp(int expertLvl, int propsGrade, int propsLevel)
         {
             if (expertLvl <= 0)
                 return 0;
@@ -105,30 +103,86 @@ namespace MOD_nE7UL2.Mod
             return Convert.ToInt32(Math.Pow(2, expertLvl - 1) * r);
         }
 
-        public static int GetExpertLvl(WorldUnitBase wunit, string soleId, int propsGrade, int propsLevel)
+        public static int GetExpertLvl(string soleId, int propsGrade, int propsLevel)
         {
-            var exp = GetExpertExp(wunit, soleId);
+            var exp = GetExpertExp(soleId);
             for (int i = 1; true; i++)
             {
-                if (exp < GetSkillExpertNeedExp(i, propsGrade, propsLevel))
+                if (exp < GetExpertNeedExp(i, propsGrade, propsLevel))
                     return i - 1;
             }
         }
 
-        public static float GetArtifactExpertAtkRate(int expertLvl, int propsGrade, int propsLevel)
+        public static int GetArtifactExpertAtk(int inputValue, int expertLvl, int propsGrade, int propsLevel)
         {
             if (expertLvl <= 0)
-                return 0f;
+                return 0;
             var r = 0.200f * propsGrade + 0.040f * propsLevel;
-            return expertLvl * r;
+            var v = 100 * propsGrade + 20 * propsLevel;
+            return (inputValue * expertLvl * r).Parse<int>() + v;
         }
 
-        public static float GetArtifactExpertDefRate(int expertLvl, int propsGrade, int propsLevel)
+        public static int GetArtifactExpertDef(int inputValue, int expertLvl, int propsGrade, int propsLevel)
         {
             if (expertLvl <= 0)
-                return 0f;
+                return 0;
             var r = 0.010f * propsGrade + 0.002f * propsLevel;
-            return expertLvl * r;
+            var v = 10 * propsGrade + 2 * propsLevel;
+            return (inputValue * expertLvl * r).Parse<int>() + v;
+        }
+
+        public static int GetSkillExpertAtk(int inputValue, int expertLvl, int propsGrade, int propsLevel)
+        {
+            if (expertLvl <= 0)
+                return 0;
+            var r = 0.006f * propsGrade + 0.002f * propsLevel;
+            var v = 20 * propsGrade + 5 * propsLevel;
+            return (inputValue * expertLvl * r).Parse<int>() + v;
+        }
+
+        public static int GetAbilityExpertAtk(int inputValue, int expertLvl, int propsGrade, int propsLevel)
+        {
+            if (expertLvl <= 0)
+                return 0;
+            var r = 0.005f * propsGrade + 0.001f * propsLevel;
+            var v = 5 * propsGrade + 2 * propsLevel;
+            return (inputValue * expertLvl * r).Parse<int>() + v;
+        }
+
+        public static int GetAbilityExpertDef(int inputValue, int expertLvl, int propsGrade, int propsLevel)
+        {
+            if (expertLvl <= 0)
+                return 0;
+            var r = 0.003f * propsGrade + 0.0006f * propsLevel;
+            var v = 4 * propsGrade + 1 * propsLevel;
+            return (inputValue * expertLvl * r).Parse<int>() + v;
+        }
+
+        public static int GetAbilityExpertHp(int inputValue, int expertLvl, int propsGrade, int propsLevel)
+        {
+            if (expertLvl <= 0)
+                return 0;
+            var r = 0.010f * propsGrade + 0.002f * propsLevel;
+            var v = 100 * propsGrade + 20 * propsLevel;
+            return (inputValue * expertLvl * r).Parse<int>() + v;
+        }
+
+        public static int GetAbilityExpertMp(int inputValue, int expertLvl, int propsGrade, int propsLevel)
+        {
+            if (expertLvl <= 0)
+                return 0;
+            var r = 0.010f * propsGrade + 0.002f * propsLevel;
+            var v = 4 * propsGrade + 1 * propsLevel;
+            return (inputValue * expertLvl * r).Parse<int>() + v;
+        }
+
+        public static int GetAbilityExpertSp(int inputValue, int expertLvl, int propsGrade, int propsLevel)
+        {
+            if (expertLvl <= 0)
+                return 0;
+            var r = 0.003f * propsGrade + 0.0005f * propsLevel;
+            var v = 4 * propsGrade + 1 * propsLevel;
+            return (inputValue * expertLvl * r).Parse<int>() + v;
         }
     }
 }

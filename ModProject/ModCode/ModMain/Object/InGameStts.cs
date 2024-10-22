@@ -165,9 +165,11 @@ namespace MOD_nE7UL2.Object
         #region ExpertConfigs
         public class _ExpertConfigs
         {
-            public Dictionary<MartialType, float> AutoSkillExpRates { get; set; }
+            public float AutoAbilityExpRate { get; set; }
+
+            public float AutoSkillExpRate { get; set; }
             public float AutoArtifactExpRate { get; set; }
-            public Dictionary<MartialType, float> BattleSkillExpRates { get; set; }
+            public float BattleSkillExpRate { get; set; }
             public float BattleArtifactExpRate { get; set; }
         }
         public _ExpertConfigs ExpertConfigs { get; set; }
