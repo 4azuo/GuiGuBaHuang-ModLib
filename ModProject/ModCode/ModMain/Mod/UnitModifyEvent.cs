@@ -74,20 +74,20 @@ namespace MOD_nE7UL2.Mod
                 {
                     var aconf = artifact.propsItem.IsArtifact();
                     var r = 0.01f + (0.001f * Math.Pow(2, a.level)) + (0.02f * a.grade);
-                    var r1 = (4.00f + (0.006f * Math.Pow(3, a.level)) + (1.00f * a.grade)) / 100.0f + 
-                        ExpertEvent.GetArtifactExpertAtkRate(ExpertEvent.GetExpertLvl(wunit, artifact.soleID, artifact.propsInfoBase.grade, artifact.propsInfoBase.level), artifact.propsInfoBase.grade, artifact.propsInfoBase.level);
-                    rs += (r * atk + r1 * aconf.atk).Parse<int>();
+                    var r1 = (4.00f + (0.006f * Math.Pow(3, a.level)) + (1.00f * a.grade)) / 100.0f;
+                    rs += (r * atk + r1 * aconf.atk).Parse<int>() +
+                        ExpertEvent.GetArtifactExpertAtk(aconf.atk, ExpertEvent.GetExpertLvl(artifact.soleID, artifact.propsInfoBase.grade, artifact.propsInfoBase.level), artifact.propsInfoBase.grade, artifact.propsInfoBase.level);
                 }
             }
 
-            //foreach (var abi in wunit.data.unitData.GetActionMartial(MartialType.Ability))
-            //{
-            //    var abiData = abi.data.To<DataProps.PropsAbilityData>();
-            //    var prefixes = g.conf.battleSkillPrefixValue.GetPrefix(abiData);
-            //    //prefixes[0].
-            //    //abiData.martialInfo.prefixs[0].prefixValueItem.w
-            //    g.conf.battleSkillPrefixValue.get
-            //}
+            foreach (var abi in wunit.data.unitData.GetActionMartial(MartialType.Ability))
+            {
+                var abiData = abi.data.To<DataProps.PropsAbilityData>();
+                var prefixes = g.conf.battleSkillPrefixValue.GetPrefix(abiData);
+                //prefixes[0].
+                //abiData.martialInfo.prefixs[0].prefixValueItem.w
+                g.conf.battleSkillPrefixValue.get
+            }
 
             return rs;
         }
@@ -106,9 +106,9 @@ namespace MOD_nE7UL2.Mod
                 {
                     var aconf = artifact.propsItem.IsArtifact();
                     var r = 0.01f + (0.001f * Math.Pow(2, a.level)) + (0.02f * a.grade);
-                    var r2 = (3.00f + (0.005f * Math.Pow(3, a.level)) + (0.80f * a.grade)) / 100.0f +
-                        ExpertEvent.GetArtifactExpertDefRate(ExpertEvent.GetExpertLvl(wunit, artifact.soleID, artifact.propsInfoBase.grade, artifact.propsInfoBase.level), artifact.propsInfoBase.grade, artifact.propsInfoBase.level);
-                    rs += (r * def + r2 * aconf.def).Parse<int>();
+                    var r2 = (3.00f + (0.005f * Math.Pow(3, a.level)) + (0.80f * a.grade)) / 100.0f;
+                    rs += (r * def + r2 * aconf.def).Parse<int>() +
+                        ExpertEvent.GetArtifactExpertDef(aconf.def, ExpertEvent.GetExpertLvl(artifact.soleID, artifact.propsInfoBase.grade, artifact.propsInfoBase.level), artifact.propsInfoBase.grade, artifact.propsInfoBase.level);
                 }
             }
 

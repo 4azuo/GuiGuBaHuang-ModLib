@@ -31,6 +31,11 @@ public static class UnitHelper
         return wunit.data.unitData.propData.GetEquipProps().ToArray();
     }
 
+    public static Il2CppSystem.Collections.Generic.Dictionary<string, DataUnit.ActionMartialData> GetActionMartial(this WorldUnitBase wunit)
+    {
+        return wunit.data.unitData.allActionMartial;
+    }
+
     public static string GetUnitId(this WorldUnitBase wunit)
     {
         return wunit?.data?.unitData?.unitID;
