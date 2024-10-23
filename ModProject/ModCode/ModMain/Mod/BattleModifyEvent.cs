@@ -80,6 +80,16 @@ namespace MOD_nE7UL2.Mod
                 return;
             }
 
+            //add dmg (skill)
+            var skillData = e?.hitData?.skillBase?.TryCast<SkillAttack>();
+            if (skillData != null)
+            {
+                var soleId = skillData.skillData.data.soleID;
+                var grade = skillData.skillData.data.propsInfoBase.grade;
+                var level = skillData.skillData.data.propsInfoBase.level;
+                e.dynV.baseValue += ExpertEvent.GetSkillExpertAtk(e.dynV.baseValue, ExpertEvent.GetExpertLvl(soleId, grade, level), grade, level);
+            }
+
             //add dmg (basis)
             if (pEnum != null)
             {

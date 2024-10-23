@@ -6,6 +6,8 @@ using ModLib.Enum;
 using System;
 using System.Collections.Generic;
 using Newtonsoft.Json;
+using System.Drawing;
+using static FormulaTool;
 
 namespace MOD_nE7UL2.Mod
 {
@@ -58,13 +60,21 @@ namespace MOD_nE7UL2.Mod
             {
                 return GetAdjustMaxMp(wunit);
             }));
+            wunit.GetDynProperty(UnitDynPropertyEnum.SpMax).AddValue((DynInt.DynObjectAddHandler)(() =>
+            {
+                return GetAdjustMaxSp(wunit);
+            }));
+            wunit.GetDynProperty(UnitDynPropertyEnum.MoveSpeed).AddValue((DynInt.DynObjectAddHandler)(() =>
+            {
+                return GetAdjustSpeed(wunit);
+            }));
         }
 
         public static int GetAdjustAtk(WorldUnitBase wunit)
         {
             var rs = 0;
 
-            var atk = wunit.GetDynProperty(UnitDynPropertyEnum.Attack).value;
+            var atk = wunit.GetDynProperty(UnitDynPropertyEnum.Attack).baseValue;
 
             var artifacts = wunit.GetEquippedArtifacts();
             foreach (var artifact in artifacts)
@@ -82,11 +92,11 @@ namespace MOD_nE7UL2.Mod
 
             foreach (var abi in wunit.data.unitData.GetActionMartial(MartialType.Ability))
             {
-                var abiData = abi.data.To<DataProps.PropsAbilityData>();
-                var prefixes = g.conf.battleSkillPrefixValue.GetPrefix(abiData);
-                //prefixes[0].
-                //abiData.martialInfo.prefixs[0].prefixValueItem.w
-                g.conf.battleSkillPrefixValue.get
+                var martialData = abi.data.To<DataProps.MartialData>();
+                if (wunit.data.unitData.abilitys.Contains(martialData.data.soleID))
+                {
+                    rs += ExpertEvent.GetAbilityExpertAtk(atk, ExpertEvent.GetExpertLvl(martialData.data.soleID, martialData.data.propsInfoBase.grade, martialData.data.propsInfoBase.level), martialData.data.propsInfoBase.grade, martialData.data.propsInfoBase.level);
+                }
             }
 
             return rs;
@@ -96,7 +106,7 @@ namespace MOD_nE7UL2.Mod
         {
             var rs = 0;
 
-            var def = wunit.GetDynProperty(UnitDynPropertyEnum.Defense).value;
+            var def = wunit.GetDynProperty(UnitDynPropertyEnum.Defense).baseValue;
 
             var artifacts = wunit.GetEquippedArtifacts();
             foreach (var artifact in artifacts)
@@ -112,6 +122,15 @@ namespace MOD_nE7UL2.Mod
                 }
             }
 
+            foreach (var abi in wunit.data.unitData.GetActionMartial(MartialType.Ability))
+            {
+                var martialData = abi.data.To<DataProps.MartialData>();
+                if (wunit.data.unitData.abilitys.Contains(martialData.data.soleID))
+                {
+                    rs += ExpertEvent.GetAbilityExpertDef(def, ExpertEvent.GetExpertLvl(martialData.data.soleID, martialData.data.propsInfoBase.grade, martialData.data.propsInfoBase.level), martialData.data.propsInfoBase.grade, martialData.data.propsInfoBase.level);
+                }
+            }
+
             return rs;
         }
 
@@ -120,7 +139,7 @@ namespace MOD_nE7UL2.Mod
             var rs = 0;
 
             var gradeLvl = wunit.GetGradeLvl();
-            var hpMax = wunit.GetDynProperty(UnitDynPropertyEnum.HpMax).value;
+            var hpMax = wunit.GetDynProperty(UnitDynPropertyEnum.HpMax).baseValue;
 
             var artifacts = wunit.GetEquippedArtifacts();
             foreach (var artifact in artifacts)
@@ -134,6 +153,15 @@ namespace MOD_nE7UL2.Mod
                 }
             }
 
+            foreach (var abi in wunit.data.unitData.GetActionMartial(MartialType.Ability))
+            {
+                var martialData = abi.data.To<DataProps.MartialData>();
+                if (wunit.data.unitData.abilitys.Contains(martialData.data.soleID))
+                {
+                    rs += ExpertEvent.GetAbilityExpertHp(hpMax, ExpertEvent.GetExpertLvl(martialData.data.soleID, martialData.data.propsInfoBase.grade, martialData.data.propsInfoBase.level), martialData.data.propsInfoBase.grade, martialData.data.propsInfoBase.level);
+                }
+            }
+
             rs += wunit.GetDynProperty(UnitDynPropertyEnum.AbilityPoint).value * 10 * gradeLvl;
 
             return rs;
@@ -143,7 +171,52 @@ namespace MOD_nE7UL2.Mod
         {
             var rs = 0;
 
+            var mpMax = wunit.GetDynProperty(UnitDynPropertyEnum.MpMax).baseValue;
+
+            foreach (var abi in wunit.data.unitData.GetActionMartial(MartialType.Ability))
+            {
+                var martialData = abi.data.To<DataProps.MartialData>();
+                if (wunit.data.unitData.abilitys.Contains(martialData.data.soleID))
+                {
+                    rs += ExpertEvent.GetAbilityExpertMp(mpMax, ExpertEvent.GetExpertLvl(martialData.data.soleID, martialData.data.propsInfoBase.grade, martialData.data.propsInfoBase.level), martialData.data.propsInfoBase.grade, martialData.data.propsInfoBase.level);
+                }
+            }
+
             rs += wunit.GetDynProperty(UnitDynPropertyEnum.AbilityPoint).value;
+
+            return rs;
+        }
+
+        public static int GetAdjustMaxSp(WorldUnitBase wunit)
+        {
+            var rs = 0;
+
+            var spMax = wunit.GetDynProperty(UnitDynPropertyEnum.SpMax).baseValue;
+
+            foreach (var abi in wunit.data.unitData.GetActionMartial(MartialType.Ability))
+            {
+                var martialData = abi.data.To<DataProps.MartialData>();
+                if (wunit.data.unitData.abilitys.Contains(martialData.data.soleID))
+                {
+                    rs += ExpertEvent.GetAbilityExpertSp(spMax, ExpertEvent.GetExpertLvl(martialData.data.soleID, martialData.data.propsInfoBase.grade, martialData.data.propsInfoBase.level), martialData.data.propsInfoBase.grade, martialData.data.propsInfoBase.level);
+                }
+            }
+
+            return rs;
+        }
+
+        public static int GetAdjustSpeed(WorldUnitBase wunit)
+        {
+            var rs = 0;
+
+            foreach (var abi in wunit.data.unitData.GetActionMartial(MartialType.Step))
+            {
+                var martialData = abi.data.To<DataProps.MartialData>();
+                if (wunit.data.unitData.abilitys.Contains(martialData.data.soleID))
+                {
+                    rs += ExpertEvent.GetStepExpertSpeed(ExpertEvent.GetExpertLvl(martialData.data.soleID, martialData.data.propsInfoBase.grade, martialData.data.propsInfoBase.level), martialData.data.propsInfoBase.grade, martialData.data.propsInfoBase.level);
+                }
+            }
 
             return rs;
         }

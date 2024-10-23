@@ -8,6 +8,7 @@ using static MOD_nE7UL2.Object.InGameStts._HideButtonConfigs;
 using static MOD_nE7UL2.Object.InGameStts;
 using System.Collections.Generic;
 using ModLib.Enum;
+using TMPro;
 
 namespace MOD_nE7UL2.Mod
 {
@@ -30,13 +31,13 @@ namespace MOD_nE7UL2.Mod
         private static Text uiArtifactInfo_textAdjAtk;
         private static Text uiArtifactInfo_textAdjDef;
         private static bool uiMartialInfo_mod = false;
-        private static UICheckPopup uiMartialExpertInfo;
+        private static UINPCInfoPreview uiMartialExpertInfo;
         private static Text uiMartialExpertInfo_textExpertLvl;
-        private static Text uiMartialExpertInfo_textAdjAtk;
-        private static Text uiMartialExpertInfo_textAdjDef;
-        private static Text uiMartialExpertInfo_textAdjHp;
-        private static Text uiMartialExpertInfo_textAdjMp;
-        private static Text uiMartialExpertInfo_textAdjSp;
+        private static Text uiMartialExpertInfo_textAdj1;
+        private static Text uiMartialExpertInfo_textAdj2;
+        private static Text uiMartialExpertInfo_textAdj3;
+        private static Text uiMartialExpertInfo_textAdj4;
+        private static Text uiMartialExpertInfo_textAdj5;
         public static void OnUIOpen(OpenUIEnd e)
         {
             var uiMapMain = MonoBehaviour.FindObjectOfType<UIMapMain>();
@@ -100,7 +101,7 @@ namespace MOD_nE7UL2.Mod
             }
 
             var uiMartialInfo = MonoBehaviour.FindObjectOfType<UIMartialInfo>();
-            if (uiMartialInfo != null)
+            if (uiMartialInfo != null && !GameHelper.IsInBattlle())
             {
                 if (!uiMartialInfo_mod)
                 {
@@ -112,78 +113,61 @@ namespace MOD_nE7UL2.Mod
                     var expertExp = ExpertEvent.GetExpertExp(soleId);
                     var expertNeedExp = ExpertEvent.GetExpertNeedExp(expertLvl + 1, propsGrade, propsLevel);
                     
-                    uiMartialExpertInfo = g.ui.OpenUI<UICheckPopup>(UIType.CheckPopup);
-                    uiMartialExpertInfo.btn1.gameObject.SetActive(false);
-                    uiMartialExpertInfo.btn2.gameObject.SetActive(false);
-                    uiMartialExpertInfo.btn3.gameObject.SetActive(false);
-                    uiMartialExpertInfo.textBtn1.gameObject.SetActive(false);
-                    uiMartialExpertInfo.textBtn2.gameObject.SetActive(false);
-                    uiMartialExpertInfo.textBtn3.gameObject.SetActive(false);
-                    uiMartialExpertInfo.textTitle.gameObject.SetActive(false);
-                    uiMartialExpertInfo.textContent.gameObject.SetActive(false);
+                    uiMartialExpertInfo = g.ui.OpenUI<UINPCInfoPreview>(UIType.NPCInfoPreview);
 
-                    uiMartialExpertInfo_textExpertLvl = MonoBehaviour.Instantiate(uiMartialExpertInfo.textContent, uiMartialExpertInfo.transform, false);
-                    uiMartialExpertInfo_textExpertLvl.transform.position = new Vector3(uiMartialExpertInfo.textContent.transform.position.x, uiMartialExpertInfo.textContent.transform.position.y);
-                    uiMartialExpertInfo_textExpertLvl.verticalOverflow = VerticalWrapMode.Overflow;
-                    uiMartialExpertInfo_textExpertLvl.horizontalOverflow = HorizontalWrapMode.Overflow;
-                    uiMartialExpertInfo_textExpertLvl.alignment = TextAnchor.MiddleLeft;
+                    var texts = uiMartialExpertInfo.GetComponentsInChildren<Text>();
+                    uiMartialExpertInfo_textExpertLvl = texts[1];
+                    uiMartialExpertInfo_textAdj1 = texts[5];
+                    uiMartialExpertInfo_textAdj2 = texts[7];
+                    uiMartialExpertInfo_textAdj3 = texts[9];
+                    uiMartialExpertInfo_textAdj4 = texts[11];
+                    uiMartialExpertInfo_textAdj5 = texts[13];
+
+                    uiMartialExpertInfo_textExpertLvl.fontSize++;
                     uiMartialExpertInfo_textExpertLvl.fontStyle = FontStyle.Bold;
-                    uiMartialExpertInfo_textExpertLvl.fontSize = 16;
-                    uiMartialExpertInfo_textExpertLvl.color = Color.white;
                     uiMartialExpertInfo_textExpertLvl.text = $"Expert Level: {expertLvl} ({expertExp}/{expertNeedExp})";
-
-                    uiMartialExpertInfo_textAdjAtk = MonoBehaviour.Instantiate(uiMartialExpertInfo.textContent, uiMartialExpertInfo.transform, false);
-                    uiMartialExpertInfo_textAdjAtk.transform.position = new Vector3(uiMartialExpertInfo.textContent.transform.position.x, uiMartialExpertInfo.textContent.transform.position.y);
-                    uiMartialExpertInfo_textAdjAtk.verticalOverflow = VerticalWrapMode.Overflow;
-                    uiMartialExpertInfo_textAdjAtk.horizontalOverflow = HorizontalWrapMode.Overflow;
-                    uiMartialExpertInfo_textAdjAtk.alignment = TextAnchor.MiddleLeft;
-                    uiMartialExpertInfo_textAdjAtk.fontSize = 15;
-                    uiMartialExpertInfo_textAdjAtk.color = Color.white;
-                    if (uiMartialInfo.martialData.martialType == MartialType.Ability)
-                        uiMartialExpertInfo_textAdjAtk.text = $"+Atk: {ExpertEvent.GetAbilityExpertAtk(player.GetDynProperty(UnitDynPropertyEnum.Attack).value, expertLvl, propsGrade, propsLevel)}";
-                    else
-                        uiMartialExpertInfo_textAdjAtk.text = $"+Atk: {ExpertEvent.GetSkillExpertAtk(player.GetDynProperty(UnitDynPropertyEnum.Attack).value, expertLvl, propsGrade, propsLevel)}";
 
                     if (uiMartialInfo.martialData.martialType == MartialType.Ability)
                     {
-                        uiMartialExpertInfo_textAdjDef = MonoBehaviour.Instantiate(uiMartialExpertInfo.textContent, uiMartialExpertInfo.transform, false);
-                        uiMartialExpertInfo_textAdjDef.transform.position = new Vector3(uiMartialExpertInfo.textContent.transform.position.x, uiMartialExpertInfo.textContent.transform.position.y);
-                        uiMartialExpertInfo_textAdjDef.verticalOverflow = VerticalWrapMode.Overflow;
-                        uiMartialExpertInfo_textAdjDef.horizontalOverflow = HorizontalWrapMode.Overflow;
-                        uiMartialExpertInfo_textAdjDef.alignment = TextAnchor.MiddleLeft;
-                        uiMartialExpertInfo_textAdjDef.fontSize = 15;
-                        uiMartialExpertInfo_textAdjDef.color = Color.white;
-                        uiMartialExpertInfo_textAdjDef.text = $"+Def: {ExpertEvent.GetAbilityExpertDef(player.GetDynProperty(UnitDynPropertyEnum.Defense).value, expertLvl, propsGrade, propsLevel)}";
+                        uiMartialExpertInfo_textAdj1.text = $"+Atk: {ExpertEvent.GetAbilityExpertAtk(player.GetDynProperty(UnitDynPropertyEnum.Attack).baseValue, expertLvl, propsGrade, propsLevel)}";
+                        uiMartialExpertInfo_textAdj2.text = $"+Def: {ExpertEvent.GetAbilityExpertDef(player.GetDynProperty(UnitDynPropertyEnum.Defense).baseValue, expertLvl, propsGrade, propsLevel)}";
+                        uiMartialExpertInfo_textAdj3.text = $"+Hp: {ExpertEvent.GetAbilityExpertHp(player.GetDynProperty(UnitDynPropertyEnum.HpMax).baseValue, expertLvl, propsGrade, propsLevel)}";
+                        uiMartialExpertInfo_textAdj4.text = $"+Mp: {ExpertEvent.GetAbilityExpertMp(player.GetDynProperty(UnitDynPropertyEnum.MpMax).baseValue, expertLvl, propsGrade, propsLevel)}";
+                        uiMartialExpertInfo_textAdj5.text = $"+Sp: {ExpertEvent.GetAbilityExpertSp(player.GetDynProperty(UnitDynPropertyEnum.SpMax).baseValue, expertLvl, propsGrade, propsLevel)}";
+                    }
+                    else if (uiMartialInfo.martialData.martialType == MartialType.Step)
+                    {
+                        uiMartialExpertInfo_textAdj1.text = $"+Speed: {ExpertEvent.GetStepExpertSpeed(expertLvl, propsGrade, propsLevel)}";
+                        uiMartialExpertInfo_textAdj2.gameObject.SetActive(false);
+                        uiMartialExpertInfo_textAdj3.gameObject.SetActive(false);
+                        uiMartialExpertInfo_textAdj4.gameObject.SetActive(false);
+                        uiMartialExpertInfo_textAdj5.gameObject.SetActive(false);
+                    }
+                    else
+                    {
+                        uiMartialExpertInfo_textAdj1.text = $"+Dmg: {ExpertEvent.GetSkillExpertAtk(player.GetDynProperty(UnitDynPropertyEnum.Attack).baseValue, expertLvl, propsGrade, propsLevel)} (In Battle)";
+                        uiMartialExpertInfo_textAdj2.gameObject.SetActive(false);
+                        uiMartialExpertInfo_textAdj3.gameObject.SetActive(false);
+                        uiMartialExpertInfo_textAdj4.gameObject.SetActive(false);
+                        uiMartialExpertInfo_textAdj5.gameObject.SetActive(false);
+                    }
 
-                        uiMartialExpertInfo_textAdjHp = MonoBehaviour.Instantiate(uiMartialExpertInfo.textContent, uiMartialExpertInfo.transform, false);
-                        uiMartialExpertInfo_textAdjHp.transform.position = new Vector3(uiMartialExpertInfo.textContent.transform.position.x, uiMartialExpertInfo.textContent.transform.position.y);
-                        uiMartialExpertInfo_textAdjHp.verticalOverflow = VerticalWrapMode.Overflow;
-                        uiMartialExpertInfo_textAdjHp.horizontalOverflow = HorizontalWrapMode.Overflow;
-                        uiMartialExpertInfo_textAdjHp.alignment = TextAnchor.MiddleLeft;
-                        uiMartialExpertInfo_textAdjHp.fontSize = 15;
-                        uiMartialExpertInfo_textAdjHp.color = Color.white;
-                        uiMartialExpertInfo_textAdjHp.text = $"+Hp: {ExpertEvent.GetAbilityExpertHp(player.GetDynProperty(UnitDynPropertyEnum.Hp).value, expertLvl, propsGrade, propsLevel)}";
-
-                        uiMartialExpertInfo_textAdjMp = MonoBehaviour.Instantiate(uiMartialExpertInfo.textContent, uiMartialExpertInfo.transform, false);
-                        uiMartialExpertInfo_textAdjMp.transform.position = new Vector3(uiMartialExpertInfo.textContent.transform.position.x, uiMartialExpertInfo.textContent.transform.position.y);
-                        uiMartialExpertInfo_textAdjMp.verticalOverflow = VerticalWrapMode.Overflow;
-                        uiMartialExpertInfo_textAdjMp.horizontalOverflow = HorizontalWrapMode.Overflow;
-                        uiMartialExpertInfo_textAdjMp.alignment = TextAnchor.MiddleLeft;
-                        uiMartialExpertInfo_textAdjMp.fontSize = 15;
-                        uiMartialExpertInfo_textAdjMp.color = Color.white;
-                        uiMartialExpertInfo_textAdjMp.text = $"+Mp: {ExpertEvent.GetAbilityExpertMp(player.GetDynProperty(UnitDynPropertyEnum.Mp).value, expertLvl, propsGrade, propsLevel)}";
-
-                        uiMartialExpertInfo_textAdjSp = MonoBehaviour.Instantiate(uiMartialExpertInfo.textContent, uiMartialExpertInfo.transform, false);
-                        uiMartialExpertInfo_textAdjSp.transform.position = new Vector3(uiMartialExpertInfo.textContent.transform.position.x, uiMartialExpertInfo.textContent.transform.position.y);
-                        uiMartialExpertInfo_textAdjSp.verticalOverflow = VerticalWrapMode.Overflow;
-                        uiMartialExpertInfo_textAdjSp.horizontalOverflow = HorizontalWrapMode.Overflow;
-                        uiMartialExpertInfo_textAdjSp.alignment = TextAnchor.MiddleLeft;
-                        uiMartialExpertInfo_textAdjSp.fontSize = 15;
-                        uiMartialExpertInfo_textAdjSp.color = Color.white;
-                        uiMartialExpertInfo_textAdjSp.text = $"+Sp: {ExpertEvent.GetAbilityExpertSp(player.GetDynProperty(UnitDynPropertyEnum.Sp).value, expertLvl, propsGrade, propsLevel)}";
+                    foreach (var comp in uiMartialExpertInfo.GetComponentsInChildren<Text>())
+                    {
+                        if (comp != uiMartialExpertInfo_textExpertLvl &&
+                            comp != uiMartialExpertInfo_textAdj1 &&
+                            comp != uiMartialExpertInfo_textAdj2 &&
+                            comp != uiMartialExpertInfo_textAdj3 &&
+                            comp != uiMartialExpertInfo_textAdj4 &&
+                            comp != uiMartialExpertInfo_textAdj5)
+                            comp.gameObject.SetActive(false);
                     }
 
                     uiMartialInfo_mod = true;
+                }
+                else
+                {
+                    uiMartialExpertInfo.transform.position = new Vector3(0f, 5f);
                 }
             }
 
@@ -224,11 +208,11 @@ namespace MOD_nE7UL2.Mod
 
         public static void OnUIClose(CloseUIEnd e)
         {
-            if (e.uiType.uiName == UIType.ArtifactInfo.uiName)
+            if (e.uiType.uiName == UIType.ArtifactInfo.uiName && uiArtifactInfo_mod)
             {
                 uiArtifactInfo_mod = false;
             }
-            else if (e.uiType.uiName == UIType.MartialInfo.uiName)
+            else if (e.uiType.uiName == UIType.MartialInfo.uiName && uiMartialInfo_mod)
             {
                 g.ui.CloseUI(uiMartialExpertInfo);
                 uiMartialInfo_mod = false;
