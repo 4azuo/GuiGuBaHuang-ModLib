@@ -23,14 +23,17 @@ namespace MOD_nE7UL2.Mod
                 foreach (var martial in wunit.GetActionMartial())
                 {
                     var martialData = martial.Value.data.To<DataProps.MartialData>();
-                    var martialType = martialData.martialType;
-                    if (martialType == MartialType.Ability)
+                    if (wunit.data.unitData.abilitys.Contains(martialData.data.soleID))
                     {
-                        AddExpertExp(wunit, martialData.data.soleID, Configs.AutoAbilityExpRate);
-                    }
-                    else if (!wunit.IsPlayer())
-                    {
-                        AddExpertExp(wunit, martialData.data.soleID, Configs.AutoSkillExpRate);
+                        var martialType = martialData.martialType;
+                        if (martialType == MartialType.Ability)
+                        {
+                            AddExpertExp(wunit, martialData.data.soleID, Configs.AutoAbilityExpRate);
+                        }
+                        else if (!wunit.IsPlayer())
+                        {
+                            AddExpertExp(wunit, martialData.data.soleID, Configs.AutoSkillExpRate);
+                        }
                     }
                 }
 
@@ -61,13 +64,13 @@ namespace MOD_nE7UL2.Mod
                     }
                 }
 
-                var soleId = e?.hitData?.skillCreateData?.skillCreateSoleID;
-                if (soleId != null)
+                var skillData = e?.hitData?.skillBase?.TryCast<SkillAttack>();
+                if (skillData != null)
                 {
+                    var soleId = skillData.skillData.data.soleID;
                     AddExpertExp(wunit, soleId, Configs.BattleSkillExpRate);
                 }
             }
-            DebugHelper.Save();
         }
 
         public static IDictionary<string, int> GetExpertExps()
@@ -117,8 +120,8 @@ namespace MOD_nE7UL2.Mod
         {
             if (expertLvl <= 0)
                 return 0;
-            var r = 0.200f * propsGrade + 0.040f * propsLevel;
-            var v = 100 * propsGrade + 20 * propsLevel;
+            var r = 0.010f * propsGrade + 0.002f * propsLevel;
+            var v = 30 * propsGrade + 4 * propsLevel;
             return (inputValue * expertLvl * r).Parse<int>() + v;
         }
 
@@ -126,8 +129,8 @@ namespace MOD_nE7UL2.Mod
         {
             if (expertLvl <= 0)
                 return 0;
-            var r = 0.010f * propsGrade + 0.002f * propsLevel;
-            var v = 10 * propsGrade + 2 * propsLevel;
+            var r = 0.006f * propsGrade + 0.001f * propsLevel;
+            var v = 8 * propsGrade + 1 * propsLevel;
             return (inputValue * expertLvl * r).Parse<int>() + v;
         }
 
@@ -183,6 +186,14 @@ namespace MOD_nE7UL2.Mod
             var r = 0.003f * propsGrade + 0.0005f * propsLevel;
             var v = 4 * propsGrade + 1 * propsLevel;
             return (inputValue * expertLvl * r).Parse<int>() + v;
+        }
+
+        public static int GetStepExpertSpeed(int expertLvl, int propsGrade, int propsLevel)
+        {
+            if (expertLvl <= 0)
+                return 0;
+            var v = 10 * propsGrade + 1 * propsLevel;
+            return v;
         }
     }
 }
