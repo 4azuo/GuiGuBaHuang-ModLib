@@ -2,12 +2,8 @@
 
 - mod Halo
 
-- skill expert
-- mp-cost scale by expert lvl
+- rebirth
 
 - new game+
 
-- add features +hp/mp/focus
-- learn ability +hp/mp/focus
-
-- pause potmon unit
+- pause turtle unit

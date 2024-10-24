@@ -1,13 +1,10 @@
 ﻿using MOD_nE7UL2.Const;
 using ModLib.Mod;
 using UnityEngine;
-using System.Linq;
 using ModLib.Enum;
 using System;
 using System.Collections.Generic;
 using Newtonsoft.Json;
-using System.Drawing;
-using static FormulaTool;
 
 namespace MOD_nE7UL2.Mod
 {
@@ -85,8 +82,9 @@ namespace MOD_nE7UL2.Mod
                     var aconf = artifact.propsItem.IsArtifact();
                     var r = 0.01f + (0.001f * Math.Pow(2, a.level)) + (0.02f * a.grade);
                     var r1 = (4.00f + (0.006f * Math.Pow(3, a.level)) + (1.00f * a.grade)) / 100.0f;
+                    var expertLvl = ExpertEvent.GetExpertLvl(artifact.soleID, artifact.propsInfoBase.grade, artifact.propsInfoBase.level);
                     rs += (r * atk + r1 * aconf.atk).Parse<int>() +
-                        ExpertEvent.GetArtifactExpertAtk(aconf.atk, ExpertEvent.GetExpertLvl(artifact.soleID, artifact.propsInfoBase.grade, artifact.propsInfoBase.level), artifact.propsInfoBase.grade, artifact.propsInfoBase.level);
+                        ExpertEvent.GetArtifactExpertAtk(aconf.atk, expertLvl, artifact.propsInfoBase.grade, artifact.propsInfoBase.level);
                 }
             }
 
@@ -95,7 +93,8 @@ namespace MOD_nE7UL2.Mod
                 var martialData = abi.data.To<DataProps.MartialData>();
                 if (wunit.data.unitData.abilitys.Contains(martialData.data.soleID))
                 {
-                    rs += ExpertEvent.GetAbilityExpertAtk(atk, ExpertEvent.GetExpertLvl(martialData.data.soleID, martialData.data.propsInfoBase.grade, martialData.data.propsInfoBase.level), martialData.data.propsInfoBase.grade, martialData.data.propsInfoBase.level);
+                    var expertLvl = ExpertEvent.GetExpertLvl(martialData.data.soleID, martialData.data.propsInfoBase.grade, martialData.data.propsInfoBase.level);
+                    rs += ExpertEvent.GetAbilityExpertAtk(atk, expertLvl, martialData.data.propsInfoBase.grade, martialData.data.propsInfoBase.level);
                 }
             }
 
@@ -117,8 +116,9 @@ namespace MOD_nE7UL2.Mod
                     var aconf = artifact.propsItem.IsArtifact();
                     var r = 0.01f + (0.001f * Math.Pow(2, a.level)) + (0.02f * a.grade);
                     var r2 = (3.00f + (0.005f * Math.Pow(3, a.level)) + (0.80f * a.grade)) / 100.0f;
+                    var expertLvl = ExpertEvent.GetExpertLvl(artifact.soleID, artifact.propsInfoBase.grade, artifact.propsInfoBase.level);
                     rs += (r * def + r2 * aconf.def).Parse<int>() +
-                        ExpertEvent.GetArtifactExpertDef(aconf.def, ExpertEvent.GetExpertLvl(artifact.soleID, artifact.propsInfoBase.grade, artifact.propsInfoBase.level), artifact.propsInfoBase.grade, artifact.propsInfoBase.level);
+                        ExpertEvent.GetArtifactExpertDef(aconf.def, expertLvl, artifact.propsInfoBase.grade, artifact.propsInfoBase.level);
                 }
             }
 
@@ -127,7 +127,8 @@ namespace MOD_nE7UL2.Mod
                 var martialData = abi.data.To<DataProps.MartialData>();
                 if (wunit.data.unitData.abilitys.Contains(martialData.data.soleID))
                 {
-                    rs += ExpertEvent.GetAbilityExpertDef(def, ExpertEvent.GetExpertLvl(martialData.data.soleID, martialData.data.propsInfoBase.grade, martialData.data.propsInfoBase.level), martialData.data.propsInfoBase.grade, martialData.data.propsInfoBase.level);
+                    var expertLvl = ExpertEvent.GetExpertLvl(martialData.data.soleID, martialData.data.propsInfoBase.grade, martialData.data.propsInfoBase.level);
+                    rs += ExpertEvent.GetAbilityExpertDef(def, expertLvl, martialData.data.propsInfoBase.grade, martialData.data.propsInfoBase.level);
                 }
             }
 
@@ -158,7 +159,8 @@ namespace MOD_nE7UL2.Mod
                 var martialData = abi.data.To<DataProps.MartialData>();
                 if (wunit.data.unitData.abilitys.Contains(martialData.data.soleID))
                 {
-                    rs += ExpertEvent.GetAbilityExpertHp(hpMax, ExpertEvent.GetExpertLvl(martialData.data.soleID, martialData.data.propsInfoBase.grade, martialData.data.propsInfoBase.level), martialData.data.propsInfoBase.grade, martialData.data.propsInfoBase.level);
+                    var expertLvl = ExpertEvent.GetExpertLvl(martialData.data.soleID, martialData.data.propsInfoBase.grade, martialData.data.propsInfoBase.level);
+                    rs += ExpertEvent.GetAbilityExpertHp(hpMax, expertLvl, martialData.data.propsInfoBase.grade, martialData.data.propsInfoBase.level);
                 }
             }
 
@@ -178,7 +180,8 @@ namespace MOD_nE7UL2.Mod
                 var martialData = abi.data.To<DataProps.MartialData>();
                 if (wunit.data.unitData.abilitys.Contains(martialData.data.soleID))
                 {
-                    rs += ExpertEvent.GetAbilityExpertMp(mpMax, ExpertEvent.GetExpertLvl(martialData.data.soleID, martialData.data.propsInfoBase.grade, martialData.data.propsInfoBase.level), martialData.data.propsInfoBase.grade, martialData.data.propsInfoBase.level);
+                    var expertLvl = ExpertEvent.GetExpertLvl(martialData.data.soleID, martialData.data.propsInfoBase.grade, martialData.data.propsInfoBase.level);
+                    rs += ExpertEvent.GetAbilityExpertMp(mpMax, expertLvl, martialData.data.propsInfoBase.grade, martialData.data.propsInfoBase.level);
                 }
             }
 
@@ -198,7 +201,8 @@ namespace MOD_nE7UL2.Mod
                 var martialData = abi.data.To<DataProps.MartialData>();
                 if (wunit.data.unitData.abilitys.Contains(martialData.data.soleID))
                 {
-                    rs += ExpertEvent.GetAbilityExpertSp(spMax, ExpertEvent.GetExpertLvl(martialData.data.soleID, martialData.data.propsInfoBase.grade, martialData.data.propsInfoBase.level), martialData.data.propsInfoBase.grade, martialData.data.propsInfoBase.level);
+                    var expertLvl = ExpertEvent.GetExpertLvl(martialData.data.soleID, martialData.data.propsInfoBase.grade, martialData.data.propsInfoBase.level);
+                    rs += ExpertEvent.GetAbilityExpertSp(spMax, expertLvl, martialData.data.propsInfoBase.grade, martialData.data.propsInfoBase.level);
                 }
             }
 
@@ -214,11 +218,20 @@ namespace MOD_nE7UL2.Mod
                 var martialData = abi.data.To<DataProps.MartialData>();
                 if (wunit.data.unitData.abilitys.Contains(martialData.data.soleID))
                 {
-                    rs += ExpertEvent.GetStepExpertSpeed(ExpertEvent.GetExpertLvl(martialData.data.soleID, martialData.data.propsInfoBase.grade, martialData.data.propsInfoBase.level), martialData.data.propsInfoBase.grade, martialData.data.propsInfoBase.level);
+                    var expertLvl = ExpertEvent.GetExpertLvl(martialData.data.soleID, martialData.data.propsInfoBase.grade, martialData.data.propsInfoBase.level);
+                    rs += ExpertEvent.GetStepExpertSpeed(expertLvl, martialData.data.propsInfoBase.grade, martialData.data.propsInfoBase.level);
                 }
             }
 
             return rs;
+        }
+
+        public static int GetAdjustMpCost(UnitCtrlBase unit, SkillAttack s, DataProps.MartialData md)
+        {
+            var curMpCost = s.data.mpCost.baseValue;
+            var soleId = md.data.soleID;
+            var expertLvl = ExpertEvent.GetExpertLvl(md.data.soleID, md.data.propsInfoBase.grade, md.data.propsInfoBase.level);
+            return ExpertEvent.GetSkillExpertMpCost(curMpCost, expertLvl, md.data.propsInfoBase.grade, md.data.propsInfoBase.level);
         }
     }
 }
