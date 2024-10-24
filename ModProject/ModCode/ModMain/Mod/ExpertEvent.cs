@@ -26,14 +26,9 @@ namespace MOD_nE7UL2.Mod
                     if (wunit.data.unitData.abilitys.Contains(martialData.data.soleID))
                     {
                         var martialType = martialData.martialType;
-                        if (martialType == MartialType.Ability)
-                        {
-                            AddExpertExp(wunit, martialData.data.soleID, Configs.AutoAbilityExpRate);
-                        }
-                        else if (!wunit.IsPlayer())
-                        {
-                            AddExpertExp(wunit, martialData.data.soleID, Configs.AutoSkillExpRate);
-                        }
+                        if (martialType != MartialType.Ability && wunit.IsPlayer())
+                            continue;
+                        AddExpertExp(wunit, martialData.data.soleID, Configs.SkillExpRatios[martialType]);
                     }
                 }
 
@@ -64,12 +59,48 @@ namespace MOD_nE7UL2.Mod
                     }
                 }
 
-                var skillData = e?.hitData?.skillBase?.TryCast<SkillAttack>();
-                if (skillData != null)
+                var skill = e?.hitData?.skillBase?.TryCast<SkillAttack>();
+                if (skill != null && skill?.skillData?.martialType == MartialType.SkillLeft)
                 {
-                    var soleId = skillData.skillData.data.soleID;
-                    AddExpertExp(wunit, soleId, Configs.BattleSkillExpRate);
+                    var soleId = skill.skillData.data.soleID;
+                    AddExpertExp(wunit, soleId, Configs.SkillExpRatios[MartialType.SkillLeft]);
                 }
+            }
+        }
+
+        public override void OnBattleUnitUseSkill(UnitUseSkill e)
+        {
+            base.OnBattleUnitUseSkill(e);
+            var humanData = e.unit.data.TryCast<UnitDataHuman>();
+            if (humanData?.worldUnitData?.unit != null)
+            {
+                var wunit = humanData.worldUnitData.unit;
+                var skill = e?.skill?.TryCast<SkillAttack>();
+                if (skill != null && skill?.skillData?.martialType == MartialType.SkillRight)
+                {
+                    var soleId = skill.skillData.data.soleID;
+                    AddExpertExp(wunit, soleId, Configs.SkillExpRatios[MartialType.SkillRight]);
+                }
+            }
+        }
+
+        private int oldX;
+        private int oldY;
+        public override void OnTimeUpdate500ms()
+        {
+            base.OnTimeUpdate500ms();
+            var wunit = g.world.playerUnit;
+            var curX = wunit.data.unitData.pointX;
+            var curY = wunit.data.unitData.pointY;
+            if (oldX != curX || oldY != curY)
+            {
+                var step = wunit.GetMartialStep();
+                if (step != null)
+                {
+                    AddExpertExp(wunit, step.data.soleID, Configs.SkillExpRatios[MartialType.Step]);
+                }
+                oldX = curX;
+                oldY = curY;
             }
         }
 
@@ -134,13 +165,21 @@ namespace MOD_nE7UL2.Mod
             return (inputValue * expertLvl * r).Parse<int>() + v;
         }
 
-        public static int GetSkillExpertAtk(int inputValue, int expertLvl, int propsGrade, int propsLevel)
+        public static int GetSkillExpertAtk(int inputValue, int expertLvl, int propsGrade, int propsLevel, MartialType mType)
         {
             if (expertLvl <= 0)
                 return 0;
             var r = 0.006f * propsGrade + 0.002f * propsLevel;
             var v = 20 * propsGrade + 5 * propsLevel;
-            return (inputValue * expertLvl * r).Parse<int>() + v;
+            return ((inputValue * expertLvl * r + v) * Configs.SkillDmgRatios[mType]).Parse<int>();
+        }
+
+        public static int GetSkillExpertMpCost(int inputValue, int expertLvl, int propsGrade, int propsLevel)
+        {
+            if (expertLvl <= 0)
+                return 0;
+            var r = 0.10f * propsGrade + 0.01f * propsLevel;
+            return (inputValue * expertLvl * r).Parse<int>();
         }
 
         public static int GetAbilityExpertAtk(int inputValue, int expertLvl, int propsGrade, int propsLevel)
@@ -193,7 +232,15 @@ namespace MOD_nE7UL2.Mod
             if (expertLvl <= 0)
                 return 0;
             var v = 10 * propsGrade + 1 * propsLevel;
-            return v;
+            return expertLvl * v;
+        }
+
+        public static float GetStepExpertEvade(int expertLvl, int propsGrade, int propsLevel)
+        {
+            if (expertLvl <= 0)
+                return 0;
+            var v = 0.10f * propsGrade + 0.03f * propsLevel;
+            return expertLvl * v;
         }
     }
 }

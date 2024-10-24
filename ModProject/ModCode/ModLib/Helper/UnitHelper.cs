@@ -36,6 +36,13 @@ public static class UnitHelper
         return wunit.data.unitData.allActionMartial;
     }
 
+    public static DataProps.MartialData GetMartialStep(this WorldUnitBase wunit)
+    {
+        var actMStep = wunit.data.unitData.GetActionMartial(wunit.data.unitData.step);
+        var martialData = actMStep?.data?.To<DataProps.MartialData>();
+        return martialData;
+    }
+
     public static string GetUnitId(this WorldUnitBase wunit)
     {
         return wunit?.data?.unitData?.unitID;
@@ -267,7 +274,7 @@ public static class UnitHelper
     {
         wunit.AddUnitProp(ModLibConst.MONEY_PROP_ID, addCount);
         if (wunit.GetUnitMoney() <= 0)
-            g.world.playerUnit.data.RewardPropMoney(int.MinValue);
+            wunit.data.RewardPropMoney(int.MinValue);
     }
 
     public static void SetUnitMoney(this WorldUnitBase wunit, int setCount)

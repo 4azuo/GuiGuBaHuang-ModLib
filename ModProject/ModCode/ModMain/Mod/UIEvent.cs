@@ -109,10 +109,11 @@ namespace MOD_nE7UL2.Mod
                     var soleId = uiMartialInfo.martialData.martialInfo.propsData.soleID;
                     var propsGrade = uiMartialInfo.martialData.martialInfo.grade;
                     var propsLevel = uiMartialInfo.martialData.martialInfo.level;
+                    var mType = uiMartialInfo.martialData.martialType;
                     var expertLvl = ExpertEvent.GetExpertLvl(soleId, propsGrade, propsLevel);
                     var expertExp = ExpertEvent.GetExpertExp(soleId);
                     var expertNeedExp = ExpertEvent.GetExpertNeedExp(expertLvl + 1, propsGrade, propsLevel);
-                    
+
                     uiMartialExpertInfo = g.ui.OpenUI<UINPCInfoPreview>(UIType.NPCInfoPreview);
 
                     var texts = uiMartialExpertInfo.GetComponentsInChildren<Text>();
@@ -127,7 +128,7 @@ namespace MOD_nE7UL2.Mod
                     uiMartialExpertInfo_textExpertLvl.fontStyle = FontStyle.Bold;
                     uiMartialExpertInfo_textExpertLvl.text = $"Expert Level: {expertLvl} ({expertExp}/{expertNeedExp})";
 
-                    if (uiMartialInfo.martialData.martialType == MartialType.Ability)
+                    if (mType == MartialType.Ability)
                     {
                         uiMartialExpertInfo_textAdj1.text = $"+Atk: {ExpertEvent.GetAbilityExpertAtk(player.GetDynProperty(UnitDynPropertyEnum.Attack).baseValue, expertLvl, propsGrade, propsLevel)}";
                         uiMartialExpertInfo_textAdj2.text = $"+Def: {ExpertEvent.GetAbilityExpertDef(player.GetDynProperty(UnitDynPropertyEnum.Defense).baseValue, expertLvl, propsGrade, propsLevel)}";
@@ -135,18 +136,18 @@ namespace MOD_nE7UL2.Mod
                         uiMartialExpertInfo_textAdj4.text = $"+Mp: {ExpertEvent.GetAbilityExpertMp(player.GetDynProperty(UnitDynPropertyEnum.MpMax).baseValue, expertLvl, propsGrade, propsLevel)}";
                         uiMartialExpertInfo_textAdj5.text = $"+Sp: {ExpertEvent.GetAbilityExpertSp(player.GetDynProperty(UnitDynPropertyEnum.SpMax).baseValue, expertLvl, propsGrade, propsLevel)}";
                     }
-                    else if (uiMartialInfo.martialData.martialType == MartialType.Step)
+                    else if (mType == MartialType.Step)
                     {
-                        uiMartialExpertInfo_textAdj1.text = $"+Speed: {ExpertEvent.GetStepExpertSpeed(expertLvl, propsGrade, propsLevel)}";
-                        uiMartialExpertInfo_textAdj2.gameObject.SetActive(false);
+                        uiMartialExpertInfo_textAdj1.text = $"+Speed: {ExpertEvent.GetStepExpertSpeed(expertLvl, propsGrade, propsLevel)} (In Battle)";
+                        uiMartialExpertInfo_textAdj2.text = $"+Evade: {ExpertEvent.GetStepExpertEvade(expertLvl, propsGrade, propsLevel)}% (In Battle)";
                         uiMartialExpertInfo_textAdj3.gameObject.SetActive(false);
                         uiMartialExpertInfo_textAdj4.gameObject.SetActive(false);
                         uiMartialExpertInfo_textAdj5.gameObject.SetActive(false);
                     }
                     else
                     {
-                        uiMartialExpertInfo_textAdj1.text = $"+Dmg: {ExpertEvent.GetSkillExpertAtk(player.GetDynProperty(UnitDynPropertyEnum.Attack).baseValue, expertLvl, propsGrade, propsLevel)} (In Battle)";
-                        uiMartialExpertInfo_textAdj2.gameObject.SetActive(false);
+                        uiMartialExpertInfo_textAdj1.text = $"+Dmg: {ExpertEvent.GetSkillExpertAtk(player.GetDynProperty(UnitDynPropertyEnum.Attack).baseValue, expertLvl, propsGrade, propsLevel, mType)} (In Battle)";
+                        uiMartialExpertInfo_textAdj2.text = $"+MpCost: {ExpertEvent.GetSkillExpertMpCost(SkillHelper.GetSkillMpCost(uiMartialInfo.martialData), expertLvl, propsGrade, propsLevel)} (In Battle)";
                         uiMartialExpertInfo_textAdj3.gameObject.SetActive(false);
                         uiMartialExpertInfo_textAdj4.gameObject.SetActive(false);
                         uiMartialExpertInfo_textAdj5.gameObject.SetActive(false);

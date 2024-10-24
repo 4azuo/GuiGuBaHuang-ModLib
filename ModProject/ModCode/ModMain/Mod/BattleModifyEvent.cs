@@ -1,9 +1,11 @@
 ﻿using EBattleTypeData;
+using Il2CppSystem.Xml.Serialization;
 using MOD_nE7UL2.Const;
 using ModLib.Enum;
 using ModLib.Mod;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 namespace MOD_nE7UL2.Mod
@@ -66,14 +68,18 @@ namespace MOD_nE7UL2.Mod
             base.OnBattleUnitHitDynIntHandler(e);
 
             var attackUnitData = ModBattleEvent.AttackingUnit.data.TryCast<UnitDataHuman>();
+            var hitUnitData = ModBattleEvent.HitUnit.data.TryCast<UnitDataHuman>();
+
             var atkGradeLvl = attackUnitData?.worldUnitData?.unit?.GetGradeLvl() ?? 1;
             var dType = ModBattleEvent.GetDmgBasisType(e.hitData);
             var pEnum = ModBattleEvent.GetDmgPropertyEnum(dType);
             var atk = ModBattleEvent.AttackingUnit.data.attack.baseValue;
 
+            attackUnitData?.AddMP(-GetAdjMpCost(e));
+
             //evasion
             var evaRate = Math.Sqrt(ModBattleEvent.GetUnitPropertyValue(ModBattleEvent.HitUnit, UnitDynPropertyEnum.BasisWind) / 18);
-            if (ValueHelper.IsBetween(CommonTool.Random(0.00f, 100.00f), 0.00f, Math.Min(12.00f, evaRate)))
+            if (ValueHelper.IsBetween(CommonTool.Random(0.00f, 100.00f), 0.00f, Math.Min(12.00f, evaRate) + GetStepEvade(hitUnitData)))
             {
                 e.hitData.isEvade = true;
                 e.dynV.baseValue = 0;
@@ -81,14 +87,7 @@ namespace MOD_nE7UL2.Mod
             }
 
             //add dmg (skill)
-            var skillData = e?.hitData?.skillBase?.TryCast<SkillAttack>();
-            if (skillData != null)
-            {
-                var soleId = skillData.skillData.data.soleID;
-                var grade = skillData.skillData.data.propsInfoBase.grade;
-                var level = skillData.skillData.data.propsInfoBase.level;
-                e.dynV.baseValue += ExpertEvent.GetSkillExpertAtk(e.dynV.baseValue, ExpertEvent.GetExpertLvl(soleId, grade, level), grade, level);
-            }
+            e.dynV.baseValue += GetAdjSkillDmg(e);
 
             //add dmg (basis)
             if (pEnum != null)
@@ -151,7 +150,6 @@ namespace MOD_nE7UL2.Mod
                 }
             }
 
-            var hitUnitData = ModBattleEvent.HitUnit.data.TryCast<UnitDataHuman>();
             var defGradeLvl = hitUnitData?.worldUnitData?.unit?.GetGradeLvl() ?? 1;
             var def = ModBattleEvent.HitUnit.data.defense.baseValue;
             var minDmg = ModBattleEvent.AttackingUnit.data.grade.value;
@@ -208,6 +206,50 @@ namespace MOD_nE7UL2.Mod
             //stronger every hit
             //if (e.dynV.baseValue < ModBattleEvent.HitUnit.data.maxHP.value / 50)
             //    ModBattleEvent.AttackingUnit.data.attack.baseValue += (ModBattleEvent.AttackingUnit.data.attack.baseValue * (attackUnitData?.worldUnitData?.unit != null ? 0.0004f : 0.01f)).Parse<int>();
+        }
+
+        private int GetAdjSkillDmg(UnitHitDynIntHandler e)
+        {
+            var skill = e?.hitData?.skillBase?.TryCast<SkillAttack>();
+            if (skill != null)
+            {
+                DebugHelper
+                var soleId = skill.skillData.data.soleID;
+                var grade = skill.skillData.data.propsInfoBase.grade;
+                var level = skill.skillData.data.propsInfoBase.level;
+                var mType = skill.skillData.martialType;
+                return ExpertEvent.GetSkillExpertAtk(e.dynV.baseValue, ExpertEvent.GetExpertLvl(soleId, grade, level), grade, level, mType);
+            }
+            return 0;
+        }
+
+        private int GetAdjMpCost(UnitHitDynIntHandler e)
+        {
+            var skill = e?.hitData?.skillBase?.TryCast<SkillAttack>();
+            if (skill != null)
+            {
+                DebugHelper
+                var soleId = skill.skillData.data.soleID;
+                var grade = skill.skillData.data.propsInfoBase.grade;
+                var level = skill.skillData.data.propsInfoBase.level;
+                return ExpertEvent.GetSkillExpertMpCost(SkillHelper.GetSkillMpCost(skill.skillData.martialInfo.martialData), ExpertEvent.GetExpertLvl(soleId, grade, level), grade, level);
+            }
+            return 0;
+        }
+
+        private float GetStepEvade(UnitDataHuman humanData)
+        {
+            if (humanData == null)
+                return 0;
+            var stepData = humanData?.worldUnitData?.unit?.GetMartialStep();
+            if (stepData != null)
+            {
+                var stepId = stepData.data.soleID;
+                var stepGrade = stepData.data.propsInfoBase.grade;
+                var stepLevel = stepData.data.propsInfoBase.level;
+                return ExpertEvent.GetStepExpertEvade(ExpertEvent.GetExpertLvl(stepId, stepGrade, stepLevel), stepGrade, stepLevel);
+            }
+            return 0;
         }
 
         [EventCondition(IsInBattle = true)]
