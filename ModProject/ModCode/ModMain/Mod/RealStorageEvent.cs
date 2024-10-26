@@ -53,8 +53,7 @@ namespace MOD_nE7UL2.Mod
                     txtFee.fontSize = 15;
                     txtFee.color = Color.blue;
 
-                    var money = g.world.playerUnit.GetUnitMoney();
-                    if (money < Debt)
+                    if (Debt > 0)
                     {
                         txtWarning1 = MonoBehaviour.Instantiate(uiTownStorageProps.textTip, uiTownStorageProps.transform, false);
                         txtWarning1.transform.position = new Vector3(uiTownStorageProps.textTitle1.transform.position.x, uiTownStorageProps.textTitle1.transform.position.y - 1.2f);
