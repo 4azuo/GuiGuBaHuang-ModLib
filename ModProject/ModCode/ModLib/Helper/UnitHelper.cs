@@ -31,16 +31,59 @@ public static class UnitHelper
         return wunit.data.unitData.propData.GetEquipProps().ToArray();
     }
 
-    public static Il2CppSystem.Collections.Generic.Dictionary<string, DataUnit.ActionMartialData> GetActionMartial(this WorldUnitBase wunit)
+    public static Il2CppSystem.Collections.Generic.Dictionary<string, DataUnit.ActionMartialData> GetActionMartials(this WorldUnitBase wunit)
     {
         return wunit.data.unitData.allActionMartial;
     }
 
-    public static DataProps.MartialData GetMartialStep(this WorldUnitBase wunit)
+    public static DataProps.MartialData GetMartialAttack(this WorldUnitBase wunit)
     {
         var actMStep = wunit.data.unitData.GetActionMartial(wunit.data.unitData.step);
         var martialData = actMStep?.data?.To<DataProps.MartialData>();
         return martialData;
+    }
+
+    public static DataProps.MartialData GetMartialStep(this WorldUnitBase wunit)
+    {
+        var actMStep = wunit.data.unitData.GetActionMartial(wunit.data.unitData.skillLeft);
+        var martialData = actMStep?.data?.To<DataProps.MartialData>();
+        return martialData;
+    }
+
+    public static DataProps.MartialData GetMartialSpecial(this WorldUnitBase wunit)
+    {
+        var actMStep = wunit.data.unitData.GetActionMartial(wunit.data.unitData.skillRight);
+        var martialData = actMStep?.data?.To<DataProps.MartialData>();
+        return martialData;
+    }
+
+    public static DataProps.MartialData GetMartialUltimate(this WorldUnitBase wunit)
+    {
+        var actMStep = wunit.data.unitData.GetActionMartial(wunit.data.unitData.ultimate);
+        var martialData = actMStep?.data?.To<DataProps.MartialData>();
+        return martialData;
+    }
+
+    public static DataProps.MartialData GetMartial(this WorldUnitBase wunit, string soleId)
+    {
+        var actMStep = wunit.data.unitData.GetActionMartial(soleId);
+        var martialData = actMStep?.data?.To<DataProps.MartialData>();
+        return martialData;
+    }
+
+    public static MartialType? GetMartialType(this WorldUnitBase wunit, string soleId)
+    {
+        if (soleId == wunit.data.unitData.skillLeft)
+            return MartialType.SkillLeft;
+        if (soleId == wunit.data.unitData.skillRight)
+            return MartialType.SkillRight;
+        if (soleId == wunit.data.unitData.step)
+            return MartialType.Step;
+        if (soleId == wunit.data.unitData.ultimate)
+            return MartialType.Ultimate;
+        if (wunit.data.unitData.abilitys.Contains(soleId))
+            return MartialType.Ability;
+        return null;
     }
 
     public static string GetUnitId(this WorldUnitBase wunit)

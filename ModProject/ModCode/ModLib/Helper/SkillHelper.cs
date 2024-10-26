@@ -1,6 +1,4 @@
-﻿using MOD_nE7UL2.Mod;
-
-public static class SkillHelper
+﻿public static class SkillHelper
 {
     public static int GetSkillMpCost(DataProps.MartialData md)
     {

@@ -20,7 +20,7 @@ namespace MOD_nE7UL2.Mod
             base.OnMonthly();
             foreach (var wunit in g.world.unit.GetUnits())
             {
-                foreach (var martial in wunit.GetActionMartial())
+                foreach (var martial in wunit.GetActionMartials())
                 {
                     var martialData = martial.Value.data.To<DataProps.MartialData>();
                     if (wunit.data.unitData.abilitys.Contains(martialData.data.soleID))
@@ -76,10 +76,10 @@ namespace MOD_nE7UL2.Mod
             {
                 var wunit = humanData.worldUnitData.unit;
                 var skill = e?.skill?.TryCast<SkillAttack>();
-                if (skill != null && skill?.skillData?.martialType == MartialType.SkillRight)
+                if (skill != null && (skill?.skillData?.martialType == MartialType.SkillRight || skill?.skillData?.martialType == MartialType.Ultimate))
                 {
                     var soleId = skill.skillData.data.soleID;
-                    AddExpertExp(wunit, soleId, Configs.SkillExpRatios[MartialType.SkillRight]);
+                    AddExpertExp(wunit, soleId, Configs.SkillExpRatios[skill.skillData.martialType]);
                 }
             }
         }
