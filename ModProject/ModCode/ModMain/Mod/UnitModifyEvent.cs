@@ -37,34 +37,35 @@ namespace MOD_nE7UL2.Mod
         private void AddWUnitModifier(WorldUnitBase wunit)
         {
             var unitId = wunit.GetUnitId();
-            if (_units.Contains(unitId))
-                return;
-            _units.Add(unitId);
+            if (!_units.Contains(unitId))
+            {
+                _units.Add(unitId);
 
-            wunit.GetDynProperty(UnitDynPropertyEnum.Attack).AddValue((DynInt.DynObjectAddHandler)(() =>
-            {
-                return GetAdjustAtk(wunit);
-            }));
-            wunit.GetDynProperty(UnitDynPropertyEnum.Defense).AddValue((DynInt.DynObjectAddHandler)(() =>
-            {
-                return GetAdjustDef(wunit);
-            }));
-            wunit.GetDynProperty(UnitDynPropertyEnum.HpMax).AddValue((DynInt.DynObjectAddHandler)(() =>
-            {
-                return GetAdjustMaxHp(wunit);
-            }));
-            wunit.GetDynProperty(UnitDynPropertyEnum.MpMax).AddValue((DynInt.DynObjectAddHandler)(() =>
-            {
-                return GetAdjustMaxMp(wunit);
-            }));
-            wunit.GetDynProperty(UnitDynPropertyEnum.SpMax).AddValue((DynInt.DynObjectAddHandler)(() =>
-            {
-                return GetAdjustMaxSp(wunit);
-            }));
-            wunit.GetDynProperty(UnitDynPropertyEnum.MoveSpeed).AddValue((DynInt.DynObjectAddHandler)(() =>
-            {
-                return GetAdjustSpeed(wunit);
-            }));
+                wunit.GetDynProperty(UnitDynPropertyEnum.Attack).AddValue((DynInt.DynObjectAddHandler)(() =>
+                {
+                    return GetAdjustAtk(wunit);
+                }));
+                wunit.GetDynProperty(UnitDynPropertyEnum.Defense).AddValue((DynInt.DynObjectAddHandler)(() =>
+                {
+                    return GetAdjustDef(wunit);
+                }));
+                wunit.GetDynProperty(UnitDynPropertyEnum.HpMax).AddValue((DynInt.DynObjectAddHandler)(() =>
+                {
+                    return GetAdjustMaxHp(wunit);
+                }));
+                wunit.GetDynProperty(UnitDynPropertyEnum.MpMax).AddValue((DynInt.DynObjectAddHandler)(() =>
+                {
+                    return GetAdjustMaxMp(wunit);
+                }));
+                wunit.GetDynProperty(UnitDynPropertyEnum.SpMax).AddValue((DynInt.DynObjectAddHandler)(() =>
+                {
+                    return GetAdjustMaxSp(wunit);
+                }));
+                wunit.GetDynProperty(UnitDynPropertyEnum.MoveSpeed).AddValue((DynInt.DynObjectAddHandler)(() =>
+                {
+                    return GetAdjustSpeed(wunit);
+                }));
+            }
         }
 
         public static int GetAdjustAtk(WorldUnitBase wunit)

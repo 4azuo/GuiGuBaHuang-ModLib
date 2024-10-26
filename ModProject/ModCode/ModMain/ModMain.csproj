@@ -44,7 +44,6 @@
     <Compile Include="Enum\ApprenticeLuckEnum.cs" />
     <Compile Include="Enum\UnitTypeLuckEnum.cs" />
     <Compile Include="Enum\UnitTypeEnum.cs" />
-    <Compile Include="Helper\SkillHelper.cs" />
     <Compile Include="Helper\PriceHelper.cs" />
     <Compile Include="ModMain.cs" />
     <Compile Include="Mod\ExpertEvent.cs" />
