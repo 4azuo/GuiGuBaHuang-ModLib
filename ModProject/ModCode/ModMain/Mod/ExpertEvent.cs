@@ -86,9 +86,9 @@ namespace MOD_nE7UL2.Mod
 
         private int oldX;
         private int oldY;
-        public override void OnTimeUpdate500ms()
+        public override void OnTimeUpdate200ms()
         {
-            base.OnTimeUpdate500ms();
+            base.OnTimeUpdate200ms();
             var wunit = g.world.playerUnit;
             var curX = wunit.data.unitData.pointX;
             var curY = wunit.data.unitData.pointY;
@@ -145,102 +145,6 @@ namespace MOD_nE7UL2.Mod
                 if (exp < GetExpertNeedExp(i, propsGrade, propsLevel))
                     return i - 1;
             }
-        }
-
-        public static int GetArtifactExpertAtk(int inputValue, int expertLvl, int propsGrade, int propsLevel)
-        {
-            if (expertLvl <= 0)
-                return 0;
-            var r = 0.010f * propsGrade + 0.002f * propsLevel;
-            var v = 30 * propsGrade + 4 * propsLevel;
-            return (inputValue * expertLvl * r).Parse<int>() + v;
-        }
-
-        public static int GetArtifactExpertDef(int inputValue, int expertLvl, int propsGrade, int propsLevel)
-        {
-            if (expertLvl <= 0)
-                return 0;
-            var r = 0.006f * propsGrade + 0.001f * propsLevel;
-            var v = 8 * propsGrade + 1 * propsLevel;
-            return (inputValue * expertLvl * r).Parse<int>() + v;
-        }
-
-        public static int GetSkillExpertAtk(int inputValue, int expertLvl, int propsGrade, int propsLevel, MartialType mType)
-        {
-            if (expertLvl <= 0)
-                return 0;
-            var r = 0.006f * propsGrade + 0.002f * propsLevel;
-            var v = 20 * propsGrade + 5 * propsLevel;
-            return ((inputValue * expertLvl * r + v) * Configs.SkillDmgRatios[mType]).Parse<int>();
-        }
-
-        public static int GetSkillExpertMpCost(int inputValue, int expertLvl, int propsGrade, int propsLevel)
-        {
-            if (expertLvl <= 0)
-                return 0;
-            var r = 0.10f * propsGrade + 0.01f * propsLevel;
-            return (inputValue * expertLvl * r).Parse<int>();
-        }
-
-        public static int GetAbilityExpertAtk(int inputValue, int expertLvl, int propsGrade, int propsLevel)
-        {
-            if (expertLvl <= 0)
-                return 0;
-            var r = 0.005f * propsGrade + 0.001f * propsLevel;
-            var v = 5 * propsGrade + 2 * propsLevel;
-            return (inputValue * expertLvl * r).Parse<int>() + v;
-        }
-
-        public static int GetAbilityExpertDef(int inputValue, int expertLvl, int propsGrade, int propsLevel)
-        {
-            if (expertLvl <= 0)
-                return 0;
-            var r = 0.003f * propsGrade + 0.0006f * propsLevel;
-            var v = 4 * propsGrade + 1 * propsLevel;
-            return (inputValue * expertLvl * r).Parse<int>() + v;
-        }
-
-        public static int GetAbilityExpertHp(int inputValue, int expertLvl, int propsGrade, int propsLevel)
-        {
-            if (expertLvl <= 0)
-                return 0;
-            var r = 0.010f * propsGrade + 0.002f * propsLevel;
-            var v = 100 * propsGrade + 20 * propsLevel;
-            return (inputValue * expertLvl * r).Parse<int>() + v;
-        }
-
-        public static int GetAbilityExpertMp(int inputValue, int expertLvl, int propsGrade, int propsLevel)
-        {
-            if (expertLvl <= 0)
-                return 0;
-            var r = 0.010f * propsGrade + 0.002f * propsLevel;
-            var v = 4 * propsGrade + 1 * propsLevel;
-            return (inputValue * expertLvl * r).Parse<int>() + v;
-        }
-
-        public static int GetAbilityExpertSp(int inputValue, int expertLvl, int propsGrade, int propsLevel)
-        {
-            if (expertLvl <= 0)
-                return 0;
-            var r = 0.003f * propsGrade + 0.0005f * propsLevel;
-            var v = 4 * propsGrade + 1 * propsLevel;
-            return (inputValue * expertLvl * r).Parse<int>() + v;
-        }
-
-        public static int GetStepExpertSpeed(int expertLvl, int propsGrade, int propsLevel)
-        {
-            if (expertLvl <= 0)
-                return 0;
-            var v = 10 * propsGrade + 1 * propsLevel;
-            return expertLvl * v;
-        }
-
-        public static float GetStepExpertEvade(int expertLvl, int propsGrade, int propsLevel)
-        {
-            if (expertLvl <= 0)
-                return 0;
-            var v = 0.10f * propsGrade + 0.03f * propsLevel;
-            return expertLvl * v;
         }
     }
 }

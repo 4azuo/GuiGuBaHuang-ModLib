@@ -231,7 +231,7 @@ namespace MOD_nE7UL2.Mod
                 var grade = skill.skillData.data.propsInfoBase.grade;
                 var level = skill.skillData.data.propsInfoBase.level;
                 var mType = skill.skillData.martialType;
-                return ExpertEvent.GetSkillExpertAtk(humanData.worldUnitData.unit.GetDynProperty(UnitDynPropertyEnum.Attack).baseValue, ExpertEvent.GetExpertLvl(soleId, grade, level), grade, level, mType);
+                return UnitModifyHelper.GetSkillExpertAtk(humanData.worldUnitData.unit.GetDynProperty(UnitDynPropertyEnum.Attack).baseValue, ExpertEvent.GetExpertLvl(soleId, grade, level), grade, level, mType);
             }
             return 0;
         }
@@ -246,7 +246,7 @@ namespace MOD_nE7UL2.Mod
                 var soleId = skill.skillData.data.soleID;
                 var grade = skill.skillData.data.propsInfoBase.grade;
                 var level = skill.skillData.data.propsInfoBase.level;
-                return ExpertEvent.GetSkillExpertMpCost(SkillHelper.GetSkillMpCost(skill.skillData.martialInfo.martialData), ExpertEvent.GetExpertLvl(soleId, grade, level), grade, level);
+                return UnitModifyHelper.GetSkillExpertMpCost(SkillHelper.GetSkillMpCost(skill.skillData.martialInfo.martialData), ExpertEvent.GetExpertLvl(soleId, grade, level), grade, level);
             }
             return 0;
         }
@@ -261,7 +261,7 @@ namespace MOD_nE7UL2.Mod
                 var stepId = stepData.data.soleID;
                 var stepGrade = stepData.data.propsInfoBase.grade;
                 var stepLevel = stepData.data.propsInfoBase.level;
-                return ExpertEvent.GetStepExpertEvade(ExpertEvent.GetExpertLvl(stepId, stepGrade, stepLevel), stepGrade, stepLevel);
+                return UnitModifyHelper.GetStepExpertEvade(ExpertEvent.GetExpertLvl(stepId, stepGrade, stepLevel), stepGrade, stepLevel);
             }
             return 0;
         }
