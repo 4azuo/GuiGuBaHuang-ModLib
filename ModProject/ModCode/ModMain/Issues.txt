@@ -5,5 +5,3 @@
 - rebirth
 
 - new game+
-
-- pause turtle unit

@@ -29,5 +29,6 @@
         public const string UI_EVENT = "UIEvent";
         public const string UNIT_MODIFY_EVENT = "UnitModifyEvent";
         public const string EXPERT_EVENT = "ExpertEvent";
+        public const string SPIRITLOCK_EVENT = "SpiritlockEvent";
     }
 }

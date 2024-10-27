@@ -23,11 +23,15 @@ namespace MOD_nE7UL2.Mod
                 foreach (var martial in wunit.GetActionMartials())
                 {
                     var martialData = martial.Value.data.To<DataProps.MartialData>();
-                    if (wunit.data.unitData.abilitys.Contains(martialData.data.soleID))
+                    var martialType = martialData.martialType;
+                    if (wunit.IsPlayer())
                     {
-                        var martialType = martialData.martialType;
-                        if (martialType != MartialType.Ability && wunit.IsPlayer())
+                        if (martialType != MartialType.Ability || !wunit.data.unitData.abilitys.Contains(martialData.data.soleID))
                             continue;
+                        AddExpertExp(wunit, martialData.data.soleID, Configs.SkillExpRatios[martialType]);
+                    }
+                    else
+                    {
                         AddExpertExp(wunit, martialData.data.soleID, Configs.SkillExpRatios[martialType]);
                     }
                 }
