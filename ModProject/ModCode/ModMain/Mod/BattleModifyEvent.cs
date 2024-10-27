@@ -188,6 +188,7 @@ namespace MOD_nE7UL2.Mod
             {
                 var r = (hitUnitData.sp.Parse<float>() / hitUnitData.maxSP.value.Parse<float>()) * blockratio;
                 e.dynV.baseValue -= (def * r).Parse<int>();
+                hitUnitData.AddSP(-1);
             }
 
             //block dmg (dp)
