@@ -16,18 +16,9 @@ namespace MOD_nE7UL2.Mod
     {
         public static _HideButtonConfigs Configs => ModMain.ModObj.InGameCustomSettings.HideButtonConfigs;
 
-        //public static bool IsForeHideConfigOK(string conf)
-        //{
-        //    if (string.IsNullOrEmpty(conf))
-        //        return false;
-        //    conf = conf.Replace("${gradelevel}", g.world.playerUnit.GetGradeLvl().ToString())
-        //        .Replace("${gamelevel}", g.data.dataWorld.data.gameLevel.Parse<int>().ToString());
-        //    return Microsoft.CodeAnalysis.CSharp.Scripting.CSharpScript.EvaluateAsync<bool>(conf).Result;
-        //}
-
-        private static bool uiPlayerInfoSkill_mod = false;
-        private static Text uiPlayerInfoSkill_textAbiPointAdjHp;
-        private static Text uiPlayerInfoSkill_textAbiPointAdjMp;
+        private static bool uiInfoSkill_mod = false;
+        private static Text uiInfoSkill_textAbiPointAdjHp;
+        private static Text uiInfoSkill_textAbiPointAdjMp;
         private static bool uiArtifactInfo_mod = false;
         private static Text uiArtifactInfo_textBasicTitle;
         private static Text uiArtifactInfo_textBasicAdj1;
@@ -44,6 +35,7 @@ namespace MOD_nE7UL2.Mod
         private static Text uiMartialExpertInfo_textAdj3;
         private static Text uiMartialExpertInfo_textAdj4;
         private static Text uiMartialExpertInfo_textAdj5;
+
         public static void OnUIOpen(OpenUIEnd e)
         {
             var player = g.world.playerUnit;
@@ -63,27 +55,51 @@ namespace MOD_nE7UL2.Mod
                 uiBattleInfo.uiMap.goGroupRoot.SetActive(false);
             }
 
-            var uIPlayerInfo = MonoBehaviour.FindObjectOfType<UIPlayerInfo>();
-            if (uIPlayerInfo != null)
+            var uiNPCInfo = MonoBehaviour.FindObjectOfType<UINPCInfo>();
+            if (uiNPCInfo != null)
             {
-                var uiSkill = uIPlayerInfo.uiSkill;
-                if (!uiPlayerInfoSkill_mod)
+                var uiSkill = uiNPCInfo.uiSkill;
+                if (!uiInfoSkill_mod)
                 {
-                    uiPlayerInfoSkill_textAbiPointAdjHp = MonoBehaviour.Instantiate(uiSkill.textPoint1, uIPlayerInfo.transform, false);
-                    uiPlayerInfoSkill_textAbiPointAdjHp.transform.position = new Vector3(uiSkill.textPoint1.transform.position.x, uiSkill.textPoint1.transform.position.y - 0.2f);
-                    uiPlayerInfoSkill_textAbiPointAdjHp.verticalOverflow = VerticalWrapMode.Overflow;
-                    uiPlayerInfoSkill_textAbiPointAdjHp.horizontalOverflow = HorizontalWrapMode.Overflow;
-                    uiPlayerInfoSkill_textAbiPointAdjHp.fontSize = 15;
-                    uiPlayerInfoSkill_textAbiPointAdjHp.color = Color.white;
+                    uiInfoSkill_textAbiPointAdjHp = MonoBehaviour.Instantiate(uiSkill.textPoint1, uiNPCInfo.transform, false);
+                    uiInfoSkill_textAbiPointAdjHp.transform.position = new Vector3(uiSkill.textPoint1.transform.position.x, uiSkill.textPoint1.transform.position.y - 0.2f);
+                    uiInfoSkill_textAbiPointAdjHp.verticalOverflow = VerticalWrapMode.Overflow;
+                    uiInfoSkill_textAbiPointAdjHp.horizontalOverflow = HorizontalWrapMode.Overflow;
+                    uiInfoSkill_textAbiPointAdjHp.fontSize = 15;
+                    uiInfoSkill_textAbiPointAdjHp.color = Color.white;
 
-                    uiPlayerInfoSkill_textAbiPointAdjMp = MonoBehaviour.Instantiate(uiSkill.textPoint1, uIPlayerInfo.transform, false);
-                    uiPlayerInfoSkill_textAbiPointAdjMp.transform.position = new Vector3(uiSkill.textPoint1.transform.position.x, uiSkill.textPoint1.transform.position.y - 0.4f);
-                    uiPlayerInfoSkill_textAbiPointAdjMp.verticalOverflow = VerticalWrapMode.Overflow;
-                    uiPlayerInfoSkill_textAbiPointAdjMp.horizontalOverflow = HorizontalWrapMode.Overflow;
-                    uiPlayerInfoSkill_textAbiPointAdjMp.fontSize = 15;
-                    uiPlayerInfoSkill_textAbiPointAdjMp.color = Color.white;
+                    uiInfoSkill_textAbiPointAdjMp = MonoBehaviour.Instantiate(uiSkill.textPoint1, uiNPCInfo.transform, false);
+                    uiInfoSkill_textAbiPointAdjMp.transform.position = new Vector3(uiSkill.textPoint1.transform.position.x, uiSkill.textPoint1.transform.position.y - 0.4f);
+                    uiInfoSkill_textAbiPointAdjMp.verticalOverflow = VerticalWrapMode.Overflow;
+                    uiInfoSkill_textAbiPointAdjMp.horizontalOverflow = HorizontalWrapMode.Overflow;
+                    uiInfoSkill_textAbiPointAdjMp.fontSize = 15;
+                    uiInfoSkill_textAbiPointAdjMp.color = Color.white;
 
-                    uiPlayerInfoSkill_mod = true;
+                    uiInfoSkill_mod = true;
+                }
+            }
+
+            var uiPlayerInfo = MonoBehaviour.FindObjectOfType<UIPlayerInfo>();
+            if (uiPlayerInfo != null)
+            {
+                var uiSkill = uiPlayerInfo.uiSkill;
+                if (!uiInfoSkill_mod)
+                {
+                    uiInfoSkill_textAbiPointAdjHp = MonoBehaviour.Instantiate(uiSkill.textPoint1, uiPlayerInfo.transform, false);
+                    uiInfoSkill_textAbiPointAdjHp.transform.position = new Vector3(uiSkill.textPoint1.transform.position.x, uiSkill.textPoint1.transform.position.y - 0.2f);
+                    uiInfoSkill_textAbiPointAdjHp.verticalOverflow = VerticalWrapMode.Overflow;
+                    uiInfoSkill_textAbiPointAdjHp.horizontalOverflow = HorizontalWrapMode.Overflow;
+                    uiInfoSkill_textAbiPointAdjHp.fontSize = 15;
+                    uiInfoSkill_textAbiPointAdjHp.color = Color.white;
+
+                    uiInfoSkill_textAbiPointAdjMp = MonoBehaviour.Instantiate(uiSkill.textPoint1, uiPlayerInfo.transform, false);
+                    uiInfoSkill_textAbiPointAdjMp.transform.position = new Vector3(uiSkill.textPoint1.transform.position.x, uiSkill.textPoint1.transform.position.y - 0.4f);
+                    uiInfoSkill_textAbiPointAdjMp.verticalOverflow = VerticalWrapMode.Overflow;
+                    uiInfoSkill_textAbiPointAdjMp.horizontalOverflow = HorizontalWrapMode.Overflow;
+                    uiInfoSkill_textAbiPointAdjMp.fontSize = 15;
+                    uiInfoSkill_textAbiPointAdjMp.color = Color.white;
+
+                    uiInfoSkill_mod = true;
                 }
             }
 
@@ -92,6 +108,8 @@ namespace MOD_nE7UL2.Mod
             {
                 if (!uiArtifactInfo_mod)
                 {
+                    uiArtifactInfo.transform.position = new Vector3(0f, 5f);
+
                     var artifactConf = uiArtifactInfo.shapeProp.propsItem.IsArtifact();
                     var artifact = uiArtifactInfo.shapeProp.To<DataProps.PropsArtifact>();
                     var soleId = uiArtifactInfo.shapeProp.soleID;
@@ -261,8 +279,6 @@ namespace MOD_nE7UL2.Mod
 
         public static void OnUIUpdate()
         {
-            var player = g.world.playerUnit;
-
             if (uiArtifactInfo_mod)
             {
                 var uiArtifactInfo = MonoBehaviour.FindObjectOfType<UIArtifactInfo>();
@@ -277,37 +293,45 @@ namespace MOD_nE7UL2.Mod
                     uiArtifactInfo_textExpertAdj2.transform.position = new Vector3(uiArtifactInfo.textGrade_En.transform.position.x + 0.2f, uiArtifactInfo.textGrade_En.transform.position.y - 1.6f);
                 }
             }
-            if (uiPlayerInfoSkill_mod)
+
+            if (uiInfoSkill_mod)
             {
-                var uIPlayerInfo = MonoBehaviour.FindObjectOfType<UIPlayerInfo>();
-                if (uIPlayerInfo != null)
+                var uiNPCInfo = MonoBehaviour.FindObjectOfType<UINPCInfo>();
+                if (uiNPCInfo != null)
                 {
-                    var uiSkill = uIPlayerInfo.uiSkill;
-                    uiPlayerInfoSkill_textAbiPointAdjHp.text = $"+Hp: {UnitModifyHelper.GetAbiPointAdjHp(player)}";
-                    uiPlayerInfoSkill_textAbiPointAdjHp.gameObject.SetActive(uiSkill.textPoint1.IsActive());
-                    uiPlayerInfoSkill_textAbiPointAdjMp.text = $"+Mp: {UnitModifyHelper.GetAbiPointAdjMp(player)}";
-                    uiPlayerInfoSkill_textAbiPointAdjMp.gameObject.SetActive(uiSkill.textPoint1.IsActive());
+                    var uiSkill = uiNPCInfo.uiSkill;
+                    uiInfoSkill_textAbiPointAdjHp.text = $"+Hp: {UnitModifyHelper.GetAbiPointAdjHp(uiNPCInfo.unit)}";
+                    uiInfoSkill_textAbiPointAdjHp.gameObject.SetActive(uiSkill.textPoint1.IsActive());
+                    uiInfoSkill_textAbiPointAdjMp.text = $"+Mp: {UnitModifyHelper.GetAbiPointAdjMp(uiNPCInfo.unit)}";
+                    uiInfoSkill_textAbiPointAdjMp.gameObject.SetActive(uiSkill.textPoint1.IsActive());
+                }
+
+                var uiPlayerInfo = MonoBehaviour.FindObjectOfType<UIPlayerInfo>();
+                if (uiPlayerInfo != null)
+                {
+                    var uiSkill = uiPlayerInfo.uiSkill;
+                    uiInfoSkill_textAbiPointAdjHp.text = $"+Hp: {UnitModifyHelper.GetAbiPointAdjHp(uiPlayerInfo.unit)}";
+                    uiInfoSkill_textAbiPointAdjHp.gameObject.SetActive(uiSkill.textPoint1.IsActive());
+                    uiInfoSkill_textAbiPointAdjMp.text = $"+Mp: {UnitModifyHelper.GetAbiPointAdjMp(uiPlayerInfo.unit)}";
+                    uiInfoSkill_textAbiPointAdjMp.gameObject.SetActive(uiSkill.textPoint1.IsActive());
                 }
             }
         }
 
         public static void OnUIClose(CloseUIEnd e)
         {
-            if (e.uiType.uiName == UIType.ArtifactInfo.uiName && uiArtifactInfo_mod)
+            if (uiArtifactInfo_mod && e.uiType.uiName == UIType.ArtifactInfo.uiName)
             {
                 uiArtifactInfo_mod = false;
             }
-            else if (e.uiType.uiName == UIType.MartialInfo.uiName && uiMartialInfo_mod)
+            else if (uiMartialInfo_mod && e.uiType.uiName == UIType.MartialInfo.uiName)
             {
                 g.ui.CloseUI(uiMartialExpertInfo);
                 uiMartialInfo_mod = false;
             }
-            else if (e.uiType.uiName == UIType.PlayerInfo.uiName)
+            else if (uiInfoSkill_mod && (e.uiType.uiName == UIType.PlayerInfo.uiName || e.uiType.uiName == UIType.NPCInfo.uiName))
             {
-                if (uiPlayerInfoSkill_mod)
-                {
-                    uiPlayerInfoSkill_mod = false;
-                }
+                uiInfoSkill_mod = false;
             }
         }
 
