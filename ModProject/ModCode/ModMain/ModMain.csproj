@@ -48,6 +48,7 @@
     <Compile Include="Helper\PriceHelper.cs" />
     <Compile Include="ModMain.cs" />
     <Compile Include="Mod\ExpertEvent.cs" />
+    <Compile Include="Mod\SpiritlockEvent.cs" />
     <Compile Include="Mod\UnitModifyEvent.cs" />
     <Compile Include="Mod\UIEvent.cs" />
     <Compile Include="Mod\BattleModifyEvent.cs" />
