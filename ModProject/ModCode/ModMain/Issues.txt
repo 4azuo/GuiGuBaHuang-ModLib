@@ -7,8 +7,3 @@
 - new game+
 
 - pause turtle unit
-
-
-
-test ultimate +expert
-test mpcost, dmg

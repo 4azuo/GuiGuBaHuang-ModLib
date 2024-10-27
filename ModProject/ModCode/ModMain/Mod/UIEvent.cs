@@ -75,7 +75,6 @@ namespace MOD_nE7UL2.Mod
                     uiPlayerInfoSkill_textAbiPointAdjHp.horizontalOverflow = HorizontalWrapMode.Overflow;
                     uiPlayerInfoSkill_textAbiPointAdjHp.fontSize = 15;
                     uiPlayerInfoSkill_textAbiPointAdjHp.color = Color.white;
-                    uiPlayerInfoSkill_textAbiPointAdjHp.text = $"+Hp: {UnitModifyHelper.GetAbiPointAdjHp(player)}";
 
                     uiPlayerInfoSkill_textAbiPointAdjMp = MonoBehaviour.Instantiate(uiSkill.textPoint1, uIPlayerInfo.transform, false);
                     uiPlayerInfoSkill_textAbiPointAdjMp.transform.position = new Vector3(uiSkill.textPoint1.transform.position.x, uiSkill.textPoint1.transform.position.y - 0.4f);
@@ -83,7 +82,6 @@ namespace MOD_nE7UL2.Mod
                     uiPlayerInfoSkill_textAbiPointAdjMp.horizontalOverflow = HorizontalWrapMode.Overflow;
                     uiPlayerInfoSkill_textAbiPointAdjMp.fontSize = 15;
                     uiPlayerInfoSkill_textAbiPointAdjMp.color = Color.white;
-                    uiPlayerInfoSkill_textAbiPointAdjMp.text = $"+Mp: {UnitModifyHelper.GetAbiPointAdjMp(player)}";
 
                     uiPlayerInfoSkill_mod = true;
                 }
@@ -263,6 +261,8 @@ namespace MOD_nE7UL2.Mod
 
         public static void OnUIUpdate()
         {
+            var player = g.world.playerUnit;
+
             if (uiArtifactInfo_mod)
             {
                 var uiArtifactInfo = MonoBehaviour.FindObjectOfType<UIArtifactInfo>();
@@ -283,7 +283,9 @@ namespace MOD_nE7UL2.Mod
                 if (uIPlayerInfo != null)
                 {
                     var uiSkill = uIPlayerInfo.uiSkill;
+                    uiPlayerInfoSkill_textAbiPointAdjHp.text = $"+Hp: {UnitModifyHelper.GetAbiPointAdjHp(player)}";
                     uiPlayerInfoSkill_textAbiPointAdjHp.gameObject.SetActive(uiSkill.textPoint1.IsActive());
+                    uiPlayerInfoSkill_textAbiPointAdjMp.text = $"+Mp: {UnitModifyHelper.GetAbiPointAdjMp(player)}";
                     uiPlayerInfoSkill_textAbiPointAdjMp.gameObject.SetActive(uiSkill.textPoint1.IsActive());
                 }
             }
