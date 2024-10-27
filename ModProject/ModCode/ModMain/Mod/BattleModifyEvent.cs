@@ -94,24 +94,24 @@ namespace MOD_nE7UL2.Mod
                 e.dynV.baseValue += atk * r / 1000;
             }
 
+            //add dmg (mp)
+            if (attackUnitData?.worldUnitData?.unit != null && attackUnitData.mp > 0)
+            {
+                var r = (attackUnitData.mp.Parse<float>() / attackUnitData.maxMP.value.Parse<float>());
+                e.dynV.baseValue += (atk * r).Parse<int>();
+            }
+
             //add dmg (sp)
-            if (attackUnitData?.worldUnitData?.unit != null && attackUnitData.sp > 0)
+            if (attackUnitData?.worldUnitData?.unit != null && attackUnitData.sp > 0 && atkGradeLvl >= 4)
             {
                 var r = (attackUnitData.sp.Parse<float>() / attackUnitData.maxSP.value.Parse<float>());
                 e.dynV.baseValue += (atk * r).Parse<int>();
             }
 
             //add dmg (dp)
-            if (attackUnitData?.worldUnitData?.unit != null && attackUnitData.dp > 0 && atkGradeLvl >= 4)
+            if (attackUnitData?.worldUnitData?.unit != null && attackUnitData.dp > 0 && atkGradeLvl >= 8)
             {
                 var r = (attackUnitData.dp.Parse<float>() / attackUnitData.maxDP.value.Parse<float>());
-                e.dynV.baseValue += (atk * r).Parse<int>();
-            }
-
-            //add dmg (mp)
-            if (attackUnitData?.worldUnitData?.unit != null && attackUnitData.mp > 0 && atkGradeLvl >= 8)
-            {
-                var r = (attackUnitData.mp.Parse<float>() / attackUnitData.maxMP.value.Parse<float>());
                 e.dynV.baseValue += (atk * r).Parse<int>();
             }
 
@@ -168,20 +168,6 @@ namespace MOD_nE7UL2.Mod
                 e.dynV.baseValue -= def * r / 200;
             }
 
-            //block dmg (sp)
-            if (hitUnitData?.worldUnitData?.unit != null && hitUnitData.sp > 0 && e.dynV.baseValue > minDmg && defGradeLvl >= 4)
-            {
-                var r = (hitUnitData.sp.Parse<float>() / hitUnitData.maxSP.value.Parse<float>()) * blockratio;
-                e.dynV.baseValue -= (def * r).Parse<int>();
-            }
-
-            //block dmg (dp)
-            if (hitUnitData?.worldUnitData?.unit != null && hitUnitData.dp > 0 && e.dynV.baseValue > minDmg && defGradeLvl >= 8)
-            {
-                var r = (hitUnitData.dp.Parse<float>() / hitUnitData.maxDP.value.Parse<float>()) * blockratio;
-                e.dynV.baseValue -= (def * r).Parse<int>();
-            }
-
             //block dmg (mp)
             if (hitUnitData?.worldUnitData?.unit != null && hitUnitData.mp > 0 && e.dynV.baseValue > minDmg)
             {
@@ -195,6 +181,20 @@ namespace MOD_nE7UL2.Mod
                     e.dynV.baseValue -= blockedDmg;
                     hitUnitData.AddMP(-lostMp);
                 }
+            }
+
+            //block dmg (sp)
+            if (hitUnitData?.worldUnitData?.unit != null && hitUnitData.sp > 0 && e.dynV.baseValue > minDmg && defGradeLvl >= 4)
+            {
+                var r = (hitUnitData.sp.Parse<float>() / hitUnitData.maxSP.value.Parse<float>()) * blockratio;
+                e.dynV.baseValue -= (def * r).Parse<int>();
+            }
+
+            //block dmg (dp)
+            if (hitUnitData?.worldUnitData?.unit != null && hitUnitData.dp > 0 && e.dynV.baseValue > minDmg && defGradeLvl >= 8)
+            {
+                var r = (hitUnitData.dp.Parse<float>() / hitUnitData.maxDP.value.Parse<float>()) * blockratio;
+                e.dynV.baseValue -= (def * r).Parse<int>();
             }
 
             //min-dmg
