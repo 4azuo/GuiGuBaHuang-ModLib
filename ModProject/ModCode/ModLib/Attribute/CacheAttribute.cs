@@ -1,6 +1,4 @@
-﻿using MethodBoundaryAspect.Fody.Attributes;
-using System;
-using System.Linq;
+﻿using System;
 
 [AttributeUsage(AttributeTargets.Class, AllowMultiple = true, Inherited = true)]
 public class CacheAttribute : Attribute

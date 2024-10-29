@@ -400,6 +400,16 @@ public static class UnitHelper
             wunit.GetDynProperty(UnitDynPropertyEnum.BasisEarth).value;
     }
 
+    public static int GetArtisanshipSum(this WorldUnitBase wunit)
+    {
+        return wunit.GetDynProperty(UnitDynPropertyEnum.RefineElixir).value +
+            wunit.GetDynProperty(UnitDynPropertyEnum.RefineWeapon).value +
+            wunit.GetDynProperty(UnitDynPropertyEnum.Symbol).value +
+            wunit.GetDynProperty(UnitDynPropertyEnum.Geomancy).value +
+            wunit.GetDynProperty(UnitDynPropertyEnum.Herbal).value +
+            wunit.GetDynProperty(UnitDynPropertyEnum.Mine).value;
+    }
+
     public static UnitDynPropertyEnum GetBestBasis(this WorldUnitBase wunit)
     {
         var basises = new Dictionary<UnitDynPropertyEnum, int>

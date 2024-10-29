@@ -234,6 +234,7 @@ namespace ModLib.Mod
                     return;
                 if (!(predicate?.Invoke() ?? true))
                     return;
+                
                 var method = this.GetType().GetMethod(methodName, BindingFlags.Public | BindingFlags.Instance | BindingFlags.FlattenHierarchy);
                 if (method == null)
                 {
@@ -247,10 +248,8 @@ namespace ModLib.Mod
                 {
                     method.Invoke(this, new object[] { e?.TryCast<T>() ?? e });
                 }
-                if (callback != null)
-                {
-                    callback.Invoke();
-                }
+
+                callback?.Invoke();
             }
             catch (Exception ex)
             {

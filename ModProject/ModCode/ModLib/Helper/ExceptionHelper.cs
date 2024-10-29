@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Reflection;
 using System.Text;
 
 public static class ExceptionHelper
@@ -16,5 +17,12 @@ public static class ExceptionHelper
                 break;
         }
         return strBuilder.ToString();
+    }
+
+    public static MethodBase GetCallingMethod(this Exception ex)
+    {
+        var stackTrace = new System.Diagnostics.StackTrace(ex, true);
+        var frame = stackTrace.GetFrame(0); // Get the top-most stack frame
+        return frame.GetMethod();
     }
 }

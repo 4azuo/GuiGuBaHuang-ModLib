@@ -152,4 +152,19 @@ public static class UnitModifyHelper
     {
         return wunit.GetDynProperty(UnitDynPropertyEnum.AbilityPoint).value;
     }
+
+    public static int GetMartialAdjHp(WorldUnitBase wunit)
+    {
+        return wunit.GetBasisPhysicSum() * wunit.GetGradeLvl();
+    }
+
+    public static int GetSpiritualAdjMp(WorldUnitBase wunit)
+    {
+        return wunit.GetBasisMagicSum();
+    }
+
+    public static int GetArtisanshipAdjSp(WorldUnitBase wunit)
+    {
+        return wunit.GetArtisanshipSum();
+    }
 }
