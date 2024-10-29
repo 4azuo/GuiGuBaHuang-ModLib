@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Reflection;
 using UnityEngine;
+using UnityEngine.UI;
 
 public static class ObjectHelper
 {
@@ -104,18 +105,40 @@ public static class ObjectHelper
         GetBackingField(obj, propertyName).SetValue(obj, value);
     }
 
-    public static T ReplaceObject<T>(T obj, Transform transform = null, float deltaX = 0f, float deltaY = 0f) where T : MonoBehaviour
+    public static T Replace<T>(this T obj, Transform transform = null) where T : MonoBehaviour
     {
         var newObj = MonoBehaviour.Instantiate(obj, transform ?? obj.transform, false);
-        newObj.transform.position = new Vector3(obj.transform.position.x + deltaX, obj.transform.position.y + deltaY);
         obj.enabled = false;
         return newObj;
     }
 
-    public static T CreateObject<T>(T obj, Transform transform = null, float deltaX = 0f, float deltaY = 0f) where T : MonoBehaviour
+    public static T Create<T>(this T obj, Transform transform = null) where T : MonoBehaviour
     {
         var newObj = MonoBehaviour.Instantiate(obj, transform ?? obj.transform, false);
-        newObj.transform.position = new Vector3(obj.transform.position.x + deltaY, obj.transform.position.y + deltaY);
+        if (newObj is Text)
+            (newObj as Text).text = string.Empty;
         return newObj;
+    }
+
+    public static T Align<T>(this T obj, TextAnchor tanchor = TextAnchor.MiddleLeft, VerticalWrapMode vMode = VerticalWrapMode.Overflow, HorizontalWrapMode hMode = HorizontalWrapMode.Overflow) where T : Text
+    {
+        obj.alignment = tanchor;
+        obj.verticalOverflow = vMode;
+        obj.horizontalOverflow = hMode;
+        return obj;
+    }
+
+    public static T Format<T>(this T obj, Color? color = null, int fsize = 15, FontStyle fstype = FontStyle.Normal) where T : Text
+    {
+        obj.fontSize = fsize;
+        obj.fontStyle = fstype;
+        obj.color = color ?? Color.black;
+        return obj;
+    }
+
+    public static T Pos<T>(this T obj, GameObject origin, float deltaX = 0f, float deltaY = 0f) where T : Text
+    {
+        obj.transform.position = new Vector3(origin.transform.position.x + deltaX, origin.transform.position.y + deltaY);
+        return obj;
     }
 }

@@ -39,6 +39,7 @@
     <Compile Include="Attribute\InGameCustomSettingsAttribute.cs" />
     <Compile Include="Attribute\EventConditionAttribute.cs" />
     <Compile Include="Attribute\CacheAttribute.cs" />
+    <Compile Include="Attribute\ErrorIgnoreAttribute.cs" />
     <Compile Include="Attribute\TraceIgnoreAttribute.cs" />
     <Compile Include="Attribute\TraceAttribute.cs" />
     <Compile Include="Const\ModLibConst.cs" />

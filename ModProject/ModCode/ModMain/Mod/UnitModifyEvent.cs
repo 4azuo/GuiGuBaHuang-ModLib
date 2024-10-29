@@ -155,6 +155,8 @@ namespace MOD_nE7UL2.Mod
 
             rs += UnitModifyHelper.GetAbiPointAdjHp(wunit);
 
+            rs += UnitModifyHelper.GetMartialAdjHp(wunit);
+
             return rs;
         }
 
@@ -176,6 +178,8 @@ namespace MOD_nE7UL2.Mod
 
             rs += UnitModifyHelper.GetAbiPointAdjMp(wunit);
 
+            rs += UnitModifyHelper.GetSpiritualAdjMp(wunit);
+
             return rs;
         }
 
@@ -194,6 +198,8 @@ namespace MOD_nE7UL2.Mod
                     rs += UnitModifyHelper.GetAbilityExpertSp(spMax, expertLvl, martialData.data.propsInfoBase.grade, martialData.data.propsInfoBase.level);
                 }
             }
+
+            rs += UnitModifyHelper.GetArtisanshipAdjSp(wunit);
 
             return rs;
         }

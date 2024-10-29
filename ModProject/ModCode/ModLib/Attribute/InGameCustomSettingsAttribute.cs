@@ -1,6 +1,4 @@
-﻿using MethodBoundaryAspect.Fody.Attributes;
-using System;
-using System.Linq;
+﻿using System;
 
 [AttributeUsage(AttributeTargets.Class)]
 public class InGameCustomSettingsAttribute : Attribute

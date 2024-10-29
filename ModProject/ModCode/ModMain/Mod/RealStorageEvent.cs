@@ -6,6 +6,7 @@ using System.Linq;
 using UnityEngine.UI;
 using MOD_nE7UL2.Enum;
 using ModLib.Const;
+using static UIMapMainBase;
 
 namespace MOD_nE7UL2.Mod
 {
@@ -20,7 +21,6 @@ namespace MOD_nE7UL2.Mod
             }
         }
 
-        private UITownStorageProps uiTownStorageProps;
         private Text txtWarning1;
         private Text txtWarning2;
         private Text txtStorageMoney;
@@ -32,71 +32,38 @@ namespace MOD_nE7UL2.Mod
         public override void OnOpenUIEnd(OpenUIEnd e)
         {
             base.OnOpenUIEnd(e);
-            uiTownStorageProps = MonoBehaviour.FindObjectOfType<UITownStorageProps>();
-            if (uiTownStorageProps != null)
+            if (e.uiType.uiName == UIType.TownStorageProps.uiName)
             {
-                if (txtFee == null)
+                var uiTownStorageProps = g.ui.GetUI<UITownStorageProps>(UIType.TownStorageProps);
+
+                txtStorageMoney = ObjectHelper.Create(uiTownStorageProps.textTip).Align(TextAnchor.MiddleRight).Format();
+                txtStorageMoney.transform.position = new Vector3(uiTownStorageProps.textTip.transform.position.x, uiTownStorageProps.textTitle1.transform.position.y + 0.4f);
+
+                txtFee = ObjectHelper.Create(uiTownStorageProps.textTip).Align(TextAnchor.MiddleRight).Format(Color.blue);
+                txtFee.transform.position = new Vector3(uiTownStorageProps.textTip.transform.position.x, uiTownStorageProps.textTitle1.transform.position.y + 0.2f);
+
+                if (Debt > 0)
                 {
-                    txtStorageMoney = MonoBehaviour.Instantiate(uiTownStorageProps.textTip, uiTownStorageProps.transform, false);
-                    txtStorageMoney.transform.position = new Vector3(uiTownStorageProps.textTip.transform.position.x, uiTownStorageProps.textTitle1.transform.position.y + 0.4f);
-                    txtStorageMoney.verticalOverflow = VerticalWrapMode.Overflow;
-                    txtStorageMoney.horizontalOverflow = HorizontalWrapMode.Overflow;
-                    txtStorageMoney.alignment = TextAnchor.MiddleRight;
-                    txtStorageMoney.fontSize = 15;
-                    txtStorageMoney.color = Color.black;
+                    txtWarning1 = ObjectHelper.Create(uiTownStorageProps.textTip).Align(TextAnchor.MiddleCenter).Format(Color.red, 17).Pos(uiTownStorageProps.textTitle1.gameObject, 0f, -1.2f);
+                    txtWarning1.text = $"You have to pay your debt ({Debt} Spirit Stones) next month!";
 
-                    txtFee = MonoBehaviour.Instantiate(uiTownStorageProps.textTip, uiTownStorageProps.transform, false);
-                    txtFee.transform.position = new Vector3(uiTownStorageProps.textTip.transform.position.x, uiTownStorageProps.textTitle1.transform.position.y + 0.2f);
-                    txtFee.verticalOverflow = VerticalWrapMode.Overflow;
-                    txtFee.horizontalOverflow = HorizontalWrapMode.Overflow;
-                    txtFee.alignment = TextAnchor.MiddleRight;
-                    txtFee.fontSize = 15;
-                    txtFee.color = Color.blue;
+                    txtWarning2 = ObjectHelper.Create(uiTownStorageProps.textTip).Align(TextAnchor.MiddleCenter).Format(Color.red, 17).Pos(uiTownStorageProps.textTitle2.gameObject, 0f, -1.2f);
+                    txtWarning2.text = $"You have to pay your debt ({Debt} Spirit Stones) next month!";
 
-                    if (Debt > 0)
+                    foreach (var item in uiTownStorageProps.GetComponentsInChildren<ScrollRect>().SelectMany(x => x.GetComponentsInChildren<Image>()))
                     {
-                        txtWarning1 = MonoBehaviour.Instantiate(uiTownStorageProps.textTip, uiTownStorageProps.transform, false);
-                        txtWarning1.transform.position = new Vector3(uiTownStorageProps.textTitle1.transform.position.x, uiTownStorageProps.textTitle1.transform.position.y - 1.2f);
-                        txtWarning1.verticalOverflow = VerticalWrapMode.Overflow;
-                        txtWarning1.horizontalOverflow = HorizontalWrapMode.Overflow;
-                        txtWarning1.alignment = TextAnchor.MiddleCenter;
-                        txtWarning1.fontSize = 17;
-                        txtWarning1.color = Color.red;
-                        txtWarning1.text = $"You have to pay your debt ({Debt} Spirit Stones) next month!";
-
-                        txtWarning2 = MonoBehaviour.Instantiate(uiTownStorageProps.textTip, uiTownStorageProps.transform, false);
-                        txtWarning2.transform.position = new Vector3(uiTownStorageProps.textTitle2.transform.position.x, uiTownStorageProps.textTitle2.transform.position.y - 1.2f);
-                        txtWarning2.verticalOverflow = VerticalWrapMode.Overflow;
-                        txtWarning2.horizontalOverflow = HorizontalWrapMode.Overflow;
-                        txtWarning2.alignment = TextAnchor.MiddleCenter;
-                        txtWarning2.fontSize = 17;
-                        txtWarning2.color = Color.red;
-                        txtWarning2.text = $"You have to pay your debt ({Debt} Spirit Stones) next month!";
-
-                        foreach (var item in uiTownStorageProps.GetComponentsInChildren<ScrollRect>().SelectMany(x => x.GetComponentsInChildren<Image>()))
-                        {
-                            item.raycastTarget = false;
-                        }
+                        item.raycastTarget = false;
                     }
                 }
             }
         }
 
-        public override void OnCloseUIEnd(CloseUIEnd e)
+        [ErrorIgnore]
+        public override void OnTimeUpdate200ms()
         {
-            base.OnCloseUIEnd(e);
-            uiTownStorageProps = MonoBehaviour.FindObjectOfType<UITownStorageProps>();
-            if (uiTownStorageProps == null)
-            {
-                txtStorageMoney = null;
-                txtFee = null;
-            }
-        }
-
-        public override void OnFrameUpdate()
-        {
-            base.OnFrameUpdate();
-            if (uiTownStorageProps != null && txtFee != null)
+            base.OnTimeUpdate200ms();
+            var uiTownStorageProps = g.ui.GetUI<UITownStorageProps>(UIType.TownStorageProps);
+            if (uiTownStorageProps?.gameObject?.active ?? false)
             {
                 var uType = UnitTypeEvent.GetUnitTypeEnum(g.world.playerUnit);
                 var props = uiTownStorageProps.townStorage?.data?.propData?.allProps?.ToArray() ?? new DataProps.PropsData[0];
