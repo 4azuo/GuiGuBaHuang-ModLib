@@ -30,5 +30,11 @@
         public const string UNIT_MODIFY_EVENT = "UnitModifyEvent";
         public const string EXPERT_EVENT = "ExpertEvent";
         public const string SPIRITLOCK_EVENT = "SpiritlockEvent";
+        public const string SLICE_LIFE_QUEST_EVENT = "SliceLifeQuestEvent";
+
+        public const string UTYPE_LUCK_EFX_FREE_STORAGE = "FreeStorage";
+        public const string UTYPE_LUCK_EFX_BUY_COST = "BuyCost";
+        public const string UTYPE_LUCK_EFX_SELL_VALUE = "SellValue";
+        public const string UTYPE_LUCK_EFX_PASSIVE_INCOME = "PassiveIncome";
     }
 }

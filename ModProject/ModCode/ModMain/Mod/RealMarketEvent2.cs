@@ -76,7 +76,7 @@ namespace MOD_nE7UL2.Mod
                 txtInfo = MonoBehaviour.Instantiate(uiTownMarketBuy.textMoney, uiTownMarketBuy.transform, false);
                 txtInfo.text = $"Price rate: {MarketPriceRate[uiTownMarketBuy.town.buildData.id]:0.00}%";
                 if (uType == UnitTypeEnum.Merchant)
-                    txtInfo.text += $" (Merchant {uType.CustomLuck.CustomEffects["BuyCost"].Value0.Parse<float>() * 100.0f:0.00}%)";
+                    txtInfo.text += $" (Merchant {uType.CustomLuck.CustomEffects[ModConst.UTYPE_LUCK_EFX_BUY_COST].Value0.Parse<float>() * 100.0f:0.00}%)";
                 txtInfo.transform.position = new Vector3(uiTownMarketBuy.textMoney.transform.position.x + 4.5f, uiTownMarketBuy.textMoney.transform.position.y);
                 txtInfo.verticalOverflow = VerticalWrapMode.Overflow;
                 txtInfo.horizontalOverflow = HorizontalWrapMode.Overflow;
@@ -90,14 +90,14 @@ namespace MOD_nE7UL2.Mod
 
                 var basePrice = (uiPropSelectCount.oneCost.Parse<float>() * MarketPriceRate[uiTownMarketBuy.town.buildData.id] / 100f).Parse<int>();
                 if (uType == UnitTypeEnum.Merchant)
-                    basePrice += (basePrice * uType.CustomLuck.CustomEffects["BuyCost"].Value0.Parse<float>()).Parse<int>();
+                    basePrice += (basePrice * uType.CustomLuck.CustomEffects[ModConst.UTYPE_LUCK_EFX_BUY_COST].Value0.Parse<float>()).Parse<int>();
                 uiPropSelectCount.oneCost = basePrice;
                 uiPropSelectCount.UpdateCountUI();
 
                 txtInfo2 = MonoBehaviour.Instantiate(uiPropSelectCount.textName, uiPropSelectCount.transform, false);
                 txtInfo2.text = $"Price rate: {MarketPriceRate[uiTownMarketBuy.town.buildData.id]:0.00}%";
                 if (uType == UnitTypeEnum.Merchant)
-                    txtInfo2.text += $" (Merchant {uType.CustomLuck.CustomEffects["BuyCost"].Value0.Parse<float>() * 100.0f:0.00}%)";
+                    txtInfo2.text += $" (Merchant {uType.CustomLuck.CustomEffects[ModConst.UTYPE_LUCK_EFX_BUY_COST].Value0.Parse<float>() * 100.0f:0.00}%)";
                 txtInfo2.transform.position = new Vector3(uiPropSelectCount.ptextInfo.transform.position.x, uiPropSelectCount.ptextInfo.transform.position.y + 0.2f);
                 txtInfo2.verticalOverflow = VerticalWrapMode.Overflow;
                 txtInfo2.horizontalOverflow = HorizontalWrapMode.Overflow;

@@ -60,37 +60,13 @@ namespace MOD_nE7UL2.Mod
             var eventSellRate = ModMain.ModObj.InGameCustomSettings.RealMarketConfigs.GetAddSellRate();
             foreach (var town in g.world.build.GetBuilds().ToArray().Where(x => x.allBuildSub.ContainsKey(MapBuildSubType.TownMarketPill)))
             {
-                MarketPriceRate[town.buildData.id] = CommonTool.Random(MIN_RATE + eventSellRate, MAX_RATE + eventSellRate);
+                MarketPriceRate[town.buildData.id] = CommonTool.Random(MIN_RATE + eventSellRate, MAX_RATE + eventSellRate) + (GetMerchantIncRate() * 100.0f);
             }
         }
-
-        //public override void OnOpenUIStart(OpenUIStart e)
-        //{
-        //    //base.OnOpenUIStart(e);
-        //    //var uType = UnitTypeEvent.GetUnitTypeEnum(g.world.playerUnit);
-        //    //uiPropSell = MonoBehaviour.FindObjectOfType<UIPropSell>();
-        //    //curMainTown = g.world.build.GetBuild(g.world.playerUnit.data.unitData.GetPoint());
-        //    //if (uiPropSell != null && curMainTown != null)
-        //    //{
-        //    //    //fix price
-        //    //    uiPropSell.propsPrice = new Il2CppSystem.Collections.Generic.Dictionary<int, int>();
-        //    //    foreach (var p in g.world.playerUnit.data.unitData.propData.allProps)
-        //    //    {
-        //    //        if (!uiPropSell.propsPrice.ContainsKey(p.propsID))
-        //    //        {
-        //    //            var basePrice = (p.propsInfoBase.sale * (MarketPriceRate[curMainTown.buildData.id] / 100.00f)).Parse<int>();
-        //    //            if (uType == UnitTypeEnum.Merchant)
-        //    //                basePrice += (basePrice * uType.CustomLuck.CustomEffects["SellValue"].Value0.Parse<float>()).Parse<int>();
-        //    //            uiPropSell.propsPrice.Add(p.propsID, basePrice);
-        //    //        }
-        //    //    }
-        //    //}
-        //}
 
         public override void OnOpenUIEnd(OpenUIEnd e)
         {
             base.OnOpenUIEnd(e);
-            var uType = UnitTypeEvent.GetUnitTypeEnum(g.world.playerUnit);
             uiPropSell = MonoBehaviour.FindObjectOfType<UIPropSell>();
             curMainTown = g.world.build.GetBuild(g.world.playerUnit.data.unitData.GetPoint());
             if (uiPropSell != null && curMainTown != null)
@@ -103,10 +79,11 @@ namespace MOD_nE7UL2.Mod
                     txtMarketST.verticalOverflow = VerticalWrapMode.Overflow;
                     txtMarketST.horizontalOverflow = HorizontalWrapMode.Overflow;
 
+                    var merchantIncRate = GetMerchantIncRate();
                     txtInfo = MonoBehaviour.Instantiate(uiPropSell.textMoney, uiPropSell.transform, false);
                     txtInfo.text = $"Price rate: {MarketPriceRate[curMainTown.buildData.id]:0.00}%";
-                    if (uType == UnitTypeEnum.Merchant)
-                        txtInfo.text += $" (Merchant +{uType.CustomLuck.CustomEffects["SellValue"].Value0.Parse<float>() * 100.0f:0.00}%)";
+                    if (merchantIncRate > 0.00f)
+                        txtInfo.text += $" (Merchant +{merchantIncRate * 100.0f:0.00}%)";
                     txtInfo.transform.position = new Vector3(uiPropSell.textMoney.transform.position.x, uiPropSell.textMoney.transform.position.y - 0.4f);
                     txtInfo.verticalOverflow = VerticalWrapMode.Overflow;
                     txtInfo.horizontalOverflow = HorizontalWrapMode.Overflow;
@@ -183,6 +160,18 @@ namespace MOD_nE7UL2.Mod
         private long GetTotalPrice()
         {
             return uiPropSell.selectProps.allProps.ToArray().Sum(x => x.propsInfoBase.sale.Parse<long>() * x.propsCount);
+        }
+
+        private float GetMerchantIncRate()
+        {
+            var merchantLvl = MerchantLuckEnum.Merchant.GetCurLevel(g.world.playerUnit);
+            var merchantIncRate = 0.00f;
+            if (merchantLvl > 0)
+                merchantIncRate += merchantLvl * MerchantLuckEnum.Merchant.IncSellValueEachLvl;
+            var uType = UnitTypeEvent.GetUnitTypeEnum(g.world.playerUnit);
+            if (uType == UnitTypeEnum.Merchant)
+                merchantIncRate += uType.CustomLuck.CustomEffects[ModConst.UTYPE_LUCK_EFX_SELL_VALUE].Value0.Parse<float>();
+            return merchantIncRate;
         }
     }
 }

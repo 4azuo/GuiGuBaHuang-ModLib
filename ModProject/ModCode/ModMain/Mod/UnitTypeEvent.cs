@@ -30,10 +30,20 @@ namespace MOD_nE7UL2.Mod
                 //add trainee luck
                 AddTraineeLuck(wunit);
 
+                //add merchant luck
+                AddMerchantLuck(wunit);
+
                 //merchant
                 if (UnitTypeDic[unitId] == UnitTypeEnum.Merchant)
                 {
-                    wunit.AddUnitMoney((wunit.GetUnitMoney() * UnitTypeEnum.Merchant.CustomLuck.CustomEffects["PassiveIncome"].Value0.Parse<float>()).Parse<int>());
+                    var money = wunit.GetUnitMoney();
+                    wunit.AddUnitMoney((money * UnitTypeEnum.Merchant.CustomLuck.CustomEffects[ModConst.UTYPE_LUCK_EFX_PASSIVE_INCOME].Value0.Parse<float>()).Parse<int>());
+
+                    var merchantLvl = MerchantLuckEnum.Merchant.GetCurLevel(wunit);
+                    if (merchantLvl > 0)
+                    {
+                        wunit.AddUnitMoney((money * merchantLvl * MerchantLuckEnum.Merchant.IncPassiveIncomeEachLvl).Parse<int>());
+                    }
                 }
 
                 //add property
@@ -77,38 +87,56 @@ namespace MOD_nE7UL2.Mod
             return t;
         }
 
+        public static void AddMerchantLuck(WorldUnitBase wunit)
+        {
+            foreach (var luck in MerchantLuckEnum.GetAllEnums<MerchantLuckEnum>())
+            {
+                var level = luck.GetNxtLevel(wunit);
+
+                var luckId = luck.GetMerchantLuckId(level);
+                if (luckId > 0 && wunit.GetLuck(luckId) == null)
+                {
+                    for (int i = 1; i <= MerchantLuckEnum.MerchantLevels.Length; i++)
+                    {
+                        wunit.DelLuck(luck.GetMerchantLuckId(i));
+                    }
+                    wunit.AddLuck(luckId);
+                }
+            }
+        }
+
         public static void AddApprenticeLuck(WorldUnitBase wunit)
         {
-            foreach (var apprenticeLuck in ApprenticeLuckEnum.GetAllEnums<ApprenticeLuckEnum>())
+            foreach (var luck in ApprenticeLuckEnum.GetAllEnums<ApprenticeLuckEnum>())
             {
-                var apprenticeLevel = apprenticeLuck.GetApprenticeLevel(wunit);
+                var level = luck.GetApprenticeLevel(wunit);
 
-                var apprenticeLuckId = apprenticeLuck.GetApprenticeLuckId(apprenticeLevel);
-                if (apprenticeLuckId > 0 && wunit.GetLuck(apprenticeLuckId) == null)
+                var luckId = luck.GetApprenticeLuckId(level);
+                if (luckId > 0 && wunit.GetLuck(luckId) == null)
                 {
                     for (int i = 1; i <= ApprenticeLuckEnum.ApprenticeLevels.Length; i++)
                     {
-                        wunit.DelLuck(apprenticeLuck.GetApprenticeLuckId(i));
+                        wunit.DelLuck(luck.GetApprenticeLuckId(i));
                     }
-                    wunit.AddLuck(apprenticeLuckId);
+                    wunit.AddLuck(luckId);
                 }
             }
         }
 
         public static void AddTraineeLuck(WorldUnitBase wunit)
         {
-            foreach (var traineeLuck in TraineeLuckEnum.GetAllEnums<TraineeLuckEnum>())
+            foreach (var luck in TraineeLuckEnum.GetAllEnums<TraineeLuckEnum>())
             {
-                var traineeLevel = traineeLuck.GetTraineeLevel(wunit);
+                var level = luck.GetTraineeLevel(wunit);
 
-                var traineeLuckId = traineeLuck.GetTraineeLuckId(traineeLevel);
-                if (traineeLuckId > 0 && wunit.GetLuck(traineeLuckId) == null)
+                var luckId = luck.GetTraineeLuckId(level);
+                if (luckId > 0 && wunit.GetLuck(luckId) == null)
                 {
                     for (int i = 1; i <= TraineeLuckEnum.TraineeLevels.Length; i++)
                     {
-                        wunit.DelLuck(traineeLuck.GetTraineeLuckId(i));
+                        wunit.DelLuck(luck.GetTraineeLuckId(i));
                     }
-                    wunit.AddLuck(traineeLuckId);
+                    wunit.AddLuck(luckId);
                 }
             }
         }
