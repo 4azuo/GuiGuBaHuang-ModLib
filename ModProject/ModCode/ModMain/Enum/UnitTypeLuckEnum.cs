@@ -1,4 +1,5 @@
-﻿using ModLib.Object;
+﻿using MOD_nE7UL2.Const;
+using ModLib.Object;
 using System.Collections.Generic;
 using System.Management.Instrumentation;
 
@@ -17,10 +18,10 @@ namespace MOD_nE7UL2.Enum
         {
             CustomEffects = new Dictionary<string, MultiValue>()
             {
-                ["FreeStorage"] = MultiValue.Create(true),
-                ["BuyCost"] = MultiValue.Create(-0.15f),
-                ["SellValue"] = MultiValue.Create(+0.15f),
-                ["PassiveIncome"] = MultiValue.Create(+0.05f),
+                [ModConst.UTYPE_LUCK_EFX_FREE_STORAGE] = MultiValue.Create(true),
+                [ModConst.UTYPE_LUCK_EFX_BUY_COST] = MultiValue.Create(-0.15f),
+                [ModConst.UTYPE_LUCK_EFX_SELL_VALUE] = MultiValue.Create(+0.15f),
+                [ModConst.UTYPE_LUCK_EFX_PASSIVE_INCOME] = MultiValue.Create(+0.05f),
             }
         };
 

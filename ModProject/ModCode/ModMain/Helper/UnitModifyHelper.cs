@@ -74,12 +74,12 @@ public static class UnitModifyHelper
         return ((inputValue * expertLvl * r + v) * ExpertConfigs.SkillDmgRatios[mType]).Parse<int>();
     }
 
-    public static int GetSkillExpertMpCost(int inputValue, int expertLvl, int propsGrade, int propsLevel)
+    public static int GetSkillExpertMpCost(int inputValue, int expertLvl, int propsGrade, int propsLevel, int least)
     {
         if (expertLvl <= 0)
             return 0;
         var r = 0.10f * propsGrade + 0.01f * propsLevel;
-        return (inputValue * expertLvl * r).Parse<int>();
+        return Math.Max((inputValue * expertLvl * r).Parse<int>(), least);
     }
 
     public static int GetAbilityExpertAtk(int inputValue, int expertLvl, int propsGrade, int propsLevel)

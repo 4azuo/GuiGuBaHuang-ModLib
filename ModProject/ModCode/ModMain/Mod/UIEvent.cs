@@ -176,7 +176,7 @@ namespace MOD_nE7UL2.Mod
                 else
                 {
                     uiMartialExpertInfo_textAdj1.text = $"+Dmg: {UnitModifyHelper.GetSkillExpertAtk(player.GetDynProperty(UnitDynPropertyEnum.Attack).baseValue, expertLvl, propsGrade, propsLevel, mType)} (In Battle)";
-                    uiMartialExpertInfo_textAdj2.text = $"+MpCost: {UnitModifyHelper.GetSkillExpertMpCost(SkillHelper.GetSkillMpCost(uiMartialInfo.martialData), expertLvl, propsGrade, propsLevel)} (In Battle)";
+                    uiMartialExpertInfo_textAdj2.text = $"+MpCost: {UnitModifyHelper.GetSkillExpertMpCost(SkillHelper.GetSkillMpCost(uiMartialInfo.martialData), expertLvl, propsGrade, propsLevel, player.GetGradeLvl() / 4)} (In Battle)";
                     uiMartialExpertInfo_textAdj3.gameObject.SetActive(false);
                     uiMartialExpertInfo_textAdj4.gameObject.SetActive(false);
                     uiMartialExpertInfo_textAdj5.gameObject.SetActive(false);
@@ -269,24 +269,33 @@ namespace MOD_nE7UL2.Mod
 
         public override void OnOpenUIEnd(OpenUIEnd e)
         {
-            base.OnOpenUIEnd(e);
+            lock (this)
+            {
+                base.OnOpenUIEnd(e);
 
-            OnUIOpen(e);
+                OnUIOpen(e);
+            }
         }
 
         [ErrorIgnore]
         public override void OnTimeUpdate200ms()
         {
-            base.OnTimeUpdate200ms();
+            lock (this)
+            {
+                base.OnTimeUpdate200ms();
 
-            OnUIUpdate();
+                OnUIUpdate();
+            }
         }
 
         public override void OnCloseUIEnd(CloseUIEnd e)
         {
-            base.OnCloseUIEnd(e);
+            lock (this)
+            {
+                base.OnCloseUIEnd(e);
 
-            OnUIClose(e);
+                OnUIClose(e);
+            }
         }
     }
 }

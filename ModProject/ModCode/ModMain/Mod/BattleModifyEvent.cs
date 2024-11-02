@@ -1,11 +1,9 @@
 ﻿using EBattleTypeData;
-using Il2CppSystem.Xml.Serialization;
 using MOD_nE7UL2.Const;
 using ModLib.Enum;
 using ModLib.Mod;
 using System;
 using System.Collections.Generic;
-using System.Linq;
 using UnityEngine;
 
 namespace MOD_nE7UL2.Mod
@@ -99,6 +97,7 @@ namespace MOD_nE7UL2.Mod
             {
                 var r = (attackUnitData.mp.Parse<float>() / attackUnitData.maxMP.value.Parse<float>());
                 e.dynV.baseValue += (atk * r).Parse<int>();
+                hitUnitData.AddMP(-(atkGradeLvl / 5));
             }
 
             //add dmg (sp)
@@ -247,7 +246,7 @@ namespace MOD_nE7UL2.Mod
                 var soleId = skill.skillData.data.soleID;
                 var grade = skill.skillData.data.propsInfoBase.grade;
                 var level = skill.skillData.data.propsInfoBase.level;
-                return UnitModifyHelper.GetSkillExpertMpCost(SkillHelper.GetSkillMpCost(skill.skillData.martialInfo.martialData), ExpertEvent.GetExpertLvl(soleId, grade, level), grade, level);
+                return UnitModifyHelper.GetSkillExpertMpCost(SkillHelper.GetSkillMpCost(skill.skillData.martialInfo.martialData), ExpertEvent.GetExpertLvl(soleId, grade, level), grade, level, humanData.worldUnitData.unit.GetGradeLvl() / 4);
             }
             return 0;
         }

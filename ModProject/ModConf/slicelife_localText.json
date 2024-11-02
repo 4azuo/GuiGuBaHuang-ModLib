@@ -1,0 +1,47 @@
+[
+	{
+		"id": "420072001",
+		"key": "trainee420071001",
+		"en|ch|tc": "Martial Lvl-1"
+	},
+	{
+		"id": "420073001",
+		"key": "trainee420071001desc",
+		"en|ch|tc": "+2% Max HP"
+	},
+	{
+		"id": "420072002",
+		"key": "trainee420071002",
+		"en|ch|tc": "Martial Lvl-2"
+	},
+	{
+		"id": "420073002",
+		"key": "trainee420071002desc",
+		"en|ch|tc": "+4% Max HP"
+	},
+	{
+		"id": "420072003",
+		"key": "trainee420071003",
+		"en|ch|tc": "Martial Lvl-3"
+	},
+	{
+		"id": "420073003",
+		"key": "trainee420071003desc",
+		"en|ch|tc": "+7% Max HP"
+	},
+	{
+		"id": "420072004",
+		"key": "trainee420071004",
+		"en|ch|tc": "Martial Lvl-4"
+	},
+	{
+		"id": "420073004",
+		"key": "trainee420071004desc",
+		"en|ch|tc": "+10% Max HP"
+	},
+	{
+		"id": "420072005",
+		"key": "trainee420071005",
+		"en|ch|tc": "Martial Lvl-5"
+	}
+]

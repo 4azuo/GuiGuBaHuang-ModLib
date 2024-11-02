@@ -35,6 +35,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="Const\ModConst.cs" />
+    <Compile Include="Enum\MerchantLuckEnum.cs" />
     <Compile Include="Enum\TraineeLuckEnum.cs" />
     <Compile Include="Enum\ModItemTypeEnum.cs" />
     <Compile Include="Enum\AnimaIncPropEnum.cs" />
@@ -48,6 +49,7 @@
     <Compile Include="Helper\PriceHelper.cs" />
     <Compile Include="ModMain.cs" />
     <Compile Include="Mod\ExpertEvent.cs" />
+    <Compile Include="Mod\SliceLifeQuestEvent.cs" />
     <Compile Include="Mod\SpiritlockEvent.cs" />
     <Compile Include="Mod\UnitModifyEvent.cs" />
     <Compile Include="Mod\UIEvent.cs" />
