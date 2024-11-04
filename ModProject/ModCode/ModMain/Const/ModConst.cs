@@ -31,6 +31,7 @@
         public const string EXPERT_EVENT = "ExpertEvent";
         public const string SPIRITLOCK_EVENT = "SpiritlockEvent";
         public const string SLICE_LIFE_QUEST_EVENT = "SliceLifeQuestEvent";
+        public const string INFLATIONARY_EVENT = "InflationaryEvent";
 
         public const string UTYPE_LUCK_EFX_FREE_STORAGE = "FreeStorage";
         public const string UTYPE_LUCK_EFX_BUY_COST = "BuyCost";
