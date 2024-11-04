@@ -67,7 +67,7 @@ namespace MOD_nE7UL2.Mod
                 var r = CommonTool.Random(0.00f, 100.00f);
                 var k = GetArrDicKey(build, e);
                 if (!ArrDic.Contains(k) &&
-                    MapBuildPropertyEvent.GetBuildProperty(build) > e.BuildCosts[build.gridData.areaBaseID - 1] &&
+                    MapBuildPropertyEvent.GetBuildProperty(build) > InflationaryEvent.CalculateInflationary(e.BuildCosts[build.gridData.areaBaseID - 1], GameHelper.GetGameYear()) &&
                     ValueHelper.IsBetween(r, 0.00f, rate == -1f ? e.BuildRate : rate))
                 {
                     ArrDic.Add(k);

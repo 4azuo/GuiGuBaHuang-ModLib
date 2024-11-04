@@ -13,19 +13,14 @@ namespace MOD_nE7UL2.Mod
     [Cache(ModConst.CONTRIBUTION_EXCHANGE_EVENT)]
     public class ContributionExchangeEvent : ModEvent
     {
-        public static int EXCHANGE_RATIO
+        //SpiritStones (Sell Price) / Contribution
+        public static int GetExchangeRatio()
         {
-            get
-            {
-                return ModMain.ModObj.InGameCustomSettings.ContributionExchangeConfigs.ExchangeRatio;
-            }
-        } //SpiritStones (Sell Price) / Contribution
+            return InflationaryEvent.CalculateInflationary(ModMain.ModObj.InGameCustomSettings.ContributionExchangeConfigs.ExchangeRatio, GameHelper.GetGameYear());
+        }
 
         public int CurMonthRatio { get; set; }
 
-        private UISchool uiSchool;
-        private UIPropSelect uiSelector;
-        private Button btnExchangeContribution;
         private Text txtExchangeRatio;
         private Text txtExchangeContribution;
 
@@ -37,39 +32,31 @@ namespace MOD_nE7UL2.Mod
 
         private void RandomRatio()
         {
-            CurMonthRatio = (EXCHANGE_RATIO * CommonTool.Random(0.80f, 1.30f)).Parse<int>();
+            CurMonthRatio = (GetExchangeRatio() * CommonTool.Random(0.80f, 1.30f)).Parse<int>();
         }
 
         public override void OnOpenUIEnd(OpenUIEnd e)
         {
             base.OnOpenUIEnd(e);
-            uiSchool = MonoBehaviour.FindObjectOfType<UISchool>();
-            if (uiSchool != null && btnExchangeContribution == null &&
-                g.world?.playerUnit?.data?.school?.schoolNameID == uiSchool.school.schoolNameID)
+            if (e.uiType.uiName == UIType.School.uiName)
             {
-                btnExchangeContribution = MonoBehaviour.Instantiate(uiSchool.btnGetMoney_En, uiSchool.transform, false);
-                btnExchangeContribution.onClick.AddListener((UnityAction)OpenSelector);
-                var btnText = btnExchangeContribution.GetComponentInChildren<Text>();
-                btnText.text = "Exchange Contribution";
+                var uiSchool = g.ui.GetUI<UISchool>(UIType.School);
+                if (g.world?.playerUnit?.data?.school?.schoolNameID == uiSchool.school.schoolNameID)
+                {
+                    var btnExchangeContribution = MonoBehaviour.Instantiate(uiSchool.btnGetMoney_En, uiSchool.transform, false);
+                    btnExchangeContribution.onClick.AddListener((UnityAction)OpenSelector);
+                    var btnText = btnExchangeContribution.GetComponentInChildren<Text>();
+                    btnText.text = "Exchange Contribution";
+                }
             }
         }
 
-        public override void OnCloseUIEnd(CloseUIEnd e)
+        [ErrorIgnore]
+        public override void OnTimeUpdate200ms()
         {
-            base.OnCloseUIEnd(e);
-            uiSchool = MonoBehaviour.FindObjectOfType<UISchool>();
-            if (uiSchool == null)
-            {
-                btnExchangeContribution = null;
-                txtExchangeRatio = null;
-                txtExchangeContribution = null;
-            }
-        }
-
-        public override void OnFrameUpdate()
-        {
-            base.OnFrameUpdate();
-            if (uiSchool != null && uiSelector != null && txtExchangeContribution != null)
+            base.OnTimeUpdate200ms();
+            var uiSelector = g.ui.GetUI<UIPropSelect>(UIType.PropSelect);
+            if ((uiSelector?.gameObject?.active ?? false) && uiSelector.CompareTag(ModConst.CONTRIBUTION_EXCHANGE_EVENT))
             {
                 var sp = CalExchangeSpiritStones();
                 txtExchangeContribution.text = $"{sp} Spirit Stones → {CalExchangeContributions(sp)} Contribution";
@@ -78,7 +65,8 @@ namespace MOD_nE7UL2.Mod
 
         private void OpenSelector()
         {
-            uiSelector = g.ui.OpenUI<UIPropSelect>(UIType.PropSelect);
+            var uiSelector = g.ui.OpenUI<UIPropSelect>(UIType.PropSelect);
+            uiSelector.tag = ModConst.CONTRIBUTION_EXCHANGE_EVENT;
 
             uiSelector.onOKCall = (Il2CppSystem.Action)Exchange;
 
@@ -103,6 +91,7 @@ namespace MOD_nE7UL2.Mod
         {
             if (UIPropSelect.allSlectItems.Count > 0)
             {
+                var uiSchool = g.ui.GetUI<UISchool>(UIType.School);
                 var sp = CalExchangeSpiritStones();
                 uiSchool.school.buildData.AddMoney(sp);
                 g.world.playerUnit.data.RewardPropItem(ModLibConst.CONTRIBUTION_PROP_ID, CalExchangeContributions(sp));
