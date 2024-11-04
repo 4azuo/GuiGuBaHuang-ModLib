@@ -1,4 +1,5 @@
 ﻿using MOD_nE7UL2.Const;
+using MOD_nE7UL2.Enum;
 using ModLib.Mod;
 using System;
 using System.Collections.Generic;
@@ -9,6 +10,8 @@ namespace MOD_nE7UL2.Mod
     [Cache(ModConst.MAP_BUILD_PROPERTY_EVENT)]
     public class MapBuildPropertyEvent : ModEvent
     {
+        public const float FIXING_RATE = 6.00f;
+
         public IDictionary<string, long> Budget { get; set; } = new Dictionary<string, long>();
 
         public override void OnLoadGame()
@@ -30,10 +33,10 @@ namespace MOD_nE7UL2.Mod
 
             foreach (var wunit in g.world.unit.GetUnits())
             {
-                var income = (
-                        Math.Pow(2, wunit.GetGradeLvl()) * 6.00f *
-                        (UnitTypeEvent.GetUnitTypeEnum(wunit) == Enum.UnitTypeEnum.Merchant ? 1.30f : 1.00f)
-                    ).Parse<long>();
+                var income = InflationaryEvent.CalculateInflationary((
+                        Math.Pow(2, wunit.GetGradeLvl()) * FIXING_RATE *
+                        (1.00f + UnitTypeLuckEnum.Merchant.CustomEffects[ModConst.UTYPE_LUCK_EFX_SELL_VALUE].Value0.Parse<float>() + MerchantLuckEnum.Merchant.GetCurLevel(wunit) * MerchantLuckEnum.Merchant.IncSellValueEachLvl)
+                    ).Parse<long>(), GameHelper.GetGameYear());
                 var town = g.world.build.GetBuild<MapBuildTown>(wunit.data.unitData.GetPoint());
                 if (town != null)
                 {

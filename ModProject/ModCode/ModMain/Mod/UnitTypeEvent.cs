@@ -34,16 +34,17 @@ namespace MOD_nE7UL2.Mod
                 AddMerchantLuck(wunit);
 
                 //merchant
+                var money = wunit.GetUnitMoney();
+
                 if (UnitTypeDic[unitId] == UnitTypeEnum.Merchant)
                 {
-                    var money = wunit.GetUnitMoney();
                     wunit.AddUnitMoney((money * UnitTypeEnum.Merchant.CustomLuck.CustomEffects[ModConst.UTYPE_LUCK_EFX_PASSIVE_INCOME].Value0.Parse<float>()).Parse<int>());
+                }
 
-                    var merchantLvl = MerchantLuckEnum.Merchant.GetCurLevel(wunit);
-                    if (merchantLvl > 0)
-                    {
-                        wunit.AddUnitMoney((money * merchantLvl * MerchantLuckEnum.Merchant.IncPassiveIncomeEachLvl).Parse<int>());
-                    }
+                var merchantLvl = MerchantLuckEnum.Merchant.GetCurLevel(wunit);
+                if (merchantLvl > 0)
+                {
+                    wunit.AddUnitMoney((money * merchantLvl * MerchantLuckEnum.Merchant.IncPassiveIncomeEachLvl).Parse<int>());
                 }
 
                 //add property

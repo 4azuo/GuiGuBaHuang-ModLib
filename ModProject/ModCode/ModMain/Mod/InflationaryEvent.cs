@@ -1,11 +1,6 @@
 ﻿using MOD_nE7UL2.Const;
-using MOD_nE7UL2.Enum;
-using ModLib.Enum;
 using ModLib.Mod;
-using ModLib.Object;
 using System;
-using System.Collections.Generic;
-using System.Linq;
 
 namespace MOD_nE7UL2.Mod
 {
@@ -26,25 +21,30 @@ namespace MOD_nE7UL2.Mod
             Inflationary(1);
         }
 
-        public void Inflationary(int year)
+        public static void Inflationary(int year)
         {
             foreach (var props in g.conf.itemProps._allConfList)
             {
-                props.sale = CalInflationary(props.sale, year);
-                props.worth = CalInflationary(props.worth, year);
+                props.sale = CalculateInflationary(props.sale, year);
+                props.worth = CalculateInflationary(props.worth, year);
             }
             foreach (var item in g.conf.itemSkill._allConfList)
             {
-                item.price = CalInflationary(item.price, year);
-                item.cost = CalInflationary(item.cost, year);
-                item.sale = CalInflationary(item.sale, year);
-                item.worth = CalInflationary(item.worth, year);
+                item.price = CalculateInflationary(item.price, year);
+                item.cost = CalculateInflationary(item.cost, year);
+                item.sale = CalculateInflationary(item.sale, year);
+                item.worth = CalculateInflationary(item.worth, year);
             }
         }
 
-        public int CalInflationary(int value, int year)
+        public static int CalculateInflationary(int value, int year)
         {
             return Convert.ToInt32(value * Math.Pow(InflationaryRate, year));
+        }
+
+        public static long CalculateInflationary(long value, int year)
+        {
+            return Convert.ToInt64(value * Math.Pow(InflationaryRate, year));
         }
     }
 }
