@@ -1,9 +1,14 @@
 - npc learn new skill
 
-- mod Halo
+- improve Halo
 
 - rebirth
 
-- slice of life
+- mayor and his relationships
 
 - new game+
+
+- add more mod_configs
+- rebalance attributes
+
+- kill in town, will be block

@@ -1,0 +1,26 @@
+[
+  {
+    "id": "444443001",
+    "requireNumber": "60"
+  },
+  {
+    "id": "444443002",
+    "requireNumber": "120"
+  },
+  {
+    "id": "444443003",
+    "requireNumber": "240"
+  },
+  {
+    "id": "444443004",
+    "requireNumber": "480"
+  },
+  {
+    "id": "444443005",
+    "requireNumber": "1200"
+  },
+  {
+    "id": "444443006",
+    "requireNumber": "3600"
+  }
+]

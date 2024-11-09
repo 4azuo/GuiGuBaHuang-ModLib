@@ -1,86 +1,170 @@
-﻿using MOD_nE7UL2.Const;
+﻿using EBattleTypeData;
+using MOD_nE7UL2.Const;
 using ModLib.Mod;
-using ModLib.Object;
 using System;
 using System.Collections.Generic;
+using System.Linq;
+using UnityEngine;
 
 namespace MOD_nE7UL2.Mod
 {
     [Cache(ModConst.SLICE_LIFE_QUEST_EVENT)]
     public class SliceLifeQuestEvent : ModEvent
     {
-        public class SliceLifeQuestInfo
+        public const int TASK_BASE_ID = 444443000;
+        public const int LUCK_BASE_ID = 444441000;
+
+        public class SliceLifeTaskInfo
         {
-            public int QuestLevel { get; set; }
+            public int TaskLevel { get; set; }
             public Func<bool> ActiveCondition { get; set; }
-            public int LuckId { get; set; }
-            public int FinishCondition_MonthCount { get; set; }
+            public int TaskId { get { return TASK_BASE_ID + TaskLevel; } }
+            public int LuckId { get { return LUCK_BASE_ID + TaskLevel; } }
         }
 
-        public static IList<SliceLifeQuestInfo> QuestInfo { get; set; } = new List<SliceLifeQuestInfo>
+        public static IList<SliceLifeTaskInfo> TaskInfo { get; set; } = new List<SliceLifeTaskInfo>
         {
-            new SliceLifeQuestInfo
+            new SliceLifeTaskInfo
             {
-                QuestLevel = 1,
+                TaskLevel = 1,
                 ActiveCondition = () =>
                 {
-                    return GameHelper.GetGameYear() >= 5;
+                    return GameHelper.GetGameYear() >= 2;
                 },
-                LuckId = 0,
-                FinishCondition_MonthCount = 36,
             },
-            new SliceLifeQuestInfo
+            new SliceLifeTaskInfo
             {
-                QuestLevel = 2,
+                TaskLevel = 2,
                 ActiveCondition = () =>
                 {
-                    return GameHelper.GetGameYear() >= 20;
+                    return GameHelper.GetGameYear() >= 10;
                 },
-                LuckId = 0,
-                FinishCondition_MonthCount = 60,
             },
-            new SliceLifeQuestInfo
+            new SliceLifeTaskInfo
             {
-                QuestLevel = 3,
+                TaskLevel = 3,
                 ActiveCondition = () =>
                 {
-                    return GameHelper.GetGameYear() >= 35;
+                    return GameHelper.GetGameYear() >= 30;
                 },
-                LuckId = 0,
-                FinishCondition_MonthCount = 96,
             },
-            new SliceLifeQuestInfo
+            new SliceLifeTaskInfo
             {
-                QuestLevel = 4,
+                TaskLevel = 4,
                 ActiveCondition = () =>
                 {
-                    return GameHelper.GetGameYear() >= 60;
+                    return GameHelper.GetGameYear() >= 70;
                 },
-                LuckId = 0,
-                FinishCondition_MonthCount = 144,
             },
-            new SliceLifeQuestInfo
+            new SliceLifeTaskInfo
             {
-                QuestLevel = 5,
+                TaskLevel = 5,
                 ActiveCondition = () =>
                 {
-                    return GameHelper.GetGameYear() >= 100;
+                    return GameHelper.GetGameYear() >= 150;
                 },
-                LuckId = 0,
-                FinishCondition_MonthCount = 240,
+            },
+            new SliceLifeTaskInfo
+            {
+                TaskLevel = 6,
+                ActiveCondition = () =>
+                {
+                    return GameHelper.GetGameYear() >= 400;
+                },
             }
         };
 
-        public int QuestLevel { get; set; } = 0;
-        public int MonthCount { get; set; } = 0;
-        public long MoneyOut { get; set; } = 0;
-        public long MoneyIn { get; set; } = 0;
+        public int TaskLevel { get; set; } = 0;
+        public int LastCount { get; set; } = 0;
 
-        public override void OnYearly()
+        public override void OnLoadGame()
         {
-            base.OnYearly();
+            base.OnLoadGame();
+            AddTask();
+        }
 
+        public override void OnMonthly()
+        {
+            base.OnMonthly();
+            var curTask = AddTask();
+            if (curTask == null)
+            {
+                LastCount = 0;
+            }
+            else
+            {
+                var task = curTask.TryCast<Task104>();
+                task.taskData.curCount++;
+                LastCount = task.taskData.curCount;
+                if (task.taskData.curCount >= task.data.task104Item.requireNumber)
+                {
+                    TaskLevel++;
+                    LastCount = 0;
+                    AddLuck();
+                    RemoveTask();
+                }
+            }
+        }
 
+        public override void OnBattleEnd(BattleEnd e)
+        {
+            base.OnBattleEnd(e);
+            var curTask = AddTask();
+            if (curTask == null)
+            {
+                LastCount = 0;
+            }
+            else
+            {
+                curTask.taskData.curCount = 0;
+                LastCount = curTask.taskData.curCount;
+            }
+        }
+
+        private void RemoveTask()
+        {
+            foreach (var tInfo in TaskInfo)
+            {
+                var task = g.world.playerUnit.GetTask(tInfo.TaskId).ToArray().FirstOrDefault();
+                if (task != null)
+                    g.world.playerUnit.DelTask(task);
+            }
+        }
+
+        private TaskBase AddTask()
+        {
+            var taskInfo = TaskInfo.FirstOrDefault(x => x.TaskLevel == TaskLevel + 1);
+            if (taskInfo == null)
+            {
+                return null;
+            }
+            var task = g.world.playerUnit.GetTask(taskInfo.TaskId).ToArray().FirstOrDefault();
+            if (task == null & taskInfo.ActiveCondition())
+            {
+                var rs = g.world.playerUnit.CreateTask(new DataUnit.TaskData
+                {
+                    id = taskInfo.TaskId,
+                    soleID = CommonTool.SoleID(),
+                    state = TaskState.Unfinished,
+                    curCount = LastCount,
+                });
+                return rs;
+            }
+            return task;
+        }
+
+        private void RemoveLuck()
+        {
+            foreach (var tInfo in TaskInfo)
+            {
+                g.world.playerUnit.DelLuck(tInfo.LuckId);
+            }
+        }
+
+        private void AddLuck()
+        {
+            RemoveLuck();
+            g.world.playerUnit.AddLuck(TaskInfo[TaskLevel - 1].LuckId);
         }
     }
 }

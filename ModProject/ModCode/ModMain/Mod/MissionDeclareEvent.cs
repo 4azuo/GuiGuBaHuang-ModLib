@@ -107,10 +107,7 @@ namespace MOD_nE7UL2.Mod
             base.OnFrameUpdate();
             if (uiTownBounty != null && btnCommission != null)
             {
-                if (btnCommission != null)
-                {
-                    btnCommission.gameObject.SetActive(g.world.run.roundMonth != LastMonthCommission);
-                }
+                btnCommission?.gameObject.SetActive(g.world.run.roundMonth != LastMonthCommission);
 
                 if (txtCommissionInfo != null)
                 {
@@ -285,16 +282,6 @@ Your commissions:
 Your commissions:
 {msg}
 ";
-                //                DramaTool.OpenDrama(480030200, new DramaData
-                //                {
-                //                    dialogueText = 
-                //                    {
-                //                        [480030200] = $@"
-                //Your commissions:
-                //{msg}
-                //"
-                //                    }
-                //                });
             }
         }
     }

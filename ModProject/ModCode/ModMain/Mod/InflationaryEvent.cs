@@ -39,11 +39,15 @@ namespace MOD_nE7UL2.Mod
 
         public static int CalculateInflationary(int value, int year)
         {
+            if (value <= 0)
+                return value;
             return Convert.ToInt32(value * Math.Pow(InflationaryRate, year));
         }
 
         public static long CalculateInflationary(long value, int year)
         {
+            if (value <= 0)
+                return value;
             return Convert.ToInt64(value * Math.Pow(InflationaryRate, year));
         }
     }
