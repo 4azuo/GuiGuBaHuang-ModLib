@@ -71,7 +71,7 @@ namespace MOD_nE7UL2.Mod
                 var spValue = props.Where(x => x.propsID == ModLibConst.MONEY_PROP_ID).Sum(x => x.propsCount * x.propsInfoBase.worth);
                 txtStorageMoney.text = $"Storage: {StorageValue} Spirit Stones ({spValue} cash, {StorageValue - spValue} items)";
                 //FreeStorage
-                txtFee.text = uType == UnitTypeEnum.Merchant ? string.Empty : $"Fee: {FEE_RATE * 100:0.0}% (-{(StorageValue * FEE_RATE).Parse<int>()} Spirit Stones monthly)";
+                txtFee.text = uType == UnitTypeEnum.Merchant ? "Fee: free for merchant-master." : $"Fee: {FEE_RATE * 100:0.0}% (-{(StorageValue * FEE_RATE).Parse<int>()} Spirit Stones monthly)";
             }
         }
 
