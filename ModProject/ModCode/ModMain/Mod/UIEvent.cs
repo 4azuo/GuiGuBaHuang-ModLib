@@ -269,33 +269,21 @@ namespace MOD_nE7UL2.Mod
 
         public override void OnOpenUIEnd(OpenUIEnd e)
         {
-            lock (this)
-            {
-                base.OnOpenUIEnd(e);
-
-                OnUIOpen(e);
-            }
+            base.OnOpenUIEnd(e);
+            OnUIOpen(e);
         }
 
         [ErrorIgnore]
         public override void OnTimeUpdate200ms()
         {
-            lock (this)
-            {
-                base.OnTimeUpdate200ms();
-
-                OnUIUpdate();
-            }
+            base.OnTimeUpdate200ms();
+            OnUIUpdate();
         }
 
         public override void OnCloseUIEnd(CloseUIEnd e)
         {
-            lock (this)
-            {
-                base.OnCloseUIEnd(e);
-
-                OnUIClose(e);
-            }
+            base.OnCloseUIEnd(e);
+            OnUIClose(e);
         }
     }
 }

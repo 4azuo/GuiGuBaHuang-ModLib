@@ -25,6 +25,8 @@ namespace MOD_nE7UL2.Mod
         {
             foreach (var props in g.conf.itemProps._allConfList)
             {
+                if (props.type == (int)PropsType.Money)
+                    continue;
                 props.sale = CalculateInflationary(props.sale, year);
                 props.worth = CalculateInflationary(props.worth, year);
             }

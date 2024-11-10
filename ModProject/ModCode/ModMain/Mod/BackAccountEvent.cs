@@ -1,0 +1,47 @@
+﻿using EGameTypeData;
+using MOD_nE7UL2.Const;
+using ModLib.Mod;
+using System.Collections.Generic;
+using UnityEngine.Events;
+using UnityEngine.UI;
+using static MOD_nE7UL2.Object.InGameStts;
+
+namespace MOD_nE7UL2.Mod
+{
+    [Cache(ModConst.BANK_ACCOUNT_EVENT)]
+    public class BackAccountEvent : ModEvent
+    {
+        public static _BankAccountConfigs BankAccountConfigs => ModMain.ModObj.InGameCustomSettings.BankAccountConfigs;
+
+        public IList<string> RegisterdTown { get; set; } = new List<string>();
+
+        public override void OnOpenUIEnd(OpenUIEnd e)
+        {
+            base.OnOpenUIEnd(e);
+
+            if (e.uiType.uiName == UIType.TownStorage.uiName)
+            {
+                var player = g.world.playerUnit;
+                var curTown = g.world.build.GetBuild(new UnityEngine.Vector2Int(player.data.unitData.pointX, player.data.unitData.pointY));
+
+                if (!RegisterdTown.Contains(curTown.buildData.id))
+                {
+                    var uiTownStorage = g.ui.GetUI<UITownStorage>(UIType.TownStorage);
+                    var btn1 = uiTownStorage.btnProps.Replace().Size(270f, 90f);
+                    btn1.GetComponentInChildren<Text>().text = $"Register ({Cost(curTown.gridData.areaBaseID)} SP)";
+                    btn1.onClick.AddListener((UnityAction)(() =>
+                    {
+                        g.world.playerUnit.AddUnitMoney(-Cost(curTown.gridData.areaBaseID));
+                        RegisterdTown.Add(curTown.buildData.id);
+                        g.ui.CloseUI(uiTownStorage);
+                    }));
+                }
+            }
+        }
+
+        public static int Cost(int areaId)
+        {
+            return BankAccountConfigs.OpenFee[areaId];
+        }
+    }
+}
