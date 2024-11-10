@@ -21,7 +21,6 @@ namespace MOD_nE7UL2.Mod
 
         public int CurMonthRatio { get; set; }
 
-        private Text txtExchangeRatio;
         private Text txtExchangeContribution;
 
         public override void OnMonthly()
@@ -55,12 +54,8 @@ namespace MOD_nE7UL2.Mod
         public override void OnTimeUpdate200ms()
         {
             base.OnTimeUpdate200ms();
-            var uiSelector = g.ui.GetUI<UIPropSelect>(UIType.PropSelect);
-            if ((uiSelector?.gameObject?.active ?? false) && uiSelector.CompareTag(ModConst.CONTRIBUTION_EXCHANGE_EVENT))
-            {
-                var sp = CalExchangeSpiritStones();
-                txtExchangeContribution.text = $"{sp} Spirit Stones → {CalExchangeContributions(sp)} Contribution";
-            }
+            var sp = CalExchangeSpiritStones();
+            txtExchangeContribution.text = $"{sp} Spirit Stones → {CalExchangeContributions(sp)} Contribution";
         }
 
         private void OpenSelector()
@@ -70,21 +65,10 @@ namespace MOD_nE7UL2.Mod
 
             uiSelector.onOKCall = (Il2CppSystem.Action)Exchange;
 
-            txtExchangeRatio = MonoBehaviour.Instantiate(uiSelector.textInfo, uiSelector.transform, false);
+            var txtExchangeRatio = uiSelector.textInfo.Create().Format().Align().Pos(uiSelector.textTitle1.gameObject, 0f, 0.3f);
             txtExchangeRatio.text = $"Exchannge Ratio {CurMonthRatio} Spirit Stones → 1 Contribution";
-            txtExchangeRatio.transform.position = new Vector3(uiSelector.textTitle1.transform.position.x, uiSelector.textTitle1.transform.position.y + 0.3f);
-            txtExchangeRatio.verticalOverflow = VerticalWrapMode.Overflow;
-            txtExchangeRatio.horizontalOverflow = HorizontalWrapMode.Overflow;
-            txtExchangeRatio.alignment = TextAnchor.MiddleLeft;
-            txtExchangeRatio.fontSize = 15;
-            txtExchangeRatio.color = Color.black;
 
-            txtExchangeContribution = MonoBehaviour.Instantiate(uiSelector.textInfo, uiSelector.transform, false);
-            txtExchangeContribution.transform.position = new Vector3(uiSelector.btnOK.transform.position.x, uiSelector.btnOK.transform.position.y - 0.5f);
-            txtExchangeContribution.verticalOverflow = VerticalWrapMode.Overflow;
-            txtExchangeContribution.horizontalOverflow = HorizontalWrapMode.Overflow;
-            txtExchangeContribution.fontSize = 15;
-            txtExchangeContribution.color = Color.black;
+            txtExchangeContribution = uiSelector.textInfo.Create().Format().Align().Pos(uiSelector.btnOK.gameObject, 0f, -0.5f);
         }
 
         private void Exchange()

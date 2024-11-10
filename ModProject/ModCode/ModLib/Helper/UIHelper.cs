@@ -41,4 +41,9 @@ public static class UIHelper
 
     //    return go;
     //}
+
+    public static bool IsActive(this UIBase ui)
+    {
+        return ui?.gameObject?.active ?? false;
+    }
 }

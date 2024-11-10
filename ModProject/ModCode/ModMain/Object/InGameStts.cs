@@ -182,5 +182,13 @@ namespace MOD_nE7UL2.Object
         }
         public _BattleRewardConfigs BattleRewardConfigs { get; set; }
         #endregion
+
+        #region BankAccountConfigs
+        public class _BankAccountConfigs
+        {
+            public IDictionary<int, int> OpenFee { get; set; }
+        }
+        public _BankAccountConfigs BankAccountConfigs { get; set; }
+        #endregion
     }
 }

@@ -7,7 +7,7 @@ namespace MOD_nE7UL2.Mod
     [Cache(ModConst.SPIRITLOCK_EVENT)]
     public class SpiritlockEvent : ModEvent
     {
-        public static int[] VenerableTortoises = new int[]
+        public static int[] VENERABLE_TORTOISES = new int[]
         {
             12005,
             12006,
@@ -18,7 +18,7 @@ namespace MOD_nE7UL2.Mod
             12011
         };
 
-        public static int SpiritlockCircle = 12012;
+        public const int SPIRITLOCK_CIRCLE = 12012;
 
         public override void OnIntoBattleFirst(UnitCtrlBase e)
         {
@@ -26,13 +26,13 @@ namespace MOD_nE7UL2.Mod
             var data = e.data.TryCast<UnitDataMonst>();
             if (data != null)
             {
-                if (VenerableTortoises.Contains(data.unitAttrItem.id))
+                if (VENERABLE_TORTOISES.Contains(data.unitAttrItem.id))
                 {
                     e.data.moveSpeed.baseValue = 0;
                     e.data.defense.baseValue /= 2;
                     e.data.maxHP.baseValue /= 2;
                 }
-                else if (data.unitAttrItem.id == SpiritlockCircle)
+                else if (data.unitAttrItem.id == SPIRITLOCK_CIRCLE)
                 {
                     e.data.moveSpeed.baseValue = 0;
                 }

@@ -32,8 +32,6 @@ namespace MOD_nE7UL2.Mod
         }
 
         private Text txtMarketST;
-        private Text txtInfo;
-        private Text txtInfo2;
 
         public IDictionary<string, float> MarketPriceRate { get; set; } = new Dictionary<string, float>();
 
@@ -51,7 +49,7 @@ namespace MOD_nE7UL2.Mod
 
         public override void OnMonthly()
         {
-            base.OnLoadGame();
+            base.OnMonthly();
             var eventBuyRate = ModMain.ModObj.InGameCustomSettings.RealMarketConfigs.GetAddBuyRate();
             foreach (var town in g.world.build.GetBuilds().ToArray().Where(x => x.allBuildSub.ContainsKey(MapBuildSubType.TownMarketPill)))
             {
@@ -61,22 +59,23 @@ namespace MOD_nE7UL2.Mod
 
         public override void OnOpenUIEnd(OpenUIEnd e)
         {
-            base.OnLoadGame();
+            base.OnOpenUIEnd(e);
             var uType = UnitTypeEvent.GetUnitTypeEnum(g.world.playerUnit);
 
             if (e.uiType.uiName == UIType.TownMarketBuy.uiName)
             {
                 var uiTownMarketBuy = g.ui.GetUI<UITownMarketBuy>(UIType.TownMarketBuy);
+
                 //add component
                 txtMarketST = uiTownMarketBuy.textMoney.Create().Pos(uiTownMarketBuy.textMoney.gameObject, 1.2f, 0f).Align();
 
-                txtInfo = uiTownMarketBuy.textMoney.Create().Pos(uiTownMarketBuy.textMoney.gameObject, 4.0f, 0f).Align().Format(Color.red);
+                var txtInfo = uiTownMarketBuy.textMoney.Create().Pos(uiTownMarketBuy.textMoney.gameObject, 4.0f, 0f).Align().Format(Color.red);
                 txtInfo.text = $"Price rate: {MarketPriceRate[uiTownMarketBuy.town.buildData.id]:0.00}%";
                 if (uType == UnitTypeEnum.Merchant)
                     txtInfo.text += $" (Merchant {uType.CustomLuck.CustomEffects[ModConst.UTYPE_LUCK_EFX_BUY_COST].Value0.Parse<float>() * 100.0f:0.00}%)";
             }
 
-            if (e.uiType.uiName == UIType.PropSelectCount.uiName && (g.ui.GetUI(UIType.TownMarketBuy)?.gameObject?.active ?? false))
+            if (e.uiType.uiName == UIType.PropSelectCount.uiName)
             {
                 var uiTownMarketBuy = g.ui.GetUI<UITownMarketBuy>(UIType.TownMarketBuy);
                 var uiPropSelectCount = g.ui.GetUI<UIPropSelectCount>(UIType.PropSelectCount);
@@ -87,10 +86,10 @@ namespace MOD_nE7UL2.Mod
                 uiPropSelectCount.oneCost = basePrice;
                 uiPropSelectCount.UpdateCountUI();
 
-                txtInfo2 = uiPropSelectCount.textName.Create().Pos(uiPropSelectCount.ptextInfo.gameObject, 0f, 0.2f).Align().Format(Color.red);
-                txtInfo2.text = $"Price rate: {MarketPriceRate[uiTownMarketBuy.town.buildData.id]:0.00}%";
+                var txtInfo = uiPropSelectCount.textName.Create().Pos(uiPropSelectCount.ptextInfo.gameObject, 0f, 0.2f).Align(TextAnchor.MiddleCenter).Format(Color.red);
+                txtInfo.text = $"Price rate: {MarketPriceRate[uiTownMarketBuy.town.buildData.id]:0.00}%";
                 if (uType == UnitTypeEnum.Merchant)
-                    txtInfo2.text += $" (Merchant {uType.CustomLuck.CustomEffects[ModConst.UTYPE_LUCK_EFX_BUY_COST].Value0.Parse<float>() * 100.0f:0.00}%)";
+                    txtInfo.text += $" (Merchant {uType.CustomLuck.CustomEffects[ModConst.UTYPE_LUCK_EFX_BUY_COST].Value0.Parse<float>() * 100.0f:0.00}%)";
 
                 uiPropSelectCount.btnOK.onClick.m_Calls.m_RuntimeCalls.Insert(0, new InvokableCall((UnityAction)(() =>
                 {
@@ -105,10 +104,7 @@ namespace MOD_nE7UL2.Mod
         {
             base.OnTimeUpdate200ms();
             var uiTownMarketBuy = g.ui.GetUI<UITownMarketBuy>(UIType.TownMarketBuy);
-            if (uiTownMarketBuy?.gameObject?.active ?? false)
-            {
-                txtMarketST.text = $"Market: {MapBuildPropertyEvent.GetBuildProperty(uiTownMarketBuy.town)} Spirit Stones";
-            }
+            txtMarketST.text = $"Market: {MapBuildPropertyEvent.GetBuildProperty(uiTownMarketBuy.town)} Spirit Stones";
         }
     }
 }

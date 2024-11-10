@@ -51,6 +51,7 @@
     <Compile Include="Mod\ExpertEvent.cs" />
     <Compile Include="Mod\InflationaryEvent.cs" />
     <Compile Include="Mod\SliceLifeQuestEvent.cs" />
+    <Compile Include="Mod\BackAccountEvent.cs" />
     <Compile Include="Mod\UITitleScreenEvent.cs" />
     <Compile Include="Mod\SpiritlockEvent.cs" />
     <Compile Include="Mod\UnitModifyEvent.cs" />

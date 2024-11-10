@@ -107,16 +107,20 @@ public static class ObjectHelper
 
     public static T Replace<T>(this T obj, Transform transform = null) where T : MonoBehaviour
     {
-        var newObj = MonoBehaviour.Instantiate(obj, transform ?? obj.transform, false);
-        obj.enabled = false;
+        var newObj = MonoBehaviour.Instantiate(obj, transform ?? obj.transform.parent, false);
+        obj.gameObject.SetActive(false);
+        if (newObj is Button)
+            (newObj as Button).onClick.m_Calls.Clear();
         return newObj;
     }
 
     public static T Create<T>(this T obj, Transform transform = null) where T : MonoBehaviour
     {
-        var newObj = MonoBehaviour.Instantiate(obj, transform ?? obj.transform, false);
+        var newObj = MonoBehaviour.Instantiate(obj, transform ?? obj.transform.parent, false);
         if (newObj is Text)
             (newObj as Text).text = string.Empty;
+        if (newObj is Button)
+            (newObj as  Button).onClick.m_Calls.Clear();
         return newObj;
     }
 
@@ -136,9 +140,21 @@ public static class ObjectHelper
         return obj;
     }
 
-    public static T Pos<T>(this T obj, GameObject origin, float deltaX = 0f, float deltaY = 0f) where T : Text
+    public static T Pos<T>(this T obj, GameObject origin, float deltaX = 0f, float deltaY = 0f, float deltaZ = 0f) where T : MonoBehaviour
     {
-        obj.transform.position = new Vector3(origin.transform.position.x + deltaX, origin.transform.position.y + deltaY);
+        obj.transform.position = new Vector3(origin.transform.position.x + deltaX, origin.transform.position.y + deltaY, origin.transform.position.z + deltaZ);
+        return obj;
+    }
+
+    public static T Pos<T>(this T obj, float deltaX = 0f, float deltaY = 0f, float deltaZ = 0f) where T : MonoBehaviour
+    {
+        obj.transform.position = new Vector3(deltaX, deltaY, deltaZ);
+        return obj;
+    }
+
+    public static T Size<T>(this T obj, float scaleX = 0f, float scaleY = 0f, float scaleZ = 0f) where T : MonoBehaviour
+    {
+        obj.GetComponent<RectTransform>().sizeDelta = new Vector3(scaleX, scaleY, scaleZ);
         return obj;
     }
 }

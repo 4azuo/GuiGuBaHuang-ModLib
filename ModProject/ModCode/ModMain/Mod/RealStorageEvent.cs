@@ -6,7 +6,6 @@ using System.Linq;
 using UnityEngine.UI;
 using MOD_nE7UL2.Enum;
 using ModLib.Const;
-using static UIMapMainBase;
 
 namespace MOD_nE7UL2.Mod
 {
@@ -21,8 +20,6 @@ namespace MOD_nE7UL2.Mod
             }
         }
 
-        private Text txtWarning1;
-        private Text txtWarning2;
         private Text txtStorageMoney;
         private Text txtFee;
 
@@ -44,10 +41,10 @@ namespace MOD_nE7UL2.Mod
 
                 if (Debt > 0)
                 {
-                    txtWarning1 = ObjectHelper.Create(uiTownStorageProps.textTip).Align(TextAnchor.MiddleCenter).Format(Color.red, 17).Pos(uiTownStorageProps.textTitle1.gameObject, 0f, -1.2f);
+                    var txtWarning1 = ObjectHelper.Create(uiTownStorageProps.textTip).Align(TextAnchor.MiddleCenter).Format(Color.red, 17).Pos(uiTownStorageProps.textTitle1.gameObject, 0f, -1.2f);
                     txtWarning1.text = $"You have to pay your debt ({Debt} Spirit Stones) next month!";
 
-                    txtWarning2 = ObjectHelper.Create(uiTownStorageProps.textTip).Align(TextAnchor.MiddleCenter).Format(Color.red, 17).Pos(uiTownStorageProps.textTitle2.gameObject, 0f, -1.2f);
+                    var txtWarning2 = ObjectHelper.Create(uiTownStorageProps.textTip).Align(TextAnchor.MiddleCenter).Format(Color.red, 17).Pos(uiTownStorageProps.textTitle2.gameObject, 0f, -1.2f);
                     txtWarning2.text = $"You have to pay your debt ({Debt} Spirit Stones) next month!";
 
                     foreach (var item in uiTownStorageProps.GetComponentsInChildren<ScrollRect>().SelectMany(x => x.GetComponentsInChildren<Image>()))
@@ -63,16 +60,13 @@ namespace MOD_nE7UL2.Mod
         {
             base.OnTimeUpdate200ms();
             var uiTownStorageProps = g.ui.GetUI<UITownStorageProps>(UIType.TownStorageProps);
-            if (uiTownStorageProps?.gameObject?.active ?? false)
-            {
-                var uType = UnitTypeEvent.GetUnitTypeEnum(g.world.playerUnit);
-                var props = uiTownStorageProps.townStorage?.data?.propData?.allProps?.ToArray() ?? new DataProps.PropsData[0];
-                StorageValue = props.Sum(x => x.propsCount * x.propsInfoBase.worth);
-                var spValue = props.Where(x => x.propsID == ModLibConst.MONEY_PROP_ID).Sum(x => x.propsCount * x.propsInfoBase.worth);
-                txtStorageMoney.text = $"Storage: {StorageValue} Spirit Stones ({spValue} cash, {StorageValue - spValue} items)";
-                //FreeStorage
-                txtFee.text = uType == UnitTypeEnum.Merchant ? "Fee: free for merchant-master." : $"Fee: {FEE_RATE * 100:0.0}% (-{(StorageValue * FEE_RATE).Parse<int>()} Spirit Stones monthly)";
-            }
+            var uType = UnitTypeEvent.GetUnitTypeEnum(g.world.playerUnit);
+            var props = uiTownStorageProps.townStorage?.data?.propData?.allProps?.ToArray() ?? new DataProps.PropsData[0];
+            StorageValue = props.Sum(x => x.propsCount * x.propsInfoBase.worth);
+            var spValue = props.Where(x => x.propsID == ModLibConst.MONEY_PROP_ID).Sum(x => x.propsCount * x.propsInfoBase.worth);
+            txtStorageMoney.text = $"Storage: {StorageValue} Spirit Stones ({spValue} cash, {StorageValue - spValue} items)";
+            //FreeStorage
+            txtFee.text = uType == UnitTypeEnum.Merchant ? "Fee: free for merchant-master." : $"Fee: {FEE_RATE * 100:0.0}% (-{(StorageValue * FEE_RATE).Parse<int>()} Spirit Stones monthly)";
         }
 
         public override void OnMonthly()

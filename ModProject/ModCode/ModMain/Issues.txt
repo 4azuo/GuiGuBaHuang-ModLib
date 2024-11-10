@@ -10,5 +10,6 @@
 
 - add more mod_configs
 - rebalance attributes
+- rebalance kill reward
 
 - kill in town, will be block

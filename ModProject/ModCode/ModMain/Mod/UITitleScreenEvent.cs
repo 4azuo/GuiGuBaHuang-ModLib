@@ -8,29 +8,15 @@ namespace MOD_nE7UL2.Mod
     [Cache("UITitleScreenEvent", IsGlobal = true)]
     public class UITitleScreenEvent : ModEvent
     {
-        private Button BtnModTitle;
-
         public override void OnOpenUIEnd(OpenUIEnd e)
         {
             base.OnOpenUIEnd(e);
-            var uiLogin = g.ui.GetUI<UILogin>(UIType.Login);
-            if (uiLogin != null)
+            if (e.uiType.uiName == UIType.Login.uiName)
             {
-                if (BtnModTitle == null)
-                {
-                    BtnModTitle = uiLogin.btnPaperChange.Create();
-
-                    var modTitleText = BtnModTitle.GetComponentInChildren<Text>();
-                    modTitleText.horizontalOverflow = HorizontalWrapMode.Overflow;
-                    modTitleText.verticalOverflow = VerticalWrapMode.Overflow;
-                    modTitleText.alignment = TextAnchor.MiddleCenter;
-                    modTitleText.fontSize = 22;
-                    modTitleText.text = "Taoist [Hardcore]";
-                }
-                else
-                {
-                    BtnModTitle.transform.position = new Vector3(0f, 4f);
-                }
+                var uiLogin = g.ui.GetUI<UILogin>(UIType.Login);
+                var modTitleBtn = uiLogin.btnPaperChange.Create().Pos(0f, 4f, uiLogin.btnPaperChange.transform.position.z);
+                var modTitleText = modTitleBtn.GetComponentInChildren<Text>().Align(TextAnchor.MiddleCenter).Format(Color.white, 22);
+                modTitleText.text = "Taoist [Hardcore]";
             }
         }
     }
