@@ -9,7 +9,7 @@ using static MOD_nE7UL2.Object.InGameStts;
 namespace MOD_nE7UL2.Mod
 {
     [Cache(ModConst.BANK_ACCOUNT_EVENT)]
-    public class BackAccountEvent : ModEvent
+    public class BankAccountEvent : ModEvent
     {
         public static _BankAccountConfigs BankAccountConfigs => ModMain.ModObj.InGameCustomSettings.BankAccountConfigs;
 
