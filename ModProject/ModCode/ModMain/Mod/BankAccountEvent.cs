@@ -28,12 +28,16 @@ namespace MOD_nE7UL2.Mod
                 {
                     var uiTownStorage = g.ui.GetUI<UITownStorage>(UIType.TownStorage);
                     var btn1 = uiTownStorage.btnProps.Replace().Size(270f, 90f);
-                    btn1.GetComponentInChildren<Text>().text = $"Register ({Cost(curTown.gridData.areaBaseID)} SP)";
+                    btn1.GetComponentInChildren<Text>().Align(UnityEngine.TextAnchor.MiddleCenter).text = $"Register ({Cost(curTown.gridData.areaBaseID)} SP)";
                     btn1.onClick.AddListener((UnityAction)(() =>
                     {
-                        g.world.playerUnit.AddUnitMoney(-Cost(curTown.gridData.areaBaseID));
-                        RegisterdTown.Add(curTown.buildData.id);
-                        g.ui.CloseUI(uiTownStorage);
+                        var cost = Cost(curTown.gridData.areaBaseID);
+                        if (player.GetUnitMoney() >= cost)
+                        {
+                            player.AddUnitMoney(-cost);
+                            RegisterdTown.Add(curTown.buildData.id);
+                            g.ui.CloseUI(uiTownStorage);
+                        }
                     }));
                 }
             }
@@ -42,6 +46,11 @@ namespace MOD_nE7UL2.Mod
         public static int Cost(int areaId)
         {
             return BankAccountConfigs.OpenFee[areaId];
+        }
+
+        public static void RemoveAllAccounts()
+        {
+            EventHelper.GetEvent<BankAccountEvent>(ModConst.BANK_ACCOUNT_EVENT).RegisterdTown.Clear();
         }
     }
 }

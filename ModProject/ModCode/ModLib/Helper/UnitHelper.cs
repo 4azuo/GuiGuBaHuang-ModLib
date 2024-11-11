@@ -237,6 +237,11 @@ public static class UnitHelper
         wunit.AddExp(int.MinValue);
     }
 
+    public static void ResetGradeLevel(this WorldUnitBase wunit)
+    {
+        wunit.SetProperty<int>(UnitPropertyEnum.GradeID, 1);
+    }
+
     public static void AddUnitProp(this WorldUnitBase wunit, DataProps.PropsData prop)
     {
         wunit.data.unitData.propData.AddProps(prop);
@@ -337,7 +342,14 @@ public static class UnitHelper
 
     public static void SetUnitContribution(this WorldUnitBase wunit, int setCount)
     {
-        wunit.AddUnitContribution(setCount - wunit.GetUnitContribution());
+        if (setCount <= 0)
+        {
+            wunit.RemoveUnitProp(ModLibConst.CONTRIBUTION_PROP_ID);
+        }
+        else
+        {
+            wunit.AddUnitContribution(setCount - wunit.GetUnitContribution());
+        }
     }
 
     public static int GetUnitContribution(this WorldUnitBase wunit)
@@ -352,7 +364,14 @@ public static class UnitHelper
 
     public static void SetUnitMayorDegree(this WorldUnitBase wunit, int setCount)
     {
-        wunit.AddUnitMayorDegree(setCount - wunit.GetUnitMayorDegree());
+        if (setCount <= 0)
+        {
+            wunit.RemoveUnitProp(ModLibConst.MAYOR_DEGREE_PROP_ID);
+        }
+        else
+        {
+            wunit.AddUnitMayorDegree(setCount - wunit.GetUnitMayorDegree());
+        }
     }
 
     public static int GetUnitMayorDegree(this WorldUnitBase wunit)
@@ -455,5 +474,22 @@ public static class UnitHelper
     public static int GetGradeLvl(this WorldUnitBase wunit)
     {
         return (int)GradePhaseEnum.GetEnumByVal<GradePhaseEnum>(wunit.GetDynProperty(UnitDynPropertyEnum.GradeID).value.ToString()).Grade;
+    }
+
+    public static void RemoveAllItems(this WorldUnitBase wunit)
+    {
+        foreach (var item in wunit.GetUnitProps())
+        {
+            wunit.RemoveUnitProp(item.soleID);
+        }
+    }
+
+    public static void RemoveAllStorageItems(this WorldUnitBase wunit)
+    {
+        if (!wunit.IsPlayer())
+            return;
+        var storageTown = g.world.build.GetBuilds(MapTerrainType.Town).ToArray().FirstOrDefault(x => x.gridData.areaBaseID == 1);
+        var storageBuild = storageTown?.GetBuildSub<MapBuildTownStorage>();
+        storageBuild.data.propData.allProps = new Il2CppSystem.Collections.Generic.List<DataProps.PropsData>();
     }
 }

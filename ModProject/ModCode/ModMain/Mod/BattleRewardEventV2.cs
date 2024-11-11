@@ -415,9 +415,6 @@ namespace MOD_nE7UL2.Mod
 
         public IDictionary<string, double> TraningValues { get; set; } = new Dictionary<string, double>();
 
-        [JsonIgnore]
-        public bool IsEnd { get; set; }
-
         public string GetRatioKey(MultiValue p)
         {
             return $"{p.Value0}{RATIO_KEY}";
@@ -459,13 +456,6 @@ namespace MOD_nE7UL2.Mod
             }
         }
 
-        [Trace]
-        public override void OnBattleStart(ETypeData e)
-        {
-            base.OnBattleStart(e);
-            IsEnd = false;
-        }
-
         public override void OnBattleUnitHit(UnitHit e)
         {
             base.OnBattleUnitHit(e);
@@ -504,70 +494,66 @@ namespace MOD_nE7UL2.Mod
         {
             base.OnBattleEnd(e);
 
-            if (!IsEnd)
+            var localDmgDealt = ModBattleEvent.sGetDmg(ModBattleEvent.DmgSaveEnum.Local, ModBattleEvent.GetDmgKey(ModBattleEvent.DmgEnum.DmgDealt, ModBattleEvent.DmgTypeEnum.Damage));
+            var localDmgRecv = ModBattleEvent.sGetDmg(ModBattleEvent.DmgSaveEnum.Local, ModBattleEvent.GetDmgKey(ModBattleEvent.DmgEnum.DmgRecv, ModBattleEvent.DmgTypeEnum.Damage));
+            DebugHelper.WriteLine($"Damage dealt: {localDmgDealt}dmg, Damage recieve: {localDmgRecv}dmg");
+            var player = g.world.playerUnit;
+            if (g.world.battle.data.isRealBattle && ModBattleEvent.PlayerUnit.isDie)
             {
-                var localDmgDealt = ModBattleEvent.sGetDmg(ModBattleEvent.DmgSaveEnum.Local, ModBattleEvent.GetDmgKey(ModBattleEvent.DmgEnum.DmgDealt, ModBattleEvent.DmgTypeEnum.Damage));
-                var localDmgRecv = ModBattleEvent.sGetDmg(ModBattleEvent.DmgSaveEnum.Local, ModBattleEvent.GetDmgKey(ModBattleEvent.DmgEnum.DmgRecv, ModBattleEvent.DmgTypeEnum.Damage));
-                DebugHelper.WriteLine($"Damage dealt: {localDmgDealt}dmg, Damage recieve: {localDmgRecv}dmg");
-                var player = g.world.playerUnit;
-                if (g.world.battle.data.isRealBattle && ModBattleEvent.PlayerUnit.isDie)
+                DebugHelper.WriteLine($"BattleRewardEvent: lose");
+                //life
+                player.AddProperty<int>(UnitPropertyEnum.Life, -unchecked((int)Math.Max(localDmgRecv / 1200, 1)));
+                //exp
+                var gradeLvl = player.GetGradeLvl();
+                var bodyReconstructionItemId = BodyReconstructions.ContainsKey(gradeLvl) ? BodyReconstructions[gradeLvl] : 0;
+                if (bodyReconstructionItemId == 0 || player.GetUnitPropCount(bodyReconstructionItemId) <= 0)
                 {
-                    DebugHelper.WriteLine($"BattleRewardEvent: lose");
-                    //life
-                    player.AddProperty<int>(UnitPropertyEnum.Life, -unchecked((int)Math.Max(localDmgRecv / 1200, 1)));
-                    //exp
-                    var gradeLvl = player.GetGradeLvl();
-                    var bodyReconstructionItemId = BodyReconstructions.ContainsKey(gradeLvl) ? BodyReconstructions[gradeLvl] : 0;
-                    if (bodyReconstructionItemId == 0 || player.GetUnitPropCount(bodyReconstructionItemId) <= 0)
-                    {
-                        player.ClearExp();
-                    }
-                    else
-                    {
-                        player.RemoveUnitProp(bodyReconstructionItemId, 1);
-                    }
-                    //item
-                    var ringLockScore = player.GetEquippedRing()?.propsItem?.IsRing()?.lockScore ?? 0;
-                    var luck = g.world.playerUnit.GetDynProperty(UnitDynPropertyEnum.Luck).value;
-                    foreach (var item in player.GetUnitProps())
-                    {
-                        if (item.propsInfoBase.sale > 0 &&
-                            !CommonTool.Random(0.00f, 100.00f).IsBetween(0.00f, (luck / 10.0f) + (ringLockScore / 100.0f)))
-                        {
-                            player.RemoveUnitProp(item.soleID);
-                        }
-                    }
-                    //spirit stones
-                    player.SetUnitMoney(0);
-                    //log
-                    DebugHelper.WriteLine($"BattleRewardEvent: player death");
+                    player.ClearExp();
                 }
-                else if (e.isWin)
+                else
                 {
-                    DebugHelper.WriteLine($"BattleRewardEvent: win");
-                    var insight = player.GetDynProperty(UnitDynPropertyEnum.Talent).value;
-                    var aBestBasis = ModBattleEvent.GetDmgPropertyEnum(ModBattleEvent.sGetHighestDealtDmgTypeEnum());
-                    if (aBestBasis != null && CommonTool.Random(0.00f, 100.00f).IsBetween(0.00f, insight / 10))
-                    {
-                        player.AddProperty<int>(aBestBasis.GetPropertyEnum(), 1);
-                    }
-                    var bBestBasis = ModBattleEvent.GetDmgPropertyEnum(ModBattleEvent.sGetHighestRecvDmgTypeEnum());
-                    if (bBestBasis != null && CommonTool.Random(0.00f, 100.00f).IsBetween(0.00f, insight / 10))
-                    {
-                        player.AddProperty<int>(bBestBasis.GetPropertyEnum(), 1);
-                    }
-
-                    var rewardExp1 = Math.Max(localDmgDealt * ModMain.ModObj.InGameCustomSettings.BattleRewardConfigs.ExpPerDmgDealt, 1).Parse<int>();
-                    var rewardExp2 = Math.Max(localDmgRecv * ModMain.ModObj.InGameCustomSettings.BattleRewardConfigs.ExpPerDmgRecv, 1).Parse<int>();
-                    player.AddExp(rewardExp1 + rewardExp2);
-                    DebugHelper.WriteLine($"BattleRewardEvent: +{rewardExp1 + rewardExp2}exp");
+                    player.RemoveUnitProp(bodyReconstructionItemId, 1);
                 }
-                //if (IsForeSaveConfigOK())
-                //{
-                //    //force save
-                //}
-                IsEnd = true;
+                //item
+                var ringLockScore = player.GetEquippedRing()?.propsItem?.IsRing()?.lockScore ?? 0;
+                var luck = g.world.playerUnit.GetDynProperty(UnitDynPropertyEnum.Luck).value;
+                foreach (var item in player.GetUnitProps())
+                {
+                    if (item.propsInfoBase.sale > 0 &&
+                        !CommonTool.Random(0.00f, 100.00f).IsBetween(0.00f, (luck / 10.0f) + (ringLockScore / 100.0f)))
+                    {
+                        player.RemoveUnitProp(item.soleID);
+                    }
+                }
+                //spirit stones
+                player.SetUnitMoney(0);
+                //log
+                DebugHelper.WriteLine($"BattleRewardEvent: player death");
             }
+            else if (e.isWin)
+            {
+                DebugHelper.WriteLine($"BattleRewardEvent: win");
+                var insight = player.GetDynProperty(UnitDynPropertyEnum.Talent).value;
+                var aBestBasis = ModBattleEvent.GetDmgPropertyEnum(ModBattleEvent.sGetHighestDealtDmgTypeEnum());
+                if (aBestBasis != null && CommonTool.Random(0.00f, 100.00f).IsBetween(0.00f, insight / 10))
+                {
+                    player.AddProperty<int>(aBestBasis.GetPropertyEnum(), 1);
+                }
+                var bBestBasis = ModBattleEvent.GetDmgPropertyEnum(ModBattleEvent.sGetHighestRecvDmgTypeEnum());
+                if (bBestBasis != null && CommonTool.Random(0.00f, 100.00f).IsBetween(0.00f, insight / 10))
+                {
+                    player.AddProperty<int>(bBestBasis.GetPropertyEnum(), 1);
+                }
+
+                var rewardExp1 = Math.Max(localDmgDealt * ModMain.ModObj.InGameCustomSettings.BattleRewardConfigs.ExpPerDmgDealt, 1).Parse<int>();
+                var rewardExp2 = Math.Max(localDmgRecv * ModMain.ModObj.InGameCustomSettings.BattleRewardConfigs.ExpPerDmgRecv, 1).Parse<int>();
+                player.AddExp(((rewardExp1 + rewardExp2) * (insight / 100f)).Parse<int>());
+                DebugHelper.WriteLine($"BattleRewardEvent: +{rewardExp1 + rewardExp2}exp");
+            }
+            //if (IsForeSaveConfigOK())
+            //{
+            //    //force save
+            //}
         }
 
         //private bool IsForeSaveConfigOK()
