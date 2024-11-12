@@ -67,9 +67,9 @@ namespace MOD_nE7UL2.Mod
 
         public void UpgradeMartialPrefix(WorldUnitBase wunit, DataUnit.ActionMartialData actMartialData)
         {
+            var rateDec = 0;
             foreach (var prefix in actMartialData.GetPrefixsUnlock())
             {
-                var rateDec = 0;
                 var insight = wunit.GetDynProperty(UnitDynPropertyEnum.Talent).value;
                 if (CommonTool.Random(0.00f, 100.00f).IsBetween(0.00f, insight / (10 + rateDec)))
                 {
