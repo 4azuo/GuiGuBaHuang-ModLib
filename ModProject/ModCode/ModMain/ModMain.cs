@@ -8,7 +8,7 @@ using System.Linq;
 
 namespace MOD_nE7UL2
 {
-    [InGameCustomSettings("game_configs.json", 3100)]
+    [InGameCustomSettings("game_configs.json", 3101)]
     public sealed class ModMain : ModMaster<InGameStts>
     {
         public override string ModName => "MOD_nE7UL2";
@@ -35,26 +35,25 @@ namespace MOD_nE7UL2
             //balance artifact attribute
             foreach (var item in g.conf.artifactShape._allConfList)
             {
-                item.durable *= 5;
-                item.spCost *= 6;
-
-                item.hp *= 5;
-                item.atk *= 3;
-                item.def *= 3;
+                item.durable = (item.durable * ModSettings.ArtifactDurableRatio).Parse<int>();
+                item.spCost = (item.spCost * ModSettings.ArtifactSpCostRatio).Parse<int>();
+                item.hp = (item.hp * ModSettings.ArtifactHpRatio).Parse<int>();
+                item.atk = (item.atk * ModSettings.ArtifactAtkRatio).Parse<int>();
+                item.def = (item.def * ModSettings.ArtifactDefRatio).Parse<int>();
             }
             //skillmastery need more exp
             foreach (var item in g.conf.battleSkillMastery._allConfList)
             {
-                item.grade1 = (int)(item.grade1 * 1.5f);
-                item.grade2 = (int)(item.grade2 * 1.6f);
-                item.grade3 = (int)(item.grade3 * 1.8f);
-                item.grade4 = (int)(item.grade4 * 2.0f);
-                item.grade5 = (int)(item.grade5 * 2.3f);
-                item.grade6 = (int)(item.grade6 * 2.6f);
-                item.grade7 = (int)(item.grade7 * 3.0f);
-                item.grade8 = (int)(item.grade8 * 3.5f);
-                item.grade9 = (int)(item.grade9 * 4.0f);
-                item.grade10 = (int)(item.grade10 * 5.0f);
+                item.grade1 = (item.grade1 * ModSettings.SkillMasteryExpRatio1).Parse<int>();
+                item.grade2 = (item.grade2 * ModSettings.SkillMasteryExpRatio2).Parse<int>();
+                item.grade3 = (item.grade3 * ModSettings.SkillMasteryExpRatio3).Parse<int>();
+                item.grade4 = (item.grade4 * ModSettings.SkillMasteryExpRatio4).Parse<int>();
+                item.grade5 = (item.grade5 * ModSettings.SkillMasteryExpRatio5).Parse<int>();
+                item.grade6 = (item.grade6 * ModSettings.SkillMasteryExpRatio6).Parse<int>();
+                item.grade7 = (item.grade7 * ModSettings.SkillMasteryExpRatio7).Parse<int>();
+                item.grade8 = (item.grade8 * ModSettings.SkillMasteryExpRatio8).Parse<int>();
+                item.grade9 = (item.grade9 * ModSettings.SkillMasteryExpRatio9).Parse<int>();
+                item.grade10 = (item.grade10 * ModSettings.SkillMasteryExpRatio10).Parse<int>();
             }
             //skill need more mpCost
             //skill cooldown faster
@@ -63,81 +62,81 @@ namespace MOD_nE7UL2
             {
                 if (item.key.EndsWith("_mpCost"))
                 {
-                    item.value1 = (item.value1.Parse<float>() * 1.70f).Parse<int>().ToString();
-                    item.value2 = (item.value2.Parse<float>() * 1.90f).Parse<int>().ToString();
-                    item.value3 = (item.value3.Parse<float>() * 2.60f).Parse<int>().ToString();
-                    item.value4 = (item.value4.Parse<float>() * 3.00f).Parse<int>().ToString();
-                    item.value5 = (item.value5.Parse<float>() * 4.00f).Parse<int>().ToString();
-                    item.value6 = (item.value6.Parse<float>() * 6.00f).Parse<int>().ToString();
-                    item.value7 = (item.value7.Parse<float>() * 9.00f).Parse<int>().ToString();
-                    item.value8 = (item.value8.Parse<float>() * 12.00f).Parse<int>().ToString();
-                    item.value9 = (item.value9.Parse<float>() * 18.00f).Parse<int>().ToString();
-                    item.value10 = (item.value10.Parse<float>() * 25.00f).Parse<int>().ToString();
+                    item.value1 = (item.value1.Parse<float>() * ModSettings.SkillMpCostRatio1).Parse<int>().ToString();
+                    item.value2 = (item.value2.Parse<float>() * ModSettings.SkillMpCostRatio2).Parse<int>().ToString();
+                    item.value3 = (item.value3.Parse<float>() * ModSettings.SkillMpCostRatio3).Parse<int>().ToString();
+                    item.value4 = (item.value4.Parse<float>() * ModSettings.SkillMpCostRatio4).Parse<int>().ToString();
+                    item.value5 = (item.value5.Parse<float>() * ModSettings.SkillMpCostRatio5).Parse<int>().ToString();
+                    item.value6 = (item.value6.Parse<float>() * ModSettings.SkillMpCostRatio6).Parse<int>().ToString();
+                    item.value7 = (item.value7.Parse<float>() * ModSettings.SkillMpCostRatio7).Parse<int>().ToString();
+                    item.value8 = (item.value8.Parse<float>() * ModSettings.SkillMpCostRatio8).Parse<int>().ToString();
+                    item.value9 = (item.value9.Parse<float>() * ModSettings.SkillMpCostRatio9).Parse<int>().ToString();
+                    item.value10 = (item.value10.Parse<float>() * ModSettings.SkillMpCostRatio10).Parse<int>().ToString();
                 }
                 else if (item.key.EndsWith("_cd"))
                 {
-                    item.value1 = (item.value1.Parse<float>() * 0.70f).Parse<int>().ToString();
-                    item.value2 = (item.value2.Parse<float>() * 0.72f).Parse<int>().ToString();
-                    item.value3 = (item.value3.Parse<float>() * 0.74f).Parse<int>().ToString();
-                    item.value4 = (item.value4.Parse<float>() * 0.76f).Parse<int>().ToString();
-                    item.value5 = (item.value5.Parse<float>() * 0.78f).Parse<int>().ToString();
-                    item.value6 = (item.value6.Parse<float>() * 0.80f).Parse<int>().ToString();
-                    item.value7 = (item.value7.Parse<float>() * 0.82f).Parse<int>().ToString();
-                    item.value8 = (item.value8.Parse<float>() * 0.84f).Parse<int>().ToString();
-                    item.value9 = (item.value9.Parse<float>() * 0.86f).Parse<int>().ToString();
-                    item.value10 = (item.value10.Parse<float>() * 0.88f).Parse<int>().ToString();
+                    item.value1 = (item.value1.Parse<float>() * ModSettings.SkillCdRatio1).Parse<int>().ToString();
+                    item.value2 = (item.value2.Parse<float>() * ModSettings.SkillCdRatio2).Parse<int>().ToString();
+                    item.value3 = (item.value3.Parse<float>() * ModSettings.SkillCdRatio3).Parse<int>().ToString();
+                    item.value4 = (item.value4.Parse<float>() * ModSettings.SkillCdRatio4).Parse<int>().ToString();
+                    item.value5 = (item.value5.Parse<float>() * ModSettings.SkillCdRatio5).Parse<int>().ToString();
+                    item.value6 = (item.value6.Parse<float>() * ModSettings.SkillCdRatio6).Parse<int>().ToString();
+                    item.value7 = (item.value7.Parse<float>() * ModSettings.SkillCdRatio7).Parse<int>().ToString();
+                    item.value8 = (item.value8.Parse<float>() * ModSettings.SkillCdRatio8).Parse<int>().ToString();
+                    item.value9 = (item.value9.Parse<float>() * ModSettings.SkillCdRatio9).Parse<int>().ToString();
+                    item.value10 = (item.value10.Parse<float>() * ModSettings.SkillCdRatio10).Parse<int>().ToString();
                 }
                 else if (item.key.StartsWith("&zizhiBase_"))
                 {
-                    item.value1 = (item.value1.Parse<float>() * 1.10f).Parse<int>().ToString();
-                    item.value2 = (item.value2.Parse<float>() * 1.40f).Parse<int>().ToString();
-                    item.value3 = (item.value3.Parse<float>() * 2.50f).Parse<int>().ToString();
-                    item.value4 = (item.value4.Parse<float>() * 3.00f).Parse<int>().ToString();
-                    item.value5 = (item.value5.Parse<float>() * 5.00f).Parse<int>().ToString();
-                    item.value6 = (item.value6.Parse<float>() * 5.75f).Parse<int>().ToString();
-                    item.value7 = (item.value7.Parse<float>() * 10.00f).Parse<int>().ToString();
-                    item.value8 = (item.value8.Parse<float>() * 12.00f).Parse<int>().ToString();
-                    item.value9 = (item.value9.Parse<float>() * 18.00f).Parse<int>().ToString();
-                    item.value10 = (item.value10.Parse<float>() * 20.00f).Parse<int>().ToString();
+                    item.value1 = (item.value1.Parse<float>() * ModSettings.SkillZizhiBaseRatio1).Parse<int>().ToString();
+                    item.value2 = (item.value2.Parse<float>() * ModSettings.SkillZizhiBaseRatio2).Parse<int>().ToString();
+                    item.value3 = (item.value3.Parse<float>() * ModSettings.SkillZizhiBaseRatio3).Parse<int>().ToString();
+                    item.value4 = (item.value4.Parse<float>() * ModSettings.SkillZizhiBaseRatio4).Parse<int>().ToString();
+                    item.value5 = (item.value5.Parse<float>() * ModSettings.SkillZizhiBaseRatio5).Parse<int>().ToString();
+                    item.value6 = (item.value6.Parse<float>() * ModSettings.SkillZizhiBaseRatio6).Parse<int>().ToString();
+                    item.value7 = (item.value7.Parse<float>() * ModSettings.SkillZizhiBaseRatio7).Parse<int>().ToString();
+                    item.value8 = (item.value8.Parse<float>() * ModSettings.SkillZizhiBaseRatio8).Parse<int>().ToString();
+                    item.value9 = (item.value9.Parse<float>() * ModSettings.SkillZizhiBaseRatio9).Parse<int>().ToString();
+                    item.value10 = (item.value10.Parse<float>() * ModSettings.SkillZizhiBaseRatio10).Parse<int>().ToString();
                 }
                 else if (item.key.StartsWith("&zizhiAdd_"))
                 {
-                    item.value1 = (item.value1.Parse<float>() * 1.10f).Parse<int>().ToString();
-                    item.value2 = (item.value2.Parse<float>() * 1.15f).Parse<int>().ToString();
-                    item.value3 = (item.value3.Parse<float>() * 1.20f).Parse<int>().ToString();
-                    item.value4 = (item.value4.Parse<float>() * 1.25f).Parse<int>().ToString();
-                    item.value5 = (item.value5.Parse<float>() * 1.35f).Parse<int>().ToString();
-                    item.value6 = (item.value6.Parse<float>() * 1.45f).Parse<int>().ToString();
-                    item.value7 = (item.value7.Parse<float>() * 1.65f).Parse<int>().ToString();
-                    item.value8 = (item.value8.Parse<float>() * 1.90f).Parse<int>().ToString();
-                    item.value9 = (item.value9.Parse<float>() * 2.20f).Parse<int>().ToString();
-                    item.value10 = (item.value10.Parse<float>() * 2.50f).Parse<int>().ToString();
+                    item.value1 = (item.value1.Parse<float>() * ModSettings.SkillZizhiAddRatio1).Parse<int>().ToString();
+                    item.value2 = (item.value2.Parse<float>() * ModSettings.SkillZizhiAddRatio2).Parse<int>().ToString();
+                    item.value3 = (item.value3.Parse<float>() * ModSettings.SkillZizhiAddRatio3).Parse<int>().ToString();
+                    item.value4 = (item.value4.Parse<float>() * ModSettings.SkillZizhiAddRatio4).Parse<int>().ToString();
+                    item.value5 = (item.value5.Parse<float>() * ModSettings.SkillZizhiAddRatio5).Parse<int>().ToString();
+                    item.value6 = (item.value6.Parse<float>() * ModSettings.SkillZizhiAddRatio6).Parse<int>().ToString();
+                    item.value7 = (item.value7.Parse<float>() * ModSettings.SkillZizhiAddRatio7).Parse<int>().ToString();
+                    item.value8 = (item.value8.Parse<float>() * ModSettings.SkillZizhiAddRatio8).Parse<int>().ToString();
+                    item.value9 = (item.value9.Parse<float>() * ModSettings.SkillZizhiAddRatio9).Parse<int>().ToString();
+                    item.value10 = (item.value10.Parse<float>() * ModSettings.SkillZizhiAddRatio10).Parse<int>().ToString();
                 }
                 else if (item.key.StartsWith("&daodianBase_"))
                 {
-                    item.value1 = (item.value1.Parse<float>() * 1.10f).Parse<int>().ToString();
-                    item.value2 = (item.value2.Parse<float>() * 1.20f).Parse<int>().ToString();
-                    item.value3 = (item.value3.Parse<float>() * 1.30f).Parse<int>().ToString();
-                    item.value4 = (item.value4.Parse<float>() * 1.40f).Parse<int>().ToString();
-                    item.value5 = (item.value5.Parse<float>() * 1.50f).Parse<int>().ToString();
-                    item.value6 = (item.value6.Parse<float>() * 1.65f).Parse<int>().ToString();
-                    item.value7 = (item.value7.Parse<float>() * 1.80f).Parse<int>().ToString();
-                    item.value8 = (item.value8.Parse<float>() * 1.95f).Parse<int>().ToString();
-                    item.value9 = (item.value9.Parse<float>() * 2.10f).Parse<int>().ToString();
-                    item.value10 = (item.value10.Parse<float>() * 2.40f).Parse<int>().ToString();
+                    item.value1 = (item.value1.Parse<float>() * ModSettings.SkillDaodianBaseRatio1).Parse<int>().ToString();
+                    item.value2 = (item.value2.Parse<float>() * ModSettings.SkillDaodianBaseRatio2).Parse<int>().ToString();
+                    item.value3 = (item.value3.Parse<float>() * ModSettings.SkillDaodianBaseRatio3).Parse<int>().ToString();
+                    item.value4 = (item.value4.Parse<float>() * ModSettings.SkillDaodianBaseRatio4).Parse<int>().ToString();
+                    item.value5 = (item.value5.Parse<float>() * ModSettings.SkillDaodianBaseRatio5).Parse<int>().ToString();
+                    item.value6 = (item.value6.Parse<float>() * ModSettings.SkillDaodianBaseRatio6).Parse<int>().ToString();
+                    item.value7 = (item.value7.Parse<float>() * ModSettings.SkillDaodianBaseRatio7).Parse<int>().ToString();
+                    item.value8 = (item.value8.Parse<float>() * ModSettings.SkillDaodianBaseRatio8).Parse<int>().ToString();
+                    item.value9 = (item.value9.Parse<float>() * ModSettings.SkillDaodianBaseRatio9).Parse<int>().ToString();
+                    item.value10 = (item.value10.Parse<float>() * ModSettings.SkillDaodianBaseRatio10).Parse<int>().ToString();
                 }
                 else if (item.key.StartsWith("&daodianAdd_"))
                 {
-                    item.value1 = (item.value1.Parse<float>() * 1.05f).Parse<int>().ToString();
-                    item.value2 = (item.value2.Parse<float>() * 1.10f).Parse<int>().ToString();
-                    item.value3 = (item.value3.Parse<float>() * 1.15f).Parse<int>().ToString();
-                    item.value4 = (item.value4.Parse<float>() * 1.20f).Parse<int>().ToString();
-                    item.value5 = (item.value5.Parse<float>() * 1.25f).Parse<int>().ToString();
-                    item.value6 = (item.value6.Parse<float>() * 1.30f).Parse<int>().ToString();
-                    item.value7 = (item.value7.Parse<float>() * 1.35f).Parse<int>().ToString();
-                    item.value8 = (item.value8.Parse<float>() * 1.40f).Parse<int>().ToString();
-                    item.value9 = (item.value9.Parse<float>() * 1.45f).Parse<int>().ToString();
-                    item.value10 = (item.value10.Parse<float>() * 1.50f).Parse<int>().ToString();
+                    item.value1 = (item.value1.Parse<float>() * ModSettings.SkillDaodianAddRatio1).Parse<int>().ToString();
+                    item.value2 = (item.value2.Parse<float>() * ModSettings.SkillDaodianAddRatio2).Parse<int>().ToString();
+                    item.value3 = (item.value3.Parse<float>() * ModSettings.SkillDaodianAddRatio3).Parse<int>().ToString();
+                    item.value4 = (item.value4.Parse<float>() * ModSettings.SkillDaodianAddRatio4).Parse<int>().ToString();
+                    item.value5 = (item.value5.Parse<float>() * ModSettings.SkillDaodianAddRatio5).Parse<int>().ToString();
+                    item.value6 = (item.value6.Parse<float>() * ModSettings.SkillDaodianAddRatio6).Parse<int>().ToString();
+                    item.value7 = (item.value7.Parse<float>() * ModSettings.SkillDaodianAddRatio7).Parse<int>().ToString();
+                    item.value8 = (item.value8.Parse<float>() * ModSettings.SkillDaodianAddRatio8).Parse<int>().ToString();
+                    item.value9 = (item.value9.Parse<float>() * ModSettings.SkillDaodianAddRatio9).Parse<int>().ToString();
+                    item.value10 = (item.value10.Parse<float>() * ModSettings.SkillDaodianAddRatio10).Parse<int>().ToString();
                 }
             }
             //balance item
@@ -221,7 +220,7 @@ namespace MOD_nE7UL2
                         roleEfx = g.conf.roleEffect.GetItem(efxId.Parse<int>());
                         if (roleEfx != null && (roleEfx.value.StartsWith($"{UnitPropertyEnum.Hp.PropName}_1_") || roleEfx.value.StartsWith($"{UnitPropertyEnum.Mp.PropName}_1_")))
                         {
-                            roleEfx.SetEfxValue(2, (roleEfx.GetEfxValue<int>(2) * (grade * 2.00f + level * 0.10f)).Parse<int>());
+                            roleEfx.SetEfxValue(2, (roleEfx.GetEfxValue<int>(2) * (grade * 2.40f + level * 0.60f)).Parse<int>());
                         }
                     }
                 }
@@ -231,7 +230,7 @@ namespace MOD_nE7UL2
                     grade = Math.Max(1, pill.grade);
                     props.sale = PriceHelper.UpPrice(props.sale, grade, level, ratio);
                     props.worth = PriceHelper.UpPrice(props.worth, grade, level, ratio);
-                    pill.spCost = (pill.spCost.Parse<float>() * (2.50f + (grade * 0.16f + props.level * 0.04f))).Parse<int>();
+                    pill.spCost = (pill.spCost.Parse<float>() * (3.00f + (grade * 1.00f + props.level * 0.25f))).Parse<int>();
 
                     foreach (var efxId in pill.effectValue.Split('|'))
                     {
@@ -243,16 +242,16 @@ namespace MOD_nE7UL2
                             var efxValue = g.conf.battleSkillValue.GetItem(battleEfx.value3);
                             if (efxValue != null)
                             {
-                                efxValue.value1 = (efxValue.value1.Parse<float>() * 3.00f).Parse<int>().ToString();
-                                efxValue.value2 = (efxValue.value2.Parse<float>() * 3.10f).Parse<int>().ToString();
-                                efxValue.value3 = (efxValue.value3.Parse<float>() * 3.30f).Parse<int>().ToString();
-                                efxValue.value4 = (efxValue.value4.Parse<float>() * 3.50f).Parse<int>().ToString();
-                                efxValue.value5 = (efxValue.value5.Parse<float>() * 3.80f).Parse<int>().ToString();
-                                efxValue.value6 = (efxValue.value6.Parse<float>() * 4.20f).Parse<int>().ToString();
-                                efxValue.value7 = (efxValue.value7.Parse<float>() * 4.60f).Parse<int>().ToString();
-                                efxValue.value8 = (efxValue.value8.Parse<float>() * 5.00f).Parse<int>().ToString();
-                                efxValue.value9 = (efxValue.value9.Parse<float>() * 5.50f).Parse<int>().ToString();
-                                efxValue.value10 = (efxValue.value10.Parse<float>() * 6.00f).Parse<int>().ToString();
+                                efxValue.value1 = (efxValue.value1.Parse<float>() * 5.00f).Parse<int>().ToString();
+                                efxValue.value2 = (efxValue.value2.Parse<float>() * 6.00f).Parse<int>().ToString();
+                                efxValue.value3 = (efxValue.value3.Parse<float>() * 7.50f).Parse<int>().ToString();
+                                efxValue.value4 = (efxValue.value4.Parse<float>() * 9.00f).Parse<int>().ToString();
+                                efxValue.value5 = (efxValue.value5.Parse<float>() * 11.00f).Parse<int>().ToString();
+                                efxValue.value6 = (efxValue.value6.Parse<float>() * 14.00f).Parse<int>().ToString();
+                                efxValue.value7 = (efxValue.value7.Parse<float>() * 17.00f).Parse<int>().ToString();
+                                efxValue.value8 = (efxValue.value8.Parse<float>() * 20.00f).Parse<int>().ToString();
+                                efxValue.value9 = (efxValue.value9.Parse<float>() * 25.00f).Parse<int>().ToString();
+                                efxValue.value10 = (efxValue.value10.Parse<float>() * 32.00f).Parse<int>().ToString();
                             }
                         }
                     }
