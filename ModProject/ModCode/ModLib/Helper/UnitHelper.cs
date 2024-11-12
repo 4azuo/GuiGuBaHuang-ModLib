@@ -488,8 +488,6 @@ public static class UnitHelper
     {
         if (!wunit.IsPlayer())
             return;
-        var storageTown = g.world.build.GetBuilds(MapTerrainType.Town).ToArray().FirstOrDefault(x => x.gridData.areaBaseID == 1);
-        var storageBuild = storageTown?.GetBuildSub<MapBuildTownStorage>();
-        storageBuild.data.propData.allProps = new Il2CppSystem.Collections.Generic.List<DataProps.PropsData>();
+        GameHelper.GetStorage().data.propData.allProps = new Il2CppSystem.Collections.Generic.List<DataProps.PropsData>();
     }
 }

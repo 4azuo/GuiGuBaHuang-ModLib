@@ -23,7 +23,6 @@ namespace MOD_nE7UL2.Mod
         private Text txtStorageMoney;
         private Text txtFee;
 
-        public long StorageValue { get; set; } = 0L;
         public long Debt { get; set; } = 0L;
 
         public override void OnOpenUIEnd(OpenUIEnd e)
@@ -59,14 +58,12 @@ namespace MOD_nE7UL2.Mod
         public override void OnTimeUpdate200ms()
         {
             base.OnTimeUpdate200ms();
-            var uiTownStorageProps = g.ui.GetUI<UITownStorageProps>(UIType.TownStorageProps);
             var uType = UnitTypeEvent.GetUnitTypeEnum(g.world.playerUnit);
-            var props = uiTownStorageProps.townStorage?.data?.propData?.allProps?.ToArray() ?? new DataProps.PropsData[0];
-            StorageValue = props.Sum(x => x.propsCount * x.propsInfoBase.worth);
-            var spValue = props.Where(x => x.propsID == ModLibConst.MONEY_PROP_ID).Sum(x => x.propsCount * x.propsInfoBase.worth);
-            txtStorageMoney.text = $"Storage: {StorageValue} Spirit Stones ({spValue} cash, {StorageValue - spValue} items)";
+            var storageValue = GetStorageValue();
+            var spValue = GetStorageSpiritStones();
+            txtStorageMoney.text = $"Storage: {storageValue} Spirit Stones ({spValue} cash, {storageValue - spValue} items)";
             //FreeStorage
-            txtFee.text = uType == UnitTypeEnum.Merchant ? "Fee: free for merchant-master." : $"Fee: {FEE_RATE * 100:0.0}% (-{(StorageValue * FEE_RATE).Parse<int>()} Spirit Stones monthly)";
+            txtFee.text = uType == UnitTypeEnum.Merchant ? "Fee: free for merchant-master." : $"Fee: {FEE_RATE * 100:0.0}% (-{(storageValue * FEE_RATE).Parse<int>()} Spirit Stones monthly)";
         }
 
         public override void OnMonthly()
@@ -76,8 +73,9 @@ namespace MOD_nE7UL2.Mod
             var uType = UnitTypeEvent.GetUnitTypeEnum(g.world.playerUnit);
             if (uType != UnitTypeEnum.Merchant)
             {
+                var storageValue = GetStorageValue();
                 var money = g.world.playerUnit.GetUnitMoney();
-                Debt += (StorageValue * FEE_RATE).Parse<long>();
+                Debt += (storageValue * FEE_RATE).Parse<long>();
                 if (money >= Debt)
                 {
                     g.world.playerUnit.AddUnitMoney(-Debt.Parse<int>());
@@ -88,6 +86,23 @@ namespace MOD_nE7UL2.Mod
                     DramaTool.OpenDrama(480020100);
                 }
             }
+        }
+
+        public static long GetStorageValue()
+        {
+            var props = GameHelper.GetStorage().data.propData.allProps.ToArray() ?? new DataProps.PropsData[0];
+            return props.Sum(x => x.propsCount * x.propsInfoBase.worth);
+        }
+
+        public static int GetStorageSpiritStones()
+        {
+            var props = GameHelper.GetStorage().data.propData.allProps.ToArray() ?? new DataProps.PropsData[0];
+            return props.Where(x => x.propsID == ModLibConst.MONEY_PROP_ID).Sum(x => x.propsCount * x.propsInfoBase.worth);
+        }
+
+        public static void RemoveDebt()
+        {
+            EventHelper.GetEvent<RealStorageEvent>(ModConst.REAL_STORAGE_EVENT).Debt = 0L;
         }
     }
 }

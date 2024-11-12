@@ -50,6 +50,7 @@ namespace MOD_nE7UL2.Mod
                                 player.RemoveAllItems();
                                 player.RemoveAllStorageItems();
                                 BankAccountEvent.RemoveAllAccounts();
+                                RealStorageEvent.RemoveDebt();
                                 AddLuck();
                             }));
                     }));
