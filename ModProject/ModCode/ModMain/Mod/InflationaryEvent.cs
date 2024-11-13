@@ -1,13 +1,14 @@
 ﻿using MOD_nE7UL2.Const;
 using ModLib.Mod;
 using System;
+using static MOD_nE7UL2.Object.InGameStts;
 
 namespace MOD_nE7UL2.Mod
 {
     [Cache(ModConst.INFLATIONARY_EVENT)]
     public class InflationaryEvent : ModEvent
     {
-        public const double InflationaryRate = 1.01;
+        public static _InflationaryConfigs Configs => ModMain.ModObj.InGameCustomSettings.InflationaryConfigs;
 
         public override void OnLoadGame()
         {
@@ -43,14 +44,14 @@ namespace MOD_nE7UL2.Mod
         {
             if (value <= 0)
                 return value;
-            return Convert.ToInt32(value * Math.Pow(InflationaryRate, year));
+            return Convert.ToInt32(value * Math.Pow(Configs.InflationaryRate, year));
         }
 
         public static long CalculateInflationary(long value, int year)
         {
             if (value <= 0)
                 return value;
-            return Convert.ToInt64(value * Math.Pow(InflationaryRate, year));
+            return Convert.ToInt64(value * Math.Pow(Configs.InflationaryRate, year));
         }
     }
 }

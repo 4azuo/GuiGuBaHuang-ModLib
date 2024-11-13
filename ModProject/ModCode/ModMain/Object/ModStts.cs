@@ -96,5 +96,18 @@
         public float SkillDaodianAddRatio8 { get; set; }
         public float SkillDaodianAddRatio9 { get; set; }
         public float SkillDaodianAddRatio10 { get; set; }
+
+
+
+        public float PowerUpPillEfxRatio1 { get; set; }
+        public float PowerUpPillEfxRatio2 { get; set; }
+        public float PowerUpPillEfxRatio3 { get; set; }
+        public float PowerUpPillEfxRatio4 { get; set; }
+        public float PowerUpPillEfxRatio5 { get; set; }
+        public float PowerUpPillEfxRatio6 { get; set; }
+        public float PowerUpPillEfxRatio7 { get; set; }
+        public float PowerUpPillEfxRatio8 { get; set; }
+        public float PowerUpPillEfxRatio9 { get; set; }
+        public float PowerUpPillEfxRatio10 { get; set; }
     }
 }

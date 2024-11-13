@@ -51,8 +51,8 @@ public static class UnitModifyHelper
     {
         if (expertLvl <= 0)
             return 0;
-        var r = 0.008f * propsGrade + 0.002f * propsLevel;
-        var v = 24 * propsGrade + 3 * propsLevel;
+        var r = 0.012f * propsGrade + 0.004f * propsLevel;
+        var v = 24 * propsGrade + 6 * propsLevel;
         return (inputValue * expertLvl * r).Parse<int>() + v;
     }
 
@@ -60,7 +60,7 @@ public static class UnitModifyHelper
     {
         if (expertLvl <= 0)
             return 0;
-        var r = 0.004f * propsGrade + 0.001f * propsLevel;
+        var r = 0.008f * propsGrade + 0.002f * propsLevel;
         var v = 6 * propsGrade + 1 * propsLevel;
         return (inputValue * expertLvl * r).Parse<int>() + v;
     }

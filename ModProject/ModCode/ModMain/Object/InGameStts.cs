@@ -9,7 +9,7 @@ namespace MOD_nE7UL2.Object
 {
     public class InGameStts : InGameSettings
     {
-        public string ForceSaveCondition { get; set; }
+        //public string ForceSaveCondition { get; set; }
 
         #region HideButtonConfigs
         public class _HideButtonConfigs
@@ -189,6 +189,14 @@ namespace MOD_nE7UL2.Object
             public IDictionary<int, int> OpenFee { get; set; }
         }
         public _BankAccountConfigs BankAccountConfigs { get; set; }
+        #endregion
+
+        #region InflationaryConfigs
+        public class _InflationaryConfigs
+        {
+            public float InflationaryRate { get; set; }
+        }
+        public _InflationaryConfigs InflationaryConfigs { get; set; }
         #endregion
     }
 }

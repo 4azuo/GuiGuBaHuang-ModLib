@@ -8,7 +8,7 @@ using System.Linq;
 
 namespace MOD_nE7UL2
 {
-    [InGameCustomSettings("game_configs.json", 3101)]
+    [InGameCustomSettings("game_configs.json", 3102)]
     public sealed class ModMain : ModMaster<InGameStts>
     {
         public override string ModName => "MOD_nE7UL2";
@@ -212,15 +212,15 @@ namespace MOD_nE7UL2
                     grade = Math.Max(1, pill.grade);
                     props.sale = PriceHelper.UpPrice(props.sale, grade, level, ratio);
                     props.worth = PriceHelper.UpPrice(props.worth, grade, level, ratio);
-                    pill.spCost = (pill.spCost.Parse<float>() * (1.25f + (grade * 0.10f + level * 0.02f))).Parse<int>();
-                    pill.applyCD = (pill.applyCD.Parse<float>() * 0.25f).Parse<int>();
+                    pill.spCost = (pill.spCost.Parse<float>() * (1.30f + (grade * 0.20f + level * 0.05f))).Parse<int>();
+                    pill.applyCD = (pill.applyCD.Parse<float>() * 0.24f).Parse<int>();
 
                     foreach (var efxId in pill.effectValue.Split('|'))
                     {
                         roleEfx = g.conf.roleEffect.GetItem(efxId.Parse<int>());
                         if (roleEfx != null && (roleEfx.value.StartsWith($"{UnitPropertyEnum.Hp.PropName}_1_") || roleEfx.value.StartsWith($"{UnitPropertyEnum.Mp.PropName}_1_")))
                         {
-                            roleEfx.SetEfxValue(2, (roleEfx.GetEfxValue<int>(2) * (grade * 2.40f + level * 0.60f)).Parse<int>());
+                            roleEfx.SetEfxValue(2, (roleEfx.GetEfxValue<int>(2) * (grade * 4.00f + level * 1.00f)).Parse<int>());
                         }
                     }
                 }
@@ -230,7 +230,7 @@ namespace MOD_nE7UL2
                     grade = Math.Max(1, pill.grade);
                     props.sale = PriceHelper.UpPrice(props.sale, grade, level, ratio);
                     props.worth = PriceHelper.UpPrice(props.worth, grade, level, ratio);
-                    pill.spCost = (pill.spCost.Parse<float>() * (3.00f + (grade * 1.00f + props.level * 0.25f))).Parse<int>();
+                    pill.spCost = (pill.spCost.Parse<float>() * (4.00f + (grade * 1.50f + props.level * 0.50f))).Parse<int>();
 
                     foreach (var efxId in pill.effectValue.Split('|'))
                     {
@@ -242,16 +242,16 @@ namespace MOD_nE7UL2
                             var efxValue = g.conf.battleSkillValue.GetItem(battleEfx.value3);
                             if (efxValue != null)
                             {
-                                efxValue.value1 = (efxValue.value1.Parse<float>() * 5.00f).Parse<int>().ToString();
-                                efxValue.value2 = (efxValue.value2.Parse<float>() * 6.00f).Parse<int>().ToString();
-                                efxValue.value3 = (efxValue.value3.Parse<float>() * 7.50f).Parse<int>().ToString();
-                                efxValue.value4 = (efxValue.value4.Parse<float>() * 9.00f).Parse<int>().ToString();
-                                efxValue.value5 = (efxValue.value5.Parse<float>() * 11.00f).Parse<int>().ToString();
-                                efxValue.value6 = (efxValue.value6.Parse<float>() * 14.00f).Parse<int>().ToString();
-                                efxValue.value7 = (efxValue.value7.Parse<float>() * 17.00f).Parse<int>().ToString();
-                                efxValue.value8 = (efxValue.value8.Parse<float>() * 20.00f).Parse<int>().ToString();
-                                efxValue.value9 = (efxValue.value9.Parse<float>() * 25.00f).Parse<int>().ToString();
-                                efxValue.value10 = (efxValue.value10.Parse<float>() * 32.00f).Parse<int>().ToString();
+                                efxValue.value1 = (efxValue.value1.Parse<float>() * ModSettings.PowerUpPillEfxRatio1).Parse<int>().ToString();
+                                efxValue.value2 = (efxValue.value2.Parse<float>() * ModSettings.PowerUpPillEfxRatio2).Parse<int>().ToString();
+                                efxValue.value3 = (efxValue.value3.Parse<float>() * ModSettings.PowerUpPillEfxRatio3).Parse<int>().ToString();
+                                efxValue.value4 = (efxValue.value4.Parse<float>() * ModSettings.PowerUpPillEfxRatio4).Parse<int>().ToString();
+                                efxValue.value5 = (efxValue.value5.Parse<float>() * ModSettings.PowerUpPillEfxRatio5).Parse<int>().ToString();
+                                efxValue.value6 = (efxValue.value6.Parse<float>() * ModSettings.PowerUpPillEfxRatio6).Parse<int>().ToString();
+                                efxValue.value7 = (efxValue.value7.Parse<float>() * ModSettings.PowerUpPillEfxRatio7).Parse<int>().ToString();
+                                efxValue.value8 = (efxValue.value8.Parse<float>() * ModSettings.PowerUpPillEfxRatio8).Parse<int>().ToString();
+                                efxValue.value9 = (efxValue.value9.Parse<float>() * ModSettings.PowerUpPillEfxRatio9).Parse<int>().ToString();
+                                efxValue.value10 = (efxValue.value10.Parse<float>() * ModSettings.PowerUpPillEfxRatio10).Parse<int>().ToString();
                             }
                         }
                     }
