@@ -28,8 +28,8 @@ namespace MOD_nE7UL2.Mod
                 var curTown = g.world.build.GetBuild(new UnityEngine.Vector2Int(player.data.unitData.pointX, player.data.unitData.pointY));
                 var townLevel = curTown.gridData.areaBaseID;
 
-                if (townLevel > RebirthLevel && 
-                    playerGradeLvl > RebirthLevel && 
+                if (townLevel > RebirthLevel &&
+                    playerGradeLvl > RebirthLevel &&
                     townLevel >= playerGradeLvl)
                 {
                     var uiTownPub = g.ui.GetUI<UITownPub>(UIType.TownPub);

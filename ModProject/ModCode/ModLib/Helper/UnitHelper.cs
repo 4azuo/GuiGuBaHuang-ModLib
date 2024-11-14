@@ -38,14 +38,14 @@ public static class UnitHelper
 
     public static DataProps.MartialData GetMartialAttack(this WorldUnitBase wunit)
     {
-        var actMStep = wunit.data.unitData.GetActionMartial(wunit.data.unitData.step);
+        var actMStep = wunit.data.unitData.GetActionMartial(wunit.data.unitData.skillLeft);
         var martialData = actMStep?.data?.To<DataProps.MartialData>();
         return martialData;
     }
 
     public static DataProps.MartialData GetMartialStep(this WorldUnitBase wunit)
     {
-        var actMStep = wunit.data.unitData.GetActionMartial(wunit.data.unitData.skillLeft);
+        var actMStep = wunit.data.unitData.GetActionMartial(wunit.data.unitData.step);
         var martialData = actMStep?.data?.To<DataProps.MartialData>();
         return martialData;
     }
