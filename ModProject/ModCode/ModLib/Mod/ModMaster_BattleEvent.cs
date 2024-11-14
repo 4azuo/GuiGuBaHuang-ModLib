@@ -95,7 +95,7 @@ namespace ModLib.Mod
 
         public virtual void _OnBattleEnd(ETypeData e)
         {
-            if (isBattleEnd)
+            if (!isBattleEnd)
             {
                 CallEvents<BattleEnd>("OnBattleEndOnce", e, true, false);
                 isBattleEnd = true;
