@@ -38,7 +38,7 @@ namespace MOD_nE7UL2.Mod
                     btn1.onClick.AddListener((UnityAction)(() =>
                     {
                         var uiConfirm = g.ui.OpenUI<UICheckPopup>(UIType.CheckPopup);
-                        uiConfirm.InitData("Rebirth", "All items (excluded equipped items & storage items) will be deleted!", 2,
+                        uiConfirm.InitData("Rebirth", "All items (excluded storage items) will be deleted!", 2,
                             (Action)(() =>
                             {
                                 RebirthCount++;
@@ -53,6 +53,7 @@ namespace MOD_nE7UL2.Mod
                                 BankAccountEvent.RemoveAllAccounts();
                                 //RealStorageEvent.RemoveDebt();
                                 player.SetProperty(UnitPropertyEnum.Reputation, 0);
+                                player.data.school.ExitSchool(player);
                                 AddLuck();
                             }));
                     }));
