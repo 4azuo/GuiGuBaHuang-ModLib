@@ -45,9 +45,9 @@ namespace MOD_nE7UL2.Mod
             return 50 * gradeLvl + wunit.GetBasisPhysicSum() / 1000;
         }
 
-        public override void OnIntoBattleFirst(UnitCtrlBase e)
+        public override void OnBattleUnitInto(UnitCtrlBase e)
         {
-            base.OnIntoBattleFirst(e);
+            base.OnBattleUnitInto(e);
 
             var humanData = e.data.TryCast<UnitDataHuman>();
             if (humanData?.worldUnitData?.unit != null)
@@ -246,7 +246,8 @@ namespace MOD_nE7UL2.Mod
                 var soleId = skill.skillData.data.soleID;
                 var grade = skill.skillData.data.propsInfoBase.grade;
                 var level = skill.skillData.data.propsInfoBase.level;
-                return UnitModifyHelper.GetSkillExpertMpCost(SkillHelper.GetSkillMpCost(skill.skillData.martialInfo.martialData), ExpertEvent.GetExpertLvl(soleId, grade, level), grade, level, humanData.worldUnitData.unit.GetGradeLvl() / 4);
+                var expertLvl = ExpertEvent.GetExpertLvl(soleId, grade, level);
+                return UnitModifyHelper.GetSkillExpertMpCost(SkillHelper.GetSkillMpCost(skill.skillData.martialInfo.martialData), expertLvl, grade, level, humanData.worldUnitData.unit.GetGradeLvl() * expertLvl / 10);
             }
             return 0;
         }

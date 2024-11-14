@@ -176,7 +176,7 @@ namespace MOD_nE7UL2.Mod
                 else
                 {
                     uiMartialExpertInfo_textAdj1.text = $"+Dmg: {UnitModifyHelper.GetSkillExpertAtk(uiMartialInfo.unit.GetDynProperty(UnitDynPropertyEnum.Attack).baseValue, expertLvl, propsGrade, propsLevel, mType)} (In Battle)";
-                    uiMartialExpertInfo_textAdj2.text = $"+MpCost: {UnitModifyHelper.GetSkillExpertMpCost(SkillHelper.GetSkillMpCost(uiMartialInfo.martialData), expertLvl, propsGrade, propsLevel, uiMartialInfo.unit.GetGradeLvl() / 4)} (In Battle)";
+                    uiMartialExpertInfo_textAdj2.text = $"+MpCost: {UnitModifyHelper.GetSkillExpertMpCost(SkillHelper.GetSkillMpCost(uiMartialInfo.martialData), expertLvl, propsGrade, propsLevel, uiMartialInfo.unit.GetGradeLvl() * expertLvl / 10)} (In Battle)";
                     uiMartialExpertInfo_textAdj3.gameObject.SetActive(false);
                     uiMartialExpertInfo_textAdj4.gameObject.SetActive(false);
                     uiMartialExpertInfo_textAdj5.gameObject.SetActive(false);

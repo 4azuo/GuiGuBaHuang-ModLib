@@ -218,15 +218,15 @@ namespace ModLib.Mod
             BattleInfo = this;
         }
 
-        public override void OnBattleEnd(BattleEnd e)
+        public override void OnBattleEndOnce(BattleEnd e)
         {
-            base.OnBattleEnd(e);
+            base.OnBattleEndOnce(e);
             DungeonUnits.Clear();
         }
 
-        public override void OnIntoBattleFirst(UnitCtrlBase e)
+        public override void OnBattleUnitInto(UnitCtrlBase e)
         {
-            base.OnIntoBattleFirst(e);
+            base.OnBattleUnitInto(e);
             DungeonUnits.Add(e);
         }
 

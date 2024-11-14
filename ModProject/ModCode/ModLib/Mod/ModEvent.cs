@@ -123,9 +123,10 @@ namespace ModLib.Mod
         public virtual void OnBattleUnitAddHP(UnitAddHP e) { }
         public virtual void OnBattleUnitUpdateProperty(UnitUpdateProperty e) { }
         public virtual void OnBattleSetUnitType(SetUnitType e) { }
-        public virtual void OnIntoBattleFirst(UnitCtrlBase e) { }
+        public virtual void OnBattleUnitInto(UnitCtrlBase e) { }
         public virtual void OnBattleStart(ETypeData e) { }
         public virtual void OnBattleEnd(BattleEnd e) { }
+        public virtual void OnBattleEndOnce(BattleEnd e) { }
         public virtual void OnBattleEndFront(ETypeData e) { }
         public virtual void OnBattleEndHandler(BattleEndHandler e) { }
         public virtual void OnBattleEscapeFailed(ETypeData e) { }

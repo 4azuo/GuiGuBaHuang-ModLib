@@ -20,9 +20,9 @@ namespace MOD_nE7UL2.Mod
 
         public const int SPIRITLOCK_CIRCLE = 12012;
 
-        public override void OnIntoBattleFirst(UnitCtrlBase e)
+        public override void OnBattleUnitInto(UnitCtrlBase e)
         {
-            base.OnIntoBattleFirst(e);
+            base.OnBattleUnitInto(e);
             var data = e.data.TryCast<UnitDataMonst>();
             if (data != null)
             {
