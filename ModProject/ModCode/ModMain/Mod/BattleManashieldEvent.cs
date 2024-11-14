@@ -16,9 +16,9 @@ namespace MOD_nE7UL2.Mod
         [JsonIgnore]
         public static EffectBase PlayerShieldEfx { get; private set; }
 
-        public override void OnIntoBattleFirst(UnitCtrlBase e)
+        public override void OnBattleUnitInto(UnitCtrlBase e)
         {
-            base.OnIntoBattleFirst(e);
+            base.OnBattleUnitInto(e);
 
             var humanData = e?.data?.TryCast<UnitDataHuman>();
             if (humanData?.worldUnitData?.unit != null)

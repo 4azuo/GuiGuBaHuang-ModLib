@@ -40,9 +40,9 @@ namespace MOD_nE7UL2.Mod
             }
         }
 
-        public override void OnIntoBattleFirst(UnitCtrlBase e)
+        public override void OnBattleUnitInto(UnitCtrlBase e)
         {
-            base.OnIntoBattleFirst(e);
+            base.OnBattleUnitInto(e);
 
             var monstData = e?.data?.TryCast<UnitDataMonst>();
             if (monstData != null && Configs.GrowRate.ContainsKey(monstData.monstType))

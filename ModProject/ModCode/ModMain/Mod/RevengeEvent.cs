@@ -24,9 +24,9 @@ namespace MOD_nE7UL2.Mod
         }
 
         //npc revenge player
-        public override void OnIntoBattleFirst(UnitCtrlBase e)
+        public override void OnBattleUnitInto(UnitCtrlBase e)
         {
-            base.OnIntoBattleFirst(e);
+            base.OnBattleUnitInto(e);
             var humanData = e?.data?.TryCast<UnitDataHuman>();
             if (g.world.battle.data.isRealBattle &&
                 (!humanData?.worldUnitData?.unit?.IsPlayer() ?? false) &&

@@ -25,9 +25,9 @@ namespace MOD_nE7UL2.Mod
             IsInTrial = e.dramaID == 20701;
         }
 
-        public override void OnIntoBattleFirst(UnitCtrlBase e)
+        public override void OnBattleUnitInto(UnitCtrlBase e)
         {
-            base.OnIntoBattleFirst(e);
+            base.OnBattleUnitInto(e);
 
             var data = e?.data;
             if (IsInTrial && data != null)
@@ -45,9 +45,9 @@ namespace MOD_nE7UL2.Mod
             }
         }
 
-        public override void OnBattleEnd(BattleEnd e)
+        public override void OnBattleEndOnce(BattleEnd e)
         {
-            base.OnBattleEnd(e);
+            base.OnBattleEndOnce(e);
 
             if (IsInTrial && !ModBattleEvent.PlayerUnit.isDie)
             {

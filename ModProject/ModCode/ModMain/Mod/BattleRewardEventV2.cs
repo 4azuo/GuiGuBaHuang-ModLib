@@ -490,9 +490,9 @@ namespace MOD_nE7UL2.Mod
         }
 
         [Trace]
-        public override void OnBattleEnd(BattleEnd e)
+        public override void OnBattleEndOnce(BattleEnd e)
         {
-            base.OnBattleEnd(e);
+            base.OnBattleEndOnce(e);
 
             var localDmgDealt = ModBattleEvent.sGetDmg(ModBattleEvent.DmgSaveEnum.Local, ModBattleEvent.GetDmgKey(ModBattleEvent.DmgEnum.DmgDealt, ModBattleEvent.DmgTypeEnum.Damage));
             var localDmgRecv = ModBattleEvent.sGetDmg(ModBattleEvent.DmgSaveEnum.Local, ModBattleEvent.GetDmgKey(ModBattleEvent.DmgEnum.DmgRecv, ModBattleEvent.DmgTypeEnum.Damage));

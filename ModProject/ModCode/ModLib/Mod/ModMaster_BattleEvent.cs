@@ -7,7 +7,8 @@ namespace ModLib.Mod
 {
     public abstract partial class ModMaster : MonoBehaviour
     {
-        private readonly IList<string> BattleCheckList = new List<string>();
+        private readonly IList<string> battleCheckList = new List<string>();
+        private bool isBattleEnd = true;
 
         #region ModLib - Handlers
         public virtual void _OnBattleUnitInit(ETypeData e)
@@ -78,23 +79,29 @@ namespace ModLib.Mod
         public virtual void _OnBattleSetUnitType(ETypeData e)
         {
             var x = e.TryCast<SetUnitType>();
-            if (x != null && !BattleCheckList.Contains(x.unit.data.createUnitSoleID))
+            if (x != null && !battleCheckList.Contains(x.unit.data.createUnitSoleID))
             {
-                BattleCheckList.Add(x.unit.data.createUnitSoleID);
-                CallEvents<UnitCtrlBase>("OnIntoBattleFirst", x.unit, true, false);
+                battleCheckList.Add(x.unit.data.createUnitSoleID);
+                CallEvents<UnitCtrlBase>("OnBattleUnitInto", x.unit, true, false);
             }
             CallEvents<SetUnitType>("OnBattleSetUnitType", e, true, false);
         }
 
         public virtual void _OnBattleStart(ETypeData e)
         {
+            isBattleEnd = false;
             CallEvents<ETypeData>("OnBattleStart", e, true, false);
         }
 
         public virtual void _OnBattleEnd(ETypeData e)
         {
+            if (isBattleEnd)
+            {
+                CallEvents<BattleEnd>("OnBattleEndOnce", e, true, false);
+                isBattleEnd = true;
+            }
             CallEvents<BattleEnd>("OnBattleEnd", e, true, false);
-            BattleCheckList.Clear();
+            battleCheckList.Clear();
         }
 
         public virtual void _OnBattleEndFront(ETypeData e)
@@ -189,7 +196,7 @@ namespace ModLib.Mod
             EventHelper.RunMinorEvents(e);
         }
 
-        public virtual void OnIntoBattleFirst(UnitCtrlBase e)
+        public virtual void OnBattleUnitInto(UnitCtrlBase e)
         {
             EventHelper.RunMinorEvents(e);
         }
@@ -200,6 +207,11 @@ namespace ModLib.Mod
         }
 
         public virtual void OnBattleEnd(BattleEnd e)
+        {
+            EventHelper.RunMinorEvents(e);
+        }
+
+        public virtual void OnBattleEndOnce(BattleEnd e)
         {
             EventHelper.RunMinorEvents(e);
         }

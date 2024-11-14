@@ -16,6 +16,7 @@ namespace MOD_nE7UL2.Mod
 
         public int RebirthLevel { get; set; } = 0;
         public int RebirthCount { get; set; } = 0;
+        public int TotalGradeLvl { get; set; } = 0;
 
         public override void OnOpenUIEnd(OpenUIEnd e)
         {
@@ -43,6 +44,7 @@ namespace MOD_nE7UL2.Mod
                             {
                                 RebirthCount++;
                                 RebirthLevel = playerGradeLvl;
+                                TotalGradeLvl += playerGradeLvl;
                                 player.ResetGradeLevel();
                                 player.ClearExp();
                                 player.SetUnitMoney(0);
