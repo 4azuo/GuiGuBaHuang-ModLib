@@ -101,13 +101,13 @@
 	
 	
 	"PowerUpPillEfxRatio1": 10.0,
-	"PowerUpPillEfxRatio2": 12.0,
-	"PowerUpPillEfxRatio3": 14.0,
-	"PowerUpPillEfxRatio4": 16.0,
-	"PowerUpPillEfxRatio5": 20.0,
-	"PowerUpPillEfxRatio6": 25.0,
-	"PowerUpPillEfxRatio7": 30.0,
-	"PowerUpPillEfxRatio8": 35.0,
-	"PowerUpPillEfxRatio9": 42.0,
-	"PowerUpPillEfxRatio10": 50.0,
+	"PowerUpPillEfxRatio2": 13.0,
+	"PowerUpPillEfxRatio3": 16.0,
+	"PowerUpPillEfxRatio4": 20.0,
+	"PowerUpPillEfxRatio5": 25.0,
+	"PowerUpPillEfxRatio6": 32.0,
+	"PowerUpPillEfxRatio7": 40.0,
+	"PowerUpPillEfxRatio8": 50.0,
+	"PowerUpPillEfxRatio9": 64.0,
+	"PowerUpPillEfxRatio10": 80.0,
 }

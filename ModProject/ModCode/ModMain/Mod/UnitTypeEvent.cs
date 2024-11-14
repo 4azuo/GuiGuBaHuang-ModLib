@@ -2,6 +2,7 @@
 using MOD_nE7UL2.Enum;
 using ModLib.Enum;
 using ModLib.Mod;
+using System;
 using System.Collections.Generic;
 
 namespace MOD_nE7UL2.Mod
@@ -35,17 +36,20 @@ namespace MOD_nE7UL2.Mod
 
                 //merchant
                 var money = wunit.GetUnitMoney();
+                var income = wunit.IsPlayer() ? 0 : Convert.ToInt32(Math.Pow(3, wunit.GetGradeLvl()));
 
                 if (UnitTypeDic[unitId] == UnitTypeEnum.Merchant)
                 {
-                    wunit.AddUnitMoney((money * UnitTypeEnum.Merchant.CustomLuck.CustomEffects[ModConst.UTYPE_LUCK_EFX_PASSIVE_INCOME].Value0.Parse<float>()).Parse<int>());
+                    income += (money * UnitTypeEnum.Merchant.CustomLuck.CustomEffects[ModConst.UTYPE_LUCK_EFX_PASSIVE_INCOME].Value0.Parse<float>()).Parse<int>();
                 }
 
                 var merchantLvl = MerchantLuckEnum.Merchant.GetCurLevel(wunit);
                 if (merchantLvl > 0)
                 {
-                    wunit.AddUnitMoney((money * merchantLvl * MerchantLuckEnum.Merchant.IncPassiveIncomeEachLvl).Parse<int>());
+                    income += (money * merchantLvl * MerchantLuckEnum.Merchant.IncPassiveIncomeEachLvl).Parse<int>();
                 }
+
+                wunit.AddUnitMoney(income);
 
                 //add property
                 if (wunit.IsPlayer())
