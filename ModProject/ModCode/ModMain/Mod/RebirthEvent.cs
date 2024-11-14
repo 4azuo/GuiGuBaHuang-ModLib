@@ -1,6 +1,7 @@
 ﻿using EGameTypeData;
 using Il2CppSystem;
 using MOD_nE7UL2.Const;
+using ModLib.Enum;
 using ModLib.Mod;
 using UnityEngine.Events;
 using UnityEngine.UI;
@@ -37,7 +38,7 @@ namespace MOD_nE7UL2.Mod
                     btn1.onClick.AddListener((UnityAction)(() =>
                     {
                         var uiConfirm = g.ui.OpenUI<UICheckPopup>(UIType.CheckPopup);
-                        uiConfirm.InitData("Rebirth", "All items (included storage items) will be deleted!", 2,
+                        uiConfirm.InitData("Rebirth", "All items (excluded equipped items & storage items) will be deleted!", 2,
                             (Action)(() =>
                             {
                                 RebirthCount++;
@@ -48,9 +49,10 @@ namespace MOD_nE7UL2.Mod
                                 player.SetUnitContribution(0);
                                 player.SetUnitMayorDegree(0);
                                 player.RemoveAllItems();
-                                player.RemoveAllStorageItems();
+                                //player.RemoveAllStorageItems();
                                 BankAccountEvent.RemoveAllAccounts();
-                                RealStorageEvent.RemoveDebt();
+                                //RealStorageEvent.RemoveDebt();
+                                player.SetProperty(UnitPropertyEnum.Reputation, 0);
                                 AddLuck();
                             }));
                     }));

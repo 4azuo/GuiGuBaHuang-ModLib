@@ -73,8 +73,8 @@ namespace MOD_nE7UL2.Mod
 
             var atk = wunit.GetDynProperty(UnitDynPropertyEnum.Attack).baseValue;
 
-            var artifacts = wunit.GetEquippedArtifacts();
-            foreach (var artifact in artifacts)
+            var artifact = wunit.GetEquippedArtifacts();
+            if (artifact != null)
             {
                 var a = artifact.To<DataProps.PropsArtifact>();
                 if (a.durable > 0)
@@ -102,8 +102,8 @@ namespace MOD_nE7UL2.Mod
 
             var def = wunit.GetDynProperty(UnitDynPropertyEnum.Defense).baseValue;
 
-            var artifacts = wunit.GetEquippedArtifacts();
-            foreach (var artifact in artifacts)
+            var artifact = wunit.GetEquippedArtifacts();
+            if (artifact != null)
             {
                 var a = artifact.To<DataProps.PropsArtifact>();
                 if (a.durable > 0)
@@ -129,11 +129,10 @@ namespace MOD_nE7UL2.Mod
         {
             var rs = 0;
 
-            var gradeLvl = wunit.GetGradeLvl();
             var hpMax = wunit.GetDynProperty(UnitDynPropertyEnum.HpMax).baseValue;
 
-            var artifacts = wunit.GetEquippedArtifacts();
-            foreach (var artifact in artifacts)
+            var artifact = wunit.GetEquippedArtifacts();
+            if (artifact != null)
             {
                 var a = artifact.To<DataProps.PropsArtifact>();
                 if (a.durable > 0)
