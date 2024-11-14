@@ -6,24 +6,24 @@ using System.Linq;
 
 public static class UnitHelper
 {
-    public static DataProps.PropsData[] GetEquippedArtifacts(this WorldUnitBase wunit)
+    public static DataProps.PropsData GetEquippedArtifacts(this WorldUnitBase wunit)
     {
-        return wunit.GetEquippedProps().Where(x => x?.propsItem?.IsArtifact() != null).ToArray();
+        return wunit.GetEquippedProps().FirstOrDefault(x => x?.propsItem?.IsArtifact() != null);
     }
 
     public static DataProps.PropsData GetEquippedRing(this WorldUnitBase wunit)
     {
-        return wunit.GetEquippedProps().Where(x => x?.propsItem?.IsRing() != null).FirstOrDefault();
+        return wunit.GetEquippedProps().FirstOrDefault(x => x?.propsItem?.IsRing() != null);
     }
 
     public static DataProps.PropsData GetEquippedMount(this WorldUnitBase wunit)
     {
-        return wunit.GetEquippedProps().Where(x => x?.propsItem?.IsMount() != null).FirstOrDefault();
+        return wunit.GetEquippedProps().FirstOrDefault(x => x?.propsItem?.IsMount() != null);
     }
 
     public static DataProps.PropsData GetEquippedOutfit(this WorldUnitBase wunit)
     {
-        return wunit.GetEquippedProps().Where(x => x?.propsItem?.IsOutfit() != null).FirstOrDefault();
+        return wunit.GetEquippedProps().FirstOrDefault(x => x?.propsItem?.IsOutfit() != null);
     }
 
     public static DataProps.PropsData[] GetEquippedProps(this WorldUnitBase wunit)

@@ -24,6 +24,7 @@ namespace MOD_nE7UL2.Mod
         private Text txtFee;
 
         public long Debt { get; set; } = 0L;
+        private int count = 0;
 
         public override void OnOpenUIEnd(OpenUIEnd e)
         {
@@ -80,10 +81,12 @@ namespace MOD_nE7UL2.Mod
                 {
                     g.world.playerUnit.AddUnitMoney(-Debt.Parse<int>());
                     Debt = 0L;
+                    count = 0;
                 }
-                if (Debt > 0)
+                if (Debt > 0 && (count < 3 || GameHelper.GetGameMonth() == 1))
                 {
                     DramaTool.OpenDrama(480020100);
+                    count++;
                 }
             }
         }

@@ -7,3 +7,7 @@
 - new game+
 
 - kill in town, will be wanted
+
+- pet
+
+- outfit

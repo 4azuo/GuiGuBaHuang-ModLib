@@ -5,6 +5,7 @@ using ModLib.Mod;
 using System;
 using System.Collections.Generic;
 using static MOD_nE7UL2.Object.InGameStts;
+using static UIPlayerInfoBase;
 
 namespace MOD_nE7UL2.Mod
 {
@@ -38,10 +39,10 @@ namespace MOD_nE7UL2.Mod
 
                 if (wunit.IsPlayer())
                     continue;
-                var artifacts = wunit.GetEquippedArtifacts();
-                foreach (var art in artifacts)
+                var artifact = wunit.GetEquippedArtifacts();
+                if (artifact != null)
                 {
-                    AddExpertExp(wunit, art.soleID, Configs.AutoArtifactExpRate);
+                    AddExpertExp(wunit, artifact.soleID, Configs.AutoArtifactExpRate);
                 }
             }
         }
@@ -54,7 +55,8 @@ namespace MOD_nE7UL2.Mod
             {
                 var wunit = humanData.worldUnitData.unit;
                 var artifacts = wunit.GetEquippedArtifacts();
-                foreach (var artifact in artifacts)
+                var artifact = wunit.GetEquippedArtifacts();
+                if (artifact != null)
                 {
                     var a = artifact.To<DataProps.PropsArtifact>();
                     if (a.durable > 0)
