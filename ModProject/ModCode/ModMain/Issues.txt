@@ -2,14 +2,8 @@
 
 - improve Halo
 
-- rebirth
-
 - mayor and his relationships
 
 - new game+
 
-- add more mod_configs
-- rebalance attributes
-- rebalance kill reward
-
-- kill in town, will be block
+- kill in town, will be wanted

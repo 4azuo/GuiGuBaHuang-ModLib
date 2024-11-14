@@ -502,7 +502,7 @@ namespace MOD_nE7UL2.Mod
             {
                 DebugHelper.WriteLine($"BattleRewardEvent: lose");
                 //life
-                player.AddProperty<int>(UnitPropertyEnum.Life, -unchecked((int)Math.Max(localDmgRecv / 1200, 1)));
+                player.AddProperty<int>(UnitPropertyEnum.Life, -unchecked((int)Math.Max(localDmgRecv / 2000, 1)));
                 //exp
                 var gradeLvl = player.GetGradeLvl();
                 var bodyReconstructionItemId = BodyReconstructions.ContainsKey(gradeLvl) ? BodyReconstructions[gradeLvl] : 0;
@@ -578,7 +578,7 @@ namespace MOD_nE7UL2.Mod
                 {
                     if (g.world.battle.data.isRealBattle)
                     {
-                        var drainLife = dieUnit.worldUnitData.unit.GetProperty<int>(UnitPropertyEnum.Life) / (50 + (g.game.data.dataWorld.data.gameLevel.Parse<int>() * 25));
+                        var drainLife = dieUnit.worldUnitData.unit.GetProperty<int>(UnitPropertyEnum.Life) / (g.game.data.dataWorld.data.gameLevel.Parse<int>() * 20);
                         g.world.playerUnit.AddProperty<int>(UnitPropertyEnum.Life, drainLife);
                     }
 

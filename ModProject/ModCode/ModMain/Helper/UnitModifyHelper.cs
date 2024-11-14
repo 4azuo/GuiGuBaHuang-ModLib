@@ -131,7 +131,7 @@ public static class UnitModifyHelper
     {
         if (expertLvl <= 0)
             return 0;
-        var v = 10 * propsGrade + 1 * propsLevel;
+        var v = 6 * propsGrade + 2 * propsLevel;
         return expertLvl * v;
     }
 
