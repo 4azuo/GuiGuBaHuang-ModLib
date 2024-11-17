@@ -102,9 +102,9 @@ namespace MOD_nE7UL2.Mod
             }
         }
 
-        public override void OnFrameUpdate()
+        public override void OnTimeUpdate()
         {
-            base.OnFrameUpdate();
+            base.OnTimeUpdate();
             if (uiTownBounty != null && btnCommission != null)
             {
                 btnCommission?.gameObject.SetActive(g.world.run.roundMonth != LastMonthCommission);

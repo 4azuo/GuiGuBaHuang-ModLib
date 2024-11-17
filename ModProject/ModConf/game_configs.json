@@ -100,34 +100,34 @@
 		}
 	},
 	"MonstStrongerConfigs": {
-		"AtkR": 1.00,
-		"DefR": 0.50,
-		"MHpR": 1.10,
+		"AtkR": 1.05,
+		"DefR": 0.60,
+		"MHpR": 1.20,
 		"GrowRate": {
-			"Common": 0.00080,
-			"Elite": 0.00040,
-			"BOSS": 0.00020
+			"Common": 0.0024,
+			"Elite": 0.0012,
+			"BOSS": 0.0006
 		},
 		"KillGrowRate": {
-			"Common": 0.000001,
-			"Elite": 0.00002,
-			"BOSS": 0.00004
+			"Common": 0.000005,
+			"Elite": 0.00005,
+			"BOSS": 0.00010
 		},
 		"PlayerAtk2HpRate": {
 			"Common": 1.00,
-			"Elite": 10.00,
-			"BOSS": 100.00
+			"Elite": 12.00,
+			"BOSS": 144.00
 		},
 		"AreaBonus": {
 			"1": 0.00,
-			"2": 0.00,
-			"3": 0.01,
-			"4": 0.05,
-			"5": 0.07,
-			"6": 0.10,
-			"7": 0.13,
-			"8": 0.20,
-			"9": 0.25,
+			"2": 0.02,
+			"3": 0.04,
+			"4": 0.07,
+			"5": 0.10,
+			"6": 0.15,
+			"7": 0.19,
+			"8": 0.25,
+			"9": 0.30,
 			"10": 0.40
 		}
 	},
@@ -175,6 +175,6 @@
 		}
 	},
 	"InflationaryConfigs": {
-		"InflationaryRate": 1.02,
+		"InflationaryRate": 1.02
 	}
 }

@@ -1,5 +1,4 @@
 ﻿using EBattleTypeData;
-using Newtonsoft.Json;
 using System.Collections.Generic;
 using UnityEngine;
 
