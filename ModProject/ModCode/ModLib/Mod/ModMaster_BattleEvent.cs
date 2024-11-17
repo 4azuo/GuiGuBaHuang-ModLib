@@ -6,8 +6,8 @@ namespace ModLib.Mod
 {
     public abstract partial class ModMaster : MonoBehaviour
     {
-        private readonly IList<string> battleCheckList = new List<string>();
-        private bool isBattleEnd = true;
+        private static readonly IList<string> battleCheckList = new List<string>();
+        private static bool isBattleEnd = true;
 
         #region ModLib - Handlers
         public virtual void _OnBattleUnitInit(ETypeData e)
