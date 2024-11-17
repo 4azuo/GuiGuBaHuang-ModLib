@@ -63,7 +63,7 @@ namespace MOD_nE7UL2.Mod
                 monstData.attack.baseValue += (monstData.attack.baseValue * (ratio * Configs.AtkR * monstData.grade.value * gameLvl)).Parse<int>();
                 monstData.defense.baseValue += (monstData.defense.baseValue * (ratio * Configs.DefR * monstData.grade.value * gameLvl)).Parse<int>();
                 monstData.maxHP.baseValue += 
-                    (monstData.maxHP.baseValue * EventHelper.GetEvent<RebirthEvent>(ModConst.REBIRTH_EVENT).TotalGradeLvl * 0.01f).Parse<int>() +
+                    (monstData.maxHP.baseValue * EventHelper.GetEvent<RebirthEvent>(ModConst.REBIRTH_EVENT).TotalGradeLvl * Configs.RebirthAffect).Parse<int>() +
                     (monstData.maxHP.baseValue * (ratio * Configs.MHpR * monstData.grade.value * gameLvl)).Parse<int>() +
                     (g.world.playerUnit.GetDynProperty(UnitDynPropertyEnum.Attack).value * Configs.PlayerAtk2HpRate[monstData.monstType] * (monstData.grade.value.Parse<float>() / g.world.playerUnit.GetDynProperty(UnitDynPropertyEnum.GradeID).value.Parse<float>())).Parse<int>();
                 monstData.hp = monstData.maxHP.value;

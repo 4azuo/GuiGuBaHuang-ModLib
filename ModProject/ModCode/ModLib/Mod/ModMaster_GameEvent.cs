@@ -17,14 +17,6 @@ namespace ModLib.Mod
         {
             try
             {
-                if (!initMod)
-                {
-                    CallEvents("OnInitConf");
-                    CallEvents("OnInitEObj");
-                    DebugHelper.Save();
-                    initMod = true;
-                }
-
                 if (GameHelper.IsInGame())
                 {
                     if (InGameSettings.LoadGameBefore)

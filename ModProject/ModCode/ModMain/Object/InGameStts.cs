@@ -131,6 +131,7 @@ namespace MOD_nE7UL2.Object
             public float AtkR { get; set; }
             public float DefR { get; set; }
             public float MHpR { get; set; }
+            public float RebirthAffect { get; set; }
             public Dictionary<MonstType, float> GrowRate { get; set; }
             public Dictionary<MonstType, float> KillGrowRate { get; set; }
             public Dictionary<MonstType, float> PlayerAtk2HpRate { get; set; }
