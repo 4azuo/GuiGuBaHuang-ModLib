@@ -68,7 +68,6 @@ namespace ModLib.Mod
         public virtual void OnTimeUpdate200ms() { }
         public virtual void OnTimeUpdate500ms() { }
         public virtual void OnTimeUpdate1s() { }
-        public virtual void OnFrameUpdate() { }
         #endregion
 
         #region EMapType

@@ -9,10 +9,12 @@ namespace ModLib.Mod
         {
             CallEvents("OnTimeUpdate");
         }
+
         public virtual void _OnTimeUpdate200ms()
         {
             CallEvents("OnTimeUpdate200ms");
         }
+
         public virtual void _OnTimeUpdate500ms()
         {
             CallEvents("OnTimeUpdate500ms");
@@ -21,11 +23,6 @@ namespace ModLib.Mod
         public virtual void _OnTimeUpdate1s()
         {
             CallEvents("OnTimeUpdate1s");
-        }
-
-        public virtual void _OnFrameUpdate()
-        {
-            CallEvents("OnFrameUpdate");
         }
         #endregion
 
@@ -46,11 +43,6 @@ namespace ModLib.Mod
         }
 
         public virtual void OnTimeUpdate1s()
-        {
-            EventHelper.RunMinorEvents();
-        }
-
-        public virtual void OnFrameUpdate()
         {
             EventHelper.RunMinorEvents();
         }

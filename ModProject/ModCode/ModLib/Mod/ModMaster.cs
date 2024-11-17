@@ -1,5 +1,4 @@
-﻿using EGameTypeData;
-using ModLib.Const;
+﻿using ModLib.Const;
 using ModLib.Object;
 using Newtonsoft.Json;
 using System;
@@ -9,17 +8,13 @@ using System.Linq;
 using System.Reflection;
 using UnhollowerBaseLib;
 using UnityEngine;
+using static DataUnitLog;
 
 namespace ModLib.Mod
 {
     public abstract partial class ModMaster : MonoBehaviour
     {
-        private bool initMod = false;
-        protected TimerCoroutine corTimeUpdate;
-        protected TimerCoroutine corTimeUpdate200ms;
-        protected TimerCoroutine corTimeUpdate500ms;
-        protected TimerCoroutine corTimeUpdate1s;
-        protected TimerCoroutine corFrameUpdate;
+        protected bool initMod = false;
         protected static HarmonyLib.Harmony harmony;
 
         public abstract string ModName { get; }
@@ -33,190 +28,207 @@ namespace ModLib.Mod
             ModObj = this;
 
             //load harmony
-            if (harmony != null)
-                harmony.UnpatchSelf();
+            harmony?.UnpatchSelf();
             harmony = new HarmonyLib.Harmony(ModName);
             harmony.PatchAll(Assembly.GetExecutingAssembly());
 
-            //declare event
+            //declare funcs
             #region Timer
-            corTimeUpdate = g.timer.Time(new Action(_OnTimeUpdate), 0.1f, true);
-            corTimeUpdate200ms = g.timer.Time(new Action(_OnTimeUpdate200ms), 0.2f, true);
-            corTimeUpdate500ms = g.timer.Time(new Action(_OnTimeUpdate500ms), 0.5f, true);
-            corTimeUpdate1s = g.timer.Time(new Action(_OnTimeUpdate1s), 1f, true);
-            corFrameUpdate = g.timer.Frame(new Action(_OnFrameUpdate), 2, true);
+            var callTime100ms = new Action(_OnTimeUpdate);
+            var callTime200ms = new Action(_OnTimeUpdate200ms);
+            var callTime500ms = new Action(_OnTimeUpdate500ms);
+            var callTime1s = new Action(_OnTimeUpdate1s);
             #endregion
 
             #region EMapType
             var callPlayerOpenTreeVault = (Il2CppSystem.Action<ETypeData>)_OnPlayerOpenTreeVault;
-            g.events.On(EMapType.PlayerOpenTownBuild((int)MapBuildSubType.TownStorage), callPlayerOpenTreeVault);
-            g.events.On(EMapType.PlayerOpenTownBuild((int)MapBuildSubType.SchoolStorage), callPlayerOpenTreeVault);
-
             var callPlayerEquipCloth = (Il2CppSystem.Action<ETypeData>)_OnPlayerEquipCloth;
-            g.events.On(EMapType.PlayerEquipCloth, callPlayerEquipCloth);
-
             var callPlayerInMonstArea = (Il2CppSystem.Action<ETypeData>)_OnPlayerInMonstArea;
-            g.events.On(EMapType.PlayerInMonstArea, callPlayerInMonstArea);
-
             var callPlayerRoleEscapeInMap = (Il2CppSystem.Action<ETypeData>)_OnPlayerRoleEscapeInMap;
-            g.events.On(EMapType.PlayerRoleEscapeInMap, callPlayerRoleEscapeInMap);
-
             var callPlayerRoleUpGradeBig = (Il2CppSystem.Action<ETypeData>)_OnPlayerRoleUpGradeBig;
-            g.events.On(EMapType.PlayerRoleUpGradeBig, callPlayerRoleUpGradeBig);
-
             var callUpGradeAndCloseFateFeatureUI = (Il2CppSystem.Action<ETypeData>)_OnUpGradeAndCloseFateFeatureUI;
-            g.events.On(EMapType.UpGradeAndCloseFateFeatureUI, callUpGradeAndCloseFateFeatureUI);
-
             var callUseHobbyProps = (Il2CppSystem.Action<ETypeData>)_OnUseHobbyProps;
-            g.events.On(EMapType.UseHobbyProps, callUseHobbyProps);
-
             //var callFortuitousTrigger = (Il2CppSystem.Action<ETypeData>)_OnFortuitousTrigger;
-            //g.events.On(EMapType.FortuitousTrigger, callFortuitousTrigger);
             #endregion
 
             #region EGameType
             //var callTownAuctionStart = (Il2CppSystem.Action<ETypeData>)_OnTownAuctionStart;
-            //g.events.On(EGameType.TownAuctionStart(1), callTownAuctionStart);
-            //g.events.On(EGameType.TownAuctionStart(2), callTownAuctionStart);
-            //g.events.On(EGameType.TownAuctionStart(3), callTownAuctionStart);
-            //g.events.On(EGameType.TownAuctionStart(4), callTownAuctionStart);
-            //g.events.On(EGameType.TownAuctionStart(5), callTownAuctionStart);
-            //g.events.On(EGameType.TownAuctionStart(6), callTownAuctionStart);
-            //g.events.On(EGameType.TownAuctionStart(7), callTownAuctionStart);
-            //g.events.On(EGameType.TownAuctionStart(8), callTownAuctionStart);
-            //g.events.On(EGameType.TownAuctionStart(9), callTownAuctionStart);
-            //g.events.On(EGameType.TownAuctionStart(10), callTownAuctionStart);
-
             var callOpenUIStart = (Il2CppSystem.Action<ETypeData>)_OnOpenUIStart;
-            g.events.On(EGameType.OpenUIStart, callOpenUIStart);
-
             var callOpenUIEnd = (Il2CppSystem.Action<ETypeData>)_OnOpenUIEnd;
-            g.events.On(EGameType.OpenUIEnd, callOpenUIEnd);
-
             var callCloseUIStart = (Il2CppSystem.Action<ETypeData>)_OnCloseUIStart;
-            g.events.On(EGameType.CloseUIStart, callCloseUIStart);
-
             var callCloseUIEnd = (Il2CppSystem.Action<ETypeData>)_OnCloseUIEnd;
-            g.events.On(EGameType.CloseUIEnd, callCloseUIEnd);
-
             var callInitWorld = (Il2CppSystem.Action<ETypeData>)_OnInitWorld;
-            g.events.On(EGameType.InitCreateGameWorld, callInitWorld);
-
             var callLoadScene = (Il2CppSystem.Action<ETypeData>)_OnLoadScene;
-            g.events.On(EGameType.LoadScene, callLoadScene);
-
             var callIntoWorld = (Il2CppSystem.Action<ETypeData>)_OnIntoWorld;
-            g.events.On(EGameType.IntoWorld, callIntoWorld);
-
             var callSave = (Il2CppSystem.Action<ETypeData>)_OnSave;
-            g.events.On(EGameType.SaveData, callSave);
-
             var callOpenDrama = (Il2CppSystem.Action<ETypeData>)_OnOpenDrama;
-            g.events.On(EGameType.OpenDrama, callOpenDrama);
-
             var callOpenNPCInfoUI = (Il2CppSystem.Action<ETypeData>)_OnOpenNPCInfoUI;
-            g.events.On(EGameType.OpenNPCInfoUI, callOpenNPCInfoUI);
-
             var callTaskAdd = (Il2CppSystem.Action<ETypeData>)_OnTaskAdd;
-            g.events.On(EGameType.TaskAdd, callTaskAdd);
-
             var callTaskComplete = (Il2CppSystem.Action<ETypeData>)_OnTaskComplete;
-            g.events.On(EGameType.TaskComplete, callTaskComplete);
-
             var callTaskFail = (Il2CppSystem.Action<ETypeData>)_OnTaskFail;
-            g.events.On(EGameType.TaskFail, callTaskFail);
-
             var callTaskGive = (Il2CppSystem.Action<ETypeData>)_OnTaskGive;
-            g.events.On(EGameType.TaskGive, callTaskGive);
-
             var callTaskOverl = (Il2CppSystem.Action<ETypeData>)_OnTaskOverl;
-            g.events.On(EGameType.TaskOverl, callTaskOverl);
-
             var callUnitSetGrade = (Il2CppSystem.Action<ETypeData>)_OnUnitSetGrade;
-            g.events.On(EGameType.UnitSetGrade, callUnitSetGrade);
-
             var callUnitSetHeartState = (Il2CppSystem.Action<ETypeData>)_OnUnitSetHeartState;
-            g.events.On(EGameType.UnitSetHeartState, callUnitSetHeartState);
             #endregion
 
             #region EBattleType
             var callBattleUnitInit = (Il2CppSystem.Action<ETypeData>)_OnBattleUnitInit;
-            g.events.On(EBattleType.UnitInit, callBattleUnitInit);
-
             var callBattleUnitHit = (Il2CppSystem.Action<ETypeData>)_OnBattleUnitHit;
-            g.events.On(EBattleType.UnitHit, callBattleUnitHit);
-
             var callBattleUnitHitDynIntHandler = (Il2CppSystem.Action<ETypeData>)_OnBattleUnitHitDynIntHandler;
-            g.events.On(EBattleType.UnitHitDynIntHandler, callBattleUnitHitDynIntHandler);
-
             var callBattleUnitShieldHitDynIntHandler = (Il2CppSystem.Action<ETypeData>)_OnBattleUnitShieldHitDynIntHandler;
-            g.events.On(EBattleType.UnitShieldHitDynIntHandler, callBattleUnitShieldHitDynIntHandler);
-
             var callBattleUnitUseProp = (Il2CppSystem.Action<ETypeData>)_OnBattleUnitUseProp;
-            g.events.On(EBattleType.UnitUseProp, callBattleUnitUseProp);
-
             var callBattleUnitUseSkill = (Il2CppSystem.Action<ETypeData>)_OnBattleUnitUseSkill;
-            g.events.On(EBattleType.UnitUseSkill, callBattleUnitUseSkill);
-
             var callBattleUnitUseStep = (Il2CppSystem.Action<ETypeData>)_OnBattleUnitUseStep;
-            g.events.On(EBattleType.UnitUseStep, callBattleUnitUseStep);
-
             var callBattleUnitDie = (Il2CppSystem.Action<ETypeData>)_OnBattleUnitDie;
-            g.events.On(EBattleType.UnitDie, callBattleUnitDie);
-
             var callBattleUnitDieEnd = (Il2CppSystem.Action<ETypeData>)_OnBattleUnitDieEnd;
-            g.events.On(EBattleType.UnitDieEnd, callBattleUnitDieEnd);
-
             var callBattleUnitAddEffectStart = (Il2CppSystem.Action<ETypeData>)_OnBattleUnitAddEffectStart;
-            g.events.On(EBattleType.UnitAddEffectStart, callBattleUnitAddEffectStart);
-
             var callBattleUnitAddEffect = (Il2CppSystem.Action<ETypeData>)_OnBattleUnitAddEffect;
-            g.events.On(EBattleType.UnitAddEffect, callBattleUnitAddEffect);
-
             var callBattleUnitAddHP = (Il2CppSystem.Action<ETypeData>)_OnBattleUnitAddHP;
-            g.events.On(EBattleType.UnitAddHP, callBattleUnitAddHP);
-
             var callBattleUnitUpdateProperty = (Il2CppSystem.Action<ETypeData>)_OnBattleUnitUpdateProperty;
-            g.events.On(EBattleType.UnitUpdateProperty, callBattleUnitUpdateProperty);
-
             var callBattleSetUnitType = (Il2CppSystem.Action<ETypeData>)_OnBattleSetUnitType;
-            g.events.On(EBattleType.SetUnitType, callBattleSetUnitType);
-
             var callBattleStart = (Il2CppSystem.Action<ETypeData>)_OnBattleStart;
-            g.events.On(EBattleType.BattleStart, callBattleStart);
-
             var callBattleEnd = (Il2CppSystem.Action<ETypeData>)_OnBattleEnd;
-            g.events.On(EBattleType.BattleEnd, callBattleEnd);
-
             var callBattleEndFront = (Il2CppSystem.Action<ETypeData>)_OnBattleEndFront;
-            g.events.On(EBattleType.BattleEndFront, callBattleEndFront);
-
             var callBattleEndHandler = (Il2CppSystem.Action<ETypeData>)_OnBattleEndHandler;
-            g.events.On(EBattleType.BattleEndHandler, callBattleEndHandler);
-
             var callBattleEscapeFailed = (Il2CppSystem.Action<ETypeData>)_OnBattleEscapeFailed;
-            g.events.On(EBattleType.BattleEscapeFailed, callBattleEscapeFailed);
-
             var callBattleExit = (Il2CppSystem.Action<ETypeData>)_OnBattleExit;
-            g.events.On(EBattleType.BattleExit, callBattleExit);
+            #endregion
+
+            //declare event
+            DebugHelper.WriteLine("1");
+            DebugHelper.Save();
+            #region Timer
+            RegTimer(callTime100ms, 0.1f);
+            RegTimer(callTime200ms, 0.2f);
+            RegTimer(callTime500ms, 0.5f);
+            RegTimer(callTime1s, 1f);
+            #endregion
+
+            DebugHelper.WriteLine("2");
+            DebugHelper.Save();
+            #region EMapType
+            RegEvent2(EMapType.PlayerOpenTownBuild((int)MapBuildSubType.TownStorage), _OnPlayerOpenTreeVault);
+            RegEvent(EMapType.PlayerOpenTownBuild((int)MapBuildSubType.SchoolStorage), callPlayerOpenTreeVault);
+            RegEvent(EMapType.PlayerEquipCloth, callPlayerEquipCloth);
+            RegEvent(EMapType.PlayerInMonstArea, callPlayerInMonstArea);
+            RegEvent(EMapType.PlayerRoleEscapeInMap, callPlayerRoleEscapeInMap);
+            RegEvent(EMapType.PlayerRoleUpGradeBig, callPlayerRoleUpGradeBig);
+            RegEvent(EMapType.UpGradeAndCloseFateFeatureUI, callUpGradeAndCloseFateFeatureUI);
+            RegEvent(EMapType.UseHobbyProps, callUseHobbyProps);
+            //RegEvent(EMapType.FortuitousTrigger, callFortuitousTrigger);
+            #endregion
+
+            DebugHelper.WriteLine("3");
+            DebugHelper.Save();
+            #region EGameType
+            //RegEvent(EGameType.TownAuctionStart(1), callTownAuctionStart);
+            //RegEvent(EGameType.TownAuctionStart(2), callTownAuctionStart);
+            //RegEvent(EGameType.TownAuctionStart(3), callTownAuctionStart);
+            //RegEvent(EGameType.TownAuctionStart(4), callTownAuctionStart);
+            //RegEvent(EGameType.TownAuctionStart(5), callTownAuctionStart);
+            //RegEvent(EGameType.TownAuctionStart(6), callTownAuctionStart);
+            //RegEvent(EGameType.TownAuctionStart(7), callTownAuctionStart);
+            //RegEvent(EGameType.TownAuctionStart(8), callTownAuctionStart);
+            //RegEvent(EGameType.TownAuctionStart(9), callTownAuctionStart);
+            //RegEvent(EGameType.TownAuctionStart(10), callTownAuctionStart);
+            RegEvent(EGameType.OpenUIStart, callOpenUIStart);
+            RegEvent(EGameType.OpenUIEnd, callOpenUIEnd);
+            RegEvent(EGameType.CloseUIStart, callCloseUIStart);
+            RegEvent(EGameType.CloseUIEnd, callCloseUIEnd);
+            RegEvent(EGameType.InitCreateGameWorld, callInitWorld);
+            RegEvent(EGameType.LoadScene, callLoadScene);
+            RegEvent(EGameType.IntoWorld, callIntoWorld);
+            RegEvent(EGameType.SaveData, callSave);
+            RegEvent(EGameType.OpenDrama, callOpenDrama);
+            RegEvent(EGameType.OpenNPCInfoUI, callOpenNPCInfoUI);
+            RegEvent(EGameType.TaskAdd, callTaskAdd);
+            RegEvent(EGameType.TaskComplete, callTaskComplete);
+            RegEvent(EGameType.TaskFail, callTaskFail);
+            RegEvent(EGameType.TaskGive, callTaskGive);
+            RegEvent(EGameType.TaskOverl, callTaskOverl);
+            RegEvent(EGameType.UnitSetGrade, callUnitSetGrade);
+            RegEvent(EGameType.UnitSetHeartState, callUnitSetHeartState);
+            #endregion
+
+            #region EBattleType
+            RegEvent(EBattleType.UnitInit, callBattleUnitInit);
+            RegEvent(EBattleType.UnitHit, callBattleUnitHit);
+            RegEvent(EBattleType.UnitHitDynIntHandler, callBattleUnitHitDynIntHandler);
+            RegEvent(EBattleType.UnitShieldHitDynIntHandler, callBattleUnitShieldHitDynIntHandler);
+            RegEvent(EBattleType.UnitUseProp, callBattleUnitUseProp);
+            RegEvent(EBattleType.UnitUseSkill, callBattleUnitUseSkill);
+            RegEvent(EBattleType.UnitUseStep, callBattleUnitUseStep);
+            RegEvent(EBattleType.UnitDie, callBattleUnitDie);
+            RegEvent(EBattleType.UnitDieEnd, callBattleUnitDieEnd);
+            RegEvent(EBattleType.UnitAddEffectStart, callBattleUnitAddEffectStart);
+            RegEvent(EBattleType.UnitAddEffect, callBattleUnitAddEffect);
+            RegEvent(EBattleType.UnitAddHP, callBattleUnitAddHP);
+            RegEvent(EBattleType.UnitUpdateProperty, callBattleUnitUpdateProperty);
+            RegEvent(EBattleType.SetUnitType, callBattleSetUnitType);
+            RegEvent(EBattleType.BattleStart, callBattleStart);
+            RegEvent(EBattleType.BattleEnd, callBattleEnd);
+            RegEvent(EBattleType.BattleEndFront, callBattleEndFront);
+            RegEvent(EBattleType.BattleEndHandler, callBattleEndHandler);
+            RegEvent(EBattleType.BattleEscapeFailed, callBattleEscapeFailed);
+            RegEvent(EBattleType.BattleExit, callBattleExit);
             #endregion
 
             CallEvents("OnInitMod");
         }
 
-        //GameEvent
-        public virtual void Destroy()
+        private void RegTimer(Il2CppSystem.Action action, float period)
         {
-            if (corTimeUpdate != null)
-                g.timer.Stop(corTimeUpdate);
-            if (corTimeUpdate200ms != null)
-                g.timer.Stop(corTimeUpdate200ms);
-            if (corTimeUpdate500ms != null)
-                g.timer.Stop(corTimeUpdate500ms);
-            if (corTimeUpdate1s != null)
-                g.timer.Stop(corTimeUpdate1s);
-            if (corFrameUpdate != null)
-                g.timer.Stop(corFrameUpdate);
+            var e = g.timer.allTime.ToArray().FirstOrDefault(x =>
+            {
+                return x.call.Method.Name == action.Method.Name && x.call.Method.DeclaringType.FullName == action.Method.DeclaringType.FullName;
+            });
+            if (e != null)
+                g.timer.allTime.Remove(e);
+            g.timer.Time(action, period, true);
+            DebugHelper.WriteLine($"MethodName: {action.Method.Name}");
+            DebugHelper.WriteLine($"ClassName: {action.Method.DeclaringType.FullName}");
+            DebugHelper.Save();
+        }
+
+        private void RegEvent(string id, Il2CppSystem.Action<ETypeData> action)
+        {
+            var e = g.events.allEvents[id].ToArray().FirstOrDefault(x =>
+            {
+                return  (x.call1?.Method.Name == action.Method.Name && x.call1?.Method.DeclaringType.FullName == action.Method.DeclaringType.FullName) ||
+                        (x.call2?.Method.Name == action.Method.Name && x.call2?.Method.DeclaringType.FullName == action.Method.DeclaringType.FullName);
+            });
+            if (e != null)
+                g.events.allEvents[id].Remove(e);
+            g.events.On(id, action);
+            DebugHelper.WriteLine($"MethodName: {action.Method.Name}");
+            DebugHelper.WriteLine($"ClassName: {action.Method.DeclaringType.FullName}");
+            DebugHelper.Save();
+        }
+
+        private void RegEvent2(string id, Action<ETypeData> action)
+        {
+            DebugHelper.WriteLine($"MethodName: {action.Method.Name}");
+            DebugHelper.WriteLine($"ClassName: {action.Method.DeclaringType.FullName}");
+            DebugHelper.Save();
+            foreach (var x in g.events.allEvents[id])
+            {
+                DebugHelper.WriteLine($"MethodName1: {x.call1?.Method.Name}");
+                DebugHelper.WriteLine($"ClassName1: {x.call1?.Method.DeclaringType.FullName}");
+                DebugHelper.WriteLine($"MethodName2: {x.call2?.Method.Name}");
+                DebugHelper.WriteLine($"ClassName2: {x.call2?.Method.DeclaringType.FullName}");
+                DebugHelper.Save();
+            }
+            var e = g.events.allEvents[id].ToArray().FirstOrDefault(x =>
+            {
+                return  (x.call1?.Method.Name == action.Method.Name && x.call1?.Method.DeclaringType.FullName == action.Method.DeclaringType.FullName) ||
+                        (x.call2?.Method.Name == action.Method.Name && x.call2?.Method.DeclaringType.FullName == action.Method.DeclaringType.FullName);
+            });
+            if (e != null)
+            {
+                g.events.allEvents[id].Remove(e);
+            }
+            g.events.On(id, action);
         }
 
         private void CallEvents(string methodName, bool isInGame = false, bool isInBattle = false, Func<bool> predicate = null, Action callback = null)

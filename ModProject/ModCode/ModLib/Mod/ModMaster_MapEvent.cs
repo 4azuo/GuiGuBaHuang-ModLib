@@ -44,10 +44,10 @@ namespace ModLib.Mod
         //{
         //    CallEvents<ETypeData>("OnFortuitousTrigger", e, true, false);
         //}
-    #endregion
+        #endregion
 
-    #region ModLib - Events
-    public virtual void OnPlayerOpenTreeVault(ETypeData e)
+        #region ModLib - Events
+        public virtual void OnPlayerOpenTreeVault(ETypeData e)
         {
             EventHelper.RunMinorEvents(e);
         }

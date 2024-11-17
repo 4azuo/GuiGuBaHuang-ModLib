@@ -122,9 +122,9 @@ namespace MOD_nE7UL2.Mod
             }
         }
 
-        public override void OnFrameUpdate()
+        public override void OnTimeUpdate()
         {
-            base.OnFrameUpdate();
+            base.OnTimeUpdate();
             if (uiPropSell != null && curMainTown != null && txtMarketST != null)
             {
                 var budget = MapBuildPropertyEvent.GetBuildProperty(curMainTown);
