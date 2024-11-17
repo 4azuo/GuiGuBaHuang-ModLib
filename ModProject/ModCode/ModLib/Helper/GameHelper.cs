@@ -26,6 +26,7 @@ public static class GameHelper
         foreach (var t in enumTypes)
         {
             RuntimeHelpers.RunClassConstructor(t.TypeHandle);
+            DebugHelper.WriteLine($"Load EObj: {t.FullName}");
         }
     }
 
