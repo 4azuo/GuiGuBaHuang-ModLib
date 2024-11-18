@@ -65,10 +65,10 @@ namespace MOD_nE7UL2.Mod
 
             uiSelector.onOKCall = (Il2CppSystem.Action)Exchange;
 
-            var txtExchangeRatio = uiSelector.textInfo.Create().Format().Align().Pos(uiSelector.textTitle1.gameObject, 0f, 0.3f);
+            var txtExchangeRatio = uiSelector.textInfo.Create().Format().Align(TextAnchor.MiddleCenter).Pos(uiSelector.textTitle1.gameObject, 0f, 0.3f);
             txtExchangeRatio.text = $"Exchannge Ratio {CurMonthRatio} Spirit Stones → 1 Contribution";
 
-            txtExchangeContribution = uiSelector.textInfo.Create().Format().Align().Pos(uiSelector.btnOK.gameObject, 0f, -0.5f);
+            txtExchangeContribution = uiSelector.textInfo.Create().Format().Align(TextAnchor.MiddleCenter).Pos(uiSelector.btnOK.gameObject, 0f, -0.3f);
         }
 
         private void Exchange()

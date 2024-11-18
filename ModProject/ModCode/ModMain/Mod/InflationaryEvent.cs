@@ -1,6 +1,8 @@
 ﻿using MOD_nE7UL2.Const;
+using ModLib.Const;
 using ModLib.Mod;
 using System;
+using System.Linq;
 using static MOD_nE7UL2.Object.InGameStts;
 
 namespace MOD_nE7UL2.Mod
@@ -8,7 +10,11 @@ namespace MOD_nE7UL2.Mod
     [Cache(ModConst.INFLATIONARY_EVENT)]
     public class InflationaryEvent : ModEvent
     {
+        public const int REACH_LIMIT_DRAMA = 499919998;
+        public const int LIMIT = 1000000000;
         public static _InflationaryConfigs Configs => ModMain.ModObj.InGameCustomSettings.InflationaryConfigs;
+
+        public int Corruption { get; set; } = 0;
 
         public override void OnLoadGame()
         {
@@ -19,6 +25,14 @@ namespace MOD_nE7UL2.Mod
         public override void OnYearly()
         {
             base.OnYearly();
+            if (GetHighestCost() > LIMIT)
+            {
+                Corruption++;
+                var player = g.world.playerUnit;
+                player.SetUnitMoney(0);
+                player.RemoveStorageItem(ModLibConst.MONEY_PROP_ID);
+                DramaTool.OpenDrama(REACH_LIMIT_DRAMA);
+            }
             Inflationary(1);
         }
 
@@ -44,14 +58,29 @@ namespace MOD_nE7UL2.Mod
         {
             if (value <= 0)
                 return value;
-            return Convert.ToInt32(value * Math.Pow(Configs.InflationaryRate, year));
+            var x = EventHelper.GetEvent<InflationaryEvent>(ModConst.INFLATIONARY_EVENT);
+            return Convert.ToInt32(value * Math.Pow(Configs.InflationaryRate, year) / Math.Pow(100, x.Corruption));
         }
 
         public static long CalculateInflationary(long value, int year)
         {
             if (value <= 0)
                 return value;
-            return Convert.ToInt64(value * Math.Pow(Configs.InflationaryRate, year));
+            var x = EventHelper.GetEvent<InflationaryEvent>(ModConst.INFLATIONARY_EVENT);
+            return Convert.ToInt64(value * Math.Pow(Configs.InflationaryRate, year) / Math.Pow(100, x.Corruption));
+        }
+
+        public static int GetHighestCost()
+        {
+            return new int[] {
+                BankAccountEvent.Cost(10),
+                g.conf.itemProps._allConfList.ToArray().Max(x => x.sale),
+                g.conf.itemProps._allConfList.ToArray().Max(x => x.worth),
+                g.conf.itemSkill._allConfList.ToArray().Max(x => x.price),
+                g.conf.itemSkill._allConfList.ToArray().Max(x => x.cost),
+                g.conf.itemSkill._allConfList.ToArray().Max(x => x.sale),
+                g.conf.itemSkill._allConfList.ToArray().Max(x => x.worth)
+            }.Max();
         }
     }
 }

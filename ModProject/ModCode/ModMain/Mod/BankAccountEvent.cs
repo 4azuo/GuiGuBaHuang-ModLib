@@ -24,7 +24,7 @@ namespace MOD_nE7UL2.Mod
                 var player = g.world.playerUnit;
                 var curTown = g.world.build.GetBuild(new UnityEngine.Vector2Int(player.data.unitData.pointX, player.data.unitData.pointY));
 
-                if (!RegisterdTown.Contains(curTown.buildData.id))
+                if (!RegisterdTown.Contains(curTown.buildData.id) && curTown.TryCast<MapBuildSchool>() == null)
                 {
                     var uiTownStorage = g.ui.GetUI<UITownStorage>(UIType.TownStorage);
                     var btn1 = uiTownStorage.btnProps.Replace().Size(270f, 90f);
@@ -45,7 +45,8 @@ namespace MOD_nE7UL2.Mod
 
         public static int Cost(int areaId)
         {
-            return BankAccountConfigs.OpenFee[areaId];
+            var round = BankAccountConfigs.OpenFee[areaId] / 100;
+            return (InflationaryEvent.CalculateInflationary(BankAccountConfigs.OpenFee[areaId], GameHelper.GetGameYear()) / round) * round;
         }
 
         public static void RemoveAllAccounts()

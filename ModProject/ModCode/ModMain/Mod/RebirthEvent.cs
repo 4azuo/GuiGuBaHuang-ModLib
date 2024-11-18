@@ -11,6 +11,7 @@ namespace MOD_nE7UL2.Mod
     [Cache(ModConst.REBIRTH_EVENT)]
     public class RebirthEvent : ModEvent
     {
+        public const int REBIRTH_DRAMA = 420109999;
         public const int LUCK_BASE_ID = 420101000;
         public const int MAX_LUCK_LVL = 10;
 
@@ -57,6 +58,7 @@ namespace MOD_nE7UL2.Mod
                                 player.SetProperty(UnitPropertyEnum.Reputation, 0);
                                 player.data.school.ExitSchool(player);
                                 AddLuck();
+                                DramaTool.OpenDrama(REBIRTH_DRAMA);
                             }));
                     }));
                 }
