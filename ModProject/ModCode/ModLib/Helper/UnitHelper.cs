@@ -490,4 +490,15 @@ public static class UnitHelper
             return;
         GameHelper.GetStorage().data.propData.allProps = new Il2CppSystem.Collections.Generic.List<DataProps.PropsData>();
     }
+
+    public static void RemoveStorageItem(this WorldUnitBase wunit, int propId)
+    {
+        if (!wunit.IsPlayer())
+            return;
+        foreach (var item in GameHelper.GetStorageItems())
+        {
+            if (item.propsID == propId)
+                GameHelper.GetStorage().data.propData.allProps.Remove(item);
+        }
+    }
 }

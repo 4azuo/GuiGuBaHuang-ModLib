@@ -99,4 +99,9 @@
 		"key": "rebirth420101010desc",
 		"en|ch|tc": "+50% Max HP"
 	},
+	{
+		"id": "420109999",
+		"key": "rebirth420109999dialog",
+		"en|ch|tc": "This rebirth is an opportunity. A chance to rectify past mistakes, to pursue a different path. I must choose wisely. What skills to retain, what knowledge to discard. Every decision will shape my destiny."
+	}
 ]

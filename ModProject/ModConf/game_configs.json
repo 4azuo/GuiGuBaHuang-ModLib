@@ -63,8 +63,8 @@
 		}
 	},
 	"RealTrialConfigs": {
-		"PowerUpOnGameLevel": 0.75,
-		"PowerUpOnGradeLevel": 0.10
+		"PowerUpOnGameLevel": 0.64,
+		"PowerUpOnGradeLevel": 0.08
 	},
 	"RealStorageConfigs": {
 		"__tip": "-0.1% on total item-worth-value every month",

@@ -12,6 +12,8 @@ namespace MOD_nE7UL2.Mod
     [Cache(ModConst.REAL_STORAGE_EVENT)]
     public class RealStorageEvent : ModEvent
     {
+        public const int DEBT_DRAMA = 480020100;
+
         public static float FEE_RATE
         {
             get
@@ -85,7 +87,7 @@ namespace MOD_nE7UL2.Mod
                 }
                 if (Debt > 0 && (count < 3 || GameHelper.GetGameMonth() == 1))
                 {
-                    DramaTool.OpenDrama(480020100);
+                    DramaTool.OpenDrama(DEBT_DRAMA);
                     count++;
                 }
             }

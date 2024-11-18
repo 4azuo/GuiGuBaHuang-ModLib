@@ -36,8 +36,7 @@ namespace MOD_nE7UL2.Mod
                 var def = g.world.playerUnit.GetDynProperty(UnitDynPropertyEnum.Defense).value;
                 var basisThunder = g.world.playerUnit.GetDynProperty(UnitDynPropertyEnum.BasisThunder).value;
                 var baseDmg = (atk * (
-                        1.00f
-                        + g.data.dataWorld.data.gameLevel.Parse<int>() * RealTrialConfigs.PowerUpOnGameLevel
+                        g.data.dataWorld.data.gameLevel.Parse<int>() * RealTrialConfigs.PowerUpOnGameLevel
                         + g.world.playerUnit.GetGradeLvl() * RealTrialConfigs.PowerUpOnGradeLevel
                     )).Parse<int>()
                     - (def * basisThunder / 100);

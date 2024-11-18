@@ -50,4 +50,10 @@ public static class GameHelper
         var storageTown = g.world.build.GetBuilds(MapTerrainType.Town).ToArray().FirstOrDefault(x => x.gridData.areaBaseID == 1);
         return storageTown?.GetBuildSub<MapBuildTownStorage>();
     }
+
+    public static Il2CppSystem.Collections.Generic.List<DataProps.PropsData> GetStorageItems()
+    {
+        var storageTown = g.world.build.GetBuilds(MapTerrainType.Town).ToArray().FirstOrDefault(x => x.gridData.areaBaseID == 1);
+        return storageTown?.GetBuildSub<MapBuildTownStorage>().data.propData.allProps;
+    }
 }
