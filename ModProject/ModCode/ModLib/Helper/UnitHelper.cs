@@ -6,9 +6,9 @@ using System.Linq;
 
 public static class UnitHelper
 {
-    public static DataProps.PropsData GetEquippedArtifacts(this WorldUnitBase wunit)
+    public static DataProps.PropsData[] GetEquippedArtifacts(this WorldUnitBase wunit)
     {
-        return wunit.GetEquippedProps().FirstOrDefault(x => x?.propsItem?.IsArtifact() != null);
+        return wunit.GetEquippedProps().Where(x => x?.propsItem?.IsArtifact() != null).ToArray();
     }
 
     public static DataProps.PropsData GetEquippedRing(this WorldUnitBase wunit)

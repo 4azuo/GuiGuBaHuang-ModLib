@@ -73,8 +73,7 @@ namespace MOD_nE7UL2.Mod
 
             var atk = wunit.GetDynProperty(UnitDynPropertyEnum.Attack).baseValue;
 
-            var artifact = wunit.GetEquippedArtifacts();
-            if (artifact != null)
+            foreach (var artifact in wunit.GetEquippedArtifacts())
             {
                 var a = artifact.To<DataProps.PropsArtifact>();
                 if (a.durable > 0)
@@ -102,8 +101,7 @@ namespace MOD_nE7UL2.Mod
 
             var def = wunit.GetDynProperty(UnitDynPropertyEnum.Defense).baseValue;
 
-            var artifact = wunit.GetEquippedArtifacts();
-            if (artifact != null)
+            foreach (var artifact in wunit.GetEquippedArtifacts())
             {
                 var a = artifact.To<DataProps.PropsArtifact>();
                 if (a.durable > 0)
@@ -131,8 +129,7 @@ namespace MOD_nE7UL2.Mod
 
             var hpMax = wunit.GetDynProperty(UnitDynPropertyEnum.HpMax).baseValue;
 
-            var artifact = wunit.GetEquippedArtifacts();
-            if (artifact != null)
+            foreach (var artifact in wunit.GetEquippedArtifacts())
             {
                 var a = artifact.To<DataProps.PropsArtifact>();
                 if (a.durable > 0)
@@ -154,6 +151,8 @@ namespace MOD_nE7UL2.Mod
             rs += UnitModifyHelper.GetAbiPointAdjHp(wunit);
 
             rs += UnitModifyHelper.GetMartialAdjHp(wunit);
+
+            rs += UnitModifyHelper.GetRingAdjHp(hpMax, wunit.GetEquippedRing());
 
             return rs;
         }

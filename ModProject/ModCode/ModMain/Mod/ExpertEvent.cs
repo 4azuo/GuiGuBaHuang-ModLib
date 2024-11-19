@@ -39,8 +39,7 @@ namespace MOD_nE7UL2.Mod
 
                 if (wunit.IsPlayer())
                     continue;
-                var artifact = wunit.GetEquippedArtifacts();
-                if (artifact != null)
+                foreach (var artifact in wunit.GetEquippedArtifacts())
                 {
                     AddExpertExp(wunit, artifact.soleID, Configs.AutoArtifactExpRate);
                 }
@@ -54,9 +53,7 @@ namespace MOD_nE7UL2.Mod
             if (humanData?.worldUnitData?.unit != null)
             {
                 var wunit = humanData.worldUnitData.unit;
-                var artifacts = wunit.GetEquippedArtifacts();
-                var artifact = wunit.GetEquippedArtifacts();
-                if (artifact != null)
+                foreach (var artifact in wunit.GetEquippedArtifacts())
                 {
                     var a = artifact.To<DataProps.PropsArtifact>();
                     if (a.durable > 0)

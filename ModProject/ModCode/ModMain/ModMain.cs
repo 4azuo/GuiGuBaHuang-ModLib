@@ -406,14 +406,14 @@ namespace MOD_nE7UL2
                     props.sale = PriceHelper.UpPrice(avgPrice, grade, level, ratio);
                     props.worth = PriceHelper.UpPrice(avgPrice, grade, level, ratio);
 
-                    var factory = g.conf.townFactotySell._allConfList.ToArray().FirstOrDefault(x => x.id == props.id);
+                    var factory = g.conf.townFactotySell.GetItem(props.id);
                     if (factory != null)
                         factory.makePrice = props.worth / 6;
                 }
                 else if ((refiningArtifact = props.IsTownRefiningArtifact()) != null)
                 {
                     var artifactId = g.conf.artifactShapeMaterial.GetItem(refiningArtifact.id).shape;
-                    var productShape = g.conf.artifactShape.GetItem(artifactId);
+                    //var productShape = g.conf.artifactShape.GetItem(artifactId);
                     var productProp = g.conf.itemProps.GetItem(artifactId);
 
                     props.sale = productProp.sale / 3;

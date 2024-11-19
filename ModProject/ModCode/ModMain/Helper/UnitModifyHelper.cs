@@ -8,6 +8,14 @@ public static class UnitModifyHelper
 {
     public static _ExpertConfigs ExpertConfigs => ModMain.ModObj.InGameCustomSettings.ExpertConfigs;
 
+    public static int GetRingAdjHp(int baseValue, DataProps.PropsData props)
+    {
+        if (props == null)
+            return 0;
+        var r = 0.03f * props.propsInfoBase.grade + 0.007f * props.propsInfoBase.level;
+        return (r * baseValue).Parse<int>();
+    }
+
     public static int GetArtifactBasicAdjAtk(int baseValue, DataProps.PropsData props, DataProps.PropsArtifact artifact)
     {
         var aconf = props.propsItem.IsArtifact();
