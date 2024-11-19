@@ -8,6 +8,7 @@ using static MOD_nE7UL2.Object.InGameStts._HideButtonConfigs;
 using static MOD_nE7UL2.Object.InGameStts;
 using System.Collections.Generic;
 using ModLib.Enum;
+using static SpecialBattle83;
 
 namespace MOD_nE7UL2.Mod
 {
@@ -40,7 +41,9 @@ namespace MOD_nE7UL2.Mod
         private static Text uiMartialExpertInfo_textAdj3;
         private static Text uiMartialExpertInfo_textAdj4;
         private static Text uiMartialExpertInfo_textAdj5;
+        private static Text uiPropInfo_textBasicTitle;
         private static Text uiPropInfo_textBasicAdj1;
+        private static Text uiPropInfo_textBasicAdj2;
 
         public static void OnUIOpen(OpenUIEnd e)
         {
@@ -118,27 +121,27 @@ namespace MOD_nE7UL2.Mod
                 var expertExp = ExpertEvent.GetExpertExp(soleId);
                 var expertNeedExp = ExpertEvent.GetExpertNeedExp(expertLvl + 1, propsGrade, propsLevel);
 
-                uiArtifactInfo_textBasicTitle = ObjectHelper.Create(uiArtifactInfo.textGrade_En).Align().Format(Color.white, 16, FontStyle.Bold);
+                uiArtifactInfo_textBasicTitle = ObjectHelper.Create(uiArtifactInfo.textGrade_En).Align().Format(Color.white, 16);
                 uiArtifactInfo_textBasicAdj1 = ObjectHelper.Create(uiArtifactInfo.textGrade_En).Align().Format(Color.white);
                 uiArtifactInfo_textBasicAdj2 = ObjectHelper.Create(uiArtifactInfo.textGrade_En).Align().Format(Color.white);
                 uiArtifactInfo_textBasicAdj3 = ObjectHelper.Create(uiArtifactInfo.textGrade_En).Align().Format(Color.white);
-                uiArtifactInfo_textExpertLvl = ObjectHelper.Create(uiArtifactInfo.textGrade_En).Align().Format(Color.white, 16, FontStyle.Bold);
+                uiArtifactInfo_textExpertLvl = ObjectHelper.Create(uiArtifactInfo.textGrade_En).Align().Format(Color.white, 16);
                 uiArtifactInfo_textExpertAdj1 = ObjectHelper.Create(uiArtifactInfo.textGrade_En).Align().Format(Color.white);
                 uiArtifactInfo_textExpertAdj2 = ObjectHelper.Create(uiArtifactInfo.textGrade_En).Align().Format(Color.white);
 
                 uiArtifactInfo_textBasicTitle.Pos(uiArtifactInfo.textGrade_En.gameObject, 0f, -0.3f);
-                uiArtifactInfo_textBasicAdj1.Pos(uiArtifactInfo.textGrade_En.gameObject, +0.2f, -0.5f);
-                uiArtifactInfo_textBasicAdj2.Pos(uiArtifactInfo.textGrade_En.gameObject, +0.2f, -0.7f);
-                uiArtifactInfo_textBasicAdj3.Pos(uiArtifactInfo.textGrade_En.gameObject, +0.2f, -0.9f);
+                uiArtifactInfo_textBasicAdj1.Pos(uiArtifactInfo.textGrade_En.gameObject, +0.1f, -0.5f);
+                uiArtifactInfo_textBasicAdj2.Pos(uiArtifactInfo.textGrade_En.gameObject, +0.1f, -0.7f);
+                uiArtifactInfo_textBasicAdj3.Pos(uiArtifactInfo.textGrade_En.gameObject, +0.1f, -0.9f);
                 uiArtifactInfo_textExpertLvl.Pos(uiArtifactInfo.textGrade_En.gameObject, 0f, -1.2f);
-                uiArtifactInfo_textExpertAdj1.Pos(uiArtifactInfo.textGrade_En.gameObject, +0.2f, -1.4f);
-                uiArtifactInfo_textExpertAdj2.Pos(uiArtifactInfo.textGrade_En.gameObject, +0.2f, -1.6f);
+                uiArtifactInfo_textExpertAdj1.Pos(uiArtifactInfo.textGrade_En.gameObject, +0.1f, -1.4f);
+                uiArtifactInfo_textExpertAdj2.Pos(uiArtifactInfo.textGrade_En.gameObject, +0.1f, -1.6f);
 
                 uiArtifactInfo_textBasicTitle.text = $"Basic:";
                 uiArtifactInfo_textBasicAdj1.text = $"+Atk: {UnitModifyHelper.GetArtifactBasicAdjAtk(uiArtifactInfo.unit.GetDynProperty(UnitDynPropertyEnum.Attack).baseValue, uiArtifactInfo.shapeProp, artifact)}";
                 uiArtifactInfo_textBasicAdj2.text = $"+Def: {UnitModifyHelper.GetArtifactBasicAdjDef(uiArtifactInfo.unit.GetDynProperty(UnitDynPropertyEnum.Defense).baseValue, uiArtifactInfo.shapeProp, artifact)}";
                 uiArtifactInfo_textBasicAdj3.text = $"+Hp: {UnitModifyHelper.GetArtifactBasicAdjHp(uiArtifactInfo.unit.GetDynProperty(UnitDynPropertyEnum.HpMax).baseValue, uiArtifactInfo.shapeProp, artifact)}";
-                uiArtifactInfo_textExpertLvl.text = $"Expert Level: {expertLvl} ({expertExp}/{expertNeedExp})";
+                uiArtifactInfo_textExpertLvl.text = $"Expert Lvl: {expertLvl} ({expertExp}/{expertNeedExp})";
                 uiArtifactInfo_textExpertAdj1.text = $"+Atk: {UnitModifyHelper.GetArtifactExpertAtk(artifactConf.atk, expertLvl, propsGrade, propsLevel)}";
                 uiArtifactInfo_textExpertAdj2.text = $"+Def: {UnitModifyHelper.GetArtifactExpertDef(artifactConf.def, expertLvl, propsGrade, propsLevel)}";
             }
@@ -167,7 +170,7 @@ namespace MOD_nE7UL2.Mod
 
                 uiMartialExpertInfo_textExpertLvl.fontSize++;
                 uiMartialExpertInfo_textExpertLvl.fontStyle = FontStyle.Bold;
-                uiMartialExpertInfo_textExpertLvl.text = $"Expert Level: {expertLvl} ({expertExp}/{expertNeedExp})";
+                uiMartialExpertInfo_textExpertLvl.text = $"Expert Lvl: {expertLvl} ({expertExp}/{expertNeedExp})";
 
                 if (mType == MartialType.Ability)
                 {
@@ -213,14 +216,31 @@ namespace MOD_nE7UL2.Mod
 
             if (e.uiType.uiName == UIType.PropInfo.uiName)
             {
-                var ui = g.ui.GetUI<UIPropInfo>(UIType.PropInfo);
-                if (ui.propData.propsItem.IsRing() != null)
+                var uiPropInfo = g.ui.GetUI<UIPropInfo>(UIType.PropInfo);
+                if (uiPropInfo.propData.propsItem.IsRing() != null)
                 {
-                    uiPropInfo_textBasicAdj1 = ObjectHelper.Create(ui.textGrade_En).Align().Format(Color.white);
+                    uiPropInfo_textBasicTitle = ObjectHelper.Create(uiPropInfo.textGrade_En).Align().Format(Color.white, 16);
+                    uiPropInfo_textBasicAdj1 = ObjectHelper.Create(uiPropInfo.textGrade_En).Align().Format(Color.white);
 
-                    uiPropInfo_textBasicAdj1.Pos(ui.textGrade_En.gameObject, 0f, -0.2f);
+                    uiPropInfo_textBasicTitle.Pos(uiPropInfo.textGrade_En.gameObject, 0f, -0.3f);
+                    uiPropInfo_textBasicAdj1.Pos(uiPropInfo.textGrade_En.gameObject, +0.1f, -0.5f);
 
-                    uiPropInfo_textBasicAdj1.text = $"+Hp: {UnitModifyHelper.GetRingAdjHp(ui.unit.GetDynProperty(UnitDynPropertyEnum.HpMax).baseValue, ui.propData)}";
+                    uiPropInfo_textBasicTitle.text = $"Bonus (Refine {0}):";
+                    uiPropInfo_textBasicAdj1.text = $"+Hp: {UnitModifyHelper.GetRingAdjHp(uiPropInfo.unit.GetDynProperty(UnitDynPropertyEnum.HpMax).baseValue, uiPropInfo.propData)}";
+                }
+                else if (uiPropInfo.propData.propsItem.IsOutfit() != null)
+                {
+                    uiPropInfo_textBasicTitle = ObjectHelper.Create(uiPropInfo.textName).Align().Format(Color.white, 16);
+                    uiPropInfo_textBasicAdj1 = ObjectHelper.Create(uiPropInfo.textName).Align().Format(Color.white);
+                    uiPropInfo_textBasicAdj2 = ObjectHelper.Create(uiPropInfo.textName).Align().Format(Color.white);
+
+                    uiPropInfo_textBasicTitle.Pos(uiPropInfo.textName.gameObject, 0f, 0.9f);
+                    uiPropInfo_textBasicAdj1.Pos(uiPropInfo.textName.gameObject, +0.1f, 0.7f);
+                    uiPropInfo_textBasicAdj2.Pos(uiPropInfo.textName.gameObject, +0.1f, 0.5f);
+
+                    uiPropInfo_textBasicTitle.text = $"Bonus (Refine {0}):";
+                    uiPropInfo_textBasicAdj1.text = $"+Hp: {UnitModifyHelper.GetOutfitAdjHp(uiPropInfo.unit.GetDynProperty(UnitDynPropertyEnum.HpMax).baseValue, uiPropInfo.propData)}";
+                    uiPropInfo_textBasicAdj2.text = $"+Def: {UnitModifyHelper.GetOutfitAdjDef(uiPropInfo.unit.GetDynProperty(UnitDynPropertyEnum.Defense).baseValue, uiPropInfo.propData)}";
                 }
             }
 
@@ -253,22 +273,32 @@ namespace MOD_nE7UL2.Mod
             var uiNPCInfo = g.ui.GetUI<UINPCInfo>(UIType.NPCInfo);
             var uiPlayerInfo = g.ui.GetUI<UIPlayerInfo>(UIType.PlayerInfo);
             var uiArtifactInfo = g.ui.GetUI<UIArtifactInfo>(UIType.ArtifactInfo);
-            var uiPropInfo = g.ui.GetUI<UIArtifactInfo>(UIType.PropInfo);
+            var uiPropInfo = g.ui.GetUI<UIPropInfo>(UIType.PropInfo);
 
             if (uiPropInfo?.gameObject?.active ?? false)
             {
-                uiPropInfo_textBasicAdj1.Pos(uiArtifactInfo.textGrade_En.gameObject, 0f, -0.2f);
+                if (uiPropInfo.propData.propsItem.IsRing() != null)
+                {
+                    uiPropInfo_textBasicTitle.Pos(uiPropInfo.textGrade_En.gameObject, 0f, -0.3f);
+                    uiPropInfo_textBasicAdj1.Pos(uiPropInfo.textGrade_En.gameObject, +0.1f, -0.5f);
+                }
+                else if (uiPropInfo.propData.propsItem.IsOutfit() != null)
+                {
+                    uiPropInfo_textBasicTitle.Pos(uiPropInfo.textName.gameObject, 0f, 0.9f);
+                    uiPropInfo_textBasicAdj1.Pos(uiPropInfo.textName.gameObject, +0.1f, 0.7f);
+                    uiPropInfo_textBasicAdj2.Pos(uiPropInfo.textName.gameObject, +0.1f, 0.5f);
+                }
             }
 
             if (uiArtifactInfo?.gameObject?.active ?? false)
             {
                 uiArtifactInfo_textBasicTitle.Pos(uiArtifactInfo.textGrade_En.gameObject, 0f, -0.3f);
-                uiArtifactInfo_textBasicAdj1.Pos(uiArtifactInfo.textGrade_En.gameObject, +0.2f, -0.5f);
-                uiArtifactInfo_textBasicAdj2.Pos(uiArtifactInfo.textGrade_En.gameObject, +0.2f, -0.7f);
-                uiArtifactInfo_textBasicAdj3.Pos(uiArtifactInfo.textGrade_En.gameObject, +0.2f, -0.9f);
+                uiArtifactInfo_textBasicAdj1.Pos(uiArtifactInfo.textGrade_En.gameObject, +0.1f, -0.5f);
+                uiArtifactInfo_textBasicAdj2.Pos(uiArtifactInfo.textGrade_En.gameObject, +0.1f, -0.7f);
+                uiArtifactInfo_textBasicAdj3.Pos(uiArtifactInfo.textGrade_En.gameObject, +0.1f, -0.9f);
                 uiArtifactInfo_textExpertLvl.Pos(uiArtifactInfo.textGrade_En.gameObject, 0f, -1.2f);
-                uiArtifactInfo_textExpertAdj1.Pos(uiArtifactInfo.textGrade_En.gameObject, +0.2f, -1.4f);
-                uiArtifactInfo_textExpertAdj2.Pos(uiArtifactInfo.textGrade_En.gameObject, +0.2f, -1.6f);
+                uiArtifactInfo_textExpertAdj1.Pos(uiArtifactInfo.textGrade_En.gameObject, +0.1f, -1.4f);
+                uiArtifactInfo_textExpertAdj2.Pos(uiArtifactInfo.textGrade_En.gameObject, +0.1f, -1.6f);
             }
 
             if (uiNPCInfo?.gameObject?.active ?? false)
