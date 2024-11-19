@@ -101,8 +101,8 @@
 	},
 	"MonstStrongerConfigs": {
 		"AtkR": 1.05,
-		"DefR": 0.64,
-		"MHpR": 1.28,
+		"DefR": 0.60,
+		"MHpR": 1.25,
 		"RebirthAffect": 0.02,
 		"GrowRate": {
 			"Common": 0.0024,

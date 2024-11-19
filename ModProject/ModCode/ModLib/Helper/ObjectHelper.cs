@@ -109,6 +109,7 @@ public static class ObjectHelper
     public static T Replace<T>(this T obj, Transform transform = null) where T : MonoBehaviour
     {
         var newObj = MonoBehaviour.Instantiate(obj, transform ?? obj.transform.parent, false);
+        newObj.gameObject.SetActive(true);
         obj.gameObject.SetActive(false);
         if (newObj is Button)
             (newObj as Button).onClick.m_Calls.Clear();
@@ -118,6 +119,7 @@ public static class ObjectHelper
     public static T Create<T>(this T obj, Transform transform = null) where T : MonoBehaviour
     {
         var newObj = MonoBehaviour.Instantiate(obj, transform ?? obj.transform.parent, false);
+        newObj.gameObject.SetActive(true);
         if (newObj is Text)
             (newObj as Text).text = string.Empty;
         if (newObj is Button)

@@ -120,6 +120,8 @@ namespace MOD_nE7UL2.Mod
                 }
             }
 
+            rs += UnitModifyHelper.GetOutfitAdjDef(def, wunit.GetEquippedOutfit());
+
             return rs;
         }
 
@@ -153,6 +155,8 @@ namespace MOD_nE7UL2.Mod
             rs += UnitModifyHelper.GetMartialAdjHp(wunit);
 
             rs += UnitModifyHelper.GetRingAdjHp(hpMax, wunit.GetEquippedRing());
+
+            rs += UnitModifyHelper.GetOutfitAdjHp(hpMax, wunit.GetEquippedOutfit());
 
             return rs;
         }

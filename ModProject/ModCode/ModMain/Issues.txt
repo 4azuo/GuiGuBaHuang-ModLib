@@ -10,4 +10,6 @@
 
 - pet
 
-- outfit
+- outfit refine
+
+- recover game config before load game

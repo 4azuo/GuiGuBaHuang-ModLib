@@ -34,6 +34,7 @@
         public const string INFLATIONARY_EVENT = "InflationaryEvent";
         public const string BANK_ACCOUNT_EVENT = "BankAccountEvent";
         public const string REBIRTH_EVENT = "RebirthEvent";
+        public const string CUSTOM_REFINE_EVENT = "CustomRefineEvent";
 
         public const string UTYPE_LUCK_EFX_FREE_STORAGE = "FreeStorage";
         public const string UTYPE_LUCK_EFX_BUY_COST = "BuyCost";
