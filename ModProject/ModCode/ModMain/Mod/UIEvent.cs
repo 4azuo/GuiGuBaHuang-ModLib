@@ -40,6 +40,7 @@ namespace MOD_nE7UL2.Mod
         private static Text uiMartialExpertInfo_textAdj3;
         private static Text uiMartialExpertInfo_textAdj4;
         private static Text uiMartialExpertInfo_textAdj5;
+        private static Text uiPropInfo_textBasicAdj1;
 
         public static void OnUIOpen(OpenUIEnd e)
         {
@@ -48,6 +49,17 @@ namespace MOD_nE7UL2.Mod
             /*
              * UI
              */
+            //DebugHelper.WriteLine(e.uiType.uiName);
+
+            //if (e.uiType.uiName == UIType.ArtifactShapeMade.uiName)
+            //{
+            //    var ui = g.ui.GetUI<UIArtifactShapeMade>(UIType.ArtifactShapeMade);
+            //    if (!ui.isPlayerMade)
+            //    {
+            //        ui.
+            //    }
+            //}
+
             if (e.uiType.uiName == UIType.MapMain.uiName)
             {
                 var uiMapMain = g.ui.GetUI<UIMapMain>(UIType.MapMain);
@@ -199,6 +211,19 @@ namespace MOD_nE7UL2.Mod
                 uiMartialExpertInfo.transform.position = new Vector3(0f, 5f);
             }
 
+            if (e.uiType.uiName == UIType.PropInfo.uiName)
+            {
+                var ui = g.ui.GetUI<UIPropInfo>(UIType.PropInfo);
+                if (ui.propData.propsItem.IsRing() != null)
+                {
+                    uiPropInfo_textBasicAdj1 = ObjectHelper.Create(ui.textGrade_En).Align().Format(Color.white);
+
+                    uiPropInfo_textBasicAdj1.Pos(ui.textGrade_En.gameObject, 0f, -0.2f);
+
+                    uiPropInfo_textBasicAdj1.text = $"+Hp: {UnitModifyHelper.GetRingAdjHp(ui.unit.GetDynProperty(UnitDynPropertyEnum.HpMax).baseValue, ui.propData)}";
+                }
+            }
+
             /*
              * Hide buttons
              */
@@ -228,6 +253,12 @@ namespace MOD_nE7UL2.Mod
             var uiNPCInfo = g.ui.GetUI<UINPCInfo>(UIType.NPCInfo);
             var uiPlayerInfo = g.ui.GetUI<UIPlayerInfo>(UIType.PlayerInfo);
             var uiArtifactInfo = g.ui.GetUI<UIArtifactInfo>(UIType.ArtifactInfo);
+            var uiPropInfo = g.ui.GetUI<UIArtifactInfo>(UIType.PropInfo);
+
+            if (uiPropInfo?.gameObject?.active ?? false)
+            {
+                uiPropInfo_textBasicAdj1.Pos(uiArtifactInfo.textGrade_En.gameObject, 0f, -0.2f);
+            }
 
             if (uiArtifactInfo?.gameObject?.active ?? false)
             {

@@ -30,7 +30,7 @@ namespace MOD_nE7UL2.Mod
                 {
                     e.data.moveSpeed.baseValue = 0;
                     e.data.defense.baseValue /= 2;
-                    e.data.maxHP.baseValue /= 2;
+                    //e.data.maxHP.baseValue /= 2;
                 }
                 else if (data.unitAttrItem.id == SPIRITLOCK_CIRCLE)
                 {

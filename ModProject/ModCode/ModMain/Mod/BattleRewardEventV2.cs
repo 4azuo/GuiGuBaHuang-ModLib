@@ -547,8 +547,20 @@ namespace MOD_nE7UL2.Mod
 
                 var rewardExp1 = Math.Max(localDmgDealt * ModMain.ModObj.InGameCustomSettings.BattleRewardConfigs.ExpPerDmgDealt, 1).Parse<int>();
                 var rewardExp2 = Math.Max(localDmgRecv * ModMain.ModObj.InGameCustomSettings.BattleRewardConfigs.ExpPerDmgRecv, 1).Parse<int>();
-                player.AddExp(((rewardExp1 + rewardExp2) * (insight / 100f)).Parse<int>());
-                DebugHelper.WriteLine($"BattleRewardEvent: +{rewardExp1 + rewardExp2}exp");
+                var rewardExp = rewardExp1 + rewardExp2;
+                var myRewardExp = (rewardExp * (insight / 100f)).Parse<int>();
+                player.AddExp(myRewardExp);
+                DebugHelper.WriteLine($"BattleRewardEvent: +{myRewardExp}exp");
+
+                foreach (var unit in ModBattleEvent.DungeonUnits)
+                {
+                    var unitData = unit?.data?.TryCast<UnitDataHuman>();
+                    if (!unit.isDie && unitData?.worldUnitData?.unit != null)
+                    {
+                        var unitRewardExp = (rewardExp * (unitData.worldUnitData.unit.GetDynProperty(UnitDynPropertyEnum.Talent).value / 100f)).Parse<int>();
+                        unitData.worldUnitData.unit.AddExp(unitRewardExp);
+                    }
+                }
             }
             //if (IsForeSaveConfigOK())
             //{

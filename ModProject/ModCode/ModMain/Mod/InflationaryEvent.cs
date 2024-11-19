@@ -1,4 +1,5 @@
 ﻿using MOD_nE7UL2.Const;
+using MOD_nE7UL2.Enum;
 using ModLib.Const;
 using ModLib.Mod;
 using System;
@@ -42,8 +43,16 @@ namespace MOD_nE7UL2.Mod
             {
                 if (props.type == (int)PropsType.Money)
                     continue;
+
                 props.sale = CalculateInflationary(props.sale, year);
                 props.worth = CalculateInflationary(props.worth, year);
+
+                if (props.IsPillRecipe() != null)
+                {
+                    var factory = g.conf.townFactotySell.GetItem(props.id);
+                    if (factory != null)
+                        factory.makePrice = props.worth / 6;
+                }
             }
             foreach (var item in g.conf.itemSkill._allConfList)
             {
@@ -51,6 +60,10 @@ namespace MOD_nE7UL2.Mod
                 item.cost = CalculateInflationary(item.cost, year);
                 item.sale = CalculateInflationary(item.sale, year);
                 item.worth = CalculateInflationary(item.worth, year);
+            }
+            foreach (var refine in g.conf.townRefine._allConfList)
+            {
+                refine.moneyCost = CalculateInflationary(refine.moneyCost, year);
             }
         }
 
