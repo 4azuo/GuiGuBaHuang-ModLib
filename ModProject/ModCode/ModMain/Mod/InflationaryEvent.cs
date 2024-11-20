@@ -1,5 +1,4 @@
 ﻿using MOD_nE7UL2.Const;
-using MOD_nE7UL2.Enum;
 using ModLib.Const;
 using ModLib.Mod;
 using System;
@@ -12,7 +11,8 @@ namespace MOD_nE7UL2.Mod
     public class InflationaryEvent : ModEvent
     {
         public const int REACH_LIMIT_DRAMA = 499919998;
-        public const int LIMIT = 1000000000;
+        public const int LIMIT = 200000000;
+
         public static _InflationaryConfigs Configs => ModMain.ModObj.InGameCustomSettings.InflationaryConfigs;
 
         public int Corruption { get; set; } = 0;

@@ -8,27 +8,27 @@ public static class UnitModifyHelper
 {
     public static _ExpertConfigs ExpertConfigs => ModMain.ModObj.InGameCustomSettings.ExpertConfigs;
 
-    public static int GetOutfitAdjHp(int baseValue, DataProps.PropsData props)
+    public static int GetOutfitAdjHp(int baseValue, DataProps.PropsData props, int refineLvl)
     {
         if (props == null)
             return 0;
-        var r = 0.03f * props.propsInfoBase.level;
+        var r = 0.04f * props.propsInfoBase.level + 0.001f * refineLvl;
         return (r * baseValue).Parse<int>();
     }
 
-    public static int GetOutfitAdjDef(int baseValue, DataProps.PropsData props)
+    public static int GetOutfitAdjDef(int baseValue, DataProps.PropsData props, int refineLvl)
     {
         if (props == null)
             return 0;
-        var r = 0.01f * props.propsInfoBase.level;
+        var r = 0.01f * props.propsInfoBase.level + 0.0001f * refineLvl;
         return (r * baseValue).Parse<int>();
     }
 
-    public static int GetRingAdjHp(int baseValue, DataProps.PropsData props)
+    public static int GetRingAdjHp(int baseValue, DataProps.PropsData props, int refineLvl)
     {
         if (props == null)
             return 0;
-        var r = 0.03f * props.propsInfoBase.grade + 0.007f * props.propsInfoBase.level;
+        var r = 0.04f * props.propsInfoBase.grade + 0.007f * props.propsInfoBase.level + 0.001f * refineLvl;
         return (r * baseValue).Parse<int>();
     }
 

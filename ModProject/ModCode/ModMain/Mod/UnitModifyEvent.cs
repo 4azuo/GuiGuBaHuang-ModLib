@@ -120,7 +120,7 @@ namespace MOD_nE7UL2.Mod
                 }
             }
 
-            rs += UnitModifyHelper.GetOutfitAdjDef(def, wunit.GetEquippedOutfit());
+            rs += UnitModifyHelper.GetOutfitAdjDef(def, wunit.GetEquippedOutfit(), CustomRefineEvent.GetRefineLvl(wunit.GetEquippedOutfit()));
 
             return rs;
         }
@@ -154,9 +154,9 @@ namespace MOD_nE7UL2.Mod
 
             rs += UnitModifyHelper.GetMartialAdjHp(wunit);
 
-            rs += UnitModifyHelper.GetRingAdjHp(hpMax, wunit.GetEquippedRing());
+            rs += UnitModifyHelper.GetRingAdjHp(hpMax, wunit.GetEquippedRing(), CustomRefineEvent.GetRefineLvl(wunit.GetEquippedRing()));
 
-            rs += UnitModifyHelper.GetOutfitAdjHp(hpMax, wunit.GetEquippedOutfit());
+            rs += UnitModifyHelper.GetOutfitAdjHp(hpMax, wunit.GetEquippedOutfit(), CustomRefineEvent.GetRefineLvl(wunit.GetEquippedOutfit()));
 
             return rs;
         }
