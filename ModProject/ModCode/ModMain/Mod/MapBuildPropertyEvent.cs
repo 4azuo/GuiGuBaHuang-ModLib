@@ -33,10 +33,10 @@ namespace MOD_nE7UL2.Mod
 
             foreach (var wunit in g.world.unit.GetUnits())
             {
-                var income = InflationaryEvent.CalculateInflationary((
+                var income = Convert.ToInt32(InflationaryEvent.CalculateInflationary((
                         Math.Pow(2, wunit.GetGradeLvl()) * FIXING_RATE *
                         (1.00f + UnitTypeLuckEnum.Merchant.CustomEffects[ModConst.UTYPE_LUCK_EFX_SELL_VALUE].Value0.Parse<float>() + MerchantLuckEnum.Merchant.GetCurLevel(wunit) * MerchantLuckEnum.Merchant.IncSellValueEachLvl)
-                    ).Parse<long>(), GameHelper.GetGameYear());
+                    ).Parse<long>(), GameHelper.GetGameYear()));
                 var town = g.world.build.GetBuild<MapBuildTown>(wunit.data.unitData.GetPoint());
                 if (town != null)
                 {
@@ -47,6 +47,7 @@ namespace MOD_nE7UL2.Mod
                 {
                     school.buildData.money += income;
                 }
+                wunit.AddUnitMoney(-income);
             }
         }
 

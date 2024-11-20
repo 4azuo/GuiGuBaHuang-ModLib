@@ -225,8 +225,9 @@ namespace MOD_nE7UL2.Mod
                     uiPropInfo_textBasicTitle.Pos(uiPropInfo.textGrade_En.gameObject, 0f, -0.3f);
                     uiPropInfo_textBasicAdj1.Pos(uiPropInfo.textGrade_En.gameObject, +0.1f, -0.5f);
 
-                    uiPropInfo_textBasicTitle.text = $"Bonus (Refine {0}):";
-                    uiPropInfo_textBasicAdj1.text = $"+Hp: {UnitModifyHelper.GetRingAdjHp(uiPropInfo.unit.GetDynProperty(UnitDynPropertyEnum.HpMax).baseValue, uiPropInfo.propData)}";
+                    var refineLvl = CustomRefineEvent.GetRefineLvl(uiPropInfo.propData);
+                    uiPropInfo_textBasicTitle.text = $"Bonus (Refine {refineLvl}):";
+                    uiPropInfo_textBasicAdj1.text = $"+Hp: {UnitModifyHelper.GetRingAdjHp(uiPropInfo.unit.GetDynProperty(UnitDynPropertyEnum.HpMax).baseValue, uiPropInfo.propData, refineLvl)}";
                 }
                 else if (uiPropInfo.propData.propsItem.IsOutfit() != null)
                 {
@@ -238,9 +239,10 @@ namespace MOD_nE7UL2.Mod
                     uiPropInfo_textBasicAdj1.Pos(uiPropInfo.textName.gameObject, +0.1f, 0.7f);
                     uiPropInfo_textBasicAdj2.Pos(uiPropInfo.textName.gameObject, +0.1f, 0.5f);
 
-                    uiPropInfo_textBasicTitle.text = $"Bonus (Refine {0}):";
-                    uiPropInfo_textBasicAdj1.text = $"+Hp: {UnitModifyHelper.GetOutfitAdjHp(uiPropInfo.unit.GetDynProperty(UnitDynPropertyEnum.HpMax).baseValue, uiPropInfo.propData)}";
-                    uiPropInfo_textBasicAdj2.text = $"+Def: {UnitModifyHelper.GetOutfitAdjDef(uiPropInfo.unit.GetDynProperty(UnitDynPropertyEnum.Defense).baseValue, uiPropInfo.propData)}";
+                    var refineLvl = CustomRefineEvent.GetRefineLvl(uiPropInfo.propData);
+                    uiPropInfo_textBasicTitle.text = $"Bonus (Refine {refineLvl}):";
+                    uiPropInfo_textBasicAdj1.text = $"+Hp: {UnitModifyHelper.GetOutfitAdjHp(uiPropInfo.unit.GetDynProperty(UnitDynPropertyEnum.HpMax).baseValue, uiPropInfo.propData, refineLvl)}";
+                    uiPropInfo_textBasicAdj2.text = $"+Def: {UnitModifyHelper.GetOutfitAdjDef(uiPropInfo.unit.GetDynProperty(UnitDynPropertyEnum.Defense).baseValue, uiPropInfo.propData, refineLvl)}";
                 }
             }
 
