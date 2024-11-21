@@ -21,17 +21,23 @@ namespace MOD_nE7UL2.Mod
 
             foreach (var wunit in g.world.unit.GetUnits())
             {
-                foreach (var item in wunit.GetUnitProps())
+                NpcRefine(wunit, wunit.GetEquippedRing());
+                NpcRefine(wunit, wunit.GetEquippedOutfit());
+                foreach (var item in wunit.GetEquippedArtifacts())
                 {
-                    if (IsRefinableItem(item))
-                    {
-                        var money = wunit.GetUnitMoney();
-                        var spend = Math.Max(Convert.ToInt32(Math.Sqrt(money)), 100);
-                        AddRefineExp(item, spend);
-                        wunit.AddUnitMoney(-spend);
-                    }
+                    NpcRefine(wunit, item);
                 }
             }
+        }
+
+        private void NpcRefine(WorldUnitBase wunit, DataProps.PropsData item)
+        {
+            if (item == null)
+                return;
+            var money = wunit.GetUnitMoney();
+            var spend = Convert.ToInt32(Math.Sqrt(money));
+            AddRefineExp(item, spend);
+            wunit.AddUnitMoney(-spend);
         }
 
         public override void OnOpenUIEnd(OpenUIEnd e)
@@ -128,7 +134,7 @@ namespace MOD_nE7UL2.Mod
 
         public static void AddRefineExp(string soleId, long exp)
         {
-            if (string.IsNullOrEmpty(soleId))
+            if (string.IsNullOrEmpty(soleId) || exp == 0)
                 return;
             var x = EventHelper.GetEvent<CustomRefineEvent>(ModConst.CUSTOM_REFINE_EVENT);
             if (!x.RefineExp.ContainsKey(soleId))

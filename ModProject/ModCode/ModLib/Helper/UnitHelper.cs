@@ -307,11 +307,15 @@ public static class UnitHelper
 
     public static void RemoveUnitProp(this WorldUnitBase wunit, int propID, int count = int.MaxValue)
     {
+        if (count == 0)
+            return;
         wunit.data.unitData.propData.DelProps(propID, count);
     }
 
     public static void RemoveUnitProp(this WorldUnitBase wunit, string soleID, int count = int.MaxValue)
     {
+        if (count == 0)
+            return;
         if (count == int.MaxValue)
             wunit.data.unitData.propData.DelProps(soleID);
         else
@@ -320,6 +324,8 @@ public static class UnitHelper
 
     public static void AddUnitMoney(this WorldUnitBase wunit, int addCount)
     {
+        if (addCount == 0)
+            return;
         wunit.AddUnitProp(ModLibConst.MONEY_PROP_ID, addCount);
         if (wunit.GetUnitMoney() <= 0)
             wunit.data.RewardPropMoney(int.MinValue);
@@ -337,6 +343,8 @@ public static class UnitHelper
 
     public static void AddUnitContribution(this WorldUnitBase wunit, int addCount)
     {
+        if (addCount == 0)
+            return;
         wunit.AddUnitProp(ModLibConst.CONTRIBUTION_PROP_ID, addCount);
     }
 
@@ -359,6 +367,8 @@ public static class UnitHelper
 
     public static void AddUnitMayorDegree(this WorldUnitBase wunit, int addCount)
     {
+        if (addCount == 0)
+            return;
         wunit.AddUnitProp(ModLibConst.MAYOR_DEGREE_PROP_ID, addCount);
     }
 
