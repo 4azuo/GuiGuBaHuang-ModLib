@@ -78,10 +78,14 @@ namespace MOD_nE7UL2.Mod
                 var a = artifact.To<DataProps.PropsArtifact>();
                 if (a.durable > 0)
                 {
-                    rs += UnitModifyHelper.GetArtifactTotalAdjAtk(atk, artifact, a);
-                }
+                    var aconf = artifact.propsItem.IsArtifact();
 
-                rs += UnitModifyHelper.GetRefineArtifactAdjAtk(artifact, CustomRefineEvent.GetRefineLvl(artifact));
+                    rs += UnitModifyHelper.GetArtifactBasicAdjAtk(atk, artifact, a);
+
+                    rs += UnitModifyHelper.GetArtifactExpertAtk(aconf.atk, ExpertEvent.GetExpertLvl(artifact.soleID, artifact.propsInfoBase.grade, artifact.propsInfoBase.level), artifact.propsInfoBase.grade, artifact.propsInfoBase.level);
+
+                    rs += UnitModifyHelper.GetRefineArtifactAdjAtk(artifact, CustomRefineEvent.GetRefineLvl(artifact));
+                }
             }
 
             foreach (var abi in wunit.data.unitData.GetActionMartial(MartialType.Ability))
@@ -108,10 +112,14 @@ namespace MOD_nE7UL2.Mod
                 var a = artifact.To<DataProps.PropsArtifact>();
                 if (a.durable > 0)
                 {
-                    rs += UnitModifyHelper.GetArtifactTotalAdjDef(def, artifact, a);
-                }
+                    var aconf = artifact.propsItem.IsArtifact();
 
-                rs += UnitModifyHelper.GetRefineArtifactAdjDef(artifact, CustomRefineEvent.GetRefineLvl(artifact));
+                    rs += UnitModifyHelper.GetArtifactBasicAdjDef(def, artifact, a);
+
+                    rs += UnitModifyHelper.GetArtifactExpertDef(aconf.def, ExpertEvent.GetExpertLvl(artifact.soleID, artifact.propsInfoBase.grade, artifact.propsInfoBase.level), artifact.propsInfoBase.grade, artifact.propsInfoBase.level);
+
+                    rs += UnitModifyHelper.GetRefineArtifactAdjDef(artifact, CustomRefineEvent.GetRefineLvl(artifact));
+                }
             }
 
             foreach (var abi in wunit.data.unitData.GetActionMartial(MartialType.Ability))
