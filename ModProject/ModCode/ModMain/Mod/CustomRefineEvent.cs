@@ -100,7 +100,7 @@ namespace MOD_nE7UL2.Mod
             };
             foreach (var item in g.world.playerUnit.GetUnitProps())
             {
-                if (item.propsID == ModLibConst.MONEY_PROP_ID)
+                if (IsRefinableMaterial(item))
                 {
                     ui.allItems.AddProps(item);
                 }
@@ -118,7 +118,12 @@ namespace MOD_nE7UL2.Mod
 
         public static bool IsRefinableItem(DataProps.PropsData props)
         {
-            return props.propsItem.IsRing() != null || props.propsItem.IsOutfit() != null;
+            return props.propsItem.IsRing() != null || props.propsItem.IsOutfit() != null || props.propsItem.IsArtifact() != null;
+        }
+
+        public static bool IsRefinableMaterial(DataProps.PropsData props)
+        {
+            return props.propsID == ModLibConst.MONEY_PROP_ID;
         }
 
         public static void AddRefineExp(string soleId, long exp)
