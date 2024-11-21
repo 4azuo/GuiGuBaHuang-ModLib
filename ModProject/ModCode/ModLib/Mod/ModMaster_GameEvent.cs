@@ -7,6 +7,8 @@ namespace ModLib.Mod
 {
     public abstract partial class ModMaster : MonoBehaviour
     {
+        private bool initMod = false;
+
         #region ModLib - Handlers
         //public virtual void _OnTownAuctionStart(ETypeData e)
         //{
@@ -17,6 +19,15 @@ namespace ModLib.Mod
         {
             try
             {
+                if (!initMod)
+                {
+                    DebugHelper.WriteLine("Load configs.");
+                    CallEvents("OnInitConf");
+                    CallEvents("OnInitEObj");
+                    DebugHelper.Save();
+                    initMod = true;
+                }
+
                 if (GameHelper.IsInGame())
                 {
                     if (InGameSettings.LoadGameBefore)
