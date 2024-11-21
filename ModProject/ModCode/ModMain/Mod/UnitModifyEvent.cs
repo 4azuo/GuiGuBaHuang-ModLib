@@ -80,6 +80,8 @@ namespace MOD_nE7UL2.Mod
                 {
                     rs += UnitModifyHelper.GetArtifactTotalAdjAtk(atk, artifact, a);
                 }
+
+                rs += UnitModifyHelper.GetRefineArtifactAdjAtk(artifact, CustomRefineEvent.GetRefineLvl(artifact));
             }
 
             foreach (var abi in wunit.data.unitData.GetActionMartial(MartialType.Ability))
@@ -108,6 +110,8 @@ namespace MOD_nE7UL2.Mod
                 {
                     rs += UnitModifyHelper.GetArtifactTotalAdjDef(def, artifact, a);
                 }
+
+                rs += UnitModifyHelper.GetRefineArtifactAdjDef(artifact, CustomRefineEvent.GetRefineLvl(artifact));
             }
 
             foreach (var abi in wunit.data.unitData.GetActionMartial(MartialType.Ability))
@@ -120,7 +124,7 @@ namespace MOD_nE7UL2.Mod
                 }
             }
 
-            rs += UnitModifyHelper.GetOutfitAdjDef(def, wunit.GetEquippedOutfit(), CustomRefineEvent.GetRefineLvl(wunit.GetEquippedOutfit()));
+            rs += UnitModifyHelper.GetRefineOutfitAdjDef(def, wunit.GetEquippedOutfit(), CustomRefineEvent.GetRefineLvl(wunit.GetEquippedOutfit()));
 
             return rs;
         }
@@ -154,9 +158,9 @@ namespace MOD_nE7UL2.Mod
 
             rs += UnitModifyHelper.GetMartialAdjHp(wunit);
 
-            rs += UnitModifyHelper.GetRingAdjHp(hpMax, wunit.GetEquippedRing(), CustomRefineEvent.GetRefineLvl(wunit.GetEquippedRing()));
+            rs += UnitModifyHelper.GetRefineRingAdjHp(hpMax, wunit.GetEquippedRing(), CustomRefineEvent.GetRefineLvl(wunit.GetEquippedRing()));
 
-            rs += UnitModifyHelper.GetOutfitAdjHp(hpMax, wunit.GetEquippedOutfit(), CustomRefineEvent.GetRefineLvl(wunit.GetEquippedOutfit()));
+            rs += UnitModifyHelper.GetRefineOutfitAdjHp(hpMax, wunit.GetEquippedOutfit(), CustomRefineEvent.GetRefineLvl(wunit.GetEquippedOutfit()));
 
             return rs;
         }

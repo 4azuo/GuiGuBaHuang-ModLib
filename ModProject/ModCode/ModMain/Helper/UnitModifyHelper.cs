@@ -8,7 +8,25 @@ public static class UnitModifyHelper
 {
     public static _ExpertConfigs ExpertConfigs => ModMain.ModObj.InGameCustomSettings.ExpertConfigs;
 
-    public static int GetOutfitAdjHp(int baseValue, DataProps.PropsData props, int refineLvl)
+    public static int GetRefineArtifactAdjAtk(DataProps.PropsData props, int refineLvl)
+    {
+        if (props == null)
+            return 0;
+        var aconf = props.propsItem.IsArtifact();
+        var r = 0.004f * refineLvl;
+        return (r * aconf.atk).Parse<int>();
+    }
+
+    public static int GetRefineArtifactAdjDef(DataProps.PropsData props, int refineLvl)
+    {
+        if (props == null)
+            return 0;
+        var aconf = props.propsItem.IsArtifact();
+        var r = 0.001f * refineLvl;
+        return (r * aconf.atk).Parse<int>();
+    }
+
+    public static int GetRefineOutfitAdjHp(int baseValue, DataProps.PropsData props, int refineLvl)
     {
         if (props == null)
             return 0;
@@ -16,7 +34,7 @@ public static class UnitModifyHelper
         return (r * baseValue).Parse<int>();
     }
 
-    public static int GetOutfitAdjDef(int baseValue, DataProps.PropsData props, int refineLvl)
+    public static int GetRefineOutfitAdjDef(int baseValue, DataProps.PropsData props, int refineLvl)
     {
         if (props == null)
             return 0;
@@ -24,7 +42,7 @@ public static class UnitModifyHelper
         return (r * baseValue).Parse<int>();
     }
 
-    public static int GetRingAdjHp(int baseValue, DataProps.PropsData props, int refineLvl)
+    public static int GetRefineRingAdjHp(int baseValue, DataProps.PropsData props, int refineLvl)
     {
         if (props == null)
             return 0;
@@ -34,6 +52,8 @@ public static class UnitModifyHelper
 
     public static int GetArtifactBasicAdjAtk(int baseValue, DataProps.PropsData props, DataProps.PropsArtifact artifact)
     {
+        if (props == null)
+            return 0;
         var aconf = props.propsItem.IsArtifact();
         var r = 0.01f + (0.001f * Math.Pow(2, artifact.level)) + (0.02f * artifact.grade);
         var r1 = (4.00f + (0.006f * Math.Pow(3, artifact.level)) + (1.00f * artifact.grade)) / 100.0f;
@@ -42,6 +62,8 @@ public static class UnitModifyHelper
 
     public static int GetArtifactTotalAdjAtk(int baseValue, DataProps.PropsData props, DataProps.PropsArtifact artifact)
     {
+        if (props == null)
+            return 0;
         var aconf = props.propsItem.IsArtifact();
         var expertLvl = ExpertEvent.GetExpertLvl(props.soleID, props.propsInfoBase.grade, props.propsInfoBase.level);
         return GetArtifactBasicAdjAtk(baseValue, props, artifact) +
@@ -50,6 +72,8 @@ public static class UnitModifyHelper
 
     public static int GetArtifactBasicAdjDef(int baseValue, DataProps.PropsData props, DataProps.PropsArtifact artifact)
     {
+        if (props == null)
+            return 0;
         var aconf = props.propsItem.IsArtifact();
         var r = 0.01f + (0.001f * Math.Pow(2, artifact.level)) + (0.02f * artifact.grade);
         var r1 = (3.00f + (0.005f * Math.Pow(3, artifact.level)) + (0.80f * artifact.grade)) / 100.0f;
@@ -58,6 +82,8 @@ public static class UnitModifyHelper
 
     public static int GetArtifactTotalAdjDef(int baseValue, DataProps.PropsData props, DataProps.PropsArtifact artifact)
     {
+        if (props == null)
+            return 0;
         var aconf = props.propsItem.IsArtifact();
         var expertLvl = ExpertEvent.GetExpertLvl(props.soleID, props.propsInfoBase.grade, props.propsInfoBase.level);
         return GetArtifactBasicAdjDef(baseValue, props, artifact) +
@@ -66,6 +92,8 @@ public static class UnitModifyHelper
 
     public static int GetArtifactBasicAdjHp(int baseValue, DataProps.PropsData props, DataProps.PropsArtifact artifact)
     {
+        if (props == null)
+            return 0;
         var aconf = props.propsItem.IsArtifact();
         var r3 = 0.01f + 0.01f * artifact.level + 0.03f * artifact.grade;
         return (r3 * baseValue + artifact.level * artifact.grade * aconf.hp / 10).Parse<int>();
@@ -169,26 +197,36 @@ public static class UnitModifyHelper
 
     public static int GetAbiPointAdjHp(WorldUnitBase wunit)
     {
+        if (wunit == null)
+            return 0;
         return wunit.GetDynProperty(UnitDynPropertyEnum.AbilityPoint).value * 10 * wunit.GetGradeLvl();
     }
 
     public static int GetAbiPointAdjMp(WorldUnitBase wunit)
     {
+        if (wunit == null)
+            return 0;
         return wunit.GetDynProperty(UnitDynPropertyEnum.AbilityPoint).value;
     }
 
     public static int GetMartialAdjHp(WorldUnitBase wunit)
     {
+        if (wunit == null)
+            return 0;
         return wunit.GetBasisPhysicSum() * wunit.GetGradeLvl();
     }
 
     public static int GetSpiritualAdjMp(WorldUnitBase wunit)
     {
+        if (wunit == null)
+            return 0;
         return wunit.GetBasisMagicSum();
     }
 
     public static int GetArtisanshipAdjSp(WorldUnitBase wunit)
     {
+        if (wunit == null)
+            return 0;
         return wunit.GetArtisanshipSum();
     }
 }
