@@ -116,8 +116,8 @@
 		},
 		"PlayerAtk2HpRate": {
 			"Common": 1.00,
-			"Elite": 11.00,
-			"BOSS": 121.00
+			"Elite": 10.00,
+			"BOSS": 100.00
 		},
 		"AreaBonus": {
 			"1": 0.00,

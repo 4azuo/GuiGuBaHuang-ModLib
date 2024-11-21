@@ -26,8 +26,8 @@ namespace MOD_nE7UL2.Mod
                     if (IsRefinableItem(item))
                     {
                         var money = wunit.GetUnitMoney();
-                        var spend = Convert.ToInt32(Math.Sqrt(money));
-                        AddRefineExp(item.soleID, spend);
+                        var spend = Math.Max(Convert.ToInt32(Math.Sqrt(money)), 100);
+                        AddRefineExp(item, spend);
                         wunit.AddUnitMoney(-spend);
                     }
                 }
@@ -77,15 +77,15 @@ namespace MOD_nE7UL2.Mod
             ui.btnOK.onClick.RemoveAllListeners();
             ui.btnOK.onClick.AddListener((UnityAction)(() =>
             {
-                var selectedItemSoleId = UIPropSelect.allSlectDataProps.allProps.ToArray().FirstOrDefault()?.soleID;
-                OpenMaterialSelector(selectedItemSoleId);
+                var selectedItem = UIPropSelect.allSlectDataProps.allProps.ToArray().FirstOrDefault();
+                OpenMaterialSelector(selectedItem);
             }));
             ui.UpdateUI();
         }
 
-        private void OpenMaterialSelector(string refineItemSoleId)
+        private void OpenMaterialSelector(DataProps.PropsData refineItem)
         {
-            if (string.IsNullOrEmpty(refineItemSoleId))
+            if (refineItem == null)
                 return;
             var ui = g.ui.OpenUI<UIPropSelect>(UIType.PropSelect);
             ui.textTitle1.text = "Select materials";
@@ -109,7 +109,7 @@ namespace MOD_nE7UL2.Mod
             ui.btnOK.onClick.AddListener((UnityAction)(() =>
             {
                 var value = UIPropSelect.allSlectDataProps.allProps.ToArray().Sum(x => x.propsInfoBase.worth * x.propsCount);
-                AddRefineExp(refineItemSoleId, value);
+                AddRefineExp(refineItem, value);
                 g.world.playerUnit.AddUnitMoney(-value);
                 g.ui.CloseUI(ui);
             }));
@@ -129,6 +129,11 @@ namespace MOD_nE7UL2.Mod
             if (!x.RefineExp.ContainsKey(soleId))
                 x.RefineExp.Add(soleId, 0);
             x.RefineExp[soleId] += exp;
+        }
+
+        public static void AddRefineExp(DataProps.PropsData props, long exp)
+        {
+            AddRefineExp(props?.soleID, exp);
         }
 
         public static long GetRefineExp(string soleId)

@@ -296,8 +296,6 @@ namespace ModLib.Mod
                 //DebugHelper.Save();
 
                 CallEvents("OnInitMod");
-                CallEvents("OnInitConf");
-                CallEvents("OnInitEObj");
                 DebugHelper.Save();
             }
             catch (Exception ex)

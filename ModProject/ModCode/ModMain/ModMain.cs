@@ -8,7 +8,7 @@ using System.Linq;
 
 namespace MOD_nE7UL2
 {
-    [InGameCustomSettings("game_configs.json", 3111)]
+    [InGameCustomSettings("game_configs.json", 3112)]
     public sealed class ModMain : ModMaster<InGameStts>
     {
         public override string ModName => "MOD_nE7UL2";
@@ -220,7 +220,7 @@ namespace MOD_nE7UL2
                         roleEfx = g.conf.roleEffect.GetItem(efxId.Parse<int>());
                         if (roleEfx != null && (roleEfx.value.StartsWith($"{UnitPropertyEnum.Hp.PropName}_1_") || roleEfx.value.StartsWith($"{UnitPropertyEnum.Mp.PropName}_1_")))
                         {
-                            roleEfx.SetEfxValue(2, (roleEfx.GetEfxValue<int>(2) * (grade * 4.00f + level * 1.00f)).Parse<int>());
+                            roleEfx.SetEfxValue(2, (roleEfx.GetEfxValue<int>(2) * (grade * 4.00f + level * 1.00f + grade / 2 * 4.00f)).Parse<int>());
                         }
                     }
                 }

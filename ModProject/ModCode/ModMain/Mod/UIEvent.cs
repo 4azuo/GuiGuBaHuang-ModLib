@@ -221,13 +221,16 @@ namespace MOD_nE7UL2.Mod
                 {
                     uiPropInfo_textBasicTitle = ObjectHelper.Create(uiPropInfo.textGrade_En).Align().Format(Color.white, 16);
                     uiPropInfo_textBasicAdj1 = ObjectHelper.Create(uiPropInfo.textGrade_En).Align().Format(Color.white);
+                    //uiPropInfo_textBasicAdj2 = ObjectHelper.Create(uiPropInfo.textGrade_En).Align().Format(Color.white);
 
                     uiPropInfo_textBasicTitle.Pos(uiPropInfo.textGrade_En.gameObject, 0f, -0.3f);
                     uiPropInfo_textBasicAdj1.Pos(uiPropInfo.textGrade_En.gameObject, +0.1f, -0.5f);
+                    //uiPropInfo_textBasicAdj2.Pos(uiPropInfo.textGrade_En.gameObject, +0.1f, -0.7f);
 
                     var refineLvl = CustomRefineEvent.GetRefineLvl(uiPropInfo.propData);
                     uiPropInfo_textBasicTitle.text = $"Bonus (Refine {refineLvl}):";
                     uiPropInfo_textBasicAdj1.text = $"+Hp: {UnitModifyHelper.GetRingAdjHp(uiPropInfo.unit.GetDynProperty(UnitDynPropertyEnum.HpMax).baseValue, uiPropInfo.propData, refineLvl)}";
+                    //uiPropInfo_textBasicAdj2.text = $"+Nodmg: {0} (In Battle)";
                 }
                 else if (uiPropInfo.propData.propsItem.IsOutfit() != null)
                 {
