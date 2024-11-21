@@ -245,9 +245,9 @@ namespace MOD_nE7UL2.Mod
                     uiPropInfo_textRefineAdj1 = ObjectHelper.Create(uiPropInfo.textGrade_En).Align().Format(Color.white);
                     //uiPropInfo_textBasicAdj2 = ObjectHelper.Create(uiPropInfo.textGrade_En).Align().Format(Color.white);
 
-                    uiPropInfo_textRefineTitle.Pos(uiPropInfo.textGrade_En.gameObject, 0f, -0.3f);
-                    uiPropInfo_textRefineAdj1.Pos(uiPropInfo.textGrade_En.gameObject, +0.1f, -0.5f);
-                    //uiPropInfo_textBasicAdj2.Pos(uiPropInfo.textGrade_En.gameObject, +0.1f, -0.7f);
+                    uiPropInfo_textRefineTitle.Pos(uiPropInfo.textGrade_En.gameObject, 0f, -0.2f);
+                    uiPropInfo_textRefineAdj1.Pos(uiPropInfo.textGrade_En.gameObject, +0.1f, -0.4f);
+                    //uiPropInfo_textBasicAdj2.Pos(uiPropInfo.textGrade_En.gameObject, +0.1f, -0.6f);
 
                     var refineLvl = CustomRefineEvent.GetRefineLvl(uiPropInfo.propData);
                     uiPropInfo_textRefineTitle.text = $"Refine ({refineLvl}):";
@@ -306,8 +306,9 @@ namespace MOD_nE7UL2.Mod
             {
                 if (uiPropInfo.propData.propsItem.IsRing() != null)
                 {
-                    uiPropInfo_textRefineTitle.Pos(uiPropInfo.textGrade_En.gameObject, 0f, -0.3f);
-                    uiPropInfo_textRefineAdj1.Pos(uiPropInfo.textGrade_En.gameObject, +0.1f, -0.5f);
+                    uiPropInfo_textRefineTitle.Pos(uiPropInfo.textGrade_En.gameObject, 0f, -0.2f);
+                    uiPropInfo_textRefineAdj1.Pos(uiPropInfo.textGrade_En.gameObject, +0.1f, -0.4f);
+                    //uiPropInfo_textBasicAdj2.Pos(uiPropInfo.textGrade_En.gameObject, +0.1f, -0.6f);
                 }
                 else if (uiPropInfo.propData.propsItem.IsOutfit() != null)
                 {
