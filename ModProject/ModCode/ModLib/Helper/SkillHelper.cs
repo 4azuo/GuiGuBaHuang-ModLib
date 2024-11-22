@@ -1,11 +1,11 @@
 ﻿public static class SkillHelper
 {
-    public static int GetSkillMpCost(DataProps.MartialData md)
+    public static int GetSkillMpCost(DataProps.PropsData props)
     {
-        if (md == null)
+        if (props == null)
             return 0;
-        var sd = md.data.To<DataProps.PropsSkillData>();
-        var grade = md.data.propsInfoBase.grade;
+        var sd = props.To<DataProps.PropsSkillData>();
+        var grade = props.propsInfoBase.grade;
         var mpCostKey = sd.skillAttackItem.mpCost;
         var skillValue = g.conf.battleSkillValue.GetItem(mpCostKey);
         if (skillValue != null)
@@ -13,12 +13,12 @@
         return 0;
     }
 
-    public static int GetStepMpCost(DataProps.MartialData md)
+    public static int GetStepMpCost(DataProps.PropsData props)
     {
-        if (md == null)
+        if (props == null)
             return 0;
-        var sd = md.data.To<DataProps.PropsStepData>();
-        var grade = md.data.propsInfoBase.grade;
+        var sd = props.To<DataProps.PropsStepData>();
+        var grade = props.propsInfoBase.grade;
         var mpCostKey = sd.stepBaseItem.mpCost;
         var skillValue = g.conf.battleSkillValue.GetItem(mpCostKey);
         if (skillValue != null)

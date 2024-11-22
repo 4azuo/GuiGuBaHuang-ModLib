@@ -1,4 +1,5 @@
 ﻿using MOD_nE7UL2.Const;
+using ModLib.Enum;
 using ModLib.Mod;
 using Newtonsoft.Json;
 using static MOD_nE7UL2.Object.InGameStts;
@@ -33,11 +34,7 @@ namespace MOD_nE7UL2.Mod
                         data = new BattleSkillValueData.Data(),
                     }
                 });
-                var ms = (humanData.mp * ManashieldConfigs.ManaShieldRate1) + 
-                    (humanData.maxMP.value * ManashieldConfigs.ManaShieldRate2) + 
-                    (humanData.hp * (0.05f * GetBloodEnergyLevel(humanData))) +
-                    (humanData.basisFist.value / 100.00f * humanData.defense.value).Parse<int>();
-                Effect3017.AddShield(efx, humanData.unit, MANASHIELD_EFFECT_EFX_ID, ms.Parse<int>(), humanData.maxHP.value, int.MaxValue);
+                Effect3017.AddShield(efx, humanData.unit, MANASHIELD_EFFECT_EFX_ID, GetManashieldBase(humanData.worldUnitData.unit), humanData.maxHP.value, int.MaxValue);
                 if (humanData.worldUnitData.unit.IsPlayer())
                     PlayerShieldEfx = efx;
             }
@@ -69,20 +66,28 @@ namespace MOD_nE7UL2.Mod
             }
         }
 
-        private int GetBloodEnergyLevel(UnitDataHuman humanData)
+        private static int GetBloodEnergyLevel(WorldUnitBase wunit)
         {
-            if (humanData.worldUnitData.unit.GetLuck(700094) != null)
+            if (wunit.GetLuck(700094) != null)
                 return 3;
-            if (humanData.worldUnitData.unit.GetLuck(700093) != null)
+            if (wunit.GetLuck(700093) != null)
                 return 2;
-            if (humanData.worldUnitData.unit.GetLuck(700092) != null)
+            if (wunit.GetLuck(700092) != null)
                 return 1;
             return 0;
         }
 
-        private bool IsWarlordPhantom(UnitDataHuman humanData)
+        private static bool IsWarlordPhantom(UnitDataHuman humanData)
         {
             return humanData.worldUnitData.unit.GetLuck(700026) != null;
+        }
+
+        public static int GetManashieldBase(WorldUnitBase wunit)
+        {
+            return (wunit.GetDynProperty(UnitDynPropertyEnum.Mp).value * ManashieldConfigs.ManaShieldRate1).Parse<int>() +
+                (wunit.GetDynProperty(UnitDynPropertyEnum.MpMax).value * ManashieldConfigs.ManaShieldRate2).Parse<int>() +
+                (wunit.GetDynProperty(UnitDynPropertyEnum.Hp).value * (0.05f * GetBloodEnergyLevel(wunit))).Parse<int>() +
+                (wunit.GetDynProperty(UnitDynPropertyEnum.BasisFist).value / 100.00f * wunit.GetDynProperty(UnitDynPropertyEnum.Defense).value).Parse<int>();
         }
     }
 }

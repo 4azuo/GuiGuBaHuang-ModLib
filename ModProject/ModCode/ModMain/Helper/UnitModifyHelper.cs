@@ -1,11 +1,29 @@
 ﻿using MOD_nE7UL2;
-using MOD_nE7UL2.Mod;
+using MOD_nE7UL2.Enum;
 using ModLib.Enum;
 using System;
 using static MOD_nE7UL2.Object.InGameStts;
 
 public static class UnitModifyHelper
 {
+    public static AdjTypeEnum[] RingAdjTypes = new AdjTypeEnum[] 
+    { 
+        AdjTypeEnum.Atk, AdjTypeEnum.Def, AdjTypeEnum.MHp, AdjTypeEnum.MMp, AdjTypeEnum.MSp, AdjTypeEnum.RHp, AdjTypeEnum.RMp, AdjTypeEnum.RSp 
+    };
+    public static AdjTypeEnum[] OutfitAdjTypes = new AdjTypeEnum[]
+    {
+        AdjTypeEnum.Atk, AdjTypeEnum.Def, AdjTypeEnum.MHp, AdjTypeEnum.MMp, AdjTypeEnum.RHp, AdjTypeEnum.RMp,
+        AdjTypeEnum.BasisBlade, AdjTypeEnum.BasisEarth, AdjTypeEnum.BasisFinger, AdjTypeEnum.BasisFire, AdjTypeEnum.BasisFist, AdjTypeEnum.BasisFroze,
+        AdjTypeEnum.BasisPalm, AdjTypeEnum.BasisSpear, AdjTypeEnum.BasisSword, AdjTypeEnum.BasisThunder, AdjTypeEnum.BasisWind, AdjTypeEnum.BasisWood,
+    };
+    public static AdjTypeEnum[] ArtifactAdjTypes = new AdjTypeEnum[] 
+    { 
+        AdjTypeEnum.Atk, AdjTypeEnum.Def, AdjTypeEnum.Speed, AdjTypeEnum.Shield,
+        AdjTypeEnum.BlockChanceMax, AdjTypeEnum.BlockValue,
+        AdjTypeEnum.EvadeChance, AdjTypeEnum.EvadeChanceMax, 
+        AdjTypeEnum.SCritChance, AdjTypeEnum.SCritChanceMax, AdjTypeEnum.SCritDamage
+    };
+
     public static _ExpertConfigs ExpertConfigs => ModMain.ModObj.InGameCustomSettings.ExpertConfigs;
 
     public static int GetRefineArtifactAdjAtk(DataProps.PropsData props, int refineLvl)
@@ -26,6 +44,18 @@ public static class UnitModifyHelper
         return (refineLvl * r * aconf.def).Parse<int>();
     }
 
+    public static AdjTypeEnum GetRefineArtifactCustommAdjType(DataProps.PropsData props)
+    {
+        if (props == null)
+            return AdjTypeEnum.None;
+        return ArtifactAdjTypes[props.soleID[0] % RingAdjTypes.Length];
+    }
+
+    public static int GetRefineArtifactCustommAdjValue()
+    {
+        return 0;
+    }
+
     public static int GetRefineOutfitAdjHp(int baseValue, DataProps.PropsData props, int refineLvl)
     {
         if (props == null)
@@ -42,12 +72,72 @@ public static class UnitModifyHelper
         return (r * baseValue).Parse<int>();
     }
 
+    public static AdjTypeEnum GetRefineOutfitCustommAdjType1(DataProps.PropsData props)
+    {
+        if (props == null)
+            return AdjTypeEnum.None;
+        return OutfitAdjTypes[props.soleID[0] % RingAdjTypes.Length];
+    }
+
+    public static int GetRefineOutfitCustommAdjValue1()
+    {
+        return 0;
+    }
+
+    public static AdjTypeEnum GetRefineOutfitCustommAdjType2(DataProps.PropsData props)
+    {
+        if (props == null)
+            return AdjTypeEnum.None;
+        return OutfitAdjTypes[props.soleID[0] % RingAdjTypes.Length];
+    }
+
+    public static int GetRefineOutfitCustommAdjValue2()
+    {
+        return 0;
+    }
+
     public static int GetRefineRingAdjHp(int baseValue, DataProps.PropsData props, int refineLvl)
     {
         if (props == null)
             return 0;
         var r = 0.04f * props.propsInfoBase.grade + 0.007f * props.propsInfoBase.level + 0.001f * refineLvl;
         return (r * baseValue).Parse<int>();
+    }
+
+    public static AdjTypeEnum GetRefineRingCustommAdjType1(DataProps.PropsData props)
+    {
+        if (props == null)
+            return AdjTypeEnum.None;
+        return RingAdjTypes[props.soleID[0] % RingAdjTypes.Length];
+    }
+
+    public static int GetRefineRingCustommAdjValue1()
+    {
+        return 0;
+    }
+
+    public static AdjTypeEnum GetRefineRingCustommAdjType2(DataProps.PropsData props)
+    {
+        if (props == null)
+            return AdjTypeEnum.None;
+        return RingAdjTypes[props.soleID[0] % RingAdjTypes.Length];
+    }
+
+    public static int GetRefineRingCustommAdjValue2()
+    {
+        return 0;
+    }
+
+    public static AdjTypeEnum GetRefineRingCustommAdjType3(DataProps.PropsData props)
+    {
+        if (props == null)
+            return AdjTypeEnum.None;
+        return RingAdjTypes[props.soleID[0] % RingAdjTypes.Length];
+    }
+
+    public static int GetRefineRingCustommAdjValue3()
+    {
+        return 0;
     }
 
     public static int GetArtifactBasicAdjAtk(int baseValue, DataProps.PropsData props, DataProps.PropsArtifact artifact)

@@ -74,22 +74,22 @@ namespace MOD_nE7UL2.Mod
             var atk = ModBattleEvent.AttackingUnit.data.attack.baseValue;
 
             //evasion
-            var evaRate = Math.Sqrt(ModBattleEvent.GetUnitPropertyValue(ModBattleEvent.HitUnit, UnitDynPropertyEnum.BasisWind) / 18);
-            if (ValueHelper.IsBetween(CommonTool.Random(0.00f, 100.00f), 0.00f, Math.Min(12.00f, evaRate) + GetStepEvade(hitUnitData)))
+            var evaRate = GetEvadeBase(ModBattleEvent.HitWorldUnit);
+            if (ValueHelper.IsBetween(CommonTool.Random(0.00f, 100.00f), 0.00f, Math.Min(GetEvadeMaxBase() + GetEvadeMaxPlus(ModBattleEvent.HitWorldUnit), evaRate) + GetEvadePlus(ModBattleEvent.HitWorldUnit)))
             {
-                e.hitData.isEvade = true;
+                //e.hitData.isEvade = true;
                 e.dynV.baseValue = 0;
                 return;
             }
 
             //add dmg (skill)
-            e.dynV.baseValue += GetAdjSkillDmg(attackUnitData);
+            e.dynV.baseValue += GetAdjSkillDmg(ModBattleEvent.AttackingWorldUnit);
 
             //add dmg (basis)
             if (pEnum != null)
             {
-                var r = ModBattleEvent.GetUnitPropertyValue(ModBattleEvent.AttackingUnit, pEnum);
-                e.dynV.baseValue += atk * r / 1000;
+                var r = ModBattleEvent.GetUnitPropertyValue(ModBattleEvent.AttackingUnit, pEnum).Parse<float>();
+                e.dynV.baseValue += (atk * r / 1000f).Parse<int>();
             }
 
             //add dmg (mp)
@@ -117,12 +117,13 @@ namespace MOD_nE7UL2.Mod
             //critical
             if (!e.hitData.isCrit)
             {
-                if (attackUnitData?.worldUnitData?.unit != null)
+                if (ModBattleEvent.IsWorldUnitAttacking)
                 {
-                    if (ValueHelper.IsBetween(CommonTool.Random(0.00f, 100.00f), 0.00f, Math.Min(8.00f, Math.Sqrt(attackUnitData.basisThunder.value / 50))))
+                    var scritRate = GetSCritChanceBase(ModBattleEvent.AttackingWorldUnit);
+                    if (ValueHelper.IsBetween(CommonTool.Random(0.00f, 100.00f), 0.00f, Math.Min(GetSCritChanceMaxBase() + GetSCritChanceMaxPlus(ModBattleEvent.AttackingWorldUnit), scritRate) + GetSCritChancePlus(ModBattleEvent.AttackingWorldUnit)))
                     {
                         e.hitData.isCrit = true;
-                        e.dynV.baseValue += (e.dynV.baseValue.Parse<float>() * (1.000f + attackUnitData.basisFire.value / 1000.00f)).Parse<int>();
+                        e.dynV.baseValue += (e.dynV.baseValue.Parse<float>() * (GetSCritDamageBase(ModBattleEvent.AttackingWorldUnit) + GetSCritDamagePlus(ModBattleEvent.AttackingWorldUnit))).Parse<int>();
                     }
                 }
                 //monster
@@ -154,17 +155,16 @@ namespace MOD_nE7UL2.Mod
 
             //block
             var blockRate = Math.Sqrt(ModBattleEvent.GetUnitPropertyValue(ModBattleEvent.HitUnit, pEnum) / 12);
-            if (ValueHelper.IsBetween(CommonTool.Random(0.00f, 100.00f), 0.00f, Math.Min(18.00f, blockRate)))
+            if (ValueHelper.IsBetween(CommonTool.Random(0.00f, 100.00f), 0.00f, Math.Min(GetBlockMaxBase() + GetBlockMaxPlus(ModBattleEvent.HitWorldUnit), blockRate)))
             {
-                var r = ModBattleEvent.HitUnit.data.hp.Parse<float>() / ModBattleEvent.HitUnit.data.maxHP.value.Parse<float>();
-                e.dynV.baseValue -= (def * r).Parse<int>();
+                e.dynV.baseValue -= GetBlockDmgBase(ModBattleEvent.HitWorldUnit) + GetBlockDmgPlus(ModBattleEvent.HitWorldUnit);
             }
 
             //block dmg (basis)
             if (pEnum != null && e.dynV.baseValue > minDmg)
             {
-                var r = ModBattleEvent.GetUnitPropertyValue(ModBattleEvent.HitUnit, pEnum);
-                e.dynV.baseValue -= def * r / 200;
+                var r = ModBattleEvent.GetUnitPropertyValue(ModBattleEvent.HitUnit, pEnum).Parse<float>();
+                e.dynV.baseValue -= (def * r / 200f).Parse<int>();
             }
 
             //block dmg (mp)
@@ -206,7 +206,7 @@ namespace MOD_nE7UL2.Mod
             //    ModBattleEvent.AttackingUnit.data.attack.baseValue += (ModBattleEvent.AttackingUnit.data.attack.baseValue * (attackUnitData?.worldUnitData?.unit != null ? 0.0004f : 0.01f)).Parse<int>();
         }
 
-        private IDictionary<string, SkillAttack> _castingSkill = new Dictionary<string, SkillAttack>();
+        private static IDictionary<string, SkillAttack> _castingSkill = new Dictionary<string, SkillAttack>();
         public override void OnBattleUnitUseSkill(UnitUseSkill e)
         {
             base.OnBattleUnitUseSkill(e);
@@ -216,55 +216,150 @@ namespace MOD_nE7UL2.Mod
                 var unitId = humanData.worldUnitData.unit.GetUnitId();
                 _castingSkill[unitId] = e?.skill?.TryCast<SkillAttack>();
 
-                humanData?.AddMP(-GetAdjMpCost(humanData));
+                humanData?.AddMP(-GetAdjMpCost(humanData.worldUnitData.unit));
             }
         }
 
-        private int GetAdjSkillDmg(UnitDataHuman humanData)
+        public static int GetAdjSkillDmg(WorldUnitBase wunit)
         {
-            if (humanData?.worldUnitData?.unit != null)
-            {
-                var skill = _castingSkill[humanData.worldUnitData.unit.GetUnitId()];
-                if (skill == null)
-                    return 0;
-                var soleId = skill.skillData.data.soleID;
-                var grade = skill.skillData.data.propsInfoBase.grade;
-                var level = skill.skillData.data.propsInfoBase.level;
-                var mType = skill.skillData.martialType;
-                return UnitModifyHelper.GetSkillExpertAtk(humanData.worldUnitData.unit.GetDynProperty(UnitDynPropertyEnum.Attack).baseValue, ExpertEvent.GetExpertLvl(soleId, grade, level), grade, level, mType);
-            }
-            return 0;
-        }
-
-        private int GetAdjMpCost(UnitDataHuman humanData)
-        {
-            if (humanData?.worldUnitData?.unit != null)
-            {
-                var skill = _castingSkill[humanData.worldUnitData.unit.GetUnitId()];
-                if (skill == null)
-                    return 0;
-                var soleId = skill.skillData.data.soleID;
-                var grade = skill.skillData.data.propsInfoBase.grade;
-                var level = skill.skillData.data.propsInfoBase.level;
-                var expertLvl = ExpertEvent.GetExpertLvl(soleId, grade, level);
-                return UnitModifyHelper.GetSkillExpertMpCost(SkillHelper.GetSkillMpCost(skill.skillData.martialInfo.martialData), expertLvl, grade, level, humanData.worldUnitData.unit.GetGradeLvl() * expertLvl / 10);
-            }
-            return 0;
-        }
-
-        private float GetStepEvade(UnitDataHuman humanData)
-        {
-            if (humanData == null)
+            if (wunit == null)
                 return 0;
-            var stepData = humanData?.worldUnitData?.unit?.GetMartialStep();
-            if (stepData != null)
-            {
-                var stepId = stepData.data.soleID;
-                var stepGrade = stepData.data.propsInfoBase.grade;
-                var stepLevel = stepData.data.propsInfoBase.level;
-                return UnitModifyHelper.GetStepExpertEvade(ExpertEvent.GetExpertLvl(stepId, stepGrade, stepLevel), stepGrade, stepLevel);
-            }
-            return 0;
+            var skill = _castingSkill[wunit.GetUnitId()];
+            if (skill == null)
+                return 0;
+            var soleId = skill.skillData.data.soleID;
+            var grade = skill.skillData.data.propsInfoBase.grade;
+            var level = skill.skillData.data.propsInfoBase.level;
+            var mType = skill.skillData.martialType;
+            return UnitModifyHelper.GetSkillExpertAtk(wunit.GetDynProperty(UnitDynPropertyEnum.Attack).baseValue, ExpertEvent.GetExpertLvl(soleId, grade, level), grade, level, mType);
+        }
+
+        public static int GetAdjMpCost(WorldUnitBase wunit)
+        {
+            if (wunit == null)
+                return 0;
+            var skill = _castingSkill[wunit.GetUnitId()];
+            if (skill == null)
+                return 0;
+            var soleId = skill.skillData.data.soleID;
+            var grade = skill.skillData.data.propsInfoBase.grade;
+            var level = skill.skillData.data.propsInfoBase.level;
+            var expertLvl = ExpertEvent.GetExpertLvl(soleId, grade, level);
+            return UnitModifyHelper.GetSkillExpertMpCost(SkillHelper.GetSkillMpCost(skill.skillData.data), expertLvl, grade, level, wunit.GetGradeLvl() * expertLvl / 10);
+        }
+
+        public static double GetBlockMaxBase()
+        {
+            return 18.00f;
+        }
+
+        public static double GetBlockMaxPlus(WorldUnitBase wunit)
+        {
+            if (wunit == null)
+                return 0;
+            var plusValue = 0f;
+            //adj
+            //...
+            return plusValue;
+        }
+
+        public static int GetBlockDmgBase(WorldUnitBase wunit)
+        {
+            var r = wunit.GetDynProperty(UnitDynPropertyEnum.Hp).value.Parse<float>() / wunit.GetDynProperty(UnitDynPropertyEnum.HpMax).value.Parse<float>();
+            return (wunit.GetDynProperty(UnitDynPropertyEnum.Defense).value * r).Parse<int>();
+        }
+
+        public static int GetBlockDmgPlus(WorldUnitBase wunit)
+        {
+            if (wunit == null)
+                return 0;
+            var plusValue = 0;
+            //adj
+            //...
+            return plusValue;
+        }
+
+        public static double GetEvadeMaxBase()
+        {
+            return 12.00f;
+        }
+
+        public static double GetEvadeMaxPlus(WorldUnitBase wunit)
+        {
+            if (wunit == null)
+                return 0;
+            var plusValue = 0f;
+            //adj
+            //...
+            return plusValue;
+        }
+
+        public static double GetEvadeBase(WorldUnitBase wunit)
+        {
+            return Math.Sqrt(wunit.GetDynProperty(UnitDynPropertyEnum.BasisWind).value / 18);
+        }
+
+        public static float GetEvadePlus(WorldUnitBase wunit)
+        {
+            if (wunit == null)
+                return 0;
+            var stepData = wunit.GetMartialStep();
+            if (stepData == null)
+                return 0;
+            var plusValue = 0f;
+            //step
+            var stepId = stepData.data.soleID;
+            var stepGrade = stepData.data.propsInfoBase.grade;
+            var stepLevel = stepData.data.propsInfoBase.level;
+            plusValue += UnitModifyHelper.GetStepExpertEvade(ExpertEvent.GetExpertLvl(stepId, stepGrade, stepLevel), stepGrade, stepLevel);
+            //adj
+            //...
+            return plusValue;
+        }
+
+        public static double GetSCritChanceMaxBase()
+        {
+            return 8.00f;
+        }
+
+        public static double GetSCritChanceMaxPlus(WorldUnitBase wunit)
+        {
+            if (wunit == null)
+                return 0;
+            var plusValue = 0f;
+            //adj
+            //...
+            return plusValue;
+        }
+
+        public static double GetSCritChanceBase(WorldUnitBase wunit)
+        {
+            return Math.Sqrt(wunit.GetDynProperty(UnitDynPropertyEnum.BasisThunder).value / 50);
+        }
+
+        public static double GetSCritChancePlus(WorldUnitBase wunit)
+        {
+            if (wunit == null)
+                return 0;
+            var plusValue = 0f;
+            //adj
+            //...
+            return plusValue;
+        }
+
+        public static float GetSCritDamageBase(WorldUnitBase wunit)
+        {
+            return 2.000f + wunit.GetDynProperty(UnitDynPropertyEnum.BasisFire).value / 1000.00f;
+        }
+
+        public static float GetSCritDamagePlus(WorldUnitBase wunit)
+        {
+            if (wunit == null)
+                return 0;
+            var plusValue = 0f;
+            //adj
+            //...
+            return plusValue;
         }
 
         [EventCondition(IsInBattle = true)]
