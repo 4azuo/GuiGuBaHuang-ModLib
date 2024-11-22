@@ -23,5 +23,11 @@ namespace MOD_nE7UL2.Enum
             Level = lvl;
             Color = color;
         }
+
+        public static AdjLevelEnum GetLevel(char c)
+        {
+            var allLvl = AdjLevelEnum.GetAllEnums<AdjLevelEnum>();
+            return allLvl[c % allLvl.Length];
+        }
     }
 }

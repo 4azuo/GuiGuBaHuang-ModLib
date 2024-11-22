@@ -21,11 +21,14 @@ namespace MOD_nE7UL2.Mod
 
             foreach (var wunit in g.world.unit.GetUnits())
             {
-                NpcRefine(wunit, wunit.GetEquippedRing());
-                NpcRefine(wunit, wunit.GetEquippedOutfit());
-                foreach (var item in wunit.GetEquippedArtifacts())
+                if (wunit.IsPlayer())
+                    continue;
+                foreach (var item in wunit.GetUnitProps())
                 {
-                    NpcRefine(wunit, item);
+                    if (IsRefinableItem(item))
+                    {
+                        NpcRefine(wunit, item);
+                    }
                 }
             }
         }
@@ -114,17 +117,22 @@ namespace MOD_nE7UL2.Mod
             ui.btnOK.onClick.RemoveAllListeners();
             ui.btnOK.onClick.AddListener((UnityAction)(() =>
             {
+                var oldLvl = GetRefineLvl(refineItem);
+
                 var value = UIPropSelect.allSlectDataProps.allProps.ToArray().Sum(x => x.propsInfoBase.worth * x.propsCount);
                 AddRefineExp(refineItem, value);
                 g.world.playerUnit.AddUnitMoney(-value);
                 g.ui.CloseUI(ui);
+
+                var uiConfirm = g.ui.OpenUI<UICheckPopup>(UIType.CheckPopup);
+                uiConfirm.InitData("Refine", $"Success! Level {oldLvl}→{GetRefineLvl(refineItem)}", 1);
             }));
             ui.UpdateUI();
         }
 
         public static bool IsRefinableItem(DataProps.PropsData props)
         {
-            return props.propsItem.IsRing() != null || props.propsItem.IsOutfit() != null || props.propsItem.IsArtifact() != null;
+            return props?.propsItem?.IsRing() != null || props?.propsItem?.IsOutfit() != null || props?.propsItem?.IsArtifact() != null;
         }
 
         public static bool IsRefinableMaterial(DataProps.PropsData props)
@@ -162,21 +170,21 @@ namespace MOD_nE7UL2.Mod
             return GetRefineExp(props?.soleID);
         }
 
-        public static int GetRefineLvl(string soleId)
+        public static double GetRefineExpNeed(DataProps.PropsData props, int lvl)
         {
-            if (string.IsNullOrEmpty(soleId))
-                return 0;
-            var curExp = GetRefineExp(soleId);
-            for (int lvl = 0; ; lvl++)
-            {
-                if (1000 * Math.Pow(1.10d, lvl) > curExp)
-                    return lvl;
-            }
+            return (props.propsInfoBase.grade * 200 + props.propsInfoBase.level * 40) * Math.Pow(1.10d, lvl);
         }
 
         public static int GetRefineLvl(DataProps.PropsData props)
         {
-            return GetRefineLvl(props?.soleID);
+            if (props == null)
+                return 0;
+            var curExp = GetRefineExp(props);
+            for (int lvl = 0; ; lvl++)
+            {
+                if (GetRefineExpNeed(props, lvl) > curExp)
+                    return lvl;
+            }
         }
     }
 }
