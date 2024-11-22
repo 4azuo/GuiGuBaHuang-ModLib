@@ -75,7 +75,7 @@ namespace MOD_nE7UL2.Mod
 
             //evasion
             var evaRate = GetEvadeBase(ModBattleEvent.HitWorldUnit);
-            if (ValueHelper.IsBetween(CommonTool.Random(0.00f, 100.00f), 0.00f, Math.Min(GetEvadeMaxBase() + GetEvadeMaxPlus(ModBattleEvent.HitWorldUnit), evaRate) + GetEvadePlus(ModBattleEvent.HitWorldUnit)))
+            if (ValueHelper.IsBetween(CommonTool.Random(0.00f, 100.00f), 0.00f, Math.Min(GetEvadeMaxBase(ModBattleEvent.HitWorldUnit) + GetEvadeMaxPlus(ModBattleEvent.HitWorldUnit), evaRate) + GetEvadePlus(ModBattleEvent.HitWorldUnit)))
             {
                 //e.hitData.isEvade = true;
                 e.dynV.baseValue = 0;
@@ -120,7 +120,7 @@ namespace MOD_nE7UL2.Mod
                 if (ModBattleEvent.IsWorldUnitAttacking)
                 {
                     var scritRate = GetSCritChanceBase(ModBattleEvent.AttackingWorldUnit);
-                    if (ValueHelper.IsBetween(CommonTool.Random(0.00f, 100.00f), 0.00f, Math.Min(GetSCritChanceMaxBase() + GetSCritChanceMaxPlus(ModBattleEvent.AttackingWorldUnit), scritRate) + GetSCritChancePlus(ModBattleEvent.AttackingWorldUnit)))
+                    if (ValueHelper.IsBetween(CommonTool.Random(0.00f, 100.00f), 0.00f, Math.Min(GetSCritChanceMaxBase(ModBattleEvent.AttackingWorldUnit) + GetSCritChanceMaxPlus(ModBattleEvent.AttackingWorldUnit), scritRate) + GetSCritChancePlus(ModBattleEvent.AttackingWorldUnit)))
                     {
                         e.hitData.isCrit = true;
                         e.dynV.baseValue += (e.dynV.baseValue.Parse<float>() * (GetSCritDamageBase(ModBattleEvent.AttackingWorldUnit) + GetSCritDamagePlus(ModBattleEvent.AttackingWorldUnit))).Parse<int>();
@@ -279,7 +279,7 @@ namespace MOD_nE7UL2.Mod
             return plusValue;
         }
 
-        public static double GetEvadeMaxBase()
+        public static double GetEvadeMaxBase(WorldUnitBase wunit)
         {
             return 12.00f;
         }
@@ -317,7 +317,7 @@ namespace MOD_nE7UL2.Mod
             return plusValue;
         }
 
-        public static double GetSCritChanceMaxBase()
+        public static double GetSCritChanceMaxBase(WorldUnitBase wunit)
         {
             return 8.00f;
         }
@@ -384,12 +384,60 @@ namespace MOD_nE7UL2.Mod
                 var humanData = unit?.data?.TryCast<UnitDataHuman>();
                 if (humanData?.worldUnitData?.unit != null)
                 {
+                    var wunit = humanData.worldUnitData.unit;
                     if (humanData.hp < humanData.maxHP.value)
-                        humanData.hp += Math.Sqrt(humanData.basisWood.value / 200).Parse<int>();
+                        humanData.hp += Convert.ToInt32(GetHpRecoveryBase(wunit) + GetHpRecoveryPlus(wunit));
                     if (humanData.mp < humanData.maxMP.value)
-                        humanData.mp += Math.Sqrt(humanData.basisFroze.value / 100).Parse<int>();
+                        humanData.mp += Convert.ToInt32(GetMpRecoveryBase(wunit) + GetMpRecoveryPlus(wunit));
+                    if (humanData.sp < humanData.maxSP.value)
+                        humanData.sp += Convert.ToInt32(GetSpRecoveryBase(wunit) + GetSpRecoveryPlus(wunit));
                 }
             }
+        }
+
+        public static double GetHpRecoveryBase(WorldUnitBase wunit)
+        {
+            return Math.Sqrt(wunit.GetDynProperty(UnitDynPropertyEnum.BasisWood).value / 100f);
+        }
+
+        public static double GetHpRecoveryPlus(WorldUnitBase wunit)
+        {
+            if (wunit == null)
+                return 0;
+            var plusValue = 0;
+            //adj
+            //...
+            return plusValue;
+        }
+
+        public static double GetMpRecoveryBase(WorldUnitBase wunit)
+        {
+            return Math.Sqrt(wunit.GetDynProperty(UnitDynPropertyEnum.BasisFroze).value / 200f);
+        }
+
+        public static double GetMpRecoveryPlus(WorldUnitBase wunit)
+        {
+            if (wunit == null)
+                return 0;
+            var plusValue = 0;
+            //adj
+            //...
+            return plusValue;
+        }
+
+        public static double GetSpRecoveryBase(WorldUnitBase wunit)
+        {
+            return 0;
+        }
+
+        public static double GetSpRecoveryPlus(WorldUnitBase wunit)
+        {
+            if (wunit == null)
+                return 0;
+            var plusValue = 0;
+            //adj
+            //...
+            return plusValue;
         }
     }
 }
