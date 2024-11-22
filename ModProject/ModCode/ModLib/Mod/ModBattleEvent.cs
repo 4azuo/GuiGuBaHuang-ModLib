@@ -207,7 +207,15 @@ namespace ModLib.Mod
         [JsonIgnore]
         public static UnitCtrlBase AttackingUnit { get; private set; }
         [JsonIgnore]
+        public static WorldUnitBase AttackingWorldUnit { get; private set; }
+        [JsonIgnore]
+        public static bool IsWorldUnitAttacking { get { return AttackingWorldUnit != null; } }
+        [JsonIgnore]
         public static UnitCtrlBase HitUnit { get; private set; }
+        [JsonIgnore]
+        public static WorldUnitBase HitWorldUnit { get; private set; }
+        [JsonIgnore]
+        public static bool IsWorldUnitHit { get { return HitWorldUnit != null; } }
         [JsonIgnore]
         public static List<UnitCtrlBase> DungeonUnits { get; private set; } = new List<UnitCtrlBase>();
         [JsonIgnore]
@@ -269,7 +277,9 @@ namespace ModLib.Mod
         {
             base.OnBattleUnitHitDynIntHandler(e);
             AttackingUnit = e?.hitData?.attackUnit;
+            AttackingWorldUnit = AttackingUnit?.TryCast<UnitDataHuman>()?.worldUnitData?.unit;
             HitUnit = e?.hitUnit;
+            HitWorldUnit = HitUnit?.TryCast<UnitDataHuman>()?.worldUnitData?.unit;
         }
 
         public override void OnBattleUnitHit(UnitHit e)

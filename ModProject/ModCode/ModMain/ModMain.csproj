@@ -35,7 +35,9 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="Const\ModConst.cs" />
+    <Compile Include="Enum\AdjLevelEnum.cs" />
     <Compile Include="Enum\MerchantLuckEnum.cs" />
+    <Compile Include="Enum\AdjTypeEnum.cs" />
     <Compile Include="Enum\TraineeLuckEnum.cs" />
     <Compile Include="Enum\ModItemTypeEnum.cs" />
     <Compile Include="Enum\AnimaIncPropEnum.cs" />
