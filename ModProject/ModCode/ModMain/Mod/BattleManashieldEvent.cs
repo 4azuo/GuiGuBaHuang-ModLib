@@ -1,7 +1,9 @@
 ﻿using MOD_nE7UL2.Const;
+using MOD_nE7UL2.Enum;
 using ModLib.Enum;
 using ModLib.Mod;
 using Newtonsoft.Json;
+using System;
 using static MOD_nE7UL2.Object.InGameStts;
 
 namespace MOD_nE7UL2.Mod
@@ -34,7 +36,7 @@ namespace MOD_nE7UL2.Mod
                         data = new BattleSkillValueData.Data(),
                     }
                 });
-                Effect3017.AddShield(efx, humanData.unit, MANASHIELD_EFFECT_EFX_ID, GetManashieldBase(humanData.worldUnitData.unit), humanData.maxHP.value, int.MaxValue);
+                Effect3017.AddShield(efx, humanData.unit, MANASHIELD_EFFECT_EFX_ID, GetManashieldBase(humanData.worldUnitData.unit) + GetManashieldBasePlus(humanData.worldUnitData.unit), humanData.maxHP.value, int.MaxValue);
                 if (humanData.worldUnitData.unit.IsPlayer())
                     PlayerShieldEfx = efx;
             }
@@ -88,6 +90,13 @@ namespace MOD_nE7UL2.Mod
                 (wunit.GetDynProperty(UnitDynPropertyEnum.MpMax).value * ManashieldConfigs.ManaShieldRate2).Parse<int>() +
                 (wunit.GetDynProperty(UnitDynPropertyEnum.Hp).value * (0.05f * GetBloodEnergyLevel(wunit))).Parse<int>() +
                 (wunit.GetDynProperty(UnitDynPropertyEnum.BasisFist).value / 100.00f * wunit.GetDynProperty(UnitDynPropertyEnum.Defense).value).Parse<int>();
+        }
+
+        public static int GetManashieldBasePlus(WorldUnitBase wunit)
+        {
+            if (wunit == null)
+                return 0;
+            return Convert.ToInt32(CustomRefineEvent.GetRefineCustommAdjValue(wunit, AdjTypeEnum.Manashield));
         }
     }
 }

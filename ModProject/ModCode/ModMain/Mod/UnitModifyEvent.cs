@@ -29,7 +29,7 @@ namespace MOD_nE7UL2.Mod
 
         private void LoadWUnitModifier()
         {
-            UnitModifyHelper.ClearCacheCustomAdjValues();
+            CustomRefineEvent.ClearCacheCustomAdjValues();
             foreach (var wunit in g.world.unit.GetUnits())
             {
                 AddWUnitModifier(wunit);
@@ -152,7 +152,7 @@ namespace MOD_nE7UL2.Mod
                 }
             }
 
-            rs += Convert.ToInt32(UnitModifyHelper.GetRefineCustommAdjValue(wunit, AdjTypeEnum.Atk));
+            rs += Convert.ToInt32(CustomRefineEvent.GetRefineCustommAdjValue(wunit, AdjTypeEnum.Atk));
 
             return rs;
         }
@@ -190,7 +190,7 @@ namespace MOD_nE7UL2.Mod
 
             rs += UnitModifyHelper.GetRefineOutfitAdjDef(def, wunit.GetEquippedOutfit(), CustomRefineEvent.GetRefineLvl(wunit.GetEquippedOutfit()));
 
-            rs += Convert.ToInt32(UnitModifyHelper.GetRefineCustommAdjValue(wunit, AdjTypeEnum.Def));
+            rs += Convert.ToInt32(CustomRefineEvent.GetRefineCustommAdjValue(wunit, AdjTypeEnum.Def));
 
             return rs;
         }
@@ -228,7 +228,7 @@ namespace MOD_nE7UL2.Mod
 
             rs += UnitModifyHelper.GetRefineOutfitAdjHp(hpMax, wunit.GetEquippedOutfit(), CustomRefineEvent.GetRefineLvl(wunit.GetEquippedOutfit()));
 
-            rs += Convert.ToInt32(UnitModifyHelper.GetRefineCustommAdjValue(wunit, AdjTypeEnum.MHp));
+            rs += Convert.ToInt32(CustomRefineEvent.GetRefineCustommAdjValue(wunit, AdjTypeEnum.MHp));
 
             return rs;
         }
@@ -253,7 +253,7 @@ namespace MOD_nE7UL2.Mod
 
             rs += UnitModifyHelper.GetSpiritualAdjMp(wunit);
 
-            rs += Convert.ToInt32(UnitModifyHelper.GetRefineCustommAdjValue(wunit, AdjTypeEnum.MMp));
+            rs += Convert.ToInt32(CustomRefineEvent.GetRefineCustommAdjValue(wunit, AdjTypeEnum.MMp));
 
             return rs;
         }
@@ -276,7 +276,7 @@ namespace MOD_nE7UL2.Mod
 
             rs += UnitModifyHelper.GetArtisanshipAdjSp(wunit);
 
-            rs += Convert.ToInt32(UnitModifyHelper.GetRefineCustommAdjValue(wunit, AdjTypeEnum.MSp));
+            rs += Convert.ToInt32(CustomRefineEvent.GetRefineCustommAdjValue(wunit, AdjTypeEnum.MSp));
 
             return rs;
         }
@@ -295,7 +295,7 @@ namespace MOD_nE7UL2.Mod
                 }
             }
 
-            rs += Convert.ToInt32(UnitModifyHelper.GetRefineCustommAdjValue(wunit, AdjTypeEnum.Speed));
+            rs += Convert.ToInt32(CustomRefineEvent.GetRefineCustommAdjValue(wunit, AdjTypeEnum.Speed));
 
             return rs;
         }
@@ -304,7 +304,7 @@ namespace MOD_nE7UL2.Mod
         {
             var rs = 0;
 
-            rs += Convert.ToInt32(UnitModifyHelper.GetRefineCustommAdjValue(wunit, AdjTypeEnum.BasisBlade));
+            rs += Convert.ToInt32(CustomRefineEvent.GetRefineCustommAdjValue(wunit, AdjTypeEnum.BasisBlade));
 
             return rs;
         }
@@ -313,7 +313,7 @@ namespace MOD_nE7UL2.Mod
         {
             var rs = 0;
 
-            rs += Convert.ToInt32(UnitModifyHelper.GetRefineCustommAdjValue(wunit, AdjTypeEnum.BasisEarth));
+            rs += Convert.ToInt32(CustomRefineEvent.GetRefineCustommAdjValue(wunit, AdjTypeEnum.BasisEarth));
 
             return rs;
         }
@@ -322,7 +322,7 @@ namespace MOD_nE7UL2.Mod
         {
             var rs = 0;
 
-            rs += Convert.ToInt32(UnitModifyHelper.GetRefineCustommAdjValue(wunit, AdjTypeEnum.BasisFinger));
+            rs += Convert.ToInt32(CustomRefineEvent.GetRefineCustommAdjValue(wunit, AdjTypeEnum.BasisFinger));
 
             return rs;
         }
@@ -331,7 +331,7 @@ namespace MOD_nE7UL2.Mod
         {
             var rs = 0;
 
-            rs += Convert.ToInt32(UnitModifyHelper.GetRefineCustommAdjValue(wunit, AdjTypeEnum.BasisFire));
+            rs += Convert.ToInt32(CustomRefineEvent.GetRefineCustommAdjValue(wunit, AdjTypeEnum.BasisFire));
 
             return rs;
         }
@@ -340,7 +340,7 @@ namespace MOD_nE7UL2.Mod
         {
             var rs = 0;
 
-            rs += Convert.ToInt32(UnitModifyHelper.GetRefineCustommAdjValue(wunit, AdjTypeEnum.BasisFist));
+            rs += Convert.ToInt32(CustomRefineEvent.GetRefineCustommAdjValue(wunit, AdjTypeEnum.BasisFist));
 
             return rs;
         }
@@ -349,7 +349,7 @@ namespace MOD_nE7UL2.Mod
         {
             var rs = 0;
 
-            rs += Convert.ToInt32(UnitModifyHelper.GetRefineCustommAdjValue(wunit, AdjTypeEnum.BasisFroze));
+            rs += Convert.ToInt32(CustomRefineEvent.GetRefineCustommAdjValue(wunit, AdjTypeEnum.BasisFroze));
 
             return rs;
         }
@@ -358,7 +358,7 @@ namespace MOD_nE7UL2.Mod
         {
             var rs = 0;
 
-            rs += Convert.ToInt32(UnitModifyHelper.GetRefineCustommAdjValue(wunit, AdjTypeEnum.BasisPalm));
+            rs += Convert.ToInt32(CustomRefineEvent.GetRefineCustommAdjValue(wunit, AdjTypeEnum.BasisPalm));
 
             return rs;
         }
@@ -367,7 +367,7 @@ namespace MOD_nE7UL2.Mod
         {
             var rs = 0;
 
-            rs += Convert.ToInt32(UnitModifyHelper.GetRefineCustommAdjValue(wunit, AdjTypeEnum.BasisSpear));
+            rs += Convert.ToInt32(CustomRefineEvent.GetRefineCustommAdjValue(wunit, AdjTypeEnum.BasisSpear));
 
             return rs;
         }
@@ -376,7 +376,7 @@ namespace MOD_nE7UL2.Mod
         {
             var rs = 0;
 
-            rs += Convert.ToInt32(UnitModifyHelper.GetRefineCustommAdjValue(wunit, AdjTypeEnum.BasisSword));
+            rs += Convert.ToInt32(CustomRefineEvent.GetRefineCustommAdjValue(wunit, AdjTypeEnum.BasisSword));
 
             return rs;
         }
@@ -385,7 +385,7 @@ namespace MOD_nE7UL2.Mod
         {
             var rs = 0;
 
-            rs += Convert.ToInt32(UnitModifyHelper.GetRefineCustommAdjValue(wunit, AdjTypeEnum.BasisThunder));
+            rs += Convert.ToInt32(CustomRefineEvent.GetRefineCustommAdjValue(wunit, AdjTypeEnum.BasisThunder));
 
             return rs;
         }
@@ -394,7 +394,7 @@ namespace MOD_nE7UL2.Mod
         {
             var rs = 0;
 
-            rs += Convert.ToInt32(UnitModifyHelper.GetRefineCustommAdjValue(wunit, AdjTypeEnum.BasisWind));
+            rs += Convert.ToInt32(CustomRefineEvent.GetRefineCustommAdjValue(wunit, AdjTypeEnum.BasisWind));
 
             return rs;
         }
@@ -403,7 +403,7 @@ namespace MOD_nE7UL2.Mod
         {
             var rs = 0;
 
-            rs += Convert.ToInt32(UnitModifyHelper.GetRefineCustommAdjValue(wunit, AdjTypeEnum.BasisWood));
+            rs += Convert.ToInt32(CustomRefineEvent.GetRefineCustommAdjValue(wunit, AdjTypeEnum.BasisWood));
 
             return rs;
         }
