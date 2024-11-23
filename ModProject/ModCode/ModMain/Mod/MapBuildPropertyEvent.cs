@@ -33,7 +33,7 @@ namespace MOD_nE7UL2.Mod
 
             foreach (var wunit in g.world.unit.GetUnits())
             {
-                var income = Convert.ToInt32(InflationaryEvent.CalculateInflationary((
+                int income = Convert.ToInt32(InflationaryEvent.CalculateInflationary((
                         Math.Pow(2, wunit.GetGradeLvl()) * FIXING_RATE *
                         (1.00f + UnitTypeLuckEnum.Merchant.CustomEffects[ModConst.UTYPE_LUCK_EFX_SELL_VALUE].Value0.Parse<float>() + MerchantLuckEnum.Merchant.GetCurLevel(wunit) * MerchantLuckEnum.Merchant.IncSellValueEachLvl)
                     ).Parse<long>(), GameHelper.GetGameYear()));

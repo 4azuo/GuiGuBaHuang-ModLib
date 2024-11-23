@@ -81,7 +81,7 @@ namespace MOD_nE7UL2.Mod
 
             DebugHelper.WriteLine($"3: {e.dynV.baseValue}");
             //add dmg (skill)
-            e.dynV.baseValue += Convert.ToInt32(GetAdjSkillDmg(ModBattleEvent.AttackingWorldUnit) * GetAdjSkillDmgPlus(ModBattleEvent.AttackingWorldUnit));
+            e.dynV.baseValue += Convert.ToInt32(GetSkillAdjDmg(ModBattleEvent.AttackingWorldUnit) * GetSkillAdjDmgPlus(ModBattleEvent.AttackingWorldUnit));
 
             //add dmg (basis)
             if (pEnum != null)
@@ -226,7 +226,7 @@ namespace MOD_nE7UL2.Mod
             //    ModBattleEvent.AttackingUnit.data.attack.baseValue += (ModBattleEvent.AttackingUnit.data.attack.baseValue * (ModBattleEvent.IsWorldUnitAttacking ? 0.0004f : 0.01f)).Parse<int>();
         }
 
-        private static readonly IDictionary<string, SkillAttack> _castingSkill = new Dictionary<string, SkillAttack>();
+        private static readonly IDictionary<string, DataProps.PropsData> _castingSkill = new Dictionary<string, DataProps.PropsData>();
         public override void OnBattleUnitUseSkill(UnitUseSkill e)
         {
             base.OnBattleUnitUseSkill(e);
@@ -234,9 +234,22 @@ namespace MOD_nE7UL2.Mod
             if (humanData?.worldUnitData?.unit != null)
             {
                 var unitId = humanData.worldUnitData.unit.GetUnitId();
-                _castingSkill[unitId] = e?.skill?.TryCast<SkillAttack>();
+                _castingSkill[unitId] = e?.skill?.TryCast<SkillAttack>()?.skillData?.data;
 
-                humanData?.AddMP(-GetAdjMpCost(humanData.worldUnitData.unit));
+                humanData?.AddMP(-GetSkillAdjMpCost(humanData.worldUnitData.unit, _castingSkill[unitId]));
+            }
+        }
+
+        public override void OnBattleUnitUseStep(UnitUseStep e)
+        {
+            base.OnBattleUnitUseStep(e);
+            var humanData = e.unit.data.TryCast<UnitDataHuman>();
+            if (humanData?.worldUnitData?.unit != null)
+            {
+                var unitId = humanData.worldUnitData.unit.GetUnitId();
+                _castingSkill[unitId] = e?.step?.data?.stepData?.data;
+
+                humanData?.AddMP(-GetStepAdjMpCost(humanData.worldUnitData.unit, _castingSkill[unitId]));
             }
         }
 
@@ -306,39 +319,47 @@ namespace MOD_nE7UL2.Mod
             return 50 * gradeLvl + wunit.GetBasisPhysicSum() / 1000;
         }
 
-        public static int GetAdjSkillDmg(WorldUnitBase wunit)
+        public static int GetSkillAdjDmg(WorldUnitBase wunit)
         {
             if (wunit == null)
                 return 0;
-            var skill = _castingSkill[wunit.GetUnitId()];
-            if (skill == null)
+            var skillData = _castingSkill[wunit.GetUnitId()];
+            if (skillData == null)
                 return 0;
-            var soleId = skill.skillData.data.soleID;
-            var grade = skill.skillData.data.propsInfoBase.grade;
-            var level = skill.skillData.data.propsInfoBase.level;
-            var mType = skill.skillData.martialType;
+            var soleId = skillData.soleID;
+            var grade = skillData.propsInfoBase.grade;
+            var level = skillData.propsInfoBase.level;
+            var mType = skillData.To<DataProps.MartialData>().martialType;
             return UnitModifyHelper.GetSkillExpertAtk(wunit.GetDynProperty(UnitDynPropertyEnum.Attack).baseValue, ExpertEvent.GetExpertLvl(soleId, grade, level), grade, level, mType);
         }
 
-        public static double GetAdjSkillDmgPlus(WorldUnitBase wunit)
+        public static double GetSkillAdjDmgPlus(WorldUnitBase wunit)
         {
             if (wunit == null)
                 return 0;
             return UnitModifyHelper.GetRefineCustommAdjValue(wunit, AdjTypeEnum.SkillDamage);
         }
 
-        public static int GetAdjMpCost(WorldUnitBase wunit)
+        public static int GetSkillAdjMpCost(WorldUnitBase wunit, DataProps.PropsData props)
         {
-            if (wunit == null)
+            if (wunit == null || props == null)
                 return 0;
-            var skill = _castingSkill[wunit.GetUnitId()];
-            if (skill == null)
-                return 0;
-            var soleId = skill.skillData.data.soleID;
-            var grade = skill.skillData.data.propsInfoBase.grade;
-            var level = skill.skillData.data.propsInfoBase.level;
+            var soleId = props.soleID;
+            var grade = props.propsInfoBase.grade;
+            var level = props.propsInfoBase.level;
             var expertLvl = ExpertEvent.GetExpertLvl(soleId, grade, level);
-            return UnitModifyHelper.GetSkillExpertMpCost(SkillHelper.GetSkillMpCost(skill.skillData.data), expertLvl, grade, level, wunit.GetGradeLvl() * expertLvl / 10);
+            return UnitModifyHelper.GetSkillExpertMpCost(SkillHelper.GetSkillMpCost(props), expertLvl, grade, level, wunit.GetGradeLvl() * expertLvl / 10);
+        }
+
+        public static int GetStepAdjMpCost(WorldUnitBase wunit, DataProps.PropsData props)
+        {
+            if (wunit == null || props == null)
+                return 0;
+            var soleId = props.soleID;
+            var grade = props.propsInfoBase.grade;
+            var level = props.propsInfoBase.level;
+            var expertLvl = ExpertEvent.GetExpertLvl(soleId, grade, level);
+            return UnitModifyHelper.GetStepExpertMpCost(SkillHelper.GetStepMpCost(props), expertLvl, grade, level, wunit.GetGradeLvl() * expertLvl / 5);
         }
 
         public static int GetMinDmgBase(WorldUnitBase wunit)
