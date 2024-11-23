@@ -37,7 +37,9 @@ namespace MOD_nE7UL2.Enum
         public static AdjTypeEnum Shield { get; } = new AdjTypeEnum("Shield", (wunit) => BattleManashieldEvent.GetManashieldBase(wunit));
         public static AdjTypeEnum SCritChance { get; } = new AdjTypeEnum("SCrit(%)", (wunit) => BattleModifyEvent.GetSCritChanceBase(wunit));
         public static AdjTypeEnum SCritChanceMax { get; } = new AdjTypeEnum("SCrit(%Max)", (wunit) => BattleModifyEvent.GetSCritChanceMaxBase(wunit));
-        public static AdjTypeEnum SCritDamage { get; } = new AdjTypeEnum("SCrit(Dmg)", (wunit) => BattleModifyEvent.GetSCritDamageBase(wunit));
+        public static AdjTypeEnum SCritDamage { get; } = new AdjTypeEnum("SCrit(%Dmg)", (wunit) => BattleModifyEvent.GetSCritDamageBase(wunit));
+        public static AdjTypeEnum SkillDamage { get; } = new AdjTypeEnum("Skill(%Dmg)", (wunit) => 1000);
+        public static AdjTypeEnum MinDamage { get; } = new AdjTypeEnum("Min-Dmg", (wunit) => 100);
 
         public string Label { get; private set; }
         public Func<WorldUnitBase, double> BaseValueFunc { get; private set; }

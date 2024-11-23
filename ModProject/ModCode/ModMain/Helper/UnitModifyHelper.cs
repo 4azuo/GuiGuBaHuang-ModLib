@@ -10,18 +10,24 @@ public static class UnitModifyHelper
 {
     public static AdjTypeEnum[] RingAdjTypes = new AdjTypeEnum[] 
     { 
-        AdjTypeEnum.Atk, AdjTypeEnum.Def, AdjTypeEnum.MHp, AdjTypeEnum.MMp, AdjTypeEnum.MSp,
-        AdjTypeEnum.Nullify, AdjTypeEnum.RHp, AdjTypeEnum.RMp, AdjTypeEnum.RSp
+        AdjTypeEnum.Def, AdjTypeEnum.MHp, AdjTypeEnum.MMp, AdjTypeEnum.MSp,
+        AdjTypeEnum.Nullify, AdjTypeEnum.RHp, AdjTypeEnum.RMp, AdjTypeEnum.RSp,
+        AdjTypeEnum.SkillDamage, AdjTypeEnum.MinDamage,
+        AdjTypeEnum.BasisBlade, AdjTypeEnum.BasisEarth, AdjTypeEnum.BasisFinger, AdjTypeEnum.BasisFire, AdjTypeEnum.BasisFist, AdjTypeEnum.BasisFroze,
+        AdjTypeEnum.BasisPalm, AdjTypeEnum.BasisSpear, AdjTypeEnum.BasisSword, AdjTypeEnum.BasisThunder, AdjTypeEnum.BasisWind, AdjTypeEnum.BasisWood
     };
     public static AdjTypeEnum[] OutfitAdjTypes = new AdjTypeEnum[]
     {
-        AdjTypeEnum.Atk, AdjTypeEnum.Def, AdjTypeEnum.MHp, AdjTypeEnum.MMp, AdjTypeEnum.RHp, AdjTypeEnum.RMp,
+        AdjTypeEnum.Def, AdjTypeEnum.MHp, AdjTypeEnum.MMp, AdjTypeEnum.RHp, AdjTypeEnum.RMp,
+        AdjTypeEnum.Nullify, AdjTypeEnum.BlockChanceMax, AdjTypeEnum.BlockDmg,
+        AdjTypeEnum.EvadeChance, AdjTypeEnum.EvadeChanceMax,
         AdjTypeEnum.BasisBlade, AdjTypeEnum.BasisEarth, AdjTypeEnum.BasisFinger, AdjTypeEnum.BasisFire, AdjTypeEnum.BasisFist, AdjTypeEnum.BasisFroze,
-        AdjTypeEnum.BasisPalm, AdjTypeEnum.BasisSpear, AdjTypeEnum.BasisSword, AdjTypeEnum.BasisThunder, AdjTypeEnum.BasisWind, AdjTypeEnum.BasisWood,
+        AdjTypeEnum.BasisPalm, AdjTypeEnum.BasisSpear, AdjTypeEnum.BasisSword, AdjTypeEnum.BasisThunder, AdjTypeEnum.BasisWind, AdjTypeEnum.BasisWood
     };
     public static AdjTypeEnum[] ArtifactAdjTypes = new AdjTypeEnum[] 
     { 
-        AdjTypeEnum.Atk, AdjTypeEnum.Def, AdjTypeEnum.Speed, AdjTypeEnum.Shield, AdjTypeEnum.Nullify,
+        AdjTypeEnum.Atk, AdjTypeEnum.Def, AdjTypeEnum.Speed, AdjTypeEnum.Shield,
+        AdjTypeEnum.Nullify, AdjTypeEnum.SkillDamage, AdjTypeEnum.MinDamage,
         AdjTypeEnum.BlockChanceMax, AdjTypeEnum.BlockDmg,
         AdjTypeEnum.EvadeChance, AdjTypeEnum.EvadeChanceMax, 
         AdjTypeEnum.SCritChance, AdjTypeEnum.SCritChanceMax, AdjTypeEnum.SCritDamage
@@ -29,6 +35,8 @@ public static class UnitModifyHelper
 
     public static double GetRefineCustommAdjValue(WorldUnitBase wunit, AdjTypeEnum adjType)
     {
+        if (wunit == null || adjType == null || adjType == AdjTypeEnum.None)
+            return 0.0;
         var rs = 0d;
         foreach (var props in wunit.GetUnitProps())
         {
@@ -62,6 +70,54 @@ public static class UnitModifyHelper
     }
 
     public static _ExpertConfigs ExpertConfigs => ModMain.ModObj.InGameCustomSettings.ExpertConfigs;
+
+    #region Artifact
+    public static int GetArtifactBasicAdjAtk(int baseValue, DataProps.PropsData props, DataProps.PropsArtifact artifact)
+    {
+        if (props == null)
+            return 0;
+        var aconf = props.propsItem.IsArtifact();
+        var r = 0.01f + (0.001f * Math.Pow(2, artifact.level)) + (0.02f * artifact.grade);
+        var r1 = (4.00f + (0.006f * Math.Pow(3, artifact.level)) + (1.00f * artifact.grade)) / 100.0f;
+        return (r * baseValue + r1 * aconf.atk).Parse<int>();
+    }
+
+    public static int GetArtifactBasicAdjDef(int baseValue, DataProps.PropsData props, DataProps.PropsArtifact artifact)
+    {
+        if (props == null)
+            return 0;
+        var aconf = props.propsItem.IsArtifact();
+        var r = 0.01f + (0.001f * Math.Pow(2, artifact.level)) + (0.02f * artifact.grade);
+        var r1 = (3.00f + (0.005f * Math.Pow(3, artifact.level)) + (0.80f * artifact.grade)) / 100.0f;
+        return (r * baseValue + r1 * aconf.def).Parse<int>();
+    }
+
+    public static int GetArtifactBasicAdjHp(int baseValue, DataProps.PropsData props, DataProps.PropsArtifact artifact)
+    {
+        if (props == null)
+            return 0;
+        var aconf = props.propsItem.IsArtifact();
+        var r3 = 0.01f + 0.01f * artifact.level + 0.03f * artifact.grade;
+        return (r3 * baseValue + artifact.level * artifact.grade * aconf.hp / 10).Parse<int>();
+    }
+
+    public static int GetArtifactExpertAtk(int inputValue, int expertLvl, int propsGrade, int propsLevel)
+    {
+        if (expertLvl <= 0)
+            return 0;
+        var r = 0.012f * propsGrade + 0.004f * propsLevel;
+        var v = 24 * propsGrade + 6 * propsLevel;
+        return (inputValue * expertLvl * r).Parse<int>() + v;
+    }
+
+    public static int GetArtifactExpertDef(int inputValue, int expertLvl, int propsGrade, int propsLevel)
+    {
+        if (expertLvl <= 0)
+            return 0;
+        var r = 0.008f * propsGrade + 0.002f * propsLevel;
+        var v = 6 * propsGrade + 1 * propsLevel;
+        return (inputValue * expertLvl * r).Parse<int>() + v;
+    }
 
     public static int GetRefineArtifactAdjAtk(DataProps.PropsData props, int refineLvl)
     {
@@ -98,7 +154,9 @@ public static class UnitModifyHelper
         var r = 0.001f * props.propsInfoBase.grade + 0.0002f * props.propsInfoBase.level;
         return type.Key.GetBaseValue(wunit) * r * refineLvl * type.Value.Level;
     }
+    #endregion
 
+    #region Outfit
     public static int GetRefineOutfitAdjHp(int baseValue, DataProps.PropsData props, int refineLvl)
     {
         if (props == null)
@@ -150,7 +208,9 @@ public static class UnitModifyHelper
         var r = 0.002f * props.propsInfoBase.grade + 0.0004f * props.propsInfoBase.level;
         return type.Key.GetBaseValue(wunit) * r * refineLvl * type.Value.Level;
     }
+    #endregion
 
+    #region Ring
     public static int GetRefineRingAdjHp(int baseValue, DataProps.PropsData props, int refineLvl)
     {
         if (props == null)
@@ -212,54 +272,9 @@ public static class UnitModifyHelper
         var r = 0.003f * props.propsInfoBase.grade + 0.0006f * props.propsInfoBase.level;
         return type.Key.GetBaseValue(wunit) * r * refineLvl * type.Value.Level;
     }
+    #endregion
 
-    public static int GetArtifactBasicAdjAtk(int baseValue, DataProps.PropsData props, DataProps.PropsArtifact artifact)
-    {
-        if (props == null)
-            return 0;
-        var aconf = props.propsItem.IsArtifact();
-        var r = 0.01f + (0.001f * Math.Pow(2, artifact.level)) + (0.02f * artifact.grade);
-        var r1 = (4.00f + (0.006f * Math.Pow(3, artifact.level)) + (1.00f * artifact.grade)) / 100.0f;
-        return (r * baseValue + r1 * aconf.atk).Parse<int>();
-    }
-
-    public static int GetArtifactBasicAdjDef(int baseValue, DataProps.PropsData props, DataProps.PropsArtifact artifact)
-    {
-        if (props == null)
-            return 0;
-        var aconf = props.propsItem.IsArtifact();
-        var r = 0.01f + (0.001f * Math.Pow(2, artifact.level)) + (0.02f * artifact.grade);
-        var r1 = (3.00f + (0.005f * Math.Pow(3, artifact.level)) + (0.80f * artifact.grade)) / 100.0f;
-        return (r * baseValue + r1 * aconf.def).Parse<int>();
-    }
-
-    public static int GetArtifactBasicAdjHp(int baseValue, DataProps.PropsData props, DataProps.PropsArtifact artifact)
-    {
-        if (props == null)
-            return 0;
-        var aconf = props.propsItem.IsArtifact();
-        var r3 = 0.01f + 0.01f * artifact.level + 0.03f * artifact.grade;
-        return (r3 * baseValue + artifact.level * artifact.grade * aconf.hp / 10).Parse<int>();
-    }
-
-    public static int GetArtifactExpertAtk(int inputValue, int expertLvl, int propsGrade, int propsLevel)
-    {
-        if (expertLvl <= 0)
-            return 0;
-        var r = 0.012f * propsGrade + 0.004f * propsLevel;
-        var v = 24 * propsGrade + 6 * propsLevel;
-        return (inputValue * expertLvl * r).Parse<int>() + v;
-    }
-
-    public static int GetArtifactExpertDef(int inputValue, int expertLvl, int propsGrade, int propsLevel)
-    {
-        if (expertLvl <= 0)
-            return 0;
-        var r = 0.008f * propsGrade + 0.002f * propsLevel;
-        var v = 6 * propsGrade + 1 * propsLevel;
-        return (inputValue * expertLvl * r).Parse<int>() + v;
-    }
-
+    #region Skill
     public static int GetSkillExpertAtk(int inputValue, int expertLvl, int propsGrade, int propsLevel, MartialType mType)
     {
         if (expertLvl <= 0)
@@ -276,7 +291,9 @@ public static class UnitModifyHelper
         var r = 0.08f * propsGrade + 0.01f * propsLevel;
         return Math.Max((inputValue * expertLvl * r).Parse<int>(), least);
     }
+    #endregion
 
+    #region Ability
     public static int GetAbilityExpertAtk(int inputValue, int expertLvl, int propsGrade, int propsLevel)
     {
         if (expertLvl <= 0)
@@ -321,7 +338,9 @@ public static class UnitModifyHelper
         var v = 4 * propsGrade + 1 * propsLevel;
         return (inputValue * expertLvl * r).Parse<int>() + v;
     }
+    #endregion
 
+    #region SkillStep
     public static int GetStepExpertSpeed(int expertLvl, int propsGrade, int propsLevel)
     {
         if (expertLvl <= 0)
@@ -337,6 +356,7 @@ public static class UnitModifyHelper
         var v = 0.10f * propsGrade + 0.03f * propsLevel;
         return expertLvl * v;
     }
+    #endregion
 
     public static int GetAbiPointAdjHp(WorldUnitBase wunit)
     {
