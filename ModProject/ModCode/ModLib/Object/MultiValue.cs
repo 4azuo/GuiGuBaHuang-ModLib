@@ -4,19 +4,19 @@ namespace ModLib.Object
 {
     public class MultiValue
     {
-        public object[] Values { get; set; }
+        public dynamic[] Values { get; set; }
         [JsonIgnore]
-        public object Value0 => Values?.Length > 0 ? Values[0] : null;
+        public dynamic Value0 => Values?.Length > 0 ? Values[0] : null;
         [JsonIgnore]
-        public object Value1 => Values?.Length > 1 ? Values[1] : null;
+        public dynamic Value1 => Values?.Length > 1 ? Values[1] : null;
         [JsonIgnore]
-        public object Value2 => Values?.Length > 2 ? Values[2] : null;
+        public dynamic Value2 => Values?.Length > 2 ? Values[2] : null;
 
         public MultiValue()
         {
         }
 
-        public static MultiValue Create(params object[] values)
+        public static MultiValue Create(params dynamic[] values)
         {
             return new MultiValue()
             {
@@ -24,7 +24,7 @@ namespace ModLib.Object
             };
         }
 
-        public object Get(int index)
+        public dynamic Get(int index)
         {
             return Values?.Length > index ? Values[index] : null;
         }
