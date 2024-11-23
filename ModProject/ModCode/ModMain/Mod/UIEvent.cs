@@ -38,6 +38,8 @@ namespace MOD_nE7UL2.Mod
         private static Text uiArtifactInfo_textRefineAdj1;
         private static Text uiArtifactInfo_textRefineAdj2;
         private static Text uiArtifactInfo_textRefineAdj3;
+        private static Text uiArtifactInfo_textRefineAdj4;
+        private static Text uiArtifactInfo_textRefineAdj5;
         private static UINPCInfoPreview uiMartialExpertInfo;
         private static Text uiMartialExpertInfo_textExpertLvl;
         private static Text uiMartialExpertInfo_textAdj1;
@@ -158,23 +160,33 @@ namespace MOD_nE7UL2.Mod
 
                 //refine
                 var refineLvl = CustomRefineEvent.GetRefineLvl(uiArtifactInfo.shapeProp);
-                var customAdj = UnitModifyHelper.GetRefineArtifactCustommAdjType(uiArtifactInfo.shapeProp);
+                var customAdj1 = UnitModifyHelper.GetRefineArtifactCustommAdjType1(uiArtifactInfo.shapeProp);
+                var customAdj2 = UnitModifyHelper.GetRefineArtifactCustommAdjType2(uiArtifactInfo.shapeProp);
+                var customAdj3 = UnitModifyHelper.GetRefineArtifactCustommAdjType3(uiArtifactInfo.shapeProp);
 
                 uiArtifactInfo_textRefineTitle = ObjectHelper.Create(uiArtifactInfo.textGrade_En).Align(TextAnchor.MiddleRight).Format(Color.white, 15);
                 uiArtifactInfo_textRefineAdj1 = ObjectHelper.Create(uiArtifactInfo.textGrade_En).Align(TextAnchor.MiddleRight).Format(Color.white, 14);
                 uiArtifactInfo_textRefineAdj2 = ObjectHelper.Create(uiArtifactInfo.textGrade_En).Align(TextAnchor.MiddleRight).Format(Color.white, 14);
-                uiArtifactInfo_textRefineAdj3 = ObjectHelper.Create(uiArtifactInfo.textGrade_En).Align(TextAnchor.MiddleRight).Format(refineLvl < 200 ? Color.gray : customAdj.Value.Color, 14);
+                uiArtifactInfo_textRefineAdj3 = ObjectHelper.Create(uiArtifactInfo.textGrade_En).Align(TextAnchor.MiddleRight).Format(refineLvl < 100 ? Color.gray : customAdj1.Value.Color, 14);
+                uiArtifactInfo_textRefineAdj4 = ObjectHelper.Create(uiArtifactInfo.textGrade_En).Align(TextAnchor.MiddleRight).Format(refineLvl < 200 ? Color.gray : customAdj1.Value.Color, 14);
+                uiArtifactInfo_textRefineAdj5 = ObjectHelper.Create(uiArtifactInfo.textGrade_En).Align(TextAnchor.MiddleRight).Format(refineLvl < 300 ? Color.gray : customAdj1.Value.Color, 14);
 
                 uiArtifactInfo_textRefineTitle.Pos(uiArtifactInfo.textGrade_En.gameObject, 0f, -1.35f);
                 uiArtifactInfo_textRefineAdj1.Pos(uiArtifactInfo.textGrade_En.gameObject, +0.05f, -1.5f);
                 uiArtifactInfo_textRefineAdj2.Pos(uiArtifactInfo.textGrade_En.gameObject, +0.05f, -1.65f);
-                uiArtifactInfo_textRefineAdj3.Pos(uiArtifactInfo.textGrade_En.gameObject, +0.05f, -2.8f);
+                uiArtifactInfo_textRefineAdj3.Pos(uiArtifactInfo.textGrade_En.gameObject, +0.05f, -1.8f);
+                uiArtifactInfo_textRefineAdj4.Pos(uiArtifactInfo.textGrade_En.gameObject, +0.05f, -1.95f);
+                uiArtifactInfo_textRefineAdj5.Pos(uiArtifactInfo.textGrade_En.gameObject, +0.05f, -2.1f);
 
                 uiArtifactInfo_textRefineTitle.text = $"Refine ({refineLvl}):";
                 uiArtifactInfo_textRefineAdj1.text = $"+Atk: {UnitModifyHelper.GetRefineArtifactAdjAtk(uiArtifactInfo.shapeProp, refineLvl)}";
                 uiArtifactInfo_textRefineAdj2.text = $"+Def: {UnitModifyHelper.GetRefineArtifactAdjDef(uiArtifactInfo.shapeProp, refineLvl)}";
-                uiArtifactInfo_textRefineAdj3.text = $"+{customAdj.Key.Label}: {UnitModifyHelper.GetRefineArtifactCustommAdjValue(uiArtifactInfo.unit, uiArtifactInfo.shapeProp, refineLvl)}";
-                if (refineLvl < 200) uiArtifactInfo_textRefineAdj3.text += " (Req 200)";
+                if (refineLvl < 100) uiArtifactInfo_textRefineAdj3.text = $"+{customAdj1.Key.Label}: {UnitModifyHelper.GetRefineArtifactCustommAdjValue1(uiArtifactInfo.unit, uiArtifactInfo.shapeProp, refineLvl):0.0}";
+                else uiArtifactInfo_textRefineAdj3.text = $"-{customAdj1.Key.Label} (Req 100)";
+                if (refineLvl < 200) uiArtifactInfo_textRefineAdj4.text = $"+{customAdj1.Key.Label}: {UnitModifyHelper.GetRefineArtifactCustommAdjValue2(uiArtifactInfo.unit, uiArtifactInfo.shapeProp, refineLvl):0.0}";
+                else uiArtifactInfo_textRefineAdj4.text = $"-{customAdj2.Key.Label} (Req 200)";
+                if (refineLvl < 300) uiArtifactInfo_textRefineAdj5.text = $"+{customAdj1.Key.Label}: {UnitModifyHelper.GetRefineArtifactCustommAdjValue3(uiArtifactInfo.unit, uiArtifactInfo.shapeProp, refineLvl):0.0}";
+                else uiArtifactInfo_textRefineAdj5.text = $"-{customAdj3.Key.Label} (Req 300)";
             }
 
             if (e.uiType.uiName == UIType.MartialInfo.uiName)
@@ -254,28 +266,23 @@ namespace MOD_nE7UL2.Mod
                     var refineLvl = CustomRefineEvent.GetRefineLvl(uiPropInfo.propData);
                     var customAdj1 = UnitModifyHelper.GetRefineRingCustommAdjType1(uiPropInfo.propData);
                     var customAdj2 = UnitModifyHelper.GetRefineRingCustommAdjType2(uiPropInfo.propData);
-                    var customAdj3 = UnitModifyHelper.GetRefineRingCustommAdjType3(uiPropInfo.propData);
 
                     uiPropInfo_textRefineTitle = ObjectHelper.Create(uiPropInfo.textGrade_En).Align().Format(Color.white, 15);
                     uiPropInfo_textRefineAdj1 = ObjectHelper.Create(uiPropInfo.textGrade_En).Align().Format(Color.white, 14);
-                    uiPropInfo_textRefineAdj2 = ObjectHelper.Create(uiPropInfo.textGrade_En).Align().Format(refineLvl < 50 ? Color.gray : customAdj1.Value.Color, 14);
-                    uiPropInfo_textRefineAdj3 = ObjectHelper.Create(uiPropInfo.textGrade_En).Align().Format(refineLvl < 100 ? Color.gray : customAdj2.Value.Color, 14);
-                    uiPropInfo_textRefineAdj4 = ObjectHelper.Create(uiPropInfo.textGrade_En).Align().Format(refineLvl < 150 ? Color.gray : customAdj3.Value.Color, 14);
+                    uiPropInfo_textRefineAdj2 = ObjectHelper.Create(uiPropInfo.textGrade_En).Align().Format(refineLvl < 100 ? Color.gray : customAdj1.Value.Color, 14);
+                    uiPropInfo_textRefineAdj3 = ObjectHelper.Create(uiPropInfo.textGrade_En).Align().Format(refineLvl < 200 ? Color.gray : customAdj2.Value.Color, 14);
 
                     uiPropInfo_textRefineTitle.Pos(uiPropInfo.textGrade_En.gameObject, 0f, -0.2f);
                     uiPropInfo_textRefineAdj1.Pos(uiPropInfo.textGrade_En.gameObject, +0.05f, -0.35f);
                     uiPropInfo_textRefineAdj2.Pos(uiPropInfo.textGrade_En.gameObject, +0.05f, -0.5f);
                     uiPropInfo_textRefineAdj3.Pos(uiPropInfo.textGrade_En.gameObject, +0.05f, -0.65f);
-                    uiPropInfo_textRefineAdj4.Pos(uiPropInfo.textGrade_En.gameObject, +0.05f, -0.8f);
 
                     uiPropInfo_textRefineTitle.text = $"Refine ({refineLvl}):";
                     uiPropInfo_textRefineAdj1.text = $"+Hp: {UnitModifyHelper.GetRefineRingAdjHp(uiPropInfo.unit.GetDynProperty(UnitDynPropertyEnum.HpMax).baseValue, uiPropInfo.propData, refineLvl)}";
-                    uiPropInfo_textRefineAdj2.text = $"+{customAdj1.Key.Label}: {UnitModifyHelper.GetRefineRingCustommAdjValue1(uiPropInfo.unit, uiPropInfo.propData, refineLvl)}";
-                    if (refineLvl < 50) uiPropInfo_textRefineAdj2.text += " (Req 50)";
-                    uiPropInfo_textRefineAdj3.text = $"+{customAdj2.Key.Label}: {UnitModifyHelper.GetRefineRingCustommAdjValue2(uiPropInfo.unit, uiPropInfo.propData, refineLvl)}";
-                    if (refineLvl < 100) uiPropInfo_textRefineAdj3.text += " (Req 100)";
-                    uiPropInfo_textRefineAdj4.text = $"+{customAdj3.Key.Label}: {UnitModifyHelper.GetRefineRingCustommAdjValue3(uiPropInfo.unit, uiPropInfo.propData, refineLvl)}";
-                    if (refineLvl < 150) uiPropInfo_textRefineAdj4.text += " (Req 150)";
+                    if (refineLvl < 100) uiPropInfo_textRefineAdj2.text = $"+{customAdj1.Key.Label}: {UnitModifyHelper.GetRefineRingCustommAdjValue1(uiPropInfo.unit, uiPropInfo.propData, refineLvl):0.0}";
+                    else uiPropInfo_textRefineAdj2.text = $"-{customAdj1.Key.Label} (Req 100)";
+                    if (refineLvl < 200) uiPropInfo_textRefineAdj3.text = $"+{customAdj2.Key.Label}: {UnitModifyHelper.GetRefineRingCustommAdjValue2(uiPropInfo.unit, uiPropInfo.propData, refineLvl):0.0}";
+                    else uiPropInfo_textRefineAdj3.text = $"-{customAdj2.Key.Label} (Req 200)";
                 }
                 else if (uiPropInfo.propData.propsItem.IsOutfit() != null)
                 {
@@ -298,10 +305,10 @@ namespace MOD_nE7UL2.Mod
                     uiPropInfo_textRefineTitle.text = $"Refine ({refineLvl}):";
                     uiPropInfo_textRefineAdj1.text = $"+Hp: {UnitModifyHelper.GetRefineOutfitAdjHp(uiPropInfo.unit.GetDynProperty(UnitDynPropertyEnum.HpMax).baseValue, uiPropInfo.propData, refineLvl)}";
                     uiPropInfo_textRefineAdj2.text = $"+Def: {UnitModifyHelper.GetRefineOutfitAdjDef(uiPropInfo.unit.GetDynProperty(UnitDynPropertyEnum.Defense).baseValue, uiPropInfo.propData, refineLvl)}";
-                    uiPropInfo_textRefineAdj3.text = $"+{customAdj1.Key.Label}: {UnitModifyHelper.GetRefineOutfitCustommAdjValue1(uiPropInfo.unit, uiPropInfo.propData, refineLvl)}";
-                    if (refineLvl < 100) uiPropInfo_textRefineAdj3.text += " (Req 100)";
-                    uiPropInfo_textRefineAdj4.text = $"+{customAdj2.Key.Label}: {UnitModifyHelper.GetRefineOutfitCustommAdjValue2(uiPropInfo.unit, uiPropInfo.propData, refineLvl)}";
-                    if (refineLvl < 200) uiPropInfo_textRefineAdj4.text += " (Req 200)";
+                    if (refineLvl < 100) uiPropInfo_textRefineAdj3.text = $"+{customAdj1.Key.Label}: {UnitModifyHelper.GetRefineOutfitCustommAdjValue1(uiPropInfo.unit, uiPropInfo.propData, refineLvl):0.0}"; 
+                    else uiPropInfo_textRefineAdj3.text = $"-{customAdj1.Key.Label} (Req 100)";
+                    if (refineLvl < 200) uiPropInfo_textRefineAdj4.text = $"+{customAdj2.Key.Label}: {UnitModifyHelper.GetRefineOutfitCustommAdjValue2(uiPropInfo.unit, uiPropInfo.propData, refineLvl):0.0}";
+                    else uiPropInfo_textRefineAdj4.text = $"-{customAdj2.Key.Label} (Req 200)";
                 }
             }
 
@@ -344,7 +351,6 @@ namespace MOD_nE7UL2.Mod
                     uiPropInfo_textRefineAdj1.Pos(uiPropInfo.textGrade_En.gameObject, +0.05f, -0.35f);
                     uiPropInfo_textRefineAdj2.Pos(uiPropInfo.textGrade_En.gameObject, +0.05f, -0.5f);
                     uiPropInfo_textRefineAdj3.Pos(uiPropInfo.textGrade_En.gameObject, +0.05f, -0.65f);
-                    uiPropInfo_textRefineAdj4.Pos(uiPropInfo.textGrade_En.gameObject, +0.05f, -0.8f);
                 }
                 else if (uiPropInfo.propData.propsItem.IsOutfit() != null)
                 {
@@ -368,7 +374,9 @@ namespace MOD_nE7UL2.Mod
                 uiArtifactInfo_textRefineTitle.Pos(uiArtifactInfo.textGrade_En.gameObject, 0f, -1.35f);
                 uiArtifactInfo_textRefineAdj1.Pos(uiArtifactInfo.textGrade_En.gameObject, +0.05f, -1.5f);
                 uiArtifactInfo_textRefineAdj2.Pos(uiArtifactInfo.textGrade_En.gameObject, +0.05f, -1.65f);
-                uiArtifactInfo_textRefineAdj3.Pos(uiArtifactInfo.textGrade_En.gameObject, +0.05f, -2.8f);
+                uiArtifactInfo_textRefineAdj3.Pos(uiArtifactInfo.textGrade_En.gameObject, +0.05f, -1.8f);
+                uiArtifactInfo_textRefineAdj4.Pos(uiArtifactInfo.textGrade_En.gameObject, +0.05f, -1.95f);
+                uiArtifactInfo_textRefineAdj5.Pos(uiArtifactInfo.textGrade_En.gameObject, +0.05f, -2.1f);
             }
 
             if (uiNPCInfo?.gameObject?.active ?? false)
