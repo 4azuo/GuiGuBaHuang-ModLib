@@ -29,8 +29,8 @@ namespace MOD_nE7UL2.Enum
         public static AdjTypeEnum BasisWind { get; } = new AdjTypeEnum("Wind", (wunit) => wunit.GetProperty<int>(UnitPropertyEnum.BasisWind));
         public static AdjTypeEnum BasisWood { get; } = new AdjTypeEnum("Wood", (wunit) => wunit.GetProperty<int>(UnitPropertyEnum.BasisWood));
         public static AdjTypeEnum Speed { get; } = new AdjTypeEnum("Speed", (wunit) => wunit.GetProperty<int>(UnitPropertyEnum.MoveSpeed));
-        public static AdjTypeEnum BlockChanceMax { get; } = new AdjTypeEnum("Block(%Max)", (wunit) => BattleModifyEvent.GetBlockMaxBase());
-        public static AdjTypeEnum BlockValue { get; } = new AdjTypeEnum("Block(Dmg)", (wunit) => BattleModifyEvent.GetBlockDmgBase(wunit));
+        public static AdjTypeEnum BlockChanceMax { get; } = new AdjTypeEnum("Block(%Max)", (wunit) => BattleModifyEvent.GetBlockMaxBase(wunit));
+        public static AdjTypeEnum BlockDmg { get; } = new AdjTypeEnum("Block(Dmg)", (wunit) => BattleModifyEvent.GetBlockDmgBase(wunit));
         public static AdjTypeEnum EvadeChance { get; } = new AdjTypeEnum("Evade(%)", (wunit) => BattleModifyEvent.GetEvadeBase(wunit));
         public static AdjTypeEnum EvadeChanceMax { get; } = new AdjTypeEnum("Evade(%Max)", (wunit) => BattleModifyEvent.GetEvadeMaxBase(wunit));
         public static AdjTypeEnum Nullify { get; } = new AdjTypeEnum("Nullify", (wunit) => 100);

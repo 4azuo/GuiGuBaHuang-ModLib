@@ -1,5 +1,6 @@
 ﻿using MOD_nE7UL2;
 using MOD_nE7UL2.Enum;
+using MOD_nE7UL2.Mod;
 using ModLib.Enum;
 using System;
 using System.Collections.Generic;
@@ -21,10 +22,44 @@ public static class UnitModifyHelper
     public static AdjTypeEnum[] ArtifactAdjTypes = new AdjTypeEnum[] 
     { 
         AdjTypeEnum.Atk, AdjTypeEnum.Def, AdjTypeEnum.Speed, AdjTypeEnum.Shield, AdjTypeEnum.Nullify,
-        AdjTypeEnum.BlockChanceMax, AdjTypeEnum.BlockValue,
+        AdjTypeEnum.BlockChanceMax, AdjTypeEnum.BlockDmg,
         AdjTypeEnum.EvadeChance, AdjTypeEnum.EvadeChanceMax, 
         AdjTypeEnum.SCritChance, AdjTypeEnum.SCritChanceMax, AdjTypeEnum.SCritDamage
     };
+
+    public static double GetRefineCustommAdjValue(WorldUnitBase wunit, AdjTypeEnum adjType)
+    {
+        var rs = 0d;
+        foreach (var props in wunit.GetUnitProps())
+        {
+            if (CustomRefineEvent.IsRefinableItem(props))
+            {
+                var refineLvl = CustomRefineEvent.GetRefineLvl(props);
+                if (props.propsItem.IsArtifact() != null)
+                {
+                    var customAdj1 = UnitModifyHelper.GetRefineArtifactCustommAdjType(props);
+                    if (customAdj1.Key == adjType) rs += UnitModifyHelper.GetRefineArtifactCustommAdjValue(wunit, props, refineLvl);
+                }
+                else if (props.propsItem.IsRing() != null)
+                {
+                    var customAdj1 = UnitModifyHelper.GetRefineRingCustommAdjType1(props);
+                    if (customAdj1.Key == adjType) rs += UnitModifyHelper.GetRefineRingCustommAdjValue1(wunit, props, refineLvl);
+                    var customAdj2 = UnitModifyHelper.GetRefineRingCustommAdjType2(props);
+                    if (customAdj2.Key == adjType) rs += UnitModifyHelper.GetRefineRingCustommAdjValue2(wunit, props, refineLvl);
+                    var customAdj3 = UnitModifyHelper.GetRefineRingCustommAdjType3(props);
+                    if (customAdj3.Key == adjType) rs += UnitModifyHelper.GetRefineRingCustommAdjValue3(wunit, props, refineLvl);
+                }
+                else if (props.propsItem.IsOutfit() != null)
+                {
+                    var customAdj1 = UnitModifyHelper.GetRefineOutfitCustommAdjType1(props);
+                    if (customAdj1.Key == adjType) rs += UnitModifyHelper.GetRefineOutfitCustommAdjValue1(wunit, props, refineLvl);
+                    var customAdj2 = UnitModifyHelper.GetRefineOutfitCustommAdjType2(props);
+                    if (customAdj2.Key == adjType) rs += UnitModifyHelper.GetRefineOutfitCustommAdjValue2(wunit, props, refineLvl);
+                }
+            }
+        }
+        return rs;
+    }
 
     public static _ExpertConfigs ExpertConfigs => ModMain.ModObj.InGameCustomSettings.ExpertConfigs;
 
@@ -53,7 +88,7 @@ public static class UnitModifyHelper
         return new KeyValuePair<AdjTypeEnum, AdjLevelEnum>(ArtifactAdjTypes[props.soleID[0] % RingAdjTypes.Length], AdjLevelEnum.GetLevel(props.soleID[0]));
     }
 
-    public static int GetRefineArtifactCustommAdjValue(WorldUnitBase wunit, DataProps.PropsData props, int refineLvl)
+    public static double GetRefineArtifactCustommAdjValue(WorldUnitBase wunit, DataProps.PropsData props, int refineLvl)
     {
         if (refineLvl < 200)
             return 0;
@@ -61,7 +96,7 @@ public static class UnitModifyHelper
         if (type.Key == AdjTypeEnum.None)
             return 0;
         var r = 0.001f * props.propsInfoBase.grade + 0.0002f * props.propsInfoBase.level;
-        return Convert.ToInt32(type.Key.GetBaseValue(wunit) * r * refineLvl * type.Value.Level);
+        return type.Key.GetBaseValue(wunit) * r * refineLvl * type.Value.Level;
     }
 
     public static int GetRefineOutfitAdjHp(int baseValue, DataProps.PropsData props, int refineLvl)
@@ -87,7 +122,7 @@ public static class UnitModifyHelper
         return new KeyValuePair<AdjTypeEnum, AdjLevelEnum>(OutfitAdjTypes[props.soleID[0] % OutfitAdjTypes.Length], AdjLevelEnum.GetLevel(props.soleID[0]));
     }
 
-    public static int GetRefineOutfitCustommAdjValue1(WorldUnitBase wunit, DataProps.PropsData props, int refineLvl)
+    public static double GetRefineOutfitCustommAdjValue1(WorldUnitBase wunit, DataProps.PropsData props, int refineLvl)
     {
         if (refineLvl < 100)
             return 0;
@@ -95,7 +130,7 @@ public static class UnitModifyHelper
         if (type.Key == AdjTypeEnum.None)
             return 0;
         var r = 0.001f * props.propsInfoBase.grade + 0.0002f * props.propsInfoBase.level;
-        return Convert.ToInt32(type.Key.GetBaseValue(wunit) * r * refineLvl * type.Value.Level);
+        return type.Key.GetBaseValue(wunit) * r * refineLvl * type.Value.Level;
     }
 
     public static KeyValuePair<AdjTypeEnum, AdjLevelEnum> GetRefineOutfitCustommAdjType2(DataProps.PropsData props)
@@ -105,7 +140,7 @@ public static class UnitModifyHelper
         return new KeyValuePair<AdjTypeEnum, AdjLevelEnum>(OutfitAdjTypes[props.soleID[1] % OutfitAdjTypes.Length], AdjLevelEnum.GetLevel(props.soleID[1]));
     }
 
-    public static int GetRefineOutfitCustommAdjValue2(WorldUnitBase wunit, DataProps.PropsData props, int refineLvl)
+    public static double GetRefineOutfitCustommAdjValue2(WorldUnitBase wunit, DataProps.PropsData props, int refineLvl)
     {
         if (refineLvl < 200)
             return 0;
@@ -113,7 +148,7 @@ public static class UnitModifyHelper
         if (type.Key == AdjTypeEnum.None)
             return 0;
         var r = 0.002f * props.propsInfoBase.grade + 0.0004f * props.propsInfoBase.level;
-        return Convert.ToInt32(type.Key.GetBaseValue(wunit) * r * refineLvl * type.Value.Level);
+        return type.Key.GetBaseValue(wunit) * r * refineLvl * type.Value.Level;
     }
 
     public static int GetRefineRingAdjHp(int baseValue, DataProps.PropsData props, int refineLvl)
@@ -131,7 +166,7 @@ public static class UnitModifyHelper
         return new KeyValuePair<AdjTypeEnum, AdjLevelEnum>(RingAdjTypes[props.soleID[0] % RingAdjTypes.Length], AdjLevelEnum.GetLevel(props.soleID[0]));
     }
 
-    public static int GetRefineRingCustommAdjValue1(WorldUnitBase wunit, DataProps.PropsData props, int refineLvl)
+    public static double GetRefineRingCustommAdjValue1(WorldUnitBase wunit, DataProps.PropsData props, int refineLvl)
     {
         if (refineLvl < 50)
             return 0;
@@ -139,7 +174,7 @@ public static class UnitModifyHelper
         if (type.Key == AdjTypeEnum.None)
             return 0;
         var r = 0.001f * props.propsInfoBase.grade + 0.0002f * props.propsInfoBase.level;
-        return Convert.ToInt32(type.Key.GetBaseValue(wunit) * r * refineLvl * type.Value.Level);
+        return type.Key.GetBaseValue(wunit) * r * refineLvl * type.Value.Level;
     }
 
     public static KeyValuePair<AdjTypeEnum, AdjLevelEnum> GetRefineRingCustommAdjType2(DataProps.PropsData props)
@@ -149,7 +184,7 @@ public static class UnitModifyHelper
         return new KeyValuePair<AdjTypeEnum, AdjLevelEnum>(RingAdjTypes[props.soleID[1] % RingAdjTypes.Length], AdjLevelEnum.GetLevel(props.soleID[1]));
     }
 
-    public static int GetRefineRingCustommAdjValue2(WorldUnitBase wunit, DataProps.PropsData props, int refineLvl)
+    public static double GetRefineRingCustommAdjValue2(WorldUnitBase wunit, DataProps.PropsData props, int refineLvl)
     {
         if (refineLvl < 100)
             return 0;
@@ -157,7 +192,7 @@ public static class UnitModifyHelper
         if (type.Key == AdjTypeEnum.None)
             return 0;
         var r = 0.002f * props.propsInfoBase.grade + 0.0004f * props.propsInfoBase.level;
-        return Convert.ToInt32(type.Key.GetBaseValue(wunit) * r * refineLvl * type.Value.Level);
+        return type.Key.GetBaseValue(wunit) * r * refineLvl * type.Value.Level;
     }
 
     public static KeyValuePair<AdjTypeEnum, AdjLevelEnum> GetRefineRingCustommAdjType3(DataProps.PropsData props)
@@ -167,7 +202,7 @@ public static class UnitModifyHelper
         return new KeyValuePair<AdjTypeEnum, AdjLevelEnum>(RingAdjTypes[props.soleID[2] % RingAdjTypes.Length], AdjLevelEnum.GetLevel(props.soleID[2]));
     }
 
-    public static int GetRefineRingCustommAdjValue3(WorldUnitBase wunit, DataProps.PropsData props, int refineLvl)
+    public static double GetRefineRingCustommAdjValue3(WorldUnitBase wunit, DataProps.PropsData props, int refineLvl)
     {
         if (refineLvl < 150)
             return 0;
@@ -175,7 +210,7 @@ public static class UnitModifyHelper
         if (type.Key == AdjTypeEnum.None)
             return 0;
         var r = 0.003f * props.propsInfoBase.grade + 0.0006f * props.propsInfoBase.level;
-        return Convert.ToInt32(type.Key.GetBaseValue(wunit) * r * refineLvl * type.Value.Level);
+        return type.Key.GetBaseValue(wunit) * r * refineLvl * type.Value.Level;
     }
 
     public static int GetArtifactBasicAdjAtk(int baseValue, DataProps.PropsData props, DataProps.PropsArtifact artifact)

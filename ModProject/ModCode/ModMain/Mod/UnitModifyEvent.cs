@@ -4,6 +4,8 @@ using UnityEngine;
 using ModLib.Enum;
 using System.Collections.Generic;
 using Newtonsoft.Json;
+using MOD_nE7UL2.Enum;
+using System;
 
 namespace MOD_nE7UL2.Mod
 {
@@ -40,6 +42,7 @@ namespace MOD_nE7UL2.Mod
             {
                 _units.Add(unitId);
 
+                //
                 wunit.GetDynProperty(UnitDynPropertyEnum.Attack).AddValue((DynInt.DynObjectAddHandler)(() =>
                 {
                     return GetAdjustAtk(wunit);
@@ -63,6 +66,56 @@ namespace MOD_nE7UL2.Mod
                 wunit.GetDynProperty(UnitDynPropertyEnum.MoveSpeed).AddValue((DynInt.DynObjectAddHandler)(() =>
                 {
                     return GetAdjustSpeed(wunit);
+                }));
+
+                //basis
+                wunit.GetDynProperty(UnitDynPropertyEnum.BasisBlade).AddValue((DynInt.DynObjectAddHandler)(() =>
+                {
+                    return GetAdjustBlade(wunit);
+                }));
+                wunit.GetDynProperty(UnitDynPropertyEnum.BasisEarth).AddValue((DynInt.DynObjectAddHandler)(() =>
+                {
+                    return GetAdjustEarth(wunit);
+                }));
+                wunit.GetDynProperty(UnitDynPropertyEnum.BasisFinger).AddValue((DynInt.DynObjectAddHandler)(() =>
+                {
+                    return GetAdjustFinger(wunit);
+                }));
+                wunit.GetDynProperty(UnitDynPropertyEnum.BasisFire).AddValue((DynInt.DynObjectAddHandler)(() =>
+                {
+                    return GetAdjustFire(wunit);
+                }));
+                wunit.GetDynProperty(UnitDynPropertyEnum.BasisFist).AddValue((DynInt.DynObjectAddHandler)(() =>
+                {
+                    return GetAdjustFist(wunit);
+                }));
+                wunit.GetDynProperty(UnitDynPropertyEnum.BasisFroze).AddValue((DynInt.DynObjectAddHandler)(() =>
+                {
+                    return GetAdjustFroze(wunit);
+                }));
+                wunit.GetDynProperty(UnitDynPropertyEnum.BasisPalm).AddValue((DynInt.DynObjectAddHandler)(() =>
+                {
+                    return GetAdjustPalm(wunit);
+                }));
+                wunit.GetDynProperty(UnitDynPropertyEnum.BasisSpear).AddValue((DynInt.DynObjectAddHandler)(() =>
+                {
+                    return GetAdjustSpear(wunit);
+                }));
+                wunit.GetDynProperty(UnitDynPropertyEnum.BasisSword).AddValue((DynInt.DynObjectAddHandler)(() =>
+                {
+                    return GetAdjustSword(wunit);
+                }));
+                wunit.GetDynProperty(UnitDynPropertyEnum.BasisThunder).AddValue((DynInt.DynObjectAddHandler)(() =>
+                {
+                    return GetAdjustThunder(wunit);
+                }));
+                wunit.GetDynProperty(UnitDynPropertyEnum.BasisWind).AddValue((DynInt.DynObjectAddHandler)(() =>
+                {
+                    return GetAdjustWind(wunit);
+                }));
+                wunit.GetDynProperty(UnitDynPropertyEnum.BasisWood).AddValue((DynInt.DynObjectAddHandler)(() =>
+                {
+                    return GetAdjustWood(wunit);
                 }));
             }
         }
@@ -97,6 +150,8 @@ namespace MOD_nE7UL2.Mod
                     rs += UnitModifyHelper.GetAbilityExpertAtk(atk, expertLvl, martialData.data.propsInfoBase.grade, martialData.data.propsInfoBase.level);
                 }
             }
+
+            rs += Convert.ToInt32(UnitModifyHelper.GetRefineCustommAdjValue(wunit, AdjTypeEnum.Atk));
 
             return rs;
         }
@@ -134,6 +189,8 @@ namespace MOD_nE7UL2.Mod
 
             rs += UnitModifyHelper.GetRefineOutfitAdjDef(def, wunit.GetEquippedOutfit(), CustomRefineEvent.GetRefineLvl(wunit.GetEquippedOutfit()));
 
+            rs += Convert.ToInt32(UnitModifyHelper.GetRefineCustommAdjValue(wunit, AdjTypeEnum.Def));
+
             return rs;
         }
 
@@ -170,6 +227,8 @@ namespace MOD_nE7UL2.Mod
 
             rs += UnitModifyHelper.GetRefineOutfitAdjHp(hpMax, wunit.GetEquippedOutfit(), CustomRefineEvent.GetRefineLvl(wunit.GetEquippedOutfit()));
 
+            rs += Convert.ToInt32(UnitModifyHelper.GetRefineCustommAdjValue(wunit, AdjTypeEnum.MHp));
+
             return rs;
         }
 
@@ -193,6 +252,8 @@ namespace MOD_nE7UL2.Mod
 
             rs += UnitModifyHelper.GetSpiritualAdjMp(wunit);
 
+            rs += Convert.ToInt32(UnitModifyHelper.GetRefineCustommAdjValue(wunit, AdjTypeEnum.MMp));
+
             return rs;
         }
 
@@ -214,6 +275,8 @@ namespace MOD_nE7UL2.Mod
 
             rs += UnitModifyHelper.GetArtisanshipAdjSp(wunit);
 
+            rs += Convert.ToInt32(UnitModifyHelper.GetRefineCustommAdjValue(wunit, AdjTypeEnum.MSp));
+
             return rs;
         }
 
@@ -230,6 +293,116 @@ namespace MOD_nE7UL2.Mod
                     rs += UnitModifyHelper.GetStepExpertSpeed(expertLvl, martialData.data.propsInfoBase.grade, martialData.data.propsInfoBase.level);
                 }
             }
+
+            rs += Convert.ToInt32(UnitModifyHelper.GetRefineCustommAdjValue(wunit, AdjTypeEnum.Speed));
+
+            return rs;
+        }
+
+        public static int GetAdjustBlade(WorldUnitBase wunit)
+        {
+            var rs = 0;
+
+            rs += Convert.ToInt32(UnitModifyHelper.GetRefineCustommAdjValue(wunit, AdjTypeEnum.BasisBlade));
+
+            return rs;
+        }
+
+        public static int GetAdjustEarth(WorldUnitBase wunit)
+        {
+            var rs = 0;
+
+            rs += Convert.ToInt32(UnitModifyHelper.GetRefineCustommAdjValue(wunit, AdjTypeEnum.BasisEarth));
+
+            return rs;
+        }
+
+        public static int GetAdjustFinger(WorldUnitBase wunit)
+        {
+            var rs = 0;
+
+            rs += Convert.ToInt32(UnitModifyHelper.GetRefineCustommAdjValue(wunit, AdjTypeEnum.BasisFinger));
+
+            return rs;
+        }
+
+        public static int GetAdjustFire(WorldUnitBase wunit)
+        {
+            var rs = 0;
+
+            rs += Convert.ToInt32(UnitModifyHelper.GetRefineCustommAdjValue(wunit, AdjTypeEnum.BasisFire));
+
+            return rs;
+        }
+
+        public static int GetAdjustFist(WorldUnitBase wunit)
+        {
+            var rs = 0;
+
+            rs += Convert.ToInt32(UnitModifyHelper.GetRefineCustommAdjValue(wunit, AdjTypeEnum.BasisFist));
+
+            return rs;
+        }
+
+        public static int GetAdjustFroze(WorldUnitBase wunit)
+        {
+            var rs = 0;
+
+            rs += Convert.ToInt32(UnitModifyHelper.GetRefineCustommAdjValue(wunit, AdjTypeEnum.BasisFroze));
+
+            return rs;
+        }
+
+        public static int GetAdjustPalm(WorldUnitBase wunit)
+        {
+            var rs = 0;
+
+            rs += Convert.ToInt32(UnitModifyHelper.GetRefineCustommAdjValue(wunit, AdjTypeEnum.BasisPalm));
+
+            return rs;
+        }
+
+        public static int GetAdjustSpear(WorldUnitBase wunit)
+        {
+            var rs = 0;
+
+            rs += Convert.ToInt32(UnitModifyHelper.GetRefineCustommAdjValue(wunit, AdjTypeEnum.BasisSpear));
+
+            return rs;
+        }
+
+        public static int GetAdjustSword(WorldUnitBase wunit)
+        {
+            var rs = 0;
+
+            rs += Convert.ToInt32(UnitModifyHelper.GetRefineCustommAdjValue(wunit, AdjTypeEnum.BasisSword));
+
+            return rs;
+        }
+
+        public static int GetAdjustThunder(WorldUnitBase wunit)
+        {
+            var rs = 0;
+
+            rs += Convert.ToInt32(UnitModifyHelper.GetRefineCustommAdjValue(wunit, AdjTypeEnum.BasisThunder));
+
+            return rs;
+        }
+
+        public static int GetAdjustWind(WorldUnitBase wunit)
+        {
+            var rs = 0;
+
+            rs += Convert.ToInt32(UnitModifyHelper.GetRefineCustommAdjValue(wunit, AdjTypeEnum.BasisWind));
+
+            return rs;
+        }
+
+        public static int GetAdjustWood(WorldUnitBase wunit)
+        {
+            var rs = 0;
+
+            rs += Convert.ToInt32(UnitModifyHelper.GetRefineCustommAdjValue(wunit, AdjTypeEnum.BasisWood));
 
             return rs;
         }
