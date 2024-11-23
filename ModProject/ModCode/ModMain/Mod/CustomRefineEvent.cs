@@ -172,7 +172,7 @@ namespace MOD_nE7UL2.Mod
 
         public static double GetRefineExpNeed(DataProps.PropsData props, int lvl)
         {
-            return (props.propsInfoBase.grade * 200 + props.propsInfoBase.level * 40) * Math.Pow(1.10d, lvl);
+            return (props.propsInfoBase.grade * 100 + props.propsInfoBase.level * 20) * Math.Pow(1.05d, lvl);
         }
 
         public static int GetRefineLvl(DataProps.PropsData props)

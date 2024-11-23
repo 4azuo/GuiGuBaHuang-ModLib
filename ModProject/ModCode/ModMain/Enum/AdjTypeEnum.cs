@@ -33,13 +33,13 @@ namespace MOD_nE7UL2.Enum
         public static AdjTypeEnum BlockDmg { get; } = new AdjTypeEnum("Block(Dmg)", (wunit) => BattleModifyEvent.GetBlockDmgBase(wunit));
         public static AdjTypeEnum EvadeChance { get; } = new AdjTypeEnum("Evade(%)", (wunit) => BattleModifyEvent.GetEvadeBase(wunit));
         public static AdjTypeEnum EvadeChanceMax { get; } = new AdjTypeEnum("Evade(%Max)", (wunit) => BattleModifyEvent.GetEvadeMaxBase(wunit));
-        public static AdjTypeEnum Nullify { get; } = new AdjTypeEnum("Nullify", (wunit) => 100);
+        public static AdjTypeEnum Nullify { get; } = new AdjTypeEnum("Nullify", (wunit) => 5);
         public static AdjTypeEnum Shield { get; } = new AdjTypeEnum("Shield", (wunit) => BattleManashieldEvent.GetManashieldBase(wunit));
         public static AdjTypeEnum SCritChance { get; } = new AdjTypeEnum("SCrit(%)", (wunit) => BattleModifyEvent.GetSCritChanceBase(wunit));
         public static AdjTypeEnum SCritChanceMax { get; } = new AdjTypeEnum("SCrit(%Max)", (wunit) => BattleModifyEvent.GetSCritChanceMaxBase(wunit));
         public static AdjTypeEnum SCritDamage { get; } = new AdjTypeEnum("SCrit(%Dmg)", (wunit) => BattleModifyEvent.GetSCritDamageBase(wunit));
-        public static AdjTypeEnum SkillDamage { get; } = new AdjTypeEnum("Skill(%Dmg)", (wunit) => 1000);
-        public static AdjTypeEnum MinDamage { get; } = new AdjTypeEnum("Min-Dmg", (wunit) => 100);
+        public static AdjTypeEnum SkillDamage { get; } = new AdjTypeEnum("Skill(%Dmg)", (wunit) => 100);
+        public static AdjTypeEnum MinDamage { get; } = new AdjTypeEnum("Min-Dmg", (wunit) => 10);
 
         public string Label { get; private set; }
         public Func<WorldUnitBase, double> BaseValueFunc { get; private set; }
