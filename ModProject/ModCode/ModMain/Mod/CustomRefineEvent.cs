@@ -31,6 +31,7 @@ namespace MOD_nE7UL2.Mod
                     }
                 }
             }
+            UnitModifyHelper.ClearCacheCustomAdjValues();
         }
 
         private void NpcRefine(WorldUnitBase wunit, DataProps.PropsData item)
@@ -40,6 +41,7 @@ namespace MOD_nE7UL2.Mod
             var money = wunit.GetUnitMoney();
             var spend = Convert.ToInt32(Math.Sqrt(money));
             AddRefineExp(item, spend);
+            //UnitModifyHelper.ClearCacheCustomAdjValues(wunit);
             wunit.AddUnitMoney(-spend);
         }
 
@@ -121,6 +123,7 @@ namespace MOD_nE7UL2.Mod
 
                 var value = UIPropSelect.allSlectDataProps.allProps.ToArray().Sum(x => x.propsInfoBase.worth * x.propsCount);
                 AddRefineExp(refineItem, value);
+                UnitModifyHelper.ClearCacheCustomAdjValues(g.world.playerUnit);
                 g.world.playerUnit.AddUnitMoney(-value);
                 g.ui.CloseUI(ui);
 
@@ -172,7 +175,7 @@ namespace MOD_nE7UL2.Mod
 
         public static double GetRefineExpNeed(DataProps.PropsData props, int lvl)
         {
-            return (props.propsInfoBase.grade * 100 + props.propsInfoBase.level * 20) * Math.Pow(1.05d, lvl);
+            return (props.propsInfoBase.grade * 100 + props.propsInfoBase.level * 20) * Math.Pow(1.04d, lvl);
         }
 
         public static int GetRefineLvl(DataProps.PropsData props)

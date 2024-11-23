@@ -8,6 +8,9 @@ using static MOD_nE7UL2.Object.InGameStts;
 
 public static class UnitModifyHelper
 {
+    public static _ExpertConfigs ExpertConfigs => ModMain.ModObj.InGameCustomSettings.ExpertConfigs;
+
+    #region CustomAdj
     public static AdjTypeEnum[] RingAdjTypes = new AdjTypeEnum[] 
     { 
         AdjTypeEnum.Def, AdjTypeEnum.MHp, AdjTypeEnum.MMp, AdjTypeEnum.MSp,
@@ -33,10 +36,14 @@ public static class UnitModifyHelper
         AdjTypeEnum.SCritChance, AdjTypeEnum.SCritChanceMax, AdjTypeEnum.SCritDamage
     };
 
+    private static readonly IDictionary<string, double> _cacheCustomAdjValues = new Dictionary<string, double>();
     public static double GetRefineCustommAdjValue(WorldUnitBase wunit, AdjTypeEnum adjType)
     {
         if (wunit == null || adjType == null || adjType == AdjTypeEnum.None)
             return 0.0;
+        var key = $"{wunit.GetUnitId()}_{adjType.Name}";
+        if (_cacheCustomAdjValues.ContainsKey(key))
+            return _cacheCustomAdjValues[key];
         var rs = 0d;
         foreach (var props in wunit.GetUnitProps())
         {
@@ -68,10 +75,24 @@ public static class UnitModifyHelper
                 }
             }
         }
+        _cacheCustomAdjValues.Add(key, rs);
         return rs;
     }
 
-    public static _ExpertConfigs ExpertConfigs => ModMain.ModObj.InGameCustomSettings.ExpertConfigs;
+    public static void ClearCacheCustomAdjValues()
+    {
+        _cacheCustomAdjValues.Clear();
+    }
+
+    public static void ClearCacheCustomAdjValues(WorldUnitBase wunit)
+    {
+        foreach (var adjType in AdjTypeEnum.GetAllEnums<AdjTypeEnum>())
+        {
+            var key = $"{wunit.GetUnitId()}_{adjType.Name}";
+            _cacheCustomAdjValues.Remove(key);
+        }
+    }
+    #endregion
 
     #region Artifact
     public static int GetArtifactBasicAdjAtk(int baseValue, DataProps.PropsData props, DataProps.PropsArtifact artifact)
@@ -148,7 +169,7 @@ public static class UnitModifyHelper
 
     public static double GetRefineArtifactCustommAdjValue1(WorldUnitBase wunit, DataProps.PropsData props, int refineLvl)
     {
-        if (refineLvl < 200)
+        if (refineLvl < 100)
             return 0;
         var type = GetRefineArtifactCustommAdjType1(props);
         if (type.Key == AdjTypeEnum.None)
@@ -184,7 +205,7 @@ public static class UnitModifyHelper
 
     public static double GetRefineArtifactCustommAdjValue3(WorldUnitBase wunit, DataProps.PropsData props, int refineLvl)
     {
-        if (refineLvl < 200)
+        if (refineLvl < 300)
             return 0;
         var type = GetRefineArtifactCustommAdjType3(props);
         if (type.Key == AdjTypeEnum.None)
@@ -375,6 +396,14 @@ public static class UnitModifyHelper
             return 0;
         var v = 0.10f * propsGrade + 0.03f * propsLevel;
         return expertLvl * v;
+    }
+
+    public static int GetStepExpertMpCost(int inputValue, int expertLvl, int propsGrade, int propsLevel, int least)
+    {
+        if (expertLvl <= 0)
+            return 0;
+        var r = 0.10f * propsGrade + 0.02f * propsLevel;
+        return Math.Max((inputValue * expertLvl * r).Parse<int>(), least);
     }
     #endregion
 
