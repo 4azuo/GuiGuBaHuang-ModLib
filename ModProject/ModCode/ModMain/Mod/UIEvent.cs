@@ -181,12 +181,12 @@ namespace MOD_nE7UL2.Mod
                 uiArtifactInfo_textRefineTitle.text = $"Refine ({refineLvl}):";
                 uiArtifactInfo_textRefineAdj1.text = $"+Atk: {UnitModifyHelper.GetRefineArtifactAdjAtk(uiArtifactInfo.shapeProp, refineLvl)}";
                 uiArtifactInfo_textRefineAdj2.text = $"+Def: {UnitModifyHelper.GetRefineArtifactAdjDef(uiArtifactInfo.shapeProp, refineLvl)}";
-                if (refineLvl < 100) uiArtifactInfo_textRefineAdj3.text = $"+{customAdj1.Key.Label}: {UnitModifyHelper.GetRefineArtifactCustommAdjValue1(uiArtifactInfo.unit, uiArtifactInfo.shapeProp, refineLvl):0.0}";
-                else uiArtifactInfo_textRefineAdj3.text = $"-{customAdj1.Key.Label} (Req 100)";
-                if (refineLvl < 200) uiArtifactInfo_textRefineAdj4.text = $"+{customAdj1.Key.Label}: {UnitModifyHelper.GetRefineArtifactCustommAdjValue2(uiArtifactInfo.unit, uiArtifactInfo.shapeProp, refineLvl):0.0}";
-                else uiArtifactInfo_textRefineAdj4.text = $"-{customAdj2.Key.Label} (Req 200)";
-                if (refineLvl < 300) uiArtifactInfo_textRefineAdj5.text = $"+{customAdj1.Key.Label}: {UnitModifyHelper.GetRefineArtifactCustommAdjValue3(uiArtifactInfo.unit, uiArtifactInfo.shapeProp, refineLvl):0.0}";
-                else uiArtifactInfo_textRefineAdj5.text = $"-{customAdj3.Key.Label} (Req 300)";
+                if (refineLvl < 100) uiArtifactInfo_textRefineAdj3.text = $"-{customAdj1.Key.Label} (Req 100)";
+                else uiArtifactInfo_textRefineAdj3.text = $"+{customAdj1.Key.Label}: {UnitModifyHelper.GetRefineArtifactCustommAdjValue1(uiArtifactInfo.unit, uiArtifactInfo.shapeProp, refineLvl):0.0}"; 
+                if (refineLvl < 200) uiArtifactInfo_textRefineAdj4.text = $"-{customAdj2.Key.Label} (Req 200)";
+                else uiArtifactInfo_textRefineAdj4.text = $"+{customAdj1.Key.Label}: {UnitModifyHelper.GetRefineArtifactCustommAdjValue2(uiArtifactInfo.unit, uiArtifactInfo.shapeProp, refineLvl):0.0}"; 
+                if (refineLvl < 300) uiArtifactInfo_textRefineAdj5.text = $"-{customAdj3.Key.Label} (Req 300)";
+                else uiArtifactInfo_textRefineAdj5.text = $"+{customAdj1.Key.Label}: {UnitModifyHelper.GetRefineArtifactCustommAdjValue3(uiArtifactInfo.unit, uiArtifactInfo.shapeProp, refineLvl):0.0}"; 
             }
 
             if (e.uiType.uiName == UIType.MartialInfo.uiName)
@@ -279,10 +279,10 @@ namespace MOD_nE7UL2.Mod
 
                     uiPropInfo_textRefineTitle.text = $"Refine ({refineLvl}):";
                     uiPropInfo_textRefineAdj1.text = $"+Hp: {UnitModifyHelper.GetRefineRingAdjHp(uiPropInfo.unit.GetDynProperty(UnitDynPropertyEnum.HpMax).baseValue, uiPropInfo.propData, refineLvl)}";
-                    if (refineLvl < 100) uiPropInfo_textRefineAdj2.text = $"+{customAdj1.Key.Label}: {UnitModifyHelper.GetRefineRingCustommAdjValue1(uiPropInfo.unit, uiPropInfo.propData, refineLvl):0.0}";
-                    else uiPropInfo_textRefineAdj2.text = $"-{customAdj1.Key.Label} (Req 100)";
-                    if (refineLvl < 200) uiPropInfo_textRefineAdj3.text = $"+{customAdj2.Key.Label}: {UnitModifyHelper.GetRefineRingCustommAdjValue2(uiPropInfo.unit, uiPropInfo.propData, refineLvl):0.0}";
-                    else uiPropInfo_textRefineAdj3.text = $"-{customAdj2.Key.Label} (Req 200)";
+                    if (refineLvl < 100) uiPropInfo_textRefineAdj2.text = $"-{customAdj1.Key.Label} (Req 100)";
+                    else uiPropInfo_textRefineAdj2.text = $"+{customAdj1.Key.Label}: {UnitModifyHelper.GetRefineRingCustommAdjValue1(uiPropInfo.unit, uiPropInfo.propData, refineLvl):0.0}"; 
+                    if (refineLvl < 200) uiPropInfo_textRefineAdj3.text = $"-{customAdj2.Key.Label} (Req 200)";
+                    else uiPropInfo_textRefineAdj3.text = $"+{customAdj2.Key.Label}: {UnitModifyHelper.GetRefineRingCustommAdjValue2(uiPropInfo.unit, uiPropInfo.propData, refineLvl):0.0}"; 
                 }
                 else if (uiPropInfo.propData.propsItem.IsOutfit() != null)
                 {
@@ -305,10 +305,10 @@ namespace MOD_nE7UL2.Mod
                     uiPropInfo_textRefineTitle.text = $"Refine ({refineLvl}):";
                     uiPropInfo_textRefineAdj1.text = $"+Hp: {UnitModifyHelper.GetRefineOutfitAdjHp(uiPropInfo.unit.GetDynProperty(UnitDynPropertyEnum.HpMax).baseValue, uiPropInfo.propData, refineLvl)}";
                     uiPropInfo_textRefineAdj2.text = $"+Def: {UnitModifyHelper.GetRefineOutfitAdjDef(uiPropInfo.unit.GetDynProperty(UnitDynPropertyEnum.Defense).baseValue, uiPropInfo.propData, refineLvl)}";
-                    if (refineLvl < 100) uiPropInfo_textRefineAdj3.text = $"+{customAdj1.Key.Label}: {UnitModifyHelper.GetRefineOutfitCustommAdjValue1(uiPropInfo.unit, uiPropInfo.propData, refineLvl):0.0}"; 
-                    else uiPropInfo_textRefineAdj3.text = $"-{customAdj1.Key.Label} (Req 100)";
-                    if (refineLvl < 200) uiPropInfo_textRefineAdj4.text = $"+{customAdj2.Key.Label}: {UnitModifyHelper.GetRefineOutfitCustommAdjValue2(uiPropInfo.unit, uiPropInfo.propData, refineLvl):0.0}";
-                    else uiPropInfo_textRefineAdj4.text = $"-{customAdj2.Key.Label} (Req 200)";
+                    if (refineLvl < 100) uiPropInfo_textRefineAdj3.text = $"-{customAdj1.Key.Label} (Req 100)";
+                    else uiPropInfo_textRefineAdj3.text = $"+{customAdj1.Key.Label}: {UnitModifyHelper.GetRefineOutfitCustommAdjValue1(uiPropInfo.unit, uiPropInfo.propData, refineLvl):0.0}"; 
+                    if (refineLvl < 200) uiPropInfo_textRefineAdj4.text = $"-{customAdj2.Key.Label} (Req 200)";
+                    else uiPropInfo_textRefineAdj4.text = $"+{customAdj2.Key.Label}: {UnitModifyHelper.GetRefineOutfitCustommAdjValue2(uiPropInfo.unit, uiPropInfo.propData, refineLvl):0.0}"; 
                 }
             }
 
