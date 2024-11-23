@@ -277,9 +277,9 @@ namespace ModLib.Mod
         {
             base.OnBattleUnitHitDynIntHandler(e);
             AttackingUnit = e?.hitData?.attackUnit;
-            AttackingWorldUnit = AttackingUnit?.TryCast<UnitDataHuman>()?.worldUnitData?.unit;
+            AttackingWorldUnit = AttackingUnit?.data?.TryCast<UnitDataHuman>()?.worldUnitData?.unit;
             HitUnit = e?.hitUnit;
-            HitWorldUnit = HitUnit?.TryCast<UnitDataHuman>()?.worldUnitData?.unit;
+            HitWorldUnit = HitUnit?.data?.TryCast<UnitDataHuman>()?.worldUnitData?.unit;
         }
 
         public override void OnBattleUnitHit(UnitHit e)

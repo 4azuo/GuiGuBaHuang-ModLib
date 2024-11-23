@@ -14,7 +14,7 @@ namespace MOD_nE7UL2.Mod
     {
         public override int OrderIndex => 9000;
 
-        private static IDictionary<string, int> _nullify = new Dictionary<string, int>();
+        private static readonly IDictionary<string, int> _nullify = new Dictionary<string, int>();
         public override void OnBattleUnitInto(UnitCtrlBase e)
         {
             base.OnBattleUnitInto(e);
@@ -42,8 +42,9 @@ namespace MOD_nE7UL2.Mod
             var atkGradeLvl = attackUnitData?.worldUnitData?.unit?.GetGradeLvl() ?? 1;
             var dType = ModBattleEvent.GetDmgBasisType(e.hitData);
             var pEnum = ModBattleEvent.GetDmgPropertyEnum(dType);
-            var atk = ModBattleEvent.AttackingUnit.data.attack.value;
+            var atk = ModBattleEvent.AttackingUnit.data.attack.baseValue;
 
+            DebugHelper.WriteLine($"1: {e.dynV.baseValue}");
             //nullify
             if (ModBattleEvent.IsWorldUnitHit)
             {
@@ -55,6 +56,7 @@ namespace MOD_nE7UL2.Mod
                 }
             }
 
+            DebugHelper.WriteLine($"2: {e.dynV.baseValue}");
             //evasion
             if (ModBattleEvent.IsWorldUnitHit)
             {
@@ -77,6 +79,7 @@ namespace MOD_nE7UL2.Mod
                 }
             }
 
+            DebugHelper.WriteLine($"3: {e.dynV.baseValue}");
             //add dmg (skill)
             e.dynV.baseValue += Convert.ToInt32(GetAdjSkillDmg(ModBattleEvent.AttackingWorldUnit) * GetAdjSkillDmgPlus(ModBattleEvent.AttackingWorldUnit));
 
@@ -87,6 +90,7 @@ namespace MOD_nE7UL2.Mod
                 e.dynV.baseValue += (atk * r / 1000f).Parse<int>();
             }
 
+            DebugHelper.WriteLine($"4: {e.dynV.baseValue}");
             //add dmg (mp)
             if (ModBattleEvent.IsWorldUnitAttacking && attackUnitData.mp > 0)
             {
@@ -95,6 +99,7 @@ namespace MOD_nE7UL2.Mod
                 hitUnitData.AddMP(-(atkGradeLvl / 5));
             }
 
+            DebugHelper.WriteLine($"5: {e.dynV.baseValue}");
             //add dmg (sp)
             if (ModBattleEvent.IsWorldUnitAttacking && attackUnitData.sp > 0 && atkGradeLvl >= 4)
             {
@@ -102,6 +107,7 @@ namespace MOD_nE7UL2.Mod
                 e.dynV.baseValue += (atk * r).Parse<int>();
             }
 
+            DebugHelper.WriteLine($"6: {e.dynV.baseValue}");
             //add dmg (dp)
             if (ModBattleEvent.IsWorldUnitAttacking && attackUnitData.dp > 0 && atkGradeLvl >= 8)
             {
@@ -109,6 +115,7 @@ namespace MOD_nE7UL2.Mod
                 e.dynV.baseValue += (atk * r).Parse<int>();
             }
 
+            DebugHelper.WriteLine($"7: {e.dynV.baseValue}");
             //critical
             if (!e.hitData.isCrit)
             {
@@ -143,8 +150,9 @@ namespace MOD_nE7UL2.Mod
                 }
             }
 
+            DebugHelper.WriteLine($"8: {e.dynV.baseValue}");
             var defGradeLvl = hitUnitData?.worldUnitData?.unit?.GetGradeLvl() ?? 1;
-            var def = ModBattleEvent.HitUnit.data.defense.value;
+            var def = ModBattleEvent.HitUnit.data.defense.baseValue;
             var minDmg = ModBattleEvent.IsWorldUnitAttacking ? (GetMinDmgBase(ModBattleEvent.AttackingWorldUnit) + GetMinDmgPlus(ModBattleEvent.AttackingWorldUnit)) : GetMinDmgBase(ModBattleEvent.AttackingUnit);
             var blockratio = GetBlockRatio(hitUnitData);
 
@@ -167,6 +175,7 @@ namespace MOD_nE7UL2.Mod
                 }
             }
 
+            DebugHelper.WriteLine($"9: {e.dynV.baseValue}");
             //block dmg (basis)
             if (pEnum != null && e.dynV.baseValue > minDmg)
             {
@@ -174,6 +183,7 @@ namespace MOD_nE7UL2.Mod
                 e.dynV.baseValue -= (def * r / 200f).Parse<int>();
             }
 
+            DebugHelper.WriteLine($"10: {e.dynV.baseValue}");
             //block dmg (mp)
             if (ModBattleEvent.IsWorldUnitHit && hitUnitData.mp > 0 && e.dynV.baseValue > minDmg)
             {
@@ -189,6 +199,7 @@ namespace MOD_nE7UL2.Mod
                 }
             }
 
+            DebugHelper.WriteLine($"11: {e.dynV.baseValue}");
             //block dmg (sp)
             if (ModBattleEvent.IsWorldUnitHit && hitUnitData.sp > 0 && e.dynV.baseValue > minDmg && defGradeLvl >= 4)
             {
@@ -197,6 +208,7 @@ namespace MOD_nE7UL2.Mod
                 hitUnitData.AddSP(-1);
             }
 
+            DebugHelper.WriteLine($"12: {e.dynV.baseValue}");
             //block dmg (dp)
             if (ModBattleEvent.IsWorldUnitHit && hitUnitData.dp > 0 && e.dynV.baseValue > minDmg && defGradeLvl >= 8)
             {
@@ -204,6 +216,7 @@ namespace MOD_nE7UL2.Mod
                 e.dynV.baseValue -= (def * r).Parse<int>();
             }
 
+            DebugHelper.WriteLine($"13: {e.dynV.baseValue}");
             //min-dmg
             if (e.dynV.baseValue <= minDmg)
                 e.dynV.baseValue = minDmg;
@@ -213,7 +226,7 @@ namespace MOD_nE7UL2.Mod
             //    ModBattleEvent.AttackingUnit.data.attack.baseValue += (ModBattleEvent.AttackingUnit.data.attack.baseValue * (ModBattleEvent.IsWorldUnitAttacking ? 0.0004f : 0.01f)).Parse<int>();
         }
 
-        private static IDictionary<string, SkillAttack> _castingSkill = new Dictionary<string, SkillAttack>();
+        private static readonly IDictionary<string, SkillAttack> _castingSkill = new Dictionary<string, SkillAttack>();
         public override void OnBattleUnitUseSkill(UnitUseSkill e)
         {
             base.OnBattleUnitUseSkill(e);
@@ -231,7 +244,7 @@ namespace MOD_nE7UL2.Mod
         public override void OnTimeUpdate200ms()
         {
             base.OnTimeUpdate200ms();
-
+            
             foreach (var unit in ModBattleEvent.DungeonUnits)
             {
                 if (unit.isDie)

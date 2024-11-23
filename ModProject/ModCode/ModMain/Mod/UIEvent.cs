@@ -228,14 +228,14 @@ namespace MOD_nE7UL2.Mod
                 {
                     uiMartialExpertInfo_textAdj1.text = $"+Speed: {UnitModifyHelper.GetStepExpertSpeed(expertLvl, propsGrade, propsLevel)} (In Battle)";
                     uiMartialExpertInfo_textAdj2.text = $"+Evade(%): {UnitModifyHelper.GetStepExpertEvade(expertLvl, propsGrade, propsLevel)}% (In Battle)";
-                    uiMartialExpertInfo_textAdj3.gameObject.SetActive(false);
+                    uiMartialExpertInfo_textAdj3.text = $"+Mp Cost: {UnitModifyHelper.GetStepExpertMpCost(SkillHelper.GetStepMpCost(uiMartialInfo.martialData.data), expertLvl, propsGrade, propsLevel, uiMartialInfo.unit.GetGradeLvl() * expertLvl / 5)} (In Battle)";
                     uiMartialExpertInfo_textAdj4.gameObject.SetActive(false);
                     uiMartialExpertInfo_textAdj5.gameObject.SetActive(false);
                 }
                 else
                 {
                     uiMartialExpertInfo_textAdj1.text = $"+Dmg: {UnitModifyHelper.GetSkillExpertAtk(uiMartialInfo.unit.GetDynProperty(UnitDynPropertyEnum.Attack).baseValue, expertLvl, propsGrade, propsLevel, mType)} (In Battle)";
-                    uiMartialExpertInfo_textAdj2.text = $"+MpCost: {UnitModifyHelper.GetSkillExpertMpCost(SkillHelper.GetSkillMpCost(uiMartialInfo.martialData.data), expertLvl, propsGrade, propsLevel, uiMartialInfo.unit.GetGradeLvl() * expertLvl / 10)} (In Battle)";
+                    uiMartialExpertInfo_textAdj2.text = $"+Mp Cost: {UnitModifyHelper.GetSkillExpertMpCost(SkillHelper.GetSkillMpCost(uiMartialInfo.martialData.data), expertLvl, propsGrade, propsLevel, uiMartialInfo.unit.GetGradeLvl() * expertLvl / 10)} (In Battle)";
                     uiMartialExpertInfo_textAdj3.gameObject.SetActive(false);
                     uiMartialExpertInfo_textAdj4.gameObject.SetActive(false);
                     uiMartialExpertInfo_textAdj5.gameObject.SetActive(false);

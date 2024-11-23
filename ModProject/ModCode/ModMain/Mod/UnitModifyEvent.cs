@@ -18,17 +18,18 @@ namespace MOD_nE7UL2.Mod
         public override void OnLoadGame()
         {
             base.OnLoadGame();
-
-            foreach (var wunit in g.world.unit.GetUnits())
-            {
-                AddWUnitModifier(wunit);
-            }
+            LoadWUnitModifier();
         }
 
         public override void OnSave(ETypeData e)
         {
             base.OnSave(e);
+            LoadWUnitModifier();
+        }
 
+        private void LoadWUnitModifier()
+        {
+            UnitModifyHelper.ClearCacheCustomAdjValues();
             foreach (var wunit in g.world.unit.GetUnits())
             {
                 AddWUnitModifier(wunit);
