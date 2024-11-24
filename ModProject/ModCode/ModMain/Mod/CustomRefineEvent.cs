@@ -16,31 +16,6 @@ namespace MOD_nE7UL2.Mod
     [Cache(ModConst.CUSTOM_REFINE_EVENT)]
     public class CustomRefineEvent : ModEvent
     {
-        public static AdjTypeEnum[] RingAdjTypes = new AdjTypeEnum[]
-        {
-            AdjTypeEnum.Def, AdjTypeEnum.MHp, AdjTypeEnum.MMp, AdjTypeEnum.MSp,
-            AdjTypeEnum.Nullify, AdjTypeEnum.RHp, AdjTypeEnum.RMp, AdjTypeEnum.RSp,
-            AdjTypeEnum.SkillDamage, AdjTypeEnum.MinDamage,
-            AdjTypeEnum.BasisBlade, AdjTypeEnum.BasisEarth, AdjTypeEnum.BasisFinger, AdjTypeEnum.BasisFire, AdjTypeEnum.BasisFist, AdjTypeEnum.BasisFroze,
-            AdjTypeEnum.BasisPalm, AdjTypeEnum.BasisSpear, AdjTypeEnum.BasisSword, AdjTypeEnum.BasisThunder, AdjTypeEnum.BasisWind, AdjTypeEnum.BasisWood
-        };
-        public static AdjTypeEnum[] OutfitAdjTypes = new AdjTypeEnum[]
-        {
-            AdjTypeEnum.Def, AdjTypeEnum.MHp, AdjTypeEnum.MMp, AdjTypeEnum.RHp, AdjTypeEnum.RMp,
-            AdjTypeEnum.Nullify, AdjTypeEnum.BlockChanceMax, AdjTypeEnum.BlockDmg,
-            AdjTypeEnum.EvadeChance, AdjTypeEnum.EvadeChanceMax,
-            AdjTypeEnum.BasisBlade, AdjTypeEnum.BasisEarth, AdjTypeEnum.BasisFinger, AdjTypeEnum.BasisFire, AdjTypeEnum.BasisFist, AdjTypeEnum.BasisFroze,
-            AdjTypeEnum.BasisPalm, AdjTypeEnum.BasisSpear, AdjTypeEnum.BasisSword, AdjTypeEnum.BasisThunder, AdjTypeEnum.BasisWind, AdjTypeEnum.BasisWood
-        };
-        public static AdjTypeEnum[] ArtifactAdjTypes = new AdjTypeEnum[]
-        {
-            AdjTypeEnum.Atk, AdjTypeEnum.Def, AdjTypeEnum.Speed, AdjTypeEnum.Manashield,
-            AdjTypeEnum.Nullify, AdjTypeEnum.SkillDamage, AdjTypeEnum.MinDamage,
-            AdjTypeEnum.BlockChanceMax, AdjTypeEnum.BlockDmg,
-            AdjTypeEnum.EvadeChance, AdjTypeEnum.EvadeChanceMax,
-            AdjTypeEnum.SCritChance, AdjTypeEnum.SCritChanceMax, AdjTypeEnum.SCritDamage
-        };
-
         public IDictionary<string, long> RefineExp { get; set; } = new Dictionary<string, long>();
         public IDictionary<string, CustomRefine> CustomRefine { get; set; } = new Dictionary<string, CustomRefine>();
 
@@ -219,36 +194,18 @@ namespace MOD_nE7UL2.Mod
             }
         }
 
-        public static AdjTypeEnum[] GetCustomAdjSeeder(DataProps.PropsData props)
-        {
-            if (props?.propsItem?.IsRing() != null)
-                return RingAdjTypes;
-            if (props?.propsItem?.IsOutfit() != null)
-                return OutfitAdjTypes;
-            if (props?.propsItem?.IsArtifact() != null)
-                return ArtifactAdjTypes;
-            return null;
-        }
-
         public static CustomRefine GetCustomAdjType(DataProps.PropsData props, int index, AdjTypeEnum condition = null)
         {
-            if (props == null)
+            if (!IsRefinableItem(props))
                 return null;
             if (index < 1 || index > 5) //soleID.MaxLength = 6
-                return null;
-            var seeder = GetCustomAdjSeeder(props);
-            if (seeder == null)
                 return null;
             var key = $"{props.soleID}_{index}";
             var x = EventHelper.GetEvent<CustomRefineEvent>(ModConst.CUSTOM_REFINE_EVENT);
             if (!x.CustomRefine.ContainsKey(key))
-                x.CustomRefine.Add(key, new CustomRefine()
-                {
-                    Index = index,
-                    AdjType = seeder[props.soleID[index - 1] % seeder.Length],
-                    AdjLevel = AdjLevelEnum.GetLevel(props.soleID[index]),
-                    RandomMultiplier = CommonTool.Random(0.50f, 1.50f)
-                });
+            {
+                x.CustomRefine.Add(key, new CustomRefine(props, index));
+            }
             var rs = x.CustomRefine[key];
             if (condition != null && rs.AdjType != condition)
                 return null;
