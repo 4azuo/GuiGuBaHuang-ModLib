@@ -8,7 +8,6 @@ namespace ModLib.Object
 {
     public class ModData
     {
-        //public string SaveTime { get; set; }
         public IDictionary<string, CachableObject> Data { get; set; }
 
         public ModData()

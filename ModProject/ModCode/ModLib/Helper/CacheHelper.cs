@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Reflection;
+using System.Threading.Tasks;
 
 public static class CacheHelper
 {
@@ -122,14 +123,14 @@ public static class CacheHelper
             Directory.CreateDirectory(cacheOldFolderPath);
             Directory.CreateDirectory(cacheFolderPath);
 
-            var files = Directory.GetFiles(cacheFolderPath, $"{ModMaster.ModObj.ModId}_*_globaldata.json");
+            var files = Directory.GetFiles(cacheFolderPath, $"*_globaldata.json");
             var cacheOldFilePath = GetGlobalCacheFilePath();
             if (files.Length > 0)
             {
                 GlobalCacheData = new ModLib.Object.ModData();
                 foreach (var cacheFilePath in files)
                 {
-                    var id = cacheFilePath.Split('_')[1];
+                    var id = new FileInfo(cacheFilePath).Name.Split('_')[0];
                     DebugHelper.WriteLine($"Load: GlobalCache: File={cacheFilePath}");
                     GlobalCacheData.Data.Add(id, (CachableObject)Newtonsoft.Json.JsonConvert.DeserializeObject(File.ReadAllText(cacheFilePath), GetCacheType(id, true), CACHE_JSON_SETTINGS));
                 }
@@ -163,14 +164,14 @@ public static class CacheHelper
             Directory.CreateDirectory(cacheOldFolderPath);
             Directory.CreateDirectory(cacheFolderPath);
 
-            var files = Directory.GetFiles(cacheFolderPath, $"{g.world.playerUnit.GetUnitId()}_*_gamedata.json");
+            var files = Directory.GetFiles(cacheFolderPath, $"*_gamedata.json");
             var cacheOldFilePath = GetGameCacheFilePath();
             if (files.Length > 0)
             {
                 GameCacheData = new ModLib.Object.ModData();
                 foreach (var cacheFilePath in files)
                 {
-                    var id = cacheFilePath.Split('_')[1];
+                    var id = new FileInfo(cacheFilePath).Name.Split('_')[0];
                     DebugHelper.WriteLine($"Load: GameCache: File={cacheFilePath}");
                     GameCacheData.Data.Add(id, (CachableObject)Newtonsoft.Json.JsonConvert.DeserializeObject(File.ReadAllText(cacheFilePath), GetCacheType(id, false), CACHE_JSON_SETTINGS));
                 }
@@ -220,26 +221,33 @@ public static class CacheHelper
     {
         if (IsGlobalCacheLoaded())
         {
-            //GlobalCacheData.SaveTime = $"{DateTime.Now:yyyy/MM/dd HH:mm:ss.fff} ({(g.world.run.roundMonth / 12) + 1:0000}/{(g.world.run.roundMonth % 12) + 1:00}/{g.world.run.roundDay + 1:00})";
             Save(true, GlobalCacheData);
-            File.WriteAllText($"{GetGlobalCacheFilePath()}.old", Newtonsoft.Json.JsonConvert.SerializeObject(GlobalCacheData, CACHE_JSON_SETTINGS));
         }
         if (IsGameCacheLoaded())
         {
-            //GameCacheData.SaveTime = $"{DateTime.Now:yyyy/MM/dd HH:mm:ss.fff} ({(g.world.run.roundMonth / 12) + 1:0000}/{(g.world.run.roundMonth % 12) + 1:00}/{g.world.run.roundDay + 1:00})";
             Save(false, GameCacheData);
-            File.WriteAllText($"{GetGameCacheFilePath()}.old", Newtonsoft.Json.JsonConvert.SerializeObject(GameCacheData, CACHE_JSON_SETTINGS));
         }
     }
 
-    private static async void Save(bool isGlobal, ModLib.Object.ModData data)
+    private static void Save(bool isGlobal, ModLib.Object.ModData data)
     {
         foreach (var d in data.Data)
         {
-            var filePath = isGlobal ? GetGlobalCacheFilePath(d.Key) : GetGameCacheFilePath(d.Key);
-            if (File.Exists(filePath))
-                File.Copy(filePath, $"{filePath}.bk", true);
-            File.WriteAllText(filePath, Newtonsoft.Json.JsonConvert.SerializeObject(d.Value, CACHE_JSON_SETTINGS));
+            new Task(() =>
+            {
+                try
+                {
+                    var filePath = isGlobal ? GetGlobalCacheFilePath(d.Key) : GetGameCacheFilePath(d.Key);
+                    if (File.Exists(filePath))
+                        File.Copy(filePath, $"{filePath}.bk", true);
+                    File.WriteAllText(filePath, Newtonsoft.Json.JsonConvert.SerializeObject(d.Value, CACHE_JSON_SETTINGS));
+                }
+                catch (Exception ex)
+                {
+                    DebugHelper.WriteLine(ex);
+                    throw ex;
+                }
+            }).Start();
         }
     }
 

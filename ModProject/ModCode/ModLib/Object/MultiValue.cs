@@ -2,6 +2,7 @@
 
 namespace ModLib.Object
 {
+    //Dont change "object" to "dynamic"
     public class MultiValue
     {
         public object[] Values { get; set; }

@@ -3,6 +3,7 @@ using ModLib.Mod;
 using System.Collections.Generic;
 using System.Reflection;
 using ModLib.Enum;
+using System;
 
 public static class EventHelper
 {
@@ -54,12 +55,14 @@ public static class EventHelper
 
                 ev.UpdateFlg2[methodName] = ev.UpdateFlg1[methodName];
             }
-            catch
+            catch (Exception ex)
             {
                 if (method.GetCustomAttribute<TraceIgnoreAttribute>() == null &&
                     method.DeclaringType.GetCustomAttribute<TraceIgnoreAttribute>() == null)
                 {
-                    throw;
+                    DebugHelper.WriteLine($"RunMinorEvents<{typeof(T).Name}>({methodName})");
+                    DebugHelper.WriteLine(ex);
+                    throw ex;
                 }
             }
         }
