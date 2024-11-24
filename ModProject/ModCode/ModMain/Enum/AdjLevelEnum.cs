@@ -5,7 +5,6 @@ namespace MOD_nE7UL2.Enum
 {
     public class AdjLevelEnum : EnumObject
     {
-        public static AdjLevelEnum None { get; } = new AdjLevelEnum("None", 0, 0.0, Color.gray);
         public static AdjLevelEnum Common { get; } = new AdjLevelEnum("Common", 1, 1.0, Color.white);
         public static AdjLevelEnum Uncommon { get; } = new AdjLevelEnum("Uncommon", 2, 1.1, Color.green);
         public static AdjLevelEnum Rare { get; } = new AdjLevelEnum("Rare", 3, 1.22, Color.cyan);
@@ -17,7 +16,7 @@ namespace MOD_nE7UL2.Enum
         public int Level { get; private set; }
         public double Multiplier { get; private set; }
         public Color Color { get; private set; }
-        private AdjLevelEnum(string label, int lvl, double multiplier, Color color) : base()
+        private AdjLevelEnum(string label, int lvl, double multiplier, Color color) : base(label)
         {
             Label = label;
             Level = lvl;

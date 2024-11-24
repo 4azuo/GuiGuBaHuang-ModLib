@@ -242,7 +242,13 @@ namespace MOD_nE7UL2.Mod
             var key = $"{props.soleID}_{index}";
             var x = EventHelper.GetEvent<CustomRefineEvent>(ModConst.CUSTOM_REFINE_EVENT);
             if (!x.CustomRefine.ContainsKey(key))
-                x.CustomRefine.Add(key, new CustomRefine() { Index = index, AdjType = seeder[props.soleID[index - 1] % seeder.Length], AdjLevel = AdjLevelEnum.GetLevel(props.soleID[index]) });
+                x.CustomRefine.Add(key, new CustomRefine()
+                {
+                    Index = index,
+                    AdjType = seeder[props.soleID[index - 1] % seeder.Length],
+                    AdjLevel = AdjLevelEnum.GetLevel(props.soleID[index]),
+                    RandomMultiplier = CommonTool.Random(0.50f, 1.50f)
+                });
             var rs = x.CustomRefine[key];
             if (condition != null && rs.AdjType != condition)
                 return null;
@@ -252,7 +258,7 @@ namespace MOD_nE7UL2.Mod
         private static readonly IDictionary<string, double> _cacheCustomAdjValues = new Dictionary<string, double>();
         public static double GetRefineCustommAdjValue(WorldUnitBase wunit, AdjTypeEnum adjType)
         {
-            if (wunit == null || adjType == null || adjType == AdjTypeEnum.None)
+            if (wunit == null || adjType == null)
                 return 0.0;
             var key = $"{wunit.GetUnitId()}_{adjType.Name}";
             if (_cacheCustomAdjValues.ContainsKey(key))

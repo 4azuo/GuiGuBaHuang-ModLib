@@ -179,6 +179,16 @@ namespace ModLib.Mod
         {
             CallEvents<ETypeData>("OnUnitSetHeartState", e, true, false);
         }
+
+        public virtual void _OnWorldRunStart()
+        {
+            CallEvents("OnWorldRunStart", true, false);
+        }
+
+        public virtual void _OnWorldRunEnd()
+        {
+            CallEvents("OnWorldRunEnd", true, false);
+        }
         #endregion
 
         #region ModLib - Events
@@ -300,6 +310,16 @@ namespace ModLib.Mod
         public virtual void OnUnitSetHeartState(ETypeData e)
         {
             EventHelper.RunMinorEvents(e);
+        }
+
+        public virtual void OnWorldRunStart()
+        {
+            EventHelper.RunMinorEvents();
+        }
+
+        public virtual void OnWorldRunEnd()
+        {
+            EventHelper.RunMinorEvents();
         }
         #endregion
     }

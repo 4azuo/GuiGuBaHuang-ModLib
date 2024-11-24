@@ -1,6 +1,5 @@
 ﻿using EBattleTypeData;
 using EGameTypeData;
-using ModLib.Mod;
 using ModLib.Object;
 using Newtonsoft.Json;
 using System.Collections.Generic;
@@ -105,6 +104,8 @@ namespace ModLib.Mod
         public virtual void OnTaskOverl(TaskOverl e) { }
         public virtual void OnUnitSetGrade(ETypeData e) { }
         public virtual void OnUnitSetHeartState(ETypeData e) { }
+        public virtual void OnWorldRunStart() { }
+        public virtual void OnWorldRunEnd() { }
         #endregion
 
         #region EBattleType

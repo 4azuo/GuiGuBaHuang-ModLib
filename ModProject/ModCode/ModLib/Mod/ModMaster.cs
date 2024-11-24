@@ -280,6 +280,9 @@ namespace ModLib.Mod
                 eventBattleExit = RegEvent(EBattleType.BattleExit, callBattleExit);
                 #endregion
 
+                //g.world.run.On(WorldRunOrder.Start, (Il2CppSystem.Action)OnWorldRunStart);
+                //g.world.run.On(WorldRunOrder.End, (Il2CppSystem.Action)OnWorldRunEnd);
+
                 //debug
                 //foreach (var e in g.timer.allTime)
                 //{

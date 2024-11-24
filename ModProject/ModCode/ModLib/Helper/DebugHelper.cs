@@ -23,7 +23,7 @@ public static class DebugHelper
 
     public static string GetDebugFolderName()
     {
-        return $"{Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData)}Low\\guigugame\\guigubahuang\\mod\\{ModMaster.ModObj.ModName}\\";
+        return $"{Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData)}Low\\guigugame\\guigubahuang\\mod\\{ModMaster.ModObj.ModName}\\debug\\";
     }
 
     public static string GetDebugFilePath()
