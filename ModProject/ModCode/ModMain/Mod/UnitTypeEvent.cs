@@ -15,60 +15,68 @@ namespace MOD_nE7UL2.Mod
         public override void OnMonthly()
         {
             base.OnMonthly();
-            foreach (var wunit in g.world.unit.GetUnits())
+            try
             {
-                var unitId = wunit.GetUnitId();
-
-                //add luck
-                if (!UnitTypeDic.ContainsKey(unitId))
+                foreach (var wunit in g.world.unit.GetUnits())
                 {
-                    UnitTypeDic.Add(unitId, AddRandomUnitType(wunit));
-                }
+                    var unitId = wunit.GetUnitId();
 
-                //add apprentice luck
-                AddApprenticeLuck(wunit);
-
-                //add trainee luck
-                AddTraineeLuck(wunit);
-
-                //add merchant luck
-                AddMerchantLuck(wunit);
-
-                //merchant
-                var money = wunit.GetUnitMoney();
-                var income = wunit.IsPlayer() ? 0 : Convert.ToInt32(Math.Pow(3, wunit.GetGradeLvl()));
-
-                if (UnitTypeDic[unitId] == UnitTypeEnum.Merchant)
-                {
-                    income += (money * UnitTypeEnum.Merchant.CustomLuck.CustomEffects[ModConst.UTYPE_LUCK_EFX_PASSIVE_INCOME].Value0.Parse<float>()).Parse<int>();
-                }
-
-                var merchantLvl = MerchantLuckEnum.Merchant.GetCurLevel(wunit);
-                if (merchantLvl > 0)
-                {
-                    income += (money * merchantLvl * MerchantLuckEnum.Merchant.IncPassiveIncomeEachLvl).Parse<int>();
-                }
-
-                wunit.AddUnitMoney(income);
-
-                //add property
-                if (wunit.IsPlayer())
-                {
-                    if (wunit.GetGradeLvl() >= 3)
-                        AddPlayerProp(wunit, wunit.GetGradeLvl() / 3.0f);
-                }
-                else
-                {
-                    AddNpcProp(wunit, 1.00f + wunit.GetGradeLvl() * 0.03f);
-
-                    foreach (var luck in ApprenticeLuckEnum.GetAllEnums<ApprenticeLuckEnum>())
+                    //add luck
+                    if (!UnitTypeDic.ContainsKey(unitId))
                     {
-                        if (CommonTool.Random(0.00f, 100.00f).IsBetween(0.00f, 8.00f))
+                        RemoveUnitTypeLuck(wunit);
+                        UnitTypeDic.Add(unitId, AddRandomUnitType(wunit));
+                    }
+
+                    //add apprentice luck
+                    AddApprenticeLuck(wunit);
+
+                    //add trainee luck
+                    AddTraineeLuck(wunit);
+
+                    //add merchant luck
+                    AddMerchantLuck(wunit);
+
+                    //merchant
+                    var money = wunit.GetUnitMoney();
+                    var income = wunit.IsPlayer() ? 0 : Convert.ToInt32(Math.Pow(3, wunit.GetGradeLvl()));
+
+                    if (UnitTypeDic[unitId] == UnitTypeEnum.Merchant)
+                    {
+                        income += (money * UnitTypeEnum.Merchant.CustomLuck.CustomEffects[ModConst.UTYPE_LUCK_EFX_PASSIVE_INCOME].Value0.Parse<float>()).Parse<int>();
+                    }
+
+                    var merchantLvl = MerchantLuckEnum.Merchant.GetCurLevel(wunit);
+                    if (merchantLvl > 0)
+                    {
+                        income += (money * merchantLvl * MerchantLuckEnum.Merchant.IncPassiveIncomeEachLvl).Parse<int>();
+                    }
+
+                    wunit.AddUnitMoney(income);
+
+                    //add property
+                    if (wunit.IsPlayer())
+                    {
+                        if (wunit.GetGradeLvl() >= 3)
+                            AddPlayerProp(wunit, wunit.GetGradeLvl() / 3.0f);
+                    }
+                    else
+                    {
+                        AddNpcProp(wunit, 1.00f + wunit.GetGradeLvl() * 0.03f);
+
+                        foreach (var luck in ApprenticeLuckEnum.GetAllEnums<ApprenticeLuckEnum>())
                         {
-                            wunit.AddProperty<int>(luck.PropertyEnum.GetPropertyEnum(), 1);
+                            if (CommonTool.Random(0.00f, 100.00f).IsBetween(0.00f, 8.00f))
+                            {
+                                wunit.AddProperty<int>(luck.PropertyEnum.GetPropertyEnum(), 1);
+                            }
                         }
                     }
                 }
+            }
+            catch (Exception ex)
+            {
+                DebugHelper.WriteLine(ex);
             }
         }
 
@@ -81,6 +89,15 @@ namespace MOD_nE7UL2.Mod
                 {
                     wunit.AddProperty<int>(UnitPropertyEnum.MoveSpeed, 1);
                 }
+            }
+        }
+
+        private void RemoveUnitTypeLuck(WorldUnitBase wunit)
+        {
+            foreach (var t in UnitTypeEnum.GetAllEnums<UnitTypeEnum>())
+            {
+                if (t.CustomLuck != null)
+                    wunit.DelLuck(t.Value.Parse<int>());
             }
         }
 

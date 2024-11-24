@@ -7,7 +7,6 @@ namespace MOD_nE7UL2.Enum
 {
     public class AdjTypeEnum : EnumObject
     {
-        public static AdjTypeEnum None { get; } = new AdjTypeEnum(null, null, null);
         public static AdjTypeEnum Atk { get; } = new AdjTypeEnum("Atk", "0", (wunit) => wunit.GetProperty<int>(UnitPropertyEnum.Attack));
         public static AdjTypeEnum Def { get; } = new AdjTypeEnum("Def", "0", (wunit) => wunit.GetProperty<int>(UnitPropertyEnum.Defense));
         public static AdjTypeEnum MHp { get; } = new AdjTypeEnum("Hp", "0", (wunit) => wunit.GetProperty<int>(UnitPropertyEnum.HpMax));
@@ -44,7 +43,7 @@ namespace MOD_nE7UL2.Enum
         public string Label { get; private set; }
         public string ValueFormat { get; private set; }
         public Func<WorldUnitBase, double> BaseValueFunc { get; private set; }
-        private AdjTypeEnum(string label, string format, Func<WorldUnitBase, double> baseValueFunc) : base()
+        private AdjTypeEnum(string label, string format, Func<WorldUnitBase, double> baseValueFunc) : base(label)
         {
             Label = label;
             ValueFormat = format;

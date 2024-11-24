@@ -42,9 +42,9 @@
 //        //    g.world.playerUnit.AddProperty<int>(UnitPropertyEnum.HpMax, 1000000);
 //        //    g.world.playerUnit.AddProperty<int>(UnitPropertyEnum.MpMax, 1000000);
 //        //    g.world.playerUnit.AddProperty<int>(UnitPropertyEnum.SpMax, 1000000);
-//        //    g.world.playerUnit.SetUnitMoney(1000000);
-//        //    g.world.playerUnit.SetUnitMayorDegree(100000);
-//        //    g.world.playerUnit.SetUnitContribution(100000);
+//        //    g.world.playerUnit.SetUnitMoney(1000000000);
+//        //    g.world.playerUnit.SetUnitMayorDegree(1000000000);
+//        //    g.world.playerUnit.SetUnitContribution(1000000000);
 
 //        //    g.world.playerUnit.data.unitData.propertyData.footSpeed = 10000;
 //        //    g.world.playerUnit.data.dynUnitData.playerView.baseValue = 100;

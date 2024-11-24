@@ -8,7 +8,7 @@ namespace ModLib.Object
 {
     public class InGameSettings : CachableObject
     {
-        private const string MOD_SETTINGS_KEY = "*ModSettings";
+        public const string MOD_SETTINGS_KEY = "$ModSettings$";
 
         public static T CreateIfNotExists<T>(T defaultSettings = null) where T : InGameSettings
         {
