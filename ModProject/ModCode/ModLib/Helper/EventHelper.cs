@@ -58,7 +58,9 @@ public static class EventHelper
             catch (Exception ex)
             {
                 if (method.GetCustomAttribute<TraceIgnoreAttribute>() == null &&
-                    method.DeclaringType.GetCustomAttribute<TraceIgnoreAttribute>() == null)
+                    method.DeclaringType.GetCustomAttribute<TraceIgnoreAttribute>() == null &&
+                    ex.GetCallingMethod().GetCustomAttribute<TraceIgnoreAttribute>() == null &&
+                    ex.GetCallingMethod().DeclaringType.GetCustomAttribute<TraceIgnoreAttribute>() == null)
                 {
                     DebugHelper.WriteLine($"RunMinorEvents<{typeof(T).Name}>({methodName})");
                     DebugHelper.WriteLine(ex);

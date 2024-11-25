@@ -1,4 +1,5 @@
 ﻿using MOD_nE7UL2.Enum;
+using Newtonsoft.Json;
 using UnityEngine;
 
 namespace MOD_nE7UL2.Object
@@ -51,9 +52,14 @@ namespace MOD_nE7UL2.Object
         #endregion
 
         public int Index { get; set; }
-        public AdjTypeEnum AdjType { get; set; }
-        public AdjLevelEnum AdjLevel { get; set; }
         public float RandomMultiplier { get; set; }
+        public string AdjTypeId { get; set; }
+        public string AdjLevelId { get; set; }
+
+        [JsonIgnore]
+        public AdjTypeEnum AdjType { get { return AdjTypeEnum.GetEnumByName<AdjTypeEnum>(AdjTypeId); } }
+        [JsonIgnore]
+        public AdjLevelEnum AdjLevel { get { return AdjLevelEnum.GetEnumByName<AdjLevelEnum>(AdjLevelId); } }
 
         public CustomRefine()
         {
@@ -63,8 +69,8 @@ namespace MOD_nE7UL2.Object
         {
             Index = index;
             var seeder = GetCustomAdjSeeder(props);
-            AdjType = seeder[props.soleID[index - 1] % seeder.Length];
-            AdjLevel = AdjLevels[props.soleID[index] % AdjLevels.Length];
+            AdjTypeId = seeder[props.soleID[index - 1] % seeder.Length].Name;
+            AdjLevelId = AdjLevels[props.soleID[index] % AdjLevels.Length].Name;
             RandomMultiplier = CommonTool.Random(0.50f, 1.50f);
         }
 
@@ -88,7 +94,7 @@ namespace MOD_nE7UL2.Object
 
         public string GetText(WorldUnitBase wunit, DataProps.PropsData props, int refineLvl)
         {
-            return $"+{AdjType.Label}: {GetRefineCustommAdjValue(wunit, props, refineLvl).ToString(AdjType.ValueFormat)} {(IsEnable(refineLvl) ? $"(Req {Index * 100})" : string.Empty)}";
+            return $"+{AdjType.Label}: {GetRefineCustommAdjValue(wunit, props, refineLvl).ToString(AdjType.ValueFormat)} {(IsEnable(refineLvl) ? string.Empty : $"(Req {Index * 100})")}";
         }
     }
 }

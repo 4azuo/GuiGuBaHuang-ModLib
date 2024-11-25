@@ -14,7 +14,7 @@
 		"dialogue": "gamemsg999999001",
 		"openFunction": "0",
 		"function": "0",
-		"options": "480010101",
+		"options": "999999101|999999201",
 		"nextDialogue": "0"
 	}
 ]

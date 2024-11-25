@@ -1,4 +1,5 @@
-﻿using ModLib.Const;
+﻿using EGameTypeData;
+using ModLib.Const;
 using ModLib.Object;
 using Newtonsoft.Json;
 using System;
@@ -504,6 +505,21 @@ namespace ModLib.Mod
             {
                 DramaTool.OpenDrama(ModLibConst.OLD_VERSION_DIALOGUE);
                 return;
+            }
+        }
+
+        public override void OnOpenDrama(OpenDrama e)
+        {
+            base.OnOpenDrama(e);
+            if (e.dramaID == 999999001)
+            {
+                e.dramaData.onOptionsClickCall = (Il2CppSystem.Action<ConfDramaOptionsItem>)((conf) =>
+                {
+                    if (conf.id == 999999201)
+                    {
+                        InGameCustomSettings.IsOldVersion = false;
+                    }
+                });
             }
         }
     }
