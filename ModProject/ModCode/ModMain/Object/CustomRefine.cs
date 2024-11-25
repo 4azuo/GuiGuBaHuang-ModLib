@@ -53,13 +53,8 @@ namespace MOD_nE7UL2.Object
 
         public int Index { get; set; }
         public float RandomMultiplier { get; set; }
-        public string AdjTypeId { get; set; }
-        public string AdjLevelId { get; set; }
-
-        [JsonIgnore]
-        public AdjTypeEnum AdjType { get { return AdjTypeEnum.GetEnumByName<AdjTypeEnum>(AdjTypeId); } }
-        [JsonIgnore]
-        public AdjLevelEnum AdjLevel { get { return AdjLevelEnum.GetEnumByName<AdjLevelEnum>(AdjLevelId); } }
+        public AdjTypeEnum AdjType { get; set; }
+        public AdjLevelEnum AdjLevel { get; set; }
 
         public CustomRefine()
         {
@@ -69,8 +64,8 @@ namespace MOD_nE7UL2.Object
         {
             Index = index;
             var seeder = GetCustomAdjSeeder(props);
-            AdjTypeId = seeder[props.soleID[index - 1] % seeder.Length].Name;
-            AdjLevelId = AdjLevels[props.soleID[index] % AdjLevels.Length].Name;
+            AdjType = seeder[props.soleID[index - 1] % seeder.Length];
+            AdjLevel = AdjLevels[props.soleID[index] % AdjLevels.Length];
             RandomMultiplier = CommonTool.Random(0.50f, 1.50f);
         }
 

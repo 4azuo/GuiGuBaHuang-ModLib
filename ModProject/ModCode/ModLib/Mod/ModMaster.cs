@@ -511,7 +511,7 @@ namespace ModLib.Mod
         public override void OnOpenDrama(OpenDrama e)
         {
             base.OnOpenDrama(e);
-            if (e.dramaID == 999999001)
+            if (e.dramaID == ModLibConst.OLD_VERSION_DIALOGUE)
             {
                 e.dramaData.onOptionsClickCall = (Il2CppSystem.Action<ConfDramaOptionsItem>)((conf) =>
                 {
