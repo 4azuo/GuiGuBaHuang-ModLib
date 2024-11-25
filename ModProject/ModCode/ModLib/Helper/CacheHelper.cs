@@ -5,6 +5,7 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Threading.Tasks;
 
 public static class CacheHelper
 {
@@ -126,16 +127,19 @@ public static class CacheHelper
 
     public static void Save()
     {
-        if (IsGlobalCacheLoaded())
+        new Task(() =>
         {
-            GlobalCacheData.SaveTime = $"{DateTime.Now:yyyy/MM/dd HH:mm:ss.fff} ({(g.world.run.roundMonth / 12) + 1:0000}/{(g.world.run.roundMonth % 12) + 1:00}/{g.world.run.roundDay + 1:00})";
-            File.WriteAllText(GetGameCacheFilePath(), Newtonsoft.Json.JsonConvert.SerializeObject(GlobalCacheData, CACHE_JSON_SETTINGS));
-        }
-        if (IsGameCacheLoaded())
-        {
-            GameCacheData.SaveTime = $"{DateTime.Now:yyyy/MM/dd HH:mm:ss.fff} ({(g.world.run.roundMonth / 12) + 1:0000}/{(g.world.run.roundMonth % 12) + 1:00}/{g.world.run.roundDay + 1:00})";
-            File.WriteAllText(GetGameCacheFilePath(), Newtonsoft.Json.JsonConvert.SerializeObject(GameCacheData, CACHE_JSON_SETTINGS));
-        }
+            if (IsGlobalCacheLoaded())
+            {
+                GlobalCacheData.SaveTime = $"{DateTime.Now:yyyy/MM/dd HH:mm:ss.fff} ({(g.world.run.roundMonth / 12) + 1:0000}/{(g.world.run.roundMonth % 12) + 1:00}/{g.world.run.roundDay + 1:00})";
+                File.WriteAllText(GetGameCacheFilePath(), Newtonsoft.Json.JsonConvert.SerializeObject(GlobalCacheData, CACHE_JSON_SETTINGS));
+            }
+            if (IsGameCacheLoaded())
+            {
+                GameCacheData.SaveTime = $"{DateTime.Now:yyyy/MM/dd HH:mm:ss.fff} ({(g.world.run.roundMonth / 12) + 1:0000}/{(g.world.run.roundMonth % 12) + 1:00}/{g.world.run.roundDay + 1:00})";
+                File.WriteAllText(GetGameCacheFilePath(), Newtonsoft.Json.JsonConvert.SerializeObject(GameCacheData, CACHE_JSON_SETTINGS));
+            }
+        }).Start();
     }
 
     public static void ClearGameCache()
