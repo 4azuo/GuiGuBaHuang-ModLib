@@ -8,11 +8,14 @@ namespace ModLib.Object
 {
     public class ModData
     {
+        public string SaveTime { get; set; }
         public IDictionary<string, CachableObject> Data { get; set; }
 
+        [Obsolete]
         public ModData()
         {
-            Data = new Dictionary<string, CachableObject>();
+            //loaded by json
+            //Data = new Dictionary<string, CachableObject>();
         }
 
         public ModData(bool isGlobal)
@@ -47,7 +50,7 @@ namespace ModLib.Object
 
         public T CreateIfNotExists<T>(string key, T defaultValue = null) where T : CachableObject
         {
-            return (T)CreateIfNotExists(typeof(T) , key, defaultValue);
+            return (T)CreateIfNotExists(typeof(T), key, defaultValue);
         }
 
         public CachableObject CreateIfNotExists(Type dataType, string key, CachableObject defaultValue = null)
