@@ -57,13 +57,14 @@ public static class EventHelper
             }
             catch (Exception ex)
             {
-                if (method.GetCustomAttribute<TraceIgnoreAttribute>() == null &&
-                    method.DeclaringType.GetCustomAttribute<TraceIgnoreAttribute>() == null &&
-                    ex.GetCallingMethod().GetCustomAttribute<TraceIgnoreAttribute>() == null &&
-                    ex.GetCallingMethod().DeclaringType.GetCustomAttribute<TraceIgnoreAttribute>() == null)
+                var exMethod = ex?.GetCallingMethod();
+                if (method?.GetCustomAttribute<ErrorIgnoreAttribute>() == null &&
+                    method?.DeclaringType?.GetCustomAttribute<ErrorIgnoreAttribute>() == null &&
+                    exMethod?.GetCustomAttribute<ErrorIgnoreAttribute>() == null &&
+                    exMethod?.DeclaringType?.GetCustomAttribute<ErrorIgnoreAttribute>() == null)
                 {
-                    DebugHelper.WriteLine($"RunMinorEvents<{typeof(T).Name}>({methodName})");
-                    DebugHelper.WriteLine(ex);
+                    //DebugHelper.WriteLine($"RunMinorEvents<{typeof(T).Name}>({methodName})");
+                    //DebugHelper.WriteLine(ex);
                     throw ex;
                 }
             }
