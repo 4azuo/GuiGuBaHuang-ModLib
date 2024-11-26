@@ -119,13 +119,13 @@ namespace ModLib.Mod
                         }
                     }
 
-                    DebugHelper.WriteLine($"↑↑↑↑↑↑↑↑↑{GameHelper.GetGameYear()}年{GameHelper.GetGameMonth()}月{GameHelper.GetGameDay()}日↑↑↑↑↑↑↑↑↑");
+                    //next month
+                    InGameSettings.CurMonth = g.game.world.run.roundMonth;
 
                     //save
                     OnSave(e);
 
-                    //next month
-                    InGameSettings.CurMonth = g.game.world.run.roundMonth;
+                    DebugHelper.WriteLine($"↑↑↑↑↑↑↑↑↑{GameHelper.GetGameYear()}年{GameHelper.GetGameMonth()}月{GameHelper.GetGameDay()}日↑↑↑↑↑↑↑↑↑");
                 }
                 catch (Exception ex)
                 {
