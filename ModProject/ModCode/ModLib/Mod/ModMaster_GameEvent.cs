@@ -104,6 +104,8 @@ namespace ModLib.Mod
             {
                 try
                 {
+                    DebugHelper.WriteLine($"↑↑↑↑↑↑↑↑↑{GameHelper.GetGameYear()}年{GameHelper.GetGameMonth()}月{GameHelper.GetGameDay()}日↑↑↑↑↑↑↑↑↑");
+
                     //monthly event
                     if (InGameSettings.CurMonth != g.game.world.run.roundMonth)
                     {
@@ -124,8 +126,6 @@ namespace ModLib.Mod
 
                     //save
                     OnSave(e);
-
-                    DebugHelper.WriteLine($"↑↑↑↑↑↑↑↑↑{GameHelper.GetGameYear()}年{GameHelper.GetGameMonth()}月{GameHelper.GetGameDay()}日↑↑↑↑↑↑↑↑↑");
                 }
                 catch (Exception ex)
                 {
