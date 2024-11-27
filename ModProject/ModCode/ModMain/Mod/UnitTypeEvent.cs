@@ -4,6 +4,7 @@ using ModLib.Enum;
 using ModLib.Mod;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace MOD_nE7UL2.Mod
 {
@@ -170,7 +171,9 @@ namespace MOD_nE7UL2.Mod
             var utype = UnitTypeDic[wunit.GetUnitId()];
             foreach (var p in utype.PropIncRatio)
             {
-                wunit.SetProperty(p.Values[0] as UnitPropertyEnum, utype.CalType(wunit, p.Values[0] as UnitPropertyEnum, ratio));
+                var prop = p.Value0 as UnitPropertyEnum;
+                var r2Player = Math.Max(1.0f, g.world.playerUnit.GetProperty<int>(prop).Parse<float>() / wunit.GetProperty<int>(prop).Parse<float>());
+                wunit.SetProperty(prop, utype.CalType(wunit, prop, ratio * r2Player));
             }
         }
 
