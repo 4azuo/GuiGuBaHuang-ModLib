@@ -22,12 +22,12 @@ namespace MOD_nE7UL2.Mod
             [MonstType.BOSS] = 0,
         };
 
-        public const float ADDITIONAL_VALUE = 0.050f;
+        public const float ADDITIONAL_VALUE = 0.020f;
         public static IDictionary<MonstType, float> AdditionalStts { get; set; } = new Dictionary<MonstType, float>
         {
-            [MonstType.Common] = 1.00f,
+            [MonstType.Common] = 2.00f,
             [MonstType.Elite] = 0.20f,
-            [MonstType.BOSS] = 0.04f,
+            [MonstType.BOSS] = 0.02f,
         };
 
         public IDictionary<MonstType, float> Additional { get; set; } = new Dictionary<MonstType, float>
