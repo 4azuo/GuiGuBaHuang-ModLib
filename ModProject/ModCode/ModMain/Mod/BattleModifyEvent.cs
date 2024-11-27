@@ -5,6 +5,7 @@ using ModLib.Enum;
 using ModLib.Mod;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 namespace MOD_nE7UL2.Mod
@@ -13,13 +14,13 @@ namespace MOD_nE7UL2.Mod
     public class BattleModifyEvent : ModEvent
     {
         public override int OrderIndex => 9000;
-        private bool _monstStrongerAdditionalFlg = false;
+        private static readonly IList<MonstType> _monstStrongerAdditionalFlg = new List<MonstType>();
 
         public override void OnBattleStart(ETypeData e)
         {
             base.OnBattleStart(e);
 
-            _monstStrongerAdditionalFlg = false;
+            _monstStrongerAdditionalFlg.Clear();
         }
 
         private static readonly IDictionary<string, int> _nullify = new Dictionary<string, int>();
@@ -232,9 +233,9 @@ namespace MOD_nE7UL2.Mod
             //DebugHelper.WriteLine($"14: {e.dynV.baseValue}");
             //monst-stronger
             var monstData = e?.hitUnit?.data?.TryCast<UnitDataMonst>();
-            if (!_monstStrongerAdditionalFlg && 
+            if (monstData != null && MonstStrongerEvent.AdditionalStts.ContainsKey(monstData.monstType) &&
                 ModBattleEvent.IsPlayerAttacking && _castingSkillType[ModBattleEvent.AttackingWorldUnit.GetUnitId()] == MartialType.SkillLeft &&
-                monstData != null && MonstStrongerEvent.AdditionalStts.ContainsKey(monstData.monstType))
+                !_monstStrongerAdditionalFlg.Contains(monstData.monstType))
             {
                 var x = EventHelper.GetEvent<MonstStrongerEvent>(ModConst.MONST_STRONGER_EVENT);
                 var gameLvl = g.data.dataWorld.data.gameLevel.Parse<int>();
@@ -242,7 +243,7 @@ namespace MOD_nE7UL2.Mod
                     e.hitUnit.data.maxHP.value * MonstStrongerEvent.AdditionalStts[monstData.monstType] * ModBattleEvent.AttackingWorldUnit.GetGradeLvl().Parse<float>() / e.hitUnit.data.grade.value.Parse<float>() / gameLvl)
                 {
                     x.Additional[monstData.monstType] += MonstStrongerEvent.ADDITIONAL_VALUE;
-                    _monstStrongerAdditionalFlg = true;
+                    _monstStrongerAdditionalFlg.Add(monstData.monstType);
                 }
             }
         }
