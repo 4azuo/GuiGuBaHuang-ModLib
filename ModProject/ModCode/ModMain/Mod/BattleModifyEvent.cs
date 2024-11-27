@@ -15,12 +15,17 @@ namespace MOD_nE7UL2.Mod
         public override int OrderIndex => 9000;
         private bool _monstStrongerAdditionalFlg = false;
 
+        public override void OnBattleStart(ETypeData e)
+        {
+            base.OnBattleStart(e);
+
+            _monstStrongerAdditionalFlg = false;
+        }
+
         private static readonly IDictionary<string, int> _nullify = new Dictionary<string, int>();
         public override void OnBattleUnitInto(UnitCtrlBase e)
         {
             base.OnBattleUnitInto(e);
-
-            _monstStrongerAdditionalFlg = false;
 
             var humanData = e.data.TryCast<UnitDataHuman>();
             if (humanData?.worldUnitData?.unit != null)
