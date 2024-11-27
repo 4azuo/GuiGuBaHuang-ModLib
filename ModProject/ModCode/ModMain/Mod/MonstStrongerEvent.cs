@@ -22,6 +22,21 @@ namespace MOD_nE7UL2.Mod
             [MonstType.BOSS] = 0,
         };
 
+        public const float ADDITIONAL_VALUE = 0.050f;
+        public static IDictionary<MonstType, float> AdditionalStts { get; set; } = new Dictionary<MonstType, float>
+        {
+            [MonstType.Common] = 1.00f,
+            [MonstType.Elite] = 0.20f,
+            [MonstType.BOSS] = 0.04f,
+        };
+
+        public IDictionary<MonstType, float> Additional { get; set; } = new Dictionary<MonstType, float>
+        {
+            [MonstType.Common] = 0,
+            [MonstType.Elite] = 0,
+            [MonstType.BOSS] = 0,
+        };
+
         public int Counter { get; set; } = 0;
 
         public override void OnMonthly()
@@ -45,6 +60,17 @@ namespace MOD_nE7UL2.Mod
             base.OnBattleUnitInto(e);
 
             var monstData = e?.data?.TryCast<UnitDataMonst>();
+
+            //additional
+            if (monstData != null && AdditionalStts.ContainsKey(monstData.monstType))
+            {
+                var r = Additional[monstData.monstType];
+                monstData.attack.baseValue += (monstData.attack.baseValue * (r / 3)).Parse<int>();
+                monstData.defense.baseValue += (monstData.defense.baseValue * (r / 10)).Parse<int>();
+                monstData.maxHP.baseValue += (monstData.maxHP.baseValue * r).Parse<int>();
+            }
+
+            //monster
             if (monstData != null && Configs.GrowRate.ContainsKey(monstData.monstType))
             {
                 //area bonus
@@ -62,10 +88,13 @@ namespace MOD_nE7UL2.Mod
                 var ratio = (Counter * Configs.GrowRate[monstData.monstType]) + (KillCounter[monstData.monstType] * Configs.KillGrowRate[monstData.monstType]);
                 monstData.attack.baseValue += (monstData.attack.baseValue * (ratio * Configs.AtkR * monstData.grade.value * gameLvl)).Parse<int>();
                 monstData.defense.baseValue += (monstData.defense.baseValue * (ratio * Configs.DefR * monstData.grade.value * gameLvl)).Parse<int>();
-                monstData.maxHP.baseValue += 
-                    (monstData.maxHP.baseValue * EventHelper.GetEvent<RebirthEvent>(ModConst.REBIRTH_EVENT).TotalGradeLvl * Configs.RebirthAffect).Parse<int>() +
-                    (monstData.maxHP.baseValue * (ratio * Configs.MHpR * monstData.grade.value * gameLvl)).Parse<int>() +
-                    (g.world.playerUnit.GetDynProperty(UnitDynPropertyEnum.Attack).value * Configs.PlayerAtk2HpRate[monstData.monstType] * (monstData.grade.value.Parse<float>() / g.world.playerUnit.GetDynProperty(UnitDynPropertyEnum.GradeID).value.Parse<float>())).Parse<int>();
+                monstData.maxHP.baseValue += (monstData.maxHP.baseValue * (ratio * Configs.MHpR * monstData.grade.value * gameLvl)).Parse<int>() +
+                    //rebirth
+                    (monstData.maxHP.baseValue * EventHelper.GetEvent<RebirthEvent>(ModConst.REBIRTH_EVENT).TotalGradeLvl * Configs.RebirthAffect * gameLvl).Parse<int>() +
+                    //level oppressive
+                    (g.world.playerUnit.GetDynProperty(UnitDynPropertyEnum.Attack).value * Configs.PlayerAtk2HpRate[monstData.monstType] * (monstData.grade.value.Parse<float>() / g.world.playerUnit.GetGradeLvl().Parse<float>())).Parse<int>();
+
+                //heal fullhp
                 monstData.hp = monstData.maxHP.value;
 
                 //basis

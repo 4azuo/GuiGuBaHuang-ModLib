@@ -13,11 +13,14 @@ namespace MOD_nE7UL2.Mod
     public class BattleModifyEvent : ModEvent
     {
         public override int OrderIndex => 9000;
+        private bool _monstStrongerAdditionalFlg = false;
 
         private static readonly IDictionary<string, int> _nullify = new Dictionary<string, int>();
         public override void OnBattleUnitInto(UnitCtrlBase e)
         {
             base.OnBattleUnitInto(e);
+
+            _monstStrongerAdditionalFlg = false;
 
             var humanData = e.data.TryCast<UnitDataHuman>();
             if (humanData?.worldUnitData?.unit != null)
@@ -96,7 +99,7 @@ namespace MOD_nE7UL2.Mod
             {
                 var r = (attackUnitData.mp.Parse<float>() / attackUnitData.maxMP.value.Parse<float>());
                 e.dynV.baseValue += (atk * r).Parse<int>();
-                hitUnitData.AddMP(-(atkGradeLvl / 5));
+                attackUnitData.AddMP(-(atkGradeLvl / 5));
             }
 
             //DebugHelper.WriteLine($"5: {e.dynV.baseValue}");
@@ -221,22 +224,41 @@ namespace MOD_nE7UL2.Mod
             if (e.dynV.baseValue <= minDmg)
                 e.dynV.baseValue = minDmg;
 
-            //stronger every hit
-            //if (e.dynV.baseValue < ModBattleEvent.HitUnit.data.maxHP.value / 50)
-            //    ModBattleEvent.AttackingUnit.data.attack.baseValue += (ModBattleEvent.AttackingUnit.data.attack.baseValue * (ModBattleEvent.IsWorldUnitAttacking ? 0.0004f : 0.01f)).Parse<int>();
+            //DebugHelper.WriteLine($"14: {e.dynV.baseValue}");
+            //monst-stronger
+            var monstData = e?.hitUnit?.data?.TryCast<UnitDataMonst>();
+            if (!_monstStrongerAdditionalFlg && 
+                ModBattleEvent.IsPlayerAttacking && _castingSkillType[ModBattleEvent.AttackingWorldUnit.GetUnitId()] == MartialType.SkillLeft &&
+                monstData != null && MonstStrongerEvent.AdditionalStts.ContainsKey(monstData.monstType))
+            {
+                var x = EventHelper.GetEvent<MonstStrongerEvent>(ModConst.MONST_STRONGER_EVENT);
+                var gameLvl = g.data.dataWorld.data.gameLevel.Parse<int>();
+                if (e.dynV.baseValue >=
+                    e.hitUnit.data.maxHP.value * MonstStrongerEvent.AdditionalStts[monstData.monstType] * ModBattleEvent.AttackingWorldUnit.GetGradeLvl().Parse<float>() / e.hitUnit.data.grade.value.Parse<float>() / gameLvl)
+                {
+                    x.Additional[monstData.monstType] += MonstStrongerEvent.ADDITIONAL_VALUE;
+                    _monstStrongerAdditionalFlg = true;
+                }
+            }
         }
 
         private static readonly IDictionary<string, DataProps.PropsData> _castingSkill = new Dictionary<string, DataProps.PropsData>();
+        private static readonly IDictionary<string, MartialType> _castingSkillType = new Dictionary<string, MartialType>();
         public override void OnBattleUnitUseSkill(UnitUseSkill e)
         {
             base.OnBattleUnitUseSkill(e);
             var humanData = e.unit.data.TryCast<UnitDataHuman>();
             if (humanData?.worldUnitData?.unit != null)
             {
-                var unitId = humanData.worldUnitData.unit.GetUnitId();
-                _castingSkill[unitId] = e?.skill?.TryCast<SkillAttack>()?.skillData?.data;
+                var skill = e?.skill?.TryCast<SkillAttack>();
+                if (skill != null)
+                {
+                    var unitId = humanData.worldUnitData.unit.GetUnitId();
+                    _castingSkill[unitId] = skill.skillData.data;
+                    _castingSkillType[unitId] = skill.skillData.martialType;
 
-                humanData?.AddMP(-GetSkillAdjMpCost(humanData.worldUnitData.unit, _castingSkill[unitId]));
+                    humanData?.AddMP(-GetSkillAdjMpCost(humanData.worldUnitData.unit, _castingSkill[unitId]));
+                }
             }
         }
 
@@ -248,6 +270,7 @@ namespace MOD_nE7UL2.Mod
             {
                 var unitId = humanData.worldUnitData.unit.GetUnitId();
                 _castingSkill[unitId] = e?.step?.data?.stepData?.data;
+                _castingSkillType[unitId] = MartialType.Step;
 
                 humanData?.AddMP(-GetStepAdjMpCost(humanData.worldUnitData.unit, _castingSkill[unitId]));
             }

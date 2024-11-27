@@ -211,6 +211,8 @@ namespace ModLib.Mod
         [JsonIgnore]
         public static bool IsWorldUnitAttacking { get { return AttackingWorldUnit != null; } }
         [JsonIgnore]
+        public static bool IsPlayerAttacking { get { return IsWorldUnitAttacking && AttackingWorldUnit.IsPlayer(); } }
+        [JsonIgnore]
         public static UnitCtrlBase HitUnit { get; private set; }
         [JsonIgnore]
         public static WorldUnitBase HitWorldUnit { get; private set; }
