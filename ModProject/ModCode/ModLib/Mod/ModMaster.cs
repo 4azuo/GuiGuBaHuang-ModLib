@@ -4,11 +4,14 @@ using ModLib.Object;
 using Newtonsoft.Json;
 using System;
 using System.ComponentModel;
+using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Reflection;
 using UnhollowerBaseLib;
 using UnityEngine;
+using UnityEngine.Events;
+using UnityEngine.UI;
 
 namespace ModLib.Mod
 {
@@ -20,6 +23,7 @@ namespace ModLib.Mod
         public abstract string ModId { get; }
         public virtual InGameSettings InGameSettings => InGameSettings.GetSettings<InGameSettings>();
         public static ModMaster ModObj { get; protected set; }
+        public static Exception LastestExceptions { get; protected set; }
 
         #region caller
         private Action callTimeUpdate;
@@ -459,6 +463,26 @@ namespace ModLib.Mod
             {
                 DebugHelper.WriteLine($"CallEvents<{typeof(T).Name}>({methodName}, -, {isInGame}, {isInBattle})");
                 DebugHelper.WriteLine(ex);
+                LastestExceptions = ex;
+            }
+        }
+
+        private void ShowException()
+        {
+            if (LastestExceptions != null)
+            {
+                var ui = g.ui.OpenUI<UITextInfoLong>(UIType.TextInfoLong);
+                ui.InitData("Exception", LastestExceptions.GetAllInnnerExceptionStr());
+                var btnOpenLog = ui.btnOK.Create();
+                var txtOpenLog = btnOpenLog.GetComponentInChildren<Text>().Align(TextAnchor.MiddleCenter);
+                txtOpenLog.text = "Open log";
+
+                btnOpenLog.onClick.AddListener((UnityAction)(() =>
+                {
+                    Process.Start("notepad.exe", DebugHelper.GetDebugFilePath());
+                }));
+
+                LastestExceptions = null;
             }
         }
     }

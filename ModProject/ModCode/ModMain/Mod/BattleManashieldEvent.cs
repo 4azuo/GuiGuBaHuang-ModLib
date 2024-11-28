@@ -15,7 +15,7 @@ namespace MOD_nE7UL2.Mod
 
         public const int MANASHIELD_EFFECT_MAIN_ID = 903151120;
         public const int MANASHIELD_EFFECT_EFX_ID = 903151121;
-        public const float COMMON_MONST_SHIELD_CHANCE = 0.55f;
+        public const float MONST_SHIELD_CHANCE = 0.55f;
 
         public static _BattleManashieldConfigs ManashieldConfigs => ModMain.ModObj.InGameCustomSettings.BattleManashieldConfigs;
 
@@ -51,7 +51,7 @@ namespace MOD_nE7UL2.Mod
                 {
                     //add manashield
                     var gameLvl = g.data.dataWorld.data.gameLevel.Parse<int>();
-                    if (CommonTool.Random(0.0f, 100.0f).IsBetween(0.0f, COMMON_MONST_SHIELD_CHANCE * monstData.grade.value * gameLvl))
+                    if (CommonTool.Random(0.0f, 100.0f).IsBetween(0.0f, MONST_SHIELD_CHANCE * monstData.grade.value * gameLvl))
                     {
                         var efx = monstData.unit.AddEffect(MANASHIELD_EFFECT_MAIN_ID, monstData.unit, new SkillCreateData
                         {
@@ -63,7 +63,8 @@ namespace MOD_nE7UL2.Mod
                                 data = new BattleSkillValueData.Data(),
                             }
                         });
-                        Effect3017.AddShield(efx, monstData.unit, MANASHIELD_EFFECT_EFX_ID, monstData.maxHP.value * gameLvl, monstData.maxHP.value, int.MaxValue);
+                        var shield = monstData.maxHP.value * gameLvl;
+                        Effect3017.AddShield(efx, monstData.unit, MANASHIELD_EFFECT_EFX_ID, shield, shield, int.MaxValue);
                     }
                 }
             }
