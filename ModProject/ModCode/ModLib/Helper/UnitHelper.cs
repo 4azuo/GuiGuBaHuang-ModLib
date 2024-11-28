@@ -1,5 +1,6 @@
 ﻿using ModLib.Const;
 using ModLib.Enum;
+using ModLib.Mod;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -510,5 +511,20 @@ public static class UnitHelper
             if (item.propsID == propId)
                 GameHelper.GetStorage().data.propData.allProps.Remove(item);
         }
+    }
+
+    public static bool IsHuman(this UnitCtrlBase cunit)
+    {
+        return cunit?.data?.TryCast<UnitDataHuman>() != null;
+    }
+
+    public static bool IsWorldUnit(this UnitCtrlBase cunit)
+    {
+        return cunit?.data?.TryCast<UnitDataHuman>()?.worldUnitData?.unit != null;
+    }
+
+    public static bool IsMonster(this UnitCtrlBase cunit)
+    {
+        return cunit?.data?.TryCast<UnitDataMonst>() != null && !cunit.IsWorldUnit();
     }
 }

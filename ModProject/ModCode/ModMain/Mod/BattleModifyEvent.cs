@@ -7,6 +7,8 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using static DataMap;
+using static MOD_nE7UL2.Object.InGameStts;
 
 namespace MOD_nE7UL2.Mod
 {
@@ -14,16 +16,26 @@ namespace MOD_nE7UL2.Mod
     public class BattleModifyEvent : ModEvent
     {
         public override int OrderIndex => 9000;
-        private static readonly IList<MonstType> _monstStrongerAdditionalFlg = new List<MonstType>();
 
-        public override void OnBattleStart(ETypeData e)
-        {
-            base.OnBattleStart(e);
+        public const int BASIS_ON_DMG = 1000;
+        public const int BASIS_ON_DEF = 400;
 
-            _monstStrongerAdditionalFlg.Clear();
-        }
+        public static _MonstStrongerConfigs MonstStrongerConfigs => ModMain.ModObj.InGameCustomSettings.MonstStrongerConfigs;
 
         private static readonly IDictionary<string, int> _nullify = new Dictionary<string, int>();
+        private static readonly IList<MonstType> _monstStrongerAdditionalFlg = new List<MonstType>();
+        private static readonly IDictionary<string, DataProps.PropsData> _castingSkill = new Dictionary<string, DataProps.PropsData>();
+        private static readonly IDictionary<string, MartialType> _castingSkillType = new Dictionary<string, MartialType>();
+
+        public override void OnBattleEndOnce(BattleEnd e)
+        {
+            base.OnBattleEndOnce(e);
+            _nullify.Clear();
+            _monstStrongerAdditionalFlg.Clear();
+            _castingSkill.Clear();
+            _castingSkillType.Clear();
+        }
+
         public override void OnBattleUnitInto(UnitCtrlBase e)
         {
             base.OnBattleUnitInto(e);
@@ -37,7 +49,7 @@ namespace MOD_nE7UL2.Mod
                 humanData.defense.baseValue += adjustDef1 + adjustDef2;
                 var adjustMs = (humanData.basisWind.value / 100.00f).Parse<int>();
                 humanData.moveSpeed.baseValue += adjustMs;
-                _nullify[e.data.createUnitSoleID] = Convert.ToInt32(CustomRefineEvent.GetRefineCustommAdjValue(humanData.worldUnitData.unit, AdjTypeEnum.Nullify));
+                _nullify[humanData.worldUnitData.unit.GetUnitId()] = Convert.ToInt32(CustomRefineEvent.GetRefineCustommAdjValue(humanData.worldUnitData.unit, AdjTypeEnum.Nullify));
             }
         }
 
@@ -57,9 +69,10 @@ namespace MOD_nE7UL2.Mod
             //nullify
             if (ModBattleEvent.IsWorldUnitHit)
             {
-                if (_nullify[ModBattleEvent.HitUnit.data.createUnitSoleID] > 0)
+                var unitId = ModBattleEvent.HitWorldUnit.GetUnitId();
+                if (_nullify.ContainsKey(unitId) && _nullify[unitId] > 0)
                 {
-                    _nullify[ModBattleEvent.HitUnit.data.createUnitSoleID]--;
+                    _nullify[unitId]--;
                     e.dynV.baseValue = 0;
                     return;
                 }
@@ -95,8 +108,8 @@ namespace MOD_nE7UL2.Mod
             //add dmg (basis)
             if (pEnum != null)
             {
-                var r = ModBattleEvent.GetUnitPropertyValue(ModBattleEvent.AttackingUnit, pEnum).Parse<float>();
-                e.dynV.baseValue += (atk * r / 1000f).Parse<int>();
+                var r = ModBattleEvent.GetUnitPropertyValue(ModBattleEvent.AttackingUnit, pEnum);
+                e.dynV.baseValue += atk * r / BASIS_ON_DMG;
             }
 
             //DebugHelper.WriteLine($"4: {e.dynV.baseValue}");
@@ -188,8 +201,8 @@ namespace MOD_nE7UL2.Mod
             //block dmg (basis)
             if (pEnum != null && e.dynV.baseValue > minDmg)
             {
-                var r = ModBattleEvent.GetUnitPropertyValue(ModBattleEvent.HitUnit, pEnum).Parse<float>();
-                e.dynV.baseValue -= (def * r / 200f).Parse<int>();
+                var r = ModBattleEvent.GetUnitPropertyValue(ModBattleEvent.HitUnit, pEnum);
+                e.dynV.baseValue -= def * r / BASIS_ON_DEF;
             }
 
             //DebugHelper.WriteLine($"10: {e.dynV.baseValue}");
@@ -238,18 +251,22 @@ namespace MOD_nE7UL2.Mod
                 !_monstStrongerAdditionalFlg.Contains(monstData.monstType))
             {
                 var x = EventHelper.GetEvent<MonstStrongerEvent>(ModConst.MONST_STRONGER_EVENT);
-                var gameLvl = g.data.dataWorld.data.gameLevel.Parse<int>();
-                if (e.dynV.baseValue >=
-                    e.hitUnit.data.maxHP.value * MonstStrongerEvent.AdditionalStts[monstData.monstType] * ModBattleEvent.AttackingWorldUnit.GetGradeLvl().Parse<float>() / e.hitUnit.data.grade.value.Parse<float>() / gameLvl)
+                if (e.dynV.baseValue >= GetAdditionalCond(monstData))
                 {
-                    x.Additional[monstData.monstType] += MonstStrongerEvent.ADDITIONAL_VALUE;
+                    x.Additional[monstData.monstType] += MonstStrongerConfigs.Additionnal;
                     _monstStrongerAdditionalFlg.Add(monstData.monstType);
                 }
             }
         }
 
-        private static readonly IDictionary<string, DataProps.PropsData> _castingSkill = new Dictionary<string, DataProps.PropsData>();
-        private static readonly IDictionary<string, MartialType> _castingSkillType = new Dictionary<string, MartialType>();
+        private float GetAdditionalCond(UnitDataMonst monst)
+        {
+            var gameLvl = g.data.dataWorld.data.gameLevel.Parse<int>();
+            var monstLvl = monst.grade.value;
+            var addStt = MonstStrongerEvent.AdditionalStts[monst.monstType] - (MonstStrongerEvent.AdditionalStts[monst.monstType] * monstLvl * gameLvl / 100f);
+            return monst.maxHP.value * addStt * ModBattleEvent.AttackingWorldUnit.GetGradeLvl().Parse<float>() / monstLvl.Parse<float>() / gameLvl;
+        }
+
         public override void OnBattleUnitUseSkill(UnitUseSkill e)
         {
             base.OnBattleUnitUseSkill(e);
@@ -408,7 +425,8 @@ namespace MOD_nE7UL2.Mod
         {
             if (cunit == null)
                 return 0;
-            return cunit.data.grade.value;
+            var gameLvl = g.data.dataWorld.data.gameLevel.Parse<int>();
+            return cunit.data.grade.value * gameLvl;
         }
 
         public static int GetMinDmgPlus(WorldUnitBase wunit)
@@ -420,18 +438,12 @@ namespace MOD_nE7UL2.Mod
 
         public static double GetBlockMaxBase(WorldUnitBase wunit)
         {
-            var defValue = 18.0d;
-            if (wunit == null)
-                return defValue;
-            return defValue;
+            return 18.0d;
         }
 
         public static double GetBlockMaxBase(UnitCtrlBase cunit)
         {
-            var defValue = 18.0d;
-            if (cunit == null)
-                return defValue;
-            return defValue;
+            return 18.0d;
         }
 
         public static double GetBlockMaxPlus(WorldUnitBase wunit)
@@ -464,18 +476,12 @@ namespace MOD_nE7UL2.Mod
 
         public static double GetEvadeMaxBase(WorldUnitBase wunit)
         {
-            var defValue = 12.0d;
-            if (wunit == null)
-                return defValue;
-            return defValue;
+            return 12.0d;
         }
 
         public static double GetEvadeMaxBase(UnitCtrlBase cunit)
         {
-            var defValue = 12.0d;
-            if (cunit == null)
-                return defValue;
-            return defValue;
+            return 12.0d;
         }
 
         public static double GetEvadeMaxPlus(WorldUnitBase wunit)
@@ -519,10 +525,7 @@ namespace MOD_nE7UL2.Mod
 
         public static double GetSCritChanceMaxBase(WorldUnitBase wunit)
         {
-            var defValue = 8.0d;
-            if (wunit == null)
-                return defValue;
-            return defValue;
+            return 8.0d;
         }
 
         public static double GetSCritChanceMaxPlus(WorldUnitBase wunit)
@@ -590,10 +593,7 @@ namespace MOD_nE7UL2.Mod
 
         public static double GetSpRecoveryBase(WorldUnitBase wunit)
         {
-            var defValue = 0.0d;
-            if (wunit == null)
-                return defValue;
-            return defValue;
+            return 0.0d;
         }
 
         public static double GetSpRecoveryPlus(WorldUnitBase wunit)
