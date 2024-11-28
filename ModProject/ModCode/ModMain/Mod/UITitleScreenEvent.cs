@@ -1,6 +1,8 @@
 ﻿using EGameTypeData;
 using ModLib.Mod;
+using System.Diagnostics;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.UI;
 
 namespace MOD_nE7UL2.Mod
@@ -17,6 +19,11 @@ namespace MOD_nE7UL2.Mod
                 var modTitleBtn = uiLogin.btnPaperChange.Create().Pos(0f, 4f, uiLogin.btnPaperChange.transform.position.z);
                 var modTitleText = modTitleBtn.GetComponentInChildren<Text>().Align(TextAnchor.MiddleCenter).Format(Color.white, 22);
                 modTitleText.text = "Taoist [Hardcore]";
+                
+                modTitleBtn.onClick.AddListener((UnityAction)(() =>
+                {
+                    Process.Start("explorer.exe", CacheHelper.GetCacheFolderName());
+                }));
             }
         }
     }

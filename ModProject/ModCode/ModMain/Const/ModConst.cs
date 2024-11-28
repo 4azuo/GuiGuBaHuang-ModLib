@@ -2,6 +2,7 @@
 {
     public static class ModConst
     {
+        //Events
         public const string QI_CUL_EVENT = "QiCulEvent";
         public const string UNIT_TYPE_EVENT = "UnitTypeEvent";
         public const string BATTLE_REWARD_EVENT = "BattleRewardEvent";
@@ -35,7 +36,9 @@
         public const string BANK_ACCOUNT_EVENT = "BankAccountEvent";
         public const string REBIRTH_EVENT = "RebirthEvent";
         public const string CUSTOM_REFINE_EVENT = "CustomRefineEvent";
+        public const string SM_CONFIG_EVENT = "SMGlobalEvent";
 
+        //Others
         public const string UTYPE_LUCK_EFX_FREE_STORAGE = "FreeStorage";
         public const string UTYPE_LUCK_EFX_BUY_COST = "BuyCost";
         public const string UTYPE_LUCK_EFX_SELL_VALUE = "SellValue";
