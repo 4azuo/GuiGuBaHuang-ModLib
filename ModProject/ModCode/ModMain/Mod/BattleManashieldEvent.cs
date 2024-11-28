@@ -11,9 +11,11 @@ namespace MOD_nE7UL2.Mod
     [Cache(ModConst.BATTLE_MANASHIELD_EVENT)]
     public class BattleManashieldEvent : ModEvent
     {
+        public override int OrderIndex => 9001;
+
         public const int MANASHIELD_EFFECT_MAIN_ID = 903151120;
         public const int MANASHIELD_EFFECT_EFX_ID = 903151121;
-        public const float COMMON_MONST_SHIELD_CHANCE = 0.5f;
+        public const float COMMON_MONST_SHIELD_CHANCE = 0.55f;
 
         public static _BattleManashieldConfigs ManashieldConfigs => ModMain.ModObj.InGameCustomSettings.BattleManashieldConfigs;
 
@@ -24,9 +26,9 @@ namespace MOD_nE7UL2.Mod
         {
             base.OnBattleUnitInto(e);
 
-            var humanData = e?.data?.TryCast<UnitDataHuman>();
-            if (humanData?.worldUnitData?.unit != null)
+            if (e.IsWorldUnit())
             {
+                var humanData = e?.data?.TryCast<UnitDataHuman>();
                 var efx = humanData.unit.AddEffect(MANASHIELD_EFFECT_MAIN_ID, humanData.unit, new SkillCreateData
                 {
                     mainSkillID = MANASHIELD_EFFECT_MAIN_ID,
@@ -42,23 +44,27 @@ namespace MOD_nE7UL2.Mod
                     PlayerShieldEfx = efx;
             }
 
-            var monstData = e?.data?.TryCast<UnitDataMonst>();
-            if (monstData != null && monstData?.monstType == MonstType.Common)
+            if (e.IsMonster())
             {
-                var gameLvl = g.data.dataWorld.data.gameLevel.Parse<int>();
-                if (CommonTool.Random(0.0f, 100.0f).IsBetween(0.0f, COMMON_MONST_SHIELD_CHANCE * monstData.grade.value * gameLvl))
+                var monstData = e?.data?.TryCast<UnitDataMonst>();
+                if (monstData.monstType == MonstType.Common || monstData.monstType == MonstType.Elite)
                 {
-                    var efx = monstData.unit.AddEffect(MANASHIELD_EFFECT_MAIN_ID, monstData.unit, new SkillCreateData
+                    //add manashield
+                    var gameLvl = g.data.dataWorld.data.gameLevel.Parse<int>();
+                    if (CommonTool.Random(0.0f, 100.0f).IsBetween(0.0f, COMMON_MONST_SHIELD_CHANCE * monstData.grade.value * gameLvl))
                     {
-                        mainSkillID = MANASHIELD_EFFECT_MAIN_ID,
-                        valueData = new BattleSkillValueData
+                        var efx = monstData.unit.AddEffect(MANASHIELD_EFFECT_MAIN_ID, monstData.unit, new SkillCreateData
                         {
-                            grade = monstData.grade.value,
-                            level = 1,
-                            data = new BattleSkillValueData.Data(),
-                        }
-                    });
-                    Effect3017.AddShield(efx, monstData.unit, MANASHIELD_EFFECT_EFX_ID, monstData.maxHP.value, monstData.maxHP.value, int.MaxValue);
+                            mainSkillID = MANASHIELD_EFFECT_MAIN_ID,
+                            valueData = new BattleSkillValueData
+                            {
+                                grade = monstData.grade.value,
+                                level = 1,
+                                data = new BattleSkillValueData.Data(),
+                            }
+                        });
+                        Effect3017.AddShield(efx, monstData.unit, MANASHIELD_EFFECT_EFX_ID, monstData.maxHP.value * gameLvl, monstData.maxHP.value, int.MaxValue);
+                    }
                 }
             }
         }

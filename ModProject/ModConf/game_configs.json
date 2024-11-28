@@ -100,36 +100,40 @@
 		}
 	},
 	"MonstStrongerConfigs": {
-		"AtkR": 1.04,
-		"DefR": 0.52,
-		"MHpR": 1.20,
-		"RebirthAffect": 0.02,
+		"AtkR": 1.05,
+		"DefR": 0.50,
+		"MHpR": 1.25,
+		"Additionnal": 0.02,
+		"RebirthAffect": 0.04,
 		"GrowRate": {
-			"Common": 0.0020,
-			"Elite": 0.0010,
-			"BOSS": 0.0005
+			"Common": 0.0040,
+			"Elite": 0.0020,
+			"BOSS": 0.0010,
+			"NPC": 0.0020
 		},
 		"KillGrowRate": {
-			"Common": 0.000002,
-			"Elite": 0.00004,
-			"BOSS": 0.00008
+			"Common": 0.000005,
+			"Elite": 0.00005,
+			"BOSS": 0.00010,
+			"NPC": 0.00020
 		},
 		"PlayerAtk2HpRate": {
-			"Common": 1.00,
-			"Elite": 10.00,
-			"BOSS": 100.00
+			"Common": 2.00,
+			"Elite": 20.00,
+			"BOSS": 200.00,
+			"NPC": 200.00
 		},
 		"AreaBonus": {
 			"1": 0.00,
-			"2": 0.01,
-			"3": 0.02,
-			"4": 0.05,
-			"5": 0.06,
-			"6": 0.10,
-			"7": 0.12,
-			"8": 0.15,
-			"9": 0.18,
-			"10": 0.25
+			"2": 0.03,
+			"3": 0.06,
+			"4": 0.10,
+			"5": 0.15,
+			"6": 0.20,
+			"7": 0.30,
+			"8": 0.40,
+			"9": 0.55,
+			"10": 0.75
 		}
 	},
 	"NpcUpgradeSkillConfigs": {

@@ -1,4 +1,5 @@
 ﻿//using EGameTypeData;
+//using MOD_nE7UL2.Enum;
 //using ModLib.Enum;
 //using ModLib.Mod;
 //using System;
@@ -35,20 +36,26 @@
 //        //}
 
 //        /* === In game debug === */
-//        //public override void OnLoadGame()
-//        //{
-//        //    g.world.playerUnit.AddProperty<int>(UnitPropertyEnum.Attack, 1000000);
-//        //    g.world.playerUnit.AddProperty<int>(UnitPropertyEnum.Defense, 1000000);
-//        //    g.world.playerUnit.AddProperty<int>(UnitPropertyEnum.HpMax, 1000000);
-//        //    g.world.playerUnit.AddProperty<int>(UnitPropertyEnum.MpMax, 1000000);
-//        //    g.world.playerUnit.AddProperty<int>(UnitPropertyEnum.SpMax, 1000000);
-//        //    g.world.playerUnit.SetUnitMoney(1000000000);
-//        //    g.world.playerUnit.SetUnitMayorDegree(1000000000);
-//        //    g.world.playerUnit.SetUnitContribution(1000000000);
+//        public override void OnLoadGame()
+//        {
+//            //g.world.playerUnit.AddProperty<int>(UnitPropertyEnum.Attack, 1000000);
+//            //g.world.playerUnit.AddProperty<int>(UnitPropertyEnum.Defense, 1000000);
+//            //g.world.playerUnit.AddProperty<int>(UnitPropertyEnum.HpMax, 1000000);
+//            //g.world.playerUnit.AddProperty<int>(UnitPropertyEnum.MpMax, 1000000);
+//            //g.world.playerUnit.AddProperty<int>(UnitPropertyEnum.SpMax, 1000000);
 
-//        //    g.world.playerUnit.data.unitData.propertyData.footSpeed = 10000;
-//        //    g.world.playerUnit.data.dynUnitData.playerView.baseValue = 100;
-//        //}
+//            g.world.playerUnit.SetUnitMoney(1000000000);
+//            g.world.playerUnit.SetUnitMayorDegree(1000000000);
+//            g.world.playerUnit.SetUnitContribution(1000000000);
+//            g.world.playerUnit.SetProperty<int>(UnitPropertyEnum.GradeID, 44);
+//            g.world.playerUnit.data.unitData.propertyData.footSpeed = 10000;
+//            g.world.playerUnit.data.dynUnitData.playerView.baseValue = 111;
+
+//            foreach (var build in g.world.build.GetBuilds())
+//            {
+//                MapBuildPropertyEvent.AddBuildProperty(build, 1000000000);
+//            }
+//        }
 
 //        /* === Ui component list === */
 //        //public override void OnOpenUIEnd(OpenUIEnd e)
