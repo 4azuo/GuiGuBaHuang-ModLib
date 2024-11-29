@@ -2,6 +2,7 @@
 using System.Linq.Expressions;
 using System.Reflection;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
 public static class ObjectHelper
@@ -143,19 +144,19 @@ public static class ObjectHelper
         return obj;
     }
 
-    public static T Pos<T>(this T obj, GameObject origin, float deltaX = 0f, float deltaY = 0f, float deltaZ = 0f) where T : MonoBehaviour
+    public static T Pos<T>(this T obj, GameObject origin, float deltaX = 0f, float deltaY = 0f, float deltaZ = 0f) where T : UIBehaviour
     {
         obj.transform.position = new Vector3(origin.transform.position.x + deltaX, origin.transform.position.y + deltaY, origin.transform.position.z + deltaZ);
         return obj;
     }
 
-    public static T Pos<T>(this T obj, float deltaX = 0f, float deltaY = 0f, float deltaZ = 0f) where T : MonoBehaviour
+    public static T Pos<T>(this T obj, float deltaX = 0f, float deltaY = 0f, float deltaZ = 0f) where T : UIBehaviour
     {
         obj.transform.position = new Vector3(deltaX, deltaY, deltaZ);
         return obj;
     }
 
-    public static T Size<T>(this T obj, float scaleX = 0f, float scaleY = 0f, float scaleZ = 0f) where T : MonoBehaviour
+    public static T Size<T>(this T obj, float scaleX = 0f, float scaleY = 0f, float scaleZ = 0f) where T : UIBehaviour
     {
         obj.GetComponent<RectTransform>().sizeDelta = new Vector3(scaleX, scaleY, scaleZ);
         return obj;

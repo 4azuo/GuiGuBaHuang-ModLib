@@ -86,7 +86,10 @@ namespace ModLib.Mod
         public virtual void OnOpenUIEnd(OpenUIEnd e) { }
         public virtual void OnCloseUIStart(CloseUIStart e) { }
         public virtual void OnCloseUIEnd(CloseUIEnd e) { }
+        public virtual void OnLoadGlobal() { }
+        public virtual void OnLoadGameBefore() { }
         public virtual void OnLoadGame() { }
+        public virtual void OnLoadGameAfter() { }
         public virtual void OnLoadGameFirst() { }
         public virtual void OnInitWorld(ETypeData e) { }
         public virtual void OnLoadScene(LoadScene e) { }
