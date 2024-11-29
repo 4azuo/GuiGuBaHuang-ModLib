@@ -19,6 +19,10 @@ namespace ModLib.Mod
         {
             try
             {
+                //debug
+                //DebugHelper.WriteLine(e.TryCast<EGameTypeData.OpenUIStart>()?.uiType?.uiName);
+                //DebugHelper.Save();
+
                 if (!initMod)
                 {
                     DebugHelper.WriteLine("Load configs.");

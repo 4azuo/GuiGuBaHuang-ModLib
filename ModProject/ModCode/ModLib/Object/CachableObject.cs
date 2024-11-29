@@ -3,6 +3,7 @@
     public abstract class CachableObject
     {
         public string CacheId { get; set; }
+        public bool IsGlobal { get; set; }
 
         public CachableObject(string cacheId)
         {

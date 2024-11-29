@@ -1,11 +1,8 @@
 ﻿using EGameTypeData;
 using MOD_nE7UL2.Const;
-using System.Linq;
 using ModLib.Mod;
-using System.Threading.Tasks;
 using UnityEngine;
 using UnityEngine.Events;
-using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
 namespace MOD_nE7UL2.Mod
@@ -27,6 +24,12 @@ namespace MOD_nE7UL2.Mod
                 {
                     var ui = g.ui.OpenUI<UITextInfo>(UIType.TextInfo);
                     ui.InitData("S&M Configs", string.Empty);
+                    var txtAtk = ui.canvas.gameObject.AddComponent<Text>();//.Pos(ui.textTitle.gameObject, -1f, -0.5f).Align(TextAnchor.MiddleCenter).Format();
+                    var txtDef = ui.canvas.gameObject.AddComponent<Text>();//.Pos(ui.textTitle.gameObject, -1f, -1.0f).Align(TextAnchor.MiddleCenter).Format();
+                    var txtHp = ui.canvas.gameObject.AddComponent<Text>();//.Pos(ui.textTitle.gameObject, -1f, -1.5f).Align(TextAnchor.MiddleCenter).Format();
+                    var slAtk = ui.canvas.gameObject.AddComponent<Slider>();//.Pos(ui.textTitle.gameObject, -0.5f, -0.5f);
+                    var slDef = ui.canvas.gameObject.AddComponent<Slider>();//.Pos(ui.textTitle.gameObject, -0.5f, -1.0f);
+                    var slHp = ui.canvas.gameObject.AddComponent<Slider>();//.Pos(ui.textTitle.gameObject, -0.5f, -1.5f);
                 }));
             }
         }

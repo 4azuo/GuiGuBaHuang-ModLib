@@ -23,6 +23,8 @@ public static class EventHelper
     {
         foreach (var ev in GetEvents(methodName))
         {
+            if (!ev.IsGlobal && !GameHelper.IsInGame())
+                continue;
             var method = ev.GetType().GetMethod(methodName);
             try
             {
@@ -30,18 +32,18 @@ public static class EventHelper
                 if (condAttr != null)
                 {
                     if (condAttr.IsInGame && !GameHelper.IsInGame())
-                        return;
+                        continue;
                     if (condAttr.IsInBattle && !GameHelper.IsInBattlle())
-                        return;
+                        continue;
                     if (
                         (condAttr.WithLoadState == EvCondLoadEnum.Loaded && ev.IsLoading()) ||
                         (condAttr.WithLoadState == EvCondLoadEnum.Loading && !ev.IsLoading())
                         )
-                        return;
+                        continue;
                     if (condAttr.NeedFlgUpdate && !ev.IsFlgUpdate(methodName))
-                        return;
+                        continue;
                     if (condAttr.CustomCondition != null && !ev.GetType().GetMethod(condAttr.CustomCondition).Invoke(ev, null).Parse<bool>())
-                        return;
+                        continue;
                 }
 
                 if (method.GetParameters().Length == 0)
@@ -90,9 +92,7 @@ public static class EventHelper
     {
         var rs = CacheHelper.GetGlobalCache().GetDatas<ModEvent>().OrderBy(x => x.OrderIndex).ToList();
         if (CacheHelper.IsGameCacheLoaded())
-        {
             rs.AddRange(CacheHelper.GetGameCache().GetDatas<ModEvent>().OrderBy(x => x.OrderIndex));
-        }
         return rs;
     }
 }

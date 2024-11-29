@@ -42,6 +42,7 @@ namespace ModLib.Object
                         DebugHelper.WriteLine($"Create {(isGlobal ? "Global" : "Game")}Cache: Type={t.FullName}, Id={attr.CacheId}");
                         var e = (CachableObject)Activator.CreateInstance(t);
                         e.CacheId = attr.CacheId;
+                        e.IsGlobal = attr.IsGlobal;
                         Data.Add(attr.CacheId, e);
                     }
                 }
