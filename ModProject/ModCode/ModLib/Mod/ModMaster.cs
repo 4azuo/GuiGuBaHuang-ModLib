@@ -21,10 +21,11 @@ namespace ModLib.Mod
 
         public abstract string ModName { get; }
         public abstract string ModId { get; }
+        public Exception LastestException { get; protected set; }
+        public string LastestLog { get; protected set; }
+
         public virtual InGameSettings InGameSettings => InGameSettings.GetSettings<InGameSettings>();
         public static ModMaster ModObj { get; protected set; }
-        public static Exception LastestException { get; protected set; }
-        public static string LastestLog { get; protected set; }
 
         #region caller
         private Action callTimeUpdate;
@@ -484,9 +485,8 @@ namespace ModLib.Mod
                 {
                     Process.Start("notepad.exe", LastestLog);
                 }));
-
-                LastestException = null;
             }
+            LastestException = null;
         }
     }
 

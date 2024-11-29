@@ -23,8 +23,8 @@ public static class EventHelper
     {
         foreach (var ev in GetEvents(methodName))
         {
-            if (!ev.IsGlobal && !GameHelper.IsInGame())
-                continue;
+            //if (!ev.IsGlobal && !GameHelper.IsInGame())
+            //    continue;
             var method = ev.GetType().GetMethod(methodName);
             try
             {
