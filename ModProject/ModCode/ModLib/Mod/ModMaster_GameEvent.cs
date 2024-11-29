@@ -8,6 +8,7 @@ namespace ModLib.Mod
     public abstract partial class ModMaster : MonoBehaviour
     {
         private bool initMod = false;
+        private bool loadGlobal = false;
 
         #region ModLib - Handlers
         //public virtual void _OnTownAuctionStart(ETypeData e)
@@ -30,6 +31,13 @@ namespace ModLib.Mod
                     CallEvents("OnInitEObj");
                     DebugHelper.Save();
                     initMod = true;
+                }
+
+                if (!loadGlobal)
+                {
+                    DebugHelper.WriteLine("Load globals.");
+                    CallEvents("OnLoadGlobal");
+                    loadGlobal = true;
                 }
 
                 if (GameHelper.IsInGame())
@@ -216,8 +224,14 @@ namespace ModLib.Mod
             EventHelper.RunMinorEvents(e);
         }
 
+        public virtual void OnLoadGlobal()
+        {
+            EventHelper.RunMinorEvents();
+        }
+
         public virtual void OnLoadGameBefore()
         {
+            EventHelper.RunMinorEvents();
         }
 
         public virtual void OnLoadGame()
@@ -227,6 +241,7 @@ namespace ModLib.Mod
 
         public virtual void OnLoadGameAfter()
         {
+            EventHelper.RunMinorEvents();
         }
 
         public virtual void OnLoadGameFirst()
