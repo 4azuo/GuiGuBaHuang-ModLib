@@ -64,6 +64,7 @@ namespace MOD_nE7UL2.Mod
             {
                 var monstData = e?.data?.TryCast<UnitDataMonst>();
                 var gameLvl = g.data.dataWorld.data.gameLevel.Parse<int>();
+                var mpRatio = monstData.grade.value.Parse<float>() / g.world.playerUnit.GetGradeLvl().Parse<float>();
 
                 //additional
                 if (AdditionalStts.ContainsKey(monstData.monstType))
@@ -71,6 +72,7 @@ namespace MOD_nE7UL2.Mod
                     var r = Additional[monstData.monstType];
                     if (monstData.monstType == MonstType.BOSS)
                         r += Additional[MonstType.Elite] / 10f;
+                    r *= gameLvl * mpRatio;
                     monstData.attack.baseValue += (monstData.attack.baseValue * r * Configs.AtkR).Parse<int>();
                     monstData.defense.baseValue += (monstData.defense.baseValue * r * Configs.DefR).Parse<int>();
                     monstData.maxHP.baseValue += (monstData.maxHP.baseValue * r * Configs.MHpR).Parse<int>();
@@ -80,7 +82,7 @@ namespace MOD_nE7UL2.Mod
                 var areaId = g.world.playerUnit.data.unitData.pointGridData.areaBaseID;
                 if (Configs.AreaBonus.ContainsKey(areaId))
                 {
-                    var r = Configs.AreaBonus[areaId];
+                    var r = Configs.AreaBonus[areaId] * gameLvl * mpRatio;
                     monstData.attack.baseValue += (monstData.attack.baseValue * r * Configs.AtkR).Parse<int>();
                     monstData.defense.baseValue += (monstData.defense.baseValue * r * Configs.DefR).Parse<int>();
                     monstData.maxHP.baseValue += (monstData.maxHP.baseValue * r * Configs.MHpR).Parse<int>();
@@ -90,34 +92,41 @@ namespace MOD_nE7UL2.Mod
                 if (Configs.GrowRate.ContainsKey(monstData.monstType))
                 {
                     //grow-rate & kill-rate
-                    var ratio = (Counter * Configs.GrowRate[monstData.monstType]) + (KillCounter[monstData.monstType] * Configs.KillGrowRate[monstData.monstType]);
-                    monstData.attack.baseValue += (monstData.attack.baseValue * (ratio * Configs.AtkR * monstData.grade.value * gameLvl)).Parse<int>();
-                    monstData.defense.baseValue += (monstData.defense.baseValue * (ratio * Configs.DefR * monstData.grade.value * gameLvl)).Parse<int>();
-                    monstData.maxHP.baseValue += (monstData.maxHP.baseValue * (ratio * Configs.MHpR * monstData.grade.value * gameLvl)).Parse<int>();
+                    var r = ((Counter * Configs.GrowRate[monstData.monstType]) + (KillCounter[monstData.monstType] * Configs.KillGrowRate[monstData.monstType])) * monstData.grade.value * gameLvl * mpRatio;
+                    monstData.attack.baseValue += (monstData.attack.baseValue * r * Configs.AtkR).Parse<int>();
+                    monstData.defense.baseValue += (monstData.defense.baseValue * r * Configs.DefR).Parse<int>();
+                    monstData.maxHP.baseValue += (monstData.maxHP.baseValue * r * Configs.MHpR).Parse<int>();
+                }
+
+                //level oppressive
+                if (Configs.Player2Rate.ContainsKey(monstData.monstType))
+                {
+                    var r = Configs.Player2Rate[monstData.monstType] * gameLvl * mpRatio;
+                    monstData.attack.baseValue += (g.world.playerUnit.GetDynProperty(UnitDynPropertyEnum.Attack).value * r * Configs.AtkR).Parse<int>();
+                    monstData.defense.baseValue += (g.world.playerUnit.GetDynProperty(UnitDynPropertyEnum.Defense).value * r * Configs.DefR).Parse<int>();
+                    monstData.maxHP.baseValue += (g.world.playerUnit.GetDynProperty(UnitDynPropertyEnum.HpMax).value * r * Configs.MHpR).Parse<int>();
                 }
 
                 //rebirth
                 var rebirthRatio = EventHelper.GetEvent<RebirthEvent>(ModConst.REBIRTH_EVENT).TotalGradeLvl * Configs.RebirthAffect;
-                monstData.attack.baseValue += (monstData.attack.baseValue * rebirthRatio * Configs.AtkR * gameLvl).Parse<int>();
-                monstData.defense.baseValue += (monstData.defense.baseValue * rebirthRatio * Configs.DefR * gameLvl).Parse<int>();
-                monstData.maxHP.baseValue += (monstData.maxHP.baseValue * rebirthRatio * Configs.MHpR * gameLvl).Parse<int>();
-
-                //level oppressive
-                monstData.maxHP.baseValue += (g.world.playerUnit.GetDynProperty(UnitDynPropertyEnum.Attack).value * Configs.PlayerAtk2HpRate[monstData.monstType] * (monstData.grade.value.Parse<float>() / g.world.playerUnit.GetGradeLvl().Parse<float>())).Parse<int>();
+                rebirthRatio *= gameLvl * mpRatio;
+                monstData.attack.baseValue += (monstData.attack.baseValue * rebirthRatio * Configs.AtkR).Parse<int>();
+                monstData.defense.baseValue += (monstData.defense.baseValue * rebirthRatio * Configs.DefR).Parse<int>();
+                monstData.maxHP.baseValue += (monstData.maxHP.baseValue * rebirthRatio * Configs.MHpR).Parse<int>();
 
                 //basis
-                monstData.basisBlade.baseValue *= monstData.grade.value * gameLvl;
-                monstData.basisEarth.baseValue *= monstData.grade.value * gameLvl;
-                monstData.basisFinger.baseValue *= monstData.grade.value * gameLvl;
-                monstData.basisFire.baseValue *= monstData.grade.value * gameLvl;
-                monstData.basisFist.baseValue *= monstData.grade.value * gameLvl;
-                monstData.basisFroze.baseValue *= monstData.grade.value * gameLvl;
-                monstData.basisPalm.baseValue *= monstData.grade.value * gameLvl;
-                monstData.basisSpear.baseValue *= monstData.grade.value * gameLvl;
-                monstData.basisSword.baseValue *= monstData.grade.value * gameLvl;
-                monstData.basisThunder.baseValue *= monstData.grade.value * gameLvl;
-                monstData.basisWind.baseValue *= monstData.grade.value * gameLvl;
-                monstData.basisWood.baseValue *= monstData.grade.value * gameLvl;
+                monstData.basisBlade.baseValue *= (monstData.grade.value * gameLvl * mpRatio).Parse<int>();
+                monstData.basisEarth.baseValue *= (monstData.grade.value * gameLvl * mpRatio).Parse<int>();
+                monstData.basisFinger.baseValue *= (monstData.grade.value * gameLvl * mpRatio).Parse<int>();
+                monstData.basisFire.baseValue *= (monstData.grade.value * gameLvl * mpRatio).Parse<int>();
+                monstData.basisFist.baseValue *= (monstData.grade.value * gameLvl * mpRatio).Parse<int>();
+                monstData.basisFroze.baseValue *= (monstData.grade.value * gameLvl * mpRatio).Parse<int>();
+                monstData.basisPalm.baseValue *= (monstData.grade.value * gameLvl * mpRatio).Parse<int>();
+                monstData.basisSpear.baseValue *= (monstData.grade.value * gameLvl * mpRatio).Parse<int>();
+                monstData.basisSword.baseValue *= (monstData.grade.value * gameLvl * mpRatio).Parse<int>();
+                monstData.basisThunder.baseValue *= (monstData.grade.value * gameLvl * mpRatio).Parse<int>();
+                monstData.basisWind.baseValue *= (monstData.grade.value * gameLvl * mpRatio).Parse<int>();
+                monstData.basisWood.baseValue *= (monstData.grade.value * gameLvl * mpRatio).Parse<int>();
 
                 //others
                 //monstData.attack.baseValue += (??? / 100.00f * monstData.attack.baseValue).Parse<int>();

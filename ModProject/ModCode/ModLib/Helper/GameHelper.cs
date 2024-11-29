@@ -10,6 +10,30 @@ public static class GameHelper
         return $"{(g.world?.run?.roundMonth / 12) + 1:0000}{(g.world?.run?.roundMonth % 12) + 1:00}{g.world?.run?.roundDay + 1:00}";
     }
 
+    public static bool IsMaskScreen()
+    {
+        return g.ui?.GetUI(UIType.Mask) != null || g.ui?.GetUI(UIType.MaskNotClick) != null;
+    }
+
+    public static bool IsLoadingScreen()
+    {
+        return g.ui?.GetUI(UIType.Loading) != null ||
+            g.ui?.GetUI(UIType.LoadingBar) != null ||
+            g.ui?.GetUI(UIType.LoadingBig) != null ||
+            g.ui?.GetUI(UIType.LoadingBigCacheFix) != null ||
+            g.ui?.GetUI(UIType.LoadingCreateGame) != null;
+    }
+
+    public static bool IsModScreen()
+    {
+        return g.ui?.GetUI(UIType.ModMain) != null;
+    }
+
+    public static bool IsLoginScreen()
+    {
+        return g.ui?.GetUI(UIType.Login) != null;
+    }
+
     public static bool IsInGame()
     {
         return (g.world?.isIntoWorld ?? false) && g.world?.playerUnit?.GetUnitId() != null;

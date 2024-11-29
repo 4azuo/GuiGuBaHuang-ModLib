@@ -23,7 +23,8 @@ namespace ModLib.Mod
         public abstract string ModId { get; }
         public virtual InGameSettings InGameSettings => InGameSettings.GetSettings<InGameSettings>();
         public static ModMaster ModObj { get; protected set; }
-        public static Exception LastestExceptions { get; protected set; }
+        public static Exception LastestException { get; protected set; }
+        public static string LastestLog { get; protected set; }
 
         #region caller
         private Action callTimeUpdate;
@@ -463,26 +464,28 @@ namespace ModLib.Mod
             {
                 DebugHelper.WriteLine($"CallEvents<{typeof(T).Name}>({methodName}, -, {isInGame}, {isInBattle})");
                 DebugHelper.WriteLine(ex);
-                LastestExceptions = ex;
+                LastestException = ex;
+                LastestLog = DebugHelper.LastestLog;
             }
         }
 
         private void ShowException()
         {
-            if (LastestExceptions != null)
+            if (LastestException != null)
             {
                 var ui = g.ui.OpenUI<UITextInfoLong>(UIType.TextInfoLong);
-                ui.InitData("Exception", LastestExceptions.GetAllInnnerExceptionStr());
+                ui.InitData("Exception", LastestException.GetAllInnnerExceptionStr());
                 var btnOpenLog = ui.btnOK.Create();
                 var txtOpenLog = btnOpenLog.GetComponentInChildren<Text>().Align(TextAnchor.MiddleCenter);
                 txtOpenLog.text = "Open log";
+                ui.ptextInfo.fontSize = 14;
 
                 btnOpenLog.onClick.AddListener((UnityAction)(() =>
                 {
-                    Process.Start("notepad.exe", DebugHelper.GetDebugFilePath());
+                    Process.Start("notepad.exe", LastestLog);
                 }));
 
-                LastestExceptions = null;
+                LastestException = null;
             }
         }
     }
@@ -539,7 +542,7 @@ namespace ModLib.Mod
             {
                 e.dramaData.onOptionsClickCall = (Il2CppSystem.Action<ConfDramaOptionsItem>)((conf) =>
                 {
-                    if (conf.id == 999999201)
+                    if (conf.id == ModLibConst.OLD_VERSION_DIALOGUE_SKIP)
                     {
                         InGameCustomSettings.IsOldVersion = false;
                     }
