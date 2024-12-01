@@ -146,7 +146,7 @@ public static class ObjectHelper
 
     public static T Pos<T>(this T obj, GameObject origin, float deltaX = 0f, float deltaY = 0f, float deltaZ = 0f) where T : UIBehaviour
     {
-        obj.transform.position = new Vector3(origin.transform.position.x + deltaX, origin.transform.position.y + deltaY, origin.transform.position.z + deltaZ);
+        obj.transform.position = new Vector3((origin?.transform?.position.x ?? 0) + deltaX, (origin?.transform?.position.y ?? 0) + deltaY, (origin?.transform?.position.z ?? 0) + deltaZ);
         return obj;
     }
 
@@ -159,6 +159,32 @@ public static class ObjectHelper
     public static T Size<T>(this T obj, float scaleX = 0f, float scaleY = 0f, float scaleZ = 0f) where T : UIBehaviour
     {
         obj.GetComponent<RectTransform>().sizeDelta = new Vector3(scaleX, scaleY, scaleZ);
+        return obj;
+    }
+
+    public static Text Setup(this Text obj, string def)
+    {
+        obj.text = def;
+        return obj;
+    }
+
+    public static Slider Setup(this Slider obj, float min, float max, float def)
+    {
+        obj.minValue = min;
+        obj.maxValue = max;
+        obj.value = def.FixValue(min, max);
+        return obj;
+    }
+
+    public static Toggle Setup(this Toggle obj, bool def)
+    {
+        obj.isOn = def;
+        return obj;
+    }
+
+    public static Button Setup(this Button obj, string def)
+    {
+        obj.GetComponentInChildren<Text>().text = def;
         return obj;
     }
 }
