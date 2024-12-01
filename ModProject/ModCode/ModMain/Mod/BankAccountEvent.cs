@@ -28,7 +28,7 @@ namespace MOD_nE7UL2.Mod
                 {
                     var uiTownStorage = g.ui.GetUI<UITownStorage>(UIType.TownStorage);
                     var btn1 = uiTownStorage.btnProps.Replace().Size(270f, 90f);
-                    btn1.GetComponentInChildren<Text>().Align(UnityEngine.TextAnchor.MiddleCenter).text = $"Register ({Cost(curTown.gridData.areaBaseID)} SP)";
+                    btn1.GetComponentInChildren<Text>().Align(UnityEngine.TextAnchor.MiddleCenter).text = $"Open account ({Cost(curTown.gridData.areaBaseID)})";
                     btn1.onClick.AddListener((UnityAction)(() =>
                     {
                         var cost = Cost(curTown.gridData.areaBaseID);

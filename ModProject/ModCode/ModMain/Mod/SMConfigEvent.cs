@@ -18,6 +18,7 @@ namespace MOD_nE7UL2.Mod
     {
         public const string TITLE = "S&M Configs";
 
+        //Configs
         public float AddAtkRate { get; set; } = 0f;
         public float AddDefRate { get; set; } = 0f;
         public float AddHpRate { get; set; } = 0f;
@@ -34,95 +35,82 @@ namespace MOD_nE7UL2.Mod
         public bool HideReloadButton { get; set; } = false;
         public bool HideBattleMap { get; set; } = false;
         public bool NoRebirth { get; set; } = false;
+        public bool Onelife { get; set; } = false;
+        public bool OnlyPortalAtCityAndSect { get; set; } = false;
+        public bool NoExpFromBattles { get; set; } = false;
 
-        private Text txtSMScore;
-        private Text txtEndNote;
-        private Button btnDefault;
-        private Button btnLevel01;
-        private Button btnLevel02;
-        private Button btnLevel03;
-        private Button btnLevel04;
-        private Button btnLevel05;
-        private Button btnLevel06;
-        private Button btnLevel07;
-        private Button btnLevel08;
-        private Button btnLevel09;
-        private Button btnLevel10;
-        //main-comp
-        private Slider slAtkValue;
-        private Slider slDefValue;
-        private Slider slHpValue;
-        private Slider slBasisValue;
-        private Slider slSpecialMonsterRate;
-        private Slider slTaxRate;
-        private Slider slInflationRate;
-        private Slider slBuildingCost;
-        private Slider slBankAccountCost;
-        private Slider slBankFee;
-        private Slider slNpcGrowRate;
-        private Slider slLevelupExp;
-        private Toggle tglHideSaveButton;
-        private Toggle tglHideReloadButton;
-        private Toggle tglHideBattleMap;
-        private Toggle tglNoRebirth;
-        //postfix
-        private Text pfAtkValue;
-        private Text pfDefValue;
-        private Text pfHpValue;
-        private Text pfBasisValue;
-        private Text pfSpecialMonsterRate;
-        private Text pfTaxRate;
-        private Text pfInflationRate;
-        private Text pfBuildingCost;
-        private Text pfBankAccountCost;
-        private Text pfBankFee;
-        private Text pfNpcGrowRate;
-        private Text pfLevelupExp;
-        private Text pfHideSaveButton;
-        private Text pfHideReloadButton;
-        private Text pfHideBattleMap;
-        private Text pfNoRebirth;
+        //UI
+        private UIHelper.UICustom1 uiCustom;
+        private UIItemBase.UIItemText txtTotalScore;
+        private UIItemBase.UIItemComposite slMonstAtk;
+        private UIItemBase.UIItemComposite slMonstDef;
+        private UIItemBase.UIItemComposite slMonstHp;
+        private UIItemBase.UIItemComposite slMonstBasis;
+        private UIItemBase.UIItemComposite slMonstSpecialRate;
+        private UIItemBase.UIItemComposite slEcoTaxRate;
+        private UIItemBase.UIItemComposite slEcoInfRate;
+        private UIItemBase.UIItemComposite slEcoBuildingCost;
+        private UIItemBase.UIItemComposite slEcoBankAccCost;
+        private UIItemBase.UIItemComposite slEcoBankFee;
+        private UIItemBase.UIItemComposite slNpcGrowRate;
+        private UIItemBase.UIItemComposite slMiscLevelupExp;
+        private UIItemBase.UIItemComposite tglSysHideSave;
+        private UIItemBase.UIItemComposite tglSysHideReload;
+        private UIItemBase.UIItemComposite tglSysHideBattleMap;
+        private UIItemBase.UIItemComposite tglSysNoRebirth;
+        private UIItemBase.UIItemComposite tglSysOnelife;
+        private UIItemBase.UIItemComposite tglSysOnlyPortalAtCityAndSect;
+        private UIItemBase.UIItemComposite tglSysNoExpFromBattle;
 
-        private readonly IList<dynamic> ScoreCalculator = new List<dynamic>();
-        private readonly IList<float> Columns = new List<float>();
-        private readonly IList<float> Rows = new List<float>();
+        //Score
+        private readonly IList<SMItem> ScoreCalculator = new List<SMItem>();
 
         public override void OnLoadGlobal()
         {
             base.OnLoadGlobal();
 
-            Columns.Clear();
-            for (var i = -5.5f; i <= 5.5f; i += 0.4f)
-                Columns.Add(i);
-            Rows.Clear();
-            for (var i = -0.5f; i >= -10.0f; i -= 0.25f)
-                Rows.Add(i);
-
-            Register(() => slAtkValue, s => true, s => (s.value * 100).Parse<int>());
-            Register(() => slDefValue, s => true, s => (s.value * 100).Parse<int>());
-            Register(() => slHpValue, s => true, s => (s.value * 100).Parse<int>());
-            Register(() => slBasisValue, s => true, s => (s.value * 100).Parse<int>());
-            Register(() => slSpecialMonsterRate, s => true, s => (s.value * 3000).Parse<int>());
-            Register(() => slTaxRate, s => true, s => (s.value * 100).Parse<int>());
-            Register(() => slInflationRate, s => true, s => (s.value * 1000).Parse<int>());
-            Register(() => slBuildingCost, s => true, s => (s.value * 100).Parse<int>());
-            Register(() => slBankAccountCost, s => true, s => (s.value * 100).Parse<int>());
-            Register(() => slBankFee, s => true, s => (s.value * 100).Parse<int>());
-            Register(() => slNpcGrowRate, s => true, s => (s.value * 1000).Parse<int>());
-            Register(() => slLevelupExp, s => true, s => (s.value * 2000).Parse<int>());
-            Register(() => tglHideSaveButton, s => s.isOn, s => 1000);
-            Register(() => tglHideReloadButton, s => s.isOn, s => 5000);
-            Register(() => tglHideBattleMap,s => s.isOn,s => 2000);
-            Register(() => tglNoRebirth, s => s.isOn,s => 10000);
+            DebugHelper.WriteLine("1");
+            Register(() => txtTotalScore, s => CalSMTotalScore());
+            Register(() => slMonstAtk, s => (s.Get().Parse<float>() * 100).Parse<int>());
+            Register(() => slMonstDef, s => (s.Get().Parse<float>() * 100).Parse<int>());
+            Register(() => slMonstHp, s => (s.Get().Parse<float>() * 100).Parse<int>());
+            Register(() => slMonstBasis, s => (s.Get().Parse<float>() * 100).Parse<int>());
+            Register(() => slMonstSpecialRate, s => (s.Get().Parse<float>() * 3000).Parse<int>());
+            Register(() => slEcoTaxRate, s => (s.Get().Parse<float>() * 100).Parse<int>());
+            Register(() => slEcoInfRate, s => (s.Get().Parse<float>() * 1000).Parse<int>());
+            Register(() => slEcoBuildingCost, s => (s.Get().Parse<float>() * 100).Parse<int>());
+            Register(() => slEcoBankAccCost, s => (s.Get().Parse<float>() * 100).Parse<int>());
+            Register(() => slEcoBankFee, s => (s.Get().Parse<float>() * 100).Parse<int>());
+            Register(() => slNpcGrowRate, s => (s.Get().Parse<float>() * 1000).Parse<int>());
+            Register(() => slMiscLevelupExp, s => (s.Get().Parse<float>() * 2000).Parse<int>());
+            Register(() => tglSysHideSave, s => 1000, s => s.Get().Parse<bool>()/*, onChange: s => tglSysHideReload.Set(false)*/);
+            Register(() => tglSysHideReload, s => 5000, s => s.Get().Parse<bool>()/*, s => tglSysHideSave.Get().Parse<bool>()*//*, onChange: s => tglSysOnelife.Set(false)*/);
+            Register(() => tglSysHideBattleMap, s => 2000, s => s.Get().Parse<bool>());
+            Register(() => tglSysNoRebirth, s => 10000, s => s.Get().Parse<bool>());
+            Register(() => tglSysOnelife, s => 20000, s => s.Get().Parse<bool>()/*, s => tglSysHideReload.Get().Parse<bool>()*/);
+            Register(() => tglSysOnlyPortalAtCityAndSect, s => 1000, s => s.Get().Parse<bool>());
+            Register(() => tglSysNoExpFromBattle, s => 1000, s => s.Get().Parse<bool>());
+            DebugHelper.WriteLine(ScoreCalculator.Count.ToString());
+            DebugHelper.Save();
         }
 
-        private void Register<T>(Func<T> funcComp, Func<T, bool> funcCond, Func<T, int> funcCal) where T : UIBehaviour
+        private void Register(
+            Func<UIItemBase> funcComp, 
+            Func<UIItemBase, int> funcCal, 
+            Func<UIItemBase, bool> funcCond = null,
+            Func<UIItemBase, bool> funcEna = null,
+            Func<UIItemBase, object[]> funcFormatter = null,
+            Action<UIItemBase> onChange = null)
         {
-            ScoreCalculator.Add(new SMItem<T>
+            var formatter = funcFormatter ?? (s => new object[] { funcCal.Invoke(s), s.Get().Parse<float>() });
+            ScoreCalculator.Add(new SMItem
             {
                 Comp = funcComp,
-                Cond = funcCond,
-                Cal = funcCal
+                Cal = funcCal,
+                Cond = funcCond ?? (s => true),
+                EnaAct = funcEna ?? (s => true),
+                Formatter = formatter,
+                Change = onChange,
             });
         }
 
@@ -135,187 +123,68 @@ namespace MOD_nE7UL2.Mod
                 var modConfigBtn = uiLogin.btnSet.Create().Pos(0f, 3.3f, uiLogin.btnPaperChange.transform.position.z);
                 var modConfigText = modConfigBtn.GetComponentInChildren<Text>().Align(TextAnchor.MiddleCenter);
                 modConfigText.text = TITLE;
-
                 modConfigBtn.onClick.AddListener((UnityAction)OpenSMConfigs);
             }
         }
 
         private void OpenSMConfigs()
         {
+            uiCustom = UIHelper.UICustom1.Create(TITLE, SetSMConfigs, true);
+            int col, row;
+
+            col = 1; row = 0;
+            uiCustom.AddText(col, row++, "Monster:").Format(null, 17, FontStyle.Italic);
+            slMonstAtk = uiCustom.AddCompositeSlider(col, row++, "ATK", -10.00f, 10.00f, AddAtkRate, "+{1}% ({0}P)");
+            slMonstDef = uiCustom.AddCompositeSlider(col, row++, "DEF", -10.00f, 10.00f, AddDefRate, "+{1}% ({0}P)");
+            slMonstHp = uiCustom.AddCompositeSlider(col, row++, "Max HP", -10.00f, 10.00f, AddHpRate, "+{1}% ({0}P)");
+            slMonstBasis = uiCustom.AddCompositeSlider(col, row++, "Basis", -10.00f, 10.00f, AddBasisRate, "+{1}% ({0}P)");
+            uiCustom.AddText(col, row++, "(Included Sword, Blade, Spear, Fist, Finger, Palm, Fire, Water, Thunder, Wood, Wind, Earth)").Format(null, 13).Align(TextAnchor.MiddleLeft);
+            slMonstSpecialRate = uiCustom.AddCompositeSlider(col, row++, "Special Monster Rate", -1.00f, 1.00f, AddSpecialMonsterRate, "+{1}% ({0}P)");
+
+            col = 1; row = 8;
+            uiCustom.AddText(col, row++, "Economic:").Format(null, 17, FontStyle.Italic);
+            slEcoTaxRate = uiCustom.AddCompositeSlider(col, row++, "Tax Rate", -10.00f, 10.00f, AddTaxRate, "+{1}% ({0}P)");
+            slEcoInfRate = uiCustom.AddCompositeSlider(col, row++, "Inflation Rate", -10.00f, 10.00f, AddInflationRate, "+{1}% ({0}P)");
+            slEcoBuildingCost = uiCustom.AddCompositeSlider(col, row++, "Building Cost", -10.00f, 10.00f, AddBuildingCostRate, "+{1}% ({0}P)");
+            slEcoBankAccCost = uiCustom.AddCompositeSlider(col, row++, "Bank Account Cost", -10.00f, 10.00f, AddBankAccountCostRate, "+{1}% ({0}P)");
+            slEcoBankFee = uiCustom.AddCompositeSlider(col, row++, "Bank Fee", -10.00f, 10.00f, AddBankFee, "+{1}% ({0}P)");
+
+            col = 1; row = 15;
+            uiCustom.AddText(col, row++, "NPC:").Format(null, 17, FontStyle.Italic);
+            slNpcGrowRate = uiCustom.AddCompositeSlider(col, row++, "Grow Rate", -10.00f, 10.00f, AddNpcGrowRate, "+{1}% ({0}P)");
+
+            col = 1; row = 18;
+            uiCustom.AddText(col, row++, "Misc:").Format(null, 17, FontStyle.Italic);
+            slMiscLevelupExp = uiCustom.AddCompositeSlider(col, row++, "Levelup Exp", -10.00f, 10.00f, AddLevelupExpRate, "+{1}% ({0}P)");
+
+            col = 16; row = 0;
+            uiCustom.AddText(col, row++, "Systems:").Format(null, 17, FontStyle.Italic);
+            tglSysHideSave = uiCustom.AddCompositeToggle(col, row++, "Hide Save Button", HideSaveButton, "({0}P)");
+            tglSysHideReload = uiCustom.AddCompositeToggle(col, row++, "Hide Reload Button", HideReloadButton, "({0}P)");
+            tglSysHideBattleMap = uiCustom.AddCompositeToggle(col, row++, "Hide Battle Map", HideBattleMap, "({0}P)");
+            tglSysNoRebirth = uiCustom.AddCompositeToggle(col, row++, "No Rebirth", NoRebirth, "({0}P)");
+            tglSysOnelife = uiCustom.AddCompositeToggle(col, row++, "One life", Onelife, "({0}P)");
+            tglSysOnlyPortalAtCityAndSect = uiCustom.AddCompositeToggle(col, row++, "Only Portal at City and Sect", OnlyPortalAtCityAndSect, "({0}P)");
+            tglSysNoExpFromBattle = uiCustom.AddCompositeToggle(col, row++, "No Exp from Battles", NoExpFromBattles, "({0}P)");
+
+            col = 30; row = 0;
+            txtTotalScore = uiCustom.AddText(col, 0, "Total score: {0}P").Format(Color.red, 17).Align(TextAnchor.MiddleRight);
+            uiCustom.AddButton(col, 2, () => { }, "Level 1");
+            uiCustom.AddButton(col, 4, () => { }, "Level 2");
+            uiCustom.AddButton(col, 6, () => { }, "Level 3");
+            uiCustom.AddButton(col, 8, () => { }, "Level 4");
+            uiCustom.AddButton(col, 10, () => { }, "Level 5");
+            uiCustom.AddButton(col, 12, () => { }, "Level 6");
+            uiCustom.AddButton(col, 14, () => { }, "Level 7");
+            uiCustom.AddButton(col, 16, () => { }, "Level 8");
+            uiCustom.AddButton(col, 18, () => { }, "Level 9");
+            uiCustom.AddButton(col, 20, () => { }, "Level 10");
+            uiCustom.AddText(14, 26, "You have to start a new game to apply these configs!").Format(Color.red, 17);
+
+            SetWork();
             try
             {
-                DebugHelper.WriteLine("0");
-                var uiCfg = g.ui.OpenUI<UITextInfoLong>(UIType.TextInfoLong);
-                var uiStt = g.ui.OpenUI<UIGameSetting>(UIType.GameSetting);
-                uiStt.gameObject.SetActive(false);
-                {
-                    DebugHelper.WriteLine("1");
-                    uiCfg.InitData(TITLE, string.Empty, isShowCancel: true);
-                    uiCfg.btnOK.onClick.AddListener((UnityAction)SetSMConfigs);
-
-                    DebugHelper.WriteLine("2");
-                    Func<float, float, TextAnchor, Text> Text = (float c, float r, TextAnchor anchor) => uiStt.textSystemOK.Create(uiCfg.canvas.transform).Pos(uiCfg.textTitle.gameObject, c, r).Align(anchor).Format();
-                    Func<float, float, Toggle> Toggle = (float c, float r) => uiStt.tglCameraShake.Create(uiCfg.canvas.transform).Pos(uiCfg.textTitle.gameObject, c, r);
-                    Func<float, float, Slider> Slider = (float c, float r) => uiStt.sliSoundMain.Create(uiCfg.canvas.transform).Pos(uiCfg.textTitle.gameObject, c, r);
-                    Func<float, float, string, Button> Button = (float c, float r, string label) =>
-                    {
-                        var rs = uiStt.btnSystemOK.Create(uiCfg.canvas.transform).Pos(uiCfg.textTitle.gameObject, c, r);
-                        rs.GetComponentInChildren<Text>().text = label;
-                        return rs;
-                    };
-
-                    //group
-                    DebugHelper.WriteLine("3");
-                    var txtMonsterGroup = Text(Columns[0], Rows[0], TextAnchor.MiddleRight).Format(fsize: 17, fstype: FontStyle.Italic);
-                    var txtEconomicGroup = Text(Columns[0], Rows[8], TextAnchor.MiddleRight).Format(fsize: 17, fstype: FontStyle.Italic);
-                    var txtNpcGroup = Text(Columns[0], Rows[15], TextAnchor.MiddleRight).Format(fsize: 17, fstype: FontStyle.Italic);
-                    var txtMiscGroup = Text(Columns[0], Rows[18], TextAnchor.MiddleRight).Format(fsize: 17, fstype: FontStyle.Italic);
-                    var txtSystemGroup = Text(Columns[14], Rows[0], TextAnchor.MiddleRight).Format(fsize: 17, fstype: FontStyle.Italic);
-
-                    txtMonsterGroup.text = "Monster:";
-                    txtEconomicGroup.text = "Economic:";
-                    txtNpcGroup.text = "NPC:";
-                    txtMiscGroup.text = "Misc:";
-                    txtSystemGroup.text = "Systems:";
-
-                    //prefix
-                    DebugHelper.WriteLine("4");
-                    var txtAtk = Text(Columns[0], Rows[1], TextAnchor.MiddleRight);
-                    var txtDef = Text(Columns[0], Rows[2], TextAnchor.MiddleRight);
-                    var txtHp = Text(Columns[0], Rows[3], TextAnchor.MiddleRight);
-                    var txtBasis = Text(Columns[0], Rows[4], TextAnchor.MiddleRight);
-                    var txtBasis2 = Text(Columns[0], Rows[5], TextAnchor.MiddleLeft).Format(fsize: 13);
-                    var txtSpecialMonsterRate = Text(Columns[0], Rows[6], TextAnchor.MiddleRight);
-                    var txtTaxRate = Text(Columns[0], Rows[9], TextAnchor.MiddleRight);
-                    var txtInflationRate = Text(Columns[0], Rows[10], TextAnchor.MiddleRight);
-                    var txtBuildingCost = Text(Columns[0], Rows[11], TextAnchor.MiddleRight);
-                    var txtBankAccountCost = Text(Columns[0], Rows[12], TextAnchor.MiddleRight);
-                    var txtBankFee = Text(Columns[0], Rows[13], TextAnchor.MiddleRight);
-                    var txtNpcGrowRate = Text(Columns[0], Rows[16], TextAnchor.MiddleRight);
-                    var txtLevelupExp = Text(Columns[0], Rows[19], TextAnchor.MiddleRight);
-                    var txtHideSaveBtn = Text(Columns[14], Rows[1], TextAnchor.MiddleRight);
-                    var txtHideReloadBtn = Text(Columns[14], Rows[2], TextAnchor.MiddleRight);
-                    var txtHideBattleMap = Text(Columns[14], Rows[3], TextAnchor.MiddleRight);
-                    var txtNoRebirth = Text(Columns[14], Rows[4], TextAnchor.MiddleRight);
-
-                    txtAtk.text = "ATK";
-                    txtDef.text = "DEF";
-                    txtHp.text = "Max HP";
-                    txtBasis.text = "Basis";
-                    txtBasis2.text = "(Included Sword, Blade, Spear, Fist, Finger, Palm, Fire, Water, Thunder, Wood, Wind, Earth)";
-                    txtSpecialMonsterRate.text = "Special Monster Rate";
-                    txtTaxRate.text = "Special Monster Rate";
-                    txtInflationRate.text = "Inflation Rate";
-                    txtBuildingCost.text = "Building Cost";
-                    txtBankAccountCost.text = "Bank Account Cost";
-                    txtBankFee.text = "Bank Fee";
-                    txtNpcGrowRate.text = "NPC Grow Rate";
-                    txtLevelupExp.text = "Levelup Exp Rate";
-                    txtHideSaveBtn.text = "Hide Save-Button";
-                    txtHideReloadBtn.text = "Hide Reload-Button";
-                    txtHideBattleMap.text = "Hide Battle Map";
-                    txtNoRebirth.text = "No Rebirth";
-
-                    //main-comp
-                    DebugHelper.WriteLine("5");
-                    slAtkValue = Slider(Columns[4], Rows[1]);
-                    slDefValue = Slider(Columns[4], Rows[2]);
-                    slHpValue = Slider(Columns[4], Rows[3]);
-                    slBasisValue = Slider(Columns[4], Rows[4]);
-                    slSpecialMonsterRate = Slider(Columns[4], Rows[6]);
-                    slTaxRate = Slider(Columns[4], Rows[9]);
-                    slInflationRate = Slider(Columns[4], Rows[10]);
-                    slBuildingCost = Slider(Columns[4], Rows[11]);
-                    slBankAccountCost = Slider(Columns[4], Rows[12]);
-                    slBankFee = Slider(Columns[4], Rows[13]);
-                    slNpcGrowRate = Slider(Columns[4], Rows[16]);
-                    slLevelupExp = Slider(Columns[4], Rows[19]);
-                    tglHideSaveButton = Toggle(Columns[16], Rows[1]);
-                    tglHideReloadButton = Toggle(Columns[16], Rows[2]);
-                    tglHideBattleMap = Toggle(Columns[16], Rows[3]);
-                    tglNoRebirth = Toggle(Columns[16], Rows[4]);
-
-                    slAtkValue.minValue = -10.00f;
-                    slAtkValue.maxValue = 10.00f;
-                    slAtkValue.value = AddAtkRate;
-                    slDefValue.minValue = -10.00f;
-                    slDefValue.maxValue = 10.00f;
-                    slDefValue.value = AddDefRate;
-                    slHpValue.minValue = -10.00f;
-                    slHpValue.maxValue = 10.00f;
-                    slHpValue.value = AddHpRate;
-                    slBasisValue.minValue = -10.00f;
-                    slBasisValue.maxValue = 10.00f;
-                    slBasisValue.value = AddBasisRate;
-                    slSpecialMonsterRate.minValue = -1.00f;
-                    slSpecialMonsterRate.maxValue = 1.00f;
-                    slSpecialMonsterRate.value = AddSpecialMonsterRate;
-                    slTaxRate.minValue = 0.00f;
-                    slTaxRate.maxValue = 10.00f;
-                    slTaxRate.value = AddTaxRate;
-                    slInflationRate.minValue = -1.00f;
-                    slInflationRate.maxValue = 3.00f;
-                    slInflationRate.value = AddInflationRate;
-                    slBuildingCost.minValue = 0.00f;
-                    slBuildingCost.maxValue = 10.00f;
-                    slBuildingCost.value = AddBuildingCostRate;
-                    slBankAccountCost.minValue = 0.00f;
-                    slBankAccountCost.maxValue = 10.00f;
-                    slBankAccountCost.value = AddBankAccountCostRate;
-                    slBankFee.minValue = 0.00f;
-                    slBankFee.maxValue = 100.00f;
-                    slBankFee.value = AddBankFee;
-                    slNpcGrowRate.minValue = 0.00f;
-                    slNpcGrowRate.maxValue = 10.00f;
-                    slNpcGrowRate.value = AddNpcGrowRate;
-                    slLevelupExp.minValue = 0.00f;
-                    slLevelupExp.maxValue = 1.00f;
-                    slLevelupExp.value = AddLevelupExpRate;
-                    tglHideSaveButton.isOn = HideSaveButton;
-                    tglHideReloadButton.isOn = HideReloadButton;
-                    tglHideBattleMap.isOn = HideBattleMap;
-                    tglNoRebirth.isOn = NoRebirth;
-
-                    //postfix
-                    DebugHelper.WriteLine("6");
-                    pfAtkValue = Text(Columns[8], Rows[1], TextAnchor.MiddleLeft);
-                    pfDefValue = Text(Columns[8], Rows[2], TextAnchor.MiddleLeft);
-                    pfHpValue = Text(Columns[8], Rows[3], TextAnchor.MiddleLeft);
-                    pfBasisValue = Text(Columns[8], Rows[4], TextAnchor.MiddleLeft);
-                    pfSpecialMonsterRate = Text(Columns[8], Rows[6], TextAnchor.MiddleLeft);
-                    pfTaxRate = Text(Columns[8], Rows[9], TextAnchor.MiddleLeft);
-                    pfInflationRate = Text(Columns[8], Rows[10], TextAnchor.MiddleLeft);
-                    pfBuildingCost = Text(Columns[8], Rows[11], TextAnchor.MiddleLeft);
-                    pfBankAccountCost = Text(Columns[8], Rows[12], TextAnchor.MiddleLeft);
-                    pfBankFee = Text(Columns[8], Rows[13], TextAnchor.MiddleLeft);
-                    pfNpcGrowRate = Text(Columns[8], Rows[16], TextAnchor.MiddleLeft);
-                    pfLevelupExp = Text(Columns[8], Rows[19], TextAnchor.MiddleLeft);
-                    pfHideSaveButton = Text(Columns[18], Rows[1], TextAnchor.MiddleLeft);
-                    pfHideReloadButton = Text(Columns[18], Rows[2], TextAnchor.MiddleLeft);
-                    pfHideBattleMap = Text(Columns[18], Rows[3], TextAnchor.MiddleLeft);
-                    pfNoRebirth = Text(Columns[18], Rows[4], TextAnchor.MiddleLeft);
-
-                    //sum
-                    DebugHelper.WriteLine("7");
-                    txtSMScore = Text(Columns[27], Rows[0], TextAnchor.MiddleRight);
-                    txtEndNote = Text(Columns[11], Rows[20], TextAnchor.MiddleCenter);
-                    btnDefault = Button(Columns[27], Rows[2], "Default");
-                    btnLevel01 = Button(Columns[27], Rows[4], "Level 1");
-                    btnLevel02 = Button(Columns[27], Rows[6], "Level 2");
-                    btnLevel03 = Button(Columns[27], Rows[8], "Level 3");
-                    btnLevel04 = Button(Columns[27], Rows[10], "Level 4");
-                    btnLevel05 = Button(Columns[27], Rows[12], "Level 5");
-                    btnLevel06 = Button(Columns[27], Rows[14], "Level 6");
-                    btnLevel07 = Button(Columns[27], Rows[16], "Level 7");
-                    btnLevel08 = Button(Columns[27], Rows[18], "Level 8");
-                    btnLevel09 = Button(Columns[27], Rows[20], "Level 9");
-                    btnLevel10 = Button(Columns[27], Rows[22], "Level 10");
-
-                    txtEndNote.text = $"You have to start a new game to apply these configs!";
-                }
-                DebugHelper.WriteLine("8");
-                uiStt.gameObject.SetActive(true);
-                g.ui.CloseUI(uiStt);
+                txtTotalScore.Set($"Total score: {CalSMTotalScore()}P");
             }
             catch (Exception ex)
             {
@@ -323,53 +192,48 @@ namespace MOD_nE7UL2.Mod
             }
         }
 
+        private void SetWork()
+        {
+            foreach (var wk in ScoreCalculator)
+            {
+                var item = wk.Comp.Invoke();
+                item.ItemWork = wk;
+            }
+        }
+
         [ErrorIgnore]
         public override void OnTimeUpdate()
         {
             base.OnTimeUpdate();
-            if (tglHideReloadButton.isOn)
-                tglHideSaveButton.isOn = true;
-            txtSMScore.text = $"Total score: {CalSMTotalScore()} points";
-            pfAtkValue.text = $"+{slAtkValue.value * 100f:0}% atk ({CalCompScore(slAtkValue)} points)";
-            pfDefValue.text = $"+{slDefValue.value * 100f:0}% def ({CalCompScore(slDefValue)} points)";
-            pfHpValue.text = $"+{slHpValue.value * 100f:0}% hp ({CalCompScore(slHpValue)} points)";
-            pfBasisValue.text = $"+{slBasisValue.value * 100f:0}% basis ({CalCompScore(slBasisValue)} points)";
-            pfSpecialMonsterRate.text = $"+{slSpecialMonsterRate.value * 100f:0}% basis ({CalCompScore(slSpecialMonsterRate)} points)";
-            pfTaxRate.text = $"+{slTaxRate.value * 100f:0}% basis ({CalCompScore(slTaxRate)} points)";
-            pfInflationRate.text = $"+{slInflationRate.value * 100f:0}% basis ({CalCompScore(slInflationRate)} points)";
-            pfBuildingCost.text = $"+{slBuildingCost.value * 100f:0}% basis ({CalCompScore(slBuildingCost)} points)";
-            pfBankAccountCost.text = $"+{slBankAccountCost.value * 100f:0}% basis ({CalCompScore(slBankAccountCost)} points)";
-            pfBankFee.text = $"+{slBankFee.value * 100f:0}% basis ({CalCompScore(slBankFee)} points)";
-            pfNpcGrowRate.text = $"+{slNpcGrowRate.value * 100f:0}% basis ({CalCompScore(slNpcGrowRate)} points)";
-            pfLevelupExp.text = $"+{slLevelupExp.value * 100f:0}% basis ({CalCompScore(slLevelupExp)} points)";
-            pfHideSaveButton.text = $"({CalCompScore(tglHideSaveButton)} points)";
-            pfHideReloadButton.text = $"({CalCompScore(tglHideReloadButton)} points)";
-            pfHideBattleMap.text = $"({CalCompScore(tglHideBattleMap)} points)";
-            pfNoRebirth.text = $"({CalCompScore(tglNoRebirth)} points)";
+            //uiCustom.UpdateUI();
+            //txtTotalScore.Set($"Total score: {CalSMTotalScore()}P");
         }
 
         private void SetSMConfigs()
         {
-            AddAtkRate = slAtkValue.value;
-            AddDefRate = slDefValue.value;
-            AddHpRate = slHpValue.value;
-            AddBasisRate = slHpValue.value;
-            AddSpecialMonsterRate = slSpecialMonsterRate.value;
-            AddTaxRate = slTaxRate.value;
-            AddInflationRate = slInflationRate.value;
-            AddBuildingCostRate = slBuildingCost.value;
-            AddBankAccountCostRate = slBankAccountCost.value;
-            AddBankFee = slBankFee.value;
-            AddNpcGrowRate = slNpcGrowRate.value;
-            AddLevelupExpRate = slLevelupExp.value;
-            HideSaveButton = tglHideSaveButton.hasSelection;
-            HideReloadButton = tglHideReloadButton.hasSelection;
-            HideBattleMap = tglHideBattleMap.hasSelection;
-            NoRebirth = tglNoRebirth.hasSelection;
+            AddAtkRate = slMonstAtk.Get().Parse<float>();
+            AddDefRate = slMonstDef.Get().Parse<float>();
+            AddHpRate = slMonstHp.Get().Parse<float>();
+            AddBasisRate = slMonstBasis.Get().Parse<float>();
+            AddSpecialMonsterRate = slMonstSpecialRate.Get().Parse<float>();
+            AddTaxRate = slEcoTaxRate.Get().Parse<float>();
+            AddInflationRate = slEcoInfRate.Get().Parse<float>();
+            AddBuildingCostRate = slEcoBuildingCost.Get().Parse<float>();
+            AddBankAccountCostRate = slEcoBankAccCost.Get().Parse<float>();
+            AddBankFee = slEcoBankFee.Get().Parse<float>();
+            AddNpcGrowRate = slNpcGrowRate.Get().Parse<float>();
+            AddLevelupExpRate = slMiscLevelupExp.Get().Parse<float>();
+            HideSaveButton = tglSysHideSave.Get().Parse<bool>();
+            HideReloadButton = tglSysHideReload.Get().Parse<bool>();
+            HideBattleMap = tglSysHideBattleMap.Get().Parse<bool>();
+            NoRebirth = tglSysNoRebirth.Get().Parse<bool>();
+            Onelife = tglSysOnelife.Get().Parse<bool>();
+            OnlyPortalAtCityAndSect = tglSysOnlyPortalAtCityAndSect.Get().Parse<bool>();
+            NoExpFromBattles = tglSysNoExpFromBattle.Get().Parse<bool>();
             CacheHelper.Save();
         }
 
-        private int CalCompScore(dynamic comp)
+        private int CalCompScore(UIItemBase comp)
         {
             if (comp == null)
                 return 0;
@@ -379,12 +243,15 @@ namespace MOD_nE7UL2.Mod
             return x.Cal.Invoke(comp);
         }
 
-        private bool IsEnableComp(dynamic comp)
+        private bool IsEnableComp(UIItemBase comp)
         {
             if (comp == null)
                 return false;
             var x = ScoreCalculator.FirstOrDefault(k => k.Comp.Invoke() == comp);
-            return x != null && x.Cond.Invoke(comp);
+            if (x == null)
+                return false;
+            var item = x.Comp.Invoke();
+            return x != null && x.Cond.Invoke(comp) && item.IsEnable();
         }
 
         private int CalSMTotalScore()

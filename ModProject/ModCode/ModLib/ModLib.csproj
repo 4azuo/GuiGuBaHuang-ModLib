@@ -91,6 +91,7 @@
     <Compile Include="Object\InGameSettings.cs" />
     <Compile Include="Object\MultiValue.cs" />
     <Compile Include="Object\ModData.cs" />
+    <Compile Include="Object\UIItemBase.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
