@@ -168,12 +168,13 @@ namespace MOD_nE7UL2.Mod
 
         public void AddNpcProp(WorldUnitBase wunit, float ratio = 1.00f)
         {
+            var smConfigs = EventHelper.GetEvent<SMLocalConfigsEvent>(ModConst.SM_LOCAL_CONFIGS_EVENT);
             var utype = UnitTypeDic[wunit.GetUnitId()];
             foreach (var p in utype.PropIncRatio)
             {
                 var prop = p.Value0 as UnitPropertyEnum;
                 var r2Player = Math.Max(1.0f, g.world.playerUnit.GetProperty<int>(prop).Parse<float>() / wunit.GetProperty<int>(prop).Parse<float>());
-                wunit.SetProperty(prop, utype.CalType(wunit, prop, ratio * r2Player));
+                wunit.SetProperty(prop, utype.CalType(wunit, prop, smConfigs.Calculate(ratio * r2Player, smConfigs.Configs.AddNpcGrowRate).Parse<float>()));
             }
         }
 

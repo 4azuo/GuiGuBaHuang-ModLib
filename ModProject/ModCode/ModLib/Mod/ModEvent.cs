@@ -92,6 +92,9 @@ namespace ModLib.Mod
         public virtual void OnLoadGameAfter() { }
         public virtual void OnLoadGameFirst() { }
         public virtual void OnInitWorld(ETypeData e) { }
+        public virtual void OnLoadMapNewGame(LoadScene e) { }
+        public virtual void OnLoadMapFirst(LoadScene e) { }
+        public virtual void OnLoadSceneStart(LoadScene e) { }
         public virtual void OnLoadScene(LoadScene e) { }
         public virtual void OnIntoWorld(ETypeData e) { }
         public virtual void OnFirstMonth() { }

@@ -56,6 +56,7 @@ namespace MOD_nE7UL2.Mod
 
         public static void OnUIOpen(OpenUIEnd e)
         {
+            var smConfigs = EventHelper.GetEvent<SMLocalConfigsEvent>(ModConst.SM_LOCAL_CONFIGS_EVENT);
             var player = g.world.playerUnit;
 
             /*
@@ -95,7 +96,7 @@ namespace MOD_nE7UL2.Mod
                 var uiBattleInfo = g.ui.GetUI<UIBattleInfo>(UIType.BattleInfo);
                 uiBattleInfo.uiInfo.goMonstCount1.SetActive(false);
                 uiBattleInfo.uiInfo.goMonstCount2.SetActive(false);
-                uiBattleInfo.uiMap.goGroupRoot.SetActive(false);
+                uiBattleInfo.uiMap.goGroupRoot.SetActive(!smConfigs.Configs.HideBattleMap);
             }
 
             if (e.uiType.uiName == UIType.NPCInfo.uiName)
@@ -315,6 +316,13 @@ namespace MOD_nE7UL2.Mod
                     uiPropInfo_textRefineAdj3.text = customAdj1?.GetText(uiPropInfo.unit, uiPropInfo.propData, refineLvl);
                     uiPropInfo_textRefineAdj4.text = customAdj2?.GetText(uiPropInfo.unit, uiPropInfo.propData, refineLvl);
                 }
+            }
+
+            if (e.uiType.uiName == UIType.GameMemu.uiName)
+            {
+                var ui = g.ui.GetUI<UIGameMemu>(UIType.GameMemu);
+                ui.btnSave.gameObject.SetActive(!smConfigs.Configs.HideSaveButton);
+                ui.btnReloadCache.gameObject.SetActive(!smConfigs.Configs.HideReloadButton);
             }
 
             /*

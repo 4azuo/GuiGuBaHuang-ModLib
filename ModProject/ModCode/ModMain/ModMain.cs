@@ -1,4 +1,6 @@
-﻿using MOD_nE7UL2.Enum;
+﻿using MOD_nE7UL2.Const;
+using MOD_nE7UL2.Enum;
+using MOD_nE7UL2.Mod;
 using MOD_nE7UL2.Object;
 using ModLib.Enum;
 using ModLib.Mod;

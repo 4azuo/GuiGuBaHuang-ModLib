@@ -131,13 +131,14 @@ namespace MOD_nE7UL2.Enum
         public bool IsCity { get; private set; }
         public long[] BuildCosts { get; private set; }
         public Action<BuildingCostEnum, MapBuildSubBase> BuiltAfter { get; private set; }
-        private BuildingCostEnum(float rate, MapBuildSubType type, bool isSchool, bool isCity, long[] costs, Action<BuildingCostEnum, MapBuildSubBase>  after = null) : base()
+        private BuildingCostEnum(float rate, MapBuildSubType type, bool isSchool, bool isCity, long[] costs, Action<BuildingCostEnum, MapBuildSubBase> after = null) : base()
         {
             BuildRate = rate;
             BuildType = type;
             IsSchool = isSchool;
             IsCity = isCity;
             BuildCosts = costs;
+            BuiltAfter = after;
         }
 
         public bool IsMatchBuildConds(MapBuildBase build)

@@ -23,7 +23,8 @@ namespace MOD_nE7UL2.Mod
         {
             base.OnOpenUIEnd(e);
 
-            if (e.uiType.uiName == UIType.TownPub.uiName)
+            var smConfigs = EventHelper.GetEvent<SMLocalConfigsEvent>(ModConst.SM_LOCAL_CONFIGS_EVENT);
+            if (e.uiType.uiName == UIType.TownPub.uiName && !smConfigs.Configs.NoRebirth)
             {
                 var player = g.world.playerUnit;
                 var playerGradeLvl = player.GetGradeLvl();

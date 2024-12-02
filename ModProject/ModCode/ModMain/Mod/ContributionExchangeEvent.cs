@@ -32,14 +32,15 @@ namespace MOD_nE7UL2.Mod
 
         private void RandomRatio()
         {
-            var smConfigs = EventHelper.GetEvent<SMLocalConfigsEvent>(ModConst.SM_LOCAL_CONFIGS_EVENT);
-            CurMonthRatio = smConfigs.Calculate(GetExchangeRatio() * CommonTool.Random(0.80f, 1.30f), smConfigs.Configs.AddSectExchangeRate).Parse<int>();
+            CurMonthRatio = (GetExchangeRatio() * CommonTool.Random(0.80f, 1.30f)).Parse<int>();
         }
 
         public override void OnOpenUIEnd(OpenUIEnd e)
         {
             base.OnOpenUIEnd(e);
-            if (e.uiType.uiName == UIType.School.uiName)
+
+            var smConfigs = EventHelper.GetEvent<SMLocalConfigsEvent>(ModConst.SM_LOCAL_CONFIGS_EVENT);
+            if (e.uiType.uiName == UIType.School.uiName && !smConfigs.Configs.SectNoExchange)
             {
                 var uiSchool = g.ui.GetUI<UISchool>(UIType.School);
                 if (g.world?.playerUnit?.data?.school?.schoolNameID == uiSchool.school.schoolNameID)
