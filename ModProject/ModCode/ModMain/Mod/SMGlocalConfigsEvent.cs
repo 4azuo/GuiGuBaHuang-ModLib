@@ -39,6 +39,7 @@ namespace MOD_nE7UL2.Mod
         public bool OnlyPortalAtCityAndSect { get; set; } = false;
         public bool NoExpFromBattles { get; set; } = false;
         public bool SectNoExchange { get; set; } = false;
+        public bool BossHasShield { get; set; } = false;
 
         //UI
         private UIHelper.UICustom1 uiCustom;
@@ -65,6 +66,7 @@ namespace MOD_nE7UL2.Mod
         private UIItemBase.UIItemComposite tglSysOnlyPortalAtCityAndSect;
         private UIItemBase.UIItemComposite tglSysNoExpFromBattle;
         private UIItemBase.UIItemComposite tglSysSectNoExchange;
+        private UIItemBase.UIItemComposite tglSysBossHasShield;
 
         //Score
         public static IList<SMItemWork> ScoreCalculator { get; } = new List<SMItemWork>();
@@ -96,6 +98,7 @@ namespace MOD_nE7UL2.Mod
             Register(() => tglSysOnlyPortalAtCityAndSect, s => 1000, s => s.Get().Parse<bool>());
             Register(() => tglSysNoExpFromBattle, s => 1000, s => s.Get().Parse<bool>());
             Register(() => tglSysSectNoExchange, s => 10000, s => s.Get().Parse<bool>());
+            Register(() => tglSysBossHasShield, s => 10000, s => s.Get().Parse<bool>());
         }
 
         private void Register(
@@ -189,6 +192,7 @@ namespace MOD_nE7UL2.Mod
             tglSysOnlyPortalAtCityAndSect = uiCustom.AddCompositeToggle(col, row++, "Only Portal at City and Sect", OnlyPortalAtCityAndSect, "({0}P)");
             tglSysNoExpFromBattle = uiCustom.AddCompositeToggle(col, row++, "No Exp from Battles", NoExpFromBattles, "({0}P)");
             tglSysSectNoExchange = uiCustom.AddCompositeToggle(col, row++, "Sect No Exchange", SectNoExchange, "({0}P)");
+            tglSysBossHasShield = uiCustom.AddCompositeToggle(col, row++, "Boss Has Shield", BossHasShield, "({0}P)");
 
             col = 30; row = 0;
             txtTotalScore = uiCustom.AddText(col, row, "Total score: {0}P").Format(Color.red, 17).Align(TextAnchor.MiddleRight);
@@ -233,10 +237,11 @@ namespace MOD_nE7UL2.Mod
             (slEcoSectExchangeRate.MainComponent as UIItemBase.UIItemSlider).SetPercent(level * 0.10000f);
             (slNpcGrowRate.MainComponent as UIItemBase.UIItemSlider).SetPercent(level * 0.10000f);
             (slMiscLevelupExp.MainComponent as UIItemBase.UIItemSlider).SetPercent(level * 0.10000f);
-            tglSysHideBattleMap.Set(level > 1);
-            tglSysHideSave.Set(level > 2);
-            tglSysNoExpFromBattle.Set(level > 4);
-            tglSysOnlyPortalAtCityAndSect.Set(level > 5);
+            tglSysHideBattleMap.Set(level > 0);
+            tglSysHideSave.Set(level > 1);
+            tglSysNoExpFromBattle.Set(level > 2);
+            tglSysOnlyPortalAtCityAndSect.Set(level > 3);
+            tglSysBossHasShield.Set(level > 4);
             tglSysHideReload.Set(level > 6);
             tglSysSectNoExchange.Set(level > 7);
             tglSysNoRebirth.Set(level > 8);
@@ -275,6 +280,7 @@ namespace MOD_nE7UL2.Mod
             OnlyPortalAtCityAndSect = tglSysOnlyPortalAtCityAndSect.Get().Parse<bool>();
             NoExpFromBattles = tglSysNoExpFromBattle.Get().Parse<bool>();
             SectNoExchange = tglSysSectNoExchange.Get().Parse<bool>();
+            BossHasShield = tglSysBossHasShield.Get().Parse<bool>();
             CacheHelper.Save();
         }
 

@@ -494,6 +494,8 @@ namespace MOD_nE7UL2.Mod
         {
             base.OnBattleEndOnce(e);
 
+            var smConfigs = EventHelper.GetEvent<SMLocalConfigsEvent>(ModConst.SM_LOCAL_CONFIGS_EVENT);
+
             var localDmgDealt = ModBattleEvent.sGetDmg(ModBattleEvent.DmgSaveEnum.Local, ModBattleEvent.GetDmgKey(ModBattleEvent.DmgEnum.DmgDealt, ModBattleEvent.DmgTypeEnum.Damage));
             var localDmgRecv = ModBattleEvent.sGetDmg(ModBattleEvent.DmgSaveEnum.Local, ModBattleEvent.GetDmgKey(ModBattleEvent.DmgEnum.DmgRecv, ModBattleEvent.DmgTypeEnum.Damage));
             DebugHelper.WriteLine($"Damage dealt: {localDmgDealt}dmg, Damage recieve: {localDmgRecv}dmg");
@@ -502,7 +504,10 @@ namespace MOD_nE7UL2.Mod
             {
                 DebugHelper.WriteLine($"BattleRewardEvent: lose");
                 //life
-                player.AddProperty<int>(UnitPropertyEnum.Life, -unchecked((int)Math.Max(localDmgRecv / 2000, 1)));
+                if (smConfigs.Configs.Onelife)
+                    player.SetProperty<int>(UnitPropertyEnum.Life, 0);
+                else
+                    player.AddProperty<int>(UnitPropertyEnum.Life, -unchecked((int)Math.Max(localDmgRecv / 2000, 1)));
                 //exp
                 var gradeLvl = player.GetGradeLvl();
                 var bodyReconstructionItemId = BodyReconstructions.ContainsKey(gradeLvl) ? BodyReconstructions[gradeLvl] : 0;
@@ -548,9 +553,13 @@ namespace MOD_nE7UL2.Mod
                 var rewardExp1 = Math.Max(localDmgDealt * ModMain.ModObj.InGameCustomSettings.BattleRewardConfigs.ExpPerDmgDealt, 1).Parse<int>();
                 var rewardExp2 = Math.Max(localDmgRecv * ModMain.ModObj.InGameCustomSettings.BattleRewardConfigs.ExpPerDmgRecv, 1).Parse<int>();
                 var rewardExp = rewardExp1 + rewardExp2;
-                var myRewardExp = (rewardExp * (insight / 100f)).Parse<int>();
-                player.AddExp(myRewardExp);
-                DebugHelper.WriteLine($"BattleRewardEvent: +{myRewardExp}exp");
+
+                if (!smConfigs.Configs.NoExpFromBattles)
+                {
+                    var myRewardExp = (rewardExp * (insight / 100f)).Parse<int>();
+                    player.AddExp(myRewardExp);
+                    DebugHelper.WriteLine($"BattleRewardEvent: +{myRewardExp}exp");
+                }
 
                 foreach (var unit in ModBattleEvent.DungeonUnits)
                 {

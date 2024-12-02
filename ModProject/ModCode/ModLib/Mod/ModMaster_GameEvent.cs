@@ -18,66 +18,7 @@ namespace ModLib.Mod
 
         public virtual void _OnOpenUIStart(ETypeData e)
         {
-            try
-            {
-                //debug
-                //DebugHelper.WriteLine(e.TryCast<EGameTypeData.OpenUIStart>()?.uiType?.uiName);
-                //DebugHelper.Save();
-
-                if (!initMod)
-                {
-                    DebugHelper.WriteLine("Load configs.");
-                    CallEvents("OnInitConf");
-                    CallEvents("OnInitEObj");
-                    DebugHelper.Save();
-                    initMod = true;
-                }
-
-                if (!loadGlobal)
-                {
-                    DebugHelper.WriteLine("Load globals.");
-                    CallEvents("OnLoadGlobal");
-                    loadGlobal = true;
-                }
-
-                if (GameHelper.IsInGame())
-                {
-                    if (InGameSettings.LoadGameBefore)
-                    {
-                        CallEvents("OnLoadGameBefore");
-                        InGameSettings.LoadGameBefore = false;
-                    }
-
-                    if (InGameSettings.LoadGame)
-                    {
-                        CallEvents("OnLoadGame");
-                        InGameSettings.LoadGame = false;
-                    }
-
-                    if (InGameSettings.LoadGameAfter)
-                    {
-                        CallEvents("OnLoadGameAfter");
-                        InGameSettings.LoadGameAfter = false;
-                    }
-
-                    if (InGameSettings.LoadGameFirst)
-                    {
-                        CallEvents("OnLoadGameFirst");
-                        InGameSettings.LoadGameFirst = false;
-                    }
-                }
-                else
-                {
-                    CacheHelper.ClearGameCache();
-                }
-
-                CallEvents<OpenUIStart>("OnOpenUIStart", e, false, false);
-            }
-            catch (Exception ex)
-            {
-                DebugHelper.WriteLine(ex);
-                DebugHelper.Save();
-            }
+            CallEvents<OpenUIStart>("OnOpenUIStart", e, false, false);
         }
 
         public virtual void _OnOpenUIEnd(ETypeData e)
@@ -98,6 +39,58 @@ namespace ModLib.Mod
         public virtual void _OnInitWorld(ETypeData e)
         {
             CallEvents<ETypeData>("OnInitWorld", e, true, false);
+        }
+
+        public virtual void _OnLoadSceneStart(ETypeData e)
+        {
+            if (!initMod)
+            {
+                DebugHelper.WriteLine("Load configs.");
+                CallEvents("OnInitConf");
+                CallEvents("OnInitEObj");
+                DebugHelper.Save();
+                initMod = true;
+            }
+
+            if (!loadGlobal)
+            {
+                DebugHelper.WriteLine("Load globals.");
+                CallEvents("OnLoadGlobal");
+                loadGlobal = true;
+            }
+
+            if (GameHelper.IsInGame())
+            {
+                if (InGameSettings.LoadGameBefore)
+                {
+                    CallEvents("OnLoadGameBefore");
+                    InGameSettings.LoadGameBefore = false;
+                }
+
+                if (InGameSettings.LoadGame)
+                {
+                    CallEvents("OnLoadGame");
+                    InGameSettings.LoadGame = false;
+                }
+
+                if (InGameSettings.LoadGameAfter)
+                {
+                    CallEvents("OnLoadGameAfter");
+                    InGameSettings.LoadGameAfter = false;
+                }
+
+                if (InGameSettings.LoadGameFirst)
+                {
+                    CallEvents("OnLoadGameFirst");
+                    InGameSettings.LoadGameFirst = false;
+                }
+            }
+            else
+            {
+                CacheHelper.ClearGameCache();
+            }
+
+            CallEvents<LoadSceneStart>("OnLoadSceneStart", e, true, false);
         }
 
         public virtual void _OnLoadScene(ETypeData e)
@@ -256,6 +249,42 @@ namespace ModLib.Mod
 
         public virtual void OnLoadScene(LoadScene e)
         {
+            EventHelper.RunMinorEvents(e);
+        }
+
+        public virtual void OnLoadMapNewGame(LoadScene e)
+        {
+            EventHelper.RunMinorEvents(e);
+        }
+
+        public virtual void OnLoadMapFirst(LoadScene e)
+        {
+            EventHelper.RunMinorEvents(e);
+        }
+
+        public virtual void OnLoadSceneStart(LoadSceneStart e)
+        {
+            if (!GameHelper.IsInGame() || e.sceneType.sceneName == SceneType.Login.sceneName)
+            {
+                CacheHelper.ClearGameCache();
+            }
+
+            if (GameHelper.IsInGame() &&
+                e.sceneType.sceneName == SceneType.Map.sceneName)
+            {
+                if (InGameSettings.LoadMapNewGame)
+                {
+                    CallEvents("OnLoadMapNewGame");
+                    InGameSettings.LoadMapNewGame = false;
+                }
+
+                if (InGameSettings.LoadMapFirst)
+                {
+                    CallEvents("OnLoadMapFirst");
+                    InGameSettings.LoadMapFirst = false;
+                }
+            }
+
             EventHelper.RunMinorEvents(e);
         }
 

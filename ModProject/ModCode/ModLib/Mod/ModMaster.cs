@@ -46,6 +46,7 @@ namespace ModLib.Mod
         private Action<ETypeData> callCloseUIStart;
         private Action<ETypeData> callCloseUIEnd;
         private Action<ETypeData> callInitWorld;
+        private Action<ETypeData> callLoadSceneStart;
         private Action<ETypeData> callLoadScene;
         private Action<ETypeData> callIntoWorld;
         private Action<ETypeData> callSave;
@@ -112,6 +113,7 @@ namespace ModLib.Mod
         private EventsMgr.EventsData eventCloseUIStart;
         private EventsMgr.EventsData eventCloseUIEnd;
         private EventsMgr.EventsData eventInitWorld;
+        private EventsMgr.EventsData eventLoadSceneStart;
         private EventsMgr.EventsData eventLoadScene;
         private EventsMgr.EventsData eventIntoWorld;
         private EventsMgr.EventsData eventSave;
@@ -180,6 +182,7 @@ namespace ModLib.Mod
                 callCloseUIStart = _OnCloseUIStart;
                 callCloseUIEnd = _OnCloseUIEnd;
                 callInitWorld = _OnInitWorld;
+                callLoadSceneStart = _OnLoadSceneStart;
                 callLoadScene = _OnLoadScene;
                 callIntoWorld = _OnIntoWorld;
                 callSave = _OnSave;
@@ -250,6 +253,7 @@ namespace ModLib.Mod
                 eventCloseUIStart = RegEvent(EGameType.CloseUIStart, callCloseUIStart);
                 eventCloseUIEnd = RegEvent(EGameType.CloseUIEnd, callCloseUIEnd);
                 eventInitWorld = RegEvent(EGameType.InitCreateGameWorld, callInitWorld);
+                eventLoadSceneStart = RegEvent(EGameType.LoadSceneStart, callLoadSceneStart);
                 eventLoadScene = RegEvent(EGameType.LoadScene, callLoadScene);
                 eventIntoWorld = RegEvent(EGameType.IntoWorld, callIntoWorld);
                 eventSave = RegEvent(EGameType.SaveData, callSave);
@@ -357,6 +361,7 @@ namespace ModLib.Mod
                 UnregEvent(eventCloseUIStart);
                 UnregEvent(eventCloseUIEnd);
                 UnregEvent(eventInitWorld);
+                UnregEvent(eventLoadSceneStart);
                 UnregEvent(eventLoadScene);
                 UnregEvent(eventIntoWorld);
                 UnregEvent(eventSave);

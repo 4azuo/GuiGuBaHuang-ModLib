@@ -43,12 +43,16 @@ namespace ModLib.Object
         }
 
         [JsonIgnore]
+        public bool LoadMapNewGame { get; set; } = true;
+        [JsonIgnore]
         public bool LoadGameBefore { get; set; } = true;
         [JsonIgnore]
         public bool LoadGame { get; set; } = true;
         [JsonIgnore]
         public bool LoadGameAfter { get; set; } = true;
 
+        [Inheritance]
+        public bool LoadMapFirst { get; set; } = true;
         [Inheritance]
         public bool LoadGameFirst { get; set; } = true;
         [Inheritance]

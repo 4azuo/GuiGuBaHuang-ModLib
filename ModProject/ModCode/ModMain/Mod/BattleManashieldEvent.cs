@@ -4,6 +4,7 @@ using ModLib.Enum;
 using ModLib.Mod;
 using Newtonsoft.Json;
 using System;
+using static DataMap;
 using static MOD_nE7UL2.Object.InGameStts;
 
 namespace MOD_nE7UL2.Mod
@@ -29,17 +30,9 @@ namespace MOD_nE7UL2.Mod
             if (e.IsWorldUnit())
             {
                 var humanData = e?.data?.TryCast<UnitDataHuman>();
-                var efx = humanData.unit.AddEffect(MANASHIELD_EFFECT_MAIN_ID, humanData.unit, new SkillCreateData
-                {
-                    mainSkillID = MANASHIELD_EFFECT_MAIN_ID,
-                    valueData = new BattleSkillValueData
-                    {
-                        grade = humanData.worldUnitData.unit.GetGradeLvl(),
-                        level = 1,
-                        data = new BattleSkillValueData.Data(),
-                    }
-                });
-                Effect3017.AddShield(efx, humanData.unit, MANASHIELD_EFFECT_EFX_ID, GetManashieldBase(humanData.worldUnitData.unit) + GetManashieldBasePlus(humanData.worldUnitData.unit), humanData.maxHP.value, int.MaxValue);
+                var shield = GetManashieldBase(humanData.worldUnitData.unit) + GetManashieldBasePlus(humanData.worldUnitData.unit);
+                var maxShield = humanData.maxHP.value;
+                var efx = ShieldUp(humanData.unit, shield, maxShield);
                 if (humanData.worldUnitData.unit.IsPlayer())
                     PlayerShieldEfx = efx;
             }
@@ -47,28 +40,45 @@ namespace MOD_nE7UL2.Mod
             if (e.IsMonster())
             {
                 var monstData = e?.data?.TryCast<UnitDataMonst>();
+                var smConfigs = EventHelper.GetEvent<SMLocalConfigsEvent>(ModConst.SM_LOCAL_CONFIGS_EVENT);
+
                 if (monstData.monstType == MonstType.Common || monstData.monstType == MonstType.Elite)
                 {
                     //add manashield
                     var gameLvl = g.data.dataWorld.data.gameLevel.Parse<int>();
-                    var smConfigs = EventHelper.GetEvent<SMLocalConfigsEvent>(ModConst.SM_LOCAL_CONFIGS_EVENT);
                     if (CommonTool.Random(0.0f, 100.0f).IsBetween(0.0f, smConfigs.Calculate(MONST_SHIELD_CHANCE * monstData.grade.value * gameLvl, smConfigs.Configs.AddSpecialMonsterRate).Parse<float>()))
                     {
-                        var efx = monstData.unit.AddEffect(MANASHIELD_EFFECT_MAIN_ID, monstData.unit, new SkillCreateData
-                        {
-                            mainSkillID = MANASHIELD_EFFECT_MAIN_ID,
-                            valueData = new BattleSkillValueData
-                            {
-                                grade = monstData.grade.value,
-                                level = 1,
-                                data = new BattleSkillValueData.Data(),
-                            }
-                        });
-                        var shield = monstData.maxHP.value * gameLvl;
-                        Effect3017.AddShield(efx, monstData.unit, MANASHIELD_EFFECT_EFX_ID, shield, shield, int.MaxValue);
+                        var shield = monstData.maxHP.value * gameLvl / 2;
+                        var maxShield = shield;
+                        /*var efx = */ShieldUp(monstData.unit, shield, maxShield);
                     }
                 }
+
+                if (smConfigs.Configs.BossHasShield && (monstData.monstType == MonstType.BOSS || monstData.monstType == MonstType.NPC))
+                {
+                    var gameLvl = g.data.dataWorld.data.gameLevel.Parse<int>();
+                    var shield = monstData.maxHP.value * gameLvl / 2;
+                    var maxShield = shield;
+                    /*var efx = */
+                    ShieldUp(monstData.unit, shield, maxShield);
+                }
             }
+        }
+
+        private EffectBase ShieldUp(UnitCtrlBase cunit, int shield, int maxShield)
+        {
+            var efx = cunit.AddEffect(MANASHIELD_EFFECT_MAIN_ID, cunit, new SkillCreateData
+            {
+                mainSkillID = MANASHIELD_EFFECT_MAIN_ID,
+                valueData = new BattleSkillValueData
+                {
+                    grade = cunit.data.grade.value,
+                    level = 1,
+                    data = new BattleSkillValueData.Data(),
+                }
+            });
+            Effect3017.AddShield(efx, cunit, MANASHIELD_EFFECT_EFX_ID, shield, maxShield, int.MaxValue);
+            return efx;
         }
 
         [EventCondition(IsInBattle = true)]

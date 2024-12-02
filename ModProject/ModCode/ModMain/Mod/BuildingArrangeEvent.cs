@@ -59,6 +59,9 @@ namespace MOD_nE7UL2.Mod
 
         private void AddBuildSub(MapBuildBase build, BuildingCostEnum e, float rate = -1f)
         {
+            var smConfigs = EventHelper.GetEvent<SMLocalConfigsEvent>(ModConst.SM_LOCAL_CONFIGS_EVENT);
+            if (smConfigs.Configs.OnlyPortalAtCityAndSect && e == BuildingCostEnum.TownPortalBuildCost && build.IsSmallTown())
+                return;
             if (e.IsMatchBuildConds(build))
             {
                 if (e.BuildRate == -1f || e.BuildCosts == null)
