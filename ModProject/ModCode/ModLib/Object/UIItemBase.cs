@@ -10,13 +10,13 @@ public abstract class UIItemBase
     public virtual UIBehaviour ItemBehaviour { get; private set; }
     public virtual UIItemData ItemData { get; set; }
     public virtual UIItemWork ItemWork { get; set; }
+    public virtual bool Enable { get; set; } = true;
     public virtual object Tag { get; set; }
 
     public virtual void Update() { }
     public abstract object Get();
     public abstract void Set(object input);
     public abstract bool IsActive();
-    public abstract bool IsEnable();
     public abstract void Destroy();
 
     public UIItemBase() { }
@@ -33,6 +33,16 @@ public abstract class UIItemBase
         return this;
     }
 
+    public virtual bool IsEnable()
+    {
+        return Enable;
+    }
+
+    public virtual void SetEnable(bool value)
+    {
+        Enable = value;
+    }
+
     #region Data
     public class UIItemData
     {
@@ -43,9 +53,9 @@ public abstract class UIItemBase
     #region Work
     public class UIItemWork
     {
-        public virtual Func<UIItemBase, bool> EnaAct { get; set; }
+        public virtual Func<UIItemBase, bool> EnableAct { get; set; }
         public virtual Func<UIItemBase, object[]> Formatter { get; set; }
-        public virtual Action<UIItemBase, object> Change { get; set; }
+        public virtual Action<UIItemBase, object> ChangeAct { get; set; }
     }
     #endregion
 
@@ -63,11 +73,6 @@ public abstract class UIItemBase
         public override bool IsActive()
         {
             return Item.IsActive();
-        }
-
-        public override bool IsEnable()
-        {
-            return Item.enabled;
         }
 
         public override void Destroy()
@@ -109,8 +114,9 @@ public abstract class UIItemBase
         {
             base.Update();
             Item.Setup(Get()?.ToString());
-            if (ItemWork?.EnaAct != null)
-                Item.color = (ItemWork?.EnaAct?.Invoke(this) ?? false) ? Color : Color.gray;
+            if (ItemWork?.EnableAct != null)
+                Enable = ItemWork?.EnableAct?.Invoke(this) ?? false;
+            Item.color = Enable ? Color : Color.gray;
         }
 
         public UIItemText Align(TextAnchor tanchor = TextAnchor.MiddleLeft, VerticalWrapMode vMode = VerticalWrapMode.Overflow, HorizontalWrapMode hMode = HorizontalWrapMode.Overflow)
@@ -139,7 +145,7 @@ public abstract class UIItemBase
             Item.Setup(min, max, def);
             Item.onValueChanged.AddListener((UnityAction<float>)(v =>
             {
-                ItemWork?.Change?.Invoke(this, v);
+                ItemWork?.ChangeAct?.Invoke(this, v);
             }));
         }
 
@@ -163,8 +169,9 @@ public abstract class UIItemBase
         public override void Update()
         {
             base.Update();
-            if (ItemWork?.EnaAct != null)
-                Item.enabled = ItemWork?.EnaAct?.Invoke(this) ?? false;
+            if (ItemWork?.EnableAct != null)
+                Enable = ItemWork?.EnableAct?.Invoke(this) ?? false;
+            Item.enabled = Enable;
         }
     }
 
@@ -175,7 +182,7 @@ public abstract class UIItemBase
             Item.Setup(def);
             Item.onValueChanged.AddListener((UnityAction<bool>)(v =>
             {
-                ItemWork?.Change?.Invoke(this, v);
+                ItemWork?.ChangeAct?.Invoke(this, v);
             }));
         }
 
@@ -192,8 +199,9 @@ public abstract class UIItemBase
         public override void Update()
         {
             base.Update();
-            if (ItemWork?.EnaAct != null)
-                Item.enabled = ItemWork?.EnaAct?.Invoke(this) ?? false;
+            if (ItemWork?.EnableAct != null)
+                Enable = ItemWork?.EnableAct?.Invoke(this) ?? false;
+            Item.enabled = Enable;
         }
     }
 
@@ -260,6 +268,7 @@ public abstract class UIItemBase
                 Postfix.ItemWork = value;
             }
         }
+        public override bool Enable { get => MainComponent.Enable; set => MainComponent.Enable = value; }
         public override object Tag { get => MainComponent.Tag; set => MainComponent.Tag = value; }
 
         private UIItemComposite() { }
@@ -328,6 +337,13 @@ public abstract class UIItemBase
         public override bool IsEnable()
         {
             return MainComponent.IsEnable();
+        }
+
+        public override void SetEnable(bool value)
+        {
+            Prefix.SetEnable(value);
+            MainComponent.SetEnable(value);
+            Postfix.SetEnable(value);
         }
     }
     #endregion

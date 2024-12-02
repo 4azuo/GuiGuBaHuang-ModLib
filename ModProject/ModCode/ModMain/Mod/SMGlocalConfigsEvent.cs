@@ -1,5 +1,4 @@
-﻿using Boo.Lang.Compiler.TypeSystem;
-using EGameTypeData;
+﻿using EGameTypeData;
 using MOD_nE7UL2.Const;
 using MOD_nE7UL2.Object;
 using ModLib.Mod;
@@ -8,13 +7,12 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 using UnityEngine.Events;
-using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
 namespace MOD_nE7UL2.Mod
 {
-    [Cache(ModConst.SM_CONFIG_EVENT, IsGlobal = true)]
-    public class SMConfigEvent : ModEvent
+    [Cache(ModConst.SM_GLOBAL_CONFIGS_EVENT, IsGlobal = true)]
+    public class SMGlocalConfigsEvent : ModEvent
     {
         public const string TITLE = "S&M Configs";
 
@@ -29,6 +27,8 @@ namespace MOD_nE7UL2.Mod
         public float AddBuildingCostRate { get; set; } = 0f;
         public float AddBankAccountCostRate { get; set; } = 0f;
         public float AddBankFee { get; set; } = 0f;
+        public float AddRefineCost { get; set; } = 0f;
+        public float AddSectExchangeRate { get; set; } = 0f;
         public float AddNpcGrowRate { get; set; } = 0f;
         public float AddLevelupExpRate { get; set; } = 0f;
         public bool HideSaveButton { get; set; } = false;
@@ -38,6 +38,7 @@ namespace MOD_nE7UL2.Mod
         public bool Onelife { get; set; } = false;
         public bool OnlyPortalAtCityAndSect { get; set; } = false;
         public bool NoExpFromBattles { get; set; } = false;
+        public bool SectNoExchange { get; set; } = false;
 
         //UI
         private UIHelper.UICustom1 uiCustom;
@@ -52,6 +53,8 @@ namespace MOD_nE7UL2.Mod
         private UIItemBase.UIItemComposite slEcoBuildingCost;
         private UIItemBase.UIItemComposite slEcoBankAccCost;
         private UIItemBase.UIItemComposite slEcoBankFee;
+        private UIItemBase.UIItemComposite slEcoRefineCost;
+        private UIItemBase.UIItemComposite slEcoSectExchangeRate;
         private UIItemBase.UIItemComposite slNpcGrowRate;
         private UIItemBase.UIItemComposite slMiscLevelupExp;
         private UIItemBase.UIItemComposite tglSysHideSave;
@@ -61,6 +64,7 @@ namespace MOD_nE7UL2.Mod
         private UIItemBase.UIItemComposite tglSysOnelife;
         private UIItemBase.UIItemComposite tglSysOnlyPortalAtCityAndSect;
         private UIItemBase.UIItemComposite tglSysNoExpFromBattle;
+        private UIItemBase.UIItemComposite tglSysSectNoExchange;
 
         //Score
         public static IList<SMItemWork> ScoreCalculator { get; } = new List<SMItemWork>();
@@ -80,6 +84,8 @@ namespace MOD_nE7UL2.Mod
             Register(() => slEcoBuildingCost, s => (s.Get().Parse<float>() * 100).Parse<int>());
             Register(() => slEcoBankAccCost, s => (s.Get().Parse<float>() * 100).Parse<int>());
             Register(() => slEcoBankFee, s => (s.Get().Parse<float>() * 100).Parse<int>());
+            Register(() => slEcoRefineCost, s => (s.Get().Parse<float>() * 2000).Parse<int>());
+            Register(() => slEcoSectExchangeRate, s => (s.Get().Parse<float>() * 2000).Parse<int>(), s => !tglSysSectNoExchange.Get().Parse<bool>(), s => !tglSysSectNoExchange.Get().Parse<bool>());
             Register(() => slNpcGrowRate, s => (s.Get().Parse<float>() * 1000).Parse<int>());
             Register(() => slMiscLevelupExp, s => (s.Get().Parse<float>() * 2000).Parse<int>());
             Register(() => tglSysHideSave, s => 1000, s => s.Get().Parse<bool>(), onChange: (s, v) => tglSysHideReload.Set(false));
@@ -89,6 +95,7 @@ namespace MOD_nE7UL2.Mod
             Register(() => tglSysOnelife, s => 20000, s => s.Get().Parse<bool>(), s => tglSysHideReload.Get().Parse<bool>());
             Register(() => tglSysOnlyPortalAtCityAndSect, s => 1000, s => s.Get().Parse<bool>());
             Register(() => tglSysNoExpFromBattle, s => 1000, s => s.Get().Parse<bool>());
+            Register(() => tglSysSectNoExchange, s => 10000, s => s.Get().Parse<bool>());
         }
 
         private void Register(
@@ -120,9 +127,9 @@ namespace MOD_nE7UL2.Mod
                 Comp = funcComp,
                 Cal = funcCal,
                 Cond = funcCond ?? (s => true),
-                EnaAct = funcEna ?? (s => true),
+                EnableAct = funcEna,
                 Formatter = formatter,
-                Change = onChange,
+                ChangeAct = onChange,
             });
         }
 
@@ -144,7 +151,7 @@ namespace MOD_nE7UL2.Mod
             uiCustom = UIHelper.UICustom1.Create(TITLE, SetSMConfigs, true);
             int col, row;
 
-            col = 1; row = 0;
+            col = 2; row = 0;
             uiCustom.AddText(col, row++, "Monster:").Format(null, 17, FontStyle.Italic).Align(TextAnchor.MiddleRight);
             slMonstAtk = uiCustom.AddCompositeSlider(col, row++, "ATK", -0.50f, 10.00f, AddAtkRate, "{1}% ({0}P)");
             slMonstDef = uiCustom.AddCompositeSlider(col, row++, "DEF", -0.50f, 10.00f, AddDefRate, "{1}% ({0}P)");
@@ -153,23 +160,26 @@ namespace MOD_nE7UL2.Mod
             uiCustom.AddText(col, row++, "(Included Sword, Blade, Spear, Fist, Finger, Palm, Fire, Water, Thunder, Wood, Wind, Earth)").Format(null, 13).Align(TextAnchor.MiddleLeft);
             slMonstSpecialRate = uiCustom.AddCompositeSlider(col, row++, "Special Monster Rate", -0.50f, 1.00f, AddSpecialMonsterRate, "{1}% ({0}P)");
 
-            col = 1; row = 8;
+            col = 2; row = 8;
             uiCustom.AddText(col, row++, "Economic:").Format(null, 17, FontStyle.Italic).Align(TextAnchor.MiddleRight);
             slEcoTaxRate = uiCustom.AddCompositeSlider(col, row++, "Tax Rate", 0.00f, 10.00f, AddTaxRate, "{1}% ({0}P)");
             slEcoInfRate = uiCustom.AddCompositeSlider(col, row++, "Inflation Rate", -0.50f, 3.00f, AddInflationRate, "{1}% ({0}P)");
             slEcoBuildingCost = uiCustom.AddCompositeSlider(col, row++, "Building Cost", 0.00f, 10.00f, AddBuildingCostRate, "{1}% ({0}P)");
             slEcoBankAccCost = uiCustom.AddCompositeSlider(col, row++, "Bank Account Cost", 0.00f, 10.00f, AddBankAccountCostRate, "{1}% ({0}P)");
             slEcoBankFee = uiCustom.AddCompositeSlider(col, row++, "Bank Fee", 0.00f, 100.00f, AddBankFee, "{1}% ({0}P)");
+            slEcoRefineCost = uiCustom.AddCompositeSlider(col, row++, "Refine Cost", -0.50f, 1.00f, AddRefineCost, "{1}% ({0}P)");
+            slEcoSectExchangeRate = uiCustom.AddCompositeSlider(col, row++, "Sect Exchange Fee", -0.50f, 1.00f, AddSectExchangeRate, "{1}% ({0}P)");
+            slEcoSectExchangeRate.HidePostfixIfDisabled = true;
 
-            col = 1; row = 15;
+            col = 2; row = 17;
             uiCustom.AddText(col, row++, "NPC:").Format(null, 17, FontStyle.Italic).Align(TextAnchor.MiddleRight);
             slNpcGrowRate = uiCustom.AddCompositeSlider(col, row++, "Grow Rate", 0.00f, 10.00f, AddNpcGrowRate, "{1}% ({0}P)");
 
-            col = 1; row = 18;
+            col = 2; row = 20;
             uiCustom.AddText(col, row++, "Misc:").Format(null, 17, FontStyle.Italic).Align(TextAnchor.MiddleRight);
             slMiscLevelupExp = uiCustom.AddCompositeSlider(col, row++, "Levelup Exp", 0.00f, 1.00f, AddLevelupExpRate, "{1}% ({0}P)");
 
-            col = 16; row = 0;
+            col = 18; row = 0;
             uiCustom.AddText(col, row++, "Systems:").Format(null, 17, FontStyle.Italic).Align(TextAnchor.MiddleRight);
             tglSysHideSave = uiCustom.AddCompositeToggle(col, row++, "Hide Save Button", HideSaveButton, "({0}P)");
             tglSysHideReload = uiCustom.AddCompositeToggle(col, row++, "Hide Reload Button", HideReloadButton, "({0}P)");
@@ -178,6 +188,7 @@ namespace MOD_nE7UL2.Mod
             tglSysOnelife = uiCustom.AddCompositeToggle(col, row++, "One life", Onelife, "({0}P)");
             tglSysOnlyPortalAtCityAndSect = uiCustom.AddCompositeToggle(col, row++, "Only Portal at City and Sect", OnlyPortalAtCityAndSect, "({0}P)");
             tglSysNoExpFromBattle = uiCustom.AddCompositeToggle(col, row++, "No Exp from Battles", NoExpFromBattles, "({0}P)");
+            tglSysSectNoExchange = uiCustom.AddCompositeToggle(col, row++, "Sect No Exchange", SectNoExchange, "({0}P)");
 
             col = 30; row = 0;
             txtTotalScore = uiCustom.AddText(col, row, "Total score: {0}P").Format(Color.red, 17).Align(TextAnchor.MiddleRight);
@@ -192,7 +203,7 @@ namespace MOD_nE7UL2.Mod
             uiCustom.AddButton(col, row += 2, () => SetLevel(8), "Level 8");
             uiCustom.AddButton(col, row += 2, () => SetLevel(9), "Level 9");
             uiCustom.AddButton(col, row += 2, () => SetLevel(10), "Level 10");
-            uiCustom.AddText(14, 26, "You have to start a new game to apply these configs!").Format(Color.red, 17);
+            uiCustom.AddText(15, 26, "You have to start a new game to apply these configs!").Format(Color.red, 17);
 
             SetWork();
         }
@@ -218,13 +229,16 @@ namespace MOD_nE7UL2.Mod
             (slEcoBuildingCost.MainComponent as UIItemBase.UIItemSlider).SetPercent(level * 0.10000f);
             (slEcoBankAccCost.MainComponent as UIItemBase.UIItemSlider).SetPercent(level * 0.10000f);
             (slEcoBankFee.MainComponent as UIItemBase.UIItemSlider).SetPercent(level * 0.10000f);
+            (slEcoRefineCost.MainComponent as UIItemBase.UIItemSlider).SetPercent(level * 0.10000f);
+            (slEcoSectExchangeRate.MainComponent as UIItemBase.UIItemSlider).SetPercent(level * 0.10000f);
             (slNpcGrowRate.MainComponent as UIItemBase.UIItemSlider).SetPercent(level * 0.10000f);
             (slMiscLevelupExp.MainComponent as UIItemBase.UIItemSlider).SetPercent(level * 0.10000f);
             tglSysHideBattleMap.Set(level > 1);
             tglSysHideSave.Set(level > 2);
             tglSysNoExpFromBattle.Set(level > 4);
             tglSysOnlyPortalAtCityAndSect.Set(level > 5);
-            tglSysHideReload.Set(level > 7);
+            tglSysHideReload.Set(level > 6);
+            tglSysSectNoExchange.Set(level > 7);
             tglSysNoRebirth.Set(level > 8);
             tglSysOnelife.Set(level > 9);
         }
@@ -249,6 +263,8 @@ namespace MOD_nE7UL2.Mod
             AddBuildingCostRate = slEcoBuildingCost.Get().Parse<float>();
             AddBankAccountCostRate = slEcoBankAccCost.Get().Parse<float>();
             AddBankFee = slEcoBankFee.Get().Parse<float>();
+            AddRefineCost = slEcoRefineCost.Get().Parse<float>();
+            AddSectExchangeRate = slEcoSectExchangeRate.Get().Parse<float>();
             AddNpcGrowRate = slNpcGrowRate.Get().Parse<float>();
             AddLevelupExpRate = slMiscLevelupExp.Get().Parse<float>();
             HideSaveButton = tglSysHideSave.Get().Parse<bool>();
@@ -258,6 +274,7 @@ namespace MOD_nE7UL2.Mod
             Onelife = tglSysOnelife.Get().Parse<bool>();
             OnlyPortalAtCityAndSect = tglSysOnlyPortalAtCityAndSect.Get().Parse<bool>();
             NoExpFromBattles = tglSysNoExpFromBattle.Get().Parse<bool>();
+            SectNoExchange = tglSysSectNoExchange.Get().Parse<bool>();
             CacheHelper.Save();
         }
 

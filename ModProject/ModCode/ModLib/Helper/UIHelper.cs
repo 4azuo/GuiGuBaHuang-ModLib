@@ -144,6 +144,24 @@ public static class UIHelper
         }
     }
 
+    public class UISample : IDisposable
+    {
+        public UIGameSetting sampleUI;
+
+        public UISample()
+        {
+            _sampleUI = g.ui.OpenUI<UIGameSetting>(UIType.GameSetting);
+            _sampleUI.gameObject.SetActive(false);
+            sampleUI = _sampleUI;
+        }
+
+        public void Dispose()
+        {
+            _sampleUI.gameObject.SetActive(true);
+            g.ui.CloseUI(_sampleUI);
+        }
+    }
+
     public class UICustom1 : UICustom<UITextInfoLong>
     {
         protected override float MinWidth() => -6.0f;
@@ -155,8 +173,7 @@ public static class UIHelper
         {
             var rs = new UICustom1();
             {
-                _sampleUI = g.ui.OpenUI<UIGameSetting>(UIType.GameSetting);
-                _sampleUI.gameObject.SetActive(false);
+                using (new UISample())
                 {
                     rs.UI = g.ui.OpenUI<UITextInfoLong>(UIType.TextInfoLong);
                     _originComp = rs.UI.textTitle;
@@ -168,8 +185,6 @@ public static class UIHelper
                             rs.UI.btnCancel.onClick.AddListener((UnityAction)cancelAct);
                     }
                 }
-                _sampleUI.gameObject.SetActive(true);
-                g.ui.CloseUI(_sampleUI);
             }
             return rs;
         }

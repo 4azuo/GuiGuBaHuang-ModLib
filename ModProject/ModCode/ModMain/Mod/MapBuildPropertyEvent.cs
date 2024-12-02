@@ -33,21 +33,19 @@ namespace MOD_nE7UL2.Mod
 
             foreach (var wunit in g.world.unit.GetUnits())
             {
-                int income = Convert.ToInt32(InflationaryEvent.CalculateInflationary((
-                        Math.Pow(2, wunit.GetGradeLvl()) * FIXING_RATE *
-                        (1.00f + UnitTypeLuckEnum.Merchant.CustomEffects[ModConst.UTYPE_LUCK_EFX_SELL_VALUE].Value0.Parse<float>() + MerchantLuckEnum.Merchant.GetCurLevel(wunit) * MerchantLuckEnum.Merchant.IncSellValueEachLvl)
-                    ).Parse<long>(), GameHelper.GetGameYear()));
-                var town = g.world.build.GetBuild<MapBuildTown>(wunit.data.unitData.GetPoint());
+                int tax = GetTax(wunit);
+                var location = wunit.data.unitData.GetPoint();
+                var town = g.world.build.GetBuild<MapBuildTown>(location);
                 if (town != null)
                 {
-                    Budget[town.buildData.id] += income;
+                    Budget[town.buildData.id] += tax;
                 }
-                var school = g.world.build.GetBuild<MapBuildSchool>(wunit.data.unitData.GetPoint());
+                var school = g.world.build.GetBuild<MapBuildSchool>(location);
                 if (school != null)
                 {
-                    school.buildData.money += income;
+                    school.buildData.money += tax;
                 }
-                wunit.AddUnitMoney(-income);
+                wunit.AddUnitMoney(-tax);
             }
         }
 
@@ -69,6 +67,21 @@ namespace MOD_nE7UL2.Mod
             {
                 school.buildData.money += Math.Pow(2, school.gridData.areaBaseID).Parse<long>() * 300;
             }
+        }
+
+        public static int GetTax(WorldUnitBase wunit)
+        {
+            var location = wunit.data.unitData.GetPoint();
+            var areaId = wunit.data.unitData.pointGridData.areaBaseID;
+            var smConfigs = EventHelper.GetEvent<SMLocalConfigsEvent>(ModConst.SM_LOCAL_CONFIGS_EVENT);
+            var tax = smConfigs.Calculate(Convert.ToInt32(InflationaryEvent.CalculateInflationary((
+                        Math.Pow(2, areaId) * FIXING_RATE *
+                        (1.00f + UnitTypeLuckEnum.Merchant.CustomEffects[ModConst.UTYPE_LUCK_EFX_SELL_VALUE].Value0.Parse<float>() + MerchantLuckEnum.Merchant.GetCurLevel(wunit) * MerchantLuckEnum.Merchant.IncSellValueEachLvl)
+                    ).Parse<int>(), GameHelper.GetGameYear())), smConfigs.Configs.AddTaxRate).Parse<int>();
+            var school = g.world.build.GetBuild<MapBuildSchool>(location);
+            if (school != null)
+                tax *= school.schoolData.allEffects.Count;
+            return tax;
         }
 
         public static long GetBuildProperty(MapBuildBase build)

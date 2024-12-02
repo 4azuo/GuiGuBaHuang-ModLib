@@ -36,7 +36,8 @@
         public const string BANK_ACCOUNT_EVENT = "BankAccountEvent";
         public const string REBIRTH_EVENT = "RebirthEvent";
         public const string CUSTOM_REFINE_EVENT = "CustomRefineEvent";
-        public const string SM_CONFIG_EVENT = "SMGlobalEvent";
+        public const string SM_GLOBAL_CONFIGS_EVENT = "SMGlobalEvent";
+        public const string SM_LOCAL_CONFIGS_EVENT = "SMLocalEvent";
 
         //Others
         public const string UTYPE_LUCK_EFX_FREE_STORAGE = "FreeStorage";

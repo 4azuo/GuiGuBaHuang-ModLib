@@ -27,8 +27,8 @@ namespace MOD_nE7UL2.Mod
                 if (!RegisterdTown.Contains(curTown.buildData.id) && curTown.TryCast<MapBuildSchool>() == null)
                 {
                     var uiTownStorage = g.ui.GetUI<UITownStorage>(UIType.TownStorage);
-                    var btn1 = uiTownStorage.btnProps.Replace().Size(270f, 90f);
-                    btn1.GetComponentInChildren<Text>().Align(UnityEngine.TextAnchor.MiddleCenter).text = $"Open account ({Cost(curTown.gridData.areaBaseID)})";
+                    var btn1 = uiTownStorage.btnProps.Replace().Size(500f, 100f);
+                    btn1.GetComponentInChildren<Text>().Align(UnityEngine.TextAnchor.MiddleCenter).text = $"Open account ({Cost(curTown.gridData.areaBaseID)} Spirit Stones)";
                     btn1.onClick.AddListener((UnityAction)(() =>
                     {
                         var cost = Cost(curTown.gridData.areaBaseID);
@@ -45,8 +45,9 @@ namespace MOD_nE7UL2.Mod
 
         public static int Cost(int areaId)
         {
+            var smConfigs = EventHelper.GetEvent<SMLocalConfigsEvent>(ModConst.SM_LOCAL_CONFIGS_EVENT);
             var round = BankAccountConfigs.OpenFee[areaId] / 100;
-            return (InflationaryEvent.CalculateInflationary(BankAccountConfigs.OpenFee[areaId], GameHelper.GetGameYear()) / round) * round;
+            return smConfigs.Calculate(InflationaryEvent.CalculateInflationary(BankAccountConfigs.OpenFee[areaId], GameHelper.GetGameYear()) / round * round, smConfigs.Configs.AddBankAccountCostRate).Parse<int>();
         }
 
         public static void RemoveAllAccounts()

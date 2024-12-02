@@ -71,16 +71,18 @@ namespace MOD_nE7UL2.Mod
         {
             if (value <= 0)
                 return value;
+            var smConfigs = EventHelper.GetEvent<SMLocalConfigsEvent>(ModConst.SM_LOCAL_CONFIGS_EVENT);
             var x = EventHelper.GetEvent<InflationaryEvent>(ModConst.INFLATIONARY_EVENT);
-            return Convert.ToInt32(value * Math.Pow(Configs.InflationaryRate, year) / Math.Pow(100, x.Corruption));
+            return Convert.ToInt32(value * Math.Pow(smConfigs.Calculate(Configs.InflationaryRate, smConfigs.Configs.AddInflationRate), year) / Math.Pow(100, x.Corruption));
         }
 
         public static long CalculateInflationary(long value, int year)
         {
             if (value <= 0)
                 return value;
+            var smConfigs = EventHelper.GetEvent<SMLocalConfigsEvent>(ModConst.SM_LOCAL_CONFIGS_EVENT);
             var x = EventHelper.GetEvent<InflationaryEvent>(ModConst.INFLATIONARY_EVENT);
-            return Convert.ToInt64(value * Math.Pow(Configs.InflationaryRate, year) / Math.Pow(100, x.Corruption));
+            return Convert.ToInt64(value * Math.Pow(smConfigs.Calculate(Configs.InflationaryRate, smConfigs.Configs.AddInflationRate), year) / Math.Pow(100, x.Corruption));
         }
 
         public static int GetHighestCost()
