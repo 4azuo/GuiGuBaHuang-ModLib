@@ -10,6 +10,8 @@ using System;
 using ModLib.Object;
 using MOD_nE7UL2.Enum;
 using MOD_nE7UL2.Object;
+using ModLib.Enum;
+using static Il2CppSystem.Linq.Expressions.Interpreter.CastInstruction.CastInstructionNoT;
 
 namespace MOD_nE7UL2.Mod
 {
@@ -43,8 +45,9 @@ namespace MOD_nE7UL2.Mod
             if (item == null)
                 return;
             var money = wunit.GetUnitMoney();
+            var exp = money + (money * wunit.GetDynProperty(UnitDynPropertyEnum.RefineWeapon).value / 100);
             var spend = Convert.ToInt32(Math.Sqrt(money));
-            AddRefineExp(item, spend);
+            AddRefineExp(item, exp);
             //UnitModifyHelper.ClearCacheCustomAdjValues(wunit);
             wunit.AddUnitMoney(-spend);
         }
@@ -126,13 +129,14 @@ namespace MOD_nE7UL2.Mod
                 var oldLvl = GetRefineLvl(refineItem);
 
                 var value = UIPropSelect.allSlectDataProps.allProps.ToArray().Sum(x => x.propsInfoBase.worth * x.propsCount);
-                AddRefineExp(refineItem, value);
+                var exp = value + (value * g.world.playerUnit.GetDynProperty(UnitDynPropertyEnum.RefineWeapon).value / 100);
+                AddRefineExp(refineItem, exp);
                 ClearCacheCustomAdjValues(g.world.playerUnit);
                 g.world.playerUnit.AddUnitMoney(-value);
                 g.ui.CloseUI(ui);
 
                 var uiConfirm = g.ui.OpenUI<UICheckPopup>(UIType.CheckPopup);
-                uiConfirm.InitData("Refine", $"Success! Level {oldLvl}→{GetRefineLvl(refineItem)}", 1);
+                uiConfirm.InitData("Refine", $"Success! Level {oldLvl}→{GetRefineLvl(refineItem)} (+{exp}Exp)", 1);
             }));
             ui.UpdateUI();
         }
@@ -179,7 +183,8 @@ namespace MOD_nE7UL2.Mod
 
         public static double GetRefineExpNeed(DataProps.PropsData props, int lvl)
         {
-            return (props.propsInfoBase.grade * 100 + props.propsInfoBase.level * 20) * Math.Pow(1.04d, lvl);
+            var smConfigs = EventHelper.GetEvent<SMLocalConfigsEvent>(ModConst.SM_LOCAL_CONFIGS_EVENT);
+            return smConfigs.Calculate((props.propsInfoBase.grade * 100 + props.propsInfoBase.level * 20) * Math.Pow(1.04d, lvl), smConfigs.Configs.AddRefineCost);
         }
 
         public static int GetRefineLvl(DataProps.PropsData props)

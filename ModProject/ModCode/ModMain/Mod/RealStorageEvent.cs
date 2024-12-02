@@ -14,12 +14,10 @@ namespace MOD_nE7UL2.Mod
     {
         public const int DEBT_DRAMA = 480020100;
 
-        public static float FEE_RATE
+        public static double FeeRate()
         {
-            get
-            {
-                return ModMain.ModObj.InGameCustomSettings.RealStorageConfigs.FeeRate;
-            }
+            var smConfigs = EventHelper.GetEvent<SMLocalConfigsEvent>(ModConst.SM_LOCAL_CONFIGS_EVENT);
+            return smConfigs.Calculate(ModMain.ModObj.InGameCustomSettings.RealStorageConfigs.FeeRate, smConfigs.Configs.AddBankFee);
         }
 
         private Text txtStorageMoney;
@@ -66,7 +64,7 @@ namespace MOD_nE7UL2.Mod
             var spValue = GetStorageSpiritStones();
             txtStorageMoney.text = $"Storage: {storageValue} Spirit Stones ({spValue} cash, {storageValue - spValue} items)";
             //FreeStorage
-            txtFee.text = uType == UnitTypeEnum.Merchant ? "Fee: free for merchant-master." : $"Fee: {FEE_RATE * 100:0.0}% (-{(storageValue * FEE_RATE).Parse<int>()} Spirit Stones monthly)";
+            txtFee.text = uType == UnitTypeEnum.Merchant ? "Fee: free for merchant-master." : $"Fee: {FeeRate() * 100:0.0}% (-{(storageValue * FeeRate()).Parse<int>()} Spirit Stones monthly)";
         }
 
         public override void OnMonthly()
@@ -78,7 +76,7 @@ namespace MOD_nE7UL2.Mod
             {
                 var storageValue = GetStorageValue();
                 var money = g.world.playerUnit.GetUnitMoney();
-                Debt += (storageValue * FEE_RATE).Parse<long>();
+                Debt += (storageValue * FeeRate()).Parse<long>();
                 if (money >= Debt)
                 {
                     g.world.playerUnit.AddUnitMoney(-Debt.Parse<int>());

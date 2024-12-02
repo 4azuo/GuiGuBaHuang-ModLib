@@ -15,7 +15,7 @@ namespace MOD_nE7UL2.Mod
 
         public const int MANASHIELD_EFFECT_MAIN_ID = 903151120;
         public const int MANASHIELD_EFFECT_EFX_ID = 903151121;
-        public const float MONST_SHIELD_CHANCE = 0.55f;
+        public const float MONST_SHIELD_CHANCE = 0.50f;
 
         public static _BattleManashieldConfigs ManashieldConfigs => ModMain.ModObj.InGameCustomSettings.BattleManashieldConfigs;
 
@@ -51,7 +51,8 @@ namespace MOD_nE7UL2.Mod
                 {
                     //add manashield
                     var gameLvl = g.data.dataWorld.data.gameLevel.Parse<int>();
-                    if (CommonTool.Random(0.0f, 100.0f).IsBetween(0.0f, MONST_SHIELD_CHANCE * monstData.grade.value * gameLvl))
+                    var smConfigs = EventHelper.GetEvent<SMLocalConfigsEvent>(ModConst.SM_LOCAL_CONFIGS_EVENT);
+                    if (CommonTool.Random(0.0f, 100.0f).IsBetween(0.0f, smConfigs.Calculate(MONST_SHIELD_CHANCE * monstData.grade.value * gameLvl, smConfigs.Configs.AddSpecialMonsterRate).Parse<float>()))
                     {
                         var efx = monstData.unit.AddEffect(MANASHIELD_EFFECT_MAIN_ID, monstData.unit, new SkillCreateData
                         {

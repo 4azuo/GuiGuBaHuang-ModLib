@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Linq.Expressions;
 using System.Reflection;
+using System.Threading.Tasks;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
@@ -156,9 +157,15 @@ public static class ObjectHelper
         return obj;
     }
 
-    public static T Size<T>(this T obj, float scaleX = 0f, float scaleY = 0f, float scaleZ = 0f) where T : UIBehaviour
+    public static T Size<T>(this T obj, float scaleX = 0f, float scaleY = 0f) where T : UIBehaviour
     {
-        obj.GetComponent<RectTransform>().sizeDelta = new Vector3(scaleX, scaleY, scaleZ);
+        Parallel.ForEach(obj.GetComponentsInChildren<RectTransform>(), s => s.sizeDelta = new Vector2(scaleX, scaleY));
+        return obj;
+    }
+
+    public static T AddSize<T>(this T obj, float scaleX = 0f, float scaleY = 0f) where T : UIBehaviour
+    {
+        Parallel.ForEach(obj.GetComponentsInChildren<RectTransform>(), s => s.sizeDelta = new Vector2(s.sizeDelta.x + scaleX, s.sizeDelta.y + scaleY));
         return obj;
     }
 

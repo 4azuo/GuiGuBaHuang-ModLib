@@ -16,7 +16,8 @@ namespace MOD_nE7UL2.Mod
         //SpiritStones (Sell Price) / Contribution
         public static int GetExchangeRatio()
         {
-            return InflationaryEvent.CalculateInflationary(ModMain.ModObj.InGameCustomSettings.ContributionExchangeConfigs.ExchangeRatio, GameHelper.GetGameYear());
+            var smConfigs = EventHelper.GetEvent<SMLocalConfigsEvent>(ModConst.SM_LOCAL_CONFIGS_EVENT);
+            return smConfigs.Calculate(InflationaryEvent.CalculateInflationary(ModMain.ModObj.InGameCustomSettings.ContributionExchangeConfigs.ExchangeRatio, GameHelper.GetGameYear()), smConfigs.Configs.AddSectExchangeRate).Parse<int>();
         }
 
         public int CurMonthRatio { get; set; }
@@ -31,7 +32,8 @@ namespace MOD_nE7UL2.Mod
 
         private void RandomRatio()
         {
-            CurMonthRatio = (GetExchangeRatio() * CommonTool.Random(0.80f, 1.30f)).Parse<int>();
+            var smConfigs = EventHelper.GetEvent<SMLocalConfigsEvent>(ModConst.SM_LOCAL_CONFIGS_EVENT);
+            CurMonthRatio = smConfigs.Calculate(GetExchangeRatio() * CommonTool.Random(0.80f, 1.30f), smConfigs.Configs.AddSectExchangeRate).Parse<int>();
         }
 
         public override void OnOpenUIEnd(OpenUIEnd e)
