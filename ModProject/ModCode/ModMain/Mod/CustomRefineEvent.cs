@@ -16,8 +16,10 @@ namespace MOD_nE7UL2.Mod
     [Cache(ModConst.CUSTOM_REFINE_EVENT)]
     public class CustomRefineEvent : ModEvent
     {
-        public IDictionary<string, long> RefineExp { get; set; } = new Dictionary<string, long>();
-        public IDictionary<string, CustomRefine> CustomRefine { get; set; } = new Dictionary<string, CustomRefine>();
+        public Dictionary<string, long> RefineExp { get; set; } = new Dictionary<string, long>();
+        public Dictionary<string, CustomRefine> CustomRefine { get; set; } = new Dictionary<string, CustomRefine>();
+
+        public static Dictionary<string, List<DataProps.PropsData>> RefinableItems { get; } = new Dictionary<string, List<DataProps.PropsData>>();
 
         public override void OnMonthly()
         {
@@ -25,17 +27,30 @@ namespace MOD_nE7UL2.Mod
 
             foreach (var wunit in g.world.unit.GetUnits())
             {
+                var wunitId = wunit.GetUnitId();
                 if (wunit.IsPlayer())
                     continue;
-                foreach (var item in wunit.GetUnitProps())
+                foreach (var item in GetRefinableItems(wunit))
                 {
-                    if (IsRefinableItem(item))
-                    {
-                        NpcRefine(wunit, item);
-                    }
+                    NpcRefine(wunit, item);
                 }
             }
-            ClearCacheCustomAdjValues();
+        }
+
+        [ErrorIgnore]
+        [EventCondition]
+        public override void OnTimeUpdate1s()
+        {
+            base.OnTimeUpdate1s();
+
+            RefinableItems.Clear();
+            var x = g.world.playerUnit.data.unitData.pointX;
+            var y = g.world.playerUnit.data.unitData.pointY;
+            foreach (var wunit in g.world.unit.GetUnitExact(new Vector2Int(x, y), 20, true, true))
+            {
+                var wunitId = wunit.GetUnitId();
+                RefinableItems.Add(wunitId, GetRefinableItems(wunit));
+            }
         }
 
         private void NpcRefine(WorldUnitBase wunit, DataProps.PropsData item)
@@ -129,7 +144,6 @@ namespace MOD_nE7UL2.Mod
                 var value = UIPropSelect.allSlectDataProps.allProps.ToArray().Sum(x => x.propsInfoBase.worth * x.propsCount);
                 var exp = value + (value * g.world.playerUnit.GetDynProperty(UnitDynPropertyEnum.RefineWeapon).value / 100);
                 AddRefineExp(refineItem, exp);
-                ClearCacheCustomAdjValues(g.world.playerUnit);
                 g.world.playerUnit.AddUnitMoney(-value);
                 g.ui.CloseUI(ui);
 
@@ -137,6 +151,17 @@ namespace MOD_nE7UL2.Mod
                 uiConfirm.InitData("Refine", $"Success! Level {oldLvl}→{GetRefineLvl(refineItem)} (+{exp}Exp)", 1);
             }));
             ui.UpdateUI();
+        }
+
+        public static List<DataProps.PropsData> GetRefinableItems(WorldUnitBase wunit)
+        {
+            var rs = new List<DataProps.PropsData>();
+            foreach (var item in wunit.GetUnitProps())
+            {
+                if (IsRefinableItem(item))
+                    rs.Add(item);
+            }
+            return rs;
         }
 
         public static bool IsRefinableItem(DataProps.PropsData props)
@@ -213,54 +238,33 @@ namespace MOD_nE7UL2.Mod
             return rs;
         }
 
-        private static readonly IDictionary<string, double> _cacheCustomAdjValues = new Dictionary<string, double>();
         public static double GetRefineCustommAdjValue(WorldUnitBase wunit, AdjTypeEnum adjType)
         {
-            if (wunit == null || adjType == null)
-                return 0.0;
-            var key = $"{wunit.GetUnitId()}_{adjType.Name}";
-            if (_cacheCustomAdjValues.ContainsKey(key))
-                return _cacheCustomAdjValues[key];
+            var wunitId = wunit.GetUnitId();
+            if (wunit == null || adjType == null || !RefinableItems.ContainsKey(wunitId))
+                return 0d;
             var rs = 0d;
-            foreach (var props in wunit.GetUnitProps())
+            foreach (var props in RefinableItems[wunitId])
             {
-                if (CustomRefineEvent.IsRefinableItem(props))
+                var refineLvl = GetRefineLvl(props);
+                if (props.propsItem.IsArtifact() != null)
                 {
-                    var refineLvl = CustomRefineEvent.GetRefineLvl(props);
-                    if (props.propsItem.IsArtifact() != null)
-                    {
-                        rs += CustomRefineEvent.GetCustomAdjType(props, 1, adjType)?.GetRefineCustommAdjValue(wunit, props, refineLvl) ?? 0;
-                        rs += CustomRefineEvent.GetCustomAdjType(props, 2, adjType)?.GetRefineCustommAdjValue(wunit, props, refineLvl) ?? 0;
-                        rs += CustomRefineEvent.GetCustomAdjType(props, 3, adjType)?.GetRefineCustommAdjValue(wunit, props, refineLvl) ?? 0;
-                    }
-                    else if (props.propsItem.IsRing() != null)
-                    {
-                        rs += CustomRefineEvent.GetCustomAdjType(props, 1, adjType)?.GetRefineCustommAdjValue(wunit, props, refineLvl) ?? 0;
-                        rs += CustomRefineEvent.GetCustomAdjType(props, 2, adjType)?.GetRefineCustommAdjValue(wunit, props, refineLvl) ?? 0;
-                    }
-                    else if (props.propsItem.IsOutfit() != null)
-                    {
-                        rs += CustomRefineEvent.GetCustomAdjType(props, 1, adjType)?.GetRefineCustommAdjValue(wunit, props, refineLvl) ?? 0;
-                        rs += CustomRefineEvent.GetCustomAdjType(props, 2, adjType)?.GetRefineCustommAdjValue(wunit, props, refineLvl) ?? 0;
-                    }
+                    rs += GetCustomAdjType(props, 1, adjType)?.GetRefineCustommAdjValue(wunit, props, refineLvl) ?? 0;
+                    rs += GetCustomAdjType(props, 2, adjType)?.GetRefineCustommAdjValue(wunit, props, refineLvl) ?? 0;
+                    rs += GetCustomAdjType(props, 3, adjType)?.GetRefineCustommAdjValue(wunit, props, refineLvl) ?? 0;
+                }
+                else if (props.propsItem.IsRing() != null)
+                {
+                    rs += GetCustomAdjType(props, 1, adjType)?.GetRefineCustommAdjValue(wunit, props, refineLvl) ?? 0;
+                    rs += GetCustomAdjType(props, 2, adjType)?.GetRefineCustommAdjValue(wunit, props, refineLvl) ?? 0;
+                }
+                else if (props.propsItem.IsOutfit() != null)
+                {
+                    rs += GetCustomAdjType(props, 1, adjType)?.GetRefineCustommAdjValue(wunit, props, refineLvl) ?? 0;
+                    rs += GetCustomAdjType(props, 2, adjType)?.GetRefineCustommAdjValue(wunit, props, refineLvl) ?? 0;
                 }
             }
-            _cacheCustomAdjValues.Add(key, rs);
             return rs;
-        }
-
-        public static void ClearCacheCustomAdjValues()
-        {
-            _cacheCustomAdjValues.Clear();
-        }
-
-        public static void ClearCacheCustomAdjValues(WorldUnitBase wunit)
-        {
-            foreach (var adjType in AdjTypeEnum.GetAllEnums<AdjTypeEnum>())
-            {
-                var key = $"{wunit.GetUnitId()}_{adjType.Name}";
-                _cacheCustomAdjValues.Remove(key);
-            }
         }
     }
 }

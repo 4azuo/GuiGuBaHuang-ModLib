@@ -103,6 +103,7 @@ namespace MOD_nE7UL2.Mod
         }
 
         [ErrorIgnore]
+        [EventCondition]
         public override void OnTimeUpdate()
         {
             base.OnTimeUpdate();

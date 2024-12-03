@@ -3,7 +3,6 @@ using ModLib.Mod;
 using UnityEngine;
 using ModLib.Enum;
 using System.Collections.Generic;
-using Newtonsoft.Json;
 using MOD_nE7UL2.Enum;
 using System;
 
@@ -12,8 +11,7 @@ namespace MOD_nE7UL2.Mod
     [Cache(ModConst.UNIT_MODIFY_EVENT)]
     public class UnitModifyEvent : ModEvent
     {
-        [JsonIgnore]
-        private List<string> _units = new List<string>();
+        private static readonly List<string> _units = new List<string>();
 
         public override void OnLoadGame()
         {
@@ -29,7 +27,6 @@ namespace MOD_nE7UL2.Mod
 
         private void LoadWUnitModifier()
         {
-            CustomRefineEvent.ClearCacheCustomAdjValues();
             foreach (var wunit in g.world.unit.GetUnits())
             {
                 AddWUnitModifier(wunit);

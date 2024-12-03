@@ -455,6 +455,8 @@ namespace ModLib.Mod
                 {
                     throw new NullReferenceException();
                 }
+                //var sw = new Stopwatch();
+                //sw.Start();
                 if (method.GetParameters().Length == 0)
                 {
                     method.Invoke(this, null);
@@ -463,6 +465,8 @@ namespace ModLib.Mod
                 {
                     method.Invoke(this, new object[] { e?.TryCast<T>()/* ?? e*/ });
                 }
+                //sw.Stop();
+                //DebugHelper.WriteLine($"Benchmark: {method.DeclaringType.FullName}|{method.Name}: {sw.Elapsed}");
 
                 callback?.Invoke();
             }
@@ -477,8 +481,7 @@ namespace ModLib.Mod
 
         private void ShowException()
         {
-            if (!GameHelper.IsInGame())
-                DebugHelper.Save();
+            DebugHelper.Save();
             if (LastestException != null)
             {
                 var ui = g.ui.OpenUI<UITextInfoLong>(UIType.TextInfoLong);

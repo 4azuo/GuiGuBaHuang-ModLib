@@ -91,6 +91,8 @@ namespace MOD_nE7UL2.Mod
 
         private int oldX;
         private int oldY;
+        [ErrorIgnore]
+        [EventCondition]
         public override void OnTimeUpdate200ms()
         {
             base.OnTimeUpdate200ms();
