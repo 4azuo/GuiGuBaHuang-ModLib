@@ -37,12 +37,12 @@ public static class GameHelper
 
     public static bool IsInGame()
     {
-        return (g.world?.isIntoWorld == true) && g.world?.playerUnit?.GetUnitId() != null && (ModMaster.ModObj?.InGameSettings?.LoadMapFirst == false);
+        return (g.world?.isIntoWorld).Is(true) == 1 && g.world?.playerUnit?.GetUnitId() != null;
     }
 
     public static bool IsInBattlle()
     {
-        return IsInGame() && (g.world?.battle?.isBattle == true);
+        return IsInGame() && (g.world?.battle?.isBattle).Is(true) == 1;
     }
 
     public static void LoadEnumObj(Assembly ass)
