@@ -81,6 +81,7 @@ namespace MOD_nE7UL2.Mod
             return efx;
         }
 
+        [ErrorIgnore]
         [EventCondition(IsInBattle = true)]
         public override void OnTimeUpdate()
         {

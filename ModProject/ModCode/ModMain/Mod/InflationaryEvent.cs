@@ -11,7 +11,7 @@ namespace MOD_nE7UL2.Mod
     public class InflationaryEvent : ModEvent
     {
         public const int REACH_LIMIT_DRAMA = 499919998;
-        public const int LIMIT = 200000000;
+        public const int LIMIT = 500000000;
 
         public static _InflationaryConfigs Configs => ModMain.ModObj.InGameCustomSettings.InflationaryConfigs;
 
@@ -88,7 +88,6 @@ namespace MOD_nE7UL2.Mod
         public static int GetHighestCost()
         {
             return new int[] {
-                BankAccountEvent.Cost(10),
                 g.conf.itemProps._allConfList.ToArray().Max(x => x.sale),
                 g.conf.itemProps._allConfList.ToArray().Max(x => x.worth),
                 g.conf.itemSkill._allConfList.ToArray().Max(x => x.price),

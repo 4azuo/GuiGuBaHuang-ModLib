@@ -1,4 +1,5 @@
-﻿using ModLib.Object;
+﻿using ModLib.Mod;
+using ModLib.Object;
 using System.Linq;
 using System.Reflection;
 using System.Runtime.CompilerServices;
@@ -36,12 +37,12 @@ public static class GameHelper
 
     public static bool IsInGame()
     {
-        return (g.world?.isIntoWorld ?? false) && g.world?.playerUnit?.GetUnitId() != null;
+        return (g.world?.isIntoWorld == true) && g.world?.playerUnit?.GetUnitId() != null && (ModMaster.ModObj?.InGameSettings?.LoadMapFirst == false);
     }
 
     public static bool IsInBattlle()
     {
-        return IsInGame() && (g.world?.battle?.isBattle ?? false);
+        return IsInGame() && (g.world?.battle?.isBattle == true);
     }
 
     public static void LoadEnumObj(Assembly ass)

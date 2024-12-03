@@ -1,6 +1,4 @@
-﻿using ModLib.Const;
-using ModLib.Mod;
-using Newtonsoft.Json;
+﻿using Newtonsoft.Json;
 using System;
 using System.ComponentModel;
 
@@ -43,7 +41,7 @@ namespace ModLib.Object
         }
 
         [JsonIgnore]
-        public bool LoadMapNewGame { get; set; } = true;
+        public bool LoadMapFirst { get; set; } = true;
         [JsonIgnore]
         public bool LoadGameBefore { get; set; } = true;
         [JsonIgnore]
@@ -52,7 +50,7 @@ namespace ModLib.Object
         public bool LoadGameAfter { get; set; } = true;
 
         [Inheritance]
-        public bool LoadMapFirst { get; set; } = true;
+        public bool LoadMapNewGame { get; set; } = true;
         [Inheritance]
         public bool LoadGameFirst { get; set; } = true;
         [Inheritance]

@@ -15,30 +15,11 @@ namespace ModLib.Mod
             get;
         } = -1;
         [JsonIgnore]
-        public IDictionary<string, uint> UpdateFlg1
-        {
-            get;
-            set;
-        } = new Dictionary<string, uint>();
-        [JsonIgnore]
-        public IDictionary<string, uint> UpdateFlg2
-        {
-            get;
-            set;
-        } = new Dictionary<string, uint>();
-        [JsonIgnore]
         public static ModEvent LastestObject { get; private set; }
 
         public ModEvent()
         {
             LastestObject = this;
-            foreach (var method in GetType().GetMethods())
-            {
-                if (!UpdateFlg1.ContainsKey(method.Name))
-                    UpdateFlg1.Add(method.Name, uint.MinValue);
-                if (!UpdateFlg2.ContainsKey(method.Name))
-                    UpdateFlg2.Add(method.Name, uint.MinValue);
-            }
         }
 
         #region Private methods
@@ -49,16 +30,6 @@ namespace ModLib.Mod
                 ModMaster.ModObj.InGameSettings.LoadGame ||
                 ModMaster.ModObj.InGameSettings.LoadGameAfter ||
                 ModMaster.ModObj.InGameSettings.LoadGameFirst;
-        }
-
-        public bool IsFlgUpdate(string method)
-        {
-            return UpdateFlg1[method] != UpdateFlg2[method];
-        }
-
-        public void UpdateFlg(string method)
-        {
-            UpdateFlg1[method]++;
         }
         #endregion
 

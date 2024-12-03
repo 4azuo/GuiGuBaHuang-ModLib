@@ -1,5 +1,4 @@
 ﻿using MOD_nE7UL2.Enum;
-using Newtonsoft.Json;
 using UnityEngine;
 
 namespace MOD_nE7UL2.Object
@@ -66,7 +65,7 @@ namespace MOD_nE7UL2.Object
             var seeder = GetCustomAdjSeeder(props);
             AdjType = seeder[props.soleID[index - 1] % seeder.Length];
             AdjLevel = AdjLevels[props.soleID[index] % AdjLevels.Length];
-            RandomMultiplier = CommonTool.Random(0.50f, 1.50f);
+            RandomMultiplier = CommonTool.Random(0.60f, 1.40f);
         }
 
         public double GetRefineCustommAdjValue(WorldUnitBase wunit, DataProps.PropsData props, int refineLvl)
