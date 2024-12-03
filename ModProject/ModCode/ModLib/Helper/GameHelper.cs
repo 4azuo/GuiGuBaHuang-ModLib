@@ -45,6 +45,11 @@ public static class GameHelper
         return IsInGame() && (g.world?.battle?.isBattle).Is(true) == 1;
     }
 
+    public static bool IsWorldRunning()
+    {
+        return IsInGame() && (g.world?.run?.isRunning).Is(true) == 1;
+    }
+
     public static void LoadEnumObj(Assembly ass)
     {
         var enumTypes = ass.GetTypes().Where(x => x.IsClass && x.IsSubclassOf(typeof(EnumObject))).OrderBy(x => x.FullName).ToList();

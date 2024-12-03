@@ -43,9 +43,6 @@ public static class DebugHelper
     {
         if (CurLog.Length > 0)
         {
-            WriteLine();
-            WriteLine();
-            WriteLine();
             CreateDebugFolder();
             File.AppendAllText(GetDebugFilePath(), CurLog.ToString());
             CurLog.Clear();

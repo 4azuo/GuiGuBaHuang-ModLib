@@ -303,6 +303,7 @@ namespace MOD_nE7UL2.Mod
             }
         }
 
+        [ErrorIgnore]
         [EventCondition(IsInBattle = true)]
         public override void OnTimeUpdate200ms()
         {
