@@ -68,9 +68,9 @@ public static class CacheHelper
         return (IList<T>)GetDatas(typeof(T));
     }
 
-    public static IList<CachableObject> GetDatas(Type dataType)
+    public static List<CachableObject> GetDatas(Type dataType)
     {
-        var rs = GetGlobalCache().GetDatas(dataType).ToList();
+        var rs = GetGlobalCache().GetDatas(dataType);
         if (IsGameCacheLoaded())
         {
             rs.AddRange(GetGameCache().GetDatas(dataType));
@@ -146,6 +146,8 @@ public static class CacheHelper
 
     public static bool IsGameCacheLoaded()
     {
+        if (!GameHelper.IsInGame())
+            ClearGameCache();
         return GameCacheData != null;
     }
 

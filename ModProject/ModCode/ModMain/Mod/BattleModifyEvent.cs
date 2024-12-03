@@ -103,7 +103,7 @@ namespace MOD_nE7UL2.Mod
 
             //DebugHelper.WriteLine($"3: {e.dynV.baseValue}");
             //add dmg (skill)
-            e.dynV.baseValue += Convert.ToInt32(GetSkillAdjDmg(ModBattleEvent.AttackingWorldUnit) * GetSkillAdjDmgPlus(ModBattleEvent.AttackingWorldUnit));
+            e.dynV.baseValue += Convert.ToInt32(GetSkillAdjDmgBase(ModBattleEvent.AttackingWorldUnit) * GetSkillAdjDmgPlus(ModBattleEvent.AttackingWorldUnit));
 
             //add dmg (basis)
             if (pEnum != null)
@@ -349,7 +349,7 @@ namespace MOD_nE7UL2.Mod
 
         public static float GetBlockRatio(UnitDataHuman u)
         {
-            int gradeLvl = 0;
+            int gradeLvl;
             if (u == null || !BlockRatio.ContainsKey(gradeLvl = u?.worldUnitData?.unit?.GetGradeLvl() ?? 0))
                 return 0f;
             var wunit = u.worldUnitData.unit;
@@ -358,14 +358,14 @@ namespace MOD_nE7UL2.Mod
 
         public static int GetBlockMpCost(UnitDataHuman u)
         {
-            int gradeLvl = 0;
+            int gradeLvl;
             if (u == null || !BlockRatio.ContainsKey(gradeLvl = u?.worldUnitData?.unit?.GetGradeLvl() ?? 0))
                 return 0;
             var wunit = u.worldUnitData.unit;
             return 50 * gradeLvl + wunit.GetBasisPhysicSum() / 1000;
         }
 
-        public static int GetSkillAdjDmg(WorldUnitBase wunit)
+        public static int GetSkillAdjDmgBase(WorldUnitBase wunit)
         {
             if (wunit == null)
                 return 0;
@@ -410,8 +410,6 @@ namespace MOD_nE7UL2.Mod
 
         public static int GetMinDmgBase(WorldUnitBase wunit)
         {
-            if (wunit == null)
-                return 0;
             var rs = wunit.GetGradeLvl();
             if (wunit.IsPlayer())
             {
@@ -423,16 +421,12 @@ namespace MOD_nE7UL2.Mod
 
         public static int GetMinDmgBase(UnitCtrlBase cunit)
         {
-            if (cunit == null)
-                return 0;
             var gameLvl = g.data.dataWorld.data.gameLevel.Parse<int>();
             return cunit.data.grade.value * gameLvl;
         }
 
         public static int GetMinDmgPlus(WorldUnitBase wunit)
         {
-            if (wunit == null)
-                return 0;
             return Convert.ToInt32(CustomRefineEvent.GetRefineCustommAdjValue(wunit, AdjTypeEnum.MinDamage));
         }
 
@@ -448,29 +442,21 @@ namespace MOD_nE7UL2.Mod
 
         public static double GetBlockMaxPlus(WorldUnitBase wunit)
         {
-            if (wunit == null)
-                return 0;
             return CustomRefineEvent.GetRefineCustommAdjValue(wunit, AdjTypeEnum.BlockChanceMax);
         }
 
         public static double GetBlockDmgBase(WorldUnitBase wunit)
         {
-            if (wunit == null)
-                return 0;
             return wunit.GetDynProperty(UnitDynPropertyEnum.Defense).value;
         }
 
         public static double GetBlockDmgBase(UnitCtrlBase cunit)
         {
-            if (cunit == null)
-                return 0;
             return cunit.data.defense.value;
         }
 
         public static double GetBlockDmgPlus(WorldUnitBase wunit)
         {
-            if (wunit == null)
-                return 0;
             return CustomRefineEvent.GetRefineCustommAdjValue(wunit, AdjTypeEnum.BlockDmg);
         }
 
@@ -486,29 +472,21 @@ namespace MOD_nE7UL2.Mod
 
         public static double GetEvadeMaxPlus(WorldUnitBase wunit)
         {
-            if (wunit == null)
-                return 0;
             return CustomRefineEvent.GetRefineCustommAdjValue(wunit, AdjTypeEnum.EvadeChanceMax);
         }
 
         public static double GetEvadeBase(WorldUnitBase wunit)
         {
-            if (wunit == null)
-                return 0;
             return Math.Sqrt(wunit.GetDynProperty(UnitDynPropertyEnum.BasisWind).value / 18);
         }
 
         public static double GetEvadeBase(UnitCtrlBase cunit)
         {
-            if (cunit == null)
-                return 0;
             return Math.Sqrt(cunit.data.basisWind.value / 18);
         }
 
         public static double GetEvadePlus(WorldUnitBase wunit)
         {
-            if (wunit == null)
-                return 0;
             var stepData = wunit.GetMartialStep();
             if (stepData == null)
                 return 0;
@@ -530,64 +508,46 @@ namespace MOD_nE7UL2.Mod
 
         public static double GetSCritChanceMaxPlus(WorldUnitBase wunit)
         {
-            if (wunit == null)
-                return 0;
             return CustomRefineEvent.GetRefineCustommAdjValue(wunit, AdjTypeEnum.SCritChanceMax);
         }
 
         public static double GetSCritChanceBase(WorldUnitBase wunit)
         {
-            if (wunit == null)
-                return 0;
             return Math.Sqrt(wunit.GetDynProperty(UnitDynPropertyEnum.BasisThunder).value / 50);
         }
 
         public static double GetSCritChancePlus(WorldUnitBase wunit)
         {
-            if (wunit == null)
-                return 0;
             return CustomRefineEvent.GetRefineCustommAdjValue(wunit, AdjTypeEnum.SCritChance);
         }
 
         public static double GetSCritDamageBase(WorldUnitBase wunit)
         {
-            if (wunit == null)
-                return 0;
             return 2.000f + wunit.GetDynProperty(UnitDynPropertyEnum.BasisFire).value / 1000.00f;
         }
 
         public static double GetSCritDamagePlus(WorldUnitBase wunit)
         {
-            if (wunit == null)
-                return 0;
             return CustomRefineEvent.GetRefineCustommAdjValue(wunit, AdjTypeEnum.SCritDamage);
         }
 
         public static double GetHpRecoveryBase(WorldUnitBase wunit)
         {
-            if (wunit == null)
-                return 0;
             return Math.Sqrt(wunit.GetDynProperty(UnitDynPropertyEnum.BasisWood).value / 100f);
         }
 
         public static double GetHpRecoveryPlus(WorldUnitBase wunit)
         {
-            if (wunit == null)
-                return 0;
             return CustomRefineEvent.GetRefineCustommAdjValue(wunit, AdjTypeEnum.RHp);
         }
 
         public static double GetMpRecoveryBase(WorldUnitBase wunit)
         {
-            if (wunit == null)
-                return 0;
             return Math.Sqrt(wunit.GetDynProperty(UnitDynPropertyEnum.BasisFroze).value / 200f);
         }
 
         public static double GetMpRecoveryPlus(WorldUnitBase wunit)
         {
-            if (wunit == null)
-                return 0;
             return CustomRefineEvent.GetRefineCustommAdjValue(wunit, AdjTypeEnum.RMp);
         }
 
@@ -598,8 +558,6 @@ namespace MOD_nE7UL2.Mod
 
         public static double GetSpRecoveryPlus(WorldUnitBase wunit)
         {
-            if (wunit == null)
-                return 0;
             return CustomRefineEvent.GetRefineCustommAdjValue(wunit, AdjTypeEnum.RSp);
         }
         #endregion

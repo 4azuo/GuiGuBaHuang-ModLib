@@ -60,7 +60,12 @@ namespace MOD_nE7UL2.Mod
         {
             base.OnBattleUnitInto(e);
 
-            if (e.IsMonster() && !ModMaster.ModObj.InGameSettings.LoadMapNewGame)
+            DebugHelper.WriteLine("OnBattleUnitInto: 1");
+            if ((ModMaster.ModObj?.InGameSettings?.LoadFirstMonth).Is(true) == 1)
+                return;
+
+            DebugHelper.WriteLine("OnBattleUnitInto: 2");
+            if (e.IsMonster())
             {
                 var monstData = e?.data?.TryCast<UnitDataMonst>();
                 var gameLvl = g.data.dataWorld.data.gameLevel.Parse<int>();

@@ -461,7 +461,7 @@ namespace ModLib.Mod
                 }
                 else
                 {
-                    method.Invoke(this, new object[] { e?.TryCast<T>() ?? e });
+                    method.Invoke(this, new object[] { e?.TryCast<T>()/* ?? e*/ });
                 }
 
                 callback?.Invoke();

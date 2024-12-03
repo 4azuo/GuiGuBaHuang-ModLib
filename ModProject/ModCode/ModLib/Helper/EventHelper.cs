@@ -62,16 +62,16 @@ public static class EventHelper
         return GetEvents(methodName).FirstOrDefault(x => x.CacheId == eventId);
     }
 
-    public static IList<ModEvent> GetEvents(string methodName)
+    public static List<ModEvent> GetEvents(string methodName)
     {
         return GetEvents().Where(x => x.IsDeclaredMethod(methodName)).ToList();
     }
 
-    public static IList<ModEvent> GetEvents()
+    public static List<ModEvent> GetEvents()
     {
-        var rs = CacheHelper.GetGlobalCache().GetDatas<ModEvent>().OrderBy(x => x.OrderIndex).ToList();
+        var rs = CacheHelper.GetGlobalCache().GetDatas<ModEvent>();
         if (CacheHelper.IsGameCacheLoaded())
-            rs.AddRange(CacheHelper.GetGameCache().GetDatas<ModEvent>().OrderBy(x => x.OrderIndex));
-        return rs;
+            rs.AddRange(CacheHelper.GetGameCache().GetDatas<ModEvent>());
+        return rs.OrderBy(x => x.OrderIndex).ToList();
     }
 }
