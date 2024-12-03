@@ -19,6 +19,8 @@
 //    [Cache("DEBUG", IsGlobal = true)]
 //    public class DebugEvent : ModEvent
 //    {
+//        public override int OrderIndex => 9999;
+
 //        /* === Test attributes === */
 //        //public override void OnSave(ETypeData e)
 //        //{
@@ -38,11 +40,24 @@
 //        /* === In game debug === */
 //        public override void OnLoadGame()
 //        {
-//            //g.world.playerUnit.AddProperty<int>(UnitPropertyEnum.Attack, 1000000);
-//            //g.world.playerUnit.AddProperty<int>(UnitPropertyEnum.Defense, 1000000);
-//            //g.world.playerUnit.AddProperty<int>(UnitPropertyEnum.HpMax, 1000000);
-//            //g.world.playerUnit.AddProperty<int>(UnitPropertyEnum.MpMax, 1000000);
-//            //g.world.playerUnit.AddProperty<int>(UnitPropertyEnum.SpMax, 1000000);
+//            //g.world.playerUnit.SetProperty<int>(UnitPropertyEnum.Attack, 1000000);
+//            //g.world.playerUnit.SetProperty<int>(UnitPropertyEnum.Defense, 1000000);
+//            //g.world.playerUnit.SetProperty<int>(UnitPropertyEnum.HpMax, 1000000);
+//            //g.world.playerUnit.SetProperty<int>(UnitPropertyEnum.MpMax, 1000000);
+//            //g.world.playerUnit.SetProperty<int>(UnitPropertyEnum.SpMax, 1000000);
+
+//            //g.world.playerUnit.SetProperty<int>(UnitPropertyEnum.BasisBlade, 10000);
+//            //g.world.playerUnit.SetProperty<int>(UnitPropertyEnum.BasisEarth, 10000);
+//            //g.world.playerUnit.SetProperty<int>(UnitPropertyEnum.BasisFinger, 10000);
+//            //g.world.playerUnit.SetProperty<int>(UnitPropertyEnum.BasisFire, 10000);
+//            //g.world.playerUnit.SetProperty<int>(UnitPropertyEnum.BasisFist, 10000);
+//            //g.world.playerUnit.SetProperty<int>(UnitPropertyEnum.BasisFroze, 10000);
+//            //g.world.playerUnit.SetProperty<int>(UnitPropertyEnum.BasisPalm, 10000);
+//            //g.world.playerUnit.SetProperty<int>(UnitPropertyEnum.BasisSpear, 10000);
+//            //g.world.playerUnit.SetProperty<int>(UnitPropertyEnum.BasisSword, 10000);
+//            //g.world.playerUnit.SetProperty<int>(UnitPropertyEnum.BasisThunder, 10000);
+//            //g.world.playerUnit.SetProperty<int>(UnitPropertyEnum.BasisWind, 10000);
+//            //g.world.playerUnit.SetProperty<int>(UnitPropertyEnum.BasisWood, 10000);
 
 //            g.world.playerUnit.SetUnitMoney(1000000000);
 //            g.world.playerUnit.SetUnitMayorDegree(1000000000);
