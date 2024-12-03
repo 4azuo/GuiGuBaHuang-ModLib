@@ -7,11 +7,9 @@ using ModLib.Const;
 using System.Collections.Generic;
 using UnityEngine.Events;
 using System;
-using ModLib.Object;
 using MOD_nE7UL2.Enum;
 using MOD_nE7UL2.Object;
 using ModLib.Enum;
-using static Il2CppSystem.Linq.Expressions.Interpreter.CastInstruction.CastInstructionNoT;
 
 namespace MOD_nE7UL2.Mod
 {
@@ -207,8 +205,6 @@ namespace MOD_nE7UL2.Mod
                 return null;
             var key = $"{props.soleID}_{index}";
             var x = EventHelper.GetEvent<CustomRefineEvent>(ModConst.CUSTOM_REFINE_EVENT);
-            if (x.CustomRefine.Count == 0)
-                g.ui.OpenUI<UICheckPopup>(UIType.CheckPopup).InitData("Waiting", "Creating Item-Attribute...", 1);
             if (!x.CustomRefine.ContainsKey(key))
                 x.CustomRefine.Add(key, new CustomRefine(props, index));
             var rs = x.CustomRefine[key];
