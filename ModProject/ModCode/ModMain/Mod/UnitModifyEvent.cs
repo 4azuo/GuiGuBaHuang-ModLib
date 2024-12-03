@@ -27,7 +27,7 @@ namespace MOD_nE7UL2.Mod
 
         private void LoadWUnitModifier()
         {
-            foreach (var wunit in g.world.unit.GetUnits())
+            foreach (var wunit in g.world.playerUnit.GetUnitsAround())
             {
                 AddWUnitModifier(wunit);
             }

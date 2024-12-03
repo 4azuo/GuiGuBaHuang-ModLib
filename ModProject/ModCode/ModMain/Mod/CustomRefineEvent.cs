@@ -27,7 +27,6 @@ namespace MOD_nE7UL2.Mod
 
             foreach (var wunit in g.world.unit.GetUnits())
             {
-                var wunitId = wunit.GetUnitId();
                 if (wunit.IsPlayer())
                     continue;
                 foreach (var item in GetRefinableItems(wunit))
@@ -42,11 +41,9 @@ namespace MOD_nE7UL2.Mod
         public override void OnTimeUpdate1s()
         {
             base.OnTimeUpdate1s();
-
+            
             RefinableItems.Clear();
-            var x = g.world.playerUnit.data.unitData.pointX;
-            var y = g.world.playerUnit.data.unitData.pointY;
-            foreach (var wunit in g.world.unit.GetUnitExact(new Vector2Int(x, y), 20, true, true))
+            foreach (var wunit in g.world.playerUnit.GetUnitsAround())
             {
                 var wunitId = wunit.GetUnitId();
                 RefinableItems.Add(wunitId, GetRefinableItems(wunit));

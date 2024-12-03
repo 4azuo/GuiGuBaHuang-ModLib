@@ -29,7 +29,9 @@ public static class EventHelper
                         continue;
                     if (condAttr.CustomCondition != null && !ev.GetType().GetMethod(condAttr.CustomCondition).Invoke(ev, null).Parse<bool>())
                         continue;
-                    if (condAttr.IsWorldRunning && !GameHelper.IsWorldRunning())
+                    if (condAttr.IsWorldRunning == 1 && !GameHelper.IsWorldRunning())
+                        continue;
+                    if (condAttr.IsWorldRunning == 0 && GameHelper.IsWorldRunning())
                         continue;
                 }
                 //var sw = new Stopwatch();

@@ -105,37 +105,27 @@ namespace ModLib.Mod
         {
             if (GameHelper.IsInGame())
             {
-                try
+                if (InGameSettings.CurMonth != g.game.world.run.roundMonth)
                 {
-                    if (InGameSettings.CurMonth != g.game.world.run.roundMonth)
+                    InGameSettings.CurMonth = g.game.world.run.roundMonth;
+
+                    //first month
+                    if (InGameSettings.LoadFirstMonth)
                     {
-                        InGameSettings.CurMonth = g.game.world.run.roundMonth;
-
-                        //first month
-                        if (InGameSettings.LoadFirstMonth)
-                        {
-                            OnFirstMonth();
-                            InGameSettings.LoadFirstMonth = false;
-                        }
-                        //monthly
-                        OnMonthly();
-                        //yearly
-                        if (g.world.run.roundMonth % 12 == 0)
-                        {
-                            OnYearly();
-                        }
+                        CallEvents("OnFirstMonth", true, false);
+                        InGameSettings.LoadFirstMonth = false;
                     }
-
-                    //save log
-                    DebugHelper.WriteLine($"Save: {GameHelper.GetGameYear()}年{GameHelper.GetGameMonth()}月{GameHelper.GetGameDay()}日");
-
-                    //save
-                    OnSave(e);
+                    //monthly
+                    CallEvents("OnMonthly", true, false);
+                    //yearly
+                    if (g.world.run.roundMonth % 12 == 0)
+                    {
+                        CallEvents("OnYearly", true, false);
+                    }
                 }
-                catch (Exception ex)
-                {
-                    DebugHelper.WriteLine(ex);
-                }
+
+                //save
+                CallEvents<ETypeData>("OnSave", e, true, false);
             }
         }
 
@@ -306,6 +296,8 @@ namespace ModLib.Mod
 
         public virtual void OnSave(ETypeData e)
         {
+            //save log
+            DebugHelper.WriteLine($"Save: {GameHelper.GetGameYear()}年{GameHelper.GetGameMonth()}月{GameHelper.GetGameDay()}日");
             EventHelper.RunMinorEvents(e);
             CacheHelper.Save();
             DebugHelper.Save();
