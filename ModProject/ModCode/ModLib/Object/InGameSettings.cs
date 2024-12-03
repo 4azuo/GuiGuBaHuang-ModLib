@@ -43,6 +43,8 @@ namespace ModLib.Object
 
 
         [JsonIgnore]
+        public bool LoadMapFirst { get; set; } = true;
+        [JsonIgnore]
         public bool LoadGameBefore { get; set; } = true;
         [JsonIgnore]
         public bool LoadGame { get; set; } = true;
@@ -51,6 +53,8 @@ namespace ModLib.Object
 
 
 
+        [Inheritance]
+        public bool LoadMapNewGame { get; set; } = true;
         [Inheritance]
         public bool LoadFirstMonth { get; set; } = true;
         [Inheritance]
