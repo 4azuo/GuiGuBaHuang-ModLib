@@ -4,6 +4,7 @@ using ModLib.Mod;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using UnityEngine;
 
 public static class UnitHelper
 {
@@ -526,5 +527,12 @@ public static class UnitHelper
     public static bool IsMonster(this UnitCtrlBase cunit)
     {
         return cunit?.data?.TryCast<UnitDataMonst>() != null && !cunit.IsWorldUnit();
+    }
+
+    public static Il2CppSystem.Collections.Generic.List<WorldUnitBase> GetUnitsAround(this WorldUnitBase wunit, int range = 20)
+    {
+        var x = wunit.data.unitData.pointX;
+        var y = wunit.data.unitData.pointY;
+        return g.world.unit.GetUnitExact(new Vector2Int(x, y), range, true, true);
     }
 }
