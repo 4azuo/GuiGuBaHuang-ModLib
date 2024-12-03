@@ -263,7 +263,7 @@ namespace MOD_nE7UL2.Mod
                 }
             }
 
-            if (e.uiType.uiName == UIType.NPCInfoPreview.uiName && (g.ui.GetUI(UIType.MartialInfo)?.gameObject?.active ?? false))
+            if (e.uiType.uiName == UIType.NPCInfoPreview.uiName && (g.ui.GetUI(UIType.MartialInfo)?.gameObject?.active == true))
             {
                 uiMartialExpertInfo.transform.position = new Vector3(0f, 5f);
             }
@@ -356,7 +356,7 @@ namespace MOD_nE7UL2.Mod
             var uiArtifactInfo = g.ui.GetUI<UIArtifactInfo>(UIType.ArtifactInfo);
             var uiPropInfo = g.ui.GetUI<UIPropInfo>(UIType.PropInfo);
 
-            if (uiPropInfo?.gameObject?.active ?? false)
+            if (uiPropInfo?.gameObject?.active == true)
             {
                 if (uiPropInfo.propData.propsItem.IsRing() != null)
                 {
@@ -375,7 +375,7 @@ namespace MOD_nE7UL2.Mod
                 }
             }
 
-            if (uiArtifactInfo?.gameObject?.active ?? false)
+            if (uiArtifactInfo?.gameObject?.active == true)
             {
                 uiArtifactInfo_textBasicTitle.Pos(uiArtifactInfo.textGrade_En.gameObject, 0f, -0.2f);
                 uiArtifactInfo_textBasicAdj1.Pos(uiArtifactInfo.textGrade_En.gameObject, +0.05f, -0.35f);
@@ -392,7 +392,7 @@ namespace MOD_nE7UL2.Mod
                 uiArtifactInfo_textRefineAdj5.Pos(uiArtifactInfo.textGrade_En.gameObject, +0.05f, -2.1f);
             }
 
-            if (uiNPCInfo?.gameObject?.active ?? false)
+            if (uiNPCInfo?.gameObject?.active == true)
             {
                 uiNPCInfo_textMartialAdjHp.text = $"+Hp: {UnitModifyHelper.GetMartialAdjHp(uiNPCInfo.unit)}";
                 uiNPCInfo_textSpiritualAdjMp.text = $"+Mp: {UnitModifyHelper.GetSpiritualAdjMp(uiNPCInfo.unit)}";
@@ -401,7 +401,7 @@ namespace MOD_nE7UL2.Mod
                 uiNPCInfoSkill_textAbiPointAdjMp.text = $"+Mp: {UnitModifyHelper.GetAbiPointAdjMp(uiNPCInfo.unit)}";
             }
 
-            if (uiPlayerInfo?.gameObject?.active ?? false)
+            if (uiPlayerInfo?.gameObject?.active == true)
             {
                 uiPlayerInfo_textMartialAdjHp.text = $"+Hp: {UnitModifyHelper.GetMartialAdjHp(uiPlayerInfo.unit)}";
                 uiPlayerInfo_textSpiritualAdjMp.text = $"+Mp: {UnitModifyHelper.GetSpiritualAdjMp(uiPlayerInfo.unit)}";
@@ -413,7 +413,7 @@ namespace MOD_nE7UL2.Mod
 
         public static void OnUIClose(CloseUIEnd e)
         {
-            if (e.uiType.uiName == UIType.MartialInfo.uiName && (g.ui.GetUI(UIType.NPCInfoPreview)?.gameObject?.active ?? false))
+            if (e.uiType.uiName == UIType.MartialInfo.uiName && (g.ui.GetUI(UIType.NPCInfoPreview)?.gameObject?.active == true))
             {
                 g.ui.CloseUI(uiMartialExpertInfo);
             }
