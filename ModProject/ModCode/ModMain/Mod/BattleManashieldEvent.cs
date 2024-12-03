@@ -48,17 +48,15 @@ namespace MOD_nE7UL2.Mod
                     //add manashield
                     if (CommonTool.Random(0.0f, 100.0f).IsBetween(0.0f, smConfigs.Calculate(MONST_SHIELD_CHANCE * monstData.grade.value * gameLvl, smConfigs.Configs.AddSpecialMonsterRate).Parse<float>()))
                     {
-                        var shield = monstData.maxHP.value * gameLvl / 2;
-                        var maxShield = shield;
-                        ShieldUp(monstData.unit, shield, maxShield);
+                        var shield = monstData.maxHP.value;
+                        ShieldUp(monstData.unit, shield, int.MaxValue);
                     }
                 }
 
                 if (smConfigs.Configs.BossHasShield && (monstData.monstType == MonstType.BOSS || monstData.monstType == MonstType.NPC))
                 {
-                    var shield = monstData.maxHP.value * gameLvl / 2;
-                    var maxShield = shield;
-                    ShieldUp(monstData.unit, shield, maxShield);
+                    var shield = monstData.maxHP.value;
+                    ShieldUp(monstData.unit, shield, int.MaxValue);
                 }
             }
         }

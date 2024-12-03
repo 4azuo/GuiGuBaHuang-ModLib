@@ -186,8 +186,12 @@ namespace ModLib.Mod
             switch (dmgSaveEnum)
             {
                 case DmgSaveEnum.Global:
+                    if (!GameDmg.ContainsKey(dmgKey))
+                        GameDmg.Add(dmgKey, 0);
                     return GameDmg[dmgKey];
                 case DmgSaveEnum.Local:
+                    if (!BattleDmg.ContainsKey(dmgKey))
+                        BattleDmg.Add(dmgKey, 0);
                     return BattleDmg[dmgKey];
                 default:
                     return 0;
@@ -297,6 +301,10 @@ namespace ModLib.Mod
             if (attackUnitData?.worldUnitData?.unit?.IsPlayer() ?? false)
             {
                 var commonDmgKey = GetDmgKey(DmgEnum.DmgDealt, DmgTypeEnum.Damage);
+                if (!GameDmg.ContainsKey(commonDmgKey))
+                    GameDmg.Add(commonDmgKey, 0);
+                if (!BattleDmg.ContainsKey(commonDmgKey))
+                    BattleDmg.Add(commonDmgKey, 0);
                 GameDmg[commonDmgKey] += dmg;
                 BattleDmg[commonDmgKey] += dmg;
 
@@ -314,6 +322,10 @@ namespace ModLib.Mod
             else if (hitUnitData?.worldUnitData?.unit?.IsPlayer() ?? false)
             {
                 var commonDmgKey = GetDmgKey(DmgEnum.DmgRecv, DmgTypeEnum.Damage);
+                if (!GameDmg.ContainsKey(commonDmgKey))
+                    GameDmg.Add(commonDmgKey, 0);
+                if (!BattleDmg.ContainsKey(commonDmgKey))
+                    BattleDmg.Add(commonDmgKey, 0);
                 GameDmg[commonDmgKey] += dmg;
                 BattleDmg[commonDmgKey] += dmg;
 

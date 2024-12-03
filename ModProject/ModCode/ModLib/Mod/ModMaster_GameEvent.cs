@@ -200,6 +200,8 @@ namespace ModLib.Mod
         #region ModLib - Events
         public virtual void OnOpenUIStart(OpenUIStart e)
         {
+            DebugHelper.WriteLine(e.uiType.uiName);
+
             if (e.uiType.uiName == UIType.Town.uiName)
             {
                 if (InGameSettings.LoadMapNewGame)

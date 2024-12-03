@@ -19,6 +19,8 @@ namespace MOD_nE7UL2.Mod
 
         public const int BASIS_ON_DMG = 1000;
         public const int BASIS_ON_DEF = 400;
+        public const float BASIS_ON_BLOCK_RATIO = 10000f;
+        public const int BASIS_ON_BLOCK_COST = 800;
 
         public static _MonstStrongerConfigs MonstStrongerConfigs => ModMain.ModObj.InGameCustomSettings.MonstStrongerConfigs;
 
@@ -209,15 +211,17 @@ namespace MOD_nE7UL2.Mod
             //block dmg (mp)
             if (ModBattleEvent.IsWorldUnitHit && hitUnitData.mp > 0 && e.dynV.baseValue > minDmg)
             {
-                var blockmpcost = GetBlockMpCost(hitUnitData);
+                var blockcost = GetBlockMpCost(hitUnitData);
                 var blockTimes = CommonTool.Random(defGradeLvl / 2, defGradeLvl);
-                for (int i = 0; i < blockTimes && hitUnitData.mp >= blockmpcost && e.dynV.baseValue > minDmg; i++)
+                for (int i = 0; i < blockTimes && e.dynV.baseValue > minDmg; i++)
                 {
+                    var mpcost = Math.Max(defGradeLvl, e.dynV.baseValue / blockcost);
+                    if (hitUnitData.mp < mpcost)
+                        break;
                     var r = (hitUnitData.mp.Parse<float>() / hitUnitData.maxMP.value.Parse<float>()) * blockratio;
                     var blockedDmg = (def * r).Parse<int>();
-                    var lostMp = Math.Max(defGradeLvl, e.dynV.baseValue / blockmpcost);
                     e.dynV.baseValue -= blockedDmg;
-                    hitUnitData.AddMP(-lostMp);
+                    hitUnitData.AddMP(-mpcost);
                 }
             }
 
@@ -353,7 +357,7 @@ namespace MOD_nE7UL2.Mod
             if (u == null || !BlockRatio.ContainsKey(gradeLvl = u?.worldUnitData?.unit?.GetGradeLvl() ?? 0))
                 return 0f;
             var wunit = u.worldUnitData.unit;
-            return BlockRatio[gradeLvl] + wunit.GetBasisMagicSum() / 10000.0f;
+            return BlockRatio[gradeLvl] + wunit.GetBasisMagicSum() / BASIS_ON_BLOCK_RATIO;
         }
 
         public static int GetBlockMpCost(UnitDataHuman u)
@@ -362,7 +366,7 @@ namespace MOD_nE7UL2.Mod
             if (u == null || !BlockRatio.ContainsKey(gradeLvl = u?.worldUnitData?.unit?.GetGradeLvl() ?? 0))
                 return 0;
             var wunit = u.worldUnitData.unit;
-            return 50 * gradeLvl + wunit.GetBasisPhysicSum() / 1000;
+            return 100 * gradeLvl + wunit.GetBasisPhysicSum() / BASIS_ON_BLOCK_COST;
         }
 
         public static int GetSkillAdjDmgBase(WorldUnitBase wunit)
