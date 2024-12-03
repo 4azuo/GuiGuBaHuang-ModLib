@@ -108,6 +108,8 @@ namespace MOD_nE7UL2.Mod
             if (town != null)
             {
                 var x = EventHelper.GetEvent<MapBuildPropertyEvent>(ModConst.MAP_BUILD_PROPERTY_EVENT);
+                if (!x.Budget.ContainsKey(town.buildData.id))
+                    x.Budget.Add(town.buildData.id, 0);
                 x.Budget[town.buildData.id] += add;
             }
 

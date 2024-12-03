@@ -477,6 +477,8 @@ namespace ModLib.Mod
 
         private void ShowException()
         {
+            if (!GameHelper.IsInGame())
+                DebugHelper.Save();
             if (LastestException != null)
             {
                 var ui = g.ui.OpenUI<UITextInfoLong>(UIType.TextInfoLong);
