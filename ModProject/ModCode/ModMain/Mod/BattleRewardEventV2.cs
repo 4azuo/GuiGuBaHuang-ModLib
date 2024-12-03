@@ -28,18 +28,15 @@ namespace MOD_nE7UL2.Mod
         private const int P_INVOKE_COND = 5;
         private const int P_UPPROP_COND = 6;
 
-        private Dictionary<int, int> BodyReconstructions = new Dictionary<int, int>
+        private Dictionary<int, int[]> BodyReconstructions = new Dictionary<int, int[]>
         {
-            [4] = 1011721,
-            [5] = 1011722,
-            [6] = 1011722,
-            [7] = 1011723,
-            [8] = 1011723,
-            [9] = 1011724,
-            [10] = 1011724,
-            [8] = 1011725,
-            [9] = 1011726,
-            [10] = 1011726,
+            [4] = new int[] { 1011721 },
+            [5] = new int[] { 1011722 },
+            [6] = new int[] { 1011722 },
+            [7] = new int[] { 1011723 },
+            [8] = new int[] { 1011723, 1011725 },
+            [9] = new int[] { 1011724, 1011726 },
+            [10] = new int[] { 1011724, 1011726 },
         };
 
         private static readonly MultiValue[] PLAYER_TRAINING_PROPERTIES = new MultiValue[]
@@ -510,14 +507,15 @@ namespace MOD_nE7UL2.Mod
                     player.AddProperty<int>(UnitPropertyEnum.Life, -unchecked((int)Math.Max(localDmgRecv / 2000, 1)));
                 //exp
                 var gradeLvl = player.GetGradeLvl();
-                var bodyReconstructionItemId = BodyReconstructions.ContainsKey(gradeLvl) ? BodyReconstructions[gradeLvl] : 0;
-                if (bodyReconstructionItemId == 0 || player.GetUnitPropCount(bodyReconstructionItemId) <= 0)
+                var bodyReconstructionItemId = BodyReconstructions.ContainsKey(gradeLvl) ? BodyReconstructions[gradeLvl] : new int[0];
+                if (bodyReconstructionItemId.Length == 0 || bodyReconstructionItemId.All(x => player.GetUnitPropCount(x) <= 0))
                 {
                     player.ClearExp();
                 }
                 else
                 {
-                    player.RemoveUnitProp(bodyReconstructionItemId, 1);
+                    var item = bodyReconstructionItemId.First(x => player.GetUnitPropCount(x) > 0);
+                    player.RemoveUnitProp(item, 1);
                 }
                 //item
                 var ringLockScore = player.GetEquippedRing()?.propsItem?.IsRing()?.lockScore ?? 0;

@@ -2,7 +2,7 @@
 {
     public static class ModLibConst
     {
-        public const int OLD_VERSION_NEED_UPDATE = 3000;
+        public const int OLD_VERSION_NEED_UPDATE = 3205;
         public const int OLD_VERSION_DIALOGUE = 999999001;
         public const int OLD_VERSION_DIALOGUE_SKIP = 999999201;
 

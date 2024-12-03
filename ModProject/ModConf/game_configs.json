@@ -117,11 +117,11 @@
 			"BOSS": 0.00010,
 			"NPC": 0.00005
 		},
-		"Player2Rate": {
-			"Common": 0.10,
-			"Elite": 1.00,
-			"BOSS": 10.00,
-			"NPC": 5.00
+		"PlayerAtk2Hp": {
+			"Common": 1.00,
+			"Elite": 10.00,
+			"BOSS": 100.00,
+			"NPC": 50.00
 		},
 		"AreaBonus": {
 			"1": 0.001,

@@ -222,19 +222,19 @@ namespace MOD_nE7UL2.Mod
 
         private void SetLevel(int level)
         {
-            (slMonstAtk.MainComponent as UIItemBase.UIItemSlider).SetPercent(level * 0.10000f);
-            (slMonstDef.MainComponent as UIItemBase.UIItemSlider).SetPercent(level * 0.10000f);
-            (slMonstHp.MainComponent as UIItemBase.UIItemSlider).SetPercent(level * 0.10000f, 0f);
-            (slMonstBasis.MainComponent as UIItemBase.UIItemSlider).SetPercent(level * 0.10000f);
+            (slMonstAtk.MainComponent as UIItemBase.UIItemSlider).SetPercent(level * 0.04000f);
+            (slMonstDef.MainComponent as UIItemBase.UIItemSlider).SetPercent(level * 0.01000f);
+            (slMonstHp.MainComponent as UIItemBase.UIItemSlider).SetPercent(level * 0.05000f, 0f);
+            (slMonstBasis.MainComponent as UIItemBase.UIItemSlider).SetPercent(level * 0.04000f);
             (slMonstSpecialRate.MainComponent as UIItemBase.UIItemSlider).SetPercent(level * 0.10000f);
-            (slEcoTaxRate.MainComponent as UIItemBase.UIItemSlider).SetPercent(level * 0.10000f);
+            (slEcoTaxRate.MainComponent as UIItemBase.UIItemSlider).SetPercent(level * 0.01000f);
             (slEcoInfRate.MainComponent as UIItemBase.UIItemSlider).SetPercent(level * 0.10000f);
-            (slEcoBuildingCost.MainComponent as UIItemBase.UIItemSlider).SetPercent(level * 0.10000f);
+            (slEcoBuildingCost.MainComponent as UIItemBase.UIItemSlider).SetPercent(level * 0.04000f);
             (slEcoBankAccCost.MainComponent as UIItemBase.UIItemSlider).SetPercent(level * 0.10000f);
-            (slEcoBankFee.MainComponent as UIItemBase.UIItemSlider).SetPercent(level * 0.10000f);
+            (slEcoBankFee.MainComponent as UIItemBase.UIItemSlider).SetPercent(level * 0.05000f);
             (slEcoRefineCost.MainComponent as UIItemBase.UIItemSlider).SetPercent(level * 0.10000f);
             (slEcoSectExchangeRate.MainComponent as UIItemBase.UIItemSlider).SetPercent(level * 0.10000f);
-            (slNpcGrowRate.MainComponent as UIItemBase.UIItemSlider).SetPercent(level * 0.10000f);
+            (slNpcGrowRate.MainComponent as UIItemBase.UIItemSlider).SetPercent(level * 0.02000f);
             (slMiscLevelupExp.MainComponent as UIItemBase.UIItemSlider).SetPercent(level * 0.10000f);
             tglSysHideBattleMap.Set(level > 0);
             tglSysHideSave.Set(level > 1);

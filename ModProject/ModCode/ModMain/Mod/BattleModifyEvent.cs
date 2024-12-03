@@ -211,11 +211,11 @@ namespace MOD_nE7UL2.Mod
             {
                 var blockmpcost = GetBlockMpCost(hitUnitData);
                 var blockTimes = CommonTool.Random(defGradeLvl / 2, defGradeLvl);
-                for (int i = 0; i < blockTimes && hitUnitData.mp >= defGradeLvl && e.dynV.baseValue > minDmg; i++)
+                for (int i = 0; i < blockTimes && hitUnitData.mp >= blockmpcost && e.dynV.baseValue > minDmg; i++)
                 {
                     var r = (hitUnitData.mp.Parse<float>() / hitUnitData.maxMP.value.Parse<float>()) * blockratio;
                     var blockedDmg = (def * r).Parse<int>();
-                    var lostMp = Math.Max(defGradeLvl, blockedDmg / blockmpcost);
+                    var lostMp = Math.Max(defGradeLvl, e.dynV.baseValue / blockmpcost);
                     e.dynV.baseValue -= blockedDmg;
                     hitUnitData.AddMP(-lostMp);
                 }
