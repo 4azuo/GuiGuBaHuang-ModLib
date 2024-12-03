@@ -22,17 +22,6 @@ namespace ModLib.Mod
             LastestObject = this;
         }
 
-        #region Private methods
-        public bool IsLoading()
-        {
-            return 
-                ModMaster.ModObj.InGameSettings.LoadGameBefore ||
-                ModMaster.ModObj.InGameSettings.LoadGame ||
-                ModMaster.ModObj.InGameSettings.LoadGameAfter ||
-                ModMaster.ModObj.InGameSettings.LoadGameFirst;
-        }
-        #endregion
-
         #region Timer
         public virtual void OnTimeUpdate() { }
         public virtual void OnTimeUpdate200ms() { }
@@ -58,14 +47,12 @@ namespace ModLib.Mod
         public virtual void OnCloseUIStart(CloseUIStart e) { }
         public virtual void OnCloseUIEnd(CloseUIEnd e) { }
         public virtual void OnLoadGlobal() { }
+        public virtual void OnLoadNewGame() { }
         public virtual void OnLoadGameBefore() { }
         public virtual void OnLoadGame() { }
         public virtual void OnLoadGameAfter() { }
-        public virtual void OnLoadGameFirst() { }
         public virtual void OnInitWorld(ETypeData e) { }
-        public virtual void OnLoadMapNewGame(LoadScene e) { }
-        public virtual void OnLoadMapFirst(LoadScene e) { }
-        public virtual void OnLoadSceneStart(LoadScene e) { }
+        public virtual void OnLoadSceneStart(LoadSceneStart e) { }
         public virtual void OnLoadScene(LoadScene e) { }
         public virtual void OnIntoWorld(ETypeData e) { }
         public virtual void OnFirstMonth() { }

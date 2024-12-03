@@ -40,8 +40,8 @@ namespace ModLib.Object
             CacheHelper.GetGameCache().ClearData(MOD_SETTINGS_KEY);
         }
 
-        [JsonIgnore]
-        public bool LoadMapFirst { get; set; } = true;
+
+
         [JsonIgnore]
         public bool LoadGameBefore { get; set; } = true;
         [JsonIgnore]
@@ -49,12 +49,16 @@ namespace ModLib.Object
         [JsonIgnore]
         public bool LoadGameAfter { get; set; } = true;
 
+
+
         [Inheritance]
-        public bool LoadMapNewGame { get; set; } = true;
+        public bool LoadFirstMonth { get; set; } = true;
         [Inheritance]
-        public bool LoadGameFirst { get; set; } = true;
+        public bool LoadNewGame { get; set; } = true;
         [Inheritance]
         public int CurMonth { get; set; } = -1;
+
+
 
         #region Custom
         public string CustomConfigFile { get; set; }

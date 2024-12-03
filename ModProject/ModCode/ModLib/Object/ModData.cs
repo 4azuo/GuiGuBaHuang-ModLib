@@ -9,18 +9,16 @@ namespace ModLib.Object
     public class ModData
     {
         public string SaveTime { get; set; }
-        public IDictionary<string, CachableObject> Data { get; set; }
+        public Dictionary<string, CachableObject> Data { get; set; } = new Dictionary<string, CachableObject>();
 
         [Obsolete]
         public ModData()
         {
             //loaded by json
-            //Data = new Dictionary<string, CachableObject>();
         }
 
         public ModData(bool isGlobal)
         {
-            Data = new Dictionary<string, CachableObject>();
             Init(isGlobal);
         }
 
@@ -82,14 +80,16 @@ namespace ModLib.Object
             return CreateIfNotExists(dataType, key, defaultValue);
         }
 
-        public IList<T> GetDatas<T>() where T : CachableObject
+        public List<T> GetDatas<T>() where T : CachableObject
         {
             return GetDatas(typeof(T)).Cast<T>().ToList();
         }
 
-        public IList<CachableObject> GetDatas(Type dataType)
+        public List<CachableObject> GetDatas(Type dataType)
         {
-            return Data.Values.Where(x => dataType.IsAssignableFrom(x.GetType())).Select(x => x).ToList();
+            if (Data == null)
+                return new List<CachableObject>();
+            return Data.Values.Where(x => dataType.IsAssignableFrom(x.GetType())).ToList();
         }
 
         public void SetData(string key, CachableObject replacementValue)

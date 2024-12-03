@@ -90,7 +90,7 @@ public static class ObjectHelper
 
     public static bool IsDeclaredMethod(this object obj, string medName)
     {
-        return obj.GetType().GetMethod(medName).DeclaringType == obj.GetType();
+        return obj?.GetType()?.GetMethod(medName)?.DeclaringType == obj.GetType();
     }
 
     public static string GetBackingFieldName(string propertyName)

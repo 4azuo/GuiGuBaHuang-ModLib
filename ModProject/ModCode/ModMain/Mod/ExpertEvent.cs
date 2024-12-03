@@ -5,7 +5,6 @@ using ModLib.Mod;
 using System;
 using System.Collections.Generic;
 using static MOD_nE7UL2.Object.InGameStts;
-using static UIPlayerInfoBase;
 
 namespace MOD_nE7UL2.Mod
 {
@@ -25,15 +24,18 @@ namespace MOD_nE7UL2.Mod
                 {
                     var martialData = martial.Value.data.To<DataProps.MartialData>();
                     var martialType = martialData.martialType;
-                    if (wunit.IsPlayer())
+                    if (Configs.SkillExpRatios.ContainsKey(martialType))
                     {
-                        if (martialType != MartialType.Ability || !wunit.data.unitData.abilitys.Contains(martialData.data.soleID))
-                            continue;
-                        AddExpertExp(wunit, martialData.data.soleID, Configs.SkillExpRatios[martialType]);
-                    }
-                    else
-                    {
-                        AddExpertExp(wunit, martialData.data.soleID, Configs.SkillExpRatios[martialType]);
+                        if (wunit.IsPlayer())
+                        {
+                            if (martialType != MartialType.Ability || !wunit.data.unitData.abilitys.Contains(martialData.data.soleID))
+                                continue;
+                            AddExpertExp(wunit, martialData.data.soleID, Configs.SkillExpRatios[martialType]);
+                        }
+                        else
+                        {
+                            AddExpertExp(wunit, martialData.data.soleID, Configs.SkillExpRatios[martialType]);
+                        }
                     }
                 }
 

@@ -1,6 +1,7 @@
 ﻿using EGameTypeData;
 using ModLib.Object;
 using System;
+using System.Linq;
 using UnityEngine;
 
 namespace ModLib.Mod
@@ -61,28 +62,32 @@ namespace ModLib.Mod
 
             if (GameHelper.IsInGame())
             {
+                if (InGameSettings.LoadNewGame)
+                {
+                    DebugHelper.WriteLine("OnLoadNewGame");
+                    CallEvents("OnLoadNewGame");
+                    InGameSettings.LoadNewGame = false;
+                }
+
                 if (InGameSettings.LoadGameBefore)
                 {
+                    DebugHelper.WriteLine("OnLoadGameBefore");
                     CallEvents("OnLoadGameBefore");
                     InGameSettings.LoadGameBefore = false;
                 }
 
                 if (InGameSettings.LoadGame)
                 {
+                    DebugHelper.WriteLine("OnLoadGame");
                     CallEvents("OnLoadGame");
                     InGameSettings.LoadGame = false;
                 }
 
                 if (InGameSettings.LoadGameAfter)
                 {
+                    DebugHelper.WriteLine("OnLoadGameAfter");
                     CallEvents("OnLoadGameAfter");
                     InGameSettings.LoadGameAfter = false;
-                }
-
-                if (InGameSettings.LoadGameFirst)
-                {
-                    CallEvents("OnLoadGameFirst");
-                    InGameSettings.LoadGameFirst = false;
                 }
             }
             else
@@ -109,25 +114,28 @@ namespace ModLib.Mod
             {
                 try
                 {
-                    DebugHelper.WriteLine($"↑↑↑↑↑↑↑↑↑{GameHelper.GetGameYear()}年{GameHelper.GetGameMonth()}月{GameHelper.GetGameDay()}日↑↑↑↑↑↑↑↑↑");
-
-                    //monthly event
                     if (InGameSettings.CurMonth != g.game.world.run.roundMonth)
                     {
+                        InGameSettings.CurMonth = g.game.world.run.roundMonth;
+
                         //first month
-                        if (g.game.world.run.roundMonth <= 0)
+                        if (InGameSettings.LoadFirstMonth)
                         {
+                            DebugHelper.WriteLine("OnFirstMonth");
                             OnFirstMonth();
+                            InGameSettings.LoadFirstMonth = false;
                         }
+                        //monthly
                         OnMonthly();
+                        //yearly
                         if (g.world.run.roundMonth % 12 == 0)
                         {
                             OnYearly();
                         }
                     }
 
-                    //next month
-                    InGameSettings.CurMonth = g.game.world.run.roundMonth;
+                    //save log
+                    DebugHelper.WriteLine($"↑↑↑↑↑↑↑↑↑{GameHelper.GetGameYear()}年{GameHelper.GetGameMonth()}月{GameHelper.GetGameDay()}日↑↑↑↑↑↑↑↑↑");
 
                     //save
                     OnSave(e);
@@ -187,11 +195,14 @@ namespace ModLib.Mod
 
         public virtual void _OnWorldRunStart()
         {
+            //start run
             CallEvents("OnWorldRunStart", true, false);
         }
 
         public virtual void _OnWorldRunEnd()
         {
+            //end run
+            DebugHelper.WriteLine($"↓↓↓↓↓↓↓↓↓{GameHelper.GetGameYear()}年{GameHelper.GetGameMonth()}月{GameHelper.GetGameDay()}日↓↓↓↓↓↓↓↓↓");
             CallEvents("OnWorldRunEnd", true, false);
         }
         #endregion
@@ -199,6 +210,8 @@ namespace ModLib.Mod
         #region ModLib - Events
         public virtual void OnOpenUIStart(OpenUIStart e)
         {
+            DebugHelper.WriteLine(e.uiType.uiName);
+            DebugHelper.WriteLine(string.Join(", ", EventHelper.GetEvents().Select(x => x.CacheId)));
             EventHelper.RunMinorEvents(e);
         }
 
@@ -222,6 +235,11 @@ namespace ModLib.Mod
             EventHelper.RunMinorEvents();
         }
 
+        public virtual void OnLoadNewGame()
+        {
+            EventHelper.RunMinorEvents();
+        }
+
         public virtual void OnLoadGameBefore()
         {
             EventHelper.RunMinorEvents();
@@ -237,11 +255,6 @@ namespace ModLib.Mod
             EventHelper.RunMinorEvents();
         }
 
-        public virtual void OnLoadGameFirst()
-        {
-            EventHelper.RunMinorEvents();
-        }
-
         public virtual void OnInitWorld(ETypeData e)
         {
             EventHelper.RunMinorEvents(e);
@@ -252,39 +265,8 @@ namespace ModLib.Mod
             EventHelper.RunMinorEvents(e);
         }
 
-        public virtual void OnLoadMapNewGame(LoadScene e)
-        {
-            EventHelper.RunMinorEvents(e);
-        }
-
-        public virtual void OnLoadMapFirst(LoadScene e)
-        {
-            EventHelper.RunMinorEvents(e);
-        }
-
         public virtual void OnLoadSceneStart(LoadSceneStart e)
         {
-            if (!GameHelper.IsInGame() || e.sceneType.sceneName == SceneType.Login.sceneName)
-            {
-                CacheHelper.ClearGameCache();
-            }
-
-            if (GameHelper.IsInGame() &&
-                e.sceneType.sceneName == SceneType.Map.sceneName)
-            {
-                if (InGameSettings.LoadMapNewGame)
-                {
-                    CallEvents("OnLoadMapNewGame");
-                    InGameSettings.LoadMapNewGame = false;
-                }
-
-                if (InGameSettings.LoadMapFirst)
-                {
-                    CallEvents("OnLoadMapFirst");
-                    InGameSettings.LoadMapFirst = false;
-                }
-            }
-
             EventHelper.RunMinorEvents(e);
         }
 
