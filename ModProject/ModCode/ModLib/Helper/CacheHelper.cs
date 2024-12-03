@@ -146,7 +146,7 @@ public static class CacheHelper
 
     public static bool IsGameCacheLoaded()
     {
-        if (!GameHelper.IsInGame())
+        if (!GameHelper.IsInGame() || GameHelper.IsModScreen())
             ClearGameCache();
         return GameCacheData != null;
     }
