@@ -7,11 +7,11 @@
 
     public static bool IsCity(this MapBuildBase build)
     {
-        return !build.IsSchool() && build?.TryCast<MapBuildTown>()?.buildTownData?.isMainTown == true;
+        return !build.IsSchool() && (build?.TryCast<MapBuildTown>()?.buildTownData?.isMainTown).Is(true) == 1;
     }
 
     public static bool IsSmallTown(this MapBuildBase build)
     {
-        return !build.IsSchool() && build?.TryCast<MapBuildTown>()?.buildTownData?.isMainTown == false;
+        return !build.IsSchool() && (build?.TryCast<MapBuildTown>()?.buildTownData?.isMainTown).Is(false) == 1;
     }
 }

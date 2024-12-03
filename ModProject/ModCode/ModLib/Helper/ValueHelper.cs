@@ -33,4 +33,13 @@ public static class ValueHelper
     {
         return Math.Max(Math.Min(x, max), min);
     }
+
+    public static int Is<T>(this T? x, T compareValue) where T : struct
+    {
+        if (!x.HasValue)
+            return -1;
+        if (x.Value.Equals(compareValue))
+            return 1;
+        return 0;
+    }
 }
