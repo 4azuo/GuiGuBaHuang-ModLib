@@ -39,27 +39,25 @@ namespace MOD_nE7UL2.Mod
 
             if (e.IsMonster())
             {
+                var gameLvl = g.data.dataWorld.data.gameLevel.Parse<int>();
                 var monstData = e?.data?.TryCast<UnitDataMonst>();
                 var smConfigs = EventHelper.GetEvent<SMLocalConfigsEvent>(ModConst.SM_LOCAL_CONFIGS_EVENT);
 
                 if (monstData.monstType == MonstType.Common || monstData.monstType == MonstType.Elite)
                 {
                     //add manashield
-                    var gameLvl = g.data.dataWorld.data.gameLevel.Parse<int>();
                     if (CommonTool.Random(0.0f, 100.0f).IsBetween(0.0f, smConfigs.Calculate(MONST_SHIELD_CHANCE * monstData.grade.value * gameLvl, smConfigs.Configs.AddSpecialMonsterRate).Parse<float>()))
                     {
                         var shield = monstData.maxHP.value * gameLvl / 2;
                         var maxShield = shield;
-                        /*var efx = */ShieldUp(monstData.unit, shield, maxShield);
+                        ShieldUp(monstData.unit, shield, maxShield);
                     }
                 }
 
                 if (smConfigs.Configs.BossHasShield && (monstData.monstType == MonstType.BOSS || monstData.monstType == MonstType.NPC))
                 {
-                    var gameLvl = g.data.dataWorld.data.gameLevel.Parse<int>();
                     var shield = monstData.maxHP.value * gameLvl / 2;
                     var maxShield = shield;
-                    /*var efx = */
                     ShieldUp(monstData.unit, shield, maxShield);
                 }
             }

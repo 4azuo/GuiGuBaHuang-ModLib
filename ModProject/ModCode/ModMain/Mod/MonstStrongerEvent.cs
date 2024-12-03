@@ -60,11 +60,14 @@ namespace MOD_nE7UL2.Mod
         {
             base.OnBattleUnitInto(e);
 
+            //DebugHelper.WriteLine("1");
             if ((ModMaster.ModObj?.InGameSettings?.LoadMapNewGame).Is(true) == 1)
                 return;
 
+            //DebugHelper.WriteLine("2");
             if (e.IsMonster())
             {
+                //DebugHelper.WriteLine("3");
                 var monstData = e?.data?.TryCast<UnitDataMonst>();
                 var gameLvl = g.data.dataWorld.data.gameLevel.Parse<int>();
                 var atk = monstData.attack.baseValue;
@@ -72,6 +75,7 @@ namespace MOD_nE7UL2.Mod
                 var mhp = monstData.maxHP.baseValue;
 
                 //S&M
+                //DebugHelper.WriteLine($"4: {atk}, {def}, {mhp}");
                 var smConfigs = EventHelper.GetEvent<SMLocalConfigsEvent>(ModConst.SM_LOCAL_CONFIGS_EVENT);
                 monstData.attack.baseValue = smConfigs.Calculate(atk, smConfigs.Configs.AddAtkRate).Parse<int>();
                 monstData.defense.baseValue = smConfigs.Calculate(def, smConfigs.Configs.AddDefRate).Parse<int>();
@@ -92,8 +96,10 @@ namespace MOD_nE7UL2.Mod
                 atk = monstData.attack.baseValue;
                 def = monstData.defense.baseValue;
                 mhp = monstData.maxHP.baseValue;
+                //DebugHelper.WriteLine($"5: {atk}, {def}, {mhp}");
 
                 //additional
+                //DebugHelper.WriteLine("6");
                 if (AdditionalStts.ContainsKey(monstData.monstType))
                 {
                     var r = Additional[monstData.monstType];
@@ -106,6 +112,7 @@ namespace MOD_nE7UL2.Mod
                 }
 
                 //area bonus
+                //DebugHelper.WriteLine("7");
                 var areaId = g.world.playerUnit.data.unitData.pointGridData.areaBaseID;
                 if (Configs.AreaBonus.ContainsKey(areaId))
                 {
@@ -116,6 +123,7 @@ namespace MOD_nE7UL2.Mod
                 }
 
                 //monster
+                //DebugHelper.WriteLine("8");
                 if (Configs.GrowRate.ContainsKey(monstData.monstType))
                 {
                     //grow-rate & kill-rate
@@ -126,15 +134,15 @@ namespace MOD_nE7UL2.Mod
                 }
 
                 //level oppressive
-                if (Configs.Player2Rate.ContainsKey(monstData.monstType))
+                //DebugHelper.WriteLine("9");
+                if (Configs.PlayerAtk2Hp.ContainsKey(monstData.monstType))
                 {
-                    var r = Configs.Player2Rate[monstData.monstType] * gameLvl;
-                    monstData.attack.baseValue += (g.world.playerUnit.GetDynProperty(UnitDynPropertyEnum.Attack).value * r * Configs.AtkR).Parse<int>();
-                    monstData.defense.baseValue += (g.world.playerUnit.GetDynProperty(UnitDynPropertyEnum.Defense).value * r * Configs.DefR).Parse<int>();
-                    monstData.maxHP.baseValue += (g.world.playerUnit.GetDynProperty(UnitDynPropertyEnum.HpMax).value * r * Configs.MHpR).Parse<int>();
+                    var r = Configs.PlayerAtk2Hp[monstData.monstType] * gameLvl;
+                    monstData.maxHP.baseValue += (g.world.playerUnit.GetDynProperty(UnitDynPropertyEnum.Attack).value * r).Parse<int>();
                 }
 
                 //rebirth
+                //DebugHelper.WriteLine("10");
                 var rebirthRatio = EventHelper.GetEvent<RebirthEvent>(ModConst.REBIRTH_EVENT).TotalGradeLvl * Configs.RebirthAffect;
                 rebirthRatio *= gameLvl;
                 monstData.attack.baseValue += (atk * rebirthRatio * Configs.AtkR).Parse<int>();
@@ -142,6 +150,7 @@ namespace MOD_nE7UL2.Mod
                 monstData.maxHP.baseValue += (mhp * rebirthRatio * Configs.MHpR).Parse<int>();
 
                 //basis
+                //DebugHelper.WriteLine("11");
                 monstData.basisBlade.baseValue *= (monstData.grade.value * gameLvl).Parse<int>();
                 monstData.basisEarth.baseValue *= (monstData.grade.value * gameLvl).Parse<int>();
                 monstData.basisFinger.baseValue *= (monstData.grade.value * gameLvl).Parse<int>();
@@ -156,6 +165,7 @@ namespace MOD_nE7UL2.Mod
                 monstData.basisWood.baseValue *= (monstData.grade.value * gameLvl).Parse<int>();
 
                 //others
+                //DebugHelper.WriteLine("12");
                 //monstData.attack.baseValue += (??? / 100.00f * monstData.attack.baseValue).Parse<int>();
                 var adjustDef1 = ((((monstData.basisFist.value + monstData.basisPalm.value + monstData.basisFinger.value) / 3.0f) / 1000.00f) * monstData.defense.baseValue).Parse<int>();
                 var adjustDef2 = ((monstData.basisEarth.value / 1000.00f) * monstData.defense.baseValue).Parse<int>();
@@ -164,8 +174,10 @@ namespace MOD_nE7UL2.Mod
                 monstData.moveSpeed.baseValue += adjustMs;
 
                 //heal fullhp
+                //DebugHelper.WriteLine("13");
                 e.data.unit.data.hp = e.data.unit.data.maxHP.value;
             }
+            //DebugHelper.Save();
         }
 
         //BattleModifyEventに参照してください。
