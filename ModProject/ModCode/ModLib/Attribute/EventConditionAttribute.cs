@@ -1,5 +1,4 @@
-﻿using ModLib.Enum;
-using System;
+﻿using System;
 
 [AttributeUsage(AttributeTargets.Method, AllowMultiple = false, Inherited = false)]
 public class EventConditionAttribute : Attribute
