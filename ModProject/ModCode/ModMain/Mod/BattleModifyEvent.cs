@@ -369,7 +369,8 @@ namespace MOD_nE7UL2.Mod
         {
             if (wunit == null)
                 return 0;
-            var skillData = _castingSkill[wunit.GetUnitId()];
+            DataProps.PropsData skillData;
+            _castingSkill.TryGetValue(wunit.GetUnitId(), out skillData);
             if (skillData == null)
                 return 0;
             var soleId = skillData.soleID;

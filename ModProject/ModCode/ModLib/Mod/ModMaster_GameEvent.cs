@@ -135,7 +135,6 @@ namespace ModLib.Mod
                 catch (Exception ex)
                 {
                     DebugHelper.WriteLine(ex);
-                    DebugHelper.Save();
                 }
             }
         }
@@ -201,7 +200,7 @@ namespace ModLib.Mod
         #region ModLib - Events
         public virtual void OnOpenUIStart(OpenUIStart e)
         {
-            if (e.uiType.uiName == UIType.MapMain.uiName)
+            if (e.uiType.uiName == UIType.Town.uiName)
             {
                 if (InGameSettings.LoadMapNewGame)
                 {

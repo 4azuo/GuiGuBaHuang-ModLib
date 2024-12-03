@@ -62,7 +62,7 @@ namespace MOD_nE7UL2.Mod
             /*
              * UI
              */
-            //DebugHelper.WriteLine(e.uiType.uiName);
+            DebugHelper.WriteLine(e.uiType.uiName);
 
             if (e.uiType.uiName == UIType.Town.uiName)
             {
