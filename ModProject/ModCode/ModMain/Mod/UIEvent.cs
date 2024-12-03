@@ -102,9 +102,9 @@ namespace MOD_nE7UL2.Mod
                 var uiNPCInfo = g.ui.GetUI<UINPCInfo>(UIType.NPCInfo);
 
                 var sampleText1 = uiNPCInfo.uiProperty.goGroupRoot.GetComponentInChildren<Text>();
-                uiNPCInfo_textMartialAdjHp = ObjectHelper.Create(sampleText1).Align(TextAnchor.MiddleCenter).Format(Color.white).Pos(uiNPCInfo.uiProperty.goItem6, 0.4f, -1.0f);
-                uiNPCInfo_textSpiritualAdjMp = ObjectHelper.Create(sampleText1).Align(TextAnchor.MiddleCenter).Format(Color.white).Pos(uiNPCInfo.uiProperty.goItem7, 0.4f, -1.0f);
-                uiNPCInfo_textArtisanshipAdjSp = ObjectHelper.Create(sampleText1).Align(TextAnchor.MiddleCenter).Format(Color.white).Pos(uiNPCInfo.uiProperty.goItem8, 0.4f, -1.0f);
+                uiNPCInfo_textMartialAdjHp = ObjectHelper.Create(sampleText1).Align(TextAnchor.MiddleCenter).Format(Color.white).Pos(uiNPCInfo.uiProperty.goItem6, 0.4f, -1.1f);
+                uiNPCInfo_textSpiritualAdjMp = ObjectHelper.Create(sampleText1).Align(TextAnchor.MiddleCenter).Format(Color.white).Pos(uiNPCInfo.uiProperty.goItem7, 0.4f, -1.1f);
+                uiNPCInfo_textArtisanshipAdjSp = ObjectHelper.Create(sampleText1).Align(TextAnchor.MiddleCenter).Format(Color.white).Pos(uiNPCInfo.uiProperty.goItem8, 0.4f, -1.1f);
 
                 var sampleText2 = uiNPCInfo.uiSkill.textPoint1;
                 uiNPCInfoSkill_textAbiPointAdjHp = ObjectHelper.Create(sampleText2).Align(TextAnchor.MiddleCenter).Format(Color.white).Pos(uiNPCInfo.uiSkill.textPoint1.gameObject, 0f, -0.2f);
