@@ -60,10 +60,7 @@ namespace MOD_nE7UL2.Mod
         {
             base.OnBattleUnitInto(e);
 
-            if (GameHelper.GetGameTime() <= 10101)
-                return;
-
-            if (e.IsMonster())
+            if (e.IsMonster() && !ModMaster.ModObj.InGameSettings.LoadMapNewGame)
             {
                 var monstData = e?.data?.TryCast<UnitDataMonst>();
                 var gameLvl = g.data.dataWorld.data.gameLevel.Parse<int>();
