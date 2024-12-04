@@ -38,8 +38,6 @@ public static class EventHelper
                         continue;
                     if (condAttr.IsWorldRunning == 0 && isWorldRunning)
                         continue;
-                    if (condAttr.CustomCondition != null && !ev.GetType().GetMethod(condAttr.CustomCondition).Invoke(ev, null).Parse<bool>())
-                        continue;
                 }
                 //var sw = new Stopwatch();
                 //sw.Start();

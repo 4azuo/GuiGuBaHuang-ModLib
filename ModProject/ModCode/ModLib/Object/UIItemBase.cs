@@ -311,6 +311,11 @@ public abstract class UIItemBase
             MainComponent.Set(input);
         }
 
+        public void SetPercent(float percent, float min = float.MinValue, float max = float.MaxValue)
+        {
+            (MainComponent as UIItemSlider)?.SetPercent(percent, min, max);
+        }
+
         public override void Update()
         {
             base.Update();

@@ -125,7 +125,8 @@ public static class ObjectHelper
         if (newObj is Text)
             (newObj as Text).text = string.Empty;
         if (newObj is Button)
-            (newObj as  Button).onClick.m_Calls.Clear();
+            //(newObj as  Button).onClick.m_Calls.Clear();
+            (newObj as Button).onClick.RemoveAllListeners();
         return newObj;
     }
 
