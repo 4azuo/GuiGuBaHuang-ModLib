@@ -15,6 +15,9 @@ public static class EventHelper
 
     public static void RunMinorEvents(string methodName, object e)
     {
+        var isInGame = GameHelper.IsInGame();
+        var isInBattle = GameHelper.IsInBattlle();
+        var isWorldRunning = GameHelper.IsWorldRunning();
         foreach (var ev in GetEvents(methodName))
         {
             var method = ev.GetType().GetMethod(methodName);
@@ -23,15 +26,19 @@ public static class EventHelper
                 var condAttr = method.GetCustomAttribute<EventConditionAttribute>();
                 if (condAttr != null)
                 {
-                    if (condAttr.IsInGame && !GameHelper.IsInGame())
+                    if (condAttr.IsInGame == 1 && !isInGame)
                         continue;
-                    if (condAttr.IsInBattle && !GameHelper.IsInBattlle())
+                    if (condAttr.IsInGame == 0 && isInGame)
+                        continue;
+                    if (condAttr.IsInBattle == 1 && !isInBattle)
+                        continue;
+                    if (condAttr.IsInBattle == 0 && isInBattle)
+                        continue;
+                    if (condAttr.IsWorldRunning == 1 && !isWorldRunning)
+                        continue;
+                    if (condAttr.IsWorldRunning == 0 && isWorldRunning)
                         continue;
                     if (condAttr.CustomCondition != null && !ev.GetType().GetMethod(condAttr.CustomCondition).Invoke(ev, null).Parse<bool>())
-                        continue;
-                    if (condAttr.IsWorldRunning == 1 && !GameHelper.IsWorldRunning())
-                        continue;
-                    if (condAttr.IsWorldRunning == 0 && GameHelper.IsWorldRunning())
                         continue;
                 }
                 //var sw = new Stopwatch();

@@ -75,7 +75,7 @@ namespace MOD_nE7UL2.Mod
                     txtInfo.text += $" (Merchant {uType.CustomLuck.CustomEffects[ModConst.UTYPE_LUCK_EFX_BUY_COST].Value0.Parse<float>() * 100.0f:0.00}%)";
             }
 
-            if (e.uiType.uiName == UIType.PropSelectCount.uiName)
+            if (e.uiType.uiName == UIType.PropSelectCount.uiName && (g.ui.GetUI(UIType.TownMarketBuy)?.gameObject?.active).Is(true) == 1)
             {
                 var uiTownMarketBuy = g.ui.GetUI<UITownMarketBuy>(UIType.TownMarketBuy);
                 var uiPropSelectCount = g.ui.GetUI<UIPropSelectCount>(UIType.PropSelectCount);
