@@ -36,8 +36,7 @@ namespace MOD_nE7UL2.Mod
                 if (humanData.worldUnitData.unit.IsPlayer())
                     PlayerShieldEfx = efx;
             }
-
-            if (e.IsMonster())
+            else if (e.IsMonster())
             {
                 var gameLvl = g.data.dataWorld.data.gameLevel.Parse<int>();
                 var monstData = e?.data?.TryCast<UnitDataMonst>();
@@ -52,8 +51,7 @@ namespace MOD_nE7UL2.Mod
                         ShieldUp(monstData.unit, shield, int.MaxValue);
                     }
                 }
-
-                if (smConfigs.Configs.BossHasShield && (monstData.monstType == MonstType.BOSS || monstData.monstType == MonstType.NPC))
+                else if (smConfigs.Configs.BossHasShield && (monstData.monstType == MonstType.BOSS || monstData.monstType == MonstType.NPC))
                 {
                     var shield = monstData.maxHP.value;
                     ShieldUp(monstData.unit, shield, int.MaxValue);
@@ -130,8 +128,6 @@ namespace MOD_nE7UL2.Mod
 
         public static int GetManashieldBasePlus(WorldUnitBase wunit)
         {
-            if (wunit == null)
-                return 0;
             return Convert.ToInt32(CustomRefineEvent.GetRefineCustommAdjValue(wunit, AdjTypeEnum.Manashield));
         }
     }
