@@ -117,6 +117,7 @@ namespace ModLib.Mod
                     }
                     //monthly
                     CallEvents("OnMonthly", true, false);
+                    CallEvents("OnMonthlyForEachWUnit", true, false);
                     //yearly
                     if (g.world.run.roundMonth % 12 == 0)
                     {
@@ -292,6 +293,14 @@ namespace ModLib.Mod
         public virtual void OnMonthly()
         {
             EventHelper.RunMinorEvents();
+        }
+
+        public virtual void OnMonthlyForEachWUnit()
+        {
+            foreach (var wunit in g.world.unit.GetUnits())
+            {
+                EventHelper.RunMinorEvents(wunit);
+            }
         }
 
         public virtual void OnSave(ETypeData e)

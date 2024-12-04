@@ -21,18 +21,14 @@ namespace MOD_nE7UL2.Mod
 
         public static Dictionary<string, List<DataProps.PropsData>> RefinableItems { get; } = new Dictionary<string, List<DataProps.PropsData>>();
 
-        public override void OnMonthly()
+        public override void OnMonthlyForEachWUnit(WorldUnitBase wunit)
         {
-            base.OnMonthly();
-
-            foreach (var wunit in g.world.unit.GetUnits())
+            base.OnMonthlyForEachWUnit(wunit);
+            if (wunit.IsPlayer())
+                return;
+            foreach (var item in GetRefinableItems(wunit))
             {
-                if (wunit.IsPlayer())
-                    continue;
-                foreach (var item in GetRefinableItems(wunit))
-                {
-                    NpcRefine(wunit, item);
-                }
+                NpcRefine(wunit, item);
             }
         }
 
