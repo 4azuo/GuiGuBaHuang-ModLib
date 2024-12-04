@@ -195,7 +195,8 @@ namespace MOD_nE7UL2.Mod
 
             col = 30; row = 0;
             txtTotalScore = uiCustom.AddText(col, row, "Total score: {0}P").Format(Color.red, 17).Align(TextAnchor.MiddleRight);
-            uiCustom.AddButton(col, row += 2, () => SetLevel(0), "Default");
+            uiCustom.AddButton(col, row += 2, () => SetLevelBase(), "Default");
+            uiCustom.AddButton(col, row += 2, () => SetLevel(0), "Level 0");
             uiCustom.AddButton(col, row += 2, () => SetLevel(1), "Level 1");
             uiCustom.AddButton(col, row += 2, () => SetLevel(2), "Level 2");
             uiCustom.AddButton(col, row += 2, () => SetLevel(3), "Level 3");
@@ -220,22 +221,56 @@ namespace MOD_nE7UL2.Mod
             }
         }
 
+        private void SetLevelBase()
+        {
+            try
+            {
+                slMonstAtk.Set(0f);
+                slMonstDef.Set(0f);
+                slMonstHp.Set(0f);
+                slMonstBasis.Set(0f);
+                slMonstSpecialRate.Set(0f);
+                slEcoTaxRate.Set(0f);
+                slEcoInfRate.Set(0f);
+                slEcoBuildingCost.Set(0f);
+                slEcoBankAccCost.Set(0f);
+                slEcoBankFee.Set(0f);
+                slEcoRefineCost.Set(0f);
+                slEcoSectExchangeRate.Set(0f);
+                slNpcGrowRate.Set(0f);
+                slMiscLevelupExp.Set(0f);
+                tglSysHideBattleMap.Set(true);
+                tglSysHideSave.Set(false);
+                tglSysNoExpFromBattle.Set(false);
+                tglSysOnlyPortalAtCityAndSect.Set(false);
+                tglSysBossHasShield.Set(false);
+                tglSysHideReload.Set(false);
+                tglSysSectNoExchange.Set(false);
+                tglSysNoRebirth.Set(false);
+                tglSysOnelife.Set(false);
+            }
+            catch (Exception ex)
+            {
+                DebugHelper.WriteLine(ex);
+            }
+        }
+
         private void SetLevel(int level)
         {
-            (slMonstAtk.MainComponent as UIItemBase.UIItemSlider).SetPercent(level * 0.04000f);
-            (slMonstDef.MainComponent as UIItemBase.UIItemSlider).SetPercent(level * 0.01000f);
-            (slMonstHp.MainComponent as UIItemBase.UIItemSlider).SetPercent(level * 0.05000f, 0f);
-            (slMonstBasis.MainComponent as UIItemBase.UIItemSlider).SetPercent(level * 0.04000f);
-            (slMonstSpecialRate.MainComponent as UIItemBase.UIItemSlider).SetPercent(level * 0.10000f);
-            (slEcoTaxRate.MainComponent as UIItemBase.UIItemSlider).SetPercent(level * 0.01000f);
-            (slEcoInfRate.MainComponent as UIItemBase.UIItemSlider).SetPercent(level * 0.10000f);
-            (slEcoBuildingCost.MainComponent as UIItemBase.UIItemSlider).SetPercent(level * 0.04000f);
-            (slEcoBankAccCost.MainComponent as UIItemBase.UIItemSlider).SetPercent(level * 0.10000f);
-            (slEcoBankFee.MainComponent as UIItemBase.UIItemSlider).SetPercent(level * 0.05000f);
-            (slEcoRefineCost.MainComponent as UIItemBase.UIItemSlider).SetPercent(level * 0.10000f);
-            (slEcoSectExchangeRate.MainComponent as UIItemBase.UIItemSlider).SetPercent(level * 0.10000f);
-            (slNpcGrowRate.MainComponent as UIItemBase.UIItemSlider).SetPercent(level * 0.02000f);
-            (slMiscLevelupExp.MainComponent as UIItemBase.UIItemSlider).SetPercent(level * 0.10000f);
+            slMonstAtk.SetPercent(level * 0.04000f);
+            slMonstDef.SetPercent(level * 0.01000f);
+            slMonstHp.SetPercent(level * 0.05000f, 0f);
+            slMonstBasis.SetPercent(level * 0.04000f);
+            slMonstSpecialRate.SetPercent(level * 0.10000f);
+            slEcoTaxRate.SetPercent(level * 0.01000f);
+            slEcoInfRate.SetPercent(level * 0.10000f);
+            slEcoBuildingCost.SetPercent(level * 0.04000f);
+            slEcoBankAccCost.SetPercent(level * 0.10000f);
+            slEcoBankFee.SetPercent(level * 0.05000f);
+            slEcoRefineCost.SetPercent(level * 0.10000f);
+            slEcoSectExchangeRate.SetPercent(level * 0.10000f);
+            slNpcGrowRate.SetPercent(level * 0.02000f);
+            slMiscLevelupExp.SetPercent(level * 0.10000f);
             tglSysHideBattleMap.Set(level > 0);
             tglSysHideSave.Set(level > 1);
             tglSysNoExpFromBattle.Set(level > 2);
