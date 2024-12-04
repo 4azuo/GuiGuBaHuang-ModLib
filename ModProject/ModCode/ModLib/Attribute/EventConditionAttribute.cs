@@ -4,7 +4,7 @@
 public class EventConditionAttribute : Attribute
 {
     public string CustomCondition { get; set; } = null;
-    public bool IsInGame { get; set; } = true;
-    public bool IsInBattle { get; set; } = false;
+    public int IsInGame { get; set; } = 1; //-1: ignore, 0: false, 1: true
+    public int IsInBattle { get; set; } = 0; //-1: ignore, 0: false, 1: true
     public int IsWorldRunning { get; set; } = 0; //-1: ignore, 0: false, 1: true
 }

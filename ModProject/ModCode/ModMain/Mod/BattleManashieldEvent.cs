@@ -76,7 +76,7 @@ namespace MOD_nE7UL2.Mod
         }
 
         [ErrorIgnore]
-        [EventCondition(IsInBattle = true)]
+        [EventCondition(IsInGame = 0, IsInBattle = 1)]
         public override void OnTimeUpdate()
         {
             base.OnTimeUpdate();
