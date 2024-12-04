@@ -27,26 +27,23 @@ namespace MOD_nE7UL2.Mod
             }
         }
 
-        public override void OnMonthly()
+        public override void OnMonthlyForEachWUnit(WorldUnitBase wunit)
         {
-            base.OnMonthly();
+            base.OnMonthlyForEachWUnit(wunit);
 
-            foreach (var wunit in g.world.unit.GetUnits())
+            int tax = GetTax(wunit);
+            var location = wunit.data.unitData.GetPoint();
+            var town = g.world.build.GetBuild<MapBuildTown>(location);
+            if (town != null)
             {
-                int tax = GetTax(wunit);
-                var location = wunit.data.unitData.GetPoint();
-                var town = g.world.build.GetBuild<MapBuildTown>(location);
-                if (town != null)
-                {
-                    Budget[town.buildData.id] += tax;
-                }
-                var school = g.world.build.GetBuild<MapBuildSchool>(location);
-                if (school != null)
-                {
-                    school.buildData.money += tax;
-                }
-                wunit.AddUnitMoney(-tax);
+                Budget[town.buildData.id] += tax;
             }
+            var school = g.world.build.GetBuild<MapBuildSchool>(location);
+            if (school != null)
+            {
+                school.buildData.money += tax;
+            }
+            wunit.AddUnitMoney(-tax);
         }
 
         public override void OnYearly()

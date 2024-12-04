@@ -20,16 +20,13 @@ namespace MOD_nE7UL2.Mod
         //    [MartialType.Ability] = 1.2f,
         //};
 
-        public override void OnMonthly()
+        public override void OnMonthlyForEachWUnit(WorldUnitBase wunit)
         {
-            base.OnMonthly();
-            foreach (var wunit in g.world.unit.GetUnits())
+            base.OnMonthlyForEachWUnit(wunit);
+            if (!wunit.IsPlayer())
             {
-                if (!wunit.IsPlayer())
-                {
-                    var luck = wunit.GetDynProperty(UnitDynPropertyEnum.Luck).value;
-                    UpgradeMartial(wunit, luck / 100);
-                }
+                var luck = wunit.GetDynProperty(UnitDynPropertyEnum.Luck).value;
+                UpgradeMartial(wunit, luck / 100);
             }
         }
 
