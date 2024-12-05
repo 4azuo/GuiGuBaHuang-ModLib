@@ -114,7 +114,9 @@ public static class ObjectHelper
         newObj.gameObject.SetActive(true);
         obj.gameObject.SetActive(false);
         if (newObj is Button)
+        {
             (newObj as Button).onClick.RemoveAllListeners();
+        }
         return newObj;
     }
 
@@ -123,9 +125,13 @@ public static class ObjectHelper
         var newObj = MonoBehaviour.Instantiate(obj, transform ?? obj.transform.parent, false);
         newObj.gameObject.SetActive(true);
         if (newObj is Text)
+        {
             (newObj as Text).text = string.Empty;
+        }
         if (newObj is Button)
+        {
             (newObj as Button).onClick.RemoveAllListeners();
+        }
         return newObj;
     }
 

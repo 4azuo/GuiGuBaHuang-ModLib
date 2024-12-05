@@ -57,7 +57,26 @@ namespace MOD_nE7UL2.Mod
         public static void OnUIOpen(OpenUIEnd e)
         {
             var smConfigs = EventHelper.GetEvent<SMLocalConfigsEvent>(ModConst.SM_LOCAL_CONFIGS_EVENT);
-            var player = g.world.playerUnit;
+
+            /*
+             * Hide buttons
+             */
+            IDictionary<string, SelectOption> buttonConfigs;
+            if (Configs.ButtonConfigs.TryGetValue(e.uiType.uiName, out buttonConfigs))
+            {
+                var ui = g.ui.GetUI(e.uiType);
+                if (ui == null)
+                    return;
+
+                foreach (var buttonConfig in buttonConfigs)
+                {
+                    var comp = ui.GetComponentsInChildren<MonoBehaviour>().Where(x => buttonConfig.Key == x.name);
+                    foreach (var c in comp)
+                    {
+                        c.gameObject.SetActive(buttonConfig.Value == SelectOption.Show);
+                    }
+                }
+            }
 
             /*
              * UI
@@ -71,7 +90,7 @@ namespace MOD_nE7UL2.Mod
                     x.enabled = false;
                 }
             }
-
+            else
             if (e.uiType.uiName == UIType.School.uiName)
             {
                 using (var a = new UISample())
@@ -81,14 +100,14 @@ namespace MOD_nE7UL2.Mod
                     x.enabled = false;
                 }
             }
-
+            else
             if (e.uiType.uiName == UIType.MapMain.uiName)
             {
                 var uiMapMain = g.ui.GetUI<UIMapMain>(UIType.MapMain);
                 uiMapMain.playerInfo.textPiscesPendantCount.gameObject.SetActive(false);
                 uiMapMain.playerInfo.goAddLuckRoot.SetActive(false);
             }
-
+            else
             if (e.uiType.uiName == UIType.BattleInfo.uiName)
             {
                 var uiBattleInfo = g.ui.GetUI<UIBattleInfo>(UIType.BattleInfo);
@@ -96,7 +115,7 @@ namespace MOD_nE7UL2.Mod
                 uiBattleInfo.uiInfo.goMonstCount2.SetActive(false);
                 uiBattleInfo.uiMap.goGroupRoot.SetActive(!smConfigs.Configs.HideBattleMap);
             }
-
+            else
             if (e.uiType.uiName == UIType.NPCInfo.uiName)
             {
                 var uiNPCInfo = g.ui.GetUI<UINPCInfo>(UIType.NPCInfo);
@@ -110,7 +129,7 @@ namespace MOD_nE7UL2.Mod
                 uiNPCInfoSkill_textAbiPointAdjHp = ObjectHelper.Create(sampleText2).Align(TextAnchor.MiddleCenter).Format(Color.white).Pos(uiNPCInfo.uiSkill.textPoint1.gameObject, 0f, -0.2f);
                 uiNPCInfoSkill_textAbiPointAdjMp = ObjectHelper.Create(sampleText2).Align(TextAnchor.MiddleCenter).Format(Color.white).Pos(uiNPCInfo.uiSkill.textPoint1.gameObject, 0f, -0.4f);
             }
-
+            else
             if (e.uiType.uiName == UIType.PlayerInfo.uiName)
             {
                 var uiPlayerInfo = g.ui.GetUI<UIPlayerInfo>(UIType.PlayerInfo);
@@ -124,7 +143,7 @@ namespace MOD_nE7UL2.Mod
                 uiPlayerInfoSkill_textAbiPointAdjHp = ObjectHelper.Create(sampleText2).Align(TextAnchor.MiddleCenter).Format(Color.white).Pos(uiPlayerInfo.uiSkill.textPoint1.gameObject, 0f, -0.2f);
                 uiPlayerInfoSkill_textAbiPointAdjMp = ObjectHelper.Create(sampleText2).Align(TextAnchor.MiddleCenter).Format(Color.white).Pos(uiPlayerInfo.uiSkill.textPoint1.gameObject, 0f, -0.4f);
             }
-
+            else
             if (e.uiType.uiName == UIType.ArtifactInfo.uiName)
             {
                 var uiArtifactInfo = g.ui.GetUI<UIArtifactInfo>(UIType.ArtifactInfo);
@@ -196,12 +215,12 @@ namespace MOD_nE7UL2.Mod
                 uiArtifactInfo_textRefineAdj4.text = customAdj2?.GetText(uiArtifactInfo.unit, uiArtifactInfo.shapeProp, refineLvl);
                 uiArtifactInfo_textRefineAdj5.text = customAdj3?.GetText(uiArtifactInfo.unit, uiArtifactInfo.shapeProp, refineLvl);
             }
-
+            else
             if (e.uiType.uiName == UIType.MartialInfo.uiName)
             {
                 uiMartialExpertInfo = g.ui.OpenUI<UINPCInfoPreview>(UIType.NPCInfoPreview);
             }
-
+            else
             if (e.uiType.uiName == UIType.NPCInfoPreview.uiName && (g.ui.GetUI(UIType.MartialInfo)?.gameObject?.active).Is(true) == 1)
             {
                 var uiMartialInfo = g.ui.GetUI<UIMartialInfo>(UIType.MartialInfo);
@@ -264,7 +283,7 @@ namespace MOD_nE7UL2.Mod
                         comp.gameObject.SetActive(false);
                 }
             }
-
+            else
             if (e.uiType.uiName == UIType.PropInfo.uiName)
             {
                 var uiPropInfo = g.ui.GetUI<UIPropInfo>(UIType.PropInfo);
@@ -314,32 +333,12 @@ namespace MOD_nE7UL2.Mod
                     uiPropInfo_textRefineAdj4.text = customAdj2?.GetText(uiPropInfo.unit, uiPropInfo.propData, refineLvl);
                 }
             }
-
+            else
             if (e.uiType.uiName == UIType.GameMemu.uiName)
             {
                 var ui = g.ui.GetUI<UIGameMemu>(UIType.GameMemu);
                 ui.btnSave.gameObject.SetActive(!smConfigs.Configs.HideSaveButton);
                 ui.btnReloadCache.gameObject.SetActive(!smConfigs.Configs.HideReloadButton);
-            }
-
-            /*
-             * Hide buttons
-             */
-            IDictionary<string, SelectOption> buttonConfigs;
-            if (Configs.ButtonConfigs.TryGetValue(e.uiType.uiName, out buttonConfigs))
-            {
-                var ui = g.ui.GetUI(e.uiType);
-                if (ui == null)
-                    return;
-
-                foreach (var buttonConfig in buttonConfigs)
-                {
-                    var comp = ui.GetComponentsInChildren<MonoBehaviour>().Where(x => buttonConfig.Key == x.name);
-                    foreach (var c in comp)
-                    {
-                        c.gameObject.SetActive(buttonConfig.Value == SelectOption.Show);
-                    }
-                }
             }
         }
 
@@ -368,7 +367,7 @@ namespace MOD_nE7UL2.Mod
                     uiPropInfo_textRefineAdj4.Pos(uiPropInfo.textName.gameObject, +0.05f, 0.2f);
                 }
             }
-
+            else
             if ((uiArtifactInfo?.gameObject?.active).Is(true) == 1)
             {
                 uiArtifactInfo_textBasicTitle.Pos(uiArtifactInfo.textGrade_En.gameObject, 0f, -0.2f);
@@ -385,7 +384,7 @@ namespace MOD_nE7UL2.Mod
                 uiArtifactInfo_textRefineAdj4.Pos(uiArtifactInfo.textGrade_En.gameObject, +0.05f, -1.95f);
                 uiArtifactInfo_textRefineAdj5.Pos(uiArtifactInfo.textGrade_En.gameObject, +0.05f, -2.1f);
             }
-
+            else
             if ((uiNPCInfo?.gameObject?.active).Is(true) == 1)
             {
                 uiNPCInfo_textMartialAdjHp.text = $"+Hp: {UnitModifyHelper.GetMartialAdjHp(uiNPCInfo.unit)}";
@@ -394,7 +393,7 @@ namespace MOD_nE7UL2.Mod
                 uiNPCInfoSkill_textAbiPointAdjHp.text = $"+Hp: {UnitModifyHelper.GetAbiPointAdjHp(uiNPCInfo.unit)}";
                 uiNPCInfoSkill_textAbiPointAdjMp.text = $"+Mp: {UnitModifyHelper.GetAbiPointAdjMp(uiNPCInfo.unit)}";
             }
-
+            else
             if ((uiPlayerInfo?.gameObject?.active).Is(true) == 1)
             {
                 uiPlayerInfo_textMartialAdjHp.text = $"+Hp: {UnitModifyHelper.GetMartialAdjHp(uiPlayerInfo.unit)}";

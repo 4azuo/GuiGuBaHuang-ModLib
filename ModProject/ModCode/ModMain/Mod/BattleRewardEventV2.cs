@@ -455,8 +455,12 @@ namespace MOD_nE7UL2.Mod
         public override void OnBattleUnitHit(UnitHit e)
         {
             base.OnBattleUnitHit(e);
-            while (UpProperty(e))
+            var smConfigs = EventHelper.GetEvent<SMLocalConfigsEvent>(ModConst.SM_LOCAL_CONFIGS_EVENT);
+            if (!smConfigs.Configs.NoGrowupFromBattles)
             {
+                while (UpProperty(e))
+                {
+                }
             }
         }
 
