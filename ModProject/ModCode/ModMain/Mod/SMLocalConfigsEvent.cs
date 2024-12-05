@@ -7,12 +7,12 @@ namespace MOD_nE7UL2.Mod
     [Cache(ModConst.SM_LOCAL_CONFIGS_EVENT)]
     public class SMLocalConfigsEvent : ModEvent
     {
-        public SMGlocalConfigsEvent Configs { get; set; } = new SMGlocalConfigsEvent();
+        public SMGlobalConfigsEvent Configs { get; set; } = new SMGlobalConfigsEvent();
 
         public override void OnLoadNewGame()
         {
             base.OnLoadNewGame();
-            Configs = EventHelper.GetEvent<SMGlocalConfigsEvent>(ModConst.SM_GLOBAL_CONFIGS_EVENT).Clone();
+            Configs = EventHelper.GetEvent<SMGlobalConfigsEvent>(ModConst.SM_GLOBAL_CONFIGS_EVENT).Clone();
         }
 
         public override void OnLoadGame()

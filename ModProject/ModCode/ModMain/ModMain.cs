@@ -165,19 +165,19 @@ namespace MOD_nE7UL2
                 ConfRuneFormulaItem[] talismanFormulas = null;
                 ConfMakePillFormulaItem pillFormula = null;
 
-                if ((rarity = props.IsRareItem()) != null)
-                {
-                    if (rarity.hunger == 0)
-                    {
-                        rarity.hunger = rarity.grade;
-                        ratio = 1.10f;
-                    }
-                    else
-                    {
-                        rarity.hunger *= rarity.grade;
-                        ratio = 1.10f + rarity.hunger * 0.0001f;
-                    }
-                }
+                //if ((rarity = props.IsRareItem()) != null)
+                //{
+                //    if (rarity.hunger == 0)
+                //    {
+                //        rarity.hunger = rarity.grade;
+                //        ratio = 1.10f;
+                //    }
+                //    else
+                //    {
+                //        rarity.hunger *= rarity.grade;
+                //        ratio = 1.10f + rarity.hunger * 0.0001f;
+                //    }
+                //}
 
                 if ((gradeInfo = props.IsBreakthroughItemA()) != null)
                 {

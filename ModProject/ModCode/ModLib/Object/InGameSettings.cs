@@ -16,7 +16,7 @@ namespace ModLib.Object
         [Obsolete]
         public static object CreateIfNotExists(Type sttType, InGameSettings defaultSettings = null)
         {
-            return CacheHelper.GetGameCache().GetData(sttType, MOD_SETTINGS_KEY, defaultSettings);
+            return CacheHelper.GetGameCache()?.GetData(sttType, MOD_SETTINGS_KEY, defaultSettings);
         }
 
         public static T GetSettings<T>() where T : InGameSettings
@@ -32,12 +32,12 @@ namespace ModLib.Object
 
         public static void SetSettings(CachableObject replacementValue)
         {
-            CacheHelper.GetGameCache().SetData(MOD_SETTINGS_KEY, replacementValue);
+            CacheHelper.GetGameCache()?.SetData(MOD_SETTINGS_KEY, replacementValue);
         }
 
         public static void ClearSettings()
         {
-            CacheHelper.GetGameCache().ClearData(MOD_SETTINGS_KEY);
+            CacheHelper.GetGameCache()?.ClearData(MOD_SETTINGS_KEY);
         }
 
 

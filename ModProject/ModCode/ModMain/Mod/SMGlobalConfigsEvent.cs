@@ -11,8 +11,8 @@ using UnityEngine.UI;
 
 namespace MOD_nE7UL2.Mod
 {
-    [Cache(ModConst.SM_GLOBAL_CONFIGS_EVENT, IsGlobal = true)]
-    public class SMGlocalConfigsEvent : ModEvent
+    [Cache(ModConst.SM_GLOBAL_CONFIGS_EVENT, CacheType = CacheAttribute.CType.Global, WorkOn = CacheAttribute.WType.Global)]
+    public class SMGlobalConfigsEvent : ModEvent
     {
         public const string TITLE = "S&M Configs";
 
@@ -333,22 +333,29 @@ namespace MOD_nE7UL2.Mod
 
         private void OnlyGrayDestinies()
         {
-            foreach (var item in g.conf.roleCreateFeature._allConfList)
-            {
-                if (item.type == 1)
-                {
-                    if (item.level == 1)
-                    {
-                        item.weight = 1000;
-                        item.lockLuck = 0;
-                    }
-                    else
-                    {
-                        item.weight = 0;
-                        item.lockLuck = 1;
-                    }
-                }
-            }
+            //try
+            //{
+            //    foreach (var item in g.conf.roleCreateFeature._allConfList)
+            //    {
+            //        if (item.type == 1)
+            //        {
+            //            if (item.level == 1)
+            //            {
+            //                item.weight = 1000;
+            //                item.lockLuck = 0;
+            //            }
+            //            else
+            //            {
+            //                item.weight = 0;
+            //                item.lockLuck = 1;
+            //            }
+            //        }
+            //    }
+            //}
+            //catch (Exception ex)
+            //{
+            //    DebugHelper.WriteLine(ex);
+            //}
         }
 
         public static int CalCompScore(UIItemBase comp)

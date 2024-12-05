@@ -5,7 +5,6 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using System.Threading.Tasks;
 
 public static class CacheHelper
 {
@@ -89,11 +88,11 @@ public static class CacheHelper
             {
                 DebugHelper.WriteLine($"Load: GlobalCache: File={cacheFilePath}");
                 GlobalCacheData = Newtonsoft.Json.JsonConvert.DeserializeObject<ModLib.Object.ModData>(File.ReadAllText(cacheFilePath), CACHE_JSON_SETTINGS);
-                GlobalCacheData.Init(true);
+                GlobalCacheData.Init(CacheAttribute.CType.Global);
             }
             else
             {
-                GlobalCacheData = new ModLib.Object.ModData(true);
+                GlobalCacheData = new ModLib.Object.ModData(CacheAttribute.CType.Global);
             }
         }
         return GlobalCacheData;
@@ -115,11 +114,11 @@ public static class CacheHelper
             {
                 DebugHelper.WriteLine($"Load: GameCache: File={cacheFilePath}");
                 GameCacheData = Newtonsoft.Json.JsonConvert.DeserializeObject<ModLib.Object.ModData>(File.ReadAllText(cacheFilePath), CACHE_JSON_SETTINGS);
-                GameCacheData.Init(false);
+                GameCacheData.Init(CacheAttribute.CType.Local);
             }
             else
             {
-                GameCacheData = new ModLib.Object.ModData(false);
+                GameCacheData = new ModLib.Object.ModData(CacheAttribute.CType.Local);
             }
         }
         return GameCacheData;
@@ -137,6 +136,11 @@ public static class CacheHelper
             GameCacheData.SaveTime = $"{DateTime.Now:yyyy/MM/dd HH:mm:ss.fff} ({(g.world.run.roundMonth / 12) + 1:0000}/{(g.world.run.roundMonth % 12) + 1:00}/{g.world.run.roundDay + 1:00})";
             File.WriteAllText(GetGameCacheFilePath(), Newtonsoft.Json.JsonConvert.SerializeObject(GameCacheData, CACHE_JSON_SETTINGS));
         }
+    }
+
+    public static void ClearGlobalCache()
+    {
+        GlobalCacheData = null;
     }
 
     public static void ClearGameCache()

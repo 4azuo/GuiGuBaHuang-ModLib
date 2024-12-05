@@ -57,8 +57,9 @@
     <Compile Include="Mod\BankAccountEvent.cs" />
     <Compile Include="Mod\RebirthEvent.cs" />
     <Compile Include="Mod\SMLocalConfigsEvent.cs" />
-    <Compile Include="Mod\SMGlocalConfigsEvent.cs" />
+    <Compile Include="Mod\SMGlobalConfigsEvent.cs" />
     <Compile Include="Mod\UIDifficultyEvent.cs" />
+    <Compile Include="Mod\UICreatePlayerEvent.cs" />
     <Compile Include="Mod\UITitleScreenEvent.cs" />
     <Compile Include="Mod\SpiritlockEvent.cs" />
     <Compile Include="Mod\UnitModifyEvent.cs" />
