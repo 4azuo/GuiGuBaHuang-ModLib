@@ -199,8 +199,12 @@ namespace MOD_nE7UL2.Mod
 
             if (e.uiType.uiName == UIType.MartialInfo.uiName)
             {
-                var uiMartialInfo = g.ui.GetUI<UIMartialInfo>(UIType.MartialInfo);
+                uiMartialExpertInfo = g.ui.OpenUI<UINPCInfoPreview>(UIType.NPCInfoPreview);
+            }
 
+            if (e.uiType.uiName == UIType.NPCInfoPreview.uiName && (g.ui.GetUI(UIType.MartialInfo)?.gameObject?.active).Is(true) == 1)
+            {
+                var uiMartialInfo = g.ui.GetUI<UIMartialInfo>(UIType.MartialInfo);
                 //var soleId = uiMartialInfo.martialData.martialInfo.propsData.soleID;
                 var soleId = uiMartialInfo.martialData.data.soleID;
                 var propsGrade = uiMartialInfo.martialData.martialInfo.grade;
@@ -210,7 +214,7 @@ namespace MOD_nE7UL2.Mod
                 var expertExp = ExpertEvent.GetExpertExp(soleId);
                 var expertNeedExp = ExpertEvent.GetExpertNeedExp(expertLvl + 1, propsGrade, propsLevel);
 
-                uiMartialExpertInfo = g.ui.OpenUI<UINPCInfoPreview>(UIType.NPCInfoPreview);
+                uiMartialExpertInfo.transform.position = new Vector3(0f, 5f);
 
                 var texts = uiMartialExpertInfo.GetComponentsInChildren<Text>();
                 uiMartialExpertInfo_textExpertLvl = texts[1];
@@ -259,11 +263,6 @@ namespace MOD_nE7UL2.Mod
                         comp != uiMartialExpertInfo_textAdj5)
                         comp.gameObject.SetActive(false);
                 }
-            }
-
-            if (e.uiType.uiName == UIType.NPCInfoPreview.uiName && (g.ui.GetUI(UIType.MartialInfo)?.gameObject?.active).Is(true) == 1)
-            {
-                uiMartialExpertInfo.transform.position = new Vector3(0f, 5f);
             }
 
             if (e.uiType.uiName == UIType.PropInfo.uiName)

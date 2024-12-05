@@ -219,10 +219,10 @@ namespace ModLib.Mod
 
                 //register event
                 #region Timer
-                timerUpdate = RegTimer(callTimeUpdate, 0.1f);
-                timerUpdate200ms = RegTimer(callTimeUpdate200ms, 0.2f);
-                timerUpdate500ms = RegTimer(callTimeUpdate500ms, 0.5f);
-                timerUpdate1s = RegTimer(callTimeUpdate1s, 1f);
+                timerUpdate = RegTimer(callTimeUpdate, 0.101f);
+                timerUpdate200ms = RegTimer(callTimeUpdate200ms, 0.201f);
+                timerUpdate500ms = RegTimer(callTimeUpdate500ms, 0.501f);
+                timerUpdate1s = RegTimer(callTimeUpdate1s, 1.001f);
                 #endregion
 
                 #region EMapType
@@ -481,7 +481,6 @@ namespace ModLib.Mod
 
         private void ShowException()
         {
-            DebugHelper.Save();
             if (LastestException != null)
             {
                 var ui = g.ui.OpenUI<UITextInfoLong>(UIType.TextInfoLong);

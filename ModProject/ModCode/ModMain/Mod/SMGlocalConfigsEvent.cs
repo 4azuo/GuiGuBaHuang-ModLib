@@ -40,6 +40,7 @@ namespace MOD_nE7UL2.Mod
         public bool NoExpFromBattles { get; set; } = false;
         public bool SectNoExchange { get; set; } = false;
         public bool BossHasShield { get; set; } = false;
+        public bool NoGrowupFromBattles { get; set; } = false;
 
         //UI
         private UIHelper.UICustom1 uiCustom;
@@ -67,6 +68,7 @@ namespace MOD_nE7UL2.Mod
         private UIItemBase.UIItemComposite tglSysNoExpFromBattle;
         private UIItemBase.UIItemComposite tglSysSectNoExchange;
         private UIItemBase.UIItemComposite tglSysBossHasShield;
+        private UIItemBase.UIItemComposite tglNoGrowupFromBattles;
 
         //Score
         public static IList<SMItemWork> ScoreCalculator { get; } = new List<SMItemWork>();
@@ -99,6 +101,7 @@ namespace MOD_nE7UL2.Mod
             Register(() => tglSysNoExpFromBattle, s => 1000, s => s.Get().Parse<bool>());
             Register(() => tglSysSectNoExchange, s => 10000, s => s.Get().Parse<bool>());
             Register(() => tglSysBossHasShield, s => 10000, s => s.Get().Parse<bool>());
+            Register(() => tglNoGrowupFromBattles, s => 10000, s => s.Get().Parse<bool>());
         }
 
         private void Register(
@@ -185,13 +188,16 @@ namespace MOD_nE7UL2.Mod
             uiCustom.AddText(col, row++, "Systems:").Format(null, 17, FontStyle.Italic).Align(TextAnchor.MiddleRight);
             tglSysHideSave = uiCustom.AddCompositeToggle(col, row++, "Hide Save Button", HideSaveButton, "({0}P)");
             tglSysHideReload = uiCustom.AddCompositeToggle(col, row++, "Hide Reload Button", HideReloadButton, "({0}P)");
-            tglSysHideBattleMap = uiCustom.AddCompositeToggle(col, row++, "Hide Battle Map", HideBattleMap, "({0}P)");
-            tglSysNoRebirth = uiCustom.AddCompositeToggle(col, row++, "No Rebirth", NoRebirth, "({0}P)");
             tglSysOnelife = uiCustom.AddCompositeToggle(col, row++, "One life", Onelife, "({0}P)");
+            row++;
+            tglSysHideBattleMap = uiCustom.AddCompositeToggle(col, row++, "Hide Battle Map", HideBattleMap, "({0}P)");
             tglSysOnlyPortalAtCityAndSect = uiCustom.AddCompositeToggle(col, row++, "Only Portal at City and Sect", OnlyPortalAtCityAndSect, "({0}P)");
-            tglSysNoExpFromBattle = uiCustom.AddCompositeToggle(col, row++, "No Exp from Battles", NoExpFromBattles, "({0}P)");
             tglSysSectNoExchange = uiCustom.AddCompositeToggle(col, row++, "Sect No Exchange", SectNoExchange, "({0}P)");
+            tglSysNoRebirth = uiCustom.AddCompositeToggle(col, row++, "No Rebirth", NoRebirth, "({0}P)");
+            row++;
             tglSysBossHasShield = uiCustom.AddCompositeToggle(col, row++, "Boss Has Shield", BossHasShield, "({0}P)");
+            tglNoGrowupFromBattles = uiCustom.AddCompositeToggle(col, row++, "No Growup From Battles", NoGrowupFromBattles, "({0}P)");
+            tglSysNoExpFromBattle = uiCustom.AddCompositeToggle(col, row++, "No Exp from Battles", NoExpFromBattles, "({0}P)");
 
             col = 30; row = 0;
             txtTotalScore = uiCustom.AddText(col, row, "Total score: {0}P").Format(Color.red, 17).Align(TextAnchor.MiddleRight);
@@ -248,6 +254,7 @@ namespace MOD_nE7UL2.Mod
                 tglSysSectNoExchange.Set(false);
                 tglSysNoRebirth.Set(false);
                 tglSysOnelife.Set(false);
+                tglNoGrowupFromBattles.Set(false);
             }
             catch (Exception ex)
             {
@@ -276,6 +283,7 @@ namespace MOD_nE7UL2.Mod
             tglSysNoExpFromBattle.Set(level > 2);
             tglSysOnlyPortalAtCityAndSect.Set(level > 3);
             tglSysBossHasShield.Set(level > 4);
+            tglNoGrowupFromBattles.Set(level > 5);
             tglSysHideReload.Set(level > 6);
             tglSysSectNoExchange.Set(level > 7);
             tglSysNoRebirth.Set(level > 8);
@@ -283,6 +291,7 @@ namespace MOD_nE7UL2.Mod
         }
 
         [ErrorIgnore]
+        [EventCondition(IsInGame = 0)]
         public override void OnTimeUpdate()
         {
             base.OnTimeUpdate();
@@ -315,6 +324,7 @@ namespace MOD_nE7UL2.Mod
             NoExpFromBattles = tglSysNoExpFromBattle.Get().Parse<bool>();
             SectNoExchange = tglSysSectNoExchange.Get().Parse<bool>();
             BossHasShield = tglSysBossHasShield.Get().Parse<bool>();
+            NoGrowupFromBattles = tglNoGrowupFromBattles.Get().Parse<bool>();
             CacheHelper.Save();
         }
 

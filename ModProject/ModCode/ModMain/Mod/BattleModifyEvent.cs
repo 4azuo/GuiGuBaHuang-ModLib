@@ -1,4 +1,5 @@
 ﻿using EBattleTypeData;
+using EGameTypeData;
 using MOD_nE7UL2.Const;
 using MOD_nE7UL2.Enum;
 using ModLib.Enum;
@@ -29,13 +30,16 @@ namespace MOD_nE7UL2.Mod
         private static readonly IDictionary<string, DataProps.PropsData> _castingSkill = new Dictionary<string, DataProps.PropsData>();
         private static readonly IDictionary<string, MartialType> _castingSkillType = new Dictionary<string, MartialType>();
 
-        public override void OnBattleEndOnce(BattleEnd e)
+        public override void OnOpenUIEnd(OpenUIEnd e)
         {
-            base.OnBattleEndOnce(e);
-            _nullify.Clear();
-            _monstStrongerAdditionalFlg.Clear();
-            _castingSkill.Clear();
-            _castingSkillType.Clear();
+            base.OnOpenUIEnd(e);
+            if (e.uiType.uiName == UIType.MapMain.uiName)
+            {
+                _nullify.Clear();
+                _monstStrongerAdditionalFlg.Clear();
+                _castingSkill.Clear();
+                _castingSkillType.Clear();
+            }
         }
 
         public override void OnBattleUnitInto(UnitCtrlBase e)

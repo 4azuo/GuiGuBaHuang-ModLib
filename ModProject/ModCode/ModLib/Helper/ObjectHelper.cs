@@ -192,7 +192,9 @@ public static class ObjectHelper
 
     public static Button Setup(this Button obj, string def)
     {
-        obj.GetComponentInChildren<Text>().text = def;
+        var txt = obj.GetComponentInChildren<Text>();
+        if (txt != null)
+            txt.text = def;
         return obj;
     }
 }

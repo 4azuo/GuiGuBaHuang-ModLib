@@ -37,6 +37,18 @@
 //        //    DebugHelper.WriteLine($"Mine: {g.world.playerUnit.GetProperty<int>(UnitPropertyEnum.Mine)}");
 //        //}
 
+//        //public override void OnOpenUIEnd(OpenUIEnd e)
+//        //{
+//        //    base.OnOpenUIEnd(e);
+//        //    if (g.res.allRes != null)
+//        //    {
+//        //        foreach (var res in g.res.allRes)
+//        //        {
+//        //            DebugHelper.WriteLine($"{res?.key}: {res?.value?.name}: {res?.value?.GetType()?.FullName}");
+//        //        }
+//        //    }
+//        //}
+
 //        /* === In game debug === */
 //        public override void OnLoadGame()
 //        {

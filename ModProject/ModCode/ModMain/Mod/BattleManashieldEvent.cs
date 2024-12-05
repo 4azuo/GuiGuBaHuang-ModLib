@@ -61,6 +61,8 @@ namespace MOD_nE7UL2.Mod
 
         private EffectBase ShieldUp(UnitCtrlBase cunit, int shield, int maxShield)
         {
+            if (cunit == null)
+                return null;
             var efx = cunit.AddEffect(MANASHIELD_EFFECT_MAIN_ID, cunit, new SkillCreateData
             {
                 mainSkillID = MANASHIELD_EFFECT_MAIN_ID,
