@@ -44,8 +44,6 @@ namespace ModLib.Mod
 
         public virtual void OnTimeUpdate1s()
         {
-            if (!GameHelper.IsInGame())
-                DebugHelper.Save();
             ShowException();
             EventHelper.RunMinorEvents();
         }
