@@ -32,19 +32,19 @@ namespace MOD_nE7UL2.Mod
             }
         }
 
-        [ErrorIgnore]
-        [EventCondition]
-        public override void OnTimeUpdate1s()
-        {
-            base.OnTimeUpdate1s();
+        //[ErrorIgnore]
+        //[EventCondition]
+        //public override void OnTimeUpdate1s()
+        //{
+        //    base.OnTimeUpdate1s();
             
-            RefinableItems.Clear();
-            foreach (var wunit in g.world.playerUnit.GetUnitsAround())
-            {
-                var wunitId = wunit.GetUnitId();
-                RefinableItems.Add(wunitId, GetRefinableItems(wunit));
-            }
-        }
+        //    RefinableItems.Clear();
+        //    foreach (var wunit in g.world.playerUnit.GetUnitsAround())
+        //    {
+        //        var wunitId = wunit.GetUnitId();
+        //        RefinableItems.Add(wunitId, GetRefinableItems(wunit));
+        //    }
+        //}
 
         private void NpcRefine(WorldUnitBase wunit, DataProps.PropsData item)
         {
