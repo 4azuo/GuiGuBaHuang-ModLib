@@ -1,7 +1,5 @@
 ﻿using EGameTypeData;
 using ModLib.Object;
-using System;
-using System.Linq;
 using UnityEngine;
 
 namespace ModLib.Mod
@@ -192,26 +190,29 @@ namespace ModLib.Mod
         public virtual void OnOpenUIStart(OpenUIStart e)
         {
             DebugHelper.WriteLine(e.uiType.uiName);
-
-            if (e.uiType.uiName == UIType.Town.uiName)
-            {
-                if (InGameSettings.LoadMapNewGame)
-                {
-                    CallEvents("OnLoadMapNewGame");
-                    InGameSettings.LoadMapNewGame = false;
-                }
-
-                if (InGameSettings.LoadMapFirst)
-                {
-                    CallEvents("OnLoadMapFirst");
-                    InGameSettings.LoadMapFirst = false;
-                }
-            }
             EventHelper.RunMinorEvents(e);
         }
 
         public virtual void OnOpenUIEnd(OpenUIEnd e)
         {
+            if (GameHelper.IsInGame())
+            {
+                if (e.uiType.uiName == UIType.Town.uiName) //???????
+                {
+                    if (InGameSettings.LoadMapNewGame)
+                    {
+                        CallEvents("OnLoadMapNewGame");
+                        InGameSettings.LoadMapNewGame = false;
+                    }
+
+                    if (InGameSettings.LoadMapFirst)
+                    {
+                        CallEvents("OnLoadMapFirst");
+                        InGameSettings.LoadMapFirst = false;
+                    }
+                }
+            }
+
             EventHelper.RunMinorEvents(e);
         }
 

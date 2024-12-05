@@ -3,7 +3,6 @@ using MOD_nE7UL2.Const;
 using ModLib.Enum;
 using ModLib.Mod;
 using ModLib.Object;
-using Newtonsoft.Json;
 using System;
 using System.Linq;
 using System.Collections.Generic;
@@ -537,21 +536,27 @@ namespace MOD_nE7UL2.Mod
             {
                 DebugHelper.WriteLine($"BattleRewardEvent: win");
                 var insight = player.GetDynProperty(UnitDynPropertyEnum.Talent).value;
-                var aBestBasis = ModBattleEvent.GetDmgPropertyEnum(ModBattleEvent.sGetHighestDealtDmgTypeEnum());
-                if (aBestBasis != null && CommonTool.Random(0.00f, 100.00f).IsBetween(0.00f, insight / 10))
+
+                //player growup from battles
+                if (!smConfigs.Configs.NoGrowupFromBattles)
                 {
-                    player.AddProperty<int>(aBestBasis.GetPropertyEnum(), 1);
-                }
-                var bBestBasis = ModBattleEvent.GetDmgPropertyEnum(ModBattleEvent.sGetHighestRecvDmgTypeEnum());
-                if (bBestBasis != null && CommonTool.Random(0.00f, 100.00f).IsBetween(0.00f, insight / 10))
-                {
-                    player.AddProperty<int>(bBestBasis.GetPropertyEnum(), 1);
+                    var aBestBasis = ModBattleEvent.GetDmgPropertyEnum(ModBattleEvent.sGetHighestDealtDmgTypeEnum());
+                    if (aBestBasis != null && CommonTool.Random(0.00f, 100.00f).IsBetween(0.00f, insight / 10))
+                    {
+                        player.AddProperty<int>(aBestBasis.GetPropertyEnum(), 1);
+                    }
+                    var bBestBasis = ModBattleEvent.GetDmgPropertyEnum(ModBattleEvent.sGetHighestRecvDmgTypeEnum());
+                    if (bBestBasis != null && CommonTool.Random(0.00f, 100.00f).IsBetween(0.00f, insight / 10))
+                    {
+                        player.AddProperty<int>(bBestBasis.GetPropertyEnum(), 1);
+                    }
                 }
 
                 var rewardExp1 = Math.Max(localDmgDealt * ModMain.ModObj.InGameCustomSettings.BattleRewardConfigs.ExpPerDmgDealt, 1).Parse<int>();
                 var rewardExp2 = Math.Max(localDmgRecv * ModMain.ModObj.InGameCustomSettings.BattleRewardConfigs.ExpPerDmgRecv, 1).Parse<int>();
                 var rewardExp = rewardExp1 + rewardExp2;
 
+                //player +exp
                 if (!smConfigs.Configs.NoExpFromBattles)
                 {
                     var myRewardExp = (rewardExp * (insight / 100f)).Parse<int>();
@@ -559,6 +564,7 @@ namespace MOD_nE7UL2.Mod
                     DebugHelper.WriteLine($"BattleRewardEvent: +{myRewardExp}exp");
                 }
 
+                //npc +exp
                 foreach (var unit in ModBattleEvent.DungeonUnits)
                 {
                     var unitData = unit?.data?.TryCast<UnitDataHuman>();
