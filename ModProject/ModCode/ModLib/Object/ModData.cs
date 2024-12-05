@@ -24,8 +24,8 @@ namespace ModLib.Object
 
         public void Init(CacheAttribute.CType ctype)
         {
-            LoadEvents(Assembly.GetAssembly(typeof(ModMaster)), ctype);
-            LoadEvents(Assembly.GetAssembly(ModMaster.ModObj.GetType()), ctype);
+            LoadEvents(GameHelper.GetModMasterAssembly(), ctype);
+            LoadEvents(GameHelper.GetModMainAssembly(), ctype);
         }
 
         public void LoadEvents(Assembly ass, CacheAttribute.CType ctype)

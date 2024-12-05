@@ -41,7 +41,7 @@ namespace MOD_nE7UL2.Mod
         public bool SectNoExchange { get; set; } = false;
         public bool BossHasShield { get; set; } = false;
         public bool NoGrowupFromBattles { get; set; } = false;
-        public bool OnlyGrayDestiniesAtBeginning { get; set; } = false;
+        public bool LowGradeDestiniesAtBeginning { get; set; } = false;
 
         //UI
         private UIHelper.UICustom1 uiCustom;
@@ -70,7 +70,7 @@ namespace MOD_nE7UL2.Mod
         private UIItemBase.UIItemComposite tglSysSectNoExchange;
         private UIItemBase.UIItemComposite tglSysBossHasShield;
         private UIItemBase.UIItemComposite tglNoGrowupFromBattles;
-        private UIItemBase.UIItemComposite tglOnlyGrayDestiniesAtBeginning;
+        private UIItemBase.UIItemComposite tglLowGradeDestiniesAtBeginning;
 
         //Score
         public static IList<SMItemWork> ScoreCalculator { get; } = new List<SMItemWork>();
@@ -104,8 +104,7 @@ namespace MOD_nE7UL2.Mod
             Register(() => tglSysSectNoExchange, s => 10000, s => s.Get().Parse<bool>());
             Register(() => tglSysBossHasShield, s => 10000, s => s.Get().Parse<bool>());
             Register(() => tglNoGrowupFromBattles, s => 10000, s => s.Get().Parse<bool>());
-            Register(() => tglOnlyGrayDestiniesAtBeginning, s => 1000, s => s.Get().Parse<bool>());
-            OnlyGrayDestinies();
+            Register(() => tglLowGradeDestiniesAtBeginning, s => 1000, s => s.Get().Parse<bool>());
         }
 
         private void Register(
@@ -195,7 +194,7 @@ namespace MOD_nE7UL2.Mod
             tglSysOnelife = uiCustom.AddCompositeToggle(col, row++, "One life", Onelife, "({0}P)");
             row++;
             tglSysHideBattleMap = uiCustom.AddCompositeToggle(col, row++, "Hide Battle Map", HideBattleMap, "({0}P)");
-            tglOnlyGrayDestiniesAtBeginning = uiCustom.AddCompositeToggle(col, row++, "Only Gray Destinies At Beginning", OnlyGrayDestiniesAtBeginning, "({0}P)");
+            tglLowGradeDestiniesAtBeginning = uiCustom.AddCompositeToggle(col, row++, "Low Grade Destinies At Beginning", LowGradeDestiniesAtBeginning, "({0}P)");
             tglSysOnlyPortalAtCityAndSect = uiCustom.AddCompositeToggle(col, row++, "Only Portal at City and Sect", OnlyPortalAtCityAndSect, "({0}P)");
             tglSysSectNoExchange = uiCustom.AddCompositeToggle(col, row++, "Sect No Exchange", SectNoExchange, "({0}P)");
             tglSysNoRebirth = uiCustom.AddCompositeToggle(col, row++, "No Rebirth", NoRebirth, "({0}P)");
@@ -258,7 +257,7 @@ namespace MOD_nE7UL2.Mod
             tglSysNoRebirth.Set(false);
             tglSysOnelife.Set(false);
             tglNoGrowupFromBattles.Set(false);
-            tglOnlyGrayDestiniesAtBeginning.Set(false);
+            tglLowGradeDestiniesAtBeginning.Set(false);
         }
 
         private void SetLevel(int level)
@@ -283,7 +282,7 @@ namespace MOD_nE7UL2.Mod
             tglSysOnlyPortalAtCityAndSect.Set(level > 3);
             tglSysBossHasShield.Set(level > 4);
             tglNoGrowupFromBattles.Set(level > 5);
-            tglOnlyGrayDestiniesAtBeginning.Set(level > 5);
+            tglLowGradeDestiniesAtBeginning.Set(level > 5);
             tglSysHideReload.Set(level > 6);
             tglSysSectNoExchange.Set(level > 7);
             tglSysNoRebirth.Set(level > 8);
@@ -325,37 +324,8 @@ namespace MOD_nE7UL2.Mod
             SectNoExchange = tglSysSectNoExchange.Get().Parse<bool>();
             BossHasShield = tglSysBossHasShield.Get().Parse<bool>();
             NoGrowupFromBattles = tglNoGrowupFromBattles.Get().Parse<bool>();
-            OnlyGrayDestiniesAtBeginning = tglOnlyGrayDestiniesAtBeginning.Get().Parse<bool>();
-            if (OnlyGrayDestiniesAtBeginning)
-                OnlyGrayDestinies();
+            LowGradeDestiniesAtBeginning = tglLowGradeDestiniesAtBeginning.Get().Parse<bool>();
             CacheHelper.Save();
-        }
-
-        private void OnlyGrayDestinies()
-        {
-            //try
-            //{
-            //    foreach (var item in g.conf.roleCreateFeature._allConfList)
-            //    {
-            //        if (item.type == 1)
-            //        {
-            //            if (item.level == 1)
-            //            {
-            //                item.weight = 1000;
-            //                item.lockLuck = 0;
-            //            }
-            //            else
-            //            {
-            //                item.weight = 0;
-            //                item.lockLuck = 1;
-            //            }
-            //        }
-            //    }
-            //}
-            //catch (Exception ex)
-            //{
-            //    DebugHelper.WriteLine(ex);
-            //}
         }
 
         public static int CalCompScore(UIItemBase comp)

@@ -6,6 +6,16 @@ using System.Runtime.CompilerServices;
 
 public static class GameHelper
 {
+    public static Assembly GetModMasterAssembly()
+    {
+        return Assembly.GetAssembly(typeof(ModMaster));
+    }
+
+    public static Assembly GetModMainAssembly()
+    {
+        return Assembly.GetAssembly(ModMaster.ModObj.GetType());
+    }
+
     public static string GetDayCode()
     {
         return $"{(g.world?.run?.roundMonth / 12) + 1:0000}{(g.world?.run?.roundMonth % 12) + 1:00}{g.world?.run?.roundDay + 1:00}";

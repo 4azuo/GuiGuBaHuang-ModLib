@@ -709,6 +709,204 @@
     <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="..\..\ModConf\apprentice_alchemy_localText.json">
+      <Link>ModConf\apprentice_alchemy_localText.json</Link>
+    </None>
+    <None Include="..\..\ModConf\apprentice_alchemy_roleCreateFeature.json">
+      <Link>ModConf\apprentice_alchemy_roleCreateFeature.json</Link>
+    </None>
+    <None Include="..\..\ModConf\apprentice_alchemy_roleEffect.json">
+      <Link>ModConf\apprentice_alchemy_roleEffect.json</Link>
+    </None>
+    <None Include="..\..\ModConf\apprentice_fengshui_localText.json">
+      <Link>ModConf\apprentice_fengshui_localText.json</Link>
+    </None>
+    <None Include="..\..\ModConf\apprentice_fengshui_roleCreateFeature.json">
+      <Link>ModConf\apprentice_fengshui_roleCreateFeature.json</Link>
+    </None>
+    <None Include="..\..\ModConf\apprentice_fengshui_roleEffect.json">
+      <Link>ModConf\apprentice_fengshui_roleEffect.json</Link>
+    </None>
+    <None Include="..\..\ModConf\apprentice_forge_localText.json">
+      <Link>ModConf\apprentice_forge_localText.json</Link>
+    </None>
+    <None Include="..\..\ModConf\apprentice_forge_roleCreateFeature.json">
+      <Link>ModConf\apprentice_forge_roleCreateFeature.json</Link>
+    </None>
+    <None Include="..\..\ModConf\apprentice_forge_roleEffect.json">
+      <Link>ModConf\apprentice_forge_roleEffect.json</Link>
+    </None>
+    <None Include="..\..\ModConf\apprentice_herbology_localText.json">
+      <Link>ModConf\apprentice_herbology_localText.json</Link>
+    </None>
+    <None Include="..\..\ModConf\apprentice_herbology_roleCreateFeature.json">
+      <Link>ModConf\apprentice_herbology_roleCreateFeature.json</Link>
+    </None>
+    <None Include="..\..\ModConf\apprentice_herbology_roleEffect.json">
+      <Link>ModConf\apprentice_herbology_roleEffect.json</Link>
+    </None>
+    <None Include="..\..\ModConf\apprentice_mining_localText.json">
+      <Link>ModConf\apprentice_mining_localText.json</Link>
+    </None>
+    <None Include="..\..\ModConf\apprentice_mining_roleCreateFeature.json">
+      <Link>ModConf\apprentice_mining_roleCreateFeature.json</Link>
+    </None>
+    <None Include="..\..\ModConf\apprentice_mining_roleEffect.json">
+      <Link>ModConf\apprentice_mining_roleEffect.json</Link>
+    </None>
+    <None Include="..\..\ModConf\apprentice_talismans_localText.json">
+      <Link>ModConf\apprentice_talismans_localText.json</Link>
+    </None>
+    <None Include="..\..\ModConf\apprentice_talismans_roleCreateFeature.json">
+      <Link>ModConf\apprentice_talismans_roleCreateFeature.json</Link>
+    </None>
+    <None Include="..\..\ModConf\apprentice_talismans_roleEffect.json">
+      <Link>ModConf\apprentice_talismans_roleEffect.json</Link>
+    </None>
+    <None Include="..\..\ModConf\artifact_artifactShapeRepair.json">
+      <Link>ModConf\artifact_artifactShapeRepair.json</Link>
+    </None>
+    <None Include="..\..\ModConf\balance_localText.json">
+      <Link>ModConf\balance_localText.json</Link>
+    </None>
+    <None Include="..\..\ModConf\balance_roleCreateFeature.json">
+      <Link>ModConf\balance_roleCreateFeature.json</Link>
+    </None>
+    <None Include="..\..\ModConf\balance_roleEffect.json">
+      <Link>ModConf\balance_roleEffect.json</Link>
+    </None>
+    <None Include="..\..\ModConf\commision_localText.json">
+      <Link>ModConf\commision_localText.json</Link>
+    </None>
+    <None Include="..\..\ModConf\commission_dramaDialogue.json">
+      <Link>ModConf\commission_dramaDialogue.json</Link>
+    </None>
+    <None Include="..\..\ModConf\game_configs.json">
+      <Link>ModConf\game_configs.json</Link>
+    </None>
+    <None Include="..\..\ModConf\game_dramaDialogue.json">
+      <Link>ModConf\game_dramaDialogue.json</Link>
+    </None>
+    <None Include="..\..\ModConf\game_dramaOptions.json">
+      <Link>ModConf\game_dramaOptions.json</Link>
+    </None>
+    <None Include="..\..\ModConf\game_gameDifficultyValue.json">
+      <Link>ModConf\game_gameDifficultyValue.json</Link>
+    </None>
+    <None Include="..\..\ModConf\game_localText.json">
+      <Link>ModConf\game_localText.json</Link>
+    </None>
+    <None Include="..\..\ModConf\game_npcInitParameters.json">
+      <Link>ModConf\game_npcInitParameters.json</Link>
+    </None>
+    <None Include="..\..\ModConf\game_roleGrade.json">
+      <Link>ModConf\game_roleGrade.json</Link>
+    </None>
+    <None Include="..\..\ModConf\inflationary_dramaDialogue.json">
+      <Link>ModConf\inflationary_dramaDialogue.json</Link>
+    </None>
+    <None Include="..\..\ModConf\inflationary_localText.json">
+      <Link>ModConf\inflationary_localText.json</Link>
+    </None>
+    <None Include="..\..\ModConf\itemProps.json">
+      <Link>ModConf\itemProps.json</Link>
+    </None>
+    <None Include="..\..\ModConf\manashield_battleEffect.json">
+      <Link>ModConf\manashield_battleEffect.json</Link>
+    </None>
+    <None Include="..\..\ModConf\manashield_localText.json">
+      <Link>ModConf\manashield_localText.json</Link>
+    </None>
+    <None Include="..\..\ModConf\merchant_localText.json">
+      <Link>ModConf\merchant_localText.json</Link>
+    </None>
+    <None Include="..\..\ModConf\merchant_roleCreateFeature.json">
+      <Link>ModConf\merchant_roleCreateFeature.json</Link>
+    </None>
+    <None Include="..\..\ModConf\merchant_roleEffect.json">
+      <Link>ModConf\merchant_roleEffect.json</Link>
+    </None>
+    <None Include="..\..\ModConf\mod_configs.json">
+      <Link>ModConf\mod_configs.json</Link>
+    </None>
+    <None Include="..\..\ModConf\qicul_dramaDialogue.json">
+      <Link>ModConf\qicul_dramaDialogue.json</Link>
+    </None>
+    <None Include="..\..\ModConf\qicul_dramaOptions.json">
+      <Link>ModConf\qicul_dramaOptions.json</Link>
+    </None>
+    <None Include="..\..\ModConf\qicul_itemProps.json">
+      <Link>ModConf\qicul_itemProps.json</Link>
+    </None>
+    <None Include="..\..\ModConf\qicul_localText.json">
+      <Link>ModConf\qicul_localText.json</Link>
+    </None>
+    <None Include="..\..\ModConf\realStorage_dramaDialogue.json">
+      <Link>ModConf\realStorage_dramaDialogue.json</Link>
+    </None>
+    <None Include="..\..\ModConf\realStorage_localText.json">
+      <Link>ModConf\realStorage_localText.json</Link>
+    </None>
+    <None Include="..\..\ModConf\rebirth_dramaDialogue.json">
+      <Link>ModConf\rebirth_dramaDialogue.json</Link>
+    </None>
+    <None Include="..\..\ModConf\rebirth_localText.json">
+      <Link>ModConf\rebirth_localText.json</Link>
+    </None>
+    <None Include="..\..\ModConf\rebirth_roleCreateFeature.json">
+      <Link>ModConf\rebirth_roleCreateFeature.json</Link>
+    </None>
+    <None Include="..\..\ModConf\rebirth_roleEffect.json">
+      <Link>ModConf\rebirth_roleEffect.json</Link>
+    </None>
+    <None Include="..\..\ModConf\sect_buildingMeditation.json">
+      <Link>ModConf\sect_buildingMeditation.json</Link>
+    </None>
+    <None Include="..\..\ModConf\sect_schoolBuilding.json">
+      <Link>ModConf\sect_schoolBuilding.json</Link>
+    </None>
+    <None Include="..\..\ModConf\slicelife_localText.json">
+      <Link>ModConf\slicelife_localText.json</Link>
+    </None>
+    <None Include="..\..\ModConf\slicelife_martial_roleEffect.json">
+      <Link>ModConf\slicelife_martial_roleEffect.json</Link>
+    </None>
+    <None Include="..\..\ModConf\slicelife_roleCreateFeature.json">
+      <Link>ModConf\slicelife_roleCreateFeature.json</Link>
+    </None>
+    <None Include="..\..\ModConf\slicelife_task104.json">
+      <Link>ModConf\slicelife_task104.json</Link>
+    </None>
+    <None Include="..\..\ModConf\slicelife_taskBase.json">
+      <Link>ModConf\slicelife_taskBase.json</Link>
+    </None>
+    <None Include="..\..\ModConf\trainee_magic_localText.json">
+      <Link>ModConf\trainee_magic_localText.json</Link>
+    </None>
+    <None Include="..\..\ModConf\trainee_magic_roleCreateFeature.json">
+      <Link>ModConf\trainee_magic_roleCreateFeature.json</Link>
+    </None>
+    <None Include="..\..\ModConf\trainee_magic_roleEffect.json">
+      <Link>ModConf\trainee_magic_roleEffect.json</Link>
+    </None>
+    <None Include="..\..\ModConf\trainee_martial_localText.json">
+      <Link>ModConf\trainee_martial_localText.json</Link>
+    </None>
+    <None Include="..\..\ModConf\trainee_martial_roleCreateFeature.json">
+      <Link>ModConf\trainee_martial_roleCreateFeature.json</Link>
+    </None>
+    <None Include="..\..\ModConf\trainee_martial_roleEffect.json">
+      <Link>ModConf\trainee_martial_roleEffect.json</Link>
+    </None>
+    <None Include="..\..\ModConf\unitType_localText.json">
+      <Link>ModConf\unitType_localText.json</Link>
+    </None>
+    <None Include="..\..\ModConf\unitType_roleCreateFeature.json">
+      <Link>ModConf\unitType_roleCreateFeature.json</Link>
+    </None>
+    <None Include="..\..\ModConf\unitType_roleEffect.json">
+      <Link>ModConf\unitType_roleEffect.json</Link>
+    </None>
     <None Include="app.config" />
     <None Include="packages.config" />
   </ItemGroup>

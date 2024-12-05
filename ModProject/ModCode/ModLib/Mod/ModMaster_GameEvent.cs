@@ -6,9 +6,6 @@ namespace ModLib.Mod
 {
     public abstract partial class ModMaster : MonoBehaviour
     {
-        private bool initMod = false;
-        private bool loadGlobal = false;
-
         #region ModLib - Handlers
         //public virtual void _OnTownAuctionStart(ETypeData e)
         //{
@@ -154,14 +151,14 @@ namespace ModLib.Mod
 
                 if (InGameSettings.LoadNewGame)
                 {
-                    CallEvents("OnInitConf");
-                    CallEvents("OnInitEObj");
                     CallEvents("OnLoadNewGame");
                     InGameSettings.LoadNewGame = false;
                 }
 
                 if (InGameSettings.LoadGameBefore)
                 {
+                    CallEvents("OnInitConf");
+                    CallEvents("OnInitEObj");
                     CallEvents("OnLoadGameBefore");
                     InGameSettings.LoadGameBefore = false;
                 }
