@@ -325,9 +325,6 @@ namespace MOD_nE7UL2.Mod
             /*
              * Hide buttons
              */
-            if (e?.uiType?.uiName == null || Configs?.ButtonConfigs == null)
-                return;
-
             IDictionary<string, SelectOption> buttonConfigs;
             if (Configs.ButtonConfigs.TryGetValue(e.uiType.uiName, out buttonConfigs))
             {
