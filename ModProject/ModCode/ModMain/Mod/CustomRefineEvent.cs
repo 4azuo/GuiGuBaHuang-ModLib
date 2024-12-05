@@ -16,6 +16,8 @@ namespace MOD_nE7UL2.Mod
     [Cache(ModConst.CUSTOM_REFINE_EVENT)]
     public class CustomRefineEvent : ModEvent
     {
+        public const int REFINE_EXP_RATE = 200;
+
         public Dictionary<string, long> RefineExp { get; set; } = new Dictionary<string, long>();
         public Dictionary<string, CustomRefine> CustomRefine { get; set; } = new Dictionary<string, CustomRefine>();
 
@@ -32,26 +34,26 @@ namespace MOD_nE7UL2.Mod
             }
         }
 
-        //[ErrorIgnore]
-        //[EventCondition]
-        //public override void OnTimeUpdate1s()
-        //{
-        //    base.OnTimeUpdate1s();
-            
-        //    RefinableItems.Clear();
-        //    foreach (var wunit in g.world.playerUnit.GetUnitsAround())
-        //    {
-        //        var wunitId = wunit.GetUnitId();
-        //        RefinableItems.Add(wunitId, GetRefinableItems(wunit));
-        //    }
-        //}
+        [ErrorIgnore]
+        [EventCondition]
+        public override void OnTimeUpdate1s()
+        {
+            base.OnTimeUpdate1s();
+
+            RefinableItems.Clear();
+            foreach (var wunit in g.world.playerUnit.GetUnitsAround())
+            {
+                var wunitId = wunit.GetUnitId();
+                RefinableItems.Add(wunitId, GetRefinableItems(wunit));
+            }
+        }
 
         private void NpcRefine(WorldUnitBase wunit, DataProps.PropsData item)
         {
             if (item == null)
                 return;
             var money = wunit.GetUnitMoney();
-            var exp = money + (money * wunit.GetDynProperty(UnitDynPropertyEnum.RefineWeapon).value / 100);
+            var exp = money * wunit.GetDynProperty(UnitDynPropertyEnum.RefineWeapon).value / REFINE_EXP_RATE;
             var spend = Convert.ToInt32(Math.Sqrt(money));
             AddRefineExp(item, exp);
             //UnitModifyHelper.ClearCacheCustomAdjValues(wunit);
@@ -135,7 +137,7 @@ namespace MOD_nE7UL2.Mod
                 var oldLvl = GetRefineLvl(refineItem);
 
                 var value = UIPropSelect.allSlectDataProps.allProps.ToArray().Sum(x => x.propsInfoBase.worth * x.propsCount);
-                var exp = value + (value * g.world.playerUnit.GetDynProperty(UnitDynPropertyEnum.RefineWeapon).value / 100);
+                var exp = value * g.world.playerUnit.GetDynProperty(UnitDynPropertyEnum.RefineWeapon).value / REFINE_EXP_RATE;
                 AddRefineExp(refineItem, exp);
                 g.world.playerUnit.AddUnitMoney(-value);
                 g.ui.CloseUI(ui);
@@ -148,13 +150,7 @@ namespace MOD_nE7UL2.Mod
 
         public static List<DataProps.PropsData> GetRefinableItems(WorldUnitBase wunit)
         {
-            var rs = new List<DataProps.PropsData>();
-            foreach (var item in wunit.GetUnitProps())
-            {
-                if (IsRefinableItem(item))
-                    rs.Add(item);
-            }
-            return rs;
+            return wunit.GetUnitProps().Where(x => IsRefinableItem(x)).ToList();
         }
 
         public static bool IsRefinableItem(DataProps.PropsData props)

@@ -13,16 +13,16 @@ namespace MOD_nE7UL2.Mod
     {
         private static readonly List<string> _units = new List<string>();
 
-        //[ErrorIgnore]
-        //[EventCondition]
-        //public override void OnTimeUpdate1s()
-        //{
-        //    base.OnTimeUpdate1s();
-        //    foreach (var wunit in g.world.playerUnit.GetUnitsAround())
-        //    {
-        //        AddWUnitModifier(wunit);
-        //    }
-        //}
+        [ErrorIgnore]
+        [EventCondition]
+        public override void OnTimeUpdate1s()
+        {
+            base.OnTimeUpdate1s();
+            foreach (var wunit in g.world.playerUnit.GetUnitsAround())
+            {
+                AddWUnitModifier(wunit);
+            }
+        }
 
         private void AddWUnitModifier(WorldUnitBase wunit)
         {
