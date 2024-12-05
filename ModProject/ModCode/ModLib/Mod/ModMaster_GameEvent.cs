@@ -17,50 +17,6 @@ namespace ModLib.Mod
 
         public virtual void _OnOpenUIStart(ETypeData e)
         {
-            if (!initMod)
-            {
-                CallEvents("OnInitConf");
-                CallEvents("OnInitEObj");
-                initMod = true;
-            }
-
-            if (!loadGlobal)
-            {
-                CallEvents("OnLoadGlobal");
-                loadGlobal = true;
-            }
-
-            if (GameHelper.IsInGame())
-            {
-                if (InGameSettings.LoadNewGame)
-                {
-                    CallEvents("OnLoadNewGame");
-                    InGameSettings.LoadNewGame = false;
-                }
-
-                if (InGameSettings.LoadGameBefore)
-                {
-                    CallEvents("OnLoadGameBefore");
-                    InGameSettings.LoadGameBefore = false;
-                }
-
-                if (InGameSettings.LoadGame)
-                {
-                    CallEvents("OnLoadGame");
-                    InGameSettings.LoadGame = false;
-                }
-
-                if (InGameSettings.LoadGameAfter)
-                {
-                    CallEvents("OnLoadGameAfter");
-                    InGameSettings.LoadGameAfter = false;
-                }
-            }
-            else
-            {
-                CacheHelper.ClearGameCache();
-            }
-
             CallEvents<OpenUIStart>("OnOpenUIStart", e, false, false);
         }
 
@@ -190,29 +146,66 @@ namespace ModLib.Mod
         public virtual void OnOpenUIStart(OpenUIStart e)
         {
             DebugHelper.WriteLine(e.uiType.uiName);
+
+            if (e.uiType.uiName == UIType.MapMain.uiName)
+            {
+                CacheHelper.ClearGlobalCache();
+                CacheHelper.ClearGameCache();
+
+                if (InGameSettings.LoadNewGame)
+                {
+                    CallEvents("OnInitConf");
+                    CallEvents("OnInitEObj");
+                    CallEvents("OnLoadNewGame");
+                    InGameSettings.LoadNewGame = false;
+                }
+
+                if (InGameSettings.LoadGameBefore)
+                {
+                    CallEvents("OnLoadGameBefore");
+                    InGameSettings.LoadGameBefore = false;
+                }
+
+                if (InGameSettings.LoadGame)
+                {
+                    CallEvents("OnLoadGame");
+                    InGameSettings.LoadGame = false;
+                }
+
+                if (InGameSettings.LoadGameAfter)
+                {
+                    CallEvents("OnLoadGameAfter");
+                    InGameSettings.LoadGameAfter = false;
+                }
+            }
+            else
+            if (e.uiType.uiName == UIType.Town.uiName)
+            {
+                if (InGameSettings.LoadMapNewGame)
+                {
+                    CallEvents("OnLoadMapNewGame");
+                    InGameSettings.LoadMapNewGame = false;
+                }
+
+                if (InGameSettings.LoadMapFirst)
+                {
+                    CallEvents("OnLoadMapFirst");
+                    InGameSettings.LoadMapFirst = false;
+                }
+            }
+            else
+            if (e.uiType.uiName == UIType.Login.uiName)
+            {
+                CacheHelper.ClearGlobalCache();
+                CacheHelper.ClearGameCache();
+                CallEvents("OnLoadGlobal");
+            }
+
             EventHelper.RunMinorEvents(e);
         }
 
         public virtual void OnOpenUIEnd(OpenUIEnd e)
         {
-            if (GameHelper.IsInGame())
-            {
-                if (e.uiType.uiName == UIType.Town.uiName) //???????
-                {
-                    if (InGameSettings.LoadMapNewGame)
-                    {
-                        CallEvents("OnLoadMapNewGame");
-                        InGameSettings.LoadMapNewGame = false;
-                    }
-
-                    if (InGameSettings.LoadMapFirst)
-                    {
-                        CallEvents("OnLoadMapFirst");
-                        InGameSettings.LoadMapFirst = false;
-                    }
-                }
-            }
-
             EventHelper.RunMinorEvents(e);
         }
 

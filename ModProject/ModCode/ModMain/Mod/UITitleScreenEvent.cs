@@ -7,7 +7,7 @@ using UnityEngine.UI;
 
 namespace MOD_nE7UL2.Mod
 {
-    [Cache("UITitleScreenEvent", IsGlobal = true)]
+    [Cache("UITitleScreenEvent", CacheType = CacheAttribute.CType.Global, WorkOn = CacheAttribute.WType.Global)]
     public class UITitleScreenEvent : ModEvent
     {
         public override void OnOpenUIEnd(OpenUIEnd e)

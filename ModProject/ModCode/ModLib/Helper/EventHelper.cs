@@ -20,6 +20,10 @@ public static class EventHelper
         var isWorldRunning = GameHelper.IsWorldRunning();
         foreach (var ev in GetEvents(methodName))
         {
+            if (ev.WorkOn == CacheAttribute.WType.Local && !isInGame)
+                continue;
+            if (ev.WorkOn == CacheAttribute.WType.Global && isInGame)
+                continue;
             var method = ev.GetType().GetMethod(methodName);
             try
             {
