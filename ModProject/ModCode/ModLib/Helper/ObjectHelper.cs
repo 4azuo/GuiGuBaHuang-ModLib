@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Linq.Expressions;
 using System.Reflection;
 using System.Threading.Tasks;
 using UnityEngine;
@@ -8,6 +7,8 @@ using UnityEngine.UI;
 
 public static class ObjectHelper
 {
+    public static int goIndex = 0;
+
     public static readonly Newtonsoft.Json.JsonSerializerSettings CLONE_JSON_SETTINGS = new Newtonsoft.Json.JsonSerializerSettings
     {
         Formatting = Newtonsoft.Json.Formatting.Indented,
@@ -111,11 +112,14 @@ public static class ObjectHelper
     public static T Replace<T>(this T obj, Transform transform = null) where T : MonoBehaviour
     {
         var newObj = MonoBehaviour.Instantiate(obj, transform ?? obj.transform.parent, false);
+        newObj.gameObject.name = $"ObjectHelper:{goIndex++}";
+        newObj.transform.position = new Vector3(obj.transform.position.x, obj.transform.position.y, obj.transform.position.z);
         newObj.gameObject.SetActive(true);
         obj.gameObject.SetActive(false);
         if (newObj is Button)
         {
-            (newObj as Button).onClick.RemoveAllListeners();
+            var o = newObj as Button;
+            o.onClick.RemoveAllListeners();
         }
         return newObj;
     }
@@ -123,14 +127,18 @@ public static class ObjectHelper
     public static T Create<T>(this T obj, Transform transform = null) where T : MonoBehaviour
     {
         var newObj = MonoBehaviour.Instantiate(obj, transform ?? obj.transform.parent, false);
+        newObj.gameObject.name = $"ObjectHelper:{goIndex++}";
+        newObj.transform.position = new Vector3(obj.transform.position.x, obj.transform.position.y, obj.transform.position.z);
         newObj.gameObject.SetActive(true);
         if (newObj is Text)
         {
-            (newObj as Text).text = string.Empty;
+            var o = newObj as Text;
+            o.text = string.Empty;
         }
         if (newObj is Button)
         {
-            (newObj as Button).onClick.RemoveAllListeners();
+            var o = newObj as Button;
+            o.onClick.RemoveAllListeners();
         }
         return newObj;
     }
@@ -157,9 +165,15 @@ public static class ObjectHelper
         return obj;
     }
 
-    public static T Pos<T>(this T obj, float deltaX = 0f, float deltaY = 0f, float deltaZ = 0f) where T : UIBehaviour
+    public static T Pos<T>(this T obj, float deltaX, float deltaY, float deltaZ) where T : UIBehaviour
     {
         obj.transform.position = new Vector3(deltaX, deltaY, deltaZ);
+        return obj;
+    }
+
+    public static T Pos<T>(this T obj, float deltaX, float deltaY) where T : UIBehaviour
+    {
+        obj.transform.position = new Vector3(deltaX, deltaY, obj.transform.position.z);
         return obj;
     }
 

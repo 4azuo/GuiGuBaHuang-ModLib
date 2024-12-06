@@ -6,6 +6,8 @@ namespace ModLib.Mod
 {
     public abstract partial class ModMaster : MonoBehaviour
     {
+        private bool initFlg = true;
+
         #region ModLib - Handlers
         //public virtual void _OnTownAuctionStart(ETypeData e)
         //{
@@ -144,6 +146,14 @@ namespace ModLib.Mod
         {
             DebugHelper.WriteLine(e.uiType.uiName);
 
+            if (initFlg)
+            {
+                CallEvents("OnInitConf");
+                CallEvents("OnInitEObj");
+                DebugHelper.Save();
+                initFlg = false;
+            }
+
             if (e.uiType.uiName == UIType.MapMain.uiName)
             {
                 CacheHelper.ClearGlobalCache();
@@ -151,14 +161,13 @@ namespace ModLib.Mod
 
                 if (InGameSettings.LoadNewGame)
                 {
+                    InGameSettings.CurMonth = g.game.world.run.roundMonth;
                     CallEvents("OnLoadNewGame");
                     InGameSettings.LoadNewGame = false;
                 }
 
                 if (InGameSettings.LoadGameBefore)
                 {
-                    CallEvents("OnInitConf");
-                    CallEvents("OnInitEObj");
                     CallEvents("OnLoadGameBefore");
                     InGameSettings.LoadGameBefore = false;
                 }

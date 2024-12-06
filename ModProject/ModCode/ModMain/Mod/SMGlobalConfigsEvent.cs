@@ -142,15 +142,15 @@ namespace MOD_nE7UL2.Mod
             });
         }
 
+        [EventCondition(IsInGame = 0)]
         public override void OnOpenUIEnd(OpenUIEnd e)
         {
             base.OnOpenUIEnd(e);
             if (e.uiType.uiName == UIType.Login.uiName)
             {
                 var uiLogin = g.ui.GetUI<UILogin>(UIType.Login);
-                var modConfigBtn = uiLogin.btnSet.Create().Pos(0f, 3.3f, uiLogin.btnPaperChange.transform.position.z);
-                var modConfigText = modConfigBtn.GetComponentInChildren<Text>().Align(TextAnchor.MiddleCenter);
-                modConfigText.text = TITLE;
+                var modConfigBtn = uiLogin.btnSet.Create().Pos(0f, 3.3f);
+                modConfigBtn.Setup(TITLE);
                 modConfigBtn.onClick.AddListener((UnityAction)OpenSMConfigs);
             }
         }

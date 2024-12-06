@@ -19,6 +19,7 @@ namespace MOD_nE7UL2.Mod
         public int RebirthCount { get; set; } = 0;
         public int TotalGradeLvl { get; set; } = 0;
 
+        [EventCondition]
         public override void OnOpenUIEnd(OpenUIEnd e)
         {
             base.OnOpenUIEnd(e);

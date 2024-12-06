@@ -13,15 +13,24 @@ namespace MOD_nE7UL2.Mod
     {
         private static readonly List<string> _units = new List<string>();
 
-        [ErrorIgnore]
-        [EventCondition]
-        public override void OnTimeUpdate1s()
+        public override void OnMonthlyForEachWUnit(WorldUnitBase wunit)
         {
-            base.OnTimeUpdate1s();
-            foreach (var wunit in g.world.playerUnit.GetUnitsAround())
+            base.OnMonthlyForEachWUnit(wunit);
+            AddWUnitModifier(wunit);
+        }
+
+        public override void OnLoadGame()
+        {
+            base.OnLoadGame();
+            foreach (var wunit in g.world.unit.GetUnits())
             {
                 AddWUnitModifier(wunit);
             }
+        }
+
+        private bool IsUnloadAdj()
+        {
+            return GameHelper.IsWorldRunning();
         }
 
         private void AddWUnitModifier(WorldUnitBase wunit)
@@ -34,76 +43,94 @@ namespace MOD_nE7UL2.Mod
                 //
                 wunit.GetDynProperty(UnitDynPropertyEnum.Attack).AddValue((DynInt.DynObjectAddHandler)(() =>
                 {
+                    if (IsUnloadAdj()) return 0;
                     return GetAdjustAtk(wunit);
                 }));
                 wunit.GetDynProperty(UnitDynPropertyEnum.Defense).AddValue((DynInt.DynObjectAddHandler)(() =>
                 {
+                    if (IsUnloadAdj()) return 0;
                     return GetAdjustDef(wunit);
                 }));
                 wunit.GetDynProperty(UnitDynPropertyEnum.HpMax).AddValue((DynInt.DynObjectAddHandler)(() =>
                 {
+                    if (IsUnloadAdj()) return 0;
                     return GetAdjustMaxHp(wunit);
                 }));
                 wunit.GetDynProperty(UnitDynPropertyEnum.MpMax).AddValue((DynInt.DynObjectAddHandler)(() =>
                 {
+                    if (IsUnloadAdj()) return 0;
                     return GetAdjustMaxMp(wunit);
                 }));
                 wunit.GetDynProperty(UnitDynPropertyEnum.SpMax).AddValue((DynInt.DynObjectAddHandler)(() =>
                 {
+                    if (IsUnloadAdj()) return 0;
                     return GetAdjustMaxSp(wunit);
                 }));
                 wunit.GetDynProperty(UnitDynPropertyEnum.MoveSpeed).AddValue((DynInt.DynObjectAddHandler)(() =>
                 {
+                    if (IsUnloadAdj()) return 0;
                     return GetAdjustSpeed(wunit);
                 }));
 
                 //basis
                 wunit.GetDynProperty(UnitDynPropertyEnum.BasisBlade).AddValue((DynInt.DynObjectAddHandler)(() =>
                 {
+                    if (IsUnloadAdj()) return 0;
                     return GetAdjustBlade(wunit);
                 }));
                 wunit.GetDynProperty(UnitDynPropertyEnum.BasisEarth).AddValue((DynInt.DynObjectAddHandler)(() =>
                 {
+                    if (IsUnloadAdj()) return 0;
                     return GetAdjustEarth(wunit);
                 }));
                 wunit.GetDynProperty(UnitDynPropertyEnum.BasisFinger).AddValue((DynInt.DynObjectAddHandler)(() =>
                 {
+                    if (IsUnloadAdj()) return 0;
                     return GetAdjustFinger(wunit);
                 }));
                 wunit.GetDynProperty(UnitDynPropertyEnum.BasisFire).AddValue((DynInt.DynObjectAddHandler)(() =>
                 {
+                    if (IsUnloadAdj()) return 0;
                     return GetAdjustFire(wunit);
                 }));
                 wunit.GetDynProperty(UnitDynPropertyEnum.BasisFist).AddValue((DynInt.DynObjectAddHandler)(() =>
                 {
+                    if (IsUnloadAdj()) return 0;
                     return GetAdjustFist(wunit);
                 }));
                 wunit.GetDynProperty(UnitDynPropertyEnum.BasisFroze).AddValue((DynInt.DynObjectAddHandler)(() =>
                 {
+                    if (IsUnloadAdj()) return 0;
                     return GetAdjustFroze(wunit);
                 }));
                 wunit.GetDynProperty(UnitDynPropertyEnum.BasisPalm).AddValue((DynInt.DynObjectAddHandler)(() =>
                 {
+                    if (IsUnloadAdj()) return 0;
                     return GetAdjustPalm(wunit);
                 }));
                 wunit.GetDynProperty(UnitDynPropertyEnum.BasisSpear).AddValue((DynInt.DynObjectAddHandler)(() =>
                 {
+                    if (IsUnloadAdj()) return 0;
                     return GetAdjustSpear(wunit);
                 }));
                 wunit.GetDynProperty(UnitDynPropertyEnum.BasisSword).AddValue((DynInt.DynObjectAddHandler)(() =>
                 {
+                    if (IsUnloadAdj()) return 0;
                     return GetAdjustSword(wunit);
                 }));
                 wunit.GetDynProperty(UnitDynPropertyEnum.BasisThunder).AddValue((DynInt.DynObjectAddHandler)(() =>
                 {
+                    if (IsUnloadAdj()) return 0;
                     return GetAdjustThunder(wunit);
                 }));
                 wunit.GetDynProperty(UnitDynPropertyEnum.BasisWind).AddValue((DynInt.DynObjectAddHandler)(() =>
                 {
+                    if (IsUnloadAdj()) return 0;
                     return GetAdjustWind(wunit);
                 }));
                 wunit.GetDynProperty(UnitDynPropertyEnum.BasisWood).AddValue((DynInt.DynObjectAddHandler)(() =>
                 {
+                    if (IsUnloadAdj()) return 0;
                     return GetAdjustWood(wunit);
                 }));
             }

@@ -26,6 +26,7 @@ namespace MOD_nE7UL2.Mod
         public long Debt { get; set; } = 0L;
         private int count = 0;
 
+        [EventCondition]
         public override void OnOpenUIEnd(OpenUIEnd e)
         {
             base.OnOpenUIEnd(e);
