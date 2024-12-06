@@ -8,45 +8,7 @@ namespace ModLib.Object
 {
     public class ModData
     {
-        public string SaveTime { get; set; }
-        public Dictionary<string, CachableObject> Data { get; set; } = new Dictionary<string, CachableObject>();
-
-        [Obsolete]
-        public ModData()
-        {
-            //loaded by json
-        }
-
-        public ModData(CacheAttribute.CType ctype)
-        {
-            Init(ctype);
-        }
-
-        public void Init(CacheAttribute.CType ctype)
-        {
-            LoadEvents(GameHelper.GetModMasterAssembly(), ctype);
-            LoadEvents(GameHelper.GetModMainAssembly(), ctype);
-        }
-
-        public void LoadEvents(Assembly ass, CacheAttribute.CType ctype)
-        {
-            var eventTypes = ass.GetTypes().Where(x => x.IsClass && x.IsSubclassOf(typeof(CachableObject)) && x.GetCustomAttributes<CacheAttribute>().Count() > 0).ToList();
-            foreach (var t in eventTypes)
-            {
-                foreach (var attr in t.GetCustomAttributes<CacheAttribute>().Where(x => x.CacheType == ctype))
-                {
-                    if (!Data.ContainsKey(attr.CacheId))
-                    {
-                        DebugHelper.WriteLine($"Create {(ctype == CacheAttribute.CType.Global ? "Global" : "Game")}Cache: Type={t.FullName}, Id={attr.CacheId}");
-                        var e = (CachableObject)Activator.CreateInstance(t);
-                        e.CacheId = attr.CacheId;
-                        e.CacheType = attr.CacheType;
-                        e.WorkOn = attr.WorkOn;
-                        Data.Add(attr.CacheId, e);
-                    }
-                }
-            }
-        }
+        public Dictionary<string, CachableObject> Data { get; } = new Dictionary<string, CachableObject>();
 
         public T CreateIfNotExists<T>(string key, T defaultValue = null) where T : CachableObject
         {

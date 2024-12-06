@@ -9,8 +9,6 @@ public static class DebugHelper
     public static readonly StringBuilder CurLog = new StringBuilder();
     public static readonly IList<Exception> Exceptions = new List<Exception>();
 
-    public static string LastestLog { get; private set; }
-
     public static string GetDebugFileName()
     {
         if (GameHelper.IsInGame())
@@ -80,7 +78,8 @@ public static class DebugHelper
         Exceptions.Add(e);
         WriteLine($"{e.GetAllInnnerExceptionStr()}");
         Save();
-        LastestLog = GetDebugFilePath();
+
+        ModMaster.ShowException(e, GetDebugFilePath());
     }
 
     private static string Now()

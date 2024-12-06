@@ -3,7 +3,6 @@ using ModLib.Mod;
 using System.Collections.Generic;
 using System.Reflection;
 using System;
-using System.Diagnostics;
 
 public static class EventHelper
 {
@@ -20,10 +19,6 @@ public static class EventHelper
         var isWorldRunning = GameHelper.IsWorldRunning();
         foreach (var ev in GetEvents(methodName))
         {
-            if (ev.WorkOn == CacheAttribute.WType.Local && !isInGame)
-                continue;
-            if (ev.WorkOn == CacheAttribute.WType.Global && isInGame)
-                continue;
             var method = ev.GetType().GetMethod(methodName);
             try
             {
@@ -72,7 +67,7 @@ public static class EventHelper
 
     public static T GetEvent<T>(string eventId) where T : ModEvent
     {
-        return (T)GetEvents().FirstOrDefault(x => typeof(T).IsAssignableFrom(x.GetType()) && x.CacheId == eventId);
+        return CacheHelper.GetCachableObject<T>(eventId);
     }
 
     public static ModEvent GetEvent(string methodName, string eventId)
@@ -87,9 +82,6 @@ public static class EventHelper
 
     public static List<ModEvent> GetEvents()
     {
-        var rs = CacheHelper.GetGlobalCache().GetDatas<ModEvent>();
-        if (CacheHelper.IsGameCacheLoaded())
-            rs.AddRange(CacheHelper.GetGameCache().GetDatas<ModEvent>());
-        return rs.OrderBy(x => x.OrderIndex).ToList();
+        return CacheHelper.GetAllCachableObjects<ModEvent>().OrderBy(x => x.OrderIndex).ToList();
     }
 }

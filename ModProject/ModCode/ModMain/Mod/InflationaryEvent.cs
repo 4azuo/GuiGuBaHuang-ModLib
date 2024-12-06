@@ -72,9 +72,10 @@ namespace MOD_nE7UL2.Mod
             if (value <= 0)
                 return value;
             var smConfigs = EventHelper.GetEvent<SMLocalConfigsEvent>(ModConst.SM_LOCAL_CONFIGS_EVENT);
-            if (smConfigs == null) DebugHelper.WriteLine("1.1");
             var x = EventHelper.GetEvent<InflationaryEvent>(ModConst.INFLATIONARY_EVENT);
-            if (x == null) DebugHelper.WriteLine("1.2");
+            if (smConfigs.Configs == null) DebugHelper.WriteLine("1,1");
+            if (Configs == null) DebugHelper.WriteLine("1,2");
+            if (ModMain.ModObj.InGameCustomSettings.NpcUpgradeSkillConfigs == null) DebugHelper.WriteLine("1,3");
             return Convert.ToInt32(value * Math.Pow(smConfigs.Calculate(Configs.InflationaryRate, smConfigs.Configs.AddInflationRate), year) / Math.Pow(100, x.Corruption));
         }
 
@@ -83,9 +84,10 @@ namespace MOD_nE7UL2.Mod
             if (value <= 0)
                 return value;
             var smConfigs = EventHelper.GetEvent<SMLocalConfigsEvent>(ModConst.SM_LOCAL_CONFIGS_EVENT);
-            if (smConfigs == null) DebugHelper.WriteLine("2.1");
             var x = EventHelper.GetEvent<InflationaryEvent>(ModConst.INFLATIONARY_EVENT);
-            if (x == null) DebugHelper.WriteLine("2.2");
+            if (smConfigs.Configs == null) DebugHelper.WriteLine("2,1");
+            if (Configs == null) DebugHelper.WriteLine("2,2");
+            if (ModMain.ModObj.InGameCustomSettings.BankAccountConfigs == null) DebugHelper.WriteLine("2,3");
             return Convert.ToInt64(value * Math.Pow(smConfigs.Calculate(Configs.InflationaryRate, smConfigs.Configs.AddInflationRate), year) / Math.Pow(100, x.Corruption));
         }
 

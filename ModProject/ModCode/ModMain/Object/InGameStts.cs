@@ -9,8 +9,6 @@ namespace MOD_nE7UL2.Object
 {
     public class InGameStts : InGameSettings
     {
-        //public string ForceSaveCondition { get; set; }
-
         #region HideButtonConfigs
         public class _HideButtonConfigs
         {
@@ -21,7 +19,6 @@ namespace MOD_nE7UL2.Object
                 Show,
             }
             public IDictionary<string, IDictionary<string, SelectOption>> ButtonConfigs { get; set; }
-            public IDictionary<string, string> ForceHideConditions { get; set; }
         }
         public _HideButtonConfigs HideButtonConfigs { get; set; }
         #endregion

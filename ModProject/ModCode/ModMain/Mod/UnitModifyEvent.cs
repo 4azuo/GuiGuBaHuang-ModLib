@@ -12,6 +12,13 @@ namespace MOD_nE7UL2.Mod
     public class UnitModifyEvent : ModEvent
     {
         private static readonly List<string> _units = new List<string>();
+        private static readonly Dictionary<string, int> _values = new Dictionary<string, int>();
+
+        public override void OnMonthly()
+        {
+            base.OnMonthly();
+            _values.Clear();
+        }
 
         public override void OnMonthlyForEachWUnit(WorldUnitBase wunit)
         {
@@ -28,11 +35,6 @@ namespace MOD_nE7UL2.Mod
             }
         }
 
-        private bool IsUnloadAdj()
-        {
-            return GameHelper.IsWorldRunning();
-        }
-
         private void AddWUnitModifier(WorldUnitBase wunit)
         {
             var unitId = wunit.GetUnitId();
@@ -43,94 +45,76 @@ namespace MOD_nE7UL2.Mod
                 //
                 wunit.GetDynProperty(UnitDynPropertyEnum.Attack).AddValue((DynInt.DynObjectAddHandler)(() =>
                 {
-                    if (IsUnloadAdj()) return 0;
                     return GetAdjustAtk(wunit);
                 }));
                 wunit.GetDynProperty(UnitDynPropertyEnum.Defense).AddValue((DynInt.DynObjectAddHandler)(() =>
                 {
-                    if (IsUnloadAdj()) return 0;
                     return GetAdjustDef(wunit);
                 }));
                 wunit.GetDynProperty(UnitDynPropertyEnum.HpMax).AddValue((DynInt.DynObjectAddHandler)(() =>
                 {
-                    if (IsUnloadAdj()) return 0;
                     return GetAdjustMaxHp(wunit);
                 }));
                 wunit.GetDynProperty(UnitDynPropertyEnum.MpMax).AddValue((DynInt.DynObjectAddHandler)(() =>
                 {
-                    if (IsUnloadAdj()) return 0;
                     return GetAdjustMaxMp(wunit);
                 }));
                 wunit.GetDynProperty(UnitDynPropertyEnum.SpMax).AddValue((DynInt.DynObjectAddHandler)(() =>
                 {
-                    if (IsUnloadAdj()) return 0;
                     return GetAdjustMaxSp(wunit);
                 }));
                 wunit.GetDynProperty(UnitDynPropertyEnum.MoveSpeed).AddValue((DynInt.DynObjectAddHandler)(() =>
                 {
-                    if (IsUnloadAdj()) return 0;
                     return GetAdjustSpeed(wunit);
                 }));
 
                 //basis
                 wunit.GetDynProperty(UnitDynPropertyEnum.BasisBlade).AddValue((DynInt.DynObjectAddHandler)(() =>
                 {
-                    if (IsUnloadAdj()) return 0;
                     return GetAdjustBlade(wunit);
                 }));
                 wunit.GetDynProperty(UnitDynPropertyEnum.BasisEarth).AddValue((DynInt.DynObjectAddHandler)(() =>
                 {
-                    if (IsUnloadAdj()) return 0;
                     return GetAdjustEarth(wunit);
                 }));
                 wunit.GetDynProperty(UnitDynPropertyEnum.BasisFinger).AddValue((DynInt.DynObjectAddHandler)(() =>
                 {
-                    if (IsUnloadAdj()) return 0;
                     return GetAdjustFinger(wunit);
                 }));
                 wunit.GetDynProperty(UnitDynPropertyEnum.BasisFire).AddValue((DynInt.DynObjectAddHandler)(() =>
                 {
-                    if (IsUnloadAdj()) return 0;
                     return GetAdjustFire(wunit);
                 }));
                 wunit.GetDynProperty(UnitDynPropertyEnum.BasisFist).AddValue((DynInt.DynObjectAddHandler)(() =>
                 {
-                    if (IsUnloadAdj()) return 0;
                     return GetAdjustFist(wunit);
                 }));
                 wunit.GetDynProperty(UnitDynPropertyEnum.BasisFroze).AddValue((DynInt.DynObjectAddHandler)(() =>
                 {
-                    if (IsUnloadAdj()) return 0;
                     return GetAdjustFroze(wunit);
                 }));
                 wunit.GetDynProperty(UnitDynPropertyEnum.BasisPalm).AddValue((DynInt.DynObjectAddHandler)(() =>
                 {
-                    if (IsUnloadAdj()) return 0;
                     return GetAdjustPalm(wunit);
                 }));
                 wunit.GetDynProperty(UnitDynPropertyEnum.BasisSpear).AddValue((DynInt.DynObjectAddHandler)(() =>
                 {
-                    if (IsUnloadAdj()) return 0;
                     return GetAdjustSpear(wunit);
                 }));
                 wunit.GetDynProperty(UnitDynPropertyEnum.BasisSword).AddValue((DynInt.DynObjectAddHandler)(() =>
                 {
-                    if (IsUnloadAdj()) return 0;
                     return GetAdjustSword(wunit);
                 }));
                 wunit.GetDynProperty(UnitDynPropertyEnum.BasisThunder).AddValue((DynInt.DynObjectAddHandler)(() =>
                 {
-                    if (IsUnloadAdj()) return 0;
                     return GetAdjustThunder(wunit);
                 }));
                 wunit.GetDynProperty(UnitDynPropertyEnum.BasisWind).AddValue((DynInt.DynObjectAddHandler)(() =>
                 {
-                    if (IsUnloadAdj()) return 0;
                     return GetAdjustWind(wunit);
                 }));
                 wunit.GetDynProperty(UnitDynPropertyEnum.BasisWood).AddValue((DynInt.DynObjectAddHandler)(() =>
                 {
-                    if (IsUnloadAdj()) return 0;
                     return GetAdjustWood(wunit);
                 }));
             }
@@ -138,289 +122,397 @@ namespace MOD_nE7UL2.Mod
 
         public static int GetAdjustAtk(WorldUnitBase wunit)
         {
-            var rs = 0;
-
-            var atk = wunit.GetDynProperty(UnitDynPropertyEnum.Attack).baseValue;
-
-            foreach (var artifact in wunit.GetEquippedArtifacts())
+            var k = $"{wunit.GetUnitId()}_atk";
+            if (!_values.ContainsKey(k) || wunit.IsPlayer())
             {
-                var a = artifact.To<DataProps.PropsArtifact>();
-                if (a.durable > 0)
+                var rs = 0;
+
+                var atk = wunit.GetDynProperty(UnitDynPropertyEnum.Attack).baseValue;
+
+                foreach (var artifact in wunit.GetEquippedArtifacts())
                 {
-                    var aconf = artifact.propsItem.IsArtifact();
+                    var a = artifact.To<DataProps.PropsArtifact>();
+                    if (a.durable > 0)
+                    {
+                        var aconf = artifact.propsItem.IsArtifact();
 
-                    rs += UnitModifyHelper.GetArtifactBasicAdjAtk(atk, artifact, a);
+                        rs += UnitModifyHelper.GetArtifactBasicAdjAtk(atk, artifact, a);
 
-                    rs += UnitModifyHelper.GetArtifactExpertAtk(aconf.atk, ExpertEvent.GetExpertLvl(artifact.soleID, artifact.propsInfoBase.grade, artifact.propsInfoBase.level), artifact.propsInfoBase.grade, artifact.propsInfoBase.level);
+                        rs += UnitModifyHelper.GetArtifactExpertAtk(aconf.atk, ExpertEvent.GetExpertLvl(artifact.soleID, artifact.propsInfoBase.grade, artifact.propsInfoBase.level), artifact.propsInfoBase.grade, artifact.propsInfoBase.level);
 
-                    rs += UnitModifyHelper.GetRefineArtifactAdjAtk(artifact, CustomRefineEvent.GetRefineLvl(artifact));
+                        rs += UnitModifyHelper.GetRefineArtifactAdjAtk(artifact, CustomRefineEvent.GetRefineLvl(artifact));
+                    }
                 }
+
+                foreach (var abi in wunit.data.unitData.GetActionMartial(MartialType.Ability))
+                {
+                    var martialData = abi.data.To<DataProps.MartialData>();
+                    if (wunit.data.unitData.abilitys.Contains(martialData.data.soleID))
+                    {
+                        var expertLvl = ExpertEvent.GetExpertLvl(martialData.data.soleID, martialData.data.propsInfoBase.grade, martialData.data.propsInfoBase.level);
+                        rs += UnitModifyHelper.GetAbilityExpertAtk(atk, expertLvl, martialData.data.propsInfoBase.grade, martialData.data.propsInfoBase.level);
+                    }
+                }
+
+                rs += Convert.ToInt32(CustomRefineEvent.GetRefineCustommAdjValue(wunit, AdjTypeEnum.Atk));
+
+                _values[k] = rs;
             }
 
-            foreach (var abi in wunit.data.unitData.GetActionMartial(MartialType.Ability))
-            {
-                var martialData = abi.data.To<DataProps.MartialData>();
-                if (wunit.data.unitData.abilitys.Contains(martialData.data.soleID))
-                {
-                    var expertLvl = ExpertEvent.GetExpertLvl(martialData.data.soleID, martialData.data.propsInfoBase.grade, martialData.data.propsInfoBase.level);
-                    rs += UnitModifyHelper.GetAbilityExpertAtk(atk, expertLvl, martialData.data.propsInfoBase.grade, martialData.data.propsInfoBase.level);
-                }
-            }
-
-            rs += Convert.ToInt32(CustomRefineEvent.GetRefineCustommAdjValue(wunit, AdjTypeEnum.Atk));
-
-            return rs;
+            return _values[k];
         }
 
         public static int GetAdjustDef(WorldUnitBase wunit)
         {
-            var rs = 0;
-
-            var def = wunit.GetDynProperty(UnitDynPropertyEnum.Defense).baseValue;
-
-            foreach (var artifact in wunit.GetEquippedArtifacts())
+            var k = $"{wunit.GetUnitId()}_def";
+            if (!_values.ContainsKey(k) || wunit.IsPlayer())
             {
-                var a = artifact.To<DataProps.PropsArtifact>();
-                if (a.durable > 0)
+                var rs = 0;
+
+                var def = wunit.GetDynProperty(UnitDynPropertyEnum.Defense).baseValue;
+
+                foreach (var artifact in wunit.GetEquippedArtifacts())
                 {
-                    var aconf = artifact.propsItem.IsArtifact();
+                    var a = artifact.To<DataProps.PropsArtifact>();
+                    if (a.durable > 0)
+                    {
+                        var aconf = artifact.propsItem.IsArtifact();
 
-                    rs += UnitModifyHelper.GetArtifactBasicAdjDef(def, artifact, a);
+                        rs += UnitModifyHelper.GetArtifactBasicAdjDef(def, artifact, a);
 
-                    rs += UnitModifyHelper.GetArtifactExpertDef(aconf.def, ExpertEvent.GetExpertLvl(artifact.soleID, artifact.propsInfoBase.grade, artifact.propsInfoBase.level), artifact.propsInfoBase.grade, artifact.propsInfoBase.level);
+                        rs += UnitModifyHelper.GetArtifactExpertDef(aconf.def, ExpertEvent.GetExpertLvl(artifact.soleID, artifact.propsInfoBase.grade, artifact.propsInfoBase.level), artifact.propsInfoBase.grade, artifact.propsInfoBase.level);
 
-                    rs += UnitModifyHelper.GetRefineArtifactAdjDef(artifact, CustomRefineEvent.GetRefineLvl(artifact));
+                        rs += UnitModifyHelper.GetRefineArtifactAdjDef(artifact, CustomRefineEvent.GetRefineLvl(artifact));
+                    }
                 }
+
+                foreach (var abi in wunit.data.unitData.GetActionMartial(MartialType.Ability))
+                {
+                    var martialData = abi.data.To<DataProps.MartialData>();
+                    if (wunit.data.unitData.abilitys.Contains(martialData.data.soleID))
+                    {
+                        var expertLvl = ExpertEvent.GetExpertLvl(martialData.data.soleID, martialData.data.propsInfoBase.grade, martialData.data.propsInfoBase.level);
+                        rs += UnitModifyHelper.GetAbilityExpertDef(def, expertLvl, martialData.data.propsInfoBase.grade, martialData.data.propsInfoBase.level);
+                    }
+                }
+
+                rs += UnitModifyHelper.GetRefineOutfitAdjDef(def, wunit.GetEquippedOutfit(), CustomRefineEvent.GetRefineLvl(wunit.GetEquippedOutfit()));
+
+                rs += Convert.ToInt32(CustomRefineEvent.GetRefineCustommAdjValue(wunit, AdjTypeEnum.Def));
+
+                _values[k] = rs;
             }
 
-            foreach (var abi in wunit.data.unitData.GetActionMartial(MartialType.Ability))
-            {
-                var martialData = abi.data.To<DataProps.MartialData>();
-                if (wunit.data.unitData.abilitys.Contains(martialData.data.soleID))
-                {
-                    var expertLvl = ExpertEvent.GetExpertLvl(martialData.data.soleID, martialData.data.propsInfoBase.grade, martialData.data.propsInfoBase.level);
-                    rs += UnitModifyHelper.GetAbilityExpertDef(def, expertLvl, martialData.data.propsInfoBase.grade, martialData.data.propsInfoBase.level);
-                }
-            }
-
-            rs += UnitModifyHelper.GetRefineOutfitAdjDef(def, wunit.GetEquippedOutfit(), CustomRefineEvent.GetRefineLvl(wunit.GetEquippedOutfit()));
-
-            rs += Convert.ToInt32(CustomRefineEvent.GetRefineCustommAdjValue(wunit, AdjTypeEnum.Def));
-
-            return rs;
+            return _values[k];
         }
 
         public static int GetAdjustMaxHp(WorldUnitBase wunit)
         {
-            var rs = 0;
-
-            var hpMax = wunit.GetDynProperty(UnitDynPropertyEnum.HpMax).baseValue;
-
-            foreach (var artifact in wunit.GetEquippedArtifacts())
+            var k = $"{wunit.GetUnitId()}_mhp";
+            if (!_values.ContainsKey(k) || wunit.IsPlayer())
             {
-                var a = artifact.To<DataProps.PropsArtifact>();
-                if (a.durable > 0)
+                var rs = 0;
+
+                var hpMax = wunit.GetDynProperty(UnitDynPropertyEnum.HpMax).baseValue;
+
+                foreach (var artifact in wunit.GetEquippedArtifacts())
                 {
-                    rs += UnitModifyHelper.GetArtifactBasicAdjHp(hpMax, artifact, a);
+                    var a = artifact.To<DataProps.PropsArtifact>();
+                    if (a.durable > 0)
+                    {
+                        rs += UnitModifyHelper.GetArtifactBasicAdjHp(hpMax, artifact, a);
+                    }
                 }
+
+                foreach (var abi in wunit.data.unitData.GetActionMartial(MartialType.Ability))
+                {
+                    var martialData = abi.data.To<DataProps.MartialData>();
+                    if (wunit.data.unitData.abilitys.Contains(martialData.data.soleID))
+                    {
+                        var expertLvl = ExpertEvent.GetExpertLvl(martialData.data.soleID, martialData.data.propsInfoBase.grade, martialData.data.propsInfoBase.level);
+                        rs += UnitModifyHelper.GetAbilityExpertHp(hpMax, expertLvl, martialData.data.propsInfoBase.grade, martialData.data.propsInfoBase.level);
+                    }
+                }
+
+                rs += UnitModifyHelper.GetAbiPointAdjHp(wunit);
+
+                rs += UnitModifyHelper.GetMartialAdjHp(wunit);
+
+                rs += UnitModifyHelper.GetRefineRingAdjHp(hpMax, wunit.GetEquippedRing(), CustomRefineEvent.GetRefineLvl(wunit.GetEquippedRing()));
+
+                rs += UnitModifyHelper.GetRefineOutfitAdjHp(hpMax, wunit.GetEquippedOutfit(), CustomRefineEvent.GetRefineLvl(wunit.GetEquippedOutfit()));
+
+                rs += Convert.ToInt32(CustomRefineEvent.GetRefineCustommAdjValue(wunit, AdjTypeEnum.MHp));
+
+                _values[k] = rs;
             }
 
-            foreach (var abi in wunit.data.unitData.GetActionMartial(MartialType.Ability))
-            {
-                var martialData = abi.data.To<DataProps.MartialData>();
-                if (wunit.data.unitData.abilitys.Contains(martialData.data.soleID))
-                {
-                    var expertLvl = ExpertEvent.GetExpertLvl(martialData.data.soleID, martialData.data.propsInfoBase.grade, martialData.data.propsInfoBase.level);
-                    rs += UnitModifyHelper.GetAbilityExpertHp(hpMax, expertLvl, martialData.data.propsInfoBase.grade, martialData.data.propsInfoBase.level);
-                }
-            }
-
-            rs += UnitModifyHelper.GetAbiPointAdjHp(wunit);
-
-            rs += UnitModifyHelper.GetMartialAdjHp(wunit);
-
-            rs += UnitModifyHelper.GetRefineRingAdjHp(hpMax, wunit.GetEquippedRing(), CustomRefineEvent.GetRefineLvl(wunit.GetEquippedRing()));
-
-            rs += UnitModifyHelper.GetRefineOutfitAdjHp(hpMax, wunit.GetEquippedOutfit(), CustomRefineEvent.GetRefineLvl(wunit.GetEquippedOutfit()));
-
-            rs += Convert.ToInt32(CustomRefineEvent.GetRefineCustommAdjValue(wunit, AdjTypeEnum.MHp));
-
-            return rs;
+            return _values[k];
         }
 
         public static int GetAdjustMaxMp(WorldUnitBase wunit)
         {
-            var rs = 0;
-
-            var mpMax = wunit.GetDynProperty(UnitDynPropertyEnum.MpMax).baseValue;
-
-            foreach (var abi in wunit.data.unitData.GetActionMartial(MartialType.Ability))
+            var k = $"{wunit.GetUnitId()}_mmp";
+            if (!_values.ContainsKey(k) || wunit.IsPlayer())
             {
-                var martialData = abi.data.To<DataProps.MartialData>();
-                if (wunit.data.unitData.abilitys.Contains(martialData.data.soleID))
+                var rs = 0;
+
+                var mpMax = wunit.GetDynProperty(UnitDynPropertyEnum.MpMax).baseValue;
+
+                foreach (var abi in wunit.data.unitData.GetActionMartial(MartialType.Ability))
                 {
-                    var expertLvl = ExpertEvent.GetExpertLvl(martialData.data.soleID, martialData.data.propsInfoBase.grade, martialData.data.propsInfoBase.level);
-                    rs += UnitModifyHelper.GetAbilityExpertMp(mpMax, expertLvl, martialData.data.propsInfoBase.grade, martialData.data.propsInfoBase.level);
+                    var martialData = abi.data.To<DataProps.MartialData>();
+                    if (wunit.data.unitData.abilitys.Contains(martialData.data.soleID))
+                    {
+                        var expertLvl = ExpertEvent.GetExpertLvl(martialData.data.soleID, martialData.data.propsInfoBase.grade, martialData.data.propsInfoBase.level);
+                        rs += UnitModifyHelper.GetAbilityExpertMp(mpMax, expertLvl, martialData.data.propsInfoBase.grade, martialData.data.propsInfoBase.level);
+                    }
                 }
+
+                rs += UnitModifyHelper.GetAbiPointAdjMp(wunit);
+
+                rs += UnitModifyHelper.GetSpiritualAdjMp(wunit);
+
+                rs += Convert.ToInt32(CustomRefineEvent.GetRefineCustommAdjValue(wunit, AdjTypeEnum.MMp));
+
+                _values[k] = rs;
             }
 
-            rs += UnitModifyHelper.GetAbiPointAdjMp(wunit);
-
-            rs += UnitModifyHelper.GetSpiritualAdjMp(wunit);
-
-            rs += Convert.ToInt32(CustomRefineEvent.GetRefineCustommAdjValue(wunit, AdjTypeEnum.MMp));
-
-            return rs;
+            return _values[k];
         }
 
         public static int GetAdjustMaxSp(WorldUnitBase wunit)
         {
-            var rs = 0;
-
-            var spMax = wunit.GetDynProperty(UnitDynPropertyEnum.SpMax).baseValue;
-
-            foreach (var abi in wunit.data.unitData.GetActionMartial(MartialType.Ability))
+            var k = $"{wunit.GetUnitId()}_msp";
+            if (!_values.ContainsKey(k) || wunit.IsPlayer())
             {
-                var martialData = abi.data.To<DataProps.MartialData>();
-                if (wunit.data.unitData.abilitys.Contains(martialData.data.soleID))
+                var rs = 0;
+
+                var spMax = wunit.GetDynProperty(UnitDynPropertyEnum.SpMax).baseValue;
+
+                foreach (var abi in wunit.data.unitData.GetActionMartial(MartialType.Ability))
                 {
-                    var expertLvl = ExpertEvent.GetExpertLvl(martialData.data.soleID, martialData.data.propsInfoBase.grade, martialData.data.propsInfoBase.level);
-                    rs += UnitModifyHelper.GetAbilityExpertSp(spMax, expertLvl, martialData.data.propsInfoBase.grade, martialData.data.propsInfoBase.level);
+                    var martialData = abi.data.To<DataProps.MartialData>();
+                    if (wunit.data.unitData.abilitys.Contains(martialData.data.soleID))
+                    {
+                        var expertLvl = ExpertEvent.GetExpertLvl(martialData.data.soleID, martialData.data.propsInfoBase.grade, martialData.data.propsInfoBase.level);
+                        rs += UnitModifyHelper.GetAbilityExpertSp(spMax, expertLvl, martialData.data.propsInfoBase.grade, martialData.data.propsInfoBase.level);
+                    }
                 }
+
+                rs += UnitModifyHelper.GetArtisanshipAdjSp(wunit);
+
+                rs += Convert.ToInt32(CustomRefineEvent.GetRefineCustommAdjValue(wunit, AdjTypeEnum.MSp));
+
+                _values[k] = rs;
             }
 
-            rs += UnitModifyHelper.GetArtisanshipAdjSp(wunit);
-
-            rs += Convert.ToInt32(CustomRefineEvent.GetRefineCustommAdjValue(wunit, AdjTypeEnum.MSp));
-
-            return rs;
+            return _values[k];
         }
 
         public static int GetAdjustSpeed(WorldUnitBase wunit)
         {
-            var rs = 0;
-
-            foreach (var abi in wunit.data.unitData.GetActionMartial(MartialType.Step))
+            var k = $"{wunit.GetUnitId()}_speed";
+            if (!_values.ContainsKey(k) || wunit.IsPlayer())
             {
-                var martialData = abi.data.To<DataProps.MartialData>();
-                if (wunit.data.unitData.abilitys.Contains(martialData.data.soleID))
+                var rs = 0;
+
+                foreach (var abi in wunit.data.unitData.GetActionMartial(MartialType.Step))
                 {
-                    var expertLvl = ExpertEvent.GetExpertLvl(martialData.data.soleID, martialData.data.propsInfoBase.grade, martialData.data.propsInfoBase.level);
-                    rs += UnitModifyHelper.GetStepExpertSpeed(expertLvl, martialData.data.propsInfoBase.grade, martialData.data.propsInfoBase.level);
+                    var martialData = abi.data.To<DataProps.MartialData>();
+                    if (wunit.data.unitData.abilitys.Contains(martialData.data.soleID))
+                    {
+                        var expertLvl = ExpertEvent.GetExpertLvl(martialData.data.soleID, martialData.data.propsInfoBase.grade, martialData.data.propsInfoBase.level);
+                        rs += UnitModifyHelper.GetStepExpertSpeed(expertLvl, martialData.data.propsInfoBase.grade, martialData.data.propsInfoBase.level);
+                    }
                 }
+
+                rs += Convert.ToInt32(CustomRefineEvent.GetRefineCustommAdjValue(wunit, AdjTypeEnum.Speed));
+
+                _values[k] = rs;
             }
 
-            rs += Convert.ToInt32(CustomRefineEvent.GetRefineCustommAdjValue(wunit, AdjTypeEnum.Speed));
-
-            return rs;
+            return _values[k];
         }
 
         public static int GetAdjustBlade(WorldUnitBase wunit)
         {
-            var rs = 0;
+            var k = $"{wunit.GetUnitId()}_blade";
+            if (!_values.ContainsKey(k) || wunit.IsPlayer())
+            {
+                var rs = 0;
 
-            rs += Convert.ToInt32(CustomRefineEvent.GetRefineCustommAdjValue(wunit, AdjTypeEnum.BasisBlade));
+                rs += Convert.ToInt32(CustomRefineEvent.GetRefineCustommAdjValue(wunit, AdjTypeEnum.BasisBlade));
 
-            return rs;
+                _values[k] = rs;
+            }
+
+            return _values[k];
         }
 
         public static int GetAdjustEarth(WorldUnitBase wunit)
         {
-            var rs = 0;
+            var k = $"{wunit.GetUnitId()}_earth";
+            if (!_values.ContainsKey(k) || wunit.IsPlayer())
+            {
+                var rs = 0;
 
-            rs += Convert.ToInt32(CustomRefineEvent.GetRefineCustommAdjValue(wunit, AdjTypeEnum.BasisEarth));
+                rs += Convert.ToInt32(CustomRefineEvent.GetRefineCustommAdjValue(wunit, AdjTypeEnum.BasisEarth));
 
-            return rs;
+                _values[k] = rs;
+            }
+
+            return _values[k];
         }
 
         public static int GetAdjustFinger(WorldUnitBase wunit)
         {
-            var rs = 0;
+            var k = $"{wunit.GetUnitId()}_finger";
+            if (!_values.ContainsKey(k) || wunit.IsPlayer())
+            {
+                var rs = 0;
 
-            rs += Convert.ToInt32(CustomRefineEvent.GetRefineCustommAdjValue(wunit, AdjTypeEnum.BasisFinger));
+                rs += Convert.ToInt32(CustomRefineEvent.GetRefineCustommAdjValue(wunit, AdjTypeEnum.BasisFinger));
 
-            return rs;
+                _values[k] = rs;
+            }
+
+            return _values[k];
         }
 
         public static int GetAdjustFire(WorldUnitBase wunit)
         {
-            var rs = 0;
+            var k = $"{wunit.GetUnitId()}_fire";
+            if (!_values.ContainsKey(k) || wunit.IsPlayer())
+            {
+                var rs = 0;
 
-            rs += Convert.ToInt32(CustomRefineEvent.GetRefineCustommAdjValue(wunit, AdjTypeEnum.BasisFire));
+                rs += Convert.ToInt32(CustomRefineEvent.GetRefineCustommAdjValue(wunit, AdjTypeEnum.BasisFire));
 
-            return rs;
+                _values[k] = rs;
+            }
+
+            return _values[k];
         }
 
         public static int GetAdjustFist(WorldUnitBase wunit)
         {
-            var rs = 0;
+            var k = $"{wunit.GetUnitId()}_fist";
+            if (!_values.ContainsKey(k) || wunit.IsPlayer())
+            {
+                var rs = 0;
 
-            rs += Convert.ToInt32(CustomRefineEvent.GetRefineCustommAdjValue(wunit, AdjTypeEnum.BasisFist));
+                rs += Convert.ToInt32(CustomRefineEvent.GetRefineCustommAdjValue(wunit, AdjTypeEnum.BasisFist));
 
-            return rs;
+                _values[k] = rs;
+            }
+
+            return _values[k];
         }
 
         public static int GetAdjustFroze(WorldUnitBase wunit)
         {
-            var rs = 0;
+            var k = $"{wunit.GetUnitId()}_froze";
+            if (!_values.ContainsKey(k) || wunit.IsPlayer())
+            {
+                var rs = 0;
 
-            rs += Convert.ToInt32(CustomRefineEvent.GetRefineCustommAdjValue(wunit, AdjTypeEnum.BasisFroze));
+                rs += Convert.ToInt32(CustomRefineEvent.GetRefineCustommAdjValue(wunit, AdjTypeEnum.BasisFroze));
 
-            return rs;
+                _values[k] = rs;
+            }
+
+            return _values[k];
         }
 
         public static int GetAdjustPalm(WorldUnitBase wunit)
         {
-            var rs = 0;
+            var k = $"{wunit.GetUnitId()}_pallm";
+            if (!_values.ContainsKey(k) || wunit.IsPlayer())
+            {
+                var rs = 0;
 
-            rs += Convert.ToInt32(CustomRefineEvent.GetRefineCustommAdjValue(wunit, AdjTypeEnum.BasisPalm));
+                rs += Convert.ToInt32(CustomRefineEvent.GetRefineCustommAdjValue(wunit, AdjTypeEnum.BasisPalm));
 
-            return rs;
+                _values[k] = rs;
+            }
+
+            return _values[k];
         }
 
         public static int GetAdjustSpear(WorldUnitBase wunit)
         {
-            var rs = 0;
+            var k = $"{wunit.GetUnitId()}_spear";
+            if (!_values.ContainsKey(k) || wunit.IsPlayer())
+            {
+                var rs = 0;
 
-            rs += Convert.ToInt32(CustomRefineEvent.GetRefineCustommAdjValue(wunit, AdjTypeEnum.BasisSpear));
+                rs += Convert.ToInt32(CustomRefineEvent.GetRefineCustommAdjValue(wunit, AdjTypeEnum.BasisSpear));
 
-            return rs;
+                _values[k] = rs;
+            }
+
+            return _values[k];
         }
 
         public static int GetAdjustSword(WorldUnitBase wunit)
         {
-            var rs = 0;
+            var k = $"{wunit.GetUnitId()}_sword";
+            if (!_values.ContainsKey(k) || wunit.IsPlayer())
+            {
+                var rs = 0;
 
-            rs += Convert.ToInt32(CustomRefineEvent.GetRefineCustommAdjValue(wunit, AdjTypeEnum.BasisSword));
+                rs += Convert.ToInt32(CustomRefineEvent.GetRefineCustommAdjValue(wunit, AdjTypeEnum.BasisSword));
 
-            return rs;
+                _values[k] = rs;
+            }
+
+            return _values[k];
         }
 
         public static int GetAdjustThunder(WorldUnitBase wunit)
         {
-            var rs = 0;
+            var k = $"{wunit.GetUnitId()}_thunder";
+            if (!_values.ContainsKey(k) || wunit.IsPlayer())
+            {
+                var rs = 0;
 
-            rs += Convert.ToInt32(CustomRefineEvent.GetRefineCustommAdjValue(wunit, AdjTypeEnum.BasisThunder));
+                rs += Convert.ToInt32(CustomRefineEvent.GetRefineCustommAdjValue(wunit, AdjTypeEnum.BasisThunder));
 
-            return rs;
+                _values[k] = rs;
+            }
+
+            return _values[k];
         }
 
         public static int GetAdjustWind(WorldUnitBase wunit)
         {
-            var rs = 0;
+            var k = $"{wunit.GetUnitId()}_wind";
+            if (!_values.ContainsKey(k) || wunit.IsPlayer())
+            {
+                var rs = 0;
 
-            rs += Convert.ToInt32(CustomRefineEvent.GetRefineCustommAdjValue(wunit, AdjTypeEnum.BasisWind));
+                rs += Convert.ToInt32(CustomRefineEvent.GetRefineCustommAdjValue(wunit, AdjTypeEnum.BasisWind));
 
-            return rs;
+                _values[k] = rs;
+            }
+
+            return _values[k];
         }
 
         public static int GetAdjustWood(WorldUnitBase wunit)
         {
-            var rs = 0;
+            var k = $"{wunit.GetUnitId()}_wood";
+            if (!_values.ContainsKey(k) || wunit.IsPlayer())
+            {
+                var rs = 0;
 
-            rs += Convert.ToInt32(CustomRefineEvent.GetRefineCustommAdjValue(wunit, AdjTypeEnum.BasisWood));
+                rs += Convert.ToInt32(CustomRefineEvent.GetRefineCustommAdjValue(wunit, AdjTypeEnum.BasisWood));
 
-            return rs;
+                _values[k] = rs;
+            }
+
+            return _values[k];
         }
     }
 }
