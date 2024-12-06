@@ -44,7 +44,6 @@ namespace ModLib.Mod
 
         public virtual void OnTimeUpdate1s()
         {
-            ShowException();
             EventHelper.RunMinorEvents();
         }
         #endregion

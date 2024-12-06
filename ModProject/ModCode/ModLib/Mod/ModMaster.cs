@@ -18,14 +18,13 @@ namespace ModLib.Mod
     public abstract partial class ModMaster : MonoBehaviour
     {
         protected static HarmonyLib.Harmony harmony;
+        private bool loadModFlg = true;
+        private bool loadSttFlg = true;
 
+        public static ModMaster ModObj { get; protected set; }
         public abstract string ModName { get; }
         public abstract string ModId { get; }
-        public Exception LastestException { get; protected set; }
-        public string LastestLog { get; protected set; }
-
-        public virtual InGameSettings InGameSettings => InGameSettings.GetSettings<InGameSettings>();
-        public static ModMaster ModObj { get; protected set; }
+        public InGameSettings InGameSettings { get; protected set; }
 
         #region caller
         private Action callTimeUpdate;
@@ -325,6 +324,9 @@ namespace ModLib.Mod
             {
                 DebugHelper.WriteLine("Unload mod.");
 
+                loadModFlg = true;
+                loadSttFlg = true;
+
                 //unregister event
                 #region Timer
                 UnregTimer(timerUpdate);
@@ -474,64 +476,104 @@ namespace ModLib.Mod
             {
                 DebugHelper.WriteLine($"CallEvents<{typeof(T).Name}>({methodName}, -, {isInGame}, {isInBattle})");
                 DebugHelper.WriteLine(ex);
-                LastestException = ex;
-                LastestLog = DebugHelper.LastestLog;
             }
         }
 
-        private void ShowException()
+        public static void ShowException(Exception ex, string log)
         {
-            if (LastestException != null)
-            {
-                var ui = g.ui.OpenUI<UITextInfoLong>(UIType.TextInfoLong);
-                ui.InitData("Exception", LastestException.GetAllInnnerExceptionStr());
-                var btnOpenLog = ui.btnOK.Create();
-                var txtOpenLog = btnOpenLog.GetComponentInChildren<Text>().Align(TextAnchor.MiddleCenter);
-                txtOpenLog.text = "Open log";
-                ui.ptextInfo.fontSize = 14;
+            var ui = g.ui.OpenUI<UITextInfoLong>(UIType.TextInfoLong);
+            ui.InitData("Exception", ex.GetAllInnnerExceptionStr());
+            var btnOpenLog = ui.btnOK.Create();
+            var txtOpenLog = btnOpenLog.GetComponentInChildren<Text>().Align(TextAnchor.MiddleCenter);
+            txtOpenLog.text = "Open log";
+            ui.ptextInfo.fontSize = 14;
 
-                btnOpenLog.onClick.AddListener((UnityAction)(() =>
+            btnOpenLog.onClick.AddListener((UnityAction)(() =>
+            {
+                Process.Start("notepad.exe", log);
+            }));
+        }
+
+        public static void AddGlobalCaches()
+        {
+            //clear
+            CacheHelper.Clear();
+            //load
+            CacheHelper.AddCachableObjects(CacheHelper.LoadGlobalCaches());
+            //add news
+            foreach (var t in CacheHelper.GetCacheTypes(CacheAttribute.CType.Global))
+            {
+                foreach (var attr in t.GetCustomAttributes<CacheAttribute>())
                 {
-                    Process.Start("notepad.exe", LastestLog);
-                }));
+                    if (!CacheHelper.CacheData.ContainsKey(attr.CacheId))
+                    {
+                        DebugHelper.WriteLine($"Load GlobalCache: Type={t.FullName}, Id={attr.CacheId}");
+                        CacheHelper.AddCachableObject(CacheHelper.CreateCachableObject(t, attr));
+                    }
+                }
             }
-            LastestException = null;
+            DebugHelper.Save();
+        }
+
+        public static void AddGameCaches()
+        {
+            //load
+            CacheHelper.AddCachableObjects(CacheHelper.LoadGameCaches());
+            //add news
+            foreach (var t in CacheHelper.GetCacheTypes(CacheAttribute.CType.Local))
+            {
+                foreach (var attr in t.GetCustomAttributes<CacheAttribute>())
+                {
+                    if (!CacheHelper.CacheData.ContainsKey(attr.CacheId))
+                    {
+                        DebugHelper.WriteLine($"Load GameCache: Type={t.FullName}, Id={attr.CacheId}");
+                        CacheHelper.AddCachableObject(CacheHelper.CreateCachableObject(t, attr));
+                    }
+                }
+            }
+            DebugHelper.Save();
+        }
+
+        public static void RemoveUnuseGlobalCaches()
+        {
+            foreach (var c in CacheHelper.GetGlobalCaches())
+            {
+                if (c.WorkOn == CacheAttribute.WType.Global)
+                {
+                    CacheHelper.RemoveCachableObject(c);
+                }
+            }
         }
     }
 
     public abstract class ModMaster<T> : ModMaster where T : InGameSettings
     {
-        public override InGameSettings InGameSettings => ModLib.Object.InGameSettings.GetSettings<T>();
         public T InGameCustomSettings => (T)InGameSettings;
 
-        public override void OnLoadGameBefore()
+        public override void OnLoadGameSettings()
         {
-            base.OnLoadGameBefore();
-            var customSettings = this.GetType().GetCustomAttribute<InGameCustomSettingsAttribute>();
-            if (customSettings != null)
+            base.OnLoadGameSettings();
+            DebugHelper.WriteLine("Load ingame configs.");
+            InGameSettings = SttHelper.Load<T>();
+            if (InGameCustomSettings != null)
             {
-                if (InGameCustomSettings.CustomConfigVersion != customSettings.ConfCustomConfigVersion)
+                var customSettings = this.GetType().GetCustomAttribute<InGameCustomSettingsAttribute>();
+                if (customSettings != null &&
+                    (InGameCustomSettings.CustomConfigVersion != customSettings.ConfCustomConfigVersion ||
+                    InGameCustomSettings.CustomConfigFile != customSettings.ConfCustomConfigFile))
                 {
+                    var oldVersion = InGameCustomSettings.CustomConfigVersion;
                     if (!File.Exists(ConfHelper.GetConfFilePath(customSettings.ConfCustomConfigFile)))
                     {
-                        //throw new Exception($"CustomConfigFile ({customSettings.ConfCustomConfigFile}) was not found!");
-                        return;
+                        throw new Exception($"New-CustomConfigFile ({customSettings.ConfCustomConfigFile}) was not found!");
                     }
-                    var cusStt = JsonConvert.DeserializeObject<T>(ConfHelper.ReadConfData(customSettings.ConfCustomConfigFile));
-                    cusStt.IsOldVersion = cusStt.IsOldVersion ||
-                        (GameHelper.GetGameMonth() > 1 && (
-                            !InGameCustomSettings.CustomConfigVersion.HasValue ||
-                            InGameCustomSettings.CustomConfigVersion < ModLibConst.OLD_VERSION_NEED_UPDATE
-                        ));
-                    cusStt.CustomConfigFile = customSettings.ConfCustomConfigFile;
-                    cusStt.CustomConfigVersion = customSettings.ConfCustomConfigVersion;
-                    foreach (var prop in typeof(T).GetProperties(BindingFlags.Public | BindingFlags.Instance).Where(x => x.GetCustomAttribute<InheritanceAttribute>() != null))
-                    {
-                        prop.SetValue(cusStt, prop?.GetValue(InGameCustomSettings), null);
-                    }
-                    ModLib.Object.InGameSettings.SetSettings(cusStt);
+                    SttHelper.DeleteOldStt();
+                    InGameSettings = SttHelper.Load<T>();
+                    if (oldVersion < ModLibConst.OLD_VERSION_NEED_UPDATE)
+                        InGameSettings.IsOldVersion = true;
                 }
             }
+            DebugHelper.Save();
         }
 
         public override void OnSave(ETypeData e)

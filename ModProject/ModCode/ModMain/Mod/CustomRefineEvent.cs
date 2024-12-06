@@ -199,7 +199,7 @@ namespace MOD_nE7UL2.Mod
             }
         }
 
-        public static CustomRefine GetCustomAdjType(DataProps.PropsData props, int index, AdjTypeEnum condition = null)
+        public static CustomRefine GetCustomAdjType(DataProps.PropsData props, int index)
         {
             if (!IsRefinableItem(props))
                 return null;
@@ -210,9 +210,22 @@ namespace MOD_nE7UL2.Mod
             if (!x.CustomRefine.ContainsKey(key))
                 x.CustomRefine.Add(key, new CustomRefine(props, index));
             var rs = x.CustomRefine[key];
-            if (condition != null && rs.AdjType != condition)
-                return null;
             return rs;
+        }
+
+        public static List<CustomRefine> GetCustomAdjTypes(DataProps.PropsData props, AdjTypeEnum condition)
+        {
+            var list = new List<CustomRefine>();
+            var x = EventHelper.GetEvent<CustomRefineEvent>(ModConst.CUSTOM_REFINE_EVENT);
+            for (int i = 1; i <= 5; i++)
+            {
+                var key = $"{props.soleID}_{i}";
+                if (x.CustomRefine.ContainsKey(key) && x.CustomRefine[key].AdjType == condition)
+                {
+                    list.Add(x.CustomRefine[key]);
+                }
+            }
+            return list;
         }
 
         public static double GetRefineCustommAdjValue(WorldUnitBase wunit, AdjTypeEnum adjType)
@@ -223,21 +236,9 @@ namespace MOD_nE7UL2.Mod
             foreach (var props in GetRefinableItems(wunit))
             {
                 var refineLvl = GetRefineLvl(props);
-                if (props.propsItem.IsArtifact() != null)
+                foreach (var a in GetCustomAdjTypes(props, adjType))
                 {
-                    rs += GetCustomAdjType(props, 1, adjType)?.GetRefineCustommAdjValue(wunit, props, refineLvl) ?? 0;
-                    rs += GetCustomAdjType(props, 2, adjType)?.GetRefineCustommAdjValue(wunit, props, refineLvl) ?? 0;
-                    rs += GetCustomAdjType(props, 3, adjType)?.GetRefineCustommAdjValue(wunit, props, refineLvl) ?? 0;
-                }
-                else if (props.propsItem.IsRing() != null)
-                {
-                    rs += GetCustomAdjType(props, 1, adjType)?.GetRefineCustommAdjValue(wunit, props, refineLvl) ?? 0;
-                    rs += GetCustomAdjType(props, 2, adjType)?.GetRefineCustommAdjValue(wunit, props, refineLvl) ?? 0;
-                }
-                else if (props.propsItem.IsOutfit() != null)
-                {
-                    rs += GetCustomAdjType(props, 1, adjType)?.GetRefineCustommAdjValue(wunit, props, refineLvl) ?? 0;
-                    rs += GetCustomAdjType(props, 2, adjType)?.GetRefineCustommAdjValue(wunit, props, refineLvl) ?? 0;
+                    rs += a.GetRefineCustommAdjValue(wunit, props, refineLvl);
                 }
             }
             return rs;

@@ -1,27 +1,28 @@
 ﻿using ModLib.Converter;
 using ModLib.Mod;
 using ModLib.Object;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Reflection;
 
 public static class CacheHelper
 {
-    public static readonly Newtonsoft.Json.JsonSerializerSettings CACHE_JSON_SETTINGS = new Newtonsoft.Json.JsonSerializerSettings
+    public static readonly JsonSerializerSettings JSON_SETTINGS = new JsonSerializerSettings
     {
-        Formatting = Newtonsoft.Json.Formatting.Indented,
-        TypeNameHandling = Newtonsoft.Json.TypeNameHandling.All,
-        PreserveReferencesHandling = Newtonsoft.Json.PreserveReferencesHandling.Objects,
-        Converters = new List<Newtonsoft.Json.JsonConverter>() { new EnumObjectConverter() },
+        Formatting = Formatting.Indented,
+        TypeNameHandling = TypeNameHandling.All,
+        PreserveReferencesHandling = PreserveReferencesHandling.Objects,
+        Converters = new List<JsonConverter>() { new EnumObjectConverter() },
         Error = (sender, args) =>
         {
             args.ErrorContext.Handled = true;
         },
     };
 
-    private static ModLib.Object.ModData GlobalCacheData;
-    private static ModLib.Object.ModData GameCacheData;
+    public static Dictionary<string, CachableObject> CacheData { get; } = new Dictionary<string, CachableObject>();
 
     public static string GetGameCacheFileName()
     {
@@ -52,111 +53,112 @@ public static class CacheHelper
         return Path.Combine(GetCacheFolderName(), GetGlobalCacheFileName());
     }
 
-    public static T GetData<T>(string key) where T : CachableObject
+    public static void AddCachableObject(CachableObject item)
     {
-        return GetDatas<T>().FirstOrDefault(x => x.CacheId == key);
+        CacheData.Add(item.CacheId, item);
     }
 
-    public static CachableObject GetData(Type dataType, string key)
+    public static void AddCachableObjects(List<CachableObject> items)
     {
-        return GetDatas(dataType).FirstOrDefault(x => x.CacheId == key);
+        foreach (var item in items)
+            AddCachableObject(item);
     }
 
-    public static IList<T> GetDatas<T>() where T : CachableObject
+    public static void RemoveCachableObject(CachableObject item)
     {
-        return (IList<T>)GetDatas(typeof(T));
+        CacheData.Remove(item.CacheId);
     }
 
-    public static List<CachableObject> GetDatas(Type dataType)
+    public static List<CachableObject> GetGlobalCaches()
     {
-        var rs = GetGlobalCache().GetDatas(dataType);
-        if (IsGameCacheLoaded())
-        {
-            rs.AddRange(GetGameCache().GetDatas(dataType));
-        }
-        return rs;
+        return GetAllCachableObjects().Where(x => x.CacheType == CacheAttribute.CType.Global).ToList();
     }
 
-    public static ModLib.Object.ModData GetGlobalCache()
+    public static List<CachableObject> GetGameCaches()
     {
-        if (!IsGlobalCacheLoaded())
-        {
-            var cacheFolderPath = GetCacheFolderName();
-            var cacheFilePath = GetGlobalCacheFilePath();
-            Directory.CreateDirectory(cacheFolderPath);
-            if (File.Exists(cacheFilePath))
-            {
-                DebugHelper.WriteLine($"Load: GlobalCache: File={cacheFilePath}");
-                GlobalCacheData = Newtonsoft.Json.JsonConvert.DeserializeObject<ModLib.Object.ModData>(File.ReadAllText(cacheFilePath), CACHE_JSON_SETTINGS);
-                GlobalCacheData.Init(CacheAttribute.CType.Global);
-            }
-            else
-            {
-                GlobalCacheData = new ModLib.Object.ModData(CacheAttribute.CType.Global);
-            }
-        }
-        return GlobalCacheData;
+        return GetAllCachableObjects().Where(x => x.CacheType == CacheAttribute.CType.Local).ToList();
     }
 
-    public static ModLib.Object.ModData GetGameCache()
+    public static T GetCachableObject<T>(string key) where T : CachableObject
     {
-        if (!GameHelper.IsInGame())
-        {
-            ClearGameCache();
-            return GameCacheData;
-        }
-        if (!IsGameCacheLoaded())
-        {
-            var cacheFolderPath = GetCacheFolderName();
-            var cacheFilePath = GetGameCacheFilePath();
-            Directory.CreateDirectory(cacheFolderPath);
-            if (File.Exists(cacheFilePath))
-            {
-                DebugHelper.WriteLine($"Load: GameCache: File={cacheFilePath}");
-                GameCacheData = Newtonsoft.Json.JsonConvert.DeserializeObject<ModLib.Object.ModData>(File.ReadAllText(cacheFilePath), CACHE_JSON_SETTINGS);
-                GameCacheData.Init(CacheAttribute.CType.Local);
-            }
-            else
-            {
-                GameCacheData = new ModLib.Object.ModData(CacheAttribute.CType.Local);
-            }
-        }
-        return GameCacheData;
+        return GetAllCachableObjects<T>().FirstOrDefault(x => x.CacheId == key);
+    }
+
+    public static CachableObject GetCachableObject(Type t, string key)
+    {
+        return GetAllCachableObjects(t).FirstOrDefault(x => x.CacheId == key);
+    }
+
+    public static List<T> GetAllCachableObjects<T>() where T : CachableObject
+    {
+        return GetAllCachableObjects().Where(x => typeof(T).IsAssignableFrom(x.GetType())).Cast<T>().ToList();
+    }
+
+    public static List<CachableObject> GetAllCachableObjects(Type t)
+    {
+        return GetAllCachableObjects().Where(x => t.IsAssignableFrom(x.GetType())).ToList();
+    }
+
+    public static List<CachableObject> GetAllCachableObjects()
+    {
+        return CacheData.Values.ToList();
+    }
+
+    public static List<CachableObject> LoadGlobalCaches()
+    {
+        if (!File.Exists(GetGlobalCacheFilePath()))
+            return new List<CachableObject>();
+        return (List<CachableObject>)JsonConvert.DeserializeObject(GetGlobalCacheFilePath(), JSON_SETTINGS);
+    }
+
+    public static List<CachableObject> LoadGameCaches()
+    {
+        if (!File.Exists(GetGameCacheFilePath()))
+            return new List<CachableObject>();
+        return (List<CachableObject>)JsonConvert.DeserializeObject(GetGameCacheFilePath(), JSON_SETTINGS);
+    }
+
+    public static void SaveGlobalCaches()
+    {
+        File.WriteAllText(GetGlobalCacheFilePath(), JsonConvert.SerializeObject(GetGlobalCaches(), JSON_SETTINGS));
+    }
+
+    public static void SaveGameCaches()
+    {
+        File.WriteAllText(GetGameCacheFilePath(), JsonConvert.SerializeObject(GetGameCaches(), JSON_SETTINGS));
     }
 
     public static void Save()
     {
-        if (IsGlobalCacheLoaded())
-        {
-            GlobalCacheData.SaveTime = $"{DateTime.Now:yyyy/MM/dd HH:mm:ss.fff} ({(g.world.run.roundMonth / 12) + 1:0000}/{(g.world.run.roundMonth % 12) + 1:00}/{g.world.run.roundDay + 1:00})";
-            File.WriteAllText(GetGlobalCacheFilePath(), Newtonsoft.Json.JsonConvert.SerializeObject(GlobalCacheData, CACHE_JSON_SETTINGS));
-        }
-        if (IsGameCacheLoaded())
-        {
-            GameCacheData.SaveTime = $"{DateTime.Now:yyyy/MM/dd HH:mm:ss.fff} ({(g.world.run.roundMonth / 12) + 1:0000}/{(g.world.run.roundMonth % 12) + 1:00}/{g.world.run.roundDay + 1:00})";
-            File.WriteAllText(GetGameCacheFilePath(), Newtonsoft.Json.JsonConvert.SerializeObject(GameCacheData, CACHE_JSON_SETTINGS));
-        }
+        SaveGlobalCaches();
+        if (GameHelper.IsInGame())
+            SaveGameCaches();
     }
 
-    public static void ClearGlobalCache()
+    public static void Clear()
     {
-        GlobalCacheData = null;
+        CacheData.Clear();
     }
 
-    public static void ClearGameCache()
+    public static List<Type> GetCacheTypes(CacheAttribute.CType ctype)
     {
-        GameCacheData = null;
+        var rs = new List<Type>();
+        GetCacheTypes(GameHelper.GetModMasterAssembly(), ctype);
+        GetCacheTypes(GameHelper.GetModMainAssembly(), ctype);
+        return rs;
     }
 
-    public static bool IsGameCacheLoaded()
+    public static List<Type> GetCacheTypes(Assembly ass, CacheAttribute.CType ctype)
     {
-        if (!GameHelper.IsInGame() || GameHelper.IsModScreen())
-            ClearGameCache();
-        return GameCacheData != null;
+        return ass.GetTypes().Where(x => x.IsClass && x.IsSubclassOf(typeof(CachableObject)) && x.GetCustomAttributes<CacheAttribute>().Any(y => y.CacheType == ctype)).ToList();
     }
 
-    public static bool IsGlobalCacheLoaded()
+    public static CachableObject CreateCachableObject(Type t, CacheAttribute attr)
     {
-        return GlobalCacheData != null;
+        var e = (CachableObject)Activator.CreateInstance(t);
+        e.CacheId = attr.CacheId;
+        e.CacheType = attr.CacheType;
+        e.WorkOn = attr.WorkOn;
+        return e;
     }
 }

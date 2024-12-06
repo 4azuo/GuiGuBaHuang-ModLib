@@ -1,13 +1,15 @@
 ﻿using EGameTypeData;
 using ModLib.Object;
 using UnityEngine;
+using System.Reflection;
+using System.Linq;
+using static CacheAttribute;
+using System;
 
 namespace ModLib.Mod
 {
     public abstract partial class ModMaster : MonoBehaviour
     {
-        private bool initFlg = true;
-
         #region ModLib - Handlers
         //public virtual void _OnTownAuctionStart(ETypeData e)
         //{
@@ -56,7 +58,7 @@ namespace ModLib.Mod
 
         public virtual void _OnSave(ETypeData e)
         {
-            if (GameHelper.IsInGame())
+            if ((InGameSettings?.LoadGameAfter).Is(true) == 1)
             {
                 if (InGameSettings.CurMonth != g.game.world.run.roundMonth)
                 {
@@ -146,22 +148,25 @@ namespace ModLib.Mod
         {
             DebugHelper.WriteLine(e.uiType.uiName);
 
-            if (initFlg)
+            if (loadModFlg)
             {
                 CallEvents("OnInitConf");
                 CallEvents("OnInitEObj");
                 DebugHelper.Save();
-                initFlg = false;
+                loadModFlg = false;
             }
 
             if (e.uiType.uiName == UIType.MapMain.uiName)
             {
-                CacheHelper.ClearGlobalCache();
-                CacheHelper.ClearGameCache();
+                if (loadSttFlg)
+                {
+                    CallEvents("OnLoadGameSettings");
+                    CallEvents("OnLoadGameCaches");
+                    loadSttFlg = false;
+                }
 
                 if (InGameSettings.LoadNewGame)
                 {
-                    InGameSettings.CurMonth = g.game.world.run.roundMonth;
                     CallEvents("OnLoadNewGame");
                     InGameSettings.LoadNewGame = false;
                 }
@@ -202,8 +207,6 @@ namespace ModLib.Mod
             else
             if (e.uiType.uiName == UIType.Login.uiName)
             {
-                CacheHelper.ClearGlobalCache();
-                CacheHelper.ClearGameCache();
                 CallEvents("OnLoadGlobal");
             }
 
@@ -308,6 +311,7 @@ namespace ModLib.Mod
             //save log
             DebugHelper.WriteLine($"Save: {GameHelper.GetGameYear()}年{GameHelper.GetGameMonth()}月{GameHelper.GetGameDay()}日");
             EventHelper.RunMinorEvents(e);
+            InGameSettings.Save();
             CacheHelper.Save();
             DebugHelper.Save();
         }

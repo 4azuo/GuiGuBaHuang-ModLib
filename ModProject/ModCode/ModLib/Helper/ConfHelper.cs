@@ -5,7 +5,7 @@ using System.IO;
 using System.Linq;
 using System.Reflection;
 
-public class ConfHelper
+public static class ConfHelper
 {
     private const string CONF_FOLDER = "ModConf";
     public static string GetConfFilePath(string fileName)
