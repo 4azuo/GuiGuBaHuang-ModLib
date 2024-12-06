@@ -57,6 +57,7 @@ namespace MOD_nE7UL2.Mod
             }
         }
 
+        [EventCondition]
         public override void OnOpenUIEnd(OpenUIEnd e)
         {
             base.OnOpenUIEnd(e);

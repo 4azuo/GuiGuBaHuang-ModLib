@@ -21,30 +21,17 @@ namespace MOD_nE7UL2.Mod
         public Dictionary<string, long> RefineExp { get; set; } = new Dictionary<string, long>();
         public Dictionary<string, CustomRefine> CustomRefine { get; set; } = new Dictionary<string, CustomRefine>();
 
-        public static Dictionary<string, List<DataProps.PropsData>> RefinableItems { get; } = new Dictionary<string, List<DataProps.PropsData>>();
-
         public override void OnMonthlyForEachWUnit(WorldUnitBase wunit)
         {
             base.OnMonthlyForEachWUnit(wunit);
-            if (wunit.IsPlayer())
-                return;
-            foreach (var item in GetRefinableItems(wunit))
+            var location = wunit.data.unitData.GetPoint();
+            var town = g.world.build.GetBuild<MapBuildTown>(location);
+            if (!wunit.IsPlayer() && (town?.buildTownData?.isMainTown).Is(false) == 1 && wunit.GetUnitMoney() > MapBuildPropertyEvent.GetTax(wunit) * 10)
             {
-                NpcRefine(wunit, item);
-            }
-        }
-
-        [ErrorIgnore]
-        [EventCondition]
-        public override void OnTimeUpdate1s()
-        {
-            base.OnTimeUpdate1s();
-
-            RefinableItems.Clear();
-            foreach (var wunit in g.world.playerUnit.GetUnitsAround())
-            {
-                var wunitId = wunit.GetUnitId();
-                RefinableItems.Add(wunitId, GetRefinableItems(wunit));
+                foreach (var item in GetRefinableItems(wunit))
+                {
+                    NpcRefine(wunit, item);
+                }
             }
         }
 
@@ -60,6 +47,7 @@ namespace MOD_nE7UL2.Mod
             wunit.AddUnitMoney(-spend);
         }
 
+        [EventCondition]
         public override void OnOpenUIEnd(OpenUIEnd e)
         {
             base.OnOpenUIEnd(e);
@@ -229,11 +217,10 @@ namespace MOD_nE7UL2.Mod
 
         public static double GetRefineCustommAdjValue(WorldUnitBase wunit, AdjTypeEnum adjType)
         {
-            var wunitId = wunit.GetUnitId();
-            if (wunit == null || adjType == null || !RefinableItems.ContainsKey(wunitId))
+            if (wunit == null || adjType == null)
                 return 0d;
             var rs = 0d;
-            foreach (var props in RefinableItems[wunitId])
+            foreach (var props in GetRefinableItems(wunit))
             {
                 var refineLvl = GetRefineLvl(props);
                 if (props.propsItem.IsArtifact() != null)

@@ -514,6 +514,11 @@ public static class UnitHelper
         }
     }
 
+    public static int GetPositionId(this WorldUnitBase wunit)
+    {
+        return wunit.data.unitData.pointX * wunit.data.unitData.pointY;
+    }
+
     public static bool IsHuman(this UnitCtrlBase cunit)
     {
         return cunit?.data?.TryCast<UnitDataHuman>() != null;

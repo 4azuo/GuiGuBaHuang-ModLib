@@ -33,12 +33,23 @@ namespace MOD_nE7UL2.Mod
         public override void OnOpenUIEnd(OpenUIEnd e)
         {
             base.OnOpenUIEnd(e);
+
+            var smConfigs = EventHelper.GetEvent<SMLocalConfigsEvent>(ModConst.SM_LOCAL_CONFIGS_EVENT);
+
             if (e.uiType.uiName == UIType.MapMain.uiName)
             {
                 _nullify.Clear();
                 _monstStrongerAdditionalFlg.Clear();
                 _castingSkill.Clear();
                 _castingSkillType.Clear();
+            }
+            else
+            if (e.uiType.uiName == UIType.BattleInfo.uiName)
+            {
+                var uiBattleInfo = g.ui.GetUI<UIBattleInfo>(UIType.BattleInfo);
+                uiBattleInfo.uiInfo.goMonstCount1.SetActive(false);
+                uiBattleInfo.uiInfo.goMonstCount2.SetActive(false);
+                uiBattleInfo.uiMap.goGroupRoot.SetActive(!smConfigs.Configs.HideBattleMap);
             }
         }
 

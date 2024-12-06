@@ -53,6 +53,10 @@ namespace MOD_nE7UL2.Mod
         private static Text uiPropInfo_textRefineAdj2;
         private static Text uiPropInfo_textRefineAdj3;
         private static Text uiPropInfo_textRefineAdj4;
+        private static UITown uiTown;
+        private static Button uiTown_tax;
+        private static UISchool uiSchool;
+        private static Button uiSchool_tax;
 
         public static void OnUIOpen(OpenUIEnd e)
         {
@@ -85,9 +89,9 @@ namespace MOD_nE7UL2.Mod
             {
                 using (var a = new UISample())
                 {
-                    var ui = g.ui.GetUI<UITown>(UIType.Town);
-                    var x = a.sampleUI.btnKeyOK.Create(ui.canvas.transform).AddSize(200f, 20f).Pos(ui.btnClose.gameObject, -2f, 0f).Setup($"Tax: {MapBuildPropertyEvent.GetTax(g.world.playerUnit)} Spirit Stones");
-                    x.enabled = false;
+                    uiTown = g.ui.GetUI<UITown>(UIType.Town);
+                    uiTown_tax = a.sampleUI.btnKeyOK.Create(uiTown.canvas.transform).AddSize(200f, 20f).Setup($"Tax: {MapBuildPropertyEvent.GetTax(g.world.playerUnit)} Spirit Stones");
+                    uiTown_tax.enabled = false;
                 }
             }
             else
@@ -95,9 +99,9 @@ namespace MOD_nE7UL2.Mod
             {
                 using (var a = new UISample())
                 {
-                    var ui = g.ui.GetUI<UISchool>(UIType.School);
-                    var x = a.sampleUI.btnKeyOK.Create(ui.canvas.transform).AddSize(200f, 20f).Pos(ui.btnClose.gameObject, -2f, 0f).Setup($"Tax: {MapBuildPropertyEvent.GetTax(g.world.playerUnit)} Spirit Stones");
-                    x.enabled = false;
+                    uiSchool = g.ui.GetUI<UISchool>(UIType.School);
+                    uiSchool_tax = a.sampleUI.btnKeyOK.Create(uiSchool.canvas.transform).AddSize(200f, 20f).Setup($"Tax: {MapBuildPropertyEvent.GetTax(g.world.playerUnit)} Spirit Stones");
+                    uiSchool_tax.enabled = false;
                 }
             }
             else
@@ -106,14 +110,6 @@ namespace MOD_nE7UL2.Mod
                 var uiMapMain = g.ui.GetUI<UIMapMain>(UIType.MapMain);
                 uiMapMain.playerInfo.textPiscesPendantCount.gameObject.SetActive(false);
                 uiMapMain.playerInfo.goAddLuckRoot.SetActive(false);
-            }
-            else
-            if (e.uiType.uiName == UIType.BattleInfo.uiName)
-            {
-                var uiBattleInfo = g.ui.GetUI<UIBattleInfo>(UIType.BattleInfo);
-                uiBattleInfo.uiInfo.goMonstCount1.SetActive(false);
-                uiBattleInfo.uiInfo.goMonstCount2.SetActive(false);
-                uiBattleInfo.uiMap.goGroupRoot.SetActive(!smConfigs.Configs.HideBattleMap);
             }
             else
             if (e.uiType.uiName == UIType.NPCInfo.uiName)
@@ -344,10 +340,22 @@ namespace MOD_nE7UL2.Mod
 
         public static void OnUIUpdate()
         {
+            var uiTown = g.ui.GetUI<UITown>(UIType.Town);
+            var uiSchool = g.ui.GetUI<UISchool>(UIType.School);
             var uiNPCInfo = g.ui.GetUI<UINPCInfo>(UIType.NPCInfo);
             var uiPlayerInfo = g.ui.GetUI<UIPlayerInfo>(UIType.PlayerInfo);
             var uiArtifactInfo = g.ui.GetUI<UIArtifactInfo>(UIType.ArtifactInfo);
             var uiPropInfo = g.ui.GetUI<UIPropInfo>(UIType.PropInfo);
+
+            if ((uiTown?.gameObject?.active).Is(true) == 1)
+            {
+                uiTown_tax.Pos(uiTown.btnClose.gameObject, -2f, 0f);
+            }
+            
+            if ((uiSchool?.gameObject?.active).Is(true) == 1)
+            {
+                uiSchool_tax.Pos(uiSchool.btnClose.gameObject, -2f, 0f);
+            }
 
             if ((uiPropInfo?.gameObject?.active).Is(true) == 1)
             {
@@ -367,7 +375,7 @@ namespace MOD_nE7UL2.Mod
                     uiPropInfo_textRefineAdj4.Pos(uiPropInfo.textName.gameObject, +0.05f, 0.2f);
                 }
             }
-            else
+            
             if ((uiArtifactInfo?.gameObject?.active).Is(true) == 1)
             {
                 uiArtifactInfo_textBasicTitle.Pos(uiArtifactInfo.textGrade_En.gameObject, 0f, -0.2f);
@@ -384,7 +392,7 @@ namespace MOD_nE7UL2.Mod
                 uiArtifactInfo_textRefineAdj4.Pos(uiArtifactInfo.textGrade_En.gameObject, +0.05f, -1.95f);
                 uiArtifactInfo_textRefineAdj5.Pos(uiArtifactInfo.textGrade_En.gameObject, +0.05f, -2.1f);
             }
-            else
+            
             if ((uiNPCInfo?.gameObject?.active).Is(true) == 1)
             {
                 uiNPCInfo_textMartialAdjHp.text = $"+Hp: {UnitModifyHelper.GetMartialAdjHp(uiNPCInfo.unit)}";
@@ -393,7 +401,7 @@ namespace MOD_nE7UL2.Mod
                 uiNPCInfoSkill_textAbiPointAdjHp.text = $"+Hp: {UnitModifyHelper.GetAbiPointAdjHp(uiNPCInfo.unit)}";
                 uiNPCInfoSkill_textAbiPointAdjMp.text = $"+Mp: {UnitModifyHelper.GetAbiPointAdjMp(uiNPCInfo.unit)}";
             }
-            else
+            
             if ((uiPlayerInfo?.gameObject?.active).Is(true) == 1)
             {
                 uiPlayerInfo_textMartialAdjHp.text = $"+Hp: {UnitModifyHelper.GetMartialAdjHp(uiPlayerInfo.unit)}";
@@ -412,6 +420,7 @@ namespace MOD_nE7UL2.Mod
             }
         }
 
+        [EventCondition]
         public override void OnOpenUIEnd(OpenUIEnd e)
         {
             base.OnOpenUIEnd(e);
@@ -420,9 +429,9 @@ namespace MOD_nE7UL2.Mod
 
         [ErrorIgnore]
         [EventCondition]
-        public override void OnTimeUpdate200ms()
+        public override void OnTimeUpdate()
         {
-            base.OnTimeUpdate200ms();
+            base.OnTimeUpdate();
             OnUIUpdate();
         }
 

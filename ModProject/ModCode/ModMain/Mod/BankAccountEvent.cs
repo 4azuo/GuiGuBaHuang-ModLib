@@ -15,6 +15,7 @@ namespace MOD_nE7UL2.Mod
 
         public IList<string> RegisterdTown { get; set; } = new List<string>();
 
+        [EventCondition]
         public override void OnOpenUIEnd(OpenUIEnd e)
         {
             base.OnOpenUIEnd(e);
