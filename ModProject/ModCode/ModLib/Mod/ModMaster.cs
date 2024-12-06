@@ -12,6 +12,7 @@ using UnhollowerBaseLib;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.UI;
+using static UI_EditorTest5Base;
 
 namespace ModLib.Mod
 {
@@ -499,15 +500,18 @@ namespace ModLib.Mod
             //clear
             CacheHelper.Clear();
             //load
-            CacheHelper.AddCachableObjects(CacheHelper.LoadGlobalCaches());
+            var caches = CacheHelper.LoadGlobalCaches();
+            CacheHelper.AddCachableObjects(caches);
+            foreach (var c in caches)
+                DebugHelper.WriteLine($"Loaded Cache: Type={c.GetType().FullName}, Id={c.CacheId}");
             //add news
             foreach (var t in CacheHelper.GetCacheTypes(CacheAttribute.CType.Global))
             {
-                foreach (var attr in t.GetCustomAttributes<CacheAttribute>())
+                foreach (var attr in t.GetCustomAttributes<CacheAttribute>().Where(x => x.CacheType == CacheAttribute.CType.Global))
                 {
                     if (!CacheHelper.CacheData.ContainsKey(attr.CacheId))
                     {
-                        DebugHelper.WriteLine($"Load GlobalCache: Type={t.FullName}, Id={attr.CacheId}");
+                        DebugHelper.WriteLine($"Create GlobalCache: Type={t.FullName}, Id={attr.CacheId}");
                         CacheHelper.AddCachableObject(CacheHelper.CreateCachableObject(t, attr));
                     }
                 }
@@ -518,15 +522,18 @@ namespace ModLib.Mod
         public static void AddGameCaches()
         {
             //load
-            CacheHelper.AddCachableObjects(CacheHelper.LoadGameCaches());
+            var caches = CacheHelper.LoadGameCaches();
+            CacheHelper.AddCachableObjects(caches);
+            foreach (var c in caches)
+                DebugHelper.WriteLine($"Loaded Cache: Type={c.GetType().FullName}, Id={c.CacheId}");
             //add news
             foreach (var t in CacheHelper.GetCacheTypes(CacheAttribute.CType.Local))
             {
-                foreach (var attr in t.GetCustomAttributes<CacheAttribute>())
+                foreach (var attr in t.GetCustomAttributes<CacheAttribute>().Where(x => x.CacheType == CacheAttribute.CType.Local))
                 {
                     if (!CacheHelper.CacheData.ContainsKey(attr.CacheId))
                     {
-                        DebugHelper.WriteLine($"Load GameCache: Type={t.FullName}, Id={attr.CacheId}");
+                        DebugHelper.WriteLine($"Create GameCache: Type={t.FullName}, Id={attr.CacheId}");
                         CacheHelper.AddCachableObject(CacheHelper.CreateCachableObject(t, attr));
                     }
                 }
@@ -540,6 +547,7 @@ namespace ModLib.Mod
             {
                 if (c.WorkOn == CacheAttribute.WType.Global)
                 {
+                    DebugHelper.WriteLine($"Unload Cache: Type={c.GetType().FullName}, Id={c.CacheId}");
                     CacheHelper.RemoveCachableObject(c);
                 }
             }

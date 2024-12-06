@@ -4,7 +4,6 @@ using ModLib.Enum;
 using ModLib.Mod;
 using Newtonsoft.Json;
 using System;
-using static DataMap;
 using static MOD_nE7UL2.Object.InGameStts;
 
 namespace MOD_nE7UL2.Mod
