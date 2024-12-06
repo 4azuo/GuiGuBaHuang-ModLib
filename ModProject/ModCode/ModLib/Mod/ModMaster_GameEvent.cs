@@ -207,6 +207,7 @@ namespace ModLib.Mod
             else
             if (e.uiType.uiName == UIType.Login.uiName)
             {
+                AddGlobalCaches();
                 CallEvents("OnLoadGlobal");
             }
 

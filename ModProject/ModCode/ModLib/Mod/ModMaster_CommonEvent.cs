@@ -1,5 +1,4 @@
-﻿using System.Reflection;
-using UnityEngine;
+﻿using UnityEngine;
 
 namespace ModLib.Mod
 {
@@ -10,7 +9,6 @@ namespace ModLib.Mod
         [Trace]
         public virtual void OnInitMod()
         {
-            AddGlobalCaches();
         }
 
         //順番２

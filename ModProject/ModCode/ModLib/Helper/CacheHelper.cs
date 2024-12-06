@@ -143,8 +143,8 @@ public static class CacheHelper
     public static List<Type> GetCacheTypes(CacheAttribute.CType ctype)
     {
         var rs = new List<Type>();
-        GetCacheTypes(GameHelper.GetModMasterAssembly(), ctype);
-        GetCacheTypes(GameHelper.GetModMainAssembly(), ctype);
+        rs.AddRange(GetCacheTypes(GameHelper.GetModMasterAssembly(), ctype));
+        rs.AddRange(GetCacheTypes(GameHelper.GetModMainAssembly(), ctype));
         return rs;
     }
 
