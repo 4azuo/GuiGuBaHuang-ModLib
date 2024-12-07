@@ -16,8 +16,6 @@ namespace MOD_nE7UL2.Mod
     [Cache(ModConst.BATTLE_MODIFY_EVENT)]
     public class BattleModifyEvent : ModEvent
     {
-        public override int OrderIndex => 9000;
-
         public const int BASIS_ON_DMG = 1000;
         public const int BASIS_ON_DEF = 400;
         public const float BASIS_ON_BLOCK_RATIO = 10000f;

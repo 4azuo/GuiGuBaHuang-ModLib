@@ -9,11 +9,6 @@ namespace ModLib.Mod
     public abstract class ModEvent : CachableObject
     {
         [JsonIgnore]
-        public virtual int OrderIndex
-        {
-            get;
-        } = -1;
-        [JsonIgnore]
         public static ModEvent LastestObject { get; private set; }
 
         public ModEvent()

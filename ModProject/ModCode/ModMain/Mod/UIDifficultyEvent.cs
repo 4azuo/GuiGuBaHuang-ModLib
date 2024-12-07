@@ -1,10 +1,11 @@
 ﻿using EGameTypeData;
+using MOD_nE7UL2.Const;
 using ModLib.Mod;
 using UnityEngine;
 
 namespace MOD_nE7UL2.Mod
 {
-    [Cache("UIDifficultyEvent", CacheType = CacheAttribute.CType.Global, WorkOn = CacheAttribute.WType.Global)]
+    [Cache(ModConst.UI_DIFFICULTY_EVENT, CacheType = CacheAttribute.CType.Global, WorkOn = CacheAttribute.WType.Global)]
     public class UIDifficultyEvent : ModEvent
     {
         [EventCondition(IsInGame = 0)]

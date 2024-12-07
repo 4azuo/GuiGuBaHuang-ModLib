@@ -12,8 +12,6 @@ namespace MOD_nE7UL2.Mod
     [Cache(ModConst.REAL_TRIAL_EVENT)]
     public class RealTrialEvent : ModEvent
     {
-        public override int OrderIndex => 8000;
-
         public static _RealTrialConfigs RealTrialConfigs => ModMain.ModObj.InGameCustomSettings.RealTrialConfigs;
 
         [JsonIgnore]

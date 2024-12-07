@@ -907,6 +907,9 @@
     <None Include="..\..\ModConf\unitType_roleEffect.json">
       <Link>ModConf\unitType_roleEffect.json</Link>
     </None>
+    <None Include="..\..\ModConf\_EventOrderIndex.json">
+      <Link>ModConf\_EventOrderIndex.json</Link>
+    </None>
     <None Include="app.config" />
     <None Include="packages.config" />
   </ItemGroup>
@@ -925,7 +928,7 @@
 rd "$(ProjectDir)\..\..\..\debug\Mod_nE7UL2\ModCode\dll" /s /q
 rd "$(ProjectDir)\..\..\..\debug\Mod_nE7UL2\ModConf" /s /q
 xcopy "$(ProjectDir)\bin\Release\*.dll" "$(ProjectDir)\..\..\..\debug\Mod_nE7UL2\ModCode\dll\" /y /i
-xcopy "$(ProjectDir)\..\..\ModConf\*.json" "$(ProjectDir)\..\..\..\debug\Mod_nE7UL2\ModConf\" /y /i</PostBuildEvent>
+xcopy "$(ProjectDir)\..\..\ModConf\*.*" "$(ProjectDir)\..\..\..\debug\Mod_nE7UL2\ModConf\" /y /i</PostBuildEvent>
   </PropertyGroup>
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
     <PropertyGroup>

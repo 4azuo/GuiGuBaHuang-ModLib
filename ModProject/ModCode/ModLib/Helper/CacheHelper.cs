@@ -22,7 +22,7 @@ public static class CacheHelper
         },
     };
 
-    public static Dictionary<string, CachableObject> CacheData { get; } = new Dictionary<string, CachableObject>();
+    public static Dictionary<string, CachableObject> CacheData { get; private set; } = new Dictionary<string, CachableObject>();
 
     public static string GetGameCacheFileName()
     {
@@ -160,5 +160,11 @@ public static class CacheHelper
         e.CacheType = attr.CacheType;
         e.WorkOn = attr.WorkOn;
         return e;
+    }
+
+    public static void Order(Dictionary<string, int> orderList)
+    {
+        var defaultIndex = 9000;
+        CacheData = CacheData.OrderBy(x => orderList.ContainsKey(x.Key) ? orderList[x.Key] : defaultIndex++).ToDictionary(x => x.Key, x => x.Value);
     }
 }

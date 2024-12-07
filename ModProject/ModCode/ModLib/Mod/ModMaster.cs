@@ -3,6 +3,7 @@ using ModLib.Const;
 using ModLib.Object;
 using Newtonsoft.Json;
 using System;
+using System.Collections.Generic;
 using System.ComponentModel;
 using System.Diagnostics;
 using System.IO;
@@ -516,6 +517,7 @@ namespace ModLib.Mod
                     }
                 }
             }
+            OrderCaches();
             DebugHelper.Save();
         }
 
@@ -538,6 +540,7 @@ namespace ModLib.Mod
                     }
                 }
             }
+            OrderCaches();
             DebugHelper.Save();
         }
 
@@ -550,6 +553,16 @@ namespace ModLib.Mod
                     DebugHelper.WriteLine($"Unload Cache: Type={c.GetType().FullName}, Id={c.CacheId}");
                     CacheHelper.RemoveCachableObject(c);
                 }
+            }
+        }
+
+        public static void OrderCaches()
+        {
+            var orderCfg = ModMaster.ModObj.GetType().GetCustomAttribute<ModOrderAttribute>();
+            if (orderCfg != null)
+            {
+                var orderList = JsonConvert.DeserializeObject<Dictionary<string, int>>(File.ReadAllText(ConfHelper.GetConfFilePath(orderCfg.OrderFile)));
+                CacheHelper.Order(orderList);
             }
         }
     }
