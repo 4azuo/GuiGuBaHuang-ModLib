@@ -58,7 +58,7 @@ namespace ModLib.Mod
 
         public virtual void _OnSave(ETypeData e)
         {
-            if ((InGameSettings?.LoadGameAfter).Is(true) == 1)
+            if (GameHelper.IsInGame())
             {
                 if (InGameSettings.CurMonth != g.game.world.run.roundMonth)
                 {
@@ -130,17 +130,17 @@ namespace ModLib.Mod
             CallEvents<ETypeData>("OnUnitSetHeartState", e, true, false);
         }
 
-        public virtual void _OnWorldRunStart()
-        {
-            //start run
-            CallEvents("OnWorldRunStart", true, false);
-        }
+        //public virtual void _OnWorldRunStart()
+        //{
+        //    //start run
+        //    CallEvents("OnWorldRunStart", true, false);
+        //}
 
-        public virtual void _OnWorldRunEnd()
-        {
-            //end run
-            CallEvents("OnWorldRunEnd", true, false);
-        }
+        //public virtual void _OnWorldRunEnd()
+        //{
+        //    //end run
+        //    CallEvents("OnWorldRunEnd", true, false);
+        //}
         #endregion
 
         #region ModLib - Events
@@ -155,7 +155,7 @@ namespace ModLib.Mod
                 loadModFlg = false;
             }
 
-            if (e.uiType.uiName == UIType.MapMain.uiName)
+            if (GameHelper.IsInGame())
             {
                 if (loadSttFlg)
                 {
@@ -189,6 +189,12 @@ namespace ModLib.Mod
                 }
             }
             else
+            if (e.uiType.uiName == UIType.Login.uiName)
+            {
+                AddGlobalCaches();
+                CacheHelper.SaveGlobalCaches();
+            }
+            else
             if (e.uiType.uiName == UIType.Town.uiName)
             {
                 if (InGameSettings.LoadMapNewGame)
@@ -202,13 +208,6 @@ namespace ModLib.Mod
                     CallEvents("OnLoadMapFirst");
                     InGameSettings.LoadMapFirst = false;
                 }
-            }
-            else
-            if (e.uiType.uiName == UIType.Login.uiName)
-            {
-                AddGlobalCaches();
-                CallEvents("OnLoadGlobal");
-                CacheHelper.SaveGlobalCaches();
             }
 
             EventHelper.RunMinorEvents(e);
@@ -227,11 +226,6 @@ namespace ModLib.Mod
         public virtual void OnCloseUIEnd(CloseUIEnd e)
         {
             EventHelper.RunMinorEvents(e);
-        }
-
-        public virtual void OnLoadGlobal()
-        {
-            EventHelper.RunMinorEvents();
         }
 
         public virtual void OnLoadNewGame()
@@ -362,15 +356,15 @@ namespace ModLib.Mod
             EventHelper.RunMinorEvents(e);
         }
 
-        public virtual void OnWorldRunStart()
-        {
-            EventHelper.RunMinorEvents();
-        }
+        //public virtual void OnWorldRunStart()
+        //{
+        //    EventHelper.RunMinorEvents();
+        //}
 
-        public virtual void OnWorldRunEnd()
-        {
-            EventHelper.RunMinorEvents();
-        }
+        //public virtual void OnWorldRunEnd()
+        //{
+        //    EventHelper.RunMinorEvents();
+        //}
         #endregion
     }
 }

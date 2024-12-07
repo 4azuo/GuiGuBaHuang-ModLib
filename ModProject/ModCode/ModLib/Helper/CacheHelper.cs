@@ -120,16 +120,17 @@ public static class CacheHelper
     public static List<CachableObject> LoadGlobalCaches()
     {
         var rs = new List<CachableObject>();
-        foreach (var t in CacheHelper.GetCacheTypes())
+        foreach (var t in GetCacheTypes())
         {
             foreach (var attr in t.GetCustomAttributes<CacheAttribute>().Where(x => x.CacheType == CacheAttribute.CType.Global))
             {
                 var cacheFile = GetGlobalCacheFilePath(attr.CacheId);
                 if (File.Exists(cacheFile))
                 {
-                    var cache = (CachableObject)JsonConvert.DeserializeObject(File.ReadAllText(cacheFile), t, JSON_SETTINGS);
-                    DebugHelper.WriteLine($"Load GlobalCache: Type={t.FullName}, Id={cache.CacheId}");
-                    rs.Add(cache);
+                    var e = (CachableObject)JsonConvert.DeserializeObject(File.ReadAllText(cacheFile), t, JSON_SETTINGS);
+                    DebugHelper.WriteLine($"Load GlobalCache: Type={t.FullName}, Id={e.CacheId}");
+                    e.OnLoadClass(false);
+                    rs.Add(e);
                 }
             }
         }
@@ -140,14 +141,16 @@ public static class CacheHelper
     public static List<CachableObject> LoadNewGlobalCaches()
     {
         var rs = new List<CachableObject>();
-        foreach (var t in CacheHelper.GetCacheTypes())
+        foreach (var t in GetCacheTypes())
         {
             foreach (var attr in t.GetCustomAttributes<CacheAttribute>().Where(x => x.CacheType == CacheAttribute.CType.Global))
             {
-                if (!CacheHelper.CacheData.ContainsKey(attr.CacheId))
+                if (!CacheData.ContainsKey(attr.CacheId))
                 {
+                    var e = CreateCachableObject(t, attr);
                     DebugHelper.WriteLine($"Create GlobalCache: Type={t.FullName}, Id={attr.CacheId}");
-                    rs.Add(CacheHelper.CreateCachableObject(t, attr));
+                    e.OnLoadClass(true);
+                    rs.Add(e);
                 }
             }
         }
@@ -161,10 +164,13 @@ public static class CacheHelper
         if (File.Exists(GetGameCacheFilePath()))
         {
             var caches = (List<CachableObject>)JsonConvert.DeserializeObject(File.ReadAllText(GetGameCacheFilePath()), JSON_SETTINGS);
-            DebugHelper.WriteLine($"test: {JsonConvert.SerializeObject(caches)}");
-            rs.AddRange(rs);
-            foreach (var cache in caches)
-                DebugHelper.WriteLine($"Load GameCache: Type={cache.GetType().FullName}, Id={cache.CacheId}");
+            rs.AddRange(caches);
+            foreach (var e in caches)
+            {
+                var x = e as CachableObject;
+                DebugHelper.WriteLine($"Load GameCache: Type={x.GetType().FullName}, Id={x.CacheId}");
+                x.OnLoadClass(false);
+            }
         }
         AddCachableObjects(rs);
         return rs;
@@ -173,14 +179,16 @@ public static class CacheHelper
     public static List<CachableObject> LoadNewGameCaches()
     {
         var rs = new List<CachableObject>();
-        foreach (var t in CacheHelper.GetCacheTypes())
+        foreach (var t in GetCacheTypes())
         {
             foreach (var attr in t.GetCustomAttributes<CacheAttribute>().Where(x => x.CacheType == CacheAttribute.CType.Local))
             {
-                if (!CacheHelper.CacheData.ContainsKey(attr.CacheId))
+                if (!CacheData.ContainsKey(attr.CacheId))
                 {
+                    var e = CreateCachableObject(t, attr);
                     DebugHelper.WriteLine($"Create GameCache: Type={t.FullName}, Id={attr.CacheId}");
-                    rs.Add(CacheHelper.CreateCachableObject(t, attr));
+                    e.OnLoadClass(true);
+                    rs.Add(e);
                 }
             }
         }
@@ -190,12 +198,13 @@ public static class CacheHelper
 
     public static void RemoveUnuseGlobalCaches()
     {
-        foreach (var c in CacheHelper.GetGlobalCaches())
+        foreach (var c in GetGlobalCaches())
         {
             if (c.WorkOn == CacheAttribute.WType.Global)
             {
                 DebugHelper.WriteLine($"Unload Cache: Type={c.GetType().FullName}, Id={c.CacheId}");
-                CacheHelper.RemoveCachableObject(c);
+                c.OnUnloadClass();
+                RemoveCachableObject(c);
             }
         }
     }
@@ -229,6 +238,10 @@ public static class CacheHelper
 
     public static void Clear()
     {
+        foreach (var e in CacheData.Values)
+        {
+            e.OnUnloadClass();
+        }
         CacheData.Clear();
     }
 
@@ -266,7 +279,7 @@ public static class CacheHelper
         if (orderCfg != null)
         {
             var orderList = JsonConvert.DeserializeObject<Dictionary<string, int>>(File.ReadAllText(ConfHelper.GetConfFilePath(orderCfg.OrderFile)));
-            CacheHelper.Order(orderList);
+            Order(orderList);
         }
     }
 }

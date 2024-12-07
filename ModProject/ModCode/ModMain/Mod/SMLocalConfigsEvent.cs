@@ -9,10 +9,11 @@ namespace MOD_nE7UL2.Mod
     {
         public SMGlobalConfigsEvent Configs { get; set; } = new SMGlobalConfigsEvent();
 
-        public override void OnLoadNewGame()
+        public override void OnLoadClass(bool isNew)
         {
-            base.OnLoadNewGame();
-            Configs = CacheHelper.ReadGlobalCacheFile<SMGlobalConfigsEvent>(ModConst.SM_GLOBAL_CONFIGS_EVENT);
+            base.OnLoadClass(isNew);
+            if (isNew)
+                Configs = CacheHelper.ReadGlobalCacheFile<SMGlobalConfigsEvent>(ModConst.SM_GLOBAL_CONFIGS_EVENT);
         }
 
         public override void OnLoadGame()

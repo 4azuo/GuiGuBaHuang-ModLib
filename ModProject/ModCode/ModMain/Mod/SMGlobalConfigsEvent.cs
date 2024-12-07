@@ -75,9 +75,9 @@ namespace MOD_nE7UL2.Mod
         //Score
         public static IList<SMItemWork> ScoreCalculator { get; } = new List<SMItemWork>();
 
-        public override void OnLoadGlobal()
+        public override void OnLoadClass(bool isNew)
         {
-            base.OnLoadGlobal();
+            base.OnLoadClass(isNew);
 
             ScoreCalculator.Clear();
             Register(() => slMonstAtk, s => (s.Get().Parse<float>() * 100).Parse<int>());
