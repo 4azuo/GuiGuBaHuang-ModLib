@@ -14,5 +14,8 @@
         public CachableObject()
         {
         }
+
+        public virtual void OnLoadClass(bool isNew) { }
+        public virtual void OnUnloadClass() { }
     }
 }
