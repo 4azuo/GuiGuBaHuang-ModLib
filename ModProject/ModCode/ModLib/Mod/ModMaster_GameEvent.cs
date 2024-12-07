@@ -152,7 +152,6 @@ namespace ModLib.Mod
             {
                 CallEvents("OnInitConf");
                 CallEvents("OnInitEObj");
-                DebugHelper.Save();
                 loadModFlg = false;
             }
 
@@ -209,6 +208,7 @@ namespace ModLib.Mod
             {
                 AddGlobalCaches();
                 CallEvents("OnLoadGlobal");
+                CacheHelper.SaveGlobalCaches();
             }
 
             EventHelper.RunMinorEvents(e);

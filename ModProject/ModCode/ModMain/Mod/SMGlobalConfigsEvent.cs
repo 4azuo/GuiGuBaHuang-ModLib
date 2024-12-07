@@ -325,7 +325,7 @@ namespace MOD_nE7UL2.Mod
             BossHasShield = tglSysBossHasShield.Get().Parse<bool>();
             NoGrowupFromBattles = tglNoGrowupFromBattles.Get().Parse<bool>();
             LowGradeDestiniesAtBeginning = tglLowGradeDestiniesAtBeginning.Get().Parse<bool>();
-            CacheHelper.Save();
+            CacheHelper.SaveGlobalCache(this);
         }
 
         public static int CalCompScore(UIItemBase comp)

@@ -17,6 +17,7 @@ namespace ModLib.Mod
         {
             //load configs
             ConfHelper.LoadCustomConf();
+            DebugHelper.Save();
         }
 
         //順番３
@@ -25,6 +26,7 @@ namespace ModLib.Mod
         {
             GameHelper.LoadEnumObj(GameHelper.GetModMasterAssembly());
             GameHelper.LoadEnumObj(GameHelper.GetModMainAssembly());
+            DebugHelper.Save();
         }
 
         //順番４
@@ -39,8 +41,7 @@ namespace ModLib.Mod
         {
             //add game-cache
             AddGameCaches();
-            //remove unuse global-cache
-            RemoveUnuseGlobalCaches();
+            CacheHelper.Save();
         }
         #endregion
     }
