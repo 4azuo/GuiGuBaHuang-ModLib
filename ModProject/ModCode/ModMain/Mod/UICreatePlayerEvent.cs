@@ -5,7 +5,7 @@ using UnityEngine;
 
 namespace MOD_nE7UL2.Mod
 {
-    [Cache("UICreatePlayerEvent", CacheType = CacheAttribute.CType.Global, WorkOn = CacheAttribute.WType.Global)]
+    [Cache(ModConst.UI_CREATE_PLAYER_EVENT, CacheType = CacheAttribute.CType.Global, WorkOn = CacheAttribute.WType.Global)]
     public class UICreatePlayerEvent : ModEvent
     {
         public override void OnOpenUIStart(OpenUIStart e)

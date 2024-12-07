@@ -1,4 +1,5 @@
 ﻿using EGameTypeData;
+using MOD_nE7UL2.Const;
 using ModLib.Mod;
 using System.Diagnostics;
 using UnityEngine;
@@ -7,7 +8,7 @@ using UnityEngine.UI;
 
 namespace MOD_nE7UL2.Mod
 {
-    [Cache("UITitleScreenEvent", CacheType = CacheAttribute.CType.Global, WorkOn = CacheAttribute.WType.Global)]
+    [Cache(ModConst.UI_TITLE_SCREEN_EVENT, CacheType = CacheAttribute.CType.Global, WorkOn = CacheAttribute.WType.Global)]
     public class UITitleScreenEvent : ModEvent
     {
         [EventCondition(IsInGame = 0)]

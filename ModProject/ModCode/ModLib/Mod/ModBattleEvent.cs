@@ -10,8 +10,6 @@ namespace ModLib.Mod
     [Cache("$BATTLE$")]
     public sealed class ModBattleEvent : ModEvent
     {
-        public override int OrderIndex => 110;
-
         #region DmgKey
         public enum DmgEnum
         {

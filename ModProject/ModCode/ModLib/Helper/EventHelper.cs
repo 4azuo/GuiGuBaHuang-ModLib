@@ -82,6 +82,6 @@ public static class EventHelper
 
     public static List<ModEvent> GetEvents()
     {
-        return CacheHelper.GetAllCachableObjects<ModEvent>().OrderBy(x => x.OrderIndex).ToList();
+        return CacheHelper.GetAllCachableObjects<ModEvent>();
     }
 }

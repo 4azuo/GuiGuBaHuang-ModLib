@@ -11,8 +11,6 @@ namespace MOD_nE7UL2.Mod
     [Cache(ModConst.BATTLE_MANASHIELD_EVENT)]
     public class BattleManashieldEvent : ModEvent
     {
-        public override int OrderIndex => 9001;
-
         public const int MANASHIELD_EFFECT_MAIN_ID = 903151120;
         public const int MANASHIELD_EFFECT_EFX_ID = 903151121;
         public const float MONST_SHIELD_CHANCE = 0.50f;

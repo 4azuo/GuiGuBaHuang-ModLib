@@ -3,9 +3,9 @@
     public static class ModConst
     {
         //Events
+        public const string DEBUG_EVENT = "DEBUG";
         public const string QI_CUL_EVENT = "QiCulEvent";
         public const string UNIT_TYPE_EVENT = "UnitTypeEvent";
-        public const string BATTLE_REWARD_EVENT = "BattleRewardEvent";
         public const string BATTLE_REWARD_EVENT_V2 = "BattleRewardEventV2";
         public const string NPC_UPGRADE_SKILL_EVENT = "NpcUpgradeSkillEvent";
         public const string MONST_STRONGER_EVENT = "MostStrongerEvent";
@@ -15,7 +15,6 @@
         public const string REVENGE_EVENT = "RevengeEvent";
         public const string REAL_TRIAL_EVENT = "RealTrialEvent";
         public const string BORN_LUCK_EVENT = "BornLuckEvent";
-        public const string HIDE_BUTTON_EVENT = "HideButtonEvent";
         public const string CONTRIBUTION_EXCHANGE_EVENT = "ContributionExchangeEvent";
         public const string REAL_MARKET_EVENT = "RealMarketEvent";
         public const string REAL_MARKET_EVENT2 = "RealMarketEvent2";
@@ -24,9 +23,6 @@
         public const string MAP_BUILD_PROPERTY_EVENT = "MapBuildPropertyEvent";
         public const string MISSION_DECLARE_EVENT = "MissionDeclareEvent";
         public const string BATTLE_MODIFY_EVENT = "BattleModifyEvent";
-        public const string HIDE_MAP_EVENT = "HideMapEvent";
-        public const string HIDE_OVERGRADE_INFO_EVENT = "HideOvergradeInfoEvent";
-        public const string ARTIFACT_AFFECT_EVENT = "ArtifactAffectEvent";
         public const string UI_EVENT = "UIEvent";
         public const string UNIT_MODIFY_EVENT = "UnitModifyEvent";
         public const string EXPERT_EVENT = "ExpertEvent";
@@ -38,6 +34,9 @@
         public const string CUSTOM_REFINE_EVENT = "CustomRefineEvent";
         public const string SM_GLOBAL_CONFIGS_EVENT = "SMGlobalEvent";
         public const string SM_LOCAL_CONFIGS_EVENT = "SMLocalEvent";
+        public const string UI_TITLE_SCREEN_EVENT = "UITitleScreenEvent";
+        public const string UI_CREATE_PLAYER_EVENT = "UICreatePlayerEvent";
+        public const string UI_DIFFICULTY_EVENT = "UIDifficultyEvent";
 
         //Others
         public const string UTYPE_LUCK_EFX_FREE_STORAGE = "FreeStorage";

@@ -28,10 +28,10 @@ public class TraceAttribute : OnMethodBoundaryAspect
 
     public override void OnExit(MethodExecutionArgs args)
     {
-        if (Enable && !IgnoreExitMsg && IsNotIgnoredTrace(args.Method))
-        {
-            DebugHelper.WriteAt(_entryPos, GetReturnLog(args));
-        }
+        //if (Enable && !IgnoreExitMsg && IsNotIgnoredTrace(args.Method))
+        //{
+        //    DebugHelper.WriteAt(_entryPos, GetReturnLog(args));
+        //}
     }
 
     public override void OnException(MethodExecutionArgs args)
