@@ -12,16 +12,15 @@ namespace MOD_nE7UL2.Mod
         public override void OnLoadNewGame()
         {
             base.OnLoadNewGame();
-            Configs = EventHelper.GetEvent<SMGlobalConfigsEvent>(ModConst.SM_GLOBAL_CONFIGS_EVENT).Clone();
+            Configs = CacheHelper.ReadGlobalCacheFile<SMGlobalConfigsEvent>(ModConst.SM_GLOBAL_CONFIGS_EVENT);
         }
 
         public override void OnLoadGame()
         {
             base.OnLoadGame();
-            var smConfigs = EventHelper.GetEvent<SMLocalConfigsEvent>(ModConst.SM_LOCAL_CONFIGS_EVENT);
             foreach (var item in g.conf.roleGrade._allConfList)
             {
-                item.exp = smConfigs.Calculate(item.exp, smConfigs.Configs.AddLevelupExpRate).Parse<int>();
+                item.exp = Calculate(item.exp, Configs.AddLevelupExpRate).Parse<int>();
             }
         }
 

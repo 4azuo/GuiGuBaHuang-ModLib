@@ -501,69 +501,27 @@ namespace ModLib.Mod
             //clear
             CacheHelper.Clear();
             //load
-            var caches = CacheHelper.LoadGlobalCaches();
-            CacheHelper.AddCachableObjects(caches);
-            foreach (var c in caches)
-                DebugHelper.WriteLine($"Loaded Cache: Type={c.GetType().FullName}, Id={c.CacheId}");
+            CacheHelper.LoadGlobalCaches();
             //add news
-            foreach (var t in CacheHelper.GetCacheTypes(CacheAttribute.CType.Global))
-            {
-                foreach (var attr in t.GetCustomAttributes<CacheAttribute>().Where(x => x.CacheType == CacheAttribute.CType.Global))
-                {
-                    if (!CacheHelper.CacheData.ContainsKey(attr.CacheId))
-                    {
-                        DebugHelper.WriteLine($"Create GlobalCache: Type={t.FullName}, Id={attr.CacheId}");
-                        CacheHelper.AddCachableObject(CacheHelper.CreateCachableObject(t, attr));
-                    }
-                }
-            }
-            OrderCaches();
+            CacheHelper.LoadNewGlobalCaches();
+            //order
+            CacheHelper.Order();
+            //log
             DebugHelper.Save();
         }
 
         public static void AddGameCaches()
         {
             //load
-            var caches = CacheHelper.LoadGameCaches();
-            CacheHelper.AddCachableObjects(caches);
-            foreach (var c in caches)
-                DebugHelper.WriteLine($"Loaded Cache: Type={c.GetType().FullName}, Id={c.CacheId}");
+            CacheHelper.LoadGameCaches();
             //add news
-            foreach (var t in CacheHelper.GetCacheTypes(CacheAttribute.CType.Local))
-            {
-                foreach (var attr in t.GetCustomAttributes<CacheAttribute>().Where(x => x.CacheType == CacheAttribute.CType.Local))
-                {
-                    if (!CacheHelper.CacheData.ContainsKey(attr.CacheId))
-                    {
-                        DebugHelper.WriteLine($"Create GameCache: Type={t.FullName}, Id={attr.CacheId}");
-                        CacheHelper.AddCachableObject(CacheHelper.CreateCachableObject(t, attr));
-                    }
-                }
-            }
-            OrderCaches();
+            CacheHelper.LoadNewGameCaches();
+            //remove unuse global-cache
+            CacheHelper.RemoveUnuseGlobalCaches();
+            //order
+            CacheHelper.Order();
+            //log
             DebugHelper.Save();
-        }
-
-        public static void RemoveUnuseGlobalCaches()
-        {
-            foreach (var c in CacheHelper.GetGlobalCaches())
-            {
-                if (c.WorkOn == CacheAttribute.WType.Global)
-                {
-                    DebugHelper.WriteLine($"Unload Cache: Type={c.GetType().FullName}, Id={c.CacheId}");
-                    CacheHelper.RemoveCachableObject(c);
-                }
-            }
-        }
-
-        public static void OrderCaches()
-        {
-            var orderCfg = ModMaster.ModObj.GetType().GetCustomAttribute<ModOrderAttribute>();
-            if (orderCfg != null)
-            {
-                var orderList = JsonConvert.DeserializeObject<Dictionary<string, int>>(File.ReadAllText(ConfHelper.GetConfFilePath(orderCfg.OrderFile)));
-                CacheHelper.Order(orderList);
-            }
         }
     }
 
@@ -594,6 +552,7 @@ namespace ModLib.Mod
                         InGameSettings.IsOldVersion = true;
                 }
             }
+            InGameSettings.Save();
             DebugHelper.Save();
         }
 
