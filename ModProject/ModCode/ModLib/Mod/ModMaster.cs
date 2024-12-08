@@ -307,7 +307,6 @@ namespace ModLib.Mod
                 //DebugHelper.Save();
 
                 CallEvents("OnInitMod");
-                DebugHelper.Save();
             }
             catch (Exception ex)
             {
@@ -502,8 +501,6 @@ namespace ModLib.Mod
             CacheHelper.LoadNewGlobalCaches();
             //order
             CacheHelper.Order();
-            //log
-            DebugHelper.Save();
         }
 
         public static void AddGameCaches()
@@ -516,8 +513,6 @@ namespace ModLib.Mod
             CacheHelper.RemoveUnuseGlobalCaches();
             //order
             CacheHelper.Order();
-            //log
-            DebugHelper.Save();
         }
     }
 
