@@ -152,61 +152,59 @@ namespace ModLib.Mod
             {
                 CallEvents("OnInitConf");
                 CallEvents("OnInitEObj");
+                CallEvents("OnLoadGlobals");
                 loadModFlg = false;
             }
 
             if (GameHelper.IsInGame())
             {
-                if (loadSttFlg)
+                if (e.uiType.uiName == UIType.MapMain.uiName)
                 {
-                    CallEvents("OnLoadGameSettings");
-                    CallEvents("OnLoadGameCaches");
-                    loadSttFlg = false;
-                }
+                    if (loadSttFlg)
+                    {
+                        CallEvents("OnLoadGameSettings");
+                        CallEvents("OnLoadGameCaches");
+                        loadSttFlg = false;
+                    }
 
-                if (InGameSettings.LoadNewGame)
-                {
-                    CallEvents("OnLoadNewGame");
-                    InGameSettings.LoadNewGame = false;
-                }
+                    if (InGameSettings.LoadNewGame)
+                    {
+                        CallEvents("OnLoadNewGame");
+                        InGameSettings.LoadNewGame = false;
+                    }
 
-                if (InGameSettings.LoadGameBefore)
-                {
-                    CallEvents("OnLoadGameBefore");
-                    InGameSettings.LoadGameBefore = false;
-                }
+                    if (InGameSettings.LoadGameBefore)
+                    {
+                        CallEvents("OnLoadGameBefore");
+                        InGameSettings.LoadGameBefore = false;
+                    }
 
-                if (InGameSettings.LoadGame)
-                {
-                    CallEvents("OnLoadGame");
-                    InGameSettings.LoadGame = false;
-                }
+                    if (InGameSettings.LoadGame)
+                    {
+                        CallEvents("OnLoadGame");
+                        InGameSettings.LoadGame = false;
+                    }
 
-                if (InGameSettings.LoadGameAfter)
-                {
-                    CallEvents("OnLoadGameAfter");
-                    InGameSettings.LoadGameAfter = false;
+                    if (InGameSettings.LoadGameAfter)
+                    {
+                        CallEvents("OnLoadGameAfter");
+                        InGameSettings.LoadGameAfter = false;
+                    }
                 }
-            }
-            else
-            if (e.uiType.uiName == UIType.Login.uiName)
-            {
-                AddGlobalCaches();
-                CacheHelper.SaveGlobalCaches();
-            }
-            else
-            if (e.uiType.uiName == UIType.Town.uiName)
-            {
-                if (InGameSettings.LoadMapNewGame)
+                else
+                if (e.uiType.uiName == UIType.Town.uiName)
                 {
-                    CallEvents("OnLoadMapNewGame");
-                    InGameSettings.LoadMapNewGame = false;
-                }
+                    if (InGameSettings.LoadMapNewGame)
+                    {
+                        CallEvents("OnLoadMapNewGame");
+                        InGameSettings.LoadMapNewGame = false;
+                    }
 
-                if (InGameSettings.LoadMapFirst)
-                {
-                    CallEvents("OnLoadMapFirst");
-                    InGameSettings.LoadMapFirst = false;
+                    if (InGameSettings.LoadMapFirst)
+                    {
+                        CallEvents("OnLoadMapFirst");
+                        InGameSettings.LoadMapFirst = false;
+                    }
                 }
             }
 

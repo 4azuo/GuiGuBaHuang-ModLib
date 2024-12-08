@@ -1,4 +1,5 @@
 ﻿//using EGameTypeData;
+//using MOD_nE7UL2.Const;
 //using MOD_nE7UL2.Enum;
 //using ModLib.Enum;
 //using ModLib.Mod;
@@ -16,11 +17,9 @@
 
 //namespace MOD_nE7UL2.Mod
 //{
-//    [Cache("DEBUG", IsGlobal = true)]
+//    [Cache(ModConst.DEBUG_EVENT)]
 //    public class DebugEvent : ModEvent
 //    {
-//        public override int OrderIndex => 9999;
-
 //        /* === Test attributes === */
 //        //public override void OnSave(ETypeData e)
 //        //{

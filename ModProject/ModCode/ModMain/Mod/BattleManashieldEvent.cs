@@ -127,7 +127,7 @@ namespace MOD_nE7UL2.Mod
 
         public static int GetManashieldBasePlus(WorldUnitBase wunit)
         {
-            return Convert.ToInt32(CustomRefineEvent.GetRefineCustommAdjValue(wunit, AdjTypeEnum.Manashield));
+            return Convert.ToInt32(CustomRefineEvent.GetCustomAdjValue(wunit, AdjTypeEnum.Manashield));
         }
     }
 }

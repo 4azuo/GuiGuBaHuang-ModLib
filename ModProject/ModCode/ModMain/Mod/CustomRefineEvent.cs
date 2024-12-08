@@ -18,8 +18,22 @@ namespace MOD_nE7UL2.Mod
     {
         public const int REFINE_EXP_RATE = 200;
 
+        private static readonly Dictionary<string, double> _values = new Dictionary<string, double>();
+
         public Dictionary<string, long> RefineExp { get; set; } = new Dictionary<string, long>();
         public Dictionary<string, CustomRefine> CustomRefine { get; set; } = new Dictionary<string, CustomRefine>();
+
+        public override void OnLoadClass(bool isNew)
+        {
+            base.OnLoadClass(isNew);
+            _values.Clear();
+        }
+
+        public override void OnMonthly()
+        {
+            base.OnMonthly();
+            _values.Clear();
+        }
 
         public override void OnMonthlyForEachWUnit(WorldUnitBase wunit)
         {
@@ -228,20 +242,25 @@ namespace MOD_nE7UL2.Mod
             return list;
         }
 
-        public static double GetRefineCustommAdjValue(WorldUnitBase wunit, AdjTypeEnum adjType)
+        public static double GetCustomAdjValue(WorldUnitBase wunit, AdjTypeEnum adjType)
         {
             if (wunit == null || adjType == null)
                 return 0d;
-            var rs = 0d;
-            foreach (var props in GetRefinableItems(wunit))
+            var unitId = wunit.GetUnitId();
+            if (!_values.ContainsKey(unitId) || wunit.IsPlayer())
             {
-                var refineLvl = GetRefineLvl(props);
-                foreach (var a in GetCustomAdjTypes(props, adjType))
+                var rs = 0d;
+                foreach (var props in GetRefinableItems(wunit))
                 {
-                    rs += a.GetRefineCustommAdjValue(wunit, props, refineLvl);
+                    var refineLvl = GetRefineLvl(props);
+                    foreach (var a in GetCustomAdjTypes(props, adjType))
+                    {
+                        rs += a.GetRefineCustommAdjValue(wunit, props, refineLvl);
+                    }
                 }
+                _values[unitId] = rs;
             }
-            return rs;
+            return _values[unitId];
         }
     }
 }

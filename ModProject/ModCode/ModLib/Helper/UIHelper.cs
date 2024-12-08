@@ -42,47 +42,46 @@ public static class UIHelper
     public abstract class UICustom<T> : UICustomBase where T : UIBase
     {
         public T UI { get; internal set; }
-        public Canvas Canvas { get; internal set; }
         public List<UIItemBase> Items { get; } = new List<UIItemBase>();
 
         public UIItemText AddText(float x, float y, string format)
         {
-            var rs = new UIItemText(Canvas.transform, x, y, format);
+            var rs = new UIItemText(UI.transform, x, y, format);
             Items.Add(rs);
             return rs;
         }
 
         public UIItemSlider AddSlider(float x, float y, float min, float max, float def)
         {
-            var rs = new UIItemSlider(Canvas.transform, x, y, min, max, def);
+            var rs = new UIItemSlider(UI.transform, x, y, min, max, def);
             Items.Add(rs);
             return rs;
         }
 
         public UIItemToggle AddToggle(float x, float y, bool def)
         {
-            var rs = new UIItemToggle(Canvas.transform, x, y, def);
+            var rs = new UIItemToggle(UI.transform, x, y, def);
             Items.Add(rs);
             return rs;
         }
 
         public UIItemButton AddButton(float x, float y, Action act, string format)
         {
-            var rs = new UIItemButton(Canvas.transform, x, y, act, format);
+            var rs = new UIItemButton(UI.transform, x, y, act, format);
             Items.Add(rs);
             return rs;
         }
 
         public UIItemComposite AddCompositeSlider(float x, float y, string prefix, float min, float max, float def, string postfix = null)
         {
-            var rs = UIItemComposite.CreateSlider(Canvas.transform, x, y, prefix, min, max, def, postfix);
+            var rs = UIItemComposite.CreateSlider(UI.transform, x, y, prefix, min, max, def, postfix);
             Items.Add(rs);
             return rs;
         }
 
         public UIItemComposite AddCompositeToggle(float x, float y, string prefix, bool def, string postfix = null)
         {
-            var rs = UIItemComposite.CreateToggle(Canvas.transform, x, y, prefix, def, postfix);
+            var rs = UIItemComposite.CreateToggle(UI.transform, x, y, prefix, def, postfix);
             Items.Add(rs);
             return rs;
         }
@@ -176,7 +175,6 @@ public static class UIHelper
                 {
                     rs.UI = g.ui.OpenUI<UITextInfoLong>(UIType.TextInfoLong);
                     _originComp = rs.UI.textTitle;
-                    rs.Canvas = rs.UI.canvas;
                     {
                         rs.UI.InitData(title, string.Empty, isShowCancel: showCancel);
                         rs.UI.btnOK.onClick.AddListener((UnityAction)okAct);
