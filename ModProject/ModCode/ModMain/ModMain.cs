@@ -20,6 +20,8 @@ namespace MOD_nE7UL2
         public override void OnInitConf()
         {
             base.OnInitConf();
+            if (g.conf.roleAttributeLimit.attackMax == int.MaxValue)
+                return;
             ModSettings = JsonConvert.DeserializeObject<ModStts>(ConfHelper.ReadConfData("mod_configs.json"));
             foreach (var item in g.conf.roleGrade._allConfList)
             {

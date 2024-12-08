@@ -149,7 +149,7 @@ namespace MOD_nE7UL2.Mod
             if (e.uiType.uiName == UIType.Login.uiName)
             {
                 var uiLogin = g.ui.GetUI<UILogin>(UIType.Login);
-                var modConfigBtn = uiLogin.btnSet.Create().Pos(0f, 3.3f);
+                var modConfigBtn = uiLogin.btnSet.Create().Pos(0f, 3.9f);
                 modConfigBtn.Setup(TITLE);
                 modConfigBtn.onClick.AddListener((UnityAction)OpenSMConfigs);
             }
