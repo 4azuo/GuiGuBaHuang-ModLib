@@ -55,7 +55,8 @@ public static class CacheHelper
 
     public static void AddCachableObject(CachableObject item)
     {
-        CacheData.Add(item.CacheId, item);
+        if (!CacheData.ContainsKey(item.CacheId))
+            CacheData.Add(item.CacheId, item);
     }
 
     public static void AddCachableObjects(List<CachableObject> items)
