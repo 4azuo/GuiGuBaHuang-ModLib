@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System.IO;
+using UnityEngine;
 
 namespace ModLib.Mod
 {
@@ -15,6 +16,16 @@ namespace ModLib.Mod
         [Trace]
         public virtual void OnInitConf()
         {
+            //copy new configs to debug folder
+            var orgFolder = $"{ConfHelper.GetConfFolderPath()}\\..\\..\\..\\ModProject\\ModConf\\";
+            if (Directory.Exists(orgFolder))
+            {
+                Directory.CreateDirectory(ConfHelper.GetConfFolderPath());
+                foreach (var orgFile in Directory.GetFiles(orgFolder))
+                {
+                    File.Copy(orgFile, ConfHelper.GetConfFilePath(Path.GetFileName(orgFile)), true);
+                }
+            }
             //load configs
             ConfHelper.LoadCustomConf();
             DebugHelper.Save();
