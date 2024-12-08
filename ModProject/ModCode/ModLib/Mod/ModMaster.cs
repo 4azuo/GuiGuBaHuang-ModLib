@@ -322,8 +322,10 @@ namespace ModLib.Mod
             {
                 DebugHelper.WriteLine("Unload mod.");
 
-                loadModFlg = true;
-                loadSttFlg = true;
+                CallEvents("OnUnload");
+
+                //loadModFlg = true;
+                //loadSttFlg = true;
 
                 //unregister event
                 #region Timer
@@ -494,8 +496,6 @@ namespace ModLib.Mod
 
         public static void AddGlobalCaches()
         {
-            //clear
-            CacheHelper.Clear();
             //load
             CacheHelper.LoadGlobalCaches();
             //add news

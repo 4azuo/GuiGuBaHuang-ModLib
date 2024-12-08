@@ -236,13 +236,31 @@ public static class CacheHelper
             SaveGameCaches();
     }
 
-    public static void Clear()
+    public static void ClearGlobalCaches()
     {
-        foreach (var e in CacheData.Values)
+        foreach (var e in GetGlobalCaches())
         {
+            DebugHelper.WriteLine($"Unload GlobalCache: Type={e.GetType().FullName}, Id={e.CacheId}");
             e.OnUnloadClass();
+            CacheData.Remove(e.CacheId);
+        }
+    }
+
+    public static void ClearGameCaches()
+    {
+        foreach (var e in GetGameCaches())
+        {
+            DebugHelper.WriteLine($"Unload GameCache: Type={e.GetType().FullName}, Id={e.CacheId}");
+            e.OnUnloadClass();
+            CacheData.Remove(e.CacheId);
         }
         CacheData.Clear();
+    }
+
+    public static void Clear()
+    {
+        ClearGlobalCaches();
+        ClearGameCaches();
     }
 
     public static List<Type> GetCacheTypes()

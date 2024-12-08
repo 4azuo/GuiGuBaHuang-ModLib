@@ -31,17 +31,40 @@ namespace ModLib.Mod
 
         //順番４
         [Trace]
+        public virtual void OnLoadGlobals()
+        {
+            //load globals
+            AddGlobalCaches();
+            CacheHelper.SaveGlobalCaches();
+            DebugHelper.Save();
+        }
+
+        //順番５
+        [Trace]
         public virtual void OnLoadGameSettings()
         {
         }
 
-        //順番５
+        //順番６
         [Trace]
         public virtual void OnLoadGameCaches()
         {
             //add game-cache
             AddGameCaches();
             CacheHelper.Save();
+            DebugHelper.Save();
+        }
+
+        //順番７
+        [Trace]
+        public virtual void OnUnload()
+        {
+            //remove stt
+            InGameSettings = null;
+            //unload globals
+            CacheHelper.Clear();
+            //log
+            DebugHelper.Save();
         }
         #endregion
     }

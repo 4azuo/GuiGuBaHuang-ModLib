@@ -64,7 +64,7 @@ namespace MOD_nE7UL2.Mod
                 humanData.defense.baseValue += adjustDef1 + adjustDef2;
                 var adjustMs = (humanData.basisWind.value / 100.00f).Parse<int>();
                 humanData.moveSpeed.baseValue += adjustMs;
-                _nullify[humanData.worldUnitData.unit.GetUnitId()] = Convert.ToInt32(CustomRefineEvent.GetRefineCustommAdjValue(humanData.worldUnitData.unit, AdjTypeEnum.Nullify));
+                _nullify[humanData.worldUnitData.unit.GetUnitId()] = Convert.ToInt32(CustomRefineEvent.GetCustomAdjValue(humanData.worldUnitData.unit, AdjTypeEnum.Nullify));
             }
         }
 
@@ -402,7 +402,7 @@ namespace MOD_nE7UL2.Mod
         {
             if (wunit == null)
                 return 0;
-            return CustomRefineEvent.GetRefineCustommAdjValue(wunit, AdjTypeEnum.SkillDamage);
+            return CustomRefineEvent.GetCustomAdjValue(wunit, AdjTypeEnum.SkillDamage);
         }
 
         public static int GetSkillAdjMpCost(WorldUnitBase wunit, DataProps.PropsData props)
@@ -446,7 +446,7 @@ namespace MOD_nE7UL2.Mod
 
         public static int GetMinDmgPlus(WorldUnitBase wunit)
         {
-            return Convert.ToInt32(CustomRefineEvent.GetRefineCustommAdjValue(wunit, AdjTypeEnum.MinDamage));
+            return Convert.ToInt32(CustomRefineEvent.GetCustomAdjValue(wunit, AdjTypeEnum.MinDamage));
         }
 
         public static double GetBlockMaxBase(WorldUnitBase wunit)
@@ -461,7 +461,7 @@ namespace MOD_nE7UL2.Mod
 
         public static double GetBlockMaxPlus(WorldUnitBase wunit)
         {
-            return CustomRefineEvent.GetRefineCustommAdjValue(wunit, AdjTypeEnum.BlockChanceMax);
+            return CustomRefineEvent.GetCustomAdjValue(wunit, AdjTypeEnum.BlockChanceMax);
         }
 
         public static double GetBlockDmgBase(WorldUnitBase wunit)
@@ -476,7 +476,7 @@ namespace MOD_nE7UL2.Mod
 
         public static double GetBlockDmgPlus(WorldUnitBase wunit)
         {
-            return CustomRefineEvent.GetRefineCustommAdjValue(wunit, AdjTypeEnum.BlockDmg);
+            return CustomRefineEvent.GetCustomAdjValue(wunit, AdjTypeEnum.BlockDmg);
         }
 
         public static double GetEvadeMaxBase(WorldUnitBase wunit)
@@ -491,7 +491,7 @@ namespace MOD_nE7UL2.Mod
 
         public static double GetEvadeMaxPlus(WorldUnitBase wunit)
         {
-            return CustomRefineEvent.GetRefineCustommAdjValue(wunit, AdjTypeEnum.EvadeChanceMax);
+            return CustomRefineEvent.GetCustomAdjValue(wunit, AdjTypeEnum.EvadeChanceMax);
         }
 
         public static double GetEvadeBase(WorldUnitBase wunit)
@@ -516,7 +516,7 @@ namespace MOD_nE7UL2.Mod
             var stepLevel = stepData.data.propsInfoBase.level;
             plusValue += UnitModifyHelper.GetStepExpertEvade(ExpertEvent.GetExpertLvl(stepId, stepGrade, stepLevel), stepGrade, stepLevel);
             //adj
-            plusValue += CustomRefineEvent.GetRefineCustommAdjValue(wunit, AdjTypeEnum.EvadeChance);
+            plusValue += CustomRefineEvent.GetCustomAdjValue(wunit, AdjTypeEnum.EvadeChance);
             return plusValue;
         }
 
@@ -527,7 +527,7 @@ namespace MOD_nE7UL2.Mod
 
         public static double GetSCritChanceMaxPlus(WorldUnitBase wunit)
         {
-            return CustomRefineEvent.GetRefineCustommAdjValue(wunit, AdjTypeEnum.SCritChanceMax);
+            return CustomRefineEvent.GetCustomAdjValue(wunit, AdjTypeEnum.SCritChanceMax);
         }
 
         public static double GetSCritChanceBase(WorldUnitBase wunit)
@@ -537,7 +537,7 @@ namespace MOD_nE7UL2.Mod
 
         public static double GetSCritChancePlus(WorldUnitBase wunit)
         {
-            return CustomRefineEvent.GetRefineCustommAdjValue(wunit, AdjTypeEnum.SCritChance);
+            return CustomRefineEvent.GetCustomAdjValue(wunit, AdjTypeEnum.SCritChance);
         }
 
         public static double GetSCritDamageBase(WorldUnitBase wunit)
@@ -547,7 +547,7 @@ namespace MOD_nE7UL2.Mod
 
         public static double GetSCritDamagePlus(WorldUnitBase wunit)
         {
-            return CustomRefineEvent.GetRefineCustommAdjValue(wunit, AdjTypeEnum.SCritDamage);
+            return CustomRefineEvent.GetCustomAdjValue(wunit, AdjTypeEnum.SCritDamage);
         }
 
         public static double GetHpRecoveryBase(WorldUnitBase wunit)
@@ -557,7 +557,7 @@ namespace MOD_nE7UL2.Mod
 
         public static double GetHpRecoveryPlus(WorldUnitBase wunit)
         {
-            return CustomRefineEvent.GetRefineCustommAdjValue(wunit, AdjTypeEnum.RHp);
+            return CustomRefineEvent.GetCustomAdjValue(wunit, AdjTypeEnum.RHp);
         }
 
         public static double GetMpRecoveryBase(WorldUnitBase wunit)
@@ -567,7 +567,7 @@ namespace MOD_nE7UL2.Mod
 
         public static double GetMpRecoveryPlus(WorldUnitBase wunit)
         {
-            return CustomRefineEvent.GetRefineCustommAdjValue(wunit, AdjTypeEnum.RMp);
+            return CustomRefineEvent.GetCustomAdjValue(wunit, AdjTypeEnum.RMp);
         }
 
         public static double GetSpRecoveryBase(WorldUnitBase wunit)
@@ -577,7 +577,7 @@ namespace MOD_nE7UL2.Mod
 
         public static double GetSpRecoveryPlus(WorldUnitBase wunit)
         {
-            return CustomRefineEvent.GetRefineCustommAdjValue(wunit, AdjTypeEnum.RSp);
+            return CustomRefineEvent.GetCustomAdjValue(wunit, AdjTypeEnum.RSp);
         }
         #endregion
     }
