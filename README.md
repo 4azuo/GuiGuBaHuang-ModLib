@@ -56,9 +56,10 @@ Add BuildEvent for copying dll to "debug" folder.
 
 ※"nE7UL2" = mod-id
 
-You should change "nE7UL2" to your mod-id.
-And build by "Release" mode.
+You should change "nE7UL2" to your mod-id.　And build by "Release" mode.
+
 ※If you have any problem about creating project. Feel free for contacting to me.
+
 ※If you wanna contribute to my project. Please contact to me.
 
 
