@@ -1,4 +1,5 @@
-﻿using MOD_nE7UL2.Enum;
+﻿using MOD_nE7UL2.Const;
+using MOD_nE7UL2.Enum;
 using MOD_nE7UL2.Object;
 using ModLib.Enum;
 using ModLib.Mod;
@@ -413,7 +414,7 @@ namespace MOD_nE7UL2
 
                     var factory = g.conf.townFactotySell.GetItem(props.id);
                     if (factory != null)
-                        factory.makePrice = props.worth / 6;
+                        factory.makePrice = (props.worth * ModConst.PILL_RECIPE_RATE).Parse<int>();
                 }
                 else if ((refiningArtifact = props.IsTownRefiningArtifact()) != null)
                 {

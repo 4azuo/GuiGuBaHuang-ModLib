@@ -15,20 +15,20 @@ namespace MOD_nE7UL2.Mod
         public const int LIMIT = 500000000;
 
         public static _InflationaryConfigs Configs => ModMain.ModObj.InGameCustomSettings.InflationaryConfigs;
-        public static Dictionary<string, int> ItemValues { get; } = new Dictionary<string, int>();
+        public static Dictionary<string, int> OriginItemValues { get; } = new Dictionary<string, int>();
 
         public int Corruption { get; set; } = 0;
 
         public override void OnLoadGame()
         {
             base.OnLoadGame();
+            BackupItemmValues();
             ItemInflationary();
         }
 
         public override void OnYearly()
         {
             base.OnYearly();
-            BackupItemmValues();
             ItemInflationary();
             Corrupt();
         }
@@ -49,19 +49,19 @@ namespace MOD_nE7UL2.Mod
         {
             foreach (var props in g.conf.itemProps._allConfList)
             {
-                ItemValues[$"itemProps_{props.id}_sale"] = props.sale;
-                ItemValues[$"itemProps_{props.id}_worth"] = props.worth;
+                OriginItemValues[$"itemProps_{props.id}_sale"] = props.sale;
+                OriginItemValues[$"itemProps_{props.id}_worth"] = props.worth;
             }
             foreach (var item in g.conf.itemSkill._allConfList)
             {
-                ItemValues[$"itemSkill_{item.id}_price"] = item.price;
-                ItemValues[$"itemSkill_{item.id}_cost"] = item.cost;
-                ItemValues[$"itemSkill_{item.id}_sale"] = item.sale;
-                ItemValues[$"itemSkill_{item.id}_worth"] = item.worth;
+                OriginItemValues[$"itemSkill_{item.id}_price"] = item.price;
+                OriginItemValues[$"itemSkill_{item.id}_cost"] = item.cost;
+                OriginItemValues[$"itemSkill_{item.id}_sale"] = item.sale;
+                OriginItemValues[$"itemSkill_{item.id}_worth"] = item.worth;
             }
             foreach (var refine in g.conf.townRefine._allConfList)
             {
-                ItemValues[$"townRefine_{refine.id}_moneyCost"] = refine.moneyCost;
+                OriginItemValues[$"townRefine_{refine.id}_moneyCost"] = refine.moneyCost;
             }
         }
 
@@ -72,26 +72,26 @@ namespace MOD_nE7UL2.Mod
                 if (props.type == (int)PropsType.Money)
                     continue;
 
-                props.sale = CalculateInflationary(ItemValues[$"itemProps_{props.id}_sale"]);
-                props.worth = CalculateInflationary(ItemValues[$"itemProps_{props.id}_worth"]);
+                props.sale = CalculateInflationary(OriginItemValues[$"itemProps_{props.id}_sale"]);
+                props.worth = CalculateInflationary(OriginItemValues[$"itemProps_{props.id}_worth"]);
 
                 if (props.IsPillRecipe() != null)
                 {
                     var factory = g.conf.townFactotySell.GetItem(props.id);
                     if (factory != null)
-                        factory.makePrice = props.worth / 6;
+                        factory.makePrice = (props.worth * ModConst.PILL_RECIPE_RATE).Parse<int>();
                 }
             }
             foreach (var item in g.conf.itemSkill._allConfList)
             {
-                item.price = CalculateInflationary(ItemValues[$"itemSkill_{item.id}_price"]);
-                item.cost = CalculateInflationary(ItemValues[$"itemSkill_{item.id}_cost"]);
-                item.sale = CalculateInflationary(ItemValues[$"itemSkill_{item.id}_sale"]);
-                item.worth = CalculateInflationary(ItemValues[$"itemSkill_{item.id}_worth"]);
+                item.price = CalculateInflationary(OriginItemValues[$"itemSkill_{item.id}_price"]);
+                item.cost = CalculateInflationary(OriginItemValues[$"itemSkill_{item.id}_cost"]);
+                item.sale = CalculateInflationary(OriginItemValues[$"itemSkill_{item.id}_sale"]);
+                item.worth = CalculateInflationary(OriginItemValues[$"itemSkill_{item.id}_worth"]);
             }
             foreach (var refine in g.conf.townRefine._allConfList)
             {
-                refine.moneyCost = CalculateInflationary(ItemValues[$"townRefine_{refine.id}_moneyCost"]);
+                refine.moneyCost = CalculateInflationary(OriginItemValues[$"townRefine_{refine.id}_moneyCost"]);
             }
         }
 
