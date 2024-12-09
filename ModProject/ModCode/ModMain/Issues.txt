@@ -15,3 +15,5 @@
 - short intro
 
 - auto translate
+
+- UI bug
