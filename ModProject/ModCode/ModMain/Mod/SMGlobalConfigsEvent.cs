@@ -31,6 +31,7 @@ namespace MOD_nE7UL2.Mod
         public float AddSectExchangeRate { get; set; } = 0f;
         public float AddNpcGrowRate { get; set; } = 0f;
         public float AddLevelupExpRate { get; set; } = 0f;
+        public float AddItemValueRate { get; set; } = 0f;
         public bool HideSaveButton { get; set; } = false;
         public bool HideReloadButton { get; set; } = false;
         public bool HideBattleMap { get; set; } = false;
@@ -58,6 +59,7 @@ namespace MOD_nE7UL2.Mod
         private UIItemBase.UIItemComposite slEcoBankFee;
         private UIItemBase.UIItemComposite slEcoRefineCost;
         private UIItemBase.UIItemComposite slEcoSectExchangeRate;
+        private UIItemBase.UIItemComposite slEcoItemValue;
         private UIItemBase.UIItemComposite slNpcGrowRate;
         private UIItemBase.UIItemComposite slMiscLevelupExp;
         private UIItemBase.UIItemComposite tglSysHideSave;
@@ -92,6 +94,7 @@ namespace MOD_nE7UL2.Mod
             Register(() => slEcoBankFee, s => (s.Get().Parse<float>() * 100).Parse<int>());
             Register(() => slEcoRefineCost, s => (s.Get().Parse<float>() * 2000).Parse<int>());
             Register(() => slEcoSectExchangeRate, s => (s.Get().Parse<float>() * 2000).Parse<int>(), s => !tglSysSectNoExchange.Get().Parse<bool>(), s => !tglSysSectNoExchange.Get().Parse<bool>());
+            Register(() => slEcoItemValue, s => (s.Get().Parse<float>() * 1000).Parse<int>());
             Register(() => slNpcGrowRate, s => (s.Get().Parse<float>() * 1000).Parse<int>());
             Register(() => slMiscLevelupExp, s => (s.Get().Parse<float>() * 2000).Parse<int>());
             Register(() => tglSysHideSave, s => 1000, s => s.Get().Parse<bool>(), onChange: (s, v) => tglSysHideReload.Set(false));
@@ -178,12 +181,13 @@ namespace MOD_nE7UL2.Mod
             slEcoBankFee = uiCustom.AddCompositeSlider(col, row++, "Bank Fee", 0.00f, 100.00f, AddBankFee, "{1}% ({0}P)");
             slEcoRefineCost = uiCustom.AddCompositeSlider(col, row++, "Refine Cost", -0.50f, 1.00f, AddRefineCost, "{1}% ({0}P)");
             slEcoSectExchangeRate = uiCustom.AddCompositeSlider(col, row++, "Sect Exchange Fee", -0.50f, 1.00f, AddSectExchangeRate, "{1}% ({0}P)");
+            slEcoItemValue = uiCustom.AddCompositeSlider(col, row++, "Item Value", -0.50f, 1.00f, AddItemValueRate, "{1}% ({0}P)");
 
-            col = 2; row = 17;
+            col = 2; row = 18;
             uiCustom.AddText(col, row++, "NPC:").Format(null, 17, FontStyle.Italic).Align(TextAnchor.MiddleRight);
             slNpcGrowRate = uiCustom.AddCompositeSlider(col, row++, "Grow Rate", 0.00f, 10.00f, AddNpcGrowRate, "{1}% ({0}P)");
 
-            col = 2; row = 20;
+            col = 2; row = 21;
             uiCustom.AddText(col, row++, "Misc:").Format(null, 17, FontStyle.Italic).Align(TextAnchor.MiddleRight);
             slMiscLevelupExp = uiCustom.AddCompositeSlider(col, row++, "Levelup Exp", 0.00f, 1.00f, AddLevelupExpRate, "{1}% ({0}P)");
 
@@ -245,6 +249,7 @@ namespace MOD_nE7UL2.Mod
             slEcoBankFee.Set(0f);
             slEcoRefineCost.Set(0f);
             slEcoSectExchangeRate.Set(0f);
+            slEcoItemValue.Set(0f);
             slNpcGrowRate.Set(0f);
             slMiscLevelupExp.Set(0f);
             tglSysHideBattleMap.Set(true);
@@ -274,6 +279,7 @@ namespace MOD_nE7UL2.Mod
             slEcoBankFee.SetPercent(level * 0.05000f);
             slEcoRefineCost.SetPercent(level * 0.10000f);
             slEcoSectExchangeRate.SetPercent(level * 0.10000f);
+            slEcoItemValue.SetPercent(level * 0.10000f);
             slNpcGrowRate.SetPercent(level * 0.02000f);
             slMiscLevelupExp.SetPercent(level * 0.10000f);
             tglSysHideBattleMap.Set(level > 0);
@@ -312,6 +318,7 @@ namespace MOD_nE7UL2.Mod
             AddBankFee = slEcoBankFee.Get().Parse<float>();
             AddRefineCost = slEcoRefineCost.Get().Parse<float>();
             AddSectExchangeRate = slEcoSectExchangeRate.Get().Parse<float>();
+            AddItemValueRate = slEcoItemValue.Get().Parse<float>();
             AddNpcGrowRate = slNpcGrowRate.Get().Parse<float>();
             AddLevelupExpRate = slMiscLevelupExp.Get().Parse<float>();
             HideSaveButton = tglSysHideSave.Get().Parse<bool>();

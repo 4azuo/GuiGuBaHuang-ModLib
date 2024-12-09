@@ -43,5 +43,6 @@
         public const string UTYPE_LUCK_EFX_BUY_COST = "BuyCost";
         public const string UTYPE_LUCK_EFX_SELL_VALUE = "SellValue";
         public const string UTYPE_LUCK_EFX_PASSIVE_INCOME = "PassiveIncome";
+        public const float PILL_RECIPE_RATE = 0.15f;
     }
 }

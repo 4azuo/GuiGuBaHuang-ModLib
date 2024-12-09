@@ -19,9 +19,30 @@ namespace MOD_nE7UL2.Mod
         public override void OnLoadGame()
         {
             base.OnLoadGame();
+            //exp
             foreach (var item in g.conf.roleGrade._allConfList)
             {
                 item.exp = Calculate(item.exp, Configs.AddLevelupExpRate).Parse<int>();
+            }
+            //item value
+            foreach (var props in g.conf.itemProps._allConfList)
+            {
+                if (props.type == (int)PropsType.Money)
+                    continue;
+
+                props.sale = Calculate(props.sale, Configs.AddItemValueRate).Parse<int>();
+                props.worth = Calculate(props.worth, Configs.AddItemValueRate).Parse<int>();
+            }
+            foreach (var item in g.conf.itemSkill._allConfList)
+            {
+                item.price = Calculate(item.price, Configs.AddItemValueRate).Parse<int>();
+                item.cost = Calculate(item.cost, Configs.AddItemValueRate).Parse<int>();
+                item.sale = Calculate(item.sale, Configs.AddItemValueRate).Parse<int>();
+                item.worth = Calculate(item.worth, Configs.AddItemValueRate).Parse<int>();
+            }
+            foreach (var refine in g.conf.townRefine._allConfList)
+            {
+                refine.moneyCost = Calculate(refine.moneyCost, Configs.AddItemValueRate).Parse<int>();
             }
         }
 
