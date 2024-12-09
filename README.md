@@ -34,7 +34,7 @@ Pls, give a like to let me know it useful, tks.
 
 **Add ModLib-BuildEvent**
 
-![image](https://github.com/4azuo/GuiGuBaHuang-ModLib/assets/11677054/3b2f1d21-177d-4605-8e97-b969dc4ae61b)
+![image](https://github.com/user-attachments/assets/e577c39c-39bd-4afa-8f34-8dc69866e51a)
 
 `xcopy "$(ProjectDir)\bin\Release\*.dll" "$(ProjectDir)\..\ModMain\bin\Release\" /y`
 
@@ -42,19 +42,22 @@ Add BuildEvent for copying dll to your project.
 
 **Add ModMain-BuildEvent**
 
-![image](https://github.com/4azuo/GuiGuBaHuang-ModLib/assets/11677054/4b21eb8f-44ab-45cf-bebf-4894f0862553)
+![image](https://github.com/user-attachments/assets/75dee2aa-088a-4617-9257-8535e880dfd5)
 
 `
 rd "$(ProjectDir)obj" /s /q
 rd "$(ProjectDir)\..\..\..\debug\Mod_nE7UL2\ModCode\dll" /s /q
 rd "$(ProjectDir)\..\..\..\debug\Mod_nE7UL2\ModConf" /s /q
 xcopy "$(ProjectDir)\bin\Release\*.dll" "$(ProjectDir)\..\..\..\debug\Mod_nE7UL2\ModCode\dll\" /y /i
-xcopy "$(ProjectDir)\..\..\ModConf\*.json" "$(ProjectDir)\..\..\..\debug\Mod_nE7UL2\ModConf\" /y /i
+xcopy "$(ProjectDir)\..\..\ModConf\*.*" "$(ProjectDir)\..\..\..\debug\Mod_nE7UL2\ModConf\" /y /i
 `
 
 Add BuildEvent for copying dll to "debug" folder. 
 
 ※"nE7UL2" = mod-id
+
+You should change "nE7UL2" to your mod-id.
+And build by "Release" mode.
 
 
 
