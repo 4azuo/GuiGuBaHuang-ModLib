@@ -91,6 +91,7 @@
     <Compile Include="Object\CachableObject.cs" />
     <Compile Include="Mod\ModMaster.cs" />
     <Compile Include="Object\InGameSettings.cs" />
+    <Compile Include="Object\MonoUpdater.cs" />
     <Compile Include="Object\MultiValue.cs" />
     <Compile Include="Object\ModData.cs" />
     <Compile Include="Object\UIItemBase.cs" />
@@ -161,7 +162,7 @@
       <Private>False</Private>
     </Reference>
     <Reference Include="DOTweenPro">
-      <HintPath>dll\DOTweenPro.dll</HintPath>
+      <HintPath>C:\Program Files (x86)\Steam\steamapps\common\鬼谷八荒\MelonLoader\Dependencies\Il2CppAssemblyGenerator\Cpp2IL\cpp2il_out\DOTweenPro.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="I18N">
@@ -503,7 +504,7 @@
       <Private>False</Private>
     </Reference>
     <Reference Include="UnityEngine.GridModule">
-      <HintPath>dll\UnityEngine.GridModule.dll</HintPath>
+      <HintPath>C:\Program Files (x86)\Steam\steamapps\common\鬼谷八荒\MelonLoader\Dependencies\Il2CppAssemblyGenerator\Cpp2IL\cpp2il_out\UnityEngine.GridModule.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="UnityEngine.HotReloadModule">
@@ -595,7 +596,7 @@
       <Private>False</Private>
     </Reference>
     <Reference Include="UnityEngine.TerrainModule">
-      <HintPath>dll\UnityEngine.TerrainModule.dll</HintPath>
+      <HintPath>C:\Program Files (x86)\Steam\steamapps\common\鬼谷八荒\MelonLoader\Dependencies\Il2CppAssemblyGenerator\Cpp2IL\cpp2il_out\UnityEngine.TerrainModule.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="UnityEngine.TerrainPhysicsModule">
@@ -695,7 +696,7 @@
       <Private>False</Private>
     </Reference>
     <Reference Include="UnityEngine.VRModule">
-      <HintPath>dll\UnityEngine.VRModule.dll</HintPath>
+      <HintPath>C:\Program Files (x86)\Steam\steamapps\common\鬼谷八荒\MelonLoader\Dependencies\Il2CppAssemblyGenerator\Cpp2IL\cpp2il_out\UnityEngine.VRModule.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="UnityEngine.WindModule">
@@ -703,7 +704,7 @@
       <Private>False</Private>
     </Reference>
     <Reference Include="UnityEngine.XRModule">
-      <HintPath>dll\UnityEngine.XRModule.dll</HintPath>
+      <HintPath>C:\Program Files (x86)\Steam\steamapps\common\鬼谷八荒\MelonLoader\Dependencies\Il2CppAssemblyGenerator\Cpp2IL\cpp2il_out\UnityEngine.XRModule.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="ValueTupleBridge">

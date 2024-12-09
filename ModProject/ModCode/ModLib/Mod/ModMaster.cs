@@ -7,6 +7,7 @@ using System.IO;
 using System.Linq;
 using System.Reflection;
 using UnhollowerBaseLib;
+using UnhollowerRuntimeLib;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.UI;
@@ -143,6 +144,10 @@ namespace ModLib.Mod
         private EventsMgr.EventsData eventBattleEndHandler;
         private EventsMgr.EventsData eventBattleEscapeFailed;
         private EventsMgr.EventsData eventBattleExit;
+        #endregion
+
+        #region mono
+        private MonoUpdater monoUpdater;
         #endregion
 
         //GameEvent
@@ -288,6 +293,12 @@ namespace ModLib.Mod
                 eventBattleExit = RegEvent(EBattleType.BattleExit, callBattleExit);
                 #endregion
 
+                #region MonoEvents
+                ClassInjector.RegisterTypeInIl2Cpp<MonoUpdater>();
+                monoUpdater = g.root.AddComponent<MonoUpdater>();
+                monoUpdater.UpdateFunc = OnMonoUpdate;
+                #endregion
+
                 //g.world.run.On(WorldRunOrder.Start, (Il2CppSystem.Action)OnWorldRunStart);
                 //g.world.run.On(WorldRunOrder.End, (Il2CppSystem.Action)OnWorldRunEnd);
 
@@ -312,6 +323,15 @@ namespace ModLib.Mod
             {
                 DebugHelper.WriteLine(ex);
                 throw ex;
+            }
+        }
+
+        public void Update()
+        {
+            if (Input.GetKeyDown(KeyCode.W))
+            {
+                DebugHelper.WriteLine("WWW");
+                DebugHelper.Save();
             }
         }
 
@@ -398,6 +418,10 @@ namespace ModLib.Mod
                 UnregEvent(eventBattleEndHandler);
                 UnregEvent(eventBattleEscapeFailed);
                 UnregEvent(eventBattleExit);
+                #endregion
+
+                #region MonoEvents
+                DestroyObject(monoUpdater);
                 #endregion
             }
             catch (Exception ex)

@@ -359,6 +359,11 @@ namespace ModLib.Mod
         //{
         //    EventHelper.RunMinorEvents();
         //}
+
+        public virtual void OnMonoUpdate()
+        {
+            EventHelper.RunMinorEvents();
+        }
         #endregion
     }
 }

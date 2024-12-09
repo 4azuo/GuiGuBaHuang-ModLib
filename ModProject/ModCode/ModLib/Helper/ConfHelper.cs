@@ -26,7 +26,7 @@ public static class ConfHelper
     [Trace]
     private static void LoadConf(string filePath, string confName)
     {
-        DebugHelper.WriteLine($"Edit Conf: {confName}");
+        //DebugHelper.WriteLine($"Edit Conf: {confName}");
         var confProp = g.conf.GetType().GetProperty(confName, BindingFlags.Public | BindingFlags.Instance | BindingFlags.IgnoreCase);
         if (confProp == null)
             return;
@@ -40,21 +40,25 @@ public static class ConfHelper
             var i = (int)confObj.GetItemIndex(id);
             if (i >= 0 && confList[i].id == id)
             {
+                //delete
                 if (item.DELETE == "1")
                 {
-                    //DebugHelper.WriteLine($" - Update({id}): {JsonConvert.SerializeObject(item)}");
+                    //DebugHelper.WriteLine($" - Delete({id}): {JsonConvert.SerializeObject(item)}");
                     confItem = null;
                     confList.Remove(confList[i]);
                     if (g.conf.localText.GetType() == confObj.GetType())
                         g.conf.localText.allText.Remove(confItem.key);
                 }
+                //update
                 else
                 {
+                    //DebugHelper.WriteLine($" - Update({id}): {JsonConvert.SerializeObject(item)}");
                     confItem = confList[i];
                     //if (g.conf.localText.GetType() == confObj.GetType())
                     //    g.conf.localText.allText[confItem.key] = confItem;
                 }
             }
+            //add new
             else
             {
                 //DebugHelper.WriteLine($" - Add({id}): {JsonConvert.SerializeObject(item)}");
