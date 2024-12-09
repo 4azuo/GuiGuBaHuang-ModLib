@@ -10,6 +10,8 @@
 
 - pet
 
-- outfit refine
+- mini trainer
 
-- recover game config before load game
+- short intro
+
+- auto translate
