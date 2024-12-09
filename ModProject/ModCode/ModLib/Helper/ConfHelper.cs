@@ -26,6 +26,7 @@ public static class ConfHelper
     [Trace]
     private static void LoadConf(string filePath, string confName)
     {
+        DebugHelper.WriteLine($"Edit Conf: {confName}");
         var confProp = g.conf.GetType().GetProperty(confName, BindingFlags.Public | BindingFlags.Instance | BindingFlags.IgnoreCase);
         if (confProp == null)
             return;
@@ -41,6 +42,7 @@ public static class ConfHelper
             {
                 if (item.DELETE == "1")
                 {
+                    //DebugHelper.WriteLine($" - Update({id}): {JsonConvert.SerializeObject(item)}");
                     confItem = null;
                     confList.Remove(confList[i]);
                     if (g.conf.localText.GetType() == confObj.GetType())
@@ -55,6 +57,7 @@ public static class ConfHelper
             }
             else
             {
+                //DebugHelper.WriteLine($" - Add({id}): {JsonConvert.SerializeObject(item)}");
                 confItem = ParseHelper.ParseJson(item, confListItemType);
                 confItem.isModExtend = true;
                 confObj.AddItem(confItem);

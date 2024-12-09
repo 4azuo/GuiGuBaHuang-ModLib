@@ -46,7 +46,6 @@ namespace ModLib.Mod
         {
             //load globals
             AddGlobalCaches();
-            CacheHelper.SaveGlobalCaches();
             DebugHelper.Save();
         }
 
@@ -62,7 +61,6 @@ namespace ModLib.Mod
         {
             //add game-cache
             AddGameCaches();
-            CacheHelper.Save();
             DebugHelper.Save();
         }
 

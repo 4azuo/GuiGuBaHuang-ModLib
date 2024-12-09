@@ -323,8 +323,8 @@ namespace ModLib.Mod
 
                 CallEvents("OnUnload");
 
-                //loadModFlg = true;
-                //loadSttFlg = true;
+                loadModFlg = true;
+                loadSttFlg = true;
 
                 //unregister event
                 #region Timer
