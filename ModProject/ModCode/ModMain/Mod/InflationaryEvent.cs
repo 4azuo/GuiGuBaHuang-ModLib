@@ -2,6 +2,7 @@
 using ModLib.Const;
 using ModLib.Mod;
 using System;
+using System.Collections.Generic;
 using System.Linq;
 using static MOD_nE7UL2.Object.InGameStts;
 
@@ -14,18 +15,26 @@ namespace MOD_nE7UL2.Mod
         public const int LIMIT = 500000000;
 
         public static _InflationaryConfigs Configs => ModMain.ModObj.InGameCustomSettings.InflationaryConfigs;
+        public static Dictionary<string, int> ItemValues { get; } = new Dictionary<string, int>();
 
         public int Corruption { get; set; } = 0;
 
         public override void OnLoadGame()
         {
             base.OnLoadGame();
-            Inflationary(GameHelper.GetGameYear());
+            ItemInflationary();
         }
 
         public override void OnYearly()
         {
             base.OnYearly();
+            BackupItemmValues();
+            ItemInflationary();
+            Corrupt();
+        }
+
+        private void Corrupt()
+        {
             if (GetHighestCost() > LIMIT)
             {
                 Corruption++;
@@ -34,18 +43,37 @@ namespace MOD_nE7UL2.Mod
                 player.RemoveStorageItem(ModLibConst.MONEY_PROP_ID);
                 DramaTool.OpenDrama(REACH_LIMIT_DRAMA);
             }
-            Inflationary(1);
         }
 
-        public static void Inflationary(int year)
+        public static void BackupItemmValues()
+        {
+            foreach (var props in g.conf.itemProps._allConfList)
+            {
+                ItemValues[$"itemProps_{props.id}_sale"] = props.sale;
+                ItemValues[$"itemProps_{props.id}_worth"] = props.worth;
+            }
+            foreach (var item in g.conf.itemSkill._allConfList)
+            {
+                ItemValues[$"itemSkill_{item.id}_price"] = item.price;
+                ItemValues[$"itemSkill_{item.id}_cost"] = item.cost;
+                ItemValues[$"itemSkill_{item.id}_sale"] = item.sale;
+                ItemValues[$"itemSkill_{item.id}_worth"] = item.worth;
+            }
+            foreach (var refine in g.conf.townRefine._allConfList)
+            {
+                ItemValues[$"townRefine_{refine.id}_moneyCost"] = refine.moneyCost;
+            }
+        }
+
+        public static void ItemInflationary()
         {
             foreach (var props in g.conf.itemProps._allConfList)
             {
                 if (props.type == (int)PropsType.Money)
                     continue;
 
-                props.sale = CalculateInflationary(props.sale, year);
-                props.worth = CalculateInflationary(props.worth, year);
+                props.sale = CalculateInflationary(ItemValues[$"itemProps_{props.id}_sale"]);
+                props.worth = CalculateInflationary(ItemValues[$"itemProps_{props.id}_worth"]);
 
                 if (props.IsPillRecipe() != null)
                 {
@@ -56,39 +84,33 @@ namespace MOD_nE7UL2.Mod
             }
             foreach (var item in g.conf.itemSkill._allConfList)
             {
-                item.price = CalculateInflationary(item.price, year);
-                item.cost = CalculateInflationary(item.cost, year);
-                item.sale = CalculateInflationary(item.sale, year);
-                item.worth = CalculateInflationary(item.worth, year);
+                item.price = CalculateInflationary(ItemValues[$"itemSkill_{item.id}_price"]);
+                item.cost = CalculateInflationary(ItemValues[$"itemSkill_{item.id}_cost"]);
+                item.sale = CalculateInflationary(ItemValues[$"itemSkill_{item.id}_sale"]);
+                item.worth = CalculateInflationary(ItemValues[$"itemSkill_{item.id}_worth"]);
             }
             foreach (var refine in g.conf.townRefine._allConfList)
             {
-                refine.moneyCost = CalculateInflationary(refine.moneyCost, year);
+                refine.moneyCost = CalculateInflationary(ItemValues[$"townRefine_{refine.id}_moneyCost"]);
             }
         }
 
-        public static int CalculateInflationary(int value, int year)
+        public static int CalculateInflationary(int originValue)
         {
-            if (value <= 0)
-                return value;
+            if (originValue <= 0)
+                return originValue;
             var smConfigs = EventHelper.GetEvent<SMLocalConfigsEvent>(ModConst.SM_LOCAL_CONFIGS_EVENT);
             var x = EventHelper.GetEvent<InflationaryEvent>(ModConst.INFLATIONARY_EVENT);
-            if (smConfigs.Configs == null) DebugHelper.WriteLine("1,1");
-            if (Configs == null) DebugHelper.WriteLine("1,2");
-            if (ModMain.ModObj.InGameCustomSettings.NpcUpgradeSkillConfigs == null) DebugHelper.WriteLine("1,3");
-            return Convert.ToInt32(value * Math.Pow(smConfigs.Calculate(Configs.InflationaryRate, smConfigs.Configs.AddInflationRate), year) / Math.Pow(100, x.Corruption));
+            return Convert.ToInt32(originValue * Math.Pow(smConfigs.Calculate(Configs.InflationaryRate, smConfigs.Configs.AddInflationRate), GameHelper.GetGameYear()) / Math.Pow(100, x.Corruption));
         }
 
-        public static long CalculateInflationary(long value, int year)
+        public static long CalculateInflationary(long originValue)
         {
-            if (value <= 0)
-                return value;
+            if (originValue <= 0)
+                return originValue;
             var smConfigs = EventHelper.GetEvent<SMLocalConfigsEvent>(ModConst.SM_LOCAL_CONFIGS_EVENT);
             var x = EventHelper.GetEvent<InflationaryEvent>(ModConst.INFLATIONARY_EVENT);
-            if (smConfigs.Configs == null) DebugHelper.WriteLine("2,1");
-            if (Configs == null) DebugHelper.WriteLine("2,2");
-            if (ModMain.ModObj.InGameCustomSettings.BankAccountConfigs == null) DebugHelper.WriteLine("2,3");
-            return Convert.ToInt64(value * Math.Pow(smConfigs.Calculate(Configs.InflationaryRate, smConfigs.Configs.AddInflationRate), year) / Math.Pow(100, x.Corruption));
+            return Convert.ToInt64(originValue * Math.Pow(smConfigs.Calculate(Configs.InflationaryRate, smConfigs.Configs.AddInflationRate), GameHelper.GetGameYear()) / Math.Pow(100, x.Corruption));
         }
 
         public static int GetHighestCost()

@@ -17,7 +17,7 @@ namespace MOD_nE7UL2.Mod
         public static int GetExchangeRatio()
         {
             var smConfigs = EventHelper.GetEvent<SMLocalConfigsEvent>(ModConst.SM_LOCAL_CONFIGS_EVENT);
-            return smConfigs.Calculate(InflationaryEvent.CalculateInflationary(ModMain.ModObj.InGameCustomSettings.ContributionExchangeConfigs.ExchangeRatio, GameHelper.GetGameYear()), smConfigs.Configs.AddSectExchangeRate).Parse<int>();
+            return smConfigs.Calculate(InflationaryEvent.CalculateInflationary(ModMain.ModObj.InGameCustomSettings.ContributionExchangeConfigs.ExchangeRatio), smConfigs.Configs.AddSectExchangeRate).Parse<int>();
         }
 
         public int CurMonthRatio { get; set; }

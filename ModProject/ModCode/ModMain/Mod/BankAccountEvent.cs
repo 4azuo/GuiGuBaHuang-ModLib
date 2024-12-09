@@ -48,7 +48,7 @@ namespace MOD_nE7UL2.Mod
         {
             var smConfigs = EventHelper.GetEvent<SMLocalConfigsEvent>(ModConst.SM_LOCAL_CONFIGS_EVENT);
             var round = BankAccountConfigs.OpenFee[areaId] / 100;
-            return smConfigs.Calculate(InflationaryEvent.CalculateInflationary(BankAccountConfigs.OpenFee[areaId], GameHelper.GetGameYear()) / round * round, smConfigs.Configs.AddBankAccountCostRate).Parse<int>();
+            return smConfigs.Calculate(InflationaryEvent.CalculateInflationary(BankAccountConfigs.OpenFee[areaId]) / round * round, smConfigs.Configs.AddBankAccountCostRate).Parse<int>();
         }
 
         public static void RemoveAllAccounts()

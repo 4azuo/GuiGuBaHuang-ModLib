@@ -43,7 +43,7 @@ public static class SttHelper
             var customSettings = ModMaster.ModObj.GetType().GetCustomAttribute<InGameCustomSettingsAttribute>();
             if (string.IsNullOrEmpty(customSettings?.ConfCustomConfigFile))
                 return null;
-            var stt = JsonConvert.DeserializeObject<T>(File.ReadAllText(ConfHelper.GetConfFilePath(customSettings.ConfCustomConfigFile)), JSON_SETTINGS);
+            var stt = JsonConvert.DeserializeObject<T>(ConfHelper.ReadConfData(customSettings.ConfCustomConfigFile), JSON_SETTINGS);
             stt.CustomConfigFile = customSettings.ConfCustomConfigFile;
             stt.CustomConfigVersion = customSettings.ConfCustomConfigVersion;
             return stt;

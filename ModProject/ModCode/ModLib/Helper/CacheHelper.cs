@@ -297,7 +297,7 @@ public static class CacheHelper
         var orderCfg = ModMaster.ModObj.GetType().GetCustomAttribute<ModOrderAttribute>();
         if (orderCfg != null)
         {
-            var orderList = JsonConvert.DeserializeObject<Dictionary<string, int>>(File.ReadAllText(ConfHelper.GetConfFilePath(orderCfg.OrderFile)));
+            var orderList = JsonConvert.DeserializeObject<Dictionary<string, int>>(ConfHelper.ReadConfData(orderCfg.OrderFile));
             Order(orderList);
         }
     }

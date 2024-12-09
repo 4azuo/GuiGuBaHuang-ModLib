@@ -74,7 +74,7 @@ namespace MOD_nE7UL2.Mod
             var tax = smConfigs.Calculate(Convert.ToInt32(InflationaryEvent.CalculateInflationary((
                         Math.Pow(2, areaId) * FIXING_RATE *
                         (1.00f + UnitTypeLuckEnum.Merchant.CustomEffects[ModConst.UTYPE_LUCK_EFX_SELL_VALUE].Value0.Parse<float>() + MerchantLuckEnum.Merchant.GetCurLevel(wunit) * MerchantLuckEnum.Merchant.IncSellValueEachLvl)
-                    ).Parse<int>(), GameHelper.GetGameYear())), smConfigs.Configs.AddTaxRate).Parse<int>();
+                    ).Parse<int>())), smConfigs.Configs.AddTaxRate).Parse<int>();
             var school = g.world.build.GetBuild<MapBuildSchool>(location);
             if (school != null)
                 tax *= school.schoolData.allEffects.Count;

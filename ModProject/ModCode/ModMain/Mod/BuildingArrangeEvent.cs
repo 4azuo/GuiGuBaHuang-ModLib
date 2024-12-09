@@ -86,7 +86,7 @@ namespace MOD_nE7UL2.Mod
         public static long GetBuildingCost(MapBuildBase build, BuildingCostEnum e)
         {
             var smConfigs = EventHelper.GetEvent<SMLocalConfigsEvent>(ModConst.SM_LOCAL_CONFIGS_EVENT);
-            var cost = InflationaryEvent.CalculateInflationary(e.BuildCosts[build.gridData.areaBaseID - 1], GameHelper.GetGameYear());
+            var cost = InflationaryEvent.CalculateInflationary(e.BuildCosts[build.gridData.areaBaseID - 1]);
             return smConfigs.Calculate(cost, smConfigs.Configs.AddBuildingCostRate).Parse<long>();
         }
     }

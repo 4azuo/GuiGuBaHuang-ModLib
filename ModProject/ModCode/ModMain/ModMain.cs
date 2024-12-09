@@ -20,9 +20,10 @@ namespace MOD_nE7UL2
         public override void OnInitConf()
         {
             base.OnInitConf();
-            if (g.conf.roleAttributeLimit.attackMax == int.MaxValue)
+            if (g.conf.roleAttributeLimit.talentMax == int.MaxValue)
                 return;
             ModSettings = JsonConvert.DeserializeObject<ModStts>(ConfHelper.ReadConfData("mod_configs.json"));
+            //exp
             foreach (var item in g.conf.roleGrade._allConfList)
             {
                 item.exp = (item.exp * ModSettings.LevelExpRatio).Parse<int>();
@@ -143,6 +144,9 @@ namespace MOD_nE7UL2
             //balance item
             foreach (var props in g.conf.itemProps._allConfList)
             {
+                if (props.sale < 0)
+                    continue;
+
                 var grade = 1;
                 var level = Math.Max(1, Math.Min(6, props.level));
                 var ratio = 1.00f;
