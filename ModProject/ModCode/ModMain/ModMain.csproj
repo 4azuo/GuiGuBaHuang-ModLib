@@ -82,6 +82,8 @@
     <Compile Include="Mod\NpcUpgradeSkillEvent.cs" />
     <Compile Include="Mod\MonstStrongerEvent.cs" />
     <Compile Include="Mod\BornLuckEvent.cs" />
+    <Compile Include="Mod\TrainerEvent.cs" />
+    <Compile Include="Mod\UpgradeNaturallyEvent.cs" />
     <Compile Include="Object\SMItemWork.cs" />
     <Compile Include="Object\CustomRefine.cs" />
     <Compile Include="Object\InGameEvent.cs" />

@@ -1,9 +1,12 @@
 {
+	//common
 	"$BATTLE$": 100,
 	"SMGlobalEvent": 1000,
 	"SMLocalEvent": 1010,
 	"InflationaryEvent": 1020,
+	"TrainerEvent": 1030,
 
+	//not affect
 	"SliceLifeQuestEvent": 2000,
 	"RebirthEvent": 2010,
 	"MissionDeclareEvent": 2020,
@@ -11,7 +14,9 @@
 	"NpcAutoCulEvent": 2040,
 	"NpcUpgradeSkillEvent": 2050,
 	"UnitTypeEvent": 2060,
+	"UpgradeNaturallyEvent": 2070,
 
+	//eco
 	"MapBuildPropertyEvent": 3000,
 	"BankAccountEvent": 3010,
 	"BuildingArrangeEvent": 3030,
@@ -19,10 +24,12 @@
 	"RealMarketEvent": 3060,
 	"RealMarketEvent2": 3050,
 
+	//affect attributes/properties
 	"UnitModifyEvent": 4000,
 	"ExpertEvent": 4010,
 	"CustomRefineEvent": 4020,
 
+	//battle
 	"MostStrongerEvent": 5000,
 	"RealTrialEvent": 5010,
 	"SpiritlockEvent": 5020,
@@ -31,9 +38,12 @@
 	"RevengeEvent": 5050,
 	"BattleRewardEventV2": 5060,
 
+	//global
 	"UIDifficultyEvent": 6000,
 	"UICreatePlayerEvent": 6010,
 	"UITitleScreenEvent": 6020,
 	"UIEvent": 6030,
+
+	//debug
 	"DebugEvent": 9999
 }

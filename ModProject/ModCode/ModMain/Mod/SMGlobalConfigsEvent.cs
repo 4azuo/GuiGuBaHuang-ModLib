@@ -42,6 +42,8 @@ namespace MOD_nE7UL2.Mod
         public bool BossHasShield { get; set; } = false;
         public bool NoGrowupFromBattles { get; set; } = false;
         public bool LowGradeDestiniesAtBeginning { get; set; } = false;
+        public bool AllowUpgradeNaturally { get; set; } = false;
+        public bool EnableTrainer { get; set; } = false;
 
         //UI
         private UIHelper.UICustom1 uiCustom;
@@ -72,6 +74,8 @@ namespace MOD_nE7UL2.Mod
         private UIItemBase.UIItemComposite tglSysBossHasShield;
         private UIItemBase.UIItemComposite tglNoGrowupFromBattles;
         private UIItemBase.UIItemComposite tglLowGradeDestiniesAtBeginning;
+        private UIItemBase.UIItemComposite tglAllowUpgradeNaturally;
+        private UIItemBase.UIItemComposite tglEnableTrainer;
 
         //Score
         public static IList<SMItemWork> ScoreCalculator { get; } = new List<SMItemWork>();
@@ -107,6 +111,8 @@ namespace MOD_nE7UL2.Mod
             Register(() => tglSysBossHasShield, s => 10000, s => s.Get().Parse<bool>());
             Register(() => tglNoGrowupFromBattles, s => 10000, s => s.Get().Parse<bool>());
             Register(() => tglLowGradeDestiniesAtBeginning, s => 1000, s => s.Get().Parse<bool>());
+            Register(() => tglAllowUpgradeNaturally, s => -2000, s => s.Get().Parse<bool>());
+            Register(() => tglEnableTrainer, s => -1000000, s => s.Get().Parse<bool>());
         }
 
         private void Register(
@@ -168,10 +174,9 @@ namespace MOD_nE7UL2.Mod
             slMonstDef = uiCustom.AddCompositeSlider(col, row++, "DEF", -0.50f, 10.00f, AddDefRate, "{1}% ({0}P)");
             slMonstHp = uiCustom.AddCompositeSlider(col, row++, "Max HP", -0.50f, 10.00f, AddHpRate, "{1}% ({0}P)");
             slMonstBasis = uiCustom.AddCompositeSlider(col, row++, "Basis", -0.50f, 10.00f, AddBasisRate, "{1}% ({0}P)");
-            uiCustom.AddText(col, row++, "(Included Sword, Blade, Spear, Fist, Finger, Palm, Fire, Water, Thunder, Wood, Wind, Earth)").Format(null, 13).Align(TextAnchor.MiddleLeft);
+            uiCustom.AddText(col - 2, row++, "(Included Sword, Blade, Spear, Fist, Finger, Palm, Fire, Water, Thunder, Wood, Wind, Earth)").Format(null, 13).Align(TextAnchor.MiddleLeft);
             slMonstSpecialRate = uiCustom.AddCompositeSlider(col, row++, "Special Monster Rate", -0.50f, 1.00f, AddSpecialMonsterRate, "{1}% ({0}P)");
-
-            col = 2; row = 8;
+            row++;
             uiCustom.AddText(col, row++, "Economic:").Format(null, 17, FontStyle.Italic).Align(TextAnchor.MiddleRight);
             slEcoTaxRate = uiCustom.AddCompositeSlider(col, row++, "Tax Rate", 0.00f, 10.00f, AddTaxRate, "{1}% ({0}P)");
             slEcoInfRate = uiCustom.AddCompositeSlider(col, row++, "Inflation Rate", -0.50f, 3.00f, AddInflationRate, "{1}% ({0}P)");
@@ -181,12 +186,10 @@ namespace MOD_nE7UL2.Mod
             slEcoRefineCost = uiCustom.AddCompositeSlider(col, row++, "Refine Cost", -0.50f, 1.00f, AddRefineCost, "{1}% ({0}P)");
             slEcoSectExchangeRate = uiCustom.AddCompositeSlider(col, row++, "Sect Exchange Fee", -0.50f, 1.00f, AddSectExchangeRate, "{1}% ({0}P)");
             slEcoItemValue = uiCustom.AddCompositeSlider(col, row++, "Item Value", -0.50f, 1.00f, AddItemValueRate, "{1}% ({0}P)");
-
-            col = 2; row = 18;
+            row++;
             uiCustom.AddText(col, row++, "NPC:").Format(null, 17, FontStyle.Italic).Align(TextAnchor.MiddleRight);
             slNpcGrowRate = uiCustom.AddCompositeSlider(col, row++, "Grow Rate", 0.00f, 10.00f, AddNpcGrowRate, "{1}% ({0}P)");
-
-            col = 2; row = 21;
+            row++;
             uiCustom.AddText(col, row++, "Misc:").Format(null, 17, FontStyle.Italic).Align(TextAnchor.MiddleRight);
             slMiscLevelupExp = uiCustom.AddCompositeSlider(col, row++, "Levelup Exp", 0.00f, 1.00f, AddLevelupExpRate, "{1}% ({0}P)");
 
@@ -201,10 +204,15 @@ namespace MOD_nE7UL2.Mod
             tglSysOnlyPortalAtCityAndSect = uiCustom.AddCompositeToggle(col, row++, "Only Portal at City and Sect", OnlyPortalAtCityAndSect, "({0}P)");
             tglSysSectNoExchange = uiCustom.AddCompositeToggle(col, row++, "Sect No Exchange", SectNoExchange, "({0}P)");
             tglSysNoRebirth = uiCustom.AddCompositeToggle(col, row++, "No Rebirth", NoRebirth, "({0}P)");
+            tglAllowUpgradeNaturally = uiCustom.AddCompositeToggle(col, row++, "Allow Upgrade Naturally", AllowUpgradeNaturally, "({0}P)");
+            uiCustom.AddText(col - 2, row++, "(This way wont grow up your attributes/properties)").Format(null, 13).Align(TextAnchor.MiddleLeft);
             row++;
             tglSysBossHasShield = uiCustom.AddCompositeToggle(col, row++, "Boss Has Shield", BossHasShield, "({0}P)");
             tglNoGrowupFromBattles = uiCustom.AddCompositeToggle(col, row++, "No Growup From Battles", NoGrowupFromBattles, "({0}P)");
             tglSysNoExpFromBattle = uiCustom.AddCompositeToggle(col, row++, "No Exp from Battles", NoExpFromBattles, "({0}P)");
+            row++;
+            tglEnableTrainer = uiCustom.AddCompositeToggle(col, row++, "Enable Trainer", EnableTrainer, "({0}P)");
+            uiCustom.AddText(col - 2, row++, "(Dont recommend to use this option)").Format(null, 13).Align(TextAnchor.MiddleLeft);
 
             col = 30; row = 0;
             txtTotalScore = uiCustom.AddText(col, row, "Total score: {0}P").Format(Color.red, 17).Align(TextAnchor.MiddleRight);
@@ -262,6 +270,8 @@ namespace MOD_nE7UL2.Mod
             tglSysOnelife.Set(false);
             tglNoGrowupFromBattles.Set(false);
             tglLowGradeDestiniesAtBeginning.Set(false);
+            tglAllowUpgradeNaturally.Set(false);
+            tglEnableTrainer.Set(false);
         }
 
         private void SetLevel(int level)
@@ -281,6 +291,8 @@ namespace MOD_nE7UL2.Mod
             slEcoItemValue.SetPercent(level * 0.10000f);
             slNpcGrowRate.SetPercent(level * 0.02000f);
             slMiscLevelupExp.SetPercent(level * 0.10000f);
+            tglAllowUpgradeNaturally.Set(false);
+            tglEnableTrainer.Set(false);
             tglSysHideBattleMap.Set(level > 0);
             tglSysHideSave.Set(level > 1);
             tglSysNoExpFromBattle.Set(level > 2);
@@ -331,6 +343,8 @@ namespace MOD_nE7UL2.Mod
             BossHasShield = tglSysBossHasShield.Get().Parse<bool>();
             NoGrowupFromBattles = tglNoGrowupFromBattles.Get().Parse<bool>();
             LowGradeDestiniesAtBeginning = tglLowGradeDestiniesAtBeginning.Get().Parse<bool>();
+            AllowUpgradeNaturally = tglAllowUpgradeNaturally.Get().Parse<bool>();
+            EnableTrainer = tglEnableTrainer.Get().Parse<bool>();
             CacheHelper.SaveGlobalCache(this);
         }
 
