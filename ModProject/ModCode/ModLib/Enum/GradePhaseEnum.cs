@@ -51,7 +51,7 @@ namespace ModLib.Enum
 
         public GradeEnum Grade { get; private set; }
         public BottleneckEnum Bottleneck { get; private set; }
-        private GradePhaseEnum(int gradeId, GradeEnum grade, BottleneckEnum bottleneck = BottleneckEnum.None) : base(gradeId.ToString())
+        private GradePhaseEnum(int phaseId, GradeEnum grade, BottleneckEnum bottleneck = BottleneckEnum.None) : base(phaseId.ToString())
         {
             Grade = grade;
             Bottleneck = bottleneck;

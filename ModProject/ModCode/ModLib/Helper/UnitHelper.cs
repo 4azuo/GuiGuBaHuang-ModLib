@@ -3,6 +3,7 @@ using ModLib.Enum;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Numerics;
 using UnityEngine;
 
 public static class UnitHelper
@@ -197,6 +198,13 @@ public static class UnitHelper
     //{
     //    propType.Set(wunit.data.dynUnitData, newValue);
     //}
+
+    public static int GetNextPhaseLvl(this WorldUnitBase wunit)
+    {
+        var curPhaseLvl = wunit.GetPhaseLvl();
+        var curPhaseEnum = GradePhaseUpEnum.GetEnumByVal<GradePhaseUpEnum>(curPhaseLvl.ToString());
+        return curPhaseEnum.NextPhase.Value.Parse<int>();
+    }
 
     public static int GetMaxExpCurrentGrade(this WorldUnitBase wunit)
     {
@@ -484,7 +492,17 @@ public static class UnitHelper
 
     public static int GetGradeLvl(this WorldUnitBase wunit)
     {
-        return (int)GradePhaseEnum.GetEnumByVal<GradePhaseEnum>(wunit.GetDynProperty(UnitDynPropertyEnum.GradeID).value.ToString()).Grade;
+        return wunit.GetGradeConf().grade;
+    }
+
+    public static int GetPhaseLvl(this WorldUnitBase wunit)
+    {
+        return wunit.GetGradeConf().id;
+    }
+
+    public static ConfRoleGradeItem GetGradeConf(this WorldUnitBase wunit)
+    {
+        return g.conf.roleGrade.GetItem(g.world.playerUnit.GetDynProperty(UnitDynPropertyEnum.GradeID).value);
     }
 
     public static void RemoveAllItems(this WorldUnitBase wunit)

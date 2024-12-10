@@ -45,6 +45,7 @@
     <Compile Include="Attribute\TraceAttribute.cs" />
     <Compile Include="Const\ModLibConst.cs" />
     <Compile Include="Converter\EnumObjectConverter.cs" />
+    <Compile Include="Enum\GradePhaseUpEnum.cs" />
     <Compile Include="Enum\ItemTypeEnum.cs" />
     <Compile Include="Enum\PillTypeEnum.cs" />
     <Compile Include="Enum\EffectTypeEnum.cs" />

@@ -143,7 +143,7 @@ public static class ObjectHelper
         return newObj;
     }
 
-    public static T Align<T>(this T obj, TextAnchor tanchor = TextAnchor.MiddleLeft, VerticalWrapMode vMode = VerticalWrapMode.Overflow, HorizontalWrapMode hMode = HorizontalWrapMode.Overflow) where T : Text
+    public static Text Align(this Text obj, TextAnchor tanchor = TextAnchor.MiddleLeft, VerticalWrapMode vMode = VerticalWrapMode.Overflow, HorizontalWrapMode hMode = HorizontalWrapMode.Overflow)
     {
         obj.alignment = tanchor;
         obj.verticalOverflow = vMode;
@@ -151,11 +151,31 @@ public static class ObjectHelper
         return obj;
     }
 
-    public static T Format<T>(this T obj, Color? color = null, int fsize = 15, FontStyle fstype = FontStyle.Normal) where T : Text
+    public static Button Align(this Button obj, TextAnchor tanchor = TextAnchor.MiddleLeft, VerticalWrapMode vMode = VerticalWrapMode.Overflow, HorizontalWrapMode hMode = HorizontalWrapMode.Overflow)
+    {
+        var txt = obj.GetComponentInChildren<Text>();
+        if (txt != null)
+        {
+            txt.Align(tanchor, vMode, hMode);
+        }
+        return obj;
+    }
+
+    public static Text Format(this Text obj, Color? color = null, int fsize = 15, FontStyle fstype = FontStyle.Normal)
     {
         obj.fontSize = fsize;
         obj.fontStyle = fstype;
         obj.color = color ?? Color.black;
+        return obj;
+    }
+
+    public static Button Format(this Button obj, Color? color = null, int fsize = 15, FontStyle fstype = FontStyle.Normal)
+    {
+        var txt = obj.GetComponentInChildren<Text>();
+        if (txt != null)
+        {
+            txt.Format(color, fsize, fstype);
+        }
         return obj;
     }
 
