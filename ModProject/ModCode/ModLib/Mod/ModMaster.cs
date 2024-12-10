@@ -421,7 +421,7 @@ namespace ModLib.Mod
                 #endregion
 
                 #region MonoEvents
-                DestroyObject(monoUpdater);
+                Destroy(monoUpdater);
                 #endregion
             }
             catch (Exception ex)
@@ -506,7 +506,7 @@ namespace ModLib.Mod
         {
             var ui = g.ui.OpenUI<UITextInfoLong>(UIType.TextInfoLong);
             ui.InitData("Exception", ex.GetAllInnnerExceptionStr());
-            var btnOpenLog = ui.btnOK.Create();
+            var btnOpenLog = ui.btnOK.Copy();
             var txtOpenLog = btnOpenLog.GetComponentInChildren<Text>().Align(TextAnchor.MiddleCenter);
             txtOpenLog.text = "Open log";
             ui.ptextInfo.fontSize = 14;

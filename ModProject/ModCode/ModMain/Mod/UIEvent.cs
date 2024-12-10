@@ -90,7 +90,7 @@ namespace MOD_nE7UL2.Mod
                 using (var a = new UISample())
                 {
                     uiTown = g.ui.GetUI<UITown>(UIType.Town);
-                    uiTown_tax = a.sampleUI.btnKeyOK.Create(uiTown.canvas.transform).AddSize(200f, 20f).Setup($"Tax: {MapBuildPropertyEvent.GetTax(g.world.playerUnit)} Spirit Stones");
+                    uiTown_tax = a.sampleUI.btnKeyOK.Copy(uiTown.canvas.transform).AddSize(200f, 20f).Set($"Tax: {MapBuildPropertyEvent.GetTax(g.world.playerUnit)} Spirit Stones");
                     uiTown_tax.enabled = false;
                 }
             }
@@ -100,7 +100,7 @@ namespace MOD_nE7UL2.Mod
                 using (var a = new UISample())
                 {
                     uiSchool = g.ui.GetUI<UISchool>(UIType.School);
-                    uiSchool_tax = a.sampleUI.btnKeyOK.Create(uiSchool.canvas.transform).AddSize(200f, 20f).Setup($"Tax: {MapBuildPropertyEvent.GetTax(g.world.playerUnit)} Spirit Stones");
+                    uiSchool_tax = a.sampleUI.btnKeyOK.Copy(uiTown.canvas.transform).AddSize(200f, 20f).Set($"Tax: {MapBuildPropertyEvent.GetTax(g.world.playerUnit)} Spirit Stones");
                     uiSchool_tax.enabled = false;
                 }
             }
@@ -117,13 +117,13 @@ namespace MOD_nE7UL2.Mod
                 var uiNPCInfo = g.ui.GetUI<UINPCInfo>(UIType.NPCInfo);
 
                 var sampleText1 = uiNPCInfo.uiProperty.goGroupRoot.GetComponentInChildren<Text>();
-                uiNPCInfo_textMartialAdjHp = ObjectHelper.Create(sampleText1).Align(TextAnchor.MiddleCenter).Format(Color.white).Pos(uiNPCInfo.uiProperty.goItem6, 0.4f, -1.1f);
-                uiNPCInfo_textSpiritualAdjMp = ObjectHelper.Create(sampleText1).Align(TextAnchor.MiddleCenter).Format(Color.white).Pos(uiNPCInfo.uiProperty.goItem7, 0.4f, -1.1f);
-                uiNPCInfo_textArtisanshipAdjSp = ObjectHelper.Create(sampleText1).Align(TextAnchor.MiddleCenter).Format(Color.white).Pos(uiNPCInfo.uiProperty.goItem8, 0.4f, -1.1f);
+                uiNPCInfo_textMartialAdjHp = sampleText1.Copy().Align(TextAnchor.MiddleCenter).Format(Color.white).Pos(uiNPCInfo.uiProperty.goItem6, 0.4f, -1.1f);
+                uiNPCInfo_textSpiritualAdjMp = sampleText1.Copy().Align(TextAnchor.MiddleCenter).Format(Color.white).Pos(uiNPCInfo.uiProperty.goItem7, 0.4f, -1.1f);
+                uiNPCInfo_textArtisanshipAdjSp = sampleText1.Copy().Align(TextAnchor.MiddleCenter).Format(Color.white).Pos(uiNPCInfo.uiProperty.goItem8, 0.4f, -1.1f);
 
                 var sampleText2 = uiNPCInfo.uiSkill.textPoint1;
-                uiNPCInfoSkill_textAbiPointAdjHp = ObjectHelper.Create(sampleText2).Align(TextAnchor.MiddleCenter).Format(Color.white).Pos(uiNPCInfo.uiSkill.textPoint1.gameObject, 0f, -0.2f);
-                uiNPCInfoSkill_textAbiPointAdjMp = ObjectHelper.Create(sampleText2).Align(TextAnchor.MiddleCenter).Format(Color.white).Pos(uiNPCInfo.uiSkill.textPoint1.gameObject, 0f, -0.4f);
+                uiNPCInfoSkill_textAbiPointAdjHp = sampleText2.Copy().Align(TextAnchor.MiddleCenter).Format(Color.white).Pos(uiNPCInfo.uiSkill.textPoint1.gameObject, 0f, -0.2f);
+                uiNPCInfoSkill_textAbiPointAdjMp = sampleText2.Copy().Align(TextAnchor.MiddleCenter).Format(Color.white).Pos(uiNPCInfo.uiSkill.textPoint1.gameObject, 0f, -0.4f);
             }
             else
             if (e.uiType.uiName == UIType.PlayerInfo.uiName)
@@ -131,13 +131,13 @@ namespace MOD_nE7UL2.Mod
                 var uiPlayerInfo = g.ui.GetUI<UIPlayerInfo>(UIType.PlayerInfo);
 
                 var sampleText1 = uiPlayerInfo.uiPropertyCommon.goGroupRoot.GetComponentInChildren<Text>();
-                uiPlayerInfo_textMartialAdjHp = ObjectHelper.Create(sampleText1).Align(TextAnchor.MiddleCenter).Format().Pos(uiPlayerInfo.uiPropertyCommon.goItem6_En, 0.4f, -1.0f);
-                uiPlayerInfo_textSpiritualAdjMp = ObjectHelper.Create(sampleText1).Align(TextAnchor.MiddleCenter).Format().Pos(uiPlayerInfo.uiPropertyCommon.goItem7_En, 0.4f, -1.0f);
-                uiPlayerInfo_textArtisanshipAdjSp = ObjectHelper.Create(sampleText1).Align(TextAnchor.MiddleCenter).Format().Pos(uiPlayerInfo.uiPropertyCommon.goItem8_En, 0.4f, -1.0f);
+                uiPlayerInfo_textMartialAdjHp = sampleText1.Copy().Align(TextAnchor.MiddleCenter).Format().Pos(uiPlayerInfo.uiPropertyCommon.goItem6_En, 0.4f, -1.0f);
+                uiPlayerInfo_textSpiritualAdjMp = sampleText1.Copy().Align(TextAnchor.MiddleCenter).Format().Pos(uiPlayerInfo.uiPropertyCommon.goItem7_En, 0.4f, -1.0f);
+                uiPlayerInfo_textArtisanshipAdjSp = sampleText1.Copy().Align(TextAnchor.MiddleCenter).Format().Pos(uiPlayerInfo.uiPropertyCommon.goItem8_En, 0.4f, -1.0f);
 
                 var sampleText2 = uiPlayerInfo.uiSkill.textPoint1;
-                uiPlayerInfoSkill_textAbiPointAdjHp = ObjectHelper.Create(sampleText2).Align(TextAnchor.MiddleCenter).Format(Color.white).Pos(uiPlayerInfo.uiSkill.textPoint1.gameObject, 0f, -0.2f);
-                uiPlayerInfoSkill_textAbiPointAdjMp = ObjectHelper.Create(sampleText2).Align(TextAnchor.MiddleCenter).Format(Color.white).Pos(uiPlayerInfo.uiSkill.textPoint1.gameObject, 0f, -0.4f);
+                uiPlayerInfoSkill_textAbiPointAdjHp = sampleText2.Copy().Align(TextAnchor.MiddleCenter).Format(Color.white).Pos(uiPlayerInfo.uiSkill.textPoint1.gameObject, 0f, -0.2f);
+                uiPlayerInfoSkill_textAbiPointAdjMp = sampleText2.Copy().Align(TextAnchor.MiddleCenter).Format(Color.white).Pos(uiPlayerInfo.uiSkill.textPoint1.gameObject, 0f, -0.4f);
             }
             else
             if (e.uiType.uiName == UIType.ArtifactInfo.uiName)
@@ -156,10 +156,10 @@ namespace MOD_nE7UL2.Mod
                 var expertNeedExp = ExpertEvent.GetExpertNeedExp(expertLvl + 1, propsGrade, propsLevel);
 
                 //basic
-                uiArtifactInfo_textBasicTitle = ObjectHelper.Create(uiArtifactInfo.textGrade_En).Align().Format(Color.white, 15);
-                uiArtifactInfo_textBasicAdj1 = ObjectHelper.Create(uiArtifactInfo.textGrade_En).Align().Format(Color.white, 14);
-                uiArtifactInfo_textBasicAdj2 = ObjectHelper.Create(uiArtifactInfo.textGrade_En).Align().Format(Color.white, 14);
-                uiArtifactInfo_textBasicAdj3 = ObjectHelper.Create(uiArtifactInfo.textGrade_En).Align().Format(Color.white, 14);
+                uiArtifactInfo_textBasicTitle = uiArtifactInfo.textGrade_En.Copy().Align().Format(Color.white, 15);
+                uiArtifactInfo_textBasicAdj1 = uiArtifactInfo.textGrade_En.Copy().Align().Format(Color.white, 14);
+                uiArtifactInfo_textBasicAdj2 = uiArtifactInfo.textGrade_En.Copy().Align().Format(Color.white, 14);
+                uiArtifactInfo_textBasicAdj3 = uiArtifactInfo.textGrade_En.Copy().Align().Format(Color.white, 14);
 
                 uiArtifactInfo_textBasicTitle.Pos(uiArtifactInfo.textGrade_En.gameObject, 0f, -0.2f);
                 uiArtifactInfo_textBasicAdj1.Pos(uiArtifactInfo.textGrade_En.gameObject, +0.05f, -0.35f);
@@ -172,9 +172,9 @@ namespace MOD_nE7UL2.Mod
                 uiArtifactInfo_textBasicAdj3.text = $"+Hp: {UnitModifyHelper.GetArtifactBasicAdjHp(uiArtifactInfo.unit.GetDynProperty(UnitDynPropertyEnum.HpMax).baseValue, uiArtifactInfo.shapeProp, artifact)}";
 
                 //expert
-                uiArtifactInfo_textExpertLvl = ObjectHelper.Create(uiArtifactInfo.textGrade_En).Align().Format(Color.white, 15);
-                uiArtifactInfo_textExpertAdj1 = ObjectHelper.Create(uiArtifactInfo.textGrade_En).Align().Format(Color.white, 14);
-                uiArtifactInfo_textExpertAdj2 = ObjectHelper.Create(uiArtifactInfo.textGrade_En).Align().Format(Color.white, 14);
+                uiArtifactInfo_textExpertLvl = uiArtifactInfo.textGrade_En.Copy().Align().Format(Color.white, 15);
+                uiArtifactInfo_textExpertAdj1 = uiArtifactInfo.textGrade_En.Copy().Align().Format(Color.white, 14);
+                uiArtifactInfo_textExpertAdj2 = uiArtifactInfo.textGrade_En.Copy().Align().Format(Color.white, 14);
 
                 uiArtifactInfo_textExpertLvl.Pos(uiArtifactInfo.textGrade_En.gameObject, 0f, -0.85f);
                 uiArtifactInfo_textExpertAdj1.Pos(uiArtifactInfo.textGrade_En.gameObject, +0.05f, -1.0f);
@@ -190,12 +190,12 @@ namespace MOD_nE7UL2.Mod
                 var customAdj2 = CustomRefineEvent.GetCustomAdjType(uiArtifactInfo.shapeProp, 2);
                 var customAdj3 = CustomRefineEvent.GetCustomAdjType(uiArtifactInfo.shapeProp, 3);
 
-                uiArtifactInfo_textRefineTitle = ObjectHelper.Create(uiArtifactInfo.textGrade_En).Align(TextAnchor.MiddleRight).Format(Color.white, 15);
-                uiArtifactInfo_textRefineAdj1 = ObjectHelper.Create(uiArtifactInfo.textGrade_En).Align(TextAnchor.MiddleRight).Format(Color.white, 14);
-                uiArtifactInfo_textRefineAdj2 = ObjectHelper.Create(uiArtifactInfo.textGrade_En).Align(TextAnchor.MiddleRight).Format(Color.white, 14);
-                uiArtifactInfo_textRefineAdj3 = ObjectHelper.Create(uiArtifactInfo.textGrade_En).Align(TextAnchor.MiddleRight).Format(customAdj1?.GetColor(refineLvl) ?? AdjLevelEnum.None.Color, 14);
-                uiArtifactInfo_textRefineAdj4 = ObjectHelper.Create(uiArtifactInfo.textGrade_En).Align(TextAnchor.MiddleRight).Format(customAdj2?.GetColor(refineLvl) ?? AdjLevelEnum.None.Color, 14);
-                uiArtifactInfo_textRefineAdj5 = ObjectHelper.Create(uiArtifactInfo.textGrade_En).Align(TextAnchor.MiddleRight).Format(customAdj3?.GetColor(refineLvl) ?? AdjLevelEnum.None.Color, 14);
+                uiArtifactInfo_textRefineTitle = uiArtifactInfo.textGrade_En.Copy().Align(TextAnchor.MiddleRight).Format(Color.white, 15);
+                uiArtifactInfo_textRefineAdj1 = uiArtifactInfo.textGrade_En.Copy().Align(TextAnchor.MiddleRight).Format(Color.white, 14);
+                uiArtifactInfo_textRefineAdj2 = uiArtifactInfo.textGrade_En.Copy().Align(TextAnchor.MiddleRight).Format(Color.white, 14);
+                uiArtifactInfo_textRefineAdj3 = uiArtifactInfo.textGrade_En.Copy().Align(TextAnchor.MiddleRight).Format(customAdj1?.GetColor(refineLvl) ?? AdjLevelEnum.None.Color, 14);
+                uiArtifactInfo_textRefineAdj4 = uiArtifactInfo.textGrade_En.Copy().Align(TextAnchor.MiddleRight).Format(customAdj2?.GetColor(refineLvl) ?? AdjLevelEnum.None.Color, 14);
+                uiArtifactInfo_textRefineAdj5 = uiArtifactInfo.textGrade_En.Copy().Align(TextAnchor.MiddleRight).Format(customAdj3?.GetColor(refineLvl) ?? AdjLevelEnum.None.Color, 14);
 
                 uiArtifactInfo_textRefineTitle.Pos(uiArtifactInfo.textGrade_En.gameObject, 0f, -1.35f);
                 uiArtifactInfo_textRefineAdj1.Pos(uiArtifactInfo.textGrade_En.gameObject, +0.05f, -1.5f);
@@ -289,10 +289,10 @@ namespace MOD_nE7UL2.Mod
                     var customAdj1 = CustomRefineEvent.GetCustomAdjType(uiPropInfo.propData, 1);
                     var customAdj2 = CustomRefineEvent.GetCustomAdjType(uiPropInfo.propData, 2);
 
-                    uiPropInfo_textRefineTitle = ObjectHelper.Create(uiPropInfo.textGrade_En).Align().Format(Color.white, 15);
-                    uiPropInfo_textRefineAdj1 = ObjectHelper.Create(uiPropInfo.textGrade_En).Align().Format(Color.white, 14);
-                    uiPropInfo_textRefineAdj2 = ObjectHelper.Create(uiPropInfo.textGrade_En).Align().Format(customAdj1?.GetColor(refineLvl) ?? AdjLevelEnum.None.Color, 14);
-                    uiPropInfo_textRefineAdj3 = ObjectHelper.Create(uiPropInfo.textGrade_En).Align().Format(customAdj2?.GetColor(refineLvl) ?? AdjLevelEnum.None.Color, 14);
+                    uiPropInfo_textRefineTitle = uiPropInfo.textGrade_En.Copy().Align().Format(Color.white, 15);
+                    uiPropInfo_textRefineAdj1 = uiPropInfo.textGrade_En.Copy().Align().Format(Color.white, 14);
+                    uiPropInfo_textRefineAdj2 = uiPropInfo.textGrade_En.Copy().Align().Format(customAdj1?.GetColor(refineLvl) ?? AdjLevelEnum.None.Color, 14);
+                    uiPropInfo_textRefineAdj3 = uiPropInfo.textGrade_En.Copy().Align().Format(customAdj2?.GetColor(refineLvl) ?? AdjLevelEnum.None.Color, 14);
 
                     uiPropInfo_textRefineTitle.Pos(uiPropInfo.textGrade_En.gameObject, 0f, -0.2f);
                     uiPropInfo_textRefineAdj1.Pos(uiPropInfo.textGrade_En.gameObject, +0.05f, -0.35f);
@@ -310,11 +310,11 @@ namespace MOD_nE7UL2.Mod
                     var customAdj1 = CustomRefineEvent.GetCustomAdjType(uiPropInfo.propData, 1);
                     var customAdj2 = CustomRefineEvent.GetCustomAdjType(uiPropInfo.propData, 2);
 
-                    uiPropInfo_textRefineTitle = ObjectHelper.Create(uiPropInfo.textName).Align().Format(Color.white, 15);
-                    uiPropInfo_textRefineAdj1 = ObjectHelper.Create(uiPropInfo.textName).Align().Format(Color.white, 14);
-                    uiPropInfo_textRefineAdj2 = ObjectHelper.Create(uiPropInfo.textName).Align().Format(Color.white, 14);
-                    uiPropInfo_textRefineAdj3 = ObjectHelper.Create(uiPropInfo.textName).Align().Format(customAdj1?.GetColor(refineLvl) ?? AdjLevelEnum.None.Color, 14);
-                    uiPropInfo_textRefineAdj4 = ObjectHelper.Create(uiPropInfo.textName).Align().Format(customAdj2?.GetColor(refineLvl) ?? AdjLevelEnum.None.Color, 14);
+                    uiPropInfo_textRefineTitle = uiPropInfo.textName.Copy().Align().Format(Color.white, 15);
+                    uiPropInfo_textRefineAdj1 = uiPropInfo.textName.Copy().Align().Format(Color.white, 14);
+                    uiPropInfo_textRefineAdj2 = uiPropInfo.textName.Copy().Align().Format(Color.white, 14);
+                    uiPropInfo_textRefineAdj3 = uiPropInfo.textName.Copy().Align().Format(customAdj1?.GetColor(refineLvl) ?? AdjLevelEnum.None.Color, 14);
+                    uiPropInfo_textRefineAdj4 = uiPropInfo.textName.Copy().Align().Format(customAdj2?.GetColor(refineLvl) ?? AdjLevelEnum.None.Color, 14);
 
                     uiPropInfo_textRefineTitle.Pos(uiPropInfo.textName.gameObject, 0f, 0.8f);
                     uiPropInfo_textRefineAdj1.Pos(uiPropInfo.textName.gameObject, +0.05f, 0.65f);

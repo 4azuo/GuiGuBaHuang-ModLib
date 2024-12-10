@@ -6,7 +6,8 @@ using UnityEngine.UI;
 
 public abstract class UIItemBase
 {
-    public UIItemBase Parent { get; private set; }
+    public virtual UIBase UI { get; private set; }
+    public virtual UIItemBase Parent { get; private set; }
     public virtual UIBehaviour ItemBehaviour { get; private set; }
     public virtual UIItemData ItemData { get; set; }
     public virtual UIItemWork ItemWork { get; set; }
@@ -64,8 +65,9 @@ public abstract class UIItemBase
     {
         public T Item { get; private set; }
 
-        public UIItem(T comp)
+        public UIItem(UIBase ui, T comp)
         {
+            UI = ui;
             Item = comp;
             ItemBehaviour = Item;
         }
@@ -86,10 +88,10 @@ public abstract class UIItemBase
         public string FormatStr { get; private set; }
         public Color Color { get; private set; }
 
-        public UIItemText(Transform t, float x, float y, string format) : base(UIHelper._sampleUI.textSystemOK.Create(t).Pos(UIHelper._originComp.gameObject, x, y))
+        public UIItemText(UIBase ui, float x, float y, string format) : base(ui, UIHelper._sampleUI.textSystemOK.Copy(ui.canvas.transform).Pos(UIHelper._originComp.gameObject, x, y))
         {
             FormatStr = format;
-            Item.Setup(Get()?.ToString());
+            Item.Set(Get()?.ToString());
             Item.Align(TextAnchor.MiddleCenter);
             Item.Format();
             Color = Item.color;
@@ -107,13 +109,13 @@ public abstract class UIItemBase
         public override void Set(object input)
         {
             FormatStr = input.ToString();
-            Item.Setup(Get()?.ToString());
+            Item.Set(Get()?.ToString());
         }
 
         public override void Update()
         {
             base.Update();
-            Item.Setup(Get()?.ToString());
+            Item.Set(Get()?.ToString());
             if (ItemWork?.EnableAct != null)
                 Enable = ItemWork?.EnableAct?.Invoke(this) ?? false;
             Item.color = Enable ? Color : Color.gray;
@@ -138,11 +140,11 @@ public abstract class UIItemBase
         public float Min { get; private set; }
         public float Max { get; private set; }
 
-        public UIItemSlider(Transform t, float x, float y, float min, float max, float def) : base(UIHelper._sampleUI.sliSoundMain.Create(t).Pos(UIHelper._originComp.gameObject, x, y))
+        public UIItemSlider(UIBase ui, float x, float y, float min, float max, float def) : base(ui, UIHelper._sampleUI.sliSoundMain.Copy(ui.canvas.transform).Pos(UIHelper._originComp.gameObject, x, y))
         {
             Min = min;
             Max = max;
-            Item.Setup(min, max, def);
+            Item.Set(min, max, def);
             Item.onValueChanged.AddListener((UnityAction<float>)(v =>
             {
                 ItemWork?.ChangeAct?.Invoke(this, v);
@@ -156,7 +158,7 @@ public abstract class UIItemBase
 
         public override void Set(object input)
         {
-            Item.Setup(Min, Max, (float)input);
+            Item.Set(Min, Max, (float)input);
         }
 
         public void SetPercent(float percent, float min = float.MinValue, float max = float.MaxValue)
@@ -177,9 +179,9 @@ public abstract class UIItemBase
 
     public class UIItemToggle : UIItem<Toggle>
     {
-        public UIItemToggle(Transform t, float x, float y, bool def) : base(UIHelper._sampleUI.tglWindow.Create(t).Pos(UIHelper._originComp.gameObject, x, y))
+        public UIItemToggle(UIBase ui, float x, float y, bool def) : base(ui, UIHelper._sampleUI.tglWindow.Copy(ui.canvas.transform).Pos(UIHelper._originComp.gameObject, x, y))
         {
-            Item.Setup(def);
+            CompHelper.Set(Item, def);
             Item.onValueChanged.AddListener((UnityAction<bool>)(v =>
             {
                 ItemWork?.ChangeAct?.Invoke(this, v);
@@ -193,7 +195,7 @@ public abstract class UIItemBase
 
         public override void Set(object input)
         {
-            Item.Setup((bool)input);
+            CompHelper.Set(Item, (bool)input);
         }
 
         public override void Update()
@@ -210,11 +212,11 @@ public abstract class UIItemBase
         public string FormatStr { get; private set; }
         public Text ButtonLabel { get; private set; }
 
-        public UIItemButton(Transform t, float x, float y, Action act, string format) : base(UIHelper._sampleUI.btnSystemOK.Create(t).Pos(UIHelper._originComp.gameObject, x, y))
+        public UIItemButton(UIBase ui, float x, float y, Action act, string format) : base(ui, UIHelper._sampleUI.btnSystemOK.Copy(ui.canvas.transform).Pos(UIHelper._originComp.gameObject, x, y))
         {
             FormatStr = format;
             ButtonLabel = Item.GetComponentInChildren<Text>();
-            ButtonLabel.Setup(Get()?.ToString());
+            ButtonLabel.Set(Get()?.ToString());
             Item.onClick.AddListener(act);
         }
 
@@ -236,7 +238,7 @@ public abstract class UIItemBase
         public override void Update()
         {
             base.Update();
-            ButtonLabel.Setup(Get()?.ToString());
+            ButtonLabel.Set(Get()?.ToString());
         }
     }
 
@@ -247,6 +249,8 @@ public abstract class UIItemBase
         public UIItemText Postfix { get; private set; }
         public bool HidePostfixIfDisabled { get; set; } = false;
 
+        public override UIBase UI => MainComponent.UI;
+        public override UIItemBase Parent => MainComponent.Parent;
         public override UIBehaviour ItemBehaviour => MainComponent.ItemBehaviour;
         public override UIItemData ItemData
         {
@@ -273,29 +277,29 @@ public abstract class UIItemBase
 
         private UIItemComposite() { }
 
-        public static UIItemComposite CreateSlider(Transform t, float x, float y, string prefix, float min, float max, float def, string postfix = null)
+        public static UIItemComposite CreateSlider(UIBase ui, float x, float y, string prefix, float min, float max, float def, string postfix = null)
         {
             var rs = new UIItemComposite();
-            rs.Prefix = new UIItemText(t, x, y, prefix);
+            rs.Prefix = new UIItemText(ui, x, y, prefix);
             rs.Prefix.Item.Align(TextAnchor.MiddleRight);
             rs.Prefix.Parent = rs;
-            rs.MainComponent = new UIItemSlider(t, x + UIHelper.DELTA_X * 4, y, min, max, def);
+            rs.MainComponent = new UIItemSlider(ui, x + UIHelper.DELTA_X * 4, y, min, max, def);
             rs.MainComponent.Parent = rs;
-            rs.Postfix = new UIItemText(t, x + UIHelper.DELTA_X * 8, y, postfix);
+            rs.Postfix = new UIItemText(ui, x + UIHelper.DELTA_X * 8, y, postfix);
             rs.Postfix.Item.Align(TextAnchor.MiddleLeft);
             rs.Postfix.Parent = rs;
             return rs;
         }
 
-        public static UIItemComposite CreateToggle(Transform t, float x, float y, string prefix, bool def, string postfix = null)
+        public static UIItemComposite CreateToggle(UIBase ui, float x, float y, string prefix, bool def, string postfix = null)
         {
             var rs = new UIItemComposite();
-            rs.Prefix = new UIItemText(t, x, y, prefix);
+            rs.Prefix = new UIItemText(ui, x, y, prefix);
             rs.Prefix.Item.Align(TextAnchor.MiddleRight);
             rs.Prefix.Parent = rs;
-            rs.MainComponent = new UIItemToggle(t, x + UIHelper.DELTA_X * 2, y, def);
+            rs.MainComponent = new UIItemToggle(ui, x + UIHelper.DELTA_X * 2, y, def);
             rs.MainComponent.Parent = rs;
-            rs.Postfix = new UIItemText(t, x + UIHelper.DELTA_X * 4, y, postfix);
+            rs.Postfix = new UIItemText(ui, x + UIHelper.DELTA_X * 4, y, postfix);
             rs.Postfix.Item.Align(TextAnchor.MiddleLeft);
             rs.Postfix.Parent = rs;
             return rs;

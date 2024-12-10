@@ -68,9 +68,9 @@ namespace MOD_nE7UL2.Mod
                 var uiTownMarketBuy = g.ui.GetUI<UITownMarketBuy>(UIType.TownMarketBuy);
 
                 //add component
-                txtMarketST = uiTownMarketBuy.textMoney.Create().Pos(uiTownMarketBuy.textMoney.gameObject, 1.2f, 0f).Align();
+                txtMarketST = uiTownMarketBuy.textMoney.Copy().Pos(uiTownMarketBuy.textMoney.gameObject, 1.2f, 0f).Align();
 
-                var txtInfo = uiTownMarketBuy.textMoney.Create().Pos(uiTownMarketBuy.textMoney.gameObject, 4.0f, 0f).Align().Format(Color.red);
+                var txtInfo = uiTownMarketBuy.textMoney.Copy().Pos(uiTownMarketBuy.textMoney.gameObject, 4.0f, 0f).Align().Format(Color.red);
                 txtInfo.text = $"Price rate: {MarketPriceRate[uiTownMarketBuy.town.buildData.id]:0.00}%";
                 if (uType == UnitTypeEnum.Merchant)
                     txtInfo.text += $" (Merchant {uType.CustomLuck.CustomEffects[ModConst.UTYPE_LUCK_EFX_BUY_COST].Value0.Parse<float>() * 100.0f:0.00}%)";
@@ -87,7 +87,7 @@ namespace MOD_nE7UL2.Mod
                 uiPropSelectCount.oneCost = basePrice;
                 uiPropSelectCount.UpdateCountUI();
 
-                var txtInfo = uiPropSelectCount.textName.Create().Pos(uiPropSelectCount.ptextInfo.gameObject, 0f, 0.2f).Align(TextAnchor.MiddleCenter).Format(Color.red);
+                var txtInfo = uiPropSelectCount.textName.Copy().Pos(uiPropSelectCount.ptextInfo.gameObject, 0f, 0.2f).Align(TextAnchor.MiddleCenter).Format(Color.red);
                 txtInfo.text = $"Price rate: {MarketPriceRate[uiTownMarketBuy.town.buildData.id]:0.00}%";
                 if (uType == UnitTypeEnum.Merchant)
                     txtInfo.text += $" (Merchant {uType.CustomLuck.CustomEffects[ModConst.UTYPE_LUCK_EFX_BUY_COST].Value0.Parse<float>() * 100.0f:0.00}%)";

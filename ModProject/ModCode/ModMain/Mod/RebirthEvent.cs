@@ -37,8 +37,7 @@ namespace MOD_nE7UL2.Mod
                     townLevel >= playerGradeLvl)
                 {
                     var uiTownPub = g.ui.GetUI<UITownPub>(UIType.TownPub);
-                    var btn1 = uiTownPub.btnPub.Create().Pos(uiTownPub.btnPub.gameObject, 0f, 1f);
-                    btn1.GetComponentInChildren<Text>().text = $"Rebirth {RebirthCount + 1}";
+                    var btn1 = uiTownPub.btnPub.Copy().Pos(uiTownPub.btnPub.gameObject, 0f, 1f).Set($"Rebirth {RebirthCount + 1}");
                     btn1.onClick.AddListener((UnityAction)(() =>
                     {
                         var uiConfirm = g.ui.OpenUI<UICheckPopup>(UIType.CheckPopup);

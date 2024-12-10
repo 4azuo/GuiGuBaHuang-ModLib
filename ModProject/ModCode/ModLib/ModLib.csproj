@@ -57,6 +57,7 @@
     <Compile Include="Enum\LuckTypeEnum.cs" />
     <Compile Include="Enum\LuckRarityEnum.cs" />
     <Compile Include="Enum\UnitDynPropertyEnum.cs" />
+    <Compile Include="Helper\CompHelper.cs" />
     <Compile Include="Helper\SttHelper.cs" />
     <Compile Include="Helper\ConfHelper.cs" />
     <Compile Include="Helper\EnumerableHelper.cs" />
