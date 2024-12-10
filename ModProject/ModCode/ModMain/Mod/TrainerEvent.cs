@@ -35,8 +35,10 @@ namespace MOD_nE7UL2.Mod
             var player = g.world.playerUnit;
 
             uiCustom = UIHelper.UICustom1.Create(TITLE, () => { uiCustom = null; });
-            uiCustom.AddText(15, 0, "Cheating will destroy your experience.").Format(Color.red, 17);
+            uiCustom.UI.isFastClose = true;
+
             int col, row;
+            uiCustom.AddText(15, 0, "Cheating will destroy your experience.").Format(Color.red, 17);
 
             col = 2; row = 2;
             uiCustom.AddText(col - 1, row - 1, "(HP/MP/SP/Mood/Stanima/Health)").Format(null, 13).Align(TextAnchor.MiddleLeft);
@@ -56,7 +58,7 @@ namespace MOD_nE7UL2.Mod
 
             col = 8; row = 2;
             //FormatButton(uiCustom.AddButton(col, row, Teleport, "Teleport"));
-            FormatButton(uiCustom.AddButton(col, row += 2, AddMoney, "+1000000 Money"));
+            FormatButton(uiCustom.AddButton(col, row, AddMoney, "+1000000 Money"));
             FormatButton(uiCustom.AddButton(col, row += 2, ReduceMoney, "-1000000 Money"));
             FormatButton(uiCustom.AddButton(col, row += 2, AddDegree, "+1000 Degree"));
             FormatButton(uiCustom.AddButton(col, row += 2, ReduceDegree, "-1000 Degree"));
@@ -75,7 +77,7 @@ namespace MOD_nE7UL2.Mod
             FormatButton(uiCustom.AddButton(col, row += 2, AddViewRange, "+10 View-range"));
             FormatButton(uiCustom.AddButton(col, row += 2, ReduceViewRange, "-10 View-range"));
 
-            col = 23; row = 2;
+            col = 24; row = 2;
             uiCustom.AddText(col - 1, row++, "General Properties:").Format(null, 17, FontStyle.Italic).Align(TextAnchor.MiddleCenter);
             uiCustom.AddText(col, row, "HP: {0}/{1}").Align(TextAnchor.MiddleLeft).Format(Color.black, 15).SetWork(new UIItemBase.UIItemWork
             {
@@ -132,6 +134,23 @@ namespace MOD_nE7UL2.Mod
             uiCustom.AddText(col - 3, row++, "{0} :View Range").Align(TextAnchor.MiddleLeft).Format(Color.black, 15).SetWork(new UIItemBase.UIItemWork
             {
                 Formatter = (x) => new object[] { player.GetDynProperty(UnitDynPropertyEnum.PlayerView).value },
+            });
+            uiCustom.AddText(col - 1, row++, "Grade: {0} {1} ― {2}").Align(TextAnchor.MiddleCenter).Format(Color.black, 15).SetWork(new UIItemBase.UIItemWork
+            {
+                Formatter = (x) =>
+                {
+                    var grade = player.GetGradeConf();
+                    return new object[]
+                    {
+                        GameTool.LS(g.conf.roleGrade.GetItem(grade.id).gradeName),
+                        GameTool.LS(g.conf.roleGrade.GetItem(grade.id).phaseName),
+                        GameTool.LS(g.conf.roleGrade.GetItem(grade.id).qualityName)
+                    };
+                },
+            });
+            uiCustom.AddText(col - 1, row++, "Exp: {0}/{1}").Align(TextAnchor.MiddleCenter).Format(Color.black, 15).SetWork(new UIItemBase.UIItemWork
+            {
+                Formatter = (x) => new object[] { player.GetDynProperty(UnitDynPropertyEnum.Exp).value, player.GetMaxExpCurrentPhase() },
             });
 
             row++;
@@ -210,25 +229,6 @@ namespace MOD_nE7UL2.Mod
             uiCustom.AddText(col - 3, row++, "{0} :Mining").Align(TextAnchor.MiddleRight).Format(Color.black, 15).SetWork(new UIItemBase.UIItemWork
             {
                 Formatter = (x) => new object[] { player.GetDynProperty(UnitDynPropertyEnum.Mine).value },
-            });
-
-            row++;
-            uiCustom.AddText(col - 1, row++, "Grade: {0} {1} ― {2}").Align(TextAnchor.MiddleCenter).Format(Color.black, 15).SetWork(new UIItemBase.UIItemWork
-            {
-                Formatter = (x) =>
-                {
-                    var grade = player.GetGradeConf();
-                    return new object[]
-                    {
-                        GameTool.LS(g.conf.roleGrade.GetItem(grade.id).gradeName),
-                        GameTool.LS(g.conf.roleGrade.GetItem(grade.id).phaseName),
-                        GameTool.LS(g.conf.roleGrade.GetItem(grade.id).qualityName)
-                    };
-                },
-            });
-            uiCustom.AddText(col - 1, row++, "Exp").Align(TextAnchor.MiddleCenter).Format(Color.black, 15).SetWork(new UIItemBase.UIItemWork
-            {
-                Formatter = (x) => new object[] { player.GetDynProperty(UnitDynPropertyEnum.Exp).value },
             });
         }
 
@@ -478,7 +478,7 @@ namespace MOD_nE7UL2.Mod
         private void AddExp()
         {
             var player = g.world.playerUnit;
-            player.AddProperty<int>(UnitPropertyEnum.Exp, 10000);
+            player.AddExp(10000);
         }
     }
 }

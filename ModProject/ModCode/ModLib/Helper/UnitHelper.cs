@@ -206,31 +206,41 @@ public static class UnitHelper
         return curPhaseEnum.NextPhase.Value.Parse<int>();
     }
 
-    public static int GetMaxExpCurrentGrade(this WorldUnitBase wunit)
+    public static int GetMaxExpCurrentPhase(this WorldUnitBase wunit)
     {
         return g.conf.roleGrade.GetNextGradeItem(wunit.GetDynProperty(UnitDynPropertyEnum.GradeID).value).exp;
     }
 
-    public static int GetMinExpCurrentGrade(this WorldUnitBase wunit)
+    public static int GetMinExpCurrentPhase(this WorldUnitBase wunit)
     {
         return g.conf.roleGrade.GetItem(wunit.GetDynProperty(UnitDynPropertyEnum.GradeID).value).exp;
     }
 
+    public static int GetExpCurrentPhase(this WorldUnitBase wunit)
+    {
+        return wunit.GetMaxExpCurrentPhase() - wunit.GetMinExpCurrentPhase();
+    }
+
     public static int GetNeedExpToLevelUp(this WorldUnitBase wunit)
     {
-        return wunit.GetDynProperty(UnitDynPropertyEnum.Exp).value - g.conf.roleGrade.GetItem(wunit.GetDynProperty(UnitDynPropertyEnum.GradeID).value).exp;
+        return wunit.GetMaxExpCurrentPhase() - wunit.GetDynProperty(UnitDynPropertyEnum.Exp).value;
+    }
+
+    public static bool IsFullExp(this WorldUnitBase wunit)
+    {
+        return wunit.GetMaxExpCurrentPhase() == wunit.GetDynProperty(UnitDynPropertyEnum.Exp).value;
     }
 
     public static void AddExp(this WorldUnitBase wunit, int exp)
     {
         var curExp = wunit.GetDynProperty(UnitDynPropertyEnum.Exp).value;
-        var addExp = Math.Max(Math.Min(curExp + exp, wunit.GetMaxExpCurrentGrade()), wunit.GetMinExpCurrentGrade());
+        var addExp = Math.Max(Math.Min(curExp + exp, wunit.GetMaxExpCurrentPhase()), wunit.GetMinExpCurrentPhase());
         wunit.SetProperty<int>(UnitPropertyEnum.Exp, addExp);
 
-        var gradeEnum = GradePhaseEnum.GetEnumByVal<GradePhaseEnum>(wunit.GetDynProperty(UnitDynPropertyEnum.GradeID).value.ToString());
+        var gradeEnum = GradePhaseEnum.GetEnumByVal<GradePhaseEnum>(wunit.GetPhaseLvl().ToString());
         if (gradeEnum != null && gradeEnum.Bottleneck != BottleneckEnum.None)
         {
-            if (addExp == wunit.GetMaxExpCurrentGrade())
+            if (addExp == wunit.GetMaxExpCurrentPhase())
             {
                 wunit.AddLuck((int)gradeEnum.Bottleneck);
             }
@@ -497,12 +507,13 @@ public static class UnitHelper
 
     public static int GetPhaseLvl(this WorldUnitBase wunit)
     {
-        return wunit.GetGradeConf().id;
+        //return wunit.GetGradeConf().id;
+        return wunit.GetDynProperty(UnitDynPropertyEnum.GradeID).value;
     }
 
     public static ConfRoleGradeItem GetGradeConf(this WorldUnitBase wunit)
     {
-        return g.conf.roleGrade.GetItem(g.world.playerUnit.GetDynProperty(UnitDynPropertyEnum.GradeID).value);
+        return g.conf.roleGrade.GetItem(wunit.GetDynProperty(UnitDynPropertyEnum.GradeID).value);
     }
 
     public static void RemoveAllItems(this WorldUnitBase wunit)

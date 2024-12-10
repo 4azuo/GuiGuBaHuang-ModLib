@@ -157,8 +157,7 @@ namespace MOD_nE7UL2.Mod
             if (e.uiType.uiName == UIType.Login.uiName)
             {
                 var uiLogin = g.ui.GetUI<UILogin>(UIType.Login);
-                var modConfigBtn = uiLogin.btnSet.Create().Pos(0f, 3.9f);
-                modConfigBtn.Setup(TITLE);
+                var modConfigBtn = uiLogin.btnSet.Copy().Pos(0f, 3.9f).Set(TITLE);
                 modConfigBtn.onClick.AddListener((UnityAction)OpenSMConfigs);
             }
         }
@@ -212,7 +211,7 @@ namespace MOD_nE7UL2.Mod
             tglSysNoExpFromBattle = uiCustom.AddCompositeToggle(col, row++, "No Exp from Battles", NoExpFromBattles, "({0}P)");
             row++;
             tglEnableTrainer = uiCustom.AddCompositeToggle(col, row++, "Enable Trainer", EnableTrainer, "({0}P)");
-            uiCustom.AddText(col - 2, row++, "(Dont recommend to use this option! 【Ctrl+Q】)").Format(null, 13).Align(TextAnchor.MiddleLeft);
+            uiCustom.AddText(col - 2, row++, "(Dont recommend to use this option!【Ctrl+Q】)").Format(null, 13).Align(TextAnchor.MiddleLeft);
 
             col = 30; row = 0;
             txtTotalScore = uiCustom.AddText(col, row, "Total score: {0}P").Format(Color.red, 17).Align(TextAnchor.MiddleRight);

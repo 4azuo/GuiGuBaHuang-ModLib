@@ -34,19 +34,18 @@ namespace MOD_nE7UL2.Mod
             {
                 var uiTownStorageProps = g.ui.GetUI<UITownStorageProps>(UIType.TownStorageProps);
 
-                txtStorageMoney = ObjectHelper.Create(uiTownStorageProps.textTip).Align(TextAnchor.MiddleRight).Format();
-                txtStorageMoney.transform.position = new Vector3(uiTownStorageProps.textTip.transform.position.x, uiTownStorageProps.textTitle1.transform.position.y + 0.4f);
-
-                txtFee = ObjectHelper.Create(uiTownStorageProps.textTip).Align(TextAnchor.MiddleRight).Format(Color.blue);
-                txtFee.transform.position = new Vector3(uiTownStorageProps.textTip.transform.position.x, uiTownStorageProps.textTitle1.transform.position.y + 0.2f);
+                txtStorageMoney = uiTownStorageProps.textTip.Copy().Align(TextAnchor.MiddleRight).Format().Pos(uiTownStorageProps.textTip.gameObject, 0f, 0.4f);
+                txtFee = uiTownStorageProps.textTip.Copy().Align(TextAnchor.MiddleRight).Format(Color.blue).Pos(uiTownStorageProps.textTip.gameObject, 0f, 0.2f);
 
                 if (Debt > 0)
                 {
-                    var txtWarning1 = ObjectHelper.Create(uiTownStorageProps.textTip).Align(TextAnchor.MiddleCenter).Format(Color.red, 17).Pos(uiTownStorageProps.textTitle1.gameObject, 0f, -1.2f);
-                    txtWarning1.text = $"You have to pay your debt ({Debt} Spirit Stones) next month!";
+                    var txtWarning1 = uiTownStorageProps.textTip.Copy().Align(TextAnchor.MiddleCenter).Format(Color.red, 17)
+                        .Pos(uiTownStorageProps.textTitle1.gameObject, 0f, -1.2f)
+                        .Set($"You have to pay your debt ({Debt} Spirit Stones) next month!");
 
-                    var txtWarning2 = ObjectHelper.Create(uiTownStorageProps.textTip).Align(TextAnchor.MiddleCenter).Format(Color.red, 17).Pos(uiTownStorageProps.textTitle2.gameObject, 0f, -1.2f);
-                    txtWarning2.text = $"You have to pay your debt ({Debt} Spirit Stones) next month!";
+                    var txtWarning2 = uiTownStorageProps.textTip.Copy().Align(TextAnchor.MiddleCenter).Format(Color.red, 17)
+                        .Pos(uiTownStorageProps.textTitle2.gameObject, 0f, -1.2f)
+                        .Set($"You have to pay your debt ({Debt} Spirit Stones) next month!");
 
                     foreach (var item in uiTownStorageProps.GetComponentsInChildren<ScrollRect>().SelectMany(x => x.GetComponentsInChildren<Image>()))
                     {
