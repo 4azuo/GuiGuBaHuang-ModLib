@@ -4,7 +4,6 @@ using ModLib.Mod;
 using System.Diagnostics;
 using UnityEngine;
 using UnityEngine.Events;
-using UnityEngine.UI;
 
 namespace MOD_nE7UL2.Mod
 {
@@ -18,7 +17,7 @@ namespace MOD_nE7UL2.Mod
             if (e.uiType.uiName == UIType.Login.uiName)
             {
                 var uiLogin = g.ui.GetUI<UILogin>(UIType.Login);
-                var modTitleBtn = uiLogin.btnPaperChange.Copy().Pos(0f, 4.5f).Align(TextAnchor.MiddleCenter).Format(Color.white, 22).Set("Taoist");
+                var modTitleBtn = uiLogin.btnPaperChange.Copy().Pos(0f, 4.5f, uiLogin.btnPaperChange.transform.position.z).Align(TextAnchor.MiddleCenter).Format(Color.white, 22).Set("Taoist");
                 modTitleBtn.onClick.AddListener((UnityAction)(() =>
                 {
                     Process.Start("explorer.exe", CacheHelper.GetCacheFolderName());

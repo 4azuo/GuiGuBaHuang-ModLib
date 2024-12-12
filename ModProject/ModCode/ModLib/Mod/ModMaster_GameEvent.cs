@@ -142,7 +142,7 @@ namespace ModLib.Mod
         #region ModLib - Events
         public virtual void OnOpenUIStart(OpenUIStart e)
         {
-            DebugHelper.WriteLine(e.uiType.uiName);
+            DebugHelper.WriteLine($"Open: {e.uiType.uiName}");
 
             if (loadModFlg)
             {
@@ -219,6 +219,8 @@ namespace ModLib.Mod
 
         public virtual void OnCloseUIEnd(CloseUIEnd e)
         {
+            DebugHelper.WriteLine($"Close: {e.uiType.uiName}");
+
             EventHelper.RunMinorEvents(e);
         }
 

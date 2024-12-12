@@ -7,8 +7,6 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine.UI;
 using MOD_nE7UL2.Enum;
-using static DataBuildTown;
-using System;
 
 namespace MOD_nE7UL2.Mod
 {
@@ -33,12 +31,9 @@ namespace MOD_nE7UL2.Mod
             }
         }
 
-        private UIPropSell uiPropSell;
-        private MapBuildBase curMainTown;
         private Text txtMarketST;
         private Text txtPrice2;
         private Text txtWarningMsg;
-        private Text txtInfo;
 
         public IDictionary<string, float> MarketPriceRate { get; set; } = new Dictionary<string, float>();
 
@@ -68,58 +63,25 @@ namespace MOD_nE7UL2.Mod
         public override void OnOpenUIEnd(OpenUIEnd e)
         {
             base.OnOpenUIEnd(e);
-            uiPropSell = MonoBehaviour.FindObjectOfType<UIPropSell>();
-            curMainTown = g.world.build.GetBuild(g.world.playerUnit.data.unitData.GetPoint());
-            if (uiPropSell != null && curMainTown != null)
+            if (e.uiType.uiName == UIType.PropSell.uiName)
             {
-                if (txtMarketST == null)
-                {
-                    //add component
-                    txtMarketST = MonoBehaviour.Instantiate(uiPropSell.textMoney, uiPropSell.transform, false);
-                    txtMarketST.transform.position = new Vector3(uiPropSell.textMoney.transform.position.x, uiPropSell.textMoney.transform.position.y - 0.2f);
-                    txtMarketST.verticalOverflow = VerticalWrapMode.Overflow;
-                    txtMarketST.horizontalOverflow = HorizontalWrapMode.Overflow;
+                var uiPropSell = g.ui.GetUI<UIPropSell>(UIType.PropSell);
+                var curMainTown = g.world.build.GetBuild(g.world.playerUnit.data.unitData.GetPoint());
 
-                    var merchantIncRate = GetMerchantIncRate();
-                    txtInfo = MonoBehaviour.Instantiate(uiPropSell.textMoney, uiPropSell.transform, false);
-                    txtInfo.text = $"Price rate: {MarketPriceRate[curMainTown.buildData.id]:0.00}%";
-                    if (merchantIncRate > 0.00f)
-                        txtInfo.text += $" (Merchant +{merchantIncRate * 100.0f:0.00}%)";
-                    txtInfo.transform.position = new Vector3(uiPropSell.textMoney.transform.position.x, uiPropSell.textMoney.transform.position.y - 0.4f);
-                    txtInfo.verticalOverflow = VerticalWrapMode.Overflow;
-                    txtInfo.horizontalOverflow = HorizontalWrapMode.Overflow;
-                    txtInfo.color = Color.red;
+                //add component
+                var merchantIncRate = GetMerchantIncRate();
+                var txtInfo = uiPropSell.textMoney.Copy().Pos(uiPropSell.textMoney.gameObject, 0f, -0.4f).Align().Format(Color.red);
+                txtInfo.text = $"Price rate: {MarketPriceRate[curMainTown.buildData.id]:0.00}%";
+                if (merchantIncRate > 0.00f)
+                    txtInfo.text += $" (Merchant +{merchantIncRate * 100.0f:0.00}%)";
 
-                    txtPrice2 = MonoBehaviour.Instantiate(uiPropSell.textPrice, uiPropSell.transform, false);
-                    txtPrice2.transform.position = new Vector3(uiPropSell.textPrice.transform.position.x, uiPropSell.textPrice.transform.position.y - 0.2f);
-                    txtPrice2.verticalOverflow = VerticalWrapMode.Overflow;
-                    txtPrice2.horizontalOverflow = HorizontalWrapMode.Overflow;
+                txtMarketST = uiPropSell.textMoney.Copy().Pos(uiPropSell.textMoney.gameObject, 0f, -0.2f).Align();
+                txtPrice2 = uiPropSell.textPrice.Copy().Pos(uiPropSell.textPrice.gameObject, 0f, -0.2f);
+                txtWarningMsg = uiPropSell.textPrice.Copy().Pos(uiPropSell.btnOK.gameObject).Format(Color.red).Set("Over price");
+                txtWarningMsg.gameObject.SetActive(false);
 
-                    txtWarningMsg = MonoBehaviour.Instantiate(uiPropSell.textPrice, uiPropSell.transform, false);
-                    txtWarningMsg.text = $"Over price";
-                    txtWarningMsg.transform.position = new Vector3(uiPropSell.btnOK.transform.position.x, uiPropSell.btnOK.transform.position.y);
-                    txtWarningMsg.verticalOverflow = VerticalWrapMode.Overflow;
-                    txtWarningMsg.horizontalOverflow = HorizontalWrapMode.Overflow;
-                    txtWarningMsg.color = Color.red;
-                    txtWarningMsg.gameObject.SetActive(false);
-
-                    uiPropSell.btnOK.onClick.m_Calls.Clear();
-                    uiPropSell.btnOK.onClick.m_Calls.m_RuntimeCalls.Insert(0, new InvokableCall((UnityAction)SellEvent));
-                }
-            }
-        }
-
-        public override void OnCloseUIEnd(CloseUIEnd e)
-        {
-            base.OnCloseUIEnd(e);
-            uiPropSell = MonoBehaviour.FindObjectOfType<UIPropSell>();
-            curMainTown = g.world.build.GetBuild(g.world.playerUnit.data.unitData.GetPoint());
-            if (uiPropSell == null || curMainTown == null)
-            {
-                txtMarketST = null;
-                txtPrice2 = null;
-                txtWarningMsg = null;
-                txtInfo = null;
+                uiPropSell.btnOK.onClick.RemoveAllListeners();
+                uiPropSell.btnOK.onClick.AddListener((UnityAction)SellEvent);
             }
         }
 
@@ -128,39 +90,48 @@ namespace MOD_nE7UL2.Mod
         public override void OnTimeUpdate()
         {
             base.OnTimeUpdate();
-            if (uiPropSell != null && curMainTown != null && txtMarketST != null)
+            if (g.ui.HasUI(UIType.PropSell))
             {
+                var uiPropSell = g.ui.GetUI<UIPropSell>(UIType.PropSell);
+                var curMainTown = g.world.build.GetBuild(g.world.playerUnit.data.unitData.GetPoint());
+
                 var budget = MapBuildPropertyEvent.GetBuildProperty(curMainTown);
-                var totalPrice = GetTotalPrice();
+                var totalPrice = GetTotalPrice(uiPropSell);
                 var cashback = (totalPrice * ((MarketPriceRate[curMainTown.buildData.id] - 100.00f) / 100.00f)).Parse<int>();
-                txtMarketST.text = $"Market: {budget} Spirit Stones";
-                txtPrice2.text = $"/{budget} Spirit Stones";
                 uiPropSell.textMoney.text = $"Owned: {g.world.playerUnit.GetUnitMoney()} Spirit Stones";
                 uiPropSell.textPrice.text = $"Total: {totalPrice + cashback} ({cashback})";
                 uiPropSell.btnOK.gameObject.SetActive(totalPrice <= budget);
+                txtMarketST.text = $"Market: {budget} Spirit Stones";
+                txtPrice2.text = $"/{budget} Spirit Stones";
                 txtWarningMsg.gameObject.SetActive(totalPrice > budget);
             }
         }
 
         private void SellEvent()
         {
-            var totalPrice = GetTotalPrice();
-            var cashback = (totalPrice * ((MarketPriceRate[curMainTown.buildData.id] - 100.00f) / 100.00f)).Parse<int>();
-            g.world.playerUnit.AddUnitMoney((totalPrice + cashback).Parse<int>());
-            MapBuildPropertyEvent.AddBuildProperty(curMainTown, -totalPrice);
-
-            foreach (var item in uiPropSell.selectProps.allProps.ToArray())
+            if (g.ui.HasUI(UIType.PropSell))
             {
-                g.world.playerUnit.data.unitData.propData.DelProps(item.soleID, item.propsCount);
-                uiPropSell.selectProps.allProps.Remove(item);
-            }
+                var uiPropSell = g.ui.GetUI<UIPropSell>(UIType.PropSell);
+                var curMainTown = g.world.build.GetBuild(g.world.playerUnit.data.unitData.GetPoint());
 
-            uiPropSell.UpdateHasList();
-            uiPropSell.UpdateSellList();
-            uiPropSell.UpdateTitle();
+                var totalPrice = GetTotalPrice(uiPropSell);
+                var cashback = (totalPrice * ((MarketPriceRate[curMainTown.buildData.id] - 100.00f) / 100.00f)).Parse<int>();
+                g.world.playerUnit.AddUnitMoney((totalPrice + cashback).Parse<int>());
+                MapBuildPropertyEvent.AddBuildProperty(curMainTown, -totalPrice);
+
+                foreach (var item in uiPropSell.selectProps.allProps.ToArray())
+                {
+                    g.world.playerUnit.data.unitData.propData.DelProps(item.soleID, item.propsCount);
+                    uiPropSell.selectProps.allProps.Remove(item);
+                }
+
+                uiPropSell.UpdateHasList();
+                uiPropSell.UpdateSellList();
+                uiPropSell.UpdateTitle();
+            }
         }
 
-        private long GetTotalPrice()
+        private long GetTotalPrice(UIPropSell uiPropSell)
         {
             return uiPropSell.selectProps.allProps.ToArray().Sum(x => x.propsInfoBase.sale.Parse<long>() * x.propsCount);
         }

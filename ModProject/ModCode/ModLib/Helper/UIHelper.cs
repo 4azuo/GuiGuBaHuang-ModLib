@@ -1,12 +1,21 @@
 ﻿using System;
 using System.Collections.Generic;
-using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.EventSystems;
 using static UIItemBase;
 
 public static class UIHelper
 {
+    public static bool HasUI(this UIMgr g, UIType.UITypeBase t)
+    {
+        return (g.GetUI(t)?.gameObject?.active).Is(true) == 1;
+    }
+
+    public static bool IsExists(this UIBase ui)
+    {
+        return (ui?.gameObject?.active).Is(true) == 1;
+    }
+
     public const float DELTA_X = 0.4f;
     public const float DELTA_Y = 0.25f;
 
@@ -180,6 +189,31 @@ public static class UIHelper
                         rs.UI.btnOK.onClick.AddListener((UnityAction)okAct);
                         if (cancelAct != null)
                             rs.UI.btnCancel.onClick.AddListener((UnityAction)cancelAct);
+                    }
+                }
+            }
+            return rs;
+        }
+    }
+
+    public class UICustom2 : UICustom<UITextInfo>
+    {
+        protected override float MinWidth() => -4.0f;
+        protected override float MaxWidth() => +4.0f;
+        protected override float MinHeight() => -0.5f;
+        protected override float MaxHeight() => -6.0f;
+
+        public static UICustom2 Create(string title, Action okAct)
+        {
+            var rs = new UICustom2();
+            {
+                using (new UISample())
+                {
+                    rs.UI = g.ui.OpenUI<UITextInfo>(UIType.TextInfo);
+                    _originComp = rs.UI.textTitle;
+                    {
+                        rs.UI.InitData(title, string.Empty);
+                        rs.UI.btnOK.onClick.AddListener((UnityAction)okAct);
                     }
                 }
             }

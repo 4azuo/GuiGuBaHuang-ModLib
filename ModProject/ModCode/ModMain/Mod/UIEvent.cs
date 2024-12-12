@@ -217,7 +217,7 @@ namespace MOD_nE7UL2.Mod
                 uiMartialExpertInfo = g.ui.OpenUI<UINPCInfoPreview>(UIType.NPCInfoPreview);
             }
             else
-            if (e.uiType.uiName == UIType.NPCInfoPreview.uiName && (g.ui.GetUI(UIType.MartialInfo)?.gameObject?.active).Is(true) == 1)
+            if (e.uiType.uiName == UIType.NPCInfoPreview.uiName && g.ui.HasUI(UIType.MartialInfo))
             {
                 var uiMartialInfo = g.ui.GetUI<UIMartialInfo>(UIType.MartialInfo);
                 //var soleId = uiMartialInfo.martialData.martialInfo.propsData.soleID;
@@ -347,17 +347,17 @@ namespace MOD_nE7UL2.Mod
             var uiArtifactInfo = g.ui.GetUI<UIArtifactInfo>(UIType.ArtifactInfo);
             var uiPropInfo = g.ui.GetUI<UIPropInfo>(UIType.PropInfo);
 
-            if ((uiTown?.gameObject?.active).Is(true) == 1)
+            if (uiTown.IsExists())
             {
                 uiTown_tax.Pos(uiTown.btnClose.gameObject, -2f, 0f);
             }
             
-            if ((uiSchool?.gameObject?.active).Is(true) == 1)
+            if (uiSchool.IsExists())
             {
                 uiSchool_tax.Pos(uiSchool.btnClose.gameObject, -2f, 0f);
             }
 
-            if ((uiPropInfo?.gameObject?.active).Is(true) == 1)
+            if (uiPropInfo.IsExists())
             {
                 if (uiPropInfo.propData.propsItem.IsRing() != null)
                 {
@@ -376,7 +376,7 @@ namespace MOD_nE7UL2.Mod
                 }
             }
             
-            if ((uiArtifactInfo?.gameObject?.active).Is(true) == 1)
+            if (uiArtifactInfo.IsExists())
             {
                 uiArtifactInfo_textBasicTitle.Pos(uiArtifactInfo.textGrade_En.gameObject, 0f, -0.2f);
                 uiArtifactInfo_textBasicAdj1.Pos(uiArtifactInfo.textGrade_En.gameObject, +0.05f, -0.35f);
@@ -393,7 +393,7 @@ namespace MOD_nE7UL2.Mod
                 uiArtifactInfo_textRefineAdj5.Pos(uiArtifactInfo.textGrade_En.gameObject, +0.05f, -2.1f);
             }
             
-            if ((uiNPCInfo?.gameObject?.active).Is(true) == 1)
+            if (uiNPCInfo.IsExists())
             {
                 uiNPCInfo_textMartialAdjHp.text = $"+Hp: {UnitModifyHelper.GetMartialAdjHp(uiNPCInfo.unit)}";
                 uiNPCInfo_textSpiritualAdjMp.text = $"+Mp: {UnitModifyHelper.GetSpiritualAdjMp(uiNPCInfo.unit)}";
@@ -402,7 +402,7 @@ namespace MOD_nE7UL2.Mod
                 uiNPCInfoSkill_textAbiPointAdjMp.text = $"+Mp: {UnitModifyHelper.GetAbiPointAdjMp(uiNPCInfo.unit)}";
             }
             
-            if ((uiPlayerInfo?.gameObject?.active).Is(true) == 1)
+            if (uiPlayerInfo.IsExists())
             {
                 uiPlayerInfo_textMartialAdjHp.text = $"+Hp: {UnitModifyHelper.GetMartialAdjHp(uiPlayerInfo.unit)}";
                 uiPlayerInfo_textSpiritualAdjMp.text = $"+Mp: {UnitModifyHelper.GetSpiritualAdjMp(uiPlayerInfo.unit)}";
@@ -414,7 +414,7 @@ namespace MOD_nE7UL2.Mod
 
         public static void OnUIClose(CloseUIEnd e)
         {
-            if (e.uiType.uiName == UIType.MartialInfo.uiName && (g.ui.GetUI(UIType.NPCInfoPreview)?.gameObject?.active).Is(true) == 1)
+            if (e.uiType.uiName == UIType.MartialInfo.uiName && g.ui.HasUI(UIType.NPCInfoPreview))
             {
                 g.ui.CloseUI(uiMartialExpertInfo);
             }
