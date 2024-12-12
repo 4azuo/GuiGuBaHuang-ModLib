@@ -14,6 +14,10 @@ Feel free for using this library to build your mod.
 
 Pls, give a like to let me know it useful, tks.
 
+※If you have any problem about creating project. Feel free for contacting to me.
+
+※If you wanna contribute to my project. Please contact to me.
+
 
 
 
@@ -54,13 +58,9 @@ xcopy "$(ProjectDir)\..\..\ModConf\*.*" "$(ProjectDir)\..\..\..\debug\Mod_nE7UL2
 
 Add BuildEvent for copying dll to "debug" folder. 
 
-※"nE7UL2" = mod-id
+※"nE7UL2" is my mod-id. You should change "nE7UL2" to your mod-id. And build by "Release" mode.
 
-You should change "nE7UL2" to your mod-id.　And build by "Release" mode.
-
-※If you have any problem about creating project. Feel free for contacting to me.
-
-※If you wanna contribute to my project. Please contact to me.
+※You should change MelonLoader folder path in `ModLib.csproj` and `ModMain.csproj` to use game dll.
 
 
 
@@ -68,23 +68,27 @@ You should change "nE7UL2" to your mod-id.　And build by "Release" mode.
 
 # How to use
 
-![image](https://github.com/4azuo/GuiGuBaHuang-ModLib/assets/11677054/33b579c2-5d91-4e97-86ea-ce964edf4379)
+![image](https://github.com/user-attachments/assets/ef20fc65-a7fc-4b9a-b63f-d8042512d0e9)
 
 ![image](https://github.com/4azuo/GuiGuBaHuang-ModLib/assets/11677054/84f35501-d6f2-4b8d-9cd6-2606bf397e59)
 
-Just inherit **ModMaster** then you can use declared on-events.
+Just inherit **ModMaster** and config your mod. And then, you can use declared on-events.
 
 But you should use **ModEvent**↓↓↓ to process your mod. And use **ModMain**↑↑↑ to config your mod.
 
 ![image](https://github.com/4azuo/GuiGuBaHuang-ModLib/assets/11677054/e8da9fd1-89d0-4870-ace4-b7153dace9f2)
 
-![image](https://github.com/4azuo/GuiGuBaHuang-ModLib/assets/11677054/84af2edc-fa41-4e27-a4fa-01f3caaf1865)
+![image](https://github.com/user-attachments/assets/5c1c364b-daf4-41c6-aa78-f39b2fcf9d6e)
 
-About **ModEvent**, you should declare `Cache(string cacheId, bool isGlobal = false)`
+About **ModEvent**, you should declare `Cache`
 
-If **IsGlobal**=true then, the event will be created when start game (application).
+![image](https://github.com/user-attachments/assets/42549f20-dcd7-49b0-b624-5caae73ae1d6)
 
-If **IsGlobal**=false then, the event will be created when load save.
+If **CacheType**=Global then, the event will be created when start game (application).
+
+If **CacheType**=Local then, the event will be created when load save.
+
+If **WorkOn**=Global then, the event will be deleted when load save.
 
 ![image](https://github.com/4azuo/GuiGuBaHuang-ModLib/assets/11677054/3c404677-54fe-4e5f-af2e-8ec0618480f0)
 
@@ -121,7 +125,7 @@ Also, you can use **TraceAttribute**/**TraceIgnoreAttribute** which catch callin
 xxx\AppData\LocalLow\guigugame\guigubahuang\mod\{MOD_NAME}
 `
 
-Same folder with logs.
+Your mod data will be saved here.
 
 
 
