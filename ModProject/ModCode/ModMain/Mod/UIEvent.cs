@@ -93,7 +93,7 @@ namespace MOD_nE7UL2.Mod
                 using (var a = new UISample())
                 {
                     uiTown = g.ui.GetUI<UITown>(UIType.Town);
-                    uiTown_tax = a.sampleUI.btnKeyOK.Copy(uiTown).AddSize(200f, 20f).Set($"Tax: {MapBuildPropertyEvent.GetTax(g.world.playerUnit)} Spirit Stones");
+                    uiTown_tax = a.ui.btnKeyOK.Copy(uiTown).AddSize(200f, 20f).Set($"Tax: {MapBuildPropertyEvent.GetTax(g.world.playerUnit)} Spirit Stones");
                     uiTown_tax.enabled = false;
                 }
             }
@@ -103,7 +103,7 @@ namespace MOD_nE7UL2.Mod
                 using (var a = new UISample())
                 {
                     uiSchool = g.ui.GetUI<UISchool>(UIType.School);
-                    uiSchool_tax = a.sampleUI.btnKeyOK.Copy(uiSchool).AddSize(200f, 20f).Set($"Tax: {MapBuildPropertyEvent.GetTax(g.world.playerUnit)} Spirit Stones");
+                    uiSchool_tax = a.ui.btnKeyOK.Copy(uiSchool).AddSize(200f, 20f).Set($"Tax: {MapBuildPropertyEvent.GetTax(g.world.playerUnit)} Spirit Stones");
                     uiSchool_tax.enabled = false;
                 }
             }

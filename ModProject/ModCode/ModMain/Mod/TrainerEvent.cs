@@ -6,6 +6,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using static UIHelper;
 
 namespace MOD_nE7UL2.Mod
 {
@@ -36,13 +37,12 @@ namespace MOD_nE7UL2.Mod
             {
                 if (Input.GetKey(KeyCode.LeftControl) && Input.GetKeyDown(KeyCode.Alpha1))
                 {
-                    if (uiTrainer == null)
-                        OpenTrainer();
+                    OpenTrainer();
                 }
                 else
                 if (Input.GetKey(KeyCode.LeftControl) && Input.GetKeyDown(KeyCode.Alpha2))
                 {
-                    Teleport();
+                    OpenTeleport();
                 }
             }
         }
@@ -51,204 +51,228 @@ namespace MOD_nE7UL2.Mod
         {
             var player = g.world.playerUnit;
 
-            uiTrainer = UIHelper.UICustom1.Create(TITLE, ClearTempVar);
-            uiTrainer.UI.isFastClose = true;
+            uiTrainer = new UIHelper.UICustom1(TITLE, (uiTrainer) =>
+            {
+                uiTrainer.UI.isFastClose = true;
 
-            int col, row;
-            uiTrainer.AddText(15, 0, "Cheating will destroy your experience.").Format(Color.red, 17);
+                int col, row;
+                uiTrainer.AddText(uiTrainer.MidCol, uiTrainer.FirstRow, "Cheating will destroy your experience.").Format(Color.red, 17);
 
-            col = 2; row = 2;
-            uiTrainer.AddText(col - 1, row - 1, "(HP/MP/SP/Mood/Stanima/Health)").Format(null, 13).Align(TextAnchor.MiddleLeft);
-            FormatButton1(uiTrainer.AddButton(col, row, Recover, "Recover ALL"));
-            FormatButton1(uiTrainer.AddButton(col, row += 2, AddMaxHP, "+100000 Max HP"));
-            FormatButton1(uiTrainer.AddButton(col, row += 2, ReduceMaxHP, "-100000 Max HP"));
-            FormatButton1(uiTrainer.AddButton(col, row += 2, AddMaxMP, "+10000 Max MP"));
-            FormatButton1(uiTrainer.AddButton(col, row += 2, ReduceMaxMP, "-10000 Max MP"));
-            FormatButton1(uiTrainer.AddButton(col, row += 2, AddMaxSP, "+1000 Max SP"));
-            FormatButton1(uiTrainer.AddButton(col, row += 2, ReduceMaxSP, "-1000 Max SP"));
-            FormatButton1(uiTrainer.AddButton(col, row += 2, AddBasis, "+100 ALL Basises"));
-            FormatButton1(uiTrainer.AddButton(col, row += 2, ReduceBasis, "-100 ALL Basises"));
-            FormatButton1(uiTrainer.AddButton(col, row += 2, AddAtk, "+10000 Attack"));
-            FormatButton1(uiTrainer.AddButton(col, row += 2, ReduceAtk, "-10000 Attack"));
-            FormatButton1(uiTrainer.AddButton(col, row += 2, AddDef, "+1000 Defence"));
-            FormatButton1(uiTrainer.AddButton(col, row += 2, ReduceDef, "-1000 Defence"));
+                col = 2; row = 2;
+                uiTrainer.AddText(col - 1, row - 1, "(HP/MP/SP/Mood/Stanima/Health)").Format(null, 13).Align(TextAnchor.MiddleLeft);
+                FormatButton1(uiTrainer.AddButton(col, row, Recover, "Recover ALL"));
+                FormatButton1(uiTrainer.AddButton(col, row += 2, AddMaxHP, "+100000 Max HP"));
+                FormatButton1(uiTrainer.AddButton(col, row += 2, ReduceMaxHP, "-100000 Max HP"));
+                FormatButton1(uiTrainer.AddButton(col, row += 2, AddMaxMP, "+10000 Max MP"));
+                FormatButton1(uiTrainer.AddButton(col, row += 2, ReduceMaxMP, "-10000 Max MP"));
+                FormatButton1(uiTrainer.AddButton(col, row += 2, AddMaxSP, "+1000 Max SP"));
+                FormatButton1(uiTrainer.AddButton(col, row += 2, ReduceMaxSP, "-1000 Max SP"));
+                FormatButton1(uiTrainer.AddButton(col, row += 2, AddBasis, "+100 ALL Basises"));
+                FormatButton1(uiTrainer.AddButton(col, row += 2, ReduceBasis, "-100 ALL Basises"));
+                FormatButton1(uiTrainer.AddButton(col, row += 2, AddAtk, "+10000 Attack"));
+                FormatButton1(uiTrainer.AddButton(col, row += 2, ReduceAtk, "-10000 Attack"));
+                FormatButton1(uiTrainer.AddButton(col, row += 2, AddDef, "+1000 Defence"));
+                FormatButton1(uiTrainer.AddButton(col, row += 2, ReduceDef, "-1000 Defence"));
 
-            col = 8; row = 2;
-            FormatButton1(uiTrainer.AddButton(col, row, Teleport, "Teleport"));
-            FormatButton1(uiTrainer.AddButton(col, row += 2, AddMoney, "+1000000 Money"));
-            FormatButton1(uiTrainer.AddButton(col, row += 2, ReduceMoney, "-1000000 Money"));
-            FormatButton1(uiTrainer.AddButton(col, row += 2, AddDegree, "+1000 Degree"));
-            FormatButton1(uiTrainer.AddButton(col, row += 2, ReduceDegree, "-1000 Degree"));
-            FormatButton1(uiTrainer.AddButton(col, row += 2, AddContribution, "+100000 Contribution"));
-            FormatButton1(uiTrainer.AddButton(col, row += 2, ReduceContribution, "-100000 Contribution"));
+                col = 8; row = 2;
+                FormatButton1(uiTrainer.AddButton(col, row, OpenTeleport, "Teleport"));
+                FormatButton1(uiTrainer.AddButton(col, row += 2, AddMoney, "+1000000 Money"));
+                FormatButton1(uiTrainer.AddButton(col, row += 2, ReduceMoney, "-1000000 Money"));
+                FormatButton1(uiTrainer.AddButton(col, row += 2, AddDegree, "+1000 Degree"));
+                FormatButton1(uiTrainer.AddButton(col, row += 2, ReduceDegree, "-1000 Degree"));
+                FormatButton1(uiTrainer.AddButton(col, row += 2, AddContribution, "+100000 Contribution"));
+                FormatButton1(uiTrainer.AddButton(col, row += 2, ReduceContribution, "-100000 Contribution"));
+                FormatButton1(uiTrainer.AddButton(col, row += 2, AddAbilityExp, "+100000 Ability Point"));
+                FormatButton1(uiTrainer.AddButton(col, row += 2, ReduceAbilityExp, "-100000 Ability Point"));
 
-            col = 14; row = 2;
-            FormatButton1(uiTrainer.AddButton(col, row, StopGame, "Stop Game"));
-            FormatButton1(uiTrainer.AddButton(col, row += 2, () => SpeedGame(1), "x1"));
-            FormatButton1(uiTrainer.AddButton(col, row += 2, () => SpeedGame(2), "x2"));
-            FormatButton1(uiTrainer.AddButton(col, row += 2, () => SpeedGame(3), "x3"));
-            FormatButton1(uiTrainer.AddButton(col, row += 2, Leveldown, "Leveldown"));
-            FormatButton1(uiTrainer.AddButton(col, row += 2, AddExp, "+10000 Exp"));
-            FormatButton1(uiTrainer.AddButton(col, row += 2, AddLife, "+100 Yearlfie"));
-            FormatButton1(uiTrainer.AddButton(col, row += 2, ReduceLife, "-100 Yearlfie"));
-            FormatButton1(uiTrainer.AddButton(col, row += 2, AddFootspeed, "+1000 Travel speed"));
-            FormatButton1(uiTrainer.AddButton(col, row += 2, ReduceFootspeed, "-1000 Travel speed"));
-            FormatButton1(uiTrainer.AddButton(col, row += 2, AddViewRange, "+10 View-range"));
-            FormatButton1(uiTrainer.AddButton(col, row += 2, ReduceViewRange, "-10 View-range"));
+                col = 14; row = 2;
+                FormatButton1(uiTrainer.AddButton(col, row, StopGame, "Stop Game"));
+                FormatButton1(uiTrainer.AddButton(col, row += 2, () => SpeedGame(1), "Game Speed x1"));
+                FormatButton1(uiTrainer.AddButton(col, row += 2, () => SpeedGame(2), "Game Speed x2"));
+                FormatButton1(uiTrainer.AddButton(col, row += 2, () => SpeedGame(3), "Game Speed x3"));
+                FormatButton1(uiTrainer.AddButton(col, row += 2, Leveldown, "Leveldown"));
+                FormatButton1(uiTrainer.AddButton(col, row += 2, AddExp, "+10000 Exp"));
+                FormatButton1(uiTrainer.AddButton(col, row += 2, AddLife, "+100 Yearlfie"));
+                FormatButton1(uiTrainer.AddButton(col, row += 2, ReduceLife, "-100 Yearlfie"));
+                FormatButton1(uiTrainer.AddButton(col, row += 2, AddFootspeed, "+1000 Travel speed"));
+                FormatButton1(uiTrainer.AddButton(col, row += 2, ReduceFootspeed, "-1000 Travel speed"));
+                FormatButton1(uiTrainer.AddButton(col, row += 2, AddViewRange, "+10 View-range"));
+                FormatButton1(uiTrainer.AddButton(col, row += 2, ReduceViewRange, "-10 View-range"));
 
-            col = 24; row = 2;
-            uiTrainer.AddText(col - 1, row++, "General Properties:").Format(null, 17, FontStyle.Italic).Align(TextAnchor.MiddleCenter);
-            uiTrainer.AddText(col, row, "HP: {0}/{1}").Align(TextAnchor.MiddleLeft).Format(Color.black, 15).SetWork(new UIItemBase.UIItemWork
-            {
-                Formatter = (x) => new object[] { player.GetDynProperty(UnitDynPropertyEnum.Hp).value, player.GetDynProperty(UnitDynPropertyEnum.HpMax).value },
-            });
-            uiTrainer.AddText(col - 3, row++, "{0} :Money").Align(TextAnchor.MiddleRight).Format(Color.black, 15).SetWork(new UIItemBase.UIItemWork
-            {
-                Formatter = (x) => new object[] { player.GetUnitMoney() },
-            });
-            uiTrainer.AddText(col, row, "MP: {0}/{1}").Align(TextAnchor.MiddleLeft).Format(Color.black, 15).SetWork(new UIItemBase.UIItemWork
-            {
-                Formatter = (x) => new object[] { player.GetDynProperty(UnitDynPropertyEnum.Mp).value, player.GetDynProperty(UnitDynPropertyEnum.MpMax).value },
-            });
-            uiTrainer.AddText(col - 3, row++, "{0} :Degree").Align(TextAnchor.MiddleRight).Format(Color.black, 15).SetWork(new UIItemBase.UIItemWork
-            {
-                Formatter = (x) => new object[] { player.GetUnitMayorDegree() },
-            });
-            uiTrainer.AddText(col, row, "SP: {0}/{1}").Align(TextAnchor.MiddleLeft).Format(Color.black, 15).SetWork(new UIItemBase.UIItemWork
-            {
-                Formatter = (x) => new object[] { player.GetDynProperty(UnitDynPropertyEnum.Sp).value, player.GetDynProperty(UnitDynPropertyEnum.SpMax).value },
-            });
-            uiTrainer.AddText(col - 3, row++, "{0} :Contribution").Align(TextAnchor.MiddleRight).Format(Color.black, 15).SetWork(new UIItemBase.UIItemWork
-            {
-                Formatter = (x) => new object[] { player.GetUnitContribution() },
-            });
-            uiTrainer.AddText(col, row, "Atk: {0}").Align(TextAnchor.MiddleLeft).Format(Color.black, 15).SetWork(new UIItemBase.UIItemWork
-            {
-                Formatter = (x) => new object[] { player.GetDynProperty(UnitDynPropertyEnum.Attack).value },
-            });
-            uiTrainer.AddText(col - 3, row++, "{0} :Def").Align(TextAnchor.MiddleRight).Format(Color.black, 15).SetWork(new UIItemBase.UIItemWork
-            {
-                Formatter = (x) => new object[] { player.GetDynProperty(UnitDynPropertyEnum.Defense).value },
-            });
-            uiTrainer.AddText(col, row, "Mood: {0}/{1}").Align(TextAnchor.MiddleLeft).Format(Color.black, 15).SetWork(new UIItemBase.UIItemWork
-            {
-                Formatter = (x) => new object[] { player.GetDynProperty(UnitDynPropertyEnum.Mood).value, player.GetDynProperty(UnitDynPropertyEnum.MoodMax).value },
-            });
-            uiTrainer.AddText(col - 3, row++, "{0}/{1} :Stanima").Align(TextAnchor.MiddleRight).Format(Color.black, 15).SetWork(new UIItemBase.UIItemWork
-            {
-                Formatter = (x) => new object[] { player.GetDynProperty(UnitDynPropertyEnum.Energy).value, player.GetDynProperty(UnitDynPropertyEnum.EnergyMax).value },
-            });
-            uiTrainer.AddText(col, row, "Heath: {0}/{1}").Align(TextAnchor.MiddleLeft).Format(Color.black, 15).SetWork(new UIItemBase.UIItemWork
-            {
-                Formatter = (x) => new object[] { player.GetDynProperty(UnitDynPropertyEnum.Health).value, player.GetDynProperty(UnitDynPropertyEnum.HealthMax).value },
-            });
-            uiTrainer.AddText(col - 3, row++, "{0}/{1} :Life").Align(TextAnchor.MiddleRight).Format(Color.black, 15).SetWork(new UIItemBase.UIItemWork
-            {
-                Formatter = (x) => new object[] { player.GetDynProperty(UnitDynPropertyEnum.Age).value, player.GetDynProperty(UnitDynPropertyEnum.Life).value },
-            });
-            uiTrainer.AddText(col, row, "Travel Speed: {0}").Align(TextAnchor.MiddleLeft).Format(Color.black, 15).SetWork(new UIItemBase.UIItemWork
-            {
-                Formatter = (x) => new object[] { player.GetDynProperty(UnitDynPropertyEnum.FootSpeed).value },
-            });
-            uiTrainer.AddText(col - 3, row++, "{0} :View Range").Align(TextAnchor.MiddleLeft).Format(Color.black, 15).SetWork(new UIItemBase.UIItemWork
-            {
-                Formatter = (x) => new object[] { player.GetDynProperty(UnitDynPropertyEnum.PlayerView).value },
-            });
-            uiTrainer.AddText(col - 1, row++, "Grade: {0} {1} ― {2}").Align(TextAnchor.MiddleCenter).Format(Color.black, 15).SetWork(new UIItemBase.UIItemWork
-            {
-                Formatter = (x) =>
+                col = 24; row = 2;
+                uiTrainer.AddText(col - 1, row++, "General Properties:").Format(null, 17, FontStyle.Italic).Align(TextAnchor.MiddleCenter);
+                uiTrainer.AddText(col, row, "HP: {0}/{1}").Align(TextAnchor.MiddleLeft).Format(Color.black, 15).SetWork(new UIItemBase.UIItemWork
                 {
-                    var grade = player.GetGradeConf();
-                    return new object[]
+                    Formatter = (x) => new object[] { player.GetDynProperty(UnitDynPropertyEnum.Hp).value, player.GetDynProperty(UnitDynPropertyEnum.HpMax).value },
+                });
+                uiTrainer.AddText(col - 3, row++, "{0} :Money").Align(TextAnchor.MiddleRight).Format(Color.black, 15).SetWork(new UIItemBase.UIItemWork
+                {
+                    Formatter = (x) => new object[] { player.GetUnitMoney() },
+                });
+                uiTrainer.AddText(col, row, "MP: {0}/{1}").Align(TextAnchor.MiddleLeft).Format(Color.black, 15).SetWork(new UIItemBase.UIItemWork
+                {
+                    Formatter = (x) => new object[] { player.GetDynProperty(UnitDynPropertyEnum.Mp).value, player.GetDynProperty(UnitDynPropertyEnum.MpMax).value },
+                });
+                uiTrainer.AddText(col - 3, row++, "{0} :Degree").Align(TextAnchor.MiddleRight).Format(Color.black, 15).SetWork(new UIItemBase.UIItemWork
+                {
+                    Formatter = (x) => new object[] { player.GetUnitMayorDegree() },
+                });
+                uiTrainer.AddText(col, row, "SP: {0}/{1}").Align(TextAnchor.MiddleLeft).Format(Color.black, 15).SetWork(new UIItemBase.UIItemWork
+                {
+                    Formatter = (x) => new object[] { player.GetDynProperty(UnitDynPropertyEnum.Sp).value, player.GetDynProperty(UnitDynPropertyEnum.SpMax).value },
+                });
+                uiTrainer.AddText(col - 3, row++, "{0} :Contribution").Align(TextAnchor.MiddleRight).Format(Color.black, 15).SetWork(new UIItemBase.UIItemWork
+                {
+                    Formatter = (x) => new object[] { player.GetUnitContribution() },
+                });
+                uiTrainer.AddText(col, row, "Atk: {0}").Align(TextAnchor.MiddleLeft).Format(Color.black, 15).SetWork(new UIItemBase.UIItemWork
+                {
+                    Formatter = (x) => new object[] { player.GetDynProperty(UnitDynPropertyEnum.Attack).value },
+                });
+                uiTrainer.AddText(col - 3, row++, "{0} :Def").Align(TextAnchor.MiddleRight).Format(Color.black, 15).SetWork(new UIItemBase.UIItemWork
+                {
+                    Formatter = (x) => new object[] { player.GetDynProperty(UnitDynPropertyEnum.Defense).value },
+                });
+                uiTrainer.AddText(col, row, "Mood: {0}/{1}").Align(TextAnchor.MiddleLeft).Format(Color.black, 15).SetWork(new UIItemBase.UIItemWork
+                {
+                    Formatter = (x) => new object[] { player.GetDynProperty(UnitDynPropertyEnum.Mood).value, player.GetDynProperty(UnitDynPropertyEnum.MoodMax).value },
+                });
+                uiTrainer.AddText(col - 3, row++, "{0}/{1} :Stanima").Align(TextAnchor.MiddleRight).Format(Color.black, 15).SetWork(new UIItemBase.UIItemWork
+                {
+                    Formatter = (x) => new object[] { player.GetDynProperty(UnitDynPropertyEnum.Energy).value, player.GetDynProperty(UnitDynPropertyEnum.EnergyMax).value },
+                });
+                uiTrainer.AddText(col, row, "Heath: {0}/{1}").Align(TextAnchor.MiddleLeft).Format(Color.black, 15).SetWork(new UIItemBase.UIItemWork
+                {
+                    Formatter = (x) => new object[] { player.GetDynProperty(UnitDynPropertyEnum.Health).value, player.GetDynProperty(UnitDynPropertyEnum.HealthMax).value },
+                });
+                uiTrainer.AddText(col - 3, row++, "{0}/{1} :Life").Align(TextAnchor.MiddleRight).Format(Color.black, 15).SetWork(new UIItemBase.UIItemWork
+                {
+                    Formatter = (x) => new object[] { player.GetDynProperty(UnitDynPropertyEnum.Age).value, player.GetDynProperty(UnitDynPropertyEnum.Life).value },
+                });
+                uiTrainer.AddText(col, row, "Travel Speed: {0}").Align(TextAnchor.MiddleLeft).Format(Color.black, 15).SetWork(new UIItemBase.UIItemWork
+                {
+                    Formatter = (x) => new object[] { player.GetDynProperty(UnitDynPropertyEnum.FootSpeed).value },
+                });
+                uiTrainer.AddText(col - 3, row++, "{0} :View Range").Align(TextAnchor.MiddleRight).Format(Color.black, 15).SetWork(new UIItemBase.UIItemWork
+                {
+                    Formatter = (x) => new object[] { player.GetDynProperty(UnitDynPropertyEnum.PlayerView).value },
+                });
+                uiTrainer.AddText(col, row, "Battle Speed: {0}").Align(TextAnchor.MiddleLeft).Format(Color.black, 15).SetWork(new UIItemBase.UIItemWork
+                {
+                    Formatter = (x) => new object[] { player.GetDynProperty(UnitDynPropertyEnum.MoveSpeed).value },
+                });
+                uiTrainer.AddText(col - 3, row++, "Ability: {0} ({1})").Align(TextAnchor.MiddleRight).Format(Color.black, 15).SetWork(new UIItemBase.UIItemWork
+                {
+                    Formatter = (x) => new object[]
                     {
-                        GameTool.LS(g.conf.roleGrade.GetItem(grade.id).gradeName),
-                        GameTool.LS(g.conf.roleGrade.GetItem(grade.id).phaseName),
-                        GameTool.LS(g.conf.roleGrade.GetItem(grade.id).qualityName)
-                    };
-                },
-            });
-            uiTrainer.AddText(col - 1, row++, "Exp: {0}/{1}").Align(TextAnchor.MiddleCenter).Format(Color.black, 15).SetWork(new UIItemBase.UIItemWork
-            {
-                Formatter = (x) => new object[] { player.GetDynProperty(UnitDynPropertyEnum.Exp).value, player.GetMaxExpCurrentPhase() },
-            });
+                        player.GetDynProperty(UnitDynPropertyEnum.AbilityExp).value,
+                        player.GetDynProperty(UnitDynPropertyEnum.AbilityPoint).value
+                    },
+                });
+                uiTrainer.AddText(col, row, "Luck: {0}").Align(TextAnchor.MiddleLeft).Format(Color.black, 15).SetWork(new UIItemBase.UIItemWork
+                {
+                    Formatter = (x) => new object[] { player.GetDynProperty(UnitDynPropertyEnum.Luck).value },
+                });
+                uiTrainer.AddText(col - 3, row++, "{0} :Insight").Align(TextAnchor.MiddleRight).Format(Color.black, 15).SetWork(new UIItemBase.UIItemWork
+                {
+                    Formatter = (x) => new object[] { player.GetDynProperty(UnitDynPropertyEnum.Talent).value },
+                });
+                uiTrainer.AddText(col - 1, row++, "Grade: {0} {1} ― {2}").Align(TextAnchor.MiddleCenter).Format(Color.black, 15).SetWork(new UIItemBase.UIItemWork
+                {
+                    Formatter = (x) =>
+                    {
+                        var grade = player.GetGradeConf();
+                        return new object[]
+                        {
+                    GameTool.LS(g.conf.roleGrade.GetItem(grade.id).gradeName),
+                    GameTool.LS(g.conf.roleGrade.GetItem(grade.id).phaseName),
+                    GameTool.LS(g.conf.roleGrade.GetItem(grade.id).qualityName)
+                        };
+                    },
+                });
+                uiTrainer.AddText(col - 1, row++, "Exp: {0}/{1}").Align(TextAnchor.MiddleCenter).Format(Color.black, 15).SetWork(new UIItemBase.UIItemWork
+                {
+                    Formatter = (x) => new object[] { player.GetDynProperty(UnitDynPropertyEnum.Exp).value, player.GetMaxExpCurrentPhase() },
+                });
 
-            row++;
-            uiTrainer.AddText(col - 1, row++, "Martial/Spiritual:").Format(null, 17, FontStyle.Italic).Align(TextAnchor.MiddleCenter);
-            uiTrainer.AddText(col, row, "Fire: {0}").Align(TextAnchor.MiddleLeft).Format(Color.black, 15).SetWork(new UIItemBase.UIItemWork
-            {
-                Formatter = (x) => new object[] { player.GetDynProperty(UnitDynPropertyEnum.BasisFire).value },
-            });
-            uiTrainer.AddText(col - 3, row++, "{0} :Blade").Align(TextAnchor.MiddleRight).Format(Color.black, 15).SetWork(new UIItemBase.UIItemWork
-            {
-                Formatter = (x) => new object[] { player.GetDynProperty(UnitDynPropertyEnum.BasisBlade).value },
-            });
-            uiTrainer.AddText(col, row, "Water: {0}").Align(TextAnchor.MiddleLeft).Format(Color.black, 15).SetWork(new UIItemBase.UIItemWork
-            {
-                Formatter = (x) => new object[] { player.GetDynProperty(UnitDynPropertyEnum.BasisFroze).value },
-            });
-            uiTrainer.AddText(col - 3, row++, "{0} :Spear").Align(TextAnchor.MiddleRight).Format(Color.black, 15).SetWork(new UIItemBase.UIItemWork
-            {
-                Formatter = (x) => new object[] { player.GetDynProperty(UnitDynPropertyEnum.BasisSpear).value },
-            });
-            uiTrainer.AddText(col, row, "Lightning: {0}").Align(TextAnchor.MiddleLeft).Format(Color.black, 15).SetWork(new UIItemBase.UIItemWork
-            {
-                Formatter = (x) => new object[] { player.GetDynProperty(UnitDynPropertyEnum.BasisThunder).value },
-            });
-            uiTrainer.AddText(col - 3, row++, "{0} :Sword").Align(TextAnchor.MiddleRight).Format(Color.black, 15).SetWork(new UIItemBase.UIItemWork
-            {
-                Formatter = (x) => new object[] { player.GetDynProperty(UnitDynPropertyEnum.BasisSword).value },
-            });
-            uiTrainer.AddText(col, row, "Wind: {0}").Align(TextAnchor.MiddleLeft).Format(Color.black, 15).SetWork(new UIItemBase.UIItemWork
-            {
-                Formatter = (x) => new object[] { player.GetDynProperty(UnitDynPropertyEnum.BasisWind).value },
-            });
-            uiTrainer.AddText(col - 3, row++, "{0} :Fist").Align(TextAnchor.MiddleRight).Format(Color.black, 15).SetWork(new UIItemBase.UIItemWork
-            {
-                Formatter = (x) => new object[] { player.GetDynProperty(UnitDynPropertyEnum.BasisFist).value },
-            });
-            uiTrainer.AddText(col, row, "Earth: {0}").Align(TextAnchor.MiddleLeft).Format(Color.black, 15).SetWork(new UIItemBase.UIItemWork
-            {
-                Formatter = (x) => new object[] { player.GetDynProperty(UnitDynPropertyEnum.BasisEarth).value },
-            });
-            uiTrainer.AddText(col - 3, row++, "{0} :Palm").Align(TextAnchor.MiddleRight).Format(Color.black, 15).SetWork(new UIItemBase.UIItemWork
-            {
-                Formatter = (x) => new object[] { player.GetDynProperty(UnitDynPropertyEnum.BasisPalm).value },
-            });
-            uiTrainer.AddText(col, row, "Wood: {0}").Align(TextAnchor.MiddleLeft).Format(Color.black, 15).SetWork(new UIItemBase.UIItemWork
-            {
-                Formatter = (x) => new object[] { player.GetDynProperty(UnitDynPropertyEnum.BasisWood).value },
-            });
-            uiTrainer.AddText(col - 3, row++, "{0} :Finger").Align(TextAnchor.MiddleRight).Format(Color.black, 15).SetWork(new UIItemBase.UIItemWork
-            {
-                Formatter = (x) => new object[] { player.GetDynProperty(UnitDynPropertyEnum.BasisFinger).value },
-            });
+                row++;
+                uiTrainer.AddText(col - 1, row++, "Martial/Spiritual:").Format(null, 17, FontStyle.Italic).Align(TextAnchor.MiddleCenter);
+                uiTrainer.AddText(col, row, "Fire: {0}").Align(TextAnchor.MiddleLeft).Format(Color.black, 15).SetWork(new UIItemBase.UIItemWork
+                {
+                    Formatter = (x) => new object[] { player.GetDynProperty(UnitDynPropertyEnum.BasisFire).value },
+                });
+                uiTrainer.AddText(col - 3, row++, "{0} :Blade").Align(TextAnchor.MiddleRight).Format(Color.black, 15).SetWork(new UIItemBase.UIItemWork
+                {
+                    Formatter = (x) => new object[] { player.GetDynProperty(UnitDynPropertyEnum.BasisBlade).value },
+                });
+                uiTrainer.AddText(col, row, "Water: {0}").Align(TextAnchor.MiddleLeft).Format(Color.black, 15).SetWork(new UIItemBase.UIItemWork
+                {
+                    Formatter = (x) => new object[] { player.GetDynProperty(UnitDynPropertyEnum.BasisFroze).value },
+                });
+                uiTrainer.AddText(col - 3, row++, "{0} :Spear").Align(TextAnchor.MiddleRight).Format(Color.black, 15).SetWork(new UIItemBase.UIItemWork
+                {
+                    Formatter = (x) => new object[] { player.GetDynProperty(UnitDynPropertyEnum.BasisSpear).value },
+                });
+                uiTrainer.AddText(col, row, "Lightning: {0}").Align(TextAnchor.MiddleLeft).Format(Color.black, 15).SetWork(new UIItemBase.UIItemWork
+                {
+                    Formatter = (x) => new object[] { player.GetDynProperty(UnitDynPropertyEnum.BasisThunder).value },
+                });
+                uiTrainer.AddText(col - 3, row++, "{0} :Sword").Align(TextAnchor.MiddleRight).Format(Color.black, 15).SetWork(new UIItemBase.UIItemWork
+                {
+                    Formatter = (x) => new object[] { player.GetDynProperty(UnitDynPropertyEnum.BasisSword).value },
+                });
+                uiTrainer.AddText(col, row, "Wind: {0}").Align(TextAnchor.MiddleLeft).Format(Color.black, 15).SetWork(new UIItemBase.UIItemWork
+                {
+                    Formatter = (x) => new object[] { player.GetDynProperty(UnitDynPropertyEnum.BasisWind).value },
+                });
+                uiTrainer.AddText(col - 3, row++, "{0} :Fist").Align(TextAnchor.MiddleRight).Format(Color.black, 15).SetWork(new UIItemBase.UIItemWork
+                {
+                    Formatter = (x) => new object[] { player.GetDynProperty(UnitDynPropertyEnum.BasisFist).value },
+                });
+                uiTrainer.AddText(col, row, "Earth: {0}").Align(TextAnchor.MiddleLeft).Format(Color.black, 15).SetWork(new UIItemBase.UIItemWork
+                {
+                    Formatter = (x) => new object[] { player.GetDynProperty(UnitDynPropertyEnum.BasisEarth).value },
+                });
+                uiTrainer.AddText(col - 3, row++, "{0} :Palm").Align(TextAnchor.MiddleRight).Format(Color.black, 15).SetWork(new UIItemBase.UIItemWork
+                {
+                    Formatter = (x) => new object[] { player.GetDynProperty(UnitDynPropertyEnum.BasisPalm).value },
+                });
+                uiTrainer.AddText(col, row, "Wood: {0}").Align(TextAnchor.MiddleLeft).Format(Color.black, 15).SetWork(new UIItemBase.UIItemWork
+                {
+                    Formatter = (x) => new object[] { player.GetDynProperty(UnitDynPropertyEnum.BasisWood).value },
+                });
+                uiTrainer.AddText(col - 3, row++, "{0} :Finger").Align(TextAnchor.MiddleRight).Format(Color.black, 15).SetWork(new UIItemBase.UIItemWork
+                {
+                    Formatter = (x) => new object[] { player.GetDynProperty(UnitDynPropertyEnum.BasisFinger).value },
+                });
 
-            row++;
-            uiTrainer.AddText(col - 1, row++, "Artisanship:").Format(null, 17, FontStyle.Italic).Align(TextAnchor.MiddleCenter);
-            uiTrainer.AddText(col, row, "Alchemy: {0}").Align(TextAnchor.MiddleLeft).Format(Color.black, 15).SetWork(new UIItemBase.UIItemWork
-            {
-                Formatter = (x) => new object[] { player.GetDynProperty(UnitDynPropertyEnum.RefineElixir).value },
-            });
-            uiTrainer.AddText(col - 3, row++, "{0} :Forge").Align(TextAnchor.MiddleRight).Format(Color.black, 15).SetWork(new UIItemBase.UIItemWork
-            {
-                Formatter = (x) => new object[] { player.GetDynProperty(UnitDynPropertyEnum.RefineWeapon).value },
-            });
-            uiTrainer.AddText(col, row, "Feng Shui: {0}").Align(TextAnchor.MiddleLeft).Format(Color.black, 15).SetWork(new UIItemBase.UIItemWork
-            {
-                Formatter = (x) => new object[] { player.GetDynProperty(UnitDynPropertyEnum.Geomancy).value },
-            });
-            uiTrainer.AddText(col - 3, row++, "{0} :Talismans").Align(TextAnchor.MiddleRight).Format(Color.black, 15).SetWork(new UIItemBase.UIItemWork
-            {
-                Formatter = (x) => new object[] { player.GetDynProperty(UnitDynPropertyEnum.Symbol).value },
-            });
-            uiTrainer.AddText(col, row, "Herbology: {0}").Align(TextAnchor.MiddleLeft).Format(Color.black, 15).SetWork(new UIItemBase.UIItemWork
-            {
-                Formatter = (x) => new object[] { player.GetDynProperty(UnitDynPropertyEnum.Herbal).value },
-            });
-            uiTrainer.AddText(col - 3, row++, "{0} :Mining").Align(TextAnchor.MiddleRight).Format(Color.black, 15).SetWork(new UIItemBase.UIItemWork
-            {
-                Formatter = (x) => new object[] { player.GetDynProperty(UnitDynPropertyEnum.Mine).value },
-            });
+                row++;
+                uiTrainer.AddText(col - 1, row++, "Artisanship:").Format(null, 17, FontStyle.Italic).Align(TextAnchor.MiddleCenter);
+                uiTrainer.AddText(col, row, "Alchemy: {0}").Align(TextAnchor.MiddleLeft).Format(Color.black, 15).SetWork(new UIItemBase.UIItemWork
+                {
+                    Formatter = (x) => new object[] { player.GetDynProperty(UnitDynPropertyEnum.RefineElixir).value },
+                });
+                uiTrainer.AddText(col - 3, row++, "{0} :Forge").Align(TextAnchor.MiddleRight).Format(Color.black, 15).SetWork(new UIItemBase.UIItemWork
+                {
+                    Formatter = (x) => new object[] { player.GetDynProperty(UnitDynPropertyEnum.RefineWeapon).value },
+                });
+                uiTrainer.AddText(col, row, "Feng Shui: {0}").Align(TextAnchor.MiddleLeft).Format(Color.black, 15).SetWork(new UIItemBase.UIItemWork
+                {
+                    Formatter = (x) => new object[] { player.GetDynProperty(UnitDynPropertyEnum.Geomancy).value },
+                });
+                uiTrainer.AddText(col - 3, row++, "{0} :Talismans").Align(TextAnchor.MiddleRight).Format(Color.black, 15).SetWork(new UIItemBase.UIItemWork
+                {
+                    Formatter = (x) => new object[] { player.GetDynProperty(UnitDynPropertyEnum.Symbol).value },
+                });
+                uiTrainer.AddText(col, row, "Herbology: {0}").Align(TextAnchor.MiddleLeft).Format(Color.black, 15).SetWork(new UIItemBase.UIItemWork
+                {
+                    Formatter = (x) => new object[] { player.GetDynProperty(UnitDynPropertyEnum.Herbal).value },
+                });
+                uiTrainer.AddText(col - 3, row++, "{0} :Mining").Align(TextAnchor.MiddleRight).Format(Color.black, 15).SetWork(new UIItemBase.UIItemWork
+                {
+                    Formatter = (x) => new object[] { player.GetDynProperty(UnitDynPropertyEnum.Mine).value },
+                });
+            }, ClearTempVar);
         }
 
         private void FormatButton1(UIItemBase.UIItemButton btn)
@@ -276,18 +300,6 @@ namespace MOD_nE7UL2.Mod
             player.SetProperty<int>(UnitPropertyEnum.Health, int.MaxValue);
         }
 
-        private void Teleport()
-        {
-            if (!g.ui.HasUI(UIType.MapMain))
-            {
-                var uiConfirm = g.ui.OpenUI<UICheckPopup>(UIType.CheckPopup);
-                uiConfirm.InitData("Teleport", "You have to on map!", 1);
-                return;
-            }
-            if (uiTele == null)
-                OpenTeleport();
-        }
-
         private static readonly Dictionary<int, MultiValue> AREA_COL = new Dictionary<int, MultiValue>
         {
             [1] = MultiValue.Create(0, new Func<MapBuildBase, bool>((x) => x.IsSchool() || x.IsTown())),
@@ -306,29 +318,37 @@ namespace MOD_nE7UL2.Mod
         };
         private void OpenTeleport()
         {
-            uiTele = UIHelper.UICustom1.Create(TITLE, ClearTempVar);
-            uiTele.UI.isFastClose = true;
-
-            var row = new Dictionary<int, int>
+            if (!g.ui.HasUI(UIType.MapMain))
             {
-                [0] = 0,
-                [1] = 0,
-                [2] = 0,
-                [3] = 0,
-                [4] = 0,
-            };
-            int col = 0, areaId = -1;
-            foreach (var build in g.world.build.GetBuilds().ToArray().Where(x => !string.IsNullOrEmpty(x.name) && AREA_COL[x.gridData.areaBaseID].Value0.Parse<int>() >= 0 && ((Func<MapBuildBase, bool>)AREA_COL[x.gridData.areaBaseID].Value1).Invoke(x))
-                .OrderBy(x => AREA_COL[x.gridData.areaBaseID].Value0.Parse<int>()).ThenBy(x => x.gridData.areaBaseID).ThenBy(x => x.name))
-            {
-                if (areaId != build.gridData.areaBaseID)
-                {
-                    areaId = build.gridData.areaBaseID;
-                    col = AREA_COL[areaId].Value0.Parse<int>() * 6 + 3;
-                    uiTele.AddText(col, row[AREA_COL[areaId].Value0.Parse<int>()]++, $"Area {areaId}:").Format(null, 16, FontStyle.Italic).Align(TextAnchor.MiddleCenter);
-                }
-                FormatButton2(uiTele.AddButton(col, row[AREA_COL[areaId].Value0.Parse<int>()]++, () => Tele(build.GetOpenBuildPoints()[0]), build.name));
+                var uiConfirm = g.ui.OpenUI<UICheckPopup>(UIType.CheckPopup);
+                uiConfirm.InitData("Teleport", "You have to on map!", 1);
+                return;
             }
+            uiTele = new UIHelper.UICustom1(TITLE, (uiTele) =>
+            {
+                uiTele.UI.isFastClose = true;
+
+                var row = new Dictionary<int, int>
+                {
+                    [0] = 0,
+                    [1] = 0,
+                    [2] = 0,
+                    [3] = 0,
+                    [4] = 0,
+                };
+                int col = 0, areaId = -1;
+                foreach (var build in g.world.build.GetBuilds().ToArray().Where(x => !string.IsNullOrEmpty(x.name) && AREA_COL[x.gridData.areaBaseID].Value0.Parse<int>() >= 0 && ((Func<MapBuildBase, bool>)AREA_COL[x.gridData.areaBaseID].Value1).Invoke(x))
+                    .OrderBy(x => AREA_COL[x.gridData.areaBaseID].Value0.Parse<int>()).ThenBy(x => x.gridData.areaBaseID).ThenBy(x => x.name))
+                {
+                    if (areaId != build.gridData.areaBaseID)
+                    {
+                        areaId = build.gridData.areaBaseID;
+                        col = AREA_COL[areaId].Value0.Parse<int>() * 6 + 3;
+                        uiTele.AddText(col, row[AREA_COL[areaId].Value0.Parse<int>()]++, $"Area {areaId}:").Format(null, 16, FontStyle.Italic).Align(TextAnchor.MiddleCenter);
+                    }
+                    FormatButton2(uiTele.AddButton(col, row[AREA_COL[areaId].Value0.Parse<int>()]++, () => Tele(build.GetOpenBuildPoints()[0]), build.name));
+                }
+            }, ClearTempVar);
         }
 
         private void FormatButton2(UIItemBase.UIItemButton btn)
@@ -450,6 +470,18 @@ namespace MOD_nE7UL2.Mod
         {
             var player = g.world.playerUnit;
             player.AddUnitContribution(-100000);
+        }
+
+        private void AddAbilityExp()
+        {
+            var player = g.world.playerUnit;
+            player.AddProperty<int>(UnitPropertyEnum.AbilityExp, 100000);
+        }
+
+        private void ReduceAbilityExp()
+        {
+            var player = g.world.playerUnit;
+            player.AddProperty<int>(UnitPropertyEnum.AbilityExp, -100000);
         }
 
         private void AddFootspeed()

@@ -164,72 +164,74 @@ namespace MOD_nE7UL2.Mod
 
         private void OpenSMConfigs()
         {
-            uiCustom = UIHelper.UICustom1.Create(TITLE, SetSMConfigs, true);
-            int col, row;
+            uiCustom = new UIHelper.UICustom1(TITLE, (uiCustom) =>
+            {
+                int col, row;
 
-            col = 2; row = 0;
-            uiCustom.AddText(col, row++, "Monster:").Format(null, 17, FontStyle.Italic).Align(TextAnchor.MiddleRight);
-            slMonstAtk = uiCustom.AddCompositeSlider(col, row++, "ATK", -0.50f, 10.00f, AddAtkRate, "{1}% ({0}P)");
-            slMonstDef = uiCustom.AddCompositeSlider(col, row++, "DEF", -0.50f, 10.00f, AddDefRate, "{1}% ({0}P)");
-            slMonstHp = uiCustom.AddCompositeSlider(col, row++, "Max HP", -0.50f, 10.00f, AddHpRate, "{1}% ({0}P)");
-            slMonstBasis = uiCustom.AddCompositeSlider(col, row++, "Basis", -0.50f, 10.00f, AddBasisRate, "{1}% ({0}P)");
-            uiCustom.AddText(col - 2, row++, "(Included Sword, Blade, Spear, Fist, Finger, Palm, Fire, Water, Thunder, Wood, Wind, Earth)").Format(null, 13).Align(TextAnchor.MiddleLeft);
-            slMonstSpecialRate = uiCustom.AddCompositeSlider(col, row++, "Special Monster Rate", -0.50f, 1.00f, AddSpecialMonsterRate, "{1}% ({0}P)");
-            row++;
-            uiCustom.AddText(col, row++, "Economic:").Format(null, 17, FontStyle.Italic).Align(TextAnchor.MiddleRight);
-            slEcoTaxRate = uiCustom.AddCompositeSlider(col, row++, "Tax Rate", 0.00f, 10.00f, AddTaxRate, "{1}% ({0}P)");
-            slEcoInfRate = uiCustom.AddCompositeSlider(col, row++, "Inflation Rate", -0.50f, 3.00f, AddInflationRate, "{1}% ({0}P)");
-            slEcoBuildingCost = uiCustom.AddCompositeSlider(col, row++, "Building Cost", 0.00f, 10.00f, AddBuildingCostRate, "{1}% ({0}P)");
-            slEcoBankAccCost = uiCustom.AddCompositeSlider(col, row++, "Bank Account Cost", 0.00f, 10.00f, AddBankAccountCostRate, "{1}% ({0}P)");
-            slEcoBankFee = uiCustom.AddCompositeSlider(col, row++, "Bank Fee", 0.00f, 100.00f, AddBankFee, "{1}% ({0}P)");
-            slEcoRefineCost = uiCustom.AddCompositeSlider(col, row++, "Refine Cost", -0.50f, 1.00f, AddRefineCost, "{1}% ({0}P)");
-            slEcoSectExchangeRate = uiCustom.AddCompositeSlider(col, row++, "Sect Exchange Fee", -0.50f, 1.00f, AddSectExchangeRate, "{1}% ({0}P)");
-            slEcoItemValue = uiCustom.AddCompositeSlider(col, row++, "Item Value", -0.50f, 1.00f, AddItemValueRate, "{1}% ({0}P)");
-            row++;
-            uiCustom.AddText(col, row++, "NPC:").Format(null, 17, FontStyle.Italic).Align(TextAnchor.MiddleRight);
-            slNpcGrowRate = uiCustom.AddCompositeSlider(col, row++, "Grow Rate", 0.00f, 10.00f, AddNpcGrowRate, "{1}% ({0}P)");
-            row++;
-            uiCustom.AddText(col, row++, "Misc:").Format(null, 17, FontStyle.Italic).Align(TextAnchor.MiddleRight);
-            slMiscLevelupExp = uiCustom.AddCompositeSlider(col, row++, "Levelup Exp", 0.00f, 1.00f, AddLevelupExpRate, "{1}% ({0}P)");
+                col = 2; row = 0;
+                uiCustom.AddText(col, row++, "Monster:").Format(null, 17, FontStyle.Italic).Align(TextAnchor.MiddleRight);
+                slMonstAtk = uiCustom.AddCompositeSlider(col, row++, "ATK", -0.50f, 10.00f, AddAtkRate, "{1}% ({0}P)");
+                slMonstDef = uiCustom.AddCompositeSlider(col, row++, "DEF", -0.50f, 10.00f, AddDefRate, "{1}% ({0}P)");
+                slMonstHp = uiCustom.AddCompositeSlider(col, row++, "Max HP", -0.50f, 10.00f, AddHpRate, "{1}% ({0}P)");
+                slMonstBasis = uiCustom.AddCompositeSlider(col, row++, "Basis", -0.50f, 10.00f, AddBasisRate, "{1}% ({0}P)");
+                uiCustom.AddText(col - 2, row++, "(Included Sword, Blade, Spear, Fist, Finger, Palm, Fire, Water, Thunder, Wood, Wind, Earth)").Format(null, 13).Align(TextAnchor.MiddleLeft);
+                slMonstSpecialRate = uiCustom.AddCompositeSlider(col, row++, "Special Monster Rate", -0.50f, 1.00f, AddSpecialMonsterRate, "{1}% ({0}P)");
+                row++;
+                uiCustom.AddText(col, row++, "Economic:").Format(null, 17, FontStyle.Italic).Align(TextAnchor.MiddleRight);
+                slEcoTaxRate = uiCustom.AddCompositeSlider(col, row++, "Tax Rate", 0.00f, 10.00f, AddTaxRate, "{1}% ({0}P)");
+                slEcoInfRate = uiCustom.AddCompositeSlider(col, row++, "Inflation Rate", -0.50f, 3.00f, AddInflationRate, "{1}% ({0}P)");
+                slEcoBuildingCost = uiCustom.AddCompositeSlider(col, row++, "Building Cost", 0.00f, 10.00f, AddBuildingCostRate, "{1}% ({0}P)");
+                slEcoBankAccCost = uiCustom.AddCompositeSlider(col, row++, "Bank Account Cost", 0.00f, 10.00f, AddBankAccountCostRate, "{1}% ({0}P)");
+                slEcoBankFee = uiCustom.AddCompositeSlider(col, row++, "Bank Fee", 0.00f, 100.00f, AddBankFee, "{1}% ({0}P)");
+                slEcoRefineCost = uiCustom.AddCompositeSlider(col, row++, "Refine Cost", -0.50f, 1.00f, AddRefineCost, "{1}% ({0}P)");
+                slEcoSectExchangeRate = uiCustom.AddCompositeSlider(col, row++, "Sect Exchange Fee", -0.50f, 1.00f, AddSectExchangeRate, "{1}% ({0}P)");
+                slEcoItemValue = uiCustom.AddCompositeSlider(col, row++, "Item Value", -0.50f, 1.00f, AddItemValueRate, "{1}% ({0}P)");
+                row++;
+                uiCustom.AddText(col, row++, "NPC:").Format(null, 17, FontStyle.Italic).Align(TextAnchor.MiddleRight);
+                slNpcGrowRate = uiCustom.AddCompositeSlider(col, row++, "Grow Rate", 0.00f, 10.00f, AddNpcGrowRate, "{1}% ({0}P)");
+                row++;
+                uiCustom.AddText(col, row++, "Misc:").Format(null, 17, FontStyle.Italic).Align(TextAnchor.MiddleRight);
+                slMiscLevelupExp = uiCustom.AddCompositeSlider(col, row++, "Levelup Exp", 0.00f, 1.00f, AddLevelupExpRate, "{1}% ({0}P)");
 
-            col = 18; row = 0;
-            uiCustom.AddText(col, row++, "Systems:").Format(null, 17, FontStyle.Italic).Align(TextAnchor.MiddleRight);
-            tglSysHideSave = uiCustom.AddCompositeToggle(col, row++, "Hide Save Button", HideSaveButton, "({0}P)");
-            tglSysHideReload = uiCustom.AddCompositeToggle(col, row++, "Hide Reload Button", HideReloadButton, "({0}P)");
-            tglSysOnelife = uiCustom.AddCompositeToggle(col, row++, "One life", Onelife, "({0}P)");
-            row++;
-            tglSysHideBattleMap = uiCustom.AddCompositeToggle(col, row++, "Hide Battle Map", HideBattleMap, "({0}P)");
-            tglLowGradeDestiniesAtBeginning = uiCustom.AddCompositeToggle(col, row++, "Low Grade Destinies At Beginning", LowGradeDestiniesAtBeginning, "({0}P)");
-            tglSysOnlyPortalAtCityAndSect = uiCustom.AddCompositeToggle(col, row++, "Only Portal at City and Sect", OnlyPortalAtCityAndSect, "({0}P)");
-            tglSysSectNoExchange = uiCustom.AddCompositeToggle(col, row++, "Sect No Exchange", SectNoExchange, "({0}P)");
-            tglSysNoRebirth = uiCustom.AddCompositeToggle(col, row++, "No Rebirth", NoRebirth, "({0}P)");
-            tglAllowUpgradeNaturally = uiCustom.AddCompositeToggle(col, row++, "Allow Upgrade Naturally", AllowUpgradeNaturally, "({0}P)");
-            uiCustom.AddText(col - 2, row++, "(This way wont grow up your attributes/properties)").Format(null, 13).Align(TextAnchor.MiddleLeft);
-            row++;
-            tglSysBossHasShield = uiCustom.AddCompositeToggle(col, row++, "Boss Has Shield", BossHasShield, "({0}P)");
-            tglNoGrowupFromBattles = uiCustom.AddCompositeToggle(col, row++, "No Growup From Battles", NoGrowupFromBattles, "({0}P)");
-            tglSysNoExpFromBattle = uiCustom.AddCompositeToggle(col, row++, "No Exp from Battles", NoExpFromBattles, "({0}P)");
-            row++;
-            tglEnableTrainer = uiCustom.AddCompositeToggle(col, row++, "Enable Trainer", EnableTrainer, "({0}P)");
-            uiCustom.AddText(col - 2, row++, "(Dont recommend to use this option!【Ctrl+1】)").Format(null, 13).Align(TextAnchor.MiddleLeft);
+                col = 18; row = 0;
+                uiCustom.AddText(col, row++, "Systems:").Format(null, 17, FontStyle.Italic).Align(TextAnchor.MiddleRight);
+                tglSysHideSave = uiCustom.AddCompositeToggle(col, row++, "Hide Save Button", HideSaveButton, "({0}P)");
+                tglSysHideReload = uiCustom.AddCompositeToggle(col, row++, "Hide Reload Button", HideReloadButton, "({0}P)");
+                tglSysOnelife = uiCustom.AddCompositeToggle(col, row++, "One life", Onelife, "({0}P)");
+                row++;
+                tglSysHideBattleMap = uiCustom.AddCompositeToggle(col, row++, "Hide Battle Map", HideBattleMap, "({0}P)");
+                tglLowGradeDestiniesAtBeginning = uiCustom.AddCompositeToggle(col, row++, "Low Grade Destinies At Beginning", LowGradeDestiniesAtBeginning, "({0}P)");
+                tglSysOnlyPortalAtCityAndSect = uiCustom.AddCompositeToggle(col, row++, "Only Portal at City and Sect", OnlyPortalAtCityAndSect, "({0}P)");
+                tglSysSectNoExchange = uiCustom.AddCompositeToggle(col, row++, "Sect No Exchange", SectNoExchange, "({0}P)");
+                tglSysNoRebirth = uiCustom.AddCompositeToggle(col, row++, "No Rebirth", NoRebirth, "({0}P)");
+                tglAllowUpgradeNaturally = uiCustom.AddCompositeToggle(col, row++, "Allow Upgrade Naturally", AllowUpgradeNaturally, "({0}P)");
+                uiCustom.AddText(col - 2, row++, "(This way wont grow up your attributes/properties)").Format(null, 13).Align(TextAnchor.MiddleLeft);
+                row++;
+                tglSysBossHasShield = uiCustom.AddCompositeToggle(col, row++, "Boss Has Shield", BossHasShield, "({0}P)");
+                tglNoGrowupFromBattles = uiCustom.AddCompositeToggle(col, row++, "No Growup From Battles", NoGrowupFromBattles, "({0}P)");
+                tglSysNoExpFromBattle = uiCustom.AddCompositeToggle(col, row++, "No Exp from Battles", NoExpFromBattles, "({0}P)");
+                row++;
+                tglEnableTrainer = uiCustom.AddCompositeToggle(col, row++, "Enable Trainer", EnableTrainer, "({0}P)");
+                uiCustom.AddText(col - 2, row++, "(Dont recommend to use this option!【Ctrl+1】)").Format(null, 13).Align(TextAnchor.MiddleLeft);
 
-            col = 30; row = 0;
-            txtTotalScore = uiCustom.AddText(col, row, "Total score: {0}P").Format(Color.red, 17).Align(TextAnchor.MiddleRight);
-            uiCustom.AddButton(col, row += 2, () => SetLevelBase(), "Default");
-            uiCustom.AddButton(col, row += 2, () => SetLevel(0), "Level 0");
-            uiCustom.AddButton(col, row += 2, () => SetLevel(1), "Level 1");
-            uiCustom.AddButton(col, row += 2, () => SetLevel(2), "Level 2");
-            uiCustom.AddButton(col, row += 2, () => SetLevel(3), "Level 3");
-            uiCustom.AddButton(col, row += 2, () => SetLevel(4), "Level 4");
-            uiCustom.AddButton(col, row += 2, () => SetLevel(5), "Level 5");
-            uiCustom.AddButton(col, row += 2, () => SetLevel(6), "Level 6");
-            uiCustom.AddButton(col, row += 2, () => SetLevel(7), "Level 7");
-            uiCustom.AddButton(col, row += 2, () => SetLevel(8), "Level 8");
-            uiCustom.AddButton(col, row += 2, () => SetLevel(9), "Level 9");
-            uiCustom.AddButton(col, row += 2, () => SetLevel(10), "Level 10");
-            uiCustom.AddText(15, 26, "You have to start a new game to apply these configs!").Format(Color.red, 17);
+                col = 30; row = 0;
+                txtTotalScore = uiCustom.AddText(col, row, "Total score: {0}P").Format(Color.red, 17).Align(TextAnchor.MiddleRight);
+                uiCustom.AddButton(col, row += 2, () => SetLevelBase(), "Default");
+                uiCustom.AddButton(col, row += 2, () => SetLevel(0), "Level 0");
+                uiCustom.AddButton(col, row += 2, () => SetLevel(1), "Level 1");
+                uiCustom.AddButton(col, row += 2, () => SetLevel(2), "Level 2");
+                uiCustom.AddButton(col, row += 2, () => SetLevel(3), "Level 3");
+                uiCustom.AddButton(col, row += 2, () => SetLevel(4), "Level 4");
+                uiCustom.AddButton(col, row += 2, () => SetLevel(5), "Level 5");
+                uiCustom.AddButton(col, row += 2, () => SetLevel(6), "Level 6");
+                uiCustom.AddButton(col, row += 2, () => SetLevel(7), "Level 7");
+                uiCustom.AddButton(col, row += 2, () => SetLevel(8), "Level 8");
+                uiCustom.AddButton(col, row += 2, () => SetLevel(9), "Level 9");
+                uiCustom.AddButton(col, row += 2, () => SetLevel(10), "Level 10");
+                uiCustom.AddText(uiCustom.MidCol, uiCustom.LastRow, "You have to start a new game to apply these configs!").Format(Color.red, 17);
 
-            SetWork();
+                SetWork();
+            }, SetSMConfigs, true);
         }
 
         private void SetWork()
@@ -345,6 +347,7 @@ namespace MOD_nE7UL2.Mod
             AllowUpgradeNaturally = tglAllowUpgradeNaturally.Get().Parse<bool>();
             EnableTrainer = tglEnableTrainer.Get().Parse<bool>();
             CacheHelper.SaveGlobalCache(this);
+            uiCustom = null;
         }
 
         public static int CalCompScore(UIItemBase comp)
