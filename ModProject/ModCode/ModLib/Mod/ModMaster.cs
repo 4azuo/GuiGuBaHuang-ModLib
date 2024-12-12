@@ -495,6 +495,10 @@ namespace ModLib.Mod
 
         public static void ShowException(Exception ex, string log)
         {
+            if (g.ui.HasUI(UIType.TextInfoLong))
+            {
+                g.ui.CloseUI(UIType.TextInfoLong);
+            }
             var ui = g.ui.OpenUI<UITextInfoLong>(UIType.TextInfoLong);
             ui.InitData("Exception", ex.GetAllInnnerExceptionStr());
             var btnOpenLog = ui.btnOK.Copy();

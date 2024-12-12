@@ -9,7 +9,7 @@ using System.Linq;
 
 namespace MOD_nE7UL2
 {
-    [InGameCustomSettings("game_configs.json", 3400)]
+    [InGameCustomSettings("game_configs.json", 3401)]
     [ModOrder("_EventOrderIndex.json")]
     public sealed class ModMain : ModMaster<InGameStts>
     {

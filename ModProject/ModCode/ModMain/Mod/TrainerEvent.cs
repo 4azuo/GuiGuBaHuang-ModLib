@@ -1,6 +1,8 @@
 ﻿using MOD_nE7UL2.Const;
 using ModLib.Enum;
 using ModLib.Mod;
+using ModLib.Object;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
@@ -13,7 +15,7 @@ namespace MOD_nE7UL2.Mod
         public const string TITLE = "Mini Trainer";
         public const float TRAINER_BTN_WIDTH = 200;
         public const float TRAINER_BTN_HEIGHT = 36;
-        public const float TELE_BTN_WIDTH = 180;
+        public const float TELE_BTN_WIDTH = 250;
         public const float TELE_BTN_HEIGHT = 28;
         public const int MAX_NUMBER = 100000000;
 
@@ -40,8 +42,7 @@ namespace MOD_nE7UL2.Mod
                 else
                 if (Input.GetKey(KeyCode.LeftControl) && Input.GetKeyDown(KeyCode.Alpha2))
                 {
-                    if (uiTele == null)
-                        OpenTeleport();
+                    Teleport();
                 }
             }
         }
@@ -83,7 +84,9 @@ namespace MOD_nE7UL2.Mod
 
             col = 14; row = 2;
             FormatButton1(uiTrainer.AddButton(col, row, StopGame, "Stop Game"));
-            FormatButton1(uiTrainer.AddButton(col, row += 2, Levelup, "Levelup"));
+            FormatButton1(uiTrainer.AddButton(col, row += 2, () => SpeedGame(1), "x1"));
+            FormatButton1(uiTrainer.AddButton(col, row += 2, () => SpeedGame(2), "x2"));
+            FormatButton1(uiTrainer.AddButton(col, row += 2, () => SpeedGame(3), "x3"));
             FormatButton1(uiTrainer.AddButton(col, row += 2, Leveldown, "Leveldown"));
             FormatButton1(uiTrainer.AddButton(col, row += 2, AddExp, "+10000 Exp"));
             FormatButton1(uiTrainer.AddButton(col, row += 2, AddLife, "+100 Yearlfie"));
@@ -275,46 +278,62 @@ namespace MOD_nE7UL2.Mod
 
         private void Teleport()
         {
+            if (!g.ui.HasUI(UIType.MapMain))
+            {
+                var uiConfirm = g.ui.OpenUI<UICheckPopup>(UIType.CheckPopup);
+                uiConfirm.InitData("Teleport", "You have to on map!", 1);
+                return;
+            }
             if (uiTele == null)
                 OpenTeleport();
         }
 
-        private static readonly Dictionary<int, int> AREA_COL = new Dictionary<int, int>
+        private static readonly Dictionary<int, MultiValue> AREA_COL = new Dictionary<int, MultiValue>
         {
-            [1] = 0,
-            [2] = 1,
-            [3] = -1,
-            [4] = 2,
-            [5] = -1,
-            [6] = 3,
-            [7] = -1,
-            [8] = 4,
-            [9] = -1,
-            [10] = 5,
+            [1] = MultiValue.Create(0, new Func<MapBuildBase, bool>((x) => x.IsSchool() || x.IsTown())),
+            [2] = MultiValue.Create(0, new Func<MapBuildBase, bool>((x) => x.IsSchool() || x.IsTown())),
+            [3] = MultiValue.Create(0, new Func<MapBuildBase, bool>((x) => true)),
+            [4] = MultiValue.Create(1, new Func<MapBuildBase, bool>((x) => x.IsSchool() || x.IsTown())),
+            [5] = MultiValue.Create(1, new Func<MapBuildBase, bool>((x) => true)),
+            [6] = MultiValue.Create(2, new Func<MapBuildBase, bool>((x) => x.IsSchool() || x.IsTown())),
+            [7] = MultiValue.Create(2, new Func<MapBuildBase, bool>((x) => true)),
+            [8] = MultiValue.Create(3, new Func<MapBuildBase, bool>((x) => x.IsSchool() || x.IsTown())),
+            [9] = MultiValue.Create(3, new Func<MapBuildBase, bool>((x) => true)),
+            [10] = MultiValue.Create(4, new Func<MapBuildBase, bool>((x) => x.IsSchool() || x.IsTown())),
+            [11] = MultiValue.Create(4, new Func<MapBuildBase, bool>((x) => true)),
+            [12] = MultiValue.Create(4, new Func<MapBuildBase, bool>((x) => true)),
+            [13] = MultiValue.Create(4, new Func<MapBuildBase, bool>((x) => true)),
         };
         private void OpenTeleport()
         {
             uiTele = UIHelper.UICustom1.Create(TITLE, ClearTempVar);
             uiTele.UI.isFastClose = true;
 
-            int col = 10, row = 0, areaId = -1;
-            foreach (var build in g.world.build.GetBuilds().ToArray().Where(x => !string.IsNullOrEmpty(x.name) && AREA_COL[x.gridData.areaBaseID] >= 0)
-                .OrderBy(x => AREA_COL[x.gridData.areaBaseID]).ThenBy(x => x.gridData.areaBaseID).ThenBy(x => x.name))
+            var row = new Dictionary<int, int>
+            {
+                [0] = 0,
+                [1] = 0,
+                [2] = 0,
+                [3] = 0,
+                [4] = 0,
+            };
+            int col = 0, areaId = -1;
+            foreach (var build in g.world.build.GetBuilds().ToArray().Where(x => !string.IsNullOrEmpty(x.name) && AREA_COL[x.gridData.areaBaseID].Value0.Parse<int>() >= 0 && ((Func<MapBuildBase, bool>)AREA_COL[x.gridData.areaBaseID].Value1).Invoke(x))
+                .OrderBy(x => AREA_COL[x.gridData.areaBaseID].Value0.Parse<int>()).ThenBy(x => x.gridData.areaBaseID).ThenBy(x => x.name))
             {
                 if (areaId != build.gridData.areaBaseID)
                 {
                     areaId = build.gridData.areaBaseID;
-                    col = AREA_COL[areaId] * 4 + 1;
-                    row = 0;
-                    uiTele.AddText(col, row++, $"Area {areaId}:").Format(null, 17, FontStyle.Italic).Align(TextAnchor.MiddleCenter);
+                    col = AREA_COL[areaId].Value0.Parse<int>() * 6 + 3;
+                    uiTele.AddText(col, row[AREA_COL[areaId].Value0.Parse<int>()]++, $"Area {areaId}:").Format(null, 16, FontStyle.Italic).Align(TextAnchor.MiddleCenter);
                 }
-                FormatButton2(uiTele.AddButton(col, row++, () => Tele(build.GetOpenBuildPoints()[0]), build.name));
+                FormatButton2(uiTele.AddButton(col, row[AREA_COL[areaId].Value0.Parse<int>()]++, () => Tele(build.GetOpenBuildPoints()[0]), build.name));
             }
         }
 
         private void FormatButton2(UIItemBase.UIItemButton btn)
         {
-            btn.Format(Color.black, 14).Size(TELE_BTN_WIDTH, TELE_BTN_HEIGHT);
+            btn.Format(Color.black, 13).Size(TELE_BTN_WIDTH, TELE_BTN_HEIGHT);
         }
 
         private void Tele(Vector2Int p)
@@ -322,12 +341,23 @@ namespace MOD_nE7UL2.Mod
             g.world.playerUnit.SetUnitPos(p);
         }
 
+        private float oldSpeed = 1;
         private void StopGame()
         {
             if (Time.timeScale == 0)
-                Time.timeScale = 1;
+            {
+                Time.timeScale = oldSpeed;
+            }
             else
+            {
+                oldSpeed = Time.timeScale;
                 Time.timeScale = 0;
+            }
+        }
+
+        private void SpeedGame(float multiplier)
+        {
+            Time.timeScale = multiplier;
         }
 
         private void AddLife()
