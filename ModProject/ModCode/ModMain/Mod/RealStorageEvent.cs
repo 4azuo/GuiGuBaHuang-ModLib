@@ -60,12 +60,15 @@ namespace MOD_nE7UL2.Mod
         public override void OnTimeUpdate200ms()
         {
             base.OnTimeUpdate200ms();
-            var uType = UnitTypeEvent.GetUnitTypeEnum(g.world.playerUnit);
-            var storageValue = GetStorageValue();
-            var spValue = GetStorageSpiritStones();
-            txtStorageMoney.text = $"Storage: {storageValue} Spirit Stones ({spValue} cash, {storageValue - spValue} items)";
-            //FreeStorage
-            txtFee.text = uType == UnitTypeEnum.Merchant ? "Fee: free for merchant-master." : $"Fee: {FeeRate() * 100:0.0}% (-{(storageValue * FeeRate()).Parse<int>()} Spirit Stones monthly)";
+            if (g.ui.HasUI(UIType.TownStorageProps))
+            {
+                var uType = UnitTypeEvent.GetUnitTypeEnum(g.world.playerUnit);
+                var storageValue = GetStorageValue();
+                var spValue = GetStorageSpiritStones();
+                txtStorageMoney.text = $"Storage: {storageValue} Spirit Stones ({spValue} cash, {storageValue - spValue} items)";
+                //FreeStorage
+                txtFee.text = uType == UnitTypeEnum.Merchant ? "Fee: free for merchant-master." : $"Fee: {FeeRate() * 100:0.0}% (-{(storageValue * FeeRate()).Parse<int>()} Spirit Stones monthly)";
+            }
         }
 
         public override void OnMonthly()

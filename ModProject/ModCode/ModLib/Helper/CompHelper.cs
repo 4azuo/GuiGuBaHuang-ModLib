@@ -6,7 +6,8 @@ public static class CompHelper
 {
     public static T Replace<T>(this T obj, Transform transform = null) where T : MonoBehaviour
     {
-        var newObj = MonoBehaviour.Instantiate(obj, transform ?? obj.transform.parent, false).Pos(obj.gameObject);
+        var t = transform ?? obj.transform.parent;
+        var newObj = MonoBehaviour.Instantiate(obj, t, false).Pos(obj.transform);
         newObj.gameObject.SetActive(true);
         obj.gameObject.SetActive(false);
         if (newObj is Button)
@@ -17,9 +18,15 @@ public static class CompHelper
         return newObj;
     }
 
+    public static T Replace<T>(this T obj, UIBase ui) where T : MonoBehaviour
+    {
+        return Replace<T>(obj, ui.canvas.transform);
+    }
+
     public static T Copy<T>(this T obj, Transform transform = null) where T : MonoBehaviour
     {
-        var newObj = MonoBehaviour.Instantiate(obj, transform ?? obj.transform.parent, false).Pos(obj.gameObject);
+        var t = transform ?? obj.transform.parent;
+        var newObj = MonoBehaviour.Instantiate(obj, t, false).Pos(obj.transform);
         newObj.gameObject.SetActive(true);
         if (newObj is Text)
         {
@@ -32,6 +39,11 @@ public static class CompHelper
             o.onClick.RemoveAllListeners();
         }
         return newObj;
+    }
+
+    public static T Copy<T>(this T obj, UIBase ui) where T : MonoBehaviour
+    {
+        return Copy<T>(obj, ui.canvas.transform);
     }
 
     public static Text Align(this Text obj, TextAnchor tanchor = TextAnchor.MiddleLeft, VerticalWrapMode vMode = VerticalWrapMode.Overflow, HorizontalWrapMode hMode = HorizontalWrapMode.Overflow)
@@ -67,6 +79,12 @@ public static class CompHelper
         {
             txt.Format(color, fsize, fstype);
         }
+        return obj;
+    }
+
+    public static T Pos<T>(this T obj, Transform origin, float deltaX = 0f, float deltaY = 0f, float deltaZ = 0f) where T : MonoBehaviour
+    {
+        obj.transform.position = new Vector3((origin?.position.x ?? 0) + deltaX, (origin?.position.y ?? 0) + deltaY, (origin?.position.z ?? 0) + deltaZ);
         return obj;
     }
 

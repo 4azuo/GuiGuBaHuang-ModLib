@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Threading.Tasks;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.EventSystems;
@@ -88,7 +89,7 @@ public abstract class UIItemBase
         public string FormatStr { get; private set; }
         public Color Color { get; private set; }
 
-        public UIItemText(UIBase ui, float x, float y, string format) : base(ui, UIHelper._sampleUI.textSystemOK.Copy(ui.canvas.transform).Pos(UIHelper._originComp.gameObject, x, y))
+        public UIItemText(UIBase ui, float x, float y, string format) : base(ui, UIHelper._sampleUI.textSystemOK.Copy(ui).Pos(UIHelper._originComp.gameObject, x, y))
         {
             FormatStr = format;
             Item.Set(Get()?.ToString());
@@ -140,7 +141,7 @@ public abstract class UIItemBase
         public float Min { get; private set; }
         public float Max { get; private set; }
 
-        public UIItemSlider(UIBase ui, float x, float y, float min, float max, float def) : base(ui, UIHelper._sampleUI.sliSoundMain.Copy(ui.canvas.transform).Pos(UIHelper._originComp.gameObject, x, y))
+        public UIItemSlider(UIBase ui, float x, float y, float min, float max, float def) : base(ui, UIHelper._sampleUI.sliSoundMain.Copy(ui).Pos(UIHelper._originComp.gameObject, x, y))
         {
             Min = min;
             Max = max;
@@ -179,7 +180,7 @@ public abstract class UIItemBase
 
     public class UIItemToggle : UIItem<Toggle>
     {
-        public UIItemToggle(UIBase ui, float x, float y, bool def) : base(ui, UIHelper._sampleUI.tglWindow.Copy(ui.canvas.transform).Pos(UIHelper._originComp.gameObject, x, y))
+        public UIItemToggle(UIBase ui, float x, float y, bool def) : base(ui, UIHelper._sampleUI.tglWindow.Copy(ui).Pos(UIHelper._originComp.gameObject, x, y))
         {
             CompHelper.Set(Item, def);
             Item.onValueChanged.AddListener((UnityAction<bool>)(v =>
@@ -212,7 +213,7 @@ public abstract class UIItemBase
         public string FormatStr { get; private set; }
         public Text ButtonLabel { get; private set; }
 
-        public UIItemButton(UIBase ui, float x, float y, Action act, string format) : base(ui, UIHelper._sampleUI.btnSystemOK.Copy(ui.canvas.transform).Pos(UIHelper._originComp.gameObject, x, y))
+        public UIItemButton(UIBase ui, float x, float y, Action act, string format) : base(ui, UIHelper._sampleUI.btnSystemOK.Copy(ui).Pos(UIHelper._originComp.gameObject, x, y))
         {
             FormatStr = format;
             ButtonLabel = Item.GetComponentInChildren<Text>();
@@ -239,6 +240,38 @@ public abstract class UIItemBase
         {
             base.Update();
             ButtonLabel.Set(Get()?.ToString());
+        }
+
+        public UIItemButton Align(TextAnchor tanchor = TextAnchor.MiddleLeft, VerticalWrapMode vMode = VerticalWrapMode.Overflow, HorizontalWrapMode hMode = HorizontalWrapMode.Overflow)
+        {
+            var txt = Item.GetComponentInChildren<Text>();
+            if (txt != null)
+            {
+                txt.Align(tanchor, vMode, hMode);
+            }
+            return this;
+        }
+
+        public UIItemButton Format(Color? color = null, int fsize = 15, FontStyle fstype = FontStyle.Normal)
+        {
+            var txt = Item.GetComponentInChildren<Text>();
+            if (txt != null)
+            {
+                txt.Format(color, fsize, fstype);
+            }
+            return this;
+        }
+
+        public UIItemButton Size(float scaleX = 0f, float scaleY = 0f)
+        {
+            Parallel.ForEach(Item.GetComponentsInChildren<RectTransform>(), s => s.sizeDelta = new Vector2(scaleX, scaleY));
+            return this;
+        }
+
+        public UIItemButton AddSize(float scaleX = 0f, float scaleY = 0f)
+        {
+            Parallel.ForEach(Item.GetComponentsInChildren<RectTransform>(), s => s.sizeDelta = new Vector2(s.sizeDelta.x + scaleX, s.sizeDelta.y + scaleY));
+            return this;
         }
     }
 

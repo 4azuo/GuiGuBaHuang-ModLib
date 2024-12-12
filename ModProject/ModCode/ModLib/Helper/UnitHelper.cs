@@ -3,11 +3,21 @@ using ModLib.Enum;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Numerics;
 using UnityEngine;
 
 public static class UnitHelper
 {
+    public static void SetUnitPos(this WorldUnitBase wunit, Vector2Int p)
+    {
+        wunit.data.unitData.SetPoint(p);
+        wunit.data.unitData.isChangePoint = true;
+    }
+
+    public static Vector2Int GetUnitPos(this WorldUnitBase wunit)
+    {
+        return wunit.data.unitData.GetPoint();
+    }
+
     public static DataProps.PropsData[] GetEquippedArtifacts(this WorldUnitBase wunit)
     {
         return wunit.GetEquippedProps().Where(x => x?.propsItem?.IsArtifact() != null).ToArray();

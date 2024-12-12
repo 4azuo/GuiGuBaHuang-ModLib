@@ -21,7 +21,7 @@ namespace MOD_nE7UL2
         public override void OnInitConf()
         {
             base.OnInitConf();
-            if (g.conf.roleAttributeLimit.talentMax == int.MaxValue)
+            if (g.conf.roleAttributeLimit.talentMax == ModConst.MAX_ATTRIBUTE)
                 return;
             ModSettings = JsonConvert.DeserializeObject<ModStts>(ConfHelper.ReadConfData("mod_configs.json"));
             //exp
@@ -33,7 +33,7 @@ namespace MOD_nE7UL2
             foreach (var item in g.conf.roleAttributeLimit._allConfList)
             {
                 if (item.key.EndsWith("Max"))
-                    item.value = int.MaxValue;
+                    item.value = ModConst.MAX_ATTRIBUTE;
             }
             //balance artifact attribute
             foreach (var item in g.conf.artifactShape._allConfList)

@@ -326,15 +326,6 @@ namespace ModLib.Mod
             }
         }
 
-        public void Update()
-        {
-            if (Input.GetKeyDown(KeyCode.W))
-            {
-                DebugHelper.WriteLine("WWW");
-                DebugHelper.Save();
-            }
-        }
-
         public void Destroy()
         {
             try
@@ -439,7 +430,7 @@ namespace ModLib.Mod
 
         private EventsMgr.EventsData RegEvent(string id,  Action<ETypeData> action)
         {
-            g.events.On(id, action);
+            g.events.On(id, action, 0, true);
             return g.events.allEvents[id].ToArray().Last();
         }
 
