@@ -19,14 +19,14 @@ namespace MOD_nE7UL2.Mod
                 var player = g.world.playerUnit;
                 if (e.uiType.uiName == UIType.FateFeature.uiName && player.IsFullExp())
                 {
-                    //using (var a = new UISample())
-                    //{
-                    //    var ui = e.ui.TryCast<UIFateFeature>();
-                    //    a.sampleUI.btnKeyOK.Create(ui.transform).AddSize(100f, 40f).Setup($"Up Grade").onClick.AddListener((UnityAction)(() =>
-                    //    {
-                    //        player.SetProperty<int>(UnitPropertyEnum.GradeID, player.GetNextPhaseLvl());
-                    //    }));
-                    //}
+                    using (var a = new UISample())
+                    {
+                        var ui = e.ui.TryCast<UIFateFeature>();
+                        a.ui.btnKeyOK.Copy(ui).AddSize(100f, 40f).Pos(0f, -2f).Set("Up Grade").onClick.AddListener((UnityAction)(() =>
+                        {
+                            player.SetProperty<int>(UnitPropertyEnum.GradeID, player.GetNextPhaseLvl());
+                        }));
+                    }
                 }
             }
         }

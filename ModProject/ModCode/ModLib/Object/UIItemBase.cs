@@ -4,10 +4,11 @@ using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
+using static UIHelper;
 
 public abstract class UIItemBase
 {
-    public virtual UIBase UI { get; private set; }
+    public virtual UICustomBase UI { get; private set; }
     public virtual UIItemBase Parent { get; private set; }
     public virtual UIBehaviour ItemBehaviour { get; private set; }
     public virtual UIItemData ItemData { get; set; }
@@ -66,7 +67,7 @@ public abstract class UIItemBase
     {
         public T Item { get; private set; }
 
-        public UIItem(UIBase ui, T comp)
+        public UIItem(UICustomBase ui, T comp)
         {
             UI = ui;
             Item = comp;
@@ -89,7 +90,7 @@ public abstract class UIItemBase
         public string FormatStr { get; private set; }
         public Color Color { get; private set; }
 
-        public UIItemText(UIBase ui, float x, float y, string format) : base(ui, UIHelper._sampleUI.textSystemOK.Copy(ui).Pos(UIHelper._originComp.gameObject, x, y))
+        public UIItemText(UICustomBase ui, float x, float y, string format) : base(ui, ui.uiSample.ui.textSystemOK.Copy(ui.UIBase).Pos(x, y))
         {
             FormatStr = format;
             Item.Set(Get()?.ToString());
@@ -141,7 +142,7 @@ public abstract class UIItemBase
         public float Min { get; private set; }
         public float Max { get; private set; }
 
-        public UIItemSlider(UIBase ui, float x, float y, float min, float max, float def) : base(ui, UIHelper._sampleUI.sliSoundMain.Copy(ui).Pos(UIHelper._originComp.gameObject, x, y))
+        public UIItemSlider(UICustomBase ui, float x, float y, float min, float max, float def) : base(ui, ui.uiSample.ui.sliSoundMain.Copy(ui.UIBase).Pos(x, y))
         {
             Min = min;
             Max = max;
@@ -180,7 +181,7 @@ public abstract class UIItemBase
 
     public class UIItemToggle : UIItem<Toggle>
     {
-        public UIItemToggle(UIBase ui, float x, float y, bool def) : base(ui, UIHelper._sampleUI.tglWindow.Copy(ui).Pos(UIHelper._originComp.gameObject, x, y))
+        public UIItemToggle(UICustomBase ui, float x, float y, bool def) : base(ui, ui.uiSample.ui.tglWindow.Copy(ui.UIBase).Pos(x, y))
         {
             CompHelper.Set(Item, def);
             Item.onValueChanged.AddListener((UnityAction<bool>)(v =>
@@ -213,7 +214,7 @@ public abstract class UIItemBase
         public string FormatStr { get; private set; }
         public Text ButtonLabel { get; private set; }
 
-        public UIItemButton(UIBase ui, float x, float y, Action act, string format) : base(ui, UIHelper._sampleUI.btnSystemOK.Copy(ui).Pos(UIHelper._originComp.gameObject, x, y))
+        public UIItemButton(UICustomBase ui, float x, float y, Action act, string format) : base(ui, ui.uiSample.ui.btnSystemOK.Copy(ui.UIBase).Pos(x, y))
         {
             FormatStr = format;
             ButtonLabel = Item.GetComponentInChildren<Text>();
@@ -282,7 +283,7 @@ public abstract class UIItemBase
         public UIItemText Postfix { get; private set; }
         public bool HidePostfixIfDisabled { get; set; } = false;
 
-        public override UIBase UI => MainComponent.UI;
+        public override UICustomBase UI => MainComponent.UI;
         public override UIItemBase Parent => MainComponent.Parent;
         public override UIBehaviour ItemBehaviour => MainComponent.ItemBehaviour;
         public override UIItemData ItemData
@@ -310,7 +311,7 @@ public abstract class UIItemBase
 
         private UIItemComposite() { }
 
-        public static UIItemComposite CreateSlider(UIBase ui, float x, float y, string prefix, float min, float max, float def, string postfix = null)
+        public static UIItemComposite CreateSlider(UICustomBase ui, float x, float y, string prefix, float min, float max, float def, string postfix = null)
         {
             var rs = new UIItemComposite();
             rs.Prefix = new UIItemText(ui, x, y, prefix);
@@ -324,7 +325,7 @@ public abstract class UIItemBase
             return rs;
         }
 
-        public static UIItemComposite CreateToggle(UIBase ui, float x, float y, string prefix, bool def, string postfix = null)
+        public static UIItemComposite CreateToggle(UICustomBase ui, float x, float y, string prefix, bool def, string postfix = null)
         {
             var rs = new UIItemComposite();
             rs.Prefix = new UIItemText(ui, x, y, prefix);

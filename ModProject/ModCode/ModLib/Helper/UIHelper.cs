@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using UnityEngine.Events;
-using UnityEngine.EventSystems;
 using static UIItemBase;
 
 public static class UIHelper
@@ -17,20 +16,27 @@ public static class UIHelper
     }
 
     public const float DELTA_X = 0.4f;
-    public const float DELTA_Y = 0.25f;
-
-    public static UIGameSetting _sampleUI;
-    public static UIBehaviour _originComp;
+    public const float DELTA_Y = 0.24f;
 
     public abstract class UICustomBase
     {
+        internal UISample uiSample;
+        public UIBase UIBase { get; internal set; }
         public IList<float> Columns { get; internal set; } = new List<float>();
         public IList<float> Rows { get; internal set; } = new List<float>();
+        public List<UIItemBase> Items { get; } = new List<UIItemBase>();
 
+        protected abstract string UITypeName();
         protected abstract float MinWidth();
         protected abstract float MaxWidth();
         protected abstract float MinHeight();
         protected abstract float MaxHeight();
+        public int FirstCol => 0;
+        public int LastCol => Columns.Count - 1;
+        public int MidCol => Columns.Count / 2;
+        public int FirstRow => 0;
+        public int LastRow => Rows.Count - 1;
+        public int MidRow => Rows.Count / 2;
 
         protected void InitGrid()
         {
@@ -46,51 +52,45 @@ public static class UIHelper
         {
             InitGrid();
         }
-    }
-
-    public abstract class UICustom<T> : UICustomBase where T : UIBase
-    {
-        public T UI { get; internal set; }
-        public List<UIItemBase> Items { get; } = new List<UIItemBase>();
 
         public UIItemText AddText(float x, float y, string format)
         {
-            var rs = new UIItemText(UI, x, y, format);
+            var rs = new UIItemText(this, x, y, format);
             Items.Add(rs);
             return rs;
         }
 
         public UIItemSlider AddSlider(float x, float y, float min, float max, float def)
         {
-            var rs = new UIItemSlider(UI, x, y, min, max, def);
+            var rs = new UIItemSlider(this, x, y, min, max, def);
             Items.Add(rs);
             return rs;
         }
 
         public UIItemToggle AddToggle(float x, float y, bool def)
         {
-            var rs = new UIItemToggle(UI, x, y, def);
+            var rs = new UIItemToggle(this, x, y, def);
             Items.Add(rs);
             return rs;
         }
 
         public UIItemButton AddButton(float x, float y, Action act, string format)
         {
-            var rs = new UIItemButton(UI, x, y, act, format);
+            var rs = new UIItemButton(this, x, y, act, format);
             Items.Add(rs);
             return rs;
         }
 
         public UIItemComposite AddCompositeSlider(float x, float y, string prefix, float min, float max, float def, string postfix = null)
         {
-            var rs = UIItemComposite.CreateSlider(UI, x, y, prefix, min, max, def, postfix);
+            var rs = UIItemComposite.CreateSlider(this, x, y, prefix, min, max, def, postfix);
             Items.Add(rs);
             return rs;
         }
 
         public UIItemComposite AddCompositeToggle(float x, float y, string prefix, bool def, string postfix = null)
         {
-            var rs = UIItemComposite.CreateToggle(UI, x, y, prefix, def, postfix);
+            var rs = UIItemComposite.CreateToggle(this, x, y, prefix, def, postfix);
             Items.Add(rs);
             return rs;
         }
@@ -151,73 +151,91 @@ public static class UIHelper
         }
     }
 
+    public abstract class UICustom<T> : UICustomBase where T : UIBase
+    {
+        public static T LastUI { get; internal set; }
+        public T UI { get; internal set; }
+        public Action<UICustom<T>> InitComp { get; internal set; }
+
+        public UICustom(Action<UICustom<T>> initComp) : base()
+        {
+            try
+            {
+                //init
+                if (LastUI != null)
+                {
+                    g.ui.CloseUI(LastUI);
+                    LastUI = null;
+                }
+                UI = g.ui.OpenUI<T>(UIType.GetUIType(UITypeName()));
+                LastUI = UI;
+                UIBase = UI;
+
+                InitComp = initComp;
+
+                using (uiSample = new UISample())
+                {
+                    InitComp.Invoke(this);
+                }
+
+                //test
+                //for (var c = 0; c < Columns.Count; c++)
+                //    for (var r = 0; r < Rows.Count; r++)
+                //        AddText(c, r, "test");
+            }
+            catch (Exception ex)
+            {
+                DebugHelper.WriteLine(ex);
+            }
+        }
+    }
+
     public class UISample : IDisposable
     {
-        public UIGameSetting sampleUI;
+        public UIGameSetting ui;
 
         public UISample()
         {
-            _sampleUI = g.ui.OpenUI<UIGameSetting>(UIType.GameSetting);
-            _sampleUI.gameObject.SetActive(false);
-            sampleUI = _sampleUI;
+            ui = g.ui.OpenUI<UIGameSetting>(UIType.GameSetting);
+            ui.gameObject.SetActive(false);
         }
 
         public void Dispose()
         {
-            _sampleUI.gameObject.SetActive(true);
-            g.ui.CloseUI(_sampleUI);
+            ui.gameObject.SetActive(true);
+            g.ui.CloseUI(ui);
         }
     }
 
     public class UICustom1 : UICustom<UITextInfoLong>
     {
-        protected override float MinWidth() => -6.0f;
-        protected override float MaxWidth() => +6.0f;
-        protected override float MinHeight() => -0.5f;
-        protected override float MaxHeight() => -10.0f;
+        protected override string UITypeName() => UIType.TextInfoLong.uiName;
+        protected override float MinWidth() => -6.2f;
+        protected override float MaxWidth() => +6.6f;
+        protected override float MinHeight() => 3.4f;
+        protected override float MaxHeight() => -3.5f;
 
-        public static UICustom1 Create(string title, Action okAct, bool showCancel = false, Action cancelAct = null)
+        public UICustom1(string title, Action<UICustom<UITextInfoLong>> initComp, Action okAct, bool showCancel = false, Action cancelAct = null) : base(initComp)
         {
-            var rs = new UICustom1();
-            {
-                using (new UISample())
-                {
-                    rs.UI = g.ui.OpenUI<UITextInfoLong>(UIType.TextInfoLong);
-                    _originComp = rs.UI.textTitle;
-                    {
-                        rs.UI.InitData(title, string.Empty, isShowCancel: showCancel);
-                        rs.UI.btnOK.onClick.AddListener((UnityAction)okAct);
-                        if (cancelAct != null)
-                            rs.UI.btnCancel.onClick.AddListener((UnityAction)cancelAct);
-                    }
-                }
-            }
-            return rs;
+            UI.InitData(title, string.Empty, isShowCancel: showCancel);
+            UI.btnOK.onClick.AddListener((UnityAction)okAct);
+            if (cancelAct != null)
+                UI.btnCancel.onClick.AddListener((UnityAction)cancelAct);
         }
     }
 
     public class UICustom2 : UICustom<UITextInfo>
     {
-        protected override float MinWidth() => -4.0f;
-        protected override float MaxWidth() => +4.0f;
-        protected override float MinHeight() => -0.5f;
-        protected override float MaxHeight() => -6.0f;
+        protected override string UITypeName() => UIType.TextInfo.uiName;
+        protected override float MinWidth() => -2.6f;
+        protected override float MaxWidth() => +3.0f;
+        protected override float MinHeight() => 1.35f;
+        protected override float MaxHeight() => -1.30f;
 
-        public static UICustom2 Create(string title, Action okAct)
+        public UICustom2(string title, Action<UICustom<UITextInfo>> initComp, Action okAct) : base(initComp)
         {
-            var rs = new UICustom2();
-            {
-                using (new UISample())
-                {
-                    rs.UI = g.ui.OpenUI<UITextInfo>(UIType.TextInfo);
-                    _originComp = rs.UI.textTitle;
-                    {
-                        rs.UI.InitData(title, string.Empty);
-                        rs.UI.btnOK.onClick.AddListener((UnityAction)okAct);
-                    }
-                }
-            }
-            return rs;
+            UI.InitData(title, string.Empty);
+            UI.btnOK.onClick.AddListener((UnityAction)okAct);
         }
     }
 }
