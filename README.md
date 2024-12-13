@@ -72,15 +72,15 @@ Add BuildEvent for copying dll to "debug" folder.
 
 ![image](https://github.com/4azuo/GuiGuBaHuang-ModLib/assets/11677054/84f35501-d6f2-4b8d-9cd6-2606bf397e59)
 
-Just inherit **ModMaster** and config your mod. And then, you can use declared on-events.
+１．Just inherit **ModMaster** and config your mod. And then, you can use declared on-events.
 
-But you should use **ModEvent**↓↓↓ to process your mod. And use **ModMain**↑↑↑ to config your mod.
+２．You should use **ModEvent**↓↓↓ to process your mod. And use **ModMain**↑↑↑ to config your mod.
 
 ![image](https://github.com/4azuo/GuiGuBaHuang-ModLib/assets/11677054/e8da9fd1-89d0-4870-ace4-b7153dace9f2)
 
 ![image](https://github.com/user-attachments/assets/5c1c364b-daf4-41c6-aa78-f39b2fcf9d6e)
 
-About **ModEvent**, you should declare `Cache`
+３．About **ModEvent**, you have to declare `Cache`
 
 ![image](https://github.com/user-attachments/assets/42549f20-dcd7-49b0-b624-5caae73ae1d6)
 
@@ -97,6 +97,10 @@ Can declare same ModEvent by adding **multi** CacheAttribute to the ModEvent.
 Last, All properties of ModEvent will be cached (.json). You can ignore cache and reconstrcut by **JsonIgnoreAttribute**
 
 ※I wrote some events which i need. You can add more to ModMaster.
+
+４．Final, you add your mod index to `_EventOrderIndex.json`
+
+![image](https://github.com/user-attachments/assets/4b338668-a2a0-4a1c-8fcf-fb261e5de7e7)
 
 
 
