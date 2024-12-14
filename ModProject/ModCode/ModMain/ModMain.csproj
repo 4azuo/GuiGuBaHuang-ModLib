@@ -83,6 +83,8 @@
     <Compile Include="Mod\MonstStrongerEvent.cs" />
     <Compile Include="Mod\BornLuckEvent.cs" />
     <Compile Include="Mod\TrainerEvent.cs" />
+    <Compile Include="Mod\ExplodeMonsterEvent.cs" />
+    <Compile Include="Mod\UnitTypeEvent.cs" />
     <Compile Include="Mod\UpgradeNaturallyEvent.cs" />
     <Compile Include="Object\SMItemWork.cs" />
     <Compile Include="Object\CustomRefine.cs" />
@@ -91,7 +93,6 @@
     <Compile Include="Object\CommissionTask.cs" />
     <Compile Include="Object\InGameStts.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Mod\UnitTypeEvent.cs" />
     <Compile Include="Mod\QiCulEvent.cs" />
   </ItemGroup>
   <ItemGroup>

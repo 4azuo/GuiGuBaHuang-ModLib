@@ -7,7 +7,7 @@ using System.Linq;
 
 namespace ModLib.Mod
 {
-    [Cache("$BATTLE$")]
+    [Cache("$BATTLE$", OrderIndex = 100)]
     public sealed class ModBattleEvent : ModEvent
     {
         #region DmgKey

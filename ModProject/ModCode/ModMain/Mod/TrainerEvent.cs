@@ -86,7 +86,10 @@ namespace MOD_nE7UL2.Mod
                 FormatButton1(uiTrainer.AddButton(col, row += 2, ReduceAbilityExp, "-100000 Ability Point"));
 
                 col = 14; row = 2;
-                FormatButton1(uiTrainer.AddButton(col, row, StopGame, "Stop Game"));
+                FormatButton1((UIItemBase.UIItemButton)uiTrainer.AddButton(col, row, StopGame, "{0}").SetWork(new UIItemBase.UIItemWork
+                {
+                    Formatter = (x) => new object[] { Time.timeScale == 0 ? "Resume Game" : "Stop Game" },
+                }));
                 FormatButton1(uiTrainer.AddButton(col, row += 2, () => SpeedGame(1), "Game Speed x1"));
                 FormatButton1(uiTrainer.AddButton(col, row += 2, () => SpeedGame(2), "Game Speed x2"));
                 FormatButton1(uiTrainer.AddButton(col, row += 2, () => SpeedGame(3), "Game Speed x3"));

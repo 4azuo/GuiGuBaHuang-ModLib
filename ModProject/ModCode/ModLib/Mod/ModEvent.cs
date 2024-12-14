@@ -44,8 +44,8 @@ namespace ModLib.Mod
         public virtual void OnLoadGameBefore() { }
         public virtual void OnLoadGame() { }
         public virtual void OnLoadGameAfter() { }
-        public virtual void OnLoadMapNewGame() { }
-        public virtual void OnLoadMapFirst() { }
+        //public virtual void OnLoadMapNewGame() { }
+        //public virtual void OnLoadMapFirst() { }
         public virtual void OnInitWorld(ETypeData e) { }
         public virtual void OnLoadSceneStart(LoadSceneStart e) { }
         public virtual void OnLoadScene(LoadScene e) { }

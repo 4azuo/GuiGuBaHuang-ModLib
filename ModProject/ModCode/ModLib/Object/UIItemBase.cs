@@ -317,9 +317,9 @@ public abstract class UIItemBase
             rs.Prefix = new UIItemText(ui, x, y, prefix);
             rs.Prefix.Item.Align(TextAnchor.MiddleRight);
             rs.Prefix.Parent = rs;
-            rs.MainComponent = new UIItemSlider(ui, x + UIHelper.DELTA_X * 4, y, min, max, def);
+            rs.MainComponent = new UIItemSlider(ui, x + UIHelper.UICUSTOM_DELTA_X * 4, y, min, max, def);
             rs.MainComponent.Parent = rs;
-            rs.Postfix = new UIItemText(ui, x + UIHelper.DELTA_X * 8, y, postfix);
+            rs.Postfix = new UIItemText(ui, x + UIHelper.UICUSTOM_DELTA_X * 8, y, postfix);
             rs.Postfix.Item.Align(TextAnchor.MiddleLeft);
             rs.Postfix.Parent = rs;
             return rs;
@@ -331,9 +331,9 @@ public abstract class UIItemBase
             rs.Prefix = new UIItemText(ui, x, y, prefix);
             rs.Prefix.Item.Align(TextAnchor.MiddleRight);
             rs.Prefix.Parent = rs;
-            rs.MainComponent = new UIItemToggle(ui, x + UIHelper.DELTA_X * 2, y, def);
+            rs.MainComponent = new UIItemToggle(ui, x + UIHelper.UICUSTOM_DELTA_X * 2, y, def);
             rs.MainComponent.Parent = rs;
-            rs.Postfix = new UIItemText(ui, x + UIHelper.DELTA_X * 4, y, postfix);
+            rs.Postfix = new UIItemText(ui, x + UIHelper.UICUSTOM_DELTA_X * 4, y, postfix);
             rs.Postfix.Item.Align(TextAnchor.MiddleLeft);
             rs.Postfix.Parent = rs;
             return rs;

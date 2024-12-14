@@ -58,10 +58,6 @@ namespace MOD_nE7UL2.Mod
         {
             base.OnBattleUnitInto(e);
 
-            //DebugHelper.WriteLine("1");
-            if ((ModMaster.ModObj?.InGameSettings?.LoadMapNewGame).Is(true) == 1)
-                return;
-
             //DebugHelper.WriteLine("2");
             if (e.IsMonster())
             {

@@ -12,6 +12,19 @@ namespace MOD_nE7UL2.Mod
     {
         public IDictionary<string, UnitTypeEnum> UnitTypeDic { get; set; } = new Dictionary<string, UnitTypeEnum>();
 
+        public override void OnLoadGame()
+        {
+            base.OnLoadGame();
+            foreach (var wunit in g.world.unit.GetUnits())
+            {
+                var unitId = wunit.GetUnitId();
+                if (UnitTypeDic.ContainsKey(unitId) && UnitTypeDic[unitId].CustomLuck != null)
+                {
+                    wunit.AddLuck(UnitTypeDic[unitId].Value.Parse<int>());
+                }
+            }
+        }
+
         public override void OnMonthlyForEachWUnit(WorldUnitBase wunit)
         {
             base.OnMonthlyForEachWUnit(wunit);
@@ -21,7 +34,6 @@ namespace MOD_nE7UL2.Mod
             //add luck
             if (!UnitTypeDic.ContainsKey(unitId))
             {
-                RemoveUnitTypeLuck(wunit);
                 UnitTypeDic.Add(unitId, AddRandomUnitType(wunit));
             }
 

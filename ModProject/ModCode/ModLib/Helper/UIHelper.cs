@@ -5,6 +5,13 @@ using static UIItemBase;
 
 public static class UIHelper
 {
+    public const float SCREEN_Y_TOP = 5f;
+    public const float SCREEN_Y_MIDDLE = 0f;
+    public const float SCREEN_Y_BOTTOM = -5f;
+    public const float SCREEN_X_LEFT = -10f;
+    public const float SCREEN_X_MID = 0f;
+    public const float SCREEN_X_RIGHT = 10f;
+
     public static bool HasUI(this UIMgr g, UIType.UITypeBase t)
     {
         return (g.GetUI(t)?.gameObject?.active).Is(true) == 1;
@@ -15,8 +22,8 @@ public static class UIHelper
         return (ui?.gameObject?.active).Is(true) == 1;
     }
 
-    public const float DELTA_X = 0.4f;
-    public const float DELTA_Y = 0.24f;
+    public const float UICUSTOM_DELTA_X = 0.4f;
+    public const float UICUSTOM_DELTA_Y = 0.24f;
 
     public abstract class UICustomBase
     {
@@ -41,10 +48,10 @@ public static class UIHelper
         protected void InitGrid()
         {
             Columns = new List<float>();
-            for (var i = MinWidth(); i <= MaxWidth(); i += DELTA_X)
+            for (var i = MinWidth(); i <= MaxWidth(); i += UICUSTOM_DELTA_X)
                 Columns.Add(i);
             Rows = new List<float>();
-            for (var i = MinHeight(); i >= MaxHeight(); i -= DELTA_Y)
+            for (var i = MinHeight(); i >= MaxHeight(); i -= UICUSTOM_DELTA_Y)
                 Rows.Add(i);
         }
 

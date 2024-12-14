@@ -17,6 +17,7 @@ public class CacheAttribute : Attribute
     }
 
     public string CacheId { get; private set; }
+    public int OrderIndex { get; set; } = -1; //auto
     public CType CacheType { get; set; } = CType.Local;
     public WType WorkOn { get; set; } = WType.All;
 

@@ -1,6 +1,5 @@
 {
 	//common
-	"$BATTLE$": 100,
 	"SMGlobalEvent": 1000,
 	"SMLocalEvent": 1010,
 	"InflationaryEvent": 1020,
@@ -35,6 +34,7 @@
 	"SpiritlockEvent": 5020,
 	"BattleModifyEvent": 5030,
 	"BattleManashieldEvent": 5040,
+	"ExplodeMonsterEvent": 5041,
 	"RevengeEvent": 5050,
 	"BattleRewardEventV2": 5060,
 
