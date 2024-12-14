@@ -1,5 +1,6 @@
 ﻿using EBattleTypeData;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 namespace ModLib.Mod
@@ -202,6 +203,8 @@ namespace ModLib.Mod
 
         public virtual void OnBattleStart(ETypeData e)
         {
+            DebugHelper.WriteLine($"Battle: SoleId:{g.world.battle.data.battleID}, Lvl:{g.world.battle.data.dungeonLevel}, SelfBattle:{g.world.battle.data.isSelfBattle}, RealBattle:{g.world.battle.data.isRealBattle}, RoomCount:{SceneType.battle.room.room.allRoom.Count}, RoomInfo:{string.Join(";", SceneType.battle.room.room.allRoom.ToArray().Select(x => $"(Id:{x.roomBaseItem.id}, Type:{x.roomBaseItem.type}, Width:{x.roomBaseItem.width}, Height:{x.roomBaseItem.height})"))}");
+            
             EventHelper.RunMinorEvents(e);
         }
 

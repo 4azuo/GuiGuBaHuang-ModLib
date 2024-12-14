@@ -77,6 +77,7 @@
     <Compile Include="Mod\ModMaster_BattleEvent.cs" />
     <Compile Include="Mod\ModMaster_TimerEvent.cs" />
     <Compile Include="Mod\ModMaster_MapEvent.cs" />
+    <Compile Include="Mod\ModTitleEvent.cs" />
     <Compile Include="Object\EnumObject.cs" />
     <Compile Include="Enum\GradeEnum.cs" />
     <Compile Include="Enum\GradePhaseEnum.cs" />
@@ -95,7 +96,6 @@
     <Compile Include="Object\InGameSettings.cs" />
     <Compile Include="Object\MonoUpdater.cs" />
     <Compile Include="Object\MultiValue.cs" />
-    <Compile Include="Object\ModData.cs" />
     <Compile Include="Object\UIItemBase.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

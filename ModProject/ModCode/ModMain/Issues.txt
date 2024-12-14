@@ -10,10 +10,8 @@
 
 - pet
 
-- mini trainer
-
-- short intro
-
 - auto translate
 
 - UI bug
+
+- special monster: explore after dead

@@ -186,21 +186,21 @@ namespace ModLib.Mod
                         CallEvents("OnLoadGameAfter");
                         InGameSettings.LoadGameAfter = false;
                     }
-                }
-                else
-                if (e.uiType.uiName == UIType.Town.uiName)
-                {
-                    if (InGameSettings.LoadMapNewGame)
-                    {
-                        CallEvents("OnLoadMapNewGame");
-                        InGameSettings.LoadMapNewGame = false;
-                    }
 
-                    if (InGameSettings.LoadMapFirst)
-                    {
-                        CallEvents("OnLoadMapFirst");
-                        InGameSettings.LoadMapFirst = false;
-                    }
+                    //if (e.uiType.uiName == UIType.Town.uiName) <- Have a problem with the condition
+                    //{
+                    //    if (InGameSettings.LoadMapNewGame)
+                    //    {
+                    //        CallEvents("OnLoadMapNewGame");
+                    //        InGameSettings.LoadMapNewGame = false;
+                    //    }
+
+                    //    if (InGameSettings.LoadMapFirst)
+                    //    {
+                    //        CallEvents("OnLoadMapFirst");
+                    //        InGameSettings.LoadMapFirst = false;
+                    //    }
+                    //}
                 }
             }
 
@@ -244,15 +244,15 @@ namespace ModLib.Mod
             EventHelper.RunMinorEvents();
         }
 
-        public virtual void OnLoadMapNewGame()
-        {
-            EventHelper.RunMinorEvents();
-        }
+        //public virtual void OnLoadMapNewGame()
+        //{
+        //    EventHelper.RunMinorEvents();
+        //}
 
-        public virtual void OnLoadMapFirst()
-        {
-            EventHelper.RunMinorEvents();
-        }
+        //public virtual void OnLoadMapFirst()
+        //{
+        //    EventHelper.RunMinorEvents();
+        //}
 
         public virtual void OnInitWorld(ETypeData e)
         {

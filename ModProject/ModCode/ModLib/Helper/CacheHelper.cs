@@ -281,6 +281,7 @@ public static class CacheHelper
     {
         var e = (CachableObject)Activator.CreateInstance(t);
         e.CacheId = attr.CacheId;
+        e.OrderIndex = attr.OrderIndex;
         e.CacheType = attr.CacheType;
         e.WorkOn = attr.WorkOn;
         return e;
@@ -289,7 +290,14 @@ public static class CacheHelper
     public static void Order(Dictionary<string, int> orderList)
     {
         var defaultIndex = 9000;
-        CacheData = CacheData.OrderBy(x => orderList.ContainsKey(x.Key) ? orderList[x.Key] : defaultIndex++).ToDictionary(x => x.Key, x => x.Value);
+        CacheData = CacheData.OrderBy(x =>
+        {
+            if (orderList.ContainsKey(x.Key))
+                return orderList[x.Key];
+            if (x.Value.OrderIndex >= 0)
+                return x.Value.OrderIndex;
+            return defaultIndex++;
+        }).ToDictionary(x => x.Key, x => x.Value);
     }
 
     public static void Order()

@@ -4,8 +4,8 @@ namespace ModLib.Object
 {
     public class InGameSettings : CachableObject
     {
-        [JsonIgnore]
-        public bool LoadMapFirst { get; set; } = true;
+        //[JsonIgnore]
+        //public bool LoadMapFirst { get; set; } = true;
         [JsonIgnore]
         public bool LoadGameBefore { get; set; } = true;
         [JsonIgnore]
@@ -15,7 +15,7 @@ namespace ModLib.Object
 
 
 
-        public bool LoadMapNewGame { get; set; } = true;
+        //public bool LoadMapNewGame { get; set; } = true;
         public bool LoadFirstMonth { get; set; } = true;
         public bool LoadNewGame { get; set; } = true;
         public int CurMonth { get; set; } = -1;
