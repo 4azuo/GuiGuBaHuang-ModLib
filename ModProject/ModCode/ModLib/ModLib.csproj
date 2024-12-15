@@ -69,6 +69,7 @@
     <Compile Include="Helper\GameHelper.cs" />
     <Compile Include="Helper\TraceHelper.cs" />
     <Compile Include="Helper\EffectHelper.cs" />
+    <Compile Include="Helper\TranslateHelper.cs" />
     <Compile Include="Helper\ValueHelper.cs" />
     <Compile Include="Mod\ModBattleEvent.cs" />
     <Compile Include="Mod\ModEvent.cs" />
@@ -77,6 +78,7 @@
     <Compile Include="Mod\ModMaster_BattleEvent.cs" />
     <Compile Include="Mod\ModMaster_TimerEvent.cs" />
     <Compile Include="Mod\ModMaster_MapEvent.cs" />
+    <Compile Include="Mod\ModTranslateEvent.cs" />
     <Compile Include="Mod\ModTitleEvent.cs" />
     <Compile Include="Object\EnumObject.cs" />
     <Compile Include="Enum\GradeEnum.cs" />

@@ -130,7 +130,7 @@ public static class CacheHelper
                 {
                     var e = (CachableObject)JsonConvert.DeserializeObject(File.ReadAllText(cacheFile), t, JSON_SETTINGS);
                     DebugHelper.WriteLine($"Load GlobalCache: Type={t.FullName}, Id={e.CacheId}");
-                    e.OnLoadClass(false);
+                    e.OnLoadClass(false, attr);
                     rs.Add(e);
                 }
             }
@@ -148,9 +148,9 @@ public static class CacheHelper
             {
                 if (!CacheData.ContainsKey(attr.CacheId))
                 {
-                    var e = CreateCachableObject(t, attr);
+                    var e = (CachableObject)Activator.CreateInstance(t);
                     DebugHelper.WriteLine($"Create GlobalCache: Type={t.FullName}, Id={attr.CacheId}");
-                    e.OnLoadClass(true);
+                    e.OnLoadClass(true, attr);
                     rs.Add(e);
                 }
             }
@@ -170,7 +170,7 @@ public static class CacheHelper
             {
                 var x = e as CachableObject;
                 DebugHelper.WriteLine($"Load GameCache: Type={x.GetType().FullName}, Id={x.CacheId}");
-                x.OnLoadClass(false);
+                x.OnLoadClass(false, x.GetType().GetCustomAttribute<CacheAttribute>());
             }
         }
         AddCachableObjects(rs);
@@ -186,9 +186,9 @@ public static class CacheHelper
             {
                 if (!CacheData.ContainsKey(attr.CacheId))
                 {
-                    var e = CreateCachableObject(t, attr);
+                    var e = (CachableObject)Activator.CreateInstance(t);
                     DebugHelper.WriteLine($"Create GameCache: Type={t.FullName}, Id={attr.CacheId}");
-                    e.OnLoadClass(true);
+                    e.OnLoadClass(true, attr);
                     rs.Add(e);
                 }
             }
@@ -275,16 +275,6 @@ public static class CacheHelper
     public static List<Type> GetCacheTypes(Assembly ass)
     {
         return ass.GetTypes().Where(x => x.IsClass && x.IsSubclassOf(typeof(CachableObject))).ToList();
-    }
-
-    public static CachableObject CreateCachableObject(Type t, CacheAttribute attr)
-    {
-        var e = (CachableObject)Activator.CreateInstance(t);
-        e.CacheId = attr.CacheId;
-        e.OrderIndex = attr.OrderIndex;
-        e.CacheType = attr.CacheType;
-        e.WorkOn = attr.WorkOn;
-        return e;
     }
 
     public static void Order(Dictionary<string, int> orderList)

@@ -7,7 +7,14 @@
         public CacheAttribute.CType CacheType { get; set; }
         public CacheAttribute.WType WorkOn { get; set; }
 
-        public virtual void OnLoadClass(bool isNew) { }
+        public virtual void OnLoadClass(bool isNew, CacheAttribute attr)
+        {
+            CacheId = attr.CacheId;
+            OrderIndex = attr.OrderIndex;
+            CacheType = attr.CacheType;
+            WorkOn = attr.WorkOn;
+        }
+
         public virtual void OnUnloadClass() { }
     }
 }

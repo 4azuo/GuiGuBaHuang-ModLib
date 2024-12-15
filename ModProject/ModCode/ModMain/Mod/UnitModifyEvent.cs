@@ -14,9 +14,9 @@ namespace MOD_nE7UL2.Mod
         private static readonly List<string> _units = new List<string>();
         private static readonly Dictionary<string, int> _values = new Dictionary<string, int>();
 
-        public override void OnLoadClass(bool isNew)
+        public override void OnLoadClass(bool isNew, CacheAttribute attr)
         {
-            base.OnLoadClass(isNew);
+            base.OnLoadClass(isNew, attr);
             _units.Clear();
             _values.Clear();
         }

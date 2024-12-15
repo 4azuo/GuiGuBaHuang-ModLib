@@ -9,9 +9,9 @@ namespace MOD_nE7UL2.Mod
     {
         public SMGlobalConfigsEvent Configs { get; set; }
 
-        public override void OnLoadClass(bool isNew)
+        public override void OnLoadClass(bool isNew, CacheAttribute attr)
         {
-            base.OnLoadClass(isNew);
+            base.OnLoadClass(isNew, attr);
             if (isNew)
                 Configs = CacheHelper.ReadGlobalCacheFile<SMGlobalConfigsEvent>(ModConst.SM_GLOBAL_CONFIGS_EVENT);
         }

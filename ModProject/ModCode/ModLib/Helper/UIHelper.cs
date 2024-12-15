@@ -89,6 +89,13 @@ public static class UIHelper
             return rs;
         }
 
+        public UIItemSelect AddSelect(float x, float y, string[] selections, int def)
+        {
+            var rs = new UIItemSelect(this, x, y, selections, def);
+            Items.Add(rs);
+            return rs;
+        }
+
         public UIItemComposite AddCompositeSlider(float x, float y, string prefix, float min, float max, float def, string postfix = null)
         {
             var rs = UIItemComposite.CreateSlider(this, x, y, prefix, min, max, def, postfix);
@@ -134,6 +141,12 @@ public static class UIHelper
             return AddButton(Columns[col], Rows[row], act, format);
         }
 
+        public UIItemSelect AddSelect(int col, int row, string[] selections, int def)
+        {
+            FixPosition(ref col, ref row);
+            return AddSelect(Columns[col], Rows[row], selections, def);
+        }
+
         public UIItemComposite AddCompositeSlider(int col, int row, string prefix, float min, float max, float def, string postfix = null)
         {
             FixPosition(ref col, ref row);
@@ -169,6 +182,47 @@ public static class UIHelper
         {
             foreach (var item in Items)
                 item.Update();
+        }
+    }
+
+    public class UICustom : UICustomBase
+    {
+        public UIType.UITypeBase UITypeBase { get; private set; }
+        protected override string UITypeName() => UITypeBase.uiName;
+        protected override float MinWidth() => SCREEN_X_LEFT;
+        protected override float MaxWidth() => SCREEN_X_RIGHT;
+        protected override float MinHeight() => SCREEN_Y_TOP;
+        protected override float MaxHeight() => SCREEN_Y_BOTTOM;
+
+        public UIBase UI { get; internal set; }
+        public Action<UICustom> InitComp { get; internal set; }
+
+        public UICustom(UIType.UITypeBase uiType, Action<UICustom> initComp) : base()
+        {
+            try
+            {
+                UITypeBase = uiType;
+
+                //init
+                UI = g.ui.GetUI(UIType.GetUIType(UITypeName()));
+                UIBase = UI;
+
+                InitComp = initComp;
+
+                using (uiSample = new UISample())
+                {
+                    InitComp.Invoke(this);
+                }
+
+                //test
+                //for (var c = 0; c < Columns.Count; c++)
+                //    for (var r = 0; r < Rows.Count; r++)
+                //        AddText(c, r, "test");
+            }
+            catch (Exception ex)
+            {
+                DebugHelper.WriteLine(ex);
+            }
         }
     }
 

@@ -46,6 +46,11 @@
 //                    ModBattleEvent.SceneBattle.effect.Create(defres[showindex], ModBattleEvent.PlayerUnit.transform.position, 3f);
 //                    DebugHelper.WriteLine($"DefRes: {defres[showindex]}");
 //                }
+//                else if (Input.GetKey(KeyCode.LeftControl) && Input.GetKeyDown(KeyCode.C))
+//                {
+//                    ModBattleEvent.SceneBattle.effect.Create(defres[showindex], ModBattleEvent.PlayerUnit.transform.position, 3f);
+//                    DebugHelper.WriteLine($"DefRes: {defres[showindex]}");
+//                }
 //                else if (Input.GetKey(KeyCode.LeftControl) && Input.GetKeyDown(KeyCode.S))
 //                {
 //                    DebugHelper.Save();
