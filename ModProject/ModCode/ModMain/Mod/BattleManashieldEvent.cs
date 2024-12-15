@@ -13,7 +13,7 @@ namespace MOD_nE7UL2.Mod
     {
         public const int MANASHIELD_EFFECT_MAIN_ID = 903151120;
         public const int MANASHIELD_EFFECT_EFX_ID = 903151121;
-        public const float MONST_SHIELD_CHANCE = 0.40f;
+        public const float MONST_SHIELD_CHANCE = 0.50f;
 
         public static _BattleManashieldConfigs ManashieldConfigs => ModMain.ModObj.InGameCustomSettings.BattleManashieldConfigs;
 
