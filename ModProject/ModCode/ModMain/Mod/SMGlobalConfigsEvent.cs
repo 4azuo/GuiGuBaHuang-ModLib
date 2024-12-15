@@ -41,7 +41,9 @@ namespace MOD_nE7UL2.Mod
         public bool SectNoExchange { get; set; } = false;
         public bool BossHasShield { get; set; } = false;
         public bool NoGrowupFromBattles { get; set; } = false;
+        [Obsolete]
         public bool LowGradeDestiniesAtBeginning { get; set; } = false;
+        public int PriorityDestinyLevel { get; set; } = 0;
         public bool AllowUpgradeNaturally { get; set; } = false;
         public bool EnableTrainer { get; set; } = false;
 
@@ -73,7 +75,8 @@ namespace MOD_nE7UL2.Mod
         private UIItemBase.UIItemComposite tglSysSectNoExchange;
         private UIItemBase.UIItemComposite tglSysBossHasShield;
         private UIItemBase.UIItemComposite tglNoGrowupFromBattles;
-        private UIItemBase.UIItemComposite tglLowGradeDestiniesAtBeginning;
+        //private UIItemBase.UIItemComposite tglLowGradeDestiniesAtBeginning;
+        private UIItemBase.UIItemComposite cbPriorityDestinyLevel;
         private UIItemBase.UIItemComposite tglAllowUpgradeNaturally;
         private UIItemBase.UIItemComposite tglEnableTrainer;
 
@@ -110,7 +113,8 @@ namespace MOD_nE7UL2.Mod
             Register(() => tglSysSectNoExchange, s => 10000, s => s.Get().Parse<bool>());
             Register(() => tglSysBossHasShield, s => 10000, s => s.Get().Parse<bool>());
             Register(() => tglNoGrowupFromBattles, s => 10000, s => s.Get().Parse<bool>());
-            Register(() => tglLowGradeDestiniesAtBeginning, s => 1000, s => s.Get().Parse<bool>());
+            //Register(() => tglLowGradeDestiniesAtBeginning, s => 1000, s => s.Get().Parse<bool>());
+            Register(() => cbPriorityDestinyLevel, s => (s.Get().Parse<int>() == 0 ? 0 : (3 - s.Get().Parse<int>())) * 1000);
             Register(() => tglAllowUpgradeNaturally, s => -2000, s => s.Get().Parse<bool>());
             Register(() => tglEnableTrainer, s => -1000000, s => s.Get().Parse<bool>());
         }
@@ -200,7 +204,8 @@ namespace MOD_nE7UL2.Mod
                 tglSysOnelife = uiCustom.AddCompositeToggle(col, row++, "One life", Onelife, "({0}P)");
                 row++;
                 tglSysHideBattleMap = uiCustom.AddCompositeToggle(col, row++, "Hide Battle Map", HideBattleMap, "({0}P)");
-                tglLowGradeDestiniesAtBeginning = uiCustom.AddCompositeToggle(col, row++, "Low Grade Destinies At Beginning", LowGradeDestiniesAtBeginning, "({0}P)");
+                //tglLowGradeDestiniesAtBeginning = uiCustom.AddCompositeToggle(col, row++, "Low Grade Destinies At Beginning", LowGradeDestiniesAtBeginning, "({0}P)");
+                cbPriorityDestinyLevel = uiCustom.AddCompositeSelect(col, row++, "Priority Destiny Level", new string[] { "Default", "White", "Green", "Blue", "Violet", "Yellow", "Red" }, PriorityDestinyLevel, "({0}P)");
                 tglSysOnlyPortalAtCityAndSect = uiCustom.AddCompositeToggle(col, row++, "Only Portal at City and Sect", OnlyPortalAtCityAndSect, "({0}P)");
                 tglSysSectNoExchange = uiCustom.AddCompositeToggle(col, row++, "Sect No Exchange", SectNoExchange, "({0}P)");
                 tglSysNoRebirth = uiCustom.AddCompositeToggle(col, row++, "No Rebirth", NoRebirth, "({0}P)");
@@ -270,7 +275,8 @@ namespace MOD_nE7UL2.Mod
             tglSysNoRebirth.Set(false);
             tglSysOnelife.Set(false);
             tglNoGrowupFromBattles.Set(false);
-            tglLowGradeDestiniesAtBeginning.Set(false);
+            //tglLowGradeDestiniesAtBeginning.Set(false);
+            cbPriorityDestinyLevel.Set(0);
             tglAllowUpgradeNaturally.Set(false);
             tglEnableTrainer.Set(false);
         }
@@ -300,7 +306,8 @@ namespace MOD_nE7UL2.Mod
             tglSysOnlyPortalAtCityAndSect.Set(level > 3);
             tglSysBossHasShield.Set(level > 4);
             tglNoGrowupFromBattles.Set(level > 5);
-            tglLowGradeDestiniesAtBeginning.Set(level > 5);
+            //tglLowGradeDestiniesAtBeginning.Set(level > 5);
+            cbPriorityDestinyLevel.Set(0);
             tglSysHideReload.Set(level > 6);
             tglSysSectNoExchange.Set(level > 7);
             tglSysNoRebirth.Set(level > 8);
@@ -343,7 +350,8 @@ namespace MOD_nE7UL2.Mod
             SectNoExchange = tglSysSectNoExchange.Get().Parse<bool>();
             BossHasShield = tglSysBossHasShield.Get().Parse<bool>();
             NoGrowupFromBattles = tglNoGrowupFromBattles.Get().Parse<bool>();
-            LowGradeDestiniesAtBeginning = tglLowGradeDestiniesAtBeginning.Get().Parse<bool>();
+            //LowGradeDestiniesAtBeginning = tglLowGradeDestiniesAtBeginning.Get().Parse<bool>();
+            PriorityDestinyLevel = cbPriorityDestinyLevel.Get().Parse<int>();
             AllowUpgradeNaturally = tglAllowUpgradeNaturally.Get().Parse<bool>();
             EnableTrainer = tglEnableTrainer.Get().Parse<bool>();
             CacheHelper.SaveGlobalCache(this);

@@ -1,9 +1,11 @@
 ﻿using ModLib.Const;
 using ModLib.Enum;
+using ModLib.Mod;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using static BattleRoomNode;
 
 public static class UnitHelper
 {
@@ -575,5 +577,10 @@ public static class UnitHelper
     public static Il2CppSystem.Collections.Generic.List<WorldUnitBase> GetUnitsAround(this WorldUnitBase wunit, int range = 16, bool isGetHide = false, bool isGetPlayer = true)
     {
         return g.world.unit.GetUnitExact(new Vector2Int(wunit.data.unitData.pointX, wunit.data.unitData.pointY), range, isGetHide, isGetPlayer);
+    }
+
+    public static Il2CppSystem.Collections.Generic.List<UnitCtrlBase> FindNearObjects(this UnitCtrlBase cunit, float radius)
+    {
+        return ModBattleEvent.SceneBattle.unit.GetRangeUnit(cunit.transform.position, radius);
     }
 }

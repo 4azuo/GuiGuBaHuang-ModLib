@@ -65,13 +65,13 @@ namespace ModLib.Mod
         {
             if (hitData != null)
             {
-                var weaponType = hitData?.skillBase?.data?.weaponType?.value ?? 0;
+                var weaponType = hitData?.weaponType ?? 0;
                 if (weaponType > 0)
                 {
                     var dmgType = (DmgTypeEnum)(((int)DmgTypeEnum.Physic) + weaponType);
                     return dmgType;
                 }
-                var magicType = hitData?.skillBase?.data?.magicType?.value ?? 0;
+                var magicType = hitData?.magicType ?? 0;
                 if (magicType > 0)
                 {
                     var dmgType = (DmgTypeEnum)(((int)DmgTypeEnum.Magic) + magicType);
@@ -203,9 +203,9 @@ namespace ModLib.Mod
         #endregion
 
         [JsonIgnore]
-        public static SceneBattle SceneBattle { get; private set; }
+        public static SceneBattle SceneBattle { get { return SceneType.battle; } }
         [JsonIgnore]
-        public static UnitCtrlBase PlayerUnit { get; private set; }
+        public static UnitCtrlBase PlayerUnit { get { return SceneType.battle.battleMap.playerUnitCtrl; } }
         [JsonIgnore]
         public static UnitCtrlBase AttackingUnit { get; private set; }
         [JsonIgnore]
@@ -262,9 +262,6 @@ namespace ModLib.Mod
         public override void OnBattleStart(ETypeData e)
         {
             base.OnBattleStart(e);
-
-            SceneBattle = g.scene.GetScene<SceneBattle>(SceneType.Battle);
-            PlayerUnit = SceneBattle.battleData.playerUnit;
 
             BattleDmg.Clear();
             foreach (var de in (DmgEnum[])System.Enum.GetValues(typeof(DmgEnum)))

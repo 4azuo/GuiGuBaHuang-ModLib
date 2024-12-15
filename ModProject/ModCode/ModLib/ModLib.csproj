@@ -94,6 +94,7 @@
     <Compile Include="Object\CachableObject.cs" />
     <Compile Include="Mod\ModMaster.cs" />
     <Compile Include="Object\InGameSettings.cs" />
+    <Compile Include="Object\MonoSynchorizer.cs" />
     <Compile Include="Object\MonoUpdater.cs" />
     <Compile Include="Object\MultiValue.cs" />
     <Compile Include="Object\UIItemBase.cs" />
