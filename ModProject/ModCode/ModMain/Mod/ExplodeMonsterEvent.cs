@@ -1,18 +1,14 @@
 ﻿using Boo.Lang;
 using EBattleTypeData;
-using EGameTypeData;
 using MOD_nE7UL2.Const;
-using ModLib.Enum;
 using ModLib.Mod;
-using UnityEngine.Events;
-using static UIHelper;
 
 namespace MOD_nE7UL2.Mod
 {
     [Cache(ModConst.EXPLODE_MONST_EVENT)]
     public class ExplodeMonsterEvent : ModEvent
     {
-        public const float MONST_EXPLODE_CHANCE = 0.40f;
+        public const float MONST_EXPLODE_CHANCE = 0.50f;
         public const string EXPLODE_EFX = @"Effect\Battle\Skill\baiyuanshizhen";
 
         private List<string> _ExMonst = new List<string>();
