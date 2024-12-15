@@ -1,34 +1,61 @@
 ﻿using EGameTypeData;
+using System.Collections.Generic;
 using System.Diagnostics;
 using UnityEngine;
-using UnityEngine.Events;
+using static UIHelper;
 
 namespace ModLib.Mod
 {
-    [Cache("$TITLES$", OrderIndex = 90, CacheType = CacheAttribute.CType.Global, WorkOn = CacheAttribute.WType.Global)]
+    [Cache("$TITLES$", OrderIndex = 90, CacheType = CacheAttribute.CType.Global)]
     public class ModTitleEvent : ModEvent
     {
+        public static List<string> TranslateCode { get; } = new List<string>
+        {
+            null,
+            "en",
+            "ja",
+            "vi",
+            "ru",
+            "la",
+            "es",
+        };
+
+        public int TranslateIndex { get; set; }
+
         [EventCondition(IsInGame = 0)]
         public override void OnOpenUIEnd(OpenUIEnd e)
         {
             base.OnOpenUIEnd(e);
             if (e.uiType.uiName == UIType.Login.uiName)
             {
-                var uiLogin = g.ui.GetUI<UILogin>(UIType.Login);
-                using (var a = new UIHelper.UISample())
+                var uiCustom = new UICustom(UIType.Login, (ui) =>
                 {
-                    var modTitleBtn = a.ui.btnKeyOK.Copy(uiLogin)
-                        .Size(300, 60)
-                        .Pos(8f, UIHelper.SCREEN_Y_TOP, uiLogin.btnExit.transform.position.z)
-                        .Align(TextAnchor.MiddleCenter)
-                        .Format(Color.black, 19)
-                        .Set("Powered by Fouru's ModLib");
-                    modTitleBtn.onClick.AddListener((UnityAction)(() =>
+                    ui.AddButton(ui.LastCol - 5, ui.FirstRow, () =>
                     {
                         Process.Start("https://github.com/4azuo/GuiGuBaHuang-ModLib");
-                    }));
-                }
+                    }, "Powered by Fouru's ModLib")
+                        .Size(300, 60)
+                        .Align(TextAnchor.MiddleCenter)
+                        .Format(Color.black, 19);
+                    ui.AddSelect(ui.LastCol - 14, ui.FirstRow, new string[] { "Default", "English", "Japanese", "Vietnamese", "Russian", "Latin", "Spanish" }, TranslateIndex)
+                        .Align(TextAnchor.MiddleCenter)
+                        .SetWork(new UIItemBase.UIItemWork
+                        {
+                            ChangeAct = (a, b) =>
+                            {
+                                TranslateIndex = b.Parse<int>();
+                                CacheHelper.SaveGlobalCache(this);
+                                ModTranslateEvent.Reload();
+                            }
+                        });
+                });
             }
+        }
+
+        public static string GetTranslateCode()
+        {
+            var t = EventHelper.GetEvent<ModTitleEvent>("$TITLES$");
+            return TranslateCode[t.TranslateIndex];
         }
     }
 }

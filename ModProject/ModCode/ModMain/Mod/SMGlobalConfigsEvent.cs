@@ -83,9 +83,9 @@ namespace MOD_nE7UL2.Mod
         //Score
         public static IList<SMItemWork> ScoreCalculator { get; } = new List<SMItemWork>();
 
-        public override void OnLoadClass(bool isNew)
+        public override void OnLoadClass(bool isNew, CacheAttribute attr)
         {
-            base.OnLoadClass(isNew);
+            base.OnLoadClass(isNew, attr);
 
             ScoreCalculator.Clear();
             Register(() => slMonstAtk, s => (s.Get().Parse<float>() * 100).Parse<int>());

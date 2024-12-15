@@ -225,7 +225,7 @@ public abstract class UIItemBase
             SelectionItems.Clear();
             for (var i = 0; i < selections.Length; i++)
             {
-                var comp = Item.Copy(UI.UIBase).Pos(Item.transform, 0f, -(Item.GetSize().y / 128f) * (i + 1)).Set(false, selections[i]);
+                var comp = Item.Copy(UI.UIBase).Pos(Item.transform, 0f, -(Item.GetSize().y / 120f) * (i + 1)).Set(false, selections[i]);
                 comp.group = null;
                 comp.gameObject.SetActive(false);
                 comp.onValueChanged.AddListener((UnityAction<bool>)(v => OnSubChanged(comp)));
@@ -235,8 +235,11 @@ public abstract class UIItemBase
 
         public void SelectIndex(int index)
         {
+            var isChanged = SelectedIndex != index;
             SelectedIndex = index;
             UpdateSelectedIndex();
+            if (isChanged)
+                ItemWork?.ChangeAct?.Invoke(this, SelectedIndex);
         }
 
         public void UpdateSelectedIndex()
@@ -289,7 +292,6 @@ public abstract class UIItemBase
         private void OnMainChanged()
         {
             ShowList();
-            ItemWork?.ChangeAct?.Invoke(this, SelectedIndex);
         }
 
         private void OnSubChanged(Toggle comp)
@@ -304,6 +306,38 @@ public abstract class UIItemBase
             if (ItemWork?.EnableAct != null)
                 Enable = ItemWork?.EnableAct?.Invoke(this) ?? false;
             Item.enabled = Enable;
+        }
+
+        public UIItemSelect Align(TextAnchor tanchor = TextAnchor.MiddleLeft, VerticalWrapMode vMode = VerticalWrapMode.Overflow, HorizontalWrapMode hMode = HorizontalWrapMode.Overflow)
+        {
+            Item.Align(tanchor, vMode, hMode);
+            foreach (var comp in SelectionItems)
+                comp.Key.Align(tanchor, vMode, hMode);
+            return this;
+        }
+
+        public UIItemSelect Format(Color? color = null, int fsize = 14, FontStyle fstype = FontStyle.Normal)
+        {
+            Item.Format(color, fsize, fstype);
+            foreach (var comp in SelectionItems)
+                comp.Key.Format(color, fsize, fstype);
+            return this;
+        }
+
+        public UIItemSelect Size(float scaleX = 0f, float scaleY = 0f)
+        {
+            Item.Size(scaleX, scaleY);
+            foreach (var comp in SelectionItems)
+                comp.Key.Size(scaleX, scaleY);
+            return this;
+        }
+
+        public UIItemSelect AddSize(float scaleX = 0f, float scaleY = 0f)
+        {
+            Item.AddSize(scaleX, scaleY);
+            foreach (var comp in SelectionItems)
+                comp.Key.AddSize(scaleX, scaleY);
+            return this;
         }
     }
 

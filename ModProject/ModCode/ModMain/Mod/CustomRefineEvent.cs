@@ -23,9 +23,9 @@ namespace MOD_nE7UL2.Mod
         public Dictionary<string, long> RefineExp { get; set; } = new Dictionary<string, long>();
         public Dictionary<string, CustomRefine> CustomRefine { get; set; } = new Dictionary<string, CustomRefine>();
 
-        public override void OnLoadClass(bool isNew)
+        public override void OnLoadClass(bool isNew, CacheAttribute attr)
         {
-            base.OnLoadClass(isNew);
+            base.OnLoadClass(isNew, attr);
             _values.Clear();
         }
 
