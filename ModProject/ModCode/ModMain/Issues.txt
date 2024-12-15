@@ -11,7 +11,3 @@
 - pet
 
 - auto translate
-
-- UI bug
-
-- special monster: explore after dead

@@ -22,12 +22,12 @@ public static class ValueHelper
         return x >= from && x <= to;
     }
 
-    public static int FixValue(this int x, int min, int max)
+    public static int FixValue(this int x, int min = int.MinValue, int max = int.MaxValue)
     {
         return Math.Max(Math.Min(x, max), min);
     }
 
-    public static float FixValue(this float x, float min, float max)
+    public static float FixValue(this float x, float min = float.MinValue, float max = float.MaxValue)
     {
         return Math.Max(Math.Min(x, max), min);
     }

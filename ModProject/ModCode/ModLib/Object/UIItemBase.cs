@@ -1,4 +1,7 @@
-﻿using System;
+﻿using ModLib.Object;
+using System;
+using System.Collections.Generic;
+using System.Threading;
 using System.Threading.Tasks;
 using UnityEngine;
 using UnityEngine.Events;
@@ -183,7 +186,7 @@ public abstract class UIItemBase
     {
         public UIItemToggle(UICustomBase ui, float x, float y, bool def) : base(ui, ui.uiSample.ui.tglWindow.Copy(ui.UIBase).Pos(x, y))
         {
-            CompHelper.Set(Item, def);
+            Item.Set(def);
             Item.onValueChanged.AddListener((UnityAction<bool>)(v =>
             {
                 ItemWork?.ChangeAct?.Invoke(this, v);
@@ -197,7 +200,102 @@ public abstract class UIItemBase
 
         public override void Set(object input)
         {
-            CompHelper.Set(Item, (bool)input);
+            Item.Set((bool)input);
+        }
+
+        public override void Update()
+        {
+            base.Update();
+            if (ItemWork?.EnableAct != null)
+                Enable = ItemWork?.EnableAct?.Invoke(this) ?? false;
+            Item.enabled = Enable;
+        }
+    }
+
+    public class UIItemSelect : UIItem<Toggle>
+    {
+        public string[] Selections { get; private set; }
+        public Dictionary<Toggle, int> SelectionItems { get; } = new Dictionary<Toggle, int>();
+        public int SelectedIndex { get; private set; } = 0;
+        public bool IsShownList { get; private set; }
+
+        public void SetSelections(string[] selections)
+        {
+            Selections = selections;
+            SelectionItems.Clear();
+            for (var i = 0; i < selections.Length; i++)
+            {
+                var comp = Item.Copy(UI.UIBase).Pos(Item.transform, 0f, -(Item.GetSize().y / 128f) * (i + 1)).Set(false, selections[i]);
+                comp.group = null;
+                comp.gameObject.SetActive(false);
+                comp.onValueChanged.AddListener((UnityAction<bool>)(v => OnSubChanged(comp)));
+                SelectionItems.Add(comp, i);
+            }
+        }
+
+        public void SelectIndex(int index)
+        {
+            SelectedIndex = index;
+            UpdateSelectedIndex();
+        }
+
+        public void UpdateSelectedIndex()
+        {
+            Item.Set(false, Selections[SelectedIndex]);
+        }
+
+        public UIItemSelect(UICustomBase ui, float x, float y, string[] selections, int def) : base(ui, ui.uiSample.ui.tglLanguage.Copy(ui.UIBase).Format(Color.black, 14).Align().AddSize(-40f, -8f).Pos(x + 0.15f, y - 0.01f))
+        {
+            SetSelections(selections);
+            SelectIndex(def);
+
+            Item.onValueChanged.AddListener((UnityAction<bool>)(v => OnMainChanged()));
+        }
+
+        public override object Get()
+        {
+            return SelectedIndex;
+        }
+
+        public override void Set(object input)
+        {
+            SelectIndex((int)input);
+        }
+
+        public void ShowList()
+        {
+            if (!IsShownList)
+            {
+                foreach (var comp in SelectionItems)
+                {
+                    comp.Key.transform.SetAsLastSibling();
+                    comp.Key.gameObject.SetActive(true);
+                }
+            }
+            else
+            {
+                CloseList();
+            }
+        }
+
+        public void CloseList()
+        {
+            foreach (var comp in SelectionItems)
+            {
+                comp.Key.gameObject.SetActive(false);
+            }
+        }
+
+        private void OnMainChanged()
+        {
+            ShowList();
+            ItemWork?.ChangeAct?.Invoke(this, SelectedIndex);
+        }
+
+        private void OnSubChanged(Toggle comp)
+        {
+            SelectIndex(SelectionItems[comp]);
+            CloseList();
         }
 
         public override void Update()
@@ -334,6 +432,20 @@ public abstract class UIItemBase
             rs.MainComponent = new UIItemToggle(ui, x + UIHelper.UICUSTOM_DELTA_X * 2, y, def);
             rs.MainComponent.Parent = rs;
             rs.Postfix = new UIItemText(ui, x + UIHelper.UICUSTOM_DELTA_X * 4, y, postfix);
+            rs.Postfix.Item.Align(TextAnchor.MiddleLeft);
+            rs.Postfix.Parent = rs;
+            return rs;
+        }
+
+        public static UIItemComposite CreateSelect(UICustomBase ui, float x, float y, string prefix, string[] selections, int def, string postfix = null)
+        {
+            var rs = new UIItemComposite();
+            rs.Prefix = new UIItemText(ui, x, y, prefix);
+            rs.Prefix.Item.Align(TextAnchor.MiddleRight);
+            rs.Prefix.Parent = rs;
+            rs.MainComponent = new UIItemSelect(ui, x + UIHelper.UICUSTOM_DELTA_X * 1, y, selections, def);
+            rs.MainComponent.Parent = rs;
+            rs.Postfix = new UIItemText(ui, x + UIHelper.UICUSTOM_DELTA_X * 7, y, postfix);
             rs.Postfix.Item.Align(TextAnchor.MiddleLeft);
             rs.Postfix.Parent = rs;
             return rs;

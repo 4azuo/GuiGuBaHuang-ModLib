@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine.Events;
 using static UIItemBase;
 
@@ -102,6 +103,13 @@ public static class UIHelper
             return rs;
         }
 
+        public UIItemComposite AddCompositeSelect(float x, float y, string prefix, string[] selections, int def, string postfix = null)
+        {
+            var rs = UIItemComposite.CreateSelect(this, x, y, prefix, selections, def, postfix);
+            Items.Add(rs);
+            return rs;
+        }
+
         public UIItemText AddText(int col, int row, string format)
         {
             FixPosition(ref col, ref row);
@@ -136,6 +144,12 @@ public static class UIHelper
         {
             FixPosition(ref col, ref row);
             return AddCompositeToggle(Columns[col], Rows[row], prefix, def, postfix);
+        }
+
+        public UIItemComposite AddCompositeSelect(int col, int row, string prefix, string[] selections, int def, string postfix = null)
+        {
+            FixPosition(ref col, ref row);
+            return AddCompositeSelect(Columns[col], Rows[row], prefix, selections, def, postfix);
         }
 
         private void FixPosition(ref int col, ref int row)

@@ -1,10 +1,12 @@
 ﻿//using EGameTypeData;
+//using Il2CppSystem.Net;
 //using MOD_nE7UL2.Const;
 //using MOD_nE7UL2.Enum;
 //using ModLib.Enum;
 //using ModLib.Mod;
 //using System;
 //using System.Collections.Generic;
+//using System.IO;
 //using System.Linq;
 //using System.Numerics;
 //using System.Reflection;
@@ -20,6 +22,37 @@
 //    [Cache(ModConst.DEBUG_EVENT)]
 //    public class DebugEvent : ModEvent
 //    {
+//        private int showindex = 0;
+//        private string[] defres = File.ReadAllLines(ConfHelper.GetConfFilePath("_Def_Res_Efx_Battle_Skill.txt"));
+
+//        public override void OnMonoUpdate()
+//        {
+//            base.OnMonoUpdate();
+//            if (GameHelper.IsInBattlle())
+//            {
+//                if (Input.GetKey(KeyCode.LeftControl) && Input.GetKeyDown(KeyCode.Z))
+//                {
+//                    showindex--;
+//                    if (showindex < 0)
+//                        showindex = 0;
+//                    ModBattleEvent.SceneBattle.effect.Create(defres[showindex], ModBattleEvent.PlayerUnit.transform.position, 3f);
+//                    DebugHelper.WriteLine($"DefRes: {defres[showindex]}");
+//                }
+//                else if (Input.GetKey(KeyCode.LeftControl) && Input.GetKeyDown(KeyCode.X))
+//                {
+//                    showindex++;
+//                    if (showindex >= g.conf.battleEffect._allConfList.Count)
+//                        showindex = g.conf.battleEffect._allConfList.Count - 1;
+//                    ModBattleEvent.SceneBattle.effect.Create(defres[showindex], ModBattleEvent.PlayerUnit.transform.position, 3f);
+//                    DebugHelper.WriteLine($"DefRes: {defres[showindex]}");
+//                }
+//                else if (Input.GetKey(KeyCode.LeftControl) && Input.GetKeyDown(KeyCode.S))
+//                {
+//                    DebugHelper.Save();
+//                }
+//            }
+//        }
+
 //        /* === Test attributes === */
 //        //public override void OnSave(ETypeData e)
 //        //{
@@ -49,39 +82,39 @@
 //        //}
 
 //        /* === In game debug === */
-//        public override void OnLoadGame()
-//        {
-//            //g.world.playerUnit.SetProperty<int>(UnitPropertyEnum.Attack, 1000000);
-//            //g.world.playerUnit.SetProperty<int>(UnitPropertyEnum.Defense, 1000000);
-//            //g.world.playerUnit.SetProperty<int>(UnitPropertyEnum.HpMax, 1000000);
-//            //g.world.playerUnit.SetProperty<int>(UnitPropertyEnum.MpMax, 1000000);
-//            //g.world.playerUnit.SetProperty<int>(UnitPropertyEnum.SpMax, 1000000);
+//        //public override void OnLoadGame()
+//        //{
+//        //    //g.world.playerUnit.SetProperty<int>(UnitPropertyEnum.Attack, 1000000);
+//        //    //g.world.playerUnit.SetProperty<int>(UnitPropertyEnum.Defense, 1000000);
+//        //    //g.world.playerUnit.SetProperty<int>(UnitPropertyEnum.HpMax, 1000000);
+//        //    //g.world.playerUnit.SetProperty<int>(UnitPropertyEnum.MpMax, 1000000);
+//        //    //g.world.playerUnit.SetProperty<int>(UnitPropertyEnum.SpMax, 1000000);
 
-//            //g.world.playerUnit.SetProperty<int>(UnitPropertyEnum.BasisBlade, 10000);
-//            //g.world.playerUnit.SetProperty<int>(UnitPropertyEnum.BasisEarth, 10000);
-//            //g.world.playerUnit.SetProperty<int>(UnitPropertyEnum.BasisFinger, 10000);
-//            //g.world.playerUnit.SetProperty<int>(UnitPropertyEnum.BasisFire, 10000);
-//            //g.world.playerUnit.SetProperty<int>(UnitPropertyEnum.BasisFist, 10000);
-//            //g.world.playerUnit.SetProperty<int>(UnitPropertyEnum.BasisFroze, 10000);
-//            //g.world.playerUnit.SetProperty<int>(UnitPropertyEnum.BasisPalm, 10000);
-//            //g.world.playerUnit.SetProperty<int>(UnitPropertyEnum.BasisSpear, 10000);
-//            //g.world.playerUnit.SetProperty<int>(UnitPropertyEnum.BasisSword, 10000);
-//            //g.world.playerUnit.SetProperty<int>(UnitPropertyEnum.BasisThunder, 10000);
-//            //g.world.playerUnit.SetProperty<int>(UnitPropertyEnum.BasisWind, 10000);
-//            //g.world.playerUnit.SetProperty<int>(UnitPropertyEnum.BasisWood, 10000);
+//        //    //g.world.playerUnit.SetProperty<int>(UnitPropertyEnum.BasisBlade, 10000);
+//        //    //g.world.playerUnit.SetProperty<int>(UnitPropertyEnum.BasisEarth, 10000);
+//        //    //g.world.playerUnit.SetProperty<int>(UnitPropertyEnum.BasisFinger, 10000);
+//        //    //g.world.playerUnit.SetProperty<int>(UnitPropertyEnum.BasisFire, 10000);
+//        //    //g.world.playerUnit.SetProperty<int>(UnitPropertyEnum.BasisFist, 10000);
+//        //    //g.world.playerUnit.SetProperty<int>(UnitPropertyEnum.BasisFroze, 10000);
+//        //    //g.world.playerUnit.SetProperty<int>(UnitPropertyEnum.BasisPalm, 10000);
+//        //    //g.world.playerUnit.SetProperty<int>(UnitPropertyEnum.BasisSpear, 10000);
+//        //    //g.world.playerUnit.SetProperty<int>(UnitPropertyEnum.BasisSword, 10000);
+//        //    //g.world.playerUnit.SetProperty<int>(UnitPropertyEnum.BasisThunder, 10000);
+//        //    //g.world.playerUnit.SetProperty<int>(UnitPropertyEnum.BasisWind, 10000);
+//        //    //g.world.playerUnit.SetProperty<int>(UnitPropertyEnum.BasisWood, 10000);
 
-//            g.world.playerUnit.SetUnitMoney(1000000000);
-//            g.world.playerUnit.SetUnitMayorDegree(1000000000);
-//            g.world.playerUnit.SetUnitContribution(1000000000);
-//            g.world.playerUnit.SetProperty<int>(UnitPropertyEnum.GradeID, 44);
-//            g.world.playerUnit.data.unitData.propertyData.footSpeed = 10000;
-//            g.world.playerUnit.data.dynUnitData.playerView.baseValue = 111;
+//        //    g.world.playerUnit.SetUnitMoney(1000000000);
+//        //    g.world.playerUnit.SetUnitMayorDegree(1000000000);
+//        //    g.world.playerUnit.SetUnitContribution(1000000000);
+//        //    g.world.playerUnit.SetProperty<int>(UnitPropertyEnum.GradeID, 44);
+//        //    g.world.playerUnit.data.unitData.propertyData.footSpeed = 10000;
+//        //    g.world.playerUnit.data.dynUnitData.playerView.baseValue = 111;
 
-//            foreach (var build in g.world.build.GetBuilds())
-//            {
-//                MapBuildPropertyEvent.AddBuildProperty(build, 1000000000);
-//            }
-//        }
+//        //    foreach (var build in g.world.build.GetBuilds())
+//        //    {
+//        //        MapBuildPropertyEvent.AddBuildProperty(build, 1000000000);
+//        //    }
+//        //}
 
 //        /* === Ui component list === */
 //        //public override void OnOpenUIEnd(OpenUIEnd e)

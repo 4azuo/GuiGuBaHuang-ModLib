@@ -917,6 +917,9 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="..\..\ModConf\_Def_Res_Efx_Battle_Skill.txt">
+      <Link>ModConf\_Def_Res_Efx_Battle_Skill.txt</Link>
+    </Content>
     <Content Include="Issues.txt" />
   </ItemGroup>
   <ItemGroup>
