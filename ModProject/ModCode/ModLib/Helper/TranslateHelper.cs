@@ -1,13 +1,12 @@
 ﻿using System;
 using System.Net;
-using System.Security.Policy;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Web;
 
 public static class TranslateHelper
 {
-    public const int MAX_TRANS_LEN = 4500;
+    public const int MAX_TRANS_LEN = 4000;
     public const string GOOGLE_URL = "https://translate.googleapis.com/translate_a/single?client=gtx&sl={2}&tl={1}&dt=t&q={0}";
 
     public static string Translate(string text, string targetLang, string sourceLang = "auto")
@@ -28,7 +27,7 @@ public static class TranslateHelper
             var len = (MAX_TRANS_LEN * (i + 1)).FixValue(0, encodeStr.Length - MAX_TRANS_LEN * i);
             var url = string.Format(GOOGLE_URL, encodeStr.Substring(startIndex, len), targetLang, sourceLang);
 
-            builder.Append(webClient.DownloadString(url));
+            builder.Append(webClient.DownloadStringTaskAsync(url).Result);
         }
 
         var result = builder.ToString();
