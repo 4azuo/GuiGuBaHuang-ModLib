@@ -9,5 +9,3 @@
 - kill in town, will be wanted
 
 - pet
-
-- auto translate

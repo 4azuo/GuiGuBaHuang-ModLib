@@ -1,30 +1,44 @@
 ﻿using System;
 using System.Net;
+using System.Security.Policy;
+using System.Text;
 using System.Text.RegularExpressions;
 using System.Web;
 
 public static class TranslateHelper
 {
+    public const int MAX_TRANS_LEN = 4500;
     public const string GOOGLE_URL = "https://translate.googleapis.com/translate_a/single?client=gtx&sl={2}&tl={1}&dt=t&q={0}";
-    public static WebClient WebClient { get; } = new WebClient()
-    {
-        Encoding = System.Text.Encoding.UTF8,
-    };
 
     public static string Translate(string text, string targetLang, string sourceLang = "auto")
     {
-        var url = string.Format(GOOGLE_URL, Encode(text), targetLang, sourceLang);
+        if (string.IsNullOrEmpty(text))
+            return string.Empty;
 
-        var result = WebClient.DownloadString(url);
+        var webClient = new WebClient();
+        webClient.Encoding = Encoding.UTF8;
 
-        //DebugHelper.WriteLine(result);
-        //DebugHelper.Save();
+        var builder = new StringBuilder();
+        var encodeStr = Encode(text);
+        for (int i = 0; true; i++)
+        {
+            var startIndex = MAX_TRANS_LEN * i;
+            if (startIndex >= encodeStr.Length)
+                break;
+            var len = (MAX_TRANS_LEN * (i + 1)).FixValue(0, encodeStr.Length - MAX_TRANS_LEN * i);
+            var url = string.Format(GOOGLE_URL, encodeStr.Substring(startIndex, len), targetLang, sourceLang);
+
+            builder.Append(webClient.DownloadString(url));
+        }
+
+        var result = builder.ToString();
+
+        //var url = string.Format(GOOGLE_URL, encodeStr, targetLang, sourceLang);
+        //var result = webClient.DownloadString(url);
 
         try
         {
             var translatedText = Decode(result.Substring(4, result.IndexOf("\",\"", 4, StringComparison.Ordinal) - 4));
-            //DebugHelper.WriteLine(translatedText);
-            //DebugHelper.Save();
             return translatedText;
         }
         catch

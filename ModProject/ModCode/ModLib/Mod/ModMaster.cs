@@ -148,7 +148,6 @@ namespace ModLib.Mod
 
         #region mono
         private MonoUpdater monoUpdater;
-        private MonoSynchorizer monoSynchorizer;
         #endregion
 
         //GameEvent
@@ -298,9 +297,6 @@ namespace ModLib.Mod
                 ClassInjector.RegisterTypeInIl2Cpp<MonoUpdater>();
                 monoUpdater = g.root.AddComponent<MonoUpdater>();
                 monoUpdater.UpdateFunc = OnMonoUpdate;
-
-                //ClassInjector.RegisterTypeInIl2Cpp<MonoSynchorizer>();
-                //monoSynchorizer = g.root.AddComponent<MonoSynchorizer>();
                 #endregion
 
                 //g.world.run.On(WorldRunOrder.Start, (Il2CppSystem.Action)OnWorldRunStart);
@@ -417,7 +413,6 @@ namespace ModLib.Mod
 
                 #region MonoEvents
                 Destroy(monoUpdater);
-                //Destroy(monoSynchorizer);
                 #endregion
             }
             catch (Exception ex)
@@ -505,6 +500,7 @@ namespace ModLib.Mod
                 g.ui.CloseUI(UIType.TextInfoLong);
             }
             var ui = g.ui.OpenUI<UITextInfoLong>(UIType.TextInfoLong);
+            ModTranslateEvent.IgnoreGameObjects.Add(ui.gameObject);
             ui.InitData("Exception", ex.GetAllInnnerExceptionStr());
             var btnOpenLog = ui.btnOK.Copy();
             var txtOpenLog = btnOpenLog.GetComponentInChildren<Text>().Align(TextAnchor.MiddleCenter);
