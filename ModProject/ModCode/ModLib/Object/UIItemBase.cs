@@ -1,7 +1,5 @@
-﻿using ModLib.Object;
-using System;
+﻿using System;
 using System.Collections.Generic;
-using System.Threading;
 using System.Threading.Tasks;
 using UnityEngine;
 using UnityEngine.Events;
@@ -11,6 +9,8 @@ using static UIHelper;
 
 public abstract class UIItemBase
 {
+    public virtual Text InnerText => null;
+    public virtual bool HasText => InnerText != null;
     public virtual UICustomBase UI { get; private set; }
     public virtual UIItemBase Parent { get; private set; }
     public virtual UIBehaviour ItemBehaviour { get; private set; }
@@ -84,12 +84,15 @@ public abstract class UIItemBase
 
         public override void Destroy()
         {
+            UI.Items.Remove(this);
+            UIHelper.Items.Remove(this);
             MonoBehaviour.Destroy(Item);
         }
     }
 
     public class UIItemText : UIItem<Text>
     {
+        public override Text InnerText => this.Item;
         public string FormatStr { get; private set; }
         public Color Color { get; private set; }
 
@@ -221,8 +224,15 @@ public abstract class UIItemBase
 
         public void SetSelections(string[] selections)
         {
-            Selections = selections;
+            //clear
+            foreach (var item in SelectionItems)
+            {
+                MonoBehaviour.Destroy(item.Key);
+            }
             SelectionItems.Clear();
+
+            //add new
+            Selections = selections;
             for (var i = 0; i < selections.Length; i++)
             {
                 var comp = Item.Copy(UI.UIBase).Pos(Item.transform, 0f, -(Item.GetSize().y / 120f) * (i + 1)).Set(false, selections[i]);
@@ -247,7 +257,7 @@ public abstract class UIItemBase
             Item.Set(false, Selections[SelectedIndex]);
         }
 
-        public UIItemSelect(UICustomBase ui, float x, float y, string[] selections, int def) : base(ui, ui.uiSample.ui.tglLanguage.Copy(ui.UIBase).Format(Color.black, 14).Align().AddSize(-40f, -8f).Pos(x + 0.15f, y - 0.01f))
+        public UIItemSelect(UICustomBase ui, float x, float y, string[] selections, int def) : base(ui, ui.uiSample.ui.tglLanguage.Copy(ui.UIBase).Format(Color.black, 14).Align().AddSize(-40f, -6f).Pos(x + 0.15f, y - 0.01f))
         {
             SetSelections(selections);
             SelectIndex(def);
@@ -263,6 +273,13 @@ public abstract class UIItemBase
         public override void Set(object input)
         {
             SelectIndex((int)input);
+        }
+
+        public override void Destroy()
+        {
+            SetSelections(new string[0]);
+            base.Destroy();
+
         }
 
         public void ShowList()
@@ -343,6 +360,7 @@ public abstract class UIItemBase
 
     public class UIItemButton : UIItem<Button>
     {
+        public override Text InnerText => ButtonLabel;
         public string FormatStr { get; private set; }
         public Text ButtonLabel { get; private set; }
 
@@ -367,6 +385,7 @@ public abstract class UIItemBase
         public override void Set(object input)
         {
             FormatStr = input.ToString();
+            Item.Set(Get()?.ToString());
         }
 
         public override void Update()

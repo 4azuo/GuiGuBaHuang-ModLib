@@ -1,12 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using UnityEngine;
 using UnityEngine.Events;
 using static UIItemBase;
 
 public static class UIHelper
 {
+    public static List<UIItemBase> Items { get; } = new List<UIItemBase>();
+
     public const float SCREEN_Y_TOP = 5f;
     public const float SCREEN_Y_MIDDLE = 0f;
     public const float SCREEN_Y_BOTTOM = -5f;
@@ -62,60 +62,52 @@ public static class UIHelper
             InitGrid();
         }
 
+        public T AddItem<T>(T item) where T : UIItemBase
+        {
+            Items.Add(item);
+            UIHelper.Items.Add(item);
+            return item;
+
+        }
+
         public UIItemText AddText(float x, float y, string format)
         {
-            var rs = new UIItemText(this, x, y, format);
-            Items.Add(rs);
-            return rs;
+            return AddItem(new UIItemText(this, x, y, format));
         }
 
         public UIItemSlider AddSlider(float x, float y, float min, float max, float def)
         {
-            var rs = new UIItemSlider(this, x, y, min, max, def);
-            Items.Add(rs);
-            return rs;
+            return AddItem(new UIItemSlider(this, x, y, min, max, def));
         }
 
         public UIItemToggle AddToggle(float x, float y, bool def)
         {
-            var rs = new UIItemToggle(this, x, y, def);
-            Items.Add(rs);
-            return rs;
+            return AddItem(new UIItemToggle(this, x, y, def));
         }
 
         public UIItemButton AddButton(float x, float y, Action act, string format)
         {
-            var rs = new UIItemButton(this, x, y, act, format);
-            Items.Add(rs);
-            return rs;
+            return AddItem(new UIItemButton(this, x, y, act, format));
         }
 
         public UIItemSelect AddSelect(float x, float y, string[] selections, int def)
         {
-            var rs = new UIItemSelect(this, x, y, selections, def);
-            Items.Add(rs);
-            return rs;
+            return AddItem(new UIItemSelect(this, x, y, selections, def));
         }
 
         public UIItemComposite AddCompositeSlider(float x, float y, string prefix, float min, float max, float def, string postfix = null)
         {
-            var rs = UIItemComposite.CreateSlider(this, x, y, prefix, min, max, def, postfix);
-            Items.Add(rs);
-            return rs;
+            return AddItem(UIItemComposite.CreateSlider(this, x, y, prefix, min, max, def, postfix));
         }
 
         public UIItemComposite AddCompositeToggle(float x, float y, string prefix, bool def, string postfix = null)
         {
-            var rs = UIItemComposite.CreateToggle(this, x, y, prefix, def, postfix);
-            Items.Add(rs);
-            return rs;
+            return AddItem(UIItemComposite.CreateToggle(this, x, y, prefix, def, postfix));
         }
 
         public UIItemComposite AddCompositeSelect(float x, float y, string prefix, string[] selections, int def, string postfix = null)
         {
-            var rs = UIItemComposite.CreateSelect(this, x, y, prefix, selections, def, postfix);
-            Items.Add(rs);
-            return rs;
+            return AddItem(UIItemComposite.CreateSelect(this, x, y, prefix, selections, def, postfix));
         }
 
         public UIItemText AddText(int col, int row, string format)
@@ -176,7 +168,6 @@ public static class UIHelper
         {
             foreach (var item in Items)
                 item.Destroy();
-            Items.Clear();
         }
 
         public void UpdateUI()
@@ -233,12 +224,14 @@ public static class UIHelper
         {
             if (LastUICustom != null)
             {
-                foreach (var item in LastUICustom.Items)
-                {
-                    MonoBehaviour.Destroy(item.ItemBehaviour);
-                }
+                Clear();
                 LastUICustom = null;
             }
+        }
+
+        public void Close()
+        {
+            DeleteLastUI();
         }
     }
 
@@ -280,14 +273,16 @@ public static class UIHelper
         {
             if (LastUICustom != null)
             {
-                foreach (var item in LastUICustom.Items)
-                {
-                    MonoBehaviour.Destroy(item.ItemBehaviour);
-                }
+                Clear();
                 if (LastUICustom?.UI?.uiType != null && g.ui.HasUI(LastUICustom.UI.uiType))
                     g.ui.CloseUI(LastUICustom.UI);
                 LastUICustom = null;
             }
+        }
+
+        public void Close()
+        {
+            DeleteLastUI();
         }
     }
 
