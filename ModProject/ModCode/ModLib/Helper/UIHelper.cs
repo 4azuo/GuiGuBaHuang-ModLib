@@ -195,6 +195,7 @@ public static class UIHelper
         protected override float MinHeight() => SCREEN_Y_TOP;
         protected override float MaxHeight() => SCREEN_Y_BOTTOM;
 
+        public static UICustom LastUICustom { get; private set; }
         public UIBase UI { get; internal set; }
         public Action<UICustom> InitComp { get; internal set; }
 
@@ -205,7 +206,9 @@ public static class UIHelper
                 UITypeBase = uiType;
 
                 //init
+                DeleteLastUI();
                 UI = g.ui.GetUI(UIType.GetUIType(UITypeName()));
+                LastUICustom = this;
                 UIBase = UI;
 
                 InitComp = initComp;
@@ -223,6 +226,18 @@ public static class UIHelper
             catch (Exception ex)
             {
                 DebugHelper.WriteLine(ex);
+            }
+        }
+
+        private void DeleteLastUI()
+        {
+            if (LastUICustom != null)
+            {
+                foreach (var item in LastUICustom.Items)
+                {
+                    MonoBehaviour.Destroy(item.ItemBehaviour);
+                }
+                LastUICustom = null;
             }
         }
     }
@@ -269,7 +284,8 @@ public static class UIHelper
                 {
                     MonoBehaviour.Destroy(item.ItemBehaviour);
                 }
-                g.ui.CloseUI(LastUICustom.UI);
+                if (LastUICustom?.UI?.uiType != null && g.ui.HasUI(LastUICustom.UI.uiType))
+                    g.ui.CloseUI(LastUICustom.UI);
                 LastUICustom = null;
             }
         }
