@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using UnityEngine;
 using UnityEngine.Events;
 using static UIItemBase;
 
@@ -228,22 +229,18 @@ public static class UIHelper
 
     public abstract class UICustom<T> : UICustomBase where T : UIBase
     {
-        public static T LastUI { get; internal set; }
-        public T UI { get; internal set; }
-        public Action<UICustom<T>> InitComp { get; internal set; }
+        public static UICustom<T> LastUICustom { get; private set; }
+        public T UI { get; private set; }
+        public Action<UICustom<T>> InitComp { get; private set; }
 
         public UICustom(Action<UICustom<T>> initComp) : base()
         {
             try
             {
                 //init
-                if (LastUI != null)
-                {
-                    g.ui.CloseUI(LastUI);
-                    LastUI = null;
-                }
+                DeleteLastUI();
                 UI = g.ui.OpenUI<T>(UIType.GetUIType(UITypeName()));
-                LastUI = UI;
+                LastUICustom = this;
                 UIBase = UI;
 
                 InitComp = initComp;
@@ -261,6 +258,19 @@ public static class UIHelper
             catch (Exception ex)
             {
                 DebugHelper.WriteLine(ex);
+            }
+        }
+
+        private void DeleteLastUI()
+        {
+            if (LastUICustom != null)
+            {
+                foreach (var item in LastUICustom.Items)
+                {
+                    MonoBehaviour.Destroy(item.ItemBehaviour);
+                }
+                g.ui.CloseUI(LastUICustom.UI);
+                LastUICustom = null;
             }
         }
     }
