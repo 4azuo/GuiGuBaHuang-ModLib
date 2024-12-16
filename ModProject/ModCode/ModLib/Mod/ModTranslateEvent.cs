@@ -1,8 +1,6 @@
 ﻿using EGameTypeData;
-using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -32,9 +30,9 @@ namespace ModLib.Mod
             Translate(e.ui.gameObject);
         }
 
-        public override void OnTimeUpdate()
+        public override void OnTimeUpdate200ms()
         {
-            base.OnTimeUpdate();
+            base.OnTimeUpdate200ms();
             var code = ModTitleEvent.GetTranslateCode();
             if (!string.IsNullOrEmpty(code) && !GameHelper.IsLoadingScreen())
             {
@@ -46,27 +44,18 @@ namespace ModLib.Mod
                     if (c == null)
                         return;
 
-                    //Task.Run(() =>
-                    //{
-                    //    try
-                    //    {
+                    var orgText = GetText(c);
+                    if (orgText.Length > TranslateHelper.MAX_TRANS_LEN)
+                        return;
 
-                            //string orgText = GetText(c);
-                            //string translatedText;
-                            //if (!TranslatedText.TryGetValue(orgText, out translatedText))
-                            //{
-                            //    translatedText = TranslateHelper.Translate(orgText, code);
-                            //    TranslatedText.Add(orgText, translatedText);
-                            //}
-                            //SetText(c, translatedText);
-                            SetText(c, TranslateHelper.Translate(GetText(c), code));
-
-                    //    }
-                    //    catch (Exception ex)
-                    //    {
-                    //        DebugHelper.WriteLine(ex);
-                    //    }
-                    //});
+                    var translatedTextCode = orgText.Substring(0, 32.FixValue(0, orgText.Length));
+                    string translatedText;
+                    if (!TranslatedText.TryGetValue(translatedTextCode, out translatedText))
+                    {
+                        translatedText = TranslateHelper.Translate(orgText, code);
+                        TranslatedText[translatedTextCode] = translatedText;
+                    }
+                    SetText(c, translatedText);
                 }
             }
         }
@@ -172,6 +161,7 @@ namespace ModLib.Mod
 
         public static void Reload()
         {
+            TranslatedText.Clear();
             TranslatingComp.Clear();
             Translate(g.root);
         }
