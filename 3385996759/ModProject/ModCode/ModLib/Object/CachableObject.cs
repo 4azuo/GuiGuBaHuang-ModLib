@@ -6,11 +6,11 @@ namespace ModLib.Object
 {
     public abstract class CachableObject
     {
-        public string ModId { get; private set; }
-        public string CacheId { get; private set; }
-        public int OrderIndex { get; internal set; }
-        public CacheAttribute.CType CacheType { get; private set; }
-        public CacheAttribute.WType WorkOn { get; private set; }
+        public string ModId { get; set; }
+        public string CacheId { get; set; }
+        public int OrderIndex { get; set; }
+        public CacheAttribute.CType CacheType { get; set; }
+        public CacheAttribute.WType WorkOn { get; set; }
 
         public int ModIndex() => g.mod.allModPaths.ToArray().IndexOf(x => x.t1 == ModId);
         public int InModOrderIndex() => OrderIndex + (ModIndex() * 1000000);

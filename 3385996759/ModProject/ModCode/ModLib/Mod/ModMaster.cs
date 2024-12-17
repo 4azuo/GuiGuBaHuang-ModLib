@@ -409,10 +409,6 @@ namespace ModLib.Mod
                 UnregEvent(eventBattleEscapeFailed);
                 UnregEvent(eventBattleExit);
                 #endregion
-
-                #region MonoEvents
-                Destroy(monoUpdater);
-                #endregion
             }
             catch (Exception ex)
             {
