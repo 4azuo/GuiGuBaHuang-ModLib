@@ -6,42 +6,32 @@ using System.Web;
 
 public static class TranslateHelper
 {
-    public const int MAX_TRANS_LEN = 4000;
-    public const string GOOGLE_URL = "https://translate.googleapis.com/translate_a/single?client=gtx&sl={2}&tl={1}&dt=t&q={0}";
+    public const int MAX_LEN = 200;
+    public const string TRANS_API = "https://translate.googleapis.com/translate_a/single?client=gtx&sl={2}&tl={1}&dt=t&q={0}";
 
     public static string Translate(string text, string targetLang, string sourceLang = "auto")
     {
-        if (string.IsNullOrEmpty(text))
-            return string.Empty;
-
-        var webClient = new WebClient();
-        webClient.Encoding = Encoding.UTF8;
-
-        var builder = new StringBuilder();
-        var encodeStr = Encode(text);
-        for (int i = 0; true; i++)
-        {
-            var startIndex = MAX_TRANS_LEN * i;
-            if (startIndex >= encodeStr.Length)
-                break;
-            var len = (MAX_TRANS_LEN * (i + 1)).FixValue(0, encodeStr.Length - MAX_TRANS_LEN * i);
-            var url = string.Format(GOOGLE_URL, encodeStr.Substring(startIndex, len), targetLang, sourceLang);
-
-            builder.Append(webClient.DownloadStringTaskAsync(url).Result);
-        }
-
-        var result = builder.ToString();
-
-        //var url = string.Format(GOOGLE_URL, encodeStr, targetLang, sourceLang);
-        //var result = webClient.DownloadString(url);
-
         try
         {
-            var translatedText = Decode(result.Substring(4, result.IndexOf("\",\"", 4, StringComparison.Ordinal) - 4));
-            return translatedText;
+            if (string.IsNullOrEmpty(text) || text.Length > MAX_LEN)
+                return text;
+            //DebugHelper.WriteLine(text);
+
+            var url = string.Format(TRANS_API, Encode(text), targetLang, sourceLang);
+            //DebugHelper.WriteLine(url);
+
+            var client = new WebClient();
+            var res = client.DownloadString(url);
+
+            var result = Decode(ReadGoogleResult(res));
+            //DebugHelper.WriteLine(result);
+            //DebugHelper.Save();
+
+            return result;
         }
-        catch
+        catch (Exception ex)
         {
+            //DebugHelper.WriteLine(ex);
             return text;
         }
     }
@@ -71,5 +61,17 @@ public static class TranslateHelper
         var code = match.Groups["code"].Value;
         var v = Convert.ToInt32(code, 16);
         return ((char)v).ToString();
+    }
+
+    private static readonly Regex r = new Regex("\"(.*?)\",\"(.*?)\"");
+    public static string ReadGoogleResult(string input)
+    {
+        var builder = new StringBuilder();
+        foreach (Match m in r.Matches(input))
+        {
+            if (!m.Groups[2].Value.EndsWith(".md"))
+                builder.Append(m.Groups[1].Value);
+        }
+        return builder.ToString();
     }
 }

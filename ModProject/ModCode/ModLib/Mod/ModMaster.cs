@@ -500,7 +500,6 @@ namespace ModLib.Mod
                 g.ui.CloseUI(UIType.TextInfoLong);
             }
             var ui = g.ui.OpenUI<UITextInfoLong>(UIType.TextInfoLong);
-            ModTranslateEvent.IgnoreGameObjects.Add(ui.gameObject);
             ui.InitData("Exception", ex.GetAllInnnerExceptionStr());
             var btnOpenLog = ui.btnOK.Copy();
             var txtOpenLog = btnOpenLog.GetComponentInChildren<Text>().Align(TextAnchor.MiddleCenter);

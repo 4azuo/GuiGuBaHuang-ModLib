@@ -11,30 +11,41 @@ namespace ModLib.Mod
     [Cache("$TRANSLATE$", OrderIndex = 99999, CacheType = CacheAttribute.CType.Global)]
     public class ModTranslateEvent : ModEvent
     {
-        public static List<GameObject> IgnoreGameObjects { get; } = new List<GameObject>();
-        public static Dictionary<string, string> TranslatedText { get; } = new Dictionary<string, string>();
+        public const int TRANS_SPEED = 16;
+        public const int ITEM_MAX_LEN = 200;
+
         public static List<object> TranslatingComp { get; } = new List<object>();
-        //public static Font AriaFont { get; } = Resources.GetBuiltinResource<Font>("Arial.ttf");
+        public static Dictionary<string, string> TranslatedText { get; } = new Dictionary<string, string>();
 
         public override void OnOpenUIEnd(OpenUIEnd e)
         {
             base.OnOpenUIEnd(e);
-            if (e.ui == null || !g.ui.HasUI(e.uiType))
+            var lang = ModTitleEvent.GetTranslateLanguage();
+            if (lang != null)
             {
-                return;
+                if (e?.ui?.gameObject == null || !g.ui.HasUI(e.uiType))
+                {
+                    return;
+                }
+                Translate(e.ui.gameObject);
+                foreach (var c in TranslatingComp.ToArray())
+                {
+                    var orgText = GetText(c);
+                    string translatedText;
+                    if (TranslatedText.TryGetValue(orgText, out translatedText))
+                    {
+                        SetText(c, translatedText);
+                        TranslatingComp.Remove(c);
+                    }
+                }
             }
-            if (IgnoreGameObjects.Contains(e.ui.gameObject))
-            {
-                return;
-            }
-            Translate(e.ui.gameObject);
         }
 
-        public override void OnTimeUpdate200ms()
+        public override void OnTimeUpdate()
         {
-            base.OnTimeUpdate200ms();
-            var code = ModTitleEvent.GetTranslateCode();
-            if (!string.IsNullOrEmpty(code) && !GameHelper.IsLoadingScreen())
+            base.OnTimeUpdate();
+            var lang = ModTitleEvent.GetTranslateLanguage();
+            if (lang != null && !GameHelper.IsLoadingScreen())
             {
                 if (TranslatingComp.Count > 0)
                 {
@@ -45,17 +56,12 @@ namespace ModLib.Mod
                         return;
 
                     var orgText = GetText(c);
-                    if (orgText.Length > TranslateHelper.MAX_TRANS_LEN)
-                        return;
-
-                    var translatedTextCode = orgText.Substring(0, 32.FixValue(0, orgText.Length));
-                    string translatedText;
-                    if (!TranslatedText.TryGetValue(translatedTextCode, out translatedText))
+                    if (!TranslatedText.ContainsKey(orgText))
                     {
-                        translatedText = TranslateHelper.Translate(orgText, code);
-                        TranslatedText[translatedTextCode] = translatedText;
+                        var translatedText = TranslateHelper.Translate(orgText, lang);
+                        TranslatedText.Add(orgText, translatedText);
+                        SetText(c, translatedText);
                     }
-                    SetText(c, translatedText);
                 }
             }
         }
@@ -64,22 +70,8 @@ namespace ModLib.Mod
         {
             if (comp == null)
                 return string.Empty;
-            if (comp is UIItemText)
-            {
-                var x = (UIItemText)comp;
-                if (x.HasText)
-                {
-                    return ((UIItemText)comp).FormatStr;
-                }
-            }
-            else if (comp is UIItemButton)
-            {
-                var x = (UIItemButton)comp;
-                if (x.HasText)
-                {
-                    return ((UIItemButton)comp).FormatStr;
-                }
-            }
+            if (comp is ITextFormat)
+                return ((ITextFormat)comp).GetFormat();
             else if (comp is Text)
                 return ((Text)comp).text;
             else if (comp is TextMesh)
@@ -93,22 +85,12 @@ namespace ModLib.Mod
         {
             if (comp == null)
                 return;
-            if (comp is UIItemText)
+            if (comp is ITextFormat)
             {
-                var x = (UIItemText)comp;
-                if (x != null && x.HasText)
+                var x = (ITextFormat)comp;
+                if (x != null)
                 {
-                    //x.font = AriaFont;
-                    x.Set(str);
-                }
-            }
-            else if (comp is UIItemButton)
-            {
-                var x = (UIItemButton)comp;
-                if (x != null && x.HasText)
-                {
-                    //x.font = AriaFont;
-                    x.Set(str);
+                    x.SetFormat(str);
                 }
             }
             else if (comp is Text)
@@ -116,7 +98,6 @@ namespace ModLib.Mod
                 var x = (Text)comp;
                 if (x != null)
                 {
-                    //x.font = AriaFont;
                     x.text = str;
                 }
             }
@@ -125,7 +106,6 @@ namespace ModLib.Mod
                 var x = (TextMesh)comp;
                 if (x != null)
                 {
-                    //x.font = AriaFont;
                     x.text = str;
                 }
             }
@@ -134,36 +114,31 @@ namespace ModLib.Mod
                 var x = (TMP_Text)comp;
                 if (x != null)
                 {
-                    //x.font = AriaFont;
-                    x.SetText(str);
-                    //x.text = str;
+                    x.text = str;
                 }
             }
         }
 
-        public static void Translate(GameObject ui)
+        public static List<object> GetTranslatingObjects(GameObject go)
         {
-            var myCompItems = UIHelper.Items.Where(x => typeof(UIItemComposite).IsAssignableFrom(x.GetType())).ToList();
-            var myItems = UIHelper.Items.Where(x => typeof(UIItemText).IsAssignableFrom(x.GetType()) || typeof(UIItemButton).IsAssignableFrom(x.GetType())).ToList();
-            myItems.AddRange(myCompItems.Select(x => (x as UIItemComposite).Prefix).ToArray());
-            myItems.AddRange(myCompItems.Select(x => (x as UIItemComposite).MainComponent).ToArray());
-            myItems.AddRange(myCompItems.Select(x => (x as UIItemComposite).Postfix).ToArray());
+            var translatingComp = new List<object>();
 
-            var myTexts = myItems.Select(x => x.InnerText).ToList();
+            translatingComp.AddRange(go.GetComponentsInChildren<Text>(true));
+            translatingComp.AddRange(go.GetComponentsInChildren<TextMesh>());
+            translatingComp.AddRange(go.GetComponentsInChildren<TMP_Text>());
+            translatingComp.AddRange(UIHelper.AllItems.Where(x => typeof(ITextFormat).IsAssignableFrom(x.GetType())));
 
-            var texts = ui.GetComponentsInChildren<Text>().Where(x => !myTexts.Contains(x));
-            TranslatingComp.AddRange(myItems);
-            TranslatingComp.AddRange(texts);
-            TranslatingComp.AddRange(ui.GetComponentsInChildren<Text>());
-            TranslatingComp.AddRange(ui.GetComponentsInChildren<TextMesh>());
-            TranslatingComp.AddRange(ui.GetComponentsInChildren<TMP_Text>());
+            return translatingComp;
         }
 
-        public static void Reload()
+        public static void Translate(GameObject go)
+        {
+            TranslatingComp.AddRange(GetTranslatingObjects(go));
+        }
+
+        public static void ClearCache()
         {
             TranslatedText.Clear();
-            TranslatingComp.Clear();
-            Translate(g.root);
         }
     }
 }

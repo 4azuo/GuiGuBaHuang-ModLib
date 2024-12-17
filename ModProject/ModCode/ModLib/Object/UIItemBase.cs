@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 using UnityEngine;
 using UnityEngine.Events;
@@ -9,6 +10,12 @@ using static UIHelper;
 
 public abstract class UIItemBase
 {
+    public interface ITextFormat
+    {
+        string GetFormat();
+        void SetFormat(string format);
+    }
+
     public virtual Text InnerText => null;
     public virtual bool HasText => InnerText != null;
     public virtual UICustomBase UI { get; private set; }
@@ -75,6 +82,10 @@ public abstract class UIItemBase
             UI = ui;
             Item = comp;
             ItemBehaviour = Item;
+
+            UI.Items.Add(this);
+            UIHelper.Items.Add(this);
+            UIHelper.AllItems.Add(this);
         }
 
         public override bool IsActive()
@@ -86,11 +97,12 @@ public abstract class UIItemBase
         {
             UI.Items.Remove(this);
             UIHelper.Items.Remove(this);
+            UIHelper.AllItems.Remove(this);
             MonoBehaviour.Destroy(Item);
         }
     }
 
-    public class UIItemText : UIItem<Text>
+    public class UIItemText : UIItem<Text>, ITextFormat
     {
         public override Text InnerText => this.Item;
         public string FormatStr { get; private set; }
@@ -114,10 +126,20 @@ public abstract class UIItemBase
             return string.Format(FormatStr, ItemWork?.Formatter?.Invoke(this));
         }
 
+        public string GetFormat()
+        {
+            return FormatStr;
+        }
+
         public override void Set(object input)
         {
             FormatStr = input.ToString();
             Item.Set(Get()?.ToString());
+        }
+
+        public void SetFormat(string format)
+        {
+            FormatStr = format;
         }
 
         public override void Update()
@@ -254,7 +276,8 @@ public abstract class UIItemBase
 
         public void UpdateSelectedIndex()
         {
-            Item.Set(false, Selections[SelectedIndex]);
+            //Item.Set(false, Selections[SelectedIndex]);
+            Item.Set(false, SelectionItems.Keys.ToArray()[SelectedIndex].GetComponentInChildren<Text>().text);
         }
 
         public UIItemSelect(UICustomBase ui, float x, float y, string[] selections, int def) : base(ui, ui.uiSample.ui.tglLanguage.Copy(ui.UIBase).Format(Color.black, 14).Align().AddSize(-40f, -6f).Pos(x + 0.15f, y - 0.01f))
@@ -358,7 +381,7 @@ public abstract class UIItemBase
         }
     }
 
-    public class UIItemButton : UIItem<Button>
+    public class UIItemButton : UIItem<Button>, ITextFormat
     {
         public override Text InnerText => ButtonLabel;
         public string FormatStr { get; private set; }
@@ -381,11 +404,20 @@ public abstract class UIItemBase
             return string.Format(FormatStr, ItemWork?.Formatter?.Invoke(this));
         }
 
+        public string GetFormat()
+        {
+            return FormatStr;
+        }
 
         public override void Set(object input)
         {
             FormatStr = input.ToString();
             Item.Set(Get()?.ToString());
+        }
+
+        public void SetFormat(string format)
+        {
+            FormatStr = format;
         }
 
         public override void Update()

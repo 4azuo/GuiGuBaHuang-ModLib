@@ -37,7 +37,7 @@ namespace ModLib.Mod
                         .Size(300, 60)
                         .Align(TextAnchor.MiddleCenter)
                         .Format(Color.black, 19);
-                    ui.AddSelect(ui.LastCol - 14, ui.FirstRow, new string[] { "Default", "English", "Japanese", "Vietnamese", "Russian", "Latin", "Spanish" }, TranslateIndex)
+                    ui.AddSelect(ui.LastCol - 14, ui.FirstRow, new string[] { "Translation: Off", "English", "Japanese", "Vietnamese", "Russian", "Latin", "Spanish" }, TranslateIndex)
                         .Align(TextAnchor.MiddleCenter)
                         .SetWork(new UIItemBase.UIItemWork
                         {
@@ -45,14 +45,14 @@ namespace ModLib.Mod
                             {
                                 TranslateIndex = b.Parse<int>();
                                 CacheHelper.SaveGlobalCache(this);
-                                ModTranslateEvent.Reload();
+                                ModTranslateEvent.ClearCache();
                             }
                         });
                 });
             }
         }
 
-        public static string GetTranslateCode()
+        public static string GetTranslateLanguage()
         {
             var t = EventHelper.GetEvent<ModTitleEvent>("$TITLES$");
             return TranslateCode[t.TranslateIndex];
