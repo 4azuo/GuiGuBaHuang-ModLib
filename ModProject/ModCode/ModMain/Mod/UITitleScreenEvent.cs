@@ -25,12 +25,12 @@ namespace MOD_nE7UL2.Mod
                     Process.Start("explorer.exe", CacheHelper.GetCacheFolderName());
                 }));
 
-                var isLast = g.mod.allModPaths.ToArray().Last().t1 == ModMain.ModObj.ModId;
-                if (!isLast)
-                {
-                    var uiWarning = g.ui.OpenUI<UITextInfo>(UIType.TextInfo);
-                    uiWarning.InitData("Warning", "Taoist is not the last mod in mod-list!");
-                }
+                //var isLast = g.mod.allModPaths.ToArray().Last().t1 == ModMain.ModObj.ModId;
+                //if (!isLast)
+                //{
+                //    var uiWarning = g.ui.OpenUI<UITextInfo>(UIType.TextInfo);
+                //    uiWarning.InitData("Warning", "Taoist is not the last mod in mod-list!");
+                //}
             }
         }
     }
