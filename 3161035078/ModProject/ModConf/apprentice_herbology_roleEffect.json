@@ -1,0 +1,62 @@
+[
+	{
+		"__name": "Herbology Lvl-1",
+		"id": "420051001",
+		"effectType": "1",
+		"value": "hpMax_0_2"
+	},
+	{
+		"__name": "Herbology Lvl-2",
+		"id": "420051002",
+		"effectType": "1",
+		"value": "hpMax_0_4"
+	},
+	{
+		"__name": "Herbology Lvl-3",
+		"id": "420051003",
+		"effectType": "1",
+		"value": "hpMax_0_6"
+	},
+	{
+		"__name": "Herbology Lvl-4",
+		"id": "420051004",
+		"effectType": "1",
+		"value": "hpMax_0_8"
+	},
+	{
+		"__name": "Herbology Lvl-5",
+		"id": "420051005",
+		"effectType": "1",
+		"value": "hpMax_0_10"
+	},
+	{
+		"__name": "Herbology Lvl-6",
+		"id": "420051006",
+		"effectType": "1",
+		"value": "hpMax_0_12"
+	},
+	{
+		"__name": "Herbology Lvl-7",
+		"id": "420051007",
+		"effectType": "1",
+		"value": "hpMax_0_14"
+	},
+	{
+		"__name": "Herbology Lvl-8",
+		"id": "420051008",
+		"effectType": "1",
+		"value": "hpMax_0_16"
+	},
+	{
+		"__name": "Herbology Lvl-9",
+		"id": "420051009",
+		"effectType": "1",
+		"value": "hpMax_0_18"
+	},
+	{
+		"__name": "Herbology Lvl-10",
+		"id": "420051010",
+		"effectType": "1",
+		"value": "hpMax_0_20"
+	},
+]

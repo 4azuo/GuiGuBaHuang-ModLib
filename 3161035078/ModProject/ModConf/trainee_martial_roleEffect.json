@@ -1,0 +1,62 @@
+[
+	{
+		"__name": "Martial Lvl-1",
+		"id": "420071001",
+		"effectType": "1",
+		"value": "hpMax_0_2"
+	},
+	{
+		"__name": "Martial Lvl-2",
+		"id": "420071002",
+		"effectType": "1",
+		"value": "hpMax_0_4"
+	},
+	{
+		"__name": "Martial Lvl-3",
+		"id": "420071003",
+		"effectType": "1",
+		"value": "hpMax_0_7"
+	},
+	{
+		"__name": "Martial Lvl-4",
+		"id": "420071004",
+		"effectType": "1",
+		"value": "hpMax_0_10"
+	},
+	{
+		"__name": "Martial Lvl-5",
+		"id": "420071005",
+		"effectType": "1",
+		"value": "hpMax_0_15"
+	},
+	{
+		"__name": "Martial Lvl-6",
+		"id": "420071006",
+		"effectType": "1",
+		"value": "hpMax_0_20"
+	},
+	{
+		"__name": "Martial Lvl-7",
+		"id": "420071007",
+		"effectType": "1",
+		"value": "hpMax_0_30"
+	},
+	{
+		"__name": "Martial Lvl-8",
+		"id": "420071008",
+		"effectType": "1",
+		"value": "hpMax_0_40"
+	},
+	{
+		"__name": "Martial Lvl-9",
+		"id": "420071009",
+		"effectType": "1",
+		"value": "hpMax_0_60"
+	},
+	{
+		"__name": "Martial Lvl-10",
+		"id": "420071010",
+		"effectType": "1",
+		"value": "hpMax_0_90"
+	},
+]
