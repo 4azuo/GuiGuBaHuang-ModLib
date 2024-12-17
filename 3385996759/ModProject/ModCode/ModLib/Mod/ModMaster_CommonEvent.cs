@@ -64,7 +64,10 @@ namespace ModLib.Mod
         public virtual void OnUnload()
         {
             DebugHelper.WriteLine("Unload.");
+            //remove game vars
             Gamevars = null;
+            //unload globals
+            CacheHelper.Clear();
             //log
             DebugHelper.Save();
         }
