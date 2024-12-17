@@ -38,17 +38,26 @@ public static class CacheHelper
 
     public static string GetCacheFolderName(string modId)
     {
-        return $"{Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData)}Low\\guigugame\\guigubahuang\\mod\\{modId}\\";
+        var p = $"{Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData)}Low\\guigugame\\guigubahuang\\mod\\{modId}\\";
+        if (!Directory.Exists(p))
+            Directory.CreateDirectory(p);
+        return p;
     }
 
     public static string GetGameCacheFolderName(string modId)
     {
-        return $"{GetCacheFolderName(modId)}\\saves\\";
+        var p = $"{GetCacheFolderName(modId)}\\saves\\";
+        if (!Directory.Exists(p))
+            Directory.CreateDirectory(p);
+        return p;
     }
 
     public static string GetGlobalCacheFolderName(string modId)
     {
-        return $"{GetCacheFolderName(modId)}\\globals\\";
+        var p = $"{GetCacheFolderName(modId)}\\globals\\";
+        if (!Directory.Exists(p))
+            Directory.CreateDirectory(p);
+        return p;
     }
 
     public static string GetGameCacheFilePath(string modId, string cacheId)
@@ -117,7 +126,7 @@ public static class CacheHelper
 
     public static T ReadGlobalCacheFile<T>(string modId, string cacheId) where T : CachableObject
     {
-        var attr = typeof(T).GetCustomAttributes<CacheAttribute>().FirstOrDefault(x => x.CacheId == cacheId);
+        var attr = typeof(T).GetCustomAttributes<CacheAttribute>().FirstOrDefault(x => x.CacheId == cacheId && x.CacheType == CacheAttribute.CType.Global);
         if (attr == null)
             return null;
         var cacheFile = GetGlobalCacheFilePath(modId, attr.CacheId);
@@ -128,7 +137,7 @@ public static class CacheHelper
 
     public static T ReadGameCacheFile<T>(string modId, string cacheId) where T : CachableObject
     {
-        var attr = typeof(T).GetCustomAttributes<CacheAttribute>().FirstOrDefault(x => x.CacheId == cacheId);
+        var attr = typeof(T).GetCustomAttributes<CacheAttribute>().FirstOrDefault(x => x.CacheId == cacheId && x.CacheType == CacheAttribute.CType.Local);
         if (attr == null)
             return null;
         var cacheFile = GetGameCacheFilePath(modId, attr.CacheId);
@@ -142,14 +151,14 @@ public static class CacheHelper
         var rs = new List<CachableObject>();
         foreach (var t in GetCacheTypes())
         {
-            foreach (var attr in t.t2.GetCustomAttributes<CacheAttribute>().Where(x => x.CacheType == CacheAttribute.CType.Global))
+            foreach (var attr in t.Value.GetCustomAttributes<CacheAttribute>().Where(x => x.CacheType == CacheAttribute.CType.Global))
             {
-                var cacheFile = GetGlobalCacheFilePath(t.t1, attr.CacheId);
+                var cacheFile = GetGlobalCacheFilePath(t.Key, attr.CacheId);
                 if (File.Exists(cacheFile))
                 {
-                    var e = (CachableObject)JsonConvert.DeserializeObject(File.ReadAllText(cacheFile), t.t2, JSON_SETTINGS);
-                    DebugHelper.WriteLine($"Load GlobalCache: Type={t.t2.FullName}, Id={e.CacheId}");
-                    e.OnLoadClass(false, t.t1, attr);
+                    var e = (CachableObject)JsonConvert.DeserializeObject(File.ReadAllText(cacheFile), t.Value, JSON_SETTINGS);
+                    DebugHelper.WriteLine($"Load GlobalCache: Type={t.Value.FullName}, Id={e.CacheId}");
+                    e.OnLoadClass(false, t.Key, attr);
                     rs.Add(e);
                 }
             }
@@ -163,18 +172,18 @@ public static class CacheHelper
         var rs = new List<CachableObject>();
         foreach (var t in GetCacheTypes())
         {
-            foreach (var attr in t.t2.GetCustomAttributes<CacheAttribute>().Where(x => x.CacheType == CacheAttribute.CType.Global))
+            foreach (var attr in t.Value.GetCustomAttributes<CacheAttribute>().Where(x => x.CacheType == CacheAttribute.CType.Global))
             {
                 if (!CacheData.ContainsKey(attr.CacheId))
                 {
-                    var e = (CachableObject)Activator.CreateInstance(t.t2);
-                    DebugHelper.WriteLine($"Create GlobalCache: Type={t.t2.FullName}, Id={attr.CacheId}");
-                    e.OnLoadClass(true, t.t1, attr);
+                    var e = (CachableObject)Activator.CreateInstance(t.Value);
+                    DebugHelper.WriteLine($"Create GlobalCache: Type={t.Value.FullName}, Id={attr.CacheId}");
+                    e.OnLoadClass(true, t.Key, attr);
                     rs.Add(e);
                 }
                 else
                 {
-                    DebugHelper.WriteLine($"Exists same key. (Type={t.t2.FullName}, Id={attr.CacheId})");
+                    DebugHelper.WriteLine($"Exists same key. (Type={t.Value.FullName}, Id={attr.CacheId})");
                 }
             }
         }
@@ -187,14 +196,14 @@ public static class CacheHelper
         var rs = new List<CachableObject>();
         foreach (var t in GetCacheTypes())
         {
-            foreach (var attr in t.t2.GetCustomAttributes<CacheAttribute>().Where(x => x.CacheType == CacheAttribute.CType.Local))
+            foreach (var attr in t.Value.GetCustomAttributes<CacheAttribute>().Where(x => x.CacheType == CacheAttribute.CType.Local))
             {
-                var cacheFile = GetGameCacheFilePath(t.t1, attr.CacheId);
+                var cacheFile = GetGameCacheFilePath(t.Key, attr.CacheId);
                 if (File.Exists(cacheFile))
                 {
-                    var e = (CachableObject)JsonConvert.DeserializeObject(File.ReadAllText(cacheFile), t.t2, JSON_SETTINGS);
-                    DebugHelper.WriteLine($"Load GlobalCache: Type={t.t2.FullName}, Id={e.CacheId}");
-                    e.OnLoadClass(false, t.t1, attr);
+                    var e = (CachableObject)JsonConvert.DeserializeObject(File.ReadAllText(cacheFile), t.Value, JSON_SETTINGS);
+                    DebugHelper.WriteLine($"Load GameCache: Type={t.Value.FullName}, Id={e.CacheId}");
+                    e.OnLoadClass(false, t.Key, attr);
                     rs.Add(e);
                 }
             }
@@ -208,18 +217,18 @@ public static class CacheHelper
         var rs = new List<CachableObject>();
         foreach (var t in GetCacheTypes())
         {
-            foreach (var attr in t.t2.GetCustomAttributes<CacheAttribute>().Where(x => x.CacheType == CacheAttribute.CType.Local))
+            foreach (var attr in t.Value.GetCustomAttributes<CacheAttribute>().Where(x => x.CacheType == CacheAttribute.CType.Local))
             {
                 if (!CacheData.ContainsKey(attr.CacheId))
                 {
-                    var e = (CachableObject)Activator.CreateInstance(t.t2);
-                    DebugHelper.WriteLine($"Create GlobalCache: Type={t.t2.FullName}, Id={attr.CacheId}");
-                    e.OnLoadClass(true, t.t1, attr);
+                    var e = (CachableObject)Activator.CreateInstance(t.Value);
+                    DebugHelper.WriteLine($"Create GameCache: Type={t.Value.FullName}, Id={attr.CacheId}");
+                    e.OnLoadClass(true, t.Key, attr);
                     rs.Add(e);
                 }
                 else
                 {
-                    DebugHelper.WriteLine($"Exists same key. (Type={t.t2.FullName}, Id={attr.CacheId})");
+                    DebugHelper.WriteLine($"Exists same key. (Type={t.Value.FullName}, Id={attr.CacheId})");
                 }
             }
         }
@@ -302,21 +311,29 @@ public static class CacheHelper
         ClearGameCaches();
     }
 
-    public static List<DataStruct<string, Type>> GetCacheTypes()
+    public static List<KeyValuePair<string, Type>> GetCacheTypes(bool includeInactive = false)
     {
-        var rs = new List<DataStruct<string, Type>>();
+        var rs = new List<KeyValuePair<string, Type>>();
         rs.AddRange(GetCacheTypes(ModMaster.ModObj.ModId, GameHelper.GetModLibAssembly()));
         rs.AddRange(GetCacheTypes(ModMaster.ModObj.ModId, GameHelper.GetModLibMainAssembly()));
-        foreach (var mod in g.mod.allModPaths)
+
+        var paths = g.mod.allModPaths;
+        var orders = g.mod.GetLoadOrderData().mods;
+        for (var i = 0; i < paths.Count; i++)
         {
-            rs.AddRange(GetCacheTypes(mod.t1, GameHelper.GetModChildAssembly(mod.t1)));
+            if (orders[i].isLoad || includeInactive)
+            {
+                rs.AddRange(GetCacheTypes(paths[i].t1, GameHelper.GetModChildAssembly(paths[i].t1)));
+            }
         }
         return rs;
     }
 
-    public static List<DataStruct<string, Type>> GetCacheTypes(string modId, Assembly ass)
+    public static List<KeyValuePair<string, Type>> GetCacheTypes(string modId, Assembly ass)
     {
-        return ass.GetTypes().Where(x => x.IsClass && x.IsSubclassOf(typeof(CachableObject))).Select(x => new DataStruct<string, Type>(modId, x)).ToList();
+        if (ass == null)
+            return new List<KeyValuePair<string, Type>>();
+        return ass.GetTypes().Where(x => x.IsClass && x.IsSubclassOf(typeof(CachableObject))).Select(x => new KeyValuePair<string, Type>(modId, x)).ToList();
     }
 
     private static void Order(Dictionary<string, int> orderList)

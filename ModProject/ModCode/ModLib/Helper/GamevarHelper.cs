@@ -5,7 +5,6 @@ using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.IO;
-using System.Reflection;
 
 public static class GamevarHelper
 {
@@ -28,7 +27,10 @@ public static class GamevarHelper
 
     public static string GetSettingsFolderName()
     {
-        return $"{Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData)}Low\\guigugame\\guigubahuang\\mod\\{ModMaster.ModObj.ModName}\\";
+        var p = $"{Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData)}Low\\guigugame\\guigubahuang\\mod\\{ModMaster.ModObj.ModId}\\";
+        if (!Directory.Exists(p))
+            Directory.CreateDirectory(p);
+        return p;
     }
 
     public static string GetSettingsFilePath()

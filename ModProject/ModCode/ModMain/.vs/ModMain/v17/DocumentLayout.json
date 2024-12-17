@@ -3,7 +3,20 @@
   "WorkspaceRootPath": "C:\\Program Files (x86)\\Steam\\steamapps\\workshop\\content\\1468810\\3385996759\\ModProject\\ModCode\\ModMain\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{981071A5-CC5C-4828-B4D0-0BBA4AA24EBD}|..\\ModLib\\ModLib.csproj|c:\\program files (x86)\\steam\\steamapps\\workshop\\content\\1468810\\3385996759\\modproject\\modcode\\modlib\\helper\\cachehelper.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{981071A5-CC5C-4828-B4D0-0BBA4AA24EBD}|..\\ModLib\\ModLib.csproj|c:\\program files (x86)\\steam\\steamapps\\workshop\\content\\1468810\\3385996759\\modproject\\modcode\\modlib\\helper\\gamevarhelper.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{981071A5-CC5C-4828-B4D0-0BBA4AA24EBD}|..\\ModLib\\ModLib.csproj|c:\\program files (x86)\\steam\\steamapps\\workshop\\content\\1468810\\3385996759\\modproject\\modcode\\modlib\\mod\\modmaster_commonevent.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{981071A5-CC5C-4828-B4D0-0BBA4AA24EBD}|..\\ModLib\\ModLib.csproj|c:\\program files (x86)\\steam\\steamapps\\workshop\\content\\1468810\\3385996759\\modproject\\modcode\\modlib\\mod\\modmaster_gameevent.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3591496F-6A4C-477A-A04C-177FB616E439}|ModMain.csproj|c:\\program files (x86)\\steam\\steamapps\\workshop\\content\\1468810\\3385996759\\modproject\\modcode\\modmain\\modmain.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3591496F-6A4C-477A-A04C-177FB616E439}|ModMain.csproj|solutionrelative:modmain.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{981071A5-CC5C-4828-B4D0-0BBA4AA24EBD}|..\\ModLib\\ModLib.csproj|c:\\program files (x86)\\steam\\steamapps\\workshop\\content\\1468810\\3385996759\\modproject\\modcode\\modlib\\mod\\modmaster.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -18,14 +31,66 @@
             {
               "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "CacheHelper.cs",
-              "DocumentMoniker": "C:\\Program Files (x86)\\Steam\\steamapps\\workshop\\content\\1468810\\3385996759\\ModProject\\ModCode\\ModLib\\Helper\\CacheHelper.cs",
-              "RelativeDocumentMoniker": "..\\ModLib\\Helper\\CacheHelper.cs",
-              "ToolTip": "C:\\Program Files (x86)\\Steam\\steamapps\\workshop\\content\\1468810\\3385996759\\ModProject\\ModCode\\ModLib\\Helper\\CacheHelper.cs",
-              "RelativeToolTip": "..\\ModLib\\Helper\\CacheHelper.cs",
-              "ViewState": "AQIAAA4AAAAAAAAAAADwvzIAAAAsAAAA",
+              "Title": "GamevarHelper.cs",
+              "DocumentMoniker": "C:\\Program Files (x86)\\Steam\\steamapps\\workshop\\content\\1468810\\3385996759\\ModProject\\ModCode\\ModLib\\Helper\\GamevarHelper.cs",
+              "RelativeDocumentMoniker": "..\\ModLib\\Helper\\GamevarHelper.cs",
+              "ToolTip": "C:\\Program Files (x86)\\Steam\\steamapps\\workshop\\content\\1468810\\3385996759\\ModProject\\ModCode\\ModLib\\Helper\\GamevarHelper.cs*",
+              "RelativeToolTip": "..\\ModLib\\Helper\\GamevarHelper.cs*",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAB0AAAAPAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-12-17T16:41:54.527Z",
+              "WhenOpened": "2024-12-17T18:00:42.401Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "ModMaster_CommonEvent.cs",
+              "DocumentMoniker": "C:\\Program Files (x86)\\Steam\\steamapps\\workshop\\content\\1468810\\3385996759\\ModProject\\ModCode\\ModLib\\Mod\\ModMaster_CommonEvent.cs",
+              "RelativeDocumentMoniker": "..\\ModLib\\Mod\\ModMaster_CommonEvent.cs",
+              "ToolTip": "C:\\Program Files (x86)\\Steam\\steamapps\\workshop\\content\\1468810\\3385996759\\ModProject\\ModCode\\ModLib\\Mod\\ModMaster_CommonEvent.cs",
+              "RelativeToolTip": "..\\ModLib\\Mod\\ModMaster_CommonEvent.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAABsAAAANAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-17T17:50:32.934Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "ModMaster_GameEvent.cs",
+              "DocumentMoniker": "C:\\Program Files (x86)\\Steam\\steamapps\\workshop\\content\\1468810\\3385996759\\ModProject\\ModCode\\ModLib\\Mod\\ModMaster_GameEvent.cs",
+              "RelativeDocumentMoniker": "..\\ModLib\\Mod\\ModMaster_GameEvent.cs",
+              "ToolTip": "C:\\Program Files (x86)\\Steam\\steamapps\\workshop\\content\\1468810\\3385996759\\ModProject\\ModCode\\ModLib\\Mod\\ModMaster_GameEvent.cs",
+              "RelativeToolTip": "..\\ModLib\\Mod\\ModMaster_GameEvent.cs",
+              "ViewState": "AQIAAAMAAAAAAAAAAAAAAKAAAAA3AAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-17T17:50:01.345Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "ModMain.cs",
+              "DocumentMoniker": "C:\\Program Files (x86)\\Steam\\steamapps\\workshop\\content\\1468810\\3385996759\\ModProject\\ModCode\\ModMain\\ModMain.cs",
+              "RelativeDocumentMoniker": "ModMain.cs",
+              "ToolTip": "C:\\Program Files (x86)\\Steam\\steamapps\\workshop\\content\\1468810\\3385996759\\ModProject\\ModCode\\ModMain\\ModMain.cs",
+              "RelativeToolTip": "ModMain.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-17T17:49:57.442Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "ModMaster.cs",
+              "DocumentMoniker": "C:\\Program Files (x86)\\Steam\\steamapps\\workshop\\content\\1468810\\3385996759\\ModProject\\ModCode\\ModLib\\Mod\\ModMaster.cs",
+              "RelativeDocumentMoniker": "..\\ModLib\\Mod\\ModMaster.cs",
+              "ToolTip": "C:\\Program Files (x86)\\Steam\\steamapps\\workshop\\content\\1468810\\3385996759\\ModProject\\ModCode\\ModLib\\Mod\\ModMaster.cs",
+              "RelativeToolTip": "..\\ModLib\\Mod\\ModMaster.cs",
+              "ViewState": "AQIAALkBAAAAAAAAAAASwMgBAAB8AAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-17T16:58:43.176Z",
               "EditorCaption": ""
             }
           ]

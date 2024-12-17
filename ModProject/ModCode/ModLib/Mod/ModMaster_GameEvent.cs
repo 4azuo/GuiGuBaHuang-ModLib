@@ -158,7 +158,7 @@ namespace ModLib.Mod
                 {
                     if (loadSttFlg)
                     {
-                        CallEvents("OnLoadGameSettings");
+                        CallEvents("OnLoadGameVariables");
                         CallEvents("OnLoadGameCaches");
                         loadSttFlg = false;
                     }
