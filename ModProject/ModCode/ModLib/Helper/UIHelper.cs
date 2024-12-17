@@ -6,6 +6,7 @@ using static UIItemBase;
 public static class UIHelper
 {
     public static List<UIItemBase> Items { get; } = new List<UIItemBase>();
+    public static List<UIItemBase> AllItems { get; } = new List<UIItemBase>();
 
     public const float SCREEN_Y_TOP = 5f;
     public const float SCREEN_Y_MIDDLE = 0f;
@@ -62,52 +63,44 @@ public static class UIHelper
             InitGrid();
         }
 
-        public T AddItem<T>(T item) where T : UIItemBase
-        {
-            Items.Add(item);
-            UIHelper.Items.Add(item);
-            return item;
-
-        }
-
         public UIItemText AddText(float x, float y, string format)
         {
-            return AddItem(new UIItemText(this, x, y, format));
+            return new UIItemText(this, x, y, format);
         }
 
         public UIItemSlider AddSlider(float x, float y, float min, float max, float def)
         {
-            return AddItem(new UIItemSlider(this, x, y, min, max, def));
+            return new UIItemSlider(this, x, y, min, max, def);
         }
 
         public UIItemToggle AddToggle(float x, float y, bool def)
         {
-            return AddItem(new UIItemToggle(this, x, y, def));
+            return new UIItemToggle(this, x, y, def);
         }
 
         public UIItemButton AddButton(float x, float y, Action act, string format)
         {
-            return AddItem(new UIItemButton(this, x, y, act, format));
+            return new UIItemButton(this, x, y, act, format);
         }
 
         public UIItemSelect AddSelect(float x, float y, string[] selections, int def)
         {
-            return AddItem(new UIItemSelect(this, x, y, selections, def));
+            return new UIItemSelect(this, x, y, selections, def);
         }
 
         public UIItemComposite AddCompositeSlider(float x, float y, string prefix, float min, float max, float def, string postfix = null)
         {
-            return AddItem(UIItemComposite.CreateSlider(this, x, y, prefix, min, max, def, postfix));
+            return UIItemComposite.CreateSlider(this, x, y, prefix, min, max, def, postfix);
         }
 
         public UIItemComposite AddCompositeToggle(float x, float y, string prefix, bool def, string postfix = null)
         {
-            return AddItem(UIItemComposite.CreateToggle(this, x, y, prefix, def, postfix));
+            return UIItemComposite.CreateToggle(this, x, y, prefix, def, postfix);
         }
 
         public UIItemComposite AddCompositeSelect(float x, float y, string prefix, string[] selections, int def, string postfix = null)
         {
-            return AddItem(UIItemComposite.CreateSelect(this, x, y, prefix, selections, def, postfix));
+            return UIItemComposite.CreateSelect(this, x, y, prefix, selections, def, postfix);
         }
 
         public UIItemText AddText(int col, int row, string format)

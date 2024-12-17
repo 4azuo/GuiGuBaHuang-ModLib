@@ -316,9 +316,9 @@ namespace MOD_nE7UL2.Mod
 
         [ErrorIgnore]
         [EventCondition(IsInGame = 0)]
-        public override void OnTimeUpdate200ms()
+        public override void OnTimeUpdate()
         {
-            base.OnTimeUpdate200ms();
+            base.OnTimeUpdate();
             uiCustom.UpdateUI();
             txtTotalScore.Set($"Total score: {CalSMTotalScore()}P");
         }

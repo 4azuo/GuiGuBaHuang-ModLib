@@ -23,26 +23,26 @@ public static class GameHelper
 
     public static bool IsMaskScreen()
     {
-        return g.ui?.GetUI(UIType.Mask) != null || g.ui?.GetUI(UIType.MaskNotClick) != null;
+        return g.ui.HasUI(UIType.Mask) || g.ui.HasUI(UIType.MaskNotClick);
     }
 
     public static bool IsLoadingScreen()
     {
-        return g.ui?.GetUI(UIType.Loading) != null ||
-            g.ui?.GetUI(UIType.LoadingBar) != null ||
-            g.ui?.GetUI(UIType.LoadingBig) != null ||
-            g.ui?.GetUI(UIType.LoadingBigCacheFix) != null ||
-            g.ui?.GetUI(UIType.LoadingCreateGame) != null;
+        return g.ui.HasUI(UIType.Loading) ||
+            g.ui.HasUI(UIType.LoadingBar) ||
+            g.ui.HasUI(UIType.LoadingBig) ||
+            g.ui.HasUI(UIType.LoadingBigCacheFix) ||
+            g.ui.HasUI(UIType.LoadingCreateGame);
     }
 
     public static bool IsModScreen()
     {
-        return g.ui?.GetUI(UIType.ModMain) != null;
+        return g.ui.HasUI(UIType.ModMain);
     }
 
     public static bool IsLoginScreen()
     {
-        return g.ui?.GetUI(UIType.Login) != null;
+        return g.ui.HasUI(UIType.Login);
     }
 
     public static bool IsInGame()
