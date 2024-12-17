@@ -1,0 +1,102 @@
+[
+	{
+		"id": "420042001",
+		"key": "apprentice420041001",
+		"en|ch|tc": "Feng Shui Lvl-1"
+	},
+	{
+		"id": "420043001",
+		"key": "apprentice420041001desc",
+		"en|ch|tc": "+2% Max MP"
+	},
+	{
+		"id": "420042002",
+		"key": "apprentice420041002",
+		"en|ch|tc": "Feng Shui Lvl-2"
+	},
+	{
+		"id": "420043002",
+		"key": "apprentice420041002desc",
+		"en|ch|tc": "+4% Max MP"
+	},
+	{
+		"id": "420042003",
+		"key": "apprentice420041003",
+		"en|ch|tc": "Feng Shui Lvl-3"
+	},
+	{
+		"id": "420043003",
+		"key": "apprentice420041003desc",
+		"en|ch|tc": "+6% Max MP"
+	},
+	{
+		"id": "420042004",
+		"key": "apprentice420041004",
+		"en|ch|tc": "Feng Shui Lvl-4"
+	},
+	{
+		"id": "420043004",
+		"key": "apprentice420041004desc",
+		"en|ch|tc": "+8% Max MP"
+	},
+	{
+		"id": "420042005",
+		"key": "apprentice420041005",
+		"en|ch|tc": "Feng Shui Lvl-5"
+	},
+	{
+		"id": "420043005",
+		"key": "apprentice420041005desc",
+		"en|ch|tc": "+10% Max MP"
+	},
+	{
+		"id": "420042006",
+		"key": "apprentice420041006",
+		"en|ch|tc": "Feng Shui Lvl-6"
+	},
+	{
+		"id": "420043006",
+		"key": "apprentice420041006desc",
+		"en|ch|tc": "+12% Max MP"
+	},
+	{
+		"id": "420042007",
+		"key": "apprentice420041007",
+		"en|ch|tc": "Feng Shui Lvl-7"
+	},
+	{
+		"id": "420043007",
+		"key": "apprentice420041007desc",
+		"en|ch|tc": "+14% Max MP"
+	},
+	{
+		"id": "420042008",
+		"key": "apprentice420041008",
+		"en|ch|tc": "Feng Shui Lvl-8"
+	},
+	{
+		"id": "420043008",
+		"key": "apprentice420041008desc",
+		"en|ch|tc": "+16% Max MP"
+	},
+	{
+		"id": "420042009",
+		"key": "apprentice420041009",
+		"en|ch|tc": "Feng Shui Lvl-9"
+	},
+	{
+		"id": "420043009",
+		"key": "apprentice420041009desc",
+		"en|ch|tc": "+18% Max MP"
+	},
+	{
+		"id": "420042010",
+		"key": "apprentice420041010",
+		"en|ch|tc": "Feng Shui Lvl-10"
+	},
+	{
+		"id": "420043010",
+		"key": "apprentice420041010desc",
+		"en|ch|tc": "+20% Max MP"
+	},
+]

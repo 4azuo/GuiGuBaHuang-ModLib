@@ -1,0 +1,122 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Program Files (x86)\\Steam\\steamapps\\workshop\\content\\1468810\\3161035078\\ModProject\\ModCode\\ModMain\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{3591496F-6A4C-477A-A04C-177FB616E439}|ModMain.csproj|c:\\program files (x86)\\steam\\steamapps\\workshop\\content\\1468810\\3161035078\\modproject\\modcode\\modmain\\mod\\uititlescreenevent.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3591496F-6A4C-477A-A04C-177FB616E439}|ModMain.csproj|solutionrelative:mod\\uititlescreenevent.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3591496F-6A4C-477A-A04C-177FB616E439}|ModMain.csproj|c:\\program files (x86)\\steam\\steamapps\\workshop\\content\\1468810\\3161035078\\modproject\\modcode\\modmain\\mod\\unitmodifyevent.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3591496F-6A4C-477A-A04C-177FB616E439}|ModMain.csproj|solutionrelative:mod\\unitmodifyevent.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3591496F-6A4C-477A-A04C-177FB616E439}|ModMain.csproj|c:\\program files (x86)\\steam\\steamapps\\workshop\\content\\1468810\\3161035078\\modproject\\modcode\\modmain\\mod\\smlocalconfigsevent.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3591496F-6A4C-477A-A04C-177FB616E439}|ModMain.csproj|solutionrelative:mod\\smlocalconfigsevent.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3591496F-6A4C-477A-A04C-177FB616E439}|ModMain.csproj|c:\\program files (x86)\\steam\\steamapps\\workshop\\content\\1468810\\3161035078\\modproject\\modcode\\modmain\\mod\\smglobalconfigsevent.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3591496F-6A4C-477A-A04C-177FB616E439}|ModMain.csproj|solutionrelative:mod\\smglobalconfigsevent.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3591496F-6A4C-477A-A04C-177FB616E439}|ModMain.csproj|c:\\program files (x86)\\steam\\steamapps\\workshop\\content\\1468810\\3161035078\\modproject\\modcode\\modmain\\mod\\customrefineevent.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3591496F-6A4C-477A-A04C-177FB616E439}|ModMain.csproj|solutionrelative:mod\\customrefineevent.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3591496F-6A4C-477A-A04C-177FB616E439}|ModMain.csproj|c:\\program files (x86)\\steam\\steamapps\\workshop\\content\\1468810\\3161035078\\modproject\\modcode\\modmain\\modmain.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3591496F-6A4C-477A-A04C-177FB616E439}|ModMain.csproj|solutionrelative:modmain.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 4,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "UnitModifyEvent.cs",
+              "DocumentMoniker": "C:\\Program Files (x86)\\Steam\\steamapps\\workshop\\content\\1468810\\3161035078\\ModProject\\ModCode\\ModMain\\Mod\\UnitModifyEvent.cs",
+              "RelativeDocumentMoniker": "Mod\\UnitModifyEvent.cs",
+              "ToolTip": "C:\\Program Files (x86)\\Steam\\steamapps\\workshop\\content\\1468810\\3161035078\\ModProject\\ModCode\\ModMain\\Mod\\UnitModifyEvent.cs",
+              "RelativeToolTip": "Mod\\UnitModifyEvent.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAABIAAAArAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-17T16:40:44.007Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "SMLocalConfigsEvent.cs",
+              "DocumentMoniker": "C:\\Program Files (x86)\\Steam\\steamapps\\workshop\\content\\1468810\\3161035078\\ModProject\\ModCode\\ModMain\\Mod\\SMLocalConfigsEvent.cs",
+              "RelativeDocumentMoniker": "Mod\\SMLocalConfigsEvent.cs",
+              "ToolTip": "C:\\Program Files (x86)\\Steam\\steamapps\\workshop\\content\\1468810\\3161035078\\ModProject\\ModCode\\ModMain\\Mod\\SMLocalConfigsEvent.cs",
+              "RelativeToolTip": "Mod\\SMLocalConfigsEvent.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAoAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-17T16:40:29.492Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "SMGlobalConfigsEvent.cs",
+              "DocumentMoniker": "C:\\Program Files (x86)\\Steam\\steamapps\\workshop\\content\\1468810\\3161035078\\ModProject\\ModCode\\ModMain\\Mod\\SMGlobalConfigsEvent.cs",
+              "RelativeDocumentMoniker": "Mod\\SMGlobalConfigsEvent.cs",
+              "ToolTip": "C:\\Program Files (x86)\\Steam\\steamapps\\workshop\\content\\1468810\\3161035078\\ModProject\\ModCode\\ModMain\\Mod\\SMGlobalConfigsEvent.cs",
+              "RelativeToolTip": "Mod\\SMGlobalConfigsEvent.cs",
+              "ViewState": "AQIAADsAAAAAAAAAAAAhwFcAAAArAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-17T16:40:18.758Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "CustomRefineEvent.cs",
+              "DocumentMoniker": "C:\\Program Files (x86)\\Steam\\steamapps\\workshop\\content\\1468810\\3161035078\\ModProject\\ModCode\\ModMain\\Mod\\CustomRefineEvent.cs",
+              "RelativeDocumentMoniker": "Mod\\CustomRefineEvent.cs",
+              "ToolTip": "C:\\Program Files (x86)\\Steam\\steamapps\\workshop\\content\\1468810\\3161035078\\ModProject\\ModCode\\ModMain\\Mod\\CustomRefineEvent.cs",
+              "RelativeToolTip": "Mod\\CustomRefineEvent.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAABkAAAA8AAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-17T16:40:02.056Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "UITitleScreenEvent.cs",
+              "DocumentMoniker": "C:\\Program Files (x86)\\Steam\\steamapps\\workshop\\content\\1468810\\3161035078\\ModProject\\ModCode\\ModMain\\Mod\\UITitleScreenEvent.cs",
+              "RelativeDocumentMoniker": "Mod\\UITitleScreenEvent.cs",
+              "ToolTip": "C:\\Program Files (x86)\\Steam\\steamapps\\workshop\\content\\1468810\\3161035078\\ModProject\\ModCode\\ModMain\\Mod\\UITitleScreenEvent.cs*",
+              "RelativeToolTip": "Mod\\UITitleScreenEvent.cs*",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAABkAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-17T11:01:05.034Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "ModMain.cs",
+              "DocumentMoniker": "C:\\Program Files (x86)\\Steam\\steamapps\\workshop\\content\\1468810\\3161035078\\ModProject\\ModCode\\ModMain\\ModMain.cs",
+              "RelativeDocumentMoniker": "ModMain.cs",
+              "ToolTip": "C:\\Program Files (x86)\\Steam\\steamapps\\workshop\\content\\1468810\\3161035078\\ModProject\\ModCode\\ModMain\\ModMain.cs",
+              "RelativeToolTip": "ModMain.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAABUAAAAaAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-17T10:23:17.356Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,21 @@
+[
+	{
+		"id": "484410100",
+		"name": "item_name484410100",
+		"type": "0",
+		"className": "0",
+		"hide": "0",
+		"playerShow": "0",
+		"npcShow": "0",
+		"icon": "canhun",
+		"level": "1",
+		"desc": "0",
+		"isOverlay": "1",
+		"drop": "0",
+		"dieDrop": "0",
+		"auction": "0",
+		"sale": "-1",
+		"worth": "1",
+		"isMultiDrop": "0"
+	}
+]
