@@ -545,7 +545,7 @@ namespace ModLib.Mod
 
         public static void CopyConf(string modId)
         {
-            var orgFolder = GameHelper.GetModChildPathSource(modId);
+            var orgFolder = $"{GameHelper.GetModChildPathSource(modId)}\\ModConf\\";
             if (Directory.Exists(orgFolder))
             {
                 Directory.CreateDirectory(ConfHelper.GetConfFolderPath(modId));

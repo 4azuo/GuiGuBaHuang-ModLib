@@ -23,7 +23,10 @@ public static class DebugHelper
 
     public static string GetDebugFolderName()
     {
-        return $"{Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData)}Low\\guigugame\\guigubahuang\\mod\\{ModMaster.ModObj.ModName}\\";
+        var p = $"{Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData)}Low\\guigugame\\guigubahuang\\mod\\{ModMaster.ModObj.ModId}\\";
+        if (!Directory.Exists(p))
+            Directory.CreateDirectory(p);
+        return p;
     }
 
     public static string GetDebugFilePath()
@@ -31,17 +34,10 @@ public static class DebugHelper
         return Path.Combine(GetDebugFolderName(), GetDebugFileName());
     }
 
-    public static void CreateDebugFolder()
-    {
-        if (!Directory.Exists(GetDebugFolderName()))
-            Directory.CreateDirectory(GetDebugFolderName());
-    }
-
     public static void Save()
     {
         if (CurLog.Length > 0)
         {
-            CreateDebugFolder();
             File.AppendAllText(GetDebugFilePath(), CurLog.ToString());
             CurLog.Clear();
         }
