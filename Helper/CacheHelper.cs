@@ -27,7 +27,7 @@ public static class CacheHelper
     public static string GetGameCacheFileName(string cacheId)
     {
         if (GameHelper.IsInGame())
-            return $"{g.world.playerUnit.GetUnitId()}_{cacheId}_data.json";
+            return $"{cacheId}_data.json";
         throw new FileNotFoundException();
     }
 
@@ -46,7 +46,7 @@ public static class CacheHelper
 
     public static string GetGameCacheFolderName(string modId)
     {
-        var p = $"{GetCacheFolderName(modId)}\\saves\\";
+        var p = $"{GetCacheFolderName(modId)}\\saves\\{g.world.playerUnit.GetUnitId()}\\";
         if (!Directory.Exists(p))
             Directory.CreateDirectory(p);
         return p;
@@ -266,12 +266,12 @@ public static class CacheHelper
     public static void SaveGameCache(CachableObject item)
     {
         DebugHelper.WriteLine($"Save game-caches: {item.CacheId}");
-        File.WriteAllText(GetGlobalCacheFilePath(item.ModId, item.CacheId), JsonConvert.SerializeObject(item, JSON_SETTINGS));
+        File.WriteAllText(GetGameCacheFilePath(item.ModId, item.CacheId), JsonConvert.SerializeObject(item, JSON_SETTINGS));
     }
 
     public static void SaveGameCaches()
     {
-        foreach (var item in GetGlobalCaches())
+        foreach (var item in GetGameCaches())
         {
             SaveGameCache(item);
         }
@@ -302,13 +302,13 @@ public static class CacheHelper
             e.OnUnloadClass();
             CacheData.Remove(e.CacheId);
         }
-        CacheData.Clear();
     }
 
     public static void Clear()
     {
         ClearGlobalCaches();
         ClearGameCaches();
+        CacheData.Clear();
     }
 
     public static List<KeyValuePair<string, Type>> GetCacheTypes(bool includeInactive = false)
