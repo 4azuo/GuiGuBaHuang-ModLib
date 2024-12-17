@@ -13,7 +13,7 @@ namespace MOD_nE7UL2.Mod
         {
             base.OnLoadClass(isNew, modId, attr);
             if (isNew)
-                Configs = CacheHelper.ReadGlobalCacheFile<SMGlobalConfigsEvent>(modId, ModConst.SM_GLOBAL_CONFIGS_EVENT);
+                Configs = CacheHelper.ReadGlobalCacheFile<SMGlobalConfigsEvent>(modId, ModConst.SM_GLOBAL_CONFIGS_EVENT) ?? new SMGlobalConfigsEvent();
         }
 
         public override void OnLoadGame()

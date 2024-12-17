@@ -38,7 +38,7 @@ public static class GameHelper
 
     public static string GetModChildPathSource(string modId)
     {
-        return $"{GetModChildPathRoot(modId)}\\..\\..\\ModProject\\ModConf\\";
+        return $"{GetModChildPathRoot(modId)}\\..\\..\\ModProject\\";
     }
 
     public static string GetDayCode()
