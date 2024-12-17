@@ -9,6 +9,7 @@ using System.Linq;
 
 namespace MOD_nE7UL2
 {
+    [ModOrder("_EventOrderIndex.json")]
     [Cache("nE7UL2", CacheType = CacheAttribute.CType.Global, WorkOn = CacheAttribute.WType.All, OrderIndex = 0)]
     public class ModMain : ModChild
     {
