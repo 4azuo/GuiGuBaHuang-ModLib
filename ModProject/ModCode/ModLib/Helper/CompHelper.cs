@@ -25,6 +25,18 @@ public static class CompHelper
             var o = newObj as Toggle;
             o.onValueChanged.RemoveAllListeners();
         }
+        else if (newObj is InputField)
+        {
+            var o = newObj as InputField;
+            o.onValidateInput = null;
+            o.characterValidation = InputField.CharacterValidation.None;
+            o.characterLimit = -1;
+            o.contentType = InputField.ContentType.Standard;
+            o.shouldActivateOnSelect = true;
+            o.onEndEdit.RemoveAllListeners();
+            o.onValueChange.RemoveAllListeners();
+            o.onValueChanged.RemoveAllListeners();
+        }
         return newObj;
     }
 
@@ -56,6 +68,18 @@ public static class CompHelper
         else if (newObj is Toggle)
         {
             var o = newObj as Toggle;
+            o.onValueChanged.RemoveAllListeners();
+        }
+        else if (newObj is InputField)
+        {
+            var o = newObj as InputField;
+            o.onValidateInput = null;
+            o.characterValidation = InputField.CharacterValidation.None;
+            o.characterLimit = -1;
+            o.contentType = InputField.ContentType.Standard;
+            o.shouldActivateOnSelect = true;
+            o.onEndEdit.RemoveAllListeners();
+            o.onValueChange.RemoveAllListeners();
             o.onValueChanged.RemoveAllListeners();
         }
         return newObj;
@@ -122,6 +146,11 @@ public static class CompHelper
         return obj;
     }
 
+    public static Vector3 Pos(this MonoBehaviour obj)
+    {
+        return obj.transform.position;
+    }
+
     public static T Pos<T>(this T obj, Transform origin, float deltaX = 0f, float deltaY = 0f, float deltaZ = 0f) where T : MonoBehaviour
     {
         obj.transform.position = new Vector3((origin?.position.x ?? 0) + deltaX, (origin?.position.y ?? 0) + deltaY, (origin?.position.z ?? 0) + deltaZ);
@@ -152,9 +181,35 @@ public static class CompHelper
         return obj;
     }
 
+    public static Image Size(this Image obj, float scaleX = 0f, float scaleY = 0f)
+    {
+        obj.sprite.textureRect.Set(0, 0, scaleX, scaleY);
+        return obj;
+    }
+
+    public static Toggle Size(this Toggle obj, float scaleX = 0f, float scaleY = 0f)
+    {
+        var r = obj.GetComponentInChildren<RectTransform>();
+        r.sizeDelta = new Vector2(scaleX, scaleY);
+        return obj;
+    }
+
     public static T AddSize<T>(this T obj, float scaleX = 0f, float scaleY = 0f) where T : MonoBehaviour
     {
         Parallel.ForEach(obj.GetComponentsInChildren<RectTransform>(), s => s.sizeDelta = new Vector2(s.sizeDelta.x + scaleX, s.sizeDelta.y + scaleY));
+        return obj;
+    }
+
+    public static Image AddSize(this Image obj, float scaleX = 0f, float scaleY = 0f)
+    {
+        obj.rectTransform.sizeDelta = new Vector2(obj.rectTransform.sizeDelta.x + scaleX, obj.rectTransform.sizeDelta.y + scaleY);
+        return obj;
+    }
+
+    public static Toggle AddSize(this Toggle obj, float scaleX = 0f, float scaleY = 0f)
+    {
+        var r = obj.GetComponentInChildren<RectTransform>();
+        r.sizeDelta = new Vector2(r.sizeDelta.x + scaleX, r.sizeDelta.y + scaleY);
         return obj;
     }
 
@@ -164,6 +219,11 @@ public static class CompHelper
         if (rect != null)
             return rect.sizeDelta;
         return Vector2.zero;
+    }
+
+    public static Vector2 GetSize(this Image obj)
+    {
+        return obj.rectTransform.sizeDelta;
     }
 
     public static Text Set(this Text obj, string def)
