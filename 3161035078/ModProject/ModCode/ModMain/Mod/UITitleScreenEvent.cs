@@ -1,9 +1,9 @@
 ﻿using EGameTypeData;
 using MOD_nE7UL2.Const;
 using ModLib.Mod;
+using ModLib.Object;
 using System.Diagnostics;
 using UnityEngine;
-using UnityEngine.Events;
 
 namespace MOD_nE7UL2.Mod
 {
@@ -17,12 +17,10 @@ namespace MOD_nE7UL2.Mod
             if (e.uiType.uiName == UIType.Login.uiName)
             {
                 var ver = g.mod.GetModProjectData(ModMain.ModObj.ModId).ver;
-                var uiLogin = g.ui.GetUI<UILogin>(UIType.Login);
-                var modTitleBtn = uiLogin.btnPaperChange.Copy().Pos(0f, 4.6f, uiLogin.btnPaperChange.transform.position.z).Align(TextAnchor.MiddleCenter).Format(Color.white, 22).Set($"Taoist {ver}");
-                modTitleBtn.onClick.AddListener((UnityAction)(() =>
+                var uiLogin = new UICover<UILogin>(UIType.Login, (ui) =>
                 {
-                    Process.Start("explorer.exe", CacheHelper.GetCacheFolderName(ModId));
-                }));
+                    ui.AddButton(ui.MidCol, ui.FirstRow, () => Process.Start("explorer.exe", CacheHelper.GetCacheFolderName(ModId)), $"Taoist {ver}", ui.UI.btnPaperChange);
+                });
 
                 //var isLast = g.mod.allModPaths.ToArray().Last().t1 == ModMain.ModObj.ModId;
                 //if (!isLast)

@@ -2,11 +2,11 @@
 using MOD_nE7UL2.Const;
 using MOD_nE7UL2.Object;
 using ModLib.Mod;
+using ModLib.Object;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
-using UnityEngine.Events;
 
 namespace MOD_nE7UL2.Mod
 {
@@ -48,37 +48,37 @@ namespace MOD_nE7UL2.Mod
         public bool EnableTrainer { get; set; } = false;
 
         //UI
-        private UIHelper.UICustom1 uiCustom;
-        private UIItemBase.UIItemText txtTotalScore;
-        private UIItemBase.UIItemComposite slMonstAtk;
-        private UIItemBase.UIItemComposite slMonstDef;
-        private UIItemBase.UIItemComposite slMonstHp;
-        private UIItemBase.UIItemComposite slMonstBasis;
-        private UIItemBase.UIItemComposite slMonstSpecialRate;
-        private UIItemBase.UIItemComposite slEcoTaxRate;
-        private UIItemBase.UIItemComposite slEcoInfRate;
-        private UIItemBase.UIItemComposite slEcoBuildingCost;
-        private UIItemBase.UIItemComposite slEcoBankAccCost;
-        private UIItemBase.UIItemComposite slEcoBankFee;
-        private UIItemBase.UIItemComposite slEcoRefineCost;
-        private UIItemBase.UIItemComposite slEcoSectExchangeRate;
-        private UIItemBase.UIItemComposite slEcoItemValue;
-        private UIItemBase.UIItemComposite slNpcGrowRate;
-        private UIItemBase.UIItemComposite slMiscLevelupExp;
-        private UIItemBase.UIItemComposite tglSysHideSave;
-        private UIItemBase.UIItemComposite tglSysHideReload;
-        private UIItemBase.UIItemComposite tglSysHideBattleMap;
-        private UIItemBase.UIItemComposite tglSysNoRebirth;
-        private UIItemBase.UIItemComposite tglSysOnelife;
-        private UIItemBase.UIItemComposite tglSysOnlyPortalAtCityAndSect;
-        private UIItemBase.UIItemComposite tglSysNoExpFromBattle;
-        private UIItemBase.UIItemComposite tglSysSectNoExchange;
-        private UIItemBase.UIItemComposite tglSysBossHasShield;
-        private UIItemBase.UIItemComposite tglNoGrowupFromBattles;
-        //private UIItemBase.UIItemComposite tglLowGradeDestiniesAtBeginning;
-        private UIItemBase.UIItemComposite cbPriorityDestinyLevel;
-        private UIItemBase.UIItemComposite tglAllowUpgradeNaturally;
-        private UIItemBase.UIItemComposite tglEnableTrainer;
+        private UICustom1 uiCustom;
+        private UIItemText txtTotalScore;
+        private UIItemComposite slMonstAtk;
+        private UIItemComposite slMonstDef;
+        private UIItemComposite slMonstHp;
+        private UIItemComposite slMonstBasis;
+        private UIItemComposite slMonstSpecialRate;
+        private UIItemComposite slEcoTaxRate;
+        private UIItemComposite slEcoInfRate;
+        private UIItemComposite slEcoBuildingCost;
+        private UIItemComposite slEcoBankAccCost;
+        private UIItemComposite slEcoBankFee;
+        private UIItemComposite slEcoRefineCost;
+        private UIItemComposite slEcoSectExchangeRate;
+        private UIItemComposite slEcoItemValue;
+        private UIItemComposite slNpcGrowRate;
+        private UIItemComposite slMiscLevelupExp;
+        private UIItemComposite tglSysHideSave;
+        private UIItemComposite tglSysHideReload;
+        private UIItemComposite tglSysHideBattleMap;
+        private UIItemComposite tglSysNoRebirth;
+        private UIItemComposite tglSysOnelife;
+        private UIItemComposite tglSysOnlyPortalAtCityAndSect;
+        private UIItemComposite tglSysNoExpFromBattle;
+        private UIItemComposite tglSysSectNoExchange;
+        private UIItemComposite tglSysBossHasShield;
+        private UIItemComposite tglNoGrowupFromBattles;
+        //private UIItemComposite tglLowGradeDestiniesAtBeginning;
+        private UIItemComposite cbPriorityDestinyLevel;
+        private UIItemComposite tglAllowUpgradeNaturally;
+        private UIItemComposite tglEnableTrainer;
 
         //Score
         public static IList<SMItemWork> ScoreCalculator { get; } = new List<SMItemWork>();
@@ -135,8 +135,8 @@ namespace MOD_nE7UL2.Mod
                     //point
                     rs[0] = CalCompScore(s.Parent);
                     //%
-                    var x = s.Parent as UIItemBase.UIItemComposite;
-                    if (x.MainComponent is UIItemBase.UIItemSlider)
+                    var x = s.Parent as UIItemComposite;
+                    if (x.MainComponent is UIItemSlider)
                     {
                         rs[1] = (x.Get().Parse<float>() * 100).Parse<int>().ToString("+#;-#;0");
                     }
@@ -160,15 +160,16 @@ namespace MOD_nE7UL2.Mod
             base.OnOpenUIEnd(e);
             if (e.uiType.uiName == UIType.Login.uiName)
             {
-                var uiLogin = g.ui.GetUI<UILogin>(UIType.Login);
-                var modConfigBtn = uiLogin.btnSet.Copy().Pos(0f, 4f, uiLogin.btnSet.transform.position.z).Set(TITLE);
-                modConfigBtn.onClick.AddListener((UnityAction)OpenSMConfigs);
+                var uiLogin = new UICover<UILogin>(UIType.Login, (ui) =>
+                {
+                    ui.AddButton(ui.MidCol, ui.FirstRow + 3, OpenSMConfigs, TITLE, ui.UI.btnSet);
+                });
             }
         }
 
         private void OpenSMConfigs()
         {
-            uiCustom = new UIHelper.UICustom1(TITLE, (uiCustom) =>
+            uiCustom = new UICustom1(TITLE, (uiCustom) =>
             {
                 int col, row;
 
@@ -234,6 +235,9 @@ namespace MOD_nE7UL2.Mod
                 uiCustom.AddButton(col, row += 2, () => SetLevel(9), "Level 9");
                 uiCustom.AddButton(col, row += 2, () => SetLevel(10), "Level 10");
                 uiCustom.AddText(uiCustom.MidCol, uiCustom.LastRow, "You have to start a new game to apply these configs!").Format(Color.red, 17);
+
+                uiCustom.AddInput(uiCustom.MidCol, uiCustom.MidRow, "0");
+                //uiCustom.AddImage(uiCustom.MidCol, uiCustom.LastRow, SpriteTool.GetGradeIcon(2));
 
                 SetWork();
             }, SetSMConfigs, true);
@@ -319,7 +323,6 @@ namespace MOD_nE7UL2.Mod
         public override void OnTimeUpdate()
         {
             base.OnTimeUpdate();
-            uiCustom.UpdateUI();
             txtTotalScore.Set($"Total score: {CalSMTotalScore()}P");
         }
 

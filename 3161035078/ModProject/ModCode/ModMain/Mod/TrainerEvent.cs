@@ -6,7 +6,6 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
-using static UIHelper;
 
 namespace MOD_nE7UL2.Mod
 {
@@ -20,8 +19,8 @@ namespace MOD_nE7UL2.Mod
         public const float TELE_BTN_HEIGHT = 28;
         public const int MAX_NUMBER = 100000000;
 
-        private UIHelper.UICustom1 uiTrainer;
-        private UIHelper.UICustom1 uiTele;
+        private UICustom1 uiTrainer;
+        private UICustom1 uiTele;
 
         private void ClearTempVar()
         {
@@ -51,7 +50,7 @@ namespace MOD_nE7UL2.Mod
         {
             var player = g.world.playerUnit;
 
-            uiTrainer = new UIHelper.UICustom1(TITLE, (uiTrainer) =>
+            uiTrainer = new UICustom1(TITLE, (uiTrainer) =>
             {
                 uiTrainer.UI.isFastClose = true;
 
@@ -86,7 +85,7 @@ namespace MOD_nE7UL2.Mod
                 FormatButton1(uiTrainer.AddButton(col, row += 2, ReduceAbilityExp, "-100000 Ability Point"));
 
                 col = 14; row = 2;
-                FormatButton1((UIItemBase.UIItemButton)uiTrainer.AddButton(col, row, StopGame, "{0}").SetWork(new UIItemBase.UIItemWork
+                FormatButton1((UIItemButton)uiTrainer.AddButton(col, row, StopGame, "{0}").SetWork(new UIItemBase.UIItemWork
                 {
                     Formatter = (x) => new object[] { Time.timeScale == 0 ? "Resume Game" : "Stop Game" },
                 }));
@@ -278,7 +277,7 @@ namespace MOD_nE7UL2.Mod
             }, ClearTempVar);
         }
 
-        private void FormatButton1(UIItemBase.UIItemButton btn)
+        private void FormatButton1(UIItemButton btn)
         {
             btn.Format(Color.black, 15).Size(TRAINER_BTN_WIDTH, TRAINER_BTN_HEIGHT);
         }
@@ -327,7 +326,7 @@ namespace MOD_nE7UL2.Mod
                 uiConfirm.InitData("Teleport", "You have to on map!", 1);
                 return;
             }
-            uiTele = new UIHelper.UICustom1(TITLE, (uiTele) =>
+            uiTele = new UICustom1(TITLE, (uiTele) =>
             {
                 uiTele.UI.isFastClose = true;
 
@@ -354,7 +353,7 @@ namespace MOD_nE7UL2.Mod
             }, ClearTempVar);
         }
 
-        private void FormatButton2(UIItemBase.UIItemButton btn)
+        private void FormatButton2(UIItemButton btn)
         {
             btn.Format(Color.black, 13).Size(TELE_BTN_WIDTH, TELE_BTN_HEIGHT);
         }
