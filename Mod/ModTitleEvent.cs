@@ -1,8 +1,7 @@
 ﻿using EGameTypeData;
-using System.Collections.Generic;
+using ModLib.Object;
 using System.Diagnostics;
 using UnityEngine;
-using static UIHelper;
 
 namespace ModLib.Mod
 {
@@ -28,7 +27,7 @@ namespace ModLib.Mod
             base.OnOpenUIEnd(e);
             if (e.uiType.uiName == UIType.Login.uiName)
             {
-                var uiCustom = new UICustom(UIType.Login, (ui) =>
+                var uiCustom = new UICover<UILogin>(UIType.Login, (ui) =>
                 {
                     ui.AddButton(ui.LastCol - 5, ui.FirstRow, () =>
                     {
@@ -37,6 +36,7 @@ namespace ModLib.Mod
                         .Size(300, 60)
                         .Align(TextAnchor.MiddleCenter)
                         .Format(Color.black, 19);
+
                     //ui.AddSelect(ui.LastCol - 14, ui.FirstRow, new string[] { "Translation: Off", "English", "Japanese", "Vietnamese", "Russian", "Latin", "Spanish" }, TranslateIndex)
                     //    .Align(TextAnchor.MiddleCenter)
                     //    .SetWork(new UIItemBase.UIItemWork

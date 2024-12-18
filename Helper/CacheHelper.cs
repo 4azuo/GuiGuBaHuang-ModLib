@@ -157,7 +157,7 @@ public static class CacheHelper
                 if (File.Exists(cacheFile))
                 {
                     var e = (CachableObject)JsonConvert.DeserializeObject(File.ReadAllText(cacheFile), t.Value, JSON_SETTINGS);
-                    DebugHelper.WriteLine($"Load GlobalCache: Type={t.Value.FullName}, Id={e.CacheId}");
+                    DebugHelper.WriteLine($"Load GlobalCache: Mod={t.Key}, Type={t.Value.FullName}, Id={e.CacheId}");
                     e.OnLoadClass(false, t.Key, attr);
                     rs.Add(e);
                 }
@@ -177,13 +177,9 @@ public static class CacheHelper
                 if (!CacheData.ContainsKey(attr.CacheId))
                 {
                     var e = (CachableObject)Activator.CreateInstance(t.Value);
-                    DebugHelper.WriteLine($"Create GlobalCache: Type={t.Value.FullName}, Id={attr.CacheId}");
+                    DebugHelper.WriteLine($"Create GlobalCache: Mod={t.Key}, Type={t.Value.FullName}, Id={attr.CacheId}");
                     e.OnLoadClass(true, t.Key, attr);
                     rs.Add(e);
-                }
-                else
-                {
-                    DebugHelper.WriteLine($"Exists same key. (Type={t.Value.FullName}, Id={attr.CacheId})");
                 }
             }
         }
@@ -202,7 +198,7 @@ public static class CacheHelper
                 if (File.Exists(cacheFile))
                 {
                     var e = (CachableObject)JsonConvert.DeserializeObject(File.ReadAllText(cacheFile), t.Value, JSON_SETTINGS);
-                    DebugHelper.WriteLine($"Load GameCache: Type={t.Value.FullName}, Id={e.CacheId}");
+                    DebugHelper.WriteLine($"Load GameCache: Mod={t.Key}, Type={t.Value.FullName}, Id={e.CacheId}");
                     e.OnLoadClass(false, t.Key, attr);
                     rs.Add(e);
                 }
@@ -222,13 +218,9 @@ public static class CacheHelper
                 if (!CacheData.ContainsKey(attr.CacheId))
                 {
                     var e = (CachableObject)Activator.CreateInstance(t.Value);
-                    DebugHelper.WriteLine($"Create GameCache: Type={t.Value.FullName}, Id={attr.CacheId}");
+                    DebugHelper.WriteLine($"Create GameCache: Mod={t.Key}, Type={t.Value.FullName}, Id={attr.CacheId}");
                     e.OnLoadClass(true, t.Key, attr);
                     rs.Add(e);
-                }
-                else
-                {
-                    DebugHelper.WriteLine($"Exists same key. (Type={t.Value.FullName}, Id={attr.CacheId})");
                 }
             }
         }
@@ -242,7 +234,7 @@ public static class CacheHelper
         {
             if (c.WorkOn == CacheAttribute.WType.Global)
             {
-                DebugHelper.WriteLine($"Unload Cache: Type={c.GetType().FullName}, Id={c.CacheId}");
+                DebugHelper.WriteLine($"Unload Cache: Mod={c.ModId}, Type={c.GetType().FullName}, Id={c.CacheId}");
                 c.OnUnloadClass();
                 RemoveCachableObject(c);
             }
@@ -251,7 +243,7 @@ public static class CacheHelper
 
     public static void SaveGlobalCache(CachableObject item)
     {
-        DebugHelper.WriteLine($"Save global-caches: {item.CacheId}");
+        DebugHelper.WriteLine($"Save global-caches: {item.ModId} - {item.CacheId}");
         File.WriteAllText(GetGlobalCacheFilePath(item.ModId, item.CacheId), JsonConvert.SerializeObject(item, JSON_SETTINGS));
     }
 
@@ -265,7 +257,7 @@ public static class CacheHelper
 
     public static void SaveGameCache(CachableObject item)
     {
-        DebugHelper.WriteLine($"Save game-caches: {item.CacheId}");
+        DebugHelper.WriteLine($"Save game-caches: {item.ModId} - {item.CacheId}");
         File.WriteAllText(GetGameCacheFilePath(item.ModId, item.CacheId), JsonConvert.SerializeObject(item, JSON_SETTINGS));
     }
 
@@ -288,7 +280,7 @@ public static class CacheHelper
     {
         foreach (var e in GetGlobalCaches())
         {
-            DebugHelper.WriteLine($"Unload GlobalCache: Type={e.GetType().FullName}, Id={e.CacheId}");
+            DebugHelper.WriteLine($"Unload GlobalCache: Mod={e.ModId}, Type={e.GetType().FullName}, Id={e.CacheId}");
             e.OnUnloadClass();
             CacheData.Remove(e.CacheId);
         }
@@ -298,7 +290,7 @@ public static class CacheHelper
     {
         foreach (var e in GetGameCaches())
         {
-            DebugHelper.WriteLine($"Unload GameCache: Type={e.GetType().FullName}, Id={e.CacheId}");
+            DebugHelper.WriteLine($"Unload GameCache: Mod={e.ModId}, Type={e.GetType().FullName}, Id={e.CacheId}");
             e.OnUnloadClass();
             CacheData.Remove(e.CacheId);
         }
@@ -334,19 +326,6 @@ public static class CacheHelper
         if (ass == null)
             return new List<KeyValuePair<string, Type>>();
         return ass.GetTypes().Where(x => x.IsClass && x.IsSubclassOf(typeof(CachableObject))).Select(x => new KeyValuePair<string, Type>(modId, x)).ToList();
-    }
-
-    private static void Order(Dictionary<string, int> orderList)
-    {
-        var defaultIndex = 9000;
-        CacheData = CacheData.OrderBy(x =>
-        {
-            if (orderList.ContainsKey(x.Key))
-                return orderList[x.Key];
-            if (x.Value.OrderIndex >= 0)
-                return x.Value.OrderIndex;
-            return defaultIndex++;
-        }).ToDictionary(x => x.Key, x => x.Value);
     }
 
     public static void Order()
