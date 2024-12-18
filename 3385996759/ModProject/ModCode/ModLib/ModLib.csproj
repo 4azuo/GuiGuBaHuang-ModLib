@@ -79,6 +79,7 @@
     <Compile Include="Mod\ModMaster_BattleEvent.cs" />
     <Compile Include="Mod\ModMaster_TimerEvent.cs" />
     <Compile Include="Mod\ModMaster_MapEvent.cs" />
+    <Compile Include="Mod\ModUIEvent.cs" />
     <Compile Include="Mod\ModTranslateEvent.cs" />
     <Compile Include="Mod\ModTitleEvent.cs" />
     <Compile Include="Object\EnumObject.cs" />
@@ -99,6 +100,18 @@
     <Compile Include="Object\Gamevar.cs" />
     <Compile Include="Object\MonoUpdater.cs" />
     <Compile Include="Object\MultiValue.cs" />
+    <Compile Include="Object\UISample.cs" />
+    <Compile Include="Object\UICover.cs" />
+    <Compile Include="Object\UICustomBase.cs" />
+    <Compile Include="Object\UICustom.cs" />
+    <Compile Include="Object\UIItemInput.cs" />
+    <Compile Include="Object\UIItemImage.cs" />
+    <Compile Include="Object\UIItemToggle.cs" />
+    <Compile Include="Object\UIItemSlider.cs" />
+    <Compile Include="Object\UIItemComposite.cs" />
+    <Compile Include="Object\UIItemButton.cs" />
+    <Compile Include="Object\UIItemSelect.cs" />
+    <Compile Include="Object\UIItemText.cs" />
     <Compile Include="Object\UIItemBase.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

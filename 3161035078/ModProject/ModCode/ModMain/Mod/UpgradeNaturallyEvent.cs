@@ -2,8 +2,7 @@
 using MOD_nE7UL2.Const;
 using ModLib.Enum;
 using ModLib.Mod;
-using UnityEngine.Events;
-using static UIHelper;
+using ModLib.Object;
 
 namespace MOD_nE7UL2.Mod
 {
@@ -19,14 +18,10 @@ namespace MOD_nE7UL2.Mod
                 var player = g.world.playerUnit;
                 if (e.uiType.uiName == UIType.FateFeature.uiName && player.IsFullExp())
                 {
-                    using (var a = new UISample())
+                    var uiLogin = new UICover<UIFateFeature>(UIType.FateFeature, (ui) =>
                     {
-                        var ui = e.ui.TryCast<UIFateFeature>();
-                        a.ui.btnKeyOK.Copy(ui).AddSize(100f, 40f).Pos(0f, -2f).Set("Up Grade").onClick.AddListener((UnityAction)(() =>
-                        {
-                            player.SetProperty<int>(UnitPropertyEnum.GradeID, player.GetNextPhaseLvl());
-                        }));
-                    }
+                        ui.AddButton(ui.MidCol, ui.MidRow + 5, () => player.SetProperty<int>(UnitPropertyEnum.GradeID, player.GetNextPhaseLvl()), "Up Grade").Size(200f, 40f);
+                    });
                 }
             }
         }

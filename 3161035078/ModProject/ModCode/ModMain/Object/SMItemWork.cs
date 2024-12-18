@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ModLib.Object;
+using System;
 
 namespace MOD_nE7UL2.Object
 {

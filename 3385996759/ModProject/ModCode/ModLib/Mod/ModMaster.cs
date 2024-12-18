@@ -10,6 +10,7 @@ using UnhollowerRuntimeLib;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.UI;
+using static UIHelper;
 
 namespace ModLib.Mod
 {
