@@ -121,7 +121,7 @@ namespace ModLib.Object
             public override void Dispose()
             {
                 UI.Items.Remove(this);
-                MonoBehaviour.Destroy(Item);
+                MonoBehaviour.DestroyImmediate(Item);
             }
 
             public override object Get()
@@ -156,7 +156,7 @@ namespace ModLib.Object
             public override void Dispose()
             {
                 UI.Items.Remove(this);
-                MonoBehaviour.Destroy(Item);
+                MonoBehaviour.DestroyImmediate(Item);
             }
         }
         #endregion
