@@ -121,11 +121,11 @@ namespace ModLib.Object
                 Postfix.Item.gameObject.SetActive(IsEnable());
         }
 
-        public override void Destroy()
+        public override void Dispose()
         {
-            Prefix.Destroy();
-            MainComponent.Destroy();
-            Postfix.Destroy();
+            Prefix.Dispose();
+            MainComponent.Dispose();
+            Postfix.Dispose();
         }
 
         public override bool IsActive()

@@ -1,4 +1,6 @@
-﻿using System.Threading;
+﻿using EGameTypeData;
+using ModLib.Object;
+using System.Linq;
 using UnityEngine;
 
 namespace ModLib.Mod
@@ -6,13 +8,19 @@ namespace ModLib.Mod
     [Cache("$UI$", OrderIndex = 10001, CacheType = CacheAttribute.CType.Global)]
     public class ModUIEvent : ModEvent
     {
-        [ErrorIgnore]
         public override void OnTimeUpdate()
         {
             base.OnTimeUpdate();
-            foreach (var ui in UIHelper.UIs)
+            foreach (var ui in UIHelper.UIs.ToArray())
             {
-                ui.UpdateUI();
+                try
+                {
+                    ui?.UpdateUI();
+                }
+                catch
+                {
+                    ui?.Dispose();
+                }
             }
         }
     }

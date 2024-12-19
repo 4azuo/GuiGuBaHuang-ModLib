@@ -71,10 +71,10 @@ namespace ModLib.Object
             SelectIndex((int)input);
         }
 
-        public override void Destroy()
+        public override void Dispose()
         {
             SetSelections(new string[0]);
-            base.Destroy();
+            base.Dispose();
 
         }
 
