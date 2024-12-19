@@ -14,8 +14,9 @@ namespace ModLib.Object
         protected virtual void Init(float x, float y, Sprite s)
         {
             Pos(x, y);
-            Size(32f, 32f);
             Set(s);
+            Size(120f, 40f);
+            //Item.SetNativeSize();
         }
 
         public override object Get()
