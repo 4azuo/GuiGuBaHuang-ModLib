@@ -21,7 +21,7 @@ namespace ModLib.Object
         {
             ModId = modId;
             CacheId = attr.CacheId;
-            OrderIndex = attr.OrderIndex;
+            OrderIndex = attr.OrderIndex.FixValue(0, 999999);
             CacheType = attr.CacheType;
             WorkOn = attr.WorkOn;
         }

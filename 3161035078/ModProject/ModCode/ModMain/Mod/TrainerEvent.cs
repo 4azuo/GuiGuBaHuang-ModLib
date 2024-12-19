@@ -19,15 +19,6 @@ namespace MOD_nE7UL2.Mod
         public const float TELE_BTN_HEIGHT = 28;
         public const int MAX_NUMBER = 100000000;
 
-        private UICustom1 uiTrainer;
-        private UICustom1 uiTele;
-
-        private void ClearTempVar()
-        {
-            uiTrainer = null;
-            uiTele = null;
-        }
-
         public override void OnMonoUpdate()
         {
             base.OnMonoUpdate();
@@ -50,7 +41,7 @@ namespace MOD_nE7UL2.Mod
         {
             var player = g.world.playerUnit;
 
-            uiTrainer = new UICustom1(TITLE, (uiTrainer) =>
+            new UICustom1(TITLE, (uiTrainer) =>
             {
                 uiTrainer.UI.isFastClose = true;
 
@@ -274,21 +265,12 @@ namespace MOD_nE7UL2.Mod
                 {
                     Formatter = (x) => new object[] { player.GetDynProperty(UnitDynPropertyEnum.Mine).value },
                 });
-            }, ClearTempVar);
+            });
         }
 
         private void FormatButton1(UIItemButton btn)
         {
             btn.Format(Color.black, 15).Size(TRAINER_BTN_WIDTH, TRAINER_BTN_HEIGHT);
-        }
-
-        public override void OnTimeUpdate()
-        {
-            base.OnTimeUpdate();
-            if (uiTrainer != null)
-            {
-                uiTrainer.UpdateUI();
-            }
         }
 
         private void Recover()
@@ -326,7 +308,7 @@ namespace MOD_nE7UL2.Mod
                 uiConfirm.InitData("Teleport", "You have to on map!", 1);
                 return;
             }
-            uiTele = new UICustom1(TITLE, (uiTele) =>
+            new UICustom1(TITLE, (uiTele) =>
             {
                 uiTele.UI.isFastClose = true;
 
@@ -350,7 +332,7 @@ namespace MOD_nE7UL2.Mod
                     }
                     FormatButton2(uiTele.AddButton(col, row[AREA_COL[areaId].Value0.Parse<int>()]++, () => Tele(build.GetOpenBuildPoints()[0]), build.name));
                 }
-            }, ClearTempVar);
+            });
         }
 
         private void FormatButton2(UIItemButton btn)

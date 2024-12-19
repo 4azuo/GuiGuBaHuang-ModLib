@@ -243,7 +243,7 @@ public static class CacheHelper
 
     public static void SaveGlobalCache(CachableObject item)
     {
-        DebugHelper.WriteLine($"Save global-caches: {item.ModId} - {item.CacheId}");
+        DebugHelper.WriteLine($"Save global-caches: Mod={item.ModId}, Type={item.GetType().FullName}, Id={item.CacheId}, OrderIndex={item.OrderIndex}({item.InModOrderIndex()})");
         File.WriteAllText(GetGlobalCacheFilePath(item.ModId, item.CacheId), JsonConvert.SerializeObject(item, JSON_SETTINGS));
     }
 
@@ -257,7 +257,7 @@ public static class CacheHelper
 
     public static void SaveGameCache(CachableObject item)
     {
-        DebugHelper.WriteLine($"Save game-caches: {item.ModId} - {item.CacheId}");
+        DebugHelper.WriteLine($"Save game-caches: Mod={item.ModId}, Type={item.GetType().FullName}, Id={item.CacheId}, OrderIndex={item.OrderIndex}({item.InModOrderIndex()})");
         File.WriteAllText(GetGameCacheFilePath(item.ModId, item.CacheId), JsonConvert.SerializeObject(item, JSON_SETTINGS));
     }
 

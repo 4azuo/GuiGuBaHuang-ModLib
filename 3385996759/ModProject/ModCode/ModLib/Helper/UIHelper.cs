@@ -4,8 +4,6 @@ using System.Collections.Generic;
 public static class UIHelper
 {
     public static List<UICustomBase> UIs { get; } = new List<UICustomBase>();
-    public static List<UIItemBase> Items { get; } = new List<UIItemBase>();
-    public static List<UIItemBase> AllItems { get; } = new List<UIItemBase>();
 
     public const float SCREEN_Y_TOP = 5f;
     public const float SCREEN_Y_MIDDLE = 0f;
