@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 namespace ModLib.Object
 {
-    public abstract class UIItemBase
+    public abstract class UIItemBase : IDisposable
     {
         public interface ITextFormat
         {
@@ -23,11 +23,19 @@ namespace ModLib.Object
         public virtual bool Enable { get; set; } = true;
         public virtual object Tag { get; set; }
 
-        public virtual void Update() { }
         public abstract object Get();
+
         public abstract void Set(object input);
+
         public abstract bool IsActive();
-        public abstract void Destroy();
+
+        public abstract void Dispose();
+
+        public virtual void Update()
+        {
+            if (ItemWork?.UpdateAct != null)
+                ItemWork?.UpdateAct?.Invoke(this);
+        }
 
         public UIItemBase() { }
 
@@ -63,6 +71,12 @@ namespace ModLib.Object
             ItemBehaviour.Pos(x, y);
         }
 
+        public virtual void Pos(int col, int row)
+        {
+            this.UI.FixPosition(ref col, ref row);
+            ItemBehaviour.Pos(this.UI.Columns[col], this.UI.Rows[row]);
+        }
+
         public virtual void Pos(UIItemBase org, float x, float y)
         {
             ItemBehaviour.Pos(org.ItemBehaviour.transform, x, y);
@@ -78,6 +92,7 @@ namespace ModLib.Object
         #region Work
         public class UIItemWork
         {
+            public virtual Action<UIItemBase> UpdateAct { get; set; }
             public virtual Func<UIItemBase, bool> EnableAct { get; set; }
             public virtual Func<UIItemBase, object[]> Formatter { get; set; }
             public virtual Action<UIItemBase, object> ChangeAct { get; set; }
@@ -85,6 +100,41 @@ namespace ModLib.Object
         #endregion
 
         #region Item
+        public class UIItem : UIItemBase
+        {
+            public UIBehaviour Item { get; private set; }
+
+            public UIItem(UICustomBase ui, UIBehaviour comp)
+            {
+                UI = ui;
+                Item = comp;
+                ItemBehaviour = Item;
+
+                UI.Items.Add(this);
+            }
+
+            public override bool IsActive()
+            {
+                return Item.IsActive();
+            }
+
+            public override void Dispose()
+            {
+                UI.Items.Remove(this);
+                MonoBehaviour.Destroy(Item);
+            }
+
+            public override object Get()
+            {
+                return Item;
+            }
+
+            public override void Set(object input)
+            {
+                Item = (UIBehaviour)input;
+            }
+        }
+
         public abstract class UIItem<T> : UIItemBase where T : UIBehaviour
         {
             public T Item { get; private set; }
@@ -96,8 +146,6 @@ namespace ModLib.Object
                 ItemBehaviour = Item;
 
                 UI.Items.Add(this);
-                UIHelper.Items.Add(this);
-                UIHelper.AllItems.Add(this);
             }
 
             public override bool IsActive()
@@ -105,11 +153,9 @@ namespace ModLib.Object
                 return Item.IsActive();
             }
 
-            public override void Destroy()
+            public override void Dispose()
             {
                 UI.Items.Remove(this);
-                UIHelper.Items.Remove(this);
-                UIHelper.AllItems.Remove(this);
                 MonoBehaviour.Destroy(Item);
             }
         }

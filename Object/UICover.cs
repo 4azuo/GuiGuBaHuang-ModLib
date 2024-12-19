@@ -11,45 +11,38 @@ namespace ModLib.Object
         protected override float MinHeight() => UIHelper.SCREEN_Y_TOP;
         protected override float MaxHeight() => UIHelper.SCREEN_Y_BOTTOM;
 
-        public static UICover<T> LastUICover { get; private set; }
         public T UI { get; private set; }
         public Action<UICover<T>> InitComp { get; private set; }
 
+        public UICover(UIBase ui, Action<UICover<T>> initComp) : base()
+        {
+            Init(ui.uiType, initComp);
+        }
+
         public UICover(UIType.UITypeBase uiType, Action<UICover<T>> initComp) : base()
+        {
+            Init(uiType, initComp);
+        }
+
+        protected virtual void Init(UIType.UITypeBase uiType, Action<UICover<T>> initComp)
         {
             UITypeBase = uiType;
 
             //init
-            DeleteLastUI();
             UI = g.ui.GetUI<T>(UIType.GetUIType(UITypeName()));
-            LastUICover = this;
             UIBase = UI;
-            UIHelper.UIs.Add(this);
 
             InitComp = initComp;
             InitComp.Invoke(this);
             DeleteSampleUIs();
 
-            //test
-            //for (var c = 0; c < Columns.Count; c++)
-            //    for (var r = 0; r < Rows.Count; r++)
-            //        AddText(c, r, "test");
-        }
-
-        private void DeleteLastUI()
-        {
-            if (LastUICover != null)
-            {
-                Clear();
-                UIHelper.UIs.Add(LastUICover);
-                LastUICover = null;
-            }
-        }
-
-        public void Close()
-        {
-            DeleteLastUI();
             UIHelper.UIs.Add(this);
+        }
+
+        public override void Dispose()
+        {
+            UIHelper.UIs.Remove(this);
+            Clear();
         }
     }
 }
