@@ -5,7 +5,7 @@ using UnityEngine;
 
 namespace ModLib.Mod
 {
-    [Cache("$TITLES$", OrderIndex = 90, CacheType = CacheAttribute.CType.Global)]
+    [Cache("$TITLES$", OrderIndex = 90, CacheType = CacheAttribute.CType.Global, WorkOn = CacheAttribute.WType.Global)]
     public class ModTitleEvent : ModEvent
     {
         //public static List<string> TranslateCode { get; } = new List<string>
