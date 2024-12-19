@@ -31,7 +31,7 @@ namespace ModLib.Object
             //clear
             foreach (var item in SelectionItems)
             {
-                MonoBehaviour.Destroy(item);
+                MonoBehaviour.DestroyImmediate(item);
             }
             SelectionItems.Clear();
 
