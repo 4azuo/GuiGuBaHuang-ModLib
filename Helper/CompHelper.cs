@@ -184,7 +184,8 @@ public static class CompHelper
 
     public static Image Size(this Image obj, float scaleX = 0f, float scaleY = 0f)
     {
-        obj.sprite.textureRect.Set(0, 0, scaleX, scaleY);
+        obj.rectTransform.sizeDelta = new Vector2(scaleX, scaleY);
+        //obj.sprite.
         return obj;
     }
 
