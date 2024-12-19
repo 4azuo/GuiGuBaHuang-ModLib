@@ -309,13 +309,11 @@ public static class CacheHelper
         rs.AddRange(GetCacheTypes(ModMaster.ModObj.ModId, GameHelper.GetModLibAssembly()));
         rs.AddRange(GetCacheTypes(ModMaster.ModObj.ModId, GameHelper.GetModLibMainAssembly()));
 
-        var paths = g.mod.allModPaths;
-        var orders = g.mod.GetLoadOrderData().mods;
-        for (var i = 0; i < paths.Count; i++)
+        foreach (var mod in g.mod.allModPaths)
         {
-            if (orders[i].isLoad || includeInactive)
+            if (g.mod.IsLoadMod(mod.t1) || includeInactive)
             {
-                rs.AddRange(GetCacheTypes(paths[i].t1, GameHelper.GetModChildAssembly(paths[i].t1)));
+                rs.AddRange(GetCacheTypes(mod.t1, GameHelper.GetModChildAssembly(mod.t1)));
             }
         }
         return rs;

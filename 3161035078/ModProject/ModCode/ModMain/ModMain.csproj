@@ -245,6 +245,7 @@
     <Reference Include="MethodBoundaryAspect, Version=2.0.149.0, Culture=neutral, PublicKeyToken=296379d5065c9d61, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\..\..\3385996759\debug\Mod_flQrxq\ModCode\dll\MethodBoundaryAspect.dll</HintPath>
+      <Private>False</Private>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="Microsoft.Web.Infrastructure">
@@ -254,6 +255,7 @@
     <Reference Include="ModLib, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\..\..\3385996759\debug\Mod_flQrxq\ModCode\dll\ModLib.dll</HintPath>
+      <Private>False</Private>
     </Reference>
     <Reference Include="Mono.CompilerServices.SymbolWriter">
       <HintPath>C:\Program Files (x86)\Steam\steamapps\common\鬼谷八荒\MelonLoader\Managed\Mono.CompilerServices.SymbolWriter.dll</HintPath>
@@ -291,6 +293,7 @@
     <Reference Include="Newtonsoft.Json, Version=13.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\..\..\3385996759\debug\Mod_flQrxq\ModCode\dll\Newtonsoft.Json.dll</HintPath>
+      <Private>False</Private>
     </Reference>
     <Reference Include="Novell.Directory.Ldap">
       <HintPath>C:\Program Files (x86)\Steam\steamapps\common\鬼谷八荒\MelonLoader\Managed\Novell.Directory.Ldap.dll</HintPath>
