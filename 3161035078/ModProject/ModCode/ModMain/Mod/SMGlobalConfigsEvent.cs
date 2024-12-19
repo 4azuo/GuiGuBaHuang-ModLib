@@ -7,6 +7,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using UnityEngine.Events;
 
 namespace MOD_nE7UL2.Mod
 {
@@ -48,8 +49,6 @@ namespace MOD_nE7UL2.Mod
         public bool EnableTrainer { get; set; } = false;
 
         //UI
-        private UICustom1 uiCustom;
-        private UIItemText txtTotalScore;
         private UIItemComposite slMonstAtk;
         private UIItemComposite slMonstDef;
         private UIItemComposite slMonstHp;
@@ -160,16 +159,20 @@ namespace MOD_nE7UL2.Mod
             base.OnOpenUIEnd(e);
             if (e.uiType.uiName == UIType.Login.uiName)
             {
-                var uiLogin = new UICover<UILogin>(UIType.Login, (ui) =>
+                new UICover<UILogin>(e.ui, (ui) =>
                 {
-                    ui.AddButton(ui.MidCol, ui.FirstRow + 3, OpenSMConfigs, TITLE, ui.UI.btnSet);
+                    var modConfigBtn = ui.UI.btnSet.Copy()
+                        .Pos(ui.Columns[ui.MidCol], ui.Rows[ui.FirstRow + 3], ui.UI.btnSet.transform.position.z)
+                        .Set(TITLE);
+                    modConfigBtn.onClick.AddListener((UnityAction)OpenSMConfigs);
+                    ui.Add(modConfigBtn);
                 });
             }
         }
 
         private void OpenSMConfigs()
         {
-            uiCustom = new UICustom1(TITLE, (uiCustom) =>
+            new UICustom1(TITLE, (uiCustom) =>
             {
                 int col, row;
 
@@ -221,7 +224,10 @@ namespace MOD_nE7UL2.Mod
                 uiCustom.AddText(col - 2, row++, "(Dont recommend to use this option!【Ctrl+1】)").Format(null, 13).Align(TextAnchor.MiddleLeft);
 
                 col = 30; row = 0;
-                txtTotalScore = uiCustom.AddText(col, row, "Total score: {0}P").Format(Color.red, 17).Align(TextAnchor.MiddleRight);
+                uiCustom.AddText(col, row, "Total score: {0}P").Format(Color.red, 17).Align(TextAnchor.MiddleRight).SetWork(new UIItemBase.UIItemWork
+                {
+                    Formatter = (x) => new string[] { CalSMTotalScore().ToString() },
+                });
                 uiCustom.AddButton(col, row += 2, () => SetLevelBase(), "Default");
                 uiCustom.AddButton(col, row += 2, () => SetLevel(0), "Level 0");
                 uiCustom.AddButton(col, row += 2, () => SetLevel(1), "Level 1");
@@ -236,7 +242,7 @@ namespace MOD_nE7UL2.Mod
                 uiCustom.AddButton(col, row += 2, () => SetLevel(10), "Level 10");
                 uiCustom.AddText(uiCustom.MidCol, uiCustom.LastRow, "You have to start a new game to apply these configs!").Format(Color.red, 17);
 
-                uiCustom.AddInput(uiCustom.MidCol, uiCustom.MidRow, "0");
+                //uiCustom.AddInput(uiCustom.MidCol, uiCustom.MidRow, "0");
                 //uiCustom.AddImage(uiCustom.MidCol, uiCustom.LastRow, SpriteTool.GetGradeIcon(2));
 
                 SetWork();
@@ -318,14 +324,6 @@ namespace MOD_nE7UL2.Mod
             tglSysOnelife.Set(level > 9);
         }
 
-        [ErrorIgnore]
-        [EventCondition(IsInGame = 0)]
-        public override void OnTimeUpdate()
-        {
-            base.OnTimeUpdate();
-            txtTotalScore.Set($"Total score: {CalSMTotalScore()}P");
-        }
-
         private void SetSMConfigs()
         {
             AddAtkRate = slMonstAtk.Get().Parse<float>();
@@ -358,7 +356,6 @@ namespace MOD_nE7UL2.Mod
             AllowUpgradeNaturally = tglAllowUpgradeNaturally.Get().Parse<bool>();
             EnableTrainer = tglEnableTrainer.Get().Parse<bool>();
             CacheHelper.SaveGlobalCache(this);
-            uiCustom = null;
         }
 
         public static int CalCompScore(UIItemBase comp)

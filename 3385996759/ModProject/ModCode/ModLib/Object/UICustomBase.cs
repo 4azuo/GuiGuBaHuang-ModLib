@@ -1,11 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.UI;
+using static ModLib.Object.UIItemBase;
 
 namespace ModLib.Object
 {
-    public abstract class UICustomBase
+    public abstract class UICustomBase : IDisposable
     {
         protected UISample1 uiSample1 = null;
         public UISample1 UISample1
@@ -45,9 +47,9 @@ namespace ModLib.Object
             uiSample3?.Dispose();
         }
 
-        public UIBase UIBase { get; internal set; }
-        public IList<float> Columns { get; internal set; } = new List<float>();
-        public IList<float> Rows { get; internal set; } = new List<float>();
+        public UIBase UIBase { get; set; }
+        public List<float> Columns { get; } = new List<float>();
+        public List<float> Rows { get; } = new List<float>();
         public List<UIItemBase> Items { get; } = new List<UIItemBase>();
 
         protected abstract string UITypeName();
@@ -64,10 +66,8 @@ namespace ModLib.Object
 
         protected void InitGrid()
         {
-            Columns = new List<float>();
             for (var i = MinWidth(); i <= MaxWidth(); i += UIHelper.UICUSTOM_DELTA_X)
                 Columns.Add(i);
-            Rows = new List<float>();
             for (var i = MinHeight(); i >= MaxHeight(); i -= UIHelper.UICUSTOM_DELTA_Y)
                 Rows.Add(i);
         }
@@ -75,6 +75,13 @@ namespace ModLib.Object
         public UICustomBase()
         {
             InitGrid();
+        }
+
+        public abstract void Dispose();
+
+        public UIItem Add(UIBehaviour comp)
+        {
+            return new UIItem(this, comp);
         }
 
         public UIItemText AddText(float x, float y, string format, Text copySource = null)
@@ -198,7 +205,7 @@ namespace ModLib.Object
             return AddCompositeInput(Columns[col], Rows[row], prefix, def, postfix, copySource);
         }
 
-        private void FixPosition(ref int col, ref int row)
+        public void FixPosition(ref int col, ref int row)
         {
             col = col.FixValue(0, Columns.Count - 1);
             row = row.FixValue(0, Rows.Count - 1);
@@ -206,14 +213,18 @@ namespace ModLib.Object
 
         public void Clear()
         {
-            foreach (var item in Items)
-                item.Destroy();
+            foreach (var item in Items.ToArray())
+            {
+                item?.Dispose();
+            }
         }
 
         public void UpdateUI()
         {
-            foreach (var item in Items)
-                item.Update();
+            foreach (var item in Items.ToArray())
+            {
+                item?.Update();
+            }
         }
     }
 }
