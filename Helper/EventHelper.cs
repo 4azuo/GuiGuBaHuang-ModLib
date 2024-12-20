@@ -3,6 +3,7 @@ using ModLib.Mod;
 using System.Collections.Generic;
 using System.Reflection;
 using System;
+using ModLib.Enum;
 
 public static class EventHelper
 {
@@ -22,20 +23,20 @@ public static class EventHelper
             var method = ev.GetType().GetMethod(methodName);
             try
             {
-                var condAttr = method.GetCustomAttribute<EventConditionAttribute>();
+                var condAttr = method?.GetAttributeOnMethodOrClass<EventConditionAttribute>();
                 if (condAttr != null)
                 {
-                    if (condAttr.IsInGame == 1 && !isInGame)
+                    if (condAttr.IsInGame == HandleEnum.True && !isInGame)
                         continue;
-                    if (condAttr.IsInGame == 0 && isInGame)
+                    if (condAttr.IsInGame == HandleEnum.False && isInGame)
                         continue;
-                    if (condAttr.IsInBattle == 1 && !isInBattle)
+                    if (condAttr.IsInBattle == HandleEnum.True && !isInBattle)
                         continue;
-                    if (condAttr.IsInBattle == 0 && isInBattle)
+                    if (condAttr.IsInBattle == HandleEnum.False && isInBattle)
                         continue;
-                    if (condAttr.IsWorldRunning == 1 && !isWorldRunning)
+                    if (condAttr.IsWorldRunning == HandleEnum.True && !isWorldRunning)
                         continue;
-                    if (condAttr.IsWorldRunning == 0 && isWorldRunning)
+                    if (condAttr.IsWorldRunning == HandleEnum.False && isWorldRunning)
                         continue;
                 }
                 //var sw = new Stopwatch();
@@ -54,10 +55,8 @@ public static class EventHelper
             catch (Exception ex)
             {
                 var exMethod = ex?.GetCallingMethod();
-                if (method?.GetCustomAttribute<ErrorIgnoreAttribute>() == null &&
-                    method?.DeclaringType?.GetCustomAttribute<ErrorIgnoreAttribute>() == null &&
-                    exMethod?.GetCustomAttribute<ErrorIgnoreAttribute>() == null &&
-                    exMethod?.DeclaringType?.GetCustomAttribute<ErrorIgnoreAttribute>() == null)
+                if (method?.GetAttributeOnMethodOrClass<ErrorIgnoreAttribute>() == null &&
+                    exMethod?.GetAttributeOnMethodOrClass<ErrorIgnoreAttribute>() == null)
                 {
                     throw ex;
                 }
