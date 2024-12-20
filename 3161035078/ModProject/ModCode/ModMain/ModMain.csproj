@@ -909,6 +909,12 @@
     <None Include="..\..\ModConf\trainee_martial_roleEffect.json">
       <Link>ModConf\trainee_martial_roleEffect.json</Link>
     </None>
+    <None Include="..\..\ModConf\ui_smcfgs_localText.json">
+      <Link>ModConf\ui_smcfgs_localText.json</Link>
+    </None>
+    <None Include="..\..\ModConf\ui_trainer_localText.json">
+      <Link>ModConf\ui_trainer_localText.json</Link>
+    </None>
     <None Include="..\..\ModConf\unitType_localText.json">
       <Link>ModConf\unitType_localText.json</Link>
     </None>
@@ -937,4 +943,5 @@ rd "$(ProjectDir)\..\..\..\debug\Mod_nE7UL2\ModConf" /s /q
 xcopy "$(ProjectDir)\bin\Release\*.dll" "$(ProjectDir)\..\..\..\debug\Mod_nE7UL2\ModCode\dll\" /y /i
 xcopy "$(ProjectDir)\..\..\ModConf\*.*" "$(ProjectDir)\..\..\..\debug\Mod_nE7UL2\ModConf\" /y /i</PostBuildEvent>
   </PropertyGroup>
+  <ProjectExtensions />
 </Project>

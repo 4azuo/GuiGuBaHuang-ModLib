@@ -157,4 +157,9 @@ public static class AttributeHelperExtension
     {
         return AttributeTargetHelper<TAttribute>.GetTarget(attribute);
     }
+
+    public static T GetAttributeOnMethodOrClass<T>(this MethodBase method) where T : Attribute
+    {
+        return method.GetCustomAttribute<T>() ?? method.DeclaringType.GetCustomAttribute<T>();
+    }
 }
