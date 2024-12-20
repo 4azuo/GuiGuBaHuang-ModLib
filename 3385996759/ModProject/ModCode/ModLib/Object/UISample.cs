@@ -2,59 +2,56 @@
 
 namespace ModLib.Object
 {
-    public abstract class UISample : IDisposable
+    public abstract class UISample<T> : IDisposable where T : UIBase
     {
-        public abstract void Dispose();
-    }
-
-    public class UISample1 : UISample
-    {
-        public UIGameSetting ui;
-
-        public UISample1()
+        private UIType.UITypeBase _uiSampleType;
+        protected abstract UIType.UITypeBase GetUISampleType();
+        public UIType.UITypeBase UISampleType
         {
-            ui = g.ui.OpenUI<UIGameSetting>(UIType.GameSetting);
+            get
+            {
+                if (_uiSampleType == null)
+                    _uiSampleType = GetUISampleType();
+                return _uiSampleType;
+            }
+        }
+
+        public T ui;
+
+        public UISample()
+        {
+            ui = g.ui.OpenUI<T>(UISampleType);
             ui.gameObject.SetActive(false);
         }
 
-        public override void Dispose()
+        public void Dispose()
         {
             ui.gameObject.SetActive(true);
             g.ui.CloseUI(ui);
         }
     }
 
-    public class UISample2 : UISample
+    public class UISample1 : UISample<UIGameSetting>
     {
-        public UIModMainShop ui;
-
-        public UISample2()
+        protected override UIType.UITypeBase GetUISampleType()
         {
-            ui = g.ui.OpenUI<UIModMainShop>(UIType.ModMainShop);
-            ui.gameObject.SetActive(false);
-        }
-
-        public override void Dispose()
-        {
-            ui.gameObject.SetActive(true);
-            g.ui.CloseUI(ui);
+            return new UIType.UITypeBase(UIType.GameSetting.uiName, UILayer.TempUI);
         }
     }
 
-    public class UISample3 : UISample
+    public class UISample2 : UISample<UIPropInfo>
     {
-        public UIModWorkshopUpload ui;
-
-        public UISample3()
+        protected override UIType.UITypeBase GetUISampleType()
         {
-            ui = g.ui.OpenUI<UIModWorkshopUpload>(UIType.ModWorkshopUpload);
-            ui.gameObject.SetActive(false);
+            return new UIType.UITypeBase(UIType.PropInfo.uiName, UILayer.TempUI);
         }
+    }
 
-        public override void Dispose()
+    public class UISample3 : UISample<UIModWorkshopUpload>
+    {
+        protected override UIType.UITypeBase GetUISampleType()
         {
-            ui.gameObject.SetActive(true);
-            g.ui.CloseUI(ui);
+            return new UIType.UITypeBase(UIType.ModWorkshopUpload.uiName, UILayer.TempUI);
         }
     }
 }

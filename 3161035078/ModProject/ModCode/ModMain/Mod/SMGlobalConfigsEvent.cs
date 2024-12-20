@@ -242,9 +242,6 @@ namespace MOD_nE7UL2.Mod
                 uiCustom.AddButton(col, row += 2, () => SetLevel(10), "Level 10");
                 uiCustom.AddText(uiCustom.MidCol, uiCustom.LastRow, "You have to start a new game to apply these configs!").Format(Color.red, 17);
 
-                //uiCustom.AddInput(uiCustom.MidCol, uiCustom.MidRow, "0");
-                //uiCustom.AddImage(uiCustom.MidCol, uiCustom.LastRow, SpriteTool.GetGradeIcon(2));
-
                 SetWork();
             }, SetSMConfigs, true);
         }
