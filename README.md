@@ -190,6 +190,10 @@ Create a folder **ModConf** in **ModProject**, copy samples from below folder to
 
 4. If **"id"** exists, conf will be override. If not exists, then will be created a new one.
 
+
+
+
+
 ※Sorry for my english.
 
-Hashtag: 鬼谷八荒, guigubahuang, mod
+Hashtag: 鬼谷八荒, guigubahuang, mod, unity, harmony
