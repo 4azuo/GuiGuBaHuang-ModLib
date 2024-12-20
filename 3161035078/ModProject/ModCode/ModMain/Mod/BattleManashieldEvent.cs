@@ -75,7 +75,7 @@ namespace MOD_nE7UL2.Mod
         }
 
         [ErrorIgnore]
-        [EventCondition(IsInBattle = 1)]
+        [EventCondition(IsInBattle = HandleEnum.True)]
         public override void OnTimeUpdate()
         {
             base.OnTimeUpdate();

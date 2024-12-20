@@ -1,4 +1,5 @@
 ﻿using EGameTypeData;
+using Il2CppSystem.Data;
 using MOD_nE7UL2.Const;
 using MOD_nE7UL2.Object;
 using ModLib.Mod;
@@ -74,7 +75,6 @@ namespace MOD_nE7UL2.Mod
         private UIItemComposite tglSysSectNoExchange;
         private UIItemComposite tglSysBossHasShield;
         private UIItemComposite tglNoGrowupFromBattles;
-        //private UIItemComposite tglLowGradeDestiniesAtBeginning;
         private UIItemComposite cbPriorityDestinyLevel;
         private UIItemComposite tglAllowUpgradeNaturally;
         private UIItemComposite tglEnableTrainer;
@@ -112,7 +112,6 @@ namespace MOD_nE7UL2.Mod
             Register(() => tglSysSectNoExchange, s => 10000, s => s.Get().Parse<bool>());
             Register(() => tglSysBossHasShield, s => 10000, s => s.Get().Parse<bool>());
             Register(() => tglNoGrowupFromBattles, s => 10000, s => s.Get().Parse<bool>());
-            //Register(() => tglLowGradeDestiniesAtBeginning, s => 1000, s => s.Get().Parse<bool>());
             Register(() => cbPriorityDestinyLevel, s => (s.Get().Parse<int>() == 0 ? 0 : (3 - s.Get().Parse<int>())) * 1000);
             Register(() => tglAllowUpgradeNaturally, s => -2000, s => s.Get().Parse<bool>());
             Register(() => tglEnableTrainer, s => -1000000, s => s.Get().Parse<bool>());
@@ -177,70 +176,78 @@ namespace MOD_nE7UL2.Mod
                 int col, row;
 
                 col = 2; row = 0;
-                uiCustom.AddText(col, row++, "Monster:").Format(null, 17, FontStyle.Italic).Align(TextAnchor.MiddleRight);
-                slMonstAtk = uiCustom.AddCompositeSlider(col, row++, "ATK", -0.50f, 10.00f, AddAtkRate, "{1}% ({0}P)");
-                slMonstDef = uiCustom.AddCompositeSlider(col, row++, "DEF", -0.50f, 10.00f, AddDefRate, "{1}% ({0}P)");
-                slMonstHp = uiCustom.AddCompositeSlider(col, row++, "Max HP", -0.50f, 10.00f, AddHpRate, "{1}% ({0}P)");
-                slMonstBasis = uiCustom.AddCompositeSlider(col, row++, "Basis", -0.50f, 10.00f, AddBasisRate, "{1}% ({0}P)");
-                uiCustom.AddText(col - 2, row++, "(Included Sword, Blade, Spear, Fist, Finger, Palm, Fire, Water, Thunder, Wood, Wind, Earth)").Format(null, 13).Align(TextAnchor.MiddleLeft);
-                slMonstSpecialRate = uiCustom.AddCompositeSlider(col, row++, "Special Monster Rate", -0.50f, 1.00f, AddSpecialMonsterRate, "{1}% ({0}P)");
+                uiCustom.AddText(col, row++, GameTool.LS("smcfgs000")).Format(null, 17, FontStyle.Italic).Align(TextAnchor.MiddleRight);
+                slMonstAtk = uiCustom.AddCompositeSlider(col, row++, GameTool.LS("smcfgs001"), -0.50f, 10.00f, AddAtkRate, GameTool.LS("smcfgs101"));
+                slMonstDef = uiCustom.AddCompositeSlider(col, row++, GameTool.LS("smcfgs002"), -0.50f, 10.00f, AddDefRate, GameTool.LS("smcfgs101"));
+                slMonstHp = uiCustom.AddCompositeSlider(col, row++, GameTool.LS("smcfgs003"), -0.50f, 10.00f, AddHpRate, GameTool.LS("smcfgs101"));
+                slMonstBasis = uiCustom.AddCompositeSlider(col, row++, GameTool.LS("smcfgs004"), -0.50f, 10.00f, AddBasisRate, GameTool.LS("smcfgs101"));
+                uiCustom.AddText(col - 1, row++, GameTool.LS("smcfgs005")).Format(null, 13).Align(TextAnchor.MiddleLeft);
+                slMonstSpecialRate = uiCustom.AddCompositeSlider(col, row++, GameTool.LS("smcfgs006"), -0.50f, 1.00f, AddSpecialMonsterRate, GameTool.LS("smcfgs101"));
                 row++;
-                uiCustom.AddText(col, row++, "Economic:").Format(null, 17, FontStyle.Italic).Align(TextAnchor.MiddleRight);
-                slEcoTaxRate = uiCustom.AddCompositeSlider(col, row++, "Tax Rate", 0.00f, 10.00f, AddTaxRate, "{1}% ({0}P)");
-                slEcoInfRate = uiCustom.AddCompositeSlider(col, row++, "Inflation Rate", -0.50f, 3.00f, AddInflationRate, "{1}% ({0}P)");
-                slEcoBuildingCost = uiCustom.AddCompositeSlider(col, row++, "Building Cost", 0.00f, 10.00f, AddBuildingCostRate, "{1}% ({0}P)");
-                slEcoBankAccCost = uiCustom.AddCompositeSlider(col, row++, "Bank Account Cost", 0.00f, 10.00f, AddBankAccountCostRate, "{1}% ({0}P)");
-                slEcoBankFee = uiCustom.AddCompositeSlider(col, row++, "Bank Fee", 0.00f, 100.00f, AddBankFee, "{1}% ({0}P)");
-                slEcoRefineCost = uiCustom.AddCompositeSlider(col, row++, "Refine Cost", -0.50f, 1.00f, AddRefineCost, "{1}% ({0}P)");
-                slEcoSectExchangeRate = uiCustom.AddCompositeSlider(col, row++, "Sect Exchange Fee", -0.50f, 1.00f, AddSectExchangeRate, "{1}% ({0}P)");
-                slEcoItemValue = uiCustom.AddCompositeSlider(col, row++, "Item Value", -0.50f, 1.00f, AddItemValueRate, "{1}% ({0}P)");
+                uiCustom.AddText(col, row++, GameTool.LS("smcfgs007")).Format(null, 17, FontStyle.Italic).Align(TextAnchor.MiddleRight);
+                slEcoTaxRate = uiCustom.AddCompositeSlider(col, row++, GameTool.LS("smcfgs008"), 0.00f, 10.00f, AddTaxRate, GameTool.LS("smcfgs101"));
+                slEcoInfRate = uiCustom.AddCompositeSlider(col, row++, GameTool.LS("smcfgs009"), -0.50f, 3.00f, AddInflationRate, GameTool.LS("smcfgs101"));
+                slEcoBuildingCost = uiCustom.AddCompositeSlider(col, row++, GameTool.LS("smcfgs010"), 0.00f, 10.00f, AddBuildingCostRate, GameTool.LS("smcfgs101"));
+                slEcoBankAccCost = uiCustom.AddCompositeSlider(col, row++, GameTool.LS("smcfgs011"), 0.00f, 10.00f, AddBankAccountCostRate, GameTool.LS("smcfgs101"));
+                slEcoBankFee = uiCustom.AddCompositeSlider(col, row++, GameTool.LS("smcfgs012"), 0.00f, 100.00f, AddBankFee, GameTool.LS("smcfgs101"));
+                slEcoRefineCost = uiCustom.AddCompositeSlider(col, row++, GameTool.LS("smcfgs013"), -0.50f, 1.00f, AddRefineCost, GameTool.LS("smcfgs101"));
+                slEcoSectExchangeRate = uiCustom.AddCompositeSlider(col, row++, GameTool.LS("smcfgs014"), -0.50f, 1.00f, AddSectExchangeRate, GameTool.LS("smcfgs101"));
+                slEcoItemValue = uiCustom.AddCompositeSlider(col, row++, GameTool.LS("smcfgs015"), -0.50f, 1.00f, AddItemValueRate, GameTool.LS("smcfgs101"));
                 row++;
-                uiCustom.AddText(col, row++, "NPC:").Format(null, 17, FontStyle.Italic).Align(TextAnchor.MiddleRight);
-                slNpcGrowRate = uiCustom.AddCompositeSlider(col, row++, "Grow Rate", 0.00f, 10.00f, AddNpcGrowRate, "{1}% ({0}P)");
+                uiCustom.AddText(col, row++, GameTool.LS("smcfgs016")).Format(null, 17, FontStyle.Italic).Align(TextAnchor.MiddleRight);
+                slNpcGrowRate = uiCustom.AddCompositeSlider(col, row++, GameTool.LS("smcfgs017"), 0.00f, 10.00f, AddNpcGrowRate, GameTool.LS("smcfgs101"));
                 row++;
-                uiCustom.AddText(col, row++, "Misc:").Format(null, 17, FontStyle.Italic).Align(TextAnchor.MiddleRight);
-                slMiscLevelupExp = uiCustom.AddCompositeSlider(col, row++, "Levelup Exp", 0.00f, 1.00f, AddLevelupExpRate, "{1}% ({0}P)");
+                uiCustom.AddText(col, row++, GameTool.LS("smcfgs018")).Format(null, 17, FontStyle.Italic).Align(TextAnchor.MiddleRight);
+                slMiscLevelupExp = uiCustom.AddCompositeSlider(col, row++, GameTool.LS("smcfgs019"), 0.00f, 1.00f, AddLevelupExpRate, GameTool.LS("smcfgs101"));
 
                 col = 18; row = 0;
-                uiCustom.AddText(col, row++, "Systems:").Format(null, 17, FontStyle.Italic).Align(TextAnchor.MiddleRight);
-                tglSysHideSave = uiCustom.AddCompositeToggle(col, row++, "Hide Save Button", HideSaveButton, "({0}P)");
-                tglSysHideReload = uiCustom.AddCompositeToggle(col, row++, "Hide Reload Button", HideReloadButton, "({0}P)");
-                tglSysOnelife = uiCustom.AddCompositeToggle(col, row++, "One life", Onelife, "({0}P)");
+                uiCustom.AddText(col, row++, GameTool.LS("smcfgs020")).Format(null, 17, FontStyle.Italic).Align(TextAnchor.MiddleRight);
+                tglSysHideSave = uiCustom.AddCompositeToggle(col, row++, GameTool.LS("smcfgs021"), HideSaveButton, GameTool.LS("smcfgs102"));
+                tglSysHideReload = uiCustom.AddCompositeToggle(col, row++, GameTool.LS("smcfgs022"), HideReloadButton, GameTool.LS("smcfgs102"));
+                tglSysOnelife = uiCustom.AddCompositeToggle(col, row++, GameTool.LS("smcfgs023"), Onelife, GameTool.LS("smcfgs102"));
                 row++;
-                tglSysHideBattleMap = uiCustom.AddCompositeToggle(col, row++, "Hide Battle Map", HideBattleMap, "({0}P)");
-                //tglLowGradeDestiniesAtBeginning = uiCustom.AddCompositeToggle(col, row++, "Low Grade Destinies At Beginning", LowGradeDestiniesAtBeginning, "({0}P)");
-                cbPriorityDestinyLevel = uiCustom.AddCompositeSelect(col, row++, "Priority Destiny Level", new string[] { "Default", "White", "Green", "Blue", "Violet", "Yellow", "Red" }, PriorityDestinyLevel, "({0}P)");
-                tglSysOnlyPortalAtCityAndSect = uiCustom.AddCompositeToggle(col, row++, "Only Portal at City and Sect", OnlyPortalAtCityAndSect, "({0}P)");
-                tglSysSectNoExchange = uiCustom.AddCompositeToggle(col, row++, "Sect No Exchange", SectNoExchange, "({0}P)");
-                tglSysNoRebirth = uiCustom.AddCompositeToggle(col, row++, "No Rebirth", NoRebirth, "({0}P)");
-                tglAllowUpgradeNaturally = uiCustom.AddCompositeToggle(col, row++, "Allow Upgrade Naturally", AllowUpgradeNaturally, "({0}P)");
-                uiCustom.AddText(col - 2, row++, "(This way wont grow up your attributes/properties)").Format(null, 13).Align(TextAnchor.MiddleLeft);
+                tglSysHideBattleMap = uiCustom.AddCompositeToggle(col, row++, GameTool.LS("smcfgs024"), HideBattleMap, GameTool.LS("smcfgs102"));
+                cbPriorityDestinyLevel = uiCustom.AddCompositeSelect(col, row++, GameTool.LS("smcfgs025"), 
+                    new string[] {
+                        GameTool.LS("smcfgs026"),
+                        GameTool.LS("smcfgs027"),
+                        GameTool.LS("smcfgs028"),
+                        GameTool.LS("smcfgs029"),
+                        GameTool.LS("smcfgs030"),
+                        GameTool.LS("smcfgs031"),
+                        GameTool.LS("smcfgs032")
+                    }, PriorityDestinyLevel, GameTool.LS("smcfgs102"));
+                tglSysOnlyPortalAtCityAndSect = uiCustom.AddCompositeToggle(col, row++, GameTool.LS("smcfgs033"), OnlyPortalAtCityAndSect, GameTool.LS("smcfgs102"));
+                tglSysSectNoExchange = uiCustom.AddCompositeToggle(col, row++, GameTool.LS("smcfgs034"), SectNoExchange, GameTool.LS("smcfgs102"));
+                tglSysNoRebirth = uiCustom.AddCompositeToggle(col, row++, GameTool.LS("smcfgs035"), NoRebirth, GameTool.LS("smcfgs102"));
+                tglAllowUpgradeNaturally = uiCustom.AddCompositeToggle(col, row++, GameTool.LS("smcfgs036"), AllowUpgradeNaturally, GameTool.LS("smcfgs102"));
+                uiCustom.AddText(col - 1, row++, GameTool.LS("smcfgs037")).Format(null, 13).Align(TextAnchor.MiddleLeft);
                 row++;
-                tglSysBossHasShield = uiCustom.AddCompositeToggle(col, row++, "Boss Has Shield", BossHasShield, "({0}P)");
-                tglNoGrowupFromBattles = uiCustom.AddCompositeToggle(col, row++, "No Growup From Battles", NoGrowupFromBattles, "({0}P)");
-                tglSysNoExpFromBattle = uiCustom.AddCompositeToggle(col, row++, "No Exp from Battles", NoExpFromBattles, "({0}P)");
+                tglSysBossHasShield = uiCustom.AddCompositeToggle(col, row++, GameTool.LS("smcfgs038"), BossHasShield, GameTool.LS("smcfgs102"));
+                tglNoGrowupFromBattles = uiCustom.AddCompositeToggle(col, row++, GameTool.LS("smcfgs039"), NoGrowupFromBattles, GameTool.LS("smcfgs102"));
+                tglSysNoExpFromBattle = uiCustom.AddCompositeToggle(col, row++, GameTool.LS("smcfgs040"), NoExpFromBattles, GameTool.LS("smcfgs102"));
                 row++;
-                tglEnableTrainer = uiCustom.AddCompositeToggle(col, row++, "Enable Trainer", EnableTrainer, "({0}P)");
-                uiCustom.AddText(col - 2, row++, "(Dont recommend to use this option!【Ctrl+1】)").Format(null, 13).Align(TextAnchor.MiddleLeft);
+                tglEnableTrainer = uiCustom.AddCompositeToggle(col, row++, GameTool.LS("smcfgs041"), EnableTrainer, GameTool.LS("smcfgs102"));
+                uiCustom.AddText(col - 1, row++, GameTool.LS("smcfgs042")).Format(null, 13).Align(TextAnchor.MiddleLeft);
 
                 col = 30; row = 0;
-                uiCustom.AddText(col, row, "Total score: {0}P").Format(Color.red, 17).Align(TextAnchor.MiddleRight).SetWork(new UIItemBase.UIItemWork
+                uiCustom.AddText(col, row, GameTool.LS("smcfgs043")).Format(Color.red, 17).Align(TextAnchor.MiddleRight).SetWork(new UIItemBase.UIItemWork
                 {
                     Formatter = (x) => new string[] { CalSMTotalScore().ToString() },
                 });
-                uiCustom.AddButton(col, row += 2, () => SetLevelBase(), "Default");
-                uiCustom.AddButton(col, row += 2, () => SetLevel(0), "Level 0");
-                uiCustom.AddButton(col, row += 2, () => SetLevel(1), "Level 1");
-                uiCustom.AddButton(col, row += 2, () => SetLevel(2), "Level 2");
-                uiCustom.AddButton(col, row += 2, () => SetLevel(3), "Level 3");
-                uiCustom.AddButton(col, row += 2, () => SetLevel(4), "Level 4");
-                uiCustom.AddButton(col, row += 2, () => SetLevel(5), "Level 5");
-                uiCustom.AddButton(col, row += 2, () => SetLevel(6), "Level 6");
-                uiCustom.AddButton(col, row += 2, () => SetLevel(7), "Level 7");
-                uiCustom.AddButton(col, row += 2, () => SetLevel(8), "Level 8");
-                uiCustom.AddButton(col, row += 2, () => SetLevel(9), "Level 9");
-                uiCustom.AddButton(col, row += 2, () => SetLevel(10), "Level 10");
-                uiCustom.AddText(uiCustom.MidCol, uiCustom.LastRow, "You have to start a new game to apply these configs!").Format(Color.red, 17);
+                uiCustom.AddButton(col, row += 2, () => SetLevelBase(), GameTool.LS("smcfgs044"));
+                uiCustom.AddButton(col, row += 2, () => SetLevel(0), $"{GameTool.LS("smcfgs045")} 0");
+                uiCustom.AddButton(col, row += 2, () => SetLevel(1), $"{GameTool.LS("smcfgs045")} 1");
+                uiCustom.AddButton(col, row += 2, () => SetLevel(2), $"{GameTool.LS("smcfgs045")} 2");
+                uiCustom.AddButton(col, row += 2, () => SetLevel(3), $"{GameTool.LS("smcfgs045")} 3");
+                uiCustom.AddButton(col, row += 2, () => SetLevel(4), $"{GameTool.LS("smcfgs045")} 4");
+                uiCustom.AddButton(col, row += 2, () => SetLevel(5), $"{GameTool.LS("smcfgs045")} 5");
+                uiCustom.AddButton(col, row += 2, () => SetLevel(6), $"{GameTool.LS("smcfgs045")} 6");
+                uiCustom.AddButton(col, row += 2, () => SetLevel(7), $"{GameTool.LS("smcfgs045")} 7");
+                uiCustom.AddButton(col, row += 2, () => SetLevel(8), $"{GameTool.LS("smcfgs045")} 8");
+                uiCustom.AddButton(col, row += 2, () => SetLevel(9), $"{GameTool.LS("smcfgs045")} 9");
+                uiCustom.AddButton(col, row += 2, () => SetLevel(10), $"{GameTool.LS("smcfgs045")} 10");
+                uiCustom.AddText(uiCustom.MidCol, uiCustom.LastRow, GameTool.LS("smcfgs046")).Format(Color.red, 17);
 
                 SetWork();
             }, SetSMConfigs, true);
@@ -282,7 +289,6 @@ namespace MOD_nE7UL2.Mod
             tglSysNoRebirth.Set(false);
             tglSysOnelife.Set(false);
             tglNoGrowupFromBattles.Set(false);
-            //tglLowGradeDestiniesAtBeginning.Set(false);
             cbPriorityDestinyLevel.Set(0);
             tglAllowUpgradeNaturally.Set(false);
             tglEnableTrainer.Set(false);
@@ -313,7 +319,6 @@ namespace MOD_nE7UL2.Mod
             tglSysOnlyPortalAtCityAndSect.Set(level > 3);
             tglSysBossHasShield.Set(level > 4);
             tglNoGrowupFromBattles.Set(level > 5);
-            //tglLowGradeDestiniesAtBeginning.Set(level > 5);
             cbPriorityDestinyLevel.Set(0);
             tglSysHideReload.Set(level > 6);
             tglSysSectNoExchange.Set(level > 7);
@@ -348,7 +353,6 @@ namespace MOD_nE7UL2.Mod
             SectNoExchange = tglSysSectNoExchange.Get().Parse<bool>();
             BossHasShield = tglSysBossHasShield.Get().Parse<bool>();
             NoGrowupFromBattles = tglNoGrowupFromBattles.Get().Parse<bool>();
-            //LowGradeDestiniesAtBeginning = tglLowGradeDestiniesAtBeginning.Get().Parse<bool>();
             PriorityDestinyLevel = cbPriorityDestinyLevel.Get().Parse<int>();
             AllowUpgradeNaturally = tglAllowUpgradeNaturally.Get().Parse<bool>();
             EnableTrainer = tglEnableTrainer.Get().Parse<bool>();
