@@ -2,7 +2,7 @@
 
 namespace ModLib.Mod
 {
-    [Cache("$UI$", OrderIndex = 10001, CacheType = CacheAttribute.CType.Global)]
+    [Cache("$UI$", OrderIndex = 10, CacheType = CacheAttribute.CType.Global)]
     public class ModUIEvent : ModEvent
     {
         public override void OnTimeUpdate()

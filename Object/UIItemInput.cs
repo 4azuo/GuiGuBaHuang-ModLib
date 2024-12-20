@@ -16,9 +16,9 @@ namespace ModLib.Object
         protected virtual void Init(float x, float y, string def)
         {
             Pos(x, y);
-            //Size(160f, 28f);
+            Size(160f, 28f);
             Align(TextAnchor.MiddleLeft);
-            Format(Color.white, 14);
+            Format(Color.black, 14);
             Set(def);
         }
 

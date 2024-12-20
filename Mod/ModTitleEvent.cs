@@ -1,6 +1,7 @@
 ﻿using EGameTypeData;
 using ModLib.Object;
 using System.Diagnostics;
+using System.DirectoryServices.ActiveDirectory;
 using UnityEngine;
 
 namespace ModLib.Mod
@@ -29,13 +30,14 @@ namespace ModLib.Mod
             {
                 var uiCustom = new UICover<UILogin>(UIType.Login, (ui) =>
                 {
+                    var ver = g.mod.GetModProjectData(ModMaster.ModObj.ModId).ver;
                     ui.AddButton(ui.LastCol - 5, ui.FirstRow, () =>
                     {
                         Process.Start("https://github.com/4azuo/GuiGuBaHuang-ModLib");
-                    }, "Powered by Fouru's ModLib")
-                        .Size(300, 60)
+                    }, $"Powered by Fouru's ModLib\n{ver}")
+                        .Size(300, 72)
                         .Align(TextAnchor.MiddleCenter)
-                        .Format(Color.black, 19);
+                        .Format(Color.black, 18);
 
                     //ui.AddSelect(ui.LastCol - 14, ui.FirstRow, new string[] { "Translation: Off", "English", "Japanese", "Vietnamese", "Russian", "Latin", "Spanish" }, TranslateIndex)
                     //    .Align(TextAnchor.MiddleCenter)

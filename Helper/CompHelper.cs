@@ -1,11 +1,10 @@
 ﻿using System.Threading.Tasks;
 using UnityEngine;
-using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
 public static class CompHelper
 {
-    public static T Replace<T>(this T obj, Transform transform = null) where T : MonoBehaviour
+    public static T Replace<T>(this T obj, Transform transform = null) where T : Component
     {
         var t = transform ?? obj.transform.parent;
         var newObj = MonoBehaviour.Instantiate(obj, t, false).Pos(obj.transform);
@@ -38,15 +37,20 @@ public static class CompHelper
             o.onValueChange.RemoveAllListeners();
             o.onValueChanged.RemoveAllListeners();
         }
+        else if (newObj is Image)
+        {
+            var o = newObj as Image;
+            o.onCullStateChanged.RemoveAllListeners();
+        }
         return newObj;
     }
 
-    public static T Replace<T>(this T obj, UIBase ui) where T : MonoBehaviour
+    public static T Replace<T>(this T obj, UIBase ui) where T : Component
     {
         return Replace<T>(obj, ui.canvas.transform);
     }
 
-    public static T Copy<T>(this T obj, Transform transform = null) where T : MonoBehaviour
+    public static T Copy<T>(this T obj, Transform transform = null) where T : Component
     {
         var t = transform ?? obj.transform.parent;
         var newObj = MonoBehaviour.Instantiate(obj, t, false).Pos(obj.transform);
@@ -83,10 +87,15 @@ public static class CompHelper
             o.onValueChange.RemoveAllListeners();
             o.onValueChanged.RemoveAllListeners();
         }
+        else if (newObj is Image)
+        {
+            var o = newObj as Image;
+            o.onCullStateChanged.RemoveAllListeners();
+        }
         return newObj;
     }
 
-    public static T Copy<T>(this T obj, UIBase ui) where T : MonoBehaviour
+    public static T Copy<T>(this T obj, UIBase ui) where T : Component
     {
         return Copy<T>(obj, ui.canvas.transform);
     }
@@ -147,45 +156,51 @@ public static class CompHelper
         return obj;
     }
 
-    public static Vector3 Pos(this MonoBehaviour obj)
+    public static Vector3 Pos(this Component obj)
     {
         return obj.transform.position;
     }
 
-    public static T Pos<T>(this T obj, Transform origin, float deltaX = 0f, float deltaY = 0f, float deltaZ = 0f) where T : MonoBehaviour
+    public static T Pos<T>(this T obj, Transform origin, float deltaX = 0f, float deltaY = 0f, float deltaZ = 0f) where T : Component
     {
         obj.transform.position = new Vector3((origin?.position.x ?? 0) + deltaX, (origin?.position.y ?? 0) + deltaY, (origin?.position.z ?? 0) + deltaZ);
         return obj;
     }
 
-    public static T Pos<T>(this T obj, GameObject origin, float deltaX = 0f, float deltaY = 0f, float deltaZ = 0f) where T : MonoBehaviour
+    public static T Pos<T>(this T obj, GameObject origin, float deltaX = 0f, float deltaY = 0f, float deltaZ = 0f) where T : Component
     {
         obj.transform.position = new Vector3((origin?.transform?.position.x ?? 0) + deltaX, (origin?.transform?.position.y ?? 0) + deltaY, (origin?.transform?.position.z ?? 0) + deltaZ);
         return obj;
     }
 
-    public static T Pos<T>(this T obj, float deltaX, float deltaY, float deltaZ) where T : MonoBehaviour
+    public static T Pos<T>(this T obj, float deltaX, float deltaY, float deltaZ) where T : Component
     {
         obj.transform.position = new Vector3(deltaX, deltaY, deltaZ);
         return obj;
     }
 
-    public static T Pos<T>(this T obj, float deltaX, float deltaY) where T : MonoBehaviour
+    public static T Pos<T>(this T obj, float deltaX, float deltaY) where T : Component
     {
         obj.transform.position = new Vector3(deltaX, deltaY, obj.transform.position.z);
         return obj;
     }
 
-    public static T Size<T>(this T obj, float scaleX = 0f, float scaleY = 0f) where T : MonoBehaviour
+    public static T Size<T>(this T obj, float scaleX = 0f, float scaleY = 0f) where T : Component
     {
         Parallel.ForEach(obj.GetComponentsInChildren<RectTransform>(), s => s.sizeDelta = new Vector2(scaleX, scaleY));
+        return obj;
+    }
+
+    public static InputField Size(this InputField obj, float scaleX = 0f, float scaleY = 0f)
+    {
+        var r = obj.GetComponentInChildren<RectTransform>();
+        r.sizeDelta = new Vector2(scaleX, scaleY);
         return obj;
     }
 
     public static Image Size(this Image obj, float scaleX = 0f, float scaleY = 0f)
     {
         obj.rectTransform.sizeDelta = new Vector2(scaleX, scaleY);
-        //obj.sprite.
         return obj;
     }
 
@@ -196,9 +211,16 @@ public static class CompHelper
         return obj;
     }
 
-    public static T AddSize<T>(this T obj, float scaleX = 0f, float scaleY = 0f) where T : MonoBehaviour
+    public static T AddSize<T>(this T obj, float scaleX = 0f, float scaleY = 0f) where T : Component
     {
         Parallel.ForEach(obj.GetComponentsInChildren<RectTransform>(), s => s.sizeDelta = new Vector2(s.sizeDelta.x + scaleX, s.sizeDelta.y + scaleY));
+        return obj;
+    }
+
+    public static InputField AddSize(this InputField obj, float scaleX = 0f, float scaleY = 0f)
+    {
+        var r = obj.GetComponentInChildren<RectTransform>();
+        r.sizeDelta = new Vector2(r.sizeDelta.x + scaleX, r.sizeDelta.y + scaleY);
         return obj;
     }
 
