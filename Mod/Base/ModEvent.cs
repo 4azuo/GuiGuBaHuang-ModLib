@@ -8,14 +8,6 @@ namespace ModLib.Mod
     [TraceIgnore]
     public abstract class ModEvent : CachableObject
     {
-        [JsonIgnore]
-        public static ModEvent LastestObject { get; private set; }
-
-        public ModEvent()
-        {
-            LastestObject = this;
-        }
-
         #region Timer
         public virtual void OnTimeUpdate() { }
         public virtual void OnTimeUpdate200ms() { }

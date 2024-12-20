@@ -36,6 +36,7 @@
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="Attribute\SkillAttribute.cs" />
     <Compile Include="Attribute\ModOrderAttribute.cs" />
     <Compile Include="Attribute\InGameCustomSettingsAttribute.cs" />
     <Compile Include="Attribute\EventConditionAttribute.cs" />
@@ -72,9 +73,10 @@
     <Compile Include="Helper\EffectHelper.cs" />
     <Compile Include="Helper\TranslateHelper.cs" />
     <Compile Include="Helper\ValueHelper.cs" />
+    <Compile Include="Mod\Base\ModSkill.cs" />
     <Compile Include="Mod\ModBattleEvent.cs" />
     <Compile Include="Mod\Base\ModChild.cs" />
-    <Compile Include="Mod\Base\BattleEvent.cs" />
+    <Compile Include="Mod\ModSkillEvent.cs" />
     <Compile Include="Mod\Base\ModEvent.cs" />
     <Compile Include="Mod\Base\ModMaster_CommonEvent.cs" />
     <Compile Include="Mod\Base\ModMaster_GameEvent.cs" />

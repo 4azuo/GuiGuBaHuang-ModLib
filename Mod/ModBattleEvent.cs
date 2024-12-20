@@ -8,7 +8,7 @@ using System.Linq;
 namespace ModLib.Mod
 {
     [Cache("$BATTLE$", OrderIndex = 100)]
-    public sealed class ModBattleEvent : ModEvent
+    public class ModBattleEvent : ModEvent
     {
         #region DmgKey
         public enum DmgEnum
