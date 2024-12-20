@@ -1,5 +1,4 @@
 ﻿using UnityEngine;
-using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
 namespace ModLib.Object
@@ -13,7 +12,7 @@ namespace ModLib.Object
 
         public override UICustomBase UI => MainComponent.UI;
         public override UIItemBase Parent => MainComponent.Parent;
-        public override UIBehaviour ItemBehaviour => MainComponent.ItemBehaviour;
+        public override Component ItemBehaviour => MainComponent.ItemBehaviour;
         public override UIItemData ItemData
         {
             get => MainComponent.ItemData;
