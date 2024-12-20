@@ -6,17 +6,16 @@ namespace ModLib.Object
 {
     public class UIItemImage : UIItem<Image>
     {
-        public UIItemImage(UICustomBase ui, float x, float y, Sprite s, Image copySource = null) : base(ui, (copySource ?? ui.UISample2.ui.imgDownload).Copy(ui.UIBase))
+        public UIItemImage(UICustomBase ui, float x, float y, Sprite s, Image copySource = null) : base(ui, (copySource ?? ui.UISample2.ui.imgIcon).Copy(ui.UIBase))
         {
             Init(x, y, s);
         }
 
         protected virtual void Init(float x, float y, Sprite s)
         {
+            Size(64f, 64f);
             Pos(x, y);
             Set(s);
-            Size(120f, 40f);
-            //Item.SetNativeSize();
         }
 
         public override object Get()

@@ -17,7 +17,7 @@ namespace ModLib.Object
         public virtual bool HasText => InnerText != null;
         public virtual UICustomBase UI { get; set; }
         public virtual UIItemBase Parent { get; set; }
-        public virtual UIBehaviour ItemBehaviour { get; set; }
+        public virtual Component ItemBehaviour { get; set; }
         public virtual UIItemData ItemData { get; set; }
         public virtual UIItemWork ItemWork { get; set; }
         public virtual bool Enable { get; set; } = true;
@@ -102,7 +102,7 @@ namespace ModLib.Object
         #region Item
         public class UIItem : UIItemBase
         {
-            public UIBehaviour Item { get; private set; }
+            public UIBehaviour Item { get; set; }
 
             public UIItem(UICustomBase ui, UIBehaviour comp)
             {
