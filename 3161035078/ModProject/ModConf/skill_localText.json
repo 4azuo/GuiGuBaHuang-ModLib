@@ -1,0 +1,22 @@
+[
+	{
+		"id": "1000011000",
+		"key": "skill1000011000",
+		"en|ch|tc": "Gravity Well"
+	},
+	{
+		"id": "1000012000",
+		"key": "skill1000012000",
+		"en|ch|tc": "Create a circle. No one can escape."
+	},
+	{
+		"id": "1000011001",
+		"key": "skill1000011001",
+		"en|ch|tc": "Celestial Swordfall"
+	},
+	{
+		"id": "1000012001",
+		"key": "skill1000012001",
+		"en|ch|tc": "Create rain of swords."
+	}
+]
