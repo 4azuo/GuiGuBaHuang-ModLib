@@ -5,7 +5,7 @@ using Newtonsoft.Json;
 
 namespace ModLib.Mod
 {
-    public abstract class BattleEvent : ModEvent
+    public abstract class SkillEvent : BattleEvent
     {
     }
 }

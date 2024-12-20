@@ -935,6 +935,9 @@
     </Content>
     <Content Include="Issues.txt" />
   </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Skill\" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
     <PostBuildEvent>rd "$(ProjectDir)obj" /s /q

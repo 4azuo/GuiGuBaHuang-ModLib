@@ -5,7 +5,8 @@ using Newtonsoft.Json;
 
 namespace ModLib.Mod
 {
-    public abstract class BattleEvent : ModEvent
+    [TraceIgnore]
+    public abstract class ModSkill : CachableObject
     {
     }
 }

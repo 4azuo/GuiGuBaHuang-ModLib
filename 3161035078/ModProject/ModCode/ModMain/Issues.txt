@@ -9,3 +9,8 @@
 - kill in town, will be wanted
 
 - pet
+
+- local text trainer
+- ui scroll
+- skill
+- multiplayer?
