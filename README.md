@@ -119,11 +119,7 @@ If **CacheType**=Local then, the event will be created when load save.
 
 If **WorkOn**=Global then, the event will be deleted when load save.
 
-![image](https://github.com/4azuo/GuiGuBaHuang-ModLib/assets/11677054/3c404677-54fe-4e5f-af2e-8ec0618480f0)
-
-Can declare same ModEvent by adding **multi** CacheAttribute to the ModEvent.
-
-Last, All properties of ModEvent will be cached (.json). You can ignore cache and reconstrcut by **JsonIgnoreAttribute**
+Last, All properties of ModEvent will be cached (.json). You can ignore cache and reconstruct by **JsonIgnoreAttribute**
 
 ※I wrote some events which i need. You can add more to ModMaster.
 
