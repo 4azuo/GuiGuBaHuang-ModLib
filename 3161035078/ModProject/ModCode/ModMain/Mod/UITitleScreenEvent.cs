@@ -20,16 +20,11 @@ namespace MOD_nE7UL2.Mod
                 var ver = g.mod.GetModProjectData(ModMain.ModObj.ModId).ver;
                 new UICover<UILogin>(e.ui, (ui) =>
                 {
-                    var modTitleBtn = ui.UI.btnPaperChange.Copy()
-                        .Pos(ui.Columns[ui.MidCol], ui.Rows[ui.FirstRow])
+                    var parentTransform = ui.UI.btnSet.transform.parent;
+                    ui.AddButton(ui.MidCol, ui.FirstRow, () => Process.Start("explorer.exe", CacheHelper.GetCacheFolderName(ModId)), $"Taoist {ver}", ui.UI.btnPaperChange)
                         .Align(TextAnchor.MiddleCenter)
                         .Format(Color.white, 22)
-                        .Set($"Taoist {ver}");
-                    modTitleBtn.onClick.AddListener((UnityAction)(() =>
-                    {
-                        Process.Start("explorer.exe", CacheHelper.GetCacheFolderName(ModId));
-                    }));
-                    ui.Add(modTitleBtn);
+                        .SetParentTransform(parentTransform);
                 });
             }
         }
