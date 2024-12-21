@@ -511,19 +511,13 @@ namespace ModLib.Mod
         {
             //load
             CacheHelper.LoadGlobalCaches();
-            //add news
-            CacheHelper.LoadNewGlobalCaches();
-            //order
-            CacheHelper.Order();
         }
 
         public static void AddGameCaches()
         {
             //load
             CacheHelper.LoadGameCaches();
-            //add news
-            CacheHelper.LoadNewGameCaches();
-            //remove unuse global-cache
+            //remove unuse cache
             CacheHelper.RemoveUnuseGlobalCaches();
             //order
             CacheHelper.Order();
