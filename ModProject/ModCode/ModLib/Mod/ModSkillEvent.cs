@@ -30,7 +30,7 @@ namespace ModLib.Mod
 
             foreach (var mod in g.mod.allModPaths)
             {
-                if (g.mod.IsLoadMod(mod.t1))
+                if (g.mod.IsLoadMod(mod.t1) && mod.t1 != ModMaster.ModObj.ModId)
                 {
                     rs.AddRange(GetSkillTypes(mod.t1, AssemblyHelper.GetModChildAssembly(mod.t1)));
                 }

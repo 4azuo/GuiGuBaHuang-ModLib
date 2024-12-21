@@ -305,36 +305,61 @@ public static class CacheHelper
             return empty;
         var rs = ass.GetLoadableTypes().Where(x => x.IsClass && x.IsSubclassOf(typeof(CachableObject)) && x.GetCustomAttribute<CacheAttribute>() != null)
             .Select(x => Tuple.Create(modId, x.GetCustomAttribute<CacheAttribute>(), x)).ToList();
-        Dictionary<string, int> orderList = new Dictionary<string, int>();
         if (!ignoreModChild)
         {
             var child = rs.FirstOrDefault(x => x.Item3.IsSubclassOf(typeof(ModChild)));
             if (child == null)
             {
-                DebugHelper.WriteLine($"{modId}: You have to declare a ModChild!");
+                DebugHelper.WriteLine($"{modId}: You have to declare a ModChild!!!");
+                DebugHelper.Save();
                 return empty;
             }
             if (rs.Count(x => x.Item3.IsSubclassOf(typeof(ModChild))) > 1)
             {
-                DebugHelper.WriteLine($"{modId}: Only 1 ModChild in mod!");
+                DebugHelper.WriteLine($"{modId}: Only 1 ModChild in mod!!!");
+                DebugHelper.Save();
                 return empty;
+            }
+            if (child.Item1 != child.Item2.CacheId)
+            {
+                DebugHelper.WriteLine($"{modId}: ModChild's CacheId must be same ModId!!! ({child.Item1})");
+                DebugHelper.Save();
+                return empty;
+            }
+            var dupCheck = rs.FirstOrDefault(x => rs.Any(y => x != y && x.Item2.CacheId == y.Item2.CacheId));
+            if (dupCheck != null)
+            {
+                DebugHelper.WriteLine($"{modId}-{dupCheck.Item2.CacheId}: Exists another CachableObject has same CacheId!!!");
+                DebugHelper.Save();
+                return empty;
+            }
+            var orderCfg = child.Item3.GetCustomAttribute<ModOrderAttribute>();
+            if (orderCfg != null && File.Exists(ConfHelper.GetConfFilePath(modId, orderCfg.OrderFile)))
+            {
+                var orderList = JsonConvert.DeserializeObject<Dictionary<string, int>>(ConfHelper.ReadConfData(modId, orderCfg.OrderFile));
+                foreach (var r in rs)
+                {
+                    if (orderList.ContainsKey(r.Item2.CacheId))
+                        r.Item2.OrderIndex = orderList[r.Item2.CacheId];
+                }
+            }
+            var defOrderIndex = 9000;
+            foreach (var r in rs.Where(x => x.Item2.OrderIndex == 0))
+            {
+                r.Item2.OrderIndex = defOrderIndex++;
             }
             var orderCheck = rs.FirstOrDefault(x => !x.Item3.IsSubclassOf(typeof(ModChild)) && x.Item2.OrderIndex < 0);
             if (orderCheck != null)
             {
-                DebugHelper.WriteLine($"{modId}-{orderCheck.Item2.CacheId}: OrderIndex must greater than 0!");
+                DebugHelper.WriteLine($"{modId}-{orderCheck.Item2.CacheId}: OrderIndex must greater than 0!!!");
+                DebugHelper.Save();
                 return empty;
             }
-            var orderCfg = child.GetType().GetCustomAttribute<ModOrderAttribute>();
-            if (orderCfg != null)
-                orderList = JsonConvert.DeserializeObject<Dictionary<string, int>>(ConfHelper.ReadConfData(modId, orderCfg.OrderFile));
         }
         return rs.OrderBy(x =>
         {
             if (x.Item3.IsSubclassOf(typeof(ModChild)))
                 return -1;
-            if (orderList.ContainsKey(x.Item2.CacheId))
-                return orderList[x.Item2.CacheId];
             else
                 return x.Item2.OrderIndex;
         }).ToList();
