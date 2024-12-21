@@ -2,14 +2,12 @@
 using System;
 using System.Linq;
 using System.Reflection;
-using ModLib.Object;
-using static CacheMgr;
 using EBattleTypeData;
 using Newtonsoft.Json;
 
 namespace ModLib.Mod
 {
-    [Cache("$SKILL$", OrderIndex = 80)]
+    [Cache("$SKILL$", OrderIndex = 80, CacheType = CacheAttribute.CType.Local, WorkOn = CacheAttribute.WType.Local)]
     public class ModSkillEvent : ModEvent
     {
         [JsonIgnore]
