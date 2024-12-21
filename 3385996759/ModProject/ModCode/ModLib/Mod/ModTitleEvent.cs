@@ -27,7 +27,7 @@ namespace ModLib.Mod
             base.OnOpenUIEnd(e);
             if (e.uiType.uiName == UIType.Login.uiName)
             {
-                var uiCustom = new UICover<UILogin>(UIType.Login, (ui) =>
+                var ui = new UICover<UILogin>(UIType.Login);
                 {
                     var ver = g.mod.GetModProjectData(ModMaster.ModObj.ModId).ver;
                     var parentTransform = ui.UI.btnSet.transform.parent;
@@ -48,7 +48,7 @@ namespace ModLib.Mod
                     //            ModTranslateEvent.ClearCache();
                     //        }
                     //    });
-                });
+                }
             }
         }
 

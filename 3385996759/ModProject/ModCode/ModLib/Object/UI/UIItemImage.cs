@@ -6,7 +6,7 @@ namespace ModLib.Object
 {
     public class UIItemImage : UIItem<Image>
     {
-        public UIItemImage(UICustomBase ui, float x, float y, Sprite s, Image copySource = null) : base(ui, (copySource ?? ui.UISample2.ui.imgIcon).Copy(ui.UIBase))
+        public UIItemImage(UICustomBase ui, float x, float y, Sprite s, Image copySource = null) : base(ui, (copySource ?? UISampleHelper.ImageSample).Copy(ui.UIBase))
         {
             Init(x, y, s);
         }

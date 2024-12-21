@@ -4,7 +4,6 @@ using ModLib.Mod;
 using ModLib.Object;
 using System.Diagnostics;
 using UnityEngine;
-using UnityEngine.Events;
 
 namespace MOD_nE7UL2.Mod
 {
@@ -18,14 +17,14 @@ namespace MOD_nE7UL2.Mod
             if (e.uiType.uiName == UIType.Login.uiName)
             {
                 var ver = g.mod.GetModProjectData(ModMain.ModObj.ModId).ver;
-                new UICover<UILogin>(e.ui, (ui) =>
+                var ui = new UICover<UILogin>(e.ui);
                 {
                     var parentTransform = ui.UI.btnSet.transform.parent;
                     ui.AddButton(ui.MidCol, ui.FirstRow, () => Process.Start("explorer.exe", CacheHelper.GetCacheFolderName(ModId)), $"Taoist {ver}", ui.UI.btnPaperChange)
                         .Align(TextAnchor.MiddleCenter)
                         .Format(Color.white, 22)
                         .SetParentTransform(parentTransform);
-                });
+                }
             }
         }
     }

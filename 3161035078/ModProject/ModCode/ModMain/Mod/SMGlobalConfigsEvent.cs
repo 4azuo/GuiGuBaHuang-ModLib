@@ -43,8 +43,6 @@ namespace MOD_nE7UL2.Mod
         public bool SectNoExchange { get; set; } = false;
         public bool BossHasShield { get; set; } = false;
         public bool NoGrowupFromBattles { get; set; } = false;
-        [Obsolete]
-        public bool LowGradeDestiniesAtBeginning { get; set; } = false;
         public int PriorityDestinyLevel { get; set; } = 0;
         public bool AllowUpgradeNaturally { get; set; } = false;
         public bool EnableTrainer { get; set; } = false;
@@ -157,20 +155,20 @@ namespace MOD_nE7UL2.Mod
             base.OnOpenUIEnd(e);
             if (e.uiType.uiName == UIType.Login.uiName)
             {
-                new UICover<UILogin>(e.ui, (ui) =>
+                var ui = new UICover<UILogin>(e.ui);
                 {
                     var parentTransform = ui.UI.btnSet.transform.parent;
                     ui.AddButton(ui.MidCol, ui.FirstRow + 3, OpenSMConfigs, TITLE, ui.UI.btnSet)
                         .Align(TextAnchor.MiddleCenter)
                         .Format(Color.black, 24)
                         .SetParentTransform(parentTransform);
-                });
+                }
             }
         }
 
         private void OpenSMConfigs()
         {
-            new UICustom1(TITLE, (uiCustom) =>
+            var uiCustom = new UICustom1(TITLE, SetSMConfigs, true);
             {
                 int col, row;
 
@@ -249,7 +247,7 @@ namespace MOD_nE7UL2.Mod
                 uiCustom.AddText(uiCustom.MidCol, uiCustom.LastRow, GameTool.LS("smcfgs046")).Format(Color.red, 17);
 
                 SetWork();
-            }, SetSMConfigs, true);
+            }
         }
 
         private void SetWork()

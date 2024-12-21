@@ -1,0 +1,40 @@
+[
+	{
+		"id": "1000010000",
+		"name": "skill1000011000",
+		"icon": "0",
+		"className": "0",
+		"type": "2",
+		"gradeMin": "0",
+		"gradeMax": "0",
+		"skillID": "0",
+		"mpCost": "0",
+		"condition": "0",
+		"slowDown": "0",
+		"talent": "0",
+		"growExp": "0",
+		"basType": "0",
+		"basRequire": "0",
+		"animTrigger": "0",
+		"desc": "skill1000012000"
+	},
+	{
+		"id": "1000010001",
+		"name": "skill1000011001",
+		"icon": "0",
+		"className": "0",
+		"type": "2",
+		"gradeMin": "4",
+		"gradeMax": "0",
+		"skillID": "0",
+		"mpCost": "0",
+		"condition": "0",
+		"slowDown": "0",
+		"talent": "0",
+		"growExp": "0",
+		"basType": "basSword",
+		"basRequire": "&zizhiBase_3",
+		"animTrigger": "0",
+		"desc": "skill1000012001"
+	}
+]

@@ -144,8 +144,14 @@ namespace ModLib.Mod
         {
             DebugHelper.WriteLine($"Open: {e.uiType.uiName}");
 
+            EventHelper.RunMinorEvents(e);
+        }
+
+        public virtual void OnOpenUIEnd(OpenUIEnd e)
+        {
             if (loadModFlg)
             {
+                CallEvents("OnInitMod");
                 CallEvents("OnInitConf");
                 CallEvents("OnInitEObj");
                 CallEvents("OnLoadGlobals");
@@ -207,11 +213,6 @@ namespace ModLib.Mod
             EventHelper.RunMinorEvents(e);
         }
 
-        public virtual void OnOpenUIEnd(OpenUIEnd e)
-        {
-            EventHelper.RunMinorEvents(e);
-        }
-
         public virtual void OnCloseUIStart(CloseUIStart e)
         {
             EventHelper.RunMinorEvents(e);
@@ -219,9 +220,9 @@ namespace ModLib.Mod
 
         public virtual void OnCloseUIEnd(CloseUIEnd e)
         {
-            DebugHelper.WriteLine($"Close: {e.uiType.uiName}");
-
             EventHelper.RunMinorEvents(e);
+
+            DebugHelper.WriteLine($"Close: {e.uiType.uiName}");
         }
 
         public virtual void OnLoadNewGame()

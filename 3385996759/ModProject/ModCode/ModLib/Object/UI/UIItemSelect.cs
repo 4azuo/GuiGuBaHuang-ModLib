@@ -13,7 +13,7 @@ namespace ModLib.Object
         public int SelectedIndex { get; set; } = 0;
         public bool IsShownList => Item.isOn;
 
-        public UIItemSelect(UICustomBase ui, float x, float y, string[] selections, int def, Toggle copySource = null) : base(ui, (copySource ?? ui.UISample1.ui.tglLanguage).Copy(ui.UIBase).Pos(x + 0.15f, y - 0.01f).Size(160f, 28f).Align().Format(Color.black, 14))
+        public UIItemSelect(UICustomBase ui, float x, float y, string[] selections, int def, Toggle copySource = null) : base(ui, (copySource ?? UISampleHelper.SelectSample).Copy(ui.UIBase).Pos(x + 0.15f, y - 0.01f).Size(160f, 28f).Align().Format(Color.black, 14))
         {
             Init(selections, def);
         }

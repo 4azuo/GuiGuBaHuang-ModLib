@@ -1,0 +1,14 @@
+[
+	{
+		"__name": "Old But Strong: +2 Def yearly",
+		"id": "470004401",
+		"effectType": "105",
+		"value": "attach_ageYear_def_2_999999999"
+	},
+	{
+		"__name": "Old But Strong: +50 MapHP yearly",
+		"id": "470004402",
+		"effectType": "105",
+		"value": "attach_ageYear_hpMax_50_999999999"
+	}
+]

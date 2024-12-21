@@ -2,9 +2,7 @@
 {
     public static class ModLibConst
     {
-        public const int OLD_VERSION_NEED_UPDATE = 3399;
-        public const int OLD_VERSION_DIALOGUE = 999999001;
-        public const int OLD_VERSION_DIALOGUE_SKIP = 999999201;
+        public const string MODLIB_DLL = "ModLib.dll";
 
         public const int MONEY_PROP_ID = 10001;
         public const int CONTRIBUTION_PROP_ID = 10011;

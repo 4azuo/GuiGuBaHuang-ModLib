@@ -9,44 +9,6 @@ namespace ModLib.Object
 {
     public abstract class UICustomBase : IDisposable
     {
-        protected UISample1 uiSample1;
-        public virtual UISample1 UISample1
-        {
-            get
-            {
-                if (uiSample1 == null)
-                    uiSample1 = new UISample1();
-                return uiSample1;
-            }
-        }
-        protected UISample2 uiSample2;
-        public virtual UISample2 UISample2
-        {
-            get
-            {
-                if (uiSample2 == null)
-                    uiSample2 = new UISample2();
-                return uiSample2;
-            }
-        }
-        protected UISample3 uiSample3;
-        public virtual UISample3 UISample3
-        {
-            get
-            {
-                if (uiSample3 == null)
-                    uiSample3 = new UISample3();
-                return uiSample3;
-            }
-        }
-
-        protected void DeleteSampleUIs()
-        {
-            uiSample1?.Dispose();
-            uiSample2?.Dispose();
-            uiSample3?.Dispose();
-        }
-
         public UIBase UIBase { get; set; }
         public List<float> Columns { get; } = new List<float>();
         public List<float> Rows { get; } = new List<float>();
