@@ -1,0 +1,113 @@
+{
+	"__name": "Mod configurations",
+	
+	
+	
+	"LevelExpRatio": 1.00,
+	
+	
+	
+	"ArtifactDurableRatio": 5.0,
+	"ArtifactSpCostRatio": 6.0,
+	"ArtifactHpRatio": 6.0,
+	"ArtifactAtkRatio": 3.0,
+	"ArtifactDefRatio": 3.0,
+	
+	
+	
+	"SkillMasteryExpRatio1": 1.5,
+	"SkillMasteryExpRatio2": 1.6,
+	"SkillMasteryExpRatio3": 1.8,
+	"SkillMasteryExpRatio4": 2.0,
+	"SkillMasteryExpRatio5": 2.3,
+	"SkillMasteryExpRatio6": 2.6,
+	"SkillMasteryExpRatio7": 3.0,
+	"SkillMasteryExpRatio8": 3.5,
+	"SkillMasteryExpRatio9": 4.0,
+	"SkillMasteryExpRatio10": 5.0,
+	
+	
+	
+	"SkillMpCostRatio1": 1.7,
+	"SkillMpCostRatio2": 1.9,
+	"SkillMpCostRatio3": 2.6,
+	"SkillMpCostRatio4": 3.0,
+	"SkillMpCostRatio5": 4.0,
+	"SkillMpCostRatio6": 6.0,
+	"SkillMpCostRatio7": 9.0,
+	"SkillMpCostRatio8": 12.0,
+	"SkillMpCostRatio9": 18.0,
+	"SkillMpCostRatio10": 25.0,
+	
+	
+	
+	"SkillCdRatio1": 0.70,
+	"SkillCdRatio2": 0.72,
+	"SkillCdRatio3": 0.74,
+	"SkillCdRatio4": 0.76,
+	"SkillCdRatio5": 0.78,
+	"SkillCdRatio6": 0.80,
+	"SkillCdRatio7": 0.82,
+	"SkillCdRatio8": 0.84,
+	"SkillCdRatio9": 0.86,
+	"SkillCdRatio10": 0.88,
+	
+	
+	
+	"SkillZizhiBaseRatio1": 1.1,
+	"SkillZizhiBaseRatio2": 1.4,
+	"SkillZizhiBaseRatio3": 2.5,
+	"SkillZizhiBaseRatio4": 3.0,
+	"SkillZizhiBaseRatio5": 5.0,
+	"SkillZizhiBaseRatio6": 7.0,
+	"SkillZizhiBaseRatio7": 10.0,
+	"SkillZizhiBaseRatio8": 13.0,
+	"SkillZizhiBaseRatio9": 18.0,
+	"SkillZizhiBaseRatio10": 25.0,
+	"SkillZizhiAddRatio1": 1.10,
+	"SkillZizhiAddRatio2": 1.15,
+	"SkillZizhiAddRatio3": 1.20,
+	"SkillZizhiAddRatio4": 1.25,
+	"SkillZizhiAddRatio5": 1.35,
+	"SkillZizhiAddRatio6": 1.45,
+	"SkillZizhiAddRatio7": 1.65,
+	"SkillZizhiAddRatio8": 1.90,
+	"SkillZizhiAddRatio9": 2.20,
+	"SkillZizhiAddRatio10": 2.50,
+	
+	
+	
+	"SkillDaodianBaseRatio1": 1.10,
+	"SkillDaodianBaseRatio2": 1.20,
+	"SkillDaodianBaseRatio3": 1.30,
+	"SkillDaodianBaseRatio4": 1.40,
+	"SkillDaodianBaseRatio5": 1.50,
+	"SkillDaodianBaseRatio6": 1.65,
+	"SkillDaodianBaseRatio7": 1.80,
+	"SkillDaodianBaseRatio8": 1.95,
+	"SkillDaodianBaseRatio9": 2.10,
+	"SkillDaodianBaseRatio10": 2.40,
+	"SkillDaodianAddRatio1": 1.05,
+	"SkillDaodianAddRatio2": 1.10,
+	"SkillDaodianAddRatio3": 1.15,
+	"SkillDaodianAddRatio4": 1.20,
+	"SkillDaodianAddRatio5": 1.25,
+	"SkillDaodianAddRatio6": 1.30,
+	"SkillDaodianAddRatio7": 1.35,
+	"SkillDaodianAddRatio8": 1.40,
+	"SkillDaodianAddRatio9": 1.45,
+	"SkillDaodianAddRatio10": 1.50,
+	
+	
+	
+	"PowerUpPillEfxRatio1": 10.0,
+	"PowerUpPillEfxRatio2": 15.0,
+	"PowerUpPillEfxRatio3": 20.0,
+	"PowerUpPillEfxRatio4": 25.0,
+	"PowerUpPillEfxRatio5": 32.0,
+	"PowerUpPillEfxRatio6": 40.0,
+	"PowerUpPillEfxRatio7": 50.0,
+	"PowerUpPillEfxRatio8": 60.0,
+	"PowerUpPillEfxRatio9": 80.0,
+	"PowerUpPillEfxRatio10": 100.0,
+}

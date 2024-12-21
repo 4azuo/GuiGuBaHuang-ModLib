@@ -15,7 +15,7 @@ public static class ConfHelper
 
     public static string GetConfFolderPath(string modId)
     {
-        return Path.Combine(AssemblyHelper.GetModChildPathRoot(modId), CONF_FOLDER);
+        return Path.Combine(AssemblyHelper.GetModPathRoot(modId), CONF_FOLDER);
     }
 
     public static string ReadConfData(string modId, string fileName)
@@ -107,7 +107,7 @@ public static class ConfHelper
 
     public static void CopyConf(string modId)
     {
-        var orgFolder = $"{AssemblyHelper.GetModChildPathSource(modId)}\\ModConf\\";
+        var orgFolder = $"{AssemblyHelper.GetModPathSource(modId)}\\ModConf\\";
         if (Directory.Exists(orgFolder))
         {
             Directory.CreateDirectory(ConfHelper.GetConfFolderPath(modId));

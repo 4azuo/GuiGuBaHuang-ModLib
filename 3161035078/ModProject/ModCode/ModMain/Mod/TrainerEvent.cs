@@ -19,21 +19,27 @@ namespace MOD_nE7UL2.Mod
         public const float TELE_BTN_HEIGHT = 28;
         public const int MAX_NUMBER = 100000000;
 
+        public override void OnLoadClass(bool isNew, string modId, CacheAttribute attr)
+        {
+            base.OnLoadClass(isNew, modId, attr);
+            var smConfigs = EventHelper.GetEvent<SMLocalConfigsEvent>(ModConst.SM_LOCAL_CONFIGS_EVENT);
+            if (!smConfigs.Configs.EnableTrainer)
+            {
+                CacheHelper.RemoveCachableObject(this);
+            }
+        }
+
         public override void OnMonoUpdate()
         {
             base.OnMonoUpdate();
-            var smConfigs = EventHelper.GetEvent<SMLocalConfigsEvent>(ModConst.SM_LOCAL_CONFIGS_EVENT);
-            if (smConfigs.Configs.EnableTrainer)
+            if (Input.GetKey(KeyCode.LeftControl) && Input.GetKeyDown(KeyCode.Alpha1))
             {
-                if (Input.GetKey(KeyCode.LeftControl) && Input.GetKeyDown(KeyCode.Alpha1))
-                {
-                    OpenTrainer();
-                }
-                else
-                if (Input.GetKey(KeyCode.LeftControl) && Input.GetKeyDown(KeyCode.Alpha2))
-                {
-                    OpenTeleport();
-                }
+                OpenTrainer();
+            }
+            else
+            if (Input.GetKey(KeyCode.LeftControl) && Input.GetKeyDown(KeyCode.Alpha2))
+            {
+                OpenTeleport();
             }
         }
 
@@ -42,13 +48,13 @@ namespace MOD_nE7UL2.Mod
             if (!g.ui.HasUI(UIType.MapMain))
             {
                 var uiConfirm = g.ui.OpenUI<UICheckPopup>(UIType.CheckPopup);
-                uiConfirm.InitData("Teleport", "You have to on map!", 1);
+                uiConfirm.InitData("Trainer", "You have to on map!", 1);
                 return;
             }
 
             var player = g.world.playerUnit;
 
-            new UICustom1(TITLE, (uiTrainer) =>
+            var uiTrainer = new UICustom1(TITLE);
             {
                 uiTrainer.UI.isFastClose = true;
 
@@ -272,7 +278,7 @@ namespace MOD_nE7UL2.Mod
                 {
                     Formatter = (x) => new object[] { player.GetDynProperty(UnitDynPropertyEnum.Mine).value },
                 });
-            });
+            }
         }
 
         private void FormatButton1(UIItemButton btn)
@@ -316,7 +322,7 @@ namespace MOD_nE7UL2.Mod
                 return;
             }
 
-            new UICustom1(TITLE, (uiTele) =>
+            var uiTele = new UICustom1(TITLE);
             {
                 uiTele.UI.isFastClose = true;
 
@@ -340,7 +346,7 @@ namespace MOD_nE7UL2.Mod
                     }
                     FormatButton2(uiTele.AddButton(col, row[AREA_COL[areaId].Value0.Parse<int>()]++, () => Tele(build.GetOpenBuildPoints()[0]), build.name));
                 }
-            });
+            }
         }
 
         private void FormatButton2(UIItemButton btn)

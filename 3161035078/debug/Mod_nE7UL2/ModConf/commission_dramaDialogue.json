@@ -1,0 +1,38 @@
+[
+	{
+		"id": "480030100",
+		"uiType": "2",
+		"condition": "0",
+		"weight": "1",
+		"npcLeft": "0",
+		"npcRight": "0",
+		"speaker": "0",
+		"backgroud": "taohuayuanji12",
+		"soundsBg": "0",
+		"soundsEffect": "0",
+		"title": "0",
+		"dialogue": "commission480030100",
+		"openFunction": "0",
+		"function": "0",
+		"options": "480010101",
+		"nextDialogue": "0"
+	},
+	{
+		"id": "480030200",
+		"uiType": "2",
+		"condition": "0",
+		"weight": "1",
+		"npcLeft": "0",
+		"npcRight": "0",
+		"speaker": "0",
+		"backgroud": "longnvshoufa",
+		"soundsBg": "0",
+		"soundsEffect": "0",
+		"title": "0",
+		"dialogue": "commission480030200",
+		"openFunction": "0",
+		"function": "0",
+		"options": "480010101",
+		"nextDialogue": "0"
+	}
+]

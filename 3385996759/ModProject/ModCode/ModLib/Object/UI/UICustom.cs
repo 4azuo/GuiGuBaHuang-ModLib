@@ -7,19 +7,14 @@ namespace ModLib.Object
     {
         public static UICustom<T> LastUICustom { get; private set; } = null;
         public T UI { get; private set; }
-        public Action<UICustom<T>> InitComp { get; private set; }
 
-        public UICustom(Action<UICustom<T>> initComp) : base()
+        public UICustom() : base()
         {
             //init
             DeleteLastUI();
             UI = g.ui.OpenUI<T>(UIType.GetUIType(UITypeName()));
             LastUICustom = this;
             UIBase = UI;
-
-            InitComp = initComp;
-            InitComp.Invoke(this);
-            DeleteSampleUIs();
 
             //test
             //for (var c = 0; c < Columns.Count; c++)
@@ -55,7 +50,7 @@ namespace ModLib.Object
         protected override float MinHeight() => 3.4f;
         protected override float MaxHeight() => -3.5f;
 
-        public UICustom1(string title, Action<UICustom<UITextInfoLong>> initComp, Action okAct = null, bool showCancel = false, Action cancelAct = null) : base(initComp)
+        public UICustom1(string title, Action okAct = null, bool showCancel = false, Action cancelAct = null) : base()
         {
             UI.InitData(title, string.Empty, isShowCancel: showCancel);
             if (okAct != null)
@@ -73,7 +68,7 @@ namespace ModLib.Object
         protected override float MinHeight() => 1.35f;
         protected override float MaxHeight() => -1.30f;
 
-        public UICustom2(string title, Action<UICustom<UITextInfo>> initComp, Action okAct = null) : base(initComp)
+        public UICustom2(string title, Action okAct = null) : base()
         {
             UI.InitData(title, string.Empty);
             if (okAct != null)

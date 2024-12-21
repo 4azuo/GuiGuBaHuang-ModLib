@@ -86,26 +86,26 @@ namespace MOD_nE7UL2.Mod
             //DebugHelper.WriteLine("3");
             if (e.uiType.uiName == UIType.Town.uiName)
             {
-                new UICover<UITown>(e.ui, (ui) =>
+                var ui = new UICover<UITown>(e.ui);
                 {
                     ui.AddButton(ui.LastCol - 8, ui.FirstRow + 1, null, "Tax: {0} Spirit Stones").Size(300, 60).SetWork(new UIItemBase.UIItemWork
                     {
                         Formatter = (x) => new string[] { MapBuildPropertyEvent.GetTax(g.world.playerUnit).ToString() },
                         UpdateAct = (x) => x.Pos(ui.LastCol - 8, ui.FirstRow + 1),
                     }).Enable = false;
-                });
+                }
             }
             else
             if (e.uiType.uiName == UIType.School.uiName)
             {
-                new UICover<UISchool>(e.ui, (ui) =>
+                var ui = new UICover<UISchool>(e.ui);
                 {
                     ui.AddButton(ui.LastCol - 8, ui.FirstRow + 1, null, "Tax: {0} Spirit Stones").Size(300, 60).SetWork(new UIItemBase.UIItemWork
                     {
                         Formatter = (x) => new string[] { MapBuildPropertyEvent.GetTax(g.world.playerUnit).ToString() },
                         UpdateAct = (x) => x.Pos(ui.LastCol - 8, ui.FirstRow + 1),
                     }).Enable = false;
-                });
+                }
             }
             else
             if (e.uiType.uiName == UIType.MapMain.uiName)

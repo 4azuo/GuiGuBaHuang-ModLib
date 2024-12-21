@@ -8,7 +8,7 @@ namespace ModLib.Object
     {
         public override Text InnerText => Item.textComponent;
 
-        public UIItemInput(UICustomBase ui, float x, float y, string def, InputField copySource = null) : base(ui, (copySource ?? ui.UISample3.ui.iptDesc).Copy(ui.UIBase))
+        public UIItemInput(UICustomBase ui, float x, float y, string def, InputField copySource = null) : base(ui, (copySource ?? UISampleHelper.InputSample).Copy(ui.UIBase))
         {
             Init(x, y, def);
         }

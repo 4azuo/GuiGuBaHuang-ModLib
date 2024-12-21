@@ -1,0 +1,62 @@
+[
+	{
+		"__name": "Merchant Lvl-1",
+		"id": "420091001",
+		"effectType": "1",
+		"value": "talent_0_2"
+	},
+	{
+		"__name": "Merchant Lvl-2",
+		"id": "420091002",
+		"effectType": "1",
+		"value": "talent_0_4"
+	},
+	{
+		"__name": "Merchant Lvl-3",
+		"id": "420091003",
+		"effectType": "1",
+		"value": "talent_0_6"
+	},
+	{
+		"__name": "Merchant Lvl-4",
+		"id": "420091004",
+		"effectType": "1",
+		"value": "talent_0_8"
+	},
+	{
+		"__name": "Merchant Lvl-5",
+		"id": "420091005",
+		"effectType": "1",
+		"value": "talent_0_10"
+	},
+	{
+		"__name": "Merchant Lvl-6",
+		"id": "420091006",
+		"effectType": "1",
+		"value": "talent_0_13"
+	},
+	{
+		"__name": "Merchant Lvl-7",
+		"id": "420091007",
+		"effectType": "1",
+		"value": "talent_0_16"
+	},
+	{
+		"__name": "Merchant Lvl-8",
+		"id": "420091008",
+		"effectType": "1",
+		"value": "talent_0_19"
+	},
+	{
+		"__name": "Merchant Lvl-9",
+		"id": "420091009",
+		"effectType": "1",
+		"value": "talent_0_22"
+	},
+	{
+		"__name": "Merchant Lvl-10",
+		"id": "420091010",
+		"effectType": "1",
+		"value": "talent_0_25"
+	},
+]
