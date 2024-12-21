@@ -39,6 +39,13 @@ namespace MOD_nE7UL2.Mod
 
         private void OpenTrainer()
         {
+            if (!g.ui.HasUI(UIType.MapMain))
+            {
+                var uiConfirm = g.ui.OpenUI<UICheckPopup>(UIType.CheckPopup);
+                uiConfirm.InitData("Teleport", "You have to on map!", 1);
+                return;
+            }
+
             var player = g.world.playerUnit;
 
             new UICustom1(TITLE, (uiTrainer) =>
@@ -308,6 +315,7 @@ namespace MOD_nE7UL2.Mod
                 uiConfirm.InitData("Teleport", "You have to on map!", 1);
                 return;
             }
+
             new UICustom1(TITLE, (uiTele) =>
             {
                 uiTele.UI.isFastClose = true;

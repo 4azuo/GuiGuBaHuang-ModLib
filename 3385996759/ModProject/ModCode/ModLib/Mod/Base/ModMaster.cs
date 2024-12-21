@@ -536,18 +536,5 @@ namespace ModLib.Mod
                 DebugHelper.WriteLine($"Load EObj: {t.FullName}");
             }
         }
-
-        public static void CopyConf(string modId)
-        {
-            var orgFolder = $"{AssemblyHelper.GetModChildPathSource(modId)}\\ModConf\\";
-            if (Directory.Exists(orgFolder))
-            {
-                Directory.CreateDirectory(ConfHelper.GetConfFolderPath(modId));
-                foreach (var orgFile in Directory.GetFiles(orgFolder))
-                {
-                    File.Copy(orgFile, ConfHelper.GetConfFilePath(modId, Path.GetFileName(orgFile)), true);
-                }
-            }
-        }
     }
 }
