@@ -315,8 +315,6 @@ namespace ModLib.Mod
                 //    }
                 //}
                 //DebugHelper.Save();
-
-                CallEvents("OnInitMod");
             }
             catch (Exception ex)
             {
@@ -529,7 +527,9 @@ namespace ModLib.Mod
 
         public static void LoadEnumObj(Assembly ass)
         {
-            var enumTypes = ass.GetTypes().Where(x => x.IsClass && x.IsSubclassOf(typeof(EnumObject))).OrderBy(x => x.FullName).ToList();
+            if (ass == null)
+                return;
+            var enumTypes = ass.GetLoadableTypes().Where(x => x.IsClass && x.IsSubclassOf(typeof(EnumObject))).OrderBy(x => x.FullName).ToList();
             foreach (var t in enumTypes)
             {
                 RuntimeHelpers.RunClassConstructor(t.TypeHandle);

@@ -4,16 +4,10 @@ using ModLib.Mod;
 using System.Collections.Generic;
 using System.IO;
 using System.Reflection;
+using ModLib.Const;
 
 public static class AssemblyHelper
 {
-    public static List<Assembly> GetAssembliesInChildren()
-    {
-        var rs = g.mod.allModPaths.ToArray().Select(x => GetModChildAssembly(x.t1)).ToList();
-        rs.RemoveAll(item => item == null);
-        return rs;
-    }
-
     public static Assembly GetModLibAssembly()
     {
         return Assembly.GetAssembly(typeof(ModMaster));
@@ -24,22 +18,45 @@ public static class AssemblyHelper
         return Assembly.GetAssembly(ModMaster.ModObj.GetType());
     }
 
-    public static Assembly GetModChildAssembly(string modId)
+    public static Assembly GetModRootAssembly(string modId)
     {
-        var assPath = $"{GetModChildPathRoot(modId)}\\ModCode\\dll\\Mod_{modId}.dll";
+        var assPath = GetModPathRootAssembly(modId);
         if (!File.Exists(assPath))
             return null;
         return Assembly.LoadFrom(assPath);
     }
 
-    public static string GetModChildPathRoot(string modId)
+    public static Assembly GetModLibChildAssembly(string modId)
+    {
+        var assPath = GetModLibPathChildAssembly(modId);
+        if (!File.Exists(assPath))
+            return null;
+        return Assembly.LoadFrom(assPath);
+    }
+
+    public static string GetModPathRootAssembly(string modId)
+    {
+        return $"{GetModPathRootFolderAssembly(modId)}\\MOD_{modId}.dll";
+    }
+
+    public static string GetModLibPathChildAssembly(string modId)
+    {
+        return $"{GetModPathRootFolderAssembly(ModMaster.ModObj.ModId)}\\MOD_{modId}.dll";
+    }
+
+    public static string GetModPathRootFolderAssembly(string modId)
+    {
+        return $"{GetModPathRoot(modId)}\\ModCode\\dll\\";
+    }
+
+    public static string GetModPathRoot(string modId)
     {
         return g.mod.GetModPathRoot(modId);
     }
 
-    public static string GetModChildPathSource(string modId)
+    public static string GetModPathSource(string modId)
     {
-        return $"{GetModChildPathRoot(modId)}\\..\\..\\ModProject\\";
+        return $"{GetModPathRoot(modId)}\\..\\..\\ModProject\\";
     }
 
     public static List<Type> GetLoadableTypes(this Assembly assembly)
@@ -53,6 +70,23 @@ public static class AssemblyHelper
         catch (ReflectionTypeLoadException e)
         {
             return e.Types.Where(t => t != null).ToList();
+        }
+    }
+
+    public static void CopyAssemblies()
+    {
+        foreach (var mod in g.mod.allModPaths)
+        {
+            if (g.mod.IsLoadMod(mod.t1) && mod.t1 != ModMaster.ModObj.ModId)
+            {
+                foreach (var f in Directory.GetFiles(GetModPathRootFolderAssembly(mod.t1), "*.dll"))
+                {
+                    var fileName = Path.GetFileName(f);
+                    if (fileName == ModLibConst.MODLIB_DLL)
+                        continue;
+                    File.Copy(f, $"{GetModPathRootFolderAssembly(ModMaster.ModObj.ModId)}\\{fileName}", true);
+                }
+            }
         }
     }
 }

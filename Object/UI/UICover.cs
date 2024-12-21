@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace ModLib.Object
+﻿namespace ModLib.Object
 {
     public class UICover<T> : UICustomBase where T : UIBase
     {
@@ -12,29 +10,24 @@ namespace ModLib.Object
         protected override float MaxHeight() => UIHelper.SCREEN_Y_BOTTOM;
 
         public T UI { get; private set; }
-        public Action<UICover<T>> InitComp { get; private set; }
 
-        public UICover(UIBase ui, Action<UICover<T>> initComp) : base()
+        public UICover(UIBase ui) : base()
         {
-            Init(ui.uiType, initComp);
+            Init(ui.uiType);
         }
 
-        public UICover(UIType.UITypeBase uiType, Action<UICover<T>> initComp) : base()
+        public UICover(UIType.UITypeBase uiType) : base()
         {
-            Init(uiType, initComp);
+            Init(uiType);
         }
 
-        protected virtual void Init(UIType.UITypeBase uiType, Action<UICover<T>> initComp)
+        protected virtual void Init(UIType.UITypeBase uiType)
         {
             UITypeBase = uiType;
 
             //init
             UI = g.ui.GetUI<T>(UIType.GetUIType(UITypeName()));
             UIBase = UI;
-
-            InitComp = initComp;
-            InitComp.Invoke(this);
-            DeleteSampleUIs();
 
             UIHelper.UIs.Add(this);
         }

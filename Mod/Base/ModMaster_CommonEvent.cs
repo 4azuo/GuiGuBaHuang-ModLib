@@ -9,6 +9,8 @@ namespace ModLib.Mod
         public virtual void OnInitMod()
         {
             DebugHelper.WriteLine("Load mod.");
+            //AssemblyHelper.CopyAssemblies();
+            UISampleHelper.LoadUISampples();
         }
 
         //順番２
@@ -40,7 +42,7 @@ namespace ModLib.Mod
             {
                 if (g.mod.IsLoadMod(mod.t1) && mod.t1 != ModMaster.ModObj.ModId)
                 {
-                    LoadEnumObj(AssemblyHelper.GetModChildAssembly(mod.t1));
+                    LoadEnumObj(AssemblyHelper.GetModRootAssembly(mod.t1));
                 }
             }
 
