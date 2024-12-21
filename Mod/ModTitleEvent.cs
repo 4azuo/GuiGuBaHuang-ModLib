@@ -30,13 +30,12 @@ namespace ModLib.Mod
                 var uiCustom = new UICover<UILogin>(UIType.Login, (ui) =>
                 {
                     var ver = g.mod.GetModProjectData(ModMaster.ModObj.ModId).ver;
-                    ui.AddButton(ui.LastCol - 5, ui.FirstRow, () =>
-                    {
-                        Process.Start("https://github.com/4azuo/GuiGuBaHuang-ModLib");
-                    }, $"Powered by Fouru's ModLib\n{ver}")
-                        .Size(300, 72)
+                    var parentTransform = ui.UI.btnSet.transform.parent;
+                    ui.AddButton(ui.LastCol - 5, ui.FirstRow, () => Process.Start("https://github.com/4azuo/GuiGuBaHuang-ModLib"), $"Powered by Fouru's ModLib\n{ver}")
                         .Align(TextAnchor.MiddleCenter)
-                        .Format(Color.black, 18);
+                        .Format(Color.black, 18)
+                        .Size(300, 74)
+                        .SetParentTransform(parentTransform);
 
                     //ui.AddSelect(ui.LastCol - 14, ui.FirstRow, new string[] { "Translation: Off", "English", "Japanese", "Vietnamese", "Russian", "Latin", "Spanish" }, TranslateIndex)
                     //    .Align(TextAnchor.MiddleCenter)
