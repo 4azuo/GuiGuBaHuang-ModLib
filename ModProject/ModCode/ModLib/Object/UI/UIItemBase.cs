@@ -98,6 +98,12 @@ namespace ModLib.Object
             Component.Pos(org.Component.transform, x, y);
         }
 
+        public virtual UIItemBase SetParentTransform(Transform t)
+        {
+            Component.transform.SetParent(t);
+            return this;
+        }
+
         #region Data
         public class UIItemData
         {
