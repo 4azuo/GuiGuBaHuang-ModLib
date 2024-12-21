@@ -85,6 +85,10 @@ public static class ConfHelper
     {
         try
         {
+            //copy new configs to debug folder
+            CopyConf(modId);
+
+            //load conf
             var assetFolder = GetConfFolderPath(modId);
             if (Directory.Exists(assetFolder))
             {
@@ -98,6 +102,19 @@ public static class ConfHelper
         catch(Exception ex)
         {
             DebugHelper.WriteLine(ex);
+        }
+    }
+
+    public static void CopyConf(string modId)
+    {
+        var orgFolder = $"{AssemblyHelper.GetModChildPathSource(modId)}\\ModConf\\";
+        if (Directory.Exists(orgFolder))
+        {
+            Directory.CreateDirectory(ConfHelper.GetConfFolderPath(modId));
+            foreach (var orgFile in Directory.GetFiles(orgFolder))
+            {
+                File.Copy(orgFile, ConfHelper.GetConfFilePath(modId, Path.GetFileName(orgFile)), true);
+            }
         }
     }
 }
