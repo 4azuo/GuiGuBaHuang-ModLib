@@ -21,7 +21,7 @@ namespace MOD_nE7UL2.Mod
                 new UICover<UILogin>(e.ui, (ui) =>
                 {
                     var modTitleBtn = ui.UI.btnPaperChange.Copy()
-                        .Pos(ui.Columns[ui.MidCol], ui.Rows[ui.FirstRow], ui.UI.btnPaperChange.transform.position.z)
+                        .Pos(ui.Columns[ui.MidCol], ui.Rows[ui.FirstRow])
                         .Align(TextAnchor.MiddleCenter)
                         .Format(Color.white, 22)
                         .Set($"Taoist {ver}");
