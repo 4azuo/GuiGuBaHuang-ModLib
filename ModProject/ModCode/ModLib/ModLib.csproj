@@ -60,6 +60,7 @@
     <Compile Include="Enum\LuckRarityEnum.cs" />
     <Compile Include="Enum\UnitDynPropertyEnum.cs" />
     <Compile Include="Helper\CompHelper.cs" />
+    <Compile Include="Helper\AssemblyHelper.cs" />
     <Compile Include="Helper\GamevarHelper.cs" />
     <Compile Include="Helper\ConfHelper.cs" />
     <Compile Include="Helper\EnumerableHelper.cs" />

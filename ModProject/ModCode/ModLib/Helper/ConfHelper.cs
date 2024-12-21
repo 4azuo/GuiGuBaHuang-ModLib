@@ -15,7 +15,7 @@ public static class ConfHelper
 
     public static string GetConfFolderPath(string modId)
     {
-        return Path.Combine(GameHelper.GetModChildPathRoot(modId), CONF_FOLDER);
+        return Path.Combine(AssemblyHelper.GetModChildPathRoot(modId), CONF_FOLDER);
     }
 
     public static string ReadConfData(string modId, string fileName)
