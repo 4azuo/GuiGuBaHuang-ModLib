@@ -152,7 +152,6 @@ namespace MOD_nE7UL2.Mod
             });
         }
 
-        [EventCondition(IsInGame = 0)]
         public override void OnOpenUIEnd(OpenUIEnd e)
         {
             base.OnOpenUIEnd(e);
@@ -160,12 +159,11 @@ namespace MOD_nE7UL2.Mod
             {
                 new UICover<UILogin>(e.ui, (ui) =>
                 {
-                    var modConfigBtn = ui.UI.btnSet.Copy()
-                        .Pos(ui.Columns[ui.MidCol], ui.Rows[ui.FirstRow + 3])
-                        .Format(Color.black, 22)
-                        .Set(TITLE);
-                    modConfigBtn.onClick.AddListener((UnityAction)OpenSMConfigs);
-                    ui.Add(modConfigBtn);
+                    var parentTransform = ui.UI.btnSet.transform.parent;
+                    ui.AddButton(ui.MidCol, ui.FirstRow + 3, OpenSMConfigs, TITLE, ui.UI.btnSet)
+                        .Align(TextAnchor.MiddleCenter)
+                        .Format(Color.black, 24)
+                        .SetParentTransform(parentTransform);
                 });
             }
         }
