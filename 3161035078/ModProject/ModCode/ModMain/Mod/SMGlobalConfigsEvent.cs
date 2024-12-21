@@ -161,7 +161,8 @@ namespace MOD_nE7UL2.Mod
                 new UICover<UILogin>(e.ui, (ui) =>
                 {
                     var modConfigBtn = ui.UI.btnSet.Copy()
-                        .Pos(ui.Columns[ui.MidCol], ui.Rows[ui.FirstRow + 3], ui.UI.btnSet.transform.position.z)
+                        .Pos(ui.Columns[ui.MidCol], ui.Rows[ui.FirstRow + 3])
+                        .Format(Color.black, 22)
                         .Set(TITLE);
                     modConfigBtn.onClick.AddListener((UnityAction)OpenSMConfigs);
                     ui.Add(modConfigBtn);

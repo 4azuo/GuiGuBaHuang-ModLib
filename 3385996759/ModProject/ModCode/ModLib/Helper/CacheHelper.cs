@@ -285,14 +285,14 @@ public static class CacheHelper
     public static List<Tuple<string, CacheAttribute, Type>> GetCacheTypes()
     {
         var rs = new List<Tuple<string, CacheAttribute, Type>>();
-        rs.AddRange(GetCacheTypes(ModMaster.ModObj.ModId, GameHelper.GetModLibAssembly(), true));
-        rs.AddRange(GetCacheTypes(ModMaster.ModObj.ModId, GameHelper.GetModLibMainAssembly(), true));
+        rs.AddRange(GetCacheTypes(ModMaster.ModObj.ModId, AssemblyHelper.GetModLibAssembly(), true));
+        rs.AddRange(GetCacheTypes(ModMaster.ModObj.ModId, AssemblyHelper.GetModLibMainAssembly(), true));
 
         foreach (var mod in g.mod.allModPaths)
         {
             if (g.mod.IsLoadMod(mod.t1) && mod.t1 != ModMaster.ModObj.ModId)
             {
-                rs.AddRange(GetCacheTypes(mod.t1, GameHelper.GetModChildAssembly(mod.t1), false));
+                rs.AddRange(GetCacheTypes(mod.t1, AssemblyHelper.GetModChildAssembly(mod.t1), false));
             }
         }
         return rs;
@@ -301,18 +301,10 @@ public static class CacheHelper
     public static List<Tuple<string, CacheAttribute, Type>> GetCacheTypes(string modId, Assembly ass, bool ignoreModChild)
     {
         var empty = new List<Tuple<string, CacheAttribute, Type>>();
-        var rs = new List<Tuple<string, CacheAttribute, Type>>();
         if (ass == null)
             return empty;
-        var temp = ass.GetTypes().Where(x => x.IsClass && x.IsSubclassOf(typeof(CachableObject)) && x.GetCustomAttribute<CacheAttribute>() != null)
-            .Select(x => Tuple.Create(modId, x, x.GetCustomAttributes<CacheAttribute>().ToArray()));
-        foreach (var t in temp)
-        {
-            foreach (var c in t.Item3)
-            {
-                rs.Add(Tuple.Create(t.Item1, c, t.Item2));
-            }
-        }
+        var rs = ass.GetLoadableTypes().Where(x => x.IsClass && x.IsSubclassOf(typeof(CachableObject)) && x.GetCustomAttribute<CacheAttribute>() != null)
+            .Select(x => Tuple.Create(modId, x.GetCustomAttribute<CacheAttribute>(), x)).ToList();
         Dictionary<string, int> orderList = new Dictionary<string, int>();
         if (!ignoreModChild)
         {
@@ -330,7 +322,7 @@ public static class CacheHelper
             var orderCheck = rs.FirstOrDefault(x => !x.Item3.IsSubclassOf(typeof(ModChild)) && x.Item2.OrderIndex < 0);
             if (orderCheck != null)
             {
-                DebugHelper.WriteLine($"{modId}-: OrderIndex must greater than 0!");
+                DebugHelper.WriteLine($"{modId}-{orderCheck.Item2.CacheId}: OrderIndex must greater than 0!");
                 return empty;
             }
             var orderCfg = child.GetType().GetCustomAttribute<ModOrderAttribute>();
