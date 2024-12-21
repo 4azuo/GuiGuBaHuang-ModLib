@@ -6,7 +6,10 @@ using Newtonsoft.Json;
 namespace ModLib.Mod
 {
     [TraceIgnore]
-    public abstract class ModSkill : CachableObject
+    public abstract class ModSkill
     {
+        public virtual void OnLoadClass() { }
+        public virtual void OnLoad() { }
+        public virtual void OnUnload() { }
     }
 }
