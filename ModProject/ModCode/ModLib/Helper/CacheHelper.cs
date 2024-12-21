@@ -7,6 +7,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Reflection;
+using static UI_EditorTest5Base;
 
 public static class CacheHelper
 {
@@ -146,86 +147,64 @@ public static class CacheHelper
         return JsonConvert.DeserializeObject<T>(File.ReadAllText(cacheFile), JSON_SETTINGS);
     }
 
-    public static List<CachableObject> LoadGlobalCaches()
+    public static void LoadGlobalCaches()
     {
         var rs = new List<CachableObject>();
         foreach (var t in GetCacheTypes())
         {
-            foreach (var attr in t.Value.GetCustomAttributes<CacheAttribute>().Where(x => x.CacheType == CacheAttribute.CType.Global))
+            if (t.Item2.CacheType == CacheAttribute.CType.Global || t.Item3.IsSubclassOf(typeof(ModChild)))
             {
-                var cacheFile = GetGlobalCacheFilePath(t.Key, attr.CacheId);
+                var cacheFile = GetGlobalCacheFilePath(t.Item1, t.Item2.CacheId);
                 if (File.Exists(cacheFile))
                 {
-                    var e = (CachableObject)JsonConvert.DeserializeObject(File.ReadAllText(cacheFile), t.Value, JSON_SETTINGS);
-                    DebugHelper.WriteLine($"Load GlobalCache: Mod={t.Key}, Type={t.Value.FullName}, Id={e.CacheId}");
-                    e.OnLoadClass(false, t.Key, attr);
+                    var e = (CachableObject)JsonConvert.DeserializeObject(File.ReadAllText(cacheFile), t.Item3, JSON_SETTINGS);
+                    DebugHelper.WriteLine($"Load GlobalCache: Mod={t.Item1}, Type={t.Item3.FullName}, Id={t.Item2.CacheId}");
+                    e.OnLoadClass(false, t.Item1, t.Item2);
                     rs.Add(e);
                 }
-            }
-        }
-        AddCachableObjects(rs);
-        return rs;
-    }
-
-    public static List<CachableObject> LoadNewGlobalCaches()
-    {
-        var rs = new List<CachableObject>();
-        foreach (var t in GetCacheTypes())
-        {
-            foreach (var attr in t.Value.GetCustomAttributes<CacheAttribute>().Where(x => x.CacheType == CacheAttribute.CType.Global))
-            {
-                if (!CacheData.ContainsKey(attr.CacheId))
+                else
                 {
-                    var e = (CachableObject)Activator.CreateInstance(t.Value);
-                    DebugHelper.WriteLine($"Create GlobalCache: Mod={t.Key}, Type={t.Value.FullName}, Id={attr.CacheId}");
-                    e.OnLoadClass(true, t.Key, attr);
-                    rs.Add(e);
+                    if (!CacheData.ContainsKey(t.Item2.CacheId))
+                    {
+                        var e = (CachableObject)Activator.CreateInstance(t.Item3);
+                        DebugHelper.WriteLine($"Create GlobalCache: Mod={t.Item1}, Type={t.Item3.FullName}, Id={t.Item2.CacheId}");
+                        e.OnLoadClass(true, t.Item1, t.Item2);
+                        rs.Add(e);
+                    }
                 }
             }
         }
         AddCachableObjects(rs);
-        return rs;
     }
 
-    public static List<CachableObject> LoadGameCaches()
+    public static void LoadGameCaches()
     {
         var rs = new List<CachableObject>();
         foreach (var t in GetCacheTypes())
         {
-            foreach (var attr in t.Value.GetCustomAttributes<CacheAttribute>().Where(x => x.CacheType == CacheAttribute.CType.Local))
+            if (t.Item2.CacheType == CacheAttribute.CType.Local)
             {
-                var cacheFile = GetGameCacheFilePath(t.Key, attr.CacheId);
+                var cacheFile = GetGlobalCacheFilePath(t.Item1, t.Item2.CacheId);
                 if (File.Exists(cacheFile))
                 {
-                    var e = (CachableObject)JsonConvert.DeserializeObject(File.ReadAllText(cacheFile), t.Value, JSON_SETTINGS);
-                    DebugHelper.WriteLine($"Load GameCache: Mod={t.Key}, Type={t.Value.FullName}, Id={e.CacheId}");
-                    e.OnLoadClass(false, t.Key, attr);
+                    var e = (CachableObject)JsonConvert.DeserializeObject(File.ReadAllText(cacheFile), t.Item3, JSON_SETTINGS);
+                    DebugHelper.WriteLine($"Load GameCache: Mod={t.Item1}, Type={t.Item3.FullName}, Id={t.Item2.CacheId}");
+                    e.OnLoadClass(false, t.Item1, t.Item2);
                     rs.Add(e);
                 }
-            }
-        }
-        AddCachableObjects(rs);
-        return rs;
-    }
-
-    public static List<CachableObject> LoadNewGameCaches()
-    {
-        var rs = new List<CachableObject>();
-        foreach (var t in GetCacheTypes())
-        {
-            foreach (var attr in t.Value.GetCustomAttributes<CacheAttribute>().Where(x => x.CacheType == CacheAttribute.CType.Local))
-            {
-                if (!CacheData.ContainsKey(attr.CacheId))
+                else
                 {
-                    var e = (CachableObject)Activator.CreateInstance(t.Value);
-                    DebugHelper.WriteLine($"Create GameCache: Mod={t.Key}, Type={t.Value.FullName}, Id={attr.CacheId}");
-                    e.OnLoadClass(true, t.Key, attr);
-                    rs.Add(e);
+                    if (!CacheData.ContainsKey(t.Item2.CacheId))
+                    {
+                        var e = (CachableObject)Activator.CreateInstance(t.Item3);
+                        DebugHelper.WriteLine($"Create GameCache: Mod={t.Item1}, Type={t.Item3.FullName}, Id={t.Item2.CacheId}");
+                        e.OnLoadClass(true, t.Item1, t.Item2);
+                        rs.Add(e);
+                    }
                 }
             }
         }
         AddCachableObjects(rs);
-        return rs;
     }
 
     public static void RemoveUnuseGlobalCaches()
@@ -243,7 +222,7 @@ public static class CacheHelper
 
     public static void SaveGlobalCache(CachableObject item)
     {
-        DebugHelper.WriteLine($"Save global-caches: Mod={item.ModId}, Type={item.GetType().FullName}, Id={item.CacheId}, OrderIndex={item.OrderIndex}({item.InModOrderIndex()})");
+        DebugHelper.WriteLine($"Save global-caches: Mod={item.ModId}, Type={item.GetType().FullName}, Id={item.CacheId}, OrderIndex={item.OrderIndex}");
         File.WriteAllText(GetGlobalCacheFilePath(item.ModId, item.CacheId), JsonConvert.SerializeObject(item, JSON_SETTINGS));
     }
 
@@ -257,7 +236,7 @@ public static class CacheHelper
 
     public static void SaveGameCache(CachableObject item)
     {
-        DebugHelper.WriteLine($"Save game-caches: Mod={item.ModId}, Type={item.GetType().FullName}, Id={item.CacheId}, OrderIndex={item.OrderIndex}({item.InModOrderIndex()})");
+        DebugHelper.WriteLine($"Save game-caches: Mod={item.ModId}, Type={item.GetType().FullName}, Id={item.CacheId}, OrderIndex={item.OrderIndex}");
         File.WriteAllText(GetGameCacheFilePath(item.ModId, item.CacheId), JsonConvert.SerializeObject(item, JSON_SETTINGS));
     }
 
@@ -303,9 +282,9 @@ public static class CacheHelper
         CacheData.Clear();
     }
 
-    public static List<KeyValuePair<string, Type>> GetCacheTypes(bool includeInactive = false)
+    public static List<Tuple<string, CacheAttribute, Type>> GetCacheTypes(bool includeInactive = false)
     {
-        var rs = new List<KeyValuePair<string, Type>>();
+        var rs = new List<Tuple<string, CacheAttribute, Type>>();
         rs.AddRange(GetCacheTypes(ModMaster.ModObj.ModId, GameHelper.GetModLibAssembly()));
         rs.AddRange(GetCacheTypes(ModMaster.ModObj.ModId, GameHelper.GetModLibMainAssembly()));
 
@@ -319,31 +298,57 @@ public static class CacheHelper
         return rs;
     }
 
-    public static List<KeyValuePair<string, Type>> GetCacheTypes(string modId, Assembly ass)
+    public static List<Tuple<string, CacheAttribute, Type>> GetCacheTypes(string modId, Assembly ass)
     {
+        var empty = new List<Tuple<string, CacheAttribute, Type>>();
+        var rs = new List<Tuple<string, CacheAttribute, Type>>();
         if (ass == null)
-            return new List<KeyValuePair<string, Type>>();
-        return ass.GetTypes().Where(x => x.IsClass && x.IsSubclassOf(typeof(CachableObject))).Select(x => new KeyValuePair<string, Type>(modId, x)).ToList();
+            return empty;
+        var temp = ass.GetTypes().Where(x => x.IsClass && x.IsSubclassOf(typeof(CachableObject)) && x.GetCustomAttribute<CacheAttribute>() != null)
+            .Select(x => Tuple.Create(modId, x, x.GetCustomAttributes<CacheAttribute>().ToArray()));
+        foreach (var t in temp)
+        {
+            foreach (var c in t.Item3)
+            {
+                rs.Add(Tuple.Create(t.Item1, c, t.Item2));
+            }
+        }
+        var main = rs.FirstOrDefault(x => x.Item3.IsSubclassOf(typeof(ModChild)));
+        if (main == null)
+        {
+            DebugHelper.WriteLine($"{modId}: You have to declare a ModChild!");
+            return empty;
+        }
+        if (rs.Count(x => x.Item3.IsSubclassOf(typeof(ModChild))) > 1)
+        {
+            DebugHelper.WriteLine($"{modId}: Only 1 ModChild in mod!");
+            return empty;
+        }
+        var orderCheck = rs.FirstOrDefault(x => !x.Item3.IsSubclassOf(typeof(ModChild)) && x.Item2.OrderIndex < 0);
+        if (orderCheck != null)
+        {
+            DebugHelper.WriteLine($"{modId}-: OrderIndex must greater than 0!");
+            return empty;
+        }
+        var orderCfg = main.GetType().GetCustomAttribute<ModOrderAttribute>();
+        var orderList = orderCfg == null ? new Dictionary<string, int>() : JsonConvert.DeserializeObject<Dictionary<string, int>>(ConfHelper.ReadConfData(modId, orderCfg.OrderFile));
+        return rs.OrderBy(x =>
+        {
+            if (x.Item3.IsSubclassOf(typeof(ModChild)))
+                return -1;
+            if (orderList.ContainsKey(x.Item2.CacheId))
+                return orderList[x.Item2.CacheId];
+            else
+                return x.Item2.OrderIndex;
+        }).ToList();
     }
 
     public static void Order()
     {
-        foreach (var modChild in GetAllCachableObjects<ModChild>())
+        var orderList = GetCacheTypes();
+        CacheData = CacheData.OrderBy(x =>
         {
-            var orderCfg = modChild.GetType().GetCustomAttribute<ModOrderAttribute>();
-            if (orderCfg != null)
-            {
-                var orderList = JsonConvert.DeserializeObject<Dictionary<string, int>>(ConfHelper.ReadConfData(modChild.ModId, orderCfg.OrderFile));
-                var defaultIndex = 9000;
-                foreach (var e in modChild.GetChildren())
-                {
-                    if (orderList.ContainsKey(e.CacheId))
-                        e.OrderIndex = orderList[e.CacheId];
-                    else if (e.OrderIndex < 0)
-                        e.OrderIndex = defaultIndex++;
-                }
-            }
-        }
-        CacheData = CacheData.OrderBy(x => x.Value.InModOrderIndex()).ToDictionary(x => x.Key, x => x.Value);
+            return orderList.IndexOf(y => y.Item1 == x.Key && y.Item2.CacheId == x.Value.CacheId );
+        }).ToDictionary(x => x.Key, x => x.Value);
     }
 }
