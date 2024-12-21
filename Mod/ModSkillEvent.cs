@@ -21,20 +21,20 @@ namespace ModLib.Mod
         {
             if (ass == null)
                 return new List<KeyValuePair<string, Type>>();
-            return ass.GetTypes().Where(x => x.IsClass && x.IsSubclassOf(typeof(ModSkill))).Select(x => new KeyValuePair<string, Type>(modId, x)).ToList();
+            return ass.GetLoadableTypes().Where(x => x.IsClass && x.IsSubclassOf(typeof(ModSkill))).Select(x => new KeyValuePair<string, Type>(modId, x)).ToList();
         }
 
-        public List<KeyValuePair<string, Type>> GetSkillTypes(bool includeInactive = false)
+        public List<KeyValuePair<string, Type>> GetSkillTypes()
         {
             var rs = new List<KeyValuePair<string, Type>>();
-            rs.AddRange(GetSkillTypes(ModMaster.ModObj.ModId, GameHelper.GetModLibAssembly()));
-            rs.AddRange(GetSkillTypes(ModMaster.ModObj.ModId, GameHelper.GetModLibMainAssembly()));
+            rs.AddRange(GetSkillTypes(ModMaster.ModObj.ModId, AssemblyHelper.GetModLibAssembly()));
+            rs.AddRange(GetSkillTypes(ModMaster.ModObj.ModId, AssemblyHelper.GetModLibMainAssembly()));
 
             foreach (var mod in g.mod.allModPaths)
             {
-                if (g.mod.IsLoadMod(mod.t1) || includeInactive)
+                if (g.mod.IsLoadMod(mod.t1))
                 {
-                    rs.AddRange(GetSkillTypes(mod.t1, GameHelper.GetModChildAssembly(mod.t1)));
+                    rs.AddRange(GetSkillTypes(mod.t1, AssemblyHelper.GetModChildAssembly(mod.t1)));
                 }
             }
             return rs;

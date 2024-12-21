@@ -32,9 +32,9 @@ namespace ModLib.Mod
         public virtual void OnInitEObj()
         {
             DebugHelper.WriteLine("Load Enums.");
-            LoadEnumObj(GameHelper.GetModLibAssembly());
-            LoadEnumObj(GameHelper.GetModLibMainAssembly());
-            foreach (var ass in GameHelper.GetAssembliesInChildren())
+            LoadEnumObj(AssemblyHelper.GetModLibAssembly());
+            LoadEnumObj(AssemblyHelper.GetModLibMainAssembly());
+            foreach (var ass in AssemblyHelper.GetAssembliesInChildren())
             {
                 LoadEnumObj(ass);
             }
