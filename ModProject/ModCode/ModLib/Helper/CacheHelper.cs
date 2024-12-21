@@ -7,7 +7,6 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Reflection;
-using static UI_EditorTest5Base;
 
 public static class CacheHelper
 {
@@ -77,17 +76,10 @@ public static class CacheHelper
             CacheData.Add(item.CacheId, item);
     }
 
-    public static void AddCachableObjects(List<CachableObject> items)
+    public static void RemoveCachableObject(CachableObject c)
     {
-        foreach (var item in items)
-        {
-            AddCachableObject(item);
-        }
-    }
-
-    public static void RemoveCachableObject(CachableObject item)
-    {
-        CacheData.Remove(item.CacheId);
+        DebugHelper.WriteLine($"Unload Cache: Mod={c.ModId}, Type={c.GetType().FullName}, Id={c.CacheId}");
+        CacheData.Remove(c.CacheId);
     }
 
     public static List<CachableObject> GetGlobalCaches()
@@ -149,7 +141,6 @@ public static class CacheHelper
 
     public static void LoadGlobalCaches()
     {
-        var rs = new List<CachableObject>();
         foreach (var t in GetCacheTypes())
         {
             if (t.Item2.CacheType == CacheAttribute.CType.Global || t.Item3.IsSubclassOf(typeof(ModChild)))
@@ -160,7 +151,7 @@ public static class CacheHelper
                     var e = (CachableObject)JsonConvert.DeserializeObject(File.ReadAllText(cacheFile), t.Item3, JSON_SETTINGS);
                     DebugHelper.WriteLine($"Load GlobalCache: Mod={t.Item1}, Type={t.Item3.FullName}, Id={t.Item2.CacheId}");
                     e.OnLoadClass(false, t.Item1, t.Item2);
-                    rs.Add(e);
+                    AddCachableObject(e);
                 }
                 else
                 {
@@ -169,17 +160,15 @@ public static class CacheHelper
                         var e = (CachableObject)Activator.CreateInstance(t.Item3);
                         DebugHelper.WriteLine($"Create GlobalCache: Mod={t.Item1}, Type={t.Item3.FullName}, Id={t.Item2.CacheId}");
                         e.OnLoadClass(true, t.Item1, t.Item2);
-                        rs.Add(e);
+                        AddCachableObject(e);
                     }
                 }
             }
         }
-        AddCachableObjects(rs);
     }
 
     public static void LoadGameCaches()
     {
-        var rs = new List<CachableObject>();
         foreach (var t in GetCacheTypes())
         {
             if (t.Item2.CacheType == CacheAttribute.CType.Local)
@@ -190,7 +179,7 @@ public static class CacheHelper
                     var e = (CachableObject)JsonConvert.DeserializeObject(File.ReadAllText(cacheFile), t.Item3, JSON_SETTINGS);
                     DebugHelper.WriteLine($"Load GameCache: Mod={t.Item1}, Type={t.Item3.FullName}, Id={t.Item2.CacheId}");
                     e.OnLoadClass(false, t.Item1, t.Item2);
-                    rs.Add(e);
+                    AddCachableObject(e);
                 }
                 else
                 {
@@ -199,12 +188,11 @@ public static class CacheHelper
                         var e = (CachableObject)Activator.CreateInstance(t.Item3);
                         DebugHelper.WriteLine($"Create GameCache: Mod={t.Item1}, Type={t.Item3.FullName}, Id={t.Item2.CacheId}");
                         e.OnLoadClass(true, t.Item1, t.Item2);
-                        rs.Add(e);
+                        AddCachableObject(e);
                     }
                 }
             }
         }
-        AddCachableObjects(rs);
     }
 
     public static void RemoveUnuseGlobalCaches()
@@ -213,7 +201,6 @@ public static class CacheHelper
         {
             if (c.WorkOn == CacheAttribute.WType.Global)
             {
-                DebugHelper.WriteLine($"Unload Cache: Mod={c.ModId}, Type={c.GetType().FullName}, Id={c.CacheId}");
                 c.OnUnloadClass();
                 RemoveCachableObject(c);
             }
@@ -292,7 +279,7 @@ public static class CacheHelper
         {
             if (g.mod.IsLoadMod(mod.t1) && mod.t1 != ModMaster.ModObj.ModId)
             {
-                rs.AddRange(GetCacheTypes(mod.t1, AssemblyHelper.GetModChildAssembly(mod.t1), false));
+                rs.AddRange(GetCacheTypes(mod.t1, AssemblyHelper.GetModRootAssembly(mod.t1), false));
             }
         }
         return rs;
