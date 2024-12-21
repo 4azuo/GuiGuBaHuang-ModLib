@@ -20,12 +20,13 @@ namespace ModLib.Mod
             {
                 if (g.mod.IsLoadMod(mod.t1))
                 {
-                    //copy new configs to debug folder
-                    CopyConf(mod.t1);
                     //load configs
                     ConfHelper.LoadCustomConf(mod.t1);
                 }
             }
+
+            //log
+            DebugHelper.Save();
         }
 
         //順番３
@@ -34,10 +35,17 @@ namespace ModLib.Mod
             DebugHelper.WriteLine("Load Enums.");
             LoadEnumObj(AssemblyHelper.GetModLibAssembly());
             LoadEnumObj(AssemblyHelper.GetModLibMainAssembly());
-            foreach (var ass in AssemblyHelper.GetAssembliesInChildren())
+
+            foreach (var mod in g.mod.allModPaths)
             {
-                LoadEnumObj(ass);
+                if (g.mod.IsLoadMod(mod.t1) && mod.t1 != ModMaster.ModObj.ModId)
+                {
+                    LoadEnumObj(AssemblyHelper.GetModChildAssembly(mod.t1));
+                }
             }
+
+            //log
+            DebugHelper.Save();
         }
 
         //順番４
