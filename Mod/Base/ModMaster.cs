@@ -511,6 +511,8 @@ namespace ModLib.Mod
         {
             //load
             CacheHelper.LoadGlobalCaches();
+            //log
+            DebugHelper.Save();
         }
 
         public static void AddGameCaches()
@@ -521,6 +523,8 @@ namespace ModLib.Mod
             CacheHelper.RemoveUnuseGlobalCaches();
             //order
             CacheHelper.Order();
+            //log
+            DebugHelper.Save();
         }
 
         public static void LoadEnumObj(Assembly ass)
