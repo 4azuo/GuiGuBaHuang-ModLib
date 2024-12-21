@@ -5,13 +5,16 @@ using System.Reflection;
 using ModLib.Object;
 using static CacheMgr;
 using EBattleTypeData;
+using Newtonsoft.Json;
 
 namespace ModLib.Mod
 {
     [Cache("$SKILL$", OrderIndex = 80)]
     public class ModSkillEvent : ModEvent
     {
+        [JsonIgnore]
         public List<ModSkill> SkillList { get; } = new List<ModSkill>();
+        [JsonIgnore]
         public List<ModSkill> ActiveSkillList { get; } = new List<ModSkill>();
 
         public List<KeyValuePair<string, Type>> GetSkillTypes(string modId, Assembly ass)
@@ -47,7 +50,7 @@ namespace ModLib.Mod
                 {
                     var e = (ModSkill)Activator.CreateInstance(t.Value);
                     DebugHelper.WriteLine($"Load Skill: Mod={t.Key}, Type={t.Value.FullName}, Id={cacheAttr.CacheId}");
-                    e.OnLoadClass(true, t.Key, cacheAttr);
+                    //e.OnLoadClass(true, t.Key, cacheAttr);
                     SkillList.Add(e);
                 }
             }
@@ -64,7 +67,11 @@ namespace ModLib.Mod
             ActiveSkillList.Clear();
             foreach (var t in SkillList)
             {
-
+                if (!ActiveSkillList.Contains(t))
+                {
+                    ActiveSkillList.Add(t);
+                    //t.
+                }
             }
         }
         
