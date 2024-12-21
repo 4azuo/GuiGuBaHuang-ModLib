@@ -285,20 +285,20 @@ public static class CacheHelper
     public static List<Tuple<string, CacheAttribute, Type>> GetCacheTypes(bool includeInactive = false)
     {
         var rs = new List<Tuple<string, CacheAttribute, Type>>();
-        rs.AddRange(GetCacheTypes(ModMaster.ModObj.ModId, GameHelper.GetModLibAssembly()));
-        rs.AddRange(GetCacheTypes(ModMaster.ModObj.ModId, GameHelper.GetModLibMainAssembly()));
+        rs.AddRange(GetCacheTypes(ModMaster.ModObj.ModId, GameHelper.GetModLibAssembly(), true));
+        rs.AddRange(GetCacheTypes(ModMaster.ModObj.ModId, GameHelper.GetModLibMainAssembly(), true));
 
         foreach (var mod in g.mod.allModPaths)
         {
             if (g.mod.IsLoadMod(mod.t1) || includeInactive)
             {
-                rs.AddRange(GetCacheTypes(mod.t1, GameHelper.GetModChildAssembly(mod.t1)));
+                rs.AddRange(GetCacheTypes(mod.t1, GameHelper.GetModChildAssembly(mod.t1), false));
             }
         }
         return rs;
     }
 
-    public static List<Tuple<string, CacheAttribute, Type>> GetCacheTypes(string modId, Assembly ass)
+    public static List<Tuple<string, CacheAttribute, Type>> GetCacheTypes(string modId, Assembly ass, bool ignoreModChild)
     {
         var empty = new List<Tuple<string, CacheAttribute, Type>>();
         var rs = new List<Tuple<string, CacheAttribute, Type>>();
@@ -313,25 +313,30 @@ public static class CacheHelper
                 rs.Add(Tuple.Create(t.Item1, c, t.Item2));
             }
         }
-        var main = rs.FirstOrDefault(x => x.Item3.IsSubclassOf(typeof(ModChild)));
-        if (main == null)
+        Dictionary<string, int> orderList = new Dictionary<string, int>();
+        if (!ignoreModChild)
         {
-            DebugHelper.WriteLine($"{modId}: You have to declare a ModChild!");
-            return empty;
+            var child = rs.FirstOrDefault(x => x.Item3.IsSubclassOf(typeof(ModChild)));
+            if (child == null)
+            {
+                DebugHelper.WriteLine($"{modId}: You have to declare a ModChild!");
+                return empty;
+            }
+            if (rs.Count(x => x.Item3.IsSubclassOf(typeof(ModChild))) > 1)
+            {
+                DebugHelper.WriteLine($"{modId}: Only 1 ModChild in mod!");
+                return empty;
+            }
+            var orderCheck = rs.FirstOrDefault(x => !x.Item3.IsSubclassOf(typeof(ModChild)) && x.Item2.OrderIndex < 0);
+            if (orderCheck != null)
+            {
+                DebugHelper.WriteLine($"{modId}-: OrderIndex must greater than 0!");
+                return empty;
+            }
+            var orderCfg = child.GetType().GetCustomAttribute<ModOrderAttribute>();
+            if (orderCfg != null)
+                orderList = JsonConvert.DeserializeObject<Dictionary<string, int>>(ConfHelper.ReadConfData(modId, orderCfg.OrderFile));
         }
-        if (rs.Count(x => x.Item3.IsSubclassOf(typeof(ModChild))) > 1)
-        {
-            DebugHelper.WriteLine($"{modId}: Only 1 ModChild in mod!");
-            return empty;
-        }
-        var orderCheck = rs.FirstOrDefault(x => !x.Item3.IsSubclassOf(typeof(ModChild)) && x.Item2.OrderIndex < 0);
-        if (orderCheck != null)
-        {
-            DebugHelper.WriteLine($"{modId}-: OrderIndex must greater than 0!");
-            return empty;
-        }
-        var orderCfg = main.GetType().GetCustomAttribute<ModOrderAttribute>();
-        var orderList = orderCfg == null ? new Dictionary<string, int>() : JsonConvert.DeserializeObject<Dictionary<string, int>>(ConfHelper.ReadConfData(modId, orderCfg.OrderFile));
         return rs.OrderBy(x =>
         {
             if (x.Item3.IsSubclassOf(typeof(ModChild)))
@@ -348,7 +353,7 @@ public static class CacheHelper
         var orderList = GetCacheTypes();
         CacheData = CacheData.OrderBy(x =>
         {
-            return orderList.IndexOf(y => y.Item1 == x.Key && y.Item2.CacheId == x.Value.CacheId );
+            return orderList.IndexOf(y => y.Item1 == x.Key && y.Item2.CacheId == x.Value.CacheId);
         }).ToDictionary(x => x.Key, x => x.Value);
     }
 }
