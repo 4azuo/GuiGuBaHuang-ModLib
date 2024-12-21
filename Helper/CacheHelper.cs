@@ -307,6 +307,12 @@ public static class CacheHelper
             .Select(x => Tuple.Create(modId, x.GetCustomAttribute<CacheAttribute>(), x)).ToList();
         if (!ignoreModChild)
         {
+            if (rs.Count(x => x.Item3.IsSubclassOf(typeof(ModChild))) > 1)
+            {
+                DebugHelper.WriteLine($"{modId}: Only 1 ModChild in mod!!!");
+                DebugHelper.Save();
+                return empty;
+            }
             var child = rs.FirstOrDefault(x => x.Item3.IsSubclassOf(typeof(ModChild)));
             if (child == null)
             {
@@ -314,11 +320,11 @@ public static class CacheHelper
                 DebugHelper.Save();
                 return empty;
             }
-            if (rs.Count(x => x.Item3.IsSubclassOf(typeof(ModChild))) > 1)
+            else
             {
-                DebugHelper.WriteLine($"{modId}: Only 1 ModChild in mod!!!");
-                DebugHelper.Save();
-                return empty;
+                child.Item2.OrderIndex = -1;
+                child.Item2.CacheType = CacheAttribute.CType.Global;
+                child.Item2.WorkOn = CacheAttribute.WType.All;
             }
             if (child.Item1 != child.Item2.CacheId)
             {
@@ -356,13 +362,7 @@ public static class CacheHelper
                 return empty;
             }
         }
-        return rs.OrderBy(x =>
-        {
-            if (x.Item3.IsSubclassOf(typeof(ModChild)))
-                return -1;
-            else
-                return x.Item2.OrderIndex;
-        }).ToList();
+        return rs.OrderBy(x => x.Item2.OrderIndex).ToList();
     }
 
     public static void Order()
