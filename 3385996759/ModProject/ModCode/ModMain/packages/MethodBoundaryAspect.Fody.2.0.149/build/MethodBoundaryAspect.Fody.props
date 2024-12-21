@@ -1,5 +1,0 @@
-﻿<Project>
-  <ItemGroup>
-    <WeaverFiles Include="$(MsBuildThisFileDirectory)..\weaver\$(MSBuildThisFileName).dll" />
-  </ItemGroup>
-</Project>
