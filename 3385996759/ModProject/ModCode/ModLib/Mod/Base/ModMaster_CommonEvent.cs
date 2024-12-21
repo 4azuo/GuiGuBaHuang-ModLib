@@ -18,10 +18,13 @@ namespace ModLib.Mod
 
             foreach (var mod in g.mod.allModPaths)
             {
-                //copy new configs to debug folder
-                CopyConf(mod.t1);
-                //load configs
-                ConfHelper.LoadCustomConf(mod.t1);
+                if (g.mod.IsLoadMod(mod.t1))
+                {
+                    //copy new configs to debug folder
+                    CopyConf(mod.t1);
+                    //load configs
+                    ConfHelper.LoadCustomConf(mod.t1);
+                }
             }
         }
 

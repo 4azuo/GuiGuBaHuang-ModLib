@@ -8,7 +8,7 @@ public static class GameHelper
 {
     public static List<Assembly> GetAssembliesInChildren()
     {
-        var rs = g.mod.allModPaths.ToArray().Select(x => GetModChildAssembly(x.t1)).ToList();
+        var rs = g.mod.allModPaths.ToArray().Where(x => g.mod.IsLoadMod(x.t1)).Select(x => GetModChildAssembly(x.t1)).ToList();
         rs.RemoveAll(item => item == null);
         return rs;
     }

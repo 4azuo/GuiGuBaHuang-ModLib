@@ -282,7 +282,7 @@ public static class CacheHelper
         CacheData.Clear();
     }
 
-    public static List<Tuple<string, CacheAttribute, Type>> GetCacheTypes(bool includeInactive = false)
+    public static List<Tuple<string, CacheAttribute, Type>> GetCacheTypes()
     {
         var rs = new List<Tuple<string, CacheAttribute, Type>>();
         rs.AddRange(GetCacheTypes(ModMaster.ModObj.ModId, GameHelper.GetModLibAssembly(), true));
@@ -290,7 +290,7 @@ public static class CacheHelper
 
         foreach (var mod in g.mod.allModPaths)
         {
-            if (g.mod.IsLoadMod(mod.t1) || includeInactive)
+            if (g.mod.IsLoadMod(mod.t1) && mod.t1 != ModMaster.ModObj.ModId)
             {
                 rs.AddRange(GetCacheTypes(mod.t1, GameHelper.GetModChildAssembly(mod.t1), false));
             }
