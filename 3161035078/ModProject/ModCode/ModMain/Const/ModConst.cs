@@ -2,6 +2,8 @@
 {
     public static class ModConst
     {
+        public const string TAOIST_VERSION = "4.0.8";
+
         //Events
         public const string DEBUG_EVENT = "DEBUG";
         public const string QI_CUL_EVENT = "QiCulEvent";
