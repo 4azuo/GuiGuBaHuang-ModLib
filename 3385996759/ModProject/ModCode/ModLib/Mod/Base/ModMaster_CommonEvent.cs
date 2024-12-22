@@ -22,6 +22,8 @@ namespace ModLib.Mod
             {
                 if (g.mod.IsLoadMod(mod.t1))
                 {
+                    //copy img
+                    SpriteHelper.CopyImgs(mod.t1);
                     //load configs
                     ConfHelper.LoadCustomConf(mod.t1);
                 }

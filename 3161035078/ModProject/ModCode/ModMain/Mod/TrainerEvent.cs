@@ -63,50 +63,51 @@ namespace MOD_nE7UL2.Mod
 
                 col = 2; row = 2;
                 uiTrainer.AddText(col - 1, row - 1, GameTool.LS("trainer001")).Format(null, 13).Align(TextAnchor.MiddleLeft);
-                FormatButton1(uiTrainer.AddButton(col, row, Recover, "Recover ALL"));
-                FormatButton1(uiTrainer.AddButton(col, row += 2, AddMaxHP, "+100000 Max HP"));
-                FormatButton1(uiTrainer.AddButton(col, row += 2, ReduceMaxHP, "-100000 Max HP"));
-                FormatButton1(uiTrainer.AddButton(col, row += 2, AddMaxMP, "+10000 Max MP"));
-                FormatButton1(uiTrainer.AddButton(col, row += 2, ReduceMaxMP, "-10000 Max MP"));
-                FormatButton1(uiTrainer.AddButton(col, row += 2, AddMaxSP, "+1000 Max SP"));
-                FormatButton1(uiTrainer.AddButton(col, row += 2, ReduceMaxSP, "-1000 Max SP"));
-                FormatButton1(uiTrainer.AddButton(col, row += 2, AddBasis, "+100 ALL Basises"));
-                FormatButton1(uiTrainer.AddButton(col, row += 2, ReduceBasis, "-100 ALL Basises"));
-                FormatButton1(uiTrainer.AddButton(col, row += 2, AddAtk, "+10000 Attack"));
-                FormatButton1(uiTrainer.AddButton(col, row += 2, ReduceAtk, "-10000 Attack"));
-                FormatButton1(uiTrainer.AddButton(col, row += 2, AddDef, "+1000 Defence"));
-                FormatButton1(uiTrainer.AddButton(col, row += 2, ReduceDef, "-1000 Defence"));
+                FormatButton1(uiTrainer.AddButton(col, row, Recover, GameTool.LS("trainer002")));
+                FormatButton1(uiTrainer.AddButton(col, row += 2, AddMaxHP, GameTool.LS("trainer003")));
+                FormatButton1(uiTrainer.AddButton(col, row += 2, ReduceMaxHP, GameTool.LS("trainer004")));
+                FormatButton1(uiTrainer.AddButton(col, row += 2, AddMaxMP, GameTool.LS("trainer005")));
+                FormatButton1(uiTrainer.AddButton(col, row += 2, ReduceMaxMP, GameTool.LS("trainer006")));
+                FormatButton1(uiTrainer.AddButton(col, row += 2, AddMaxSP, GameTool.LS("trainer007")));
+                FormatButton1(uiTrainer.AddButton(col, row += 2, ReduceMaxSP, GameTool.LS("trainer008")));
+                FormatButton1(uiTrainer.AddButton(col, row += 2, AddBasis, GameTool.LS("trainer009")));
+                FormatButton1(uiTrainer.AddButton(col, row += 2, ReduceBasis, GameTool.LS("trainer010")));
+                FormatButton1(uiTrainer.AddButton(col, row += 2, AddAtk, GameTool.LS("trainer011")));
+                FormatButton1(uiTrainer.AddButton(col, row += 2, ReduceAtk, GameTool.LS("trainer012")));
+                FormatButton1(uiTrainer.AddButton(col, row += 2, AddDef, GameTool.LS("trainer013")));
+                FormatButton1(uiTrainer.AddButton(col, row += 2, ReduceDef, GameTool.LS("trainer014")));
 
                 col = 8; row = 2;
-                FormatButton1(uiTrainer.AddButton(col, row, OpenTeleport, "Teleport"));
-                FormatButton1(uiTrainer.AddButton(col, row += 2, AddMoney, "+1000000 Money"));
-                FormatButton1(uiTrainer.AddButton(col, row += 2, ReduceMoney, "-1000000 Money"));
-                FormatButton1(uiTrainer.AddButton(col, row += 2, AddDegree, "+1000 Degree"));
-                FormatButton1(uiTrainer.AddButton(col, row += 2, ReduceDegree, "-1000 Degree"));
-                FormatButton1(uiTrainer.AddButton(col, row += 2, AddContribution, "+100000 Contribution"));
-                FormatButton1(uiTrainer.AddButton(col, row += 2, ReduceContribution, "-100000 Contribution"));
-                FormatButton1(uiTrainer.AddButton(col, row += 2, AddAbilityExp, "+100000 Ability Point"));
-                FormatButton1(uiTrainer.AddButton(col, row += 2, ReduceAbilityExp, "-100000 Ability Point"));
+                FormatButton1(uiTrainer.AddButton(col, row, OpenTeleport, GameTool.LS("trainer015")));
+                FormatButton1(uiTrainer.AddButton(col, row += 2, AddMoney, GameTool.LS("trainer016")));
+                FormatButton1(uiTrainer.AddButton(col, row += 2, ReduceMoney, GameTool.LS("trainer017")));
+                FormatButton1(uiTrainer.AddButton(col, row += 2, AddDegree, GameTool.LS("trainer018")));
+                FormatButton1(uiTrainer.AddButton(col, row += 2, ReduceDegree, GameTool.LS("trainer019")));
+                FormatButton1(uiTrainer.AddButton(col, row += 2, AddContribution, GameTool.LS("trainer020")));
+                FormatButton1(uiTrainer.AddButton(col, row += 2, ReduceContribution, GameTool.LS("trainer021")));
+                FormatButton1(uiTrainer.AddButton(col, row += 2, AddAbilityExp, GameTool.LS("trainer022")));
+                FormatButton1(uiTrainer.AddButton(col, row += 2, ReduceAbilityExp, GameTool.LS("trainer023")));
 
                 col = 14; row = 2;
                 FormatButton1((UIItemButton)uiTrainer.AddButton(col, row, StopGame, "{0}").SetWork(new UIItemBase.UIItemWork
                 {
-                    Formatter = (x) => new object[] { Time.timeScale == 0 ? "Resume Game" : "Stop Game" },
+                    Formatter = (x) => new object[] { Time.timeScale == 0 ? GameTool.LS("trainer024") : GameTool.LS("trainer025") },
                 }));
-                FormatButton1(uiTrainer.AddButton(col, row += 2, () => SpeedGame(1), "Game Speed x1"));
-                FormatButton1(uiTrainer.AddButton(col, row += 2, () => SpeedGame(2), "Game Speed x2"));
-                FormatButton1(uiTrainer.AddButton(col, row += 2, () => SpeedGame(3), "Game Speed x3"));
-                FormatButton1(uiTrainer.AddButton(col, row += 2, Leveldown, "Leveldown"));
-                FormatButton1(uiTrainer.AddButton(col, row += 2, AddExp, "+10000 Exp"));
-                FormatButton1(uiTrainer.AddButton(col, row += 2, AddLife, "+100 Yearlfie"));
-                FormatButton1(uiTrainer.AddButton(col, row += 2, ReduceLife, "-100 Yearlfie"));
-                FormatButton1(uiTrainer.AddButton(col, row += 2, AddFootspeed, "+1000 Travel speed"));
-                FormatButton1(uiTrainer.AddButton(col, row += 2, ReduceFootspeed, "-1000 Travel speed"));
-                FormatButton1(uiTrainer.AddButton(col, row += 2, AddViewRange, "+10 View-range"));
-                FormatButton1(uiTrainer.AddButton(col, row += 2, ReduceViewRange, "-10 View-range"));
+                FormatButton1(uiTrainer.AddButton(col, row += 2, () => SpeedGame(1), GameTool.LS("trainer026")));
+                FormatButton1(uiTrainer.AddButton(col, row += 2, () => SpeedGame(2), GameTool.LS("trainer027")));
+                FormatButton1(uiTrainer.AddButton(col, row += 2, () => SpeedGame(3), GameTool.LS("trainer028")));
+                FormatButton1(uiTrainer.AddButton(col, row += 2, Levelup, GameTool.LS("trainer029")));
+                FormatButton1(uiTrainer.AddButton(col, row += 2, Leveldown, GameTool.LS("trainer030")));
+                FormatButton1(uiTrainer.AddButton(col, row += 2, AddExp, GameTool.LS("trainer031")));
+                FormatButton1(uiTrainer.AddButton(col, row += 2, AddLife, GameTool.LS("trainer032")));
+                FormatButton1(uiTrainer.AddButton(col, row += 2, ReduceLife, GameTool.LS("trainer033")));
+                FormatButton1(uiTrainer.AddButton(col, row += 2, AddFootspeed, GameTool.LS("trainer034")));
+                FormatButton1(uiTrainer.AddButton(col, row += 2, ReduceFootspeed, GameTool.LS("trainer035")));
+                FormatButton1(uiTrainer.AddButton(col, row += 2, AddViewRange, GameTool.LS("trainer036")));
+                FormatButton1(uiTrainer.AddButton(col, row += 2, ReduceViewRange, GameTool.LS("trainer037")));
 
                 col = 24; row = 2;
-                uiTrainer.AddText(col - 1, row++, "General Properties:").Format(null, 17, FontStyle.Italic).Align(TextAnchor.MiddleCenter);
+                uiTrainer.AddText(col - 1, row++, GameTool.LS("trainer038")).Format(null, 17, FontStyle.Italic).Align(TextAnchor.MiddleCenter);
                 uiTrainer.AddText(col, row, "HP: {0}/{1}").Align(TextAnchor.MiddleLeft).Format(Color.black, 15).SetWork(new UIItemBase.UIItemWork
                 {
                     Formatter = (x) => new object[] { player.GetDynProperty(UnitDynPropertyEnum.Hp).value, player.GetDynProperty(UnitDynPropertyEnum.HpMax).value },
@@ -202,7 +203,7 @@ namespace MOD_nE7UL2.Mod
                 });
 
                 row++;
-                uiTrainer.AddText(col - 1, row++, "Martial/Spiritual:").Format(null, 17, FontStyle.Italic).Align(TextAnchor.MiddleCenter);
+                uiTrainer.AddText(col - 1, row++, GameTool.LS("trainer039")).Format(null, 17, FontStyle.Italic).Align(TextAnchor.MiddleCenter);
                 uiTrainer.AddText(col, row, "Fire: {0}").Align(TextAnchor.MiddleLeft).Format(Color.black, 15).SetWork(new UIItemBase.UIItemWork
                 {
                     Formatter = (x) => new object[] { player.GetDynProperty(UnitDynPropertyEnum.BasisFire).value },
@@ -253,7 +254,7 @@ namespace MOD_nE7UL2.Mod
                 });
 
                 row++;
-                uiTrainer.AddText(col - 1, row++, "Artisanship:").Format(null, 17, FontStyle.Italic).Align(TextAnchor.MiddleCenter);
+                uiTrainer.AddText(col - 1, row++, GameTool.LS("trainer040")).Format(null, 17, FontStyle.Italic).Align(TextAnchor.MiddleCenter);
                 uiTrainer.AddText(col, row, "Alchemy: {0}").Align(TextAnchor.MiddleLeft).Format(Color.black, 15).SetWork(new UIItemBase.UIItemWork
                 {
                     Formatter = (x) => new object[] { player.GetDynProperty(UnitDynPropertyEnum.RefineElixir).value },
