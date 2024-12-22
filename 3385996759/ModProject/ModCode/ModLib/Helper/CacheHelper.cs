@@ -303,7 +303,7 @@ public static class CacheHelper
             var child = rs.FirstOrDefault(x => x.Item3.IsSubclassOf(typeof(ModChild)));
             if (child == null)
             {
-                DebugHelper.WriteLine($"{modId}: You have to declare a ModChild!!!");
+                DebugHelper.WriteLine($"{modId}: This mod is not powered by ModLib or you have to declare a ModChild!!!");
                 DebugHelper.Save();
                 return empty;
             }

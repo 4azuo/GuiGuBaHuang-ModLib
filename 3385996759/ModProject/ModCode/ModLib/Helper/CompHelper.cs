@@ -279,4 +279,24 @@ public static class CompHelper
             txt.text = def;
         return obj;
     }
+
+    //public static Sprite GetImage(string modId, string resourceName)
+    //{
+    //    Sprite sprite = null;
+    //    Texture2D texture;
+    //    var assembly = Assembly.GetExecutingAssembly();
+    //    using (System.IO.Stream stream = assembly.GetManifestResourceStream(resourceName))
+    //    {
+    //        byte[] buffer = new byte[stream.Length];
+    //        stream.Read(buffer, 0, buffer.Length);
+    //        texture = new Texture2D(2, 2);
+    //        ImageConversion.LoadImage(texture, buffer);
+    //        sprite = Sprite.Create(
+    //            texture,
+    //            new Rect(0, 0, texture.width, texture.height),
+    //            new Vector2(0.5f, 0.5f)
+    //        );
+    //    }
+    //    return sprite;
+    //}
 }

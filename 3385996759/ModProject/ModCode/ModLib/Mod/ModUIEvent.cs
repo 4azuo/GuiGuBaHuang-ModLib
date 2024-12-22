@@ -6,9 +6,10 @@ namespace ModLib.Mod
     [Cache("$UI$", OrderIndex = 10, CacheType = CacheAttribute.CType.Global, WorkOn = CacheAttribute.WType.All)]
     public class ModUIEvent : ModEvent
     {
-        public override void OnOpenUIStart(OpenUIStart e)
+
+        public override void OnOpenUIEnd(OpenUIEnd e)
         {
-            base.OnOpenUIStart(e);
+            base.OnOpenUIEnd(e);
             ClearUnuseUIs();
         }
 
@@ -27,7 +28,7 @@ namespace ModLib.Mod
             }
         }
 
-        [EventCondition(IsInBattle = Enum.HandleEnum.True, IsInGame = Enum.HandleEnum.True, IsWorldRunning = Enum.HandleEnum.False)]
+        [EventCondition(IsInBattle = Enum.HandleEnum.Ignore, IsInGame = Enum.HandleEnum.Ignore, IsWorldRunning = Enum.HandleEnum.False)]
         public override void OnTimeUpdate()
         {
             base.OnTimeUpdate();
@@ -39,7 +40,7 @@ namespace ModLib.Mod
                 }
                 catch
                 {
-                    ui?.Dispose();
+                    //ui?.Dispose();
                 }
             }
         }
