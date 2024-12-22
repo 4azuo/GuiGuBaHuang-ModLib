@@ -10,7 +10,6 @@ namespace ModLib.Mod
         {
             DebugHelper.WriteLine("Load mod.");
             //AssemblyHelper.CopyAssemblies();
-            UISampleHelper.LoadUISampples();
         }
 
         //順番２

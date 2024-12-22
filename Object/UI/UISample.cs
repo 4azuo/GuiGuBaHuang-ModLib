@@ -2,13 +2,15 @@
 
 namespace ModLib.Object
 {
-    public class UISample<T> : IDisposable where T : UIBase
+    public abstract class UISample<T> : IDisposable where T : UIBase
     {
+        public virtual UIType.UITypeBase UISampleType { get; }
+
         public T ui;
 
-        public UISample(UIType.UITypeBase uiType)
+        public UISample()
         {
-            ui = g.ui.OpenUI<T>(uiType);
+            ui = g.ui.OpenUI<T>(UISampleType);
             ui.gameObject.SetActive(false);
         }
 
@@ -17,5 +19,20 @@ namespace ModLib.Object
             ui.gameObject.SetActive(true);
             g.ui.CloseUI(ui);
         }
+    }
+
+    public class UISample1 : UISample<UIGameSetting>
+    {
+        public override UIType.UITypeBase UISampleType => UIType.GameSetting;
+    }
+
+    public class UISample2 : UISample<UIPropInfo>
+    {
+        public override UIType.UITypeBase UISampleType => UIType.PropInfo;
+    }
+
+    public class UISample3 : UISample<UIModWorkshopUpload>
+    {
+        public override UIType.UITypeBase UISampleType => UIType.ModWorkshopUpload;
     }
 }

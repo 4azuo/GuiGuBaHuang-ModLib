@@ -68,7 +68,6 @@
     <Compile Include="Helper\ItemHelper.cs" />
     <Compile Include="Helper\BuildHelper.cs" />
     <Compile Include="Helper\SkillHelper.cs" />
-    <Compile Include="Helper\UISampleHelper.cs" />
     <Compile Include="Helper\UIHelper.cs" />
     <Compile Include="Helper\GameHelper.cs" />
     <Compile Include="Helper\TraceHelper.cs" />
