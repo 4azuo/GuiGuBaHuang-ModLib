@@ -4,45 +4,61 @@ using UnityEngine.UI;
 
 public static class CompHelper
 {
-    public static T Replace<T>(this T obj, Transform transform = null) where T : Component
+    public static T Init<T>(this T newObj) where T : Component
     {
-        var t = transform ?? obj.transform.parent;
-        var newObj = MonoBehaviour.Instantiate(obj, t, false).Pos(obj.transform);
-        newObj.gameObject.SetActive(true);
-        obj.gameObject.SetActive(false);
         if (newObj is Button)
         {
             var o = newObj as Button;
-            o.onClick.RemoveAllListeners();
+            o.onClick = new Button.ButtonClickedEvent();
         }
         else if (newObj is Slider)
         {
             var o = newObj as Slider;
-            o.onValueChanged.RemoveAllListeners();
+            o.onValueChanged = new Slider.SliderEvent();
         }
         else if (newObj is Toggle)
         {
             var o = newObj as Toggle;
-            o.onValueChanged.RemoveAllListeners();
+            o.group = null;
+            o.SetIsOnWithoutNotify(false);
+            o.onValueChanged = new Toggle.ToggleEvent();
         }
         else if (newObj is InputField)
         {
             var o = newObj as InputField;
+            o.text = string.Empty;
+            o.SetPlaceHolder(string.Empty);
             o.onValidateInput = null;
             o.characterValidation = InputField.CharacterValidation.None;
             o.characterLimit = -1;
             o.contentType = InputField.ContentType.Standard;
             o.shouldActivateOnSelect = true;
-            o.onEndEdit.RemoveAllListeners();
-            o.onValueChange.RemoveAllListeners();
-            o.onValueChanged.RemoveAllListeners();
+            o.onEndEdit = new InputField.SubmitEvent();
+            o.onValueChange = new InputField.OnChangeEvent();
+            o.onValueChanged = new InputField.OnChangeEvent();
         }
         else if (newObj is Image)
         {
             var o = newObj as Image;
-            o.onCullStateChanged.RemoveAllListeners();
+            o.onCullStateChanged = new Image.CullStateChangedEvent();
         }
         return newObj;
+    }
+
+    public static T Create<T>(this T obj) where T : Component
+    {
+        var newObj = Object.Instantiate(obj);
+        newObj.gameObject.SetActive(false);
+        return newObj.Init();
+    }
+
+    public static T Replace<T>(this T obj, Transform transform = null) where T : Component
+    {
+        var t = transform ?? obj.transform.parent;
+        var newObj = Object.Instantiate(obj, t, false).Pos(obj.transform);
+        newObj.gameObject.SetActive(true);
+        obj.gameObject.SetActive(false);
+        return newObj.Init();
     }
 
     public static T Replace<T>(this T obj, UIBase ui) where T : Component
@@ -53,46 +69,9 @@ public static class CompHelper
     public static T Copy<T>(this T obj, Transform transform = null) where T : Component
     {
         var t = transform ?? obj.transform.parent;
-        var newObj = MonoBehaviour.Instantiate(obj, t, false).Pos(obj.transform);
+        var newObj = Object.Instantiate(obj, t, false).Pos(obj.transform);
         newObj.gameObject.SetActive(true);
-        if (newObj is Text)
-        {
-            var o = newObj as Text;
-            o.text = string.Empty;
-        }
-        else if (newObj is Button)
-        {
-            var o = newObj as Button;
-            o.onClick.RemoveAllListeners();
-        }
-        else if (newObj is Slider)
-        {
-            var o = newObj as Slider;
-            o.onValueChanged.RemoveAllListeners();
-        }
-        else if (newObj is Toggle)
-        {
-            var o = newObj as Toggle;
-            o.onValueChanged.RemoveAllListeners();
-        }
-        else if (newObj is InputField)
-        {
-            var o = newObj as InputField;
-            o.onValidateInput = null;
-            o.characterValidation = InputField.CharacterValidation.None;
-            o.characterLimit = -1;
-            o.contentType = InputField.ContentType.Standard;
-            o.shouldActivateOnSelect = true;
-            o.onEndEdit.RemoveAllListeners();
-            o.onValueChange.RemoveAllListeners();
-            o.onValueChanged.RemoveAllListeners();
-        }
-        else if (newObj is Image)
-        {
-            var o = newObj as Image;
-            o.onCullStateChanged.RemoveAllListeners();
-        }
-        return newObj;
+        return newObj.Init();
     }
 
     public static T Copy<T>(this T obj, UIBase ui) where T : Component
@@ -128,6 +107,12 @@ public static class CompHelper
         return obj;
     }
 
+    public static InputField Align(this InputField obj, TextAnchor tanchor = TextAnchor.MiddleLeft, VerticalWrapMode vMode = VerticalWrapMode.Overflow, HorizontalWrapMode hMode = HorizontalWrapMode.Overflow)
+    {
+        obj.textComponent.Align(tanchor, vMode, hMode);
+        return obj;
+    }
+
     public static Text Format(this Text obj, Color? color = null, int fsize = 15, FontStyle fstype = FontStyle.Normal)
     {
         obj.fontSize = fsize;
@@ -153,6 +138,12 @@ public static class CompHelper
         {
             txt.Format(color, fsize, fstype);
         }
+        return obj;
+    }
+
+    public static InputField Format(this InputField obj, Color? color = null, int fsize = 15, FontStyle fstype = FontStyle.Normal)
+    {
+        obj.textComponent.Format(color, fsize, fstype);
         return obj;
     }
 
@@ -276,6 +267,14 @@ public static class CompHelper
     public static Button Set(this Button obj, string def)
     {
         var txt = obj.GetComponentInChildren<Text>();
+        if (txt != null)
+            txt.text = def;
+        return obj;
+    }
+
+    public static InputField SetPlaceHolder(this InputField obj, string def)
+    {
+        var txt = obj.placeholder.GetComponentInChildren<Text>();
         if (txt != null)
             txt.text = def;
         return obj;
