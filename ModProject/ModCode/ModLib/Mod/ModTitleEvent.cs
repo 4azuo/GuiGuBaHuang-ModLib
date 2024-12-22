@@ -27,7 +27,7 @@ namespace ModLib.Mod
             base.OnOpenUIEnd(e);
             if (e.uiType.uiName == UIType.Login.uiName)
             {
-                new UICover<UILogin>(e.ui, (ui) =>
+                var ui = new UICover<UILogin>(UIType.Login);
                 {
                     var parentTransform = ui.UI.btnSet.transform.parent;
                     ui.AddButton(ui.LastCol - 5, ui.FirstRow, () => Process.Start("https://github.com/4azuo/GuiGuBaHuang-ModLib"), $"Powered by\nFouru's ModLib {ModLibConst.MODLIB_VERSION}")
@@ -47,7 +47,7 @@ namespace ModLib.Mod
                     //            ModTranslateEvent.ClearCache();
                     //        }
                     //    });
-                });
+                }
             }
         }
 

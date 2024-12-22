@@ -15,7 +15,7 @@ namespace ModLib.Object
         public int SelectedIndex { get; set; } = 0;
         public bool IsShownList => Item.isOn;
 
-        public UIItemSelect(UICustomBase ui, float x, float y, string[] selections, int def, Toggle copySource = null) : base(ui, (copySource ?? ui.UISample1.ui.tglLanguage).Copy(ui.UIBase).Pos(x + DELTA_WITH_INPUT, y).Size(180f, 26f).Align().Format(Color.black, 13))
+        public UIItemSelect(UICustomBase ui, float x, float y, string[] selections, int def, Toggle copySource = null) : base(ui, (copySource ?? UISampleHelper.SelectSample).Copy(ui.UIBase).Pos(x + DELTA_WITH_INPUT, y).Size(180f, 26f).Align().Format(Color.black, 13))
         {
             Init(selections, def);
         }
@@ -33,7 +33,7 @@ namespace ModLib.Object
             //clear
             foreach (var item in SelectionItems)
             {
-                UnityEngine.Object.DestroyImmediate(item);
+                UnityEngine.Object.Destroy(item);
             }
             SelectionItems.Clear();
 

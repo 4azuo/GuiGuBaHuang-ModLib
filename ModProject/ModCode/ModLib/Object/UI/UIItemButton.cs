@@ -12,7 +12,7 @@ namespace ModLib.Object
         public string FormatStr { get; set; }
         public Text ButtonLabel { get; set; }
 
-        public UIItemButton(UICustomBase ui, float x, float y, Action act, string format, Button copySource = null) : base(ui, (copySource ?? ui.UISample1.ui.btnSystemOK).Copy(ui.UIBase))
+        public UIItemButton(UICustomBase ui, float x, float y, Action act, string format, Button copySource = null) : base(ui, (copySource ?? UISampleHelper.ButtonSample).Copy(ui.UIBase))
         {
             Init(x, y, act, format);
         }
