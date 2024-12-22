@@ -1,2 +1,4 @@
 [
+	{ "id": -1000002000, "key": "trainer000", "en|ch|tc": "Cheating will destroy your experience." },
+	{ "id": -1000002001, "key": "trainer001", "en|ch|tc": "(HP/MP/SP/Mood/Stanima/Health)" },
 ]

@@ -59,10 +59,10 @@ namespace MOD_nE7UL2.Mod
                 uiTrainer.UI.isFastClose = true;
 
                 int col, row;
-                uiTrainer.AddText(uiTrainer.MidCol, uiTrainer.FirstRow, "Cheating will destroy your experience.").Format(Color.red, 17);
+                uiTrainer.AddText(uiTrainer.MidCol, uiTrainer.FirstRow, GameTool.LS("trainer000")).Format(Color.red, 17);
 
                 col = 2; row = 2;
-                uiTrainer.AddText(col - 1, row - 1, "(HP/MP/SP/Mood/Stanima/Health)").Format(null, 13).Align(TextAnchor.MiddleLeft);
+                uiTrainer.AddText(col - 1, row - 1, GameTool.LS("trainer001")).Format(null, 13).Align(TextAnchor.MiddleLeft);
                 FormatButton1(uiTrainer.AddButton(col, row, Recover, "Recover ALL"));
                 FormatButton1(uiTrainer.AddButton(col, row += 2, AddMaxHP, "+100000 Max HP"));
                 FormatButton1(uiTrainer.AddButton(col, row += 2, ReduceMaxHP, "-100000 Max HP"));
