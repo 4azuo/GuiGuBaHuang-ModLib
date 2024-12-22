@@ -8,17 +8,13 @@ namespace ModLib.Object
     {
         public override Text InnerText => Item.textComponent;
 
-        public UIItemInput(UICustomBase ui, float x, float y, string def, InputField copySource = null) : base(ui, (copySource ?? UISampleHelper.InputSample).Copy(ui.UIBase))
+        public UIItemInput(UICustomBase ui, float x, float y, string def, InputField copySource = null) : base(ui, (copySource ?? UISampleHelper.InputSample).Copy(ui.UIBase).Pos(x, y).Size(180f, 26f).Align().Format(Color.black, 13))
         {
-            Init(x, y, def);
+            Init(def);
         }
 
-        protected virtual void Init(float x, float y, string def)
+        protected virtual void Init(string def)
         {
-            Pos(x, y);
-            Size(160f, 28f);
-            Align(TextAnchor.MiddleLeft);
-            Format(Color.black, 14);
             Set(def);
         }
 

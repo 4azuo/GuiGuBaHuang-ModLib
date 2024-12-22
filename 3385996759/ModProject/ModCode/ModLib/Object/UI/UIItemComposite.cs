@@ -72,9 +72,9 @@ namespace ModLib.Object
             rs.Prefix = new UIItemText(ui, x, y, prefix);
             rs.Prefix.Item.Align(TextAnchor.MiddleRight);
             rs.Prefix.Parent = rs;
-            rs.MainComponent = new UIItemSelect(ui, x + UIHelper.UICUSTOM_DELTA_X * 1, y, selections, def, copySource);
+            rs.MainComponent = new UIItemSelect(ui, x + UIHelper.UICUSTOM_DELTA_X * 2, y, selections, def, copySource);
             rs.MainComponent.Parent = rs;
-            rs.Postfix = new UIItemText(ui, x + UIHelper.UICUSTOM_DELTA_X * 7, y, postfix);
+            rs.Postfix = new UIItemText(ui, x + UIHelper.UICUSTOM_DELTA_X * 8, y, postfix);
             rs.Postfix.Item.Align(TextAnchor.MiddleLeft);
             rs.Postfix.Parent = rs;
             return rs;
@@ -86,9 +86,9 @@ namespace ModLib.Object
             rs.Prefix = new UIItemText(ui, x, y, prefix);
             rs.Prefix.Item.Align(TextAnchor.MiddleRight);
             rs.Prefix.Parent = rs;
-            rs.MainComponent = new UIItemInput(ui, x + UIHelper.UICUSTOM_DELTA_X * 1, y, def, copySource);
+            rs.MainComponent = new UIItemInput(ui, x + UIHelper.UICUSTOM_DELTA_X * 4, y, def, copySource);
             rs.MainComponent.Parent = rs;
-            rs.Postfix = new UIItemText(ui, x + UIHelper.UICUSTOM_DELTA_X * 7, y, postfix);
+            rs.Postfix = new UIItemText(ui, x + UIHelper.UICUSTOM_DELTA_X * 8, y, postfix);
             rs.Postfix.Item.Align(TextAnchor.MiddleLeft);
             rs.Postfix.Parent = rs;
             return rs;
