@@ -22,6 +22,7 @@ namespace ModLib.Object
             //        AddText(c, r, "test");
 
             UIHelper.UIs.Add(this);
+            DebugHelper.WriteLine($"Create a UICustom for {UI.uiType.uiName}");
         }
 
         private void DeleteLastUI()
@@ -35,10 +36,12 @@ namespace ModLib.Object
 
         public override void Dispose()
         {
+            DebugHelper.WriteLine($"Dispose the UICustom of {UI.uiType.uiName}");
             UIHelper.UIs.Remove(this);
             Clear();
             if (this?.UI?.uiType != null && g.ui.HasUI(this.UI.uiType))
                 g.ui.CloseUI(this.UI);
+            GC.Collect();
         }
     }
 

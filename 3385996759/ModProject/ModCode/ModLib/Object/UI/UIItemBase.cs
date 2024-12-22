@@ -34,7 +34,11 @@ namespace ModLib.Object
 
         public abstract bool IsActive();
 
-        public abstract void Dispose();
+        public virtual void Dispose()
+        {
+            UI.Items.Remove(this);
+            UnityEngine.Object.DestroyImmediate(Component);
+        }
 
         public virtual void Update()
         {
@@ -139,12 +143,6 @@ namespace ModLib.Object
                 return Item.IsActive();
             }
 
-            public override void Dispose()
-            {
-                UI.Items.Remove(this);
-                MonoBehaviour.DestroyImmediate(Item);
-            }
-
             public override object Get()
             {
                 return Item;
@@ -169,12 +167,6 @@ namespace ModLib.Object
             public override bool IsActive()
             {
                 return Item.IsActive();
-            }
-
-            public override void Dispose()
-            {
-                UI.Items.Remove(this);
-                MonoBehaviour.DestroyImmediate(Item);
             }
         }
         #endregion

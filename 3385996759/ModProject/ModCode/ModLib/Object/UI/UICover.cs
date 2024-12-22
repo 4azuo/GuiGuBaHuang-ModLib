@@ -1,4 +1,6 @@
-﻿namespace ModLib.Object
+﻿using System;
+
+namespace ModLib.Object
 {
     public class UICover<T> : UICustomBase where T : UIBase
     {
@@ -30,12 +32,15 @@
             UIBase = UI;
 
             UIHelper.UIs.Add(this);
+            DebugHelper.WriteLine($"Create a cover for {UI.uiType.uiName}");
         }
 
         public override void Dispose()
         {
+            DebugHelper.WriteLine($"Dispose the cover of {UI.uiType.uiName}");
             UIHelper.UIs.Remove(this);
             Clear();
+            GC.Collect();
         }
     }
 }

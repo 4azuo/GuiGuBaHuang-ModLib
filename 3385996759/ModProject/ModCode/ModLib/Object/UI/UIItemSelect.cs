@@ -33,7 +33,7 @@ namespace ModLib.Object
             //clear
             foreach (var item in SelectionItems)
             {
-                UnityEngine.Object.DestroyImmediate(item);
+                UnityEngine.Object.Destroy(item);
             }
             SelectionItems.Clear();
 
