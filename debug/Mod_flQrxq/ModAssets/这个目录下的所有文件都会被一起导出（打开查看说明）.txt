@@ -1,2 +1,0 @@
-在代码中获取模组根目录：
-g.mod.GetModPathRoot("六位数的随机模组ID");
