@@ -31,7 +31,7 @@ namespace ModLib.Mod
                 {
                     var ver = g.mod.GetModProjectData(ModMaster.ModObj.ModId).ver;
                     var parentTransform = ui.UI.btnSet.transform.parent;
-                    ui.AddButton(ui.LastCol - 5, ui.FirstRow, () => Process.Start("https://github.com/4azuo/GuiGuBaHuang-ModLib"), $"Powered by Fouru's ModLib\n{ver}")
+                    ui.AddButton(ui.LastCol - 5, ui.FirstRow, () => Process.Start("https://github.com/4azuo/GuiGuBaHuang-ModLib"), $"Powered by\nFouru's ModLib {ver}")
                         .Align(TextAnchor.MiddleCenter)
                         .Format(Color.black, 18)
                         .Size(300, 74)
