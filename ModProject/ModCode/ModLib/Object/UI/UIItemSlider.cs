@@ -20,10 +20,7 @@ namespace ModLib.Object
             Min = min;
             Max = max;
             Set(def);
-            Item.onValueChanged.AddListener((UnityAction<float>)(v =>
-            {
-                ItemWork?.ChangeAct?.Invoke(this, v);
-            }));
+            Item.onValueChanged.AddListener((UnityAction<float>)(v => ItemWork?.ChangeAct?.Invoke(this, v)));
         }
 
         public override object Get()
