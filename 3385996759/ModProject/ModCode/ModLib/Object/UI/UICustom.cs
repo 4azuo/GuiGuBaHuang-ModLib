@@ -8,16 +8,13 @@ namespace ModLib.Object
         public static UICustom<T> LastUICustom { get; private set; } = null;
         public T UI { get; private set; }
 
-        public UICustom(Action<UICustom<T>> initComp) : base()
+        public UICustom() : base()
         {
             //init
             DeleteLastUI();
             UI = g.ui.OpenUI<T>(UIType.GetUIType(UITypeName()));
             LastUICustom = this;
             UIBase = UI;
-
-            initComp.Invoke(this);
-            DeleteSampleUIs();
 
             //test
             //for (var c = 0; c < Columns.Count; c++)
@@ -44,7 +41,7 @@ namespace ModLib.Object
             Clear();
             if (this?.UI?.uiType != null && g.ui.HasUI(this.UI.uiType))
                 g.ui.CloseUI(this.UI);
-            //GC.Collect();
+            GC.Collect();
         }
     }
 
@@ -56,7 +53,7 @@ namespace ModLib.Object
         protected override float MinHeight() => 3.4f;
         protected override float MaxHeight() => -3.5f;
 
-        public UICustom1(string title, Action<UICustom<UITextInfoLong>> initComp, string btnText = "", Action okAct = null, bool showCancel = false, Action cancelAct = null) : base(initComp)
+        public UICustom1(string title, string btnText = "", Action okAct = null, bool showCancel = false, Action cancelAct = null) : base()
         {
             UI.InitData(title, string.Empty, btnText, okAct, showCancel);
             if (cancelAct != null)
@@ -72,7 +69,7 @@ namespace ModLib.Object
         protected override float MinHeight() => 1.35f;
         protected override float MaxHeight() => -1.30f;
 
-        public UICustom2(string title, Action<UICustom<UITextInfo>> initComp, string btnText = "", Action okAct = null) : base(initComp)
+        public UICustom2(string title, string btnText = "", Action okAct = null) : base()
         {
             UI.InitData(title, string.Empty, btnText, okAct);
         }

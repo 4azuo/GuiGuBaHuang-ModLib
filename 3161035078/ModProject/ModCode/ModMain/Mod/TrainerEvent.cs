@@ -54,7 +54,7 @@ namespace MOD_nE7UL2.Mod
 
             var player = g.world.playerUnit;
 
-            new UICustom1(TITLE, (uiTrainer) =>
+            var uiTrainer = new UICustom1(TITLE);
             {
                 uiTrainer.UI.isFastClose = true;
 
@@ -278,7 +278,7 @@ namespace MOD_nE7UL2.Mod
                 {
                     Formatter = (x) => new object[] { player.GetDynProperty(UnitDynPropertyEnum.Mine).value },
                 });
-            });
+            }
         }
 
         private void FormatButton1(UIItemButton btn)
@@ -322,7 +322,7 @@ namespace MOD_nE7UL2.Mod
                 return;
             }
 
-            new UICustom1(TITLE, (uiTele) =>
+            var uiTele = new UICustom1(TITLE);
             {
                 uiTele.UI.isFastClose = true;
 
@@ -346,7 +346,7 @@ namespace MOD_nE7UL2.Mod
                     }
                     FormatButton2(uiTele.AddButton(col, row[AREA_COL[areaId].Value0.Parse<int>()]++, () => Tele(build.GetOpenBuildPoints()[0]), build.name));
                 }
-            });
+            }
         }
 
         private void FormatButton2(UIItemButton btn)

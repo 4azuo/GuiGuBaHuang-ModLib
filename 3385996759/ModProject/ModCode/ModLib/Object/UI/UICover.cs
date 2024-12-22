@@ -13,26 +13,23 @@ namespace ModLib.Object
 
         public T UI { get; private set; }
 
-        public UICover(UIBase ui, Action<UICover<T>> initComp) : base()
+        public UICover(UIBase ui) : base()
         {
-            Init(ui.uiType, initComp);
+            Init(ui.uiType);
         }
 
-        public UICover(UIType.UITypeBase uiType, Action<UICover<T>> initComp) : base()
+        public UICover(UIType.UITypeBase uiType) : base()
         {
-            Init(uiType, initComp);
+            Init(uiType);
         }
 
-        protected virtual void Init(UIType.UITypeBase uiType, Action<UICover<T>> initComp)
+        protected virtual void Init(UIType.UITypeBase uiType)
         {
             UITypeBase = uiType;
 
             //init
             UI = g.ui.GetUI<T>(UIType.GetUIType(UITypeName()));
             UIBase = UI;
-
-            initComp.Invoke(this);
-            DeleteSampleUIs();
 
             UIHelper.UIs.Add(this);
             DebugHelper.WriteLine($"Create a cover for {UI.uiType.uiName}");
@@ -43,7 +40,7 @@ namespace ModLib.Object
             DebugHelper.WriteLine($"Dispose the cover of {UI.uiType.uiName}");
             UIHelper.UIs.Remove(this);
             Clear();
-            //GC.Collect();
+            GC.Collect();
         }
     }
 }

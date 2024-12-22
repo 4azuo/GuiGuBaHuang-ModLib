@@ -9,7 +9,7 @@ namespace ModLib.Object
         public float Min { get; set; }
         public float Max { get; set; }
 
-        public UIItemSlider(UICustomBase ui, float x, float y, float min, float max, float def, Slider copySource = null) : base(ui, (copySource ?? ui.UISample1.ui.sliSoundMain).Copy(ui.UIBase))
+        public UIItemSlider(UICustomBase ui, float x, float y, float min, float max, float def, Slider copySource = null) : base(ui, (copySource ?? UISampleHelper.SliderSample).Copy(ui.UIBase))
         {
             Init(x, y, min, max, def);
         }

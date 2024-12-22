@@ -155,20 +155,20 @@ namespace MOD_nE7UL2.Mod
             base.OnOpenUIEnd(e);
             if (e.uiType.uiName == UIType.Login.uiName)
             {
-                new UICover<UILogin>(e.ui, (ui) =>
+                var ui = new UICover<UILogin>(e.ui);
                 {
                     var parentTransform = ui.UI.btnSet.transform.parent;
                     ui.AddButton(ui.MidCol, ui.FirstRow + 3, OpenSMConfigs, TITLE, ui.UI.btnSet)
                         .Align(TextAnchor.MiddleCenter)
                         .Format(Color.black, 24)
                         .SetParentTransform(parentTransform);
-                });
+                }
             }
         }
 
         private void OpenSMConfigs()
         {
-            new UICustom1(TITLE, (uiCustom) =>
+            var uiCustom = new UICustom1(TITLE, string.Empty, SetSMConfigs, true);
             {
                 int col, row;
 
@@ -247,7 +247,7 @@ namespace MOD_nE7UL2.Mod
                 uiCustom.AddText(uiCustom.MidCol, uiCustom.LastRow, GameTool.LS("smcfgs046")).Format(Color.red, 17);
 
                 SetWork();
-            }, string.Empty, SetSMConfigs, true);
+            }
         }
 
         private void SetWork()
