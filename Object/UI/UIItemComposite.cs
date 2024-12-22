@@ -122,6 +122,8 @@ namespace ModLib.Object
 
         public override void Dispose()
         {
+            UI.Items.Remove(this);
+
             Prefix.Dispose();
             MainComponent.Dispose();
             Postfix.Dispose();
