@@ -27,6 +27,7 @@ namespace ModLib.Mod
             }
         }
 
+        [EventCondition(IsInBattle = Enum.HandleEnum.True, IsInGame = Enum.HandleEnum.True, IsWorldRunning = Enum.HandleEnum.False)]
         public override void OnTimeUpdate()
         {
             base.OnTimeUpdate();
