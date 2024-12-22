@@ -492,17 +492,13 @@ namespace ModLib.Mod
             {
                 g.ui.CloseUI(UIType.TextInfoLong);
             }
-            var ui = g.ui.OpenUI<UITextInfoLong>(UIType.TextInfoLong);
-            ui.InitData("Exception", ex.GetAllInnnerExceptionStr());
-            var btnOpenLog = ui.btnOK.Copy();
-            var txtOpenLog = btnOpenLog.GetComponentInChildren<Text>().Align(TextAnchor.MiddleCenter);
-            txtOpenLog.text = "Open log";
-            ui.ptextInfo.fontSize = 14;
 
-            btnOpenLog.onClick.AddListener((UnityAction)(() =>
+            var ui = g.ui.OpenUI<UITextInfoLong>(UIType.TextInfoLong);
+            ui.InitData("Exception", ex.GetAllInnnerExceptionStr(), "Open log", (Il2CppSystem.Action)(() =>
             {
                 Process.Start("notepad.exe", log);
-            }));
+            }), true);
+            ui.ptextInfo.fontSize = 14;
         }
 
         public static void AddGlobalCaches()

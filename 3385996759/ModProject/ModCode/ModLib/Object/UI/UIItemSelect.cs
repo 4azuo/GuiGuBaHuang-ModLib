@@ -8,12 +8,14 @@ namespace ModLib.Object
 {
     public class UIItemSelect : UIItem<Toggle>
     {
+        private const float DELTA_WITH_INPUT = -0.1f;
+
         public string[] Selections { get; set; }
         public List<Toggle> SelectionItems { get; } = new List<Toggle>();
         public int SelectedIndex { get; set; } = 0;
         public bool IsShownList => Item.isOn;
 
-        public UIItemSelect(UICustomBase ui, float x, float y, string[] selections, int def, Toggle copySource = null) : base(ui, (copySource ?? UISampleHelper.SelectSample).Copy(ui.UIBase).Pos(x + 0.15f, y - 0.01f).Size(160f, 28f).Align().Format(Color.black, 14))
+        public UIItemSelect(UICustomBase ui, float x, float y, string[] selections, int def, Toggle copySource = null) : base(ui, (copySource ?? UISampleHelper.SelectSample).Copy(ui.UIBase).Pos(x + DELTA_WITH_INPUT, y).Size(180f, 26f).Align().Format(Color.black, 13))
         {
             Init(selections, def);
         }
@@ -21,7 +23,7 @@ namespace ModLib.Object
         protected virtual void Init(string[] selections, int def)
         {
             SetSelections(selections);
-            SelectIndex(def);
+            SelectIndex(def, true);
 
             Item.onValueChanged.AddListener((UnityAction<bool>)(v => OnMainChanged()));
         }
@@ -31,7 +33,7 @@ namespace ModLib.Object
             //clear
             foreach (var item in SelectionItems)
             {
-                MonoBehaviour.DestroyImmediate(item);
+                UnityEngine.Object.DestroyImmediate(item);
             }
             SelectionItems.Clear();
 
@@ -39,20 +41,20 @@ namespace ModLib.Object
             Selections = selections;
             for (var i = 0; i < selections.Length; i++)
             {
-                var comp = Item.Copy(UI.UIBase).Pos(Item.transform, 0f, -(Item.GetSize().y / 120f) * (i + 1)).Set(false, $"　{selections[i]}");
-                comp.group = null;
+                var comp = Item.Copy(UI.UIBase).Set(false, $"　{selections[i]}");
                 comp.gameObject.SetActive(false);
                 comp.onValueChanged.AddListener((UnityAction<bool>)(v => OnSubChanged(comp)));
                 SelectionItems.Add(comp);
             }
+            UpdatePos();
         }
 
-        public void SelectIndex(int index)
+        public void SelectIndex(int index, bool ignoreNotify = false)
         {
             var isChanged = SelectedIndex != index;
             SelectedIndex = index;
             UpdateSelectedIndex();
-            if (isChanged)
+            if (isChanged && !ignoreNotify)
                 ItemWork?.ChangeAct?.Invoke(this, SelectedIndex);
         }
 
@@ -110,26 +112,30 @@ namespace ModLib.Object
             CloseList();
         }
 
-        public override void Pos(float x, float y)
-        {
-            base.Pos(x, y);
-            for (var i = 0; i < SelectionItems.Count; i++)
-                SelectionItems[i].Pos(Item.transform, 0f, -(Item.GetSize().y / 120f) * (i + 1));
-        }
-
-        public override void Pos(UIItemBase org, float x, float y)
-        {
-            base.Pos(org, x, y);
-            for (var i = 0; i < SelectionItems.Count; i++)
-                SelectionItems[i].Pos(Item.transform, 0f, -(Item.GetSize().y / 120f) * (i + 1));
-        }
-
         public override void Update()
         {
             base.Update();
             if (ItemWork?.EnableAct != null)
                 Enable = ItemWork?.EnableAct?.Invoke(this) ?? false;
             Item.enabled = Enable;
+        }
+
+        public virtual void UpdatePos()
+        {
+            for (var i = 0; i < SelectionItems.Count; i++)
+                SelectionItems[i].Pos(Item.transform, 0f, -(Item.GetSize().y / 120f) * (i + 1));
+        }
+
+        public override void Pos(float x, float y)
+        {
+            base.Pos(x + DELTA_WITH_INPUT, y);
+            UpdatePos();
+        }
+
+        public override void Pos(UIItemBase org, float x, float y)
+        {
+            base.Pos(org, x + DELTA_WITH_INPUT, y);
+            UpdatePos();
         }
 
         public UIItemSelect Align(TextAnchor tanchor = TextAnchor.MiddleLeft, VerticalWrapMode vMode = VerticalWrapMode.Overflow, HorizontalWrapMode hMode = HorizontalWrapMode.Overflow)
@@ -153,6 +159,7 @@ namespace ModLib.Object
             Item.Size(scaleX, scaleY);
             foreach (var comp in SelectionItems)
                 comp.Size(scaleX, scaleY);
+            UpdatePos();
             return this;
         }
 
@@ -161,6 +168,7 @@ namespace ModLib.Object
             Item.AddSize(scaleX, scaleY);
             foreach (var comp in SelectionItems)
                 comp.AddSize(scaleX, scaleY);
+            UpdatePos();
             return this;
         }
     }
