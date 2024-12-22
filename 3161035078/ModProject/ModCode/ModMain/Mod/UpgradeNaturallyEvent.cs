@@ -18,10 +18,10 @@ namespace MOD_nE7UL2.Mod
                 var player = g.world.playerUnit;
                 if (e.uiType.uiName == UIType.FateFeature.uiName && player.IsFullExp())
                 {
-                    var ui = new UICover<UIFateFeature>(e.ui);
+                    new UICover<UIFateFeature>(e.ui, (ui) =>
                     {
                         ui.AddButton(ui.MidCol, ui.MidRow + 5, () => player.SetProperty<int>(UnitPropertyEnum.GradeID, player.GetNextPhaseLvl()), "Up Grade").Size(200f, 40f);
-                    }
+                    });
                 }
             }
         }

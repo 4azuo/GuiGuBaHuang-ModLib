@@ -16,15 +16,14 @@ namespace MOD_nE7UL2.Mod
             base.OnOpenUIEnd(e);
             if (e.uiType.uiName == UIType.Login.uiName)
             {
-                var ver = g.mod.GetModProjectData(ModMain.ModObj.ModId).ver;
-                var ui = new UICover<UILogin>(e.ui);
+                new UICover<UILogin>(e.ui, (ui) =>
                 {
                     var parentTransform = ui.UI.btnSet.transform.parent;
-                    ui.AddButton(ui.MidCol, ui.FirstRow, () => Process.Start("explorer.exe", CacheHelper.GetCacheFolderName(ModId)), $"Taoist {ver}", ui.UI.btnPaperChange)
+                    ui.AddButton(ui.MidCol, ui.FirstRow, () => Process.Start("explorer.exe", CacheHelper.GetCacheFolderName(ModId)), $"Taoist {ModConst.TAOIST_VERSION}", ui.UI.btnPaperChange)
                         .Align(TextAnchor.MiddleCenter)
                         .Format(Color.white, 22)
                         .SetParentTransform(parentTransform);
-                }
+                });
             }
         }
     }

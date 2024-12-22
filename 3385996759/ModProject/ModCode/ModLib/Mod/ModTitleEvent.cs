@@ -1,4 +1,5 @@
 ﻿using EGameTypeData;
+using ModLib.Const;
 using ModLib.Object;
 using System.Diagnostics;
 using UnityEngine;
@@ -27,11 +28,10 @@ namespace ModLib.Mod
             base.OnOpenUIEnd(e);
             if (e.uiType.uiName == UIType.Login.uiName)
             {
-                var ui = new UICover<UILogin>(UIType.Login);
+                new UICover<UILogin>(e.ui, (ui) =>
                 {
-                    var ver = g.mod.GetModProjectData(ModMaster.ModObj.ModId).ver;
                     var parentTransform = ui.UI.btnSet.transform.parent;
-                    ui.AddButton(ui.LastCol - 5, ui.FirstRow, () => Process.Start("https://github.com/4azuo/GuiGuBaHuang-ModLib"), $"Powered by\nFouru's ModLib {ver}")
+                    ui.AddButton(ui.LastCol - 5, ui.FirstRow, () => Process.Start("https://github.com/4azuo/GuiGuBaHuang-ModLib"), $"Powered by\nFouru's ModLib {ModLibConst.MODLIB_VERSION}")
                         .Align(TextAnchor.MiddleCenter)
                         .Format(Color.black, 18)
                         .Size(300, 74)
@@ -48,7 +48,7 @@ namespace ModLib.Mod
                     //            ModTranslateEvent.ClearCache();
                     //        }
                     //    });
-                }
+                });
             }
         }
 

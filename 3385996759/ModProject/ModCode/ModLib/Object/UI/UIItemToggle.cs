@@ -6,7 +6,7 @@ namespace ModLib.Object
 {
     public class UIItemToggle : UIItem<Toggle>
     {
-        public UIItemToggle(UICustomBase ui, float x, float y, bool def, Toggle copySource = null) : base(ui, (copySource ?? UISampleHelper.ToggleSample).Copy(ui.UIBase))
+        public UIItemToggle(UICustomBase ui, float x, float y, bool def, Toggle copySource = null) : base(ui, (copySource ?? ui.UISample1.ui.tglWindow).Copy(ui.UIBase))
         {
             Init(x, y, def);
         }
