@@ -10,7 +10,7 @@ namespace ModLib.Object
         public string FormatStr { get; set; }
         public Color Color { get; set; }
 
-        public UIItemText(UICustomBase ui, float x, float y, string format, Text copySource = null) : base(ui, (copySource ?? UISampleHelper.TextSample).Copy(ui.UIBase))
+        public UIItemText(UICustomBase ui, float x, float y, string format, Text copySource = null) : base(ui, (copySource ?? ui.UISample1.ui.textSystemOK).Copy(ui.UIBase))
         {
             Init(x, y, format);
         }
