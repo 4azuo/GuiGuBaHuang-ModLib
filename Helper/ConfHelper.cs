@@ -86,7 +86,7 @@ public static class ConfHelper
         try
         {
             //copy new configs to debug folder
-            CopyConf(modId);
+            CopyConfs(modId);
 
             //load conf
             var assetFolder = GetConfFolderPath(modId);
@@ -105,9 +105,9 @@ public static class ConfHelper
         }
     }
 
-    public static void CopyConf(string modId)
+    public static void CopyConfs(string modId)
     {
-        var orgFolder = $"{AssemblyHelper.GetModPathSource(modId)}\\ModConf\\";
+        var orgFolder = $"{AssemblyHelper.GetModPathSource(modId)}\\{CONF_FOLDER}\\";
         if (Directory.Exists(orgFolder))
         {
             Directory.CreateDirectory(ConfHelper.GetConfFolderPath(modId));
