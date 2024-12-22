@@ -22,7 +22,6 @@ namespace ModLib.Mod
 
         public int TranslateIndex { get; set; }
 
-        [EventCondition(IsInGame = 0)]
         public override void OnOpenUIEnd(OpenUIEnd e)
         {
             base.OnOpenUIEnd(e);

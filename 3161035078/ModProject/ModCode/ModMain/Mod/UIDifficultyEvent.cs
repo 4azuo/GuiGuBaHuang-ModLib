@@ -8,7 +8,6 @@ namespace MOD_nE7UL2.Mod
     [Cache(ModConst.UI_DIFFICULTY_EVENT, CacheType = CacheAttribute.CType.Global, WorkOn = CacheAttribute.WType.Global)]
     public class UIDifficultyEvent : ModEvent
     {
-        [EventCondition(IsInGame = 0)]
         public override void OnOpenUIEnd(OpenUIEnd e)
         {
             base.OnOpenUIEnd(e);

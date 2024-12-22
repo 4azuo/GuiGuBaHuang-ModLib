@@ -75,7 +75,7 @@ namespace MOD_nE7UL2.Mod
         }
 
         [ErrorIgnore]
-        [EventCondition(IsInBattle = HandleEnum.True)]
+        [EventCondition(IsInGame = HandleEnum.False, IsInBattle = HandleEnum.True)]
         public override void OnTimeUpdate()
         {
             base.OnTimeUpdate();
