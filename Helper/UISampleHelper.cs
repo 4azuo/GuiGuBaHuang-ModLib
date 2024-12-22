@@ -1,4 +1,5 @@
 ﻿using ModLib.Object;
+using UnityEngine;
 using UnityEngine.UI;
 
 public static class UISampleHelper
@@ -15,26 +16,26 @@ public static class UISampleHelper
     {
         using (var s = new UISample<UIGameSetting>(UIType.GameSetting))
         {
-            ButtonSample = s.ui.btnSystemOK.Copy(g.ui.canvas.transform);
-            ButtonSample.gameObject.SetActive(false);
-            SelectSample = s.ui.tglLanguage.Copy(g.ui.canvas.transform);
-            SelectSample.gameObject.SetActive(false);
-            SliderSample = s.ui.sliSoundMain.Copy(g.ui.canvas.transform);
-            SliderSample.gameObject.SetActive(false);
-            TextSample = s.ui.textSystemOK.Copy(g.ui.canvas.transform);
-            TextSample.gameObject.SetActive(false);
-            ToggleSample = s.ui.tglWindow.Copy(g.ui.canvas.transform);
-            ToggleSample.gameObject.SetActive(false);
+            ButtonSample = s.ui.btnSystemOK.Create();
+            Object.DontDestroyOnLoad(ButtonSample);
+            SelectSample = s.ui.tglLanguage.Create();
+            Object.DontDestroyOnLoad(SelectSample);
+            SliderSample = s.ui.sliSoundMain.Create();
+            Object.DontDestroyOnLoad(SliderSample);
+            TextSample = s.ui.textSystemOK.Create();
+            Object.DontDestroyOnLoad(TextSample);
+            ToggleSample = s.ui.tglWindow.Create();
+            Object.DontDestroyOnLoad(ToggleSample);
         }
         using (var s = new UISample<UIModWorkshopUpload>(UIType.ModWorkshopUpload))
         {
-            InputSample = s.ui.iptDesc.Copy(g.ui.canvas.transform);
-            InputSample.gameObject.SetActive(false);
+            InputSample = s.ui.iptDesc.Create();
+            Object.DontDestroyOnLoad(InputSample);
         }
         using (var s = new UISample<UIPropInfo>(UIType.PropInfo))
         {
-            ImageSample = s.ui.imgIcon.Copy(g.ui.canvas.transform);
-            ImageSample.gameObject.SetActive(false);
+            ImageSample = s.ui.imgIcon.Create();
+            Object.DontDestroyOnLoad(ImageSample);
         }
     }
 }
