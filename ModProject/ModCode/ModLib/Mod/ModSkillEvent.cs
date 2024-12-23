@@ -4,6 +4,11 @@ using System.Linq;
 using System.Reflection;
 using EBattleTypeData;
 using Newtonsoft.Json;
+using ModLib.Object;
+using static CacheMgr;
+using System.IO;
+using Harmony;
+using System.Threading.Tasks;
 
 namespace ModLib.Mod
 {
@@ -11,20 +16,23 @@ namespace ModLib.Mod
     public class ModSkillEvent : ModEvent
     {
         [JsonIgnore]
-        public List<ModSkill> SkillList { get; } = new List<ModSkill>();
+        public Dictionary<string, ModSkill> SkillList { get; } = new Dictionary<string, ModSkill>();
         [JsonIgnore]
         public List<ModSkill> ActiveSkillList { get; } = new List<ModSkill>();
 
-        public List<KeyValuePair<string, Type>> GetSkillTypes(string modId, Assembly ass)
+        /*
+         * Load Classes
+         */
+        public List<Tuple<string, SkillAttribute, Type>> GetSkillTypes(string modId, Assembly ass)
         {
             if (ass == null)
-                return new List<KeyValuePair<string, Type>>();
-            return ass.GetLoadableTypes().Where(x => x.IsClass && x.IsSubclassOf(typeof(ModSkill))).Select(x => new KeyValuePair<string, Type>(modId, x)).ToList();
+                return new List<Tuple<string, SkillAttribute, Type>>();
+            return ass.GetLoadableTypes().Where(x => x.IsClass && x.IsSubclassOf(typeof(ModSkill))).Select(x => Tuple.Create(modId, x.GetCustomAttribute<SkillAttribute>(), x)).ToList();
         }
 
-        public List<KeyValuePair<string, Type>> GetSkillTypes()
+        public List<Tuple<string, SkillAttribute, Type>> GetSkillTypes()
         {
-            var rs = new List<KeyValuePair<string, Type>>();
+            var rs = new List<Tuple<string, SkillAttribute, Type>>();
             rs.AddRange(GetSkillTypes(ModMaster.ModObj.ModId, AssemblyHelper.GetModLibAssembly()));
             rs.AddRange(GetSkillTypes(ModMaster.ModObj.ModId, AssemblyHelper.GetModLibMainAssembly()));
 
@@ -40,16 +48,25 @@ namespace ModLib.Mod
 
         public void LoadSkillList()
         {
-            var cacheAttr = this.GetType().GetCustomAttribute<CacheAttribute>();
             foreach (var t in GetSkillTypes())
             {
-                var attr = t.Value.GetCustomAttribute<SkillAttribute>();
-                if (attr != null)
+                var cacheFile = CacheHelper.GetSkillCacheFilePath(t.Item1, t.Item2.CacheId);
+                if (File.Exists(cacheFile))
                 {
-                    var e = (ModSkill)Activator.CreateInstance(t.Value);
-                    DebugHelper.WriteLine($"Load Skill: Mod={t.Key}, Type={t.Value.FullName}, Id={cacheAttr.CacheId}");
-                    //e.OnLoadClass(true, t.Key, cacheAttr);
-                    SkillList.Add(e);
+                    var e = (ModSkill)JsonConvert.DeserializeObject(File.ReadAllText(cacheFile), t.Item3, CacheHelper.JSON_SETTINGS);
+                    DebugHelper.WriteLine($"Load Skill: Mod={t.Item1}, Type={t.Item3.FullName}, CacheId={t.Item2.CacheId}");
+                    e.OnLoadClass(t.Item1, t.Item2);
+                    SkillList.Add(t.Item1, e);
+                }
+                else
+                {
+                    if (!SkillList.ContainsKey(t.Item2.CacheId))
+                    {
+                        var e = (ModSkill)Activator.CreateInstance(t.Item3);
+                        DebugHelper.WriteLine($"Create Skill: Mod={t.Item1}, Type={t.Item3.FullName}, CacheId={t.Item2.CacheId}");
+                        e.OnLoadClass(t.Item1, t.Item2);
+                        SkillList.Add(t.Item1, e);
+                    }
                 }
             }
         }
@@ -60,15 +77,18 @@ namespace ModLib.Mod
             LoadSkillList();
         }
 
+        /*
+         * Start Battle
+         */
         public void LoadSkillEvents()
         {
             ActiveSkillList.Clear();
             foreach (var t in SkillList)
             {
-                if (!ActiveSkillList.Contains(t))
+                if (!ActiveSkillList.Contains(t.Value))
                 {
-                    ActiveSkillList.Add(t);
-                    //t.
+                    t.Value.OnLoadBattleStart();
+                    ActiveSkillList.Add(t.Value);
                 }
             }
         }
@@ -79,15 +99,51 @@ namespace ModLib.Mod
             LoadSkillEvents();
         }
 
+        /*
+         * End Battle
+         */
         public void ClearSkillEvents()
         {
-            ActiveSkillList.Clear();
+            foreach (var t in ActiveSkillList.ToArray())
+            {
+                ActiveSkillList.Remove(t);
+                t.OnUnloadBattleEnd();
+            }
         }
 
         public override void OnBattleEnd(BattleEnd e)
         {
             base.OnBattleEnd(e);
             ClearSkillEvents();
+        }
+
+        /*
+         * Skill Start
+         */
+        public void MultiCast(UnitCtrlBase cunit, SkillBase skill, StepBase step, PropItemBase prop)
+        {
+            Parallel.ForEach(SkillList, s =>
+            {
+                s.Value.OnCast(cunit, skill, step, prop);
+            });
+        }
+
+        public override void OnBattleUnitUseSkill(UnitUseSkill e)
+        {
+            base.OnBattleUnitUseSkill(e);
+            MultiCast(e.unit, e.skill, null, null);
+        }
+
+        public override void OnBattleUnitUseStep(UnitUseStep e)
+        {
+            base.OnBattleUnitUseStep(e);
+            MultiCast(e.unit, null, e.step, null);
+        }
+
+        public override void OnBattleUnitUseProp(UnitUseProp e)
+        {
+            base.OnBattleUnitUseProp(e);
+            MultiCast(e.unit, null, null, e.prop);
         }
     }
 }

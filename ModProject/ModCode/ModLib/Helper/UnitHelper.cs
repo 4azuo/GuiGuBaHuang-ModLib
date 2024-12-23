@@ -589,8 +589,19 @@ public static class UnitHelper
         return g.world.unit.GetUnitExact(new Vector2Int(wunit.data.unitData.pointX, wunit.data.unitData.pointY), range, isGetHide, isGetPlayer);
     }
 
-    public static Il2CppSystem.Collections.Generic.List<UnitCtrlBase> FindNearObjects(this UnitCtrlBase cunit, float radius)
+    public static Il2CppSystem.Collections.Generic.List<UnitCtrlBase> FindNearCUnits(this UnitCtrlBase cunit, float radius)
     {
         return ModBattleEvent.SceneBattle.unit.GetRangeUnit(cunit.transform.position, radius);
+    }
+
+    public static bool IsEnemy(this UnitCtrlBase aUnit, UnitCtrlBase bUnit)
+    {
+        return MartialTool.GetEnemyType(aUnit).Contains(bUnit.data.unitType);
+    }
+
+    public static List<UnitCtrlBase> FindNearCEnemys(this UnitCtrlBase cunit, float radius)
+    {
+        var enemyTypes = MartialTool.GetEnemyType(cunit);
+        return ModBattleEvent.SceneBattle.unit.GetRangeUnit(cunit.transform.position, radius).ToArray().Where(x => enemyTypes.Contains(x.data.unitType)).ToList();
     }
 }
