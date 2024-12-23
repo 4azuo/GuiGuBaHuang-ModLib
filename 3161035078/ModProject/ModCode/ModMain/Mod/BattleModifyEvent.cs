@@ -276,7 +276,7 @@ namespace MOD_nE7UL2.Mod
             }
         }
 
-        private float GetAdditionalCond(UnitDataMonst monst)
+        private static float GetAdditionalCond(UnitDataMonst monst)
         {
             var gameLvl = g.data.dataWorld.data.gameLevel.Parse<int>();
             var monstLvl = monst.grade.value;

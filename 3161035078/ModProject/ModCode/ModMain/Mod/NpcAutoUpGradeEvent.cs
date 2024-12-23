@@ -22,15 +22,15 @@ namespace MOD_nE7UL2.Mod
 
                 var unitId = wunit.GetUnitId();
                 if (!NpcUpGradeRate.ContainsKey(unitId))
-                    NpcUpGradeRate.Add(unitId, 0.0000000f);
+                    NpcUpGradeRate.Add(unitId, 0.000f);
 
-                var supportRate = 0.0000001f;
+                var supportRate = 0.001f;
                 foreach (var oldPhaseInfo in wunit.data.unitData.npcUpGrade)
-                    supportRate += (0.0000001f * Math.Pow(2, oldPhaseInfo.value.quality)).Parse<float>();
+                    supportRate += (0.001f * Math.Pow(2, oldPhaseInfo.value.quality)).Parse<float>();
                 NpcUpGradeRate[unitId] += supportRate;
 
-                var r = CommonTool.Random(0.0000000f, 100.0000000f);
-                if (r.IsBetween(0.0000000f, NpcUpGradeRate[unitId] / nPhase.grade))
+                var r = CommonTool.Random(0.0000000f, 100.0000000f).Parse<double>();
+                if (r.IsBetween(0.0000000d, NpcUpGradeRate[unitId] / Math.Pow(2, nPhase.grade)))
                 {
                     wunit.SetProperty<int>(UnitPropertyEnum.GradeID, nPhase.id);
                     wunit.ClearExp();

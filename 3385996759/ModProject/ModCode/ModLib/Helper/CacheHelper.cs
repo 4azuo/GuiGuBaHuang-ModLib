@@ -25,6 +25,13 @@ public static class CacheHelper
     public static List<Tuple<string, CacheAttribute, Type>> CacheTypes { get; private set; }
     public static Dictionary<string, CachableObject> CacheData { get; private set; } = new Dictionary<string, CachableObject>();
 
+    public static string GetSkillCacheFileName(string cacheId)
+    {
+        if (GameHelper.IsInGame())
+            return $"{cacheId}_data.json";
+        throw new FileNotFoundException();
+    }
+
     public static string GetGameCacheFileName(string cacheId)
     {
         if (GameHelper.IsInGame())
@@ -37,9 +44,9 @@ public static class CacheHelper
         return $"{cacheId}_data.json";
     }
 
-    public static string GetCacheFolderName(string modId)
+    public static string GetSkillCacheFolderName(string modId)
     {
-        var p = $"{Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData)}Low\\guigugame\\guigubahuang\\mod\\{modId}\\";
+        var p = $"{GetGameCacheFolderName(modId)}\\skills\\";
         if (!Directory.Exists(p))
             Directory.CreateDirectory(p);
         return p;
@@ -59,6 +66,19 @@ public static class CacheHelper
         if (!Directory.Exists(p))
             Directory.CreateDirectory(p);
         return p;
+    }
+
+    public static string GetCacheFolderName(string modId)
+    {
+        var p = $"{Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData)}Low\\guigugame\\guigubahuang\\mod\\{modId}\\";
+        if (!Directory.Exists(p))
+            Directory.CreateDirectory(p);
+        return p;
+    }
+
+    public static string GetSkillCacheFilePath(string modId, string cacheId)
+    {
+        return Path.Combine(GetSkillCacheFolderName(modId), GetSkillCacheFileName(cacheId));
     }
 
     public static string GetGameCacheFilePath(string modId, string cacheId)

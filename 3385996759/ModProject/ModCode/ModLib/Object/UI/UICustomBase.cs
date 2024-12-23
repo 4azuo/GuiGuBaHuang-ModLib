@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ModLib.Const;
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
@@ -14,11 +15,11 @@ namespace ModLib.Object
         public List<float> Rows { get; } = new List<float>();
         public List<UIItemBase> Items { get; } = new List<UIItemBase>();
 
-        protected abstract string UITypeName();
-        protected abstract float MinWidth();
-        protected abstract float MaxWidth();
-        protected abstract float MinHeight();
-        protected abstract float MaxHeight();
+        public virtual string UITypeName => throw new NotImplementedException();
+        public virtual float MinWidth => throw new NotImplementedException();
+        public virtual float MaxWidth => throw new NotImplementedException();
+        public virtual float MinHeight => throw new NotImplementedException();
+        public virtual float MaxHeight => throw new NotImplementedException();
         public int FirstCol => 0;
         public int LastCol => Columns.Count - 1;
         public int MidCol => Columns.Count / 2;
@@ -26,11 +27,11 @@ namespace ModLib.Object
         public int LastRow => Rows.Count - 1;
         public int MidRow => Rows.Count / 2;
 
-        protected void InitGrid()
+        public void InitGrid()
         {
-            for (var i = MinWidth(); i <= MaxWidth(); i += UIHelper.UICUSTOM_DELTA_X)
+            for (var i = MinWidth; i <= MaxWidth; i += UIHelper.UICUSTOM_DELTA_X)
                 Columns.Add(i);
-            for (var i = MinHeight(); i >= MaxHeight(); i -= UIHelper.UICUSTOM_DELTA_Y)
+            for (var i = MinHeight; i >= MaxHeight; i -= UIHelper.UICUSTOM_DELTA_Y)
                 Rows.Add(i);
         }
 

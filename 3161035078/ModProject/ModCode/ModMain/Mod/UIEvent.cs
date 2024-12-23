@@ -18,16 +18,6 @@ namespace MOD_nE7UL2.Mod
     {
         public static _HideButtonConfigs Configs => ModMain.ModObj.GameSettings.HideButtonConfigs;
 
-        private static Text uiNPCInfo_textMartialAdjHp;
-        private static Text uiNPCInfo_textSpiritualAdjMp;
-        private static Text uiNPCInfo_textArtisanshipAdjSp;
-        private static Text uiNPCInfoSkill_textAbiPointAdjHp;
-        private static Text uiNPCInfoSkill_textAbiPointAdjMp;
-        private static Text uiPlayerInfo_textMartialAdjHp;
-        private static Text uiPlayerInfo_textSpiritualAdjMp;
-        private static Text uiPlayerInfo_textArtisanshipAdjSp;
-        private static Text uiPlayerInfoSkill_textAbiPointAdjHp;
-        private static Text uiPlayerInfoSkill_textAbiPointAdjMp;
         private static Text uiArtifactInfo_textBasicTitle;
         private static Text uiArtifactInfo_textBasicAdj1;
         private static Text uiArtifactInfo_textBasicAdj2;
@@ -117,30 +107,66 @@ namespace MOD_nE7UL2.Mod
             else
             if (e.uiType.uiName == UIType.NPCInfo.uiName)
             {
-                var uiNPCInfo = g.ui.GetUI<UINPCInfo>(UIType.NPCInfo);
+                var uiNPCInfo = new UICover<UINPCInfo>(UIType.NPCInfo);
 
-                var sampleText1 = uiNPCInfo.uiProperty.goGroupRoot.GetComponentInChildren<Text>();
-                uiNPCInfo_textMartialAdjHp = sampleText1.Copy().Align(TextAnchor.MiddleCenter).Format(Color.white).Pos(uiNPCInfo.uiProperty.goItem6, 0.4f, -1.1f);
-                uiNPCInfo_textSpiritualAdjMp = sampleText1.Copy().Align(TextAnchor.MiddleCenter).Format(Color.white).Pos(uiNPCInfo.uiProperty.goItem7, 0.4f, -1.1f);
-                uiNPCInfo_textArtisanshipAdjSp = sampleText1.Copy().Align(TextAnchor.MiddleCenter).Format(Color.white).Pos(uiNPCInfo.uiProperty.goItem8, 0.4f, -1.1f);
+                uiNPCInfo.AddText(0, 0, string.Empty).Format(Color.white).SetParentTransform(uiNPCInfo.UI.uiProperty.goGroupRoot)
+                    .Pos(uiNPCInfo.UI.uiProperty.goItem6, 0.4f, -1.1f).SetWork(new UIItemBase.UIItemWork
+                {
+                    UpdateAct = (x) => x.Set($"+Hp: {UnitModifyHelper.GetMartialAdjHp(uiNPCInfo.UI.unit)}")
+                });
+                uiNPCInfo.AddText(0, 0, string.Empty).Format(Color.white).SetParentTransform(uiNPCInfo.UI.uiProperty.goGroupRoot)
+                    .Pos(uiNPCInfo.UI.uiProperty.goItem7, 0.4f, -1.1f).SetWork(new UIItemBase.UIItemWork
+                {
+                    UpdateAct = (x) => x.Set($"+Mp: {UnitModifyHelper.GetSpiritualAdjMp(uiNPCInfo.UI.unit)}")
+                });
+                uiNPCInfo.AddText(0, 0, string.Empty).Format(Color.white).SetParentTransform(uiNPCInfo.UI.uiProperty.goGroupRoot)
+                    .Pos(uiNPCInfo.UI.uiProperty.goItem8, 0.4f, -1.1f).SetWork(new UIItemBase.UIItemWork
+                {
+                    UpdateAct = (x) => x.Set($"+Sp: {UnitModifyHelper.GetArtisanshipAdjSp(uiNPCInfo.UI.unit)}")
+                });
 
-                var sampleText2 = uiNPCInfo.uiSkill.textPoint1;
-                uiNPCInfoSkill_textAbiPointAdjHp = sampleText2.Copy().Align(TextAnchor.MiddleCenter).Format(Color.white).Pos(uiNPCInfo.uiSkill.textPoint1.gameObject, 0f, -0.2f);
-                uiNPCInfoSkill_textAbiPointAdjMp = sampleText2.Copy().Align(TextAnchor.MiddleCenter).Format(Color.white).Pos(uiNPCInfo.uiSkill.textPoint1.gameObject, 0f, -0.4f);
+                uiNPCInfo.AddText(0, 0, string.Empty).Format(Color.white).SetParentTransform(uiNPCInfo.UI.uiSkill.textPoint1.transform)
+                    .Pos(uiNPCInfo.UI.uiSkill.textPoint1.transform, 0f, -0.2f).SetWork(new UIItemBase.UIItemWork
+                {
+                    UpdateAct = (x) => x.Set($"+Hp: {UnitModifyHelper.GetAbiPointAdjHp(uiNPCInfo.UI.unit)}")
+                });
+                uiNPCInfo.AddText(0, 0, string.Empty).Format(Color.white).SetParentTransform(uiNPCInfo.UI.uiSkill.textPoint1.transform)
+                    .Pos(uiNPCInfo.UI.uiSkill.textPoint1.transform, 0f, -0.4f).SetWork(new UIItemBase.UIItemWork
+                {
+                    UpdateAct = (x) => x.Set($"+Mp: {UnitModifyHelper.GetAbiPointAdjMp(uiNPCInfo.UI.unit)}")
+                });
             }
             else
             if (e.uiType.uiName == UIType.PlayerInfo.uiName)
             {
-                var uiPlayerInfo = g.ui.GetUI<UIPlayerInfo>(UIType.PlayerInfo);
+                var uiPlayerInfo = new UICover<UIPlayerInfo>(UIType.PlayerInfo);
 
-                var sampleText1 = uiPlayerInfo.uiPropertyCommon.goGroupRoot.GetComponentInChildren<Text>();
-                uiPlayerInfo_textMartialAdjHp = sampleText1.Copy().Align(TextAnchor.MiddleCenter).Format().Pos(uiPlayerInfo.uiPropertyCommon.goItem6_En, 0.4f, -1.0f);
-                uiPlayerInfo_textSpiritualAdjMp = sampleText1.Copy().Align(TextAnchor.MiddleCenter).Format().Pos(uiPlayerInfo.uiPropertyCommon.goItem7_En, 0.4f, -1.0f);
-                uiPlayerInfo_textArtisanshipAdjSp = sampleText1.Copy().Align(TextAnchor.MiddleCenter).Format().Pos(uiPlayerInfo.uiPropertyCommon.goItem8_En, 0.4f, -1.0f);
+                uiPlayerInfo.AddText(0, 0, string.Empty).SetParentTransform(uiPlayerInfo.UI.uiPropertyCommon.goGroupRoot)
+                    .Pos(uiPlayerInfo.UI.uiPropertyCommon.goItem6_En, 0.4f, -1.0f).SetWork(new UIItemBase.UIItemWork
+                {
+                    UpdateAct = (x) => x.Set($"+Hp: {UnitModifyHelper.GetMartialAdjHp(uiPlayerInfo.UI.unit)}")
+                });
+                uiPlayerInfo.AddText(0, 0, string.Empty).SetParentTransform(uiPlayerInfo.UI.uiPropertyCommon.goGroupRoot)
+                    .Pos(uiPlayerInfo.UI.uiPropertyCommon.goItem7_En, 0.4f, -1.0f).SetWork(new UIItemBase.UIItemWork
+                {
+                    UpdateAct = (x) => x.Set($"+Mp: {UnitModifyHelper.GetSpiritualAdjMp(uiPlayerInfo.UI.unit)}")
+                });
+                uiPlayerInfo.AddText(0, 0, string.Empty).SetParentTransform(uiPlayerInfo.UI.uiPropertyCommon.goGroupRoot)
+                    .Pos(uiPlayerInfo.UI.uiPropertyCommon.goItem8_En, 0.4f, -1.0f).SetWork(new UIItemBase.UIItemWork
+                {
+                    UpdateAct = (x) => x.Set($"+Sp: {UnitModifyHelper.GetArtisanshipAdjSp(uiPlayerInfo.UI.unit)}")
+                });
 
-                var sampleText2 = uiPlayerInfo.uiSkill.textPoint1;
-                uiPlayerInfoSkill_textAbiPointAdjHp = sampleText2.Copy().Align(TextAnchor.MiddleCenter).Format(Color.white).Pos(uiPlayerInfo.uiSkill.textPoint1.gameObject, 0f, -0.2f);
-                uiPlayerInfoSkill_textAbiPointAdjMp = sampleText2.Copy().Align(TextAnchor.MiddleCenter).Format(Color.white).Pos(uiPlayerInfo.uiSkill.textPoint1.gameObject, 0f, -0.4f);
+                uiPlayerInfo.AddText(0, 0, string.Empty).Format(Color.white).SetParentTransform(uiPlayerInfo.UI.uiSkill.textPoint1.transform)
+                    .Pos(uiPlayerInfo.UI.uiSkill.textPoint1.transform, 0f, -0.2f).SetWork(new UIItemBase.UIItemWork
+                {
+                    UpdateAct = (x) => x.Set($"+Hp: {UnitModifyHelper.GetAbiPointAdjHp(uiPlayerInfo.UI.unit)}")
+                });
+                uiPlayerInfo.AddText(0, 0, string.Empty).Format(Color.white).SetParentTransform(uiPlayerInfo.UI.uiSkill.textPoint1.transform)
+                    .Pos(uiPlayerInfo.UI.uiSkill.textPoint1.transform, 0f, -0.4f).SetWork(new UIItemBase.UIItemWork
+                {
+                    UpdateAct = (x) => x.Set($"+Mp: {UnitModifyHelper.GetAbiPointAdjMp(uiPlayerInfo.UI.unit)}")
+                });
             }
             else
             if (e.uiType.uiName == UIType.ArtifactInfo.uiName)
@@ -343,8 +369,6 @@ namespace MOD_nE7UL2.Mod
 
         public static void OnUIUpdate()
         {
-            var uiNPCInfo = g.ui.GetUI<UINPCInfo>(UIType.NPCInfo);
-            var uiPlayerInfo = g.ui.GetUI<UIPlayerInfo>(UIType.PlayerInfo);
             var uiArtifactInfo = g.ui.GetUI<UIArtifactInfo>(UIType.ArtifactInfo);
             var uiPropInfo = g.ui.GetUI<UIPropInfo>(UIType.PropInfo);
 
@@ -382,24 +406,6 @@ namespace MOD_nE7UL2.Mod
                 uiArtifactInfo_textRefineAdj3.Pos(uiArtifactInfo.textGrade_En.gameObject, +0.05f, -1.8f);
                 uiArtifactInfo_textRefineAdj4.Pos(uiArtifactInfo.textGrade_En.gameObject, +0.05f, -1.95f);
                 uiArtifactInfo_textRefineAdj5.Pos(uiArtifactInfo.textGrade_En.gameObject, +0.05f, -2.1f);
-            }
-            
-            if (uiNPCInfo.IsExists())
-            {
-                uiNPCInfo_textMartialAdjHp.text = $"+Hp: {UnitModifyHelper.GetMartialAdjHp(uiNPCInfo.unit)}";
-                uiNPCInfo_textSpiritualAdjMp.text = $"+Mp: {UnitModifyHelper.GetSpiritualAdjMp(uiNPCInfo.unit)}";
-                uiNPCInfo_textArtisanshipAdjSp.text = $"+Sp: {UnitModifyHelper.GetArtisanshipAdjSp(uiNPCInfo.unit)}";
-                uiNPCInfoSkill_textAbiPointAdjHp.text = $"+Hp: {UnitModifyHelper.GetAbiPointAdjHp(uiNPCInfo.unit)}";
-                uiNPCInfoSkill_textAbiPointAdjMp.text = $"+Mp: {UnitModifyHelper.GetAbiPointAdjMp(uiNPCInfo.unit)}";
-            }
-            
-            if (uiPlayerInfo.IsExists())
-            {
-                uiPlayerInfo_textMartialAdjHp.text = $"+Hp: {UnitModifyHelper.GetMartialAdjHp(uiPlayerInfo.unit)}";
-                uiPlayerInfo_textSpiritualAdjMp.text = $"+Mp: {UnitModifyHelper.GetSpiritualAdjMp(uiPlayerInfo.unit)}";
-                uiPlayerInfo_textArtisanshipAdjSp.text = $"+Sp: {UnitModifyHelper.GetArtisanshipAdjSp(uiPlayerInfo.unit)}";
-                uiPlayerInfoSkill_textAbiPointAdjHp.text = $"+Hp: {UnitModifyHelper.GetAbiPointAdjHp(uiPlayerInfo.unit)}";
-                uiPlayerInfoSkill_textAbiPointAdjMp.text = $"+Mp: {UnitModifyHelper.GetAbiPointAdjMp(uiPlayerInfo.unit)}";
             }
         }
 
