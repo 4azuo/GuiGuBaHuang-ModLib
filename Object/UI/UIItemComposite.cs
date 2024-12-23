@@ -144,7 +144,7 @@ namespace ModLib.Object
             Postfix.SetEnable(value);
         }
 
-        public override void Pos(float x, float y)
+        public override UIItemBase Pos(float x, float y)
         {
             var oldMainPos = MainComponent.Pos();
             base.Pos(x, y); //move main
@@ -152,9 +152,11 @@ namespace ModLib.Object
 
             Prefix.Pos(MainComponent, moveDis.x, moveDis.y);
             Postfix.Pos(MainComponent, moveDis.x, moveDis.y);
+
+            return this;
         }
 
-        public override void Pos(UIItemBase org, float x, float y)
+        public override UIItemBase Pos(Transform org, float x, float y)
         {
             var oldMainPos = MainComponent.Pos();
             base.Pos(org, x, y); //move main
@@ -162,6 +164,8 @@ namespace ModLib.Object
 
             Prefix.Pos(MainComponent, moveDis.x, moveDis.y);
             Postfix.Pos(MainComponent, moveDis.x, moveDis.y);
+
+            return this;
         }
     }
 }

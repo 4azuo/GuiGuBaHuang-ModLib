@@ -12,7 +12,7 @@ namespace ModLib.Object
         {
             //init
             DeleteLastUI();
-            UI = g.ui.OpenUI<T>(UIType.GetUIType(UITypeName()));
+            UI = g.ui.OpenUI<T>(UIType.GetUIType(UITypeName));
             LastUICustom = this;
             UIBase = UI;
 
@@ -47,11 +47,11 @@ namespace ModLib.Object
 
     public class UICustom1 : UICustom<UITextInfoLong>
     {
-        protected override string UITypeName() => UIType.TextInfoLong.uiName;
-        protected override float MinWidth() => -6.2f;
-        protected override float MaxWidth() => +6.6f;
-        protected override float MinHeight() => 3.4f;
-        protected override float MaxHeight() => -3.5f;
+        public override string UITypeName => UIType.TextInfoLong.uiName;
+        public override float MinWidth => -6.2f;
+        public override float MaxWidth => +6.6f;
+        public override float MinHeight => 3.4f;
+        public override float MaxHeight => -3.5f;
 
         public UICustom1(string title, string btnText = "", Action okAct = null, bool showCancel = false, Action cancelAct = null) : base()
         {
@@ -63,11 +63,11 @@ namespace ModLib.Object
 
     public class UICustom2 : UICustom<UITextInfo>
     {
-        protected override string UITypeName() => UIType.TextInfo.uiName;
-        protected override float MinWidth() => -2.6f;
-        protected override float MaxWidth() => +3.0f;
-        protected override float MinHeight() => 1.35f;
-        protected override float MaxHeight() => -1.30f;
+        public override string UITypeName => UIType.TextInfo.uiName;
+        public override float MinWidth => -2.6f;
+        public override float MaxWidth => +3.0f;
+        public override float MinHeight => 1.35f;
+        public override float MaxHeight => -1.30f;
 
         public UICustom2(string title, string btnText = "", Action okAct = null) : base()
         {

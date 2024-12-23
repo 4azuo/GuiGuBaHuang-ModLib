@@ -86,26 +86,43 @@ namespace ModLib.Object
             return Component.Pos();
         }
 
-        public virtual void Pos(float x, float y)
+        public virtual UIItemBase Pos(float x, float y)
         {
             Component.Pos(x, y);
+            return this;
         }
 
-        public virtual void Pos(int col, int row)
+        public virtual UIItemBase Pos(int col, int row)
         {
             this.UI.FixPosition(ref col, ref row);
-            Component.Pos(this.UI.Columns[col], this.UI.Rows[row]);
+            return Pos(this.UI.Columns[col], this.UI.Rows[row]);
         }
 
-        public virtual void Pos(UIItemBase org, float x, float y)
+        public virtual UIItemBase Pos(Transform org, float x, float y)
         {
-            Component.Pos(org.Component.transform, x, y);
+            Component.Pos(org, x, y);
+            return this;
+        }
+
+        public virtual UIItemBase Pos(GameObject org, float x, float y)
+        {
+            return Pos(org.transform, x, y);
+        }
+
+        public virtual UIItemBase Pos(UIItemBase org, float x, float y)
+        {
+            return Pos(org.Component.transform, x, y);
         }
 
         public virtual UIItemBase SetParentTransform(Transform t)
         {
             Component.transform.SetParent(t);
             return this;
+        }
+
+        public virtual UIItemBase SetParentTransform(GameObject t)
+        {
+            return SetParentTransform(t.transform);
         }
 
         #region Data

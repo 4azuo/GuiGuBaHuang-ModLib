@@ -3,6 +3,7 @@ using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.UI;
 using static ModLib.Object.UIItemBase;
+using static Mono.Security.X509.X520;
 
 namespace ModLib.Object
 {
@@ -126,16 +127,20 @@ namespace ModLib.Object
                 SelectionItems[i].Pos(Item.transform, 0f, -(Item.GetSize().y / 120f) * (i + 1));
         }
 
-        public override void Pos(float x, float y)
+        public override UIItemBase Pos(float x, float y)
         {
             base.Pos(x + DELTA_WITH_INPUT, y);
             UpdatePos();
+
+            return this;
         }
 
-        public override void Pos(UIItemBase org, float x, float y)
+        public override UIItemBase Pos(Transform org, float x, float y)
         {
             base.Pos(org, x + DELTA_WITH_INPUT, y);
             UpdatePos();
+
+            return this;
         }
 
         public UIItemSelect Align(TextAnchor tanchor = TextAnchor.MiddleLeft, VerticalWrapMode vMode = VerticalWrapMode.Overflow, HorizontalWrapMode hMode = HorizontalWrapMode.Overflow)
