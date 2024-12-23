@@ -191,15 +191,15 @@ namespace MOD_nE7UL2.Mod
                         var grade = player.GetGradeConf();
                         return new object[]
                         {
-                    GameTool.LS(g.conf.roleGrade.GetItem(grade.id).gradeName),
-                    GameTool.LS(g.conf.roleGrade.GetItem(grade.id).phaseName),
-                    GameTool.LS(g.conf.roleGrade.GetItem(grade.id).qualityName)
+                            GameTool.LS(g.conf.roleGrade.GetItem(grade.id).gradeName),
+                            GameTool.LS(g.conf.roleGrade.GetItem(grade.id).phaseName),
+                            GameTool.LS(g.conf.roleGrade.GetItem(grade.id).qualityName)
                         };
                     },
                 });
                 uiTrainer.AddText(col - 1, row++, "Exp: {0}/{1}").Align(TextAnchor.MiddleCenter).Format(Color.black, 15).SetWork(new UIItemBase.UIItemWork
                 {
-                    Formatter = (x) => new object[] { player.GetDynProperty(UnitDynPropertyEnum.Exp).value, player.GetMaxExpCurrentPhase() },
+                    Formatter = (x) => new object[] { player.GetExp(), player.GetMaxExpCurrentPhase() },
                 });
 
                 row++;
@@ -559,14 +559,20 @@ namespace MOD_nE7UL2.Mod
         {
             var player = g.world.playerUnit;
             if (player.GetProperty<int>(UnitPropertyEnum.GradeID) < g.conf.roleGrade._allConfList.ToArray().Max(x => x.id))
+            {
                 player.AddProperty<int>(UnitPropertyEnum.GradeID, 1);
+                player.ClearExp();
+            }
         }
 
         private void Leveldown()
         {
             var player = g.world.playerUnit;
             if (player.GetProperty<int>(UnitPropertyEnum.GradeID) > 1)
+            {
                 player.AddProperty<int>(UnitPropertyEnum.GradeID, -1);
+                player.ClearExp();
+            }
         }
 
         private void AddAtk()

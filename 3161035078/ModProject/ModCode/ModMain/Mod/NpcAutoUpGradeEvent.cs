@@ -1,65 +1,41 @@
-﻿//using MOD_nE7UL2.Const;
-//using MOD_nE7UL2.Enum;
-//using ModLib.Enum;
-//using ModLib.Mod;
-//using ModLib.Object;
-//using System.Collections.Generic;
-//using System.Linq;
+﻿using MOD_nE7UL2.Const;
+using ModLib.Enum;
+using ModLib.Mod;
+using System;
+using System.Collections.Generic;
 
-//namespace MOD_nE7UL2.Mod
-//{
-//    //TESTING
-//    //[Cache(ModConst.NPC_AUTO_UP_GRADE_EVENT)]
-//    //public class NpcAutoUpGradeEvent : ModEvent
-//    //{
-//    //    public IDictionary<string, double> NpcUpGradeRatio { get; set; } = new Dictionary<string, double>();
+namespace MOD_nE7UL2.Mod
+{
+    [Cache(ModConst.NPC_AUTO_UP_GRADE_EVENT)]
+    public class NpcAutoUpGradeEvent : ModEvent
+    {
+        public IDictionary<string, float> NpcUpGradeRate { get; set; } = new Dictionary<string, float>();
 
-//    //    public override void OnMonthly()
-//    //    {
-//    //        var rewrites = g.conf.roleCreateFeature._allConfList.ToArray().Where(x => x.type == FeatureTypeEnum.RewriteDestiny.Value.Parse<int>()).ToList();
-//    //        foreach (var wunit in g.world.unit.GetUnits())
-//    //        {
-//    //            if (wunit.GetProperty<int>(UnitPropertyEnum.Exp) >= wunit.GetMaxExpCurrentGrade())
-//    //            {
-//    //                var setting = NpcUpGradeRatioEnum.GetAllEnums<NpcUpGradeRatioEnum>().FirstOrDefault(x => x.Grade.Value.Parse<int>() == wunit.GetProperty<int>(UnitPropertyEnum.GradeID));
-//    //                if (setting != null)
-//    //                {
-//    //                    var supportRatio = 0.00d;
-//    //                    foreach (var oldGrade in wunit.data.unitData.npcUpGrade)
-//    //                    {
-//    //                        var oldGradeStt = NpcUpGradeRatioEnum.GetAllEnums<NpcUpGradeRatioEnum>().FirstOrDefault(x => x.Grade.Value.Parse<int>() == oldGrade.Key);
-//    //                        if (oldGradeStt != null)
-//    //                        {
-//    //                            supportRatio += oldGradeStt.NextGrade
-//    //                                .FirstOrDefault(x => wunit.data.unitData.npcUpGrade.ContainsKey(((x.Values[0] as MultiValue).Values[0] as GradePhaseEnum).Value.Parse<int>()))
-//    //                                ?.Values[2].Parse<double>() ?? 0.00d;
-//    //                        }
-//    //                    }
+        public override void OnMonthlyForEachWUnit(WorldUnitBase wunit)
+        {
+            base.OnMonthlyForEachWUnit(wunit);
+            if (!wunit.IsPlayer() && wunit.IsFullExp())
+            {
+                var nPhase = wunit.GetNextPhaseConf();
+                if (nPhase == null)
+                    return;
 
-//    //                    foreach (var nGrade in setting.NextGrade)
-//    //                    {
-//    //                        var nGradeID = ((nGrade.Values[0] as MultiValue).Values[0] as GradePhaseEnum).Value.Parse<int>();
-//    //                        var nGradeRatioKey = $"{wunit.GetUnitId()}_{nGradeID}";
-//    //                        NpcUpGradeRatio[nGradeRatioKey] += nGrade.Values[1].Parse<double>() * (1.00d + supportRatio);
+                var unitId = wunit.GetUnitId();
+                if (!NpcUpGradeRate.ContainsKey(unitId))
+                    NpcUpGradeRate.Add(unitId, 0.0000000f);
 
-//    //                        var r = CommonTool.Random(0.000000f, 100.000000f);
-//    //                        if (r.Parse<double>().IsBetween(0.000000d, NpcUpGradeRatio[nGradeRatioKey]))
-//    //                        {
-//    //                            var aRewrites = wunit.data.unitData.npcUpGrade.Values.ToList().Select(x => x.luck).ToList();
-//    //                            var bRewrites = rewrites.Where(x => !aRewrites.Contains(x.id)).ToList();
-//    //                            wunit.data.unitData.npcUpGrade.Add(nGradeID, new DataWorld.World.PlayerLogData.GradeData
-//    //                            {
-//    //                                luck = bRewrites.Random().id,
-//    //                                quality = g.conf.roleGrade.GetItem(nGradeID).quality,
-//    //                            });
-//    //                            wunit.SetProperty<int>(UnitPropertyEnum.GradeID, nGradeID);
-//    //                            goto gradeUp;
-//    //                        }
-//    //                    }
-//    //                }
-//    //            }
-//    //        gradeUp:;
-//    //        }
-//    //    }
-//    //}
-//}
+                var supportRate = 0.0000001f;
+                foreach (var oldPhaseInfo in wunit.data.unitData.npcUpGrade)
+                    supportRate += (0.0000001f * Math.Pow(2, oldPhaseInfo.value.quality)).Parse<float>();
+                NpcUpGradeRate[unitId] += supportRate;
+
+                var r = CommonTool.Random(0.0000000f, 100.0000000f);
+                if (r.IsBetween(0.0000000f, NpcUpGradeRate[unitId] / nPhase.grade))
+                {
+                    wunit.SetProperty<int>(UnitPropertyEnum.GradeID, nPhase.id);
+                    wunit.ClearExp();
+                }
+            }
+        }
+    }
+}

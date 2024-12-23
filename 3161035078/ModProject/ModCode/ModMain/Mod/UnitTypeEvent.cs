@@ -48,7 +48,7 @@ namespace MOD_nE7UL2.Mod
 
             //merchant
             var money = wunit.GetUnitMoney();
-            var income = wunit.IsPlayer() ? 0 : Convert.ToInt32(Math.Pow(3, wunit.GetGradeLvl()));
+            var income = wunit.IsPlayer() ? 0 : CommonTool.Random(Convert.ToInt32(Math.Pow(3, wunit.GetGradeLvl())), Convert.ToInt32(Math.Pow(4, wunit.GetGradeLvl())));
 
             if (UnitTypeDic[unitId] == UnitTypeEnum.Merchant)
             {
@@ -170,7 +170,7 @@ namespace MOD_nE7UL2.Mod
         {
             foreach (var p in UnitTypeEnum.Player.PropIncRatio)
             {
-                var pType = p.Values[0] as UnitPropertyEnum;
+                var pType = p.Value0 as UnitPropertyEnum;
                 wunit.AddProperty(pType, (UnitTypeEnum.Player.CalProp(pType, wunit.GetProperty<int>(pType)) * ratio).Parse<int>());
             }
         }
