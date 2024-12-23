@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
-  <Import Project="..\ModMain\packages\MethodBoundaryAspect.Fody.2.0.149\build\MethodBoundaryAspect.Fody.props" Condition="Exists('..\ModMain\packages\MethodBoundaryAspect.Fody.2.0.149\build\MethodBoundaryAspect.Fody.props')" />
+  <Import Project="..\ModMain\packages\MethodBoundaryAspect.Fody.2.0.150\build\MethodBoundaryAspect.Fody.props" Condition="Exists('..\ModMain\packages\MethodBoundaryAspect.Fody.2.0.150\build\MethodBoundaryAspect.Fody.props')" />
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
@@ -271,8 +271,8 @@
       <HintPath>C:\Program Files (x86)\Steam\steamapps\common\鬼谷八荒\MelonLoader\MelonLoader.dll</HintPath>
       <Private>False</Private>
     </Reference>
-    <Reference Include="MethodBoundaryAspect, Version=2.0.149.0, Culture=neutral, PublicKeyToken=296379d5065c9d61, processorArchitecture=MSIL">
-      <HintPath>..\ModMain\packages\MethodBoundaryAspect.Fody.2.0.149\lib\net462\MethodBoundaryAspect.dll</HintPath>
+    <Reference Include="MethodBoundaryAspect, Version=2.0.150.0, Culture=neutral, PublicKeyToken=296379d5065c9d61, processorArchitecture=MSIL">
+      <HintPath>..\ModMain\packages\MethodBoundaryAspect.Fody.2.0.150\lib\net462\MethodBoundaryAspect.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="Microsoft.Web.Infrastructure">
@@ -747,12 +747,12 @@
   <PropertyGroup>
     <PostBuildEvent>xcopy "$(ProjectDir)\bin\Release\*.dll" "$(ProjectDir)\..\ModMain\bin\Release\" /y</PostBuildEvent>
   </PropertyGroup>
+  <Import Project="..\ModMain\packages\Fody.6.9.1\build\Fody.targets" Condition="Exists('..\ModMain\packages\Fody.6.9.1\build\Fody.targets')" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
     <PropertyGroup>
       <ErrorText>このプロジェクトは、このコンピューター上にない NuGet パッケージを参照しています。それらのパッケージをダウンロードするには、[NuGet パッケージの復元] を使用します。詳細については、http://go.microsoft.com/fwlink/?LinkID=322105 を参照してください。見つからないファイルは {0} です。</ErrorText>
     </PropertyGroup>
-    <Error Condition="!Exists('..\ModMain\packages\MethodBoundaryAspect.Fody.2.0.149\build\MethodBoundaryAspect.Fody.props')" Text="$([System.String]::Format('$(ErrorText)', '..\ModMain\packages\MethodBoundaryAspect.Fody.2.0.149\build\MethodBoundaryAspect.Fody.props'))" />
-    <Error Condition="!Exists('..\ModMain\packages\Fody.6.8.2\build\Fody.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\ModMain\packages\Fody.6.8.2\build\Fody.targets'))" />
+    <Error Condition="!Exists('..\ModMain\packages\Fody.6.9.1\build\Fody.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\ModMain\packages\Fody.6.9.1\build\Fody.targets'))" />
+    <Error Condition="!Exists('..\ModMain\packages\MethodBoundaryAspect.Fody.2.0.150\build\MethodBoundaryAspect.Fody.props')" Text="$([System.String]::Format('$(ErrorText)', '..\ModMain\packages\MethodBoundaryAspect.Fody.2.0.150\build\MethodBoundaryAspect.Fody.props'))" />
   </Target>
-  <Import Project="..\ModMain\packages\Fody.6.8.2\build\Fody.targets" Condition="Exists('..\ModMain\packages\Fody.6.8.2\build\Fody.targets')" />
 </Project>
