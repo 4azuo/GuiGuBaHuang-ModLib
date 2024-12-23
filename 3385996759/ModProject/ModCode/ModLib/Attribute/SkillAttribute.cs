@@ -3,10 +3,11 @@
 [AttributeUsage(AttributeTargets.Class, AllowMultiple = false, Inherited = false)]
 public class SkillAttribute : Attribute
 {
+    public string CacheId { get; set; }
     public bool IsCached { get; set; }
 
-    public SkillAttribute(bool isCached)
+    public SkillAttribute(string cacheId)
     {
-        IsCached = isCached;
+        CacheId = cacheId;
     }
 }
