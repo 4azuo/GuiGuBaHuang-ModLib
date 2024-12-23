@@ -5,7 +5,6 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
-using static BattleRoomNode;
 
 public static class UnitHelper
 {
@@ -211,21 +210,29 @@ public static class UnitHelper
     //    propType.Set(wunit.data.dynUnitData, newValue);
     //}
 
-    public static int GetNextPhaseLvl(this WorldUnitBase wunit)
+    public static int GetNextPhaseId(this WorldUnitBase wunit)
     {
-        var curPhaseLvl = wunit.GetPhaseLvl();
-        var curPhaseEnum = GradePhaseUpEnum.GetEnumByVal<GradePhaseUpEnum>(curPhaseLvl.ToString());
-        return curPhaseEnum.NextPhase.Value.Parse<int>();
+        return g.conf.roleGrade.GetNextGradeItem(wunit.GetPhaseId()).id;
+    }
+
+    public static ConfRoleGradeItem GetNextPhaseConf(this WorldUnitBase wunit)
+    {
+        return g.conf.roleGrade.GetNextGradeItem(wunit.GetPhaseId());
+    }
+
+    public static int GetExp(this WorldUnitBase wunit)
+    {
+        return wunit.GetDynProperty(UnitDynPropertyEnum.Exp).value;
     }
 
     public static int GetMaxExpCurrentPhase(this WorldUnitBase wunit)
     {
-        return g.conf.roleGrade.GetNextGradeItem(wunit.GetDynProperty(UnitDynPropertyEnum.GradeID).value).exp;
+        return g.conf.roleGrade.GetNextGradeItem(wunit.GetPhaseId()).exp;
     }
 
     public static int GetMinExpCurrentPhase(this WorldUnitBase wunit)
     {
-        return g.conf.roleGrade.GetItem(wunit.GetDynProperty(UnitDynPropertyEnum.GradeID).value).exp;
+        return g.conf.roleGrade.GetItem(wunit.GetPhaseId()).exp;
     }
 
     public static int GetExpCurrentPhase(this WorldUnitBase wunit)
@@ -235,21 +242,20 @@ public static class UnitHelper
 
     public static int GetNeedExpToLevelUp(this WorldUnitBase wunit)
     {
-        return wunit.GetMaxExpCurrentPhase() - wunit.GetDynProperty(UnitDynPropertyEnum.Exp).value;
+        return wunit.GetMaxExpCurrentPhase() - wunit.GetExp();
     }
 
     public static bool IsFullExp(this WorldUnitBase wunit)
     {
-        return wunit.GetMaxExpCurrentPhase() == wunit.GetDynProperty(UnitDynPropertyEnum.Exp).value;
+        return wunit.GetExp() >= wunit.GetMaxExpCurrentPhase();
     }
 
     public static void AddExp(this WorldUnitBase wunit, int exp)
     {
-        var curExp = wunit.GetDynProperty(UnitDynPropertyEnum.Exp).value;
-        var addExp = Math.Max(Math.Min(curExp + exp, wunit.GetMaxExpCurrentPhase()), wunit.GetMinExpCurrentPhase());
+        var addExp = Math.Max(Math.Min(wunit.GetExp() + exp, wunit.GetMaxExpCurrentPhase()), wunit.GetMinExpCurrentPhase());
         wunit.SetProperty<int>(UnitPropertyEnum.Exp, addExp);
 
-        var gradeEnum = GradePhaseEnum.GetEnumByVal<GradePhaseEnum>(wunit.GetPhaseLvl().ToString());
+        var gradeEnum = GradePhaseEnum.GetEnumByVal<GradePhaseEnum>(wunit.GetPhaseId().ToString());
         if (gradeEnum != null && gradeEnum.Bottleneck != BottleneckEnum.None)
         {
             if (addExp == wunit.GetMaxExpCurrentPhase())
@@ -519,13 +525,17 @@ public static class UnitHelper
 
     public static int GetPhaseLvl(this WorldUnitBase wunit)
     {
-        //return wunit.GetGradeConf().id;
+        return wunit.GetGradeConf().phase;
+    }
+
+    public static int GetPhaseId(this WorldUnitBase wunit)
+    {
         return wunit.GetDynProperty(UnitDynPropertyEnum.GradeID).value;
     }
 
     public static ConfRoleGradeItem GetGradeConf(this WorldUnitBase wunit)
     {
-        return g.conf.roleGrade.GetItem(wunit.GetDynProperty(UnitDynPropertyEnum.GradeID).value);
+        return g.conf.roleGrade.GetItem(wunit.GetPhaseId());
     }
 
     public static void RemoveAllItems(this WorldUnitBase wunit)

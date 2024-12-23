@@ -41,7 +41,6 @@
     <Compile Include="Enum\ModItemTypeEnum.cs" />
     <Compile Include="Enum\AnimaIncPropEnum.cs" />
     <Compile Include="Enum\AnimaUpGradeEnum.cs" />
-    <Compile Include="Enum\NpcUpGradeRatioEnum.cs" />
     <Compile Include="Enum\BuildingCostEnum.cs" />
     <Compile Include="Enum\ApprenticeLuckEnum.cs" />
     <Compile Include="Enum\UnitTypeLuckEnum.cs" />

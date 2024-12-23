@@ -13,7 +13,8 @@ namespace MOD_nE7UL2.Mod
 
             if (!wunit.IsPlayer())
             {
-                var exp = CommonTool.Random(10.00f, 200.00f) * wunit.GetGradeLvl() * wunit.GetDynProperty(UnitDynPropertyEnum.Talent).value / 100f;
+                var smConfigs = EventHelper.GetEvent<SMLocalConfigsEvent>(ModConst.SM_LOCAL_CONFIGS_EVENT);
+                var exp = smConfigs.Calculate(CommonTool.Random(10.00f, 200.00f) * wunit.GetGradeLvl() * wunit.GetDynProperty(UnitDynPropertyEnum.Talent).value / 100f, smConfigs.Configs.AddNpcGrowRate);
                 if (wunit.IsHero())
                     exp *= CommonTool.Random(0.50f, 2.00f);
                 wunit.AddExp(exp.Parse<int>());
