@@ -1,6 +1,8 @@
-﻿public static class SkillHelper
+﻿using System;
+
+public static class SkillHelper
 {
-    public static int GetSkillMpCost(DataProps.PropsData props)
+    public static int GetSkillMpCost(this DataProps.PropsData props)
     {
         if (props == null)
             return 0;
@@ -13,7 +15,7 @@
         return 0;
     }
 
-    public static int GetStepMpCost(DataProps.PropsData props)
+    public static int GetStepMpCost(this DataProps.PropsData props)
     {
         if (props == null)
             return 0;
@@ -24,5 +26,15 @@
         if (skillValue != null)
             return skillValue.GetValue($"value{grade}").Parse<int>();
         return 0;
+    }
+
+    public static Tuple<MartialType, DataProps.PropsData> GetCastingSkill(this MartialTool.HitData hitData)
+    {
+        var skill = hitData.skillBase.TryCast<SkillAttack>();
+        if (skill != null)
+        {
+            return Tuple.Create(skill.skillData.martialType, skill.skillData.data);
+        }
+        return null;
     }
 }
