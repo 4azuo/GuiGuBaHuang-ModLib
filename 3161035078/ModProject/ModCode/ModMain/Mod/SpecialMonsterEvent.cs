@@ -1,20 +1,26 @@
 ﻿using EBattleTypeData;
 using MOD_nE7UL2.Const;
 using ModLib.Mod;
+using Newtonsoft.Json;
+using System.Collections.Generic;
 
 namespace MOD_nE7UL2.Mod
 {
     [Cache(ModConst.SPECIAL_MONST_EVENT)]
     public class SpecialMonsterEvent : ModEvent
     {
-        public const float MONST_SHIELD_CHANCE = 0.50f;
+        public const float MONST_SHIELD_CHANCE = 0.60f;
         public const float MONST_EXPLODE_CHANCE = 0.40f;
         public const float MONST_MULTIPLY_CHANCE = 0.20f;
 
         public const float EXPLODE_RADIUS = 2.5f;
+        public const int MULTIPLY = 1;
 
         public const string EXPLODE_EFX = @"Effect\Battle\Skill\baiyuanshizhen";
         public const string MULTIPLY_EFX = @"Effect\Battle\Skill\changhenfu_bao";
+
+        [JsonIgnore]
+        private List<UnitCtrlBase> multipliedUnits = new List<UnitCtrlBase>();
 
         public override void OnBattleUnitInto(UnitCtrlBase e)
         {
@@ -64,13 +70,21 @@ namespace MOD_nE7UL2.Mod
                         }
                     }
 
-                    if (CommonTool.Random(0.0f, 100.0f).IsBetween(0.0f, smConfigs.Calculate(MONST_MULTIPLY_CHANCE * monstData.grade.value * gameLvl, smConfigs.Configs.AddSpecialMonsterRate).Parse<float>()))
+                    if (!multipliedUnits.Contains(dieUnit) &&
+                        CommonTool.Random(0.0f, 100.0f).IsBetween(0.0f, smConfigs.Calculate(MONST_MULTIPLY_CHANCE * monstData.grade.value * gameLvl, smConfigs.Configs.AddSpecialMonsterRate).Parse<float>()))
                     {
                         ModBattleEvent.SceneBattle.effect.CreateSync(MULTIPLY_EFX, dieUnit.transform.position, 3f);
-                        SceneType.battle.unit.CreateUnitMonst(monstData.unitAttrItem.id, monstData.unit.posiDown.position, monstData.unitType);
+                        for (var i = 0; i < MULTIPLY * gameLvl; i++)
+                            multipliedUnits.Add(SceneType.battle.unit.CreateUnitMonst(monstData.unitAttrItem.id, monstData.unit.posiDown.position, monstData.unitType));
                     }
                 }
             }
+        }
+
+        public override void OnBattleEnd(BattleEnd e)
+        {
+            base.OnBattleEnd(e);
+            multipliedUnits.Clear();
         }
     }
 }
