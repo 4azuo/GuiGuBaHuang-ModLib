@@ -46,6 +46,7 @@ namespace MOD_nE7UL2.Mod
         public int PriorityDestinyLevel { get; set; } = 0;
         public bool AllowUpgradeNaturally { get; set; } = false;
         public bool EnableTrainer { get; set; } = false;
+        public int NPCAmount { get; set; } = 2000;
 
         //UI
         private UIItemComposite slMonstAtk;
@@ -76,6 +77,7 @@ namespace MOD_nE7UL2.Mod
         private UIItemComposite cbPriorityDestinyLevel;
         private UIItemComposite tglAllowUpgradeNaturally;
         private UIItemComposite tglEnableTrainer;
+        private UIItemComposite slNPCAmount;
 
         //Score
         public static IList<SMItemWork> ScoreCalculator { get; } = new List<SMItemWork>();
@@ -85,34 +87,98 @@ namespace MOD_nE7UL2.Mod
             base.OnLoadClass(isNew, modId, attr);
 
             ScoreCalculator.Clear();
-            Register(() => slMonstAtk, s => (s.Get().Parse<float>() * 100).Parse<int>());
-            Register(() => slMonstDef, s => (s.Get().Parse<float>() * 100).Parse<int>());
-            Register(() => slMonstHp, s => (s.Get().Parse<float>() * 100).Parse<int>());
-            Register(() => slMonstBasis, s => (s.Get().Parse<float>() * 100).Parse<int>());
-            Register(() => slMonstSpecialRate, s => (s.Get().Parse<float>() * 3000).Parse<int>());
-            Register(() => slEcoTaxRate, s => (s.Get().Parse<float>() * 100).Parse<int>());
-            Register(() => slEcoInfRate, s => (s.Get().Parse<float>() * 1000).Parse<int>());
-            Register(() => slEcoBuildingCost, s => (s.Get().Parse<float>() * 100).Parse<int>());
-            Register(() => slEcoBankAccCost, s => (s.Get().Parse<float>() * 100).Parse<int>());
-            Register(() => slEcoBankFee, s => (s.Get().Parse<float>() * 100).Parse<int>());
-            Register(() => slEcoRefineCost, s => (s.Get().Parse<float>() * 2000).Parse<int>());
-            Register(() => slEcoSectExchangeRate, s => (s.Get().Parse<float>() * 2000).Parse<int>(), s => !tglSysSectNoExchange.Get().Parse<bool>(), s => !tglSysSectNoExchange.Get().Parse<bool>());
-            Register(() => slEcoItemValue, s => (s.Get().Parse<float>() * 1000).Parse<int>());
-            Register(() => slNpcGrowRate, s => (s.Get().Parse<float>() * 1000).Parse<int>());
-            Register(() => slMiscLevelupExp, s => (s.Get().Parse<float>() * 2000).Parse<int>());
-            Register(() => tglSysHideSave, s => 1000, s => s.Get().Parse<bool>(), onChange: (s, v) => tglSysHideReload.Set(false));
-            Register(() => tglSysHideReload, s => 5000, s => s.Get().Parse<bool>(), s => tglSysHideSave.Get().Parse<bool>(), onChange: (s, v) => tglSysOnelife.Set(false));
-            Register(() => tglSysHideBattleMap, s => 2000, s => s.Get().Parse<bool>());
-            Register(() => tglSysNoRebirth, s => 10000, s => s.Get().Parse<bool>());
-            Register(() => tglSysOnelife, s => 20000, s => s.Get().Parse<bool>(), s => tglSysHideReload.Get().Parse<bool>());
-            Register(() => tglSysOnlyPortalAtCityAndSect, s => 1000, s => s.Get().Parse<bool>());
-            Register(() => tglSysNoExpFromBattle, s => 1000, s => s.Get().Parse<bool>());
-            Register(() => tglSysSectNoExchange, s => 10000, s => s.Get().Parse<bool>());
-            Register(() => tglSysBossHasShield, s => 10000, s => s.Get().Parse<bool>());
-            Register(() => tglNoGrowupFromBattles, s => 10000, s => s.Get().Parse<bool>());
-            Register(() => cbPriorityDestinyLevel, s => (s.Get().Parse<int>() == 0 ? 0 : (3 - s.Get().Parse<int>())) * 1000);
-            Register(() => tglAllowUpgradeNaturally, s => -2000, s => s.Get().Parse<bool>());
-            Register(() => tglEnableTrainer, s => -1000000, s => s.Get().Parse<bool>());
+            Register(() => slMonstAtk, 
+                funcCal: s => (s.Get().Parse<float>() * 100).Parse<int>());
+            Register(() => slMonstDef, 
+                funcCal: s => (s.Get().Parse<float>() * 100).Parse<int>());
+            Register(() => slMonstHp, 
+                funcCal: s => (s.Get().Parse<float>() * 100).Parse<int>());
+            Register(() => slMonstBasis, 
+                funcCal: s => (s.Get().Parse<float>() * 100).Parse<int>());
+            Register(() => slMonstSpecialRate, 
+                funcCal: s => (s.Get().Parse<float>() * 3000).Parse<int>());
+            Register(() => slEcoTaxRate, 
+                funcCal: s => (s.Get().Parse<float>() * 100).Parse<int>());
+            Register(() => slEcoInfRate, 
+                funcCal: s => (s.Get().Parse<float>() * 1000).Parse<int>());
+            Register(() => slEcoBuildingCost, 
+                funcCal: s => (s.Get().Parse<float>() * 100).Parse<int>());
+            Register(() => slEcoBankAccCost, 
+                funcCal: s => (s.Get().Parse<float>() * 100).Parse<int>());
+            Register(() => slEcoBankFee, 
+                funcCal: s => (s.Get().Parse<float>() * 100).Parse<int>());
+            Register(() => slEcoRefineCost, 
+                funcCal: s => (s.Get().Parse<float>() * 2000).Parse<int>());
+            Register(() => slEcoSectExchangeRate, 
+                funcCal: s => (s.Get().Parse<float>() * 2000).Parse<int>(),
+                funcCond: s => !tglSysSectNoExchange.Get().Parse<bool>(),
+                funcEna: s => !tglSysSectNoExchange.Get().Parse<bool>());
+            Register(() => slEcoItemValue, 
+                funcCal: s => (s.Get().Parse<float>() * 1000).Parse<int>());
+            Register(() => slNpcGrowRate, 
+                funcCal: s => (s.Get().Parse<float>() * 1000).Parse<int>());
+            Register(() => slMiscLevelupExp, 
+                funcCal: s => (s.Get().Parse<float>() * 2000).Parse<int>());
+            Register(() => tglSysHideSave, 
+                funcCal: s => 1000,
+                funcCond: s => s.Get().Parse<bool>(), 
+                onChange: (s, v) => tglSysHideReload.Set(false));
+            Register(() => tglSysHideReload, 
+                funcCal: s => 5000,
+                funcCond: s => s.Get().Parse<bool>(),
+                funcEna: s => tglSysHideSave.Get().Parse<bool>(), 
+                onChange: (s, v) => tglSysOnelife.Set(false));
+            Register(() => tglSysHideBattleMap, 
+                funcCal: s => 2000,
+                funcCond: s => s.Get().Parse<bool>());
+            Register(() => tglSysNoRebirth, 
+                funcCal: s => 10000,
+                funcCond: s => s.Get().Parse<bool>());
+            Register(() => tglSysOnelife, 
+                funcCal: s => 20000,
+                funcCond: s => s.Get().Parse<bool>(),
+                funcEna: s => tglSysHideReload.Get().Parse<bool>());
+            Register(() => tglSysOnlyPortalAtCityAndSect, 
+                funcCal: s => 1000,
+                funcCond: s => s.Get().Parse<bool>());
+            Register(() => tglSysNoExpFromBattle, 
+                funcCal: s => 1000,
+                funcCond: s => s.Get().Parse<bool>());
+            Register(() => tglSysSectNoExchange, 
+                funcCal: s => 10000,
+                funcCond: s => s.Get().Parse<bool>());
+            Register(() => tglSysBossHasShield, 
+                funcCal: s => 10000,
+                funcCond: s => s.Get().Parse<bool>());
+            Register(() => tglNoGrowupFromBattles, 
+                funcCal: s => 10000,
+                funcCond: s => s.Get().Parse<bool>());
+            Register(() => cbPriorityDestinyLevel, 
+                funcCal: s => (s.Get().Parse<int>() == 0 ? 0 : (3 - s.Get().Parse<int>())) * 1000);
+            Register(() => tglAllowUpgradeNaturally, 
+                funcCal: s => -2000,
+                funcCond: s => s.Get().Parse<bool>());
+            Register(() => tglEnableTrainer, 
+                funcCal: s => -1000000,
+                funcCond: s => s.Get().Parse<bool>());
+            Register(() => slNPCAmount,
+                funcCal: s => s.Get().Parse<int>(),
+                funcFormatter: s =>
+                {
+                    var rs = new object[] { 0, 0 };
+                    if (s.Parent != null)
+                    {
+                        //point
+                        rs[0] = CalCompScore(s.Parent);
+                        //%
+                        var x = s.Parent as UIItemComposite;
+                        if (x.MainComponent is UIItemSlider)
+                        {
+                            rs[1] = x.Get().Parse<int>().ToString("+#;-#;0");
+                        }
+                    }
+                    return rs;
+                });
         }
 
         private void Register(
@@ -193,6 +259,11 @@ namespace MOD_nE7UL2.Mod
                 row++;
                 uiCustom.AddText(col, row++, GameTool.LS("smcfgs016")).Format(null, 17, FontStyle.Italic).Align(TextAnchor.MiddleRight);
                 slNpcGrowRate = uiCustom.AddCompositeSlider(col, row++, GameTool.LS("smcfgs017"), 0.00f, 10.00f, AddNpcGrowRate, GameTool.LS("smcfgs101"));
+                slNPCAmount = uiCustom.AddCompositeSlider(col, row++, GameTool.LS("smcfgs047"), 1000, 10000, NPCAmount, GameTool.LS("smcfgs103"));
+                uiCustom.AddText(col + 3, row++, GameTool.LS("smcfgs048")).Format(null, 13).Align(TextAnchor.MiddleLeft).SetWork(new UIItemBase.UIItemWork
+                {
+                    Formatter = (x) => new string[] { (slNPCAmount.Get().Parse<int>() / 2).ToString() },
+                });
                 row++;
                 uiCustom.AddText(col, row++, GameTool.LS("smcfgs018")).Format(null, 17, FontStyle.Italic).Align(TextAnchor.MiddleRight);
                 slMiscLevelupExp = uiCustom.AddCompositeSlider(col, row++, GameTool.LS("smcfgs019"), 0.00f, 1.00f, AddLevelupExpRate, GameTool.LS("smcfgs101"));
@@ -289,6 +360,7 @@ namespace MOD_nE7UL2.Mod
             cbPriorityDestinyLevel.Set(0);
             tglAllowUpgradeNaturally.Set(false);
             tglEnableTrainer.Set(false);
+            slNPCAmount.Set(2000f);
         }
 
         private void SetLevel(int level)
@@ -321,6 +393,7 @@ namespace MOD_nE7UL2.Mod
             tglSysSectNoExchange.Set(level > 7);
             tglSysNoRebirth.Set(level > 8);
             tglSysOnelife.Set(level > 9);
+            slNPCAmount.SetPercent(level * 0.02000f, 2000f);
         }
 
         private void SetSMConfigs()
@@ -353,7 +426,11 @@ namespace MOD_nE7UL2.Mod
             PriorityDestinyLevel = cbPriorityDestinyLevel.Get().Parse<int>();
             AllowUpgradeNaturally = tglAllowUpgradeNaturally.Get().Parse<bool>();
             EnableTrainer = tglEnableTrainer.Get().Parse<bool>();
+            NPCAmount = slNPCAmount.Get().Parse<int>();
             CacheHelper.SaveGlobalCache(this);
+
+            //edit conf
+            g.conf.npcInitParameters.GetItem(1).value = NPCAmount;
         }
 
         public static int CalCompScore(UIItemBase comp)
