@@ -97,7 +97,10 @@ namespace MOD_nE7UL2.Mod
 
                 var budget = MapBuildPropertyEvent.GetBuildProperty(curMainTown);
                 var totalPrice = GetTotalPrice(uiPropSell);
-                var cashback = (totalPrice * ((MarketPriceRate[curMainTown.buildData.id] - 100.00f) / 100.00f)).Parse<int>();
+                var cashback = (
+                    (totalPrice * ((MarketPriceRate[curMainTown.buildData.id] - 100.00f) / 100.00f)) +
+                    totalPrice * GetMerchantIncRate()
+                ).Parse<int>();
                 uiPropSell.textMoney.text = $"Owned: {g.world.playerUnit.GetUnitMoney()} Spirit Stones";
                 uiPropSell.textPrice.text = $"Total: {totalPrice + cashback} ({cashback})";
                 uiPropSell.btnOK.gameObject.SetActive(totalPrice <= budget);
@@ -115,7 +118,10 @@ namespace MOD_nE7UL2.Mod
                 var curMainTown = g.world.build.GetBuild(g.world.playerUnit.data.unitData.GetPoint());
 
                 var totalPrice = GetTotalPrice(uiPropSell);
-                var cashback = (totalPrice * ((MarketPriceRate[curMainTown.buildData.id] - 100.00f) / 100.00f)).Parse<int>();
+                var cashback = (
+                    (totalPrice * ((MarketPriceRate[curMainTown.buildData.id] - 100.00f) / 100.00f)) +
+                    totalPrice * GetMerchantIncRate()
+                ).Parse<int>();
                 g.world.playerUnit.AddUnitMoney((totalPrice + cashback).Parse<int>());
                 MapBuildPropertyEvent.AddBuildProperty(curMainTown, -totalPrice);
 

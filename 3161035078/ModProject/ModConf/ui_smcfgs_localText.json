@@ -48,6 +48,7 @@
 	{ "id": -1000001046, "key": "smcfgs046", "en|ch|tc": "You have to start a new game to apply these configs!" },
 	{ "id": -1000001047, "key": "smcfgs047", "en|ch|tc": "NPC Amount" },
 	{ "id": -1000001048, "key": "smcfgs048", "en|ch|tc": "(Required RAM: {0}MB)" },
+	{ "id": -1000001049, "key": "smcfgs049", "en|ch|tc": "(Included Shield, Explode and Multiply)" },
 	{ "id": -1000001101, "key": "smcfgs101", "en|ch|tc": "{1}% ({0}P)" },
 	{ "id": -1000001102, "key": "smcfgs102", "en|ch|tc": "({0}P)" },
 	{ "id": -1000001103, "key": "smcfgs103", "en|ch|tc": "{1} ({0}P)" },

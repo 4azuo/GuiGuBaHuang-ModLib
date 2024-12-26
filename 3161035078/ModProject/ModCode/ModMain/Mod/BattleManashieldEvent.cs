@@ -13,7 +13,6 @@ namespace MOD_nE7UL2.Mod
     {
         public const int MANASHIELD_EFFECT_MAIN_ID = 903151120;
         public const int MANASHIELD_EFFECT_EFX_ID = 903151121;
-        public const float MONST_SHIELD_CHANCE = 0.50f;
 
         public static _BattleManashieldConfigs ManashieldConfigs => ModMain.ModObj.GameSettings.BattleManashieldConfigs;
 
@@ -33,30 +32,9 @@ namespace MOD_nE7UL2.Mod
                 if (humanData.worldUnitData.unit.IsPlayer())
                     PlayerShieldEfx = efx;
             }
-            else if (e.IsMonster())
-            {
-                var gameLvl = g.data.dataWorld.data.gameLevel.Parse<int>();
-                var monstData = e?.data?.TryCast<UnitDataMonst>();
-                var smConfigs = EventHelper.GetEvent<SMLocalConfigsEvent>(ModConst.SM_LOCAL_CONFIGS_EVENT);
-
-                if (monstData.monstType == MonstType.Common || monstData.monstType == MonstType.Elite)
-                {
-                    //add manashield
-                    if (CommonTool.Random(0.0f, 100.0f).IsBetween(0.0f, smConfigs.Calculate(MONST_SHIELD_CHANCE * monstData.grade.value * gameLvl, smConfigs.Configs.AddSpecialMonsterRate).Parse<float>()))
-                    {
-                        var shield = monstData.maxHP.value;
-                        ShieldUp(monstData.unit, shield, int.MaxValue);
-                    }
-                }
-                else if (smConfigs.Configs.BossHasShield && (monstData.monstType == MonstType.BOSS || monstData.monstType == MonstType.NPC))
-                {
-                    var shield = monstData.maxHP.value;
-                    ShieldUp(monstData.unit, shield, int.MaxValue);
-                }
-            }
         }
 
-        private EffectBase ShieldUp(UnitCtrlBase cunit, int shield, int maxShield)
+        public static EffectBase ShieldUp(UnitCtrlBase cunit, int shield, int maxShield)
         {
             if (cunit == null)
                 return null;

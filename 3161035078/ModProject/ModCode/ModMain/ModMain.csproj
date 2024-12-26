@@ -81,7 +81,7 @@
     <Compile Include="Mod\MonstStrongerEvent.cs" />
     <Compile Include="Mod\BornLuckEvent.cs" />
     <Compile Include="Mod\TrainerEvent.cs" />
-    <Compile Include="Mod\ExplodeMonsterEvent.cs" />
+    <Compile Include="Mod\SpecialMonsterEvent.cs" />
     <Compile Include="Mod\UnitTypeEvent.cs" />
     <Compile Include="Mod\UpgradeNaturallyEvent.cs" />
     <Compile Include="Object\SMItemWork.cs" />

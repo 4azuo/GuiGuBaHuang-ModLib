@@ -20,6 +20,7 @@ namespace MOD_nE7UL2.Mod
                 var unitId = wunit.GetUnitId();
                 if (UnitTypeDic.ContainsKey(unitId) && UnitTypeDic[unitId].CustomLuck != null)
                 {
+                    RemoveUnitTypeLuck(wunit);
                     wunit.AddLuck(UnitTypeDic[unitId].Value.Parse<int>());
                 }
             }
