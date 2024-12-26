@@ -15,7 +15,7 @@ namespace MOD_nE7UL2.Mod
         {
             base.OnCast(cunit, skill, step, prop);
             var sa = skill?.TryCast<SkillAttack>();
-            if (skill != null && sa.skillData.data.propsID == SKILL_ID)
+            if (skill != null && sa?.skillData?.data?.propsID == SKILL_ID)
             {
                 ModBattleEvent.SceneBattle.effect.Create(NORMAL_EFX, Input.mousePosition, 3f, (Il2CppSystem.Action<GameObject>)((x) =>
                 {
