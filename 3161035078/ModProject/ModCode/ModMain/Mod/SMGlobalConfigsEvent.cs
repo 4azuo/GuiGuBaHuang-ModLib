@@ -371,11 +371,11 @@ namespace MOD_nE7UL2.Mod
             slMonstHp.SetPercent(level * 0.05000f, 0f);
             slMonstBasis.SetPercent(level * 0.04000f);
             slMonstSpecialRate.SetPercent(level * 0.10000f);
-            slEcoTaxRate.SetPercent(level * 0.01000f);
+            slEcoTaxRate.SetPercent(level * 0.00500f);
             slEcoInfRate.SetPercent(level * 0.10000f);
             slEcoBuildingCost.SetPercent(level * 0.04000f);
             slEcoBankAccCost.SetPercent(level * 0.10000f);
-            slEcoBankFee.SetPercent(level * 0.05000f);
+            slEcoBankFee.SetPercent(level * 0.01000f);
             slEcoRefineCost.SetPercent(level * 0.10000f);
             slEcoSectExchangeRate.SetPercent(level * 0.10000f);
             slEcoItemValue.SetPercent(level * 0.10000f);

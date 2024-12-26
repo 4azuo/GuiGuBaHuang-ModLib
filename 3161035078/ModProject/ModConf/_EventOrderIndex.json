@@ -34,7 +34,7 @@
 	"SpiritlockEvent": 5020,
 	"BattleModifyEvent": 5030,
 	"BattleManashieldEvent": 5040,
-	"ExplodeMonsterEvent": 5041,
+	"SpecialMonsterEvent": 5041,
 	"RevengeEvent": 5050,
 	"BattleRewardEventV2": 5060,
 

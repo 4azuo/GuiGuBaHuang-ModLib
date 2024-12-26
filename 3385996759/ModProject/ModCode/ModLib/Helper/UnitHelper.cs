@@ -1,4 +1,5 @@
-﻿using ModLib.Const;
+﻿using Harmony;
+using ModLib.Const;
 using ModLib.Enum;
 using ModLib.Mod;
 using System;
@@ -17,6 +18,17 @@ public static class UnitHelper
     public static Vector2Int GetUnitPos(this WorldUnitBase wunit)
     {
         return wunit.data.unitData.GetPoint();
+    }
+
+    public static List<DataProps.PropsData> GetEquippedItems(this WorldUnitBase wunit)
+    {
+        var rs = new List<DataProps.PropsData>();
+        rs.AddRange(wunit.GetEquippedArtifacts());
+        rs.Add(wunit.GetEquippedRing());
+        rs.Add(wunit.GetEquippedMount());
+        rs.Add(wunit.GetEquippedOutfit());
+        rs.AddRange(wunit.GetEquippedProps());
+        return rs;
     }
 
     public static DataProps.PropsData[] GetEquippedArtifacts(this WorldUnitBase wunit)
@@ -536,6 +548,14 @@ public static class UnitHelper
     public static ConfRoleGradeItem GetGradeConf(this WorldUnitBase wunit)
     {
         return g.conf.roleGrade.GetItem(wunit.GetPhaseId());
+    }
+
+    public static void RemoveEquippedItems(this WorldUnitBase wunit)
+    {
+        foreach (var item in wunit.GetEquippedItems())
+        {
+            wunit.RemoveUnitProp(item.soleID);
+        }
     }
 
     public static void RemoveAllItems(this WorldUnitBase wunit)

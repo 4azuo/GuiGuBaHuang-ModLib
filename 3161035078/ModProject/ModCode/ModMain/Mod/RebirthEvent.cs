@@ -28,6 +28,14 @@ namespace MOD_nE7UL2.Mod
             if (e.uiType.uiName == UIType.TownPub.uiName && !smConfigs.Configs.NoRebirth)
             {
                 var player = g.world.playerUnit;
+
+                if (!string.IsNullOrEmpty(player.data.unitData.schoolID))
+                {
+                    var uiConfirm = g.ui.OpenUI<UICheckPopup>(UIType.CheckPopup);
+                    uiConfirm.InitData("Rebirth", "You have to leave the sect!", 1);
+                    return;
+                }
+
                 var playerGradeLvl = player.GetGradeLvl();
                 var curTown = g.world.build.GetBuild(new UnityEngine.Vector2Int(player.data.unitData.pointX, player.data.unitData.pointY));
                 var townLevel = curTown.gridData.areaBaseID;
@@ -41,23 +49,26 @@ namespace MOD_nE7UL2.Mod
                     btn1.onClick.AddListener((UnityAction)(() =>
                     {
                         var uiConfirm = g.ui.OpenUI<UICheckPopup>(UIType.CheckPopup);
-                        uiConfirm.InitData("Rebirth", "All items (excluded storage items) will be deleted!", 2,
+                        uiConfirm.InitData("Rebirth", "Reputation will be reseted!", 2,
                             (Action)(() =>
                             {
+                                //var
                                 RebirthCount++;
                                 RebirthLevel = playerGradeLvl;
                                 TotalGradeLvl += playerGradeLvl;
+
+                                //reset grade & exp
                                 player.ResetGradeLevel();
                                 player.ClearExp();
-                                player.SetUnitMoney(0);
-                                player.SetUnitContribution(0);
-                                player.SetUnitMayorDegree(0);
-                                player.RemoveAllItems();
-                                //player.RemoveAllStorageItems();
-                                BankAccountEvent.RemoveAllAccounts();
-                                //RealStorageEvent.RemoveDebt();
+
+                                //reset items
                                 player.SetProperty(UnitPropertyEnum.Reputation, 0);
-                                player.data.school.ExitSchool(player);
+
+                                //remote button
+                                btn1.gameObject.SetActive(false);
+                                UnityEngine.Object.DestroyImmediate(btn1);
+
+                                //add luck & open drama
                                 AddLuck();
                                 DramaTool.OpenDrama(REBIRTH_DRAMA);
                             }));
