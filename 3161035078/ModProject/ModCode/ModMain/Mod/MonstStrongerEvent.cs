@@ -94,16 +94,16 @@ namespace MOD_nE7UL2.Mod
 
                 //additional
                 //DebugHelper.WriteLine("6");
-                if (AdditionalStts.ContainsKey(monstData.monstType))
-                {
-                    var r = Additional[monstData.monstType];
-                    if (monstData.monstType == MonstType.BOSS)
-                        r += Additional[MonstType.Elite] / 10f;
-                    r *= gameLvl;
-                    monstData.attack.baseValue += (atk * r * Configs.AtkR).Parse<int>();
-                    monstData.defense.baseValue += (def * r * Configs.DefR).Parse<int>();
-                    monstData.maxHP.baseValue += (mhp * r * Configs.MHpR).Parse<int>();
-                }
+                //if (AdditionalStts.ContainsKey(monstData.monstType))
+                //{
+                //    var r = Additional[monstData.monstType];
+                //    if (monstData.monstType == MonstType.BOSS)
+                //        r += Additional[MonstType.Elite] / 10f;
+                //    r *= gameLvl;
+                //    monstData.attack.baseValue += (atk * r * Configs.AtkR).Parse<int>();
+                //    monstData.defense.baseValue += (def * r * Configs.DefR).Parse<int>();
+                //    monstData.maxHP.baseValue += (mhp * r * Configs.MHpR).Parse<int>();
+                //}
 
                 //area bonus
                 //DebugHelper.WriteLine("7");
