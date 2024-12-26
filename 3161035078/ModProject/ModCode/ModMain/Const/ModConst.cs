@@ -41,7 +41,7 @@
         public const string UI_DIFFICULTY_EVENT = "UIDifficultyEvent";
         public const string UPGRADE_NATURALLY_EVENT = "UpgradeNaturallyEvent";
         public const string TRAINER_EVENT = "TrainerEvent";
-        public const string EXPLODE_MONST_EVENT = "ExplodeMonsterEvent";
+        public const string SPECIAL_MONST_EVENT = "SpecialMonsterEvent";
 
         //Others
         public const string UTYPE_LUCK_EFX_FREE_STORAGE = "FreeStorage";

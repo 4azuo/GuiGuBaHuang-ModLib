@@ -345,15 +345,15 @@ namespace MOD_nE7UL2.Mod
         public static Dictionary<int, float> BlockRatio { get; } = new Dictionary<int, float>()
         {
             [1] = 0.50f,
-            [2] = 0.60f,
-            [3] = 0.70f,
-            [4] = 0.80f,
-            [5] = 1.00f,
-            [6] = 1.20f,
-            [7] = 1.40f,
-            [8] = 1.60f,
-            [9] = 2.00f,
-            [10] = 2.50f,
+            [2] = 0.55f,
+            [3] = 0.60f,
+            [4] = 0.70f,
+            [5] = 0.80f,
+            [6] = 0.95f,
+            [7] = 1.10f,
+            [8] = 1.30f,
+            [9] = 1.50f,
+            [10] = 2.00f,
         };
 
         public static float GetBlockRatio(UnitDataHuman u)

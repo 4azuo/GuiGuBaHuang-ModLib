@@ -246,6 +246,7 @@ namespace MOD_nE7UL2.Mod
                 slMonstBasis = uiCustom.AddCompositeSlider(col, row++, GameTool.LS("smcfgs004"), -0.50f, 10.00f, AddBasisRate, GameTool.LS("smcfgs101"));
                 uiCustom.AddText(col - 1, row++, GameTool.LS("smcfgs005")).Format(null, 13).Align(TextAnchor.MiddleLeft);
                 slMonstSpecialRate = uiCustom.AddCompositeSlider(col, row++, GameTool.LS("smcfgs006"), -0.50f, 1.00f, AddSpecialMonsterRate, GameTool.LS("smcfgs101"));
+                uiCustom.AddText(col + 2, row++, GameTool.LS("smcfgs049")).Format(null, 13).Align(TextAnchor.MiddleLeft);
                 row++;
                 uiCustom.AddText(col, row++, GameTool.LS("smcfgs007")).Format(null, 17, FontStyle.Italic).Align(TextAnchor.MiddleRight);
                 slEcoTaxRate = uiCustom.AddCompositeSlider(col, row++, GameTool.LS("smcfgs008"), 0.00f, 10.00f, AddTaxRate, GameTool.LS("smcfgs101"));
