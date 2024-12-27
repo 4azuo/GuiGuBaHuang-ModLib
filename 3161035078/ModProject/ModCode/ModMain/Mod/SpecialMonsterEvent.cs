@@ -74,7 +74,8 @@ namespace MOD_nE7UL2.Mod
                         CommonTool.Random(0.0f, 100.0f).IsBetween(0.0f, smConfigs.Calculate(MONST_MULTIPLY_CHANCE * monstData.grade.value * gameLvl, smConfigs.Configs.AddSpecialMonsterRate).Parse<float>()))
                     {
                         ModBattleEvent.SceneBattle.effect.CreateSync(MULTIPLY_EFX, dieUnit.transform.position, 3f);
-                        for (var i = 0; i < MULTIPLY * gameLvl; i++)
+                        var count = CommonTool.Random(1, MULTIPLY * gameLvl);
+                        for (var i = 0; i < count; i++)
                             multipliedUnits.Add(SceneType.battle.unit.CreateUnitMonst(monstData.unitAttrItem.id, monstData.unit.posiDown.position, monstData.unitType));
                     }
                 }

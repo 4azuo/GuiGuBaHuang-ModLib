@@ -1,4 +1,6 @@
 ﻿using MOD_nE7UL2;
+using MOD_nE7UL2.Const;
+using MOD_nE7UL2.Mod;
 using ModLib.Enum;
 using System;
 using static MOD_nE7UL2.Object.GameStts;
@@ -220,6 +222,28 @@ public static class UnitModifyHelper
         if (wunit == null)
             return 0;
         return wunit.GetBasisMagicSum();
+    }
+
+    public static int GetArtisanshipAdjSp(WorldUnitBase wunit)
+    {
+        if (wunit == null)
+            return 0;
+        return wunit.GetArtisanshipSum();
+    }
+
+    public static int GetQiAdjAtk(WorldUnitBase wunit)
+    {
+        if (wunit == null)
+            return 0;
+        var EventHelper.GetEvent<NpcAutoEvent>(ModConst.NPC_AUTO_EVENT);
+        return wunit.GetArtisanshipSum();
+    }
+
+    public static int GetArtisanshipAdjSp(WorldUnitBase wunit)
+    {
+        if (wunit == null)
+            return 0;
+        return wunit.GetArtisanshipSum();
     }
 
     public static int GetArtisanshipAdjSp(WorldUnitBase wunit)

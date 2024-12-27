@@ -10,7 +10,7 @@
 	"RebirthEvent": 2010,
 	"MissionDeclareEvent": 2020,
 	"ContributionExchangeEvent": 2030,
-	"NpcAutoCulEvent": 2040,
+	"NpcAutoEvent": 2040,
 	"NpcUpgradeSkillEvent": 2050,
 	"UnitTypeEvent": 2060,
 	"UpgradeNaturallyEvent": 2070,
@@ -29,13 +29,13 @@
 	"CustomRefineEvent": 4020,
 
 	//battle
-	"MostStrongerEvent": 5000,
+	"BattleEvent": 5000,
+	"MostStrongerEvent": 5001,
 	"RealTrialEvent": 5010,
 	"SpiritlockEvent": 5020,
 	"BattleModifyEvent": 5030,
 	"BattleManashieldEvent": 5040,
 	"SpecialMonsterEvent": 5041,
-	"RevengeEvent": 5050,
 	"BattleRewardEventV2": 5060,
 
 	//global

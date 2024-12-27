@@ -11,10 +11,9 @@
         public const string BATTLE_REWARD_EVENT_V2 = "BattleRewardEventV2";
         public const string NPC_UPGRADE_SKILL_EVENT = "NpcUpgradeSkillEvent";
         public const string MONST_STRONGER_EVENT = "MostStrongerEvent";
-        public const string NPC_AUTO_UP_GRADE_EVENT = "NpcAutoUpGradeEvent";
-        public const string NPC_AUTO_CUL_EVENT = "NpcAutoCulEvent";
+        public const string NPC_AUTO_EVENT = "NpcAutoEvent";
         public const string BATTLE_MANASHIELD_EVENT = "BattleManashieldEvent";
-        public const string REVENGE_EVENT = "RevengeEvent";
+        public const string BATTLE_EVENT = "BattleEvent";
         public const string REAL_TRIAL_EVENT = "RealTrialEvent";
         public const string BORN_LUCK_EVENT = "BornLuckEvent";
         public const string CONTRIBUTION_EXCHANGE_EVENT = "ContributionExchangeEvent";

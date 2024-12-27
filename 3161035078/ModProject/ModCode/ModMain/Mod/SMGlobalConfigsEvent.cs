@@ -1,5 +1,4 @@
 ﻿using EGameTypeData;
-using Il2CppSystem.Data;
 using MOD_nE7UL2.Const;
 using MOD_nE7UL2.Object;
 using ModLib.Mod;
@@ -8,7 +7,6 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
-using UnityEngine.Events;
 
 namespace MOD_nE7UL2.Mod
 {
@@ -174,7 +172,7 @@ namespace MOD_nE7UL2.Mod
                         var x = s.Parent as UIItemComposite;
                         if (x.MainComponent is UIItemSlider)
                         {
-                            rs[1] = x.Get().Parse<int>().ToString("+#;-#;0");
+                            rs[1] = x.Get().Parse<int>();
                         }
                     }
                     return rs;

@@ -6,10 +6,11 @@ using System.Collections.Generic;
 
 namespace MOD_nE7UL2.Mod
 {
-    [Cache(ModConst.QI_CUL_EVENT)]
-    public class QiCulEvent : ModEvent
+    [Cache(ModConst.NPC_AUTO_EVENT)]
+    public class NpcAutoEvent : ModEvent
     {
         public IDictionary<string, long> Qi { get; set; } = new Dictionary<string, long>();
+        public IDictionary<string, float> NpcUpGradeRate { get; set; } = new Dictionary<string, float>();
 
         public override void OnMonthlyForEachWUnit(WorldUnitBase wunit)
         {
@@ -19,11 +20,6 @@ namespace MOD_nE7UL2.Mod
                 if (wunit.IsFullExp())
                 {
                     var unitId = wunit.GetUnitId();
-
-                    //inc qi
-                    if (!Qi.ContainsKey(unitId))
-                        Qi.Add(unitId, 0);
-                    Qi[unitId] += (wunit.GetDynProperty(UnitDynPropertyEnum.Mp).value * CommonTool.Random(0.8f, 1.2f)).Parse<int>();
 
                     //up grade
                     var nPhase = wunit.GetNextPhaseConf();
