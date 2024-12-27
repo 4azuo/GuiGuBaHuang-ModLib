@@ -1,15 +1,30 @@
-﻿using MOD_nE7UL2.Const;
+﻿using EGameTypeData;
+using MOD_nE7UL2.Const;
 using ModLib.Enum;
 using ModLib.Mod;
-using System;
+using ModLib.Object;
 using System.Collections.Generic;
+using UnityEngine;
 
 namespace MOD_nE7UL2.Mod
 {
     [Cache(ModConst.QI_CUL_EVENT)]
     public class QiCulEvent : ModEvent
     {
+        public const int QI_TRANSFER_DRAMA = 480010100;
+
         public IDictionary<string, long> Qi { get; set; } = new Dictionary<string, long>();
+
+        public override void OnLoadGame()
+        {
+            base.OnLoadGame();
+            foreach (var wunit in g.world.unit.GetUnits())
+            {
+                var unitId = wunit.GetUnitId();
+                if (!Qi.ContainsKey(unitId))
+                    Qi.Add(unitId, 0);
+            }
+        }
 
         public override void OnMonthlyForEachWUnit(WorldUnitBase wunit)
         {
@@ -17,12 +32,68 @@ namespace MOD_nE7UL2.Mod
             if (wunit.IsFullExp())
             {
                 var unitId = wunit.GetUnitId();
-
-                //inc qi
                 if (!Qi.ContainsKey(unitId))
                     Qi.Add(unitId, 0);
                 Qi[unitId] += (wunit.GetDynProperty(UnitDynPropertyEnum.Mp).value * CommonTool.Random(0.8f, 1.2f)).Parse<int>();
             }
+        }
+
+        public override void OnOpenUIEnd(OpenUIEnd e)
+        {
+            base.OnOpenUIEnd(e);
+            if (e.uiType.uiName == UIType.FateFeature.uiName)
+            {
+                var ui = new UICover<UIFateFeature>(e.ui);
+                {
+                    ui.AddText(ui.MidCol, ui.MidRow - 9, $"Qi: {Qi[g.world.playerUnit.GetUnitId()]}").Format(Color.black, 16).SetParentTransform(ui.UI.gradeInfo.goBgProTop);
+                    ui.AddText(ui.MidCol, ui.MidRow - 8, $"Atk: {UnitModifyHelper.GetQiAdjAtk(g.world.playerUnit)}").Format(Color.black, 16).SetParentTransform(ui.UI.gradeInfo.goBgProTop);
+                    ui.AddText(ui.MidCol, ui.MidRow - 7, $"Hp: {UnitModifyHelper.GetQiAdjHp(g.world.playerUnit)}").Format(Color.black, 16).SetParentTransform(ui.UI.gradeInfo.goBgProTop);
+                    ui.AddText(ui.MidCol, ui.MidRow - 6, $"Mp: {UnitModifyHelper.GetQiAdjMp(g.world.playerUnit)}").Format(Color.black, 16).SetParentTransform(ui.UI.gradeInfo.goBgProTop);
+                }
+            }
+            else
+            if (e.uiType.uiName == UIType.NPCInfo.uiName)
+            {
+                var uiBase = g.ui.GetUI<UINPCInfo>(e.ui.uiType);
+                var unitId = uiBase.unit.GetUnitId();
+                if (Qi.ContainsKey(unitId))
+                {
+                    var ui = new UICover<UINPCInfo>(uiBase);
+                    ui.AddText(0, 0, $"Qi: {Qi[unitId]}").Align().Format(Color.white, 16).Pos(ui.UI.uiHeart.goSeedIconRoot.transform, -2.8f, 1f).SetParentTransform(ui.UI.uiHeart.goEmpty);
+                    ui.AddText(0, 0, $"Atk: {UnitModifyHelper.GetQiAdjAtk(uiBase.unit)}").Align().Format(Color.white, 16).Pos(ui.UI.uiHeart.goSeedIconRoot.transform, -2.8f, 0.8f).SetParentTransform(ui.UI.uiHeart.goEmpty);
+                    ui.AddText(0, 0, $"Hp: {UnitModifyHelper.GetQiAdjHp(uiBase.unit)}").Align().Format(Color.white, 16).Pos(ui.UI.uiHeart.goSeedIconRoot.transform, -2.8f, 0.6f).SetParentTransform(ui.UI.uiHeart.goEmpty);
+                    ui.AddText(0, 0, $"Mp: {UnitModifyHelper.GetQiAdjMp(uiBase.unit)}").Align().Format(Color.white, 16).Pos(ui.UI.uiHeart.goSeedIconRoot.transform, -2.8f, 0.4f).SetParentTransform(ui.UI.uiHeart.goEmpty);
+                    ui.AddButton(0, 0, () =>
+                    {
+                        QiTransmit(g.world.playerUnit, uiBase.unit);
+                    }, "Qi Transfer").Format(Color.black, 14).Size(160, 30).Pos(ui.UI.uiHeart.goSeedIconRoot.transform, -2.8f, 0.1f).SetParentTransform(ui.UI.uiHeart.goEmpty);
+                    if (!uiBase.unit.isDie &&
+                        g.world.playerUnit.data.allUnitRelation.ContainsKey(unitId) && 
+                        g.world.playerUnit.data.allUnitRelation[unitId] == UnitRelationType.Master)
+                    {
+                        ui.AddButton(0, 0, () =>
+                        {
+                            QiTransmit(uiBase.unit, g.world.playerUnit);
+                        }, "Recieve Qi").Format(Color.black, 14).Size(160, 30).Pos(ui.UI.uiHeart.goSeedIconRoot.transform, -2.8f, -0.2f).SetParentTransform(ui.UI.uiHeart.goEmpty);
+                    }
+                }
+            }
+        }
+
+        public static void QiTransmit(WorldUnitBase fwunit, WorldUnitBase twunit)
+        {
+            var x = EventHelper.GetEvent<QiCulEvent>(ModConst.QI_CUL_EVENT);
+            var fwunitId = fwunit.GetUnitId();
+            var twunitId = fwunit.GetUnitId();
+            var oldFqi = x.Qi[fwunitId];
+            var fqi = (oldFqi / 10d) * CommonTool.Random(0.8f, 1.1f);
+            var tqi = fqi * (twunit.GetDynProperty(UnitDynPropertyEnum.Talent).value / 100d) * CommonTool.Random(0.8f, 1.1f);
+            x.Qi[fwunitId] -= fqi.Parse<long>();
+            x.Qi[twunitId] += tqi.Parse<long>();
+
+            DramaTool.OpenDrama(QI_TRANSFER_DRAMA);
+            var uiConfirm = g.ui.OpenUI<UICheckPopup>(UIType.CheckPopup);
+            uiConfirm.InitData("Qi Transfer", $"Qi {oldFqi}→{x.Qi[fwunitId]}", 1);
         }
     }
 }
