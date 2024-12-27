@@ -10,6 +10,7 @@ namespace ModLib.Object
 {
     public abstract class UICustomBase : IDisposable
     {
+        public bool IsAutoUpdate { get; set; } = false;
         public UIBase UIBase { get; set; }
         public List<float> Columns { get; } = new List<float>();
         public List<float> Rows { get; } = new List<float>();

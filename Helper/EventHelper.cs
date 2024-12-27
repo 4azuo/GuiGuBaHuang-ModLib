@@ -1,12 +1,14 @@
 ﻿using System.Linq;
 using ModLib.Mod;
 using System.Collections.Generic;
-using System.Reflection;
 using System;
 using ModLib.Enum;
+using ModLib.Object;
 
 public static class EventHelper
 {
+    public static CachableObject RunningEvent { get; private set; }
+
     public static void RunMinorEvents(object e = null)
     {
         var methodName = TraceHelper.GetCurrentMethodInfo(2).Name;
@@ -20,6 +22,7 @@ public static class EventHelper
         var isWorldRunning = GameHelper.IsWorldRunning();
         foreach (var ev in GetEvents(methodName))
         {
+            RunningEvent = ev;
             var method = ev.GetType().GetMethod(methodName);
             try
             {

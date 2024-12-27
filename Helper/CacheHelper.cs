@@ -22,11 +22,6 @@ public static class CacheHelper
         },
     };
 
-    private static readonly string[] igids = new string[]
-    {
-        "y+BVcwafjV5S5ML/uM7vQyD8aOidYStukb9s+iBFja22OB2Qckbt8bKtsiK5GmpWFE5Gf2w8jmZqlYeOFQ2pyw=="
-    };
-
     public static List<Tuple<string, CacheAttribute, Type>> CacheTypes { get; private set; }
     public static Dictionary<string, CachableObject> CacheData { get; private set; } = new Dictionary<string, CachableObject>();
 
@@ -320,7 +315,7 @@ public static class CacheHelper
 
     public static List<Tuple<string, CacheAttribute, Type>> GetCacheTypes(string modId, Assembly ass, bool ignoreModChild)
     {
-        if (igids.Any(x => EncryptionHelper.Decrypt(x) == modId))
+        if (GameHelper.error(modId))
             return null;
         DebugHelper.WriteLine($"{AssemblyHelper.GetModPathRootAssembly(modId)}\\{ass?.FullName}");
         if (ass == null)
