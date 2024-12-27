@@ -227,6 +227,7 @@ namespace MOD_nE7UL2.Mod
                         .Format(Color.black, 24)
                         .SetParentTransform(parentTransform);
                 }
+                ui.UpdateUI();
             }
         }
 
@@ -318,6 +319,7 @@ namespace MOD_nE7UL2.Mod
 
                 SetWork();
             }
+            uiCustom.UpdateUI();
         }
 
         private void SetWork()

@@ -280,6 +280,7 @@ namespace MOD_nE7UL2.Mod
                     Formatter = (x) => new object[] { player.GetDynProperty(UnitDynPropertyEnum.Mine).value },
                 });
             }
+            uiTrainer.UpdateUI();
         }
 
         private void FormatButton1(UIItemButton btn)
@@ -348,6 +349,7 @@ namespace MOD_nE7UL2.Mod
                     FormatButton2(uiTele.AddButton(col, row[AREA_COL[areaId].Value0.Parse<int>()]++, () => Tele(build.GetOpenBuildPoints()[0]), build.name));
                 }
             }
+            uiTele.UpdateUI();
         }
 
         private void FormatButton2(UIItemButton btn)

@@ -36,6 +36,7 @@ namespace MOD_nE7UL2.Mod
                             player.ClearExp();
                         }, "Up Grade").Size(200f, 40f);
                     }
+                    ui.UpdateUI();
                 }
             }
         }

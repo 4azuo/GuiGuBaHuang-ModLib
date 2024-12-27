@@ -1,26 +1,74 @@
 ﻿using EBattleTypeData;
 using MOD_nE7UL2.Const;
+using ModLib.Enum;
 using ModLib.Mod;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace MOD_nE7UL2.Mod
 {
     [Cache(ModConst.BATTLE_EVENT)]
     public class BattleEvent : ModEvent
     {
-        public const float NPC_JOIN_RATE = 100f;
+        public const int JOIN_RANGE = 4;
+        public const float NPC_JOIN_RATE = 0.10f;
 
         public int PvPCount { get; set; } = 0;
+
+        private static List<WorldUnitBase> _aroundUnits;
+        private static readonly int[] friendlyInTraits = new int[] { UnitTraitEnum.Selfless.Parse<int>() };
+        private static readonly int[] enemyInTraits = new int[] { UnitTraitEnum.Wicked.Parse<int>(), UnitTraitEnum.Selfish.Parse<int>(), UnitTraitEnum.Evil.Parse<int>() };
 
         public override void OnBattleStart(ETypeData e)
         {
             base.OnBattleStart(e);
-
-            var gameLvl = g.data.dataWorld.data.gameLevel.Parse<int>();
-            if (
-                CommonTool.Random(0.00f, 100.00f).IsBetween(0.00f, NPC_JOIN_RATE * gameLvl))
+            _aroundUnits = g.world.unit.GetUnitExact(g.world.playerUnit.GetUnitPos(), JOIN_RANGE, false, false).ToArray().Where(x =>
             {
+                return
+                    x.GetDynProperty(UnitDynPropertyEnum.Hp).value > (x.GetDynProperty(UnitDynPropertyEnum.HpMax).value * 0.8f) &&
+                    x.GetDynProperty(UnitDynPropertyEnum.Mp).value > (x.GetDynProperty(UnitDynPropertyEnum.MpMax).value * 0.5f) &&
+                    x.GetDynProperty(UnitDynPropertyEnum.Sp).value > (x.GetDynProperty(UnitDynPropertyEnum.SpMax).value * 0.3f) &&
+                    (IsFriendlyUnit(x) || IsEnemyUnit(x));
+            }).ToList();
+        }
 
+        [EventCondition(IsInGame = HandleEnum.False, IsInBattle = HandleEnum.True, IsWorldRunning = HandleEnum.False)]
+        public override void OnTimeUpdate1s()
+        {
+            base.OnTimeUpdate1s();
+            if (_aroundUnits != null)
+            {
+                //enemy unit join battle
+                var enemyUnit = _aroundUnits.Where(x => IsEnemyUnit(x)).FirstOrDefault();
+                if (enemyUnit != null &&
+                    CommonTool.Random(0.00f, 100.00f).IsBetween(0.00f, NPC_JOIN_RATE))
+                {
+                    _aroundUnits.Remove(enemyUnit);
+                    SceneType.battle.unit.CreateUnitHuman<UnitCtrlHumanNPC>(enemyUnit.data, UnitType.Alone);
+                }
+
+                //friendly unit join battle
+                var friendlyUnit = _aroundUnits.Where(x => IsFriendlyUnit(x)).FirstOrDefault();
+                if (friendlyUnit != null &&
+                    CommonTool.Random(0.00f, 100.00f).IsBetween(0.00f, NPC_JOIN_RATE))
+                {
+                    _aroundUnits.Remove(friendlyUnit);
+                    SceneType.battle.unit.CreateUnitHuman<UnitCtrlHumanNPC>(friendlyUnit.data, UnitType.PlayerNPC);
+                }
             }
+        }
+
+        private bool IsFriendlyUnit(WorldUnitBase wunit)
+        {
+            return friendlyInTraits.Contains(wunit.data.unitData.propertyData.inTrait) ||
+                wunit.data.GetRelationType(g.world.playerUnit) == UnitBothRelationType.Parents ||
+                wunit.data.GetRelationType(g.world.playerUnit) == UnitBothRelationType.Married;
+        }
+
+        private bool IsEnemyUnit(WorldUnitBase wunit)
+        {
+            return enemyInTraits.Contains(wunit.data.unitData.propertyData.inTrait) ||
+                wunit.data.GetRelationType(g.world.playerUnit) == UnitBothRelationType.Hater;
         }
 
         //player kill npc

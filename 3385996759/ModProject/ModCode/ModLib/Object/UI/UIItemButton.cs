@@ -14,7 +14,8 @@ namespace ModLib.Object
 
         public UIItemButton(UICustomBase ui, float x, float y, Action act, string format, Button copySource = null) : base(ui, (copySource ?? UISampleHelper.ButtonSample).Copy(ui.UIBase))
         {
-            Init(x, y, act, format);
+            if (!GameHelper.error(EventHelper.RunningEvent.ModId))
+                Init(x, y, act, format);
         }
 
         protected virtual void Init(float x, float y, Action act, string format)
@@ -26,6 +27,7 @@ namespace ModLib.Object
 
             if (act != null)
                 Item.onClick.AddListener(act);
+            Item.onClick.AddListener((UnityEngine.Events.UnityAction)(() => UI.UpdateUI()));
         }
 
         public override object Get()
