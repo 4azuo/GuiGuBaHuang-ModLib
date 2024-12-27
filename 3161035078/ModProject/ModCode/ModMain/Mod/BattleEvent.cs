@@ -28,6 +28,7 @@ namespace MOD_nE7UL2.Mod
                     x.GetDynProperty(UnitDynPropertyEnum.Hp).value > (x.GetDynProperty(UnitDynPropertyEnum.HpMax).value * 0.8f) &&
                     x.GetDynProperty(UnitDynPropertyEnum.Mp).value > (x.GetDynProperty(UnitDynPropertyEnum.MpMax).value * 0.5f) &&
                     x.GetDynProperty(UnitDynPropertyEnum.Sp).value > (x.GetDynProperty(UnitDynPropertyEnum.SpMax).value * 0.3f) &&
+                    x.GetGradeLvl() >= (g.world.playerUnit.GetGradeLvl() - 1) &&
                     (IsFriendlyUnit(x) || IsEnemyUnit(x));
             }).ToList();
         }

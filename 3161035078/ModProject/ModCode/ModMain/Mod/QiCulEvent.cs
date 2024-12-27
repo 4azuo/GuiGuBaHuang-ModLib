@@ -13,6 +13,7 @@ namespace MOD_nE7UL2.Mod
     {
         public const int QI_TRANSFER_DRAMA = 480010100;
 
+        public int LastYearReceiveQi { get; set; }
         public IDictionary<string, long> Qi { get; set; } = new Dictionary<string, long>();
 
         public override void OnLoadGame()
@@ -68,14 +69,18 @@ namespace MOD_nE7UL2.Mod
                         ui.AddButton(0, 0, () =>
                         {
                             QiTransmit(g.world.playerUnit, uiBase.unit);
+                            g.ui.CloseUI(uiBase);
                         }, "Qi Transfer").Format(Color.black, 14).Size(160, 30).Pos(ui.UI.uiHeart.goSeedIconRoot.transform, -2.8f, 0.1f).SetParentTransform(ui.UI.uiHeart.goEmpty);
                         if (!uiBase.unit.isDie &&
+                            LastYearReceiveQi != GameHelper.GetGameYear() &&
                             g.world.playerUnit.data.allUnitRelation.ContainsKey(unitId) &&
                             g.world.playerUnit.data.allUnitRelation[unitId] == UnitRelationType.Master)
                         {
                             ui.AddButton(0, 0, () =>
                             {
+                                LastYearReceiveQi = GameHelper.GetGameYear();
                                 QiTransmit(uiBase.unit, g.world.playerUnit);
+                                g.ui.CloseUI(uiBase);
                             }, "Recieve Qi").Format(Color.black, 14).Size(160, 30).Pos(ui.UI.uiHeart.goSeedIconRoot.transform, -2.8f, -0.2f).SetParentTransform(ui.UI.uiHeart.goEmpty);
                         }
                     }
