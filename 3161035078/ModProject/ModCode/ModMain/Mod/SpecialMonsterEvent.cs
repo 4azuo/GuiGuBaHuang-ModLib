@@ -19,8 +19,7 @@ namespace MOD_nE7UL2.Mod
         public const string EXPLODE_EFX = @"Effect\Battle\Skill\baiyuanshizhen";
         public const string MULTIPLY_EFX = @"Effect\Battle\Skill\changhenfu_bao";
 
-        [JsonIgnore]
-        private List<UnitCtrlBase> multipliedUnits = new List<UnitCtrlBase>();
+        private static List<UnitCtrlBase> multipliedUnits = new List<UnitCtrlBase>();
 
         public override void OnBattleUnitInto(UnitCtrlBase e)
         {

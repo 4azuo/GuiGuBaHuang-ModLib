@@ -14,6 +14,7 @@
 	"NpcUpgradeSkillEvent": 2050,
 	"UnitTypeEvent": 2060,
 	"UpgradeNaturallyEvent": 2070,
+	"QiCulEvent": 2080,
 
 	//eco
 	"MapBuildPropertyEvent": 3000,

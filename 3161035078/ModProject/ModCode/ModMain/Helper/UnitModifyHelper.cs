@@ -235,21 +235,32 @@ public static class UnitModifyHelper
     {
         if (wunit == null)
             return 0;
-        var EventHelper.GetEvent<NpcAutoEvent>(ModConst.NPC_AUTO_EVENT);
-        return wunit.GetArtisanshipSum();
+        var x = EventHelper.GetEvent<QiCulEvent>(ModConst.NPC_AUTO_EVENT);
+        var unitId = wunit.GetUnitId();
+        if (!x.Qi.ContainsKey(unitId))
+            return 0;
+        return Convert.ToInt32(x.Qi[unitId] / (10000 * wunit.GetGradeLvl()));
     }
 
-    public static int GetArtisanshipAdjSp(WorldUnitBase wunit)
+    public static int GetQiAdjHp(WorldUnitBase wunit)
     {
         if (wunit == null)
             return 0;
-        return wunit.GetArtisanshipSum();
+        var x = EventHelper.GetEvent<QiCulEvent>(ModConst.NPC_AUTO_EVENT);
+        var unitId = wunit.GetUnitId();
+        if (!x.Qi.ContainsKey(unitId))
+            return 0;
+        return Convert.ToInt32(x.Qi[unitId] / (1000 * wunit.GetGradeLvl()));
     }
 
-    public static int GetArtisanshipAdjSp(WorldUnitBase wunit)
+    public static int GetQiAdjMp(WorldUnitBase wunit)
     {
         if (wunit == null)
             return 0;
-        return wunit.GetArtisanshipSum();
+        var x = EventHelper.GetEvent<QiCulEvent>(ModConst.NPC_AUTO_EVENT);
+        var unitId = wunit.GetUnitId();
+        if (!x.Qi.ContainsKey(unitId))
+            return 0;
+        return Convert.ToInt32(x.Qi[unitId] / (10000 * wunit.GetGradeLvl()));
     }
 }

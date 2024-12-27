@@ -39,8 +39,6 @@
     <Compile Include="Enum\AdjTypeEnum.cs" />
     <Compile Include="Enum\TraineeLuckEnum.cs" />
     <Compile Include="Enum\ModItemTypeEnum.cs" />
-    <Compile Include="Enum\AnimaIncPropEnum.cs" />
-    <Compile Include="Enum\AnimaUpGradeEnum.cs" />
     <Compile Include="Enum\BuildingCostEnum.cs" />
     <Compile Include="Enum\ApprenticeLuckEnum.cs" />
     <Compile Include="Enum\UnitTypeLuckEnum.cs" />
@@ -79,7 +77,6 @@
     <Compile Include="Mod\NpcAutoEvent.cs" />
     <Compile Include="Mod\NpcUpgradeSkillEvent.cs" />
     <Compile Include="Mod\MonstStrongerEvent.cs" />
-    <Compile Include="Mod\BornLuckEvent.cs" />
     <Compile Include="Mod\TrainerEvent.cs" />
     <Compile Include="Mod\SpecialMonsterEvent.cs" />
     <Compile Include="Mod\UnitTypeEvent.cs" />

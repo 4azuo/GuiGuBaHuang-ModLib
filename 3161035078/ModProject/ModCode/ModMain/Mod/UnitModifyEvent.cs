@@ -163,6 +163,8 @@ namespace MOD_nE7UL2.Mod
 
                 rs += Convert.ToInt32(CustomRefineEvent.GetCustomAdjValue(wunit, AdjTypeEnum.Atk));
 
+                rs += UnitModifyHelper.GetQiAdjAtk(wunit);
+
                 _values[k] = rs;
             }
 
@@ -251,6 +253,8 @@ namespace MOD_nE7UL2.Mod
 
                 rs += Convert.ToInt32(CustomRefineEvent.GetCustomAdjValue(wunit, AdjTypeEnum.MHp));
 
+                rs += UnitModifyHelper.GetQiAdjHp(wunit);
+
                 _values[k] = rs;
             }
 
@@ -281,6 +285,8 @@ namespace MOD_nE7UL2.Mod
                 rs += UnitModifyHelper.GetSpiritualAdjMp(wunit);
 
                 rs += Convert.ToInt32(CustomRefineEvent.GetCustomAdjValue(wunit, AdjTypeEnum.MMp));
+
+                rs += UnitModifyHelper.GetQiAdjMp(wunit);
 
                 _values[k] = rs;
             }

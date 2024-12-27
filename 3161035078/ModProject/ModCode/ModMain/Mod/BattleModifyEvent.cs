@@ -6,9 +6,7 @@ using ModLib.Enum;
 using ModLib.Mod;
 using System;
 using System.Collections.Generic;
-using System.Linq;
 using UnityEngine;
-using static DataMap;
 using static MOD_nE7UL2.Object.GameStts;
 
 namespace MOD_nE7UL2.Mod
@@ -111,6 +109,10 @@ namespace MOD_nE7UL2.Mod
                     return;
                 }
             }
+
+            //DebugHelper.WriteLine($"x");
+            //add dmg by time
+            e.dynV.baseValue += ((ModBattleEvent.BattleTime.TotalSeconds / 1000f) * e.dynV.baseValue).Parse<int>();
 
             //DebugHelper.WriteLine($"3: {e.dynV.baseValue}");
             //add dmg (skill)
