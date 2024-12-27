@@ -203,27 +203,31 @@ namespace ModLib.Mod
         #endregion
 
         [JsonIgnore]
-        public static SceneBattle SceneBattle { get { return SceneType.battle; } }
+        public static SceneBattle SceneBattle => SceneType.battle;
         [JsonIgnore]
-        public static UnitCtrlBase PlayerUnit { get { return SceneType.battle.battleMap.playerUnitCtrl; } }
+        public static UnitCtrlBase PlayerUnit => SceneType.battle.battleMap.playerUnitCtrl;
         [JsonIgnore]
         public static UnitCtrlBase AttackingUnit { get; private set; }
         [JsonIgnore]
         public static WorldUnitBase AttackingWorldUnit { get; private set; }
         [JsonIgnore]
-        public static bool IsWorldUnitAttacking { get { return AttackingWorldUnit != null; } }
+        public static bool IsWorldUnitAttacking => AttackingWorldUnit != null;
         [JsonIgnore]
-        public static bool IsPlayerAttacking { get { return IsWorldUnitAttacking && AttackingWorldUnit.IsPlayer(); } }
+        public static bool IsPlayerAttacking => IsWorldUnitAttacking && AttackingWorldUnit.IsPlayer();
         [JsonIgnore]
         public static UnitCtrlBase HitUnit { get; private set; }
         [JsonIgnore]
         public static WorldUnitBase HitWorldUnit { get; private set; }
         [JsonIgnore]
-        public static bool IsWorldUnitHit { get { return HitWorldUnit != null; } }
+        public static bool IsWorldUnitHit => HitWorldUnit != null;
         [JsonIgnore]
         public static List<UnitCtrlBase> DungeonUnits { get; private set; } = new List<UnitCtrlBase>();
         [JsonIgnore]
         public static ModBattleEvent BattleInfo { get; private set; }
+        [JsonIgnore]
+        public static DateTime StartTime { get; private set; }
+        [JsonIgnore]
+        public static TimeSpan BattleTime => DateTime.Now - StartTime;
 
         public ModBattleEvent() : base()
         {
@@ -263,6 +267,7 @@ namespace ModLib.Mod
         {
             base.OnBattleStart(e);
 
+            StartTime = DateTime.Now;
             BattleDmg.Clear();
             foreach (var de in (DmgEnum[])System.Enum.GetValues(typeof(DmgEnum)))
             {
