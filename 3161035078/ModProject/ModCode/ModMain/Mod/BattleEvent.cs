@@ -4,10 +4,24 @@ using ModLib.Mod;
 
 namespace MOD_nE7UL2.Mod
 {
-    [Cache(ModConst.REVENGE_EVENT)]
-    public class RevengeEvent : ModEvent
+    [Cache(ModConst.BATTLE_EVENT)]
+    public class BattleEvent : ModEvent
     {
-        public int Counter { get; set; } = 0;
+        public const int ADD_ROOM_RATE = 3;
+
+        public int PvPCount { get; set; } = 0;
+
+        public override void OnBattleStart(ETypeData e)
+        {
+            base.OnBattleStart(e);
+
+            var gameLvl = g.data.dataWorld.data.gameLevel.Parse<int>();
+            var count = CommonTool.Random(1, ADD_ROOM_RATE * gameLvl);
+            //SceneType.battle.room.room.allRoom.Add(new BattleRoomNode()
+            //{
+
+            //});
+        }
 
         //player kill npc
         public override void OnBattleUnitDie(UnitDie e)
@@ -19,7 +33,7 @@ namespace MOD_nE7UL2.Mod
                 g.world.battle.data.isRealBattle &&
                 (attackUnitData?.worldUnitData?.unit?.IsPlayer() ?? false))
             {
-                Counter++;
+                PvPCount++;
             }
         }
 
@@ -32,7 +46,7 @@ namespace MOD_nE7UL2.Mod
                 (!humanData?.worldUnitData?.unit?.IsPlayer() ?? false) &&
                 humanData?.worldUnitData?.GetRelationType(g.world.playerUnit) == UnitBothRelationType.Hater)
             {
-                humanData.attack.baseValue += (int)(humanData.attack.value * (Counter / 100.00f));
+                humanData.attack.baseValue += (int)(humanData.attack.value * (PvPCount / 100.00f));
             }
         }
     }

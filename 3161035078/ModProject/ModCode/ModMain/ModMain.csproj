@@ -51,6 +51,7 @@
     <Compile Include="Mod\ExpertEvent.cs" />
     <Compile Include="Mod\InflationaryEvent.cs" />
     <Compile Include="Mod\CustomRefineEvent.cs" />
+    <Compile Include="Mod\QiCulEvent.cs" />
     <Compile Include="Mod\SliceLifeQuestEvent.cs" />
     <Compile Include="Mod\BankAccountEvent.cs" />
     <Compile Include="Mod\RebirthEvent.cs" />
@@ -73,10 +74,9 @@
     <Compile Include="Mod\ContributionExchangeEvent.cs" />
     <Compile Include="Mod\DebugEvent.cs" />
     <Compile Include="Mod\RealTrialEvent.cs" />
-    <Compile Include="Mod\RevengeEvent.cs" />
+    <Compile Include="Mod\BattleEvent.cs" />
     <Compile Include="Mod\BattleManashieldEvent.cs" />
-    <Compile Include="Mod\NpcAutoCulEvent.cs" />
-    <Compile Include="Mod\NpcAutoUpGradeEvent.cs" />
+    <Compile Include="Mod\NpcAutoEvent.cs" />
     <Compile Include="Mod\NpcUpgradeSkillEvent.cs" />
     <Compile Include="Mod\MonstStrongerEvent.cs" />
     <Compile Include="Mod\BornLuckEvent.cs" />
@@ -91,7 +91,6 @@
     <Compile Include="Object\CommissionTask.cs" />
     <Compile Include="Object\GameStts.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Mod\QiCulEvent.cs" />
     <Compile Include="Skill\StormSword.cs" />
   </ItemGroup>
   <ItemGroup>
