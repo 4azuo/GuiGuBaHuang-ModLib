@@ -17,10 +17,13 @@ namespace ModLib.Object
         protected virtual void Init(float x, float y, float min, float max, float def)
         {
             Pos(x, y);
+
             Min = min;
             Max = max;
             Set(def);
+
             Item.onValueChanged.AddListener((UnityAction<float>)(v => ItemWork?.ChangeAct?.Invoke(this, v)));
+            Item.onValueChanged.AddListener((UnityEngine.Events.UnityAction<float>)((value) => UI.UpdateUI()));
         }
 
         public override object Get()

@@ -15,10 +15,9 @@ namespace ModLib.Object
         {
             Pos(x, y);
             Set(def);
-            Item.onValueChanged.AddListener((UnityAction<bool>)(v =>
-            {
-                ItemWork?.ChangeAct?.Invoke(this, v);
-            }));
+
+            Item.onValueChanged.AddListener((UnityAction<bool>)(v => ItemWork?.ChangeAct?.Invoke(this, v)));
+            Item.onValueChanged.AddListener((UnityEngine.Events.UnityAction<bool>)((value) => UI.UpdateUI()));
         }
 
         public override object Get()

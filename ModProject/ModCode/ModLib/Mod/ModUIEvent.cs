@@ -36,7 +36,8 @@ namespace ModLib.Mod
             {
                 try
                 {
-                    ui?.UpdateUI();
+                    if (ui.IsAutoUpdate)
+                        ui?.UpdateUI();
                 }
                 catch
                 {
