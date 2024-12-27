@@ -7,7 +7,7 @@ namespace MOD_nE7UL2.Mod
     [Cache(ModConst.BATTLE_EVENT)]
     public class BattleEvent : ModEvent
     {
-        public const int ADD_ROOM_RATE = 3;
+        public const float NPC_JOIN_RATE = 100f;
 
         public int PvPCount { get; set; } = 0;
 
@@ -16,11 +16,11 @@ namespace MOD_nE7UL2.Mod
             base.OnBattleStart(e);
 
             var gameLvl = g.data.dataWorld.data.gameLevel.Parse<int>();
-            var count = CommonTool.Random(1, ADD_ROOM_RATE * gameLvl);
-            //SceneType.battle.room.room.allRoom.Add(new BattleRoomNode()
-            //{
+            if (
+                CommonTool.Random(0.00f, 100.00f).IsBetween(0.00f, NPC_JOIN_RATE * gameLvl))
+            {
 
-            //});
+            }
         }
 
         //player kill npc

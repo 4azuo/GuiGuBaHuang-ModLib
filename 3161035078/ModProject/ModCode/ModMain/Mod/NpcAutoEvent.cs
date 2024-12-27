@@ -9,7 +9,6 @@ namespace MOD_nE7UL2.Mod
     [Cache(ModConst.NPC_AUTO_EVENT)]
     public class NpcAutoEvent : ModEvent
     {
-        public IDictionary<string, long> Qi { get; set; } = new Dictionary<string, long>();
         public IDictionary<string, float> NpcUpGradeRate { get; set; } = new Dictionary<string, float>();
 
         public override void OnMonthlyForEachWUnit(WorldUnitBase wunit)

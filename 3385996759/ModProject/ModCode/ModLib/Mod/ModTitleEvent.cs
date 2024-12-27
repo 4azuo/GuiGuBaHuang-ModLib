@@ -27,6 +27,12 @@ namespace ModLib.Mod
             base.OnOpenUIEnd(e);
             if (e.uiType.uiName == UIType.Login.uiName)
             {
+                if (g.data.globle.gameSetting.screenWidth / g.data.globle.gameSetting.screenHeight != ModLibConst.SUPPORT_SCREEN_RATIO)
+                {
+                    var uiWarning = g.ui.OpenUI<UITextInfo>(UIType.TextInfo);
+                    uiWarning.InitData("Warning", "ModLib's UI is supporting on screen ratio 16:9");
+                }
+
                 var ui = new UICover<UILogin>(UIType.Login);
                 {
                     var parentTransform = ui.UI.btnSet.transform.parent;
