@@ -19,13 +19,12 @@ namespace MOD_nE7UL2.Mod
             {
                 if (wunit.IsFullExp())
                 {
-                    var unitId = wunit.GetUnitId();
-
                     //up grade
                     var nPhase = wunit.GetNextPhaseConf();
                     if (nPhase == null)
                         return;
 
+                    var unitId = wunit.GetUnitId();
                     if (!NpcUpGradeRate.ContainsKey(unitId))
                         NpcUpGradeRate.Add(unitId, 0.000f);
 
