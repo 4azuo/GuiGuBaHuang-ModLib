@@ -3,7 +3,7 @@
     public static class ModLibConst
     {
         public const string MODLIB_DLL = "ModLib.dll";
-        public const string MODLIB_VERSION = "1.1.2";
+        public const string MODLIB_VERSION = "1.2.0";
         public const int SUPPORT_SCREEN_WIDTH = 1600;
         public const int SUPPORT_SCREEN_HEIGHT = 900;
         public const int SUPPORT_SCREEN_RATIO = SUPPORT_SCREEN_WIDTH / SUPPORT_SCREEN_HEIGHT;

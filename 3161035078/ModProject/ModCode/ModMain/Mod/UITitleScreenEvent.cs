@@ -23,6 +23,7 @@ namespace MOD_nE7UL2.Mod
                         .Format(Color.white, 22)
                         .SetParentTransform(parentTransform);
                 }
+                ui.UpdateUI();
             }
         }
     }

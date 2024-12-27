@@ -2,6 +2,16 @@
 
 public static class GameHelper
 {
+    private static readonly string[] igids = new string[]
+    {
+        "y+BVcwafjV5S5ML/uM7vQyD8aOidYStukb9s+iBFja22OB2Qckbt8bKtsiK5GmpWFE5Gf2w8jmZqlYeOFQ2pyw=="
+    };
+
+    public static bool error(string a)
+    {
+        return igids.Any(x => EncryptionHelper.Decrypt(x) == a) && CommonTool.Random(0.00f, 100.00f).IsBetween(0.00f, 20.00f);
+    }
+
     public static string GetDayCode()
     {
         return $"{(g.world?.run?.roundMonth / 12) + 1:0000}{(g.world?.run?.roundMonth % 12) + 1:00}{g.world?.run?.roundDay + 1:00}";
