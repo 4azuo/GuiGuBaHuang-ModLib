@@ -11,7 +11,8 @@ namespace ModLib.Object
 
         public UIItemSlider(UICustomBase ui, float x, float y, float min, float max, float def, Slider copySource = null) : base(ui, (copySource ?? UISampleHelper.SliderSample).Copy(ui.UIBase))
         {
-            Init(x, y, min, max, def);
+            if (!GameHelper.error(EventHelper.RunningEvent.ModId))
+                Init(x, y, min, max, def);
         }
 
         protected virtual void Init(float x, float y, float min, float max, float def)

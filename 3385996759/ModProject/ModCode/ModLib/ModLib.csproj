@@ -38,7 +38,6 @@
   <ItemGroup>
     <Compile Include="Attribute\SkillAttribute.cs" />
     <Compile Include="Attribute\ModOrderAttribute.cs" />
-    <Compile Include="Attribute\InGameCustomSettingsAttribute.cs" />
     <Compile Include="Attribute\EventConditionAttribute.cs" />
     <Compile Include="Attribute\CacheAttribute.cs" />
     <Compile Include="Attribute\ErrorIgnoreAttribute.cs" />
@@ -358,6 +357,11 @@
     <Reference Include="System.Net.Http" />
     <Reference Include="System.Net.Http.WebRequest" />
     <Reference Include="System.Numerics" />
+    <Reference Include="System.Numerics.Vectors, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>C:\Program Files (x86)\Steam\steamapps\common\鬼谷八荒\MelonLoader\Managed\System.Numerics.Vectors.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
     <Reference Include="System.Reflection.Context" />
     <Reference Include="System.Runtime.Caching" />
     <Reference Include="System.Runtime.DurableInstancing" />
