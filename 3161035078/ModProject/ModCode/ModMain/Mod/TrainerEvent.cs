@@ -79,7 +79,7 @@ namespace MOD_nE7UL2.Mod
 
             var player = g.world.playerUnit;
 
-            uiTrainer = new UICustom1(TITLE);
+            uiTrainer = new UICustom1(TITLE, okAct: () => uiTrainer = null);
             uiTrainer.UI.isFastClose = true;
 
             //page 1
