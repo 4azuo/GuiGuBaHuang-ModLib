@@ -1,5 +1,4 @@
-﻿using ModLib.Const;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
@@ -15,6 +14,8 @@ namespace ModLib.Object
         public List<float> Columns { get; } = new List<float>();
         public List<float> Rows { get; } = new List<float>();
         public List<UIItemBase> Items { get; } = new List<UIItemBase>();
+        public UIItemPage CurrentPage { get; set; }
+        public List<UIItemPage> Pages { get; } = new List<UIItemPage>();
 
         public virtual string UITypeName => throw new NotImplementedException();
         public virtual float MinWidth => throw new NotImplementedException();
@@ -189,6 +190,21 @@ namespace ModLib.Object
             {
                 item?.Update();
             }
+        }
+
+        public UIItemPage AddPage()
+        {
+            CurrentPage = new UIItemPage(this);
+            Pages.Add(CurrentPage);
+            return CurrentPage;
+        }
+
+        public UIItemBase AddPageItem(UIItemBase item)
+        {
+            if (CurrentPage == null)
+                AddPage();
+            CurrentPage.Items.Add(item);
+            return item;
         }
     }
 }
