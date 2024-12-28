@@ -125,7 +125,7 @@ Last, All properties of ModEvent will be cached (.json). You can ignore cache an
 
 ※I wrote some events which i need. You can add more to ModMaster.
 
-４．Final, you add your mod index to `_EventOrderIndex.json`
+４．Final, you should add your mod index to `_EventOrderIndex.json`
 
 ![image](https://github.com/user-attachments/assets/4b338668-a2a0-4a1c-8fcf-fb261e5de7e7)
 
@@ -139,7 +139,9 @@ You can use DebugHelper to write a log which will be saved to ↓ folder.
 
 ![image](https://github.com/4azuo/GuiGuBaHuang-ModLib/assets/11677054/7cf4688f-8890-41e7-bf0a-aa6519bbf325)
 
-`xxx\AppData\LocalLow\guigugame\guigubahuang\mod\{MOD_ID}`
+`xxx\AppData\LocalLow\guigugame\guigubahuang\mod\flQrxq`
+
+※All logs are created in ModLib with Mod-Id = `flQrxq`
 
 Also, you can use **TraceAttribute**/**TraceIgnoreAttribute** which catch calling method.
 
@@ -148,9 +150,8 @@ Also, you can use **TraceAttribute**/**TraceIgnoreAttribute** which catch callin
 
 
 # Cache/Save
-`
-xxx\AppData\LocalLow\guigugame\guigubahuang\mod\{MOD_ID}
-`
+
+`xxx\AppData\LocalLow\guigugame\guigubahuang\mod\{MOD_ID}`
 
 Your mod data will be saved here.
 
