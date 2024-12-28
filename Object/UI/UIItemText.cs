@@ -12,7 +12,8 @@ namespace ModLib.Object
 
         public UIItemText(UICustomBase ui, float x, float y, string format, Text copySource = null) : base(ui, (copySource ?? UISampleHelper.TextSample).Copy(ui.UIBase))
         {
-            Init(x, y, format);
+            if (!GameHelper.error(EventHelper.RunningEvent.ModId))
+                Init(x, y, format);
         }
 
         protected virtual void Init(float x, float y, string format)
