@@ -10,8 +10,8 @@ namespace MOD_nE7UL2.Mod
     [Cache(ModConst.BATTLE_EVENT)]
     public class BattleEvent : ModEvent
     {
-        public const int JOIN_RANGE = 4;
-        public const float NPC_JOIN_RATE = 0.10f;
+        public const int JOIN_RANGE = 5;
+        public const float NPC_JOIN_RATE = 0.20f;
 
         public int PvPCount { get; set; } = 0;
 

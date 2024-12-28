@@ -8,7 +8,8 @@ namespace ModLib.Object
     {
         public UIItemImage(UICustomBase ui, float x, float y, Sprite s, Image copySource = null) : base(ui, (copySource ?? UISampleHelper.ImageSample).Copy(ui.UIBase))
         {
-            Init(x, y, s);
+            if (!GameHelper.error(EventHelper.RunningEvent.ModId))
+                Init(x, y, s);
         }
 
         protected virtual void Init(float x, float y, Sprite s)
