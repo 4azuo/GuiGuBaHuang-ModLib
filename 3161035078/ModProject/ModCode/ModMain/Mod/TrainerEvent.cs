@@ -19,6 +19,25 @@ namespace MOD_nE7UL2.Mod
         public const float TELE_BTN_HEIGHT = 28;
         public const int MAX_NUMBER = 100000000;
 
+        private static readonly Dictionary<int, MultiValue> TELE_AREA_COL = new Dictionary<int, MultiValue>
+        {
+            [1] = MultiValue.Create(0, new Func<MapBuildBase, bool>((x) => x.IsSchool() || x.IsTown())),
+            [2] = MultiValue.Create(0, new Func<MapBuildBase, bool>((x) => x.IsSchool() || x.IsTown())),
+            [3] = MultiValue.Create(0, new Func<MapBuildBase, bool>((x) => true)),
+            [4] = MultiValue.Create(1, new Func<MapBuildBase, bool>((x) => x.IsSchool() || x.IsTown())),
+            [5] = MultiValue.Create(1, new Func<MapBuildBase, bool>((x) => true)),
+            [6] = MultiValue.Create(2, new Func<MapBuildBase, bool>((x) => x.IsSchool() || x.IsTown())),
+            [7] = MultiValue.Create(2, new Func<MapBuildBase, bool>((x) => true)),
+            [8] = MultiValue.Create(3, new Func<MapBuildBase, bool>((x) => x.IsSchool() || x.IsTown())),
+            [9] = MultiValue.Create(3, new Func<MapBuildBase, bool>((x) => true)),
+            [10] = MultiValue.Create(4, new Func<MapBuildBase, bool>((x) => x.IsSchool() || x.IsTown())),
+            [11] = MultiValue.Create(4, new Func<MapBuildBase, bool>((x) => true)),
+            [12] = MultiValue.Create(4, new Func<MapBuildBase, bool>((x) => true)),
+            [13] = MultiValue.Create(4, new Func<MapBuildBase, bool>((x) => true)),
+        };
+
+        private static UICustom1 uiTrainer;
+
         public override void OnLoadClass(bool isNew, string modId, CacheAttribute attr)
         {
             base.OnLoadClass(isNew, modId, attr);
@@ -34,16 +53,22 @@ namespace MOD_nE7UL2.Mod
             base.OnMonoUpdate();
             if (Input.GetKey(KeyCode.LeftControl) && Input.GetKeyDown(KeyCode.Alpha1))
             {
-                OpenTrainer();
+                if (uiTrainer == null)
+                    OpenTrainer(0);
+                else
+                    uiTrainer.Pages[0].Active();
             }
             else
             if (Input.GetKey(KeyCode.LeftControl) && Input.GetKeyDown(KeyCode.Alpha2))
             {
-                OpenTeleport();
+                if (uiTrainer == null)
+                    OpenTrainer(1);
+                else
+                    uiTrainer.Pages[1].Active();
             }
         }
 
-        private void OpenTrainer()
+        private void OpenTrainer(int defPage)
         {
             if (!g.ui.HasUI(UIType.MapMain))
             {
@@ -54,10 +79,12 @@ namespace MOD_nE7UL2.Mod
 
             var player = g.world.playerUnit;
 
-            var uiTrainer = new UICustom1(TITLE);
-            {
-                uiTrainer.UI.isFastClose = true;
+            uiTrainer = new UICustom1(TITLE);
+            uiTrainer.UI.isFastClose = true;
 
+            //page 1
+            uiTrainer.AddPage();
+            {
                 int col, row;
                 uiTrainer.AddText(uiTrainer.MidCol, uiTrainer.FirstRow, GameTool.LS("trainer000")).Format(Color.red, 17);
 
@@ -78,7 +105,7 @@ namespace MOD_nE7UL2.Mod
                 FormatButton1(uiTrainer.AddButton(col, row += 2, ReduceDef, GameTool.LS("trainer014")));
 
                 col = 8; row = 2;
-                FormatButton1(uiTrainer.AddButton(col, row, OpenTeleport, GameTool.LS("trainer015")));
+                FormatButton1(uiTrainer.AddButton(col, row, () => uiTrainer.Pages[1].Active(), GameTool.LS("trainer015")));
                 FormatButton1(uiTrainer.AddButton(col, row += 2, AddMoney, GameTool.LS("trainer016")));
                 FormatButton1(uiTrainer.AddButton(col, row += 2, ReduceMoney, GameTool.LS("trainer017")));
                 FormatButton1(uiTrainer.AddButton(col, row += 2, AddDegree, GameTool.LS("trainer018")));
@@ -280,12 +307,43 @@ namespace MOD_nE7UL2.Mod
                     Formatter = (x) => new object[] { player.GetDynProperty(UnitDynPropertyEnum.Mine).value },
                 });
             }
-            uiTrainer.UpdateUI();
+
+            //page 2
+            uiTrainer.AddPage();
+            {
+                var row = new Dictionary<int, int>
+                {
+                    [0] = 0,
+                    [1] = 0,
+                    [2] = 0,
+                    [3] = 0,
+                    [4] = 0,
+                };
+                int col = 0, areaId = -1;
+                foreach (var build in g.world.build.GetBuilds().ToArray().Where(x => !string.IsNullOrEmpty(x.name) && TELE_AREA_COL[x.gridData.areaBaseID].Value0.Parse<int>() >= 0 && ((Func<MapBuildBase, bool>)TELE_AREA_COL[x.gridData.areaBaseID].Value1).Invoke(x))
+                    .OrderBy(x => TELE_AREA_COL[x.gridData.areaBaseID].Value0.Parse<int>()).ThenBy(x => x.gridData.areaBaseID).ThenBy(x => x.name))
+                {
+                    if (areaId != build.gridData.areaBaseID)
+                    {
+                        areaId = build.gridData.areaBaseID;
+                        col = TELE_AREA_COL[areaId].Value0.Parse<int>() * 6 + 3;
+                        uiTrainer.AddText(col, row[TELE_AREA_COL[areaId].Value0.Parse<int>()]++, $"Area {areaId}:").Format(null, 16, FontStyle.Italic).Align(TextAnchor.MiddleCenter);
+                    }
+                    FormatButton2(uiTrainer.AddButton(col, row[TELE_AREA_COL[areaId].Value0.Parse<int>()]++, () => Tele(build.GetOpenBuildPoints()[0]), build.name));
+                }
+            }
+
+            uiTrainer.Pages[defPage].Active();
         }
 
         private void FormatButton1(UIItemButton btn)
         {
             btn.Format(Color.black, 15).Size(TRAINER_BTN_WIDTH, TRAINER_BTN_HEIGHT);
+        }
+
+        private void FormatButton2(UIItemButton btn)
+        {
+            btn.Format(Color.black, 13).Size(TELE_BTN_WIDTH, TELE_BTN_HEIGHT);
         }
 
         private void Recover()
@@ -297,64 +355,6 @@ namespace MOD_nE7UL2.Mod
             player.SetProperty<int>(UnitPropertyEnum.Mood, int.MaxValue);
             player.SetProperty<int>(UnitPropertyEnum.Energy, int.MaxValue);
             player.SetProperty<int>(UnitPropertyEnum.Health, int.MaxValue);
-        }
-
-        private static readonly Dictionary<int, MultiValue> AREA_COL = new Dictionary<int, MultiValue>
-        {
-            [1] = MultiValue.Create(0, new Func<MapBuildBase, bool>((x) => x.IsSchool() || x.IsTown())),
-            [2] = MultiValue.Create(0, new Func<MapBuildBase, bool>((x) => x.IsSchool() || x.IsTown())),
-            [3] = MultiValue.Create(0, new Func<MapBuildBase, bool>((x) => true)),
-            [4] = MultiValue.Create(1, new Func<MapBuildBase, bool>((x) => x.IsSchool() || x.IsTown())),
-            [5] = MultiValue.Create(1, new Func<MapBuildBase, bool>((x) => true)),
-            [6] = MultiValue.Create(2, new Func<MapBuildBase, bool>((x) => x.IsSchool() || x.IsTown())),
-            [7] = MultiValue.Create(2, new Func<MapBuildBase, bool>((x) => true)),
-            [8] = MultiValue.Create(3, new Func<MapBuildBase, bool>((x) => x.IsSchool() || x.IsTown())),
-            [9] = MultiValue.Create(3, new Func<MapBuildBase, bool>((x) => true)),
-            [10] = MultiValue.Create(4, new Func<MapBuildBase, bool>((x) => x.IsSchool() || x.IsTown())),
-            [11] = MultiValue.Create(4, new Func<MapBuildBase, bool>((x) => true)),
-            [12] = MultiValue.Create(4, new Func<MapBuildBase, bool>((x) => true)),
-            [13] = MultiValue.Create(4, new Func<MapBuildBase, bool>((x) => true)),
-        };
-        private void OpenTeleport()
-        {
-            if (!g.ui.HasUI(UIType.MapMain))
-            {
-                var uiConfirm = g.ui.OpenUI<UICheckPopup>(UIType.CheckPopup);
-                uiConfirm.InitData("Teleport", "You have to on map!", 1);
-                return;
-            }
-
-            var uiTele = new UICustom1(TITLE);
-            {
-                uiTele.UI.isFastClose = true;
-
-                var row = new Dictionary<int, int>
-                {
-                    [0] = 0,
-                    [1] = 0,
-                    [2] = 0,
-                    [3] = 0,
-                    [4] = 0,
-                };
-                int col = 0, areaId = -1;
-                foreach (var build in g.world.build.GetBuilds().ToArray().Where(x => !string.IsNullOrEmpty(x.name) && AREA_COL[x.gridData.areaBaseID].Value0.Parse<int>() >= 0 && ((Func<MapBuildBase, bool>)AREA_COL[x.gridData.areaBaseID].Value1).Invoke(x))
-                    .OrderBy(x => AREA_COL[x.gridData.areaBaseID].Value0.Parse<int>()).ThenBy(x => x.gridData.areaBaseID).ThenBy(x => x.name))
-                {
-                    if (areaId != build.gridData.areaBaseID)
-                    {
-                        areaId = build.gridData.areaBaseID;
-                        col = AREA_COL[areaId].Value0.Parse<int>() * 6 + 3;
-                        uiTele.AddText(col, row[AREA_COL[areaId].Value0.Parse<int>()]++, $"Area {areaId}:").Format(null, 16, FontStyle.Italic).Align(TextAnchor.MiddleCenter);
-                    }
-                    FormatButton2(uiTele.AddButton(col, row[AREA_COL[areaId].Value0.Parse<int>()]++, () => Tele(build.GetOpenBuildPoints()[0]), build.name));
-                }
-            }
-            uiTele.UpdateUI();
-        }
-
-        private void FormatButton2(UIItemButton btn)
-        {
-            btn.Format(Color.black, 13).Size(TELE_BTN_WIDTH, TELE_BTN_HEIGHT);
         }
 
         private void Tele(Vector2Int p)
