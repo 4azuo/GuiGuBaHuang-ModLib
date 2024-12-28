@@ -18,7 +18,8 @@ namespace ModLib.Object
 
         public UIItemSelect(UICustomBase ui, float x, float y, string[] selections, int def, Toggle copySource = null) : base(ui, (copySource ?? UISampleHelper.SelectSample).Copy(ui.UIBase).Pos(x + DELTA_WITH_INPUT, y).Size(180f, 26f).Align().Format(Color.black, 13))
         {
-            Init(selections, def);
+            if (!GameHelper.error(EventHelper.RunningEvent.ModId))
+                Init(selections, def);
         }
 
         protected virtual void Init(string[] selections, int def)
