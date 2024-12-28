@@ -1,4 +1,4 @@
-- npc learn new skill
+- npc kill boss and learn new skill
 
 - improve Halo
 
@@ -8,9 +8,8 @@
 
 - kill in town, will be wanted
 
-- pet
-
-- local text trainer
 - ui scroll
+
 - skill
+
 - multiplayer?
