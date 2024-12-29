@@ -22,6 +22,7 @@ public static class CacheHelper
         },
     };
 
+    private static readonly List<Tuple<string, CacheAttribute, Type>> EMPTY = new List<Tuple<string, CacheAttribute, Type>>();
     public static List<Tuple<string, CacheAttribute, Type>> CacheTypes { get; private set; }
     public static Dictionary<string, CachableObject> CacheData { get; private set; } = new Dictionary<string, CachableObject>();
 
@@ -296,16 +297,13 @@ public static class CacheHelper
         if (CacheTypes == null)
         {
             var rs = new List<Tuple<string, CacheAttribute, Type>>();
-            rs.AddRange(GetCacheTypes(ModMaster.ModObj.ModId, AssemblyHelper.GetModLibAssembly(), true));
-            rs.AddRange(GetCacheTypes(ModMaster.ModObj.ModId, AssemblyHelper.GetModLibMainAssembly(), true));
+            rs.AddRange(GetModLibCacheTypes(ModMaster.ModObj.ModId, AssemblyHelper.GetModLibAssembly()));
 
             foreach (var mod in g.mod.allModPaths)
             {
                 if (g.mod.IsLoadMod(mod.t1) && mod.t1 != ModMaster.ModObj.ModId)
                 {
-                    var x = GetCacheTypes(mod.t1, AssemblyHelper.GetModRootAssembly(mod.t1), false);
-                    if (x != null)
-                        rs.AddRange(x);
+                    rs.AddRange(GetModChildCacheTypes(mod.t1, AssemblyHelper.GetModRootAssembly(mod.t1)));
                 }
             }
             CacheTypes = rs;
@@ -313,69 +311,75 @@ public static class CacheHelper
         return CacheTypes;
     }
 
-    public static List<Tuple<string, CacheAttribute, Type>> GetCacheTypes(string modId, Assembly ass, bool ignoreModChild)
+    private static List<Tuple<string, CacheAttribute, Type>> GetModLibCacheTypes(string modId, Assembly ass)
+    {
+        DebugHelper.WriteLine($"{AssemblyHelper.GetModPathRootAssembly(modId)}\\{ass?.FullName}");
+        var rs = ass.GetLoadableTypes().Where(x => x.IsClass && x.IsSubclassOf(typeof(CachableObject)) && x.GetCustomAttribute<CacheAttribute>() != null)
+            .Select(x => Tuple.Create(modId, x.GetCustomAttribute<CacheAttribute>(), x)).ToList();
+        DebugHelper.WriteLine($"{modId}: Loaded!!!");
+        return rs.OrderBy(x => x.Item2.OrderIndex).ToList();
+    }
+
+    private static List<Tuple<string, CacheAttribute, Type>> GetModChildCacheTypes(string modId, Assembly ass)
     {
         if (GameHelper.error(modId))
-            return null;
+            return EMPTY;
         DebugHelper.WriteLine($"{AssemblyHelper.GetModPathRootAssembly(modId)}\\{ass?.FullName}");
         if (ass == null)
         {
             DebugHelper.WriteLine($"{modId}: DLL file is not exists!!!");
-            return null;
+            return EMPTY;
         }
         var rs = ass.GetLoadableTypes().Where(x => x.IsClass && x.IsSubclassOf(typeof(CachableObject)) && x.GetCustomAttribute<CacheAttribute>() != null)
             .Select(x => Tuple.Create(modId, x.GetCustomAttribute<CacheAttribute>(), x)).ToList();
-        if (!ignoreModChild)
+        if (rs.Count(x => x.Item3.IsSubclassOf(typeof(ModChild))) > 1)
         {
-            if (rs.Count(x => x.Item3.IsSubclassOf(typeof(ModChild))) > 1)
+            DebugHelper.WriteLine($"{modId}: Only 1 ModChild in mod!!!");
+            return EMPTY;
+        }
+        var child = rs.FirstOrDefault(x => x.Item3.IsSubclassOf(typeof(ModChild)));
+        if (child == null)
+        {
+            DebugHelper.WriteLine($"{modId}: This mod is not powered by ModLib or you have to declare a ModChild!!!");
+            return EMPTY;
+        }
+        else
+        {
+            child.Item2.OrderIndex = -1;
+            child.Item2.CacheType = CacheAttribute.CType.Global;
+            child.Item2.WorkOn = CacheAttribute.WType.All;
+        }
+        if (child.Item1 != child.Item2.CacheId)
+        {
+            DebugHelper.WriteLine($"{modId}: ModChild's CacheId must be same ModId!!! ({child.Item1})");
+            return EMPTY;
+        }
+        var dupCheck = rs.FirstOrDefault(x => rs.Any(y => x != y && x.Item2.CacheId == y.Item2.CacheId));
+        if (dupCheck != null)
+        {
+            DebugHelper.WriteLine($"{modId}-{dupCheck.Item2.CacheId}: Exists another CachableObject has same CacheId!!!");
+            return EMPTY;
+        }
+        var orderCfg = child.Item3.GetCustomAttribute<ModOrderAttribute>();
+        if (orderCfg != null && File.Exists(ConfHelper.GetConfFilePath(modId, orderCfg.OrderFile)))
+        {
+            var orderList = JsonConvert.DeserializeObject<Dictionary<string, int>>(ConfHelper.ReadConfData(modId, orderCfg.OrderFile));
+            foreach (var r in rs)
             {
-                DebugHelper.WriteLine($"{modId}: Only 1 ModChild in mod!!!");
-                return null;
+                if (orderList.ContainsKey(r.Item2.CacheId))
+                    r.Item2.OrderIndex = orderList[r.Item2.CacheId];
             }
-            var child = rs.FirstOrDefault(x => x.Item3.IsSubclassOf(typeof(ModChild)));
-            if (child == null)
-            {
-                DebugHelper.WriteLine($"{modId}: This mod is not powered by ModLib or you have to declare a ModChild!!!");
-                return null;
-            }
-            else
-            {
-                child.Item2.OrderIndex = -1;
-                child.Item2.CacheType = CacheAttribute.CType.Global;
-                child.Item2.WorkOn = CacheAttribute.WType.All;
-            }
-            if (child.Item1 != child.Item2.CacheId)
-            {
-                DebugHelper.WriteLine($"{modId}: ModChild's CacheId must be same ModId!!! ({child.Item1})");
-                return null;
-            }
-            var dupCheck = rs.FirstOrDefault(x => rs.Any(y => x != y && x.Item2.CacheId == y.Item2.CacheId));
-            if (dupCheck != null)
-            {
-                DebugHelper.WriteLine($"{modId}-{dupCheck.Item2.CacheId}: Exists another CachableObject has same CacheId!!!");
-                return null;
-            }
-            var orderCfg = child.Item3.GetCustomAttribute<ModOrderAttribute>();
-            if (orderCfg != null && File.Exists(ConfHelper.GetConfFilePath(modId, orderCfg.OrderFile)))
-            {
-                var orderList = JsonConvert.DeserializeObject<Dictionary<string, int>>(ConfHelper.ReadConfData(modId, orderCfg.OrderFile));
-                foreach (var r in rs)
-                {
-                    if (orderList.ContainsKey(r.Item2.CacheId))
-                        r.Item2.OrderIndex = orderList[r.Item2.CacheId];
-                }
-            }
-            var defOrderIndex = 9000;
-            foreach (var r in rs.Where(x => x.Item2.OrderIndex == 0))
-            {
-                r.Item2.OrderIndex = defOrderIndex++;
-            }
-            var orderCheck = rs.FirstOrDefault(x => !x.Item3.IsSubclassOf(typeof(ModChild)) && x.Item2.OrderIndex < 0);
-            if (orderCheck != null)
-            {
-                DebugHelper.WriteLine($"{modId}-{orderCheck.Item2.CacheId}: OrderIndex must greater than 0!!!");
-                return null;
-            }
+        }
+        var defOrderIndex = 9000;
+        foreach (var r in rs.Where(x => x.Item2.OrderIndex == 0))
+        {
+            r.Item2.OrderIndex = defOrderIndex++;
+        }
+        var orderCheck = rs.FirstOrDefault(x => !x.Item3.IsSubclassOf(typeof(ModChild)) && x.Item2.OrderIndex < 0);
+        if (orderCheck != null)
+        {
+            DebugHelper.WriteLine($"{modId}-{orderCheck.Item2.CacheId}: OrderIndex must greater than 0!!!");
+            return EMPTY;
         }
         DebugHelper.WriteLine($"{modId}: Loaded!!!");
         return rs.OrderBy(x => x.Item2.OrderIndex).ToList();
