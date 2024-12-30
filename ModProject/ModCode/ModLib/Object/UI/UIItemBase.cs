@@ -129,25 +129,6 @@ namespace ModLib.Object
             return SetParentTransform(t.transform);
         }
 
-        #region Data
-        public class UIItemData
-        {
-            public UIItemBase Item { get; set; }
-            public dynamic CustomData { get; set; }
-        }
-        #endregion
-
-        #region Work
-        public class UIItemWork
-        {
-            public UIItemBase Item { get; set; }
-            public virtual Action<UIItemBase> UpdateAct { get; set; }
-            public virtual Func<UIItemBase, bool> EnableAct { get; set; }
-            public virtual Func<UIItemBase, object[]> Formatter { get; set; }
-            public virtual Action<UIItemBase, object> ChangeAct { get; set; }
-        }
-        #endregion
-
         #region Item
         public class UIItem : UIItemBase
         {
