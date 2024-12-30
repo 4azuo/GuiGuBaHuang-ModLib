@@ -80,10 +80,11 @@ namespace MOD_nE7UL2.Mod
             var player = g.world.playerUnit;
 
             uiTrainer = new UICustom1(TITLE, okAct: () => uiTrainer = null);
+            uiTrainer.IsShowNavigationButtons = true;
             uiTrainer.UI.isFastClose = true;
 
             //page 1
-            uiTrainer.AddPage();
+            uiTrainer.AddPage((ui) =>
             {
                 int col, row;
                 uiTrainer.AddText(uiTrainer.MidCol, uiTrainer.FirstRow, GameTool.LS("trainer000")).Format(Color.red, 17);
@@ -306,11 +307,13 @@ namespace MOD_nE7UL2.Mod
                 {
                     Formatter = (x) => new object[] { player.GetDynProperty(UnitDynPropertyEnum.Mine).value },
                 });
-            }
+            });
 
             //page 2
-            uiTrainer.AddPage();
+            uiTrainer.AddPage((ui) =>
             {
+                uiTrainer.AddText(uiTrainer.MidCol, uiTrainer.FirstRow, GameTool.LS("trainer041")).Format(Color.red, 17);
+
                 var row = new Dictionary<int, int>
                 {
                     [0] = 0,
@@ -327,11 +330,11 @@ namespace MOD_nE7UL2.Mod
                     {
                         areaId = build.gridData.areaBaseID;
                         col = TELE_AREA_COL[areaId].Value0.Parse<int>() * 6 + 3;
-                        uiTrainer.AddText(col, row[TELE_AREA_COL[areaId].Value0.Parse<int>()]++, $"Area {areaId}:").Format(null, 16, FontStyle.Italic).Align(TextAnchor.MiddleCenter);
+                        uiTrainer.AddText(col, 1 + row[TELE_AREA_COL[areaId].Value0.Parse<int>()]++, $"Area {areaId}:").Format(null, 16, FontStyle.Italic).Align(TextAnchor.MiddleCenter);
                     }
-                    FormatButton2(uiTrainer.AddButton(col, row[TELE_AREA_COL[areaId].Value0.Parse<int>()]++, () => Tele(build.GetOpenBuildPoints()[0]), build.name));
+                    FormatButton2(uiTrainer.AddButton(col, 1 + row[TELE_AREA_COL[areaId].Value0.Parse<int>()]++, () => Tele(build.GetOpenBuildPoints()[0]), build.name));
                 }
-            }
+            });
 
             uiTrainer.Pages[defPage].Active();
         }
