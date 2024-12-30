@@ -127,9 +127,10 @@ namespace ModLib.Object
             Postfix.Dispose();
         }
 
-        public override void Active(bool flg)
+        public override UIItemBase Active(bool flg)
         {
             MainComponent.Active(flg);
+            return this;
         }
 
         public override bool IsActive()

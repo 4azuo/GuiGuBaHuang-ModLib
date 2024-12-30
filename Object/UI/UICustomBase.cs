@@ -10,12 +10,18 @@ namespace ModLib.Object
     public abstract class UICustomBase : IDisposable
     {
         public bool IsAutoUpdate { get; set; } = false;
+        public bool IsShowNavigationButtons { get; set; } = false;
+        public bool UnPaging { get; set; } = false;
+
         public UIBase UIBase { get; set; }
         public List<float> Columns { get; } = new List<float>();
         public List<float> Rows { get; } = new List<float>();
         public List<UIItemBase> Items { get; } = new List<UIItemBase>();
-        public UIItemPage CurrentPage { get; set; }
         public List<UIItemPage> Pages { get; } = new List<UIItemPage>();
+        public UIItemPage CurrentPage { get; set; }
+        public int CurrentPageIndex => Pages.IndexOf(CurrentPage);
+        public UIItemBase PrevButton { get; set; }
+        public UIItemBase NextButton { get; set; }
 
         public virtual string UITypeName => throw new NotImplementedException();
         public virtual float MinWidth => throw new NotImplementedException();
@@ -199,12 +205,35 @@ namespace ModLib.Object
             return CurrentPage;
         }
 
+        public UIItemPage AddPage(Action<UICustomBase> loader)
+        {
+            CurrentPage = new UIItemPage(this, loader);
+            Pages.Add(CurrentPage);
+            return CurrentPage;
+        }
+
         public UIItemBase AddPageItem(UIItemBase item)
         {
             if (CurrentPage == null)
                 AddPage();
             CurrentPage.Items.Add(item);
             return item;
+        }
+
+        public UIItemPage NextPage()
+        {
+            var nPageIndex = (CurrentPageIndex + 1).FixValue(0, CurrentPage.Items.Count - 1);
+            if (CurrentPageIndex != nPageIndex)
+                Pages[nPageIndex].Active();
+            return CurrentPage;
+        }
+
+        public UIItemPage PrevPage()
+        {
+            var pPageIndex = (CurrentPageIndex - 1).FixValue(0, CurrentPage.Items.Count - 1);
+            if (CurrentPageIndex != pPageIndex)
+                Pages[pPageIndex].Active();
+            return CurrentPage;
         }
     }
 }

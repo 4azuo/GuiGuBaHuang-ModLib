@@ -30,12 +30,14 @@ public static class SkillHelper
 
     public static Tuple<MartialType, DataProps.PropsData> GetCastingSkill(this MartialTool.HitData hitData)
     {
-        var atkUnit = hitData.attackUnit;
+        var atkUnit = hitData?.attackUnit;
+        if (atkUnit == null)
+            return null;
         if (atkUnit.step != null && atkUnit.step.isUseStep)
         {
-            return Tuple.Create(MartialType.Step, atkUnit.step.data.stepData.data);
+            return Tuple.Create(MartialType.Step, atkUnit.step?.data?.stepData?.data);
         }
-        var skill = hitData.skillBase.TryCast<SkillAttack>();
+        var skill = hitData?.skillBase?.TryCast<SkillAttack>();
         if (skill != null && skill.skillData != null)
         {
             return Tuple.Create(skill.skillData.martialType, skill.skillData.data);
