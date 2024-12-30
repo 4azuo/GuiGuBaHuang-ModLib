@@ -423,7 +423,7 @@ namespace ModLib.Mod
 
         private EventsMgr.EventsData RegEvent(string id,  Action<ETypeData> action)
         {
-            g.events.On(id, action, 0, true);
+            g.events.On(id, action/*, 0, true*/);
             return g.events.allEvents[id].ToArray().Last();
         }
 

@@ -614,6 +614,11 @@ public static class UnitHelper
         return g.world.unit.GetUnitExact(new Vector2Int(wunit.data.unitData.pointX, wunit.data.unitData.pointY), range, isGetHide, isGetPlayer);
     }
 
+    public static Il2CppSystem.Collections.Generic.List<WorldUnitBase> GetUnitsAround(int x, int y, int range = 16, bool isGetHide = false, bool isGetPlayer = true)
+    {
+        return g.world.unit.GetUnitExact(new Vector2Int(x, y), range, isGetHide, isGetPlayer);
+    }
+
     public static Il2CppSystem.Collections.Generic.List<UnitCtrlBase> FindNearCUnits(this UnitCtrlBase cunit, float radius)
     {
         return ModBattleEvent.SceneBattle.unit.GetRangeUnit(cunit.transform.position, radius);
@@ -628,5 +633,10 @@ public static class UnitHelper
     {
         var enemyTypes = MartialTool.GetEnemyType(cunit);
         return ModBattleEvent.SceneBattle.unit.GetRangeUnit(cunit.transform.position, radius).ToArray().Where(x => enemyTypes.Contains(x.data.unitType)).ToList();
+    }
+
+    public static WorldUnitBase GetStrongestWUnit(this IEnumerable<WorldUnitBase> wunits)
+    {
+        return wunits.OrderByDescending(x => x.GetDynProperty(UnitDynPropertyEnum.Attack).value).FirstOrDefault();
     }
 }
