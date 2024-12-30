@@ -31,6 +31,7 @@ namespace MOD_nE7UL2
             //unlimit attribute
             foreach (var item in g.conf.roleAttributeLimit._allConfList)
             {
+                //DebugHelper.WriteLine($"{item.key}: {item.value}");
                 if (item.key.EndsWith("Max"))
                     item.value = ModConst.MAX_ATTRIBUTE;
             }

@@ -355,7 +355,8 @@ namespace ModLib.Mod
         public override void OnBattleUnitDie(UnitDie e)
         {
             base.OnBattleUnitDie(e);
-            KillList.Add(Tuple.Create(e.unit, e.hitData.attackUnit));
+            if (e?.unit != null && e?.hitData?.attackUnit != null)
+                KillList.Add(Tuple.Create(e.unit, e.hitData.attackUnit));
         }
     }
 }

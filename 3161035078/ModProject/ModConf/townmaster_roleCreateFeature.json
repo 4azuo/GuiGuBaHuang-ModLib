@@ -1,0 +1,36 @@
+[
+	{
+		"__name": "Town Master",
+		"id": "420041111",
+		"type": "2",
+		"group": "420041110",
+		"level": "6",
+		"duration": "-1",
+		"refreshType": "2",
+		"conceal": "0",
+		"name": "townmaster420041111",
+		"effect": "0",
+		"tips": "townmaster420041110desc",
+		"iconAndDesc": "0",
+		"lockLuck": "0",
+		"introduceText": "0",
+		"weight": "0"
+	},
+	{
+		"__name": "Town Guardian",
+		"id": "420041112",
+		"type": "2",
+		"group": "420041110",
+		"level": "5",
+		"duration": "-1",
+		"refreshType": "2",
+		"conceal": "0",
+		"name": "townmaster420041112",
+		"effect": "0",
+		"tips": "townmaster420041110desc",
+		"iconAndDesc": "0",
+		"lockLuck": "0",
+		"introduceText": "0",
+		"weight": "0"
+	},
+]

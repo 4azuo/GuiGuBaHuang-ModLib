@@ -27,6 +27,11 @@ public static class ValueHelper
         return Math.Max(Math.Min(x, max), min);
     }
 
+    public static long FixValue(this long x, long min = long.MinValue, long max = long.MaxValue)
+    {
+        return Math.Max(Math.Min(x, max), min);
+    }
+
     public static float FixValue(this float x, float min = float.MinValue, float max = float.MaxValue)
     {
         return Math.Max(Math.Min(x, max), min);
