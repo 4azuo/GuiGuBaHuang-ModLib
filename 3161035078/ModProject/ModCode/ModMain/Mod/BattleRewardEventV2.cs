@@ -523,15 +523,20 @@ namespace MOD_nE7UL2.Mod
                 //item
                 var ringLockScore = player.GetEquippedRing()?.propsItem?.IsRing()?.lockScore ?? 0;
                 var luck = g.world.playerUnit.GetDynProperty(UnitDynPropertyEnum.Luck).value;
+                var killer = ModBattleEvent.GetKiller(ModBattleEvent.PlayerUnit);
                 foreach (var item in player.GetUnitProps())
                 {
                     if (item.propsInfoBase.sale > 0 &&
                         !CommonTool.Random(0.00f, 100.00f).IsBetween(0.00f, (luck / 10.0f) + (ringLockScore / 100.0f)))
                     {
+                        if (killer.IsWorldUnit())
+                            killer.GetWorldUnit().AddUnitProp(item);
                         player.RemoveUnitProp(item.soleID);
                     }
                 }
                 //spirit stones
+                if (killer.IsWorldUnit())
+                    killer.GetWorldUnit().AddUnitMoney(player.GetUnitMoney());
                 player.SetUnitMoney(0);
                 //log
                 DebugHelper.WriteLine($"BattleRewardEvent: player death");
