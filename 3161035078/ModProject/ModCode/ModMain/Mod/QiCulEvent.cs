@@ -62,15 +62,15 @@ namespace MOD_nE7UL2.Mod
                 {
                     var ui = new UICover<UINPCInfo>(uiBase);
                     {
-                        ui.AddText(0, 0, $"Qi: {Qi[unitId]}").Align().Format(Color.white, 16).Pos(ui.UI.uiHeart.goSeedIconRoot.transform, -2.8f, 1f).SetParentTransform(ui.UI.uiHeart.goEmpty);
-                        ui.AddText(0, 0, $"Atk: {UnitModifyHelper.GetQiAdjAtk(uiBase.unit)}").Align().Format(Color.white, 16).Pos(ui.UI.uiHeart.goSeedIconRoot.transform, -2.8f, 0.8f).SetParentTransform(ui.UI.uiHeart.goEmpty);
-                        ui.AddText(0, 0, $"Hp: {UnitModifyHelper.GetQiAdjHp(uiBase.unit)}").Align().Format(Color.white, 16).Pos(ui.UI.uiHeart.goSeedIconRoot.transform, -2.8f, 0.6f).SetParentTransform(ui.UI.uiHeart.goEmpty);
-                        ui.AddText(0, 0, $"Mp: {UnitModifyHelper.GetQiAdjMp(uiBase.unit)}").Align().Format(Color.white, 16).Pos(ui.UI.uiHeart.goSeedIconRoot.transform, -2.8f, 0.4f).SetParentTransform(ui.UI.uiHeart.goEmpty);
+                        ui.AddText(0, 0, $"Qi: {Qi[unitId]}").Align().Format(Color.white, 16).Pos(ui.UI.uiHeart.goGroupRoot.transform, -2.5f, 1.2f).SetParentTransform(ui.UI.uiHeart.goGroupRoot);
+                        ui.AddText(0, 0, $"Atk: {UnitModifyHelper.GetQiAdjAtk(uiBase.unit)}").Align().Format(Color.white, 16).Pos(ui.UI.uiHeart.goGroupRoot.transform, -2.5f, 1.0f).SetParentTransform(ui.UI.uiHeart.goGroupRoot);
+                        ui.AddText(0, 0, $"Hp: {UnitModifyHelper.GetQiAdjHp(uiBase.unit)}").Align().Format(Color.white, 16).Pos(ui.UI.uiHeart.goGroupRoot.transform, -2.5f, 0.8f).SetParentTransform(ui.UI.uiHeart.goGroupRoot);
+                        ui.AddText(0, 0, $"Mp: {UnitModifyHelper.GetQiAdjMp(uiBase.unit)}").Align().Format(Color.white, 16).Pos(ui.UI.uiHeart.goGroupRoot.transform, -2.5f, 0.6f).SetParentTransform(ui.UI.uiHeart.goGroupRoot);
                         ui.AddButton(0, 0, () =>
                         {
                             QiTransmit(g.world.playerUnit, uiBase.unit);
                             g.ui.CloseUI(uiBase);
-                        }, "Qi Transfer").Format(Color.black, 14).Size(160, 30).Pos(ui.UI.uiHeart.goSeedIconRoot.transform, -2.8f, 0.1f).SetParentTransform(ui.UI.uiHeart.goEmpty);
+                        }, "Qi Transfer").Format(Color.black, 14).Size(160, 30).Pos(ui.UI.uiHeart.goGroupRoot.transform, -2.5f, 0.3f).SetParentTransform(ui.UI.uiHeart.goGroupRoot);
                         if (!uiBase.unit.isDie &&
                             LastYearReceiveQi != GameHelper.GetGameYear() &&
                             g.world.playerUnit.data.allUnitRelation.ContainsKey(unitId) &&
@@ -81,7 +81,7 @@ namespace MOD_nE7UL2.Mod
                                 LastYearReceiveQi = GameHelper.GetGameYear();
                                 QiTransmit(uiBase.unit, g.world.playerUnit);
                                 g.ui.CloseUI(uiBase);
-                            }, "Recieve Qi").Format(Color.black, 14).Size(160, 30).Pos(ui.UI.uiHeart.goSeedIconRoot.transform, -2.8f, -0.2f).SetParentTransform(ui.UI.uiHeart.goEmpty);
+                            }, "Recieve Qi").Format(Color.black, 14).Size(160, 30).Pos(ui.UI.uiHeart.goGroupRoot.transform, -2.5f, 0f).SetParentTransform(ui.UI.uiHeart.goGroupRoot);
                         }
                     }
                     ui.IsAutoUpdate = true;

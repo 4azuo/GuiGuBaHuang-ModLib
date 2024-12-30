@@ -148,8 +148,7 @@ Your commissions:
             foreach (var item in _availableItems)
             {
                 var prop = item.Key;
-                var grade = item.Value;
-                if (grade <= uiTownBounty.town.gridData.areaBaseID &&
+                if (item.Value.IsBetween(uiTownBounty.town.gridData.areaBaseID - 1, uiTownBounty.town.gridData.areaBaseID + 1) &&
                     (
                         (prop.IsHerbItem() != null && (prop.level + 1) <= uiTownBounty.town.gridData.areaBaseID) ||
                         (prop.IsMineItem() != null && (prop.level + 1) <= uiTownBounty.town.gridData.areaBaseID) ||
