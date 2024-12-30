@@ -49,6 +49,7 @@
     <Compile Include="Mod\ExpertEvent.cs" />
     <Compile Include="Mod\InflationaryEvent.cs" />
     <Compile Include="Mod\CustomRefineEvent.cs" />
+    <Compile Include="Mod\HirePeopleEvent.cs" />
     <Compile Include="Mod\QiCulEvent.cs" />
     <Compile Include="Mod\SliceLifeQuestEvent.cs" />
     <Compile Include="Mod\BankAccountEvent.cs" />

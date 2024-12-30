@@ -79,7 +79,7 @@ namespace MOD_nE7UL2.Mod
             {
                 var ui = new UICover<UITown>(e.ui);
                 {
-                    ui.AddButton(ui.LastCol - 8, ui.FirstRow + 1, null, "Tax: {0} Spirit Stones").Size(300, 60).SetWork(new UIItemBase.UIItemWork
+                    ui.AddButton(ui.LastCol - 8, ui.FirstRow + 1, null, "Tax: {0} Spirit Stones").Size(300, 60).SetWork(new UIItemWork
                     {
                         Formatter = (x) => new string[] { MapBuildPropertyEvent.GetTax(g.world.playerUnit).ToString() },
                         UpdateAct = (x) => x.Pos(ui.LastCol - 8, ui.FirstRow + 1),
@@ -92,7 +92,7 @@ namespace MOD_nE7UL2.Mod
             {
                 var ui = new UICover<UISchool>(e.ui);
                 {
-                    ui.AddButton(ui.LastCol - 8, ui.FirstRow + 1, null, "Tax: {0} Spirit Stones").Size(300, 60).SetWork(new UIItemBase.UIItemWork
+                    ui.AddButton(ui.LastCol - 8, ui.FirstRow + 1, null, "Tax: {0} Spirit Stones").Size(300, 60).SetWork(new UIItemWork
                     {
                         Formatter = (x) => new string[] { MapBuildPropertyEvent.GetTax(g.world.playerUnit).ToString() },
                         UpdateAct = (x) => x.Pos(ui.LastCol - 8, ui.FirstRow + 1),
@@ -113,28 +113,28 @@ namespace MOD_nE7UL2.Mod
                 var uiNPCInfo = new UICover<UINPCInfo>(UIType.NPCInfo);
                 {
                     uiNPCInfo.AddText(0, 0, string.Empty).Format(Color.white).SetParentTransform(uiNPCInfo.UI.uiProperty.goGroupRoot)
-                        .Pos(uiNPCInfo.UI.uiProperty.goItem6, 0.4f, -1.1f).SetWork(new UIItemBase.UIItemWork
+                        .Pos(uiNPCInfo.UI.uiProperty.goItem6, 0.4f, -1.1f).SetWork(new UIItemWork
                         {
                             UpdateAct = (x) => x.Set($"+Hp: {UnitModifyHelper.GetMartialAdjHp(uiNPCInfo.UI.unit)}")
                         });
                     uiNPCInfo.AddText(0, 0, string.Empty).Format(Color.white).SetParentTransform(uiNPCInfo.UI.uiProperty.goGroupRoot)
-                        .Pos(uiNPCInfo.UI.uiProperty.goItem7, 0.4f, -1.1f).SetWork(new UIItemBase.UIItemWork
+                        .Pos(uiNPCInfo.UI.uiProperty.goItem7, 0.4f, -1.1f).SetWork(new UIItemWork
                         {
                             UpdateAct = (x) => x.Set($"+Mp: {UnitModifyHelper.GetSpiritualAdjMp(uiNPCInfo.UI.unit)}")
                         });
                     uiNPCInfo.AddText(0, 0, string.Empty).Format(Color.white).SetParentTransform(uiNPCInfo.UI.uiProperty.goGroupRoot)
-                        .Pos(uiNPCInfo.UI.uiProperty.goItem8, 0.4f, -1.1f).SetWork(new UIItemBase.UIItemWork
+                        .Pos(uiNPCInfo.UI.uiProperty.goItem8, 0.4f, -1.1f).SetWork(new UIItemWork
                         {
                             UpdateAct = (x) => x.Set($"+Sp: {UnitModifyHelper.GetArtisanshipAdjSp(uiNPCInfo.UI.unit)}")
                         });
 
                     uiNPCInfo.AddText(0, 0, string.Empty).Format(Color.white).SetParentTransform(uiNPCInfo.UI.uiSkill.textPoint1.transform)
-                        .Pos(uiNPCInfo.UI.uiSkill.textPoint1.transform, 0f, -0.2f).SetWork(new UIItemBase.UIItemWork
+                        .Pos(uiNPCInfo.UI.uiSkill.textPoint1.transform, 0f, -0.2f).SetWork(new UIItemWork
                         {
                             UpdateAct = (x) => x.Set($"+Hp: {UnitModifyHelper.GetAbiPointAdjHp(uiNPCInfo.UI.unit)}")
                         });
                     uiNPCInfo.AddText(0, 0, string.Empty).Format(Color.white).SetParentTransform(uiNPCInfo.UI.uiSkill.textPoint1.transform)
-                        .Pos(uiNPCInfo.UI.uiSkill.textPoint1.transform, 0f, -0.4f).SetWork(new UIItemBase.UIItemWork
+                        .Pos(uiNPCInfo.UI.uiSkill.textPoint1.transform, 0f, -0.4f).SetWork(new UIItemWork
                         {
                             UpdateAct = (x) => x.Set($"+Mp: {UnitModifyHelper.GetAbiPointAdjMp(uiNPCInfo.UI.unit)}")
                         });
@@ -147,28 +147,28 @@ namespace MOD_nE7UL2.Mod
                 var uiPlayerInfo = new UICover<UIPlayerInfo>(UIType.PlayerInfo);
                 {
                     uiPlayerInfo.AddText(0, 0, string.Empty).SetParentTransform(uiPlayerInfo.UI.uiPropertyCommon.goGroupRoot)
-                        .Pos(uiPlayerInfo.UI.uiPropertyCommon.goItem6_En, 0.4f, -1.0f).SetWork(new UIItemBase.UIItemWork
+                        .Pos(uiPlayerInfo.UI.uiPropertyCommon.goItem6_En, 0.4f, -1.0f).SetWork(new UIItemWork
                         {
                             UpdateAct = (x) => x.Set($"+Hp: {UnitModifyHelper.GetMartialAdjHp(uiPlayerInfo.UI.unit)}")
                         });
                     uiPlayerInfo.AddText(0, 0, string.Empty).SetParentTransform(uiPlayerInfo.UI.uiPropertyCommon.goGroupRoot)
-                        .Pos(uiPlayerInfo.UI.uiPropertyCommon.goItem7_En, 0.4f, -1.0f).SetWork(new UIItemBase.UIItemWork
+                        .Pos(uiPlayerInfo.UI.uiPropertyCommon.goItem7_En, 0.4f, -1.0f).SetWork(new UIItemWork
                         {
                             UpdateAct = (x) => x.Set($"+Mp: {UnitModifyHelper.GetSpiritualAdjMp(uiPlayerInfo.UI.unit)}")
                         });
                     uiPlayerInfo.AddText(0, 0, string.Empty).SetParentTransform(uiPlayerInfo.UI.uiPropertyCommon.goGroupRoot)
-                        .Pos(uiPlayerInfo.UI.uiPropertyCommon.goItem8_En, 0.4f, -1.0f).SetWork(new UIItemBase.UIItemWork
+                        .Pos(uiPlayerInfo.UI.uiPropertyCommon.goItem8_En, 0.4f, -1.0f).SetWork(new UIItemWork
                         {
                             UpdateAct = (x) => x.Set($"+Sp: {UnitModifyHelper.GetArtisanshipAdjSp(uiPlayerInfo.UI.unit)}")
                         });
 
                     uiPlayerInfo.AddText(0, 0, string.Empty).Format(Color.white).SetParentTransform(uiPlayerInfo.UI.uiSkill.textPoint1.transform)
-                        .Pos(uiPlayerInfo.UI.uiSkill.textPoint1.transform, 0f, -0.2f).SetWork(new UIItemBase.UIItemWork
+                        .Pos(uiPlayerInfo.UI.uiSkill.textPoint1.transform, 0f, -0.2f).SetWork(new UIItemWork
                         {
                             UpdateAct = (x) => x.Set($"+Hp: {UnitModifyHelper.GetAbiPointAdjHp(uiPlayerInfo.UI.unit)}")
                         });
                     uiPlayerInfo.AddText(0, 0, string.Empty).Format(Color.white).SetParentTransform(uiPlayerInfo.UI.uiSkill.textPoint1.transform)
-                        .Pos(uiPlayerInfo.UI.uiSkill.textPoint1.transform, 0f, -0.4f).SetWork(new UIItemBase.UIItemWork
+                        .Pos(uiPlayerInfo.UI.uiSkill.textPoint1.transform, 0f, -0.4f).SetWork(new UIItemWork
                         {
                             UpdateAct = (x) => x.Set($"+Mp: {UnitModifyHelper.GetAbiPointAdjMp(uiPlayerInfo.UI.unit)}")
                         });

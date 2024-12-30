@@ -260,7 +260,7 @@ namespace MOD_nE7UL2.Mod
                 uiCustom.AddText(col, row++, GameTool.LS("smcfgs016")).Format(null, 17, FontStyle.Italic).Align(TextAnchor.MiddleRight);
                 slNpcGrowRate = uiCustom.AddCompositeSlider(col, row++, GameTool.LS("smcfgs017"), 0.00f, 10.00f, AddNpcGrowRate, GameTool.LS("smcfgs101"));
                 slNPCAmount = uiCustom.AddCompositeSlider(col, row++, GameTool.LS("smcfgs047"), 1000, 10000, NPCAmount, GameTool.LS("smcfgs103"));
-                uiCustom.AddText(col + 3, row++, GameTool.LS("smcfgs048")).Format(null, 13).Align(TextAnchor.MiddleLeft).SetWork(new UIItemBase.UIItemWork
+                uiCustom.AddText(col + 3, row++, GameTool.LS("smcfgs048")).Format(null, 13).Align(TextAnchor.MiddleLeft).SetWork(new UIItemWork
                 {
                     Formatter = (x) => new string[] { (slNPCAmount.Get().Parse<int>() / 2).ToString() },
                 });
@@ -299,7 +299,7 @@ namespace MOD_nE7UL2.Mod
                 uiCustom.AddText(col - 1, row++, GameTool.LS("smcfgs042")).Format(null, 13).Align(TextAnchor.MiddleLeft);
 
                 col = 30; row = 0;
-                uiCustom.AddText(col, row, GameTool.LS("smcfgs043")).Format(Color.red, 17).Align(TextAnchor.MiddleRight).SetWork(new UIItemBase.UIItemWork
+                uiCustom.AddText(col, row, GameTool.LS("smcfgs043")).Format(Color.red, 17).Align(TextAnchor.MiddleRight).SetWork(new UIItemWork
                 {
                     Formatter = (x) => new string[] { CalSMTotalScore().ToString() },
                 });

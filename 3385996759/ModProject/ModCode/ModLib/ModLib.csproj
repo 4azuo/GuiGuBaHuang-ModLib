@@ -109,6 +109,9 @@
     <Compile Include="Object\Base\MonoUpdater.cs" />
     <Compile Include="Object\MultiValue.cs" />
     <Compile Include="Object\UI\ITextFormat.cs" />
+    <Compile Include="Object\UI\UIItemData.cs" />
+    <Compile Include="Object\UI\UICustomWork.cs" />
+    <Compile Include="Object\UI\UIItemWork.cs" />
     <Compile Include="Object\UI\UIItemPage.cs" />
     <Compile Include="Object\UI\UISample.cs" />
     <Compile Include="Object\UI\UICover.cs" />
