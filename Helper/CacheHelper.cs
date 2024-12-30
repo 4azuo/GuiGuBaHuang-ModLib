@@ -322,8 +322,6 @@ public static class CacheHelper
 
     private static List<Tuple<string, CacheAttribute, Type>> GetModChildCacheTypes(string modId, Assembly ass)
     {
-        if (GameHelper.error(modId))
-            return EMPTY;
         DebugHelper.WriteLine($"{AssemblyHelper.GetModPathRootAssembly(modId)}\\{ass?.FullName}");
         if (ass == null)
         {

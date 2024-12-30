@@ -604,6 +604,11 @@ public static class UnitHelper
         return cunit?.data?.TryCast<UnitDataMonst>()?.unit != null && !cunit.IsWorldUnit();
     }
 
+    public static WorldUnitBase GetWorldUnit(this UnitCtrlBase cunit)
+    {
+        return cunit?.data?.TryCast<UnitDataHuman>()?.worldUnitData?.unit;
+    }
+
     public static Il2CppSystem.Collections.Generic.List<WorldUnitBase> GetUnitsAround(this WorldUnitBase wunit, int range = 16, bool isGetHide = false, bool isGetPlayer = true)
     {
         return g.world.unit.GetUnitExact(new Vector2Int(wunit.data.unitData.pointX, wunit.data.unitData.pointY), range, isGetHide, isGetPlayer);
