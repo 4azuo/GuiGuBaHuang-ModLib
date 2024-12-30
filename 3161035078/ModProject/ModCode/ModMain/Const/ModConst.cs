@@ -23,6 +23,7 @@
         public const string BUILDING_ARRANGE_EVENT = "BuildingArrangeEvent";
         public const string MAP_BUILD_PROPERTY_EVENT = "MapBuildPropertyEvent";
         public const string MISSION_DECLARE_EVENT = "MissionDeclareEvent";
+        public const string HIRE_PEOPLE_EVENT = "HirePeopleEvent";
         public const string BATTLE_MODIFY_EVENT = "BattleModifyEvent";
         public const string UI_EVENT = "UIEvent";
         public const string UNIT_MODIFY_EVENT = "UnitModifyEvent";

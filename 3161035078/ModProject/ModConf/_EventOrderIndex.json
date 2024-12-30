@@ -15,6 +15,7 @@
 	"UnitTypeEvent": 2060,
 	"UpgradeNaturallyEvent": 2070,
 	"QiCulEvent": 2080,
+	"HirePeopleEvent": 2090,
 
 	//eco
 	"MapBuildPropertyEvent": 3000,

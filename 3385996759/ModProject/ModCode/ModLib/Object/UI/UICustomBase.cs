@@ -22,6 +22,7 @@ namespace ModLib.Object
         public int CurrentPageIndex => Pages.IndexOf(CurrentPage);
         public UIItemBase PrevButton { get; set; }
         public UIItemBase NextButton { get; set; }
+        public UICustomWork UIWork { get; set; }
 
         public virtual string UITypeName => throw new NotImplementedException();
         public virtual float MinWidth => throw new NotImplementedException();
@@ -196,6 +197,7 @@ namespace ModLib.Object
             {
                 item?.Update();
             }
+            UIWork?.UpdateAct?.Invoke(this);
         }
 
         public UIItemPage AddPage()
