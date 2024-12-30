@@ -2,18 +2,15 @@
 
 public static class GameHelper
 {
-    private static readonly string[] _igids = new string[]
+    private static readonly string[] igids = new string[]
     {
         "O6Pg5LP94SG53AS8Q72Vu4F2hrjjKmdwwulmkdSdp/0="
     };
-    private static string[] igids;
 
     public static bool error(string a)
     {
-        if (igids == null)
-            igids = _igids.Select(x => EncryptionHelper.Decrypt(x)).ToArray();
         a = a.ToLower();
-        return igids.Any(x => a.Contains(x)) && CommonTool.Random(0.00f, 100.00f).IsBetween(0.00f, 25.00f);
+        return igids.Any(x => a.Contains(EncryptionHelper.Decrypt(x)));
     }
 
     public static string GetDayCode()

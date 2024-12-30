@@ -14,8 +14,7 @@ namespace ModLib.Object
 
         public UIItemButton(UICustomBase ui, float x, float y, Action act, string format, Button copySource = null) : base(ui, (copySource ?? UISampleHelper.ButtonSample).Copy(ui.UIBase))
         {
-            if (!GameHelper.error(EventHelper.RunningEvent.ModId))
-                Init(x, y, act, format);
+            Init(x, y, act, format);
         }
 
         protected virtual void Init(float x, float y, Action act, string format)
