@@ -12,6 +12,8 @@ namespace MOD_nE7UL2.Mod
     {
         public const int JOIN_RANGE = 5;
         public const float NPC_JOIN_RATE = 0.20f;
+        public const int ENEMY_JOIN_DRAMA = 480110100;
+        public const int FRIENDLY_JOIN_DRAMA = 480110200;
 
         public int PvPCount { get; set; } = 0;
 
@@ -37,7 +39,8 @@ namespace MOD_nE7UL2.Mod
         public override void OnTimeUpdate1s()
         {
             base.OnTimeUpdate1s();
-            if (_aroundUnits != null)
+            if (!g.world.battle.data.isSelfBattle &&
+                _aroundUnits != null)
             {
                 //enemy unit join battle
                 var enemyUnit = _aroundUnits.Where(x => IsEnemyUnit(x)).FirstOrDefault();
@@ -46,6 +49,7 @@ namespace MOD_nE7UL2.Mod
                 {
                     _aroundUnits.Remove(enemyUnit);
                     SceneType.battle.unit.CreateUnitHuman<UnitCtrlHumanNPC>(enemyUnit.data, UnitType.Alone);
+                    DramaTool.OpenDrama(ENEMY_JOIN_DRAMA, new DramaData() { unitLeft = enemyUnit, unitRight = null });
                 }
 
                 //friendly unit join battle
@@ -55,6 +59,7 @@ namespace MOD_nE7UL2.Mod
                 {
                     _aroundUnits.Remove(friendlyUnit);
                     SceneType.battle.unit.CreateUnitHuman<UnitCtrlHumanNPC>(friendlyUnit.data, UnitType.PlayerNPC);
+                    DramaTool.OpenDrama(FRIENDLY_JOIN_DRAMA, new DramaData() { unitLeft = friendlyUnit, unitRight = null });
                 }
             }
         }

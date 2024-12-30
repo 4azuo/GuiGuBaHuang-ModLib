@@ -36,7 +36,7 @@ namespace MOD_nE7UL2.Mod
 
         public static EffectBase ShieldUp(UnitCtrlBase cunit, int shield, int maxShield)
         {
-            if (cunit == null)
+            if (cunit == null || ModBattleEvent.SceneBattle.battleEnd.isEnd)
                 return null;
             var efx = cunit.AddEffect(MANASHIELD_EFFECT_MAIN_ID, cunit, new SkillCreateData
             {
@@ -45,7 +45,10 @@ namespace MOD_nE7UL2.Mod
                 {
                     grade = cunit.data.grade.value,
                     level = 1,
-                    data = new BattleSkillValueData.Data(),
+                    data = new BattleSkillValueData.Data
+                    {
+                        unitCtrlBase = cunit,
+                    }
                 }
             });
             Effect3017.AddShield(efx, cunit, MANASHIELD_EFFECT_EFX_ID, shield, maxShield, int.MaxValue);
