@@ -198,14 +198,21 @@ namespace ModLib.Mod
 
         public static long sGetDmg(DmgSaveEnum dmgSaveEnum, string dmgKey)
         {
-            return ModBattleEvent.BattleInfo.GetDmg(dmgSaveEnum, dmgKey);
+            return BattleInfo.GetDmg(dmgSaveEnum, dmgKey);
+        }
+        #endregion
+
+        #region Funcs
+        public static UnitCtrlBase GetKiller(UnitCtrlBase cunit)
+        {
+            return KillList.FirstOrDefault(x => x.Item1.data.createUnitSoleID == cunit.data.createUnitSoleID)?.Item2;
         }
         #endregion
 
         [JsonIgnore]
         public static SceneBattle SceneBattle => SceneType.battle;
         [JsonIgnore]
-        public static UnitCtrlBase PlayerUnit => SceneType.battle.battleMap.playerUnitCtrl;
+        public static UnitCtrlPlayer PlayerUnit => SceneType.battle.battleData.playerUnit;
         [JsonIgnore]
         public static UnitCtrlBase AttackingUnit { get; private set; }
         [JsonIgnore]
@@ -221,13 +228,15 @@ namespace ModLib.Mod
         [JsonIgnore]
         public static bool IsWorldUnitHit => HitWorldUnit != null;
         [JsonIgnore]
-        public static List<UnitCtrlBase> DungeonUnits { get; private set; } = new List<UnitCtrlBase>();
+        public static List<UnitCtrlBase> DungeonUnits { get; } = new List<UnitCtrlBase>();
         [JsonIgnore]
         public static ModBattleEvent BattleInfo { get; private set; }
         [JsonIgnore]
         public static DateTime StartTime { get; private set; }
         [JsonIgnore]
         public static TimeSpan BattleTime => DateTime.Now - StartTime;
+        [JsonIgnore]
+        public static List<Tuple<UnitCtrlBase, UnitCtrlBase>> KillList { get; } = new List<Tuple<UnitCtrlBase, UnitCtrlBase>>();
 
         public ModBattleEvent() : base()
         {
@@ -269,6 +278,7 @@ namespace ModLib.Mod
 
             StartTime = DateTime.Now;
             BattleDmg.Clear();
+            KillList.Clear();
             foreach (var de in (DmgEnum[])System.Enum.GetValues(typeof(DmgEnum)))
             {
                 foreach (var type in (DmgTypeEnum[])System.Enum.GetValues(typeof(DmgTypeEnum)))
@@ -340,6 +350,12 @@ namespace ModLib.Mod
                     BattleDmg[GetDmgKey(DmgEnum.DmgRecv, basisKey)] += dmg;
                 }
             }
+        }
+
+        public override void OnBattleUnitDie(UnitDie e)
+        {
+            base.OnBattleUnitDie(e);
+            KillList.Add(Tuple.Create(e.unit, e.hitData.attackUnit));
         }
     }
 }
