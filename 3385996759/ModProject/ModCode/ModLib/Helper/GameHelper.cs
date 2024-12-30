@@ -2,17 +2,6 @@
 
 public static class GameHelper
 {
-    private static readonly string[] igids = new string[]
-    {
-        "O6Pg5LP94SG53AS8Q72Vu4F2hrjjKmdwwulmkdSdp/0="
-    };
-
-    public static bool error(string a)
-    {
-        a = a.ToLower();
-        return igids.Any(x => a.Contains(EncryptionHelper.Decrypt(x)));
-    }
-
     public static string GetDayCode()
     {
         return $"{(g.world?.run?.roundMonth / 12) + 1:0000}{(g.world?.run?.roundMonth % 12) + 1:00}{g.world?.run?.roundDay + 1:00}";
