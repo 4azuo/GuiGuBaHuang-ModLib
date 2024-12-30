@@ -1,4 +1,5 @@
 ﻿using System;
+using UnityEngine;
 using UnityEngine.Events;
 
 namespace ModLib.Object
@@ -15,6 +16,14 @@ namespace ModLib.Object
             UI = g.ui.OpenUI<T>(UIType.GetUIType(UITypeName));
             LastUICustom = this;
             UIBase = UI;
+
+            //navigation buttons
+            UnPaging = true;
+            {
+                PrevButton = AddButton(FirstCol, LastRow, () => PrevPage(), "≪").Format(Color.black, 13).Size(60, 30).Active(IsShowNavigationButtons);
+                NextButton = AddButton(LastCol, LastRow, () => NextPage(), "≫").Format(Color.black, 13).Size(60, 30).Active(IsShowNavigationButtons);
+            }
+            UnPaging = false;
 
             //test
             //for (var c = 0; c < Columns.Count; c++)

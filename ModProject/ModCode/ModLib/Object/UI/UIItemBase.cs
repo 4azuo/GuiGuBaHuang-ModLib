@@ -32,7 +32,7 @@ namespace ModLib.Object
 
         public abstract void Set(object input);
 
-        public abstract void Active(bool flg);
+        public abstract UIItemBase Active(bool flg);
 
         public abstract bool IsActive();
 
@@ -57,7 +57,8 @@ namespace ModLib.Object
         {
             UI = ui;
             Component = comp;
-            UI.AddPageItem(this);
+            if (!ui.UnPaging)
+                UI.AddPageItem(this);
         }
 
         public UIItemBase SetData(UIItemData data)
@@ -158,9 +159,10 @@ namespace ModLib.Object
                 UI.Items.Add(this);
             }
 
-            public override void Active(bool flg)
+            public override UIItemBase Active(bool flg)
             {
                 Item.gameObject.SetActive(flg);
+                return this;
             }
 
             public override bool IsActive()
@@ -189,9 +191,10 @@ namespace ModLib.Object
                 UI.Items.Add(this);
             }
 
-            public override void Active(bool flg)
+            public override UIItemBase Active(bool flg)
             {
                 Item.gameObject.SetActive(flg);
+                return this;
             }
 
             public override bool IsActive()
