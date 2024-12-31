@@ -11,7 +11,7 @@ namespace MOD_nE7UL2.Mod
     public class BattleEvent : ModEvent
     {
         public const int JOIN_RANGE = 6;
-        public const float NPC_JOIN_RATE = 0.3f;
+        public const float NPC_JOIN_RATE = 0.2f;
         public const int ENEMY_JOIN_DRAMA = 480110100;
         public const int FRIENDLY_JOIN_DRAMA = 480110200;
 
@@ -42,15 +42,14 @@ namespace MOD_nE7UL2.Mod
                     CommonTool.Random(0.00f, 100.00f).IsBetween(0.00f, NPC_JOIN_RATE))
                 {
                     _aroundUnits.Remove(enemyUnit);
-                    SceneType.battle.unit.CreateUnitHuman<UnitCtrlHumanNPC>(enemyUnit.data, UnitType.Monst);
+                    SceneType.battle.unit.CreateUnitHuman<UnitCtrlHumanNPC>(enemyUnit.data, UnitType.Alone);
                     
-
-                    var enemyUnitAllies = _aroundUnits.Where(x => enemyUnit.data.unitData.relationData.GetIntim(x) >= 350f);
-                    foreach (var enemyUnitAllyUnit in enemyUnitAllies)
-                    {
-                        _aroundUnits.Remove(enemyUnitAllyUnit);
-                        SceneType.battle.unit.CreateUnitHuman<UnitCtrlHumanNPC>(enemyUnitAllyUnit.data, UnitType.Monst);
-                    }
+                    //var enemyUnitAllies = _aroundUnits.Where(x => enemyUnit.data.unitData.relationData.GetIntim(x) >= 350f);
+                    //foreach (var enemyUnitAllyUnit in enemyUnitAllies)
+                    //{
+                    //    _aroundUnits.Remove(enemyUnitAllyUnit);
+                    //    SceneType.battle.unit.CreateUnitHuman<UnitCtrlHumanNPC>(enemyUnitAllyUnit.data, UnitType.Monst);
+                    //}
 
                     DramaTool.OpenDrama(ENEMY_JOIN_DRAMA, new DramaData() { unitLeft = enemyUnit, unitRight = g.world.playerUnit });
                 }

@@ -611,12 +611,17 @@ public static class UnitHelper
 
     public static Il2CppSystem.Collections.Generic.List<WorldUnitBase> GetUnitsAround(this WorldUnitBase wunit, int range = 16, bool isGetHide = false, bool isGetPlayer = true)
     {
-        return g.world.unit.GetUnitExact(new Vector2Int(wunit.data.unitData.pointX, wunit.data.unitData.pointY), range, isGetHide, isGetPlayer);
+        return GetUnitsAround(wunit.GetUnitPos(), range, isGetHide, isGetPlayer);
     }
 
     public static Il2CppSystem.Collections.Generic.List<WorldUnitBase> GetUnitsAround(int x, int y, int range = 16, bool isGetHide = false, bool isGetPlayer = true)
     {
-        return g.world.unit.GetUnitExact(new Vector2Int(x, y), range, isGetHide, isGetPlayer);
+        return GetUnitsAround(new Vector2Int(x, y), range, isGetHide, isGetPlayer);
+    }
+
+    public static Il2CppSystem.Collections.Generic.List<WorldUnitBase> GetUnitsAround(Vector2Int pos, int range = 16, bool isGetHide = false, bool isGetPlayer = true)
+    {
+        return g.world.unit.GetUnitExact(pos, range, isGetHide, isGetPlayer);
     }
 
     public static Il2CppSystem.Collections.Generic.List<UnitCtrlBase> FindNearCUnits(this UnitCtrlBase cunit, float radius)
