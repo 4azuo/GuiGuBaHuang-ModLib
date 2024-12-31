@@ -2,6 +2,7 @@
 using MOD_nE7UL2.Const;
 using ModLib.Mod;
 using ModLib.Object;
+using System;
 using System.Diagnostics;
 using UnityEngine;
 
@@ -15,6 +16,12 @@ namespace MOD_nE7UL2.Mod
             base.OnOpenUIEnd(e);
             if (e.uiType.uiName == UIType.Login.uiName)
             {
+                if (EncryptionHelper.GetByteCodeAsInt(ModConst.MODLIB_REQUIRED_VERSION) > EncryptionHelper.GetByteCodeAsInt(ModMaster.ModObj.Version))
+                {
+                    var uiWarning = g.ui.OpenUI<UITextInfo>(UIType.TextInfo);
+                    uiWarning.InitData("Warning", $"Taoist {ModConst.TAOIST_VERSION} is not supported in ModLib {ModMaster.ModObj.Version}!{Environment.NewLine}Please install ModLib {ModConst.MODLIB_REQUIRED_VERSION} or above.");
+                }
+
                 var ui = new UICover<UILogin>(e.ui);
                 {
                     var parentTransform = ui.UI.btnSet.transform.parent;

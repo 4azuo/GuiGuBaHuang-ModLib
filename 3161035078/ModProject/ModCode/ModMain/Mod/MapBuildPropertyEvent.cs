@@ -8,7 +8,6 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
-using static DataBuildTown;
 
 namespace MOD_nE7UL2.Mod
 {
@@ -93,14 +92,14 @@ namespace MOD_nE7UL2.Mod
             int tax = GetTax(wunit);
             var location = wunit.data.unitData.GetPoint();
             var town = g.world.build.GetBuild<MapBuildTown>(location);
-            if (town != null)
+            if (town != null && !TownMasters[town.buildData.id].Contains(wunit.GetUnitId()))
             {
                 Budget[town.buildData.id] += tax;
             }
 
             //school tax
             var school = g.world.build.GetBuild<MapBuildSchool>(location);
-            if (school != null)
+            if (school != null && school.schoolNameID != wunit.data.school.schoolNameID)
             {
                 school.buildData.money += tax;
             }
@@ -131,7 +130,7 @@ namespace MOD_nE7UL2.Mod
                     var wunit = g.world.unit.GetUnit(wunitId);
                     if (wunit != null && !wunit.isDie)
                     {
-                        var profit = Budget[town.buildData.id] / (wunit.GetLuck(TOWN_MASTER_LUCK_ID) == null ? 20 : 10);
+                        var profit = Budget[town.buildData.id] / (wunit.GetLuck(TOWN_MASTER_LUCK_ID) == null ? 36 : 12);
                         Budget[town.buildData.id] -= profit;
                         wunit.AddUnitMoney(profit.FixValue(0, int.MaxValue).Parse<int>());
                     }
