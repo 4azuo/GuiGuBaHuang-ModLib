@@ -22,6 +22,7 @@ namespace ModLib.Mod
         public static ModMaster ModObj { get; protected set; }
         public abstract string ModName { get; }
         public abstract string ModId { get; }
+        public abstract string Version { get; }
         public Gamevar Gamevars { get; protected set; }
 
         #region caller

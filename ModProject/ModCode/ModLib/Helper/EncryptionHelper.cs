@@ -1,5 +1,7 @@
 ﻿using System;
 using System.IO;
+using System.Linq;
+using System.Numerics;
 using System.Security.Cryptography;
 using System.Text;
 
@@ -31,6 +33,7 @@ public static class EncryptionHelper
         }
         return clearText;
     }
+
     public static string Decrypt(string cipherText)
     {
         cipherText = cipherText.Replace(" ", "+");
@@ -51,5 +54,20 @@ public static class EncryptionHelper
             }
         }
         return cipherText;
+    }
+
+    public static int GetSha256HashAsInt(this string input)
+    {
+        using (SHA256 sha256 = SHA256.Create())
+        {
+            byte[] hashBytes = sha256.ComputeHash(Encoding.UTF8.GetBytes(input));
+            int hash = BitConverter.ToInt32(hashBytes, 0);
+            return hash;
+        }
+    }
+
+    public static BigInteger GetByteCodeAsInt(this string input)
+    {
+        return BigInteger.Parse(string.Join(string.Empty, Encoding.ASCII.GetBytes(input).Select(x => x.ToString("000"))));
     }
 }
