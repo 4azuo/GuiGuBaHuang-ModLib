@@ -252,6 +252,6 @@ public static class UnitModifyHelper
         if (wunit == null)
             return 0;
         var x = EventHelper.GetEvent<QiCulEvent>(ModConst.QI_CUL_EVENT);
-        return Convert.ToInt32(x.Qi[wunit.GetUnitId()] / (10000 * wunit.GetGradeLvl()));
+        return Convert.ToInt32(x.Qi[wunit.GetUnitId()] / (4000 * wunit.GetGradeLvl()));
     }
 }

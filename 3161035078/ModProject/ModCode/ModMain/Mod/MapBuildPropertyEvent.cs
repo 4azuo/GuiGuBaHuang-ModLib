@@ -70,7 +70,7 @@ namespace MOD_nE7UL2.Mod
                     var a = g.ui.GetUI<UINPCInfo>(UIType.NPCInfo);
                     var b = g.ui.GetUI<UIPlayerInfo>(UIType.PlayerInfo);
                     var wunitId = (a.unit ?? b.unit).GetUnitId();
-                    var townId = TownMasters.FirstOrDefault(x => x.Value.Contains(wunitId)).Key;
+                    var townId = TownMasters.First(x => x.Value.Contains(wunitId)).Key;
                     var town = g.world.build.GetBuild<MapBuildTown>(townId);
                     ui.ptextTip.text = town.name;
                 }
@@ -175,43 +175,40 @@ namespace MOD_nE7UL2.Mod
         {
             base.OnBattleUnitDie(e);
 
-            //DebugHelper.WriteLine("1");
             if (e?.hitData?.attackUnit != null && e.hitData.attackUnit.IsWorldUnit())
             {
                 var killer = e.hitData.attackUnit.GetWorldUnit();
                 var killerId = killer.GetUnitId();
 
-                //DebugHelper.WriteLine("2");
                 var location = killer.data.unitData.GetPoint();
                 var town = g.world.build.GetBuild<MapBuildTown>(location);
                 if (town != null)
                 {
-                    //DebugHelper.WriteLine("3");
                     foreach (var councilWUnit in TownMasters[town.buildData.id].Select(x => g.world.unit.GetUnit(x)))
                     {
                         councilWUnit.data.unitData.relationData.AddHate(killerId, 50f);
                     }
                 }
 
-                //DebugHelper.WriteLine("4");
                 if (e?.unit != null && e.unit.IsWorldUnit())
                 {
                     var dieUnit = e.unit.GetWorldUnit();
                     var dieUnitId = dieUnit.GetUnitId();
-                    var dieUnitCouncil = TownMasters.FirstOrDefault(x => x.Value.Contains(dieUnitId));
-                    dieUnitCouncil.Value.Remove(dieUnitId);
-
-                    DebugHelper.WriteLine("5");
-                    foreach (var councilWUnit in dieUnitCouncil.Value.Select(x => g.world.unit.GetUnit(x)))
+                    if (TownMasters.Any(x => x.Value.Contains(dieUnitId)))
                     {
-                        councilWUnit.data.unitData.relationData.AddHate(killerId, 400f);
-                    }
+                        var dieUnitCouncil = TownMasters.First(x => x.Value.Contains(dieUnitId));
+                        dieUnitCouncil.Value.Remove(dieUnitId);
 
-                    DebugHelper.WriteLine("6");
-                    if (dieUnit.GetLuck(TOWN_MASTER_LUCK_ID) != null)
-                    {
-                        killer.AddLuck(TOWN_MASTER_LUCK_ID);
-                        dieUnitCouncil.Value.Add(killerId);
+                        foreach (var councilWUnit in dieUnitCouncil.Value.Select(x => g.world.unit.GetUnit(x)))
+                        {
+                            councilWUnit.data.unitData.relationData.AddHate(killerId, 400f);
+                        }
+
+                        if (dieUnit.GetLuck(TOWN_MASTER_LUCK_ID) != null)
+                        {
+                            killer.AddLuck(TOWN_MASTER_LUCK_ID);
+                            dieUnitCouncil.Value.Add(killerId);
+                        }
                     }
                 }
             }
