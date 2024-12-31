@@ -55,33 +55,6 @@ namespace MOD_nE7UL2.Mod
             return efx;
         }
 
-        [ErrorIgnore]
-        [EventCondition(IsInGame = HandleEnum.Ignore, IsInBattle = HandleEnum.True)]
-        public override void OnTimeUpdate()
-        {
-            base.OnTimeUpdate();
-
-            foreach (var unit in ModBattleEvent.DungeonUnits)
-            {
-                if (!unit.isDie)
-                {
-                    var humanData = unit.data.TryCast<UnitDataHuman>();
-                    if (humanData?.worldUnitData?.unit != null)
-                    {
-                        if (unit.data.mp <= 0 && !IsWarlordPhantom(humanData))
-                        {
-                            Effect3017.AddShieldValue(unit, MANASHIELD_EFFECT_EFX_ID, int.MinValue);
-                        }
-                        //if (unit.data.mp > 0)// && EffectTool.GetEffects(unit, MANASHIELD_EFFECT_EFX_ID.ToString()).Count > 0)
-                        //{
-                        //    //var recoverShield = (((humanData.basisFist.value + humanData.basisPalm.value + humanData.basisFinger.value) / 3.0f) / 1000.00f).Parse<int>();
-                        //    //Effect3017.AddShieldValue(unit, MANASHIELD_EFFECT_EFX_ID, 100);
-                        //}
-                    }
-                }
-            }
-        }
-
         private static int GetBloodEnergyLevel(WorldUnitBase wunit)
         {
             if (wunit.GetLuck(700094) != null)

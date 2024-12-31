@@ -11,7 +11,7 @@ namespace MOD_nE7UL2.Mod
     public class BattleEvent : ModEvent
     {
         public const int JOIN_RANGE = 6;
-        public const float NPC_JOIN_RATE = 100f;
+        public const float NPC_JOIN_RATE = 0.3f;
         public const int ENEMY_JOIN_DRAMA = 480110100;
         public const int FRIENDLY_JOIN_DRAMA = 480110200;
 
@@ -34,48 +34,34 @@ namespace MOD_nE7UL2.Mod
         public override void OnTimeUpdate1s()
         {
             base.OnTimeUpdate1s();
-            if (_aroundUnits != null)
+            if (g.world.battle.data.isRealBattle && _aroundUnits != null)
             {
                 //enemy unit join battle
                 var enemyUnit = _aroundUnits.FirstOrDefault(x => IsEnemyUnit(x));
                 if (enemyUnit != null &&
                     CommonTool.Random(0.00f, 100.00f).IsBetween(0.00f, NPC_JOIN_RATE))
                 {
-                    var targetType = new Il2CppSystem.Collections.Generic.List<UnitType>();
-                    targetType.Add(UnitType.Player);
-                    targetType.Add(UnitType.PlayerNPC);
-                    targetType.Add(UnitType.Monst);
-
                     _aroundUnits.Remove(enemyUnit);
-                    var t1 = SceneType.battle.unit.CreateUnitHuman<UnitCtrlHumanNPC>(enemyUnit.data, UnitType.Alone);
-                    t1.data.customEnemyUnitType.Clear();
-                    t1.data.customEnemyUnitType.Add(targetType);
+                    SceneType.battle.unit.CreateUnitHuman<UnitCtrlHumanNPC>(enemyUnit.data, UnitType.Monst);
+                    
 
                     var enemyUnitAllies = _aroundUnits.Where(x => enemyUnit.data.unitData.relationData.GetIntim(x) >= 350f);
                     foreach (var enemyUnitAllyUnit in enemyUnitAllies)
                     {
                         _aroundUnits.Remove(enemyUnitAllyUnit);
-                        var t2 = SceneType.battle.unit.CreateUnitHuman<UnitCtrlHumanNPC>(enemyUnitAllyUnit.data, UnitType.Alone);
-                        t2.data.customEnemyUnitType.Clear();
-                        t2.data.customEnemyUnitType.Add(targetType);
+                        SceneType.battle.unit.CreateUnitHuman<UnitCtrlHumanNPC>(enemyUnitAllyUnit.data, UnitType.Monst);
                     }
 
                     DramaTool.OpenDrama(ENEMY_JOIN_DRAMA, new DramaData() { unitLeft = enemyUnit, unitRight = g.world.playerUnit });
                 }
 
                 //friendly unit join battle
-                var friendlyUnit = _aroundUnits.FirstOrDefault(x => IsEnemyUnit(x));
+                var friendlyUnit = _aroundUnits.FirstOrDefault(x => IsFriendlyUnit(x));
                 if (friendlyUnit != null &&
                     CommonTool.Random(0.00f, 100.00f).IsBetween(0.00f, NPC_JOIN_RATE))
                 {
-                    var targetType = new Il2CppSystem.Collections.Generic.List<UnitType>();
-                    targetType.Add(UnitType.Alone);
-                    targetType.Add(UnitType.Monst);
-
                     _aroundUnits.Remove(friendlyUnit);
-                    var t = SceneType.battle.unit.CreateUnitHuman<UnitCtrlHumanNPC>(friendlyUnit.data, UnitType.PlayerNPC);
-                    t.data.customEnemyUnitType.Clear();
-                    t.data.customEnemyUnitType.Add(targetType);
+                    SceneType.battle.unit.CreateUnitHuman<UnitCtrlHumanNPC>(friendlyUnit.data, UnitType.PlayerNPC);
 
                     DramaTool.OpenDrama(FRIENDLY_JOIN_DRAMA, new DramaData() { unitLeft = friendlyUnit, unitRight = g.world.playerUnit });
                 }
