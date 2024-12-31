@@ -4,10 +4,17 @@
 
 - new game+
 
-- kill in town, will be wanted
-
 - ui scroll
 
 - skill
 
 - multiplayer?
+
+- hire people, create party
+	hire people UI
+	manage team UI
+
+- town war
+	search Town master & guardian UI
+	declare war
+	town manage UI

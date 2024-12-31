@@ -33,6 +33,8 @@ namespace MOD_nE7UL2.Mod
 
         private void OpenUIHirePeople()
         {
+            var uiConfirm = g.ui.OpenUI<UICheckPopup>(UIType.CheckPopup);
+            uiConfirm.InitData("Upcoming", $"Please wait for next version...", 1);
             //var uiTownBounty = g.ui.GetUI<UITownBounty>(UIType.TownBounty);
             //if (uiTownBounty.IsExists())
             //{
