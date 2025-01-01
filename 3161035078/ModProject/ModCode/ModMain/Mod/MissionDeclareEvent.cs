@@ -8,7 +8,6 @@ using System.Linq;
 using MOD_nE7UL2.Object;
 using System.Text;
 using ModLib.Object;
-using static SpecialBattle83;
 
 namespace MOD_nE7UL2.Mod
 {
@@ -197,7 +196,7 @@ Your commissions:
                 }
             }
 
-            var curMainTown = g.world.build.GetBuild<MapBuildTown>(g.world.playerUnit.data.unitData.GetPoint());
+            var curMainTown = g.world.build.GetBuild<MapBuildTown>(g.world.playerUnit.GetUnitPos());
             if (curMainTown != null && CommissionTasks.Any(x => x.Status != CommissionTask.CommissionTaskStatus.Progressing))
             {
                 var uiReward = g.ui.OpenUI<UIGetReward>(UIType.GetReward);

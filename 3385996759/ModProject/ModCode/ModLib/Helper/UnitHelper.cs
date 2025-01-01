@@ -1,5 +1,4 @@
-﻿using Harmony;
-using ModLib.Const;
+﻿using ModLib.Const;
 using ModLib.Enum;
 using ModLib.Mod;
 using System;
@@ -18,6 +17,11 @@ public static class UnitHelper
     public static Vector2Int GetUnitPos(this WorldUnitBase wunit)
     {
         return wunit.data.unitData.GetPoint();
+    }
+
+    public static int GetUnitPosAreaId(this WorldUnitBase wunit)
+    {
+        return wunit.data.unitData.pointGridData.areaBaseID;
     }
 
     public static List<DataProps.PropsData> GetEquippedItems(this WorldUnitBase wunit)

@@ -80,32 +80,35 @@ namespace MOD_nE7UL2.Mod
         {
             base.OnMonthlyForEachWUnit(wunit);
 
-            //use inn
-            if (!wunit.IsPlayer())
-            {
-                wunit.AddProperty<int>(UnitPropertyEnum.Hp, wunit.GetDynProperty(UnitDynPropertyEnum.HpMax).value / 5);
-                wunit.AddProperty<int>(UnitPropertyEnum.Mp, wunit.GetDynProperty(UnitDynPropertyEnum.MpMax).value / 5);
-                wunit.AddProperty<int>(UnitPropertyEnum.Sp, wunit.GetDynProperty(UnitDynPropertyEnum.SpMax).value / 5);
-            }
+            var location = wunit.GetUnitPos();
 
             //town tax
-            int tax = GetTax(wunit);
-            var location = wunit.data.unitData.GetPoint();
             var town = g.world.build.GetBuild<MapBuildTown>(location);
             if (town != null && !TownMasters[town.buildData.id].Contains(wunit.GetUnitId()))
             {
+                //pay town tax
+                int tax = GetTax(wunit, wunit.GetUnitPosAreaId());
+                wunit.AddUnitMoney(-tax);
                 Budget[town.buildData.id] += tax;
+
+                //use inn
+                if (!wunit.IsPlayer())
+                {
+                    wunit.AddProperty<int>(UnitPropertyEnum.Hp, wunit.GetDynProperty(UnitDynPropertyEnum.HpMax).value / 5);
+                    wunit.AddProperty<int>(UnitPropertyEnum.Mp, wunit.GetDynProperty(UnitDynPropertyEnum.MpMax).value / 5);
+                    wunit.AddProperty<int>(UnitPropertyEnum.Sp, wunit.GetDynProperty(UnitDynPropertyEnum.SpMax).value / 5);
+                }
             }
 
             //school tax
             var school = g.world.build.GetBuild<MapBuildSchool>(location);
             if (school != null && school.schoolNameID != wunit.data.school.schoolNameID)
             {
+                //pay school tax
+                int tax = GetTax(wunit, wunit.GetUnitPosAreaId(), school.schoolData.allEffects.Count);
+                wunit.AddUnitMoney(-tax);
                 school.buildData.money += tax;
             }
-
-            //
-            wunit.AddUnitMoney(-tax);
         }
 
         public override void OnYearly()
@@ -179,7 +182,7 @@ namespace MOD_nE7UL2.Mod
                 var killer = e.hitData.attackUnit.GetWorldUnit();
                 var killerId = killer.GetUnitId();
 
-                var location = killer.data.unitData.GetPoint();
+                var location = killer.GetUnitPos();
                 var town = g.world.build.GetBuild<MapBuildTown>(location);
                 if (town != null)
                 {
@@ -213,10 +216,9 @@ namespace MOD_nE7UL2.Mod
             }
         }
 
-        public static int GetTax(WorldUnitBase wunit)
+        public static int GetTax(WorldUnitBase wunit, int areaId, float ratio = 1.0f)
         {
-            var location = wunit.data.unitData.GetPoint();
-            var areaId = wunit.data.unitData.pointGridData.areaBaseID;
+            var location = wunit.GetUnitPos();
             var smConfigs = EventHelper.GetEvent<SMLocalConfigsEvent>(ModConst.SM_LOCAL_CONFIGS_EVENT);
             var tax = smConfigs.Calculate(Convert.ToInt32(InflationaryEvent.CalculateInflationary((
                         Math.Pow(2, areaId) * FIXING_RATE *
