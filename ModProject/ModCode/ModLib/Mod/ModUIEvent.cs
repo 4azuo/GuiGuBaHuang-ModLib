@@ -6,13 +6,6 @@ namespace ModLib.Mod
     [Cache("$UI$", OrderIndex = 10, CacheType = CacheAttribute.CType.Global, WorkOn = CacheAttribute.WType.All)]
     public class ModUIEvent : ModEvent
     {
-
-        public override void OnOpenUIEnd(OpenUIEnd e)
-        {
-            base.OnOpenUIEnd(e);
-            ClearUnuseUIs();
-        }
-
         public override void OnCloseUIEnd(CloseUIEnd e)
         {
             base.OnCloseUIEnd(e);
