@@ -10,7 +10,6 @@ using System.Collections.Generic;
 using ModLib.Enum;
 using MOD_nE7UL2.Enum;
 using ModLib.Object;
-using static SpecialBattle83;
 
 namespace MOD_nE7UL2.Mod
 {
@@ -81,7 +80,7 @@ namespace MOD_nE7UL2.Mod
                 {
                     ui.AddButton(ui.LastCol - 8, ui.FirstRow + 1, null, "Tax: {0} Spirit Stones").Size(300, 60).SetWork(new UIItemWork
                     {
-                        Formatter = (x) => new string[] { MapBuildPropertyEvent.GetTax(g.world.playerUnit).ToString() },
+                        Formatter = (x) => new string[] { MapBuildPropertyEvent.GetTax(g.world.playerUnit, g.world.playerUnit.GetUnitPosAreaId()).ToString() },
                         UpdateAct = (x) => x.Pos(ui.LastCol - 8, ui.FirstRow + 1),
                     }).Enable = false;
                 }
@@ -94,7 +93,7 @@ namespace MOD_nE7UL2.Mod
                 {
                     ui.AddButton(ui.LastCol - 8, ui.FirstRow + 1, null, "Tax: {0} Spirit Stones").Size(300, 60).SetWork(new UIItemWork
                     {
-                        Formatter = (x) => new string[] { MapBuildPropertyEvent.GetTax(g.world.playerUnit).ToString() },
+                        Formatter = (x) => new string[] { MapBuildPropertyEvent.GetTax(g.world.playerUnit, g.world.playerUnit.GetUnitPosAreaId(), ui.UI.school.schoolData.allEffects.Count).ToString() },
                         UpdateAct = (x) => x.Pos(ui.LastCol - 8, ui.FirstRow + 1),
                     }).Enable = false;
                 }

@@ -38,9 +38,9 @@ namespace MOD_nE7UL2.Mod
         public override void OnMonthlyForEachWUnit(WorldUnitBase wunit)
         {
             base.OnMonthlyForEachWUnit(wunit);
-            var location = wunit.data.unitData.GetPoint();
+            var location = wunit.GetUnitPos();
             var town = g.world.build.GetBuild<MapBuildTown>(location);
-            if (!wunit.IsPlayer() && (town?.buildTownData?.isMainTown).Is(false) == 1 && wunit.GetUnitMoney() > MapBuildPropertyEvent.GetTax(wunit) * 10)
+            if (!wunit.IsPlayer() && town.IsSmallTown() && wunit.GetUnitMoney() > MapBuildPropertyEvent.GetTax(wunit, wunit.GetUnitPosAreaId()) * 10)
             {
                 foreach (var item in GetRefinableItems(wunit))
                 {

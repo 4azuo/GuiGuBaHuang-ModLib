@@ -66,7 +66,7 @@ namespace MOD_nE7UL2.Mod
             if (e.uiType.uiName == UIType.PropSell.uiName)
             {
                 var uiPropSell = g.ui.GetUI<UIPropSell>(UIType.PropSell);
-                var curMainTown = g.world.build.GetBuild(g.world.playerUnit.data.unitData.GetPoint());
+                var curMainTown = g.world.build.GetBuild(g.world.playerUnit.GetUnitPos());
 
                 //add component
                 var merchantIncRate = GetMerchantIncRate();
@@ -93,7 +93,7 @@ namespace MOD_nE7UL2.Mod
             if (g.ui.HasUI(UIType.PropSell))
             {
                 var uiPropSell = g.ui.GetUI<UIPropSell>(UIType.PropSell);
-                var curMainTown = g.world.build.GetBuild(g.world.playerUnit.data.unitData.GetPoint());
+                var curMainTown = g.world.build.GetBuild(g.world.playerUnit.GetUnitPos());
 
                 var budget = MapBuildPropertyEvent.GetBuildProperty(curMainTown);
                 var totalPrice = GetTotalPrice(uiPropSell);
@@ -115,7 +115,7 @@ namespace MOD_nE7UL2.Mod
             if (g.ui.HasUI(UIType.PropSell))
             {
                 var uiPropSell = g.ui.GetUI<UIPropSell>(UIType.PropSell);
-                var curMainTown = g.world.build.GetBuild(g.world.playerUnit.data.unitData.GetPoint());
+                var curMainTown = g.world.build.GetBuild(g.world.playerUnit.GetUnitPos());
 
                 var totalPrice = GetTotalPrice(uiPropSell);
                 var cashback = (
