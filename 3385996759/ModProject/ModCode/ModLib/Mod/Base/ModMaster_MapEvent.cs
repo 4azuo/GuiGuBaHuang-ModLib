@@ -7,42 +7,42 @@ namespace ModLib.Mod
         #region ModLib - Handlers
         public virtual void _OnPlayerOpenTreeVault(ETypeData e)
         {
-            CallEvents<ETypeData>("OnPlayerOpenTreeVault", e, true, false);
+            CallEvents<ETypeData>("OnPlayerOpenTreeVault", e);
         }
 
         public virtual void _OnPlayerEquipCloth(ETypeData e)
         {
-            CallEvents<ETypeData>("OnPlayerEquipCloth", e, true, false);
+            CallEvents<ETypeData>("OnPlayerEquipCloth", e);
         }
 
         public virtual void _OnPlayerInMonstArea(ETypeData e)
         {
-            CallEvents<ETypeData>("OnPlayerInMonstArea", e, true, false);
+            CallEvents<ETypeData>("OnPlayerInMonstArea", e);
         }
 
         public virtual void _OnPlayerRoleEscapeInMap(ETypeData e)
         {
-            CallEvents<ETypeData>("OnPlayerRoleEscapeInMap", e, true, false);
+            CallEvents<ETypeData>("OnPlayerRoleEscapeInMap", e);
         }
 
         public virtual void _OnPlayerRoleUpGradeBig(ETypeData e)
         {
-            CallEvents<ETypeData>("OnPlayerRoleUpGradeBig", e, true, false);
+            CallEvents<ETypeData>("OnPlayerRoleUpGradeBig", e);
         }
 
         public virtual void _OnUpGradeAndCloseFateFeatureUI(ETypeData e)
         {
-            CallEvents<ETypeData>("OnUpGradeAndCloseFateFeatureUI", e, true, false);
+            CallEvents<ETypeData>("OnUpGradeAndCloseFateFeatureUI", e);
         }
 
         public virtual void _OnUseHobbyProps(ETypeData e)
         {
-            CallEvents<ETypeData>("OnUseHobbyProps", e, true, false);
+            CallEvents<ETypeData>("OnUseHobbyProps", e);
         }
 
         //public virtual void _OnFortuitousTrigger(ETypeData e)
         //{
-        //    CallEvents<ETypeData>("OnFortuitousTrigger", e, true, false);
+        //    CallEvents<ETypeData>("OnFortuitousTrigger", e);
         //}
         #endregion
 

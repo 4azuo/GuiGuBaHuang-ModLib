@@ -17,9 +17,10 @@ public static class EventHelper
 
     public static void RunMinorEvents(string methodName, object e)
     {
+        if (GameHelper.IsWorldRunning())
+            return;
         var isInGame = GameHelper.IsInGame();
         var isInBattle = GameHelper.IsInBattlle();
-        var isWorldRunning = GameHelper.IsWorldRunning();
         foreach (var ev in GetEvents(methodName))
         {
             RunningEvent = ev;
@@ -37,13 +38,7 @@ public static class EventHelper
                         continue;
                     if (condAttr.IsInBattle == HandleEnum.False && isInBattle)
                         continue;
-                    if (condAttr.IsWorldRunning == HandleEnum.True && !isWorldRunning)
-                        continue;
-                    if (condAttr.IsWorldRunning == HandleEnum.False && isWorldRunning)
-                        continue;
                 }
-                //var sw = new Stopwatch();
-                //sw.Start();
                 if (method.GetParameters().Length == 0)
                 {
                     method.Invoke(ev, null);
@@ -52,8 +47,6 @@ public static class EventHelper
                 {
                     method.Invoke(ev, new object[] { e });
                 }
-                //sw.Stop();
-                //DebugHelper.WriteLine($"Benchmark: {method.DeclaringType.FullName}|{method.Name}: {sw.Elapsed}");
             }
             catch (Exception ex)
             {
