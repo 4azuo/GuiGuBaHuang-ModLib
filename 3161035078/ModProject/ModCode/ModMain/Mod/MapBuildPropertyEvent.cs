@@ -42,17 +42,20 @@ namespace MOD_nE7UL2.Mod
                     var orgPoint = town.GetOrigiPoint();
                     var aroundWUnits = UnitHelper.GetUnitsAround(orgPoint.x, orgPoint.y, 4, false, false).ToArray()
                         .Where(x => x.GetLuck(TOWN_MASTER_LUCK_ID) == null && x.GetLuck(TOWN_GUARDIAN_LUCK_ID) == null);
-                    var master = aroundWUnits.GetStrongestWUnit();
-                    var masterId = master.GetUnitId();
-                    var guardians = aroundWUnits.Where(x => x != master).Take(MAX_GUARDIANS);
-                    var guardianIds = guardians.Select(x => x.GetUnitId());
-                    TownMasters[town.buildData.id].Add(masterId);
-                    TownMasters[town.buildData.id].AddRange(guardianIds);
-
-                    master.AddLuck(TOWN_MASTER_LUCK_ID);
-                    foreach (var wunit in guardians)
+                    if (aroundWUnits.Count() > 0)
                     {
-                        wunit.AddLuck(TOWN_GUARDIAN_LUCK_ID);
+                        var master = aroundWUnits.GetStrongestWUnit();
+                        var masterId = master.GetUnitId();
+                        var guardians = aroundWUnits.Where(x => x != master).Take(MAX_GUARDIANS);
+                        var guardianIds = guardians.Select(x => x.GetUnitId());
+                        TownMasters[town.buildData.id].Add(masterId);
+                        TownMasters[town.buildData.id].AddRange(guardianIds);
+
+                        master.AddLuck(TOWN_MASTER_LUCK_ID);
+                        foreach (var wunit in guardians)
+                        {
+                            wunit.AddLuck(TOWN_GUARDIAN_LUCK_ID);
+                        }
                     }
                 }
             }
@@ -99,10 +102,9 @@ namespace MOD_nE7UL2.Mod
                     wunit.AddProperty<int>(UnitPropertyEnum.Sp, wunit.GetDynProperty(UnitDynPropertyEnum.SpMax).value / 5);
                 }
             }
-
             //school tax
             var school = g.world.build.GetBuild<MapBuildSchool>(location);
-            if (school != null && school.schoolNameID != wunit.data.school.schoolNameID)
+            if (school != null && school.schoolNameID != wunit.data.school?.schoolNameID)
             {
                 //pay school tax
                 int tax = GetTax(wunit, wunit.GetUnitPosAreaId(), school.schoolData.allEffects.Count);
@@ -218,16 +220,12 @@ namespace MOD_nE7UL2.Mod
 
         public static int GetTax(WorldUnitBase wunit, int areaId, float ratio = 1.0f)
         {
-            var location = wunit.GetUnitPos();
             var smConfigs = EventHelper.GetEvent<SMLocalConfigsEvent>(ModConst.SM_LOCAL_CONFIGS_EVENT);
             var tax = smConfigs.Calculate(Convert.ToInt32(InflationaryEvent.CalculateInflationary((
                         Math.Pow(2, areaId) * FIXING_RATE *
                         (1.00f + UnitTypeLuckEnum.Merchant.CustomEffects[ModConst.UTYPE_LUCK_EFX_SELL_VALUE].Value0.Parse<float>() + MerchantLuckEnum.Merchant.GetCurLevel(wunit) * MerchantLuckEnum.Merchant.IncSellValueEachLvl)
                     ).Parse<int>())), smConfigs.Configs.AddTaxRate).Parse<int>();
-            var school = g.world.build.GetBuild<MapBuildSchool>(location);
-            if (school != null)
-                tax *= school.schoolData.allEffects.Count;
-            return tax;
+            return (tax * ratio).Parse<int>();
         }
 
         public static long GetBuildProperty(MapBuildBase build)
@@ -259,12 +257,14 @@ namespace MOD_nE7UL2.Mod
                 if (!x.Budget.ContainsKey(town.buildData.id))
                     x.Budget.Add(town.buildData.id, 0);
                 x.Budget[town.buildData.id] += add;
+                return;
             }
 
             var school = build.TryCast<MapBuildSchool>();
             if (school != null)
             {
                 school.buildData.money += add;
+                return;
             }
         }
     }

@@ -2,7 +2,6 @@
 using MOD_nE7UL2.Enum;
 using ModLib.Enum;
 using ModLib.Mod;
-using Newtonsoft.Json;
 using System;
 using static MOD_nE7UL2.Object.GameStts;
 
@@ -16,9 +15,6 @@ namespace MOD_nE7UL2.Mod
 
         public static _BattleManashieldConfigs ManashieldConfigs => ModMain.ModObj.GameSettings.BattleManashieldConfigs;
 
-        [JsonIgnore]
-        public static EffectBase PlayerShieldEfx { get; private set; }
-
         public override void OnBattleUnitInto(UnitCtrlBase e)
         {
             base.OnBattleUnitInto(e);
@@ -28,9 +24,7 @@ namespace MOD_nE7UL2.Mod
                 var humanData = e?.data?.TryCast<UnitDataHuman>();
                 var shield = GetManashieldBase(humanData.worldUnitData.unit) + GetManashieldBasePlus(humanData.worldUnitData.unit);
                 var maxShield = humanData.maxHP.value;
-                var efx = ShieldUp(humanData.unit, shield, maxShield);
-                if (humanData.worldUnitData.unit.IsPlayer())
-                    PlayerShieldEfx = efx;
+                ShieldUp(humanData.unit, shield, maxShield);
             }
         }
 
