@@ -13,67 +13,67 @@ namespace ModLib.Mod
         #region ModLib - Handlers
         public virtual void _OnBattleUnitInit(ETypeData e)
         {
-            CallEvents<UnitInit>("OnBattleUnitInit", e, true, false);
+            CallEvents<UnitInit>("OnBattleUnitInit", e);
         }
 
         public virtual void _OnBattleUnitHit(ETypeData e)
         {
-            CallEvents<UnitHit>("OnBattleUnitHit", e, true, false);
+            CallEvents<UnitHit>("OnBattleUnitHit", e);
         }
 
         public virtual void _OnBattleUnitHitDynIntHandler(ETypeData e)
         {
-            CallEvents<UnitHitDynIntHandler>("OnBattleUnitHitDynIntHandler", e, true, false);
+            CallEvents<UnitHitDynIntHandler>("OnBattleUnitHitDynIntHandler", e);
         }
 
         public virtual void _OnBattleUnitShieldHitDynIntHandler(ETypeData e)
         {
-            CallEvents<UnitShieldHitDynIntHandler>("OnBattleUnitShieldHitDynIntHandler", e, true, false);
+            CallEvents<UnitShieldHitDynIntHandler>("OnBattleUnitShieldHitDynIntHandler", e);
         }
 
         public virtual void _OnBattleUnitUseProp(ETypeData e)
         {
-            CallEvents<UnitUseProp>("OnBattleUnitUseProp", e, true, false);
+            CallEvents<UnitUseProp>("OnBattleUnitUseProp", e);
         }
 
         public virtual void _OnBattleUnitUseSkill(ETypeData e)
         {
-            CallEvents<UnitUseSkill>("OnBattleUnitUseSkill", e, true, false);
+            CallEvents<UnitUseSkill>("OnBattleUnitUseSkill", e);
         }
 
         public virtual void _OnBattleUnitUseStep(ETypeData e)
         {
-            CallEvents<UnitUseStep>("OnBattleUnitUseStep", e, true, false);
+            CallEvents<UnitUseStep>("OnBattleUnitUseStep", e);
         }
 
         public virtual void _OnBattleUnitDie(ETypeData e)
         {
-            CallEvents<UnitDie>("OnBattleUnitDie", e, true, false);
+            CallEvents<UnitDie>("OnBattleUnitDie", e);
         }
 
         public virtual void _OnBattleUnitDieEnd(ETypeData e)
         {
-            CallEvents<ETypeData>("OnBattleUnitDieEnd", e, true, false);
+            CallEvents<ETypeData>("OnBattleUnitDieEnd", e);
         }
 
         public virtual void _OnBattleUnitAddEffectStart(ETypeData e)
         {
-            CallEvents<UnitAddEffectStart>("OnBattleUnitAddEffectStart", e, true, false);
+            CallEvents<UnitAddEffectStart>("OnBattleUnitAddEffectStart", e);
         }
 
         public virtual void _OnBattleUnitAddEffect(ETypeData e)
         {
-            CallEvents<UnitAddEffect>("OnBattleUnitAddEffect", e, true, false);
+            CallEvents<UnitAddEffect>("OnBattleUnitAddEffect", e);
         }
 
         public virtual void _OnBattleUnitAddHP(ETypeData e)
         {
-            CallEvents<UnitAddHP>("OnBattleUnitAddHP", e, true, false);
+            CallEvents<UnitAddHP>("OnBattleUnitAddHP", e);
         }
 
         public virtual void _OnBattleUnitUpdateProperty(ETypeData e)
         {
-            CallEvents<UnitUpdateProperty>("OnBattleUnitUpdateProperty", e, true, false);
+            CallEvents<UnitUpdateProperty>("OnBattleUnitUpdateProperty", e);
         }
 
         public virtual void _OnBattleSetUnitType(ETypeData e)
@@ -82,46 +82,46 @@ namespace ModLib.Mod
             if (x != null && !battleCheckList.Contains(x.unit.data.createUnitSoleID))
             {
                 battleCheckList.Add(x.unit.data.createUnitSoleID);
-                CallEvents<UnitCtrlBase>("OnBattleUnitInto", x.unit, true, false);
+                CallEvents<UnitCtrlBase>("OnBattleUnitInto", x.unit);
             }
-            CallEvents<SetUnitType>("OnBattleSetUnitType", e, true, false);
+            CallEvents<SetUnitType>("OnBattleSetUnitType", e);
         }
 
         public virtual void _OnBattleStart(ETypeData e)
         {
             isBattleEnd = false;
-            CallEvents<ETypeData>("OnBattleStart", e, true, false);
+            CallEvents<ETypeData>("OnBattleStart", e);
         }
 
         public virtual void _OnBattleEnd(ETypeData e)
         {
             if (!isBattleEnd)
             {
-                CallEvents<BattleEnd>("OnBattleEndOnce", e, true, false);
+                CallEvents<BattleEnd>("OnBattleEndOnce", e);
                 isBattleEnd = true;
             }
-            CallEvents<BattleEnd>("OnBattleEnd", e, true, false);
+            CallEvents<BattleEnd>("OnBattleEnd", e);
             battleCheckList.Clear();
         }
 
         public virtual void _OnBattleEndFront(ETypeData e)
         {
-            CallEvents<ETypeData>("OnBattleEndFront", e, true, false);
+            CallEvents<ETypeData>("OnBattleEndFront", e);
         }
 
         public virtual void _OnBattleEndHandler(ETypeData e)
         {
-            CallEvents<BattleEndHandler>("OnBattleEndHandler", e, true, false);
+            CallEvents<BattleEndHandler>("OnBattleEndHandler", e);
         }
 
         public virtual void _OnBattleEscapeFailed(ETypeData e)
         {
-            CallEvents<ETypeData>("OnBattleEscapeFailed", e, true, false);
+            CallEvents<ETypeData>("OnBattleEscapeFailed", e);
         }
 
         public virtual void _OnBattleExit(ETypeData e)
         {
-            CallEvents<ETypeData>("OnBattleExit", e, true, false);
+            CallEvents<ETypeData>("OnBattleExit", e);
         }
         #endregion
 
