@@ -9,47 +9,47 @@ namespace ModLib.Mod
         #region ModLib - Handlers
         //public virtual void _OnTownAuctionStart(ETypeData e)
         //{
-        //    CallEvents("OnTownAuctionStart", true, false);
+        //    CallEvents("OnTownAuctionStart");
         //}
 
         public virtual void _OnOpenUIStart(ETypeData e)
         {
-            CallEvents<OpenUIStart>("OnOpenUIStart", e, false, false);
+            CallEvents<OpenUIStart>("OnOpenUIStart", e);
         }
 
         public virtual void _OnOpenUIEnd(ETypeData e)
         {
-            CallEvents<OpenUIEnd>("OnOpenUIEnd", e, false, false);
+            CallEvents<OpenUIEnd>("OnOpenUIEnd", e);
         }
 
         public virtual void _OnCloseUIStart(ETypeData e)
         {
-            CallEvents<CloseUIStart>("OnCloseUIStart", e, false, false);
+            CallEvents<CloseUIStart>("OnCloseUIStart", e);
         }
 
         public virtual void _OnCloseUIEnd(ETypeData e)
         {
-            CallEvents<CloseUIEnd>("OnCloseUIEnd", e, false, false);
+            CallEvents<CloseUIEnd>("OnCloseUIEnd", e);
         }
 
         public virtual void _OnInitWorld(ETypeData e)
         {
-            CallEvents<ETypeData>("OnInitWorld", e, true, false);
+            CallEvents<ETypeData>("OnInitWorld", e);
         }
 
         public virtual void _OnLoadSceneStart(ETypeData e)
         {
-            CallEvents<LoadSceneStart>("OnLoadSceneStart", e, true, false);
+            CallEvents<LoadSceneStart>("OnLoadSceneStart", e);
         }
 
         public virtual void _OnLoadScene(ETypeData e)
         {
-            CallEvents<LoadScene>("OnLoadScene", e, true, false);
+            CallEvents<LoadScene>("OnLoadScene", e);
         }
 
         public virtual void _OnIntoWorld(ETypeData e)
         {
-            CallEvents<ETypeData>("OnIntoWorld", e, true, false);
+            CallEvents<ETypeData>("OnIntoWorld", e);
         }
 
         public virtual void _OnSave(ETypeData e)
@@ -63,79 +63,79 @@ namespace ModLib.Mod
                     //first month
                     if (Gamevars.LoadFirstMonth)
                     {
-                        CallEvents("OnFirstMonth", true, false);
+                        CallEvents("OnFirstMonth");
                         Gamevars.LoadFirstMonth = false;
                     }
                     //monthly
-                    CallEvents("OnMonthly", true, false);
-                    CallEvents("OnMonthlyForEachWUnit", true, false);
+                    CallEvents("OnMonthly");
+                    CallEvents("OnMonthlyForEachWUnit");
                     //yearly
                     if (g.world.run.roundMonth % 12 == 0)
                     {
-                        CallEvents("OnYearly", true, false);
+                        CallEvents("OnYearly");
                     }
                 }
 
                 //save
-                CallEvents<ETypeData>("OnSave", e, true, false);
+                CallEvents<ETypeData>("OnSave", e);
             }
         }
 
         public virtual void _OnOpenDrama(ETypeData e)
         {
-            CallEvents<OpenDrama>("OnOpenDrama", e, true, false);
+            CallEvents<OpenDrama>("OnOpenDrama", e);
         }
 
         public virtual void _OnOpenNPCInfoUI(ETypeData e)
         {
-            CallEvents<OpenNPCInfoUI>("OnOpenNPCInfoUI", e, true, false);
+            CallEvents<OpenNPCInfoUI>("OnOpenNPCInfoUI", e);
         }
 
         public virtual void _OnTaskAdd(ETypeData e)
         {
-            CallEvents<TaskAdd>("OnTaskAdd", e, true, false);
+            CallEvents<TaskAdd>("OnTaskAdd", e);
         }
 
         public virtual void _OnTaskComplete(ETypeData e)
         {
-            CallEvents<TaskComplete>("OnTaskComplete", e, true, false);
+            CallEvents<TaskComplete>("OnTaskComplete", e);
         }
 
         public virtual void _OnTaskFail(ETypeData e)
         {
-            CallEvents<TaskFail>("OnTaskFail", e, true, false);
+            CallEvents<TaskFail>("OnTaskFail", e);
         }
 
         public virtual void _OnTaskGive(ETypeData e)
         {
-            CallEvents<TaskGive>("OnTaskGive", e, true, false);
+            CallEvents<TaskGive>("OnTaskGive", e);
         }
 
         public virtual void _OnTaskOverl(ETypeData e)
         {
-            CallEvents<TaskOverl>("OnTaskOverl", e, true, false);
+            CallEvents<TaskOverl>("OnTaskOverl", e);
         }
 
         public virtual void _OnUnitSetGrade(ETypeData e)
         {
-            CallEvents<ETypeData>("OnUnitSetGrade", e, true, false);
+            CallEvents<ETypeData>("OnUnitSetGrade", e);
         }
 
         public virtual void _OnUnitSetHeartState(ETypeData e)
         {
-            CallEvents<ETypeData>("OnUnitSetHeartState", e, true, false);
+            CallEvents<ETypeData>("OnUnitSetHeartState", e);
         }
 
         //public virtual void _OnWorldRunStart()
         //{
         //    //start run
-        //    CallEvents("OnWorldRunStart", true, false);
+        //    CallEvents("OnWorldRunStart");
         //}
 
         //public virtual void _OnWorldRunEnd()
         //{
         //    //end run
-        //    CallEvents("OnWorldRunEnd", true, false);
+        //    CallEvents("OnWorldRunEnd");
         //}
         #endregion
 

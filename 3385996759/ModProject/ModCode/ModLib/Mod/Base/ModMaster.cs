@@ -1,15 +1,12 @@
 ﻿using ModLib.Object;
 using System;
 using System.Diagnostics;
-using System.IO;
 using System.Linq;
 using System.Reflection;
 using System.Runtime.CompilerServices;
 using UnhollowerBaseLib;
 using UnhollowerRuntimeLib;
 using UnityEngine;
-using UnityEngine.Events;
-using UnityEngine.UI;
 
 namespace ModLib.Mod
 {
@@ -221,10 +218,10 @@ namespace ModLib.Mod
 
                 //register event
                 #region Timer
-                timerUpdate = RegTimer(callTimeUpdate, 0.101f);
-                timerUpdate200ms = RegTimer(callTimeUpdate200ms, 0.201f);
-                timerUpdate500ms = RegTimer(callTimeUpdate500ms, 0.501f);
-                timerUpdate1s = RegTimer(callTimeUpdate1s, 1.001f);
+                timerUpdate = RegTimer(callTimeUpdate, 0.111f);
+                timerUpdate200ms = RegTimer(callTimeUpdate200ms, 0.211f);
+                timerUpdate500ms = RegTimer(callTimeUpdate500ms, 0.511f);
+                timerUpdate1s = RegTimer(callTimeUpdate1s, 1.011f);
                 #endregion
 
                 #region EMapType
@@ -444,29 +441,16 @@ namespace ModLib.Mod
             }
         }
 
-        private void CallEvents(string methodName, bool isInGame = false, bool isInBattle = false, Func<bool> predicate = null, Action callback = null)
+        private void CallEvents(string methodName)
         {
-            CallEvents<Il2CppObjectBase>(methodName, null, isInGame, isInBattle, predicate, callback);
+            CallEvents<Il2CppObjectBase>(methodName, null);
         }
 
-        private void CallEvents<T>(string methodName, Il2CppObjectBase e, bool isInGame = false, bool isInBattle = false, Func<bool> predicate = null, Action callback = null) where T : Il2CppObjectBase
+        private void CallEvents<T>(string methodName, Il2CppObjectBase e) where T : Il2CppObjectBase
         {
             try
             {
-                if (isInGame && !GameHelper.IsInGame())
-                    return;
-                if (isInBattle && !GameHelper.IsInBattlle())
-                    return;
-                if (!(predicate?.Invoke() ?? true))
-                    return;
-                
                 var method = this.GetType().GetMethod(methodName, BindingFlags.Public | BindingFlags.Instance | BindingFlags.FlattenHierarchy);
-                if (method == null)
-                {
-                    throw new NullReferenceException();
-                }
-                //var sw = new Stopwatch();
-                //sw.Start();
                 if (method.GetParameters().Length == 0)
                 {
                     method.Invoke(this, null);
@@ -475,14 +459,10 @@ namespace ModLib.Mod
                 {
                     method.Invoke(this, new object[] { e?.TryCast<T>()/* ?? e*/ });
                 }
-                //sw.Stop();
-                //DebugHelper.WriteLine($"Benchmark: {method.DeclaringType.FullName}|{method.Name}: {sw.Elapsed}");
-
-                callback?.Invoke();
             }
             catch (Exception ex)
             {
-                DebugHelper.WriteLine($"CallEvents<{typeof(T).Name}>({methodName}, -, {isInGame}, {isInBattle})");
+                DebugHelper.WriteLine($"CallEvents<{typeof(T).Name}>({methodName})");
                 DebugHelper.WriteLine(ex);
             }
         }
