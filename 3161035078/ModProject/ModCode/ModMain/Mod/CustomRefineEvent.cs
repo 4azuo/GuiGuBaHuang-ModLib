@@ -146,6 +146,7 @@ namespace MOD_nE7UL2.Mod
 
                 var uiConfirm = g.ui.OpenUI<UICheckPopup>(UIType.CheckPopup);
                 uiConfirm.InitData("Refine", $"Success! Level {oldLvl}→{GetRefineLvl(refineItem)} (+{exp}Exp)", 1);
+                _values.Remove(g.world.playerUnit.GetUnitId());
             }));
             ui.UpdateUI();
         }
@@ -247,7 +248,7 @@ namespace MOD_nE7UL2.Mod
             if (wunit == null || adjType == null)
                 return 0d;
             var unitId = wunit.GetUnitId();
-            if (!_values.ContainsKey(unitId) || wunit.IsPlayer())
+            if (!_values.ContainsKey(unitId))
             {
                 var rs = 0d;
                 foreach (var props in GetRefinableItems(wunit))

@@ -26,9 +26,9 @@
 	"RealMarketEvent2": 3050,
 
 	//affect attributes/properties
-	"UnitModifyEvent": 4000,
+	"CustomRefineEvent": 4000,
 	"ExpertEvent": 4010,
-	"CustomRefineEvent": 4020,
+	"UnitModifyEvent": 4020,
 
 	//battle
 	"BattleEvent": 5000,
