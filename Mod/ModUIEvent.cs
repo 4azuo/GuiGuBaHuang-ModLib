@@ -21,7 +21,7 @@ namespace ModLib.Mod
             }
         }
 
-        [EventCondition(IsInGame = Enum.HandleEnum.Ignore, IsInBattle = Enum.HandleEnum.Ignore, IsWorldRunning = Enum.HandleEnum.False)]
+        [EventCondition(IsInGame = Enum.HandleEnum.Ignore, IsInBattle = Enum.HandleEnum.Ignore)]
         public override void OnTimeUpdate()
         {
             base.OnTimeUpdate();

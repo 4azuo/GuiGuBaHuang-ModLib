@@ -6,5 +6,4 @@ public class EventConditionAttribute : Attribute
 {
     public HandleEnum IsInGame { get; set; } = HandleEnum.True;
     public HandleEnum IsInBattle { get; set; } = HandleEnum.False;
-    public HandleEnum IsWorldRunning { get; set; } = HandleEnum.False;
 }
