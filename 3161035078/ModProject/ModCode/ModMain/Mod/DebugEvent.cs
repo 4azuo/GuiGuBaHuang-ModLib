@@ -23,7 +23,7 @@
 //    public class DebugEvent : ModEvent
 //    {
 //        private int showindex = 0;
-//        private string[] defres = File.ReadAllLines(ConfHelper.GetConfFilePath(ModMain.ModObj.ModId, "_Def_Res_Efx_Battle_Skill.txt"));
+//        private string[] defres = File.ReadAllLines(ConfHelper.GetConfFilePath(ModMain.ModObj.ModId, "_Def_Res_Efx_Battle_Unit.txt"));
 
 //        public override void OnMonoUpdate()
 //        {
