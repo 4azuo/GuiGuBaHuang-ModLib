@@ -8,8 +8,6 @@ namespace ModLib.Mod
         public override void OnTimeUpdate()
         {
             base.OnTimeUpdate();
-            DebugHelper.WriteLine(UIHelper.UIs.Count.ToString());
-            DebugHelper.Save();
             foreach (var ui in UIHelper.UIs.ToArray())
             {
                 try

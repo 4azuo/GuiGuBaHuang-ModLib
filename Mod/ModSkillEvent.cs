@@ -4,10 +4,7 @@ using System.Linq;
 using System.Reflection;
 using EBattleTypeData;
 using Newtonsoft.Json;
-using ModLib.Object;
-using static CacheMgr;
 using System.IO;
-using Harmony;
 using System.Threading.Tasks;
 
 namespace ModLib.Mod
@@ -54,20 +51,27 @@ namespace ModLib.Mod
                 if (File.Exists(cacheFile))
                 {
                     var e = (ModSkill)JsonConvert.DeserializeObject(File.ReadAllText(cacheFile), t.Item3, CacheHelper.JSON_SETTINGS);
-                    DebugHelper.WriteLine($"Load Skill: Mod={t.Item1}, Type={t.Item3.FullName}, CacheId={t.Item2.CacheId}");
                     e.OnLoadClass(t.Item1, t.Item2);
-                    SkillList.Add(t.Item1, e);
+                    LoadSkill(e);
                 }
                 else
                 {
                     if (!SkillList.ContainsKey(t.Item2.CacheId))
                     {
                         var e = (ModSkill)Activator.CreateInstance(t.Item3);
-                        DebugHelper.WriteLine($"Create Skill: Mod={t.Item1}, Type={t.Item3.FullName}, CacheId={t.Item2.CacheId}");
                         e.OnLoadClass(t.Item1, t.Item2);
-                        SkillList.Add(t.Item1, e);
+                        LoadSkill(e);
                     }
                 }
+            }
+        }
+
+        public void LoadSkill(ModSkill s)
+        {
+            if (!SkillList.ContainsKey(s.CacheId))
+            {
+                DebugHelper.WriteLine($"Load Skill: Mod={s.ModId}, Type={s.GetType().FullName}, CacheId={s.CacheId}");
+                SkillList.Add(s.CacheId, s);
             }
         }
 
