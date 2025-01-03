@@ -38,14 +38,9 @@ namespace MOD_nE7UL2.Mod
 
         private static UICustom1 uiTrainer;
 
-        public override void OnLoadClass(bool isNew, string modId, CacheAttribute attr)
+        public override bool OnCacheHandler()
         {
-            base.OnLoadClass(isNew, modId, attr);
-            var smConfigs = EventHelper.GetEvent<SMLocalConfigsEvent>(ModConst.SM_LOCAL_CONFIGS_EVENT);
-            if (!smConfigs.Configs.EnableTrainer)
-            {
-                CacheHelper.RemoveCachableObject(this);
-            }
+            return EventHelper.GetEvent<SMLocalConfigsEvent>(ModConst.SM_LOCAL_CONFIGS_EVENT).Configs.EnableTrainer;
         }
 
         public override void OnMonoUpdate()

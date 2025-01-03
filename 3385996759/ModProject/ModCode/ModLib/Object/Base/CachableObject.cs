@@ -24,6 +24,8 @@ namespace ModLib.Object
             WorkOn = attr.WorkOn;
         }
 
+        public virtual bool OnCacheHandler() { return true; }
+
         public virtual void OnUnloadClass() { }
     }
 }
