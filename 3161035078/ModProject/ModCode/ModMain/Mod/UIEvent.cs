@@ -74,6 +74,13 @@ namespace MOD_nE7UL2.Mod
              * UI
              */
             //DebugHelper.WriteLine("3");
+            if (e.uiType.uiName == UIType.MapMain.uiName)
+            {
+                var uiMapMain = g.ui.GetUI<UIMapMain>(UIType.MapMain);
+                uiMapMain.playerInfo.textPiscesPendantCount.gameObject.SetActive(false);
+                uiMapMain.playerInfo.goAddLuckRoot.SetActive(false);
+            }
+
             if (e.uiType.uiName == UIType.Town.uiName)
             {
                 var ui = new UICover<UITown>(e.ui);
@@ -98,13 +105,6 @@ namespace MOD_nE7UL2.Mod
                     }).Enable = false;
                 }
                 ui.IsAutoUpdate = true;
-            }
-            else
-            if (e.uiType.uiName == UIType.MapMain.uiName)
-            {
-                var uiMapMain = g.ui.GetUI<UIMapMain>(UIType.MapMain);
-                uiMapMain.playerInfo.textPiscesPendantCount.gameObject.SetActive(false);
-                uiMapMain.playerInfo.goAddLuckRoot.SetActive(false);
             }
             else
             if (e.uiType.uiName == UIType.NPCInfo.uiName)

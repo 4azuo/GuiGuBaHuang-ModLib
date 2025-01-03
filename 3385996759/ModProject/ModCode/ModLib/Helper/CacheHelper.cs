@@ -92,15 +92,18 @@ public static class CacheHelper
         return Path.Combine(GetGlobalCacheFolderName(modId), GetGlobalCacheFileName(cacheId));
     }
 
-    public static void AddCachableObject(CachableObject item)
+    public static void AddCachableObject(CachableObject c)
     {
-        if (!CacheData.ContainsKey(item.CacheId))
-            CacheData.Add(item.CacheId, item);
+        if (!CacheData.ContainsKey(c.CacheId))
+        {
+            DebugHelper.WriteLine($"Load Cache: Mod={c.ModId}, Type={c.GetType().FullName}, Id={c.CacheId}, CacheType={c.CacheType}, WorkOn={c.WorkOn}");
+            CacheData.Add(c.CacheId, c);
+        }
     }
 
     public static void RemoveCachableObject(CachableObject c)
     {
-        DebugHelper.WriteLine($"Unload Cache: Mod={c.ModId}, Type={c.GetType().FullName}, Id={c.CacheId}");
+        DebugHelper.WriteLine($"Unload Cache: Mod={c.ModId}, Type={c.GetType().FullName}, Id={c.CacheId}, CacheType={c.CacheType}, WorkOn={c.WorkOn}");
         CacheData.Remove(c.CacheId);
     }
 
@@ -171,18 +174,18 @@ public static class CacheHelper
                 if (File.Exists(cacheFile))
                 {
                     var e = (CachableObject)JsonConvert.DeserializeObject(File.ReadAllText(cacheFile), t.Item3, JSON_SETTINGS);
-                    DebugHelper.WriteLine($"Load GlobalCache: Mod={t.Item1}, Type={t.Item3.FullName}, Id={t.Item2.CacheId}");
                     e.OnLoadClass(false, t.Item1, t.Item2);
-                    AddCachableObject(e);
+                    if (e.OnCacheHandler())
+                        AddCachableObject(e);
                 }
                 else
                 {
                     if (!CacheData.ContainsKey(t.Item2.CacheId))
                     {
                         var e = (CachableObject)Activator.CreateInstance(t.Item3);
-                        DebugHelper.WriteLine($"Create GlobalCache: Mod={t.Item1}, Type={t.Item3.FullName}, Id={t.Item2.CacheId}");
                         e.OnLoadClass(true, t.Item1, t.Item2);
-                        AddCachableObject(e);
+                        if (e.OnCacheHandler())
+                            AddCachableObject(e);
                     }
                 }
             }
@@ -199,18 +202,18 @@ public static class CacheHelper
                 if (File.Exists(cacheFile))
                 {
                     var e = (CachableObject)JsonConvert.DeserializeObject(File.ReadAllText(cacheFile), t.Item3, JSON_SETTINGS);
-                    DebugHelper.WriteLine($"Load GameCache: Mod={t.Item1}, Type={t.Item3.FullName}, Id={t.Item2.CacheId}");
                     e.OnLoadClass(false, t.Item1, t.Item2);
-                    AddCachableObject(e);
+                    if (e.OnCacheHandler())
+                        AddCachableObject(e);
                 }
                 else
                 {
                     if (!CacheData.ContainsKey(t.Item2.CacheId))
                     {
                         var e = (CachableObject)Activator.CreateInstance(t.Item3);
-                        DebugHelper.WriteLine($"Create GameCache: Mod={t.Item1}, Type={t.Item3.FullName}, Id={t.Item2.CacheId}");
                         e.OnLoadClass(true, t.Item1, t.Item2);
-                        AddCachableObject(e);
+                        if (e.OnCacheHandler())
+                            AddCachableObject(e);
                     }
                 }
             }
@@ -229,10 +232,10 @@ public static class CacheHelper
         }
     }
 
-    public static void SaveGlobalCache(CachableObject item)
+    public static void SaveGlobalCache(CachableObject c)
     {
-        DebugHelper.WriteLine($"Save global-caches: Mod={item.ModId}, Type={item.GetType().FullName}, Id={item.CacheId}, OrderIndex={item.OrderIndex}");
-        File.WriteAllText(GetGlobalCacheFilePath(item.ModId, item.CacheId), JsonConvert.SerializeObject(item, JSON_SETTINGS));
+        DebugHelper.WriteLine($"Save global-caches: Mod={c.ModId}, Type={c.GetType().FullName}, Id={c.CacheId}, OrderIndex={c.OrderIndex}, CacheType={c.CacheType}, WorkOn={c.WorkOn}");
+        File.WriteAllText(GetGlobalCacheFilePath(c.ModId, c.CacheId), JsonConvert.SerializeObject(c, JSON_SETTINGS));
     }
 
     public static void SaveGlobalCaches()
@@ -243,10 +246,10 @@ public static class CacheHelper
         }
     }
 
-    public static void SaveGameCache(CachableObject item)
+    public static void SaveGameCache(CachableObject c)
     {
-        DebugHelper.WriteLine($"Save game-caches: Mod={item.ModId}, Type={item.GetType().FullName}, Id={item.CacheId}, OrderIndex={item.OrderIndex}");
-        File.WriteAllText(GetGameCacheFilePath(item.ModId, item.CacheId), JsonConvert.SerializeObject(item, JSON_SETTINGS));
+        DebugHelper.WriteLine($"Save game-caches: Mod={c.ModId}, Type={c.GetType().FullName}, Id={c.CacheId}, OrderIndex={c.OrderIndex}, CacheType={c.CacheType}, WorkOn={c.WorkOn}");
+        File.WriteAllText(GetGameCacheFilePath(c.ModId, c.CacheId), JsonConvert.SerializeObject(c, JSON_SETTINGS));
     }
 
     public static void SaveGameCaches()
@@ -328,7 +331,11 @@ public static class CacheHelper
             DebugHelper.WriteLine($"{modId}: DLL file is not exists!!!");
             return EMPTY;
         }
-        var rs = ass.GetLoadableTypes().Where(x => x.IsClass && x.IsSubclassOf(typeof(CachableObject)) && x.GetCustomAttribute<CacheAttribute>() != null)
+        var rs = ass.GetLoadableTypes()
+            .Where(x => 
+                x.IsClass && 
+                x.IsSubclassOf(typeof(CachableObject)) && 
+                x.GetCustomAttribute<CacheAttribute>() != null)
             .Select(x => Tuple.Create(modId, x.GetCustomAttribute<CacheAttribute>(), x)).ToList();
         if (rs.Count(x => x.Item3.IsSubclassOf(typeof(ModChild))) > 1)
         {
