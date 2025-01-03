@@ -17,8 +17,6 @@ public static class EventHelper
 
     public static void RunMinorEvents(string methodName, object e)
     {
-        if (GameHelper.IsWorldRunning())
-            return;
         var isInGame = GameHelper.IsInGame();
         var isInBattle = GameHelper.IsInBattlle();
         foreach (var ev in GetEvents(methodName))
