@@ -16,6 +16,8 @@ namespace MOD_nE7UL2.Mod
     [Cache(ModConst.REAL_MARKET_EVENT)]
     public class RealMarketEvent : ModEvent
     {
+        public static RealMarketEvent Instance { get; set; }
+
         public static float MIN_RATE
         {
             get

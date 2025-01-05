@@ -11,6 +11,8 @@ namespace MOD_nE7UL2.Mod
     [Cache(ModConst.INFLATIONARY_EVENT)]
     public class InflationaryEvent : ModEvent
     {
+        public static InflationaryEvent Instance { get; set; }
+
         public const int REACH_LIMIT_DRAMA = 499919998;
         public const int LIMIT = 500000000;
 
@@ -99,18 +101,14 @@ namespace MOD_nE7UL2.Mod
         {
             if (originValue <= 0)
                 return originValue;
-            var smConfigs = EventHelper.GetEvent<SMLocalConfigsEvent>(ModConst.SM_LOCAL_CONFIGS_EVENT);
-            var x = EventHelper.GetEvent<InflationaryEvent>(ModConst.INFLATIONARY_EVENT);
-            return Convert.ToInt32(originValue * Math.Pow(smConfigs.Calculate(Configs.InflationaryRate, smConfigs.Configs.AddInflationRate), GameHelper.GetGameYear()) / Math.Pow(100, x.Corruption));
+            return Convert.ToInt32(originValue * Math.Pow(SMLocalConfigsEvent.Instance.Calculate(Configs.InflationaryRate, SMLocalConfigsEvent.Instance.Configs.AddInflationRate), GameHelper.GetGameYear()) / Math.Pow(100, Instance.Corruption));
         }
 
         public static long CalculateInflationary(long originValue)
         {
             if (originValue <= 0)
                 return originValue;
-            var smConfigs = EventHelper.GetEvent<SMLocalConfigsEvent>(ModConst.SM_LOCAL_CONFIGS_EVENT);
-            var x = EventHelper.GetEvent<InflationaryEvent>(ModConst.INFLATIONARY_EVENT);
-            return Convert.ToInt64(originValue * Math.Pow(smConfigs.Calculate(Configs.InflationaryRate, smConfigs.Configs.AddInflationRate), GameHelper.GetGameYear()) / Math.Pow(100, x.Corruption));
+            return Convert.ToInt64(originValue * Math.Pow(SMLocalConfigsEvent.Instance.Calculate(Configs.InflationaryRate, SMLocalConfigsEvent.Instance.Configs.AddInflationRate), GameHelper.GetGameYear()) / Math.Pow(100, Instance.Corruption));
         }
 
         public static int GetHighestCost()

@@ -11,6 +11,8 @@ namespace MOD_nE7UL2.Mod
     [Cache(ModConst.SLICE_LIFE_QUEST_EVENT)]
     public class SliceLifeQuestEvent : ModEvent
     {
+        public static SliceLifeQuestEvent Instance { get; set; }
+
         public const int TASK_BASE_ID = 444443000;
         public const int LUCK_BASE_ID = 444441000;
 

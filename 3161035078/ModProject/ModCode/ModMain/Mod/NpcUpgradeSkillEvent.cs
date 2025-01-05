@@ -8,6 +8,8 @@ namespace MOD_nE7UL2.Mod
     [Cache(ModConst.NPC_UPGRADE_SKILL_EVENT)]
     public class NpcUpgradeSkillEvent : ModEvent
     {
+        public static NpcUpgradeSkillEvent Instance { get; set; }
+
         //public static readonly IDictionary<MartialType, float> EXP_RATIO = new Dictionary<MartialType, float>
         //{
         //    [MartialType.SkillLeft] = 1.0f,

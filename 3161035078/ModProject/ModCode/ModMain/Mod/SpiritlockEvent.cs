@@ -7,6 +7,8 @@ namespace MOD_nE7UL2.Mod
     [Cache(ModConst.SPIRITLOCK_EVENT)]
     public class SpiritlockEvent : ModEvent
     {
+        public static SpiritlockEvent Instance { get; set; }
+
         public static int[] VENERABLE_TORTOISES = new int[]
         {
             12005,

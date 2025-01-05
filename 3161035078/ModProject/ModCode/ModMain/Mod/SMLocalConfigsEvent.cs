@@ -7,6 +7,7 @@ namespace MOD_nE7UL2.Mod
     [Cache(ModConst.SM_LOCAL_CONFIGS_EVENT)]
     public class SMLocalConfigsEvent : ModEvent
     {
+        public static SMLocalConfigsEvent Instance { get; set; }
         public SMGlobalConfigsEvent Configs { get; set; }
 
         public override void OnLoadClass(bool isNew, string modId, CacheAttribute attr)

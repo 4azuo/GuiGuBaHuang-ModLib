@@ -12,6 +12,7 @@ namespace MOD_nE7UL2.Mod
     [Cache(ModConst.REAL_TRIAL_EVENT)]
     public class RealTrialEvent : ModEvent
     {
+        public static RealTrialEvent Instance { get; set; }
         public static _RealTrialConfigs RealTrialConfigs => ModMain.ModObj.GameSettings.RealTrialConfigs;
 
         [JsonIgnore]

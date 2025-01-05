@@ -14,6 +14,8 @@ namespace MOD_nE7UL2.Mod
     [Cache(ModConst.MISSION_DECLARE_EVENT)]
     public class MissionDeclareEvent : ModEvent
     {
+        public static MissionDeclareEvent Instance { get; set; }
+
         //Variables
         private List<KeyValuePair<ConfItemPropsItem, int>> _availableItems;
 

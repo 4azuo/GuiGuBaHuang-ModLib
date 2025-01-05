@@ -13,6 +13,8 @@ namespace MOD_nE7UL2.Mod
     [Cache(ModConst.SM_GLOBAL_CONFIGS_EVENT, CacheType = CacheAttribute.CType.Global, WorkOn = CacheAttribute.WType.Global)]
     public class SMGlobalConfigsEvent : ModEvent
     {
+        public static SMGlobalConfigsEvent Instance { get; set; }
+
         public const string TITLE = "S&M Configs";
 
         //Configs
