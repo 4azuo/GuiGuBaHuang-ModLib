@@ -11,6 +11,7 @@ namespace MOD_nE7UL2.Mod
     [Cache(ModConst.BANK_ACCOUNT_EVENT)]
     public class BankAccountEvent : ModEvent
     {
+        public static BankAccountEvent Instance { get; set; }
         public static _BankAccountConfigs BankAccountConfigs => ModMain.ModObj.GameSettings.BankAccountConfigs;
 
         public IList<string> RegisterdTown { get; set; } = new List<string>();
@@ -46,14 +47,13 @@ namespace MOD_nE7UL2.Mod
 
         public static int Cost(int areaId)
         {
-            var smConfigs = EventHelper.GetEvent<SMLocalConfigsEvent>(ModConst.SM_LOCAL_CONFIGS_EVENT);
             var round = BankAccountConfigs.OpenFee[areaId] / 100;
-            return smConfigs.Calculate(InflationaryEvent.CalculateInflationary(BankAccountConfigs.OpenFee[areaId]) / round * round, smConfigs.Configs.AddBankAccountCostRate).Parse<int>();
+            return SMLocalConfigsEvent.Instance.Calculate(InflationaryEvent.CalculateInflationary(BankAccountConfigs.OpenFee[areaId]) / round * round, SMLocalConfigsEvent.Instance.Configs.AddBankAccountCostRate).Parse<int>();
         }
 
         public static void RemoveAllAccounts()
         {
-            EventHelper.GetEvent<BankAccountEvent>(ModConst.BANK_ACCOUNT_EVENT).RegisterdTown.Clear();
+            Instance.RegisterdTown.Clear();
         }
     }
 }

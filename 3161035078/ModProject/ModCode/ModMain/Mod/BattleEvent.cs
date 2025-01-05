@@ -10,6 +10,8 @@ namespace MOD_nE7UL2.Mod
     [Cache(ModConst.BATTLE_EVENT)]
     public class BattleEvent : ModEvent
     {
+        public static BattleEvent Instance { get; set; }
+
         public const int JOIN_RANGE = 6;
         public const float NPC_JOIN_RATE = 0.2f;
         public const int ENEMY_JOIN_DRAMA = 480110100;

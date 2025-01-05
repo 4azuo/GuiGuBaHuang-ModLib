@@ -1,0 +1,19 @@
+[
+	{
+		"__name": "Team",
+		"id": "420041121",
+		"type": "2",
+		"group": "420041120",
+		"level": "2",
+		"duration": "-1",
+		"refreshType": "2",
+		"conceal": "0",
+		"name": "team420041121",
+		"effect": "0",
+		"tips": "team420041120desc",
+		"iconAndDesc": "0",
+		"lockLuck": "0",
+		"introduceText": "0",
+		"weight": "0"
+	},
+]

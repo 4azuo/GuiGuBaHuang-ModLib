@@ -9,9 +9,11 @@ namespace MOD_nE7UL2.Mod
     [Cache(ModConst.UPGRADE_NATURALLY_EVENT)]
     public class UpgradeNaturallyEvent : ModEvent
     {
+        public static UpgradeNaturallyEvent Instance { get; set; }
+
         public override bool OnCacheHandler()
         {
-            return EventHelper.GetEvent<SMLocalConfigsEvent>(ModConst.SM_LOCAL_CONFIGS_EVENT).Configs.AllowUpgradeNaturally;
+            return SMLocalConfigsEvent.Instance.Configs.AllowUpgradeNaturally;
         }
 
         public override void OnOpenUIEnd(OpenUIEnd e)
