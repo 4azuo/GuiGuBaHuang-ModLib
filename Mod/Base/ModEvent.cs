@@ -1,7 +1,6 @@
 ﻿using EBattleTypeData;
 using EGameTypeData;
 using ModLib.Object;
-using Newtonsoft.Json;
 
 namespace ModLib.Mod
 {

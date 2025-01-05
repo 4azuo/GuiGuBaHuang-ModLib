@@ -22,6 +22,9 @@ namespace ModLib.Object
             OrderIndex = attr.OrderIndex;
             CacheType = attr.CacheType;
             WorkOn = attr.WorkOn;
+
+            //autowire to [Instance] variable
+            this.GetType().GetProperty("Instance", System.Reflection.BindingFlags.Static | System.Reflection.BindingFlags.Public)?.SetValue(null, this);
         }
 
         public virtual bool OnCacheHandler() { return true; }
