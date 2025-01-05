@@ -10,6 +10,8 @@ namespace MOD_nE7UL2.Mod
     [Cache(ModConst.UNIT_TYPE_EVENT)]
     public class UnitTypeEvent : ModEvent
     {
+        public static UnitTypeEvent Instance { get; set; }
+
         public IDictionary<string, UnitTypeEnum> UnitTypeDic { get; set; } = new Dictionary<string, UnitTypeEnum>();
 
         public override void OnLoadGame()
@@ -178,21 +180,19 @@ namespace MOD_nE7UL2.Mod
 
         public void AddNpcProp(WorldUnitBase wunit, float ratio = 1.00f)
         {
-            var smConfigs = EventHelper.GetEvent<SMLocalConfigsEvent>(ModConst.SM_LOCAL_CONFIGS_EVENT);
             var utype = UnitTypeDic[wunit.GetUnitId()];
             foreach (var p in utype.PropIncRatio)
             {
                 var prop = p.Value0 as UnitPropertyEnum;
                 var r2Player = Math.Max(1.0f, g.world.playerUnit.GetProperty<int>(prop).Parse<float>() / wunit.GetProperty<int>(prop).Parse<float>());
-                wunit.SetProperty(prop, utype.CalType(wunit, prop, smConfigs.Calculate(ratio * r2Player, smConfigs.Configs.AddNpcGrowRate).Parse<float>()));
+                wunit.SetProperty(prop, utype.CalType(wunit, prop, SMLocalConfigsEvent.Instance.Calculate(ratio * r2Player, SMLocalConfigsEvent.Instance.Configs.AddNpcGrowRate).Parse<float>()));
             }
         }
 
         public static UnitTypeEnum GetUnitTypeEnum(WorldUnitBase wunit)
         {
             var unitId = wunit.GetUnitId();
-            var x = EventHelper.GetEvent<UnitTypeEvent>(ModConst.UNIT_TYPE_EVENT);
-            return x.UnitTypeDic.ContainsKey(unitId) ? x.UnitTypeDic[unitId] : null;
+            return Instance.UnitTypeDic.ContainsKey(unitId) ? Instance.UnitTypeDic[unitId] : null;
         }
     }
 }

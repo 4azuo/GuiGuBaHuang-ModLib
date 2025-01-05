@@ -13,11 +13,12 @@ namespace MOD_nE7UL2.Mod
     [Cache(ModConst.CONTRIBUTION_EXCHANGE_EVENT)]
     public class ContributionExchangeEvent : ModEvent
     {
+        public static ContributionExchangeEvent Instance { get; set; }
+
         //SpiritStones (Sell Price) / Contribution
         public static int GetExchangeRatio()
         {
-            var smConfigs = EventHelper.GetEvent<SMLocalConfigsEvent>(ModConst.SM_LOCAL_CONFIGS_EVENT);
-            return smConfigs.Calculate(InflationaryEvent.CalculateInflationary(ModMain.ModObj.GameSettings.ContributionExchangeConfigs.ExchangeRatio), smConfigs.Configs.AddSectExchangeRate).Parse<int>();
+            return SMLocalConfigsEvent.Instance.Calculate(InflationaryEvent.CalculateInflationary(ModMain.ModObj.GameSettings.ContributionExchangeConfigs.ExchangeRatio), SMLocalConfigsEvent.Instance.Configs.AddSectExchangeRate).Parse<int>();
         }
 
         public int CurMonthRatio { get; set; }
@@ -40,8 +41,7 @@ namespace MOD_nE7UL2.Mod
         {
             base.OnOpenUIEnd(e);
 
-            var smConfigs = EventHelper.GetEvent<SMLocalConfigsEvent>(ModConst.SM_LOCAL_CONFIGS_EVENT);
-            if (e.uiType.uiName == UIType.School.uiName && !smConfigs.Configs.SectNoExchange)
+            if (e.uiType.uiName == UIType.School.uiName && !SMLocalConfigsEvent.Instance.Configs.SectNoExchange)
             {
                 var uiSchool = g.ui.GetUI<UISchool>(UIType.School);
                 if (g.world?.playerUnit?.data?.school?.schoolNameID == uiSchool.school.schoolNameID)

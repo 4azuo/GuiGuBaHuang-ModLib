@@ -22,6 +22,8 @@
 //    [Cache(ModConst.DEBUG_EVENT)]
 //    public class DebugEvent : ModEvent
 //    {
+//        public static DebugEvent Instance { get; set; }
+
 //        private int showindex = 0;
 //        private string[] defres = File.ReadAllLines(ConfHelper.GetConfFilePath(ModMain.ModObj.ModId, "_Def_Res_Efx_Battle_Unit.txt"));
 

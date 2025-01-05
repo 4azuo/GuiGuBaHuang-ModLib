@@ -9,6 +9,8 @@ namespace MOD_nE7UL2.Mod
     [Cache(ModConst.BUILDING_ARRANGE_EVENT)]
     public class BuildingArrangeEvent : ModEvent
     {
+        public static BuildingArrangeEvent Instance { get; set; }
+
         public List<string> ArrDic { get; set; } = new List<string>();
 
         private string GetArrDicKey(MapBuildBase build, BuildingCostEnum e)
@@ -59,8 +61,7 @@ namespace MOD_nE7UL2.Mod
 
         private void AddBuildSub(MapBuildBase build, BuildingCostEnum e, float rate = -1f)
         {
-            var smConfigs = EventHelper.GetEvent<SMLocalConfigsEvent>(ModConst.SM_LOCAL_CONFIGS_EVENT);
-            if (smConfigs.Configs.OnlyPortalAtCityAndSect && e == BuildingCostEnum.TownPortalBuildCost && build.IsSmallTown())
+            if (SMLocalConfigsEvent.Instance.Configs.OnlyPortalAtCityAndSect && e == BuildingCostEnum.TownPortalBuildCost && build.IsSmallTown())
                 return;
             if (e.IsMatchBuildConds(build))
             {
@@ -85,9 +86,8 @@ namespace MOD_nE7UL2.Mod
 
         public static long GetBuildingCost(MapBuildBase build, BuildingCostEnum e)
         {
-            var smConfigs = EventHelper.GetEvent<SMLocalConfigsEvent>(ModConst.SM_LOCAL_CONFIGS_EVENT);
             var cost = InflationaryEvent.CalculateInflationary(e.BuildCosts[build.gridData.areaBaseID - 1]);
-            return smConfigs.Calculate(cost, smConfigs.Configs.AddBuildingCostRate).Parse<long>();
+            return SMLocalConfigsEvent.Instance.Calculate(cost, SMLocalConfigsEvent.Instance.Configs.AddBuildingCostRate).Parse<long>();
         }
     }
 }

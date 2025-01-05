@@ -11,6 +11,8 @@ namespace MOD_nE7UL2.Mod
     [Cache(ModConst.UNIT_MODIFY_EVENT)]
     public class UnitModifyEvent : ModEvent
     {
+        public static UnitModifyEvent Instance { get; set; }
+
         private static readonly List<string> _units = new List<string>();
         private static readonly Dictionary<string, int> _values = new Dictionary<string, int>();
 
