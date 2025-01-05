@@ -11,6 +11,8 @@ namespace MOD_nE7UL2.Mod
     [Cache(ModConst.QI_CUL_EVENT)]
     public class QiCulEvent : ModEvent
     {
+        public static QiCulEvent Instance { get; set; }
+
         public const int QI_TRANSFER_DRAMA = 480010100;
 
         public int LastYearReceiveQi { get; set; }
@@ -91,18 +93,16 @@ namespace MOD_nE7UL2.Mod
 
         public static void QiTransmit(WorldUnitBase fwunit, WorldUnitBase twunit)
         {
-            var x = EventHelper.GetEvent<QiCulEvent>(ModConst.QI_CUL_EVENT);
             var fwunitId = fwunit.GetUnitId();
             var twunitId = fwunit.GetUnitId();
-            var oldFqi = x.Qi[fwunitId];
+            var oldFqi = Instance.Qi[fwunitId];
             var fqi = (oldFqi / 10d) * CommonTool.Random(0.8f, 1.1f);
             var tqi = fqi * (twunit.GetDynProperty(UnitDynPropertyEnum.Talent).value / 100d) * CommonTool.Random(0.8f, 1.1f);
-            x.Qi[fwunitId] -= fqi.Parse<long>();
-            x.Qi[twunitId] += tqi.Parse<long>();
+            Instance.Qi[fwunitId] -= fqi.Parse<long>();
+            Instance.Qi[twunitId] += tqi.Parse<long>();
 
             DramaTool.OpenDrama(QI_TRANSFER_DRAMA);
-            var uiConfirm = g.ui.OpenUI<UICheckPopup>(UIType.CheckPopup);
-            uiConfirm.InitData("Qi Transfer", $"Qi {oldFqi}→{x.Qi[fwunitId]}", 1);
+            g.ui.MsgBox("Qi Transfer", $"Qi {oldFqi}→{Instance.Qi[fwunitId]}");
         }
     }
 }

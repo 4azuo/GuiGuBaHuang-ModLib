@@ -13,6 +13,8 @@ namespace MOD_nE7UL2.Mod
     [Cache(ModConst.BATTLE_REWARD_EVENT_V2)]
     public class BattleRewardEventV2 : ModEvent
     {
+        public static BattleRewardEventV2 Instance { get; set; }
+
         private const int QI_ITEM = 484410100;
 
         private const string RATIO_KEY = "Ratio";
@@ -455,8 +457,7 @@ namespace MOD_nE7UL2.Mod
         public override void OnBattleUnitHit(UnitHit e)
         {
             base.OnBattleUnitHit(e);
-            var smConfigs = EventHelper.GetEvent<SMLocalConfigsEvent>(ModConst.SM_LOCAL_CONFIGS_EVENT);
-            if (!smConfigs.Configs.NoGrowupFromBattles)
+            if (!SMLocalConfigsEvent.Instance.Configs.NoGrowupFromBattles)
             {
                 while (UpProperty(e))
                 {
@@ -494,8 +495,6 @@ namespace MOD_nE7UL2.Mod
         {
             base.OnBattleEndOnce(e);
 
-            var smConfigs = EventHelper.GetEvent<SMLocalConfigsEvent>(ModConst.SM_LOCAL_CONFIGS_EVENT);
-
             var localDmgDealt = ModBattleEvent.sGetDmg(ModBattleEvent.DmgSaveEnum.Local, ModBattleEvent.GetDmgKey(ModBattleEvent.DmgEnum.DmgDealt, ModBattleEvent.DmgTypeEnum.Damage));
             var localDmgRecv = ModBattleEvent.sGetDmg(ModBattleEvent.DmgSaveEnum.Local, ModBattleEvent.GetDmgKey(ModBattleEvent.DmgEnum.DmgRecv, ModBattleEvent.DmgTypeEnum.Damage));
             DebugHelper.WriteLine($"Damage dealt: {localDmgDealt}dmg, Damage recieve: {localDmgRecv}dmg");
@@ -504,7 +503,7 @@ namespace MOD_nE7UL2.Mod
             {
                 DebugHelper.WriteLine($"BattleRewardEvent: lose");
                 //life
-                if (smConfigs.Configs.Onelife)
+                if (SMLocalConfigsEvent.Instance.Configs.Onelife)
                     player.SetProperty<int>(UnitPropertyEnum.Life, 0);
                 else
                     player.AddProperty<int>(UnitPropertyEnum.Life, -unchecked((int)Math.Max(localDmgRecv / 2000, 1)));
@@ -547,7 +546,7 @@ namespace MOD_nE7UL2.Mod
                 var insight = player.GetDynProperty(UnitDynPropertyEnum.Talent).value;
 
                 //player growup from battles
-                if (!smConfigs.Configs.NoGrowupFromBattles)
+                if (!SMLocalConfigsEvent.Instance.Configs.NoGrowupFromBattles)
                 {
                     var aBestBasis = ModBattleEvent.GetDmgPropertyEnum(ModBattleEvent.sGetHighestDealtDmgTypeEnum());
                     if (aBestBasis != null && CommonTool.Random(0.00f, 100.00f).IsBetween(0.00f, insight / 10))
@@ -566,7 +565,7 @@ namespace MOD_nE7UL2.Mod
                 var rewardExp = rewardExp1 + rewardExp2;
 
                 //player +exp
-                if (!smConfigs.Configs.NoExpFromBattles)
+                if (!SMLocalConfigsEvent.Instance.Configs.NoExpFromBattles)
                 {
                     var myRewardExp = (rewardExp * (insight / 100f)).Parse<int>();
                     player.AddExp(myRewardExp);

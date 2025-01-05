@@ -16,6 +16,8 @@ namespace MOD_nE7UL2.Mod
     [Cache(ModConst.CUSTOM_REFINE_EVENT)]
     public class CustomRefineEvent : ModEvent
     {
+        public static CustomRefineEvent Instance { get; set; }
+
         public const int REFINE_EXP_RATE = 200;
 
         private static readonly Dictionary<string, double> _values = new Dictionary<string, double>();
@@ -144,8 +146,7 @@ namespace MOD_nE7UL2.Mod
                 g.world.playerUnit.AddUnitMoney(-value);
                 g.ui.CloseUI(ui);
 
-                var uiConfirm = g.ui.OpenUI<UICheckPopup>(UIType.CheckPopup);
-                uiConfirm.InitData("Refine", $"Success! Level {oldLvl}→{GetRefineLvl(refineItem)} (+{exp}Exp)", 1);
+                g.ui.MsgBox("Refine", $"Success! Level {oldLvl}→{GetRefineLvl(refineItem)} (+{exp}Exp)");
                 _values.Remove(g.world.playerUnit.GetUnitId());
             }));
             ui.UpdateUI();
@@ -170,10 +171,9 @@ namespace MOD_nE7UL2.Mod
         {
             if (string.IsNullOrEmpty(soleId) || exp == 0)
                 return;
-            var x = EventHelper.GetEvent<CustomRefineEvent>(ModConst.CUSTOM_REFINE_EVENT);
-            if (!x.RefineExp.ContainsKey(soleId))
-                x.RefineExp.Add(soleId, 0);
-            x.RefineExp[soleId] += exp;
+            if (!Instance.RefineExp.ContainsKey(soleId))
+                Instance.RefineExp.Add(soleId, 0);
+            Instance.RefineExp[soleId] += exp;
         }
 
         public static void AddRefineExp(DataProps.PropsData props, long exp)
@@ -185,10 +185,9 @@ namespace MOD_nE7UL2.Mod
         {
             if (string.IsNullOrEmpty(soleId))
                 return 0;
-            var x = EventHelper.GetEvent<CustomRefineEvent>(ModConst.CUSTOM_REFINE_EVENT);
-            if (!x.RefineExp.ContainsKey(soleId))
-                x.RefineExp.Add(soleId, 0);
-            return x.RefineExp[soleId];
+            if (!Instance.RefineExp.ContainsKey(soleId))
+                Instance.RefineExp.Add(soleId, 0);
+            return Instance.RefineExp[soleId];
         }
 
         public static long GetRefineExp(DataProps.PropsData props)
@@ -198,8 +197,7 @@ namespace MOD_nE7UL2.Mod
 
         public static double GetRefineExpNeed(DataProps.PropsData props, int lvl)
         {
-            var smConfigs = EventHelper.GetEvent<SMLocalConfigsEvent>(ModConst.SM_LOCAL_CONFIGS_EVENT);
-            return smConfigs.Calculate((props.propsInfoBase.grade * 100 + props.propsInfoBase.level * 20) * Math.Pow(1.04d, lvl), smConfigs.Configs.AddRefineCost);
+            return SMLocalConfigsEvent.Instance.Calculate((props.propsInfoBase.grade * 100 + props.propsInfoBase.level * 20) * Math.Pow(1.04d, lvl), SMLocalConfigsEvent.Instance.Configs.AddRefineCost);
         }
 
         public static int GetRefineLvl(DataProps.PropsData props)
@@ -221,23 +219,21 @@ namespace MOD_nE7UL2.Mod
             if (index < 1 || index > 5) //soleID.MaxLength = 6
                 return null;
             var key = $"{props.soleID}_{index}";
-            var x = EventHelper.GetEvent<CustomRefineEvent>(ModConst.CUSTOM_REFINE_EVENT);
-            if (!x.CustomRefine.ContainsKey(key))
-                x.CustomRefine.Add(key, new CustomRefine(props, index));
-            var rs = x.CustomRefine[key];
+            if (!Instance.CustomRefine.ContainsKey(key))
+                Instance.CustomRefine.Add(key, new CustomRefine(props, index));
+            var rs = Instance.CustomRefine[key];
             return rs;
         }
 
         public static List<CustomRefine> GetCustomAdjTypes(DataProps.PropsData props, AdjTypeEnum condition)
         {
             var list = new List<CustomRefine>();
-            var x = EventHelper.GetEvent<CustomRefineEvent>(ModConst.CUSTOM_REFINE_EVENT);
             for (int i = 1; i <= 5; i++)
             {
                 var key = $"{props.soleID}_{i}";
-                if (x.CustomRefine.ContainsKey(key) && x.CustomRefine[key].AdjType == condition)
+                if (Instance.CustomRefine.ContainsKey(key) && Instance.CustomRefine[key].AdjType == condition)
                 {
-                    list.Add(x.CustomRefine[key]);
+                    list.Add(Instance.CustomRefine[key]);
                 }
             }
             return list;

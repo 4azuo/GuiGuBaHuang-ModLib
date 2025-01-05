@@ -16,6 +16,8 @@ namespace MOD_nE7UL2.Mod
     [Cache(ModConst.UI_EVENT)]
     public class UIEvent : ModEvent
     {
+        public static UIEvent Instance { get; set; }
+
         public static _HideButtonConfigs Configs => ModMain.ModObj.GameSettings.HideButtonConfigs;
 
         private static Text uiArtifactInfo_textBasicTitle;
@@ -46,9 +48,6 @@ namespace MOD_nE7UL2.Mod
 
         public static void OnUIOpen(OpenUIEnd e)
         {
-            //DebugHelper.WriteLine("1");
-            var smConfigs = EventHelper.GetEvent<SMLocalConfigsEvent>(ModConst.SM_LOCAL_CONFIGS_EVENT);
-
             /*
              * Hide buttons
              */
@@ -80,7 +79,7 @@ namespace MOD_nE7UL2.Mod
                 uiMapMain.playerInfo.textPiscesPendantCount.gameObject.SetActive(false);
                 uiMapMain.playerInfo.goAddLuckRoot.SetActive(false);
             }
-
+            else
             if (e.uiType.uiName == UIType.Town.uiName)
             {
                 var ui = new UICover<UITown>(e.ui);
@@ -368,8 +367,8 @@ namespace MOD_nE7UL2.Mod
             if (e.uiType.uiName == UIType.GameMemu.uiName)
             {
                 var ui = g.ui.GetUI<UIGameMemu>(UIType.GameMemu);
-                ui.btnSave.gameObject.SetActive(!smConfigs.Configs.HideSaveButton);
-                ui.btnReloadCache.gameObject.SetActive(!smConfigs.Configs.HideReloadButton);
+                ui.btnSave.gameObject.SetActive(!SMLocalConfigsEvent.Instance.Configs.HideSaveButton);
+                ui.btnReloadCache.gameObject.SetActive(!SMLocalConfigsEvent.Instance.Configs.HideReloadButton);
             }
         }
 

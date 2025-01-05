@@ -11,6 +11,7 @@ namespace MOD_nE7UL2.Mod
     [Cache(ModConst.EXPERT_EVENT)]
     public class ExpertEvent : ModEvent
     {
+        public static ExpertEvent Instance { get; set; }
         public static _ExpertConfigs Configs => ModMain.ModObj.GameSettings.ExpertConfigs;
 
         public IDictionary<string, int> ExpertExps { get; set; } = new Dictionary<string, int>();
@@ -110,10 +111,9 @@ namespace MOD_nE7UL2.Mod
 
         public static IDictionary<string, int> GetExpertExps()
         {
-            var e = EventHelper.GetEvent<ExpertEvent>(ModConst.EXPERT_EVENT);
-            if (e.ExpertExps == null)
-                e.ExpertExps = new Dictionary<string, int>();
-            return e.ExpertExps;
+            if (Instance.ExpertExps == null)
+                Instance.ExpertExps = new Dictionary<string, int>();
+            return Instance.ExpertExps;
         }
 
         public static void AddExpertExp(WorldUnitBase wunit, string soleId, float exp)
