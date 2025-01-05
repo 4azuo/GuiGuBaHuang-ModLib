@@ -14,6 +14,8 @@ namespace MOD_nE7UL2.Mod
     [Cache(ModConst.BATTLE_MODIFY_EVENT)]
     public class BattleModifyEvent : ModEvent
     {
+        public static BattleModifyEvent Instance { get; set; }
+
         public const int BASIS_ON_DMG = 1000;
         public const int BASIS_ON_DEF = 400;
         public const float BASIS_ON_BLOCK_RATIO = 10000f;
@@ -28,8 +30,6 @@ namespace MOD_nE7UL2.Mod
         {
             base.OnOpenUIEnd(e);
 
-            var smConfigs = EventHelper.GetEvent<SMLocalConfigsEvent>(ModConst.SM_LOCAL_CONFIGS_EVENT);
-
             if (e.uiType.uiName == UIType.MapMain.uiName)
             {
                 _nullify.Clear();
@@ -41,7 +41,7 @@ namespace MOD_nE7UL2.Mod
                 var uiBattleInfo = g.ui.GetUI<UIBattleInfo>(UIType.BattleInfo);
                 uiBattleInfo.uiInfo.goMonstCount1.SetActive(false);
                 uiBattleInfo.uiInfo.goMonstCount2.SetActive(false);
-                uiBattleInfo.uiMap.goGroupRoot.SetActive(!smConfigs.Configs.HideBattleMap);
+                uiBattleInfo.uiMap.goGroupRoot.SetActive(!SMLocalConfigsEvent.Instance.Configs.HideBattleMap);
             }
         }
 
@@ -272,10 +272,9 @@ namespace MOD_nE7UL2.Mod
             //    MonstStrongerEvent.AdditionalStts.ContainsKey(monstData.monstType) && !_monstStrongerAdditionalFlg.Contains(monstData.monstType) &&
             //    e.hitData.skillBase?.TryCast<SkillAttack>()?.skillData.martialType == MartialType.SkillLeft)
             //{
-            //    var x = EventHelper.GetEvent<MonstStrongerEvent>(ModConst.MONST_STRONGER_EVENT);
             //    if (e.dynV.baseValue >= GetAdditionalCond(monstData))
             //    {
-            //        x.Additional[monstData.monstType] += MonstStrongerConfigs.Additionnal;
+            //        MonstStrongerEvent.Instance.Additional[monstData.monstType] += MonstStrongerConfigs.Additionnal;
             //        _monstStrongerAdditionalFlg.Add(monstData.monstType);
             //    }
             //}
@@ -417,8 +416,7 @@ namespace MOD_nE7UL2.Mod
             var rs = wunit.GetGradeLvl();
             if (wunit.IsPlayer())
             {
-                var x = EventHelper.GetEvent<RebirthEvent>(ModConst.REBIRTH_EVENT);
-                rs += x.TotalGradeLvl;
+                rs += RebirthEvent.Instance.TotalGradeLvl;
             }
             return rs;
         }

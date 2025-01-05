@@ -10,6 +10,8 @@ namespace MOD_nE7UL2.Mod
     [Cache(ModConst.BATTLE_MANASHIELD_EVENT)]
     public class BattleManashieldEvent : ModEvent
     {
+        public static BattleManashieldEvent Instance { get; set; }
+
         public const int MANASHIELD_EFFECT_MAIN_ID = 903151120;
         public const int MANASHIELD_EFFECT_EFX_ID = 903151121;
 

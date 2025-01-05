@@ -235,23 +235,20 @@ public static class UnitModifyHelper
     {
         if (wunit == null)
             return 0;
-        var x = EventHelper.GetEvent<QiCulEvent>(ModConst.QI_CUL_EVENT);
-        return Convert.ToInt32(x.Qi[wunit.GetUnitId()] / (10000 * wunit.GetGradeLvl()));
+        return Convert.ToInt32(QiCulEvent.Instance.Qi[wunit.GetUnitId()] / (10000 * wunit.GetGradeLvl()));
     }
 
     public static int GetQiAdjHp(WorldUnitBase wunit)
     {
         if (wunit == null)
             return 0;
-        var x = EventHelper.GetEvent<QiCulEvent>(ModConst.QI_CUL_EVENT);
-        return Convert.ToInt32(x.Qi[wunit.GetUnitId()] / (1000 * wunit.GetGradeLvl()));
+        return Convert.ToInt32(QiCulEvent.Instance.Qi[wunit.GetUnitId()] / (1000 * wunit.GetGradeLvl()));
     }
 
     public static int GetQiAdjMp(WorldUnitBase wunit)
     {
         if (wunit == null)
             return 0;
-        var x = EventHelper.GetEvent<QiCulEvent>(ModConst.QI_CUL_EVENT);
-        return Convert.ToInt32(x.Qi[wunit.GetUnitId()] / (4000 * wunit.GetGradeLvl()));
+        return Convert.ToInt32(QiCulEvent.Instance.Qi[wunit.GetUnitId()] / (4000 * wunit.GetGradeLvl()));
     }
 }
