@@ -14,6 +14,8 @@ namespace MOD_nE7UL2.Mod
     [Cache(ModConst.MAP_BUILD_PROPERTY_EVENT)]
     public class MapBuildPropertyEvent : ModEvent
     {
+        public static MapBuildPropertyEvent Instance { get; set; }
+
         public const float FIXING_RATE = 6.00f;
         public const int TOWN_MASTER_LUCK_ID = 420041111;
         public const int TOWN_GUARDIAN_LUCK_ID = 420041112;
@@ -220,11 +222,10 @@ namespace MOD_nE7UL2.Mod
 
         public static int GetTax(WorldUnitBase wunit, int areaId, float ratio = 1.0f)
         {
-            var smConfigs = EventHelper.GetEvent<SMLocalConfigsEvent>(ModConst.SM_LOCAL_CONFIGS_EVENT);
-            var tax = smConfigs.Calculate(Convert.ToInt32(InflationaryEvent.CalculateInflationary((
+            var tax = SMLocalConfigsEvent.Instance.Calculate(Convert.ToInt32(InflationaryEvent.CalculateInflationary((
                         Math.Pow(2, areaId) * FIXING_RATE *
                         (1.00f + UnitTypeLuckEnum.Merchant.CustomEffects[ModConst.UTYPE_LUCK_EFX_SELL_VALUE].Value0.Parse<float>() + MerchantLuckEnum.Merchant.GetCurLevel(wunit) * MerchantLuckEnum.Merchant.IncSellValueEachLvl)
-                    ).Parse<int>())), smConfigs.Configs.AddTaxRate).Parse<int>();
+                    ).Parse<int>())), SMLocalConfigsEvent.Instance.Configs.AddTaxRate).Parse<int>();
             return (tax * ratio).Parse<int>();
         }
 
@@ -233,10 +234,9 @@ namespace MOD_nE7UL2.Mod
             var town = build.TryCast<MapBuildTown>();
             if (town != null)
             {
-                var x = EventHelper.GetEvent<MapBuildPropertyEvent>(ModConst.MAP_BUILD_PROPERTY_EVENT);
-                if (!x.Budget.ContainsKey(town.buildData.id))
-                    x.Budget.Add(town.buildData.id, 0);
-                return x.Budget[town.buildData.id];
+                if (!Instance.Budget.ContainsKey(town.buildData.id))
+                    Instance.Budget.Add(town.buildData.id, 0);
+                return Instance.Budget[town.buildData.id];
             }
 
             var school = build.TryCast<MapBuildSchool>();
@@ -253,10 +253,9 @@ namespace MOD_nE7UL2.Mod
             var town = build.TryCast<MapBuildTown>();
             if (town != null)
             {
-                var x = EventHelper.GetEvent<MapBuildPropertyEvent>(ModConst.MAP_BUILD_PROPERTY_EVENT);
-                if (!x.Budget.ContainsKey(town.buildData.id))
-                    x.Budget.Add(town.buildData.id, 0);
-                x.Budget[town.buildData.id] += add;
+                if (!Instance.Budget.ContainsKey(town.buildData.id))
+                    Instance.Budget.Add(town.buildData.id, 0);
+                Instance.Budget[town.buildData.id] += add;
                 return;
             }
 
