@@ -8,6 +8,8 @@ namespace MOD_nE7UL2.Mod
     [Cache(ModConst.SPECIAL_MONST_EVENT)]
     public class SpecialMonsterEvent : ModEvent
     {
+        public static SpecialMonsterEvent Instance { get; set; }
+
         public const float MONST_SHIELD_CHANCE = 0.60f;
         public const float MONST_EXPLODE_CHANCE = 0.40f;
         public const float MONST_MULTIPLY_CHANCE = 0.20f;
@@ -28,17 +30,16 @@ namespace MOD_nE7UL2.Mod
             {
                 var gameLvl = g.data.dataWorld.data.gameLevel.Parse<int>();
                 var monstData = e?.data?.TryCast<UnitDataMonst>();
-                var smConfigs = EventHelper.GetEvent<SMLocalConfigsEvent>(ModConst.SM_LOCAL_CONFIGS_EVENT);
 
                 if (monstData.monstType == MonstType.Common || monstData.monstType == MonstType.Elite)
                 {
-                    if (CommonTool.Random(0.0f, 100.0f).IsBetween(0.0f, smConfigs.Calculate(MONST_SHIELD_CHANCE * monstData.grade.value * gameLvl, smConfigs.Configs.AddSpecialMonsterRate).Parse<float>()))
+                    if (CommonTool.Random(0.0f, 100.0f).IsBetween(0.0f, SMLocalConfigsEvent.Instance.Calculate(MONST_SHIELD_CHANCE * monstData.grade.value * gameLvl, SMLocalConfigsEvent.Instance.Configs.AddSpecialMonsterRate).Parse<float>()))
                     {
                         var shield = monstData.maxHP.value;
                         BattleManashieldEvent.ShieldUp(monstData.unit, shield, int.MaxValue);
                     }
                 }
-                else if (smConfigs.Configs.BossHasShield && (monstData.monstType == MonstType.BOSS || monstData.monstType == MonstType.NPC))
+                else if (SMLocalConfigsEvent.Instance.Configs.BossHasShield && (monstData.monstType == MonstType.BOSS || monstData.monstType == MonstType.NPC))
                 {
                     var shield = monstData.maxHP.value;
                     BattleManashieldEvent.ShieldUp(monstData.unit, shield, int.MaxValue);
@@ -55,11 +56,10 @@ namespace MOD_nE7UL2.Mod
             {
                 var gameLvl = g.data.dataWorld.data.gameLevel.Parse<int>();
                 var monstData = dieUnit?.data?.TryCast<UnitDataMonst>();
-                var smConfigs = EventHelper.GetEvent<SMLocalConfigsEvent>(ModConst.SM_LOCAL_CONFIGS_EVENT);
 
                 if (monstData.monstType == MonstType.Common || monstData.monstType == MonstType.Elite)
                 {
-                    if (CommonTool.Random(0.0f, 100.0f).IsBetween(0.0f, smConfigs.Calculate(MONST_EXPLODE_CHANCE * monstData.grade.value * gameLvl, smConfigs.Configs.AddSpecialMonsterRate).Parse<float>()))
+                    if (CommonTool.Random(0.0f, 100.0f).IsBetween(0.0f, SMLocalConfigsEvent.Instance.Calculate(MONST_EXPLODE_CHANCE * monstData.grade.value * gameLvl, SMLocalConfigsEvent.Instance.Configs.AddSpecialMonsterRate).Parse<float>()))
                     {
                         ModBattleEvent.SceneBattle.effect.CreateSync(EXPLODE_EFX, dieUnit.transform.position, 3f);
                         foreach (var cunit in dieUnit.FindNearCEnemys(EXPLODE_RADIUS))
@@ -69,7 +69,7 @@ namespace MOD_nE7UL2.Mod
                     }
 
                     if (!multipliedUnits.Contains(dieUnit) &&
-                        CommonTool.Random(0.0f, 100.0f).IsBetween(0.0f, smConfigs.Calculate(MONST_MULTIPLY_CHANCE * monstData.grade.value * gameLvl, smConfigs.Configs.AddSpecialMonsterRate).Parse<float>()))
+                        CommonTool.Random(0.0f, 100.0f).IsBetween(0.0f, SMLocalConfigsEvent.Instance.Calculate(MONST_MULTIPLY_CHANCE * monstData.grade.value * gameLvl, SMLocalConfigsEvent.Instance.Configs.AddSpecialMonsterRate).Parse<float>()))
                     {
                         ModBattleEvent.SceneBattle.effect.CreateSync(MULTIPLY_EFX, dieUnit.transform.position, 3f);
                         var count = CommonTool.Random(1, MULTIPLY * gameLvl);
