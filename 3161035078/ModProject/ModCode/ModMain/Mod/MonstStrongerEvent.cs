@@ -11,6 +11,7 @@ namespace MOD_nE7UL2.Mod
     [Cache(ModConst.MONST_STRONGER_EVENT)]
     public class MonstStrongerEvent : ModEvent
     {
+        public static MonstStrongerEvent Instance { get; set; }
         public static _MonstStrongerConfigs Configs => ModMain.ModObj.GameSettings.MonstStrongerConfigs;
         public static IDictionary<MonstType, float> AdditionalStts { get; set; } = new Dictionary<MonstType, float>
         {
@@ -70,22 +71,21 @@ namespace MOD_nE7UL2.Mod
 
                 //S&M
                 //DebugHelper.WriteLine($"4: {atk}, {def}, {mhp}");
-                var smConfigs = EventHelper.GetEvent<SMLocalConfigsEvent>(ModConst.SM_LOCAL_CONFIGS_EVENT);
-                monstData.attack.baseValue = smConfigs.Calculate(atk, smConfigs.Configs.AddAtkRate).Parse<int>();
-                monstData.defense.baseValue = smConfigs.Calculate(def, smConfigs.Configs.AddDefRate).Parse<int>();
-                monstData.maxHP.baseValue = smConfigs.Calculate(mhp, smConfigs.Configs.AddHpRate).Parse<int>();
-                monstData.basisBlade.baseValue = smConfigs.Calculate(monstData.basisBlade.value, smConfigs.Configs.AddBasisRate).Parse<int>();
-                monstData.basisEarth.baseValue = smConfigs.Calculate(monstData.basisEarth.value, smConfigs.Configs.AddBasisRate).Parse<int>();
-                monstData.basisFinger.baseValue = smConfigs.Calculate(monstData.basisFinger.value, smConfigs.Configs.AddBasisRate).Parse<int>();
-                monstData.basisFire.baseValue = smConfigs.Calculate(monstData.basisFire.value, smConfigs.Configs.AddBasisRate).Parse<int>();
-                monstData.basisFist.baseValue = smConfigs.Calculate(monstData.basisFist.value, smConfigs.Configs.AddBasisRate).Parse<int>();
-                monstData.basisFroze.baseValue = smConfigs.Calculate(monstData.basisFroze.value, smConfigs.Configs.AddBasisRate).Parse<int>();
-                monstData.basisPalm.baseValue = smConfigs.Calculate(monstData.basisPalm.value, smConfigs.Configs.AddBasisRate).Parse<int>();
-                monstData.basisSpear.baseValue = smConfigs.Calculate(monstData.basisSpear.value, smConfigs.Configs.AddBasisRate).Parse<int>();
-                monstData.basisSword.baseValue = smConfigs.Calculate(monstData.basisSword.value, smConfigs.Configs.AddBasisRate).Parse<int>();
-                monstData.basisThunder.baseValue = smConfigs.Calculate(monstData.basisThunder.value, smConfigs.Configs.AddBasisRate).Parse<int>();
-                monstData.basisWind.baseValue = smConfigs.Calculate(monstData.basisWind.value, smConfigs.Configs.AddBasisRate).Parse<int>();
-                monstData.basisWood.baseValue = smConfigs.Calculate(monstData.basisWood.value, smConfigs.Configs.AddBasisRate).Parse<int>();
+                monstData.attack.baseValue = SMLocalConfigsEvent.Instance.Calculate(atk, SMLocalConfigsEvent.Instance.Configs.AddAtkRate).Parse<int>();
+                monstData.defense.baseValue = SMLocalConfigsEvent.Instance.Calculate(def, SMLocalConfigsEvent.Instance.Configs.AddDefRate).Parse<int>();
+                monstData.maxHP.baseValue = SMLocalConfigsEvent.Instance.Calculate(mhp, SMLocalConfigsEvent.Instance.Configs.AddHpRate).Parse<int>();
+                monstData.basisBlade.baseValue = SMLocalConfigsEvent.Instance.Calculate(monstData.basisBlade.value, SMLocalConfigsEvent.Instance.Configs.AddBasisRate).Parse<int>();
+                monstData.basisEarth.baseValue = SMLocalConfigsEvent.Instance.Calculate(monstData.basisEarth.value, SMLocalConfigsEvent.Instance.Configs.AddBasisRate).Parse<int>();
+                monstData.basisFinger.baseValue = SMLocalConfigsEvent.Instance.Calculate(monstData.basisFinger.value, SMLocalConfigsEvent.Instance.Configs.AddBasisRate).Parse<int>();
+                monstData.basisFire.baseValue = SMLocalConfigsEvent.Instance.Calculate(monstData.basisFire.value, SMLocalConfigsEvent.Instance.Configs.AddBasisRate).Parse<int>();
+                monstData.basisFist.baseValue = SMLocalConfigsEvent.Instance.Calculate(monstData.basisFist.value, SMLocalConfigsEvent.Instance.Configs.AddBasisRate).Parse<int>();
+                monstData.basisFroze.baseValue = SMLocalConfigsEvent.Instance.Calculate(monstData.basisFroze.value, SMLocalConfigsEvent.Instance.Configs.AddBasisRate).Parse<int>();
+                monstData.basisPalm.baseValue = SMLocalConfigsEvent.Instance.Calculate(monstData.basisPalm.value, SMLocalConfigsEvent.Instance.Configs.AddBasisRate).Parse<int>();
+                monstData.basisSpear.baseValue = SMLocalConfigsEvent.Instance.Calculate(monstData.basisSpear.value, SMLocalConfigsEvent.Instance.Configs.AddBasisRate).Parse<int>();
+                monstData.basisSword.baseValue = SMLocalConfigsEvent.Instance.Calculate(monstData.basisSword.value, SMLocalConfigsEvent.Instance.Configs.AddBasisRate).Parse<int>();
+                monstData.basisThunder.baseValue = SMLocalConfigsEvent.Instance.Calculate(monstData.basisThunder.value, SMLocalConfigsEvent.Instance.Configs.AddBasisRate).Parse<int>();
+                monstData.basisWind.baseValue = SMLocalConfigsEvent.Instance.Calculate(monstData.basisWind.value, SMLocalConfigsEvent.Instance.Configs.AddBasisRate).Parse<int>();
+                monstData.basisWood.baseValue = SMLocalConfigsEvent.Instance.Calculate(monstData.basisWood.value, SMLocalConfigsEvent.Instance.Configs.AddBasisRate).Parse<int>();
 
                 atk = monstData.attack.baseValue;
                 def = monstData.defense.baseValue;
@@ -137,7 +137,7 @@ namespace MOD_nE7UL2.Mod
 
                 //rebirth
                 //DebugHelper.WriteLine("10");
-                var rebirthRatio = EventHelper.GetEvent<RebirthEvent>(ModConst.REBIRTH_EVENT).TotalGradeLvl * Configs.RebirthAffect;
+                var rebirthRatio = RebirthEvent.Instance.TotalGradeLvl * Configs.RebirthAffect;
                 rebirthRatio *= gameLvl;
                 monstData.attack.baseValue += (atk * rebirthRatio * Configs.AtkR).Parse<int>();
                 monstData.defense.baseValue += (def * rebirthRatio * Configs.DefR).Parse<int>();

@@ -12,12 +12,13 @@ namespace MOD_nE7UL2.Mod
     [Cache(ModConst.REAL_STORAGE_EVENT)]
     public class RealStorageEvent : ModEvent
     {
+        public static RealStorageEvent Instance { get; set; }
+
         public const int DEBT_DRAMA = 480020100;
 
         public static double FeeRate()
         {
-            var smConfigs = EventHelper.GetEvent<SMLocalConfigsEvent>(ModConst.SM_LOCAL_CONFIGS_EVENT);
-            return smConfigs.Calculate(ModMain.ModObj.GameSettings.RealStorageConfigs.FeeRate, smConfigs.Configs.AddBankFee);
+            return SMLocalConfigsEvent.Instance.Calculate(ModMain.ModObj.GameSettings.RealStorageConfigs.FeeRate, SMLocalConfigsEvent.Instance.Configs.AddBankFee);
         }
 
         private Text txtStorageMoney;
@@ -109,7 +110,7 @@ namespace MOD_nE7UL2.Mod
 
         public static void RemoveDebt()
         {
-            EventHelper.GetEvent<RealStorageEvent>(ModConst.REAL_STORAGE_EVENT).Debt = 0L;
+            Instance.Debt = 0L;
         }
     }
 }

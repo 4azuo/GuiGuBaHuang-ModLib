@@ -12,6 +12,8 @@ namespace MOD_nE7UL2.Mod
     [Cache(ModConst.TRAINER_EVENT)]
     public class TrainerEvent : ModEvent
     {
+        public static TrainerEvent Instance { get; set; }
+
         public const string TITLE = "Mini Trainer";
         public const float TRAINER_BTN_WIDTH = 200;
         public const float TRAINER_BTN_HEIGHT = 36;
@@ -40,7 +42,7 @@ namespace MOD_nE7UL2.Mod
 
         public override bool OnCacheHandler()
         {
-            return EventHelper.GetEvent<SMLocalConfigsEvent>(ModConst.SM_LOCAL_CONFIGS_EVENT).Configs.EnableTrainer;
+            return SMLocalConfigsEvent.Instance.Configs.EnableTrainer;
         }
 
         public override void OnMonoUpdate()
@@ -67,8 +69,7 @@ namespace MOD_nE7UL2.Mod
         {
             if (!g.ui.HasUI(UIType.MapMain))
             {
-                var uiConfirm = g.ui.OpenUI<UICheckPopup>(UIType.CheckPopup);
-                uiConfirm.InitData("Trainer", "You have to on map!", 1);
+                g.ui.MsgBox("Trainer", "You have to on map!");
                 return;
             }
 

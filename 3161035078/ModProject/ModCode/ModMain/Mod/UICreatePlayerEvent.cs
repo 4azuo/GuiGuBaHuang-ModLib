@@ -13,8 +13,7 @@ namespace MOD_nE7UL2.Mod
             base.OnOpenUIStart(e);
             if (e.uiType.uiName == UIType.CreatePlayer.uiName)
             {
-                var smConfigs = EventHelper.GetEvent<SMGlobalConfigsEvent>(ModConst.SM_GLOBAL_CONFIGS_EVENT);
-                if (smConfigs.PriorityDestinyLevel != 0)
+                if (SMGlobalConfigsEvent.Instance.PriorityDestinyLevel != 0)
                 {
                     OnlyGrayDestinies();
                 }
@@ -23,10 +22,9 @@ namespace MOD_nE7UL2.Mod
 
         private void OnlyGrayDestinies()
         {
-            var smConfigs = EventHelper.GetEvent<SMGlobalConfigsEvent>(ModConst.SM_GLOBAL_CONFIGS_EVENT);
             foreach (var luck in g.conf.roleCreateFeature._allConfList)
             {
-                if (luck.type == 1 && luck.level == smConfigs.PriorityDestinyLevel)
+                if (luck.type == 1 && luck.level == SMGlobalConfigsEvent.Instance.PriorityDestinyLevel)
                 {
                     luck.weight = 1000;
                     luck.lockLuck = 0;
