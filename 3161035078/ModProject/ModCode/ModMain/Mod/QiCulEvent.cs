@@ -60,7 +60,7 @@ namespace MOD_nE7UL2.Mod
             {
                 var uiBase = g.ui.GetUI<UINPCInfo>(e.ui.uiType);
                 var unitId = uiBase.unit.GetUnitId();
-                if (Qi.ContainsKey(unitId))
+                if (Qi.ContainsKey(unitId) && !HirePeopleEvent.isShowHirePeopleUI)
                 {
                     var ui = new UICover<UINPCInfo>(uiBase);
                     {

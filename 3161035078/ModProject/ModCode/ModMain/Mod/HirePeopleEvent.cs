@@ -2,11 +2,11 @@
 using MOD_nE7UL2.Const;
 using ModLib.Mod;
 using UnityEngine;
-using Il2CppSystem;
 using System.Collections.Generic;
 using System.Linq;
 using ModLib.Object;
 using ModLib.Enum;
+using System;
 
 namespace MOD_nE7UL2.Mod
 {
@@ -40,8 +40,8 @@ namespace MOD_nE7UL2.Mod
             {
                 var ui = new UICover<UINPCInfo>(e.ui);
                 {
-                    ui.AddText(0, 0, "Team:").Align(TextAnchor.MiddleRight).Pos(ui.UI.uiProperty.textTrait.transform, 0f, 0.2f);
-                    ui.AddText(0, 0, "").Align(TextAnchor.MiddleLeft).Pos(ui.UI.uiProperty.textTrait.transform, 0f, 0.2f);
+                    ui.AddText(0, 0, "Team:").Align(TextAnchor.MiddleRight).Format(Color.white).Pos(ui.UI.uiProperty.textInTrait2.transform, 0f, 0.2f);
+                    ui.AddText(0, 0, GetTeamInfoStr(ui.UI.unit)).Align(TextAnchor.MiddleLeft).Format(Color.white).Pos(ui.UI.uiProperty.textInTrait1.transform, 0f, 0.2f);
                     if (isShowHirePeopleUI)
                     {
                         ui.AddText(0, 0, $"{GetRequiredSpiritStones(g.world.playerUnit, ui.UI.unit)} Spirit Stones").Align().Format(Color.white, 16).Pos(ui.UI.goFocal.transform, 2f, 0.5f);
@@ -63,12 +63,12 @@ namespace MOD_nE7UL2.Mod
             {
                 var ui = new UICover<UIPlayerInfo>(e.ui);
                 {
-                    ui.AddButton(0, 0, OpenUIManageTeam, "Manage Team").Size(160, 40).Pos(ui.UI.uiProperty.textStand1_En.transform, 0f, 0.5f).SetWork(new UIItemWork
+                    ui.AddButton(0, 0, OpenUIManageTeam, "Manage Team").Size(160, 40).Pos(ui.UI.uiProperty.textInTrait_En.transform, 0f, 0.5f).SetWork(new UIItemWork
                     {
                         UpdateAct = (x) => x.Component.gameObject.SetActive(TeamData.ContainsKey(g.world.playerUnit.GetUnitId())),
                     });
-                    ui.AddText(0, 0, "Team:").Align(TextAnchor.MiddleRight).Pos(ui.UI.uiProperty.textStand1_En.transform, 0f, 0.2f);
-                    ui.AddText(0, 0, "").Align(TextAnchor.MiddleLeft).Pos(ui.UI.uiProperty.textStand2_En.transform, 0f, 0.2f);
+                    ui.AddText(0, 0, "Team:").Align(TextAnchor.MiddleRight).Pos(ui.UI.uiProperty.textInTrait_En.transform, 0f, 0.2f);
+                    ui.AddText(0, 0, GetTeamInfoStr(ui.UI.unit)).Align(TextAnchor.MiddleLeft).Pos(ui.UI.uiProperty.textInTrait_En.transform, 0f, 0.2f);
                 }
                 ui.UpdateUI();
             }
@@ -81,8 +81,7 @@ namespace MOD_nE7UL2.Mod
                     var a = g.ui.GetUI<UINPCInfo>(UIType.NPCInfo);
                     var b = g.ui.GetUI<UIPlayerInfo>(UIType.PlayerInfo);
                     var wunitId = (a.unit ?? b.unit).GetUnitId();
-                    var teamId = TeamData.First(x => x.Value.Contains(wunitId)).Key;
-                    var master = g.world.unit.GetUnit(teamId);
+                    var master = GetTeamMaster(g.world.unit.GetUnit(wunitId));
                     ui.ptextTip.text = $"{string.Join(" ", master.data.unitData.propertyData.name)}'s team";
                 }
             }
@@ -91,9 +90,12 @@ namespace MOD_nE7UL2.Mod
         public override void OnCloseUIStart(CloseUIStart e)
         {
             base.OnCloseUIStart(e);
-            if (isShowHirePeopleUI && e.uiType.uiName == UIType.TownBounty.uiName)
+            if (e.uiType.uiName == UIType.NPCSearch.uiName)
             {
-                isShowHirePeopleUI = false;
+                if (isShowHirePeopleUI)
+                    isShowHirePeopleUI = false;
+                else if (isShowManageTeamUI)
+                    isShowManageTeamUI = false;
             }
         }
 
@@ -104,6 +106,8 @@ namespace MOD_nE7UL2.Mod
                 //open select ui
                 var ui = g.ui.OpenUI<UINPCSearch>(UIType.NPCSearch);
                 ui.units = GetHirablePeople();
+                ui.Init();
+                ui.UpdateUI();
                 isShowHirePeopleUI = true;
             }
         }
@@ -114,34 +118,11 @@ namespace MOD_nE7UL2.Mod
             {
                 //open select ui
                 var ui = g.ui.OpenUI<UINPCSearch>(UIType.NPCSearch);
-                ui.units = GetHiredPeople();
+                ui.units = GetTeamMember(g.world.playerUnit);
+                ui.Init();
+                ui.UpdateUI();
                 isShowManageTeamUI = true;
             }
-        }
-
-        public static Il2CppSystem.Collections.Generic.List<WorldUnitBase> GetHirablePeople()
-        {
-            var rs = new Il2CppSystem.Collections.Generic.List<WorldUnitBase>();
-            foreach (var wunit in g.world.playerUnit.GetUnitsAround(4, false, false))
-            {
-                if (wunit.GetLuck(MapBuildPropertyEvent.TOWN_MASTER_LUCK_ID) == null &&
-                    wunit.GetLuck(MapBuildPropertyEvent.TOWN_GUARDIAN_LUCK_ID) == null &&
-                    wunit.GetLuck(TEAM_LUCK_ID) == null)
-                {
-                    rs.Add(wunit);
-                }
-            }
-            return rs;
-        }
-
-        public static Il2CppSystem.Collections.Generic.List<WorldUnitBase> GetHiredPeople()
-        {
-            var rs = new Il2CppSystem.Collections.Generic.List<WorldUnitBase>();
-            foreach (var wunitId in Instance.TeamData[g.world.playerUnit.GetUnitId()])
-            {
-                rs.Add(g.world.unit.GetUnit(wunitId));
-            }
-            return rs;
         }
 
         public static bool Check(WorldUnitBase wunit)
@@ -151,7 +132,7 @@ namespace MOD_nE7UL2.Mod
             if (!Instance.TeamData.ContainsKey(playerId))
                 Instance.TeamData.Add(playerId, new List<string>());
 
-            if (Instance.TeamData.Any(x => x.Value.Contains(playerId)))
+            if (IsHired(player))
             {
                 g.ui.MsgBox("Team", "You have to quit current team!");
                 return false;
@@ -175,19 +156,87 @@ namespace MOD_nE7UL2.Mod
             return true;
         }
 
-        public void Hire(WorldUnitBase wunit)
+        public static void Hire(WorldUnitBase wunit)
         {
+        }
+
+        public static Il2CppSystem.Collections.Generic.List<WorldUnitBase> GetHirablePeople()
+        {
+            var rs = new Il2CppSystem.Collections.Generic.List<WorldUnitBase>();
+            foreach (var wunit in g.world.playerUnit.GetUnitsAround(4, false, false))
+            {
+                if (wunit.GetLuck(MapBuildPropertyEvent.TOWN_MASTER_LUCK_ID) == null &&
+                    wunit.GetLuck(MapBuildPropertyEvent.TOWN_GUARDIAN_LUCK_ID) == null &&
+                    !IsHired(wunit))
+                {
+                    rs.Add(wunit);
+                }
+            }
+            return rs;
+        }
+
+        public static Il2CppSystem.Collections.Generic.List<WorldUnitBase> GetTeamMember(WorldUnitBase wunit)
+        {
+            var rs = new Il2CppSystem.Collections.Generic.List<WorldUnitBase>();
+            var teamData = GetTeamData(wunit);
+            if (!teamData.HasValue)
+                return rs;
+            foreach (var wunitId in teamData.Value.Value)
+            {
+                rs.Add(g.world.unit.GetUnit(wunitId));
+            }
+            return rs;
+        }
+
+        public static KeyValuePair<string, List<string>>? GetTeamData(WorldUnitBase wunit)
+        {
+            if (!IsHired(wunit))
+                return null;
+            var wunitId = wunit.GetUnitId();
+            var teamData = Instance.TeamData.First(x => x.Value.Contains(wunitId));
+            return teamData;
+        }
+
+        public static Tuple<WorldUnitBase, List<WorldUnitBase>> GetTeamDetailData(WorldUnitBase wunit)
+        {
+            var teamData = GetTeamData(wunit);
+            if (!teamData.HasValue)
+                return null;
+            return Tuple.Create(g.world.unit.GetUnit(teamData.Value.Key), teamData.Value.Value.Select(x => g.world.unit.GetUnit(x)).ToList());
+        }
+
+        public static WorldUnitBase GetTeamMaster(WorldUnitBase wunit)
+        {
+            var teamData = GetTeamData(wunit);
+            if (!teamData.HasValue)
+                return null;
+            return g.world.unit.GetUnit(teamData.Value.Key);
+        }
+
+        public static string GetTeamInfoStr(WorldUnitBase wunit)
+        {
+            var teamData = GetTeamDetailData(wunit);
+            if (teamData == null)
+                return null;
+            return $"{string.Join(" ", teamData.Item1.data.unitData.propertyData.name)} ({teamData.Item2.Count} members)";
+        }
+
+        public static bool IsHired(WorldUnitBase wunit)
+        {
+            return wunit.GetLuck(TEAM_LUCK_ID) != null;
         }
 
         public static int GetRequiredSpiritStones(WorldUnitBase master, WorldUnitBase wunit)
         {
-            var k = Instance.TeamData[master.GetUnitId()].Count + 1;
+            var masterId = master.GetUnitId();
+            var k = (Instance.TeamData.ContainsKey(masterId) ? Instance.TeamData[masterId].Count : 1) + 1;
             return (Math.Pow(2, wunit.GetGradeLvl()) * 1000 * k).Parse<int>();
         }
 
         public static int GetRequiredReputations(WorldUnitBase master, WorldUnitBase wunit)
         {
-            var k = Instance.TeamData[master.GetUnitId()].Count + 1;
+            var masterId = master.GetUnitId();
+            var k = (Instance.TeamData.ContainsKey(masterId) ? Instance.TeamData[masterId].Count : 1) + 1;
             return (Math.Pow(2, k) * 1000).Parse<int>();
         }
     }

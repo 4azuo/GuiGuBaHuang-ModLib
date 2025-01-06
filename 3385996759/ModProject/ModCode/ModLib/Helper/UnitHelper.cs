@@ -648,4 +648,9 @@ public static class UnitHelper
     {
         return wunits.OrderByDescending(x => x.GetDynProperty(UnitDynPropertyEnum.Attack).value).FirstOrDefault();
     }
+
+    public static WorldUnitBase GetFamousWUnit(this IEnumerable<WorldUnitBase> wunits)
+    {
+        return wunits.OrderByDescending(x => x.GetDynProperty(UnitDynPropertyEnum.Reputation).value).FirstOrDefault();
+    }
 }
