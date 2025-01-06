@@ -40,20 +40,34 @@ namespace MOD_nE7UL2.Mod
             {
                 var ui = new UICover<UINPCInfo>(e.ui);
                 {
-                    ui.AddText(0, 0, "Team:").Align(TextAnchor.MiddleRight).Format(Color.white).Pos(ui.UI.uiProperty.textInTrait2.transform, 0f, 0.2f);
-                    ui.AddText(0, 0, GetTeamInfoStr(ui.UI.unit)).Align(TextAnchor.MiddleLeft).Format(Color.white).Pos(ui.UI.uiProperty.textInTrait1.transform, 0f, 0.2f);
-                    if (isShowHirePeopleUI)
+                    if (IsHired(ui.UI.unit))
                     {
-                        ui.AddText(0, 0, $"{GetRequiredSpiritStones(g.world.playerUnit, ui.UI.unit)} Spirit Stones").Align().Format(Color.white, 16).Pos(ui.UI.goFocal.transform, 2f, 0.5f);
-                        ui.AddText(0, 0, $"{GetRequiredReputations(g.world.playerUnit, ui.UI.unit)} Reputations").Align().Format(Color.white, 16).Pos(ui.UI.goFocal.transform, 2f, 0.3f);
+                        ui.AddText(0, 0, $"Team: {GetTeamInfoStr(ui.UI.unit)}").Align().Format(Color.white).Pos(ui.UI.uiProperty.textInTrait1.transform, 0f, 0.25f).SetParentTransform(ui.UI.uiProperty.textInTrait1.transform);
+                    }
+                    if (isShowManageTeamUI)
+                    {
+                        ui.AddText(0, 0, $"{GetRequiredSpiritStones(g.world.playerUnit, ui.UI.unit) / 10:0,000} Spirit Stones/month").Align().Format(Color.white).Pos(ui.UI.uiProperty.textInTrait1.transform, 0f, 0.5f).SetParentTransform(ui.UI.uiProperty.textInTrait1.transform);
                         ui.AddButton(0, 0, () =>
                         {
                             if (Check(ui.UI.unit))
                             {
-                                Hire(ui.UI.unit);
+                                Dismiss(g.world.playerUnit, ui.UI.unit);
                                 g.ui.CloseUI(ui.UI);
                             }
-                        }, "Hire").Format(Color.black, 14).Size(160, 30).Pos(ui.UI.goFocal.transform, 2f, 0f);
+                        }, "Dismiss").Format(Color.black).Size(120, 30).Pos(ui.UI.uiProperty.textInTrait1.transform, -1f, 0.4f).SetParentTransform(ui.UI.uiProperty.textInTrait1.transform);
+                    }
+                    if (isShowHirePeopleUI)
+                    {
+                        ui.AddText(0, 0, $"{GetRequiredSpiritStones(g.world.playerUnit, ui.UI.unit):0,000} Spirit Stones").Align().Format(Color.white).Pos(ui.UI.uiProperty.textInTrait1.transform, 0f, 0.5f).SetParentTransform(ui.UI.uiProperty.textInTrait1.transform);
+                        ui.AddText(0, 0, $"{GetRequiredReputations(g.world.playerUnit, ui.UI.unit):0,000} Reputations").Align().Format(Color.white).Pos(ui.UI.uiProperty.textInTrait1.transform, 0f, 0.25f).SetParentTransform(ui.UI.uiProperty.textInTrait1.transform);
+                        ui.AddButton(0, 0, () =>
+                        {
+                            if (Check(ui.UI.unit))
+                            {
+                                Hire(g.world.playerUnit, ui.UI.unit);
+                                g.ui.CloseUI(ui.UI);
+                            }
+                        }, "Hire").Format(Color.black).Size(120, 40).Pos(ui.UI.uiProperty.textInTrait1.transform, -1f, 0.4f).SetParentTransform(ui.UI.uiProperty.textInTrait1.transform);
                     }
                 }
                 ui.UpdateUI();
@@ -63,12 +77,14 @@ namespace MOD_nE7UL2.Mod
             {
                 var ui = new UICover<UIPlayerInfo>(e.ui);
                 {
-                    ui.AddButton(0, 0, OpenUIManageTeam, "Manage Team").Size(160, 40).Pos(ui.UI.uiProperty.textInTrait_En.transform, 0f, 0.5f).SetWork(new UIItemWork
+                    if (IsHired(ui.UI.unit))
                     {
-                        UpdateAct = (x) => x.Component.gameObject.SetActive(TeamData.ContainsKey(g.world.playerUnit.GetUnitId())),
-                    });
-                    ui.AddText(0, 0, "Team:").Align(TextAnchor.MiddleRight).Pos(ui.UI.uiProperty.textInTrait_En.transform, 0f, 0.2f);
-                    ui.AddText(0, 0, GetTeamInfoStr(ui.UI.unit)).Align(TextAnchor.MiddleLeft).Pos(ui.UI.uiProperty.textInTrait_En.transform, 0f, 0.2f);
+                        ui.AddButton(0, 0, OpenUIManageTeam, "Manage Team").Size(160, 40).Pos(ui.UI.uiProperty.textInTrait_En.transform, -0.5f, 0.3f).SetWork(new UIItemWork
+                        {
+                            UpdateAct = (x) => x.Component.gameObject.SetActive(TeamData.ContainsKey(g.world.playerUnit.GetUnitId())),
+                        });
+                        ui.AddText(0, 0, $"Team: {GetTeamInfoStr(ui.UI.unit)}").Align(TextAnchor.MiddleRight).Pos(ui.UI.uiProperty.textInTrait_En.transform, 0f, 0.3f);
+                    }
                 }
                 ui.UpdateUI();
             }
@@ -105,8 +121,8 @@ namespace MOD_nE7UL2.Mod
             {
                 //open select ui
                 var ui = g.ui.OpenUI<UINPCSearch>(UIType.NPCSearch);
+                ui.InitData(new Vector2Int(0, 0));
                 ui.units = GetHirablePeople();
-                ui.Init();
                 ui.UpdateUI();
                 isShowHirePeopleUI = true;
             }
@@ -118,10 +134,35 @@ namespace MOD_nE7UL2.Mod
             {
                 //open select ui
                 var ui = g.ui.OpenUI<UINPCSearch>(UIType.NPCSearch);
+                ui.InitData(new Vector2Int(0, 0));
                 ui.units = GetTeamMember(g.world.playerUnit);
-                ui.Init();
                 ui.UpdateUI();
                 isShowManageTeamUI = true;
+            }
+        }
+
+        public override void OnMonthlyForEachWUnit(WorldUnitBase wunit)
+        {
+            base.OnMonthlyForEachWUnit(wunit);
+            var wunitId = wunit.GetUnitId();
+            if (TeamData.ContainsKey(wunitId))
+            {
+                var teamData = GetTeamDetailData(wunit);
+                foreach (var member in teamData.Item2.ToArray())
+                {
+                    var memberId = member.GetUnitId();
+                    if (memberId == wunitId)
+                        continue;
+                    if (member.isDie)
+                    {
+                        teamData.Item2.Remove(member);
+                    }
+                    else
+                    {
+                        var requiredSpiritStones = GetRequiredSpiritStones(wunit, member) / 10;
+
+                    }
+                }
             }
         }
 
@@ -156,8 +197,31 @@ namespace MOD_nE7UL2.Mod
             return true;
         }
 
-        public static void Hire(WorldUnitBase wunit)
+        public static void Hire(WorldUnitBase master, WorldUnitBase member)
         {
+            var masterId = master.GetUnitId();
+            if (!Instance.TeamData.ContainsKey(masterId))
+            {
+                Instance.TeamData.Add(masterId, new List<string>());
+                Instance.TeamData[masterId].Add(masterId);
+            }
+            var teamData = Instance.TeamData[masterId];
+            teamData.Add(member.GetUnitId());
+            member.AddLuck(TEAM_LUCK_ID);
+        }
+
+        public static void Dismiss(WorldUnitBase master, WorldUnitBase member)
+        {
+            var masterId = master.GetUnitId();
+            var memberId = member.GetUnitId();
+            if (!Instance.TeamData.ContainsKey(masterId) || !Instance.TeamData[masterId].Contains(memberId))
+                return;
+            var teamData = Instance.TeamData[masterId];
+            teamData.Remove(member.GetUnitId());
+            member.DelLuck(TEAM_LUCK_ID);
+
+            if (teamData.All(x => x == masterId))
+                Instance.TeamData.Remove(masterId);
         }
 
         public static Il2CppSystem.Collections.Generic.List<WorldUnitBase> GetHirablePeople()
@@ -167,7 +231,8 @@ namespace MOD_nE7UL2.Mod
             {
                 if (wunit.GetLuck(MapBuildPropertyEvent.TOWN_MASTER_LUCK_ID) == null &&
                     wunit.GetLuck(MapBuildPropertyEvent.TOWN_GUARDIAN_LUCK_ID) == null &&
-                    !IsHired(wunit))
+                    !IsHired(wunit) &&
+                    rs.Find((Il2CppSystem.Predicate<WorldUnitBase>)((x) => x.GetUnitId() == wunit.GetUnitId())) == null)
                 {
                     rs.Add(wunit);
                 }

@@ -14,4 +14,9 @@
 		"key": "townmaster420041112",
 		"en|ch|tc": "Town Guardian"
 	},
+	{
+		"id": "420041113",
+		"key": "townmaster420041113drama",
+		"en|ch|tc": "You become this town master."
+	},
 ]

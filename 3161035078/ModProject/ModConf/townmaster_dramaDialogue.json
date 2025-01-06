@@ -1,0 +1,20 @@
+[
+	{
+		"id": "420041113",
+		"uiType": "2",
+		"condition": "0",
+		"weight": "1",
+		"npcLeft": "0",
+		"npcRight": "0",
+		"speaker": "0",
+		"backgroud": "choudaorenqiyu6",
+		"soundsBg": "0",
+		"soundsEffect": "0",
+		"title": "0",
+		"dialogue": "townmaster420041113drama",
+		"openFunction": "0",
+		"function": "0",
+		"options": "480010101",
+		"nextDialogue": "0"
+	}
+]
