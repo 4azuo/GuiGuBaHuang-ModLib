@@ -31,4 +31,22 @@ public static class UIHelper
         var uiConfirm = g.OpenUI<UICheckPopup>(UIType.CheckPopup);
         uiConfirm.InitData(title, content, type.Parse<int>(), (Il2CppSystem.Action)(() => onYesCall?.Invoke()), (Il2CppSystem.Action)(() => onNoCall?.Invoke()));
     }
+
+    public static void UpdateAllUI()
+    {
+        foreach (var ui in UIs.ToArray())
+        {
+            try
+            {
+                if (!g.ui.HasUI(ui.UIBase.uiType))
+                    ui?.Dispose();
+                else if (ui.IsAutoUpdate)
+                    ui?.UpdateUI();
+            }
+            catch
+            {
+                ui?.Dispose();
+            }
+        }
+    }
 }
