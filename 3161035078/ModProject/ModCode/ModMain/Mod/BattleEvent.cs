@@ -71,7 +71,7 @@ namespace MOD_nE7UL2.Mod
 
         private bool CondJoinBattle(WorldUnitBase wunit)
         {
-            return
+            return !MapBuildPropertyEvent.IsTownGuardian(wunit) &&
                 wunit.GetDynProperty(UnitDynPropertyEnum.Hp).value > (wunit.GetDynProperty(UnitDynPropertyEnum.HpMax).value * 0.7f) &&
                 wunit.GetDynProperty(UnitDynPropertyEnum.Mp).value > (wunit.GetDynProperty(UnitDynPropertyEnum.MpMax).value * 0.5f) &&
                 wunit.GetDynProperty(UnitDynPropertyEnum.Sp).value > (wunit.GetDynProperty(UnitDynPropertyEnum.SpMax).value * 0.3f) &&
