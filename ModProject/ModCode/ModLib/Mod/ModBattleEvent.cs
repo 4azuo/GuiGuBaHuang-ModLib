@@ -1,5 +1,6 @@
 ﻿using EBattleTypeData;
 using ModLib.Enum;
+using Mono.CSharp;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
@@ -232,6 +233,10 @@ namespace ModLib.Mod
         [JsonIgnore]
         public static ModBattleEvent BattleInfo { get; private set; }
         [JsonIgnore]
+        public static MapBuildTown Town { get; private set; }
+        [JsonIgnore]
+        public static MapBuildSchool School { get; private set; }
+        [JsonIgnore]
         public static DateTime StartTime { get; private set; }
         [JsonIgnore]
         public static TimeSpan BattleTime => DateTime.Now - StartTime;
@@ -276,7 +281,11 @@ namespace ModLib.Mod
         {
             base.OnBattleStart(e);
 
+            var playerPos = g.world.playerUnit.GetUnitPos();
+
             StartTime = DateTime.Now;
+            Town = g.world.build.GetBuild<MapBuildTown>(playerPos);
+            School = g.world.build.GetBuild<MapBuildSchool>(playerPos);
             BattleDmg.Clear();
             KillList.Clear();
             foreach (var de in (DmgEnum[])System.Enum.GetValues(typeof(DmgEnum)))
