@@ -20,6 +20,7 @@ namespace MOD_nE7UL2.Mod
         public const int TOWN_MASTER_LUCK_ID = 420041111;
         public const int TOWN_GUARDIAN_LUCK_ID = 420041112;
         public const string TOWN_COUCIL_LUCK_DESC = "townmaster420041110desc";
+        public const int BECOME_TOWN_MASTER_DRAMA = 420041113;
         public const int MAX_GUARDIANS = 10;
 
         public Dictionary<string, long> Budget { get; set; } = new Dictionary<string, long>();
@@ -40,6 +41,7 @@ namespace MOD_nE7UL2.Mod
                 if (!TownMasters.ContainsKey(town.buildData.id))
                 {
                     TownMasters.Add(town.buildData.id, new List<string>());
+                    var townMasterData = TownMasters[town.buildData.id];
 
                     var orgPoint = town.GetOrigiPoint();
                     var aroundWUnits = UnitHelper.GetUnitsAround(orgPoint.x, orgPoint.y, 4, false, true).ToArray().Where(x => !IsTownGuardian(x));
@@ -47,10 +49,10 @@ namespace MOD_nE7UL2.Mod
                     {
                         var master = aroundWUnits.GetFamousWUnit();
                         var masterId = master.GetUnitId();
-                        var guardians = aroundWUnits.Where(x => x != master).Take(MAX_GUARDIANS);
+                        var guardians = aroundWUnits.Where(x => x != master && !x.IsPlayer()).Take(MAX_GUARDIANS);
                         var guardianIds = guardians.Select(x => x.GetUnitId());
-                        TownMasters[town.buildData.id].Add(masterId);
-                        TownMasters[town.buildData.id].AddRange(guardianIds);
+                        townMasterData.Add(masterId);
+                        townMasterData.AddRange(guardianIds);
 
                         master.AddLuck(TOWN_MASTER_LUCK_ID);
                         foreach (var wunit in guardians)
@@ -131,7 +133,7 @@ namespace MOD_nE7UL2.Mod
 
             //school tax
             var school = g.world.build.GetBuild<MapBuildSchool>(location);
-            if (school != null && school.schoolNameID != wunit.data.school?.schoolNameID)
+            if (school != null && !IsSchoolMember(school, wunit))
             {
                 //pay school tax
                 int tax = GetTax(wunit, wunit.GetUnitPosAreaId(), school.schoolData.allEffects.Count);
@@ -188,11 +190,14 @@ namespace MOD_nE7UL2.Mod
                     var masterId = master.GetUnitId();
                     master.AddLuck(TOWN_MASTER_LUCK_ID);
                     townMasterData.Add(masterId);
+
+                    if (master.IsPlayer())
+                        DramaTool.OpenDrama(BECOME_TOWN_MASTER_DRAMA);
                 }
                 var guardians = townCouncilWUnits.Where(x => x != master).ToList();
                 if (guardians.Count < MAX_GUARDIANS)
                 {
-                    guardians.AddRange(outCouncilWUnits.Take(MAX_GUARDIANS - guardians.Count));
+                    guardians.AddRange(outCouncilWUnits.Where(x => !x.IsPlayer()).Take(MAX_GUARDIANS - guardians.Count));
                     foreach (var wunit in guardians)
                     {
                         wunit.AddLuck(TOWN_GUARDIAN_LUCK_ID);
@@ -299,6 +304,22 @@ namespace MOD_nE7UL2.Mod
         public static bool IsTownMaster(WorldUnitBase wunit)
         {
             return wunit.GetLuck(TOWN_MASTER_LUCK_ID) != null;
+        }
+
+        public static bool IsTownGuardian(MapBuildTown town, WorldUnitBase wunit)
+        {
+            var wunitId = wunit.GetUnitId();
+            return Instance.TownMasters[town.buildData.id].Contains(wunitId);
+        }
+
+        public static bool IsTownMaster(MapBuildTown town, WorldUnitBase wunit)
+        {
+            return IsTownGuardian(town, wunit) && IsTownMaster(wunit);
+        }
+
+        public static bool IsSchoolMember(MapBuildSchool school, WorldUnitBase wunit)
+        {
+            return school.schoolNameID == wunit.data.school?.schoolNameID;
         }
     }
 }

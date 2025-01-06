@@ -13,9 +13,11 @@ namespace MOD_nE7UL2.Mod
         public static BattleEvent Instance { get; set; }
 
         public const int JOIN_RANGE = 6;
-        public const float NPC_JOIN_RATE = 0.2f;
+        public const float RANDOM_NPC_JOIN_RATE = 0.2f;
         public const int ENEMY_JOIN_DRAMA = 480110100;
         public const int FRIENDLY_JOIN_DRAMA = 480110200;
+        public const float SECT_NPC_JOIN_RATE = 1.0f;
+        public const float TOWN_GUARD_NPC_JOIN_RATE = 2.0f;
 
         public int PvPCount { get; set; } = 0;
 
@@ -41,7 +43,7 @@ namespace MOD_nE7UL2.Mod
                 //enemy unit join battle
                 var enemyUnit = _aroundUnits.FirstOrDefault(x => IsEnemyUnit(x));
                 if (enemyUnit != null &&
-                    CommonTool.Random(0.00f, 100.00f).IsBetween(0.00f, NPC_JOIN_RATE))
+                    CommonTool.Random(0.00f, 100.00f).IsBetween(0.00f, RANDOM_NPC_JOIN_RATE))
                 {
                     _aroundUnits.Remove(enemyUnit);
                     SceneType.battle.unit.CreateUnitHuman<UnitCtrlHumanNPC>(enemyUnit.data, UnitType.Alone);
@@ -59,7 +61,7 @@ namespace MOD_nE7UL2.Mod
                 //friendly unit join battle
                 var friendlyUnit = _aroundUnits.FirstOrDefault(x => IsFriendlyUnit(x));
                 if (friendlyUnit != null &&
-                    CommonTool.Random(0.00f, 100.00f).IsBetween(0.00f, NPC_JOIN_RATE))
+                    CommonTool.Random(0.00f, 100.00f).IsBetween(0.00f, RANDOM_NPC_JOIN_RATE))
                 {
                     _aroundUnits.Remove(friendlyUnit);
                     SceneType.battle.unit.CreateUnitHuman<UnitCtrlHumanNPC>(friendlyUnit.data, UnitType.PlayerNPC);
@@ -81,13 +83,17 @@ namespace MOD_nE7UL2.Mod
         private bool IsFriendlyUnit(WorldUnitBase wunit)
         {
             return friendlyInTraits.Contains(wunit.data.unitData.propertyData.inTrait) ||
-                wunit.data.unitData.relationData.GetIntim(g.world.playerUnit) >= 300f;
+                wunit.data.unitData.relationData.GetIntim(g.world.playerUnit) >= 300f ||
+                (g.world.playerUnit.data.school?.schoolData.GetSchoolIntim(wunit) ?? 0) >= 300f ||
+                (wunit.data.school?.schoolData.GetSchoolIntim(g.world.playerUnit) ?? 0) >= 300f;
         }
 
         private bool IsEnemyUnit(WorldUnitBase wunit)
         {
             return enemyInTraits.Contains(wunit.data.unitData.propertyData.inTrait) ||
-                wunit.data.unitData.relationData.GetIntim(g.world.playerUnit) <= -300f;
+                wunit.data.unitData.relationData.GetIntim(g.world.playerUnit) <= -300f ||
+                (g.world.playerUnit.data.school?.schoolData.GetSchoolIntim(wunit) ?? 0) <= -300f ||
+                (wunit.data.school?.schoolData.GetSchoolIntim(g.world.playerUnit) ?? 0) <= -300f;
         }
 
         //player kill npc
