@@ -8,5 +8,15 @@
 		"id": "480110200",
 		"key": "battleevent480110200",
 		"en|ch|tc": "Let me help!",
+	},
+	{
+		"id": "480110300",
+		"key": "battleevent480110300",
+		"en|ch|tc": "Don't mess with our sect member!",
+	},
+	{
+		"id": "480110400",
+		"key": "battleevent480110400",
+		"en|ch|tc": "You are not allowed to fight in town!",
 	}
 ]

@@ -13,6 +13,7 @@
 - hire people, create party
 	hire people UI
 	manage team UI
+	betray
 
 - town war
 	search Town master & guardian UI
