@@ -16,13 +16,16 @@ namespace MOD_nE7UL2.Mod
         public const float RANDOM_NPC_JOIN_RATE = 0.2f;
         public const float SECT_NPC_JOIN_RATE = 2.0f;
         public const float TOWN_GUARD_NPC_JOIN_RATE = 5.0f;
+        public const float TEAM_MEMBER_BETRAY_RATE = 1.0f;
         public const int ENEMY_JOIN_DRAMA = 480110100;
         public const int FRIENDLY_JOIN_DRAMA = 480110200;
         public const int SECT_MEMBER_JOIN_DRAMA = 480110300;
         public const int TOWN_GUARD_JOIN_DRAMA = 480110400;
+        public const int TEAM_MEMBER_BETRAY_DRAMA = 480110500;
 
         public int PvPCount { get; set; } = 0;
 
+        private static List<UnitCtrlBase> _teamMember;
         private static List<WorldUnitBase> _aroundUnits;
         private static readonly int[] friendlyInTraits = new int[] { UnitTraitEnum.Selfless.Parse<int>() };
         private static readonly int[] enemyInTraits = new int[] { UnitTraitEnum.Wicked.Parse<int>(), UnitTraitEnum.Selfish.Parse<int>(), UnitTraitEnum.Evil.Parse<int>() };
@@ -32,6 +35,7 @@ namespace MOD_nE7UL2.Mod
             base.OnBattleStart(e);
 
             _aroundUnits = null;
+            _teamMember = null;
             if (g.world.battle.data.isRealBattle)
             {
                 var player = g.world.playerUnit;
@@ -44,7 +48,7 @@ namespace MOD_nE7UL2.Mod
                 }).ToList();
 
                 //team member join
-                HirePeopleEvent.TeamJoinBattle(g.world.playerUnit, UnitType.PlayerNPC);
+                _teamMember = HirePeopleEvent.TeamJoinBattle(g.world.playerUnit, UnitType.PlayerNPC);
             }
         }
 
@@ -109,6 +113,22 @@ namespace MOD_nE7UL2.Mod
                         HirePeopleEvent.TeamJoinBattle(townguard, ut);
 
                         DramaTool.OpenDrama(TOWN_GUARD_JOIN_DRAMA, new DramaData() { unitLeft = townguard, unitRight = null });
+                    }
+                }
+            }
+            if (_teamMember != null && _teamMember.Count > 0)
+            {
+                foreach (var member in _teamMember.ToArray())
+                {
+                    var wmember = g.world.unit.GetUnit(member);
+                    if (!member.isDie && IsEnemyUnit(wmember) && CommonTool.Random(0.00f, 100.00f).IsBetween(0.00f, TEAM_MEMBER_BETRAY_RATE))
+                    {
+                        member.data.unitType = UnitType.Monst; //change team
+                        HirePeopleEvent.Dismiss(g.world.playerUnit, wmember); //quit player team
+                        wmember.data.unitData.relationData.AddHate(g.world.playerUnit.GetUnitId(), 100);
+                        g.world.playerUnit.data.unitData.relationData.AddHate(wmember.GetUnitId(), 100);
+
+                        DramaTool.OpenDrama(TEAM_MEMBER_BETRAY_DRAMA, new DramaData() { unitLeft = wmember, unitRight = g.world.playerUnit });
                     }
                 }
             }

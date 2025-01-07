@@ -21,6 +21,7 @@ namespace MOD_nE7UL2.Mod
         public const string TEAM_LUCK_DESC = "team420041120desc";
         public const int FRIEND_JOIN_DRAMA = 420041123;
         public const float FRIEND_JOIN_RATE = 5f;
+        public const int MONTHLY_PAYMENT_RATIO = 10;
 
         public static UINPCInfo UINPCInfo;
         public static bool isShowHirePeopleUI = false;
@@ -41,6 +42,16 @@ namespace MOD_nE7UL2.Mod
                 ui.UpdateUI();
             }
             else
+            if (e.uiType.uiName == UIType.NPCSearch.uiName && isShowManageTeamUI)
+            {
+                var ui = new UICover<UINPCSearch>(e.ui);
+                {
+                    ui.AddText(ui.MidCol, ui.MidRow, $"Team: {GetTeamInfoStr(g.world.playerUnit)}").Align().Format();
+                    ui.AddText(ui.MidCol, ui.MidRow + 1, $"Payment: {GetTotalMonthlyPayment(g.world.playerUnit).ToString("#,##0")} Spirit Stones/month").Align().Format();
+                }
+                ui.UpdateUI();
+            }
+            else
             if (e.uiType.uiName == UIType.NPCInfo.uiName)
             {
                 var ui = new UICover<UINPCInfo>(e.ui);
@@ -52,7 +63,7 @@ namespace MOD_nE7UL2.Mod
                 {
                     if (IsTeam(g.world.playerUnit, ui.UI.unit) && ui.UI.unit.data.unitData.relationData.GetIntim(g.world.playerUnit) < 200)
                     {
-                        ui.AddText(0, 0, $"{GetRequiredSpiritStones(g.world.playerUnit, ui.UI.unit) / 10:#,##0} Spirit Stones/month").Align().Format(Color.white).Pos(ui.UI.uiProperty.textInTrait1.transform, 0f, 0.5f).SetParentTransform(ui.UI.uiProperty.textInTrait1.transform);
+                        ui.AddText(0, 0, $"{GetRequiredSpiritStones(g.world.playerUnit, ui.UI.unit) / MONTHLY_PAYMENT_RATIO:#,##0} Spirit Stones/month").Align().Format(Color.white).Pos(ui.UI.uiProperty.textInTrait1.transform, 0f, 0.5f).SetParentTransform(ui.UI.uiProperty.textInTrait1.transform);
                     }
                     if (IsHired(ui.UI.unit))
                     {
@@ -61,7 +72,7 @@ namespace MOD_nE7UL2.Mod
                     else
                     if (isShowHirePeopleUI)
                     {
-                        ui.AddText(0, 0, $"{GetRequiredSpiritStones(g.world.playerUnit, ui.UI.unit):#,##0} Spirit Stones ({GetRequiredSpiritStones(g.world.playerUnit, ui.UI.unit) / 10:#,##0}/month)").Align().Format(Color.white).Pos(ui.UI.uiProperty.textInTrait1.transform, 0f, 0.5f).SetParentTransform(ui.UI.uiProperty.textInTrait1.transform);
+                        ui.AddText(0, 0, $"{GetRequiredSpiritStones(g.world.playerUnit, ui.UI.unit):#,##0} Spirit Stones ({GetRequiredSpiritStones(g.world.playerUnit, ui.UI.unit) / MONTHLY_PAYMENT_RATIO:#,##0}/month)").Align().Format(Color.white).Pos(ui.UI.uiProperty.textInTrait1.transform, 0f, 0.5f).SetParentTransform(ui.UI.uiProperty.textInTrait1.transform);
                         ui.AddText(0, 0, $"{GetRequiredReputations(g.world.playerUnit, ui.UI.unit):#,##0} Reputations").Align().Format(Color.white).Pos(ui.UI.uiProperty.textInTrait1.transform, 0f, 0.25f).SetParentTransform(ui.UI.uiProperty.textInTrait1.transform);
                         ui.AddButton(0, 0, () =>
                         {
@@ -132,10 +143,9 @@ namespace MOD_nE7UL2.Mod
         {
             if (g.ui.HasUI(UIType.TownBounty))
             {
-                //open select ui
                 var ui = g.ui.OpenUI<UINPCSearch>(UIType.NPCSearch);
                 ui.InitData(new Vector2Int(0, 0));
-                ui.units = GetHirablePeople();
+                ui.units = GetHirablePeople().ToIl2CppList();
                 ui.UpdateUI();
                 isShowHirePeopleUI = true;
             }
@@ -145,10 +155,9 @@ namespace MOD_nE7UL2.Mod
         {
             if (g.ui.HasUI(UIType.PlayerInfo))
             {
-                //open select ui
                 var ui = g.ui.OpenUI<UINPCSearch>(UIType.NPCSearch);
                 ui.InitData(new Vector2Int(0, 0));
-                ui.units = GetTeamMember(g.world.playerUnit);
+                ui.units = GetTeamMember(g.world.playerUnit).ToIl2CppList();
                 ui.UpdateUI();
                 isShowManageTeamUI = true;
             }
@@ -210,7 +219,7 @@ namespace MOD_nE7UL2.Mod
                         //free if intim >= 400
                         else if (member.data.unitData.relationData.GetIntim(wunit) < 200)
                         {
-                            var requiredSpiritStones = GetRequiredSpiritStones(wunit, member) / 10;
+                            var requiredSpiritStones = GetRequiredSpiritStones(wunit, member) / MONTHLY_PAYMENT_RATIO;
                             if (wunit.GetUnitMoney() < requiredSpiritStones)
                             {
                                 Dismiss(wunit, member);
@@ -327,13 +336,13 @@ namespace MOD_nE7UL2.Mod
             }
         }
 
-        public static Il2CppSystem.Collections.Generic.List<WorldUnitBase> GetHirablePeople()
+        public static List<WorldUnitBase> GetHirablePeople()
         {
-            var rs = new Il2CppSystem.Collections.Generic.List<WorldUnitBase>();
+            var rs = new List<WorldUnitBase>();
             foreach (var wunit in g.world.playerUnit.GetUnitsAround(4, false, false))
             {
                 if (!MapBuildPropertyEvent.IsTownGuardian(wunit) && !IsHired(wunit) &&
-                    rs.Find((Il2CppSystem.Predicate<WorldUnitBase>)((x) => x.GetUnitId() == wunit.GetUnitId())) == null)
+                    !rs.Any((x) => x.GetUnitId() == wunit.GetUnitId()))
                 {
                     rs.Add(wunit);
                 }
@@ -341,9 +350,9 @@ namespace MOD_nE7UL2.Mod
             return rs;
         }
 
-        public static Il2CppSystem.Collections.Generic.List<WorldUnitBase> GetTeamMember(WorldUnitBase wunit)
+        public static List<WorldUnitBase> GetTeamMember(WorldUnitBase wunit)
         {
-            var rs = new Il2CppSystem.Collections.Generic.List<WorldUnitBase>();
+            var rs = new List<WorldUnitBase>();
             var teamData = GetTeamData(wunit);
             if (!teamData.HasValue)
                 return rs;
@@ -368,7 +377,7 @@ namespace MOD_nE7UL2.Mod
             var teamData = GetTeamData(wunit);
             if (!teamData.HasValue)
                 return null;
-            return Tuple.Create(g.world.unit.GetUnit(teamData.Value.Key), teamData.Value.Value.Select(x => g.world.unit.GetUnit(x)).ToArray());
+            return Tuple.Create(g.world.unit.GetUnit(teamData.Value.Key), teamData.Value.Value.Select(x => g.world.unit.GetUnit(x)).Where(x => x != null).ToArray());
         }
 
         public static WorldUnitBase GetTeamMaster(WorldUnitBase wunit)
@@ -403,6 +412,20 @@ namespace MOD_nE7UL2.Mod
             return Instance.TeamData.ContainsKey(masterId) && Instance.TeamData[masterId].Contains(member.GetUnitId());
         }
 
+        public static int GetTotalMonthlyPayment(WorldUnitBase master)
+        {
+            var rs = 0;
+            var teamData = GetTeamDetailData(master);
+            if (teamData == null)
+                return rs;
+            foreach (var member in teamData.Item2)
+            {
+                if (member.GetUnitId() != master.GetUnitId())
+                    rs += GetRequiredSpiritStones(master, member) / MONTHLY_PAYMENT_RATIO;
+            }
+            return rs;
+        }
+
         public static int GetRequiredSpiritStones(WorldUnitBase master, WorldUnitBase wunit)
         {
             var masterId = master.GetUnitId();
@@ -417,11 +440,12 @@ namespace MOD_nE7UL2.Mod
             return (Math.Pow(2, k) * 1000 + Math.Pow(2, wunit.GetGradeLvl()) * 100).Parse<int>();
         }
 
-        public static void TeamJoinBattle(WorldUnitBase wunit, UnitType ut)
+        public static List<UnitCtrlBase> TeamJoinBattle(WorldUnitBase wunit, UnitType ut)
         {
+            var jointMem = new List<UnitCtrlBase>();
             var teamData = GetTeamData(wunit);
             if (!teamData.HasValue)
-                return;
+                return jointMem;
             var wunitId = wunit.GetUnitId();
             var pos = wunit.GetUnitPos();
             foreach (var memberId in teamData.Value.Value)
@@ -429,9 +453,13 @@ namespace MOD_nE7UL2.Mod
                 if (memberId == wunitId)
                     continue;
                 var member = g.world.unit.GetUnit(memberId);
+                if (member == null || member.isDie)
+                    continue;
                 member.SetUnitPos(pos);
-                SceneType.battle.unit.CreateUnitHuman<UnitCtrlHumanNPC>(member.data, ut);
+                var cunit = SceneType.battle.unit.CreateUnitHuman<UnitCtrlHumanNPC>(member.data, ut);
+                jointMem.Add(cunit);
             }
+            return jointMem;
         }
     }
 }
