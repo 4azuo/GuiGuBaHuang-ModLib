@@ -7,6 +7,7 @@ using System;
 using System.Linq;
 using System.Collections.Generic;
 using UnityEngine;
+using System.Numerics;
 
 namespace MOD_nE7UL2.Mod
 {
@@ -521,7 +522,7 @@ namespace MOD_nE7UL2.Mod
                 }
                 //item
                 var ringLockScore = player.GetEquippedRing()?.propsItem?.IsRing()?.lockScore ?? 0;
-                var luck = g.world.playerUnit.GetDynProperty(UnitDynPropertyEnum.Luck).value;
+                var luck = player.GetDynProperty(UnitDynPropertyEnum.Luck).value;
                 var killer = ModBattleEvent.GetKiller(ModBattleEvent.PlayerUnit);
                 foreach (var item in player.GetUnitProps())
                 {
@@ -583,21 +584,7 @@ namespace MOD_nE7UL2.Mod
                     }
                 }
             }
-            //if (IsForeSaveConfigOK())
-            //{
-            //    //force save
-            //}
         }
-
-        //private bool IsForeSaveConfigOK()
-        //{
-        //    var conf = ModMain.ModObj.InGameCustomSettings.ForceSaveCondition;
-        //    if (string.IsNullOrEmpty(conf))
-        //        return false;
-        //    conf = conf.Replace("${gradelevel}", g.world.playerUnit.GetGradeLvl().ToString())
-        //        .Replace("${gamelevel}", g.data.dataWorld.data.gameLevel.Parse<int>().ToString());
-        //    return Microsoft.CodeAnalysis.CSharp.Scripting.CSharpScript.EvaluateAsync<bool>(conf).Result;
-        //}
 
         public override void OnBattleUnitDie(UnitDie e)
         {
@@ -609,18 +596,45 @@ namespace MOD_nE7UL2.Mod
                 var dieUnit = e?.unit?.data?.TryCast<UnitDataHuman>();
                 if (dieUnit?.worldUnitData?.unit != null && !ModBattleEvent.PlayerUnit.isDie)
                 {
-                    if (g.world.battle.data.isRealBattle)
-                    {
-                        var drainLife = dieUnit.worldUnitData.unit.GetProperty<int>(UnitPropertyEnum.Life) / (g.game.data.dataWorld.data.gameLevel.Parse<int>() * 20);
-                        g.world.playerUnit.AddProperty<int>(UnitPropertyEnum.Life, drainLife);
-                    }
+                    var dieUnitWUnit = dieUnit.worldUnitData.unit;
 
+                    //growup
                     var insight = g.world.playerUnit.GetDynProperty(UnitDynPropertyEnum.Talent).value;
-                    var bBestBasis = dieUnit.worldUnitData.unit.GetBestBasis();
+                    var bBestBasis = dieUnitWUnit.GetBestBasis();
                     if (CommonTool.Random(0.00f, 100.00f).IsBetween(0.00f, insight / 10) &&
-                        dieUnit.worldUnitData.unit.GetDynProperty(bBestBasis).value - g.world.playerUnit.GetDynProperty(bBestBasis).value >= 6 * g.world.playerUnit.GetGradeLvl())
+                        dieUnitWUnit.GetDynProperty(bBestBasis).value - g.world.playerUnit.GetDynProperty(bBestBasis).value >= 6 * g.world.playerUnit.GetGradeLvl())
                     {
                         g.world.playerUnit.AddProperty<int>(bBestBasis.GetPropertyEnum(), 1);
+                    }
+
+                    if (g.world.battle.data.isRealBattle)
+                    {
+                        //life drain
+                        if (g.world.battle.data.isRealBattle)
+                        {
+                            var drainLife = dieUnitWUnit.GetProperty<int>(UnitPropertyEnum.Life) / (g.game.data.dataWorld.data.gameLevel.Parse<int>() * 20);
+                            g.world.playerUnit.AddProperty<int>(UnitPropertyEnum.Life, drainLife);
+                        }
+
+                        //item
+                        var ringLockScore = dieUnitWUnit.GetEquippedRing()?.propsItem?.IsRing()?.lockScore ?? 0;
+                        var luck = dieUnitWUnit.GetDynProperty(UnitDynPropertyEnum.Luck).value;
+                        var killer = ModBattleEvent.GetKiller(dieUnit.unit);
+                        foreach (var item in dieUnitWUnit.GetUnitProps())
+                        {
+                            if (item.propsInfoBase.sale > 0 &&
+                                !CommonTool.Random(0.00f, 100.00f).IsBetween(0.00f, (luck / 10.0f) + (ringLockScore / 100.0f)))
+                            {
+                                if (killer.IsWorldUnit())
+                                    killer.GetWorldUnit().AddUnitProp(item);
+                                dieUnitWUnit.RemoveUnitProp(item.soleID);
+                            }
+                        }
+
+                        //spirit stones
+                        if (killer.IsWorldUnit())
+                            killer.GetWorldUnit().AddUnitMoney(dieUnitWUnit.GetUnitMoney());
+                        dieUnitWUnit.SetUnitMoney(0);
                     }
                 }
             }

@@ -10,10 +10,6 @@
 
 - multiplayer?
 
-- hire people, create party
-	betray
-	npc die, drop props
-
 - town war
 	search Town master & guardian UI
 	declare war

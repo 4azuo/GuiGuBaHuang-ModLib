@@ -18,5 +18,10 @@
 		"id": "480110400",
 		"key": "battleevent480110400",
 		"en|ch|tc": "You are not allowed to fight in town!",
+	},
+	{
+		"id": "480110500",
+		"key": "battleevent480110500",
+		"en|ch|tc": "I have enough with you! Go to hell!",
 	}
 ]

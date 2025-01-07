@@ -86,15 +86,18 @@ namespace MOD_nE7UL2.Mod
                 {
                     if (MapBuildPropertyEvent.IsTownGuardian(ui.UI.town, g.world.playerUnit))
                     {
-                        //town manage ui
+                        ui.AddButton(ui.LastCol - 8, ui.FirstRow + 1, MapBuildPropertyEvent.OpenUITownManage, "Town Manage").Size(300, 60).SetWork(new UIItemWork
+                        {
+                            UpdateAct = (x) => x.Pos(ui.LastCol - 8, ui.FirstRow + 1),
+                        });
                     }
                     else
                     {
-                        ui.AddButton(ui.LastCol - 8, ui.FirstRow + 1, null, "Tax: {0} Spirit Stones").Size(300, 60).SetWork(new UIItemWork
+                        ui.AddButton(ui.LastCol - 8, ui.FirstRow + 1, () => MapBuildPropertyEvent.OpenUITownGuardians(ui.UI.town), "Tax: {0} Spirit Stones").Size(300, 60).SetWork(new UIItemWork
                         {
                             Formatter = (x) => new string[] { MapBuildPropertyEvent.GetTax(g.world.playerUnit, g.world.playerUnit.GetUnitPosAreaId()).ToString() },
                             UpdateAct = (x) => x.Pos(ui.LastCol - 8, ui.FirstRow + 1),
-                        }).Enable = false;
+                        });
                     }
                 }
                 ui.IsAutoUpdate = true;

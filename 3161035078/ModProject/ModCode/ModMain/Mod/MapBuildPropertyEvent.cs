@@ -171,6 +171,7 @@ namespace MOD_nE7UL2.Mod
                         var profit = (Budget[town.buildData.id] / (IsTownMaster(wunit) ? 12 : 36)).FixValue(0, int.MaxValue).Parse<int>();
                         Budget[town.buildData.id] -= profit;
                         wunit.AddUnitMoney(profit);
+                        wunit.SetUnitPos(town.GetOrigiPoint());
                     }
                     else
                     {
@@ -186,13 +187,17 @@ namespace MOD_nE7UL2.Mod
                 townMasterData.Clear();
                 if (master == null)
                 {
+                    //choose new town master
                     master = aroundWUnits.GetFamousWUnit();
-                    var masterId = master.GetUnitId();
-                    master.AddLuck(TOWN_MASTER_LUCK_ID);
-                    townMasterData.Add(masterId);
+                    if (master != null)
+                    {
+                        var masterId = master.GetUnitId();
+                        master.AddLuck(TOWN_MASTER_LUCK_ID);
+                        townMasterData.Add(masterId);
 
-                    if (master.IsPlayer())
-                        DramaTool.OpenDrama(BECOME_TOWN_MASTER_DRAMA);
+                        if (master.IsPlayer())
+                            DramaTool.OpenDrama(BECOME_TOWN_MASTER_DRAMA);
+                    }
                 }
                 var guardians = townCouncilWUnits.Where(x => x != master).ToList();
                 if (guardians.Count < MAX_GUARDIANS)
@@ -320,6 +325,34 @@ namespace MOD_nE7UL2.Mod
         public static bool IsSchoolMember(MapBuildSchool school, WorldUnitBase wunit)
         {
             return school.schoolNameID == wunit.data.school?.schoolNameID;
+        }
+
+        public static void OpenUITownManage()
+        {
+            g.ui.MsgBox("Info", "Upcoming...");
+        }
+
+        public static void OpenUITownGuardians(MapBuildTown town)
+        {
+            var ui = g.ui.OpenUI<UINPCSearch>(UIType.NPCSearch);
+            ui.InitData(new Vector2Int(0, 0));
+            ui.units = GetTownGuardians(town).ToIl2CppList();
+            ui.UpdateUI();
+        }
+
+        public static List<WorldUnitBase> GetTownGuardians(MapBuildTown town)
+        {
+            var rs = new List<WorldUnitBase>();
+            if (town == null || !Instance.TownMasters.ContainsKey(town.buildData.id))
+                return rs;
+            foreach (var wunitId in Instance.TownMasters[town.buildData.id])
+            {
+                var wunit = g.world.unit.GetUnit(wunitId);
+                if (wunit == null)
+                    continue;
+                rs.Add(wunit);
+            }
+            return rs;
         }
     }
 }

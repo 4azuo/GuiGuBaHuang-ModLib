@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 
 public static class EnumerableHelper
 {
@@ -11,6 +12,11 @@ public static class EnumerableHelper
             rs.Add(item);
         }
         return rs;
+    }
+
+    public static IEnumerable<T> ToList<T>(this Il2CppSystem.Collections.Generic.List<T> lst)
+    {
+        return lst.ToArray().ToList();
     }
 
     public static IList<V> ToList<K, V>(this Il2CppSystem.Collections.Generic.Dictionary<K, V>.ValueCollection collection)
