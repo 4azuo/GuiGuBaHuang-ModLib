@@ -11,7 +11,7 @@ public static class UnitHelper
     public static void SetUnitPos(this WorldUnitBase wunit, Vector2Int p)
     {
         wunit.data.unitData.SetPoint(p);
-        SceneType.map.world.UpdateAllUI();
+        SceneType.map?.world.UpdateAllUI();
     }
 
     public static Vector2Int GetUnitPos(this WorldUnitBase wunit)
