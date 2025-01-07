@@ -194,7 +194,7 @@ namespace MOD_nE7UL2.Mod
                 {
                     Formatter = (x) => new object[] { player.GetDynProperty(UnitDynPropertyEnum.MoveSpeed).value },
                 });
-                uiTrainer.AddText(col - 3, row++, "Ability: {0} ({1})").Align(TextAnchor.MiddleRight).Format(Color.black, 15).SetWork(new UIItemWork
+                uiTrainer.AddText(col - 3, row++, "({1}) {0} :Ability").Align(TextAnchor.MiddleRight).Format(Color.black, 15).SetWork(new UIItemWork
                 {
                     Formatter = (x) => new object[] { player.GetDynProperty(UnitDynPropertyEnum.AbilityExp).value.ToString("#,##0"), player.GetDynProperty(UnitDynPropertyEnum.AbilityPoint).value.ToString("#,##0") },
                 });

@@ -16,7 +16,7 @@ namespace MOD_nE7UL2.Mod
         public const float RANDOM_NPC_JOIN_RATE = 0.2f;
         public const float SECT_NPC_JOIN_RATE = 2.0f;
         public const float TOWN_GUARD_NPC_JOIN_RATE = 5.0f;
-        public const float TEAM_MEMBER_BETRAY_RATE = 1.0f;
+        public const float TEAM_MEMBER_BETRAY_RATE = 0.5f;
         public const int ENEMY_JOIN_DRAMA = 480110100;
         public const int FRIENDLY_JOIN_DRAMA = 480110200;
         public const int SECT_MEMBER_JOIN_DRAMA = 480110300;
@@ -136,7 +136,7 @@ namespace MOD_nE7UL2.Mod
 
         private bool CondJoinBattle(WorldUnitBase wunit)
         {
-            return !MapBuildPropertyEvent.IsTownGuardian(wunit) &&
+            return
                 wunit.GetDynProperty(UnitDynPropertyEnum.Hp).value > (wunit.GetDynProperty(UnitDynPropertyEnum.HpMax).value * 0.7f) &&
                 wunit.GetDynProperty(UnitDynPropertyEnum.Mp).value > (wunit.GetDynProperty(UnitDynPropertyEnum.MpMax).value * 0.5f) &&
                 wunit.GetDynProperty(UnitDynPropertyEnum.Sp).value > (wunit.GetDynProperty(UnitDynPropertyEnum.SpMax).value * 0.3f) &&

@@ -7,7 +7,6 @@ using System;
 using System.Linq;
 using System.Collections.Generic;
 using UnityEngine;
-using System.Numerics;
 
 namespace MOD_nE7UL2.Mod
 {
@@ -500,14 +499,11 @@ namespace MOD_nE7UL2.Mod
             var localDmgRecv = ModBattleEvent.sGetDmg(ModBattleEvent.DmgSaveEnum.Local, ModBattleEvent.GetDmgKey(ModBattleEvent.DmgEnum.DmgRecv, ModBattleEvent.DmgTypeEnum.Damage));
             DebugHelper.WriteLine($"Damage dealt: {localDmgDealt}dmg, Damage recieve: {localDmgRecv}dmg");
             var player = g.world.playerUnit;
+
             if (g.world.battle.data.isRealBattle && ModBattleEvent.PlayerUnit.isDie)
             {
                 DebugHelper.WriteLine($"BattleRewardEvent: lose");
-                //life
-                if (SMLocalConfigsEvent.Instance.Configs.Onelife)
-                    player.SetProperty<int>(UnitPropertyEnum.Life, 0);
-                else
-                    player.AddProperty<int>(UnitPropertyEnum.Life, -unchecked((int)Math.Max(localDmgRecv / 2000, 1)));
+
                 //exp
                 var gradeLvl = player.GetGradeLvl();
                 var bodyReconstructionItemId = BodyReconstructions.ContainsKey(gradeLvl) ? BodyReconstructions[gradeLvl] : new int[0];
@@ -520,33 +516,13 @@ namespace MOD_nE7UL2.Mod
                     var item = bodyReconstructionItemId.First(x => player.GetUnitPropCount(x) > 0);
                     player.RemoveUnitProp(item, 1);
                 }
-                //item
-                var ringLockScore = player.GetEquippedRing()?.propsItem?.IsRing()?.lockScore ?? 0;
-                var luck = player.GetDynProperty(UnitDynPropertyEnum.Luck).value;
-                var killer = ModBattleEvent.GetKiller(ModBattleEvent.PlayerUnit);
-                foreach (var item in player.GetUnitProps())
-                {
-                    if (item.propsInfoBase.sale > 0 &&
-                        !CommonTool.Random(0.00f, 100.00f).IsBetween(0.00f, (luck / 10.0f) + (ringLockScore / 100.0f)))
-                    {
-                        if (killer.IsWorldUnit())
-                            killer.GetWorldUnit().AddUnitProp(item);
-                        player.RemoveUnitProp(item.soleID);
-                    }
-                }
-                //spirit stones
-                if (killer.IsWorldUnit())
-                    killer.GetWorldUnit().AddUnitMoney(player.GetUnitMoney());
-                player.SetUnitMoney(0);
-                //log
-                DebugHelper.WriteLine($"BattleRewardEvent: player death");
             }
             else if (e.isWin)
             {
                 DebugHelper.WriteLine($"BattleRewardEvent: win");
                 var insight = player.GetDynProperty(UnitDynPropertyEnum.Talent).value;
 
-                //player growup from battles
+                //player growup after battles
                 if (!SMLocalConfigsEvent.Instance.Configs.NoGrowupFromBattles)
                 {
                     var aBestBasis = ModBattleEvent.GetDmgPropertyEnum(ModBattleEvent.sGetHighestDealtDmgTypeEnum());
@@ -561,27 +537,16 @@ namespace MOD_nE7UL2.Mod
                     }
                 }
 
-                var rewardExp1 = Math.Max(localDmgDealt * ModMain.ModObj.GameSettings.BattleRewardConfigs.ExpPerDmgDealt, 1).Parse<int>();
-                var rewardExp2 = Math.Max(localDmgRecv * ModMain.ModObj.GameSettings.BattleRewardConfigs.ExpPerDmgRecv, 1).Parse<int>();
-                var rewardExp = rewardExp1 + rewardExp2;
-
                 //player +exp
                 if (!SMLocalConfigsEvent.Instance.Configs.NoExpFromBattles)
                 {
+                    var rewardExp1 = Math.Max(localDmgDealt * ModMain.ModObj.GameSettings.BattleRewardConfigs.ExpPerDmgDealt, 1).Parse<int>();
+                    var rewardExp2 = Math.Max(localDmgRecv * ModMain.ModObj.GameSettings.BattleRewardConfigs.ExpPerDmgRecv, 1).Parse<int>();
+                    var rewardExp = rewardExp1 + rewardExp2;
+
                     var myRewardExp = (rewardExp * (insight / 100f)).Parse<int>();
                     player.AddExp(myRewardExp);
                     DebugHelper.WriteLine($"BattleRewardEvent: +{myRewardExp}exp");
-                }
-
-                //npc +exp
-                foreach (var unit in ModBattleEvent.DungeonUnits)
-                {
-                    var unitData = unit?.data?.TryCast<UnitDataHuman>();
-                    if (!unit.isDie && unitData?.worldUnitData?.unit != null)
-                    {
-                        var unitRewardExp = (rewardExp * (unitData.worldUnitData.unit.GetDynProperty(UnitDynPropertyEnum.Talent).value / 100f)).Parse<int>();
-                        unitData.worldUnitData.unit.AddExp(unitRewardExp);
-                    }
                 }
             }
         }
@@ -590,52 +555,66 @@ namespace MOD_nE7UL2.Mod
         {
             base.OnBattleUnitDie(e);
 
-            var attackUnitData = e?.hitData?.attackUnit?.data?.TryCast<UnitDataHuman>();
-            if (attackUnitData?.worldUnitData?.unit != null && attackUnitData.worldUnitData.unit.IsPlayer())
+            if (e?.unit != null && e.unit.IsWorldUnit())
             {
-                var dieUnit = e?.unit?.data?.TryCast<UnitDataHuman>();
-                if (dieUnit?.worldUnitData?.unit != null && !ModBattleEvent.PlayerUnit.isDie)
+                var dieUnitWUnit = e.unit.GetWorldUnit();
+                var killer = e.hitData.attackUnit;
+                var isKillerWUnit = killer.IsWorldUnit();
+                var killerWUnit = killer.GetWorldUnit();
+
+                //npc exp
+                if (isKillerWUnit && !killerWUnit.IsPlayer())
                 {
-                    var dieUnitWUnit = dieUnit.worldUnitData.unit;
+                    var insight = killerWUnit.GetDynProperty(UnitDynPropertyEnum.Talent).value;
+                    var rewardExp = ((dieUnitWUnit.GetDynProperty(UnitDynPropertyEnum.HpMax).value + killerWUnit.GetDynProperty(UnitDynPropertyEnum.HpMax).value) * (insight / 100f)).Parse<int>();
+                    killerWUnit.AddExp(rewardExp);
+                }
 
-                    //growup
-                    var insight = g.world.playerUnit.GetDynProperty(UnitDynPropertyEnum.Talent).value;
-                    var bBestBasis = dieUnitWUnit.GetBestBasis();
-                    if (CommonTool.Random(0.00f, 100.00f).IsBetween(0.00f, insight / 10) &&
-                        dieUnitWUnit.GetDynProperty(bBestBasis).value - g.world.playerUnit.GetDynProperty(bBestBasis).value >= 6 * g.world.playerUnit.GetGradeLvl())
+                if (g.world.battle.data.isRealBattle)
+                {
+                    //life drain
+                    var drainLife = Math.Max(12 * g.game.data.dataWorld.data.gameLevel.Parse<int>(), dieUnitWUnit.GetProperty<int>(UnitPropertyEnum.Life) / (240 / g.game.data.dataWorld.data.gameLevel.Parse<int>()));
+                    if (isKillerWUnit)
+                        killerWUnit.AddProperty<int>(UnitPropertyEnum.Life, drainLife);
+                    dieUnitWUnit.AddProperty<int>(UnitPropertyEnum.Life, -drainLife);
+
+                    //item
+                    var ringLockScore = dieUnitWUnit.GetEquippedRing()?.propsItem?.IsRing()?.lockScore ?? 0;
+                    var luck = dieUnitWUnit.GetDynProperty(UnitDynPropertyEnum.Luck).value;
+                    foreach (var item in dieUnitWUnit.GetUnitProps())
                     {
-                        g.world.playerUnit.AddProperty<int>(bBestBasis.GetPropertyEnum(), 1);
+                        if (item.propsInfoBase.sale > 0 &&
+                            !CommonTool.Random(0.00f, 100.00f).IsBetween(0.00f, (luck / 10.0f) + (ringLockScore / 100.0f)))
+                        {
+                            if (isKillerWUnit)
+                                killerWUnit.AddUnitProp(item);
+                            dieUnitWUnit.RemoveUnitProp(item.soleID);
+                        }
                     }
 
-                    if (g.world.battle.data.isRealBattle)
+                    //spirit stones
+                    if (isKillerWUnit)
+                        killerWUnit.AddUnitMoney(dieUnitWUnit.GetUnitMoney());
+                    dieUnitWUnit.SetUnitMoney(0);
+
+                    //reputation
+                    if (isKillerWUnit)
                     {
-                        //life drain
-                        if (g.world.battle.data.isRealBattle)
+                        var dieUnitRep = dieUnitWUnit.GetDynProperty(UnitDynPropertyEnum.Reputation).value;
+                        var killerRep = killerWUnit.GetDynProperty(UnitDynPropertyEnum.Reputation).value;
+                        if (dieUnitRep > killerRep)
                         {
-                            var drainLife = dieUnitWUnit.GetProperty<int>(UnitPropertyEnum.Life) / (g.game.data.dataWorld.data.gameLevel.Parse<int>() * 20);
-                            g.world.playerUnit.AddProperty<int>(UnitPropertyEnum.Life, drainLife);
+                            killerWUnit.AddProperty<int>(UnitPropertyEnum.Reputation, dieUnitRep / 10);
                         }
-
-                        //item
-                        var ringLockScore = dieUnitWUnit.GetEquippedRing()?.propsItem?.IsRing()?.lockScore ?? 0;
-                        var luck = dieUnitWUnit.GetDynProperty(UnitDynPropertyEnum.Luck).value;
-                        var killer = ModBattleEvent.GetKiller(dieUnit.unit);
-                        foreach (var item in dieUnitWUnit.GetUnitProps())
+                        if (dieUnitRep > killerRep * 2)
                         {
-                            if (item.propsInfoBase.sale > 0 &&
-                                !CommonTool.Random(0.00f, 100.00f).IsBetween(0.00f, (luck / 10.0f) + (ringLockScore / 100.0f)))
-                            {
-                                if (killer.IsWorldUnit())
-                                    killer.GetWorldUnit().AddUnitProp(item);
-                                dieUnitWUnit.RemoveUnitProp(item.soleID);
-                            }
+                            dieUnitWUnit.AddProperty<int>(UnitPropertyEnum.Reputation, -(dieUnitRep / 10));
                         }
-
-                        //spirit stones
-                        if (killer.IsWorldUnit())
-                            killer.GetWorldUnit().AddUnitMoney(dieUnitWUnit.GetUnitMoney());
-                        dieUnitWUnit.SetUnitMoney(0);
                     }
+
+                    //intim
+                    if (isKillerWUnit)
+                        dieUnitWUnit.data.unitData.relationData.AddHate(killerWUnit.GetUnitId(), 200f);
                 }
             }
         }
