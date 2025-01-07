@@ -15,7 +15,8 @@ namespace MOD_nE7UL2.Mod
     {
         public static BattleRewardEventV2 Instance { get; set; }
 
-        private const int QI_ITEM = 484410100;
+        //public const int QI_ITEM = 484410100;
+        public const float TEAMMATE_QUIT_RATE = 20f;
 
         private const string RATIO_KEY = "Ratio";
         private const string FACTOR_KEY = "Factor";
@@ -516,6 +517,20 @@ namespace MOD_nE7UL2.Mod
                     var item = bodyReconstructionItemId.First(x => player.GetUnitPropCount(x) > 0);
                     player.RemoveUnitProp(item, 1);
                 }
+
+                //teammate quit
+                var teamData = HirePeopleEvent.GetTeamDetailData(player);
+                if (teamData != null)
+                {
+                    foreach (var member in teamData.Item2)
+                    {
+                        if (!member.IsPlayer() && CommonTool.Random(0.00f, 100.00f).IsBetween(0.00f, TEAMMATE_QUIT_RATE))
+                        {
+                            HirePeopleEvent.Dismiss(player, member);
+                            member.data.unitData.relationData.AddHate(player.GetUnitId(), 20);
+                        }
+                    }
+                }
             }
             else if (e.isWin)
             {
@@ -557,28 +572,33 @@ namespace MOD_nE7UL2.Mod
 
             if (e?.unit != null && e.unit.IsWorldUnit())
             {
-                var dieUnitWUnit = e.unit.GetWorldUnit();
-                var killer = e.hitData.attackUnit;
-                var isKillerWUnit = killer.IsWorldUnit();
-                var killerWUnit = killer.GetWorldUnit();
+                //DebugHelper.WriteLine("1");
+                var dieUnit = e.unit;
+                var dieUnitWUnit = dieUnit.GetWorldUnit();
+                var killer = e?.hitData?.attackUnit;
+                var killerWUnit = killer?.GetWorldUnit();
+                var isKillerWUnit = killer?.IsWorldUnit() ?? false;
 
                 //npc exp
+                //DebugHelper.WriteLine("2");
                 if (isKillerWUnit && !killerWUnit.IsPlayer())
                 {
                     var insight = killerWUnit.GetDynProperty(UnitDynPropertyEnum.Talent).value;
-                    var rewardExp = ((dieUnitWUnit.GetDynProperty(UnitDynPropertyEnum.HpMax).value + killerWUnit.GetDynProperty(UnitDynPropertyEnum.HpMax).value) * (insight / 100f)).Parse<int>();
+                    var rewardExp = ((dieUnit.data.maxHP.value + killer.data.maxHP.value) * (insight / 100f)).Parse<int>();
                     killerWUnit.AddExp(rewardExp);
                 }
 
                 if (g.world.battle.data.isRealBattle)
                 {
                     //life drain
-                    var drainLife = Math.Max(12 * g.game.data.dataWorld.data.gameLevel.Parse<int>(), dieUnitWUnit.GetProperty<int>(UnitPropertyEnum.Life) / (240 / g.game.data.dataWorld.data.gameLevel.Parse<int>()));
+                    //DebugHelper.WriteLine("3");
+                    var drainLife = Math.Max(12 * g.game.data.dataWorld.data.gameLevel.Parse<int>(), dieUnit.data.maxHP.value / (2400 / g.game.data.dataWorld.data.gameLevel.Parse<int>()));
                     if (isKillerWUnit)
                         killerWUnit.AddProperty<int>(UnitPropertyEnum.Life, drainLife);
                     dieUnitWUnit.AddProperty<int>(UnitPropertyEnum.Life, -drainLife);
 
                     //item
+                    //DebugHelper.WriteLine("4");
                     var ringLockScore = dieUnitWUnit.GetEquippedRing()?.propsItem?.IsRing()?.lockScore ?? 0;
                     var luck = dieUnitWUnit.GetDynProperty(UnitDynPropertyEnum.Luck).value;
                     foreach (var item in dieUnitWUnit.GetUnitProps())
@@ -593,11 +613,13 @@ namespace MOD_nE7UL2.Mod
                     }
 
                     //spirit stones
+                    //DebugHelper.WriteLine("5");
                     if (isKillerWUnit)
                         killerWUnit.AddUnitMoney(dieUnitWUnit.GetUnitMoney());
                     dieUnitWUnit.SetUnitMoney(0);
 
                     //reputation
+                    //DebugHelper.WriteLine("6");
                     if (isKillerWUnit)
                     {
                         var dieUnitRep = dieUnitWUnit.GetDynProperty(UnitDynPropertyEnum.Reputation).value;
@@ -613,6 +635,7 @@ namespace MOD_nE7UL2.Mod
                     }
 
                     //intim
+                    //DebugHelper.WriteLine("7");
                     if (isKillerWUnit)
                         dieUnitWUnit.data.unitData.relationData.AddHate(killerWUnit.GetUnitId(), 200f);
                 }
