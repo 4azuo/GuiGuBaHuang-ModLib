@@ -22,6 +22,8 @@ Fouru's ModLib: `https://steamcommunity.com/sharedfiles/filedetails/?id=33859967
 
 Taoist: `https://steamcommunity.com/sharedfiles/filedetails/?id=3161035078`
 
+- Create a team and hire people for combat
+- Become town master and get tax from people
 - Bank needs money to open account and charge monthly fee
 - Lock items when not paying
 - Prices increase over time
