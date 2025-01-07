@@ -74,7 +74,7 @@ namespace MOD_nE7UL2.Mod
                 {
                     var a = g.ui.GetUI<UINPCInfo>(UIType.NPCInfo);
                     var b = g.ui.GetUI<UIPlayerInfo>(UIType.PlayerInfo);
-                    var wunitId = (a.unit ?? b.unit).GetUnitId();
+                    var wunitId = (a?.unit ?? b?.unit).GetUnitId();
                     var townId = TownMasters.First(x => x.Value.Contains(wunitId)).Key;
                     var town = g.world.build.GetBuild<MapBuildTown>(townId);
                     ui.ptextTip.text = town.name;

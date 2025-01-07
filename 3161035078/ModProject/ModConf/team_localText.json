@@ -9,4 +9,19 @@
 		"key": "team420041121",
 		"en|ch|tc": "Team"
 	},
+	{
+		"id": "420041123",
+		"key": "team420041123drama",
+		"en|ch|tc": "Do you wanna travel together?"
+	},
+	{
+		"id": "420041124",
+		"key": "team420041124dramaOpt1",
+		"en|ch|tc": "Yes"
+	},
+	{
+		"id": "420041125",
+		"key": "team420041125dramaOpt2",
+		"en|ch|tc": "No"
+	},
 ]
