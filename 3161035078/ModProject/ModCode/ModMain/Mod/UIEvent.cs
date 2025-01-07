@@ -86,7 +86,7 @@ namespace MOD_nE7UL2.Mod
                 {
                     if (MapBuildPropertyEvent.IsTownGuardian(ui.UI.town, g.world.playerUnit))
                     {
-                        ui.AddButton(ui.LastCol - 8, ui.FirstRow + 1, MapBuildPropertyEvent.OpenUITownManage, "Town Manage").Size(300, 60).SetWork(new UIItemWork
+                        ui.AddButton(ui.LastCol - 8, ui.FirstRow + 1, () => MapBuildPropertyEvent.OpenUITownManage(ui.UI.town), "Town Manage").Size(300, 60).SetWork(new UIItemWork
                         {
                             UpdateAct = (x) => x.Pos(ui.LastCol - 8, ui.FirstRow + 1),
                         });

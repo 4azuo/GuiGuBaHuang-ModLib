@@ -8,6 +8,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using static BattleRoomNode;
 
 namespace MOD_nE7UL2.Mod
 {
@@ -93,7 +94,7 @@ namespace MOD_nE7UL2.Mod
                     var wunit = g.world.unit.GetUnit(wunitId);
                     if (wunit == null || wunit.isDie || !IsTownGuardian(wunit))
                     {
-                        t.Value.Remove(wunitId);
+                        RemoveFromTownGuardians(wunitId, wunit);
                     }
                 }
             }
@@ -109,8 +110,7 @@ namespace MOD_nE7UL2.Mod
             //fix bug every month
             if (IsTownGuardian(wunit) && TownMasters.All(x => !x.Value.Contains(wunitId)))
             {
-                wunit.DelLuck(TOWN_MASTER_LUCK_ID);
-                wunit.DelLuck(TOWN_GUARDIAN_LUCK_ID);
+                RemoveFromTownGuardians(wunitId, wunit);
             }
 
             //town tax
@@ -233,9 +233,17 @@ namespace MOD_nE7UL2.Mod
                 var town = g.world.build.GetBuild<MapBuildTown>(location);
                 if (town != null && TownMasters.ContainsKey(town.buildData.id))
                 {
-                    foreach (var councilWUnit in TownMasters[town.buildData.id].Select(x => g.world.unit.GetUnit(x)))
+                    if (TownMasters[town.buildData.id].Contains(killerId))
                     {
-                        councilWUnit?.data.unitData.relationData.AddHate(killerId, 50f);
+                        //blamed
+                    }
+                    else
+                    {
+                        foreach (var councilWUnit in TownMasters[town.buildData.id].Select(x => g.world.unit.GetUnit(x)))
+                        {
+                            if (councilWUnit != null)
+                                councilWUnit.data.unitData.relationData.AddHate(killerId, 50f);
+                        }
                     }
                 }
 
@@ -244,11 +252,11 @@ namespace MOD_nE7UL2.Mod
                 if (TownMasters.Any(x => x.Value.Contains(dieUnitId)))
                 {
                     var dieUnitCouncil = TownMasters.First(x => x.Value.Contains(dieUnitId));
-                    dieUnitCouncil.Value.Remove(dieUnitId);
-
+                    RemoveFromTownGuardians(dieUnitId, dieUnit);
                     foreach (var councilWUnit in dieUnitCouncil.Value.Select(x => g.world.unit.GetUnit(x)))
                     {
-                        councilWUnit?.data.unitData.relationData.AddHate(killerId, 400f);
+                        if (councilWUnit != null && killerId != councilWUnit.GetUnitId())
+                            councilWUnit.data.unitData.relationData.AddHate(killerId, 200f);
                     }
                 }
             }
@@ -327,8 +335,12 @@ namespace MOD_nE7UL2.Mod
             return school.schoolNameID == wunit.data.school?.schoolNameID;
         }
 
-        public static void OpenUITownManage()
+        public static void OpenUITownManage(MapBuildTown town)
         {
+            var ui = g.ui.OpenUI<UINPCSearch>(UIType.NPCSearch);
+            ui.InitData(new Vector2Int(0, 0));
+            ui.units = GetTownGuardians(town).ToIl2CppList();
+            ui.UpdateUI();
             g.ui.MsgBox("Info", "Upcoming...");
         }
 
@@ -353,6 +365,23 @@ namespace MOD_nE7UL2.Mod
                 rs.Add(wunit);
             }
             return rs;
+        }
+
+        public static void RemoveFromTownGuardians(string wunitId, WorldUnitBase wunit)
+        {
+            if (!string.IsNullOrEmpty(wunitId))
+            {
+                foreach (var data in Instance.TownMasters)
+                {
+                    if (data.Value.Contains(wunitId))
+                    {
+                        data.Value.Remove(wunitId);
+                        break;
+                    }
+                }
+            }
+            wunit?.DelLuck(TOWN_MASTER_LUCK_ID);
+            wunit?.DelLuck(TOWN_GUARDIAN_LUCK_ID);
         }
     }
 }

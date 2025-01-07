@@ -11,6 +11,5 @@
 - multiplayer?
 
 - town war
-	search Town master & guardian UI
 	declare war
 	town manage UI
