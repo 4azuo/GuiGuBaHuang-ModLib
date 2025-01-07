@@ -11,9 +11,8 @@
 - multiplayer?
 
 - hire people, create party
-	hire people UI
-	manage team UI
 	betray
+	npc die, drop props
 
 - town war
 	search Town master & guardian UI

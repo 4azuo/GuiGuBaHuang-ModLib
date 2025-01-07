@@ -30,17 +30,29 @@ namespace MOD_nE7UL2.Mod
         public override void OnBattleStart(ETypeData e)
         {
             base.OnBattleStart(e);
-            _aroundUnits = g.world.playerUnit.GetUnitsAround(JOIN_RANGE, false, false).ToArray().Where(x =>
+
+            _aroundUnits = null;
+            if (g.world.battle.data.isRealBattle)
             {
-                return CondJoinBattle(x) && (IsFriendlyUnit(x) || IsEnemyUnit(x));
-            }).ToList();
+                var player = g.world.playerUnit;
+                var playerId = player.GetUnitId();
+
+                //setup around units
+                _aroundUnits = player.GetUnitsAround(JOIN_RANGE, false, false).ToArray().Where(x =>
+                {
+                    return CondJoinBattle(x) && (IsFriendlyUnit(x) || IsEnemyUnit(x));
+                }).ToList();
+
+                //team member join
+                HirePeopleEvent.TeamJoinBattle(g.world.playerUnit, UnitType.PlayerNPC);
+            }
         }
 
         [EventCondition(IsInGame = HandleEnum.Ignore, IsInBattle = HandleEnum.True)]
         public override void OnTimeUpdate1s()
         {
             base.OnTimeUpdate1s();
-            if (g.world.battle.data.isRealBattle && _aroundUnits != null)
+            if (_aroundUnits != null)
             {
                 //enemy unit join battle
                 if (CommonTool.Random(0.00f, 100.00f).IsBetween(0.00f, RANDOM_NPC_JOIN_RATE))
@@ -49,14 +61,8 @@ namespace MOD_nE7UL2.Mod
                     if (enemyUnit != null)
                     {
                         _aroundUnits.Remove(enemyUnit);
-                        SceneType.battle.unit.CreateUnitHuman<UnitCtrlHumanNPC>(enemyUnit.data, UnitType.Alone);
-
-                        //var enemyUnitAllies = _aroundUnits.Where(x => enemyUnit.data.unitData.relationData.GetIntim(x) >= 350f);
-                        //foreach (var enemyUnitAllyUnit in enemyUnitAllies)
-                        //{
-                        //    _aroundUnits.Remove(enemyUnitAllyUnit);
-                        //    SceneType.battle.unit.CreateUnitHuman<UnitCtrlHumanNPC>(enemyUnitAllyUnit.data, UnitType.Monst);
-                        //}
+                        SceneType.battle.unit.CreateUnitHuman<UnitCtrlHumanNPC>(enemyUnit.data, UnitType.Monst);
+                        HirePeopleEvent.TeamJoinBattle(enemyUnit, UnitType.Monst);
 
                         DramaTool.OpenDrama(ENEMY_JOIN_DRAMA, new DramaData() { unitLeft = enemyUnit, unitRight = g.world.playerUnit });
                     }
@@ -70,6 +76,7 @@ namespace MOD_nE7UL2.Mod
                     {
                         _aroundUnits.Remove(friendlyUnit);
                         SceneType.battle.unit.CreateUnitHuman<UnitCtrlHumanNPC>(friendlyUnit.data, UnitType.PlayerNPC);
+                        HirePeopleEvent.TeamJoinBattle(friendlyUnit, UnitType.PlayerNPC);
 
                         DramaTool.OpenDrama(FRIENDLY_JOIN_DRAMA, new DramaData() { unitLeft = friendlyUnit, unitRight = g.world.playerUnit });
                     }
@@ -82,7 +89,9 @@ namespace MOD_nE7UL2.Mod
                     if (sectMember != null)
                     {
                         _aroundUnits.Remove(sectMember);
-                        SceneType.battle.unit.CreateUnitHuman<UnitCtrlHumanNPC>(sectMember.data, IsEnemyUnit(sectMember) ? UnitType.Monst : UnitType.PlayerNPC);
+                        var ut = IsEnemyUnit(sectMember) ? UnitType.Monst : UnitType.PlayerNPC;
+                        SceneType.battle.unit.CreateUnitHuman<UnitCtrlHumanNPC>(sectMember.data, ut);
+                        HirePeopleEvent.TeamJoinBattle(sectMember, ut);
 
                         DramaTool.OpenDrama(SECT_MEMBER_JOIN_DRAMA, new DramaData() { unitLeft = sectMember, unitRight = null });
                     }
@@ -95,7 +104,9 @@ namespace MOD_nE7UL2.Mod
                     if (townguard != null)
                     {
                         _aroundUnits.Remove(townguard);
-                        SceneType.battle.unit.CreateUnitHuman<UnitCtrlHumanNPC>(townguard.data, IsEnemyUnit(townguard) ? UnitType.Monst : UnitType.PlayerNPC);
+                        var ut = IsEnemyUnit(townguard) ? UnitType.Monst : UnitType.PlayerNPC;
+                        SceneType.battle.unit.CreateUnitHuman<UnitCtrlHumanNPC>(townguard.data, ut);
+                        HirePeopleEvent.TeamJoinBattle(townguard, ut);
 
                         DramaTool.OpenDrama(TOWN_GUARD_JOIN_DRAMA, new DramaData() { unitLeft = townguard, unitRight = null });
                     }
@@ -115,17 +126,17 @@ namespace MOD_nE7UL2.Mod
         private bool IsFriendlyUnit(WorldUnitBase wunit)
         {
             return friendlyInTraits.Contains(wunit.data.unitData.propertyData.inTrait) ||
-                wunit.data.unitData.relationData.GetIntim(g.world.playerUnit) >= 300f ||
-                (g.world.playerUnit.data.school?.schoolData.GetSchoolIntim(wunit) ?? 0) >= 300f ||
-                (wunit.data.school?.schoolData.GetSchoolIntim(g.world.playerUnit) ?? 0) >= 300f;
+                wunit.data.unitData.relationData.GetIntim(g.world.playerUnit) >= 200 ||
+                (g.world.playerUnit.data.school?.schoolData.GetSchoolIntim(wunit) ?? 0) >= 200 ||
+                (wunit.data.school?.schoolData.GetSchoolIntim(g.world.playerUnit) ?? 0) >= 200;
         }
 
         private bool IsEnemyUnit(WorldUnitBase wunit)
         {
             return enemyInTraits.Contains(wunit.data.unitData.propertyData.inTrait) ||
-                wunit.data.unitData.relationData.GetIntim(g.world.playerUnit) <= -300f ||
-                (g.world.playerUnit.data.school?.schoolData.GetSchoolIntim(wunit) ?? 0) <= -300f ||
-                (wunit.data.school?.schoolData.GetSchoolIntim(g.world.playerUnit) ?? 0) <= -300f;
+                wunit.data.unitData.relationData.GetIntim(g.world.playerUnit) <= -200 ||
+                (g.world.playerUnit.data.school?.schoolData.GetSchoolIntim(wunit) ?? 0) <= -200 ||
+                (wunit.data.school?.schoolData.GetSchoolIntim(g.world.playerUnit) ?? 0) <= -200;
         }
 
         //player kill npc
