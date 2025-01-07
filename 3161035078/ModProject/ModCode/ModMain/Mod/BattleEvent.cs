@@ -49,6 +49,7 @@ namespace MOD_nE7UL2.Mod
 
                 //team member join
                 _teamMember = HirePeopleEvent.TeamJoinBattle(g.world.playerUnit, UnitType.PlayerNPC);
+                Init(_teamMember.ToArray());
             }
         }
 
@@ -56,81 +57,100 @@ namespace MOD_nE7UL2.Mod
         public override void OnTimeUpdate1s()
         {
             base.OnTimeUpdate1s();
-            if (_aroundUnits != null)
+            if (g.world.battle.data.isRealBattle && (ModBattleEvent.SceneBattle?.battleMap.isStartBattle).Is(true) == 1 && ModBattleEvent.PlayerUnit != null)
             {
-                //enemy unit join battle
-                if (CommonTool.Random(0.00f, 100.00f).IsBetween(0.00f, RANDOM_NPC_JOIN_RATE))
+                if (_aroundUnits != null)
                 {
-                    var enemyUnit = _aroundUnits.FirstOrDefault(x => IsEnemyUnit(x));
-                    if (enemyUnit != null)
+                    //enemy unit join battle
+                    if (CommonTool.Random(0.00f, 100.00f).IsBetween(0.00f, RANDOM_NPC_JOIN_RATE))
                     {
-                        _aroundUnits.Remove(enemyUnit);
-                        SceneType.battle.unit.CreateUnitHuman<UnitCtrlHumanNPC>(enemyUnit.data, UnitType.Monst);
-                        HirePeopleEvent.TeamJoinBattle(enemyUnit, UnitType.Monst);
+                        var enemyUnit = _aroundUnits.FirstOrDefault(x => IsEnemyUnit(x));
+                        if (enemyUnit != null)
+                        {
+                            _aroundUnits.Remove(enemyUnit);
+                            Init(SceneType.battle.unit.CreateUnitHuman<UnitCtrlHumanNPC>(enemyUnit.data, UnitType.Monst));
+                            Init(HirePeopleEvent.TeamJoinBattle(enemyUnit, UnitType.Monst).ToArray());
 
-                        DramaTool.OpenDrama(ENEMY_JOIN_DRAMA, new DramaData() { unitLeft = enemyUnit, unitRight = g.world.playerUnit });
+                            DramaTool.OpenDrama(ENEMY_JOIN_DRAMA, new DramaData() { unitLeft = enemyUnit, unitRight = g.world.playerUnit });
+                        }
+                    }
+
+                    //friendly unit join battle
+                    if (CommonTool.Random(0.00f, 100.00f).IsBetween(0.00f, RANDOM_NPC_JOIN_RATE))
+                    {
+                        var friendlyUnit = _aroundUnits.FirstOrDefault(x => IsFriendlyUnit(x));
+                        if (friendlyUnit != null)
+                        {
+                            _aroundUnits.Remove(friendlyUnit);
+                            Init(SceneType.battle.unit.CreateUnitHuman<UnitCtrlHumanNPC>(friendlyUnit.data, UnitType.PlayerNPC));
+                            Init(HirePeopleEvent.TeamJoinBattle(friendlyUnit, UnitType.PlayerNPC).ToArray());
+
+                            DramaTool.OpenDrama(FRIENDLY_JOIN_DRAMA, new DramaData() { unitLeft = friendlyUnit, unitRight = g.world.playerUnit });
+                        }
+                    }
+
+                    //sect member join battle
+                    if (ModBattleEvent.School != null && CommonTool.Random(0.00f, 100.00f).IsBetween(0.00f, SECT_NPC_JOIN_RATE))
+                    {
+                        var sectMember = _aroundUnits.FirstOrDefault(x => MapBuildPropertyEvent.IsSchoolMember(ModBattleEvent.School, x));
+                        if (sectMember != null)
+                        {
+                            _aroundUnits.Remove(sectMember);
+                            var ut = IsEnemyUnit(sectMember) ? UnitType.Monst : UnitType.PlayerNPC;
+                            Init(SceneType.battle.unit.CreateUnitHuman<UnitCtrlHumanNPC>(sectMember.data, ut));
+                            Init(HirePeopleEvent.TeamJoinBattle(sectMember, ut).ToArray());
+
+                            DramaTool.OpenDrama(SECT_MEMBER_JOIN_DRAMA, new DramaData() { unitLeft = sectMember, unitRight = null });
+                        }
+                    }
+
+                    //town guard join battle
+                    if (ModBattleEvent.Town != null && CommonTool.Random(0.00f, 100.00f).IsBetween(0.00f, TOWN_GUARD_NPC_JOIN_RATE))
+                    {
+                        var townguard = _aroundUnits.FirstOrDefault(x => MapBuildPropertyEvent.IsTownGuardian(ModBattleEvent.Town, x));
+                        if (townguard != null)
+                        {
+                            _aroundUnits.Remove(townguard);
+                            var ut = IsEnemyUnit(townguard) ? UnitType.Monst : UnitType.PlayerNPC;
+                            Init(SceneType.battle.unit.CreateUnitHuman<UnitCtrlHumanNPC>(townguard.data, ut));
+                            Init(HirePeopleEvent.TeamJoinBattle(townguard, ut).ToArray());
+
+                            DramaTool.OpenDrama(TOWN_GUARD_JOIN_DRAMA, new DramaData() { unitLeft = townguard, unitRight = null });
+                        }
                     }
                 }
-
-                //friendly unit join battle
-                if (CommonTool.Random(0.00f, 100.00f).IsBetween(0.00f, RANDOM_NPC_JOIN_RATE))
+                if (_teamMember != null && _teamMember.Count > 0)
                 {
-                    var friendlyUnit = _aroundUnits.FirstOrDefault(x => IsFriendlyUnit(x));
-                    if (friendlyUnit != null)
+                    foreach (var member in _teamMember.ToArray())
                     {
-                        _aroundUnits.Remove(friendlyUnit);
-                        SceneType.battle.unit.CreateUnitHuman<UnitCtrlHumanNPC>(friendlyUnit.data, UnitType.PlayerNPC);
-                        HirePeopleEvent.TeamJoinBattle(friendlyUnit, UnitType.PlayerNPC);
+                        var wmember = g.world.unit.GetUnit(member);
+                        if (!member.isDie && IsEnemyUnit(wmember) && CommonTool.Random(0.00f, 100.00f).IsBetween(0.00f, TEAM_MEMBER_BETRAY_RATE))
+                        {
+                            member.data.unitType = UnitType.Monst; //change team
+                            HirePeopleEvent.Dismiss(g.world.playerUnit, wmember); //quit player team
+                            wmember.data.unitData.relationData.AddHate(g.world.playerUnit.GetUnitId(), 100);
+                            g.world.playerUnit.data.unitData.relationData.AddHate(wmember.GetUnitId(), 100);
 
-                        DramaTool.OpenDrama(FRIENDLY_JOIN_DRAMA, new DramaData() { unitLeft = friendlyUnit, unitRight = g.world.playerUnit });
-                    }
-                }
-
-                //sect member join battle
-                if (ModBattleEvent.School != null && CommonTool.Random(0.00f, 100.00f).IsBetween(0.00f, SECT_NPC_JOIN_RATE))
-                {
-                    var sectMember = _aroundUnits.FirstOrDefault(x => MapBuildPropertyEvent.IsSchoolMember(ModBattleEvent.School, x));
-                    if (sectMember != null)
-                    {
-                        _aroundUnits.Remove(sectMember);
-                        var ut = IsEnemyUnit(sectMember) ? UnitType.Monst : UnitType.PlayerNPC;
-                        SceneType.battle.unit.CreateUnitHuman<UnitCtrlHumanNPC>(sectMember.data, ut);
-                        HirePeopleEvent.TeamJoinBattle(sectMember, ut);
-
-                        DramaTool.OpenDrama(SECT_MEMBER_JOIN_DRAMA, new DramaData() { unitLeft = sectMember, unitRight = null });
-                    }
-                }
-
-                //town guard join battle
-                if (ModBattleEvent.Town != null && CommonTool.Random(0.00f, 100.00f).IsBetween(0.00f, TOWN_GUARD_NPC_JOIN_RATE))
-                {
-                    var townguard = _aroundUnits.FirstOrDefault(x => MapBuildPropertyEvent.IsTownGuardian(ModBattleEvent.Town, x));
-                    if (townguard != null)
-                    {
-                        _aroundUnits.Remove(townguard);
-                        var ut = IsEnemyUnit(townguard) ? UnitType.Monst : UnitType.PlayerNPC;
-                        SceneType.battle.unit.CreateUnitHuman<UnitCtrlHumanNPC>(townguard.data, ut);
-                        HirePeopleEvent.TeamJoinBattle(townguard, ut);
-
-                        DramaTool.OpenDrama(TOWN_GUARD_JOIN_DRAMA, new DramaData() { unitLeft = townguard, unitRight = null });
+                            DramaTool.OpenDrama(TEAM_MEMBER_BETRAY_DRAMA, new DramaData() { unitLeft = wmember, unitRight = g.world.playerUnit });
+                        }
                     }
                 }
             }
-            if (_teamMember != null && _teamMember.Count > 0)
-            {
-                foreach (var member in _teamMember.ToArray())
-                {
-                    var wmember = g.world.unit.GetUnit(member);
-                    if (!member.isDie && IsEnemyUnit(wmember) && CommonTool.Random(0.00f, 100.00f).IsBetween(0.00f, TEAM_MEMBER_BETRAY_RATE))
-                    {
-                        member.data.unitType = UnitType.Monst; //change team
-                        HirePeopleEvent.Dismiss(g.world.playerUnit, wmember); //quit player team
-                        wmember.data.unitData.relationData.AddHate(g.world.playerUnit.GetUnitId(), 100);
-                        g.world.playerUnit.data.unitData.relationData.AddHate(wmember.GetUnitId(), 100);
+        }
 
-                        DramaTool.OpenDrama(TEAM_MEMBER_BETRAY_DRAMA, new DramaData() { unitLeft = wmember, unitRight = g.world.playerUnit });
-                    }
-                }
+        private void Init(params UnitCtrlBase[] cunits)
+        {
+            foreach(var cunit in cunits)
+            {
+                //pos
+                var posi = new UnityEngine.Vector2[]
+                {
+                    new UnityEngine.Vector2(ModBattleEvent.SceneBattle.battleMap.roomCenterPosi.x + -10, ModBattleEvent.SceneBattle.battleMap.roomCenterPosi.y +   0),
+                    new UnityEngine.Vector2(ModBattleEvent.SceneBattle.battleMap.roomCenterPosi.x +  10, ModBattleEvent.SceneBattle.battleMap.roomCenterPosi.y +   0),
+                    new UnityEngine.Vector2(ModBattleEvent.SceneBattle.battleMap.roomCenterPosi.x +   0, ModBattleEvent.SceneBattle.battleMap.roomCenterPosi.y + -10),
+                    new UnityEngine.Vector2(ModBattleEvent.SceneBattle.battleMap.roomCenterPosi.x +   0, ModBattleEvent.SceneBattle.battleMap.roomCenterPosi.y +  10),
+                };
+                cunit.move.SetPosition(posi.Random());
             }
         }
 

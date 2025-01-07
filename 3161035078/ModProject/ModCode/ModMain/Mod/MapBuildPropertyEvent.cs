@@ -92,7 +92,7 @@ namespace MOD_nE7UL2.Mod
                 foreach (var wunitId in t.Value.ToArray())
                 {
                     var wunit = g.world.unit.GetUnit(wunitId);
-                    if (wunit == null || wunit.isDie || !IsTownGuardian(wunit))
+                    if (wunit == null || wunit.isDie || !IsTownGuardian(wunit) || IsErrorLuckId(wunit))
                     {
                         RemoveFromTownGuardians(wunitId, wunit);
                     }
@@ -182,7 +182,7 @@ namespace MOD_nE7UL2.Mod
                 //renew master & guardians
                 var aroundWUnits = UnitHelper.GetUnitsAround(town.GetOrigiPoint(), 4, false, true).ToArray().Where(x => !IsTownGuardian(x));
                 var townCouncilWUnits = townMasterData.Select(x => g.world.unit.GetUnit(x)).Where(x => x != null);
-                var outCouncilWUnits = aroundWUnits.Except(townCouncilWUnits);
+                var outCouncilWUnits = aroundWUnits.Where(x => !townMasterData.Contains(x.GetUnitId()));
                 var master = townCouncilWUnits.FirstOrDefault(x => IsTownMaster(x));
                 townMasterData.Clear();
                 if (master == null)
@@ -199,7 +199,7 @@ namespace MOD_nE7UL2.Mod
                             DramaTool.OpenDrama(BECOME_TOWN_MASTER_DRAMA);
                     }
                 }
-                var guardians = townCouncilWUnits.Where(x => x != master).ToList();
+                var guardians = townCouncilWUnits.Where(x => x.GetUnitId() != master.GetUnitId()).ToList();
                 if (guardians.Count < MAX_GUARDIANS)
                 {
                     guardians.AddRange(outCouncilWUnits.Where(x => !x.IsPlayer()).Take(MAX_GUARDIANS - guardians.Count));
@@ -307,6 +307,11 @@ namespace MOD_nE7UL2.Mod
                 school.buildData.money += add;
                 return;
             }
+        }
+
+        public static bool IsErrorLuckId(WorldUnitBase wunit)
+        {
+            return wunit.GetLuck(TOWN_GUARDIAN_LUCK_ID) != null && wunit.GetLuck(TOWN_MASTER_LUCK_ID) != null;
         }
 
         public static bool IsTownGuardian(WorldUnitBase wunit)
