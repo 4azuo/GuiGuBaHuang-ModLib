@@ -310,7 +310,7 @@ namespace MOD_nE7UL2.Mod
             if (!Instance.TeamData.ContainsKey(masterId) || !Instance.TeamData[masterId].Contains(memberId))
                 return;
             var teamData = Instance.TeamData[masterId];
-            teamData.Remove(member.GetUnitId());
+            teamData.RemoveAll(x => x == memberId);
             member.DelLuck(TEAM_LUCK_ID);
 
             if (teamData.Count == 0 || teamData.All(x => x == masterId))
