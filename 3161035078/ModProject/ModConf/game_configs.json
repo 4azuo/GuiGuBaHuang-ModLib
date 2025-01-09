@@ -145,16 +145,20 @@
 	},
 	"ExpertConfigs": {
 		"SkillDmgRatios": {
+			"None": 0.0,
 			"SkillLeft": 0.1,
 			"SkillRight": 1.0,
+			"Step": 1.0,
+			"Ability": 0.4,
 			"Ultimate": 5.0
 		},
 		"SkillExpRatios": {
+			"None": 0.0,
 			"SkillLeft": 0.02,
 			"SkillRight": 0.8,
 			"Step": 0.1,
-			"Ultimate": 0.6,
-			"Ability": 1.0
+			"Ability": 1.0,
+			"Ultimate": 0.6
 		},
 		"AutoArtifactExpRate": 1.0,
 		"BattleArtifactExpRate": 0.02
