@@ -335,8 +335,15 @@ namespace MOD_nE7UL2.Mod
             return IsTownGuardian(town, wunit) && IsTownMaster(wunit);
         }
 
+        public static bool IsSchoolMember(WorldUnitBase wunit)
+        {
+            return wunit.data.school?.schoolNameID != null;
+        }
+
         public static bool IsSchoolMember(MapBuildSchool school, WorldUnitBase wunit)
         {
+            if (school == null)
+                return false;
             return school.schoolNameID == wunit.data.school?.schoolNameID;
         }
 
@@ -380,7 +387,7 @@ namespace MOD_nE7UL2.Mod
                 {
                     if (data.Value.Contains(wunitId))
                     {
-                        data.Value.Remove(wunitId);
+                        data.Value.RemoveAll(x => x == wunitId);
                         break;
                     }
                 }

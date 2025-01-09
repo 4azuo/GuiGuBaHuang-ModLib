@@ -16,7 +16,7 @@ namespace MOD_nE7UL2.Mod
         public static BattleRewardEventV2 Instance { get; set; }
 
         //public const int QI_ITEM = 484410100;
-        public const float TEAMMATE_QUIT_RATE = 20f;
+        public const float TEAMMATE_QUIT_RATE = 10f;
 
         private const string RATIO_KEY = "Ratio";
         private const string FACTOR_KEY = "Factor";
@@ -501,38 +501,7 @@ namespace MOD_nE7UL2.Mod
             DebugHelper.WriteLine($"Damage dealt: {localDmgDealt}dmg, Damage recieve: {localDmgRecv}dmg");
             var player = g.world.playerUnit;
 
-            if (g.world.battle.data.isRealBattle && ModBattleEvent.PlayerUnit.isDie)
-            {
-                DebugHelper.WriteLine($"BattleRewardEvent: lose");
-
-                //exp
-                var gradeLvl = player.GetGradeLvl();
-                var bodyReconstructionItemId = BodyReconstructions.ContainsKey(gradeLvl) ? BodyReconstructions[gradeLvl] : new int[0];
-                if (bodyReconstructionItemId.Length == 0 || bodyReconstructionItemId.All(x => player.GetUnitPropCount(x) <= 0))
-                {
-                    player.ClearExp();
-                }
-                else
-                {
-                    var item = bodyReconstructionItemId.First(x => player.GetUnitPropCount(x) > 0);
-                    player.RemoveUnitProp(item, 1);
-                }
-
-                //teammate quit
-                var teamData = HirePeopleEvent.GetTeamDetailData(player);
-                if (teamData != null)
-                {
-                    foreach (var member in teamData.Item2)
-                    {
-                        if (!member.IsPlayer() && CommonTool.Random(0.00f, 100.00f).IsBetween(0.00f, TEAMMATE_QUIT_RATE))
-                        {
-                            HirePeopleEvent.Dismiss(player, member);
-                            member.data.unitData.relationData.AddHate(player.GetUnitId(), 20);
-                        }
-                    }
-                }
-            }
-            else if (e.isWin)
+            if (e.isWin)
             {
                 DebugHelper.WriteLine($"BattleRewardEvent: win");
                 var insight = player.GetDynProperty(UnitDynPropertyEnum.Talent).value;
@@ -562,6 +531,42 @@ namespace MOD_nE7UL2.Mod
                     var myRewardExp = (rewardExp * (insight / 100f)).Parse<int>();
                     player.AddExp(myRewardExp);
                     DebugHelper.WriteLine($"BattleRewardEvent: +{myRewardExp}exp");
+                }
+            }
+            else
+            {
+                DebugHelper.WriteLine($"BattleRewardEvent: lose");
+                if (g.world.battle.data.isRealBattle)
+                {
+                    //exp
+                    if (ModBattleEvent.PlayerUnit.isDie)
+                    {
+                        var gradeLvl = player.GetGradeLvl();
+                        var bodyReconstructionItemId = BodyReconstructions.ContainsKey(gradeLvl) ? BodyReconstructions[gradeLvl] : new int[0];
+                        if (bodyReconstructionItemId.Length == 0 || bodyReconstructionItemId.All(x => player.GetUnitPropCount(x) <= 0))
+                        {
+                            player.ClearExp();
+                        }
+                        else
+                        {
+                            var item = bodyReconstructionItemId.First(x => player.GetUnitPropCount(x) > 0);
+                            player.RemoveUnitProp(item, 1);
+                        }
+                    }
+
+                    //teammate quit
+                    var teamData = HirePeopleEvent.GetTeamDetailData(player);
+                    if (teamData != null)
+                    {
+                        foreach (var member in teamData.Item2)
+                        {
+                            if (!member.IsPlayer() && CommonTool.Random(0.00f, 100.00f).IsBetween(0.00f, TEAMMATE_QUIT_RATE))
+                            {
+                                HirePeopleEvent.Dismiss(player, member);
+                                member.data.unitData.relationData.AddHate(player.GetUnitId(), 20);
+                            }
+                        }
+                    }
                 }
             }
         }
