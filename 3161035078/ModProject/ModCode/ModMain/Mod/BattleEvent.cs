@@ -1,5 +1,4 @@
-﻿using EBattleTypeData;
-using MOD_nE7UL2.Const;
+﻿using MOD_nE7UL2.Const;
 using ModLib.Enum;
 using ModLib.Mod;
 using System.Collections.Generic;
@@ -22,8 +21,6 @@ namespace MOD_nE7UL2.Mod
         public const int SECT_MEMBER_JOIN_DRAMA = 480110300;
         public const int TOWN_GUARD_JOIN_DRAMA = 480110400;
         public const int TEAM_MEMBER_BETRAY_DRAMA = 480110500;
-
-        public int PvPCount { get; set; } = 0;
 
         private static float _avgGrade;
         private static List<UnitCtrlBase> _teamMember;
@@ -224,34 +221,6 @@ namespace MOD_nE7UL2.Mod
                     (g.world.playerUnit.data.school?.schoolData.GetSchoolIntim(wunit) ?? 0) <= -200 ||
                     (wunit.data.school?.schoolData.GetSchoolIntim(g.world.playerUnit) ?? 0) <= -200
                 );
-        }
-
-        //player kill npc
-        public override void OnBattleUnitDie(UnitDie e)
-        {
-            base.OnBattleUnitDie(e);
-            var dieUnit = e?.unit?.data?.TryCast<UnitDataHuman>();
-            var attackUnitData = e?.hitData?.attackUnit?.data?.TryCast<UnitDataHuman>();
-            if (dieUnit?.worldUnitData != null && 
-                g.world.battle.data.isRealBattle &&
-                (attackUnitData?.worldUnitData?.unit?.IsPlayer() ?? false))
-            {
-                PvPCount++;
-            }
-        }
-
-        //npc revenge player
-        public override void OnBattleUnitInit(UnitInit e)
-        {
-            base.OnBattleUnitInit(e);
-
-            var humanData = e.unit?.data?.TryCast<UnitDataHuman>();
-            if (g.world.battle.data.isRealBattle &&
-                (!humanData?.worldUnitData?.unit?.IsPlayer() ?? false) &&
-                humanData?.worldUnitData?.GetRelationType(g.world.playerUnit) == UnitBothRelationType.Hater)
-            {
-                humanData.attack.baseValue += (int)(humanData.attack.value * (PvPCount / 100.00f));
-            }
         }
     }
 }
