@@ -1,5 +1,4 @@
 ﻿using EBattleTypeData;
-using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
@@ -7,9 +6,6 @@ namespace ModLib.Mod
 {
     public abstract partial class ModMaster : MonoBehaviour
     {
-        private static readonly IList<string> battleCheckList = new List<string>();
-        private static bool isBattleEnd = true;
-
         #region ModLib - Handlers
         public virtual void _OnBattleUnitInit(ETypeData e)
         {
@@ -78,30 +74,17 @@ namespace ModLib.Mod
 
         public virtual void _OnBattleSetUnitType(ETypeData e)
         {
-            var x = e.TryCast<SetUnitType>();
-            if (x != null && !battleCheckList.Contains(x.unit.data.createUnitSoleID))
-            {
-                battleCheckList.Add(x.unit.data.createUnitSoleID);
-                CallEvents<UnitCtrlBase>("OnBattleUnitInto", x.unit);
-            }
             CallEvents<SetUnitType>("OnBattleSetUnitType", e);
         }
 
         public virtual void _OnBattleStart(ETypeData e)
         {
-            isBattleEnd = false;
             CallEvents<ETypeData>("OnBattleStart", e);
         }
 
         public virtual void _OnBattleEnd(ETypeData e)
         {
-            if (!isBattleEnd)
-            {
-                CallEvents<BattleEnd>("OnBattleEndOnce", e);
-                isBattleEnd = true;
-            }
             CallEvents<BattleEnd>("OnBattleEnd", e);
-            battleCheckList.Clear();
         }
 
         public virtual void _OnBattleEndFront(ETypeData e)
@@ -196,24 +179,13 @@ namespace ModLib.Mod
             EventHelper.RunMinorEvents(e);
         }
 
-        public virtual void OnBattleUnitInto(UnitCtrlBase e)
-        {
-            EventHelper.RunMinorEvents(e);
-        }
-
         public virtual void OnBattleStart(ETypeData e)
         {
             DebugHelper.WriteLine($"Battle: SoleId:{g.world.battle.data.battleID}, Lvl:{g.world.battle.data.dungeonLevel}, SelfBattle:{g.world.battle.data.isSelfBattle}, RealBattle:{g.world.battle.data.isRealBattle}, RoomCount:{SceneType.battle.room.room.allRoom.Count}, RoomInfo:{string.Join(";", SceneType.battle.room.room.allRoom.ToArray().Select(x => $"(Id:{x.roomBaseItem.id}, Type:{x.roomBaseItem.type}, Width:{x.roomBaseItem.width}, Height:{x.roomBaseItem.height})"))}");
-            
             EventHelper.RunMinorEvents(e);
         }
 
         public virtual void OnBattleEnd(BattleEnd e)
-        {
-            EventHelper.RunMinorEvents(e);
-        }
-
-        public virtual void OnBattleEndOnce(BattleEnd e)
         {
             EventHelper.RunMinorEvents(e);
         }
