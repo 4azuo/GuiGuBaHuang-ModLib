@@ -439,27 +439,5 @@ namespace MOD_nE7UL2.Mod
             var k = (Instance.TeamData.ContainsKey(masterId) ? Instance.TeamData[masterId].Count : 1) + 1;
             return (Math.Pow(2, k) * 1000 + Math.Pow(2, wunit.GetGradeLvl()) * 100).Parse<int>();
         }
-
-        public static List<UnitCtrlBase> TeamJoinBattle(WorldUnitBase wunit, UnitType ut)
-        {
-            var jointMem = new List<UnitCtrlBase>();
-            var teamData = GetTeamData(wunit);
-            if (!teamData.HasValue)
-                return jointMem;
-            var wunitId = wunit.GetUnitId();
-            var pos = wunit.GetUnitPos();
-            foreach (var memberId in teamData.Value.Value)
-            {
-                if (memberId == wunitId)
-                    continue;
-                var member = g.world.unit.GetUnit(memberId);
-                if (member == null || member.isDie)
-                    continue;
-                member.SetUnitPos(pos);
-                var cunit = SceneType.battle.unit.CreateUnitHuman<UnitCtrlHumanNPC>(member.data, ut);
-                jointMem.Add(cunit);
-            }
-            return jointMem;
-        }
     }
 }

@@ -45,11 +45,11 @@ namespace MOD_nE7UL2.Mod
             }
         }
 
-        public override void OnBattleUnitInto(UnitCtrlBase e)
+        public override void OnBattleUnitInit(UnitInit e)
         {
-            base.OnBattleUnitInto(e);
+            base.OnBattleUnitInit(e);
 
-            var humanData = e.data.TryCast<UnitDataHuman>();
+            var humanData = e.unit.data.TryCast<UnitDataHuman>();
             if (humanData?.worldUnitData?.unit != null)
             {
                 //humanData.attack.baseValue += (??? / 100.00f * humanData.attack.baseValue).Parse<int>();
@@ -314,11 +314,8 @@ namespace MOD_nE7UL2.Mod
         {
             base.OnTimeUpdate200ms();
             
-            foreach (var unit in ModBattleEvent.DungeonUnits)
+            foreach (var unit in ModBattleEvent.BattleUnits)
             {
-                if (unit.isDie)
-                    continue;
-
                 //monster recovery
                 var monstData = unit?.data?.TryCast<UnitDataMonst>();
                 if (monstData != null && monstData.grade.value >= 3)
