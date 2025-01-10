@@ -229,7 +229,9 @@ namespace ModLib.Mod
         [JsonIgnore]
         public static bool IsWorldUnitHit => HitWorldUnit != null;
         [JsonIgnore]
-        public static List<UnitCtrlBase> DungeonUnits { get; } = new List<UnitCtrlBase>();
+        public static Il2CppSystem.Collections.Generic.List<UnitCtrlBase> BattleUnits => SceneType.battle.unit.allUnit;
+        [JsonIgnore]
+        public static Il2CppSystem.Collections.Generic.List<UnitCtrlBase> BattleUnitsIncludeDie => SceneType.battle.unit.allUnitIncludeDie;
         [JsonIgnore]
         public static ModBattleEvent BattleInfo { get; private set; }
         [JsonIgnore]
@@ -246,18 +248,6 @@ namespace ModLib.Mod
         public ModBattleEvent() : base()
         {
             BattleInfo = this;
-        }
-
-        public override void OnBattleEndOnce(BattleEnd e)
-        {
-            base.OnBattleEndOnce(e);
-            DungeonUnits.Clear();
-        }
-
-        public override void OnBattleUnitInto(UnitCtrlBase e)
-        {
-            base.OnBattleUnitInto(e);
-            DungeonUnits.Add(e);
         }
 
         public override void OnLoadGame()

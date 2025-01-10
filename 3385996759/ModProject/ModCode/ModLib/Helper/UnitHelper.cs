@@ -605,12 +605,14 @@ public static class UnitHelper
 
     public static bool IsMonster(this UnitCtrlBase cunit)
     {
-        return cunit?.data?.TryCast<UnitDataMonst>()?.unit != null && !cunit.IsWorldUnit();
+        return cunit?.data?.TryCast<UnitDataMonst>()?.unit != null;
     }
 
     public static WorldUnitBase GetWorldUnit(this UnitCtrlBase cunit)
     {
-        return cunit?.data?.TryCast<UnitDataHuman>()?.worldUnitData?.unit;
+        if (cunit == null)
+            return null;
+        return g.world.unit.GetUnit(cunit);
     }
 
     public static Il2CppSystem.Collections.Generic.List<WorldUnitBase> GetUnitsAround(this WorldUnitBase wunit, int range = 16, bool isGetHide = false, bool isGetPlayer = true)
