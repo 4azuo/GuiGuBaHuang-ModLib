@@ -22,14 +22,14 @@ namespace MOD_nE7UL2.Mod
 
         private static List<UnitCtrlBase> multipliedUnits = new List<UnitCtrlBase>();
 
-        public override void OnBattleUnitInto(UnitCtrlBase e)
+        public override void OnBattleUnitInit(UnitInit e)
         {
-            base.OnBattleUnitInto(e);
+            base.OnBattleUnitInit(e);
 
-            if (e.IsMonster())
+            if (e.unit.IsMonster())
             {
                 var gameLvl = g.data.dataWorld.data.gameLevel.Parse<int>();
-                var monstData = e?.data?.TryCast<UnitDataMonst>();
+                var monstData = e.unit?.data?.TryCast<UnitDataMonst>();
 
                 if (monstData.monstType == MonstType.Common || monstData.monstType == MonstType.Elite)
                 {

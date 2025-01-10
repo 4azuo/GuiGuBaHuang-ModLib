@@ -24,11 +24,11 @@ namespace MOD_nE7UL2.Mod
             IsInTrial = e.dramaID == 20701;
         }
 
-        public override void OnBattleUnitInto(UnitCtrlBase e)
+        public override void OnBattleUnitInit(UnitInit e)
         {
-            base.OnBattleUnitInto(e);
+            base.OnBattleUnitInit(e);
 
-            var data = e?.data;
+            var data = e.unit?.data;
             if (IsInTrial && data != null)
             {
                 var atk = g.world.playerUnit.GetDynProperty(UnitDynPropertyEnum.Attack).value;
@@ -43,9 +43,9 @@ namespace MOD_nE7UL2.Mod
             }
         }
 
-        public override void OnBattleEndOnce(BattleEnd e)
+        public override void OnBattleEnd(BattleEnd e)
         {
-            base.OnBattleEndOnce(e);
+            base.OnBattleEnd(e);
 
             if (IsInTrial && !ModBattleEvent.PlayerUnit.isDie)
             {

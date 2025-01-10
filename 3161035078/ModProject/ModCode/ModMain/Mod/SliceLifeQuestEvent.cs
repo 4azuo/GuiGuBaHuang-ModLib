@@ -108,9 +108,9 @@ namespace MOD_nE7UL2.Mod
             }
         }
 
-        public override void OnBattleEndOnce(BattleEnd e)
+        public override void OnBattleEnd(BattleEnd e)
         {
-            base.OnBattleEndOnce(e);
+            base.OnBattleEnd(e);
             var curTask = AddTask();
             if (curTask == null)
             {

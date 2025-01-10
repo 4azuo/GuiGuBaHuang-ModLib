@@ -2,8 +2,8 @@
 {
     public static class ModConst
     {
-        public const string TAOIST_VERSION = "4.4.1";
-        public const string MODLIB_REQUIRED_VERSION = "1.4.0";
+        public const string TAOIST_VERSION = "4.4.3";
+        public const string MODLIB_REQUIRED_VERSION = "1.5.0";
 
         //Events
         public const string DEBUG_EVENT = "DEBUG";
