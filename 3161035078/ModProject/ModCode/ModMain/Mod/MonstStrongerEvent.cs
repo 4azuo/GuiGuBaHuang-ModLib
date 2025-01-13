@@ -55,15 +55,15 @@ namespace MOD_nE7UL2.Mod
             }
         }
 
-        public override void OnBattleUnitInit(UnitInit e)
+        public override void OnBattleUnitInto(UnitCtrlBase e)
         {
-            base.OnBattleUnitInit(e);
+            base.OnBattleUnitInto(e);
 
             //DebugHelper.WriteLine("2");
-            if (e.unit.IsMonster())
+            if (e.IsMonster())
             {
                 //DebugHelper.WriteLine("3");
-                var monstData = e.unit?.data?.TryCast<UnitDataMonst>();
+                var monstData = e?.data?.TryCast<UnitDataMonst>();
                 var gameLvl = g.data.dataWorld.data.gameLevel.Parse<int>();
                 var atk = monstData.attack.baseValue;
                 var def = monstData.defense.baseValue;
@@ -169,7 +169,7 @@ namespace MOD_nE7UL2.Mod
 
                 //heal fullhp
                 //DebugHelper.WriteLine("13");
-                e.unit.data.unit.data.hp = e.unit.data.unit.data.maxHP.value;
+                e.data.unit.data.hp = e.data.unit.data.maxHP.value;
             }
             //DebugHelper.Save();
         }

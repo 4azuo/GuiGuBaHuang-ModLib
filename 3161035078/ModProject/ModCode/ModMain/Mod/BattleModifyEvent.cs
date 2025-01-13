@@ -45,11 +45,11 @@ namespace MOD_nE7UL2.Mod
             }
         }
 
-        public override void OnBattleUnitInit(UnitInit e)
+        public override void OnBattleUnitInto(UnitCtrlBase e)
         {
-            base.OnBattleUnitInit(e);
+            base.OnBattleUnitInto(e);
 
-            var humanData = e.unit.data.TryCast<UnitDataHuman>();
+            var humanData = e.data.TryCast<UnitDataHuman>();
             if (humanData?.worldUnitData?.unit != null)
             {
                 //humanData.attack.baseValue += (??? / 100.00f * humanData.attack.baseValue).Parse<int>();

@@ -18,13 +18,13 @@ namespace MOD_nE7UL2.Mod
 
         public static _BattleManashieldConfigs ManashieldConfigs => ModMain.ModObj.GameSettings.BattleManashieldConfigs;
 
-        public override void OnBattleUnitInit(UnitInit e)
+        public override void OnBattleUnitInto(UnitCtrlBase e)
         {
-            base.OnBattleUnitInit(e);
+            base.OnBattleUnitInto(e);
 
-            if (e.unit.IsWorldUnit())
+            if (e.IsWorldUnit())
             {
-                var humanData = e.unit?.data?.TryCast<UnitDataHuman>();
+                var humanData = e?.data?.TryCast<UnitDataHuman>();
                 var shield = GetManashieldBase(humanData.worldUnitData.unit) + GetManashieldBasePlus(humanData.worldUnitData.unit);
                 var maxShield = humanData.maxHP.value;
                 ShieldUp(humanData.unit, shield, maxShield);
