@@ -198,6 +198,7 @@ namespace ModLib.Mod
 
         public virtual void OnBattleUnitInto(UnitCtrlBase e)
         {
+            //DebugHelper.WriteLine($"Unit: SoleId:{e.data.createUnitSoleID}, IsEnemy:{e.IsEnemy(ModBattleEvent.PlayerUnit)}, IsWorldUnit:{e.IsWorldUnit()}, IsPlayer:{e.IsPlayer()}, IsNPC:{e.IsNPC()}, IsHuman:{e.IsHuman()}, IsMonster:{e.IsMonster()}, IsMonsterHuman:{e.IsMonsterHuman()}, IsFairy:{e.IsFairy()}, IsHerd:{e.IsHerd()}, UnitType:{e.data.unitType}, MonstType:{e.TryCast<UnitCtrlMonst>()?.data.monstType}");
             EventHelper.RunMinorEvents(e);
         }
 
@@ -215,6 +216,7 @@ namespace ModLib.Mod
         public virtual void OnBattleEndOnce(BattleEnd e)
         {
             EventHelper.RunMinorEvents(e);
+            DebugHelper.Save();
         }
 
         public virtual void OnBattleEndFront(ETypeData e)
