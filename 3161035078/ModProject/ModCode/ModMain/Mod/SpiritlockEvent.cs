@@ -1,5 +1,4 @@
-﻿using EBattleTypeData;
-using MOD_nE7UL2.Const;
+﻿using MOD_nE7UL2.Const;
 using ModLib.Mod;
 using System.Linq;
 
@@ -23,22 +22,22 @@ namespace MOD_nE7UL2.Mod
 
         public const int SPIRITLOCK_CIRCLE = 12012;
 
-        public override void OnBattleUnitInit(UnitInit e)
+        public override void OnBattleUnitInto(UnitCtrlBase e)
         {
-            base.OnBattleUnitInit(e);
+            base.OnBattleUnitInto(e);
+            var data = e.data.TryCast<UnitDataMonst>();
 
-            var data = e.unit.data.TryCast<UnitDataMonst>();
             if (data != null)
             {
                 if (VENERABLE_TORTOISES.Contains(data.unitAttrItem.id))
                 {
-                    e.unit.data.moveSpeed.baseValue = 0;
-                    e.unit.data.defense.baseValue /= 2;
-                    //e.unit.data.maxHP.baseValue /= 2;
+                    e.data.moveSpeed.baseValue = 0;
+                    e.data.defense.baseValue /= 2;
+                    //e.data.maxHP.baseValue /= 2;
                 }
                 else if (data.unitAttrItem.id == SPIRITLOCK_CIRCLE)
                 {
-                    e.unit.data.moveSpeed.baseValue = 0;
+                    e.data.moveSpeed.baseValue = 0;
                 }
             }
         }
