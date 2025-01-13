@@ -97,7 +97,7 @@ namespace MOD_nE7UL2.Mod
                             if (friendlyUnit != null)
                             {
                                 _aroundUnits.Remove(friendlyUnit);
-                                NPCJoin(UnitType.PlayerNPC, HirePeopleEvent.GetTeamDetailData(friendlyUnit).Item2);
+                                NPCJoin(UnitType.PlayerNPC, HirePeopleEvent.GetTeamDetailData(friendlyUnit)?.Item2);
 
                                 DramaTool.OpenDrama(FRIENDLY_JOIN_DRAMA, new DramaData() { unitLeft = friendlyUnit, unitRight = g.world.playerUnit });
                             }

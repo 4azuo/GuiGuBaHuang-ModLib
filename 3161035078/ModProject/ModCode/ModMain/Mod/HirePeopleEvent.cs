@@ -7,8 +7,6 @@ using System.Linq;
 using ModLib.Object;
 using ModLib.Enum;
 using System;
-using System.Numerics;
-using static SpecialBattle83;
 
 namespace MOD_nE7UL2.Mod
 {
@@ -350,49 +348,33 @@ namespace MOD_nE7UL2.Mod
             return rs;
         }
 
-        public static List<WorldUnitBase> GetTeamMember(WorldUnitBase wunit)
+        public static WorldUnitBase[] GetTeamMember(WorldUnitBase wunit)
         {
-            var rs = new List<WorldUnitBase>();
-            var teamData = GetTeamData(wunit);
-            if (!teamData.HasValue)
-                return rs;
-            foreach (var wunitId in teamData.Value.Value)
-            {
-                rs.Add(g.world.unit.GetUnit(wunitId));
-            }
-            return rs;
+            return GetTeamData(wunit).Value.Value.Select(x => g.world.unit.GetUnit(x)).Where(x => x != null).ToArray();
         }
 
         public static KeyValuePair<string, List<string>>? GetTeamData(WorldUnitBase wunit)
         {
-            if (!IsHired(wunit))
-                return null;
             var wunitId = wunit.GetUnitId();
-            var teamData = Instance.TeamData.First(x => x.Value.Contains(wunitId));
-            return teamData;
+            if (!IsHired(wunit))
+                return new KeyValuePair<string, List<string>>(wunitId, new List<string> { wunitId });
+            return Instance.TeamData.First(x => x.Value.Contains(wunitId));
         }
 
         public static Tuple<WorldUnitBase, WorldUnitBase[]> GetTeamDetailData(WorldUnitBase wunit)
         {
             var teamData = GetTeamData(wunit);
-            if (!teamData.HasValue)
-                return null;
-            return Tuple.Create(g.world.unit.GetUnit(teamData.Value.Key), teamData.Value.Value.Select(x => g.world.unit.GetUnit(x)).Where(x => x != null).ToArray());
+            return Tuple.Create(g.world.unit.GetUnit(teamData.Value.Key), GetTeamMember(wunit));
         }
 
         public static WorldUnitBase GetTeamMaster(WorldUnitBase wunit)
         {
-            var teamData = GetTeamData(wunit);
-            if (!teamData.HasValue)
-                return null;
-            return g.world.unit.GetUnit(teamData.Value.Key);
+            return g.world.unit.GetUnit(GetTeamData(wunit).Value.Key);
         }
 
         public static string GetTeamInfoStr(WorldUnitBase wunit)
         {
             var teamData = GetTeamDetailData(wunit);
-            if (teamData == null)
-                return null;
             return $"{teamData.Item1.data.unitData.propertyData.GetName()} ({teamData.Item2.Length} members)";
         }
 
@@ -415,12 +397,10 @@ namespace MOD_nE7UL2.Mod
         public static int GetTotalMonthlyPayment(WorldUnitBase master)
         {
             var rs = 0;
-            var teamData = GetTeamDetailData(master);
-            if (teamData == null)
-                return rs;
-            foreach (var member in teamData.Item2)
+            var masterId = master.GetUnitId();
+            foreach (var member in GetTeamDetailData(master).Item2)
             {
-                if (member.GetUnitId() != master.GetUnitId())
+                if (member.GetUnitId() != masterId)
                     rs += GetRequiredSpiritStones(master, member) / MONTHLY_PAYMENT_RATIO;
             }
             return rs;
