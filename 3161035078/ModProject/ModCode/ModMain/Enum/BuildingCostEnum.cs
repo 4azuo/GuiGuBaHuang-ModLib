@@ -6,8 +6,8 @@ namespace MOD_nE7UL2.Enum
 {
     public class BuildingCostEnum : EnumObject
     {
-        public static BuildingCostEnum SchoolTrainingHallBuildCost { get; } = new BuildingCostEnum(-1f, MapBuildSubType.SchoolTrainingHall, true, false, null);
-        public static BuildingCostEnum SchoolPortalBuildCost { get; } = new BuildingCostEnum(8.00f, MapBuildSubType.SchoolTransfer, true, false, new long[]
+        public static BuildingCostEnum SchoolTrainingHallBuildCost { get; } = new BuildingCostEnum("School Traning Hall", -1f, MapBuildSubType.SchoolTrainingHall, true, false, null);
+        public static BuildingCostEnum SchoolPortalBuildCost { get; } = new BuildingCostEnum("School Transfer", 4.00f, MapBuildSubType.SchoolTransfer, true, false, new long[]
         {
             /*01*/15000,
             /*02*/30000,
@@ -20,7 +20,7 @@ namespace MOD_nE7UL2.Enum
             /*09*/3000000,
             /*10*/10000000,
         });
-        //public static BuildingCostEnum SchoolStorageBuildCost { get; } = new BuildingCostEnum(10.00f, MapBuildSubType.SchoolStorage, true, false, new long[]
+        //public static BuildingCostEnum SchoolStorageBuildCost { get; } = new BuildingCostEnum("School Storage", 5.00f, MapBuildSubType.SchoolStorage, true, false, new long[]
         //{
         //    /*01*/0,
         //    /*02*/10000,
@@ -33,7 +33,7 @@ namespace MOD_nE7UL2.Enum
         //    /*09*/300000,
         //    /*10*/300000,
         //});
-        public static BuildingCostEnum TownPortalBuildCost { get; } = new BuildingCostEnum(8.00f, MapBuildSubType.TownTransfer, false, false, new long[]
+        public static BuildingCostEnum TownPortalBuildCost { get; } = new BuildingCostEnum("Town Transfer", 4.00f, MapBuildSubType.TownTransfer, false, false, new long[]
         {
             /*01*/20000,
             /*02*/40000,
@@ -46,7 +46,7 @@ namespace MOD_nE7UL2.Enum
             /*09*/8000000,
             /*10*/25000000,
         });
-        //public static BuildingCostEnum TownStorageBuildCost { get; } = new BuildingCostEnum(10.00f, MapBuildSubType.TownStorage, false, false, new long[]
+        //public static BuildingCostEnum TownStorageBuildCost { get; } = new BuildingCostEnum("Town Storage", 5.00f, MapBuildSubType.TownStorage, false, false, new long[]
         //{
         //    /*01*/0,
         //    /*02*/10000,
@@ -59,7 +59,7 @@ namespace MOD_nE7UL2.Enum
         //    /*09*/300000,
         //    /*10*/300000,
         //});
-        public static BuildingCostEnum TownAuctionBuildCost { get; } = new BuildingCostEnum(4.00f, MapBuildSubType.TownAuction, false, true, new long[]
+        public static BuildingCostEnum TownAuctionBuildCost { get; } = new BuildingCostEnum("Town Auction", 2.00f, MapBuildSubType.TownAuction, false, true, new long[]
         {
             /*01*/10000,
             /*02*/20000,
@@ -72,7 +72,7 @@ namespace MOD_nE7UL2.Enum
             /*09*/3000000,
             /*10*/10000000,
         });
-        public static BuildingCostEnum TownFactoryBuildCost { get; } = new BuildingCostEnum(6.00f, MapBuildSubType.TownFactory, false, false, new long[]
+        public static BuildingCostEnum TownFactoryBuildCost { get; } = new BuildingCostEnum("Town Factory", 3.00f, MapBuildSubType.TownFactory, false, false, new long[]
         {
             /*01*/10000,
             /*02*/20000,
@@ -85,7 +85,7 @@ namespace MOD_nE7UL2.Enum
             /*09*/2000000,
             /*10*/3000000,
         });
-        public static BuildingCostEnum TownMarketBookBuildCost { get; } = new BuildingCostEnum(2.00f, MapBuildSubType.TownMarketBook, false, false, new long[]
+        public static BuildingCostEnum TownMarketBookBuildCost { get; } = new BuildingCostEnum("Town Market Book", 1.00f, MapBuildSubType.TownMarketBook, false, false, new long[]
         {
             /*01*/0,
             /*02*/30000,
@@ -98,7 +98,7 @@ namespace MOD_nE7UL2.Enum
             /*09*/6000000,
             /*10*/8000000,
         });
-        public static BuildingCostEnum TownMarketDressBuildCost { get; } = new BuildingCostEnum(5.00f, MapBuildSubType.TownMarketDress, false, false, new long[]
+        public static BuildingCostEnum TownMarketDressBuildCost { get; } = new BuildingCostEnum("Town Market Dress", 3.00f, MapBuildSubType.TownMarketDress, false, false, new long[]
         {
             /*01*/4000,
             /*02*/8000,
@@ -111,7 +111,7 @@ namespace MOD_nE7UL2.Enum
             /*09*/800000,
             /*10*/1000000,
         });
-        public static BuildingCostEnum TownBountyBuildCost { get; } = new BuildingCostEnum(15.00f, MapBuildSubType.TownBounty, false, false, new long[]
+        public static BuildingCostEnum TownBountyBuildCost { get; } = new BuildingCostEnum("Town Bounty", 8.00f, MapBuildSubType.TownBounty, false, false, new long[]
         {
             /*01*/0,
             /*02*/4000,
@@ -125,14 +125,16 @@ namespace MOD_nE7UL2.Enum
             /*10*/200000,
         });
 
+        public string BuildingName { get; private set; }
         public float BuildRate { get; private set; }
         public MapBuildSubType BuildType { get; private set; }
         public bool IsSchool { get; private set; }
         public bool IsCity { get; private set; }
         public long[] BuildCosts { get; private set; }
         public Action<BuildingCostEnum, MapBuildSubBase> BuiltAfter { get; private set; }
-        private BuildingCostEnum(float rate, MapBuildSubType type, bool isSchool, bool isCity, long[] costs, Action<BuildingCostEnum, MapBuildSubBase> after = null) : base()
+        private BuildingCostEnum(string name, float rate, MapBuildSubType type, bool isSchool, bool isCity, long[] costs, Action<BuildingCostEnum, MapBuildSubBase> after = null) : base()
         {
+            BuildingName = name;
             BuildRate = rate;
             BuildType = type;
             IsSchool = isSchool;
