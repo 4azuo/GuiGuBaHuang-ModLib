@@ -4,6 +4,7 @@ using MOD_nE7UL2.Const;
 using MOD_nE7UL2.Enum;
 using ModLib.Enum;
 using ModLib.Mod;
+using ModLib.Object;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -171,6 +172,9 @@ namespace MOD_nE7UL2.Mod
                         var profit = (Budget[town.buildData.id] / (IsTownMaster(wunit) ? 12 : 36)).FixValue(0, int.MaxValue).Parse<int>();
                         Budget[town.buildData.id] -= profit;
                         wunit.AddUnitMoney(profit);
+
+                        if (wunit.IsPlayer())
+                            continue;
                         wunit.SetUnitPos(town.GetOrigiPoint());
                     }
                     else
@@ -353,7 +357,35 @@ namespace MOD_nE7UL2.Mod
             ui.InitData(new Vector2Int(0, 0));
             ui.units = GetTownGuardians(town).ToIl2CppList();
             ui.UpdateUI();
-            g.ui.MsgBox("Info", "Upcoming...");
+
+            var i = -4;
+            var uiCover = new UICover<UINPCSearch>(ui);
+            uiCover.AddText(uiCover.MidCol - 5, uiCover.MidRow + i, $"Town Budget: {MapBuildPropertyEvent.GetBuildProperty(town):#,##0}").Format().Align();
+            i += 2;
+            foreach (var e in BuildingCostEnum.GetAllEnums<BuildingCostEnum>())
+            {
+                if (BuildingArrangeEvent.IsIgnored(town, e))
+                    continue;
+
+                var cost = BuildingArrangeEvent.GetBuildingCost(town, e);
+                var isBuilt = town.GetBuildSub(e.BuildType) != null;
+                uiCover.AddText(uiCover.MidCol - 5, uiCover.MidRow + i, $"{e.BuildingName}　／　{(isBuilt ? "Done" : $"Cost: {cost:#,##0}")}").Format().Align();
+                if (!isBuilt)
+                {
+                    uiCover.AddButton(uiCover.MidCol - 8, uiCover.MidRow + i, () =>
+                    {
+                        if (MapBuildPropertyEvent.GetBuildProperty(town) > cost)
+                        {
+                            BuildingArrangeEvent.Build(town, e);
+                        }
+                        else
+                        {
+                            g.ui.MsgBox("Info", $"You cant build this building with current budget!{Environment.NewLine}{MapBuildPropertyEvent.GetBuildProperty(town):#,##0}");
+                        }
+                    }, "Build").Format().Align(TextAnchor.MiddleCenter);
+                }
+                i += 2;
+            }
         }
 
         public static void OpenUITownGuardians(MapBuildTown town)
@@ -362,6 +394,9 @@ namespace MOD_nE7UL2.Mod
             ui.InitData(new Vector2Int(0, 0));
             ui.units = GetTownGuardians(town).ToIl2CppList();
             ui.UpdateUI();
+
+            var uiCover = new UICover<UINPCSearch>(ui);
+            uiCover.AddButton(uiCover.LastCol - 8, uiCover.LastRow - 8, null, "Declare War").Format().Align(TextAnchor.MiddleCenter).Size(300, 60);
         }
 
         public static List<WorldUnitBase> GetTownGuardians(MapBuildTown town)

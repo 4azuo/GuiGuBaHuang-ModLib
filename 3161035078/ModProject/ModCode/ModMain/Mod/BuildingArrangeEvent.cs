@@ -2,6 +2,7 @@
 using MOD_nE7UL2.Enum;
 using ModLib.Mod;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 namespace MOD_nE7UL2.Mod
@@ -38,6 +39,8 @@ namespace MOD_nE7UL2.Mod
 
             foreach (var build in g.world.build.GetBuilds())
             {
+                if (build.IsTown() && MapBuildPropertyEvent.GetTownGuardians(build.TryCast<MapBuildTown>()).Any(x => x.GetUnitId() == g.world.playerUnit.GetUnitId()))
+                    continue; //if player is town-master, then skip auto build
                 foreach (var e in BuildingCostEnum.GetAllEnums<BuildingCostEnum>())
                 {
                     AddBuildSub(build, e);
@@ -65,23 +68,31 @@ namespace MOD_nE7UL2.Mod
                 return;
             if (e.IsMatchBuildConds(build))
             {
-                if (e.BuildRate == -1f || e.BuildCosts == null)
+                if (IsIgnored(build, e))
                     return;
 
                 var r = CommonTool.Random(0.00f, 100.00f);
-                var k = GetArrDicKey(build, e);
-                if (!ArrDic.Contains(k) &&
-                    MapBuildPropertyEvent.GetBuildProperty(build) > GetBuildingCost(build, e) &&
+                if (MapBuildPropertyEvent.GetBuildProperty(build) > GetBuildingCost(build, e) &&
                     ValueHelper.IsBetween(r, 0.00f, rate == -1f ? e.BuildRate : rate))
                 {
-                    ArrDic.Add(k);
-                    var buildSub = build.GetBuildSub(e.BuildType);
-                    if (buildSub == null)
-                    {
-                        e.Build(build);
-                    }
+                    Build(build, e);
                 }
             }
+        }
+
+        public static bool IsIgnored(MapBuildBase build, BuildingCostEnum e)
+        {
+            return e.BuildRate == -1f || 
+                e.BuildCosts == null || 
+                Instance.ArrDic.Contains(Instance.GetArrDicKey(build, e)) ||
+                build.GetBuildSub(e.BuildType) !=  null;
+        }
+
+        public static void Build(MapBuildBase build, BuildingCostEnum e)
+        {
+            Instance.ArrDic.Add(Instance.GetArrDicKey(build, e));
+            e.Build(build);
+            MapBuildPropertyEvent.AddBuildProperty(build, GetBuildingCost(build, e));
         }
 
         public static long GetBuildingCost(MapBuildBase build, BuildingCostEnum e)
