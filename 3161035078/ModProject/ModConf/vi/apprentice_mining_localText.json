@@ -1,0 +1,122 @@
+[
+  {
+    "id": "420062001",
+    "key": "apprentice420061001",
+    "en": "Nhất phẩm quáng tài",
+    "ch": "Nhất phẩm quáng tài"
+  },
+  {
+    "id": "420063001",
+    "key": "apprentice420061001desc",
+    "en": "+2% Phòng ngự",
+    "ch": "+2% Phòng ngự"
+  },
+  {
+    "id": "420062002",
+    "key": "apprentice420061002",
+    "en": "Nhị phẩm quáng tài",
+    "ch": "Nhị phẩm quáng tài"
+  },
+  {
+    "id": "420063002",
+    "key": "apprentice420061002desc",
+    "en": "+4% Phòng ngự",
+    "ch": "+4% Phòng ngự"
+  },
+  {
+    "id": "420062003",
+    "key": "apprentice420061003",
+    "en": "Tam phẩm quáng tài",
+    "ch": "Tam phẩm quáng tài"
+  },
+  {
+    "id": "420063003",
+    "key": "apprentice420061003desc",
+    "en": "+6% Phòng ngự",
+    "ch": "+6% Phòng ngự"
+  },
+  {
+    "id": "420062004",
+    "key": "apprentice420061004",
+    "en": "Tứ phẩm quáng tài",
+    "ch": "Tứ phẩm quáng tài"
+  },
+  {
+    "id": "420063004",
+    "key": "apprentice420061004desc",
+    "en": "+8% Phòng ngự",
+    "ch": "+8% Phòng ngự"
+  },
+  {
+    "id": "420062005",
+    "key": "apprentice420061005",
+    "en": "Ngũ phẩm quáng tài",
+    "ch": "Ngũ phẩm quáng tài"
+  },
+  {
+    "id": "420063005",
+    "key": "apprentice420061005desc",
+    "en": "+10% Phòng ngự",
+    "ch": "+10% Phòng ngự"
+  },
+  {
+    "id": "420062006",
+    "key": "apprentice420061006",
+    "en": "Lục phẩm quáng tài",
+    "ch": "Lục phẩm quáng tài"
+  },
+  {
+    "id": "420063006",
+    "key": "apprentice420061006desc",
+    "en": "+12% Phòng ngự",
+    "ch": "+12% Phòng ngự"
+  },
+  {
+    "id": "420062007",
+    "key": "apprentice420061007",
+    "en": "Thất phẩm quáng tài",
+    "ch": "Thất phẩm quáng tài"
+  },
+  {
+    "id": "420063007",
+    "key": "apprentice420061007desc",
+    "en": "+14% Phòng ngự",
+    "ch": "+14% Phòng ngự"
+  },
+  {
+    "id": "420062008",
+    "key": "apprentice420061008",
+    "en": "Bát phẩm quáng tài",
+    "ch": "Bát phẩm quáng tài"
+  },
+  {
+    "id": "420063008",
+    "key": "apprentice420061008desc",
+    "en": "+16% Phòng ngự",
+    "ch": "+16% Phòng ngự"
+  },
+  {
+    "id": "420062009",
+    "key": "apprentice420061009",
+    "en": "Cửu phẩm quáng tài",
+    "ch": "Cửu phẩm quáng tài"
+  },
+  {
+    "id": "420063009",
+    "key": "apprentice420061009desc",
+    "en": "+18% Phòng ngự",
+    "ch": "+18% Phòng ngự"
+  },
+  {
+    "id": "420062010",
+    "key": "apprentice420061010",
+    "en": "Thập phẩm quáng tài",
+    "ch": "Thập phẩm quáng tài"
+  },
+  {
+    "id": "420063010",
+    "key": "apprentice420061010desc",
+    "en": "+20% Phòng ngự",
+    "ch": "+20% Phòng ngự"
+  }
+]

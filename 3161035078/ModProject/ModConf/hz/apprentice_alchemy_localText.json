@@ -1,0 +1,102 @@
+[
+	{
+		"id": "420012001",
+		"key": "apprentice420011001",
+		"en": "一品炼丹", "ch": "一品炼丹"
+	},
+	{
+		"id": "420013001",
+		"key": "apprentice420011001desc",
+		"en": "+5% Max HP", "ch": "+5% Max HP"
+	},
+	{
+		"id": "420012002",
+		"key": "apprentice420011002",
+		"en": "二品炼丹", "ch": "二品炼丹"
+	},
+	{
+		"id": "420013002",
+		"key": "apprentice420011002desc",
+		"en": "+10% Max HP", "ch": "+10% Max HP"
+	},
+	{
+		"id": "420012003",
+		"key": "apprentice420011003",
+		"en": "三品炼丹", "ch": "三品炼丹"
+	},
+	{
+		"id": "420013003",
+		"key": "apprentice420011003desc",
+		"en": "+15% Max HP", "ch": "+15% Max HP"
+	},
+	{
+		"id": "420012004",
+		"key": "apprentice420011004",
+		"en": "四品炼丹", "ch": "四品炼丹"
+	},
+	{
+		"id": "420013004",
+		"key": "apprentice420011004desc",
+		"en": "+20% Max HP", "ch": "+20% Max HP"
+	},
+	{
+		"id": "420012005",
+		"key": "apprentice420011005",
+		"en": "五品炼丹", "ch": "五品炼丹"
+	},
+	{
+		"id": "420013005",
+		"key": "apprentice420011005desc",
+		"en": "+25% Max HP", "ch": "+25% Max HP"
+	},
+	{
+		"id": "420012006",
+		"key": "apprentice420011006",
+		"en": "六品炼丹", "ch": "六品炼丹"
+	},
+	{
+		"id": "420013006",
+		"key": "apprentice420011006desc",
+		"en": "+30% Max HP", "ch": "+30% Max HP"
+	},
+	{
+		"id": "420012007",
+		"key": "apprentice420011007",
+		"en": "七品炼丹", "ch": "七品炼丹"
+	},
+	{
+		"id": "420013007",
+		"key": "apprentice420011007desc",
+		"en": "+35% Max HP", "ch": "+35% Max HP"
+	},
+	{
+		"id": "420012008",
+		"key": "apprentice420011008",
+		"en": "八品炼丹", "ch": "八品炼丹"
+	},
+	{
+		"id": "420013008",
+		"key": "apprentice420011008desc",
+		"en": "+40% Max HP", "ch": "+40% Max HP"
+	},
+	{
+		"id": "420012009",
+		"key": "apprentice420011009",
+		"en": "九品炼丹", "ch": "九品炼丹"
+	},
+	{
+		"id": "420013009",
+		"key": "apprentice420011009desc",
+		"en": "+45% Max HP", "ch": "+45% Max HP"
+	},
+	{
+		"id": "420012010",
+		"key": "apprentice420011010",
+		"en": "十品炼丹", "ch": "十品炼丹"
+	},
+	{
+		"id": "420013010",
+		"key": "apprentice420011010desc",
+		"en": "+50% Max HP", "ch": "+50% Max HP"
+	},
+]

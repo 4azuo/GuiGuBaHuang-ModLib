@@ -1,0 +1,26 @@
+[
+  {
+    "id": "1000011000",
+    "key": "skill1000011000",
+    "en": "Giếng Trọng lực",
+    "ch": "Giếng Trọng lực"
+  },
+  {
+    "id": "1000012000",
+    "key": "skill1000012000",
+    "en": "Sáng tạo một vòng tròn. Không ai có thể đào thoát.",
+    "ch": "Sáng tạo một vòng tròn. Không ai có thể đào thoát."
+  },
+  {
+    "id": "1000011001",
+    "key": "skill1000011001",
+    "en": "Thiên Vũ Kiếm",
+    "ch": "Thiên Vũ Kiếm"
+  },
+  {
+    "id": "1000012001",
+    "key": "skill1000012001",
+    "en": "Tạo mưa kiếm.",
+    "ch": "Tạo mưa kiếm."
+  }
+]

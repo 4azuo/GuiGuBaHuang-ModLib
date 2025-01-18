@@ -368,22 +368,18 @@ namespace MOD_nE7UL2.Mod
                     continue;
 
                 var cost = BuildingArrangeEvent.GetBuildingCost(town, e);
-                var isBuilt = town.GetBuildSub(e.BuildType) != null;
-                uiCover.AddText(uiCover.MidCol - 5, uiCover.MidRow + i, $"{e.BuildingName}　／　{(isBuilt ? "Done" : $"Cost: {cost:#,##0}")}").Format().Align();
-                if (!isBuilt)
+                uiCover.AddText(uiCover.MidCol - 5, uiCover.MidRow + i, $"{e.BuildingName}　／　Cost: {cost:#,##0}").Format().Align();
+                uiCover.AddButton(uiCover.MidCol - 8, uiCover.MidRow + i, () =>
                 {
-                    uiCover.AddButton(uiCover.MidCol - 8, uiCover.MidRow + i, () =>
+                    if (MapBuildPropertyEvent.GetBuildProperty(town) > cost)
                     {
-                        if (MapBuildPropertyEvent.GetBuildProperty(town) > cost)
-                        {
-                            BuildingArrangeEvent.Build(town, e);
-                        }
-                        else
-                        {
-                            g.ui.MsgBox("Info", $"You cant build this building with current budget!{Environment.NewLine}{MapBuildPropertyEvent.GetBuildProperty(town):#,##0}");
-                        }
-                    }, "Build").Format().Align(TextAnchor.MiddleCenter);
-                }
+                        BuildingArrangeEvent.Build(town, e);
+                    }
+                    else
+                    {
+                        g.ui.MsgBox("Info", $"You cant build this building with current budget!{Environment.NewLine}{MapBuildPropertyEvent.GetBuildProperty(town):#,##0}");
+                    }
+                }, "Build").Format().Align(TextAnchor.MiddleCenter);
                 i += 2;
             }
         }
@@ -396,7 +392,7 @@ namespace MOD_nE7UL2.Mod
             ui.UpdateUI();
 
             var uiCover = new UICover<UINPCSearch>(ui);
-            uiCover.AddButton(uiCover.LastCol - 8, uiCover.LastRow - 8, null, "Declare War").Format().Align(TextAnchor.MiddleCenter).Size(300, 60);
+            uiCover.AddButton(uiCover.LastCol - 8, uiCover.LastRow - 8, () => BattleEvent.TownWar(), "Declare War").Format().Align(TextAnchor.MiddleCenter).Size(300, 60);
         }
 
         public static List<WorldUnitBase> GetTownGuardians(MapBuildTown town)

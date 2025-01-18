@@ -1,0 +1,122 @@
+[
+  {
+    "id": "420022001",
+    "key": "apprentice420021001",
+    "en": "Nhất phẩm luyện khí",
+    "ch": "Nhất phẩm luyện khí"
+  },
+  {
+    "id": "420023001",
+    "key": "apprentice420021001desc",
+    "en": "+5% Phòng ngự",
+    "ch": "+5% Phòng ngự"
+  },
+  {
+    "id": "420022002",
+    "key": "apprentice420021002",
+    "en": "Nhị phẩm luyện khí",
+    "ch": "Nhị phẩm luyện khí"
+  },
+  {
+    "id": "420023002",
+    "key": "apprentice420021002desc",
+    "en": "+10% Phòng ngự",
+    "ch": "+10% Phòng ngự"
+  },
+  {
+    "id": "420022003",
+    "key": "apprentice420021003",
+    "en": "Tam phẩm luyện khí",
+    "ch": "Tam phẩm luyện khí"
+  },
+  {
+    "id": "420023003",
+    "key": "apprentice420021003desc",
+    "en": "+15% Phòng ngự",
+    "ch": "+15% Phòng ngự"
+  },
+  {
+    "id": "420022004",
+    "key": "apprentice420021004",
+    "en": "Tứ phẩm luyện khí",
+    "ch": "Tứ phẩm luyện khí"
+  },
+  {
+    "id": "420023004",
+    "key": "apprentice420021004desc",
+    "en": "+20% Phòng ngự",
+    "ch": "+20% Phòng ngự"
+  },
+  {
+    "id": "420022005",
+    "key": "apprentice420021005",
+    "en": "Ngũ phẩm luyện khí",
+    "ch": "Ngũ phẩm luyện khí"
+  },
+  {
+    "id": "420023005",
+    "key": "apprentice420021005desc",
+    "en": "+25% Phòng ngự",
+    "ch": "+25% Phòng ngự"
+  },
+  {
+    "id": "420022006",
+    "key": "apprentice420021006",
+    "en": "Lục phẩm luyện khí",
+    "ch": "Lục phẩm luyện khí"
+  },
+  {
+    "id": "420023006",
+    "key": "apprentice420021006desc",
+    "en": "+30% Phòng ngự",
+    "ch": "+30% Phòng ngự"
+  },
+  {
+    "id": "420022007",
+    "key": "apprentice420021007",
+    "en": "Thất phẩm luyện khí",
+    "ch": "Thất phẩm luyện khí"
+  },
+  {
+    "id": "420023007",
+    "key": "apprentice420021007desc",
+    "en": "+35% Phòng ngự",
+    "ch": "+35% Phòng ngự"
+  },
+  {
+    "id": "420022008",
+    "key": "apprentice420021008",
+    "en": "Bát phẩm luyện khí",
+    "ch": "Bát phẩm luyện khí"
+  },
+  {
+    "id": "420023008",
+    "key": "apprentice420021008desc",
+    "en": "+40% Phòng ngự",
+    "ch": "+40% Phòng ngự"
+  },
+  {
+    "id": "420022009",
+    "key": "apprentice420021009",
+    "en": "Cửu phẩm luyện khí",
+    "ch": "Cửu phẩm luyện khí"
+  },
+  {
+    "id": "420023009",
+    "key": "apprentice420021009desc",
+    "en": "+45% Phòng ngự",
+    "ch": "+45% Phòng ngự"
+  },
+  {
+    "id": "420022010",
+    "key": "apprentice420021010",
+    "en": "Thập phẩm luyện khí",
+    "ch": "Thập phẩm luyện khí"
+  },
+  {
+    "id": "420023010",
+    "key": "apprentice420021010desc",
+    "en": "+50% Phòng ngự",
+    "ch": "+50% Phòng ngự"
+  }
+]

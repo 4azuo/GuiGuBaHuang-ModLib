@@ -93,9 +93,8 @@ namespace MOD_nE7UL2.Mod
                     }
                     else
                     {
-                        ui.AddButton(ui.LastCol - 8, ui.FirstRow + 1, () => MapBuildPropertyEvent.OpenUITownGuardians(ui.UI.town), "Tax: {0} Spirit Stones").Size(300, 60).SetWork(new UIItemWork
+                        ui.AddButton(ui.LastCol - 8, ui.FirstRow + 1, () => MapBuildPropertyEvent.OpenUITownGuardians(ui.UI.town), $"Tax: {MapBuildPropertyEvent.GetTax(g.world.playerUnit, g.world.playerUnit.GetUnitPosAreaId())} Spirit Stones").Size(300, 60).SetWork(new UIItemWork
                         {
-                            Formatter = (x) => new string[] { MapBuildPropertyEvent.GetTax(g.world.playerUnit, g.world.playerUnit.GetUnitPosAreaId()).ToString() },
                             UpdateAct = (x) => x.Pos(ui.LastCol - 8, ui.FirstRow + 1),
                         });
                     }
@@ -109,9 +108,8 @@ namespace MOD_nE7UL2.Mod
                 {
                     if (!MapBuildPropertyEvent.IsSchoolMember(ui.UI.school, g.world.playerUnit))
                     {
-                        ui.AddButton(ui.LastCol - 8, ui.FirstRow + 1, null, "Tax: {0} Spirit Stones").Size(300, 60).SetWork(new UIItemWork
+                        ui.AddButton(ui.LastCol - 8, ui.FirstRow + 1, null, $"Tax: {MapBuildPropertyEvent.GetTax(g.world.playerUnit, g.world.playerUnit.GetUnitPosAreaId(), ui.UI.school.schoolData.allEffects.Count)} Spirit Stones").Size(300, 60).SetWork(new UIItemWork
                         {
-                            Formatter = (x) => new string[] { MapBuildPropertyEvent.GetTax(g.world.playerUnit, g.world.playerUnit.GetUnitPosAreaId(), ui.UI.school.schoolData.allEffects.Count).ToString() },
                             UpdateAct = (x) => x.Pos(ui.LastCol - 8, ui.FirstRow + 1),
                         }).Enable = false;
                     }

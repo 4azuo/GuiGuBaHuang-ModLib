@@ -1,0 +1,146 @@
+[
+  {
+    "id": "444441001",
+    "key": "slicelife444441001",
+    "en": "Sinh hoạt đoạn ngắn một lần",
+    "ch": "Sinh hoạt đoạn ngắn một lần"
+  },
+  {
+    "id": "444442001",
+    "key": "slicelife444441001desc",
+    "en": "+25% Thể lực, +6% Linh lực",
+    "ch": "+25% Thể lực, +6% Linh lực"
+  },
+  {
+    "id": "444443001",
+    "key": "taskName444443001",
+    "en": "Sinh hoạt đoạn ngắn một lần",
+    "ch": "Sinh hoạt đoạn ngắn một lần"
+  },
+  {
+    "id": "444443101",
+    "key": "taskDesc444443001",
+    "en": "Năm năm không có tham gia bất luận cái gì chiến đấu.",
+    "ch": "Năm năm không có tham gia bất luận cái gì chiến đấu."
+  },
+  {
+    "id": "444441002",
+    "key": "slicelife444441002",
+    "en": "Sinh hoạt đoạn ngắn hai lần",
+    "ch": "Sinh hoạt đoạn ngắn hai lần"
+  },
+  {
+    "id": "444442002",
+    "key": "slicelife444441002desc",
+    "en": "+50% Thể lực, +12% Linh lực",
+    "ch": "+50% Thể lực, +12% Linh lực"
+  },
+  {
+    "id": "444443002",
+    "key": "taskName444443002",
+    "en": "Sinh hoạt đoạn ngắn hai lần",
+    "ch": "Sinh hoạt đoạn ngắn hai lần"
+  },
+  {
+    "id": "444443102",
+    "key": "taskDesc444443002",
+    "en": "Mười năm không có tham gia bất luận cái gì chiến đấu.",
+    "ch": "Mười năm không có tham gia bất luận cái gì chiến đấu."
+  },
+  {
+    "id": "444441003",
+    "key": "slicelife444441003",
+    "en": "Sinh hoạt đoạn ngắn ba lần",
+    "ch": "Sinh hoạt đoạn ngắn ba lần"
+  },
+  {
+    "id": "444442003",
+    "key": "slicelife444441003desc",
+    "en": "+80% Thể lực, +20% Linh lực",
+    "ch": "+80% Thể lực, +20% Linh lực"
+  },
+  {
+    "id": "444443003",
+    "key": "taskName444443003",
+    "en": "Sinh hoạt đoạn ngắn ba lần",
+    "ch": "Sinh hoạt đoạn ngắn ba lần"
+  },
+  {
+    "id": "444443103",
+    "key": "taskDesc444443003",
+    "en": "Hai mươi năm không có tham gia bất luận cái gì chiến đấu.",
+    "ch": "Hai mươi năm không có tham gia bất luận cái gì chiến đấu."
+  },
+  {
+    "id": "444441004",
+    "key": "slicelife444441004",
+    "en": "Sinh hoạt đoạn ngắn bốn lần",
+    "ch": "Sinh hoạt đoạn ngắn bốn lần"
+  },
+  {
+    "id": "444442004",
+    "key": "slicelife444441004desc",
+    "en": "+120% Thể lực, +30% Linh lực, +2% Phòng ngự",
+    "ch": "+120% Thể lực, +30% Linh lực, +2% Phòng ngự"
+  },
+  {
+    "id": "444443004",
+    "key": "taskName444443004",
+    "en": "Sinh hoạt đoạn ngắn Bốn lần",
+    "ch": "Sinh hoạt đoạn ngắn Bốn lần"
+  },
+  {
+    "id": "444443104",
+    "key": "taskDesc444443004",
+    "en": "Bốn mươi năm không có tham gia bất luận cái gì chiến đấu.",
+    "ch": "Bốn mươi năm không có tham gia bất luận cái gì chiến đấu."
+  },
+  {
+    "id": "444441005",
+    "key": "slicelife444441005",
+    "en": "Sinh hoạt đoạn ngắn năm lần",
+    "ch": "Sinh hoạt đoạn ngắn năm lần"
+  },
+  {
+    "id": "444442005",
+    "key": "slicelife444441005desc",
+    "en": "+160% Thể lực, +40% Linh lực, +5% Phòng ngự",
+    "ch": "+160% Thể lực, +40% Linh lực, +5% Phòng ngự"
+  },
+  {
+    "id": "444443005",
+    "key": "taskName444443005",
+    "en": "Sinh hoạt đoạn ngắn năm lần",
+    "ch": "Sinh hoạt đoạn ngắn năm lần"
+  },
+  {
+    "id": "444443105",
+    "key": "taskDesc444443005",
+    "en": "Một trăm năm không có tham gia bất luận cái gì chiến đấu.",
+    "ch": "Một trăm năm không có tham gia bất luận cái gì chiến đấu."
+  },
+  {
+    "id": "444441006",
+    "key": "slicelife444441006",
+    "en": "Sinh hoạt đoạn ngắn sáu lần",
+    "ch": "Sinh hoạt đoạn ngắn sáu lần"
+  },
+  {
+    "id": "444442006",
+    "key": "slicelife444441006desc",
+    "en": "+220% Thể lực, +60% Linh lực, +10% Phòng ngự",
+    "ch": "+220% Thể lực, +60% Linh lực, +10% Phòng ngự"
+  },
+  {
+    "id": "444443006",
+    "key": "taskName444443006",
+    "en": "Sinh hoạt đoạn ngắn sáu lần",
+    "ch": "Sinh hoạt đoạn ngắn sáu lần"
+  },
+  {
+    "id": "444443106",
+    "key": "taskDesc444443006",
+    "en": "Ba trăm năm không có tham gia bất luận cái gì chiến đấu.",
+    "ch": "Ba trăm năm không có tham gia bất luận cái gì chiến đấu."
+  }
+]
