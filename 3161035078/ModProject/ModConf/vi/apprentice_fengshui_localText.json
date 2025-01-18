@@ -1,0 +1,122 @@
+[
+  {
+    "id": "420042001",
+    "key": "apprentice420041001",
+    "en": "Nhất phẩm phong thuỷ",
+    "ch": "Nhất phẩm phong thuỷ"
+  },
+  {
+    "id": "420043001",
+    "key": "apprentice420041001desc",
+    "en": "+2% Linh lực",
+    "ch": "+2% Linh lực"
+  },
+  {
+    "id": "420042002",
+    "key": "apprentice420041002",
+    "en": "Nhị phẩm phong thuỷ",
+    "ch": "Nhị phẩm phong thuỷ"
+  },
+  {
+    "id": "420043002",
+    "key": "apprentice420041002desc",
+    "en": "+4% Linh lực",
+    "ch": "+4% Linh lực"
+  },
+  {
+    "id": "420042003",
+    "key": "apprentice420041003",
+    "en": "Tam phẩm phong thuỷ",
+    "ch": "Tam phẩm phong thuỷ"
+  },
+  {
+    "id": "420043003",
+    "key": "apprentice420041003desc",
+    "en": "+6% Linh lực",
+    "ch": "+6% Linh lực"
+  },
+  {
+    "id": "420042004",
+    "key": "apprentice420041004",
+    "en": "Tứ phẩm phong thuỷ",
+    "ch": "Tứ phẩm phong thuỷ"
+  },
+  {
+    "id": "420043004",
+    "key": "apprentice420041004desc",
+    "en": "Ngũ phẩm phong thuỷ",
+    "ch": "Ngũ phẩm phong thuỷ"
+  },
+  {
+    "id": "420042005",
+    "key": "apprentice420041005",
+    "en": "",
+    "ch": "Feng Shui Lvl-5"
+  },
+  {
+    "id": "420043005",
+    "key": "apprentice420041005desc",
+    "en": "+10% Linh lực",
+    "ch": "+10% Linh lực"
+  },
+  {
+    "id": "420042006",
+    "key": "apprentice420041006",
+    "en": "Lục phẩm phong thuỷ",
+    "ch": "Lục phẩm phong thuỷ"
+  },
+  {
+    "id": "420043006",
+    "key": "apprentice420041006desc",
+    "en": "+12% Linh lực",
+    "ch": "+12% Linh lực"
+  },
+  {
+    "id": "420042007",
+    "key": "apprentice420041007",
+    "en": "Thất phẩm phong thuỷ",
+    "ch": "Thất phẩm phong thuỷ"
+  },
+  {
+    "id": "420043007",
+    "key": "apprentice420041007desc",
+    "en": "+14% Linh lực",
+    "ch": "+14% Linh lực"
+  },
+  {
+    "id": "420042008",
+    "key": "apprentice420041008",
+    "en": "Bát phẩm phong thuỷ",
+    "ch": "Bát phẩm phong thuỷ"
+  },
+  {
+    "id": "420043008",
+    "key": "apprentice420041008desc",
+    "en": "+16% Linh lực",
+    "ch": "+16% Linh lực"
+  },
+  {
+    "id": "420042009",
+    "key": "apprentice420041009",
+    "en": "Cửu phẩm phong thuỷ",
+    "ch": "Cửu phẩm phong thuỷ"
+  },
+  {
+    "id": "420043009",
+    "key": "apprentice420041009desc",
+    "en": "+18% Linh lực",
+    "ch": "+18% Linh lực"
+  },
+  {
+    "id": "420042010",
+    "key": "apprentice420041010",
+    "en": "Thập phẩm phong thuỷ",
+    "ch": "Thập phẩm phong thuỷ"
+  },
+  {
+    "id": "420043010",
+    "key": "apprentice420041010desc",
+    "en": "+20% Linh lực",
+    "ch": "+20% Linh lực"
+  }
+]

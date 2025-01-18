@@ -222,5 +222,10 @@ namespace MOD_nE7UL2.Mod
                     (wunit.data.school?.schoolData.GetSchoolIntim(g.world.playerUnit) ?? 0) <= -200
                 );
         }
+
+        public static void TownWar()
+        {
+
+        }
     }
 }

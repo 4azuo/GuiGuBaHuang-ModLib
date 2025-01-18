@@ -1,0 +1,122 @@
+[
+  {
+    "id": "420012001",
+    "key": "apprentice420011001",
+    "en": "Nhất phẩm luyện đan",
+    "ch": "Nhất phẩm luyện đan"
+  },
+  {
+    "id": "420013001",
+    "key": "apprentice420011001desc",
+    "en": "+5% 体力",
+    "ch": "+5% 体力"
+  },
+  {
+    "id": "420012002",
+    "key": "apprentice420011002",
+    "en": "Nhị phẩm luyện đan",
+    "ch": "Nhị phẩm luyện đan"
+  },
+  {
+    "id": "420013002",
+    "key": "apprentice420011002desc",
+    "en": "+10% 体力",
+    "ch": "+10% 体力"
+  },
+  {
+    "id": "420012003",
+    "key": "apprentice420011003",
+    "en": "Tam phẩm luyện đan",
+    "ch": "Tam phẩm luyện đan"
+  },
+  {
+    "id": "420013003",
+    "key": "apprentice420011003desc",
+    "en": "+15% 体力",
+    "ch": "+15% 体力"
+  },
+  {
+    "id": "420012004",
+    "key": "apprentice420011004",
+    "en": "Tứ phẩm luyện đan",
+    "ch": "Tứ phẩm luyện đan"
+  },
+  {
+    "id": "420013004",
+    "key": "apprentice420011004desc",
+    "en": "+20% 体力",
+    "ch": "+20% 体力"
+  },
+  {
+    "id": "420012005",
+    "key": "apprentice420011005",
+    "en": "Ngũ phẩm luyện đan",
+    "ch": "Ngũ phẩm luyện đan"
+  },
+  {
+    "id": "420013005",
+    "key": "apprentice420011005desc",
+    "en": "+25% 体力",
+    "ch": "+25% 体力"
+  },
+  {
+    "id": "420012006",
+    "key": "apprentice420011006",
+    "en": "Lục phẩm luyện đan",
+    "ch": "Lục phẩm luyện đan"
+  },
+  {
+    "id": "420013006",
+    "key": "apprentice420011006desc",
+    "en": "+30% 体力",
+    "ch": "+30% 体力"
+  },
+  {
+    "id": "420012007",
+    "key": "apprentice420011007",
+    "en": "Thất phẩm luyện đan",
+    "ch": "Thất phẩm luyện đan"
+  },
+  {
+    "id": "420013007",
+    "key": "apprentice420011007desc",
+    "en": "+35% 体力",
+    "ch": "+35% 体力"
+  },
+  {
+    "id": "420012008",
+    "key": "apprentice420011008",
+    "en": "Bát phẩm luyện đan",
+    "ch": "Bát phẩm luyện đan"
+  },
+  {
+    "id": "420013008",
+    "key": "apprentice420011008desc",
+    "en": "+40% 体力",
+    "ch": "+40% 体力"
+  },
+  {
+    "id": "420012009",
+    "key": "apprentice420011009",
+    "en": "Cửu phẩm luyện đan",
+    "ch": "Cửu phẩm luyện đan"
+  },
+  {
+    "id": "420013009",
+    "key": "apprentice420011009desc",
+    "en": "+45% 体力",
+    "ch": "+45% 体力"
+  },
+  {
+    "id": "420012010",
+    "key": "apprentice420011010",
+    "en": "Thập phẩm luyện đan",
+    "ch": "Thập phẩm luyện đan"
+  },
+  {
+    "id": "420013010",
+    "key": "apprentice420011010desc",
+    "en": "+50% 体力",
+    "ch": "+50% 体力"
+  }
+]

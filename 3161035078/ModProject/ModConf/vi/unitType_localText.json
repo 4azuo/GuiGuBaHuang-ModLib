@@ -1,0 +1,98 @@
+[
+  {
+    "id": "420010100",
+    "key": "unitType420010100",
+    "en": "Gia tăng lực lượng",
+    "ch": "Gia tăng lực lượng"
+  },
+  {
+    "id": "420010200",
+    "key": "unitType420010200",
+    "en": "Gia tăng tốc độ",
+    "ch": "Gia tăng tốc độ"
+  },
+  {
+    "id": "420010300",
+    "key": "unitType420010300",
+    "en": "Đạo giáo",
+    "ch": "Đạo giáo"
+  },
+  {
+    "id": "420010400",
+    "key": "unitType420010400",
+    "en": "Pro Công kích",
+    "ch": "Pro Công kích"
+  },
+  {
+    "id": "420010500",
+    "key": "unitType420010500",
+    "en": "",
+    "ch": "Pro Def"
+  },
+  {
+    "id": "420010600",
+    "key": "unitType420010600",
+    "en": "Thiên sứ",
+    "ch": "Thiên sứ"
+  },
+  {
+    "id": "420010700",
+    "key": "unitType420010700",
+    "en": "Tà ác",
+    "ch": "Tà ác"
+  },
+  {
+    "id": "420010800",
+    "key": "unitType420010800",
+    "en": "Thương nhân",
+    "ch": "Thương nhân"
+  },
+  {
+    "id": "421010100",
+    "key": "unitType420010100desc",
+    "en": "Công kích +10%, thể lực +20%",
+    "ch": "Công kích +10%, thể lực +20%"
+  },
+  {
+    "id": "421010200",
+    "key": "unitType420010200desc",
+    "en": "Di tốc +30%",
+    "ch": "Di tốc +30%"
+  },
+  {
+    "id": "421010300",
+    "key": "unitType420010300desc",
+    "en": "Công kích +8%, thể lực +15%, linh lực +10%",
+    "ch": "Công kích +8%, thể lực +15%, linh lực +10%"
+  },
+  {
+    "id": "421010400",
+    "key": "unitType420010400desc",
+    "en": "Công kích +30%",
+    "ch": "Công kích +30%"
+  },
+  {
+    "id": "421010500",
+    "key": "unitType420010500desc",
+    "en": "Thể lực +25%, Def +5%",
+    "ch": "Thể lực +25%, Def +5%"
+  },
+  {
+    "id": "421010600",
+    "key": "unitType420010600desc",
+    "en": "Công kích +50%, Agi +10%, thể lực +20%, niệm lực +10%, chính nghĩa +100%, ác ma -100%",
+    "ch": "Công kích +50%, Agi +10%, thể lực +20%, niệm lực +10%, chính nghĩa +100%, ác ma -100%"
+  },
+  {
+    "id": "421010700",
+    "key": "unitType420010700desc",
+    "en": "Công kích +30%, Def +10%, thể lực +100%, chính nghĩa -100%, ác ma -30%",
+    "ch": "Công kích +30%, Def +10%, thể lực +100%, chính nghĩa -100%, ác ma -30%"
+  },
+  {
+    "id": "421010800",
+    "key": "unitType420010800desc",
+    "en": "Công kích -10%, Def -10%, thể lực -25%, niệm lực -50%, miễn phí tồn trữ, -15% Thị trường mua chi phí, +15% Giá thị trường, +5% Mỗi tháng thu nhập",
+    "ch": "Công kích -10%, Def -10%, thể lực -25%, niệm lực -50%, miễn phí tồn trữ, -15% Thị trường mua chi phí, +15% Giá thị trường, +5% Mỗi tháng thu nhập"
+  }
+]

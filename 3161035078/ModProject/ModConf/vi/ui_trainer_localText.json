@@ -1,0 +1,266 @@
+[
+  {
+    "id": -1000002000,
+    "key": "trainer000",
+    "en": "Gian lận sẽ phá hư ngươi thể nghiệm.",
+    "ch": "Gian lận sẽ phá hư ngươi thể nghiệm."
+  },
+  {
+    "id": -1000002001,
+    "key": "trainer001",
+    "en": "( Thể lực / Linh lực / Niệm lực / Tâm tình / Tinh lực / Khỏe mạnh )",
+    "ch": "( Thể lực / Linh lực / Niệm lực / Tâm tình / Tinh lực / Khỏe mạnh )"
+  },
+  {
+    "id": -1000002002,
+    "key": "trainer002",
+    "en": "Hoàn toàn khôi phục",
+    "ch": "Hoàn toàn khôi phục"
+  },
+  {
+    "id": -1000002003,
+    "key": "trainer003",
+    "en": "+10,0000 Thể lực",
+    "ch": "+10,0000 Thể lực"
+  },
+  {
+    "id": -1000002004,
+    "key": "trainer004",
+    "en": "-10,0000 Thể lực",
+    "ch": "-10,0000 Thể lực"
+  },
+  {
+    "id": -1000002005,
+    "key": "trainer005",
+    "en": "+10,000 Linh lực",
+    "ch": "+10,000 Linh lực"
+  },
+  {
+    "id": -1000002006,
+    "key": "trainer006",
+    "en": "-10,000 Linh lực",
+    "ch": "-10,000 Linh lực"
+  },
+  {
+    "id": -1000002007,
+    "key": "trainer007",
+    "en": "+1,000 Niệm lực",
+    "ch": "+1,000 Niệm lực"
+  },
+  {
+    "id": -1000002008,
+    "key": "trainer008",
+    "en": "-1,000 Niệm lực",
+    "ch": "-1,000 Niệm lực"
+  },
+  {
+    "id": -1000002009,
+    "key": "trainer009",
+    "en": "+100 Tất cả",
+    "ch": "+100 Tất cả"
+  },
+  {
+    "id": -1000002010,
+    "key": "trainer010",
+    "en": "-100 Tất cả",
+    "ch": "-100 Tất cả"
+  },
+  {
+    "id": -1000002011,
+    "key": "trainer011",
+    "en": "+10,000 Công kích",
+    "ch": "+10,000 Công kích"
+  },
+  {
+    "id": -1000002012,
+    "key": "trainer012",
+    "en": "-10,000 Công kích",
+    "ch": "-10,000 Công kích"
+  },
+  {
+    "id": -1000002013,
+    "key": "trainer013",
+    "en": "+1,000 Phòng ngự",
+    "ch": "+1,000 Phòng ngự"
+  },
+  {
+    "id": -1000002014,
+    "key": "trainer014",
+    "en": "-1,000 Phòng ngự",
+    "ch": "-1,000 Phòng ngự"
+  },
+  {
+    "id": -1000002015,
+    "key": "trainer015",
+    "en": "Truyền tống",
+    "ch": "Truyền tống"
+  },
+  {
+    "id": -1000002016,
+    "key": "trainer016",
+    "en": "+1,000,000 Linh thạch",
+    "ch": "+1,000,000 Linh thạch"
+  },
+  {
+    "id": -1000002017,
+    "key": "trainer017",
+    "en": "-1,000,000 Linh thạch",
+    "ch": "-1,000,000 Linh thạch"
+  },
+  {
+    "id": -1000002018,
+    "key": "trainer018",
+    "en": "+1,000 Trình độ",
+    "ch": "+1,000 Trình độ"
+  },
+  {
+    "id": -1000002019,
+    "key": "trainer019",
+    "en": "-1,000 Trình độ",
+    "ch": "-1,000 Trình độ"
+  },
+  {
+    "id": -1000002020,
+    "key": "trainer020",
+    "en": "+100,000 Cống hiến",
+    "ch": "+100,000 Cống hiến"
+  },
+  {
+    "id": -1000002021,
+    "key": "trainer021",
+    "en": "-100,000 Cống hiến",
+    "ch": "-100,000 Cống hiến"
+  },
+  {
+    "id": -1000002022,
+    "key": "trainer022",
+    "en": "+100,000 Năng lực điểm",
+    "ch": "+100,000 Năng lực điểm"
+  },
+  {
+    "id": -1000002023,
+    "key": "trainer023",
+    "en": "-100,000 Năng lực điểm",
+    "ch": "-100,000 Năng lực điểm"
+  },
+  {
+    "id": -1000002024,
+    "key": "trainer024",
+    "en": "",
+    "ch": "Resume Game"
+  },
+  {
+    "id": -1000002025,
+    "key": "trainer025",
+    "en": "",
+    "ch": "Stop Game"
+  },
+  {
+    "id": -1000002026,
+    "key": "trainer026",
+    "en": "",
+    "ch": "Game Speed x1"
+  },
+  {
+    "id": -1000002027,
+    "key": "trainer027",
+    "en": "",
+    "ch": "Game Speed x2"
+  },
+  {
+    "id": -1000002028,
+    "key": "trainer028",
+    "en": "",
+    "ch": "Game Speed x3"
+  },
+  {
+    "id": -1000002029,
+    "key": "trainer029",
+    "en": "Thăng cấp",
+    "ch": "Thăng cấp"
+  },
+  {
+    "id": -1000002030,
+    "key": "trainer030",
+    "en": "Giáng cấp",
+    "ch": "Giáng cấp"
+  },
+  {
+    "id": -1000002031,
+    "key": "trainer031",
+    "en": "",
+    "ch": "+10,000 Exp"
+  },
+  {
+    "id": -1000002032,
+    "key": "trainer032",
+    "en": "+100 Tuế nguyệt",
+    "ch": "+100 Tuế nguyệt"
+  },
+  {
+    "id": -1000002033,
+    "key": "trainer033",
+    "en": "-100 Tuế nguyệt",
+    "ch": "-100 Tuế nguyệt"
+  },
+  {
+    "id": -1000002034,
+    "key": "trainer034",
+    "en": "",
+    "ch": "+1,000 Travel speed"
+  },
+  {
+    "id": -1000002035,
+    "key": "trainer035",
+    "en": "",
+    "ch": "-1,000 Travel speed"
+  },
+  {
+    "id": -1000002036,
+    "key": "trainer036",
+    "en": "",
+    "ch": "+10 View-range"
+  },
+  {
+    "id": -1000002037,
+    "key": "trainer037",
+    "en": "",
+    "ch": "-10 View-range"
+  },
+  {
+    "id": -1000002038,
+    "key": "trainer038",
+    "en": "",
+    "ch": "General Properties:"
+  },
+  {
+    "id": -1000002039,
+    "key": "trainer039",
+    "en": "",
+    "ch": "Martial/Spiritual:"
+  },
+  {
+    "id": -1000002040,
+    "key": "trainer040",
+    "en": "",
+    "ch": "Artisanship:"
+  },
+  {
+    "id": -1000002041,
+    "key": "trainer041",
+    "en": "Ngươi có thể truyền tống đến bất kỳ địa phương.",
+    "ch": "Ngươi có thể truyền tống đến bất kỳ địa phương."
+  },
+  {
+    "id": -1000002042,
+    "key": "trainer042",
+    "en": "+10,000 Thanh danh",
+    "ch": "+10,000 Thanh danh"
+  },
+  {
+    "id": -1000002043,
+    "key": "trainer043",
+    "en": "-10,000 Thanh danh",
+    "ch": "-10,000 Thanh danh"
+  }
+]
