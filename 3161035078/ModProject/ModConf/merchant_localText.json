@@ -2,101 +2,101 @@
 	{
 		"id": "420092001",
 		"key": "merchant420091001",
-		"en|ch|tc": "Merchant Lvl-1"
+		"ch": "一品商人","en": "Merchant Lvl-1"
 	},
 	{
 		"id": "420093001",
 		"key": "merchant420091001desc",
-		"en|ch|tc": "+2% Insight, +0.3% Sell, +0.1% Income"
+		"ch": "+2% 悟性, +0.3% 卖, +0.1% 收入","en": "+2% Insight, +0.3% Sell, +0.1% Income"
 	},
 	{
 		"id": "420092002",
 		"key": "merchant420091002",
-		"en|ch|tc": "Merchant Lvl-2"
+		"ch": "二品商人","en": "Merchant Lvl-2"
 	},
 	{
 		"id": "420093002",
 		"key": "merchant420091002desc",
-		"en|ch|tc": "+4% Insight, +0.6% Sell, +0.2% Income"
+		"ch": "+4% 悟性, +0.6% 卖, +0.2% 收入","en": "+4% Insight, +0.6% Sell, +0.2% Income"
 	},
 	{
 		"id": "420092003",
 		"key": "merchant420091003",
-		"en|ch|tc": "Merchant Lvl-3"
+		"ch": "三品商人","en": "Merchant Lvl-3"
 	},
 	{
 		"id": "420093003",
 		"key": "merchant420091003desc",
-		"en|ch|tc": "+6% Insight, +0.9% Sell, +0.3% Income"
+		"ch": "+6% 悟性, +0.9% 卖, +0.3% 收入","en": "+6% Insight, +0.9% Sell, +0.3% Income"
 	},
 	{
 		"id": "420092004",
 		"key": "merchant420091004",
-		"en|ch|tc": "Merchant Lvl-4"
+		"ch": "四品商人","en": "Merchant Lvl-4"
 	},
 	{
 		"id": "420093004",
 		"key": "merchant420091004desc",
-		"en|ch|tc": "+8% Insight, +1.2% Sell, +0.4% Income"
+		"ch": "+8% 悟性, +1.2% 卖, +0.4% 收入","en": "+8% Insight, +1.2% Sell, +0.4% Income"
 	},
 	{
 		"id": "420092005",
 		"key": "merchant420091005",
-		"en|ch|tc": "Merchant Lvl-5"
+		"ch": "五品商人","en": "Merchant Lvl-5"
 	},
 	{
 		"id": "420093005",
 		"key": "merchant420091005desc",
-		"en|ch|tc": "+10% Insight, +1.5% Sell, +0.5% Income"
+		"ch": "+10% 悟性, +1.5% 卖, +0.5% 收入","en": "+10% Insight, +1.5% Sell, +0.5% Income"
 	},
 	{
 		"id": "420092006",
 		"key": "merchant420091006",
-		"en|ch|tc": "Merchant Lvl-6"
+		"ch": "六品商人","en": "Merchant Lvl-6"
 	},
 	{
 		"id": "420093006",
 		"key": "merchant420091006desc",
-		"en|ch|tc": "+13% Insight, +1.8% Sell, +0.6% Income"
+		"ch": "+13% 悟性, +1.8% 卖, +0.6% 收入","en": "+13% Insight, +1.8% Sell, +0.6% Income"
 	},
 	{
 		"id": "420092007",
 		"key": "merchant420091007",
-		"en|ch|tc": "Merchant Lvl-7"
+		"ch": "七品商人","en": "Merchant Lvl-7"
 	},
 	{
 		"id": "420093007",
 		"key": "merchant420091007desc",
-		"en|ch|tc": "+16% Insight, +2.1% Sell, +0.7% Income"
+		"ch": "+16% 悟性, +2.1% 卖, +0.7% 收入","en": "+16% Insight, +2.1% Sell, +0.7% Income"
 	},
 	{
 		"id": "420092008",
 		"key": "merchant420091008",
-		"en|ch|tc": "Merchant Lvl-8"
+		"ch": "八品商人","en": "Merchant Lvl-8"
 	},
 	{
 		"id": "420093008",
 		"key": "merchant420091008desc",
-		"en|ch|tc": "+19% Insight, +2.4% Sell, +0.8% Income"
+		"ch": "+19% 悟性, +2.4% 卖, +0.8% 收入","en": "+19% Insight, +2.4% Sell, +0.8% Income"
 	},
 	{
 		"id": "420092009",
 		"key": "merchant420091009",
-		"en|ch|tc": "Merchant Lvl-9"
+		"ch": "九品商人","en": "Merchant Lvl-9"
 	},
 	{
 		"id": "420093009",
 		"key": "merchant420091009desc",
-		"en|ch|tc": "+22% Insight, +2.7% Sell, +0.9% Income"
+		"ch": "+22% 悟性, +2.7% 卖, +0.9% 收入","en": "+22% Insight, +2.7% Sell, +0.9% Income"
 	},
 	{
 		"id": "420092010",
 		"key": "merchant420091010",
-		"en|ch|tc": "Merchant Lvl-10"
+		"ch": "十品商人","en": "Merchant Lvl-10"
 	},
 	{
 		"id": "420093010",
 		"key": "merchant420091010desc",
-		"en|ch|tc": "+25% Insight, +3.0% Sell, +1.0% Income"
+		"ch": "+25% 悟性, +3.0% 卖, +1.0% 收入","en": "+25% Insight, +3.0% Sell, +1.0% Income"
 	},
 ]

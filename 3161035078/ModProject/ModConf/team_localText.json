@@ -2,26 +2,26 @@
 	{
 		"id": "420041120",
 		"key": "team420041120desc",
-		"en|ch|tc": "team420041120desc"
+		"ch": "team420041120desc","en": "team420041120desc"
 	},
 	{
 		"id": "420041121",
 		"key": "team420041121",
-		"en|ch|tc": "Team"
+		"ch": "团队","en": "Team"
 	},
 	{
 		"id": "420041123",
 		"key": "team420041123drama",
-		"en|ch|tc": "Do you wanna travel together?"
+		"ch": "可否一同上路？","en": "Do you wanna travel together?"
 	},
 	{
 		"id": "420041124",
 		"key": "team420041124dramaOpt1",
-		"en|ch|tc": "Yes"
+		"ch": "同意","en": "Yes"
 	},
 	{
 		"id": "420041125",
 		"key": "team420041125dramaOpt2",
-		"en|ch|tc": "No"
+		"ch": "不","en": "No"
 	},
 ]

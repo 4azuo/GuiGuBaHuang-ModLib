@@ -2,319 +2,319 @@
   {
     "id": -1000001000,
     "key": "smcfgs000",
-    "en": "Quái vật:",
-    "ch": "Quái vật:"
+    "ch": "Quái vật:",
+    "en": "Quái vật:"
   },
   {
     "id": -1000001001,
     "key": "smcfgs001",
-    "en": "Công kích",
-    "ch": "Công kích"
+    "ch": "Công kích",
+    "en": "Công kích"
   },
   {
     "id": -1000001002,
     "key": "smcfgs002",
-    "en": "Phòng ngự",
-    "ch": "Phòng ngự"
+    "ch": "Phòng ngự",
+    "en": "Phòng ngự"
   },
   {
     "id": -1000001003,
     "key": "smcfgs003",
-    "en": "Thể lực",
-    "ch": "Thể lực"
+    "ch": "Thể lực",
+    "en": "Thể lực"
   },
   {
     "id": -1000001004,
     "key": "smcfgs004",
-    "en": "Cơ sở",
-    "ch": "Cơ sở"
+    "ch": "Căn bản",
+    "en": "Căn bản"
   },
   {
     "id": -1000001005,
     "key": "smcfgs005",
-    "en": "( Bao quát kiếm, đao, thương, quyền, chỉ, chưởng, lửa, nước, lôi, mộc, gió, thổ )",
-    "ch": "( Bao quát kiếm, đao, thương, quyền, chỉ, chưởng, lửa, nước, lôi, mộc, gió, thổ )"
+    "ch": "(Bao quát kiếm, đao, thương, quyền, chỉ, chưởng, hoả, thuỷ, lôi, mộc, phong, thổ)",
+    "en": "(Bao quát kiếm, đao, thương, quyền, chỉ, chưởng, hoả, thuỷ, lôi, mộc, phong, thổ)"
   },
   {
     "id": -1000001006,
     "key": "smcfgs006",
-    "en": "Đặc biệt quái vật suất",
-    "ch": "Đặc biệt quái vật suất"
+    "ch": "Đặc biệt quái vật suất",
+    "en": "Đặc biệt quái vật suất"
   },
   {
     "id": -1000001007,
     "key": "smcfgs007",
-    "en": "Kinh tế:",
-    "ch": "Kinh tế:"
+    "ch": "Kinh tế:",
+    "en": "Kinh tế:"
   },
   {
     "id": -1000001008,
     "key": "smcfgs008",
-    "en": "Thuế suất",
-    "ch": "Thuế suất"
+    "ch": "Thuế suất",
+    "en": "Thuế suất"
   },
   {
     "id": -1000001009,
     "key": "smcfgs009",
-    "en": "Lạm phát suất",
-    "ch": "Lạm phát suất"
+    "ch": "Lạm phát suất",
+    "en": "Lạm phát suất"
   },
   {
     "id": -1000001010,
     "key": "smcfgs010",
-    "en": "Kiến trúc chi phí",
-    "ch": "Kiến trúc chi phí"
+    "ch": "Kiến trúc chi phí",
+    "en": "Kiến trúc chi phí"
   },
   {
     "id": -1000001011,
     "key": "smcfgs011",
-    "en": "Ngân hàng tài khoản phí tổn",
-    "ch": "Ngân hàng tài khoản phí tổn"
+    "ch": "Ngân hàng tài khoản phí tổn",
+    "en": "Ngân hàng tài khoản phí tổn"
   },
   {
     "id": -1000001012,
     "key": "smcfgs012",
-    "en": "Ngân hàng phí tổn",
-    "ch": "Ngân hàng phí tổn"
+    "ch": "Ngân hàng phí tổn",
+    "en": "Ngân hàng phí tổn"
   },
   {
     "id": -1000001013,
     "key": "smcfgs013",
-    "en": "Tinh luyện chi phí",
-    "ch": "Tinh luyện chi phí"
+    "ch": "Tinh luyện chi phí",
+    "en": "Tinh luyện chi phí"
   },
   {
     "id": -1000001014,
     "key": "smcfgs014",
-    "en": "Tông phái trao đổi phí",
-    "ch": "Tông phái trao đổi phí"
+    "ch": "Tông phái trao đổi phí",
+    "en": "Tông phái trao đổi phí"
   },
   {
     "id": -1000001015,
     "key": "smcfgs015",
-    "en": "Vật phẩm giá trị",
-    "ch": "Vật phẩm giá trị"
+    "ch": "Vật phẩm giá trị",
+    "en": "Vật phẩm giá trị"
   },
   {
     "id": -1000001016,
     "key": "smcfgs016",
-    "en": "",
-    "ch": "NPC:"
+    "ch": "NPC:",
+    "en": "NPC:"
   },
   {
     "id": -1000001017,
     "key": "smcfgs017",
-    "en": "Tăng trưởng suất",
-    "ch": "Tăng trưởng suất"
+    "ch": "Tăng trưởng suất",
+    "en": "Tăng trưởng suất"
   },
   {
     "id": -1000001018,
     "key": "smcfgs018",
-    "en": "Hạng mục phụ:",
-    "ch": "Hạng mục phụ:"
+    "ch": "Hạng mục phụ:",
+    "en": "Hạng mục phụ:"
   },
   {
     "id": -1000001019,
     "key": "smcfgs019",
-    "en": "Thăng cấp kinh nghiệm",
-    "ch": "Thăng cấp kinh nghiệm"
+    "ch": "Thăng cấp tu vi",
+    "en": "Thăng cấp tu vi"
   },
   {
     "id": -1000001020,
     "key": "smcfgs020",
-    "en": "Hệ thống:",
-    "ch": "Hệ thống:"
+    "ch": "Hệ thống:",
+    "en": "Hệ thống:"
   },
   {
     "id": -1000001021,
     "key": "smcfgs021",
-    "en": "Ẩn tàng bảo tồn nút bấm",
-    "ch": "Ẩn tàng bảo tồn nút bấm"
+    "ch": "Ẩn tàng bảo tồn nút bấm",
+    "en": "Ẩn tàng bảo tồn nút bấm"
   },
   {
     "id": -1000001022,
     "key": "smcfgs022",
-    "en": "Ẩn tàng một lần nữa tăng thêm nút bấm",
-    "ch": "Ẩn tàng một lần nữa tăng thêm nút bấm"
+    "ch": "Ẩn tàng một lần nữa tăng thêm nút bấm",
+    "en": "Ẩn tàng một lần nữa tăng thêm nút bấm"
   },
   {
     "id": -1000001023,
     "key": "smcfgs023",
-    "en": "Một đời một thế",
-    "ch": "Một đời một thế"
+    "ch": "Một đời một thế",
+    "en": "Một đời một thế"
   },
   {
     "id": -1000001024,
     "key": "smcfgs024",
-    "en": "Ẩn tàng chiến đấu địa đồ",
-    "ch": "Ẩn tàng chiến đấu địa đồ"
+    "ch": "Ẩn tàng chiến đấu địa đồ",
+    "en": "Ẩn tàng chiến đấu địa đồ"
   },
   {
     "id": -1000001025,
     "key": "smcfgs025",
-    "en": "Ưu tiên vận mệnh đẳng cấp",
-    "ch": "Ưu tiên vận mệnh đẳng cấp"
+    "ch": "Ưu tiên vận mệnh cảnh giới",
+    "en": "Ưu tiên vận mệnh cảnh giới"
   },
   {
     "id": -1000001026,
     "key": "smcfgs026",
-    "en": "Phòng ngự ault",
-    "ch": "Phòng ngự ault"
+    "ch": "Bình thường",
+    "en": "Bình thường"
   },
   {
     "id": -1000001027,
     "key": "smcfgs027",
-    "en": "Màu trắng",
-    "ch": "Màu trắng"
+    "ch": "Màu trắng",
+    "en": "Màu trắng"
   },
   {
     "id": -1000001028,
     "key": "smcfgs028",
-    "en": "Lục sắc",
-    "ch": "Lục sắc"
+    "ch": "Lục sắc",
+    "en": "Lục sắc"
   },
   {
     "id": -1000001029,
     "key": "smcfgs029",
-    "en": "Màu lam",
-    "ch": "Màu lam"
+    "ch": "Màu lam",
+    "en": "Màu lam"
   },
   {
     "id": -1000001030,
     "key": "smcfgs030",
-    "en": "Tử sắc",
-    "ch": "Tử sắc"
+    "ch": "Tử sắc",
+    "en": "Tử sắc"
   },
   {
     "id": -1000001031,
     "key": "smcfgs031",
-    "en": "Màu vàng",
-    "ch": "Màu vàng"
+    "ch": "Màu vàng",
+    "en": "Màu vàng"
   },
   {
     "id": -1000001032,
     "key": "smcfgs032",
-    "en": "Màu đỏ",
-    "ch": "Màu đỏ"
+    "ch": "Màu đỏ",
+    "en": "Màu đỏ"
   },
   {
     "id": -1000001033,
     "key": "smcfgs033",
-    "en": "Thành bang cùng tông môn duy nhất môn hộ",
-    "ch": "Thành bang cùng tông môn duy nhất môn hộ"
+    "ch": "Thành bang cùng tông môn duy nhất môn hộ",
+    "en": "Thành bang cùng tông môn duy nhất môn hộ"
   },
   {
     "id": -1000001034,
     "key": "smcfgs034",
-    "en": "Tông phái không giao lưu",
-    "ch": "Tông phái không giao lưu"
+    "ch": "Tông phái không giao lưu",
+    "en": "Tông phái không giao lưu"
   },
   {
     "id": -1000001035,
     "key": "smcfgs035",
-    "en": "Không có trùng sinh",
-    "ch": "Không có trùng sinh"
+    "ch": "Không có trùng sinh",
+    "en": "Không có trùng sinh"
   },
   {
     "id": -1000001036,
     "key": "smcfgs036",
-    "en": "Cho phép tự nhiên thăng cấp",
-    "ch": "Cho phép tự nhiên thăng cấp"
+    "ch": "Cho phép tự nhiên thăng cấp",
+    "en": "Cho phép tự nhiên thăng cấp"
   },
   {
     "id": -1000001037,
     "key": "smcfgs037",
-    "en": "( Dạng này sẽ không gia tăng ngươi thuộc tính /properties)",
-    "ch": "( Dạng này sẽ không gia tăng ngươi thuộc tính /properties)"
+    "ch": "( Dạng này sẽ không gia tăng ngươi thuộc tính )",
+    "en": "( Dạng này sẽ không gia tăng ngươi thuộc tính )"
   },
   {
     "id": -1000001038,
     "key": "smcfgs038",
-    "en": "Boss Có tấm thuẫn",
-    "ch": "Boss Có tấm thuẫn"
+    "ch": "Boss Có tấm thuẫn",
+    "en": "Boss Có tấm thuẫn"
   },
   {
     "id": -1000001039,
     "key": "smcfgs039",
-    "en": "Chiến đấu không có trưởng thành",
-    "ch": "Chiến đấu không có trưởng thành"
+    "ch": "Chiến đấu không có trưởng thành",
+    "en": "Chiến đấu không có trưởng thành"
   },
   {
     "id": -1000001040,
     "key": "smcfgs040",
-    "en": "Chiến đấu không có điểm kinh nghiệm",
-    "ch": "Chiến đấu không có điểm kinh nghiệm"
+    "ch": "Chiến đấu không có điểm kinh nghiệm",
+    "en": "Chiến đấu không có điểm kinh nghiệm"
   },
   {
     "id": -1000001041,
     "key": "smcfgs041",
-    "en": "Bắt đầu dùng huấn luyện khí",
-    "ch": "Bắt đầu dùng huấn luyện khí"
+    "ch": "Bắt đầu dùng huấn luyện khí",
+    "en": "Bắt đầu dùng huấn luyện khí"
   },
   {
     "id": -1000001042,
     "key": "smcfgs042",
-    "en": "( Không đề nghị sử dụng này tuyển hạng!【Ctrl+1】)",
-    "ch": "( Không đề nghị sử dụng này tuyển hạng!【Ctrl+1】)"
+    "ch": "( Không đề nghị sử dụng này tuyển hạng!【Ctrl+1】)",
+    "en": "( Không đề nghị sử dụng này tuyển hạng!【Ctrl+1】)"
   },
   {
     "id": -1000001043,
     "key": "smcfgs043",
-    "en": "Tổng điểm: {0}P",
-    "ch": "Tổng điểm: {0}P"
+    "ch": "Tổng điểm: {0}P",
+    "en": "Tổng điểm: {0}P"
   },
   {
     "id": -1000001044,
     "key": "smcfgs044",
-    "en": "Phòng ngự ault",
-    "ch": "Phòng ngự ault"
+    "ch": "Bình thường",
+    "en": "Bình thường"
   },
   {
     "id": -1000001045,
     "key": "smcfgs045",
-    "en": "Đẳng cấp",
-    "ch": "Đẳng cấp"
+    "ch": "Cảnh giới",
+    "en": "Cảnh giới"
   },
   {
     "id": -1000001046,
     "key": "smcfgs046",
-    "en": "Ngài nhất định phải bắt đầu mới trò chơi mới có thể ứng dụng những này phối trí!",
-    "ch": "Ngài nhất định phải bắt đầu mới trò chơi mới có thể ứng dụng những này phối trí!"
+    "ch": "Ngài nhất định phải bắt đầu mới trò chơi mới có thể ứng dụng những này phối trí!",
+    "en": "Ngài nhất định phải bắt đầu mới trò chơi mới có thể ứng dụng những này phối trí!"
   },
   {
     "id": -1000001047,
     "key": "smcfgs047",
-    "en": "NPC Số lượng",
-    "ch": "NPC Số lượng"
+    "ch": "NPC Số lượng",
+    "en": "NPC Số lượng"
   },
   {
     "id": -1000001048,
     "key": "smcfgs048",
-    "en": "( Thiết yếu RAM: {0}MB)",
-    "ch": "( Thiết yếu RAM: {0}MB)"
+    "ch": "Thiết yếu RAM: {0}MB)",
+    "en": "Thiết yếu RAM: {0}MB)"
   },
   {
     "id": -1000001049,
     "key": "smcfgs049",
-    "en": "( Bao quát hộ thuẫn, bạo tạc cùng tăng gấp bội )",
-    "ch": "( Bao quát hộ thuẫn, bạo tạc cùng tăng gấp bội )"
+    "ch": "( Bao quát hộ thuẫn, bạo tạc cùng tăng gấp bội )",
+    "en": "( Bao quát hộ thuẫn, bạo tạc cùng tăng gấp bội )"
   },
   {
     "id": -1000001101,
     "key": "smcfgs101",
-    "en": "",
-    "ch": "{1}% ({0}P)"
+    "ch": "{1}% ({0}P)",
+    "en": "{1}% ({0}P)"
   },
   {
     "id": -1000001102,
     "key": "smcfgs102",
-    "en": "",
-    "ch": "({0}P)"
+    "ch": "({0}P)",
+    "en": "({0}P)"
   },
   {
     "id": -1000001103,
     "key": "smcfgs103",
-    "en": "",
-    "ch": "{1} ({0}P)"
+    "ch": "{1} ({0}P)",
+    "en": "{1} ({0}P)"
   }
 ]

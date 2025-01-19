@@ -2,11 +2,11 @@
 	{
 		"id": "480030100",
 		"key": "commission480030100",
-		"en|ch|tc": "Sent a request...",
+		"ch": "发送了请求...","en": "Sent a request...",
 	},
 	{
 		"id": "480030200",
 		"key": "commission480030200",
-		"en|ch|tc": "",
+		"ch": "","en": "",
 	}
 ]
