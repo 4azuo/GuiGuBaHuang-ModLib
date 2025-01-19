@@ -2,25 +2,25 @@
   {
     "id": "420041110",
     "key": "townmaster420041110desc",
-    "en": "",
-    "ch": "townmaster420041110desc"
+    "ch": "townmaster420041110desc",
+    "en": "townmaster420041110desc"
   },
   {
     "id": "420041111",
     "key": "townmaster420041111",
-    "en": "Trưởng trấn",
-    "ch": "Trưởng trấn"
+    "ch": "Thành chủ",
+    "en": "Thành chủ"
   },
   {
     "id": "420041112",
     "key": "townmaster420041112",
-    "en": "Thành trấn thủ hộ giả",
-    "ch": "Thành trấn thủ hộ giả"
+    "ch": "Thủ vệ",
+    "en": "Thủ vệ"
   },
   {
     "id": "420041113",
     "key": "townmaster420041113drama",
-    "en": "Ngươi trở thành cái này trưởng trấn.",
-    "ch": "Ngươi trở thành cái này trưởng trấn."
+    "ch": "Nhậm chức thành chủ",
+    "en": "Nhậm chức thành chủ"
   }
 ]

@@ -2,101 +2,101 @@
 	{
 		"id": "420082001",
 		"key": "trainee420081001",
-		"en|ch|tc": "Magic Lvl-1"
+		"ch": "一品灵者","en": "Magic Lvl-1"
 	},
 	{
 		"id": "420083001",
 		"key": "trainee420081001desc",
-		"en|ch|tc": "+2% Max MP"
+		"ch": "+2%灵力","en": "+2% Max MP"
 	},
 	{
 		"id": "420082002",
 		"key": "trainee420081002",
-		"en|ch|tc": "Magic Lvl-2"
+		"ch": "二品灵者","en": "Magic Lvl-2"
 	},
 	{
 		"id": "420083002",
 		"key": "trainee420081002desc",
-		"en|ch|tc": "+4% Max MP"
+		"ch": "+4%灵力","en": "+4% Max MP"
 	},
 	{
 		"id": "420082003",
 		"key": "trainee420081003",
-		"en|ch|tc": "Magic Lvl-3"
+		"ch": "三品灵者","en": "Magic Lvl-3"
 	},
 	{
 		"id": "420083003",
 		"key": "trainee420081003desc",
-		"en|ch|tc": "+7% Max MP"
+		"ch": "+7%灵力","en": "+7% Max MP"
 	},
 	{
 		"id": "420082004",
 		"key": "trainee420081004",
-		"en|ch|tc": "Magic Lvl-4"
+		"ch": "四品灵者","en": "Magic Lvl-4"
 	},
 	{
 		"id": "420083004",
 		"key": "trainee420081004desc",
-		"en|ch|tc": "+10% Max MP"
+		"ch": "+10%灵力","en": "+10% Max MP"
 	},
 	{
 		"id": "420082005",
 		"key": "trainee420081005",
-		"en|ch|tc": "Magic Lvl-5"
+		"ch": "五品灵者","en": "Magic Lvl-5"
 	},
 	{
 		"id": "420083005",
 		"key": "trainee420081005desc",
-		"en|ch|tc": "+15% Max MP"
+		"ch": "+15%灵力","en": "+15% Max MP"
 	},
 	{
 		"id": "420082006",
 		"key": "trainee420081006",
-		"en|ch|tc": "Magic Lvl-6"
+		"ch": "六品灵者","en": "Magic Lvl-6"
 	},
 	{
 		"id": "420083006",
 		"key": "trainee420081006desc",
-		"en|ch|tc": "+20% Max MP"
+		"ch": "+20%灵力","en": "+20% Max MP"
 	},
 	{
 		"id": "420082007",
 		"key": "trainee420081007",
-		"en|ch|tc": "Magic Lvl-7"
+		"ch": "七品灵者","en": "Magic Lvl-7"
 	},
 	{
 		"id": "420083007",
 		"key": "trainee420081007desc",
-		"en|ch|tc": "+30% Max MP"
+		"ch": "+30%灵力","en": "+30% Max MP"
 	},
 	{
 		"id": "420082008",
 		"key": "trainee420081008",
-		"en|ch|tc": "Magic Lvl-8"
+		"ch": "八品灵者","en": "Magic Lvl-8"
 	},
 	{
 		"id": "420083008",
 		"key": "trainee420081008desc",
-		"en|ch|tc": "+40% Max MP"
+		"ch": "+40%灵力","en": "+40% Max MP"
 	},
 	{
 		"id": "420082009",
 		"key": "trainee420081009",
-		"en|ch|tc": "Magic Lvl-9"
+		"ch": "九品灵者","en": "Magic Lvl-9"
 	},
 	{
 		"id": "420083009",
 		"key": "trainee420081009desc",
-		"en|ch|tc": "+60% Max MP"
+		"ch": "+60%灵力","en": "+60% Max MP"
 	},
 	{
 		"id": "420082010",
 		"key": "trainee420081010",
-		"en|ch|tc": "Magic Lvl-10"
+		"ch": "十品灵者","en": "Magic Lvl-10"
 	},
 	{
 		"id": "420083010",
 		"key": "trainee420081010desc",
-		"en|ch|tc": "+90% Max MP"
+		"ch": "+90%灵力","en": "+90% Max MP"
 	},
 ]
