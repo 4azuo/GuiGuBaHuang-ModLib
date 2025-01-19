@@ -2,121 +2,101 @@
   {
     "id": "420022001",
     "key": "apprentice420021001",
-    "ch": "Nhất phẩm luyện khí",
-    "en": "Nhất phẩm luyện khí"
+    "ch|en|tc": "Nhất phẩm Luyện Khí Sư",
   },
   {
     "id": "420023001",
     "key": "apprentice420021001desc",
-    "ch": "5% Phòng ngự",
-    "en": "5% Phòng ngự"
+    "ch|en|tc": "5% Phòng ngự",
   },
   {
     "id": "420022002",
     "key": "apprentice420021002",
-    "ch": "Nhị phẩm luyện khí",
-    "en": "Nhị phẩm luyện khí"
+    "ch|en|tc": "Nhị phẩm Luyện Khí Sư",
   },
   {
     "id": "420023002",
     "key": "apprentice420021002desc",
-    "ch": "+10% Phòng ngự",
-    "en": "+10% Phòng ngự"
+    "ch|en|tc": "+10% Phòng ngự",
   },
   {
     "id": "420022003",
     "key": "apprentice420021003",
-    "ch": "Tam phẩm luyện khí",
-    "en": "Tam phẩm luyện khí"
+    "ch|en|tc": "Tam phẩm Luyện Khí Sư",
   },
   {
     "id": "420023003",
     "key": "apprentice420021003desc",
-    "ch": "+15% Phòng ngự",
-    "en": "+15% Phòng ngự"
+    "ch|en|tc": "+15% Phòng ngự",
   },
   {
     "id": "420022004",
     "key": "apprentice420021004",
-    "ch": "Tứ phẩm luyện khí",
-    "en": "Tứ phẩm luyện khí"
+    "ch|en|tc": "Tứ phẩm Luyện Khí Sư",
   },
   {
     "id": "420023004",
     "key": "apprentice420021004desc",
-    "ch": "+20% Phòng ngự",
-    "en": "+20% Phòng ngự"
+    "ch|en|tc": "+20% Phòng ngự",
   },
   {
     "id": "420022005",
     "key": "apprentice420021005",
-    "ch": "Ngũ phẩm luyện khí",
-    "en": "Ngũ phẩm luyện khí"
+    "ch|en|tc": "Ngũ phẩm Luyện Khí Sư",
   },
   {
     "id": "420023005",
     "key": "apprentice420021005desc",
-    "ch": "+25% Phòng ngự",
-    "en": "+25% Phòng ngự"
+    "ch|en|tc": "+25% Phòng ngự",
   },
   {
     "id": "420022006",
     "key": "apprentice420021006",
-    "ch": "Lục phẩm luyện khí",
-    "en": "Lục phẩm luyện khí"
+    "ch|en|tc": "Lục phẩm Luyện Khí Sư",
   },
   {
     "id": "420023006",
     "key": "apprentice420021006desc",
-    "ch": "+30% Phòng ngự",
-    "en": "+30% Phòng ngự"
+    "ch|en|tc": "+30% Phòng ngự",
   },
   {
     "id": "420022007",
     "key": "apprentice420021007",
-    "ch": "Thất phẩm luyện khí",
-    "en": "Thất phẩm luyện khí"
+    "ch|en|tc": "Thất phẩm Luyện Khí Sư",
   },
   {
     "id": "420023007",
     "key": "apprentice420021007desc",
-    "ch": "+35% Phòng ngự",
-    "en": "+35% Phòng ngự"
+    "ch|en|tc": "+35% Phòng ngự",
   },
   {
     "id": "420022008",
     "key": "apprentice420021008",
-    "ch": "Bát phẩm luyện khí",
-    "en": "Bát phẩm luyện khí"
+    "ch|en|tc": "Bát phẩm Luyện Khí Sư",
   },
   {
     "id": "420023008",
     "key": "apprentice420021008desc",
-    "ch": "+40% Phòng ngự",
-    "en": "+40% Phòng ngự"
+    "ch|en|tc": "+40% Phòng ngự",
   },
   {
     "id": "420022009",
     "key": "apprentice420021009",
-    "ch": "Cửu phẩm luyện khí",
-    "en": "Cửu phẩm luyện khí"
+    "ch|en|tc": "Cửu phẩm Luyện Khí Sư",
   },
   {
     "id": "420023009",
     "key": "apprentice420021009desc",
-    "ch": "+45% Phòng ngự",
-    "en": "+45% Phòng ngự"
+    "ch|en|tc": "+45% Phòng ngự",
   },
   {
     "id": "420022010",
     "key": "apprentice420021010",
-    "ch": "Thập phẩm luyện khí",
-    "en": "Thập phẩm luyện khí"
+    "ch|en|tc": "Thập phẩm Luyện Khí Sư",
   },
   {
     "id": "420023010",
     "key": "apprentice420021010desc",
-    "ch": "+50% Phòng ngự",
-    "en": "+50% Phòng ngự"
+    "ch|en|tc": "+50% Phòng ngự",
   }
 ]

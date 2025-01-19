@@ -2,13 +2,11 @@
   {
     "id": "480030100",
     "key": "commission480030100",
-    "ch": "Gửi đi thỉnh cầu...",
-    "en": "Gửi đi thỉnh cầu..."
+    "ch|en|tc": "Gửi đi thỉnh cầu...",
   },
   {
     "id": "480030200",
     "key": "commission480030200",
-    "ch": "",
-    "en": ""
+    "ch|en|tc": "",
   }
 ]

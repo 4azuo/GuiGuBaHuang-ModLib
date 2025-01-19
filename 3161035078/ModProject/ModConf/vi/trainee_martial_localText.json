@@ -2,121 +2,101 @@
   {
     "id": "420072001",
     "key": "trainee420071001",
-    "ch": "Nhất phẩm Võ sư",
-    "en": "Nhất phẩm Võ sư"
+    "ch|en|tc": "Nhất phẩm Võ sư",
   },
   {
     "id": "420073001",
     "key": "trainee420071001desc",
-    "ch": "+2% Thể lực",
-    "en": "+2% Thể lực"
+    "ch|en|tc": "+2% Thể lực",
   },
   {
     "id": "420072002",
     "key": "trainee420071002",
-    "ch": "Nhị phẩm Võ sư",
-    "en": "Nhị phẩm Võ sư"
+    "ch|en|tc": "Nhị phẩm Võ sư",
   },
   {
     "id": "420073002",
     "key": "trainee420071002desc",
-    "ch": "+4% Thể lực",
-    "en": "+4% Thể lực"
+    "ch|en|tc": "+4% Thể lực",
   },
   {
     "id": "420072003",
     "key": "trainee420071003",
-    "ch": "Tam phẩm Võ sư",
-    "en": "Tam phẩm Võ sư"
+    "ch|en|tc": "Tam phẩm Võ sư",
   },
   {
     "id": "420073003",
     "key": "trainee420071003desc",
-    "ch": "+7% Thể lực",
-    "en": "+7% Thể lực"
+    "ch|en|tc": "+7% Thể lực",
   },
   {
     "id": "420072004",
     "key": "trainee420071004",
-    "ch": "Tứ phẩm Võ sư",
-    "en": "Tứ phẩm Võ sư"
+    "ch|en|tc": "Tứ phẩm Võ sư",
   },
   {
     "id": "420073004",
     "key": "trainee420071004desc",
-    "ch": "+10% Thể lực",
-    "en": "+10% Thể lực"
+    "ch|en|tc": "+10% Thể lực",
   },
   {
     "id": "420072005",
     "key": "trainee420071005",
-    "ch": "Ngũ phẩm Võ sư",
-    "en": "Ngũ phẩm Võ sư"
+    "ch|en|tc": "Ngũ phẩm Võ sư",
   },
   {
     "id": "420073005",
     "key": "trainee420071005desc",
-    "ch": "+15% Thể lực",
-    "en": "+15% Thể lực"
+    "ch|en|tc": "+15% Thể lực",
   },
   {
     "id": "420072006",
     "key": "trainee420071006",
-    "ch": "Lục phẩm Võ sư",
-    "en": "Lục phẩm Võ sư"
+    "ch|en|tc": "Lục phẩm Võ sư",
   },
   {
     "id": "420073006",
     "key": "trainee420071006desc",
-    "ch": "+20% Thể lực",
-    "en": "+20% Thể lực"
+    "ch|en|tc": "+20% Thể lực",
   },
   {
     "id": "420072007",
     "key": "trainee420071007",
-    "ch": "Thất phẩm Võ sư",
-    "en": "Thất phẩm Võ sư"
+    "ch|en|tc": "Thất phẩm Võ sư",
   },
   {
     "id": "420073007",
     "key": "trainee420071007desc",
-    "ch": "+30% Thể lực",
-    "en": "+30% Thể lực"
+    "ch|en|tc": "+30% Thể lực",
   },
   {
     "id": "420072008",
     "key": "trainee420071008",
-    "ch": "Bát phẩm Võ sư",
-    "en": "Bát phẩm Võ sư"
+    "ch|en|tc": "Bát phẩm Võ sư",
   },
   {
     "id": "420073008",
     "key": "trainee420071008desc",
-    "ch": "+40% Thể lực",
-    "en": "+40% Thể lực"
+    "ch|en|tc": "+40% Thể lực",
   },
   {
     "id": "420072009",
     "key": "trainee420071009",
-    "ch": "Cửu phẩm Võ sư",
-    "en": "Cửu phẩm Võ sư"
+    "ch|en|tc": "Cửu phẩm Võ sư",
   },
   {
     "id": "420073009",
     "key": "trainee420071009desc",
-    "ch": "+60% Thể lực",
-    "en": "+60% Thể lực"
+    "ch|en|tc": "+60% Thể lực",
   },
   {
     "id": "420072010",
     "key": "trainee420071010",
-    "ch": "Thập phẩm Võ sư",
-    "en": "Thập phẩm Võ sư"
+    "ch|en|tc": "Thập phẩm Võ sư",
   },
   {
     "id": "420073010",
     "key": "trainee420071010desc",
-    "ch": "+90% Thể lực",
-    "en": "+90% Thể lực"
+    "ch|en|tc": "+90% Thể lực",
   }
 ]

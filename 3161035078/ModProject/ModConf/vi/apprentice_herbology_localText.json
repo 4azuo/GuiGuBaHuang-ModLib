@@ -2,121 +2,101 @@
   {
     "id": "420052001",
     "key": "apprentice420051001",
-    "ch": "Nhất phẩm dược sư",
-    "en": "Nhất phẩm dược sư"
+    "ch|en|tc": "Nhất phẩm Dược Sư",
   },
   {
     "id": "420053001",
     "key": "apprentice420051001desc",
-    "ch": "+2% Thể lực",
-    "en": "+2% Thể lực"
+    "ch|en|tc": "+2% Thể lực",
   },
   {
     "id": "420052002",
     "key": "apprentice420051002",
-    "ch": "Nhị phẩm dược sư",
-    "en": "Nhị phẩm dược sư"
+    "ch|en|tc": "Nhị phẩm Dược Sư",
   },
   {
     "id": "420053002",
     "key": "apprentice420051002desc",
-    "ch": "+4% Thể lực",
-    "en": "+4% Thể lực"
+    "ch|en|tc": "+4% Thể lực",
   },
   {
     "id": "420052003",
     "key": "apprentice420051003",
-    "ch": "Tam phẩm dược sư",
-    "en": "Tam phẩm dược sư"
+    "ch|en|tc": "Tam phẩm Dược Sư",
   },
   {
     "id": "420053003",
     "key": "apprentice420051003desc",
-    "ch": "+6% Thể lực",
-    "en": "+6% Thể lực"
+    "ch|en|tc": "+6% Thể lực",
   },
   {
     "id": "420052004",
     "key": "apprentice420051004",
-    "ch": "Tứ phẩm dược sư",
-    "en": "Tứ phẩm dược sư"
+    "ch|en|tc": "Tứ phẩm Dược Sư",
   },
   {
     "id": "420053004",
     "key": "apprentice420051004desc",
-    "ch": "+8% Thể lực",
-    "en": "+8% Thể lực"
+    "ch|en|tc": "+8% Thể lực",
   },
   {
     "id": "420052005",
     "key": "apprentice420051005",
-    "ch": "Ngũ phẩm dược sư",
-    "en": "Ngũ phẩm dược sư"
+    "ch|en|tc": "Ngũ phẩm Dược Sư",
   },
   {
     "id": "420053005",
     "key": "apprentice420051005desc",
-    "ch": "+10% Thể lực",
-    "en": "+10% Thể lực"
+    "ch|en|tc": "+10% Thể lực",
   },
   {
     "id": "420052006",
     "key": "apprentice420051006",
-    "ch": "Lục phẩm dược sư",
-    "en": "Lục phẩm dược sư"
+    "ch|en|tc": "Lục phẩm Dược Sư",
   },
   {
     "id": "420053006",
     "key": "apprentice420051006desc",
-    "ch": "+12% Thể lực",
-    "en": "+12% Thể lực"
+    "ch|en|tc": "+12% Thể lực",
   },
   {
     "id": "420052007",
     "key": "apprentice420051007",
-    "ch": "Thất phẩm dược sư",
-    "en": "Thất phẩm dược sư"
+    "ch|en|tc": "Thất phẩm Dược Sư",
   },
   {
     "id": "420053007",
     "key": "apprentice420051007desc",
-    "ch": "+14% Thể lực",
-    "en": "+14% Thể lực"
+    "ch|en|tc": "+14% Thể lực",
   },
   {
     "id": "420052008",
     "key": "apprentice420051008",
-    "ch": "Bát phẩm dược sư",
-    "en": "Bát phẩm dược sư"
+    "ch|en|tc": "Bát phẩm Dược Sư",
   },
   {
     "id": "420053008",
     "key": "apprentice420051008desc",
-    "ch": "+16% Thể lực",
-    "en": "+16% Thể lực"
+    "ch|en|tc": "+16% Thể lực",
   },
   {
     "id": "420052009",
     "key": "apprentice420051009",
-    "ch": "Cửu phẩm dược sư",
-    "en": "Cửu phẩm dược sư"
+    "ch|en|tc": "Cửu phẩm Dược Sư",
   },
   {
     "id": "420053009",
     "key": "apprentice420051009desc",
-    "ch": "+18% Thể lực",
-    "en": "+18% Thể lực"
+    "ch|en|tc": "+18% Thể lực",
   },
   {
     "id": "420052010",
     "key": "apprentice420051010",
-    "ch": "Thập phẩm dược sư",
-    "en": "Thập phẩm dược sư"
+    "ch|en|tc": "Thập phẩm Dược Sư",
   },
   {
     "id": "420053010",
     "key": "apprentice420051010desc",
-    "ch": "+20% Thể lực",
-    "en": "+20% Thể lực"
+    "ch|en|tc": "+20% Thể lực",
   }
 ]

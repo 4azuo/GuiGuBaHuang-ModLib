@@ -2,127 +2,106 @@
   {
     "id": "420102001",
     "key": "rebirth420101001",
-    "ch": "Trùng sinh một lần",
-    "en": "Trùng sinh một lần"
+    "ch|en|tc": "Trùng sinh một lần",
   },
   {
     "id": "420103001",
     "key": "rebirth420101001desc",
-    "ch": "+5% Thể lực",
-    "en": "+5% Thể lực"
+    "ch|en|tc": "+5% Thể lực",
   },
   {
     "id": "420102002",
     "key": "rebirth420101002",
-    "ch": "Trùng sinh hai lần",
-    "en": "Trùng sinh hai lần"
+    "ch|en|tc": "Trùng sinh hai lần",
   },
   {
     "id": "420103002",
     "key": "rebirth420101002desc",
-    "ch": "+10% Thể lực",
-    "en": "+10% Thể lực"
+    "ch|en|tc": "+10% Thể lực",
   },
   {
     "id": "420102003",
     "key": "rebirth420101003",
-    "ch": "Trùng sinh ba lần",
-    "en": "Trùng sinh ba lần"
+    "ch|en|tc": "Trùng sinh ba lần",
   },
   {
     "id": "420103003",
     "key": "rebirth420101003desc",
-    "ch": "+15% Thể lực",
-    "en": "+15% Thể lực"
+    "ch|en|tc": "+15% Thể lực",
   },
   {
     "id": "420102004",
     "key": "rebirth420101004",
-    "ch": "Trùng sinh bốn lần",
-    "en": "Trùng sinh bốn lần"
+    "ch|en|tc": "Trùng sinh bốn lần",
   },
   {
     "id": "420103004",
     "key": "rebirth420101004desc",
-    "ch": "+20% Thể lực",
-    "en": "+20% Thể lực"
+    "ch|en|tc": "+20% Thể lực",
   },
   {
     "id": "420102005",
     "key": "rebirth420101005",
-    "ch": "Trùng sinh năm lần",
-    "en": "Trùng sinh năm lần"
+    "ch|en|tc": "Trùng sinh năm lần",
   },
   {
     "id": "420103005",
     "key": "rebirth420101005desc",
-    "ch": "+25% Thể lực",
-    "en": "+25% Thể lực"
+    "ch|en|tc": "+25% Thể lực",
   },
   {
     "id": "420102006",
     "key": "rebirth420101006",
-    "ch": "Trùng sinh sáu lần",
-    "en": "Trùng sinh sáu lần"
+    "ch|en|tc": "Trùng sinh sáu lần",
   },
   {
     "id": "420103006",
     "key": "rebirth420101006desc",
-    "ch": "+30% Thể lực",
-    "en": "+30% Thể lực"
+    "ch|en|tc": "+30% Thể lực",
   },
   {
     "id": "420102007",
     "key": "rebirth420101007",
-    "ch": "Trùng sinh bảy lần",
-    "en": "Trùng sinh bảy lần"
+    "ch|en|tc": "Trùng sinh bảy lần",
   },
   {
     "id": "420103007",
     "key": "rebirth420101007desc",
-    "ch": "+35% Thể lực",
-    "en": "+35% Thể lực"
+    "ch|en|tc": "+35% Thể lực",
   },
   {
     "id": "420102008",
     "key": "rebirth420101008",
-    "ch": "Trùng sinh tám lần",
-    "en": "Trùng sinh tám lần"
+    "ch|en|tc": "Trùng sinh tám lần",
   },
   {
     "id": "420103008",
     "key": "rebirth420101008desc",
-    "ch": "+40% Thể lực",
-    "en": "+40% Thể lực"
+    "ch|en|tc": "+40% Thể lực",
   },
   {
     "id": "420102009",
     "key": "rebirth420101009",
-    "ch": "Trùng sinh chín lần",
-    "en": "Trùng sinh chín lần"
+    "ch|en|tc": "Trùng sinh chín lần",
   },
   {
     "id": "420103009",
     "key": "rebirth420101009desc",
-    "ch": "+45% Thể lực",
-    "en": "+45% Thể lực"
+    "ch|en|tc": "+45% Thể lực",
   },
   {
     "id": "420102010",
     "key": "rebirth420101010",
-    "ch": "Trùng sinh mười lần",
-    "en": "Trùng sinh mười lần"
+    "ch|en|tc": "Trùng sinh mười lần",
   },
   {
     "id": "420103010",
     "key": "rebirth420101010desc",
-    "ch": "+50% Thể lực",
-    "en": "+50% Thể lực"
+    "ch|en|tc": "+50% Thể lực",
   },
   {
     "id": "420109999",
     "key": "rebirth420109999dialog",
-    "ch": "Lần này trùng sinh là một cái cơ hội. Một cái uốn nắn quá khứ sai lầm, truy cầu con đường khác nhau cơ hội. Ta nhất định phải sáng suốt lựa chọn. Giữ lại nào kỹ năng, từ bỏ nào tri thức. Mỗi một cái quyết định đều sẽ tạo nên vận mệnh của ta.",
-    "en": "Lần này trùng sinh là một cái cơ hội. Một cái uốn nắn quá khứ sai lầm, truy cầu con đường khác nhau cơ hội. Ta nhất định phải sáng suốt lựa chọn. Giữ lại nào kỹ năng, từ bỏ nào tri thức. Mỗi một cái quyết định đều sẽ tạo nên vận mệnh của ta."
+    "ch|en|tc": "Lần này trùng sinh là một cái cơ hội. Một cái uốn nắn quá khứ sai lầm, truy cầu con đường khác nhau cơ hội. Ta nhất định phải sáng suốt lựa chọn. Giữ lại nào kỹ năng, từ bỏ nào tri thức. Mỗi một cái quyết định đều sẽ tạo nên vận mệnh của ta.",
   }
 ]

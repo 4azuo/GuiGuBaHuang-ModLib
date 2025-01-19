@@ -2,121 +2,101 @@
   {
     "id": "420012001",
     "key": "apprentice420011001",
-    "ch": "Nhất phẩm Đan Sư",
-    "en": "Nhất phẩm Đan Sư"
+    "ch|en|tc": "Nhất phẩm Đan Sư",
   },
   {
     "id": "420013001",
     "key": "apprentice420011001desc",
-    "ch": "+5% Thể lực",
-    "en": "+5% Thể lực"
+    "ch|en|tc": "+5% Thể lực",
   },
   {
     "id": "420012002",
     "key": "apprentice420011002",
-    "ch": "Nhị phẩm Đan Sư",
-    "en": "Nhị phẩm Đan Sư"
+    "ch|en|tc": "Nhị phẩm Đan Sư",
   },
   {
     "id": "420013002",
     "key": "apprentice420011002desc",
-    "ch": "+10% Thể lực",
-    "en": "+10% Thể lực"
+    "ch|en|tc": "+10% Thể lực",
   },
   {
     "id": "420012003",
     "key": "apprentice420011003",
-    "ch": "Tam phẩm Đan Sư",
-    "en": "Tam phẩm Đan Sư"
+    "ch|en|tc": "Tam phẩm Đan Sư",
   },
   {
     "id": "420013003",
     "key": "apprentice420011003desc",
-    "ch": "+15% Thể lực",
-    "en": "+15% Thể lực"
+    "ch|en|tc": "+15% Thể lực",
   },
   {
     "id": "420012004",
     "key": "apprentice420011004",
-    "ch": "Tứ phẩm Đan Sư",
-    "en": "Tứ phẩm Đan Sư"
+    "ch|en|tc": "Tứ phẩm Đan Sư",
   },
   {
     "id": "420013004",
     "key": "apprentice420011004desc",
-    "ch": "+20% Thể lực",
-    "en": "+20% Thể lực"
+    "ch|en|tc": "+20% Thể lực",
   },
   {
     "id": "420012005",
     "key": "apprentice420011005",
-    "ch": "Ngũ phẩm Đan Sư",
-    "en": "Ngũ phẩm Đan Sư"
+    "ch|en|tc": "Ngũ phẩm Đan Sư",
   },
   {
     "id": "420013005",
     "key": "apprentice420011005desc",
-    "ch": "+25% Thể lực",
-    "en": "+25% Thể lực"
+    "ch|en|tc": "+25% Thể lực",
   },
   {
     "id": "420012006",
     "key": "apprentice420011006",
-    "ch": "Lục phẩm Đan Sư",
-    "en": "Lục phẩm Đan Sư"
+    "ch|en|tc": "Lục phẩm Đan Sư",
   },
   {
     "id": "420013006",
     "key": "apprentice420011006desc",
-    "ch": "+30% Thể lực",
-    "en": "+30% Thể lực"
+    "ch|en|tc": "+30% Thể lực",
   },
   {
     "id": "420012007",
     "key": "apprentice420011007",
-    "ch": "Thất phẩm Đan Sư",
-    "en": "Thất phẩm Đan Sư"
+    "ch|en|tc": "Thất phẩm Đan Sư",
   },
   {
     "id": "420013007",
     "key": "apprentice420011007desc",
-    "ch": "+35% Thể lực",
-    "en": "+35% Thể lực"
+    "ch|en|tc": "+35% Thể lực",
   },
   {
     "id": "420012008",
     "key": "apprentice420011008",
-    "ch": "Bát phẩm Đan Sư",
-    "en": "Bát phẩm Đan Sư"
+    "ch|en|tc": "Bát phẩm Đan Sư",
   },
   {
     "id": "420013008",
     "key": "apprentice420011008desc",
-    "ch": "+40% Thể lực",
-    "en": "+40% Thể lực"
+    "ch|en|tc": "+40% Thể lực",
   },
   {
     "id": "420012009",
     "key": "apprentice420011009",
-    "ch": "Cửu phẩm Đan Sư",
-    "en": "Cửu phẩm Đan Sư"
+    "ch|en|tc": "Cửu phẩm Đan Sư",
   },
   {
     "id": "420013009",
     "key": "apprentice420011009desc",
-    "ch": "+45% Thể lực",
-    "en": "+45% Thể lực"
+    "ch|en|tc": "+45% Thể lực",
   },
   {
     "id": "420012010",
     "key": "apprentice420011010",
-    "ch": "Thập phẩm Đan Sư",
-    "en": "Thập phẩm Đan Sư"
+    "ch|en|tc": "Thập phẩm Đan Sư",
   },
   {
     "id": "420013010",
     "key": "apprentice420011010desc",
-    "ch": "+50% Thể lực",
-    "en": "+50% Thể lực"
+    "ch|en|tc": "+50% Thể lực",
   }
 ]
