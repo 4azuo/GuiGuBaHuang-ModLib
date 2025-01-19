@@ -8,19 +8,19 @@ public static class ConfHelper
 {
     private const string CONF_FOLDER = "ModConf";
 
-    public static string GetConfFilePath(string modId, string fileName)
+    public static string GetConfFilePath(string modId, string fileName, string subFolder = "")
     {
-        return Path.Combine(GetConfFolderPath(modId), fileName);
+        return Path.Combine(GetConfFolderPath(modId, subFolder), fileName);
     }
 
-    public static string GetConfFolderPath(string modId)
+    public static string GetConfFolderPath(string modId, string subFolder = "")
     {
-        return Path.Combine(AssemblyHelper.GetModPathRoot(modId), CONF_FOLDER);
+        return Path.Combine(AssemblyHelper.GetModPathRoot(modId), CONF_FOLDER, subFolder);
     }
 
-    public static string ReadConfData(string modId, string fileName)
+    public static string ReadConfData(string modId, string fileName, string subFolder = "")
     {
-        return File.ReadAllText(GetConfFilePath(modId, fileName));
+        return File.ReadAllText(GetConfFilePath(modId, fileName, subFolder));
     }
 
     [Trace]
@@ -81,18 +81,15 @@ public static class ConfHelper
         }
     }
 
-    public static void LoadCustomConf(string modId)
+    public static void LoadCustomConf(string modId, string subFolder = "", string searchPattern = "*.json")
     {
         try
         {
-            //copy new configs to debug folder
-            CopyConfs(modId);
-
             //load conf
-            var assetFolder = GetConfFolderPath(modId);
+            var assetFolder = GetConfFolderPath(modId, subFolder);
             if (Directory.Exists(assetFolder))
             {
-                foreach (var filePath in Directory.GetFiles(assetFolder, "*.json"))
+                foreach (var filePath in Directory.GetFiles(assetFolder, searchPattern))
                 {
                     var confName = Path.GetFileNameWithoutExtension(filePath).Split('_').Last();
                     LoadConf(filePath, confName);
@@ -107,13 +104,15 @@ public static class ConfHelper
 
     public static void CopyConfs(string modId)
     {
-        var orgFolder = $"{AssemblyHelper.GetModPathSource(modId)}\\{CONF_FOLDER}\\";
-        if (Directory.Exists(orgFolder))
+        var srcFolder = Path.Combine(AssemblyHelper.GetModPathSource(modId), CONF_FOLDER);
+        if (Directory.Exists(srcFolder))
         {
-            Directory.CreateDirectory(ConfHelper.GetConfFolderPath(modId));
-            foreach (var orgFile in Directory.GetFiles(orgFolder))
+            var dstFolder = ConfHelper.GetConfFolderPath(modId);
+            foreach (var srcFile in Directory.GetFiles(srcFolder, "*", SearchOption.AllDirectories))
             {
-                File.Copy(orgFile, ConfHelper.GetConfFilePath(modId, Path.GetFileName(orgFile)), true);
+                var dstFile = srcFile.Replace(srcFolder, dstFolder);
+                Directory.CreateDirectory(Path.GetDirectoryName(dstFile));
+                File.Copy(srcFile, dstFile, true);
             }
         }
     }
