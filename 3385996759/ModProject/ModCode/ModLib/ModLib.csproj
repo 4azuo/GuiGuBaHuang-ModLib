@@ -89,7 +89,6 @@
     <Compile Include="Mod\Base\ModMaster_TimerEvent.cs" />
     <Compile Include="Mod\Base\ModMaster_MapEvent.cs" />
     <Compile Include="Mod\ModUIEvent.cs" />
-    <Compile Include="Mod\ModTranslateEvent.cs" />
     <Compile Include="Mod\ModTitleEvent.cs" />
     <Compile Include="Object\Base\EnumObject.cs" />
     <Compile Include="Enum\GradeEnum.cs" />
