@@ -22,7 +22,7 @@ namespace ModLib.Mod
             "es",
         };
 
-        public int TranslateIndex { get; set; }
+        public int TranslateIndex { get; set; } = 0;
 
         public override void OnOpenUIEnd(OpenUIEnd e)
         {
@@ -32,13 +32,13 @@ namespace ModLib.Mod
                 if (g.data.globle.gameSetting.screenWidth / g.data.globle.gameSetting.screenHeight != ModLibConst.SUPPORT_SCREEN_RATIO)
                 {
                     var uiWarning = g.ui.OpenUI<UITextInfo>(UIType.TextInfo);
-                    uiWarning.InitData("Warning", "ModLib's UI is supporting on screen ratio 16:9");
+                    uiWarning.InitData(GameTool.LS("libtxt999990000"), GameTool.LS("libtxt999990001"));
                 }
 
                 var ui = new UICover<UILogin>(UIType.Login);
                 {
                     var parentTransform = ui.UI.btnSet.transform.parent;
-                    ui.AddButton(ui.LastCol - 5, ui.FirstRow, () => Process.Start("https://github.com/4azuo/GuiGuBaHuang-ModLib"), $"Powered by\nFouru's ModLib {ModMaster.ModObj.Version}")
+                    ui.AddButton(ui.LastCol - 5, ui.FirstRow, () => Process.Start(ModLibConst.MODLIB_WEBSITE), $"Powered by\nFouru's ModLib {ModMaster.ModObj.Version}")
                         .Align(TextAnchor.MiddleCenter)
                         .Format(Color.black, 18)
                         .Size(300, 74)
@@ -52,10 +52,12 @@ namespace ModLib.Mod
                             {
                                 TranslateIndex = b.Parse<int>();
                                 CacheHelper.SaveGlobalCache(this);
-                                LoadLocalTexts(TranslateCode[Instance.TranslateIndex]);
+                                LoadLocalTexts(GetTranslateLanguage());
                             }
-                        });
+                        })
+                        .SetParentTransform(parentTransform);
                 }
+                ui.UpdateUI();
             }
         }
 
