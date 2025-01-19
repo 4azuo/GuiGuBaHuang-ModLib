@@ -24,4 +24,29 @@
 		"key": "team420041125dramaOpt2",
 		"ch": "不","en": "No"
 	},
+	{
+		"id": "420041126",
+		"key": "team420041126desc",
+		"ch": "解散","en": "Dismiss Team"
+	},
+	{
+		"id": "420041127",
+		"key": "team420041127desc",
+		"ch": "掌管","en": "Manage Team"
+	},
+	{
+		"id": "420041128",
+		"key": "team420041128desc",
+		"ch": "确定要增加此人?","en": "Are you sure about adding this person?"
+	},
+	{
+		"id": "420041129",
+		"key": "team420041129desc",
+		"ch": "你必須離開現在的隊伍！","en": "You have to quit current team!"
+	},
+	{
+		"id": "420041130",
+		"key": "team420041130desc",
+		"ch": "確定要驅逐此人嗎?","en": "Are you sure about dismissing this person?"
+	}
 ]
