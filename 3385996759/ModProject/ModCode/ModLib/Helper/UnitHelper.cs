@@ -24,6 +24,11 @@ public static class UnitHelper
         return wunit.data.unitData.pointGridData.areaBaseID;
     }
 
+    public static T GetMapBuild<T>(this WorldUnitBase wunit) where T : MapBuildBase
+    {
+        return g.world.build.GetBuild<T>(wunit.GetUnitPos());
+    }
+
     public static List<DataProps.PropsData> GetEquippedItems(this WorldUnitBase wunit)
     {
         var rs = new List<DataProps.PropsData>();
