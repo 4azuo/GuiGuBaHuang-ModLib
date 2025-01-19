@@ -24,6 +24,8 @@ namespace ModLib.Mod
                 {
                     //copy img
                     SpriteHelper.CopyImgs(mod.t1);
+                    //copy new configs to debug folder
+                    ConfHelper.CopyConfs(mod.t1);
                     //load configs
                     ConfHelper.LoadCustomConf(mod.t1);
                 }
