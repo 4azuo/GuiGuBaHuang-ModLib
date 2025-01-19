@@ -1,0 +1,42 @@
+[
+	{
+		"id": "500060000",
+		"key": "itemlvl500060000desc",
+		"ch": "寻常","en": "None"
+	},
+	{
+		"id": "500060001",
+		"key": "itemlvl500060001desc",
+		"ch": "常見","en": "Common"
+	}
+	{
+		"id": "500060002",
+		"key": "itemlvl500060002desc",
+		"ch": "罕見","en": "Uncommon"
+	},
+	{
+		"id": "500060003",
+		"key": "itemlvl500060003desc",
+		"ch": "珍稀","en": "Rare"
+	},
+	{
+		"id": "500060004",
+		"key": "itemlvl500060004desc",
+		"ch": "絕品","en": "Myst"
+	},
+		{
+		"id": "500060005",
+		"key": "itemlvl500060005desc",
+		"ch": "絕世","en": "Lgendary"
+	},
+		{
+		"id": "500060006",
+		"key": "itemlvl500060006desc",
+		"ch": "洪荒","en": "Beast"
+	},
+		{
+		"id": "500060007",
+		"key": "itemlvl500060007desc",
+		"ch": "上古遗物","en": "Antique"
+	}
+]

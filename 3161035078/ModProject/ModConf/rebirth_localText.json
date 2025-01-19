@@ -103,5 +103,15 @@
 		"id": "420109999",
 		"key": "rebirth420109999dialog",
 		"ch": "这次重生是一个机会。一个纠正过去错误、追求不同道路的机会。我必须明智地选择。保留哪些技能，放弃哪些知识。每一个决定都会塑造我的命运。","en": "This rebirth is an opportunity. A chance to rectify past mistakes, to pursue a different path. I must choose wisely. What skills to retain, what knowledge to discard. Every decision will shape my destiny."
-	}
+	},
+	{
+		"id": "4201030000",
+		"key": "rebirth4201030000desc",
+		"ch": "你必須離開宗門！","en": "You have to leave the sect!"
+	},
+	{
+		"id": "4201030001",
+		"key": "rebirth4201030001desc",
+		"ch": "s名望一笔勾销","en": "Reputation will be reseted!"
+	},
 ]
