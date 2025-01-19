@@ -178,5 +178,14 @@ namespace ModLib.Object
             UpdatePos();
             return this;
         }
+
+        public override UIItemBase SetParentTransform(Transform t)
+        {
+            foreach (var comp in SelectionItems)
+            {
+                comp.transform.SetParent(t);
+            }
+            return base.SetParentTransform(t);
+        }
     }
 }
