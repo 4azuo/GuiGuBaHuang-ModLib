@@ -10,7 +10,7 @@
 
 
 
-Fouru's ModLib: `https://steamcommunity.com/sharedfiles/filedetails/?id=3385996759`
+[Fouru's ModLib](https://steamcommunity.com/sharedfiles/filedetails/?id=3385996759)
 
 ※This a library for many mods.
 - Sync from children mods.
@@ -20,7 +20,7 @@ Fouru's ModLib: `https://steamcommunity.com/sharedfiles/filedetails/?id=33859967
 - Debug and log
 - Support many minor libraries: UI, Battle damage, ...
 
-Taoist: `https://steamcommunity.com/sharedfiles/filedetails/?id=3161035078`
+[Taoist](https://steamcommunity.com/sharedfiles/filedetails/?id=3161035078)
 
 - Create a team and hire people for combat
 - Become town master and get tax from people
