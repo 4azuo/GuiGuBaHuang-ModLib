@@ -24,12 +24,18 @@ namespace ModLib.Mod
 
         public int TranslateIndex { get; set; } = 0;
 
+        public override void OnLoadClass(bool isNew, string modId, CacheAttribute attr)
+        {
+            base.OnLoadClass(isNew, modId, attr);
+            LoadLocalTexts(GetTranslateLanguage());
+        }
+
         public override void OnOpenUIEnd(OpenUIEnd e)
         {
             base.OnOpenUIEnd(e);
             if (e.uiType.uiName == UIType.Login.uiName)
             {
-                if (g.data.globle.gameSetting.screenWidth / g.data.globle.gameSetting.screenHeight != ModLibConst.SUPPORT_SCREEN_RATIO)
+                if (!ValueHelper.NearlyEqual(g.data.globle.gameSetting.screenWidth.Parse<float>() / g.data.globle.gameSetting.screenHeight.Parse<float>(), ModLibConst.SUPPORT_SCREEN_RATIO, 0.001))
                 {
                     var uiWarning = g.ui.OpenUI<UITextInfo>(UIType.TextInfo);
                     uiWarning.InitData(GameTool.LS("libtxt999990000"), GameTool.LS("libtxt999990001"));
@@ -68,12 +74,14 @@ namespace ModLib.Mod
 
         public static void LoadLocalTexts(string transCode)
         {
+            if (transCode == null)
+                transCode = string.Empty;
             foreach (var mod in g.mod.allModPaths)
             {
                 if (g.mod.IsLoadMod(mod.t1))
                 {
                     //load configs
-                    ConfHelper.LoadCustomConf(mod.t1, transCode, "*_localText.json");
+                    ConfHelper.LoadCustomConf(mod.t1, transCode);
                 }
             }
         }
