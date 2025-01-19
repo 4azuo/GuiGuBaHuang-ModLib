@@ -1,0 +1,4 @@
+[
+	{ "id": "999990000", "key": "libtxt999990000", "ch": "警告", "en": "Warning" },
+	{ "id": "999990001", "key": "libtxt999990001", "ch": "ModLib 的用户界面针对 16:9 屏幕进行了优化。", "en": "ModLib's UI is supporting on screen ratio 16:9" },
+]
