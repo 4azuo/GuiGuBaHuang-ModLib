@@ -2,121 +2,101 @@
   {
     "id": "420092001",
     "key": "merchant420091001",
-    "ch": "Nhất phẩm thương nhân",
-    "en": "Nhất phẩm thương nhân"
+    "ch|en|tc": "Nhất phẩm thương nhân",
   },
   {
     "id": "420093001",
     "key": "merchant420091001desc",
-    "ch": "+2% Ngộ tính, +0.3% Bán, +0.1% Thu nhập",
-    "en": "+2% Ngộ tính, +0.3% Bán, +0.1% Thu nhập"
+    "ch|en|tc": "+2% Ngộ tính, +0.3% Bán, +0.1% Thu nhập",
   },
   {
     "id": "420092002",
     "key": "merchant420091002",
-    "ch": "Nhị phẩm thương nhân",
-    "en": "Nhị phẩm thương nhân"
+    "ch|en|tc": "Nhị phẩm thương nhân",
   },
   {
     "id": "420093002",
     "key": "merchant420091002desc",
-    "ch": "+4% Ngộ tính, +0.6% Bán, +0.2% Thu nhập",
-    "en": "+4% Ngộ tính, +0.6% Bán, +0.2% Thu nhập"
+    "ch|en|tc": "+4% Ngộ tính, +0.6% Bán, +0.2% Thu nhập",
   },
   {
     "id": "420092003",
     "key": "merchant420091003",
-    "ch": "Tam phẩm thương nhân",
-    "en": "Tam phẩm thương nhân"
+    "ch|en|tc": "Tam phẩm thương nhân",
   },
   {
     "id": "420093003",
     "key": "merchant420091003desc",
-    "ch": "+6% Ngộ tính, +0.9% Bán, +0.3% Thu nhập",
-    "en": "+6% Ngộ tính, +0.9% Bán, +0.3% Thu nhập"
+    "ch|en|tc": "+6% Ngộ tính, +0.9% Bán, +0.3% Thu nhập",
   },
   {
     "id": "420092004",
     "key": "merchant420091004",
-    "ch": "Tứ phẩm thương nhân",
-    "en": "Tứ phẩm thương nhân"
+    "ch|en|tc": "Tứ phẩm thương nhân",
   },
   {
     "id": "420093004",
     "key": "merchant420091004desc",
-    "ch": "+8% Ngộ tính, +1.2% Bán, +0.4% Thu nhập",
-    "en": "+8% Ngộ tính, +1.2% Bán, +0.4% Thu nhập"
+    "ch|en|tc": "+8% Ngộ tính, +1.2% Bán, +0.4% Thu nhập",
   },
   {
     "id": "420092005",
     "key": "merchant420091005",
-    "ch": "Ngũ phẩm thương nhân",
-    "en": "Ngũ phẩm thương nhân"
+    "ch|en|tc": "Ngũ phẩm thương nhân",
   },
   {
     "id": "420093005",
     "key": "merchant420091005desc",
-    "ch": "+10% Ngộ tính, +1.5% Bán, +0.5% Thu nhập",
-    "en": "+10% Ngộ tính, +1.5% Bán, +0.5% Thu nhập"
+    "ch|en|tc": "+10% Ngộ tính, +1.5% Bán, +0.5% Thu nhập",
   },
   {
     "id": "420092006",
     "key": "merchant420091006",
-    "ch": "Lục phẩm thương nhân",
-    "en": "Lục phẩm thương nhân"
+    "ch|en|tc": "Lục phẩm thương nhân",
   },
   {
     "id": "420093006",
     "key": "merchant420091006desc",
-    "ch": "+13% Ngộ tính, +1.8% Bán, +0.6% Thu nhập",
-    "en": "+13% Ngộ tính, +1.8% Bán, +0.6% Thu nhập"
+    "ch|en|tc": "+13% Ngộ tính, +1.8% Bán, +0.6% Thu nhập",
   },
   {
     "id": "420092007",
     "key": "merchant420091007",
-    "ch": "Thất phẩm thương nhân",
-    "en": "Thất phẩm thương nhân"
+    "ch|en|tc": "Thất phẩm thương nhân",
   },
   {
     "id": "420093007",
     "key": "merchant420091007desc",
-    "ch": "+16% Ngộ tính, +2.1% Bán, +0.7% Thu nhập",
-    "en": "+16% Ngộ tính, +2.1% Bán, +0.7% Thu nhập"
+    "ch|en|tc": "+16% Ngộ tính, +2.1% Bán, +0.7% Thu nhập",
   },
   {
     "id": "420092008",
     "key": "merchant420091008",
-    "ch": "Bát phẩm thương nhân",
-    "en": "Bát phẩm thương nhân"
+    "ch|en|tc": "Bát phẩm thương nhân",
   },
   {
     "id": "420093008",
     "key": "merchant420091008desc",
-    "ch": "+19% Ngộ tính, +2.4% Bán, +0.8% Thu nhập",
-    "en": "+19% Ngộ tính, +2.4% Bán, +0.8% Thu nhập"
+    "ch|en|tc": "+19% Ngộ tính, +2.4% Bán, +0.8% Thu nhập",
   },
   {
     "id": "420092009",
     "key": "merchant420091009",
-    "ch": "Cửu phẩm thương nhân",
-    "en": "Cửu phẩm thương nhân"
+    "ch|en|tc": "Cửu phẩm thương nhân",
   },
   {
     "id": "420093009",
     "key": "merchant420091009desc",
-    "ch": "+22% Ngộ tính, +2.7% Bán, +0.9% Thu nhập",
-    "en": "+22% Ngộ tính, +2.7% Bán, +0.9% Thu nhập"
+    "ch|en|tc": "+22% Ngộ tính, +2.7% Bán, +0.9% Thu nhập",
   },
   {
     "id": "420092010",
     "key": "merchant420091010",
-    "ch": "Thập phẩm thương nhân",
-    "en": "Thập phẩm thương nhân"
+    "ch|en|tc": "Thập phẩm thương nhân",
   },
   {
     "id": "420093010",
     "key": "merchant420091010desc",
-    "ch": "+25% Ngộ tính, +3.0% Bán, +1.0% Thu nhập",
-    "en": "+25% Ngộ tính, +3.0% Bán, +1.0% Thu nhập"
+    "ch|en|tc": "+25% Ngộ tính, +3.0% Bán, +1.0% Thu nhập",
   }
 ]

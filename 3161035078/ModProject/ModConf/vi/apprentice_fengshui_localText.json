@@ -2,121 +2,101 @@
   {
     "id": "420042001",
     "key": "apprentice420041001",
-    "ch": "Nhất phẩm phong thuỷ",
-    "en": "Nhất phẩm phong thuỷ"
+    "ch|en|tc": "Nhất phẩm Trận Sư",
   },
   {
     "id": "420043001",
     "key": "apprentice420041001desc",
-    "ch": "+2% Linh lực",
-    "en": "+2% Linh lực"
+    "ch|en|tc": "+2% Linh lực",
   },
   {
     "id": "420042002",
     "key": "apprentice420041002",
-    "ch": "Nhị phẩm phong thuỷ",
-    "en": "Nhị phẩm phong thuỷ"
+    "ch|en|tc": "Nhị phẩm Trận Sư",
   },
   {
     "id": "420043002",
     "key": "apprentice420041002desc",
-    "ch": "+4% Linh lực",
-    "en": "+4% Linh lực"
+    "ch|en|tc": "+4% Linh lực",
   },
   {
     "id": "420042003",
     "key": "apprentice420041003",
-    "ch": "Tam phẩm phong thuỷ",
-    "en": "Tam phẩm phong thuỷ"
+    "ch|en|tc": "Tam phẩm Trận Sư",
   },
   {
     "id": "420043003",
     "key": "apprentice420041003desc",
-    "ch": "+6% Linh lực",
-    "en": "+6% Linh lực"
+    "ch|en|tc": "+6% Linh lực",
   },
   {
     "id": "420042004",
     "key": "apprentice420041004",
-    "ch": "Tứ phẩm phong thuỷ",
-    "en": "Tứ phẩm phong thuỷ"
+    "ch|en|tc": "Tứ phẩm Trận Sư",
   },
   {
     "id": "420043004",
     "key": "apprentice420041004desc",
-    "ch": "+8% Linh lực",
-    "en": "+8% Linh lực"
+    "ch|en|tc": "+8% Linh lực",
   },
   {
     "id": "420042005",
     "key": "apprentice420041005",
-    "ch": "Ngũ phẩm phong thuỷ",
-    "en": "Ngũ phẩm phong thuỷ"
+    "ch|en|tc": "Ngũ phẩm Trận Sư",
   },
   {
     "id": "420043005",
     "key": "apprentice420041005desc",
-    "ch": "+10% Linh lực",
-    "en": "+10% Linh lực"
+    "ch|en|tc": "+10% Linh lực",
   },
   {
     "id": "420042006",
     "key": "apprentice420041006",
-    "ch": "Lục phẩm phong thuỷ",
-    "en": "Lục phẩm phong thuỷ"
+    "ch|en|tc": "Lục phẩm Trận Sư",
   },
   {
     "id": "420043006",
     "key": "apprentice420041006desc",
-    "ch": "+12% Linh lực",
-    "en": "+12% Linh lực"
+    "ch|en|tc": "+12% Linh lực",
   },
   {
     "id": "420042007",
     "key": "apprentice420041007",
-    "ch": "Thất phẩm phong thuỷ",
-    "en": "Thất phẩm phong thuỷ"
+    "ch|en|tc": "Thất phẩm Trận Sư",
   },
   {
     "id": "420043007",
     "key": "apprentice420041007desc",
-    "ch": "+14% Linh lực",
-    "en": "+14% Linh lực"
+    "ch|en|tc": "+14% Linh lực",
   },
   {
     "id": "420042008",
     "key": "apprentice420041008",
-    "ch": "Bát phẩm phong thuỷ",
-    "en": "Bát phẩm phong thuỷ"
+    "ch|en|tc": "Bát phẩm Trận Sư",
   },
   {
     "id": "420043008",
     "key": "apprentice420041008desc",
-    "ch": "+16% Linh lực",
-    "en": "+16% Linh lực"
+    "ch|en|tc": "+16% Linh lực",
   },
   {
     "id": "420042009",
     "key": "apprentice420041009",
-    "ch": "Cửu phẩm phong thuỷ",
-    "en": "Cửu phẩm phong thuỷ"
+    "ch|en|tc": "Cửu phẩm Trận Sư",
   },
   {
     "id": "420043009",
     "key": "apprentice420041009desc",
-    "ch": "+18% Linh lực",
-    "en": "+18% Linh lực"
+    "ch|en|tc": "+18% Linh lực",
   },
   {
     "id": "420042010",
     "key": "apprentice420041010",
-    "ch": "Thập phẩm phong thuỷ",
-    "en": "Thập phẩm phong thuỷ"
+    "ch|en|tc": "Thập phẩm Trận Sư",
   },
   {
     "id": "420043010",
     "key": "apprentice420041010desc",
-    "ch": "+20% Linh lực",
-    "en": "+20% Linh lực"
+    "ch|en|tc": "+20% Linh lực",
   }
 ]

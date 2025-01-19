@@ -3,14 +3,12 @@
     "__name": "Old But Strong",
     "id": "420700044",
     "key": "balance420700044",
-    "ch": "Lão Đương Ích Tráng",
-    "en": "Lão Đương Ích Tráng"
+    "ch|en|tc": "Lão Đương Ích Tráng",
   },
   {
     "__name": "Old But Strong",
     "id": "421700044",
     "key": "balance420700044desc",
-    "ch": "Hàng năm gia tăng phòng ngự +2, thể lực +50",
-    "en": "Hàng năm gia tăng phòng ngự +2, thể lực +50"
+    "ch|en|tc": "Hàng năm gia tăng phòng ngự +2, thể lực +50",
   }
 ]

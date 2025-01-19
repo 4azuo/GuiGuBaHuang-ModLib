@@ -2,97 +2,81 @@
   {
     "id": "420010100",
     "key": "unitType420010100",
-    "ch": "Gia tăng lực lượng",
-    "en": "Gia tăng lực lượng"
+    "ch|en|tc": "Gia tăng lực lượng",
   },
   {
     "id": "420010200",
     "key": "unitType420010200",
-    "ch": "Gia tăng tốc độ",
-    "en": "Gia tăng tốc độ"
+    "ch|en|tc": "Gia tăng tốc độ",
   },
   {
     "id": "420010300",
     "key": "unitType420010300",
-    "ch": "Đạo giáo",
-    "en": "Đạo giáo"
+    "ch|en|tc": "Đạo giáo",
   },
   {
     "id": "420010400",
     "key": "unitType420010400",
-    "ch": "Chiến Sư",
-    "en": "Chiến Sư"
+    "ch|en|tc": "Chiến Sư",
   },
   {
     "id": "420010500",
     "key": "unitType420010500",
-    "ch": "Kim Cang Bất Hoại",
-    "en": "Kim Cang Bất Hoại"
+    "ch|en|tc": "Kim Cang Bất Hoại",
   },
   {
     "id": "420010600",
     "key": "unitType420010600",
-    "ch": "Chính",
-    "en": "Chính"
+    "ch|en|tc": "Chính",
   },
   {
     "id": "420010700",
     "key": "unitType420010700",
-    "ch": "Ma",
-    "en": "Ma"
+    "ch|en|tc": "Ma",
   },
   {
     "id": "420010800",
     "key": "unitType420010800",
-    "ch": "Thương nhân",
-    "en": "Thương nhân"
+    "ch|en|tc": "Thương nhân",
   },
   {
     "id": "421010100",
     "key": "unitType420010100desc",
-    "ch": "Công kích +10%, thể lực +20%",
-    "en": "Công kích +10%, thể lực +20%"
+    "ch|en|tc": "Công kích +10%, thể lực +20%",
   },
   {
     "id": "421010200",
     "key": "unitType420010200desc",
-    "ch": "Di tốc +30%",
-    "en": "Di tốc +30%"
+    "ch|en|tc": "Di tốc +30%",
   },
   {
     "id": "421010300",
     "key": "unitType420010300desc",
-    "ch": "Công kích +8%, thể lực +15%, linh lực +10%",
-    "en": "Công kích +8%, thể lực +15%, linh lực +10%"
+    "ch|en|tc": "Công kích +8%, thể lực +15%, linh lực +10%",
   },
   {
     "id": "421010400",
     "key": "unitType420010400desc",
-    "ch": "Công kích +30%",
-    "en": "Công kích +30%"
+    "ch|en|tc": "Công kích +30%",
   },
   {
     "id": "421010500",
     "key": "unitType420010500desc",
-    "ch": "Thể lực +25%, phòng ngự +5",
-    "en": "Thể lực +25%, phòng ngự +5"
+    "ch|en|tc": "Thể lực +25%, phòng ngự +5",
   },
   {
     "id": "421010600",
     "key": "unitType420010600desc",
-    "ch": "Công kích +50%, di tốc +10%, thể lực +20%, linh lực +10%, chính đạo +100%, ma đạo -100%",
-    "en": "Công kích +50%, di tốc +10%, thể lực +20%, linh lực +10%, chính đạo +100%, ma đạo -100%"
+    "ch|en|tc": "Công kích +50%, di tốc +10%, thể lực +20%, linh lực +10%, chính đạo +100%, ma đạo -100%",
   },
   {
     "id": "421010700",
     "key": "unitType420010700desc",
-    "ch": "Công kích +30%, phòng ngự +10%, thể lực +100%, chính đạo -100%, ma đạo -30%",
-    "en": "Công kích +30%, phòng ngự +10%, thể lực +100%, chính đạo -100%, ma đạo -30%"
+    "ch|en|tc": "Công kích +30%, phòng ngự +10%, thể lực +100%, chính đạo -100%, ma đạo -30%",
   },
   {
     "id": "421010800",
     "key": "unitType420010800desc",
-    "ch": "Công kích -10%, phòng ngự -10%, thể lực -25%, linh lực -50%, miễn phí tồn trữ, -15% Thị trường mua chi phí, +15% Giá thị trường, +5% Mỗi tháng thu nhập",
-    "en": "Công kích -10%, phòng ngự -10%, thể lực -25%, linh lực -50%, miễn phí tồn trữ, -15% Thị trường mua chi phí, +15% Giá thị trường, +5% Mỗi tháng thu nhập"
+    "ch|en|tc": "Công kích -10%, phòng ngự -10%, thể lực -25%, linh lực -50%, miễn phí tồn trữ, -15% Thị trường mua chi phí, +15% Giá thị trường, +5% Mỗi tháng thu nhập",
   }
 ]
