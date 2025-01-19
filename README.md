@@ -195,6 +195,14 @@ Create a folder **ModConf** in **ModProject**, copy samples from below folder to
 
 
 
+# Credits
+
+Thanks ![vuphuong878](https://steamcommunity.com/id/vuphuong878/) for translating to Chinese and Vietnamese.
+
+
+
+
+
 ※Sorry for my english.
 
 Hashtag: 鬼谷八荒, guigubahuang, mod, unity, harmony
