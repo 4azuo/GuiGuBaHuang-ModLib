@@ -62,7 +62,7 @@ namespace MOD_nE7UL2.Mod
             {
                 var ui = new UICover<UITownBounty>(e.ui);
                 {
-                    ui.AddButton(0, 0, SelectCommissionItems, Gametool.LS("uievent500070000desc")).Size(160, 40).Pos(ui.UI.btnTaskPut.transform, 2f, 0f).SetWork(new UIItemWork
+                    ui.AddButton(0, 0, SelectCommissionItems, GameTool.LS("uievent500070000desc")).Size(160, 40).Pos(ui.UI.btnTaskPut.transform, 2f, 0f).SetWork(new UIItemWork
                     {
                         UpdateAct = (x) => x.Active(g.world.run.roundMonth != LastMonthCommission)
                     });
