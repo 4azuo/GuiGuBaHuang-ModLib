@@ -31,7 +31,7 @@ namespace MOD_nE7UL2.Mod
                         {
                             player.SetProperty<int>(UnitPropertyEnum.GradeID, nPhase.id);
                             player.ClearExp();
-                        }, "Up Grade").Size(200f, 40f);
+                        }, Gametool.LS("uievent500070003desc")).Size(200f, 40f);
                     }
                     ui.UpdateUI();
                 }

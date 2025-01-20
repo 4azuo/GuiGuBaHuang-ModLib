@@ -1,0 +1,17 @@
+[
+	{
+		"id": "500070000",
+		"key": "uievent500070000desc",
+		"ch": "委託","en": "Commission"
+	},
+	{
+		"id": "500070001",
+		"key": "uievent500070001desc",
+		"ch": "对宗师级商人免收","en": "Fee: free for merchant-master."
+	},
+	{
+		"id": "500070002",
+		"key": "uievent500070002desc",
+		"ch": "掌管","en": "Town Manage"
+	}
+]

@@ -7,27 +7,27 @@ namespace MOD_nE7UL2.Enum
 {
     public class AdjTypeEnum : EnumObject
     {
-        public static AdjTypeEnum Atk { get; } = new AdjTypeEnum("Gametool.LS("state500010000desc")", "0", (wunit) => wunit.GetProperty<int>(UnitPropertyEnum.Attack));
-        public static AdjTypeEnum Def { get; } = new AdjTypeEnum("Gametool.LS("state500010001desc")", "0", (wunit) => wunit.GetProperty<int>(UnitPropertyEnum.Defense));
-        public static AdjTypeEnum MHp { get; } = new AdjTypeEnum("Gametool.LS("state500010002desc")", "0", (wunit) => wunit.GetProperty<int>(UnitPropertyEnum.HpMax));
-        public static AdjTypeEnum MMp { get; } = new AdjTypeEnum("Gametool.LS("state500010003desc")", "0", (wunit) => wunit.GetProperty<int>(UnitPropertyEnum.MpMax));
-        public static AdjTypeEnum MSp { get; } = new AdjTypeEnum("Gametool.LS("state500010004desc")", "0", (wunit) => wunit.GetProperty<int>(UnitPropertyEnum.SpMax));
-        public static AdjTypeEnum RHp { get; } = new AdjTypeEnum("Gametool.LS("state500010005desc")", "0", (wunit) => BattleModifyEvent.GetHpRecoveryBase(wunit));
-        public static AdjTypeEnum RMp { get; } = new AdjTypeEnum("Gametool.LS("state500010006desc")", "0", (wunit) => BattleModifyEvent.GetMpRecoveryBase(wunit));
-        public static AdjTypeEnum RSp { get; } = new AdjTypeEnum("Gametool.LS("state500010007desc")", "0", (wunit) => BattleModifyEvent.GetSpRecoveryBase(wunit));
-        public static AdjTypeEnum BasisBlade { get; } = new AdjTypeEnum("Gametool.LS("state500010008desc")", "0", (wunit) => wunit.GetProperty<int>(UnitPropertyEnum.BasisBlade));
-        public static AdjTypeEnum BasisEarth { get; } = new AdjTypeEnum("Gametool.LS("state500010009desc")", "0", (wunit) => wunit.GetProperty<int>(UnitPropertyEnum.BasisEarth));
-        public static AdjTypeEnum BasisFinger { get; } = new AdjTypeEnum("Gametool.LS("state500010010desc")", "0", (wunit) => wunit.GetProperty<int>(UnitPropertyEnum.BasisFinger));
-        public static AdjTypeEnum BasisFire { get; } = new AdjTypeEnum("Gametool.LS("state500010011desc")", "0", (wunit) => wunit.GetProperty<int>(UnitPropertyEnum.BasisFire));
-        public static AdjTypeEnum BasisFist { get; } = new AdjTypeEnum("Gametool.LS("state500010012desc")", "0", (wunit) => wunit.GetProperty<int>(UnitPropertyEnum.BasisFist));
-        public static AdjTypeEnum BasisFroze { get; } = new AdjTypeEnum("Gametool.LS("state500010013desc")", "0", (wunit) => wunit.GetProperty<int>(UnitPropertyEnum.BasisFroze));
-        public static AdjTypeEnum BasisPalm { get; } = new AdjTypeEnum("Gametool.LS("state500010014desc")", "0", (wunit) => wunit.GetProperty<int>(UnitPropertyEnum.BasisPalm));
-        public static AdjTypeEnum BasisSpear { get; } = new AdjTypeEnum("Gametool.LS("state500010015desc")", "0", (wunit) => wunit.GetProperty<int>(UnitPropertyEnum.BasisSpear));
-        public static AdjTypeEnum BasisSword { get; } = new AdjTypeEnum("Gametool.LS("state500010016desc")", "0", (wunit) => wunit.GetProperty<int>(UnitPropertyEnum.BasisSword));
-        public static AdjTypeEnum BasisThunder { get; } = new AdjTypeEnum("Gametool.LS("state500010017desc")", "0", (wunit) => wunit.GetProperty<int>(UnitPropertyEnum.BasisThunder));
-        public static AdjTypeEnum BasisWind { get; } = new AdjTypeEnum("Gametool.LS("state500010018desc")", "0", (wunit) => wunit.GetProperty<int>(UnitPropertyEnum.BasisWind));
-        public static AdjTypeEnum BasisWood { get; } = new AdjTypeEnum("Gametool.LS("state500010019desc")", "0", (wunit) => wunit.GetProperty<int>(UnitPropertyEnum.BasisWood));
-        public static AdjTypeEnum Speed { get; } = new AdjTypeEnum("Gametool.LS("state500010020desc")", "0", (wunit) => wunit.GetProperty<int>(UnitPropertyEnum.MoveSpeed));
+        public static AdjTypeEnum Atk { get; } = new AdjTypeEnum(Gametool.LS("state500010000desc"), "0", (wunit) => wunit.GetProperty<int>(UnitPropertyEnum.Attack));
+        public static AdjTypeEnum Def { get; } = new AdjTypeEnum(Gametool.LS("state500010001desc"), "0", (wunit) => wunit.GetProperty<int>(UnitPropertyEnum.Defense));
+        public static AdjTypeEnum MHp { get; } = new AdjTypeEnum(Gametool.LS("state500010002desc"), "0", (wunit) => wunit.GetProperty<int>(UnitPropertyEnum.HpMax));
+        public static AdjTypeEnum MMp { get; } = new AdjTypeEnum(Gametool.LS("state500010003desc"), "0", (wunit) => wunit.GetProperty<int>(UnitPropertyEnum.MpMax));
+        public static AdjTypeEnum MSp { get; } = new AdjTypeEnum(Gametool.LS("state500010004desc"), "0", (wunit) => wunit.GetProperty<int>(UnitPropertyEnum.SpMax));
+        public static AdjTypeEnum RHp { get; } = new AdjTypeEnum(Gametool.LS("state500010005desc"), "0", (wunit) => BattleModifyEvent.GetHpRecoveryBase(wunit));
+        public static AdjTypeEnum RMp { get; } = new AdjTypeEnum(Gametool.LS("state500010006desc"), "0", (wunit) => BattleModifyEvent.GetMpRecoveryBase(wunit));
+        public static AdjTypeEnum RSp { get; } = new AdjTypeEnum(Gametool.LS("state500010007desc"), "0", (wunit) => BattleModifyEvent.GetSpRecoveryBase(wunit));
+        public static AdjTypeEnum BasisBlade { get; } = new AdjTypeEnum(Gametool.LS("state500010008desc"), "0", (wunit) => wunit.GetProperty<int>(UnitPropertyEnum.BasisBlade));
+        public static AdjTypeEnum BasisEarth { get; } = new AdjTypeEnum(Gametool.LS("state500010009desc"), "0", (wunit) => wunit.GetProperty<int>(UnitPropertyEnum.BasisEarth));
+        public static AdjTypeEnum BasisFinger { get; } = new AdjTypeEnum(Gametool.LS("state500010010desc"), "0", (wunit) => wunit.GetProperty<int>(UnitPropertyEnum.BasisFinger));
+        public static AdjTypeEnum BasisFire { get; } = new AdjTypeEnum(Gametool.LS("state500010011desc"), "0", (wunit) => wunit.GetProperty<int>(UnitPropertyEnum.BasisFire));
+        public static AdjTypeEnum BasisFist { get; } = new AdjTypeEnum(Gametool.LS("state500010012desc"), "0", (wunit) => wunit.GetProperty<int>(UnitPropertyEnum.BasisFist));
+        public static AdjTypeEnum BasisFroze { get; } = new AdjTypeEnum(Gametool.LS("state500010013desc"), "0", (wunit) => wunit.GetProperty<int>(UnitPropertyEnum.BasisFroze));
+        public static AdjTypeEnum BasisPalm { get; } = new AdjTypeEnum(Gametool.LS("state500010014desc"), "0", (wunit) => wunit.GetProperty<int>(UnitPropertyEnum.BasisPalm));
+        public static AdjTypeEnum BasisSpear { get; } = new AdjTypeEnum(Gametool.LS("state500010015desc"), "0", (wunit) => wunit.GetProperty<int>(UnitPropertyEnum.BasisSpear));
+        public static AdjTypeEnum BasisSword { get; } = new AdjTypeEnum(Gametool.LS("state500010016desc"), "0", (wunit) => wunit.GetProperty<int>(UnitPropertyEnum.BasisSword));
+        public static AdjTypeEnum BasisThunder { get; } = new AdjTypeEnum(Gametool.LS("state500010017desc"), "0", (wunit) => wunit.GetProperty<int>(UnitPropertyEnum.BasisThunder));
+        public static AdjTypeEnum BasisWind { get; } = new AdjTypeEnum(Gametool.LS("state500010018desc"), "0", (wunit) => wunit.GetProperty<int>(UnitPropertyEnum.BasisWind));
+        public static AdjTypeEnum BasisWood { get; } = new AdjTypeEnum(Gametool.LS("state500010019desc"), "0", (wunit) => wunit.GetProperty<int>(UnitPropertyEnum.BasisWood));
+        public static AdjTypeEnum Speed { get; } = new AdjTypeEnum(Gametool.LS("state500010020desc"), "0", (wunit) => wunit.GetProperty<int>(UnitPropertyEnum.MoveSpeed));
         public static AdjTypeEnum BlockChanceMax { get; } = new AdjTypeEnum("Block(%Max)", "0.00", (wunit) => BattleModifyEvent.GetBlockMaxBase(wunit));
         public static AdjTypeEnum BlockDmg { get; } = new AdjTypeEnum("Block(Dmg)", "0", (wunit) => BattleModifyEvent.GetBlockDmgBase(wunit));
         public static AdjTypeEnum EvadeChance { get; } = new AdjTypeEnum("Evade(%)", "0.00", (wunit) => BattleModifyEvent.GetEvadeBase(wunit));
