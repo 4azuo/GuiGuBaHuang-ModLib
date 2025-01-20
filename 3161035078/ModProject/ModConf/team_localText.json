@@ -48,5 +48,10 @@
 		"id": "420041130",
 		"key": "team420041130desc",
 		"ch": "確定要驅逐此人嗎?","en": "Are you sure about dismissing this person?"
+	},
+		{
+		"id": "420041131",
+		"key": "team420041131desc",
+		"ch": "招募","en": "Hire People"
 	}
 ]

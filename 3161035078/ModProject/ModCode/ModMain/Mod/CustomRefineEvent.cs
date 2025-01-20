@@ -86,7 +86,7 @@ namespace MOD_nE7UL2.Mod
         private void OpenItemSelector()
         {
             var ui = g.ui.OpenUI<UIPropSelect>(UIType.PropSelect);
-            ui.textTitle1.text = "Gametool.LS("team500030007desc")";
+            ui.textTitle1.text = Gametool.LS("town500030007desc");
             ui.textSearchTip.text = "Step 1";
             ui.btnSearch.gameObject.SetActive(false);
             ui.goTabRoot.SetActive(false);
@@ -118,7 +118,7 @@ namespace MOD_nE7UL2.Mod
             if (refineItem == null)
                 return;
             var ui = g.ui.OpenUI<UIPropSelect>(UIType.PropSelect);
-            ui.textTitle1.text = "Gametool.LS("team500030008desc")";
+            ui.textTitle1.text = Gametool.LS("town500030008desc");
             ui.textSearchTip.text = "Step 2";
             ui.btnSearch.gameObject.SetActive(false);
             ui.goTabRoot.SetActive(false);
