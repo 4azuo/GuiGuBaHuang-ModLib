@@ -35,7 +35,7 @@ namespace MOD_nE7UL2.Mod
             {
                 var ui = new UICover<UITownBounty>(e.ui);
                 {
-                    ui.AddButton(0, 0, OpenUIHirePeople, Gametool.LS("team420041131desc")).Size(160, 40).Pos(ui.UI.btnTaskPut.transform, 4f, 0f);
+                    ui.AddButton(0, 0, OpenUIHirePeople, GameTool.LS("team420041131desc")).Size(160, 40).Pos(ui.UI.btnTaskPut.transform, 4f, 0f);
                 }
                 ui.UpdateUI();
             }
@@ -96,11 +96,11 @@ namespace MOD_nE7UL2.Mod
                 {
                     if (IsHired(ui.UI.unit))
                     {
-                        ui.AddButton(0, 0, () => DismissTeam(g.world.playerUnit), "Gametool.LS("team420041126desc")").Size(160, 40).Pos(ui.UI.uiProperty.textInTrait_En.transform, -3.0f, 0.5f).SetWork(new UIItemWork
+                        ui.AddButton(0, 0, () => DismissTeam(g.world.playerUnit), GameTool.LS("team420041126desc")).Size(160, 40).Pos(ui.UI.uiProperty.textInTrait_En.transform, -3.0f, 0.5f).SetWork(new UIItemWork
                         {
                             UpdateAct = (x) => x.Component.gameObject.SetActive(TeamData.ContainsKey(g.world.playerUnit.GetUnitId())),
                         }).SetParentTransform(ui.UI.uiProperty.textInTrait_En.transform);
-                        ui.AddButton(0, 0, OpenUIManageTeam, "Gametool.LS("team420041127desc")").Size(160, 40).Pos(ui.UI.uiProperty.textInTrait_En.transform, -1.5f, 0.5f).SetWork(new UIItemWork
+                        ui.AddButton(0, 0, OpenUIManageTeam, GameTool.LS("team420041127desc")).Size(160, 40).Pos(ui.UI.uiProperty.textInTrait_En.transform, -1.5f, 0.5f).SetWork(new UIItemWork
                         {
                             UpdateAct = (x) => x.Component.gameObject.SetActive(TeamData.ContainsKey(g.world.playerUnit.GetUnitId())),
                         }).SetParentTransform(ui.UI.uiProperty.textInTrait_En.transform);
@@ -180,7 +180,7 @@ namespace MOD_nE7UL2.Mod
                             if (relationWUnit.IsPlayer())
                             {
                                 DramaTool.OpenDrama(FRIEND_JOIN_DRAMA, new DramaData() { unitLeft = wunit, unitRight = relationWUnit });
-                                g.ui.MsgBox("Team", Gametool.LS("team420041128desc"), MsgBoxButtonEnum.YesNo, () =>
+                                g.ui.MsgBox("Team", GameTool.LS("team420041128desc"), MsgBoxButtonEnum.YesNo, () =>
                                 {
                                     Hire(relationWUnit, wunit);
                                 });
@@ -248,7 +248,7 @@ namespace MOD_nE7UL2.Mod
 
             if (IsHired(player) && !IsTeamMaster(player))
             {
-                g.ui.MsgBox("Team", Gametool.LS("team420041129desc"));
+                g.ui.MsgBox("Team", GameTool.LS("team420041129desc"));
                 return;
             }
 
@@ -266,7 +266,7 @@ namespace MOD_nE7UL2.Mod
                 return;
             }
 
-            g.ui.MsgBox("Team", Gametool.LS("team420041128desc"), MsgBoxButtonEnum.YesNo, () =>
+            g.ui.MsgBox("Team", GameTool.LS("team420041128desc"), MsgBoxButtonEnum.YesNo, () =>
             {
                 Hire(g.world.playerUnit, wunit);
                 player.AddUnitMoney(-requiredSpiritStones);
@@ -290,7 +290,7 @@ namespace MOD_nE7UL2.Mod
 
         public static void PreDismiss(WorldUnitBase wunit)
         {
-            g.ui.MsgBox("Team", Gametool.LS("team420041130desc"), MsgBoxButtonEnum.YesNo, () =>
+            g.ui.MsgBox("Team", GameTool.LS("team420041130desc"), MsgBoxButtonEnum.YesNo, () =>
             {
                 Dismiss(g.world.playerUnit, wunit);
                 g.ui.CloseUI(UINPCInfo);

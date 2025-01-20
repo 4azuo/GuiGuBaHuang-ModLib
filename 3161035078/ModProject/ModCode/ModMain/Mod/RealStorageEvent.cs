@@ -68,7 +68,7 @@ namespace MOD_nE7UL2.Mod
                 var spValue = GetStorageSpiritStones();
                 txtStorageMoney.text = $"Storage: {storageValue} Spirit Stones ({spValue} cash, {storageValue - spValue} items)";
                 //FreeStorage
-                txtFee.text = uType == UnitTypeEnum.Merchant ? Gametool.LS("uievent500070001desc") : $"Fee: {FeeRate() * 100:0.0}% (-{(storageValue * FeeRate()).Parse<int>()} Spirit Stones monthly)";
+                txtFee.text = uType == UnitTypeEnum.Merchant ? GameTool.LS("uievent500070001desc") : $"Fee: {FeeRate() * 100:0.0}% (-{(storageValue * FeeRate()).Parse<int>()} Spirit Stones monthly)";
             }
         }
 
