@@ -68,8 +68,15 @@ namespace MOD_nE7UL2.Mod
                     else
                     if (isShowHirePeopleUI)
                     {
-                        ui.AddText(0, 0, $"{GetRequiredSpiritStones(g.world.playerUnit, ui.UI.unit):#,##0} Spirit Stones ({GetRequiredSpiritStones(g.world.playerUnit, ui.UI.unit) / MONTHLY_PAYMENT_RATIO:#,##0}/month)").Align().Format(Color.white).Pos(ui.UI.uiProperty.textInTrait1.transform, 0f, 0.5f).SetParentTransform(ui.UI.uiProperty.textInTrait1.transform);
-                        ui.AddText(0, 0, $"{GetRequiredReputations(g.world.playerUnit, ui.UI.unit):#,##0} Reputations").Align().Format(Color.white).Pos(ui.UI.uiProperty.textInTrait1.transform, 0f, 0.25f).SetParentTransform(ui.UI.uiProperty.textInTrait1.transform);
+                        if (ui.UI.unit.data.unitData.relationData.GetIntim(g.world.playerUnit) < 200)
+                        {
+                            ui.AddText(0, 0, $"{GetRequiredSpiritStones(g.world.playerUnit, ui.UI.unit):#,##0} Spirit Stones ({GetRequiredSpiritStones(g.world.playerUnit, ui.UI.unit) / MONTHLY_PAYMENT_RATIO:#,##0}/month)").Align().Format(Color.white).Pos(ui.UI.uiProperty.textInTrait1.transform, 0f, 0.5f).SetParentTransform(ui.UI.uiProperty.textInTrait1.transform);
+                            ui.AddText(0, 0, $"{GetRequiredReputations(g.world.playerUnit, ui.UI.unit):#,##0} Reputations").Align().Format(Color.white).Pos(ui.UI.uiProperty.textInTrait1.transform, 0f, 0.25f).SetParentTransform(ui.UI.uiProperty.textInTrait1.transform);
+                        }
+                        else
+                        {
+                            ui.AddText(0, 0, $"You dont have to pay for friends!").Align().Format(Color.white).Pos(ui.UI.uiProperty.textInTrait1.transform, 0f, 0.5f).SetParentTransform(ui.UI.uiProperty.textInTrait1.transform);
+                        }
                         ui.AddButton(0, 0, () =>
                         {
                             PreHire(ui.UI.unit);
@@ -140,26 +147,20 @@ namespace MOD_nE7UL2.Mod
 
         public static void OpenUIHirePeople()
         {
-            if (g.ui.HasUI(UIType.TownBounty))
-            {
-                var ui = g.ui.OpenUI<UINPCSearch>(UIType.NPCSearch);
-                ui.InitData(new Vector2Int(0, 0));
-                ui.units = GetHirablePeople().ToIl2CppList();
-                ui.UpdateUI();
-                isShowHirePeopleUI = true;
-            }
+            var ui = g.ui.OpenUI<UINPCSearch>(UIType.NPCSearch);
+            ui.InitData(new Vector2Int(0, 0));
+            ui.units = GetHirablePeople().ToIl2CppList();
+            ui.UpdateUI();
+            isShowHirePeopleUI = true;
         }
 
         public static void OpenUIManageTeam()
         {
-            if (g.ui.HasUI(UIType.PlayerInfo))
-            {
-                var ui = g.ui.OpenUI<UINPCSearch>(UIType.NPCSearch);
-                ui.InitData(new Vector2Int(0, 0));
-                ui.units = GetTeamMember(g.world.playerUnit).ToIl2CppList();
-                ui.UpdateUI();
-                isShowManageTeamUI = true;
-            }
+            var ui = g.ui.OpenUI<UINPCSearch>(UIType.NPCSearch);
+            ui.InitData(new Vector2Int(0, 0));
+            ui.units = GetTeamMember(g.world.playerUnit).ToIl2CppList();
+            ui.UpdateUI();
+            isShowManageTeamUI = true;
         }
 
         public override void OnMonthlyForEachWUnit(WorldUnitBase wunit)
@@ -269,7 +270,8 @@ namespace MOD_nE7UL2.Mod
             g.ui.MsgBox("Team", "Are you sure about adding this person?", MsgBoxButtonEnum.YesNo, () =>
             {
                 Hire(g.world.playerUnit, wunit);
-                player.AddUnitMoney(-requiredSpiritStones);
+                if (wunit.data.unitData.relationData.GetIntim(player) < 200)
+                    player.AddUnitMoney(-requiredSpiritStones);
                 g.ui.CloseUI(UINPCInfo);
             });
         }
@@ -375,8 +377,7 @@ namespace MOD_nE7UL2.Mod
 
         public static string GetTeamInfoStr(WorldUnitBase wunit)
         {
-            var teamData = GetTeamDetailData(wunit);
-            return $"{teamData.Item1.data.unitData.propertyData.GetName()} ({teamData.Item2.Length} members)";
+            return GetTeamDetailData(wunit)?.Item1.data.unitData.propertyData.GetName();
         }
 
         public static bool IsHired(WorldUnitBase wunit)
@@ -418,7 +419,7 @@ namespace MOD_nE7UL2.Mod
         {
             var masterId = master.GetUnitId();
             var k = (Instance.TeamData.ContainsKey(masterId) ? Instance.TeamData[masterId].Count : 1) + 1;
-            return (Math.Pow(2, k) * 1000 + Math.Pow(2, wunit.GetGradeLvl()) * 100).Parse<int>();
+            return (Math.Pow(2, k) * 100 + Math.Pow(2, wunit.GetGradeLvl()) * 10).Parse<int>();
         }
     }
 }
