@@ -248,7 +248,7 @@ namespace MOD_nE7UL2.Mod
             if (school != null && !IsSchoolMember(school, wunit))
             {
                 //pay school tax
-                int tax = GetTax(wunit, wunit.GetUnitPosAreaId(), school.schoolData.allEffects.Count);
+                var tax = GetTax(wunit, wunit.GetUnitPosAreaId());
                 wunit.AddUnitMoney(-tax);
                 school.buildData.money += tax;
             }
@@ -433,21 +433,38 @@ namespace MOD_nE7UL2.Mod
 
         public static int GetBaseTax(int areaId)
         {
+            //base on area
             return SMLocalConfigsEvent.Instance.Calculate(Convert.ToInt32(InflationaryEvent.CalculateInflationary((
                 Math.Pow(2, areaId) * FIXING_RATE
             ).Parse<int>())), SMLocalConfigsEvent.Instance.Configs.AddTaxRate).Parse<int>();
         }
 
-        public static int GetTax(WorldUnitBase wunit, int areaId, float ratio = 1.0f)
+        public static int GetTax(WorldUnitBase wunit, int areaId)
         {
-            var tax = (GetBaseTax(areaId) * ratio).Parse<int>();
+            if (wunit == null || wunit.isDie)
+                return 0;
+            var tax = GetBaseTax(areaId);
+            var school = wunit.GetMapBuild<MapBuildSchool>();
+            if (school != null)
+            {
+                //if school -> *effect-count
+                tax *= school.schoolData.allEffects.Count;
+            }
             var town = wunit.GetMapBuild<MapBuildTown>();
             if (town != null)
             {
+                //if town -> double
                 if (town.buildTownData.isMainTown)
                     tax *= 2;
+                //add alternative tax rate
                 tax = (tax * Instance.TaxRate[town.buildData.id]).Parse<int>();
             }
+            //if merchant, add more tax
+            if (UnitTypeEvent.GetUnitTypeEnum(wunit) == UnitTypeEnum.Merchant)
+            {
+                tax *= (1.00f + UnitTypeLuckEnum.Merchant.CustomEffects[ModConst.UTYPE_LUCK_EFX_SELL_VALUE].Value0.Parse<float>()).Parse<int>();
+            }
+            tax *= (1.00f + MerchantLuckEnum.Merchant.GetCurLevel(wunit) * MerchantLuckEnum.Merchant.IncSellValueEachLvl).Parse<int>();
             return tax;
         }
 
