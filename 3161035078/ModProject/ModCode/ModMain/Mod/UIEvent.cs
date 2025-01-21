@@ -108,7 +108,7 @@ namespace MOD_nE7UL2.Mod
                 {
                     if (!MapBuildPropertyEvent.IsSchoolMember(ui.UI.school, g.world.playerUnit))
                     {
-                        ui.AddButton(ui.LastCol - 8, ui.FirstRow + 1, null, $"Tax: {MapBuildPropertyEvent.GetTax(g.world.playerUnit, g.world.playerUnit.GetUnitPosAreaId(), ui.UI.school.schoolData.allEffects.Count)} Spirit Stones").Size(300, 60).SetWork(new UIItemWork
+                        ui.AddButton(ui.LastCol - 8, ui.FirstRow + 1, null, $"Tax: {MapBuildPropertyEvent.GetTax(g.world.playerUnit, g.world.playerUnit.GetUnitPosAreaId())} Spirit Stones").Size(300, 60).SetWork(new UIItemWork
                         {
                             UpdateAct = (x) => x.Pos(ui.LastCol - 8, ui.FirstRow + 1),
                         }).Enable = false;
