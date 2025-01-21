@@ -20,6 +20,7 @@ namespace MOD_nE7UL2.Mod
         public const int FRIEND_JOIN_DRAMA = 420041123;
         public const float FRIEND_JOIN_RATE = 5f;
         public const int MONTHLY_PAYMENT_RATIO = 10;
+        public const int FRIEND_INTIM = 200;
 
         public static UINPCInfo UINPCInfo;
         public static bool isShowHirePeopleUI = false;
@@ -61,14 +62,14 @@ namespace MOD_nE7UL2.Mod
                 {
                     if (IsHired(ui.UI.unit))
                     {
-                        if (IsTeam(g.world.playerUnit, ui.UI.unit) && ui.UI.unit.data.unitData.relationData.GetIntim(g.world.playerUnit) < 200)
+                        if (IsTeam(g.world.playerUnit, ui.UI.unit) && ui.UI.unit.data.unitData.relationData.GetIntim(g.world.playerUnit) < FRIEND_INTIM)
                             ui.AddText(0, 0, $"{GetRequiredSpiritStones(g.world.playerUnit, ui.UI.unit) / MONTHLY_PAYMENT_RATIO:#,##0} Spirit Stones/month").Align().Format(Color.white).Pos(ui.UI.uiProperty.textInTrait1.transform, 0f, 0.5f).SetParentTransform(ui.UI.uiProperty.textInTrait1.transform);
                         ui.AddText(0, 0, $"Team: {GetTeamInfoStr(ui.UI.unit)}").Align().Format(Color.white).Pos(ui.UI.uiProperty.textInTrait1.transform, 0f, 0.25f).SetParentTransform(ui.UI.uiProperty.textInTrait1.transform);
                     }
                     else
                     if (isShowHirePeopleUI)
                     {
-                        if (ui.UI.unit.data.unitData.relationData.GetIntim(g.world.playerUnit) < 200)
+                        if (ui.UI.unit.data.unitData.relationData.GetIntim(g.world.playerUnit) < FRIEND_INTIM)
                         {
                             ui.AddText(0, 0, $"{GetRequiredSpiritStones(g.world.playerUnit, ui.UI.unit):#,##0} Spirit Stones ({GetRequiredSpiritStones(g.world.playerUnit, ui.UI.unit) / MONTHLY_PAYMENT_RATIO:#,##0}/month)").Align().Format(Color.white).Pos(ui.UI.uiProperty.textInTrait1.transform, 0f, 0.5f).SetParentTransform(ui.UI.uiProperty.textInTrait1.transform);
                             ui.AddText(0, 0, $"{GetRequiredReputations(g.world.playerUnit, ui.UI.unit):#,##0} Reputations").Align().Format(Color.white).Pos(ui.UI.uiProperty.textInTrait1.transform, 0f, 0.25f).SetParentTransform(ui.UI.uiProperty.textInTrait1.transform);
@@ -171,12 +172,12 @@ namespace MOD_nE7UL2.Mod
             {
                 foreach (var relationWUnitIntim in wunit.data.unitData.relationData.intimToUnit)
                 {
-                    if (relationWUnitIntim.Value >= 200 && CommonTool.Random(0.00f, 100.00f).IsBetween(0.00f, FRIEND_JOIN_RATE))
+                    if (relationWUnitIntim.Value >= FRIEND_INTIM && CommonTool.Random(0.00f, 100.00f).IsBetween(0.00f, FRIEND_JOIN_RATE))
                     {
                         var relationWUnit = g.world.unit.GetUnit(relationWUnitIntim.Key);
                         if (relationWUnit == null || relationWUnit.isDie)
                             continue;
-                        if (relationWUnit.data.unitData.relationData.GetIntim(wunit) >= 200)
+                        if (relationWUnit.data.unitData.relationData.GetIntim(wunit) >= FRIEND_INTIM)
                         {
                             if (relationWUnit.IsPlayer())
                             {
@@ -216,8 +217,8 @@ namespace MOD_nE7UL2.Mod
                             teamData.Value.Value.Remove(memberId);
                             member.DelLuck(TEAM_LUCK_ID);
                         }
-                        //free if intim >= 400
-                        else if (member.data.unitData.relationData.GetIntim(wunit) < 200)
+                        //free if intim >= FRIEND_INTIM
+                        else if (member.data.unitData.relationData.GetIntim(wunit) < FRIEND_INTIM)
                         {
                             var requiredSpiritStones = GetRequiredSpiritStones(wunit, member) / MONTHLY_PAYMENT_RATIO;
                             if (wunit.GetUnitMoney() < requiredSpiritStones)
@@ -246,6 +247,7 @@ namespace MOD_nE7UL2.Mod
         {
             var player = g.world.playerUnit;
             var playerId = player.GetUnitId();
+            var isFriend = wunit.data.unitData.relationData.GetIntim(player) >= FRIEND_INTIM;
 
             if (IsHired(player) && !IsTeamMaster(player))
             {
@@ -254,7 +256,7 @@ namespace MOD_nE7UL2.Mod
             }
 
             var requiredSpiritStones = GetRequiredSpiritStones(player, wunit);
-            if (player.GetUnitMoney() < requiredSpiritStones)
+            if (!isFriend && player.GetUnitMoney() < requiredSpiritStones)
             {
                 g.ui.MsgBox("Team", $"Require {requiredSpiritStones:#,##0} Spirit Stones");
                 return;
@@ -270,7 +272,7 @@ namespace MOD_nE7UL2.Mod
             g.ui.MsgBox("Team", "Are you sure about adding this person?", MsgBoxButtonEnum.YesNo, () =>
             {
                 Hire(g.world.playerUnit, wunit);
-                if (wunit.data.unitData.relationData.GetIntim(player) < 200)
+                if (!isFriend)
                     player.AddUnitMoney(-requiredSpiritStones);
                 g.ui.CloseUI(UINPCInfo);
             });
@@ -337,12 +339,17 @@ namespace MOD_nE7UL2.Mod
             }
         }
 
+        public static bool IsMatchCondWUnit(WorldUnitBase wunit)
+        {
+            return !MapBuildPropertyEvent.IsTownGuardian(wunit) && !IsHired(wunit);
+        }
+
         public static List<WorldUnitBase> GetHirablePeople()
         {
             var rs = new List<WorldUnitBase>();
             foreach (var wunit in g.world.playerUnit.GetUnitsAround(4, false, false))
             {
-                if (!MapBuildPropertyEvent.IsTownGuardian(wunit) && !IsHired(wunit) &&
+                if (IsMatchCondWUnit(wunit) && wunit.GetGradeLvl() < g.world.playerUnit.GetGradeLvl() + 2 &&
                     !rs.Any((x) => x.GetUnitId() == wunit.GetUnitId()))
                 {
                     rs.Add(wunit);
