@@ -66,11 +66,8 @@ namespace MOD_nE7UL2.Mod
         {
             if (SMLocalConfigsEvent.Instance.Configs.OnlyPortalAtCityAndSect && e == BuildingCostEnum.TownPortalBuildCost && build.IsSmallTown())
                 return;
-            if (e.IsMatchBuildConds(build))
+            if (!IsIgnored(build, e))
             {
-                if (IsIgnored(build, e))
-                    return;
-
                 var r = CommonTool.Random(0.00f, 100.00f);
                 if (MapBuildPropertyEvent.GetBuildProperty(build) > GetBuildingCost(build, e) &&
                     ValueHelper.IsBetween(r, 0.00f, rate == -1f ? e.BuildRate : rate))
@@ -82,10 +79,11 @@ namespace MOD_nE7UL2.Mod
 
         public static bool IsIgnored(MapBuildBase build, BuildingCostEnum e)
         {
-            return e.BuildRate == -1f || 
-                e.BuildCosts == null || 
-                Instance.ArrDic.Contains(Instance.GetArrDicKey(build, e)) ||
-                build.GetBuildSub(e.BuildType) !=  null;
+            return  e.BuildRate == -1f || 
+                    e.BuildCosts == null ||
+                    !e.IsMatchBuildConds(build) ||
+                    Instance.ArrDic.Contains(Instance.GetArrDicKey(build, e)) ||
+                    build.GetBuildSub(e.BuildType) !=  null;
         }
 
         public static void Build(MapBuildBase build, BuildingCostEnum e)
