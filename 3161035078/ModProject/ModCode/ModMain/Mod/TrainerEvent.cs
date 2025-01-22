@@ -69,7 +69,7 @@ namespace MOD_nE7UL2.Mod
         {
             if (!g.ui.HasUI(UIType.MapMain))
             {
-                g.ui.MsgBox("Trainer", GameTool.LS("trainer500050000desc"));
+                g.ui.MsgBox("Trainer", GameTool.LS("trainer044"));
                 return;
             }
 
