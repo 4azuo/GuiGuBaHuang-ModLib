@@ -1,0 +1,13 @@
+[
+	{
+		"id": "500020000",
+		"key": "school500020000desc",
+		"ch": "練武場","en": "School Traning Hall"
+	},
+	{
+		"id": "500020001",
+		"key": "school500020001desc",
+		"ch": "拜入他派","en": "School Transfer"
+	}
+
+]

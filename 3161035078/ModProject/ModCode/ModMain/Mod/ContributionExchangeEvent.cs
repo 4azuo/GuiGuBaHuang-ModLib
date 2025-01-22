@@ -49,7 +49,7 @@ namespace MOD_nE7UL2.Mod
                     var btnExchangeContribution = MonoBehaviour.Instantiate(uiSchool.btnGetMoney_En, uiSchool.transform, false);
                     btnExchangeContribution.onClick.AddListener((UnityAction)OpenSelector);
                     var btnText = btnExchangeContribution.GetComponentInChildren<Text>();
-                    btnText.text = "Exchange Contribution";
+                    btnText.text = GameTool.LS("town500030006desc");
                 }
             }
         }
