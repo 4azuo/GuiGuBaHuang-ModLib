@@ -19,9 +19,9 @@ namespace MOD_nE7UL2.Enum
             CustomEffects = new Dictionary<string, MultiValue>()
             {
                 [ModConst.UTYPE_LUCK_EFX_FREE_STORAGE] = MultiValue.Create(true),
-                [ModConst.UTYPE_LUCK_EFX_BUY_COST] = MultiValue.Create(-0.15f),
-                [ModConst.UTYPE_LUCK_EFX_SELL_VALUE] = MultiValue.Create(+0.15f),
-                [ModConst.UTYPE_LUCK_EFX_PASSIVE_INCOME] = MultiValue.Create(+0.05f),
+                [ModConst.UTYPE_LUCK_EFX_BUY_COST] = MultiValue.Create(-0.10f),
+                [ModConst.UTYPE_LUCK_EFX_SELL_VALUE] = MultiValue.Create(+0.10f),
+                [ModConst.UTYPE_LUCK_EFX_PASSIVE_INCOME] = MultiValue.Create(+0.03f),
             }
         };
 

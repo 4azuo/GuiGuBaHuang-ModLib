@@ -26,6 +26,7 @@ namespace MOD_nE7UL2.Mod
         public Dictionary<string, float> TaxRate { get; set; } = new Dictionary<string, float>();
         public Dictionary<string, long> Budget { get; set; } = new Dictionary<string, long>();
         public Dictionary<string, List<string>> TownMasters { get; set; } = new Dictionary<string, List<string>>();
+        public List<string> PayTaxTown { get; } = new List<string>();
 
         public static UINPCInfo UINPCInfo;
         public static bool isShowHirePeopleUI = false;
@@ -66,6 +67,27 @@ namespace MOD_nE7UL2.Mod
         public override void OnOpenUIEnd(OpenUIEnd e)
         {
             base.OnOpenUIEnd(e);
+
+            if (e.uiType.uiName == UIType.Town.uiName)
+            {
+                var town = GetGuardTown(g.world.playerUnit);
+                if (town != null && !PayTaxTown.Contains(town.buildData.id) && IsTownGuardian(town, g.world.playerUnit))
+                {
+                    var tax = GetTax(g.world.playerUnit, g.world.playerUnit.GetUnitPosAreaId());
+                    if (g.world.playerUnit.GetUnitMoney() > tax)
+                    {
+                        Budget[town.buildData.id] += tax;
+                        g.world.playerUnit.AddUnitMoney(-tax);
+                        PayTaxTown.Add(town.buildData.id);
+                    }
+                    else
+                    {
+                        g.ui.CloseUI(e.ui);
+                        g.ui.MsgBox("Town", $"You dont have enough {tax:#,##0} Spirit Stones to pay!");
+                    }
+                }
+            }
+            else
             if (e.uiType.uiName == UIType.SkyTip.uiName)
             {
                 var ui = g.ui.GetUI<UISkyTip>(UIType.SkyTip);
@@ -182,6 +204,8 @@ namespace MOD_nE7UL2.Mod
         public override void OnMonthly()
         {
             base.OnMonthly();
+            //clear lst pay tax town
+            PayTaxTown.Clear();
             //fix bug every month
             foreach (var t in TownMasters)
             {
@@ -197,7 +221,7 @@ namespace MOD_nE7UL2.Mod
             //town data
             foreach (var town in g.world.build.GetBuilds<MapBuildTown>())
             {
-                //random tax
+                //random tax rate
                 if (!IsTownMaster(town, g.world.playerUnit))
                     TaxRate[town.buildData.id] = CommonTool.Random(0.90f, 1.20f);
                 //hire more people
@@ -230,16 +254,24 @@ namespace MOD_nE7UL2.Mod
             if (town != null && !TownMasters[town.buildData.id].Contains(wunit.GetUnitId()))
             {
                 //pay town tax
-                int tax = GetTax(wunit, wunit.GetUnitPosAreaId());
-                wunit.AddUnitMoney(-tax);
-                Budget[town.buildData.id] += tax;
-
-                //use inn
-                if (!wunit.IsPlayer())
+                var tax = GetTax(wunit, wunit.GetUnitPosAreaId());
+                if (wunit.GetUnitMoney() > tax)
                 {
-                    wunit.AddProperty<int>(UnitPropertyEnum.Hp, wunit.GetDynProperty(UnitDynPropertyEnum.HpMax).value / 5);
-                    wunit.AddProperty<int>(UnitPropertyEnum.Mp, wunit.GetDynProperty(UnitDynPropertyEnum.MpMax).value / 5);
-                    wunit.AddProperty<int>(UnitPropertyEnum.Sp, wunit.GetDynProperty(UnitDynPropertyEnum.SpMax).value / 5);
+                    wunit.AddUnitMoney(-tax);
+                    Budget[town.buildData.id] += tax;
+
+                    //use inn
+                    if (!wunit.IsPlayer())
+                    {
+                        wunit.AddProperty<int>(UnitPropertyEnum.Hp, wunit.GetDynProperty(UnitDynPropertyEnum.HpMax).value);
+                        wunit.AddProperty<int>(UnitPropertyEnum.Mp, wunit.GetDynProperty(UnitDynPropertyEnum.MpMax).value);
+                        wunit.AddProperty<int>(UnitPropertyEnum.Sp, wunit.GetDynProperty(UnitDynPropertyEnum.SpMax).value);
+                    }
+                }
+                else
+                {
+                    //get out
+                    wunit.data.unitData.relationData.AddHate(GetTownMaster(town).GetUnitId(), 5);
                 }
             }
 

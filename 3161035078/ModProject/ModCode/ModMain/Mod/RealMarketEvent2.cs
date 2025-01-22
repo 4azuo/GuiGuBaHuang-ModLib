@@ -7,6 +7,7 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine.UI;
 using MOD_nE7UL2.Enum;
+using ModLib.Object;
 
 namespace MOD_nE7UL2.Mod
 {
@@ -18,22 +19,13 @@ namespace MOD_nE7UL2.Mod
     {
         public static RealMarketEvent2 Instance { get; set; }
 
-        public static float MIN_RATE
-        {
-            get
-            {
-                return ModMain.ModObj.GameSettings.RealMarketConfigs.MinBuyRate;
-            }
-        }
-        public static float MAX_RATE
-        {
-            get
-            {
-                return ModMain.ModObj.GameSettings.RealMarketConfigs.MaxBuyRate;
-            }
-        }
+        public static float MinRate => ModMain.ModObj.GameSettings.RealMarketConfigs.MinBuyRate;
 
-        private Text txtMarketST;
+        public static float MaxRate => ModMain.ModObj.GameSettings.RealMarketConfigs.MaxBuyRate;
+
+        public static float TownGReduceBuyRate => ModMain.ModObj.GameSettings.RealMarketConfigs.TownGReduceBuyRate;
+
+        public static float TownMReduceBuyRate => ModMain.ModObj.GameSettings.RealMarketConfigs.TownMReduceBuyRate;
 
         public IDictionary<string, float> MarketPriceRate { get; set; } = new Dictionary<string, float>();
 
@@ -55,7 +47,7 @@ namespace MOD_nE7UL2.Mod
             var eventBuyRate = ModMain.ModObj.GameSettings.RealMarketConfigs.GetAddBuyRate();
             foreach (var town in g.world.build.GetBuilds().ToArray().Where(x => x.allBuildSub.ContainsKey(MapBuildSubType.TownMarketPill)))
             {
-                MarketPriceRate[town.buildData.id] = CommonTool.Random(MIN_RATE + eventBuyRate, MAX_RATE + eventBuyRate);
+                MarketPriceRate[town.buildData.id] = CommonTool.Random(MinRate + eventBuyRate, MaxRate + eventBuyRate);
             }
         }
 
@@ -67,15 +59,15 @@ namespace MOD_nE7UL2.Mod
 
             if (e.uiType.uiName == UIType.TownMarketBuy.uiName)
             {
-                var uiTownMarketBuy = g.ui.GetUI<UITownMarketBuy>(UIType.TownMarketBuy);
-
-                //add component
-                txtMarketST = uiTownMarketBuy.textMoney.Copy().Pos(uiTownMarketBuy.textMoney.gameObject, 1.2f, 0f).Align();
-
-                var txtInfo = uiTownMarketBuy.textMoney.Copy().Pos(uiTownMarketBuy.textMoney.gameObject, 4.0f, 0f).Align().Format(Color.red);
-                txtInfo.text = $"Price rate: {MarketPriceRate[uiTownMarketBuy.town.buildData.id]:0.00}%";
-                if (uType == UnitTypeEnum.Merchant)
-                    txtInfo.text += $" (Merchant {uType.CustomLuck.CustomEffects[ModConst.UTYPE_LUCK_EFX_BUY_COST].Value0.Parse<float>() * 100.0f:0.00}%)";
+                var uiTownMarketBuy = new UICover<UITownMarketBuy>(e.ui);
+                {
+                    uiTownMarketBuy.AddText(0, 0, "Market: {0} Spirit Stones").Align().Pos(uiTownMarketBuy.UI.textMoney.gameObject, 1.2f, 0f).SetWork(new UIItemWork
+                    {
+                        Formatter = (ibase) => new object[] { MapBuildPropertyEvent.GetBuildProperty(uiTownMarketBuy.UI.town) }
+                    });
+                    uiTownMarketBuy.AddText(0, 0, $"Price rate: {GetBuyRate(uiTownMarketBuy.UI.town, g.world.playerUnit):0.00}%").Align().Format(Color.red).Pos(uiTownMarketBuy.UI.textMoney.gameObject, 4.0f, 0f);
+                }
+                uiTownMarketBuy.IsAutoUpdate = true;
             }
 
             if (e.uiType.uiName == UIType.PropSelectCount.uiName && g.ui.HasUI(UIType.TownMarketBuy))
@@ -83,16 +75,13 @@ namespace MOD_nE7UL2.Mod
                 var uiTownMarketBuy = g.ui.GetUI<UITownMarketBuy>(UIType.TownMarketBuy);
                 var uiPropSelectCount = g.ui.GetUI<UIPropSelectCount>(UIType.PropSelectCount);
 
-                var basePrice = (uiPropSelectCount.oneCost.Parse<float>() * MarketPriceRate[uiTownMarketBuy.town.buildData.id] / 100f).Parse<int>();
-                if (uType == UnitTypeEnum.Merchant)
-                    basePrice += (basePrice * uType.CustomLuck.CustomEffects[ModConst.UTYPE_LUCK_EFX_BUY_COST].Value0.Parse<float>()).Parse<int>();
-                uiPropSelectCount.oneCost = basePrice;
+                uiPropSelectCount.oneCost = (uiPropSelectCount.oneCost.Parse<float>() * GetBuyRate(uiTownMarketBuy.town, g.world.playerUnit) / 100f).Parse<int>();
                 uiPropSelectCount.UpdateCountUI();
 
-                var txtInfo = uiPropSelectCount.textName.Copy().Pos(uiPropSelectCount.ptextInfo.gameObject, 0f, 0.2f).Align(TextAnchor.MiddleCenter).Format(Color.red);
-                txtInfo.text = $"Price rate: {MarketPriceRate[uiTownMarketBuy.town.buildData.id]:0.00}%";
-                if (uType == UnitTypeEnum.Merchant)
-                    txtInfo.text += $" (Merchant {uType.CustomLuck.CustomEffects[ModConst.UTYPE_LUCK_EFX_BUY_COST].Value0.Parse<float>() * 100.0f:0.00}%)";
+                var uiCover = new UICover<UITownMarketBuy>(e.ui);
+                {
+                    uiCover.AddText(0, 0, $"Price rate: {GetBuyRate(uiTownMarketBuy.town, g.world.playerUnit):0.00}%").Align(TextAnchor.MiddleCenter).Format(Color.red).Pos(uiPropSelectCount.ptextInfo.gameObject, 0f, 0.2f);
+                }
 
                 uiPropSelectCount.btnOK.onClick.m_Calls.m_RuntimeCalls.Insert(0, new InvokableCall((UnityAction)(() =>
                 {
@@ -102,16 +91,19 @@ namespace MOD_nE7UL2.Mod
             }
         }
 
-        [ErrorIgnore]
-        [EventCondition]
-        public override void OnTimeUpdate200ms()
+        public static float GetBuyRate(MapBuildTown town, WorldUnitBase wunit)
         {
-            base.OnTimeUpdate200ms();
-            if (g.ui.HasUI(UIType.TownMarketBuy))
+            var r = Instance.MarketPriceRate[town.buildData.id];
+            if (UnitTypeEvent.GetUnitTypeEnum(wunit) == UnitTypeEnum.Merchant)
+                r += UnitTypeEnum.Merchant.CustomLuck.CustomEffects[ModConst.UTYPE_LUCK_EFX_BUY_COST].Value0.Parse<float>();
+            if (MapBuildPropertyEvent.IsTownGuardian(town, wunit))
             {
-                var uiTownMarketBuy = g.ui.GetUI<UITownMarketBuy>(UIType.TownMarketBuy);
-                txtMarketST.text = $"Market: {MapBuildPropertyEvent.GetBuildProperty(uiTownMarketBuy.town)} Spirit Stones";
+                if (MapBuildPropertyEvent.IsTownMaster(town, wunit))
+                    r += TownMReduceBuyRate;
+                else
+                    r += TownGReduceBuyRate;
             }
+            return r;
         }
     }
 }

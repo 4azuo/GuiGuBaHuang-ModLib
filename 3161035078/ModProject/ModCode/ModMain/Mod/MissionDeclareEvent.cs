@@ -115,11 +115,22 @@ Your commissions:
                                 var money = g.world.playerUnit.GetUnitMoney();
                                 var degree = g.world.playerUnit.GetUnitMayorDegree();
                                 var commissionTask = new CommissionTask(UIPropSelect.allSlectDataProps.allProps);
-                                var allow = money >= commissionTask.Total + commissionTask.Fee && degree >= commissionTask.CostDegree;
-                                uiSelector.btnOK.gameObject.SetActive(allow);
-                                txt1.InnerText.color = allow ? Color.black : Color.red;
-                                txt1.Set($"Cost {commissionTask.Total + commissionTask.Fee:0} spirit stones (+{commissionTask.Fee:0} fee) and {commissionTask.CostDegree:0} Mayor's Degree");
-                                txt2.Set($"Cost {commissionTask.CostTime:0} months ({commissionTask.SuccessRate:0.0}% success rate)");
+                                if (MapBuildPropertyEvent.IsTownGuardian(g.world.playerUnit.GetMapBuild<MapBuildTown>(), g.world.playerUnit))
+                                {
+                                    var allow = money >= commissionTask.Total;
+                                    uiSelector.btnOK.gameObject.SetActive(allow);
+                                    txt1.InnerText.color = allow ? Color.black : Color.red;
+                                    txt1.Set($"Cost {commissionTask.Total + commissionTask.Fee:0} spirit stones");
+                                    txt2.Set($"Cost {commissionTask.CostTime:0} months ({commissionTask.SuccessRate:0.0}% success rate)");
+                                }
+                                else
+                                {
+                                    var allow = money >= (commissionTask.Total + commissionTask.Fee) && degree >= commissionTask.CostDegree;
+                                    uiSelector.btnOK.gameObject.SetActive(allow);
+                                    txt1.InnerText.color = allow ? Color.black : Color.red;
+                                    txt1.Set($"Cost {commissionTask.Total + commissionTask.Fee:0} spirit stones (+{commissionTask.Fee:0} fee) and {commissionTask.CostDegree:0} Mayor's Degree");
+                                    txt2.Set($"Cost {commissionTask.CostTime:0} months ({commissionTask.SuccessRate:0.0}% success rate)");
+                                }
                             }
                             else
                             {
@@ -169,8 +180,15 @@ Your commissions:
             if (UIPropSelect.allSlectDataProps.allProps.Count > 0)
             {
                 var commissionTask = new CommissionTask(UIPropSelect.allSlectDataProps.allProps);
-                g.world.playerUnit.AddUnitMoney(-(commissionTask.Total + commissionTask.Fee));
-                g.world.playerUnit.AddUnitMayorDegree(-commissionTask.CostDegree);
+                if (MapBuildPropertyEvent.IsTownGuardian(g.world.playerUnit.GetMapBuild<MapBuildTown>(), g.world.playerUnit))
+                {
+                    g.world.playerUnit.AddUnitMoney(-commissionTask.Total);
+                }
+                else
+                {
+                    g.world.playerUnit.AddUnitMoney(-(commissionTask.Total + commissionTask.Fee));
+                    g.world.playerUnit.AddUnitMayorDegree(-commissionTask.CostDegree);
+                }
                 CommissionTasks.Add(commissionTask);
                 LastMonthCommission = g.world.run.roundMonth;
             }

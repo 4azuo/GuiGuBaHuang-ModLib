@@ -63,12 +63,19 @@ namespace MOD_nE7UL2.Mod
             base.OnTimeUpdate200ms();
             if (g.ui.HasUI(UIType.TownStorageProps))
             {
-                var uType = UnitTypeEvent.GetUnitTypeEnum(g.world.playerUnit);
                 var storageValue = GetStorageValue();
                 var spValue = GetStorageSpiritStones();
                 txtStorageMoney.text = $"Storage: {storageValue} Spirit Stones ({spValue} cash, {storageValue - spValue} items)";
                 //FreeStorage
-                txtFee.text = uType == UnitTypeEnum.Merchant ? "Fee: free for merchant-master." : $"Fee: {FeeRate() * 100:0.0}% (-{(storageValue * FeeRate()).Parse<int>()} Spirit Stones monthly)";
+                if (UnitTypeEvent.GetUnitTypeEnum(g.world.playerUnit) == UnitTypeEnum.Merchant || 
+                    MapBuildPropertyEvent.IsTownGuardian(g.world.playerUnit.GetMapBuild<MapBuildTown>(), g.world.playerUnit))
+                {
+                    txtFee.text = "Fee: free for merchant-masters and guardians";
+                }
+                else
+                {
+                    txtFee.text = $"Fee: {FeeRate() * 100:0.0}% (-{(storageValue * FeeRate()).Parse<int>()} Spirit Stones monthly)";
+                }
             }
         }
 
@@ -76,8 +83,8 @@ namespace MOD_nE7UL2.Mod
         {
             base.OnMonthly();
             //FreeStorage
-            var uType = UnitTypeEvent.GetUnitTypeEnum(g.world.playerUnit);
-            if (uType != UnitTypeEnum.Merchant)
+            if (UnitTypeEvent.GetUnitTypeEnum(g.world.playerUnit) != UnitTypeEnum.Merchant &&
+                !MapBuildPropertyEvent.IsTownGuardian(g.world.playerUnit.GetMapBuild<MapBuildTown>(), g.world.playerUnit))
             {
                 var storageValue = GetStorageValue();
                 var money = g.world.playerUnit.GetUnitMoney();
