@@ -30,7 +30,7 @@ namespace MOD_nE7UL2.Mod
 
                 if (!string.IsNullOrEmpty(player.data.unitData.schoolID))
                 {
-                    g.ui.MsgBox("Rebirth", "You have to leave the sect!");
+                    g.ui.MsgBox("Rebirth", GameTool.LS("rebirth4201030000desc"));
                     return;
                 }
 
@@ -46,7 +46,7 @@ namespace MOD_nE7UL2.Mod
                     var btn1 = uiTownPub.btnPub.Copy().Pos(uiTownPub.btnPub.gameObject, 0f, 1f).Set($"Rebirth {RebirthCount + 1}");
                     btn1.onClick.AddListener((UnityAction)(() =>
                     {
-                        g.ui.MsgBox("Rebirth", "Reputation will be reseted!", MsgBoxButtonEnum.YesNo, () =>
+                        g.ui.MsgBox("Rebirth", GameTool.LS("rebirth4201030001desc"), MsgBoxButtonEnum.YesNo, () =>
                         { 
                             //var
                             RebirthCount++;
