@@ -42,7 +42,7 @@ namespace MOD_nE7UL2.Mod
             base.OnMonthlyForEachWUnit(wunit);
             var location = wunit.GetUnitPos();
             var town = g.world.build.GetBuild<MapBuildTown>(location);
-            if (!wunit.IsPlayer() && town.IsSmallTown() && wunit.GetUnitMoney() > MapBuildPropertyEvent.GetTax(wunit, wunit.GetUnitPosAreaId()) * 10)
+            if (!wunit.IsPlayer() && town.IsSmallTown() && wunit.GetUnitMoney() > MapBuildPropertyEvent.GetTax(wunit, wunit.GetUnitPosAreaId()) * 3)
             {
                 foreach (var item in GetRefinableItems(wunit))
                 {
@@ -61,6 +61,7 @@ namespace MOD_nE7UL2.Mod
             AddRefineExp(item, exp);
             //UnitModifyHelper.ClearCacheCustomAdjValues(wunit);
             wunit.AddUnitMoney(-spend);
+            MapBuildPropertyEvent.AddBuildProperty(wunit.GetMapBuild<MapBuildBase>(), spend);
         }
 
         [EventCondition]
