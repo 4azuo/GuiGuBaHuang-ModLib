@@ -18,20 +18,9 @@ namespace MOD_nE7UL2.Mod
     {
         public static RealMarketEvent Instance { get; set; }
 
-        public static float MIN_RATE
-        {
-            get
-            {
-                return ModMain.ModObj.GameSettings.RealMarketConfigs.MinSellRate;
-            }
-        }
-        public static float MAX_RATE
-        {
-            get
-            {
-                return ModMain.ModObj.GameSettings.RealMarketConfigs.MaxSellRate;
-            }
-        }
+        public static float MinRate => ModMain.ModObj.GameSettings.RealMarketConfigs.MinSellRate;
+
+        public static float MaxRate => ModMain.ModObj.GameSettings.RealMarketConfigs.MaxSellRate;
 
         private Text txtMarketST;
         private Text txtPrice2;
@@ -57,7 +46,7 @@ namespace MOD_nE7UL2.Mod
             var eventSellRate = ModMain.ModObj.GameSettings.RealMarketConfigs.GetAddSellRate();
             foreach (var town in g.world.build.GetBuilds().ToArray().Where(x => x.allBuildSub.ContainsKey(MapBuildSubType.TownMarketPill)))
             {
-                MarketPriceRate[town.buildData.id] = CommonTool.Random(MIN_RATE + eventSellRate, MAX_RATE + eventSellRate) + (GetMerchantIncRate() * 100.0f);
+                MarketPriceRate[town.buildData.id] = CommonTool.Random(MinRate + eventSellRate, MaxRate + eventSellRate);
             }
         }
 
@@ -68,14 +57,11 @@ namespace MOD_nE7UL2.Mod
             if (e.uiType.uiName == UIType.PropSell.uiName)
             {
                 var uiPropSell = g.ui.GetUI<UIPropSell>(UIType.PropSell);
-                var curMainTown = g.world.build.GetBuild(g.world.playerUnit.GetUnitPos());
+                var curMainTown = g.world.playerUnit.GetMapBuild<MapBuildTown>();
 
                 //add component
-                var merchantIncRate = GetMerchantIncRate();
                 var txtInfo = uiPropSell.textMoney.Copy().Pos(uiPropSell.textMoney.gameObject, 0f, -0.4f).Align().Format(Color.red);
-                txtInfo.text = $"Price rate: {MarketPriceRate[curMainTown.buildData.id]:0.00}%";
-                if (merchantIncRate > 0.00f)
-                    txtInfo.text += $" (Merchant +{merchantIncRate * 100.0f:0.00}%)";
+                txtInfo.text = $"Price rate: {GetSellRate(curMainTown, g.world.playerUnit):0.00}%";
 
                 txtMarketST = uiPropSell.textMoney.Copy().Pos(uiPropSell.textMoney.gameObject, 0f, -0.2f).Align();
                 txtPrice2 = uiPropSell.textPrice.Copy().Pos(uiPropSell.textPrice.gameObject, 0f, -0.2f);
@@ -95,14 +81,11 @@ namespace MOD_nE7UL2.Mod
             if (g.ui.HasUI(UIType.PropSell))
             {
                 var uiPropSell = g.ui.GetUI<UIPropSell>(UIType.PropSell);
-                var curMainTown = g.world.build.GetBuild(g.world.playerUnit.GetUnitPos());
+                var curMainTown = g.world.playerUnit.GetMapBuild<MapBuildTown>();
 
                 var budget = MapBuildPropertyEvent.GetBuildProperty(curMainTown);
                 var totalPrice = GetTotalPrice(uiPropSell);
-                var cashback = (
-                    (totalPrice * ((MarketPriceRate[curMainTown.buildData.id] - 100.00f) / 100.00f)) +
-                    totalPrice * GetMerchantIncRate()
-                ).Parse<int>();
+                var cashback = (totalPrice * ((GetSellRate(curMainTown, g.world.playerUnit) - 100.00f) / 100.00f)).Parse<int>();
                 uiPropSell.textMoney.text = $"Owned: {g.world.playerUnit.GetUnitMoney()} Spirit Stones";
                 uiPropSell.textPrice.text = $"Total: {totalPrice + cashback} ({cashback})";
                 uiPropSell.btnOK.gameObject.SetActive(totalPrice <= budget);
@@ -117,13 +100,10 @@ namespace MOD_nE7UL2.Mod
             if (g.ui.HasUI(UIType.PropSell))
             {
                 var uiPropSell = g.ui.GetUI<UIPropSell>(UIType.PropSell);
-                var curMainTown = g.world.build.GetBuild(g.world.playerUnit.GetUnitPos());
+                var curMainTown = g.world.playerUnit.GetMapBuild<MapBuildTown>();
 
                 var totalPrice = GetTotalPrice(uiPropSell);
-                var cashback = (
-                    (totalPrice * ((MarketPriceRate[curMainTown.buildData.id] - 100.00f) / 100.00f)) +
-                    totalPrice * GetMerchantIncRate()
-                ).Parse<int>();
+                var cashback = (totalPrice * ((GetSellRate(curMainTown, g.world.playerUnit) - 100.00f) / 100.00f)).Parse<int>();
                 g.world.playerUnit.AddUnitMoney((totalPrice + cashback).Parse<int>());
                 MapBuildPropertyEvent.AddBuildProperty(curMainTown, -totalPrice);
 
@@ -144,16 +124,13 @@ namespace MOD_nE7UL2.Mod
             return uiPropSell.selectProps.allProps.ToArray().Sum(x => x.propsInfoBase.sale.Parse<long>() * x.propsCount);
         }
 
-        private float GetMerchantIncRate()
+        public static float GetSellRate(MapBuildTown town, WorldUnitBase wunit)
         {
-            var merchantLvl = MerchantLuckEnum.Merchant.GetCurLevel(g.world.playerUnit);
-            var merchantIncRate = 0.00f;
-            if (merchantLvl > 0)
-                merchantIncRate += merchantLvl * MerchantLuckEnum.Merchant.IncSellValueEachLvl;
-            var uType = UnitTypeEvent.GetUnitTypeEnum(g.world.playerUnit);
-            if (uType == UnitTypeEnum.Merchant)
-                merchantIncRate += uType.CustomLuck.CustomEffects[ModConst.UTYPE_LUCK_EFX_SELL_VALUE].Value0.Parse<float>();
-            return merchantIncRate;
+            var r = Instance.MarketPriceRate[town.buildData.id];
+            if (UnitTypeEvent.GetUnitTypeEnum(wunit) == UnitTypeEnum.Merchant)
+                r += UnitTypeEnum.Merchant.CustomLuck.CustomEffects[ModConst.UTYPE_LUCK_EFX_SELL_VALUE].Value0.Parse<float>();
+            r += MerchantLuckEnum.Merchant.GetCurLevel(wunit) * MerchantLuckEnum.Merchant.IncSellValueEachLvl;
+            return r;
         }
     }
 }
