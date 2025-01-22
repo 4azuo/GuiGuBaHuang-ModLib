@@ -107,6 +107,8 @@ namespace MOD_nE7UL2.Object
             public float MaxSellRate { get; set; }
             public float MinBuyRate { get; set; }
             public float MaxBuyRate { get; set; }
+            public float TownGReduceBuyRate { get; set; }
+            public float TownMReduceBuyRate { get; set; }
             public Dictionary<string, _RealMarketConfigs_Event> Events { get; set; }
 
             public float GetAddSellRate()

@@ -39,7 +39,7 @@ namespace MOD_nE7UL2.Mod
 
             foreach (var build in g.world.build.GetBuilds())
             {
-                if (build.IsTown() && MapBuildPropertyEvent.GetTownGuardians(build.TryCast<MapBuildTown>()).Any(x => x.GetUnitId() == g.world.playerUnit.GetUnitId()))
+                if (build.IsTown() && MapBuildPropertyEvent.IsTownMaster(build.TryCast<MapBuildTown>(), g.world.playerUnit))
                     continue; //if player is town-master, then skip auto build
                 foreach (var e in BuildingCostEnum.GetAllEnums<BuildingCostEnum>())
                 {
@@ -66,11 +66,8 @@ namespace MOD_nE7UL2.Mod
         {
             if (SMLocalConfigsEvent.Instance.Configs.OnlyPortalAtCityAndSect && e == BuildingCostEnum.TownPortalBuildCost && build.IsSmallTown())
                 return;
-            if (e.IsMatchBuildConds(build))
+            if (IsBuildable(build, e))
             {
-                if (IsIgnored(build, e))
-                    return;
-
                 var r = CommonTool.Random(0.00f, 100.00f);
                 if (MapBuildPropertyEvent.GetBuildProperty(build) > GetBuildingCost(build, e) &&
                     ValueHelper.IsBetween(r, 0.00f, rate == -1f ? e.BuildRate : rate))
@@ -80,12 +77,19 @@ namespace MOD_nE7UL2.Mod
             }
         }
 
-        public static bool IsIgnored(MapBuildBase build, BuildingCostEnum e)
+        public static bool IsIgnored(BuildingCostEnum e)
         {
-            return e.BuildRate == -1f || 
-                e.BuildCosts == null || 
-                Instance.ArrDic.Contains(Instance.GetArrDicKey(build, e)) ||
-                build.GetBuildSub(e.BuildType) !=  null;
+            return e.BuildRate == -1f || e.BuildCosts == null;
+        }
+
+        public static bool IsBuilt(MapBuildBase build, BuildingCostEnum e)
+        {
+            return Instance.ArrDic.Contains(Instance.GetArrDicKey(build, e)) || build.GetBuildSub(e.BuildType) != null;
+        }
+
+        public static bool IsBuildable(MapBuildBase build, BuildingCostEnum e)
+        {
+            return e.IsMatchBuildConds(build) && !IsBuilt(build, e) && IsIgnored(e);
         }
 
         public static void Build(MapBuildBase build, BuildingCostEnum e)

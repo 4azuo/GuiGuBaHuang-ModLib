@@ -71,6 +71,8 @@
 		"MaxSellRate": 110.0,
 		"MinBuyRate": 90.0,
 		"MaxBuyRate": 115.0,
+		"TownGReduceBuyRate": -5.0,
+		"TownMReduceBuyRate": -10.0,
 		"Events": {
 			"HappyNewYear": {
 				"Name": "Happy New Year",

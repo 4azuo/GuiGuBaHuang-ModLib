@@ -24,23 +24,27 @@ namespace MOD_nE7UL2.Mod
             if (e.uiType.uiName == UIType.TownStorage.uiName)
             {
                 var player = g.world.playerUnit;
-                var curTown = g.world.build.GetBuild(new UnityEngine.Vector2Int(player.data.unitData.pointX, player.data.unitData.pointY));
+                var curTown = player.GetMapBuild<MapBuildTown>();
 
-                if (!RegisterdTown.Contains(curTown.buildData.id) && curTown.TryCast<MapBuildSchool>() == null)
+                if (curTown != null)
                 {
-                    var uiTownStorage = g.ui.GetUI<UITownStorage>(UIType.TownStorage);
-                    var btn1 = uiTownStorage.btnProps.Replace().Size(500f, 100f);
-                    btn1.GetComponentInChildren<Text>().Align(UnityEngine.TextAnchor.MiddleCenter).text = $"Open account ({Cost(curTown.gridData.areaBaseID)} Spirit Stones)";
-                    btn1.onClick.AddListener((UnityAction)(() =>
+                    if (!RegisterdTown.Contains(curTown.buildData.id) && !MapBuildPropertyEvent.IsTownGuardian(curTown, g.world.playerUnit))
                     {
-                        var cost = Cost(curTown.gridData.areaBaseID);
-                        if (player.GetUnitMoney() >= cost)
+                        var uiTownStorage = g.ui.GetUI<UITownStorage>(UIType.TownStorage);
+                        var btn1 = uiTownStorage.btnProps.Replace().Size(500f, 100f);
+                        btn1.GetComponentInChildren<Text>().Align(UnityEngine.TextAnchor.MiddleCenter).text = $"Open account ({Cost(curTown.gridData.areaBaseID)} Spirit Stones)";
+                        btn1.onClick.AddListener((UnityAction)(() =>
                         {
-                            player.AddUnitMoney(-cost);
-                            RegisterdTown.Add(curTown.buildData.id);
-                            g.ui.CloseUI(uiTownStorage);
-                        }
-                    }));
+                            var cost = Cost(curTown.gridData.areaBaseID);
+                            if (player.GetUnitMoney() >= cost)
+                            {
+                                player.AddUnitMoney(-cost);
+                                MapBuildPropertyEvent.AddBuildProperty(curTown, cost);
+                                RegisterdTown.Add(curTown.buildData.id);
+                                g.ui.CloseUI(uiTownStorage);
+                            }
+                        }));
+                    }
                 }
             }
         }
