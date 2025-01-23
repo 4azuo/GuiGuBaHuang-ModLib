@@ -1,0 +1,9 @@
+[
+	{ "id": 500020000, "key": "other500020000", "ch": "功勋兑换", "en": "Exchange Contribution" },
+	{ "id": 500020001, "key": "other500020001", "ch": "選取", "en": "Select item" },
+	{ "id": 500020002, "key": "other500020002", "ch": "選擇", "en": "Select materials" },
+	{ "id": 500020003, "key": "other500020003", "ch": "委託", "en": "Commission" },
+	{ "id": 500020004, "key": "other500020004", "ch|en": "Fee: free for merchant-masters and guardians" },
+	{ "id": 500020005, "key": "other500020005", "ch": "掌管", "en": "Town Manage" },
+	{ "id": 500020006, "key": "other500020006", "ch|en": "Up Grade" },
+]

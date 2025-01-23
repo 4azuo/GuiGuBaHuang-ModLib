@@ -70,7 +70,7 @@ namespace MOD_nE7UL2.Mod
                 if (UnitTypeEvent.GetUnitTypeEnum(g.world.playerUnit) == UnitTypeEnum.Merchant || 
                     MapBuildPropertyEvent.IsTownGuardian(g.world.playerUnit.GetMapBuild<MapBuildTown>(), g.world.playerUnit))
                 {
-                    txtFee.text = "Fee: free for merchant-masters and guardians";
+                    txtFee.text = GameTool.LS("other500020004");
                 }
                 else
                 {
