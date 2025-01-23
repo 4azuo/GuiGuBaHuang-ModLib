@@ -9,6 +9,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using UnityEngine.Events;
 
 namespace MOD_nE7UL2.Mod
 {
@@ -585,10 +586,30 @@ namespace MOD_nE7UL2.Mod
 
         public static void Deposit()
         {
+            var uiPropSelectCount = g.ui.OpenUI<UIPropSelectCount>(UIType.PropSelectCount);
+            uiPropSelectCount.minCount = 0;
+            uiPropSelectCount.maxCount = g.world.playerUnit.GetUnitMoney();
+            uiPropSelectCount.oneCost = 1;
+            uiPropSelectCount.btnOK.onClick.m_Calls.m_RuntimeCalls.Insert(0, new InvokableCall((UnityAction)(() =>
+            {
+                var town = g.world.playerUnit.GetMapBuild<MapBuildTown>();
+                Instance.Budget[town.buildData.id] += uiPropSelectCount.curSelectCount;
+                g.world.playerUnit.AddUnitMoney(-uiPropSelectCount.curSelectCount);
+            })));
         }
 
         public static void Withdraw()
         {
+            var town = g.world.playerUnit.GetMapBuild<MapBuildTown>();
+            var uiPropSelectCount = g.ui.OpenUI<UIPropSelectCount>(UIType.PropSelectCount);
+            uiPropSelectCount.minCount = 0;
+            uiPropSelectCount.maxCount = Instance.Budget[town.buildData.id].FixValue(0, int.MaxValue).Parse<int>();
+            uiPropSelectCount.oneCost = 1;
+            uiPropSelectCount.btnOK.onClick.m_Calls.m_RuntimeCalls.Insert(0, new InvokableCall((UnityAction)(() =>
+            {
+                Instance.Budget[town.buildData.id] -= uiPropSelectCount.curSelectCount;
+                g.world.playerUnit.AddUnitMoney(uiPropSelectCount.curSelectCount);
+            })));
         }
 
         public static void OpenUIHirePeople()
