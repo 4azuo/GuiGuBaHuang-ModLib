@@ -10,6 +10,7 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 using UnityEngine.Events;
+using static DataBuildTown;
 
 namespace MOD_nE7UL2.Mod
 {
@@ -74,7 +75,7 @@ namespace MOD_nE7UL2.Mod
                 var town = GetGuardTown(g.world.playerUnit);
                 if (town != null && !PayTaxTown.Contains(town.buildData.id) && IsTownGuardian(town, g.world.playerUnit))
                 {
-                    var tax = GetTax(g.world.playerUnit, g.world.playerUnit.GetUnitPosAreaId());
+                    var tax = GetTax(town, g.world.playerUnit);
                     if (g.world.playerUnit.GetUnitMoney() > tax)
                     {
                         Budget[town.buildData.id] += tax;
@@ -111,9 +112,9 @@ namespace MOD_nE7UL2.Mod
                     {
                         uiCover.AddText(uiCover.MidCol - 5, uiCover.MidRow + i++, $"Town Budget: {GetBuildProperty(town):#,##0}").Format().Align();
                         uiCover.AddText(uiCover.MidCol - 5, uiCover.MidRow + i++, $"Payment: {GetTotalMonthlyPayment(town):#,##0}/year").Format().Align();
-                        uiCover.AddCompositeSlider(uiCover.MidCol - 5, uiCover.MidRow + i++, $"Base Tax:", 0.50f, 10.00f, 1.00f, "{0}/month").SetWork(new UIItemWork
+                        uiCover.AddCompositeSlider(uiCover.MidCol - 5, uiCover.MidRow + i++, $"Base Tax:", 0.50f, 10.00f, TaxRate[town.buildData.id], "{0}/month").SetWork(new UIItemWork
                         {
-                            Formatter = (ibase) => new object[] { GetBaseTax(g.world.playerUnit.GetUnitPosAreaId()) }
+                            Formatter = (ibase) => new object[] { GetBaseTax(town) }
                         });
 
                         var c = 0;
@@ -140,7 +141,7 @@ namespace MOD_nE7UL2.Mod
                         }
 
                         if (IsTownMaster(town, g.world.playerUnit) && !town.buildTownData.isMainTown)
-                            uiCover.AddButton(uiCover.LastCol - 8, uiCover.LastRow - 20, () => Upgrade2City(town), "Upgrade to City").Format(Color.black, 17).Align(TextAnchor.MiddleCenter).Size(300, 60);
+                            uiCover.AddButton(uiCover.LastCol - 8, uiCover.LastRow - 20, () => Upgrade2City(town), $"Upgrade to City{Environment.NewLine}{GetUpgrade2CityCost(town):#,##0}").Format(Color.black, 17).Align(TextAnchor.MiddleCenter).Size(300, 60);
                         uiCover.AddButton(uiCover.LastCol - 8, uiCover.LastRow - 16, Deposit, "Deposit").Format(Color.black, 17).Align(TextAnchor.MiddleCenter).Size(300, 30);
                         uiCover.AddButton(uiCover.LastCol - 8, uiCover.LastRow - 14, Withdraw, "Withdraw").Format(Color.black, 17).Align(TextAnchor.MiddleCenter).Size(300, 30);
                         uiCover.AddButton(uiCover.LastCol - 8, uiCover.LastRow - 12, OpenUIHirePeople, "Hire People").Format(Color.black, 17).Align(TextAnchor.MiddleCenter).Size(300, 60);
@@ -255,7 +256,7 @@ namespace MOD_nE7UL2.Mod
             if (town != null && !TownMasters[town.buildData.id].Contains(wunit.GetUnitId()))
             {
                 //pay town tax
-                var tax = GetTax(wunit, wunit.GetUnitPosAreaId());
+                var tax = GetTax(town, wunit);
                 if (wunit.GetUnitMoney() > tax)
                 {
                     wunit.AddUnitMoney(-tax);
@@ -281,7 +282,7 @@ namespace MOD_nE7UL2.Mod
             if (school != null && !IsSchoolMember(school, wunit))
             {
                 //pay school tax
-                var tax = GetTax(wunit, wunit.GetUnitPosAreaId());
+                var tax = GetTax(school, wunit);
                 wunit.AddUnitMoney(-tax);
                 school.buildData.money += tax;
             }
@@ -464,26 +465,26 @@ namespace MOD_nE7UL2.Mod
             Leave(member);
         }
 
-        public static int GetBaseTax(int areaId)
+        public static int GetBaseTax(MapBuildBase buildbase)
         {
             //base on area
             return SMLocalConfigsEvent.Instance.Calculate(Convert.ToInt32(InflationaryEvent.CalculateInflationary((
-                Math.Pow(2, areaId) * FIXING_RATE
+                Math.Pow(2, buildbase.gridData.areaBaseID) * FIXING_RATE * Instance.TaxRate[buildbase.buildData.id]
             ).Parse<int>())), SMLocalConfigsEvent.Instance.Configs.AddTaxRate).Parse<int>();
         }
 
-        public static int GetTax(WorldUnitBase wunit, int areaId)
+        public static int GetTax(MapBuildBase buildbase, WorldUnitBase wunit)
         {
             if (wunit == null || wunit.isDie)
                 return 0;
-            var tax = GetBaseTax(areaId);
-            var school = wunit.GetMapBuild<MapBuildSchool>();
+            var tax = GetBaseTax(buildbase);
+            var school = buildbase.TryCast<MapBuildSchool>();
             if (school != null)
             {
                 //if school -> *effect-count
                 tax *= school.schoolData.allEffects.Count;
             }
-            var town = wunit.GetMapBuild<MapBuildTown>();
+            var town = buildbase.TryCast<MapBuildTown>();
             if (town != null)
             {
                 //if town -> double
@@ -579,9 +580,24 @@ namespace MOD_nE7UL2.Mod
             return school.schoolNameID == wunit.data.school?.schoolNameID;
         }
 
+        public static long GetUpgrade2CityCost(MapBuildTown town)
+        {
+            return (Math.Pow(3, town.gridData.areaBaseID) * 1000000).Parse<long>();
+        }
+
         public static void Upgrade2City(MapBuildTown town)
         {
-            town.buildTownData.isMainTown = true;
+            var budget = Instance.Budget[town.buildData.id];
+            var cost = GetUpgrade2CityCost(town);
+            if (budget > cost)
+            {
+                town.buildTownData.isMainTown = true;
+                Instance.Budget[town.buildData.id] -= cost;
+            }
+            else
+            {
+                g.ui.MsgBox("Town", "Town's Budget is not enough!");
+            }
         }
 
         public static void Deposit()
