@@ -70,8 +70,8 @@ namespace MOD_nE7UL2.Mod
 
             if (e.uiType.uiName == UIType.Town.uiName)
             {
-                var town = GetGuardTown(g.world.playerUnit);
-                if (town != null && !PayTaxTown.Contains(town.buildData.id) && IsTownGuardian(town, g.world.playerUnit))
+                var town = g.world.playerUnit.GetMapBuild<MapBuildTown>();
+                if (town != null && !PayTaxTown.Contains(town.buildData.id) && !IsTownGuardian(town, g.world.playerUnit))
                 {
                     var tax = GetTax(town, g.world.playerUnit);
                     if (g.world.playerUnit.GetUnitMoney() > tax)
@@ -108,13 +108,14 @@ namespace MOD_nE7UL2.Mod
                     var i = 0;
                     var uiCover = new UICover<UINPCSearch>(e.ui);
                     {
-                        var col = uiCover.MidCol - 10;
+                        var col = uiCover.MidCol - 11;
                         var row = uiCover.MidRow;
                         uiCover.AddText(col, row + i++, $"Town Budget: {GetBuildProperty(town):#,##0}").Format().Align();
                         uiCover.AddText(col, row + i++, $"Payment: {GetTotalMonthlyPayment(town):#,##0}/year").Format().Align();
                         uiCover.AddCompositeSlider(col, row + i++, $"Base Tax:", 0.50f, 10.00f, TaxRate[town.buildData.id], "{0}/month").SetWork(new UIItemWork
                         {
-                            Formatter = (ibase) => new object[] { GetBaseTax(town) }
+                            Formatter = (ibase) => new object[] { GetBaseTax(town) },
+                            ChangeAct = (ibase, value) => TaxRate[town.buildData.id] = value.Parse<float>(),
                         });
 
                         i++;
@@ -124,8 +125,8 @@ namespace MOD_nE7UL2.Mod
                             if (BuildingArrangeEvent.IsBuildable(town, em))
                             {
                                 var cost = BuildingArrangeEvent.GetBuildingCost(town, em);
-                                uiCover.AddText(col + (c % 2 * 10), uiCover.MidRow + i + (c / 2 * 2), $"{GameTool.LS(em.BuildingName)}　／　Cost: {cost:#,##0}").Format().Align();
-                                uiCover.AddButton(col - 3 + (c % 2 * 10), uiCover.MidRow + i + (c / 2 * 2), () =>
+                                uiCover.AddText(col + (c % 2 * 11), uiCover.MidRow + i + (c / 2 * 2), $"{GameTool.LS(em.BuildingName)}　／　Cost: {cost:#,##0}").Format().Align();
+                                uiCover.AddButton(col - 3 + (c % 2 * 11), uiCover.MidRow + i + (c / 2 * 2), () =>
                                 {
                                     if (GetBuildProperty(town) > cost)
                                     {
@@ -150,7 +151,8 @@ namespace MOD_nE7UL2.Mod
                             g.ui.MsgBox("Town", "Are you sure about leaving?", MsgBoxButtonEnum.YesNo, () =>
                             {
                                 Leave(g.world.playerUnit);
-                                g.ui.CloseUI(e.ui);
+                                g.ui.CloseUI(UIType.NPCSearch);
+                                g.ui.CloseUI(UIType.Town);
                             });
                         }, "Dismiss").Format(Color.black, 17).Align(TextAnchor.MiddleCenter).Size(300, 64);
                     }
@@ -159,34 +161,45 @@ namespace MOD_nE7UL2.Mod
                 else
                 if (isShowManageTeamUI2)
                 {
-                    var uiCover = new UICover<UINPCSearch>(e.ui);
+                    if (IsTownMaster(g.world.playerUnit))
                     {
-                        if (IsTownMaster(g.world.playerUnit))
+                        var uiCover = new UICover<UINPCSearch>(e.ui);
+                        {
                             uiCover.AddButton(uiCover.LastCol - 8, uiCover.LastRow - 8, () => MapBuildEvent.TownWar(), "Declare War").Format(Color.black, 17).Align(TextAnchor.MiddleCenter).Size(300, 60);
+                        }
+                        uiCover.UpdateUI();
                     }
-                    uiCover.UpdateUI();
                 }
             }
             else
             if (e.uiType.uiName == UIType.NPCInfo.uiName)
             {
-                var uiCover = new UICover<UINPCInfo>(e.ui);
-                if (uiCover.UI.unit.GetUnitId() == g.world.playerUnit.GetUnitId())
+                var ui = g.ui.GetUI<UINPCInfo>(e.uiType);
+                if (ui.unit.GetUnitId() != g.world.playerUnit.GetUnitId())
                 {
-                    uiCover.Dispose();
-                }
-                else
-                {
-                    var town = GetGuardTown(uiCover.UI.unit);
+                    var uiCover = new UICover<UINPCInfo>(e.ui);
                     if (IsTownGuardian(uiCover.UI.unit))
                     {
+                        var town = GetGuardTown(uiCover.UI.unit);
                         if (IsTownGuardian(town, uiCover.UI.unit) && uiCover.UI.unit.data.unitData.relationData.GetIntim(g.world.playerUnit) < 200)
                             uiCover.AddText(0, 0, $"{GetRequiredSpiritStones(town, uiCover.UI.unit):#,##0} Spirit Stones/year").Align().Format(Color.white).Pos(uiCover.UI.uiProperty.textInTrait1.transform, 0f, 0.5f).SetParentTransform(uiCover.UI.uiProperty.textInTrait1.transform);
                         uiCover.AddText(0, 0, $"Town: {GetGuardTownInfoStr(uiCover.UI.unit)}").Align().Format(Color.white).Pos(uiCover.UI.uiProperty.textInTrait1.transform, 0f, 0.25f).SetParentTransform(uiCover.UI.uiProperty.textInTrait1.transform);
+                        if (isShowManageTeamUI1)
+                        {
+                            uiCover.AddButton(0, 0, () =>
+                            {
+                                g.ui.MsgBox("Town", "Are you sure about dismissing this person?", MsgBoxButtonEnum.YesNo, () =>
+                                {
+                                    Leave(uiCover.UI.unit);
+                                    g.ui.CloseUI(e.ui);
+                                });
+                            }, "Dismiss").Format(Color.black).Size(100, 40).Pos(uiCover.UI.uiProperty.textInTrait1.transform, -1.1f, 0.4f).SetParentTransform(uiCover.UI.uiProperty.textInTrait1.transform);
+                        }
                     }
                     else
                     if (isShowHirePeopleUI)
                     {
+                        var town = uiCover.UI.unit.GetMapBuild<MapBuildTown>();
                         uiCover.AddText(0, 0, $"{GetRequiredSpiritStones(town, uiCover.UI.unit):#,##0} Spirit Stones/year").Align().Format(Color.white).Pos(uiCover.UI.uiProperty.textInTrait1.transform, 0f, 0.5f).SetParentTransform(uiCover.UI.uiProperty.textInTrait1.transform);
                         uiCover.AddText(0, 0, $"{GetRequiredReputations(town, uiCover.UI.unit):#,##0} Reputations").Align().Format(Color.white).Pos(uiCover.UI.uiProperty.textInTrait1.transform, 0f, 0.25f).SetParentTransform(uiCover.UI.uiProperty.textInTrait1.transform);
                         uiCover.AddButton(0, 0, () =>
@@ -213,22 +226,22 @@ namespace MOD_nE7UL2.Mod
                             });
                         }, "Hire").Format(Color.black).Size(100, 40).Pos(uiCover.UI.uiProperty.textInTrait1.transform, -1.1f, 0.4f).SetParentTransform(uiCover.UI.uiProperty.textInTrait1.transform);
                     }
-                    else
-                    if (isShowManageTeamUI1)
-                    {
-                        uiCover.AddText(0, 0, $"{GetRequiredSpiritStones(town, uiCover.UI.unit):#,##0} Spirit Stones/year").Align().Format(Color.white).Pos(uiCover.UI.uiProperty.textInTrait1.transform, 0f, 0.5f).SetParentTransform(uiCover.UI.uiProperty.textInTrait1.transform);
-                        uiCover.AddText(0, 0, $"{GetRequiredReputations(town, uiCover.UI.unit):#,##0} Reputations").Align().Format(Color.white).Pos(uiCover.UI.uiProperty.textInTrait1.transform, 0f, 0.25f).SetParentTransform(uiCover.UI.uiProperty.textInTrait1.transform);
-                        uiCover.AddButton(0, 0, () =>
-                        {
-                            g.ui.MsgBox("Town", "Are you sure about dismissing this person?", MsgBoxButtonEnum.YesNo, () =>
-                            {
-                                Leave(uiCover.UI.unit);
-                                g.ui.CloseUI(e.ui);
-                            });
-                        }, "Dismiss").Format(Color.black).Size(100, 40).Pos(uiCover.UI.uiProperty.textInTrait1.transform, -1.1f, 0.4f).SetParentTransform(uiCover.UI.uiProperty.textInTrait1.transform);
-                    }
                     uiCover.UpdateUI();
                 }
+            }
+        }
+
+        public override void OnCloseUIStart(CloseUIStart e)
+        {
+            base.OnCloseUIStart(e);
+            if (e.uiType.uiName == UIType.NPCSearch.uiName)
+            {
+                if (isShowHirePeopleUI)
+                    isShowHirePeopleUI = false;
+                else if (isShowManageTeamUI1)
+                    isShowManageTeamUI1 = false;
+                else if (isShowManageTeamUI2)
+                    isShowManageTeamUI2 = false;
             }
         }
 
@@ -553,8 +566,7 @@ namespace MOD_nE7UL2.Mod
         {
             if (town == null || wunit == null)
                 return false;
-            var wunitId = wunit.GetUnitId();
-            return Instance.TownMasters[town.buildData.id].Contains(wunitId);
+            return Instance.TownMasters[town.buildData.id].Contains(wunit.GetUnitId());
         }
 
         public static bool IsTownMaster(MapBuildTown town, WorldUnitBase wunit)
@@ -657,9 +669,11 @@ namespace MOD_nE7UL2.Mod
         public static List<WorldUnitBase> GetHirablePeople()
         {
             var rs = new List<WorldUnitBase>();
+            var town = g.world.playerUnit.GetMapBuild<MapBuildTown>();
             foreach (var wunit in g.world.playerUnit.GetUnitsAround(4, false, false))
             {
                 if (IsMatchCondWUnit(wunit) && wunit.GetGradeLvl() < g.world.playerUnit.GetGradeLvl() + 2 &&
+                    wunit.GetMapBuild<MapBuildTown>()?.buildData.id == town.buildData.id &&
                     !rs.Any((x) => x.GetUnitId() == wunit.GetUnitId()))
                 {
                     rs.Add(wunit);

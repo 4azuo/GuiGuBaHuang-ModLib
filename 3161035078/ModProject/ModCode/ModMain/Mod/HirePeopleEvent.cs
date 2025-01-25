@@ -33,54 +33,62 @@ namespace MOD_nE7UL2.Mod
             base.OnOpenUIEnd(e);
             if (e.uiType.uiName == UIType.TownBounty.uiName)
             {
-                var ui = new UICover<UITownBounty>(e.ui);
+                var uiCover = new UICover<UITownBounty>(e.ui);
                 {
-                    ui.AddButton(0, 0, OpenUIHirePeople, GameTool.LS("team420041131")).Size(160, 40).Pos(ui.UI.btnTaskPut.transform, 4f, 0f);
+                    uiCover.AddButton(0, 0, OpenUIHirePeople, GameTool.LS("team420041131")).Size(160, 40).Pos(uiCover.UI.btnTaskPut.transform, 4f, 0f);
                 }
-                ui.UpdateUI();
+                uiCover.UpdateUI();
             }
             else
             if (e.uiType.uiName == UIType.NPCSearch.uiName && isShowManageTeamUI)
             {
-                var ui = new UICover<UINPCSearch>(e.ui);
+                var uiCover = new UICover<UINPCSearch>(e.ui);
                 {
-                    ui.AddText(ui.MidCol, ui.MidRow, $"Team: {GetTeamInfoStr(g.world.playerUnit)}").Align().Format();
-                    ui.AddText(ui.MidCol, ui.MidRow + 1, $"Payment: {GetTotalMonthlyPayment(g.world.playerUnit).ToString("#,##0")} Spirit Stones/month").Align().Format();
+                    uiCover.AddText(uiCover.MidCol, uiCover.MidRow, $"Team: {GetTeamInfoStr(g.world.playerUnit)}").Align().Format();
+                    uiCover.AddText(uiCover.MidCol, uiCover.MidRow + 1, $"Payment: {GetTotalMonthlyPayment(g.world.playerUnit).ToString("#,##0")} Spirit Stones/month").Align().Format();
                 }
-                ui.UpdateUI();
+                uiCover.UpdateUI();
             }
             else
             if (e.uiType.uiName == UIType.NPCInfo.uiName)
             {
-                var ui = new UICover<UINPCInfo>(e.ui);
-                if (ui.UI.unit.GetUnitId() == g.world.playerUnit.GetUnitId())
+                var ui = g.ui.GetUI<UINPCInfo>(e.uiType);
+                if (ui.unit.GetUnitId() != g.world.playerUnit.GetUnitId())
                 {
-                    ui.Dispose();
-                }
-                else
-                {
-                    if (IsHired(ui.UI.unit))
+                    var uiCover = new UICover<UINPCInfo>(e.ui);
+                    if (IsHired(uiCover.UI.unit))
                     {
-                        if (IsTeam(g.world.playerUnit, ui.UI.unit) && ui.UI.unit.data.unitData.relationData.GetIntim(g.world.playerUnit) < FRIEND_INTIM)
-                            ui.AddText(0, 0, $"{GetRequiredSpiritStones(g.world.playerUnit, ui.UI.unit) / MONTHLY_PAYMENT_RATIO:#,##0} Spirit Stones/month").Align().Format(Color.white).Pos(ui.UI.uiProperty.textInTrait1.transform, 0f, 0.5f).SetParentTransform(ui.UI.uiProperty.textInTrait1.transform);
-                        ui.AddText(0, 0, $"Team: {GetTeamInfoStr(ui.UI.unit)}").Align().Format(Color.white).Pos(ui.UI.uiProperty.textInTrait1.transform, 0f, 0.25f).SetParentTransform(ui.UI.uiProperty.textInTrait1.transform);
+                        if (IsTeam(g.world.playerUnit, uiCover.UI.unit) && uiCover.UI.unit.data.unitData.relationData.GetIntim(g.world.playerUnit) < FRIEND_INTIM)
+                            uiCover.AddText(0, 0, $"{GetRequiredSpiritStones(g.world.playerUnit, uiCover.UI.unit) / MONTHLY_PAYMENT_RATIO:#,##0} Spirit Stones/month").Align().Format(Color.white).Pos(uiCover.UI.uiProperty.textInTrait1.transform, 0f, 0.5f).SetParentTransform(uiCover.UI.uiProperty.textInTrait1.transform);
+                        uiCover.AddText(0, 0, $"Team: {GetTeamInfoStr(uiCover.UI.unit)}").Align().Format(Color.white).Pos(uiCover.UI.uiProperty.textInTrait1.transform, 0f, 0.25f).SetParentTransform(uiCover.UI.uiProperty.textInTrait1.transform);
+                        if (isShowManageTeamUI)
+                        {
+                            uiCover.AddButton(0, 0, () =>
+                            {
+                                g.ui.MsgBox(GameTool.LS("team420041121"), GameTool.LS("team420041130"), MsgBoxButtonEnum.YesNo, () =>
+                                {
+                                    Dismiss(g.world.playerUnit, uiCover.UI.unit);
+                                    g.ui.CloseUI(e.ui);
+                                });
+                            }, "Dismiss").Format(Color.black).Size(100, 40).Pos(uiCover.UI.uiProperty.textInTrait1.transform, -1.1f, 0.4f).SetParentTransform(uiCover.UI.uiProperty.textInTrait1.transform);
+                        }
                     }
                     else
                     if (isShowHirePeopleUI)
                     {
-                        if (ui.UI.unit.data.unitData.relationData.GetIntim(g.world.playerUnit) < FRIEND_INTIM)
+                        if (uiCover.UI.unit.data.unitData.relationData.GetIntim(g.world.playerUnit) < FRIEND_INTIM)
                         {
-                            ui.AddText(0, 0, $"{GetRequiredSpiritStones(g.world.playerUnit, ui.UI.unit):#,##0} Spirit Stones ({GetRequiredSpiritStones(g.world.playerUnit, ui.UI.unit) / MONTHLY_PAYMENT_RATIO:#,##0}/month)").Align().Format(Color.white).Pos(ui.UI.uiProperty.textInTrait1.transform, 0f, 0.5f).SetParentTransform(ui.UI.uiProperty.textInTrait1.transform);
-                            ui.AddText(0, 0, $"{GetRequiredReputations(g.world.playerUnit, ui.UI.unit):#,##0} Reputations").Align().Format(Color.white).Pos(ui.UI.uiProperty.textInTrait1.transform, 0f, 0.25f).SetParentTransform(ui.UI.uiProperty.textInTrait1.transform);
+                            uiCover.AddText(0, 0, $"{GetRequiredSpiritStones(g.world.playerUnit, uiCover.UI.unit):#,##0} Spirit Stones ({GetRequiredSpiritStones(g.world.playerUnit, uiCover.UI.unit) / MONTHLY_PAYMENT_RATIO:#,##0}/month)").Align().Format(Color.white).Pos(uiCover.UI.uiProperty.textInTrait1.transform, 0f, 0.5f).SetParentTransform(uiCover.UI.uiProperty.textInTrait1.transform);
+                            uiCover.AddText(0, 0, $"{GetRequiredReputations(g.world.playerUnit, uiCover.UI.unit):#,##0} Reputations").Align().Format(Color.white).Pos(uiCover.UI.uiProperty.textInTrait1.transform, 0f, 0.25f).SetParentTransform(uiCover.UI.uiProperty.textInTrait1.transform);
                         }
                         else
                         {
-                            ui.AddText(0, 0, $"You dont have to pay for friends!").Align().Format(Color.white).Pos(ui.UI.uiProperty.textInTrait1.transform, 0f, 0.5f).SetParentTransform(ui.UI.uiProperty.textInTrait1.transform);
+                            uiCover.AddText(0, 0, $"You dont have to pay for friends!").Align().Format(Color.white).Pos(uiCover.UI.uiProperty.textInTrait1.transform, 0f, 0.5f).SetParentTransform(uiCover.UI.uiProperty.textInTrait1.transform);
                         }
-                        ui.AddButton(0, 0, () =>
+                        uiCover.AddButton(0, 0, () =>
                         {
                             var player = g.world.playerUnit;
-                            var isFriend = ui.UI.unit.data.unitData.relationData.GetIntim(player) >= FRIEND_INTIM;
+                            var isFriend = uiCover.UI.unit.data.unitData.relationData.GetIntim(player) >= FRIEND_INTIM;
 
                             if (IsHired(player) && !IsTeamMaster(player))
                             {
@@ -88,14 +96,14 @@ namespace MOD_nE7UL2.Mod
                                 return;
                             }
 
-                            var requiredSpiritStones = GetRequiredSpiritStones(player, ui.UI.unit);
+                            var requiredSpiritStones = GetRequiredSpiritStones(player, uiCover.UI.unit);
                             if (!isFriend && player.GetUnitMoney() < requiredSpiritStones)
                             {
                                 g.ui.MsgBox(GameTool.LS("team420041121"), $"Require {requiredSpiritStones:#,##0} Spirit Stones");
                                 return;
                             }
 
-                            var requiredReputations = GetRequiredReputations(player, ui.UI.unit);
+                            var requiredReputations = GetRequiredReputations(player, uiCover.UI.unit);
                             if (player.GetDynProperty(UnitDynPropertyEnum.Reputation).value < requiredReputations)
                             {
                                 g.ui.MsgBox(GameTool.LS("team420041121"), $"Require {requiredReputations:#,##0} Reputations");
@@ -104,50 +112,41 @@ namespace MOD_nE7UL2.Mod
 
                             g.ui.MsgBox(GameTool.LS("team420041121"), GameTool.LS("team420041128"), MsgBoxButtonEnum.YesNo, () =>
                             {
-                                Hire(g.world.playerUnit, ui.UI.unit);
+                                Hire(g.world.playerUnit, uiCover.UI.unit);
                                 if (!isFriend)
                                     player.AddUnitMoney(-requiredSpiritStones);
                             });
-                        }, "Hire").Format(Color.black).Size(100, 40).Pos(ui.UI.uiProperty.textInTrait1.transform, -1.1f, 0.4f).SetParentTransform(ui.UI.uiProperty.textInTrait1.transform);
+                        }, "Hire").Format(Color.black).Size(100, 40).Pos(uiCover.UI.uiProperty.textInTrait1.transform, -1.1f, 0.4f).SetParentTransform(uiCover.UI.uiProperty.textInTrait1.transform);
                     }
-                    else
-                    if (isShowManageTeamUI)
-                    {
-                        ui.AddText(0, 0, $"{GetRequiredSpiritStones(g.world.playerUnit, ui.UI.unit):#,##0} Spirit Stones ({GetRequiredSpiritStones(g.world.playerUnit, ui.UI.unit) / MONTHLY_PAYMENT_RATIO:#,##0}/month)").Align().Format(Color.white).Pos(ui.UI.uiProperty.textInTrait1.transform, 0f, 0.5f).SetParentTransform(ui.UI.uiProperty.textInTrait1.transform);
-                        ui.AddText(0, 0, $"{GetRequiredReputations(g.world.playerUnit, ui.UI.unit):#,##0} Reputations").Align().Format(Color.white).Pos(ui.UI.uiProperty.textInTrait1.transform, 0f, 0.25f).SetParentTransform(ui.UI.uiProperty.textInTrait1.transform);
-                        ui.AddButton(0, 0, () =>
-                        {
-                            g.ui.MsgBox(GameTool.LS("team420041121"), GameTool.LS("team420041130"), MsgBoxButtonEnum.YesNo, () =>
-                            {
-                                Dismiss(g.world.playerUnit, ui.UI.unit);
-                            });
-                        }, "Dismiss").Format(Color.black).Size(100, 40).Pos(ui.UI.uiProperty.textInTrait1.transform, -1.1f, 0.4f).SetParentTransform(ui.UI.uiProperty.textInTrait1.transform);
-                    }
-                    ui.UpdateUI();
+                    uiCover.UpdateUI();
                 }
             }
             else
             if (e.uiType.uiName == UIType.PlayerInfo.uiName)
             {
-                var ui = new UICover<UIPlayerInfo>(e.ui);
+                var uiCover = new UICover<UIPlayerInfo>(e.ui);
                 {
-                    if (IsHired(ui.UI.unit))
+                    if (IsHired(uiCover.UI.unit))
                     {
-                        ui.AddButton(0, 0, () => DismissTeam(g.world.playerUnit), GameTool.LS("team420041126")).Size(160, 40).Pos(ui.UI.uiProperty.textInTrait_En.transform, -3.0f, 0.5f).SetWork(new UIItemWork
+                        uiCover.AddButton(0, 0, () =>
+                        {
+                            DismissTeam(g.world.playerUnit);
+                            g.ui.CloseUI(e.ui);
+                        }, GameTool.LS("team420041126")).Size(160, 40).Pos(uiCover.UI.uiProperty.textInTrait_En.transform, -3.0f, 0.5f).SetWork(new UIItemWork
                         {
                             UpdateAct = (x) => x.Component.gameObject.SetActive(TeamData.ContainsKey(g.world.playerUnit.GetUnitId())),
-                        }).SetParentTransform(ui.UI.uiProperty.textInTrait_En.transform);
-                        ui.AddButton(0, 0, OpenUIManageTeam, GameTool.LS("team420041127")).Size(160, 40).Pos(ui.UI.uiProperty.textInTrait_En.transform, -1.5f, 0.5f).SetWork(new UIItemWork
+                        }).SetParentTransform(uiCover.UI.uiProperty.textInTrait_En.transform);
+                        uiCover.AddButton(0, 0, OpenUIManageTeam, GameTool.LS("team420041127")).Size(160, 40).Pos(uiCover.UI.uiProperty.textInTrait_En.transform, -1.5f, 0.5f).SetWork(new UIItemWork
                         {
                             UpdateAct = (x) => x.Component.gameObject.SetActive(TeamData.ContainsKey(g.world.playerUnit.GetUnitId())),
-                        }).SetParentTransform(ui.UI.uiProperty.textInTrait_En.transform);
-                        ui.AddText(0, 0, "Team: {0}").Align().Format().Pos(ui.UI.uiProperty.textInTrait_En.transform, 0f, 0.5f).SetWork(new UIItemWork
+                        }).SetParentTransform(uiCover.UI.uiProperty.textInTrait_En.transform);
+                        uiCover.AddText(0, 0, "Team: {0}").Align().Format().Pos(uiCover.UI.uiProperty.textInTrait_En.transform, 0f, 0.5f).SetWork(new UIItemWork
                         {
-                            Formatter = (x) => new object[] { GetTeamInfoStr(ui.UI.unit) },
-                        }).SetParentTransform(ui.UI.uiProperty.textInTrait_En.transform);
+                            Formatter = (x) => new object[] { GetTeamInfoStr(uiCover.UI.unit) },
+                        }).SetParentTransform(uiCover.UI.uiProperty.textInTrait_En.transform);
                     }
                 }
-                ui.IsAutoUpdate = true;
+                uiCover.IsAutoUpdate = true;
             }
             else
             if (e.uiType.uiName == UIType.SkyTip.uiName)
