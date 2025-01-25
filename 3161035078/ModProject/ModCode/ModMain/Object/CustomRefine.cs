@@ -88,7 +88,7 @@ namespace MOD_nE7UL2.Object
 
         public string GetText(WorldUnitBase wunit, DataProps.PropsData props, int refineLvl)
         {
-            return $"+{AdjType.Label}: {GetRefineCustommAdjValue(wunit, props, refineLvl).ToString(AdjType.ValueFormat)} {(IsEnable(refineLvl) ? string.Empty : $"(Req {Index * 100})")}";
+            return $"+{GameTool.LS(AdjType.Label)}: {GetRefineCustommAdjValue(wunit, props, refineLvl).ToString(AdjType.ValueFormat)} {(IsEnable(refineLvl) ? string.Empty : $"(Req {Index * 100})")}";
         }
     }
 }

@@ -6,8 +6,8 @@ namespace MOD_nE7UL2.Enum
 {
     public class BuildingCostEnum : EnumObject
     {
-        public static BuildingCostEnum SchoolTrainingHallBuildCost { get; } = new BuildingCostEnum(GameTool.LS("building500030006"), -1f, MapBuildSubType.SchoolTrainingHall, true, false, null);
-        public static BuildingCostEnum SchoolPortalBuildCost { get; } = new BuildingCostEnum(GameTool.LS("building500030007"), 4.00f, MapBuildSubType.SchoolTransfer, true, false, new long[]
+        public static BuildingCostEnum SchoolTrainingHallBuildCost { get; } = new BuildingCostEnum("building500030006", -1f, MapBuildSubType.SchoolTrainingHall, true, false, null);
+        public static BuildingCostEnum SchoolPortalBuildCost { get; } = new BuildingCostEnum("building500030007", 4.00f, MapBuildSubType.SchoolTransfer, true, false, new long[]
         {
             /*01*/15000,
             /*02*/30000,
@@ -20,7 +20,7 @@ namespace MOD_nE7UL2.Enum
             /*09*/3000000,
             /*10*/10000000,
         });
-        //public static BuildingCostEnum SchoolStorageBuildCost { get; } = new BuildingCostEnum(GameTool.LS("building500030008"), 5.00f, MapBuildSubType.SchoolStorage, true, false, new long[]
+        //public static BuildingCostEnum SchoolStorageBuildCost { get; } = new BuildingCostEnum("building500030008", 5.00f, MapBuildSubType.SchoolStorage, true, false, new long[]
         //{
         //    /*01*/0,
         //    /*02*/10000,
@@ -33,7 +33,7 @@ namespace MOD_nE7UL2.Enum
         //    /*09*/300000,
         //    /*10*/300000,
         //});
-        public static BuildingCostEnum TownPortalBuildCost { get; } = new BuildingCostEnum(GameTool.LS("building500030000"), 4.00f, MapBuildSubType.TownTransfer, false, false, new long[]
+        public static BuildingCostEnum TownPortalBuildCost { get; } = new BuildingCostEnum("building500030000", 4.00f, MapBuildSubType.TownTransfer, false, false, new long[]
         {
             /*01*/20000,
             /*02*/40000,
@@ -46,7 +46,7 @@ namespace MOD_nE7UL2.Enum
             /*09*/8000000,
             /*10*/25000000,
         });
-        //public static BuildingCostEnum TownStorageBuildCost { get; } = new BuildingCostEnum(GameTool.LS("building500030009"), 5.00f, MapBuildSubType.TownStorage, false, false, new long[]
+        //public static BuildingCostEnum TownStorageBuildCost { get; } = new BuildingCostEnum("building500030009", 5.00f, MapBuildSubType.TownStorage, false, false, new long[]
         //{
         //    /*01*/0,
         //    /*02*/10000,
@@ -59,7 +59,7 @@ namespace MOD_nE7UL2.Enum
         //    /*09*/300000,
         //    /*10*/300000,
         //});
-        public static BuildingCostEnum TownAuctionBuildCost { get; } = new BuildingCostEnum(GameTool.LS("building500030001"), 2.00f, MapBuildSubType.TownAuction, false, true, new long[]
+        public static BuildingCostEnum TownAuctionBuildCost { get; } = new BuildingCostEnum("building500030001", 2.00f, MapBuildSubType.TownAuction, false, true, new long[]
         {
             /*01*/10000,
             /*02*/20000,
@@ -72,7 +72,7 @@ namespace MOD_nE7UL2.Enum
             /*09*/3000000,
             /*10*/10000000,
         });
-        public static BuildingCostEnum TownFactoryBuildCost { get; } = new BuildingCostEnum(GameTool.LS("building500030002"), 3.00f, MapBuildSubType.TownFactory, false, false, new long[]
+        public static BuildingCostEnum TownFactoryBuildCost { get; } = new BuildingCostEnum("building500030002", 3.00f, MapBuildSubType.TownFactory, false, false, new long[]
         {
             /*01*/10000,
             /*02*/20000,
@@ -85,7 +85,7 @@ namespace MOD_nE7UL2.Enum
             /*09*/2000000,
             /*10*/3000000,
         });
-        public static BuildingCostEnum TownMarketBookBuildCost { get; } = new BuildingCostEnum(GameTool.LS("building500030003"), 1.00f, MapBuildSubType.TownMarketBook, false, false, new long[]
+        public static BuildingCostEnum TownMarketBookBuildCost { get; } = new BuildingCostEnum("building500030003", 1.00f, MapBuildSubType.TownMarketBook, false, false, new long[]
         {
             /*01*/0,
             /*02*/30000,
@@ -98,7 +98,7 @@ namespace MOD_nE7UL2.Enum
             /*09*/6000000,
             /*10*/8000000,
         });
-        public static BuildingCostEnum TownMarketDressBuildCost { get; } = new BuildingCostEnum(GameTool.LS("building500030004"), 3.00f, MapBuildSubType.TownMarketDress, false, false, new long[]
+        public static BuildingCostEnum TownMarketDressBuildCost { get; } = new BuildingCostEnum("building500030004", 3.00f, MapBuildSubType.TownMarketDress, false, false, new long[]
         {
             /*01*/4000,
             /*02*/8000,
@@ -111,7 +111,7 @@ namespace MOD_nE7UL2.Enum
             /*09*/800000,
             /*10*/1000000,
         });
-        public static BuildingCostEnum TownBountyBuildCost { get; } = new BuildingCostEnum(GameTool.LS("building500030005"), 8.00f, MapBuildSubType.TownBounty, false, false, new long[]
+        public static BuildingCostEnum TownBountyBuildCost { get; } = new BuildingCostEnum("building500030005", 8.00f, MapBuildSubType.TownBounty, false, false, new long[]
         {
             /*01*/0,
             /*02*/4000,

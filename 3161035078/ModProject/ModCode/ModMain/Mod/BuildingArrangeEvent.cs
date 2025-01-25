@@ -89,7 +89,7 @@ namespace MOD_nE7UL2.Mod
 
         public static bool IsBuildable(MapBuildBase build, BuildingCostEnum e)
         {
-            return e.IsMatchBuildConds(build) && !IsBuilt(build, e) && IsIgnored(e);
+            return e.IsMatchBuildConds(build) && !IsBuilt(build, e) && !IsIgnored(e);
         }
 
         public static void Build(MapBuildBase build, BuildingCostEnum e)

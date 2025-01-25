@@ -1,161 +1,193 @@
 [
 	{
 		"id": "500010000",
-		"key": "state500010000desc",
-		"ch": "攻击","en": "ATK"
+		"key": "adjType500010000",
+		"ch": "攻击",
+		"en": "ATK"
 	},
 	{
 		"id": "500010001",
-		"key": "state500010001desc",
-		"ch": "防御","en": "Def"
+		"key": "adjType500010001",
+		"ch": "防御",
+		"en": "Def"
 	},
 	{
 		"id": "500010002",
-		"key": "state500010002desc",
-		"ch": "体力","en": "Hp"
+		"key": "adjType500010002",
+		"ch": "体力",
+		"en": "Hp"
 	},
 	{
 		"id": "500010003",
-		"key": "state500010003desc",
-		"ch": "灵力","en": "Mp"
+		"key": "adjType500010003",
+		"ch": "灵力",
+		"en": "Mp"
 	},
 	{
 		"id": "500010004",
-		"key": "state500010004desc",
-		"ch": "念力","en": "Sp"
+		"key": "adjType500010004",
+		"ch": "念力",
+		"en": "Sp"
 	},
 		{
 		"id": "500010005",
-		"key": "state500010005desc",
-		"ch": "恢復体力","en": "Heal Hp"
+		"key": "adjType500010005",
+		"ch": "恢復体力",
+		"en": "Heal Hp"
 	},
 		{
 		"id": "500010006",
-		"key": "state500010006desc",
-		"ch": "恢復灵力","en": "Heal Mp"
+		"key": "adjType500010006",
+		"ch": "恢復灵力",
+		"en": "Heal Mp"
 	},
 		{
 		"id": "500010007",
-		"key": "state500010007desc",
-		"ch": "恢復念力","en": "Heal Sp"
+		"key": "adjType500010007",
+		"ch": "恢復念力",
+		"en": "Heal Sp"
 	},	{
 		"id": "500010008",
-		"key": "state500010008desc",
-		"ch": "刀法","en": "Blade"
+		"key": "adjType500010008",
+		"ch": "刀法",
+		"en": "Blade"
 	},
 		{
 		"id": "500010009",
-		"key": "state500010009desc",
-		"ch": "土灵根","en": "Earth"
+		"key": "adjType500010009",
+		"ch": "土灵根",
+		"en": "Earth"
 	},
 			{
 		"id": "500010010",
-		"key": "state500010010desc",
-		"ch": "指法","en": "Finger"
+		"key": "adjType500010010",
+		"ch": "指法",
+		"en": "Finger"
 	},
 			{
 		"id": "500010011",
-		"key": "state500010011desc",
-		"ch": "火灵根","en": "Fire"
+		"key": "adjType500010011",
+		"ch": "火灵根",
+		"en": "Fire"
 	},
 			{
 		"id": "500010012",
-		"key": "state500010012desc",
-		"ch": "拳法","en": "Fist"
+		"key": "adjType500010012",
+		"ch": "拳法",
+		"en": "Fist"
 	},
 			{
 		"id": "500010013",
-		"key": "state500010013desc",
-		"ch": "水灵根","en": "Froze"
+		"key": "adjType500010013",
+		"ch": "水灵根",
+		"en": "Froze"
 	},
 			{
 		"id": "500010014",
-		"key": "state500010014desc",
-		"ch": "掌法","en": "Palm"
+		"key": "adjType500010014",
+		"ch": "掌法",
+		"en": "Palm"
 	},
 			{
 		"id": "500010015",
-		"key": "state500010015desc",
-		"ch": "枪法","en": "Spear"
+		"key": "adjType500010015",
+		"ch": "枪法",
+		"en": "Spear"
 	},
 			{
 		"id": "500010016",
-		"key": "state500010016desc",
-		"ch": "剑法","en": "Sword"
+		"key": "adjType500010016",
+		"ch": "剑法",
+		"en": "Sword"
 	},
 			{
 		"id": "500010017",
-		"key": "state500010017desc",
-		"ch": "雷灵根","en": "Thunder"
+		"key": "adjType500010017",
+		"ch": "雷灵根",
+		"en": "Thunder"
 	},
 				{
 		"id": "500010018",
-		"key": "state500010018desc",
-		"ch": "风灵根","en": "Wind"
+		"key": "adjType500010018",
+		"ch": "风灵根",
+		"en": "Wind"
 	},
 				{
 		"id": "500010019",
-		"key": "state500010019desc",
-		"ch": "木灵根","en": "Wood"
+		"key": "adjType500010019",
+		"ch": "木灵根",
+		"en": "Wood"
 	},
 				{
 		"id": "500010020",
-		"key": "state500010020desc",
-		"ch": "移速","en": "Speed"
+		"key": "adjType500010020",
+		"ch": "移速",
+		"en": "Speed"
 	},
 				{
 		"id": "500010021",
-		"key": "state500010021desc",
-		"ch": "化解(%Max)","en": "Block(%Max)"
+		"key": "adjType500010021",
+		"ch": "化解(%Max)",
+		"en": "Block(%Max)"
 	},
-					{
+	{
 		"id": "500010022",
-		"key": "state500010022desc",
-		"ch": "化解(Dmg)","en": "Block(Dmg)"
+		"key": "adjType500010022",
+		"ch": "化解(Dmg)",
+		"en": "Block(Dmg)"
 	},
-					{
+	{
 		"id": "500010023",
-		"key": "state500010023desc",
-		"ch": "躲避(%)","en": "Evade(%)"
+		"key": "adjType500010023",
+		"ch": "躲避(%)",
+		"en": "Evade(%)"
 	},
-					{
+	{
 		"id": "500010024",
-		"key": "state500010024desc",
-		"ch": "躲避(%Max)","en": "Evade(%Max)"
+		"key": "adjType500010024",
+		"ch": "躲避(%Max)",
+		"en": "Evade(%Max)"
 	},
-					{
+	{
 		"id": "500010025",
-		"key": "state500010025desc",
-		"ch": "解除","en": "Nullify"
+		"key": "adjType500010025",
+		"ch": "解除",
+		"en": "Nullify"
 	},
-					{
+	{
 		"id": "500010026",
-		"key": "state500010026desc",
-		"ch": "盾","en": "Shield"
+		"key": "adjType500010026",
+		"ch": "盾",
+		"en": "Shield"
 	},
-					{
+	{
 		"id": "500010027",
-		"key": "state500010027desc",
-		"ch": "暴擊(%)","en": "SCrit(%)"
+		"key": "adjType500010027",
+		"ch": "暴擊(%)",
+		"en": "SCrit(%)"
 	},
-					{
+	{
 		"id": "500010028",
-		"key": "state500010028desc",
-		"ch": "暴擊(%Max)","en": "SCrit(%Max)"
+		"key": "adjType500010028",
+		"ch": "暴擊(%Max)",
+		"en": "SCrit(%Max)"
 	},
-					{
+	{
 		"id": "500010029",
-		"key": "state500010029desc",
-		"ch": "暴擊(%Dmg)","en": "SCrit(%Dmg)"
+		"key": "adjType500010029",
+		"ch": "暴擊(%Dmg)",
+		"en": "SCrit(%Dmg)"
 	},
-					{
+	{
 		"id": "500010030",
-		"key": "state500010030desc",
-		"ch": "技能(%Dmg)","en": "Skill(%Dmg)"
+		"key": "adjType500010030",
+		"ch": "技能(%Dmg)",
+		"en": "Skill(%Dmg)"
 	},
-					{
+	{
 		"id": "500010031",
-		"key": "state500010031desc",
-		"ch": "最小傷害","en": "Min-Dmg"
+		"key": "adjType500010031",
+		"ch": "最小傷害",
+		"en": "Min-Dmg"
 	},
 ]
