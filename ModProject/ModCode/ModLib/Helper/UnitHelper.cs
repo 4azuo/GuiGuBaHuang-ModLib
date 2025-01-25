@@ -14,6 +14,14 @@ public static class UnitHelper
         SceneType.map?.world.UpdateAllUI();
     }
 
+    public static void SetUnitRandomPos(this WorldUnitBase wunit, Vector2Int p, int r = 8)
+    {
+        var x = (p.x + CommonTool.Random(-r, r)).FixValue(0, g.data.grid.mapWidth);
+        var y = (p.y + CommonTool.Random(-r, r)).FixValue(0, g.data.grid.mapHeight);
+        wunit.data.unitData.SetPoint(new Vector2Int(x, y));
+        SceneType.map?.world.UpdateAllUI();
+    }
+
     public static Vector2Int GetUnitPos(this WorldUnitBase wunit)
     {
         return wunit.data.unitData.GetPoint();
