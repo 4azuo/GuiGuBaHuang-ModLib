@@ -12,7 +12,7 @@ namespace MOD_nE7UL2.Mod
         public static BattleEvent Instance { get; set; }
 
         public const int JOIN_RANGE = 6;
-        public const float RANDOM_NPC_JOIN_RATE = 0.1f;
+        public const float RANDOM_NPC_JOIN_RATE = 100f;
         public const float SECT_NPC_JOIN_RATE = 1.0f;
         public const float TOWN_GUARD_NPC_JOIN_RATE = 3.0f;
         public const float TEAM_MEMBER_BETRAY_RATE = 0.2f;
@@ -223,9 +223,10 @@ namespace MOD_nE7UL2.Mod
                 );
         }
 
-        public static void TownWar()
+        public override void OnBattleUnitInto(UnitCtrlBase e)
         {
-
+            base.OnBattleUnitInto(e);
+            e.anim.playDieAnim = false;
         }
     }
 }

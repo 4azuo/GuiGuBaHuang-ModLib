@@ -10,7 +10,6 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 using UnityEngine.Events;
-using static DataBuildTown;
 
 namespace MOD_nE7UL2.Mod
 {
@@ -107,24 +106,27 @@ namespace MOD_nE7UL2.Mod
                 {
                     var town = GetGuardTown(g.world.playerUnit);
 
-                    var i = -6;
+                    var i = 0;
                     var uiCover = new UICover<UINPCSearch>(e.ui);
                     {
-                        uiCover.AddText(uiCover.MidCol - 5, uiCover.MidRow + i++, $"Town Budget: {GetBuildProperty(town):#,##0}").Format().Align();
-                        uiCover.AddText(uiCover.MidCol - 5, uiCover.MidRow + i++, $"Payment: {GetTotalMonthlyPayment(town):#,##0}/year").Format().Align();
-                        uiCover.AddCompositeSlider(uiCover.MidCol - 5, uiCover.MidRow + i++, $"Base Tax:", 0.50f, 10.00f, TaxRate[town.buildData.id], "{0}/month").SetWork(new UIItemWork
+                        var col = uiCover.MidCol - 8;
+                        var row = uiCover.MidRow;
+                        uiCover.AddText(col, row + i++, $"Town Budget: {GetBuildProperty(town):#,##0}").Format().Align();
+                        uiCover.AddText(col, row + i++, $"Payment: {GetTotalMonthlyPayment(town):#,##0}/year").Format().Align();
+                        uiCover.AddCompositeSlider(col, row + i++, $"Base Tax:", 0.50f, 10.00f, TaxRate[town.buildData.id], "{0}/month").SetWork(new UIItemWork
                         {
                             Formatter = (ibase) => new object[] { GetBaseTax(town) }
                         });
 
+                        i++;
                         var c = 0;
                         foreach (var em in BuildingCostEnum.GetAllEnums<BuildingCostEnum>())
                         {
                             if (BuildingArrangeEvent.IsBuildable(town, em))
                             {
                                 var cost = BuildingArrangeEvent.GetBuildingCost(town, em);
-                                uiCover.AddText(uiCover.MidCol - 5 + (c % 2 * 10), uiCover.MidRow + i, $"{em.BuildingName}　／　Cost: {cost:#,##0}").Format().Align();
-                                uiCover.AddButton(uiCover.MidCol - 8 + (c % 2 * 10), uiCover.MidRow + i, () =>
+                                uiCover.AddText(col + (c % 2 * 10), uiCover.MidRow + i + (c / 2), $"{GameTool.LS(em.BuildingName)}　／　Cost: {cost:#,##0}").Format().Align();
+                                uiCover.AddButton(col + 3 + (c % 2 * 10), uiCover.MidRow + i + (c / 2), () =>
                                 {
                                     if (GetBuildProperty(town) > cost)
                                     {
@@ -135,17 +137,16 @@ namespace MOD_nE7UL2.Mod
                                         g.ui.MsgBox("Info", $"You cant build this building with current budget!{Environment.NewLine}{GetBuildProperty(town):#,##0}");
                                     }
                                 }, "Build").Format().Align(TextAnchor.MiddleCenter);
-                                i += 2;
                                 c++;
                             }
                         }
 
                         if (IsTownMaster(town, g.world.playerUnit) && !town.buildTownData.isMainTown)
-                            uiCover.AddButton(uiCover.LastCol - 8, uiCover.LastRow - 20, () => Upgrade2City(town), $"Upgrade to City{Environment.NewLine}{GetUpgrade2CityCost(town):#,##0}").Format(Color.black, 17).Align(TextAnchor.MiddleCenter).Size(300, 60);
-                        uiCover.AddButton(uiCover.LastCol - 8, uiCover.LastRow - 16, Deposit, "Deposit").Format(Color.black, 17).Align(TextAnchor.MiddleCenter).Size(300, 30);
-                        uiCover.AddButton(uiCover.LastCol - 8, uiCover.LastRow - 14, Withdraw, "Withdraw").Format(Color.black, 17).Align(TextAnchor.MiddleCenter).Size(300, 30);
-                        uiCover.AddButton(uiCover.LastCol - 8, uiCover.LastRow - 12, OpenUIHirePeople, "Hire People").Format(Color.black, 17).Align(TextAnchor.MiddleCenter).Size(300, 60);
-                        uiCover.AddButton(uiCover.LastCol - 8, uiCover.LastRow - 8, () => Leave(g.world.playerUnit), "Dismiss").Format(Color.black, 17).Align(TextAnchor.MiddleCenter).Size(300, 60);
+                            uiCover.AddButton(uiCover.LastCol - 10, uiCover.LastRow - 20, () => Upgrade2City(town), $"Upgrade to City{Environment.NewLine}{GetUpgrade2CityCost(town):#,##0}").Format(Color.black, 17).Align(TextAnchor.MiddleCenter).Size(300, 64);
+                        uiCover.AddButton(uiCover.LastCol - 10, uiCover.LastRow - 17, Deposit, "Deposit").Format(Color.black, 17).Align(TextAnchor.MiddleCenter).Size(300, 64);
+                        uiCover.AddButton(uiCover.LastCol - 10, uiCover.LastRow - 14, Withdraw, "Withdraw").Format(Color.black, 17).Align(TextAnchor.MiddleCenter).Size(300, 64);
+                        uiCover.AddButton(uiCover.LastCol - 10, uiCover.LastRow - 11, OpenUIHirePeople, "Hire People").Format(Color.black, 17).Align(TextAnchor.MiddleCenter).Size(300, 64);
+                        uiCover.AddButton(uiCover.LastCol - 10, uiCover.LastRow - 8, () => Leave(g.world.playerUnit), "Dismiss").Format(Color.black, 17).Align(TextAnchor.MiddleCenter).Size(300, 64);
                     }
                     uiCover.UpdateUI();
                 }
@@ -155,7 +156,7 @@ namespace MOD_nE7UL2.Mod
                     var uiCover = new UICover<UINPCSearch>(e.ui);
                     {
                         if (IsTownMaster(g.world.playerUnit))
-                            uiCover.AddButton(uiCover.LastCol - 8, uiCover.LastRow - 8, () => BattleEvent.TownWar(), "Declare War").Format(Color.black, 17).Align(TextAnchor.MiddleCenter).Size(300, 60);
+                            uiCover.AddButton(uiCover.LastCol - 8, uiCover.LastRow - 8, () => MapBuildEvent.TownWar(), "Declare War").Format(Color.black, 17).Align(TextAnchor.MiddleCenter).Size(300, 60);
                     }
                     uiCover.UpdateUI();
                 }
@@ -273,7 +274,11 @@ namespace MOD_nE7UL2.Mod
                 else
                 {
                     //get out
-                    wunit.data.unitData.relationData.AddHate(GetTownMaster(town).GetUnitId(), 5);
+                    wunit.data.unitData.relationData.AddHate(GetTownMaster(town).GetUnitId(), 2);
+                    if (!wunit.IsPlayer())
+                    {
+                        wunit.SetUnitRandomPos(wunit.GetUnitPos());
+                    }
                 }
             }
 

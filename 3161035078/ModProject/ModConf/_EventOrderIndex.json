@@ -32,7 +32,8 @@
 
 	//battle
 	"BattleEvent": 5000,
-	"MostStrongerEvent": 5001,
+	"MapBuildEvent": 5003,
+	"MostStrongerEvent": 5005,
 	"RealTrialEvent": 5010,
 	"SpiritlockEvent": 5020,
 	"BattleModifyEvent": 5030,
