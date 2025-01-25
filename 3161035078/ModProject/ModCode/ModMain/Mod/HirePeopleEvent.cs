@@ -22,7 +22,6 @@ namespace MOD_nE7UL2.Mod
         public const int MONTHLY_PAYMENT_RATIO = 10;
         public const int FRIEND_INTIM = 200;
 
-        public static UINPCInfo UINPCInfo;
         public static bool isShowHirePeopleUI = false;
         public static bool isShowManageTeamUI = false;
 
@@ -80,7 +79,35 @@ namespace MOD_nE7UL2.Mod
                         }
                         ui.AddButton(0, 0, () =>
                         {
-                            PreHire(ui.UI.unit);
+                            var player = g.world.playerUnit;
+                            var isFriend = ui.UI.unit.data.unitData.relationData.GetIntim(player) >= FRIEND_INTIM;
+
+                            if (IsHired(player) && !IsTeamMaster(player))
+                            {
+                                g.ui.MsgBox(GameTool.LS("team420041121"), GameTool.LS("team420041129"));
+                                return;
+                            }
+
+                            var requiredSpiritStones = GetRequiredSpiritStones(player, ui.UI.unit);
+                            if (!isFriend && player.GetUnitMoney() < requiredSpiritStones)
+                            {
+                                g.ui.MsgBox(GameTool.LS("team420041121"), $"Require {requiredSpiritStones:#,##0} Spirit Stones");
+                                return;
+                            }
+
+                            var requiredReputations = GetRequiredReputations(player, ui.UI.unit);
+                            if (player.GetDynProperty(UnitDynPropertyEnum.Reputation).value < requiredReputations)
+                            {
+                                g.ui.MsgBox(GameTool.LS("team420041121"), $"Require {requiredReputations:#,##0} Reputations");
+                                return;
+                            }
+
+                            g.ui.MsgBox(GameTool.LS("team420041121"), GameTool.LS("team420041128"), MsgBoxButtonEnum.YesNo, () =>
+                            {
+                                Hire(g.world.playerUnit, ui.UI.unit);
+                                if (!isFriend)
+                                    player.AddUnitMoney(-requiredSpiritStones);
+                            });
                         }, "Hire").Format(Color.black).Size(100, 40).Pos(ui.UI.uiProperty.textInTrait1.transform, -1.1f, 0.4f).SetParentTransform(ui.UI.uiProperty.textInTrait1.transform);
                     }
                     else
@@ -90,11 +117,13 @@ namespace MOD_nE7UL2.Mod
                         ui.AddText(0, 0, $"{GetRequiredReputations(g.world.playerUnit, ui.UI.unit):#,##0} Reputations").Align().Format(Color.white).Pos(ui.UI.uiProperty.textInTrait1.transform, 0f, 0.25f).SetParentTransform(ui.UI.uiProperty.textInTrait1.transform);
                         ui.AddButton(0, 0, () =>
                         {
-                            PreDismiss(ui.UI.unit);
+                            g.ui.MsgBox(GameTool.LS("team420041121"), GameTool.LS("team420041130"), MsgBoxButtonEnum.YesNo, () =>
+                            {
+                                Dismiss(g.world.playerUnit, ui.UI.unit);
+                            });
                         }, "Dismiss").Format(Color.black).Size(100, 40).Pos(ui.UI.uiProperty.textInTrait1.transform, -1.1f, 0.4f).SetParentTransform(ui.UI.uiProperty.textInTrait1.transform);
                     }
                     ui.UpdateUI();
-                    UINPCInfo = ui.UI;
                 }
             }
             else
@@ -243,41 +272,6 @@ namespace MOD_nE7UL2.Mod
             }
         }
 
-        public static void PreHire(WorldUnitBase wunit)
-        {
-            var player = g.world.playerUnit;
-            var playerId = player.GetUnitId();
-            var isFriend = wunit.data.unitData.relationData.GetIntim(player) >= FRIEND_INTIM;
-
-            if (IsHired(player) && !IsTeamMaster(player))
-            {
-                g.ui.MsgBox(GameTool.LS("team420041121"), GameTool.LS("team420041129"));
-                return;
-            }
-
-            var requiredSpiritStones = GetRequiredSpiritStones(player, wunit);
-            if (!isFriend && player.GetUnitMoney() < requiredSpiritStones)
-            {
-                g.ui.MsgBox(GameTool.LS("team420041121"), $"Require {requiredSpiritStones:#,##0} Spirit Stones");
-                return;
-            }
-
-            var requiredReputations = GetRequiredReputations(player, wunit);
-            if (player.GetDynProperty(UnitDynPropertyEnum.Reputation).value < requiredReputations)
-            {
-                g.ui.MsgBox(GameTool.LS("team420041121"), $"Require {requiredReputations:#,##0} Reputations");
-                return;
-            }
-
-            g.ui.MsgBox(GameTool.LS("team420041121"), GameTool.LS("team420041128"), MsgBoxButtonEnum.YesNo, () =>
-            {
-                Hire(g.world.playerUnit, wunit);
-                if (!isFriend)
-                    player.AddUnitMoney(-requiredSpiritStones);
-                g.ui.CloseUI(UINPCInfo);
-            });
-        }
-
         public static void Hire(WorldUnitBase master, WorldUnitBase member)
         {
             var masterId = master.GetUnitId();
@@ -290,15 +284,6 @@ namespace MOD_nE7UL2.Mod
             var teamData = Instance.TeamData[masterId];
             teamData.Add(member.GetUnitId());
             member.AddLuck(TEAM_LUCK_ID);
-        }
-
-        public static void PreDismiss(WorldUnitBase wunit)
-        {
-            g.ui.MsgBox(GameTool.LS("team420041121"), GameTool.LS("team420041130"), MsgBoxButtonEnum.YesNo, () =>
-            {
-                Dismiss(g.world.playerUnit, wunit);
-                g.ui.CloseUI(UINPCInfo);
-            });
         }
 
         public static void Dismiss(WorldUnitBase master, WorldUnitBase member)
