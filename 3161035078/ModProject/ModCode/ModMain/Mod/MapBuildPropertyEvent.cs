@@ -681,7 +681,7 @@ namespace MOD_nE7UL2.Mod
             {
                 var uiCover = new UICover<UINPCSearch>(ui);
                 {
-                    uiCover.AddButton(uiCover.LastCol - 8, uiCover.LastRow - 8, () => MapBuildEvent.TownWar(town), "Declare War").Format(Color.black, 17).Align(TextAnchor.MiddleCenter).Size(300, 60);
+                    uiCover.AddButton(uiCover.LastCol - 8, uiCover.LastRow - 8, () => MapBuildBattleEvent.TownWar(town), "Declare War").Format(Color.black, 17).Align(TextAnchor.MiddleCenter).Size(300, 60);
                 }
                 uiCover.UpdateUI();
             }
