@@ -33,16 +33,18 @@ public static class UIHelper
         uiConfirm.InitData(title, content, type.Parse<int>(), (Il2CppSystem.Action)(() => onYesCall?.Invoke()), (Il2CppSystem.Action)(() => onNoCall?.Invoke()));
     }
 
-    public static void UpdateAllUI()
+    public static void UpdateAllUI(Func<UICustomBase, bool> predicate = null)
     {
-        foreach (var ui in UIs.ToArray())
+        if (predicate == null)
+            predicate = (x) => true;
+        foreach (var ui in UIs.Where(predicate).ToArray())
         {
             try
             {
-                if (!g.ui.HasUI(ui.UIBase.uiType))
-                    ui?.Dispose();
-                else if (ui.IsAutoUpdate)
+                if (g.ui.HasUI(ui.UIBase.uiType))
                     ui?.UpdateUI();
+                else
+                    ui?.Dispose();
             }
             catch
             {
