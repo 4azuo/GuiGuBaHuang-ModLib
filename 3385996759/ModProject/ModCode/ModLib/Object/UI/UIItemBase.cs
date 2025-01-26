@@ -39,7 +39,11 @@ namespace ModLib.Object
         public virtual void Dispose()
         {
             UI.Items.Remove(this);
-            UnityEngine.Object.DestroyImmediate(Component);
+            if (Component != null)
+            {
+                Component.gameObject.SetActive(false);
+                UnityEngine.Object.DestroyImmediate(Component);
+            }
         }
 
         public virtual void Update()
