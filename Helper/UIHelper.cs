@@ -2,6 +2,7 @@
 using ModLib.Object;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 
 public static class UIHelper
 {
@@ -47,6 +48,19 @@ public static class UIHelper
             {
                 ui?.Dispose();
             }
+        }
+    }
+
+    public static List<UICustomBase> GetUICustomBase(UIType.UITypeBase uiType)
+    {
+        return UIs.Where(x => x.UITypeName == uiType.uiName).ToList();
+    }
+
+    public static void Dispose(this IEnumerable<UICustomBase> uis)
+    {
+        foreach (var ui in uis)
+        {
+            ui.Dispose();
         }
     }
 }
