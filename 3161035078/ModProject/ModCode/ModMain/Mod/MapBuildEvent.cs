@@ -12,26 +12,58 @@ namespace MOD_nE7UL2.Mod
         public const float MONST_WAVE_RATE = 1f;
         public const float TOWN_WAR_RATE = 0.4f;
 
-        public override void OnMonthly()
+        public Dictionary<string, int> LastYearEventHappen { get; set; } = new Dictionary<string, int>();
+
+        public override void OnLoadGame()
         {
-            base.OnMonthly();
-
-            var towns = g.world.build.GetBuilds<MapBuildTown>().ToList();
-            foreach (var t in towns)
+            base.OnLoadGame();
+            foreach (var town in g.world.build.GetBuilds<MapBuildTown>())
             {
-                if (CommonTool.Random(0.00f, 100.00f).IsBetween(0.00f, MONST_WAVE_RATE))
+                if (!LastYearEventHappen.ContainsKey(town.buildData.id))
                 {
-
-                }
-                else
-                if (CommonTool.Random(0.00f, 100.00f).IsBetween(0.00f, TOWN_WAR_RATE))
-                {
-
+                    LastYearEventHappen.Add(town.buildData.id, GameHelper.GetGameYear());
                 }
             }
         }
 
-        public static void TownWar()
+        public override void OnMonthly()
+        {
+            base.OnMonthly();
+
+            var curYear = GameHelper.GetGameYear();
+            foreach (var town in g.world.build.GetBuilds<MapBuildTown>())
+            {
+                if (CommonTool.Random(0.00f, 100.00f).IsBetween(0.00f, MONST_WAVE_RATE * (curYear - LastYearEventHappen[town.buildData.id])))
+                {
+                    MonstWave(town);
+                }
+                else
+                if (CommonTool.Random(0.00f, 100.00f).IsBetween(0.00f, TOWN_WAR_RATE * (curYear - LastYearEventHappen[town.buildData.id])))
+                {
+                    TownWar(town);
+                }
+            }
+
+            foreach (var school in g.world.build.GetBuilds<MapBuildSchool>())
+            {
+                if (CommonTool.Random(0.00f, 100.00f).IsBetween(0.00f, MONST_WAVE_RATE * (curYear - LastYearEventHappen[school.buildData.id])))
+                {
+                    MonstWave(school);
+                }
+            }
+        }
+
+        public static void TownWar(MapBuildTown town)
+        {
+
+        }
+
+        public static void MonstWave(MapBuildTown town)
+        {
+
+        }
+
+        public static void MonstWave(MapBuildSchool school)
         {
 
         }

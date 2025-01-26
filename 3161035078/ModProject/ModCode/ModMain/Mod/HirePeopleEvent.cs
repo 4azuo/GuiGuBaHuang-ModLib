@@ -40,16 +40,6 @@ namespace MOD_nE7UL2.Mod
                 uiCover.UpdateUI();
             }
             else
-            if (e.uiType.uiName == UIType.NPCSearch.uiName && isShowManageTeamUI)
-            {
-                var uiCover = new UICover<UINPCSearch>(e.ui);
-                {
-                    uiCover.AddText(uiCover.MidCol, uiCover.MidRow, $"Team: {GetTeamInfoStr(g.world.playerUnit)}").Align().Format();
-                    uiCover.AddText(uiCover.MidCol, uiCover.MidRow + 1, $"Payment: {GetTotalMonthlyPayment(g.world.playerUnit).ToString("#,##0")} Spirit Stones/month").Align().Format();
-                }
-                uiCover.UpdateUI();
-            }
-            else
             if (e.uiType.uiName == UIType.NPCInfo.uiName)
             {
                 var ui = g.ui.GetUI<UINPCInfo>(e.uiType);
@@ -190,6 +180,13 @@ namespace MOD_nE7UL2.Mod
             ui.units = GetTeamMember(g.world.playerUnit).ToIl2CppList();
             ui.UpdateUI();
             isShowManageTeamUI = true;
+
+            var uiCover = new UICover<UINPCSearch>(ui);
+            {
+                uiCover.AddText(uiCover.MidCol, uiCover.MidRow, $"Team: {GetTeamInfoStr(g.world.playerUnit)}").Align().Format();
+                uiCover.AddText(uiCover.MidCol, uiCover.MidRow + 1, $"Payment: {GetTotalMonthlyPayment(g.world.playerUnit).ToString("#,##0")} Spirit Stones/month").Align().Format();
+            }
+            uiCover.UpdateUI();
         }
 
         public override void OnMonthlyForEachWUnit(WorldUnitBase wunit)
