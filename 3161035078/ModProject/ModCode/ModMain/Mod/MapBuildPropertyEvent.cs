@@ -194,7 +194,7 @@ namespace MOD_nE7UL2.Mod
             {
                 //random tax rate
                 if (!IsTownMaster(town, g.world.playerUnit))
-                    TaxRate[town.buildData.id] = CommonTool.Random(0.80f, 2.00f);
+                    TaxRate[town.buildData.id] = CommonTool.Random(0.70f, 4.00f);
                 //hire more people
                 if (!TownMasters.ContainsKey(town.buildData.id))
                 {
@@ -231,7 +231,7 @@ namespace MOD_nE7UL2.Mod
                     wunit.AddProperty<int>(UnitPropertyEnum.Mp, wunit.GetDynProperty(UnitDynPropertyEnum.MpMax).value);
                     wunit.AddProperty<int>(UnitPropertyEnum.Sp, wunit.GetDynProperty(UnitDynPropertyEnum.SpMax).value);
                 }
-                else
+                else if (!wunit.IsPlayer())
                 {
                     var tax = GetTax(town, wunit);
                     if (wunit.GetUnitMoney() > tax)
@@ -240,21 +240,15 @@ namespace MOD_nE7UL2.Mod
                         Budget[town.buildData.id] += tax;
 
                         //use inn
-                        if (!wunit.IsPlayer())
-                        {
-                            wunit.AddProperty<int>(UnitPropertyEnum.Hp, wunit.GetDynProperty(UnitDynPropertyEnum.HpMax).value);
-                            wunit.AddProperty<int>(UnitPropertyEnum.Mp, wunit.GetDynProperty(UnitDynPropertyEnum.MpMax).value);
-                            wunit.AddProperty<int>(UnitPropertyEnum.Sp, wunit.GetDynProperty(UnitDynPropertyEnum.SpMax).value);
-                        }
+                        wunit.AddProperty<int>(UnitPropertyEnum.Hp, wunit.GetDynProperty(UnitDynPropertyEnum.HpMax).value);
+                        wunit.AddProperty<int>(UnitPropertyEnum.Mp, wunit.GetDynProperty(UnitDynPropertyEnum.MpMax).value);
+                        wunit.AddProperty<int>(UnitPropertyEnum.Sp, wunit.GetDynProperty(UnitDynPropertyEnum.SpMax).value);
                     }
                     else
                     {
                         //get out
                         wunit.data.unitData.relationData.AddHate(GetTownMaster(town).GetUnitId(), 2);
-                        if (!wunit.IsPlayer())
-                        {
-                            wunit.SetUnitRandomPos(wunit.GetUnitPos());
-                        }
+                        wunit.SetUnitRandomPos(wunit.GetUnitPos());
                     }
                 }
             }
@@ -592,8 +586,14 @@ namespace MOD_nE7UL2.Mod
                 var col = uiCover.MidCol - 11;
                 var row = uiCover.MidRow;
                 uiCover.AddText(col, row + i++, $"Town: {town.name}　／　Master: {GetTownMaster(town).data.unitData.propertyData.GetName()}").Format().Align();
-                uiCover.AddText(col, row + i++, $"Budget: {GetBuildProperty(town):#,##0}").Format().Align();
-                uiCover.AddText(col, row + i++, $"Payment: {GetTotalMonthlyPayment(town):#,##0}/year").Format().Align();
+                uiCover.AddText(col, row + i++, "Budget: {0}").Format().Align().SetWork(new UIItemWork
+                {
+                    Formatter = (ibase) => new object[] { GetBuildProperty(town).ToString("#,##0") },
+                });
+                uiCover.AddText(col, row + i++, "Payment: {0}/year").Format().Align().SetWork(new UIItemWork
+                {
+                    Formatter = (ibase) => new object[] { GetTotalMonthlyPayment(town).ToString("#,##0") },
+                });
             }
             uiCover.UpdateUI();
         }
@@ -612,8 +612,14 @@ namespace MOD_nE7UL2.Mod
                 var col = uiCover.MidCol - 11;
                 var row = uiCover.MidRow;
                 uiCover.AddText(col, row + i++, $"Town: {town.name}　／　Master: {GetTownMaster(town).data.unitData.propertyData.GetName()}").Format().Align();
-                uiCover.AddText(col, row + i++, $"Budget: {GetBuildProperty(town):#,##0}").Format().Align();
-                uiCover.AddText(col, row + i++, $"Payment: {GetTotalMonthlyPayment(town):#,##0}/year").Format().Align();
+                uiCover.AddText(col, row + i++, "Budget: {0}").Format().Align().SetWork(new UIItemWork
+                {
+                    Formatter = (ibase) => new object[] { GetBuildProperty(town).ToString("#,##0") },
+                });
+                uiCover.AddText(col, row + i++, "Payment: {0}/year").Format().Align().SetWork(new UIItemWork
+                {
+                    Formatter = (ibase) => new object[] { GetTotalMonthlyPayment(town).ToString("#,##0") },
+                });
                 uiCover.AddCompositeSlider(col, row + i++, $"Base Tax:", 0.50f, 10.00f, Instance.TaxRate[town.buildData.id], "{0}/month").SetWork(new UIItemWork
                 {
                     Formatter = (ibase) => new object[] { GetBaseTax(town) },
@@ -633,10 +639,12 @@ namespace MOD_nE7UL2.Mod
                             if (GetBuildProperty(town) > cost)
                             {
                                 BuildingArrangeEvent.Build(town, em);
+                                UIHelper.GetUICustomBase(UIType.NPCSearch).Dispose();
+                                g.ui.MsgBox("Town", $"Built {GameTool.LS(em.BuildingName)}");
                             }
                             else
                             {
-                                g.ui.MsgBox("Info", $"You cant build this building with current budget!{Environment.NewLine}{GetBuildProperty(town):#,##0}");
+                                g.ui.MsgBox("Town", $"You cant build this building with current budget!{Environment.NewLine}{GetBuildProperty(town):#,##0}");
                             }
                         }, "Build").Format().Align(TextAnchor.MiddleCenter);
                         c++;
