@@ -96,7 +96,7 @@ namespace MOD_nE7UL2.Mod
         {
             Instance.ArrDic.Add(Instance.GetArrDicKey(build, e));
             e.Build(build);
-            MapBuildPropertyEvent.AddBuildProperty(build, GetBuildingCost(build, e));
+            MapBuildPropertyEvent.AddBuildProperty(build, -GetBuildingCost(build, e));
         }
 
         public static long GetBuildingCost(MapBuildBase build, BuildingCostEnum e)
