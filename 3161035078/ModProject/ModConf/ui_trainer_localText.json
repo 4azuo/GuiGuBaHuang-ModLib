@@ -43,5 +43,7 @@
 	{ "id": -1000002041, "key": "trainer041", "ch": "你可以传送到任何地方。","en": "You can teleport to anywhere." },
 	{ "id": -1000002042, "key": "trainer042", "ch": "+10,000 名声","en": "+10,000 Reputation" },
 	{ "id": -1000002043, "key": "trainer043", "ch": "-10,000 名声","en": "-10,000 Reputation" },
-	{ "id": -1000002044, "key": "trainer044", "ch": "你已经出现在地图上了！", "en": "You have to on map!" }
+	{ "id": -1000002044, "key": "trainer044", "ch": "你已经出现在地图上了！", "en": "You have to on map!" },
+	{ "id": -1000002045, "key": "trainer045", "ch|en": "Add breakthrough-items to your inventory!" },
+	{ "id": -1000002046, "key": "trainer046", "ch|en": "The items were added!" },
 ]

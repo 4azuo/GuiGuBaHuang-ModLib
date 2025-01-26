@@ -640,7 +640,7 @@ namespace MOD_nE7UL2.Mod
                             {
                                 BuildingArrangeEvent.Build(town, em);
                                 UIHelper.GetUICustomBase(UIType.NPCSearch).Dispose();
-                                g.ui.MsgBox("Town", $"Built {GameTool.LS(em.BuildingName)}");
+                                g.ui.MsgBox("Town", $"Built {GameTool.LS(em.BuildingName)}!");
                             }
                             else
                             {

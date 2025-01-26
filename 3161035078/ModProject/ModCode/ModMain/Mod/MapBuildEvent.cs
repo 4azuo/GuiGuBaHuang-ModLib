@@ -60,7 +60,7 @@ namespace MOD_nE7UL2.Mod
 
         public static void MonstWave(MapBuildTown town)
         {
-
+            
         }
 
         public static void MonstWave(MapBuildSchool school)

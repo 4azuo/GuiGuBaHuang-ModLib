@@ -1,4 +1,5 @@
-﻿using MOD_nE7UL2.Const;
+﻿using EBattleTypeData;
+using MOD_nE7UL2.Const;
 using ModLib.Enum;
 using ModLib.Mod;
 using System.Collections.Generic;
@@ -221,12 +222,6 @@ namespace MOD_nE7UL2.Mod
                     (g.world.playerUnit.data.school?.schoolData.GetSchoolIntim(wunit) ?? 0) <= -200 ||
                     (wunit.data.school?.schoolData.GetSchoolIntim(g.world.playerUnit) ?? 0) <= -200
                 );
-        }
-
-        public override void OnBattleUnitInto(UnitCtrlBase e)
-        {
-            base.OnBattleUnitInto(e);
-            e.anim.playDieAnim = false;
         }
     }
 }
