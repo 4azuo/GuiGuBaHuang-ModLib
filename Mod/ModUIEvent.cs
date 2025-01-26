@@ -8,7 +8,7 @@ namespace ModLib.Mod
         public override void OnTimeUpdate()
         {
             base.OnTimeUpdate();
-            UIHelper.UpdateAllUI();
+            UIHelper.UpdateAllUI(x => x.IsAutoUpdate);
         }
     }
 }
