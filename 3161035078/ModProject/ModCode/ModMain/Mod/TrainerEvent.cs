@@ -5,6 +5,7 @@ using ModLib.Object;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using UnhollowerBaseLib;
 using UnityEngine;
 
 namespace MOD_nE7UL2.Mod
@@ -15,10 +16,15 @@ namespace MOD_nE7UL2.Mod
         public static TrainerEvent Instance { get; set; }
 
         public const string TITLE = "Mini Trainer";
-        public const float TRAINER_BTN_WIDTH = 200;
-        public const float TRAINER_BTN_HEIGHT = 36;
-        public const float TELE_BTN_WIDTH = 250;
-        public const float TELE_BTN_HEIGHT = 28;
+        public const float PAGE1_BTN_WIDTH = 200;
+        public const float PAGE1_BTN_HEIGHT = 38;
+        public const int PAGE1_FONT_SIZE = 15;
+        public const float PAGE2_BTN_WIDTH = 250;
+        public const float PAGE2_BTN_HEIGHT = 28;
+        public const int PAGE2_FONT_SIZE = 13;
+        public const float PAGE3_BTN_WIDTH = 210;
+        public const float PAGE3_BTN_HEIGHT = 50;
+        public const int PAGE3_FONT_SIZE = 13;
         public const int MAX_NUMBER = 100000000;
 
         private static readonly Dictionary<int, MultiValue> TELE_AREA_COL = new Dictionary<int, MultiValue>
@@ -62,6 +68,14 @@ namespace MOD_nE7UL2.Mod
                     OpenTrainer(1);
                 else
                     uiTrainer.Pages[1].Active();
+            }
+            else
+            if (Input.GetKey(KeyCode.LeftControl) && Input.GetKeyDown(KeyCode.Alpha3))
+            {
+                if (uiTrainer == null)
+                    OpenTrainer(2);
+                else
+                    uiTrainer.Pages[2].Active();
             }
         }
 
@@ -334,17 +348,57 @@ namespace MOD_nE7UL2.Mod
                 }
             });
 
+            //page 3
+            uiTrainer.AddPage((ui) =>
+            {
+                uiTrainer.AddText(uiTrainer.MidCol, uiTrainer.FirstRow, GameTool.LS("trainer045")).Format(Color.red, 17);
+
+                int col = 2, row = 2, c = 0;
+                foreach (var conf in g.conf.roleGrade._allConfList)
+                {
+                    if (conf.itemShowA != "0" || conf.itemShowB != "0")
+                    {
+                        FormatButton3(uiTrainer.AddButton(col + 6 * (c / 13), row + 2 * (c % 13), () => AddBreakthroughItems(conf), $"{GameTool.LS(conf.gradeName)} - {GameTool.LS(conf.phaseName)}{Environment.NewLine}{GameTool.LS(conf.qualityName)}"));
+                        c++;
+                    }
+                }
+            });
+
             uiTrainer.Pages[defPage].Active();
         }
 
         private void FormatButton1(UIItemButton btn)
         {
-            btn.Format(Color.black, 15).Size(TRAINER_BTN_WIDTH, TRAINER_BTN_HEIGHT);
+            btn.Format(Color.black, PAGE1_FONT_SIZE).Size(PAGE1_BTN_WIDTH, PAGE1_BTN_HEIGHT);
         }
 
         private void FormatButton2(UIItemButton btn)
         {
-            btn.Format(Color.black, 13).Size(TELE_BTN_WIDTH, TELE_BTN_HEIGHT);
+            btn.Format(Color.black, PAGE2_FONT_SIZE).Size(PAGE2_BTN_WIDTH, PAGE2_BTN_HEIGHT);
+        }
+
+        private void FormatButton3(UIItemButton btn)
+        {
+            btn.Format(Color.black, PAGE3_FONT_SIZE).Size(PAGE3_BTN_WIDTH, PAGE3_BTN_HEIGHT);
+        }
+
+        private void AddBreakthroughItems(ConfRoleGradeItem conf)
+        {
+            if (conf.itemShowA != "0")
+            {
+                foreach (var itemId in conf.itemShowA.Split(new char[] { '_' }, StringSplitOptions.RemoveEmptyEntries))
+                {
+                    g.world.playerUnit.AddUnitProp(itemId.Parse<int>(), 1);
+                }
+            }
+            if (conf.itemShowB != "0")
+            {
+                foreach (var itemId in conf.itemShowB.Split(new char[] { '_' }, StringSplitOptions.RemoveEmptyEntries))
+                {
+                    g.world.playerUnit.AddUnitProp(itemId.Parse<int>(), 1);
+                }
+            }
+            g.ui.MsgBox("Info", GameTool.LS("trainer046"));
         }
 
         private void Recover()
