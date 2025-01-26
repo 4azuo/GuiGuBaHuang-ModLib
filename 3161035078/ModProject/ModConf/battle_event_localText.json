@@ -2,26 +2,63 @@
 	{
 		"id": "480110100",
 		"key": "battleevent480110100",
-		"ch": "哈哈哈！战利品是我的！","en": "Ha ha ha! The loot is mine! All of it!",
+		"ch": "哈哈哈！战利品是我的！",
+		"en": "Ha ha ha! The loot is mine! All of it!",
 	},
 	{
 		"id": "480110200",
 		"key": "battleevent480110200",
-		"ch": "让我来帮助你","en": "Let me help!",
+		"ch": "让我来帮助你",
+		"en": "Let me help!",
 	},
 	{
 		"id": "480110300",
 		"key": "battleevent480110300",
-		"ch": "別動我們門派的人！","en": "Don't mess with our sect member!",
+		"ch": "別動我們門派的人！",
+		"en": "Don't mess with our sect member!",
 	},
 	{
 		"id": "480110400",
 		"key": "battleevent480110400",
-		"ch": "城內禁止動武！","en": "You are not allowed to fight in town!",
+		"ch": "城內禁止動武！",
+		"en": "You are not allowed to fight in town!",
 	},
 	{
 		"id": "480110500",
 		"key": "battleevent480110500",
-		"ch": "我已受夠你！下九幽去！","en": "I have enough with you! Go to hell!",
+		"ch": "我已受夠你！下九幽去！",
+		"en": "I have enough with you! Go to hell!",
+	},
+	{
+		"id": "480111990",
+		"key": "battleevent480111990typeDesc",
+		"ch|en": "War",
+	},
+	{
+		"id": "480112990",
+		"key": "battleevent480112990name",
+		"ch|en": "Town War",
+	},
+	{
+		"id": "480113990",
+		"key": "battleevent480113990vicDesc",
+		"ch": "击败对方。",
+		"tc": "擊敗對方。",
+		"en": "Defeat your opponent.",
+		"kr": "상대 격파."
+	},
+	{
+	{
+		"id": "480112991",
+		"key": "battleevent480112991name",
+		"ch|en": "Monster Wave",
+	},
+	{
+		"id": "480113991",
+		"key": "battleevent480113991vicDesc",
+		"ch": "击杀所有怪物。",
+		"tc": "擊殺所有怪物。",
+		"en": "Kill all monsters.",
+		"kr": "모든 괴물 처치."
 	}
 ]

@@ -22,7 +22,7 @@
         public const string REAL_MARKET_EVENT2 = "RealMarketEvent2";
         public const string REAL_STORAGE_EVENT = "RealStorageEvent";
         public const string BUILDING_ARRANGE_EVENT = "BuildingArrangeEvent";
-        public const string MAP_BUILD_EVENT = "MapBuildEvent";
+        public const string MAP_BUILD_BATTLE_EVENT = "MapBuildBattleEvent";
         public const string MAP_BUILD_PROPERTY_EVENT = "MapBuildPropertyEvent";
         public const string MISSION_DECLARE_EVENT = "MissionDeclareEvent";
         public const string HIRE_PEOPLE_EVENT = "HirePeopleEvent";

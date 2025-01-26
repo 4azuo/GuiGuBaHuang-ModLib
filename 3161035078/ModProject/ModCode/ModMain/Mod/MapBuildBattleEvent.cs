@@ -6,11 +6,14 @@ using UnityEngine;
 
 namespace MOD_nE7UL2.Mod
 {
-    [Cache(ModConst.MAP_BUILD_EVENT)]
-    public class MapBuildEvent : ModEvent
+    [Cache(ModConst.MAP_BUILD_BATTLE_EVENT)]
+    public class MapBuildBattleEvent : ModEvent
     {
         public const float MONST_WAVE_RATE = 1f;
         public const float TOWN_WAR_RATE = 0.4f;
+
+        public const int TOWN_WAR_DUNGEON_BASE_ID = 480110990;
+        public const int MONST_WAVE_DUNGEON_BASE_ID = 480110991;
 
         public Dictionary<string, int> LastYearEventHappen { get; set; } = new Dictionary<string, int>();
 
@@ -55,17 +58,17 @@ namespace MOD_nE7UL2.Mod
 
         public static void TownWar(MapBuildTown town)
         {
-
+            g.world.battle.IntoBattleInit(g.world.playerUnit.GetUnitPos(), g.conf.dungeonBase.GetItem(TOWN_WAR_DUNGEON_BASE_ID), 1);
         }
 
         public static void MonstWave(MapBuildTown town)
         {
-            
+            g.world.battle.IntoBattleInit(g.world.playerUnit.GetUnitPos(), g.conf.dungeonBase.GetItem(MONST_WAVE_DUNGEON_BASE_ID), 1);
         }
 
         public static void MonstWave(MapBuildSchool school)
         {
-
+            g.world.battle.IntoBattleInit(g.world.playerUnit.GetUnitPos(), g.conf.dungeonBase.GetItem(MONST_WAVE_DUNGEON_BASE_ID), 1);
         }
     }
 }

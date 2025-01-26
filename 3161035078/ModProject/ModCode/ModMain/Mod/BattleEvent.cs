@@ -1,5 +1,4 @@
-﻿using EBattleTypeData;
-using MOD_nE7UL2.Const;
+﻿using MOD_nE7UL2.Const;
 using ModLib.Enum;
 using ModLib.Mod;
 using System.Collections.Generic;

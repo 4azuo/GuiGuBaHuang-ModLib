@@ -32,7 +32,7 @@
 
 	//battle
 	"BattleEvent": 5000,
-	"MapBuildEvent": 5003,
+	"MapBuildBattleEvent": 5003,
 	"MostStrongerEvent": 5005,
 	"RealTrialEvent": 5010,
 	"SpiritlockEvent": 5020,
