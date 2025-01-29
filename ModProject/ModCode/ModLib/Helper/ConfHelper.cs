@@ -3,10 +3,13 @@ using System;
 using System.IO;
 using System.Linq;
 using System.Reflection;
+using UnhollowerBaseLib;
 
 public static class ConfHelper
 {
     private const string CONF_FOLDER = "ModConf";
+    private static readonly char KEY_SPLIT_CHAR = '|';
+    private static readonly char[] VALUE_SPLIT_CHARS = new char[] { '|', '_', '-', ',', ';' };
 
     public static string GetConfFilePath(string modId, string fileName, string subFolder = "")
     {
@@ -72,9 +75,29 @@ public static class ConfHelper
             {
                 foreach (var p in item)
                 {
-                    foreach (var n in p.Name.ToString().Split('|'))
+                    var ns = p.Name.ToString().Split(KEY_SPLIT_CHAR);
+                    if (ns.Length > 1)
                     {
-                        ObjectHelper.SetValue(confItem, n, p.Value, true);
+                        var v = p.Value;
+                        foreach (var n in ns)
+                        {
+                            ObjectHelper.SetValue(confItem, n, v, true);
+                            //ObjectHelper.SetValue(confItem, n, v, true, (Func<Type, object>)((t) =>
+                            //{
+                            //    if (t.IsSubclassOf(typeof(Il2CppArrayBase<>)))
+                            //    {
+                            //        dynamic v2 = null;
+                            //        foreach (var s in VALUE_SPLIT_CHARS)
+                            //        {
+                            //            v2 = v.Split(s);
+                            //            if (v2.Length > 1)
+                            //                return v2;
+                            //        }
+                            //        return v2;
+                            //    }
+                            //    return null;
+                            //}));
+                        }
                     }
                 }
             }
