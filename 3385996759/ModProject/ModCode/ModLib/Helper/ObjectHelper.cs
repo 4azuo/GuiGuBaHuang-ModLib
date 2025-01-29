@@ -64,29 +64,53 @@ public static class ObjectHelper
         }
     }
 
-    public static object GetValue(this object obj, string fieldNm, bool ignoreError = false)
+    public static FieldInfo GetField(this object obj, string fieldNm)
+    {
+        return obj.GetType().GetField(fieldNm);
+    }
+
+    public static PropertyInfo GetProperty(this object obj, string fieldNm)
+    {
+        return obj.GetType().GetProperty(fieldNm);
+    }
+
+    public static object GetValue(this object obj, string fieldNm, bool ignorePropertyNotFoundError = false)
     {
         var prop = obj.GetType().GetProperty(fieldNm);
         if (prop == null)
         {
-            if (ignoreError)
+            if (ignorePropertyNotFoundError)
                 return null;
             throw new NullReferenceException();
         }
         return prop.GetValue(obj);
     }
 
-    public static void SetValue(this object obj, string fieldNm, object newValue, bool ignoreError = false)
+    public static void SetValue(this object obj, string fieldNm, object newValue, bool ignorePropertyNotFoundError = false, Func<Type, object> customParser = null)
     {
         var prop = obj.GetType().GetProperty(fieldNm);
         if (prop == null)
         {
-            if (ignoreError)
+            if (ignorePropertyNotFoundError)
                 return;
             throw new NullReferenceException();
         }
         var type = prop.PropertyType.IsGenericType && prop.PropertyType.GetGenericTypeDefinition() == typeof(Nullable<>) ? Nullable.GetUnderlyingType(prop.PropertyType) : prop.PropertyType;
-        prop.SetValue(obj, ParseHelper.ParseUnknown(newValue, type));
+        if (ParseHelper.TryParseUnknown(newValue, type, out object parsedValue))
+        {
+            prop.SetValue(obj, parsedValue);
+        }
+        else
+        {
+            if (customParser == null)
+            {
+                //ignore
+            }
+            else
+            {
+                prop.SetValue(obj, customParser(type));
+            }
+        }
     }
 
     public static bool IsDeclaredMethod(this object obj, string medName)
