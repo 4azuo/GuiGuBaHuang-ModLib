@@ -11,6 +11,7 @@ public static class ParseHelper
         TypeNameHandling = TypeNameHandling.All,
         PreserveReferencesHandling = PreserveReferencesHandling.Objects,
         NullValueHandling = NullValueHandling.Ignore,
+        //Converters = new List<JsonConverter>() { new Il2CppArrayBaseConverter() },
     };
 
     #region Const
@@ -28,9 +29,20 @@ public static class ParseHelper
     {
         return JsonConvert.DeserializeObject<O>(JsonConvert.SerializeObject(value, JSON_PARSER_CONF));
     }
+
     public static object ParseJson(this object value, Type type)
     {
         return JsonConvert.DeserializeObject(JsonConvert.SerializeObject(value, JSON_PARSER_CONF), type);
+    }
+
+    public static O Il2CppParseJson<O>(this Il2CppSystem.Object value)
+    {
+        return Il2CppNewtonsoft.Json.JsonConvert.DeserializeObject<O>(Il2CppNewtonsoft.Json.JsonConvert.SerializeObject(value));
+    }
+
+    public static object Il2CppParseJson(this Il2CppSystem.Object value, Il2CppSystem.Type type)
+    {
+        return Il2CppNewtonsoft.Json.JsonConvert.DeserializeObject(Il2CppNewtonsoft.Json.JsonConvert.SerializeObject(value), type);
     }
 
     /// <summary>
@@ -42,6 +54,20 @@ public static class ParseHelper
     public static object ParseUnknown(this object value, Type toType)
     {
         return PARSER.MakeGenericMethod(toType).Invoke(null, new object[] { value, null });
+    }
+
+    public static bool TryParseUnknown(this object value, Type toType, out object rs)
+    {
+        try
+        {
+            rs = value.ParseUnknown(toType);
+            return true;
+        }
+        catch
+        {
+            rs = null;
+            return false;
+        }
     }
 
     /// <summary>
@@ -69,5 +95,15 @@ public static class ParseHelper
             DebugHelper.WriteLine(ex);
             return def;
         }
+    }
+
+    /// <summary>
+    /// JSONに変換
+    /// </summary>
+    /// <param name="value"></param>
+    /// <returns></returns>
+    public static string ToJson(this object value)
+    {
+        return JsonConvert.SerializeObject(value, JSON_PARSER_CONF);
     }
 }
