@@ -457,7 +457,7 @@ public static class UnitHelper
 
     public static List<DataProps.PropsData> GetUnitProps(this WorldUnitBase wunit)
     {
-        return wunit.data.unitData.propData.allProps.ToArray().ToList();
+        return wunit.data.unitData.propData.allProps.ToList();
     }
 
     public static List<DataProps.PropsData> GetUnitProps(this WorldUnitBase wunit, int propID)
@@ -665,9 +665,27 @@ public static class UnitHelper
 
     public static bool IsEnemy(this UnitCtrlBase aUnit, UnitCtrlBase bUnit)
     {
-        if (bUnit == null)
-            return false;
         return MartialTool.GetEnemyType(aUnit)?.Contains(bUnit.data.unitType) ?? false;
+    }
+
+    public static bool IsEnemy(this UnitCtrlBase aUnit, UnitType ut)
+    {
+        return MartialTool.GetEnemyType(aUnit)?.Contains(ut) ?? false;
+    }
+
+    public static bool IsEnemy(this UnitType aUt, UnitType bUt)
+    {
+        return MartialTool.GetEnemyType(aUt)?.Contains(bUt) ?? false;
+    }
+
+    public static bool IsPotmon(this UnitCtrlBase cunit)
+    {
+        return MartialTool.IsPotmonUnit(cunit);
+    }
+
+    public static bool IsArtifactUnit(this UnitCtrlBase cunit)
+    {
+        return MartialTool.IsArtifactUnit(cunit);
     }
 
     public static List<UnitCtrlBase> FindNearCEnemys(this UnitCtrlBase cunit, float radius)
