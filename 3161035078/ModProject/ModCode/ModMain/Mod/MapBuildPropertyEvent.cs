@@ -47,7 +47,7 @@ namespace MOD_nE7UL2.Mod
                 //default budget
                 if (!Budget.ContainsKey(town.buildData.id))
                 {
-                    Budget.Add(town.buildData.id, Math.Pow(2, town.gridData.areaBaseID).Parse<long>() * 300);
+                    AddBuildProperty(town, Math.Pow(2, town.gridData.areaBaseID).Parse<long>() * 300);
                 }
                 //town master & guardians
                 if (!TownMasters.ContainsKey(town.buildData.id))
@@ -76,7 +76,7 @@ namespace MOD_nE7UL2.Mod
                     var tax = GetTax(town, g.world.playerUnit);
                     if (g.world.playerUnit.GetUnitMoney() > tax)
                     {
-                        Budget[town.buildData.id] += tax;
+                        AddBuildProperty(town, tax);
                         g.world.playerUnit.AddUnitMoney(-tax);
                         PayTaxTown.Add(town.buildData.id);
                     }
@@ -148,7 +148,7 @@ namespace MOD_nE7UL2.Mod
                             g.ui.MsgBox("Town", "Are you sure about adding this person?", MsgBoxButtonEnum.YesNo, () =>
                             {
                                 Hire(town, uiCover.UI.unit, TOWN_GUARDIAN_LUCK_ID);
-                                Instance.Budget[town.buildData.id] -= requiredSpiritStones;
+                                AddBuildProperty(town, -requiredSpiritStones);
                                 g.ui.CloseUI(e.ui);
                             });
                         }, "Hire").Format(Color.black).Size(100, 40).Pos(uiCover.UI.uiProperty.textInTrait1.transform, -1.1f, 0.4f).SetParentTransform(uiCover.UI.uiProperty.textInTrait1.transform);
@@ -189,23 +189,6 @@ namespace MOD_nE7UL2.Mod
                     }
                 }
             }
-            //town data
-            foreach (var town in g.world.build.GetBuilds<MapBuildTown>())
-            {
-                //random tax rate
-                if (!IsTownMaster(town, g.world.playerUnit))
-                    TaxRate[town.buildData.id] = CommonTool.Random(0.70f, 4.00f);
-                //hire more people
-                if (!TownMasters.ContainsKey(town.buildData.id))
-                {
-                    var aroundWUnits = UnitHelper.GetUnitsAround(town.GetOrigiPoint(), 4, false, true).ToArray().Where(x => IsMatchCondWUnit(x)).ToList();
-                    if (aroundWUnits.Count > 0)
-                    {
-                        var guard = aroundWUnits.GetFamousWUnit();
-                        Hire(town, guard, TOWN_GUARDIAN_LUCK_ID);
-                    }
-                }
-            }
         }
 
         public override void OnMonthlyForEachWUnit(WorldUnitBase wunit)
@@ -237,7 +220,7 @@ namespace MOD_nE7UL2.Mod
                     if (wunit.GetUnitMoney() > tax)
                     {
                         wunit.AddUnitMoney(-tax);
-                        Budget[town.buildData.id] += tax;
+                        AddBuildProperty(town, tax);
 
                         //use inn
                         wunit.AddProperty<int>(UnitPropertyEnum.Hp, wunit.GetDynProperty(UnitDynPropertyEnum.HpMax).value);
@@ -247,7 +230,7 @@ namespace MOD_nE7UL2.Mod
                     else
                     {
                         //get out
-                        wunit.data.unitData.relationData.AddHate(GetTownMaster(town).GetUnitId(), 2);
+                        wunit.data.unitData.relationData.AddHate(GetTownMaster(town).GetUnitId(), 1);
                         wunit.SetUnitRandomPos(wunit.GetUnitPos());
                     }
                 }
@@ -274,28 +257,70 @@ namespace MOD_nE7UL2.Mod
                     TownMasters.Add(town.buildData.id, new List<string>());
                 var townMasterData = TownMasters[town.buildData.id];
 
+                //choose new town master
+                var townCouncilWUnits = GetTownGuardians(town);
+                var master = GetTownMaster(town);
+                if (master == null || master.isDie)
+                {
+                    master = townCouncilWUnits.GetFamousWUnit();
+                    var masterId = master.GetUnitId();
+                    master.DelLuck(TOWN_GUARDIAN_LUCK_ID);
+                    master.AddLuck(TOWN_MASTER_LUCK_ID);
+
+                    if (master.IsPlayer())
+                        DramaTool.OpenDrama(BECOME_TOWN_MASTER_DRAMA);
+                }
+
+                if (master.GetUnitId() != g.world.playerUnit.GetUnitId())
+                {
+                    //random tax rate
+                    TaxRate[town.buildData.id] = CommonTool.Random(0.70f, 4.00f);
+
+                    //hire more people
+                    if (GetBuildProperty(town) > GetRequiredSpiritStones(town, master.GetGradeLvl()))
+                    {
+                        var aroundWUnits = UnitHelper.GetUnitsAround(town.GetOrigiPoint(), 4, false, true).ToArray().Where(x => IsMatchCondWUnit(x)).ToList();
+                        if (aroundWUnits.Count > 0)
+                        {
+                            var newGuard = aroundWUnits.GetFamousWUnit();
+                            if (newGuard.IsPlayer())
+                            {
+                                g.ui.MsgBox("Town", $"You received a invitation from {town.name}' Town Master for guardian position?{Environment.NewLine}Do you wanna become a Town Guardian?", MsgBoxButtonEnum.YesNo, () =>
+                                {
+                                    Hire(town, newGuard, TOWN_GUARDIAN_LUCK_ID);
+                                });
+                            }
+                            else
+                            {
+                                Hire(town, newGuard, TOWN_GUARDIAN_LUCK_ID);
+                            }
+                        }
+                    }
+                }
+
                 //budget inc yearly
-                Budget[town.buildData.id] += Math.Pow(2, town.gridData.areaBaseID).Parse<long>() * 200;
+                AddBuildProperty(town, Math.Pow(2, town.gridData.areaBaseID).Parse<long>() * 200);
                 
                 //budget inc from auction
                 var auction = town.GetBuildSub<MapBuildTownAuction>();
                 if (auction != null)
                 {
-                    Budget[town.buildData.id] += Math.Pow(2, town.gridData.areaBaseID).Parse<long>() * 150;
+                    AddBuildProperty(town, Math.Pow(2, town.gridData.areaBaseID).Parse<long>() * 150);
                 }
 
                 //master & guardians 's profit
-                foreach (var wunitId in townMasterData.ToArray())
+                foreach (var wunit in townCouncilWUnits)
                 {
-                    var wunit = g.world.unit.GetUnit(wunitId);
                     if (wunit != null && !wunit.isDie)
                     {
                         if (IsTownMaster(wunit))
                             continue;
+
+                        //payment
                         var profit = GetRequiredSpiritStones(town, wunit);
                         if (Budget[town.buildData.id] > profit)
                         {
-                            Budget[town.buildData.id] -= profit;
+                            AddBuildProperty(town, -profit);
                             wunit.AddUnitMoney(profit);
                         }
                         else
@@ -306,33 +331,12 @@ namespace MOD_nE7UL2.Mod
 
                         if (wunit.IsPlayer())
                             continue;
+                        //come back the town
                         wunit.SetUnitPos(town.GetOrigiPoint());
                     }
                     else
                     {
-                        RemoveFromTownGuardians(wunitId, wunit);
-                    }
-                }
-
-                //choose new town master
-                var townCouncilWUnits = GetTownGuardians(town);
-                var master = GetTownMaster(town);
-                while (master == null)
-                {
-                    master = townCouncilWUnits.GetFamousWUnit();
-                    if (master != null && !master.isDie)
-                    {
-                        var masterId = master.GetUnitId();
-                        master.DelLuck(TOWN_GUARDIAN_LUCK_ID);
-                        master.AddLuck(TOWN_MASTER_LUCK_ID);
-                        townMasterData.Add(masterId);
-
-                        if (master.IsPlayer())
-                            DramaTool.OpenDrama(BECOME_TOWN_MASTER_DRAMA);
-                    }
-                    else
-                    {
-                        master = null;
+                        RemoveFromTownGuardians(wunit?.GetUnitId(), wunit);
                     }
                 }
             }
@@ -537,7 +541,7 @@ namespace MOD_nE7UL2.Mod
             uiPropSelectCount.btnOK.onClick.AddListener((UnityAction)(() =>
             {
                 var town = g.world.playerUnit.GetMapBuild<MapBuildTown>();
-                Instance.Budget[town.buildData.id] += uiPropSelectCount.curSelectCount;
+                AddBuildProperty(town, uiPropSelectCount.curSelectCount);
                 g.world.playerUnit.AddUnitMoney(-uiPropSelectCount.curSelectCount);
                 g.ui.CloseUI(uiPropSelectCount);
                 UIHelper.UpdateAllUI();
@@ -558,7 +562,7 @@ namespace MOD_nE7UL2.Mod
             uiPropSelectCount.btnOK.onClick.RemoveAllListeners();
             uiPropSelectCount.btnOK.onClick.AddListener((UnityAction)(() =>
             {
-                Instance.Budget[town.buildData.id] -= uiPropSelectCount.curSelectCount;
+                AddBuildProperty(town, -uiPropSelectCount.curSelectCount);
                 g.world.playerUnit.AddUnitMoney(uiPropSelectCount.curSelectCount);
                 g.ui.CloseUI(uiPropSelectCount);
                 UIHelper.UpdateAllUI();
@@ -789,10 +793,15 @@ namespace MOD_nE7UL2.Mod
             return rs;
         }
 
-        public static int GetRequiredSpiritStones(MapBuildTown town, WorldUnitBase wunit)
+        public static int GetRequiredSpiritStones(MapBuildTown town, int gradeLvl)
         {
             var k = (Instance.TownMasters.ContainsKey(town.buildData.id) ? Instance.TownMasters[town.buildData.id].Count : 1) + 1;
-            return (Math.Pow(3, wunit.GetGradeLvl()) * 1000 * k).Parse<int>();
+            return (Math.Pow(3, gradeLvl) * 1000 * k).Parse<int>();
+        }
+
+        public static int GetRequiredSpiritStones(MapBuildTown town, WorldUnitBase wunit)
+        {
+            return GetRequiredSpiritStones(town, wunit.GetGradeLvl());
         }
 
         public static int GetRequiredReputations(MapBuildTown town, WorldUnitBase wunit)
