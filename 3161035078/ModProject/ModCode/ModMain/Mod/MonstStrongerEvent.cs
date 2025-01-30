@@ -42,6 +42,12 @@ namespace MOD_nE7UL2.Mod
         public override void OnMonthly()
         {
             Counter++;
+            foreach (var potmon in g.data.dataWorld.data.devilDemonData.potmonData.potMonList)
+            {
+                potmon.monstPropertyScale.atk += (potmon.monstPropertyScale.atk.Parse<int>() * 0.0005f * potmon.grade).Parse<int>();
+                potmon.monstPropertyScale.def += (potmon.monstPropertyScale.def.Parse<int>() * 0.0001f * potmon.grade).Parse<int>();
+                potmon.monstPropertyScale.hp += (potmon.monstPropertyScale.hp.Parse<int>() * 0.001f * potmon.grade).Parse<int>();
+            }
         }
 
         public override void OnBattleUnitDie(UnitDie e)

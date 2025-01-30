@@ -308,7 +308,7 @@ namespace MOD_nE7UL2.Mod
                     AddBuildProperty(town, Math.Pow(2, town.gridData.areaBaseID).Parse<long>() * 150);
                 }
 
-                //master & guardians 's profit
+                //guardians
                 foreach (var wunit in townCouncilWUnits)
                 {
                     if (wunit != null && !wunit.isDie)
@@ -338,6 +338,15 @@ namespace MOD_nE7UL2.Mod
                     {
                         RemoveFromTownGuardians(wunit?.GetUnitId(), wunit);
                     }
+                }
+
+                //master
+                if (!master.IsPlayer())
+                {
+                    var profit = (GetBuildProperty(town) / 10).FixValue(0, 1000000).Parse<int>();
+                    AddBuildProperty(town, -profit);
+                    master.AddUnitMoney(profit);
+                    master.SetUnitPos(town.GetOrigiPoint());
                 }
             }
 
