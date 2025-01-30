@@ -14,7 +14,7 @@ public static class EnumerableHelper
         return rs;
     }
 
-    public static IEnumerable<T> ToList<T>(this Il2CppSystem.Collections.Generic.List<T> lst)
+    public static List<T> ToList<T>(this Il2CppSystem.Collections.Generic.List<T> lst)
     {
         return lst.ToArray().ToList();
     }
