@@ -26,7 +26,7 @@ namespace MOD_nE7UL2.Mod
         {
             base.OnBattleUnitInto(e);
 
-            if (e.IsMonster())
+            if (e.IsMonster() && !e.IsPotmon())
             {
                 var gameLvl = g.data.dataWorld.data.gameLevel.Parse<int>();
                 var monstData = e?.data?.TryCast<UnitDataMonst>();
@@ -35,14 +35,12 @@ namespace MOD_nE7UL2.Mod
                 {
                     if (CommonTool.Random(0.0f, 100.0f).IsBetween(0.0f, SMLocalConfigsEvent.Instance.Calculate(MONST_SHIELD_CHANCE * monstData.grade.value * gameLvl, SMLocalConfigsEvent.Instance.Configs.AddSpecialMonsterRate).Parse<float>()))
                     {
-                        var shield = monstData.maxHP.value;
-                        BattleManashieldEvent.ShieldUp(monstData.unit, shield, int.MaxValue);
+                        BattleManashieldEvent.ShieldUp(monstData.unit, monstData.maxHP.value, int.MaxValue);
                     }
                 }
                 else if (SMLocalConfigsEvent.Instance.Configs.BossHasShield && (monstData.monstType == MonstType.BOSS || monstData.monstType == MonstType.NPC))
                 {
-                    var shield = monstData.maxHP.value;
-                    BattleManashieldEvent.ShieldUp(monstData.unit, shield, int.MaxValue);
+                    BattleManashieldEvent.ShieldUp(monstData.unit, monstData.maxHP.value, int.MaxValue);
                 }
             }
         }
@@ -52,7 +50,7 @@ namespace MOD_nE7UL2.Mod
             base.OnBattleUnitDie(e);
 
             var dieUnit = e.unit;
-            if (dieUnit.IsMonster())
+            if (dieUnit.IsMonster() && !dieUnit.IsPotmon())
             {
                 var gameLvl = g.data.dataWorld.data.gameLevel.Parse<int>();
                 var monstData = dieUnit?.data?.TryCast<UnitDataMonst>();
