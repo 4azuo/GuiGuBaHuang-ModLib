@@ -25,10 +25,10 @@ namespace MOD_nE7UL2.Mod
         private static float _avgGrade;
         private static List<UnitCtrlBase> _teamMember;
         private static List<WorldUnitBase> _aroundUnits;
-        private static readonly int[] friendlyInTraits = new int[] { UnitTraitEnum.Selfless.Parse<int>() };
-        private static readonly int[] enemyInTraits = new int[] { UnitTraitEnum.Wicked.Parse<int>(), UnitTraitEnum.Selfish.Parse<int>(), UnitTraitEnum.Evil.Parse<int>() };
-        private static readonly int[] betrayInTraits = new int[] { UnitTraitEnum.Selfish.Parse<int>(), UnitTraitEnum.Evil.Parse<int>() };
-        private static readonly int[] betrayOutTraits = new int[] { UnitTraitEnum.Power_hungry.Parse<int>() };
+        public static readonly int[] friendlyInTraits = new int[] { UnitTraitEnum.Selfless.Parse<int>() };
+        public static readonly int[] enemyInTraits = new int[] { UnitTraitEnum.Wicked.Parse<int>(), UnitTraitEnum.Selfish.Parse<int>(), UnitTraitEnum.Evil.Parse<int>() };
+        public static readonly int[] betrayInTraits = new int[] { UnitTraitEnum.Selfish.Parse<int>(), UnitTraitEnum.Evil.Parse<int>() };
+        public static readonly int[] betrayOutTraits = new int[] { UnitTraitEnum.Power_hungry.Parse<int>() };
 
         //public override void OnOpenUIEnd(OpenUIEnd e)
         //{
@@ -46,7 +46,7 @@ namespace MOD_nE7UL2.Mod
             _avgGrade = g.world.playerUnit.GetGradeLvl() - 1;
             _aroundUnits = null;
             _teamMember = null;
-            if (g.world.battle.data.isRealBattle)
+            if (g.world.battle.data.isRealBattle && IsJoinableBattle())
             {
                 var player = g.world.playerUnit;
 
@@ -70,7 +70,7 @@ namespace MOD_nE7UL2.Mod
         public override void OnTimeUpdate1s()
         {
             base.OnTimeUpdate1s();
-            if (ModBattleEvent.SceneBattle != null)
+            if (ModBattleEvent.SceneBattle != null && IsJoinableBattle())
             {
                 if (g.world.battle.data.isRealBattle && ModBattleEvent.SceneBattle.battleMap.isStartBattle &&
                     ModBattleEvent.PlayerUnit != null && !ModBattleEvent.PlayerUnit.isDie && !ModBattleEvent.SceneBattle.unit.IsUnitHide(ModBattleEvent.PlayerUnit))
@@ -221,6 +221,12 @@ namespace MOD_nE7UL2.Mod
                     (g.world.playerUnit.data.school?.schoolData.GetSchoolIntim(wunit) ?? 0) <= -200 ||
                     (wunit.data.school?.schoolData.GetSchoolIntim(g.world.playerUnit) ?? 0) <= -200
                 );
+        }
+
+        public static bool IsJoinableBattle()
+        {
+            return !MapBuildBattleEvent.IsBattleTownWar() && !MapBuildBattleEvent.IsBattleMonstWave();
+            //should add self battles
         }
     }
 }

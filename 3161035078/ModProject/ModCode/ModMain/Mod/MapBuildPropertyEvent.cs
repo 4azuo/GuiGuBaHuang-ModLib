@@ -62,6 +62,14 @@ namespace MOD_nE7UL2.Mod
                     }
                 }
             }
+            foreach (var school in g.world.build.GetBuilds<MapBuildSchool>())
+            {
+                //default tax rate
+                if (!TaxRate.ContainsKey(school.buildData.id))
+                {
+                    TaxRate.Add(school.buildData.id, 1f);
+                }
+            }
         }
 
         public override void OnOpenUIEnd(OpenUIEnd e)
@@ -343,7 +351,7 @@ namespace MOD_nE7UL2.Mod
                 //master
                 if (!master.IsPlayer())
                 {
-                    var profit = (GetBuildProperty(town) / 10).FixValue(0, 1000000).Parse<int>();
+                    var profit = GetRequiredSpiritStones(town, master) + (GetBuildProperty(town) / 100).FixValue(0, int.MaxValue).Parse<int>();
                     AddBuildProperty(town, -profit);
                     master.AddUnitMoney(profit);
                     master.SetUnitPos(town.GetOrigiPoint());
@@ -408,6 +416,9 @@ namespace MOD_nE7UL2.Mod
 
         public static int GetBaseTax(MapBuildBase buildbase)
         {
+            //default tax rate
+            if (!Instance.TaxRate.ContainsKey(buildbase.buildData.id))
+                Instance.TaxRate[buildbase.buildData.id] = 1f;
             //base on area
             return SMLocalConfigsEvent.Instance.Calculate(Convert.ToInt32(InflationaryEvent.CalculateInflationary((
                 Math.Pow(2, buildbase.gridData.areaBaseID) * FIXING_RATE * Instance.TaxRate[buildbase.buildData.id]
@@ -690,11 +701,17 @@ namespace MOD_nE7UL2.Mod
             ui.UpdateUI();
             isShowManageTeamUI2 = true;
 
-            if (IsTownMaster(g.world.playerUnit))
+            if (IsTownMaster(g.world.playerUnit) && !IsTownGuardian(town, g.world.playerUnit))
             {
                 var uiCover = new UICover<UINPCSearch>(ui);
                 {
-                    uiCover.AddButton(uiCover.LastCol - 8, uiCover.LastRow - 8, () => MapBuildBattleEvent.TownWar(town), "Declare War").Format(Color.black, 17).Align(TextAnchor.MiddleCenter).Size(300, 60);
+                    uiCover.AddButton(uiCover.LastCol - 8, uiCover.LastRow - 8, () =>
+                    {
+                        g.ui.MsgBox("Town", "Are you sure about declaring war with this town?", MsgBoxButtonEnum.YesNo, () =>
+                        {
+                            MapBuildBattleEvent.TownWar(town, GetGuardTown(g.world.playerUnit));
+                        });
+                    }, "Declare War").Format(Color.black, 17).Align(TextAnchor.MiddleCenter).Size(300, 60);
                 }
                 uiCover.UpdateUI();
             }

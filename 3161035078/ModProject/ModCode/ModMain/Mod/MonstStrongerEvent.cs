@@ -42,11 +42,12 @@ namespace MOD_nE7UL2.Mod
         public override void OnMonthly()
         {
             Counter++;
-            foreach (var potmon in g.data.dataWorld.data.devilDemonData.potmonData.potMonList)
+            foreach (var potmonData in g.data.dataWorld.data.devilDemonData.potmonData.potMonList)
             {
-                potmon.monstPropertyScale.atk += (potmon.monstPropertyScale.atk.Parse<int>() * 0.0005f * potmon.grade).Parse<int>();
-                potmon.monstPropertyScale.def += (potmon.monstPropertyScale.def.Parse<int>() * 0.0001f * potmon.grade).Parse<int>();
-                potmon.monstPropertyScale.hp += (potmon.monstPropertyScale.hp.Parse<int>() * 0.001f * potmon.grade).Parse<int>();
+                var potmon = g.world.unit.GetUnit(potmonData.unitId);
+                potmon.AddProperty<int>(UnitPropertyEnum.Attack, (potmon.GetProperty<int>(UnitPropertyEnum.Attack) * 0.0005f * potmonData.grade).Parse<int>());
+                potmon.AddProperty<int>(UnitPropertyEnum.Defense, (potmon.GetProperty<int>(UnitPropertyEnum.Defense) * 0.0001f * potmonData.grade).Parse<int>());
+                potmon.AddProperty<int>(UnitPropertyEnum.HpMax, (potmon.GetProperty<int>(UnitPropertyEnum.HpMax) * 0.001f * potmonData.grade).Parse<int>());
             }
         }
 
@@ -97,6 +98,14 @@ namespace MOD_nE7UL2.Mod
                 def = monstData.defense.baseValue;
                 mhp = monstData.maxHP.baseValue;
                 //DebugHelper.WriteLine($"5: {atk}, {def}, {mhp}");
+
+                //potmon
+                if (e.IsPotmon())
+                {
+                    monstData.attack.baseValue += (ModBattleEvent.PlayerUnit.data.attack.value * 0.005f).Parse<int>();
+                    monstData.defense.baseValue += (ModBattleEvent.PlayerUnit.data.defense.value * 0.001f).Parse<int>();
+                    monstData.maxHP.baseValue += (ModBattleEvent.PlayerUnit.data.maxHP.value * 0.01f).Parse<int>();
+                }
 
                 //additional
                 //DebugHelper.WriteLine("6");
