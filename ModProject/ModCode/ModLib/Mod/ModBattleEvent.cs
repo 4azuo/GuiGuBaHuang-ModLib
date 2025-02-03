@@ -1,6 +1,5 @@
 ﻿using EBattleTypeData;
 using ModLib.Enum;
-using Mono.CSharp;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
@@ -232,6 +231,8 @@ namespace ModLib.Mod
         public static Il2CppSystem.Collections.Generic.List<UnitCtrlBase> BattleUnits => SceneType.battle.unit.allUnit;
         [JsonIgnore]
         public static Il2CppSystem.Collections.Generic.List<UnitCtrlBase> BattleUnitsIncludeDie => SceneType.battle.unit.allUnitIncludeDie;
+        [JsonIgnore]
+        public static List<UnitCtrlBase> BattleMonsters => BattleUnits.ToArray().Where(x => x.IsMonster()).ToList();
         [JsonIgnore]
         public static ModBattleEvent BattleInfo { get; private set; }
         [JsonIgnore]
