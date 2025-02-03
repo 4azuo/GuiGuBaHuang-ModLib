@@ -1,7 +1,7 @@
-﻿using MOD_nE7UL2.Const;
+﻿using EBattleTypeData;
+using MOD_nE7UL2.Const;
 using ModLib.Enum;
 using ModLib.Mod;
-using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -14,6 +14,7 @@ namespace MOD_nE7UL2.Mod
     {
         public static MapBuildBattleEvent Instance { get; set; }
 
+        public const int JOIN_RANGE = 4;
         public const float MONST_WAVE_RATE = 1f;
         public const float TOWN_WAR_RATE = 0.4f;
 
@@ -23,10 +24,13 @@ namespace MOD_nE7UL2.Mod
 
         public Dictionary<string, int> LastYearEventHappen { get; set; } = new Dictionary<string, int>();
 
-        [JsonIgnore]
-        public int TeamAUnitCount { get; set; }
-        [JsonIgnore]
-        public int TeamBUnitCount { get; set; }
+        public static int playerSide;
+        public static int teamAUnitCount;
+        public static int teamBUnitCount;
+        public static List<WorldUnitBase> teamAWUnits;
+        public static List<WorldUnitBase> teamBWUnits;
+        public static List<UnitCtrlBase> teamACUnits;
+        public static List<UnitCtrlBase> teamBCUnits;
 
         public static readonly int[] enemyInTraits = new int[] { UnitTraitEnum.Evil.Parse<int>() };
         public static readonly int[] enemyOutTraits = new int[] { UnitTraitEnum.Power_hungry.Parse<int>(), UnitTraitEnum.Glory_Hound.Parse<int>() };
@@ -116,7 +120,20 @@ namespace MOD_nE7UL2.Mod
 
         public static void JoinTownWar(MapBuildTown townA_def, MapBuildTown townB_atk)
         {
+            //player side
+            if (MapBuildPropertyEvent.IsTownGuardian(townA_def, g.world.playerUnit))
+                playerSide = 1;
+            else if (MapBuildPropertyEvent.IsTownGuardian(townB_atk, g.world.playerUnit))
+                playerSide = 2;
+            else if (townA_def.GetOpenBuildPoints().ToList().All(x => x != g.world.playerUnit.GetUnitPos()))
+                playerSide = 1;
+            else if (townB_atk.GetOpenBuildPoints().ToList().All(x => x != g.world.playerUnit.GetUnitPos()))
+                playerSide = 2;
+            else
+                playerSide = 1;
+            //battle info
             CalTownWarInfo(townA_def, townB_atk);
+            //battle into
             g.world.battle.IntoBattleInit(townA_def.GetOrigiPoint(), g.conf.dungeonBase.GetItem(TOWN_WAR_DUNGEON_BASE_ID), 1, new WorldBattleData
             {
                 isRealBattle = true,
@@ -182,7 +199,11 @@ namespace MOD_nE7UL2.Mod
 
         public static void JoinMonstWave(MapBuildBase teamAbuildBase, int dungeonBaseId)
         {
+            //player side
+            playerSide = 1;
+            //battle info
             CalMonstWaveInfo(teamAbuildBase);
+            //battle into
             g.world.battle.IntoBattleInit(g.world.playerUnit.GetUnitPos(), g.conf.dungeonBase.GetItem(dungeonBaseId), 1, new WorldBattleData
             {
                 isRealBattle = true,
@@ -207,27 +228,98 @@ namespace MOD_nE7UL2.Mod
                 g.world.battle.data.dungeonBaseItem.id == SECT_MONST_WAVE_DUNGEON_BASE_ID;
         }
 
-        public static void CalTownWarInfo(MapBuildBase teamAbuildBase, MapBuildBase teamBbuildBase)
+        public static void CalTownWarInfo(MapBuildTown townA_def, MapBuildTown townB_atk)
         {
-            Instance.TeamAUnitCount = 10 + Math.Sqrt(MapBuildPropertyEvent.GetBuildProperty(teamAbuildBase)).Parse<int>() / 10;
-            Instance.TeamBUnitCount = 10 + Math.Sqrt(MapBuildPropertyEvent.GetBuildProperty(teamBbuildBase)).Parse<int>() / 10;
+            teamAUnitCount = 10 + Math.Sqrt(MapBuildPropertyEvent.GetBuildProperty(townA_def)).Parse<int>() / 10;
+            teamAWUnits = g.world.unit.GetUnitExact(townA_def.GetOrigiPoint(), JOIN_RANGE, false, false).ToList();
+            teamBUnitCount = 10 + Math.Sqrt(MapBuildPropertyEvent.GetBuildProperty(townB_atk)).Parse<int>() / 10;
+            teamBWUnits = MapBuildPropertyEvent.GetTownGuardians(townB_atk);
         }
 
-        public static void CalMonstWaveInfo(MapBuildBase teamAbuildBase)
+        public static void CalMonstWaveInfo(MapBuildBase baseA_def)
         {
-            Instance.TeamAUnitCount = 10 + Math.Sqrt(MapBuildPropertyEvent.GetBuildProperty(teamAbuildBase)).Parse<int>() / 10;
-            Instance.TeamBUnitCount = 100 + g.world.run.roundMonth + Instance.TeamAUnitCount + Math.Pow(2, teamAbuildBase.gridData.areaBaseID).Parse<int>();
+            var gameLvl = g.data.dataWorld.data.gameLevel.Parse<int>();
+            teamAUnitCount = 10 + Math.Sqrt(MapBuildPropertyEvent.GetBuildProperty(baseA_def)).Parse<int>() / 10;
+            teamAWUnits = g.world.unit.GetUnitExact(baseA_def.GetOrigiPoint(), JOIN_RANGE, false, false).ToList();
+            teamBUnitCount = 100 + g.world.run.roundMonth + teamAUnitCount * gameLvl + Math.Pow(2, baseA_def.gridData.areaBaseID).Parse<int>();
+            teamBWUnits = null;
+        }
+
+        public static int GetBattleSide(UnitCtrlBase cunit)
+        {
+            if (teamACUnits.Any(x => x.data.createUnitSoleID == cunit.data.createUnitSoleID))
+                return 1;
+            if (teamBCUnits.Any(x => x.data.createUnitSoleID == cunit.data.createUnitSoleID))
+                return 2;
+            return 0;
         }
 
         public override void OnBattleStart(ETypeData e)
         {
-            //base.OnBattleStart(e);
-            //if (g.world.battle.data.dungeonBaseItem.id == TOWN_WAR_DUNGEON_BASE_ID ||
-            //    g.world.battle.data.dungeonBaseItem.id == TOWN_MONST_WAVE_DUNGEON_BASE_ID ||
-            //    g.world.battle.data.dungeonBaseItem.id == SECT_MONST_WAVE_DUNGEON_BASE_ID)
-            //{
-            //    ModBattleEvent.SceneBattle.battleEnd.
-            //}
+            base.OnBattleStart(e);
+            if (ModBattleEvent.SceneBattle != null && (IsBattleTownWar() || IsBattleMonstWave()))
+            {
+                if (IsBattleTownWar())
+                {
+                    var utA = playerSide == 1 ? UnitType.PlayerNPC : UnitType.Monst;
+                    var utB = playerSide == 2 ? UnitType.PlayerNPC : UnitType.Monst;
+                    teamACUnits = teamAWUnits.Select(x => ModBattleEvent.SceneBattle.unit.CreateUnitHuman<UnitCtrlHumanNPC>(x.data, utA)).Cast<UnitCtrlBase>().ToList();
+                    teamBCUnits = teamAWUnits.Select(x => ModBattleEvent.SceneBattle.unit.CreateUnitHuman<UnitCtrlHumanNPC>(x.data, utB)).Cast<UnitCtrlBase>().ToList();
+                }
+                else if (IsBattleMonstWave())
+                {
+                    teamACUnits = teamAWUnits.Select(x => ModBattleEvent.SceneBattle.unit.CreateUnitHuman<UnitCtrlHumanNPC>(x.data, UnitType.PlayerNPC)).Cast<UnitCtrlBase>().ToList();
+                }
+            }
+        }
+
+        public override void OnBattleUnitDie(UnitDie e)
+        {
+            base.OnBattleUnitDie(e);
+            if (ModBattleEvent.SceneBattle != null && (IsBattleTownWar() || IsBattleMonstWave()))
+            {
+                if (e.unit.IsMonster())
+                {
+                    teamBUnitCount--;
+                }
+                else if (e.unit.IsHuman())
+                {
+                    var side = GetBattleSide(e.unit);
+                    var count = side == 1 ? teamAUnitCount : teamBUnitCount;
+                    if (count > 0)
+                    {
+                        e.unit.Resurge(3, (Il2CppSystem.Action)(() =>
+                        {
+                            if (side == 1)
+                                teamAUnitCount--;
+                            else
+                                teamBUnitCount--;
+                        }));
+                    }
+                }
+            }
+        }
+
+        public override void OnBattleEndOnce(BattleEnd e)
+        {
+            base.OnBattleEndOnce(e);
+            if (ModBattleEvent.SceneBattle != null && (IsBattleTownWar() || IsBattleMonstWave()))
+            {
+                teamAWUnits = null;
+                teamBWUnits = null;
+            }
+        }
+
+        [ErrorIgnore]
+        [EventCondition(IsInGame = HandleEnum.Ignore, IsInBattle = HandleEnum.True)]
+        public override void OnTimeUpdate1s()
+        {
+            base.OnTimeUpdate1s();
+            if (ModBattleEvent.SceneBattle != null && 
+                (IsBattleTownWar() || IsBattleMonstWave()) &&
+                ModBattleEvent.BattleMonsters.Count < ())
+            {
+            }
         }
     }
 }
