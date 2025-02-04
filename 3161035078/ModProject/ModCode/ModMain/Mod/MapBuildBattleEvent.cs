@@ -17,6 +17,7 @@ namespace MOD_nE7UL2.Mod
         public const int JOIN_RANGE = 4;
         public const float MONST_WAVE_RATE = 1f;
         public const float TOWN_WAR_RATE = 0.4f;
+        public const int MIN_MONST = 5;
 
         public const int TOWN_WAR_DUNGEON_BASE_ID = 480110990;
         public const int TOWN_MONST_WAVE_DUNGEON_BASE_ID = 480110991;
@@ -140,6 +141,8 @@ namespace MOD_nE7UL2.Mod
                 isSelfBattle = false,
                 schoolID = null,
             });
+            //unallow flee
+            BattleModifyEvent.HideFleeBattle = true;
         }
 
         public static void SkipTownWar(MapBuildTown townA_def, MapBuildTown townB_atk)
@@ -210,6 +213,8 @@ namespace MOD_nE7UL2.Mod
                 isSelfBattle = false,
                 schoolID = null,
             });
+            //unallow flee
+            BattleModifyEvent.HideFleeBattle = true;
         }
 
         public static void SkipMonstWave(MapBuildBase teamAbuildBase)
@@ -276,26 +281,19 @@ namespace MOD_nE7UL2.Mod
         public override void OnBattleUnitDie(UnitDie e)
         {
             base.OnBattleUnitDie(e);
-            if (ModBattleEvent.SceneBattle != null && (IsBattleTownWar() || IsBattleMonstWave()))
+            if (ModBattleEvent.SceneBattle != null && IsBattleTownWar() && e.unit.IsHuman())
             {
-                if (e.unit.IsMonster())
+                var side = GetBattleSide(e.unit);
+                var count = side == 1 ? teamAUnitCount : teamBUnitCount;
+                if (count > 0)
                 {
-                    teamBUnitCount--;
-                }
-                else if (e.unit.IsHuman())
-                {
-                    var side = GetBattleSide(e.unit);
-                    var count = side == 1 ? teamAUnitCount : teamBUnitCount;
-                    if (count > 0)
+                    e.unit.Resurge(3, (Il2CppSystem.Action)(() =>
                     {
-                        e.unit.Resurge(3, (Il2CppSystem.Action)(() =>
-                        {
-                            if (side == 1)
-                                teamAUnitCount--;
-                            else
-                                teamBUnitCount--;
-                        }));
-                    }
+                        if (side == 1)
+                            teamAUnitCount--;
+                        else
+                            teamBUnitCount--;
+                    }));
                 }
             }
         }
@@ -305,6 +303,7 @@ namespace MOD_nE7UL2.Mod
             base.OnBattleEndOnce(e);
             if (ModBattleEvent.SceneBattle != null && (IsBattleTownWar() || IsBattleMonstWave()))
             {
+                BattleModifyEvent.HideFleeBattle = false;
                 teamAWUnits = null;
                 teamBWUnits = null;
             }
@@ -315,9 +314,8 @@ namespace MOD_nE7UL2.Mod
         public override void OnTimeUpdate1s()
         {
             base.OnTimeUpdate1s();
-            if (ModBattleEvent.SceneBattle != null && 
-                (IsBattleTownWar() || IsBattleMonstWave()) &&
-                ModBattleEvent.BattleMonsters.Count < ())
+            if (ModBattleEvent.SceneBattle != null && IsBattleMonstWave() && teamBUnitCount > 0 &&
+                ModBattleEvent.BattleMonsters.Count < MIN_MONST * g.world.playerUnit.data.unitData.pointGridData.areaBaseID)
             {
             }
         }
