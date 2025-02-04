@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 
 public static class ValueHelper
 {
@@ -69,5 +70,10 @@ public static class ValueHelper
             // use relative error
             return diff / (absA + absB) < epsilon;
         }
+    }
+
+    public static int SafeSumInt(params long[] values)
+    {
+        return values.Sum().FixValue(int.MinValue, int.MaxValue).Parse<int>();
     }
 }
