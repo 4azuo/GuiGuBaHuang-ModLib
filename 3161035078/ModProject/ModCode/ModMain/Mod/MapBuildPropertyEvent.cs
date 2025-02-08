@@ -709,7 +709,7 @@ namespace MOD_nE7UL2.Mod
                     {
                         g.ui.MsgBox("Town", "Are you sure about declaring war with this town?", MsgBoxButtonEnum.YesNo, () =>
                         {
-                            MapBuildBattleEvent.TownWar(town, GetGuardTown(g.world.playerUnit));
+                            MapBuildBattleEvent.TownWar(town, GetGuardTown(g.world.playerUnit), true);
                         });
                     }, "Declare War").Format(Color.black, 17).Align(TextAnchor.MiddleCenter).Size(300, 64);
                 }
