@@ -32,12 +32,12 @@
 	{
 		"id": "480111990",
 		"key": "battleevent480111990typeDesc",
-		"ch|en": "War",
+		"ch|en|tc|kr": "War",
 	},
 	{
 		"id": "480112990",
 		"key": "battleevent480112990name",
-		"ch|en": "Town War",
+		"ch|en|tc|kr": "Town War",
 	},
 	{
 		"id": "480113990",
@@ -50,7 +50,7 @@
 	{
 		"id": "480112991",
 		"key": "battleevent480112991name",
-		"ch|en": "Monster Wave",
+		"ch|en|tc|kr": "Monster Wave",
 	},
 	{
 		"id": "480113991",
@@ -59,5 +59,55 @@
 		"tc": "擊殺所有怪物。",
 		"en": "Kill all monsters.",
 		"kr": "모든 괴물 처치."
+	},
+	{
+		"id": "480112880",
+		"key": "monstwave480112880name",
+		"ch|en|tc|kr": "Monster 1",
+	},
+	{
+		"id": "480112881",
+		"key": "monstwave480112881name",
+		"ch|en|tc|kr": "Monster 2",
+	},
+	{
+		"id": "480112882",
+		"key": "monstwave480112882name",
+		"ch|en|tc|kr": "Monster 3",
+	},
+	{
+		"id": "480112883",
+		"key": "monstwave480112883name",
+		"ch|en|tc|kr": "Monster 4",
+	},
+	{
+		"id": "480112884",
+		"key": "monstwave480112884name",
+		"ch|en|tc|kr": "Monster 5",
+	},
+	{
+		"id": "480112885",
+		"key": "monstwave480112885name",
+		"ch|en|tc|kr": "Monster 6",
+	},
+	{
+		"id": "480112886",
+		"key": "monstwave480112886name",
+		"ch|en|tc|kr": "Monster 7",
+	},
+	{
+		"id": "480112887",
+		"key": "monstwave480112887name",
+		"ch|en|tc|kr": "Monster 8",
+	},
+	{
+		"id": "480112888",
+		"key": "monstwave480112888name",
+		"ch|en|tc|kr": "Monster 9",
+	},
+	{
+		"id": "480112889",
+		"key": "monstwave480112889name",
+		"ch|en|tc|kr": "Monster 10",
 	}
 ]

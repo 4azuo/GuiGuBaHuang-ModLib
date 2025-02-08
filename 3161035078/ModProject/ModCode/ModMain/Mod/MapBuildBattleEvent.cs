@@ -17,7 +17,8 @@ namespace MOD_nE7UL2.Mod
         public const int JOIN_RANGE = 4;
         public const float MONST_WAVE_RATE = 1f;
         public const float TOWN_WAR_RATE = 0.4f;
-        public const int MIN_MONST = 5;
+        public const int MIN_MONST = 10;
+        public const int STP_MONST = 5;
 
         public const int TOWN_WAR_DUNGEON_BASE_ID = 480110990;
         public const int TOWN_MONST_WAVE_DUNGEON_BASE_ID = 480110991;
@@ -35,6 +36,7 @@ namespace MOD_nE7UL2.Mod
 
         public static readonly int[] enemyInTraits = new int[] { UnitTraitEnum.Evil.Parse<int>() };
         public static readonly int[] enemyOutTraits = new int[] { UnitTraitEnum.Power_hungry.Parse<int>(), UnitTraitEnum.Glory_Hound.Parse<int>() };
+        public static readonly int[] monstList = new int[] { 480112870, 480112871, 480112872, 480112873, 480112874, 480112875, 480112876, 480112877, 480112878, 480112879 };
 
         public override void OnMonthly()
         {
@@ -314,9 +316,13 @@ namespace MOD_nE7UL2.Mod
         public override void OnTimeUpdate1s()
         {
             base.OnTimeUpdate1s();
+            var areaId = g.world.playerUnit.data.unitData.pointGridData.areaBaseID;
             if (ModBattleEvent.SceneBattle != null && IsBattleMonstWave() && teamBUnitCount > 0 &&
-                ModBattleEvent.BattleMonsters.Count < MIN_MONST * g.world.playerUnit.data.unitData.pointGridData.areaBaseID)
+                ModBattleEvent.BattleMonsters.Count < (MIN_MONST + STP_MONST * areaId))
             {
+                var monstLvl = CommonTool.Random(areaId - 1, areaId + 1).FixValue(0, monstList.Length - 1);
+                var cunit = ModBattleEvent.SceneBattle.unit.CreateUnitMonstNotAddList(monstList[monstLvl], Vector2.zero, UnitType.Monst);
+                teamBUnitCount--;
             }
         }
     }
