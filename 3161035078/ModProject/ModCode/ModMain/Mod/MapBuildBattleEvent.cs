@@ -1,5 +1,6 @@
 ﻿using EBattleTypeData;
 using MOD_nE7UL2.Const;
+using MOD_nE7UL2.Enum;
 using ModLib.Enum;
 using ModLib.Mod;
 using System;
@@ -98,7 +99,7 @@ namespace MOD_nE7UL2.Mod
 
         public static void TownWar(MapBuildTown townA_def, MapBuildTown townB_atk)
         {
-            if (townA_def.GetOpenBuildPoints().ToList().All(x => x != g.world.playerUnit.GetUnitPos()))
+            if (townA_def.GetOpenBuildPoints().ToList().Any(x => x == g.world.playerUnit.GetUnitPos()))
             {
                 JoinTownWar(townA_def, townB_atk);
             }
@@ -149,12 +150,65 @@ namespace MOD_nE7UL2.Mod
 
         public static void SkipTownWar(MapBuildTown townA_def, MapBuildTown townB_atk)
         {
+            //battle info
             CalTownWarInfo(townA_def, townB_atk);
+            //auto battle
+            var teamAPoint = ValueHelper.SumBigNum(teamAWUnits.Select(x =>
+            {
+                return
+                    (x.GetDynProperty(UnitDynPropertyEnum.Attack).value * 3) +
+                    (x.GetDynProperty(UnitDynPropertyEnum.Defense).value * 10) +
+                    (x.GetDynProperty(UnitDynPropertyEnum.HpMax).value) +
+                    (x.GetDynProperty(UnitDynPropertyEnum.MpMax).value * 3) +
+                    (x.GetDynProperty(UnitDynPropertyEnum.SpMax).value * 5) +
+                    (x.GetEquippedArtifacts().Select(a => Math.Pow(2, a.propsInfoBase.grade) * 10000 + Math.Pow(2, a.propsInfoBase.level) * 2000).Sum());
+            }).ToArray());
+            var teamATotalPoint = teamAPoint * teamAUnitCount * /*def point*/1.2;
+            var teamBPoint = ValueHelper.SumBigNum(teamBWUnits.Select(x =>
+            {
+                return
+                    (x.GetDynProperty(UnitDynPropertyEnum.Attack).value * 3) +
+                    (x.GetDynProperty(UnitDynPropertyEnum.Defense).value * 10) +
+                    (x.GetDynProperty(UnitDynPropertyEnum.HpMax).value) +
+                    (x.GetDynProperty(UnitDynPropertyEnum.MpMax).value * 3) +
+                    (x.GetDynProperty(UnitDynPropertyEnum.SpMax).value * 5) +
+                    (x.GetEquippedArtifacts().Select(a => Math.Pow(2, a.propsInfoBase.grade) * 10000 + Math.Pow(2, a.propsInfoBase.level) * 2000).Sum());
+            }).ToArray());
+            var teamBTotalPoint = teamBPoint * teamBUnitCount;
+            //battle end
+            var ratioAB = teamATotalPoint / teamBTotalPoint;
+            var ratioBA = teamBTotalPoint / teamATotalPoint;
+            if (teamATotalPoint >= teamBTotalPoint)
+            {
+                //A win
+                //A damaged
+                if (ratioAB < 2)
+                {
+                    //building damaged
+                    BuildingArrangeEvent.Destroy(townA_def, BuildingCostEnum.GetAllEnums<BuildingCostEnum>().Where(x => BuildingArrangeEvent.IsBuilt(townA_def, x)).ToArray().Random());
+                }
+                MapBuildPropertyEvent.AddBuildProperty(townA_def, -(MapBuildPropertyEvent.GetBuildProperty(townA_def) * ratioBA / 5).Parse<long>());
+                //B damaged
+                MapBuildPropertyEvent.AddBuildProperty(townB_atk, -(MapBuildPropertyEvent.GetBuildProperty(townB_atk) * ratioAB / 10).Parse<long>());
+            }
+            else
+            {
+                //B win
+                //A damaged x2
+                BuildingArrangeEvent.Destroy(townA_def, BuildingCostEnum.GetAllEnums<BuildingCostEnum>().Where(x => BuildingArrangeEvent.IsBuilt(townA_def, x)).ToArray().Random());
+                BuildingArrangeEvent.Destroy(townA_def, BuildingCostEnum.GetAllEnums<BuildingCostEnum>().Where(x => BuildingArrangeEvent.IsBuilt(townA_def, x)).ToArray().Random());
+                var damagedBudget = MapBuildPropertyEvent.GetBuildProperty(townA_def);
+                MapBuildPropertyEvent.AddBuildProperty(townA_def, -damagedBudget);
+                //B damaged
+                MapBuildPropertyEvent.AddBuildProperty(townB_atk, -(MapBuildPropertyEvent.GetBuildProperty(townB_atk) * ratioAB / 5).Parse<long>());
+                //B pillage
+                MapBuildPropertyEvent.AddBuildProperty(townB_atk, damagedBudget);
+            }
         }
 
         public static void MonstWave(MapBuildTown town)
         {
-            if (town.GetOpenBuildPoints().ToList().All(x => x != g.world.playerUnit.GetUnitPos()))
+            if (town.GetOpenBuildPoints().ToList().Any(x => x == g.world.playerUnit.GetUnitPos()))
             {
                 JoinMonstWave(town, TOWN_MONST_WAVE_DUNGEON_BASE_ID);
             }
@@ -221,7 +275,45 @@ namespace MOD_nE7UL2.Mod
 
         public static void SkipMonstWave(MapBuildBase teamAbuildBase)
         {
+            //battle info
             CalMonstWaveInfo(teamAbuildBase);
+            //auto battle
+            var teamAPoint = ValueHelper.SumBigNum(teamAWUnits.Select(x =>
+            {
+                return
+                    (x.GetDynProperty(UnitDynPropertyEnum.Attack).value * 3) +
+                    (x.GetDynProperty(UnitDynPropertyEnum.Defense).value * 10) +
+                    (x.GetDynProperty(UnitDynPropertyEnum.HpMax).value) +
+                    (x.GetDynProperty(UnitDynPropertyEnum.MpMax).value * 3) +
+                    (x.GetDynProperty(UnitDynPropertyEnum.SpMax).value * 5) +
+                    (x.GetEquippedArtifacts().Select(a => Math.Pow(2, a.propsInfoBase.grade) * 10000 + Math.Pow(2, a.propsInfoBase.level) * 2000).Sum());
+            }).ToArray());
+            var teamATotalPoint = teamAPoint * teamAUnitCount * /*def point*/1.2;
+            var gameLvl = g.data.dataWorld.data.gameLevel.Parse<int>();
+            var areaId = teamAbuildBase.gridData.areaBaseID;
+            var teamBPoint = Math.Pow(3, areaId) * 10000 + Math.Pow(3, gameLvl) * 3000;
+            var teamBTotalPoint = teamBPoint * teamBUnitCount;
+            //battle end
+            var ratioAB = teamATotalPoint / teamBTotalPoint;
+            var ratioBA = teamBTotalPoint / teamATotalPoint;
+            if (teamATotalPoint >= teamBTotalPoint)
+            {
+                //A win
+                //A damaged
+                MapBuildPropertyEvent.AddBuildProperty(teamAbuildBase, -(MapBuildPropertyEvent.GetBuildProperty(teamAbuildBase) * ratioBA / 3).Parse<long>());
+            }
+            else
+            {
+                //B win
+                //A damaged
+                foreach (var e in BuildingCostEnum.GetAllEnums<BuildingCostEnum>())
+                {
+                    if (BuildingArrangeEvent.IsBuilt(teamAbuildBase, e))
+                        BuildingArrangeEvent.Destroy(teamAbuildBase, e);
+                }
+                var damagedBudget = MapBuildPropertyEvent.GetBuildProperty(teamAbuildBase);
+                MapBuildPropertyEvent.AddBuildProperty(teamAbuildBase, -damagedBudget);
+            }
         }
 
         public static bool IsBattleTownWar()
@@ -237,19 +329,23 @@ namespace MOD_nE7UL2.Mod
 
         public static void CalTownWarInfo(MapBuildTown townA_def, MapBuildTown townB_atk)
         {
-            teamAUnitCount = 10 + Math.Sqrt(MapBuildPropertyEvent.GetBuildProperty(townA_def)).Parse<int>() / 10;
             teamAWUnits = g.world.unit.GetUnitExact(townA_def.GetOrigiPoint(), JOIN_RANGE, false, false).ToList();
-            teamBUnitCount = 10 + Math.Sqrt(MapBuildPropertyEvent.GetBuildProperty(townB_atk)).Parse<int>() / 10;
             teamBWUnits = MapBuildPropertyEvent.GetTownGuardians(townB_atk);
+
+            teamAUnitCount = 10 + (Math.Sqrt(MapBuildPropertyEvent.GetBuildProperty(townA_def)).Parse<int>() / 10);
+            teamBUnitCount = 10 + (Math.Sqrt(MapBuildPropertyEvent.GetBuildProperty(townB_atk)).Parse<int>() / 10);
         }
 
         public static void CalMonstWaveInfo(MapBuildBase baseA_def)
         {
-            var gameLvl = g.data.dataWorld.data.gameLevel.Parse<int>();
-            teamAUnitCount = 10 + Math.Sqrt(MapBuildPropertyEvent.GetBuildProperty(baseA_def)).Parse<int>() / 10;
             teamAWUnits = g.world.unit.GetUnitExact(baseA_def.GetOrigiPoint(), JOIN_RANGE, false, false).ToList();
-            teamBUnitCount = 100 + g.world.run.roundMonth + teamAUnitCount * gameLvl + Math.Pow(2, baseA_def.gridData.areaBaseID).Parse<int>();
             teamBWUnits = null;
+
+            var gameLvl = g.data.dataWorld.data.gameLevel.Parse<int>();
+            var areaId = baseA_def.gridData.areaBaseID;
+            var cityR = baseA_def.IsCity() ? 2 : 1;
+            teamAUnitCount = 10 + (teamAWUnits.Count * (20 / areaId) * cityR) + (Math.Sqrt(MapBuildPropertyEvent.GetBuildProperty(baseA_def)).Parse<int>() / 10);
+            teamBUnitCount = ((100 + g.world.run.roundMonth + teamAUnitCount * gameLvl + Math.Pow(2, areaId).Parse<int>()) * CommonTool.Random(0.8f, 1.1f)).Parse<int>();
         }
 
         public static int GetBattleSide(UnitCtrlBase cunit)

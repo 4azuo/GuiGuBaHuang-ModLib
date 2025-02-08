@@ -2,7 +2,6 @@
 using MOD_nE7UL2.Enum;
 using ModLib.Mod;
 using System.Collections.Generic;
-using System.Linq;
 using UnityEngine;
 
 namespace MOD_nE7UL2.Mod
@@ -48,7 +47,7 @@ namespace MOD_nE7UL2.Mod
             }
         }
 
-        private void RemoveBuildSub(MapBuildBase build, BuildingCostEnum e)
+        public void RemoveBuildSub(MapBuildBase build, BuildingCostEnum e)
         {
             if (e.IsMatchBuildConds(build))
             {
@@ -62,15 +61,14 @@ namespace MOD_nE7UL2.Mod
             }
         }
 
-        private void AddBuildSub(MapBuildBase build, BuildingCostEnum e, float rate = -1f)
+        public void AddBuildSub(MapBuildBase build, BuildingCostEnum e, float rate = -1f)
         {
             if (SMLocalConfigsEvent.Instance.Configs.OnlyPortalAtCityAndSect && e == BuildingCostEnum.TownPortalBuildCost && build.IsSmallTown())
                 return;
             if (IsBuildable(build, e))
             {
-                var r = CommonTool.Random(0.00f, 100.00f);
                 if (MapBuildPropertyEvent.GetBuildProperty(build) > GetBuildingCost(build, e) &&
-                    ValueHelper.IsBetween(r, 0.00f, rate == -1f ? e.BuildRate : rate))
+                    ValueHelper.IsBetween(CommonTool.Random(0.00f, 100.00f), 0.00f, rate == -1f ? e.BuildRate : rate))
                 {
                     Build(build, e);
                 }
@@ -97,6 +95,12 @@ namespace MOD_nE7UL2.Mod
             Instance.ArrDic.Add(Instance.GetArrDicKey(build, e));
             e.Build(build);
             MapBuildPropertyEvent.AddBuildProperty(build, -GetBuildingCost(build, e));
+        }
+
+        public static void Destroy(MapBuildBase build, BuildingCostEnum e)
+        {
+            Instance.ArrDic.Remove(Instance.GetArrDicKey(build, e));
+            Instance.RemoveBuildSub(build, e);
         }
 
         public static long GetBuildingCost(MapBuildBase build, BuildingCostEnum e)
