@@ -38,6 +38,11 @@ public static class ValueHelper
         return Math.Max(Math.Min(x, max), min);
     }
 
+    public static double FixValue(this double x, double min = double.MinValue, double max = double.MaxValue)
+    {
+        return Math.Max(Math.Min(x, max), min);
+    }
+
     public static int Is<T>(this T? x, T compareValue) where T : struct
     {
         if (!x.HasValue)
@@ -75,5 +80,20 @@ public static class ValueHelper
     public static int SafeSumInt(params long[] values)
     {
         return values.Sum().FixValue(int.MinValue, int.MaxValue).Parse<int>();
+    }
+
+    public static long SumBigNum(params long[] values)
+    {
+        return values.Sum();
+    }
+
+    public static float SafeSumInt(params double[] values)
+    {
+        return values.Sum().FixValue(float.MinValue, float.MaxValue).Parse<float>();
+    }
+
+    public static double SumBigNum(params double[] values)
+    {
+        return values.Sum();
     }
 }
