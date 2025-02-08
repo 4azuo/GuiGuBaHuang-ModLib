@@ -79,7 +79,7 @@ namespace MOD_nE7UL2.Mod
                     {
                         LastYearEventHappen[town.buildData.id] = curYear;
                         LastYearEventHappen[townAtk.buildData.id] = curYear;
-                        TownWar(town, townAtk);
+                        TownWar(town, townAtk, false);
                     }
                 }
             }
@@ -97,8 +97,13 @@ namespace MOD_nE7UL2.Mod
             }
         }
 
-        public static void TownWar(MapBuildTown townA_def, MapBuildTown townB_atk)
+        public static void TownWar(MapBuildTown townA_def, MapBuildTown townB_atk, bool proactive)
         {
+            if (proactive)
+            {
+                JoinTownWar(townA_def, townB_atk);
+            }
+            else
             if (townA_def.GetOpenBuildPoints().ToList().Any(x => x == g.world.playerUnit.GetUnitPos()))
             {
                 JoinTownWar(townA_def, townB_atk);
@@ -124,28 +129,36 @@ namespace MOD_nE7UL2.Mod
 
         public static void JoinTownWar(MapBuildTown townA_def, MapBuildTown townB_atk)
         {
-            //player side
-            if (MapBuildPropertyEvent.IsTownGuardian(townA_def, g.world.playerUnit))
-                playerSide = 1;
-            else if (MapBuildPropertyEvent.IsTownGuardian(townB_atk, g.world.playerUnit))
-                playerSide = 2;
-            else if (townA_def.GetOpenBuildPoints().ToList().All(x => x != g.world.playerUnit.GetUnitPos()))
-                playerSide = 1;
-            else if (townB_atk.GetOpenBuildPoints().ToList().All(x => x != g.world.playerUnit.GetUnitPos()))
-                playerSide = 2;
-            else
-                playerSide = 1;
-            //battle info
-            CalTownWarInfo(townA_def, townB_atk);
-            //battle into
-            g.world.battle.IntoBattleInit(townA_def.GetOrigiPoint(), g.conf.dungeonBase.GetItem(TOWN_WAR_DUNGEON_BASE_ID), 1, new WorldBattleData
+            try
             {
-                isRealBattle = true,
-                isSelfBattle = false,
-                schoolID = null,
-            });
-            //unallow flee
-            BattleModifyEvent.HideFleeBattle = true;
+                DebugHelper.WriteLine("1");
+                //player side
+                if (MapBuildPropertyEvent.IsTownGuardian(townA_def, g.world.playerUnit))
+                    playerSide = 1;
+                else if (MapBuildPropertyEvent.IsTownGuardian(townB_atk, g.world.playerUnit))
+                    playerSide = 2;
+                else
+                    playerSide = 1;
+                DebugHelper.WriteLine("2");
+                //battle info
+                CalTownWarInfo(townA_def, townB_atk);
+                DebugHelper.WriteLine("3");
+                //battle into
+                g.conf.dungeonBase.GetItem(TOWN_WAR_DUNGEON_BASE_ID).className = new UnhollowerBaseLib.Il2CppStructArray<int>(0);
+                g.world.battle.IntoBattleInit(townA_def.GetOrigiPoint(), g.conf.dungeonBase.GetItem(TOWN_WAR_DUNGEON_BASE_ID), 1, new WorldBattleData
+                {
+                    isRealBattle = true,
+                    isSelfBattle = false,
+                    schoolID = null,
+                });
+                DebugHelper.WriteLine("4");
+                //unallow flee
+                BattleModifyEvent.HideFleeBattle = true;
+            }
+            catch (Exception e)
+            {
+                DebugHelper.WriteLine(e);
+            }
         }
 
         public static void SkipTownWar(MapBuildTown townA_def, MapBuildTown townB_atk)
@@ -233,7 +246,7 @@ namespace MOD_nE7UL2.Mod
 
         public static void MonstWave(MapBuildSchool school)
         {
-            if (school.GetOpenBuildPoints().ToList().All(x => x != g.world.playerUnit.GetUnitPos()))
+            if (school.GetOpenBuildPoints().ToList().Any(x => x == g.world.playerUnit.GetUnitPos()))
             {
                 JoinMonstWave(school, SECT_MONST_WAVE_DUNGEON_BASE_ID);
             }
@@ -332,8 +345,15 @@ namespace MOD_nE7UL2.Mod
             teamAWUnits = g.world.unit.GetUnitExact(townA_def.GetOrigiPoint(), JOIN_RANGE, false, false).ToList();
             teamBWUnits = MapBuildPropertyEvent.GetTownGuardians(townB_atk);
 
-            teamAUnitCount = 10 + (Math.Sqrt(MapBuildPropertyEvent.GetBuildProperty(townA_def)).Parse<int>() / 10);
-            teamBUnitCount = 10 + (Math.Sqrt(MapBuildPropertyEvent.GetBuildProperty(townB_atk)).Parse<int>() / 10);
+            var areaId = townA_def.gridData.areaBaseID;
+            var defCityR = townA_def.IsCity() ? 2 : 1;
+            var atkCityR = townB_atk.IsCity() ? 2 : 1;
+            DebugHelper.WriteLine(MapBuildPropertyEvent.GetBuildProperty(townA_def).ToString());
+            DebugHelper.WriteLine(MapBuildPropertyEvent.GetBuildProperty(townB_atk).ToString());
+            teamAUnitCount = 10 + (teamAWUnits.Count * (20 / areaId) * defCityR) + (Math.Sqrt(MapBuildPropertyEvent.GetBuildProperty(townA_def)) / 100).Parse<int>();
+            teamBUnitCount = 10 + (teamBWUnits.Count * (20 / areaId) * atkCityR) + (Math.Sqrt(MapBuildPropertyEvent.GetBuildProperty(townB_atk)) / 100).Parse<int>();
+            DebugHelper.WriteLine(teamAUnitCount.ToString());
+            DebugHelper.WriteLine(teamBUnitCount.ToString());
         }
 
         public static void CalMonstWaveInfo(MapBuildBase baseA_def)
@@ -344,7 +364,7 @@ namespace MOD_nE7UL2.Mod
             var gameLvl = g.data.dataWorld.data.gameLevel.Parse<int>();
             var areaId = baseA_def.gridData.areaBaseID;
             var cityR = baseA_def.IsCity() ? 2 : 1;
-            teamAUnitCount = 10 + (teamAWUnits.Count * (20 / areaId) * cityR) + (Math.Sqrt(MapBuildPropertyEvent.GetBuildProperty(baseA_def)).Parse<int>() / 10);
+            teamAUnitCount = 10 + (teamAWUnits.Count * (20 / areaId) * cityR) + (Math.Sqrt(MapBuildPropertyEvent.GetBuildProperty(baseA_def)) / 100).Parse<int>();
             teamBUnitCount = ((100 + g.world.run.roundMonth + teamAUnitCount * gameLvl + Math.Pow(2, areaId).Parse<int>()) * CommonTool.Random(0.8f, 1.1f)).Parse<int>();
         }
 
