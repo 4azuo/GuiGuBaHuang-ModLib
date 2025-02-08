@@ -663,7 +663,7 @@ namespace MOD_nE7UL2.Mod
                             if (GetBuildProperty(town) > cost)
                             {
                                 BuildingArrangeEvent.Build(town, em);
-                                UIHelper.GetUICustomBase(UIType.NPCSearch).Dispose();
+                                g.ui.CloseUI(ui);
                                 g.ui.MsgBox("Town", $"Built {GameTool.LS(em.BuildingName)}!");
                             }
                             else
@@ -705,13 +705,13 @@ namespace MOD_nE7UL2.Mod
             {
                 var uiCover = new UICover<UINPCSearch>(ui);
                 {
-                    uiCover.AddButton(uiCover.LastCol - 8, uiCover.LastRow - 8, () =>
+                    uiCover.AddButton(uiCover.LastCol - 10, uiCover.LastRow - 8, () =>
                     {
                         g.ui.MsgBox("Town", "Are you sure about declaring war with this town?", MsgBoxButtonEnum.YesNo, () =>
                         {
                             MapBuildBattleEvent.TownWar(town, GetGuardTown(g.world.playerUnit));
                         });
-                    }, "Declare War").Format(Color.black, 17).Align(TextAnchor.MiddleCenter).Size(300, 60);
+                    }, "Declare War").Format(Color.black, 17).Align(TextAnchor.MiddleCenter).Size(300, 64);
                 }
                 uiCover.UpdateUI();
             }

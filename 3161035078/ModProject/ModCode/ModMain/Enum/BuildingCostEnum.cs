@@ -145,26 +145,23 @@ namespace MOD_nE7UL2.Enum
 
         public bool IsMatchBuildConds(MapBuildBase build)
         {
-            var school = build.TryCast<MapBuildSchool>();
-            var town = build.TryCast<MapBuildTown>();
             if (IsSchool)
             {
-                return school != null;
+                return build.IsSchool();
             }
             else
             {
+                var town = build.TryCast<MapBuildTown>();
                 if (town != null)
                 {
                     if ((this.BuildType == MapBuildSubType.TownStorage || this.BuildType == MapBuildSubType.TownTransfer) && town.buildTownData.isMainTown)
                         return false;
                     if (IsCity)
-                    {
                         return town.buildTownData.isMainTown;
-                    }
                     return true;
                 }
-                return false;
             }
+            return false;
         }
 
         public void Build(MapBuildBase build)
