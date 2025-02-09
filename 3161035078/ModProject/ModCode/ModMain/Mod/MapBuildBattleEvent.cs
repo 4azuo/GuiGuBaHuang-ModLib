@@ -144,7 +144,6 @@ namespace MOD_nE7UL2.Mod
                 CalTownWarInfo(townA_def, townB_atk);
                 DebugHelper.WriteLine("3");
                 //battle into
-                g.conf.dungeonBase.GetItem(TOWN_WAR_DUNGEON_BASE_ID).className = new UnhollowerBaseLib.Il2CppStructArray<int>(0);
                 g.world.battle.IntoBattleInit(townA_def.GetOrigiPoint(), g.conf.dungeonBase.GetItem(TOWN_WAR_DUNGEON_BASE_ID), 1, new WorldBattleData
                 {
                     isRealBattle = true,

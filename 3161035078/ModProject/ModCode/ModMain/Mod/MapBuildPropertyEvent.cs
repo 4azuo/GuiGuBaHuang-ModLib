@@ -10,6 +10,7 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 using UnityEngine.Events;
+using static DataBuildTown;
 
 namespace MOD_nE7UL2.Mod
 {
@@ -17,6 +18,11 @@ namespace MOD_nE7UL2.Mod
     public class MapBuildPropertyEvent : ModEvent
     {
         public static MapBuildPropertyEvent Instance { get; set; }
+
+        public const int INIT_BUDGET = 1000;
+        public const int TOWN_YEARLY_BUDGET = 300;
+        public const int AUCTION_YEARLY_BUDGET = 150;
+        public const int SCHOOL_YEARLY_BUDGET = 500;
 
         public const float FIXING_RATE = 5.00f;
         public const int TOWN_MASTER_LUCK_ID = 420041111;
@@ -47,7 +53,7 @@ namespace MOD_nE7UL2.Mod
                 //default budget
                 if (!Budget.ContainsKey(town.buildData.id))
                 {
-                    AddBuildProperty(town, Math.Pow(2, town.gridData.areaBaseID).Parse<long>() * 300);
+                    AddBuildProperty(town, GetBaseTax(town) * INIT_BUDGET);
                 }
                 //town master & guardians
                 if (!TownMasters.ContainsKey(town.buildData.id))
@@ -222,11 +228,15 @@ namespace MOD_nE7UL2.Mod
                     wunit.AddProperty<int>(UnitPropertyEnum.Mp, wunit.GetDynProperty(UnitDynPropertyEnum.MpMax).value);
                     wunit.AddProperty<int>(UnitPropertyEnum.Sp, wunit.GetDynProperty(UnitDynPropertyEnum.SpMax).value);
                 }
-                else if (!wunit.IsPlayer())
+                else if (!wunit.IsPlayer()) //npc only
                 {
                     var tax = GetTax(town, wunit);
+                    var townMaster = GetTownMaster(town);
                     if (wunit.GetUnitMoney() > tax)
                     {
+                        if (townMaster != null && tax > wunit.GetUnitMoney() * 0.01)
+                            wunit.data.unitData.relationData.AddHate(townMaster.GetUnitId(), 1);
+
                         wunit.AddUnitMoney(-tax);
                         AddBuildProperty(town, tax);
 
@@ -238,7 +248,8 @@ namespace MOD_nE7UL2.Mod
                     else
                     {
                         //get out
-                        wunit.data.unitData.relationData.AddHate(GetTownMaster(town).GetUnitId(), 1);
+                        if (townMaster != null)
+                            wunit.data.unitData.relationData.AddHate(townMaster.GetUnitId(), 5);
                         wunit.SetUnitRandomPos(wunit.GetUnitPos());
                     }
                 }
@@ -282,10 +293,10 @@ namespace MOD_nE7UL2.Mod
                 if (master.GetUnitId() != g.world.playerUnit.GetUnitId())
                 {
                     //random tax rate
-                    TaxRate[town.buildData.id] = CommonTool.Random(0.70f, 4.00f);
+                    TaxRate[town.buildData.id] = CommonTool.Random(0.50f, 10.00f);
 
                     //hire more people
-                    if (GetBuildProperty(town) > GetRequiredSpiritStones(town, master.GetGradeLvl()))
+                    if (GetBuildProperty(town) > GetRequiredSpiritStones(town, master.GetGradeLvl()) * 2)
                     {
                         var aroundWUnits = UnitHelper.GetUnitsAround(town.GetOrigiPoint(), 4, false, true).ToArray().Where(x => IsMatchCondWUnit(x)).ToList();
                         if (aroundWUnits.Count > 0)
@@ -307,13 +318,13 @@ namespace MOD_nE7UL2.Mod
                 }
 
                 //budget inc yearly
-                AddBuildProperty(town, Math.Pow(2, town.gridData.areaBaseID).Parse<long>() * 200);
+                AddBuildProperty(town, GetBaseTax(town) * TOWN_YEARLY_BUDGET);
                 
                 //budget inc from auction
                 var auction = town.GetBuildSub<MapBuildTownAuction>();
                 if (auction != null)
                 {
-                    AddBuildProperty(town, Math.Pow(2, town.gridData.areaBaseID).Parse<long>() * 150);
+                    AddBuildProperty(town, GetBaseTax(town) * AUCTION_YEARLY_BUDGET);
                 }
 
                 //guardians
@@ -361,7 +372,7 @@ namespace MOD_nE7UL2.Mod
             foreach (var school in g.world.build.GetBuilds<MapBuildSchool>())
             {
                 //school budget inc yearly
-                school.buildData.money += Math.Pow(2, school.gridData.areaBaseID).Parse<long>() * 300;
+                school.buildData.money += GetBaseTax(school) * SCHOOL_YEARLY_BUDGET;
             }
         }
 
@@ -420,9 +431,22 @@ namespace MOD_nE7UL2.Mod
             if (!Instance.TaxRate.ContainsKey(buildbase.buildData.id))
                 Instance.TaxRate[buildbase.buildData.id] = 1f;
             //base on area
-            return SMLocalConfigsEvent.Instance.Calculate(Convert.ToInt32(InflationaryEvent.CalculateInflationary((
+            var baseTax = SMLocalConfigsEvent.Instance.Calculate(Convert.ToInt32(InflationaryEvent.CalculateInflationary((
                 Math.Pow(2, buildbase.gridData.areaBaseID) * FIXING_RATE * Instance.TaxRate[buildbase.buildData.id]
             ).Parse<int>())), SMLocalConfigsEvent.Instance.Configs.AddTaxRate).Parse<int>();
+            //school tax
+            var school = buildbase.TryCast<MapBuildSchool>();
+            if (school != null)
+            {
+                //if school -> *effect-count
+                baseTax *= school.schoolData.allEffects.Count;
+            }
+            //town tax
+            if (buildbase.IsCity())
+            {
+                baseTax *= 2;
+            }
+            return baseTax;
         }
 
         public static int GetTax(MapBuildBase buildbase, WorldUnitBase wunit)
@@ -430,21 +454,6 @@ namespace MOD_nE7UL2.Mod
             if (wunit == null || wunit.isDie)
                 return 0;
             var tax = GetBaseTax(buildbase);
-            var school = buildbase.TryCast<MapBuildSchool>();
-            if (school != null)
-            {
-                //if school -> *effect-count
-                tax *= school.schoolData.allEffects.Count;
-            }
-            var town = buildbase.TryCast<MapBuildTown>();
-            if (town != null)
-            {
-                //if town -> double
-                if (town.buildTownData.isMainTown)
-                    tax *= 2;
-                //add alternative tax rate
-                tax = (tax * Instance.TaxRate[town.buildData.id]).Parse<int>();
-            }
             //if merchant, add more tax
             if (UnitTypeEvent.GetUnitTypeEnum(wunit) == UnitTypeEnum.Merchant)
             {
@@ -644,7 +653,7 @@ namespace MOD_nE7UL2.Mod
                 {
                     Formatter = (ibase) => new object[] { GetTotalMonthlyPayment(town).ToString("#,##0") },
                 });
-                uiCover.AddCompositeSlider(col, row + i++, $"Base Tax:", 0.50f, 10.00f, Instance.TaxRate[town.buildData.id], "{0}/month").SetWork(new UIItemWork
+                uiCover.AddCompositeSlider(col, row + i++, $"Base Tax:", 0.40f, 20.00f, Instance.TaxRate[town.buildData.id], "{0}/month").SetWork(new UIItemWork
                 {
                     Formatter = (ibase) => new object[] { GetBaseTax(town) },
                     ChangeAct = (ibase, value) => Instance.TaxRate[town.buildData.id] = value.Parse<float>(),
@@ -822,7 +831,7 @@ namespace MOD_nE7UL2.Mod
         public static int GetRequiredSpiritStones(MapBuildTown town, int gradeLvl)
         {
             var k = (Instance.TownMasters.ContainsKey(town.buildData.id) ? Instance.TownMasters[town.buildData.id].Count : 1) + 1;
-            return (Math.Pow(3, gradeLvl) * 1000 * k).Parse<int>();
+            return InflationaryEvent.CalculateInflationary((Math.Pow(3, gradeLvl) * 1000 * k).Parse<int>());
         }
 
         public static int GetRequiredSpiritStones(MapBuildTown town, WorldUnitBase wunit)
