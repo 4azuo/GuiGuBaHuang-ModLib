@@ -11,7 +11,6 @@ public static class ParseHelper
         TypeNameHandling = TypeNameHandling.All,
         PreserveReferencesHandling = PreserveReferencesHandling.Objects,
         NullValueHandling = NullValueHandling.Ignore,
-        //Converters = new List<JsonConverter>() { new Il2CppArrayBaseConverter() },
     };
 
     #region Const
