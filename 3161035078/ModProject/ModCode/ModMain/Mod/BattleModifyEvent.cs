@@ -15,7 +15,6 @@ namespace MOD_nE7UL2.Mod
     public class BattleModifyEvent : ModEvent
     {
         public static BattleModifyEvent Instance { get; set; }
-        public static bool HideFleeBattle { get; set; } = true;
 
         public const int BASIS_ON_DMG = 1000;
         public const int BASIS_ON_DEF = 400;
@@ -43,13 +42,6 @@ namespace MOD_nE7UL2.Mod
                 ui.uiInfo.goMonstCount1.SetActive(false);
                 ui.uiInfo.goMonstCount2.SetActive(false);
                 ui.uiMap.goGroupRoot.SetActive(!SMLocalConfigsEvent.Instance.Configs.HideBattleMap);
-            }
-            else
-            if (e.uiType.uiName == UIType.BattleExit.uiName)
-            {
-                var ui = g.ui.GetUI<UIBattleExit>(UIType.BattleExit);
-                if (HideFleeBattle)
-                    ui.btnFlee.gameObject.SetActive(false);
             }
         }
 
