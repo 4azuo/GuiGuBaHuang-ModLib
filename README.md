@@ -191,6 +191,12 @@ Create a folder **ModConf** in **ModProject**, copy samples from below folder to
 
 4. If **"id"** exists, conf will be override. If not exists, then will be created a new one.
 
+5. If its a array, use **@** then **|** (separate char)
+
+![image](https://github.com/user-attachments/assets/a4d5566c-35de-4b38-b681-cd4ab997cc62)
+
+
+
 
 
 
