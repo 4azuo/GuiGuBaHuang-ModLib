@@ -236,6 +236,8 @@ namespace MOD_nE7UL2.Mod
                     {
                         if (townMaster != null && tax > wunit.GetUnitMoney() * 0.01)
                             wunit.data.unitData.relationData.AddHate(townMaster.GetUnitId(), 1);
+                        if (townMaster != null && tax < wunit.GetUnitMoney() * 0.001)
+                            wunit.data.unitData.relationData.AddIntim(townMaster.GetUnitId(), 1);
 
                         wunit.AddUnitMoney(-tax);
                         AddBuildProperty(town, tax);
