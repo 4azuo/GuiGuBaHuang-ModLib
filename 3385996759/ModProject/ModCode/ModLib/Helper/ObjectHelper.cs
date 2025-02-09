@@ -74,6 +74,11 @@ public static class ObjectHelper
         return obj.GetType().GetProperty(fieldNm);
     }
 
+    public static object GetValueUnsafe(this object obj, string fieldNm)
+    {
+        return obj.GetType().GetProperty(fieldNm).GetValue(obj);
+    }
+
     public static object GetValue(this object obj, string fieldNm, bool ignorePropertyNotFoundError = false)
     {
         var prop = obj.GetType().GetProperty(fieldNm);
@@ -84,6 +89,11 @@ public static class ObjectHelper
             throw new NullReferenceException();
         }
         return prop.GetValue(obj);
+    }
+
+    public static void SetValueUnsafe(this object obj, string fieldNm, object newValue)
+    {
+        obj.GetType().GetProperty(fieldNm).SetValue(obj, newValue);
     }
 
     public static void SetValue(this object obj, string fieldNm, object newValue, bool ignorePropertyNotFoundError = false, Func<Type, object> customParser = null)
