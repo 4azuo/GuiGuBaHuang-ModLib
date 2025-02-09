@@ -7,9 +7,10 @@ using UnhollowerBaseLib;
 
 public static class ConfHelper
 {
-    private const string CONF_FOLDER = "ModConf";
-    private static readonly char KEY_SPLIT_CHAR = '|';
-    private static readonly char[] VALUE_SPLIT_CHARS = new char[] { '|', '_', '-', ',', ';' };
+    public const string CONF_FOLDER = "ModConf";
+    public const char KEY_SPLIT_CHAR = '|';
+    public const string ARRAY_EMPTY = "0";
+    public const string KEY_ARRAY = "@";
 
     public static string GetConfFilePath(string modId, string fileName, string subFolder = "")
     {
@@ -75,28 +76,49 @@ public static class ConfHelper
             {
                 foreach (var p in item)
                 {
-                    var ns = p.Name.ToString().Split(KEY_SPLIT_CHAR);
-                    if (ns.Length > 1)
+                    string n = p.Name;
+                    string v = p.Value;
+                    if (n.StartsWith(KEY_ARRAY))
                     {
-                        var v = p.Value;
-                        foreach (var n in ns)
+                        char splitChar = n[1];
+                        string propName = n.Substring(2);
+                        Type propType = confItem.GetType().GetProperty(propName).PropertyType;
+                        Type eleType = propType.GetGenericArguments()[0];
+                        if (typeof(int).IsAssignableFrom(eleType))
                         {
-                            ObjectHelper.SetValue(confItem, n, v, true);
-                            //ObjectHelper.SetValue(confItem, n, v, true, (Func<Type, object>)((t) =>
-                            //{
-                            //    if (t.IsSubclassOf(typeof(Il2CppArrayBase<>)))
-                            //    {
-                            //        dynamic v2 = null;
-                            //        foreach (var s in VALUE_SPLIT_CHARS)
-                            //        {
-                            //            v2 = v.Split(s);
-                            //            if (v2.Length > 1)
-                            //                return v2;
-                            //        }
-                            //        return v2;
-                            //    }
-                            //    return null;
-                            //}));
+                            if (v == ARRAY_EMPTY)
+                            {
+                                ObjectHelper.SetValue(confItem, propName, new Il2CppStructArray<int>(0), true);
+                            }
+                            else
+                            {
+                                Il2CppStructArray<int> t = v.Split(new char[] { splitChar }).Select(x => x.Parse<int>()).ToArray();
+                                ObjectHelper.SetValue(confItem, propName, t, true);
+                            }
+                        }
+                        else
+                        if (typeof(string).IsAssignableFrom(eleType))
+                        {
+                            if (v == ARRAY_EMPTY)
+                            {
+                                ObjectHelper.SetValue(confItem, propName, new Il2CppStringArray(0), true);
+                            }
+                            else
+                            {
+                                Il2CppStringArray t = v.Split(new char[] { splitChar }).Select(x => x.Parse<string>()).ToArray();
+                                ObjectHelper.SetValue(confItem, propName, t, true);
+                            }
+                        }
+                    }
+                    else
+                    {
+                        var ns = n.ToString().Split(KEY_SPLIT_CHAR);
+                        if (ns.Length > 1)
+                        {
+                            foreach (var ni in ns)
+                            {
+                                ObjectHelper.SetValue(confItem, ni, v, true);
+                            }
                         }
                     }
                 }
