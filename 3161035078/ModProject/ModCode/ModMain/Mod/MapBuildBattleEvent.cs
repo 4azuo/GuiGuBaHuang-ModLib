@@ -138,8 +138,6 @@ namespace MOD_nE7UL2.Mod
                 playerSide = 1;
             //battle info
             CalTownWarInfo(townA_def, townB_atk);
-            //unallow flee
-            BattleModifyEvent.HideFleeBattle = true;
             //battle into
             g.world.battle.IntoBattle(new DataMap.MonstData() { id = TOWN_WAR_DUNGEON_BASE_ID, level = townA_def.gridData.areaBaseID });
         }
@@ -258,8 +256,6 @@ namespace MOD_nE7UL2.Mod
             playerSide = 1;
             //battle info
             CalMonstWaveInfo(teamAbuildBase);
-            //unallow flee
-            BattleModifyEvent.HideFleeBattle = true;
             //battle into
             g.world.battle.IntoBattle(new DataMap.MonstData() { id = dungeonBaseId, level = teamAbuildBase.gridData.areaBaseID });
         }
@@ -395,7 +391,6 @@ namespace MOD_nE7UL2.Mod
             base.OnBattleEndOnce(e);
             if (ModBattleEvent.SceneBattle != null && (IsBattleTownWar() || IsBattleMonstWave()))
             {
-                BattleModifyEvent.HideFleeBattle = false;
                 teamAWUnits = null;
                 teamBWUnits = null;
             }
