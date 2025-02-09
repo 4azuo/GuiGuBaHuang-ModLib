@@ -129,35 +129,19 @@ namespace MOD_nE7UL2.Mod
 
         public static void JoinTownWar(MapBuildTown townA_def, MapBuildTown townB_atk)
         {
-            try
-            {
-                DebugHelper.WriteLine("1");
-                //player side
-                if (MapBuildPropertyEvent.IsTownGuardian(townA_def, g.world.playerUnit))
-                    playerSide = 1;
-                else if (MapBuildPropertyEvent.IsTownGuardian(townB_atk, g.world.playerUnit))
-                    playerSide = 2;
-                else
-                    playerSide = 1;
-                DebugHelper.WriteLine("2");
-                //battle info
-                CalTownWarInfo(townA_def, townB_atk);
-                DebugHelper.WriteLine("3");
-                //battle into
-                g.world.battle.IntoBattleInit(townA_def.GetOrigiPoint(), g.conf.dungeonBase.GetItem(TOWN_WAR_DUNGEON_BASE_ID), 1, new WorldBattleData
-                {
-                    isRealBattle = true,
-                    isSelfBattle = false,
-                    schoolID = null,
-                });
-                DebugHelper.WriteLine("4");
-                //unallow flee
-                BattleModifyEvent.HideFleeBattle = true;
-            }
-            catch (Exception e)
-            {
-                DebugHelper.WriteLine(e);
-            }
+            //player side
+            if (MapBuildPropertyEvent.IsTownGuardian(townA_def, g.world.playerUnit))
+                playerSide = 1;
+            else if (MapBuildPropertyEvent.IsTownGuardian(townB_atk, g.world.playerUnit))
+                playerSide = 2;
+            else
+                playerSide = 1;
+            //battle info
+            CalTownWarInfo(townA_def, townB_atk);
+            //unallow flee
+            BattleModifyEvent.HideFleeBattle = true;
+            //battle into
+            g.world.battle.IntoBattle(new DataMap.MonstData() { id = TOWN_WAR_DUNGEON_BASE_ID, level = townA_def.gridData.areaBaseID });
         }
 
         public static void SkipTownWar(MapBuildTown townA_def, MapBuildTown townB_atk)
@@ -274,15 +258,10 @@ namespace MOD_nE7UL2.Mod
             playerSide = 1;
             //battle info
             CalMonstWaveInfo(teamAbuildBase);
-            //battle into
-            g.world.battle.IntoBattleInit(g.world.playerUnit.GetUnitPos(), g.conf.dungeonBase.GetItem(dungeonBaseId), 1, new WorldBattleData
-            {
-                isRealBattle = true,
-                isSelfBattle = false,
-                schoolID = null,
-            });
             //unallow flee
             BattleModifyEvent.HideFleeBattle = true;
+            //battle into
+            g.world.battle.IntoBattle(new DataMap.MonstData() { id = dungeonBaseId, level = teamAbuildBase.gridData.areaBaseID });
         }
 
         public static void SkipMonstWave(MapBuildBase teamAbuildBase)
@@ -347,12 +326,8 @@ namespace MOD_nE7UL2.Mod
             var areaId = townA_def.gridData.areaBaseID;
             var defCityR = townA_def.IsCity() ? 2 : 1;
             var atkCityR = townB_atk.IsCity() ? 2 : 1;
-            DebugHelper.WriteLine(MapBuildPropertyEvent.GetBuildProperty(townA_def).ToString());
-            DebugHelper.WriteLine(MapBuildPropertyEvent.GetBuildProperty(townB_atk).ToString());
-            teamAUnitCount = 10 + (teamAWUnits.Count * (20 / areaId) * defCityR) + (Math.Sqrt(MapBuildPropertyEvent.GetBuildProperty(townA_def)) / 100).Parse<int>();
-            teamBUnitCount = 10 + (teamBWUnits.Count * (20 / areaId) * atkCityR) + (Math.Sqrt(MapBuildPropertyEvent.GetBuildProperty(townB_atk)) / 100).Parse<int>();
-            DebugHelper.WriteLine(teamAUnitCount.ToString());
-            DebugHelper.WriteLine(teamBUnitCount.ToString());
+            teamAUnitCount = 10 + (teamAWUnits.Count * (20 / areaId) * defCityR) + (MapBuildPropertyEvent.GetBuildProperty(townA_def) / 1000000).Parse<int>();
+            teamBUnitCount = 10 + (teamBWUnits.Count * (20 / areaId) * atkCityR) + (MapBuildPropertyEvent.GetBuildProperty(townB_atk) / 1000000).Parse<int>();
         }
 
         public static void CalMonstWaveInfo(MapBuildBase baseA_def)
@@ -363,7 +338,7 @@ namespace MOD_nE7UL2.Mod
             var gameLvl = g.data.dataWorld.data.gameLevel.Parse<int>();
             var areaId = baseA_def.gridData.areaBaseID;
             var cityR = baseA_def.IsCity() ? 2 : 1;
-            teamAUnitCount = 10 + (teamAWUnits.Count * (20 / areaId) * cityR) + (Math.Sqrt(MapBuildPropertyEvent.GetBuildProperty(baseA_def)) / 100).Parse<int>();
+            teamAUnitCount = 10 + (teamAWUnits.Count * (20 / areaId) * cityR) + (MapBuildPropertyEvent.GetBuildProperty(baseA_def) / 1000000).Parse<int>();
             teamBUnitCount = ((100 + g.world.run.roundMonth + teamAUnitCount * gameLvl + Math.Pow(2, areaId).Parse<int>()) * CommonTool.Random(0.8f, 1.1f)).Parse<int>();
         }
 
