@@ -399,8 +399,14 @@ namespace MOD_nE7UL2.Mod
         public static int GetRequiredSpiritStones(WorldUnitBase master, WorldUnitBase wunit)
         {
             var masterId = master.GetUnitId();
+            var lvl = wunit.GetGradeLvl();
             var k = (Instance.TeamData.ContainsKey(masterId) ? Instance.TeamData[masterId].Count : 1) + 1;
-            return (Math.Pow(2, wunit.GetGradeLvl()) * 1000 * k).Parse<int>();
+            return 
+                (
+                    (Math.Pow(2, lvl) * 1000 * k).Parse<int>() + 
+                    wunit.GetDynProperty(UnitDynPropertyEnum.AbilityPoint).value * lvl
+                ) *
+                (wunit.IsHero() ? 2 : 1);
         }
 
         public static int GetRequiredReputations(WorldUnitBase master, WorldUnitBase wunit)

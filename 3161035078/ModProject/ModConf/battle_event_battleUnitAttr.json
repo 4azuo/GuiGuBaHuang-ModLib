@@ -8,7 +8,7 @@
 		"dropID": "0",
 		"firstReward": "0",
 		"exp": "0",
-		"_ignore_unitDatas": "0"
+		"@|unitDatas": "0"
 	},
 	{
 		"id": "480112871",
@@ -19,7 +19,7 @@
 		"dropID": "0",
 		"firstReward": "0",
 		"exp": "0",
-		"_ignore_unitDatas": "0"
+		"@|unitDatas": "0"
 	},
 	{
 		"id": "480112872",
@@ -30,7 +30,7 @@
 		"dropID": "0",
 		"firstReward": "0",
 		"exp": "0",
-		"_ignore_unitDatas": "0"
+		"@|unitDatas": "0"
 	},
 	{
 		"id": "480112873",
@@ -41,7 +41,7 @@
 		"dropID": "0",
 		"firstReward": "0",
 		"exp": "0",
-		"_ignore_unitDatas": "0"
+		"@|unitDatas": "0"
 	},
 	{
 		"id": "480112874",
@@ -52,7 +52,7 @@
 		"dropID": "0",
 		"firstReward": "0",
 		"exp": "0",
-		"_ignore_unitDatas": "0"
+		"@|unitDatas": "0"
 	},
 	{
 		"id": "480112875",
@@ -63,7 +63,7 @@
 		"dropID": "0",
 		"firstReward": "0",
 		"exp": "0",
-		"_ignore_unitDatas": "0"
+		"@|unitDatas": "0"
 	},
 	{
 		"id": "480112876",
@@ -74,7 +74,7 @@
 		"dropID": "0",
 		"firstReward": "0",
 		"exp": "0",
-		"_ignore_unitDatas": "0"
+		"@|unitDatas": "0"
 	},
 	{
 		"id": "480112877",
@@ -85,7 +85,7 @@
 		"dropID": "0",
 		"firstReward": "0",
 		"exp": "0",
-		"_ignore_unitDatas": "0"
+		"@|unitDatas": "0"
 	},
 	{
 		"id": "480112878",
@@ -96,7 +96,7 @@
 		"dropID": "0",
 		"firstReward": "0",
 		"exp": "0",
-		"_ignore_unitDatas": "0"
+		"@|unitDatas": "0"
 	},
 	{
 		"id": "480112879",
@@ -107,6 +107,6 @@
 		"dropID": "0",
 		"firstReward": "0",
 		"exp": "0",
-		"_ignore_unitDatas": "0"
+		"@|unitDatas": "0"
 	}
 ]

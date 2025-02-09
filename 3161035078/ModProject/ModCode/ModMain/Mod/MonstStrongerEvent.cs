@@ -45,9 +45,9 @@ namespace MOD_nE7UL2.Mod
             foreach (var potmonData in g.data.dataWorld.data.devilDemonData.potmonData.potMonList)
             {
                 var potmon = g.world.unit.GetUnit(potmonData.unitId);
-                potmon.AddProperty<int>(UnitPropertyEnum.Attack, (potmon.GetProperty<int>(UnitPropertyEnum.Attack) * 0.0005f * potmonData.grade).Parse<int>());
-                potmon.AddProperty<int>(UnitPropertyEnum.Defense, (potmon.GetProperty<int>(UnitPropertyEnum.Defense) * 0.0001f * potmonData.grade).Parse<int>());
-                potmon.AddProperty<int>(UnitPropertyEnum.HpMax, (potmon.GetProperty<int>(UnitPropertyEnum.HpMax) * 0.001f * potmonData.grade).Parse<int>());
+                potmon.AddProperty<int>(UnitPropertyEnum.Attack, (potmon.GetProperty<int>(UnitPropertyEnum.Attack) * 0.002f * potmonData.grade).Parse<int>());
+                potmon.AddProperty<int>(UnitPropertyEnum.Defense, (potmon.GetProperty<int>(UnitPropertyEnum.Defense) * 0.001f * potmonData.grade).Parse<int>());
+                potmon.AddProperty<int>(UnitPropertyEnum.HpMax, (potmon.GetProperty<int>(UnitPropertyEnum.HpMax) * 0.002f * potmonData.grade).Parse<int>());
             }
         }
 
@@ -102,9 +102,22 @@ namespace MOD_nE7UL2.Mod
                 //potmon
                 if (e.IsPotmon())
                 {
-                    monstData.attack.baseValue += (ModBattleEvent.PlayerUnit.data.attack.value * 0.005f).Parse<int>();
-                    monstData.defense.baseValue += (ModBattleEvent.PlayerUnit.data.defense.value * 0.001f).Parse<int>();
-                    monstData.maxHP.baseValue += (ModBattleEvent.PlayerUnit.data.maxHP.value * 0.01f).Parse<int>();
+                    monstData.attack.baseValue += (ModBattleEvent.PlayerUnit.data.attack.value * 0.05f).Parse<int>();
+                    monstData.defense.baseValue += (ModBattleEvent.PlayerUnit.data.defense.value * 0.01f).Parse<int>();
+                    monstData.maxHP.baseValue += (ModBattleEvent.PlayerUnit.data.hp * 0.10f).Parse<int>();
+
+                    monstData.basisBlade.baseValue += (ModBattleEvent.PlayerUnit.data.basisBlade.baseValue * 0.01f).Parse<int>();
+                    monstData.basisEarth.baseValue += (ModBattleEvent.PlayerUnit.data.basisEarth.baseValue * 0.01f).Parse<int>();
+                    monstData.basisFinger.baseValue += (ModBattleEvent.PlayerUnit.data.basisFinger.baseValue * 0.01f).Parse<int>();
+                    monstData.basisFire.baseValue += (ModBattleEvent.PlayerUnit.data.basisFire.baseValue * 0.01f).Parse<int>();
+                    monstData.basisFist.baseValue += (ModBattleEvent.PlayerUnit.data.basisFist.baseValue * 0.01f).Parse<int>();
+                    monstData.basisFroze.baseValue += (ModBattleEvent.PlayerUnit.data.basisFroze.baseValue * 0.01f).Parse<int>();
+                    monstData.basisPalm.baseValue += (ModBattleEvent.PlayerUnit.data.basisPalm.baseValue * 0.01f).Parse<int>();
+                    monstData.basisSpear.baseValue += (ModBattleEvent.PlayerUnit.data.basisSpear.baseValue * 0.01f).Parse<int>();
+                    monstData.basisSword.baseValue += (ModBattleEvent.PlayerUnit.data.basisSword.baseValue * 0.01f).Parse<int>();
+                    monstData.basisThunder.baseValue += (ModBattleEvent.PlayerUnit.data.basisThunder.baseValue * 0.01f).Parse<int>();
+                    monstData.basisWind.baseValue += (ModBattleEvent.PlayerUnit.data.basisWind.baseValue * 0.01f).Parse<int>();
+                    monstData.basisWood.baseValue += (ModBattleEvent.PlayerUnit.data.basisWood.baseValue * 0.01f).Parse<int>();
                 }
 
                 //additional
