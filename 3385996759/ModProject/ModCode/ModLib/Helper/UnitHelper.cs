@@ -678,6 +678,11 @@ public static class UnitHelper
         return MartialTool.GetEnemyType(aUt)?.Contains(bUt) ?? false;
     }
 
+    public static bool IsSectGuardian(this UnitCtrlBase cunit)
+    {
+        return cunit.TryCast<UnitCtrlMonst>()?.data.unitAttrItem.id == 9371;
+    }
+
     public static bool IsPotmon(this UnitCtrlBase cunit)
     {
         try
