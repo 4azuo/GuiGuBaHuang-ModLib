@@ -139,7 +139,7 @@ namespace MOD_nE7UL2.Mod
             //battle info
             CalTownWarInfo(townA_def, townB_atk);
             //battle into
-            g.world.battle.IntoBattle(new DataMap.MonstData() { id = TOWN_WAR_DUNGEON_BASE_ID, level = townA_def.gridData.areaBaseID });
+            g.world.battle.IntoBattle(new DataMap.MonstData() { id = TOWN_WAR_DUNGEON_BASE_ID, level = townA_def.gridData.areaBaseID * 5 });
         }
 
         public static void SkipTownWar(MapBuildTown townA_def, MapBuildTown townB_atk)
@@ -257,7 +257,7 @@ namespace MOD_nE7UL2.Mod
             //battle info
             CalMonstWaveInfo(teamAbuildBase);
             //battle into
-            g.world.battle.IntoBattle(new DataMap.MonstData() { id = dungeonBaseId, level = teamAbuildBase.gridData.areaBaseID });
+            g.world.battle.IntoBattle(new DataMap.MonstData() { id = dungeonBaseId, level = teamAbuildBase.gridData.areaBaseID * 5 });
         }
 
         public static void SkipMonstWave(MapBuildBase teamAbuildBase)
@@ -356,8 +356,10 @@ namespace MOD_nE7UL2.Mod
                 {
                     var utA = playerSide == 1 ? UnitType.PlayerNPC : UnitType.Monst;
                     var utB = playerSide == 2 ? UnitType.PlayerNPC : UnitType.Monst;
-                    teamACUnits = teamAWUnits.Select(x => ModBattleEvent.SceneBattle.unit.CreateUnitHuman<UnitCtrlHumanNPC>(x.data, utA)).Cast<UnitCtrlBase>().ToList();
-                    teamBCUnits = teamAWUnits.Select(x => ModBattleEvent.SceneBattle.unit.CreateUnitHuman<UnitCtrlHumanNPC>(x.data, utB)).Cast<UnitCtrlBase>().ToList();
+                    if (teamACUnits == null)
+                        teamACUnits = teamAWUnits.Select(x => ModBattleEvent.SceneBattle.unit.CreateUnitHuman<UnitCtrlHumanNPC>(x.data, utA)).Cast<UnitCtrlBase>().ToList();
+                    if (teamBCUnits == null)
+                        teamBCUnits = teamAWUnits.Select(x => ModBattleEvent.SceneBattle.unit.CreateUnitHuman<UnitCtrlHumanNPC>(x.data, utB)).Cast<UnitCtrlBase>().ToList();
                 }
                 else if (IsBattleMonstWave())
                 {
@@ -366,25 +368,25 @@ namespace MOD_nE7UL2.Mod
             }
         }
 
-        public override void OnBattleUnitDie(UnitDie e)
-        {
-            base.OnBattleUnitDie(e);
-            if (ModBattleEvent.SceneBattle != null && IsBattleTownWar() && e.unit.IsHuman())
-            {
-                var side = GetBattleSide(e.unit);
-                var count = side == 1 ? teamAUnitCount : teamBUnitCount;
-                if (count > 0)
-                {
-                    e.unit.Resurge(3, (Il2CppSystem.Action)(() =>
-                    {
-                        if (side == 1)
-                            teamAUnitCount--;
-                        else
-                            teamBUnitCount--;
-                    }));
-                }
-            }
-        }
+        //public override void OnBattleUnitDie(UnitDie e)
+        //{
+        //    base.OnBattleUnitDie(e);
+        //    if (ModBattleEvent.SceneBattle != null && IsBattleTownWar() && e.unit.IsHuman())
+        //    {
+        //        var side = GetBattleSide(e.unit);
+        //        var count = side == 1 ? teamAUnitCount : teamBUnitCount;
+        //        if (count > 0)
+        //        {
+        //            e.unit.Resurge(3, (Il2CppSystem.Action)(() =>
+        //            {
+        //                if (side == 1)
+        //                    teamAUnitCount--;
+        //                else
+        //                    teamBUnitCount--;
+        //            }));
+        //        }
+        //    }
+        //}
 
         public override void OnBattleEndOnce(BattleEnd e)
         {
@@ -393,22 +395,24 @@ namespace MOD_nE7UL2.Mod
             {
                 teamAWUnits = null;
                 teamBWUnits = null;
+                teamACUnits = null;
+                teamBCUnits = null;
             }
         }
 
-        [ErrorIgnore]
-        [EventCondition(IsInGame = HandleEnum.Ignore, IsInBattle = HandleEnum.True)]
-        public override void OnTimeUpdate1s()
-        {
-            base.OnTimeUpdate1s();
-            var areaId = g.world.playerUnit.data.unitData.pointGridData.areaBaseID;
-            if (ModBattleEvent.SceneBattle != null && IsBattleMonstWave() && teamBUnitCount > 0 &&
-                ModBattleEvent.BattleMonsters.Count < (MIN_MONST + STP_MONST * areaId))
-            {
-                var monstLvl = CommonTool.Random(areaId - 1, areaId + 1).FixValue(0, monstList.Length - 1);
-                var cunit = ModBattleEvent.SceneBattle.unit.CreateUnitMonstNotAddList(monstList[monstLvl], Vector2.zero, UnitType.Monst);
-                teamBUnitCount--;
-            }
-        }
+        //[ErrorIgnore]
+        //[EventCondition(IsInGame = HandleEnum.Ignore, IsInBattle = HandleEnum.True)]
+        //public override void OnTimeUpdate1s()
+        //{
+        //    base.OnTimeUpdate1s();
+        //    var areaId = g.world.playerUnit.data.unitData.pointGridData.areaBaseID;
+        //    if (ModBattleEvent.SceneBattle != null && IsBattleMonstWave() && teamBUnitCount > 0 &&
+        //        ModBattleEvent.BattleMonsters.Count < (MIN_MONST + STP_MONST * areaId))
+        //    {
+        //        var monstLvl = CommonTool.Random(areaId - 1, areaId + 1).FixValue(0, monstList.Length - 1);
+        //        var cunit = ModBattleEvent.SceneBattle.unit.CreateUnitMonstNotAddList(monstList[monstLvl], Vector2.zero, UnitType.Monst);
+        //        teamBUnitCount--;
+        //    }
+        //}
     }
 }

@@ -94,11 +94,6 @@ namespace MOD_nE7UL2.Mod
                 monstData.basisWind.baseValue = SMLocalConfigsEvent.Instance.Calculate(monstData.basisWind.value, SMLocalConfigsEvent.Instance.Configs.AddBasisRate).Parse<int>();
                 monstData.basisWood.baseValue = SMLocalConfigsEvent.Instance.Calculate(monstData.basisWood.value, SMLocalConfigsEvent.Instance.Configs.AddBasisRate).Parse<int>();
 
-                atk = monstData.attack.baseValue;
-                def = monstData.defense.baseValue;
-                mhp = monstData.maxHP.baseValue;
-                //DebugHelper.WriteLine($"5: {atk}, {def}, {mhp}");
-
                 //potmon
                 if (e.IsPotmon())
                 {
@@ -106,19 +101,50 @@ namespace MOD_nE7UL2.Mod
                     monstData.defense.baseValue += (ModBattleEvent.PlayerUnit.data.defense.value * 0.01f).Parse<int>();
                     monstData.maxHP.baseValue += (ModBattleEvent.PlayerUnit.data.hp * 0.10f).Parse<int>();
 
-                    monstData.basisBlade.baseValue += (ModBattleEvent.PlayerUnit.data.basisBlade.baseValue * 0.01f).Parse<int>();
-                    monstData.basisEarth.baseValue += (ModBattleEvent.PlayerUnit.data.basisEarth.baseValue * 0.01f).Parse<int>();
-                    monstData.basisFinger.baseValue += (ModBattleEvent.PlayerUnit.data.basisFinger.baseValue * 0.01f).Parse<int>();
-                    monstData.basisFire.baseValue += (ModBattleEvent.PlayerUnit.data.basisFire.baseValue * 0.01f).Parse<int>();
-                    monstData.basisFist.baseValue += (ModBattleEvent.PlayerUnit.data.basisFist.baseValue * 0.01f).Parse<int>();
-                    monstData.basisFroze.baseValue += (ModBattleEvent.PlayerUnit.data.basisFroze.baseValue * 0.01f).Parse<int>();
-                    monstData.basisPalm.baseValue += (ModBattleEvent.PlayerUnit.data.basisPalm.baseValue * 0.01f).Parse<int>();
-                    monstData.basisSpear.baseValue += (ModBattleEvent.PlayerUnit.data.basisSpear.baseValue * 0.01f).Parse<int>();
-                    monstData.basisSword.baseValue += (ModBattleEvent.PlayerUnit.data.basisSword.baseValue * 0.01f).Parse<int>();
-                    monstData.basisThunder.baseValue += (ModBattleEvent.PlayerUnit.data.basisThunder.baseValue * 0.01f).Parse<int>();
-                    monstData.basisWind.baseValue += (ModBattleEvent.PlayerUnit.data.basisWind.baseValue * 0.01f).Parse<int>();
-                    monstData.basisWood.baseValue += (ModBattleEvent.PlayerUnit.data.basisWood.baseValue * 0.01f).Parse<int>();
+                    monstData.basisBlade.baseValue += (ModBattleEvent.PlayerUnit.data.basisBlade.value * 0.01f).Parse<int>();
+                    monstData.basisEarth.baseValue += (ModBattleEvent.PlayerUnit.data.basisEarth.value * 0.01f).Parse<int>();
+                    monstData.basisFinger.baseValue += (ModBattleEvent.PlayerUnit.data.basisFinger.value * 0.01f).Parse<int>();
+                    monstData.basisFire.baseValue += (ModBattleEvent.PlayerUnit.data.basisFire.value * 0.01f).Parse<int>();
+                    monstData.basisFist.baseValue += (ModBattleEvent.PlayerUnit.data.basisFist.value * 0.01f).Parse<int>();
+                    monstData.basisFroze.baseValue += (ModBattleEvent.PlayerUnit.data.basisFroze.value * 0.01f).Parse<int>();
+                    monstData.basisPalm.baseValue += (ModBattleEvent.PlayerUnit.data.basisPalm.value * 0.01f).Parse<int>();
+                    monstData.basisSpear.baseValue += (ModBattleEvent.PlayerUnit.data.basisSpear.value * 0.01f).Parse<int>();
+                    monstData.basisSword.baseValue += (ModBattleEvent.PlayerUnit.data.basisSword.value * 0.01f).Parse<int>();
+                    monstData.basisThunder.baseValue += (ModBattleEvent.PlayerUnit.data.basisThunder.value * 0.01f).Parse<int>();
+                    monstData.basisWind.baseValue += (ModBattleEvent.PlayerUnit.data.basisWind.value * 0.01f).Parse<int>();
+                    monstData.basisWood.baseValue += (ModBattleEvent.PlayerUnit.data.basisWood.value * 0.01f).Parse<int>();
                 }
+
+                //sect guardian
+                if (e.IsSectGuardian())
+                {
+                    var battleSchool = g.world.build.GetBuild<MapBuildSchool>(g.world.battle.data.schoolID);
+                    var strongestUnit = g.world.unit.GetUnitsInArea(battleSchool.gridData.areaBaseID, true).ToArray().GetStrongestWUnit();
+                    if (strongestUnit != null)
+                    {
+                        monstData.attack.baseValue += strongestUnit.GetDynProperty(UnitDynPropertyEnum.Attack).baseValue;
+                        monstData.defense.baseValue += strongestUnit.GetDynProperty(UnitDynPropertyEnum.Defense).baseValue;
+                        monstData.maxHP.baseValue += strongestUnit.GetDynProperty(UnitDynPropertyEnum.HpMax).baseValue;
+
+                        monstData.basisBlade.baseValue += strongestUnit.GetDynProperty(UnitDynPropertyEnum.BasisBlade).baseValue;
+                        monstData.basisEarth.baseValue += strongestUnit.GetDynProperty(UnitDynPropertyEnum.BasisEarth).baseValue;
+                        monstData.basisFinger.baseValue += strongestUnit.GetDynProperty(UnitDynPropertyEnum.BasisFinger).baseValue;
+                        monstData.basisFire.baseValue += strongestUnit.GetDynProperty(UnitDynPropertyEnum.BasisFire).baseValue;
+                        monstData.basisFist.baseValue += strongestUnit.GetDynProperty(UnitDynPropertyEnum.BasisFist).baseValue;
+                        monstData.basisFroze.baseValue += strongestUnit.GetDynProperty(UnitDynPropertyEnum.BasisFroze).baseValue;
+                        monstData.basisPalm.baseValue += strongestUnit.GetDynProperty(UnitDynPropertyEnum.BasisPalm).baseValue;
+                        monstData.basisSpear.baseValue += strongestUnit.GetDynProperty(UnitDynPropertyEnum.BasisSpear).baseValue;
+                        monstData.basisSword.baseValue += strongestUnit.GetDynProperty(UnitDynPropertyEnum.BasisSword).baseValue;
+                        monstData.basisThunder.baseValue += strongestUnit.GetDynProperty(UnitDynPropertyEnum.BasisThunder).baseValue;
+                        monstData.basisWind.baseValue += strongestUnit.GetDynProperty(UnitDynPropertyEnum.BasisWind).baseValue;
+                        monstData.basisWood.baseValue += strongestUnit.GetDynProperty(UnitDynPropertyEnum.BasisWood).baseValue;
+                    }
+                }
+
+                atk = monstData.attack.baseValue;
+                def = monstData.defense.baseValue;
+                mhp = monstData.maxHP.baseValue;
+                //DebugHelper.WriteLine($"5: {atk}, {def}, {mhp}");
 
                 //additional
                 //DebugHelper.WriteLine("6");

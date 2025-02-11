@@ -1,7 +1,7 @@
 [
 	{
 		"id": "480110990",
-		"type": "46",
+		"type": "10",
 		"typeDesc": "battleevent480111990typeDesc",
 		"@|className": "0",
 		"name": "battleevent480112990name",
@@ -32,7 +32,7 @@
 	},
 	{
 		"id": "480110991",
-		"type": "46",
+		"type": "10",
 		"typeDesc": "battleevent480111990typeDesc",
 		"@|className": "0",
 		"name": "battleevent480112991name",
@@ -63,7 +63,7 @@
 	},
 	{
 		"id": "480110991",
-		"type": "46",
+		"type": "10",
 		"typeDesc": "battleevent480111990typeDesc",
 		"@|className": "0",
 		"name": "battleevent480112991name",
