@@ -7,6 +7,7 @@ using ModLib.Mod;
 using System;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using static MOD_nE7UL2.Object.GameStts;
 
 namespace MOD_nE7UL2.Mod
@@ -20,6 +21,9 @@ namespace MOD_nE7UL2.Mod
         public const int BASIS_ON_DEF = 400;
         public const float BASIS_ON_BLOCK_RATIO = 10000f;
         public const int BASIS_ON_BLOCK_COST = 800;
+
+        public Text textCustomMonstCount1;
+        public Text textCustomMonstCount2;
 
         public static _MonstStrongerConfigs MonstStrongerConfigs => ModMain.ModObj.GameSettings.MonstStrongerConfigs;
 
@@ -39,9 +43,29 @@ namespace MOD_nE7UL2.Mod
             if (e.uiType.uiName == UIType.BattleInfo.uiName)
             {
                 var ui = g.ui.GetUI<UIBattleInfo>(UIType.BattleInfo);
-                ui.uiInfo.goMonstCount1.SetActive(false);
-                ui.uiInfo.goMonstCount2.SetActive(false);
                 ui.uiMap.goGroupRoot.SetActive(!SMLocalConfigsEvent.Instance.Configs.HideBattleMap);
+                if (MapBuildBattleEvent.IsBattleMonstWave() || MapBuildBattleEvent.IsBattleTownWar())
+                {
+                    textCustomMonstCount1 = ui.uiInfo.textMonstCount1.Replace();
+                    textCustomMonstCount2 = ui.uiInfo.textMonstCount2.Replace();
+                }
+                else
+                {
+                    ui.uiInfo.goMonstCount1.SetActive(false);
+                    ui.uiInfo.goMonstCount2.SetActive(false);
+                }
+            }
+        }
+
+        [ErrorIgnore]
+        [EventCondition(IsInGame = HandleEnum.Ignore, IsInBattle = HandleEnum.True)]
+        public override void OnTimeUpdate1s()
+        {
+            base.OnTimeUpdate1s();
+            if (MapBuildBattleEvent.IsBattleMonstWave() || MapBuildBattleEvent.IsBattleTownWar())
+            {
+                textCustomMonstCount1.text = MapBuildBattleEvent.teamAUnitCount.ToString();
+                textCustomMonstCount2.text = MapBuildBattleEvent.teamBUnitCount.ToString();
             }
         }
 
