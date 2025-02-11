@@ -19,4 +19,9 @@
     {
         return g.world.battle.data.dungeonBaseItem.id == 100411;
     }
+
+    public static bool IsRebornBambooChallenge()
+    {
+        return g.world.battle.data.dungeonBaseItem.id == 2303;
+    }
 }
