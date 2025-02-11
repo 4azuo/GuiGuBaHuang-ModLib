@@ -14,22 +14,14 @@ namespace MOD_nE7UL2.Mod
     {
         public static RealTrialEvent Instance { get; set; }
         public static _RealTrialConfigs RealTrialConfigs => ModMain.ModObj.GameSettings.RealTrialConfigs;
-
-        [JsonIgnore]
-        public bool IsInTrial { get; set; } = false;
-
-        public override void OnOpenDrama(OpenDrama e)
-        {
-            base.OnOpenDrama(e);
-            IsInTrial = e.dramaID == 20701;
-        }
+        public static bool IsInTrial => g.world.battle.data.dungeonBaseItem.id == 110081;
 
         public override void OnBattleUnitInto(UnitCtrlBase e)
         {
             base.OnBattleUnitInto(e);
 
             var data = e?.data;
-            if (IsInTrial && data != null)
+            if (IsInTrial && !e.IsPlayer())
             {
                 var atk = g.world.playerUnit.GetDynProperty(UnitDynPropertyEnum.Attack).value;
                 var def = g.world.playerUnit.GetDynProperty(UnitDynPropertyEnum.Defense).value;
@@ -55,7 +47,6 @@ namespace MOD_nE7UL2.Mod
                     g.world.playerUnit.AddProperty(pType, UnitTypeEnum.Trial.CalProp(pType, g.world.playerUnit.GetProperty<int>(pType)));
                 }
             }
-            IsInTrial = false;
         }
     }
 }

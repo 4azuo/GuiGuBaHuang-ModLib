@@ -225,8 +225,39 @@ namespace MOD_nE7UL2.Mod
 
         public static bool IsJoinableBattle()
         {
-            return !MapBuildBattleEvent.IsBattleTownWar() && !MapBuildBattleEvent.IsBattleMonstWave();
-            //should add self battles
+            return !MapBuildBattleEvent.IsBattleTownWar() && !MapBuildBattleEvent.IsBattleMonstWave() &&
+                g.world.battle.data.dungeonBaseItem.id != 3901 /*Qi Refining Realm*/ &&
+                g.world.battle.data.dungeonBaseItem.id != 3902 /*Foundation Realm*/ &&
+                g.world.battle.data.dungeonBaseItem.id != 3903 /*Qi Condensation Realm*/ &&
+                g.world.battle.data.dungeonBaseItem.id != 3904 /*Golden Core Realm*/ &&
+                g.world.battle.data.dungeonBaseItem.id != 3905 /*Origin Spirit Realm*/ &&
+                g.world.battle.data.dungeonBaseItem.id != 3906 /*Nascent Soul Realm*/ &&
+                g.world.battle.data.dungeonBaseItem.id != 3907 /*Soul Formation Realm*/ &&
+                g.world.battle.data.dungeonBaseItem.id != 3908 /*Enlightenment Realm*/ &&
+                g.world.battle.data.dungeonBaseItem.id != 3909 /*Reborn Realm*/ &&
+                g.world.battle.data.dungeonBaseItem.id != 3910 /*Transcendent Realm*/ &&
+                g.world.battle.data.dungeonBaseItem.id != 3911 /*Tian Yuan Summit*/ &&
+                g.world.battle.data.dungeonBaseItem.id != 4601 /*Sect Position Dungeon*/ &&
+                g.world.battle.data.dungeonBaseItem.id != 5016850 /*Mind Demon*/ &&
+                !DungeonHelper.IsArean() /*Arena*/ &&
+                !DungeonHelper.IsChallenge() /*Challenge*/ &&
+                !DungeonHelper.IsSpar() /*Spar*/ &&
+                !DungeonHelper.IsTrailOfLightning() /*Trial of Lightning*/ &&
+                g.world.battle.data.dungeonBaseItem.id != 120 /*Sect Points Race*/ &&
+                g.world.battle.data.dungeonBaseItem.id != 121 /*Sect Open Challenge Match*/ &&
+                g.world.battle.data.dungeonBaseItem.id != 122 /*Sect Array Core Battle*/ &&
+                g.world.battle.data.dungeonBaseItem.id != 123 /*Sect battle*/ &&
+                g.world.battle.data.dungeonBaseItem.id != 124 /*Sect Flying Canoe Battle*/ &&
+                g.world.battle.data.dungeonBaseItem.id != 125 /*Sect Guardian Battle*/
+                //g.world.battle.data.dungeonBaseItem.id != 7007 /*Spiritlock Circle*/ &&
+                //g.world.battle.data.dungeonBaseItem.id != 7008 /*Spiritlock Circle*/ &&
+                //g.world.battle.data.dungeonBaseItem.id != 7009 /*Spiritlock Circle*/ &&
+                //g.world.battle.data.dungeonBaseItem.id != 7010 /*Spiritlock Circle*/ &&
+                //g.world.battle.data.dungeonBaseItem.id != 7011 /*Demonseal Circle*/ &&
+                //g.world.battle.data.dungeonBaseItem.id != 7012 /*Demonseal Circle*/ &&
+                //g.world.battle.data.dungeonBaseItem.id != 7013 /*Demonseal Circle*/ &&
+                ;
+            //should block self battles
         }
     }
 }
