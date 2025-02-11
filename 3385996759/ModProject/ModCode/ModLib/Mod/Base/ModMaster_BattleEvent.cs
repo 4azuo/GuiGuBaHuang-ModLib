@@ -198,13 +198,14 @@ namespace ModLib.Mod
 
         public virtual void OnBattleUnitInto(UnitCtrlBase e)
         {
-            //DebugHelper.WriteLine($"Unit: SoleId:{e.data.createUnitSoleID}, IsEnemy:{e.IsEnemy(ModBattleEvent.PlayerUnit)}, IsWorldUnit:{e.IsWorldUnit()}, IsPlayer:{e.IsPlayer()}, IsNPC:{e.IsNPC()}, IsHuman:{e.IsHuman()}, IsMonster:{e.IsMonster()}, IsMonsterHuman:{e.IsMonsterHuman()}, IsFairy:{e.IsFairy()}, IsHerd:{e.IsHerd()}, UnitType:{e.data.unitType}, MonstType:{e.TryCast<UnitCtrlMonst>()?.data.monstType}");
+            var monst = e.TryCast<UnitCtrlMonst>();
+            DebugHelper.WriteLine($"Unit: SoleId:{e.data.createUnitSoleID}, IsEnemy:{e.IsEnemy(ModBattleEvent.PlayerUnit)}, IsWorldUnit:{e.IsWorldUnit()}, IsPlayer:{e.IsPlayer()}, IsNPC:{e.IsNPC()}, IsHuman:{e.IsHuman()}, IsMonster:{e.IsMonster()}, IsMonsterHuman:{e.IsMonsterHuman()}, IsFairy:{e.IsFairy()}, IsHerd:{e.IsHerd()}, IsPotmon:{e.IsPotmon()}, UnitType:{e.data.unitType}, MonstType:{monst?.data.monstType}, MonstId:{monst?.data.unitAttrItem.id}, MonstName:{GameTool.LS(monst?.data.unitAttrItem.name)}");
             EventHelper.RunMinorEvents(e);
         }
 
         public virtual void OnBattleStart(ETypeData e)
         {
-            DebugHelper.WriteLine($"Battle: SoleId:{g.world.battle.data.battleID}, Lvl:{g.world.battle.data.dungeonLevel}, SelfBattle:{g.world.battle.data.isSelfBattle}, RealBattle:{g.world.battle.data.isRealBattle}, RoomCount:{SceneType.battle.room.room.allRoom.Count}, RoomInfo:{string.Join(";", SceneType.battle.room.room.allRoom.ToArray().Select(x => $"(Id:{x.roomBaseItem.id}, Type:{x.roomBaseItem.type}, Width:{x.roomBaseItem.width}, Height:{x.roomBaseItem.height})"))}");
+            DebugHelper.WriteLine($"Battle: SoleId:{g.world.battle.data.battleID}, DungeonId:{g.world.battle.data.dungeonBaseItem.id}, DungeonName:{GameTool.LS(g.world.battle.data.dungeonBaseItem.name)}, Lvl:{g.world.battle.data.dungeonLevel}, SelfBattle:{g.world.battle.data.isSelfBattle}, RealBattle:{g.world.battle.data.isRealBattle}, RoomCount:{SceneType.battle.room.room.allRoom.Count}, RoomInfo:{string.Join(";", SceneType.battle.room.room.allRoom.ToArray().Select(x => $"(Id:{x.roomBaseItem.id}, Type:{x.roomBaseItem.type}, Width:{x.roomBaseItem.width}, Height:{x.roomBaseItem.height})"))}");
             EventHelper.RunMinorEvents(e);
         }
 
