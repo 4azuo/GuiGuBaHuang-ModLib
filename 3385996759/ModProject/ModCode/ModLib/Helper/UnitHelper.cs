@@ -680,7 +680,14 @@ public static class UnitHelper
 
     public static bool IsPotmon(this UnitCtrlBase cunit)
     {
-        return MartialTool.IsPotmonUnit(cunit);
+        try
+        {
+            return MartialTool.IsPotmonUnit(cunit);
+        }
+        catch
+        {
+            return false;
+        }
     }
 
     public static bool IsArtifactUnit(this UnitCtrlBase cunit)
