@@ -243,7 +243,7 @@ namespace MOD_nE7UL2.Mod
                 !DungeonHelper.IsChallenge() /*Challenge*/ &&
                 !DungeonHelper.IsSpar() /*Spar*/ &&
                 !DungeonHelper.IsTrailOfLightning() /*Trial of Lightning*/ &&
-                !DungeonHelper.IsRebornBambooChallenge() &&
+                !DungeonHelper.IsRebornBambooChallenge() /*Bamboo Challenge*/ &&
                 g.world.battle.data.dungeonBaseItem.id != 120 /*Sect Points Race*/ &&
                 g.world.battle.data.dungeonBaseItem.id != 121 /*Sect Open Challenge Match*/ &&
                 g.world.battle.data.dungeonBaseItem.id != 122 /*Sect Array Core Battle*/ &&

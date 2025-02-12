@@ -3,6 +3,7 @@ using MOD_nE7UL2.Const;
 using MOD_nE7UL2.Enum;
 using ModLib.Enum;
 using ModLib.Mod;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,14 +14,19 @@ namespace MOD_nE7UL2.Mod
     [Cache(ModConst.MAP_BUILD_BATTLE_EVENT)]
     public class MapBuildBattleEvent : ModEvent
     {
+        public enum TeamSide
+        {
+            TeamA,
+            TeamB,
+        }
+
         public static MapBuildBattleEvent Instance { get; set; }
 
         public const int JOIN_RANGE = 4;
         public const float MONST_WAVE_RATE = 1f;
         public const float TOWN_WAR_RATE = 0.4f;
-        public const int MIN_MONST = 8;
-        public const int STP_MONST = 4;
-        public const int MAX_WUNIT = 8;
+        public const int MIN_UNIT = 6;
+        public const int STP_UNIT = 2;
 
         public const int TOWN_WAR_DUNGEON_BASE_ID = 480110990;
         public const int TOWN_MONST_WAVE_DUNGEON_BASE_ID = 480110991;
@@ -28,13 +34,20 @@ namespace MOD_nE7UL2.Mod
 
         public Dictionary<string, int> LastYearEventHappen { get; set; } = new Dictionary<string, int>();
 
-        public static int playerSide;
-        public static int teamAUnitCount;
-        public static int teamBUnitCount;
-        public static List<WorldUnitBase> teamAWUnits;
-        public static List<WorldUnitBase> teamBWUnits;
-        public static List<UnitCtrlBase> teamACUnits;
-        public static List<UnitCtrlBase> teamBCUnits;
+        [JsonIgnore]
+        public static TeamSide PlayerSide { get; set; }
+        [JsonIgnore]
+        public static int TeamAUnitCount { get; set; } = 0;
+        [JsonIgnore]
+        public static int TeamBUnitCount { get; set; } = 0;
+        [JsonIgnore]
+        public static List<WorldUnitBase> TeamAWUnits { get; set; } = new List<WorldUnitBase>();
+        [JsonIgnore]
+        public static List<WorldUnitBase> TeamBWUnits { get; set; } = new List<WorldUnitBase>();
+        [JsonIgnore]
+        public static List<UnitCtrlBase> TeamACUnits { get; set; } = new List<UnitCtrlBase>();
+        [JsonIgnore]
+        public static List<UnitCtrlBase> TeamBCUnits { get; set; } = new List<UnitCtrlBase>();
 
         public static readonly int[] enemyInTraits = new int[] { UnitTraitEnum.Evil.Parse<int>() };
         public static readonly int[] enemyOutTraits = new int[] { UnitTraitEnum.Power_hungry.Parse<int>(), UnitTraitEnum.Glory_Hound.Parse<int>() };
@@ -132,11 +145,11 @@ namespace MOD_nE7UL2.Mod
         {
             //player side
             if (MapBuildPropertyEvent.IsTownGuardian(townA_def, g.world.playerUnit))
-                playerSide = 1;
+                PlayerSide = TeamSide.TeamA;
             else if (MapBuildPropertyEvent.IsTownGuardian(townB_atk, g.world.playerUnit))
-                playerSide = 2;
+                PlayerSide = TeamSide.TeamB;
             else
-                playerSide = 1;
+                PlayerSide = TeamSide.TeamA;
             //battle info
             CalTownWarInfo(townA_def, townB_atk);
             //battle into
@@ -148,7 +161,7 @@ namespace MOD_nE7UL2.Mod
             //battle info
             CalTownWarInfo(townA_def, townB_atk);
             //auto battle
-            var teamAPoint = ValueHelper.SumBigNum(teamAWUnits.Select(x =>
+            var teamAPoint = ValueHelper.SumBigNum(TeamAWUnits.Select(x =>
             {
                 return
                     (x.GetDynProperty(UnitDynPropertyEnum.Attack).value * 3) +
@@ -158,8 +171,8 @@ namespace MOD_nE7UL2.Mod
                     (x.GetDynProperty(UnitDynPropertyEnum.SpMax).value * 5) +
                     (x.GetEquippedArtifacts().Select(a => Math.Pow(2, a.propsInfoBase.grade) * 10000 + Math.Pow(2, a.propsInfoBase.level) * 2000).Sum());
             }).ToArray());
-            var teamATotalPoint = teamAPoint * teamAUnitCount * /*def point*/1.2;
-            var teamBPoint = ValueHelper.SumBigNum(teamBWUnits.Select(x =>
+            var teamATotalPoint = teamAPoint * TeamAUnitCount * /*def point*/1.2;
+            var teamBPoint = ValueHelper.SumBigNum(TeamBWUnits.Select(x =>
             {
                 return
                     (x.GetDynProperty(UnitDynPropertyEnum.Attack).value * 3) +
@@ -169,7 +182,7 @@ namespace MOD_nE7UL2.Mod
                     (x.GetDynProperty(UnitDynPropertyEnum.SpMax).value * 5) +
                     (x.GetEquippedArtifacts().Select(a => Math.Pow(2, a.propsInfoBase.grade) * 10000 + Math.Pow(2, a.propsInfoBase.level) * 2000).Sum());
             }).ToArray());
-            var teamBTotalPoint = teamBPoint * teamBUnitCount;
+            var teamBTotalPoint = teamBPoint * TeamBUnitCount;
             //battle end
             var ratioAB = teamATotalPoint / teamBTotalPoint;
             var ratioBA = teamBTotalPoint / teamATotalPoint;
@@ -254,7 +267,7 @@ namespace MOD_nE7UL2.Mod
         public static void JoinMonstWave(MapBuildBase teamAbuildBase, int dungeonBaseId)
         {
             //player side
-            playerSide = 1;
+            PlayerSide = TeamSide.TeamA;
             //battle info
             CalMonstWaveInfo(teamAbuildBase);
             //battle into
@@ -266,7 +279,7 @@ namespace MOD_nE7UL2.Mod
             //battle info
             CalMonstWaveInfo(teamAbuildBase);
             //auto battle
-            var teamAPoint = ValueHelper.SumBigNum(teamAWUnits.Select(x =>
+            var teamAPoint = ValueHelper.SumBigNum(TeamAWUnits.Select(x =>
             {
                 return
                     (x.GetDynProperty(UnitDynPropertyEnum.Attack).value * 3) +
@@ -276,11 +289,11 @@ namespace MOD_nE7UL2.Mod
                     (x.GetDynProperty(UnitDynPropertyEnum.SpMax).value * 5) +
                     (x.GetEquippedArtifacts().Select(a => Math.Pow(2, a.propsInfoBase.grade) * 10000 + Math.Pow(2, a.propsInfoBase.level) * 2000).Sum());
             }).ToArray());
-            var teamATotalPoint = teamAPoint * teamAUnitCount * /*def point*/1.2;
+            var teamATotalPoint = teamAPoint * TeamAUnitCount * /*def point*/1.2;
             var gameLvl = g.data.dataWorld.data.gameLevel.Parse<int>();
             var areaId = teamAbuildBase.gridData.areaBaseID;
             var teamBPoint = Math.Pow(3, areaId) * 10000 + Math.Pow(3, gameLvl) * 3000;
-            var teamBTotalPoint = teamBPoint * teamBUnitCount;
+            var teamBTotalPoint = teamBPoint * TeamBUnitCount;
             //battle end
             var ratioAB = teamATotalPoint / teamBTotalPoint;
             var ratioBA = teamBTotalPoint / teamATotalPoint;
@@ -317,34 +330,38 @@ namespace MOD_nE7UL2.Mod
 
         public static void CalTownWarInfo(MapBuildTown townA_def, MapBuildTown townB_atk)
         {
-            teamBWUnits = MapBuildPropertyEvent.GetTownGuardians(townB_atk).Where(x => !x.IsPlayer()).ToList();
-            teamAWUnits = g.world.unit.GetUnitExact(townA_def.GetOrigiPoint(), JOIN_RANGE, true, false).ToArray().Take(MAX_WUNIT).ToList();
-
             var areaId = townA_def.gridData.areaBaseID;
+
+            TeamAWUnits = g.world.unit.GetUnitExact(townA_def.GetOrigiPoint(), JOIN_RANGE, true, false).ToArray().Take(MIN_UNIT + STP_UNIT * areaId).ToList();
+            TeamBWUnits = MapBuildPropertyEvent.GetTownGuardians(townB_atk).Where(x => !x.IsPlayer()).ToList();
+
             var defCityR = townA_def.IsCity() ? 2 : 1;
             var atkCityR = townB_atk.IsCity() ? 2 : 1;
-            teamAUnitCount = 10 + (teamAWUnits.Count * (20 / areaId) * defCityR) + (MapBuildPropertyEvent.GetBuildProperty(townA_def) / 1000000).Parse<int>();
-            teamBUnitCount = 10 + (teamBWUnits.Count * (20 / areaId) * atkCityR) + (MapBuildPropertyEvent.GetBuildProperty(townB_atk) / 1000000).Parse<int>();
+            TeamAUnitCount = 10 + (TeamAWUnits.Count * (20 / areaId) * defCityR) + (MapBuildPropertyEvent.GetBuildProperty(townA_def) / 1000000).Parse<int>();
+            TeamBUnitCount = 10 + (TeamBWUnits.Count * (20 / areaId) * atkCityR) + (MapBuildPropertyEvent.GetBuildProperty(townB_atk) / 1000000).Parse<int>();
         }
 
         public static void CalMonstWaveInfo(MapBuildBase baseA_def)
         {
-            teamAWUnits = g.world.unit.GetUnitExact(baseA_def.GetOrigiPoint(), JOIN_RANGE, true, false).ToArray().Take(MAX_WUNIT).ToList();
-            teamBWUnits = null;
-
             var gameLvl = g.data.dataWorld.data.gameLevel.Parse<int>();
             var areaId = baseA_def.gridData.areaBaseID;
+
+            TeamAWUnits = g.world.unit.GetUnitExact(baseA_def.GetOrigiPoint(), JOIN_RANGE, true, false).ToArray().Take(MIN_UNIT + STP_UNIT * areaId).ToList();
+            TeamBWUnits = null;
+
             var cityR = baseA_def.IsCity() ? 2 : 1;
-            teamAUnitCount = 10 + (teamAWUnits.Count * (20 / areaId) * cityR) + (MapBuildPropertyEvent.GetBuildProperty(baseA_def) / 1000000).Parse<int>();
-            teamBUnitCount = ((100 + g.world.run.roundMonth + teamAUnitCount * gameLvl + Math.Pow(2, areaId).Parse<int>()) * CommonTool.Random(0.8f, 1.1f)).Parse<int>();
+            TeamAUnitCount = 10 + (TeamAWUnits.Count * (20 / areaId) * cityR) + (MapBuildPropertyEvent.GetBuildProperty(baseA_def) / 1000000).Parse<int>();
+            TeamBUnitCount = ((100 + g.world.run.roundMonth + TeamAUnitCount * gameLvl + Math.Pow(2, areaId).Parse<int>()) * CommonTool.Random(0.8f, 1.1f)).Parse<int>();
         }
 
-        public static int GetBattleSide(UnitCtrlBase cunit)
+        public static TeamSide GetBattleSide(UnitCtrlBase cunit)
         {
-            if (teamACUnits.Any(x => x.data.createUnitSoleID == cunit.data.createUnitSoleID))
-                return 1;
-            if (teamBCUnits.Any(x => x.data.createUnitSoleID == cunit.data.createUnitSoleID))
-                return 2;
+            if (cunit.IsPlayer())
+                return PlayerSide;
+            if (TeamACUnits.Any(x => x.data.createUnitSoleID == cunit.data.createUnitSoleID))
+                return TeamSide.TeamA;
+            if (TeamBCUnits.Any(x => x.data.createUnitSoleID == cunit.data.createUnitSoleID))
+                return TeamSide.TeamB;
             return 0;
         }
 
@@ -353,27 +370,34 @@ namespace MOD_nE7UL2.Mod
             base.OnBattleStart(e);
             if (ModBattleEvent.SceneBattle != null && (IsBattleTownWar() || IsBattleMonstWave()))
             {
+                //create team units
                 if (IsBattleTownWar())
                 {
-                    var utA = playerSide == 1 ? UnitType.PlayerNPC : UnitType.Monst;
-                    var utB = playerSide == 2 ? UnitType.PlayerNPC : UnitType.Monst;
-                    if (teamACUnits == null)
-                        teamACUnits = teamAWUnits.Select(x => ModBattleEvent.SceneBattle.unit.CreateUnitHuman<UnitCtrlHumanNPC>(x.data, utA)).Cast<UnitCtrlBase>().ToList();
-                    if (teamBCUnits == null)
-                        teamBCUnits = teamAWUnits.Select(x => ModBattleEvent.SceneBattle.unit.CreateUnitHuman<UnitCtrlHumanNPC>(x.data, utB)).Cast<UnitCtrlBase>().ToList();
+                    var utA = PlayerSide == TeamSide.TeamA ? UnitType.PlayerNPC : UnitType.Monst;
+                    var utB = PlayerSide == TeamSide.TeamB ? UnitType.PlayerNPC : UnitType.Monst;
+                    if (TeamACUnits == null)
+                    {
+                        TeamACUnits.AddRange(TeamAWUnits.Select(x => ModBattleEvent.SceneBattle.unit.CreateUnitHuman<UnitCtrlHumanNPC>(x.data, utA)).Cast<UnitCtrlBase>());
+                    }
+                    if (TeamBCUnits == null)
+                    {
+                        TeamBCUnits.AddRange(TeamBWUnits.Select(x => ModBattleEvent.SceneBattle.unit.CreateUnitHuman<UnitCtrlHumanNPC>(x.data, utB)).Cast<UnitCtrlBase>());
+                    }
                 }
                 else if (IsBattleMonstWave())
                 {
-                    if (teamACUnits == null)
-                        teamACUnits = teamAWUnits.Select(x => ModBattleEvent.SceneBattle.unit.CreateUnitHuman<UnitCtrlHumanNPC>(x.data, UnitType.PlayerNPC)).Cast<UnitCtrlBase>().ToList();
-                    if (teamBCUnits == null)
+                    if (TeamACUnits == null)
                     {
-                        teamBCUnits = new List<UnitCtrlBase>();
+                        TeamACUnits.AddRange(TeamAWUnits.Select(x => ModBattleEvent.SceneBattle.unit.CreateUnitHuman<UnitCtrlHumanNPC>(x.data, UnitType.PlayerNPC)).Cast<UnitCtrlBase>());
+                    }
+                    if (TeamBCUnits == null)
+                    {
+                        TeamBCUnits = new List<UnitCtrlBase>();
                         var areaId = g.world.playerUnit.data.unitData.pointGridData.areaBaseID;
-                        for (int i = 0; i < (MIN_MONST + STP_MONST * areaId); i++)
+                        for (int i = 0; i < (MIN_UNIT + STP_UNIT * areaId) * 2; i++)
                         {
                             var monstLvl = CommonTool.Random(areaId - 1, areaId + 1).FixValue(0, monstList.Length - 1);
-                            teamBCUnits.Add(ModBattleEvent.SceneBattle.unit.CreateUnitMonstNotAddList(monstList[monstLvl], Vector2.zero, UnitType.Monst));
+                            TeamBCUnits.Add(ModBattleEvent.SceneBattle.unit.CreateUnitMonstNotAddList(monstList[monstLvl], Vector2.zero, UnitType.Monst));
                         }
                     }
                 }
@@ -390,23 +414,33 @@ namespace MOD_nE7UL2.Mod
                     if (e.unit.IsHuman())
                     {
                         var side = GetBattleSide(e.unit);
-                        var count = side == 1 ? teamAUnitCount : teamBUnitCount;
+                        var count = side == TeamSide.TeamA ? TeamAUnitCount : TeamBUnitCount;
                         if (count > 0)
                         {
                             //-point
-                            if (side == 1)
-                                teamAUnitCount--;
+                            if (side == TeamSide.TeamA)
+                                TeamAUnitCount--;
                             else
-                                teamBUnitCount--;
+                                TeamBUnitCount--;
                             //create new unit
                             var wunit = e.unit.GetWorldUnit();
                             if (wunit.IsPlayer())
                             {
-                                ModBattleEvent.SceneBattle.unit.CreateUnitPlayer();
+                                var cunit = ModBattleEvent.SceneBattle.unit.CreateUnitPlayer();
+                                //set posi
+                                if (side == TeamSide.TeamA)
+                                    TeamACUnits.Add(cunit);
+                                else
+                                    TeamBCUnits.Add(cunit);
                             }
                             else
                             {
-                                ModBattleEvent.SceneBattle.unit.CreateUnitHuman<UnitCtrlHumanNPC>(wunit.data, e.unit.data.unitType);
+                                var cunit = ModBattleEvent.SceneBattle.unit.CreateUnitHuman<UnitCtrlHumanNPC>(wunit.data, e.unit.data.unitType);
+                                //set posi
+                                if (side == TeamSide.TeamA)
+                                    TeamACUnits.Add(cunit);
+                                else
+                                    TeamBCUnits.Add(cunit);
                             }
                         }
                     }
@@ -416,37 +450,47 @@ namespace MOD_nE7UL2.Mod
                 {
                     if (e.unit.IsHuman())
                     {
-                        if (teamAUnitCount > 0)
+                        if (TeamAUnitCount > 0)
                         {
                             //-point
-                            teamAUnitCount--;
+                            TeamAUnitCount--;
                             //create new unit
                             var wunit = e.unit.GetWorldUnit();
                             if (wunit.IsPlayer())
                             {
-                                ModBattleEvent.SceneBattle.unit.CreateUnitPlayer();
+                                TeamACUnits.Add(ModBattleEvent.SceneBattle.unit.CreateUnitPlayer());
                             }
                             else
                             {
-                                ModBattleEvent.SceneBattle.unit.CreateUnitHuman<UnitCtrlHumanNPC>(wunit.data, e.unit.data.unitType);
+                                TeamACUnits.Add(ModBattleEvent.SceneBattle.unit.CreateUnitHuman<UnitCtrlHumanNPC>(wunit.data, e.unit.data.unitType));
                             }
                         }
                     }
                     else
                     if (e.unit.IsMonster())
                     {
-                        if (teamBUnitCount > 0)
+                        if (TeamBUnitCount > 0)
                         {
                             //-point
-                            teamBUnitCount--;
+                            TeamBUnitCount--;
                             //create new monster
                             var areaId = g.world.playerUnit.data.unitData.pointGridData.areaBaseID;
                             var monstLvl = CommonTool.Random(areaId - 1, areaId + 1).FixValue(0, monstList.Length - 1);
-                            ModBattleEvent.SceneBattle.unit.CreateUnitMonstNotAddList(monstList[monstLvl], Vector2.zero, UnitType.Monst);
+                            TeamBCUnits.Add(ModBattleEvent.SceneBattle.unit.CreateUnitMonstNotAddList(monstList[monstLvl], Vector2.zero, UnitType.Monst));
                         }
                     }
                 }
             }
+        }
+
+        public override void OnBattleUnitInto(UnitCtrlBase e)
+        {
+            base.OnBattleUnitInto(e);
+            //set player posi
+            if (GetBattleSide(e) == TeamSide.TeamA)
+                e.move.SetPosition(GetTeamAPosi());
+            else
+                e.move.SetPosition(GetTeamBPosi());
         }
 
         public override void OnBattleEndOnce(BattleEnd e)
@@ -454,11 +498,23 @@ namespace MOD_nE7UL2.Mod
             base.OnBattleEndOnce(e);
             if (ModBattleEvent.SceneBattle != null && (IsBattleTownWar() || IsBattleMonstWave()))
             {
-                teamAWUnits = null;
-                teamBWUnits = null;
-                teamACUnits = null;
-                teamBCUnits = null;
+                TeamAWUnits.Clear();
+                TeamBWUnits.Clear();
+                TeamACUnits.Clear();
+                TeamBCUnits.Clear();
             }
+        }
+
+        public static Vector2 GetTeamAPosi()
+        {
+            return new Vector2(ModBattleEvent.SceneBattle.battleMap.roomCenterPosi.x - 40,
+                CommonTool.Random(ModBattleEvent.SceneBattle.battleMap.roomCenterPosi.y - 40, ModBattleEvent.SceneBattle.battleMap.roomCenterPosi.y + 40));
+        }
+
+        public static Vector2 GetTeamBPosi()
+        {
+            return new Vector2(ModBattleEvent.SceneBattle.battleMap.roomCenterPosi.x + 40,
+                CommonTool.Random(ModBattleEvent.SceneBattle.battleMap.roomCenterPosi.y - 40, ModBattleEvent.SceneBattle.battleMap.roomCenterPosi.y + 40));
         }
     }
 }

@@ -64,8 +64,8 @@ namespace MOD_nE7UL2.Mod
             base.OnTimeUpdate1s();
             if (MapBuildBattleEvent.IsBattleMonstWave() || MapBuildBattleEvent.IsBattleTownWar())
             {
-                textCustomMonstCount1.text = MapBuildBattleEvent.teamAUnitCount.ToString();
-                textCustomMonstCount2.text = MapBuildBattleEvent.teamBUnitCount.ToString();
+                textCustomMonstCount1.text = MapBuildBattleEvent.TeamAUnitCount.ToString();
+                textCustomMonstCount2.text = MapBuildBattleEvent.TeamBUnitCount.ToString();
             }
         }
 
