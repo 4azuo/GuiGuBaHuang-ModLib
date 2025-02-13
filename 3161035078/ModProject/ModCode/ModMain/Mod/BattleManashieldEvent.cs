@@ -24,11 +24,13 @@ namespace MOD_nE7UL2.Mod
 
             if (e.IsWorldUnit())
             {
-                var humanData = e?.data?.TryCast<UnitDataHuman>();
-                var shield = GetManashieldBase(humanData.worldUnitData.unit) + GetManashieldBasePlus(humanData.worldUnitData.unit);
-                var maxShield = humanData.maxHP.value;
-                ShieldUp(humanData.unit, shield, maxShield);
+                ShieldUpHuman(e);
             }
+        }
+
+        public static int GetInitShield(WorldUnitBase wunit)
+        {
+            return GetManashieldBase(wunit) + GetManashieldBasePlus(wunit);
         }
 
         public static EffectBase ShieldUp(UnitCtrlBase cunit, int shield, int maxShield)
@@ -50,6 +52,17 @@ namespace MOD_nE7UL2.Mod
             });
             Effect3017.AddShield(efx, cunit, MANASHIELD_EFFECT_EFX_ID, shield, maxShield, int.MaxValue);
             return efx;
+        }
+
+        public static void ShieldUpHuman(UnitCtrlBase e)
+        {
+            if (e.IsWorldUnit())
+            {
+                var humanData = e?.data?.TryCast<UnitDataHuman>();
+                var shield = GetInitShield(humanData.worldUnitData.unit);
+                var maxShield = humanData.maxHP.value;
+                ShieldUp(humanData.unit, shield, maxShield);
+            }
         }
 
         private static int GetBloodEnergyLevel(WorldUnitBase wunit)
