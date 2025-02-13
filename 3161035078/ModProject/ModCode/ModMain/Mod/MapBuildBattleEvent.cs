@@ -430,7 +430,8 @@ namespace MOD_nE7UL2.Mod
                         else
                         {
                             e.hitUnit.anim.PlayDieEffect();
-                            //win/lose
+                            //end
+                            BattleEnd(side == TeamSide.TeamA ? TeamSide.TeamB : TeamSide.TeamA);
                         }
                     }
                 }
@@ -449,7 +450,8 @@ namespace MOD_nE7UL2.Mod
                         else
                         {
                             e.hitUnit.anim.PlayDieEffect();
-                            //win/lose
+                            //end
+                            BattleEnd(TeamSide.TeamB);
                         }
                     }
                     else
@@ -466,7 +468,8 @@ namespace MOD_nE7UL2.Mod
                         }
                         else
                         {
-                            //win
+                            //end
+                            BattleEnd(TeamSide.TeamA);
                         }
                     }
                 }
@@ -528,14 +531,9 @@ namespace MOD_nE7UL2.Mod
             InitUnitStatus(cunit);
         }
 
-        public static void OnWin()
+        public static void BattleEnd(TeamSide winSide)
         {
-
-        }
-
-        public static void OnLose()
-        {
-
+            g.world.battle.BattleEnd(winSide == PlayerSide);
         }
 
         [ErrorIgnore]
