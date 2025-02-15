@@ -30,15 +30,6 @@ namespace MOD_nE7UL2.Mod
         public static readonly int[] betrayInTraits = new int[] { UnitTraitEnum.Selfish.Parse<int>(), UnitTraitEnum.Evil.Parse<int>() };
         public static readonly int[] betrayOutTraits = new int[] { UnitTraitEnum.Power_hungry.Parse<int>() };
 
-        //public override void OnOpenUIEnd(OpenUIEnd e)
-        //{
-        //    base.OnOpenUIEnd(e);
-        //    if (e.uiType.uiName == UIType.BattleDie.uiName)
-        //    {
-        //        g.ui.CloseUI(e.ui);
-        //    }
-        //}
-
         public override void OnBattleStart(ETypeData e)
         {
             base.OnBattleStart(e);
@@ -49,10 +40,6 @@ namespace MOD_nE7UL2.Mod
             if (g.world.battle.data.isRealBattle && IsJoinableBattle())
             {
                 var player = g.world.playerUnit;
-
-                //lock end battle
-                //ModBattleEvent.SceneBattle.battleEnd.lockEndBattle = true;
-                //ModBattleEvent.SceneBattle.battleEnd.openBattleEndUI = false;
 
                 //setup around units
                 aroundUnits = player.GetUnitsAround(JOIN_RANGE, false, false).ToArray().Where(x =>
