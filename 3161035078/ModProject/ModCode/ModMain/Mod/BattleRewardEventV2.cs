@@ -536,7 +536,7 @@ namespace MOD_nE7UL2.Mod
             else
             {
                 DebugHelper.WriteLine($"BattleRewardEvent: lose");
-                if (g.world.battle.data.isRealBattle)
+                if (g.world.battle.data.isRealBattle && !MapBuildBattleEvent.IsBattleTownWar() && !MapBuildBattleEvent.IsBattleMonstWave())
                 {
                     //exp
                     if (ModBattleEvent.PlayerUnit.isDie)
@@ -575,7 +575,7 @@ namespace MOD_nE7UL2.Mod
         {
             base.OnBattleUnitDie(e);
 
-            if (e?.unit != null && e.unit.IsWorldUnit())
+            if (e?.unit != null && e.unit.IsWorldUnit() && !MapBuildBattleEvent.IsBattleTownWar() && !MapBuildBattleEvent.IsBattleMonstWave())
             {
                 //DebugHelper.WriteLine("1");
                 var dieUnit = e.unit;
