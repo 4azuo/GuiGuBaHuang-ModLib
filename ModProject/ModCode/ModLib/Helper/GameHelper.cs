@@ -1,4 +1,5 @@
 ﻿using System.Linq;
+using UnityEngine;
 
 public static class GameHelper
 {
@@ -76,5 +77,35 @@ public static class GameHelper
     {
         var storageTown = g.world.build.GetBuilds(MapTerrainType.Town).ToArray().FirstOrDefault(x => x.gridData.areaBaseID == 1);
         return storageTown?.GetBuildSub<MapBuildTownStorage>().data.propData.allProps;
+    }
+
+    public static void SpeedGame(float multiplier)
+    {
+        Time.timeScale = multiplier;
+    }
+
+    private static float oldSpeed = 1;
+    public static void PauseGame()
+    {
+        oldSpeed = Time.timeScale;
+        SpeedGame(0);
+    }
+
+    public static void UnPauseGame()
+    {
+        SpeedGame(oldSpeed);
+    }
+
+    public static void ChangeGameSpeed()
+    {
+        if (Time.timeScale == 0)
+        {
+            UnPauseGame();
+        }
+        else
+        {
+            oldSpeed = Time.timeScale;
+            SpeedGame(0);
+        }
     }
 }
