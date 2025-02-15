@@ -79,7 +79,7 @@ namespace MOD_nE7UL2.Mod
             }
         }
 
-        private void OpenTrainer(int defPage)
+        public void OpenTrainer(int defPage)
         {
             if (!g.ui.HasUI(UIType.MapMain))
             {
@@ -129,13 +129,13 @@ namespace MOD_nE7UL2.Mod
                 FormatButton1(uiTrainer.AddButton(col, row += 2, ReduceReputation, GameTool.LS("trainer043")));
 
                 col = 14; row = 2;
-                FormatButton1((UIItemButton)uiTrainer.AddButton(col, row, StopGame, "{0}").SetWork(new UIItemWork
+                FormatButton1((UIItemButton)uiTrainer.AddButton(col, row, GameHelper.ChangeGameSpeed, "{0}").SetWork(new UIItemWork
                 {
                     Formatter = (x) => new object[] { Time.timeScale == 0 ? GameTool.LS("trainer024") : GameTool.LS("trainer025") },
                 }));
-                FormatButton1(uiTrainer.AddButton(col, row += 2, () => SpeedGame(1), GameTool.LS("trainer026")));
-                FormatButton1(uiTrainer.AddButton(col, row += 2, () => SpeedGame(2), GameTool.LS("trainer027")));
-                FormatButton1(uiTrainer.AddButton(col, row += 2, () => SpeedGame(3), GameTool.LS("trainer028")));
+                FormatButton1(uiTrainer.AddButton(col, row += 2, () => GameHelper.SpeedGame(1), GameTool.LS("trainer026")));
+                FormatButton1(uiTrainer.AddButton(col, row += 2, () => GameHelper.SpeedGame(2), GameTool.LS("trainer027")));
+                FormatButton1(uiTrainer.AddButton(col, row += 2, () => GameHelper.SpeedGame(3), GameTool.LS("trainer028")));
                 FormatButton1(uiTrainer.AddButton(col, row += 2, Levelup, GameTool.LS("trainer029")));
                 FormatButton1(uiTrainer.AddButton(col, row += 2, Leveldown, GameTool.LS("trainer030")));
                 FormatButton1(uiTrainer.AddButton(col, row += 2, AddExp, GameTool.LS("trainer031")));
@@ -382,7 +382,7 @@ namespace MOD_nE7UL2.Mod
             btn.Format(Color.black, PAGE3_FONT_SIZE).Size(PAGE3_BTN_WIDTH, PAGE3_BTN_HEIGHT);
         }
 
-        private void AddBreakthroughItems(ConfRoleGradeItem conf)
+        public void AddBreakthroughItems(ConfRoleGradeItem conf)
         {
             if (conf.itemShowA != "0")
             {
@@ -401,7 +401,7 @@ namespace MOD_nE7UL2.Mod
             g.ui.MsgBox("Info", GameTool.LS("trainer046"));
         }
 
-        private void Recover()
+        public void Recover()
         {
             var player = g.world.playerUnit;
             player.SetProperty<int>(UnitPropertyEnum.Hp, int.MaxValue);
@@ -412,171 +412,152 @@ namespace MOD_nE7UL2.Mod
             player.SetProperty<int>(UnitPropertyEnum.Health, int.MaxValue);
         }
 
-        private void Tele(Vector2Int p)
+        public void Tele(Vector2Int p)
         {
             g.world.playerUnit.SetUnitPos(p);
         }
 
-        private float oldSpeed = 1;
-        private void StopGame()
-        {
-            if (Time.timeScale == 0)
-            {
-                Time.timeScale = oldSpeed;
-            }
-            else
-            {
-                oldSpeed = Time.timeScale;
-                Time.timeScale = 0;
-            }
-        }
-
-        private void SpeedGame(float multiplier)
-        {
-            Time.timeScale = multiplier;
-        }
-
-        private void AddLife()
+        public void AddLife()
         {
             var player = g.world.playerUnit;
             if (player.GetProperty<int>(UnitPropertyEnum.Life) < MAX_NUMBER)
                 player.AddProperty<int>(UnitPropertyEnum.Life, 1200); //100 * 12month
         }
 
-        private void ReduceLife()
+        public void ReduceLife()
         {
             var player = g.world.playerUnit;
             if (player.GetProperty<int>(UnitPropertyEnum.Life) > 1200)
                 player.AddProperty<int>(UnitPropertyEnum.Life, -1200); //100 * 12month
         }
 
-        private void AddMaxHP()
+        public void AddMaxHP()
         {
             var player = g.world.playerUnit;
             if (player.GetProperty<int>(UnitPropertyEnum.HpMax) < MAX_NUMBER)
                 player.AddProperty<int>(UnitPropertyEnum.HpMax, 100000);
         }
 
-        private void ReduceMaxHP()
+        public void ReduceMaxHP()
         {
             var player = g.world.playerUnit;
             if (player.GetProperty<int>(UnitPropertyEnum.HpMax) > 100000)
                 player.AddProperty<int>(UnitPropertyEnum.HpMax, -100000);
         }
 
-        private void AddMaxMP()
+        public void AddMaxMP()
         {
             var player = g.world.playerUnit;
             if (player.GetProperty<int>(UnitPropertyEnum.MpMax) < MAX_NUMBER)
                 player.AddProperty<int>(UnitPropertyEnum.MpMax, 10000);
         }
 
-        private void ReduceMaxMP()
+        public void ReduceMaxMP()
         {
             var player = g.world.playerUnit;
             if (player.GetProperty<int>(UnitPropertyEnum.MpMax) > 10000)
                 player.AddProperty<int>(UnitPropertyEnum.MpMax, -10000);
         }
 
-        private void AddMaxSP()
+        public void AddMaxSP()
         {
             var player = g.world.playerUnit;
             if (player.GetProperty<int>(UnitPropertyEnum.SpMax) < MAX_NUMBER)
                 player.AddProperty<int>(UnitPropertyEnum.SpMax, 1000);
         }
 
-        private void ReduceMaxSP()
+        public void ReduceMaxSP()
         {
             var player = g.world.playerUnit;
             if (player.GetProperty<int>(UnitPropertyEnum.SpMax) > 1000)
                 player.AddProperty<int>(UnitPropertyEnum.SpMax, -1000);
         }
 
-        private void AddMoney()
+        public void AddMoney()
         {
             var player = g.world.playerUnit;
             player.AddUnitMoney(1000000);
         }
 
-        private void ReduceMoney()
+        public void ReduceMoney()
         {
             var player = g.world.playerUnit;
             player.AddUnitMoney(-1000000);
         }
 
-        private void AddDegree()
+        public void AddDegree()
         {
             var player = g.world.playerUnit;
             player.AddUnitMayorDegree(1000);
         }
 
-        private void ReduceDegree()
+        public void ReduceDegree()
         {
             var player = g.world.playerUnit;
             player.AddUnitMayorDegree(-1000);
         }
 
-        private void AddContribution()
+        public void AddContribution()
         {
             var player = g.world.playerUnit;
             player.AddUnitContribution(100000);
         }
 
-        private void ReduceContribution()
+        public void ReduceContribution()
         {
             var player = g.world.playerUnit;
             player.AddUnitContribution(-100000);
         }
 
-        private void AddAbilityExp()
+        public void AddAbilityExp()
         {
             var player = g.world.playerUnit;
             player.AddProperty<int>(UnitPropertyEnum.AbilityExp, 100000);
         }
 
-        private void ReduceAbilityExp()
+        public void ReduceAbilityExp()
         {
             var player = g.world.playerUnit;
             player.AddProperty<int>(UnitPropertyEnum.AbilityExp, -100000);
         }
 
-        private void AddReputation()
+        public void AddReputation()
         {
             var player = g.world.playerUnit;
             player.AddProperty<int>(UnitPropertyEnum.Reputation, 10000);
         }
 
-        private void ReduceReputation()
+        public void ReduceReputation()
         {
             var player = g.world.playerUnit;
             player.AddProperty<int>(UnitPropertyEnum.Reputation, -10000);
         }
 
-        private void AddFootspeed()
+        public void AddFootspeed()
         {
             var player = g.world.playerUnit;
             player.AddProperty<int>(UnitPropertyEnum.FootSpeed, 1000);
         }
 
-        private void ReduceFootspeed()
+        public void ReduceFootspeed()
         {
             var player = g.world.playerUnit;
             player.AddProperty<int>(UnitPropertyEnum.FootSpeed, -1000);
         }
 
-        private void AddViewRange()
+        public void AddViewRange()
         {
             var player = g.world.playerUnit;
             player.GetDynProperty(UnitDynPropertyEnum.PlayerView).baseValue += 10;
         }
 
-        private void ReduceViewRange()
+        public void ReduceViewRange()
         {
             var player = g.world.playerUnit;
             player.GetDynProperty(UnitDynPropertyEnum.PlayerView).baseValue -= 10;
         }
 
-        private void AddBasis()
+        public void AddBasis()
         {
             var v = 100;
             var player = g.world.playerUnit;
@@ -600,7 +581,7 @@ namespace MOD_nE7UL2.Mod
             player.AddProperty<int>(UnitPropertyEnum.Mine, v);
         }
 
-        private void ReduceBasis()
+        public void ReduceBasis()
         {
             var v = -100;
             var player = g.world.playerUnit;
@@ -624,7 +605,7 @@ namespace MOD_nE7UL2.Mod
             player.AddProperty<int>(UnitPropertyEnum.Mine, v);
         }
 
-        private void Levelup()
+        public void Levelup()
         {
             var player = g.world.playerUnit;
             if (player.GetProperty<int>(UnitPropertyEnum.GradeID) < g.conf.roleGrade._allConfList.ToArray().Max(x => x.id))
@@ -634,7 +615,7 @@ namespace MOD_nE7UL2.Mod
             }
         }
 
-        private void Leveldown()
+        public void Leveldown()
         {
             var player = g.world.playerUnit;
             if (player.GetProperty<int>(UnitPropertyEnum.GradeID) > 1)
@@ -644,35 +625,35 @@ namespace MOD_nE7UL2.Mod
             }
         }
 
-        private void AddAtk()
+        public void AddAtk()
         {
             var player = g.world.playerUnit;
             if (player.GetProperty<int>(UnitPropertyEnum.Attack) < MAX_NUMBER)
                 player.AddProperty<int>(UnitPropertyEnum.Attack, 10000);
         }
 
-        private void ReduceAtk()
+        public void ReduceAtk()
         {
             var player = g.world.playerUnit;
             if (player.GetProperty<int>(UnitPropertyEnum.Attack) > 10000)
                 player.AddProperty<int>(UnitPropertyEnum.Attack, -10000);
         }
 
-        private void AddDef()
+        public void AddDef()
         {
             var player = g.world.playerUnit;
             if (player.GetProperty<int>(UnitPropertyEnum.Defense) < MAX_NUMBER)
                 player.AddProperty<int>(UnitPropertyEnum.Defense, 1000);
         }
 
-        private void ReduceDef()
+        public void ReduceDef()
         {
             var player = g.world.playerUnit;
             if (player.GetProperty<int>(UnitPropertyEnum.Defense) > 1000)
                 player.AddProperty<int>(UnitPropertyEnum.Defense, -1000);
         }
 
-        private void AddExp()
+        public void AddExp()
         {
             var player = g.world.playerUnit;
             player.AddExp(10000);

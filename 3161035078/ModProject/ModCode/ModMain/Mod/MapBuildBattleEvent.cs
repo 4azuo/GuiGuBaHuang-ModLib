@@ -25,6 +25,8 @@ namespace MOD_nE7UL2.Mod
         {
             UnitCountMax,
             UnitCount,
+            WUnit,
+            CUnit,
         }
 
         public static MapBuildBattleEvent Instance { get; set; }
@@ -56,15 +58,26 @@ namespace MOD_nE7UL2.Mod
         [JsonIgnore]
         public static int TeamBUnitCount => GetTeamInfo<int>(TeamSideEnum.TeamB, TeamInfoEnum.UnitCount);
         [JsonIgnore]
-        public static List<WorldUnitBase> TeamAWUnits { get; set; } = new List<WorldUnitBase>();
+        public static List<WorldUnitBase> TeamAWUnits => GetTeamInfo<List<WorldUnitBase>>(TeamSideEnum.TeamA, TeamInfoEnum.WUnit);
         [JsonIgnore]
-        public static List<WorldUnitBase> TeamBWUnits { get; set; } = new List<WorldUnitBase>();
+        public static List<WorldUnitBase> TeamBWUnits => GetTeamInfo<List<WorldUnitBase>>(TeamSideEnum.TeamB, TeamInfoEnum.WUnit);
         [JsonIgnore]
-        public static List<UnitCtrlBase> TeamACUnits { get; set; } = new List<UnitCtrlBase>();
+        public static List<UnitCtrlBase> TeamACUnits => GetTeamInfo<List<UnitCtrlBase>>(TeamSideEnum.TeamA, TeamInfoEnum.CUnit);
         [JsonIgnore]
-        public static List<UnitCtrlBase> TeamBCUnits { get; set; } = new List<UnitCtrlBase>();
+        public static List<UnitCtrlBase> TeamBCUnits => GetTeamInfo<List<UnitCtrlBase>>(TeamSideEnum.TeamB, TeamInfoEnum.CUnit);
         [JsonIgnore]
-        public static Dictionary<string, object> TeamInfo { get; set; } = new Dictionary<string, object>();
+        public static Dictionary<string, object> TeamInfo { get; set; } = new Dictionary<string, object>()
+        {
+            [$"{TeamSideEnum.TeamA}_{TeamInfoEnum.UnitCountMax}"] = 0,
+            [$"{TeamSideEnum.TeamA}_{TeamInfoEnum.UnitCount}"] = 0,
+            [$"{TeamSideEnum.TeamA}_{TeamInfoEnum.WUnit}"] = new List<WorldUnitBase>(),
+            [$"{TeamSideEnum.TeamA}_{TeamInfoEnum.CUnit}"] = new List<UnitCtrlBase>(),
+
+            [$"{TeamSideEnum.TeamB}_{TeamInfoEnum.UnitCountMax}"] = 0,
+            [$"{TeamSideEnum.TeamB}_{TeamInfoEnum.UnitCount}"] = 0,
+            [$"{TeamSideEnum.TeamB}_{TeamInfoEnum.WUnit}"] = new List<WorldUnitBase>(),
+            [$"{TeamSideEnum.TeamB}_{TeamInfoEnum.CUnit}"] = new List<UnitCtrlBase>(),
+        };
 
         public static readonly int[] enemyInTraits = new int[] { UnitTraitEnum.Evil.Parse<int>() };
         public static readonly int[] enemyOutTraits = new int[] { UnitTraitEnum.Power_hungry.Parse<int>(), UnitTraitEnum.Glory_Hound.Parse<int>() };
@@ -489,6 +502,35 @@ namespace MOD_nE7UL2.Mod
             base.OnBattleEndOnce(e);
             if (ModBattleEvent.SceneBattle != null && (IsBattleTownWar() || IsBattleMonstWave()))
             {
+                if (WinTeamSide == TeamSideEnum.TeamA)
+                {
+                    //A win
+                    //A damaged
+                    BuildingArrangeEvent.Destroy(BuildBaseA, BuildingCostEnum.GetAllEnums<BuildingCostEnum>().Where(x => BuildingArrangeEvent.IsBuilt(BuildBaseA, x)).ToArray().Random());
+                    var lossrateA = 1f - (GetTeamInfo<float>(TeamSideEnum.TeamA, TeamInfoEnum.UnitCount) / GetTeamInfo<float>(TeamSideEnum.TeamA, TeamInfoEnum.UnitCountMax));
+                    MapBuildPropertyEvent.AddBuildProperty(BuildBaseA, -(MapBuildPropertyEvent.GetBuildProperty(BuildBaseA) * lossrateA).Parse<long>());
+                    //B damaged
+                    if (IsBattleTownWar())
+                        MapBuildPropertyEvent.AddBuildProperty(BuildBaseB, -(MapBuildPropertyEvent.GetBuildProperty(BuildBaseB) * 0.8).Parse<long>());
+                }
+                else
+                {
+                    //B win
+                    //A damaged x2
+                    BuildingArrangeEvent.Destroy(BuildBaseA, BuildingCostEnum.GetAllEnums<BuildingCostEnum>().Where(x => BuildingArrangeEvent.IsBuilt(BuildBaseA, x)).ToArray().Random());
+                    BuildingArrangeEvent.Destroy(BuildBaseA, BuildingCostEnum.GetAllEnums<BuildingCostEnum>().Where(x => BuildingArrangeEvent.IsBuilt(BuildBaseA, x)).ToArray().Random());
+                    var damagedBudget = MapBuildPropertyEvent.GetBuildProperty(BuildBaseA);
+                    MapBuildPropertyEvent.AddBuildProperty(BuildBaseA, -damagedBudget);
+                    if (IsBattleTownWar())
+                    {
+                        //B damaged
+                        var lossrateB = 1f - (GetTeamInfo<float>(TeamSideEnum.TeamB, TeamInfoEnum.UnitCount) / GetTeamInfo<float>(TeamSideEnum.TeamB, TeamInfoEnum.UnitCountMax));
+                        MapBuildPropertyEvent.AddBuildProperty(BuildBaseB, -(MapBuildPropertyEvent.GetBuildProperty(BuildBaseB) * lossrateB).Parse<long>());
+                        //B pillage
+                        MapBuildPropertyEvent.AddBuildProperty(BuildBaseB, damagedBudget);
+                    }
+                }
+
                 BattleModifyEvent.IsShowCustomMonstCount = false;
                 TeamAWUnits.Clear();
                 TeamBWUnits.Clear();
@@ -566,37 +608,11 @@ namespace MOD_nE7UL2.Mod
 
         public static void BattleEnd(TeamSideEnum loseSide, TeamSideEnum winSide)
         {
-            if (ModBattleEvent.BattleUnits.ToArray().Count(x => !x.isDie && !x.isDestroy && GetTeamSide(x) == loseSide) > 0)
-                return;
-            WinTeamSide = winSide;
-            g.world.battle.BattleEnd(IsPlayerTeamWin());
-            //g.world.battle.BattleExit((Il2CppSystem.Action)(() =>
-            //{
-            //    if (WinTeamSide == TeamSideEnum.TeamA)
-            //    {
-            //        //A win
-            //        //A damaged
-            //        BuildingArrangeEvent.Destroy(BuildBaseA, BuildingCostEnum.GetAllEnums<BuildingCostEnum>().Where(x => BuildingArrangeEvent.IsBuilt(BuildBaseA, x)).ToArray().Random());
-            //        var lossrateA = 1f - (GetTeamInfo<float>(TeamSideEnum.TeamA, TeamInfoEnum.UnitCount) / GetTeamInfo<float>(TeamSideEnum.TeamA, TeamInfoEnum.UnitCountMax));
-            //        MapBuildPropertyEvent.AddBuildProperty(BuildBaseA, -(MapBuildPropertyEvent.GetBuildProperty(BuildBaseA) * lossrateA).Parse<long>());
-            //        //B damaged
-            //        MapBuildPropertyEvent.AddBuildProperty(BuildBaseB, -(MapBuildPropertyEvent.GetBuildProperty(BuildBaseB) * 0.8).Parse<long>());
-            //    }
-            //    else
-            //    {
-            //        //B win
-            //        //A damaged x2
-            //        BuildingArrangeEvent.Destroy(BuildBaseA, BuildingCostEnum.GetAllEnums<BuildingCostEnum>().Where(x => BuildingArrangeEvent.IsBuilt(BuildBaseA, x)).ToArray().Random());
-            //        BuildingArrangeEvent.Destroy(BuildBaseA, BuildingCostEnum.GetAllEnums<BuildingCostEnum>().Where(x => BuildingArrangeEvent.IsBuilt(BuildBaseA, x)).ToArray().Random());
-            //        var damagedBudget = MapBuildPropertyEvent.GetBuildProperty(BuildBaseA);
-            //        MapBuildPropertyEvent.AddBuildProperty(BuildBaseA, -damagedBudget);
-            //        //B damaged
-            //        var lossrateB = 1f - (GetTeamInfo<float>(TeamSideEnum.TeamB, TeamInfoEnum.UnitCount) / GetTeamInfo<float>(TeamSideEnum.TeamB, TeamInfoEnum.UnitCountMax));
-            //        MapBuildPropertyEvent.AddBuildProperty(BuildBaseB, -(MapBuildPropertyEvent.GetBuildProperty(BuildBaseB) * lossrateB).Parse<long>());
-            //        //B pillage
-            //        MapBuildPropertyEvent.AddBuildProperty(BuildBaseB, damagedBudget);
-            //    }
-            //}));
+            if (GetTeamInfo<List<UnitCtrlBase>>(loseSide, TeamInfoEnum.CUnit).Count(x => !x.isDie && !x.isDestroy && x.data.hp > 1) <= 0)
+            {
+                WinTeamSide = winSide;
+                ModBattleEvent.SceneBattle.battleEnd.OpenBattleEndUI();
+            }
         }
 
         public static bool IsPlayerTeamWin()
