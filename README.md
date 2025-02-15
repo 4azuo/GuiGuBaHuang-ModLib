@@ -27,7 +27,7 @@
 - Bank needs money to open account and charge monthly fee
 - Lock items when not paying
 - Prices increase over time
-- Towns build slowly over time (pay tax every month)
+- Towns build slowly over time (depend tax and inflationary)
 - Hide map in battle (optional)
 - Hide unit number in battle
 - Hide training and preview skills
