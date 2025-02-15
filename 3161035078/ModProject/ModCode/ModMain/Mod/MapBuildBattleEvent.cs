@@ -553,10 +553,6 @@ namespace MOD_nE7UL2.Mod
 
         public static TeamSideEnum GetTeamSide(UnitCtrlBase cunit)
         {
-            if (cunit.IsPlayer())
-                return PlayerSide;
-            if (!cunit.IsEnemy(UnitType.Player))
-                return PlayerSide;
             if (TeamACUnits.Any(x => x.data.createUnitSoleID == cunit.data.createUnitSoleID))
                 return TeamSideEnum.TeamA;
             if (TeamBCUnits.Any(x => x.data.createUnitSoleID == cunit.data.createUnitSoleID))
