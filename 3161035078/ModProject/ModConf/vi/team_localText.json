@@ -2,26 +2,26 @@
   {
     "id": "420041120",
     "key": "team420041120desc",
-    "ch|en|tc|kr|tc|kr": "team420041120desc",
+    "ch|en|tc|kr": "team420041120desc",
   },
   {
     "id": "420041121",
     "key": "team420041121",
-    "ch|en|tc|kr|tc|kr": "Đoàn đội",
+    "ch|en|tc|kr": "Đoàn đội",
   },
   {
     "id": "420041123",
     "key": "team420041123drama",
-    "ch|en|tc|kr|tc|kr": "Có muốn cùng nhau lên đường không?",
+    "ch|en|tc|kr": "Có muốn cùng nhau lên đường không?",
   },
   {
     "id": "420041124",
     "key": "team420041124dramaOpt1",
-    "ch|en|tc|kr|tc|kr": "Đồng ý",
+    "ch|en|tc|kr": "Đồng ý",
   },
   {
     "id": "420041125",
     "key": "team420041125dramaOpt2",
-    "ch|en|tc|kr|tc|kr": "Không",
+    "ch|en|tc|kr": "Không",
   }
 ]
