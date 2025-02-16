@@ -47,6 +47,7 @@ namespace MOD_nE7UL2.Mod
         public bool AllowUpgradeNaturally { get; set; } = false;
         public bool EnableTrainer { get; set; } = false;
         public int NPCAmount { get; set; } = 2000;
+        public bool AllowTownBuildupOverTime { get; set; } = true;
 
         //UI
         private UIItemComposite slMonstAtk;
@@ -78,6 +79,7 @@ namespace MOD_nE7UL2.Mod
         private UIItemComposite tglAllowUpgradeNaturally;
         private UIItemComposite tglEnableTrainer;
         private UIItemComposite slNPCAmount;
+        private UIItemComposite tglAllowTownBuildupOverTime;
 
         //Score
         public static IList<SMItemWork> ScoreCalculator { get; } = new List<SMItemWork>();
@@ -102,7 +104,8 @@ namespace MOD_nE7UL2.Mod
             Register(() => slEcoInfRate, 
                 funcCal: s => (s.Get().Parse<float>() * 1000).Parse<int>());
             Register(() => slEcoBuildingCost, 
-                funcCal: s => (s.Get().Parse<float>() * 100).Parse<int>());
+                funcCal: s => (s.Get().Parse<float>() * 100).Parse<int>(),
+                funcEna: s => tglAllowTownBuildupOverTime.Get().Parse<bool>());
             Register(() => slEcoBankAccCost, 
                 funcCal: s => (s.Get().Parse<float>() * 100).Parse<int>());
             Register(() => slEcoBankFee, 
@@ -179,6 +182,9 @@ namespace MOD_nE7UL2.Mod
                     }
                     return rs;
                 });
+            Register(() => tglAllowTownBuildupOverTime,
+                funcCal: s => 1000,
+                funcCond: s => s.Get().Parse<bool>());
         }
 
         private void Register(
@@ -276,6 +282,7 @@ namespace MOD_nE7UL2.Mod
                 tglSysHideReload = uiCustom.AddCompositeToggle(col, row++, GameTool.LS("smcfgs022"), HideReloadButton, GameTool.LS("smcfgs102"));
                 tglSysOnelife = uiCustom.AddCompositeToggle(col, row++, GameTool.LS("smcfgs023"), Onelife, GameTool.LS("smcfgs102"));
                 row++;
+                tglAllowTownBuildupOverTime = uiCustom.AddCompositeToggle(col, row++, GameTool.LS("smcfgs050"), AllowTownBuildupOverTime, GameTool.LS("smcfgs102"));
                 tglSysHideBattleMap = uiCustom.AddCompositeToggle(col, row++, GameTool.LS("smcfgs024"), HideBattleMap, GameTool.LS("smcfgs102"));
                 cbPriorityDestinyLevel = uiCustom.AddCompositeSelect(col, row++, GameTool.LS("smcfgs025"),
                     new string[] {
@@ -364,6 +371,7 @@ namespace MOD_nE7UL2.Mod
             tglAllowUpgradeNaturally.Set(false);
             tglEnableTrainer.Set(false);
             slNPCAmount.Set(2000f);
+            tglAllowTownBuildupOverTime.Set(true);
         }
 
         private void SetLevel(int level)
@@ -397,6 +405,7 @@ namespace MOD_nE7UL2.Mod
             tglSysNoRebirth.Set(level > 8);
             tglSysOnelife.Set(level > 9);
             slNPCAmount.SetPercent(level * 0.02000f, 2000f);
+            tglAllowTownBuildupOverTime.Set(level >= 0);
         }
 
         private void SetSMConfigs()
@@ -430,6 +439,7 @@ namespace MOD_nE7UL2.Mod
             AllowUpgradeNaturally = tglAllowUpgradeNaturally.Get().Parse<bool>();
             EnableTrainer = tglEnableTrainer.Get().Parse<bool>();
             NPCAmount = slNPCAmount.Get().Parse<int>();
+            AllowTownBuildupOverTime = tglAllowTownBuildupOverTime.Get().Parse<bool>();
             CacheHelper.SaveGlobalCache(this);
 
             //edit conf

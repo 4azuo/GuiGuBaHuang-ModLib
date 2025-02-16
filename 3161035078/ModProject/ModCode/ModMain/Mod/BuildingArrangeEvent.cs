@@ -24,6 +24,8 @@ namespace MOD_nE7UL2.Mod
 
             foreach (var build in g.world.build.GetBuilds())
             {
+                if (!SMLocalConfigsEvent.Instance.Configs.AllowTownBuildupOverTime)
+                    ArrDic.Add(build.buildData.id);
                 foreach (var e in BuildingCostEnum.GetAllEnums<BuildingCostEnum>())
                 {
                     RemoveBuildSub(build, e);

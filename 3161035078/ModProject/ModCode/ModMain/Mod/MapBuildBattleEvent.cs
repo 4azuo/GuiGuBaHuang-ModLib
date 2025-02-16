@@ -66,6 +66,8 @@ namespace MOD_nE7UL2.Mod
         [JsonIgnore]
         public static List<UnitCtrlBase> TeamBCUnits => GetTeamInfo<List<UnitCtrlBase>>(TeamSideEnum.TeamB, TeamInfoEnum.CUnit);
         [JsonIgnore]
+        public static List<string> DieCUnits { get; } = new List<string>();
+        [JsonIgnore]
         public static Dictionary<string, object> TeamInfo { get; set; } = new Dictionary<string, object>()
         {
             [$"{TeamSideEnum.TeamA}_{TeamInfoEnum.UnitCountMax}"] = 0,
@@ -283,8 +285,8 @@ namespace MOD_nE7UL2.Mod
             {
                 foreach (var wunitA2 in TeamACUnits.Select(x => x.GetWorldUnit()).Where(x => x != null))
                 {
-                    wunitA1.data.unitData.relationData.AddHate(wunitA2.GetUnitId(), 50);
-                    wunitA2.data.unitData.relationData.AddHate(wunitA1.GetUnitId(), 50);
+                    wunitA1.data.unitData.relationData.AddIntim(wunitA2.GetUnitId(), 50);
+                    wunitA2.data.unitData.relationData.AddIntim(wunitA1.GetUnitId(), 50);
                 }
             }
             //intim B
@@ -292,8 +294,8 @@ namespace MOD_nE7UL2.Mod
             {
                 foreach (var wunitB2 in TeamBCUnits.Select(x => x.GetWorldUnit()).Where(x => x != null))
                 {
-                    wunitB1.data.unitData.relationData.AddHate(wunitB2.GetUnitId(), 50);
-                    wunitB2.data.unitData.relationData.AddHate(wunitB1.GetUnitId(), 50);
+                    wunitB1.data.unitData.relationData.AddIntim(wunitB2.GetUnitId(), 50);
+                    wunitB2.data.unitData.relationData.AddIntim(wunitB1.GetUnitId(), 50);
                 }
             }
         }
@@ -418,8 +420,8 @@ namespace MOD_nE7UL2.Mod
             {
                 foreach (var wunitA2 in TeamACUnits.Select(x => x.GetWorldUnit()).Where(x => x != null))
                 {
-                    wunitA1.data.unitData.relationData.AddHate(wunitA2.GetUnitId(), 50);
-                    wunitA2.data.unitData.relationData.AddHate(wunitA1.GetUnitId(), 50);
+                    wunitA1.data.unitData.relationData.AddIntim(wunitA2.GetUnitId(), 50);
+                    wunitA2.data.unitData.relationData.AddIntim(wunitA1.GetUnitId(), 50);
                 }
             }
         }
@@ -454,7 +456,9 @@ namespace MOD_nE7UL2.Mod
             TeamBWUnits.Clear();
             TeamACUnits.Clear();
             TeamBCUnits.Clear();
+            DieCUnits.Clear();
             InitFlg = false;
+            WinTeamSide = TeamSideEnum.Unmanaged;
         }
 
         public override void OnBattleStart(ETypeData e)
@@ -511,7 +515,7 @@ namespace MOD_nE7UL2.Mod
                         }
                         else
                         {
-                            e.hitUnit.DestroyModel();
+                            Die(e.hitUnit);
                             //end
                             var winSide = side == TeamSideEnum.TeamA ? TeamSideEnum.TeamB : TeamSideEnum.TeamA;
                             BattleEnd(side, winSide);
@@ -522,43 +526,44 @@ namespace MOD_nE7UL2.Mod
                 if (IsBattleMonstWave())
                 {
                     var side = GetTeamSide(e.hitUnit);
-                    if (side != TeamSideEnum.Unmanaged)
+                    if (side == TeamSideEnum.TeamA && e.hitUnit.IsHuman())
                     {
-                        if (e.hitUnit.IsHuman())
+                        if (TeamAUnitCount > 0)
                         {
-                            if (TeamAUnitCount > 0)
-                            {
-                                //-point
-                                AddTeamCount(TeamSideEnum.TeamA, -1);
-                                //revive
-                                Revive(e.hitUnit);
-                            }
-                            else
-                            {
-                                e.hitUnit.DestroyModel();
-                                //end
-                                BattleEnd(TeamSideEnum.TeamA, TeamSideEnum.TeamB);
-                            }
+                            //-point
+                            AddTeamCount(TeamSideEnum.TeamA, -1);
+                            //revive
+                            Revive(e.hitUnit);
                         }
                         else
-                        if (e.hitUnit.IsMonster())
                         {
-                            if (TeamBUnitCount > 0)
-                            {
-                                //-point
-                                AddTeamCount(TeamSideEnum.TeamB, -1);
-                                //create new monster
-                                var areaId = g.world.playerUnit.data.unitData.pointGridData.areaBaseID;
-                                var monstLvl = CommonTool.Random(areaId - 1, areaId + 1).FixValue(0, monstList.Length - 1);
-                                TeamBCUnits.Add(ModBattleEvent.SceneBattle.unit.CreateUnitMonstNotAddList(monstList[monstLvl], Vector2.zero, UnitType.Monst));
-                            }
-                            else
-                            {
-                                //end
-                                BattleEnd(TeamSideEnum.TeamB, TeamSideEnum.TeamA);
-                            }
+                            Die(e.hitUnit);
+                            //end
+                            BattleEnd(TeamSideEnum.TeamA, TeamSideEnum.TeamB);
                         }
                     }
+                }
+            }
+        }
+
+        public override void OnBattleUnitDie(UnitDie e)
+        {
+            base.OnBattleUnitDie(e);
+            if (IsBattleMonstWave() && e.unit.IsMonster())
+            {
+                if (TeamBUnitCount > 0)
+                {
+                    //-point
+                    AddTeamCount(TeamSideEnum.TeamB, -1);
+                    //create new monster
+                    var areaId = g.world.playerUnit.data.unitData.pointGridData.areaBaseID;
+                    var monstLvl = CommonTool.Random(areaId - 1, areaId + 1).FixValue(0, monstList.Length - 1);
+                    TeamBCUnits.Add(ModBattleEvent.SceneBattle.unit.CreateUnitMonstNotAddList(monstList[monstLvl], Vector2.zero, UnitType.Monst));
+                }
+                else
+                {
+                    //end
+                    BattleEnd(TeamSideEnum.TeamB, TeamSideEnum.TeamA);
                 }
             }
         }
@@ -625,8 +630,8 @@ namespace MOD_nE7UL2.Mod
                 {
                     foreach (var wunitA2 in TeamACUnits.Select(x => x.GetWorldUnit()).Where(x => x != null))
                     {
-                        wunitA1.data.unitData.relationData.AddHate(wunitA2.GetUnitId(), 50);
-                        wunitA2.data.unitData.relationData.AddHate(wunitA1.GetUnitId(), 50);
+                        wunitA1.data.unitData.relationData.AddIntim(wunitA2.GetUnitId(), 50);
+                        wunitA2.data.unitData.relationData.AddIntim(wunitA1.GetUnitId(), 50);
                     }
                 }
                 //intim B
@@ -636,8 +641,8 @@ namespace MOD_nE7UL2.Mod
                     {
                         foreach (var wunitB2 in TeamBCUnits.Select(x => x.GetWorldUnit()).Where(x => x != null))
                         {
-                            wunitB1.data.unitData.relationData.AddHate(wunitB2.GetUnitId(), 50);
-                            wunitB2.data.unitData.relationData.AddHate(wunitB1.GetUnitId(), 50);
+                            wunitB1.data.unitData.relationData.AddIntim(wunitB2.GetUnitId(), 50);
+                            wunitB2.data.unitData.relationData.AddIntim(wunitB1.GetUnitId(), 50);
                         }
                     }
                 }
@@ -710,12 +715,45 @@ namespace MOD_nE7UL2.Mod
             InitUnitStatus(cunit);
         }
 
+        public static void Pause(UnitCtrlBase cunit)
+        {
+            cunit.AddState(UnitStateType.NotDie, float.MaxValue);
+            cunit.AddState(UnitStateType.NotMove, float.MaxValue);
+            cunit.AddState(UnitStateType.LockHPAndEmit, float.MaxValue);
+            cunit.AddState(UnitStateType.NotUseGodEyeSkill, float.MaxValue);
+            cunit.AddState(UnitStateType.NotUserAllSkill, float.MaxValue);
+            cunit.AddState(UnitStateType.NotUserFieldSkill, float.MaxValue);
+            cunit.AddState(UnitStateType.NotUserImmortal, float.MaxValue);
+            cunit.AddState(UnitStateType.NotUserMagicWeapon, float.MaxValue);
+            cunit.AddState(UnitStateType.NotUserPill, float.MaxValue);
+            cunit.AddState(UnitStateType.NotUserProp, float.MaxValue);
+            cunit.AddState(UnitStateType.NotUserSkilll, float.MaxValue);
+            cunit.AddState(UnitStateType.NotUserSkilllLeft, float.MaxValue);
+            cunit.AddState(UnitStateType.NotUserSkilllRight, float.MaxValue);
+            cunit.AddState(UnitStateType.NotUserStep, float.MaxValue);
+            cunit.AddState(UnitStateType.NotUserUltimate, float.MaxValue);
+        }
+
+        public static void Die(UnitCtrlBase cunit)
+        {
+            DieCUnits.Add(cunit.data.createUnitSoleID);
+            Pause(cunit);
+            cunit.unitMono.gameObject.SetActive(false);
+        }
+
         public static void BattleEnd(TeamSideEnum loseSide, TeamSideEnum winSide)
         {
-            if (GetTeamInfo<List<UnitCtrlBase>>(loseSide, TeamInfoEnum.CUnit).Count(x => !x.isDie && !x.isDestroy && x.data.hp > 1) <= 0)
+            var loseSideUnits = GetTeamInfo<List<UnitCtrlBase>>(loseSide, TeamInfoEnum.CUnit);
+            if (loseSideUnits.All(x => x.isDie || DieCUnits.Contains(x.data.createUnitSoleID)))
             {
+                //pause all units
+                foreach (var u in ModBattleEvent.SceneBattle.unit.allUnit)
+                {
+                    Pause(u);
+                }
+                //set game
                 WinTeamSide = winSide;
-                ModBattleEvent.SceneBattle.battleEnd.OpenBattleEndUI();
+                ModBattleEvent.SceneBattle.battleEnd.BattleEnd(PlayerSide == WinTeamSide);
             }
         }
 
