@@ -173,6 +173,8 @@ namespace MOD_nE7UL2.Mod
 
         public static void JoinTownWar(MapBuildTown townA_def, MapBuildTown townB_atk)
         {
+            //init
+            InitBattle();
             //player side
             if (MapBuildPropertyEvent.IsTownGuardian(townA_def, g.world.playerUnit))
                 PlayerSide = TeamSideEnum.TeamA;
@@ -192,6 +194,8 @@ namespace MOD_nE7UL2.Mod
 
         public static void SkipTownWar(MapBuildTown townA_def, MapBuildTown townB_atk)
         {
+            //init
+            InitBattle();
             //player side
             PlayerSide = TeamSideEnum.Unmanaged;
             //battle info
@@ -237,6 +241,17 @@ namespace MOD_nE7UL2.Mod
                 MapBuildPropertyEvent.AddBuildProperty(townA_def, -(MapBuildPropertyEvent.GetBuildProperty(townA_def) * ratioBA / 5).Parse<long>());
                 //B damaged
                 MapBuildPropertyEvent.AddBuildProperty(townB_atk, -(MapBuildPropertyEvent.GetBuildProperty(townB_atk) * ratioAB / 10).Parse<long>());
+                //hate
+                foreach (var wunitB in MapBuildPropertyEvent.GetTownGuardians(BuildBaseB.TryCast<MapBuildTown>()))
+                {
+                    foreach (var wunitA in MapBuildPropertyEvent.GetTownGuardians(BuildBaseA.TryCast<MapBuildTown>()))
+                    {
+                        wunitB.data.unitData.relationData.AddHate(wunitA.GetUnitId(), 100);
+                        wunitA.data.unitData.relationData.AddHate(wunitB.GetUnitId(), 50);
+                        if (MapBuildPropertyEvent.IsTownMaster(wunitA))
+                            wunitB.data.unitData.relationData.AddHate(wunitA.GetUnitId(), 100);
+                    }
+                }
             }
             else
             {
@@ -251,6 +266,35 @@ namespace MOD_nE7UL2.Mod
                 MapBuildPropertyEvent.AddBuildProperty(townB_atk, -(MapBuildPropertyEvent.GetBuildProperty(townB_atk) * ratioAB / 5).Parse<long>());
                 //B pillage
                 MapBuildPropertyEvent.AddBuildProperty(townB_atk, damagedBudget);
+                //hate
+                foreach (var wunitA in MapBuildPropertyEvent.GetTownGuardians(BuildBaseA.TryCast<MapBuildTown>()))
+                {
+                    foreach (var wunitB in MapBuildPropertyEvent.GetTownGuardians(BuildBaseB.TryCast<MapBuildTown>()))
+                    {
+                        wunitA.data.unitData.relationData.AddHate(wunitB.GetUnitId(), 100);
+                        wunitB.data.unitData.relationData.AddHate(wunitA.GetUnitId(), 50);
+                        if (MapBuildPropertyEvent.IsTownMaster(wunitB))
+                            wunitA.data.unitData.relationData.AddHate(wunitB.GetUnitId(), 100);
+                    }
+                }
+            }
+            //intim A
+            foreach (var wunitA1 in TeamACUnits.Select(x => x.GetWorldUnit()).Where(x => x != null))
+            {
+                foreach (var wunitA2 in TeamACUnits.Select(x => x.GetWorldUnit()).Where(x => x != null))
+                {
+                    wunitA1.data.unitData.relationData.AddHate(wunitA2.GetUnitId(), 50);
+                    wunitA2.data.unitData.relationData.AddHate(wunitA1.GetUnitId(), 50);
+                }
+            }
+            //intim B
+            foreach (var wunitB1 in TeamBCUnits.Select(x => x.GetWorldUnit()).Where(x => x != null))
+            {
+                foreach (var wunitB2 in TeamBCUnits.Select(x => x.GetWorldUnit()).Where(x => x != null))
+                {
+                    wunitB1.data.unitData.relationData.AddHate(wunitB2.GetUnitId(), 50);
+                    wunitB2.data.unitData.relationData.AddHate(wunitB1.GetUnitId(), 50);
+                }
             }
         }
 
@@ -306,6 +350,8 @@ namespace MOD_nE7UL2.Mod
 
         public static void JoinMonstWave(MapBuildBase teamAbuildBase, int dungeonBaseId)
         {
+            //init
+            InitBattle();
             //player side
             PlayerSide = TeamSideEnum.TeamA;
             //battle info
@@ -320,6 +366,8 @@ namespace MOD_nE7UL2.Mod
 
         public static void SkipMonstWave(MapBuildBase teamAbuildBase)
         {
+            //init
+            InitBattle();
             //player side
             PlayerSide = TeamSideEnum.TeamA;
             //battle info
@@ -365,6 +413,15 @@ namespace MOD_nE7UL2.Mod
                 var damagedBudget = MapBuildPropertyEvent.GetBuildProperty(teamAbuildBase);
                 MapBuildPropertyEvent.AddBuildProperty(teamAbuildBase, -damagedBudget);
             }
+            //intim A
+            foreach (var wunitA1 in TeamACUnits.Select(x => x.GetWorldUnit()).Where(x => x != null))
+            {
+                foreach (var wunitA2 in TeamACUnits.Select(x => x.GetWorldUnit()).Where(x => x != null))
+                {
+                    wunitA1.data.unitData.relationData.AddHate(wunitA2.GetUnitId(), 50);
+                    wunitA2.data.unitData.relationData.AddHate(wunitA1.GetUnitId(), 50);
+                }
+            }
         }
 
         public static void CalTownWarInfo(MapBuildTown townA_def, MapBuildTown townB_atk)
@@ -389,6 +446,15 @@ namespace MOD_nE7UL2.Mod
             var cityR = baseA_def.IsCity() ? 2 : 1;
             InitTeamInfo(TeamSideEnum.TeamA, 8 + (((TeamAWUnits.Count * cityR) + (MapBuildPropertyEvent.GetBuildProperty(baseA_def) / 1000000)) * 1.5).Parse<int>());
             InitTeamInfo(TeamSideEnum.TeamB, ((g.world.run.roundMonth + TeamAUnitCount * gameLvl + Math.Pow(2, areaId).Parse<int>()) * CommonTool.Random(0.8f, 1.1f)).Parse<int>());
+        }
+
+        public static void InitBattle()
+        {
+            TeamAWUnits.Clear();
+            TeamBWUnits.Clear();
+            TeamACUnits.Clear();
+            TeamBCUnits.Clear();
+            InitFlg = false;
         }
 
         public override void OnBattleStart(ETypeData e)
@@ -511,7 +577,20 @@ namespace MOD_nE7UL2.Mod
                     MapBuildPropertyEvent.AddBuildProperty(BuildBaseA, -(MapBuildPropertyEvent.GetBuildProperty(BuildBaseA) * lossrateA).Parse<long>());
                     //B damaged
                     if (IsBattleTownWar())
+                    {
                         MapBuildPropertyEvent.AddBuildProperty(BuildBaseB, -(MapBuildPropertyEvent.GetBuildProperty(BuildBaseB) * 0.8).Parse<long>());
+                        //hate
+                        foreach (var wunitB in MapBuildPropertyEvent.GetTownGuardians(BuildBaseB.TryCast<MapBuildTown>()))
+                        {
+                            foreach (var wunitA in MapBuildPropertyEvent.GetTownGuardians(BuildBaseA.TryCast<MapBuildTown>()))
+                            {
+                                wunitB.data.unitData.relationData.AddHate(wunitA.GetUnitId(), 100);
+                                wunitA.data.unitData.relationData.AddHate(wunitB.GetUnitId(), 50);
+                                if (MapBuildPropertyEvent.IsTownMaster(wunitA))
+                                    wunitB.data.unitData.relationData.AddHate(wunitA.GetUnitId(), 100);
+                            }
+                        }
+                    }
                 }
                 else
                 {
@@ -528,15 +607,41 @@ namespace MOD_nE7UL2.Mod
                         MapBuildPropertyEvent.AddBuildProperty(BuildBaseB, -(MapBuildPropertyEvent.GetBuildProperty(BuildBaseB) * lossrateB).Parse<long>());
                         //B pillage
                         MapBuildPropertyEvent.AddBuildProperty(BuildBaseB, damagedBudget);
+                        //hate
+                        foreach (var wunitA in MapBuildPropertyEvent.GetTownGuardians(BuildBaseA.TryCast<MapBuildTown>()))
+                        {
+                            foreach (var wunitB in MapBuildPropertyEvent.GetTownGuardians(BuildBaseB.TryCast<MapBuildTown>()))
+                            {
+                                wunitA.data.unitData.relationData.AddHate(wunitB.GetUnitId(), 100);
+                                wunitB.data.unitData.relationData.AddHate(wunitA.GetUnitId(), 50);
+                                if (MapBuildPropertyEvent.IsTownMaster(wunitB))
+                                    wunitA.data.unitData.relationData.AddHate(wunitB.GetUnitId(), 100);
+                            }
+                        }
                     }
                 }
-
+                //intim A
+                foreach (var wunitA1 in TeamACUnits.Select(x => x.GetWorldUnit()).Where(x => x != null))
+                {
+                    foreach (var wunitA2 in TeamACUnits.Select(x => x.GetWorldUnit()).Where(x => x != null))
+                    {
+                        wunitA1.data.unitData.relationData.AddHate(wunitA2.GetUnitId(), 50);
+                        wunitA2.data.unitData.relationData.AddHate(wunitA1.GetUnitId(), 50);
+                    }
+                }
+                //intim B
+                if (IsBattleTownWar())
+                {
+                    foreach (var wunitB1 in TeamBCUnits.Select(x => x.GetWorldUnit()).Where(x => x != null))
+                    {
+                        foreach (var wunitB2 in TeamBCUnits.Select(x => x.GetWorldUnit()).Where(x => x != null))
+                        {
+                            wunitB1.data.unitData.relationData.AddHate(wunitB2.GetUnitId(), 50);
+                            wunitB2.data.unitData.relationData.AddHate(wunitB1.GetUnitId(), 50);
+                        }
+                    }
+                }
                 BattleModifyEvent.IsShowCustomMonstCount = false;
-                TeamAWUnits.Clear();
-                TeamBWUnits.Clear();
-                TeamACUnits.Clear();
-                TeamBCUnits.Clear();
-                InitFlg = false;
             }
         }
 
@@ -553,6 +658,8 @@ namespace MOD_nE7UL2.Mod
 
         public static TeamSideEnum GetTeamSide(UnitCtrlBase cunit)
         {
+            if (cunit.IsPlayer())
+                return PlayerSide;
             if (TeamACUnits.Any(x => x.data.createUnitSoleID == cunit.data.createUnitSoleID))
                 return TeamSideEnum.TeamA;
             if (TeamBCUnits.Any(x => x.data.createUnitSoleID == cunit.data.createUnitSoleID))
@@ -576,9 +683,10 @@ namespace MOD_nE7UL2.Mod
         public static void InitUnitPosi(UnitCtrlBase cunit)
         {
             //set player posi
-            if (GetTeamSide(cunit) == TeamSideEnum.TeamA)
+            var side = GetTeamSide(cunit);
+            if (side == TeamSideEnum.TeamA)
                 cunit.move.SetPosition(GetTeamAPosi());
-            else
+            else if (side == TeamSideEnum.TeamB)
                 cunit.move.SetPosition(GetTeamBPosi());
         }
 
@@ -618,11 +726,15 @@ namespace MOD_nE7UL2.Mod
 
         public static T GetTeamInfo<T>(TeamSideEnum side, TeamInfoEnum info)
         {
+            if (side == TeamSideEnum.Unmanaged)
+                return default;
             return TeamInfo[$"{side}_{info}"].Parse<T>();
         }
 
         public static void SetTeamInfo(TeamSideEnum side, TeamInfoEnum info, object value)
         {
+            if (side == TeamSideEnum.Unmanaged)
+                return;
             TeamInfo[$"{side}_{info}"] = value;
         }
 
