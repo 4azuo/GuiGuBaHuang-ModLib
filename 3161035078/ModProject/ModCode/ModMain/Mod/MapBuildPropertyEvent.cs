@@ -95,8 +95,10 @@ namespace MOD_nE7UL2.Mod
                     }
                     else
                     {
-                        g.ui.CloseUI(e.ui);
-                        g.ui.MsgBox(GameTool.LS("other500020011"), $"You dont have enough {tax:#,##0} Spirit Stones to pay!");
+                        g.ui.MsgBox(GameTool.LS("other500020011"), $"You dont have enough {tax:#,##0} Spirit Stones to pay!", onYesCall: () =>
+                        {
+                            g.ui.CloseUI(e.ui);
+                        });
                     }
                 }
             }
