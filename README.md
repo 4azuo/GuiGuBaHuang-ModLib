@@ -19,6 +19,9 @@
 - Use json to cache everythings (no encrypt)
 - Debug and log
 - Support many minor libraries: UI, Battle damage, ...
+- Create and replace game configs
+- Translation system (replace LocalText.json)
+- etc...
 
 [Taoist](https://steamcommunity.com/sharedfiles/filedetails/?id=3161035078)
 
@@ -51,6 +54,10 @@
 - Increase difficulty for monsters
 - Add "S&M Configs" 🐧
 - Add Trainer in game
+- Support language: English, Chinese, Vietnamese
+- Add custom language systeem
+- Town manage, declare war to others, build your town, change tax rate, etc...
+- Monster waves
 - etc...
 
 
