@@ -2,101 +2,101 @@
   {
     "id": "420082001",
     "key": "trainee420081001",
-    "ch|en|tc|kr": "Nhất phẩm Linh giả",
+    "ch|en|tc|kr": "Nhất phẩm Linh giả"
   },
   {
     "id": "420083001",
     "key": "trainee420081001desc",
-    "ch|en|tc|kr": "+2% Linh lực",
+    "ch|en|tc|kr": "+2% Linh lực"
   },
   {
     "id": "420082002",
     "key": "trainee420081002",
-    "ch|en|tc|kr": "Nhị phẩm Linh giả",
+    "ch|en|tc|kr": "Nhị phẩm Linh giả"
   },
   {
     "id": "420083002",
     "key": "trainee420081002desc",
-    "ch|en|tc|kr": "+4% Linh lực",
+    "ch|en|tc|kr": "+4% Linh lực"
   },
   {
     "id": "420082003",
     "key": "trainee420081003",
-    "ch|en|tc|kr": "Tam phẩm Linh giả",
+    "ch|en|tc|kr": "Tam phẩm Linh giả"
   },
   {
     "id": "420083003",
     "key": "trainee420081003desc",
-    "ch|en|tc|kr": "+7% Linh lực",
+    "ch|en|tc|kr": "+7% Linh lực"
   },
   {
     "id": "420082004",
     "key": "trainee420081004",
-    "ch|en|tc|kr": "Tứ phẩm Linh giả",
+    "ch|en|tc|kr": "Tứ phẩm Linh giả"
   },
   {
     "id": "420083004",
     "key": "trainee420081004desc",
-    "ch|en|tc|kr": "+10% Linh lực",
+    "ch|en|tc|kr": "+10% Linh lực"
   },
   {
     "id": "420082005",
     "key": "trainee420081005",
-    "ch|en|tc|kr": "Ngũ phẩm Linh giả",
+    "ch|en|tc|kr": "Ngũ phẩm Linh giả"
   },
   {
     "id": "420083005",
     "key": "trainee420081005desc",
-    "ch|en|tc|kr": "+15% Linh lực",
+    "ch|en|tc|kr": "+15% Linh lực"
   },
   {
     "id": "420082006",
     "key": "trainee420081006",
-    "ch|en|tc|kr": "Lục phẩm Linh giả",
+    "ch|en|tc|kr": "Lục phẩm Linh giả"
   },
   {
     "id": "420083006",
     "key": "trainee420081006desc",
-    "ch|en|tc|kr": "+20% Linh lực",
+    "ch|en|tc|kr": "+20% Linh lực"
   },
   {
     "id": "420082007",
     "key": "trainee420081007",
-    "ch|en|tc|kr": "Thất phẩm Linh giả",
+    "ch|en|tc|kr": "Thất phẩm Linh giả"
   },
   {
     "id": "420083007",
     "key": "trainee420081007desc",
-    "ch|en|tc|kr": "+30% Linh lực",
+    "ch|en|tc|kr": "+30% Linh lực"
   },
   {
     "id": "420082008",
     "key": "trainee420081008",
-    "ch|en|tc|kr": "Bát phẩm Linh giả",
+    "ch|en|tc|kr": "Bát phẩm Linh giả"
   },
   {
     "id": "420083008",
     "key": "trainee420081008desc",
-    "ch|en|tc|kr": "+40% Linh lực",
+    "ch|en|tc|kr": "+40% Linh lực"
   },
   {
     "id": "420082009",
     "key": "trainee420081009",
-    "ch|en|tc|kr": "Cửu phẩm Linh giả",
+    "ch|en|tc|kr": "Cửu phẩm Linh giả"
   },
   {
     "id": "420083009",
     "key": "trainee420081009desc",
-    "ch|en|tc|kr": "+60% Linh lực",
+    "ch|en|tc|kr": "+60% Linh lực"
   },
   {
     "id": "420082010",
     "key": "trainee420081010",
-    "ch|en|tc|kr": "Thập phẩm Linh giả",
+    "ch|en|tc|kr": "Thập phẩm Linh giả"
   },
   {
     "id": "420083010",
     "key": "trainee420081010desc",
-    "ch|en|tc|kr": "+90% Linh lực",
+    "ch|en|tc|kr": "+90% Linh lực"
   }
 ]

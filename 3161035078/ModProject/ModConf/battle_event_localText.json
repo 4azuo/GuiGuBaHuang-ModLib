@@ -32,12 +32,12 @@
 	{
 		"id": "480111990",
 		"key": "battleevent480111990typeDesc",
-		"ch|en|tc|kr": "War",
+		"ch": "战争","en": "War",
 	},
 	{
 		"id": "480112990",
 		"key": "battleevent480112990name",
-		"ch|en|tc|kr": "Town War",
+		"ch": "城戰","en": "Town War",
 	},
 	{
 		"id": "480113990",
@@ -50,7 +50,7 @@
 	{
 		"id": "480112991",
 		"key": "battleevent480112991name",
-		"ch|en|tc|kr": "Monster Wave",
+		"ch": "兽潮","en": "Monster Wave",
 	},
 	{
 		"id": "480113991",
@@ -63,51 +63,51 @@
 	{
 		"id": "480112880",
 		"key": "monstwave480112880name",
-		"ch|en|tc|kr": "Monster 1",
+		"ch": "兽潮初现","en": "Monster 1",
 	},
 	{
 		"id": "480112881",
 		"key": "monstwave480112881name",
-		"ch|en|tc|kr": "Monster 2",
+		"ch": "再现兽潮","en": "Monster 2",
 	},
 	{
 		"id": "480112882",
 		"key": "monstwave480112882name",
-		"ch|en|tc|kr": "Monster 3",
+		"ch": "三度兽潮","en": "Monster 3",
 	},
 	{
 		"id": "480112883",
 		"key": "monstwave480112883name",
-		"ch|en|tc|kr": "Monster 4",
+		"ch": "四度獸潮","en": "Monster 4",
 	},
 	{
 		"id": "480112884",
 		"key": "monstwave480112884name",
-		"ch|en|tc|kr": "Monster 5",
+		"ch": "五度獸潮","en": "Monster 5",
 	},
 	{
 		"id": "480112885",
 		"key": "monstwave480112885name",
-		"ch|en|tc|kr": "Monster 6",
+		"ch": "六度獸潮","en": "Monster 6",
 	},
 	{
 		"id": "480112886",
 		"key": "monstwave480112886name",
-		"ch|en|tc|kr": "Monster 7",
+		"ch": "七度獸潮","en": "Monster 7",
 	},
 	{
 		"id": "480112887",
 		"key": "monstwave480112887name",
-		"ch|en|tc|kr": "Monster 8",
+		"ch": "八度獸潮","en": "Monster 8",
 	},
 	{
 		"id": "480112888",
 		"key": "monstwave480112888name",
-		"ch|en|tc|kr": "Monster 9",
+		"ch": "獸劫九重","en": "Monster 9",
 	},
 	{
 		"id": "480112889",
 		"key": "monstwave480112889name",
-		"ch|en|tc|kr": "Monster 10",
+		"ch": "獸劫十方","en": "Monster 10",
 	}
 ]

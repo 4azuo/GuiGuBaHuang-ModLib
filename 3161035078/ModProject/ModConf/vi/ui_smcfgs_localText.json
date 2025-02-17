@@ -1,56 +1,272 @@
 [
-	{ "id": -1000001000, "key": "smcfgs000", "ch|en|tc|kr": "Quái vật:", },
-	{ "id": -1000001001, "key": "smcfgs001", "ch|en|tc|kr": "Công kích", },
-	{ "id": -1000001002, "key": "smcfgs002", "ch|en|tc|kr": "Phòng ngự", },
-	{ "id": -1000001003, "key": "smcfgs003", "ch|en|tc|kr": "Thể lực", },
-	{ "id": -1000001004, "key": "smcfgs004", "ch|en|tc|kr": "Căn bản", },
-	{ "id": -1000001005, "key": "smcfgs005", "ch|en|tc|kr": "(Bao quát kiếm, đao, thương, quyền, chỉ, chưởng, hoả, thuỷ, lôi, mộc, phong, thổ)", },
-	{ "id": -1000001006, "key": "smcfgs006", "ch|en|tc|kr": "Đặc biệt quái vật suất", },
-	{ "id": -1000001007, "key": "smcfgs007", "ch|en|tc|kr": "Kinh tế:", },
-	{ "id": -1000001008, "key": "smcfgs008", "ch|en|tc|kr": "Thuế suất", },
-	{ "id": -1000001009, "key": "smcfgs009", "ch|en|tc|kr": "Lạm phát suất", },
-	{ "id": -1000001010, "key": "smcfgs010", "ch|en|tc|kr": "Kiến trúc chi phí", },
-	{ "id": -1000001011, "key": "smcfgs011", "ch|en|tc|kr": "Kiến mộc tài khoản phí", },
-	{ "id": -1000001012, "key": "smcfgs012", "ch|en|tc|kr": "Kiến mộc phí", },
-	{ "id": -1000001013, "key": "smcfgs013", "ch|en|tc|kr": "Tinh luyện chi phí", },
-	{ "id": -1000001014, "key": "smcfgs014", "ch|en|tc|kr": "Tông phái trao đổi phí", },
-	{ "id": -1000001015, "key": "smcfgs015", "ch|en|tc|kr": "Vật phẩm giá trị", },
-	{ "id": -1000001016, "key": "smcfgs016", "ch|en|tc|kr": "NPC:", },
-	{ "id": -1000001017, "key": "smcfgs017", "ch|en|tc|kr": "Tốc độ tăng trưởng", },
-	{ "id": -1000001018, "key": "smcfgs018", "ch|en|tc|kr": "Khác:", },
-	{ "id": -1000001019, "key": "smcfgs019", "ch|en|tc|kr": "Kinh nghiệm lên cấp", },
-	{ "id": -1000001020, "key": "smcfgs020", "ch|en|tc|kr": "Hệ thống:", },
-	{ "id": -1000001021, "key": "smcfgs021", "ch|en|tc|kr": "Ẩn nút save", },
-	{ "id": -1000001022, "key": "smcfgs022", "ch|en|tc|kr": "Ẩn nút reload", },
-	{ "id": -1000001023, "key": "smcfgs023", "ch|en|tc|kr": "Một đời một thế", },
-	{ "id": -1000001024, "key": "smcfgs024", "ch|en|tc|kr": "Ẩn tàng chiến đấu địa đồ", },
-	{ "id": -1000001025, "key": "smcfgs025", "ch|en|tc|kr": "Ưu tiên vận mệnh cảnh giới", },
-	{ "id": -1000001026, "key": "smcfgs026", "ch|en|tc|kr": "Mặc định", },
-	{ "id": -1000001027, "key": "smcfgs027", "ch|en|tc|kr": "Trắng", },
-	{ "id": -1000001028, "key": "smcfgs028", "ch|en|tc|kr": "Xanh lá", },
-	{ "id": -1000001029, "key": "smcfgs029", "ch|en|tc|kr": "Xanh nước", },
-	{ "id": -1000001030, "key": "smcfgs030", "ch|en|tc|kr": "Tím", },
-	{ "id": -1000001031, "key": "smcfgs031", "ch|en|tc|kr": "Vàng", },
-	{ "id": -1000001032, "key": "smcfgs032", "ch|en|tc|kr": "Đỏ", },
-	{ "id": -1000001033, "key": "smcfgs033", "ch|en|tc|kr": "Cổng dịch chuyển chỉ ở đại thành và bang phái", },
-	{ "id": -1000001034, "key": "smcfgs034", "ch|en|tc|kr": "Không thể quy đổi điểm môn phái", },
-	{ "id": -1000001035, "key": "smcfgs035", "ch|en|tc|kr": "Không có trùng sinh", },
-	{ "id": -1000001036, "key": "smcfgs036", "ch|en|tc|kr": "Cho phép thăng cấp tự nhiên", },
-	{ "id": -1000001037, "key": "smcfgs037", "ch|en|tc|kr": "(Dạng này sẽ không gia tăng ngươi thuộc tính)", },
-	{ "id": -1000001038, "key": "smcfgs038", "ch|en|tc|kr": "Boss có hộ thuẫn", },
-	{ "id": -1000001039, "key": "smcfgs039", "ch|en|tc|kr": "Chiến đấu không có tăng trưởng", },
-	{ "id": -1000001040, "key": "smcfgs040", "ch|en|tc|kr": "Chiến đấu không có điểm kinh nghiệm", },
-	{ "id": -1000001041, "key": "smcfgs041", "ch|en|tc|kr": "Mở trainer", },
-	{ "id": -1000001042, "key": "smcfgs042", "ch|en|tc|kr": "(Không đề nghị sử dụng này tuyển hạng! 【Ctrl+1】)", },
-	{ "id": -1000001043, "key": "smcfgs043", "ch|en|tc|kr": "Tổng điểm: {0}P", },
-	{ "id": -1000001044, "key": "smcfgs044", "ch|en|tc|kr": "Mặc định", },
-	{ "id": -1000001045, "key": "smcfgs045", "ch|en|tc|kr": "Cấp", },
-	{ "id": -1000001046, "key": "smcfgs046", "ch|en|tc|kr": "Cần chơi lại để áp dụng các thiết lập này!", },
-	{ "id": -1000001047, "key": "smcfgs047", "ch|en|tc|kr": "Số lượng NPC", },
-	{ "id": -1000001048, "key": "smcfgs048", "ch|en|tc|kr": "RAM yêu cầu: {0}MB)", },
-	{ "id": -1000001049, "key": "smcfgs049", "ch|en|tc|kr": "(Bao quát hộ thuẫn, bạo tạc cùng phân chia)", },
-	{ "id": -1000001050, "key": "smcfgs050", "ch|en|tc|kr": "Công trình được xây dựng dần", },
-	{ "id": -1000001101, "key": "smcfgs101", "ch|en|tc|kr": "{1}% ({0}P)", },
-	{ "id": -1000001102, "key": "smcfgs102", "ch|en|tc|kr": "({0}P)", },
-	{ "id": -1000001103, "key": "smcfgs103", "ch|en|tc|kr": "{1} ({0}P)", },
+  {
+    "id": -1000001000,
+    "key": "smcfgs000",
+    "ch|en|tc|kr": "Quái vật:"
+  },
+  {
+    "id": -1000001001,
+    "key": "smcfgs001",
+    "ch|en|tc|kr": "Công kích"
+  },
+  {
+    "id": -1000001002,
+    "key": "smcfgs002",
+    "ch|en|tc|kr": "Phòng ngự"
+  },
+  {
+    "id": -1000001003,
+    "key": "smcfgs003",
+    "ch|en|tc|kr": "Thể lực"
+  },
+  {
+    "id": -1000001004,
+    "key": "smcfgs004",
+    "ch|en|tc|kr": "Căn bản"
+  },
+  {
+    "id": -1000001005,
+    "key": "smcfgs005",
+    "ch|en|tc|kr": "(Bao quát kiếm, đao, thương, quyền, chỉ, chưởng, hoả, thuỷ, lôi, mộc, phong, thổ)"
+  },
+  {
+    "id": -1000001006,
+    "key": "smcfgs006",
+    "ch|en|tc|kr": "Đặc biệt quái vật suất"
+  },
+  {
+    "id": -1000001007,
+    "key": "smcfgs007",
+    "ch|en|tc|kr": "Kinh tế:"
+  },
+  {
+    "id": -1000001008,
+    "key": "smcfgs008",
+    "ch|en|tc|kr": "Thuế suất"
+  },
+  {
+    "id": -1000001009,
+    "key": "smcfgs009",
+    "ch|en|tc|kr": "Lạm phát suất"
+  },
+  {
+    "id": -1000001010,
+    "key": "smcfgs010",
+    "ch|en|tc|kr": "Kiến trúc chi phí"
+  },
+  {
+    "id": -1000001011,
+    "key": "smcfgs011",
+    "ch|en|tc|kr": "Kiến mộc tài khoản phí"
+  },
+  {
+    "id": -1000001012,
+    "key": "smcfgs012",
+    "ch|en|tc|kr": "Kiến mộc phí"
+  },
+  {
+    "id": -1000001013,
+    "key": "smcfgs013",
+    "ch|en|tc|kr": "Tinh luyện chi phí"
+  },
+  {
+    "id": -1000001014,
+    "key": "smcfgs014",
+    "ch|en|tc|kr": "Tông phái trao đổi phí"
+  },
+  {
+    "id": -1000001015,
+    "key": "smcfgs015",
+    "ch|en|tc|kr": "Vật phẩm giá trị"
+  },
+  {
+    "id": -1000001016,
+    "key": "smcfgs016",
+    "ch|en|tc|kr": "NPC:"
+  },
+  {
+    "id": -1000001017,
+    "key": "smcfgs017",
+    "ch|en|tc|kr": "Tốc độ tăng trưởng"
+  },
+  {
+    "id": -1000001018,
+    "key": "smcfgs018",
+    "ch|en|tc|kr": "Khác:"
+  },
+  {
+    "id": -1000001019,
+    "key": "smcfgs019",
+    "ch|en|tc|kr": "Kinh nghiệm lên cấp"
+  },
+  {
+    "id": -1000001020,
+    "key": "smcfgs020",
+    "ch|en|tc|kr": "Hệ thống:"
+  },
+  {
+    "id": -1000001021,
+    "key": "smcfgs021",
+    "ch|en|tc|kr": "Ẩn nút save"
+  },
+  {
+    "id": -1000001022,
+    "key": "smcfgs022",
+    "ch|en|tc|kr": "Ẩn nút reload"
+  },
+  {
+    "id": -1000001023,
+    "key": "smcfgs023",
+    "ch|en|tc|kr": "Một đời một thế"
+  },
+  {
+    "id": -1000001024,
+    "key": "smcfgs024",
+    "ch|en|tc|kr": "Ẩn tàng chiến đấu địa đồ"
+  },
+  {
+    "id": -1000001025,
+    "key": "smcfgs025",
+    "ch|en|tc|kr": "Ưu tiên vận mệnh cảnh giới"
+  },
+  {
+    "id": -1000001026,
+    "key": "smcfgs026",
+    "ch|en|tc|kr": "Mặc định"
+  },
+  {
+    "id": -1000001027,
+    "key": "smcfgs027",
+    "ch|en|tc|kr": "Trắng"
+  },
+  {
+    "id": -1000001028,
+    "key": "smcfgs028",
+    "ch|en|tc|kr": "Xanh lá"
+  },
+  {
+    "id": -1000001029,
+    "key": "smcfgs029",
+    "ch|en|tc|kr": "Xanh nước"
+  },
+  {
+    "id": -1000001030,
+    "key": "smcfgs030",
+    "ch|en|tc|kr": "Tím"
+  },
+  {
+    "id": -1000001031,
+    "key": "smcfgs031",
+    "ch|en|tc|kr": "Vàng"
+  },
+  {
+    "id": -1000001032,
+    "key": "smcfgs032",
+    "ch|en|tc|kr": "Đỏ"
+  },
+  {
+    "id": -1000001033,
+    "key": "smcfgs033",
+    "ch|en|tc|kr": "Cổng dịch chuyển chỉ ở đại thành và bang phái"
+  },
+  {
+    "id": -1000001034,
+    "key": "smcfgs034",
+    "ch|en|tc|kr": "Không thể quy đổi điểm môn phái"
+  },
+  {
+    "id": -1000001035,
+    "key": "smcfgs035",
+    "ch|en|tc|kr": "Không có trùng sinh"
+  },
+  {
+    "id": -1000001036,
+    "key": "smcfgs036",
+    "ch|en|tc|kr": "Cho phép thăng cấp tự nhiên"
+  },
+  {
+    "id": -1000001037,
+    "key": "smcfgs037",
+    "ch|en|tc|kr": "(Dạng này sẽ không gia tăng ngươi thuộc tính)"
+  },
+  {
+    "id": -1000001038,
+    "key": "smcfgs038",
+    "ch|en|tc|kr": "Boss có hộ thuẫn"
+  },
+  {
+    "id": -1000001039,
+    "key": "smcfgs039",
+    "ch|en|tc|kr": "Chiến đấu không có tăng trưởng"
+  },
+  {
+    "id": -1000001040,
+    "key": "smcfgs040",
+    "ch|en|tc|kr": "Chiến đấu không có điểm kinh nghiệm"
+  },
+  {
+    "id": -1000001041,
+    "key": "smcfgs041",
+    "ch|en|tc|kr": "Mở trainer"
+  },
+  {
+    "id": -1000001042,
+    "key": "smcfgs042",
+    "ch|en|tc|kr": "(Không đề nghị sử dụng này tuyển hạng! 【Ctrl+1】)"
+  },
+  {
+    "id": -1000001043,
+    "key": "smcfgs043",
+    "ch|en|tc|kr": "Tổng điểm: {0}P"
+  },
+  {
+    "id": -1000001044,
+    "key": "smcfgs044",
+    "ch|en|tc|kr": "Mặc định"
+  },
+  {
+    "id": -1000001045,
+    "key": "smcfgs045",
+    "ch|en|tc|kr": "Cấp"
+  },
+  {
+    "id": -1000001046,
+    "key": "smcfgs046",
+    "ch|en|tc|kr": "Cần chơi lại để áp dụng các thiết lập này!"
+  },
+  {
+    "id": -1000001047,
+    "key": "smcfgs047",
+    "ch|en|tc|kr": "Số lượng NPC"
+  },
+  {
+    "id": -1000001048,
+    "key": "smcfgs048",
+    "ch|en|tc|kr": "RAM yêu cầu: {0}MB)"
+  },
+  {
+    "id": -1000001049,
+    "key": "smcfgs049",
+    "ch|en|tc|kr": "(Bao quát hộ thuẫn, bạo tạc cùng phân chia)"
+  },
+  {
+    "id": -1000001050,
+    "key": "smcfgs050",
+    "ch|en|tc|kr": "Công trình được xây dựng dần"
+  },
+  {
+    "id": -1000001101,
+    "key": "smcfgs101",
+    "ch|en|tc|kr": "{1}% ({0}P)"
+  },
+  {
+    "id": -1000001102,
+    "key": "smcfgs102",
+    "ch|en|tc|kr": "({0}P)"
+  },
+  {
+    "id": -1000001103,
+    "key": "smcfgs103",
+    "ch|en|tc|kr": "{1} ({0}P)"
+  }
 ]

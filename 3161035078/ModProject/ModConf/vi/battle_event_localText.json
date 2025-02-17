@@ -2,26 +2,125 @@
   {
     "id": "480110100",
     "key": "battleevent480110100",
-    "ch|en|tc|kr": "Ha ha ha! Chiến lợi phẩm là ta! Toàn bộ",
+    "ch": "Ha ha ha! Chiến lợi phẩm là ta!",
+    "en": "Ha ha ha! Chiến lợi phẩm là ta!"
   },
   {
     "id": "480110200",
     "key": "battleevent480110200",
-    "ch|en|tc|kr": "Để cho ta tới trợ giúp ngươi",
+    "ch": "Để cho ta tới trợ giúp ngươi",
+    "en": "Để cho ta tới trợ giúp ngươi"
   },
   {
     "id": "480110300",
     "key": "battleevent480110300",
-    "ch|en|tc|kr": "Chớ chọc chúng ta tông môn người!",
+    "ch": "Đừng nhúc nhích chúng ta môn phái người!",
+    "en": "Đừng nhúc nhích chúng ta môn phái người!"
   },
   {
     "id": "480110400",
     "key": "battleevent480110400",
-    "ch|en|tc|kr": "Thành nội cấm chỉ động võ!",
+    "ch": "Thành nội  cấm chỉ động võ!",
+    "en": "Thành nội  cấm chỉ động võ!"
   },
   {
     "id": "480110500",
     "key": "battleevent480110500",
-    "ch|en|tc|kr": "Ta đã chịu đủ ngươi! Chết đi!",
+    "ch": "Ta đã chịu đủ ngươi! Hạ Cửu U đi!",
+    "en": "Ta đã chịu đủ ngươi! Hạ Cửu U đi!"
+  },
+  {
+    "id": "480111990",
+    "key": "battleevent480111990typeDesc",
+    "ch": "Chiến tranh",
+    "en": "Chiến tranh"
+  },
+  {
+    "id": "480112990",
+    "key": "battleevent480112990name",
+    "ch": "Thành  chiến",
+    "en": "Thành  chiến"
+  },
+  {
+    "id": "480113990",
+    "key": "battleevent480113990vicDesc",
+    "ch": "Đánh bại đối phương.",
+    "tc": "击败对方。",
+    "en": "Đánh bại đối phương.",
+    "kr": "상대 격파."
+  },
+  {
+    "id": "480112991",
+    "key": "battleevent480112991name",
+    "ch": "Thú triều",
+    "en": "Thú triều"
+  },
+  {
+    "id": "480113991",
+    "key": "battleevent480113991vicDesc",
+    "ch": "Đánh giết tất cả  quái vật.",
+    "tc": "击杀所有怪物。",
+    "en": "Đánh giết tất cả  quái vật.",
+    "kr": "모든 괴물 처치."
+  },
+  {
+    "id": "480112880",
+    "key": "monstwave480112880name",
+    "ch": "Thú triều sơ hiện",
+    "en": "Thú triều sơ hiện"
+  },
+  {
+    "id": "480112881",
+    "key": "monstwave480112881name",
+    "ch": "Lại xuất hiện thú triều",
+    "en": "Lại xuất hiện thú triều"
+  },
+  {
+    "id": "480112882",
+    "key": "monstwave480112882name",
+    "ch": "Ba độ thú triều",
+    "en": "Ba độ thú triều"
+  },
+  {
+    "id": "480112883",
+    "key": "monstwave480112883name",
+    "ch": "Bốn độ thú triều",
+    "en": "Bốn độ thú triều"
+  },
+  {
+    "id": "480112884",
+    "key": "monstwave480112884name",
+    "ch": "Năm độ thú triều",
+    "en": "Năm độ thú triều"
+  },
+  {
+    "id": "480112885",
+    "key": "monstwave480112885name",
+    "ch": "Sáu độ thú triều",
+    "en": "Sáu độ thú triều"
+  },
+  {
+    "id": "480112886",
+    "key": "monstwave480112886name",
+    "ch": "Độ độ  thú triều",
+    "en": "Độ độ  thú triều"
+  },
+  {
+    "id": "480112887",
+    "key": "monstwave480112887name",
+    "ch": "Tám độ thú triều",
+    "en": "Tám độ thú triều"
+  },
+  {
+    "id": "480112888",
+    "key": "monstwave480112888name",
+    "ch": "Thú cướp cửu trọng",
+    "en": "Thú cướp cửu trọng"
+  },
+  {
+    "id": "480112889",
+    "key": "monstwave480112889name",
+    "ch": "Thú cướp thập phương",
+    "en": "Thú cướp thập phương"
   }
 ]
