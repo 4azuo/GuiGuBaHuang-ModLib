@@ -90,11 +90,11 @@ rd "$(ProjectDir)\..\..\..\debug\Mod_nE7UL2\ModCode\dll" /s /q
 rd "$(ProjectDir)\..\..\..\debug\Mod_nE7UL2\ModConf" /s /q
 rd "$(ProjectDir)\..\..\..\debug\Mod_nE7UL2\ModImg" /s /q
 xcopy "$(ProjectDir)\bin\Release\*.dll" "$(ProjectDir)\..\..\..\debug\Mod_nE7UL2\ModCode\dll\" /y /i
-xcopy "$(ProjectDir)\..\..\ModConf\*.*" "$(ProjectDir)\..\..\..\debug\Mod_nE7UL2\ModConf\" /y /i
-xcopy "$(ProjectDir)\..\..\ModConf\*.*" "$(ProjectDir)\..\..\..\debug\Mod_nE7UL2\ModImg\" /y /i
+xcopy "$(ProjectDir)\..\..\ModConf\*.*" "$(ProjectDir)\..\..\..\debug\Mod_nE7UL2\ModConf\" /y /i /e /h /c
+xcopy "$(ProjectDir)\..\..\ModImg\*.*" "$(ProjectDir)\..\..\..\debug\Mod_nE7UL2\ModImg\" /y /i /e /h /c
 `
 
-Add BuildEvent for copying dll to "debug" folder. (About `ModConf` and `ModImg`, remove it if you dont have any)
+Add BuildEvent for copying dll to "debug" folder. 
 
 ※"nE7UL2" is my mod-id. You should change "nE7UL2" to your mod-id. And build by "Release" mode.
 
