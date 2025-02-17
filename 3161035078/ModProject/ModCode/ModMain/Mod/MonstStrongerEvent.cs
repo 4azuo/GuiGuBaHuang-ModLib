@@ -44,11 +44,18 @@ namespace MOD_nE7UL2.Mod
             Counter++;
             foreach (var potmonData in g.data.dataWorld.data.devilDemonData.potmonData.potMonList)
             {
-                var potmon = g.world.unit.GetUnit(potmonData.unitId);
-                potmon.AddProperty<int>(UnitPropertyEnum.Attack, (potmon.GetProperty<int>(UnitPropertyEnum.Attack) * 0.002f * potmonData.grade).Parse<int>());
-                potmon.AddProperty<int>(UnitPropertyEnum.Defense, (potmon.GetProperty<int>(UnitPropertyEnum.Defense) * 0.001f * potmonData.grade).Parse<int>());
-                potmon.AddProperty<int>(UnitPropertyEnum.HpMax, (potmon.GetProperty<int>(UnitPropertyEnum.HpMax) * 0.002f * potmonData.grade).Parse<int>());
+                potmonData.monstPropertyScale.atk = AddPotmonValue(potmonData.monstPropertyScale.atk, 0.01f);
+                potmonData.monstPropertyScale.def = AddPotmonValue(potmonData.monstPropertyScale.def, 0.01f);
+                potmonData.monstPropertyScale.hp = AddPotmonValue(potmonData.monstPropertyScale.hp, 0.01f);
             }
+        }
+
+        private string AddPotmonValue(string scale, float rate)
+        {
+            var s = scale.Split('|');
+            var type = s[0].Parse<int>();
+            var value = s[1].Parse<float>();
+            return $"{s[0]}|{(value + (value * rate)).Parse<int>()}";
         }
 
         public override void OnBattleUnitDie(UnitDie e)
