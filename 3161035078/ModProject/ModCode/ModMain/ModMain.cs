@@ -443,6 +443,13 @@ namespace MOD_nE7UL2
                 item.sale = PriceHelper.UpPrice(item.sale, grade, level, ratio);
                 item.worth = PriceHelper.UpPrice(item.worth, grade, level, ratio);
             }
+            //balance potmon
+            foreach (var item in g.conf.potmonBattle._allConfList)
+            {
+                item.spCost = item.spCost * item.id;
+                item.stayTime = 20;
+                item.cd = 20;
+            }
         }
     }
 }

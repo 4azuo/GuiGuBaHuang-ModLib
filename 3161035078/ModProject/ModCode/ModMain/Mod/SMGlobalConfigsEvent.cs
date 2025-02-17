@@ -47,7 +47,7 @@ namespace MOD_nE7UL2.Mod
         public bool AllowUpgradeNaturally { get; set; } = false;
         public bool EnableTrainer { get; set; } = false;
         public int NPCAmount { get; set; } = 2000;
-        public bool AllowTownBuildupOverTime { get; set; } = true;
+        public bool AllowTownBuildupOverTime { get; set; } = false;
 
         //UI
         private UIItemComposite slMonstAtk;
@@ -371,7 +371,7 @@ namespace MOD_nE7UL2.Mod
             tglAllowUpgradeNaturally.Set(false);
             tglEnableTrainer.Set(false);
             slNPCAmount.Set(2000f);
-            tglAllowTownBuildupOverTime.Set(true);
+            tglAllowTownBuildupOverTime.Set(false);
         }
 
         private void SetLevel(int level)
