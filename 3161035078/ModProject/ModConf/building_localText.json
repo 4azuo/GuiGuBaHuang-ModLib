@@ -7,6 +7,6 @@
 	{ "id": 500030005, "key": "building500030005", "ch": "市镇通缉", "en": "Town Bounty" },
 	{ "id": 500030006, "key": "building500030006", "ch": "練武場", "en": "School Traning Hall" },
 	{ "id": 500030007, "key": "building500030007", "ch": "拜入他派", "en": "School Transfer" },
-	{ "id": 500030008, "key": "building500030008", "ch|en|tc|kr": "School Storage" },
-	{ "id": 500030009, "key": "building500030009", "ch|en|tc|kr": "Town Storage" },
+	{ "id": 500030008, "key": "building500030008", "ch": "藏經閣", "en": "School Storage" },
+	{ "id": 500030009, "key": "building500030009", "ch": "藏宝阁", "en": "Town Storage" },
 ]
