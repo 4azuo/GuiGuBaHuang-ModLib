@@ -78,6 +78,7 @@
     <Compile Include="Helper\TraceHelper.cs" />
     <Compile Include="Helper\EffectHelper.cs" />
     <Compile Include="Helper\TranslateHelper.cs" />
+    <Compile Include="Helper\FileHelper.cs" />
     <Compile Include="Helper\ValueHelper.cs" />
     <Compile Include="Mod\Base\ModSkill.cs" />
     <Compile Include="Mod\ModBattleEvent.cs" />
