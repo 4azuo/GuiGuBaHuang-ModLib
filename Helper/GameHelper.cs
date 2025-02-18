@@ -67,6 +67,11 @@ public static class GameHelper
         return GetGameDay() + GetGameMonth() * 100 + GetGameYear() * 10000;
     }
 
+    public static int GetGameTotalMonth()
+    {
+        return g.world.run.roundMonth;
+    }
+
     public static MapBuildTownStorage GetStorage()
     {
         var storageTown = g.world.build.GetBuilds(MapTerrainType.Town).ToArray().FirstOrDefault(x => x.gridData.areaBaseID == 1);
