@@ -107,6 +107,16 @@ public static class CacheHelper
         CacheData.Remove(c.CacheId);
     }
 
+    public static void ReloadGameCachableObject<T>(T c) where T : CachableObject
+    {
+        ObjectHelper.Map<T>(ReadGameCacheFile<T>(c.ModId, c.CacheId), c);
+    }
+
+    public static void ReloadGlobalCachableObject<T>(T c) where T : CachableObject
+    {
+        ObjectHelper.Map<T>(ReadGlobalCacheFile<T>(c.ModId, c.CacheId), c);
+    }
+
     public static List<CachableObject> GetGlobalCaches()
     {
         return GetAllCachableObjects().Where(x => x.CacheType == CacheAttribute.CType.Global).ToList();
@@ -140,6 +150,11 @@ public static class CacheHelper
     public static List<CachableObject> GetAllCachableObjects()
     {
         return CacheData.Values.ToList();
+    }
+
+    public static bool IsReadable<T>(string modId, string cacheId) where T : CachableObject
+    {
+        return FileHelper.IsReadable<T>(GetGlobalCacheFilePath(modId, cacheId));
     }
 
     public static T ReadGlobalCacheFile<T>(string modId, string cacheId) where T : CachableObject
