@@ -13,13 +13,13 @@ namespace MOD_nE7UL2.Mod
     {
         public static MonstStrongerEvent Instance { get; set; }
         public static _MonstStrongerConfigs Configs => ModMain.ModObj.GameSettings.MonstStrongerConfigs;
-        public static IDictionary<MonstType, float> AdditionalStts { get; set; } = new Dictionary<MonstType, float>
-        {
-            [MonstType.Common] = 2.00f,
-            [MonstType.Elite] = 0.20f,
-            [MonstType.BOSS] = 0.02f,
-            [MonstType.NPC] = 0.04f,
-        };
+        //public static IDictionary<MonstType, float> AdditionalStts { get; set; } = new Dictionary<MonstType, float>
+        //{
+        //    [MonstType.Common] = 2.00f,
+        //    [MonstType.Elite] = 0.20f,
+        //    [MonstType.BOSS] = 0.02f,
+        //    [MonstType.NPC] = 0.04f,
+        //};
 
         public IDictionary<MonstType, int> KillCounter { get; set; } = new Dictionary<MonstType, int>();
         public IDictionary<MonstType, float> Additional { get; set; } = new Dictionary<MonstType, float>();
@@ -41,12 +41,15 @@ namespace MOD_nE7UL2.Mod
 
         public override void OnMonthly()
         {
-            Counter++;
-            foreach (var potmonData in g.data.dataWorld.data.devilDemonData.potmonData.potMonList)
+            if (GameHelper.GetGameTotalMonth() % SMLocalConfigsEvent.Instance.Configs.GrowUpSpeed == 0)
             {
-                potmonData.monstPropertyScale.atk = AddPotmonValue(potmonData.monstPropertyScale.atk, 0.01f);
-                potmonData.monstPropertyScale.def = AddPotmonValue(potmonData.monstPropertyScale.def, 0.01f);
-                potmonData.monstPropertyScale.hp = AddPotmonValue(potmonData.monstPropertyScale.hp, 0.01f);
+                Counter++;
+                foreach (var potmonData in g.data.dataWorld.data.devilDemonData.potmonData.potMonList)
+                {
+                    potmonData.monstPropertyScale.atk = AddPotmonValue(potmonData.monstPropertyScale.atk, 0.01f);
+                    potmonData.monstPropertyScale.def = AddPotmonValue(potmonData.monstPropertyScale.def, 0.01f);
+                    potmonData.monstPropertyScale.hp = AddPotmonValue(potmonData.monstPropertyScale.hp, 0.01f);
+                }
             }
         }
 

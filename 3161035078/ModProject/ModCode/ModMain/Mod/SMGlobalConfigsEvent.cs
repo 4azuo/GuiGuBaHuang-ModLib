@@ -5,7 +5,9 @@ using ModLib.Mod;
 using ModLib.Object;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
+using System.Windows.Forms;
 using UnityEngine;
 
 namespace MOD_nE7UL2.Mod
@@ -48,8 +50,10 @@ namespace MOD_nE7UL2.Mod
         public bool EnableTrainer { get; set; } = false;
         public int NPCAmount { get; set; } = 2000;
         public bool AllowTownBuildupOverTime { get; set; } = false;
+        public int GrowUpSpeed { get; set; } = 3;
 
         //UI
+        private UICustom1 uiCustom;
         private UIItemComposite slMonstAtk;
         private UIItemComposite slMonstDef;
         private UIItemComposite slMonstHp;
@@ -80,6 +84,7 @@ namespace MOD_nE7UL2.Mod
         private UIItemComposite tglEnableTrainer;
         private UIItemComposite slNPCAmount;
         private UIItemComposite tglAllowTownBuildupOverTime;
+        private UIItemComposite slGrowUpSpeed;
 
         //Score
         public static IList<SMItemWork> ScoreCalculator { get; } = new List<SMItemWork>();
@@ -173,7 +178,7 @@ namespace MOD_nE7UL2.Mod
                     {
                         //point
                         rs[0] = CalCompScore(s.Parent);
-                        //%
+                        //value
                         var x = s.Parent as UIItemComposite;
                         if (x.MainComponent is UIItemSlider)
                         {
@@ -185,6 +190,24 @@ namespace MOD_nE7UL2.Mod
             Register(() => tglAllowTownBuildupOverTime,
                 funcCal: s => 1000,
                 funcCond: s => s.Get().Parse<bool>());
+            Register(() => slGrowUpSpeed,
+                funcCal: s => ((12 - s.Get().Parse<int>()) * 1000).Parse<int>(),
+                funcFormatter: s =>
+                {
+                    var rs = new object[] { 0, 0 };
+                    if (s.Parent != null)
+                    {
+                        //point
+                        rs[0] = CalCompScore(s.Parent);
+                        //value
+                        var x = s.Parent as UIItemComposite;
+                        if (x.MainComponent is UIItemSlider)
+                        {
+                            rs[1] = x.Get().Parse<int>();
+                        }
+                    }
+                    return rs;
+                });
         }
 
         private void Register(
@@ -241,7 +264,7 @@ namespace MOD_nE7UL2.Mod
 
         private void OpenSMConfigs()
         {
-            var uiCustom = new UICustom1(TITLE, string.Empty, SetSMConfigs, true);
+            uiCustom = new UICustom1(TITLE, string.Empty, SetSMConfigs, true);
             {
                 int col, row;
 
@@ -275,6 +298,8 @@ namespace MOD_nE7UL2.Mod
                 row++;
                 uiCustom.AddText(col, row++, GameTool.LS("smcfgs018")).Format(null, 17, FontStyle.Italic).Align(TextAnchor.MiddleRight);
                 slMiscLevelupExp = uiCustom.AddCompositeSlider(col, row++, GameTool.LS("smcfgs019"), 0.00f, 1.00f, AddLevelupExpRate, GameTool.LS("smcfgs101"));
+                slGrowUpSpeed = uiCustom.AddCompositeSlider(col, row++, GameTool.LS("smcfgs051"), 1, 36, GrowUpSpeed, GameTool.LS("smcfgs053"));
+                uiCustom.AddText(col + 2, row++, GameTool.LS("smcfgs052")).Format(null, 13).Align(TextAnchor.MiddleLeft);
 
                 col = 18; row = 0;
                 uiCustom.AddText(col, row++, GameTool.LS("smcfgs020")).Format(null, 17, FontStyle.Italic).Align(TextAnchor.MiddleRight);
@@ -306,6 +331,8 @@ namespace MOD_nE7UL2.Mod
                 row++;
                 tglEnableTrainer = uiCustom.AddCompositeToggle(col, row++, GameTool.LS("smcfgs041"), EnableTrainer, GameTool.LS("smcfgs102"));
                 uiCustom.AddText(col - 1, row++, GameTool.LS("smcfgs042")).Format(null, 13).Align(TextAnchor.MiddleLeft);
+                uiCustom.AddButton(col + 1, row + 1, ExportConfigs, GameTool.LS("smcfgs054")).Size(200, 40);
+                uiCustom.AddButton(col + 1, row + 3, ImportConfigs, GameTool.LS("smcfgs055")).Size(200, 40);
 
                 col = 30; row = 0;
                 uiCustom.AddText(col, row, GameTool.LS("smcfgs043")).Format(Color.red, 17).Align(TextAnchor.MiddleRight).SetWork(new UIItemWork
@@ -329,6 +356,53 @@ namespace MOD_nE7UL2.Mod
                 SetWork();
             }
             uiCustom.UpdateUI();
+        }
+
+        private void ExportConfigs()
+        {
+            CacheHelper.SaveGlobalCache(this);
+            using (var dialog = new SaveFileDialog
+            {
+                RestoreDirectory = true,
+                AddExtension = true,
+                DefaultExt = "json",
+            })
+            {
+                if (dialog.ShowDialog() == DialogResult.OK)
+                {
+                    using (var stream = dialog.OpenFile())
+                    {
+                        using (var writer = new StreamWriter(stream))
+                        {
+                            writer.Write(File.ReadAllText(CacheHelper.GetGlobalCacheFilePath(ModId, CacheId)));
+                        }
+                    }
+                }
+            }
+        }
+
+        private void ImportConfigs()
+        {
+            using (var dialog = new System.Windows.Forms.OpenFileDialog
+            {
+                RestoreDirectory = true,
+            })
+            {
+                if (dialog.ShowDialog() == DialogResult.OK)
+                {
+                    var confPath = CacheHelper.GetGlobalCacheFilePath(ModId, CacheId);
+                    if (FileHelper.IsReadable<SMGlobalConfigsEvent>(confPath))
+                    {
+                        uiCustom.Dispose();
+                        File.Copy(dialog.FileName, confPath, true);
+                        CacheHelper.ReloadGlobalCachableObject(this);
+                    }
+                    else
+                    {
+                        g.ui.MsgBox("Error", "This file has some errors!");
+                    }
+                }
+            }
         }
 
         private void SetWork()
@@ -372,6 +446,7 @@ namespace MOD_nE7UL2.Mod
             tglEnableTrainer.Set(false);
             slNPCAmount.Set(2000f);
             tglAllowTownBuildupOverTime.Set(false);
+            slGrowUpSpeed.Set(3f);
         }
 
         private void SetLevel(int level)
@@ -405,7 +480,8 @@ namespace MOD_nE7UL2.Mod
             tglSysNoRebirth.Set(level > 8);
             tglSysOnelife.Set(level > 9);
             slNPCAmount.SetPercent(level * 0.02000f, 2000f);
-            tglAllowTownBuildupOverTime.Set(level >= 0);
+            tglAllowTownBuildupOverTime.Set(level > 0);
+            slGrowUpSpeed.SetPercent(level * 0.05000f, 6);
         }
 
         private void SetSMConfigs()
@@ -440,6 +516,7 @@ namespace MOD_nE7UL2.Mod
             EnableTrainer = tglEnableTrainer.Get().Parse<bool>();
             NPCAmount = slNPCAmount.Get().Parse<int>();
             AllowTownBuildupOverTime = tglAllowTownBuildupOverTime.Get().Parse<bool>();
+            GrowUpSpeed = slGrowUpSpeed.Get().Parse<int>();
             CacheHelper.SaveGlobalCache(this);
 
             //edit conf

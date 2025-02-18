@@ -67,20 +67,23 @@ namespace MOD_nE7UL2.Mod
             wunit.AddUnitMoney(income);
 
             //add property
-            if (wunit.IsPlayer())
+            if (GameHelper.GetGameTotalMonth() % SMLocalConfigsEvent.Instance.Configs.GrowUpSpeed == 0)
             {
-                if (wunit.GetGradeLvl() >= 3)
-                    AddPlayerProp(wunit, wunit.GetGradeLvl() / 3.0f);
-            }
-            else
-            {
-                AddNpcProp(wunit, 1.00f + wunit.GetGradeLvl() * 0.03f);
-
-                foreach (var luck in ApprenticeLuckEnum.GetAllEnums<ApprenticeLuckEnum>())
+                if (wunit.IsPlayer())
                 {
-                    if (CommonTool.Random(0.00f, 100.00f).IsBetween(0.00f, 8.00f))
+                    if (wunit.GetGradeLvl() >= 3)
+                        AddPlayerProp(wunit, wunit.GetGradeLvl() / 3.0f);
+                }
+                else
+                {
+                    AddNpcProp(wunit, 1.00f + wunit.GetGradeLvl() * 0.03f);
+
+                    foreach (var luck in ApprenticeLuckEnum.GetAllEnums<ApprenticeLuckEnum>())
                     {
-                        wunit.AddProperty<int>(luck.PropertyEnum.GetPropertyEnum(), 1);
+                        if (CommonTool.Random(0.00f, 100.00f).IsBetween(0.00f, 8.00f))
+                        {
+                            wunit.AddProperty<int>(luck.PropertyEnum.GetPropertyEnum(), 1);
+                        }
                     }
                 }
             }
