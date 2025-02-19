@@ -2,21 +2,25 @@
 	{
 		"id": "1000011000",
 		"key": "skill1000011000",
-		"ch": "混沌之場","en": "Gravity Well"
+		"ch": "混沌之境",
+		"en|kr|tc": "Gravity Well"
 	},
 	{
 		"id": "1000012000",
 		"key": "skill1000012000",
-		"ch": "创建一个圆圈。没有人能逃脱。","en": "Create a circle. No one can escape."
+		"ch": "创建一个圆圈。没有人能逃脱。",
+		"en|kr|tc": "Create a circle. No one can escape."
 	},
 	{
 		"id": "1000011001",
 		"key": "skill1000011001",
-		"ch": "天降劍雨","en": "Celestial Swordfall"
+		"ch": "天外飛仙",
+		"en|kr|tc": "Celestial Swordfall"
 	},
 	{
 		"id": "1000012001",
 		"key": "skill1000012001",
-		"ch": "制造剑雨","en": "Create rain of swords."
+		"ch": "無數把劍從天而降，劍如雨下，讓對方措手不及",
+		"en|kr|tc": "Create rain of swords."
 	}
 ]
