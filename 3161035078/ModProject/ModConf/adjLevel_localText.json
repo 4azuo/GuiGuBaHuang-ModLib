@@ -2,49 +2,49 @@
 	{
 		"id": "500060000",
 		"key": "adjLvl500060000",
-		"ch": "寻常",
-		"en": "None"
+		"ch": "凡器",
+		"en|kr|tc": "None"
 	},
 	{
 		"id": "500060001",
 		"key": "adjLvl500060001",
-		"ch": "常見",
-		"en": "Common"
+		"ch": "靈器",
+		"en|kr|tc": "Common"
 	},
 	{
 		"id": "500060002",
 		"key": "adjLvl500060002",
-		"ch": "罕見",
-		"en": "Uncommon"
+		"ch": "寶器",
+		"en|kr|tc": "Uncommon"
 	},
 	{
 		"id": "500060003",
 		"key": "adjLvl500060003",
-		"ch": "珍稀",
-		"en": "Rare"
+		"ch": "仙器",
+		"en|kr|tc": "Rare"
 	},
 	{
 		"id": "500060004",
 		"key": "adjLvl500060004",
-		"ch": "絕品",
-		"en": "Myst"
+		"ch": "神器",
+		"en|kr|tc": "Myst"
 	},
 	{
 		"id": "500060005",
 		"key": "adjLvl500060005",
-		"ch": "絕世",
-		"en": "Lgendary"
+		"ch": "洪荒靈寶",
+		"en|kr|tc": "Lgendary"
 	},
 	{
 		"id": "500060006",
 		"key": "adjLvl500060006",
-		"ch": "洪荒",
-		"en": "Beast"
+		"ch": "混沌至寶",
+		"en|kr|tc": "Beast"
 	},
 	{
 		"id": "500060007",
 		"key": "adjLvl500060007",
-		"ch": "上古遗物",
-		"en": "Antique"
+		"ch": "洪荒神器",
+		"en|kr|tc": "Antique"
 	}
 ]
