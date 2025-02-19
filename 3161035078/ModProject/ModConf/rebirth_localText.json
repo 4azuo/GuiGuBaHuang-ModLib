@@ -3,138 +3,138 @@
 		"id": "420102001",
 		"key": "rebirth420101001",
 		"ch": "破繭重生",
-		"en": "Rebirth 1"
+		"en|kr|tc": "Rebirth 1"
 	},
 	{
 		"id": "420103001",
 		"key": "rebirth420101001desc",
 		"ch": "+5%体力",
-		"en": "+5% Max HP"
+		"en|kr|tc": "+5% Max HP"
 	},
 	{
 		"id": "420102002",
 		"key": "rebirth420101002",
 		"ch": "重生之二",
-		"en": "Rebirth 2"
+		"en|kr|tc": "Rebirth 2"
 	},
 	{
 		"id": "420103002",
 		"key": "rebirth420101002desc",
 		"ch": "+10%体力",
-		"en": "+10% Max HP"
+		"en|kr|tc": "+10% Max HP"
 	},
 	{
 		"id": "420102003",
 		"key": "rebirth420101003",
 		"ch": "重生之三",
-		"en": "Rebirth 3"
+		"en|kr|tc": "Rebirth 3"
 	},
 	{
 		"id": "420103003",
 		"key": "rebirth420101003desc",
 		"ch": "+15%体力",
-		"en": "+15% Max HP"
+		"en|kr|tc": "+15% Max HP"
 	},
 	{
 		"id": "420102004",
 		"key": "rebirth420101004",
 		"ch": "重生之四",
-		"en": "Rebirth 4"
+		"en|kr|tc": "Rebirth 4"
 	},
 	{
 		"id": "420103004",
 		"key": "rebirth420101004desc",
 		"ch": "+20%体力",
-		"en": "+20% Max HP"
+		"en|kr|tc": "+20% Max HP"
 	},
 	{
 		"id": "420102005",
 		"key": "rebirth420101005",
 		"ch": "重生之五",
-		"en": "Rebirth 5"
+		"en|kr|tc": "Rebirth 5"
 	},
 	{
 		"id": "420103005",
 		"key": "rebirth420101005desc",
 		"ch": "+25%体力",
-		"en": "+25% Max HP"
+		"en|kr|tc": "+25% Max HP"
 	},
 	{
 		"id": "420102006",
 		"key": "rebirth420101006",
 		"ch": "重生之六",
-		"en": "Rebirth 6"
+		"en|kr|tc": "Rebirth 6"
 	},
 	{
 		"id": "420103006",
 		"key": "rebirth420101006desc",
 		"ch": "+30%体力",
-		"en": "+30% Max HP"
+		"en|kr|tc": "+30% Max HP"
 	},
 	{
 		"id": "420102007",
 		"key": "rebirth420101007",
 		"ch": "重生之七",
-		"en": "Rebirth 7"
+		"en|kr|tc": "Rebirth 7"
 	},
 	{
 		"id": "420103007",
 		"key": "rebirth420101007desc",
 		"ch": "+35%体力",
-		"en": "+35% Max HP"
+		"en|kr|tc": "+35% Max HP"
 	},
 	{
 		"id": "420102008",
 		"key": "rebirth420101008",
 		"ch": "重生之八",
-		"en": "Rebirth 8"
+		"en|kr|tc": "Rebirth 8"
 	},
 	{
 		"id": "420103008",
 		"key": "rebirth420101008desc",
 		"ch": "+40%体力",
-		"en": "+40% Max HP"
+		"en|kr|tc": "+40% Max HP"
 	},
 	{
 		"id": "420102009",
 		"key": "rebirth420101009",
 		"ch": "重生之九",
-		"en": "Rebirth 9"
+		"en|kr|tc": "Rebirth 9"
 	},
 	{
 		"id": "420103009",
 		"key": "rebirth420101009desc",
 		"ch": "+45%体力",
-		"en": "+45% Max HP"
+		"en|kr|tc": "+45% Max HP"
 	},
 	{
 		"id": "420102010",
 		"key": "rebirth420101010",
 		"ch": "重生之十",
-		"en": "Rebirth 10"
+		"en|kr|tc": "Rebirth 10"
 	},
 	{
 		"id": "420103010",
 		"key": "rebirth420101010desc",
 		"ch": "+50%体力",
-		"en": "+50% Max HP"
+		"en|kr|tc": "+50% Max HP"
 	},
 	{
 		"id": "420109999",
 		"key": "rebirth420109999dialog",
 		"ch": "这次重生是一个机会。一个纠正过去错误、追求不同道路的机会。我必须明智地选择。保留哪些技能，放弃哪些知识。每一个决定都会塑造我的命运。",
-		"en": "This rebirth is an opportunity. A chance to rectify past mistakes, to pursue a different path. I must choose wisely. What skills to retain, what knowledge to discard. Every decision will shape my destiny."
+		"en|kr|tc": "This rebirth is an opportunity. A chance to rectify past mistakes, to pursue a different path. I must choose wisely. What skills to retain, what knowledge to discard. Every decision will shape my destiny."
 	},
 	{
 		"id": "420103100",
 		"key": "rebirth420103100",
 		"ch": "你必須離開宗門！",
-		"en": "You have to leave the sect!"
+		"en|kr|tc": "You have to leave the sect!"
 	},
 	{
 		"id": "420103101",
 		"key": "rebirth420103101",
 		"ch": "名望一笔勾销",
-		"en": "Reputation will be reseted!"
+		"en|kr|tc": "Reputation will be reseted!"
 	},
 ]
