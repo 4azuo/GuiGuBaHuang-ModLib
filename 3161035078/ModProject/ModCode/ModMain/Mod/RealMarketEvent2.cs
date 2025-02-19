@@ -78,7 +78,7 @@ namespace MOD_nE7UL2.Mod
                 uiPropSelectCount.oneCost = (uiPropSelectCount.oneCost.Parse<float>() * GetBuyRate(uiTownMarketBuy.town, g.world.playerUnit) / 100f).Parse<int>();
                 uiPropSelectCount.UpdateCountUI();
 
-                var uiCover = new UICover<UITownMarketBuy>(e.ui);
+                var uiCover = new UICover<UIPropSelectCount>(e.ui);
                 {
                     uiCover.AddText(0, 0, $"Price rate: {GetBuyRate(uiTownMarketBuy.town, g.world.playerUnit):0.00}%").Align(TextAnchor.MiddleCenter).Format(Color.red).Pos(uiPropSelectCount.ptextInfo.gameObject, 0f, 0.2f);
                 }
