@@ -285,15 +285,19 @@ namespace MOD_nE7UL2.Mod
                 if (master == null || master.isDie)
                 {
                     master = townCouncilWUnits.GetFamousWUnit();
-                    var masterId = master.GetUnitId();
-                    master.DelLuck(TOWN_GUARDIAN_LUCK_ID);
-                    master.AddLuck(TOWN_MASTER_LUCK_ID);
+                    //promote to town-master
+                    if (master != null)
+                    {
+                        var masterId = master.GetUnitId();
+                        master.DelLuck(TOWN_GUARDIAN_LUCK_ID);
+                        master.AddLuck(TOWN_MASTER_LUCK_ID);
 
-                    if (master.IsPlayer())
-                        DramaTool.OpenDrama(BECOME_TOWN_MASTER_DRAMA);
+                        if (master.IsPlayer())
+                            DramaTool.OpenDrama(BECOME_TOWN_MASTER_DRAMA);
+                    }
                 }
 
-                if (master.GetUnitId() != g.world.playerUnit.GetUnitId())
+                if (master != null && !master.IsPlayer())
                 {
                     //random tax rate
                     TaxRate[town.buildData.id] = CommonTool.Random(0.50f, 10.00f);
@@ -305,6 +309,7 @@ namespace MOD_nE7UL2.Mod
                         if (aroundWUnits.Count > 0)
                         {
                             var newGuard = aroundWUnits.GetFamousWUnit();
+                            //hire player
                             if (newGuard.IsPlayer())
                             {
                                 g.ui.MsgBox(GameTool.LS("other500020011"), $"You received a invitation from {town.name}' Town Master for guardian position?{Environment.NewLine}Do you wanna become a Town Guardian?", MsgBoxButtonEnum.YesNo, () =>
@@ -312,6 +317,7 @@ namespace MOD_nE7UL2.Mod
                                     Hire(town, newGuard, TOWN_GUARDIAN_LUCK_ID);
                                 });
                             }
+                            //hire npc
                             else
                             {
                                 Hire(town, newGuard, TOWN_GUARDIAN_LUCK_ID);
@@ -323,7 +329,7 @@ namespace MOD_nE7UL2.Mod
                 //budget inc yearly
                 AddBuildProperty(town, GetBaseTax(town) * TOWN_YEARLY_BUDGET);
                 
-                //budget inc from auction
+                //budget inc by auction
                 var auction = town.GetBuildSub<MapBuildTownAuction>();
                 if (auction != null)
                 {
@@ -362,12 +368,16 @@ namespace MOD_nE7UL2.Mod
                     }
                 }
 
-                //master
-                if (!master.IsPlayer())
+                //master npc's payment
+                if (master != null && !master.IsPlayer())
                 {
                     var profit = GetRequiredSpiritStones(town, master) + (GetBuildProperty(town) / 100).FixValue(0, int.MaxValue).Parse<int>();
-                    AddBuildProperty(town, -profit);
-                    master.AddUnitMoney(profit);
+                    if (Budget[town.buildData.id] > profit)
+                    {
+                        AddBuildProperty(town, -profit);
+                        master.AddUnitMoney(profit);
+                    }
+                    //he'll come back to his town yearly
                     master.SetUnitPos(town.GetOrigiPoint());
                 }
             }

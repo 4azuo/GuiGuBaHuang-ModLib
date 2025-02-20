@@ -104,6 +104,8 @@ namespace MOD_nE7UL2.Mod
                 if (CommonTool.Random(0.00f, 100.00f).IsBetween(0.00f, TOWN_WAR_RATE * (curYear - LastYearEventHappen[town.buildData.id])))
                 {
                     var master = MapBuildPropertyEvent.GetTownMaster(town);
+                    if (master == null)
+                        return;
                     MapBuildTown townAtk = null;
                     var hasAttacker = MapBuildPropertyEvent.Instance.TownMasters.Any(x =>
                     {
@@ -205,7 +207,7 @@ namespace MOD_nE7UL2.Mod
             BuildBaseB = townB_atk;
             CalTownWarInfo(townA_def, townB_atk);
             //auto battle
-            var teamAPoint = TeamAWUnits.Select(x =>
+            var teamAPoint = TeamAWUnits.Count == 0 ? 0 : TeamAWUnits.Average(x =>
             {
                 return
                     (x.GetDynProperty(UnitDynPropertyEnum.Attack).value * 3) +
@@ -214,9 +216,9 @@ namespace MOD_nE7UL2.Mod
                     (x.GetDynProperty(UnitDynPropertyEnum.MpMax).value * 3) +
                     (x.GetDynProperty(UnitDynPropertyEnum.SpMax).value * 5) +
                     (x.GetEquippedArtifacts().Select(a => Math.Pow(2, a.propsInfoBase.grade) * 10000 + Math.Pow(2, a.propsInfoBase.level) * 2000).Sum());
-            }).Average();
+            });
             var teamATotalPoint = teamAPoint * TeamAUnitCount * /*def point*/1.5;
-            var teamBPoint = TeamBWUnits.Select(x =>
+            var teamBPoint = TeamBWUnits.Count == 0 ? 0 : TeamBWUnits.Average(x =>
             {
                 return
                     (x.GetDynProperty(UnitDynPropertyEnum.Attack).value * 3) +
@@ -225,7 +227,7 @@ namespace MOD_nE7UL2.Mod
                     (x.GetDynProperty(UnitDynPropertyEnum.MpMax).value * 3) +
                     (x.GetDynProperty(UnitDynPropertyEnum.SpMax).value * 5) +
                     (x.GetEquippedArtifacts().Select(a => Math.Pow(2, a.propsInfoBase.grade) * 10000 + Math.Pow(2, a.propsInfoBase.level) * 2000).Sum());
-            }).Average();
+            });
             var teamBTotalPoint = teamBPoint * TeamBUnitCount;
             //battle end
             var ratioAB = teamATotalPoint / teamBTotalPoint;
@@ -377,7 +379,7 @@ namespace MOD_nE7UL2.Mod
             BuildBaseB = null;
             CalMonstWaveInfo(teamAbuildBase);
             //auto battle
-            var teamAPoint = TeamAWUnits.Select(x =>
+            var teamAPoint = TeamAWUnits.Count == 0 ? 0 : TeamAWUnits.Average(x =>
             {
                 return
                     (x.GetDynProperty(UnitDynPropertyEnum.Attack).value * 3) +
@@ -386,7 +388,7 @@ namespace MOD_nE7UL2.Mod
                     (x.GetDynProperty(UnitDynPropertyEnum.MpMax).value * 3) +
                     (x.GetDynProperty(UnitDynPropertyEnum.SpMax).value * 5) +
                     (x.GetEquippedArtifacts().Select(a => Math.Pow(2, a.propsInfoBase.grade) * 10000 + Math.Pow(2, a.propsInfoBase.level) * 2000).Sum());
-            }).Average();
+            });
             var teamATotalPoint = teamAPoint * TeamAUnitCount * /*def point*/1.5;
             var gameLvl = g.data.dataWorld.data.gameLevel.Parse<int>();
             var areaId = teamAbuildBase.gridData.areaBaseID;
