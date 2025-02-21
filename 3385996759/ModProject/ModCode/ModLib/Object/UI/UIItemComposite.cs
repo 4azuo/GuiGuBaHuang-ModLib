@@ -173,5 +173,12 @@ namespace ModLib.Object
 
             return this;
         }
+
+        public override UIItemBase SetParentTransform(Transform t)
+        {
+            Prefix.SetParentTransform(t);
+            Postfix.SetParentTransform(t);
+            return base.SetParentTransform(t);
+        }
     }
 }
