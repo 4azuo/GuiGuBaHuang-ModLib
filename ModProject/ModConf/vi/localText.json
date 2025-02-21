@@ -1,4 +1,7 @@
 [
 	{ "id": "999990000", "key": "libtxt999990000", "ch|en|tc|kr": "Cảnh báo" },
-	{ "id": "999990001", "key": "libtxt999990001", "ch|en|tc|kr": "ModLib hoạt động tốt nhất trên tỉ lệ màn hình 16:9" },
+	{ "id": "999990001", "key": "libtxt999990001", "ch|en|tc|kr": "ModLib hoạt động tốt nhất trên tỉ lệ màn hình 16:9." },
+	{ "id": "999990002", "key": "libtxt999990002", "ch|en|tc|kr": "Khởi tạo RAM cho hệ thống." },
+	{ "id": "999990003", "key": "libtxt999990003", "ch|en|tc|kr": "Bạn cần phải khởi động lại game!" },
+	{ "id": "999990004", "key": "libtxt999990004", "ch|en|tc|kr": "Đây là lần đâu bạn sử dụng mod. Bạn có muốn chạy benchmark để tạo RAM cho hệ thống không?" },
 ]
