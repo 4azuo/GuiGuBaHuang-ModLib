@@ -132,7 +132,9 @@ namespace MOD_nE7UL2.Mod
         public static int GetAdjustAtk(WorldUnitBase wunit)
         {
             var k = $"{wunit.GetUnitId()}_atk";
-            if ((!_values.ContainsKey(k) || wunit.IsPlayer()) && !GameHelper.IsInBattlle())
+            if (GameHelper.IsInBattlle())
+                return _values.ContainsKey(k) ? _values[k] : 0;
+            if (!_values.ContainsKey(k) || wunit.IsPlayer())
             {
                 var rs = 0;
 
@@ -176,7 +178,9 @@ namespace MOD_nE7UL2.Mod
         public static int GetAdjustDef(WorldUnitBase wunit)
         {
             var k = $"{wunit.GetUnitId()}_def";
-            if ((!_values.ContainsKey(k) || wunit.IsPlayer()) && !GameHelper.IsInBattlle())
+            if (GameHelper.IsInBattlle())
+                return _values.ContainsKey(k) ? _values[k] : 0;
+            if (!_values.ContainsKey(k) || wunit.IsPlayer())
             {
                 var rs = 0;
 
@@ -220,7 +224,9 @@ namespace MOD_nE7UL2.Mod
         public static int GetAdjustMaxHp(WorldUnitBase wunit)
         {
             var k = $"{wunit.GetUnitId()}_mhp";
-            if ((!_values.ContainsKey(k) || wunit.IsPlayer()) && !GameHelper.IsInBattlle())
+            if (GameHelper.IsInBattlle())
+                return _values.ContainsKey(k) ? _values[k] : 0;
+            if (!_values.ContainsKey(k) || wunit.IsPlayer())
             {
                 var rs = 0;
 
@@ -266,7 +272,9 @@ namespace MOD_nE7UL2.Mod
         public static int GetAdjustMaxMp(WorldUnitBase wunit)
         {
             var k = $"{wunit.GetUnitId()}_mmp";
-            if ((!_values.ContainsKey(k) || wunit.IsPlayer()) && !GameHelper.IsInBattlle())
+            if (GameHelper.IsInBattlle())
+                return _values.ContainsKey(k) ? _values[k] : 0;
+            if (!_values.ContainsKey(k) || wunit.IsPlayer())
             {
                 var rs = 0;
 
@@ -299,7 +307,9 @@ namespace MOD_nE7UL2.Mod
         public static int GetAdjustMaxSp(WorldUnitBase wunit)
         {
             var k = $"{wunit.GetUnitId()}_msp";
-            if ((!_values.ContainsKey(k) || wunit.IsPlayer()) && !GameHelper.IsInBattlle())
+            if (GameHelper.IsInBattlle())
+                return _values.ContainsKey(k) ? _values[k] : 0;
+            if (!_values.ContainsKey(k) || wunit.IsPlayer())
             {
                 var rs = 0;
 
@@ -328,7 +338,9 @@ namespace MOD_nE7UL2.Mod
         public static int GetAdjustSpeed(WorldUnitBase wunit)
         {
             var k = $"{wunit.GetUnitId()}_speed";
-            if ((!_values.ContainsKey(k) || wunit.IsPlayer()) && !GameHelper.IsInBattlle())
+            if (GameHelper.IsInBattlle())
+                return _values.ContainsKey(k) ? _values[k] : 0;
+            if (!_values.ContainsKey(k) || wunit.IsPlayer())
             {
                 var rs = 0;
 
@@ -353,7 +365,9 @@ namespace MOD_nE7UL2.Mod
         public static int GetAdjustBlade(WorldUnitBase wunit)
         {
             var k = $"{wunit.GetUnitId()}_blade";
-            if ((!_values.ContainsKey(k) || wunit.IsPlayer()) && !GameHelper.IsInBattlle())
+            if (GameHelper.IsInBattlle())
+                return _values.ContainsKey(k) ? _values[k] : 0;
+            if (!_values.ContainsKey(k) || wunit.IsPlayer())
             {
                 var rs = 0;
 
@@ -368,7 +382,9 @@ namespace MOD_nE7UL2.Mod
         public static int GetAdjustEarth(WorldUnitBase wunit)
         {
             var k = $"{wunit.GetUnitId()}_earth";
-            if ((!_values.ContainsKey(k) || wunit.IsPlayer()) && !GameHelper.IsInBattlle())
+            if (GameHelper.IsInBattlle())
+                return _values.ContainsKey(k) ? _values[k] : 0;
+            if (!_values.ContainsKey(k) || wunit.IsPlayer())
             {
                 var rs = 0;
 
@@ -383,7 +399,9 @@ namespace MOD_nE7UL2.Mod
         public static int GetAdjustFinger(WorldUnitBase wunit)
         {
             var k = $"{wunit.GetUnitId()}_finger";
-            if ((!_values.ContainsKey(k) || wunit.IsPlayer()) && !GameHelper.IsInBattlle())
+            if (GameHelper.IsInBattlle())
+                return _values.ContainsKey(k) ? _values[k] : 0;
+            if (!_values.ContainsKey(k) || wunit.IsPlayer())
             {
                 var rs = 0;
 
@@ -398,7 +416,9 @@ namespace MOD_nE7UL2.Mod
         public static int GetAdjustFire(WorldUnitBase wunit)
         {
             var k = $"{wunit.GetUnitId()}_fire";
-            if ((!_values.ContainsKey(k) || wunit.IsPlayer()) && !GameHelper.IsInBattlle())
+            if (GameHelper.IsInBattlle())
+                return _values.ContainsKey(k) ? _values[k] : 0;
+            if (!_values.ContainsKey(k) || wunit.IsPlayer())
             {
                 var rs = 0;
 
@@ -413,7 +433,9 @@ namespace MOD_nE7UL2.Mod
         public static int GetAdjustFist(WorldUnitBase wunit)
         {
             var k = $"{wunit.GetUnitId()}_fist";
-            if ((!_values.ContainsKey(k) || wunit.IsPlayer()) && !GameHelper.IsInBattlle())
+            if (GameHelper.IsInBattlle())
+                return _values.ContainsKey(k) ? _values[k] : 0;
+            if (!_values.ContainsKey(k) || wunit.IsPlayer())
             {
                 var rs = 0;
 
@@ -428,7 +450,9 @@ namespace MOD_nE7UL2.Mod
         public static int GetAdjustFroze(WorldUnitBase wunit)
         {
             var k = $"{wunit.GetUnitId()}_froze";
-            if ((!_values.ContainsKey(k) || wunit.IsPlayer()) && !GameHelper.IsInBattlle())
+            if (GameHelper.IsInBattlle())
+                return _values.ContainsKey(k) ? _values[k] : 0;
+            if (!_values.ContainsKey(k) || wunit.IsPlayer())
             {
                 var rs = 0;
 
@@ -443,7 +467,9 @@ namespace MOD_nE7UL2.Mod
         public static int GetAdjustPalm(WorldUnitBase wunit)
         {
             var k = $"{wunit.GetUnitId()}_pallm";
-            if ((!_values.ContainsKey(k) || wunit.IsPlayer()) && !GameHelper.IsInBattlle())
+            if (GameHelper.IsInBattlle())
+                return _values.ContainsKey(k) ? _values[k] : 0;
+            if (!_values.ContainsKey(k) || wunit.IsPlayer())
             {
                 var rs = 0;
 
@@ -458,7 +484,9 @@ namespace MOD_nE7UL2.Mod
         public static int GetAdjustSpear(WorldUnitBase wunit)
         {
             var k = $"{wunit.GetUnitId()}_spear";
-            if ((!_values.ContainsKey(k) || wunit.IsPlayer()) && !GameHelper.IsInBattlle())
+            if (GameHelper.IsInBattlle())
+                return _values.ContainsKey(k) ? _values[k] : 0;
+            if (!_values.ContainsKey(k) || wunit.IsPlayer())
             {
                 var rs = 0;
 
@@ -473,7 +501,9 @@ namespace MOD_nE7UL2.Mod
         public static int GetAdjustSword(WorldUnitBase wunit)
         {
             var k = $"{wunit.GetUnitId()}_sword";
-            if ((!_values.ContainsKey(k) || wunit.IsPlayer()) && !GameHelper.IsInBattlle())
+            if (GameHelper.IsInBattlle())
+                return _values.ContainsKey(k) ? _values[k] : 0;
+            if (!_values.ContainsKey(k) || wunit.IsPlayer())
             {
                 var rs = 0;
 
@@ -488,7 +518,9 @@ namespace MOD_nE7UL2.Mod
         public static int GetAdjustThunder(WorldUnitBase wunit)
         {
             var k = $"{wunit.GetUnitId()}_thunder";
-            if ((!_values.ContainsKey(k) || wunit.IsPlayer()) && !GameHelper.IsInBattlle())
+            if (GameHelper.IsInBattlle())
+                return _values.ContainsKey(k) ? _values[k] : 0;
+            if (!_values.ContainsKey(k) || wunit.IsPlayer())
             {
                 var rs = 0;
 
@@ -503,7 +535,9 @@ namespace MOD_nE7UL2.Mod
         public static int GetAdjustWind(WorldUnitBase wunit)
         {
             var k = $"{wunit.GetUnitId()}_wind";
-            if ((!_values.ContainsKey(k) || wunit.IsPlayer()) && !GameHelper.IsInBattlle())
+            if (GameHelper.IsInBattlle())
+                return _values.ContainsKey(k) ? _values[k] : 0;
+            if (!_values.ContainsKey(k) || wunit.IsPlayer())
             {
                 var rs = 0;
 
@@ -518,7 +552,9 @@ namespace MOD_nE7UL2.Mod
         public static int GetAdjustWood(WorldUnitBase wunit)
         {
             var k = $"{wunit.GetUnitId()}_wood";
-            if ((!_values.ContainsKey(k) || wunit.IsPlayer()) && !GameHelper.IsInBattlle())
+            if (GameHelper.IsInBattlle())
+                return _values.ContainsKey(k) ? _values[k] : 0;
+            if (!_values.ContainsKey(k) || wunit.IsPlayer())
             {
                 var rs = 0;
 
