@@ -54,6 +54,9 @@ namespace ModLib.Mod
 
         public virtual void _OnSave(ETypeData e)
         {
+            if (Gamevars == null)
+                return;
+
             if (GameHelper.IsInGame())
             {
                 if (Gamevars.CurMonth != g.game.world.run.roundMonth)
