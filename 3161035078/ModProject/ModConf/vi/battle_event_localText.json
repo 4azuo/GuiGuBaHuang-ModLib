@@ -2,26 +2,103 @@
   {
     "id": "480110100",
     "key": "battleevent480110100",
-    "ch|en|tc|kr": "Ha ha ha! Chiến lợi phẩm là ta! Toàn bộ",
+    "ch|en|kr|tc": "Ha ha ha! Chiến lợi phẩm là ta!"
   },
   {
     "id": "480110200",
     "key": "battleevent480110200",
-    "ch|en|tc|kr": "Để cho ta tới trợ giúp ngươi",
+    "ch|en|kr|tc": "Để cho ta tới trợ giúp ngươi"
   },
   {
     "id": "480110300",
     "key": "battleevent480110300",
-    "ch|en|tc|kr": "Chớ chọc chúng ta tông môn người!",
+    "ch|en|kr|tc": "Đừng nhúc nhích chúng ta môn phái người!"
   },
   {
     "id": "480110400",
     "key": "battleevent480110400",
-    "ch|en|tc|kr": "Thành nội cấm chỉ động võ!",
+    "ch|en|kr|tc": "Thành nội  cấm chỉ động võ!"
   },
   {
     "id": "480110500",
     "key": "battleevent480110500",
-    "ch|en|tc|kr": "Ta đã chịu đủ ngươi! Chết đi!",
+    "ch|en|kr|tc": "Ta đã chịu đủ ngươi! Hạ Cửu U đi!"
+  },
+  {
+    "id": "480111990",
+    "key": "battleevent480111990typeDesc",
+    "ch|en|kr|tc": "Chiến tranh"
+  },
+  {
+    "id": "480112990",
+    "key": "battleevent480112990name",
+    "ch|en|kr|tc": "Thành  chiến"
+  },
+  {
+    "id": "480113990",
+    "key": "battleevent480113990vicDesc",
+    "ch|en|kr|tc": "Đánh bại đối phương.",
+    "kr": "상대 격파."
+  },
+  {
+    "id": "480112991",
+    "key": "battleevent480112991name",
+    "ch|en|kr|tc": "Thú triều"
+  },
+  {
+    "id": "480113991",
+    "key": "battleevent480113991vicDesc",
+    "ch|en|kr|tc": "Đánh giết tất cả  quái vật.",
+    "kr": "모든 괴물 처치."
+  },
+  {
+    "id": "480112880",
+    "key": "monstwave480112880name",
+    "ch|en|kr|tc": "đăng đậu pháp sư"
+  },
+  {
+    "id": "480112881",
+    "key": "monstwave480112881name",
+    "ch|en|kr|tc": "kiếm vũ trúc ảnh"
+  },
+  {
+    "id": "480112882",
+    "key": "monstwave480112882name",
+    "ch|en|kr|tc": "mộc nhĩ độc tinh"
+  },
+  {
+    "id": "480112883",
+    "key": "monstwave480112883name",
+    "ch|en|kr|tc": "cương thạch quyền"
+  },
+  {
+    "id": "480112884",
+    "key": "monstwave480112884name",
+    "ch|en|kr|tc": "ô mộc chùy"
+  },
+  {
+    "id": "480112885",
+    "key": "monstwave480112885name",
+    "ch|en|kr|tc": "hoa yêu"
+  },
+  {
+    "id": "480112886",
+    "key": "monstwave480112886name",
+    "ch|en|kr|tc": "đại địa thần chùy"
+  },
+  {
+    "id": "480112887",
+    "key": "monstwave480112887name",
+    "ch|en|kr|tc": "man sơn yêu"
+  },
+  {
+    "id": "480112888",
+    "key": "monstwave480112888name",
+    "ch|en|kr|tc": "hắc trư bà"
+  },
+  {
+    "id": "480112889",
+    "key": "monstwave480112889name",
+    "ch|en|kr|tc": "ngư vĩ quái"
   }
 ]
