@@ -2,7 +2,7 @@
 using MOD_nE7UL2.Const;
 using ModLib.Enum;
 using ModLib.Mod;
-using UnityEngine.Events;
+using ModLib.Object;
 
 namespace MOD_nE7UL2.Mod
 {
@@ -30,7 +30,7 @@ namespace MOD_nE7UL2.Mod
 
                 if (!string.IsNullOrEmpty(player.data.unitData.schoolID))
                 {
-                    g.ui.MsgBox("Rebirth", GameTool.LS("rebirth420103100"));
+                    g.ui.MsgBox(GameTool.LS("rebirth420103102"), GameTool.LS("rebirth420103100"));
                     return;
                 }
 
@@ -42,33 +42,35 @@ namespace MOD_nE7UL2.Mod
                     playerGradeLvl > RebirthLevel &&
                     townLevel >= playerGradeLvl)
                 {
-                    var uiTownPub = g.ui.GetUI<UITownPub>(UIType.TownPub);
-                    var btn1 = uiTownPub.btnPub.Copy().Pos(uiTownPub.btnPub.gameObject, 0f, 1f).Set($"Rebirth {RebirthCount + 1}");
-                    btn1.onClick.AddListener((UnityAction)(() =>
+                    var ui = new UICover<UITownPub>(e.ui);
                     {
-                        g.ui.MsgBox("Rebirth", GameTool.LS("rebirth420103101"), MsgBoxButtonEnum.YesNo, () =>
-                        { 
-                            //var
-                            RebirthCount++;
-                            RebirthLevel = playerGradeLvl;
-                            TotalGradeLvl += playerGradeLvl;
+                        ui.AddButton(0, 0, () =>
+                        {
+                            g.ui.MsgBox(GameTool.LS("rebirth420103102"), GameTool.LS("rebirth420103101"), MsgBoxButtonEnum.YesNo, () =>
+                            {
+                                //var
+                                RebirthCount++;
+                                RebirthLevel = playerGradeLvl;
+                                TotalGradeLvl += playerGradeLvl;
 
-                            //reset grade & exp
-                            player.ResetGradeLevel();
-                            player.ClearExp();
+                                //reset grade & exp
+                                player.ResetGradeLevel();
+                                player.ClearExp();
 
-                            //reset items
-                            player.SetProperty(UnitPropertyEnum.Reputation, 0);
+                                //reset items
+                                player.SetProperty(UnitPropertyEnum.Reputation, 0);
 
-                            //remote button
-                            btn1.gameObject.SetActive(false);
-                            UnityEngine.Object.DestroyImmediate(btn1);
+                                //close rebirth ui
+                                ui.Dispose();
 
-                            //add luck & open drama
-                            AddLuck();
-                            DramaTool.OpenDrama(REBIRTH_DRAMA);
-                        });
-                    }));
+                                //add luck & open drama
+                                AddLuck();
+                                DramaTool.OpenDrama(REBIRTH_DRAMA);
+                            });
+                        }, $"Rebirth {RebirthCount + 1}", ui.UI.btnPub).Pos(ui.UI.btnPub.gameObject, 0f, 1f);
+                        ui.AddToolTipButton(GameTool.LS("rebirth420103103")).Pos(ui.UI.btnPub.gameObject, -1f, 1f);
+                    }
+                    ui.UpdateUI();
                 }
             }
         }

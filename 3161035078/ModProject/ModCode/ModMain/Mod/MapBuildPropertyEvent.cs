@@ -312,7 +312,7 @@ namespace MOD_nE7UL2.Mod
                             //hire player
                             if (newGuard.IsPlayer())
                             {
-                                g.ui.MsgBox(GameTool.LS("other500020011"), $"You received a invitation from {town.name}' Town Master for guardian position?{Environment.NewLine}Do you wanna become a Town Guardian?", MsgBoxButtonEnum.YesNo, () =>
+                                g.ui.MsgBox(GameTool.LS("other500020011"), $"You received a invitation from {town.name}' Town Master for guardian position?\nDo you wanna become a Town Guardian?", MsgBoxButtonEnum.YesNo, () =>
                                 {
                                     Hire(town, newGuard, TOWN_GUARDIAN_LUCK_ID);
                                 });
@@ -690,7 +690,7 @@ namespace MOD_nE7UL2.Mod
                             }
                             else
                             {
-                                g.ui.MsgBox(GameTool.LS("other500020011"), $"You cant build this building with current budget!{Environment.NewLine}{GetBuildProperty(town):#,##0}");
+                                g.ui.MsgBox(GameTool.LS("other500020011"), $"You cant build this building with current budget!\n{GetBuildProperty(town):#,##0}");
                             }
                         }, GameTool.LS("other500020017")).Format().Align(TextAnchor.MiddleCenter);
                         c++;
@@ -698,7 +698,7 @@ namespace MOD_nE7UL2.Mod
                 }
 
                 if (IsTownMaster(town, g.world.playerUnit) && !town.buildTownData.isMainTown)
-                    uiCover.AddButton(uiCover.LastCol - 10, uiCover.LastRow - 20, () => Upgrade2City(town), $"Upgrade to City{Environment.NewLine}{GetUpgrade2CityCost(town):#,##0}").Format(Color.black, 17).Align(TextAnchor.MiddleCenter).Size(300, 64);
+                    uiCover.AddButton(uiCover.LastCol - 10, uiCover.LastRow - 20, () => Upgrade2City(town), $"Upgrade to City\n{GetUpgrade2CityCost(town):#,##0}").Format(Color.black, 17).Align(TextAnchor.MiddleCenter).Size(300, 64);
                 uiCover.AddButton(uiCover.LastCol - 10, uiCover.LastRow - 17, Deposit, GameTool.LS("other500020015")).Format(Color.black, 17).Align(TextAnchor.MiddleCenter).Size(300, 64);
                 uiCover.AddButton(uiCover.LastCol - 10, uiCover.LastRow - 14, Withdraw, GameTool.LS("other500020016")).Format(Color.black, 17).Align(TextAnchor.MiddleCenter).Size(300, 64);
                 uiCover.AddButton(uiCover.LastCol - 10, uiCover.LastRow - 11, OpenUIHirePeople, "Hire People").Format(Color.black, 17).Align(TextAnchor.MiddleCenter).Size(300, 64);

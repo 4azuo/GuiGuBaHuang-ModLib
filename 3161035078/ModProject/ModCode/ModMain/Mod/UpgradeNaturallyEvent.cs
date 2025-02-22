@@ -32,6 +32,7 @@ namespace MOD_nE7UL2.Mod
                             player.SetProperty<int>(UnitPropertyEnum.GradeID, nPhase.id);
                             player.ClearExp();
                         }, GameTool.LS("other500020006")).Size(200f, 40f);
+                        ui.AddToolTipButton(ui.MidCol - 3, ui.MidRow + 9, GameTool.LS("other500020018"));
                     }
                     ui.UpdateUI();
                 }

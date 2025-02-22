@@ -159,7 +159,7 @@ namespace MOD_nE7UL2.Mod
             else
             if (MapBuildPropertyEvent.IsTownGuardian(townA_def, g.world.playerUnit))
             {
-                g.ui.MsgBox("Warning", $"Your town ({townA_def.name}) is under attack!{Environment.NewLine}Would you like to help?", MsgBoxButtonEnum.YesNo, 
+                g.ui.MsgBox("Warning", $"Your town ({townA_def.name}) is under attack!\nWould you like to help?", MsgBoxButtonEnum.YesNo, 
                 () =>
                 {
                     JoinTownWar(townA_def, townB_atk);
@@ -311,7 +311,7 @@ namespace MOD_nE7UL2.Mod
             else
             if (MapBuildPropertyEvent.IsTownGuardian(town, g.world.playerUnit))
             {
-                g.ui.MsgBox("Warning", $"Your town ({town.name}) is under attack!{Environment.NewLine}Would you like to help?", MsgBoxButtonEnum.YesNo,
+                g.ui.MsgBox("Warning", $"Your town ({town.name}) is under attack!\nWould you like to help?", MsgBoxButtonEnum.YesNo,
                 () =>
                 {
                     JoinMonstWave(town, TOWN_MONST_WAVE_DUNGEON_BASE_ID);
@@ -336,7 +336,7 @@ namespace MOD_nE7UL2.Mod
             else
             if (school.schoolNameID == g.world.playerUnit.data.unitData.schoolID)
             {
-                g.ui.MsgBox("Warning", $"Your sect ({g.world.playerUnit.data.school.GetName(true)}) is under attack!{Environment.NewLine}Would you like to help?", MsgBoxButtonEnum.YesNo,
+                g.ui.MsgBox("Warning", $"Your sect ({g.world.playerUnit.data.school.GetName(true)}) is under attack!\nWould you like to help?", MsgBoxButtonEnum.YesNo,
                 () =>
                 {
                     JoinMonstWave(school, SECT_MONST_WAVE_DUNGEON_BASE_ID);
