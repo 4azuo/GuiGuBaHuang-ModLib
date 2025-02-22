@@ -2,21 +2,21 @@
   {
     "id": "1000011000",
     "key": "skill1000011000",
-    "ch|en|tc|kr": "Hỗn độn chi trận",
+    "ch|en|kr|tc": "Hỗn Độn Chi Cảnh"
   },
   {
     "id": "1000012000",
     "key": "skill1000012000",
-    "ch|en|tc|kr": "Sáng tạo một vòng tròn. Không ai có thể đào thoát.",
+    "ch|en|kr|tc": "Sáng tạo một vùng hình tròn. Không ai có thể đào thoát."
   },
   {
     "id": "1000011001",
     "key": "skill1000011001",
-    "ch|en|tc|kr": "Thiên hàng kiếm vũ",
+    "ch|en|kr|tc": "Thiên Ngoại Phi Thiên"
   },
   {
     "id": "1000012001",
     "key": "skill1000012001",
-    "ch|en|tc|kr": "Chế tạo mưa kiếm",
+    "ch|en|kr|tc": "Vô số thanh kiếm từ trên trời giáng xuống, kiếm như mưa xuống, làm cho đối phương trở tay không kịp"
   }
 ]
