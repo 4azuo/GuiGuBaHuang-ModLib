@@ -137,4 +137,15 @@
 		"ch": "名望一笔勾销",
 		"en|kr|tc": "Reputation will be reseted!"
 	},
+	{
+		"id": "420103102",
+		"key": "rebirth420103102",
+		"ch": "重生",
+		"en|kr|tc": "Rebirth"
+	},
+	{
+		"id": "420103103",
+		"key": "rebirth420103103",
+		"ch|en|kr|tc": "This mechanic will reset all your character level, exp and reputation.\nWhen you come back with same level, your character will be stronger."
+	}
 ]

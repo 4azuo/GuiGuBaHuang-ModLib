@@ -358,7 +358,7 @@ namespace MOD_nE7UL2.Mod
                 {
                     if (conf.itemShowA != "0" || conf.itemShowB != "0")
                     {
-                        FormatButton3(uiTrainer.AddButton(col + 6 * (c / 13), row + 2 * (c % 13), () => AddBreakthroughItems(conf), $"{GameTool.LS(conf.gradeName)} - {GameTool.LS(conf.phaseName)}{Environment.NewLine}{GameTool.LS(conf.qualityName)}"));
+                        FormatButton3(uiTrainer.AddButton(col + 6 * (c / 13), row + 2 * (c % 13), () => AddBreakthroughItems(conf), $"{GameTool.LS(conf.gradeName)} - {GameTool.LS(conf.phaseName)}\n{GameTool.LS(conf.qualityName)}"));
                         c++;
                     }
                 }
