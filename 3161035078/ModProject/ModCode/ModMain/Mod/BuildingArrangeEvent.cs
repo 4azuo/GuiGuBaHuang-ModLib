@@ -18,18 +18,38 @@ namespace MOD_nE7UL2.Mod
             return $"{build.buildData.id}_{e.Name}";
         }
 
-        public override void OnLoadGame()
+        public override void OnLoadNewGame()
         {
-            base.OnLoadGame();
+            base.OnLoadNewGame();
 
             foreach (var build in g.world.build.GetBuilds())
             {
-                if (!SMLocalConfigsEvent.Instance.Configs.AllowTownBuildupOverTime)
-                    ArrDic.Add(build.buildData.id);
                 foreach (var e in BuildingCostEnum.GetAllEnums<BuildingCostEnum>())
                 {
-                    RemoveBuildSub(build, e);
-                    AddBuildSub(build, e, 100.00f);
+                    if (IsBuilt(build, e))
+                        ArrDic.Add(GetArrDicKey(build, e));
+                }
+            }
+
+            if (SMLocalConfigsEvent.Instance.Configs.AllowTownBuildupOverTime)
+            {
+                foreach (var build in g.world.build.GetBuilds())
+                {
+                    foreach (var e in BuildingCostEnum.GetAllEnums<BuildingCostEnum>())
+                    {
+                        Destroy(build, e);
+                    }
+                }
+            }
+            else
+            if (SMLocalConfigsEvent.Instance.Configs.OnlyPortalAtCityAndSect)
+            {
+                foreach (var build in g.world.build.GetBuilds())
+                {
+                    if (build.IsSmallTown())
+                    {
+                        Destroy(build, BuildingCostEnum.TownPortalBuildCost);
+                    }
                 }
             }
         }
@@ -63,14 +83,14 @@ namespace MOD_nE7UL2.Mod
             }
         }
 
-        public void AddBuildSub(MapBuildBase build, BuildingCostEnum e, float rate = -1f)
+        public void AddBuildSub(MapBuildBase build, BuildingCostEnum e)
         {
             if (SMLocalConfigsEvent.Instance.Configs.OnlyPortalAtCityAndSect && e == BuildingCostEnum.TownPortalBuildCost && build.IsSmallTown())
-                return;
+                return; //OnlyPortalAtCityAndSect then remove small town portal
             if (IsBuildable(build, e))
             {
                 if (MapBuildPropertyEvent.GetBuildProperty(build) > GetBuildingCost(build, e) &&
-                    ValueHelper.IsBetween(CommonTool.Random(0.00f, 100.00f), 0.00f, rate == -1f ? e.BuildRate : rate))
+                    ValueHelper.IsBetween(CommonTool.Random(0.00f, 100.00f), 0.00f, e.BuildRate))
                 {
                     Build(build, e);
                 }
@@ -94,6 +114,8 @@ namespace MOD_nE7UL2.Mod
 
         public static void Build(MapBuildBase build, BuildingCostEnum e)
         {
+            if (build == null || e == null)
+                return;
             Instance.ArrDic.Add(Instance.GetArrDicKey(build, e));
             e.Build(build);
             MapBuildPropertyEvent.AddBuildProperty(build, -GetBuildingCost(build, e));
@@ -101,6 +123,8 @@ namespace MOD_nE7UL2.Mod
 
         public static void Destroy(MapBuildBase build, BuildingCostEnum e)
         {
+            if (build == null || e == null)
+                return;
             Instance.ArrDic.Remove(Instance.GetArrDicKey(build, e));
             Instance.RemoveBuildSub(build, e);
         }

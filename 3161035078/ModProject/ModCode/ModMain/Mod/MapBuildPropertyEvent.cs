@@ -303,7 +303,7 @@ namespace MOD_nE7UL2.Mod
                     TaxRate[town.buildData.id] = CommonTool.Random(0.50f, 10.00f);
 
                     //hire more people
-                    if (GetBuildProperty(town) > GetRequiredSpiritStones(town, master.GetGradeLvl()) * 2)
+                    if (GetBuildProperty(town) > GetRequiredSpiritStones(town, master.GetGradeLvl()) * 1.5)
                     {
                         var aroundWUnits = UnitHelper.GetUnitsAround(town.GetOrigiPoint(), 4, false, true).ToArray().Where(x => IsMatchCondWUnit(x)).ToList();
                         if (aroundWUnits.Count > 0)
@@ -569,7 +569,7 @@ namespace MOD_nE7UL2.Mod
             }
             else
             {
-                g.ui.MsgBox(GameTool.LS("other500020011"), "Town's Budget is not enough!");
+                g.ui.MsgBox(GameTool.LS("other500020011"), GameTool.LS("other500020025"));
             }
         }
 
@@ -844,7 +844,7 @@ namespace MOD_nE7UL2.Mod
         public static int GetRequiredSpiritStones(MapBuildTown town, int gradeLvl)
         {
             var k = (Instance.TownMasters.ContainsKey(town.buildData.id) ? Instance.TownMasters[town.buildData.id].Count : 1) + 1;
-            return InflationaryEvent.CalculateInflationary((Math.Pow(3, gradeLvl) * 1000 * k).Parse<int>());
+            return InflationaryEvent.CalculateInflationary((Math.Pow(3, gradeLvl) * 500 * k).Parse<int>());
         }
 
         public static int GetRequiredSpiritStones(MapBuildTown town, WorldUnitBase wunit)

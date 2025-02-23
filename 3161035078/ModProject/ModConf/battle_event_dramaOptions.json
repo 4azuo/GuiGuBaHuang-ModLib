@@ -1,0 +1,38 @@
+[
+	{
+		"id": "480110601",
+		"condition": "0",
+		"hue": "0",
+		"optionsHide": "0",
+		"text": "battleevent480112891",
+		"cost": "0",
+		"costHide": "0",
+		"function": "0",
+		"clickTip": "0",
+		"nextDialogue": "0"
+	},
+	{
+		"id": "480110602",
+		"condition": "0",
+		"hue": "0",
+		"optionsHide": "0",
+		"text": "battleevent480112892",
+		"cost": "0",
+		"costHide": "0",
+		"function": "0",
+		"clickTip": "0",
+		"nextDialogue": "0"
+	},
+	{
+		"id": "480110603",
+		"condition": "0",
+		"hue": "0",
+		"optionsHide": "0",
+		"text": "battleevent480112893",
+		"cost": "0",
+		"costHide": "0",
+		"function": "0",
+		"clickTip": "0",
+		"nextDialogue": "0"
+	}
+]
