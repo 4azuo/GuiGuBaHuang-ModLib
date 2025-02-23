@@ -216,8 +216,8 @@ namespace ModLib.Mod
                 callBattleEndHandler = _OnBattleEndHandler;
                 callBattleEscapeFailed = _OnBattleEscapeFailed;
                 callBattleExit = _OnBattleExit;
-                callWorldRunStart = _OnWorldRunStart;
-                callWorldRunEnd = _OnWorldRunEnd;
+                //callWorldRunStart = _OnWorldRunStart;
+                //callWorldRunEnd = _OnWorldRunEnd;
                 #endregion
 
                 //register event
@@ -300,10 +300,10 @@ namespace ModLib.Mod
                 monoUpdater.UpdateFunc = OnMonoUpdate;
                 #endregion
 
-                #region Others
-                g.world.run.On(WorldRunOrder.Start, callWorldRunStart);
-                g.world.run.On(WorldRunOrder.End, callWorldRunEnd);
-                #endregion
+                //#region Others
+                //g.world.run.On(WorldRunOrder.Start, callWorldRunStart);
+                //g.world.run.On(WorldRunOrder.End, callWorldRunEnd);
+                //#endregion
 
                 //debug
                 //foreach (var e in g.timer.allTime)
