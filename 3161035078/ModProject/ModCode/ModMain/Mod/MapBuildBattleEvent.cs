@@ -101,7 +101,7 @@ namespace MOD_nE7UL2.Mod
                 if (!LastYearEventHappen.ContainsKey(town.buildData.id))
                     LastYearEventHappen.Add(town.buildData.id, curYear);
 
-                if (CommonTool.Random(0.00f, 100.00f).IsBetween(0.00f, 100))//MONST_WAVE_RATE * (curYear - LastYearEventHappen[town.buildData.id])))
+                if (CommonTool.Random(0.00f, 100.00f).IsBetween(0.00f, MONST_WAVE_RATE * (curYear - LastYearEventHappen[town.buildData.id])))
                 {
                     DebugHelper.WriteLine($"{town.name} monster wave");
                     LastYearEventHappen[town.buildData.id] = curYear;
@@ -719,10 +719,10 @@ namespace MOD_nE7UL2.Mod
                     try
                     {
                         var areaId = g.world.playerUnit.data.unitData.pointGridData.areaBaseID;
-                        for (int i = 0; i < (MIN_UNIT + STP_UNIT * areaId) * 2; i++)
+                        for (int i = 0; i < (MIN_UNIT + STP_UNIT * areaId) * 2.5; i++)
                         {
                             var monstLvl = CommonTool.Random(areaId - 1, areaId + 1).FixValue(0, monstList.Length - 1);
-                            var cunit = ModBattleEvent.SceneBattle.unit.CreateUnitMonstNotAddList(monstList[monstLvl], Vector2.zero, UnitType.Monst, 4 * areaId + monstLvl);
+                            var cunit = ModBattleEvent.SceneBattle.unit.CreateUnitMonst(monstList[monstLvl], Vector2.zero, UnitType.Monst, 4 * areaId + monstLvl);
                             TeamBCUnits.Add(cunit);
                             InitUnitPosi(cunit);
                         }
@@ -798,7 +798,7 @@ namespace MOD_nE7UL2.Mod
                     //create new monster
                     var areaId = g.world.playerUnit.data.unitData.pointGridData.areaBaseID;
                     var monstLvl = CommonTool.Random(areaId - 1, areaId + 1).FixValue(0, monstList.Length - 1);
-                    var cunit = ModBattleEvent.SceneBattle.unit.CreateUnitMonstNotAddList(monstList[monstLvl], Vector2.zero, UnitType.Monst, 4 * areaId + monstLvl);
+                    var cunit = ModBattleEvent.SceneBattle.unit.CreateUnitMonst(monstList[monstLvl], Vector2.zero, UnitType.Monst, 4 * areaId + monstLvl);
                     TeamBCUnits.Add(cunit);
                     InitUnitPosi(cunit);
                 }
