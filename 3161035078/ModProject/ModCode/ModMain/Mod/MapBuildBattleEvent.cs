@@ -696,18 +696,6 @@ namespace MOD_nE7UL2.Mod
             if (ModBattleEvent.SceneBattle != null && (IsBattleTownWar() || IsBattleMonstWave()) && !InitBattleFlg)
             {
                 InitBattleFlg = true;
-                var ui = g.ui.GetUI<UIBattleInfo>(UIType.BattleInfo);
-                ui.uiStartBattle.btnStart.onClick.AddListener((UnityEngine.Events.UnityAction)(() =>
-                {
-                    var areaId = g.world.playerUnit.data.unitData.pointGridData.areaBaseID;
-                    for (int i = 0; i < (MIN_UNIT + STP_UNIT * areaId) * 2; i++)
-                    {
-                        var monstLvl = CommonTool.Random(areaId - 1, areaId + 1).FixValue(0, monstList.Length - 1);
-                        var cunit = ModBattleEvent.SceneBattle.unit.CreateUnitMonstNotAddList(monstList[monstLvl], Vector2.zero, UnitType.Monst, 4 * areaId + monstLvl);
-                        TeamBCUnits.Add(cunit);
-                        InitUnitPosi(cunit);
-                    }
-                }));
                 //init
                 InitUnit(ModBattleEvent.PlayerUnit);
                 //create team units
@@ -728,7 +716,21 @@ namespace MOD_nE7UL2.Mod
                     TeamACUnits.AddRange(TeamAWUnits.Select(x => ModBattleEvent.SceneBattle.unit.CreateUnitHuman<UnitCtrlHumanNPC>(x.data, UnitType.PlayerNPC)).Cast<UnitCtrlBase>());
                     TeamACUnits.ForEach(x => InitUnit(x));
                     //team B
-                    //after start battle
+                    try
+                    {
+                        var areaId = g.world.playerUnit.data.unitData.pointGridData.areaBaseID;
+                        for (int i = 0; i < (MIN_UNIT + STP_UNIT * areaId) * 2; i++)
+                        {
+                            var monstLvl = CommonTool.Random(areaId - 1, areaId + 1).FixValue(0, monstList.Length - 1);
+                            var cunit = ModBattleEvent.SceneBattle.unit.CreateUnitMonstNotAddList(monstList[monstLvl], Vector2.zero, UnitType.Monst, 4 * areaId + monstLvl);
+                            TeamBCUnits.Add(cunit);
+                            InitUnitPosi(cunit);
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        DebugHelper.WriteLine(ex);
+                    }
                 }
             }
         }
@@ -796,7 +798,9 @@ namespace MOD_nE7UL2.Mod
                     //create new monster
                     var areaId = g.world.playerUnit.data.unitData.pointGridData.areaBaseID;
                     var monstLvl = CommonTool.Random(areaId - 1, areaId + 1).FixValue(0, monstList.Length - 1);
-                    TeamBCUnits.Add(ModBattleEvent.SceneBattle.unit.CreateUnitMonstNotAddList(monstList[monstLvl], Vector2.zero, UnitType.Monst));
+                    var cunit = ModBattleEvent.SceneBattle.unit.CreateUnitMonstNotAddList(monstList[monstLvl], Vector2.zero, UnitType.Monst, 4 * areaId + monstLvl);
+                    TeamBCUnits.Add(cunit);
+                    InitUnitPosi(cunit);
                 }
                 else
                 {
