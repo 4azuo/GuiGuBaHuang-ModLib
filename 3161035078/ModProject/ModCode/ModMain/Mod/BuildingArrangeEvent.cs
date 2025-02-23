@@ -15,7 +15,7 @@ namespace MOD_nE7UL2.Mod
 
         private string GetArrDicKey(MapBuildBase build, BuildingCostEnum e)
         {
-            return $"{build.buildData.id}_{e.Name}";
+            return $"{build?.buildData?.id}_{e?.Name}";
         }
 
         public override void OnLoadNewGame()
@@ -104,11 +104,15 @@ namespace MOD_nE7UL2.Mod
 
         public static bool IsBuilt(MapBuildBase build, BuildingCostEnum e)
         {
+            if (build == null || e == null)
+                return false;
             return Instance.ArrDic.Contains(Instance.GetArrDicKey(build, e)) || build.GetBuildSub(e.BuildType) != null;
         }
 
         public static bool IsBuildable(MapBuildBase build, BuildingCostEnum e)
         {
+            if (build == null || e == null)
+                return false;
             return e.IsMatchBuildConds(build) && !IsBuilt(build, e) && !IsIgnored(e);
         }
 
@@ -131,6 +135,8 @@ namespace MOD_nE7UL2.Mod
 
         public static long GetBuildingCost(MapBuildBase build, BuildingCostEnum e)
         {
+            if (build == null || e == null)
+                return 0;
             var cost = InflationaryEvent.CalculateInflationary(e.BuildCosts[build.gridData.areaBaseID - 1]);
             return SMLocalConfigsEvent.Instance.Calculate(cost, SMLocalConfigsEvent.Instance.Configs.AddBuildingCostRate).Parse<long>();
         }
