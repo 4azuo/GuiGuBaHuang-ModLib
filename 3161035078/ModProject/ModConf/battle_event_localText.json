@@ -154,16 +154,6 @@
 		"ch|en|tc|kr": "{0} is under attack!\nWould you like to help?"
 	},
 	{
-		"id": "480112896",
-		"key": "battleevent480112896",
-		"ch|en|tc|kr": "Help defender"
-	},
-	{
-		"id": "480112897",
-		"key": "battleevent480112897",
-		"ch|en|tc|kr": "Help invader"
-	},
-	{
 		"id": "480112898",
 		"key": "battleevent480112898",
 		"ch|en|tc|kr": "Dont care"
@@ -172,10 +162,5 @@
 		"id": "480112899",
 		"key": "battleevent480112899",
 		"ch|en|tc|kr": "Help"
-	},
-	{
-		"id": "480112900",
-		"key": "battleevent480112900",
-		"ch|en|tc|kr": "Dont care"
 	}
 ]
