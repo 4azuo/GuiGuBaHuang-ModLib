@@ -95,7 +95,7 @@ namespace MOD_nE7UL2.Mod
                     }
                     else
                     {
-                        g.ui.MsgBox(GameTool.LS("other500020011"), $"You dont have enough {tax:#,##0} Spirit Stones to pay!", onYesCall: () =>
+                        g.ui.MsgBox(GameTool.LS("other500020011"), string.Format(GameTool.LS("other500020027"), tax), onYesCall: () =>
                         {
                             g.ui.CloseUI(e.ui);
                         });
@@ -312,7 +312,7 @@ namespace MOD_nE7UL2.Mod
                             //hire player
                             if (newGuard.IsPlayer())
                             {
-                                g.ui.MsgBox(GameTool.LS("other500020011"), $"You received a invitation from {town.name}' Town Master for guardian position?\nDo you wanna become a Town Guardian?", MsgBoxButtonEnum.YesNo, () =>
+                                g.ui.MsgBox(GameTool.LS("other500020011"), string.Format(GameTool.LS("other500020026"), town.name), MsgBoxButtonEnum.YesNo, () =>
                                 {
                                     Hire(town, newGuard, TOWN_GUARDIAN_LUCK_ID);
                                 });
