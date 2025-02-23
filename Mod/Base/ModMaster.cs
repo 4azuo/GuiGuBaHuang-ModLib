@@ -74,6 +74,8 @@ namespace ModLib.Mod
         private Action<ETypeData> callBattleEndHandler;
         private Action<ETypeData> callBattleEscapeFailed;
         private Action<ETypeData> callBattleExit;
+        private Action callWorldRunStart;
+        private Action callWorldRunEnd;
         #endregion
 
         #region timer
@@ -214,6 +216,8 @@ namespace ModLib.Mod
                 callBattleEndHandler = _OnBattleEndHandler;
                 callBattleEscapeFailed = _OnBattleEscapeFailed;
                 callBattleExit = _OnBattleExit;
+                callWorldRunStart = _OnWorldRunStart;
+                callWorldRunEnd = _OnWorldRunEnd;
                 #endregion
 
                 //register event
@@ -296,8 +300,10 @@ namespace ModLib.Mod
                 monoUpdater.UpdateFunc = OnMonoUpdate;
                 #endregion
 
-                //g.world.run.On(WorldRunOrder.Start, (Il2CppSystem.Action)OnWorldRunStart);
-                //g.world.run.On(WorldRunOrder.End, (Il2CppSystem.Action)OnWorldRunEnd);
+                #region Others
+                g.world.run.On(WorldRunOrder.Start, callWorldRunStart);
+                g.world.run.On(WorldRunOrder.End, callWorldRunEnd);
+                #endregion
 
                 //debug
                 //foreach (var e in g.timer.allTime)
