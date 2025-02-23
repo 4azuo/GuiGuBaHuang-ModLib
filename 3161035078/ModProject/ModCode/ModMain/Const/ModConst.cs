@@ -52,5 +52,6 @@
         public const string UTYPE_LUCK_EFX_PASSIVE_INCOME = "PassiveIncome";
         public const float PILL_RECIPE_RATE = 0.15f;
         public const int MAX_ATTRIBUTE = 1000000000;
+        public const int MAX_VALUE = 1000000000;
     }
 }

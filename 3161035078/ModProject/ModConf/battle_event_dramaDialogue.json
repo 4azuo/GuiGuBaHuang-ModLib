@@ -106,5 +106,41 @@
 		"function": "0",
 		"options": "480110601|480110602|480110603",
 		"nextDialogue": "0"
+	},
+	{
+		"id": "480110700",
+		"uiType": "2",
+		"condition": "0",
+		"weight": "1",
+		"npcLeft": "0",
+		"npcRight": "0",
+		"speaker": "0",
+		"backgroud": "choudaorenqiyu6",
+		"soundsBg": "0",
+		"soundsEffect": "0",
+		"title": "0",
+		"dialogue": "battleevent480112894",
+		"openFunction": "0",
+		"function": "0",
+		"options": "480110701|480110702|480110703",
+		"nextDialogue": "0"
+	},
+	{
+		"id": "480110800",
+		"uiType": "2",
+		"condition": "0",
+		"weight": "1",
+		"npcLeft": "0",
+		"npcRight": "0",
+		"speaker": "0",
+		"backgroud": "choudaorenqiyu6",
+		"soundsBg": "0",
+		"soundsEffect": "0",
+		"title": "0",
+		"dialogue": "battleevent480112895",
+		"openFunction": "0",
+		"function": "0",
+		"options": "480110801|480110802",
+		"nextDialogue": "0"
 	}
 ]
