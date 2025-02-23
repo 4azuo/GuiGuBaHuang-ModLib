@@ -3,13 +3,10 @@ using MOD_nE7UL2.Const;
 using MOD_nE7UL2.Enum;
 using ModLib.Enum;
 using ModLib.Mod;
-using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
-using static DataBuildSchool;
-using static DataBuildTown;
 using static MOD_nE7UL2.Object.GameStts;
 
 namespace MOD_nE7UL2.Mod
@@ -17,6 +14,13 @@ namespace MOD_nE7UL2.Mod
     [Cache(ModConst.MAP_BUILD_BATTLE_EVENT)]
     public class MapBuildBattleEvent : ModEvent
     {
+        public enum BattleTypeEnum
+        {
+            TownVsTown,
+            TownVsMonster,
+            SectVsMonster,
+        }
+
         public enum TeamSideEnum
         {
             Unmanaged,
@@ -56,6 +60,7 @@ namespace MOD_nE7UL2.Mod
 
         public static int JoinBattleFlg { get; set; } = -1;
         public static bool InitBattleFlg { get; set; } = false;
+        public static BattleTypeEnum BattleType { get; set; }
         public static TeamSideEnum WinTeamSide { get; set; }
         public static TeamSideEnum PlayerSide { get; set; }
         public static MapBuildBase BuildBaseA { get; set; }
@@ -66,8 +71,8 @@ namespace MOD_nE7UL2.Mod
         public static List<WorldUnitBase> TeamBWUnits => GetTeamInfo<List<WorldUnitBase>>(TeamSideEnum.TeamB, TeamInfoEnum.WUnit);
         public static List<UnitCtrlBase> TeamACUnits => GetTeamInfo<List<UnitCtrlBase>>(TeamSideEnum.TeamA, TeamInfoEnum.CUnit);
         public static List<UnitCtrlBase> TeamBCUnits => GetTeamInfo<List<UnitCtrlBase>>(TeamSideEnum.TeamB, TeamInfoEnum.CUnit);
-        public static List<string> DieCUnits => new List<string>();
-        public static Dictionary<string, object> TeamInfo => new Dictionary<string, object>()
+        public static List<string> DieCUnits { get; } = new List<string>();
+        public static Dictionary<string, object> TeamInfo { get; } = new Dictionary<string, object>()
         {
             [$"{TeamSideEnum.TeamA}_{TeamInfoEnum.UnitCountMax}"] = 0,
             [$"{TeamSideEnum.TeamA}_{TeamInfoEnum.UnitCount}"] = 0,
@@ -89,21 +94,40 @@ namespace MOD_nE7UL2.Mod
         public override void OnMonthly()
         {
             base.OnMonthly();
-
             var curYear = GameHelper.GetGameYear();
+
             foreach (var town in g.world.build.GetBuilds<MapBuildTown>())
             {
                 if (!LastYearEventHappen.ContainsKey(town.buildData.id))
                     LastYearEventHappen.Add(town.buildData.id, curYear);
 
-                if (CommonTool.Random(0.00f, 100.00f).IsBetween(0.00f, MONST_WAVE_RATE * (curYear - LastYearEventHappen[town.buildData.id])))
+                if (CommonTool.Random(0.00f, 100.00f).IsBetween(0.00f, 100))//MONST_WAVE_RATE * (curYear - LastYearEventHappen[town.buildData.id])))
                 {
                     DebugHelper.WriteLine($"{town.name} monster wave");
                     LastYearEventHappen[town.buildData.id] = curYear;
                     MonstWave(town);
                 }
-                else
-                if (CommonTool.Random(0.00f, 100.00f).IsBetween(0.00f, 100))//TOWN_WAR_RATE * (curYear - LastYearEventHappen[town.buildData.id])))
+            }
+
+            foreach (var school in g.world.build.GetBuilds<MapBuildSchool>())
+            {
+                if (!LastYearEventHappen.ContainsKey(school.buildData.id))
+                    LastYearEventHappen.Add(school.buildData.id, curYear);
+
+                if (CommonTool.Random(0.00f, 100.00f).IsBetween(0.00f, MONST_WAVE_RATE * (curYear - LastYearEventHappen[school.buildData.id])))
+                {
+                    DebugHelper.WriteLine($"{school.name} monster wave");
+                    LastYearEventHappen[school.buildData.id] = curYear;
+                    MonstWave(school);
+                }
+            }
+
+            foreach (var town in g.world.build.GetBuilds<MapBuildTown>())
+            {
+                if (!LastYearEventHappen.ContainsKey(town.buildData.id))
+                    LastYearEventHappen.Add(town.buildData.id, curYear);
+
+                if (CommonTool.Random(0.00f, 100.00f).IsBetween(0.00f, TOWN_WAR_RATE * (curYear - LastYearEventHappen[town.buildData.id])))
                 {
                     var master = MapBuildPropertyEvent.GetTownMaster(town);
                     if (master == null)
@@ -137,19 +161,6 @@ namespace MOD_nE7UL2.Mod
                         LastYearEventHappen[townAtk.buildData.id] = curYear;
                         TownWar(town, townAtk, false);
                     }
-                }
-            }
-
-            foreach (var school in g.world.build.GetBuilds<MapBuildSchool>())
-            {
-                if (!LastYearEventHappen.ContainsKey(school.buildData.id))
-                    LastYearEventHappen.Add(school.buildData.id, curYear);
-
-                if (CommonTool.Random(0.00f, 100.00f).IsBetween(0.00f, MONST_WAVE_RATE * (curYear - LastYearEventHappen[school.buildData.id])))
-                {
-                    DebugHelper.WriteLine($"{school.name} monster wave");
-                    LastYearEventHappen[school.buildData.id] = curYear;
-                    MonstWave(school);
                 }
             }
         }
@@ -262,7 +273,8 @@ namespace MOD_nE7UL2.Mod
                 });
             }
             else
-            if (townA_def.gridData.areaBaseID == g.world.playerUnit.data.unitData.pointGridData.areaBaseID)
+            if (townA_def.gridData.areaBaseID == g.world.playerUnit.data.unitData.pointGridData.areaBaseID &&
+                townA_def.GetOrigiPoint().CalRange(g.world.playerUnit.data.unitData.GetPoint()) < 8)
             {
                 DramaTool.OpenDrama(DRAMA_ID, new DramaData
                 {
@@ -303,7 +315,7 @@ namespace MOD_nE7UL2.Mod
             DebugHelper.WriteLine($"Join ({side}): {townA_def.name} vs {townB_atk.name}");
             JoinBattleFlg = GameHelper.GetGameTotalMonth();
             //init
-            InitBattle();
+            InitBattle(BattleTypeEnum.TownVsTown);
             //player side
             PlayerSide = side;
             //battle info
@@ -320,7 +332,7 @@ namespace MOD_nE7UL2.Mod
         {
             DebugHelper.WriteLine($"Skip: {townA_def.name} vs {townB_atk.name}");
             //init
-            InitBattle();
+            InitBattle(BattleTypeEnum.TownVsTown);
             //player side
             PlayerSide = TeamSideEnum.Unmanaged;
             //battle info
@@ -419,7 +431,6 @@ namespace MOD_nE7UL2.Mod
             if (JoinBattleFlg == GameHelper.GetGameTotalMonth())
             {
                 SkipMonstWave(town);
-                return;
             }
             else
             if (town.GetOpenBuildPoints().ToList().Any(x => x == g.world.playerUnit.GetUnitPos()))
@@ -455,7 +466,8 @@ namespace MOD_nE7UL2.Mod
                 });
             }
             else
-            if (town.gridData.areaBaseID == g.world.playerUnit.data.unitData.pointGridData.areaBaseID)
+            if (town.gridData.areaBaseID == g.world.playerUnit.data.unitData.pointGridData.areaBaseID &&
+                town.GetOrigiPoint().CalRange(g.world.playerUnit.data.unitData.GetPoint()) < 8)
             {
                 DramaTool.OpenDrama(DRAMA_ID, new DramaData
                 {
@@ -525,7 +537,8 @@ namespace MOD_nE7UL2.Mod
                 });
             }
             else
-            if (school.gridData.areaBaseID == g.world.playerUnit.data.unitData.pointGridData.areaBaseID)
+            if (school.gridData.areaBaseID == g.world.playerUnit.data.unitData.pointGridData.areaBaseID &&
+                school.GetOrigiPoint().CalRange(g.world.playerUnit.data.unitData.GetPoint()) < 8)
             {
                 DramaTool.OpenDrama(DRAMA_ID, new DramaData
                 {
@@ -559,7 +572,7 @@ namespace MOD_nE7UL2.Mod
             DebugHelper.WriteLine($"Join ({dungeonBaseId}): {teamAbuildBase.name}");
             JoinBattleFlg = GameHelper.GetGameTotalMonth();
             //init
-            InitBattle();
+            InitBattle(teamAbuildBase.IsTown() ? BattleTypeEnum.TownVsMonster : BattleTypeEnum.SectVsMonster);
             //player side
             PlayerSide = TeamSideEnum.TeamA;
             //battle info
@@ -576,7 +589,7 @@ namespace MOD_nE7UL2.Mod
         {
             DebugHelper.WriteLine($"Join: {teamAbuildBase.name}");
             //init
-            InitBattle();
+            InitBattle(teamAbuildBase.IsTown() ? BattleTypeEnum.TownVsMonster : BattleTypeEnum.SectVsMonster);
             //player side
             PlayerSide = TeamSideEnum.TeamA;
             //battle info
@@ -607,10 +620,13 @@ namespace MOD_nE7UL2.Mod
                 DebugHelper.WriteLine($"Monsters win!");
                 WinTeamSide = TeamSideEnum.TeamB;
                 //A damaged
-                foreach (var e in BuildingCostEnum.GetAllEnums<BuildingCostEnum>())
+                if (IsBattleMonstWaveOnTown())
                 {
-                    if (BuildingArrangeEvent.IsBuilt(teamAbuildBase, e))
-                        BuildingArrangeEvent.Destroy(teamAbuildBase, e);
+                    foreach (var e in BuildingCostEnum.GetAllEnums<BuildingCostEnum>())
+                    {
+                        if (BuildingArrangeEvent.IsBuilt(teamAbuildBase, e))
+                            BuildingArrangeEvent.Destroy(teamAbuildBase, e);
+                    }
                 }
                 var damagedBudget = MapBuildPropertyEvent.GetBuildProperty(teamAbuildBase);
                 MapBuildPropertyEvent.AddBuildProperty(teamAbuildBase, -damagedBudget);
@@ -640,6 +656,8 @@ namespace MOD_nE7UL2.Mod
             var atkCityR = townB_atk.IsCity() ? 2 : 1;
             InitTeamInfo(TeamSideEnum.TeamA, 8 + (((TeamAWUnits.Count * defCityR) + (MapBuildPropertyEvent.GetBuildProperty(townA_def) / 1000000)) * 1.5).Parse<int>());
             InitTeamInfo(TeamSideEnum.TeamB, 8 + (TeamBWUnits.Count * atkCityR) + (MapBuildPropertyEvent.GetBuildProperty(townB_atk) / 1000000).Parse<int>());
+
+            DebugHelper.WriteLine($"{TeamAUnitCount} vs {TeamBUnitCount}");
         }
 
         public static void CalMonstWaveInfo(MapBuildBase baseA_def)
@@ -656,10 +674,13 @@ namespace MOD_nE7UL2.Mod
             var cityR = baseA_def.IsCity() ? 2 : 1;
             InitTeamInfo(TeamSideEnum.TeamA, 8 + (((TeamAWUnits.Count * cityR) + (MapBuildPropertyEvent.GetBuildProperty(baseA_def) / 1000000)) * 1.5).Parse<int>());
             InitTeamInfo(TeamSideEnum.TeamB, ((g.world.run.roundMonth + TeamAUnitCount * gameLvl + Math.Pow(2, areaId).Parse<int>()) * CommonTool.Random(0.8f, 1.1f)).Parse<int>());
+
+            DebugHelper.WriteLine($"{TeamAUnitCount} vs {TeamBUnitCount}");
         }
 
-        public static void InitBattle()
+        public static void InitBattle(BattleTypeEnum battleType)
         {
+            BattleType = battleType;
             InitBattleFlg = false;
             TeamAWUnits.Clear();
             TeamBWUnits.Clear();
@@ -675,22 +696,9 @@ namespace MOD_nE7UL2.Mod
             if (ModBattleEvent.SceneBattle != null && (IsBattleTownWar() || IsBattleMonstWave()) && !InitBattleFlg)
             {
                 InitBattleFlg = true;
-                //init
-                InitUnit(ModBattleEvent.PlayerUnit);
-                //create team units
-                if (IsBattleTownWar())
+                var ui = g.ui.GetUI<UIBattleInfo>(UIType.BattleInfo);
+                ui.uiStartBattle.btnStart.onClick.AddListener((UnityEngine.Events.UnityAction)(() =>
                 {
-                    var utA = PlayerSide == TeamSideEnum.TeamA ? UnitType.PlayerNPC : UnitType.Monst;
-                    TeamACUnits.AddRange(TeamAWUnits.Select(x => ModBattleEvent.SceneBattle.unit.CreateUnitHuman<UnitCtrlHumanNPC>(x.data, utA)).Cast<UnitCtrlBase>());
-                    TeamACUnits.ForEach(x => InitUnit(x));
-                    var utB = PlayerSide == TeamSideEnum.TeamB ? UnitType.PlayerNPC : UnitType.Monst;
-                    TeamBCUnits.AddRange(TeamBWUnits.Select(x => ModBattleEvent.SceneBattle.unit.CreateUnitHuman<UnitCtrlHumanNPC>(x.data, utB)).Cast<UnitCtrlBase>());
-                    TeamBCUnits.ForEach(x => InitUnit(x));
-                }
-                else if (IsBattleMonstWave())
-                {
-                    TeamACUnits.AddRange(TeamAWUnits.Select(x => ModBattleEvent.SceneBattle.unit.CreateUnitHuman<UnitCtrlHumanNPC>(x.data, UnitType.PlayerNPC)).Cast<UnitCtrlBase>());
-                    TeamACUnits.ForEach(x => InitUnit(x));
                     var areaId = g.world.playerUnit.data.unitData.pointGridData.areaBaseID;
                     for (int i = 0; i < (MIN_UNIT + STP_UNIT * areaId) * 2; i++)
                     {
@@ -699,6 +707,28 @@ namespace MOD_nE7UL2.Mod
                         TeamBCUnits.Add(cunit);
                         InitUnitPosi(cunit);
                     }
+                }));
+                //init
+                InitUnit(ModBattleEvent.PlayerUnit);
+                //create team units
+                if (IsBattleTownWar())
+                {
+                    //team A
+                    var utA = PlayerSide == TeamSideEnum.TeamA ? UnitType.PlayerNPC : UnitType.Monst;
+                    TeamACUnits.AddRange(TeamAWUnits.Select(x => ModBattleEvent.SceneBattle.unit.CreateUnitHuman<UnitCtrlHumanNPC>(x.data, utA)).Cast<UnitCtrlBase>());
+                    TeamACUnits.ForEach(x => InitUnit(x));
+                    //team B
+                    var utB = PlayerSide == TeamSideEnum.TeamB ? UnitType.PlayerNPC : UnitType.Monst;
+                    TeamBCUnits.AddRange(TeamBWUnits.Select(x => ModBattleEvent.SceneBattle.unit.CreateUnitHuman<UnitCtrlHumanNPC>(x.data, utB)).Cast<UnitCtrlBase>());
+                    TeamBCUnits.ForEach(x => InitUnit(x));
+                }
+                else if (IsBattleMonstWave())
+                {
+                    //team A
+                    TeamACUnits.AddRange(TeamAWUnits.Select(x => ModBattleEvent.SceneBattle.unit.CreateUnitHuman<UnitCtrlHumanNPC>(x.data, UnitType.PlayerNPC)).Cast<UnitCtrlBase>());
+                    TeamACUnits.ForEach(x => InitUnit(x));
+                    //team B
+                    //after start battle
                 }
             }
         }
@@ -786,7 +816,10 @@ namespace MOD_nE7UL2.Mod
                     //A win
                     DebugHelper.WriteLine($"Team A win!");
                     //A damaged
-                    BuildingArrangeEvent.Destroy(BuildBaseA, BuildingCostEnum.GetAllEnums<BuildingCostEnum>().Where(x => BuildingArrangeEvent.IsBuilt(BuildBaseA, x)).ToArray().Random());
+                    if (IsBattleTownWar() || IsBattleMonstWaveOnTown())
+                    {
+                        BuildingArrangeEvent.Destroy(BuildBaseA, BuildingCostEnum.GetAllEnums<BuildingCostEnum>().Where(x => BuildingArrangeEvent.IsBuilt(BuildBaseA, x)).ToArray().Random());
+                    }
                     var lossrateA = 1f - (GetTeamInfo<float>(TeamSideEnum.TeamA, TeamInfoEnum.UnitCount) / GetTeamInfo<float>(TeamSideEnum.TeamA, TeamInfoEnum.UnitCountMax));
                     MapBuildPropertyEvent.AddBuildProperty(BuildBaseA, -(MapBuildPropertyEvent.GetBuildProperty(BuildBaseA) * lossrateA).Parse<long>());
                     //B damaged
@@ -811,8 +844,11 @@ namespace MOD_nE7UL2.Mod
                     //B win
                     DebugHelper.WriteLine($"Team B win!");
                     //A damaged x2
-                    BuildingArrangeEvent.Destroy(BuildBaseA, BuildingCostEnum.GetAllEnums<BuildingCostEnum>().Where(x => BuildingArrangeEvent.IsBuilt(BuildBaseA, x)).ToArray().Random());
-                    BuildingArrangeEvent.Destroy(BuildBaseA, BuildingCostEnum.GetAllEnums<BuildingCostEnum>().Where(x => BuildingArrangeEvent.IsBuilt(BuildBaseA, x)).ToArray().Random());
+                    if (IsBattleTownWar() || IsBattleMonstWaveOnTown())
+                    {
+                        BuildingArrangeEvent.Destroy(BuildBaseA, BuildingCostEnum.GetAllEnums<BuildingCostEnum>().Where(x => BuildingArrangeEvent.IsBuilt(BuildBaseA, x)).ToArray().Random());
+                        BuildingArrangeEvent.Destroy(BuildBaseA, BuildingCostEnum.GetAllEnums<BuildingCostEnum>().Where(x => BuildingArrangeEvent.IsBuilt(BuildBaseA, x)).ToArray().Random());
+                    }
                     var damagedBudget = MapBuildPropertyEvent.GetBuildProperty(BuildBaseA);
                     MapBuildPropertyEvent.AddBuildProperty(BuildBaseA, -damagedBudget);
                     if (IsBattleTownWar())
@@ -890,19 +926,30 @@ namespace MOD_nE7UL2.Mod
 
         public static bool IsBattleTownWar()
         {
-            return g.world.battle.data.dungeonBaseItem.id == TOWN_WAR_DUNGEON_BASE_ID;
+            return g.world.battle?.data?.dungeonBaseItem?.id == TOWN_WAR_DUNGEON_BASE_ID || BattleType == BattleTypeEnum.TownVsTown;
         }
 
         public static bool IsBattleMonstWave()
         {
-            return g.world.battle.data.dungeonBaseItem.id == TOWN_MONST_WAVE_DUNGEON_BASE_ID ||
-                g.world.battle.data.dungeonBaseItem.id == SECT_MONST_WAVE_DUNGEON_BASE_ID;
+            return IsBattleMonstWaveOnTown() || IsBattleMonstWaveOnSect();
+        }
+
+        public static bool IsBattleMonstWaveOnTown()
+        {
+            return g.world.battle?.data?.dungeonBaseItem?.id == TOWN_MONST_WAVE_DUNGEON_BASE_ID || BattleType == BattleTypeEnum.TownVsMonster;
+        }
+
+        public static bool IsBattleMonstWaveOnSect()
+        {
+            return g.world.battle?.data?.dungeonBaseItem?.id == SECT_MONST_WAVE_DUNGEON_BASE_ID || BattleType == BattleTypeEnum.SectVsMonster;
         }
 
         public static TeamSideEnum GetTeamSide(UnitCtrlBase cunit)
         {
             if (cunit.IsPlayer())
                 return PlayerSide;
+            if (cunit.IsMonster())
+                return TeamSideEnum.TeamB;
             if (TeamACUnits.Any(x => x.data.createUnitSoleID == cunit.data.createUnitSoleID))
                 return TeamSideEnum.TeamA;
             if (TeamBCUnits.Any(x => x.data.createUnitSoleID == cunit.data.createUnitSoleID))
@@ -979,6 +1026,18 @@ namespace MOD_nE7UL2.Mod
             cunit.unitMono.gameObject.SetActive(false);
         }
 
+        public static void BattleEndForce(TeamSideEnum loseSide, TeamSideEnum winSide)
+        {
+            //pause all units
+            foreach (var u in ModBattleEvent.SceneBattle.unit.allUnit)
+            {
+                Pause(u);
+            }
+            //set game
+            WinTeamSide = winSide;
+            ModBattleEvent.SceneBattle.battleEnd.BattleEnd(PlayerSide == WinTeamSide);
+        }
+
         public static void BattleEnd(TeamSideEnum loseSide, TeamSideEnum winSide)
         {
             var loseSideUnits = GetTeamInfo<List<UnitCtrlBase>>(loseSide, TeamInfoEnum.CUnit);
@@ -1034,6 +1093,16 @@ namespace MOD_nE7UL2.Mod
             {
                 BattleModifyEvent.TextCustomMonstCount1.text = TeamAUnitCount.ToString();
                 BattleModifyEvent.TextCustomMonstCount2.text = TeamBUnitCount.ToString();
+
+                if (TeamBUnitCount == 0)
+                {
+                    BattleEndForce(TeamSideEnum.TeamB, TeamSideEnum.TeamA);
+                }
+                else
+                if (TeamAUnitCount == 0)
+                {
+                    BattleEndForce(TeamSideEnum.TeamA, TeamSideEnum.TeamB);
+                }
             }
         }
     }

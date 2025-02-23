@@ -59,7 +59,7 @@ namespace MOD_nE7UL2.Mod
                 {
                     TownMasters.Add(town.buildData.id, new List<string>());
 
-                    var aroundWUnits = UnitHelper.GetUnitsAround(town.GetOrigiPoint(), 4, false, true).ToArray().Where(x => IsMatchCondWUnit(x)).ToList();
+                    var aroundWUnits = WUnitHelper.GetUnitsAround(town.GetOrigiPoint(), 4, false, true).ToArray().Where(x => IsMatchCondWUnit(x)).ToList();
                     if (aroundWUnits.Count > 0)
                     {
                         var master = aroundWUnits.GetFamousWUnit();
@@ -305,7 +305,7 @@ namespace MOD_nE7UL2.Mod
                     //hire more people
                     if (GetBuildProperty(town) > GetRequiredSpiritStones(town, master.GetGradeLvl()) * 1.5)
                     {
-                        var aroundWUnits = UnitHelper.GetUnitsAround(town.GetOrigiPoint(), 4, false, true).ToArray().Where(x => IsMatchCondWUnit(x)).ToList();
+                        var aroundWUnits = WUnitHelper.GetUnitsAround(town.GetOrigiPoint(), 4, false, true).ToArray().Where(x => IsMatchCondWUnit(x)).ToList();
                         if (aroundWUnits.Count > 0)
                         {
                             var newGuard = aroundWUnits.GetFamousWUnit();
