@@ -129,17 +129,17 @@ namespace ModLib.Mod
             CallEvents<ETypeData>("OnUnitSetHeartState", e);
         }
 
-        public virtual void _OnWorldRunStart()
-        {
-            //start run
-            CallEvents("OnWorldRunStart");
-        }
+        //public virtual void _OnWorldRunStart()
+        //{
+        //    //start run
+        //    CallEvents("OnWorldRunStart");
+        //}
 
-        public virtual void _OnWorldRunEnd()
-        {
-            //end run
-            CallEvents("OnWorldRunEnd");
-        }
+        //public virtual void _OnWorldRunEnd()
+        //{
+        //    //end run
+        //    CallEvents("OnWorldRunEnd");
+        //}
         #endregion
 
         #region ModLib - Events
@@ -356,15 +356,15 @@ namespace ModLib.Mod
             EventHelper.RunMinorEvents(e);
         }
 
-        public virtual void OnWorldRunStart()
-        {
-            EventHelper.RunMinorEvents();
-        }
+        //public virtual void OnWorldRunStart()
+        //{
+        //    EventHelper.RunMinorEvents();
+        //}
 
-        public virtual void OnWorldRunEnd()
-        {
-            EventHelper.RunMinorEvents();
-        }
+        //public virtual void OnWorldRunEnd()
+        //{
+        //    EventHelper.RunMinorEvents();
+        //}
 
         public virtual void OnMonoUpdate()
         {
