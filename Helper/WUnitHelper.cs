@@ -1,12 +1,11 @@
 ﻿using ModLib.Const;
 using ModLib.Enum;
-using ModLib.Mod;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
-public static class UnitHelper
+public static class WUnitHelper
 {
     public static void SetUnitPos(this WorldUnitBase wunit, Vector2Int p)
     {
@@ -606,43 +605,6 @@ public static class UnitHelper
         return wunit.data.unitData.pointX * wunit.data.unitData.pointY;
     }
 
-    public static bool IsHuman(this UnitCtrlBase cunit)
-    {
-        return cunit?.TryCast<UnitCtrlHuman>() != null;
-    }
-
-    public static bool IsWorldUnit(this UnitCtrlBase cunit)
-    {
-        return cunit?.TryCast<UnitCtrlHuman>()?.data?.worldUnitData?.unit != null;
-    }
-
-    public static bool IsMonster(this UnitCtrlBase cunit)
-    {
-        return cunit?.TryCast<UnitCtrlMonst>() != null;
-    }
-
-    public static bool IsMonsterHuman(this UnitCtrlBase cunit)
-    {
-        return cunit?.TryCast<UnitCtrlMonstHuman>() != null;
-    }
-
-    public static bool IsNPC(this UnitCtrlBase cunit)
-    {
-        return cunit?.TryCast<UnitCtrlHumanNPC>() != null;
-    }
-
-    public static bool IsPlayer(this UnitCtrlBase cunit)
-    {
-        return cunit?.TryCast<UnitCtrlPlayer>() != null;
-    }
-
-    public static WorldUnitBase GetWorldUnit(this UnitCtrlBase cunit)
-    {
-        if (cunit == null)
-            return null;
-        return g.world.unit.GetUnit(cunit);
-    }
-
     public static Il2CppSystem.Collections.Generic.List<WorldUnitBase> GetUnitsAround(this WorldUnitBase wunit, int range = 16, bool isGetHide = false, bool isGetPlayer = true)
     {
         return GetUnitsAround(wunit.GetUnitPos(), range, isGetHide, isGetPlayer);
@@ -656,54 +618,6 @@ public static class UnitHelper
     public static Il2CppSystem.Collections.Generic.List<WorldUnitBase> GetUnitsAround(Vector2Int pos, int range = 16, bool isGetHide = false, bool isGetPlayer = true)
     {
         return g.world.unit.GetUnitExact(pos, range, isGetHide, isGetPlayer);
-    }
-
-    public static Il2CppSystem.Collections.Generic.List<UnitCtrlBase> FindNearCUnits(this UnitCtrlBase cunit, float radius)
-    {
-        return ModBattleEvent.SceneBattle.unit.GetRangeUnit(cunit.transform.position, radius);
-    }
-
-    public static bool IsEnemy(this UnitCtrlBase aUnit, UnitCtrlBase bUnit)
-    {
-        return MartialTool.GetEnemyType(aUnit)?.Contains(bUnit.data.unitType) ?? false;
-    }
-
-    public static bool IsEnemy(this UnitCtrlBase aUnit, UnitType ut)
-    {
-        return MartialTool.GetEnemyType(aUnit)?.Contains(ut) ?? false;
-    }
-
-    public static bool IsEnemy(this UnitType aUt, UnitType bUt)
-    {
-        return MartialTool.GetEnemyType(aUt)?.Contains(bUt) ?? false;
-    }
-
-    public static bool IsSectGuardian(this UnitCtrlBase cunit)
-    {
-        return cunit.TryCast<UnitCtrlMonst>()?.data.unitAttrItem.id == 9371;
-    }
-
-    public static bool IsPotmon(this UnitCtrlBase cunit)
-    {
-        try
-        {
-            return MartialTool.IsPotmonUnit(cunit);
-        }
-        catch
-        {
-            return false;
-        }
-    }
-
-    public static bool IsArtifactUnit(this UnitCtrlBase cunit)
-    {
-        return MartialTool.IsArtifactUnit(cunit);
-    }
-
-    public static List<UnitCtrlBase> FindNearCEnemys(this UnitCtrlBase cunit, float radius)
-    {
-        var enemyTypes = MartialTool.GetEnemyType(cunit);
-        return ModBattleEvent.SceneBattle.unit.GetRangeUnit(cunit.transform.position, radius).ToArray().Where(x => enemyTypes.Contains(x.data.unitType)).ToList();
     }
 
     public static WorldUnitBase GetStrongestWUnit(this IEnumerable<WorldUnitBase> wunits)
