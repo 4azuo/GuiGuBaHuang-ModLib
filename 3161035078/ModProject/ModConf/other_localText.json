@@ -19,5 +19,26 @@
 	{ "id": 500020017, "key": "other500020017", "ch|en|tc|kr": "Build" },
 	{ "id": 500020018, "key": "other500020018", "ch|en|tc|kr": "Your character will level up without any requirement items. But the character properties wont be increased." },
 	{ "id": 500020019, "key": "other500020019", "ch|en|tc|kr": "After your character full exp at every stage. He/She will auto train Qi for stronger.\nIt depend on SP." },
-	{ "id": 500020020, "key": "other500020020", "ch|en|tc|kr": "How to become a town guardian? It depend on your reputation and town budget.\nIf the town has enough budget to hire a guardian, then they will hire the one who has highest reputation in town.\nAnd when town master lost, the guardian who has highest reputation will be come next town master." },
+	{
+		"id": 500020020,
+		"key": "other500020020",
+		"ch|en|tc|kr": "How to become a town guardian? It depend on your reputation and town budget.\nIf the town has enough budget to hire a guardian, then they will hire the one who has highest reputation in town.\nAnd when town master lost, the guardian who has highest reputation will be come next town master."
+	},
+	{
+		"id": 500020021,
+		"key": "other500020021",
+		"ch|en|tc|kr": "The land trembles beneath your feet as the battle rages on. {0} fight to protect their home. {1} seek to conquer. Your choice now will determine your path!\nYes: Help {0}\nNo: Help {1}"
+	},
+	{ "id": 500020022, "key": "other500020022", "ch|en|tc|kr": "Warning" },
+	{
+		"id": 500020023,
+		"key": "other500020023",
+		"ch|en|tc|kr": "Your town ({0}) is under attack!\nWould you like to help?"
+	},
+	{
+		"id": 500020024,
+		"key": "other500020024",
+		"ch|en|tc|kr": "Your sect ({0}) is under attack!\nWould you like to help?"
+	},
+	{ "id": 500020025, "key": "other500020025", "ch|en|tc|kr": "Town's Budget is not enough!" },
 ]

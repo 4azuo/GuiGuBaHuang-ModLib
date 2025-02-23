@@ -88,5 +88,23 @@
 		"function": "0",
 		"options": "0",
 		"nextDialogue": "0"
+	},
+	{
+		"id": "480110600",
+		"uiType": "2",
+		"condition": "0",
+		"weight": "1",
+		"npcLeft": "0",
+		"npcRight": "0",
+		"speaker": "0",
+		"backgroud": "choudaorenqiyu6",
+		"soundsBg": "0",
+		"soundsEffect": "0",
+		"title": "0",
+		"dialogue": "battleevent480112890",
+		"openFunction": "0",
+		"function": "0",
+		"options": "480110601|480110602|480110603",
+		"nextDialogue": "0"
 	}
 ]
