@@ -9,6 +9,7 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 using static DataBuildSchool;
+using static DataBuildTown;
 using static MOD_nE7UL2.Object.GameStts;
 
 namespace MOD_nE7UL2.Mod
@@ -44,48 +45,27 @@ namespace MOD_nE7UL2.Mod
         public const int TOWN_MONST_WAVE_DUNGEON_BASE_ID = 480110991;
         public const int SECT_MONST_WAVE_DUNGEON_BASE_ID = 480110992;
 
-        public const int TOWN_TEAM_SELECT_DRAMA_ID = 480110600;
-        public const int TOWN_TEAM_SELECT_DRAMA_OPT_1ID = 480110601;
-        public const int TOWN_TEAM_SELECT_DRAMA_OPT_2ID = 480110602;
-        public const int TOWN_TEAM_SELECT_DRAMA_OPT_3ID = 480110603;
-        public const int TOWN_HELP_SELECT_DRAMA_ID = 480110700;
-        public const int TOWN_HELP_SELECT_DRAMA_OPT_1ID = 480110701;
-        public const int TOWN_HELP_SELECT_DRAMA_OPT_2ID = 480110702;
-        public const int TOWN_HELP_SELECT_DRAMA_OPT_3ID = 480110703;
-        public const int SECT_HELP_SELECT_DRAMA_ID = 480110800;
-        public const int SECT_HELP_SELECT_DRAMA_OPT_1ID = 480110801;
-        public const int SECT_HELP_SELECT_DRAMA_OPT_2ID = 480110802;
+        public const int DRAMA_ID = 480110600;
+        public const int DRAMA_HELP_DEF_OPT_ID = 480110601;
+        public const int DRAMA_HELP_ATK_OPT_ID = 480110602;
+        public const int DRAMA_TRY_ESCAPE_OPT_ID = 480110603;
+        public const int DRAMA_DONT_CARE_OPT_ID = 480110604;
+        public const int DRAMA_HELP_OPT_ID = 480110605;
 
-        public Dictionary<string, int> LastYearEventHappen { get; set; } = new Dictionary<string, int>();
-
-        [JsonIgnore]
         public static int JoinBattleFlg { get; set; } = -1;
-        [JsonIgnore]
         public static bool InitBattleFlg { get; set; } = false;
-        [JsonIgnore]
         public static TeamSideEnum WinTeamSide { get; set; }
-        [JsonIgnore]
         public static TeamSideEnum PlayerSide { get; set; }
-        [JsonIgnore]
         public static MapBuildBase BuildBaseA { get; set; }
-        [JsonIgnore]
         public static MapBuildBase BuildBaseB { get; set; }
-        [JsonIgnore]
         public static int TeamAUnitCount => GetTeamInfo<int>(TeamSideEnum.TeamA, TeamInfoEnum.UnitCount);
-        [JsonIgnore]
         public static int TeamBUnitCount => GetTeamInfo<int>(TeamSideEnum.TeamB, TeamInfoEnum.UnitCount);
-        [JsonIgnore]
         public static List<WorldUnitBase> TeamAWUnits => GetTeamInfo<List<WorldUnitBase>>(TeamSideEnum.TeamA, TeamInfoEnum.WUnit);
-        [JsonIgnore]
         public static List<WorldUnitBase> TeamBWUnits => GetTeamInfo<List<WorldUnitBase>>(TeamSideEnum.TeamB, TeamInfoEnum.WUnit);
-        [JsonIgnore]
         public static List<UnitCtrlBase> TeamACUnits => GetTeamInfo<List<UnitCtrlBase>>(TeamSideEnum.TeamA, TeamInfoEnum.CUnit);
-        [JsonIgnore]
         public static List<UnitCtrlBase> TeamBCUnits => GetTeamInfo<List<UnitCtrlBase>>(TeamSideEnum.TeamB, TeamInfoEnum.CUnit);
-        [JsonIgnore]
-        public static List<string> DieCUnits { get; } = new List<string>();
-        [JsonIgnore]
-        public static Dictionary<string, object> TeamInfo { get; set; } = new Dictionary<string, object>()
+        public static List<string> DieCUnits => new List<string>();
+        public static Dictionary<string, object> TeamInfo => new Dictionary<string, object>()
         {
             [$"{TeamSideEnum.TeamA}_{TeamInfoEnum.UnitCountMax}"] = 0,
             [$"{TeamSideEnum.TeamA}_{TeamInfoEnum.UnitCount}"] = 0,
@@ -101,6 +81,8 @@ namespace MOD_nE7UL2.Mod
         public static readonly int[] enemyInTraits = new int[] { UnitTraitEnum.Evil.Parse<int>() };
         public static readonly int[] enemyOutTraits = new int[] { UnitTraitEnum.Power_hungry.Parse<int>(), UnitTraitEnum.Glory_Hound.Parse<int>() };
         public static readonly int[] monstList = new int[] { 480112870, 480112871, 480112872, 480112873, 480112874, 480112875, 480112876, 480112877, 480112878, 480112879 };
+
+        public Dictionary<string, int> LastYearEventHappen { get; set; } = new Dictionary<string, int>();
 
         public override void OnMonthly()
         {
@@ -167,6 +149,38 @@ namespace MOD_nE7UL2.Mod
             }
         }
 
+        private static void HateEscape(MapBuildSchool school)
+        {
+            if (school.schoolNameID == g.world.playerUnit.data.unitData.schoolID)
+            {
+                g.world.unit.GetUnitsInArea(g.world.playerUnit.data.unitData.pointGridData.areaBaseID).ToArray()
+                    .Where(y =>
+                    {
+                        return !y.IsPlayer() && y.data.school?.schoolNameID == school.schoolNameID;
+                    }).ToList()
+                    .ForEach(y =>
+                    {
+                        if (!y.IsPlayer())
+                            y.data.unitData.relationData.AddHate(g.world.playerUnit.GetUnitId(), 100);
+                    });
+            }
+        }
+
+        private static void HateEscape(params MapBuildTown[] towns)
+        {
+            foreach (var town in towns)
+            {
+                if (MapBuildPropertyEvent.IsTownGuardian(town, g.world.playerUnit))
+                {
+                    MapBuildPropertyEvent.GetTownGuardians(town).ForEach(y =>
+                    {
+                        if (!y.IsPlayer())
+                            y.data.unitData.relationData.AddHate(g.world.playerUnit.GetUnitId(), 100);
+                    });
+                }
+            }
+        }
+
         public static void TownWar(MapBuildTown townA_def, MapBuildTown townB_atk, bool proactive)
         {
             if (JoinBattleFlg == GameHelper.GetGameTotalMonth())
@@ -181,63 +195,64 @@ namespace MOD_nE7UL2.Mod
             else
             if (townA_def.GetOpenBuildPoints().ToList().Any(x => x == g.world.playerUnit.GetUnitPos()))
             {
-                if (MapBuildPropertyEvent.IsTownGuardian(townA_def, g.world.playerUnit))
+                DramaTool.OpenDrama(DRAMA_ID, new DramaData
                 {
-                    JoinTownWar(townA_def, townB_atk, TeamSideEnum.TeamA);
-                }
-                else if (MapBuildPropertyEvent.IsTownGuardian(townB_atk, g.world.playerUnit))
-                {
-                    JoinTownWar(townA_def, townB_atk, TeamSideEnum.TeamB);
-                }
-                else
-                {
-                    DramaTool.OpenDrama(TOWN_TEAM_SELECT_DRAMA_ID, new DramaData
+                    dialogueText = { [DRAMA_ID] = GameTool.LS("battleevent480112890") },
+                    dialogueOptions =
                     {
-                        onOptionsClickCall = (Il2CppSystem.Action<ConfDramaOptionsItem>)((x) =>
-                        {
-                            switch (x.id)
-                            {
-                                case TOWN_TEAM_SELECT_DRAMA_OPT_1ID:
-                                    JoinTownWar(townA_def, townB_atk, TeamSideEnum.TeamA);
-                                    break;
-                                case TOWN_TEAM_SELECT_DRAMA_OPT_2ID:
-                                    JoinTownWar(townA_def, townB_atk, TeamSideEnum.TeamB);
-                                    break;
-                                case TOWN_TEAM_SELECT_DRAMA_OPT_3ID:
-                                    if (CommonTool.Random(0.00f, 100.00f).IsBetween(0.00f, Configs.EscapeChance))
-                                        g.world.playerUnit.SetUnitRandomPos(g.world.playerUnit.GetUnitPos(), 4);
-                                    else
-                                        JoinTownWar(townA_def, townB_atk, TeamSideEnum.TeamA);
-                                    break;
-                                default:
-                                    JoinTownWar(townA_def, townB_atk, TeamSideEnum.TeamA);
-                                    break;
-                            }
-                        })
-                    });
-                }
-            }
-            else
-            if (townA_def.gridData.areaBaseID == g.world.playerUnit.data.unitData.pointGridData.areaBaseID)
-            {
-                DramaTool.OpenDrama(TOWN_HELP_SELECT_DRAMA_ID, new DramaData
-                {
-                    dialogueText = { [TOWN_HELP_SELECT_DRAMA_ID] = string.Format(GameTool.LS("battleevent480112894"), townB_atk.name, townA_def.name) },
+                        [DRAMA_HELP_DEF_OPT_ID] = GameTool.LS("battleevent480112891"),
+                        [DRAMA_HELP_ATK_OPT_ID] = GameTool.LS("battleevent480112892"),
+                        [DRAMA_TRY_ESCAPE_OPT_ID] = GameTool.LS("battleevent480112893"),
+                    },
                     onOptionsClickCall = (Il2CppSystem.Action<ConfDramaOptionsItem>)((x) =>
                     {
                         switch (x.id)
                         {
-                            case TOWN_HELP_SELECT_DRAMA_OPT_1ID:
+                            case DRAMA_HELP_DEF_OPT_ID:
                                 JoinTownWar(townA_def, townB_atk, TeamSideEnum.TeamA);
                                 break;
-                            case TOWN_HELP_SELECT_DRAMA_OPT_2ID:
+                            case DRAMA_HELP_ATK_OPT_ID:
                                 JoinTownWar(townA_def, townB_atk, TeamSideEnum.TeamB);
                                 break;
-                            case TOWN_HELP_SELECT_DRAMA_OPT_3ID:
-                                g.world.playerUnit.SetUnitRandomPos(g.world.playerUnit.GetUnitPos(), 4);
+                            case DRAMA_TRY_ESCAPE_OPT_ID:
+                                if (CommonTool.Random(0.00f, 100.00f).IsBetween(0.00f, Configs.EscapeChance))
+                                {
+                                    g.world.playerUnit.SetUnitRandomPos(g.world.playerUnit.GetUnitPos(), 4);
+                                    HateEscape(townA_def, townB_atk);
+                                }
+                                else
+                                {
+                                    JoinTownWar(townA_def, townB_atk, TeamSideEnum.TeamA);
+                                }
                                 break;
-                            default:
-                                g.world.playerUnit.SetUnitRandomPos(g.world.playerUnit.GetUnitPos(), 4);
+                        }
+                    })
+                });
+            }
+            else
+            if (townA_def.gridData.areaBaseID == g.world.playerUnit.data.unitData.pointGridData.areaBaseID)
+            {
+                DramaTool.OpenDrama(DRAMA_ID, new DramaData
+                {
+                    dialogueText = { [DRAMA_ID] = string.Format(GameTool.LS("battleevent480112894"), townB_atk.name, townA_def.name) },
+                    dialogueOptions =
+                    {
+                        [DRAMA_HELP_DEF_OPT_ID] = GameTool.LS("battleevent480112891"),
+                        [DRAMA_HELP_ATK_OPT_ID] = GameTool.LS("battleevent480112892"),
+                        [DRAMA_DONT_CARE_OPT_ID] = GameTool.LS("battleevent480112898"),
+                    },
+                    onOptionsClickCall = (Il2CppSystem.Action<ConfDramaOptionsItem>)((x) =>
+                    {
+                        switch (x.id)
+                        {
+                            case DRAMA_HELP_DEF_OPT_ID:
+                                JoinTownWar(townA_def, townB_atk, TeamSideEnum.TeamA);
+                                break;
+                            case DRAMA_HELP_ATK_OPT_ID:
+                                JoinTownWar(townA_def, townB_atk, TeamSideEnum.TeamB);
+                                break;
+                            case DRAMA_DONT_CARE_OPT_ID:
+                                HateEscape(townA_def, townB_atk);
                                 break;
                         }
                     })
@@ -367,16 +382,28 @@ namespace MOD_nE7UL2.Mod
                 JoinMonstWave(town, TOWN_MONST_WAVE_DUNGEON_BASE_ID);
             }
             else
-            if (MapBuildPropertyEvent.IsTownGuardian(town, g.world.playerUnit))
+            if (town.gridData.areaBaseID == g.world.playerUnit.data.unitData.pointGridData.areaBaseID)
             {
-                g.ui.MsgBox(GameTool.LS("other500020022"), string.Format(GameTool.LS("other500020023"), town.name), MsgBoxButtonEnum.YesNo,
-                () =>
+                DramaTool.OpenDrama(DRAMA_ID, new DramaData
                 {
-                    JoinMonstWave(town, TOWN_MONST_WAVE_DUNGEON_BASE_ID);
-                },
-                () =>
-                {
-                    SkipMonstWave(town);
+                    dialogueText = { [DRAMA_ID] = string.Format(GameTool.LS("battleevent480112895"), town.name) },
+                    dialogueOptions =
+                    {
+                        [DRAMA_HELP_OPT_ID] = GameTool.LS("battleevent480112899"),
+                        [DRAMA_DONT_CARE_OPT_ID] = GameTool.LS("battleevent480112898"),
+                    },
+                    onOptionsClickCall = (Il2CppSystem.Action<ConfDramaOptionsItem>)((x) =>
+                    {
+                        switch (x.id)
+                        {
+                            case DRAMA_HELP_OPT_ID:
+                                JoinMonstWave(town, TOWN_MONST_WAVE_DUNGEON_BASE_ID);
+                                break;
+                            case DRAMA_DONT_CARE_OPT_ID:
+                                HateEscape(town);
+                                break;
+                        }
+                    })
                 });
             }
             else
@@ -397,16 +424,29 @@ namespace MOD_nE7UL2.Mod
                 JoinMonstWave(school, SECT_MONST_WAVE_DUNGEON_BASE_ID);
             }
             else
-            if (school.schoolNameID == g.world.playerUnit.data.unitData.schoolID)
+            if (school.schoolNameID == g.world.playerUnit.data.unitData.schoolID &&
+                school.gridData.areaBaseID == g.world.playerUnit.data.unitData.pointGridData.areaBaseID)
             {
-                g.ui.MsgBox(GameTool.LS("other500020022"), string.Format(GameTool.LS("other500020024"), g.world.playerUnit.data.school.GetName(true)), MsgBoxButtonEnum.YesNo,
-                () =>
+                DramaTool.OpenDrama(DRAMA_ID, new DramaData
                 {
-                    JoinMonstWave(school, SECT_MONST_WAVE_DUNGEON_BASE_ID);
-                },
-                () =>
-                {
-                    SkipMonstWave(school);
+                    dialogueText = { [DRAMA_ID] = string.Format(GameTool.LS("battleevent480112895"), g.world.playerUnit.data.school.GetName(true)) },
+                    dialogueOptions =
+                    {
+                        [DRAMA_HELP_OPT_ID] = GameTool.LS("battleevent480112899"),
+                        [DRAMA_DONT_CARE_OPT_ID] = GameTool.LS("battleevent480112898"),
+                    },
+                    onOptionsClickCall = (Il2CppSystem.Action<ConfDramaOptionsItem>)((x) =>
+                    {
+                        switch (x.id)
+                        {
+                            case DRAMA_HELP_OPT_ID:
+                                JoinMonstWave(school, SECT_MONST_WAVE_DUNGEON_BASE_ID);
+                                break;
+                            case DRAMA_DONT_CARE_OPT_ID:
+                                HateEscape(school);
+                                break;
+                        }
+                    })
                 });
             }
             else
