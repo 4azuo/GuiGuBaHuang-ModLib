@@ -109,6 +109,11 @@ public static class ConfHelper
                                 ObjectHelper.SetValue(confItem, propName, t, true);
                             }
                         }
+                        else
+                        if (confObj is ConfBattleUnitAttr && propName == "unitDatas")
+                        {
+                            ObjectHelper.SetValue(confItem, propName, new Il2CppReferenceArray<Il2CppStringArray>(0), true);
+                        }
                     }
                     else
                     {
