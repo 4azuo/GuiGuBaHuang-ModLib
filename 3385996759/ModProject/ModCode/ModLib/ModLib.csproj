@@ -79,6 +79,8 @@
     <Compile Include="Helper\EffectHelper.cs" />
     <Compile Include="Helper\TranslateHelper.cs" />
     <Compile Include="Helper\FileHelper.cs" />
+    <Compile Include="Helper\CUnitHelper.cs" />
+    <Compile Include="Helper\VectorHelper.cs" />
     <Compile Include="Helper\ValueHelper.cs" />
     <Compile Include="Mod\Base\ModSkill.cs" />
     <Compile Include="Mod\ModBattleEvent.cs" />
@@ -104,7 +106,7 @@
     <Compile Include="Helper\ExceptionHelper.cs" />
     <Compile Include="Helper\ObjectHelper.cs" />
     <Compile Include="Helper\ParseHelper.cs" />
-    <Compile Include="Helper\UnitHelper.cs" />
+    <Compile Include="Helper\WUnitHelper.cs" />
     <Compile Include="Object\Base\CachableObject.cs" />
     <Compile Include="Mod\Base\ModMaster.cs" />
     <Compile Include="Object\Gamevar.cs" />
