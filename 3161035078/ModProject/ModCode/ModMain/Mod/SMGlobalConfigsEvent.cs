@@ -481,7 +481,7 @@ namespace MOD_nE7UL2.Mod
             tglSysOnelife.Set(level > 9);
             slNPCAmount.SetPercent(level * 0.02000f, 2000f);
             tglAllowTownBuildupOverTime.Set(level > 0);
-            slGrowUpSpeed.SetPercent(level * 0.05000f, 6);
+            slGrowUpSpeed.SetPercent(1.0000f - (level * 0.10000f), 3, 24);
         }
 
         private void SetSMConfigs()

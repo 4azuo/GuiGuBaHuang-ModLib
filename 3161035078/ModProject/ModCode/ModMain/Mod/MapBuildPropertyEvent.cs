@@ -478,6 +478,9 @@ namespace MOD_nE7UL2.Mod
 
         public static long GetBuildProperty(MapBuildBase build)
         {
+            if (build == null)
+                return 0;
+
             var town = build.TryCast<MapBuildTown>();
             if (town != null)
             {
@@ -497,6 +500,9 @@ namespace MOD_nE7UL2.Mod
 
         public static void AddBuildProperty(MapBuildBase build, long add)
         {
+            if (build == null)
+                return;
+
             var town = build.TryCast<MapBuildTown>();
             if (town != null)
             {

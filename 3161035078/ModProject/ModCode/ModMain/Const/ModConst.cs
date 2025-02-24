@@ -2,8 +2,8 @@
 {
     public static class ModConst
     {
-        public const string TAOIST_VERSION = "4.6.11";
-        public const string MODLIB_REQUIRED_VERSION = "1.6.14";
+        public const string TAOIST_VERSION = "4.6.12";
+        public const string MODLIB_REQUIRED_VERSION = "1.6.15";
 
         //Events
         public const string DEBUG_EVENT = "DEBUG";
@@ -44,6 +44,7 @@
         public const string UPGRADE_NATURALLY_EVENT = "UpgradeNaturallyEvent";
         public const string TRAINER_EVENT = "TrainerEvent";
         public const string SPECIAL_MONST_EVENT = "SpecialMonsterEvent";
+        public const string TIME_SKIP_EVENT = "TimeSkipEvent";
 
         //Others
         public const string UTYPE_LUCK_EFX_FREE_STORAGE = "FreeStorage";
