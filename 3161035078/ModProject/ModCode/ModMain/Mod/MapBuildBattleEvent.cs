@@ -16,6 +16,7 @@ namespace MOD_nE7UL2.Mod
     {
         public enum BattleTypeEnum
         {
+            None,
             TownVsTown,
             TownVsMonster,
             SectVsMonster,
@@ -60,7 +61,6 @@ namespace MOD_nE7UL2.Mod
 
         public static int JoinBattleFlg { get; set; } = -1;
         public static bool InitBattleFlg { get; set; } = false;
-        public static BattleTypeEnum BattleType { get; set; }
         public static TeamSideEnum WinTeamSide { get; set; }
         public static TeamSideEnum PlayerSide { get; set; }
         public static MapBuildBase BuildBaseA { get; set; }
@@ -315,7 +315,7 @@ namespace MOD_nE7UL2.Mod
             DebugHelper.WriteLine($"Join ({side}): {townA_def.name} vs {townB_atk.name}");
             JoinBattleFlg = GameHelper.GetGameTotalMonth();
             //init
-            InitBattle(BattleTypeEnum.TownVsTown);
+            InitBattle();
             //player side
             PlayerSide = side;
             //battle info
@@ -332,7 +332,7 @@ namespace MOD_nE7UL2.Mod
         {
             DebugHelper.WriteLine($"Skip: {townA_def.name} vs {townB_atk.name}");
             //init
-            InitBattle(BattleTypeEnum.TownVsTown);
+            InitBattle();
             //player side
             PlayerSide = TeamSideEnum.Unmanaged;
             //battle info
@@ -572,7 +572,7 @@ namespace MOD_nE7UL2.Mod
             DebugHelper.WriteLine($"Join ({dungeonBaseId}): {teamAbuildBase.name}");
             JoinBattleFlg = GameHelper.GetGameTotalMonth();
             //init
-            InitBattle(teamAbuildBase.IsTown() ? BattleTypeEnum.TownVsMonster : BattleTypeEnum.SectVsMonster);
+            InitBattle();
             //player side
             PlayerSide = TeamSideEnum.TeamA;
             //battle info
@@ -589,7 +589,7 @@ namespace MOD_nE7UL2.Mod
         {
             DebugHelper.WriteLine($"Join: {teamAbuildBase.name}");
             //init
-            InitBattle(teamAbuildBase.IsTown() ? BattleTypeEnum.TownVsMonster : BattleTypeEnum.SectVsMonster);
+            InitBattle();
             //player side
             PlayerSide = TeamSideEnum.TeamA;
             //battle info
@@ -620,13 +620,10 @@ namespace MOD_nE7UL2.Mod
                 DebugHelper.WriteLine($"Monsters win!");
                 WinTeamSide = TeamSideEnum.TeamB;
                 //A damaged
-                if (IsBattleMonstWaveOnTown())
+                foreach (var e in BuildingCostEnum.GetAllEnums<BuildingCostEnum>())
                 {
-                    foreach (var e in BuildingCostEnum.GetAllEnums<BuildingCostEnum>())
-                    {
-                        if (BuildingArrangeEvent.IsBuilt(teamAbuildBase, e))
-                            BuildingArrangeEvent.Destroy(teamAbuildBase, e);
-                    }
+                    if (BuildingArrangeEvent.IsBuilt(teamAbuildBase, e))
+                        BuildingArrangeEvent.Destroy(teamAbuildBase, e);
                 }
                 var damagedBudget = MapBuildPropertyEvent.GetBuildProperty(teamAbuildBase);
                 MapBuildPropertyEvent.AddBuildProperty(teamAbuildBase, -damagedBudget);
@@ -678,9 +675,8 @@ namespace MOD_nE7UL2.Mod
             DebugHelper.WriteLine($"{TeamAUnitCount} vs {TeamBUnitCount}");
         }
 
-        public static void InitBattle(BattleTypeEnum battleType)
+        public static void InitBattle()
         {
-            BattleType = battleType;
             InitBattleFlg = false;
             TeamAWUnits.Clear();
             TeamBWUnits.Clear();
@@ -930,7 +926,7 @@ namespace MOD_nE7UL2.Mod
 
         public static bool IsBattleTownWar()
         {
-            return g.world.battle?.data?.dungeonBaseItem?.id == TOWN_WAR_DUNGEON_BASE_ID || BattleType == BattleTypeEnum.TownVsTown;
+            return g.world.battle?.data?.dungeonBaseItem?.id == TOWN_WAR_DUNGEON_BASE_ID;
         }
 
         public static bool IsBattleMonstWave()
@@ -940,12 +936,12 @@ namespace MOD_nE7UL2.Mod
 
         public static bool IsBattleMonstWaveOnTown()
         {
-            return g.world.battle?.data?.dungeonBaseItem?.id == TOWN_MONST_WAVE_DUNGEON_BASE_ID || BattleType == BattleTypeEnum.TownVsMonster;
+            return g.world.battle?.data?.dungeonBaseItem?.id == TOWN_MONST_WAVE_DUNGEON_BASE_ID;
         }
 
         public static bool IsBattleMonstWaveOnSect()
         {
-            return g.world.battle?.data?.dungeonBaseItem?.id == SECT_MONST_WAVE_DUNGEON_BASE_ID || BattleType == BattleTypeEnum.SectVsMonster;
+            return g.world.battle?.data?.dungeonBaseItem?.id == SECT_MONST_WAVE_DUNGEON_BASE_ID;
         }
 
         public static TeamSideEnum GetTeamSide(UnitCtrlBase cunit)

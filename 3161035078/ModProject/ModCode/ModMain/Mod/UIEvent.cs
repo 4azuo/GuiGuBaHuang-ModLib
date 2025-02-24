@@ -75,9 +75,9 @@ namespace MOD_nE7UL2.Mod
             //DebugHelper.WriteLine("3");
             if (e.uiType.uiName == UIType.MapMain.uiName)
             {
-                var uiMapMain = g.ui.GetUI<UIMapMain>(UIType.MapMain);
-                uiMapMain.playerInfo.textPiscesPendantCount.gameObject.SetActive(false);
-                uiMapMain.playerInfo.goAddLuckRoot.SetActive(false);
+                var ui = g.ui.GetUI<UIMapMain>(UIType.MapMain);
+                ui.playerInfo.textPiscesPendantCount.gameObject.SetActive(false);
+                ui.playerInfo.goAddLuckRoot.SetActive(false);
             }
             else
             if (e.uiType.uiName == UIType.Town.uiName)
