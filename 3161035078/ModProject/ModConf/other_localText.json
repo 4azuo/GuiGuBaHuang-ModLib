@@ -43,4 +43,7 @@
 	{ "id": 500020025, "key": "other500020025", "ch|en|tc|kr": "Town's Budget is not enough!" },
 	{ "id": 500020026, "key": "other500020026", "ch|en|tc|kr": "You received a invitation from {0}' Town Master for guardian position?\nDo you wanna become a Town Guardian?" },
 	{ "id": 500020027, "key": "other500020027", "ch|en|tc|kr": "You dont have enough {0:#,##0} Spirit Stones to pay!" },
+	{ "id": 500020028, "key": "other500020028", "ch|en|tc|kr": "Every time you die in battle, your life will be lost. And when your age comes over, your save will be deleted. Please be careful." },
+	{ "id": 500020029, "key": "other500020029", "ch|en|tc|kr": "Do you really wanna skip {0} year?" },
+	{ "id": 500020030, "key": "other500020030", "ch|en|tc|kr": "Skip {0} year" },
 ]

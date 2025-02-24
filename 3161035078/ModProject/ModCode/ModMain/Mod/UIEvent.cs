@@ -10,6 +10,7 @@ using System.Collections.Generic;
 using ModLib.Enum;
 using MOD_nE7UL2.Enum;
 using ModLib.Object;
+using static SpecialBattle83;
 
 namespace MOD_nE7UL2.Mod
 {
@@ -174,6 +175,7 @@ namespace MOD_nE7UL2.Mod
                         {
                             UpdateAct = (x) => x.Set($"+Sp: {UnitModifyHelper.GetArtisanshipAdjSp(uiPlayerInfo.UI.unit)}")
                         });
+                    uiPlayerInfo.AddToolTipButton(GameTool.LS("other500020028")).SetParentTransform(uiPlayerInfo.UI.uiPropertyCommon.goGroupRoot).Pos(uiPlayerInfo.UI.uiPropertyCommon.goItem1_En, 0.4f, -1.0f);
 
                     uiPlayerInfo.AddText(0, 0, string.Empty).Format(Color.white).SetParentTransform(uiPlayerInfo.UI.uiSkill.textPoint1.transform)
                         .Pos(uiPlayerInfo.UI.uiSkill.textPoint1.transform, 0f, -0.2f).SetWork(new UIItemWork
