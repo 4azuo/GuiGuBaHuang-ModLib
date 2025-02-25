@@ -28,13 +28,13 @@ namespace MOD_nE7UL2.Mod
                             SkipTime(12);
                         });
                     }, string.Format(GameTool.LS("other500020030"), 1)).Size(140, 40);
-                    //uiMain.AddButton(btnFateFeature.transform.position.x + 5f, btnFateFeature.transform.position.y, () =>
-                    //{
-                    //    g.ui.MsgBox(GameTool.LS("other500020022"), string.Format(GameTool.LS("other500020029"), 10), MsgBoxButtonEnum.YesNo, () =>
-                    //    {
-                    //        SkipTime(120);
-                    //    });
-                    //}, string.Format(GameTool.LS("other500020030"), 10)).Size(140, 40);
+                    uiMain.AddButton(btnFateFeature.transform.position.x + 5f, btnFateFeature.transform.position.y, () =>
+                    {
+                        g.ui.MsgBox(GameTool.LS("other500020022"), string.Format(GameTool.LS("other500020029"), 10), MsgBoxButtonEnum.YesNo, () =>
+                        {
+                            SkipTime(120);
+                        });
+                    }, string.Format(GameTool.LS("other500020030"), 10)).Size(140, 40);
                 }
             }
         }
@@ -47,10 +47,9 @@ namespace MOD_nE7UL2.Mod
         public override void OnTimeUpdate1s()
         {
             base.OnTimeUpdate1s();
-            if (g.ui.HasUI(UIType.MapMain) && uiMain != null &&
-                GameHelper.GetGameTotalMonth() < skip2Month && !g.world.run.isRunning && g.world.run.IsCanRun())
+            if (GameHelper.GetGameTotalMonth() < skip2Month && !g.world.run.isRunning && g.world.run.IsCanRun())
             {
-                uiMain.UI.playerInfo.btnNextMonth.onClick.Invoke();
+                g.world.run.AddDay(30, true);
             }
         }
     }

@@ -604,16 +604,19 @@ namespace MOD_nE7UL2.Mod
 
                     //item
                     //DebugHelper.WriteLine("4");
-                    var ringLockScore = dieUnitWUnit.GetEquippedRing()?.propsItem?.IsRing()?.lockScore ?? 0;
-                    var luck = dieUnitWUnit.GetDynProperty(UnitDynPropertyEnum.Luck).value;
-                    foreach (var item in dieUnitWUnit.GetUnitProps())
+                    if (SMLocalConfigsEvent.Instance.Configs.LostItemWhenDie)
                     {
-                        if (item.propsInfoBase.sale > 0 &&
-                            !CommonTool.Random(0.00f, 100.00f).IsBetween(0.00f, (luck / 10.0f) + (ringLockScore / 100.0f)))
+                        var ringLockScore = dieUnitWUnit.GetEquippedRing()?.propsItem?.IsRing()?.lockScore ?? 0;
+                        var luck = dieUnitWUnit.GetDynProperty(UnitDynPropertyEnum.Luck).value;
+                        foreach (var item in dieUnitWUnit.GetUnitProps())
                         {
-                            if (isKillerWUnit)
-                                killerWUnit.AddUnitProp(item);
-                            dieUnitWUnit.RemoveUnitProp(item.soleID);
+                            if (item.propsInfoBase.sale > 0 &&
+                                !CommonTool.Random(0.00f, 100.00f).IsBetween(0.00f, (luck / 10.0f) + (ringLockScore / 100.0f)))
+                            {
+                                if (isKillerWUnit)
+                                    killerWUnit.AddUnitProp(item);
+                                dieUnitWUnit.RemoveUnitProp(item.soleID);
+                            }
                         }
                     }
 
