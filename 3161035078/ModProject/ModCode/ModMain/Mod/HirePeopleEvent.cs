@@ -73,7 +73,7 @@ namespace MOD_nE7UL2.Mod
                         }
                         else
                         {
-                            uiCover.AddText(0, 0, $"You dont have to pay for friends!").Align().Format(Color.white).Pos(uiCover.UI.uiProperty.textInTrait1.transform, 0f, 0.5f).SetParentTransform(uiCover.UI.uiProperty.textInTrait1.transform);
+                            uiCover.AddText(0, 0, GameTool.LS("team420041132")).Align().Format(Color.white).Pos(uiCover.UI.uiProperty.textInTrait1.transform, 0f, 0.5f).SetParentTransform(uiCover.UI.uiProperty.textInTrait1.transform);
                         }
                         uiCover.AddButton(0, 0, () =>
                         {

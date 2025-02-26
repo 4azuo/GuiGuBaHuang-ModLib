@@ -15,21 +15,41 @@ namespace MOD_nE7UL2.Mod
 
         private string GetArrDicKey(MapBuildBase build, BuildingCostEnum e)
         {
-            return $"{build.buildData.id}_{e.Name}";
+            return $"{build?.buildData?.id}_{e?.Name}";
         }
 
-        public override void OnLoadGame()
+        public override void OnLoadNewGame()
         {
-            base.OnLoadGame();
+            base.OnLoadNewGame();
 
             foreach (var build in g.world.build.GetBuilds())
             {
-                if (!SMLocalConfigsEvent.Instance.Configs.AllowTownBuildupOverTime)
-                    ArrDic.Add(build.buildData.id);
                 foreach (var e in BuildingCostEnum.GetAllEnums<BuildingCostEnum>())
                 {
-                    RemoveBuildSub(build, e);
-                    AddBuildSub(build, e, 100.00f);
+                    if (IsBuilt(build, e))
+                        ArrDic.Add(GetArrDicKey(build, e));
+                }
+            }
+
+            if (SMLocalConfigsEvent.Instance.Configs.AllowTownBuildupOverTime)
+            {
+                foreach (var build in g.world.build.GetBuilds())
+                {
+                    foreach (var e in BuildingCostEnum.GetAllEnums<BuildingCostEnum>())
+                    {
+                        Destroy(build, e);
+                    }
+                }
+            }
+            else
+            if (SMLocalConfigsEvent.Instance.Configs.OnlyPortalAtCityAndSect)
+            {
+                foreach (var build in g.world.build.GetBuilds())
+                {
+                    if (build.IsSmallTown())
+                    {
+                        Destroy(build, BuildingCostEnum.TownPortalBuildCost);
+                    }
                 }
             }
         }
@@ -63,14 +83,14 @@ namespace MOD_nE7UL2.Mod
             }
         }
 
-        public void AddBuildSub(MapBuildBase build, BuildingCostEnum e, float rate = -1f)
+        public void AddBuildSub(MapBuildBase build, BuildingCostEnum e)
         {
             if (SMLocalConfigsEvent.Instance.Configs.OnlyPortalAtCityAndSect && e == BuildingCostEnum.TownPortalBuildCost && build.IsSmallTown())
-                return;
+                return; //OnlyPortalAtCityAndSect then remove small town portal
             if (IsBuildable(build, e))
             {
                 if (MapBuildPropertyEvent.GetBuildProperty(build) > GetBuildingCost(build, e) &&
-                    ValueHelper.IsBetween(CommonTool.Random(0.00f, 100.00f), 0.00f, rate == -1f ? e.BuildRate : rate))
+                    ValueHelper.IsBetween(CommonTool.Random(0.00f, 100.00f), 0.00f, e.BuildRate))
                 {
                     Build(build, e);
                 }
@@ -84,16 +104,22 @@ namespace MOD_nE7UL2.Mod
 
         public static bool IsBuilt(MapBuildBase build, BuildingCostEnum e)
         {
-            return Instance.ArrDic.Contains(Instance.GetArrDicKey(build, e)) || build.GetBuildSub(e.BuildType) != null;
+            if (build == null || e == null)
+                return false;
+            return Instance.ArrDic.Contains(Instance.GetArrDicKey(build, e)) && build.GetBuildSub(e.BuildType) != null;
         }
 
         public static bool IsBuildable(MapBuildBase build, BuildingCostEnum e)
         {
+            if (build == null || e == null)
+                return false;
             return e.IsMatchBuildConds(build) && !IsBuilt(build, e) && !IsIgnored(e);
         }
 
         public static void Build(MapBuildBase build, BuildingCostEnum e)
         {
+            if (build == null || e == null)
+                return;
             Instance.ArrDic.Add(Instance.GetArrDicKey(build, e));
             e.Build(build);
             MapBuildPropertyEvent.AddBuildProperty(build, -GetBuildingCost(build, e));
@@ -101,12 +127,16 @@ namespace MOD_nE7UL2.Mod
 
         public static void Destroy(MapBuildBase build, BuildingCostEnum e)
         {
+            if (build == null || e == null)
+                return;
             Instance.ArrDic.Remove(Instance.GetArrDicKey(build, e));
             Instance.RemoveBuildSub(build, e);
         }
 
         public static long GetBuildingCost(MapBuildBase build, BuildingCostEnum e)
         {
+            if (build == null || e == null)
+                return 0;
             var cost = InflationaryEvent.CalculateInflationary(e.BuildCosts[build.gridData.areaBaseID - 1]);
             return SMLocalConfigsEvent.Instance.Calculate(cost, SMLocalConfigsEvent.Instance.Configs.AddBuildingCostRate).Parse<long>();
         }

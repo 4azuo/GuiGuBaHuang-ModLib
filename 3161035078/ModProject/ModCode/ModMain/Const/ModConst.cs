@@ -2,8 +2,8 @@
 {
     public static class ModConst
     {
-        public const string TAOIST_VERSION = "4.6.7";
-        public const string MODLIB_REQUIRED_VERSION = "1.6.9";
+        public const string TAOIST_VERSION = "4.6.13";
+        public const string MODLIB_REQUIRED_VERSION = "1.6.15";
 
         //Events
         public const string DEBUG_EVENT = "DEBUG";
@@ -44,6 +44,7 @@
         public const string UPGRADE_NATURALLY_EVENT = "UpgradeNaturallyEvent";
         public const string TRAINER_EVENT = "TrainerEvent";
         public const string SPECIAL_MONST_EVENT = "SpecialMonsterEvent";
+        public const string TIME_SKIP_EVENT = "TimeSkipEvent";
 
         //Others
         public const string UTYPE_LUCK_EFX_FREE_STORAGE = "FreeStorage";
@@ -52,5 +53,6 @@
         public const string UTYPE_LUCK_EFX_PASSIVE_INCOME = "PassiveIncome";
         public const float PILL_RECIPE_RATE = 0.15f;
         public const int MAX_ATTRIBUTE = 1000000000;
+        public const int MAX_VALUE = 1000000000;
     }
 }

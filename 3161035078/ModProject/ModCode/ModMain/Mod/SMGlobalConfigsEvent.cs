@@ -51,6 +51,7 @@ namespace MOD_nE7UL2.Mod
         public int NPCAmount { get; set; } = 2000;
         public bool AllowTownBuildupOverTime { get; set; } = false;
         public int GrowUpSpeed { get; set; } = 3;
+        public bool LostItemWhenDie { get; set; } = false;
 
         //UI
         private UICustom1 uiCustom;
@@ -85,6 +86,7 @@ namespace MOD_nE7UL2.Mod
         private UIItemComposite slNPCAmount;
         private UIItemComposite tglAllowTownBuildupOverTime;
         private UIItemComposite slGrowUpSpeed;
+        private UIItemComposite tglLostItemWhenDie;
 
         //Score
         public static IList<SMItemWork> ScoreCalculator { get; } = new List<SMItemWork>();
@@ -208,6 +210,9 @@ namespace MOD_nE7UL2.Mod
                     }
                     return rs;
                 });
+            Register(() => tglLostItemWhenDie,
+                funcCal: s => 10000,
+                funcCond: s => s.Get().Parse<bool>());
         }
 
         private void Register(
@@ -305,6 +310,7 @@ namespace MOD_nE7UL2.Mod
                 uiCustom.AddText(col, row++, GameTool.LS("smcfgs020")).Format(null, 17, FontStyle.Italic).Align(TextAnchor.MiddleRight);
                 tglSysHideSave = uiCustom.AddCompositeToggle(col, row++, GameTool.LS("smcfgs021"), HideSaveButton, GameTool.LS("smcfgs102"));
                 tglSysHideReload = uiCustom.AddCompositeToggle(col, row++, GameTool.LS("smcfgs022"), HideReloadButton, GameTool.LS("smcfgs102"));
+                tglLostItemWhenDie = uiCustom.AddCompositeToggle(col, row++, GameTool.LS("smcfgs056"), HideReloadButton, GameTool.LS("smcfgs102"));
                 tglSysOnelife = uiCustom.AddCompositeToggle(col, row++, GameTool.LS("smcfgs023"), Onelife, GameTool.LS("smcfgs102"));
                 row++;
                 tglAllowTownBuildupOverTime = uiCustom.AddCompositeToggle(col, row++, GameTool.LS("smcfgs050"), AllowTownBuildupOverTime, GameTool.LS("smcfgs102"));
@@ -447,6 +453,7 @@ namespace MOD_nE7UL2.Mod
             slNPCAmount.Set(2000f);
             tglAllowTownBuildupOverTime.Set(false);
             slGrowUpSpeed.Set(3f);
+            tglLostItemWhenDie.Set(false);
         }
 
         private void SetLevel(int level)
@@ -481,7 +488,8 @@ namespace MOD_nE7UL2.Mod
             tglSysOnelife.Set(level > 9);
             slNPCAmount.SetPercent(level * 0.02000f, 2000f);
             tglAllowTownBuildupOverTime.Set(level > 0);
-            slGrowUpSpeed.SetPercent(level * 0.05000f, 6);
+            slGrowUpSpeed.SetPercent(1.0000f - (level * 0.10000f), 3, 24);
+            tglLostItemWhenDie.Set(level > 4);
         }
 
         private void SetSMConfigs()
@@ -517,6 +525,7 @@ namespace MOD_nE7UL2.Mod
             NPCAmount = slNPCAmount.Get().Parse<int>();
             AllowTownBuildupOverTime = tglAllowTownBuildupOverTime.Get().Parse<bool>();
             GrowUpSpeed = slGrowUpSpeed.Get().Parse<int>();
+            LostItemWhenDie = tglLostItemWhenDie.Get().Parse<bool>();
             CacheHelper.SaveGlobalCache(this);
 
             //edit conf
