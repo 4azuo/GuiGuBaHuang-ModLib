@@ -2,71 +2,72 @@
 	{
 		"id": "420041120",
 		"key": "team420041120desc",
-		"ch|en|tc|kr": "team420041120desc"
+		"ch": "team420041120desc","en|tc|kr": "team420041120desc"
 	},
 	{
 		"id": "420041121",
 		"key": "team420041121",
 		"ch": "团队",
-		"en": "Team"
+		"en|tc|kr": "Team"
 	},
 	{
 		"id": "420041123",
 		"key": "team420041123drama",
 		"ch": "可否一同上路？",
-		"en": "Do you wanna travel together?"
+		"en|tc|kr": "Do you wanna travel together?"
 	},
 	{
 		"id": "420041124",
 		"key": "team420041124dramaOpt1",
 		"ch": "同意",
-		"en": "Yes"
+		"en|tc|kr": "Yes"
 	},
 	{
 		"id": "420041125",
 		"key": "team420041125dramaOpt2",
 		"ch": "不",
-		"en": "No"
+		"en|tc|kr": "No"
 	},
 	{
 		"id": "420041126",
 		"key": "team420041126",
 		"ch": "解散",
-		"en": "Dismiss Team"
+		"en|tc|kr": "Dismiss Team"
 	},
 	{
 		"id": "420041127",
 		"key": "team420041127",
 		"ch": "掌管",
-		"en": "Manage Team"
+		"en|tc|kr": "Manage Team"
 	},
 	{
 		"id": "420041128",
 		"key": "team420041128",
 		"ch": "确定要增加此人?",
-		"en": "Are you sure about adding this person?"
+		"en|tc|kr": "Are you sure about adding this person?"
 	},
 	{
 		"id": "420041129",
 		"key": "team420041129",
 		"ch": "你必須離開現在的隊伍！",
-		"en": "You have to quit current team!"
+		"en|tc|kr": "You have to quit current team!"
 	},
 	{
 		"id": "420041130",
 		"key": "team420041130",
 		"ch": "確定要驅逐此人嗎?",
-		"en": "Are you sure about dismissing this person?"
+		"en|tc|kr": "Are you sure about dismissing this person?"
 	},
 	{
 		"id": "420041131",
 		"key": "team420041131",
 		"ch": "招募",
-		"en": "Hire People"
+		"en|tc|kr": "Hire People"
 	},
 	{
 		"id": "420041132",
 		"key": "team420041132",
-		"ch|en|tc|kr": "You dont have to pay for friends!"
+		"ch": "兄弟情义不能用钱买",
+		"en|tc|kr": "You dont have to pay for friends!"
 	}
 ]
