@@ -46,4 +46,6 @@
 	{ "id": 500020028, "key": "other500020028", "ch|en|tc|kr": "Every time you die in battle, your life will be lost. And when your age comes over, your save will be deleted. Please be careful." },
 	{ "id": 500020029, "key": "other500020029", "ch|en|tc|kr": "Do you really wanna skip {0} year?" },
 	{ "id": 500020030, "key": "other500020030", "ch|en|tc|kr": "Skip {0} year" },
+	{ "id": 500020031, "key": "other500020031", "ch|en|tc|kr": "Do you really wanna skip {0} year?\n(Without monthly events)" },
+	{ "id": 500020032, "key": "other500020032", "ch|en|tc|kr": "≫" },
 ]
