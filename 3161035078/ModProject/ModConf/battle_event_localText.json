@@ -47,7 +47,7 @@
 		"ch": "击败对方。",
 		"tc": "擊敗對方。",
 		"en": "Defeat your opponents.",
-		"kr": "상대 격파."
+		"kr": "상대격파."
 	},
 	{
 		"id": "480112991",
@@ -126,41 +126,49 @@
 	{
 		"id": "480112890",
 		"key": "battleevent480112890",
-		"ch|en|tc|kr": "The land trembles beneath your feet as the battle rages on. Your choice now will determine your path!"
+		"ch": "大地颤抖，战火燎原。此刻抉择，将定汝之道路！",
+		"en|tc|kr": "The land trembles beneath your feet as the battle rages on. Your choice now will determine your path!"
 	},
 	{
 		"id": "480112891",
 		"key": "battleevent480112891",
-		"ch|en|tc|kr": "Help defender"
+		"ch": "襄助守御",
+		"en|tc|kr": "Help defender"
 	},
 	{
 		"id": "480112892",
 		"key": "battleevent480112892",
-		"ch|en|tc|kr": "Help invader"
+		"ch": "襄助侵袭",
+		"en|tc|kr": "Help invader"
 	},
 	{
 		"id": "480112893",
 		"key": "battleevent480112893",
-		"ch|en|tc|kr": "Try to escape"
+		"ch": "意欲遁走",
+		"en|tc|kr": "Try to escape"
 	},
 	{
 		"id": "480112894",
 		"key": "battleevent480112894",
-		"ch|en|tc|kr": "{0} is invading {1}!\nWould you like to help?"
+		"ch": "{0}正侵袭{1}！\n汝可愿相助？",
+		"en|tc|kr": "{0} is invading {1}!\nWould you like to help?"
 	},
 	{
 		"id": "480112895",
 		"key": "battleevent480112895",
-		"ch|en|tc|kr": "{0} is under attack!\nWould you like to help?"
+		"ch": "{0}正受攻击！\n汝可愿相助？",
+		"en|tc|kr": "{0} is under attack!\nWould you like to help?"
 	},
 	{
 		"id": "480112898",
 		"key": "battleevent480112898",
-		"ch|en|tc|kr": "Dont care"
+		"ch": "不在意",
+		"en|tc|kr": "Dont care"
 	},
 	{
 		"id": "480112899",
 		"key": "battleevent480112899",
-		"ch|en|tc|kr": "Help"
+		"ch": "援助",
+		"en|tc|kr": "Help"
 	}
 ]

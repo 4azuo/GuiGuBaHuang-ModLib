@@ -2,7 +2,7 @@
   {
     "id": "480110100",
     "key": "battleevent480110100",
-    "ch|en|kr|tc": "Ha ha ha! Chiến lợi phẩm là ta!"
+    "ch|en|kr|tc": "Ha ha ha! Chiến lợi phẩm là ta! Toàn bộ"
   },
   {
     "id": "480110200",
@@ -12,7 +12,7 @@
   {
     "id": "480110300",
     "key": "battleevent480110300",
-    "ch|en|kr|tc": "Đừng nhúc nhích chúng ta môn phái người!"
+    "ch|en|kr|tc": "Chớ chọc chúng ta tông môn người!"
   },
   {
     "id": "480110400",
@@ -22,7 +22,7 @@
   {
     "id": "480110500",
     "key": "battleevent480110500",
-    "ch|en|kr|tc": "Ta đã chịu đủ ngươi! Hạ Cửu U đi!"
+    "ch|en|kr|tc": "Ta đã chịu đủ ngươi! Chết đi!"
   },
   {
     "id": "480111990",
@@ -32,7 +32,7 @@
   {
     "id": "480112990",
     "key": "battleevent480112990name",
-    "ch|en|kr|tc": "Thành  chiến"
+    "ch|en|kr|tc": "Thành chiến"
   },
   {
     "id": "480113990",
@@ -54,27 +54,27 @@
   {
     "id": "480112880",
     "key": "monstwave480112880name",
-    "ch|en|kr|tc": "đăng đậu pháp sư"
+    "ch|en|kr|tc": "Đăng Đậu Pháp Sư"
   },
   {
     "id": "480112881",
     "key": "monstwave480112881name",
-    "ch|en|kr|tc": "kiếm vũ trúc ảnh"
+    "ch|en|kr|tc": "Kiếm Vũ Trúc Ảnh"
   },
   {
     "id": "480112882",
     "key": "monstwave480112882name",
-    "ch|en|kr|tc": "mộc nhĩ độc tinh"
+    "ch|en|kr|tc": "Mộc Nhĩ Độc Tinh"
   },
   {
     "id": "480112883",
     "key": "monstwave480112883name",
-    "ch|en|kr|tc": "cương thạch quyền"
+    "ch|en|kr|tc": "Cương Thạch Quyền"
   },
   {
     "id": "480112884",
     "key": "monstwave480112884name",
-    "ch|en|kr|tc": "ô mộc chùy"
+    "ch|en|kr|tc": "Ô Mộc Chùy"
   },
   {
     "id": "480112885",
