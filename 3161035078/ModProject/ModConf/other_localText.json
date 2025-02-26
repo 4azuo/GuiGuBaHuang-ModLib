@@ -50,4 +50,7 @@
 	{ "id": 500020028, "key": "other500020028", "ch": "每逢战殁，寿元必损。待至寿数终尽，存档俱灭。望君珍重。","en|tc|kr": "Every time you die in battle, your life will be lost. And when your age comes over, your save will be deleted. Please be careful." },
 	{ "id": 500020029, "key": "other500020029", "ch": " 汝当真欲跳过{0}年？","en|tc|kr": "Do you really wanna skip {0} year?" },
 	{ "id": 500020030, "key": "other500020030", "ch": "跳过{0}年","en|tc|kr": "Skip {0} year" },
+	{ "id": 500020031, "key": "other500020031", "ch": "汝当真欲跳过{0}年？（无月度盛事）","en|tc|kr": "Do you really wanna skip {0} year?\n(Without monthly events)" },
+	{ "id": 500020032, "key": "other500020032", "ch": "≫","en|tc|kr": "≫" },
+
 ]
