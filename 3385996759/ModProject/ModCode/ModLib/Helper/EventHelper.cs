@@ -52,7 +52,8 @@ public static class EventHelper
                 if (method?.GetAttributeOnMethodOrClass<ErrorIgnoreAttribute>() == null &&
                     exMethod?.GetAttributeOnMethodOrClass<ErrorIgnoreAttribute>() == null)
                 {
-                    throw ex;
+                    DebugHelper.WriteLine($"{ev}.{methodName}({e}) : {ev.ModId}, {ev.CacheId}, {ev.CacheType}, {ev.WorkOn}");
+                    DebugHelper.WriteLine(ex);
                 }
             }
         }

@@ -199,5 +199,13 @@ namespace MOD_nE7UL2.Object
         }
         public _InflationaryConfigs InflationaryConfigs { get; set; }
         #endregion
+
+        #region MapBuildBattleConfigs
+        public class _MapBuildBattleConfigs
+        {
+            public float EscapeChance { get; set; }
+        }
+        public _MapBuildBattleConfigs MapBuildBattleConfigs { get; set; }
+        #endregion
     }
 }

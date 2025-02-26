@@ -84,15 +84,13 @@
 
 ![image](https://github.com/user-attachments/assets/75dee2aa-088a-4617-9257-8535e880dfd5)
 
-`
-rd "$(ProjectDir)obj" /s /q
-rd "$(ProjectDir)\..\..\..\debug\Mod_nE7UL2\ModCode\dll" /s /q
-rd "$(ProjectDir)\..\..\..\debug\Mod_nE7UL2\ModConf" /s /q
-rd "$(ProjectDir)\..\..\..\debug\Mod_nE7UL2\ModImg" /s /q
-xcopy "$(ProjectDir)\bin\Release\*.dll" "$(ProjectDir)\..\..\..\debug\Mod_nE7UL2\ModCode\dll\" /y /i
-xcopy "$(ProjectDir)\..\..\ModConf\*.*" "$(ProjectDir)\..\..\..\debug\Mod_nE7UL2\ModConf\" /y /i /e /h /c
-xcopy "$(ProjectDir)\..\..\ModImg\*.*" "$(ProjectDir)\..\..\..\debug\Mod_nE7UL2\ModImg\" /y /i /e /h /c
-`
+- `rd "$(ProjectDir)obj" /s /q`
+- `rd "$(ProjectDir)\..\..\..\debug\Mod_nE7UL2\ModCode\dll" /s /q`
+- `rd "$(ProjectDir)\..\..\..\debug\Mod_nE7UL2\ModConf" /s /q`
+- `rd "$(ProjectDir)\..\..\..\debug\Mod_nE7UL2\ModImg" /s /q`
+- `xcopy "$(ProjectDir)\bin\Release\*.dll" "$(ProjectDir)\..\..\..\debug\Mod_nE7UL2\ModCode\dll\" /y /i`
+- `xcopy "$(ProjectDir)\..\..\ModConf\*.*" "$(ProjectDir)\..\..\..\debug\Mod_nE7UL2\ModConf\" /y /i /e /h /c`
+- `xcopy "$(ProjectDir)\..\..\ModImg\*.*" "$(ProjectDir)\..\..\..\debug\Mod_nE7UL2\ModImg\" /y /i /e /h /c`
 
 Add BuildEvent for copying dll to "debug" folder. 
 

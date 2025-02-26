@@ -58,10 +58,15 @@
 		"ch": "確定要驅逐此人嗎?",
 		"en": "Are you sure about dismissing this person?"
 	},
-		{
+	{
 		"id": "420041131",
 		"key": "team420041131",
 		"ch": "招募",
 		"en": "Hire People"
+	},
+	{
+		"id": "420041132",
+		"key": "team420041132",
+		"ch|en|tc|kr": "You dont have to pay for friends!"
 	}
 ]

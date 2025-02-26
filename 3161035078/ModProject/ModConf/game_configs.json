@@ -188,5 +188,8 @@
 	},
 	"InflationaryConfigs": {
 		"InflationaryRate": 1.02
+	},
+	"MapBuildBattleConfigs": {
+		"EscapeChance": 10.00
 	}
 }
