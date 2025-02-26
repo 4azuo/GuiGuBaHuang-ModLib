@@ -55,6 +55,7 @@
 	{ "id": -1000001053, "key": "smcfgs053", "ch|en|tc|kr": "mỗi {1} tháng ({0}P)" },
 	{ "id": -1000001054, "key": "smcfgs054", "ch|en|tc|kr": "Xuất thiết lập" },
 	{ "id": -1000001055, "key": "smcfgs055", "ch|en|tc|kr": "Đọc thiết lập" },
+	{ "id": -1000001056, "key": "smcfgs056", "ch|en|tc|kr": "Tử vong mất vật phẩm" },
 	{ "id": -1000001101, "key": "smcfgs101", "ch|en|tc|kr": "{1}% ({0}P)", },
 	{ "id": -1000001102, "key": "smcfgs102", "ch|en|tc|kr": "({0}P)", },
 	{ "id": -1000001103, "key": "smcfgs103", "ch|en|tc|kr": "{1} ({0}P)", },
