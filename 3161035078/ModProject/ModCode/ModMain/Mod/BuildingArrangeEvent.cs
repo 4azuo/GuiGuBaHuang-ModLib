@@ -71,6 +71,8 @@ namespace MOD_nE7UL2.Mod
 
         public void RemoveBuildSub(MapBuildBase build, BuildingCostEnum e)
         {
+            if (build == null || e == null)
+                return;
             if (e.IsMatchBuildConds(build))
             {
                 var k = GetArrDicKey(build, e);
@@ -85,6 +87,8 @@ namespace MOD_nE7UL2.Mod
 
         public void AddBuildSub(MapBuildBase build, BuildingCostEnum e)
         {
+            if (build == null || e == null)
+                return;
             if (SMLocalConfigsEvent.Instance.Configs.OnlyPortalAtCityAndSect && e == BuildingCostEnum.TownPortalBuildCost && build.IsSmallTown())
                 return; //OnlyPortalAtCityAndSect then remove small town portal
             if (IsBuildable(build, e))
@@ -99,6 +103,8 @@ namespace MOD_nE7UL2.Mod
 
         public static bool IsIgnored(BuildingCostEnum e)
         {
+            if (e == null)
+                return true;
             return e.BuildRate == -1f || e.BuildCosts == null;
         }
 
@@ -120,9 +126,11 @@ namespace MOD_nE7UL2.Mod
         {
             if (build == null || e == null)
                 return;
-            Instance.ArrDic.Add(Instance.GetArrDicKey(build, e));
-            e.Build(build);
-            MapBuildPropertyEvent.AddBuildProperty(build, -GetBuildingCost(build, e));
+            if (e.Build(build))
+            {
+                Instance.ArrDic.Add(Instance.GetArrDicKey(build, e));
+                MapBuildPropertyEvent.AddBuildProperty(build, -GetBuildingCost(build, e));
+            }
         }
 
         public static void Destroy(MapBuildBase build, BuildingCostEnum e)
