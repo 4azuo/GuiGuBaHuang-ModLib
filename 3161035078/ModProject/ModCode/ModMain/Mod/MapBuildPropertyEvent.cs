@@ -28,6 +28,9 @@ namespace MOD_nE7UL2.Mod
         public const int TOWN_GUARDIAN_LUCK_ID = 420041112;
         public const string TOWN_COUCIL_LUCK_DESC = "townmaster420041110desc";
         public const int BECOME_TOWN_MASTER_DRAMA = 420041113;
+        public const int BECOME_TOWN_GUARDIAN_DRAMA = 420041114;
+        public const int BECOME_TOWN_GUARDIAN_DRAMA_OPT1 = 420041115;
+        public const int BECOME_TOWN_GUARDIAN_DRAMA_OPT2 = 420041116;
 
         public Dictionary<string, float> TaxRate { get; set; } = new Dictionary<string, float>();
         public Dictionary<string, long> Budget { get; set; } = new Dictionary<string, long>();
@@ -312,9 +315,20 @@ namespace MOD_nE7UL2.Mod
                             //hire player
                             if (newGuard.IsPlayer())
                             {
-                                g.ui.MsgBox(GameTool.LS("other500020011"), string.Format(GameTool.LS("other500020026"), town.name), MsgBoxButtonEnum.YesNo, () =>
+                                DramaTool.OpenDrama(BECOME_TOWN_GUARDIAN_DRAMA, new DramaData
                                 {
-                                    Hire(town, newGuard, TOWN_GUARDIAN_LUCK_ID);
+                                    dialogueText = { [BECOME_TOWN_GUARDIAN_DRAMA] = string.Format(GameTool.LS("townmaster420041114drama"), town.name) },
+                                    onOptionsClickCall = (Il2CppSystem.Action<ConfDramaOptionsItem>)((x) =>
+                                    {
+                                        switch (x.id)
+                                        {
+                                            case BECOME_TOWN_GUARDIAN_DRAMA_OPT1:
+                                                Hire(town, newGuard, TOWN_GUARDIAN_LUCK_ID);
+                                                break;
+                                            case BECOME_TOWN_GUARDIAN_DRAMA_OPT2:
+                                                break;
+                                        }
+                                    })
                                 });
                             }
                             //hire npc
