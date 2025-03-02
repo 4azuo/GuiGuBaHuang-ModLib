@@ -24,41 +24,50 @@
 //    {
 //        public static DebugEvent Instance { get; set; }
 
-//        private int showindex = 0;
-//        private string[] defres = File.ReadAllLines(ConfHelper.GetConfFilePath(ModMain.ModObj.ModId, "_Def_Res_Efx_Battle_Unit.txt"));
+//        //public override void OnMonthly()
+//        //{
+//        //    base.OnMonthly();
+//        //    foreach (var prop in g.world.playerUnit.GetUnitProps())
+//        //    {
+//        //        DebugHelper.WriteLine($"Prop: propsID:{prop.propsID}, soleID:{prop.soleID}, type:{prop.propsType}, values:{prop.valuesStr}, confID:{prop.propsItem?.id}, name:{GameTool.LS(prop.propsItem?.name ?? "common_xingming")}, grade:{prop.propsInfoBase?.grade}, level:{prop.propsInfoBase?.level}, baseID:{prop.propsInfoBase?.baseID}");
+//        //    }
+//        //}
 
-//        public override void OnMonoUpdate()
-//        {
-//            base.OnMonoUpdate();
-//            if (GameHelper.IsInBattlle())
-//            {
-//                if (Input.GetKey(KeyCode.LeftControl) && Input.GetKeyDown(KeyCode.Z))
-//                {
-//                    showindex--;
-//                    if (showindex < 0)
-//                        showindex = 0;
-//                    ModBattleEvent.SceneBattle.effect.Create(defres[showindex], ModBattleEvent.PlayerUnit.transform.position, 3f);
-//                    DebugHelper.WriteLine($"DefRes: {defres[showindex]}");
-//                }
-//                else if (Input.GetKey(KeyCode.LeftControl) && Input.GetKeyDown(KeyCode.X))
-//                {
-//                    showindex++;
-//                    if (showindex >= g.conf.battleEffect._allConfList.Count)
-//                        showindex = g.conf.battleEffect._allConfList.Count - 1;
-//                    ModBattleEvent.SceneBattle.effect.Create(defres[showindex], ModBattleEvent.PlayerUnit.transform.position, 3f);
-//                    DebugHelper.WriteLine($"DefRes: {defres[showindex]}");
-//                }
-//                else if (Input.GetKey(KeyCode.LeftControl) && Input.GetKeyDown(KeyCode.C))
-//                {
-//                    ModBattleEvent.SceneBattle.effect.Create(defres[showindex], ModBattleEvent.PlayerUnit.transform.position, 3f);
-//                    DebugHelper.WriteLine($"DefRes: {defres[showindex]}");
-//                }
-//                else if (Input.GetKey(KeyCode.LeftControl) && Input.GetKeyDown(KeyCode.S))
-//                {
-//                    DebugHelper.Save();
-//                }
-//            }
-//        }
+//        /* === Show efx === */
+//        //private int showindex = 0;
+//        //private string[] defres = File.ReadAllLines(ConfHelper.GetConfFilePath(ModMain.ModObj.ModId, "_Def_Res_Efx_Battle_Unit.txt"));
+//        //public override void OnMonoUpdate()
+//        //{
+//        //    base.OnMonoUpdate();
+//        //    if (GameHelper.IsInBattlle())
+//        //    {
+//        //        if (Input.GetKey(KeyCode.LeftControl) && Input.GetKeyDown(KeyCode.Z))
+//        //        {
+//        //            showindex--;
+//        //            if (showindex < 0)
+//        //                showindex = 0;
+//        //            ModBattleEvent.SceneBattle.effect.Create(defres[showindex], ModBattleEvent.PlayerUnit.transform.position, 3f);
+//        //            DebugHelper.WriteLine($"DefRes: {defres[showindex]}");
+//        //        }
+//        //        else if (Input.GetKey(KeyCode.LeftControl) && Input.GetKeyDown(KeyCode.X))
+//        //        {
+//        //            showindex++;
+//        //            if (showindex >= g.conf.battleEffect._allConfList.Count)
+//        //                showindex = g.conf.battleEffect._allConfList.Count - 1;
+//        //            ModBattleEvent.SceneBattle.effect.Create(defres[showindex], ModBattleEvent.PlayerUnit.transform.position, 3f);
+//        //            DebugHelper.WriteLine($"DefRes: {defres[showindex]}");
+//        //        }
+//        //        else if (Input.GetKey(KeyCode.LeftControl) && Input.GetKeyDown(KeyCode.C))
+//        //        {
+//        //            ModBattleEvent.SceneBattle.effect.Create(defres[showindex], ModBattleEvent.PlayerUnit.transform.position, 3f);
+//        //            DebugHelper.WriteLine($"DefRes: {defres[showindex]}");
+//        //        }
+//        //        else if (Input.GetKey(KeyCode.LeftControl) && Input.GetKeyDown(KeyCode.S))
+//        //        {
+//        //            DebugHelper.Save();
+//        //        }
+//        //    }
+//        //}
 
 //        /* === Test attributes === */
 //        //public override void OnSave(ETypeData e)
