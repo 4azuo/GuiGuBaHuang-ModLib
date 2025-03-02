@@ -2,7 +2,6 @@
 using ModLib.Enum;
 using ModLib.Mod;
 using System;
-using System.Linq;
 using System.Collections.Generic;
 
 namespace MOD_nE7UL2.Mod
@@ -26,31 +25,44 @@ namespace MOD_nE7UL2.Mod
             base.OnMonthlyForEachWUnit(wunit);
             if (!wunit.IsPlayer())
             {
-                var luck = wunit.GetDynProperty(UnitDynPropertyEnum.Luck).value;
-                UpgradeMartial(wunit, luck / 100);
+                UpgradeMartial(wunit);
             }
         }
 
-        public void UpgradeMartial(WorldUnitBase wunit, float ratio)
+        public void UpgradeMartial(WorldUnitBase wunit)
         {
-            UpgradeMartial(wunit, ModMain.ModObj.GameSettings.NpcUpgradeSkillConfigs.RandomUpgradingMartial(CommonTool.Random(0.00f, 100.00f), ratio));
+            var luck = wunit.GetDynProperty(UnitDynPropertyEnum.Luck).value;
+            UpgradeMartial(wunit, ModMain.ModObj.GameSettings.NpcUpgradeSkillConfigs.RandomUpgradingMartial(CommonTool.Random(0.00f, 100.00f), luck / 100));
         }
 
         public void UpgradeMartial(WorldUnitBase wunit, MartialType martialType)
         {
             if (martialType == MartialType.None)
                 return;
+            var wunitGrade = wunit.GetGradeLvl();
             var insight = wunit.GetDynProperty(UnitDynPropertyEnum.Talent).value;
             var luck = wunit.GetDynProperty(UnitDynPropertyEnum.Luck).value;
             foreach (var p in wunit.data.unitData.GetActionMartial(martialType))
             {
-                if (CommonTool.Random(0.00f, 100.00f).IsBetween(0.00f, insight / 1000f + luck / 100f) &&
-                    p.data.propsInfoBase.grade < wunit.GetGradeLvl() &&
-                    !wunit.GetUnitProps().Any(x => x.propsInfoBase.baseID == p.data.propsInfoBase.baseID && x.propsInfoBase.grade > p.data.propsInfoBase.grade))
+                //upgrade skill
+                if (CommonTool.Random(0.00f, 100.00f).IsBetween(0.00f, insight / 1000f + luck / 100f))
                 {
-                    //MartialTool.CreateAbilityData(p.data.propsInfoBase.baseID, p.data.propsInfoBase.grade + 1); wrong...
+                    if (p.data.propsInfoBase.level < 6 && p.data.propsInfoBase.grade <= wunitGrade)
+                    {
+                        p.data.propsInfoBase.level++;
+                        DebugHelper.WriteLine($"{wunit.GetUnitId()} up level");
+                    }
+                    else
+                    if (p.data.propsInfoBase.grade < 10 && p.data.propsInfoBase.grade < wunitGrade)
+                    {
+                        var newSkill = wunit.AddUnitProp(martialType, p.data.propsInfoBase.baseID, p.data.propsInfoBase.grade + 1);
+                        newSkill.data.propsInfoBase.level = CommonTool.Random(1, 5);
+                        DebugHelper.WriteLine($"{wunit.GetUnitId()} up grade");
+                    }
                 }
+                //add skill exp
                 AddMartialExp(wunit, martialType, p);
+                //upgrade prefix
                 UpgradeMartialPrefix(wunit, p);
             }
         }

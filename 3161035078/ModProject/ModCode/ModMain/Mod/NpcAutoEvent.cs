@@ -50,5 +50,11 @@ namespace MOD_nE7UL2.Mod
                 }
             }
         }
+
+        public override void OnYearly()
+        {
+            base.OnYearly();
+            g.world.run.npc.AddUnit(CommonTool.Random(1, g.world.playerUnit.GetGradeLvl()), 1);
+        }
     }
 }
