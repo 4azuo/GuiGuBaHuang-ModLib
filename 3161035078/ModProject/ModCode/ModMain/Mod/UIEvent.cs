@@ -91,10 +91,6 @@ namespace MOD_nE7UL2.Mod
                         {
                             UpdateAct = (x) => x.Pos(ui.LastCol - 8, ui.FirstRow + 1),
                         });
-                        ui.AddToolTipButton(ui.LastCol - 12, ui.FirstRow + 1, GameTool.LS("other500020020")).SetWork(new UIItemWork
-                        {
-                            UpdateAct = (x) => x.Pos(ui.LastCol - 12, ui.FirstRow + 1),
-                        });
                     }
                     else
                     {
@@ -103,6 +99,10 @@ namespace MOD_nE7UL2.Mod
                             UpdateAct = (x) => x.Pos(ui.LastCol - 8, ui.FirstRow + 1),
                         });
                     }
+                    ui.AddToolTipButton(ui.LastCol - 12, ui.FirstRow + 1, GameTool.LS("other500020020")).SetWork(new UIItemWork
+                    {
+                        UpdateAct = (x) => x.Pos(ui.LastCol - 12, ui.FirstRow + 1),
+                    });
                 }
                 ui.IsAutoUpdate = true;
             }
