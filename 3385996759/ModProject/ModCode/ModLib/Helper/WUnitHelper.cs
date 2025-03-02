@@ -3,6 +3,7 @@ using ModLib.Enum;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.AccessControl;
 using UnityEngine;
 
 public static class WUnitHelper
@@ -305,6 +306,38 @@ public static class WUnitHelper
     public static void ResetGradeLevel(this WorldUnitBase wunit)
     {
         wunit.SetProperty<int>(UnitPropertyEnum.GradeID, 1);
+    }
+
+    public static DataProps.PropsSkillData AddUnitSkillProp(this WorldUnitBase wunit, int id, int grade)
+    {
+        var skill = MartialTool.CreateSkillData(id, grade);
+        wunit.AddUnitProp(skill.data);
+        return skill;
+    }
+
+    public static DataProps.PropsStepData AddUnitStepProp(this WorldUnitBase wunit, int id, int grade)
+    {
+        var skill = MartialTool.CreateStepData(id, grade);
+        wunit.AddUnitProp(skill.data);
+        return skill;
+    }
+
+    public static DataProps.PropsAbilityData AddUnitAbilityProp(this WorldUnitBase wunit, int id, int grade)
+    {
+        var skill = MartialTool.CreateAbilityData(id, grade);
+        wunit.AddUnitProp(skill.data);
+        return skill;
+    }
+
+    public static DataProps.MartialData AddUnitProp(this WorldUnitBase wunit, MartialType mtype, int id, int grade)
+    {
+        if (mtype == MartialType.Ability)
+            return wunit.AddUnitAbilityProp(id, grade);
+        else if (mtype == MartialType.Step)
+            return wunit.AddUnitStepProp(id, grade);
+        else if (mtype == MartialType.SkillLeft || mtype == MartialType.SkillRight || mtype == MartialType.Ultimate)
+            return wunit.AddUnitSkillProp(id, grade);
+        return null;
     }
 
     public static void AddUnitProp(this WorldUnitBase wunit, DataProps.PropsData prop)

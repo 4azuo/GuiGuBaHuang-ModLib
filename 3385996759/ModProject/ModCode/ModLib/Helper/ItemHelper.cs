@@ -186,4 +186,9 @@ public static class ItemHelper
         }
         return null;
     }
+
+    public static string GetMartialTypeName(this MartialType t)
+    {
+        return g.conf.battleSkillAttack.GetMartialTypeName(t);
+    }
 }
