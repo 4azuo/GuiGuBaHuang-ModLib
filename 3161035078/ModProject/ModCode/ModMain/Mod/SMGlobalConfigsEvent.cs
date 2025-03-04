@@ -50,6 +50,7 @@ namespace MOD_nE7UL2.Mod
         public bool EnableTrainer { get; set; } = false;
         public int NPCAmount { get; set; } = 2000;
         public bool AllowTownBuildupOverTime { get; set; } = false;
+        public bool AllowTownBuildupOverTime_IncludeFirstTown { get; set; } = false;
         public int GrowUpSpeed { get; set; } = 3;
         public bool LostItemWhenDie { get; set; } = false;
 
@@ -85,6 +86,7 @@ namespace MOD_nE7UL2.Mod
         private UIItemComposite tglEnableTrainer;
         private UIItemComposite slNPCAmount;
         private UIItemComposite tglAllowTownBuildupOverTime;
+        private UIItemComposite tglAllowTownBuildupOverTime_IncludeFirstTown;
         private UIItemComposite slGrowUpSpeed;
         private UIItemComposite tglLostItemWhenDie;
 
@@ -213,6 +215,11 @@ namespace MOD_nE7UL2.Mod
             Register(() => tglLostItemWhenDie,
                 funcCal: s => 10000,
                 funcCond: s => s.Get().Parse<bool>());
+            Register(() => tglAllowTownBuildupOverTime_IncludeFirstTown,
+                funcCal: s => 1000,
+                funcCond: s => s.Get().Parse<bool>(),
+                funcEna: s => tglAllowTownBuildupOverTime.Get().Parse<bool>(),
+                onChange: (s, v) => tglAllowTownBuildupOverTime.Set(false));
         }
 
         private void Register(
@@ -314,6 +321,7 @@ namespace MOD_nE7UL2.Mod
                 tglSysOnelife = uiCustom.AddCompositeToggle(col, row++, GameTool.LS("smcfgs023"), Onelife, GameTool.LS("smcfgs102"));
                 row++;
                 tglAllowTownBuildupOverTime = uiCustom.AddCompositeToggle(col, row++, GameTool.LS("smcfgs050"), AllowTownBuildupOverTime, GameTool.LS("smcfgs102"));
+                tglAllowTownBuildupOverTime_IncludeFirstTown = uiCustom.AddCompositeToggle(col, row++, GameTool.LS("smcfgs057"), AllowTownBuildupOverTime_IncludeFirstTown, GameTool.LS("smcfgs102"));
                 tglSysHideBattleMap = uiCustom.AddCompositeToggle(col, row++, GameTool.LS("smcfgs024"), HideBattleMap, GameTool.LS("smcfgs102"));
                 cbPriorityDestinyLevel = uiCustom.AddCompositeSelect(col, row++, GameTool.LS("smcfgs025"),
                     new string[] {
@@ -452,6 +460,7 @@ namespace MOD_nE7UL2.Mod
             tglEnableTrainer.Set(false);
             slNPCAmount.Set(2000f);
             tglAllowTownBuildupOverTime.Set(false);
+            tglAllowTownBuildupOverTime_IncludeFirstTown.Set(false);
             slGrowUpSpeed.Set(3f);
             tglLostItemWhenDie.Set(false);
         }
@@ -464,9 +473,9 @@ namespace MOD_nE7UL2.Mod
             slMonstBasis.SetPercent(level * 0.04000f);
             slMonstSpecialRate.SetPercent(level * 0.10000f);
             slEcoTaxRate.SetPercent(level * 0.00500f);
-            slEcoInfRate.SetPercent(level * 0.10000f);
+            slEcoInfRate.SetPercent(level * 0.05000f);
             slEcoBuildingCost.SetPercent(level * 0.04000f);
-            slEcoBankAccCost.SetPercent(level * 0.10000f);
+            slEcoBankAccCost.SetPercent(level * 0.05000f);
             slEcoBankFee.SetPercent(level * 0.01000f);
             slEcoRefineCost.SetPercent(level * 0.10000f);
             slEcoSectExchangeRate.SetPercent(level * 0.10000f);
@@ -488,6 +497,7 @@ namespace MOD_nE7UL2.Mod
             tglSysOnelife.Set(level > 9);
             slNPCAmount.SetPercent(level * 0.02000f, 2000f);
             tglAllowTownBuildupOverTime.Set(level > 0);
+            tglAllowTownBuildupOverTime_IncludeFirstTown.Set(level > 5);
             slGrowUpSpeed.SetPercent(1.0000f - (level * 0.10000f), 3, 24);
             tglLostItemWhenDie.Set(level > 4);
         }
@@ -524,6 +534,7 @@ namespace MOD_nE7UL2.Mod
             EnableTrainer = tglEnableTrainer.Get().Parse<bool>();
             NPCAmount = slNPCAmount.Get().Parse<int>();
             AllowTownBuildupOverTime = tglAllowTownBuildupOverTime.Get().Parse<bool>();
+            AllowTownBuildupOverTime_IncludeFirstTown = tglAllowTownBuildupOverTime_IncludeFirstTown.Get().Parse<bool>();
             GrowUpSpeed = slGrowUpSpeed.Get().Parse<int>();
             LostItemWhenDie = tglLostItemWhenDie.Get().Parse<bool>();
             CacheHelper.SaveGlobalCache(this);

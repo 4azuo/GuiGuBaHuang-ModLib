@@ -35,9 +35,12 @@ namespace MOD_nE7UL2.Mod
             {
                 foreach (var build in g.world.build.GetBuilds())
                 {
-                    foreach (var e in BuildingCostEnum.GetAllEnums<BuildingCostEnum>())
+                    if (SMLocalConfigsEvent.Instance.Configs.AllowTownBuildupOverTime_IncludeFirstTown || build.gridData.areaBaseID > 1)
                     {
-                        Destroy(build, e);
+                        foreach (var e in BuildingCostEnum.GetAllEnums<BuildingCostEnum>())
+                        {
+                            Destroy(build, e);
+                        }
                     }
                 }
             }
