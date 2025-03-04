@@ -347,7 +347,7 @@ namespace MOD_nE7UL2.Mod
         public static KeyValuePair<string, List<string>>? GetTeamData(WorldUnitBase wunit)
         {
             var wunitId = wunit.GetUnitId();
-            if (!IsHired(wunit))
+            if (!IsHired(wunit) || !Instance.TeamData.Any(x => x.Value.Contains(wunitId)))
                 return new KeyValuePair<string, List<string>>(wunitId, new List<string> { wunitId });
             return Instance.TeamData.First(x => x.Value.Contains(wunitId));
         }

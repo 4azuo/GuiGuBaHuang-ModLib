@@ -56,6 +56,7 @@
 	{ "id": -1000001054, "key": "smcfgs054", "ch": "导出配置","en|tc|kr": "Export Configs" },
 	{ "id": -1000001055, "key": "smcfgs055", "ch": "导入配置","en|tc|kr": "Import Configs" },
 	{ "id": -1000001056, "key": "smcfgs056", "ch": "死亡掉落物品","en|tc|kr": "Lost Items When Die" },
+	{ "id": -1000001057, "key": "smcfgs057", "ch|en|tc|kr": "(Include First Town)" },
 	{ "id": -1000001101, "key": "smcfgs101", "ch": "{1}% ({0}P)","en|tc|kr": "{1}% ({0}P)" },
 	{ "id": -1000001102, "key": "smcfgs102", "ch": "({0}P)","en|tc|kr": "({0}P)" },
 	{ "id": -1000001103, "key": "smcfgs103", "ch": "{1} ({0}P)","en|tc|kr": "{1} ({0}P)" },
