@@ -49,42 +49,42 @@ namespace ModLib.Mod
         #region ModLib - Events
         public virtual void OnPlayerOpenTreeVault(ETypeData e)
         {
-            EventHelper.RunMinorEvents(e);
+            EventHelper.RunMinorEvents("OnPlayerOpenTreeVault", e);
         }
 
         public virtual void OnPlayerEquipCloth(ETypeData e)
         {
-            EventHelper.RunMinorEvents(e);
+            EventHelper.RunMinorEvents("OnPlayerEquipCloth", e);
         }
 
         public virtual void OnPlayerInMonstArea(ETypeData e)
         {
-            EventHelper.RunMinorEvents(e);
+            EventHelper.RunMinorEvents("OnPlayerInMonstArea", e);
         }
 
         public virtual void OnPlayerRoleEscapeInMap(ETypeData e)
         {
-            EventHelper.RunMinorEvents(e);
+            EventHelper.RunMinorEvents("OnPlayerRoleEscapeInMap", e);
         }
 
         public virtual void OnPlayerRoleUpGradeBig(ETypeData e)
         {
-            EventHelper.RunMinorEvents(e);
+            EventHelper.RunMinorEvents("OnPlayerRoleUpGradeBig", e);
         }
 
         public virtual void OnUpGradeAndCloseFateFeatureUI(ETypeData e)
         {
-            EventHelper.RunMinorEvents(e);
+            EventHelper.RunMinorEvents("OnUpGradeAndCloseFateFeatureUI", e);
         }
 
         public virtual void OnUseHobbyProps(ETypeData e)
         {
-            EventHelper.RunMinorEvents(e);
+            EventHelper.RunMinorEvents("OnUseHobbyProps", e);
         }
 
         //public virtual void OnFortuitousTrigger(ETypeData e)
         //{
-        //    EventHelper.RunMinorEvents(e);
+        //    EventHelper.RunMinorEvents("OnFortuitousTrigger", e);
         //}
         #endregion
     }

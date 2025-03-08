@@ -128,116 +128,116 @@ namespace ModLib.Mod
         #region ModLib - Events
         public virtual void OnBattleUnitInit(UnitInit e)
         {
-            EventHelper.RunMinorEvents(e);
+            EventHelper.RunMinorEvents("OnBattleUnitInit", e);
         }
 
         public virtual void OnBattleUnitHit(UnitHit e)
         {
-            EventHelper.RunMinorEvents(e);
+            EventHelper.RunMinorEvents("OnBattleUnitHit", e);
         }
 
         public virtual void OnBattleUnitHitDynIntHandler(UnitHitDynIntHandler e)
         {
-            EventHelper.RunMinorEvents(e);
+            EventHelper.RunMinorEvents("OnBattleUnitHitDynIntHandler", e);
         }
 
         public virtual void OnBattleUnitShieldHitDynIntHandler(UnitShieldHitDynIntHandler e)
         {
-            EventHelper.RunMinorEvents(e);
+            EventHelper.RunMinorEvents("OnBattleUnitShieldHitDynIntHandler", e);
         }
 
         public virtual void OnBattleUnitUseProp(UnitUseProp e)
         {
-            EventHelper.RunMinorEvents(e);
+            EventHelper.RunMinorEvents("OnBattleUnitUseProp", e);
         }
 
         public virtual void OnBattleUnitUseSkill(UnitUseSkill e)
         {
-            EventHelper.RunMinorEvents(e);
+            EventHelper.RunMinorEvents("OnBattleUnitUseSkill", e);
         }
 
         public virtual void OnBattleUnitUseStep(UnitUseStep e)
         {
-            EventHelper.RunMinorEvents(e);
+            EventHelper.RunMinorEvents("OnBattleUnitUseStep", e);
         }
 
         public virtual void OnBattleUnitDie(UnitDie e)
         {
-            EventHelper.RunMinorEvents(e);
+            EventHelper.RunMinorEvents("OnBattleUnitDie", e);
         }
 
         public virtual void OnBattleUnitDieEnd(ETypeData e)
         {
-            EventHelper.RunMinorEvents(e);
+            EventHelper.RunMinorEvents("OnBattleUnitDieEnd", e);
         }
 
         public virtual void OnBattleUnitAddEffectStart(UnitAddEffectStart e)
         {
-            EventHelper.RunMinorEvents(e);
+            EventHelper.RunMinorEvents("OnBattleUnitAddEffectStart", e);
         }
 
         public virtual void OnBattleUnitAddEffect(UnitAddEffect e)
         {
-            EventHelper.RunMinorEvents(e);
+            EventHelper.RunMinorEvents("OnBattleUnitAddEffect", e);
         }
 
         public virtual void OnBattleUnitAddHP(UnitAddHP e)
         {
-            EventHelper.RunMinorEvents(e);
+            EventHelper.RunMinorEvents("OnBattleUnitAddHP", e);
         }
 
         public virtual void OnBattleUnitUpdateProperty(UnitUpdateProperty e)
         {
-            EventHelper.RunMinorEvents(e);
+            EventHelper.RunMinorEvents("OnBattleUnitUpdateProperty", e);
         }
 
         public virtual void OnBattleSetUnitType(SetUnitType e)
         {
-            EventHelper.RunMinorEvents(e);
+            EventHelper.RunMinorEvents("OnBattleSetUnitType", e);
         }
 
         public virtual void OnBattleUnitInto(UnitCtrlBase e)
         {
             var monst = e.TryCast<UnitCtrlMonst>();
             DebugHelper.WriteLine($"Unit: SoleId:{e.data.createUnitSoleID}, IsEnemy:{e.IsEnemy(UnitType.Player)}, IsWorldUnit:{e.IsWorldUnit()}, IsPlayer:{e.IsPlayer()}, IsNPC:{e.IsNPC()}, IsHuman:{e.IsHuman()}, IsMonster:{e.IsMonster()}, IsMonsterHuman:{e.IsMonsterHuman()}, IsFairy:{e.IsFairy()}, IsHerd:{e.IsHerd()}, IsPotmon:{e.IsPotmon()}, UnitType:{e.data.unitType}, MonstType:{monst?.data.monstType}, MonstId:{monst?.data.unitAttrItem.id}, MonstName:{monst?.data.unitAttrItem.name}");
-            EventHelper.RunMinorEvents(e);
+            EventHelper.RunMinorEvents("OnBattleUnitInto", e);
         }
 
         public virtual void OnBattleStart(ETypeData e)
         {
             DebugHelper.WriteLine($"Battle: SoleId:{g.world.battle.data.battleID}, DungeonId:{g.world.battle.data.dungeonBaseItem.id}, DungeonName:{g.world.battle.data.dungeonBaseItem.name}, Lvl:{g.world.battle.data.dungeonLevel}, SelfBattle:{g.world.battle.data.isSelfBattle}, RealBattle:{g.world.battle.data.isRealBattle}, RoomCount:{SceneType.battle.room.room.allRoom.Count}, RoomInfo:{string.Join(";", SceneType.battle.room.room.allRoom.ToArray().Select(x => $"(Id:{x.roomBaseItem.id}, Type:{x.roomBaseItem.type}, Width:{x.roomBaseItem.width}, Height:{x.roomBaseItem.height})"))}");
-            EventHelper.RunMinorEvents(e);
+            EventHelper.RunMinorEvents("OnBattleStart", e);
         }
 
         public virtual void OnBattleEnd(BattleEnd e)
         {
-            EventHelper.RunMinorEvents(e);
+            EventHelper.RunMinorEvents("OnBattleEnd", e);
         }
 
         public virtual void OnBattleEndOnce(BattleEnd e)
         {
-            EventHelper.RunMinorEvents(e);
+            EventHelper.RunMinorEvents("OnBattleEndOnce", e);
             DebugHelper.Save();
         }
 
         public virtual void OnBattleEndFront(ETypeData e)
         {
-            EventHelper.RunMinorEvents(e);
+            EventHelper.RunMinorEvents("OnBattleEndFront", e);
         }
 
         public virtual void OnBattleEndHandler(BattleEndHandler e)
         {
-            EventHelper.RunMinorEvents(e);
+            EventHelper.RunMinorEvents("OnBattleEndHandler", e);
         }
 
         public virtual void OnBattleEscapeFailed(ETypeData e)
         {
-            EventHelper.RunMinorEvents(e);
+            EventHelper.RunMinorEvents("OnBattleEscapeFailed", e);
         }
 
         public virtual void OnBattleExit(ETypeData e)
         {
-            EventHelper.RunMinorEvents(e);
+            EventHelper.RunMinorEvents("OnBattleExit", e);
         }
         #endregion
     }
