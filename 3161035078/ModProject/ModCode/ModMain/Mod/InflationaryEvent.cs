@@ -4,6 +4,8 @@ using ModLib.Mod;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using static DataBuildTown;
+using static Il2CppSystem.Collections.Hashtable;
 using static MOD_nE7UL2.Object.GameStts;
 
 namespace MOD_nE7UL2.Mod
@@ -14,7 +16,7 @@ namespace MOD_nE7UL2.Mod
         public static InflationaryEvent Instance { get; set; }
 
         public const int REACH_LIMIT_DRAMA = 499919998;
-        public const int LIMIT = 500000000;
+        public const int LIMIT = 1000000000;
 
         public static _InflationaryConfigs Configs => ModMain.ModObj.GameSettings.InflationaryConfigs;
         public static Dictionary<string, int> OriginItemValues { get; } = new Dictionary<string, int>();
@@ -44,6 +46,15 @@ namespace MOD_nE7UL2.Mod
                 player.SetUnitMoney(0);
                 player.RemoveStorageItem(ModLibConst.MONEY_PROP_ID);
                 DramaTool.OpenDrama(REACH_LIMIT_DRAMA);
+
+                foreach (var town in g.world.build.GetBuilds<MapBuildTown>())
+                {
+                    MapBuildPropertyEvent.AddBuildProperty(town, -(MapBuildPropertyEvent.GetBuildProperty(town) * 0.8).Parse<long>());
+                }
+                foreach (var school in g.world.build.GetBuilds<MapBuildSchool>())
+                {
+                    MapBuildPropertyEvent.AddBuildProperty(school, -(MapBuildPropertyEvent.GetBuildProperty(school) * 0.8).Parse<long>());
+                }
             }
         }
 
