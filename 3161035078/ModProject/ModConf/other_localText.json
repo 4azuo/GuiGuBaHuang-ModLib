@@ -82,5 +82,9 @@
 		"key": "other500020038",
 		"ch|en|tc|kr": "HP/MP affect the shield when entering battle.\nInsight and luck have a significant impact on random events as well as growth and learning speed."
 	},
-
+	{
+		"id": 500020039,
+		"key": "other500020039",
+		"ch|en|tc|kr": "Dont play with another mod which increase game difficult."
+	},
 ]

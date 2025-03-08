@@ -218,8 +218,7 @@ namespace MOD_nE7UL2.Mod
             Register(() => tglAllowTownBuildupOverTime_IncludeFirstTown,
                 funcCal: s => 1000,
                 funcCond: s => s.Get().Parse<bool>(),
-                funcEna: s => tglAllowTownBuildupOverTime.Get().Parse<bool>(),
-                onChange: (s, v) => tglAllowTownBuildupOverTime.Set(false));
+                funcEna: s => tglAllowTownBuildupOverTime.Get().Parse<bool>());
         }
 
         private void Register(
@@ -280,6 +279,8 @@ namespace MOD_nE7UL2.Mod
             {
                 int col, row;
 
+                uiCustom.AddToolTipButton(GameTool.LS("other500020039"));
+
                 col = 2; row = 0;
                 uiCustom.AddText(col, row++, GameTool.LS("smcfgs000")).Format(null, 17, FontStyle.Italic).Align(TextAnchor.MiddleRight);
                 slMonstAtk = uiCustom.AddCompositeSlider(col, row++, GameTool.LS("smcfgs001"), -0.50f, 10.00f, AddAtkRate, GameTool.LS("smcfgs101"));
@@ -319,7 +320,6 @@ namespace MOD_nE7UL2.Mod
                 tglSysHideReload = uiCustom.AddCompositeToggle(col, row++, GameTool.LS("smcfgs022"), HideReloadButton, GameTool.LS("smcfgs102"));
                 tglLostItemWhenDie = uiCustom.AddCompositeToggle(col, row++, GameTool.LS("smcfgs056"), HideReloadButton, GameTool.LS("smcfgs102"));
                 tglSysOnelife = uiCustom.AddCompositeToggle(col, row++, GameTool.LS("smcfgs023"), Onelife, GameTool.LS("smcfgs102"));
-                row++;
                 tglAllowTownBuildupOverTime = uiCustom.AddCompositeToggle(col, row++, GameTool.LS("smcfgs050"), AllowTownBuildupOverTime, GameTool.LS("smcfgs102"));
                 tglAllowTownBuildupOverTime_IncludeFirstTown = uiCustom.AddCompositeToggle(col, row++, GameTool.LS("smcfgs057"), AllowTownBuildupOverTime_IncludeFirstTown, GameTool.LS("smcfgs102"));
                 tglSysHideBattleMap = uiCustom.AddCompositeToggle(col, row++, GameTool.LS("smcfgs024"), HideBattleMap, GameTool.LS("smcfgs102"));

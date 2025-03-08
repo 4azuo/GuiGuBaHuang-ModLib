@@ -58,7 +58,7 @@ namespace MOD_nE7UL2.Mod
             var s = scale.Split('|');
             var type = s[0].Parse<int>();
             var value = s[1].Parse<float>();
-            return $"{s[0]}|{(value + (value * rate)).Parse<int>()}";
+            return $"{type}|{(value + (value * rate)).Parse<int>()}";
         }
 
         public override void OnBattleUnitDie(UnitDie e)
