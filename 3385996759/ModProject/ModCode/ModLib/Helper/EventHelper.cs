@@ -7,7 +7,7 @@ using ModLib.Object;
 
 public static class EventHelper
 {
-    public static Dictionary<string, List<ModEvent>> ProcessingEvents { get; } = new Dictionary<string, List<ModEvent>>();
+    //public static Dictionary<string, List<ModEvent>> ProcessingEvents { get; } = new Dictionary<string, List<ModEvent>>();
     public static CachableObject RunningEvent { get; private set; }
 
     //public static void RunMinorEvents(object e = null)
@@ -72,11 +72,12 @@ public static class EventHelper
 
     public static List<ModEvent> GetEvents(string methodName)
     {
-        if (!ProcessingEvents.ContainsKey(methodName))
-        {
-            ProcessingEvents.Add(methodName, GetEvents().Where(x => x.IsDeclaredMethod(methodName)).ToList());
-        }
-        return ProcessingEvents[methodName];
+        //if (!ProcessingEvents.ContainsKey(methodName))
+        //{
+        //    ProcessingEvents.Add(methodName, GetEvents().Where(x => x.IsDeclaredMethod(methodName)).ToList());
+        //}
+        //return ProcessingEvents[methodName];
+        return GetEvents().Where(x => x.IsDeclaredMethod(methodName)).ToList();
     }
 
     public static List<ModEvent> GetEvents()
