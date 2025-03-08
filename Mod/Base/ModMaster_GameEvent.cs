@@ -146,8 +146,7 @@ namespace ModLib.Mod
         public virtual void OnOpenUIStart(OpenUIStart e)
         {
             DebugHelper.WriteLine($"Open: {e.uiType.uiName}");
-
-            EventHelper.RunMinorEvents(e);
+            EventHelper.RunMinorEvents("OnOpenUIStart", e);
         }
 
         public virtual void OnOpenUIEnd(OpenUIEnd e)
@@ -213,91 +212,90 @@ namespace ModLib.Mod
                 }
             }
 
-            EventHelper.RunMinorEvents(e);
+            EventHelper.RunMinorEvents("OnOpenUIEnd", e);
         }
 
         public virtual void OnCloseUIStart(CloseUIStart e)
         {
-            EventHelper.RunMinorEvents(e);
+            EventHelper.RunMinorEvents("OnCloseUIStart", e);
         }
 
         public virtual void OnCloseUIEnd(CloseUIEnd e)
         {
-            EventHelper.RunMinorEvents(e);
-
+            EventHelper.RunMinorEvents("OnCloseUIEnd", e);
             DebugHelper.WriteLine($"Close: {e.uiType.uiName}");
         }
 
         public virtual void OnLoadNewGame()
         {
-            EventHelper.RunMinorEvents();
+            EventHelper.RunMinorEvents("OnLoadNewGame");
         }
 
         public virtual void OnLoadGameBefore()
         {
-            EventHelper.RunMinorEvents();
+            EventHelper.RunMinorEvents("OnLoadGameBefore");
         }
 
         public virtual void OnLoadGame()
         {
-            EventHelper.RunMinorEvents();
+            EventHelper.RunMinorEvents("OnLoadGame");
         }
 
         public virtual void OnLoadGameAfter()
         {
-            EventHelper.RunMinorEvents();
+            EventHelper.RunMinorEvents("OnLoadGameAfter");
         }
 
         //public virtual void OnLoadMapNewGame()
         //{
-        //    EventHelper.RunMinorEvents();
+        //    EventHelper.RunMinorEvents("OnLoadMapNewGame");
         //}
 
         //public virtual void OnLoadMapFirst()
         //{
-        //    EventHelper.RunMinorEvents();
+        //    EventHelper.RunMinorEvents("OnLoadMapFirst");
         //}
 
         public virtual void OnInitWorld(ETypeData e)
         {
-            EventHelper.RunMinorEvents(e);
+            EventHelper.RunMinorEvents("OnInitWorld", e);
         }
 
         public virtual void OnLoadScene(LoadScene e)
         {
-            EventHelper.RunMinorEvents(e);
+            EventHelper.RunMinorEvents("OnLoadScene", e);
         }
 
         public virtual void OnLoadSceneStart(LoadSceneStart e)
         {
-            EventHelper.RunMinorEvents(e);
+            EventHelper.RunMinorEvents("OnLoadSceneStart", e);
         }
 
         public virtual void OnIntoWorld(ETypeData e)
         {
-            EventHelper.RunMinorEvents(e);
+            EventHelper.RunMinorEvents("OnIntoWorld", e);
         }
 
         public virtual void OnFirstMonth()
         {
-            EventHelper.RunMinorEvents();
+            EventHelper.RunMinorEvents("OnFirstMonth");
         }
 
         public virtual void OnYearly()
         {
-            EventHelper.RunMinorEvents();
+            EventHelper.RunMinorEvents("OnYearly");
         }
 
         public virtual void OnMonthly()
         {
-            EventHelper.RunMinorEvents();
+            EventHelper.RunMinorEvents("OnMonthly");
         }
 
         public virtual void OnMonthlyForEachWUnit()
         {
             foreach (var wunit in g.world.unit.GetUnits())
             {
-                EventHelper.RunMinorEvents(wunit);
+                EventHelper.RunMinorEvents("OnMonthlyForEachWUnit", wunit);
             }
         }
 
@@ -305,7 +303,7 @@ namespace ModLib.Mod
         {
             //save log
             DebugHelper.WriteLine($"Save: {GameHelper.GetGameYear()}年{GameHelper.GetGameMonth()}月{GameHelper.GetGameDay()}日");
-            EventHelper.RunMinorEvents(e);
+            EventHelper.RunMinorEvents("OnSave", e);
             Gamevars.Save();
             CacheHelper.Save();
             DebugHelper.Save();
@@ -313,62 +311,62 @@ namespace ModLib.Mod
 
         public virtual void OnOpenDrama(OpenDrama e)
         {
-            EventHelper.RunMinorEvents(e);
+            EventHelper.RunMinorEvents("OnOpenDrama", e);
         }
 
         public virtual void OnOpenNPCInfoUI(OpenNPCInfoUI e)
         {
-            EventHelper.RunMinorEvents(e);
+            EventHelper.RunMinorEvents("OnOpenNPCInfoUI", e);
         }
 
         public virtual void OnTaskAdd(TaskAdd e)
         {
-            EventHelper.RunMinorEvents(e);
+            EventHelper.RunMinorEvents("OnTaskAdd", e);
         }
 
         public virtual void OnTaskComplete(TaskComplete e)
         {
-            EventHelper.RunMinorEvents(e);
+            EventHelper.RunMinorEvents("OnTaskComplete", e);
         }
 
         public virtual void OnTaskFail(TaskFail e)
         {
-            EventHelper.RunMinorEvents(e);
+            EventHelper.RunMinorEvents("OnTaskFail", e);
         }
 
         public virtual void OnTaskGive(TaskGive e)
         {
-            EventHelper.RunMinorEvents(e);
+            EventHelper.RunMinorEvents("OnTaskGive", e);
         }
 
         public virtual void OnTaskOverl(TaskOverl e)
         {
-            EventHelper.RunMinorEvents(e);
+            EventHelper.RunMinorEvents("OnTaskOverl", e);
         }
 
         public virtual void OnUnitSetGrade(ETypeData e)
         {
-            EventHelper.RunMinorEvents(e);
+            EventHelper.RunMinorEvents("OnUnitSetGrade", e);
         }
 
         public virtual void OnUnitSetHeartState(ETypeData e)
         {
-            EventHelper.RunMinorEvents(e);
+            EventHelper.RunMinorEvents("OnUnitSetHeartState", e);
         }
 
         //public virtual void OnWorldRunStart()
         //{
-        //    EventHelper.RunMinorEvents();
+        //    EventHelper.RunMinorEvents("OnWorldRunStart");
         //}
 
         //public virtual void OnWorldRunEnd()
         //{
-        //    EventHelper.RunMinorEvents();
+        //    EventHelper.RunMinorEvents("OnWorldRunEnd");
         //}
 
         public virtual void OnMonoUpdate()
         {
-            EventHelper.RunMinorEvents();
+            EventHelper.RunMinorEvents("OnMonoUpdate");
         }
         #endregion
     }

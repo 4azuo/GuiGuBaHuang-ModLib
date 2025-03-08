@@ -29,22 +29,22 @@ namespace ModLib.Mod
         #region ModLib - Events
         public virtual void OnTimeUpdate()
         {
-            EventHelper.RunMinorEvents();
+            EventHelper.RunMinorEvents("OnTimeUpdate");
         }
 
         public virtual void OnTimeUpdate200ms()
         {
-            EventHelper.RunMinorEvents();
+            EventHelper.RunMinorEvents("OnTimeUpdate200ms");
         }
 
         public virtual void OnTimeUpdate500ms()
         {
-            EventHelper.RunMinorEvents();
+            EventHelper.RunMinorEvents("OnTimeUpdate500ms");
         }
 
         public virtual void OnTimeUpdate1s()
         {
-            EventHelper.RunMinorEvents();
+            EventHelper.RunMinorEvents("OnTimeUpdate1s");
         }
         #endregion
     }
