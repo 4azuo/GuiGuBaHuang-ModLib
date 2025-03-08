@@ -9,13 +9,13 @@ public static class EventHelper
 {
     public static CachableObject RunningEvent { get; private set; }
 
-    public static void RunMinorEvents(object e = null)
-    {
-        var methodName = TraceHelper.GetCurrentMethodInfo(2).Name;
-        RunMinorEvents(methodName, e);
-    }
+    //public static void RunMinorEvents(object e = null)
+    //{
+    //    var methodName = TraceHelper.GetCurrentMethodInfo(2).Name;
+    //    RunMinorEvents(methodName, e);
+    //}
 
-    public static void RunMinorEvents(string methodName, object e)
+    public static void RunMinorEvents(string methodName, object e = null)
     {
         var isInGame = GameHelper.IsInGame();
         var isInBattle = GameHelper.IsInBattlle();
