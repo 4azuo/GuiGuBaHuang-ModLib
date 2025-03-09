@@ -449,7 +449,7 @@ namespace MOD_nE7UL2.Mod
                 if (!TraningValues.ContainsKey(GetLimitKey(prop)))
                 {
                     TraningValues.Add(GetRatioKey(prop), prop.Values[P_RATIO].Parse<double>());
-                    TraningValues.Add(GetFactorKey(prop), prop.Values[P_FACTOR].Parse<double>());
+                    TraningValues.Add(GetFactorKey(prop), prop.Values[P_FACTOR].Parse<double>() * SMLocalConfigsEvent.Instance.Configs.GrowUpSpeed);
                     TraningValues.Add(GetLimitKey(prop), prop.Values[P_LIMIT].Parse<double>());
                 }
             }
@@ -538,9 +538,9 @@ namespace MOD_nE7UL2.Mod
                 DebugHelper.WriteLine($"BattleRewardEvent: lose");
                 if (g.world.battle.data.isRealBattle && !MapBuildBattleEvent.IsBattleTownWar() && !MapBuildBattleEvent.IsBattleMonstWave())
                 {
-                    //exp
                     if (ModBattleEvent.PlayerUnit.isDie)
                     {
+                        //exp
                         var gradeLvl = player.GetGradeLvl();
                         var bodyReconstructionItemId = BodyReconstructions.ContainsKey(gradeLvl) ? BodyReconstructions[gradeLvl] : new int[0];
                         if (bodyReconstructionItemId.Length == 0 || bodyReconstructionItemId.All(x => player.GetUnitPropCount(x) <= 0))
@@ -551,6 +551,11 @@ namespace MOD_nE7UL2.Mod
                         {
                             var item = bodyReconstructionItemId.First(x => player.GetUnitPropCount(x) > 0);
                             player.RemoveUnitProp(item, 1);
+                        }
+
+                        if (SMLocalConfigsEvent.Instance.Configs.AutoSaveAfterLostInBattle)
+                        {
+                            TimeSkipEvent.SkipTime(1);
                         }
                     }
 
@@ -580,6 +585,7 @@ namespace MOD_nE7UL2.Mod
                 //DebugHelper.WriteLine("1");
                 var dieUnit = e.unit;
                 var dieUnitWUnit = dieUnit.GetWorldUnit();
+                var isDieUnitWUnit = dieUnit?.IsWorldUnit() ?? false;
                 var killer = e?.hitData?.attackUnit;
                 var killerWUnit = killer?.GetWorldUnit();
                 var isKillerWUnit = killer?.IsWorldUnit() ?? false;
@@ -597,10 +603,11 @@ namespace MOD_nE7UL2.Mod
                 {
                     //life drain
                     //DebugHelper.WriteLine("3");
-                    var drainLife = Math.Max(12 * g.game.data.dataWorld.data.gameLevel.Parse<int>(), dieUnit.data.maxHP.value / (2400 / g.game.data.dataWorld.data.gameLevel.Parse<int>()));
+                    var drainLife = Math.Max(6/*month*/ * g.game.data.dataWorld.data.gameLevel.Parse<int>(), dieUnit.data.maxHP.value / (3000 / g.game.data.dataWorld.data.gameLevel.Parse<int>()));
+                    if (isDieUnitWUnit)
+                        dieUnitWUnit.AddProperty<int>(UnitPropertyEnum.Life, -drainLife);
                     if (isKillerWUnit)
-                        killerWUnit.AddProperty<int>(UnitPropertyEnum.Life, drainLife);
-                    dieUnitWUnit.AddProperty<int>(UnitPropertyEnum.Life, -drainLife);
+                        killerWUnit.AddProperty<int>(UnitPropertyEnum.Life, drainLife / 2);
 
                     //item
                     //DebugHelper.WriteLine("4");
