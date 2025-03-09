@@ -53,6 +53,8 @@ namespace MOD_nE7UL2.Mod
         public bool AllowTownBuildupOverTime_IncludeFirstTown { get; set; } = false;
         public int GrowUpSpeed { get; set; } = 3;
         public bool LostItemWhenDie { get; set; } = false;
+        public bool MonsterPropertiesDependOnPlayerProperties { get; set; } = false;
+        public bool AutoSaveAfterLostInBattle { get; set; } = false;
 
         //UI
         private UICustom1 uiCustom;
@@ -89,6 +91,8 @@ namespace MOD_nE7UL2.Mod
         private UIItemComposite tglAllowTownBuildupOverTime_IncludeFirstTown;
         private UIItemComposite slGrowUpSpeed;
         private UIItemComposite tglLostItemWhenDie;
+        private UIItemComposite tglMonsterPropertiesDependOnPlayerProperties;
+        private UIItemComposite tglAutoSaveAfterLostInBattle;
 
         //Score
         public static IList<SMItemWork> ScoreCalculator { get; } = new List<SMItemWork>();
@@ -219,6 +223,12 @@ namespace MOD_nE7UL2.Mod
                 funcCal: s => 1000,
                 funcCond: s => s.Get().Parse<bool>(),
                 funcEna: s => tglAllowTownBuildupOverTime.Get().Parse<bool>());
+            Register(() => tglMonsterPropertiesDependOnPlayerProperties,
+                funcCal: s => 5000,
+                funcCond: s => s.Get().Parse<bool>());
+            Register(() => tglAutoSaveAfterLostInBattle,
+                funcCal: s => 20000,
+                funcCond: s => s.Get().Parse<bool>());
         }
 
         private void Register(
@@ -338,11 +348,13 @@ namespace MOD_nE7UL2.Mod
                 tglSysNoRebirth = uiCustom.AddCompositeToggle(col, row++, GameTool.LS("smcfgs035"), NoRebirth, GameTool.LS("smcfgs102"));
                 tglAllowUpgradeNaturally = uiCustom.AddCompositeToggle(col, row++, GameTool.LS("smcfgs036"), AllowUpgradeNaturally, GameTool.LS("smcfgs102"));
                 uiCustom.AddText(col - 1, row++, GameTool.LS("smcfgs037")).Format(null, 13).Align(TextAnchor.MiddleLeft);
-                row++;
+                tglMonsterPropertiesDependOnPlayerProperties = uiCustom.AddCompositeToggle(col, row++, GameTool.LS("smcfgs058"), MonsterPropertiesDependOnPlayerProperties, GameTool.LS("smcfgs102"));
+                tglAutoSaveAfterLostInBattle = uiCustom.AddCompositeToggle(col, row++, GameTool.LS("smcfgs059"), AutoSaveAfterLostInBattle, GameTool.LS("smcfgs102"));
+                uiCustom.AddText(col - 1, row++, GameTool.LS("smcfgs060")).Format(null, 13).Align(TextAnchor.MiddleLeft);
+                tglSysBossHasShield = uiCustom.AddCompositeToggle(col, row++, GameTool.LS("smcfgs038"), BossHasShield, GameTool.LS("smcfgs102"));
                 tglSysBossHasShield = uiCustom.AddCompositeToggle(col, row++, GameTool.LS("smcfgs038"), BossHasShield, GameTool.LS("smcfgs102"));
                 tglNoGrowupFromBattles = uiCustom.AddCompositeToggle(col, row++, GameTool.LS("smcfgs039"), NoGrowupFromBattles, GameTool.LS("smcfgs102"));
                 tglSysNoExpFromBattle = uiCustom.AddCompositeToggle(col, row++, GameTool.LS("smcfgs040"), NoExpFromBattles, GameTool.LS("smcfgs102"));
-                row++;
                 tglEnableTrainer = uiCustom.AddCompositeToggle(col, row++, GameTool.LS("smcfgs041"), EnableTrainer, GameTool.LS("smcfgs102"));
                 uiCustom.AddText(col - 1, row++, GameTool.LS("smcfgs042")).Format(null, 13).Align(TextAnchor.MiddleLeft);
                 uiCustom.AddButton(col + 1, row + 1, ExportConfigs, GameTool.LS("smcfgs054")).Size(200, 40);
@@ -463,6 +475,8 @@ namespace MOD_nE7UL2.Mod
             tglAllowTownBuildupOverTime_IncludeFirstTown.Set(false);
             slGrowUpSpeed.Set(3f);
             tglLostItemWhenDie.Set(false);
+            tglMonsterPropertiesDependOnPlayerProperties.Set(false);
+            tglAutoSaveAfterLostInBattle.Set(false);
         }
 
         private void SetLevel(int level)
@@ -500,6 +514,8 @@ namespace MOD_nE7UL2.Mod
             tglAllowTownBuildupOverTime_IncludeFirstTown.Set(level > 5);
             slGrowUpSpeed.SetPercent(1.0000f - (level * 0.10000f), 3, 24);
             tglLostItemWhenDie.Set(level > 4);
+            tglMonsterPropertiesDependOnPlayerProperties.Set(level > 3);
+            tglAutoSaveAfterLostInBattle.Set(level > 6);
         }
 
         private void SetSMConfigs()
@@ -537,6 +553,8 @@ namespace MOD_nE7UL2.Mod
             AllowTownBuildupOverTime_IncludeFirstTown = tglAllowTownBuildupOverTime_IncludeFirstTown.Get().Parse<bool>();
             GrowUpSpeed = slGrowUpSpeed.Get().Parse<int>();
             LostItemWhenDie = tglLostItemWhenDie.Get().Parse<bool>();
+            MonsterPropertiesDependOnPlayerProperties = tglMonsterPropertiesDependOnPlayerProperties.Get().Parse<bool>();
+            AutoSaveAfterLostInBattle = tglAutoSaveAfterLostInBattle.Get().Parse<bool>();
             CacheHelper.SaveGlobalCache(this);
 
             //edit conf

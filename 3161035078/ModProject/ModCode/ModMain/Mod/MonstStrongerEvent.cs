@@ -191,9 +191,9 @@ namespace MOD_nE7UL2.Mod
                     monstData.maxHP.baseValue += (mhp * r * Configs.MHpR).Parse<int>();
                 }
 
-                //level oppressive
+                //monster properties depend on player properties
                 //DebugHelper.WriteLine("9");
-                if (Configs.PlayerAtk2Hp.ContainsKey(monstData.monstType))
+                if (SMLocalConfigsEvent.Instance.Configs.MonsterPropertiesDependOnPlayerProperties && Configs.PlayerAtk2Hp.ContainsKey(monstData.monstType))
                 {
                     var r = Configs.PlayerAtk2Hp[monstData.monstType] * gameLvl;
                     monstData.maxHP.baseValue += (g.world.playerUnit.GetDynProperty(UnitDynPropertyEnum.Attack).value * r).Parse<int>();
