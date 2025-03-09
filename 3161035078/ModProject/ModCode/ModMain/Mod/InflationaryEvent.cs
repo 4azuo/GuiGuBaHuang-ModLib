@@ -4,8 +4,6 @@ using ModLib.Mod;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using static DataBuildTown;
-using static Il2CppSystem.Collections.Hashtable;
 using static MOD_nE7UL2.Object.GameStts;
 
 namespace MOD_nE7UL2.Mod

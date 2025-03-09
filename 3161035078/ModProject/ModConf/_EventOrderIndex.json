@@ -12,6 +12,7 @@
 	"ContributionExchangeEvent": 2030,
 	"NpcAutoEvent": 2040,
 	"NpcUpgradeSkillEvent": 2050,
+	"NpcAutoCraftArtifact": 2055,
 	"UnitTypeEvent": 2060,
 	"UpgradeNaturallyEvent": 2070,
 	"QiCulEvent": 2080,
@@ -24,6 +25,7 @@
 	"RealStorageEvent": 3040,
 	"RealMarketEvent": 3060,
 	"RealMarketEvent2": 3050,
+	"RealMarketEvent3": 3060,
 
 	//affect attributes/properties
 	"CustomRefineEvent": 4000,
