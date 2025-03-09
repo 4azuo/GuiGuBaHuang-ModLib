@@ -11,6 +11,7 @@
         public const string UNIT_TYPE_EVENT = "UnitTypeEvent";
         public const string BATTLE_REWARD_EVENT_V2 = "BattleRewardEventV2";
         public const string NPC_UPGRADE_SKILL_EVENT = "NpcUpgradeSkillEvent";
+        public const string NPC_AUTO_CRAFT_ARTIFACT = "NpcAutoCraftArtifact";
         public const string MONST_STRONGER_EVENT = "MostStrongerEvent";
         public const string NPC_AUTO_EVENT = "NpcAutoEvent";
         public const string BATTLE_MANASHIELD_EVENT = "BattleManashieldEvent";
@@ -20,6 +21,7 @@
         public const string CONTRIBUTION_EXCHANGE_EVENT = "ContributionExchangeEvent";
         public const string REAL_MARKET_EVENT = "RealMarketEvent";
         public const string REAL_MARKET_EVENT2 = "RealMarketEvent2";
+        public const string REAL_MARKET_EVENT3 = "RealMarketEvent3";
         public const string REAL_STORAGE_EVENT = "RealStorageEvent";
         public const string BUILDING_ARRANGE_EVENT = "BuildingArrangeEvent";
         public const string MAP_BUILD_BATTLE_EVENT = "MapBuildBattleEvent";

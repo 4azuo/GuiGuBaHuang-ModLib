@@ -50,14 +50,14 @@ namespace MOD_nE7UL2.Mod
                     if (p.data.propsInfoBase.level < 6 && p.data.propsInfoBase.grade <= wunitGrade)
                     {
                         p.data.propsInfoBase.level++;
-                        DebugHelper.WriteLine($"{wunit.GetUnitId()} up level");
+                        //DebugHelper.WriteLine($"{wunit.GetUnitId()} up level");
                     }
                     else
-                    if (p.data.propsInfoBase.grade < 10 && p.data.propsInfoBase.grade < wunitGrade)
+                    if (p.data.propsInfoBase.grade < wunitGrade && CommonTool.Random(0.00f, 100.00f).IsBetween(0.00f, luck / 10f))
                     {
                         var newSkill = wunit.AddUnitProp(martialType, p.data.propsInfoBase.baseID, p.data.propsInfoBase.grade + 1);
                         newSkill.data.propsInfoBase.level = CommonTool.Random(1, 5);
-                        DebugHelper.WriteLine($"{wunit.GetUnitId()} up grade");
+                        //DebugHelper.WriteLine($"{wunit.GetUnitId()} up grade");
                     }
                 }
                 //add skill exp
