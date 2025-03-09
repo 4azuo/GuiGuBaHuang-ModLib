@@ -553,7 +553,11 @@ namespace MOD_nE7UL2.Mod
                             player.RemoveUnitProp(item, 1);
                         }
 
-                        if (SMLocalConfigsEvent.Instance.Configs.AutoSaveAfterLostInBattle)
+                        if (SMLocalConfigsEvent.Instance.Configs.Onelife)
+                        {
+                            player.SetProperty<int>(UnitPropertyEnum.Life, 0);
+                        }
+                        if (SMLocalConfigsEvent.Instance.Configs.Onelife || SMLocalConfigsEvent.Instance.Configs.AutoSaveAfterLostInBattle)
                         {
                             TimeSkipEvent.SkipTime(1);
                         }
