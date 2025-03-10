@@ -624,9 +624,9 @@ namespace MOD_nE7UL2.Mod
                             if (item.propsInfoBase.sale > 0 &&
                                 !CommonTool.Random(0.00f, 100.00f).IsBetween(0.00f, (luck / 10.0f) + (ringLockScore / 100.0f)))
                             {
+                                dieUnitWUnit.RemoveUnitProp(item.soleID);
                                 if (isKillerWUnit)
                                     killerWUnit.AddUnitProp(item);
-                                dieUnitWUnit.RemoveUnitProp(item.soleID);
                             }
                         }
                     }

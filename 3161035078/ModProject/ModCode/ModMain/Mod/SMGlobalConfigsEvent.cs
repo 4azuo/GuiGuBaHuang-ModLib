@@ -294,26 +294,26 @@ namespace MOD_nE7UL2.Mod
 
                 col = 2; row = 0;
                 uiCustom.AddText(col, row++, GameTool.LS("smcfgs000")).Format(null, 17, FontStyle.Italic).Align(TextAnchor.MiddleRight);
-                slMonstAtk = uiCustom.AddCompositeSlider(col, row++, GameTool.LS("smcfgs001"), -0.50f, 10.00f, AddAtkRate, GameTool.LS("smcfgs101"));
-                slMonstDef = uiCustom.AddCompositeSlider(col, row++, GameTool.LS("smcfgs002"), -0.50f, 10.00f, AddDefRate, GameTool.LS("smcfgs101"));
-                slMonstHp = uiCustom.AddCompositeSlider(col, row++, GameTool.LS("smcfgs003"), -0.50f, 10.00f, AddHpRate, GameTool.LS("smcfgs101"));
-                slMonstBasis = uiCustom.AddCompositeSlider(col, row++, GameTool.LS("smcfgs004"), -0.50f, 10.00f, AddBasisRate, GameTool.LS("smcfgs101"));
+                slMonstAtk = uiCustom.AddCompositeSlider(col, row++, GameTool.LS("smcfgs001"), -0.50f, 8.00f, AddAtkRate, GameTool.LS("smcfgs101"));
+                slMonstDef = uiCustom.AddCompositeSlider(col, row++, GameTool.LS("smcfgs002"), -0.50f, 8.00f, AddDefRate, GameTool.LS("smcfgs101"));
+                slMonstHp = uiCustom.AddCompositeSlider(col, row++, GameTool.LS("smcfgs003"), -0.50f, 8.00f, AddHpRate, GameTool.LS("smcfgs101"));
+                slMonstBasis = uiCustom.AddCompositeSlider(col, row++, GameTool.LS("smcfgs004"), -0.50f, 8.00f, AddBasisRate, GameTool.LS("smcfgs101"));
                 uiCustom.AddText(col - 1, row++, GameTool.LS("smcfgs005")).Format(null, 13).Align(TextAnchor.MiddleLeft);
                 slMonstSpecialRate = uiCustom.AddCompositeSlider(col, row++, GameTool.LS("smcfgs006"), -0.50f, 1.00f, AddSpecialMonsterRate, GameTool.LS("smcfgs101"));
                 uiCustom.AddText(col + 2, row++, GameTool.LS("smcfgs049")).Format(null, 13).Align(TextAnchor.MiddleLeft);
                 row++;
                 uiCustom.AddText(col, row++, GameTool.LS("smcfgs007")).Format(null, 17, FontStyle.Italic).Align(TextAnchor.MiddleRight);
-                slEcoTaxRate = uiCustom.AddCompositeSlider(col, row++, GameTool.LS("smcfgs008"), 0.00f, 10.00f, AddTaxRate, GameTool.LS("smcfgs101"));
-                slEcoInfRate = uiCustom.AddCompositeSlider(col, row++, GameTool.LS("smcfgs009"), -0.50f, 3.00f, AddInflationRate, GameTool.LS("smcfgs101"));
-                slEcoBuildingCost = uiCustom.AddCompositeSlider(col, row++, GameTool.LS("smcfgs010"), 0.00f, 10.00f, AddBuildingCostRate, GameTool.LS("smcfgs101"));
-                slEcoBankAccCost = uiCustom.AddCompositeSlider(col, row++, GameTool.LS("smcfgs011"), 0.00f, 10.00f, AddBankAccountCostRate, GameTool.LS("smcfgs101"));
+                slEcoTaxRate = uiCustom.AddCompositeSlider(col, row++, GameTool.LS("smcfgs008"), -0.50f, 5.00f, AddTaxRate, GameTool.LS("smcfgs101"));
+                slEcoInfRate = uiCustom.AddCompositeSlider(col, row++, GameTool.LS("smcfgs009"), -0.50f, 2.00f, AddInflationRate, GameTool.LS("smcfgs101"));
+                slEcoBuildingCost = uiCustom.AddCompositeSlider(col, row++, GameTool.LS("smcfgs010"), 0.00f, 8.00f, AddBuildingCostRate, GameTool.LS("smcfgs101"));
+                slEcoBankAccCost = uiCustom.AddCompositeSlider(col, row++, GameTool.LS("smcfgs011"), 0.00f, 8.00f, AddBankAccountCostRate, GameTool.LS("smcfgs101"));
                 slEcoBankFee = uiCustom.AddCompositeSlider(col, row++, GameTool.LS("smcfgs012"), 0.00f, 100.00f, AddBankFee, GameTool.LS("smcfgs101"));
                 slEcoRefineCost = uiCustom.AddCompositeSlider(col, row++, GameTool.LS("smcfgs013"), -0.50f, 1.00f, AddRefineCost, GameTool.LS("smcfgs101"));
                 slEcoSectExchangeRate = uiCustom.AddCompositeSlider(col, row++, GameTool.LS("smcfgs014"), -0.50f, 1.00f, AddSectExchangeRate, GameTool.LS("smcfgs101"));
                 slEcoItemValue = uiCustom.AddCompositeSlider(col, row++, GameTool.LS("smcfgs015"), -0.50f, 1.00f, AddItemValueRate, GameTool.LS("smcfgs101"));
                 row++;
                 uiCustom.AddText(col, row++, GameTool.LS("smcfgs016")).Format(null, 17, FontStyle.Italic).Align(TextAnchor.MiddleRight);
-                slNpcGrowRate = uiCustom.AddCompositeSlider(col, row++, GameTool.LS("smcfgs017"), 0.00f, 10.00f, AddNpcGrowRate, GameTool.LS("smcfgs101"));
+                slNpcGrowRate = uiCustom.AddCompositeSlider(col, row++, GameTool.LS("smcfgs017"), 0.00f, 8.00f, AddNpcGrowRate, GameTool.LS("smcfgs101"));
                 slNPCAmount = uiCustom.AddCompositeSlider(col, row++, GameTool.LS("smcfgs047"), 1000, 10000, NPCAmount, GameTool.LS("smcfgs103"));
                 uiCustom.AddText(col + 3, row++, GameTool.LS("smcfgs048")).Format(null, 13).Align(TextAnchor.MiddleLeft).SetWork(new UIItemWork
                 {
