@@ -1,5 +1,4 @@
 ﻿using EGameTypeData;
-using ModLib.Object;
 using UnityEngine;
 
 namespace ModLib.Mod
@@ -212,7 +211,7 @@ namespace ModLib.Mod
                 }
             }
 
-            EventHelper.RunMinorEvents("OnOpenUIEnd", e);
+            EventHelper.RunMinorEvents("OnOpenUIEnd", e, 10);
         }
 
         public virtual void OnCloseUIStart(CloseUIStart e)

@@ -3,11 +3,13 @@ using ModLib.Enum;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Security.AccessControl;
 using UnityEngine;
 
 public static class WUnitHelper
 {
+    public static Il2CppSystem.Collections.Generic.List<DataProps.PropsData> LastAddedItems { get; private set; }
+    public static Il2CppSystem.Collections.Generic.List<DataProps.PropsData> LastDeletedItems { get; private set; }
+
     public static void SetUnitPos(this WorldUnitBase wunit, Vector2Int p)
     {
         wunit.data.unitData.SetPoint(p);
@@ -342,24 +344,26 @@ public static class WUnitHelper
 
     public static void AddUnitProp(this WorldUnitBase wunit, DataProps.PropsData prop)
     {
-        wunit.data.unitData.propData.AddProps(prop);
+        LastAddedItems = wunit.data.unitData.propData.AddProps(prop);
     }
 
     public static void AddUnitProp(this WorldUnitBase wunit, int propID, int addCount)
     {
+        LastAddedItems = new Il2CppSystem.Collections.Generic.List<DataProps.PropsData>();
+
         var curProps = wunit.GetUnitProps(propID);
         if (curProps?.Count == 0)
         {
             var conf = g.conf.itemProps.GetItem(propID);
             if (conf.isOverlay == 1)
             {
-                wunit.data.unitData.propData.AddProps(propID, addCount);
+                LastAddedItems = wunit.data.unitData.propData.AddProps(propID, addCount);
             }
             else
             {
                 for (var i = 0; i < addCount; i++)
                 {
-                    wunit.data.unitData.propData.AddProps(propID, 1);
+                    LastAddedItems.AddRange(wunit.data.unitData.propData.AddProps(propID, 1));
                 }
             }
             return;
@@ -371,6 +375,7 @@ public static class WUnitHelper
         {
             foreach (var prop in curProps)
             {
+                LastAddedItems.Add(prop);
                 wunit.data.unitData.propData.allProps.Remove(prop);
             }
             return;
@@ -381,6 +386,7 @@ public static class WUnitHelper
             if (prop?.propsItem?.isOverlay == 1)
             {
                 prop.propsCount = newCount;
+                LastAddedItems.Add(prop);
                 return;
             }
         }
@@ -389,7 +395,7 @@ public static class WUnitHelper
         {
             while (curCount < newCount)
             {
-                wunit.data.unitData.propData.AddProps(propID, 1);
+                LastAddedItems.AddRange(wunit.data.unitData.propData.AddProps(propID, 1));
                 curCount++;
             }
         }
@@ -405,6 +411,7 @@ public static class WUnitHelper
 
     public static void RemoveUnitProp(this WorldUnitBase wunit, int propID, int count = int.MaxValue)
     {
+        LastDeletedItems = new Il2CppSystem.Collections.Generic.List<DataProps.PropsData>();
         if (count == 0)
             return;
         wunit.data.unitData.propData.DelProps(propID, count);
@@ -412,12 +419,13 @@ public static class WUnitHelper
 
     public static void RemoveUnitProp(this WorldUnitBase wunit, string soleID, int count = int.MaxValue)
     {
+        LastDeletedItems = new Il2CppSystem.Collections.Generic.List<DataProps.PropsData>();
         if (count == 0)
             return;
         if (count == int.MaxValue)
-            wunit.data.unitData.propData.DelProps(soleID);
+            LastDeletedItems.Add(wunit.data.unitData.propData.DelProps(soleID));
         else
-            wunit.data.unitData.propData.DelProps(soleID, count);
+            LastDeletedItems.Add(wunit.data.unitData.propData.DelProps(soleID, count));
     }
 
     public static void AddUnitMoney(this WorldUnitBase wunit, int addCount)

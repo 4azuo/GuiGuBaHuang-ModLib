@@ -4,6 +4,14 @@ using System.Linq;
 
 public static class EnumerableHelper
 {
+    public static void AddRange<T>(this Il2CppSystem.Collections.Generic.List<T> lst, Il2CppSystem.Collections.Generic.List<T> addedlst)
+    {
+        foreach (var item in addedlst)
+        {
+            lst.Add(item);
+        }
+    }
+
     public static Il2CppSystem.Collections.Generic.List<T> ToIl2CppList<T>(this IEnumerable<T> lst)
     {
         var rs = new Il2CppSystem.Collections.Generic.List<T>();
