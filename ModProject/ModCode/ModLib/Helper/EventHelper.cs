@@ -4,6 +4,8 @@ using System.Collections.Generic;
 using System;
 using ModLib.Enum;
 using ModLib.Object;
+using System.Threading.Tasks;
+using System.Reflection;
 
 public static class EventHelper
 {
@@ -16,7 +18,7 @@ public static class EventHelper
     //    RunMinorEvents(methodName, e);
     //}
 
-    public static void RunMinorEvents(string methodName, object e = null)
+    public static void RunMinorEvents(string methodName, object e = null, int delayMsec = 0)
     {
         var isInGame = GameHelper.IsInGame();
         var isInBattle = GameHelper.IsInBattlle();
@@ -38,13 +40,17 @@ public static class EventHelper
                     if (condAttr.IsInBattle == HandleEnum.False && isInBattle)
                         continue;
                 }
-                if (method.GetParameters().Length == 0)
+                if ((condAttr?.DelayMsec ?? 0) > 0)
                 {
-                    method.Invoke(ev, null);
+                    ModDelayEvent.Instance.DelayEvent(ev, method, e, condAttr.DelayMsec);
+                }
+                else if (delayMsec > 0)
+                {
+                    ModDelayEvent.Instance.DelayEvent(ev, method, e, delayMsec);
                 }
                 else
                 {
-                    method.Invoke(ev, new object[] { e });
+                    RunMinorEvent(ev, method, e);
                 }
             }
             catch (Exception ex)
@@ -57,6 +63,18 @@ public static class EventHelper
                     DebugHelper.WriteLine(ex);
                 }
             }
+        }
+    }
+
+    public static void RunMinorEvent(ModEvent ev, MethodInfo method, object e = null)
+    {
+        if (method.GetParameters().Length == 0)
+        {
+            method.Invoke(ev, null);
+        }
+        else
+        {
+            method.Invoke(ev, new object[] { e });
         }
     }
 
