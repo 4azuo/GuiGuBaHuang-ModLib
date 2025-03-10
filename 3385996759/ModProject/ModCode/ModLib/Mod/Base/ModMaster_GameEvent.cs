@@ -211,7 +211,7 @@ namespace ModLib.Mod
                 }
             }
 
-            EventHelper.RunMinorEvents("OnOpenUIEnd", e, 10);
+            EventHelper.RunMinorEvents("OnOpenUIEnd", e);
         }
 
         public virtual void OnCloseUIStart(CloseUIStart e)
