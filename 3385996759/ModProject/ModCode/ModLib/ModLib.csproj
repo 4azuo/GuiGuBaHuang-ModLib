@@ -92,6 +92,7 @@
     <Compile Include="Mod\Base\ModMaster_BattleEvent.cs" />
     <Compile Include="Mod\Base\ModMaster_TimerEvent.cs" />
     <Compile Include="Mod\Base\ModMaster_MapEvent.cs" />
+    <Compile Include="Mod\ModDelayEvent.cs" />
     <Compile Include="Mod\ModUIEvent.cs" />
     <Compile Include="Mod\ModTitleEvent.cs" />
     <Compile Include="Object\Base\EnumObject.cs" />
@@ -111,6 +112,7 @@
     <Compile Include="Mod\Base\ModMaster.cs" />
     <Compile Include="Object\Gamevar.cs" />
     <Compile Include="Object\Base\MonoUpdater.cs" />
+    <Compile Include="Object\DelayInfo.cs" />
     <Compile Include="Object\MultiValue.cs" />
     <Compile Include="Object\UI\ITextFormat.cs" />
     <Compile Include="Object\UI\UIItemData.cs" />
