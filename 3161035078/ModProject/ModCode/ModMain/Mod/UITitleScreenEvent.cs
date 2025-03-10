@@ -2,8 +2,8 @@
 using MOD_nE7UL2.Const;
 using ModLib.Mod;
 using ModLib.Object;
-using System;
 using System.Diagnostics;
+using System.Text.RegularExpressions;
 using UnityEngine;
 
 namespace MOD_nE7UL2.Mod
@@ -16,7 +16,7 @@ namespace MOD_nE7UL2.Mod
             base.OnOpenUIEnd(e);
             if (e.uiType.uiName == UIType.Login.uiName)
             {
-                if (EncryptionHelper.GetByteCodeAsInt(ModConst.MODLIB_REQUIRED_VERSION) > EncryptionHelper.GetByteCodeAsInt(ModMaster.ModObj.Version))
+                if (!CompareVersion(ModConst.MODLIB_REQUIRED_VERSION, ModMaster.ModObj.Version))
                 {
                     var uiWarning = g.ui.OpenUI<UITextInfo>(UIType.TextInfo);
                     uiWarning.InitData("Warning", $"Taoist {ModConst.TAOIST_VERSION} is not supported in ModLib {ModMaster.ModObj.Version}!\nPlease install ModLib {ModConst.MODLIB_REQUIRED_VERSION} or above.");
@@ -32,6 +32,23 @@ namespace MOD_nE7UL2.Mod
                 }
                 ui.UpdateUI();
             }
+        }
+
+        private bool CompareVersion(string reqVersion, string curVersion)
+        {
+            var reqIndexes = Regex.Split(reqVersion, @"\D");
+            var curIndexes = Regex.Split(curVersion, @"\D");
+            for (int i = 0; i < reqIndexes.Length && i < curIndexes.Length; i++)
+            {
+                var reqIndex = reqIndexes[i].Parse<int>();
+                var curIndex = reqIndexes[i].Parse<int>();
+                if (curIndex < reqIndex)
+                    return true;
+                if (curIndex > reqIndex)
+                    return false;
+            }
+            return true;
+
         }
     }
 }

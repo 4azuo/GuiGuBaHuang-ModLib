@@ -87,4 +87,14 @@
 		"key": "other500020039",
 		"ch|en|tc|kr": "Dont play with another mod which increase game difficult."
 	},
+	{
+		"id": 500020040,
+		"key": "other500020040",
+		"ch|en|tc|kr": "NPC Shop"
+	},
+	{
+		"id": 500020041,
+		"key": "other500020041",
+		"ch|en|tc|kr": "You can buy/sell items with npc here. But you can be hated and robbed."
+	},
 ]
