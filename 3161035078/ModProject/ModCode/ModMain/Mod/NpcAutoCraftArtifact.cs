@@ -39,6 +39,13 @@ namespace MOD_nE7UL2.Mod
                             var art = addedArt.To<DataProps.PropsArtifact>();
                             art.grade = Random(Math.Max(wunitGrade - 2, 1), wunitGrade);
                             art.level = Random(1, 6);
+                            art.SetAttrrRate(
+                                CommonTool.Random(70, 130),
+                                CommonTool.Random(70, 130),
+                                CommonTool.Random(70, 130),
+                                CommonTool.Random(70, 130),
+                                CommonTool.Random(70, 130),
+                                false);
                         }
                     }
                 }
