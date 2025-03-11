@@ -90,7 +90,7 @@ namespace MOD_nE7UL2.Mod
         private int oldX;
         private int oldY;
         [ErrorIgnore]
-        [EventCondition]
+        [EventCondition(IsInGame = HandleEnum.True, IsInBattle = HandleEnum.False)]
         public override void OnTimeUpdate200ms()
         {
             base.OnTimeUpdate200ms();

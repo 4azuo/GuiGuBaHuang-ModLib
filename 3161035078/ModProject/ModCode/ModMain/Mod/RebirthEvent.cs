@@ -19,7 +19,7 @@ namespace MOD_nE7UL2.Mod
         public int RebirthCount { get; set; } = 0;
         public int TotalGradeLvl { get; set; } = 0;
 
-        [EventCondition]
+        [EventCondition(IsInGame = HandleEnum.True, IsInBattle = HandleEnum.False)]
         public override void OnOpenUIEnd(OpenUIEnd e)
         {
             base.OnOpenUIEnd(e);

@@ -7,6 +7,7 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine.UI;
 using MOD_nE7UL2.Enum;
+using ModLib.Enum;
 
 namespace MOD_nE7UL2.Mod
 {
@@ -50,7 +51,7 @@ namespace MOD_nE7UL2.Mod
             }
         }
 
-        [EventCondition]
+        [EventCondition(IsInGame = HandleEnum.True, IsInBattle = HandleEnum.False)]
         public override void OnOpenUIEnd(OpenUIEnd e)
         {
             base.OnOpenUIEnd(e);
@@ -74,7 +75,7 @@ namespace MOD_nE7UL2.Mod
         }
 
         [ErrorIgnore]
-        [EventCondition]
+        [EventCondition(IsInGame = HandleEnum.True, IsInBattle = HandleEnum.False)]
         public override void OnTimeUpdate()
         {
             base.OnTimeUpdate();

@@ -1,6 +1,7 @@
 ﻿using EGameTypeData;
 using MOD_nE7UL2.Const;
 using ModLib.Const;
+using ModLib.Enum;
 using ModLib.Mod;
 using System;
 using System.Linq;
@@ -36,7 +37,7 @@ namespace MOD_nE7UL2.Mod
             CurMonthRatio = (GetExchangeRatio() * CommonTool.Random(0.80f, 1.30f)).Parse<int>();
         }
 
-        [EventCondition]
+        [EventCondition(IsInGame = HandleEnum.True, IsInBattle = HandleEnum.False)]
         public override void OnOpenUIEnd(OpenUIEnd e)
         {
             base.OnOpenUIEnd(e);
@@ -55,7 +56,7 @@ namespace MOD_nE7UL2.Mod
         }
 
         [ErrorIgnore]
-        [EventCondition]
+        [EventCondition(IsInGame = HandleEnum.True, IsInBattle = HandleEnum.False)]
         public override void OnTimeUpdate200ms()
         {
             base.OnTimeUpdate200ms();

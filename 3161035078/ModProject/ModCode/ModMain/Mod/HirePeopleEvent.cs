@@ -27,7 +27,7 @@ namespace MOD_nE7UL2.Mod
 
         public Dictionary<string, List<string>> TeamData { get; set; } = new Dictionary<string, List<string>>();
 
-        [EventCondition]
+        [EventCondition(IsInGame = HandleEnum.True, IsInBattle = HandleEnum.False)]
         public override void OnOpenUIEnd(OpenUIEnd e)
         {
             base.OnOpenUIEnd(e);
