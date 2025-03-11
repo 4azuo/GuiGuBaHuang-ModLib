@@ -41,7 +41,7 @@
 - Modify item price and stats
 - Lose all exp at current lvl + items when dying
 - Item [Resurrection Pill] blocks exp loss (high lvl should use)
-- [Ring] blocks item loss when dying (according to security points)
+- [Ring] blocks item loss when dying (depend on security points)
 - Add quests
 - Add roles when creating new character/npc: Power, Speed, Tao, Atk, Def, Angel, Evil, Merchant (each role has its own advantages)
 - Allows exchanging items for sect contribution points
