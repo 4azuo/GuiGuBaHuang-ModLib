@@ -4,7 +4,7 @@ using System;
 [AttributeUsage(AttributeTargets.Method, AllowMultiple = false, Inherited = false)]
 public class EventConditionAttribute : Attribute
 {
-    public HandleEnum IsInGame { get; set; } = HandleEnum.True;
-    public HandleEnum IsInBattle { get; set; } = HandleEnum.False;
+    public HandleEnum IsInGame { get; set; } = HandleEnum.Ignore;
+    public HandleEnum IsInBattle { get; set; } = HandleEnum.Ignore;
     public int DelayMsec { get; set; } = 0;
 }
