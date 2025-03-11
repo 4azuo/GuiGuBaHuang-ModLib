@@ -21,6 +21,7 @@
 - Support many minor libraries: UI, Battle damage, ...
 - Create and replace game configs
 - Translation system (replace LocalText.json)
+- Async and Delay functions
 - etc...
 
 [Taoist](https://steamcommunity.com/sharedfiles/filedetails/?id=3161035078)
@@ -58,6 +59,8 @@
 - Add custom language systeem
 - Town manage, declare war to others, build your town, change tax rate, etc...
 - Monster waves
+- Potmon properties auto increase monthly and depend on player properties when summoned
+- NPC auto up level and grade of skills and auto craft new artifact
 - etc...
 
 
