@@ -6,6 +6,7 @@ using System.Linq;
 using UnityEngine.UI;
 using MOD_nE7UL2.Enum;
 using ModLib.Const;
+using ModLib.Enum;
 
 namespace MOD_nE7UL2.Mod
 {
@@ -27,7 +28,7 @@ namespace MOD_nE7UL2.Mod
         public long Debt { get; set; } = 0L;
         private int count = 0;
 
-        [EventCondition]
+        [EventCondition(IsInGame = HandleEnum.True, IsInBattle = HandleEnum.False)]
         public override void OnOpenUIEnd(OpenUIEnd e)
         {
             base.OnOpenUIEnd(e);
@@ -57,7 +58,7 @@ namespace MOD_nE7UL2.Mod
         }
 
         [ErrorIgnore]
-        [EventCondition]
+        [EventCondition(IsInGame = HandleEnum.True, IsInBattle = HandleEnum.False)]
         public override void OnTimeUpdate200ms()
         {
             base.OnTimeUpdate200ms();
