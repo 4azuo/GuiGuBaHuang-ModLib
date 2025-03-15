@@ -2,16 +2,19 @@
 	{
 		"id": "999999001",
 		"key": "gamemsg999999001",
-		"ch": "道教模组已获得重大更新。不幸的是，为了确保最佳的游戏体验，您需要重新创建您的角色。","en": "The Taoist mod has received a major update. Unfortunately, to ensure the best gameplay experience, you'll need to recreate your character.",
+		"ch": "道教模组已获得重大更新。不幸的是，为了确保最佳的游戏体验，您需要重新创建您的角色。",
+		"en|tc|kr": "The Taoist mod has received a major update. Unfortunately, to ensure the best gameplay experience, you'll need to recreate your character.",
 	},
 	{
 		"id": "999999101",
 		"key": "gameopt999999101",
-		"ch": "离开","en": "Leave",
+		"ch": "离开",
+		"en|tc|kr": "Leave",
 	},
 	{
 		"id": "999999201",
 		"key": "gameopt999999201",
-		"ch": "不再显示","en": "Dont show again",
-	}
+		"ch": "不再显示",
+		"en|tc|kr": "Dont show again",
+	},
 ]
