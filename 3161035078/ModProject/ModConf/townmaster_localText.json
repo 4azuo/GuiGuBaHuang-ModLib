@@ -37,5 +37,20 @@
 		"id": "420041116",
 		"key": "townmaster420041114dramaOpt2",
 		"ch|en|kr|tc": "No"
+	},
+	{
+		"id": "420041117",
+		"key": "townmaster420041117",
+		"ch|en|kr|tc": "Town: {0}　／　Master: {1}"
+	},
+	{
+		"id": "420041118",
+		"key": "townmaster420041118",
+		"ch|en|kr|tc": "Budget: {0}"
+	},
+	{
+		"id": "420041119",
+		"key": "townmaster420041119",
+		"ch|en|kr|tc": "Payment: {0}/year"
 	}
 ]

@@ -31,7 +31,12 @@
 		"ch": "大地颤抖，战火燎原。{0}为守护家园而战，{1}为征服四方而战。此刻抉择，将定汝之道路！\n是：助{0}\n否：助{1}",
 		"en|tc|kr": "The land trembles beneath your feet as the battle rages on. {0} fight to protect their home. {1} seek to conquer. Your choice now will determine your path!\nYes: Help {0}\nNo: Help {1}"
 	},
-	{ "id": 500020022, "key": "other500020022", "ch": "警告","en|tc|kr": "Warning" },
+	{
+		"id": 500020022,
+		"key": "other500020022",
+		"ch": "警告",
+		"en|tc|kr": "Warning"
+	},
 	{
 		"id": 500020023,
 		"key": "other500020023",

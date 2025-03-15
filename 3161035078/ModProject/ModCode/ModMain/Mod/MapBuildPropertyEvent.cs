@@ -83,18 +83,39 @@ namespace MOD_nE7UL2.Mod
         public override void OnOpenUIEnd(OpenUIEnd e)
         {
             base.OnOpenUIEnd(e);
+            var player = g.world.playerUnit;
 
             if (e.uiType.uiName == UIType.Town.uiName)
             {
-                var town = g.world.playerUnit.GetMapBuild<MapBuildTown>();
-                if (town != null && !PayTaxTown.Contains(town.buildData.id) && !IsTownGuardian(town, g.world.playerUnit))
+                //pay town tax
+                var town = player.GetMapBuild<MapBuildTown>();
+                if (town != null && !PayTaxTown.Contains(town.buildData.id) && !IsTownGuardian(town, player))
                 {
-                    var tax = GetTax(town, g.world.playerUnit);
-                    if (g.world.playerUnit.GetUnitMoney() > tax)
+                    var tax = GetTax(town, player);
+                    if (player.GetUnitMoney() > tax)
                     {
                         AddBuildProperty(town, tax);
-                        g.world.playerUnit.AddUnitMoney(-tax);
+                        player.AddUnitMoney(-tax);
                         PayTaxTown.Add(town.buildData.id);
+                    }
+                    else
+                    {
+                        g.ui.MsgBox(GameTool.LS("other500020011"), string.Format(GameTool.LS("other500020027"), tax), onYesCall: () =>
+                        {
+                            g.ui.CloseUI(e.ui);
+                        });
+                    }
+                }
+                //pay school tax
+                var school = player.GetMapBuild<MapBuildSchool>();
+                if (school != null && !PayTaxTown.Contains(school.buildData.id) && !MapBuildPropertyEvent.IsSchoolMember(school, player))
+                {
+                    var tax = GetTax(school, player);
+                    if (player.GetUnitMoney() > tax)
+                    {
+                        AddBuildProperty(school, tax);
+                        player.AddUnitMoney(-tax);
+                        PayTaxTown.Add(school.buildData.id);
                     }
                     else
                     {
@@ -120,13 +141,13 @@ namespace MOD_nE7UL2.Mod
             if (e.uiType.uiName == UIType.NPCInfo.uiName)
             {
                 var ui = g.ui.GetUI<UINPCInfo>(e.uiType);
-                if (ui.unit.GetUnitId() != g.world.playerUnit.GetUnitId())
+                if (ui.unit.GetUnitId() != player.GetUnitId())
                 {
                     var uiCover = new UICover<UINPCInfo>(e.ui);
                     if (IsTownGuardian(uiCover.UI.unit))
                     {
                         var town = GetGuardTown(uiCover.UI.unit);
-                        if (IsTownGuardian(town, uiCover.UI.unit) && uiCover.UI.unit.data.unitData.relationData.GetIntim(g.world.playerUnit) < 200)
+                        if (IsTownGuardian(town, uiCover.UI.unit) && uiCover.UI.unit.data.unitData.relationData.GetIntim(player) < 200)
                             uiCover.AddText(0, 0, $"{GetRequiredSpiritStones(town, uiCover.UI.unit):#,##0} Spirit Stones/year").Align().Format(Color.white).Pos(uiCover.UI.uiProperty.textInTrait1.transform, 0f, 0.5f).SetParentTransform(uiCover.UI.uiProperty.textInTrait1.transform);
                         uiCover.AddText(0, 0, $"Town: {GetGuardTownInfoStr(uiCover.UI.unit)}").Align().Format(Color.white).Pos(uiCover.UI.uiProperty.textInTrait1.transform, 0f, 0.25f).SetParentTransform(uiCover.UI.uiProperty.textInTrait1.transform);
                         if (isShowManageTeamUI1)
@@ -150,14 +171,14 @@ namespace MOD_nE7UL2.Mod
                         uiCover.AddButton(0, 0, () =>
                         {
                             var requiredSpiritStones = GetRequiredSpiritStones(town, uiCover.UI.unit);
-                            if (g.world.playerUnit.GetUnitMoney() < requiredSpiritStones)
+                            if (player.GetUnitMoney() < requiredSpiritStones)
                             {
                                 g.ui.MsgBox(GameTool.LS("other500020011"), $"Require {requiredSpiritStones:#,##0} Spirit Stones");
                                 return;
                             }
 
                             var requiredReputations = GetRequiredReputations(town, uiCover.UI.unit);
-                            if (g.world.playerUnit.GetDynProperty(UnitDynPropertyEnum.Reputation).value < requiredReputations)
+                            if (player.GetDynProperty(UnitDynPropertyEnum.Reputation).value < requiredReputations)
                             {
                                 g.ui.MsgBox(GameTool.LS("other500020011"), $"Require {requiredReputations:#,##0} Reputations");
                                 return;
@@ -651,12 +672,12 @@ namespace MOD_nE7UL2.Mod
             {
                 var col = uiCover.MidCol - 11;
                 var row = uiCover.MidRow;
-                uiCover.AddText(col, row + i++, $"Town: {town.name}　／　Master: {GetTownMaster(town).data.unitData.propertyData.GetName()}").Format().Align();
-                uiCover.AddText(col, row + i++, "Budget: {0}").Format().Align().SetWork(new UIItemWork
+                uiCover.AddText(col, row + i++, string.Format(GameTool.LS("townmaster420041117"), town.name, GetTownMaster(town).data.unitData.propertyData.GetName())).Format().Align();
+                uiCover.AddText(col, row + i++, GameTool.LS("townmaster420041118")).Format().Align().SetWork(new UIItemWork
                 {
                     Formatter = (ibase) => new object[] { GetBuildProperty(town).ToString("#,##0") },
                 });
-                uiCover.AddText(col, row + i++, "Payment: {0}/year").Format().Align().SetWork(new UIItemWork
+                uiCover.AddText(col, row + i++, GameTool.LS("townmaster420041119")).Format().Align().SetWork(new UIItemWork
                 {
                     Formatter = (ibase) => new object[] { GetTotalMonthlyPayment(town).ToString("#,##0") },
                 });
@@ -677,12 +698,12 @@ namespace MOD_nE7UL2.Mod
             {
                 var col = uiCover.MidCol - 11;
                 var row = uiCover.MidRow;
-                uiCover.AddText(col, row + i++, $"Town: {town.name}　／　Master: {GetTownMaster(town).data.unitData.propertyData.GetName()}").Format().Align();
-                uiCover.AddText(col, row + i++, "Budget: {0}").Format().Align().SetWork(new UIItemWork
+                uiCover.AddText(col, row + i++, string.Format(GameTool.LS("townmaster420041117"), town.name, GetTownMaster(town).data.unitData.propertyData.GetName())).Format().Align();
+                uiCover.AddText(col, row + i++, GameTool.LS("townmaster420041118")).Format().Align().SetWork(new UIItemWork
                 {
                     Formatter = (ibase) => new object[] { GetBuildProperty(town).ToString("#,##0") },
                 });
-                uiCover.AddText(col, row + i++, "Payment: {0}/year").Format().Align().SetWork(new UIItemWork
+                uiCover.AddText(col, row + i++, GameTool.LS("townmaster420041119")).Format().Align().SetWork(new UIItemWork
                 {
                     Formatter = (ibase) => new object[] { GetTotalMonthlyPayment(town).ToString("#,##0") },
                 });
