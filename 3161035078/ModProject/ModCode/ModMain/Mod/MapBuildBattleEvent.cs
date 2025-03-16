@@ -151,7 +151,8 @@ namespace MOD_nE7UL2.Mod
                                 enemyOutTraits.Contains(townAtkMaster.data.unitData.propertyData.outTrait1) ||
                                 enemyOutTraits.Contains(townAtkMaster.data.unitData.propertyData.outTrait2)
                             ) &&
-                            CalWUnitBattlePower(MapBuildPropertyEvent.GetTownGuardians(townAtk)) > CalWUnitBattlePower(g.world.unit.GetUnitExact(town.GetOrigiPoint(), JOIN_RANGE, true, false).ToList()) &&
+                            UnitPowerCalHelper.CalWUnitBattlePower(MapBuildPropertyEvent.GetTownGuardians(townAtk).Where(u => !u.isDie).ToList()) > 
+                                UnitPowerCalHelper.CalWUnitBattlePower(g.world.unit.GetUnitExact(town.GetOrigiPoint(), JOIN_RANGE, false, true).ToArray().Where(u => !u.isDie).ToList()) &&
                             Math.Abs(townAtk.gridData.areaBaseID - town.gridData.areaBaseID) < 3;
                     });
                     if (hasAttacker && townAtk != null)
@@ -340,9 +341,9 @@ namespace MOD_nE7UL2.Mod
             BuildBaseB = townB_atk;
             CalTownWarInfo(townA_def, townB_atk);
             //auto battle
-            var teamAPoint = CalWUnitBattlePower(TeamAWUnits);
+            var teamAPoint = UnitPowerCalHelper.CalWUnitBattlePower(TeamAWUnits);
             var teamATotalPoint = teamAPoint * TeamAUnitCount * /*def point*/1.5;
-            var teamBPoint = CalWUnitBattlePower(TeamBWUnits);
+            var teamBPoint = UnitPowerCalHelper.CalWUnitBattlePower(TeamBWUnits);
             var teamBTotalPoint = teamBPoint * TeamBUnitCount;
             //battle end
             var ratioAB = teamATotalPoint / teamBTotalPoint;
@@ -597,11 +598,11 @@ namespace MOD_nE7UL2.Mod
             BuildBaseB = null;
             CalMonstWaveInfo(teamAbuildBase);
             //auto battle
-            var teamAPoint = CalWUnitBattlePower(TeamAWUnits);
+            var teamAPoint = UnitPowerCalHelper.CalWUnitBattlePower(TeamAWUnits);
             var teamATotalPoint = teamAPoint * TeamAUnitCount * /*def point*/1.5;
             var gameLvl = g.data.dataWorld.data.gameLevel.Parse<int>();
             var areaId = teamAbuildBase.gridData.areaBaseID;
-            var teamBPoint = CalMonstBattlePower(gameLvl, areaId);
+            var teamBPoint = UnitPowerCalHelper.CalMonstBattlePower(gameLvl, areaId);
             var teamBTotalPoint = teamBPoint * TeamBUnitCount;
             //battle end
             var ratioAB = teamATotalPoint / teamBTotalPoint;
@@ -644,10 +645,10 @@ namespace MOD_nE7UL2.Mod
             var areaId = townA_def.gridData.areaBaseID;
 
             //guardians + others
-            TeamAWUnits.AddRange(g.world.unit.GetUnitExact(townA_def.GetOrigiPoint(), JOIN_RANGE, true, false).ToArray().Take(MIN_UNIT + STP_UNIT * areaId));
-            TeamAWUnits.AddRange(MapBuildPropertyEvent.GetTownGuardians(townA_def).Where(x => !x.IsPlayer()));
+            TeamAWUnits.AddRange(g.world.unit.GetUnitExact(townA_def.GetOrigiPoint(), JOIN_RANGE, true, false).ToArray().Where(x => !x.isDie).Take(MIN_UNIT + STP_UNIT * areaId));
+            TeamAWUnits.AddRange(MapBuildPropertyEvent.GetTownGuardians(townA_def).Where(x => !x.isDie && !x.IsPlayer()));
             //guardians
-            TeamBWUnits.AddRange(MapBuildPropertyEvent.GetTownGuardians(townB_atk).Where(x => !x.IsPlayer()));
+            TeamBWUnits.AddRange(MapBuildPropertyEvent.GetTownGuardians(townB_atk).Where(x => !x.isDie && !x.IsPlayer()));
 
             var defCityR = townA_def.IsCity() ? 2 : 1;
             var atkCityR = townB_atk.IsCity() ? 2 : 1;
@@ -663,8 +664,8 @@ namespace MOD_nE7UL2.Mod
             var areaId = baseA_def.gridData.areaBaseID;
 
             //guardians + others
-            TeamAWUnits.AddRange(g.world.unit.GetUnitExact(baseA_def.GetOrigiPoint(), JOIN_RANGE, true, false).ToArray().Take(MIN_UNIT + STP_UNIT * areaId));
-            TeamAWUnits.AddRange(MapBuildPropertyEvent.GetTownGuardians(baseA_def.TryCast<MapBuildTown>()).Where(x => !x.IsPlayer()));
+            TeamAWUnits.AddRange(g.world.unit.GetUnitExact(baseA_def.GetOrigiPoint(), JOIN_RANGE, true, false).ToArray().Where(x => !x.isDie).Take(MIN_UNIT + STP_UNIT * areaId));
+            TeamAWUnits.AddRange(MapBuildPropertyEvent.GetTownGuardians(baseA_def.TryCast<MapBuildTown>()).Where(x => !x.isDie && !x.IsPlayer()));
             //monsters
             TeamBWUnits.Clear();
 
@@ -901,27 +902,6 @@ namespace MOD_nE7UL2.Mod
                 }
                 BattleModifyEvent.IsShowCustomMonstCount = false;
             }
-        }
-
-        public static double CalMonstBattlePower(int gameLvl, int areaId)
-        {
-            return Math.Pow(3, areaId) * 10000 + Math.Pow(3, gameLvl) * 3000;
-        }
-
-        public static double CalWUnitBattlePower(List<WorldUnitBase> wunits)
-        {
-            if (wunits == null || wunits.Count == 0)
-                return 0;
-            return wunits.Average(x =>
-            {
-                return
-                    (x.GetDynProperty(UnitDynPropertyEnum.Attack).value * 3) +
-                    (x.GetDynProperty(UnitDynPropertyEnum.Defense).value * 10) +
-                    (x.GetDynProperty(UnitDynPropertyEnum.HpMax).value) +
-                    (x.GetDynProperty(UnitDynPropertyEnum.MpMax).value * 3) +
-                    (x.GetDynProperty(UnitDynPropertyEnum.SpMax).value * 5) +
-                    (x.GetEquippedArtifacts().Select(a => Math.Pow(2, a.propsInfoBase.grade) * 10000 + Math.Pow(2, a.propsInfoBase.level) * 2000 + CustomRefineEvent.GetRefineLvl(a) * 100).Sum());
-            });
         }
 
         public static bool IsBattleTownWar()

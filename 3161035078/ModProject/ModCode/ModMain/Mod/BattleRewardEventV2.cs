@@ -589,7 +589,7 @@ namespace MOD_nE7UL2.Mod
                 //DebugHelper.WriteLine("1");
                 var dieUnit = e.unit;
                 var dieUnitWUnit = dieUnit.GetWorldUnit();
-                var isDieUnitWUnit = dieUnit?.IsWorldUnit() ?? false;
+                //var isDieUnitWUnit = dieUnit?.IsWorldUnit() ?? false; /*↑↑↑ checked ↑↑*/
                 var killer = e?.hitData?.attackUnit;
                 var killerWUnit = killer?.GetWorldUnit();
                 var isKillerWUnit = killer?.IsWorldUnit() ?? false;
@@ -608,8 +608,7 @@ namespace MOD_nE7UL2.Mod
                     //life drain
                     //DebugHelper.WriteLine("3");
                     var drainLife = Math.Max(6/*month*/ * g.game.data.dataWorld.data.gameLevel.Parse<int>(), dieUnit.data.maxHP.value / (3000 / g.game.data.dataWorld.data.gameLevel.Parse<int>()));
-                    if (isDieUnitWUnit)
-                        dieUnitWUnit.AddProperty<int>(UnitPropertyEnum.Life, -drainLife);
+                    dieUnitWUnit.AddProperty<int>(UnitPropertyEnum.Life, -drainLife);
                     if (isKillerWUnit)
                         killerWUnit.AddProperty<int>(UnitPropertyEnum.Life, drainLife / 2);
 

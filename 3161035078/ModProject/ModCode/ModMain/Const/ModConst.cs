@@ -2,7 +2,7 @@
 {
     public static class ModConst
     {
-        public const string TAOIST_VERSION = "4.7.1";
+        public const string TAOIST_VERSION = "4.7.2";
         public const string MODLIB_REQUIRED_VERSION = "1.7.1";
 
         //Events
@@ -16,6 +16,7 @@
         public const string NPC_AUTO_EVENT = "NpcAutoEvent";
         public const string BATTLE_MANASHIELD_EVENT = "BattleManashieldEvent";
         public const string BATTLE_EVENT = "BattleEvent";
+        public const string BATTLE_AFTER_EVENT = "BattleAfterEvent";
         public const string REAL_TRIAL_EVENT = "RealTrialEvent";
         public const string BORN_LUCK_EVENT = "BornLuckEvent";
         public const string CONTRIBUTION_EXCHANGE_EVENT = "ContributionExchangeEvent";

@@ -7,7 +7,7 @@ using ModLib.Object;
 namespace MOD_nE7UL2.Mod
 {
     /// <summary>
-    /// Market
+    /// NPC Market
     /// </summary>
     [Cache(ModConst.REAL_MARKET_EVENT3)]
     public class RealMarketEvent3 : ModEvent
