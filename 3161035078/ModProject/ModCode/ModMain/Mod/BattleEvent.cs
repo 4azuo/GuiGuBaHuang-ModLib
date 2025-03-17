@@ -48,7 +48,7 @@ namespace MOD_nE7UL2.Mod
                 }).ToList();
 
                 //team member join
-                NPCJoin(UnitType.PlayerNPC, HirePeopleEvent.GetTeamDetailData(player).Item2.Where(x => x.GetUnitId() != player.GetUnitId()).ToArray());
+                teamMember = NPCJoin(UnitType.PlayerNPC, HirePeopleEvent.GetTeamDetailData(player).Item2.Where(x => !x.isDie && !x.IsPlayer()).ToArray());
             }
         }
 
@@ -141,8 +141,9 @@ namespace MOD_nE7UL2.Mod
             }
         }
 
-        private void NPCJoin(UnitType ut, params WorldUnitBase[] wunits)
+        private List<UnitCtrlBase> NPCJoin(UnitType ut, params WorldUnitBase[] wunits)
         {
+            var rs = new List<UnitCtrlBase>();
             var wpos = g.world.playerUnit.GetUnitPos();
             foreach (var wunit in wunits.Where(x => !x.isDie))
             {
@@ -164,7 +165,10 @@ namespace MOD_nE7UL2.Mod
 
                 //set avgGrade
                 avgGrade = ((avgGrade + wunit.GetGradeLvl()) / 2f) + 0.1f;
+
+                rs.Add(cunit);
             }
+            return rs;
         }
 
         private bool CondJoinBattle(WorldUnitBase wunit)

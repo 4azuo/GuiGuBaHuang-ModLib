@@ -170,5 +170,15 @@
 		"key": "battleevent480112899",
 		"ch": "援助",
 		"en|tc|kr": "Help"
-	}
+	},
+	{
+		"id": "480112900",
+		"key": "battleevent480112900typeDesc",
+		"ch|en|kr|tc": "Dispute"
+	},
+	{
+		"id": "480112901",
+		"key": "battleevent480112901name",
+		"ch|en|kr|tc": "Dispute"
+	},
 ]
