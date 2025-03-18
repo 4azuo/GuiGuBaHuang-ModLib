@@ -1,4 +1,5 @@
 ﻿using EBattleTypeData;
+using Harmony;
 using MOD_nE7UL2.Const;
 using ModLib.Enum;
 using ModLib.Mod;
@@ -26,6 +27,20 @@ namespace MOD_nE7UL2.Mod
 
         public const float STALKE_RATE = 30f;
 
+        public override void OnMonthly()
+        {
+            base.OnMonthly();
+
+            var playerPos = g.world.playerUnit.GetUnitPos();
+            foreach (var wunit in Stalkers)
+            {
+                foreach (var member in HirePeopleEvent.GetTeamDetailData(wunit).Item2)
+                {
+                    wunit.SetUnitPos(new UnityEngine.Vector2Int(CommonTool.Random(playerPos.x - 4, playerPos.x + 4), CommonTool.Random(playerPos.y - 4, playerPos.y + 4)));
+                }
+            }
+        }
+
         public override void OnBattleEndOnce(BattleEnd e)
         {
             base.OnBattleEndOnce(e);
@@ -43,7 +58,7 @@ namespace MOD_nE7UL2.Mod
                 {
                     if (CommonTool.Random(0.00f, 100.00f).IsBetween(0.00f, STALKE_RATE))
                     {
-                        Stalkers.Add(wunit); //stalke
+                        Stalkers.AddRange(HirePeopleEvent.GetTeamDetailData(wunit).Item2); //stalke
                     }
                     else
                     {
