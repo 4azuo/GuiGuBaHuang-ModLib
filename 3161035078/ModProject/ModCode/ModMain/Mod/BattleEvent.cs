@@ -47,7 +47,7 @@ namespace MOD_nE7UL2.Mod
                 //setup around units
                 AroundUnits.AddRange(player.GetUnitsAround(JOIN_RANGE, false, false).ToArray().Where(x =>
                 {
-                    return CondJoinBattle(x) && (IsFriendlyUnit(x) || IsEnemyUnit(x) || MapBuildPropertyEvent.IsTownGuardian(x) || MapBuildPropertyEvent.IsSchoolMember(ModBattleEvent.School, x));
+                    return !BattleAfterEvent.Stalkers.Contains(x) && CondJoinBattle(x) && (IsFriendlyUnit(x) || IsEnemyUnit(x) || MapBuildPropertyEvent.IsTownGuardian(x) || MapBuildPropertyEvent.IsSchoolMember(ModBattleEvent.School, x));
                 }));
 
                 //team member join
@@ -74,6 +74,7 @@ namespace MOD_nE7UL2.Mod
                             if (stalker != null)
                             {
                                 var units = HirePeopleEvent.GetTeamDetailData(stalker).Item2;
+                                units.ToList().ForEach(x => x.SetUnitPos(g.world.playerUnit.GetUnitPos()));
                                 BattleAfterEvent.Stalkers.RemoveAll(x => units.Any(y => y.GetUnitId() == x.GetUnitId()));
                                 NPCJoin(UnitType.Monst, units);
 
@@ -90,6 +91,7 @@ namespace MOD_nE7UL2.Mod
                             if (enemyUnit != null)
                             {
                                 var units = HirePeopleEvent.GetTeamDetailData(enemyUnit).Item2;
+                                units.ToList().ForEach(x => x.SetUnitPos(g.world.playerUnit.GetUnitPos()));
                                 AroundUnits.RemoveAll(x => units.Any(y => y.GetUnitId() == x.GetUnitId()));
                                 NPCJoin(UnitType.Monst, units);
 
@@ -104,6 +106,7 @@ namespace MOD_nE7UL2.Mod
                             if (friendlyUnit != null)
                             {
                                 var units = HirePeopleEvent.GetTeamDetailData(friendlyUnit).Item2;
+                                units.ToList().ForEach(x => x.SetUnitPos(g.world.playerUnit.GetUnitPos()));
                                 AroundUnits.RemoveAll(x => units.Any(y => y.GetUnitId() == x.GetUnitId()));
                                 NPCJoin(UnitType.PlayerNPC, units);
 
@@ -118,6 +121,7 @@ namespace MOD_nE7UL2.Mod
                             if (sectMember != null)
                             {
                                 var units = HirePeopleEvent.GetTeamDetailData(sectMember).Item2;
+                                units.ToList().ForEach(x => x.SetUnitPos(g.world.playerUnit.GetUnitPos()));
                                 AroundUnits.RemoveAll(x => units.Any(y => y.GetUnitId() == x.GetUnitId()));
                                 var ut = IsFriendlyUnit(sectMember) ? UnitType.PlayerNPC : UnitType.Monst;
                                 NPCJoin(ut, units);
@@ -133,6 +137,7 @@ namespace MOD_nE7UL2.Mod
                             if (townguard != null)
                             {
                                 var units = HirePeopleEvent.GetTeamDetailData(townguard).Item2;
+                                units.ToList().ForEach(x => x.SetUnitPos(g.world.playerUnit.GetUnitPos()));
                                 AroundUnits.RemoveAll(x => units.Any(y => y.GetUnitId() == x.GetUnitId()));
                                 var ut = IsFriendlyUnit(townguard) ? UnitType.PlayerNPC : UnitType.Monst;
                                 NPCJoin(ut, units);
