@@ -225,45 +225,42 @@ namespace MOD_nE7UL2.Mod
             if (TeamData.ContainsKey(masterId))
             {
                 var teamData = GetTeamData(wunit);
-                if (teamData.HasValue)
+                foreach (var memberId in teamData.Value.ToArray())
                 {
-                    foreach (var memberId in teamData.Value.Value.ToArray())
+                    if (memberId == masterId)
+                        continue;
+                    var member = g.world.unit.GetUnit(memberId);
+                    if (member == null)
                     {
-                        if (memberId == masterId)
-                            continue;
-                        var member = g.world.unit.GetUnit(memberId);
-                        if (member == null)
+                        teamData.Value.Remove(memberId);
+                        continue;
+                    }
+                    if (member.isDie)
+                    {
+                        teamData.Value.Remove(memberId);
+                        member.DelLuck(TEAM_LUCK_ID);
+                    }
+                    //free if intim >= FRIEND_INTIM
+                    else if (member.data.unitData.relationData.GetIntim(wunit) < FRIEND_INTIM)
+                    {
+                        var requiredSpiritStones = GetRequiredSpiritStones(wunit, member) / MONTHLY_PAYMENT_RATIO;
+                        if (wunit.GetUnitMoney() < requiredSpiritStones)
                         {
-                            teamData.Value.Value.Remove(memberId);
-                            continue;
+                            Dismiss(wunit, member);
+                            member.data.unitData.relationData.AddHate(masterId, 50);
                         }
-                        if (member.isDie)
+                        else
                         {
-                            teamData.Value.Value.Remove(memberId);
-                            member.DelLuck(TEAM_LUCK_ID);
-                        }
-                        //free if intim >= FRIEND_INTIM
-                        else if (member.data.unitData.relationData.GetIntim(wunit) < FRIEND_INTIM)
-                        {
-                            var requiredSpiritStones = GetRequiredSpiritStones(wunit, member) / MONTHLY_PAYMENT_RATIO;
-                            if (wunit.GetUnitMoney() < requiredSpiritStones)
-                            {
-                                Dismiss(wunit, member);
-                                member.data.unitData.relationData.AddHate(masterId, 50);
-                            }
-                            else
-                            {
-                                wunit.AddUnitMoney(-requiredSpiritStones);
-                                member.SetUnitPos(wunit.GetUnitPos());
-                            }
+                            wunit.AddUnitMoney(-requiredSpiritStones);
+                            member.SetUnitPos(wunit.GetUnitPos());
                         }
                     }
+                }
 
-                    if (teamData.Value.Value.Count == 0 || teamData.Value.Value.All(x => x == masterId))
-                    {
-                        Instance.TeamData.Remove(masterId);
-                        wunit.DelLuck(TEAM_LUCK_ID);
-                    }
+                if (teamData.Value.Count == 0 || teamData.Value.All(x => x == masterId))
+                {
+                    Instance.TeamData.Remove(masterId);
+                    wunit.DelLuck(TEAM_LUCK_ID);
                 }
             }
         }
@@ -341,10 +338,10 @@ namespace MOD_nE7UL2.Mod
 
         public static WorldUnitBase[] GetTeamMember(WorldUnitBase wunit)
         {
-            return GetTeamData(wunit).Value.Value.Select(x => g.world.unit.GetUnit(x)).Where(x => x != null).ToArray();
+            return GetTeamData(wunit).Value.Select(x => g.world.unit.GetUnit(x)).Where(x => x != null).ToArray();
         }
 
-        public static KeyValuePair<string, List<string>>? GetTeamData(WorldUnitBase wunit)
+        public static KeyValuePair<string, List<string>> GetTeamData(WorldUnitBase wunit)
         {
             var wunitId = wunit.GetUnitId();
             if (!IsHired(wunit) || !Instance.TeamData.Any(x => x.Value.Contains(wunitId)))
@@ -355,12 +352,12 @@ namespace MOD_nE7UL2.Mod
         public static Tuple<WorldUnitBase, WorldUnitBase[]> GetTeamDetailData(WorldUnitBase wunit)
         {
             var teamData = GetTeamData(wunit);
-            return Tuple.Create(g.world.unit.GetUnit(teamData.Value.Key), GetTeamMember(wunit));
+            return Tuple.Create(g.world.unit.GetUnit(teamData.Key), GetTeamMember(wunit));
         }
 
         public static WorldUnitBase GetTeamMaster(WorldUnitBase wunit)
         {
-            return g.world.unit.GetUnit(GetTeamData(wunit).Value.Key);
+            return g.world.unit.GetUnit(GetTeamData(wunit).Key);
         }
 
         public static string GetTeamInfoStr(WorldUnitBase wunit)
