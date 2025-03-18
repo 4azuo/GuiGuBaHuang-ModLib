@@ -106,5 +106,23 @@
 		"function": "0",
 		"options": "480110601|480110602|480110603|480110605|480110604",
 		"nextDialogue": "0"
-	}
+	},
+	{
+		"id": "480110700",
+		"uiType": "1",
+		"condition": "0",
+		"weight": "1",
+		"npcLeft": "0",
+		"npcRight": "0",
+		"speaker": "0",
+		"backgroud": "0",
+		"soundsBg": "0",
+		"soundsEffect": "0",
+		"title": "0",
+		"dialogue": "battleevent480110600",
+		"openFunction": "0",
+		"function": "0",
+		"options": "0",
+		"nextDialogue": "0"
+	},
 ]

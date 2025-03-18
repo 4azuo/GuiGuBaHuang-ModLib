@@ -30,6 +30,11 @@
 		"en|kr|tc": "I have enough with you! Go to hell!"
 	},
 	{
+		"id": "480110600",
+		"key": "battleevent480110600",
+		"ch|en|kr|tc": "I know you have it. Give it to me!"
+	},
+	{
 		"id": "480111990",
 		"key": "battleevent480111990typeDesc",
 		"ch": "战争",
@@ -170,15 +175,5 @@
 		"key": "battleevent480112899",
 		"ch": "援助",
 		"en|tc|kr": "Help"
-	},
-	{
-		"id": "480112900",
-		"key": "battleevent480112900typeDesc",
-		"ch|en|kr|tc": "Dispute"
-	},
-	{
-		"id": "480112901",
-		"key": "battleevent480112901name",
-		"ch|en|kr|tc": "Dispute"
-	},
+	}
 ]
