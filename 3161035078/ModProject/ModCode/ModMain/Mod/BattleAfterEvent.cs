@@ -45,16 +45,17 @@ namespace MOD_nE7UL2.Mod
         {
             base.OnBattleEndOnce(e);
 
-            var itemMaxLevel = ModBattleEvent.SceneBattle.battleData.allDropRewardItem.ToArray().Max(x => x.propsInfoBase.level);
+            var dropItems = ModBattleEvent.SceneBattle.battleData.allDropRewardItem.ToArray();
+            var itemMaxLevel = dropItems.Count <= 0 ? 0 : dropItems.Max(x => x.propsInfoBase.level);
             if (itemMaxLevel > 2)
             {
-                var itemMaxGrade = ModBattleEvent.SceneBattle.battleData.allDropRewardItem.ToArray().Max(x => x.propsInfoBase.grade);
+                var itemMaxGrade = dropItems.Count <= 0 ? 0 : dropItems.Max(x => x.propsInfoBase.grade);
                 var robRate = itemMaxGrade * 10 + Math.Pow(1.7, itemMaxLevel);
 
                 var player = g.world.playerUnit;
                 var playerGrade = player.GetGradeLvl();
                 var aroundUnits = player.GetUnitsAround(playerGrade, true, false).ToArray().Where(x => IsNoticed(x) && robRate > x.GetGradeLvl() * 10).ToList();
-                foreach (var wunit in Stalkers.ToArray())
+                foreach (var wunit in aroundUnits)
                 {
                     if (CommonTool.Random(0.00f, 100.00f).IsBetween(0.00f, STALKE_RATE))
                     {
