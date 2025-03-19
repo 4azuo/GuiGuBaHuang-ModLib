@@ -118,7 +118,7 @@ public static class ConfHelper
                     else
                     {
                         var ns = n.ToString().Split(KEY_SPLIT_CHAR);
-                        if (ns.Length > 1)
+                        if (ns.Length >= 1)
                         {
                             foreach (var ni in ns)
                             {
