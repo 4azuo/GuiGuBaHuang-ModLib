@@ -430,11 +430,12 @@ public static class WUnitHelper
 
     public static void AddUnitMoney(this WorldUnitBase wunit, int addCount)
     {
-        if (addCount == 0)
-            return;
-        wunit.AddUnitProp(ModLibConst.MONEY_PROP_ID, addCount);
-        if (wunit.GetUnitMoney() <= 0)
-            wunit.data.RewardPropMoney(int.MinValue);
+        //if (addCount == 0)
+        //    return;
+        //wunit.AddUnitProp(ModLibConst.MONEY_PROP_ID, addCount);
+        //if (wunit.GetUnitMoney() <= 0)
+        //    wunit.data.RewardPropMoney(int.MinValue);
+        wunit.data.RewardPropMoney(addCount);
     }
 
     public static void SetUnitMoney(this WorldUnitBase wunit, int setCount)
@@ -449,21 +450,25 @@ public static class WUnitHelper
 
     public static void AddUnitContribution(this WorldUnitBase wunit, int addCount)
     {
-        if (addCount == 0)
-            return;
-        wunit.AddUnitProp(ModLibConst.CONTRIBUTION_PROP_ID, addCount);
+        //if (addCount == 0)
+        //    return;
+        //wunit.AddUnitProp(ModLibConst.CONTRIBUTION_PROP_ID, addCount);
+        if (addCount > 0)
+            wunit.data.RewardPropItem(ModLibConst.CONTRIBUTION_PROP_ID, Math.Abs(addCount), false);
+        else if (addCount < 0)
+            wunit.data.CostPropItem(ModLibConst.CONTRIBUTION_PROP_ID, Math.Abs(addCount), false);
     }
 
     public static void SetUnitContribution(this WorldUnitBase wunit, int setCount)
     {
-        if (setCount <= 0)
-        {
-            wunit.RemoveUnitProp(ModLibConst.CONTRIBUTION_PROP_ID);
-        }
-        else
-        {
+        //if (setCount <= 0)
+        //{
+        //    wunit.RemoveUnitProp(ModLibConst.CONTRIBUTION_PROP_ID);
+        //}
+        //else
+        //{
             wunit.AddUnitContribution(setCount - wunit.GetUnitContribution());
-        }
+        //}
     }
 
     public static int GetUnitContribution(this WorldUnitBase wunit)
@@ -473,21 +478,25 @@ public static class WUnitHelper
 
     public static void AddUnitMayorDegree(this WorldUnitBase wunit, int addCount)
     {
-        if (addCount == 0)
-            return;
-        wunit.AddUnitProp(ModLibConst.MAYOR_DEGREE_PROP_ID, addCount);
+        //if (addCount == 0)
+        //    return;
+        //wunit.AddUnitProp(ModLibConst.MAYOR_DEGREE_PROP_ID, addCount);
+        if (addCount > 0)
+            wunit.data.RewardPropItem(ModLibConst.MAYOR_DEGREE_PROP_ID, Math.Abs(addCount), false);
+        else if (addCount < 0)
+            wunit.data.CostPropItem(ModLibConst.MAYOR_DEGREE_PROP_ID, Math.Abs(addCount), false);
     }
 
     public static void SetUnitMayorDegree(this WorldUnitBase wunit, int setCount)
     {
-        if (setCount <= 0)
-        {
-            wunit.RemoveUnitProp(ModLibConst.MAYOR_DEGREE_PROP_ID);
-        }
-        else
-        {
+        //if (setCount <= 0)
+        //{
+        //    wunit.RemoveUnitProp(ModLibConst.MAYOR_DEGREE_PROP_ID);
+        //}
+        //else
+        //{
             wunit.AddUnitMayorDegree(setCount - wunit.GetUnitMayorDegree());
-        }
+        //}
     }
 
     public static int GetUnitMayorDegree(this WorldUnitBase wunit)

@@ -4,7 +4,6 @@ using System.Collections.Generic;
 using System;
 using ModLib.Enum;
 using ModLib.Object;
-using System.Threading.Tasks;
 using System.Reflection;
 
 public static class EventHelper
