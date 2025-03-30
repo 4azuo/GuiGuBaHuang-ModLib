@@ -46,11 +46,11 @@
 	{
 		"id": "420041118",
 		"key": "townmaster420041118",
-		"ch|en|kr|tc": "Budget: {0}"
+		"ch|en|kr|tc": "Budget: {0:#,##0}"
 	},
 	{
 		"id": "420041119",
 		"key": "townmaster420041119",
-		"ch|en|kr|tc": "Payment: {0}/year"
+		"ch|en|kr|tc": "Payment: {0:#,##0}/year"
 	}
 ]
