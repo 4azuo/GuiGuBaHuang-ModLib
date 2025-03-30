@@ -2,7 +2,8 @@
 	{
 		"id": "420041120",
 		"key": "team420041120desc",
-		"ch": "team420041120desc","en|tc|kr": "team420041120desc"
+		"ch": "team420041120desc",
+		"en|tc|kr": "team420041120desc"
 	},
 	{
 		"id": "420041121",
@@ -69,5 +70,10 @@
 		"key": "team420041132",
 		"ch": "兄弟情义不能用钱买",
 		"en|tc|kr": "You dont have to pay for friends!"
+	},
+	{
+		"id": "420041133",
+		"key": "team420041133",
+		"ch|en|tc|kr": "Team up"
 	}
 ]

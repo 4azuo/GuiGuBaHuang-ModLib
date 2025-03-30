@@ -106,6 +106,10 @@ namespace MOD_nE7UL2.Mod
                         });
                     }
                 }
+            }
+            else
+            if (e.uiType.uiName == UIType.School.uiName)
+            {
                 //pay school tax
                 var school = player.GetMapBuild<MapBuildSchool>();
                 if (school != null && !PayTaxTown.Contains(school.buildData.id) && !MapBuildPropertyEvent.IsSchoolMember(school, player))
@@ -147,8 +151,8 @@ namespace MOD_nE7UL2.Mod
                     if (IsTownGuardian(uiCover.UI.unit))
                     {
                         var town = GetGuardTown(uiCover.UI.unit);
-                        if (IsTownGuardian(town, uiCover.UI.unit) && uiCover.UI.unit.data.unitData.relationData.GetIntim(player) < 200)
-                            uiCover.AddText(0, 0, $"{GetRequiredSpiritStones(town, uiCover.UI.unit):#,##0} Spirit Stones/year").Align().Format(Color.white).Pos(uiCover.UI.uiProperty.textInTrait1.transform, 0f, 0.5f).SetParentTransform(uiCover.UI.uiProperty.textInTrait1.transform);
+                        if (IsTownMaster(town, g.world.playerUnit))
+                            uiCover.AddText(0, 0, string.Format(GameTool.LS("other500020042"), GetRequiredSpiritStones(town, uiCover.UI.unit))).Align().Format(Color.white).Pos(uiCover.UI.uiProperty.textInTrait1.transform, 0f, 0.5f).SetParentTransform(uiCover.UI.uiProperty.textInTrait1.transform);
                         uiCover.AddText(0, 0, $"Town: {GetGuardTownInfoStr(uiCover.UI.unit)}").Align().Format(Color.white).Pos(uiCover.UI.uiProperty.textInTrait1.transform, 0f, 0.25f).SetParentTransform(uiCover.UI.uiProperty.textInTrait1.transform);
                         if (isShowManageTeamUI1)
                         {
@@ -166,7 +170,7 @@ namespace MOD_nE7UL2.Mod
                     if (isShowHirePeopleUI)
                     {
                         var town = uiCover.UI.unit.GetMapBuild<MapBuildTown>();
-                        uiCover.AddText(0, 0, $"{GetRequiredSpiritStones(town, uiCover.UI.unit):#,##0} Spirit Stones/year").Align().Format(Color.white).Pos(uiCover.UI.uiProperty.textInTrait1.transform, 0f, 0.5f).SetParentTransform(uiCover.UI.uiProperty.textInTrait1.transform);
+                        uiCover.AddText(0, 0, string.Format(GameTool.LS("other500020042"), GetRequiredSpiritStones(town, uiCover.UI.unit))).Align().Format(Color.white).Pos(uiCover.UI.uiProperty.textInTrait1.transform, 0f, 0.5f).SetParentTransform(uiCover.UI.uiProperty.textInTrait1.transform);
                         uiCover.AddText(0, 0, $"{GetRequiredReputations(town, uiCover.UI.unit):#,##0} Reputations").Align().Format(Color.white).Pos(uiCover.UI.uiProperty.textInTrait1.transform, 0f, 0.25f).SetParentTransform(uiCover.UI.uiProperty.textInTrait1.transform);
                         uiCover.AddButton(0, 0, () =>
                         {
@@ -675,11 +679,11 @@ namespace MOD_nE7UL2.Mod
                 uiCover.AddText(col, row + i++, string.Format(GameTool.LS("townmaster420041117"), town.name, GetTownMaster(town).data.unitData.propertyData.GetName())).Format().Align();
                 uiCover.AddText(col, row + i++, GameTool.LS("townmaster420041118")).Format().Align().SetWork(new UIItemWork
                 {
-                    Formatter = (ibase) => new object[] { GetBuildProperty(town).ToString("#,##0") },
+                    Formatter = (ibase) => new object[] { GetBuildProperty(town) },
                 });
                 uiCover.AddText(col, row + i++, GameTool.LS("townmaster420041119")).Format().Align().SetWork(new UIItemWork
                 {
-                    Formatter = (ibase) => new object[] { GetTotalMonthlyPayment(town).ToString("#,##0") },
+                    Formatter = (ibase) => new object[] { GetTotalMonthlyPayment(town) },
                 });
             }
             uiCover.UpdateUI();
@@ -701,11 +705,11 @@ namespace MOD_nE7UL2.Mod
                 uiCover.AddText(col, row + i++, string.Format(GameTool.LS("townmaster420041117"), town.name, GetTownMaster(town).data.unitData.propertyData.GetName())).Format().Align();
                 uiCover.AddText(col, row + i++, GameTool.LS("townmaster420041118")).Format().Align().SetWork(new UIItemWork
                 {
-                    Formatter = (ibase) => new object[] { GetBuildProperty(town).ToString("#,##0") },
+                    Formatter = (ibase) => new object[] { GetBuildProperty(town) },
                 });
                 uiCover.AddText(col, row + i++, GameTool.LS("townmaster420041119")).Format().Align().SetWork(new UIItemWork
                 {
-                    Formatter = (ibase) => new object[] { GetTotalMonthlyPayment(town).ToString("#,##0") },
+                    Formatter = (ibase) => new object[] { GetTotalMonthlyPayment(town) },
                 });
                 uiCover.AddCompositeSlider(col, row + i++, $"Base Tax:", 0.40f, 20.00f, Instance.TaxRate[town.buildData.id], "{0}/month").SetWork(new UIItemWork
                 {
