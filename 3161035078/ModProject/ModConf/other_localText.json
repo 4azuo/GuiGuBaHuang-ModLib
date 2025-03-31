@@ -251,5 +251,15 @@
 		"id": 500020043,
 		"key": "other500020043",
 		"ch|en|tc|kr": "{0:#,##0} Spirit Stones/month"
+	},
+	{
+		"id": 500020044,
+		"key": "other500020044",
+		"ch|en|tc|kr": "Sneaky through"
+	},
+	{
+		"id": 500020045,
+		"key": "other500020045",
+		"ch|en|tc|kr": "Leave"
 	}
 ]
