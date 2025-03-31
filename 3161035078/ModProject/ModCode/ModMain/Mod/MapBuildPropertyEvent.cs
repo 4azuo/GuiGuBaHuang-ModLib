@@ -8,8 +8,10 @@ using ModLib.Object;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Numerics;
 using UnityEngine;
 using UnityEngine.Events;
+using static DataBuildTown;
 
 namespace MOD_nE7UL2.Mod
 {
@@ -27,10 +29,17 @@ namespace MOD_nE7UL2.Mod
         public const int TOWN_MASTER_LUCK_ID = 420041111;
         public const int TOWN_GUARDIAN_LUCK_ID = 420041112;
         public const string TOWN_COUCIL_LUCK_DESC = "townmaster420041110desc";
+
         public const int BECOME_TOWN_MASTER_DRAMA = 420041113;
         public const int BECOME_TOWN_GUARDIAN_DRAMA = 420041114;
         public const int BECOME_TOWN_GUARDIAN_DRAMA_OPT1 = 420041115;
         public const int BECOME_TOWN_GUARDIAN_DRAMA_OPT2 = 420041116;
+
+        public const int TAXPAY_NOT_ENOUGH_MONEY_DRAMA = 501020027;
+        public const int TAXPAY_NOT_ENOUGH_MONEY_DRAMA_OPT1 = 501120027;
+        public const int TAXPAY_NOT_ENOUGH_MONEY_DRAMA_OPT2 = 501220027;
+
+        public const int CATCH_SNEAKY_DUNGEON_ID = 480110993;
 
         public Dictionary<string, float> TaxRate { get; set; } = new Dictionary<string, float>();
         public Dictionary<string, long> Budget { get; set; } = new Dictionary<string, long>();
@@ -91,20 +100,8 @@ namespace MOD_nE7UL2.Mod
                 var town = player.GetMapBuild<MapBuildTown>();
                 if (town != null && !PayTaxTown.Contains(town.buildData.id) && !IsTownGuardian(town, player))
                 {
-                    var tax = GetTax(town, player);
-                    if (player.GetUnitMoney() > tax)
-                    {
-                        AddBuildProperty(town, tax);
-                        player.AddUnitMoney(-tax);
-                        PayTaxTown.Add(town.buildData.id);
-                    }
-                    else
-                    {
-                        g.ui.MsgBox(GameTool.LS("other500020011"), string.Format(GameTool.LS("other500020027"), tax), onYesCall: () =>
-                        {
-                            g.ui.CloseUI(e.ui);
-                        });
-                    }
+                    var guard = GetTownGuardians(town).Random();
+                    CheckIn(guard, town, e.ui);
                 }
             }
             else
@@ -114,20 +111,8 @@ namespace MOD_nE7UL2.Mod
                 var school = player.GetMapBuild<MapBuildSchool>();
                 if (school != null && !PayTaxTown.Contains(school.buildData.id) && !MapBuildPropertyEvent.IsSchoolMember(school, player))
                 {
-                    var tax = GetTax(school, player);
-                    if (player.GetUnitMoney() > tax)
-                    {
-                        AddBuildProperty(school, tax);
-                        player.AddUnitMoney(-tax);
-                        PayTaxTown.Add(school.buildData.id);
-                    }
-                    else
-                    {
-                        g.ui.MsgBox(GameTool.LS("other500020011"), string.Format(GameTool.LS("other500020027"), tax), onYesCall: () =>
-                        {
-                            g.ui.CloseUI(e.ui);
-                        });
-                    }
+                    var guard = g.world.unit.GetUnitExact(g.world.playerUnit.GetUnitPos(), 4).ToArray().Where(x => x.data.school?.schoolNameID == school.schoolNameID).ToArray().Random();
+                    CheckIn(guard, school, e.ui);
                 }
             }
             else
@@ -901,6 +886,40 @@ namespace MOD_nE7UL2.Mod
         {
             var k = (Instance.TownMasters.ContainsKey(town.buildData.id) ? Instance.TownMasters[town.buildData.id].Count : 1) + 1;
             return (Math.Pow(2, k) * 100 + Math.Pow(3, wunit.GetGradeLvl()) * 10).Parse<int>();
+        }
+
+        public static void CheckIn(WorldUnitBase guard, MapBuildBase buildBase, UIBase ui)
+        {
+            var player = g.world.playerUnit;
+            var tax = GetTax(buildBase, player);
+            if (player.GetUnitMoney() > tax)
+            {
+                AddBuildProperty(buildBase, tax);
+                player.AddUnitMoney(-tax);
+                Instance.PayTaxTown.Add(buildBase.buildData.id);
+            }
+            else
+            {
+                DramaTool.OpenDrama(TAXPAY_NOT_ENOUGH_MONEY_DRAMA, new DramaData
+                {
+                    dialogueText = { [TAXPAY_NOT_ENOUGH_MONEY_DRAMA] = string.Format(GameTool.LS("other500020027"), tax) },
+                    onOptionsClickCall = (Il2CppSystem.Action<ConfDramaOptionsItem>)((x) =>
+                    {
+                        switch (x.id)
+                        {
+                            case TAXPAY_NOT_ENOUGH_MONEY_DRAMA_OPT1:
+                                if (guard != null && !CommonTool.Random(0f, 100f).IsBetween(0f, (Math.Max(player.GetGradeLvl() - buildBase.gridData.areaBaseID, 0) + 1) * 40f))
+                                    g.world.battle.IntoBattle(guard, CATCH_SNEAKY_DUNGEON_ID);
+                                else
+                                    Instance.PayTaxTown.Add(buildBase.buildData.id);
+                                break;
+                            case TAXPAY_NOT_ENOUGH_MONEY_DRAMA_OPT2:
+                                g.ui.CloseUI(ui);
+                                break;
+                        }
+                    })
+                });
+            }
         }
     }
 }

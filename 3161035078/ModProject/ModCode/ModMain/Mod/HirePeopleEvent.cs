@@ -110,8 +110,9 @@ namespace MOD_nE7UL2.Mod
                                     if (!isFriend)
                                         player.AddUnitMoney(-requiredSpiritStones);
                                 });
-                            }, uiCover.UI.unit.data.unitData.relationData.GetIntim(g.world.playerUnit) < FRIEND_INTIM ? GameTool.LS("other500020013") : GameTool.LS("team420041133"))
-                                .Format(Color.black).Size(100, 40).Pos(uiCover.UI.uiProperty.textInTrait1.transform, -1.1f, 0.4f).SetParentTransform(uiCover.UI.uiProperty.textInTrait1.transform);
+                            }, GameTool.LS("team420041133"))
+                                .Format(Color.black).Size(100, 40).Pos(uiCover.UI.uiProperty.textInTrait1.transform, -1.1f, 0.4f)
+                                .SetParentTransform(uiCover.UI.uiProperty.textInTrait1.transform);
                         }
                     }
                     uiCover.UpdateUI();
