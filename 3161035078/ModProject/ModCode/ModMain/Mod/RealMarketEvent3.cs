@@ -1,8 +1,10 @@
-﻿using EGameTypeData;
+﻿using System.Linq;
+using EGameTypeData;
 using MOD_nE7UL2.Const;
 using ModLib.Mod;
 using UnityEngine;
 using ModLib.Object;
+using Boo.Lang;
 
 namespace MOD_nE7UL2.Mod
 {
@@ -13,6 +15,14 @@ namespace MOD_nE7UL2.Mod
     public class RealMarketEvent3 : ModEvent
     {
         public static RealMarketEvent3 Instance { get; set; }
+        public static bool isShowNPCList = false;
+
+        public List<string> NPCinMarket = new List<string>();
+
+        public override void OnMonthly()
+        {
+            base.OnMonthly();
+        }
 
         public override void OnOpenUIEnd(OpenUIEnd e)
         {
@@ -28,9 +38,23 @@ namespace MOD_nE7UL2.Mod
             }
         }
 
+        public override void OnCloseUIStart(CloseUIStart e)
+        {
+            base.OnCloseUIStart(e);
+            if (e.uiType.uiName == UIType.NPCSearch.uiName)
+            {
+                isShowNPCList = false;
+            }
+        }
+
         private void OpenMarket()
         {
             g.ui.MsgBox("Fouru", "Wait for next version...");
+            //var ui = g.ui.OpenUI<UINPCSearch>(UIType.NPCSearch);
+            //ui.InitData(new Vector2Int(0, 0));
+            //ui.units = NPCinMarket.Select(x => g.world.unit.GetUnit(x)).ToIl2CppList();
+            //ui.UpdateUI();
+            //isShowNPCList = true;
         }
     }
 }
