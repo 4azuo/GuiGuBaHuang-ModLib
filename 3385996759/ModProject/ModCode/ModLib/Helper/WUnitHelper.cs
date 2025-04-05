@@ -75,6 +75,11 @@ public static class WUnitHelper
         return wunit.data.unitData.propData.GetEquipProps().ToArray();
     }
 
+    public static DataProps.PropsData[] GetUnequippedProps(this WorldUnitBase wunit)
+    {
+        return wunit.data.unitData.propData.GetEquipProps(true, false).ToArray();
+    }
+
     public static Il2CppSystem.Collections.Generic.Dictionary<string, DataUnit.ActionMartialData> GetActionMartials(this WorldUnitBase wunit)
     {
         return wunit.data.unitData.allActionMartial;
