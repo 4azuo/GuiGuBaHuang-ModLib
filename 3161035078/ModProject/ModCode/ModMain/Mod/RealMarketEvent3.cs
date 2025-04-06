@@ -61,6 +61,11 @@ namespace MOD_nE7UL2.Mod
                 }
                 ui.UpdateUI();
             }
+            else
+            if (e.uiType.uiName == UIType.NPCSearch.uiName)
+            {
+
+            }
         }
 
         public override void OnCloseUIStart(CloseUIStart e)
@@ -74,12 +79,12 @@ namespace MOD_nE7UL2.Mod
 
         private void OpenMarket()
         {
-            g.ui.MsgBox("Fouru", "Wait for next version...");
-            //var ui = g.ui.OpenUI<UINPCSearch>(UIType.NPCSearch);
-            //ui.InitData(new Vector2Int(0, 0));
-            //ui.units = NPCinMarket.Select(x => g.world.unit.GetUnit(x)).ToIl2CppList();
-            //ui.UpdateUI();
-            //isShowNPCList = true;
+            //g.ui.MsgBox("Fouru", "Wait for next version...");
+            var ui = g.ui.OpenUI<UINPCSearch>(UIType.NPCSearch);
+            ui.InitData(new Vector2Int(0, 0));
+            ui.units = NPCinMarket.Select(x => g.world.unit.GetUnit(x)).ToIl2CppList();
+            ui.UpdateUI();
+            isShowNPCList = true;
         }
     }
 }

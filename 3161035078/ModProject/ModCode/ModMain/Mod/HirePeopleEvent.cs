@@ -18,9 +18,9 @@ namespace MOD_nE7UL2.Mod
         public const int TEAM_LUCK_ID = 420041121;
         public const string TEAM_LUCK_DESC = "team420041120desc";
         public const int FRIEND_JOIN_DRAMA = 420041123;
-        public const float FRIEND_JOIN_RATE = 5f;
+        public const float FRIEND_JOIN_RATE = 10f;
         public const int MONTHLY_PAYMENT_RATIO = 10;
-        public const int FRIEND_INTIM = 200;
+        public const int FRIEND_INTIM = 180;
 
         public static bool isShowHirePeopleUI = false;
         public static bool isShowManageTeamUI = false;
@@ -209,7 +209,12 @@ namespace MOD_nE7UL2.Mod
                         var relationWUnit = g.world.unit.GetUnit(relationWUnitIntim.Key);
                         if (relationWUnit == null || relationWUnit.isDie)
                             continue;
-                        if (relationWUnit.data.unitData.relationData.GetIntim(wunit) >= FRIEND_INTIM)
+                        if (/*1*/relationWUnit.data.unitData.relationData.GetIntim(wunit) >= FRIEND_INTIM ||
+                            /*2*/(
+                                    relationWUnit.data.unitData.relationData.GetIntim(wunit) >= FRIEND_INTIM / 3 && 
+                                    relationWUnit.data.school?.schoolNameID != null && relationWUnit.data.school?.schoolNameID == wunit.data.school?.schoolNameID
+                                )
+                            )
                         {
                             if (relationWUnit.IsPlayer())
                             {
