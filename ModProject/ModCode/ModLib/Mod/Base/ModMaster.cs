@@ -154,6 +154,9 @@ namespace ModLib.Mod
         {
             try
             {
+                var process = Process.GetCurrentProcess();
+                process.PriorityClass = ProcessPriorityClass.High;
+
                 DebugHelper.WriteLine("Load.");
 
                 ModObj = this;
