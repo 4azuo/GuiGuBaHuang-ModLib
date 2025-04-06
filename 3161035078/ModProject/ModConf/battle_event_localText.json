@@ -30,6 +30,16 @@
 		"en|kr|tc": "I have enough with you! Go to hell!"
 	},
 	{
+		"id": "480110501",
+		"key": "battleevent480110501",
+		"ch|en|kr|tc": "The things you're doing are disgusting. Go to hell, you evil!"
+	},
+	{
+		"id": "480110502",
+		"key": "battleevent480110502",
+		"ch|en|kr|tc": "Your lofty demeanor really makes me nauseous."
+	},
+	{
 		"id": "480110600",
 		"key": "battleevent480110600",
 		"ch|en|kr|tc": "I know you have it. Give it to me!"
