@@ -684,4 +684,16 @@ public static class WUnitHelper
     {
         return wunits.OrderByDescending(x => x.GetDynProperty(UnitDynPropertyEnum.Reputation).value).FirstOrDefault();
     }
+
+    public static bool IsRighteous(this WorldUnitBase wunit)
+    {
+        return wunit.GetDynProperty(UnitDynPropertyEnum.StandUp).value > wunit.GetDynProperty(UnitDynPropertyEnum.StandDown).value;
+    }
+
+    public static int GetStandValue(this WorldUnitBase wunit)
+    {
+        if (wunit.IsRighteous())
+            return wunit.GetDynProperty(UnitDynPropertyEnum.StandUp).value;
+        return wunit.GetDynProperty(UnitDynPropertyEnum.StandDown).value;
+    }
 }
