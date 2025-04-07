@@ -27,7 +27,7 @@ namespace ModLib.Object
             SelectIndex(def, true);
 
             Item.onValueChanged.AddListener((UnityAction<bool>)(v => OnMainChanged()));
-            Item.onValueChanged.AddListener((UnityEngine.Events.UnityAction<bool>)((value) => UI.UpdateUI()));
+            Item.onValueChanged.AddListener((UnityAction<bool>)((value) => UI.UpdateUI()));
         }
 
         public void SetSelections(string[] selections)
@@ -45,7 +45,7 @@ namespace ModLib.Object
             {
                 var comp = Item.Copy(UI.UIBase).Set(false, $"　{selections[i]}");
                 comp.gameObject.SetActive(false);
-                comp.onValueChanged.AddListener((UnityEngine.Events.UnityAction<bool>)((x) => UI.UpdateUI()));
+                comp.onValueChanged.AddListener((UnityAction<bool>)((x) => UI.UpdateUI()));
                 comp.onValueChanged.AddListener((UnityAction<bool>)(v => OnSubChanged(comp)));
                 SelectionItems.Add(comp);
             }
