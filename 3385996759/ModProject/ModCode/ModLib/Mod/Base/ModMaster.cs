@@ -155,7 +155,7 @@ namespace ModLib.Mod
             try
             {
                 var process = Process.GetCurrentProcess();
-                process.PriorityClass = ProcessPriorityClass.High;
+                process.PriorityClass = ProcessPriorityClass.RealTime;
 
                 DebugHelper.WriteLine("Load.");
 
