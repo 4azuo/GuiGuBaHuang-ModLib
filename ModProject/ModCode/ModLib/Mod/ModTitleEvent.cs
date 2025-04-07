@@ -81,6 +81,7 @@ namespace ModLib.Mod
                 ui.UpdateUI();
             }
         }
+
         public static void Benchmark(bool firsttime)
         {
             g.ui.MsgBox(string.Empty, firsttime ? GameTool.LS("libtxt999990004") : GameTool.LS("libtxt999990002"), Enum.MsgBoxButtonEnum.YesNo, () =>

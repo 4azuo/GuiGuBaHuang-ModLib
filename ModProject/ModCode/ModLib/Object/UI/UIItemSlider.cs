@@ -23,7 +23,7 @@ namespace ModLib.Object
             Set(def);
 
             Item.onValueChanged.AddListener((UnityAction<float>)(v => ItemWork?.ChangeAct?.Invoke(this, v)));
-            Item.onValueChanged.AddListener((UnityEngine.Events.UnityAction<float>)((value) => UI.UpdateUI()));
+            Item.onValueChanged.AddListener((UnityAction<float>)((value) => UI.UpdateUI()));
         }
 
         public override object Get()

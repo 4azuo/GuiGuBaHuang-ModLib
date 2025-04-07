@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Threading.Tasks;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.UI;
 using static ModLib.Object.UIItemBase;
 
@@ -26,7 +27,7 @@ namespace ModLib.Object
 
             if (act != null)
                 Item.onClick.AddListener(act);
-            Item.onClick.AddListener((UnityEngine.Events.UnityAction)(() => UI.UpdateUI()));
+            Item.onClick.AddListener((UnityAction)(() => UI.UpdateUI()));
         }
 
         public override object Get()

@@ -519,6 +519,25 @@ public static class WUnitHelper
         return wunit.GetUnitProps().Where(x => x.propsID == propID).ToList();
     }
 
+    public static DataProps.PropsData GetUnitProp(this WorldUnitBase wunit, string soleID)
+    {
+        return wunit.GetUnitProps().FirstOrDefault(x => x.soleID == soleID);
+    }
+
+    public static DataProps.PropsData GetUnitPropN(this WorldUnitBase wunit, string soleID, int count)
+    {
+        var prop = wunit.GetUnitProp(soleID);
+        if (prop == null && count > prop.propsCount)
+            return null;
+        return new DataProps.PropsData
+        {
+            propsID = prop.propsID,
+            soleID = CommonTool.SoleID(),
+            propsCount = count,
+            propsType = prop.propsType,
+        };
+    }
+
     public static int GetUnitPropValue(this WorldUnitBase wunit, int propID)
     {
         return wunit.GetUnitProps(propID).Where(x => x.propsID == propID).Sum(x => x.propsCount * x.propsInfoBase.worth);
