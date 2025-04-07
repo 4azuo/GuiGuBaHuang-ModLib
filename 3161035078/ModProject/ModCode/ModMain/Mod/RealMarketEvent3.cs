@@ -16,12 +16,17 @@ namespace MOD_nE7UL2.Mod
     public class RealMarketEvent3 : ModEvent
     {
         public static RealMarketEvent3 Instance { get; set; }
-        public static bool isShowNPCList = false;
+        public static bool isNpcMarket = false;
 
-        public Dictionary<string, List<Tuple<string, int>>> NPCinMarket = new Dictionary<string, List<Tuple<string, int>>>();
+        public Dictionary<string, List<Tuple<string, int>>> NPCinMarket { get; set; } = new Dictionary<string, List<Tuple<string, int>>>();
 
-        public const float JOIN_MARKET_RATE = 30f;
-        public const float SELL_RATE = 30f;
+        public const float JOIN_MARKET_RATE = 40f;
+        public const float SELL_RATE = 40f;
+
+        public static bool IsSellableItem(DataProps.PropsData x)
+        {
+            return x.propsInfoBase.sale > 0;
+        }
 
         public override void OnMonthly()
         {
@@ -35,10 +40,10 @@ namespace MOD_nE7UL2.Mod
                     var wunits = g.world.unit.GetUnitExact(town.GetOrigiPoint(), 4).ToArray();
                     foreach (var wunit in wunits)
                     {
-                        if (CommonTool.Random(0f, 100f).IsBetween(0f, JOIN_MARKET_RATE))
+                        if (!wunit.IsPlayer() && !NPCinMarket.ContainsKey(wunit.GetUnitId()) && CommonTool.Random(0f, 100f).IsBetween(0f, JOIN_MARKET_RATE))
                         {
                             var props = wunit.GetUnequippedProps()
-                                .Where(x => x.propsInfoBase.sale > 0 && CommonTool.Random(0f, 100f).IsBetween(0f, SELL_RATE))
+                                .Where(x => IsSellableItem(x) && CommonTool.Random(0f, 100f).IsBetween(0f, SELL_RATE))
                                 .Select(x => new Tuple<string, int>(x.soleID, CommonTool.Random(1, x.propsCount)))
                                 .ToList();
                             if (props.Count > 0)
@@ -62,9 +67,41 @@ namespace MOD_nE7UL2.Mod
                 ui.UpdateUI();
             }
             else
-            if (e.uiType.uiName == UIType.NPCSearch.uiName)
+            if (e.uiType.uiName == UIType.NPCInfo.uiName && isNpcMarket)
             {
+                var ui = new UICover<UINPCInfo>(e.ui);
+                ui.UI.tglTitle1.gameObject.SetActive(false);
+                ui.UI.tglTitle2.gameObject.SetActive(false);
+                ui.UI.tglTitle3.gameObject.SetActive(false);
+                ui.UI.tglTitle4.gameObject.SetActive(false);
+                ui.UI.tglTitle5.gameObject.SetActive(false);
+                ui.UI.tglTitle6.gameObject.SetActive(false);
+                ui.UI.tglTitle7.gameObject.SetActive(false);
+                ui.UI.uiProperty.goGroupRoot.SetActive(false);
+                ui.UI.uiProp.goItem.transform.parent = ui.UI.transform;
+                ui.UI.uiProp.goItemRoot.transform.parent = ui.UI.transform;
+                ui.UI.uiProp.goItemOption.transform.parent = ui.UI.transform;
+                ui.UI.uiProp.goItemOptionGrid.transform.parent = ui.UI.transform;
+                ui.UI.uiProp.goItemOptionRoot.transform.parent = ui.UI.transform;
+                ui.UI.uiProp.goPropListLedItem.transform.parent = ui.UI.transform;
+                ui.UI.uiProp.goPropListLedRoot.transform.parent = ui.UI.transform;
+                ui.UI.uiProp.goPropListItem.transform.parent = ui.UI.transform;
+                ui.UI.uiProp.goPropListRoot.transform.parent = ui.UI.transform;
 
+                ui.UI.uiProp.ClearItem();
+
+                //var count = 0;
+                //foreach (var item in NPCinMarket[ui.UI.unit.GetUnitId()])
+                //{
+                //    //Il2CppSystem.Action onClick, onMouseEnter, onMouseExit;
+                //    //UIIconTool.CreatePropsInfo(ui.UI.unit, ui.UI.unit.GetUnitPropN(item.Item1, item.Item2), out onClick, out onMouseEnter, out onMouseExit, (ReturnAction<Vector2>)(() => Vector2.zero));
+
+                //    var unitProp = ui.UI.unit.GetUnitProp(item.Item1);
+                //    //var propIcon = UIIconTool.CreatePropsIcon(ui.UI.unit, unitProp, ui.UI.transform);
+                //    //propIcon.transform.position = new Vector3(0.5f * count++, 0);
+                    
+                //    ui.UI.uiProp.CreateProp(unitProp);
+                //}
             }
         }
 
@@ -73,18 +110,17 @@ namespace MOD_nE7UL2.Mod
             base.OnCloseUIStart(e);
             if (e.uiType.uiName == UIType.NPCSearch.uiName)
             {
-                isShowNPCList = false;
+                isNpcMarket = false;
             }
         }
 
         private void OpenMarket()
         {
-            //g.ui.MsgBox("Fouru", "Wait for next version...");
             var ui = g.ui.OpenUI<UINPCSearch>(UIType.NPCSearch);
             ui.InitData(new Vector2Int(0, 0));
-            ui.units = NPCinMarket.Select(x => g.world.unit.GetUnit(x)).ToIl2CppList();
+            ui.units = g.world.unit.GetUnitExact(g.world.playerUnit.GetUnitPos(), 4).ToArray().Where(x => NPCinMarket.ContainsKey(x.GetUnitId())).ToIl2CppList();
             ui.UpdateUI();
-            isShowNPCList = true;
+            isNpcMarket = true;
         }
     }
 }
