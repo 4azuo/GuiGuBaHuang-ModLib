@@ -85,6 +85,7 @@
 //        //    DebugHelper.WriteLine($"Mine: {g.world.playerUnit.GetProperty<int>(UnitPropertyEnum.Mine)}");
 //        //}
 
+//        /* === Test res === */
 //        //public override void OnOpenUIEnd(OpenUIEnd e)
 //        //{
 //        //    base.OnOpenUIEnd(e);
@@ -201,7 +202,7 @@
 //        //public override void OnOpenUIEnd(OpenUIEnd e)
 //        //{
 //        //    DebugHelper.WriteLine($"UI: {e.uiType.uiName}");
-//        //    foreach (var btn in MonoBehaviour.FindObjectsOfType<Button>())
+//        //    foreach (var btn in e.ui.GetComponentsInChildren<Button>())
 //        //    {
 //        //        var btnText = btn.GetComponentInChildren<Text>();
 //        //        var uiParent = btn.GetComponentInParent<UIBase>();
@@ -209,27 +210,6 @@
 //        //        DebugHelper.WriteLine($"　{btn.name}({className} extends {uiParent.uiType.uiName}): {btnText?.text}");
 //        //    }
 //        //    DebugHelper.Save();
-//        //}
-
-//        /* === Button insert action === */
-//        //bool test = true;
-//        //public override void OnOpenUIEnd(OpenUIEnd e)
-//        //{
-//        //    var ui = MonoBehaviour.FindObjectOfType<UIStartGameTip>();
-//        //    if (ui != null)
-//        //    {
-//        //        if (test)
-//        //        {
-//        //            ui.btnOK.onClick.m_Calls.m_RuntimeCalls.Insert(0, new InvokableCall((UnityAction)xxx));
-//        //            test = false;
-//        //        }
-//        //        DebugHelper.WriteLine($"{ui.btnOK.onClick.m_Calls.m_RuntimeCalls.Count}");
-//        //        DebugHelper.Save();
-//        //    }
-//        //}
-//        //private void xxx()
-//        //{
-//        //    DebugHelper.WriteLine($"TEST");
 //        //}
 //    }
 //}
