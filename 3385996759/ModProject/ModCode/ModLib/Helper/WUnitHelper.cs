@@ -715,4 +715,9 @@ public static class WUnitHelper
             return wunit.GetDynProperty(UnitDynPropertyEnum.StandUp).value;
         return wunit.GetDynProperty(UnitDynPropertyEnum.StandDown).value;
     }
+
+    public static bool IsSameSect(this WorldUnitBase wunitA, WorldUnitBase wunitB)
+    {
+        return wunitA.data.school?.schoolNameID == wunitB.data.school?.schoolNameID && wunitA.data.school?.schoolNameID != null;
+    }
 }
