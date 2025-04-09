@@ -4,6 +4,7 @@ using ModLib.Mod;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using static DataBuildSchool;
 
 namespace MOD_nE7UL2.Mod
 {
@@ -50,7 +51,7 @@ namespace MOD_nE7UL2.Mod
                 //setup around units
                 AroundUnits.AddRange(player.GetUnitsAround(JOIN_RANGE, false, false).ToArray().Where(x =>
                 {
-                    return !BattleAfterEvent.Stalkers.Contains(x) && CondJoinBattle(x) && (IsFriendlyUnit(x) || IsEnemyUnit(x) >= 0 || MapBuildPropertyEvent.IsTownGuardian(x) || MapBuildPropertyEvent.IsSchoolMember(ModBattleEvent.School, x));
+                    return !BattleAfterEvent.Stalkers.Contains(x) && CondJoinBattle(x) && (IsFriendlyUnit(x) >= 0 || IsEnemyUnit(x) >= 0 || MapBuildPropertyEvent.IsTownGuardian(x) || MapBuildPropertyEvent.IsSchoolMember(ModBattleEvent.School, x));
                 }));
 
                 //team member join
@@ -112,7 +113,7 @@ namespace MOD_nE7UL2.Mod
                         //friendly unit join battle
                         if (CommonTool.Random(0.00f, 100.00f).IsBetween(0.00f, RANDOM_NPC_JOIN_RATE))
                         {
-                            var friendlyUnit = AroundUnits.FirstOrDefault(x => IsFriendlyUnit(x));
+                            var friendlyUnit = AroundUnits.FirstOrDefault(x => IsFriendlyUnit(x) >= 0);
                             if (friendlyUnit != null)
                             {
                                 var units = HirePeopleEvent.GetTeamDetailData(friendlyUnit).Item2;
@@ -131,7 +132,7 @@ namespace MOD_nE7UL2.Mod
                             {
                                 var units = HirePeopleEvent.GetTeamDetailData(sectMember).Item2;
                                 AroundUnits.RemoveAll(x => units.Any(y => y.GetUnitId() == x.GetUnitId()));
-                                var ut = IsFriendlyUnit(sectMember) ? UnitType.PlayerNPC : UnitType.Monst;
+                                var ut = IsFriendlyUnit(sectMember) >= 0 || g.world.playerUnit.IsSameSect(sectMember) ? UnitType.PlayerNPC : UnitType.Monst;
                                 NPCJoin(ut, units);
 
                                 DramaTool.OpenDrama(SECT_MEMBER_JOIN_DRAMA, new DramaData() { unitLeft = sectMember, unitRight = null });
@@ -146,7 +147,7 @@ namespace MOD_nE7UL2.Mod
                             {
                                 var units = HirePeopleEvent.GetTeamDetailData(townguard).Item2;
                                 AroundUnits.RemoveAll(x => units.Any(y => y.GetUnitId() == x.GetUnitId()));
-                                var ut = IsFriendlyUnit(townguard) ? UnitType.PlayerNPC : UnitType.Monst;
+                                var ut = IsFriendlyUnit(townguard) >= 0 || g.world.playerUnit.IsSameSect(townguard) ? UnitType.PlayerNPC : UnitType.Monst;
                                 NPCJoin(ut, units);
 
                                 DramaTool.OpenDrama(TOWN_GUARD_JOIN_DRAMA, new DramaData() { unitLeft = townguard, unitRight = null });
@@ -225,15 +226,25 @@ namespace MOD_nE7UL2.Mod
                 wunit.GetDynProperty(UnitDynPropertyEnum.Sp).value > (wunit.GetDynProperty(UnitDynPropertyEnum.SpMax).value * 0.3f);
         }
 
-        private bool IsFriendlyUnit(WorldUnitBase wunit)
+        private int IsFriendlyUnit(WorldUnitBase wunit)
         {
-            return wunit.GetGradeLvl() >= avgGrade &&
-                (
-                    friendlyInTraits.Contains(wunit.data.unitData.propertyData.inTrait) ||
+            if (wunit.GetGradeLvl() >= avgGrade)
+            {
+                //from friend
+                if (friendlyInTraits.Contains(wunit.data.unitData.propertyData.inTrait) ||
                     wunit.data.unitData.relationData.GetIntim(g.world.playerUnit) >= 200 ||
                     (g.world.playerUnit.data.school?.schoolData.GetSchoolIntim(wunit) ?? 0) >= 200 ||
-                    (wunit.data.school?.schoolData.GetSchoolIntim(g.world.playerUnit) ?? 0) >= 200
-                );
+                    (wunit.data.school?.schoolData.GetSchoolIntim(g.world.playerUnit) ?? 0) >= 200)
+                {
+                    return 1;
+                }
+                //from same sect member
+                if (g.world.playerUnit.IsSameSect(wunit))
+                {
+                    return 2;
+                }
+            }
+            return -1;
         }
 
         private int IsEnemyUnit(WorldUnitBase wunit)
@@ -293,6 +304,7 @@ namespace MOD_nE7UL2.Mod
         public static bool IsJoinableBattle()
         {
             return !MapBuildBattleEvent.IsBattleTownWar() && !MapBuildBattleEvent.IsBattleMonstWave() &&
+                g.world.battle.data.dungeonBaseItem.id != MapBuildPropertyEvent.CATCH_SNEAKY_DUNGEON_ID /*Sneaky Battle*/ &&
                 g.world.battle.data.dungeonBaseItem.id != 3901 /*Qi Refining Realm*/ &&
                 g.world.battle.data.dungeonBaseItem.id != 3902 /*Foundation Realm*/ &&
                 g.world.battle.data.dungeonBaseItem.id != 3903 /*Qi Condensation Realm*/ &&
