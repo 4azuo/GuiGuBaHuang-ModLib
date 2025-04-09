@@ -261,5 +261,10 @@
 		"id": 500020045,
 		"key": "other500020045",
 		"ch|en|tc|kr": "Leave"
+	},
+	{
+		"id": 500020046,
+		"key": "other500020046",
+		"ch|en|tc|kr": "[INFO] Taoist"
 	}
 ]

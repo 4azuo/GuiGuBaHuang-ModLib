@@ -12,6 +12,7 @@ using System.Numerics;
 using UnityEngine;
 using UnityEngine.Events;
 using static DataBuildTown;
+using static MOD_nE7UL2.Mod.MapBuildBattleEvent;
 
 namespace MOD_nE7UL2.Mod
 {
@@ -909,9 +910,12 @@ namespace MOD_nE7UL2.Mod
                         {
                             case TAXPAY_NOT_ENOUGH_MONEY_DRAMA_OPT1:
                                 if (guard != null && !CommonTool.Random(0f, 100f).IsBetween(0f, (Math.Max(player.GetGradeLvl() - buildBase.gridData.areaBaseID, 0) + 1) * 40f))
-                                    g.world.battle.IntoBattle(guard, CATCH_SNEAKY_DUNGEON_ID);
-                                else
-                                    Instance.PayTaxTown.Add(buildBase.buildData.id);
+                                {
+                                    g.world.battle.IntoBattle(guard, CATCH_SNEAKY_DUNGEON_ID, battleData: new WorldBattleData
+                                    {
+                                        npcUnit = guard
+                                    });
+                                }
                                 break;
                             case TAXPAY_NOT_ENOUGH_MONEY_DRAMA_OPT2:
                                 g.ui.CloseUI(ui);
@@ -919,6 +923,18 @@ namespace MOD_nE7UL2.Mod
                         }
                     })
                 });
+            }
+        }
+
+        [ErrorIgnore]
+        [EventCondition(IsInGame = HandleEnum.Ignore, IsInBattle = HandleEnum.True)]
+        public override void OnTimeUpdate1s()
+        {
+            base.OnTimeUpdate1s();
+            if (g.world.battle.data.dungeonBaseItem.id == CATCH_SNEAKY_DUNGEON_ID && 
+                (ModBattleEvent.PlayerUnit.isDie || ModBattleEvent.BattleUnits.ToArray().Where(x => x.IsEnemy(ModBattleEvent.PlayerUnit)).All(x => x.isDie)))
+            {
+                ModBattleEvent.SceneBattle.battleEnd.BattleEnd(!ModBattleEvent.PlayerUnit.isDie);
             }
         }
     }

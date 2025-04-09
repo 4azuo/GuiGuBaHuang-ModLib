@@ -4,6 +4,7 @@ using ModLib.Mod;
 using ModLib.Object;
 using System.Diagnostics;
 using System.Text.RegularExpressions;
+using System.Threading.Tasks;
 using UnityEngine;
 
 namespace MOD_nE7UL2.Mod
@@ -31,6 +32,9 @@ namespace MOD_nE7UL2.Mod
                         .SetParentTransform(parentTransform);
                 }
                 ui.UpdateUI();
+
+                var uiInfo = g.ui.OpenUI<UITextInfoLong>(UIType.TextInfoLong);
+                uiInfo.InitData(GameTool.LS("other500020046"), GetWorkshopDescription());
             }
         }
 
@@ -48,7 +52,11 @@ namespace MOD_nE7UL2.Mod
                     return false;
             }
             return true;
+        }
 
+        private string GetWorkshopDescription()
+        {
+            return HttpHelper.GetWorkshopDescription("https://steamcommunity.com/sharedfiles/filedetails/?id=3161035078");
         }
     }
 }
