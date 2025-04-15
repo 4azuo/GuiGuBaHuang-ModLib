@@ -29,7 +29,14 @@ public static class HttpHelper
     {
         using (var client = new WebClient())
         {
-            return client.DownloadString(url);
+            try
+            {
+                return client.DownloadString(url);
+            }
+            catch
+            {
+                return string.Empty;
+            }
         }
     }
 
