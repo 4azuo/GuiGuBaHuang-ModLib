@@ -4,38 +4,117 @@ using UnityEngine.UI;
 
 public static class UISampleHelper
 {
-    public static Button ButtonSample { get; private set; }
-    public static Image ImageSample { get; private set; }
-    public static InputField InputSample { get; private set; }
-    public static Toggle SelectSample { get; private set; }
-    public static Slider SliderSample { get; private set; }
-    public static Text TextSample { get; private set; }
-    public static Toggle ToggleSample { get; private set; }
+    private static Button _ButtonSample;
+    private static Image _ImageSample;
+    private static InputField _InputSample;
+    private static Toggle _SelectSample;
+    private static Slider _SliderSample;
+    private static Text _TextSample;
+    private static Toggle _ToggleSample;
 
-    public static void LoadUISampples()
+    public static Button ButtonSample
     {
-        using (var s = new UISample<UIGameSetting>(UIType.GameSetting))
+        get
         {
-            ButtonSample = s.ui.btnSystemOK.Create();
-            Object.DontDestroyOnLoad(ButtonSample);
-            SelectSample = s.ui.tglLanguage.Create();
-            Object.DontDestroyOnLoad(SelectSample);
-            SliderSample = s.ui.sliSoundMain.Create();
-            Object.DontDestroyOnLoad(SliderSample);
-            TextSample = s.ui.textSystemOK.Create();
-            Object.DontDestroyOnLoad(TextSample);
-            ToggleSample = s.ui.tglWindow.Create();
-            Object.DontDestroyOnLoad(ToggleSample);
+            if (_ButtonSample == null)
+            {
+                using (var s = new UISample<UIGameSetting>(UIType.GameSetting))
+                {
+                    _ButtonSample = s.ui.btnSystemOK.Create();
+                    Object.DontDestroyOnLoad(_ButtonSample);
+                }
+            }
+            return _ButtonSample;
         }
-        using (var s = new UISample<UIModWorkshopUpload>(UIType.ModWorkshopUpload))
+    }
+    public static Image ImageSample
+    {
+        get
         {
-            InputSample = s.ui.iptDesc.Create();
-            Object.DontDestroyOnLoad(InputSample);
+            if (_ImageSample == null)
+            {
+                using (var s = new UISample<UIPropInfo>(UIType.PropInfo))
+                {
+                    _ImageSample = s.ui.imgIcon.Create();
+                    Object.DontDestroyOnLoad(_ImageSample);
+                }
+            }
+            return _ImageSample;
         }
-        using (var s = new UISample<UIPropInfo>(UIType.PropInfo))
+    }
+    public static InputField InputSample
+    {
+        get
         {
-            ImageSample = s.ui.imgIcon.Create();
-            Object.DontDestroyOnLoad(ImageSample);
+            if (_InputSample == null)
+            {
+                using (var s = new UISample<UIModWorkshopUpload>(UIType.ModWorkshopUpload))
+                {
+                    _InputSample = s.ui.iptDesc.Create();
+                    Object.DontDestroyOnLoad(_InputSample);
+                }
+            }
+            return _InputSample;
+        }
+    }
+    public static Toggle SelectSample
+    {
+        get
+        {
+            if (_SelectSample == null)
+            {
+                using (var s = new UISample<UIGameSetting>(UIType.GameSetting))
+                {
+                    _SelectSample = s.ui.tglLanguage.Create();
+                    Object.DontDestroyOnLoad(_SelectSample);
+                }
+            }
+            return _SelectSample;
+        }
+    }
+    public static Slider SliderSample
+    {
+        get
+        {
+            if (_SliderSample == null)
+            {
+                using (var s = new UISample<UIGameSetting>(UIType.GameSetting))
+                {
+                    _SliderSample = s.ui.sliSoundMain.Create();
+                    Object.DontDestroyOnLoad(_SliderSample);
+                }
+            }
+            return _SliderSample;
+        }
+    }
+    public static Text TextSample
+    {
+        get
+        {
+            if (_TextSample == null)
+            {
+                using (var s = new UISample<UIGameSetting>(UIType.GameSetting))
+                {
+                    _TextSample = s.ui.textSystemOK.Create();
+                    Object.DontDestroyOnLoad(_TextSample);
+                }
+            }
+            return _TextSample;
+        }
+    }
+    public static Toggle ToggleSample
+    {
+        get
+        {
+            if (_ToggleSample == null)
+            {
+                using (var s = new UISample<UIGameSetting>(UIType.GameSetting))
+                {
+                    _ToggleSample = s.ui.tglWindow.Create();
+                    Object.DontDestroyOnLoad(_ToggleSample);
+                }
+            }
+            return _ToggleSample;
         }
     }
 }

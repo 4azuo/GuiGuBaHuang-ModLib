@@ -9,8 +9,6 @@ namespace ModLib.Mod
         public virtual void OnInitMod()
         {
             DebugHelper.WriteLine("Load mod.");
-            //AssemblyHelper.CopyAssemblies();
-            UISampleHelper.LoadUISampples();
         }
 
         //順番２
