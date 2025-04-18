@@ -4,7 +4,6 @@ using ModLib.Mod;
 using ModLib.Object;
 using System.Diagnostics;
 using System.Text.RegularExpressions;
-using System.Threading.Tasks;
 using UnityEngine;
 
 namespace MOD_nE7UL2.Mod
