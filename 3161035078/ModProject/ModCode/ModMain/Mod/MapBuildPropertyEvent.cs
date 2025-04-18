@@ -606,7 +606,7 @@ namespace MOD_nE7UL2.Mod
 
         public static void Deposit()
         {
-            var uiPropSelectCount = g.ui.OpenUI<UIPropSelectCount>(UIType.PropSelectCount);
+            var uiPropSelectCount = g.ui.OpenUISafe<UIPropSelectCount>(UIType.PropSelectCount);
             uiPropSelectCount.minCount = 0;
             uiPropSelectCount.maxCount = g.world.playerUnit.GetUnitMoney();
             uiPropSelectCount.oneCost = 1;
@@ -628,7 +628,7 @@ namespace MOD_nE7UL2.Mod
         public static void Withdraw()
         {
             var town = g.world.playerUnit.GetMapBuild<MapBuildTown>();
-            var uiPropSelectCount = g.ui.OpenUI<UIPropSelectCount>(UIType.PropSelectCount);
+            var uiPropSelectCount = g.ui.OpenUISafe<UIPropSelectCount>(UIType.PropSelectCount);
             uiPropSelectCount.minCount = 0;
             uiPropSelectCount.maxCount = Instance.Budget[town.buildData.id].FixValue(0, int.MaxValue).Parse<int>();
             uiPropSelectCount.oneCost = 1;
@@ -648,7 +648,7 @@ namespace MOD_nE7UL2.Mod
 
         public static void OpenUIHirePeople()
         {
-            var ui = g.ui.OpenUI<UINPCSearch>(UIType.NPCSearch);
+            var ui = g.ui.OpenUISafe<UINPCSearch>(UIType.NPCSearch);
             ui.InitData(new Vector2Int(0, 0));
             ui.units = GetHirablePeople().ToIl2CppList();
             ui.UpdateUI();
@@ -677,7 +677,7 @@ namespace MOD_nE7UL2.Mod
 
         public static void OpenUITownManage(MapBuildTown town)
         {
-            var ui = g.ui.OpenUI<UINPCSearch>(UIType.NPCSearch);
+            var ui = g.ui.OpenUISafe<UINPCSearch>(UIType.NPCSearch);
             ui.InitData(new Vector2Int(0, 0));
             ui.units = GetTownGuardians(town).ToIl2CppList();
             ui.UpdateUI();
@@ -732,7 +732,7 @@ namespace MOD_nE7UL2.Mod
                     uiCover.AddButton(uiCover.LastCol - 10, uiCover.LastRow - 20, () => Upgrade2City(town), $"Upgrade to City\n{GetUpgrade2CityCost(town):#,##0}").Format(Color.black, 17).Align(TextAnchor.MiddleCenter).Size(300, 64);
                 uiCover.AddButton(uiCover.LastCol - 10, uiCover.LastRow - 17, Deposit, GameTool.LS("other500020015")).Format(Color.black, 17).Align(TextAnchor.MiddleCenter).Size(300, 64);
                 uiCover.AddButton(uiCover.LastCol - 10, uiCover.LastRow - 14, Withdraw, GameTool.LS("other500020016")).Format(Color.black, 17).Align(TextAnchor.MiddleCenter).Size(300, 64);
-                uiCover.AddButton(uiCover.LastCol - 10, uiCover.LastRow - 11, OpenUIHirePeople, "Hire People").Format(Color.black, 17).Align(TextAnchor.MiddleCenter).Size(300, 64);
+                uiCover.AddButton(uiCover.LastCol - 10, uiCover.LastRow - 11, OpenUIHirePeople, GameTool.LS("other500020054")).Format(Color.black, 17).Align(TextAnchor.MiddleCenter).Size(300, 64);
                 uiCover.AddButton(uiCover.LastCol - 10, uiCover.LastRow - 8, () =>
                 {
                     g.ui.MsgBox(GameTool.LS("other500020011"), GameTool.LS("other500020009"), MsgBoxButtonEnum.YesNo, () =>
@@ -748,7 +748,7 @@ namespace MOD_nE7UL2.Mod
 
         public static void OpenUITownGuardians(MapBuildTown town)
         {
-            var ui = g.ui.OpenUI<UINPCSearch>(UIType.NPCSearch);
+            var ui = g.ui.OpenUISafe<UINPCSearch>(UIType.NPCSearch);
             ui.InitData(new Vector2Int(0, 0));
             ui.units = GetTownGuardians(town).ToIl2CppList();
             ui.UpdateUI();

@@ -18,7 +18,7 @@ namespace MOD_nE7UL2.Mod
             {
                 if (!CompareVersion(ModConst.MODLIB_REQUIRED_VERSION, ModMaster.ModObj.Version))
                 {
-                    var uiWarning = g.ui.OpenUI<UITextInfo>(UIType.TextInfo);
+                    var uiWarning = g.ui.OpenUISafe<UITextInfo>(UIType.TextInfo);
                     uiWarning.InitData(GameTool.LS("other500020022"), $"Taoist {ModConst.TAOIST_VERSION} is not supported in ModLib {ModMaster.ModObj.Version}!\nPlease install ModLib {ModConst.MODLIB_REQUIRED_VERSION} or above.");
                 }
 
@@ -32,7 +32,7 @@ namespace MOD_nE7UL2.Mod
                 }
                 ui.UpdateUI();
 
-                var uiInfo = g.ui.OpenUI<UITextInfoLong>(UIType.TextInfoLong);
+                var uiInfo = g.ui.OpenUISafe<UITextInfoLong>(UIType.TextInfoLong);
                 uiInfo.InitData(GameTool.LS("other500020046"), GetWorkshopDescription());
             }
         }

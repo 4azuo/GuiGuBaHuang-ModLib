@@ -266,5 +266,50 @@
 		"id": 500020046,
 		"key": "other500020046",
 		"ch|en|tc|kr": "[INFO] Taoist"
+	},
+	{
+		"id": 500020047,
+		"key": "other500020047",
+		"ch|en|tc|kr": "Sell List"
+	},
+	{
+		"id": 500020048,
+		"key": "other500020048",
+		"ch|en|tc|kr": "Step 1"
+	},
+	{
+		"id": 500020049,
+		"key": "other500020049",
+		"ch|en|tc|kr": "Step 2"
+	},
+	{
+		"id": 500020050,
+		"key": "other500020050",
+		"ch|en|tc|kr": "Refine"
+	},
+	{
+		"id": 500020051,
+		"key": "other500020051",
+		"ch|en|tc|kr": "Success! Level {0}→{1} (+{2:#,##0}Exp)"
+	},
+	{
+		"id": 500020052,
+		"key": "other500020052",
+		"ch|en|tc|kr": "Market"
+	},
+	{
+		"id": 500020053,
+		"key": "other500020053",
+		"ch|en|tc|kr": "Sell List"
+	},
+	{
+		"id": 500020054,
+		"key": "other500020054",
+		"ch|en|tc|kr": "Hire People"
+	},
+	{
+		"id": 500020055,
+		"key": "other500020055",
+		"ch|en|tc|kr": "Register"
 	}
 ]

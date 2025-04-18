@@ -173,7 +173,7 @@ namespace MOD_nE7UL2.Mod
 
         public static void OpenUIHirePeople()
         {
-            var ui = g.ui.OpenUI<UINPCSearch>(UIType.NPCSearch);
+            var ui = g.ui.OpenUISafe<UINPCSearch>(UIType.NPCSearch);
             ui.InitData(new Vector2Int(0, 0));
             ui.units = GetHirablePeople().ToIl2CppList();
             ui.UpdateUI();
@@ -182,7 +182,7 @@ namespace MOD_nE7UL2.Mod
 
         public static void OpenUIManageTeam()
         {
-            var ui = g.ui.OpenUI<UINPCSearch>(UIType.NPCSearch);
+            var ui = g.ui.OpenUISafe<UINPCSearch>(UIType.NPCSearch);
             ui.InitData(new Vector2Int(0, 0));
             ui.units = GetTeamMember(g.world.playerUnit).ToIl2CppList();
             ui.UpdateUI();
