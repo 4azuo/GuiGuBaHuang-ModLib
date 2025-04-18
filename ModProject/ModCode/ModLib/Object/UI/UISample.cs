@@ -9,6 +9,7 @@ namespace ModLib.Object
         public UISample(UIType.UITypeBase uiType)
         {
             ui = g.ui.OpenUI<T>(uiType);
+            ui.Init();
             ui.gameObject.SetActive(false);
         }
 
