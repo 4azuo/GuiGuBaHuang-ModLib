@@ -271,7 +271,7 @@ namespace MOD_nE7UL2.Mod
             else
             if (e.uiType.uiName == UIType.MartialInfo.uiName)
             {
-                uiMartialExpertInfo = g.ui.OpenUI<UINPCInfoPreview>(UIType.NPCInfoPreview);
+                uiMartialExpertInfo = g.ui.OpenUISafe<UINPCInfoPreview>(UIType.NPCInfoPreview);
             }
             else
             if (e.uiType.uiName == UIType.NPCInfoPreview.uiName && g.ui.HasUI(UIType.MartialInfo))

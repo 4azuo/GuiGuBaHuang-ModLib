@@ -86,9 +86,9 @@ namespace MOD_nE7UL2.Mod
 
         private void OpenItemSelector()
         {
-            var ui = g.ui.OpenUI<UIPropSelect>(UIType.PropSelect);
+            var ui = g.ui.OpenUISafe<UIPropSelect>(UIType.PropSelect);
             ui.textTitle1.text = GameTool.LS("other500020001");
-            ui.textSearchTip.text = "Step 1";
+            ui.textSearchTip.text = GameTool.LS("other500020048");
             ui.btnSearch.gameObject.SetActive(false);
             ui.goTabRoot.SetActive(false);
             ui.goSubToggleRoot.SetActive(false);
@@ -118,9 +118,9 @@ namespace MOD_nE7UL2.Mod
         {
             if (refineItem == null)
                 return;
-            var ui = g.ui.OpenUI<UIPropSelect>(UIType.PropSelect);
+            var ui = g.ui.OpenUISafe<UIPropSelect>(UIType.PropSelect);
             ui.textTitle1.text = GameTool.LS("other500020002");
-            ui.textSearchTip.text = "Step 2";
+            ui.textSearchTip.text = GameTool.LS("other500020049");
             ui.btnSearch.gameObject.SetActive(false);
             ui.goTabRoot.SetActive(false);
             ui.goSubToggleRoot.SetActive(false);
@@ -147,7 +147,7 @@ namespace MOD_nE7UL2.Mod
                 g.world.playerUnit.AddUnitMoney(-value);
                 g.ui.CloseUI(ui);
 
-                g.ui.MsgBox("Refine", $"Success! Level {oldLvl}→{GetRefineLvl(refineItem)} (+{exp}Exp)");
+                g.ui.MsgBox(GameTool.LS("other500020050"), string.Format(GameTool.LS("other500020051"), oldLvl, GetRefineLvl(refineItem), exp));
                 _values.Remove(g.world.playerUnit.GetUnitId());
             }));
             ui.UpdateUI();

@@ -6,6 +6,8 @@ using UnityEngine;
 using ModLib.Object;
 using System.Collections.Generic;
 using System;
+using UnityEngine.Events;
+using ModLib.Enum;
 
 namespace MOD_nE7UL2.Mod
 {
@@ -18,8 +20,9 @@ namespace MOD_nE7UL2.Mod
         public static RealMarketEvent3 Instance { get; set; }
         public static bool isNpcMarket = false;
 
-        public Dictionary<string, List<Tuple<string, int>>> NPCinMarket { get; set; } = new Dictionary<string, List<Tuple<string, int>>>();
+        public Dictionary<string, List<Tuple<int, int>>> NPCinMarket { get; set; } = new Dictionary<string, List<Tuple<int, int>>>();
 
+        public const int JOIN_RANGE = 4;
         public const float JOIN_MARKET_RATE = 40f;
         public const float SELL_RATE = 40f;
 
@@ -37,14 +40,14 @@ namespace MOD_nE7UL2.Mod
                 var market = town.GetBuildSub<MapBuildTownMarket>();
                 if (market != null)
                 {
-                    var wunits = g.world.unit.GetUnitExact(town.GetOrigiPoint(), 4).ToArray();
+                    var wunits = g.world.unit.GetUnitExact(town.GetOrigiPoint(), JOIN_RANGE).ToArray();
                     foreach (var wunit in wunits)
                     {
                         if (!wunit.IsPlayer() && !NPCinMarket.ContainsKey(wunit.GetUnitId()) && CommonTool.Random(0f, 100f).IsBetween(0f, JOIN_MARKET_RATE))
                         {
                             var props = wunit.GetUnequippedProps()
                                 .Where(x => IsSellableItem(x) && CommonTool.Random(0f, 100f).IsBetween(0f, SELL_RATE))
-                                .Select(x => new Tuple<string, int>(x.soleID, CommonTool.Random(1, x.propsCount)))
+                                .Select(x => new Tuple<int, int>(x.propsID, CommonTool.Random(1, x.propsCount)))
                                 .ToList();
                             if (props.Count > 0)
                                 NPCinMarket.Add(wunit.GetUnitId(), props);
@@ -78,31 +81,7 @@ namespace MOD_nE7UL2.Mod
                 ui.UI.tglTitle6.gameObject.SetActive(false);
                 ui.UI.tglTitle7.gameObject.SetActive(false);
                 ui.UI.uiProperty.goGroupRoot.SetActive(false);
-                ui.UI.uiProp.goItem.transform.parent = ui.UI.transform;
-                ui.UI.uiProp.goItemRoot.transform.parent = ui.UI.transform;
-                ui.UI.uiProp.goItemOption.transform.parent = ui.UI.transform;
-                ui.UI.uiProp.goItemOptionGrid.transform.parent = ui.UI.transform;
-                ui.UI.uiProp.goItemOptionRoot.transform.parent = ui.UI.transform;
-                ui.UI.uiProp.goPropListLedItem.transform.parent = ui.UI.transform;
-                ui.UI.uiProp.goPropListLedRoot.transform.parent = ui.UI.transform;
-                ui.UI.uiProp.goPropListItem.transform.parent = ui.UI.transform;
-                ui.UI.uiProp.goPropListRoot.transform.parent = ui.UI.transform;
-
-                ui.UI.uiProp.ClearItem();
-                ui.UI.uiProp.UpdateUI();
-
-                //var count = 0;
-                //foreach (var item in NPCinMarket[ui.UI.unit.GetUnitId()])
-                //{
-                //    //Il2CppSystem.Action onClick, onMouseEnter, onMouseExit;
-                //    //UIIconTool.CreatePropsInfo(ui.UI.unit, ui.UI.unit.GetUnitPropN(item.Item1, item.Item2), out onClick, out onMouseEnter, out onMouseExit, (ReturnAction<Vector2>)(() => Vector2.zero));
-
-                //    var unitProp = ui.UI.unit.GetUnitProp(item.Item1);
-                //    //var propIcon = UIIconTool.CreatePropsIcon(ui.UI.unit, unitProp, ui.UI.transform);
-                //    //propIcon.transform.position = new Vector3(0.5f * count++, 0);
-                    
-                //    ui.UI.uiProp.CreateProp(unitProp);
-                //}
+                OpenSellList(ui.UI.unit);
             }
         }
 
@@ -117,11 +96,47 @@ namespace MOD_nE7UL2.Mod
 
         private void OpenMarket()
         {
-            var ui = g.ui.OpenUI<UINPCSearch>(UIType.NPCSearch);
+            var ui = g.ui.OpenUISafe<UINPCSearch>(UIType.NPCSearch);
             ui.InitData(new Vector2Int(0, 0));
-            ui.units = g.world.unit.GetUnitExact(g.world.playerUnit.GetUnitPos(), 4).ToArray().Where(x => NPCinMarket.ContainsKey(x.GetUnitId())).ToIl2CppList();
+            var town = g.world.playerUnit.GetMapBuild<MapBuildTown>();
+            ui.units = g.world.unit.GetUnitExact(town.GetOrigiPoint(), JOIN_RANGE).ToArray().Where(x => NPCinMarket.ContainsKey(x.GetUnitId())).ToIl2CppList();
             ui.UpdateUI();
             isNpcMarket = true;
+
+            var uiCover = new UICover<UINPCSearch>(ui);
+            {
+                uiCover.AddButton(uiCover.LastCol - 10, uiCover.LastRow - 8, () =>
+                {
+                }, GameTool.LS("other500020055")).Format(Color.black, 17).Align(TextAnchor.MiddleCenter).Size(300, 64);
+            }
+            uiCover.UpdateUI();
+        }
+
+        private void OpenSellList(WorldUnitBase wunit)
+        {
+            var ui = g.ui.OpenUISafe<UIPropSelect>(UIType.PropSelect);
+            ui.textTitle1.text = GameTool.LS("other500020052");
+            ui.textSearchTip.text = GameTool.LS("other500020053");
+            ui.btnSearch.gameObject.SetActive(false);
+            ui.goTabRoot.SetActive(false);
+            ui.goSubToggleRoot.SetActive(false);
+            ui.ClearSelectItem();
+            ui.selectOnePropID = true;
+            ui.allItems = new DataProps
+            {
+                allProps = new Il2CppSystem.Collections.Generic.List<DataProps.PropsData>()
+            };
+            foreach (var item in NPCinMarket[wunit.GetUnitId()])
+            {
+                ui.allItems.AddProps(item.Item1, item.Item2);
+            }
+            ui.btnOK.onClick.RemoveAllListeners();
+            ui.btnOK.onClick.AddListener((UnityAction)(() =>
+            {
+                //var selectedItem = UIPropSelect.allSlectDataProps.allProps.ToArray().FirstOrDefault();
+                //OpenMaterialSelector(selectedItem);
+            }));
+            ui.UpdateUI();
         }
     }
 }

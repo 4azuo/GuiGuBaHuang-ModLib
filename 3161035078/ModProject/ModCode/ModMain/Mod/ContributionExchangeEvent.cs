@@ -66,7 +66,7 @@ namespace MOD_nE7UL2.Mod
 
         private void OpenSelector()
         {
-            var uiSelector = g.ui.OpenUI<UIPropSelect>(UIType.PropSelect);
+            var uiSelector = g.ui.OpenUISafe<UIPropSelect>(UIType.PropSelect);
             uiSelector.tag = ModConst.CONTRIBUTION_EXCHANGE_EVENT;
 
             uiSelector.onOKCall = (Il2CppSystem.Action)Exchange;
