@@ -13,8 +13,7 @@ namespace ModLib.Object
         {
             //init
             DeleteLastUI();
-            UI = g.ui.OpenUI<T>(UIType.GetUIType(UITypeName));
-            UI.Init();
+            UI = g.ui.OpenUISafe<T>(UIType.GetUIType(UITypeName));
             LastUICustom = this;
             UIBase = UI;
 
