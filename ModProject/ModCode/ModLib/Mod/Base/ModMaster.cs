@@ -483,7 +483,7 @@ namespace ModLib.Mod
                 g.ui.CloseUI(UIType.TextInfoLong);
             }
 
-            var ui = g.ui.OpenUI<UITextInfoLong>(UIType.TextInfoLong);
+            var ui = g.ui.OpenUISafe<UITextInfoLong>(UIType.TextInfoLong);
             ui.InitData("Exception", ex.GetAllInnnerExceptionStr(), "Open log", (Il2CppSystem.Action)(() =>
             {
                 Process.Start("notepad.exe", log);
