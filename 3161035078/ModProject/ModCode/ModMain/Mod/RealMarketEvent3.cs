@@ -89,6 +89,7 @@ namespace MOD_nE7UL2.Mod
                 ui.UI.uiProp.goPropListRoot.transform.parent = ui.UI.transform;
 
                 ui.UI.uiProp.ClearItem();
+                ui.UI.uiProp.UpdateUI();
 
                 //var count = 0;
                 //foreach (var item in NPCinMarket[ui.UI.unit.GetUnitId()])
