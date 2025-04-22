@@ -3,10 +3,10 @@ using MOD_nE7UL2.Const;
 using ModLib.Const;
 using ModLib.Enum;
 using ModLib.Mod;
+using ModLib.Object;
 using System;
 using System.Linq;
 using UnityEngine;
-using UnityEngine.Events;
 using UnityEngine.UI;
 
 namespace MOD_nE7UL2.Mod
@@ -47,10 +47,11 @@ namespace MOD_nE7UL2.Mod
                 var uiSchool = g.ui.GetUI<UISchool>(UIType.School);
                 if (g.world?.playerUnit?.data?.school?.schoolNameID == uiSchool.school.schoolNameID)
                 {
-                    var btnExchangeContribution = MonoBehaviour.Instantiate(uiSchool.btnGetMoney_En, uiSchool.transform, false);
-                    btnExchangeContribution.onClick.AddListener((UnityAction)OpenSelector);
-                    var btnText = btnExchangeContribution.GetComponentInChildren<Text>();
-                    btnText.text = GameTool.LS("other500020000");
+                    var ui = new UICover<UISchool>(uiSchool);
+                    {
+                        ui.AddButton(5, 5, OpenSelector, GameTool.LS("other500020000")).Size(240, 40);
+                    }
+                    ui.UpdateUI();
                 }
             }
         }
@@ -61,18 +62,18 @@ namespace MOD_nE7UL2.Mod
         {
             base.OnTimeUpdate200ms();
             var sp = CalExchangeSpiritStones();
-            txtExchangeContribution.text = $"{sp} Spirit Stones → {CalExchangeContributions(sp)} Contribution";
+            txtExchangeContribution.text = string.Format(GameTool.LS("other500020056"), sp, CalExchangeContributions(sp));
         }
 
         private void OpenSelector()
         {
             var uiSelector = g.ui.OpenUISafe<UIPropSelect>(UIType.PropSelect);
+            uiSelector.UpdateUI();
             uiSelector.tag = ModConst.CONTRIBUTION_EXCHANGE_EVENT;
-
             uiSelector.onOKCall = (Il2CppSystem.Action)Exchange;
 
             var txtExchangeRatio = uiSelector.textInfo.Copy().Format().Align(TextAnchor.MiddleCenter).Pos(uiSelector.textTitle1.gameObject, 0f, 0.3f);
-            txtExchangeRatio.text = $"Exchannge Ratio {CurMonthRatio} Spirit Stones → 1 Contribution";
+            txtExchangeRatio.text = string.Format(GameTool.LS("other500020057"), CurMonthRatio);
 
             txtExchangeContribution = uiSelector.textInfo.Copy().Format().Align(TextAnchor.MiddleCenter).Pos(uiSelector.btnOK.gameObject, 0f, -0.3f);
         }
