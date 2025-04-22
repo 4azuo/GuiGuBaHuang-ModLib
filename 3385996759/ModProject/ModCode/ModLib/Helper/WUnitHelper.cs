@@ -77,7 +77,7 @@ public static class WUnitHelper
 
     public static DataProps.PropsData[] GetUnequippedProps(this WorldUnitBase wunit)
     {
-        return wunit.data.unitData.propData.GetEquipProps(true, false).ToArray();
+        return wunit.GetUnitProps().Except(wunit.GetEquippedProps()).ToArray();
     }
 
     public static Il2CppSystem.Collections.Generic.Dictionary<string, DataUnit.ActionMartialData> GetActionMartials(this WorldUnitBase wunit)
@@ -524,7 +524,7 @@ public static class WUnitHelper
         return wunit.GetUnitProps().FirstOrDefault(x => x.soleID == soleID);
     }
 
-    public static DataProps.PropsData GetUnitPropN(this WorldUnitBase wunit, string soleID, int count)
+    public static DataProps.PropsData GetUnitPropN(this WorldUnitBase wunit, string soleID, int count, string customSoleID = null)
     {
         var prop = wunit.GetUnitProp(soleID);
         if (prop == null && count > prop.propsCount)
@@ -532,9 +532,11 @@ public static class WUnitHelper
         return new DataProps.PropsData
         {
             propsID = prop.propsID,
-            soleID = CommonTool.SoleID(),
+            soleID = customSoleID ?? CommonTool.SoleID(),
             propsCount = count,
             propsType = prop.propsType,
+            values = prop.values,
+            valuesStr = prop.valuesStr,
         };
     }
 
