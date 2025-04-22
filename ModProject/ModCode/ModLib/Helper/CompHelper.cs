@@ -47,9 +47,10 @@ public static class CompHelper
         return newObj;
     }
 
-    public static T Create<T>(this T obj) where T : Component
+    public static T Create<T>(this T obj, Transform transform = null) where T : Component
     {
-        var newObj = Object.Instantiate(obj);
+        var t = transform ?? obj.transform.parent;
+        var newObj = Object.Instantiate(obj, t, false);
         newObj.gameObject.name = $"CompHelper:{_compCounter++}";
         newObj.gameObject.SetActive(false);
         return newObj.Init();
@@ -58,7 +59,8 @@ public static class CompHelper
     public static T Replace<T>(this T obj, Transform transform = null) where T : Component
     {
         var t = transform ?? obj.transform.parent;
-        var newObj = Object.Instantiate(obj, t).Pos(obj.transform);
+        var newObj = Object.Instantiate(obj, t, false);
+        newObj.Pos(obj.transform);
         newObj.gameObject.name = $"CompHelper:{_compCounter++}";
         newObj.gameObject.SetActive(true);
         obj.gameObject.SetActive(false);
@@ -73,7 +75,8 @@ public static class CompHelper
     public static T Copy<T>(this T obj, Transform transform = null) where T : Component
     {
         var t = transform ?? obj.transform.parent;
-        var newObj = Object.Instantiate(obj, t).Pos(obj.transform);
+        var newObj = Object.Instantiate(obj, t, false);
+        newObj.Pos(obj.transform);
         newObj.gameObject.name = $"CompHelper:{_compCounter++}";
         newObj.gameObject.SetActive(true);
         return newObj.Init();
