@@ -20,6 +20,8 @@ public static class UIHelper
     public static T OpenUISafe<T>(this UIMgr g, UIType.UITypeBase t) where T : UIBase
     {
         var ui = g.OpenUI<T>(t);
+        if (ui is UIPropSelect)
+            return ui;
         ui.Init();
         return ui;
     }
