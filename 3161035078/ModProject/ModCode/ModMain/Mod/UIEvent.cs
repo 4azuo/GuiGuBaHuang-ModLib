@@ -197,7 +197,7 @@ namespace MOD_nE7UL2.Mod
                 ui.IsAutoUpdate = true;
             }
             else
-            if (e.uiType.uiName == UIType.ArtifactInfo.uiName)
+            if (e.uiType.uiName == UIType.ArtifactInfo.uiName && g.ui.HasUI(UIType.PlayerInfo))
             {
                 var uiArtifactInfo = g.ui.GetUI<UIArtifactInfo>(UIType.ArtifactInfo);
 
@@ -269,7 +269,7 @@ namespace MOD_nE7UL2.Mod
                 uiArtifactInfo_textRefineAdj5.text = customAdj3?.GetText(uiArtifactInfo.unit, uiArtifactInfo.shapeProp, refineLvl);
             }
             else
-            if (e.uiType.uiName == UIType.MartialInfo.uiName)
+            if (e.uiType.uiName == UIType.MartialInfo.uiName && g.ui.HasUI(UIType.PlayerInfo))
             {
                 uiMartialExpertInfo = g.ui.OpenUISafe<UINPCInfoPreview>(UIType.NPCInfoPreview);
             }
@@ -337,7 +337,7 @@ namespace MOD_nE7UL2.Mod
                 }
             }
             else
-            if (e.uiType.uiName == UIType.PropInfo.uiName)
+            if (e.uiType.uiName == UIType.PropInfo.uiName && g.ui.HasUI(UIType.PlayerInfo))
             {
                 var uiPropInfo = g.ui.GetUI<UIPropInfo>(UIType.PropInfo);
                 if (uiPropInfo.propData.propsItem.IsRing() != null)
@@ -400,7 +400,7 @@ namespace MOD_nE7UL2.Mod
             var uiArtifactInfo = g.ui.GetUI<UIArtifactInfo>(UIType.ArtifactInfo);
             var uiPropInfo = g.ui.GetUI<UIPropInfo>(UIType.PropInfo);
 
-            if (uiPropInfo.IsExists())
+            if (uiPropInfo.IsExists() && g.ui.HasUI(UIType.PlayerInfo))
             {
                 if (uiPropInfo.propData.propsItem.IsRing() != null)
                 {
@@ -419,7 +419,7 @@ namespace MOD_nE7UL2.Mod
                 }
             }
             
-            if (uiArtifactInfo.IsExists())
+            if (uiArtifactInfo.IsExists() && g.ui.HasUI(UIType.PlayerInfo))
             {
                 uiArtifactInfo_textBasicTitle.Pos(uiArtifactInfo.textGrade_En.gameObject, 0f, -0.2f);
                 uiArtifactInfo_textBasicAdj1.Pos(uiArtifactInfo.textGrade_En.gameObject, +0.05f, -0.35f);

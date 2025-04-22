@@ -311,5 +311,25 @@
 		"id": 500020055,
 		"key": "other500020055",
 		"ch|en|tc|kr": "Register"
+	},
+	{
+		"id": 500020056,
+		"key": "other500020056",
+		"ch|en|tc|kr": "{0} Spirit Stones → {1} Contribution"
+	},
+	{
+		"id": 500020057,
+		"key": "other500020057",
+		"ch|en|tc|kr": "Exchannge Ratio {0} Spirit Stones → 1 Contribution"
+	},
+	{
+		"id": 500020058,
+		"key": "other500020058",
+		"ch|en|tc|kr": "Select sell items"
+	},
+	{
+		"id": 500020059,
+		"key": "other500020059",
+		"ch|en|tc|kr": "Clear"
 	}
 ]
