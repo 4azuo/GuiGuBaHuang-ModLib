@@ -6,6 +6,7 @@ using System.Linq;
 
 public static class UIHelper
 {
+    //public static List<string> InitUIs { get; } = new List<string>();
     public static List<UICustomBase> UIs { get; } = new List<UICustomBase>();
 
     public const float UICUSTOM_DELTA_X = 0.4f;
@@ -23,6 +24,11 @@ public static class UIHelper
         //if (ui is UIPropSelect)
         //    return ui;
         //ui.Init();
+        //if (!InitUIs.Contains(t.uiName))
+        //{
+        //    InitUIs.Add(t.uiName);
+        //    ui.Init();
+        //}
         return ui;
     }
 
