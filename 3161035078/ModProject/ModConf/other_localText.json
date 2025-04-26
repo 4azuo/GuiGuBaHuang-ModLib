@@ -9,7 +9,7 @@
 		"id": 500020001,
 		"key": "other500020001",
 		"ch": "選取",
-		"en|tc|kr": "Select item"
+		"en|tc|kr": "Select Item"
 	},
 	{
 		"id": 500020002,
@@ -331,5 +331,31 @@
 		"id": 500020059,
 		"key": "other500020059",
 		"ch|en|tc|kr": "Clear"
+	},
+	{
+		"id": 500020060,
+		"key": "other500020060",
+		"ch": "選取",
+		"en|tc|kr": "Selling Items"
+	},
+	{
+		"id": 500020061,
+		"key": "other500020061",
+		"ch|en|tc|kr": "Register"
+	},
+	{
+		"id": 500020062,
+		"key": "other500020062",
+		"ch|en|tc|kr": "Total Price"
+	},
+	{
+		"id": 500020063,
+		"key": "other500020063",
+		"ch|en|tc|kr": "Total Price {0} Spirit Stones"
+	},
+	{
+		"id": 500020064,
+		"key": "other500020064",
+		"ch|en|tc|kr": "Negotiate"
 	}
 ]
