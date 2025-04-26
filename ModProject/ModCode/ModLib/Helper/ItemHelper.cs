@@ -3,6 +3,18 @@ using System.Linq;
 
 public static class ItemHelper
 {
+    public static DataProps.PropsData CopyProp(this DataProps.PropsData org, int count = -1)
+    {
+        if (count == -1)
+            count = org.propsCount;
+        return DataProps.PropsData.New(org.propsID, count, org.propsType, org.values);
+    }
+
+    public static DataProps.PropsData CopyProp(int propId, DataProps.PropsDataType type, UnhollowerBaseLib.Il2CppStructArray<int> values, int count)
+    {
+        return DataProps.PropsData.New(propId, count, type, values);
+    }
+
     public static ConfItemPillItem IsPotion(this ConfItemPropsItem props)
     {
         var pill = g.conf.itemPill.GetItem(props.id);
