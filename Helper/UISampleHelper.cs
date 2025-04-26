@@ -28,29 +28,36 @@ public static class UISampleHelper
             // Hide this canvas
             canvas.gameObject.SetActive(false);
 
-            using (var s = new UISample<UIGameSetting>(UIType.GameSetting))
+            var UIGameSetting = g.ui.OpenUISafe<UIGameSetting>(UIType.GameSetting);
+            //using (var s = new UISample<UIGameSetting>(UIType.GameSetting))
             {
-                ButtonSample = s.ui.btnSystemOK.Create(canvasGO.transform);
+                ButtonSample = UIGameSetting.btnSystemOK.Create(canvasGO.transform);
                 //Object.DontDestroyOnLoad(ButtonSample);
-                SelectSample = s.ui.tglLanguage.Create(canvasGO.transform);
+                SelectSample = UIGameSetting.tglLanguage.Create(canvasGO.transform);
                 //Object.DontDestroyOnLoad(SelectSample);
-                SliderSample = s.ui.sliSoundMain.Create(canvasGO.transform);
+                SliderSample = UIGameSetting.sliSoundMain.Create(canvasGO.transform);
                 //Object.DontDestroyOnLoad(SliderSample);
-                TextSample = s.ui.textSystemOK.Create(canvasGO.transform);
+                TextSample = UIGameSetting.textSystemOK.Create(canvasGO.transform);
                 //Object.DontDestroyOnLoad(TextSample);
-                ToggleSample = s.ui.tglWindow.Create(canvasGO.transform);
+                ToggleSample = UIGameSetting.tglWindow.Create(canvasGO.transform);
                 //Object.DontDestroyOnLoad(ToggleSample);
             }
-            using (var s = new UISample<UIModWorkshopUpload>(UIType.ModWorkshopUpload))
+            g.ui.CloseUI(UIGameSetting);
+
+            var UIModWorkshopUpload = g.ui.OpenUISafe<UIModWorkshopUpload>(UIType.ModWorkshopUpload);
+            //using (var s = new UISample<UIModWorkshopUpload>(UIType.ModWorkshopUpload))
             {
-                InputSample = s.ui.iptDesc.Create(canvasGO.transform);
+                InputSample = UIModWorkshopUpload.iptDesc.Create(canvasGO.transform);
                 //Object.DontDestroyOnLoad(InputSample);
             }
-            using (var s = new UISample<UIPropInfo>(UIType.PropInfo))
+            g.ui.CloseUI(UIModWorkshopUpload);
+
+            var UIPropInfo = g.ui.OpenUISafe<UIPropInfo>(UIType.PropInfo);
             {
-                ImageSample = s.ui.imgIcon.Create(canvasGO.transform);
+                ImageSample = UIPropInfo.imgIcon.Create(canvasGO.transform);
                 //Object.DontDestroyOnLoad(ImageSample);
             }
+            g.ui.CloseUI(UIPropInfo);
         }));
     }
 }
