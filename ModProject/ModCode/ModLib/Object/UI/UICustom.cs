@@ -28,7 +28,7 @@ namespace ModLib.Object
             //test
             //for (var c = 0; c < Columns.Count; c++)
             //    for (var r = 0; r < Rows.Count; r++)
-            //        AddText(c, r, "test");
+            //        AddText(c, r, $"{c}/{r}");
 
             UIHelper.UIs.Add(this);
             DebugHelper.WriteLine($"Create a UICustom for {UI.uiType.uiName}");
@@ -57,10 +57,10 @@ namespace ModLib.Object
     public class UICustom1 : UICustom<UITextInfoLong>
     {
         public override string UITypeName => UIType.TextInfoLong.uiName;
-        public override float MinWidth => -6.2f;
-        public override float MaxWidth => +6.6f;
-        public override float MinHeight => 3.4f;
-        public override float MaxHeight => -3.5f;
+        public override float MinWidth => -(UIHelper.GetScreenWidth() / 2) * 0.62f;
+        public override float MaxWidth => +(UIHelper.GetScreenWidth() / 2) * 0.66f;
+        public override float MinHeight => +(UIHelper.GetScreenHeight() / 2) * 0.34f;
+        public override float MaxHeight => -(UIHelper.GetScreenHeight() / 2) * 0.35f;
 
         public UICustom1(string title, string btnText = "", Action okAct = null, bool showCancel = false, Action cancelAct = null) : base()
         {
@@ -73,10 +73,10 @@ namespace ModLib.Object
     public class UICustom2 : UICustom<UITextInfo>
     {
         public override string UITypeName => UIType.TextInfo.uiName;
-        public override float MinWidth => -2.6f;
-        public override float MaxWidth => +3.0f;
-        public override float MinHeight => 1.35f;
-        public override float MaxHeight => -1.30f;
+        public override float MinWidth => -(UIHelper.GetScreenWidth() / 2) * 0.26f;
+        public override float MaxWidth => +(UIHelper.GetScreenWidth() / 2) * 0.30f;
+        public override float MinHeight => +(UIHelper.GetScreenHeight() / 2) * 0.135f;
+        public override float MaxHeight => -(UIHelper.GetScreenHeight() / 2) * 0.130f;
 
         public UICustom2(string title, string btnText = "", Action okAct = null) : base()
         {

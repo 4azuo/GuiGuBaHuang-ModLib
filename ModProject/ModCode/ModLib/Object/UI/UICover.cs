@@ -6,10 +6,10 @@ namespace ModLib.Object
     {
         public UIType.UITypeBase UITypeBase { get; private set; }
         public override string UITypeName => UITypeBase.uiName;
-        public override float MinWidth => UIHelper.SCREEN_X_LEFT;
-        public override float MaxWidth => UIHelper.SCREEN_X_RIGHT;
-        public override float MinHeight => UIHelper.SCREEN_Y_TOP;
-        public override float MaxHeight => UIHelper.SCREEN_Y_BOTTOM;
+        public override float MinWidth => -(UIHelper.GetScreenWidth() / 2);
+        public override float MaxWidth => +(UIHelper.GetScreenWidth() / 2);
+        public override float MinHeight => +(UIHelper.GetScreenHeight() / 2);
+        public override float MaxHeight => -(UIHelper.GetScreenHeight() / 2);
 
         public T UI { get; private set; }
 

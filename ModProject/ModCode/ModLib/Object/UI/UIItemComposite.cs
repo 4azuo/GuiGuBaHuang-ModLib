@@ -44,9 +44,9 @@ namespace ModLib.Object
             rs.Prefix = new UIItemText(ui, x, y, prefix);
             rs.Prefix.Item.Align(TextAnchor.MiddleRight);
             rs.Prefix.Parent = rs;
-            rs.MainComponent = new UIItemSlider(ui, x + UIHelper.UICUSTOM_DELTA_X * 4, y, min, max, def, copySource);
+            rs.MainComponent = new UIItemSlider(ui, x + UIHelper.GetUIDeltaX() * 3, y, min, max, def, copySource);
             rs.MainComponent.Parent = rs;
-            rs.Postfix = new UIItemText(ui, x + UIHelper.UICUSTOM_DELTA_X * 8, y, postfix);
+            rs.Postfix = new UIItemText(ui, x + UIHelper.GetUIDeltaX() * 6, y, postfix);
             rs.Postfix.Item.Align(TextAnchor.MiddleLeft);
             rs.Postfix.Parent = rs;
             return rs;
@@ -58,9 +58,9 @@ namespace ModLib.Object
             rs.Prefix = new UIItemText(ui, x, y, prefix);
             rs.Prefix.Item.Align(TextAnchor.MiddleRight);
             rs.Prefix.Parent = rs;
-            rs.MainComponent = new UIItemToggle(ui, x + UIHelper.UICUSTOM_DELTA_X * 2, y, def, copySource);
+            rs.MainComponent = new UIItemToggle(ui, x + UIHelper.GetUIDeltaX() * 3, y, def, copySource);
             rs.MainComponent.Parent = rs;
-            rs.Postfix = new UIItemText(ui, x + UIHelper.UICUSTOM_DELTA_X * 4, y, postfix);
+            rs.Postfix = new UIItemText(ui, x + UIHelper.GetUIDeltaX() * 6, y, postfix);
             rs.Postfix.Item.Align(TextAnchor.MiddleLeft);
             rs.Postfix.Parent = rs;
             return rs;
@@ -72,9 +72,9 @@ namespace ModLib.Object
             rs.Prefix = new UIItemText(ui, x, y, prefix);
             rs.Prefix.Item.Align(TextAnchor.MiddleRight);
             rs.Prefix.Parent = rs;
-            rs.MainComponent = new UIItemSelect(ui, x + UIHelper.UICUSTOM_DELTA_X * 2, y, selections, def, copySource);
+            rs.MainComponent = new UIItemSelect(ui, x + UIHelper.GetUIDeltaX() * 3, y, selections, def, copySource);
             rs.MainComponent.Parent = rs;
-            rs.Postfix = new UIItemText(ui, x + UIHelper.UICUSTOM_DELTA_X * 8, y, postfix);
+            rs.Postfix = new UIItemText(ui, x + UIHelper.GetUIDeltaX() * 6, y, postfix);
             rs.Postfix.Item.Align(TextAnchor.MiddleLeft);
             rs.Postfix.Parent = rs;
             return rs;
@@ -86,9 +86,9 @@ namespace ModLib.Object
             rs.Prefix = new UIItemText(ui, x, y, prefix);
             rs.Prefix.Item.Align(TextAnchor.MiddleRight);
             rs.Prefix.Parent = rs;
-            rs.MainComponent = new UIItemInput(ui, x + UIHelper.UICUSTOM_DELTA_X * 4, y, def, copySource);
+            rs.MainComponent = new UIItemInput(ui, x + UIHelper.GetUIDeltaX() * 3, y, def, copySource);
             rs.MainComponent.Parent = rs;
-            rs.Postfix = new UIItemText(ui, x + UIHelper.UICUSTOM_DELTA_X * 8, y, postfix);
+            rs.Postfix = new UIItemText(ui, x + UIHelper.GetUIDeltaX() * 6, y, postfix);
             rs.Postfix.Item.Align(TextAnchor.MiddleLeft);
             rs.Postfix.Parent = rs;
             return rs;
@@ -150,6 +150,11 @@ namespace ModLib.Object
             Postfix.SetEnable(value);
         }
 
+        public override Vector2 Pos()
+        {
+            return MainComponent.Pos();
+        }
+
         public override UIItemBase Pos(float x, float y)
         {
             var oldMainPos = MainComponent.Pos();
@@ -162,7 +167,36 @@ namespace ModLib.Object
             return this;
         }
 
-        public override UIItemBase Pos(Transform org, float x, float y)
+        public override UIItemBase Pos(int col, int row)
+        {
+            var oldMainPos = MainComponent.Pos();
+            base.Pos(col, row); //move main
+            var moveDis = MainComponent.Pos() - oldMainPos;
+
+            Prefix.Pos(MainComponent, moveDis.x, moveDis.y);
+            Postfix.Pos(MainComponent, moveDis.x, moveDis.y);
+
+            return this;
+        }
+
+        public override UIItemBase Pos(GameObject org, float x, float y)
+        {
+            var oldMainPos = MainComponent.Pos();
+            base.Pos(org, x, y); //move main
+            var moveDis = MainComponent.Pos() - oldMainPos;
+
+            Prefix.Pos(MainComponent, moveDis.x, moveDis.y);
+            Postfix.Pos(MainComponent, moveDis.x, moveDis.y);
+
+            return this;
+        }
+
+        public override UIItemBase Pos(Component org, float x, float y)
+        {
+            return Pos(org.gameObject, x, y);
+        }
+
+        public override UIItemBase Pos(UIItemBase org, float x, float y)
         {
             var oldMainPos = MainComponent.Pos();
             base.Pos(org, x, y); //move main
@@ -177,8 +211,19 @@ namespace ModLib.Object
         public override UIItemBase SetParentTransform(Transform t)
         {
             Prefix.SetParentTransform(t);
+            MainComponent.SetParentTransform(t);
             Postfix.SetParentTransform(t);
-            return base.SetParentTransform(t);
+            return this;
+        }
+
+        public override UIItemBase SetParentTransform(GameObject t)
+        {
+            return SetParentTransform(t.transform);
+        }
+
+        public override UIItemBase SetParentTransform(Component t)
+        {
+            return SetParentTransform(t.gameObject);
         }
     }
 }
