@@ -6,29 +6,37 @@ using System.Linq;
 
 public static class UIHelper
 {
-    //public static List<string> InitUIs { get; } = new List<string>();
     public static List<UICustomBase> UIs { get; } = new List<UICustomBase>();
 
-    public const float UICUSTOM_DELTA_X = 0.4f;
-    public const float UICUSTOM_DELTA_Y = 0.24f;
-    public const float SCREEN_X_LEFT = -10f;
-    public const float SCREEN_X_MID = 0f;
-    public const float SCREEN_X_RIGHT = 10f;
-    public const float SCREEN_Y_TOP = 5f;
-    public const float SCREEN_Y_MIDDLE = 0f;
-    public const float SCREEN_Y_BOTTOM = -5f;
+    private const float WIDTH_MARGIN = 1.100f;
+    private const float HIEGHT_MARGIN = 1.100f;
+    private const float UI_DELTA_X_RATE = 0.0250f;
+    private const float UI_DELTA_Y_RATE = 0.0125f;
+
+    public static float GetScreenWidth()
+    {
+        return g.data.globle.gameSetting.screenWidth * WIDTH_MARGIN;
+    }
+
+    public static float GetScreenHeight()
+    {
+        return g.data.globle.gameSetting.screenHeight * HIEGHT_MARGIN;
+    }
+
+    public static float GetUIDeltaX()
+    {
+        return GetScreenWidth() * UI_DELTA_X_RATE;
+    }
+
+    public static float GetUIDeltaY()
+    {
+        return GetScreenHeight() * UI_DELTA_Y_RATE;
+    }
 
     public static T OpenUISafe<T>(this UIMgr g, UIType.UITypeBase t) where T : UIBase
     {
         var ui = g.OpenUI<T>(t);
-        //if (ui is UIPropSelect)
-        //    return ui;
-        //ui.Init();
-        //if (!InitUIs.Contains(t.uiName))
-        //{
-        //    InitUIs.Add(t.uiName);
-        //    ui.Init();
-        //}
+        //...
         return ui;
     }
 
