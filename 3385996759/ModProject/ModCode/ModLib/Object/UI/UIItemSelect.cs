@@ -14,7 +14,7 @@ namespace ModLib.Object
         public int SelectedIndex { get; set; } = 0;
         public bool IsShownList => Item.isOn;
 
-        public UIItemSelect(UICustomBase ui, float x, float y, string[] selections, int def, Toggle copySource = null) : base(ui, (copySource ?? UISampleHelper.SelectSample).Copy(ui.UIBase).Pos(x, y).Size(180f, 28f).Align().Format(Color.black, 13))
+        public UIItemSelect(UICustomBase ui, float x, float y, string[] selections, int def, Toggle copySource = null) : base(ui, (copySource ?? UISampleHelper.SelectSample).Copy(ui.UIBase).Pos(x, y).Size(170f, 26f).Align().Format(Color.black, 13))
         {
             Init(selections, def);
         }
@@ -123,9 +123,6 @@ namespace ModLib.Object
 
         public virtual void UpdatePos()
         {
-            var r = Item.Pos();
-            DebugHelper.WriteLine($"{r.x}/{r.y}");
-            DebugHelper.Save();
             for (var i = 0; i < SelectionItems.Count; i++)
                 SelectionItems[i].Pos(Item, 0f, -20f * (i + 1));
         }
