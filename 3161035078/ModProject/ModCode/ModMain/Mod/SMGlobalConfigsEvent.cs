@@ -275,7 +275,7 @@ namespace MOD_nE7UL2.Mod
                 var ui = new UICover<UILogin>(e.ui);
                 {
                     var parentTransform = ui.UI.btnSet.transform.parent;
-                    ui.AddButton(ui.MidCol, ui.FirstRow + 3, OpenSMConfigs, TITLE, ui.UI.btnSet)
+                    ui.AddButton(ui.MidCol, ui.FirstRow + 5, OpenSMConfigs, TITLE, ui.UI.btnSet)
                         .Align(TextAnchor.MiddleCenter)
                         .Format(Color.black, 24)
                         .SetParentTransform(parentTransform);
@@ -325,7 +325,7 @@ namespace MOD_nE7UL2.Mod
                 slGrowUpSpeed = uiCustom.AddCompositeSlider(col, row++, GameTool.LS("smcfgs051"), 1, 36, GrowUpSpeed, GameTool.LS("smcfgs053"));
                 uiCustom.AddText(col + 2, row++, GameTool.LS("smcfgs052")).Format(null, 13).Align(TextAnchor.MiddleLeft);
 
-                col = 18; row = 0;
+                col = 16; row = 0;
                 uiCustom.AddText(col, row++, GameTool.LS("smcfgs020")).Format(null, 17, FontStyle.Italic).Align(TextAnchor.MiddleRight);
                 tglSysHideSave = uiCustom.AddCompositeToggle(col, row++, GameTool.LS("smcfgs021"), HideSaveButton, GameTool.LS("smcfgs102"));
                 tglSysHideReload = uiCustom.AddCompositeToggle(col, row++, GameTool.LS("smcfgs022"), HideReloadButton, GameTool.LS("smcfgs102"));
