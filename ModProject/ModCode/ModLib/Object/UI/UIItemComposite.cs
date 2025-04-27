@@ -58,9 +58,9 @@ namespace ModLib.Object
             rs.Prefix = new UIItemText(ui, x, y, prefix);
             rs.Prefix.Item.Align(TextAnchor.MiddleRight);
             rs.Prefix.Parent = rs;
-            rs.MainComponent = new UIItemToggle(ui, x + UIHelper.GetUIDeltaX() * 3, y, def, copySource);
+            rs.MainComponent = new UIItemToggle(ui, x + UIHelper.GetUIDeltaX() * 2, y, def, copySource);
             rs.MainComponent.Parent = rs;
-            rs.Postfix = new UIItemText(ui, x + UIHelper.GetUIDeltaX() * 6, y, postfix);
+            rs.Postfix = new UIItemText(ui, x + UIHelper.GetUIDeltaX() * 4, y, postfix);
             rs.Postfix.Item.Align(TextAnchor.MiddleLeft);
             rs.Postfix.Parent = rs;
             return rs;
