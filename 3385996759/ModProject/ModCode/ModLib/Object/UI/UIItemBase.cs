@@ -89,7 +89,7 @@ namespace ModLib.Object
             Enable = value;
         }
 
-        public virtual Vector3 Pos()
+        public virtual Vector2 Pos()
         {
             return Component.Pos();
         }
@@ -106,20 +106,20 @@ namespace ModLib.Object
             return Pos(this.UI.Columns[col], this.UI.Rows[row]);
         }
 
-        public virtual UIItemBase Pos(Transform org, float x, float y)
+        public virtual UIItemBase Pos(GameObject org, float x, float y)
         {
             Component.Pos(org, x, y);
             return this;
         }
 
-        public virtual UIItemBase Pos(GameObject org, float x, float y)
+        public virtual UIItemBase Pos(Component org, float x, float y)
         {
-            return Pos(org.transform, x, y);
+            return Pos(org.gameObject, x, y);
         }
 
         public virtual UIItemBase Pos(UIItemBase org, float x, float y)
         {
-            return Pos(org.Component.transform, x, y);
+            return Pos(org.Component, x, y);
         }
 
         public virtual UIItemBase SetParentTransform(Transform t)
@@ -131,6 +131,11 @@ namespace ModLib.Object
         public virtual UIItemBase SetParentTransform(GameObject t)
         {
             return SetParentTransform(t.transform);
+        }
+
+        public virtual UIItemBase SetParentTransform(Component t)
+        {
+            return SetParentTransform(t.gameObject);
         }
 
         #region Item
