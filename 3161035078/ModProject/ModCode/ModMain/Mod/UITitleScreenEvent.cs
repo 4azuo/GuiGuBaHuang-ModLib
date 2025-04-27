@@ -25,7 +25,7 @@ namespace MOD_nE7UL2.Mod
                 var ui = new UICover<UILogin>(e.ui);
                 {
                     var parentTransform = ui.UI.btnSet.transform.parent;
-                    ui.AddButton(ui.MidCol, ui.FirstRow, () => Process.Start("explorer.exe", CacheHelper.GetCacheFolderName(ModId)), $"Taoist {ModConst.TAOIST_VERSION}", ui.UI.btnPaperChange)
+                    ui.AddButton(ui.MidCol, ui.FirstRow + 2, () => Process.Start("explorer.exe", CacheHelper.GetCacheFolderName(ModId)), $"Taoist {ModConst.TAOIST_VERSION}", ui.UI.btnPaperChange)
                         .Align(TextAnchor.MiddleCenter)
                         .Format(Color.white, 22)
                         .SetParentTransform(parentTransform);
