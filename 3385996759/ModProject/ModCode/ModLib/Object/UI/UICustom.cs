@@ -57,10 +57,10 @@ namespace ModLib.Object
     public class UICustom1 : UICustom<UITextInfoLong>
     {
         public override string UITypeName => UIType.TextInfoLong.uiName;
-        public override float MinWidth => -(UIHelper.GetScreenWidth() / 2) * 0.62f;
-        public override float MaxWidth => +(UIHelper.GetScreenWidth() / 2) * 0.66f;
-        public override float MinHeight => +(UIHelper.GetScreenHeight() / 2) * 0.34f;
-        public override float MaxHeight => -(UIHelper.GetScreenHeight() / 2) * 0.35f;
+        public override float MinWidth => -(UIHelper.GetUIScreenWidth() / 2) * 0.630f;
+        public override float MaxWidth => +(UIHelper.GetUIScreenWidth() / 2) * 0.660f;
+        public override float MinHeight => +(UIHelper.GetUIScreenHeight() / 2) * 0.640f;
+        public override float MaxHeight => -(UIHelper.GetUIScreenHeight() / 2) * 0.660f;
 
         public UICustom1(string title, string btnText = "", Action okAct = null, bool showCancel = false, Action cancelAct = null) : base()
         {
@@ -73,10 +73,10 @@ namespace ModLib.Object
     public class UICustom2 : UICustom<UITextInfo>
     {
         public override string UITypeName => UIType.TextInfo.uiName;
-        public override float MinWidth => -(UIHelper.GetScreenWidth() / 2) * 0.26f;
-        public override float MaxWidth => +(UIHelper.GetScreenWidth() / 2) * 0.30f;
-        public override float MinHeight => +(UIHelper.GetScreenHeight() / 2) * 0.135f;
-        public override float MaxHeight => -(UIHelper.GetScreenHeight() / 2) * 0.130f;
+        public override float MinWidth => -(UIHelper.GetUIScreenWidth() / 2) * 0.270f;
+        public override float MaxWidth => +(UIHelper.GetUIScreenWidth() / 2) * 0.300f;
+        public override float MinHeight => +(UIHelper.GetUIScreenHeight() / 2) * 0.200f;
+        public override float MaxHeight => -(UIHelper.GetUIScreenHeight() / 2) * 0.200f;
 
         public UICustom2(string title, string btnText = "", Action okAct = null) : base()
         {
