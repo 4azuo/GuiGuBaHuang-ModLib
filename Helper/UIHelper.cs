@@ -3,34 +3,43 @@ using ModLib.Object;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using UnityEngine;
 
 public static class UIHelper
 {
     public static List<UICustomBase> UIs { get; } = new List<UICustomBase>();
 
-    private const float WIDTH_MARGIN = 1.100f;
-    private const float HIEGHT_MARGIN = 1.100f;
-    private const float UI_DELTA_X_RATE = 0.0250f;
-    private const float UI_DELTA_Y_RATE = 0.0125f;
+    private const float UI_DELTA_X_RATE = 0.0240f;
+    private const float UI_DELTA_Y_RATE = 0.0240f;
 
-    public static float GetScreenWidth()
+    public static float GetSettingScreenWidth()
     {
-        return g.data.globle.gameSetting.screenWidth * WIDTH_MARGIN;
+        return g.data.globle.gameSetting.screenWidth;
     }
 
-    public static float GetScreenHeight()
+    public static float GetSettingScreenHeight()
     {
-        return g.data.globle.gameSetting.screenHeight * HIEGHT_MARGIN;
+        return g.data.globle.gameSetting.screenHeight;;
+    }
+
+    public static float GetUIScreenWidth()
+    {
+        return g.ui.canvas.GetComponent<RectTransform>().sizeDelta.x;
+    }
+
+    public static float GetUIScreenHeight()
+    {
+        return g.ui.canvas.GetComponent<RectTransform>().sizeDelta.y;
     }
 
     public static float GetUIDeltaX()
     {
-        return GetScreenWidth() * UI_DELTA_X_RATE;
+        return GetUIScreenWidth() * UI_DELTA_X_RATE;
     }
 
     public static float GetUIDeltaY()
     {
-        return GetScreenHeight() * UI_DELTA_Y_RATE;
+        return GetUIScreenHeight() * UI_DELTA_Y_RATE;
     }
 
     public static T OpenUISafe<T>(this UIMgr g, UIType.UITypeBase t) where T : UIBase
