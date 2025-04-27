@@ -146,7 +146,7 @@ namespace MOD_nE7UL2.Mod
                 {
                     var prop = org;
                     customData[$"{prop.soleID}_price"] = item.Item5;
-                    ui.allItems.AddProps(org);
+                    ui.allItems.AddProps(prop);
                 }
             }
             ui.btnOK.onClick.RemoveAllListeners();
@@ -156,7 +156,7 @@ namespace MOD_nE7UL2.Mod
             }));
             var uiCover = new UICover<UIPropSelect>(ui);
             {
-                uiCover.AddButton(0, 0, Negotiate, GameTool.LS("other500020064")).Pos(ui.btnOK.transform, 0, 1.5f);
+                uiCover.AddButton(0, 0, Negotiate, GameTool.LS("other500020064")).Pos(ui.btnOK.transform, 0, 1.0f);
                 uiCover.AddText(0, 0, GameTool.LS("other500020063")).SetWork(new UIItemWork
                 {
                     Formatter = x =>
@@ -200,12 +200,12 @@ namespace MOD_nE7UL2.Mod
             {
                 allProps = new Il2CppSystem.Collections.Generic.List<DataProps.PropsData>()
             };
-            ui.allItems.allProps = g.world.playerUnit.GetUnequippedProps()
-                .Where(x => IsSellableItem(x) && !PlayerStack.Any(y => y.Item6 == x.soleID))
-                .ToIl2CppList();
-            foreach (var item in PlayerStack)
+            foreach (var item in g.world.playerUnit.GetUnequippedProps())
             {
-                ui.allItems.AddProps(player.GetUnitProp(item.Item6));
+                if (IsSellableItem(item) && !PlayerStack.Any(y => y.Item6 == item.soleID))
+                {
+                    ui.allItems.AddProps(item);
+                }
             }
             ui.btnOK.onClick.RemoveAllListeners();
             ui.btnOK.onClick.AddListener((UnityAction)(() =>
@@ -220,22 +220,9 @@ namespace MOD_nE7UL2.Mod
             }));
             var uiCover = new UICover<UIPropSelect>(ui);
             {
-                uiCover.AddText(0, 0, GameTool.LS("other500020062")).Format(Color.white).Pos(ui.btnOK.transform, -0.5f, 1.5f);
-                uiCover.AddInput(0, 0, string.Empty).Size(140, 40).Pos(ui.btnOK.transform, 0.5f, 1.5f);
-                uiCover.AddText(0, 0, GameTool.LS("other500020063")).SetWork(new UIItemWork
-                {
-                    Formatter = x =>
-                    {
-                        try
-                        {
-                            return new object[] { $"{customData[$"{UIPropSelect.allSlectItems[0].soleID}_price"]:#,##0}" };
-                        }
-                        catch
-                        {
-                            return new object[] { 0 };
-                        }
-                    }
-                }).Pos(ui.btnOK.transform, 0, 0.5f);
+                uiCover.AddText(0, 0, GameTool.LS("other500020062")).Pos(ui.btnOK.transform, -1.0f, 1.0f);
+                var inputComp = uiCover.AddInput(0, 0, string.Empty).Size(140, 30).Pos(ui.btnOK.transform, 0.5f, 1.0f);
+                ui.allObjs.Add(inputComp.Component.name, inputComp.Component);
             }
             uiCover.IsAutoUpdate = true;
             ui.UpdateUI();
@@ -268,7 +255,7 @@ namespace MOD_nE7UL2.Mod
                 {
                     var prop = org;
                     customData[$"{prop.soleID}_price"] = item.Item5;
-                    ui.allItems.AddProps(org);
+                    ui.allItems.AddProps(prop);
                 }
             }
             ui.btnOK.gameObject.SetActive(false);

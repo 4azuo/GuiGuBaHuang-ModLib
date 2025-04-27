@@ -325,7 +325,8 @@
 	{
 		"id": 500020058,
 		"key": "other500020058",
-		"ch|en|tc|kr": "Select sell items"
+		"ch": "選取",
+		"ch|en|tc|kr": "Select Items"
 	},
 	{
 		"id": 500020059,
@@ -335,8 +336,7 @@
 	{
 		"id": 500020060,
 		"key": "other500020060",
-		"ch": "選取",
-		"en|tc|kr": "Selling Items"
+		"ch|en|tc|kr": "Selling Items"
 	},
 	{
 		"id": 500020061,
