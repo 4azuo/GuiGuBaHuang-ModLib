@@ -9,14 +9,12 @@ namespace ModLib.Object
 {
     public class UIItemSelect : UIItem<Toggle>
     {
-        private const float DELTA_WITH_INPUT = -0.1f;
-
         public string[] Selections { get; set; }
         public List<Toggle> SelectionItems { get; } = new List<Toggle>();
         public int SelectedIndex { get; set; } = 0;
         public bool IsShownList => Item.isOn;
 
-        public UIItemSelect(UICustomBase ui, float x, float y, string[] selections, int def, Toggle copySource = null) : base(ui, (copySource ?? UISampleHelper.SelectSample).Copy(ui.UIBase).Pos(x + DELTA_WITH_INPUT, y).Size(180f, 26f).Align().Format(Color.black, 13))
+        public UIItemSelect(UICustomBase ui, float x, float y, string[] selections, int def, Toggle copySource = null) : base(ui, (copySource ?? UISampleHelper.SelectSample).Copy(ui.UIBase).Pos(x, y).Size(180f, 28f).Align().Format(Color.black, 13))
         {
             Init(selections, def);
         }
@@ -125,23 +123,46 @@ namespace ModLib.Object
 
         public virtual void UpdatePos()
         {
+            var r = Item.Pos();
+            DebugHelper.WriteLine($"{r.x}/{r.y}");
+            DebugHelper.Save();
             for (var i = 0; i < SelectionItems.Count; i++)
-                SelectionItems[i].Pos(Item.transform, 0f, -(Item.GetSize().y / 120f) * (i + 1));
+                SelectionItems[i].Pos(Item, 0f, -20f * (i + 1));
+        }
+
+        public override Vector2 Pos()
+        {
+            return base.Pos();
         }
 
         public override UIItemBase Pos(float x, float y)
         {
-            base.Pos(x + DELTA_WITH_INPUT, y);
+            base.Pos(x, y);
             UpdatePos();
-
             return this;
         }
 
-        public override UIItemBase Pos(Transform org, float x, float y)
+        public override UIItemBase Pos(int col, int row)
         {
-            base.Pos(org, x + DELTA_WITH_INPUT, y);
-            UpdatePos();
+            throw new System.NotImplementedException();
+        }
 
+        public override UIItemBase Pos(GameObject org, float x, float y)
+        {
+            base.Pos(org, x, y);
+            UpdatePos();
+            return this;
+        }
+
+        public override UIItemBase Pos(Component org, float x, float y)
+        {
+            return Pos(org.gameObject, x, y);
+        }
+
+        public override UIItemBase Pos(UIItemBase org, float x, float y)
+        {
+            base.Pos(org, x, y);
+            UpdatePos();
             return this;
         }
 
@@ -185,7 +206,19 @@ namespace ModLib.Object
             {
                 comp.transform.SetParent(t);
             }
-            return base.SetParentTransform(t);
+            base.SetParentTransform(t);
+            UpdatePos();
+            return this;
+        }
+
+        public override UIItemBase SetParentTransform(GameObject t)
+        {
+            return SetParentTransform(t.transform);
+        }
+
+        public override UIItemBase SetParentTransform(Component t)
+        {
+            return SetParentTransform(t.gameObject);
         }
     }
 }

@@ -38,9 +38,9 @@ namespace ModLib.Object
 
         public void InitGrid()
         {
-            for (var i = MinWidth; i <= MaxWidth; i += UIHelper.UICUSTOM_DELTA_X)
+            for (var i = MinWidth; i <= MaxWidth; i += UIHelper.GetUIDeltaX())
                 Columns.Add(i);
-            for (var i = MinHeight; i >= MaxHeight; i -= UIHelper.UICUSTOM_DELTA_Y)
+            for (var i = MinHeight; i >= MaxHeight; i -= UIHelper.GetUIDeltaY())
                 Rows.Add(i);
         }
 

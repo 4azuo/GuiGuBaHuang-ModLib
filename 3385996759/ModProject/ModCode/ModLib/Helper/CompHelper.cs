@@ -8,6 +8,16 @@ public static class CompHelper
 
     public static T Init<T>(this T newObj) where T : Component
     {
+        var rect = newObj.gameObject.GetComponent<RectTransform>();
+
+        // Set anchor
+        rect.anchorMin = new Vector2(0.5f, 0.5f);
+        rect.anchorMax = new Vector2(0.5f, 0.5f);
+
+        // Set pivot
+        rect.pivot = new Vector2(0.5f, 0.5f);
+
+        //reset
         if (newObj is Button)
         {
             var o = newObj as Button;
@@ -60,7 +70,7 @@ public static class CompHelper
     {
         var t = transform ?? obj.transform.parent;
         var newObj = Object.Instantiate(obj, t, false);
-        newObj.Pos(obj.transform);
+        newObj.Pos(obj);
         newObj.gameObject.name = $"CompHelper:{_compCounter++}";
         newObj.gameObject.SetActive(true);
         obj.gameObject.SetActive(false);
@@ -76,7 +86,7 @@ public static class CompHelper
     {
         var t = transform ?? obj.transform.parent;
         var newObj = Object.Instantiate(obj, t, false);
-        newObj.Pos(obj.transform);
+        newObj.Pos(obj);
         newObj.gameObject.name = $"CompHelper:{_compCounter++}";
         newObj.gameObject.SetActive(true);
         return newObj.Init();
@@ -155,34 +165,65 @@ public static class CompHelper
         return obj;
     }
 
-    public static Vector3 Pos(this Component obj)
+    public static Vector2 Pos(this GameObject obj)
     {
-        return obj.transform.position;
+        var rect = obj.GetComponent<RectTransform>();
+        return rect.anchoredPosition;
     }
 
-    public static T Pos<T>(this T obj, Transform origin, float deltaX = 0f, float deltaY = 0f, float deltaZ = 0f) where T : Component
+    public static Vector2 Pos(this Component obj)
     {
-        obj.transform.position = new Vector3((origin?.position.x ?? 0) + deltaX, (origin?.position.y ?? 0) + deltaY, (origin?.position.z ?? 0) + deltaZ);
+        return obj.gameObject.Pos();
+    }
+
+    public static T Pos<T>(this T obj, GameObject origin, float deltaX = 0f, float deltaY = 0f) where T : Component
+    {
+        var orgPos = origin.Pos();
+        var rect = obj.gameObject.GetComponent<RectTransform>();
+        rect.anchoredPosition = new Vector2(orgPos.x + deltaX, orgPos.y + deltaY);
         return obj;
     }
 
-    public static T Pos<T>(this T obj, GameObject origin, float deltaX = 0f, float deltaY = 0f, float deltaZ = 0f) where T : Component
+    public static T Pos<T>(this T obj, Component origin, float deltaX = 0f, float deltaY = 0f) where T : Component
     {
-        obj.transform.position = new Vector3((origin?.transform?.position.x ?? 0) + deltaX, (origin?.transform?.position.y ?? 0) + deltaY, (origin?.transform?.position.z ?? 0) + deltaZ);
-        return obj;
-    }
-
-    public static T Pos<T>(this T obj, float deltaX, float deltaY, float deltaZ) where T : Component
-    {
-        obj.transform.position = new Vector3(deltaX, deltaY, deltaZ);
-        return obj;
+        return obj.Pos(origin.gameObject, deltaX, deltaY);
     }
 
     public static T Pos<T>(this T obj, float deltaX, float deltaY) where T : Component
     {
-        obj.transform.position = new Vector3(deltaX, deltaY, obj.transform.position.z);
+        var rect = obj.gameObject.GetComponent<RectTransform>();
+        rect.anchoredPosition = new Vector2(deltaX, deltaY);
         return obj;
     }
+
+    //public static Vector3 Pos(this Component obj)
+    //{
+    //    return obj.transform.position;
+    //}
+
+    //public static T Pos<T>(this T obj, Transform origin, float deltaX = 0f, float deltaY = 0f, float deltaZ = 0f) where T : Component
+    //{
+    //    obj.transform.position = new Vector3((origin?.position.x ?? 0) + deltaX, (origin?.position.y ?? 0) + deltaY, (origin?.position.z ?? 0) + deltaZ);
+    //    return obj;
+    //}
+
+    //public static T Pos<T>(this T obj, GameObject origin, float deltaX = 0f, float deltaY = 0f, float deltaZ = 0f) where T : Component
+    //{
+    //    obj.transform.position = new Vector3((origin?.transform?.position.x ?? 0) + deltaX, (origin?.transform?.position.y ?? 0) + deltaY, (origin?.transform?.position.z ?? 0) + deltaZ);
+    //    return obj;
+    //}
+
+    //public static T Pos<T>(this T obj, float deltaX, float deltaY, float deltaZ) where T : Component
+    //{
+    //    obj.transform.position = new Vector3(deltaX, deltaY, deltaZ);
+    //    return obj;
+    //}
+
+    //public static T Pos<T>(this T obj, float deltaX, float deltaY) where T : Component
+    //{
+    //    obj.transform.position = new Vector3(deltaX, deltaY, obj.transform.position.z);
+    //    return obj;
+    //}
 
     public static T Size<T>(this T obj, float scaleX = 0f, float scaleY = 0f) where T : Component
     {
@@ -287,4 +328,103 @@ public static class CompHelper
             txt.text = def;
         return obj;
     }
+
+    //public static Button CreateButton(Transform parent, Vector2 size, Vector2 anchoredPosition, string buttonText = "Button")
+    //{
+    //    // Create Button GameObject
+    //    var buttonObj = new GameObject($"CompHelper:{_compCounter++}");
+    //    buttonObj.transform.SetParent(parent, false);
+
+    //    // RectTransform settings
+    //    var rectTransform = buttonObj.AddComponent<RectTransform>();
+    //    rectTransform.sizeDelta = size;
+    //    rectTransform.anchoredPosition = anchoredPosition;
+
+    //    // Add Image (button background)
+    //    var image = buttonObj.AddComponent<Image>();
+    //    image.color = new Color(1f, 1f, 1f, 1f); // white background
+
+    //    // Add Button component
+    //    var button = buttonObj.AddComponent<Button>();
+    //    button.targetGraphic = image;
+
+    //    // Create Text child (for button label)
+    //    var textObj = new GameObject("Text");
+    //    textObj.transform.SetParent(buttonObj.transform, false);
+
+    //    var textRect = textObj.AddComponent<RectTransform>();
+    //    textRect.anchorMin = Vector2.zero;
+    //    textRect.anchorMax = Vector2.one;
+    //    textRect.offsetMin = Vector2.zero;
+    //    textRect.offsetMax = Vector2.zero;
+
+    //    var text = textObj.AddComponent<Text>();
+    //    text.font = Resources.GetBuiltinResource<Font>("Arial.ttf");
+    //    text.text = buttonText;
+    //    text.alignment = TextAnchor.MiddleCenter;
+    //    text.color = Color.black;
+    //    text.supportRichText = false;
+
+    //    return button;
+    //}
+
+    //public static InputField CreateInputField(Transform parent, Vector2 size, Vector2 anchoredPosition, string placeholderText = "Enter text...")
+    //{
+    //    // Create InputField GameObject
+    //    var inputFieldObj = new GameObject($"CompHelper:{_compCounter++}");
+    //    inputFieldObj.transform.SetParent(parent, false);
+
+    //    // RectTransform settings
+    //    var rectTransform = inputFieldObj.AddComponent<RectTransform>();
+    //    rectTransform.sizeDelta = size;
+    //    rectTransform.anchoredPosition = anchoredPosition;
+
+    //    // Add Image for background
+    //    var image = inputFieldObj.AddComponent<Image>();
+    //    image.color = Color.white;
+
+    //    // Add InputField
+    //    var inputField = inputFieldObj.AddComponent<InputField>();
+    //    inputField.targetGraphic = image;
+
+    //    // Create Text child (for typing text)
+    //    var textObj = new GameObject("Text");
+    //    textObj.transform.SetParent(inputFieldObj.transform, false);
+
+    //    var textRect = textObj.AddComponent<RectTransform>();
+    //    textRect.anchorMin = Vector2.zero;
+    //    textRect.anchorMax = Vector2.one;
+    //    textRect.offsetMin = Vector2.zero;
+    //    textRect.offsetMax = Vector2.zero;
+
+    //    var text = textObj.AddComponent<Text>();
+    //    text.font = Resources.GetBuiltinResource<Font>("Arial.ttf");
+    //    text.text = "";
+    //    text.alignment = TextAnchor.MiddleLeft;
+    //    text.color = Color.black;
+    //    text.supportRichText = false;
+
+    //    inputField.textComponent = text;
+
+    //    // Create Placeholder child
+    //    var placeholderObj = new GameObject("Placeholder");
+    //    placeholderObj.transform.SetParent(inputFieldObj.transform, false);
+
+    //    var placeholderRect = placeholderObj.AddComponent<RectTransform>();
+    //    placeholderRect.anchorMin = Vector2.zero;
+    //    placeholderRect.anchorMax = Vector2.one;
+    //    placeholderRect.offsetMin = Vector2.zero;
+    //    placeholderRect.offsetMax = Vector2.zero;
+
+    //    var placeholder = placeholderObj.AddComponent<Text>();
+    //    placeholder.font = Resources.GetBuiltinResource<Font>("Arial.ttf");
+    //    placeholder.text = placeholderText;
+    //    placeholder.fontStyle = FontStyle.Italic;
+    //    placeholder.alignment = TextAnchor.MiddleLeft;
+    //    placeholder.color = new Color(0.5f, 0.5f, 0.5f, 0.75f);
+
+    //    inputField.placeholder = placeholder;
+
+    //    return inputField;
+    //}
 }
