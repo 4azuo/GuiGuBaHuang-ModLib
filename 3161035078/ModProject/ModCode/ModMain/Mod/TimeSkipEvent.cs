@@ -4,6 +4,7 @@ using ModLib.Enum;
 using ModLib.Mod;
 using ModLib.Object;
 using UnityEngine;
+using static SpecialBattle83;
 
 namespace MOD_nE7UL2.Mod
 {
@@ -20,28 +21,28 @@ namespace MOD_nE7UL2.Mod
                 var uiMain = new UICover<UIMapMain>(e.ui);
                 {
                     var btnFateFeature = uiMain.UI.playerInfo.btnFateFeature ?? uiMain.UI.playerInfo.btnFateFeature_En;
-                    uiMain.AddButton(btnFateFeature.transform.position.x + 3f, btnFateFeature.transform.position.y, () =>
+                    uiMain.AddButton(uiMain.FirstCol + 11, uiMain.LastRow - 4, () =>
                     {
                         g.ui.MsgBox(GameTool.LS("other500020022"), string.Format(GameTool.LS("other500020029"), 1), MsgBoxButtonEnum.YesNo, () =>
                         {
                             SkipTime(12);
                         });
                     }, string.Format(GameTool.LS("other500020030"), 1)).Size(140, 40);
-                    uiMain.AddButton(btnFateFeature.transform.position.x + 4f, btnFateFeature.transform.position.y, () =>
+                    uiMain.AddButton(uiMain.FirstCol + 13, uiMain.LastRow - 4, () =>
                     {
                         g.ui.MsgBox(GameTool.LS("other500020022"), string.Format(GameTool.LS("other500020031"), 1), MsgBoxButtonEnum.YesNo, () =>
                         {
                             SkipTimeWithoutEvents(12);
                         });
                     }, string.Format(GameTool.LS("other500020032"), 1)).Size(40, 40);
-                    uiMain.AddButton(btnFateFeature.transform.position.x + 5f, btnFateFeature.transform.position.y, () =>
+                    uiMain.AddButton(uiMain.FirstCol + 15, uiMain.LastRow - 4, () =>
                     {
                         g.ui.MsgBox(GameTool.LS("other500020022"), string.Format(GameTool.LS("other500020029"), 10), MsgBoxButtonEnum.YesNo, () =>
                         {
                             SkipTime(120);
                         });
                     }, string.Format(GameTool.LS("other500020030"), 10)).Size(140, 40);
-                    uiMain.AddButton(btnFateFeature.transform.position.x + 6f, btnFateFeature.transform.position.y, () =>
+                    uiMain.AddButton(uiMain.FirstCol + 17, uiMain.LastRow - 4, () =>
                     {
                         g.ui.MsgBox(GameTool.LS("other500020022"), string.Format(GameTool.LS("other500020031"), 10), MsgBoxButtonEnum.YesNo, () =>
                         {

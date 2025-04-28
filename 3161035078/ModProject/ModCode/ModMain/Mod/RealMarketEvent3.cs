@@ -71,10 +71,10 @@ namespace MOD_nE7UL2.Mod
             {
                 var ui = new UICover<UITownMarket>(e.ui);
                 {
-                    ui.AddToolTipButton(GameTool.LS("other500020041")).Pos(ui.UI.btnBuy.transform, -0.6f, -1f);
-                    ui.AddButton(0, 0, OpenMarket, GameTool.LS("other500020040")).Size(200, 40).Pos(ui.UI.btnBuy.transform, 0.9f, -1f);
-                    ui.AddButton(0, 0, OpenList, GameTool.LS("other500020060")).Size(200, 40).Pos(ui.UI.btnBuy.transform, 0.9f, -1.4f);
-                    ui.AddButton(0, 0, OpenRegister, GameTool.LS("other500020061")).Size(200, 40).Pos(ui.UI.btnBuy.transform, 0.9f, -1.8f);
+                    ui.AddToolTipButton(ui.MidCol - 3, ui.MidRow + 1, GameTool.LS("other500020041"));
+                    ui.AddButton(ui.MidCol, ui.MidRow + 1, OpenMarket, GameTool.LS("other500020040")).Size(200, 40);
+                    ui.AddButton(ui.MidCol, ui.MidRow + 3, OpenList, GameTool.LS("other500020060")).Size(200, 40);
+                    ui.AddButton(ui.MidCol, ui.MidRow + 5, OpenRegister, GameTool.LS("other500020061")).Size(200, 40);
                 }
                 ui.UpdateUI();
             }

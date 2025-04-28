@@ -37,7 +37,14 @@ namespace MOD_nE7UL2.Mod
             //add luck
             if (!UnitTypeDic.ContainsKey(unitId))
             {
-                UnitTypeDic.Add(unitId, AddRandomUnitType(wunit));
+                if (wunit.IsPlayer() && SMLocalConfigsEvent.Instance.Configs.StartupPlayerRole > 0)
+                {
+                    UnitTypeDic.Add(unitId, SMGlobalConfigsEvent.StartupPlayerRoles[SMLocalConfigsEvent.Instance.Configs.StartupPlayerRole]);
+                }
+                else
+                {
+                    UnitTypeDic.Add(unitId, AddRandomUnitType(wunit));
+                }
             }
 
             //add apprentice luck

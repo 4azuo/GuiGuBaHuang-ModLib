@@ -27,14 +27,13 @@ namespace MOD_nE7UL2.Mod
                 {
                     var ui = new UICover<UIFateFeature>(e.ui);
                     {
-                        ui.AddButton(ui.MidCol, ui.MidRow + 9, () =>
+                        ui.AddButton(ui.MidCol, ui.MidRow + 8, () =>
                         {
                             player.SetProperty<int>(UnitPropertyEnum.GradeID, nPhase.id);
                             player.ClearExp();
                         }, GameTool.LS("other500020006")).Size(200f, 40f);
-                        ui.AddToolTipButton(ui.MidCol - 3, ui.MidRow + 9, GameTool.LS("other500020018"));
+                        ui.AddToolTipButton(ui.MidCol - 3, ui.MidRow + 8, GameTool.LS("other500020018"));
                     }
-                    ui.UpdateUI();
                 }
             }
         }

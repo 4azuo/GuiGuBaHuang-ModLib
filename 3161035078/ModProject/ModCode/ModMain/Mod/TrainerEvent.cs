@@ -5,7 +5,6 @@ using ModLib.Object;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using UnhollowerBaseLib;
 using UnityEngine;
 
 namespace MOD_nE7UL2.Mod
@@ -341,7 +340,7 @@ namespace MOD_nE7UL2.Mod
                     if (areaId != build.gridData.areaBaseID)
                     {
                         areaId = build.gridData.areaBaseID;
-                        col = TELE_AREA_COL[areaId].Value0.Parse<int>() * 6 + 3;
+                        col = TELE_AREA_COL[areaId].Value0.Parse<int>() * 6 + 2;
                         uiTrainer.AddText(col, 1 + row[TELE_AREA_COL[areaId].Value0.Parse<int>()]++, $"Area {areaId}:").Format(null, 16, FontStyle.Italic).Align(TextAnchor.MiddleCenter);
                     }
                     FormatButton2(uiTrainer.AddButton(col, 1 + row[TELE_AREA_COL[areaId].Value0.Parse<int>()]++, () => Tele(build.GetOpenBuildPoints()[0]), build.name));
@@ -353,7 +352,7 @@ namespace MOD_nE7UL2.Mod
             {
                 uiTrainer.AddText(uiTrainer.MidCol, uiTrainer.FirstRow, GameTool.LS("trainer045")).Format(Color.red, 17);
 
-                int col = 2, row = 2, c = 0;
+                int col = 3, row = 2, c = 0;
                 foreach (var conf in g.conf.roleGrade._allConfList)
                 {
                     if (conf.itemShowA != "0" || conf.itemShowB != "0")
