@@ -413,6 +413,7 @@ namespace MOD_nE7UL2.Mod
 
                 SetWork();
             }
+            uiCustom.UpdateUI();
         }
 
         private void ExportConfigs()
