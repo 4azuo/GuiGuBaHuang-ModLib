@@ -31,6 +31,11 @@ namespace ModLib.Object
             UI = g.ui.GetUI<T>(UIType.GetUIType(UITypeName));
             UIBase = UI;
 
+            //test
+            //for (var c = 0; c < Columns.Count; c++)
+            //    for (var r = 0; r < Rows.Count; r++)
+            //        AddText(c, r, $"{c}/{r}");
+
             UIHelper.UIs.Add(this);
             DebugHelper.WriteLine($"Create a cover for {UI.uiType.uiName}");
         }
