@@ -1,5 +1,6 @@
 ﻿using EGameTypeData;
 using MOD_nE7UL2.Const;
+using MOD_nE7UL2.Enum;
 using MOD_nE7UL2.Object;
 using ModLib.Mod;
 using ModLib.Object;
@@ -55,6 +56,18 @@ namespace MOD_nE7UL2.Mod
         public bool LostItemWhenDie { get; set; } = false;
         public bool MonsterPropertiesDependOnPlayerProperties { get; set; } = false;
         public bool AutoSaveAfterLostInBattle { get; set; } = false;
+        public int StartupPlayerRole { get; set; } = 0;
+        public static UnitTypeEnum[] StartupPlayerRoles { get; } = {
+            null,
+            UnitTypeEnum.PowerUnit,
+            UnitTypeEnum.SpeedUnit,
+            UnitTypeEnum.TaoistUnit,
+            UnitTypeEnum.AtkUnit,
+            UnitTypeEnum.DefUnit,
+            UnitTypeEnum.Angel,
+            UnitTypeEnum.Evil,
+            UnitTypeEnum.Merchant
+        };
 
         //UI
         private UICustom1 uiCustom;
@@ -93,6 +106,7 @@ namespace MOD_nE7UL2.Mod
         private UIItemComposite tglLostItemWhenDie;
         private UIItemComposite tglMonsterPropertiesDependOnPlayerProperties;
         private UIItemComposite tglAutoSaveAfterLostInBattle;
+        private UIItemComposite cbStartupPlayerRole;
 
         //Score
         public static IList<SMItemWork> ScoreCalculator { get; } = new List<SMItemWork>();
@@ -230,6 +244,8 @@ namespace MOD_nE7UL2.Mod
             Register(() => tglAutoSaveAfterLostInBattle,
                 funcCal: s => 20000,
                 funcCond: s => s.Get().Parse<bool>());
+            Register(() => cbStartupPlayerRole,
+                funcCal: s => s.Get().Parse<int>() == 0 ? 0 : -10000);
         }
 
         private void Register(
@@ -293,6 +309,7 @@ namespace MOD_nE7UL2.Mod
                 uiCustom.AddToolTipButton(GameTool.LS("other500020039"));
 
                 col = 2; row = 0;
+                //
                 uiCustom.AddText(col, row++, GameTool.LS("smcfgs000")).Format(null, 17, FontStyle.Italic).Align(TextAnchor.MiddleRight);
                 slMonstAtk = uiCustom.AddCompositeSlider(col, row++, GameTool.LS("smcfgs001"), -0.50f, 8.00f, AddAtkRate, GameTool.LS("smcfgs101"));
                 slMonstDef = uiCustom.AddCompositeSlider(col, row++, GameTool.LS("smcfgs002"), -0.50f, 8.00f, AddDefRate, GameTool.LS("smcfgs101"));
@@ -301,7 +318,7 @@ namespace MOD_nE7UL2.Mod
                 uiCustom.AddText(col - 1, row++, GameTool.LS("smcfgs005")).Format(null, 13).Align(TextAnchor.MiddleLeft);
                 slMonstSpecialRate = uiCustom.AddCompositeSlider(col, row++, GameTool.LS("smcfgs006"), -0.50f, 1.00f, AddSpecialMonsterRate, GameTool.LS("smcfgs101"));
                 uiCustom.AddText(col + 2, row++, GameTool.LS("smcfgs049")).Format(null, 13).Align(TextAnchor.MiddleLeft);
-                row++;
+                //
                 uiCustom.AddText(col, row++, GameTool.LS("smcfgs007")).Format(null, 17, FontStyle.Italic).Align(TextAnchor.MiddleRight);
                 slEcoTaxRate = uiCustom.AddCompositeSlider(col, row++, GameTool.LS("smcfgs008"), -0.50f, 5.00f, AddTaxRate, GameTool.LS("smcfgs101"));
                 slEcoInfRate = uiCustom.AddCompositeSlider(col, row++, GameTool.LS("smcfgs009"), -0.50f, 2.00f, AddInflationRate, GameTool.LS("smcfgs101"));
@@ -311,7 +328,7 @@ namespace MOD_nE7UL2.Mod
                 slEcoRefineCost = uiCustom.AddCompositeSlider(col, row++, GameTool.LS("smcfgs013"), -0.50f, 1.00f, AddRefineCost, GameTool.LS("smcfgs101"));
                 slEcoSectExchangeRate = uiCustom.AddCompositeSlider(col, row++, GameTool.LS("smcfgs014"), -0.50f, 1.00f, AddSectExchangeRate, GameTool.LS("smcfgs101"));
                 slEcoItemValue = uiCustom.AddCompositeSlider(col, row++, GameTool.LS("smcfgs015"), -0.50f, 1.00f, AddItemValueRate, GameTool.LS("smcfgs101"));
-                row++;
+                //
                 uiCustom.AddText(col, row++, GameTool.LS("smcfgs016")).Format(null, 17, FontStyle.Italic).Align(TextAnchor.MiddleRight);
                 slNpcGrowRate = uiCustom.AddCompositeSlider(col, row++, GameTool.LS("smcfgs017"), 0.00f, 8.00f, AddNpcGrowRate, GameTool.LS("smcfgs101"));
                 slNPCAmount = uiCustom.AddCompositeSlider(col, row++, GameTool.LS("smcfgs047"), 1000, 10000, NPCAmount, GameTool.LS("smcfgs103"));
@@ -319,11 +336,26 @@ namespace MOD_nE7UL2.Mod
                 {
                     Formatter = (x) => new string[] { (slNPCAmount.Get().Parse<int>() / 2).ToString() },
                 });
-                row++;
+                //
                 uiCustom.AddText(col, row++, GameTool.LS("smcfgs018")).Format(null, 17, FontStyle.Italic).Align(TextAnchor.MiddleRight);
                 slMiscLevelupExp = uiCustom.AddCompositeSlider(col, row++, GameTool.LS("smcfgs019"), 0.00f, 1.00f, AddLevelupExpRate, GameTool.LS("smcfgs101"));
                 slGrowUpSpeed = uiCustom.AddCompositeSlider(col, row++, GameTool.LS("smcfgs051"), 1, 36, GrowUpSpeed, GameTool.LS("smcfgs053"));
                 uiCustom.AddText(col + 2, row++, GameTool.LS("smcfgs052")).Format(null, 13).Align(TextAnchor.MiddleLeft);
+                //
+                uiCustom.AddText(col, row++, GameTool.LS("smcfgs104")).Format(null, 17, FontStyle.Italic).Align(TextAnchor.MiddleRight);
+                uiCustom.AddToolTipButton(0, row, GameTool.LS("smcfgs105"));
+                cbStartupPlayerRole = uiCustom.AddCompositeSelect(col, row++, GameTool.LS("smcfgs106"),
+                    new string[] {
+                        GameTool.LS("smcfgs107"),
+                        GameTool.LS("smcfgs108"),
+                        GameTool.LS("smcfgs109"),
+                        GameTool.LS("smcfgs110"),
+                        GameTool.LS("smcfgs111"),
+                        GameTool.LS("smcfgs112"),
+                        GameTool.LS("smcfgs113"),
+                        GameTool.LS("smcfgs114"),
+                        GameTool.LS("smcfgs115")
+                    }, StartupPlayerRole, GameTool.LS("smcfgs102"));
 
                 col = 16; row = 0;
                 uiCustom.AddText(col, row++, GameTool.LS("smcfgs020")).Format(null, 17, FontStyle.Italic).Align(TextAnchor.MiddleRight);
@@ -381,7 +413,6 @@ namespace MOD_nE7UL2.Mod
 
                 SetWork();
             }
-            uiCustom.UpdateUI();
         }
 
         private void ExportConfigs()
@@ -477,6 +508,7 @@ namespace MOD_nE7UL2.Mod
             tglLostItemWhenDie.Set(false);
             tglMonsterPropertiesDependOnPlayerProperties.Set(false);
             tglAutoSaveAfterLostInBattle.Set(false);
+            cbStartupPlayerRole.Set(0);
         }
 
         private void SetLevel(int level)
@@ -516,6 +548,7 @@ namespace MOD_nE7UL2.Mod
             tglLostItemWhenDie.Set(level > 4);
             tglMonsterPropertiesDependOnPlayerProperties.Set(level > 3);
             tglAutoSaveAfterLostInBattle.Set(level > 6);
+            cbStartupPlayerRole.Set(0);
         }
 
         private void SetSMConfigs()
@@ -555,6 +588,7 @@ namespace MOD_nE7UL2.Mod
             LostItemWhenDie = tglLostItemWhenDie.Get().Parse<bool>();
             MonsterPropertiesDependOnPlayerProperties = tglMonsterPropertiesDependOnPlayerProperties.Get().Parse<bool>();
             AutoSaveAfterLostInBattle = tglAutoSaveAfterLostInBattle.Get().Parse<bool>();
+            StartupPlayerRole = cbStartupPlayerRole.Get().Parse<int>();
             CacheHelper.SaveGlobalCache(this);
 
             //edit conf
