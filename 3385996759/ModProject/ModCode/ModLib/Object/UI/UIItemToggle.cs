@@ -1,4 +1,5 @@
-﻿using UnityEngine.Events;
+﻿using System;
+using UnityEngine.Events;
 using UnityEngine.UI;
 using static ModLib.Object.UIItemBase;
 
@@ -16,8 +17,21 @@ namespace ModLib.Object
             Pos(x, y);
             Set(def);
 
-            Item.onValueChanged.AddListener((UnityAction<bool>)(v => ItemWork?.ChangeAct?.Invoke(this, v)));
-            Item.onValueChanged.AddListener((UnityAction<bool>)((value) => UI.UpdateUI()));
+            Item.onValueChanged.AddListener((UnityAction<bool>)((v) =>
+            {
+                try
+                {
+                    ItemWork?.ChangeAct?.Invoke(this, v);
+                }
+                catch (Exception e)
+                {
+                    DebugHelper.WriteLine(e);
+                }
+                finally
+                {
+                    UI.UpdateUI();
+                }
+            }));
         }
 
         public override object Get()

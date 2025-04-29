@@ -1,4 +1,5 @@
-﻿using UnityEngine.Events;
+﻿using System;
+using UnityEngine.Events;
 using UnityEngine.UI;
 using static ModLib.Object.UIItemBase;
 
@@ -22,8 +23,21 @@ namespace ModLib.Object
             Max = max;
             Set(def);
 
-            Item.onValueChanged.AddListener((UnityAction<float>)(v => ItemWork?.ChangeAct?.Invoke(this, v)));
-            Item.onValueChanged.AddListener((UnityAction<float>)((value) => UI.UpdateUI()));
+            Item.onValueChanged.AddListener((UnityAction<float>)((v) =>
+            {
+                try
+                {
+                    ItemWork?.ChangeAct?.Invoke(this, v);
+                }
+                catch (Exception e)
+                {
+                    DebugHelper.WriteLine(e);
+                }
+                finally
+                {
+                    UI.UpdateUI();
+                }
+            }));
         }
 
         public override object Get()
