@@ -220,7 +220,7 @@ Your commissions:
             if (curMainTown != null && CommissionTasks.Any(x => x.Status != CommissionTask.CommissionTaskStatus.Progressing))
             {
                 var uiReward = g.ui.OpenUISafe<UIGetReward>(UIType.GetReward);
-                var uiRewardText = uiReward.textExpTitle.Copy(uiReward.transform).Align(TextAnchor.UpperLeft).Format().Pos(uiReward.btnOK.transform, -2f, 1.5f);
+                var uiRewardText = uiReward.textExpTitle.Copy(uiReward.transform).Align().Format().Pos(uiReward.btnOK.transform, 0, 0);
 
                 var msg = new StringBuilder();
                 foreach (var task in CommissionTasks.Where(x => 
