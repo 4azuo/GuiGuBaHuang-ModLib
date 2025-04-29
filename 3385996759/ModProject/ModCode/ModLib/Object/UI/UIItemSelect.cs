@@ -1,9 +1,9 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.UI;
 using static ModLib.Object.UIItemBase;
-using static Mono.Security.X509.X520;
 
 namespace ModLib.Object
 {
@@ -24,8 +24,21 @@ namespace ModLib.Object
             SetSelections(selections);
             SelectIndex(def, true);
 
-            Item.onValueChanged.AddListener((UnityAction<bool>)(v => OnMainChanged()));
-            Item.onValueChanged.AddListener((UnityAction<bool>)((value) => UI.UpdateUI()));
+            Item.onValueChanged.AddListener((UnityAction<bool>)((v) =>
+            {
+                try
+                {
+                    OnMainChanged();
+                }
+                catch (Exception e)
+                {
+                    DebugHelper.WriteLine(e);
+                }
+                finally
+                {
+                    UI.UpdateUI();
+                }
+            }));
         }
 
         public void SetSelections(string[] selections)
@@ -43,8 +56,21 @@ namespace ModLib.Object
             {
                 var comp = Item.Copy(UI.UIBase).Set(false, $"　{selections[i]}");
                 comp.gameObject.SetActive(false);
-                comp.onValueChanged.AddListener((UnityAction<bool>)((x) => UI.UpdateUI()));
-                comp.onValueChanged.AddListener((UnityAction<bool>)(v => OnSubChanged(comp)));
+                comp.onValueChanged.AddListener((UnityAction<bool>)((v) =>
+                {
+                    try
+                    {
+                        OnSubChanged(comp);
+                    }
+                    catch (Exception e)
+                    {
+                        DebugHelper.WriteLine(e);
+                    }
+                    finally
+                    {
+                        UI.UpdateUI();
+                    }
+                }));
                 SelectionItems.Add(comp);
             }
             UpdatePos();
