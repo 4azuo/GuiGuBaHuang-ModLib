@@ -145,7 +145,7 @@ namespace MOD_nE7UL2.Mod
                 FormatButton1(uiTrainer.AddButton(col, row += 2, AddViewRange, GameTool.LS("trainer036")));
                 FormatButton1(uiTrainer.AddButton(col, row += 2, ReduceViewRange, GameTool.LS("trainer037")));
 
-                col = 24; row = 2;
+                col = 23; row = 2;
                 uiTrainer.AddText(col - 1, row++, GameTool.LS("trainer038")).Format(null, 17, FontStyle.Italic).Align(TextAnchor.MiddleCenter);
                 uiTrainer.AddText(col, row, "HP: {0}/{1}").Align(TextAnchor.MiddleLeft).Format(Color.black, 15).SetWork(new UIItemWork
                 {

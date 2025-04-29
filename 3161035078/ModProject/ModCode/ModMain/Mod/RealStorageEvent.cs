@@ -36,17 +36,17 @@ namespace MOD_nE7UL2.Mod
             {
                 var uiTownStorageProps = g.ui.GetUI<UITownStorageProps>(UIType.TownStorageProps);
 
-                txtStorageMoney = uiTownStorageProps.textTip.Copy().Align(TextAnchor.MiddleRight).Format().Pos(uiTownStorageProps.textTip.gameObject, 0f, 0.4f);
-                txtFee = uiTownStorageProps.textTip.Copy().Align(TextAnchor.MiddleRight).Format(Color.blue).Pos(uiTownStorageProps.textTip.gameObject, 0f, 0.2f);
+                txtStorageMoney = uiTownStorageProps.textTip.Copy().Align(TextAnchor.MiddleRight).Format().Pos(uiTownStorageProps.textTip.gameObject, 0, 60);
+                txtFee = uiTownStorageProps.textTip.Copy().Align(TextAnchor.MiddleRight).Format(Color.blue).Pos(uiTownStorageProps.textTip.gameObject, 0, 30);
 
                 if (Debt > 0)
                 {
                     var txtWarning1 = uiTownStorageProps.textTip.Copy().Align(TextAnchor.MiddleCenter).Format(Color.red, 17)
-                        .Pos(uiTownStorageProps.textTitle1.gameObject, 0f, -1.2f)
+                        .Pos(uiTownStorageProps.btnSearch1.gameObject, -300, 0)
                         .Set($"You have to pay your debt ({Debt} Spirit Stones) next month!");
 
                     var txtWarning2 = uiTownStorageProps.textTip.Copy().Align(TextAnchor.MiddleCenter).Format(Color.red, 17)
-                        .Pos(uiTownStorageProps.textTitle2.gameObject, 0f, -1.2f)
+                        .Pos(uiTownStorageProps.btnSearch2.gameObject, -300, 0)
                         .Set($"You have to pay your debt ({Debt} Spirit Stones) next month!");
 
                     foreach (var item in uiTownStorageProps.GetComponentsInChildren<ScrollRect>().SelectMany(x => x.GetComponentsInChildren<Image>()))

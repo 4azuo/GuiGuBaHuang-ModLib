@@ -75,5 +75,10 @@
 		"id": "420041133",
 		"key": "team420041133",
 		"ch|en|tc|kr": "Team up"
+	},
+	{
+		"id": "420041134",
+		"key": "team420041134",
+		"ch|en|tc|kr": "Are you sure about dismissing your team?"
 	}
 ]

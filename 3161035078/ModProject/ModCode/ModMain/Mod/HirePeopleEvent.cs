@@ -7,6 +7,7 @@ using System.Linq;
 using ModLib.Object;
 using ModLib.Enum;
 using System;
+using System.Numerics;
 
 namespace MOD_nE7UL2.Mod
 {
@@ -35,7 +36,7 @@ namespace MOD_nE7UL2.Mod
             {
                 var uiCover = new UICover<UITownBounty>(e.ui);
                 {
-                    uiCover.AddButton(0, 0, OpenUIHirePeople, GameTool.LS("team420041131")).Size(160, 40).Pos(uiCover.UI.btnTaskPut.transform, 4f, 0f);
+                    uiCover.AddButton(0, 0, OpenUIHirePeople, GameTool.LS("team420041131")).Size(160, 40).Pos(uiCover.UI.btnTaskPut.transform, 400, 0);
                 }
                 uiCover.UpdateUI();
             }
@@ -50,18 +51,18 @@ namespace MOD_nE7UL2.Mod
                     if (IsHired(uiCover.UI.unit))
                     {
                         if (IsTeam(g.world.playerUnit, uiCover.UI.unit) && uiCover.UI.unit.data.unitData.relationData.GetIntim(g.world.playerUnit) < FRIEND_INTIM)
-                            uiCover.AddText(0, 0, string.Format(GameTool.LS("other500020043"), GetRequiredSpiritStones(g.world.playerUnit, uiCover.UI.unit) / MONTHLY_PAYMENT_RATIO)).Align().Format(Color.white).Pos(uiCover.UI.uiProperty.textInTrait1.transform, 0f, 0.5f).SetParentTransform(uiCover.UI.uiProperty.textInTrait1.transform);
-                        uiCover.AddText(0, 0, $"Team: {GetTeamInfoStr(uiCover.UI.unit)}").Align().Format(Color.white).Pos(uiCover.UI.uiProperty.textInTrait1.transform, 0f, 0.25f).SetParentTransform(uiCover.UI.uiProperty.textInTrait1.transform);
-                        if (isShowManageTeamUI)
+                            uiCover.AddText(300f, 100f, string.Format(GameTool.LS("other500020043"), GetRequiredSpiritStones(g.world.playerUnit, uiCover.UI.unit) / MONTHLY_PAYMENT_RATIO)).Align().Format(Color.white);
+                        uiCover.AddText(300f, 80f, $"Team: {GetTeamInfoStr(uiCover.UI.unit)}").Align().Format(Color.white);
+                        if (isShowManageTeamUI || IsTeam(g.world.playerUnit, uiCover.UI.unit))
                         {
-                            uiCover.AddButton(0, 0, () =>
+                            uiCover.AddButton(200f, 90f, () =>
                             {
                                 g.ui.MsgBox(GameTool.LS("team420041121"), GameTool.LS("team420041130"), MsgBoxButtonEnum.YesNo, () =>
                                 {
                                     Dismiss(g.world.playerUnit, uiCover.UI.unit);
                                     g.ui.CloseUI(e.ui);
                                 });
-                            }, GameTool.LS("other500020012")).Format(Color.black).Size(100, 40).Pos(uiCover.UI.uiProperty.textInTrait1.transform, -1.1f, 0.4f).SetParentTransform(uiCover.UI.uiProperty.textInTrait1.transform);
+                            }, GameTool.LS("other500020012")).Format(Color.black).Size(100, 40);
                         }
                     }
                     //hirable unit
@@ -71,15 +72,17 @@ namespace MOD_nE7UL2.Mod
                         {
                             if (uiCover.UI.unit.data.unitData.relationData.GetIntim(g.world.playerUnit) < FRIEND_INTIM)
                             {
-                                uiCover.AddText(0, 0, $"{GetRequiredSpiritStones(g.world.playerUnit, uiCover.UI.unit):#,##0} Spirit Stones ({GetRequiredSpiritStones(g.world.playerUnit, uiCover.UI.unit) / MONTHLY_PAYMENT_RATIO:#,##0}/month)").Align().Format(Color.white).Pos(uiCover.UI.uiProperty.textInTrait1.transform, 0f, 0.5f).SetParentTransform(uiCover.UI.uiProperty.textInTrait1.transform);
-                                uiCover.AddText(0, 0, $"{GetRequiredReputations(g.world.playerUnit, uiCover.UI.unit):#,##0} Reputations").Align().Format(Color.white).Pos(uiCover.UI.uiProperty.textInTrait1.transform, 0f, 0.25f).SetParentTransform(uiCover.UI.uiProperty.textInTrait1.transform);
+                                uiCover.AddText(300f, 100f, $"{GetRequiredSpiritStones(g.world.playerUnit, uiCover.UI.unit):#,##0} Spirit Stones ({GetRequiredSpiritStones(g.world.playerUnit, uiCover.UI.unit) / MONTHLY_PAYMENT_RATIO:#,##0}/month)").Align().Format(Color.white);
+                                uiCover.AddText(300f, 80f, $"{GetRequiredReputations(g.world.playerUnit, uiCover.UI.unit):#,##0} Reputations").Align().Format(Color.white);
                             }
                             else
                             {
-                                uiCover.AddText(0, 0, GameTool.LS("team420041132")).Align().Format(Color.white).Pos(uiCover.UI.uiProperty.textInTrait1.transform, 0f, 0.5f).SetParentTransform(uiCover.UI.uiProperty.textInTrait1.transform);
-                                uiCover.AddText(0, 0, $"{GetRequiredReputations(g.world.playerUnit, uiCover.UI.unit):#,##0} Reputations").Align().Format(Color.white).Pos(uiCover.UI.uiProperty.textInTrait1.transform, 0f, 0.25f).SetParentTransform(uiCover.UI.uiProperty.textInTrait1.transform);
+                                uiCover.AddText(300f, 100f, GameTool.LS("team420041132")).Align().Format(Color.white)
+                                    .SetParentTransform(uiCover.UI.uiProperty.textInTrait1.transform);
+                                uiCover.AddText(300f, 80f, $"{GetRequiredReputations(g.world.playerUnit, uiCover.UI.unit):#,##0} Reputations").Align().Format(Color.white)
+                                    .SetParentTransform(uiCover.UI.uiProperty.textInTrait1.transform);
                             }
-                            uiCover.AddButton(0, 0, () =>
+                            uiCover.AddButton(200f, 90f, () =>
                             {
                                 var player = g.world.playerUnit;
                                 var isFriend = uiCover.UI.unit.data.unitData.relationData.GetIntim(player) >= FRIEND_INTIM;
@@ -109,10 +112,9 @@ namespace MOD_nE7UL2.Mod
                                     Hire(g.world.playerUnit, uiCover.UI.unit);
                                     if (!isFriend)
                                         player.AddUnitMoney(-requiredSpiritStones);
+                                    g.ui.CloseUI(e.ui);
                                 });
-                            }, GameTool.LS("team420041133"))
-                                .Format(Color.black).Size(100, 40).Pos(uiCover.UI.uiProperty.textInTrait1.transform, -1.1f, 0.4f)
-                                .SetParentTransform(uiCover.UI.uiProperty.textInTrait1.transform);
+                            }, GameTool.LS("team420041133")).Format(Color.black).Size(100, 40);
                         }
                     }
                     uiCover.UpdateUI();
@@ -125,22 +127,19 @@ namespace MOD_nE7UL2.Mod
                 {
                     if (IsHired(uiCover.UI.unit))
                     {
-                        uiCover.AddButton(0, 0, () =>
+                        if (IsTeamMaster(g.world.playerUnit))
                         {
-                            DismissTeam(g.world.playerUnit);
-                            g.ui.CloseUI(e.ui);
-                        }, GameTool.LS("team420041126")).Size(160, 40).Pos(uiCover.UI.uiProperty.textInTrait_En.transform, -3.0f, 0.5f).SetWork(new UIItemWork
-                        {
-                            UpdateAct = (x) => x.Component.gameObject.SetActive(TeamData.ContainsKey(g.world.playerUnit.GetUnitId())),
-                        }).SetParentTransform(uiCover.UI.uiProperty.textInTrait_En.transform);
-                        uiCover.AddButton(0, 0, OpenUIManageTeam, GameTool.LS("team420041127")).Size(160, 40).Pos(uiCover.UI.uiProperty.textInTrait_En.transform, -1.5f, 0.5f).SetWork(new UIItemWork
-                        {
-                            UpdateAct = (x) => x.Component.gameObject.SetActive(TeamData.ContainsKey(g.world.playerUnit.GetUnitId())),
-                        }).SetParentTransform(uiCover.UI.uiProperty.textInTrait_En.transform);
-                        uiCover.AddText(0, 0, "Team: {0}").Align().Format().Pos(uiCover.UI.uiProperty.textInTrait_En.transform, 0f, 0.5f).SetWork(new UIItemWork
-                        {
-                            Formatter = (x) => new object[] { GetTeamInfoStr(uiCover.UI.unit) },
-                        }).SetParentTransform(uiCover.UI.uiProperty.textInTrait_En.transform);
+                            uiCover.AddButton(-50f, -50f, () =>
+                            {
+                                g.ui.MsgBox(GameTool.LS("team420041121"), GameTool.LS("team420041134"), MsgBoxButtonEnum.YesNo, () =>
+                                {
+                                    DismissTeam(g.world.playerUnit);
+                                    g.ui.CloseUI(e.ui);
+                                });
+                            }, GameTool.LS("team420041126")).Size(160, 40);
+                        }
+                        uiCover.AddButton(120f, -50f, OpenUIManageTeam, GameTool.LS("team420041127")).Size(160, 40);
+                        uiCover.AddText(270f, -50f, $"Team: {GetTeamInfoStr(uiCover.UI.unit)}").Align().Format();
                     }
                 }
                 uiCover.IsAutoUpdate = true;

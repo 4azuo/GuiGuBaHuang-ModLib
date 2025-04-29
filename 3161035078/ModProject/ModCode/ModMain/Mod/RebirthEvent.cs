@@ -27,13 +27,6 @@ namespace MOD_nE7UL2.Mod
             if (e.uiType.uiName == UIType.TownPub.uiName && !SMLocalConfigsEvent.Instance.Configs.NoRebirth)
             {
                 var player = g.world.playerUnit;
-
-                if (!string.IsNullOrEmpty(player.data.unitData.schoolID))
-                {
-                    g.ui.MsgBox(GameTool.LS("rebirth420103102"), GameTool.LS("rebirth420103100"));
-                    return;
-                }
-
                 var playerGradeLvl = player.GetGradeLvl();
                 var curTown = g.world.build.GetBuild(new UnityEngine.Vector2Int(player.data.unitData.pointX, player.data.unitData.pointY));
                 var townLevel = curTown.gridData.areaBaseID;
@@ -46,6 +39,12 @@ namespace MOD_nE7UL2.Mod
                     {
                         ui.AddButton(0, 0, () =>
                         {
+                            if (!string.IsNullOrEmpty(player.data.unitData.schoolID))
+                            {
+                                g.ui.MsgBox(GameTool.LS("rebirth420103102"), GameTool.LS("rebirth420103100"));
+                                return;
+                            }
+
                             g.ui.MsgBox(GameTool.LS("rebirth420103102"), GameTool.LS("rebirth420103101"), MsgBoxButtonEnum.YesNo, () =>
                             {
                                 //var
@@ -67,10 +66,9 @@ namespace MOD_nE7UL2.Mod
                                 AddLuck();
                                 DramaTool.OpenDrama(REBIRTH_DRAMA);
                             });
-                        }, $"Rebirth {RebirthCount + 1}", ui.UI.btnPub).Pos(ui.UI.btnPub.gameObject, 0f, 1f);
-                        ui.AddToolTipButton(GameTool.LS("rebirth420103103")).Pos(ui.UI.btnPub.gameObject, -1f, 1f);
+                        }, $"Rebirth {RebirthCount + 1}", ui.UI.btnPub).Pos(ui.UI.btnPub.gameObject, 0, 100);
+                        ui.AddToolTipButton(GameTool.LS("rebirth420103103")).Pos(ui.UI.btnPub.gameObject, -100, 100);
                     }
-                    ui.UpdateUI();
                 }
             }
         }
