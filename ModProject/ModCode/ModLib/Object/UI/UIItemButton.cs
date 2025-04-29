@@ -25,9 +25,21 @@ namespace ModLib.Object
             ButtonLabel = Item.GetComponentInChildren<Text>();
             Set(format);
 
-            if (act != null)
-                Item.onClick.AddListener(act);
-            Item.onClick.AddListener((UnityAction)(() => UI.UpdateUI()));
+            Item.onClick.AddListener((UnityAction)(() =>
+            {
+                try
+                {
+                    act?.Invoke();
+                }
+                catch (Exception e)
+                {
+                    DebugHelper.WriteLine(e);
+                }
+                finally
+                {
+                    UI.UpdateUI();
+                }
+            }));
         }
 
         public override object Get()
