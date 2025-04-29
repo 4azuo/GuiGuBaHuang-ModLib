@@ -1,5 +1,6 @@
 ﻿using System.Threading.Tasks;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
 public static class CompHelper
@@ -17,8 +18,19 @@ public static class CompHelper
         // Set pivot
         rect.pivot = new Vector2(0.5f, 0.5f);
 
+        //reset trigger
+        var trigger = newObj.gameObject.GetComponent<EventTrigger>();
+        if (trigger != null)
+        {
+            Object.Destroy(trigger);
+        }
+
         //reset
-        if (newObj is Button)
+        if (newObj is Text)
+        {
+            //newObj.
+        }
+        else if (newObj is Button)
         {
             var o = newObj as Button;
             o.onClick = new Button.ButtonClickedEvent();
