@@ -62,7 +62,29 @@ public static class UIHelper
     public static void MsgBox(this UIMgr g, string title, string content, MsgBoxButtonEnum type = MsgBoxButtonEnum.Ok, Action onYesCall = null, Action onNoCall = null)
     {
         var uiConfirm = g.OpenUISafe<UICheckPopup>(UIType.CheckPopup);
-        uiConfirm.InitData(title, content, type.Parse<int>(), (Il2CppSystem.Action)(() => onYesCall?.Invoke()), (Il2CppSystem.Action)(() => onNoCall?.Invoke()));
+        uiConfirm.InitData(title, content, type.Parse<int>(), 
+            (Il2CppSystem.Action)(() =>
+            {
+                try
+                {
+                    onYesCall?.Invoke();
+                }
+                catch (Exception ex)
+                {
+                    DebugHelper.WriteLine(ex);
+                }
+            }), 
+            (Il2CppSystem.Action)(() =>
+            {
+                try
+                {
+                    onNoCall?.Invoke();
+                }
+                catch (Exception ex)
+                {
+                    DebugHelper.WriteLine(ex);
+                }
+            }));
     }
 
     public static void UpdateAllUI(Func<UICustomBase, bool> predicate = null)
