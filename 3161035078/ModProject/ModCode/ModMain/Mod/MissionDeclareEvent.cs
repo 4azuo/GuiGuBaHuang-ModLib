@@ -63,11 +63,11 @@ namespace MOD_nE7UL2.Mod
             {
                 var ui = new UICover<UITownBounty>(e.ui);
                 {
-                    ui.AddButton(0, 0, SelectCommissionItems, GameTool.LS("other500020003")).Size(160, 40).Pos(ui.UI.btnTaskPut.transform, 2f, 0f).SetWork(new UIItemWork
+                    ui.AddButton(0, 0, SelectCommissionItems, GameTool.LS("other500020003")).Size(160, 40).Pos(ui.UI.btnTaskPut.transform, 200, 0).SetWork(new UIItemWork
                     {
                         UpdateAct = (x) => x.Active(g.world.run.roundMonth != LastMonthCommission)
                     });
-                    ui.AddText(0, 0, string.Empty).Align(TextAnchor.UpperLeft).Format().Pos(ui.UI.ptextInfo.transform, -0.5f, 0f).SetWork(new UIItemWork
+                    ui.AddText(0, 0, string.Empty).Align(TextAnchor.UpperLeft).Format().Pos(ui.UI.ptextInfo.transform, 225, 150).SetWork(new UIItemWork
                     {
                         UpdateAct = (x) =>
                         {
@@ -103,10 +103,10 @@ Your commissions:
 
                 var uiCover = new UICover<UIPropSelect>(uiSelector);
                 {
-                    var txt1 = uiCover.AddText(0, 0, string.Empty, uiSelector.textInfo).Align(TextAnchor.MiddleLeft).Format().Pos(uiSelector.btnOK.transform, 0f, -0.3f);
-                    var txt2 = uiCover.AddText(0, 0, string.Empty, uiSelector.textInfo).Align(TextAnchor.MiddleRight).Format().Pos(uiSelector.btnOK.transform, 0f, 0f);
+                    var txt1 = uiCover.AddText(0, 0, string.Empty, uiSelector.textInfo).Format().Pos(uiSelector.btnOK.transform, 0, 100);
+                    var txt2 = uiCover.AddText(0, 0, string.Empty, uiSelector.textInfo).Format().Pos(uiSelector.btnOK.transform, 0, 50);
                     var txt3 = uiCover.AddText(0, 0, $"{g.world.playerUnit.GetUnitMoney()} Spirit Stones, {g.world.playerUnit.GetUnitMayorDegree()} Mayor Degrees", uiSelector.textInfo)
-                        .Align(TextAnchor.MiddleLeft).Format().Pos(uiSelector.textTitle1.transform, 0f, 0.3f);
+                        .Align(TextAnchor.MiddleCenter).Format().Pos(uiSelector.textTitle1.transform, 0, 0);
                     uiCover.UIWork = new UICustomWork
                     {
                         UpdateAct = (ui) =>
@@ -147,7 +147,6 @@ Your commissions:
 
                 //register OK button
                 uiSelector.onOKCall = (Action)Commission;
-                uiSelector.btnOK.transform.position = new Vector3(uiSelector.btnOK.transform.position.x - 1.5f, uiSelector.btnOK.transform.position.y);
             }
         }
 

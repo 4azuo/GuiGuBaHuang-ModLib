@@ -72,10 +72,10 @@ namespace MOD_nE7UL2.Mod
             uiSelector.tag = ModConst.CONTRIBUTION_EXCHANGE_EVENT;
             uiSelector.onOKCall = (Il2CppSystem.Action)Exchange;
 
-            var txtExchangeRatio = uiSelector.textInfo.Copy().Format().Align(TextAnchor.MiddleCenter).Pos(uiSelector.textTitle1.gameObject, 0f, 0.3f);
+            var txtExchangeRatio = uiSelector.textInfo.Copy().Format().Align(TextAnchor.MiddleCenter).Pos(uiSelector.textTitle1.gameObject, 0, 0);
             txtExchangeRatio.text = string.Format(GameTool.LS("other500020057"), CurMonthRatio);
 
-            txtExchangeContribution = uiSelector.textInfo.Copy().Format().Align(TextAnchor.MiddleCenter).Pos(uiSelector.btnOK.gameObject, 0f, -0.3f);
+            txtExchangeContribution = uiSelector.textInfo.Copy().Format().Align(TextAnchor.MiddleCenter).Pos(uiSelector.btnOK.gameObject, 0, 50);
         }
 
         private void Exchange()
