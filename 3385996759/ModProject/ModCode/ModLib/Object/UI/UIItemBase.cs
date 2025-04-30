@@ -106,10 +106,15 @@ namespace ModLib.Object
             return Pos(this.UI.Columns[col], this.UI.Rows[row]);
         }
 
-        public virtual UIItemBase Pos(GameObject org, float x, float y)
+        public virtual UIItemBase Pos(Vector2 org, float x, float y)
         {
             Component.Pos(org, x, y);
             return this;
+        }
+
+        public virtual UIItemBase Pos(GameObject org, float x, float y)
+        {
+            return Pos(Component.Pos(), x, y);
         }
 
         public virtual UIItemBase Pos(Component org, float x, float y)

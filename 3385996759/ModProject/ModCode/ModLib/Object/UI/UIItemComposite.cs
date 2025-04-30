@@ -179,7 +179,7 @@ namespace ModLib.Object
             return this;
         }
 
-        public override UIItemBase Pos(GameObject org, float x, float y)
+        public virtual UIItemBase Pos(Vector2 org, float x, float y)
         {
             var oldMainPos = MainComponent.Pos();
             base.Pos(org, x, y); //move main
@@ -189,6 +189,11 @@ namespace ModLib.Object
             Postfix.Pos(MainComponent, moveDis.x, moveDis.y);
 
             return this;
+        }
+
+        public override UIItemBase Pos(GameObject org, float x, float y)
+        {
+            return Pos(org.Pos(), x, y);
         }
 
         public override UIItemBase Pos(Component org, float x, float y)

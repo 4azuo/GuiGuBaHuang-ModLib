@@ -188,12 +188,16 @@ public static class CompHelper
         return obj.gameObject.Pos();
     }
 
-    public static T Pos<T>(this T obj, GameObject origin, float deltaX = 0f, float deltaY = 0f) where T : Component
+    public static T Pos<T>(this T obj, Vector2 orgPos, float deltaX = 0f, float deltaY = 0f) where T : Component
     {
-        var orgPos = origin.Pos();
         var rect = obj.gameObject.GetComponent<RectTransform>();
         rect.anchoredPosition = new Vector2(orgPos.x + deltaX, orgPos.y + deltaY);
         return obj;
+    }
+
+    public static T Pos<T>(this T obj, GameObject origin, float deltaX = 0f, float deltaY = 0f) where T : Component
+    {
+        return obj.Pos(origin.Pos(), deltaX, deltaY);
     }
 
     public static T Pos<T>(this T obj, Component origin, float deltaX = 0f, float deltaY = 0f) where T : Component
