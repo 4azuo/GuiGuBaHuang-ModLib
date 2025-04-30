@@ -2,81 +2,97 @@
 	{
 		"id": "420010100",
 		"key": "unitType420010100",
-		"ch": "增加力量","en": "Power Up"
+		"ch": "增加力量",
+		"en|tc|kr": "Power Up"
 	},
 	{
 		"id": "420010200",
 		"key": "unitType420010200",
-		"ch": "增加速度","en": "Speed Up"
+		"ch": "增加速度",
+		"en|tc|kr": "Speed Up"
 	},
 	{
 		"id": "420010300",
 		"key": "unitType420010300",
-		"ch": "道教","en": "Taoist"
+		"ch": "道教",
+		"en|tc|kr": "Taoist"
 	},
 	{
 		"id": "420010400",
 		"key": "unitType420010400",
-		"ch": "战师","en": "Pro Atk"
+		"ch": "战师",
+		"en|tc|kr": "Pro Atk"
 	},
 	{
 		"id": "420010500",
 		"key": "unitType420010500",
-		"ch": "金刚不坏","en": "Pro Def"
+		"ch": "金刚不坏",
+		"en|tc|kr": "Pro Def"
 	},
 	{
 		"id": "420010600",
 		"key": "unitType420010600",
-		"ch": "正","en": "Angel"
+		"ch": "正",
+		"en|tc|kr": "Angel"
 	},
 	{
 		"id": "420010700",
 		"key": "unitType420010700",
-		"ch": "魔","en": "Evil"
+		"ch": "魔",
+		"en|tc|kr": "Evil"
 	},
 	{
 		"id": "420010800",
 		"key": "unitType420010800",
-		"ch": "商人","en": "Merchant"
+		"ch": "商人",
+		"en|tc|kr": "Merchant"
 	},
 	{
 		"id": "421010100",
 		"key": "unitType420010100desc",
-		"ch": "攻击 +10%, 体力 +20%","en": "Atk +10%, Hp +20%"
+		"ch": "攻击 +10%, 体力 +20%",
+		"en|tc|kr": "Atk +10%, Hp +20%"
 	},
 	{
 		"id": "421010200",
 		"key": "unitType420010200desc",
-		"ch": "移速 +30%","en": "Agi +30%"
+		"ch": "移速 +30%",
+		"en|tc|kr": "Agi +30%"
 	},
 	{
 		"id": "421010300",
 		"key": "unitType420010300desc",
-		"ch": "攻击 +8%, 体力 +15%, 灵力 +10%","en": "Atk +8%, Hp +15%, Mp +10%"
+		"ch": "攻击 +8%, 体力 +15%, 灵力 +10%",
+		"en|tc|kr": "Atk +8%, Hp +15%, Mp +10%"
 	},
 	{
 		"id": "421010400",
 		"key": "unitType420010400desc",
-		"ch": "攻击 +30%","en": "Atk +30%"
+		"ch": "攻击 +30%",
+		"en|tc|kr": "Atk +30%"
 	},
 	{
 		"id": "421010500",
 		"key": "unitType420010500desc",
-		"ch": "体力 +25%, 防御 +5","en": "Hp +25%, Def +5%"
+		"ch": "体力 +25%, 防御 +5",
+		"en|tc|kr": "Hp +25%, Def +5%"
 	},
 	{
 		"id": "421010600",
 		"key": "unitType420010600desc",
-		"ch": "攻击 +50%, 移速 +10%, 体力 +20%, 灵力 +10%, 正道 +100%, 魔道 -100%","en": "Atk +50%, Agi +10%, Hp +20%, Mp +10%, Righteous +100%, Demonic -100%"
+		"ch": "攻击 +50%, 移速 +10%, 体力 +20%, 灵力 +10%, 正道 +100%, 魔道 -100%",
+		"en|tc|kr": "Atk +50%, Agi +10%, Hp +20%, Mp +10%, Righteous +100%, Demonic -100%\n\nEvery time you kill an evil, then your stats increase 20% by the evil stats.\n(Hp/Mp/Sp/Atk/Def/Best basis)"
 	},
 	{
 		"id": "421010700",
 		"key": "unitType420010700desc",
-		"ch": "攻击 +30%, 防御 +10%, 体力 +100%, 正道 -100%, 魔道 -30%","en": "Atk +30%, Def +10%, Hp +100%, Righteous -100%, Demonic -30%"
+		"ch": "攻击 +30%, 防御 +10%, 体力 +100%, 正道 -100%, 魔道 -30%",
+		"en|tc|kr": "Atk +30%, Def +10%, Hp +100%, Righteous -100%, Demonic -30%\n\nEvery time you kill a human, then your stats increase 1% by the killed unit stats.\n(Hp/Mp/Sp/Atk/Def/All basises)"
 	},
 	{
 		"id": "421010800",
 		"key": "unitType420010800desc",
-		"ch": "攻击 -10%, 防御 -10%, 体力 -25%, 灵力 -50%,免费存储, -10% 市场购买成本, +10% 市场售价, +3% 每月收入","en": "Atk -10%, Def -10%, Hp -25%, Mp -50%, Free Storage, -10% market buy-cost, +10% market sell-value, +3% income monthly"
+		"ch": "攻击 -10%, 防御 -10%, 体力 -25%, 灵力 -50%,免费存储, -10% 市场购买成本, +10% 市场售价, +3% 每月收入",
+		"en|tc|kr": "Atk -10%, Def -10%, Hp -25%, Mp -50%, Free Storage, -10% market buy-cost, +10% market sell-value, +3% income monthly"
 	}
 ]
