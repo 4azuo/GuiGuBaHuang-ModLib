@@ -170,11 +170,16 @@ namespace ModLib.Object
             throw new System.NotImplementedException();
         }
 
-        public override UIItemBase Pos(GameObject org, float x, float y)
+        public override UIItemBase Pos(Vector2 org, float x, float y)
         {
             base.Pos(org, x, y);
             UpdatePos();
             return this;
+        }
+
+        public override UIItemBase Pos(GameObject org, float x, float y)
+        {
+            return Pos(org.Pos(), x, y);
         }
 
         public override UIItemBase Pos(Component org, float x, float y)
