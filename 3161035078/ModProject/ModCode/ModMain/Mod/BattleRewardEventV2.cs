@@ -7,6 +7,7 @@ using System;
 using System.Linq;
 using System.Collections.Generic;
 using UnityEngine;
+using MOD_nE7UL2.Enum;
 
 namespace MOD_nE7UL2.Mod
 {
@@ -14,6 +15,9 @@ namespace MOD_nE7UL2.Mod
     public class BattleRewardEventV2 : ModEvent
     {
         public static BattleRewardEventV2 Instance { get; set; }
+
+        public const float ANGEL_UP_RATE = 0.20f;
+        public const float EVIL_UP_RATE = 0.01f;
 
         //public const int QI_ITEM = 484410100;
         public const float TEAMMATE_QUIT_RATE = 10f;
@@ -656,6 +660,53 @@ namespace MOD_nE7UL2.Mod
                     //DebugHelper.WriteLine("7");
                     if (isKillerWUnit)
                         dieUnitWUnit.data.unitData.relationData.AddHate(killerWUnit.GetUnitId(), 200f);
+
+                    //angel kill evil
+                    if (isKillerWUnit &&
+                        killerWUnit.GetLuck(UnitTypeLuckEnum.Angel.Value.Parse<int>()) != null &&
+                        dieUnitWUnit.GetLuck(UnitTypeLuckEnum.Evil.Value.Parse<int>()) != null)
+                    {
+                        foreach (var prop in new UnitPropertyEnum[] {
+                            UnitPropertyEnum.HpMax,
+                            UnitPropertyEnum.MpMax,
+                            UnitPropertyEnum.SpMax,
+                            UnitPropertyEnum.Attack,
+                            UnitPropertyEnum.Defense,
+                            killerWUnit.GetBestBasis().GetPropertyEnum()
+                        })
+                        {
+                            killerWUnit.AddProperty<int>(prop, (dieUnitWUnit.GetProperty<int>(prop) * ANGEL_UP_RATE).Parse<int>());
+                        }
+                    }
+
+                    //evil kill people
+                    if (isKillerWUnit &&
+                        killerWUnit.GetLuck(UnitTypeLuckEnum.Evil.Value.Parse<int>()) != null)
+                    {
+                        foreach (var prop in new UnitPropertyEnum[] {
+                            UnitPropertyEnum.HpMax,
+                            UnitPropertyEnum.MpMax,
+                            UnitPropertyEnum.SpMax,
+                            UnitPropertyEnum.Attack,
+                            UnitPropertyEnum.Defense,
+
+                            UnitPropertyEnum.BasisBlade,
+                            UnitPropertyEnum.BasisEarth,
+                            UnitPropertyEnum.BasisFinger,
+                            UnitPropertyEnum.BasisFire,
+                            UnitPropertyEnum.BasisFist,
+                            UnitPropertyEnum.BasisFroze,
+                            UnitPropertyEnum.BasisPalm,
+                            UnitPropertyEnum.BasisSpear,
+                            UnitPropertyEnum.BasisSword,
+                            UnitPropertyEnum.BasisThunder,
+                            UnitPropertyEnum.BasisWind,
+                            UnitPropertyEnum.BasisWood
+                        })
+                        {
+                            killerWUnit.AddProperty<int>(prop, (dieUnitWUnit.GetProperty<int>(prop) * EVIL_UP_RATE).Parse<int>());
+                        }
+                    }
                 }
             }
         }
