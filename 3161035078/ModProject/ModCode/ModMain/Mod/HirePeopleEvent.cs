@@ -127,19 +127,21 @@ namespace MOD_nE7UL2.Mod
                 {
                     if (IsHired(uiCover.UI.unit))
                     {
+                        var x = 300;
+                        var pos = uiCover.UI.uiSkill.goActionMartialRoot.Pos();
                         if (IsTeamMaster(g.world.playerUnit))
                         {
-                            uiCover.AddButton(-50f, -50f, () =>
+                            uiCover.AddButton(0, 0, () =>
                             {
                                 g.ui.MsgBox(GameTool.LS("team420041121"), GameTool.LS("team420041134"), MsgBoxButtonEnum.YesNo, () =>
                                 {
                                     DismissTeam(g.world.playerUnit);
                                     g.ui.CloseUI(e.ui);
                                 });
-                            }, GameTool.LS("team420041126")).Size(160, 40);
+                            }, GameTool.LS("team420041126")).Size(160, 40).Pos(pos, x + 0, 329);
                         }
-                        uiCover.AddButton(120f, -50f, OpenUIManageTeam, GameTool.LS("team420041127")).Size(160, 40);
-                        uiCover.AddText(270f, -50f, $"Team: {GetTeamInfoStr(uiCover.UI.unit)}").Align().Format();
+                        uiCover.AddButton(0, 0, OpenUIManageTeam, GameTool.LS("team420041127")).Size(160, 40).Pos(pos, x + 170, 329);
+                        uiCover.AddText(0, 0, $"Team: {GetTeamInfoStr(uiCover.UI.unit)}").Align().Format().Pos(pos, x + 320, 329);
                     }
                 }
                 uiCover.IsAutoUpdate = true;
