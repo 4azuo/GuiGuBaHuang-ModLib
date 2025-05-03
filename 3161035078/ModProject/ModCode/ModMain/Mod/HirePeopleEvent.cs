@@ -72,8 +72,10 @@ namespace MOD_nE7UL2.Mod
                         {
                             if (uiCover.UI.unit.data.unitData.relationData.GetIntim(g.world.playerUnit) < FRIEND_INTIM)
                             {
-                                uiCover.AddText(300f, 100f, $"{GetRequiredSpiritStones(g.world.playerUnit, uiCover.UI.unit):#,##0} Spirit Stones ({GetRequiredSpiritStones(g.world.playerUnit, uiCover.UI.unit) / MONTHLY_PAYMENT_RATIO:#,##0}/month)").Align().Format(Color.white);
-                                uiCover.AddText(300f, 80f, $"{GetRequiredReputations(g.world.playerUnit, uiCover.UI.unit):#,##0} Reputations").Align().Format(Color.white);
+                                uiCover.AddText(300f, 100f, $"{GetRequiredSpiritStones(g.world.playerUnit, uiCover.UI.unit):#,##0} Spirit Stones ({GetRequiredSpiritStones(g.world.playerUnit, uiCover.UI.unit) / MONTHLY_PAYMENT_RATIO:#,##0}/month)").Align().Format(Color.white)
+                                    .SetParentTransform(uiCover.UI.uiProperty.textInTrait1.transform);
+                                uiCover.AddText(300f, 80f, $"{GetRequiredReputations(g.world.playerUnit, uiCover.UI.unit):#,##0} Reputations").Align().Format(Color.white)
+                                    .SetParentTransform(uiCover.UI.uiProperty.textInTrait1.transform);
                             }
                             else
                             {
@@ -114,7 +116,8 @@ namespace MOD_nE7UL2.Mod
                                         player.AddUnitMoney(-requiredSpiritStones);
                                     g.ui.CloseUI(e.ui);
                                 });
-                            }, GameTool.LS("team420041133")).Format(Color.black).Size(100, 40);
+                            }, GameTool.LS("team420041133")).Format(Color.black).Size(100, 40)
+                                    .SetParentTransform(uiCover.UI.uiProperty.textInTrait1.transform);
                         }
                     }
                     uiCover.UpdateUI();
