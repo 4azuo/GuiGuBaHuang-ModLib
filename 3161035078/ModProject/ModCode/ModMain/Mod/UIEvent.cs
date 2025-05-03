@@ -183,7 +183,7 @@ namespace MOD_nE7UL2.Mod
                 ui.IsAutoUpdate = true;
             }
             else
-            if (e.uiType.uiName == UIType.ArtifactInfo.uiName && g.ui.HasUI(UIType.PlayerInfo))
+            if (e.uiType.uiName == UIType.ArtifactInfo.uiName/* && g.ui.HasUI(UIType.PlayerInfo)*/)
             {
                 var uiArtifactInfo = g.ui.GetUI<UIArtifactInfo>(UIType.ArtifactInfo);
 
@@ -204,10 +204,10 @@ namespace MOD_nE7UL2.Mod
                 uiArtifactInfo_textBasicAdj2 = uiArtifactInfo.textGrade_En.Copy().Align().Format(Color.white, 14);
                 uiArtifactInfo_textBasicAdj3 = uiArtifactInfo.textGrade_En.Copy().Align().Format(Color.white, 14);
 
-                uiArtifactInfo_textBasicTitle.Pos(uiArtifactInfo.textGrade_En.gameObject, 0, -30);
-                uiArtifactInfo_textBasicAdj1.Pos(uiArtifactInfo.textGrade_En.gameObject, 10, -50);
-                uiArtifactInfo_textBasicAdj2.Pos(uiArtifactInfo.textGrade_En.gameObject, 10, -70);
-                uiArtifactInfo_textBasicAdj3.Pos(uiArtifactInfo.textGrade_En.gameObject, 10, -90);
+                uiArtifactInfo_textBasicTitle.Pos(uiArtifactInfo.textGrade_En.gameObject, 0, -20);
+                uiArtifactInfo_textBasicAdj1.Pos(uiArtifactInfo.textGrade_En.gameObject, 5, -35);
+                uiArtifactInfo_textBasicAdj2.Pos(uiArtifactInfo.textGrade_En.gameObject, 5, -50);
+                uiArtifactInfo_textBasicAdj3.Pos(uiArtifactInfo.textGrade_En.gameObject, 5, -65);
 
                 uiArtifactInfo_textBasicTitle.text = $"Basic:";
                 uiArtifactInfo_textBasicAdj1.text = $"+Atk: {UnitModifyHelper.GetArtifactBasicAdjAtk(uiArtifactInfo.unit.GetDynProperty(UnitDynPropertyEnum.Attack).baseValue, uiArtifactInfo.shapeProp, artifact)}";
@@ -219,9 +219,9 @@ namespace MOD_nE7UL2.Mod
                 uiArtifactInfo_textExpertAdj1 = uiArtifactInfo.textGrade_En.Copy().Align().Format(Color.white, 14);
                 uiArtifactInfo_textExpertAdj2 = uiArtifactInfo.textGrade_En.Copy().Align().Format(Color.white, 14);
 
-                uiArtifactInfo_textExpertLvl.Pos(uiArtifactInfo.textGrade_En.gameObject, 0, -110);
-                uiArtifactInfo_textExpertAdj1.Pos(uiArtifactInfo.textGrade_En.gameObject, 10, -130);
-                uiArtifactInfo_textExpertAdj2.Pos(uiArtifactInfo.textGrade_En.gameObject, 10, -150);
+                uiArtifactInfo_textExpertLvl.Pos(uiArtifactInfo.textGrade_En.gameObject, 0, -80);
+                uiArtifactInfo_textExpertAdj1.Pos(uiArtifactInfo.textGrade_En.gameObject, 5, -95);
+                uiArtifactInfo_textExpertAdj2.Pos(uiArtifactInfo.textGrade_En.gameObject, 5, -110);
 
                 uiArtifactInfo_textExpertLvl.text = $"Expert Lvl: {expertLvl} ({expertExp}/{expertNeedExp})";
                 uiArtifactInfo_textExpertAdj1.text = $"+Atk: {UnitModifyHelper.GetArtifactExpertAtk(artifactConf.atk, expertLvl, propsGrade, propsLevel)}";
@@ -240,12 +240,12 @@ namespace MOD_nE7UL2.Mod
                 uiArtifactInfo_textRefineAdj4 = uiArtifactInfo.textGrade_En.Copy().Align(TextAnchor.MiddleRight).Format(customAdj2?.GetColor(refineLvl) ?? AdjLevelEnum.None.Color, 14);
                 uiArtifactInfo_textRefineAdj5 = uiArtifactInfo.textGrade_En.Copy().Align(TextAnchor.MiddleRight).Format(customAdj3?.GetColor(refineLvl) ?? AdjLevelEnum.None.Color, 14);
 
-                uiArtifactInfo_textRefineTitle.Pos(uiArtifactInfo.textGrade_En.gameObject, 0, -170);
-                uiArtifactInfo_textRefineAdj1.Pos(uiArtifactInfo.textGrade_En.gameObject, 10, -190);
-                uiArtifactInfo_textRefineAdj2.Pos(uiArtifactInfo.textGrade_En.gameObject, 10, -210);
-                uiArtifactInfo_textRefineAdj3.Pos(uiArtifactInfo.textGrade_En.gameObject, 10, -230);
-                uiArtifactInfo_textRefineAdj4.Pos(uiArtifactInfo.textGrade_En.gameObject, 10, -250);
-                uiArtifactInfo_textRefineAdj5.Pos(uiArtifactInfo.textGrade_En.gameObject, 10, -270);
+                uiArtifactInfo_textRefineTitle.Pos(uiArtifactInfo.textGrade_En.gameObject, 0, -125);
+                uiArtifactInfo_textRefineAdj1.Pos(uiArtifactInfo.textGrade_En.gameObject, 5, -140);
+                uiArtifactInfo_textRefineAdj2.Pos(uiArtifactInfo.textGrade_En.gameObject, 5, -155);
+                uiArtifactInfo_textRefineAdj3.Pos(uiArtifactInfo.textGrade_En.gameObject, 5, -170);
+                uiArtifactInfo_textRefineAdj4.Pos(uiArtifactInfo.textGrade_En.gameObject, 5, -185);
+                uiArtifactInfo_textRefineAdj5.Pos(uiArtifactInfo.textGrade_En.gameObject, 5, -200);
 
                 uiArtifactInfo_textRefineTitle.text = $"Refine ({refineLvl}):";
                 uiArtifactInfo_textRefineAdj1.text = $"+Atk: {UnitModifyHelper.GetRefineArtifactAdjAtk(uiArtifactInfo.shapeProp, refineLvl)}";
@@ -323,7 +323,7 @@ namespace MOD_nE7UL2.Mod
                 }
             }
             else
-            if (e.uiType.uiName == UIType.PropInfo.uiName && g.ui.HasUI(UIType.PlayerInfo))
+            if (e.uiType.uiName == UIType.PropInfo.uiName/* && g.ui.HasUI(UIType.PlayerInfo)*/)
             {
                 var uiPropInfo = g.ui.GetUI<UIPropInfo>(UIType.PropInfo);
                 if (uiPropInfo.propData.propsItem.IsRing() != null)
@@ -337,10 +337,10 @@ namespace MOD_nE7UL2.Mod
                     uiPropInfo_textRefineAdj2 = uiPropInfo.textGrade_En.Copy().Align().Format(customAdj1?.GetColor(refineLvl) ?? AdjLevelEnum.None.Color, 14);
                     uiPropInfo_textRefineAdj3 = uiPropInfo.textGrade_En.Copy().Align().Format(customAdj2?.GetColor(refineLvl) ?? AdjLevelEnum.None.Color, 14);
 
-                    uiPropInfo_textRefineTitle.Pos(uiPropInfo.textGrade_En.gameObject, 0, -30);
-                    uiPropInfo_textRefineAdj1.Pos(uiPropInfo.textGrade_En.gameObject, 10, -50);
-                    uiPropInfo_textRefineAdj2.Pos(uiPropInfo.textGrade_En.gameObject, 10, -70);
-                    uiPropInfo_textRefineAdj3.Pos(uiPropInfo.textGrade_En.gameObject, 10, -90);
+                    uiPropInfo_textRefineTitle.Pos(uiPropInfo.textGrade_En.gameObject, 0, -20);
+                    uiPropInfo_textRefineAdj1.Pos(uiPropInfo.textGrade_En.gameObject, 5, -35);
+                    uiPropInfo_textRefineAdj2.Pos(uiPropInfo.textGrade_En.gameObject, 5, -50);
+                    uiPropInfo_textRefineAdj3.Pos(uiPropInfo.textGrade_En.gameObject, 5, -65);
 
                     uiPropInfo_textRefineTitle.text = $"Refine ({refineLvl}):";
                     uiPropInfo_textRefineAdj1.text = $"+Hp: {UnitModifyHelper.GetRefineRingAdjHp(uiPropInfo.unit.GetDynProperty(UnitDynPropertyEnum.HpMax).baseValue, uiPropInfo.propData, refineLvl)}";
@@ -360,10 +360,10 @@ namespace MOD_nE7UL2.Mod
                     uiPropInfo_textRefineAdj4 = uiPropInfo.textName.Copy().Align().Format(customAdj2?.GetColor(refineLvl) ?? AdjLevelEnum.None.Color, 14);
 
                     uiPropInfo_textRefineTitle.Pos(uiPropInfo.textName.gameObject, 0, -0);
-                    uiPropInfo_textRefineAdj1.Pos(uiPropInfo.textName.gameObject, 10, -20);
-                    uiPropInfo_textRefineAdj2.Pos(uiPropInfo.textName.gameObject, 10, -40);
-                    uiPropInfo_textRefineAdj3.Pos(uiPropInfo.textName.gameObject, 10, -60);
-                    uiPropInfo_textRefineAdj4.Pos(uiPropInfo.textName.gameObject, 10, -80);
+                    uiPropInfo_textRefineAdj1.Pos(uiPropInfo.textName.gameObject, 5, -15);
+                    uiPropInfo_textRefineAdj2.Pos(uiPropInfo.textName.gameObject, 5, -30);
+                    uiPropInfo_textRefineAdj3.Pos(uiPropInfo.textName.gameObject, 5, -45);
+                    uiPropInfo_textRefineAdj4.Pos(uiPropInfo.textName.gameObject, 150, -60);
 
                     uiPropInfo_textRefineTitle.text = $"Refine ({refineLvl}):";
                     uiPropInfo_textRefineAdj1.text = $"+Hp: {UnitModifyHelper.GetRefineOutfitAdjHp(uiPropInfo.unit.GetDynProperty(UnitDynPropertyEnum.HpMax).baseValue, uiPropInfo.propData, refineLvl)}";
@@ -390,36 +390,36 @@ namespace MOD_nE7UL2.Mod
             {
                 if (uiPropInfo.propData.propsItem.IsRing() != null)
                 {
-                    uiPropInfo_textRefineTitle.Pos(uiPropInfo.textGrade_En.gameObject, 0, -30);
-                    uiPropInfo_textRefineAdj1.Pos(uiPropInfo.textGrade_En.gameObject, 10, -50);
-                    uiPropInfo_textRefineAdj2.Pos(uiPropInfo.textGrade_En.gameObject, 10, -70);
-                    uiPropInfo_textRefineAdj3.Pos(uiPropInfo.textGrade_En.gameObject, 10, -90);
+                    uiPropInfo_textRefineTitle.Pos(uiPropInfo.textGrade_En.gameObject, 0, -20);
+                    uiPropInfo_textRefineAdj1.Pos(uiPropInfo.textGrade_En.gameObject, 10, -35);
+                    uiPropInfo_textRefineAdj2.Pos(uiPropInfo.textGrade_En.gameObject, 10, -50);
+                    uiPropInfo_textRefineAdj3.Pos(uiPropInfo.textGrade_En.gameObject, 10, -65);
                 }
                 else if (uiPropInfo.propData.propsItem.IsOutfit() != null)
                 {
                     uiPropInfo_textRefineTitle.Pos(uiPropInfo.textName.gameObject, 0, -0);
-                    uiPropInfo_textRefineAdj1.Pos(uiPropInfo.textName.gameObject, 10, -20);
-                    uiPropInfo_textRefineAdj2.Pos(uiPropInfo.textName.gameObject, 10, -40);
-                    uiPropInfo_textRefineAdj3.Pos(uiPropInfo.textName.gameObject, 10, -60);
-                    uiPropInfo_textRefineAdj4.Pos(uiPropInfo.textName.gameObject, 10, -80);
+                    uiPropInfo_textRefineAdj1.Pos(uiPropInfo.textName.gameObject, 10, -15);
+                    uiPropInfo_textRefineAdj2.Pos(uiPropInfo.textName.gameObject, 10, -30);
+                    uiPropInfo_textRefineAdj3.Pos(uiPropInfo.textName.gameObject, 10, -45);
+                    uiPropInfo_textRefineAdj4.Pos(uiPropInfo.textName.gameObject, 10, -60);
                 }
             }
             
             if (uiArtifactInfo.IsExists() && g.ui.HasUI(UIType.PlayerInfo))
             {
-                uiArtifactInfo_textBasicTitle.Pos(uiArtifactInfo.textGrade_En.gameObject, 0, -30);
-                uiArtifactInfo_textBasicAdj1.Pos(uiArtifactInfo.textGrade_En.gameObject, 10, -50);
-                uiArtifactInfo_textBasicAdj2.Pos(uiArtifactInfo.textGrade_En.gameObject, 10, -70);
-                uiArtifactInfo_textBasicAdj3.Pos(uiArtifactInfo.textGrade_En.gameObject, 10, -90);
-                uiArtifactInfo_textExpertLvl.Pos(uiArtifactInfo.textGrade_En.gameObject, 0, -110);
-                uiArtifactInfo_textExpertAdj1.Pos(uiArtifactInfo.textGrade_En.gameObject, 10, -130);
-                uiArtifactInfo_textExpertAdj2.Pos(uiArtifactInfo.textGrade_En.gameObject, 10, -150);
-                uiArtifactInfo_textRefineTitle.Pos(uiArtifactInfo.textGrade_En.gameObject, 0, -170);
-                uiArtifactInfo_textRefineAdj1.Pos(uiArtifactInfo.textGrade_En.gameObject, 10, -190);
-                uiArtifactInfo_textRefineAdj2.Pos(uiArtifactInfo.textGrade_En.gameObject, 10, -210);
-                uiArtifactInfo_textRefineAdj3.Pos(uiArtifactInfo.textGrade_En.gameObject, 10, -230);
-                uiArtifactInfo_textRefineAdj4.Pos(uiArtifactInfo.textGrade_En.gameObject, 10, -250);
-                uiArtifactInfo_textRefineAdj5.Pos(uiArtifactInfo.textGrade_En.gameObject, 10, -270);
+                uiArtifactInfo_textBasicTitle.Pos(uiArtifactInfo.textGrade_En.gameObject, 0, -20);
+                uiArtifactInfo_textBasicAdj1.Pos(uiArtifactInfo.textGrade_En.gameObject, 10, -35);
+                uiArtifactInfo_textBasicAdj2.Pos(uiArtifactInfo.textGrade_En.gameObject, 10, -50);
+                uiArtifactInfo_textBasicAdj3.Pos(uiArtifactInfo.textGrade_En.gameObject, 10, -65);
+                uiArtifactInfo_textExpertLvl.Pos(uiArtifactInfo.textGrade_En.gameObject, 0, -80);
+                uiArtifactInfo_textExpertAdj1.Pos(uiArtifactInfo.textGrade_En.gameObject, 10, -95);
+                uiArtifactInfo_textExpertAdj2.Pos(uiArtifactInfo.textGrade_En.gameObject, 10, -110);
+                uiArtifactInfo_textRefineTitle.Pos(uiArtifactInfo.textGrade_En.gameObject, 0, -125);
+                uiArtifactInfo_textRefineAdj1.Pos(uiArtifactInfo.textGrade_En.gameObject, 10, -140);
+                uiArtifactInfo_textRefineAdj2.Pos(uiArtifactInfo.textGrade_En.gameObject, 10, -155);
+                uiArtifactInfo_textRefineAdj3.Pos(uiArtifactInfo.textGrade_En.gameObject, 10, -170);
+                uiArtifactInfo_textRefineAdj4.Pos(uiArtifactInfo.textGrade_En.gameObject, 10, -185);
+                uiArtifactInfo_textRefineAdj5.Pos(uiArtifactInfo.textGrade_En.gameObject, 10, -200);
             }
         }
 
