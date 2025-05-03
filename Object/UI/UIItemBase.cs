@@ -114,7 +114,7 @@ namespace ModLib.Object
 
         public virtual UIItemBase Pos(GameObject org, float x, float y)
         {
-            return Pos(Component.Pos(), x, y);
+            return Pos(org.Pos(), x, y);
         }
 
         public virtual UIItemBase Pos(Component org, float x, float y)
