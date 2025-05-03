@@ -11,13 +11,6 @@ public static class CompHelper
     {
         var rect = newObj.gameObject.GetComponent<RectTransform>();
 
-        // Set anchor
-        rect.anchorMin = new Vector2(0.5f, 0.5f);
-        rect.anchorMax = new Vector2(0.5f, 0.5f);
-
-        // Set pivot
-        rect.pivot = new Vector2(0.5f, 0.5f);
-
         //reset trigger
         var trigger = newObj.gameObject.GetComponent<EventTrigger>();
         if (trigger != null)
@@ -28,43 +21,59 @@ public static class CompHelper
         //reset
         if (newObj is Text)
         {
-            //newObj.
+            // Set anchor
+            //rect.anchorMin = new Vector2(0.5f, 0.5f);
+            //rect.anchorMax = new Vector2(0.5f, 0.5f);
+
+            // Set pivot
+            //rect.pivot = new Vector2(0.5f, 0.5f);
         }
-        else if (newObj is Button)
+        else
         {
-            var o = newObj as Button;
-            o.onClick = new Button.ButtonClickedEvent();
-        }
-        else if (newObj is Slider)
-        {
-            var o = newObj as Slider;
-            o.onValueChanged = new Slider.SliderEvent();
-        }
-        else if (newObj is Toggle)
-        {
-            var o = newObj as Toggle;
-            o.group = null;
-            o.SetIsOnWithoutNotify(false);
-            o.onValueChanged = new Toggle.ToggleEvent();
-        }
-        else if (newObj is InputField)
-        {
-            var o = newObj as InputField;
-            o.text = string.Empty;
-            o.SetPlaceHolder(string.Empty);
-            o.onValidateInput = null;
-            o.characterValidation = InputField.CharacterValidation.None;
-            o.characterLimit = -1;
-            o.contentType = InputField.ContentType.Standard;
-            o.shouldActivateOnSelect = true;
-            o.onEndEdit = new InputField.SubmitEvent();
-            o.onValueChange = new InputField.OnChangeEvent();
-            o.onValueChanged = new InputField.OnChangeEvent();
-        }
-        else if (newObj is Image)
-        {
-            var o = newObj as Image;
-            o.onCullStateChanged = new Image.CullStateChangedEvent();
+            // Set anchor
+            rect.anchorMin = new Vector2(0.5f, 0.5f);
+            rect.anchorMax = new Vector2(0.5f, 0.5f);
+
+            // Set pivot
+            rect.pivot = new Vector2(0.5f, 0.5f);
+
+            //init comp
+            if (newObj is Button)
+            {
+                var o = newObj as Button;
+                o.onClick = new Button.ButtonClickedEvent();
+            }
+            else if (newObj is Slider)
+            {
+                var o = newObj as Slider;
+                o.onValueChanged = new Slider.SliderEvent();
+            }
+            else if (newObj is Toggle)
+            {
+                var o = newObj as Toggle;
+                o.group = null;
+                o.SetIsOnWithoutNotify(false);
+                o.onValueChanged = new Toggle.ToggleEvent();
+            }
+            else if (newObj is InputField)
+            {
+                var o = newObj as InputField;
+                o.text = string.Empty;
+                o.SetPlaceHolder(string.Empty);
+                o.onValidateInput = null;
+                o.characterValidation = InputField.CharacterValidation.None;
+                o.characterLimit = -1;
+                o.contentType = InputField.ContentType.Standard;
+                o.shouldActivateOnSelect = true;
+                o.onEndEdit = new InputField.SubmitEvent();
+                o.onValueChange = new InputField.OnChangeEvent();
+                o.onValueChanged = new InputField.OnChangeEvent();
+            }
+            else if (newObj is Image)
+            {
+                var o = newObj as Image;
+                o.onCullStateChanged = new Image.CullStateChangedEvent();
+            }
         }
         return newObj;
     }
