@@ -93,6 +93,6 @@
 		"id": "421010800",
 		"key": "unitType420010800desc",
 		"ch": "攻击 -10%, 防御 -10%, 体力 -25%, 灵力 -50%,免费存储, -10% 市场购买成本, +10% 市场售价, +3% 每月收入",
-		"en|tc|kr": "Atk -10%, Def -10%, Hp -25%, Mp -50%, Free Storage, -10% market buy-cost, +10% market sell-value, +3% income monthly"
+		"en|tc|kr": "Atk -10%, Def -10%, Hp -25%, Mp -50%, Free Storage, -10% market buy-cost, +10% market sell-value, +3% income monthly\n\nYou can see stats of npc items."
 	}
 ]
