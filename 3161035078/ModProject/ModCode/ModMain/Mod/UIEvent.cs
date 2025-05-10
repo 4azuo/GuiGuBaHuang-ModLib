@@ -183,7 +183,8 @@ namespace MOD_nE7UL2.Mod
                 ui.IsAutoUpdate = true;
             }
             else
-            if (e.uiType.uiName == UIType.ArtifactInfo.uiName/* && g.ui.HasUI(UIType.PlayerInfo)*/)
+            if (e.uiType.uiName == UIType.ArtifactInfo.uiName &&
+                (g.ui.HasUI(UIType.PlayerInfo) || (g.ui.HasUI(UIType.NPCInfo) && g.world.playerUnit.GetLuck(UnitTypeLuckEnum.Merchant.Value.Parse<int>()) != null)))
             {
                 var uiArtifactInfo = g.ui.GetUI<UIArtifactInfo>(UIType.ArtifactInfo);
 
@@ -323,7 +324,8 @@ namespace MOD_nE7UL2.Mod
                 }
             }
             else
-            if (e.uiType.uiName == UIType.PropInfo.uiName/* && g.ui.HasUI(UIType.PlayerInfo)*/)
+            if (e.uiType.uiName == UIType.PropInfo.uiName && 
+                (g.ui.HasUI(UIType.PlayerInfo) || (g.ui.HasUI(UIType.NPCInfo) && g.world.playerUnit.GetLuck(UnitTypeLuckEnum.Merchant.Value.Parse<int>()) != null)))
             {
                 var uiPropInfo = g.ui.GetUI<UIPropInfo>(UIType.PropInfo);
                 if (uiPropInfo.propData.propsItem.IsRing() != null)
