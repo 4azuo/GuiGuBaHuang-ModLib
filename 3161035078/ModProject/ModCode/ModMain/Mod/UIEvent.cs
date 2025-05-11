@@ -73,14 +73,14 @@ namespace MOD_nE7UL2.Mod
              * UI
              */
             //DebugHelper.WriteLine("3");
-            if (e.uiType.uiName == UIType.MapMain.uiName)
+            if (e.uiType.uiName == UIType.MapMain.uiName && g.ui.HasUI(UIType.MapMain))
             {
                 var ui = g.ui.GetUI<UIMapMain>(UIType.MapMain);
                 ui.playerInfo.textPiscesPendantCount.gameObject.SetActive(false);
                 ui.playerInfo.goAddLuckRoot.SetActive(false);
             }
             else
-            if (e.uiType.uiName == UIType.Town.uiName)
+            if (e.uiType.uiName == UIType.Town.uiName && g.ui.HasUI(UIType.Town))
             {
                 var ui = new UICover<UITown>(e.ui);
                 {
@@ -96,7 +96,7 @@ namespace MOD_nE7UL2.Mod
                 }
             }
             else
-            if (e.uiType.uiName == UIType.School.uiName)
+            if (e.uiType.uiName == UIType.School.uiName && g.ui.HasUI(UIType.School))
             {
                 var ui = new UICover<UISchool>(e.ui);
                 {
@@ -107,7 +107,7 @@ namespace MOD_nE7UL2.Mod
                 }
             }
             else
-            if (e.uiType.uiName == UIType.NPCInfo.uiName)
+            if (e.uiType.uiName == UIType.NPCInfo.uiName && g.ui.HasUI(UIType.NPCInfo))
             {
                 var ui = new UICover<UINPCInfo>(UIType.NPCInfo);
                 {
@@ -141,7 +141,7 @@ namespace MOD_nE7UL2.Mod
                 ui.IsAutoUpdate = true;
             }
             else
-            if (e.uiType.uiName == UIType.PlayerInfo.uiName)
+            if (e.uiType.uiName == UIType.PlayerInfo.uiName && g.ui.HasUI(UIType.PlayerInfo))
             {
                 var ui = new UICover<UIPlayerInfo>(UIType.PlayerInfo);
                 {
@@ -183,7 +183,7 @@ namespace MOD_nE7UL2.Mod
                 ui.IsAutoUpdate = true;
             }
             else
-            if (e.uiType.uiName == UIType.ArtifactInfo.uiName &&
+            if (e.uiType.uiName == UIType.ArtifactInfo.uiName && g.ui.HasUI(UIType.ArtifactInfo) &&
                 (g.ui.HasUI(UIType.PlayerInfo) || (g.ui.HasUI(UIType.NPCInfo) && g.world.playerUnit.GetLuck(UnitTypeLuckEnum.Merchant.Value.Parse<int>()) != null)))
             {
                 var uiArtifactInfo = g.ui.GetUI<UIArtifactInfo>(UIType.ArtifactInfo);
@@ -256,12 +256,12 @@ namespace MOD_nE7UL2.Mod
                 uiArtifactInfo_textRefineAdj5.text = customAdj3?.GetText(uiArtifactInfo.unit, uiArtifactInfo.shapeProp, refineLvl);
             }
             else
-            if (e.uiType.uiName == UIType.MartialInfo.uiName && g.ui.HasUI(UIType.PlayerInfo))
+            if (e.uiType.uiName == UIType.MartialInfo.uiName && g.ui.HasUI(UIType.MartialInfo) && g.ui.HasUI(UIType.PlayerInfo))
             {
                 uiMartialExpertInfo = g.ui.OpenUISafe<UINPCInfoPreview>(UIType.NPCInfoPreview);
             }
             else
-            if (e.uiType.uiName == UIType.NPCInfoPreview.uiName && g.ui.HasUI(UIType.MartialInfo))
+            if (e.uiType.uiName == UIType.NPCInfoPreview.uiName && g.ui.HasUI(UIType.NPCInfoPreview) && g.ui.HasUI(UIType.MartialInfo))
             {
                 var uiMartialInfo = g.ui.GetUI<UIMartialInfo>(UIType.MartialInfo);
                 //var soleId = uiMartialInfo.martialData.martialInfo.propsData.soleID;
@@ -324,7 +324,7 @@ namespace MOD_nE7UL2.Mod
                 }
             }
             else
-            if (e.uiType.uiName == UIType.PropInfo.uiName && 
+            if (e.uiType.uiName == UIType.PropInfo.uiName && g.ui.HasUI(UIType.PropInfo) && 
                 (g.ui.HasUI(UIType.PlayerInfo) || (g.ui.HasUI(UIType.NPCInfo) && g.world.playerUnit.GetLuck(UnitTypeLuckEnum.Merchant.Value.Parse<int>()) != null)))
             {
                 var uiPropInfo = g.ui.GetUI<UIPropInfo>(UIType.PropInfo);
@@ -375,7 +375,7 @@ namespace MOD_nE7UL2.Mod
                 }
             }
             else
-            if (e.uiType.uiName == UIType.GameMemu.uiName)
+            if (e.uiType.uiName == UIType.GameMemu.uiName && g.ui.HasUI(UIType.GameMemu))
             {
                 var ui = g.ui.GetUI<UIGameMemu>(UIType.GameMemu);
                 ui.btnSave.gameObject.SetActive(!SMLocalConfigsEvent.Instance.Configs.HideSaveButton);
@@ -433,7 +433,7 @@ namespace MOD_nE7UL2.Mod
             }
         }
 
-        [EventCondition(IsInGame = HandleEnum.True, IsInBattle = HandleEnum.False)]
+        [EventCondition(IsInGame = HandleEnum.True, IsInBattle = HandleEnum.False, DelayMsec = 1)]
         public override void OnOpenUIEnd(OpenUIEnd e)
         {
             base.OnOpenUIEnd(e);

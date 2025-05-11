@@ -190,9 +190,9 @@ namespace MOD_nE7UL2.Mod
         {
             var rs = new List<UnitCtrlBase>();
             var wpos = g.world.playerUnit.GetUnitPos();
-            foreach (var wunit in wunits.Where(x => x != null && !x.isDie))
+            foreach (var wunit in wunits.Where(x => x != null && x.data != null && !x.isDie))
             {
-                if (ModBattleEvent.SceneBattle.unit.allUnitIncludeDie.ToList().Any(x => x.IsWorldUnit() && x.GetWorldUnit().GetUnitId() == wunit.GetUnitId()))
+                if (ModBattleEvent.SceneBattle.unit.GetAllUnitIncludeDie().ToList().Any(x => x.IsWorldUnit() && x.GetWorldUnit().GetUnitId() == wunit.GetUnitId()))
                     continue;
 
                 //set wpos

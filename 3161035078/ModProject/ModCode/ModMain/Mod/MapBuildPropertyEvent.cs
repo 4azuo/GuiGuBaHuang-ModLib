@@ -206,18 +206,6 @@ namespace MOD_nE7UL2.Mod
             base.OnMonthly();
             //clear lst pay tax town
             PayTaxTown.Clear();
-            //fix bug every month
-            foreach (var t in TownMasters)
-            {
-                foreach (var wunitId in t.Value.ToArray())
-                {
-                    var wunit = g.world.unit.GetUnit(wunitId);
-                    if (wunit == null || wunit.isDie || !IsTownGuardian(wunit) || IsErrorLuckId(wunit))
-                    {
-                        RemoveFromTownGuardians(wunitId, wunit);
-                    }
-                }
-            }
         }
 
         public override void OnMonthlyForEachWUnit(WorldUnitBase wunit)
@@ -228,6 +216,11 @@ namespace MOD_nE7UL2.Mod
 
             //fix bug every month
             if (IsTownGuardian(wunit) && TownMasters.All(x => !x.Value.Contains(wunitId)))
+            {
+                RemoveFromTownGuardians(wunitId, wunit);
+            }
+            else
+            if (!IsTownGuardian(wunit) && TownMasters.Any(x => x.Value.Contains(wunitId)))
             {
                 RemoveFromTownGuardians(wunitId, wunit);
             }
@@ -772,7 +765,7 @@ namespace MOD_nE7UL2.Mod
 
         public static bool IsMatchCondWUnit(WorldUnitBase wunit)
         {
-            return !IsTownGuardian(wunit) && !HirePeopleEvent.IsHired(wunit);
+            return wunit != null && !wunit.isDie && !IsTownGuardian(wunit)/* && !HirePeopleEvent.IsHired(wunit)*/;
         }
 
         public static List<WorldUnitBase> GetHirablePeople()
