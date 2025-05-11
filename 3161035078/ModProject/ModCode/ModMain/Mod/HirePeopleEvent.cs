@@ -7,7 +7,6 @@ using System.Linq;
 using ModLib.Object;
 using ModLib.Enum;
 using System;
-using System.Numerics;
 
 namespace MOD_nE7UL2.Mod
 {
@@ -383,7 +382,7 @@ namespace MOD_nE7UL2.Mod
 
         public static bool IsHired(WorldUnitBase wunit)
         {
-            return wunit.GetLuck(TEAM_LUCK_ID) != null;
+            return wunit != null && /*!wunit.isDie && */wunit.GetLuck(TEAM_LUCK_ID) != null;
         }
 
         public static bool IsTeamMaster(WorldUnitBase wunit)
