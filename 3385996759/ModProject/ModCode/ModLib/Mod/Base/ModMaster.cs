@@ -228,11 +228,11 @@ namespace ModLib.Mod
 
                 //register event
                 #region Timer
-                timerUpdate10ms = RegTimer(callTimeUpdate10ms, 0.009f);
-                timerUpdate100ms = RegTimer(callTimeUpdate100ms, 0.099f);
-                timerUpdate200ms = RegTimer(callTimeUpdate200ms, 0.199f);
-                timerUpdate500ms = RegTimer(callTimeUpdate500ms, 0.499f);
-                timerUpdate1000ms = RegTimer(callTimeUpdate1000ms, 0.999f);
+                timerUpdate10ms = RegTimer(callTimeUpdate10ms, 0.011f);
+                timerUpdate100ms = RegTimer(callTimeUpdate100ms, 0.101f);
+                timerUpdate200ms = RegTimer(callTimeUpdate200ms, 0.201f);
+                timerUpdate500ms = RegTimer(callTimeUpdate500ms, 0.501f);
+                timerUpdate1000ms = RegTimer(callTimeUpdate1000ms, 1.001f);
                 #endregion
 
                 #region EMapType
