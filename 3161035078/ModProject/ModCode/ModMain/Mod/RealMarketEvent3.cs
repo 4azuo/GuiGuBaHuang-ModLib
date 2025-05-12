@@ -156,7 +156,7 @@ namespace MOD_nE7UL2.Mod
             }));
             var uiCover = new UICover<UIPropSelect>(ui);
             {
-                uiCover.AddButton(0, 0, Negotiate, GameTool.LS("other500020064")).Pos(ui.btnOK.transform, 0, 1.0f);
+                uiCover.AddButton(0, 0, Negotiate, GameTool.LS("other500020064")).Pos(ui.btnOK.transform, 0, 60);
                 uiCover.AddText(0, 0, GameTool.LS("other500020063")).SetWork(new UIItemWork
                 {
                     Formatter = x =>
@@ -170,7 +170,7 @@ namespace MOD_nE7UL2.Mod
                             return new object[] { 0 };
                         }
                     }
-                }).Pos(ui.btnOK.transform, 0, 0.5f);
+                }).Pos(ui.btnOK.transform, 0, 30);
             }
             uiCover.IsAutoUpdate = true;
             ui.UpdateUI();
@@ -274,7 +274,7 @@ namespace MOD_nE7UL2.Mod
                             return new object[] { 0 };
                         }
                     }
-                }).Pos(ui.btnOK.transform, 0, 0.5f);
+                }).Pos(ui.btnOK.transform, 0, 30);
                 uiCover.AddButton(0, 0, () =>
                 {
                     PlayerStack.Clear();

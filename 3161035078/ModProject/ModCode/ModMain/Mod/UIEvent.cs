@@ -429,7 +429,7 @@ namespace MOD_nE7UL2.Mod
 
         public static void OnUIClose(CloseUIEnd e)
         {
-            if (e.uiType.uiName == UIType.MartialInfo.uiName/* && g.ui.HasUI(UIType.NPCInfoPreview)*/)
+            if (e.uiType.uiName == UIType.MartialInfo.uiName && g.ui.HasUI(UIType.NPCInfoPreview))
             {
                 g.ui.CloseUI(uiMartialExpertInfo);
             }

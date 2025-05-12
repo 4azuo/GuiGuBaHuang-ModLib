@@ -120,7 +120,7 @@ namespace MOD_nE7UL2.Mod
             if (e.uiType.uiName == UIType.SkyTip.uiName)
             {
                 var ui = g.ui.GetUI<UISkyTip>(UIType.SkyTip);
-                if (ui.ptextTip.text == TOWN_COUCIL_LUCK_DESC)
+                if (ui?.ptextTip.text == TOWN_COUCIL_LUCK_DESC)
                 {
                     var a = g.ui.GetUI<UINPCInfo>(UIType.NPCInfo);
                     var b = g.ui.GetUI<UIPlayerInfo>(UIType.PlayerInfo);
@@ -138,27 +138,32 @@ namespace MOD_nE7UL2.Mod
                     {
                         var town = GetGuardTown(uiCover.UI.unit);
                         if (IsTownMaster(town, g.world.playerUnit))
-                            uiCover.AddText(0, 0, string.Format(GameTool.LS("other500020042"), GetRequiredSpiritStones(town, uiCover.UI.unit))).Align().Format(Color.white).Pos(uiCover.UI.uiProperty.textInTrait1.transform, 0f, 0.5f).SetParentTransform(uiCover.UI.uiProperty.textInTrait1.transform);
-                        uiCover.AddText(0, 0, $"Town: {GetGuardTownInfoStr(uiCover.UI.unit)}").Align().Format(Color.white).Pos(uiCover.UI.uiProperty.textInTrait1.transform, 0f, 0.25f).SetParentTransform(uiCover.UI.uiProperty.textInTrait1.transform);
+                            uiCover.AddText(300f, 100f, string.Format(GameTool.LS("other500020042"), GetRequiredSpiritStones(town, uiCover.UI.unit))).Align().Format(Color.white)
+                                    .SetParentTransform(uiCover.UI.uiProperty.textAddLuckTitle);
+                        uiCover.AddText(300f, 80f, $"Town: {GetGuardTownInfoStr(uiCover.UI.unit)}").Align().Format(Color.white)
+                                    .SetParentTransform(uiCover.UI.uiProperty.textAddLuckTitle);
                         if (isShowManageTeamUI1)
                         {
-                            uiCover.AddButton(0, 0, () =>
+                            uiCover.AddButton(200f, 90f, () =>
                             {
                                 g.ui.MsgBox(GameTool.LS("other500020011"), GameTool.LS("other500020007"), MsgBoxButtonEnum.YesNo, () =>
                                 {
                                     Leave(uiCover.UI.unit);
                                     g.ui.CloseUI(e.ui);
                                 });
-                            }, GameTool.LS("other500020012")).Format(Color.black).Size(100, 40).Pos(uiCover.UI.uiProperty.textInTrait1.transform, -1.1f, 0.4f).SetParentTransform(uiCover.UI.uiProperty.textInTrait1.transform);
+                            }, GameTool.LS("other500020012")).Format(Color.black).Size(100, 40)
+                                    .SetParentTransform(uiCover.UI.uiProperty.textAddLuckTitle);
                         }
                     }
                     else
                     if (isShowHirePeopleUI)
                     {
                         var town = uiCover.UI.unit.GetMapBuild<MapBuildTown>();
-                        uiCover.AddText(0, 0, string.Format(GameTool.LS("other500020042"), GetRequiredSpiritStones(town, uiCover.UI.unit))).Align().Format(Color.white).Pos(uiCover.UI.uiProperty.textInTrait1.transform, 0f, 0.5f).SetParentTransform(uiCover.UI.uiProperty.textInTrait1.transform);
-                        uiCover.AddText(0, 0, $"{GetRequiredReputations(town, uiCover.UI.unit):#,##0} Reputations").Align().Format(Color.white).Pos(uiCover.UI.uiProperty.textInTrait1.transform, 0f, 0.25f).SetParentTransform(uiCover.UI.uiProperty.textInTrait1.transform);
-                        uiCover.AddButton(0, 0, () =>
+                        uiCover.AddText(300f, 100f, string.Format(GameTool.LS("other500020042"), GetRequiredSpiritStones(town, uiCover.UI.unit))).Align().Format(Color.white)
+                                    .SetParentTransform(uiCover.UI.uiProperty.textAddLuckTitle);
+                        uiCover.AddText(300f, 80f, $"{GetRequiredReputations(town, uiCover.UI.unit):#,##0} Reputations").Align().Format(Color.white)
+                                    .SetParentTransform(uiCover.UI.uiProperty.textAddLuckTitle);
+                        uiCover.AddButton(200f, 90f, () =>
                         {
                             var requiredSpiritStones = GetRequiredSpiritStones(town, uiCover.UI.unit);
                             if (player.GetUnitMoney() < requiredSpiritStones)
@@ -180,7 +185,8 @@ namespace MOD_nE7UL2.Mod
                                 AddBuildProperty(town, -requiredSpiritStones);
                                 g.ui.CloseUI(e.ui);
                             });
-                        }, GameTool.LS("other500020013")).Format(Color.black).Size(100, 40).Pos(uiCover.UI.uiProperty.textInTrait1.transform, -1.1f, 0.4f).SetParentTransform(uiCover.UI.uiProperty.textInTrait1.transform);
+                        }, GameTool.LS("other500020013")).Format(Color.black).Size(100, 40)
+                                    .SetParentTransform(uiCover.UI.uiProperty.textAddLuckTitle);
                     }
                     uiCover.UpdateUI();
                 }
@@ -650,22 +656,22 @@ namespace MOD_nE7UL2.Mod
             var town = GetGuardTown(g.world.playerUnit);
             UIHelper.GetUICustomBase(UIType.NPCSearch).Dispose();
 
-            var i = -1;
-            var uiCover = new UICover<UINPCSearch>(ui);
-            {
-                var col = uiCover.MidCol - 11;
-                var row = uiCover.MidRow;
-                uiCover.AddText(col, row + i++, string.Format(GameTool.LS("townmaster420041117"), town.name, GetTownMaster(town).data.unitData.propertyData.GetName())).Format().Align();
-                uiCover.AddText(col, row + i++, GameTool.LS("townmaster420041118")).Format().Align().SetWork(new UIItemWork
-                {
-                    Formatter = (ibase) => new object[] { GetBuildProperty(town) },
-                });
-                uiCover.AddText(col, row + i++, GameTool.LS("townmaster420041119")).Format().Align().SetWork(new UIItemWork
-                {
-                    Formatter = (ibase) => new object[] { GetTotalMonthlyPayment(town) },
-                });
-            }
-            uiCover.UpdateUI();
+            //var i = -1;
+            //var uiCover = new UICover<UINPCSearch>(ui);
+            //{
+            //    var col = uiCover.MidCol - 11;
+            //    var row = uiCover.MidRow;
+            //    uiCover.AddText(col, row + i++, string.Format(GameTool.LS("townmaster420041117"), town.name, GetTownMaster(town).data.unitData.propertyData.GetName())).Format().Align();
+            //    uiCover.AddText(col, row + i++, GameTool.LS("townmaster420041118")).Format().Align().SetWork(new UIItemWork
+            //    {
+            //        Formatter = (ibase) => new object[] { GetBuildProperty(town) },
+            //    });
+            //    uiCover.AddText(col, row + i++, GameTool.LS("townmaster420041119")).Format().Align().SetWork(new UIItemWork
+            //    {
+            //        Formatter = (ibase) => new object[] { GetTotalMonthlyPayment(town) },
+            //    });
+            //}
+            //uiCover.UpdateUI();
         }
 
         public static void OpenUITownManage(MapBuildTown town)
@@ -722,11 +728,11 @@ namespace MOD_nE7UL2.Mod
                 }
 
                 if (IsTownMaster(town, g.world.playerUnit) && !town.buildTownData.isMainTown)
-                    uiCover.AddButton(uiCover.LastCol - 10, uiCover.LastRow - 20, () => Upgrade2City(town), $"Upgrade to City\n{GetUpgrade2CityCost(town):#,##0}").Format(Color.black, 17).Align(TextAnchor.MiddleCenter).Size(300, 64);
-                uiCover.AddButton(uiCover.LastCol - 10, uiCover.LastRow - 17, Deposit, GameTool.LS("other500020015")).Format(Color.black, 17).Align(TextAnchor.MiddleCenter).Size(300, 64);
-                uiCover.AddButton(uiCover.LastCol - 10, uiCover.LastRow - 14, Withdraw, GameTool.LS("other500020016")).Format(Color.black, 17).Align(TextAnchor.MiddleCenter).Size(300, 64);
-                uiCover.AddButton(uiCover.LastCol - 10, uiCover.LastRow - 11, OpenUIHirePeople, GameTool.LS("other500020054")).Format(Color.black, 17).Align(TextAnchor.MiddleCenter).Size(300, 64);
-                uiCover.AddButton(uiCover.LastCol - 10, uiCover.LastRow - 8, () =>
+                    uiCover.AddButton(uiCover.LastCol - 7, uiCover.LastRow - 20, () => Upgrade2City(town), $"Upgrade to City\n{GetUpgrade2CityCost(town):#,##0}").Format(Color.black, 17).Align(TextAnchor.MiddleCenter).Size(300, 64);
+                uiCover.AddButton(uiCover.LastCol - 7, uiCover.LastRow - 17, Deposit, GameTool.LS("other500020015")).Format(Color.black, 17).Align(TextAnchor.MiddleCenter).Size(300, 64);
+                uiCover.AddButton(uiCover.LastCol - 7, uiCover.LastRow - 14, Withdraw, GameTool.LS("other500020016")).Format(Color.black, 17).Align(TextAnchor.MiddleCenter).Size(300, 64);
+                uiCover.AddButton(uiCover.LastCol - 7, uiCover.LastRow - 11, OpenUIHirePeople, GameTool.LS("other500020054")).Format(Color.black, 17).Align(TextAnchor.MiddleCenter).Size(300, 64);
+                uiCover.AddButton(uiCover.LastCol - 7, uiCover.LastRow - 8, () =>
                 {
                     g.ui.MsgBox(GameTool.LS("other500020011"), GameTool.LS("other500020009"), MsgBoxButtonEnum.YesNo, () =>
                     {
@@ -765,7 +771,7 @@ namespace MOD_nE7UL2.Mod
 
         public static bool IsMatchCondWUnit(WorldUnitBase wunit)
         {
-            return wunit != null && !wunit.isDie && !IsTownGuardian(wunit)/* && !HirePeopleEvent.IsHired(wunit)*/;
+            return wunit != null && !wunit.isDie && ((!IsTownGuardian(wunit) && !HirePeopleEvent.IsHired(wunit)) || wunit.IsPlayer());
         }
 
         public static List<WorldUnitBase> GetHirablePeople()

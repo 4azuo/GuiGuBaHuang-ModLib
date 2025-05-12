@@ -61,12 +61,12 @@ namespace MOD_nE7UL2.Mod
                 var curMainTown = g.world.playerUnit.GetMapBuild<MapBuildTown>();
 
                 //add component
-                var txtInfo = uiPropSell.textMoney.Copy().Pos(uiPropSell.textMoney.gameObject, 0f, -0.4f).Align().Format(Color.red);
+                var txtInfo = uiPropSell.textMoney.Copy().Pos(-310, 250).Align().Format(Color.red);
                 txtInfo.text = $"Price rate: {GetSellRate(curMainTown, g.world.playerUnit):0.00}%";
 
-                txtMarketST = uiPropSell.textMoney.Copy().Pos(uiPropSell.textMoney.gameObject, 0f, -0.2f).Align();
-                txtPrice2 = uiPropSell.textPrice.Copy().Pos(uiPropSell.textPrice.gameObject, 0f, -0.2f);
-                txtWarningMsg = uiPropSell.textPrice.Copy().Pos(uiPropSell.btnOK.gameObject).Format(Color.red).Set("Over price");
+                txtMarketST = uiPropSell.textMoney.Copy().Pos(-310, 270).Align();
+                txtPrice2 = uiPropSell.textPrice.Copy().Pos(uiPropSell.textPrice, 0, -20);
+                txtWarningMsg = uiPropSell.textPrice.Copy().Pos(uiPropSell.btnOK).Format(Color.red).Set("Over price");
                 txtWarningMsg.gameObject.SetActive(false);
 
                 uiPropSell.btnOK.onClick.RemoveAllListeners();
