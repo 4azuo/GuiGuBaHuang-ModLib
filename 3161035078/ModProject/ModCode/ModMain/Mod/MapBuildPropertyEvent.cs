@@ -921,9 +921,9 @@ namespace MOD_nE7UL2.Mod
 
         [ErrorIgnore]
         [EventCondition(IsInGame = HandleEnum.Ignore, IsInBattle = HandleEnum.True)]
-        public override void OnTimeUpdate1s()
+        public override void OnTimeUpdate1000ms()
         {
-            base.OnTimeUpdate1s();
+            base.OnTimeUpdate1000ms();
             if (g.world.battle.data.dungeonBaseItem.id == CATCH_SNEAKY_DUNGEON_ID && 
                 (ModBattleEvent.PlayerUnit.isDie || ModBattleEvent.BattleUnits.ToArray().Where(x => x.IsEnemy(ModBattleEvent.PlayerUnit)).All(x => x.isDie)))
             {

@@ -1066,9 +1066,9 @@ namespace MOD_nE7UL2.Mod
 
         [ErrorIgnore]
         [EventCondition(IsInGame = HandleEnum.Ignore, IsInBattle = HandleEnum.True)]
-        public override void OnTimeUpdate1s()
+        public override void OnTimeUpdate1000ms()
         {
-            base.OnTimeUpdate1s();
+            base.OnTimeUpdate1000ms();
             if (BattleModifyEvent.IsShowCustomMonstCount && (IsBattleTownWar() || IsBattleMonstWave()))
             {
                 BattleModifyEvent.TextCustomMonstCount1.text = TeamAUnitCount.ToString();

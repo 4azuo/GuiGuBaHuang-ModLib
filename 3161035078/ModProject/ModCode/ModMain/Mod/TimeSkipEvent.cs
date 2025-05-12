@@ -77,9 +77,9 @@ namespace MOD_nE7UL2.Mod
             }
         }
 
-        public override void OnTimeUpdate1s()
+        public override void OnTimeUpdate1000ms()
         {
-            base.OnTimeUpdate1s();
+            base.OnTimeUpdate1000ms();
             if (GameHelper.GetGameTotalMonth() < skip2Month && !g.world.run.isRunning && g.world.run.IsCanRun())
             {
                 g.world.run.AddDay(30, true);
