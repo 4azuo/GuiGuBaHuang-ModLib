@@ -18,11 +18,24 @@ namespace ModLib.Mod
             base.OnTimeUpdate10ms();
             lock (DelayEvents)
             {
-                var cur = DelayEvents.Where(x => (DateTime.Now - x.Start).TotalMilliseconds > x.Delay).ToArray();
-                DelayEvents.RemoveAll(x => cur.Contains(x));
-                foreach (var d in cur)
+                var events = DelayEvents.Where(x => (DateTime.Now - x.Start).TotalMilliseconds > x.Delay).ToArray();
+                DelayEvents.RemoveAll(x => events.Contains(x));
+                foreach (var e in events)
                 {
-                    EventHelper.RunMinorEvent(d.Event, d.Method, d.Parameter);
+                    try
+                    {
+                        EventHelper.RunMinorEvent(e.Event, e.Method, e.Parameter);
+                    }
+                    catch (Exception ex)
+                    {
+                        var exMethod = ex?.GetCallingMethod();
+                        if (e.Method?.GetAttributeOnMethodOrClass<ErrorIgnoreAttribute>() == null &&
+                            exMethod?.GetAttributeOnMethodOrClass<ErrorIgnoreAttribute>() == null)
+                        {
+                            DebugHelper.WriteLine($"{e.Event}.{e.Method.Name}({e.Parameter}) : {e.Event.ModId}, {e.Event.CacheId}, {e.Event.CacheType}, {e.Event.WorkOn}");
+                            DebugHelper.WriteLine(ex);
+                        }
+                    }
                 }
             }
         }
