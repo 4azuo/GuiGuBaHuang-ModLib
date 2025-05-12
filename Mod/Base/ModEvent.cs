@@ -29,13 +29,7 @@ namespace ModLib.Mod
         #region EGameType
         //public virtual void OnTownAuctionStart() { }
         public virtual void OnOpenUIStart(OpenUIStart e) { }
-        public virtual void OnOpenUIEnd(OpenUIEnd e)
-        {
-            if (!g.ui.HasUI(e.uiType))
-            {
-                return;
-            }
-        }
+        public virtual void OnOpenUIEnd(OpenUIEnd e) { }
         public virtual void OnCloseUIStart(CloseUIStart e) { }
         public virtual void OnCloseUIEnd(CloseUIEnd e) { }
         public virtual void OnLoadNewGame() { }
