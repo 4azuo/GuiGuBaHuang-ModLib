@@ -76,9 +76,9 @@ namespace MOD_nE7UL2.Mod
 
         [ErrorIgnore]
         [EventCondition(IsInGame = HandleEnum.True, IsInBattle = HandleEnum.False)]
-        public override void OnTimeUpdate()
+        public override void OnTimeUpdate100ms()
         {
-            base.OnTimeUpdate();
+            base.OnTimeUpdate100ms();
             if (g.ui.HasUI(UIType.PropSell))
             {
                 var uiPropSell = g.ui.GetUI<UIPropSell>(UIType.PropSell);
