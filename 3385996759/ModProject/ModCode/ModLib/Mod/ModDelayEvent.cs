@@ -13,9 +13,9 @@ namespace ModLib.Mod
         public static ModDelayEvent Instance { get; set; }
         private static List<DelayInfo> DelayEvents { get; } = new List<DelayInfo>();
 
-        public override void OnTimeUpdate()
+        public override void OnTimeUpdate10ms()
         {
-            base.OnTimeUpdate();
+            base.OnTimeUpdate10ms();
             lock (DelayEvents)
             {
                 var cur = DelayEvents.Where(x => (DateTime.Now - x.Start).TotalMilliseconds > x.Delay).ToArray();
