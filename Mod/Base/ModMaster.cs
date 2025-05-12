@@ -23,10 +23,11 @@ namespace ModLib.Mod
         public Gamevar Gamevars { get; protected set; }
 
         #region caller
-        private Action callTimeUpdate;
+        private Action callTimeUpdate10ms;
+        private Action callTimeUpdate100ms;
         private Action callTimeUpdate200ms;
         private Action callTimeUpdate500ms;
-        private Action callTimeUpdate1s;
+        private Action callTimeUpdate1000ms;
         private Action<ETypeData> callPlayerOpenTreeVault;
         private Action<ETypeData> callPlayerEquipCloth;
         private Action<ETypeData> callPlayerInMonstArea;
@@ -79,10 +80,11 @@ namespace ModLib.Mod
         #endregion
 
         #region timer
-        private TimerMgr.CoroutineTime timerUpdate;
+        private TimerMgr.CoroutineTime timerUpdate10ms;
+        private TimerMgr.CoroutineTime timerUpdate100ms;
         private TimerMgr.CoroutineTime timerUpdate200ms;
         private TimerMgr.CoroutineTime timerUpdate500ms;
-        private TimerMgr.CoroutineTime timerUpdate1s;
+        private TimerMgr.CoroutineTime timerUpdate1000ms;
         #endregion
 
         #region event
@@ -168,10 +170,11 @@ namespace ModLib.Mod
 
                 //declare caller
                 #region caller
-                callTimeUpdate = _OnTimeUpdate;
+                callTimeUpdate10ms = _OnTimeUpdate10ms;
+                callTimeUpdate100ms = _OnTimeUpdate100ms;
                 callTimeUpdate200ms = _OnTimeUpdate200ms;
                 callTimeUpdate500ms = _OnTimeUpdate500ms;
-                callTimeUpdate1s = _OnTimeUpdate1s;
+                callTimeUpdate1000ms = _OnTimeUpdate1000ms;
                 callPlayerOpenTreeVault = _OnPlayerOpenTreeVault;
                 callPlayerEquipCloth = _OnPlayerEquipCloth;
                 callPlayerInMonstArea = _OnPlayerInMonstArea;
@@ -225,10 +228,11 @@ namespace ModLib.Mod
 
                 //register event
                 #region Timer
-                timerUpdate = RegTimer(callTimeUpdate, 0.111f);
-                timerUpdate200ms = RegTimer(callTimeUpdate200ms, 0.211f);
-                timerUpdate500ms = RegTimer(callTimeUpdate500ms, 0.511f);
-                timerUpdate1s = RegTimer(callTimeUpdate1s, 1.011f);
+                timerUpdate10ms = RegTimer(callTimeUpdate10ms, 0.009f);
+                timerUpdate100ms = RegTimer(callTimeUpdate100ms, 0.099f);
+                timerUpdate200ms = RegTimer(callTimeUpdate200ms, 0.199f);
+                timerUpdate500ms = RegTimer(callTimeUpdate500ms, 0.499f);
+                timerUpdate1000ms = RegTimer(callTimeUpdate1000ms, 0.999f);
                 #endregion
 
                 #region EMapType
@@ -343,10 +347,11 @@ namespace ModLib.Mod
 
                 //unregister event
                 #region Timer
-                UnregTimer(timerUpdate);
+                UnregTimer(timerUpdate10ms);
+                UnregTimer(timerUpdate100ms);
                 UnregTimer(timerUpdate200ms);
                 UnregTimer(timerUpdate500ms);
-                UnregTimer(timerUpdate1s);
+                UnregTimer(timerUpdate1000ms);
                 #endregion
 
                 #region EMapType

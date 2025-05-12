@@ -8,10 +8,11 @@ namespace ModLib.Mod
     public abstract class ModEvent : CachableObject
     {
         #region Timer
-        public virtual void OnTimeUpdate() { }
+        public virtual void OnTimeUpdate10ms() { }
+        public virtual void OnTimeUpdate100ms() { }
         public virtual void OnTimeUpdate200ms() { }
         public virtual void OnTimeUpdate500ms() { }
-        public virtual void OnTimeUpdate1s() { }
+        public virtual void OnTimeUpdate1000ms() { }
         #endregion
 
         #region EMapType
@@ -28,7 +29,13 @@ namespace ModLib.Mod
         #region EGameType
         //public virtual void OnTownAuctionStart() { }
         public virtual void OnOpenUIStart(OpenUIStart e) { }
-        public virtual void OnOpenUIEnd(OpenUIEnd e) { }
+        public virtual void OnOpenUIEnd(OpenUIEnd e)
+        {
+            if (!g.ui.HasUI(e.uiType))
+            {
+                return;
+            }
+        }
         public virtual void OnCloseUIStart(CloseUIStart e) { }
         public virtual void OnCloseUIEnd(CloseUIEnd e) { }
         public virtual void OnLoadNewGame() { }

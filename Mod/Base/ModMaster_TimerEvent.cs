@@ -5,9 +5,14 @@ namespace ModLib.Mod
     public abstract partial class ModMaster : MonoBehaviour
     {
         #region ModLib - Handlers
-        public virtual void _OnTimeUpdate()
+        public virtual void _OnTimeUpdate10ms()
         {
-            CallEvents("OnTimeUpdate");
+            CallEvents("OnTimeUpdate10ms");
+        }
+
+        public virtual void _OnTimeUpdate100ms()
+        {
+            CallEvents("OnTimeUpdate100ms");
         }
 
         public virtual void _OnTimeUpdate200ms()
@@ -20,16 +25,21 @@ namespace ModLib.Mod
             CallEvents("OnTimeUpdate500ms");
         }
 
-        public virtual void _OnTimeUpdate1s()
+        public virtual void _OnTimeUpdate1000ms()
         {
-            CallEvents("OnTimeUpdate1s");
+            CallEvents("OnTimeUpdate1000ms");
         }
         #endregion
 
         #region ModLib - Events
-        public virtual void OnTimeUpdate()
+        public virtual void OnTimeUpdate10ms()
         {
-            EventHelper.RunMinorEvents("OnTimeUpdate");
+            EventHelper.RunMinorEvents("OnTimeUpdate10ms");
+        }
+
+        public virtual void OnTimeUpdate100ms()
+        {
+            EventHelper.RunMinorEvents("OnTimeUpdate100ms");
         }
 
         public virtual void OnTimeUpdate200ms()
@@ -42,9 +52,9 @@ namespace ModLib.Mod
             EventHelper.RunMinorEvents("OnTimeUpdate500ms");
         }
 
-        public virtual void OnTimeUpdate1s()
+        public virtual void OnTimeUpdate1000ms()
         {
-            EventHelper.RunMinorEvents("OnTimeUpdate1s");
+            EventHelper.RunMinorEvents("OnTimeUpdate1000ms");
         }
         #endregion
     }
