@@ -563,7 +563,7 @@ namespace MOD_nE7UL2.Mod
                         }
                         if (SMLocalConfigsEvent.Instance.Configs.Onelife || SMLocalConfigsEvent.Instance.Configs.AutoSaveAfterLostInBattle)
                         {
-                            TimeSkipEvent.SkipTime(1);
+                            TimeSkipEvent.Instance.SkipTime(1);
                         }
                     }
 

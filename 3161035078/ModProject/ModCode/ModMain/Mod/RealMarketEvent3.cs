@@ -64,49 +64,49 @@ namespace MOD_nE7UL2.Mod
             }
         }
 
-        public override void OnOpenUIEnd(OpenUIEnd e)
-        {
-            base.OnOpenUIEnd(e);
-            if (e.uiType.uiName == UIType.TownMarket.uiName)
-            {
-                var ui = new UICover<UITownMarket>(e.ui);
-                {
-                    ui.AddToolTipButton(ui.MidCol - 3, ui.MidRow + 1, GameTool.LS("other500020041"));
-                    ui.AddButton(ui.MidCol, ui.MidRow + 1, OpenMarket, GameTool.LS("other500020040")).Size(200, 40);
-                    ui.AddButton(ui.MidCol, ui.MidRow + 3, OpenList, GameTool.LS("other500020060")).Size(200, 40);
-                    ui.AddButton(ui.MidCol, ui.MidRow + 5, OpenRegister, GameTool.LS("other500020061")).Size(200, 40);
-                }
-                ui.UpdateUI();
-            }
-            else
-            if (e.uiType.uiName == UIType.NPCInfo.uiName && isNpcMarket)
-            {
-                var ui = new UICover<UINPCInfo>(e.ui);
-                ui.UI.tglTitle1.gameObject.SetActive(false);
-                ui.UI.tglTitle2.gameObject.SetActive(false);
-                ui.UI.tglTitle3.gameObject.SetActive(false);
-                ui.UI.tglTitle4.gameObject.SetActive(false);
-                ui.UI.tglTitle5.gameObject.SetActive(false);
-                ui.UI.tglTitle6.gameObject.SetActive(false);
-                ui.UI.tglTitle7.gameObject.SetActive(false);
-                ui.UI.uiProperty.goGroupRoot.SetActive(false);
-                OpenNPCSellList(ui.UI.unit);
-            }
-        }
+        //public override void OnOpenUIEnd(OpenUIEnd e)
+        //{
+        //    base.OnOpenUIEnd(e);
+        //    if (e.uiType.uiName == UIType.TownMarket.uiName)
+        //    {
+        //        var ui = new UICover<UITownMarket>(e.ui);
+        //        {
+        //            ui.AddToolTipButton(ui.MidCol - 3, ui.MidRow + 1, GameTool.LS("other500020041"));
+        //            ui.AddButton(ui.MidCol, ui.MidRow + 1, OpenMarket, GameTool.LS("other500020040")).Size(200, 40);
+        //            ui.AddButton(ui.MidCol, ui.MidRow + 3, OpenList, GameTool.LS("other500020060")).Size(200, 40);
+        //            ui.AddButton(ui.MidCol, ui.MidRow + 5, OpenRegister, GameTool.LS("other500020061")).Size(200, 40);
+        //        }
+        //        ui.UpdateUI();
+        //    }
+        //    else
+        //    if (e.uiType.uiName == UIType.NPCInfo.uiName && isNpcMarket)
+        //    {
+        //        var ui = new UICover<UINPCInfo>(e.ui);
+        //        ui.UI.tglTitle1.gameObject.SetActive(false);
+        //        ui.UI.tglTitle2.gameObject.SetActive(false);
+        //        ui.UI.tglTitle3.gameObject.SetActive(false);
+        //        ui.UI.tglTitle4.gameObject.SetActive(false);
+        //        ui.UI.tglTitle5.gameObject.SetActive(false);
+        //        ui.UI.tglTitle6.gameObject.SetActive(false);
+        //        ui.UI.tglTitle7.gameObject.SetActive(false);
+        //        ui.UI.uiProperty.goGroupRoot.SetActive(false);
+        //        OpenNPCSellList(ui.UI.unit);
+        //    }
+        //}
 
-        public override void OnCloseUIStart(CloseUIStart e)
-        {
-            base.OnCloseUIStart(e);
-            if (e.uiType.uiName == UIType.NPCSearch.uiName)
-            {
-                isNpcMarket = false;
-            }
-            else
-            if (e.uiType.uiName == UIType.TownMarket.uiName)
-            {
-                customData.Clear();
-            }
-        }
+        //public override void OnCloseUIStart(CloseUIStart e)
+        //{
+        //    base.OnCloseUIStart(e);
+        //    if (e.uiType.uiName == UIType.NPCSearch.uiName)
+        //    {
+        //        isNpcMarket = false;
+        //    }
+        //    else
+        //    if (e.uiType.uiName == UIType.TownMarket.uiName)
+        //    {
+        //        customData.Clear();
+        //    }
+        //}
 
         private void OpenMarket()
         {

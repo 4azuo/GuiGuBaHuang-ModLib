@@ -26,7 +26,7 @@ namespace MOD_nE7UL2.Mod
         public const int PAGE3_FONT_SIZE = 13;
         public const int MAX_NUMBER = 100000000;
 
-        private static readonly Dictionary<int, MultiValue> TELE_AREA_COL = new Dictionary<int, MultiValue>
+        private readonly Dictionary<int, MultiValue> TELE_AREA_COL = new Dictionary<int, MultiValue>
         {
             [1] = MultiValue.Create(0, new Func<MapBuildBase, bool>((x) => x.IsSchool() || x.IsTown())),
             [2] = MultiValue.Create(0, new Func<MapBuildBase, bool>((x) => x.IsSchool() || x.IsTown())),
@@ -43,7 +43,7 @@ namespace MOD_nE7UL2.Mod
             [13] = MultiValue.Create(4, new Func<MapBuildBase, bool>((x) => true)),
         };
 
-        private static UICustom1 uiTrainer;
+        private UICustom1 uiTrainer;
 
         public override bool OnCacheHandler()
         {

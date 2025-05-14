@@ -61,8 +61,11 @@ namespace MOD_nE7UL2.Mod
         public override void OnTimeUpdate200ms()
         {
             base.OnTimeUpdate200ms();
-            var sp = CalExchangeSpiritStones();
-            txtExchangeContribution.text = string.Format(GameTool.LS("other500020056"), sp, CalExchangeContributions(sp));
+            if (txtExchangeContribution != null)
+            {
+                var sp = CalExchangeSpiritStones();
+                txtExchangeContribution.text = string.Format(GameTool.LS("other500020056"), sp, CalExchangeContributions(sp));
+            }
         }
 
         private void OpenSelector()

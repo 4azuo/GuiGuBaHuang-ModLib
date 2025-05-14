@@ -1,10 +1,10 @@
-﻿using MOD_nE7UL2.Const;
+﻿using Harmony;
+using MOD_nE7UL2.Const;
 using ModLib.Enum;
 using ModLib.Mod;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using static DataBuildSchool;
 
 namespace MOD_nE7UL2.Mod
 {
@@ -17,6 +17,7 @@ namespace MOD_nE7UL2.Mod
         public const float RANDOM_NPC_JOIN_RATE = 0.1f;
         public const float SECT_NPC_JOIN_RATE = 1.0f;
         public const float TOWN_GUARD_NPC_JOIN_RATE = 3.0f;
+        public const float TEAM_MEMBER_JOIN_RATE = 5.0f;
         public const float TEAM_MEMBER_BETRAY_RATE = 0.2f;
         public const float STALKER_JOIN_BATTLE = 1f;
         public const int ENEMY_JOIN_DRAMA = 480110100;
@@ -28,9 +29,10 @@ namespace MOD_nE7UL2.Mod
         public const int RIGHTEOUS_DRAMA = 480110501;
         public const int EVIL_DRAMA = 480110502;
 
-        public static float avgGrade;
-        public static List<UnitCtrlBase> TeamMembers { get; } = new List<UnitCtrlBase>();
-        public static List<WorldUnitBase> AroundUnits { get; } = new List<WorldUnitBase>();
+        public float AvgGrade { get; private set; }
+        public List<WorldUnitBase> AroundUnits { get; } = new List<WorldUnitBase>();
+        public List<WorldUnitBase> TeamMembers { get; } = new List<WorldUnitBase>();
+        public List<UnitCtrlBase> JointTeamMembers { get; } = new List<UnitCtrlBase>();
 
         public static readonly int[] friendlyInTraits = new int[] { UnitTraitEnum.Selfless.Parse<int>() };
         public static readonly int[] enemyInTraits = new int[] { UnitTraitEnum.Wicked.Parse<int>(), UnitTraitEnum.Selfish.Parse<int>(), UnitTraitEnum.Evil.Parse<int>() };
@@ -41,9 +43,10 @@ namespace MOD_nE7UL2.Mod
         {
             base.OnBattleStart(e);
 
-            avgGrade = g.world.playerUnit.GetGradeLvl() - 1;
+            AvgGrade = g.world.playerUnit.GetGradeLvl() - 1;
             AroundUnits.Clear();
             TeamMembers.Clear();
+            JointTeamMembers.Clear();
             if (g.world.battle.data.isRealBattle && IsJoinableBattle())
             {
                 var player = g.world.playerUnit;
@@ -51,11 +54,11 @@ namespace MOD_nE7UL2.Mod
                 //setup around units
                 AroundUnits.AddRange(player.GetUnitsAround(JOIN_RANGE, false, false).ToArray().Where(x =>
                 {
-                    return !BattleAfterEvent.Stalkers.Contains(x) && CondJoinBattle(x) && (IsFriendlyUnit(x) >= 0 || IsEnemyUnit(x) >= 0 || MapBuildPropertyEvent.IsTownGuardian(x) || MapBuildPropertyEvent.IsSchoolMember(ModBattleEvent.School, x));
+                    return !BattleAfterEvent.Instance.Stalkers.Contains(x.GetUnitId()) && CondJoinBattle(x) && (IsFriendlyUnit(x) >= 0 || IsEnemyUnit(x) >= 0 || MapBuildPropertyEvent.IsTownGuardian(x) || MapBuildPropertyEvent.IsSchoolMember(ModBattleEvent.School, x));
                 }));
 
                 //team member join
-                TeamMembers.AddRange(NPCJoin(UnitType.PlayerNPC, HirePeopleEvent.GetTeamDetailData(player).Item2.Where(x => !x.isDie && !x.IsPlayer()).ToArray()));
+                TeamMembers.AddRange(HirePeopleEvent.GetTeamDetailData(player).Item2.Where(x => !x.isDie && !x.IsPlayer()));
             }
         }
 
@@ -69,16 +72,18 @@ namespace MOD_nE7UL2.Mod
                 if (g.world.battle.data.isRealBattle && ModBattleEvent.SceneBattle.battleMap.isStartBattle &&
                     ModBattleEvent.PlayerUnit != null && !ModBattleEvent.PlayerUnit.isDie && !ModBattleEvent.SceneBattle.unit.IsUnitHide(ModBattleEvent.PlayerUnit))
                 {
-                    if (BattleAfterEvent.Stalkers.Count > 0)
+                    if (BattleAfterEvent.Instance.Stalkers.Count > 0)
                     {
                         //enemy unit join battle
                         if (CommonTool.Random(0.00f, 100.00f).IsBetween(0.00f, STALKER_JOIN_BATTLE))
                         {
-                            var stalker = BattleAfterEvent.Stalkers.FirstOrDefault();
-                            if (stalker != null)
+                            var stalkerId = BattleAfterEvent.Instance.Stalkers.FirstOrDefault();
+                            if (stalkerId != null)
                             {
+                                var stalker = g.world.unit.GetUnit(stalkerId);
+                                DebugHelper.WriteLine($"Stalker join: {stalker.data.unitData.propertyData.GetName()} ({stalker.GetUnitId()})");
                                 var units = HirePeopleEvent.GetTeamDetailData(stalker).Item2;
-                                BattleAfterEvent.Stalkers.RemoveAll(x => units.Any(y => y.GetUnitId() == x.GetUnitId()));
+                                BattleAfterEvent.Instance.Stalkers.RemoveAll(x => units.Any(y => y.GetUnitId() == x));
                                 NPCJoin(UnitType.Monst, units);
 
                                 DramaTool.OpenDrama(STALKER_JOIN_DRAMA, new DramaData() { unitLeft = stalker, unitRight = g.world.playerUnit });
@@ -93,6 +98,7 @@ namespace MOD_nE7UL2.Mod
                             var enemyUnit = AroundUnits.FirstOrDefault(x => IsEnemyUnit(x) >= 0);
                             if (enemyUnit != null)
                             {
+                                DebugHelper.WriteLine($"Enemy join: {enemyUnit.data.unitData.propertyData.GetName()} ({enemyUnit.GetUnitId()})");
                                 var t = IsEnemyUnit(enemyUnit);
                                 var units = HirePeopleEvent.GetTeamDetailData(enemyUnit).Item2;
                                 AroundUnits.RemoveAll(x => units.Any(y => y.GetUnitId() == x.GetUnitId()));
@@ -116,6 +122,7 @@ namespace MOD_nE7UL2.Mod
                             var friendlyUnit = AroundUnits.FirstOrDefault(x => IsFriendlyUnit(x) >= 0);
                             if (friendlyUnit != null)
                             {
+                                DebugHelper.WriteLine($"Friend join: {friendlyUnit.data.unitData.propertyData.GetName()} ({friendlyUnit.GetUnitId()})");
                                 var units = HirePeopleEvent.GetTeamDetailData(friendlyUnit).Item2;
                                 AroundUnits.RemoveAll(x => units.Any(y => y.GetUnitId() == x.GetUnitId()));
                                 NPCJoin(UnitType.PlayerNPC, units);
@@ -130,6 +137,7 @@ namespace MOD_nE7UL2.Mod
                             var sectMember = AroundUnits.FirstOrDefault(x => MapBuildPropertyEvent.IsSchoolMember(ModBattleEvent.School, x));
                             if (sectMember != null)
                             {
+                                DebugHelper.WriteLine($"Sect-member ({ModBattleEvent.School.GetName(true)}) join: {sectMember.data.unitData.propertyData.GetName()} ({sectMember.GetUnitId()})");
                                 var units = HirePeopleEvent.GetTeamDetailData(sectMember).Item2;
                                 AroundUnits.RemoveAll(x => units.Any(y => y.GetUnitId() == x.GetUnitId()));
                                 var ut = IsFriendlyUnit(sectMember) >= 0 || g.world.playerUnit.IsSameSect(sectMember) ? UnitType.PlayerNPC : UnitType.Monst;
@@ -145,6 +153,7 @@ namespace MOD_nE7UL2.Mod
                             var townguard = AroundUnits.FirstOrDefault(x => MapBuildPropertyEvent.IsTownGuardian(ModBattleEvent.Town, x));
                             if (townguard != null)
                             {
+                                DebugHelper.WriteLine($"Town-guard ({ModBattleEvent.Town.name}) join: {townguard.data.unitData.propertyData.GetName()} ({townguard.GetUnitId()})");
                                 var units = HirePeopleEvent.GetTeamDetailData(townguard).Item2;
                                 AroundUnits.RemoveAll(x => units.Any(y => y.GetUnitId() == x.GetUnitId()));
                                 var ut = IsFriendlyUnit(townguard) >= 0 || g.world.playerUnit.IsSameSect(townguard) ? UnitType.PlayerNPC : UnitType.Monst;
@@ -156,11 +165,24 @@ namespace MOD_nE7UL2.Mod
                     }
                     if (TeamMembers.Count > 0)
                     {
-                        foreach (var cmember in TeamMembers.ToArray())
+                        foreach (var wmember in TeamMembers)
+                        {
+                            if (CommonTool.Random(0.00f, 100.00f).IsBetween(0.00f, TEAM_MEMBER_JOIN_RATE))
+                            {
+                                DebugHelper.WriteLine($"Team-member ({HirePeopleEvent.GetTeamInfoStr(g.world.playerUnit)}) join: {wmember.data.unitData.propertyData.GetName()} ({wmember.GetUnitId()})");
+                                JointTeamMembers.AddRange(NPCJoin(UnitType.PlayerNPC, wmember));
+                                TeamMembers.Remove(wmember);
+                            }
+                        }
+                    }
+                    if (JointTeamMembers.Count > 0)
+                    {
+                        foreach (var cmember in JointTeamMembers.ToArray())
                         {
                             if (!cmember.isDie && CommonTool.Random(0.00f, 100.00f).IsBetween(0.00f, TEAM_MEMBER_BETRAY_RATE))
                             {
                                 var wmember = g.world.unit.GetUnit(cmember);
+                                DebugHelper.WriteLine($"Team-member ({HirePeopleEvent.GetTeamInfoStr(g.world.playerUnit)}) betray: {wmember.data.unitData.propertyData.GetName()} ({wmember.GetUnitId()})");
                                 var t = IsBetrayUnit(wmember);
                                 if (t >= 0)
                                 {
@@ -192,7 +214,7 @@ namespace MOD_nE7UL2.Mod
             var wpos = g.world.playerUnit.GetUnitPos();
             foreach (var wunit in wunits.Where(x => x != null && x.data != null && !x.isDie))
             {
-                if (ModBattleEvent.SceneBattle.unit.GetAllUnitIncludeDie().ToList().Any(x => x.IsWorldUnit() && x.GetWorldUnit().GetUnitId() == wunit.GetUnitId()))
+                if (ModBattleEvent.SceneBattle.unit.allUnitIncludeDie.ToList().Any(x => x.IsWorldUnit() && x.GetWorldUnit().GetUnitId() == wunit.GetUnitId()))
                     continue;
 
                 //set wpos
@@ -204,15 +226,15 @@ namespace MOD_nE7UL2.Mod
                 //set cpos
                 var posi = new UnityEngine.Vector2[]
                 {
-                    new UnityEngine.Vector2(ModBattleEvent.SceneBattle.battleMap.roomCenterPosi.x + -16, ModBattleEvent.SceneBattle.battleMap.roomCenterPosi.y +   0),
-                    new UnityEngine.Vector2(ModBattleEvent.SceneBattle.battleMap.roomCenterPosi.x +  16, ModBattleEvent.SceneBattle.battleMap.roomCenterPosi.y +   0),
-                    new UnityEngine.Vector2(ModBattleEvent.SceneBattle.battleMap.roomCenterPosi.x +   0, ModBattleEvent.SceneBattle.battleMap.roomCenterPosi.y + -16),
-                    new UnityEngine.Vector2(ModBattleEvent.SceneBattle.battleMap.roomCenterPosi.x +   0, ModBattleEvent.SceneBattle.battleMap.roomCenterPosi.y +  16),
+                        new UnityEngine.Vector2(ModBattleEvent.SceneBattle.battleMap.roomCenterPosi.x + -16, ModBattleEvent.SceneBattle.battleMap.roomCenterPosi.y +   0),
+                        new UnityEngine.Vector2(ModBattleEvent.SceneBattle.battleMap.roomCenterPosi.x +  16, ModBattleEvent.SceneBattle.battleMap.roomCenterPosi.y +   0),
+                        new UnityEngine.Vector2(ModBattleEvent.SceneBattle.battleMap.roomCenterPosi.x +   0, ModBattleEvent.SceneBattle.battleMap.roomCenterPosi.y + -16),
+                        new UnityEngine.Vector2(ModBattleEvent.SceneBattle.battleMap.roomCenterPosi.x +   0, ModBattleEvent.SceneBattle.battleMap.roomCenterPosi.y +  16),
                 };
                 cunit.move.SetPosition(posi.Random());
 
                 //set avgGrade
-                avgGrade = ((avgGrade + wunit.GetGradeLvl()) / 2f) + 0.1f;
+                AvgGrade = ((AvgGrade + wunit.GetGradeLvl()) / 2f) + 0.1f;
 
                 rs.Add(cunit);
             }
@@ -221,7 +243,7 @@ namespace MOD_nE7UL2.Mod
 
         private bool CondJoinBattle(WorldUnitBase wunit)
         {
-            return !wunit.isDie && wunit.GetGradeLvl() >= avgGrade &&
+            return !wunit.isDie && wunit.GetGradeLvl() >= AvgGrade &&
                 wunit.GetDynProperty(UnitDynPropertyEnum.Hp).value > (wunit.GetDynProperty(UnitDynPropertyEnum.HpMax).value * 0.7f) &&
                 wunit.GetDynProperty(UnitDynPropertyEnum.Mp).value > (wunit.GetDynProperty(UnitDynPropertyEnum.MpMax).value * 0.5f) &&
                 wunit.GetDynProperty(UnitDynPropertyEnum.Sp).value > (wunit.GetDynProperty(UnitDynPropertyEnum.SpMax).value * 0.3f);
@@ -229,7 +251,7 @@ namespace MOD_nE7UL2.Mod
 
         private int IsFriendlyUnit(WorldUnitBase wunit)
         {
-            if (wunit.GetGradeLvl() >= avgGrade)
+            if (wunit.GetGradeLvl() >= AvgGrade)
             {
                 //from friend
                 if (friendlyInTraits.Contains(wunit.data.unitData.propertyData.inTrait) ||
@@ -250,7 +272,7 @@ namespace MOD_nE7UL2.Mod
 
         private int IsEnemyUnit(WorldUnitBase wunit)
         {
-            if (wunit.GetGradeLvl() >= avgGrade)
+            if (wunit.GetGradeLvl() >= AvgGrade)
             {
                 //from hater
                 if (wunit.data.unitData.relationData.GetIntim(g.world.playerUnit) <= -200 ||
@@ -276,7 +298,7 @@ namespace MOD_nE7UL2.Mod
 
         private int IsBetrayUnit(WorldUnitBase wunit)
         {
-            if (wunit.GetGradeLvl() >= avgGrade)
+            if (wunit.GetGradeLvl() >= AvgGrade)
             {
                 //from hater
                 if (wunit.data.unitData.relationData.GetIntim(g.world.playerUnit) <= -200 ||

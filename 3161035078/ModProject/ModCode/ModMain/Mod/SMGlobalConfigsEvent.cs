@@ -109,7 +109,7 @@ namespace MOD_nE7UL2.Mod
         private UIItemComposite cbStartupPlayerRole;
 
         //Score
-        public static IList<SMItemWork> ScoreCalculator { get; } = new List<SMItemWork>();
+        public IList<SMItemWork> ScoreCalculator { get; } = new List<SMItemWork>();
 
         public override void OnLoadClass(bool isNew, string modId, CacheAttribute attr)
         {
@@ -598,7 +598,7 @@ namespace MOD_nE7UL2.Mod
 
         public static int CalCompScore(UIItemBase comp)
         {
-            var x = ScoreCalculator.FirstOrDefault(k => k.Comp.Invoke() == comp);
+            var x = Instance.ScoreCalculator.FirstOrDefault(k => k.Comp.Invoke() == comp);
             if (x == null || !x.Cond.Invoke(comp))
                 return 0;
             return x.Cal.Invoke(comp);
@@ -606,7 +606,7 @@ namespace MOD_nE7UL2.Mod
 
         public static bool IsEnableComp(UIItemBase comp)
         {
-            var x = ScoreCalculator.FirstOrDefault(k => k.Comp.Invoke() == comp);
+            var x = Instance.ScoreCalculator.FirstOrDefault(k => k.Comp.Invoke() == comp);
             if (x == null)
                 return false;
             return x != null && x.Cond.Invoke(comp) && comp.IsEnable();
@@ -615,7 +615,7 @@ namespace MOD_nE7UL2.Mod
         public static int CalSMTotalScore()
         {
             var rs = 0;
-            foreach (var item in ScoreCalculator)
+            foreach (var item in Instance.ScoreCalculator)
             {
                 var comp = item.Comp.Invoke();
                 if (comp != null && IsEnableComp(comp))
