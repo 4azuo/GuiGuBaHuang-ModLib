@@ -20,33 +20,33 @@ namespace MOD_nE7UL2.Mod
 
         public static _HideButtonConfigs Configs => ModMain.ModObj.GameSettings.HideButtonConfigs;
 
-        private static Text uiArtifactInfo_textBasicTitle;
-        private static Text uiArtifactInfo_textBasicAdj1;
-        private static Text uiArtifactInfo_textBasicAdj2;
-        private static Text uiArtifactInfo_textBasicAdj3;
-        private static Text uiArtifactInfo_textExpertLvl;
-        private static Text uiArtifactInfo_textExpertAdj1;
-        private static Text uiArtifactInfo_textExpertAdj2;
-        private static Text uiArtifactInfo_textRefineTitle;
-        private static Text uiArtifactInfo_textRefineAdj1;
-        private static Text uiArtifactInfo_textRefineAdj2;
-        private static Text uiArtifactInfo_textRefineAdj3;
-        private static Text uiArtifactInfo_textRefineAdj4;
-        private static Text uiArtifactInfo_textRefineAdj5;
-        private static UINPCInfoPreview uiMartialExpertInfo;
-        private static Text uiMartialExpertInfo_textExpertLvl;
-        private static Text uiMartialExpertInfo_textAdj1;
-        private static Text uiMartialExpertInfo_textAdj2;
-        private static Text uiMartialExpertInfo_textAdj3;
-        private static Text uiMartialExpertInfo_textAdj4;
-        private static Text uiMartialExpertInfo_textAdj5;
-        private static Text uiPropInfo_textRefineTitle;
-        private static Text uiPropInfo_textRefineAdj1;
-        private static Text uiPropInfo_textRefineAdj2;
-        private static Text uiPropInfo_textRefineAdj3;
-        private static Text uiPropInfo_textRefineAdj4;
+        private Text uiArtifactInfo_textBasicTitle;
+        private Text uiArtifactInfo_textBasicAdj1;
+        private Text uiArtifactInfo_textBasicAdj2;
+        private Text uiArtifactInfo_textBasicAdj3;
+        private Text uiArtifactInfo_textExpertLvl;
+        private Text uiArtifactInfo_textExpertAdj1;
+        private Text uiArtifactInfo_textExpertAdj2;
+        private Text uiArtifactInfo_textRefineTitle;
+        private Text uiArtifactInfo_textRefineAdj1;
+        private Text uiArtifactInfo_textRefineAdj2;
+        private Text uiArtifactInfo_textRefineAdj3;
+        private Text uiArtifactInfo_textRefineAdj4;
+        private Text uiArtifactInfo_textRefineAdj5;
+        private UINPCInfoPreview uiMartialExpertInfo;
+        private Text uiMartialExpertInfo_textExpertLvl;
+        private Text uiMartialExpertInfo_textAdj1;
+        private Text uiMartialExpertInfo_textAdj2;
+        private Text uiMartialExpertInfo_textAdj3;
+        private Text uiMartialExpertInfo_textAdj4;
+        private Text uiMartialExpertInfo_textAdj5;
+        private Text uiPropInfo_textRefineTitle;
+        private Text uiPropInfo_textRefineAdj1;
+        private Text uiPropInfo_textRefineAdj2;
+        private Text uiPropInfo_textRefineAdj3;
+        private Text uiPropInfo_textRefineAdj4;
 
-        public static void OnUIOpen(OpenUIEnd e)
+        public void OnUIOpen(OpenUIEnd e)
         {
             /*
              * Hide buttons
@@ -383,7 +383,7 @@ namespace MOD_nE7UL2.Mod
             }
         }
 
-        public static void OnUIUpdate()
+        public void OnUIUpdate()
         {
             var uiArtifactInfo = g.ui.GetUI<UIArtifactInfo>(UIType.ArtifactInfo);
             var uiPropInfo = g.ui.GetUI<UIPropInfo>(UIType.PropInfo);
@@ -427,7 +427,7 @@ namespace MOD_nE7UL2.Mod
             }
         }
 
-        public static void OnUIClose(CloseUIEnd e)
+        public void OnUIClose(CloseUIEnd e)
         {
             if (e.uiType.uiName == UIType.MartialInfo.uiName && g.ui.HasUI(UIType.NPCInfoPreview))
             {

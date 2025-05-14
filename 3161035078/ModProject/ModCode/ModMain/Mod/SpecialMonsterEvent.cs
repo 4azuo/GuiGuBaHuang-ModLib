@@ -20,7 +20,7 @@ namespace MOD_nE7UL2.Mod
         public const string EXPLODE_EFX = @"Effect\Battle\Skill\baiyuanshizhen";
         public const string MULTIPLY_EFX = @"Effect\Battle\Skill\changhenfu_bao";
 
-        private static List<UnitCtrlBase> multipliedUnits = new List<UnitCtrlBase>();
+        public List<UnitCtrlBase> MultipliedUnits { get; } = new List<UnitCtrlBase>();
 
         public override void OnBattleUnitInto(UnitCtrlBase e)
         {
@@ -66,13 +66,13 @@ namespace MOD_nE7UL2.Mod
                         }
                     }
 
-                    if (!multipliedUnits.Contains(dieUnit) &&
+                    if (!MultipliedUnits.Contains(dieUnit) &&
                         CommonTool.Random(0.0f, 100.0f).IsBetween(0.0f, SMLocalConfigsEvent.Instance.Calculate(MONST_MULTIPLY_CHANCE * monstData.grade.value * gameLvl, SMLocalConfigsEvent.Instance.Configs.AddSpecialMonsterRate).Parse<float>()))
                     {
                         ModBattleEvent.SceneBattle.effect.CreateSync(MULTIPLY_EFX, dieUnit.transform.position, 3f);
                         var count = CommonTool.Random(1, MULTIPLY * gameLvl);
                         for (var i = 0; i < count; i++)
-                            multipliedUnits.Add(SceneType.battle.unit.CreateUnitMonst(monstData.unitAttrItem.id, monstData.unit.posiDown.position, monstData.unitType));
+                            MultipliedUnits.Add(SceneType.battle.unit.CreateUnitMonst(monstData.unitAttrItem.id, monstData.unit.posiDown.position, monstData.unitType));
                     }
                 }
             }
@@ -81,7 +81,7 @@ namespace MOD_nE7UL2.Mod
         public override void OnBattleEnd(BattleEnd e)
         {
             base.OnBattleEnd(e);
-            multipliedUnits.Clear();
+            MultipliedUnits.Clear();
         }
     }
 }

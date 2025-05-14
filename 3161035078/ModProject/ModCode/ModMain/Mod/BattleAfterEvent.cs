@@ -23,7 +23,7 @@ namespace MOD_nE7UL2.Mod
             UnitTraitEnum.Power_hungry.Parse<int>()
         };
 
-        public static List<WorldUnitBase> Stalkers { get; } = new List<WorldUnitBase>();
+        public List<string> Stalkers { get; } = new List<string>();
 
         public const float STALKE_RATE = 30f;
 
@@ -32,11 +32,15 @@ namespace MOD_nE7UL2.Mod
             base.OnMonthly();
 
             var playerPos = g.world.playerUnit.GetUnitPos();
-            foreach (var wunit in Stalkers)
+            foreach (var wunitId in Stalkers)
             {
-                foreach (var member in HirePeopleEvent.GetTeamDetailData(wunit).Item2)
+                var wunit = g.world.unit.GetUnit(wunitId);
+                if (wunit != null)
                 {
-                    wunit.SetUnitPos(new UnityEngine.Vector2Int(CommonTool.Random(playerPos.x - 4, playerPos.x + 4), CommonTool.Random(playerPos.y - 4, playerPos.y + 4)));
+                    foreach (var member in HirePeopleEvent.GetTeamDetailData(wunit).Item2)
+                    {
+                        member.SetUnitPos(new UnityEngine.Vector2Int(CommonTool.Random(playerPos.x - 4, playerPos.x + 4), CommonTool.Random(playerPos.y - 4, playerPos.y + 4)));
+                    }
                 }
             }
         }
@@ -59,7 +63,7 @@ namespace MOD_nE7UL2.Mod
                 {
                     if (CommonTool.Random(0.00f, 100.00f).IsBetween(0.00f, STALKE_RATE))
                     {
-                        Stalkers.AddRange(HirePeopleEvent.GetTeamDetailData(wunit).Item2); //stalke
+                        Stalkers.AddRange(HirePeopleEvent.GetTeamDetailData(wunit).Item2.Select(x => x.GetUnitId())); //stalke
                     }
                     else
                     {

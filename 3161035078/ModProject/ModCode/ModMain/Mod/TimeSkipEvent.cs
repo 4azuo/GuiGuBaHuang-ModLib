@@ -4,14 +4,15 @@ using ModLib.Enum;
 using ModLib.Mod;
 using ModLib.Object;
 using UnityEngine;
-using static SpecialBattle83;
 
 namespace MOD_nE7UL2.Mod
 {
     [Cache(ModConst.TIME_SKIP_EVENT)]
     public class TimeSkipEvent : ModEvent
     {
-        private static int skip2Month = -1;
+        public static TimeSkipEvent Instance { get; set; }
+
+        private int skip2Month = -1;
 
         public override void OnOpenUIEnd(OpenUIEnd e)
         {
@@ -53,7 +54,7 @@ namespace MOD_nE7UL2.Mod
             }
         }
 
-        public static void SkipTime(int month)
+        public void SkipTime(int month)
         {
             skip2Month = GameHelper.GetGameTotalMonth() + month;
         }
