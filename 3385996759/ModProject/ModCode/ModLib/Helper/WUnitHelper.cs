@@ -12,16 +12,14 @@ public static class WUnitHelper
 
     public static void SetUnitPos(this WorldUnitBase wunit, Vector2Int p)
     {
-        wunit.data.unitData.SetPoint(p);
-        SceneType.map?.world.UpdateAllUI();
+        wunit.CreateAction(new UnitActionSetPoint(p));
     }
 
     public static void SetUnitRandomPos(this WorldUnitBase wunit, Vector2Int p, int r = 8)
     {
         var x = (p.x + CommonTool.Random(-r, r)).FixValue(0, g.data.grid.mapWidth);
         var y = (p.y + CommonTool.Random(-r, r)).FixValue(0, g.data.grid.mapHeight);
-        wunit.data.unitData.SetPoint(new Vector2Int(x, y));
-        SceneType.map?.world.UpdateAllUI();
+        wunit.SetUnitPos(new Vector2Int(x, y));
     }
 
     public static Vector2Int GetUnitPos(this WorldUnitBase wunit)
