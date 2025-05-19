@@ -12,7 +12,9 @@ public static class WUnitHelper
 
     public static void SetUnitPos(this WorldUnitBase wunit, Vector2Int p)
     {
-        wunit.CreateAction(new UnitActionSetPoint(p));
+        //wunit.CreateAction(new UnitActionSetPoint(p));
+        wunit.data.unitData.SetPoint(p);
+        SceneType.map?.world.UpdateAllUI();
     }
 
     public static void SetUnitRandomPos(this WorldUnitBase wunit, Vector2Int p, int r = 8)
