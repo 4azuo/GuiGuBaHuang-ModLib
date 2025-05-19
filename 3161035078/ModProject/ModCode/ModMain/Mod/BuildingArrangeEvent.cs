@@ -115,7 +115,7 @@ namespace MOD_nE7UL2.Mod
         {
             if (build == null || e == null)
                 return false;
-            return Instance.ArrDic.Contains(Instance.GetArrDicKey(build, e)) && build.GetBuildSub(e.BuildType) != null;
+            return Instance.ArrDic.Contains(Instance.GetArrDicKey(build, e));
         }
 
         public static bool IsBuildable(MapBuildBase build, BuildingCostEnum e)

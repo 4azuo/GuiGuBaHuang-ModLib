@@ -165,7 +165,7 @@ namespace MOD_nE7UL2.Mod
                     }
                     if (TeamMembers.Count > 0)
                     {
-                        foreach (var wmember in TeamMembers)
+                        foreach (var wmember in TeamMembers.ToArray())
                         {
                             if (CommonTool.Random(0.00f, 100.00f).IsBetween(0.00f, TEAM_MEMBER_JOIN_RATE))
                             {
@@ -341,7 +341,7 @@ namespace MOD_nE7UL2.Mod
                 g.world.battle.data.dungeonBaseItem.id != 3911 /*Tian Yuan Summit*/ &&
                 g.world.battle.data.dungeonBaseItem.id != 4601 /*Sect Position Dungeon*/ &&
                 g.world.battle.data.dungeonBaseItem.id != 5016850 /*Mind Demon*/ &&
-                !DungeonHelper.IsArean() /*Arena*/ &&
+                !DungeonHelper.IsArena() /*Arena*/ &&
                 !DungeonHelper.IsChallenge() /*Challenge*/ &&
                 !DungeonHelper.IsSpar() /*Spar*/ &&
                 !DungeonHelper.IsTrailOfLightning() /*Trial of Lightning*/ &&
