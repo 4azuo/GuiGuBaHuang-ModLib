@@ -10,7 +10,7 @@
         return g.world.battle.data.dungeonBaseItem.id == 110081;
     }
 
-    public static bool IsArean()
+    public static bool IsArena()
     {
         return g.world.battle.data.dungeonBaseItem.id == 24;
     }
