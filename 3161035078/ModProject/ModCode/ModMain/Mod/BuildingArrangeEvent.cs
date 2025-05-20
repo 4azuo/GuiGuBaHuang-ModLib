@@ -138,7 +138,7 @@ namespace MOD_nE7UL2.Mod
 
         public static void Destroy(MapBuildBase build, BuildingCostEnum e)
         {
-            if (build == null || e == null)
+            if (build == null || e == null || build.GetBuildSub(e.BuildType) == null) //just destroy when the build already has subbuild
                 return;
             Instance.ArrDic.Remove(Instance.GetArrDicKey(build, e));
             Instance.RemoveBuildSub(build, e);
