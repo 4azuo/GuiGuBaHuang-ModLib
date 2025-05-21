@@ -211,7 +211,8 @@ namespace MOD_nE7UL2.Mod
                     }
                 }
 
-                rs += UnitModifyHelper.GetRefineOutfitAdjDef(def, wunit.GetEquippedOutfit(), CustomRefineEvent.GetRefineLvl(wunit.GetEquippedOutfit()));
+                var outfit = wunit.GetEquippedOutfit();
+                rs += UnitModifyHelper.GetRefineOutfitAdjDef(def, outfit, CustomRefineEvent.GetRefineLvl(outfit));
 
                 rs += Convert.ToInt32(CustomRefineEvent.GetCustomAdjValue(wunit, AdjTypeEnum.Def));
 
@@ -255,9 +256,11 @@ namespace MOD_nE7UL2.Mod
 
                 rs += UnitModifyHelper.GetMartialAdjHp(wunit);
 
-                rs += UnitModifyHelper.GetRefineRingAdjHp(hpMax, wunit.GetEquippedRing(), CustomRefineEvent.GetRefineLvl(wunit.GetEquippedRing()));
+                var ring = wunit.GetEquippedRing();
+                rs += UnitModifyHelper.GetRefineRingAdjHp(hpMax, ring, CustomRefineEvent.GetRefineLvl(ring));
 
-                rs += UnitModifyHelper.GetRefineOutfitAdjHp(hpMax, wunit.GetEquippedOutfit(), CustomRefineEvent.GetRefineLvl(wunit.GetEquippedOutfit()));
+                var outfit = wunit.GetEquippedOutfit();
+                rs += UnitModifyHelper.GetRefineOutfitAdjHp(hpMax, outfit, CustomRefineEvent.GetRefineLvl(outfit));
 
                 rs += Convert.ToInt32(CustomRefineEvent.GetCustomAdjValue(wunit, AdjTypeEnum.MHp));
 
@@ -293,6 +296,9 @@ namespace MOD_nE7UL2.Mod
                 rs += UnitModifyHelper.GetAbiPointAdjMp(wunit);
 
                 rs += UnitModifyHelper.GetSpiritualAdjMp(wunit);
+
+                var mount = wunit.GetEquippedMount();
+                rs += UnitModifyHelper.GetRefineMountAdjMp(mpMax, mount, CustomRefineEvent.GetRefineLvl(mount));
 
                 rs += Convert.ToInt32(CustomRefineEvent.GetCustomAdjValue(wunit, AdjTypeEnum.MMp));
 
