@@ -29,7 +29,6 @@ namespace MOD_nE7UL2.Mod
         public static _MonstStrongerConfigs MonstStrongerConfigs => ModMain.ModObj.GameSettings.MonstStrongerConfigs;
 
         private static readonly IDictionary<string, int> _nullify = new Dictionary<string, int>();
-        //private static readonly IList<MonstType> _monstStrongerAdditionalFlg = new List<MonstType>();
 
         public override void OnOpenUIEnd(OpenUIEnd e)
         {
@@ -38,7 +37,6 @@ namespace MOD_nE7UL2.Mod
             if (e.uiType.uiName == UIType.MapMain.uiName)
             {
                 _nullify.Clear();
-                //_monstStrongerAdditionalFlg.Clear();
             }
             else
             if (e.uiType.uiName == UIType.BattleInfo.uiName)
@@ -96,6 +94,17 @@ namespace MOD_nE7UL2.Mod
                 {
                     _nullify[unitId]--;
                     e.dynV.baseValue = 0;
+                    return;
+                }
+            }
+
+            //instant kill
+            if (ModBattleEvent.IsWorldUnitHit)
+            {
+                var rate = GetInstantKillBase(ModBattleEvent.AttackingWorldUnit) + GetInstantKillPlus(ModBattleEvent.AttackingWorldUnit);
+                if (ValueHelper.IsBetween(CommonTool.Random(0.00f, 100.00f), 0.00f, rate))
+                {
+                    e.dynV.baseValue = int.MaxValue;
                     return;
                 }
             }
@@ -278,28 +287,22 @@ namespace MOD_nE7UL2.Mod
             if (e.dynV.baseValue <= minDmg)
                 e.dynV.baseValue = minDmg;
 
-            //DebugHelper.WriteLine($"14: {e.dynV.baseValue}");
-            //monst-stronger
-            //var monstData = e?.hitUnit?.data?.TryCast<UnitDataMonst>();
-            //if (monstData != null && ModBattleEvent.IsPlayerAttacking &&
-            //    MonstStrongerEvent.AdditionalStts.ContainsKey(monstData.monstType) && !_monstStrongerAdditionalFlg.Contains(monstData.monstType) &&
-            //    e.hitData.skillBase?.TryCast<SkillAttack>()?.skillData.martialType == MartialType.SkillLeft)
-            //{
-            //    if (e.dynV.baseValue >= GetAdditionalCond(monstData))
-            //    {
-            //        MonstStrongerEvent.Instance.Additional[monstData.monstType] += MonstStrongerConfigs.Additionnal;
-            //        _monstStrongerAdditionalFlg.Add(monstData.monstType);
-            //    }
-            //}
-        }
+            //steal
+            if (ModBattleEvent.IsWorldUnitAttacking)
+            {
+                //steal hp
+                ModBattleEvent.AttackingUnit.data.AddHP(new MartialTool.HitData(ModBattleEvent.AttackingUnit, null, 0, 0,
+                    (e.dynV.baseValue * (GetStealHpBase(ModBattleEvent.AttackingWorldUnit) + GetStealHpPlus(ModBattleEvent.AttackingWorldUnit))).Parse<int>()));
 
-        //private static float GetAdditionalCond(UnitDataMonst monst)
-        //{
-        //    var gameLvl = g.data.dataWorld.data.gameLevel.Parse<int>();
-        //    var monstLvl = monst.grade.value;
-        //    var addStt = MonstStrongerEvent.AdditionalStts[monst.monstType] - (MonstStrongerEvent.AdditionalStts[monst.monstType] * monstLvl * gameLvl / 100f);
-        //    return monst.maxHP.value * addStt * ModBattleEvent.AttackingWorldUnit.GetGradeLvl().Parse<float>() / monstLvl.Parse<float>() / gameLvl;
-        //}
+                //steal mp
+                ModBattleEvent.AttackingUnit.data.AddMP(
+                    (e.dynV.baseValue * (GetStealMpBase(ModBattleEvent.AttackingWorldUnit) + GetStealMpPlus(ModBattleEvent.AttackingWorldUnit))).Parse<int>());
+
+                //steal sp
+                ModBattleEvent.AttackingUnit.data.AddSP(
+                    (e.dynV.baseValue * (GetStealSpBase(ModBattleEvent.AttackingWorldUnit) + GetStealSpPlus(ModBattleEvent.AttackingWorldUnit))).Parse<int>());
+            }
+        }
 
         public override void OnBattleUnitUseSkill(UnitUseSkill e)
         {
@@ -421,6 +424,7 @@ namespace MOD_nE7UL2.Mod
             return UnitModifyHelper.GetStepExpertMpCost(SkillHelper.GetStepMpCost(props), expertLvl, grade, level, wunit.GetGradeLvl() * expertLvl / 5);
         }
 
+        //Min Dmg
         public static int GetMinDmgBase(WorldUnitBase wunit)
         {
             var rs = wunit.GetGradeLvl();
@@ -442,6 +446,7 @@ namespace MOD_nE7UL2.Mod
             return Convert.ToInt32(CustomRefineEvent.GetCustomAdjValue(wunit, AdjTypeEnum.MinDamage));
         }
 
+        //Block Max
         public static double GetBlockMaxBase(WorldUnitBase wunit)
         {
             return 18.0d;
@@ -457,6 +462,7 @@ namespace MOD_nE7UL2.Mod
             return CustomRefineEvent.GetCustomAdjValue(wunit, AdjTypeEnum.BlockChanceMax);
         }
 
+        //Block Dmg
         public static double GetBlockDmgBase(WorldUnitBase wunit)
         {
             return wunit.GetDynProperty(UnitDynPropertyEnum.Defense).value;
@@ -472,6 +478,7 @@ namespace MOD_nE7UL2.Mod
             return CustomRefineEvent.GetCustomAdjValue(wunit, AdjTypeEnum.BlockDmg);
         }
 
+        //Evade Max
         public static double GetEvadeMaxBase(WorldUnitBase wunit)
         {
             return 12.0d;
@@ -487,6 +494,7 @@ namespace MOD_nE7UL2.Mod
             return CustomRefineEvent.GetCustomAdjValue(wunit, AdjTypeEnum.EvadeChanceMax);
         }
 
+        //Evade
         public static double GetEvadeBase(WorldUnitBase wunit)
         {
             return Math.Sqrt(wunit.GetDynProperty(UnitDynPropertyEnum.BasisWind).value / 18);
@@ -513,6 +521,7 @@ namespace MOD_nE7UL2.Mod
             return plusValue;
         }
 
+        //SCrit Chance Max
         public static double GetSCritChanceMaxBase(WorldUnitBase wunit)
         {
             return 8.0d;
@@ -523,6 +532,7 @@ namespace MOD_nE7UL2.Mod
             return CustomRefineEvent.GetCustomAdjValue(wunit, AdjTypeEnum.SCritChanceMax);
         }
 
+        //SCrit Chance
         public static double GetSCritChanceBase(WorldUnitBase wunit)
         {
             return Math.Sqrt(wunit.GetDynProperty(UnitDynPropertyEnum.BasisThunder).value / 50);
@@ -533,6 +543,7 @@ namespace MOD_nE7UL2.Mod
             return CustomRefineEvent.GetCustomAdjValue(wunit, AdjTypeEnum.SCritChance);
         }
 
+        //SCrit Damage
         public static double GetSCritDamageBase(WorldUnitBase wunit)
         {
             return 2.000f + wunit.GetDynProperty(UnitDynPropertyEnum.BasisFire).value / 1000.00f;
@@ -543,6 +554,7 @@ namespace MOD_nE7UL2.Mod
             return CustomRefineEvent.GetCustomAdjValue(wunit, AdjTypeEnum.SCritDamage);
         }
 
+        //Hp Recovery
         public static double GetHpRecoveryBase(WorldUnitBase wunit)
         {
             return Math.Sqrt(wunit.GetDynProperty(UnitDynPropertyEnum.BasisWood).value / 100f);
@@ -553,6 +565,7 @@ namespace MOD_nE7UL2.Mod
             return CustomRefineEvent.GetCustomAdjValue(wunit, AdjTypeEnum.RHp);
         }
 
+        //Mp Recovery
         public static double GetMpRecoveryBase(WorldUnitBase wunit)
         {
             return Math.Sqrt(wunit.GetDynProperty(UnitDynPropertyEnum.BasisFroze).value / 200f);
@@ -563,6 +576,7 @@ namespace MOD_nE7UL2.Mod
             return CustomRefineEvent.GetCustomAdjValue(wunit, AdjTypeEnum.RMp);
         }
 
+        //Sp Recovery
         public static double GetSpRecoveryBase(WorldUnitBase wunit)
         {
             return 0.0d;
@@ -571,6 +585,70 @@ namespace MOD_nE7UL2.Mod
         public static double GetSpRecoveryPlus(WorldUnitBase wunit)
         {
             return CustomRefineEvent.GetCustomAdjValue(wunit, AdjTypeEnum.RSp);
+        }
+
+        //Steal Hp
+        public static double GetStealHpBase(WorldUnitBase wunit)
+        {
+            return 0.0d;
+        }
+
+        public static double GetStealHpBase(UnitCtrlBase cunit)
+        {
+            return 0.0d;
+        }
+
+        public static double GetStealHpPlus(WorldUnitBase wunit)
+        {
+            return CustomRefineEvent.GetCustomAdjValue(wunit, AdjTypeEnum.StealHp);
+        }
+
+        //Steal Mp
+        public static double GetStealMpBase(WorldUnitBase wunit)
+        {
+            return 0.0d;
+        }
+
+        public static double GetStealMpBase(UnitCtrlBase cunit)
+        {
+            return 0.0d;
+        }
+
+        public static double GetStealMpPlus(WorldUnitBase wunit)
+        {
+            return CustomRefineEvent.GetCustomAdjValue(wunit, AdjTypeEnum.StealMp);
+        }
+
+        //Steal Sp
+        public static double GetStealSpBase(WorldUnitBase wunit)
+        {
+            return 0.0d;
+        }
+
+        public static double GetStealSpBase(UnitCtrlBase cunit)
+        {
+            return 0.0d;
+        }
+
+        public static double GetStealSpPlus(WorldUnitBase wunit)
+        {
+            return CustomRefineEvent.GetCustomAdjValue(wunit, AdjTypeEnum.StealSp);
+        }
+
+        //Instant Kill
+        public static double GetInstantKillBase(WorldUnitBase wunit)
+        {
+            return 0.0d;
+        }
+
+        public static double GetInstantKillBase(UnitCtrlBase cunit)
+        {
+            return 0.0d;
+        }
+
+        public static double GetInstantKillPlus(WorldUnitBase wunit)
+        {
+            return CustomRefineEvent.GetCustomAdjValue(wunit, AdjTypeEnum.InstantKill);
         }
         #endregion
     }

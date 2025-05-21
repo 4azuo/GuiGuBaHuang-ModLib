@@ -1,5 +1,4 @@
 ﻿using MOD_nE7UL2;
-using MOD_nE7UL2.Const;
 using MOD_nE7UL2.Mod;
 using ModLib.Enum;
 using System;
@@ -90,6 +89,16 @@ public static class UnitModifyHelper
         if (props == null)
             return 0;
         var r = 0.01f * props.propsInfoBase.level + 0.0001f * refineLvl;
+        return (r * baseValue).Parse<int>();
+    }
+    #endregion
+
+    #region Mount
+    public static int GetRefineMountAdjMp(int baseValue, DataProps.PropsData props, int refineLvl)
+    {
+        if (props == null)
+            return 0;
+        var r = 0.04f * props.propsInfoBase.level + 0.001f * refineLvl;
         return (r * baseValue).Parse<int>();
     }
     #endregion
