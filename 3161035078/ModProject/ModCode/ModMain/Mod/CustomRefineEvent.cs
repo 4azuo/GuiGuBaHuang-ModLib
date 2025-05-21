@@ -10,6 +10,7 @@ using System;
 using MOD_nE7UL2.Enum;
 using MOD_nE7UL2.Object;
 using ModLib.Enum;
+using Newtonsoft.Json;
 
 namespace MOD_nE7UL2.Mod
 {
@@ -20,21 +21,15 @@ namespace MOD_nE7UL2.Mod
 
         public const int REFINE_EXP_RATE = 200;
 
-        private static readonly Dictionary<string, double> _values = new Dictionary<string, double>();
-
+        [JsonIgnore]
+        public Dictionary<string, double> RefineValues { get; } = new Dictionary<string, double>();
         public Dictionary<string, long> RefineExp { get; set; } = new Dictionary<string, long>();
         public Dictionary<string, CustomRefine> CustomRefine { get; set; } = new Dictionary<string, CustomRefine>();
-
-        public override void OnLoadClass(bool isNew, string modId, CacheAttribute attr)
-        {
-            base.OnLoadClass(isNew, modId, attr);
-            _values.Clear();
-        }
 
         public override void OnMonthly()
         {
             base.OnMonthly();
-            _values.Clear();
+            RefineValues.Clear();
         }
 
         public override void OnMonthlyForEachWUnit(WorldUnitBase wunit)
@@ -147,7 +142,7 @@ namespace MOD_nE7UL2.Mod
                 g.ui.CloseUI(ui);
 
                 g.ui.MsgBox(GameTool.LS("other500020050"), string.Format(GameTool.LS("other500020051"), oldLvl, GetRefineLvl(refineItem), exp));
-                _values.Remove(g.world.playerUnit.GetUnitId());
+                RefineValues.Remove(g.world.playerUnit.GetUnitId());
             }));
             ui.UpdateUI();
         }
@@ -244,7 +239,7 @@ namespace MOD_nE7UL2.Mod
             if (wunit == null || adjType == null)
                 return 0d;
             var unitId = wunit.GetUnitId();
-            if (!_values.ContainsKey(unitId))
+            if (!Instance.RefineValues.ContainsKey(unitId))
             {
                 var rs = 0d;
                 foreach (var props in GetRefinableItems(wunit))
@@ -255,9 +250,9 @@ namespace MOD_nE7UL2.Mod
                         rs += a.GetRefineCustommAdjValue(wunit, props, refineLvl);
                     }
                 }
-                _values[unitId] = rs;
+                Instance.RefineValues[unitId] = rs;
             }
-            return _values[unitId];
+            return Instance.RefineValues[unitId];
         }
     }
 }
