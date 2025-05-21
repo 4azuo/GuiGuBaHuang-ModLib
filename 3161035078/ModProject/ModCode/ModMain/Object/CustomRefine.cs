@@ -26,11 +26,19 @@ namespace MOD_nE7UL2.Object
 
         public static AdjTypeEnum[] ArtifactAdjTypes = new AdjTypeEnum[]
         {
+            AdjTypeEnum.StealHp, AdjTypeEnum.StealMp, AdjTypeEnum.StealSp, AdjTypeEnum.InstantKill,
             AdjTypeEnum.Atk, AdjTypeEnum.Def, AdjTypeEnum.Speed, AdjTypeEnum.Manashield,
             AdjTypeEnum.Nullify, AdjTypeEnum.SkillDamage, AdjTypeEnum.MinDamage,
             AdjTypeEnum.BlockChanceMax, AdjTypeEnum.BlockDmg,
             AdjTypeEnum.EvadeChance, AdjTypeEnum.EvadeChanceMax,
             AdjTypeEnum.SCritChance, AdjTypeEnum.SCritChanceMax, AdjTypeEnum.SCritDamage
+        };
+
+        public static AdjTypeEnum[] MountAdjTypes = new AdjTypeEnum[]
+        {
+            AdjTypeEnum.Atk, AdjTypeEnum.Def, AdjTypeEnum.Nullify, AdjTypeEnum.Manashield,
+            AdjTypeEnum.StealHp, AdjTypeEnum.StealMp, AdjTypeEnum.StealSp, AdjTypeEnum.InstantKill,
+            AdjTypeEnum.SkillDamage, AdjTypeEnum.MinDamage
         };
 
         public static AdjLevelEnum[] AdjLevels = new AdjLevelEnum[]
@@ -46,6 +54,8 @@ namespace MOD_nE7UL2.Object
                 return OutfitAdjTypes;
             if (props?.propsItem?.IsArtifact() != null)
                 return ArtifactAdjTypes;
+            if (props?.propsItem?.IsMount() != null)
+                return MountAdjTypes;
             return AdjTypeEnum.GetAllEnums<AdjTypeEnum>();
         }
         #endregion

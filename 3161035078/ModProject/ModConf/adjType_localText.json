@@ -190,4 +190,24 @@
 		"ch": "最小傷害",
 		"en|kr|tc": "Min-Dmg"
 	},
+	{
+		"id": "500010032",
+		"key": "adjType500010032",
+		"ch|en|kr|tc": "Steal(Hp)"
+	},
+	{
+		"id": "500010033",
+		"key": "adjType500010033",
+		"ch|en|kr|tc": "Steal(Mp)"
+	},
+	{
+		"id": "500010034",
+		"key": "adjType500010034",
+		"ch|en|kr|tc": "Steal(Sp)"
+	},
+	{
+		"id": "500010035",
+		"key": "adjType500010035",
+		"ch|en|kr|tc": "Kill(%)"
+	},
 ]

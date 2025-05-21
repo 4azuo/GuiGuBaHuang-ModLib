@@ -59,7 +59,6 @@ namespace MOD_nE7UL2.Mod
             var exp = money * wunit.GetDynProperty(UnitDynPropertyEnum.RefineWeapon).value / REFINE_EXP_RATE;
             var spend = Convert.ToInt32(Math.Sqrt(money));
             AddRefineExp(item, exp);
-            //UnitModifyHelper.ClearCacheCustomAdjValues(wunit);
             wunit.AddUnitMoney(-spend);
             MapBuildPropertyEvent.AddBuildProperty(wunit.GetMapBuild<MapBuildBase>(), spend);
         }
@@ -160,7 +159,7 @@ namespace MOD_nE7UL2.Mod
 
         public static bool IsRefinableItem(DataProps.PropsData props)
         {
-            return props?.propsItem?.IsRing() != null || props?.propsItem?.IsOutfit() != null || props?.propsItem?.IsArtifact() != null;
+            return props?.propsItem?.IsRing() != null || props?.propsItem?.IsOutfit() != null || props?.propsItem?.IsArtifact() != null || props?.propsItem?.IsMount() != null;
         }
 
         public static bool IsRefinableMaterial(DataProps.PropsData props)
