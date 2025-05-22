@@ -23,7 +23,6 @@ namespace ModLib.Mod
         };
 
         public int TranslateIndex { get; set; } = 0;
-        public bool FirstTime { get; set; } = true;
 
         public override void OnLoadClass(bool isNew, string modId, CacheAttribute attr)
         {
@@ -40,10 +39,6 @@ namespace ModLib.Mod
                 {
                     var uiWarning = g.ui.OpenUISafe<UITextInfo>(UIType.TextInfo);
                     uiWarning.InitData(GameTool.LS("libtxt999990000"), GameTool.LS("libtxt999990001"));
-                }
-                if (FirstTime)
-                {
-                    Benchmark(true);
                 }
 
                 var ui = new UICover<UILogin>(UIType.Login);
@@ -74,26 +69,6 @@ namespace ModLib.Mod
                 }
                 ui.UpdateUI();
             }
-        }
-
-        public static void Benchmark(bool firsttime)
-        {
-            g.ui.MsgBox(string.Empty, firsttime ? GameTool.LS("libtxt999990004") : GameTool.LS("libtxt999990002"), Enum.MsgBoxButtonEnum.YesNo, () =>
-            {
-                Instance.FirstTime = false;
-                CacheHelper.SaveGlobalCache(Instance);
-
-                var ui = new UICover<UILogin>(UIType.Login);
-                var parentTransform = ui.UI.btnSet.transform.parent;
-                for (int i = 0; i < 10000; i++)
-                {
-                    ui.AddButton(CommonTool.Random(ui.FirstCol, ui.LastCol), CommonTool.Random(ui.FirstRow, ui.LastRow), null, string.Empty).SetParentTransform(parentTransform);
-                }
-                g.ui.MsgBox(string.Empty, GameTool.LS("libtxt999990003"), onYesCall: () =>
-                {
-                    Application.Quit();
-                });
-            });
         }
 
         public static string GetTranslateLanguage()
