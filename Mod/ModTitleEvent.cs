@@ -58,7 +58,7 @@ namespace ModLib.Mod
                     var panelLangInit = ui.AddButton(ui.LastCol - 10, ui.FirstRow + 2, null, string.Empty)
                         .Size(320, 80)
                         .SetParentTransform(parentTransform);
-                    var slLang = ui.AddCompositeSelect(ui.Columns[ui.LastCol - 12], ui.Rows[ui.FirstRow + 2] + 12, "Language:", new string[] { "Default", "Japanese", "Vietnamese", "Russian", "Latin", "Spanish" }, TranslateIndex)
+                    var slLang = ui.AddCompositeSelect(ui.Columns[ui.LastCol - 12], ui.Rows[ui.FirstRow + 2], "Language:", new string[] { "Default", "Japanese", "Vietnamese", "Russian", "Latin", "Spanish" }, TranslateIndex)
                         .SetParentTransform(panelLangInit.Component.transform) as UIItemComposite;
                     (slLang.MainComponent as UIItemSelect)
                         .Size(160, 24)
@@ -71,11 +71,6 @@ namespace ModLib.Mod
                                 LoadLocalTexts(GetTranslateLanguage());
                             }
                         });
-                    ui.AddButton(ui.Columns[ui.LastCol - 10], ui.Rows[ui.FirstRow + 2] - 12, () => Benchmark(false), "Benchmark")
-                        .Align(TextAnchor.MiddleCenter)
-                        .Format(Color.black, 15)
-                        .Size(160, 24)
-                        .SetParentTransform(panelLangInit.Component.transform);
                 }
                 ui.UpdateUI();
             }
