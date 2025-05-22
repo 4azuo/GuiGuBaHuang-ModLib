@@ -22,14 +22,14 @@ namespace MOD_nE7UL2.Mod
         public const int REFINE_EXP_RATE = 200;
 
         [JsonIgnore]
-        public Dictionary<string, double> RefineValues { get; } = new Dictionary<string, double>();
+        public Dictionary<string, double> CachedValues { get; } = new Dictionary<string, double>();
         public Dictionary<string, long> RefineExp { get; set; } = new Dictionary<string, long>();
         public Dictionary<string, CustomRefine> CustomRefine { get; set; } = new Dictionary<string, CustomRefine>();
 
         public override void OnMonthly()
         {
             base.OnMonthly();
-            RefineValues.Clear();
+            CachedValues.Clear();
         }
 
         public override void OnMonthlyForEachWUnit(WorldUnitBase wunit)
@@ -142,7 +142,7 @@ namespace MOD_nE7UL2.Mod
                 g.ui.CloseUI(ui);
 
                 g.ui.MsgBox(GameTool.LS("other500020050"), string.Format(GameTool.LS("other500020051"), oldLvl, GetRefineLvl(refineItem), exp));
-                RefineValues.Remove(g.world.playerUnit.GetUnitId());
+                CachedValues.Remove(g.world.playerUnit.GetUnitId());
             }));
             ui.UpdateUI();
         }
@@ -239,7 +239,7 @@ namespace MOD_nE7UL2.Mod
             if (wunit == null || adjType == null)
                 return 0d;
             var unitId = wunit.GetUnitId();
-            if (!Instance.RefineValues.ContainsKey(unitId))
+            if (!Instance.CachedValues.ContainsKey(unitId))
             {
                 var rs = 0d;
                 foreach (var props in GetRefinableItems(wunit))
@@ -250,9 +250,9 @@ namespace MOD_nE7UL2.Mod
                         rs += a.GetRefineCustommAdjValue(wunit, props, refineLvl);
                     }
                 }
-                Instance.RefineValues[unitId] = rs;
+                Instance.CachedValues[unitId] = rs;
             }
-            return Instance.RefineValues[unitId];
+            return Instance.CachedValues[unitId];
         }
     }
 }

@@ -5,6 +5,7 @@ using ModLib.Enum;
 using System.Collections.Generic;
 using MOD_nE7UL2.Enum;
 using System;
+using Newtonsoft.Json;
 
 namespace MOD_nE7UL2.Mod
 {
@@ -13,20 +14,15 @@ namespace MOD_nE7UL2.Mod
     {
         public static UnitModifyEvent Instance { get; set; }
 
-        private static readonly List<string> _units = new List<string>();
-        private static readonly Dictionary<string, int> _values = new Dictionary<string, int>();
-
-        public override void OnLoadClass(bool isNew, string modId, CacheAttribute attr)
-        {
-            base.OnLoadClass(isNew, modId, attr);
-            _units.Clear();
-            _values.Clear();
-        }
+        [JsonIgnore]
+        public List<string> CachedUnits { get; } = new List<string>();
+        [JsonIgnore]
+        public Dictionary<string, int> CachedValues { get; } = new Dictionary<string, int>();
 
         public override void OnMonthly()
         {
             base.OnMonthly();
-            _values.Clear();
+            CachedValues.Clear();
         }
 
         public override void OnMonthlyForEachWUnit(WorldUnitBase wunit)
@@ -47,9 +43,9 @@ namespace MOD_nE7UL2.Mod
         private void AddWUnitModifier(WorldUnitBase wunit)
         {
             var unitId = wunit.GetUnitId();
-            if (!_units.Contains(unitId))
+            if (!CachedUnits.Contains(unitId))
             {
-                _units.Add(unitId);
+                CachedUnits.Add(unitId);
 
                 //
                 wunit.GetDynProperty(UnitDynPropertyEnum.Attack).AddValue((DynInt.DynObjectAddHandler)(() =>
@@ -133,8 +129,8 @@ namespace MOD_nE7UL2.Mod
         {
             var k = $"{wunit.GetUnitId()}_atk";
             if (GameHelper.IsInBattlle())
-                return _values.ContainsKey(k) ? _values[k] : 0;
-            if (!_values.ContainsKey(k) || wunit.IsPlayer())
+                return Instance.CachedValues.ContainsKey(k) ? Instance.CachedValues[k] : 0;
+            if (!Instance.CachedValues.ContainsKey(k) || wunit.IsPlayer())
             {
                 var rs = 0;
 
@@ -169,18 +165,18 @@ namespace MOD_nE7UL2.Mod
 
                 rs += UnitModifyHelper.GetQiAdjAtk(wunit);
 
-                _values[k] = rs;
+                Instance.CachedValues[k] = rs;
             }
 
-            return _values[k];
+            return Instance.CachedValues[k];
         }
 
         public static int GetAdjustDef(WorldUnitBase wunit)
         {
             var k = $"{wunit.GetUnitId()}_def";
             if (GameHelper.IsInBattlle())
-                return _values.ContainsKey(k) ? _values[k] : 0;
-            if (!_values.ContainsKey(k) || wunit.IsPlayer())
+                return Instance.CachedValues.ContainsKey(k) ? Instance.CachedValues[k] : 0;
+            if (!Instance.CachedValues.ContainsKey(k) || wunit.IsPlayer())
             {
                 var rs = 0;
 
@@ -216,18 +212,18 @@ namespace MOD_nE7UL2.Mod
 
                 rs += Convert.ToInt32(CustomRefineEvent.GetCustomAdjValue(wunit, AdjTypeEnum.Def));
 
-                _values[k] = rs;
+                Instance.CachedValues[k] = rs;
             }
 
-            return _values[k];
+            return Instance.CachedValues[k];
         }
 
         public static int GetAdjustMaxHp(WorldUnitBase wunit)
         {
             var k = $"{wunit.GetUnitId()}_mhp";
             if (GameHelper.IsInBattlle())
-                return _values.ContainsKey(k) ? _values[k] : 0;
-            if (!_values.ContainsKey(k) || wunit.IsPlayer())
+                return Instance.CachedValues.ContainsKey(k) ? Instance.CachedValues[k] : 0;
+            if (!Instance.CachedValues.ContainsKey(k) || wunit.IsPlayer())
             {
                 var rs = 0;
 
@@ -266,18 +262,18 @@ namespace MOD_nE7UL2.Mod
 
                 rs += UnitModifyHelper.GetQiAdjHp(wunit);
 
-                _values[k] = rs;
+                Instance.CachedValues[k] = rs;
             }
 
-            return _values[k];
+            return Instance.CachedValues[k];
         }
 
         public static int GetAdjustMaxMp(WorldUnitBase wunit)
         {
             var k = $"{wunit.GetUnitId()}_mmp";
             if (GameHelper.IsInBattlle())
-                return _values.ContainsKey(k) ? _values[k] : 0;
-            if (!_values.ContainsKey(k) || wunit.IsPlayer())
+                return Instance.CachedValues.ContainsKey(k) ? Instance.CachedValues[k] : 0;
+            if (!Instance.CachedValues.ContainsKey(k) || wunit.IsPlayer())
             {
                 var rs = 0;
 
@@ -304,18 +300,18 @@ namespace MOD_nE7UL2.Mod
 
                 rs += UnitModifyHelper.GetQiAdjMp(wunit);
 
-                _values[k] = rs;
+                Instance.CachedValues[k] = rs;
             }
 
-            return _values[k];
+            return Instance.CachedValues[k];
         }
 
         public static int GetAdjustMaxSp(WorldUnitBase wunit)
         {
             var k = $"{wunit.GetUnitId()}_msp";
             if (GameHelper.IsInBattlle())
-                return _values.ContainsKey(k) ? _values[k] : 0;
-            if (!_values.ContainsKey(k) || wunit.IsPlayer())
+                return Instance.CachedValues.ContainsKey(k) ? Instance.CachedValues[k] : 0;
+            if (!Instance.CachedValues.ContainsKey(k) || wunit.IsPlayer())
             {
                 var rs = 0;
 
@@ -335,18 +331,18 @@ namespace MOD_nE7UL2.Mod
 
                 rs += Convert.ToInt32(CustomRefineEvent.GetCustomAdjValue(wunit, AdjTypeEnum.MSp));
 
-                _values[k] = rs;
+                Instance.CachedValues[k] = rs;
             }
 
-            return _values[k];
+            return Instance.CachedValues[k];
         }
 
         public static int GetAdjustSpeed(WorldUnitBase wunit)
         {
             var k = $"{wunit.GetUnitId()}_speed";
             if (GameHelper.IsInBattlle())
-                return _values.ContainsKey(k) ? _values[k] : 0;
-            if (!_values.ContainsKey(k) || wunit.IsPlayer())
+                return Instance.CachedValues.ContainsKey(k) ? Instance.CachedValues[k] : 0;
+            if (!Instance.CachedValues.ContainsKey(k) || wunit.IsPlayer())
             {
                 var rs = 0;
 
@@ -362,214 +358,214 @@ namespace MOD_nE7UL2.Mod
 
                 rs += Convert.ToInt32(CustomRefineEvent.GetCustomAdjValue(wunit, AdjTypeEnum.Speed));
 
-                _values[k] = rs;
+                Instance.CachedValues[k] = rs;
             }
 
-            return _values[k];
+            return Instance.CachedValues[k];
         }
 
         public static int GetAdjustBlade(WorldUnitBase wunit)
         {
             var k = $"{wunit.GetUnitId()}_blade";
             if (GameHelper.IsInBattlle())
-                return _values.ContainsKey(k) ? _values[k] : 0;
-            if (!_values.ContainsKey(k) || wunit.IsPlayer())
+                return Instance.CachedValues.ContainsKey(k) ? Instance.CachedValues[k] : 0;
+            if (!Instance.CachedValues.ContainsKey(k) || wunit.IsPlayer())
             {
                 var rs = 0;
 
                 rs += Convert.ToInt32(CustomRefineEvent.GetCustomAdjValue(wunit, AdjTypeEnum.BasisBlade));
 
-                _values[k] = rs;
+                Instance.CachedValues[k] = rs;
             }
 
-            return _values[k];
+            return Instance.CachedValues[k];
         }
 
         public static int GetAdjustEarth(WorldUnitBase wunit)
         {
             var k = $"{wunit.GetUnitId()}_earth";
             if (GameHelper.IsInBattlle())
-                return _values.ContainsKey(k) ? _values[k] : 0;
-            if (!_values.ContainsKey(k) || wunit.IsPlayer())
+                return Instance.CachedValues.ContainsKey(k) ? Instance.CachedValues[k] : 0;
+            if (!Instance.CachedValues.ContainsKey(k) || wunit.IsPlayer())
             {
                 var rs = 0;
 
                 rs += Convert.ToInt32(CustomRefineEvent.GetCustomAdjValue(wunit, AdjTypeEnum.BasisEarth));
 
-                _values[k] = rs;
+                Instance.CachedValues[k] = rs;
             }
 
-            return _values[k];
+            return Instance.CachedValues[k];
         }
 
         public static int GetAdjustFinger(WorldUnitBase wunit)
         {
             var k = $"{wunit.GetUnitId()}_finger";
             if (GameHelper.IsInBattlle())
-                return _values.ContainsKey(k) ? _values[k] : 0;
-            if (!_values.ContainsKey(k) || wunit.IsPlayer())
+                return Instance.CachedValues.ContainsKey(k) ? Instance.CachedValues[k] : 0;
+            if (!Instance.CachedValues.ContainsKey(k) || wunit.IsPlayer())
             {
                 var rs = 0;
 
                 rs += Convert.ToInt32(CustomRefineEvent.GetCustomAdjValue(wunit, AdjTypeEnum.BasisFinger));
 
-                _values[k] = rs;
+                Instance.CachedValues[k] = rs;
             }
 
-            return _values[k];
+            return Instance.CachedValues[k];
         }
 
         public static int GetAdjustFire(WorldUnitBase wunit)
         {
             var k = $"{wunit.GetUnitId()}_fire";
             if (GameHelper.IsInBattlle())
-                return _values.ContainsKey(k) ? _values[k] : 0;
-            if (!_values.ContainsKey(k) || wunit.IsPlayer())
+                return Instance.CachedValues.ContainsKey(k) ? Instance.CachedValues[k] : 0;
+            if (!Instance.CachedValues.ContainsKey(k) || wunit.IsPlayer())
             {
                 var rs = 0;
 
                 rs += Convert.ToInt32(CustomRefineEvent.GetCustomAdjValue(wunit, AdjTypeEnum.BasisFire));
 
-                _values[k] = rs;
+                Instance.CachedValues[k] = rs;
             }
 
-            return _values[k];
+            return Instance.CachedValues[k];
         }
 
         public static int GetAdjustFist(WorldUnitBase wunit)
         {
             var k = $"{wunit.GetUnitId()}_fist";
             if (GameHelper.IsInBattlle())
-                return _values.ContainsKey(k) ? _values[k] : 0;
-            if (!_values.ContainsKey(k) || wunit.IsPlayer())
+                return Instance.CachedValues.ContainsKey(k) ? Instance.CachedValues[k] : 0;
+            if (!Instance.CachedValues.ContainsKey(k) || wunit.IsPlayer())
             {
                 var rs = 0;
 
                 rs += Convert.ToInt32(CustomRefineEvent.GetCustomAdjValue(wunit, AdjTypeEnum.BasisFist));
 
-                _values[k] = rs;
+                Instance.CachedValues[k] = rs;
             }
 
-            return _values[k];
+            return Instance.CachedValues[k];
         }
 
         public static int GetAdjustFroze(WorldUnitBase wunit)
         {
             var k = $"{wunit.GetUnitId()}_froze";
             if (GameHelper.IsInBattlle())
-                return _values.ContainsKey(k) ? _values[k] : 0;
-            if (!_values.ContainsKey(k) || wunit.IsPlayer())
+                return Instance.CachedValues.ContainsKey(k) ? Instance.CachedValues[k] : 0;
+            if (!Instance.CachedValues.ContainsKey(k) || wunit.IsPlayer())
             {
                 var rs = 0;
 
                 rs += Convert.ToInt32(CustomRefineEvent.GetCustomAdjValue(wunit, AdjTypeEnum.BasisFroze));
 
-                _values[k] = rs;
+                Instance.CachedValues[k] = rs;
             }
 
-            return _values[k];
+            return Instance.CachedValues[k];
         }
 
         public static int GetAdjustPalm(WorldUnitBase wunit)
         {
             var k = $"{wunit.GetUnitId()}_pallm";
             if (GameHelper.IsInBattlle())
-                return _values.ContainsKey(k) ? _values[k] : 0;
-            if (!_values.ContainsKey(k) || wunit.IsPlayer())
+                return Instance.CachedValues.ContainsKey(k) ? Instance.CachedValues[k] : 0;
+            if (!Instance.CachedValues.ContainsKey(k) || wunit.IsPlayer())
             {
                 var rs = 0;
 
                 rs += Convert.ToInt32(CustomRefineEvent.GetCustomAdjValue(wunit, AdjTypeEnum.BasisPalm));
 
-                _values[k] = rs;
+                Instance.CachedValues[k] = rs;
             }
 
-            return _values[k];
+            return Instance.CachedValues[k];
         }
 
         public static int GetAdjustSpear(WorldUnitBase wunit)
         {
             var k = $"{wunit.GetUnitId()}_spear";
             if (GameHelper.IsInBattlle())
-                return _values.ContainsKey(k) ? _values[k] : 0;
-            if (!_values.ContainsKey(k) || wunit.IsPlayer())
+                return Instance.CachedValues.ContainsKey(k) ? Instance.CachedValues[k] : 0;
+            if (!Instance.CachedValues.ContainsKey(k) || wunit.IsPlayer())
             {
                 var rs = 0;
 
                 rs += Convert.ToInt32(CustomRefineEvent.GetCustomAdjValue(wunit, AdjTypeEnum.BasisSpear));
 
-                _values[k] = rs;
+                Instance.CachedValues[k] = rs;
             }
 
-            return _values[k];
+            return Instance.CachedValues[k];
         }
 
         public static int GetAdjustSword(WorldUnitBase wunit)
         {
             var k = $"{wunit.GetUnitId()}_sword";
             if (GameHelper.IsInBattlle())
-                return _values.ContainsKey(k) ? _values[k] : 0;
-            if (!_values.ContainsKey(k) || wunit.IsPlayer())
+                return Instance.CachedValues.ContainsKey(k) ? Instance.CachedValues[k] : 0;
+            if (!Instance.CachedValues.ContainsKey(k) || wunit.IsPlayer())
             {
                 var rs = 0;
 
                 rs += Convert.ToInt32(CustomRefineEvent.GetCustomAdjValue(wunit, AdjTypeEnum.BasisSword));
 
-                _values[k] = rs;
+                Instance.CachedValues[k] = rs;
             }
 
-            return _values[k];
+            return Instance.CachedValues[k];
         }
 
         public static int GetAdjustThunder(WorldUnitBase wunit)
         {
             var k = $"{wunit.GetUnitId()}_thunder";
             if (GameHelper.IsInBattlle())
-                return _values.ContainsKey(k) ? _values[k] : 0;
-            if (!_values.ContainsKey(k) || wunit.IsPlayer())
+                return Instance.CachedValues.ContainsKey(k) ? Instance.CachedValues[k] : 0;
+            if (!Instance.CachedValues.ContainsKey(k) || wunit.IsPlayer())
             {
                 var rs = 0;
 
                 rs += Convert.ToInt32(CustomRefineEvent.GetCustomAdjValue(wunit, AdjTypeEnum.BasisThunder));
 
-                _values[k] = rs;
+                Instance.CachedValues[k] = rs;
             }
 
-            return _values[k];
+            return Instance.CachedValues[k];
         }
 
         public static int GetAdjustWind(WorldUnitBase wunit)
         {
             var k = $"{wunit.GetUnitId()}_wind";
             if (GameHelper.IsInBattlle())
-                return _values.ContainsKey(k) ? _values[k] : 0;
-            if (!_values.ContainsKey(k) || wunit.IsPlayer())
+                return Instance.CachedValues.ContainsKey(k) ? Instance.CachedValues[k] : 0;
+            if (!Instance.CachedValues.ContainsKey(k) || wunit.IsPlayer())
             {
                 var rs = 0;
 
                 rs += Convert.ToInt32(CustomRefineEvent.GetCustomAdjValue(wunit, AdjTypeEnum.BasisWind));
 
-                _values[k] = rs;
+                Instance.CachedValues[k] = rs;
             }
 
-            return _values[k];
+            return Instance.CachedValues[k];
         }
 
         public static int GetAdjustWood(WorldUnitBase wunit)
         {
             var k = $"{wunit.GetUnitId()}_wood";
             if (GameHelper.IsInBattlle())
-                return _values.ContainsKey(k) ? _values[k] : 0;
-            if (!_values.ContainsKey(k) || wunit.IsPlayer())
+                return Instance.CachedValues.ContainsKey(k) ? Instance.CachedValues[k] : 0;
+            if (!Instance.CachedValues.ContainsKey(k) || wunit.IsPlayer())
             {
                 var rs = 0;
 
                 rs += Convert.ToInt32(CustomRefineEvent.GetCustomAdjValue(wunit, AdjTypeEnum.BasisWood));
 
-                _values[k] = rs;
+                Instance.CachedValues[k] = rs;
             }
 
-            return _values[k];
+            return Instance.CachedValues[k];
         }
     }
 }
