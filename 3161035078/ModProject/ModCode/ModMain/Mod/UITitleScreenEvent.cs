@@ -16,23 +16,23 @@ namespace MOD_nE7UL2.Mod
             base.OnOpenUIEnd(e);
             if (e.uiType.uiName == UIType.Login.uiName)
             {
+                var ui = new UICover<UILogin>(e.ui);
+                var parentTransform = ui.UI.btnSet.transform.parent;
+                ui.AddButton(ui.MidCol, ui.FirstRow + 2, () => Process.Start("explorer.exe", CacheHelper.GetCacheFolderName(ModId)), $"Taoist {ModConst.TAOIST_VERSION}", ui.UI.btnPaperChange)
+                    .Align(TextAnchor.MiddleCenter)
+                    .Format(Color.white, 22)
+                    .SetParentTransform(parentTransform);
+
                 if (!CompareVersion(ModConst.MODLIB_REQUIRED_VERSION, ModMaster.ModObj.Version))
                 {
                     var uiWarning = g.ui.OpenUISafe<UITextInfo>(UIType.TextInfo);
                     uiWarning.InitData(GameTool.LS("other500020022"), $"Taoist {ModConst.TAOIST_VERSION} is not supported in ModLib {ModMaster.ModObj.Version}!\nPlease install ModLib {ModConst.MODLIB_REQUIRED_VERSION} or above.");
                 }
-
-                var ui = new UICover<UILogin>(e.ui);
+                else
                 {
-                    var parentTransform = ui.UI.btnSet.transform.parent;
-                    ui.AddButton(ui.MidCol, ui.FirstRow + 2, () => Process.Start("explorer.exe", CacheHelper.GetCacheFolderName(ModId)), $"Taoist {ModConst.TAOIST_VERSION}", ui.UI.btnPaperChange)
-                        .Align(TextAnchor.MiddleCenter)
-                        .Format(Color.white, 22)
-                        .SetParentTransform(parentTransform);
+                    var uiInfo = g.ui.OpenUISafe<UITextInfoLong>(UIType.TextInfoLong);
+                    uiInfo.InitData(GameTool.LS("other500020046"), GetWorkshopDescription());
                 }
-
-                var uiInfo = g.ui.OpenUISafe<UITextInfoLong>(UIType.TextInfoLong);
-                uiInfo.InitData(GameTool.LS("other500020046"), GetWorkshopDescription());
             }
         }
 
@@ -43,11 +43,11 @@ namespace MOD_nE7UL2.Mod
             for (int i = 0; i < reqIndexes.Length && i < curIndexes.Length; i++)
             {
                 var reqIndex = reqIndexes[i].Parse<int>();
-                var curIndex = reqIndexes[i].Parse<int>();
+                var curIndex = curIndexes[i].Parse<int>();
                 if (curIndex < reqIndex)
-                    return true;
-                if (curIndex > reqIndex)
                     return false;
+                if (curIndex > reqIndex)
+                    return true;
             }
             return true;
         }
