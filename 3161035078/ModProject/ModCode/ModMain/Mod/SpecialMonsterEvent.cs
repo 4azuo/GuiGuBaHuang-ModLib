@@ -1,6 +1,7 @@
 ﻿using EBattleTypeData;
 using MOD_nE7UL2.Const;
 using ModLib.Mod;
+using Newtonsoft.Json;
 using System.Collections.Generic;
 
 namespace MOD_nE7UL2.Mod
@@ -20,6 +21,7 @@ namespace MOD_nE7UL2.Mod
         public const string EXPLODE_EFX = @"Effect\Battle\Skill\baiyuanshizhen";
         public const string MULTIPLY_EFX = @"Effect\Battle\Skill\changhenfu_bao";
 
+        [JsonIgnore]
         public List<UnitCtrlBase> MultipliedUnits { get; } = new List<UnitCtrlBase>();
 
         public override void OnBattleUnitInto(UnitCtrlBase e)

@@ -2,6 +2,7 @@
 using MOD_nE7UL2.Const;
 using ModLib.Enum;
 using ModLib.Mod;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -30,8 +31,11 @@ namespace MOD_nE7UL2.Mod
         public const int EVIL_DRAMA = 480110502;
 
         public float AvgGrade { get; private set; }
+        [JsonIgnore]
         public List<WorldUnitBase> AroundUnits { get; } = new List<WorldUnitBase>();
+        [JsonIgnore]
         public List<WorldUnitBase> TeamMembers { get; } = new List<WorldUnitBase>();
+        [JsonIgnore]
         public List<UnitCtrlBase> JointTeamMembers { get; } = new List<UnitCtrlBase>();
 
         public static readonly int[] friendlyInTraits = new int[] { UnitTraitEnum.Selfless.Parse<int>() };
