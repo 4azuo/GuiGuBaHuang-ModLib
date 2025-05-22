@@ -23,15 +23,13 @@ namespace MOD_nE7UL2.Mod
                     .Format(Color.white, 22)
                     .SetParentTransform(parentTransform);
 
+                var uiInfo = g.ui.OpenUISafe<UITextInfoLong>(UIType.TextInfoLong);
+                uiInfo.InitData(GameTool.LS("other500020046"), GetWorkshopDescription());
+
                 if (!CompareVersion(ModConst.MODLIB_REQUIRED_VERSION, ModMaster.ModObj.Version))
                 {
                     var uiWarning = g.ui.OpenUISafe<UITextInfo>(UIType.TextInfo);
                     uiWarning.InitData(GameTool.LS("other500020022"), $"Taoist {ModConst.TAOIST_VERSION} is not supported in ModLib {ModMaster.ModObj.Version}!\nPlease install ModLib {ModConst.MODLIB_REQUIRED_VERSION} or above.");
-                }
-                else
-                {
-                    var uiInfo = g.ui.OpenUISafe<UITextInfoLong>(UIType.TextInfoLong);
-                    uiInfo.InitData(GameTool.LS("other500020046"), GetWorkshopDescription());
                 }
             }
         }
