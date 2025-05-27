@@ -50,77 +50,77 @@ namespace MOD_nE7UL2.Mod
                 //
                 wunit.GetDynProperty(UnitDynPropertyEnum.Attack).AddValue((DynInt.DynObjectAddHandler)(() =>
                 {
-                    return GetAdjustAtk(wunit);
+                    try { return GetAdjustAtk(wunit); } catch (Exception e) { DebugHelper.WriteLine(e); return 0; }
                 }));
                 wunit.GetDynProperty(UnitDynPropertyEnum.Defense).AddValue((DynInt.DynObjectAddHandler)(() =>
                 {
-                    return GetAdjustDef(wunit);
+                    try { return GetAdjustDef(wunit); } catch (Exception e) { DebugHelper.WriteLine(e); return 0; }
                 }));
                 wunit.GetDynProperty(UnitDynPropertyEnum.HpMax).AddValue((DynInt.DynObjectAddHandler)(() =>
                 {
-                    return GetAdjustMaxHp(wunit);
+                    try { return GetAdjustMaxHp(wunit); } catch (Exception e) { DebugHelper.WriteLine(e); return 0; }
                 }));
                 wunit.GetDynProperty(UnitDynPropertyEnum.MpMax).AddValue((DynInt.DynObjectAddHandler)(() =>
                 {
-                    return GetAdjustMaxMp(wunit);
+                    try { return GetAdjustMaxMp(wunit); } catch (Exception e) { DebugHelper.WriteLine(e); return 0; }
                 }));
                 wunit.GetDynProperty(UnitDynPropertyEnum.SpMax).AddValue((DynInt.DynObjectAddHandler)(() =>
                 {
-                    return GetAdjustMaxSp(wunit);
+                    try { return GetAdjustMaxSp(wunit); } catch (Exception e) { DebugHelper.WriteLine(e); return 0; }
                 }));
                 wunit.GetDynProperty(UnitDynPropertyEnum.MoveSpeed).AddValue((DynInt.DynObjectAddHandler)(() =>
                 {
-                    return GetAdjustSpeed(wunit);
+                    try { return GetAdjustSpeed(wunit); } catch (Exception e) { DebugHelper.WriteLine(e); return 0; }
                 }));
 
                 //basis
                 wunit.GetDynProperty(UnitDynPropertyEnum.BasisBlade).AddValue((DynInt.DynObjectAddHandler)(() =>
                 {
-                    return GetAdjustBlade(wunit);
+                    try { return GetAdjustBlade(wunit); } catch (Exception e) { DebugHelper.WriteLine(e); return 0; }
                 }));
                 wunit.GetDynProperty(UnitDynPropertyEnum.BasisEarth).AddValue((DynInt.DynObjectAddHandler)(() =>
                 {
-                    return GetAdjustEarth(wunit);
+                    try { return GetAdjustEarth(wunit); } catch (Exception e) { DebugHelper.WriteLine(e); return 0; }
                 }));
                 wunit.GetDynProperty(UnitDynPropertyEnum.BasisFinger).AddValue((DynInt.DynObjectAddHandler)(() =>
                 {
-                    return GetAdjustFinger(wunit);
+                    try { return GetAdjustFinger(wunit); } catch (Exception e) { DebugHelper.WriteLine(e); return 0; }
                 }));
                 wunit.GetDynProperty(UnitDynPropertyEnum.BasisFire).AddValue((DynInt.DynObjectAddHandler)(() =>
                 {
-                    return GetAdjustFire(wunit);
+                    try { return GetAdjustFire(wunit); } catch (Exception e) { DebugHelper.WriteLine(e); return 0; }
                 }));
                 wunit.GetDynProperty(UnitDynPropertyEnum.BasisFist).AddValue((DynInt.DynObjectAddHandler)(() =>
                 {
-                    return GetAdjustFist(wunit);
+                    try { return GetAdjustFist(wunit); } catch (Exception e) { DebugHelper.WriteLine(e); return 0; }
                 }));
                 wunit.GetDynProperty(UnitDynPropertyEnum.BasisFroze).AddValue((DynInt.DynObjectAddHandler)(() =>
                 {
-                    return GetAdjustFroze(wunit);
+                    try { return GetAdjustFroze(wunit); } catch (Exception e) { DebugHelper.WriteLine(e); return 0; }
                 }));
                 wunit.GetDynProperty(UnitDynPropertyEnum.BasisPalm).AddValue((DynInt.DynObjectAddHandler)(() =>
                 {
-                    return GetAdjustPalm(wunit);
+                    try { return GetAdjustPalm(wunit); } catch (Exception e) { DebugHelper.WriteLine(e); return 0; }
                 }));
                 wunit.GetDynProperty(UnitDynPropertyEnum.BasisSpear).AddValue((DynInt.DynObjectAddHandler)(() =>
                 {
-                    return GetAdjustSpear(wunit);
+                    try { return GetAdjustSpear(wunit); } catch (Exception e) { DebugHelper.WriteLine(e); return 0; }
                 }));
                 wunit.GetDynProperty(UnitDynPropertyEnum.BasisSword).AddValue((DynInt.DynObjectAddHandler)(() =>
                 {
-                    return GetAdjustSword(wunit);
+                    try { return GetAdjustSword(wunit); } catch (Exception e) { DebugHelper.WriteLine(e); return 0; }
                 }));
                 wunit.GetDynProperty(UnitDynPropertyEnum.BasisThunder).AddValue((DynInt.DynObjectAddHandler)(() =>
                 {
-                    return GetAdjustThunder(wunit);
+                    try { return GetAdjustThunder(wunit); } catch (Exception e) { DebugHelper.WriteLine(e); return 0; }
                 }));
                 wunit.GetDynProperty(UnitDynPropertyEnum.BasisWind).AddValue((DynInt.DynObjectAddHandler)(() =>
                 {
-                    return GetAdjustWind(wunit);
+                    try { return GetAdjustWind(wunit); } catch (Exception e) { DebugHelper.WriteLine(e); return 0; }
                 }));
                 wunit.GetDynProperty(UnitDynPropertyEnum.BasisWood).AddValue((DynInt.DynObjectAddHandler)(() =>
                 {
-                    return GetAdjustWood(wunit);
+                    try { return GetAdjustWood(wunit); } catch (Exception e) { DebugHelper.WriteLine(e); return 0; }
                 }));
             }
         }

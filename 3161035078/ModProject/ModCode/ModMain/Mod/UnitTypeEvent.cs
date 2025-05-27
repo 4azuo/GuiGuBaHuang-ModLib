@@ -39,7 +39,7 @@ namespace MOD_nE7UL2.Mod
             {
                 if (wunit.IsPlayer() && SMLocalConfigsEvent.Instance.Configs.StartupPlayerRole > 0)
                 {
-                    UnitTypeDic.Add(unitId, SMGlobalConfigsEvent.StartupPlayerRoles[SMLocalConfigsEvent.Instance.Configs.StartupPlayerRole]);
+                    UnitTypeDic.Add(unitId, SMGlobalConfigsEvent.Instance.StartupPlayerRoles[SMLocalConfigsEvent.Instance.Configs.StartupPlayerRole]);
                 }
                 else
                 {
