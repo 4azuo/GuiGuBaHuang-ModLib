@@ -244,20 +244,29 @@ public static class UnitModifyHelper
     {
         if (wunit == null)
             return 0;
-        return Convert.ToInt32(QiCulEvent.Instance.Qi[wunit.GetUnitId()] / (10000 * wunit.GetGradeLvl()));
+        var wunitId = wunit.GetUnitId();
+        if (!QiCulEvent.Instance.Qi.ContainsKey(wunitId))
+            QiCulEvent.Instance.Qi.Add(wunitId, 0);
+        return Convert.ToInt32(QiCulEvent.Instance.Qi[wunitId] / (10000 * wunit.GetGradeLvl()));
     }
 
     public static int GetQiAdjHp(WorldUnitBase wunit)
     {
         if (wunit == null)
             return 0;
-        return Convert.ToInt32(QiCulEvent.Instance.Qi[wunit.GetUnitId()] / (1000 * wunit.GetGradeLvl()));
+        var wunitId = wunit.GetUnitId();
+        if (!QiCulEvent.Instance.Qi.ContainsKey(wunitId))
+            QiCulEvent.Instance.Qi.Add(wunitId, 0);
+        return Convert.ToInt32(QiCulEvent.Instance.Qi[wunitId] / (1000 * wunit.GetGradeLvl()));
     }
 
     public static int GetQiAdjMp(WorldUnitBase wunit)
     {
         if (wunit == null)
             return 0;
-        return Convert.ToInt32(QiCulEvent.Instance.Qi[wunit.GetUnitId()] / (4000 * wunit.GetGradeLvl()));
+        var wunitId = wunit.GetUnitId();
+        if (!QiCulEvent.Instance.Qi.ContainsKey(wunitId))
+            QiCulEvent.Instance.Qi.Add(wunitId, 0);
+        return Convert.ToInt32(QiCulEvent.Instance.Qi[wunitId] / (4000 * wunit.GetGradeLvl()));
     }
 }

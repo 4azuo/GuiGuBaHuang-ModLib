@@ -4,6 +4,7 @@ using MOD_nE7UL2.Enum;
 using MOD_nE7UL2.Object;
 using ModLib.Mod;
 using ModLib.Object;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -19,6 +20,19 @@ namespace MOD_nE7UL2.Mod
         public static SMGlobalConfigsEvent Instance { get; set; }
 
         public const string TITLE = "S&M Configs";
+
+        [JsonIgnore]
+        public UnitTypeEnum[] StartupPlayerRoles { get; } = {
+            null,
+            UnitTypeEnum.PowerUnit,
+            UnitTypeEnum.SpeedUnit,
+            UnitTypeEnum.TaoistUnit,
+            UnitTypeEnum.AtkUnit,
+            UnitTypeEnum.DefUnit,
+            UnitTypeEnum.Angel,
+            UnitTypeEnum.Evil,
+            UnitTypeEnum.Merchant
+        };
 
         //Configs
         public float AddAtkRate { get; set; } = 0f;
@@ -57,17 +71,6 @@ namespace MOD_nE7UL2.Mod
         public bool MonsterPropertiesDependOnPlayerProperties { get; set; } = false;
         public bool AutoSaveAfterLostInBattle { get; set; } = false;
         public int StartupPlayerRole { get; set; } = 0;
-        public static UnitTypeEnum[] StartupPlayerRoles { get; } = {
-            null,
-            UnitTypeEnum.PowerUnit,
-            UnitTypeEnum.SpeedUnit,
-            UnitTypeEnum.TaoistUnit,
-            UnitTypeEnum.AtkUnit,
-            UnitTypeEnum.DefUnit,
-            UnitTypeEnum.Angel,
-            UnitTypeEnum.Evil,
-            UnitTypeEnum.Merchant
-        };
 
         //UI
         private UICustom1 uiCustom;
@@ -109,6 +112,7 @@ namespace MOD_nE7UL2.Mod
         private UIItemComposite cbStartupPlayerRole;
 
         //Score
+        [JsonIgnore]
         public IList<SMItemWork> ScoreCalculator { get; } = new List<SMItemWork>();
 
         public override void OnLoadClass(bool isNew, string modId, CacheAttribute attr)
