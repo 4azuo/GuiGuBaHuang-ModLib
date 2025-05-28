@@ -11,9 +11,9 @@ namespace MOD_nE7UL2.Mod
     {
         public static BuildingArrangeEvent Instance { get; set; }
 
-        public List<string> ArrDic { get; set; } = new List<string>();
+        public List<string> DefaultBuilding { get; set; } = new List<string>();
 
-        private string GetArrDicKey(MapBuildBase build, BuildingCostEnum e)
+        private string GetDefaultBuildingKey(MapBuildBase build, BuildingCostEnum e)
         {
             return $"{build?.buildData?.id}_{e?.Name}";
         }
@@ -22,12 +22,13 @@ namespace MOD_nE7UL2.Mod
         {
             base.OnLoadNewGame();
 
+            //add default
             foreach (var build in g.world.build.GetBuilds())
             {
                 foreach (var e in BuildingCostEnum.GetAllEnums<BuildingCostEnum>())
                 {
-                    if (IsBuilt(build, e))
-                        ArrDic.Add(GetArrDicKey(build, e));
+                    if (build.GetBuildSub(e.BuildType) != null)
+                        DefaultBuilding.Add(GetDefaultBuildingKey(build, e));
                 }
             }
 
@@ -76,15 +77,11 @@ namespace MOD_nE7UL2.Mod
         {
             if (build == null || e == null)
                 return;
-            if (e.IsMatchBuildConds(build))
+            if (IsDestroyable(build, e))
             {
-                var k = GetArrDicKey(build, e);
-                if (!ArrDic.Contains(k))
-                {
-                    var buildSub = build.GetBuildSub(e.BuildType);
-                    if (buildSub != null)
-                        build.DelBuildSub(buildSub);
-                }
+                var buildSub = build.GetBuildSub(e.BuildType);
+                if (buildSub != null)
+                    build.DelBuildSub(buildSub);
             }
         }
 
@@ -115,14 +112,21 @@ namespace MOD_nE7UL2.Mod
         {
             if (build == null || e == null)
                 return false;
-            return Instance.ArrDic.Contains(Instance.GetArrDicKey(build, e));
+            return build.GetBuildSub(e.BuildType) != null;
         }
 
         public static bool IsBuildable(MapBuildBase build, BuildingCostEnum e)
         {
             if (build == null || e == null)
                 return false;
-            return e.IsMatchBuildConds(build) && !IsBuilt(build, e) && !IsIgnored(e);
+            return e.IsMatchBuildConds(build) && !IsIgnored(e) && !IsBuilt(build, e) && Instance.DefaultBuilding.Contains(Instance.GetDefaultBuildingKey(build, e));
+        }
+
+        public static bool IsDestroyable(MapBuildBase build, BuildingCostEnum e)
+        {
+            if (build == null || e == null)
+                return false;
+            return e.IsMatchBuildConds(build) && !IsIgnored(e) && IsBuilt(build, e) && Instance.DefaultBuilding.Contains(Instance.GetDefaultBuildingKey(build, e));
         }
 
         public static void Build(MapBuildBase build, BuildingCostEnum e)
@@ -131,7 +135,6 @@ namespace MOD_nE7UL2.Mod
                 return;
             if (e.Build(build))
             {
-                Instance.ArrDic.Add(Instance.GetArrDicKey(build, e));
                 MapBuildPropertyEvent.AddBuildProperty(build, -GetBuildingCost(build, e));
             }
         }
@@ -140,7 +143,6 @@ namespace MOD_nE7UL2.Mod
         {
             if (build == null || e == null || build.GetBuildSub(e.BuildType) == null) //just destroy when the build already has subbuild
                 return;
-            Instance.ArrDic.Remove(Instance.GetArrDicKey(build, e));
             Instance.RemoveBuildSub(build, e);
         }
 
