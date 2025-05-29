@@ -72,6 +72,8 @@ public static class WUnitHelper
 
     public static DataProps.PropsData[] GetEquippedProps(this WorldUnitBase wunit)
     {
+        if (wunit == null)
+            return new DataProps.PropsData[0];
         return wunit.data.unitData.propData.GetEquipProps().ToArray();
     }
 
@@ -512,6 +514,8 @@ public static class WUnitHelper
 
     public static List<DataProps.PropsData> GetUnitProps(this WorldUnitBase wunit)
     {
+        if (wunit == null)
+            return new List<DataProps.PropsData>();
         return wunit.data.unitData.propData.allProps.ToList();
     }
 
