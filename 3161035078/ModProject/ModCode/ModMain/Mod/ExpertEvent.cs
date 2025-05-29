@@ -49,10 +49,9 @@ namespace MOD_nE7UL2.Mod
         public override void OnBattleUnitHit(UnitHit e)
         {
             base.OnBattleUnitHit(e);
-            var humanData = e.hitData.attackUnit.data.TryCast<UnitDataHuman>();
-            if (humanData?.worldUnitData?.unit != null)
+            var wunit = e?.hitData?.attackUnit?.data?.TryCast<UnitDataHuman>()?.worldUnitData?.unit;
+            if (wunit != null)
             {
-                var wunit = humanData.worldUnitData.unit;
                 foreach (var artifact in wunit.GetEquippedArtifacts())
                 {
                     var a = artifact.To<DataProps.PropsArtifact>();

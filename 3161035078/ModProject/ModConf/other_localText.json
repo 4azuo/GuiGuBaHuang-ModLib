@@ -357,5 +357,10 @@
 		"id": 500020064,
 		"key": "other500020064",
 		"ch|en|tc|kr": "Negotiate"
+	},
+	{
+		"id": 500020065,
+		"key": "other500020065",
+		"ch|en|tc|kr": "Please stand in town!"
 	}
 ]
