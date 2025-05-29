@@ -14,7 +14,7 @@ namespace MOD_nE7UL2.Mod
     {
         public static TrainerEvent Instance { get; set; }
 
-        public const string TITLE = "Mini Trainer";
+        public const string TITLE = "Trainer";
         public const float PAGE1_BTN_WIDTH = 200;
         public const float PAGE1_BTN_HEIGHT = 38;
         public const int PAGE1_FONT_SIZE = 15;
@@ -126,6 +126,7 @@ namespace MOD_nE7UL2.Mod
                 FormatButton1(uiTrainer.AddButton(col, row += 2, ReduceAbilityExp, GameTool.LS("trainer023")));
                 FormatButton1(uiTrainer.AddButton(col, row += 2, AddReputation, GameTool.LS("trainer042")));
                 FormatButton1(uiTrainer.AddButton(col, row += 2, ReduceReputation, GameTool.LS("trainer043")));
+                FormatButton1(uiTrainer.AddButton(col, row += 2, BecomeTownMaster, GameTool.LS("trainer047")));
 
                 col = 14; row = 2;
                 FormatButton1((UIItemButton)uiTrainer.AddButton(col, row, GameHelper.ChangeGameSpeed, "{0}").SetWork(new UIItemWork
@@ -656,6 +657,26 @@ namespace MOD_nE7UL2.Mod
         {
             var player = g.world.playerUnit;
             player.AddExp(10000);
+        }
+
+        public void BecomeTownMaster()
+        {
+            var player = g.world.playerUnit;
+            var town = player.GetMapBuild<MapBuildTown>();
+            if (town != null)
+            {
+                foreach (var guardian in MapBuildPropertyEvent.GetTownGuardians(town))
+                {
+                    MapBuildPropertyEvent.RemoveFromTownGuardians(guardian.GetUnitId(), guardian);
+                }
+                player.AddLuck(MapBuildPropertyEvent.TOWN_MASTER_LUCK_ID);
+                MapBuildPropertyEvent.Instance.TownMasters[town.buildData.id] = new List<string> { player.GetUnitId() };
+                g.ui.MsgBox(GameTool.LS("other500020011"), GameTool.LS("townmaster420041113drama"));
+            }
+            else
+            {
+                g.ui.MsgBox(GameTool.LS("other500020022"), GameTool.LS("other500020065"));
+            }
         }
     }
 }

@@ -46,4 +46,5 @@
 	{ "id": -1000002044, "key": "trainer044", "ch|en|tc|kr": "Not allow trainer!" },
 	{ "id": -1000002045, "key": "trainer045", "ch|en|tc|kr": "Add breakthrough-items to your inventory!" },
 	{ "id": -1000002046, "key": "trainer046", "ch|en|tc|kr": "The items were added!" },
+	{ "id": -1000002047, "key": "trainer047", "ch|en|tc|kr": "Become Town Master" },
 ]
