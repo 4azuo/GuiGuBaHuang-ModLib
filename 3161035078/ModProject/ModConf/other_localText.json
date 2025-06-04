@@ -351,16 +351,41 @@
 	{
 		"id": 500020063,
 		"key": "other500020063",
-		"ch|en|tc|kr": "Total Price {0} Spirit Stones"
+		"ch|en|tc|kr": "Min：{0}　　　Market：{1}　　　Max：{2}　　　Your：{3}"
 	},
 	{
 		"id": 500020064,
 		"key": "other500020064",
-		"ch|en|tc|kr": "Negotiate"
+		"ch|en|tc|kr": "Down"
 	},
 	{
 		"id": 500020065,
 		"key": "other500020065",
 		"ch|en|tc|kr": "Please stand in town!"
-	}
+	},
+	{
+		"id": 500020066,
+		"key": "other500020066",
+		"ch|en|tc|kr": "Up"
+	},
+	{
+		"id": 500020067,
+		"key": "other500020067",
+		"ch|en|tc|kr": "Negotiate"
+	},
+	{
+		"id": 500020068,
+		"key": "other500020068",
+		"ch|en|tc|kr": "Cultivate"
+	},
+	{
+		"id": 500020069,
+		"key": "other500020069",
+		"ch|en|tc|kr": "You need {0} spirit stones for cultivation."
+	},
+	{
+		"id": 500020070,
+		"key": "other500020070",
+		"ch|en|tc|kr": "{0} Spirit stones → {1} exps."
+	},
 ]
