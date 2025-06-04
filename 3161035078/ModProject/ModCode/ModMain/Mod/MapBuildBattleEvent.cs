@@ -645,7 +645,7 @@ namespace MOD_nE7UL2.Mod
             var areaId = townA_def.gridData.areaBaseID;
 
             //guardians + others
-            TeamAWUnits.AddRange(g.world.unit.GetUnitExact(townA_def.GetOrigiPoint(), JOIN_RANGE, true, false).ToArray().Where(x => !x.isDie).Take(MIN_UNIT + STP_UNIT * areaId));
+            TeamAWUnits.AddRange(g.world.unit.GetUnitExact(townA_def.GetOrigiPoint(), JOIN_RANGE, true, false).ToArray().Where(x => !x.isDie).Take(MIN_UNIT + STP_UNIT * areaId / 2));
             TeamAWUnits.AddRange(MapBuildPropertyEvent.GetTownGuardians(townA_def).Where(x => !x.isDie && !x.IsPlayer()));
             //guardians
             TeamBWUnits.AddRange(MapBuildPropertyEvent.GetTownGuardians(townB_atk).Where(x => !x.isDie && !x.IsPlayer()));
@@ -664,13 +664,13 @@ namespace MOD_nE7UL2.Mod
             var areaId = baseA_def.gridData.areaBaseID;
 
             //guardians + others
-            TeamAWUnits.AddRange(g.world.unit.GetUnitExact(baseA_def.GetOrigiPoint(), JOIN_RANGE, true, false).ToArray().Where(x => !x.isDie).Take(MIN_UNIT + STP_UNIT * areaId));
+            TeamAWUnits.AddRange(g.world.unit.GetUnitExact(baseA_def.GetOrigiPoint(), JOIN_RANGE, true, false).ToArray().Where(x => !x.isDie).Take(MIN_UNIT + STP_UNIT * areaId / 2));
             TeamAWUnits.AddRange(MapBuildPropertyEvent.GetTownGuardians(baseA_def.TryCast<MapBuildTown>()).Where(x => !x.isDie && !x.IsPlayer()));
             //monsters
             TeamBWUnits.Clear();
 
-            var cityR = baseA_def.IsCity() ? 2 : 1;
-            InitTeamInfo(TeamSideEnum.TeamA, 8 + (((TeamAWUnits.Count * cityR) + (MapBuildPropertyEvent.GetBuildProperty(baseA_def) / 1000000)) * 1.5).Parse<int>());
+            var cityR = baseA_def.IsCity() ? 1.6 : 1;
+            InitTeamInfo(TeamSideEnum.TeamA, 10 + (((TeamAWUnits.Count * cityR) + (MapBuildPropertyEvent.GetBuildProperty(baseA_def) / 1000000)) * 2).Parse<int>());
             InitTeamInfo(TeamSideEnum.TeamB, ((g.world.run.roundMonth + TeamAUnitCount * gameLvl + Math.Pow(2, areaId).Parse<int>()) * CommonTool.Random(0.8f, 1.1f)).Parse<int>());
 
             DebugHelper.WriteLine($"{TeamAUnitCount} vs {TeamBUnitCount}");
@@ -716,7 +716,7 @@ namespace MOD_nE7UL2.Mod
                     try
                     {
                         var areaId = g.world.playerUnit.data.unitData.pointGridData.areaBaseID;
-                        for (int i = 0; i < (MIN_UNIT + STP_UNIT * areaId) * 2.5; i++)
+                        for (int i = 0; i < TeamACUnits.Count * 2; i++)
                         {
                             var monstLvl = CommonTool.Random(areaId - 1, areaId + 1).FixValue(0, monstList.Length - 1);
                             var cunit = ModBattleEvent.SceneBattle.unit.CreateUnitMonst(monstList[monstLvl], Vector2.zero, UnitType.Monst, 4 * areaId + monstLvl);

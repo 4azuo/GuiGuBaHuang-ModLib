@@ -74,9 +74,9 @@ namespace MOD_nE7UL2.Mod
                         {
                             if (uiCover.UI.unit.data.unitData.relationData.GetIntim(g.world.playerUnit) < FRIEND_INTIM)
                             {
-                                uiCover.AddText(300f, 100f, $"{GetRequiredSpiritStones(g.world.playerUnit, uiCover.UI.unit):#,##0} Spirit Stones ({GetRequiredSpiritStones(g.world.playerUnit, uiCover.UI.unit) / MONTHLY_PAYMENT_RATIO:#,##0}/month)").Align().Format(Color.white)
+                                uiCover.AddText(300f, 100f, $"{GetRequiredSpiritStones(g.world.playerUnit, uiCover.UI.unit).ToString(ModConst.FORMAT_NUMBER)} Spirit Stones ({GetRequiredSpiritStones(g.world.playerUnit, uiCover.UI.unit) / MONTHLY_PAYMENT_RATIO:#,##0}/month)").Align().Format(Color.white)
                                     .SetParentTransform(uiCover.UI.uiProperty.textAddLuckTitle);
-                                uiCover.AddText(300f, 80f, $"{GetRequiredReputations(g.world.playerUnit, uiCover.UI.unit):#,##0} Reputations").Align().Format(Color.white)
+                                uiCover.AddText(300f, 80f, $"{GetRequiredReputations(g.world.playerUnit, uiCover.UI.unit).ToString(ModConst.FORMAT_NUMBER)} Reputations").Align().Format(Color.white)
                                     .SetParentTransform(uiCover.UI.uiProperty.textAddLuckTitle);
                             }
                             else
