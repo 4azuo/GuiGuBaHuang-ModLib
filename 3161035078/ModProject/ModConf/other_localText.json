@@ -388,4 +388,19 @@
 		"key": "other500020070",
 		"ch|en|tc|kr": "{0} Spirit stones → {1} exps."
 	},
+	{
+		"id": 500020071,
+		"key": "other500020071",
+		"ch|en|tc|kr": "Qi Transfer"
+	},
+	{
+		"id": 500020072,
+		"key": "other500020072",
+		"ch|en|tc|kr": "Recieve Qi"
+	},
+	{
+		"id": 500020073,
+		"key": "other500020073",
+		"ch|en|tc|kr": "Depend on your insight and basises (roots)."
+	},
 ]

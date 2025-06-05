@@ -4,6 +4,7 @@ using ModLib.Enum;
 using ModLib.Mod;
 using ModLib.Object;
 using System.Collections.Generic;
+using System.Numerics;
 using UnityEngine;
 
 namespace MOD_nE7UL2.Mod
@@ -73,7 +74,7 @@ namespace MOD_nE7UL2.Mod
                         {
                             QiTransmit(g.world.playerUnit, uiBase.unit);
                             g.ui.CloseUI(uiBase);
-                        }, "Qi Transfer").Format(Color.black, 14).Size(160, 30).SetParentTransform(ui.UI.uiHeart.goGroupRoot);
+                        }, GameTool.LS("other500020071")).Format(Color.black, 14).Size(160, 30).SetParentTransform(ui.UI.uiHeart.goGroupRoot);
                         if (!uiBase.unit.isDie &&
                             LastYearReceiveQi != GameHelper.GetGameYear() &&
                             g.world.playerUnit.data.allUnitRelation.ContainsKey(unitId) &&
@@ -84,7 +85,7 @@ namespace MOD_nE7UL2.Mod
                                 LastYearReceiveQi = GameHelper.GetGameYear();
                                 QiTransmit(uiBase.unit, g.world.playerUnit);
                                 g.ui.CloseUI(uiBase);
-                            }, "Recieve Qi").Format(Color.black, 14).Size(160, 30).SetParentTransform(ui.UI.uiHeart.goGroupRoot);
+                            }, GameTool.LS("other500020072")).Format(Color.black, 14).Size(160, 30).SetParentTransform(ui.UI.uiHeart.goGroupRoot);
                         }
                     }
                     ui.IsAutoUpdate = true;
@@ -95,10 +96,11 @@ namespace MOD_nE7UL2.Mod
         public static void QiTransmit(WorldUnitBase fwunit, WorldUnitBase twunit)
         {
             var fwunitId = fwunit.GetUnitId();
-            var twunitId = fwunit.GetUnitId();
+            var twunitId = twunit.GetUnitId();
             var oldFqi = Instance.Qi[fwunitId];
-            var fqi = (oldFqi / 10d) * CommonTool.Random(0.8f, 1.1f);
-            var tqi = fqi * (twunit.GetDynProperty(UnitDynPropertyEnum.Talent).value / 100d) * CommonTool.Random(0.8f, 1.1f);
+            double fqi = (oldFqi / 10d) * CommonTool.Random(0.8f, 1.1f);
+            var insightRate = twunit.GetDynProperty(UnitDynPropertyEnum.Talent).value / 100f;
+            double tqi = fqi * insightRate * CommonTool.Random(0.8f, 1.1f);
             Instance.Qi[fwunitId] -= fqi.Parse<long>();
             Instance.Qi[twunitId] += tqi.Parse<long>();
 
