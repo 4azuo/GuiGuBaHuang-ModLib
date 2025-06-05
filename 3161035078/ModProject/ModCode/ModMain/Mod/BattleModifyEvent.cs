@@ -134,7 +134,7 @@ namespace MOD_nE7UL2.Mod
 
             //DebugHelper.WriteLine($"x");
             //add dmg by time
-            e.dynV.baseValue += ((ModBattleEvent.BattleTime.TotalSeconds / 1000f) * e.dynV.baseValue).Parse<int>();
+            e.dynV.baseValue += (Math.Pow(1.001f, ModBattleEvent.BattleTime.TotalSeconds) * e.dynV.baseValue).Parse<int>();
 
             //DebugHelper.WriteLine($"3: {e.dynV.baseValue}");
             //add dmg (skill)

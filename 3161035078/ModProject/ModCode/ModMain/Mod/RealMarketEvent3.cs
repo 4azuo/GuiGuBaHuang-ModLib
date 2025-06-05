@@ -19,6 +19,8 @@ namespace MOD_nE7UL2.Mod
         public static RealMarketEvent3 Instance { get; set; }
         public static bool isNpcMarket = false;
 
+        public const int MAX_PRICE = 100000000;
+
         //temp
         private DataProps.PropsData selectedProp;
 
@@ -190,9 +192,12 @@ namespace MOD_nE7UL2.Mod
             var playerId = g.world.playerUnit.GetUnitId();
             var soleID = selectedProp.soleID;
             var playerNegotiatingValueKey = $"{soleID}_{playerId}";
+            if (NegotiatingValues[playerNegotiatingValueKey] > MAX_PRICE)
+                return;
             if (NegotiatingValues[playerNegotiatingValueKey] == 0)
                 NegotiatingValues[playerNegotiatingValueKey] = selectedProp.propsInfoBase.sale;
-            NegotiatingValues[playerNegotiatingValueKey] *= (NegotiatingValues[playerNegotiatingValueKey] * 0.90f).Parse<int>();
+            NegotiatingValues[playerNegotiatingValueKey] -= (NegotiatingValues[playerNegotiatingValueKey] * 0.10f).Parse<int>();
+            NegotiatingValues[playerNegotiatingValueKey] = NegotiatingValues[playerNegotiatingValueKey].FixValue(0, MAX_PRICE);
         }
 
         public void NegotiateUp(WorldUnitBase wunit)
@@ -202,9 +207,12 @@ namespace MOD_nE7UL2.Mod
             var playerId = g.world.playerUnit.GetUnitId();
             var soleID = selectedProp.soleID;
             var playerNegotiatingValueKey = $"{soleID}_{playerId}";
+            if (NegotiatingValues[playerNegotiatingValueKey] > MAX_PRICE)
+                return;
             if (NegotiatingValues[playerNegotiatingValueKey] == 0)
                 NegotiatingValues[playerNegotiatingValueKey] = selectedProp.propsInfoBase.sale;
-            NegotiatingValues[playerNegotiatingValueKey] *= (NegotiatingValues[playerNegotiatingValueKey] * 1.10f).Parse<int>();
+            NegotiatingValues[playerNegotiatingValueKey] += (NegotiatingValues[playerNegotiatingValueKey] * 0.10f).Parse<int>();
+            NegotiatingValues[playerNegotiatingValueKey] = NegotiatingValues[playerNegotiatingValueKey].FixValue(0, MAX_PRICE);
         }
 
         public void Negotiate(WorldUnitBase wunit)
