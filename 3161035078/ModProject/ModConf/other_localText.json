@@ -403,4 +403,14 @@
 		"key": "other500020073",
 		"ch|en|tc|kr": "Depend on your insight and basises (roots)."
 	},
+	{
+		"id": 500020074,
+		"key": "other500020074",
+		"ch|en|tc|kr": "Deal"
+	},
+	{
+		"id": 500020075,
+		"key": "other500020075",
+		"ch|en|tc|kr": "Total value： {0}"
+	},
 ]
