@@ -66,7 +66,7 @@ namespace MOD_nE7UL2.Mod
                 {
                     var ui = new UICover<UINPCInfo>(uiBase);
                     {
-                        ui.AddText(ui.MidCol - 6, ui.MidRow - 4, $"Qi: {Qi[unitId]}").Align().Format(Color.white, 16).SetParentTransform(ui.UI.uiHeart.goGroupRoot);
+                        ui.AddText(ui.MidCol - 6, ui.MidRow - 4, $"Qi: {Qi[unitId].ToString(ModConst.FORMAT_NUMBER)}").Align().Format(Color.white, 16).SetParentTransform(ui.UI.uiHeart.goGroupRoot);
                         ui.AddText(ui.MidCol - 6, ui.MidRow - 3, $"Atk: {UnitModifyHelper.GetQiAdjAtk(uiBase.unit)}").Align().Format(Color.white, 16).SetParentTransform(ui.UI.uiHeart.goGroupRoot);
                         ui.AddText(ui.MidCol - 6, ui.MidRow - 2, $"Hp: {UnitModifyHelper.GetQiAdjHp(uiBase.unit)}").Align().Format(Color.white, 16).SetParentTransform(ui.UI.uiHeart.goGroupRoot);
                         ui.AddText(ui.MidCol - 6, ui.MidRow - 1, $"Mp: {UnitModifyHelper.GetQiAdjMp(uiBase.unit)}").Align().Format(Color.white, 16).SetParentTransform(ui.UI.uiHeart.goGroupRoot);
