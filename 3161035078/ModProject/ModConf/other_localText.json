@@ -413,4 +413,9 @@
 		"key": "other500020075",
 		"ch|en|tc|kr": "Total value： {0}"
 	},
+	{
+		"id": 500020076,
+		"key": "other500020076",
+		"ch|en|tc|kr": "Back"
+	},
 ]

@@ -5,7 +5,6 @@ using ModLib.Mod;
 using UnityEngine;
 using ModLib.Object;
 using System.Collections.Generic;
-using System;
 using ModLib.Const;
 using MOD_nE7UL2.Object;
 
@@ -21,96 +20,111 @@ namespace MOD_nE7UL2.Mod
         public static bool isNpcMarket = false;
 
         public const int MAX_PRICE = 100000000;
+        public const int MIN_PRICE = 1;
 
-        //temp
-        private DataProps.PropsData selectedProp;
-
-        //negotiate
-        //soleID, wunitID, soleID/propID, count
-        public List<NegotiatingItem> NegotiatingItems { get; set; } = new List<NegotiatingItem>();
-
-        //wunitID, List<propsID, propsType, values, count, price, soleID>
+        //data
+        public List<NegotiatingDeal> NegotiatingDeals { get; set; } = new List<NegotiatingDeal>();
         public List<MarketItem> MarketStack { get; set; } = new List<MarketItem>();
 
         public const int JOIN_RANGE = 4;
-        public const float SELLER_JOIN_MARKET_RATE = 30f;
-        public const float SELL_RATE = 5f;
-        public const float BUYER_JOIN_MARKET_RATE = 50f;
-        public const float BUY_RATE = 3f;
+        public const float SELLER_JOIN_MARKET_RATE = 20f;
+        public const float SELL_RATE = 5f; //depend on grade
+        public const float BUYER_JOIN_MARKET_RATE = 30f;
+        public const float BUY_RATE = 3f; //depend on grade
+        public const float GET_DEAL_RATE = 40f; //depend on price
+        public const float CANCEL_DEAL_RATE = 2f; //depend on month
 
         public static bool IsSellableItem(DataProps.PropsData x)
         {
             return x.propsInfoBase.sale > 0 && ModLibConst.MONEY_PROP_ID != x.propsID && ModLibConst.CONTRIBUTION_PROP_ID != x.propsID && ModLibConst.MAYOR_DEGREE_PROP_ID != x.propsID;
         }
 
-        public static Dictionary<string, int> GetNegotiatingValues(string propSoleID, string buyerId = null)
+        public static MarketItem GetMarketItem(string sellerId, string propSoleId)
         {
-            var rs = new Dictionary<string, int>();
-            var l = Instance.NegotiatingItems.Where(x => x.TargetPropSoleId == propSoleID);
-            foreach (var i in l)
+            return Instance.MarketStack.FirstOrDefault(x => x.SellerId == sellerId && x.SoleId == propSoleId);
+        }
+
+        public static NegotiatingDeal GetBuyerDeal(MarketItem prop, string buyerId)
+        {
+            var deal = Instance.NegotiatingDeals.FirstOrDefault(x => x.TargetProp == prop && x.BuyerId == buyerId);
+            if (deal == null)
             {
-                if (buyerId == null || buyerId == i.BuyerId)
-                {
-                    if (!rs.ContainsKey(i.BuyerId))
-                        rs[i.BuyerId] = 0;
-                    var wunit = g.world.unit.GetUnit(i.BuyerId);
-                    if (i.NegotiatingPropSoleId == null)
-                        rs[i.BuyerId] += i.Count;
-                    else
-                        rs[i.BuyerId] += wunit.GetUnitProp(i.NegotiatingPropSoleId).propsInfoBase.sale * i.Count;
-                }
+                deal = new NegotiatingDeal(buyerId, prop);
+                Instance.NegotiatingDeals.Add(deal);
             }
-            return rs;
+            return deal;
         }
 
-        public static int GetNegotiatingValue(string propSoleID, string buyerId)
+        public static void AddNegotiatingItem(MarketItem prop, string buyerId, string negotiatingPropSoleId, int count)
         {
-            var negotiatingValues = GetNegotiatingValues(propSoleID, buyerId);
-            if (negotiatingValues == null || negotiatingValues.Count == 0)
-                return 0;
-            return negotiatingValues[buyerId];
+            var curDeal = GetBuyerDeal(prop, buyerId);
+            curDeal.Items.Add(new NegotiatingItem(curDeal) { NegotiatingPropSoleId = negotiatingPropSoleId, Count = count });
         }
 
-        public static int GetNegotiatingMaxValue(string propSoleID)
+        public static bool RemoveNegotiatingItem(MarketItem prop, string buyerId, string negotiatingPropSoleId)
         {
-            var negotiatingValues = GetNegotiatingValues(propSoleID);
-            if (negotiatingValues == null || negotiatingValues.Count == 0)
-                return 0;
-            return negotiatingValues.Max(x => x.Value);
+            var curDeal = GetBuyerDeal(prop, buyerId);
+            return curDeal.Items.RemoveAll(x => x.ForDeal == curDeal && x.NegotiatingPropSoleId == negotiatingPropSoleId) > 0;
         }
 
-        public static int GetNegotiatingMinValue(string propSoleID)
+        public static NegotiatingDeal GetNegotiatingValue(MarketItem prop, string buyerId)
         {
-            var negotiatingValues = GetNegotiatingValues(propSoleID);
-            if (negotiatingValues == null || negotiatingValues.Count == 0)
-                return 0;
-            return negotiatingValues.Min(x => x.Value);
+            return Instance.NegotiatingDeals.FirstOrDefault(x => x.TargetProp == prop && x.BuyerId == buyerId);
         }
 
-        public static int GetNegotiatingPrice(string propSoleID, string buyerId)
+        public static NegotiatingDeal GetNegotiatingHighestValue(MarketItem prop)
         {
-            var curObj = Instance.NegotiatingItems.FirstOrDefault(x => x.TargetPropSoleId == propSoleID && x.BuyerId == buyerId && x.NegotiatingPropSoleId == null);
-            if (curObj == null)
+            return Instance.NegotiatingDeals.Where(x => x.TargetProp == prop).OrderByDescending(x => x.TotalValue).FirstOrDefault();
+        }
+
+        public static NegotiatingDeal GetNegotiatingLowestValue(MarketItem prop)
+        {
+            return Instance.NegotiatingDeals.Where(x => x.TargetProp == prop).OrderBy(x => x.TotalValue).FirstOrDefault();
+        }
+
+        public static int GetNegotiatingPrice(MarketItem prop, string buyerId)
+        {
+            var curDeal = GetBuyerDeal(prop, buyerId);
+            var dealPrice = curDeal.Items.FirstOrDefault(x => x.NegotiatingPropSoleId == null);
+            if (dealPrice == null || dealPrice.Count == 0)
             {
-                Instance.NegotiatingItems.Add(new NegotiatingItem { TargetPropSoleId = propSoleID, BuyerId = buyerId, NegotiatingPropSoleId = null, Count = 0 });
                 return 0;
             }
-            return curObj.Count;
+            return dealPrice.Count;
         }
 
-        public static void SetNegotiatingPrice(string propSoleID, string buyerId, int value)
+        public static void SetNegotiatingPrice(MarketItem prop, string buyerId, int value)
         {
-            var curObj = Instance.NegotiatingItems.FirstOrDefault(x => x.TargetPropSoleId == propSoleID && x.BuyerId == buyerId && x.NegotiatingPropSoleId == null);
-            if (curObj == null)
+            if (RemoveNegotiatingItem(prop, buyerId, null))
             {
-                Instance.NegotiatingItems.Add(new NegotiatingItem { TargetPropSoleId = propSoleID, BuyerId = buyerId, NegotiatingPropSoleId = null, Count = value});
+                AddNegotiatingItem(prop, buyerId, null, value);
             }
-            curObj.Count = value;
+            else
+            {
+                AddNegotiatingItem(prop, buyerId, null, prop.SellerPrice);
+            }
+        }
+
+        public static void Cancel(MarketItem item)
+        {
+            Instance.MarketStack.Remove(item);
+        }
+
+        public static void Cancel(NegotiatingDeal deal)
+        {
+            Instance.NegotiatingDeals.Remove(deal);
+        }
+
+        public static void Deal(MarketItem item, NegotiatingDeal deal)
+        {
+
         }
 
         public override void OnMonthly()
         {
             base.OnMonthly();
+
+            //add item
             foreach (var town in g.world.build.GetBuilds<MapBuildTown>())
             {
                 var market = town.GetBuildSub<MapBuildTownMarket>();
@@ -127,58 +141,78 @@ namespace MOD_nE7UL2.Mod
                                 .Select(x => new MarketItem
                                 {
                                     SellerId = sellerId,
+                                    TownId = town.buildData.id,
                                     PropId = x.propsID,
                                     DataType = x.propsType,
                                     DataValues = x.values,
                                     Count = CommonTool.Random(1, x.propsCount),
-                                    Price = (x.propsInfoBase.sale * CommonTool.Random(0.6f, 3.0f)).Parse<int>(),
-                                    SoleId = x.soleID
+                                    SellerPrice = (x.propsInfoBase.sale * CommonTool.Random(0.6f, 3.0f)).Parse<int>(),
+                                    SoleId = x.soleID,
+                                    CreateMonth = GameHelper.GetGameMonth()
                                 })
                                 .ToList();
                             if (props.Count > 0)
                             {
                                 MarketStack.AddRange(props);
+                            }
+                        }
+                    }
+                }
+            }
 
-                                //add deals
-                                foreach (var buyer in wunits)
+            //process
+            foreach (var item in MarketStack.ToArray())
+            {
+                if (item.Seller.IsPlayer())
+                {
+                    continue;
+                }
+
+                if (!item.IsValid)
+                {
+                    Cancel(item);
+                    continue;
+                }
+
+                var highestDeal = GetNegotiatingHighestValue(item);
+                //get deal
+                if (highestDeal != null && 
+                    CommonTool.Random(0f, 100f).IsBetween(0f, GET_DEAL_RATE * (highestDeal.TotalValue / item.SellerPrice)))
+                {
+                    Deal(item, highestDeal);
+                }
+                //cancel item
+                else if (CommonTool.Random(0f, 100f).IsBetween(0f, CANCEL_DEAL_RATE * (GameHelper.GetGameMonth() - item.CreateMonth)))
+                {
+                    Cancel(item);
+                }
+                //add deal
+                else
+                {
+                    var wunits = g.world.unit.GetUnitExact(item.Town.GetOrigiPoint(), JOIN_RANGE).ToArray();
+                    foreach (var buyer in wunits)
+                    {
+                        var dealProp = item.Prop;
+                        var buyerId = buyer.GetUnitId();
+                        if (item.SellerId != buyerId &&
+                            CommonTool.Random(0f, 100f).IsBetween(0f, BUYER_JOIN_MARKET_RATE) &&
+                            CommonTool.Random(0f, 100f).IsBetween(0f, dealProp.propsInfoBase.level * BUY_RATE))
+                        {
+                            var delta = 0.1f * dealProp.propsInfoBase.level;
+                            SetNegotiatingPrice(item, buyerId,
+                                (/*follow market price*/dealProp.propsInfoBase.sale *
+                                    CommonTool.Random(0.5f + delta, 1.0f + delta)).Parse<int>().FixValue(0, buyer.GetUnitMoney() / 2).FixValue(MIN_PRICE, MAX_PRICE));
+                            if (dealProp.propsInfoBase.level.IsBetween(5, 6) && dealProp.propsInfoBase.grade >= buyer.GetGradeLvl())
+                            {
+                                var curValue = GetNegotiatingValue(item, buyerId);
+                                var highestValue = GetNegotiatingHighestValue(item);
+                                var curDeal = GetBuyerDeal(item, buyerId);
+                                foreach (var np in buyer.GetUnequippedProps().Where(x => IsSellableItem(x)))
                                 {
-                                    if (seller != buyer && CommonTool.Random(0f, 100f).IsBetween(0f, BUYER_JOIN_MARKET_RATE))
+                                    if (!curDeal.Items.Any(x => x.NegotiatingPropSoleId == np.soleID) &&
+                                        np.propsInfoBase.level < dealProp.propsInfoBase.level && curValue.TotalValue + (np.propsInfoBase.sale * np.propsCount) < highestValue.TotalValue)
                                     {
-                                        var buyerId = buyer.GetUnitId();
-
-                                        foreach (var prop in props)
-                                        {
-                                            var p = prop.Prop;
-                                            if (CommonTool.Random(0f, 100f).IsBetween(0f, (7 - p.propsInfoBase.level) * BUY_RATE))
-                                            {
-                                                var delta = 0.1f * p.propsInfoBase.level;
-                                                NegotiatingItems.Add(new NegotiatingItem
-                                                {
-                                                    TargetPropSoleId = prop.SoleId,
-                                                    BuyerId = buyerId,
-                                                    NegotiatingPropSoleId = null,
-                                                    Count = (p.propsInfoBase.sale * CommonTool.Random(0.5f + delta, 1.0f + delta)).Parse<int>().FixValue(0, buyer.GetUnitMoney()).FixValue(0, MAX_PRICE)
-                                                });
-                                                if (p.propsInfoBase.level.IsBetween(5, 6) && p.propsInfoBase.grade >= buyer.GetGradeLvl())
-                                                {
-                                                    var curValue = GetNegotiatingValue(prop.SoleId, buyerId);
-                                                    var max = GetNegotiatingMaxValue(prop.SoleId);
-                                                    foreach (var np in buyer.GetUnequippedProps().Where(x => IsSellableItem(x)))
-                                                    {
-                                                        if (np.propsInfoBase.level < p.propsInfoBase.level && curValue + (np.propsInfoBase.sale * np.propsCount) < max)
-                                                        {
-                                                            NegotiatingItems.Add(new NegotiatingItem
-                                                            {
-                                                                TargetPropSoleId = prop.SoleId,
-                                                                BuyerId = buyerId,
-                                                                NegotiatingPropSoleId = np.soleID,
-                                                                Count = np.propsCount
-                                                            });
-                                                        }
-                                                    }
-                                                }
-                                            }
-                                        }
+                                        AddNegotiatingItem(item, buyerId, np.soleID, np.propsCount);
                                     }
                                 }
                             }
@@ -233,14 +267,19 @@ namespace MOD_nE7UL2.Mod
             ui.InitData(new Vector2Int(0, 0));
             var town = g.world.playerUnit.GetMapBuild<MapBuildTown>();
             ui.units = g.world.unit.GetUnitExact(town.GetOrigiPoint(), JOIN_RANGE).ToArray()
-                .Select(x => x.GetUnitId()).Distinct().Where(x => MarketStack.Any(z => z.SellerId == x))
+                .Select(x => x.GetUnitId()).Distinct().Where(x => MarketStack.Any(z => z.IsValid && z.SellerId == x))
                 .Select(x => g.world.unit.GetUnit(x)).ToIl2CppList();
             ui.UpdateUI();
             isNpcMarket = true;
         }
 
+
+        private DataProps.PropsData selectedProp;
+        private MarketItem selectedMarketItem;
         private void OpenNPCSellList(WorldUnitBase wunit)
         {
+            g.ui.CloseUI(UIType.PropSelect);
+
             var ui = g.ui.OpenUISafe<UIPropSelect>(UIType.PropSelect);
             ui.textTitle1.text = GameTool.LS("other500020052");
             ui.textSearchTip.text = GameTool.LS("other500020053");
@@ -255,41 +294,43 @@ namespace MOD_nE7UL2.Mod
             };
             foreach (var item in MarketStack.Where(x => x.SellerId == wunit.GetUnitId()))
             {
+                if (!item.IsValid)
+                    continue;
                 var org = item.Prop;
                 if (org.propsItem?.isOverlay == 1 && org.propsType != DataProps.PropsDataType.Martial)
                 {
-                    var prop = ItemHelper.CopyProp(item.PropId, item.DataType, item.DataValues, item.Count);
-                    ui.allItems.AddProps(prop);
+                    ui.allItems.AddProps(ItemHelper.CopyProp(org, item.Count));
                 }
                 else
                 {
-                    var prop = org;
-                    ui.allItems.AddProps(prop);
+                    ui.allItems.AddProps(org);
                 }
             }
             var uiCover = new UICover<UIPropSelect>(ui);
             {
-                uiCover.AddButton(0, 0, () => NegotiateDown(wunit), GameTool.LS("other500020064")).Pos(ui.btnOK.transform, -100, 0);
-                uiCover.AddButton(0, 0, () => Negotiate(wunit), GameTool.LS("other500020067")).Pos(ui.btnOK.transform, 0, 0);
-                uiCover.AddButton(0, 0, () => NegotiateUp(wunit), GameTool.LS("other500020066")).Pos(ui.btnOK.transform, +100, 0);
+                uiCover.AddButton(0, 0, () => NegotiateDown(wunit, selectedProp, selectedMarketItem), GameTool.LS("other500020064")).Pos(ui.btnOK.transform, -150, 0);
+                uiCover.AddButton(0, 0, () => Negotiate(wunit, selectedProp, selectedMarketItem), GameTool.LS("other500020067")).Pos(ui.btnOK.transform, -50, 0);
+                uiCover.AddButton(0, 0, () => NegotiateUp(wunit, selectedProp, selectedMarketItem), GameTool.LS("other500020066")).Pos(ui.btnOK.transform, +50, 0);
+                uiCover.AddButton(0, 0, () => Clear(wunit, selectedProp, selectedMarketItem), GameTool.LS("other500020059")).Pos(ui.btnOK.transform, +200, 0);
                 uiCover.AddText(0, 0, GameTool.LS("other500020063")).SetWork(new UIItemWork
                 {
                     Formatter = x =>
                     {
                         try
                         {
-                            var playerId = g.world.playerUnit.GetUnitId();
                             selectedProp = UIPropSelect.allSlectDataProps.allProps[0];
-                            var soleID = selectedProp.soleID;
-                            var min = GetNegotiatingMinValue(soleID);
+                            selectedMarketItem = GetMarketItem(wunit.GetUnitId(), selectedProp.soleID);
+                            var playerId = g.world.playerUnit.GetUnitId();
+                            var lowest = GetNegotiatingLowestValue(selectedMarketItem);
                             var market = selectedProp.propsInfoBase.sale;
-                            var max = GetNegotiatingMaxValue(soleID);
-                            var your = GetNegotiatingValue(soleID, playerId);
-                            return new object[] { min.ToString(ModConst.FORMAT_NUMBER), market.ToString(ModConst.FORMAT_NUMBER), max.ToString(ModConst.FORMAT_NUMBER), your.ToString(ModConst.FORMAT_NUMBER) };
+                            var highest = GetNegotiatingHighestValue(selectedMarketItem);
+                            var your = GetNegotiatingValue(selectedMarketItem, playerId);
+                            return new object[] { (lowest?.TotalValue ?? 0).ToString(ModConst.FORMAT_NUMBER), market.ToString(ModConst.FORMAT_NUMBER), (highest?.TotalValue ?? 0).ToString(ModConst.FORMAT_NUMBER), (your?.TotalValue ?? 0).ToString(ModConst.FORMAT_NUMBER) };
                         }
                         catch
                         {
                             selectedProp = null;
+                            selectedMarketItem = null;
                             return new object[] { 0, 0, 0, 0 };
                         }
                     }
@@ -299,36 +340,34 @@ namespace MOD_nE7UL2.Mod
             ui.UpdateUI();
         }
 
-        public void NegotiateDown(WorldUnitBase wunit)
+        public void NegotiateDown(WorldUnitBase wunit, DataProps.PropsData selectedProp, MarketItem selectedMarketItem)
         {
-            if (selectedProp == null)
+            if (selectedProp == null || selectedMarketItem == null)
                 return;
             var playerId = g.world.playerUnit.GetUnitId();
-            var soleID = selectedProp.soleID;
-            var curPrice = GetNegotiatingPrice(soleID, playerId);
+            var curPrice = GetNegotiatingPrice(selectedMarketItem, playerId);
             if (curPrice <= 0)
                 return;
-            SetNegotiatingPrice(soleID, playerId, curPrice - (curPrice * CommonTool.Random(0.05f, 0.20f)).FixValue(0, g.world.playerUnit.GetUnitMoney()).FixValue(0, MAX_PRICE).Parse<int>());
+            SetNegotiatingPrice(selectedMarketItem, playerId, curPrice - (curPrice * CommonTool.Random(0.05f, 0.20f)).FixValue(0, g.world.playerUnit.GetUnitMoney()).FixValue(MIN_PRICE, MAX_PRICE).Parse<int>());
         }
 
-        public void NegotiateUp(WorldUnitBase wunit)
+        public void NegotiateUp(WorldUnitBase wunit, DataProps.PropsData selectedProp, MarketItem selectedMarketItem)
         {
-            if (selectedProp == null)
+            if (selectedProp == null || selectedMarketItem == null)
                 return;
             var playerId = g.world.playerUnit.GetUnitId();
-            var soleID = selectedProp.soleID;
-            var curPrice = GetNegotiatingPrice(soleID, playerId);
+            var curPrice = GetNegotiatingPrice(selectedMarketItem, playerId);
             if (curPrice > MAX_PRICE)
                 return;
-            SetNegotiatingPrice(soleID, playerId, curPrice + (curPrice * CommonTool.Random(0.05f, 0.20f)).FixValue(0, g.world.playerUnit.GetUnitMoney()).FixValue(0, MAX_PRICE).Parse<int>());
+            SetNegotiatingPrice(selectedMarketItem, playerId, curPrice + (curPrice * CommonTool.Random(0.05f, 0.20f)).FixValue(0, g.world.playerUnit.GetUnitMoney()).FixValue(MIN_PRICE, MAX_PRICE).Parse<int>());
         }
 
-        public void Negotiate(WorldUnitBase wunit)
+        public void Negotiate(WorldUnitBase wunit, DataProps.PropsData selectedProp, MarketItem selectedMarketItem)
         {
             g.ui.CloseUI(UIType.PropSelect);
 
             var playerId = g.world.playerUnit.GetUnitId();
-            var selectingItemSoleID = selectedProp.soleID;
+            var curDeal = GetBuyerDeal(selectedMarketItem, playerId);
 
             var ui = g.ui.OpenUISafe<UIPropSelect>(UIType.PropSelect);
             ui.textTitle1.text = GameTool.LS("other500020052");
@@ -343,7 +382,7 @@ namespace MOD_nE7UL2.Mod
             };
             foreach (var prop in g.world.playerUnit.GetUnitProps())
             {
-                if (IsSellableItem(prop))
+                if (IsSellableItem(prop)/* && !curDeal.Items.Any(y => y.NegotiatingPropSoleId == prop.soleID)*/)
                 {
                     ui.allItems.AddProps(prop);
                 }
@@ -352,15 +391,22 @@ namespace MOD_nE7UL2.Mod
             {
                 uiCover.AddButton(0, 0, () =>
                 {
-                    NegotiatingItems.AddRange(UIPropSelect.allSlectDataProps.allProps.ToArray().Select(x => new NegotiatingItem { TargetPropSoleId = selectingItemSoleID, BuyerId = playerId, NegotiatingPropSoleId = x.soleID, Count = x.propsCount }));
-                }, GameTool.LS("other500020074")).Pos(ui.btnOK.transform, 0, 0);
+                    foreach (var prop in UIPropSelect.allSlectDataProps.allProps.ToArray())
+                    {
+                        AddNegotiatingItem(selectedMarketItem, playerId, prop.soleID, prop.propsCount);
+                    }
+                }, GameTool.LS("other500020074")).Pos(ui.btnOK.transform, -50, 0);
+                uiCover.AddButton(0, 0, () =>
+                {
+                    OpenNPCSellList(wunit);
+                }, GameTool.LS("other500020076")).Pos(ui.btnOK.transform, +50, 0);
                 uiCover.AddText(0, 0, GameTool.LS("other500020075")).SetWork(new UIItemWork
                 {
                     Formatter = x =>
                     {
                         try
                         {
-                            var your = GetNegotiatingValue(selectingItemSoleID, playerId) + UIPropSelect.allSlectDataProps.allProps.ToArray().Sum(z => z.propsInfoBase.sale * z.propsCount);
+                            var your = GetNegotiatingValue(selectedMarketItem, playerId).TotalValue + UIPropSelect.allSlectDataProps.allProps.ToArray().Sum(z => z.propsInfoBase.sale * z.propsCount);
                             return new object[] { your };
                         }
                         catch
@@ -372,6 +418,11 @@ namespace MOD_nE7UL2.Mod
             }
             uiCover.IsAutoUpdate = true;
             ui.UpdateUI();
+        }
+
+        public void Clear(WorldUnitBase wunit, DataProps.PropsData selectedProp, MarketItem selectedMarketItem)
+        {
+            Cancel(GetBuyerDeal(selectedMarketItem, g.world.playerUnit.GetUnitId()));
         }
 
         private void OpenRegister()
@@ -435,7 +486,7 @@ namespace MOD_nE7UL2.Mod
             //    var org = player.GetUnitProp(item.Item6);
             //    if (org.propsItem?.isOverlay == 1 && org.propsType != DataProps.PropsDataType.Martial)
             //    {
-            //        var prop = ItemHelper.CopyProp(item.Item1, item.Item2, item.Item3, item.Item4);
+            //        var prop = ItemHelper.CopyProp(item.Prop, item.Count);
             //        NegotiatingValues[$"{prop.soleID}_price"] = item.Item5;
             //        ui.allItems.AddProps(prop);
             //    }
