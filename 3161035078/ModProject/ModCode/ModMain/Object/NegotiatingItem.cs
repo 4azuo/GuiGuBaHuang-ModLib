@@ -1,10 +1,19 @@
-﻿namespace MOD_nE7UL2.Object
+﻿using Newtonsoft.Json;
+
+namespace MOD_nE7UL2.Object
 {
     public class NegotiatingItem
     {
-        public string TargetPropSoleId { get; set; }
-        public string BuyerId { get; set; }
+        public NegotiatingDeal ForDeal { get; set; }
         public string NegotiatingPropSoleId { get; set; }
         public int Count { get; set; }
+
+        [JsonIgnore]
+        public DataProps.PropsData NegotiatingProp => ForDeal.Buyer.GetUnitProp(NegotiatingPropSoleId);
+
+        public NegotiatingItem(NegotiatingDeal d)
+        {
+            ForDeal = d;
+        }
     }
 }

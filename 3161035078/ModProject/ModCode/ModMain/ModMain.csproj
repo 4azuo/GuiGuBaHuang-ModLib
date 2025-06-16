@@ -91,6 +91,7 @@
     <Compile Include="Mod\UseSpiritStoneCulEvent.cs" />
     <Compile Include="Mod\UpgradeNaturallyEvent.cs" />
     <Compile Include="Object\MarketItem.cs" />
+    <Compile Include="Object\NegotiatingDeal.cs" />
     <Compile Include="Object\NegotiatingItem.cs" />
     <Compile Include="Object\SMItemWork.cs" />
     <Compile Include="Object\CustomRefine.cs" />
