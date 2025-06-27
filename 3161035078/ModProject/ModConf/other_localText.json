@@ -423,4 +423,14 @@
 		"key": "other500020077",
 		"ch|en|tc|kr": "Give up"
 	},
+	{
+		"id": 500020078,
+		"key": "other500020078",
+		"ch|en|tc|kr": "You backed out? After everything we agreed on? I don’t take kindly to broken deals — you just wasted my time."
+	},
+	{
+		"id": 500020079,
+		"key": "other500020079",
+		"ch|en|tc|kr": "That went smoothly! Always great working with someone who knows what they’re doing."
+	},
 ]
