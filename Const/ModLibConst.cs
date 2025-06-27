@@ -11,5 +11,8 @@
         public const int MONEY_PROP_ID = 10001;
         public const int CONTRIBUTION_PROP_ID = 10011;
         public const int MAYOR_DEGREE_PROP_ID = 10041;
+
+        public const int DEFAULT_TYPE1_DRAMA_ID = 999890001;
+        public const int DEFAULT_TYPE2_DRAMA_ID = 999890002;
     }
 }
