@@ -33,12 +33,12 @@ namespace MOD_nE7UL2.Mod
         public List<MarketItem> MarketStack { get; set; } = new List<MarketItem>();
 
         public const int JOIN_RANGE = 4;
-        public const float SELLER_JOIN_MARKET_RATE = 20f;
+        public const float SELLER_JOIN_MARKET_RATE = 10f;
         public const float SELL_RATE = 5f; //depend on grade
-        public const float BUYER_JOIN_MARKET_RATE = 30f;
+        public const float BUYER_JOIN_MARKET_RATE = 20f;
         public const float BUY_RATE = 3f; //depend on grade
-        public const float GET_DEAL_RATE = 40f; //depend on price
-        public const float CANCEL_DEAL_RATE = 2f; //depend on month
+        public const float GET_DEAL_RATE = 30f; //depend on price
+        public const float CANCEL_DEAL_RATE = 1f; //depend on month
 
         public static bool IsSellableItem(DataProps.PropsData x)
         {
@@ -134,7 +134,7 @@ namespace MOD_nE7UL2.Mod
             if (price > 0 && buyer.GetUnitMoney() < price ||
                 deal.Items.Any(x => !CheckItemExists(x)))
             {
-                NG();
+                NG(seller, buyer, item);
             }
 
             // transfer money to seller
@@ -156,11 +156,26 @@ namespace MOD_nE7UL2.Mod
             // cancel data
             Cancel(item);
             Cancel(deal);
+
+            // show drama
+            OK(seller, buyer, item);
         }
 
-        public static void NG()
+        public static void NG(WorldUnitBase seller, WorldUnitBase buyer, MarketItem item)
         {
+            DramaHelper.OpenDrama(ModLibConst.DEFAULT_TYPE1_DRAMA_ID, GameTool.LS("other500020078"), null, null, (Il2CppSystem.Action<ConfDramaOptionsItem>)((x) =>
+            {
+                seller.data.unitData.relationData.AddHate(buyer.GetUnitId(), item.Prop.propsInfoBase.grade * 20);
+            }));
+        }
 
+        public static void OK(WorldUnitBase seller, WorldUnitBase buyer, MarketItem item)
+        {
+            DramaHelper.OpenDrama(ModLibConst.DEFAULT_TYPE1_DRAMA_ID, GameTool.LS("other500020079"), null, null, (Il2CppSystem.Action<ConfDramaOptionsItem>)((x) =>
+            {
+                seller.data.unitData.relationData.AddIntim(buyer.GetUnitId(), item.Prop.propsInfoBase.grade * 10);
+                buyer.data.unitData.relationData.AddIntim(seller.GetUnitId(), item.Prop.propsInfoBase.grade * 10);
+            }));
         }
 
         public static void TransferItem(WorldUnitBase seller, WorldUnitBase buyer, MarketItem item)
