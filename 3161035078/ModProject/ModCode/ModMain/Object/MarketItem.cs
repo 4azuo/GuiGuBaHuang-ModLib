@@ -26,9 +26,7 @@ namespace MOD_nE7UL2.Object
             get
             {
                 var seller = Seller;
-                if (seller == null || seller.isDie || Town == null || Prop == null)
-                    return false;
-                return true;
+                return seller != null && !seller.isDie && Town != null && Prop != null;
             }
         }
     }

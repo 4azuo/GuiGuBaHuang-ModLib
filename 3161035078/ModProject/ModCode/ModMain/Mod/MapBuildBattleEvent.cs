@@ -103,7 +103,7 @@ namespace MOD_nE7UL2.Mod
 
                 if (CommonTool.Random(0.00f, 100.00f).IsBetween(0.00f, MONST_WAVE_RATE * (curYear - LastYearEventHappen[town.buildData.id])))
                 {
-                    DebugHelper.WriteLine($"{town.name} monster wave");
+                    DebugHelper.WriteLine($"{town.name}: monster wave");
                     LastYearEventHappen[town.buildData.id] = curYear;
                     MonstWave(town);
                 }
@@ -116,7 +116,7 @@ namespace MOD_nE7UL2.Mod
 
                 if (CommonTool.Random(0.00f, 100.00f).IsBetween(0.00f, MONST_WAVE_RATE * (curYear - LastYearEventHappen[school.buildData.id])))
                 {
-                    DebugHelper.WriteLine($"{school.name} monster wave");
+                    DebugHelper.WriteLine($"{school.name}: monster wave");
                     LastYearEventHappen[school.buildData.id] = curYear;
                     MonstWave(school);
                 }
@@ -157,7 +157,7 @@ namespace MOD_nE7UL2.Mod
                     });
                     if (hasAttacker && townAtk != null)
                     {
-                        DebugHelper.WriteLine($"{town.name}/{townAtk.name} war");
+                        DebugHelper.WriteLine($"{town.name}/{townAtk.name}: war");
                         LastYearEventHappen[town.buildData.id] = curYear;
                         LastYearEventHappen[townAtk.buildData.id] = curYear;
                         TownWar(town, townAtk, false);
@@ -219,16 +219,19 @@ namespace MOD_nE7UL2.Mod
         {
             if (JoinBattleFlg == GameHelper.GetGameTotalMonth())
             {
+                DebugHelper.WriteLine("1");
                 SkipTownWar(townA_def, townB_atk);
             }
             else
             if (proactive)
             {
+                DebugHelper.WriteLine("2");
                 JoinTownWar(townA_def, townB_atk, TeamSideEnum.TeamB);
             }
             else
             if (townA_def.GetOpenBuildPoints().ToList().Any(x => x == g.world.playerUnit.GetUnitPos()))
             {
+                DebugHelper.WriteLine("3");
                 DramaTool.OpenDrama(DRAMA_ID, new DramaData
                 {
                     dialogueText = { [DRAMA_ID] = GameTool.LS("battleevent480112890") },
@@ -277,6 +280,7 @@ namespace MOD_nE7UL2.Mod
             if (townA_def.gridData.areaBaseID == g.world.playerUnit.data.unitData.pointGridData.areaBaseID &&
                 townA_def.GetOrigiPoint().CalRange(g.world.playerUnit.data.unitData.GetPoint()) < 8)
             {
+                DebugHelper.WriteLine("4");
                 DramaTool.OpenDrama(DRAMA_ID, new DramaData
                 {
                     dialogueText = { [DRAMA_ID] = string.Format(GameTool.LS("battleevent480112894"), townB_atk.name, townA_def.name) },
@@ -307,6 +311,7 @@ namespace MOD_nE7UL2.Mod
             }
             else
             {
+                DebugHelper.WriteLine("5");
                 SkipTownWar(townA_def, townB_atk);
             }
         }
@@ -431,11 +436,13 @@ namespace MOD_nE7UL2.Mod
         {
             if (JoinBattleFlg == GameHelper.GetGameTotalMonth())
             {
+                DebugHelper.WriteLine("1");
                 SkipMonstWave(town);
             }
             else
             if (town.GetOpenBuildPoints().ToList().Any(x => x == g.world.playerUnit.GetUnitPos()))
             {
+                DebugHelper.WriteLine("2");
                 DramaTool.OpenDrama(DRAMA_ID, new DramaData
                 {
                     dialogueText = { [DRAMA_ID] = GameTool.LS("battleevent480112890") },
@@ -470,6 +477,7 @@ namespace MOD_nE7UL2.Mod
             if (town.gridData.areaBaseID == g.world.playerUnit.data.unitData.pointGridData.areaBaseID &&
                 town.GetOrigiPoint().CalRange(g.world.playerUnit.data.unitData.GetPoint()) < 8)
             {
+                DebugHelper.WriteLine("3");
                 DramaTool.OpenDrama(DRAMA_ID, new DramaData
                 {
                     dialogueText = { [DRAMA_ID] = string.Format(GameTool.LS("battleevent480112895"), town.name) },
@@ -493,6 +501,7 @@ namespace MOD_nE7UL2.Mod
             }
             else
             {
+                DebugHelper.WriteLine("4");
                 SkipMonstWave(town);
             }
         }
@@ -501,11 +510,13 @@ namespace MOD_nE7UL2.Mod
         {
             if (JoinBattleFlg == GameHelper.GetGameTotalMonth())
             {
+                DebugHelper.WriteLine("1");
                 SkipMonstWave(school);
             }
             else
             if (school.GetOpenBuildPoints().ToList().Any(x => x == g.world.playerUnit.GetUnitPos()))
             {
+                DebugHelper.WriteLine("2");
                 DramaTool.OpenDrama(DRAMA_ID, new DramaData
                 {
                     dialogueText = { [DRAMA_ID] = GameTool.LS("battleevent480112890") },
@@ -541,6 +552,7 @@ namespace MOD_nE7UL2.Mod
             if (school.gridData.areaBaseID == g.world.playerUnit.data.unitData.pointGridData.areaBaseID &&
                 school.GetOrigiPoint().CalRange(g.world.playerUnit.data.unitData.GetPoint()) < 8)
             {
+                DebugHelper.WriteLine("3");
                 DramaTool.OpenDrama(DRAMA_ID, new DramaData
                 {
                     dialogueText = { [DRAMA_ID] = string.Format(GameTool.LS("battleevent480112895"), g.world.playerUnit.data.school.GetName(true)) },
@@ -564,6 +576,7 @@ namespace MOD_nE7UL2.Mod
             }
             else
             {
+                DebugHelper.WriteLine("4");
                 SkipMonstWave(school);
             }
         }

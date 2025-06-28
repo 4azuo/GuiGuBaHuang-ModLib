@@ -20,6 +20,15 @@ namespace MOD_nE7UL2.Object
             else
                 return Buyer.GetUnitProp(x.NegotiatingPropSoleId).propsInfoBase.sale * x.Count;
         });
+        [JsonIgnore]
+        public bool IsValid
+        {
+            get
+            {
+                var buyer = Buyer;
+                return buyer != null && !buyer.isDie && TargetProp != null && TargetProp.IsValid && Items.Count > 0;
+            }
+        }
 
         public NegotiatingDeal(string buyerId, MarketItem i)
         {
