@@ -4,4 +4,5 @@
 	{ "id": "999990002", "key": "libtxt999990002", "ch|en|tc|kr": "It will run a benchmark to initialize RAM for the game." },
 	{ "id": "999990003", "key": "libtxt999990003", "ch|en|tc|kr": "You have to reset the game!" },
 	{ "id": "999990004", "key": "libtxt999990004", "ch|en|tc|kr": "This is the first time. Do you wanna run a benchmark to initialize RAM for the game?" },
+	{ "id": "999990005", "key": "libtxt999990005", "ch|en|tc|kr": "Leave" },
 ]
