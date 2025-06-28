@@ -1,4 +1,5 @@
 ﻿using Newtonsoft.Json;
+using System.Collections.Generic;
 
 namespace MOD_nE7UL2.Object
 {
@@ -11,6 +12,17 @@ namespace MOD_nE7UL2.Object
 
         [JsonIgnore]
         public DataProps.PropsData NegotiatingProp => ForDeal.Buyer.GetUnitProp(NegotiatingPropSoleId);
+        [JsonIgnore]
+        public List<DataProps.PropsData> NegotiatingSameProps => ForDeal.Buyer.GetUnitProps(NegotiatingPropPropId);
+        [JsonIgnore]
+        public bool IsValid
+        {
+            get
+            {
+                var deal = ForDeal;
+                return deal != null/* && deal.IsValid*/ && (NegotiatingProp != null || NegotiatingSameProps.Count > 0);
+            }
+        }
 
         public NegotiatingItem(NegotiatingDeal d)
         {

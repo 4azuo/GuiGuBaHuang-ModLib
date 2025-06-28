@@ -235,7 +235,7 @@
 	{
 		"id": 500020040,
 		"key": "other500020040",
-		"ch|en|tc|kr": "NPC Shop"
+		"ch|en|tc|kr": "Market"
 	},
 	{
 		"id": 500020041,
@@ -336,7 +336,7 @@
 	{
 		"id": 500020060,
 		"key": "other500020060",
-		"ch|en|tc|kr": "Selling Items"
+		"ch|en|tc|kr": "My Items"
 	},
 	{
 		"id": 500020061,
@@ -432,5 +432,20 @@
 		"id": 500020079,
 		"key": "other500020079",
 		"ch|en|tc|kr": "That went smoothly! Always great working with someone who knows what they’re doing."
+	},
+	{
+		"id": 500020080,
+		"key": "other500020080",
+		"ch|en|tc|kr": "You can’t be serious. You owe me more than a ‘no’!"
+	},
+	{
+		"id": 500020081,
+		"key": "other500020081",
+		"ch|en|tc|kr": "What? You knew I was coming! You sold it anyway?"
+	},
+	{
+		"id": 500020082,
+		"key": "other500020082",
+		"ch|en|tc|kr": "The [{0}] has been sold"
 	},
 ]
