@@ -22,6 +22,16 @@ public static class EnumerableHelper
         return rs;
     }
 
+    public static Il2CppSystem.Collections.Generic.Dictionary<K, V> ToIl2CppDictionary<X, K, V>(this IEnumerable<X> lst, Func<X, K> predicateK, Func<X, V> predicateV)
+    {
+        var rs = new Il2CppSystem.Collections.Generic.Dictionary<K, V>();
+        foreach (var item in lst)
+        {
+            rs.Add(predicateK(item), predicateV(item));
+        }
+        return rs;
+    }
+
     public static List<T> ToList<T>(this Il2CppSystem.Collections.Generic.List<T> lst)
     {
         return lst.ToArray().ToList();
