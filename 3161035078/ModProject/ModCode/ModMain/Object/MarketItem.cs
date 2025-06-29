@@ -1,4 +1,5 @@
 ﻿using Newtonsoft.Json;
+using System.Collections.Generic;
 
 namespace MOD_nE7UL2.Object
 {
@@ -20,6 +21,8 @@ namespace MOD_nE7UL2.Object
         public MapBuildTown Town => g.world.build.GetBuild<MapBuildTown>(TownId);
         [JsonIgnore]
         public DataProps.PropsData Prop => Seller.GetUnitProp(SoleId);
+        [JsonIgnore]
+        public List<DataProps.PropsData> SameProps => Seller.GetUnitProps(PropId);
         [JsonIgnore]
         public bool IsValid
         {

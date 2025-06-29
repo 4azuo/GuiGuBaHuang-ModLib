@@ -13,13 +13,21 @@ namespace MOD_nE7UL2.Object
         [JsonIgnore]
         public WorldUnitBase Buyer => g.world.unit.GetUnit(BuyerId);
         [JsonIgnore]
-        public int TotalValue => Items.Sum(x =>
+        public int TotalValue
         {
-            if (x.NegotiatingPropSoleId == null)
-                return x.Count;
-            else
-                return Buyer.GetUnitProp(x.NegotiatingPropSoleId).propsInfoBase.sale * x.Count;
-        });
+            get
+            {
+                if (Items?.Count == 0)
+                    return 0;
+                return Items.Sum(x =>
+                {
+                    if (x.NegotiatingPropSoleId == null)
+                        return x.Count;
+                    else
+                        return x.Value;
+                });
+            }
+        }
         [JsonIgnore]
         public bool IsValid
         {
