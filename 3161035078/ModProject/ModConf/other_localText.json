@@ -446,6 +446,16 @@
 	{
 		"id": 500020082,
 		"key": "other500020082",
-		"ch|en|tc|kr": "The [{0}] has been sold"
+		"ch|en|tc|kr": "The [{0}] has been sold."
+	},
+	{
+		"id": 500020083,
+		"key": "other500020083",
+		"ch|en|tc|kr": "Unknown"
+	},
+	{
+		"id": 500020084,
+		"key": "other500020084",
+		"ch|en|tc|kr": "Please select an item."
 	},
 ]

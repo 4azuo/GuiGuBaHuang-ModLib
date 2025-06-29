@@ -184,7 +184,7 @@ namespace MOD_nE7UL2.Mod
             }
             else
             if (e.uiType.uiName == UIType.ArtifactInfo.uiName &&
-                (g.ui.HasUI(UIType.PlayerInfo) || (g.ui.HasUI(UIType.NPCInfo) && g.world.playerUnit.GetLuck(UnitTypeLuckEnum.Merchant.Value.Parse<int>()) != null)))
+                (RealMarketEvent3.IsOpenMarket || g.ui.HasUI(UIType.PlayerInfo) || (g.ui.HasUI(UIType.NPCInfo) && g.world.playerUnit.GetLuck(UnitTypeLuckEnum.Merchant.Value.Parse<int>()) != null)))
             {
                 var uiArtifactInfo = g.ui.GetUI<UIArtifactInfo>(UIType.ArtifactInfo);
 
@@ -251,9 +251,18 @@ namespace MOD_nE7UL2.Mod
                 uiArtifactInfo_textRefineTitle.text = $"Refine ({refineLvl}):";
                 uiArtifactInfo_textRefineAdj1.text = $"+Atk: {UnitModifyHelper.GetRefineArtifactAdjAtk(uiArtifactInfo.shapeProp, refineLvl)}";
                 uiArtifactInfo_textRefineAdj2.text = $"+Def: {UnitModifyHelper.GetRefineArtifactAdjDef(uiArtifactInfo.shapeProp, refineLvl)}";
-                uiArtifactInfo_textRefineAdj3.text = customAdj1?.GetText(uiArtifactInfo.unit, uiArtifactInfo.shapeProp, refineLvl);
-                uiArtifactInfo_textRefineAdj4.text = customAdj2?.GetText(uiArtifactInfo.unit, uiArtifactInfo.shapeProp, refineLvl);
-                uiArtifactInfo_textRefineAdj5.text = customAdj3?.GetText(uiArtifactInfo.unit, uiArtifactInfo.shapeProp, refineLvl);
+                if (RealMarketEvent3.IsOpenSellingList && g.world.playerUnit.GetLuck(UnitTypeLuckEnum.Merchant.Value.Parse<int>()) == null)
+                {
+                    uiArtifactInfo_textRefineAdj3.text = GameTool.LS("other500020083");
+                    uiArtifactInfo_textRefineAdj4.text = GameTool.LS("other500020083");
+                    uiArtifactInfo_textRefineAdj5.text = GameTool.LS("other500020083");
+                }
+                else
+                {
+                    uiArtifactInfo_textRefineAdj3.text = customAdj1?.GetText(uiArtifactInfo.unit, uiArtifactInfo.shapeProp, refineLvl);
+                    uiArtifactInfo_textRefineAdj4.text = customAdj2?.GetText(uiArtifactInfo.unit, uiArtifactInfo.shapeProp, refineLvl);
+                    uiArtifactInfo_textRefineAdj5.text = customAdj3?.GetText(uiArtifactInfo.unit, uiArtifactInfo.shapeProp, refineLvl);
+                }
             }
             else
             if (e.uiType.uiName == UIType.MartialInfo.uiName && g.ui.HasUI(UIType.PlayerInfo))
@@ -324,8 +333,8 @@ namespace MOD_nE7UL2.Mod
                 }
             }
             else
-            if (e.uiType.uiName == UIType.PropInfo.uiName && 
-                (g.ui.HasUI(UIType.PlayerInfo) || (g.ui.HasUI(UIType.NPCInfo) && g.world.playerUnit.GetLuck(UnitTypeLuckEnum.Merchant.Value.Parse<int>()) != null)))
+            if (e.uiType.uiName == UIType.PropInfo.uiName &&
+                 (RealMarketEvent3.IsOpenMarket || g.ui.HasUI(UIType.PlayerInfo) || (g.ui.HasUI(UIType.NPCInfo) && g.world.playerUnit.GetLuck(UnitTypeLuckEnum.Merchant.Value.Parse<int>()) != null)))
             {
                 var uiPropInfo = g.ui.GetUI<UIPropInfo>(UIType.PropInfo);
                 if (uiPropInfo.propData.propsItem.IsRing() != null)
@@ -346,8 +355,16 @@ namespace MOD_nE7UL2.Mod
 
                     uiPropInfo_textRefineTitle.text = $"Refine ({refineLvl}):";
                     uiPropInfo_textRefineAdj1.text = $"+Hp: {UnitModifyHelper.GetRefineRingAdjHp(uiPropInfo.unit.GetDynProperty(UnitDynPropertyEnum.HpMax).baseValue, uiPropInfo.propData, refineLvl)}";
-                    uiPropInfo_textRefineAdj2.text = customAdj1?.GetText(uiPropInfo.unit, uiPropInfo.propData, refineLvl);
-                    uiPropInfo_textRefineAdj3.text = customAdj2?.GetText(uiPropInfo.unit, uiPropInfo.propData, refineLvl);
+                    if (RealMarketEvent3.IsOpenSellingList && g.world.playerUnit.GetLuck(UnitTypeLuckEnum.Merchant.Value.Parse<int>()) == null)
+                    {
+                        uiPropInfo_textRefineAdj2.text = GameTool.LS("other500020083");
+                        uiPropInfo_textRefineAdj3.text = GameTool.LS("other500020083");
+                    }
+                    else
+                    {
+                        uiPropInfo_textRefineAdj2.text = customAdj1?.GetText(uiPropInfo.unit, uiPropInfo.propData, refineLvl);
+                        uiPropInfo_textRefineAdj3.text = customAdj2?.GetText(uiPropInfo.unit, uiPropInfo.propData, refineLvl);
+                    }
                 }
                 else if (uiPropInfo.propData.propsItem.IsOutfit() != null)
                 {
@@ -370,8 +387,16 @@ namespace MOD_nE7UL2.Mod
                     uiPropInfo_textRefineTitle.text = $"Refine ({refineLvl}):";
                     uiPropInfo_textRefineAdj1.text = $"+Hp: {UnitModifyHelper.GetRefineOutfitAdjHp(uiPropInfo.unit.GetDynProperty(UnitDynPropertyEnum.HpMax).baseValue, uiPropInfo.propData, refineLvl)}";
                     uiPropInfo_textRefineAdj2.text = $"+Def: {UnitModifyHelper.GetRefineOutfitAdjDef(uiPropInfo.unit.GetDynProperty(UnitDynPropertyEnum.Defense).baseValue, uiPropInfo.propData, refineLvl)}";
-                    uiPropInfo_textRefineAdj3.text = customAdj1?.GetText(uiPropInfo.unit, uiPropInfo.propData, refineLvl);
-                    uiPropInfo_textRefineAdj4.text = customAdj2?.GetText(uiPropInfo.unit, uiPropInfo.propData, refineLvl);
+                    if (RealMarketEvent3.IsOpenSellingList && g.world.playerUnit.GetLuck(UnitTypeLuckEnum.Merchant.Value.Parse<int>()) == null)
+                    {
+                        uiPropInfo_textRefineAdj3.text = GameTool.LS("other500020083");
+                        uiPropInfo_textRefineAdj4.text = GameTool.LS("other500020083");
+                    }
+                    else
+                    {
+                        uiPropInfo_textRefineAdj3.text = customAdj1?.GetText(uiPropInfo.unit, uiPropInfo.propData, refineLvl);
+                        uiPropInfo_textRefineAdj4.text = customAdj2?.GetText(uiPropInfo.unit, uiPropInfo.propData, refineLvl);
+                    }
                 }
                 else if (uiPropInfo.propData.propsItem.IsMount() != null)
                 {
@@ -391,8 +416,16 @@ namespace MOD_nE7UL2.Mod
 
                     uiPropInfo_textRefineTitle.text = $"Refine ({refineLvl}):";
                     uiPropInfo_textRefineAdj1.text = $"+Mp: {UnitModifyHelper.GetRefineMountAdjMp(uiPropInfo.unit.GetDynProperty(UnitDynPropertyEnum.MpMax).baseValue, uiPropInfo.propData, refineLvl)}";
-                    uiPropInfo_textRefineAdj2.text = customAdj1?.GetText(uiPropInfo.unit, uiPropInfo.propData, refineLvl);
-                    uiPropInfo_textRefineAdj3.text = customAdj2?.GetText(uiPropInfo.unit, uiPropInfo.propData, refineLvl);
+                    if (RealMarketEvent3.IsOpenSellingList && g.world.playerUnit.GetLuck(UnitTypeLuckEnum.Merchant.Value.Parse<int>()) == null)
+                    {
+                        uiPropInfo_textRefineAdj2.text = GameTool.LS("other500020083");
+                        uiPropInfo_textRefineAdj3.text = GameTool.LS("other500020083");
+                    }
+                    else
+                    {
+                        uiPropInfo_textRefineAdj2.text = customAdj1?.GetText(uiPropInfo.unit, uiPropInfo.propData, refineLvl);
+                        uiPropInfo_textRefineAdj3.text = customAdj2?.GetText(uiPropInfo.unit, uiPropInfo.propData, refineLvl);
+                    }
                 }
             }
             else

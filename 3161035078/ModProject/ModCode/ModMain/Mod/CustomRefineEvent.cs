@@ -88,10 +88,7 @@ namespace MOD_nE7UL2.Mod
             ui.goSubToggleRoot.SetActive(false);
             ui.ClearSelectItem();
             ui.selectOnePropID = true;
-            ui.allItems = new DataProps
-            {
-                allProps = new Il2CppSystem.Collections.Generic.List<DataProps.PropsData>()
-            };
+            ui.allItems.ClearAllProps();
             foreach (var item in g.world.playerUnit.GetUnitProps())
             {
                 if (IsRefinableItem(item))
@@ -119,10 +116,7 @@ namespace MOD_nE7UL2.Mod
             ui.goTabRoot.SetActive(false);
             ui.goSubToggleRoot.SetActive(false);
             ui.ClearSelectItem();
-            ui.allItems = new DataProps
-            {
-                allProps = new Il2CppSystem.Collections.Generic.List<DataProps.PropsData>()
-            };
+            ui.allItems.ClearAllProps();
             foreach (var item in g.world.playerUnit.GetUnitProps())
             {
                 if (IsRefinableMaterial(item))
