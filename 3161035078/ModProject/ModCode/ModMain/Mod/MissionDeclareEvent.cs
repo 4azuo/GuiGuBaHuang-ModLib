@@ -9,6 +9,7 @@ using MOD_nE7UL2.Object;
 using System.Text;
 using ModLib.Object;
 using ModLib.Enum;
+using static SpecialBattle83;
 
 namespace MOD_nE7UL2.Mod
 {
@@ -153,10 +154,7 @@ Your commissions:
         private void ClearCommisionItems(UITownBounty uiTownBounty, UIPropSelect uiSelector)
         {
             uiSelector.ClearSelectItem();
-            uiSelector.allItems = new DataProps
-            {
-                allProps = new Il2CppSystem.Collections.Generic.List<DataProps.PropsData>()
-            };
+            uiSelector.allItems.ClearAllProps();
             foreach (var item in _availableItems)
             {
                 var prop = item.Key;
