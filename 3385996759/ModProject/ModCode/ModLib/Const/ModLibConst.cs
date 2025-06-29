@@ -14,5 +14,11 @@
 
         public const int DEFAULT_TYPE1_DRAMA_ID = 999890001;
         public const int DEFAULT_TYPE2_DRAMA_ID = 999890002;
+        public const int DEFAULT_TYPE3_DRAMA_ID = 999890003;
+        public const int DEFAULT_TYPE4_DRAMA_ID = 999890004;
+        public const int DEFAULT_TYPE5_DRAMA_ID = 999890005;
+        public const int DEFAULT_TYPE6_DRAMA_ID = 999890006;
+        public const int DEFAULT_TYPE7_DRAMA_ID = 999890007;
+        public const int DEFAULT_TYPE8_DRAMA_ID = 999890008;
     }
 }
