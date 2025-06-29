@@ -7,7 +7,6 @@ using ModLib.Object;
 using System.Collections.Generic;
 using ModLib.Const;
 using MOD_nE7UL2.Object;
-using static BattleRoomNode;
 
 namespace MOD_nE7UL2.Mod
 {
@@ -34,13 +33,13 @@ namespace MOD_nE7UL2.Mod
         public List<MarketItem> MarketStack { get; set; } = new List<MarketItem>();
 
         public const int JOIN_RANGE = 4;
-        public const float SELLER_JOIN_MARKET_RATE = 10f;
-        public const float SELL_RATE = 5f; //depend on grade
-        public const float BUYER_JOIN_MARKET_RATE = 20f;
-        public const float BUY_RATE = 3f; //depend on grade
-        public const float GET_DEAL_RATE = 30f; //depend on price
-        public const float CANCEL_DEAL_RATE = 1f; //depend on month
-        public const float CANCEL_DEAL_LAST_MINUTE_RATE = 10f;
+        public const float SELLER_JOIN_MARKET_RATE = 8f;
+        public const float SELL_RATE = 4f; //depend on grade
+        public const float BUYER_JOIN_MARKET_RATE = 16f;
+        public const float BUY_RATE = 4f; //depend on grade
+        public const float GET_DEAL_RATE = 32f; //depend on price
+        public const float CANCEL_DEAL_RATE = 2f; //depend on month
+        public const float CANCEL_DEAL_LAST_MINUTE_RATE = 8f;
 
         public static bool IsSellableItem(DataProps.PropsData x)
         {
@@ -157,7 +156,7 @@ namespace MOD_nE7UL2.Mod
             }
 
             //check market item
-            if (CheckMarketItemExists(item))
+            if (!CheckMarketItemExists(item))
             {
                 NG_Seller2(buyer, seller, item);
                 return;
@@ -166,11 +165,14 @@ namespace MOD_nE7UL2.Mod
             //check negotiating items
             var price = GetNegotiatingPrice(item, deal.BuyerId);
             if ((price > 0 && buyer.GetUnitMoney() < price) ||
-                deal.Items.Any(x => !CheckNegotiatingItemExists(x)))
+                deal.Items.Any(x => x.NegotiatingPropSoleId != null && !x.IsValid))
             {
                 NG_Buyer(seller, buyer, item);
                 return;
             }
+
+            //show drama
+            OK(seller, buyer, item);
 
             //transfer money to seller
             if (price > 0 && buyer.GetUnitMoney() >= price)
@@ -183,61 +185,52 @@ namespace MOD_nE7UL2.Mod
             TransferItem(seller, buyer, item);
 
             //transfer negotiated items to seller
-            foreach (var ni in deal.Items.Where(x => !string.IsNullOrEmpty(x.NegotiatingPropSoleId)))
+            foreach (var ni in deal.Items.Where(x => x.NegotiatingPropSoleId != null))
             {
                 TransferItem(seller, buyer, ni);
             }
-
-            //show drama
-            OK(seller, buyer, item);
         }
 
         private static void NG_Seller1(WorldUnitBase seller, WorldUnitBase buyer, MarketItem item)
         {
+            if (seller == null || buyer == null || item == null)
+                return;
+            buyer.data.unitData.relationData.AddHate(seller.GetUnitId(), item.Prop.propsInfoBase.grade * 20);
             if (seller.IsPlayer() || buyer.IsPlayer())
-            {
-                DramaHelper.OpenDrama1(GameTool.LS("other500020080"), null, null, x =>
-                {
-                    buyer.data.unitData.relationData.AddHate(seller.GetUnitId(), item.Prop.propsInfoBase.grade * 20);
-                }, seller, buyer);
-            }
+                DramaHelper.OpenDrama1(GameTool.LS("other500020080"), new List<string> { GameTool.LS("other500020045") }, null, buyer, seller);
         }
 
         private static void NG_Seller2(WorldUnitBase seller, WorldUnitBase buyer, MarketItem item)
         {
+            if (seller == null || buyer == null || item == null)
+                return;
+            buyer.data.unitData.relationData.AddHate(seller.GetUnitId(), item.Prop.propsInfoBase.grade * 20);
             if (seller.IsPlayer() || buyer.IsPlayer())
-            {
-                DramaHelper.OpenDrama1(GameTool.LS("other500020081"), null, null, x =>
-                {
-                    buyer.data.unitData.relationData.AddHate(seller.GetUnitId(), item.Prop.propsInfoBase.grade * 20);
-                }, seller, buyer);
-            }
+                DramaHelper.OpenDrama1(GameTool.LS("other500020081"), new List<string> { GameTool.LS("other500020045") }, null, buyer, seller);
         }
 
         private static void NG_Buyer(WorldUnitBase seller, WorldUnitBase buyer, MarketItem item)
         {
+            if (seller == null || buyer == null || item == null)
+                return;
+            seller.data.unitData.relationData.AddHate(buyer.GetUnitId(), item.Prop.propsInfoBase.grade * 20);
             if (seller.IsPlayer() || buyer.IsPlayer())
-            {
-                DramaHelper.OpenDrama1(GameTool.LS("other500020078"), null, null, x =>
-                {
-                    seller.data.unitData.relationData.AddHate(buyer.GetUnitId(), item.Prop.propsInfoBase.grade * 20);
-                }, seller, buyer);
-            }
+                DramaHelper.OpenDrama1(GameTool.LS("other500020078"), new List<string> { GameTool.LS("other500020045") }, null, seller, buyer);
         }
 
         private static void OK(WorldUnitBase seller, WorldUnitBase buyer, MarketItem item)
         {
+            if (seller == null || buyer == null || item == null)
+                return;
+            seller.data.unitData.relationData.AddIntim(buyer.GetUnitId(), item.Prop.propsInfoBase.grade * 10);
+            buyer.data.unitData.relationData.AddIntim(seller.GetUnitId(), item.Prop.propsInfoBase.grade * 10);
             if (seller.IsPlayer() || buyer.IsPlayer())
             {
-                DramaHelper.OpenDrama1(GameTool.LS("other500020079"), null, null, x =>
-                {
-                    seller.data.unitData.relationData.AddIntim(buyer.GetUnitId(), item.Prop.propsInfoBase.grade * 10);
-                    buyer.data.unitData.relationData.AddIntim(seller.GetUnitId(), item.Prop.propsInfoBase.grade * 10);
-                }, seller, buyer);
+                DramaHelper.OpenDrama1(GameTool.LS("other500020079"), new List<string> { GameTool.LS("other500020045") }, null, seller, buyer);
             }
-            else if (Instance.NegotiatingDeals.Any(x => x.Buyer.IsPlayer()))
+            else if (Instance.NegotiatingDeals.Any(x => x.TargetProp == item && x.Buyer.IsPlayer()))
             {
-                DramaHelper.OpenDrama2(string.Format(GameTool.LS("other500020082"), item.Prop.propsInfoBase.name), null, null, null, "taohuayuanji3");
+                DramaHelper.OpenDrama2(string.Format(GameTool.LS("other500020082"), item.Prop.propsInfoBase.name), new List<string> { GameTool.LS("other500020045") }, null, "taohuayuanji3");
             }
         }
 
@@ -278,14 +271,7 @@ namespace MOD_nE7UL2.Mod
         {
             if (!item.IsValid)
                 return false;
-            return item.Prop != null && item.Prop.propsCount > item.Count;
-        }
-
-        public static bool CheckNegotiatingItemExists(NegotiatingItem item)
-        {
-            if (!item.IsValid)
-                return false;
-            return IsPartialItem(item.NegotiatingProp) ? item.NegotiatingSameProps.Count > 0 : item.NegotiatingProp != null;
+            return item.Prop != null && (IsPartialItem(item.Prop) ? (item.SameProps.Count > 0 && item.SameProps.Sum(x => x.propsCount) > item.Count) : item.Prop != null);
         }
 
         public override void OnMonthly()
@@ -293,28 +279,25 @@ namespace MOD_nE7UL2.Mod
             base.OnMonthly();
 
             //remove error
-            DebugHelper.WriteLine("1");
             foreach (var item in MarketStack.ToArray())
             {
-                DebugHelper.WriteLine("1.1");
-                if (!item.IsValid)
+                var highestDeal = GetNegotiatingHighestValue(item);
+                //get deal
+                if (highestDeal != null &&
+                    CommonTool.Random(0f, 100f).IsBetween(0f, GET_DEAL_RATE * (highestDeal.TotalValue / item.SellerPrice)))
                 {
-                    DebugHelper.WriteLine("1.1.1");
-                    Cancel(item);
+                    Deal(item, highestDeal);
                 }
-            }
-            foreach (var deal in NegotiatingDeals.ToArray())
-            {
-                DebugHelper.WriteLine("1.2");
-                if (!deal.IsValid)
+                //cancel
+                else
+                if (!item.IsValid ||
+                    CommonTool.Random(0f, 100f).IsBetween(0f, CANCEL_DEAL_RATE * (GameHelper.GetGameTotalMonth() - item.CreateMonth)))
                 {
-                    DebugHelper.WriteLine("1.2.1");
-                    Cancel(deal);
+                    Cancel(item);
                 }
             }
 
             //add item
-            DebugHelper.WriteLine("2");
             foreach (var town in g.world.build.GetBuilds<MapBuildTown>())
             {
                 var market = town.GetBuildSub<MapBuildTownMarket>();
@@ -325,7 +308,6 @@ namespace MOD_nE7UL2.Mod
                     {
                         if (!seller.IsPlayer() && CommonTool.Random(0f, 100f).IsBetween(0f, SELLER_JOIN_MARKET_RATE))
                         {
-                            DebugHelper.WriteLine("2.1");
                             var sellerId = seller.GetUnitId();
                             var props = seller.GetUnequippedProps()
                                 .Where(x => IsSellableItem(x) && !MarketStack.Any(z => z.SellerId == sellerId && z.SoleId == x.soleID) && CommonTool.Random(0f, 100f).IsBetween(0f, (7 - x.propsInfoBase.level) * SELL_RATE))
@@ -339,12 +321,11 @@ namespace MOD_nE7UL2.Mod
                                     Count = CommonTool.Random(1, x.propsCount),
                                     SellerPrice = (x.propsInfoBase.sale * CommonTool.Random(0.6f, 3.0f)).Parse<int>(),
                                     SoleId = x.soleID,
-                                    CreateMonth = GameHelper.GetGameMonth()
+                                    CreateMonth = GameHelper.GetGameTotalMonth()
                                 })
                                 .ToList();
                             if (props.Count > 0)
                             {
-                                DebugHelper.WriteLine("2.2");
                                 MarketStack.AddRange(props);
                             }
                         }
@@ -353,62 +334,36 @@ namespace MOD_nE7UL2.Mod
             }
 
             //process
-            DebugHelper.WriteLine("3");
             foreach (var item in MarketStack.ToArray())
             {
-                DebugHelper.WriteLine("3.1");
                 if (item.Seller.IsPlayer())
-                {
                     continue;
-                }
 
-                DebugHelper.WriteLine("3.2");
-                var highestDeal = GetNegotiatingHighestValue(item);
-                //get deal
-                if (highestDeal != null && 
-                    CommonTool.Random(0f, 100f).IsBetween(0f, GET_DEAL_RATE * (highestDeal.TotalValue / item.SellerPrice)))
-                {
-                    DebugHelper.WriteLine("3.2.1");
-                    Deal(item, highestDeal);
-                }
-                //cancel item
-                else if (CommonTool.Random(0f, 100f).IsBetween(0f, CANCEL_DEAL_RATE * (GameHelper.GetGameMonth() - item.CreateMonth)))
-                {
-                    DebugHelper.WriteLine("3.2.2");
-                    Cancel(item);
-                }
                 //add deal
-                else
+                var wunits = g.world.unit.GetUnitExact(item.Town.GetOrigiPoint(), JOIN_RANGE).ToArray();
+                foreach (var buyer in wunits)
                 {
-                    DebugHelper.WriteLine("3.2.3");
-                    var wunits = g.world.unit.GetUnitExact(item.Town.GetOrigiPoint(), JOIN_RANGE).ToArray();
-                    foreach (var buyer in wunits)
+                    var dealProp = item.Prop;
+                    var buyerId = buyer.GetUnitId();
+                    if (item.SellerId != buyerId &&
+                        CommonTool.Random(0f, 100f).IsBetween(0f, BUYER_JOIN_MARKET_RATE) &&
+                        CommonTool.Random(0f, 100f).IsBetween(0f, dealProp.propsInfoBase.level * BUY_RATE))
                     {
-                        var dealProp = item.Prop;
-                        var buyerId = buyer.GetUnitId();
-                        if (item.SellerId != buyerId &&
-                            CommonTool.Random(0f, 100f).IsBetween(0f, BUYER_JOIN_MARKET_RATE) &&
-                            CommonTool.Random(0f, 100f).IsBetween(0f, dealProp.propsInfoBase.level * BUY_RATE))
+                        var delta = 0.1f * dealProp.propsInfoBase.level;
+                        SetNegotiatingPrice(item, buyerId,
+                            (/*follow market price*/dealProp.propsInfoBase.sale *
+                                CommonTool.Random(0.5f + delta, 1.0f + delta)).Parse<int>().FixValue(0, buyer.GetUnitMoney() / 2).FixValue(MIN_PRICE, MAX_PRICE));
+                        if (dealProp.propsInfoBase.level.IsBetween(5, 6) && dealProp.propsInfoBase.grade >= buyer.GetGradeLvl())
                         {
-                            DebugHelper.WriteLine("3.2.3.1");
-                            var delta = 0.1f * dealProp.propsInfoBase.level;
-                            SetNegotiatingPrice(item, buyerId,
-                                (/*follow market price*/dealProp.propsInfoBase.sale *
-                                    CommonTool.Random(0.5f + delta, 1.0f + delta)).Parse<int>().FixValue(0, buyer.GetUnitMoney() / 2).FixValue(MIN_PRICE, MAX_PRICE));
-                            if (dealProp.propsInfoBase.level.IsBetween(5, 6) && dealProp.propsInfoBase.grade >= buyer.GetGradeLvl())
+                            var curValue = GetNegotiatingValue(item, buyerId);
+                            var highestValue = GetNegotiatingHighestValue(item);
+                            var curDeal = GetBuyerDeal(item, buyerId);
+                            foreach (var np in buyer.GetUnequippedProps().Where(x => IsSellableItem(x)))
                             {
-                                DebugHelper.WriteLine("3.2.3.2");
-                                var curValue = GetNegotiatingValue(item, buyerId);
-                                var highestValue = GetNegotiatingHighestValue(item);
-                                var curDeal = GetBuyerDeal(item, buyerId);
-                                foreach (var np in buyer.GetUnequippedProps().Where(x => IsSellableItem(x)))
+                                if (!curDeal.Items.Any(x => x.NegotiatingPropSoleId == np.soleID) &&
+                                    np.propsInfoBase.level < dealProp.propsInfoBase.level && curValue.TotalValue + (np.propsInfoBase.sale * np.propsCount) < highestValue.TotalValue)
                                 {
-                                    if (!curDeal.Items.Any(x => x.NegotiatingPropSoleId == np.soleID) &&
-                                        np.propsInfoBase.level < dealProp.propsInfoBase.level && curValue.TotalValue + (np.propsInfoBase.sale * np.propsCount) < highestValue.TotalValue)
-                                    {
-                                        DebugHelper.WriteLine("3.2.3.3");
-                                        AddNegotiatingItem(item, buyerId, np.propsID, np.soleID, np.propsCount);
-                                    }
+                                    AddNegotiatingItem(item, buyerId, np.propsID, np.soleID, np.propsCount);
                                 }
                             }
                         }
@@ -669,6 +624,9 @@ namespace MOD_nE7UL2.Mod
 
             uiSellingList.ClearSelectItem();
             uiSellingList.UpdateUI();
+
+            selectedProp = null;
+            selectedMarketItem = null;
         }
 
         private void OpenRegister()

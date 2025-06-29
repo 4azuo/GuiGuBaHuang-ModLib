@@ -53,6 +53,7 @@ namespace MOD_nE7UL2.Mod
                 {
                     MapBuildPropertyEvent.AddBuildProperty(school, -(MapBuildPropertyEvent.GetBuildProperty(school) * 0.8).Parse<long>());
                 }
+                RealMarketEvent3.Instance.MarketStack.Clear();
             }
         }
 
