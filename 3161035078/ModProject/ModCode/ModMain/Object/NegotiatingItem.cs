@@ -1,6 +1,7 @@
 ﻿using MOD_nE7UL2.Mod;
 using Newtonsoft.Json;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace MOD_nE7UL2.Object
 {
@@ -36,6 +37,18 @@ namespace MOD_nE7UL2.Object
                 var deal = ForDeal;
                 return deal != null/* && deal.IsValid*/ && (RealMarketEvent3.IsPartialItem(NegotiatingProp) ? NegotiatingSameProps.Count > 0 : NegotiatingProp != null);
             }
+        }
+
+        public List<DataProps.PropsData> GetProps()
+        {
+            if (!IsValid)
+                return new List<DataProps.PropsData>();
+            return RealMarketEvent3.IsPartialItem(NegotiatingProp) ? NegotiatingSameProps : new List<DataProps.PropsData> { NegotiatingProp };
+        }
+
+        public UIIconTool.PropsInfoDataBase GetPropInfo()
+        {
+            return GetProps().FirstOrDefault()?.propsInfoBase;
         }
 
         public NegotiatingItem(NegotiatingDeal d)
