@@ -1,5 +1,7 @@
-﻿using Newtonsoft.Json;
+﻿using MOD_nE7UL2.Mod;
+using Newtonsoft.Json;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace MOD_nE7UL2.Object
 {
@@ -29,8 +31,20 @@ namespace MOD_nE7UL2.Object
             get
             {
                 var seller = Seller;
-                return seller != null && !seller.isDie && Town != null && Prop != null;
+                return seller != null && !seller.isDie && Town != null && (RealMarketEvent3.IsPartialItem(Prop) ? SameProps.Count > 0 : Prop != null);
             }
+        }
+
+        public List<DataProps.PropsData> GetProps()
+        {
+            if (!IsValid)
+                return new List<DataProps.PropsData>();
+            return RealMarketEvent3.IsPartialItem(Prop) ? SameProps : new List<DataProps.PropsData> { Prop };
+        }
+
+        public UIIconTool.PropsInfoDataBase GetPropInfo()
+        {
+            return GetProps().FirstOrDefault()?.propsInfoBase;
         }
     }
 }

@@ -732,7 +732,7 @@ namespace MOD_nE7UL2.Mod
                         for (int i = 0; i < TeamACUnits.Count * 2; i++)
                         {
                             var monstLvl = CommonTool.Random(areaId - 1, areaId + 1).FixValue(0, monstList.Length - 1);
-                            var cunit = ModBattleEvent.SceneBattle.unit.CreateUnitMonst(monstList[monstLvl], Vector2.zero, UnitType.Monst, 3 + 5 * monstLvl);
+                            var cunit = ModBattleEvent.SceneBattle.unit.CreateUnitMonst(monstList[monstLvl], Vector2.zero, UnitType.Monst, CommonTool.Random(1, 5) + 5 * monstLvl);
                             TeamBCUnits.Add(cunit);
                             InitUnitPosi(cunit);
                         }
@@ -808,7 +808,7 @@ namespace MOD_nE7UL2.Mod
                     //create new monster
                     var areaId = g.world.playerUnit.data.unitData.pointGridData.areaBaseID;
                     var monstLvl = CommonTool.Random(areaId - 1, areaId + 1).FixValue(0, monstList.Length - 1);
-                    var cunit = ModBattleEvent.SceneBattle.unit.CreateUnitMonst(monstList[monstLvl], Vector2.zero, UnitType.Monst, 4 * areaId + monstLvl);
+                    var cunit = ModBattleEvent.SceneBattle.unit.CreateUnitMonst(monstList[monstLvl], Vector2.zero, UnitType.Monst, CommonTool.Random(1, 5) + 5 * monstLvl);
                     TeamBCUnits.Add(cunit);
                     InitUnitPosi(cunit);
                 }
