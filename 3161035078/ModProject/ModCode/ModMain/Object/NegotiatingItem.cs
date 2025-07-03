@@ -21,8 +21,7 @@ namespace MOD_nE7UL2.Object
                     return 0;
                 if (NegotiatingPropSoleId == null)
                     return Count;
-                var sale = RealMarketEvent3.IsPartialItem(NegotiatingProp) ? NegotiatingSameProps[0].propsInfoBase.sale : NegotiatingProp.propsInfoBase.sale;
-                return sale * Count;
+                return GetPropInfo().sale * Count;
             }
         }
         [JsonIgnore]
@@ -35,15 +34,16 @@ namespace MOD_nE7UL2.Object
             get
             {
                 var deal = ForDeal;
-                return deal != null/* && deal.IsValid*/ && (RealMarketEvent3.IsPartialItem(NegotiatingProp) ? NegotiatingSameProps.Count > 0 : NegotiatingProp != null);
+                return deal != null/* && deal.IsValid*/ && GetPropInfo() != null;
             }
         }
 
         public List<DataProps.PropsData> GetProps()
         {
-            if (!IsValid)
+            var p = NegotiatingProp;
+            if (p == null)
                 return new List<DataProps.PropsData>();
-            return RealMarketEvent3.IsPartialItem(NegotiatingProp) ? NegotiatingSameProps : new List<DataProps.PropsData> { NegotiatingProp };
+            return RealMarketEvent3.IsPartialItem(p) ? NegotiatingSameProps : new List<DataProps.PropsData> { p };
         }
 
         public UIIconTool.PropsInfoDataBase GetPropInfo()

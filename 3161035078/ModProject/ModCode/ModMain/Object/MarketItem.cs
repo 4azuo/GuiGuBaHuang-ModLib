@@ -31,13 +31,14 @@ namespace MOD_nE7UL2.Object
             get
             {
                 var seller = Seller;
-                return seller != null && !seller.isDie && Town != null && (RealMarketEvent3.IsPartialItem(Prop) ? SameProps.Count > 0 : Prop != null);
+                return seller != null && !seller.isDie && Town != null && GetPropInfo() != null;
             }
         }
 
         public List<DataProps.PropsData> GetProps()
         {
-            if (!IsValid)
+            var p = Prop;
+            if (p == null)
                 return new List<DataProps.PropsData>();
             return RealMarketEvent3.IsPartialItem(Prop) ? SameProps : new List<DataProps.PropsData> { Prop };
         }
