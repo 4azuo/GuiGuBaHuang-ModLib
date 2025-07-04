@@ -20,6 +20,7 @@ namespace MOD_nE7UL2.Mod
         public static CustomRefineEvent Instance { get; set; }
 
         public const int REFINE_EXP_RATE = 200;
+        public const int MAX_ADJ_PER_PROP = 5;
 
         [JsonIgnore]
         public Dictionary<string, double> CachedValues { get; } = new Dictionary<string, double>();
@@ -205,7 +206,7 @@ namespace MOD_nE7UL2.Mod
         {
             if (!IsRefinableItem(props))
                 return null;
-            if (index < 1 || index > 5) //soleID.MaxLength = 6
+            if (index < 1 || index > MAX_ADJ_PER_PROP) //soleID.MaxLength = 6
                 return null;
             var key = $"{props.soleID}_{index}";
             if (!Instance.CustomRefine.ContainsKey(key))
@@ -214,18 +215,19 @@ namespace MOD_nE7UL2.Mod
             return rs;
         }
 
-        public static List<CustomRefine> GetCustomAdjTypes(DataProps.PropsData props, AdjTypeEnum condition)
+        public static List<CustomRefine> GetCustomAdjTypes(DataProps.PropsData props)
         {
             var list = new List<CustomRefine>();
-            for (int i = 1; i <= 5; i++)
+            for (int i = 1; i <= MAX_ADJ_PER_PROP; i++)
             {
-                var key = $"{props.soleID}_{i}";
-                if (Instance.CustomRefine.ContainsKey(key) && Instance.CustomRefine[key].AdjType == condition)
-                {
-                    list.Add(Instance.CustomRefine[key]);
-                }
+                list.Add(GetCustomAdjType(props, i));
             }
             return list;
+        }
+
+        public static List<CustomRefine> GetCustomAdjTypes(DataProps.PropsData props, AdjTypeEnum condition)
+        {
+            return GetCustomAdjTypes(props).Where(x => x.AdjType == condition).ToList();
         }
 
         public static double GetCustomAdjValue(WorldUnitBase wunit, AdjTypeEnum adjType)
@@ -247,6 +249,16 @@ namespace MOD_nE7UL2.Mod
                 Instance.CachedValues[unitId] = rs;
             }
             return Instance.CachedValues[unitId];
+        }
+
+        public static void CopyAdj(DataProps.PropsData fromProp, DataProps.PropsData toProp)
+        {
+            for (int i = 1; i <= MAX_ADJ_PER_PROP; i++)
+            {
+                var toKey = $"{toProp.soleID}_{i}";
+                Instance.CustomRefine[toKey] = GetCustomAdjType(fromProp, i).Clone();
+            }
+            Instance.RefineExp[toProp.soleID] = GetRefineExp(fromProp);
         }
     }
 }
