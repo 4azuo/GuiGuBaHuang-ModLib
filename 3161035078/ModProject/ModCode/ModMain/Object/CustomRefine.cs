@@ -100,5 +100,15 @@ namespace MOD_nE7UL2.Object
         {
             return $"+{GameTool.LS(AdjType.Label)}: {GetRefineCustommAdjValue(wunit, props, refineLvl).ToString(AdjType.ValueFormat)} {(IsEnable(refineLvl) ? string.Empty : $"(Req {Index * 100})")}";
         }
+
+        public CustomRefine Clone()
+        {
+            var clone = new CustomRefine();
+            clone.Index = this.Index;
+            clone.AdjType = this.AdjType;
+            clone.AdjLevel = this.AdjLevel;
+            clone.RandomMultiplier = this.RandomMultiplier;
+            return clone;
+        }
     }
 }
