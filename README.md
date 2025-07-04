@@ -61,6 +61,7 @@
 - Monster waves
 - Potmon properties auto increase monthly and depend on player properties when summoned
 - NPC auto up level and grade of skills and auto craft new artifact
+- NPC/Player trade items in market
 - etc...
 
 
