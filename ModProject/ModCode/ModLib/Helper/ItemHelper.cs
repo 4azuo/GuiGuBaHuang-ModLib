@@ -203,4 +203,13 @@ public static class ItemHelper
     {
         return g.conf.battleSkillAttack.GetMartialTypeName(t);
     }
+
+    public static CheckEnum IsPartialItem(this DataProps.PropsData p)
+    {
+        if (p == null)
+            return CheckEnum.Null;
+        if (p.propsItem?.isOverlay == 1 && p.propsType != DataProps.PropsDataType.Martial)
+            return CheckEnum.True;
+        return CheckEnum.False;
+    }
 }
