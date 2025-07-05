@@ -36,8 +36,8 @@ namespace MOD_nE7UL2.Mod
             {
                 var uiTownStorageProps = g.ui.GetUI<UITownStorageProps>(UIType.TownStorageProps);
 
-                txtStorageMoney = uiTownStorageProps.textTip.Copy().Align(TextAnchor.MiddleRight).Format().Pos(uiTownStorageProps.textTip.gameObject, 0, 60);
-                txtFee = uiTownStorageProps.textTip.Copy().Align(TextAnchor.MiddleRight).Format(Color.blue).Pos(uiTownStorageProps.textTip.gameObject, 0, 30);
+                txtStorageMoney = uiTownStorageProps.textTip.Copy().Align(TextAnchor.MiddleRight).Format().Pos(uiTownStorageProps.textTip.gameObject, 0, 40);
+                txtFee = uiTownStorageProps.textTip.Copy().Align(TextAnchor.MiddleRight).Format(Color.blue).Pos(uiTownStorageProps.textTip.gameObject, 0, 20);
 
                 if (Debt > 0)
                 {
