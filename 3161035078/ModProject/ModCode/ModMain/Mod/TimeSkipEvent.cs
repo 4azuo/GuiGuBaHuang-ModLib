@@ -47,7 +47,7 @@ namespace MOD_nE7UL2.Mod
                     {
                         g.ui.MsgBox(GameTool.LS("other500020022"), string.Format(GameTool.LS("other500020031"), 10), MsgBoxButtonEnum.YesNo, () =>
                         {
-                            SkipTimeWithoutEvents(12);
+                            SkipTimeWithoutEvents(120);
                         });
                     }, string.Format(GameTool.LS("other500020032"), 1)).Size(40, 40);
                 }
