@@ -4,6 +4,7 @@ using MOD_nE7UL2.Const;
 using MOD_nE7UL2.Enum;
 using ModLib.Enum;
 using ModLib.Mod;
+using ModLib.Object;
 using System;
 using System.Collections.Generic;
 using UnityEngine;
@@ -21,10 +22,12 @@ namespace MOD_nE7UL2.Mod
         public const int BASIS_ON_DEF = 400;
         public const float BASIS_ON_BLOCK_RATIO = 10000f;
         public const int BASIS_ON_BLOCK_COST = 800;
+        public const float DMG_MULTIPLIER = 1.002f;
 
         public static bool IsShowCustomMonstCount { get; set; } = false;
         public static Text TextCustomMonstCount1 { get; private set; }
         public static Text TextCustomMonstCount2 { get; private set; }
+        public static UIItemText TextDamageMultiplier { get; private set; }
 
         public static _MonstStrongerConfigs MonstStrongerConfigs => ModMain.ModObj.GameSettings.MonstStrongerConfigs;
 
@@ -41,18 +44,27 @@ namespace MOD_nE7UL2.Mod
             else
             if (e.uiType.uiName == UIType.BattleInfo.uiName)
             {
-                var ui = g.ui.GetUI<UIBattleInfo>(UIType.BattleInfo);
-                ui.uiMap.goGroupRoot.SetActive(!SMLocalConfigsEvent.Instance.Configs.HideBattleMap);
-                if (IsShowCustomMonstCount)
+                var ui = new UICover<UIBattleInfo>(UIType.BattleInfo);
                 {
-                    TextCustomMonstCount1 = ui.uiInfo.textMonstCount1.Replace();
-                    TextCustomMonstCount2 = ui.uiInfo.textMonstCount2.Replace();
+                    TextDamageMultiplier = ui.AddText(ui.MidCol, ui.FirstRow + 5, GameTool.LS("other500020089")).Format(Color.white, 20);
+                    TextDamageMultiplier.SetWork(new UIItemWork
+                    {
+                        Formatter = (x) => new object[] { Math.Pow(DMG_MULTIPLIER, ModBattleEvent.BattleTime.TotalSeconds).ToString("#,##0.00") }
+                    });
+
+                    ui.UI.uiMap.goGroupRoot.SetActive(!SMLocalConfigsEvent.Instance.Configs.HideBattleMap);
+                    if (IsShowCustomMonstCount)
+                    {
+                        TextCustomMonstCount1 = ui.UI.uiInfo.textMonstCount1.Replace();
+                        TextCustomMonstCount2 = ui.UI.uiInfo.textMonstCount2.Replace();
+                    }
+                    else
+                    {
+                        ui.UI.uiInfo.goMonstCount1.SetActive(false);
+                        ui.UI.uiInfo.goMonstCount2.SetActive(false);
+                    }
                 }
-                else
-                {
-                    ui.uiInfo.goMonstCount1.SetActive(false);
-                    ui.uiInfo.goMonstCount2.SetActive(false);
-                }
+                ui.IsAutoUpdate = true;
             }
         }
 
@@ -134,7 +146,7 @@ namespace MOD_nE7UL2.Mod
 
             //DebugHelper.WriteLine($"x");
             //add dmg by time
-            e.dynV.baseValue += (Math.Pow(1.001f, ModBattleEvent.BattleTime.TotalSeconds) * e.dynV.baseValue).Parse<int>();
+            e.dynV.baseValue += (Math.Pow(DMG_MULTIPLIER, ModBattleEvent.BattleTime.TotalSeconds) * e.dynV.baseValue).Parse<int>();
 
             //DebugHelper.WriteLine($"3: {e.dynV.baseValue}");
             //add dmg (skill)

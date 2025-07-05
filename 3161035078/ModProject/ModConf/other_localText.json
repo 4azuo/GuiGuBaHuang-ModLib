@@ -458,4 +458,29 @@
 		"key": "other500020084",
 		"ch|en|tc|kr": "Please select an item."
 	},
+	{
+		"id": 500020085,
+		"key": "other500020085",
+		"ch|en|tc|kr": "VIP Market"
+	},
+	{
+		"id": 500020086,
+		"key": "other500020086",
+		"ch|en|tc|kr": "Do you wanna pay {0} spirit stones for our service?"
+	},
+	{
+		"id": 500020087,
+		"key": "other500020087",
+		"ch|en|tc|kr": "You dont have enough spirit stones!"
+	},
+	{
+		"id": 500020088,
+		"key": "other500020088",
+		"ch|en|tc|kr": "Are you try to dump me?"
+	},
+	{
+		"id": 500020089,
+		"key": "other500020089",
+		"ch|en|tc|kr": "Damage x{0}"
+	},
 ]

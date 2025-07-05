@@ -1,4 +1,5 @@
 ﻿using MOD_nE7UL2.Mod;
+using ModLib.Enum;
 using Newtonsoft.Json;
 using System.Collections.Generic;
 using System.Linq;
@@ -16,6 +17,7 @@ namespace MOD_nE7UL2.Object
         public int SellerPrice { get; set; }
         public string SoleId { get; set; }
         public int CreateMonth { get; set; }
+        public bool IsPartialItem { get; set; }
 
         [JsonIgnore]
         public WorldUnitBase Seller => g.world.unit.GetUnit(SellerId);
@@ -37,10 +39,7 @@ namespace MOD_nE7UL2.Object
 
         public List<DataProps.PropsData> GetProps()
         {
-            var p = Prop;
-            if (p == null)
-                return new List<DataProps.PropsData>();
-            return RealMarketEvent3.IsPartialItem(Prop) ? SameProps : new List<DataProps.PropsData> { Prop };
+            return IsPartialItem ? SameProps : new List<DataProps.PropsData> { Prop };
         }
 
         public UIIconTool.PropsInfoDataBase GetPropInfo()
