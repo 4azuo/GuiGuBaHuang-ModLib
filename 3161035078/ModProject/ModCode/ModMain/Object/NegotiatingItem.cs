@@ -34,8 +34,9 @@ namespace MOD_nE7UL2.Object
         {
             get
             {
-                var deal = ForDeal;
-                return deal != null/* && deal.IsValid*/ && GetPropInfo() != null;
+                if (IsSpiritStones)
+                    return true;
+                return ForDeal != null && GetPropInfo() != null;
             }
         }
 
