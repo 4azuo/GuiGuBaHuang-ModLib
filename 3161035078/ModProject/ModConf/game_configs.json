@@ -191,5 +191,15 @@
 	},
 	"MapBuildBattleConfigs": {
 		"EscapeChance": 10.00
+	},
+	"MarketItemConfigs": {
+		"JoinRange": 3,
+		"SellerJoinMarketRate": 8.00,
+		"SellRateDependOnGrade": 3.00,
+		"BuyerJoinMarketRate": 12.00,
+		"BuyRateDependOnGrade": 4.00,
+		"GetDealRate": 36.00,
+		"CancelDealOnMonth": 2.00,
+		"CancelDealLastMinuteRate": 8.00,
 	}
 }
