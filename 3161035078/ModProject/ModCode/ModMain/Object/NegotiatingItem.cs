@@ -20,7 +20,7 @@ namespace MOD_nE7UL2.Object
             {
                 if (!IsValid)
                     return 0;
-                if (NegotiatingPropSoleId == null)
+                if (IsSpiritStones)
                     return Count;
                 return GetPropInfo().sale * Count;
             }

@@ -207,5 +207,20 @@ namespace MOD_nE7UL2.Object
         }
         public _MapBuildBattleConfigs MapBuildBattleConfigs { get; set; }
         #endregion
+
+        #region MarketItemConfigs
+        public class _MarketItemConfigs
+        {
+            public int JoinRange { get; set; }
+            public float SellerJoinMarketRate { get; set; }
+            public float SellRateDependOnGrade { get; set; }
+            public float BuyerJoinMarketRate { get; set; }
+            public float BuyRateDependOnGrade { get; set; }
+            public float GetDealRate { get; set; }
+            public float CancelDealOnMonth { get; set; }
+            public float CancelDealLastMinuteRate { get; set; }
+        }
+        public _MarketItemConfigs MarketItemConfigs { get; set; }
+        #endregion
     }
 }

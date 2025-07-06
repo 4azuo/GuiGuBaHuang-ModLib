@@ -9,6 +9,7 @@ using ModLib.Const;
 using MOD_nE7UL2.Object;
 using System;
 using ModLib.Enum;
+using static MOD_nE7UL2.Object.GameStts;
 
 namespace MOD_nE7UL2.Mod
 {
@@ -34,14 +35,8 @@ namespace MOD_nE7UL2.Mod
         public List<NegotiatingDeal> NegotiatingDeals { get; set; } = new List<NegotiatingDeal>();
         public List<MarketItem> MarketStack { get; set; } = new List<MarketItem>();
 
-        public const int JOIN_RANGE = 4;
-        public const float SELLER_JOIN_MARKET_RATE = 8f;
-        public const float SELL_RATE = 4f; //depend on grade
-        public const float BUYER_JOIN_MARKET_RATE = 16f;
-        public const float BUY_RATE = 4f; //depend on grade
-        public const float GET_DEAL_RATE = 32f; //depend on price
-        public const float CANCEL_DEAL_RATE = 2f; //depend on month
-        public const float CANCEL_DEAL_LAST_MINUTE_RATE = 8f;
+        //configs
+        public static _MarketItemConfigs Configs => ModMain.ModObj.GameSettings.MarketItemConfigs;
 
         public static bool IsSellableItem(DataProps.PropsData x)
         {
@@ -189,7 +184,7 @@ namespace MOD_nE7UL2.Mod
             CancelWithoutMessage(item);
 
             //seller cancel (%)
-            if (CommonTool.Random(0f, 100f).IsBetween(0f, CANCEL_DEAL_LAST_MINUTE_RATE))
+            if (CommonTool.Random(0f, 100f).IsBetween(0f, Configs.CancelDealLastMinuteRate))
             {
                 DebugHelper.WriteLine($"【{seller.data.unitData.propertyData.GetName()}】→【{buyer.data.unitData.propertyData.GetName()}】：「{item.GetPropInfo().name}」：The seller removed the product from sale.");
                 NG_Seller1(seller, buyer, item);
@@ -373,6 +368,11 @@ namespace MOD_nE7UL2.Mod
         public override void OnMonthly()
         {
             base.OnMonthly();
+            var curMonth = GameHelper.GetGameTotalMonth();
+
+            //get wunits
+            var towns = g.world.build.GetBuilds<MapBuildTown>().ToArray().Where(x => x.GetBuildSub<MapBuildTownMarket>() != null).ToArray();
+            var wunitsInTowns = towns.ToDictionary(x => x.buildData.id, x => g.world.unit.GetUnitExact(x.GetOrigiPoint(), Configs.JoinRange).ToArray());
 
             //remove error
             //DebugHelper.WriteLine("1");
@@ -380,7 +380,7 @@ namespace MOD_nE7UL2.Mod
             {
                 //cancel
                 if (!item.IsValid ||
-                    CommonTool.Random(0f, 100f).IsBetween(0f, CANCEL_DEAL_RATE * (GameHelper.GetGameTotalMonth() - item.CreateMonth)))
+                    CommonTool.Random(0f, 100f).IsBetween(0f, Configs.CancelDealOnMonth * (curMonth - item.CreateMonth)))
                 {
                     //DebugHelper.WriteLine("1.2");
                     Cancel(item);
@@ -390,7 +390,7 @@ namespace MOD_nE7UL2.Mod
                 var highestDeal = GetNegotiatingHighestValue(item);
                 //get deal
                 if (highestDeal != null &&
-                    CommonTool.Random(0f, 100f).IsBetween(0f, GET_DEAL_RATE * (highestDeal.TotalValue / item.SellerPrice)))
+                    CommonTool.Random(0f, 100f).IsBetween(0f, Configs.GetDealRate * (highestDeal.TotalValue / item.SellerPrice)))
                 {
                     //DebugHelper.WriteLine("1.1");
                     Deal(item, highestDeal);
@@ -400,40 +400,35 @@ namespace MOD_nE7UL2.Mod
 
             //add item
             //DebugHelper.WriteLine("2");
-            foreach (var town in g.world.build.GetBuilds<MapBuildTown>())
+            foreach (var wunitsInTown in wunitsInTowns)
             {
-                var market = town.GetBuildSub<MapBuildTownMarket>();
-                if (market != null)
+                //DebugHelper.WriteLine("2.1");
+                foreach (var seller in wunitsInTown.Value)
                 {
-                    //DebugHelper.WriteLine("2.1");
-                    var wunits = g.world.unit.GetUnitExact(town.GetOrigiPoint(), JOIN_RANGE).ToArray();
-                    foreach (var seller in wunits)
+                    if (!seller.IsPlayer() && CommonTool.Random(0f, 100f).IsBetween(0f, Configs.SellerJoinMarketRate))
                     {
-                        if (!seller.IsPlayer() && CommonTool.Random(0f, 100f).IsBetween(0f, SELLER_JOIN_MARKET_RATE))
-                        {
-                            //DebugHelper.WriteLine("2.1.1");
-                            var sellerId = seller.GetUnitId();
-                            var props = seller.GetUnequippedProps()
-                                .Where(x => IsSellableItem(x) && !MarketStack.Any(z => z.SellerId == sellerId && z.SoleId == x.soleID) && CommonTool.Random(0f, 100f).IsBetween(0f, (7 - x.propsInfoBase.level) * SELL_RATE))
-                                .Select(x => new MarketItem
-                                {
-                                    SellerId = sellerId,
-                                    TownId = town.buildData.id,
-                                    PropId = x.propsID,
-                                    DataType = x.propsType,
-                                    DataValues = x.values,
-                                    Count = CommonTool.Random(1, x.propsCount),
-                                    SellerPrice = (x.propsInfoBase.sale * CommonTool.Random(0.6f, 3.0f)).Parse<int>(),
-                                    SoleId = x.soleID,
-                                    CreateMonth = GameHelper.GetGameTotalMonth(),
-                                    IsPartialItem = x.IsPartialItem() == CheckEnum.True,
-                                })
-                                .ToList();
-                            if (props.Count > 0)
+                        //DebugHelper.WriteLine("2.1.1");
+                        var sellerId = seller.GetUnitId();
+                        var props = seller.GetUnequippedProps()
+                            .Where(x => IsSellableItem(x) && !MarketStack.Any(z => z.SellerId == sellerId && z.SoleId == x.soleID) && CommonTool.Random(0f, 100f).IsBetween(0f, (7 - x.propsInfoBase.level) * Configs.SellRateDependOnGrade))
+                            .Select(x => new MarketItem
                             {
-                                //DebugHelper.WriteLine("2.1.2");
-                                MarketStack.AddRange(props);
-                            }
+                                SellerId = sellerId,
+                                TownId = wunitsInTown.Key,
+                                PropId = x.propsID,
+                                DataType = x.propsType,
+                                DataValues = x.values,
+                                Count = CommonTool.Random(1, x.propsCount),
+                                SellerPrice = (x.propsInfoBase.sale * CommonTool.Random(0.6f, 3.0f)).Parse<int>(),
+                                SoleId = x.soleID,
+                                CreateMonth = GameHelper.GetGameTotalMonth(),
+                                IsPartialItem = x.IsPartialItem() == CheckEnum.True,
+                            })
+                            .ToList();
+                        if (props.Count > 0)
+                        {
+                            //DebugHelper.WriteLine("2.1.2");
+                            MarketStack.AddRange(props);
                         }
                     }
                 }
@@ -453,13 +448,12 @@ namespace MOD_nE7UL2.Mod
 
                 //add deal
                 //DebugHelper.WriteLine("3.1");
-                var wunits = g.world.unit.GetUnitExact(item.Town.GetOrigiPoint(), JOIN_RANGE).ToArray();
-                foreach (var buyer in wunits)
+                foreach (var buyer in wunitsInTowns[item.TownId])
                 {
                     var buyerId = buyer.GetUnitId();
                     if (item.SellerId != buyerId && !buyer.IsPlayer() &&
-                        CommonTool.Random(0f, 100f).IsBetween(0f, BUYER_JOIN_MARKET_RATE) &&
-                        CommonTool.Random(0f, 100f).IsBetween(0f, dealPropInfo.level * BUY_RATE))
+                        CommonTool.Random(0f, 100f).IsBetween(0f, Configs.BuyerJoinMarketRate) &&
+                        CommonTool.Random(0f, 100f).IsBetween(0f, dealPropInfo.level * Configs.BuyRateDependOnGrade))
                     {
                         //DebugHelper.WriteLine("3.1.1");
                         var delta = 0.1f * dealPropInfo.level;
