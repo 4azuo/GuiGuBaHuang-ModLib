@@ -24,50 +24,53 @@ namespace MOD_nE7UL2.Mod
         {
             base.OnOpenUIEnd(e);
 
-            if (e.uiType.uiName == UIType.TownPub.uiName && !SMLocalConfigsEvent.Instance.Configs.NoRebirth)
+            if (!SMLocalConfigsEvent.Instance.Configs.NoRebirth)
             {
-                var player = g.world.playerUnit;
-                var playerGradeLvl = player.GetGradeLvl();
-                var curTown = g.world.build.GetBuild(new UnityEngine.Vector2Int(player.data.unitData.pointX, player.data.unitData.pointY));
-                var townLevel = curTown.gridData.areaBaseID;
-
-                if (townLevel > RebirthLevel &&
-                    playerGradeLvl > RebirthLevel &&
-                    townLevel >= playerGradeLvl)
+                if (e.uiType.uiName == UIType.TownPub.uiName)
                 {
-                    var ui = new UICover<UITownPub>(e.ui);
+                    var player = g.world.playerUnit;
+                    var playerGradeLvl = player.GetGradeLvl();
+                    var curTown = g.world.build.GetBuild(new UnityEngine.Vector2Int(player.data.unitData.pointX, player.data.unitData.pointY));
+                    var townLevel = curTown.gridData.areaBaseID;
+
+                    if (townLevel > RebirthLevel &&
+                        playerGradeLvl > RebirthLevel &&
+                        townLevel >= playerGradeLvl)
                     {
-                        ui.AddButton(0, 0, () =>
+                        var ui = new UICover<UITownPub>(e.ui);
                         {
-                            if (!string.IsNullOrEmpty(player.data.unitData.schoolID))
+                            ui.AddButton(0, 0, () =>
                             {
-                                g.ui.MsgBox(GameTool.LS("rebirth420103102"), GameTool.LS("rebirth420103100"));
-                                return;
-                            }
+                                if (!string.IsNullOrEmpty(player.data.unitData.schoolID))
+                                {
+                                    g.ui.MsgBox(GameTool.LS("rebirth420103102"), GameTool.LS("rebirth420103100"));
+                                    return;
+                                }
 
-                            g.ui.MsgBox(GameTool.LS("rebirth420103102"), GameTool.LS("rebirth420103101"), MsgBoxButtonEnum.YesNo, () =>
-                            {
-                                //var
-                                RebirthCount++;
-                                RebirthLevel = playerGradeLvl;
-                                TotalGradeLvl += playerGradeLvl;
+                                g.ui.MsgBox(GameTool.LS("rebirth420103102"), GameTool.LS("rebirth420103101"), MsgBoxButtonEnum.YesNo, () =>
+                                {
+                                    //var
+                                    RebirthCount++;
+                                    RebirthLevel = playerGradeLvl;
+                                    TotalGradeLvl += playerGradeLvl;
 
-                                //reset grade & exp
-                                player.ResetGradeLevel();
-                                player.ClearExp();
+                                    //reset grade & exp
+                                    player.ResetGradeLevel();
+                                    player.ClearExp();
 
-                                //reset items
-                                player.SetProperty(UnitPropertyEnum.Reputation, 0);
+                                    //reset items
+                                    player.SetProperty(UnitPropertyEnum.Reputation, 0);
 
-                                //close rebirth ui
-                                ui.Dispose();
+                                    //close rebirth ui
+                                    ui.Dispose();
 
-                                //add luck & open drama
-                                AddLuck();
-                                DramaTool.OpenDrama(REBIRTH_DRAMA);
-                            });
-                        }, $"Rebirth {RebirthCount + 1}", ui.UI.btnPub).Pos(ui.UI.btnPub.gameObject, 0, 100);
-                        ui.AddToolTipButton(GameTool.LS("rebirth420103103")).Pos(ui.UI.btnPub.gameObject, -100, 100);
+                                    //add luck & open drama
+                                    AddLuck();
+                                    DramaTool.OpenDrama(REBIRTH_DRAMA);
+                                });
+                            }, GameTool.LS($"rebirth{420101001 + RebirthCount}"), ui.UI.btnPub).Pos(ui.UI.btnPub.gameObject, 0, 100);
+                            ui.AddToolTipButton(GameTool.LS("rebirth420103103")).Pos(ui.UI.btnPub.gameObject, -100, 100);
+                        }
                     }
                 }
             }

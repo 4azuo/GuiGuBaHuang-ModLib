@@ -42,16 +42,19 @@ namespace MOD_nE7UL2.Mod
         {
             base.OnOpenUIEnd(e);
 
-            if (e.uiType.uiName == UIType.School.uiName && !SMLocalConfigsEvent.Instance.Configs.SectNoExchange)
+            if (!SMLocalConfigsEvent.Instance.Configs.SectNoExchange)
             {
-                var uiSchool = g.ui.GetUI<UISchool>(UIType.School);
-                if (g.world?.playerUnit?.data?.school?.schoolNameID == uiSchool.school.schoolNameID)
+                if (e.uiType.uiName == UIType.School.uiName)
                 {
-                    var ui = new UICover<UISchool>(uiSchool);
+                    var uiSchool = g.ui.GetUI<UISchool>(UIType.School);
+                    if (g.world?.playerUnit?.data?.school?.schoolNameID == uiSchool.school.schoolNameID)
                     {
-                        ui.AddButton(5, 5, OpenSelector, GameTool.LS("other500020000")).Size(240, 40);
+                        var ui = new UICover<UISchool>(uiSchool);
+                        {
+                            ui.AddButton(5, 5, OpenSelector, GameTool.LS("other500020000")).Size(240, 40);
+                        }
+                        ui.UpdateUI();
                     }
-                    ui.UpdateUI();
                 }
             }
         }
@@ -61,10 +64,13 @@ namespace MOD_nE7UL2.Mod
         public override void OnTimeUpdate200ms()
         {
             base.OnTimeUpdate200ms();
-            if (txtExchangeContribution != null)
+            if (!SMLocalConfigsEvent.Instance.Configs.SectNoExchange)
             {
-                var sp = CalExchangeSpiritStones();
-                txtExchangeContribution.text = string.Format(GameTool.LS("other500020056"), sp, CalExchangeContributions(sp));
+                if (txtExchangeContribution != null)
+                {
+                    var sp = CalExchangeSpiritStones();
+                    txtExchangeContribution.text = string.Format(GameTool.LS("other500020056"), sp, CalExchangeContributions(sp));
+                }
             }
         }
 

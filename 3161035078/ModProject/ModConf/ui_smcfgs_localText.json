@@ -82,4 +82,6 @@
 	{ "id": -1000001120, "key": "smcfgs120", "ch|en|tc|kr": "Save Data" },
 	{ "id": -1000001121, "key": "smcfgs121", "ch|en|tc|kr": "Mod Configs" },
 	{ "id": -1000001122, "key": "smcfgs122", "ch|en|tc|kr": "Game Configs" },
+	{ "id": -1000001123, "key": "smcfgs123", "ch|en|tc|kr": "No Market Items" },
+	{ "id": -1000001124, "key": "smcfgs124", "ch|en|tc|kr": "No Stalkers" },
 ]

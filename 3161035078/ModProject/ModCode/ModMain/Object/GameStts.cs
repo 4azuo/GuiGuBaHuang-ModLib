@@ -224,5 +224,22 @@ namespace MOD_nE7UL2.Object
         }
         public _MarketItemConfigs MarketItemConfigs { get; set; }
         #endregion
+
+        #region BattleConfigs
+        public class _BattleConfigs
+        {
+            public int JoinRange { get; set; }
+            public float RandomNpcJoinRate { get; set; }
+            public float SectNpcJoinRate { get; set; }
+            public float TownGuardNpcJoinRate { get; set; }
+            public float TeamMemberJoinRate { get; set; }
+            public float TeamMemberBetrayRate { get; set; }
+            public float StalkerJoinRate { get; set; }
+            public int FriendlyIntim { get; set; }
+            public int EnemyIntim { get; set; }
+            public int DifferenceRighteous { get; set; }
+        }
+        public _BattleConfigs BattleConfigs { get; set; }
+        #endregion
     }
 }
