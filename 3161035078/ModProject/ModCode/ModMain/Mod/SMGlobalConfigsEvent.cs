@@ -74,6 +74,8 @@ namespace MOD_nE7UL2.Mod
         public int StartupPlayerRole { get; set; } = 0;
         public float MarketItemNpcJoinRate { get; set; } = 0f;
         public float MarketItemGetAttackedRate { get; set; } = 0f;
+        public bool NoMarketItem { get; set; } = false;
+        public bool NoStalker { get; set; } = false;
 
         //UI
         private UICustom1 uiCustom;
@@ -115,6 +117,8 @@ namespace MOD_nE7UL2.Mod
         private UIItemComposite cbStartupPlayerRole;
         private UIItemComposite slMarketItemNpcJoinRate;
         private UIItemComposite slMarketItemGetAttackedRate;
+        private UIItemComposite tglNoMarketItem;
+        private UIItemComposite tglNoStalker;
 
         //Score
         [JsonIgnore]
@@ -256,9 +260,19 @@ namespace MOD_nE7UL2.Mod
             Register(() => cbStartupPlayerRole,
                 funcCal: s => s.Get().Parse<int>() == 0 ? 0 : -10000);
             Register(() => slMarketItemNpcJoinRate,
-                funcCal: s => (s.Get().Parse<float>() * 100).Parse<int>());
+                funcCal: s => (s.Get().Parse<float>() * 100).Parse<int>(),
+                funcCond: s => !tglNoMarketItem.Get().Parse<bool>(),
+                funcEna: s => !tglNoMarketItem.Get().Parse<bool>());
             Register(() => slMarketItemGetAttackedRate,
-                funcCal: s => (s.Get().Parse<float>() * 1000).Parse<int>());
+                funcCal: s => (s.Get().Parse<float>() * 1000).Parse<int>(),
+                funcCond: s => !tglNoMarketItem.Get().Parse<bool>(),
+                funcEna: s => !tglNoMarketItem.Get().Parse<bool>());
+            Register(() => tglNoMarketItem,
+                funcCal: s => 10000,
+                funcCond: s => s.Get().Parse<bool>());
+            Register(() => tglNoStalker,
+                funcCal: s => -2000,
+                funcCond: s => s.Get().Parse<bool>());
         }
 
         private void Register(
@@ -435,6 +449,8 @@ namespace MOD_nE7UL2.Mod
                 tglSysNoRebirth = uiCustom.AddCompositeToggle(col, row++, GameTool.LS("smcfgs035"), NoRebirth, GameTool.LS("smcfgs102"));
                 tglNoGrowupFromBattles = uiCustom.AddCompositeToggle(col, row++, GameTool.LS("smcfgs039"), NoGrowupFromBattles, GameTool.LS("smcfgs102"));
                 tglSysNoExpFromBattle = uiCustom.AddCompositeToggle(col, row++, GameTool.LS("smcfgs040"), NoExpFromBattles, GameTool.LS("smcfgs102"));
+                tglNoMarketItem = uiCustom.AddCompositeToggle(col, row++, GameTool.LS("smcfgs123"), NoExpFromBattles, GameTool.LS("smcfgs102"));
+                tglNoStalker = uiCustom.AddCompositeToggle(col, row++, GameTool.LS("smcfgs124"), NoExpFromBattles, GameTool.LS("smcfgs102"));
                 row++;
                 tglAllowUpgradeNaturally = uiCustom.AddCompositeToggle(col, row++, GameTool.LS("smcfgs036"), AllowUpgradeNaturally, GameTool.LS("smcfgs102"));
                 uiCustom.AddText(col - 1, row++, GameTool.LS("smcfgs037")).Format(null, 13).Align(TextAnchor.MiddleLeft);
@@ -579,6 +595,8 @@ namespace MOD_nE7UL2.Mod
             cbStartupPlayerRole.Set(0);
             slMarketItemNpcJoinRate.Set(0f);
             slMarketItemGetAttackedRate.Set(0f);
+            tglNoMarketItem.Set(false);
+            tglNoStalker.Set(false);
         }
 
         private void SetLevel(int level)
@@ -621,6 +639,8 @@ namespace MOD_nE7UL2.Mod
             cbStartupPlayerRole.Set(0);
             slMarketItemNpcJoinRate.Set(0f);
             slMarketItemGetAttackedRate.Set(0f);
+            tglNoMarketItem.Set(false);
+            tglNoStalker.Set(false);
         }
 
         private void SetSMConfigs()
@@ -663,6 +683,8 @@ namespace MOD_nE7UL2.Mod
             StartupPlayerRole = cbStartupPlayerRole.Get().Parse<int>();
             MarketItemNpcJoinRate = slMarketItemNpcJoinRate.Get().Parse<float>();
             MarketItemGetAttackedRate = slMarketItemGetAttackedRate.Get().Parse<float>();
+            NoMarketItem = tglNoMarketItem.Get().Parse<bool>();
+            NoStalker = tglNoStalker.Get().Parse<bool>();
             CacheHelper.SaveGlobalCache(this);
 
             //edit conf

@@ -5,6 +5,7 @@ using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using static MOD_nE7UL2.Object.GameStts;
 
 namespace MOD_nE7UL2.Mod
 {
@@ -12,14 +13,8 @@ namespace MOD_nE7UL2.Mod
     public class BattleEvent : ModEvent
     {
         public static BattleEvent Instance { get; set; }
+        public static _BattleConfigs Configs => ModMain.ModObj.GameSettings.BattleConfigs;
 
-        public const int JOIN_RANGE = 6;
-        public const float RANDOM_NPC_JOIN_RATE = 0.1f;
-        public const float SECT_NPC_JOIN_RATE = 1.0f;
-        public const float TOWN_GUARD_NPC_JOIN_RATE = 3.0f;
-        public const float TEAM_MEMBER_JOIN_RATE = 5.0f;
-        public const float TEAM_MEMBER_BETRAY_RATE = 0.2f;
-        public const float STALKER_JOIN_BATTLE = 1f;
         public const int ENEMY_JOIN_DRAMA = 480110100;
         public const int FRIENDLY_JOIN_DRAMA = 480110200;
         public const int SECT_MEMBER_JOIN_DRAMA = 480110300;
@@ -55,7 +50,7 @@ namespace MOD_nE7UL2.Mod
                 var player = g.world.playerUnit;
 
                 //setup around units
-                AroundUnits.AddRange(player.GetUnitsAround(JOIN_RANGE, false, false).ToArray().Where(x =>
+                AroundUnits.AddRange(player.GetUnitsAround(Configs.JoinRange, false, false).ToArray().Where(x =>
                 {
                     return CondJoinBattle(x) && 
                         (
@@ -85,7 +80,7 @@ namespace MOD_nE7UL2.Mod
                     if (AroundUnits.Count > 0)
                     {
                         //stalker join battle
-                        if (CommonTool.Random(0.00f, 100.00f).IsBetween(0.00f, STALKER_JOIN_BATTLE))
+                        if (CommonTool.Random(0.00f, 100.00f).IsBetween(0.00f, Configs.StalkerJoinRate))
                         {
                             var stalker = AroundUnits.FirstOrDefault(x => BattleAfterEvent.Instance.Stalkers.ContainsKey(x.GetUnitId()));
                             if (stalker != null)
@@ -116,7 +111,7 @@ namespace MOD_nE7UL2.Mod
                         }
 
                         //enemy unit join battle
-                        if (CommonTool.Random(0.00f, 100.00f).IsBetween(0.00f, RANDOM_NPC_JOIN_RATE))
+                        if (CommonTool.Random(0.00f, 100.00f).IsBetween(0.00f, Configs.RandomNpcJoinRate))
                         {
                             var enemyUnit = AroundUnits.FirstOrDefault(x => IsEnemyUnit(x) >= 0);
                             if (enemyUnit != null)
@@ -140,7 +135,7 @@ namespace MOD_nE7UL2.Mod
                         }
 
                         //friendly unit join battle
-                        if (CommonTool.Random(0.00f, 100.00f).IsBetween(0.00f, RANDOM_NPC_JOIN_RATE))
+                        if (CommonTool.Random(0.00f, 100.00f).IsBetween(0.00f, Configs.RandomNpcJoinRate))
                         {
                             var friendlyUnit = AroundUnits.FirstOrDefault(x => IsFriendlyUnit(x) >= 0);
                             if (friendlyUnit != null)
@@ -155,7 +150,7 @@ namespace MOD_nE7UL2.Mod
                         }
 
                         //sect member join battle
-                        if (ModBattleEvent.School != null && CommonTool.Random(0.00f, 100.00f).IsBetween(0.00f, SECT_NPC_JOIN_RATE))
+                        if (ModBattleEvent.School != null && CommonTool.Random(0.00f, 100.00f).IsBetween(0.00f, Configs.SectNpcJoinRate))
                         {
                             var sectMember = AroundUnits.FirstOrDefault(x => MapBuildPropertyEvent.IsSchoolMember(ModBattleEvent.School, x));
                             if (sectMember != null)
@@ -171,7 +166,7 @@ namespace MOD_nE7UL2.Mod
                         }
 
                         //town guard join battle
-                        if (ModBattleEvent.Town != null && CommonTool.Random(0.00f, 100.00f).IsBetween(0.00f, TOWN_GUARD_NPC_JOIN_RATE))
+                        if (ModBattleEvent.Town != null && CommonTool.Random(0.00f, 100.00f).IsBetween(0.00f, Configs.TownGuardNpcJoinRate))
                         {
                             var townguard = AroundUnits.FirstOrDefault(x => MapBuildPropertyEvent.IsTownGuardian(ModBattleEvent.Town, x));
                             if (townguard != null)
@@ -190,7 +185,7 @@ namespace MOD_nE7UL2.Mod
                     {
                         foreach (var wmember in TeamMembers.ToArray())
                         {
-                            if (CommonTool.Random(0.00f, 100.00f).IsBetween(0.00f, TEAM_MEMBER_JOIN_RATE))
+                            if (CommonTool.Random(0.00f, 100.00f).IsBetween(0.00f, Configs.TeamMemberJoinRate))
                             {
                                 DebugHelper.WriteLine($"Team-member ({HirePeopleEvent.GetTeamInfoStr(g.world.playerUnit)}) join: {wmember.data.unitData.propertyData.GetName()} ({wmember.GetUnitId()})");
                                 JointTeamMembers.AddRange(NPCJoin(UnitType.PlayerNPC, wmember));
@@ -202,7 +197,7 @@ namespace MOD_nE7UL2.Mod
                     {
                         foreach (var cmember in JointTeamMembers.ToArray())
                         {
-                            if (!cmember.isDie && CommonTool.Random(0.00f, 100.00f).IsBetween(0.00f, TEAM_MEMBER_BETRAY_RATE))
+                            if (!cmember.isDie && CommonTool.Random(0.00f, 100.00f).IsBetween(0.00f, Configs.TeamMemberBetrayRate))
                             {
                                 var wmember = g.world.unit.GetUnit(cmember);
                                 DebugHelper.WriteLine($"Team-member ({HirePeopleEvent.GetTeamInfoStr(g.world.playerUnit)}) betray: {wmember.data.unitData.propertyData.GetName()} ({wmember.GetUnitId()})");
@@ -278,9 +273,9 @@ namespace MOD_nE7UL2.Mod
             {
                 //from friend
                 if (friendlyInTraits.Contains(wunit.data.unitData.propertyData.inTrait) ||
-                    wunit.data.unitData.relationData.GetIntim(g.world.playerUnit) >= 200 ||
-                    (g.world.playerUnit.data.school?.schoolData.GetSchoolIntim(wunit) ?? 0) >= 200 ||
-                    (wunit.data.school?.schoolData.GetSchoolIntim(g.world.playerUnit) ?? 0) >= 200)
+                    wunit.data.unitData.relationData.GetIntim(g.world.playerUnit) >= Configs.FriendlyIntim ||
+                    (g.world.playerUnit.data.school?.schoolData.GetSchoolIntim(wunit) ?? 0) >= Configs.FriendlyIntim ||
+                    (wunit.data.school?.schoolData.GetSchoolIntim(g.world.playerUnit) ?? 0) >= Configs.FriendlyIntim)
                 {
                     return 1;
                 }
@@ -298,9 +293,9 @@ namespace MOD_nE7UL2.Mod
             if (wunit.GetGradeLvl() >= AvgGrade)
             {
                 //from hater
-                if (wunit.data.unitData.relationData.GetIntim(g.world.playerUnit) <= -200 ||
-                    (g.world.playerUnit.data.school?.schoolData.GetSchoolIntim(wunit) ?? 0) <= -200 ||
-                    (wunit.data.school?.schoolData.GetSchoolIntim(g.world.playerUnit) ?? 0) <= -200)
+                if (wunit.data.unitData.relationData.GetIntim(g.world.playerUnit) <= Configs.EnemyIntim ||
+                    (g.world.playerUnit.data.school?.schoolData.GetSchoolIntim(wunit) ?? 0) <= Configs.EnemyIntim ||
+                    (wunit.data.school?.schoolData.GetSchoolIntim(g.world.playerUnit) ?? 0) <= Configs.EnemyIntim)
                 {
                     return 1;
                 }
@@ -311,7 +306,7 @@ namespace MOD_nE7UL2.Mod
                 }
                 //from good vs evil
                 if (wunit.IsRighteous() != g.world.playerUnit.IsRighteous() &&
-                    Math.Abs(wunit.GetStandValue() - g.world.playerUnit.GetStandValue()) > 100)
+                    Math.Abs(wunit.GetStandValue() - g.world.playerUnit.GetStandValue()) > Configs.DifferenceRighteous)
                 {
                     return 2;
                 }
@@ -324,9 +319,9 @@ namespace MOD_nE7UL2.Mod
             if (wunit.GetGradeLvl() >= AvgGrade)
             {
                 //from hater
-                if (wunit.data.unitData.relationData.GetIntim(g.world.playerUnit) <= -200 ||
-                    (g.world.playerUnit.data.school?.schoolData.GetSchoolIntim(wunit) ?? 0) <= -200 ||
-                    (wunit.data.school?.schoolData.GetSchoolIntim(g.world.playerUnit) ?? 0) <= -200)
+                if (wunit.data.unitData.relationData.GetIntim(g.world.playerUnit) <= Configs.EnemyIntim ||
+                    (g.world.playerUnit.data.school?.schoolData.GetSchoolIntim(wunit) ?? 0) <= Configs.EnemyIntim ||
+                    (wunit.data.school?.schoolData.GetSchoolIntim(g.world.playerUnit) ?? 0) <= Configs.EnemyIntim)
                 {
                     return 0;
                 }
@@ -339,7 +334,7 @@ namespace MOD_nE7UL2.Mod
                 }
                 //from good vs evil
                 if (wunit.IsRighteous() != g.world.playerUnit.IsRighteous() &&
-                    Math.Abs(wunit.GetStandValue() - g.world.playerUnit.GetStandValue()) > 100)
+                    Math.Abs(wunit.GetStandValue() - g.world.playerUnit.GetStandValue()) > Configs.DifferenceRighteous)
                 {
                     return 2;
                 }

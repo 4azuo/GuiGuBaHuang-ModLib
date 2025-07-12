@@ -203,5 +203,20 @@
 		"CancelDealLastMinuteRate": 8.00,
 		"HiddenRate": 20.00,
 		"GetStalkedRate": 10.00,
-	}
+	},
+	"BattleConfigs": {
+		"__tip": "These rates are checked every second.",
+		"JoinRange": 6,
+		"RandomNpcJoinRate": 0.10,
+		"SectNpcJoinRate": 1.00,
+		"TownGuardNpcJoinRate": 3.00,
+		"TeamMemberJoinRate": 5.00,
+		"TeamMemberBetrayRate": 0.20,
+		"StalkerJoinRate": 1.00,
+		"__tip": "From 250 to -250",
+		"FriendlyIntim": 160,
+		"EnemyIntim": -160,
+		"__tip": "Enemy righteous vs Player righteous",
+		"DifferenceRighteous": 80,
+	},
 }

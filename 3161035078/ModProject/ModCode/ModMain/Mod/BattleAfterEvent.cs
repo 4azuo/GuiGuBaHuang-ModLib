@@ -3,7 +3,6 @@ using MOD_nE7UL2.Const;
 using MOD_nE7UL2.Enum;
 using ModLib.Enum;
 using ModLib.Mod;
-using System;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -49,24 +48,27 @@ namespace MOD_nE7UL2.Mod
         {
             base.OnBattleEndOnce(e);
 
-            var dropItems = ModBattleEvent.SceneBattle.battleData.allDropRewardItem.ToArray();
-            var bestItem = dropItems.OrderByDescending(x => x.GetItemValue()).FirstOrDefault();
-            if (bestItem != null && bestItem.propsInfoBase?.level > 2)
+            if (!SMLocalConfigsEvent.Instance.Configs.NoStalker)
             {
-                var player = g.world.playerUnit;
-                foreach (var wunit in player.GetUnitsAround(player.GetGradeLvl(), true, false).ToArray()
-                    .Where(x => IsStalker(x) && x.CheckItemCouldBeRobbed(bestItem)))
+                var dropItems = ModBattleEvent.SceneBattle.battleData.allDropRewardItem.ToArray();
+                var bestItem = dropItems.OrderByDescending(x => x.GetItemValue()).FirstOrDefault();
+                if (bestItem != null && bestItem.propsInfoBase?.level > 2)
                 {
-                    if (CommonTool.Random(0.00f, 100.00f).IsBetween(0.00f, STALKE_RATE))
+                    var player = g.world.playerUnit;
+                    foreach (var wunit in player.GetUnitsAround(player.GetGradeLvl(), true, false).ToArray()
+                        .Where(x => IsStalker(x) && x.CheckItemCouldBeRobbed(bestItem)))
                     {
-                        foreach (var item in HirePeopleEvent.GetTeamDetailData(wunit).Item2)
+                        if (CommonTool.Random(0.00f, 100.00f).IsBetween(0.00f, STALKE_RATE))
                         {
-                            Stalkers.Add(item.GetUnitId(), StalkReasonEnum.KillBoss);
+                            foreach (var item in HirePeopleEvent.GetTeamDetailData(wunit).Item2)
+                            {
+                                Stalkers.Add(item.GetUnitId(), StalkReasonEnum.KillBoss);
+                            }
                         }
-                    }
-                    else
-                    {
-                        wunit.data.unitData.relationData.AddHate(player.GetUnitId(), 100); //hate player
+                        else
+                        {
+                            wunit.data.unitData.relationData.AddHate(player.GetUnitId(), 100); //hate player
+                        }
                     }
                 }
             }
@@ -92,12 +94,13 @@ namespace MOD_nE7UL2.Mod
         {
             foreach (var wunit in wunits)
             {
-                foreach (var item in HirePeopleEvent.GetTeamDetailData(wunit).Item2)
+                foreach (var unit in HirePeopleEvent.GetTeamDetailData(wunit).Item2)
                 {
-                    var key = item.GetUnitId();
-                    if (!Instance.Stalkers.ContainsKey(key))
+                    var unitId = unit.GetUnitId();
+                    if (!Instance.Stalkers.ContainsKey(unitId))
                     {
-                        Instance.Stalkers.Add(key, reason);
+                        Instance.Stalkers.Add(unitId, reason);
+                        DebugHelper.WriteLine($"Get Stalked by {unit.data.unitData.propertyData.GetName()} ({unitId})");
                     }
                 }
             }
