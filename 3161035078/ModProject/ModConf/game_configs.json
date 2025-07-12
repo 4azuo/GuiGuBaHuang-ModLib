@@ -198,8 +198,10 @@
 		"SellRateDependOnGrade": 3.00,
 		"BuyerJoinMarketRate": 12.00,
 		"BuyRateDependOnGrade": 4.00,
-		"GetDealRate": 36.00,
+		"GetDealRate": 24.00,
 		"CancelDealOnMonth": 2.00,
 		"CancelDealLastMinuteRate": 8.00,
+		"HiddenRate": 20.00,
+		"GetStalkedRate": 10.00,
 	}
 }

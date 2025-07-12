@@ -37,12 +37,14 @@
     <Compile Include="Enum\AdjLevelEnum.cs" />
     <Compile Include="Enum\MerchantLuckEnum.cs" />
     <Compile Include="Enum\AdjTypeEnum.cs" />
+    <Compile Include="Enum\StalkReasonEnum.cs" />
     <Compile Include="Enum\TraineeLuckEnum.cs" />
     <Compile Include="Enum\ModItemTypeEnum.cs" />
     <Compile Include="Enum\BuildingCostEnum.cs" />
     <Compile Include="Enum\ApprenticeLuckEnum.cs" />
     <Compile Include="Enum\UnitTypeLuckEnum.cs" />
     <Compile Include="Enum\UnitTypeEnum.cs" />
+    <Compile Include="Helper\ItemHelper.cs" />
     <Compile Include="Helper\UnitPowerCalHelper.cs" />
     <Compile Include="Helper\UILocalHelper.cs" />
     <Compile Include="Helper\UnitModifyHelper.cs" />

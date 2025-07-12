@@ -45,6 +45,16 @@
 		"ch|en|kr|tc": "I know you have it. Give it to me!"
 	},
 	{
+		"id": "480110601",
+		"key": "battleevent480110601",
+		"ch|en|kr|tc": "Give me everything you've got on you!"
+	},
+	{
+		"id": "480110602",
+		"key": "battleevent480110602",
+		"ch|en|kr|tc": "Don’t worry, I’m just ‘borrowing’ your stuff forever."
+	},
+	{
 		"id": "480111990",
 		"key": "battleevent480111990typeDesc",
 		"ch": "战争",

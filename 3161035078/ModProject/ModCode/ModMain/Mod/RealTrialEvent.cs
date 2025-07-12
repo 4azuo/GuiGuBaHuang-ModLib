@@ -1,10 +1,8 @@
 ﻿using EBattleTypeData;
-using EGameTypeData;
 using MOD_nE7UL2.Const;
 using MOD_nE7UL2.Enum;
 using ModLib.Enum;
 using ModLib.Mod;
-using Newtonsoft.Json;
 using static MOD_nE7UL2.Object.GameStts;
 
 namespace MOD_nE7UL2.Mod
@@ -14,7 +12,7 @@ namespace MOD_nE7UL2.Mod
     {
         public static RealTrialEvent Instance { get; set; }
         public static _RealTrialConfigs RealTrialConfigs => ModMain.ModObj.GameSettings.RealTrialConfigs;
-        public static bool IsInTrial => g.world.battle.data.dungeonBaseItem.id == 110081;
+        public static bool IsInTrial => DungeonHelper.IsTrailOfLightning();
 
         public override void OnBattleUnitInto(UnitCtrlBase e)
         {

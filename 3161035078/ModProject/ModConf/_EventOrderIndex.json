@@ -34,6 +34,7 @@
 
 	//battle
 	"BattleEvent": 5000,
+	"BattleAfterEvent": 5002,
 	"MapBuildBattleEvent": 5003,
 	"MostStrongerEvent": 5005,
 	"RealTrialEvent": 5010,

@@ -219,6 +219,8 @@ namespace MOD_nE7UL2.Object
             public float GetDealRate { get; set; }
             public float CancelDealOnMonth { get; set; }
             public float CancelDealLastMinuteRate { get; set; }
+            public float HiddenRate { get; set; }
+            public float GetStalkedRate { get; set; }
         }
         public _MarketItemConfigs MarketItemConfigs { get; set; }
         #endregion

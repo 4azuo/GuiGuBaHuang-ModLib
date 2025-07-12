@@ -10,6 +10,7 @@ using MOD_nE7UL2.Object;
 using System;
 using ModLib.Enum;
 using static MOD_nE7UL2.Object.GameStts;
+using MOD_nE7UL2.Enum;
 
 namespace MOD_nE7UL2.Mod
 {
@@ -62,7 +63,7 @@ namespace MOD_nE7UL2.Mod
         public static NegotiatingDeal GetBuyerDeal(MarketItem prop, WorldUnitBase buyer)
         {
             var buyerId = buyer.GetUnitId();
-            var deal = Instance.NegotiatingDeals.FirstOrDefault(x => x.TargetProp == prop && x.BuyerId == buyerId);
+            var deal = prop.Deals.FirstOrDefault(x => x.BuyerId == buyerId);
             if (deal == null)
             {
                 deal = new NegotiatingDeal(buyerId, prop);
@@ -86,17 +87,17 @@ namespace MOD_nE7UL2.Mod
         public static NegotiatingDeal GetNegotiatingValue(MarketItem prop, WorldUnitBase buyer)
         {
             var buyerId = buyer.GetUnitId();
-            return Instance.NegotiatingDeals.FirstOrDefault(x => x.TargetProp == prop && x.BuyerId == buyerId);
+            return prop.Deals.FirstOrDefault(x => x.BuyerId == buyerId);
         }
 
         public static NegotiatingDeal GetNegotiatingHighestValue(MarketItem prop)
         {
-            return Instance.NegotiatingDeals.Where(x => x.TargetProp == prop).OrderByDescending(x => x.TotalValue).FirstOrDefault();
+            return prop.Deals.OrderByDescending(x => x.TotalValue).FirstOrDefault();
         }
 
         public static NegotiatingDeal GetNegotiatingLowestValue(MarketItem prop)
         {
-            return Instance.NegotiatingDeals.Where(x => x.TargetProp == prop).OrderBy(x => x.TotalValue).FirstOrDefault();
+            return prop.Deals.OrderBy(x => x.TotalValue).FirstOrDefault();
         }
 
         public static int GetNegotiatingPrice(MarketItem prop, WorldUnitBase buyer)
@@ -135,14 +136,10 @@ namespace MOD_nE7UL2.Mod
             CancelWithoutMessage(item);
 
             var seller = item.Seller;
-            foreach (var deal in Instance.NegotiatingDeals.ToArray())
+            foreach (var deal in item.Deals)
             {
-                if (deal.TargetProp == item)
-                {
-                    CancelWithoutMessage(deal);
-
-                    NG_Seller1(seller, deal.Buyer, item);
-                }
+                CancelWithoutMessage(deal);
+                NG_Seller1(seller, deal.Buyer, item);
             }
         }
 
@@ -298,7 +295,7 @@ namespace MOD_nE7UL2.Mod
             {
                 DramaHelper.OpenDrama1(GameTool.LS("other500020079"), new List<string> { GameTool.LS("other500020045") }, null, seller, buyer);
             }
-            else if (Instance.NegotiatingDeals.Any(x => x.TargetProp == item && x.Buyer.IsPlayer()))
+            else if (item.Deals.Any(x => x.Buyer.IsPlayer()))
             {
                 DramaHelper.OpenDrama2(string.Format(GameTool.LS("other500020082"), dealPropInfo.name), new List<string> { GameTool.LS("other500020045") }, null, "taohuayuanji3");
             }
@@ -369,6 +366,8 @@ namespace MOD_nE7UL2.Mod
         {
             base.OnMonthly();
             var curMonth = GameHelper.GetGameTotalMonth();
+            var sellerJoinRate = SMLocalConfigsEvent.Instance.Calculate(Configs.SellerJoinMarketRate, SMLocalConfigsEvent.Instance.Configs.MarketItemNpcJoinRate).Parse<float>();
+            var buyerJoinRate = SMLocalConfigsEvent.Instance.Calculate(Configs.BuyerJoinMarketRate, SMLocalConfigsEvent.Instance.Configs.MarketItemNpcJoinRate).Parse<float>();
 
             //get wunits
             var towns = g.world.build.GetBuilds<MapBuildTown>().ToArray().Where(x => x.GetBuildSub<MapBuildTownMarket>() != null).ToArray();
@@ -405,7 +404,7 @@ namespace MOD_nE7UL2.Mod
                 //DebugHelper.WriteLine("2.1");
                 foreach (var seller in wunitsInTown.Value)
                 {
-                    if (!seller.IsPlayer() && CommonTool.Random(0f, 100f).IsBetween(0f, Configs.SellerJoinMarketRate))
+                    if (!seller.IsPlayer() && CommonTool.Random(0f, 100f).IsBetween(0f, sellerJoinRate))
                     {
                         //DebugHelper.WriteLine("2.1.1");
                         var sellerId = seller.GetUnitId();
@@ -423,6 +422,7 @@ namespace MOD_nE7UL2.Mod
                                 SoleId = x.soleID,
                                 CreateMonth = GameHelper.GetGameTotalMonth(),
                                 IsPartialItem = x.IsPartialItem() == CheckEnum.True,
+                                IsHidden = CommonTool.Random(0.00f, 100.00f).IsBetween(0.00f, Configs.HiddenRate),
                             })
                             .ToList();
                         if (props.Count > 0)
@@ -452,7 +452,7 @@ namespace MOD_nE7UL2.Mod
                 {
                     var buyerId = buyer.GetUnitId();
                     if (item.SellerId != buyerId && !buyer.IsPlayer() &&
-                        CommonTool.Random(0f, 100f).IsBetween(0f, Configs.BuyerJoinMarketRate) &&
+                        CommonTool.Random(0f, 100f).IsBetween(0f, buyerJoinRate) &&
                         CommonTool.Random(0f, 100f).IsBetween(0f, dealPropInfo.level * Configs.BuyRateDependOnGrade))
                     {
                         //DebugHelper.WriteLine("3.1.1");
@@ -504,7 +504,7 @@ namespace MOD_nE7UL2.Mod
                             if (g.world.playerUnit.GetUnitMoney() >= vipPrice)
                             {
                                 g.world.playerUnit.AddUnitMoney(-vipPrice);
-                                OpenMarket(x => !x.IsPartialItem || (x.GetPropInfo()?.grade ?? 0) >= 4);
+                                OpenMarket(x => x.IsHidden || (x.GetPropInfo()?.grade ?? 0) >= 4);
                             }
                             else
                             {
@@ -512,7 +512,7 @@ namespace MOD_nE7UL2.Mod
                             }
                         });
                     }, GameTool.LS("other500020085")).Size(200, 40);
-                    ui.AddButton(ui.MidCol - 8, ui.MidRow + 1, () => OpenMarket(x => true), GameTool.LS("other500020040")).Size(200, 40);
+                    ui.AddButton(ui.MidCol - 8, ui.MidRow + 1, () => OpenMarket(x => !x.IsHidden), GameTool.LS("other500020040")).Size(200, 40);
                     ui.AddButton(ui.MidCol - 8, ui.MidRow + 3, /*OpenSellingList*/ () => g.ui.MsgBox("Info", "Comming soon..."), GameTool.LS("other500020060")).Size(200, 40);
                     ui.AddButton(ui.MidCol - 8, ui.MidRow + 5, /*OpenRegister*/() => g.ui.MsgBox("Info", "Comming soon..."), GameTool.LS("other500020061")).Size(200, 40);
                 }
@@ -674,7 +674,15 @@ namespace MOD_nE7UL2.Mod
             var curPrice = GetNegotiatingPrice(selectedMarketItem, g.world.playerUnit);
             if (curPrice > MAX_PRICE)
                 return;
-            SetNegotiatingPrice(selectedMarketItem, g.world.playerUnit, curPrice + (curPrice * CommonTool.Random(0.05f, 0.20f)).FixValue(0, g.world.playerUnit.GetUnitMoney()).FixValue(MIN_PRICE, MAX_PRICE).Parse<int>());
+            var newPrice = curPrice + (curPrice * CommonTool.Random(0.05f, 0.20f)).FixValue(0, g.world.playerUnit.GetUnitMoney()).FixValue(MIN_PRICE, MAX_PRICE).Parse<int>();
+            SetNegotiatingPrice(selectedMarketItem, g.world.playerUnit, newPrice);
+
+            //stalker
+            var getStalkedRate = SMLocalConfigsEvent.Instance.Calculate(Configs.GetStalkedRate, SMLocalConfigsEvent.Instance.Configs.MarketItemGetAttackedRate).Parse<float>();
+            BattleAfterEvent.AddStalker(StalkReasonEnum.MarketBuyerShowUp_SpiritStones,
+                selectedMarketItem.Deals
+                .Where(x => x.IsValid && BattleAfterEvent.IsStalker(x.Buyer) && CommonTool.Random(0.00f, 100.00f).IsBetween(0.00f, getStalkedRate) && newPrice > 2 * x.Buyer.GetUnitMoney())
+                .Select(x => x.Buyer).ToArray());
         }
 
         public void Negotiate(UIPropSelect uiSellingList, WorldUnitBase seller, DataProps.PropsData selectedProp, MarketItem selectedMarketItem)
@@ -707,9 +715,14 @@ namespace MOD_nE7UL2.Mod
             {
                 uiCover.AddButton(0, 0, () =>
                 {
+                    var getStalkedRate = SMLocalConfigsEvent.Instance.Calculate(Configs.GetStalkedRate, SMLocalConfigsEvent.Instance.Configs.MarketItemGetAttackedRate).Parse<float>();
                     foreach (var prop in UIPropSelect.allSlectDataProps.allProps.ToArray())
                     {
                         AddNegotiatingItem(selectedMarketItem, g.world.playerUnit, prop, prop.propsCount);
+                        BattleAfterEvent.AddStalker(StalkReasonEnum.MarketBuyerShowUp_Items,
+                            selectedMarketItem.Deals
+                            .Where(x => x.IsValid && BattleAfterEvent.IsStalker(x.Buyer) && CommonTool.Random(0.00f, 100.00f).IsBetween(0.00f, getStalkedRate) && x.Buyer.CheckItemCouldBeRobbed(prop))
+                            .Select(x => x.Buyer).ToArray());
                     }
                 }, GameTool.LS("other500020074")).Pos(ui.btnOK.transform, -50, 0);
                 uiCover.AddButton(0, 0, () =>

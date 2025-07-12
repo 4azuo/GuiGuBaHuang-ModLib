@@ -7,6 +7,7 @@ using ModLib.Object;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Windows.Forms;
@@ -71,6 +72,8 @@ namespace MOD_nE7UL2.Mod
         public bool MonsterPropertiesDependOnPlayerProperties { get; set; } = false;
         public bool AutoSaveAfterLostInBattle { get; set; } = false;
         public int StartupPlayerRole { get; set; } = 0;
+        public float MarketItemNpcJoinRate { get; set; } = 0f;
+        public float MarketItemGetAttackedRate { get; set; } = 0f;
 
         //UI
         private UICustom1 uiCustom;
@@ -110,6 +113,8 @@ namespace MOD_nE7UL2.Mod
         private UIItemComposite tglMonsterPropertiesDependOnPlayerProperties;
         private UIItemComposite tglAutoSaveAfterLostInBattle;
         private UIItemComposite cbStartupPlayerRole;
+        private UIItemComposite slMarketItemNpcJoinRate;
+        private UIItemComposite slMarketItemGetAttackedRate;
 
         //Score
         [JsonIgnore]
@@ -250,6 +255,10 @@ namespace MOD_nE7UL2.Mod
                 funcCond: s => s.Get().Parse<bool>());
             Register(() => cbStartupPlayerRole,
                 funcCal: s => s.Get().Parse<int>() == 0 ? 0 : -10000);
+            Register(() => slMarketItemNpcJoinRate,
+                funcCal: s => (s.Get().Parse<float>() * 100).Parse<int>());
+            Register(() => slMarketItemGetAttackedRate,
+                funcCal: s => (s.Get().Parse<float>() * 1000).Parse<int>());
         }
 
         private void Register(
@@ -383,9 +392,12 @@ namespace MOD_nE7UL2.Mod
                 uiCustom.AddText(col - 1, row++, GameTool.LS("smcfgs042")).Format(null, 13).Align(TextAnchor.MiddleLeft);
                 uiCustom.AddButton(col + 1, row + 1, ExportConfigs, GameTool.LS("smcfgs054")).Size(200, 40);
                 uiCustom.AddButton(col + 1, row + 3, ImportConfigs, GameTool.LS("smcfgs055")).Size(200, 40);
+                uiCustom.AddButton(col + 1, row + 5, OpenSaveDataFolder, GameTool.LS("smcfgs120")).Size(200, 40);
+                uiCustom.AddButton(col + 1, row + 7, OpenModConfigs, GameTool.LS("smcfgs121")).Size(200, 40);
+                uiCustom.AddButton(col + 1, row + 9, OpenGameConfigs, GameTool.LS("smcfgs122")).Size(200, 40);
 
                 AddDifButtons();
-            };
+            }
 
             //page 2
             uiCustom.AddPage();
@@ -405,6 +417,12 @@ namespace MOD_nE7UL2.Mod
                 slEcoRefineCost = uiCustom.AddCompositeSlider(col, row++, GameTool.LS("smcfgs013"), -0.50f, 1.00f, AddRefineCost, GameTool.LS("smcfgs101"));
                 slEcoSectExchangeRate = uiCustom.AddCompositeSlider(col, row++, GameTool.LS("smcfgs014"), -0.50f, 1.00f, AddSectExchangeRate, GameTool.LS("smcfgs101"));
                 slEcoItemValue = uiCustom.AddCompositeSlider(col, row++, GameTool.LS("smcfgs015"), -0.50f, 1.00f, AddItemValueRate, GameTool.LS("smcfgs101"));
+                //
+                row++;
+                uiCustom.AddText(col, row++, GameTool.LS("smcfgs116")).Format(null, 17, FontStyle.Italic).Align(TextAnchor.MiddleRight);
+                slMarketItemNpcJoinRate = uiCustom.AddCompositeSlider(col, row++, GameTool.LS("smcfgs117"), -0.50f, 1.00f, MarketItemNpcJoinRate, GameTool.LS("smcfgs101"));
+                slMarketItemGetAttackedRate = uiCustom.AddCompositeSlider(col, row++, GameTool.LS("smcfgs118"), -0.50f, 1.00f, MarketItemGetAttackedRate, GameTool.LS("smcfgs101"));
+                uiCustom.AddText(col - 1, row++, GameTool.LS("smcfgs119")).Format(null, 13).Align(TextAnchor.MiddleLeft);
 
                 col = 16; row = 0;
                 uiCustom.AddText(col, row++, GameTool.LS("smcfgs020")).Format(null, 17, FontStyle.Italic).Align(TextAnchor.MiddleRight);
@@ -422,7 +440,7 @@ namespace MOD_nE7UL2.Mod
                 uiCustom.AddText(col - 1, row++, GameTool.LS("smcfgs037")).Format(null, 13).Align(TextAnchor.MiddleLeft);
 
                 AddDifButtons();
-            };
+            }
 
             SetWork();
             uiCustom.Pages[0].Active();
@@ -473,6 +491,21 @@ namespace MOD_nE7UL2.Mod
                     }
                 }
             }
+        }
+
+        private void OpenSaveDataFolder()
+        {
+            Process.Start("explorer.exe", CacheHelper.GetCacheFolderName(ModId));
+        }
+
+        private void OpenModConfigs()
+        {
+            Process.Start("notepad.exe", ConfHelper.GetConfFilePath(ModId, "mod_configs.json"));
+        }
+
+        private void OpenGameConfigs()
+        {
+            Process.Start("notepad.exe", ConfHelper.GetConfFilePath(ModId, "game_configs.json"));
         }
 
         private void AddDifButtons()
@@ -544,6 +577,8 @@ namespace MOD_nE7UL2.Mod
             tglMonsterPropertiesDependOnPlayerProperties.Set(false);
             tglAutoSaveAfterLostInBattle.Set(false);
             cbStartupPlayerRole.Set(0);
+            slMarketItemNpcJoinRate.Set(0f);
+            slMarketItemGetAttackedRate.Set(0f);
         }
 
         private void SetLevel(int level)
@@ -584,6 +619,8 @@ namespace MOD_nE7UL2.Mod
             tglMonsterPropertiesDependOnPlayerProperties.Set(level > 3);
             tglAutoSaveAfterLostInBattle.Set(level > 6);
             cbStartupPlayerRole.Set(0);
+            slMarketItemNpcJoinRate.Set(0f);
+            slMarketItemGetAttackedRate.Set(0f);
         }
 
         private void SetSMConfigs()
@@ -624,6 +661,8 @@ namespace MOD_nE7UL2.Mod
             MonsterPropertiesDependOnPlayerProperties = tglMonsterPropertiesDependOnPlayerProperties.Get().Parse<bool>();
             AutoSaveAfterLostInBattle = tglAutoSaveAfterLostInBattle.Get().Parse<bool>();
             StartupPlayerRole = cbStartupPlayerRole.Get().Parse<int>();
+            MarketItemNpcJoinRate = slMarketItemNpcJoinRate.Get().Parse<float>();
+            MarketItemGetAttackedRate = slMarketItemGetAttackedRate.Get().Parse<float>();
             CacheHelper.SaveGlobalCache(this);
 
             //edit conf
