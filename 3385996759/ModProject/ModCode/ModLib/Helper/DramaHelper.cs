@@ -47,4 +47,34 @@ public static class DramaHelper
             backgroud = { [ModLibConst.DEFAULT_TYPE2_DRAMA_ID] = background },
         });
     }
+
+    [Obsolete]
+    public static void OpenDrama3()
+    {
+    }
+
+    [Obsolete]
+    public static void OpenDrama4()
+    {
+    }
+
+    [Obsolete]
+    public static void OpenDrama5()
+    {
+    }
+
+    [Obsolete]
+    public static void OpenDrama6()
+    {
+    }
+
+    [Obsolete]
+    public static void OpenDrama7()
+    {
+    }
+
+    [Obsolete]
+    public static void OpenDrama8()
+    {
+    }
 }
