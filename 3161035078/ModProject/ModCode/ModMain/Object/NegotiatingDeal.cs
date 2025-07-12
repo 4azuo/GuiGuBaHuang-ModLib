@@ -42,6 +42,7 @@ namespace MOD_nE7UL2.Object
         {
             BuyerId = buyerId;
             TargetProp = i;
+            TargetProp.Deals.Add(this);
         }
     }
 }

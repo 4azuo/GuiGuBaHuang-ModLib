@@ -1,5 +1,4 @@
-﻿using Harmony;
-using MOD_nE7UL2.Const;
+﻿using MOD_nE7UL2.Const;
 using ModLib.Enum;
 using ModLib.Mod;
 using Newtonsoft.Json;
@@ -26,7 +25,7 @@ namespace MOD_nE7UL2.Mod
         public const int SECT_MEMBER_JOIN_DRAMA = 480110300;
         public const int TOWN_GUARD_JOIN_DRAMA = 480110400;
         public const int TEAM_MEMBER_BETRAY_DRAMA = 480110500;
-        public const int STALKER_JOIN_DRAMA = 480110700;
+        //public const int STALKER_KILLBOSS_DRAMA = 480110700;
         public const int RIGHTEOUS_DRAMA = 480110501;
         public const int EVIL_DRAMA = 480110502;
 
@@ -58,7 +57,14 @@ namespace MOD_nE7UL2.Mod
                 //setup around units
                 AroundUnits.AddRange(player.GetUnitsAround(JOIN_RANGE, false, false).ToArray().Where(x =>
                 {
-                    return !BattleAfterEvent.Instance.Stalkers.Contains(x.GetUnitId()) && CondJoinBattle(x) && (IsFriendlyUnit(x) >= 0 || IsEnemyUnit(x) >= 0 || MapBuildPropertyEvent.IsTownGuardian(x) || MapBuildPropertyEvent.IsSchoolMember(ModBattleEvent.School, x));
+                    return CondJoinBattle(x) && 
+                        (
+                            IsFriendlyUnit(x) >= 0 || 
+                            IsEnemyUnit(x) >= 0 || 
+                            MapBuildPropertyEvent.IsTownGuardian(x) || 
+                            MapBuildPropertyEvent.IsSchoolMember(ModBattleEvent.School, x) ||
+                            BattleAfterEvent.Instance.Stalkers.ContainsKey(x.GetUnitId())
+                        );
                 }));
 
                 //team member join
@@ -76,26 +82,39 @@ namespace MOD_nE7UL2.Mod
                 if (g.world.battle.data.isRealBattle && ModBattleEvent.SceneBattle.battleMap.isStartBattle &&
                     ModBattleEvent.PlayerUnit != null && !ModBattleEvent.PlayerUnit.isDie && !ModBattleEvent.SceneBattle.unit.IsUnitHide(ModBattleEvent.PlayerUnit))
                 {
-                    if (BattleAfterEvent.Instance.Stalkers.Count > 0)
-                    {
-                        //enemy unit join battle
-                        if (CommonTool.Random(0.00f, 100.00f).IsBetween(0.00f, STALKER_JOIN_BATTLE))
-                        {
-                            var stalkerId = BattleAfterEvent.Instance.Stalkers.FirstOrDefault();
-                            if (stalkerId != null)
-                            {
-                                var stalker = g.world.unit.GetUnit(stalkerId);
-                                DebugHelper.WriteLine($"Stalker join: {stalker.data.unitData.propertyData.GetName()} ({stalker.GetUnitId()})");
-                                var units = HirePeopleEvent.GetTeamDetailData(stalker).Item2;
-                                BattleAfterEvent.Instance.Stalkers.RemoveAll(x => units.Any(y => y.GetUnitId() == x));
-                                NPCJoin(UnitType.Monst, units);
-
-                                DramaTool.OpenDrama(STALKER_JOIN_DRAMA, new DramaData() { unitLeft = stalker, unitRight = g.world.playerUnit });
-                            }
-                        }
-                    }
                     if (AroundUnits.Count > 0)
                     {
+                        //stalker join battle
+                        if (CommonTool.Random(0.00f, 100.00f).IsBetween(0.00f, STALKER_JOIN_BATTLE))
+                        {
+                            var stalker = AroundUnits.FirstOrDefault(x => BattleAfterEvent.Instance.Stalkers.ContainsKey(x.GetUnitId()));
+                            if (stalker != null)
+                            {
+                                var wunitId = stalker.GetUnitId();
+                                DebugHelper.WriteLine($"Stalker join: {stalker.data.unitData.propertyData.GetName()} ({wunitId})");
+                                var units = HirePeopleEvent.GetTeamDetailData(stalker).Item2;
+                                AroundUnits.RemoveAll(x => units.Any(y => y.GetUnitId() == x.GetUnitId()));
+                                foreach (var unit in units) { BattleAfterEvent.Instance.Stalkers.Remove(unit.GetUnitId()); }
+                                NPCJoin(UnitType.Monst, units);
+
+                                var stalkReason = BattleAfterEvent.Instance.Stalkers[wunitId];
+                                switch (stalkReason)
+                                {
+                                    case Enum.StalkReasonEnum.KillBoss:
+                                        DramaHelper.OpenDrama1(GameTool.LS("battleevent480110600"), new List<string> { GameTool.LS("other500020045") }, null, stalker, g.world.playerUnit);
+                                        break;
+                                    case Enum.StalkReasonEnum.MarketBuyerShowUp_SpiritStones:
+                                        DramaHelper.OpenDrama1(GameTool.LS("battleevent480110601"), new List<string> { GameTool.LS("other500020045") }, null, stalker, g.world.playerUnit);
+                                        break;
+                                    case Enum.StalkReasonEnum.MarketBuyerShowUp_Items:
+                                        DramaHelper.OpenDrama1(GameTool.LS("battleevent480110602"), new List<string> { GameTool.LS("other500020045") }, null, stalker, g.world.playerUnit);
+                                        break;
+                                    default:
+                                        break;
+                                }
+                            }
+                        }
+
                         //enemy unit join battle
                         if (CommonTool.Random(0.00f, 100.00f).IsBetween(0.00f, RANDOM_NPC_JOIN_RATE))
                         {

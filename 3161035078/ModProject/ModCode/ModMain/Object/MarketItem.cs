@@ -1,6 +1,4 @@
-﻿using MOD_nE7UL2.Mod;
-using ModLib.Enum;
-using Newtonsoft.Json;
+﻿using Newtonsoft.Json;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -18,6 +16,8 @@ namespace MOD_nE7UL2.Object
         public string SoleId { get; set; }
         public int CreateMonth { get; set; }
         public bool IsPartialItem { get; set; }
+        public bool IsHidden { get; set; } = false;
+        public List<NegotiatingDeal> Deals { get; set; } = new List<NegotiatingDeal>();
 
         [JsonIgnore]
         public WorldUnitBase Seller => g.world.unit.GetUnit(SellerId);
