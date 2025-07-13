@@ -5,7 +5,7 @@ using ModLib.Mod;
 using System.Collections.Generic;
 using UnityEngine.Events;
 using UnityEngine.UI;
-using static MOD_nE7UL2.Object.GameStts;
+using static MOD_nE7UL2.Object.ModStts;
 
 namespace MOD_nE7UL2.Mod
 {
@@ -13,7 +13,7 @@ namespace MOD_nE7UL2.Mod
     public class BankAccountEvent : ModEvent
     {
         public static BankAccountEvent Instance { get; set; }
-        public static _BankAccountConfigs BankAccountConfigs => ModMain.ModObj.GameSettings.BankAccountConfigs;
+        public static _BankAccountConfigs BankAccountConfigs => ModMain.ModObj.ModSettings.BankAccountConfigs;
 
         public IList<string> RegisterdTown { get; set; } = new List<string>();
 

@@ -14,7 +14,6 @@ namespace MOD_nE7UL2
     public class ModMain : ModChild
     {
         public ModStts ModSettings { get; private set; }
-        public GameStts GameSettings { get; private set; }
         public static ModMain ModObj { get; private set; }
 
         public override void OnLoadClass(bool isNew, string modId, CacheAttribute attr)
@@ -22,11 +21,10 @@ namespace MOD_nE7UL2
             base.OnLoadClass(isNew, modId, attr);
             ModObj = this;
             ModSettings = JsonConvert.DeserializeObject<ModStts>(ConfHelper.ReadConfData(modId, "mod_configs.json"));
-            GameSettings = JsonConvert.DeserializeObject<GameStts>(ConfHelper.ReadConfData(modId, "game_configs.json"));
             //exp
             foreach (var item in g.conf.roleGrade._allConfList)
             {
-                item.exp = (item.exp * ModSettings.LevelExpRatio).Parse<int>();
+                item.exp = (item.exp * ModSettings.BaseConfigs.LevelExpRatio).Parse<int>();
             }
             //unlimit attribute
             foreach (var item in g.conf.roleAttributeLimit._allConfList)
@@ -38,25 +36,25 @@ namespace MOD_nE7UL2
             //balance artifact attribute
             foreach (var item in g.conf.artifactShape._allConfList)
             {
-                item.durable = (item.durable * ModSettings.ArtifactDurableRatio).Parse<int>();
-                item.spCost = (item.spCost * ModSettings.ArtifactSpCostRatio).Parse<int>();
-                item.hp = (item.hp * ModSettings.ArtifactHpRatio).Parse<int>();
-                item.atk = (item.atk * ModSettings.ArtifactAtkRatio).Parse<int>();
-                item.def = (item.def * ModSettings.ArtifactDefRatio).Parse<int>();
+                item.durable = (item.durable * ModSettings.BaseConfigs.ArtifactDurableRatio).Parse<int>();
+                item.spCost = (item.spCost * ModSettings.BaseConfigs.ArtifactSpCostRatio).Parse<int>();
+                item.hp = (item.hp * ModSettings.BaseConfigs.ArtifactHpRatio).Parse<int>();
+                item.atk = (item.atk * ModSettings.BaseConfigs.ArtifactAtkRatio).Parse<int>();
+                item.def = (item.def * ModSettings.BaseConfigs.ArtifactDefRatio).Parse<int>();
             }
             //skillmastery need more exp
             foreach (var item in g.conf.battleSkillMastery._allConfList)
             {
-                item.grade1 = (item.grade1 * ModSettings.SkillMasteryExpRatio1).Parse<int>();
-                item.grade2 = (item.grade2 * ModSettings.SkillMasteryExpRatio2).Parse<int>();
-                item.grade3 = (item.grade3 * ModSettings.SkillMasteryExpRatio3).Parse<int>();
-                item.grade4 = (item.grade4 * ModSettings.SkillMasteryExpRatio4).Parse<int>();
-                item.grade5 = (item.grade5 * ModSettings.SkillMasteryExpRatio5).Parse<int>();
-                item.grade6 = (item.grade6 * ModSettings.SkillMasteryExpRatio6).Parse<int>();
-                item.grade7 = (item.grade7 * ModSettings.SkillMasteryExpRatio7).Parse<int>();
-                item.grade8 = (item.grade8 * ModSettings.SkillMasteryExpRatio8).Parse<int>();
-                item.grade9 = (item.grade9 * ModSettings.SkillMasteryExpRatio9).Parse<int>();
-                item.grade10 = (item.grade10 * ModSettings.SkillMasteryExpRatio10).Parse<int>();
+                item.grade1 = (item.grade1 * ModSettings.BaseConfigs.SkillMasteryExpRatio1).Parse<int>();
+                item.grade2 = (item.grade2 * ModSettings.BaseConfigs.SkillMasteryExpRatio2).Parse<int>();
+                item.grade3 = (item.grade3 * ModSettings.BaseConfigs.SkillMasteryExpRatio3).Parse<int>();
+                item.grade4 = (item.grade4 * ModSettings.BaseConfigs.SkillMasteryExpRatio4).Parse<int>();
+                item.grade5 = (item.grade5 * ModSettings.BaseConfigs.SkillMasteryExpRatio5).Parse<int>();
+                item.grade6 = (item.grade6 * ModSettings.BaseConfigs.SkillMasteryExpRatio6).Parse<int>();
+                item.grade7 = (item.grade7 * ModSettings.BaseConfigs.SkillMasteryExpRatio7).Parse<int>();
+                item.grade8 = (item.grade8 * ModSettings.BaseConfigs.SkillMasteryExpRatio8).Parse<int>();
+                item.grade9 = (item.grade9 * ModSettings.BaseConfigs.SkillMasteryExpRatio9).Parse<int>();
+                item.grade10 = (item.grade10 * ModSettings.BaseConfigs.SkillMasteryExpRatio10).Parse<int>();
             }
             //skill need more mpCost
             //skill cooldown faster
@@ -65,81 +63,81 @@ namespace MOD_nE7UL2
             {
                 if (item.key.EndsWith("_mpCost"))
                 {
-                    item.value1 = (item.value1.Parse<float>() * ModSettings.SkillMpCostRatio1).Parse<int>().ToString();
-                    item.value2 = (item.value2.Parse<float>() * ModSettings.SkillMpCostRatio2).Parse<int>().ToString();
-                    item.value3 = (item.value3.Parse<float>() * ModSettings.SkillMpCostRatio3).Parse<int>().ToString();
-                    item.value4 = (item.value4.Parse<float>() * ModSettings.SkillMpCostRatio4).Parse<int>().ToString();
-                    item.value5 = (item.value5.Parse<float>() * ModSettings.SkillMpCostRatio5).Parse<int>().ToString();
-                    item.value6 = (item.value6.Parse<float>() * ModSettings.SkillMpCostRatio6).Parse<int>().ToString();
-                    item.value7 = (item.value7.Parse<float>() * ModSettings.SkillMpCostRatio7).Parse<int>().ToString();
-                    item.value8 = (item.value8.Parse<float>() * ModSettings.SkillMpCostRatio8).Parse<int>().ToString();
-                    item.value9 = (item.value9.Parse<float>() * ModSettings.SkillMpCostRatio9).Parse<int>().ToString();
-                    item.value10 = (item.value10.Parse<float>() * ModSettings.SkillMpCostRatio10).Parse<int>().ToString();
+                    item.value1 = (item.value1.Parse<float>() * ModSettings.BaseConfigs.SkillMpCostRatio1).Parse<int>().ToString();
+                    item.value2 = (item.value2.Parse<float>() * ModSettings.BaseConfigs.SkillMpCostRatio2).Parse<int>().ToString();
+                    item.value3 = (item.value3.Parse<float>() * ModSettings.BaseConfigs.SkillMpCostRatio3).Parse<int>().ToString();
+                    item.value4 = (item.value4.Parse<float>() * ModSettings.BaseConfigs.SkillMpCostRatio4).Parse<int>().ToString();
+                    item.value5 = (item.value5.Parse<float>() * ModSettings.BaseConfigs.SkillMpCostRatio5).Parse<int>().ToString();
+                    item.value6 = (item.value6.Parse<float>() * ModSettings.BaseConfigs.SkillMpCostRatio6).Parse<int>().ToString();
+                    item.value7 = (item.value7.Parse<float>() * ModSettings.BaseConfigs.SkillMpCostRatio7).Parse<int>().ToString();
+                    item.value8 = (item.value8.Parse<float>() * ModSettings.BaseConfigs.SkillMpCostRatio8).Parse<int>().ToString();
+                    item.value9 = (item.value9.Parse<float>() * ModSettings.BaseConfigs.SkillMpCostRatio9).Parse<int>().ToString();
+                    item.value10 = (item.value10.Parse<float>() * ModSettings.BaseConfigs.SkillMpCostRatio10).Parse<int>().ToString();
                 }
                 else if (item.key.EndsWith("_cd"))
                 {
-                    item.value1 = (item.value1.Parse<float>() * ModSettings.SkillCdRatio1).Parse<int>().ToString();
-                    item.value2 = (item.value2.Parse<float>() * ModSettings.SkillCdRatio2).Parse<int>().ToString();
-                    item.value3 = (item.value3.Parse<float>() * ModSettings.SkillCdRatio3).Parse<int>().ToString();
-                    item.value4 = (item.value4.Parse<float>() * ModSettings.SkillCdRatio4).Parse<int>().ToString();
-                    item.value5 = (item.value5.Parse<float>() * ModSettings.SkillCdRatio5).Parse<int>().ToString();
-                    item.value6 = (item.value6.Parse<float>() * ModSettings.SkillCdRatio6).Parse<int>().ToString();
-                    item.value7 = (item.value7.Parse<float>() * ModSettings.SkillCdRatio7).Parse<int>().ToString();
-                    item.value8 = (item.value8.Parse<float>() * ModSettings.SkillCdRatio8).Parse<int>().ToString();
-                    item.value9 = (item.value9.Parse<float>() * ModSettings.SkillCdRatio9).Parse<int>().ToString();
-                    item.value10 = (item.value10.Parse<float>() * ModSettings.SkillCdRatio10).Parse<int>().ToString();
+                    item.value1 = (item.value1.Parse<float>() * ModSettings.BaseConfigs.SkillCdRatio1).Parse<int>().ToString();
+                    item.value2 = (item.value2.Parse<float>() * ModSettings.BaseConfigs.SkillCdRatio2).Parse<int>().ToString();
+                    item.value3 = (item.value3.Parse<float>() * ModSettings.BaseConfigs.SkillCdRatio3).Parse<int>().ToString();
+                    item.value4 = (item.value4.Parse<float>() * ModSettings.BaseConfigs.SkillCdRatio4).Parse<int>().ToString();
+                    item.value5 = (item.value5.Parse<float>() * ModSettings.BaseConfigs.SkillCdRatio5).Parse<int>().ToString();
+                    item.value6 = (item.value6.Parse<float>() * ModSettings.BaseConfigs.SkillCdRatio6).Parse<int>().ToString();
+                    item.value7 = (item.value7.Parse<float>() * ModSettings.BaseConfigs.SkillCdRatio7).Parse<int>().ToString();
+                    item.value8 = (item.value8.Parse<float>() * ModSettings.BaseConfigs.SkillCdRatio8).Parse<int>().ToString();
+                    item.value9 = (item.value9.Parse<float>() * ModSettings.BaseConfigs.SkillCdRatio9).Parse<int>().ToString();
+                    item.value10 = (item.value10.Parse<float>() * ModSettings.BaseConfigs.SkillCdRatio10).Parse<int>().ToString();
                 }
                 else if (item.key.StartsWith("&zizhiBase_"))
                 {
-                    item.value1 = (item.value1.Parse<float>() * ModSettings.SkillZizhiBaseRatio1).Parse<int>().ToString();
-                    item.value2 = (item.value2.Parse<float>() * ModSettings.SkillZizhiBaseRatio2).Parse<int>().ToString();
-                    item.value3 = (item.value3.Parse<float>() * ModSettings.SkillZizhiBaseRatio3).Parse<int>().ToString();
-                    item.value4 = (item.value4.Parse<float>() * ModSettings.SkillZizhiBaseRatio4).Parse<int>().ToString();
-                    item.value5 = (item.value5.Parse<float>() * ModSettings.SkillZizhiBaseRatio5).Parse<int>().ToString();
-                    item.value6 = (item.value6.Parse<float>() * ModSettings.SkillZizhiBaseRatio6).Parse<int>().ToString();
-                    item.value7 = (item.value7.Parse<float>() * ModSettings.SkillZizhiBaseRatio7).Parse<int>().ToString();
-                    item.value8 = (item.value8.Parse<float>() * ModSettings.SkillZizhiBaseRatio8).Parse<int>().ToString();
-                    item.value9 = (item.value9.Parse<float>() * ModSettings.SkillZizhiBaseRatio9).Parse<int>().ToString();
-                    item.value10 = (item.value10.Parse<float>() * ModSettings.SkillZizhiBaseRatio10).Parse<int>().ToString();
+                    item.value1 = (item.value1.Parse<float>() * ModSettings.BaseConfigs.SkillZizhiBaseRatio1).Parse<int>().ToString();
+                    item.value2 = (item.value2.Parse<float>() * ModSettings.BaseConfigs.SkillZizhiBaseRatio2).Parse<int>().ToString();
+                    item.value3 = (item.value3.Parse<float>() * ModSettings.BaseConfigs.SkillZizhiBaseRatio3).Parse<int>().ToString();
+                    item.value4 = (item.value4.Parse<float>() * ModSettings.BaseConfigs.SkillZizhiBaseRatio4).Parse<int>().ToString();
+                    item.value5 = (item.value5.Parse<float>() * ModSettings.BaseConfigs.SkillZizhiBaseRatio5).Parse<int>().ToString();
+                    item.value6 = (item.value6.Parse<float>() * ModSettings.BaseConfigs.SkillZizhiBaseRatio6).Parse<int>().ToString();
+                    item.value7 = (item.value7.Parse<float>() * ModSettings.BaseConfigs.SkillZizhiBaseRatio7).Parse<int>().ToString();
+                    item.value8 = (item.value8.Parse<float>() * ModSettings.BaseConfigs.SkillZizhiBaseRatio8).Parse<int>().ToString();
+                    item.value9 = (item.value9.Parse<float>() * ModSettings.BaseConfigs.SkillZizhiBaseRatio9).Parse<int>().ToString();
+                    item.value10 = (item.value10.Parse<float>() * ModSettings.BaseConfigs.SkillZizhiBaseRatio10).Parse<int>().ToString();
                 }
                 else if (item.key.StartsWith("&zizhiAdd_"))
                 {
-                    item.value1 = (item.value1.Parse<float>() * ModSettings.SkillZizhiAddRatio1).Parse<int>().ToString();
-                    item.value2 = (item.value2.Parse<float>() * ModSettings.SkillZizhiAddRatio2).Parse<int>().ToString();
-                    item.value3 = (item.value3.Parse<float>() * ModSettings.SkillZizhiAddRatio3).Parse<int>().ToString();
-                    item.value4 = (item.value4.Parse<float>() * ModSettings.SkillZizhiAddRatio4).Parse<int>().ToString();
-                    item.value5 = (item.value5.Parse<float>() * ModSettings.SkillZizhiAddRatio5).Parse<int>().ToString();
-                    item.value6 = (item.value6.Parse<float>() * ModSettings.SkillZizhiAddRatio6).Parse<int>().ToString();
-                    item.value7 = (item.value7.Parse<float>() * ModSettings.SkillZizhiAddRatio7).Parse<int>().ToString();
-                    item.value8 = (item.value8.Parse<float>() * ModSettings.SkillZizhiAddRatio8).Parse<int>().ToString();
-                    item.value9 = (item.value9.Parse<float>() * ModSettings.SkillZizhiAddRatio9).Parse<int>().ToString();
-                    item.value10 = (item.value10.Parse<float>() * ModSettings.SkillZizhiAddRatio10).Parse<int>().ToString();
+                    item.value1 = (item.value1.Parse<float>() * ModSettings.BaseConfigs.SkillZizhiAddRatio1).Parse<int>().ToString();
+                    item.value2 = (item.value2.Parse<float>() * ModSettings.BaseConfigs.SkillZizhiAddRatio2).Parse<int>().ToString();
+                    item.value3 = (item.value3.Parse<float>() * ModSettings.BaseConfigs.SkillZizhiAddRatio3).Parse<int>().ToString();
+                    item.value4 = (item.value4.Parse<float>() * ModSettings.BaseConfigs.SkillZizhiAddRatio4).Parse<int>().ToString();
+                    item.value5 = (item.value5.Parse<float>() * ModSettings.BaseConfigs.SkillZizhiAddRatio5).Parse<int>().ToString();
+                    item.value6 = (item.value6.Parse<float>() * ModSettings.BaseConfigs.SkillZizhiAddRatio6).Parse<int>().ToString();
+                    item.value7 = (item.value7.Parse<float>() * ModSettings.BaseConfigs.SkillZizhiAddRatio7).Parse<int>().ToString();
+                    item.value8 = (item.value8.Parse<float>() * ModSettings.BaseConfigs.SkillZizhiAddRatio8).Parse<int>().ToString();
+                    item.value9 = (item.value9.Parse<float>() * ModSettings.BaseConfigs.SkillZizhiAddRatio9).Parse<int>().ToString();
+                    item.value10 = (item.value10.Parse<float>() * ModSettings.BaseConfigs.SkillZizhiAddRatio10).Parse<int>().ToString();
                 }
                 else if (item.key.StartsWith("&daodianBase_"))
                 {
-                    item.value1 = (item.value1.Parse<float>() * ModSettings.SkillDaodianBaseRatio1).Parse<int>().ToString();
-                    item.value2 = (item.value2.Parse<float>() * ModSettings.SkillDaodianBaseRatio2).Parse<int>().ToString();
-                    item.value3 = (item.value3.Parse<float>() * ModSettings.SkillDaodianBaseRatio3).Parse<int>().ToString();
-                    item.value4 = (item.value4.Parse<float>() * ModSettings.SkillDaodianBaseRatio4).Parse<int>().ToString();
-                    item.value5 = (item.value5.Parse<float>() * ModSettings.SkillDaodianBaseRatio5).Parse<int>().ToString();
-                    item.value6 = (item.value6.Parse<float>() * ModSettings.SkillDaodianBaseRatio6).Parse<int>().ToString();
-                    item.value7 = (item.value7.Parse<float>() * ModSettings.SkillDaodianBaseRatio7).Parse<int>().ToString();
-                    item.value8 = (item.value8.Parse<float>() * ModSettings.SkillDaodianBaseRatio8).Parse<int>().ToString();
-                    item.value9 = (item.value9.Parse<float>() * ModSettings.SkillDaodianBaseRatio9).Parse<int>().ToString();
-                    item.value10 = (item.value10.Parse<float>() * ModSettings.SkillDaodianBaseRatio10).Parse<int>().ToString();
+                    item.value1 = (item.value1.Parse<float>() * ModSettings.BaseConfigs.SkillDaodianBaseRatio1).Parse<int>().ToString();
+                    item.value2 = (item.value2.Parse<float>() * ModSettings.BaseConfigs.SkillDaodianBaseRatio2).Parse<int>().ToString();
+                    item.value3 = (item.value3.Parse<float>() * ModSettings.BaseConfigs.SkillDaodianBaseRatio3).Parse<int>().ToString();
+                    item.value4 = (item.value4.Parse<float>() * ModSettings.BaseConfigs.SkillDaodianBaseRatio4).Parse<int>().ToString();
+                    item.value5 = (item.value5.Parse<float>() * ModSettings.BaseConfigs.SkillDaodianBaseRatio5).Parse<int>().ToString();
+                    item.value6 = (item.value6.Parse<float>() * ModSettings.BaseConfigs.SkillDaodianBaseRatio6).Parse<int>().ToString();
+                    item.value7 = (item.value7.Parse<float>() * ModSettings.BaseConfigs.SkillDaodianBaseRatio7).Parse<int>().ToString();
+                    item.value8 = (item.value8.Parse<float>() * ModSettings.BaseConfigs.SkillDaodianBaseRatio8).Parse<int>().ToString();
+                    item.value9 = (item.value9.Parse<float>() * ModSettings.BaseConfigs.SkillDaodianBaseRatio9).Parse<int>().ToString();
+                    item.value10 = (item.value10.Parse<float>() * ModSettings.BaseConfigs.SkillDaodianBaseRatio10).Parse<int>().ToString();
                 }
                 else if (item.key.StartsWith("&daodianAdd_"))
                 {
-                    item.value1 = (item.value1.Parse<float>() * ModSettings.SkillDaodianAddRatio1).Parse<int>().ToString();
-                    item.value2 = (item.value2.Parse<float>() * ModSettings.SkillDaodianAddRatio2).Parse<int>().ToString();
-                    item.value3 = (item.value3.Parse<float>() * ModSettings.SkillDaodianAddRatio3).Parse<int>().ToString();
-                    item.value4 = (item.value4.Parse<float>() * ModSettings.SkillDaodianAddRatio4).Parse<int>().ToString();
-                    item.value5 = (item.value5.Parse<float>() * ModSettings.SkillDaodianAddRatio5).Parse<int>().ToString();
-                    item.value6 = (item.value6.Parse<float>() * ModSettings.SkillDaodianAddRatio6).Parse<int>().ToString();
-                    item.value7 = (item.value7.Parse<float>() * ModSettings.SkillDaodianAddRatio7).Parse<int>().ToString();
-                    item.value8 = (item.value8.Parse<float>() * ModSettings.SkillDaodianAddRatio8).Parse<int>().ToString();
-                    item.value9 = (item.value9.Parse<float>() * ModSettings.SkillDaodianAddRatio9).Parse<int>().ToString();
-                    item.value10 = (item.value10.Parse<float>() * ModSettings.SkillDaodianAddRatio10).Parse<int>().ToString();
+                    item.value1 = (item.value1.Parse<float>() * ModSettings.BaseConfigs.SkillDaodianAddRatio1).Parse<int>().ToString();
+                    item.value2 = (item.value2.Parse<float>() * ModSettings.BaseConfigs.SkillDaodianAddRatio2).Parse<int>().ToString();
+                    item.value3 = (item.value3.Parse<float>() * ModSettings.BaseConfigs.SkillDaodianAddRatio3).Parse<int>().ToString();
+                    item.value4 = (item.value4.Parse<float>() * ModSettings.BaseConfigs.SkillDaodianAddRatio4).Parse<int>().ToString();
+                    item.value5 = (item.value5.Parse<float>() * ModSettings.BaseConfigs.SkillDaodianAddRatio5).Parse<int>().ToString();
+                    item.value6 = (item.value6.Parse<float>() * ModSettings.BaseConfigs.SkillDaodianAddRatio6).Parse<int>().ToString();
+                    item.value7 = (item.value7.Parse<float>() * ModSettings.BaseConfigs.SkillDaodianAddRatio7).Parse<int>().ToString();
+                    item.value8 = (item.value8.Parse<float>() * ModSettings.BaseConfigs.SkillDaodianAddRatio8).Parse<int>().ToString();
+                    item.value9 = (item.value9.Parse<float>() * ModSettings.BaseConfigs.SkillDaodianAddRatio9).Parse<int>().ToString();
+                    item.value10 = (item.value10.Parse<float>() * ModSettings.BaseConfigs.SkillDaodianAddRatio10).Parse<int>().ToString();
                 }
             }
             //balance item
@@ -248,16 +246,16 @@ namespace MOD_nE7UL2
                             var efxValue = g.conf.battleSkillValue.GetItem(battleEfx.value3);
                             if (efxValue != null)
                             {
-                                efxValue.value1 = (efxValue.value1.Parse<float>() * ModSettings.PowerUpPillEfxRatio1).Parse<int>().ToString();
-                                efxValue.value2 = (efxValue.value2.Parse<float>() * ModSettings.PowerUpPillEfxRatio2).Parse<int>().ToString();
-                                efxValue.value3 = (efxValue.value3.Parse<float>() * ModSettings.PowerUpPillEfxRatio3).Parse<int>().ToString();
-                                efxValue.value4 = (efxValue.value4.Parse<float>() * ModSettings.PowerUpPillEfxRatio4).Parse<int>().ToString();
-                                efxValue.value5 = (efxValue.value5.Parse<float>() * ModSettings.PowerUpPillEfxRatio5).Parse<int>().ToString();
-                                efxValue.value6 = (efxValue.value6.Parse<float>() * ModSettings.PowerUpPillEfxRatio6).Parse<int>().ToString();
-                                efxValue.value7 = (efxValue.value7.Parse<float>() * ModSettings.PowerUpPillEfxRatio7).Parse<int>().ToString();
-                                efxValue.value8 = (efxValue.value8.Parse<float>() * ModSettings.PowerUpPillEfxRatio8).Parse<int>().ToString();
-                                efxValue.value9 = (efxValue.value9.Parse<float>() * ModSettings.PowerUpPillEfxRatio9).Parse<int>().ToString();
-                                efxValue.value10 = (efxValue.value10.Parse<float>() * ModSettings.PowerUpPillEfxRatio10).Parse<int>().ToString();
+                                efxValue.value1 = (efxValue.value1.Parse<float>() * ModSettings.BaseConfigs.PowerUpPillEfxRatio1).Parse<int>().ToString();
+                                efxValue.value2 = (efxValue.value2.Parse<float>() * ModSettings.BaseConfigs.PowerUpPillEfxRatio2).Parse<int>().ToString();
+                                efxValue.value3 = (efxValue.value3.Parse<float>() * ModSettings.BaseConfigs.PowerUpPillEfxRatio3).Parse<int>().ToString();
+                                efxValue.value4 = (efxValue.value4.Parse<float>() * ModSettings.BaseConfigs.PowerUpPillEfxRatio4).Parse<int>().ToString();
+                                efxValue.value5 = (efxValue.value5.Parse<float>() * ModSettings.BaseConfigs.PowerUpPillEfxRatio5).Parse<int>().ToString();
+                                efxValue.value6 = (efxValue.value6.Parse<float>() * ModSettings.BaseConfigs.PowerUpPillEfxRatio6).Parse<int>().ToString();
+                                efxValue.value7 = (efxValue.value7.Parse<float>() * ModSettings.BaseConfigs.PowerUpPillEfxRatio7).Parse<int>().ToString();
+                                efxValue.value8 = (efxValue.value8.Parse<float>() * ModSettings.BaseConfigs.PowerUpPillEfxRatio8).Parse<int>().ToString();
+                                efxValue.value9 = (efxValue.value9.Parse<float>() * ModSettings.BaseConfigs.PowerUpPillEfxRatio9).Parse<int>().ToString();
+                                efxValue.value10 = (efxValue.value10.Parse<float>() * ModSettings.BaseConfigs.PowerUpPillEfxRatio10).Parse<int>().ToString();
                             }
                         }
                     }

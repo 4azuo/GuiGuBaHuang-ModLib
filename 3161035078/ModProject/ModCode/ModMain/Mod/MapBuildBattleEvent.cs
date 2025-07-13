@@ -7,7 +7,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
-using static MOD_nE7UL2.Object.GameStts;
+using static MOD_nE7UL2.Object.ModStts;
 
 namespace MOD_nE7UL2.Mod
 {
@@ -38,7 +38,7 @@ namespace MOD_nE7UL2.Mod
         }
 
         public static MapBuildBattleEvent Instance { get; set; }
-        public static _MapBuildBattleConfigs Configs => ModMain.ModObj.GameSettings.MapBuildBattleConfigs;
+        public static _MapBuildBattleConfigs Configs => ModMain.ModObj.ModSettings.MapBuildBattleConfigs;
 
         public const int JOIN_RANGE = 4;
         public const float MONST_WAVE_RATE = 0.5f;

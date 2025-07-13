@@ -3,7 +3,7 @@ using MOD_nE7UL2.Const;
 using MOD_nE7UL2.Enum;
 using ModLib.Enum;
 using ModLib.Mod;
-using static MOD_nE7UL2.Object.GameStts;
+using static MOD_nE7UL2.Object.ModStts;
 
 namespace MOD_nE7UL2.Mod
 {
@@ -11,7 +11,7 @@ namespace MOD_nE7UL2.Mod
     public class RealTrialEvent : ModEvent
     {
         public static RealTrialEvent Instance { get; set; }
-        public static _RealTrialConfigs RealTrialConfigs => ModMain.ModObj.GameSettings.RealTrialConfigs;
+        public static _RealTrialConfigs RealTrialConfigs => ModMain.ModObj.ModSettings.RealTrialConfigs;
         public static bool IsInTrial => DungeonHelper.IsTrailOfLightning();
 
         public override void OnBattleUnitInto(UnitCtrlBase e)

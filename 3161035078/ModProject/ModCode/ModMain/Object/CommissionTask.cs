@@ -1,7 +1,7 @@
 ﻿using Il2CppSystem.Collections.Generic;
 using System;
 using System.Linq;
-using static MOD_nE7UL2.Object.GameStts;
+using static MOD_nE7UL2.Object.ModStts;
 
 namespace MOD_nE7UL2.Object
 {
@@ -13,13 +13,7 @@ namespace MOD_nE7UL2.Object
             Success,
             Failed
         }
-        public static _MissionDeclareConfigs Configs
-        {
-            get
-            {
-                return ModMain.ModObj.GameSettings.MissionDeclareConfigs;
-            }
-        }
+        public static _MissionDeclareConfigs Configs => ModMain.ModObj.ModSettings.MissionDeclareConfigs;
 
         public System.Collections.Generic.Dictionary<int, int> CommisionItems { get; set; }
         public int Total { get; set; }

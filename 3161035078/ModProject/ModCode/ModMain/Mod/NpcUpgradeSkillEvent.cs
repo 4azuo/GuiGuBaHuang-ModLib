@@ -32,7 +32,7 @@ namespace MOD_nE7UL2.Mod
         public void UpgradeMartial(WorldUnitBase wunit)
         {
             var luck = wunit.GetDynProperty(UnitDynPropertyEnum.Luck).value;
-            UpgradeMartial(wunit, ModMain.ModObj.GameSettings.NpcUpgradeSkillConfigs.RandomUpgradingMartial(CommonTool.Random(0.00f, 100.00f), luck / 100));
+            UpgradeMartial(wunit, ModMain.ModObj.ModSettings.NpcUpgradeSkillConfigs.RandomUpgradingMartial(CommonTool.Random(0.00f, 100.00f), luck / 100));
         }
 
         public void UpgradeMartial(WorldUnitBase wunit, MartialType martialType)

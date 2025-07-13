@@ -20,13 +20,13 @@ namespace MOD_nE7UL2.Mod
     {
         public static RealMarketEvent2 Instance { get; set; }
 
-        public static float MinRate => ModMain.ModObj.GameSettings.RealMarketConfigs.MinBuyRate;
+        public static float MinRate => ModMain.ModObj.ModSettings.RealMarketConfigs.MinBuyRate;
 
-        public static float MaxRate => ModMain.ModObj.GameSettings.RealMarketConfigs.MaxBuyRate;
+        public static float MaxRate => ModMain.ModObj.ModSettings.RealMarketConfigs.MaxBuyRate;
 
-        public static float TownGReduceBuyRate => ModMain.ModObj.GameSettings.RealMarketConfigs.TownGReduceBuyRate;
+        public static float TownGReduceBuyRate => ModMain.ModObj.ModSettings.RealMarketConfigs.TownGReduceBuyRate;
 
-        public static float TownMReduceBuyRate => ModMain.ModObj.GameSettings.RealMarketConfigs.TownMReduceBuyRate;
+        public static float TownMReduceBuyRate => ModMain.ModObj.ModSettings.RealMarketConfigs.TownMReduceBuyRate;
 
         public IDictionary<string, float> MarketPriceRate { get; set; } = new Dictionary<string, float>();
 
@@ -45,7 +45,7 @@ namespace MOD_nE7UL2.Mod
         public override void OnMonthly()
         {
             base.OnMonthly();
-            var eventBuyRate = ModMain.ModObj.GameSettings.RealMarketConfigs.GetAddBuyRate();
+            var eventBuyRate = ModMain.ModObj.ModSettings.RealMarketConfigs.GetAddBuyRate();
             foreach (var town in g.world.build.GetBuilds().ToArray().Where(x => x.allBuildSub.ContainsKey(MapBuildSubType.TownMarketPill)))
             {
                 MarketPriceRate[town.buildData.id] = CommonTool.Random(MinRate + eventBuyRate, MaxRate + eventBuyRate);
