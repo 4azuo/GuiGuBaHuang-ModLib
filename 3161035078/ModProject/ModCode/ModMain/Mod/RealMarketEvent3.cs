@@ -370,6 +370,11 @@ namespace MOD_nE7UL2.Mod
             return item.GetProps().Sum(x => x.propsCount) >= item.Count;
         }
 
+        //public override bool OnCacheHandler()
+        //{
+        //    return !SMLocalConfigsEvent.Instance.Configs.NoMarketItem;
+        //}
+
         public override void OnMonthly()
         {
             base.OnMonthly();
@@ -517,6 +522,7 @@ namespace MOD_nE7UL2.Mod
                                 if (g.world.playerUnit.GetUnitMoney() >= vipPrice)
                                 {
                                     g.world.playerUnit.AddUnitMoney(-vipPrice);
+                                    MapBuildPropertyEvent.AddBuildProperty(ui.UI.town, vipPrice);
                                     OpenMarket(x => x.IsHidden || (x.GetPropInfo()?.grade ?? 0) >= 4);
                                 }
                                 else

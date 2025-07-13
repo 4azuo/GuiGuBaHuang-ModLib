@@ -76,6 +76,8 @@ namespace MOD_nE7UL2.Mod
         public float MarketItemGetAttackedRate { get; set; } = 0f;
         public bool NoMarketItem { get; set; } = false;
         public bool NoStalker { get; set; } = false;
+        public bool NoTaxing { get; set; } = false;
+        public bool NoQiCultivation { get; set; } = false;
 
         //UI
         private UICustom1 uiCustom;
@@ -119,6 +121,8 @@ namespace MOD_nE7UL2.Mod
         private UIItemComposite slMarketItemGetAttackedRate;
         private UIItemComposite tglNoMarketItem;
         private UIItemComposite tglNoStalker;
+        private UIItemComposite tglNoTaxing;
+        private UIItemComposite tglNoQiCultivation;
 
         //Score
         [JsonIgnore]
@@ -271,7 +275,13 @@ namespace MOD_nE7UL2.Mod
                 funcCal: s => 10000,
                 funcCond: s => s.Get().Parse<bool>());
             Register(() => tglNoStalker,
+                funcCal: s => -3000,
+                funcCond: s => s.Get().Parse<bool>());
+            Register(() => tglNoTaxing,
                 funcCal: s => -2000,
+                funcCond: s => s.Get().Parse<bool>());
+            Register(() => tglNoQiCultivation,
+                funcCal: s => 2000,
                 funcCond: s => s.Get().Parse<bool>());
         }
 
@@ -408,7 +418,6 @@ namespace MOD_nE7UL2.Mod
                 uiCustom.AddButton(col + 1, row + 3, ImportConfigs, GameTool.LS("smcfgs055")).Size(200, 40);
                 uiCustom.AddButton(col + 1, row + 5, OpenSaveDataFolder, GameTool.LS("smcfgs120")).Size(200, 40);
                 uiCustom.AddButton(col + 1, row + 7, OpenModConfigs, GameTool.LS("smcfgs121")).Size(200, 40);
-                uiCustom.AddButton(col + 1, row + 9, OpenGameConfigs, GameTool.LS("smcfgs122")).Size(200, 40);
 
                 AddDifButtons();
             }
@@ -449,8 +458,11 @@ namespace MOD_nE7UL2.Mod
                 tglSysNoRebirth = uiCustom.AddCompositeToggle(col, row++, GameTool.LS("smcfgs035"), NoRebirth, GameTool.LS("smcfgs102"));
                 tglNoGrowupFromBattles = uiCustom.AddCompositeToggle(col, row++, GameTool.LS("smcfgs039"), NoGrowupFromBattles, GameTool.LS("smcfgs102"));
                 tglSysNoExpFromBattle = uiCustom.AddCompositeToggle(col, row++, GameTool.LS("smcfgs040"), NoExpFromBattles, GameTool.LS("smcfgs102"));
+                tglNoTaxing = uiCustom.AddCompositeToggle(col, row++, GameTool.LS("smcfgs122"), NoTaxing, GameTool.LS("smcfgs102"));
+                uiCustom.AddText(col, row++, GameTool.LS("smcfgs126")).Format(null, 13).Align(TextAnchor.MiddleLeft);
                 tglNoMarketItem = uiCustom.AddCompositeToggle(col, row++, GameTool.LS("smcfgs123"), NoExpFromBattles, GameTool.LS("smcfgs102"));
                 tglNoStalker = uiCustom.AddCompositeToggle(col, row++, GameTool.LS("smcfgs124"), NoExpFromBattles, GameTool.LS("smcfgs102"));
+                tglNoQiCultivation = uiCustom.AddCompositeToggle(col, row++, GameTool.LS("smcfgs125"), NoQiCultivation, GameTool.LS("smcfgs102"));
                 row++;
                 tglAllowUpgradeNaturally = uiCustom.AddCompositeToggle(col, row++, GameTool.LS("smcfgs036"), AllowUpgradeNaturally, GameTool.LS("smcfgs102"));
                 uiCustom.AddText(col - 1, row++, GameTool.LS("smcfgs037")).Format(null, 13).Align(TextAnchor.MiddleLeft);
@@ -517,11 +529,6 @@ namespace MOD_nE7UL2.Mod
         private void OpenModConfigs()
         {
             Process.Start("notepad.exe", ConfHelper.GetConfFilePath(ModId, "mod_configs.json"));
-        }
-
-        private void OpenGameConfigs()
-        {
-            Process.Start("notepad.exe", ConfHelper.GetConfFilePath(ModId, "game_configs.json"));
         }
 
         private void AddDifButtons()
@@ -597,6 +604,8 @@ namespace MOD_nE7UL2.Mod
             slMarketItemGetAttackedRate.Set(0f);
             tglNoMarketItem.Set(false);
             tglNoStalker.Set(false);
+            tglNoTaxing.Set(false);
+            tglNoQiCultivation.Set(false);
         }
 
         private void SetLevel(int level)
@@ -641,6 +650,8 @@ namespace MOD_nE7UL2.Mod
             slMarketItemGetAttackedRate.Set(0f);
             tglNoMarketItem.Set(false);
             tglNoStalker.Set(false);
+            tglNoTaxing.Set(false);
+            tglNoQiCultivation.Set(false);
         }
 
         private void SetSMConfigs()
@@ -685,6 +696,8 @@ namespace MOD_nE7UL2.Mod
             MarketItemGetAttackedRate = slMarketItemGetAttackedRate.Get().Parse<float>();
             NoMarketItem = tglNoMarketItem.Get().Parse<bool>();
             NoStalker = tglNoStalker.Get().Parse<bool>();
+            NoTaxing = tglNoTaxing.Get().Parse<bool>();
+            NoQiCultivation = tglNoQiCultivation.Get().Parse<bool>();
             CacheHelper.SaveGlobalCache(this);
 
             //edit conf
