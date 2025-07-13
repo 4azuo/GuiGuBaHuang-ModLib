@@ -19,9 +19,9 @@ namespace MOD_nE7UL2.Mod
     {
         public static RealMarketEvent Instance { get; set; }
 
-        public static float MinRate => ModMain.ModObj.GameSettings.RealMarketConfigs.MinSellRate;
+        public static float MinRate => ModMain.ModObj.ModSettings.RealMarketConfigs.MinSellRate;
 
-        public static float MaxRate => ModMain.ModObj.GameSettings.RealMarketConfigs.MaxSellRate;
+        public static float MaxRate => ModMain.ModObj.ModSettings.RealMarketConfigs.MaxSellRate;
 
         private Text txtMarketST;
         private Text txtPrice2;
@@ -44,7 +44,7 @@ namespace MOD_nE7UL2.Mod
         public override void OnMonthly()
         {
             base.OnMonthly();
-            var eventSellRate = ModMain.ModObj.GameSettings.RealMarketConfigs.GetAddSellRate();
+            var eventSellRate = ModMain.ModObj.ModSettings.RealMarketConfigs.GetAddSellRate();
             foreach (var town in g.world.build.GetBuilds().ToArray().Where(x => x.allBuildSub.ContainsKey(MapBuildSubType.TownMarketPill)))
             {
                 MarketPriceRate[town.buildData.id] = CommonTool.Random(MinRate + eventSellRate, MaxRate + eventSellRate);

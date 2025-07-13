@@ -4,8 +4,8 @@ using UnityEngine;
 using System.Linq;
 using UnityEngine.UI;
 using EGameTypeData;
-using static MOD_nE7UL2.Object.GameStts._HideButtonConfigs;
-using static MOD_nE7UL2.Object.GameStts;
+using static MOD_nE7UL2.Object.ModStts._HideButtonConfigs;
+using static MOD_nE7UL2.Object.ModStts;
 using System.Collections.Generic;
 using ModLib.Enum;
 using MOD_nE7UL2.Enum;
@@ -18,7 +18,7 @@ namespace MOD_nE7UL2.Mod
     {
         public static UIEvent Instance { get; set; }
 
-        public static _HideButtonConfigs Configs => ModMain.ModObj.GameSettings.HideButtonConfigs;
+        public static _HideButtonConfigs Configs => ModMain.ModObj.ModSettings.HideButtonConfigs;
 
         private Text uiArtifactInfo_textBasicTitle;
         private Text uiArtifactInfo_textBasicAdj1;

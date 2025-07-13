@@ -4,7 +4,7 @@ using ModLib.Mod;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using static MOD_nE7UL2.Object.GameStts;
+using static MOD_nE7UL2.Object.ModStts;
 
 namespace MOD_nE7UL2.Mod
 {
@@ -16,7 +16,7 @@ namespace MOD_nE7UL2.Mod
         public const int REACH_LIMIT_DRAMA = 499919998;
         public const int LIMIT = 1000000000;
 
-        public static _InflationaryConfigs Configs => ModMain.ModObj.GameSettings.InflationaryConfigs;
+        public static _InflationaryConfigs Configs => ModMain.ModObj.ModSettings.InflationaryConfigs;
         public static Dictionary<string, int> OriginItemValues { get; } = new Dictionary<string, int>();
 
         public int Corruption { get; set; } = 0;

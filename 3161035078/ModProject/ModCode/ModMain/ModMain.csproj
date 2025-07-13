@@ -98,9 +98,8 @@
     <Compile Include="Object\SMItemWork.cs" />
     <Compile Include="Object\CustomRefine.cs" />
     <Compile Include="Object\GameEvent.cs" />
-    <Compile Include="Object\ModStts.cs" />
     <Compile Include="Object\CommissionTask.cs" />
-    <Compile Include="Object\GameStts.cs" />
+    <Compile Include="Object\ModStts.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Skill\StormSword.cs" />
   </ItemGroup>

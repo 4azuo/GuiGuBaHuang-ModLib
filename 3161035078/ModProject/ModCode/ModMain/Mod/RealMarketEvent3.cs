@@ -9,7 +9,7 @@ using ModLib.Const;
 using MOD_nE7UL2.Object;
 using System;
 using ModLib.Enum;
-using static MOD_nE7UL2.Object.GameStts;
+using static MOD_nE7UL2.Object.ModStts;
 using MOD_nE7UL2.Enum;
 
 namespace MOD_nE7UL2.Mod
@@ -37,7 +37,7 @@ namespace MOD_nE7UL2.Mod
         public List<MarketItem> MarketStack { get; set; } = new List<MarketItem>();
 
         //configs
-        public static _MarketItemConfigs Configs => ModMain.ModObj.GameSettings.MarketItemConfigs;
+        public static _MarketItemConfigs Configs => ModMain.ModObj.ModSettings.MarketItemConfigs;
 
         public static bool IsSellableItem(DataProps.PropsData x)
         {
@@ -118,12 +118,20 @@ namespace MOD_nE7UL2.Mod
             if (spItem != null)
             {
                 curDeal.Items.Remove(spItem);
+                curDeal.Items.Add(new NegotiatingItem(curDeal)
+                {
+                    Count = value,
+                    IsSpiritStones = true,
+                });
             }
-            curDeal.Items.Add(new NegotiatingItem(curDeal)
+            else
             {
-                Count = value,
-                IsSpiritStones = true,
-            });
+                curDeal.Items.Add(new NegotiatingItem(curDeal)
+                {
+                    Count = prop.SellerPrice,
+                    IsSpiritStones = true,
+                });
+            }
         }
 
         public static void CancelWithoutMessage(MarketItem item)

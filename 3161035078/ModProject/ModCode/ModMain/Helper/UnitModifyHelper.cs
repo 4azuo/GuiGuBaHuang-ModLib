@@ -2,11 +2,11 @@
 using MOD_nE7UL2.Mod;
 using ModLib.Enum;
 using System;
-using static MOD_nE7UL2.Object.GameStts;
+using static MOD_nE7UL2.Object.ModStts;
 
 public static class UnitModifyHelper
 {
-    public static _ExpertConfigs ExpertConfigs => ModMain.ModObj.GameSettings.ExpertConfigs;
+    public static _ExpertConfigs ExpertConfigs => ModMain.ModObj.ModSettings.ExpertConfigs;
 
     #region Artifact
     public static int GetArtifactBasicAdjAtk(int baseValue, DataProps.PropsData props, DataProps.PropsArtifact artifact)
