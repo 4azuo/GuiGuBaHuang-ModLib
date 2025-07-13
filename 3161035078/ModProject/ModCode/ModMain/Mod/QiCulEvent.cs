@@ -4,7 +4,6 @@ using ModLib.Enum;
 using ModLib.Mod;
 using ModLib.Object;
 using System.Collections.Generic;
-using System.Numerics;
 using UnityEngine;
 
 namespace MOD_nE7UL2.Mod
@@ -19,15 +18,9 @@ namespace MOD_nE7UL2.Mod
         public int LastYearReceiveQi { get; set; }
         public IDictionary<string, long> Qi { get; set; } = new Dictionary<string, long>();
 
-        public override void OnLoadGame()
+        public override bool OnCacheHandler()
         {
-            base.OnLoadGame();
-            foreach (var wunit in g.world.unit.GetUnits())
-            {
-                var unitId = wunit.GetUnitId();
-                if (!Qi.ContainsKey(unitId))
-                    Qi.Add(unitId, 0);
-            }
+            return !SMLocalConfigsEvent.Instance.Configs.NoQiCultivation;
         }
 
         public override void OnMonthlyForEachWUnit(WorldUnitBase wunit)

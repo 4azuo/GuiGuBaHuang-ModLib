@@ -8,11 +8,8 @@ using ModLib.Object;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Numerics;
 using UnityEngine;
 using UnityEngine.Events;
-using static DataBuildTown;
-using static MOD_nE7UL2.Mod.MapBuildBattleEvent;
 
 namespace MOD_nE7UL2.Mod
 {
@@ -890,6 +887,9 @@ namespace MOD_nE7UL2.Mod
 
         public static void CheckIn(WorldUnitBase guard, MapBuildBase buildBase, UIBase ui)
         {
+            if (SMLocalConfigsEvent.Instance.Configs.NoTaxing)
+                return;
+
             var player = g.world.playerUnit;
             var tax = GetTax(buildBase, player);
             if (player.GetUnitMoney() > tax)
