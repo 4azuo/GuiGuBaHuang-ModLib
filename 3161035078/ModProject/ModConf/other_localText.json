@@ -351,7 +351,7 @@
 	{
 		"id": 500020063,
 		"key": "other500020063",
-		"ch|en|tc|kr": "Min：{0}　　　Market：{1}　　　Max：{2}　　　Your：{3}"
+		"ch|en|tc|kr": "Min：{0}　　　Sell：{1}　　　Max：{2}　　　Your：{3}"
 	},
 	{
 		"id": 500020064,
@@ -482,5 +482,45 @@
 		"id": 500020089,
 		"key": "other500020089",
 		"ch|en|tc|kr": "Damage x{0}"
+	},
+	{
+		"id": 500020090,
+		"key": "other500020090",
+		"ch|en|tc|kr": "Cancel"
+	},
+	{
+		"id": 500020091,
+		"key": "other500020091",
+		"ch|en|tc|kr": "Min：{0}　　　Sell：{1}　　　Max：{2}"
+	},
+	{
+		"id": 500020092,
+		"key": "other500020092",
+		"ch|en|tc|kr": "Accept"
+	},
+	{
+		"id": 500020093,
+		"key": "other500020093",
+		"ch|en|tc|kr": "What?! Cancelled? Do I look like I have time to waste?"
+	},
+	{
+		"id": 500020094,
+		"key": "other500020094",
+		"ch|en|tc|kr": "Hide"
+	},
+	{
+		"id": 500020095,
+		"key": "other500020095",
+		"ch|en|tc|kr": "Price"
+	},
+	{
+		"id": 500020096,
+		"key": "other500020096",
+		"ch|en|tc|kr": "Price {0} Spirit Stones"
+	},
+	{
+		"id": 500020097,
+		"key": "other500020097",
+		"ch|en|tc|kr": "Fee {0}"
 	},
 ]
