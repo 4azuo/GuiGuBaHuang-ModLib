@@ -64,5 +64,17 @@ namespace ModLib.Object
                 Enable = ItemWork?.EnableAct?.Invoke(this) ?? false;
             Item.enabled = Enable;
         }
+
+        public void SetMin(float min)
+        {
+            Min = min;
+            Item.minValue = Min;
+        }
+
+        public void SetMax(float max)
+        {
+            Max = max;
+            Item.maxValue = Max;
+        }
     }
 }
