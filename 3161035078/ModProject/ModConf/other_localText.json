@@ -506,21 +506,76 @@
 	{
 		"id": 500020094,
 		"key": "other500020094",
-		"ch|en|tc|kr": "Hide"
+		"ch|en|tc|kr": "Anonymous (costs fee)"
 	},
 	{
 		"id": 500020095,
 		"key": "other500020095",
-		"ch|en|tc|kr": "Price"
+		"ch|en|tc|kr": "Selling Price"
 	},
 	{
 		"id": 500020096,
 		"key": "other500020096",
-		"ch|en|tc|kr": "Price {0} Spirit Stones"
+		"ch|en|tc|kr": "Quantity"
 	},
 	{
 		"id": 500020097,
 		"key": "other500020097",
-		"ch|en|tc|kr": "Fee {0}"
+		"ch|en|tc|kr": "Anonymous fee = 10% of selling price"
 	},
+	{
+		"id": 500020098,
+		"key": "other500020098",
+		"ch|en|tc|kr": "Please select an item"
+	},
+	{
+		"id": 500020099,
+		"key": "other500020099",
+		"ch|en|tc|kr": "Invalid quantity"
+	},
+	{
+		"id": 500020100,
+		"key": "other500020100",
+		"ch|en|tc|kr": "Invalid price"
+	},
+	{
+		"id": 500020101,
+		"key": "other500020101",
+		"ch|en|tc|kr": "You must be in a town to sell items"
+	},
+	{
+		"id": 500020102,
+		"key": "other500020102",
+		"ch|en|tc|kr": "Error"
+	},
+	{
+		"id": 500020103,
+		"key": "other500020103",
+		"ch|en|tc|kr": "Registered sale: {0} x{1} for {2}"
+	},
+	{
+		"id": 500020104,
+		"key": "other500020104",
+		"ch|en|tc|kr": "Not enough money for anonymous fee"
+	},
+	{
+		"id": 500020105,
+		"key": "other500020105",
+		"ch|en|tc|kr": "Success"
+	},
+	{
+		"id": 500020106,
+		"key": "other500020106",
+		"ch|en|tc|kr": "Registered anonymous sale: {0} x{1} for {2} (fee: {3})"
+	},
+	{
+		"id": 500020107,
+		"key": "other500020107",
+		"ch|en|tc|kr": "Selling price: {0} | Anonymous fee: {1} (paid upfront)"
+	},
+	{
+		"id": 500020108,
+		"key": "other500020108",
+		"ch|en|tc|kr": "Selling price: {0}"
+	}
 ]

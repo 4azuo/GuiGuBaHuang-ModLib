@@ -11,6 +11,7 @@ using System;
 using ModLib.Enum;
 using static MOD_nE7UL2.Object.ModStts;
 using MOD_nE7UL2.Enum;
+using UnityEngine.Events;
 
 namespace MOD_nE7UL2.Mod
 {
@@ -585,18 +586,6 @@ namespace MOD_nE7UL2.Mod
                     ui.UI.uiProperty.goGroupRoot.SetActive(false);
                     OpenSellingList(ui.UI.unit);
                 }
-                else
-                if (e.uiType.uiName == UIType.PropSelectCount.uiName && IsOpenRegister)
-                {
-                    var ui = new UICover<UIPropSelectCount>(e.ui);
-                    {
-                        ui.AddCompositeSlider(ui.MidCol, ui.MidRow, GameTool.LS("other500020095"), 0, g.world.playerUnit.GetUnitMoney().FixValue(0, MAX_PRICE), 0);
-                        ui.AddCompositeToggle(ui.MidCol, ui.MidRow + 1, null, false, GameTool.LS("other500020094"));
-                        ui.AddText(ui.MidCol, ui.MidRow + 2, GameTool.LS("other500020096"));
-                        ui.AddText(ui.MidCol, ui.MidRow + 3, GameTool.LS("other500020097"));
-                    }
-                    ui.UpdateUI();
-                }
             }
         }
 
@@ -885,8 +874,8 @@ namespace MOD_nE7UL2.Mod
             uiSellingList.ClearSelectItem();
             uiSellingList.UpdateUI();
 
-            this.selectedProp = null;
-            this.selectedMarketItem = null;
+            selectedProp = null;
+            selectedMarketItem = null;
         }
 
         public void DecreasePrice(UIPropSelect uiSellingList, WorldUnitBase seller, DataProps.PropsData selectedProp, MarketItem selectedMarketItem)
@@ -926,8 +915,8 @@ namespace MOD_nE7UL2.Mod
             uiSellingList.ClearSelectItem();
             uiSellingList.UpdateUI();
 
-            this.selectedProp = null;
-            this.selectedMarketItem = null;
+            selectedProp = null;
+            selectedMarketItem = null;
         }
 
         public void ShowDeals(UIPropSelect uiSellingList, WorldUnitBase seller, DataProps.PropsData selectedProp, MarketItem selectedMarketItem)
@@ -941,6 +930,7 @@ namespace MOD_nE7UL2.Mod
             //xxx
         }
 
+        // 2. Hàm OpenRegister với custom btnOK
         private void OpenRegister(WorldUnitBase seller)
         {
             g.ui.CloseUI(UIType.PropSelect);
@@ -952,9 +942,10 @@ namespace MOD_nE7UL2.Mod
             ui.goSubToggleRoot.SetActive(false);
             ui.ClearSelectItem();
             ui.selectOnePropID = true;
-            //ui.btnOK.gameObject.SetActive(false);
             ui.allItems.ClearAllProps();
-            foreach (var prop in g.world.playerUnit.GetUnitProps())
+
+            // Thêm tất cả vật phẩm có thể bán của người chơi
+            foreach (var prop in seller.GetUnitProps())
             {
                 if (IsSellableItem(prop))
                 {
@@ -962,50 +953,192 @@ namespace MOD_nE7UL2.Mod
                 }
             }
 
-            ////cover ui
-            //var uiCover = new UICover<UIPropSelect>(ui);
-            //uiCover.AddButton(0, 0, () => DecreasePrice(ui, seller, selectedProp, selectedMarketItem), GameTool.LS("other500020064")).Pos(ui.btnOK.transform, -150, 0);
-            //uiCover.AddButton(0, 0, () => Cancel(ui, seller, selectedProp, selectedMarketItem), GameTool.LS("other500020090")).Pos(ui.btnOK.transform, -50, 0);
-            //uiCover.AddButton(0, 0, () => IncreasePrice(ui, seller, selectedProp, selectedMarketItem), GameTool.LS("other500020066")).Pos(ui.btnOK.transform, +50, 0);
+            // Cover UI để thêm controls
+            var uiCover = new UICover<UIPropSelect>(ui);
 
-            ////show info about selected item
-            //uiCover.AddText(0, 0, GameTool.LS("other500020091")).SetWork(new UIItemWork
-            //{
-            //    Formatter = x =>
+            // Thêm toggle ẩn danh
+            var hiddenToggle = uiCover.AddCompositeToggle(uiCover.MidCol - 4, uiCover.MidRow + 6,
+                null, false, GameTool.LS("other500020094")); // "Anonymous (costs fee)"
+
+            // Thêm slider số lượng
+            var countSlider = uiCover.AddCompositeSlider(uiCover.MidCol - 3, uiCover.MidRow + 7,
+                GameTool.LS("other500020096"), 1, 1, 1, "{0}"); // "Quantity"
+            countSlider.Postfix.SetWork(new UIItemWork
+            {
+                Formatter = x =>
+                {
+                    return new string[] { countSlider.MainComponent.Get().Parse<int>().ToString() };
+                }
+            });
+
+            // Thêm slider giá bán
+            var priceSlider = uiCover.AddCompositeSlider(uiCover.MidCol - 3, uiCover.MidRow + 8,
+                GameTool.LS("other500020095"), MIN_PRICE, MAX_PRICE, MIN_PRICE, "{0}"); // "Selling Price"
+            priceSlider.Postfix.SetWork(new UIItemWork
+            {
+                Formatter = x =>
+                {
+                    return new string[] { priceSlider.MainComponent.Get().Parse<int>().ToString() };
+                }
+            });
+
+            // Thêm text hiển thị giá và phí
+            var infoText = uiCover.AddText(uiCover.MidCol, uiCover.MidRow + 9, "{0}").Align(TextAnchor.MiddleCenter);
+            infoText.SetWork(new UIItemWork
+            {
+                Formatter = x =>
+                {
+                    if (selectedProp == null)
+                        return new string[] { GameTool.LS("other500020098") }; // "Please select an item"
+
+                    var price = priceSlider.Get().Parse<int>();
+                    var isHidden = hiddenToggle.Get().Parse<bool>();
+                    var hiddenFee = isHidden ? (price * 0.1f).Parse<int>().FixValue(100, MAX_PRICE / 10) : 0;
+
+                    if (isHidden)
+                    {
+                        return new string[] {
+                            string.Format(GameTool.LS("other500020107"), // "Selling price: {0} | Anonymous fee: {1} (paid upfront)"
+                                price.ToString(ModConst.FORMAT_NUMBER),
+                                hiddenFee.ToString(ModConst.FORMAT_NUMBER))
+                        };
+                    }
+                    else
+                    {
+                        return new string[] {
+                            string.Format(GameTool.LS("other500020108"), // "Selling price: {0}"
+                                price.ToString(ModConst.FORMAT_NUMBER))
+                        };
+                    }
+                }
+            });
+
+            // Custom select để lấy prop
+            uiCover.UI.onCustomSelectCall = (ReturnAction<string, DataProps.PropsData>)((x) =>
+            {
+                uiCover.UI.ClearSelectItem();
+                uiCover.UI.AddSelectProps(x);
+                uiCover.UI.UpdateUI();
+
+                selectedProp = x;
+                selectedMarketItem = GetMarketItem(seller, selectedProp);
+
+                (countSlider.MainComponent as UIItemSlider).SetMax(selectedProp.propsCount);
+                (priceSlider.MainComponent as UIItemSlider).SetMax((selectedProp.propsInfoBase.sale * selectedProp.propsCount * 2).FixValue(MIN_PRICE, MAX_PRICE));
+
+                return selectedProp.propsInfoBase.name;
+            });
+
+            // Custom btnOK để xử lý đăng ký
+            ui.btnOK.onClick.RemoveAllListeners();
+            ui.btnOK.onClick.AddListener((UnityAction)(() =>
+            {
+                if (selectedProp == null)
+                {
+                    g.ui.MsgBox(GameTool.LS("other500020102"), GameTool.LS("other500020098")); // "Error", "Please select an item"
+                    return;
+                }
+
+                var town = seller.GetMapBuild<MapBuildTown>();
+                if (town == null)
+                {
+                    g.ui.MsgBox(GameTool.LS("other500020102"), GameTool.LS("other500020101")); // "Error", "You must be in a town to sell items"
+                    return;
+                }
+
+                var currentCount = countSlider.Get().Parse<int>();
+                var currentPrice = priceSlider.Get().Parse<int>();
+                var currentIsHidden = hiddenToggle.Get().Parse<bool>();
+
+                // Validate
+                if (!currentCount.IsBetween(1, selectedProp.propsCount))
+                {
+                    g.ui.MsgBox(GameTool.LS("other500020102"), GameTool.LS("other500020099")); // "Error", "Invalid quantity"
+                    return;
+                }
+
+                if (!currentPrice.IsBetween(MIN_PRICE, MAX_PRICE))
+                {
+                    g.ui.MsgBox(GameTool.LS("other500020102"), GameTool.LS("other500020100")); // "Error", "Invalid price"
+                    return;
+                }
+
+                // Tính phí ẩn danh
+                var hiddenFee = 0;
+                if (currentIsHidden)
+                {
+                    hiddenFee = (currentPrice * 0.1f).Parse<int>().FixValue(100, MAX_PRICE / 10);
+
+                    if (seller.GetUnitMoney() < hiddenFee)
+                    {
+                        g.ui.MsgBox(GameTool.LS("other500020100"), GameTool.LS("other500020104")); // "Error", "Not enough money for anonymous fee"
+                        return;
+                    }
+                }
+
+                // Tạo MarketItem
+                var marketItem = new MarketItem
+                {
+                    SellerId = seller.GetUnitId(),
+                    TownId = town.buildData.id,
+                    PropId = selectedProp.propsID,
+                    DataType = selectedProp.propsType,
+                    DataValues = selectedProp.values,
+                    Count = currentCount,
+                    SellerPrice = currentPrice,
+                    SoleId = selectedProp.soleID,
+                    CreateMonth = GameHelper.GetGameTotalMonth(),
+                    IsPartialItem = selectedProp.IsPartialItem() == CheckEnum.True,
+                    IsHidden = currentIsHidden
+                };
+
+                // Thêm vào MarketStack
+                MarketStack.Add(marketItem);
+
+                // Trừ phí ẩn danh
+                if (hiddenFee > 0)
+                {
+                    seller.AddUnitMoney(-hiddenFee);
+                    MapBuildPropertyEvent.AddBuildProperty(town, hiddenFee);
+                }
+
+                // Thông báo thành công
+                if (hiddenFee > 0)
+                {
+                    g.ui.MsgBox(GameTool.LS("other500020105"), // "Success"
+                        string.Format(GameTool.LS("other500020106"), // "Registered anonymous sale: {0} x{1} for {2} (fee: {3})"
+                            selectedProp.propsInfoBase.name,
+                            currentCount,
+                            currentPrice.ToString(ModConst.FORMAT_NUMBER),
+                            hiddenFee.ToString(ModConst.FORMAT_NUMBER)));
+                }
+                else
+                {
+                    g.ui.MsgBox(GameTool.LS("other500020105"), // "Success"
+                        string.Format(GameTool.LS("other500020103"), // "Registered sale: {0} x{1} for {2}"
+                            selectedProp.propsInfoBase.name,
+                            currentCount,
+                            currentPrice.ToString(ModConst.FORMAT_NUMBER)));
+                }
+
+                // Đóng UI
+                g.ui.CloseUI(UIType.PropSelect);
+                selectedProp = null;
+                IsOpenRegister = false;
+            }));
+
+            // Thêm text hướng dẫn
+            //uiCover.AddText(uiCover.MidCol, uiCover.MidRow + 12, GameTool.LS("other500020097")).Align(TextAnchor.MiddleCenter) // "Anonymous fee = 10% of selling price"
+            //    .SetWork(new UIItemWork
             //    {
-            //        try
+            //        UpdateAct = x =>
             //        {
-            //            var lowest = GetNegotiatingLowestValue(selectedMarketItem);
-            //            var market = selectedMarketItem.SellerPrice;
-            //            var highest = GetNegotiatingHighestValue(selectedMarketItem);
-            //            return new object[]
-            //                {
-            //                    (lowest?.TotalValue ?? 0).ToString(ModConst.FORMAT_NUMBER),
-            //                    market.ToString(ModConst.FORMAT_NUMBER),
-            //                    (highest?.TotalValue ?? 0).ToString(ModConst.FORMAT_NUMBER)
-            //                };
+            //            x.Active(hiddenToggle.Get().Parse<bool>());
             //        }
-            //        catch
-            //        {
-            //            return new object[] { 0, 0, 0, 0 };
-            //        }
-            //    }
-            //}).Pos(ui.btnOK.transform, 0, 40);
+            //    });
 
-            ////custom select call
-            //uiCover.UI.onCustomSelectCall = (ReturnAction<string, DataProps.PropsData>)((x) =>
-            //{
-            //    uiCover.UI.ClearSelectItem();
-            //    uiCover.UI.AddSelectProps(x);
-            //    uiCover.UI.UpdateUI();
-
-            //    selectedProp = x;
-            //    selectedMarketItem = GetMarketItem(seller, selectedProp);
-            //    return selectedProp.propsInfoBase.name;
-            //});
-            //uiCover.IsAutoUpdate = true;
-            //ui.UpdateUI();
-
+            uiCover.IsAutoUpdate = true;
+            ui.UpdateUI();
             IsOpenRegister = true;
         }
     }
