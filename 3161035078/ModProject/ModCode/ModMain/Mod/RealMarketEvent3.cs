@@ -1095,16 +1095,12 @@ namespace MOD_nE7UL2.Mod
                 // Thêm vào MarketStack
                 MarketStack.Add(marketItem);
 
-                // Trừ phí ẩn danh
-                if (hiddenFee > 0)
-                {
-                    seller.AddUnitMoney(-hiddenFee);
-                    MapBuildPropertyEvent.AddBuildProperty(town, hiddenFee);
-                }
-
                 // Thông báo thành công
                 if (hiddenFee > 0)
                 {
+                    // Trừ phí ẩn danh
+                    seller.AddUnitMoney(-hiddenFee);
+                    MapBuildPropertyEvent.AddBuildProperty(town, hiddenFee);
                     g.ui.MsgBox(GameTool.LS("other500020105"), // "Success"
                         string.Format(GameTool.LS("other500020106"), // "Registered anonymous sale: {0} x{1} for {2} (fee: {3})"
                             selectedProp.propsInfoBase.name,
