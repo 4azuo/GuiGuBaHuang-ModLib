@@ -1,4 +1,5 @@
-﻿using Newtonsoft.Json;
+﻿using MOD_nE7UL2.Mod;
+using Newtonsoft.Json;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -9,16 +10,23 @@ namespace MOD_nE7UL2.Object
         public string SellerId { get; set; }
         public string TownId { get; set; }
         public int PropId { get; set; }
-        public DataProps.PropsDataType DataType { get; set; }
-        public int[] DataValues { get; set; }
+        //public DataProps.PropsDataType DataType { get; set; }
+        //public string DataValues { get; set; }
         public int Count { get; set; }
         public int SellerPrice { get; set; }
         public string SoleId { get; set; }
         public int CreateMonth { get; set; }
         public bool IsPartialItem { get; set; }
         public bool IsHidden { get; set; } = false;
-        public List<NegotiatingDeal> Deals { get; set; } = new List<NegotiatingDeal>();
 
+        [JsonIgnore]
+        public List<NegotiatingDeal> Deals
+        {
+            get
+            {
+                return RealMarketEvent3.Instance.NegotiatingDeals.Where(x => x.TargetProp == this).ToList();
+            }
+        }
         [JsonIgnore]
         public WorldUnitBase Seller => g.world.unit.GetUnit(SellerId);
         [JsonIgnore]

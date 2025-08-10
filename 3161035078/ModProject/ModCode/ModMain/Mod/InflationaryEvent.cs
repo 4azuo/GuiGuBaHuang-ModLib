@@ -40,11 +40,23 @@ namespace MOD_nE7UL2.Mod
             if (GetHighestCost() > LIMIT)
             {
                 Corruption++;
+
+                //affect to player
                 var player = g.world.playerUnit;
-                player.SetUnitMoney(0);
+                player.SetUnitMoney(player.GetUnitMoney() / 10000);
                 player.RemoveStorageItem(ModLibConst.MONEY_PROP_ID);
                 DramaTool.OpenDrama(REACH_LIMIT_DRAMA);
 
+                //affect to npc
+                foreach (var wunit in g.world.unit.GetUnits())
+                {
+                    if (wunit != null && !wunit.isDie)
+                    {
+                        wunit.SetUnitMoney(wunit.GetUnitMoney() / 10000);
+                    }
+                }
+
+                //affect to town & school
                 foreach (var town in g.world.build.GetBuilds<MapBuildTown>())
                 {
                     MapBuildPropertyEvent.AddBuildProperty(town, -(MapBuildPropertyEvent.GetBuildProperty(town) * 0.8).Parse<long>());

@@ -496,7 +496,7 @@
 	{
 		"id": 500020092,
 		"key": "other500020092",
-		"ch|en|tc|kr": "Accept"
+		"ch|en|tc|kr": "Deals"
 	},
 	{
 		"id": 500020093,
@@ -577,5 +577,25 @@
 		"id": 500020108,
 		"key": "other500020108",
 		"ch|en|tc|kr": "Selling price: {0}"
-	}
+	},
+	{
+		"id": 500020109,
+		"key": "other500020109",
+		"ch|en|tc|kr": "No one is currently negotiating for this item.",
+	},
+	{
+		"id": 500020110,
+		"key": "other500020110",
+		"ch|en|tc|kr": "No valid buyers found.",
+	},
+	{
+		"id": 500020111,
+		"key": "other500020111",
+		"ch|en|tc|kr": "Deal List"
+	},
+	{
+		"id": 500020112,
+		"key": "other500020112",
+		"ch|en|tc|kr": "You are selling this item at {0}!"
+	},
 ]

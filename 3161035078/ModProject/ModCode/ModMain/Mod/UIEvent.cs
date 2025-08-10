@@ -184,7 +184,7 @@ namespace MOD_nE7UL2.Mod
             }
             else
             if (e.uiType.uiName == UIType.ArtifactInfo.uiName &&
-                (RealMarketEvent3.IsOpenMarket || g.ui.HasUI(UIType.PlayerInfo) || g.ui.HasUI(UIType.TownStorage) || (g.ui.HasUI(UIType.NPCInfo) && g.world.playerUnit.GetLuck(UnitTypeLuckEnum.Merchant.Value.Parse<int>()) != null)))
+                (g.ui.HasUI(UIType.PropSelect) || g.ui.HasUI(UIType.PlayerInfo) || g.ui.HasUI(UIType.TownStorage) || (g.ui.HasUI(UIType.NPCInfo) && g.world.playerUnit.GetLuck(UnitTypeLuckEnum.Merchant.Value.Parse<int>()) != null)))
             {
                 var uiArtifactInfo = g.ui.GetUI<UIArtifactInfo>(UIType.ArtifactInfo);
 
@@ -251,7 +251,7 @@ namespace MOD_nE7UL2.Mod
                 uiArtifactInfo_textRefineTitle.text = $"Refine ({refineLvl}):";
                 uiArtifactInfo_textRefineAdj1.text = $"+Atk: {UnitModifyHelper.GetRefineArtifactAdjAtk(uiArtifactInfo.shapeProp, refineLvl)}";
                 uiArtifactInfo_textRefineAdj2.text = $"+Def: {UnitModifyHelper.GetRefineArtifactAdjDef(uiArtifactInfo.shapeProp, refineLvl)}";
-                if (RealMarketEvent3.IsOpenSellingList && g.world.playerUnit.GetLuck(UnitTypeLuckEnum.Merchant.Value.Parse<int>()) == null)
+                if (g.ui.HasUI(UIType.PropSelect) && g.world.playerUnit.GetUnitProp(uiArtifactInfo.shapeProp.soleID) == null && g.world.playerUnit.GetLuck(UnitTypeLuckEnum.Merchant.Value.Parse<int>()) == null)
                 {
                     uiArtifactInfo_textRefineAdj3.text = GameTool.LS("other500020083");
                     uiArtifactInfo_textRefineAdj4.text = GameTool.LS("other500020083");
@@ -334,7 +334,7 @@ namespace MOD_nE7UL2.Mod
             }
             else
             if (e.uiType.uiName == UIType.PropInfo.uiName &&
-                 (RealMarketEvent3.IsOpenMarket || g.ui.HasUI(UIType.PlayerInfo) || g.ui.HasUI(UIType.TownStorage) || (g.ui.HasUI(UIType.NPCInfo) && g.world.playerUnit.GetLuck(UnitTypeLuckEnum.Merchant.Value.Parse<int>()) != null)))
+                 (g.ui.HasUI(UIType.PropSelect) || g.ui.HasUI(UIType.PlayerInfo) || g.ui.HasUI(UIType.TownStorage) || (g.ui.HasUI(UIType.NPCInfo) && g.world.playerUnit.GetLuck(UnitTypeLuckEnum.Merchant.Value.Parse<int>()) != null)))
             {
                 var uiPropInfo = g.ui.GetUI<UIPropInfo>(UIType.PropInfo);
                 if (uiPropInfo.propData.propsItem.IsRing() != null)
@@ -355,7 +355,7 @@ namespace MOD_nE7UL2.Mod
 
                     uiPropInfo_textRefineTitle.text = $"Refine ({refineLvl}):";
                     uiPropInfo_textRefineAdj1.text = $"+Hp: {UnitModifyHelper.GetRefineRingAdjHp(uiPropInfo.unit.GetDynProperty(UnitDynPropertyEnum.HpMax).baseValue, uiPropInfo.propData, refineLvl)}";
-                    if (RealMarketEvent3.IsOpenSellingList && g.world.playerUnit.GetLuck(UnitTypeLuckEnum.Merchant.Value.Parse<int>()) == null)
+                    if (g.ui.HasUI(UIType.PropSelect) && g.world.playerUnit.GetUnitProp(uiPropInfo.propData.soleID) == null && g.world.playerUnit.GetLuck(UnitTypeLuckEnum.Merchant.Value.Parse<int>()) == null)
                     {
                         uiPropInfo_textRefineAdj2.text = GameTool.LS("other500020083");
                         uiPropInfo_textRefineAdj3.text = GameTool.LS("other500020083");
@@ -443,7 +443,7 @@ namespace MOD_nE7UL2.Mod
             var uiPropInfo = g.ui.GetUI<UIPropInfo>(UIType.PropInfo);
 
             if (uiPropInfo.IsExists() &&
-                (RealMarketEvent3.IsOpenMarket || g.ui.HasUI(UIType.PlayerInfo) || g.ui.HasUI(UIType.TownStorage) || (g.ui.HasUI(UIType.NPCInfo) && g.world.playerUnit.GetLuck(UnitTypeLuckEnum.Merchant.Value.Parse<int>()) != null)))
+                (g.ui.HasUI(UIType.PropSelect) || g.ui.HasUI(UIType.PlayerInfo) || g.ui.HasUI(UIType.TownStorage) || (g.ui.HasUI(UIType.NPCInfo) && g.world.playerUnit.GetLuck(UnitTypeLuckEnum.Merchant.Value.Parse<int>()) != null)))
             {
                 if (uiPropInfo.propData.propsItem.IsRing() != null)
                 {
@@ -470,7 +470,7 @@ namespace MOD_nE7UL2.Mod
             }
 
             if (uiArtifactInfo.IsExists() &&
-                (RealMarketEvent3.IsOpenMarket || g.ui.HasUI(UIType.PlayerInfo) || g.ui.HasUI(UIType.TownStorage) || (g.ui.HasUI(UIType.NPCInfo) && g.world.playerUnit.GetLuck(UnitTypeLuckEnum.Merchant.Value.Parse<int>()) != null)))
+                (g.ui.HasUI(UIType.PropSelect) || g.ui.HasUI(UIType.PlayerInfo) || g.ui.HasUI(UIType.TownStorage) || (g.ui.HasUI(UIType.NPCInfo) && g.world.playerUnit.GetLuck(UnitTypeLuckEnum.Merchant.Value.Parse<int>()) != null)))
             {
                 uiArtifactInfo_textBasicTitle.Pos(uiArtifactInfo.textGrade_En.gameObject, 0, -20);
                 uiArtifactInfo_textBasicAdj1.Pos(uiArtifactInfo.textGrade_En.gameObject, 5, -35);
