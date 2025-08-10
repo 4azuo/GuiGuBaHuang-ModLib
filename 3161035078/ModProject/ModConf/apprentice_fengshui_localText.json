@@ -2,22 +2,34 @@
 	{
 		"id": "420042001",
 		"key": "apprentice420041001",
-		"ch": "一品风水","en": "Feng Shui Lvl-1"
+		"ch": "一品风水",
+		"en": "Feng Shui Lvl-1",
+		"kr": "1급 풍수",
+		"tc": "一品風水"
 	},
 	{
 		"id": "420043001",
 		"key": "apprentice420041001desc",
-		"ch": "+2%灵力","en": "+2% Max MP"
+		"ch": "+2%灵力",
+		"en": "+2% Max MP",
+		"kr": "+2% 최대 영력",
+		"tc": "+2%靈力"
 	},
 	{
 		"id": "420042002",
 		"key": "apprentice420041002",
-		"ch": "二品风水","en": "Feng Shui Lvl-2"
+		"ch": "二品风水",
+		"en": "Feng Shui Lvl-2",
+		"kr": "2급 풍수",
+		"tc": "二品風水"
 	},
 	{
 		"id": "420043002",
 		"key": "apprentice420041002desc",
-		"ch": "+4%灵力","en": "+4% Max MP"
+		"ch": "+4%灵力",
+		"en": "+4% Max MP",
+		"kr": "+4% 최대 영력",
+		"tc": "+4%靈力"
 	},
 	{
 		"id": "420042003",

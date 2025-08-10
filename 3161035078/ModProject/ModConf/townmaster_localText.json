@@ -3,19 +3,25 @@
 		"id": "420041110",
 		"key": "townmaster420041110desc",
 		"ch": "townmaster420041110desc",
-		"en|kr|tc": "townmaster420041110desc"
+		"en": "townmaster420041110desc",
+		"kr": "townmaster420041110desc",
+		"tc": "townmaster420041110desc"
 	},
 	{
 		"id": "420041111",
 		"key": "townmaster420041111",
 		"ch": "城主",
-		"en|kr|tc": "Town Master"
+		"en": "Town Master",
+		"kr": "성주",
+		"tc": "城主"
 	},
 	{
 		"id": "420041112",
 		"key": "townmaster420041112",
 		"ch": "守衛",
-		"en|kr|tc": "Town Guardian"
+		"en": "Town Guardian",
+		"kr": "수비병",
+		"tc": "守衛"
 	},
 	{
 		"id": "420041113",

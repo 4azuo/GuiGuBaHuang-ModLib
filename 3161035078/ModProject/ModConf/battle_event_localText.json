@@ -3,13 +3,17 @@
 		"id": "480110100",
 		"key": "battleevent480110100",
 		"ch": "哈哈哈！战利品是我的！",
-		"en|kr|tc": "Ha ha ha! The loot is mine! All of it!"
+		"en": "Ha ha ha! The loot is mine! All of it!",
+		"kr": "하하하! 전리품은 내 것이다! 모두 다!",
+		"tc": "哈哈哈！戰利品是我的！"
 	},
 	{
 		"id": "480110200",
 		"key": "battleevent480110200",
 		"ch": "让我来帮助你",
-		"en|kr|tc": "Let me help!"
+		"en": "Let me help!",
+		"kr": "내가 도와줄게!",
+		"tc": "讓我來幫助你"
 	},
 	{
 		"id": "480110300",

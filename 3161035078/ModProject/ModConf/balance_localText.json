@@ -3,12 +3,18 @@
 		"__name": "Old But Strong",
 		"id": "420700044",
 		"key": "balance420700044",
-		"ch": "老當益壯","en": "Old But Strong"
+		"ch": "老當益壯",
+		"en": "Old But Strong",
+		"kr": "노당익장",
+		"tc": "老當益壯"
 	},
 	{
 		"__name": "Old But Strong",
 		"id": "421700044",
 		"key": "balance420700044desc",
-		"ch": "每年增加防御+2,体力+50","en": "Your DEF+2, HP+50 every year."
+		"ch": "每年增加防御+2,体力+50",
+		"en": "Your DEF+2, HP+50 every year.",
+		"kr": "매년 방어력+2, 체력+50 증가",
+		"tc": "每年增加防禦+2,體力+50"
 	}
 ]

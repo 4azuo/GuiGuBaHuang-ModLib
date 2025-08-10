@@ -3,19 +3,25 @@
 		"id": "420010100",
 		"key": "unitType420010100",
 		"ch": "增加力量",
-		"en|tc|kr": "Power Up"
+		"en": "Power Up",
+		"kr": "힘 증가",
+		"tc": "增加力量"
 	},
 	{
 		"id": "420010200",
 		"key": "unitType420010200",
 		"ch": "增加速度",
-		"en|tc|kr": "Speed Up"
+		"en": "Speed Up",
+		"kr": "속도 증가",
+		"tc": "增加速度"
 	},
 	{
 		"id": "420010300",
 		"key": "unitType420010300",
 		"ch": "道教",
-		"en|tc|kr": "Taoist"
+		"en": "Taoist",
+		"kr": "도교",
+		"tc": "道教"
 	},
 	{
 		"id": "420010400",
