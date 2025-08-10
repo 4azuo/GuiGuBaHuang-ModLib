@@ -2,22 +2,34 @@
 	{
 		"id": "420052001",
 		"key": "apprentice420051001",
-		"ch": "一品药师","en": "Herbology Lvl-1"
+		"ch": "一品药师",
+		"en": "Herbology Lvl-1",
+		"kr": "1급 약사",
+		"tc": "一品藥師"
 	},
 	{
 		"id": "420053001",
 		"key": "apprentice420051001desc",
-		"ch": "+2%体力","en": "+2% Max HP"
+		"ch": "+2%体力",
+		"en": "+2% Max HP",
+		"kr": "+2% 최대 체력",
+		"tc": "+2%體力"
 	},
 	{
 		"id": "420052002",
 		"key": "apprentice420051002",
-		"ch": "二品药师","en": "Herbology Lvl-2"
+		"ch": "二品药师",
+		"en": "Herbology Lvl-2",
+		"kr": "2급 약사",
+		"tc": "二品藥師"
 	},
 	{
 		"id": "420053002",
 		"key": "apprentice420051002desc",
-		"ch": "+4%体力","en": "+4% Max HP"
+		"ch": "+4%体力",
+		"en": "+4% Max HP",
+		"kr": "+4% 최대 체력",
+		"tc": "+4%體力"
 	},
 	{
 		"id": "420052003",

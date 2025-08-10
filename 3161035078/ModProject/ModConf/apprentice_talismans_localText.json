@@ -2,22 +2,34 @@
 	{
 		"id": "420032001",
 		"key": "apprentice420031001",
-		"ch": "一品画符","en": "Talismans Lvl-1"
+		"ch": "一品画符",
+		"en": "Talismans Lvl-1",
+		"kr": "1급 화부사",
+		"tc": "一品畫符"
 	},
 	{
 		"id": "420033001",
 		"key": "apprentice420031001desc",
-		"ch": "+5%体力","en": "+5% Max MP"
+		"ch": "+5%体力",
+		"en": "+5% Max MP",
+		"kr": "+5% 최대 영력",
+		"tc": "+5%體力"
 	},
 	{
 		"id": "420032002",
 		"key": "apprentice420031002",
-		"ch": "二品画符","en": "Talismans Lvl-2"
+		"ch": "二品画符",
+		"en": "Talismans Lvl-2",
+		"kr": "2급 화부사",
+		"tc": "二品畫符"
 	},
 	{
 		"id": "420033002",
 		"key": "apprentice420031002desc",
-		"ch": "+10%体力","en": "+10% Max MP"
+		"ch": "+10%体力",
+		"en": "+10% Max MP",
+		"kr": "+10% 최대 영력",
+		"tc": "+10%體力"
 	},
 	{
 		"id": "420032003",

@@ -2,22 +2,34 @@
 	{
 		"id": "444441001",
 		"key": "slicelife444441001",
-		"ch": "入世修行五年","en": "Slice of Life 1"
+		"ch": "入世修行五年",
+		"en": "Slice of Life 1",
+		"kr": "입세수행 5년",
+		"tc": "入世修行五年"
 	},
 	{
 		"id": "444442001",
 		"key": "slicelife444441001desc",
-		"ch": "+25% 体力, +6% 灵力","en": "+25% Max HP, +6% Max MP"
+		"ch": "+25% 体力, +6% 灵力",
+		"en": "+25% Max HP, +6% Max MP",
+		"kr": "+25% 최대 체력, +6% 최대 영력",
+		"tc": "+25% 體力, +6% 靈力"
 	},
 	{
 		"id": "444443001",
 		"key": "taskName444443001",
-		"ch": "入世修行五年","en": "Slice of Life 1"
+		"ch": "入世修行五年",
+		"en": "Slice of Life 1",
+		"kr": "입세수행 5년",
+		"tc": "入世修行五年"
 	},
 	{
 		"id": "444443101",
 		"key": "taskDesc444443001",
-		"ch": "五年没有参加任何战斗。","en": "Going 5 years without engaging in any battles."
+		"ch": "五年没有参加任何战斗。",
+		"en": "Going 5 years without engaging in any battles.",
+		"kr": "5년간 어떤 전투에도 참여하지 않았습니다.",
+		"tc": "五年沒有參加任何戰鬥。"
 	},
 	
 	

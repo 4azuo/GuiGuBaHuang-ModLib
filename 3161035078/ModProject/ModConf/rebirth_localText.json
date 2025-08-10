@@ -3,19 +3,25 @@
 		"id": "420102001",
 		"key": "rebirth420101001",
 		"ch": "破繭重生",
-		"en|kr|tc": "Rebirth 1"
+		"en": "Rebirth 1",
+		"kr": "파고중생 1",
+		"tc": "破繭重生"
 	},
 	{
 		"id": "420103001",
 		"key": "rebirth420101001desc",
 		"ch": "+5%体力",
-		"en|kr|tc": "+5% Max HP"
+		"en": "+5% Max HP",
+		"kr": "+5% 최대 체력",
+		"tc": "+5%體力"
 	},
 	{
 		"id": "420102002",
 		"key": "rebirth420101002",
 		"ch": "重生之二",
-		"en|kr|tc": "Rebirth 2"
+		"en": "Rebirth 2",
+		"kr": "중생지이 2",
+		"tc": "重生之二"
 	},
 	{
 		"id": "420103002",

@@ -3,49 +3,65 @@
 		"id": 500020000,
 		"key": "other500020000",
 		"ch": "功勋兑换",
-		"en|tc|kr": "Exchange Contribution"
+		"en": "Exchange Contribution",
+		"kr": "공헌도 교환",
+		"tc": "功勳兌換"
 	},
 	{
 		"id": 500020001,
 		"key": "other500020001",
 		"ch": "選取",
-		"en|tc|kr": "Select Item"
+		"en": "Select Item",
+		"kr": "아이템 선택",
+		"tc": "選取"
 	},
 	{
 		"id": 500020002,
 		"key": "other500020002",
 		"ch": "選擇",
-		"en|tc|kr": "Select materials"
+		"en": "Select materials",
+		"kr": "재료 선택",
+		"tc": "選擇"
 	},
 	{
 		"id": 500020003,
 		"key": "other500020003",
 		"ch": "委託",
-		"en|tc|kr": "Commission"
+		"en": "Commission",
+		"kr": "위탁",
+		"tc": "委託"
 	},
 	{
 		"id": 500020004,
 		"key": "other500020004",
 		"ch": "费用：商会会长及城池守护者免费",
-		"en|tc|kr": "Fee: free for merchant-masters and guardians"
+		"en": "Fee: free for merchant-masters and guardians",
+		"kr": "수수료: 상회 회장 및 도시 수호자는 무료",
+		"tc": "費用：商會會長及城池守護者免費"
 	},
 	{
 		"id": 500020005,
 		"key": "other500020005",
 		"ch": "掌管",
-		"en|tc|kr": "Town Manage"
+		"en": "Town Manage",
+		"kr": "도시 관리",
+		"tc": "掌管"
 	},
 	{
 		"id": 500020006,
 		"key": "other500020006",
 		"ch": "升级",
-		"en|tc|kr": "Up Grade"
+		"en": "Up Grade",
+		"kr": "업그레이드",
+		"tc": "升級"
 	},
 	{
 		"id": 500020007,
 		"key": "other500020007",
 		"ch": "汝确信要遣散此人吗？",
-		"en|tc|kr": "Are you sure about dismissing this person?"
+		"en": "Are you sure about dismissing this person?",
+		"kr": "이 사람을 해고하시겠습니까?",
+		"tc": "汝確信要遣散此人嗎？"
 	},
 	{
 		"id": 500020008,

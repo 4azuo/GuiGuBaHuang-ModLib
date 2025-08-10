@@ -3,24 +3,32 @@
 		"id": "1000011000",
 		"key": "skill1000011000",
 		"ch": "混沌之境",
-		"en|kr|tc": "Gravity Well"
+		"en": "Gravity Well",
+		"kr": "혼돈의 경계",
+		"tc": "混沌之境"
 	},
 	{
 		"id": "1000012000",
 		"key": "skill1000012000",
 		"ch": "创建一个圆圈。没有人能逃脱。",
-		"en|kr|tc": "Create a circle. No one can escape."
+		"en": "Create a circle. No one can escape.",
+		"kr": "원을 만듭니다. 아무도 탈출할 수 없습니다.",
+		"tc": "創建一個圓圈。沒有人能逃脫。"
 	},
 	{
 		"id": "1000011001",
 		"key": "skill1000011001",
 		"ch": "天外飛仙",
-		"en|kr|tc": "Celestial Swordfall"
+		"en": "Celestial Swordfall",
+		"kr": "천외비선",
+		"tc": "天外飛仙"
 	},
 	{
 		"id": "1000012001",
 		"key": "skill1000012001",
 		"ch": "無數把劍從天而降，劍如雨下，讓對方措手不及",
-		"en|kr|tc": "Create rain of swords."
+		"en": "Create rain of swords.",
+		"kr": "무수한 검이 하늘에서 내려와 검우를 만들어 상대를 당황하게 합니다.",
+		"tc": "無數把劍從天而降，劍如雨下，讓對方措手不及"
 	}
 ]

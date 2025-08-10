@@ -3,19 +3,25 @@
 		"id": "420041120",
 		"key": "team420041120desc",
 		"ch": "team420041120desc",
-		"en|tc|kr": "team420041120desc"
+		"en": "team420041120desc",
+		"kr": "team420041120desc",
+		"tc": "team420041120desc"
 	},
 	{
 		"id": "420041121",
 		"key": "team420041121",
 		"ch": "团队",
-		"en|tc|kr": "Team"
+		"en": "Team",
+		"kr": "팀",
+		"tc": "團隊"
 	},
 	{
 		"id": "420041123",
 		"key": "team420041123drama",
 		"ch": "可否一同上路？",
-		"en|tc|kr": "Do you wanna travel together?"
+		"en": "Do you wanna travel together?",
+		"kr": "함께 길을 떠날까요?",
+		"tc": "可否一同上路？"
 	},
 	{
 		"id": "420041124",
