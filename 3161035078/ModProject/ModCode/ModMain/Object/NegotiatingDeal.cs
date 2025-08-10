@@ -19,13 +19,7 @@ namespace MOD_nE7UL2.Object
             {
                 if (Items?.Count == 0)
                     return 0;
-                return Items.Sum(x =>
-                {
-                    if (x.NegotiatingPropSoleId == null)
-                        return x.Count;
-                    else
-                        return x.Value;
-                });
+                return Items.Sum(x => x.Value);
             }
         }
         [JsonIgnore]
@@ -42,7 +36,6 @@ namespace MOD_nE7UL2.Object
         {
             BuyerId = buyerId;
             TargetProp = i;
-            TargetProp.Deals.Add(this);
         }
     }
 }
