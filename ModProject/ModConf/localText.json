@@ -1,8 +1,47 @@
 [
-	{ "id": "999990000", "key": "libtxt999990000", "ch": "警告", "en|tc|kr": "Warning" },
-	{ "id": "999990001", "key": "libtxt999990001", "ch": "ModLib 的用户界面针对 16:9 屏幕进行了优化。", "en|tc|kr": "ModLib's UI is supporting on screen ratio 16:9." },
-	{ "id": "999990002", "key": "libtxt999990002", "ch|en|tc|kr": "It will run a benchmark to initialize RAM for the game." },
-	{ "id": "999990003", "key": "libtxt999990003", "ch|en|tc|kr": "You have to reset the game!" },
-	{ "id": "999990004", "key": "libtxt999990004", "ch|en|tc|kr": "This is the first time. Do you wanna run a benchmark to initialize RAM for the game?" },
-	{ "id": "999990005", "key": "libtxt999990005", "ch|en|tc|kr": "DEFAULT_DRAMA_OPT" },
+	{
+		"id": "999990000",
+		"key": "libtxt999990000",
+		"ch": "警告",
+		"en": "Warning",
+		"tc": "警告",
+		"kr": "경고"
+	},
+	{
+		"id": "999990001",
+		"key": "libtxt999990001",
+		"ch": "ModLib 的用户界面针对 16:9 屏幕进行了优化。",
+		"en": "ModLib's UI is optimized for 16:9 screen ratio.",
+		"tc": "ModLib 的用戶界面針對 16:9 螢幕進行了優化。",
+		"kr": "ModLib의 UI는 16:9 화면 비율에 최적화되어 있습니다."
+	},
+	{
+		"id": "999990002",
+		"key": "libtxt999990002",
+		"ch": "它将运行基准测试来为游戏初始化内存。",
+		"en": "It will run a benchmark to initialize RAM for the game.",
+		"tc": "它將運行基準測試來為遊戲初始化記憶體。",
+		"kr": "게임을 위한 RAM을 초기화하기 위해 벤치마크를 실행합니다."
+	},
+	{
+		"id": "999990003",
+		"key": "libtxt999990003",
+		"ch": "你必须重启游戏！",
+		"en": "You have to reset the game!",
+		"tc": "你必須重啟遊戲！",
+		"kr": "게임을 재시작해야 합니다!"
+	},
+	{
+		"id": "999990004",
+		"key": "libtxt999990004",
+		"ch": "这是第一次。你想运行基准测试来为游戏初始化内存吗？",
+		"en": "This is the first time. Do you wanna run a benchmark to initialize RAM for the game?",
+		"tc": "這是第一次。你想運行基準測試來為遊戲初始化記憶體嗎？",
+		"kr": "처음입니다. 게임용 RAM을 초기화하기 위해 벤치마크를 실행하시겠습니까?"
+	},
+	{
+		"id": "999990005",
+		"key": "libtxt999990005",
+		"ch|en|tc|kr": "DEFAULT_DRAMA_OPT"
+	}
 ]
