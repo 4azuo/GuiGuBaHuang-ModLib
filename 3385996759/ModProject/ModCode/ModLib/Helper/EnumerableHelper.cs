@@ -16,6 +16,36 @@ public static class EnumerableHelper
         }
     }
 
+    public static IEnumerable<TSource> DistinctBySafe<TSource, TKey>(this IEnumerable<TSource> source, Func<TSource, TKey> keySelector)
+    {
+        if (source == null) yield break;
+
+        HashSet<TKey> seenKeys = new HashSet<TKey>();
+
+        foreach (var element in source)
+        {
+            if (element == null) continue;
+
+            TKey key;
+            try
+            {
+                key = keySelector(element);
+            }
+            catch (NullReferenceException)
+            {
+                // Nếu keySelector bị null reference → bỏ qua
+                continue;
+            }
+
+            if (key == null) continue;
+
+            if (seenKeys.Add(key))
+            {
+                yield return element;
+            }
+        }
+    }
+
     public static void AddRange<T>(this Il2CppSystem.Collections.Generic.List<T> lst, Il2CppSystem.Collections.Generic.List<T> addedlst)
     {
         foreach (var item in addedlst)
