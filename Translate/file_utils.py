@@ -6,7 +6,6 @@ Utilities để làm việc với files và directories
 
 import os
 import glob
-import shutil
 from typing import List, Optional
 from pathlib import Path
 
@@ -57,7 +56,7 @@ class FileUtils:
     def is_locale_file(file_path: str) -> bool:
         """
         Kiểm tra xem file có phải là locale file không
-        Locale file nằm trong thư mục con của ModConf
+        File locale là file nằm trong child folder của ModConf
         
         Args:
             file_path: Đường dẫn tới file
@@ -68,22 +67,18 @@ class FileUtils:
         try:
             # Normalize path for cross-platform compatibility
             normalized_path = os.path.normpath(file_path)
-            parts = normalized_path.split(os.sep)
             
-            # Tìm vị trí của ModConf
-            modconf_index = None
-            for i in range(len(parts) - 1, -1, -1):
-                if parts[i] == "ModConf":
-                    modconf_index = i
-                    break
+            # Lấy thư mục cha của file
+            parent_dir = os.path.dirname(normalized_path)
             
-            if modconf_index is None:
-                return False
+            # Lấy thư mục cha của thư mục cha (should be ModConf)
+            grandparent_dir = os.path.dirname(parent_dir)
             
-            # Nếu file nằm ngay trong ModConf thì là main file
-            # Nếu file nằm trong thư mục con của ModConf thì là locale file
-            file_depth = len(parts) - modconf_index - 1
-            return file_depth > 1
+            # Kiểm tra xem thư mục ông/bà có phải là ModConf không
+            grandparent_name = os.path.basename(grandparent_dir)
+            
+            # Nếu thư mục ông/bà là ModConf thì file này nằm trong child folder của ModConf
+            return grandparent_name == "ModConf"
             
         except Exception:
             return False
@@ -92,6 +87,7 @@ class FileUtils:
     def get_locale_language(file_path: str) -> Optional[str]:
         """
         Lấy mã ngôn ngữ từ đường dẫn locale file
+        Mã ngôn ngữ là tên folder locale
         
         Args:
             file_path: Đường dẫn tới locale file
@@ -103,22 +99,13 @@ class FileUtils:
             return None
         
         try:
-            normalized_path = os.path.normpath(file_path)
-            parts = normalized_path.split(os.sep)
+            # Lấy thư mục cha của file (thư mục ngôn ngữ)
+            locale_dir = os.path.dirname(file_path)
             
-            # Tìm vị trí của ModConf
-            modconf_index = None
-            for i in range(len(parts) - 1, -1, -1):
-                if parts[i] == "ModConf":
-                    modconf_index = i
-                    break
+            # Tên thư mục chính là mã ngôn ngữ
+            language_code = os.path.basename(locale_dir)
             
-            if modconf_index is None or modconf_index + 1 >= len(parts):
-                return None
-            
-            # Thư mục ngay sau ModConf là mã ngôn ngữ
-            language_code = parts[modconf_index + 1]
-            return language_code
+            return language_code if language_code else None
             
         except Exception:
             return None
@@ -127,6 +114,7 @@ class FileUtils:
     def find_main_file(locale_file_path: str) -> Optional[str]:
         """
         Tìm file main tương ứng với locale file
+        Tìm file có tên tương tự trong thư mục cha (parent folder)
         
         Args:
             locale_file_path: Đường dẫn tới locale file
@@ -138,58 +126,26 @@ class FileUtils:
             return None
         
         try:
-            normalized_path = os.path.normpath(locale_file_path)
-            parts = normalized_path.split(os.sep)
+            # Lấy tên file từ locale file
+            filename = os.path.basename(locale_file_path)
             
-            # Tìm vị trí của ModConf
-            modconf_index = None
-            for i in range(len(parts) - 1, -1, -1):
-                if parts[i] == "ModConf":
-                    modconf_index = i
-                    break
+            # Lấy thư mục cha của locale file (thư mục ngôn ngữ)
+            locale_dir = os.path.dirname(locale_file_path)
             
-            if modconf_index is None:
-                return None
+            # Lấy thư mục cha của thư mục ngôn ngữ (ModConf)
+            parent_dir = os.path.dirname(locale_dir)
             
-            # Tạo đường dẫn main file bằng cách bỏ thư mục ngôn ngữ
-            main_parts = parts[:modconf_index + 1] + parts[modconf_index + 2:]
-            main_file_path = os.sep.join(main_parts)
+            # Tạo đường dẫn tới main file có cùng tên trong thư mục cha
+            main_file_path = os.path.join(parent_dir, filename)
             
-            if os.path.exists(main_file_path):
+            # Kiểm tra xem file có tồn tại không
+            if os.path.exists(main_file_path) and os.path.isfile(main_file_path):
                 return main_file_path
             
             return None
             
         except Exception:
             return None
-    
-    @staticmethod
-    def clean_old_locale_directories(modconf_path: str, target_languages: List[str] = None) -> int:
-        """
-        Xóa các thư mục locale cũ
-        
-        Args:
-            modconf_path: Đường dẫn tới thư mục ModConf
-            target_languages: Danh sách ngôn ngữ cần xóa
-            
-        Returns:
-            Số thư mục đã xóa
-        """
-        if target_languages is None:
-            target_languages = DEFAULT_TARGET_LANGUAGES
-        
-        cleaned_count = 0
-        
-        for lang in target_languages:
-            lang_dir = os.path.join(modconf_path, lang)
-            if os.path.exists(lang_dir) and os.path.isdir(lang_dir):
-                try:
-                    shutil.rmtree(lang_dir)
-                    cleaned_count += 1
-                except Exception as e:
-                    print(f"Lỗi xóa {lang_dir}: {e}")
-        
-        return cleaned_count
     
     @staticmethod
     def ensure_directory_exists(file_path: str) -> None:
@@ -229,32 +185,3 @@ class FileUtils:
             language=language,
             main_file_path=main_file_path
         )
-    
-    @staticmethod
-    def create_locale_file_path(main_file_path: str, language: str) -> str:
-        """
-        Tạo đường dẫn cho locale file từ main file
-        
-        Args:
-            main_file_path: Đường dẫn tới main file
-            language: Mã ngôn ngữ
-            
-        Returns:
-            Đường dẫn tới locale file
-        """
-        normalized_path = os.path.normpath(main_file_path)
-        parts = normalized_path.split(os.sep)
-        
-        # Tìm vị trí của ModConf
-        modconf_index = None
-        for i in range(len(parts) - 1, -1, -1):
-            if parts[i] == "ModConf":
-                modconf_index = i
-                break
-        
-        if modconf_index is None:
-            raise ValueError(f"Không tìm thấy ModConf trong đường dẫn: {main_file_path}")
-        
-        # Chèn thư mục ngôn ngữ sau ModConf
-        locale_parts = parts[:modconf_index + 1] + [language] + parts[modconf_index + 1:]
-        return os.sep.join(locale_parts)

@@ -165,9 +165,26 @@ Chỉnh sửa `DEFAULT_TARGET_LANGUAGES` trong `consts.py`:
 DEFAULT_TARGET_LANGUAGES = ['vi', 'es', 'fr', 'de', 'ru', 'ja', 'la', 'pt']  # Thêm Portuguese
 ```
 
+### Thêm text cần bỏ qua dịch
+
+Hệ thống có thể bỏ qua dịch các text cụ thể. Để thêm text mới cần skip:
+
+```python
+# Trong consts.py
+SKIP_TRANSLATION_TEXTS = [
+    "DEFAULT_DRAMA_OPT",
+    "YOUR_TEXT_HERE"  # Thêm text mới cần bỏ qua
+]
+```
+
+**Các text được skip mặc định:**
+- `DEFAULT_DRAMA_OPT` - Text dành cho drama option system
+- Text chỉ chứa số và ký tự toán học (vd: `+100`, `50%`)
+- Text quá ngắn (≤2 ký tự)
+
 ---
 
-**Version**: 2.0 | **Updated**: August 2025  
+**Version**: 2.1 | **Updated**: August 2025  
 **Dependencies**: `deep-translator>=1.9.0`
 
 ## 📄 License

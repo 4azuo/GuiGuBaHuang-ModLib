@@ -8,7 +8,7 @@ import time
 import re
 from deep_translator import GoogleTranslator
 
-from consts import TRANSLATION_CONFIG, SKIP_TRANSLATION_PATTERNS
+from consts import TRANSLATION_CONFIG, SKIP_TRANSLATION_PATTERNS, SKIP_TRANSLATION_TEXTS
 from data_types import ProcessingStats, TranslationConfig
 
 class TranslationService:
@@ -22,6 +22,10 @@ class TranslationService:
         """Dịch text sang ngôn ngữ đích"""
         try:
             if not text or text.strip() == "":
+                return text
+            
+            # Skip nếu text nằm trong danh sách cần bỏ qua
+            if text.strip() in SKIP_TRANSLATION_TEXTS:
                 return text
             
             # Skip nếu text khớp với pattern

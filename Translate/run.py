@@ -37,6 +37,9 @@ def parse_target_languages(languages_str: str) -> List[str]:
 
 def main():
     """Hàm main"""
+    # Clear console trước khi bắt đầu
+    os.system('cls' if os.name == 'nt' else 'clear')
+    
     parser = argparse.ArgumentParser(
         description='Script xử lý và dịch file localText.json',
         formatter_class=argparse.RawDescriptionHelpFormatter,
