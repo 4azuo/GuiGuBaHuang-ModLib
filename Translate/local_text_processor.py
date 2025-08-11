@@ -92,7 +92,7 @@ class LocalTextProcessor:
                     "Đang xử lý main files...", 
                     create_file_progress_config(UI_ICONS['file'])
                 ) as progress:
-                    for i, file_path in enumerate(main_files):
+                    for file_path in main_files:
                         filename = os.path.basename(file_path)
                         # Cắt ngắn filename cho progress display
                         display_name = filename[:25] + "..." if len(filename) > 25 else filename
@@ -103,34 +103,31 @@ class LocalTextProcessor:
                             self.stats.processed_count += 1
             
             # Bước 2: Xử lý locale files
-            if file_type in ["locale", "both"]:
-                if main_files:
-                    print_section(f"Tạo lại locale files từ {len(main_files)} main file")
-                    
-                    with ProgressContext(
-                        len(main_files), 
-                        "Đang tạo lại locale files...", 
-                        create_file_progress_config(UI_ICONS['globe'])
-                    ) as progress:
-                        for file_path in main_files:
-                            filename = os.path.basename(file_path)
-                            # Cắt ngắn filename cho progress display
-                            display_name = filename[:25] + "..." if len(filename) > 25 else filename
-                            progress.update(1, f"Xử lý {display_name}")
+            if file_type in ["locale", "both"] and main_files:
+                print_section(f"Tạo lại locale files từ {len(main_files)} main file")
+                
+                with ProgressContext(
+                    len(main_files), 
+                    "Đang tạo lại locale files...", 
+                    create_file_progress_config(UI_ICONS['file'])
+                ) as progress:
+                    for file_path in main_files:
+                        filename = os.path.basename(file_path)
+                        # Cắt ngắn filename cho progress display
+                        display_name = filename[:25] + "..." if len(filename) > 25 else filename
+                        progress.update(1, f"Xử lý {display_name}")
 
-                            main_filename = os.path.basename(file_path)
-                            for lang in self.config.target_languages:
-                                locale_dir = os.path.join(modconf_path, lang)
-                                locale_file_path = os.path.join(locale_dir, main_filename)
+                        main_filename = os.path.basename(file_path)
+                        for lang in self.config.target_languages:
+                            locale_dir = os.path.join(modconf_path, lang)
+                            locale_file_path = os.path.join(locale_dir, main_filename)
 
-                                # Xóa locale files cũ cho file này
-                                self.cleanup_locale_file(locale_file_path)
-                                
-                                # Tạo lại locale files từ main file
-                                if self.process_locale_file(file_path, locale_file_path):
-                                    self.stats.processed_count += 1
-                else:
-                    print_warning("Không tìm thấy main file nào để tạo locale files!")
+                            # Xóa locale files cũ cho file này
+                            self.cleanup_locale_file(locale_file_path)
+                            
+                            # Tạo lại locale files từ main file
+                            if self.process_locale_file(file_path, locale_file_path):
+                                self.stats.processed_count += 1
         
         except KeyboardInterrupt:
             print_warning("Quá trình xử lý đã bị dừng bởi người dùng")
@@ -153,7 +150,6 @@ class LocalTextProcessor:
     
     def process_main_file(self, file_path: str) -> bool:
         """Xử lý main file và dịch các ngôn ngữ trong đó"""
-        from file_utils import FileUtils
         
         try:
             filename = os.path.basename(file_path)
@@ -196,6 +192,8 @@ class LocalTextProcessor:
             
             # Hoàn thành progress bar
             progress_manager.finish_active(f"Hoàn thành dịch main file")
+
+            return True
             
         except KeyboardInterrupt:
             progress_manager.cleanup()
@@ -252,6 +250,8 @@ class LocalTextProcessor:
             
             # Hoàn thành progress bar
             progress_manager.finish_active(f"Hoàn thành {target_lang}")
+
+            return True
                 
         except KeyboardInterrupt:
             progress_manager.cleanup()

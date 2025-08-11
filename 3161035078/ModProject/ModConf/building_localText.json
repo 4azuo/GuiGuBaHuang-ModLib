@@ -1,12 +1,82 @@
 [
-	{ "id": 500030000, "key": "building500030000", "ch": "移居", "en": "Town Transfer", "kr": "마을 이주", "tc": "移居" },
-	{ "id": 500030001, "key": "building500030001", "ch": "拍卖会", "en": "Town Auction", "kr": "마을 경매", "tc": "拍賣會" },
-	{ "id": 500030002, "key": "building500030002", "ch": "工坊", "en": "Town Factory", "kr": "마을 공방", "tc": "工坊" },
-	{ "id": 500030003, "key": "building500030003", "ch": "市坊志", "en": "Town Market Book", "kr": "시장 서적", "tc": "市坊志" },
-	{ "id": 500030004, "key": "building500030004", "ch": "市坊布衣", "en": "Town Market Dress", "kr": "시장 의류", "tc": "市坊布衣" },
-	{ "id": 500030005, "key": "building500030005", "ch": "市镇通缉", "en": "Town Bounty", "kr": "마을 현상금", "tc": "市鎮通緝" },
-	{ "id": 500030006, "key": "building500030006", "ch": "練武場", "en": "School Traning Hall", "kr": "문파 연무장", "tc": "練武場" },
-	{ "id": 500030007, "key": "building500030007", "ch": "拜入他派", "en": "School Transfer", "kr": "타파 입문", "tc": "拜入他派" },
-	{ "id": 500030008, "key": "building500030008", "ch": "藏經閣", "en": "School Storage", "kr": "문파 장경각", "tc": "藏經閣" },
-	{ "id": 500030009, "key": "building500030009", "ch": "藏宝阁", "en": "Town Storage", "kr": "마을 창고", "tc": "藏寶閣" }
+	{
+		"id": 500030000,
+		"key": "building500030000",
+		"en": "Town Transfer",
+		"ch": "移居",
+		"tc": "移居",
+		"kr": "마을 이주"
+	},
+	{
+		"id": 500030001,
+		"key": "building500030001",
+		"en": "Town Auction",
+		"ch": "拍卖会",
+		"tc": "拍賣會",
+		"kr": "마을 경매"
+	},
+	{
+		"id": 500030002,
+		"key": "building500030002",
+		"en": "Town Factory",
+		"ch": "工坊",
+		"tc": "工坊",
+		"kr": "마을 공방"
+	},
+	{
+		"id": 500030003,
+		"key": "building500030003",
+		"en": "Town Market Book",
+		"ch": "市坊志",
+		"tc": "市坊志",
+		"kr": "시장 서적"
+	},
+	{
+		"id": 500030004,
+		"key": "building500030004",
+		"en": "Town Market Dress",
+		"ch": "市坊布衣",
+		"tc": "市坊布衣",
+		"kr": "시장 의류"
+	},
+	{
+		"id": 500030005,
+		"key": "building500030005",
+		"en": "Town Bounty",
+		"ch": "市镇通缉",
+		"tc": "市鎮通緝",
+		"kr": "마을 현상금"
+	},
+	{
+		"id": 500030006,
+		"key": "building500030006",
+		"en": "School Traning Hall",
+		"ch": "練武場",
+		"tc": "練武場",
+		"kr": "문파 연무장"
+	},
+	{
+		"id": 500030007,
+		"key": "building500030007",
+		"en": "School Transfer",
+		"ch": "拜入他派",
+		"tc": "拜入他派",
+		"kr": "타파 입문"
+	},
+	{
+		"id": 500030008,
+		"key": "building500030008",
+		"en": "School Storage",
+		"ch": "藏經閣",
+		"tc": "藏經閣",
+		"kr": "문파 장경각"
+	},
+	{
+		"id": 500030009,
+		"key": "building500030009",
+		"en": "Town Storage",
+		"ch": "藏宝阁",
+		"tc": "藏寶閣",
+		"kr": "마을 창고"
+	}
 ]
