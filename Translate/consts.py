@@ -62,7 +62,10 @@ UI_ICONS = {
     'success': '✅',
     'error': '❌',
     'warning': '⚠️',
-    'info': 'ℹ️'
+    'info': 'ℹ️',
+    'target': '🎯',
+    'list': '📋',
+    'time': '⏱️'
 }
 
 # Các thông điệp UI thường dùng

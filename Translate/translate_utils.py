@@ -13,6 +13,59 @@ class TranslateUtils:
     """Utilities cho việc xử lý translation và locale data"""
     
     @staticmethod
+    def normalize_main_file_keys(main_data):
+        """
+        Chuẩn hóa các combined key trong main file thành key đơn giản
+        Combined key có chứa 'en' sẽ được chuyển thành key 'en'
+        
+        Args:
+            main_data: Dữ liệu main file
+            
+        Returns:
+            LocalTextData với các key đã được chuẩn hóa
+        """
+        if main_data.is_list:
+            result = []
+            for item in main_data.data:
+                if isinstance(item, dict):
+                    new_item = {}
+                    
+                    # Copy các key không phải combined key
+                    for key, value in item.items():
+                        if not COMBINED_KEY_WITH_EN_PATTERN.match(key):
+                            new_item[key] = value
+                    
+                    # Tìm combined key có chứa 'en' và chuyển thành 'en'
+                    for key, value in item.items():
+                        if COMBINED_KEY_WITH_EN_PATTERN.match(key):
+                            new_item['en'] = value
+                            break  # Chỉ lấy combined key đầu tiên
+                    
+                    result.append(new_item)
+                else:
+                    result.append(item)
+            
+            return LocalTextData(result)
+            
+        elif main_data.is_dict:
+            new_item = {}
+            
+            # Copy các key không phải combined key
+            for key, value in main_data.data.items():
+                if not COMBINED_KEY_WITH_EN_PATTERN.match(key):
+                    new_item[key] = value
+            
+            # Tìm combined key có chứa 'en' và chuyển thành 'en'
+            for key, value in main_data.data.items():
+                if COMBINED_KEY_WITH_EN_PATTERN.match(key):
+                    new_item['en'] = value
+                    break  # Chỉ lấy combined key đầu tiên
+            
+            return LocalTextData(new_item)
+        
+        return main_data
+
+    @staticmethod
     def translate_main_file_text(main_data, translator_func):
         """
         Dịch text trong main file (ví dụ: cập nhật các trường tiếng Anh)

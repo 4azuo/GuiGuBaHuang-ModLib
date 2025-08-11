@@ -180,6 +180,9 @@ class LocalTextProcessor:
                     print_result("❌", f"Không đọc được file {filename}")
                 return False
             
+            # Chuẩn hóa combined keys thành key đơn giản (ví dụ: "en|ch|tc|kr" -> "en")
+            main_data = TranslateUtils.normalize_main_file_keys(main_data)
+            
             # Kiểm tra cấu trúc
             if not JsonUtils.validate_json_structure(main_data.data):
                 if verbose:
