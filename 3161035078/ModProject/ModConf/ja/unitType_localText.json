@@ -1,0 +1,82 @@
+[
+	{
+		"id": "420010100",
+		"key": "unitType420010100",
+		"en|ch|tc|kr": "パワーアップ"
+	},
+	{
+		"id": "420010200",
+		"key": "unitType420010200",
+		"en|ch|tc|kr": "スピードアップ"
+	},
+	{
+		"id": "420010300",
+		"key": "unitType420010300",
+		"en|ch|tc|kr": "道教"
+	},
+	{
+		"id": "420010400",
+		"key": "unitType420010400",
+		"en|ch|tc|kr": "Pro atk"
+	},
+	{
+		"id": "420010500",
+		"key": "unitType420010500",
+		"en|ch|tc|kr": "Pro def"
+	},
+	{
+		"id": "420010600",
+		"key": "unitType420010600",
+		"en|ch|tc|kr": "天使"
+	},
+	{
+		"id": "420010700",
+		"key": "unitType420010700",
+		"en|ch|tc|kr": "悪"
+	},
+	{
+		"id": "420010800",
+		"key": "unitType420010800",
+		"en|ch|tc|kr": "商人"
+	},
+	{
+		"id": "421010100",
+		"key": "unitType420010100desc",
+		"en|ch|tc|kr": "ATK +10％、HP +20％"
+	},
+	{
+		"id": "421010200",
+		"key": "unitType420010200desc",
+		"en|ch|tc|kr": "AGI +30％"
+	},
+	{
+		"id": "421010300",
+		"key": "unitType420010300desc",
+		"en|ch|tc|kr": "ATK +8％、HP +15％、MP +10％"
+	},
+	{
+		"id": "421010400",
+		"key": "unitType420010400desc",
+		"en|ch|tc|kr": "ATK +30％"
+	},
+	{
+		"id": "421010500",
+		"key": "unitType420010500desc",
+		"en|ch|tc|kr": "HP +25％、def +5％"
+	},
+	{
+		"id": "421010600",
+		"key": "unitType420010600desc",
+		"en|ch|tc|kr": "ATK +50％、AGI +10％、HP +20％、MP +10％、義 +100％、悪魔-100％\n\n悪を殺すたびに、統計は邪悪な統計によって20％増加します。\n（HP/MP/SP/ATK/DEF/Best Base）"
+	},
+	{
+		"id": "421010700",
+		"key": "unitType420010700desc",
+		"en|ch|tc|kr": "ATK +30％、def +10％、hp +100％、正しい-100％、悪魔-30％\n\nあなたが人間を殺すたびに、あなたの統計は殺されたユニットの統計によって1％増加します。\n（HP/MP/SP/ATK/DEF/すべてのベースズ）"
+	},
+	{
+		"id": "421010800",
+		"key": "unitType420010800desc",
+		"en|ch|tc|kr": "ATK -10％、DEF -10％、HP -25％、MP -50％、無料ストレージ、-10％市場買いコスト、 +10％市場販売価値、 +3％の収入\n\nNPCアイテムの統計を見ることができます。"
+	}
+]

@@ -1,0 +1,102 @@
+[
+	{
+		"id": "420072001",
+		"key": "trainee420071001",
+		"en|ch|tc|kr": "Martialis LVL-I"
+	},
+	{
+		"id": "420073001",
+		"key": "trainee420071001desc",
+		"en|ch|tc|kr": "+ II% Max HP"
+	},
+	{
+		"id": "420072002",
+		"key": "trainee420071002",
+		"en|ch|tc|kr": "Martialis LVL-II"
+	},
+	{
+		"id": "420073002",
+		"key": "trainee420071002desc",
+		"en|ch|tc|kr": "+ IV% Max HP"
+	},
+	{
+		"id": "420072003",
+		"key": "trainee420071003",
+		"en|ch|tc|kr": "Martialis LVL III"
+	},
+	{
+		"id": "420073003",
+		"key": "trainee420071003desc",
+		"en|ch|tc|kr": "+ VII% Max HP"
+	},
+	{
+		"id": "420072004",
+		"key": "trainee420071004",
+		"en|ch|tc|kr": "Martialis LVL-IV"
+	},
+	{
+		"id": "420073004",
+		"key": "trainee420071004desc",
+		"en|ch|tc|kr": "+ X% Max HP"
+	},
+	{
+		"id": "420072005",
+		"key": "trainee420071005",
+		"en|ch|tc|kr": "Martialis LVL V"
+	},
+	{
+		"id": "420073005",
+		"key": "trainee420071005desc",
+		"en|ch|tc|kr": "+ XV% Max HP"
+	},
+	{
+		"id": "420072006",
+		"key": "trainee420071006",
+		"en|ch|tc|kr": "Martialis LVL-VI"
+	},
+	{
+		"id": "420073006",
+		"key": "trainee420071006desc",
+		"en|ch|tc|kr": "+ XX% Max HP"
+	},
+	{
+		"id": "420072007",
+		"key": "trainee420071007",
+		"en|ch|tc|kr": "Martialis LVL-VII"
+	},
+	{
+		"id": "420073007",
+		"key": "trainee420071007desc",
+		"en|ch|tc|kr": "+ XXX% Max HP"
+	},
+	{
+		"id": "420072008",
+		"key": "trainee420071008",
+		"en|ch|tc|kr": "Martialis LVL-VIII"
+	},
+	{
+		"id": "420073008",
+		"key": "trainee420071008desc",
+		"en|ch|tc|kr": "+ XL% Max HP"
+	},
+	{
+		"id": "420072009",
+		"key": "trainee420071009",
+		"en|ch|tc|kr": "Martialis LVL-IX"
+	},
+	{
+		"id": "420073009",
+		"key": "trainee420071009desc",
+		"en|ch|tc|kr": "+ LX% Max HP"
+	},
+	{
+		"id": "420072010",
+		"key": "trainee420071010",
+		"en|ch|tc|kr": "Martialis LVL-X"
+	},
+	{
+		"id": "420073010",
+		"key": "trainee420071010desc",
+		"en|ch|tc|kr": "+ XC% Max HP"
+	}
+]

@@ -1,0 +1,102 @@
+[
+	{
+		"id": "420022001",
+		"key": "apprentice420021001",
+		"en|ch|tc|kr": "Forge LVL-1"
+	},
+	{
+		"id": "420023001",
+		"key": "apprentice420021001desc",
+		"en|ch|tc|kr": "+5% DEF"
+	},
+	{
+		"id": "420022002",
+		"key": "apprentice420021002",
+		"en|ch|tc|kr": "Forge LVL-2"
+	},
+	{
+		"id": "420023002",
+		"key": "apprentice420021002desc",
+		"en|ch|tc|kr": "+10% DEF"
+	},
+	{
+		"id": "420022003",
+		"key": "apprentice420021003",
+		"en|ch|tc|kr": "Forge LVL-3"
+	},
+	{
+		"id": "420023003",
+		"key": "apprentice420021003desc",
+		"en|ch|tc|kr": "+15% DEF"
+	},
+	{
+		"id": "420022004",
+		"key": "apprentice420021004",
+		"en|ch|tc|kr": "Forge LVL-4"
+	},
+	{
+		"id": "420023004",
+		"key": "apprentice420021004desc",
+		"en|ch|tc|kr": "+20% DEF"
+	},
+	{
+		"id": "420022005",
+		"key": "apprentice420021005",
+		"en|ch|tc|kr": "Forge LVL-5"
+	},
+	{
+		"id": "420023005",
+		"key": "apprentice420021005desc",
+		"en|ch|tc|kr": "+25% DEF"
+	},
+	{
+		"id": "420022006",
+		"key": "apprentice420021006",
+		"en|ch|tc|kr": "Forge LVL-6"
+	},
+	{
+		"id": "420023006",
+		"key": "apprentice420021006desc",
+		"en|ch|tc|kr": "+30% DEF"
+	},
+	{
+		"id": "420022007",
+		"key": "apprentice420021007",
+		"en|ch|tc|kr": "Forge LVL-7"
+	},
+	{
+		"id": "420023007",
+		"key": "apprentice420021007desc",
+		"en|ch|tc|kr": "+35% DEF"
+	},
+	{
+		"id": "420022008",
+		"key": "apprentice420021008",
+		"en|ch|tc|kr": "Forge LVL-8"
+	},
+	{
+		"id": "420023008",
+		"key": "apprentice420021008desc",
+		"en|ch|tc|kr": "+40% DEF"
+	},
+	{
+		"id": "420022009",
+		"key": "apprentice420021009",
+		"en|ch|tc|kr": "Forge LVL-9"
+	},
+	{
+		"id": "420023009",
+		"key": "apprentice420021009desc",
+		"en|ch|tc|kr": "+45% DEF"
+	},
+	{
+		"id": "420022010",
+		"key": "apprentice420021010",
+		"en|ch|tc|kr": "Forge LVL-10"
+	},
+	{
+		"id": "420023010",
+		"key": "apprentice420021010desc",
+		"en|ch|tc|kr": "+50% DEF"
+	}
+]

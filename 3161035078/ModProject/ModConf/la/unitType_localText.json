@@ -1,0 +1,82 @@
+[
+	{
+		"id": "420010100",
+		"key": "unitType420010100",
+		"en|ch|tc|kr": "POTEST"
+	},
+	{
+		"id": "420010200",
+		"key": "unitType420010200",
+		"en|ch|tc|kr": "Adcelero"
+	},
+	{
+		"id": "420010300",
+		"key": "unitType420010300",
+		"en|ch|tc|kr": "Taoist"
+	},
+	{
+		"id": "420010400",
+		"key": "unitType420010400",
+		"en|ch|tc|kr": "Pro tarde"
+	},
+	{
+		"id": "420010500",
+		"key": "unitType420010500",
+		"en|ch|tc|kr": "Pro def"
+	},
+	{
+		"id": "420010600",
+		"key": "unitType420010600",
+		"en|ch|tc|kr": "Angelus"
+	},
+	{
+		"id": "420010700",
+		"key": "unitType420010700",
+		"en|ch|tc|kr": "Malis"
+	},
+	{
+		"id": "420010800",
+		"key": "unitType420010800",
+		"en|ch|tc|kr": "Mercator"
+	},
+	{
+		"id": "421010100",
+		"key": "unitType420010100desc",
+		"en|ch|tc|kr": "Atk + X%, HP + XX%"
+	},
+	{
+		"id": "421010200",
+		"key": "unitType420010200desc",
+		"en|ch|tc|kr": "AGI + XXX%"
+	},
+	{
+		"id": "421010300",
+		"key": "unitType420010300desc",
+		"en|ch|tc|kr": "ATK + VIII%, HP + XV%, MP + X%"
+	},
+	{
+		"id": "421010400",
+		"key": "unitType420010400desc",
+		"en|ch|tc|kr": "Atk + XXX%"
+	},
+	{
+		"id": "421010500",
+		"key": "unitType420010500desc",
+		"en|ch|tc|kr": "HP + XXV%, def + V%"
+	},
+	{
+		"id": "421010600",
+		"key": "unitType420010600desc",
+		"en|ch|tc|kr": "ATK + L%, AGI + X%, HP + XX%, mp + X%, iustus + C%, daemonum -100%\n\nOmni tempore et occidere malum, tunc vestri civitas auget XX% a malo stats.\n(HP / MP / sp / AK / Def / Best basis)"
+	},
+	{
+		"id": "421010700",
+		"key": "unitType420010700desc",
+		"en|ch|tc|kr": "Atk + XXX%, def + X%, HP + C%, iustus -100%, daemonum -30%\n\nOmni tempore et occidere humanum, tunc vestri civitas crescat I% per occisus unitas stats.\n(HP / MP / sp / AK / Def / omnes basis)"
+	},
+	{
+		"id": "421010800",
+		"key": "unitType420010800desc",
+		"en|ch|tc|kr": "ATK -10%, Def -10%, HP -25%, MP -50%, liberum repono, -10% forum buy-sumptus, + X% Market Sell-valorem, + III% reditus menstrua\n\nPotes videre civitas NPC items."
+	}
+]

@@ -1,0 +1,102 @@
+[
+	{
+		"id": "420032001",
+		"key": "apprentice420031001",
+		"en|ch|tc|kr": "Talismaner LVL-1"
+	},
+	{
+		"id": "420033001",
+		"key": "apprentice420031001desc",
+		"en|ch|tc|kr": "+5% Max MP"
+	},
+	{
+		"id": "420032002",
+		"key": "apprentice420031002",
+		"en|ch|tc|kr": "Talismaner LVL-2"
+	},
+	{
+		"id": "420033002",
+		"key": "apprentice420031002desc",
+		"en|ch|tc|kr": "+10% Max MP"
+	},
+	{
+		"id": "420032003",
+		"key": "apprentice420031003",
+		"en|ch|tc|kr": "Talismaner LVL-3"
+	},
+	{
+		"id": "420033003",
+		"key": "apprentice420031003desc",
+		"en|ch|tc|kr": "+15% MAX MP"
+	},
+	{
+		"id": "420032004",
+		"key": "apprentice420031004",
+		"en|ch|tc|kr": "Talismaner LVL-4"
+	},
+	{
+		"id": "420033004",
+		"key": "apprentice420031004desc",
+		"en|ch|tc|kr": "+20% Max MP"
+	},
+	{
+		"id": "420032005",
+		"key": "apprentice420031005",
+		"en|ch|tc|kr": "Talismaner LVL-5"
+	},
+	{
+		"id": "420033005",
+		"key": "apprentice420031005desc",
+		"en|ch|tc|kr": "+25% MAX MP"
+	},
+	{
+		"id": "420032006",
+		"key": "apprentice420031006",
+		"en|ch|tc|kr": "Talismaner LVL-6"
+	},
+	{
+		"id": "420033006",
+		"key": "apprentice420031006desc",
+		"en|ch|tc|kr": "+30% Max MP"
+	},
+	{
+		"id": "420032007",
+		"key": "apprentice420031007",
+		"en|ch|tc|kr": "Talismaner LVL-7"
+	},
+	{
+		"id": "420033007",
+		"key": "apprentice420031007desc",
+		"en|ch|tc|kr": "+35% MAX MP"
+	},
+	{
+		"id": "420032008",
+		"key": "apprentice420031008",
+		"en|ch|tc|kr": "Talismaner LVL-8"
+	},
+	{
+		"id": "420033008",
+		"key": "apprentice420031008desc",
+		"en|ch|tc|kr": "+40% Max MP"
+	},
+	{
+		"id": "420032009",
+		"key": "apprentice420031009",
+		"en|ch|tc|kr": "Talismaner LVL-9"
+	},
+	{
+		"id": "420033009",
+		"key": "apprentice420031009desc",
+		"en|ch|tc|kr": "+45% Max MP"
+	},
+	{
+		"id": "420032010",
+		"key": "apprentice420031010",
+		"en|ch|tc|kr": "Talismaner LVL-10"
+	},
+	{
+		"id": "420033010",
+		"key": "apprentice420031010desc",
+		"en|ch|tc|kr": "+50% Max MP"
+	}
+]

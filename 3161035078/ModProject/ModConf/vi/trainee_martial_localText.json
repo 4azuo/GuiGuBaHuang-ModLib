@@ -1,102 +1,102 @@
 [
-  {
-    "id": "420072001",
-    "key": "trainee420071001",
-    "ch|en|tc|kr": "Nhất phẩm Võ sư"
-  },
-  {
-    "id": "420073001",
-    "key": "trainee420071001desc",
-    "ch|en|tc|kr": "+2% Thể lực"
-  },
-  {
-    "id": "420072002",
-    "key": "trainee420071002",
-    "ch|en|tc|kr": "Nhị phẩm Võ sư"
-  },
-  {
-    "id": "420073002",
-    "key": "trainee420071002desc",
-    "ch|en|tc|kr": "+4% Thể lực"
-  },
-  {
-    "id": "420072003",
-    "key": "trainee420071003",
-    "ch|en|tc|kr": "Tam phẩm Võ sư"
-  },
-  {
-    "id": "420073003",
-    "key": "trainee420071003desc",
-    "ch|en|tc|kr": "+7% Thể lực"
-  },
-  {
-    "id": "420072004",
-    "key": "trainee420071004",
-    "ch|en|tc|kr": "Tứ phẩm Võ sư"
-  },
-  {
-    "id": "420073004",
-    "key": "trainee420071004desc",
-    "ch|en|tc|kr": "+10% Thể lực"
-  },
-  {
-    "id": "420072005",
-    "key": "trainee420071005",
-    "ch|en|tc|kr": "Ngũ phẩm Võ sư"
-  },
-  {
-    "id": "420073005",
-    "key": "trainee420071005desc",
-    "ch|en|tc|kr": "+15% Thể lực"
-  },
-  {
-    "id": "420072006",
-    "key": "trainee420071006",
-    "ch|en|tc|kr": "Lục phẩm Võ sư"
-  },
-  {
-    "id": "420073006",
-    "key": "trainee420071006desc",
-    "ch|en|tc|kr": "+20% Thể lực"
-  },
-  {
-    "id": "420072007",
-    "key": "trainee420071007",
-    "ch|en|tc|kr": "Thất phẩm Võ sư"
-  },
-  {
-    "id": "420073007",
-    "key": "trainee420071007desc",
-    "ch|en|tc|kr": "+30% Thể lực"
-  },
-  {
-    "id": "420072008",
-    "key": "trainee420071008",
-    "ch|en|tc|kr": "Bát phẩm Võ sư"
-  },
-  {
-    "id": "420073008",
-    "key": "trainee420071008desc",
-    "ch|en|tc|kr": "+40% Thể lực"
-  },
-  {
-    "id": "420072009",
-    "key": "trainee420071009",
-    "ch|en|tc|kr": "Cửu phẩm Võ sư"
-  },
-  {
-    "id": "420073009",
-    "key": "trainee420071009desc",
-    "ch|en|tc|kr": "+60% Thể lực"
-  },
-  {
-    "id": "420072010",
-    "key": "trainee420071010",
-    "ch|en|tc|kr": "Thập phẩm Võ sư"
-  },
-  {
-    "id": "420073010",
-    "key": "trainee420071010desc",
-    "ch|en|tc|kr": "+90% Thể lực"
-  }
+	{
+		"id": "420072001",
+		"key": "trainee420071001",
+		"en|ch|tc|kr": "Võ thuật LVL-1"
+	},
+	{
+		"id": "420073001",
+		"key": "trainee420071001desc",
+		"en|ch|tc|kr": "+2% HP tối đa"
+	},
+	{
+		"id": "420072002",
+		"key": "trainee420071002",
+		"en|ch|tc|kr": "Võ thuật LVL-2"
+	},
+	{
+		"id": "420073002",
+		"key": "trainee420071002desc",
+		"en|ch|tc|kr": "+4% HP tối đa"
+	},
+	{
+		"id": "420072003",
+		"key": "trainee420071003",
+		"en|ch|tc|kr": "Võ LVL-3"
+	},
+	{
+		"id": "420073003",
+		"key": "trainee420071003desc",
+		"en|ch|tc|kr": "+7% HP tối đa"
+	},
+	{
+		"id": "420072004",
+		"key": "trainee420071004",
+		"en|ch|tc|kr": "Võ thuật LVL-4"
+	},
+	{
+		"id": "420073004",
+		"key": "trainee420071004desc",
+		"en|ch|tc|kr": "+10% HP tối đa"
+	},
+	{
+		"id": "420072005",
+		"key": "trainee420071005",
+		"en|ch|tc|kr": "Võ thuật LVL-5"
+	},
+	{
+		"id": "420073005",
+		"key": "trainee420071005desc",
+		"en|ch|tc|kr": "+15% HP tối đa"
+	},
+	{
+		"id": "420072006",
+		"key": "trainee420071006",
+		"en|ch|tc|kr": "Võ thuật LVL-6"
+	},
+	{
+		"id": "420073006",
+		"key": "trainee420071006desc",
+		"en|ch|tc|kr": "+20% HP tối đa"
+	},
+	{
+		"id": "420072007",
+		"key": "trainee420071007",
+		"en|ch|tc|kr": "Võ thuật LVL-7"
+	},
+	{
+		"id": "420073007",
+		"key": "trainee420071007desc",
+		"en|ch|tc|kr": "+30% HP tối đa"
+	},
+	{
+		"id": "420072008",
+		"key": "trainee420071008",
+		"en|ch|tc|kr": "Võ thuật LVL-8"
+	},
+	{
+		"id": "420073008",
+		"key": "trainee420071008desc",
+		"en|ch|tc|kr": "+40% HP tối đa"
+	},
+	{
+		"id": "420072009",
+		"key": "trainee420071009",
+		"en|ch|tc|kr": "Võ thuật LVL-9"
+	},
+	{
+		"id": "420073009",
+		"key": "trainee420071009desc",
+		"en|ch|tc|kr": "+60% HP tối đa"
+	},
+	{
+		"id": "420072010",
+		"key": "trainee420071010",
+		"en|ch|tc|kr": "Võ thuật LVL-10"
+	},
+	{
+		"id": "420073010",
+		"key": "trainee420071010desc",
+		"en|ch|tc|kr": "+90% HP tối đa"
+	}
 ]

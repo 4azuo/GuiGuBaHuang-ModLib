@@ -1,0 +1,102 @@
+[
+	{
+		"id": "420012001",
+		"key": "apprentice420011001",
+		"en|ch|tc|kr": "Alchemy lvl-I"
+	},
+	{
+		"id": "420013001",
+		"key": "apprentice420011001desc",
+		"en|ch|tc|kr": "+ V% Max HP"
+	},
+	{
+		"id": "420012002",
+		"key": "apprentice420011002",
+		"en|ch|tc|kr": "Alchemy lvl-II"
+	},
+	{
+		"id": "420013002",
+		"key": "apprentice420011002desc",
+		"en|ch|tc|kr": "+ X% Max HP"
+	},
+	{
+		"id": "420012003",
+		"key": "apprentice420011003",
+		"en|ch|tc|kr": "Alchemy lvl-III"
+	},
+	{
+		"id": "420013003",
+		"key": "apprentice420011003desc",
+		"en|ch|tc|kr": "+ XV% Max HP"
+	},
+	{
+		"id": "420012004",
+		"key": "apprentice420011004",
+		"en|ch|tc|kr": "Alchemy lvl-IV"
+	},
+	{
+		"id": "420013004",
+		"key": "apprentice420011004desc",
+		"en|ch|tc|kr": "+ XX% Max HP"
+	},
+	{
+		"id": "420012005",
+		"key": "apprentice420011005",
+		"en|ch|tc|kr": "Alchemy Lvl-V"
+	},
+	{
+		"id": "420013005",
+		"key": "apprentice420011005desc",
+		"en|ch|tc|kr": "+ XXV% Max HP"
+	},
+	{
+		"id": "420012006",
+		"key": "apprentice420011006",
+		"en|ch|tc|kr": "Alchemy lvl-VI"
+	},
+	{
+		"id": "420013006",
+		"key": "apprentice420011006desc",
+		"en|ch|tc|kr": "+ XXX% Max HP"
+	},
+	{
+		"id": "420012007",
+		"key": "apprentice420011007",
+		"en|ch|tc|kr": "Alchemy lvl-VII"
+	},
+	{
+		"id": "420013007",
+		"key": "apprentice420011007desc",
+		"en|ch|tc|kr": "+ XXXV% Max HP"
+	},
+	{
+		"id": "420012008",
+		"key": "apprentice420011008",
+		"en|ch|tc|kr": "Alchemy lvl-VIII"
+	},
+	{
+		"id": "420013008",
+		"key": "apprentice420011008desc",
+		"en|ch|tc|kr": "+ XL% Max HP"
+	},
+	{
+		"id": "420012009",
+		"key": "apprentice420011009",
+		"en|ch|tc|kr": "Alchemy lvl-IX"
+	},
+	{
+		"id": "420013009",
+		"key": "apprentice420011009desc",
+		"en|ch|tc|kr": "+ XLV% Max HP"
+	},
+	{
+		"id": "420012010",
+		"key": "apprentice420011010",
+		"en|ch|tc|kr": "Alchemy lvl-X"
+	},
+	{
+		"id": "420013010",
+		"key": "apprentice420011010desc",
+		"en|ch|tc|kr": "L% max HP"
+	}
+]
