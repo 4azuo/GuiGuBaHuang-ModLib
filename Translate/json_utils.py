@@ -95,65 +95,6 @@ class JsonUtils:
             return False
     
     @staticmethod
-    def create_locale_data_from_main(main_data: LocalTextData, target_language: str, translator_func) -> LocalTextData:
-        """
-        Tạo dữ liệu locale từ main data
-        
-        Args:
-            main_data: Dữ liệu main file
-            target_language: Ngôn ngữ đích
-            translator_func: Hàm dịch text
-            
-        Returns:
-            LocalTextData cho locale file
-        """
-        if main_data.is_list:
-            result = []
-            for item in main_data.data:
-                if isinstance(item, dict) and 'en' in item:
-                    new_item = {}
-                    
-                    # Copy các key không phải ngôn ngữ
-                    for key, value in item.items():
-                        if key not in MAIN_LANGUAGE_KEYS:
-                            new_item[key] = value
-                    
-                    # Dịch từ tiếng Anh sang ngôn ngữ đích
-                    en_text = item['en']
-                    if en_text and en_text.strip():
-                        translated = translator_func(en_text, target_language)
-                        new_item[LOCALE_COMBINED_KEY] = translated
-                    else:
-                        new_item[LOCALE_COMBINED_KEY] = en_text
-                    
-                    result.append(new_item)
-                else:
-                    result.append(item)
-            
-            return LocalTextData(result)
-            
-        elif main_data.is_dict and 'en' in main_data.data:
-            new_item = {}
-            
-            # Copy các key không phải ngôn ngữ
-            for key, value in main_data.data.items():
-                if key not in MAIN_LANGUAGE_KEYS:
-                    new_item[key] = value
-            
-            # Dịch từ tiếng Anh sang ngôn ngữ đích
-            en_text = main_data.data['en']
-            if en_text and en_text.strip():
-                translated = translator_func(en_text, target_language)
-                new_item[LOCALE_COMBINED_KEY] = translated
-            else:
-                new_item[LOCALE_COMBINED_KEY] = en_text
-            
-            return LocalTextData(new_item)
-        
-        # Nếu không có dữ liệu cần dịch, trả về dữ liệu gốc
-        return main_data
-    
-    @staticmethod
     def sort_json_data(data: LocalTextData) -> LocalTextData:
         """
         Sắp xếp dữ liệu JSON theo id nếu có
