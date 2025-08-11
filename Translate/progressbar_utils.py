@@ -8,7 +8,7 @@ import time
 import sys
 from typing import Optional, Any, Dict
 from data_types import ProgressConfig
-from consts import PROGRESS_BAR_CONFIG
+from consts import PROGRESS_BAR_CONFIG, UI_ICONS, UI_MESSAGES
 
 class ProgressBar:
     """Console progress bar with customizable display"""
@@ -23,13 +23,20 @@ class ProgressBar:
     
     def _flush_line(self, content: str = "") -> None:
         """Clear current line and write new content"""
-        clear_width = PROGRESS_BAR_CONFIG['clear_line_width']
-        sys.stdout.write(f"\r{' ' * clear_width}\r{content}")
+        # Chỉ clear khi có content, nếu không chỉ dùng carriage return
+        if content:
+            sys.stdout.write(f"\r{content}")
+        else:
+            # Clear line hoàn toàn
+            clear_width = PROGRESS_BAR_CONFIG['clear_line_width']
+            sys.stdout.write(f"\r{' ' * clear_width}\r")
         sys.stdout.flush()
     
     def _clear_line(self) -> None:
         """Clear current line completely"""
-        self._flush_line("")
+        clear_width = PROGRESS_BAR_CONFIG['clear_line_width']
+        sys.stdout.write(f"\r{' ' * clear_width}\r")
+        sys.stdout.flush()
         
     def update(self, increment: int = 1, description: str = "") -> None:
         """Update progress bar"""
@@ -48,9 +55,13 @@ class ProgressBar:
         self.current = min(max(value, 0), self.total)
         self._render(description)
     
-    def finish(self, description: str = "Hoàn thành") -> None:
+    def finish(self, description: str = None) -> None:
         """Complete the progress bar"""
+        if description is None:
+            description = UI_MESSAGES['completed']
         self.current = self.total
+        # Clear line và render final state
+        self._clear_line()
         self._render(description)
         print()  # New line after completion
     
@@ -103,15 +114,16 @@ class ProgressBar:
         if self.config.suffix:
             components.append(self.config.suffix)
         
-        # Print with clear line để tránh text overlap
+        # Print với carriage return, không cần clear line mỗi lần
         line = " ".join(components)
         # Đảm bảo line không quá dài cho terminal
         max_line_length = PROGRESS_BAR_CONFIG['max_line_length']
         if len(line) > max_line_length:
             line = line[:max_line_length-3] + "..."
         
-        # Use flush helper function
-        self._flush_line(line)
+        # Chỉ dùng carriage return để overwrite
+        sys.stdout.write(f"\r{line}")
+        sys.stdout.flush()
     
     def _format_time(self, seconds: float) -> str:
         """Format time in readable format"""
@@ -194,8 +206,11 @@ class ProgressContext:
 # Singleton manager instance
 progress_manager = MultiProgressManager()
 
-def create_file_progress_config(prefix: str = "📁") -> ProgressConfig:
+def create_file_progress_config(prefix: str = None) -> ProgressConfig:
     """Create progress config for file processing"""
+    if prefix is None:
+        prefix = UI_ICONS['folder']
+    
     return ProgressConfig(
         width=PROGRESS_BAR_CONFIG['width'],
         fill_char=PROGRESS_BAR_CONFIG['fill_char'],
@@ -206,8 +221,11 @@ def create_file_progress_config(prefix: str = "📁") -> ProgressConfig:
         show_time=PROGRESS_BAR_CONFIG['show_time']
     )
 
-def create_translation_progress_config(prefix: str = "🌍") -> ProgressConfig:
+def create_translation_progress_config(prefix: str = None) -> ProgressConfig:
     """Create progress config for translation"""
+    if prefix is None:
+        prefix = UI_ICONS['globe']
+    
     return ProgressConfig(
         width=PROGRESS_BAR_CONFIG['width'],
         fill_char=PROGRESS_BAR_CONFIG['fill_char'],
@@ -228,10 +246,13 @@ def print_section(title: str) -> None:
     """Print section header"""
     print(f"\n--- {title} ---")
 
-def print_file_info(filename: str, action: str = "Xử lý", details: str = "") -> None:
+def print_file_info(filename: str, action: str = None, details: str = "") -> None:
     """Print file processing info"""
-    line = f"  📄 {filename}"
-    if action != "Xử lý":
+    if action is None:
+        action = UI_MESSAGES['processing']
+    
+    line = f"  {UI_ICONS['file']} {filename}"
+    if action != UI_MESSAGES['processing']:
         line += f" ({action})"
     if details:
         line += f" - {details}"
@@ -252,28 +273,28 @@ def print_stats(stats_dict: Dict[str, Any]) -> None:
 
 def print_error(message: str, details: str = "") -> None:
     """Print error message"""
-    line = f"❌ {message}"
+    line = f"{UI_ICONS['error']} {message}"
     if details:
         line += f": {details}"
     print(line)
 
 def print_warning(message: str, details: str = "") -> None:
     """Print warning message"""
-    line = f"⚠️ {message}"
+    line = f"{UI_ICONS['warning']} {message}"
     if details:
         line += f": {details}"
     print(line)
 
 def print_success(message: str, details: str = "") -> None:
     """Print success message"""
-    line = f"✅ {message}"
+    line = f"{UI_ICONS['success']} {message}"
     if details:
         line += f": {details}"
     print(line)
 
 def print_info(message: str, details: str = "") -> None:
     """Print info message"""
-    line = f"ℹ️ {message}"
+    line = f"{UI_ICONS['info']} {message}"
     if details:
         line += f": {details}"
     print(line)

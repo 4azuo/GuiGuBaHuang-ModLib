@@ -8,11 +8,13 @@ from dataclasses import dataclass
 from typing import List, Dict, Any, Optional
 from enum import Enum
 
+from consts import TRANSLATION_CONFIG, PROGRESS_BAR_CONFIG, UI_ICONS
+
 @dataclass
 class ProgressConfig:
     """Configuration for progress bar"""
-    width: int = 50
-    fill_char: str = '█'
+    width: int = PROGRESS_BAR_CONFIG['width']
+    fill_char: str = UI_ICONS.get('success', '█')
     empty_char: str = '░'
     show_percentage: bool = True
     show_time: bool = True
@@ -36,10 +38,10 @@ class ProcessingStatus(Enum):
 class TranslationConfig:
     """Cấu hình cho quá trình dịch"""
     target_languages: List[str]
-    max_retries: int = 3
-    delay_between_requests: float = 0.2
-    retry_delay: float = 1.0
-    source_language: str = 'en'
+    max_retries: int = TRANSLATION_CONFIG['max_retries']
+    delay_between_requests: float = TRANSLATION_CONFIG['delay_between_requests']
+    retry_delay: float = TRANSLATION_CONFIG['retry_delay']
+    source_language: str = TRANSLATION_CONFIG['source_language']
 
 @dataclass
 class ProcessingStats:

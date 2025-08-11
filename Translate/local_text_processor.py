@@ -8,34 +8,17 @@ import os
 import time
 from typing import List
 
-try:
-    from consts import DIR_PATTERNS
-    from data_types import ProcessingStats, TranslationConfig
-    from translation_service import TranslationService
-    from translate_utils import TranslateUtils
-    from json_utils import JsonUtils
-    from progressbar_utils import (
-        progress_manager, create_translation_progress_config,
-        ProgressContext, create_file_progress_config, 
-        print_info, print_section, print_warning, print_error, print_stats,
-        print_result
-    )
-except ImportError:
-    # Fallback cho trường hợp import trực tiếp
-    import sys
-    import os
-    sys.path.append(os.path.dirname(os.path.abspath(__file__)))
-    from consts import DIR_PATTERNS
-    from data_types import ProcessingStats, TranslationConfig
-    from translation_service import TranslationService
-    from translate_utils import TranslateUtils
-    from json_utils import JsonUtils
-    from progressbar_utils import (
-        progress_manager, create_translation_progress_config,
-        ProgressContext, create_file_progress_config, 
-        print_info, print_section, print_warning, print_error, print_stats,
-        print_result
-    )
+from consts import DIR_PATTERNS, UI_ICONS, UI_MESSAGES
+from data_types import ProcessingStats, TranslationConfig
+from translation_service import TranslationService
+from translate_utils import TranslateUtils
+from json_utils import JsonUtils
+from progressbar_utils import (
+    progress_manager, create_translation_progress_config,
+    ProgressContext, create_file_progress_config, 
+    print_info, print_section, print_warning, print_error, print_stats,
+    print_result
+)
 
 class LocalTextProcessor:
     """Class chính để xử lý các file localText"""
@@ -62,7 +45,7 @@ class LocalTextProcessor:
         modconf_path = os.path.join(project_path, DIR_PATTERNS['modconf_path'])
         
         if not os.path.exists(modconf_path):
-            print_error(f"Không tìm thấy thư mục", modconf_path)
+            print_error(UI_MESSAGES['not_found_modconf'], modconf_path)
             return
         
         print_info(f"Thư mục ModConf", modconf_path)
@@ -71,7 +54,7 @@ class LocalTextProcessor:
         files = FileUtils.find_localtext_files(modconf_path, target_path)
         
         if not files:
-            print_warning("Không tìm thấy file localText nào!")
+            print_warning(UI_MESSAGES['no_files'])
             return
         
         # Phân loại file
@@ -88,14 +71,14 @@ class LocalTextProcessor:
         
         # Hiển thị thống kê
         stats_info = {
-            "📁 Tổng số file tìm thấy": len(files),
-            "📄 Main files": len(main_files),
-            "🌍 Locale files": len(locale_files),
-            "🎯 Loại xử lý": file_type,
-            "🌍 Ngôn ngữ target": ', '.join(self.config.target_languages)
+            f"{UI_ICONS['folder']} Tổng số file tìm thấy": len(files),
+            f"{UI_ICONS['file']} Main files": len(main_files),
+            f"{UI_ICONS['globe']} Locale files": len(locale_files),
+            f"{UI_ICONS['target']} Loại xử lý": file_type,
+            f"{UI_ICONS['globe']} Ngôn ngữ target": ', '.join(self.config.target_languages)
         }
         if file_type != "both":
-            stats_info["📋 Sẽ xử lý"] = f"{len(files_to_process)} file"
+            stats_info[f"{UI_ICONS['list']} Sẽ xử lý"] = f"{len(files_to_process)} file"
         
         print_stats(stats_info)
         
@@ -107,7 +90,7 @@ class LocalTextProcessor:
                 with ProgressContext(
                     len(main_files), 
                     "Đang xử lý main files...", 
-                    create_file_progress_config("📄")
+                    create_file_progress_config(UI_ICONS['file'])
                 ) as progress:
                     for i, file_path in enumerate(main_files):
                         filename = os.path.basename(file_path)
@@ -129,7 +112,7 @@ class LocalTextProcessor:
                     with ProgressContext(
                         len(main_files), 
                         "Đang tạo lại locale files...", 
-                        create_file_progress_config("🌍")
+                        create_file_progress_config(UI_ICONS['globe'])
                     ) as progress:
                         for file_path in main_files:
                             filename = os.path.basename(file_path)
@@ -153,7 +136,7 @@ class LocalTextProcessor:
                 with ProgressContext(
                     len(locale_files), 
                     "Đang xử lý locale files...", 
-                    create_file_progress_config("🌍")
+                    create_file_progress_config(UI_ICONS['globe'])
                 ) as progress:
                     for file_path in locale_files:
                         filename = os.path.basename(file_path)
@@ -175,11 +158,11 @@ class LocalTextProcessor:
         elapsed_time = end_time - start_time
         
         result_stats = {
-            "📁 Tổng số file": len(files),
-            "✅ Xử lý thành công": self.stats.processed_count,
-            "🌍 Đã dịch": f"{self.translation_service.stats.translated_count} text",
-            "❌ Lỗi dịch": f"{self.translation_service.stats.failed_count} text",
-            "⏱️ Thời gian": f"{elapsed_time:.1f}s"
+            f"{UI_ICONS['folder']} Tổng số file": len(files),
+            f"{UI_ICONS['success']} Xử lý thành công": self.stats.processed_count,
+            f"{UI_ICONS['globe']} Đã dịch": f"{self.translation_service.stats.translated_count} text",
+            f"{UI_ICONS['error']} Lỗi dịch": f"{self.translation_service.stats.failed_count} text",
+            f"{UI_ICONS['time']} Thời gian": f"{elapsed_time:.1f}s"
         }
         print_stats(result_stats)
     
