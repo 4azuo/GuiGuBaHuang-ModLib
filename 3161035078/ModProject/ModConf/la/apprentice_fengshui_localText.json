@@ -1,0 +1,102 @@
+[
+	{
+		"id": "420042001",
+		"key": "apprentice420041001",
+		"en|ch|tc|kr": "Feng shui lvl-I"
+	},
+	{
+		"id": "420043001",
+		"key": "apprentice420041001desc",
+		"en|ch|tc|kr": "+ II% max procul"
+	},
+	{
+		"id": "420042002",
+		"key": "apprentice420041002",
+		"en|ch|tc|kr": "Feng shui lvl-II"
+	},
+	{
+		"id": "420043002",
+		"key": "apprentice420041002desc",
+		"en|ch|tc|kr": "+ IV% max procul"
+	},
+	{
+		"id": "420042003",
+		"key": "apprentice420041003",
+		"en|ch|tc|kr": "Feng shui lvl-III"
+	},
+	{
+		"id": "420043003",
+		"key": "apprentice420041003desc",
+		"en|ch|tc|kr": "+ VI% max procul"
+	},
+	{
+		"id": "420042004",
+		"key": "apprentice420041004",
+		"en|ch|tc|kr": "Feng shui lvl-IV"
+	},
+	{
+		"id": "420043004",
+		"key": "apprentice420041004desc",
+		"en|ch|tc|kr": "+ VIII% Max procul"
+	},
+	{
+		"id": "420042005",
+		"key": "apprentice420041005",
+		"en|ch|tc|kr": "Feng shui lvl-V"
+	},
+	{
+		"id": "420043005",
+		"key": "apprentice420041005desc",
+		"en|ch|tc|kr": "+ X% Max procul"
+	},
+	{
+		"id": "420042006",
+		"key": "apprentice420041006",
+		"en|ch|tc|kr": "Feng shui lvl-VI"
+	},
+	{
+		"id": "420043006",
+		"key": "apprentice420041006desc",
+		"en|ch|tc|kr": "+ XII% max procul"
+	},
+	{
+		"id": "420042007",
+		"key": "apprentice420041007",
+		"en|ch|tc|kr": "Feng shui lvl-VII"
+	},
+	{
+		"id": "420043007",
+		"key": "apprentice420041007desc",
+		"en|ch|tc|kr": "+ XIV% Max procul"
+	},
+	{
+		"id": "420042008",
+		"key": "apprentice420041008",
+		"en|ch|tc|kr": "Feng shui lvl-VIII"
+	},
+	{
+		"id": "420043008",
+		"key": "apprentice420041008desc",
+		"en|ch|tc|kr": "+ XVI% Max procul"
+	},
+	{
+		"id": "420042009",
+		"key": "apprentice420041009",
+		"en|ch|tc|kr": "Feng shui lvl-IX"
+	},
+	{
+		"id": "420043009",
+		"key": "apprentice420041009desc",
+		"en|ch|tc|kr": "+ XVIII% Max procul"
+	},
+	{
+		"id": "420042010",
+		"key": "apprentice420041010",
+		"en|ch|tc|kr": "Feng shui lvl-X"
+	},
+	{
+		"id": "420043010",
+		"key": "apprentice420041010desc",
+		"en|ch|tc|kr": "+ XX% max procul"
+	}
+]

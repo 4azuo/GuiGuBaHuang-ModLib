@@ -1,62 +1,52 @@
 [
-  {
-    "id": 500030000,
-    "key": "building500030000",
-    "ch": "Di cư",
-    "en": "Di cư"
-  },
-  {
-    "id": 500030001,
-    "key": "building500030001",
-    "ch": "Đấu giá hội",
-    "en": "Đấu giá hội"
-  },
-  {
-    "id": 500030002,
-    "key": "building500030002",
-    "ch": "Công xưởng",
-    "en": "Công xưởng"
-  },
-  {
-    "id": 500030003,
-    "key": "building500030003",
-    "ch": "Thị phường chí",
-    "en": "Thị phường chí"
-  },
-  {
-    "id": 500030004,
-    "key": "building500030004",
-    "ch": "Thị phường áo vải",
-    "en": "Thị phường áo vải"
-  },
-  {
-    "id": 500030005,
-    "key": "building500030005",
-    "ch": "Thị trấn truy nã",
-    "en": "Thị trấn truy nã"
-  },
-  {
-    "id": 500030006,
-    "key": "building500030006",
-    "ch": "Luyện võ tràng",
-    "en": "Luyện võ tràng"
-  },
-  {
-    "id": 500030007,
-    "key": "building500030007",
-    "ch": "Bái nhập hắn phái",
-    "en": "Bái nhập hắn phái"
-  },
-  {
-    "id": 500030008,
-    "key": "building500030008",
-    "ch": "Tàng Kinh Các",
-    "en": "Tàng Kinh Các"
-  },
-  {
-    "id": 500030009,
-    "key": "building500030009",
-    "ch": "Tàng Bảo Các",
-    "en": "Tàng Bảo Các"
-  }
+	{
+		"id": 500030000,
+		"key": "building500030000",
+		"en|ch|tc|kr": "Chuyển giao thị trấn"
+	},
+	{
+		"id": 500030001,
+		"key": "building500030001",
+		"en|ch|tc|kr": "Đấu giá thị trấn"
+	},
+	{
+		"id": 500030002,
+		"key": "building500030002",
+		"en|ch|tc|kr": "Nhà máy thị trấn"
+	},
+	{
+		"id": 500030003,
+		"key": "building500030003",
+		"en|ch|tc|kr": "Sách thị trường thị trấn"
+	},
+	{
+		"id": 500030004,
+		"key": "building500030004",
+		"en|ch|tc|kr": "Trang phục thị trường thị trấn"
+	},
+	{
+		"id": 500030005,
+		"key": "building500030005",
+		"en|ch|tc|kr": "Bounty thị trấn"
+	},
+	{
+		"id": 500030006,
+		"key": "building500030006",
+		"en|ch|tc|kr": "Hội trường trường học"
+	},
+	{
+		"id": 500030007,
+		"key": "building500030007",
+		"en|ch|tc|kr": "Chuyển trường"
+	},
+	{
+		"id": 500030008,
+		"key": "building500030008",
+		"en|ch|tc|kr": "Lưu trữ trường học"
+	},
+	{
+		"id": 500030009,
+		"key": "building500030009",
+		"en|ch|tc|kr": "Lưu trữ thị trấn"
+	}
 ]

@@ -1,20 +1,567 @@
 [
-	{ "id": 500020000, "key": "other500020000", "ch|en|tc|kr": "Đổi điểm cống hiến"},
-	{ "id": 500020001, "key": "other500020001", "ch|en|tc|kr": "Chọn vật phẩm"},
-	{ "id": 500020002, "key": "other500020002", "ch|en|tc|kr": "Chọn nguyên liệu"},
-	{ "id": 500020003, "key": "other500020003", "ch|en|tc|kr": "Ủy thác"},
-	{ "id": 500020004, "key": "other500020004", "ch|en|tc|kr": "Miễn phí cho thương nhân và hộ vệ thành"},
-	{ "id": 500020005, "key": "other500020005", "ch|en|tc|kr": "Quản lý thành trì"},
-	{ "id": 500020006, "key": "other500020006", "ch|en|tc|kr": "Lên cấp"},
-	{ "id": 500020007, "key": "other500020007", "ch|en|tc|kr": "Bạn có chắc về việc đuổi người này?"},
-	{ "id": 500020008, "key": "other500020008", "ch|en|tc|kr": "Bạn có chắc về việc thêm người này?"},
-	{ "id": 500020009, "key": "other500020009", "ch|en|tc|kr": "Bạn có muốn rời khỏi?"},
-	{ "id": 500020010, "key": "other500020010", "ch|en|tc|kr": "Bạn có chắc về việc tuyên chiến với thành trì này?"},
-	{ "id": 500020011, "key": "other500020011", "ch|en|tc|kr": "Thành trì"},
-	{ "id": 500020012, "key": "other500020012", "ch|en|tc|kr": "Hủy bỏ"},
-	{ "id": 500020013, "key": "other500020013", "ch|en|tc|kr": "Thuê"},
-	{ "id": 500020014, "key": "other500020014", "ch|en|tc|kr": "Tuyên chiến"},
-	{ "id": 500020015, "key": "other500020015", "ch|en|tc|kr": "Gửi tiền"},
-	{ "id": 500020016, "key": "other500020016", "ch|en|tc|kr": "Rút tiền"},
-	{ "id": 500020017, "key": "other500020017", "ch|en|tc|kr": "Xây"},
+	{
+		"id": 500020000,
+		"key": "other500020000",
+		"en|ch|tc|kr": "Đóng góp trao đổi"
+	},
+	{
+		"id": 500020001,
+		"key": "other500020001",
+		"en|ch|tc|kr": "Chọn mục"
+	},
+	{
+		"id": 500020002,
+		"key": "other500020002",
+		"en|ch|tc|kr": "Chọn vật liệu"
+	},
+	{
+		"id": 500020003,
+		"key": "other500020003",
+		"en|ch|tc|kr": "Nhiệm vụ"
+	},
+	{
+		"id": 500020004,
+		"key": "other500020004",
+		"en|ch|tc|kr": "Phí: Miễn phí cho người bán hàng và người giám hộ"
+	},
+	{
+		"id": 500020005,
+		"key": "other500020005",
+		"en|ch|tc|kr": "Quản lý thị trấn"
+	},
+	{
+		"id": 500020006,
+		"key": "other500020006",
+		"en|ch|tc|kr": "Nâng cấp"
+	},
+	{
+		"id": 500020007,
+		"key": "other500020007",
+		"en|ch|tc|kr": "Bạn có chắc chắn về việc sa thải người này?"
+	},
+	{
+		"id": 500020008,
+		"key": "other500020008",
+		"en|ch|tc|kr": "Bạn có chắc chắn về việc thêm người này?"
+	},
+	{
+		"id": 500020009,
+		"key": "other500020009",
+		"en|ch|tc|kr": "Bạn có chắc chắn về việc rời đi?"
+	},
+	{
+		"id": 500020010,
+		"key": "other500020010",
+		"en|ch|tc|kr": "Bạn có chắc chắn về việc tuyên chiến với thị trấn này?"
+	},
+	{
+		"id": 500020011,
+		"key": "other500020011",
+		"en|ch|tc|kr": "Thị trấn"
+	},
+	{
+		"id": 500020012,
+		"key": "other500020012",
+		"en|ch|tc|kr": "Miễn nhiệm"
+	},
+	{
+		"id": 500020013,
+		"key": "other500020013",
+		"en|ch|tc|kr": "Thuê"
+	},
+	{
+		"id": 500020014,
+		"key": "other500020014",
+		"en|ch|tc|kr": "Tuyên chiến"
+	},
+	{
+		"id": 500020015,
+		"key": "other500020015",
+		"en|ch|tc|kr": "Tiền gửi"
+	},
+	{
+		"id": 500020016,
+		"key": "other500020016",
+		"en|ch|tc|kr": "Rút"
+	},
+	{
+		"id": 500020017,
+		"key": "other500020017",
+		"en|ch|tc|kr": "Xây dựng"
+	},
+	{
+		"id": 500020018,
+		"key": "other500020018",
+		"en|ch|tc|kr": "Nhân vật của bạn sẽ tăng cấp mà không có bất kỳ mục yêu cầu nào. Nhưng các thuộc tính nhân vật sẽ không được tăng lên."
+	},
+	{
+		"id": 500020019,
+		"key": "other500020019",
+		"en|ch|tc|kr": "Sau khi nhân vật của bạn đầy đủ exp ở mọi giai đoạn. Anh ấy/cô ấy sẽ tự động đào tạo Qi mạnh mẽ hơn.\nNó phụ thuộc vào sp."
+	},
+	{
+		"id": 500020020,
+		"key": "other500020020",
+		"en|ch|tc|kr": "Làm thế nào để trở thành một người giám hộ thị trấn? Nó phụ thuộc vào danh tiếng của bạn và ngân sách thị trấn.\nNếu thị trấn có đủ ngân sách để thuê một người giám hộ, thì họ sẽ thuê người có danh tiếng cao nhất trong thị trấn.\nVà khi Master Town thua, Người bảo vệ có tiếng tăm cao nhất sẽ được đưa ra Next Town Master."
+	},
+	{
+		"id": 500020021,
+		"key": "other500020021",
+		"en|ch|tc|kr": "Vùng đất run rẩy dưới chân bạn khi trận chiến nổ ra. {0} chiến đấu để bảo vệ nhà của họ. {1} Tìm kiếm để chinh phục. Sự lựa chọn của bạn bây giờ sẽ xác định con đường của bạn!\nCó: trợ giúp {0}\nKhông: Trợ giúp {1}"
+	},
+	{
+		"id": 500020022,
+		"key": "other500020022",
+		"en|ch|tc|kr": "Cảnh báo"
+	},
+	{
+		"id": 500020023,
+		"key": "other500020023",
+		"en|ch|tc|kr": "Thị trấn của bạn ({0}) đang bị tấn công!\nBạn có muốn giúp đỡ không?"
+	},
+	{
+		"id": 500020024,
+		"key": "other500020024",
+		"en|ch|tc|kr": "Giáo phái của bạn ({0}) đang bị tấn công!\nBạn có muốn giúp đỡ không?"
+	},
+	{
+		"id": 500020025,
+		"key": "other500020025",
+		"en|ch|tc|kr": "Ngân sách của thị trấn là không đủ!"
+	},
+	{
+		"id": 500020026,
+		"key": "other500020026",
+		"en|ch|tc|kr": "Bạn đã nhận được một lời mời từ {0} 'Town Master cho vị trí người giám hộ?\nBạn có muốn trở thành một người giám hộ thị trấn?"
+	},
+	{
+		"id": 500020027,
+		"key": "other500020027",
+		"en|ch|tc|kr": "Bạn không có đủ {0:#, ## 0} Đất tinh thần để trả!"
+	},
+	{
+		"id": 500020028,
+		"key": "other500020028",
+		"en|ch|tc|kr": "Mỗi khi bạn chết trong trận chiến, cuộc sống của bạn sẽ bị mất. Và khi tuổi của bạn kết thúc, tiết kiệm của bạn sẽ bị xóa. Hãy cẩn thận."
+	},
+	{
+		"id": 500020029,
+		"key": "other500020029",
+		"en|ch|tc|kr": "Bạn có thực sự muốn bỏ qua {0} năm không?"
+	},
+	{
+		"id": 500020030,
+		"key": "other500020030",
+		"en|ch|tc|kr": "Bỏ qua {0} năm"
+	},
+	{
+		"id": 500020031,
+		"key": "other500020031",
+		"en|ch|tc|kr": "Bạn có thực sự muốn bỏ qua {0} năm không?\n(Không có sự kiện hàng tháng)"
+	},
+	{
+		"id": 500020032,
+		"key": "other500020032",
+		"en|ch|tc|kr": "≫"
+	},
+	{
+		"id": 500020033,
+		"key": "other500020033",
+		"en|ch|tc|kr": "Ảnh hưởng đến thiệt hại của bạn và phòng thủ chống lại thiệt hại của cùng một loại.\nNhững ngón tay đặc biệt, lòng bàn tay và nắm đấm cũng tăng cường phòng thủ của bạn."
+	},
+	{
+		"id": 500020034,
+		"key": "other500020034",
+		"en|ch|tc|kr": "Ảnh hưởng đến thiệt hại của bạn và phòng thủ chống lại thiệt hại của cùng một loại.\nLửa → Thiệt hại crit\nNước → Phục hồi MP\nGió → trốn tránh\nTrái đất → Phòng thủ\nThunder → crit cơ hội và giảm thiệt hại thử nghiệm\nGỗ → Phục hồi HP"
+	},
+	{
+		"id": 500020035,
+		"key": "other500020035",
+		"en|ch|tc|kr": "Tiêu đề sẽ được trao khi đạt được một số điểm nhất định."
+	},
+	{
+		"id": 500020036,
+		"key": "other500020036",
+		"en|ch|tc|kr": "Điểm khả năng ảnh hưởng đến HP/MP dựa trên cấp độ của nhân vật."
+	},
+	{
+		"id": 500020037,
+		"key": "other500020037",
+		"en|ch|tc|kr": "Mức độ kỹ năng sẽ cải thiện bằng cách sử dụng các hoạt động tương ứng."
+	},
+	{
+		"id": 500020038,
+		"key": "other500020038",
+		"en|ch|tc|kr": "HP/MP ảnh hưởng đến lá chắn khi tham gia trận chiến.\nCái nhìn sâu sắc và may mắn có tác động đáng kể đến các sự kiện ngẫu nhiên cũng như tốc độ tăng trưởng và tốc độ học tập."
+	},
+	{
+		"id": 500020039,
+		"key": "other500020039",
+		"en|ch|tc|kr": "Đừng chơi với một mod khác làm tăng trò chơi khó khăn."
+	},
+	{
+		"id": 500020040,
+		"key": "other500020040",
+		"en|ch|tc|kr": "Chợ"
+	},
+	{
+		"id": 500020041,
+		"key": "other500020041",
+		"en|ch|tc|kr": "Bạn có thể mua/bán các mặt hàng với NPC tại đây. Nhưng bạn có thể bị ghét và cướp."
+	},
+	{
+		"id": 500020042,
+		"key": "other500020042",
+		"en|ch|tc|kr": "{0:#, ## 0} Đất tinh thần/năm"
+	},
+	{
+		"id": 500020043,
+		"key": "other500020043",
+		"en|ch|tc|kr": "{0:#, ## 0} Đất tinh thần/tháng"
+	},
+	{
+		"id": 500020044,
+		"key": "other500020044",
+		"en|ch|tc|kr": "Lén lút qua"
+	},
+	{
+		"id": 500020045,
+		"key": "other500020045",
+		"en|ch|tc|kr": "Rời khỏi"
+	},
+	{
+		"id": 500020046,
+		"key": "other500020046",
+		"en|ch|tc|kr": "[Thông tin] Đạo giáo"
+	},
+	{
+		"id": 500020047,
+		"key": "other500020047",
+		"en|ch|tc|kr": "Danh sách bán"
+	},
+	{
+		"id": 500020048,
+		"key": "other500020048",
+		"en|ch|tc|kr": "Bước 1"
+	},
+	{
+		"id": 500020049,
+		"key": "other500020049",
+		"en|ch|tc|kr": "Bước 2"
+	},
+	{
+		"id": 500020050,
+		"key": "other500020050",
+		"en|ch|tc|kr": "Tinh chỉnh"
+	},
+	{
+		"id": 500020051,
+		"key": "other500020051",
+		"en|ch|tc|kr": "Thành công! Cấp độ {0} → {1} (+{2:#, ## 0} exp)"
+	},
+	{
+		"id": 500020052,
+		"key": "other500020052",
+		"en|ch|tc|kr": "Chợ"
+	},
+	{
+		"id": 500020053,
+		"key": "other500020053",
+		"en|ch|tc|kr": "Danh sách bán"
+	},
+	{
+		"id": 500020054,
+		"key": "other500020054",
+		"en|ch|tc|kr": "Thuê người"
+	},
+	{
+		"id": 500020055,
+		"key": "other500020055",
+		"en|ch|tc|kr": "Đăng ký"
+	},
+	{
+		"id": 500020056,
+		"key": "other500020056",
+		"en|ch|tc|kr": "{0} Stones Spirit Stones → {1} đóng góp"
+	},
+	{
+		"id": 500020057,
+		"key": "other500020057",
+		"en|ch|tc|kr": "Tỷ lệ trao đổi {0} Spirit Stones → 1 đóng góp"
+	},
+	{
+		"id": 500020058,
+		"key": "other500020058",
+		"en|ch|tc|kr": "Chọn các mục"
+	},
+	{
+		"id": 500020059,
+		"key": "other500020059",
+		"en|ch|tc|kr": "Thông thoáng"
+	},
+	{
+		"id": 500020060,
+		"key": "other500020060",
+		"en|ch|tc|kr": "Các mặt hàng của tôi"
+	},
+	{
+		"id": 500020061,
+		"key": "other500020061",
+		"en|ch|tc|kr": "Đăng ký"
+	},
+	{
+		"id": 500020062,
+		"key": "other500020062",
+		"en|ch|tc|kr": "Tổng giá"
+	},
+	{
+		"id": 500020063,
+		"key": "other500020063",
+		"en|ch|tc|kr": "Min ： {0} Bán ："
+	},
+	{
+		"id": 500020064,
+		"key": "other500020064",
+		"en|ch|tc|kr": "Xuống"
+	},
+	{
+		"id": 500020065,
+		"key": "other500020065",
+		"en|ch|tc|kr": "Hãy đứng trong thị trấn!"
+	},
+	{
+		"id": 500020066,
+		"key": "other500020066",
+		"en|ch|tc|kr": "Up"
+	},
+	{
+		"id": 500020067,
+		"key": "other500020067",
+		"en|ch|tc|kr": "Thương lượng"
+	},
+	{
+		"id": 500020068,
+		"key": "other500020068",
+		"en|ch|tc|kr": "Trau dồi"
+	},
+	{
+		"id": 500020069,
+		"key": "other500020069",
+		"en|ch|tc|kr": "Bạn cần {0} đá tinh thần để canh tác."
+	},
+	{
+		"id": 500020070,
+		"key": "other500020070",
+		"en|ch|tc|kr": "{0} spirit Stones → {1} exps."
+	},
+	{
+		"id": 500020071,
+		"key": "other500020071",
+		"en|ch|tc|kr": "Chuyển giao Qi"
+	},
+	{
+		"id": 500020072,
+		"key": "other500020072",
+		"en|ch|tc|kr": "Nhận QI"
+	},
+	{
+		"id": 500020073,
+		"key": "other500020073",
+		"en|ch|tc|kr": "Phụ thuộc vào cái nhìn sâu sắc và cơ sở của bạn (rễ)."
+	},
+	{
+		"id": 500020074,
+		"key": "other500020074",
+		"en|ch|tc|kr": "Thỏa thuận"
+	},
+	{
+		"id": 500020075,
+		"key": "other500020075",
+		"en|ch|tc|kr": "Tổng giá trị ： {0}"
+	},
+	{
+		"id": 500020076,
+		"key": "other500020076",
+		"en|ch|tc|kr": "Mặt sau"
+	},
+	{
+		"id": 500020077,
+		"key": "other500020077",
+		"en|ch|tc|kr": "Bỏ cuộc"
+	},
+	{
+		"id": 500020078,
+		"key": "other500020078",
+		"en|ch|tc|kr": "Bạn đã rút lui? Sau tất cả những gì chúng tôi đã đồng ý? Tôi không vui lòng với những giao dịch bị hỏng - bạn chỉ lãng phí thời gian của tôi."
+	},
+	{
+		"id": 500020079,
+		"key": "other500020079",
+		"en|ch|tc|kr": "Điều đó đã diễn ra suôn sẻ! Luôn luôn làm việc tuyệt vời với một người biết họ đang làm gì."
+	},
+	{
+		"id": 500020080,
+		"key": "other500020080",
+		"en|ch|tc|kr": "Bạn không thể nghiêm túc. Bạn nợ tôi nhiều hơn một 'không'!"
+	},
+	{
+		"id": 500020081,
+		"key": "other500020081",
+		"en|ch|tc|kr": "Cái gì? Bạn biết tôi đang đến! Bạn đã bán nó dù sao?"
+	},
+	{
+		"id": 500020082,
+		"key": "other500020082",
+		"en|ch|tc|kr": "[{0}] đã được bán."
+	},
+	{
+		"id": 500020083,
+		"key": "other500020083",
+		"en|ch|tc|kr": "Không xác định"
+	},
+	{
+		"id": 500020084,
+		"key": "other500020084",
+		"en|ch|tc|kr": "Vui lòng chọn một mục."
+	},
+	{
+		"id": 500020085,
+		"key": "other500020085",
+		"en|ch|tc|kr": "Thị trường VIP"
+	},
+	{
+		"id": 500020086,
+		"key": "other500020086",
+		"en|ch|tc|kr": "Bạn có muốn trả {0} Stones Spirit Stones cho dịch vụ của chúng tôi không?"
+	},
+	{
+		"id": 500020087,
+		"key": "other500020087",
+		"en|ch|tc|kr": "Bạn không có đủ đá tinh thần!"
+	},
+	{
+		"id": 500020088,
+		"key": "other500020088",
+		"en|ch|tc|kr": "Bạn đang cố gắng đổ tôi?"
+	},
+	{
+		"id": 500020089,
+		"key": "other500020089",
+		"en|ch|tc|kr": "Thiệt hại x {0}"
+	},
+	{
+		"id": 500020090,
+		"key": "other500020090",
+		"en|ch|tc|kr": "Hủy bỏ"
+	},
+	{
+		"id": 500020091,
+		"key": "other500020091",
+		"en|ch|tc|kr": "Min ： {0} bán"
+	},
+	{
+		"id": 500020092,
+		"key": "other500020092",
+		"en|ch|tc|kr": "Giao dịch"
+	},
+	{
+		"id": 500020093,
+		"key": "other500020093",
+		"en|ch|tc|kr": "Cái gì?! Bị hủy bỏ? Trông tôi có giống như tôi có thời gian để lãng phí không?"
+	},
+	{
+		"id": 500020094,
+		"key": "other500020094",
+		"en|ch|tc|kr": "Anonymous (phí chi phí)"
+	},
+	{
+		"id": 500020095,
+		"key": "other500020095",
+		"en|ch|tc|kr": "Giá bán"
+	},
+	{
+		"id": 500020096,
+		"key": "other500020096",
+		"en|ch|tc|kr": "Số lượng"
+	},
+	{
+		"id": 500020097,
+		"key": "other500020097",
+		"en|ch|tc|kr": "Phí ẩn danh = 10% giá bán"
+	},
+	{
+		"id": 500020098,
+		"key": "other500020098",
+		"en|ch|tc|kr": "Vui lòng chọn một mục"
+	},
+	{
+		"id": 500020099,
+		"key": "other500020099",
+		"en|ch|tc|kr": "Số lượng không hợp lệ"
+	},
+	{
+		"id": 500020100,
+		"key": "other500020100",
+		"en|ch|tc|kr": "Giá không hợp lệ"
+	},
+	{
+		"id": 500020101,
+		"key": "other500020101",
+		"en|ch|tc|kr": "Bạn phải ở trong một thị trấn để bán các mặt hàng"
+	},
+	{
+		"id": 500020102,
+		"key": "other500020102",
+		"en|ch|tc|kr": "Lỗi"
+	},
+	{
+		"id": 500020103,
+		"key": "other500020103",
+		"en|ch|tc|kr": "Bán đã đăng ký: {0} x {1} cho {2}"
+	},
+	{
+		"id": 500020104,
+		"key": "other500020104",
+		"en|ch|tc|kr": "Không đủ tiền cho phí ẩn danh"
+	},
+	{
+		"id": 500020105,
+		"key": "other500020105",
+		"en|ch|tc|kr": "Thành công"
+	},
+	{
+		"id": 500020106,
+		"key": "other500020106",
+		"en|ch|tc|kr": "Đã đăng ký bán hàng ẩn danh: {0} x {1} cho {2} (phí: {3})"
+	},
+	{
+		"id": 500020107,
+		"key": "other500020107",
+		"en|ch|tc|kr": "Giá bán: {0} | Phí ẩn danh: {1} (trả trước trả trước)"
+	},
+	{
+		"id": 500020108,
+		"key": "other500020108",
+		"en|ch|tc|kr": "Giá bán: {0}"
+	},
+	{
+		"id": 500020109,
+		"key": "other500020109",
+		"en|ch|tc|kr": "Không ai hiện đang đàm phán cho mặt hàng này."
+	},
+	{
+		"id": 500020110,
+		"key": "other500020110",
+		"en|ch|tc|kr": "Không tìm thấy người mua hợp lệ."
+	},
+	{
+		"id": 500020111,
+		"key": "other500020111",
+		"en|ch|tc|kr": "Danh sách giao dịch"
+	},
+	{
+		"id": 500020112,
+		"key": "other500020112",
+		"en|ch|tc|kr": "Bạn đang bán mặt hàng này tại {0}!"
+	}
 ]

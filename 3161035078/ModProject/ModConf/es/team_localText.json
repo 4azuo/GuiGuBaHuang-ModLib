@@ -1,0 +1,72 @@
+[
+	{
+		"id": "420041120",
+		"key": "team420041120desc",
+		"en|ch|tc|kr": "equipo420041120desc"
+	},
+	{
+		"id": "420041121",
+		"key": "team420041121",
+		"en|ch|tc|kr": "Equipo"
+	},
+	{
+		"id": "420041123",
+		"key": "team420041123drama",
+		"en|ch|tc|kr": "¿Quieres viajar juntos?"
+	},
+	{
+		"id": "420041124",
+		"key": "team420041124dramaOpt1",
+		"en|ch|tc|kr": "Sí"
+	},
+	{
+		"id": "420041125",
+		"key": "team420041125dramaOpt2",
+		"en|ch|tc|kr": "No"
+	},
+	{
+		"id": "420041126",
+		"key": "team420041126",
+		"en|ch|tc|kr": "Equipo de despedida"
+	},
+	{
+		"id": "420041127",
+		"key": "team420041127",
+		"en|ch|tc|kr": "Administrar equipo"
+	},
+	{
+		"id": "420041128",
+		"key": "team420041128",
+		"en|ch|tc|kr": "¿Estás seguro de agregar a esta persona?"
+	},
+	{
+		"id": "420041129",
+		"key": "team420041129",
+		"en|ch|tc|kr": "¡Tienes que dejar el equipo actual!"
+	},
+	{
+		"id": "420041130",
+		"key": "team420041130",
+		"en|ch|tc|kr": "¿Estás seguro de despedir a esta persona?"
+	},
+	{
+		"id": "420041131",
+		"key": "team420041131",
+		"en|ch|tc|kr": "Contratar gente"
+	},
+	{
+		"id": "420041132",
+		"key": "team420041132",
+		"en|ch|tc|kr": "¡No tienes que pagar por los amigos!"
+	},
+	{
+		"id": "420041133",
+		"key": "team420041133",
+		"en|ch|tc|kr": "Formar"
+	},
+	{
+		"id": "420041134",
+		"key": "team420041134",
+		"en|ch|tc|kr": "¿Estás seguro de despedir a tu equipo?"
+	}
+]

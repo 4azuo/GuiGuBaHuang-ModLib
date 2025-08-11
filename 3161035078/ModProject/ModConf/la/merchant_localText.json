@@ -1,0 +1,102 @@
+[
+	{
+		"id": "420092001",
+		"key": "merchant420091001",
+		"en|ch|tc|kr": "Mercator LVL-I"
+	},
+	{
+		"id": "420093001",
+		"key": "merchant420091001desc",
+		"en|ch|tc|kr": "+ II% prudentiae, + 0,3% vendere, + 0.1% reditus"
+	},
+	{
+		"id": "420092002",
+		"key": "merchant420091002",
+		"en|ch|tc|kr": "Mercator LVL-II"
+	},
+	{
+		"id": "420093002",
+		"key": "merchant420091002desc",
+		"en|ch|tc|kr": "+ IV% prudentiae, + 0,6% vendere, + 0.2% reditus"
+	},
+	{
+		"id": "420092003",
+		"key": "merchant420091003",
+		"en|ch|tc|kr": "Mercator LVL-III"
+	},
+	{
+		"id": "420093003",
+		"key": "merchant420091003desc",
+		"en|ch|tc|kr": "+ VI% prudentia, + 0,9% vendere, + 0.3% reditus"
+	},
+	{
+		"id": "420092004",
+		"key": "merchant420091004",
+		"en|ch|tc|kr": "Mercator LVL-IV"
+	},
+	{
+		"id": "420093004",
+		"key": "merchant420091004desc",
+		"en|ch|tc|kr": "+ VIII% prudentiae, + 1.2% vendere, + 0.4% reditus"
+	},
+	{
+		"id": "420092005",
+		"key": "merchant420091005",
+		"en|ch|tc|kr": "Mercator LVL V"
+	},
+	{
+		"id": "420093005",
+		"key": "merchant420091005desc",
+		"en|ch|tc|kr": "+ X% SAGACITAS, + 1.5% Sell, + 0.5% reditus"
+	},
+	{
+		"id": "420092006",
+		"key": "merchant420091006",
+		"en|ch|tc|kr": "Mercator LVL-VI"
+	},
+	{
+		"id": "420093006",
+		"key": "merchant420091006desc",
+		"en|ch|tc|kr": "+ XIII% prudentia, + 1.8% vendere, + 0.6% reditus"
+	},
+	{
+		"id": "420092007",
+		"key": "merchant420091007",
+		"en|ch|tc|kr": "Mercator LVL-VII"
+	},
+	{
+		"id": "420093007",
+		"key": "merchant420091007desc",
+		"en|ch|tc|kr": "+ XVI% prudentiae, + 2.1% vendere, + 0.7% reditus"
+	},
+	{
+		"id": "420092008",
+		"key": "merchant420091008",
+		"en|ch|tc|kr": "Mercator LVL-VIII"
+	},
+	{
+		"id": "420093008",
+		"key": "merchant420091008desc",
+		"en|ch|tc|kr": "+ XIX% prudentiae, + 2.4% vendere, + 0.8% reditus"
+	},
+	{
+		"id": "420092009",
+		"key": "merchant420091009",
+		"en|ch|tc|kr": "Mercator LVL-IX"
+	},
+	{
+		"id": "420093009",
+		"key": "merchant420091009desc",
+		"en|ch|tc|kr": "+ XXII% prudentiae, + 2.7% vendere, + 0.9% reditus"
+	},
+	{
+		"id": "420092010",
+		"key": "merchant420091010",
+		"en|ch|tc|kr": "Mercator LVL-X"
+	},
+	{
+		"id": "420093010",
+		"key": "merchant420091010desc",
+		"en|ch|tc|kr": "+ XXV% prudentiae, 3.0% vendere + + 1.0 reditus"
+	}
+]

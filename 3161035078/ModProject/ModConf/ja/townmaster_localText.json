@@ -1,0 +1,52 @@
+[
+	{
+		"id": "420041110",
+		"key": "townmaster420041110desc",
+		"en|ch|tc|kr": "townmaster420041110desc"
+	},
+	{
+		"id": "420041111",
+		"key": "townmaster420041111",
+		"en|ch|tc|kr": "町のマスター"
+	},
+	{
+		"id": "420041112",
+		"key": "townmaster420041112",
+		"en|ch|tc|kr": "タウンガーディアン"
+	},
+	{
+		"id": "420041113",
+		"key": "townmaster420041113drama",
+		"en|ch|tc|kr": "あなたはこの町のマスターになります。"
+	},
+	{
+		"id": "420041114",
+		"key": "townmaster420041114drama",
+		"en|ch|tc|kr": "ガーディアンポジションの{0} 'タウンマスターから招待状を受け取りましたか？\nあなたは町の守護者になりたいですか？"
+	},
+	{
+		"id": "420041115",
+		"key": "townmaster420041114dramaOpt1",
+		"en|ch|tc|kr": "はい"
+	},
+	{
+		"id": "420041116",
+		"key": "townmaster420041114dramaOpt2",
+		"en|ch|tc|kr": "No"
+	},
+	{
+		"id": "420041117",
+		"key": "townmaster420041117",
+		"en|ch|tc|kr": "町：{0} ／マスター：{1}"
+	},
+	{
+		"id": "420041118",
+		"key": "townmaster420041118",
+		"en|ch|tc|kr": "予算：{0：＃、## 0}"
+	},
+	{
+		"id": "420041119",
+		"key": "townmaster420041119",
+		"en|ch|tc|kr": "支払い：{0：＃、## 0}/year"
+	}
+]

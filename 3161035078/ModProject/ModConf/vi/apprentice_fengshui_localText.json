@@ -1,102 +1,102 @@
 [
-  {
-    "id": "420042001",
-    "key": "apprentice420041001",
-    "ch|en|tc|kr": "Nhất phẩm Trận Sư"
-  },
-  {
-    "id": "420043001",
-    "key": "apprentice420041001desc",
-    "ch|en|tc|kr": "+2% Linh lực"
-  },
-  {
-    "id": "420042002",
-    "key": "apprentice420041002",
-    "ch|en|tc|kr": "Nhị phẩm Trận Sư"
-  },
-  {
-    "id": "420043002",
-    "key": "apprentice420041002desc",
-    "ch|en|tc|kr": "+4% Linh lực"
-  },
-  {
-    "id": "420042003",
-    "key": "apprentice420041003",
-    "ch|en|tc|kr": "Tam phẩm Trận Sư"
-  },
-  {
-    "id": "420043003",
-    "key": "apprentice420041003desc",
-    "ch|en|tc|kr": "+6% Linh lực"
-  },
-  {
-    "id": "420042004",
-    "key": "apprentice420041004",
-    "ch|en|tc|kr": "Tứ phẩm Trận Sư"
-  },
-  {
-    "id": "420043004",
-    "key": "apprentice420041004desc",
-    "ch|en|tc|kr": "+8% Linh lực"
-  },
-  {
-    "id": "420042005",
-    "key": "apprentice420041005",
-    "ch|en|tc|kr": "Ngũ phẩm Trận Sư"
-  },
-  {
-    "id": "420043005",
-    "key": "apprentice420041005desc",
-    "ch|en|tc|kr": "+10% Linh lực"
-  },
-  {
-    "id": "420042006",
-    "key": "apprentice420041006",
-    "ch|en|tc|kr": "Lục phẩm Trận Sư"
-  },
-  {
-    "id": "420043006",
-    "key": "apprentice420041006desc",
-    "ch|en|tc|kr": "+12% Linh lực"
-  },
-  {
-    "id": "420042007",
-    "key": "apprentice420041007",
-    "ch|en|tc|kr": "Thất phẩm Trận Sư"
-  },
-  {
-    "id": "420043007",
-    "key": "apprentice420041007desc",
-    "ch|en|tc|kr": "+14% Linh lực"
-  },
-  {
-    "id": "420042008",
-    "key": "apprentice420041008",
-    "ch|en|tc|kr": "Bát phẩm Trận Sư"
-  },
-  {
-    "id": "420043008",
-    "key": "apprentice420041008desc",
-    "ch|en|tc|kr": "+16% Linh lực"
-  },
-  {
-    "id": "420042009",
-    "key": "apprentice420041009",
-    "ch|en|tc|kr": "Cửu phẩm Trận Sư"
-  },
-  {
-    "id": "420043009",
-    "key": "apprentice420041009desc",
-    "ch|en|tc|kr": "+18% Linh lực"
-  },
-  {
-    "id": "420042010",
-    "key": "apprentice420041010",
-    "ch|en|tc|kr": "Thập phẩm Trận Sư"
-  },
-  {
-    "id": "420043010",
-    "key": "apprentice420041010desc",
-    "ch|en|tc|kr": "+20% Linh lực"
-  }
+	{
+		"id": "420042001",
+		"key": "apprentice420041001",
+		"en|ch|tc|kr": "Phong thủy LVL-1"
+	},
+	{
+		"id": "420043001",
+		"key": "apprentice420041001desc",
+		"en|ch|tc|kr": "+2% MAX MP"
+	},
+	{
+		"id": "420042002",
+		"key": "apprentice420041002",
+		"en|ch|tc|kr": "Phong thủy LVL-2"
+	},
+	{
+		"id": "420043002",
+		"key": "apprentice420041002desc",
+		"en|ch|tc|kr": "+4% MAX MP"
+	},
+	{
+		"id": "420042003",
+		"key": "apprentice420041003",
+		"en|ch|tc|kr": "Phong thủy LVL-3"
+	},
+	{
+		"id": "420043003",
+		"key": "apprentice420041003desc",
+		"en|ch|tc|kr": "+6% MAX MP"
+	},
+	{
+		"id": "420042004",
+		"key": "apprentice420041004",
+		"en|ch|tc|kr": "Phong thủy LVL-4"
+	},
+	{
+		"id": "420043004",
+		"key": "apprentice420041004desc",
+		"en|ch|tc|kr": "+8% MAX MP"
+	},
+	{
+		"id": "420042005",
+		"key": "apprentice420041005",
+		"en|ch|tc|kr": "Phong thủy LVL-5"
+	},
+	{
+		"id": "420043005",
+		"key": "apprentice420041005desc",
+		"en|ch|tc|kr": "+10% MAX MP"
+	},
+	{
+		"id": "420042006",
+		"key": "apprentice420041006",
+		"en|ch|tc|kr": "Phong thủy LVL-6"
+	},
+	{
+		"id": "420043006",
+		"key": "apprentice420041006desc",
+		"en|ch|tc|kr": "+MP tối đa 12%"
+	},
+	{
+		"id": "420042007",
+		"key": "apprentice420041007",
+		"en|ch|tc|kr": "Phong thủy LVL-7"
+	},
+	{
+		"id": "420043007",
+		"key": "apprentice420041007desc",
+		"en|ch|tc|kr": "+14% MAX MP"
+	},
+	{
+		"id": "420042008",
+		"key": "apprentice420041008",
+		"en|ch|tc|kr": "Phong thủy LVL-8"
+	},
+	{
+		"id": "420043008",
+		"key": "apprentice420041008desc",
+		"en|ch|tc|kr": "+16% MAX MP"
+	},
+	{
+		"id": "420042009",
+		"key": "apprentice420041009",
+		"en|ch|tc|kr": "Phong thủy LVL-9"
+	},
+	{
+		"id": "420043009",
+		"key": "apprentice420041009desc",
+		"en|ch|tc|kr": "+18% MAX MP"
+	},
+	{
+		"id": "420042010",
+		"key": "apprentice420041010",
+		"en|ch|tc|kr": "Phong thủy LVL-10"
+	},
+	{
+		"id": "420043010",
+		"key": "apprentice420041010desc",
+		"en|ch|tc|kr": "+MP tối đa 20%"
+	}
 ]

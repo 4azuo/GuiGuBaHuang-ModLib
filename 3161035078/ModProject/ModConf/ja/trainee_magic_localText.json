@@ -1,0 +1,102 @@
+[
+	{
+		"id": "420082001",
+		"key": "trainee420081001",
+		"en|ch|tc|kr": "マジックLVL-1"
+	},
+	{
+		"id": "420083001",
+		"key": "trainee420081001desc",
+		"en|ch|tc|kr": "+2％最大MP"
+	},
+	{
+		"id": "420082002",
+		"key": "trainee420081002",
+		"en|ch|tc|kr": "マジックLVL-2"
+	},
+	{
+		"id": "420083002",
+		"key": "trainee420081002desc",
+		"en|ch|tc|kr": "+4％最大MP"
+	},
+	{
+		"id": "420082003",
+		"key": "trainee420081003",
+		"en|ch|tc|kr": "マジックLVL-3"
+	},
+	{
+		"id": "420083003",
+		"key": "trainee420081003desc",
+		"en|ch|tc|kr": "+7％最大MP"
+	},
+	{
+		"id": "420082004",
+		"key": "trainee420081004",
+		"en|ch|tc|kr": "マジックLVL-4"
+	},
+	{
+		"id": "420083004",
+		"key": "trainee420081004desc",
+		"en|ch|tc|kr": "+10％最大MP"
+	},
+	{
+		"id": "420082005",
+		"key": "trainee420081005",
+		"en|ch|tc|kr": "マジックLVL-5"
+	},
+	{
+		"id": "420083005",
+		"key": "trainee420081005desc",
+		"en|ch|tc|kr": "+15％最大MP"
+	},
+	{
+		"id": "420082006",
+		"key": "trainee420081006",
+		"en|ch|tc|kr": "マジックLVL-6"
+	},
+	{
+		"id": "420083006",
+		"key": "trainee420081006desc",
+		"en|ch|tc|kr": "+20％最大MP"
+	},
+	{
+		"id": "420082007",
+		"key": "trainee420081007",
+		"en|ch|tc|kr": "マジックLVL-7"
+	},
+	{
+		"id": "420083007",
+		"key": "trainee420081007desc",
+		"en|ch|tc|kr": "+30％Max MP"
+	},
+	{
+		"id": "420082008",
+		"key": "trainee420081008",
+		"en|ch|tc|kr": "マジックLVL-8"
+	},
+	{
+		"id": "420083008",
+		"key": "trainee420081008desc",
+		"en|ch|tc|kr": "+40％Max MP"
+	},
+	{
+		"id": "420082009",
+		"key": "trainee420081009",
+		"en|ch|tc|kr": "マジックLVL-9"
+	},
+	{
+		"id": "420083009",
+		"key": "trainee420081009desc",
+		"en|ch|tc|kr": "+60％最大MP"
+	},
+	{
+		"id": "420082010",
+		"key": "trainee420081010",
+		"en|ch|tc|kr": "マジックLVL-10"
+	},
+	{
+		"id": "420083010",
+		"key": "trainee420081010desc",
+		"en|ch|tc|kr": "+90％Max MP"
+	}
+]

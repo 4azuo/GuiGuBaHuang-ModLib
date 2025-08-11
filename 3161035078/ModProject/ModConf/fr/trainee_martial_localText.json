@@ -1,0 +1,102 @@
+[
+	{
+		"id": "420072001",
+		"key": "trainee420071001",
+		"en|ch|tc|kr": "MARTIAL LVL-1"
+	},
+	{
+		"id": "420073001",
+		"key": "trainee420071001desc",
+		"en|ch|tc|kr": "+ 2% max hp"
+	},
+	{
+		"id": "420072002",
+		"key": "trainee420071002",
+		"en|ch|tc|kr": "Martial lvl-2"
+	},
+	{
+		"id": "420073002",
+		"key": "trainee420071002desc",
+		"en|ch|tc|kr": "+ 4% Max HP"
+	},
+	{
+		"id": "420072003",
+		"key": "trainee420071003",
+		"en|ch|tc|kr": "MARTIAL LVL-3"
+	},
+	{
+		"id": "420073003",
+		"key": "trainee420071003desc",
+		"en|ch|tc|kr": "+ 7% Max HP"
+	},
+	{
+		"id": "420072004",
+		"key": "trainee420071004",
+		"en|ch|tc|kr": "MARTIAL LVL-4"
+	},
+	{
+		"id": "420073004",
+		"key": "trainee420071004desc",
+		"en|ch|tc|kr": "+ 10% max hp"
+	},
+	{
+		"id": "420072005",
+		"key": "trainee420071005",
+		"en|ch|tc|kr": "Martial LVL-5"
+	},
+	{
+		"id": "420073005",
+		"key": "trainee420071005desc",
+		"en|ch|tc|kr": "+ 15% max hp"
+	},
+	{
+		"id": "420072006",
+		"key": "trainee420071006",
+		"en|ch|tc|kr": "MARTIAL LVL-6"
+	},
+	{
+		"id": "420073006",
+		"key": "trainee420071006desc",
+		"en|ch|tc|kr": "+ 20% max hp"
+	},
+	{
+		"id": "420072007",
+		"key": "trainee420071007",
+		"en|ch|tc|kr": "Martial LVL-7"
+	},
+	{
+		"id": "420073007",
+		"key": "trainee420071007desc",
+		"en|ch|tc|kr": "+ 30% Max HP"
+	},
+	{
+		"id": "420072008",
+		"key": "trainee420071008",
+		"en|ch|tc|kr": "MARTIAL LVL-8"
+	},
+	{
+		"id": "420073008",
+		"key": "trainee420071008desc",
+		"en|ch|tc|kr": "+ 40% Max HP"
+	},
+	{
+		"id": "420072009",
+		"key": "trainee420071009",
+		"en|ch|tc|kr": "MARTIAL LVL-9"
+	},
+	{
+		"id": "420073009",
+		"key": "trainee420071009desc",
+		"en|ch|tc|kr": "+ 60% Max HP"
+	},
+	{
+		"id": "420072010",
+		"key": "trainee420071010",
+		"en|ch|tc|kr": "MARTIAL LVL-10"
+	},
+	{
+		"id": "420073010",
+		"key": "trainee420071010desc",
+		"en|ch|tc|kr": "+ 90% max hp"
+	}
+]

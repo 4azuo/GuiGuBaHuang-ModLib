@@ -1,0 +1,14 @@
+[
+	{
+		"__name": "Old But Strong",
+		"id": "420700044",
+		"key": "balance420700044",
+		"en|ch|tc|kr": "Vieux mais fort"
+	},
+	{
+		"__name": "Old But Strong",
+		"id": "421700044",
+		"key": "balance420700044desc",
+		"en|ch|tc|kr": "Votre Def + 2, HP + 50 chaque année."
+	}
+]

@@ -1,0 +1,102 @@
+[
+	{
+		"id": "420032001",
+		"key": "apprentice420031001",
+		"en|ch|tc|kr": "Talismans Lvl-I"
+	},
+	{
+		"id": "420033001",
+		"key": "apprentice420031001desc",
+		"en|ch|tc|kr": "+ V% Max procul"
+	},
+	{
+		"id": "420032002",
+		"key": "apprentice420031002",
+		"en|ch|tc|kr": "Talismans lvl-II"
+	},
+	{
+		"id": "420033002",
+		"key": "apprentice420031002desc",
+		"en|ch|tc|kr": "+ X% Max procul"
+	},
+	{
+		"id": "420032003",
+		"key": "apprentice420031003",
+		"en|ch|tc|kr": "Talismans lvl-III"
+	},
+	{
+		"id": "420033003",
+		"key": "apprentice420031003desc",
+		"en|ch|tc|kr": "+ XV% Max procul"
+	},
+	{
+		"id": "420032004",
+		"key": "apprentice420031004",
+		"en|ch|tc|kr": "Talismans lvl-IV"
+	},
+	{
+		"id": "420033004",
+		"key": "apprentice420031004desc",
+		"en|ch|tc|kr": "+ XX% max procul"
+	},
+	{
+		"id": "420032005",
+		"key": "apprentice420031005",
+		"en|ch|tc|kr": "Talismans lvl-V"
+	},
+	{
+		"id": "420033005",
+		"key": "apprentice420031005desc",
+		"en|ch|tc|kr": "+ XXV% max procul"
+	},
+	{
+		"id": "420032006",
+		"key": "apprentice420031006",
+		"en|ch|tc|kr": "Talismans lvl-VI"
+	},
+	{
+		"id": "420033006",
+		"key": "apprentice420031006desc",
+		"en|ch|tc|kr": "+ XXX% max procul"
+	},
+	{
+		"id": "420032007",
+		"key": "apprentice420031007",
+		"en|ch|tc|kr": "Talismans lvl-VII"
+	},
+	{
+		"id": "420033007",
+		"key": "apprentice420031007desc",
+		"en|ch|tc|kr": "+ XXXV% Max procul"
+	},
+	{
+		"id": "420032008",
+		"key": "apprentice420031008",
+		"en|ch|tc|kr": "Talismans lvl-VIII"
+	},
+	{
+		"id": "420033008",
+		"key": "apprentice420031008desc",
+		"en|ch|tc|kr": "+ XL% Max procul"
+	},
+	{
+		"id": "420032009",
+		"key": "apprentice420031009",
+		"en|ch|tc|kr": "Talismans Lvl-IX"
+	},
+	{
+		"id": "420033009",
+		"key": "apprentice420031009desc",
+		"en|ch|tc|kr": "+ XLV% max procul"
+	},
+	{
+		"id": "420032010",
+		"key": "apprentice420031010",
+		"en|ch|tc|kr": "Talismans Lvl-X"
+	},
+	{
+		"id": "420033010",
+		"key": "apprentice420031010desc",
+		"en|ch|tc|kr": "+ L% max procul"
+	}
+]

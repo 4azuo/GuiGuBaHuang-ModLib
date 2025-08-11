@@ -1,117 +1,127 @@
 [
-  {
-    "id": "420102001",
-    "key": "rebirth420101001",
-    "ch|en|kr|tc": "Phá kén trùng sinh"
-  },
-  {
-    "id": "420103001",
-    "key": "rebirth420101001desc",
-    "ch|en|kr|tc": "+5% Thể lực"
-  },
-  {
-    "id": "420102002",
-    "key": "rebirth420101002",
-    "ch|en|kr|tc": "Trùng sinh chi nhị"
-  },
-  {
-    "id": "420103002",
-    "key": "rebirth420101002desc",
-    "ch|en|kr|tc": "+10% Thể lực"
-  },
-  {
-    "id": "420102003",
-    "key": "rebirth420101003",
-    "ch|en|kr|tc": "Trùng sinh chi tam"
-  },
-  {
-    "id": "420103003",
-    "key": "rebirth420101003desc",
-    "ch|en|kr|tc": "+15% Thể lực"
-  },
-  {
-    "id": "420102004",
-    "key": "rebirth420101004",
-    "ch|en|kr|tc": "Trùng sinh chi tứ"
-  },
-  {
-    "id": "420103004",
-    "key": "rebirth420101004desc",
-    "ch|en|kr|tc": "+20% Thể lực"
-  },
-  {
-    "id": "420102005",
-    "key": "rebirth420101005",
-    "ch|en|kr|tc": "Trùng sinh chi ngũ"
-  },
-  {
-    "id": "420103005",
-    "key": "rebirth420101005desc",
-    "ch|en|kr|tc": "+25% Thể lực"
-  },
-  {
-    "id": "420102006",
-    "key": "rebirth420101006",
-    "ch|en|kr|tc": "Trùng sinh chi lục"
-  },
-  {
-    "id": "420103006",
-    "key": "rebirth420101006desc",
-    "ch|en|kr|tc": "+30% Thể lực"
-  },
-  {
-    "id": "420102007",
-    "key": "rebirth420101007",
-    "ch|en|kr|tc": "Trùng sinh chi thất"
-  },
-  {
-    "id": "420103007",
-    "key": "rebirth420101007desc",
-    "ch|en|kr|tc": "+35% Thể lực"
-  },
-  {
-    "id": "420102008",
-    "key": "rebirth420101008",
-    "ch|en|kr|tc": "Trùng sinh chi bát"
-  },
-  {
-    "id": "420103008",
-    "key": "rebirth420101008desc",
-    "ch|en|kr|tc": "+40% Thể lực"
-  },
-  {
-    "id": "420102009",
-    "key": "rebirth420101009",
-    "ch|en|kr|tc": "Trùng sinh chi cửu"
-  },
-  {
-    "id": "420103009",
-    "key": "rebirth420101009desc",
-    "ch|en|kr|tc": "+45% Thể lực"
-  },
-  {
-    "id": "420102010",
-    "key": "rebirth420101010",
-    "ch|en|kr|tc": "Trùng sinh chi thập"
-  },
-  {
-    "id": "420103010",
-    "key": "rebirth420101010desc",
-    "ch|en|kr|tc": "+50% Thể lực"
-  },
-  {
-    "id": "420109999",
-    "key": "rebirth420109999dialog",
-    "ch|en|kr|tc": "Lần này trùng sinh là một cái cơ hội. Một cái uốn nắn quá khứ sai lầm, truy cầu con đường khác nhau cơ hội. Ta nhất định phải sáng suốt lựa chọn. Giữ lại nào kỹ năng, từ bỏ nào tri thức. Mỗi một cái quyết định đều sẽ tạo nên vận mệnh của ta."
-  },
-  {
-    "id": "420103100",
-    "key": "rebirth420103100",
-    "ch|en|kr|tc": "Ngươi nhất định phải rời đi tông môn!"
-  },
-  {
-    "id": "420103101",
-    "key": "rebirth420103101",
-    "ch|en|kr|tc": "Danh vọng xóa bỏ"
-  }
+	{
+		"id": "420102001",
+		"key": "rebirth420101001",
+		"en|ch|tc|kr": "Tái sinh 1"
+	},
+	{
+		"id": "420103001",
+		"key": "rebirth420101001desc",
+		"en|ch|tc|kr": "+5% HP tối đa"
+	},
+	{
+		"id": "420102002",
+		"key": "rebirth420101002",
+		"en|ch|tc|kr": "Tái sinh 2"
+	},
+	{
+		"id": "420103002",
+		"key": "rebirth420101002desc",
+		"en|ch|tc|kr": "+10% HP tối đa"
+	},
+	{
+		"id": "420102003",
+		"key": "rebirth420101003",
+		"en|ch|tc|kr": "Tái sinh 3"
+	},
+	{
+		"id": "420103003",
+		"key": "rebirth420101003desc",
+		"en|ch|tc|kr": "+15% HP tối đa"
+	},
+	{
+		"id": "420102004",
+		"key": "rebirth420101004",
+		"en|ch|tc|kr": "Tái sinh 4"
+	},
+	{
+		"id": "420103004",
+		"key": "rebirth420101004desc",
+		"en|ch|tc|kr": "+20% HP tối đa"
+	},
+	{
+		"id": "420102005",
+		"key": "rebirth420101005",
+		"en|ch|tc|kr": "Tái sinh 5"
+	},
+	{
+		"id": "420103005",
+		"key": "rebirth420101005desc",
+		"en|ch|tc|kr": "+25% HP tối đa"
+	},
+	{
+		"id": "420102006",
+		"key": "rebirth420101006",
+		"en|ch|tc|kr": "Tái sinh 6"
+	},
+	{
+		"id": "420103006",
+		"key": "rebirth420101006desc",
+		"en|ch|tc|kr": "+30% HP tối đa"
+	},
+	{
+		"id": "420102007",
+		"key": "rebirth420101007",
+		"en|ch|tc|kr": "Tái sinh 7"
+	},
+	{
+		"id": "420103007",
+		"key": "rebirth420101007desc",
+		"en|ch|tc|kr": "+35% HP tối đa"
+	},
+	{
+		"id": "420102008",
+		"key": "rebirth420101008",
+		"en|ch|tc|kr": "Tái sinh 8"
+	},
+	{
+		"id": "420103008",
+		"key": "rebirth420101008desc",
+		"en|ch|tc|kr": "+40% HP tối đa"
+	},
+	{
+		"id": "420102009",
+		"key": "rebirth420101009",
+		"en|ch|tc|kr": "Tái sinh 9"
+	},
+	{
+		"id": "420103009",
+		"key": "rebirth420101009desc",
+		"en|ch|tc|kr": "+45% HP tối đa"
+	},
+	{
+		"id": "420102010",
+		"key": "rebirth420101010",
+		"en|ch|tc|kr": "Tái sinh 10"
+	},
+	{
+		"id": "420103010",
+		"key": "rebirth420101010desc",
+		"en|ch|tc|kr": "+50% HP tối đa"
+	},
+	{
+		"id": "420109999",
+		"key": "rebirth420109999dialog",
+		"en|ch|tc|kr": "Tái sinh này là một cơ hội. Một cơ hội để khắc phục những sai lầm trong quá khứ, để theo đuổi một con đường khác. Tôi phải chọn một cách khôn ngoan. Những kỹ năng để giữ lại, những gì kiến thức để loại bỏ. Mọi quyết định sẽ định hình định mệnh của tôi."
+	},
+	{
+		"id": "420103100",
+		"key": "rebirth420103100",
+		"en|ch|tc|kr": "Bạn phải rời khỏi giáo phái!"
+	},
+	{
+		"id": "420103101",
+		"key": "rebirth420103101",
+		"en|ch|tc|kr": "Danh tiếng sẽ được đặt lại!"
+	},
+	{
+		"id": "420103102",
+		"key": "rebirth420103102",
+		"en|ch|tc|kr": "Tái sinh"
+	},
+	{
+		"id": "420103103",
+		"key": "rebirth420103103",
+		"en|ch|tc|kr": "Cơ chế này sẽ thiết lập lại tất cả các cấp độ nhân vật, exp và danh tiếng của bạn.\nKhi bạn trở lại với cùng một cấp độ, nhân vật của bạn sẽ mạnh mẽ hơn."
+	}
 ]

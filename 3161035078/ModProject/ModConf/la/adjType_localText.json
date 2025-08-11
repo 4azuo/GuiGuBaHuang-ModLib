@@ -1,0 +1,182 @@
+[
+	{
+		"id": "500010000",
+		"key": "adjType500010000",
+		"en|ch|tc|kr": "ATK"
+	},
+	{
+		"id": "500010001",
+		"key": "adjType500010001",
+		"en|ch|tc|kr": "C"
+	},
+	{
+		"id": "500010002",
+		"key": "adjType500010002",
+		"en|ch|tc|kr": "Hp"
+	},
+	{
+		"id": "500010003",
+		"key": "adjType500010003",
+		"en|ch|tc|kr": "Mp"
+	},
+	{
+		"id": "500010004",
+		"key": "adjType500010004",
+		"en|ch|tc|kr": "Sp"
+	},
+	{
+		"id": "500010005",
+		"key": "adjType500010005",
+		"en|ch|tc|kr": "Sana HP"
+	},
+	{
+		"id": "500010006",
+		"key": "adjType500010006",
+		"en|ch|tc|kr": "Sana MP"
+	},
+	{
+		"id": "500010007",
+		"key": "adjType500010007",
+		"en|ch|tc|kr": "Sana sp"
+	},
+	{
+		"id": "500010008",
+		"key": "adjType500010008",
+		"en|ch|tc|kr": "Ferrum"
+	},
+	{
+		"id": "500010009",
+		"key": "adjType500010009",
+		"en|ch|tc|kr": "Tellus"
+	},
+	{
+		"id": "500010010",
+		"key": "adjType500010010",
+		"en|ch|tc|kr": "Digitus"
+	},
+	{
+		"id": "500010011",
+		"key": "adjType500010011",
+		"en|ch|tc|kr": "Igneus"
+	},
+	{
+		"id": "500010012",
+		"key": "adjType500010012",
+		"en|ch|tc|kr": "Pugnus"
+	},
+	{
+		"id": "500010013",
+		"key": "adjType500010013",
+		"en|ch|tc|kr": "Refrigesco"
+	},
+	{
+		"id": "500010014",
+		"key": "adjType500010014",
+		"en|ch|tc|kr": "Palma"
+	},
+	{
+		"id": "500010015",
+		"key": "adjType500010015",
+		"en|ch|tc|kr": "Hasta"
+	},
+	{
+		"id": "500010016",
+		"key": "adjType500010016",
+		"en|ch|tc|kr": "Gladio"
+	},
+	{
+		"id": "500010017",
+		"key": "adjType500010017",
+		"en|ch|tc|kr": "Tonitro"
+	},
+	{
+		"id": "500010018",
+		"key": "adjType500010018",
+		"en|ch|tc|kr": "Vento"
+	},
+	{
+		"id": "500010019",
+		"key": "adjType500010019",
+		"en|ch|tc|kr": "Lignum"
+	},
+	{
+		"id": "500010020",
+		"key": "adjType500010020",
+		"en|ch|tc|kr": "Celeritate"
+	},
+	{
+		"id": "500010021",
+		"key": "adjType500010021",
+		"en|ch|tc|kr": "Clausus (% max)"
+	},
+	{
+		"id": "500010022",
+		"key": "adjType500010022",
+		"en|ch|tc|kr": "Clausus (DMG)"
+	},
+	{
+		"id": "500010023",
+		"key": "adjType500010023",
+		"en|ch|tc|kr": "Evadere (%)"
+	},
+	{
+		"id": "500010024",
+		"key": "adjType500010024",
+		"en|ch|tc|kr": "Evadere (% max)"
+	},
+	{
+		"id": "500010025",
+		"key": "adjType500010025",
+		"en|ch|tc|kr": "Induo"
+	},
+	{
+		"id": "500010026",
+		"key": "adjType500010026",
+		"en|ch|tc|kr": "Scutum"
+	},
+	{
+		"id": "500010027",
+		"key": "adjType500010027",
+		"en|ch|tc|kr": "Scrit (%)"
+	},
+	{
+		"id": "500010028",
+		"key": "adjType500010028",
+		"en|ch|tc|kr": "Scrit (% max)"
+	},
+	{
+		"id": "500010029",
+		"key": "adjType500010029",
+		"en|ch|tc|kr": "Scrrit (% DMG)"
+	},
+	{
+		"id": "500010030",
+		"key": "adjType500010030",
+		"en|ch|tc|kr": "Arte (% dmg)"
+	},
+	{
+		"id": "500010031",
+		"key": "adjType500010031",
+		"en|ch|tc|kr": "DMG min-"
+	},
+	{
+		"id": "500010032",
+		"key": "adjType500010032",
+		"en|ch|tc|kr": "Furantur (HP)"
+	},
+	{
+		"id": "500010033",
+		"key": "adjType500010033",
+		"en|ch|tc|kr": "Furantur (procul)"
+	},
+	{
+		"id": "500010034",
+		"key": "adjType500010034",
+		"en|ch|tc|kr": "Furantur (SP)"
+	},
+	{
+		"id": "500010035",
+		"key": "adjType500010035",
+		"en|ch|tc|kr": "Mors (%)"
+	}
+]

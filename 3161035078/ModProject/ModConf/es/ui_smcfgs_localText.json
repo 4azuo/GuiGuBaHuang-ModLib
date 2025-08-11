@@ -1,0 +1,437 @@
+[
+	{
+		"id": -1000001000,
+		"key": "smcfgs000",
+		"en|ch|tc|kr": "Monstruo:"
+	},
+	{
+		"id": -1000001001,
+		"key": "smcfgs001",
+		"en|ch|tc|kr": "ATK"
+	},
+	{
+		"id": -1000001002,
+		"key": "smcfgs002",
+		"en|ch|tc|kr": "Defensor"
+	},
+	{
+		"id": -1000001003,
+		"key": "smcfgs003",
+		"en|ch|tc|kr": "Max HP"
+	},
+	{
+		"id": -1000001004,
+		"key": "smcfgs004",
+		"en|ch|tc|kr": "Base"
+	},
+	{
+		"id": -1000001005,
+		"key": "smcfgs005",
+		"en|ch|tc|kr": "(Incluyó espada, cuchilla, lanza, puño, dedo, palma, fuego, agua, trueno, madera, viento, tierra)"
+	},
+	{
+		"id": -1000001006,
+		"key": "smcfgs006",
+		"en|ch|tc|kr": "Tarifa especial de monstruos"
+	},
+	{
+		"id": -1000001007,
+		"key": "smcfgs007",
+		"en|ch|tc|kr": "Económico:"
+	},
+	{
+		"id": -1000001008,
+		"key": "smcfgs008",
+		"en|ch|tc|kr": "Tasa impositiva"
+	},
+	{
+		"id": -1000001009,
+		"key": "smcfgs009",
+		"en|ch|tc|kr": "Tasa de inflación"
+	},
+	{
+		"id": -1000001010,
+		"key": "smcfgs010",
+		"en|ch|tc|kr": "Costo de construcción"
+	},
+	{
+		"id": -1000001011,
+		"key": "smcfgs011",
+		"en|ch|tc|kr": "Costo de cuenta bancaria"
+	},
+	{
+		"id": -1000001012,
+		"key": "smcfgs012",
+		"en|ch|tc|kr": "Tarifa bancaria"
+	},
+	{
+		"id": -1000001013,
+		"key": "smcfgs013",
+		"en|ch|tc|kr": "Costo de refinar"
+	},
+	{
+		"id": -1000001014,
+		"key": "smcfgs014",
+		"en|ch|tc|kr": "Tarifa de intercambio de la secta"
+	},
+	{
+		"id": -1000001015,
+		"key": "smcfgs015",
+		"en|ch|tc|kr": "Valor de artículo"
+	},
+	{
+		"id": -1000001016,
+		"key": "smcfgs016",
+		"en|ch|tc|kr": "NPC:"
+	},
+	{
+		"id": -1000001017,
+		"key": "smcfgs017",
+		"en|ch|tc|kr": "Tasa de crecimiento"
+	},
+	{
+		"id": -1000001018,
+		"key": "smcfgs018",
+		"en|ch|tc|kr": "Misc:"
+	},
+	{
+		"id": -1000001019,
+		"key": "smcfgs019",
+		"en|ch|tc|kr": "LevelUp Exp"
+	},
+	{
+		"id": -1000001020,
+		"key": "smcfgs020",
+		"en|ch|tc|kr": "Sistemas:"
+	},
+	{
+		"id": -1000001021,
+		"key": "smcfgs021",
+		"en|ch|tc|kr": "Ocultar botón Guardar"
+	},
+	{
+		"id": -1000001022,
+		"key": "smcfgs022",
+		"en|ch|tc|kr": "Ocultar botón de recarga"
+	},
+	{
+		"id": -1000001023,
+		"key": "smcfgs023",
+		"en|ch|tc|kr": "Una vida"
+	},
+	{
+		"id": -1000001024,
+		"key": "smcfgs024",
+		"en|ch|tc|kr": "Ocultar mapa de batalla"
+	},
+	{
+		"id": -1000001025,
+		"key": "smcfgs025",
+		"en|ch|tc|kr": "Nivel de destino prioritario"
+	},
+	{
+		"id": -1000001026,
+		"key": "smcfgs026",
+		"en|ch|tc|kr": "Por defecto"
+	},
+	{
+		"id": -1000001027,
+		"key": "smcfgs027",
+		"en|ch|tc|kr": "Blanco"
+	},
+	{
+		"id": -1000001028,
+		"key": "smcfgs028",
+		"en|ch|tc|kr": "Verde"
+	},
+	{
+		"id": -1000001029,
+		"key": "smcfgs029",
+		"en|ch|tc|kr": "Azul"
+	},
+	{
+		"id": -1000001030,
+		"key": "smcfgs030",
+		"en|ch|tc|kr": "Violeta"
+	},
+	{
+		"id": -1000001031,
+		"key": "smcfgs031",
+		"en|ch|tc|kr": "Amarillo"
+	},
+	{
+		"id": -1000001032,
+		"key": "smcfgs032",
+		"en|ch|tc|kr": "Rojo"
+	},
+	{
+		"id": -1000001033,
+		"key": "smcfgs033",
+		"en|ch|tc|kr": "Solo portal en la ciudad y la secta"
+	},
+	{
+		"id": -1000001034,
+		"key": "smcfgs034",
+		"en|ch|tc|kr": "Secta sin intercambio"
+	},
+	{
+		"id": -1000001035,
+		"key": "smcfgs035",
+		"en|ch|tc|kr": "Sin renacimiento"
+	},
+	{
+		"id": -1000001036,
+		"key": "smcfgs036",
+		"en|ch|tc|kr": "Permitir la actualización naturalmente"
+	},
+	{
+		"id": -1000001037,
+		"key": "smcfgs037",
+		"en|ch|tc|kr": "(De esta manera no crecerá sus atributos/propiedades)"
+	},
+	{
+		"id": -1000001038,
+		"key": "smcfgs038",
+		"en|ch|tc|kr": "El jefe tiene escudo"
+	},
+	{
+		"id": -1000001039,
+		"key": "smcfgs039",
+		"en|ch|tc|kr": "No hay creciente de batallas"
+	},
+	{
+		"id": -1000001040,
+		"key": "smcfgs040",
+		"en|ch|tc|kr": "No Exp de Battles"
+	},
+	{
+		"id": -1000001041,
+		"key": "smcfgs041",
+		"en|ch|tc|kr": "Habilitar entrenador"
+	},
+	{
+		"id": -1000001042,
+		"key": "smcfgs042",
+		"en|ch|tc|kr": "(¡No recomiendo usar esta opción! Clave caliente en el juego: 【Ctrl+1】)"
+	},
+	{
+		"id": -1000001043,
+		"key": "smcfgs043",
+		"en|ch|tc|kr": "Puntuación total: {0} P"
+	},
+	{
+		"id": -1000001044,
+		"key": "smcfgs044",
+		"en|ch|tc|kr": "Por defecto"
+	},
+	{
+		"id": -1000001045,
+		"key": "smcfgs045",
+		"en|ch|tc|kr": "Nivel"
+	},
+	{
+		"id": -1000001046,
+		"key": "smcfgs046",
+		"en|ch|tc|kr": "¡Tienes que comenzar un nuevo juego para aplicar estas configuraciones!"
+	},
+	{
+		"id": -1000001047,
+		"key": "smcfgs047",
+		"en|ch|tc|kr": "Cantidad NPC"
+	},
+	{
+		"id": -1000001048,
+		"key": "smcfgs048",
+		"en|ch|tc|kr": "(RAM requerido: {0} MB)"
+	},
+	{
+		"id": -1000001049,
+		"key": "smcfgs049",
+		"en|ch|tc|kr": "(Incluido escudo, explotar y multiplicar)"
+	},
+	{
+		"id": -1000001050,
+		"key": "smcfgs050",
+		"en|ch|tc|kr": "Permitir la acumulación de la ciudad con el tiempo"
+	},
+	{
+		"id": -1000001051,
+		"key": "smcfgs051",
+		"en|ch|tc|kr": "Velocidad de crecimiento"
+	},
+	{
+		"id": -1000001052,
+		"key": "smcfgs052",
+		"en|ch|tc|kr": "(Incluir jugador, NPC y monstruos)"
+	},
+	{
+		"id": -1000001053,
+		"key": "smcfgs053",
+		"en|ch|tc|kr": "Cada {1} meses ({0} P)"
+	},
+	{
+		"id": -1000001054,
+		"key": "smcfgs054",
+		"en|ch|tc|kr": "Configuraciones de exportación"
+	},
+	{
+		"id": -1000001055,
+		"key": "smcfgs055",
+		"en|ch|tc|kr": "Importar configuraciones"
+	},
+	{
+		"id": -1000001056,
+		"key": "smcfgs056",
+		"en|ch|tc|kr": "Artículos perdidos cuando muere"
+	},
+	{
+		"id": -1000001057,
+		"key": "smcfgs057",
+		"en|ch|tc|kr": "(Incluye la primera ciudad)"
+	},
+	{
+		"id": -1000001058,
+		"key": "smcfgs058",
+		"en|ch|tc|kr": "El monstruo depende del jugador"
+	},
+	{
+		"id": -1000001059,
+		"key": "smcfgs059",
+		"en|ch|tc|kr": "Guardar automático después de perderse"
+	},
+	{
+		"id": -1000001060,
+		"key": "smcfgs060",
+		"en|ch|tc|kr": "(La hora se saltará al próximo mes para la curación)"
+	},
+	{
+		"id": -1000001101,
+		"key": "smcfgs101",
+		"en|ch|tc|kr": "{1}% ({0} P)"
+	},
+	{
+		"id": -1000001102,
+		"key": "smcfgs102",
+		"en|ch|tc|kr": "({0} P)"
+	},
+	{
+		"id": -1000001103,
+		"key": "smcfgs103",
+		"en|ch|tc|kr": "{1} ({0} P)"
+	},
+	{
+		"id": -1000001104,
+		"key": "smcfgs104",
+		"en|ch|tc|kr": "Puesta en marcha"
+	},
+	{
+		"id": -1000001105,
+		"key": "smcfgs105",
+		"en|ch|tc|kr": "Power Up: un personaje especializado en todos los aspectos.\nSpeed Up: un personaje especializado en velocidad.\nTaoísta: un personaje especializado en magia.\nPro Atk: un personaje especializado en ataque.\nPro Def: un personaje especializado en defensa.\nÁngel: un ángel de buen corazón, centrado en la defensa y la protección.\nEvil: un demonio rechazado por todos, centrado en el ataque.\nComerciante: un comerciante que aplasta a otros con riqueza."
+	},
+	{
+		"id": -1000001106,
+		"key": "smcfgs106",
+		"en|ch|tc|kr": "Papel de jugador"
+	},
+	{
+		"id": -1000001107,
+		"key": "smcfgs107",
+		"en|ch|tc|kr": "Aleatorio"
+	},
+	{
+		"id": -1000001108,
+		"key": "smcfgs108",
+		"en|ch|tc|kr": "Encender"
+	},
+	{
+		"id": -1000001109,
+		"key": "smcfgs109",
+		"en|ch|tc|kr": "Acelerar"
+	},
+	{
+		"id": -1000001110,
+		"key": "smcfgs110",
+		"en|ch|tc|kr": "Taoísta"
+	},
+	{
+		"id": -1000001111,
+		"key": "smcfgs111",
+		"en|ch|tc|kr": "Pro atk"
+	},
+	{
+		"id": -1000001112,
+		"key": "smcfgs112",
+		"en|ch|tc|kr": "Pro Def"
+	},
+	{
+		"id": -1000001113,
+		"key": "smcfgs113",
+		"en|ch|tc|kr": "Ángel"
+	},
+	{
+		"id": -1000001114,
+		"key": "smcfgs114",
+		"en|ch|tc|kr": "Demonio"
+	},
+	{
+		"id": -1000001115,
+		"key": "smcfgs115",
+		"en|ch|tc|kr": "Comerciante"
+	},
+	{
+		"id": -1000001116,
+		"key": "smcfgs116",
+		"en|ch|tc|kr": "Artículo de mercado"
+	},
+	{
+		"id": -1000001117,
+		"key": "smcfgs117",
+		"en|ch|tc|kr": "Tasa de unión de NPC"
+	},
+	{
+		"id": -1000001118,
+		"key": "smcfgs118",
+		"en|ch|tc|kr": "Obtenga una tasa atacada"
+	},
+	{
+		"id": -1000001119,
+		"key": "smcfgs119",
+		"en|ch|tc|kr": "(Advertencia: esta característica consume mucha carnero y puede causar retraso)"
+	},
+	{
+		"id": -1000001120,
+		"key": "smcfgs120",
+		"en|ch|tc|kr": "Guardar datos"
+	},
+	{
+		"id": -1000001121,
+		"key": "smcfgs121",
+		"en|ch|tc|kr": "Configuraciones de mod"
+	},
+	{
+		"id": -1000001122,
+		"key": "smcfgs122",
+		"en|ch|tc|kr": "Sin impuestos"
+	},
+	{
+		"id": -1000001123,
+		"key": "smcfgs123",
+		"en|ch|tc|kr": "Sin artículos del mercado"
+	},
+	{
+		"id": -1000001124,
+		"key": "smcfgs124",
+		"en|ch|tc|kr": "Sin acosadores"
+	},
+	{
+		"id": -1000001125,
+		"key": "smcfgs125",
+		"en|ch|tc|kr": "Sin cultivo de Qi"
+	},
+	{
+		"id": -1000001126,
+		"key": "smcfgs126",
+		"en|ch|tc|kr": "(Los NPC todavía tienen que pagar impuestos)"
+	}
+]

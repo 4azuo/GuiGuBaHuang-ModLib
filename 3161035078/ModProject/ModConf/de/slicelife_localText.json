@@ -1,0 +1,122 @@
+[
+	{
+		"id": "444441001",
+		"key": "slicelife444441001",
+		"en|ch|tc|kr": "Slice of Life 1"
+	},
+	{
+		"id": "444442001",
+		"key": "slicelife444441001desc",
+		"en|ch|tc|kr": "+25% max HP, +6% max MP"
+	},
+	{
+		"id": "444443001",
+		"key": "taskName444443001",
+		"en|ch|tc|kr": "Slice of Life 1"
+	},
+	{
+		"id": "444443101",
+		"key": "taskDesc444443001",
+		"en|ch|tc|kr": "5 Jahre lang ohne Schlachten ausgehen."
+	},
+	{
+		"id": "444441002",
+		"key": "slicelife444441002",
+		"en|ch|tc|kr": "Slice of Life 2"
+	},
+	{
+		"id": "444442002",
+		"key": "slicelife444441002desc",
+		"en|ch|tc|kr": "+50% max HP, +12% Max MP"
+	},
+	{
+		"id": "444443002",
+		"key": "taskName444443002",
+		"en|ch|tc|kr": "Slice of Life 2"
+	},
+	{
+		"id": "444443102",
+		"key": "taskDesc444443002",
+		"en|ch|tc|kr": "10 Jahre lang ohne Schlachten ausgehen."
+	},
+	{
+		"id": "444441003",
+		"key": "slicelife444441003",
+		"en|ch|tc|kr": "Slice of Life 3"
+	},
+	{
+		"id": "444442003",
+		"key": "slicelife444441003desc",
+		"en|ch|tc|kr": "+80% max HP, +20% max MP"
+	},
+	{
+		"id": "444443003",
+		"key": "taskName444443003",
+		"en|ch|tc|kr": "Slice of Life 3"
+	},
+	{
+		"id": "444443103",
+		"key": "taskDesc444443003",
+		"en|ch|tc|kr": "20 Jahre lang ohne Schlachten ausgehen."
+	},
+	{
+		"id": "444441004",
+		"key": "slicelife444441004",
+		"en|ch|tc|kr": "Slice of Life 4"
+	},
+	{
+		"id": "444442004",
+		"key": "slicelife444441004desc",
+		"en|ch|tc|kr": "+120% max HP, +30% max MP, +2% Def"
+	},
+	{
+		"id": "444443004",
+		"key": "taskName444443004",
+		"en|ch|tc|kr": "Slice of Life 4"
+	},
+	{
+		"id": "444443104",
+		"key": "taskDesc444443004",
+		"en|ch|tc|kr": "40 Jahre ohne Schlachten gehen."
+	},
+	{
+		"id": "444441005",
+		"key": "slicelife444441005",
+		"en|ch|tc|kr": "Slice of Life 5"
+	},
+	{
+		"id": "444442005",
+		"key": "slicelife444441005desc",
+		"en|ch|tc|kr": "+160% max HP, +40% max MP, +5% Def"
+	},
+	{
+		"id": "444443005",
+		"key": "taskName444443005",
+		"en|ch|tc|kr": "Slice of Life 5"
+	},
+	{
+		"id": "444443105",
+		"key": "taskDesc444443005",
+		"en|ch|tc|kr": "100 Jahre ohne Schlachten ausgehen."
+	},
+	{
+		"id": "444441006",
+		"key": "slicelife444441006",
+		"en|ch|tc|kr": "Slice of Life 6"
+	},
+	{
+		"id": "444442006",
+		"key": "slicelife444441006desc",
+		"en|ch|tc|kr": "+220% max HP, +60% max MP, +10% Def"
+	},
+	{
+		"id": "444443006",
+		"key": "taskName444443006",
+		"en|ch|tc|kr": "Slice of Life 6"
+	},
+	{
+		"id": "444443106",
+		"key": "taskDesc444443006",
+		"en|ch|tc|kr": "300 Jahre lang ohne Schlachten ausgehen."
+	}
+]

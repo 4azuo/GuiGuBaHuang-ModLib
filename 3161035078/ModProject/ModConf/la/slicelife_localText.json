@@ -1,0 +1,122 @@
+[
+	{
+		"id": "444441001",
+		"key": "slicelife444441001",
+		"en|ch|tc|kr": "Segmentum vitae I"
+	},
+	{
+		"id": "444442001",
+		"key": "slicelife444441001desc",
+		"en|ch|tc|kr": "+ XXV% Max HP, + VI% Max procul"
+	},
+	{
+		"id": "444443001",
+		"key": "taskName444443001",
+		"en|ch|tc|kr": "Segmentum vitae I"
+	},
+	{
+		"id": "444443101",
+		"key": "taskDesc444443001",
+		"en|ch|tc|kr": "Vnde V annis sine excursibus in omni proeliis."
+	},
+	{
+		"id": "444441002",
+		"key": "slicelife444441002",
+		"en|ch|tc|kr": "Segmentum vitae II"
+	},
+	{
+		"id": "444442002",
+		"key": "slicelife444441002desc",
+		"en|ch|tc|kr": "L% Max HP, + XII% Max procul"
+	},
+	{
+		"id": "444443002",
+		"key": "taskName444443002",
+		"en|ch|tc|kr": "Segmentum vitae II"
+	},
+	{
+		"id": "444443102",
+		"key": "taskDesc444443002",
+		"en|ch|tc|kr": "Euntes X annis sine commisso in omni proeliis."
+	},
+	{
+		"id": "444441003",
+		"key": "slicelife444441003",
+		"en|ch|tc|kr": "Segmentum vitae III"
+	},
+	{
+		"id": "444442003",
+		"key": "slicelife444441003desc",
+		"en|ch|tc|kr": "+ LXXX% Max HP, + XX% Max procul"
+	},
+	{
+		"id": "444443003",
+		"key": "taskName444443003",
+		"en|ch|tc|kr": "Segmentum vitae III"
+	},
+	{
+		"id": "444443103",
+		"key": "taskDesc444443003",
+		"en|ch|tc|kr": "Euntes XX annos sine excursu in omni proeliis."
+	},
+	{
+		"id": "444441004",
+		"key": "slicelife444441004",
+		"en|ch|tc|kr": "Segmentum vitae IV"
+	},
+	{
+		"id": "444442004",
+		"key": "slicelife444441004desc",
+		"en|ch|tc|kr": "+ CXX% Max HP, + XXX% max procul, + II% Def"
+	},
+	{
+		"id": "444443004",
+		"key": "taskName444443004",
+		"en|ch|tc|kr": "Segmentum vitae IV"
+	},
+	{
+		"id": "444443104",
+		"key": "taskDesc444443004",
+		"en|ch|tc|kr": "Ad XL annis sine commisso in omni proeliis."
+	},
+	{
+		"id": "444441005",
+		"key": "slicelife444441005",
+		"en|ch|tc|kr": "FRUSTUM vitae V"
+	},
+	{
+		"id": "444442005",
+		"key": "slicelife444441005desc",
+		"en|ch|tc|kr": "+ CLX% Max HP, + XL% Max procul, + V% Def"
+	},
+	{
+		"id": "444443005",
+		"key": "taskName444443005",
+		"en|ch|tc|kr": "FRUSTUM vitae V"
+	},
+	{
+		"id": "444443105",
+		"key": "taskDesc444443005",
+		"en|ch|tc|kr": "Euntes C annis sine commisso in omni proeliis."
+	},
+	{
+		"id": "444441006",
+		"key": "slicelife444441006",
+		"en|ch|tc|kr": "Segmentum vitae VI"
+	},
+	{
+		"id": "444442006",
+		"key": "slicelife444441006desc",
+		"en|ch|tc|kr": "+ CCXX% Max HP, + LX% Max procul, + X% Def"
+	},
+	{
+		"id": "444443006",
+		"key": "taskName444443006",
+		"en|ch|tc|kr": "Segmentum vitae VI"
+	},
+	{
+		"id": "444443106",
+		"key": "taskDesc444443006",
+		"en|ch|tc|kr": "Euntes CCC annis sine commissuram ullo proelia."
+	}
+]

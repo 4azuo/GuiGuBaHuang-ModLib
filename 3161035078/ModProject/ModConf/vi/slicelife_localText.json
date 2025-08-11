@@ -1,122 +1,122 @@
 [
-  {
-    "id": "444441001",
-    "key": "slicelife444441001",
-    "ch|en|tc|kr": "Nhập thế tu hành năm năm"
-  },
-  {
-    "id": "444442001",
-    "key": "slicelife444441001desc",
-    "ch|en|tc|kr": "+25% Thể lực, +6% Linh lực"
-  },
-  {
-    "id": "444443001",
-    "key": "taskName444443001",
-    "ch|en|tc|kr": "Nhập thế tu hành năm năm"
-  },
-  {
-    "id": "444443101",
-    "key": "taskDesc444443001",
-    "ch|en|tc|kr": "Năm năm không có tham gia bất luận cái gì chiến đấu."
-  },
-  {
-    "id": "444441002",
-    "key": "slicelife444441002",
-    "ch|en|tc|kr": "Nhập thế tu hành mười năm"
-  },
-  {
-    "id": "444442002",
-    "key": "slicelife444441002desc",
-    "ch|en|tc|kr": "+50% Thể lực, +12% Linh lực"
-  },
-  {
-    "id": "444443002",
-    "key": "taskName444443002",
-    "ch|en|tc|kr": "Nhập thế tu hành mười năm"
-  },
-  {
-    "id": "444443102",
-    "key": "taskDesc444443002",
-    "ch|en|tc|kr": "Mười năm không có tham gia bất luận cái gì chiến đấu."
-  },
-  {
-    "id": "444441003",
-    "key": "slicelife444441003",
-    "ch|en|tc|kr": "Nhập thế tu hành hai mươi năm"
-  },
-  {
-    "id": "444442003",
-    "key": "slicelife444441003desc",
-    "ch|en|tc|kr": "+80% Thể lực, +20% Linh lực"
-  },
-  {
-    "id": "444443003",
-    "key": "taskName444443003",
-    "ch|en|tc|kr": "Nhập thế tu hành hai mươi năm"
-  },
-  {
-    "id": "444443103",
-    "key": "taskDesc444443003",
-    "ch|en|tc|kr": "Hai mươi năm không có tham gia bất luận cái gì chiến đấu."
-  },
-  {
-    "id": "444441004",
-    "key": "slicelife444441004",
-    "ch|en|tc|kr": "Nhập thế tu hành bốn mươi năm"
-  },
-  {
-    "id": "444442004",
-    "key": "slicelife444441004desc",
-    "ch|en|tc|kr": "+120% Thể lực, +30% Linh lực, +2% Phòng ngự"
-  },
-  {
-    "id": "444443004",
-    "key": "taskName444443004",
-    "ch|en|tc|kr": "Nhập thế tu hành bốn mươi năm"
-  },
-  {
-    "id": "444443104",
-    "key": "taskDesc444443004",
-    "ch|en|tc|kr": "Bốn mươi năm không có tham gia bất luận cái gì chiến đấu."
-  },
-  {
-    "id": "444441005",
-    "key": "slicelife444441005",
-    "ch|en|tc|kr": "Nhập thế tu hành một trăm năm"
-  },
-  {
-    "id": "444442005",
-    "key": "slicelife444441005desc",
-    "ch|en|tc|kr": "+160% Thể lực, +40% Linh lực, +5% Phòng ngự"
-  },
-  {
-    "id": "444443005",
-    "key": "taskName444443005",
-    "ch|en|tc|kr": "Nhập thế tu hành một trăm năm"
-  },
-  {
-    "id": "444443105",
-    "key": "taskDesc444443005",
-    "ch|en|tc|kr": "Một trăm năm không có tham gia bất luận cái gì chiến đấu."
-  },
-  {
-    "id": "444441006",
-    "key": "slicelife444441006",
-    "ch|en|tc|kr": "Nhập thế tu hành ba trăm năm"
-  },
-  {
-    "id": "444442006",
-    "key": "slicelife444441006desc",
-    "ch|en|tc|kr": "+220% Thể lực, +60% Linh lực, +10% Phòng ngự"
-  },
-  {
-    "id": "444443006",
-    "key": "taskName444443006",
-    "ch|en|tc|kr": "Nhập thế tu hành"
-  },
-  {
-    "id": "444443106",
-    "key": "taskDesc444443006",
-    "ch|en|tc|kr": "Ba trăm năm không có tham gia bất luận cái gì chiến đấu."
-  }
+	{
+		"id": "444441001",
+		"key": "slicelife444441001",
+		"en|ch|tc|kr": "Slice of Life 1"
+	},
+	{
+		"id": "444442001",
+		"key": "slicelife444441001desc",
+		"en|ch|tc|kr": "+25% HP tối đa, +6% MAX MP"
+	},
+	{
+		"id": "444443001",
+		"key": "taskName444443001",
+		"en|ch|tc|kr": "Slice of Life 1"
+	},
+	{
+		"id": "444443101",
+		"key": "taskDesc444443001",
+		"en|ch|tc|kr": "Đi 5 năm mà không tham gia vào bất kỳ trận chiến."
+	},
+	{
+		"id": "444441002",
+		"key": "slicelife444441002",
+		"en|ch|tc|kr": "Slice of Life 2"
+	},
+	{
+		"id": "444442002",
+		"key": "slicelife444441002desc",
+		"en|ch|tc|kr": "+50% HP tối đa, +12% MAX MP"
+	},
+	{
+		"id": "444443002",
+		"key": "taskName444443002",
+		"en|ch|tc|kr": "Slice of Life 2"
+	},
+	{
+		"id": "444443102",
+		"key": "taskDesc444443002",
+		"en|ch|tc|kr": "Đi 10 năm mà không tham gia vào bất kỳ trận chiến."
+	},
+	{
+		"id": "444441003",
+		"key": "slicelife444441003",
+		"en|ch|tc|kr": "Slice of Life 3"
+	},
+	{
+		"id": "444442003",
+		"key": "slicelife444441003desc",
+		"en|ch|tc|kr": "+80% HP tối đa, +20% MAX MP"
+	},
+	{
+		"id": "444443003",
+		"key": "taskName444443003",
+		"en|ch|tc|kr": "Slice of Life 3"
+	},
+	{
+		"id": "444443103",
+		"key": "taskDesc444443003",
+		"en|ch|tc|kr": "Đi 20 năm mà không tham gia vào bất kỳ trận chiến."
+	},
+	{
+		"id": "444441004",
+		"key": "slicelife444441004",
+		"en|ch|tc|kr": "Slice of Life 4"
+	},
+	{
+		"id": "444442004",
+		"key": "slicelife444441004desc",
+		"en|ch|tc|kr": "+120% HP tối đa, +30% MAX MP, +2% def"
+	},
+	{
+		"id": "444443004",
+		"key": "taskName444443004",
+		"en|ch|tc|kr": "Slice of Life 4"
+	},
+	{
+		"id": "444443104",
+		"key": "taskDesc444443004",
+		"en|ch|tc|kr": "Đi 40 năm mà không tham gia vào bất kỳ trận chiến."
+	},
+	{
+		"id": "444441005",
+		"key": "slicelife444441005",
+		"en|ch|tc|kr": "Slice of Life 5"
+	},
+	{
+		"id": "444442005",
+		"key": "slicelife444441005desc",
+		"en|ch|tc|kr": "+160% HP tối đa, +40% MAX MP, +5% def"
+	},
+	{
+		"id": "444443005",
+		"key": "taskName444443005",
+		"en|ch|tc|kr": "Slice of Life 5"
+	},
+	{
+		"id": "444443105",
+		"key": "taskDesc444443005",
+		"en|ch|tc|kr": "Đi 100 năm mà không tham gia vào bất kỳ trận chiến."
+	},
+	{
+		"id": "444441006",
+		"key": "slicelife444441006",
+		"en|ch|tc|kr": "Slice of Life 6"
+	},
+	{
+		"id": "444442006",
+		"key": "slicelife444441006desc",
+		"en|ch|tc|kr": "+220% tối đa HP, +60% MAX MP, +10% def"
+	},
+	{
+		"id": "444443006",
+		"key": "taskName444443006",
+		"en|ch|tc|kr": "Slice of Life 6"
+	},
+	{
+		"id": "444443106",
+		"key": "taskDesc444443006",
+		"en|ch|tc|kr": "Đi 300 năm mà không tham gia vào bất kỳ trận chiến."
+	}
 ]

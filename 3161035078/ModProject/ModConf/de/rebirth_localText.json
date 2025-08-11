@@ -1,0 +1,127 @@
+[
+	{
+		"id": "420102001",
+		"key": "rebirth420101001",
+		"en|ch|tc|kr": "Wiedergeburt 1"
+	},
+	{
+		"id": "420103001",
+		"key": "rebirth420101001desc",
+		"en|ch|tc|kr": "+5% max HP"
+	},
+	{
+		"id": "420102002",
+		"key": "rebirth420101002",
+		"en|ch|tc|kr": "Wiedergeburt 2"
+	},
+	{
+		"id": "420103002",
+		"key": "rebirth420101002desc",
+		"en|ch|tc|kr": "+10% max HP"
+	},
+	{
+		"id": "420102003",
+		"key": "rebirth420101003",
+		"en|ch|tc|kr": "Wiedergeburt 3"
+	},
+	{
+		"id": "420103003",
+		"key": "rebirth420101003desc",
+		"en|ch|tc|kr": "+15% max HP"
+	},
+	{
+		"id": "420102004",
+		"key": "rebirth420101004",
+		"en|ch|tc|kr": "Wiedergeburt 4"
+	},
+	{
+		"id": "420103004",
+		"key": "rebirth420101004desc",
+		"en|ch|tc|kr": "+20% max HP"
+	},
+	{
+		"id": "420102005",
+		"key": "rebirth420101005",
+		"en|ch|tc|kr": "Wiedergeburt 5"
+	},
+	{
+		"id": "420103005",
+		"key": "rebirth420101005desc",
+		"en|ch|tc|kr": "+25% max HP"
+	},
+	{
+		"id": "420102006",
+		"key": "rebirth420101006",
+		"en|ch|tc|kr": "Wiedergeburt 6"
+	},
+	{
+		"id": "420103006",
+		"key": "rebirth420101006desc",
+		"en|ch|tc|kr": "+30% max HP"
+	},
+	{
+		"id": "420102007",
+		"key": "rebirth420101007",
+		"en|ch|tc|kr": "Wiedergeburt 7"
+	},
+	{
+		"id": "420103007",
+		"key": "rebirth420101007desc",
+		"en|ch|tc|kr": "+35% max HP"
+	},
+	{
+		"id": "420102008",
+		"key": "rebirth420101008",
+		"en|ch|tc|kr": "Wiedergeburt 8"
+	},
+	{
+		"id": "420103008",
+		"key": "rebirth420101008desc",
+		"en|ch|tc|kr": "+40% max HP"
+	},
+	{
+		"id": "420102009",
+		"key": "rebirth420101009",
+		"en|ch|tc|kr": "Wiedergeburt 9"
+	},
+	{
+		"id": "420103009",
+		"key": "rebirth420101009desc",
+		"en|ch|tc|kr": "+45% max HP"
+	},
+	{
+		"id": "420102010",
+		"key": "rebirth420101010",
+		"en|ch|tc|kr": "Wiedergeburt 10"
+	},
+	{
+		"id": "420103010",
+		"key": "rebirth420101010desc",
+		"en|ch|tc|kr": "+50% max HP"
+	},
+	{
+		"id": "420109999",
+		"key": "rebirth420109999dialog",
+		"en|ch|tc|kr": "Diese Wiedergeburt ist eine Chance. Eine Chance, vergangene Fehler zu korrigieren, einen anderen Weg zu verfolgen. Ich muss mit Bedacht wählen. Welche Fähigkeiten zu behalten, welches Wissen zu entsorgen. Jede Entscheidung wird mein Schicksal prägen."
+	},
+	{
+		"id": "420103100",
+		"key": "rebirth420103100",
+		"en|ch|tc|kr": "Sie müssen die Sekte verlassen!"
+	},
+	{
+		"id": "420103101",
+		"key": "rebirth420103101",
+		"en|ch|tc|kr": "Der Ruf wird zurückgesetzt!"
+	},
+	{
+		"id": "420103102",
+		"key": "rebirth420103102",
+		"en|ch|tc|kr": "Wiedergeburt"
+	},
+	{
+		"id": "420103103",
+		"key": "rebirth420103103",
+		"en|ch|tc|kr": "Dieser Mechaniker setzt Ihre gesamte Charakterebene, Exp und Ruf zurück.\nWenn Sie mit dem gleichen Niveau zurückkommen, ist Ihr Charakter stärker."
+	}
+]

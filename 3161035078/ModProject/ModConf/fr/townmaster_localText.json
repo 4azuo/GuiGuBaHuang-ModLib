@@ -1,0 +1,52 @@
+[
+	{
+		"id": "420041110",
+		"key": "townmaster420041110desc",
+		"en|ch|tc|kr": "Townmaster420041110DESC"
+	},
+	{
+		"id": "420041111",
+		"key": "townmaster420041111",
+		"en|ch|tc|kr": "Maître de la ville"
+	},
+	{
+		"id": "420041112",
+		"key": "townmaster420041112",
+		"en|ch|tc|kr": "Gardien de la ville"
+	},
+	{
+		"id": "420041113",
+		"key": "townmaster420041113drama",
+		"en|ch|tc|kr": "Vous devenez ce maître de la ville."
+	},
+	{
+		"id": "420041114",
+		"key": "townmaster420041114drama",
+		"en|ch|tc|kr": "Vous avez reçu une invitation de {0} 'Town Master for Guardian?\nVoulez-vous devenir gardien de la ville?."
+	},
+	{
+		"id": "420041115",
+		"key": "townmaster420041114dramaOpt1",
+		"en|ch|tc|kr": "Oui"
+	},
+	{
+		"id": "420041116",
+		"key": "townmaster420041114dramaOpt2",
+		"en|ch|tc|kr": "No"
+	},
+	{
+		"id": "420041117",
+		"key": "townmaster420041117",
+		"en|ch|tc|kr": "Ville: {0} ／ Master: {1}"
+	},
+	{
+		"id": "420041118",
+		"key": "townmaster420041118",
+		"en|ch|tc|kr": "Budget: {0: #, ## 0}"
+	},
+	{
+		"id": "420041119",
+		"key": "townmaster420041119",
+		"en|ch|tc|kr": "Paiement: {0: #, ## 0} / année"
+	}
+]

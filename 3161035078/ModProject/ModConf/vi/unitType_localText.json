@@ -1,82 +1,82 @@
 [
-  {
-    "id": "420010100",
-    "key": "unitType420010100",
-    "ch|en|tc|kr": "Gia tăng lực lượng"
-  },
-  {
-    "id": "420010200",
-    "key": "unitType420010200",
-    "ch|en|tc|kr": "Gia tăng tốc độ"
-  },
-  {
-    "id": "420010300",
-    "key": "unitType420010300",
-    "ch|en|tc|kr": "Đạo giáo"
-  },
-  {
-    "id": "420010400",
-    "key": "unitType420010400",
-    "ch|en|tc|kr": "Chiến Sư"
-  },
-  {
-    "id": "420010500",
-    "key": "unitType420010500",
-    "ch|en|tc|kr": "Kim Cang Bất Hoại"
-  },
-  {
-    "id": "420010600",
-    "key": "unitType420010600",
-    "ch|en|tc|kr": "Chính"
-  },
-  {
-    "id": "420010700",
-    "key": "unitType420010700",
-    "ch|en|tc|kr": "Ma"
-  },
-  {
-    "id": "420010800",
-    "key": "unitType420010800",
-    "ch|en|tc|kr": "Thương nhân"
-  },
-  {
-    "id": "421010100",
-    "key": "unitType420010100desc",
-    "ch|en|tc|kr": "Công kích +10%, thể lực +20%"
-  },
-  {
-    "id": "421010200",
-    "key": "unitType420010200desc",
-    "ch|en|tc|kr": "Di tốc +30%"
-  },
-  {
-    "id": "421010300",
-    "key": "unitType420010300desc",
-    "ch|en|tc|kr": "Công kích +8%, thể lực +15%, linh lực +10%"
-  },
-  {
-    "id": "421010400",
-    "key": "unitType420010400desc",
-    "ch|en|tc|kr": "Công kích +30%"
-  },
-  {
-    "id": "421010500",
-    "key": "unitType420010500desc",
-    "ch|en|tc|kr": "Thể lực +25%, phòng ngự +5"
-  },
-  {
-    "id": "421010600",
-    "key": "unitType420010600desc",
-    "ch|en|tc|kr": "Công kích +50%, di tốc +10%, thể lực +20%, linh lực +10%, chính đạo +100%, ma đạo -100%"
-  },
-  {
-    "id": "421010700",
-    "key": "unitType420010700desc",
-    "ch|en|tc|kr": "Công kích +30%, phòng ngự +10%, thể lực +100%, chính đạo -100%, ma đạo -30%"
-  },
-  {
-    "id": "421010800",
-    "key": "unitType420010800desc",
-    "ch|en|tc|kr": "Công kích -10%, phòng ngự -10%, thể lực -25%, linh lực -50%, miễn phí tồn trữ, -10% Thị trường mua chi phí, +10% Giá thị trường, +3% Mỗi tháng thu nhập"
-  }
+	{
+		"id": "420010100",
+		"key": "unitType420010100",
+		"en|ch|tc|kr": "Tăng sức mạnh"
+	},
+	{
+		"id": "420010200",
+		"key": "unitType420010200",
+		"en|ch|tc|kr": "Tăng tốc"
+	},
+	{
+		"id": "420010300",
+		"key": "unitType420010300",
+		"en|ch|tc|kr": "Đạo giáo"
+	},
+	{
+		"id": "420010400",
+		"key": "unitType420010400",
+		"en|ch|tc|kr": "Pro Atk"
+	},
+	{
+		"id": "420010500",
+		"key": "unitType420010500",
+		"en|ch|tc|kr": "Pro def"
+	},
+	{
+		"id": "420010600",
+		"key": "unitType420010600",
+		"en|ch|tc|kr": "Thiên thần"
+	},
+	{
+		"id": "420010700",
+		"key": "unitType420010700",
+		"en|ch|tc|kr": "Độc ác"
+	},
+	{
+		"id": "420010800",
+		"key": "unitType420010800",
+		"en|ch|tc|kr": "Thương gia"
+	},
+	{
+		"id": "421010100",
+		"key": "unitType420010100desc",
+		"en|ch|tc|kr": "ATK +10%, HP +20%"
+	},
+	{
+		"id": "421010200",
+		"key": "unitType420010200desc",
+		"en|ch|tc|kr": "Agi +30%"
+	},
+	{
+		"id": "421010300",
+		"key": "unitType420010300desc",
+		"en|ch|tc|kr": "ATK +8%, HP +15%, MP +10%"
+	},
+	{
+		"id": "421010400",
+		"key": "unitType420010400desc",
+		"en|ch|tc|kr": "ATK +30%"
+	},
+	{
+		"id": "421010500",
+		"key": "unitType420010500desc",
+		"en|ch|tc|kr": "HP +25%, def +5%"
+	},
+	{
+		"id": "421010600",
+		"key": "unitType420010600desc",
+		"en|ch|tc|kr": "ATK +50%, AGI +10%, HP +20%, MP +10%, chính nghĩa +100%, Demonic -100%\n\nMỗi khi bạn giết một cái ác, thì số liệu thống kê của bạn tăng 20% bởi các số liệu thống kê xấu xa.\n(HP/MP/SP/ATK/DEF/cơ sở tốt nhất)"
+	},
+	{
+		"id": "421010700",
+		"key": "unitType420010700desc",
+		"en|ch|tc|kr": "ATK +30%, def +10%, HP +100%, chính đáng -100%, quỷ -30%\n\nMỗi khi bạn giết một con người, thì số liệu thống kê của bạn tăng 1% bởi các số liệu thống kê đơn vị bị giết.\n(HP/MP/SP/ATK/DEF/Tất cả các cơ sở)"
+	},
+	{
+		"id": "421010800",
+		"key": "unitType420010800desc",
+		"en|ch|tc|kr": "ATK -10%, DEF -10%, HP -25%, MP -50%, lưu trữ miễn phí, -10%chi phí mua thị trường, +10%giá trị bán thị trường, +3%thu nhập hàng tháng\n\nBạn có thể thấy số liệu thống kê của các mục NPC."
+	}
 ]
