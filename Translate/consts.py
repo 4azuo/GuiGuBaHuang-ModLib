@@ -45,3 +45,17 @@ DIR_PATTERNS = {
     'modconf_path': 'ModProject/ModConf',
     'localtext_pattern': '*localText.json'
 }
+
+# Cấu hình progress bar
+PROGRESS_BAR_CONFIG = {
+    'width': 40,  # Độ rộng cố định cho tất cả progress bar
+    'fill_char': '█',
+    'empty_char': '░',
+    'show_percentage': True,
+    'show_count': True,
+    'show_time': True,
+    'min_update_interval': 0.1,  # Minimum seconds between updates
+    'max_desc_length': 50,  # Giới hạn độ dài description
+    'max_line_length': 120,  # Terminal width limit
+    'clear_line_width': 150  # Width for clearing terminal line
+}

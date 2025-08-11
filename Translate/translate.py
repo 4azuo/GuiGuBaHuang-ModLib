@@ -26,9 +26,24 @@ from consts import (
     SKIP_TRANSLATION_PATTERNS,
     DIR_PATTERNS
 )
-from data_types import ProcessingStats, TranslationConfig, FileType
+from data_types import ProcessingStats, TranslationConfig, FileType, ProgressConfig
 from file_utils import FileUtils
 from json_utils import JsonUtils
+from progressbar_utils import (
+    ProgressContext, 
+    progress_manager, 
+    create_file_progress_config, 
+    create_translation_progress_config,
+    print_header, 
+    print_section, 
+    print_file_info, 
+    print_result, 
+    print_stats, 
+    print_error, 
+    print_warning, 
+    print_success, 
+    print_info
+)
 
 class TranslationService:
     """Service để thực hiện dịch text"""
@@ -70,19 +85,16 @@ class TranslationService:
                     
                 except Exception as network_error:
                     if attempt < self.config.max_retries - 1:
-                        print(f"    Thử lại lần {attempt + 2} cho '{text[:50]}{'...' if len(text) > 50 else ''}'")
+                        # Silent retry - progress bar will show overall progress
                         time.sleep(self.config.retry_delay)
                     else:
-                        print(f"    Lỗi dịch '{text}' sang {target_lang} sau {self.config.max_retries} lần thử: {network_error}")
                         self.stats.failed_count += 1
                         return text
                         
         except KeyboardInterrupt:
-            print(f"\\n⚠️ Đã dừng bởi người dùng. Đã dịch {self.stats.translated_count} text.")
             raise
             
         except Exception as e:
-            print(f"    Lỗi dịch '{text}' sang {target_lang}: {e}")
             self.stats.failed_count += 1
             return text
 
@@ -109,16 +121,16 @@ class LocalTextProcessor:
         modconf_path = os.path.join(project_path, DIR_PATTERNS['modconf_path'])
         
         if not os.path.exists(modconf_path):
-            print(f"❌ Không tìm thấy thư mục: {modconf_path}")
+            print_error(f"Không tìm thấy thư mục", modconf_path)
             return
         
-        print(f"📂 Thư mục ModConf: {modconf_path}")
+        print_info(f"Thư mục ModConf", modconf_path)
         
         # Tìm tất cả file localText
         files = FileUtils.find_localtext_files(modconf_path, target_path)
         
         if not files:
-            print("Không tìm thấy file localText nào!")
+            print_warning("Không tìm thấy file localText nào!")
             return
         
         # Phân loại file
@@ -135,131 +147,212 @@ class LocalTextProcessor:
         else:  # both
             files_to_process = files
         
-        print(f"\\n📊 THỐNG KÊ FILE")
-        print(f"📁 Tổng số file tìm thấy: {len(files)}")
-        print(f"📄 Main files: {len(main_files)}")
-        print(f"🌍 Locale files: {len(locale_files)}")
-        print(f"🎯 Loại xử lý: {file_type}")
+        # Hiển thị thống kê
+        stats_info = {
+            "📁 Tổng số file tìm thấy": len(files),
+            "📄 Main files": len(main_files),
+            "🌍 Locale files": len(locale_files),
+            "🎯 Loại xử lý": file_type,
+            "🌍 Ngôn ngữ target": ', '.join(self.config.target_languages)
+        }
         if file_type != "both":
-            print(f"📋 Sẽ xử lý: {len(files_to_process)} file")
-        print(f"🌍 Ngôn ngữ target: {', '.join(self.config.target_languages)}")
+            stats_info["📋 Sẽ xử lý"] = f"{len(files_to_process)} file"
         
-        # Bước 1: Dọn dẹp locale cũ (chỉ khi xử lý main files)
-        if file_type in ["main", "both"] and main_files:
-            print(f"\\n--- Dọn dẹp locale cũ ---")
-            cleaned_count = FileUtils.clean_old_locale_directories(modconf_path, self.config.target_languages)
-            if cleaned_count > 0:
-                print(f"Dọn dẹp {cleaned_count} thư mục locale cũ")
+        print_stats(stats_info)
         
-        # Bước 2: Xử lý main files
-        if file_type in ["main", "both"] and main_files:
-            print(f"\\n--- Xử lý {len(main_files)} main file ---")
-            for file_path in main_files:
-                if self.process_main_file(file_path):
-                    self.stats.processed_count += 1
+        try:
+            # Bước 1: Xử lý main files
+            if file_type in ["main", "both"] and main_files:
+                print_section(f"Xử lý {len(main_files)} main file")
+                
+                with ProgressContext(
+                    len(main_files), 
+                    "Đang xử lý main files...", 
+                    create_file_progress_config("📄")
+                ) as progress:
+                    for i, file_path in enumerate(main_files):
+                        filename = os.path.basename(file_path)
+                        # Cắt ngắn filename cho progress display
+                        display_name = filename[:25] + "..." if len(filename) > 25 else filename
+                        progress.update(1, f"Xử lý {display_name}")
+                        
+                        # Chỉ tạo locale files khi file_type là "both"
+                        create_locales = (file_type == "both")
+                        # Tắt verbose output khi đang có progress bar
+                        if self.process_main_file(file_path, create_locales, verbose=False):
+                            self.stats.processed_count += 1
+            
+            # Bước 2: Xử lý locale files (chỉ khi file_type là "locale")
+            if file_type == "locale" and locale_files:
+                print_section(f"Xử lý {len(locale_files)} locale file")
+                
+                with ProgressContext(
+                    len(locale_files), 
+                    "Đang xử lý locale files...", 
+                    create_file_progress_config("🌍")
+                ) as progress:
+                    for file_path in locale_files:
+                        filename = os.path.basename(file_path)
+                        # Cắt ngắn filename cho progress display
+                        display_name = filename[:25] + "..." if len(filename) > 25 else filename
+                        progress.update(1, f"Xử lý {display_name}")
+                        
+                        if self.process_locale_file(file_path):
+                            self.stats.processed_count += 1
         
-        # Bước 3: Xử lý locale files (nếu có)
-        if file_type in ["locale", "both"] and locale_files:
-            print(f"\\n--- Xử lý {len(locale_files)} locale file ---")
-            for file_path in locale_files:
-                if self.process_locale_file(file_path):
-                    self.stats.processed_count += 1
+        except KeyboardInterrupt:
+            print_warning("Quá trình xử lý đã bị dừng bởi người dùng")
+            # Cleanup progress bars
+            progress_manager.cleanup()
+            raise
         
         # Thống kê kết quả
         end_time = time.time()
         elapsed_time = end_time - start_time
         
-        print(f"\\n📊 KẾT QUẢ")
-        print(f"📁 Tổng số file: {len(files)}")
-        print(f"✅ Xử lý thành công: {self.stats.processed_count}")
-        print(f"🌍 Đã dịch: {self.translation_service.stats.translated_count} text")
-        print(f"❌ Lỗi dịch: {self.translation_service.stats.failed_count} text")
-        print(f"⏱️ Thời gian: {elapsed_time:.1f}s")
+        result_stats = {
+            "📁 Tổng số file": len(files),
+            "✅ Xử lý thành công": self.stats.processed_count,
+            "🌍 Đã dịch": f"{self.translation_service.stats.translated_count} text",
+            "❌ Lỗi dịch": f"{self.translation_service.stats.failed_count} text",
+            "⏱️ Thời gian": f"{elapsed_time:.1f}s"
+        }
+        print_stats(result_stats)
     
-    def process_main_file(self, file_path: str) -> bool:
-        """Xử lý main file và tạo các locale file tương ứng"""
+    def process_main_file(self, file_path: str, create_locales: bool = True, verbose: bool = True) -> bool:
+        """Xử lý main file và tạo các locale file tương ứng (tùy chọn)"""
         try:
-            print(f"  📄 {os.path.basename(file_path)}")
+            filename = os.path.basename(file_path)
             
             # Đọc main file
             main_data = JsonUtils.read_json_file(file_path)
             if not main_data:
-                print(f"    ❌ Không đọc được file")
+                if verbose:
+                    print_result("❌", f"Không đọc được file {filename}")
                 return False
             
             # Kiểm tra cấu trúc
             if not JsonUtils.validate_json_structure(main_data.data):
-                print(f"    ⚠️ File không có dữ liệu tiếng Anh để dịch")
+                if verbose:
+                    print_result("⚠️", f"File {filename} không có dữ liệu tiếng Anh để dịch")
                 return True  # Không phải lỗi, chỉ là file không cần dịch
             
             # Đếm số text cần dịch
             translatable_count = JsonUtils.get_translatable_count(main_data)
-            print(f"    📝 {translatable_count} text cần dịch")
             
-            # Tạo locale file cho mỗi ngôn ngữ
-            for language in self.config.target_languages:
-                locale_file_path = FileUtils.create_locale_file_path(file_path, language)
-                
-                # Đảm bảo thư mục tồn tại
-                FileUtils.ensure_directory_exists(locale_file_path)
-                
-                # Tạo dữ liệu locale
-                locale_data = JsonUtils.create_locale_data_from_main(
-                    main_data, 
-                    language, 
-                    self.translation_service.translate_text
-                )
-                
-                # Sắp xếp dữ liệu
-                locale_data = JsonUtils.sort_json_data(locale_data)
-                
-                # Ghi file
-                if JsonUtils.write_json_file(locale_file_path, locale_data):
-                    print(f"    ✅ {language}: {os.path.basename(locale_file_path)}")
-                else:
-                    print(f"    ❌ {language}: Lỗi ghi file")
-                    return False
+            if create_locales:
+                # Tạo locale file cho mỗi ngôn ngữ
+                for language in self.config.target_languages:
+                    locale_file_path = FileUtils.create_locale_file_path(file_path, language)
+                    
+                    # Đảm bảo thư mục tồn tại
+                    FileUtils.ensure_directory_exists(locale_file_path)
+                    
+                    if verbose:
+                        print_info(f"Đang dịch {filename} sang {language}", f"{translatable_count} text")
+                    
+                    # Tạo progress-aware translator
+                    progress_bar = progress_manager.create_progress(
+                        f"translate_{language}", 
+                        translatable_count, 
+                        create_translation_progress_config()
+                    )
+                    progress_manager.set_active(f"translate_{language}")
+                    
+                    def progress_translator(text: str, target_lang: str) -> str:
+                        result = self.translation_service.translate_text(text, target_lang)
+                        progress_manager.update_active(1, f"Dịch: {text[:30]}{'...' if len(text) > 30 else ''}")
+                        return result
+                    
+                    # Tạo dữ liệu locale
+                    locale_data = JsonUtils.create_locale_data_from_main(
+                        main_data, 
+                        language, 
+                        progress_translator
+                    )
+                    
+                    # Hoàn thành progress bar
+                    progress_manager.finish_active(f"Hoàn thành {language}")
+                    
+                    # Sắp xếp dữ liệu
+                    locale_data = JsonUtils.sort_json_data(locale_data)
+                    
+                    # Ghi file
+                    if JsonUtils.write_json_file(locale_file_path, locale_data):
+                        print_result("✅", f"{language}", os.path.basename(locale_file_path))
+                    else:
+                        print_result("❌", f"Lỗi ghi file {language}")
+                        return False
+            else:
+                # Chỉ xử lý main file, không tạo locale files
+                if verbose:
+                    print_result("✅", f"Đã xử lý main file", filename)
             
             return True
             
         except KeyboardInterrupt:
-            print(f"\\n⚠️ Xử lý file bị gián đoạn: {file_path}")
+            progress_manager.cleanup()
             raise
             
         except Exception as e:
-            print(f"    ❌ Lỗi xử lý file: {e}")
+            print_result("❌", f"Lỗi xử lý file {filename}", str(e))
             return False
     
     def process_locale_file(self, file_path: str) -> bool:
         """Xử lý locale file dựa trên main file tương ứng"""
         try:
-            print(f"  🌍 {os.path.basename(file_path)}")
+            filename = os.path.basename(file_path)
+            
+            # Dọn dẹp file locale cũ trước khi tạo mới
+            if os.path.exists(file_path):
+                os.remove(file_path)
             
             # Tìm main file tương ứng
             main_file_path = FileUtils.find_main_file(file_path)
             if not main_file_path:
-                print(f"    ⚠️ Không tìm thấy main file tương ứng")
+                print_warning(f"Không tìm thấy main file tương ứng cho {filename}")
                 # Fallback: xử lý như main file
                 return self.process_main_file(file_path)
             
             # Xác định ngôn ngữ đích
             target_lang = FileUtils.get_locale_language(file_path)
             if not target_lang:
-                print(f"    ❌ Không xác định được ngôn ngữ")
+                print_result("❌", f"Không xác định được ngôn ngữ cho {filename}")
                 return False
             
             # Đọc main file
             main_data = JsonUtils.read_json_file(main_file_path)
             if not main_data:
-                print(f"    ❌ Không đọc được main file: {main_file_path}")
+                print_result("❌", f"Không đọc được main file", main_file_path)
                 return False
+            
+            # Đếm số text cần dịch
+            translatable_count = JsonUtils.get_translatable_count(main_data)
+            
+            print_info(f"Tạo lại {filename} cho {target_lang}", f"{translatable_count} text")
+            
+            # Tạo progress-aware translator cho locale file
+            progress_bar = progress_manager.create_progress(
+                f"locale_{target_lang}", 
+                translatable_count, 
+                create_translation_progress_config()
+            )
+            progress_manager.set_active(f"locale_{target_lang}")
+            
+            def progress_translator(text: str, target_lang: str) -> str:
+                result = self.translation_service.translate_text(text, target_lang)
+                progress_manager.update_active(1, f"Dịch: {text[:30]}{'...' if len(text) > 30 else ''}")
+                return result
             
             # Tạo dữ liệu locale
             locale_data = JsonUtils.create_locale_data_from_main(
                 main_data, 
                 target_lang, 
-                self.translation_service.translate_text
+                progress_translator
             )
+            
+            # Hoàn thành progress bar
+            progress_manager.finish_active(f"Hoàn thành {target_lang}")
             
             # Sắp xếp dữ liệu
             locale_data = JsonUtils.sort_json_data(locale_data)
@@ -269,18 +362,18 @@ class LocalTextProcessor:
             
             # Ghi file
             if JsonUtils.write_json_file(file_path, locale_data):
-                print(f"    ✅ Tạo lại locale file cho {target_lang}")
+                print_result("✅", f"Tạo lại locale file cho {target_lang}")
                 return True
             else:
-                print(f"    ❌ Lỗi ghi locale file")
+                print_result("❌", f"Lỗi ghi locale file {filename}")
                 return False
                 
         except KeyboardInterrupt:
-            print(f"\\n⚠️ Xử lý locale file bị gián đoạn: {file_path}")
+            progress_manager.cleanup()
             raise
             
         except Exception as e:
-            print(f"    ❌ Lỗi xử lý locale file: {e}")
+            print_result("❌", f"Lỗi xử lý locale file {filename}", str(e))
             return False
 
 def parse_target_languages(languages_str: str) -> List[str]:
@@ -344,21 +437,21 @@ Ví dụ sử dụng:
     
     args = parser.parse_args()
     
-    print("🚀 Script Xử Lý LocalText.json")
-    print(f"📦 Project: {args.project}")
-    print(f"📂 Path: {args.path}")
-    print(f"🎯 File type: {args.file_type}")
+    print_header(
+        "Script Xử Lý LocalText.json",
+        f"Project: {args.project} | Path: {args.path} | Type: {args.file_type}"
+    )
     
     # Xây dựng đường dẫn project
     project_path = os.path.join("..", args.project)
     
     if not os.path.exists(project_path):
-        print(f"❌ Không tìm thấy project: {project_path}")
+        print_error("Không tìm thấy project", project_path)
         return
     
     # Parse target languages
     target_languages = parse_target_languages(args.create_locales)
-    print(f"🌍 Ngôn ngữ locale: {', '.join(target_languages)}")
+    print_info("Ngôn ngữ locale", ', '.join(target_languages))
     
     # Tạo config
     translation_config = TranslationConfig(
@@ -388,26 +481,29 @@ Ví dụ sử dụng:
             else:  # both
                 files_to_show = files
             
-            print(f"\\nTìm thấy {len(files)} file (hiển thị {len(files_to_show)} file loại '{args.file_type}'):")
+            print_info(f"Tìm thấy {len(files)} file", f"hiển thị {len(files_to_show)} file loại '{args.file_type}'")
             for i, file_path in enumerate(files_to_show, 1):
                 rel_path = os.path.relpath(file_path, os.getcwd())
                 file_info = FileUtils.get_file_info(file_path)
                 print(f"  {i}. {rel_path} [{file_info.file_type.value}]")
         else:
-            print("Không tìm thấy file nào!")
+            print_warning("Không tìm thấy file nào!")
     else:
         # Xử lý thực tế
         try:
             processor.process_files(project_path, args.path, args.file_type)
         except KeyboardInterrupt:
-            print(f"\\n⚠️ Quá trình xử lý đã bị dừng bởi người dùng.")
-            print(f"📊 Thống kê trước khi dừng:")
-            print(f"   - Đã xử lý: {processor.stats.processed_count} file")
-            print(f"   - Đã dịch: {processor.translation_service.stats.translated_count} text")
-            print(f"💡 Bạn có thể chạy lại lệnh để tiếp tục từ nơi đã dừng.")
+            print_warning("Quá trình xử lý đã bị dừng bởi người dùng")
+            
+            interrupt_stats = {
+                "📁 Đã xử lý": f"{processor.stats.processed_count} file",
+                "🌍 Đã dịch": f"{processor.translation_service.stats.translated_count} text"
+            }
+            print_stats(interrupt_stats)
+            print_info("Bạn có thể chạy lại lệnh để tiếp tục từ nơi đã dừng")
             return
         except Exception as e:
-            print(f"❌ Lỗi trong quá trình xử lý: {e}")
+            print_error("Lỗi trong quá trình xử lý", str(e))
             return
 
 if __name__ == "__main__":

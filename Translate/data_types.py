@@ -8,6 +8,18 @@ from dataclasses import dataclass
 from typing import List, Dict, Any, Optional
 from enum import Enum
 
+@dataclass
+class ProgressConfig:
+    """Configuration for progress bar"""
+    width: int = 50
+    fill_char: str = '█'
+    empty_char: str = '░'
+    show_percentage: bool = True
+    show_time: bool = True
+    show_count: bool = True
+    prefix: str = ""
+    suffix: str = ""
+
 class FileType(Enum):
     """Loại file localText"""
     MAIN = "main"
