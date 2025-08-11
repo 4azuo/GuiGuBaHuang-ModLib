@@ -2,156 +2,201 @@
 	{
 		"id": "420102001",
 		"key": "rebirth420101001",
-		"ch": "破繭重生",
 		"en": "Rebirth 1",
-		"kr": "파고중생 1",
-		"tc": "破繭重生"
+		"ch": "破繭重生",
+		"tc": "破繭重生",
+		"kr": "파고중생 1"
 	},
 	{
 		"id": "420103001",
 		"key": "rebirth420101001desc",
-		"ch": "+5%体力",
 		"en": "+5% Max HP",
-		"kr": "+5% 최대 체력",
-		"tc": "+5%體力"
+		"ch": "+5%体力",
+		"tc": "+5%體力",
+		"kr": "+5% 최대 체력"
 	},
 	{
 		"id": "420102002",
 		"key": "rebirth420101002",
-		"ch": "重生之二",
 		"en": "Rebirth 2",
-		"kr": "중생지이 2",
-		"tc": "重生之二"
+		"ch": "重生之二",
+		"tc": "重生之二",
+		"kr": "중생지이 2"
 	},
 	{
 		"id": "420103002",
 		"key": "rebirth420101002desc",
+		"en": "+10% Max HP",
 		"ch": "+10%体力",
-		"en|kr|tc": "+10% Max HP"
+		"tc": "+最大HP 10％",
+		"kr": "+10% 최대 HP"
 	},
 	{
 		"id": "420102003",
 		"key": "rebirth420101003",
+		"en": "Rebirth 3",
 		"ch": "重生之三",
-		"en|kr|tc": "Rebirth 3"
+		"tc": "重生3",
+		"kr": "중생 3"
 	},
 	{
 		"id": "420103003",
 		"key": "rebirth420101003desc",
+		"en": "+15% Max HP",
 		"ch": "+15%体力",
-		"en|kr|tc": "+15% Max HP"
+		"tc": "+最大HP 15％",
+		"kr": "+15% 최대 HP"
 	},
 	{
 		"id": "420102004",
 		"key": "rebirth420101004",
+		"en": "Rebirth 4",
 		"ch": "重生之四",
-		"en|kr|tc": "Rebirth 4"
+		"tc": "重生4",
+		"kr": "중생 4"
 	},
 	{
 		"id": "420103004",
 		"key": "rebirth420101004desc",
+		"en": "+20% Max HP",
 		"ch": "+20%体力",
-		"en|kr|tc": "+20% Max HP"
+		"tc": "+最大HP 20％",
+		"kr": "+20% 최대 HP"
 	},
 	{
 		"id": "420102005",
 		"key": "rebirth420101005",
+		"en": "Rebirth 5",
 		"ch": "重生之五",
-		"en|kr|tc": "Rebirth 5"
+		"tc": "重生5",
+		"kr": "중생 5"
 	},
 	{
 		"id": "420103005",
 		"key": "rebirth420101005desc",
+		"en": "+25% Max HP",
 		"ch": "+25%体力",
-		"en|kr|tc": "+25% Max HP"
+		"tc": "+25％最大HP",
+		"kr": "+25% 최대 HP"
 	},
 	{
 		"id": "420102006",
 		"key": "rebirth420101006",
+		"en": "Rebirth 6",
 		"ch": "重生之六",
-		"en|kr|tc": "Rebirth 6"
+		"tc": "重生6",
+		"kr": "중생 6"
 	},
 	{
 		"id": "420103006",
 		"key": "rebirth420101006desc",
+		"en": "+30% Max HP",
 		"ch": "+30%体力",
-		"en|kr|tc": "+30% Max HP"
+		"tc": "+30％最大HP",
+		"kr": "+30% 최대 HP"
 	},
 	{
 		"id": "420102007",
 		"key": "rebirth420101007",
+		"en": "Rebirth 7",
 		"ch": "重生之七",
-		"en|kr|tc": "Rebirth 7"
+		"tc": "重生7",
+		"kr": "중생 7"
 	},
 	{
 		"id": "420103007",
 		"key": "rebirth420101007desc",
+		"en": "+35% Max HP",
 		"ch": "+35%体力",
-		"en|kr|tc": "+35% Max HP"
+		"tc": "+35％最大HP",
+		"kr": "+35% 최대 HP"
 	},
 	{
 		"id": "420102008",
 		"key": "rebirth420101008",
+		"en": "Rebirth 8",
 		"ch": "重生之八",
-		"en|kr|tc": "Rebirth 8"
+		"tc": "重生8",
+		"kr": "중생 8"
 	},
 	{
 		"id": "420103008",
 		"key": "rebirth420101008desc",
+		"en": "+40% Max HP",
 		"ch": "+40%体力",
-		"en|kr|tc": "+40% Max HP"
+		"tc": "+40％最大HP",
+		"kr": "+40% 최대 HP"
 	},
 	{
 		"id": "420102009",
 		"key": "rebirth420101009",
+		"en": "Rebirth 9",
 		"ch": "重生之九",
-		"en|kr|tc": "Rebirth 9"
+		"tc": "重生9",
+		"kr": "중생 9"
 	},
 	{
 		"id": "420103009",
 		"key": "rebirth420101009desc",
+		"en": "+45% Max HP",
 		"ch": "+45%体力",
-		"en|kr|tc": "+45% Max HP"
+		"tc": "+最大HP 45％",
+		"kr": "+45% 최대 HP"
 	},
 	{
 		"id": "420102010",
 		"key": "rebirth420101010",
+		"en": "Rebirth 10",
 		"ch": "重生之十",
-		"en|kr|tc": "Rebirth 10"
+		"tc": "重生10",
+		"kr": "중생 10"
 	},
 	{
 		"id": "420103010",
 		"key": "rebirth420101010desc",
+		"en": "+50% Max HP",
 		"ch": "+50%体力",
-		"en|kr|tc": "+50% Max HP"
+		"tc": "+50％最大HP",
+		"kr": "+50% 최대 HP"
 	},
 	{
 		"id": "420109999",
 		"key": "rebirth420109999dialog",
+		"en": "This rebirth is an opportunity. A chance to rectify past mistakes, to pursue a different path. I must choose wisely. What skills to retain, what knowledge to discard. Every decision will shape my destiny.",
 		"ch": "这次重生是一个机会。一个纠正过去错误、追求不同道路的机会。我必须明智地选择。保留哪些技能，放弃哪些知识。每一个决定都会塑造我的命运。",
-		"en|kr|tc": "This rebirth is an opportunity. A chance to rectify past mistakes, to pursue a different path. I must choose wisely. What skills to retain, what knowledge to discard. Every decision will shape my destiny."
+		"tc": "這個重生是一個機會。有機會糾正過去的錯誤，追求不同的道路。我必須明智地選擇。要保留什麼技能，要丟棄什麼知識。每個決定都會影響我的命運。",
+		"kr": "이 중생은 기회입니다. 과거의 실수를 바로 잡을 수있는 기회, 다른 길을 추구 할 수 있습니다. 나는 현명하게 선택해야합니다. 어떤 기술을 유지 해야하는지, 어떤 지식을 버릴 지. 모든 결정은 나의 운명을 형성 할 것입니다."
 	},
 	{
 		"id": "420103100",
 		"key": "rebirth420103100",
+		"en": "You have to leave the sect!",
 		"ch": "你必須離開宗門！",
-		"en|kr|tc": "You have to leave the sect!"
+		"tc": "您必須離開該教派！",
+		"kr": "당신은 종파를 떠나야합니다!"
 	},
 	{
 		"id": "420103101",
 		"key": "rebirth420103101",
+		"en": "Reputation will be reseted!",
 		"ch": "名望一笔勾销",
-		"en|kr|tc": "Reputation will be reseted!"
+		"tc": "聲譽將被重置！",
+		"kr": "평판이 재설정됩니다!"
 	},
 	{
 		"id": "420103102",
 		"key": "rebirth420103102",
+		"en": "Rebirth",
 		"ch": "重生",
-		"en|kr|tc": "Rebirth"
+		"tc": "重生",
+		"kr": "갱생"
 	},
 	{
 		"id": "420103103",
 		"key": "rebirth420103103",
-		"ch|en|kr|tc": "This mechanic will reset all your character level, exp and reputation.\nWhen you come back with same level, your character will be stronger."
+		"en": "This mechanic will reset all your character level, exp and reputation.\nWhen you come back with same level, your character will be stronger.",
+		"ch": "该机械师将重置您的所有角色级别，EXP和声誉。\n当您以相同的水平回来时，您的角色会更强壮。",
+		"tc": "該機械師將重置您的所有角色級別，EXP和聲譽。\n當您以相同的水平回來時，您的角色會更強壯。",
+		"kr": "이 정비공은 모든 캐릭터 레벨, exp 및 평판을 재설정합니다.\n같은 수준으로 돌아 오면 캐릭터가 더 강해집니다."
 	}
 ]

@@ -2,103 +2,129 @@
 	{
 		"id": "420010100",
 		"key": "unitType420010100",
-		"ch": "增加力量",
 		"en": "Power Up",
-		"kr": "힘 증가",
-		"tc": "增加力量"
+		"ch": "增加力量",
+		"tc": "增加力量",
+		"kr": "힘 증가"
 	},
 	{
 		"id": "420010200",
 		"key": "unitType420010200",
-		"ch": "增加速度",
 		"en": "Speed Up",
-		"kr": "속도 증가",
-		"tc": "增加速度"
+		"ch": "增加速度",
+		"tc": "增加速度",
+		"kr": "속도 증가"
 	},
 	{
 		"id": "420010300",
 		"key": "unitType420010300",
-		"ch": "道教",
 		"en": "Taoist",
-		"kr": "도교",
-		"tc": "道教"
+		"ch": "道教",
+		"tc": "道教",
+		"kr": "도교"
 	},
 	{
 		"id": "420010400",
 		"key": "unitType420010400",
+		"en": "Pro Atk",
 		"ch": "战师",
-		"en|tc|kr": "Pro Atk"
+		"tc": "Pro ATK",
+		"kr": "프로 ATK"
 	},
 	{
 		"id": "420010500",
 		"key": "unitType420010500",
+		"en": "Pro Def",
 		"ch": "金刚不坏",
-		"en|tc|kr": "Pro Def"
+		"tc": "Pro Def",
+		"kr": "프로 데프"
 	},
 	{
 		"id": "420010600",
 		"key": "unitType420010600",
+		"en": "Angel",
 		"ch": "正",
-		"en|tc|kr": "Angel"
+		"tc": "天使",
+		"kr": "천사"
 	},
 	{
 		"id": "420010700",
 		"key": "unitType420010700",
+		"en": "Evil",
 		"ch": "魔",
-		"en|tc|kr": "Evil"
+		"tc": "邪惡的",
+		"kr": "사악한"
 	},
 	{
 		"id": "420010800",
 		"key": "unitType420010800",
+		"en": "Merchant",
 		"ch": "商人",
-		"en|tc|kr": "Merchant"
+		"tc": "商人",
+		"kr": "상인"
 	},
 	{
 		"id": "421010100",
 		"key": "unitType420010100desc",
+		"en": "Atk +10%, Hp +20%",
 		"ch": "攻击 +10%, 体力 +20%",
-		"en|tc|kr": "Atk +10%, Hp +20%"
+		"tc": "ATK +10％，HP +20％",
+		"kr": "ATK +10%, HP +20%"
 	},
 	{
 		"id": "421010200",
 		"key": "unitType420010200desc",
+		"en": "Agi +30%",
 		"ch": "移速 +30%",
-		"en|tc|kr": "Agi +30%"
+		"tc": "AGI +30％",
+		"kr": "AGI +30%"
 	},
 	{
 		"id": "421010300",
 		"key": "unitType420010300desc",
+		"en": "Atk +8%, Hp +15%, Mp +10%",
 		"ch": "攻击 +8%, 体力 +15%, 灵力 +10%",
-		"en|tc|kr": "Atk +8%, Hp +15%, Mp +10%"
+		"tc": "ATK +8％，HP +15％，MP +10％",
+		"kr": "ATK +8%, HP +15%, MP +10%"
 	},
 	{
 		"id": "421010400",
 		"key": "unitType420010400desc",
+		"en": "Atk +30%",
 		"ch": "攻击 +30%",
-		"en|tc|kr": "Atk +30%"
+		"tc": "ATK +30％",
+		"kr": "ATK +30%"
 	},
 	{
 		"id": "421010500",
 		"key": "unitType420010500desc",
+		"en": "Hp +25%, Def +5%",
 		"ch": "体力 +25%, 防御 +5",
-		"en|tc|kr": "Hp +25%, Def +5%"
+		"tc": "HP +25％，DEF +5％",
+		"kr": "HP +25%, DEF +5%"
 	},
 	{
 		"id": "421010600",
 		"key": "unitType420010600desc",
+		"en": "Atk +50%, Agi +10%, Hp +20%, Mp +10%, Righteous +100%, Demonic -100%\n\nEvery time you kill an evil, then your stats increase 20% by the evil stats.\n(Hp/Mp/Sp/Atk/Def/Best basis)",
 		"ch": "攻击 +50%, 移速 +10%, 体力 +20%, 灵力 +10%, 正道 +100%, 魔道 -100%",
-		"en|tc|kr": "Atk +50%, Agi +10%, Hp +20%, Mp +10%, Righteous +100%, Demonic -100%\n\nEvery time you kill an evil, then your stats increase 20% by the evil stats.\n(Hp/Mp/Sp/Atk/Def/Best basis)"
+		"tc": "ATK +50％，AGI +10％，HP +20％，MP +10％，正義 +100％，惡魔-100％\n\n每次您殺死邪惡時，您的統計數據都會因邪惡統計數據而增加20％。\n（HP/MP/SP/ATK/DEF/最佳基礎）",
+		"kr": "ATK +50%, AGI +10%, HP +20%, MP +10%, 의로운 +100%, 악마 -100%\n\n당신이 악을 죽일 때마다, 당신의 통계는 사악한 통계에 의해 20% 증가합니다.\n(HP/MP/SP/ATK/DEF/최고 기준)"
 	},
 	{
 		"id": "421010700",
 		"key": "unitType420010700desc",
+		"en": "Atk +30%, Def +10%, Hp +100%, Righteous -100%, Demonic -30%\n\nEvery time you kill a human, then your stats increase 1% by the killed unit stats.\n(Hp/Mp/Sp/Atk/Def/All basises)",
 		"ch": "攻击 +30%, 防御 +10%, 体力 +100%, 正道 -100%, 魔道 -30%",
-		"en|tc|kr": "Atk +30%, Def +10%, Hp +100%, Righteous -100%, Demonic -30%\n\nEvery time you kill a human, then your stats increase 1% by the killed unit stats.\n(Hp/Mp/Sp/Atk/Def/All basises)"
+		"tc": "ATK +30％，DEF +10％，HP +100％，正義-100％，惡魔-30％\n\n每次您殺死人時，您的統計數據都會被殺死的單位統計數據增加1％。\n（HP/MP/SP/ATK/DEF/所有基礎）",
+		"kr": "ATK +30%, DEF +10%, HP +100%, 의로운 -100%, 악마 -30%\n\n인간을 죽일 때마다, 통계는 사망 한 단위 통계에 의해 1% 증가합니다.\n(HP/MP/SP/ATK/DEF/All Basises)"
 	},
 	{
 		"id": "421010800",
 		"key": "unitType420010800desc",
+		"en": "Atk -10%, Def -10%, Hp -25%, Mp -50%, Free Storage, -10% market buy-cost, +10% market sell-value, +3% income monthly\n\nYou can see stats of npc items.",
 		"ch": "攻击 -10%, 防御 -10%, 体力 -25%, 灵力 -50%,免费存储, -10% 市场购买成本, +10% 市场售价, +3% 每月收入",
-		"en|tc|kr": "Atk -10%, Def -10%, Hp -25%, Mp -50%, Free Storage, -10% market buy-cost, +10% market sell-value, +3% income monthly\n\nYou can see stats of npc items."
+		"tc": "ATK -10％，DEF -10％，HP -25％，MP -50％，免費存儲，-10％的市場購買成本， +10％的市場賣出， +3％收入每月收入\n\n您可以看到NPC項目的統計數據。",
+		"kr": "ATK -10%, DEF -10%, HP -25%, MP -50%, 무료 스토리지, -10%시장 구매 비용, +10%시장 판매 가치, +3%수입 월간\n\nNPC 항목의 통계를 볼 수 있습니다."
 	}
 ]

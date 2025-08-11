@@ -2,222 +2,289 @@
 	{
 		"id": "500010000",
 		"key": "adjType500010000",
-		"ch": "攻击",
 		"en": "ATK",
-		"kr": "공격력",
-		"tc": "攻擊"
+		"ch": "攻击",
+		"tc": "攻擊",
+		"kr": "공격력"
 	},
 	{
 		"id": "500010001",
 		"key": "adjType500010001",
-		"ch": "防御",
 		"en": "Def",
-		"kr": "방어력",
-		"tc": "防禦"
+		"ch": "防御",
+		"tc": "防禦",
+		"kr": "방어력"
 	},
 	{
 		"id": "500010002",
 		"key": "adjType500010002",
-		"ch": "体力",
 		"en": "Hp",
-		"kr": "체력",
-		"tc": "體力"
+		"ch": "体力",
+		"tc": "體力",
+		"kr": "체력"
 	},
 	{
 		"id": "500010003",
 		"key": "adjType500010003",
-		"ch": "灵力",
 		"en": "Mp",
-		"kr": "영력",
-		"tc": "靈力"
+		"ch": "灵力",
+		"tc": "靈力",
+		"kr": "영력"
 	},
 	{
 		"id": "500010004",
 		"key": "adjType500010004",
-		"ch": "念力",
 		"en": "Sp",
-		"kr": "염력",
-		"tc": "念力"
+		"ch": "念力",
+		"tc": "念力",
+		"kr": "염력"
 	},
-		{
+	{
 		"id": "500010005",
 		"key": "adjType500010005",
+		"en": "Heal Hp",
 		"ch": "恢復体力",
-		"en|kr|tc": "Heal Hp"
+		"tc": "治愈HP",
+		"kr": "HP를 치유하십시오"
 	},
-		{
+	{
 		"id": "500010006",
 		"key": "adjType500010006",
+		"en": "Heal Mp",
 		"ch": "恢復灵力",
-		"en|kr|tc": "Heal Mp"
+		"tc": "治愈議員",
+		"kr": "MP를 치료하십시오"
 	},
-		{
+	{
 		"id": "500010007",
 		"key": "adjType500010007",
+		"en": "Heal Sp",
 		"ch": "恢復念力",
-		"en|kr|tc": "Heal Sp"
-	},	{
+		"tc": "治愈sp",
+		"kr": "sp.를 치료하십시오"
+	},
+	{
 		"id": "500010008",
 		"key": "adjType500010008",
+		"en": "Blade",
 		"ch": "刀法",
-		"en|kr|tc": "Blade"
+		"tc": "刀刃",
+		"kr": "잎"
 	},
-		{
+	{
 		"id": "500010009",
 		"key": "adjType500010009",
+		"en": "Earth",
 		"ch": "土灵根",
-		"en|kr|tc": "Earth"
+		"tc": "地球",
+		"kr": "지구"
 	},
-			{
+	{
 		"id": "500010010",
 		"key": "adjType500010010",
+		"en": "Finger",
 		"ch": "指法",
-		"en|kr|tc": "Finger"
+		"tc": "手指",
+		"kr": "손가락"
 	},
-			{
+	{
 		"id": "500010011",
 		"key": "adjType500010011",
+		"en": "Fire",
 		"ch": "火灵根",
-		"en|kr|tc": "Fire"
+		"tc": "火",
+		"kr": "불"
 	},
-			{
+	{
 		"id": "500010012",
 		"key": "adjType500010012",
+		"en": "Fist",
 		"ch": "拳法",
-		"en|kr|tc": "Fist"
+		"tc": "拳頭",
+		"kr": "주먹"
 	},
-			{
+	{
 		"id": "500010013",
 		"key": "adjType500010013",
+		"en": "Froze",
 		"ch": "水灵根",
-		"en|kr|tc": "Froze"
+		"tc": "凍結",
+		"kr": "얼어 붙었다"
 	},
-			{
+	{
 		"id": "500010014",
 		"key": "adjType500010014",
+		"en": "Palm",
 		"ch": "掌法",
-		"en|kr|tc": "Palm"
+		"tc": "棕櫚",
+		"kr": "손바닥 안에 감추다"
 	},
-			{
+	{
 		"id": "500010015",
 		"key": "adjType500010015",
+		"en": "Spear",
 		"ch": "枪法",
-		"en|kr|tc": "Spear"
+		"tc": "矛",
+		"kr": "창"
 	},
-			{
+	{
 		"id": "500010016",
 		"key": "adjType500010016",
+		"en": "Sword",
 		"ch": "剑法",
-		"en|kr|tc": "Sword"
+		"tc": "劍",
+		"kr": "검"
 	},
-			{
+	{
 		"id": "500010017",
 		"key": "adjType500010017",
+		"en": "Thunder",
 		"ch": "雷灵根",
-		"en|kr|tc": "Thunder"
+		"tc": "雷",
+		"kr": "우뢰"
 	},
-				{
+	{
 		"id": "500010018",
 		"key": "adjType500010018",
+		"en": "Wind",
 		"ch": "风灵根",
-		"en|kr|tc": "Wind"
+		"tc": "風",
+		"kr": "바람"
 	},
-				{
+	{
 		"id": "500010019",
 		"key": "adjType500010019",
+		"en": "Wood",
 		"ch": "木灵根",
-		"en|kr|tc": "Wood"
+		"tc": "木頭",
+		"kr": "목재"
 	},
-				{
+	{
 		"id": "500010020",
 		"key": "adjType500010020",
+		"en": "Speed",
 		"ch": "移速",
-		"en|kr|tc": "Speed"
+		"tc": "速度",
+		"kr": "속도"
 	},
-				{
+	{
 		"id": "500010021",
 		"key": "adjType500010021",
+		"en": "Block(%Max)",
 		"ch": "化解(%Max)",
-		"en|kr|tc": "Block(%Max)"
+		"tc": "塊（最大％）",
+		"kr": "블록 (%max)"
 	},
 	{
 		"id": "500010022",
 		"key": "adjType500010022",
+		"en": "Block(Dmg)",
 		"ch": "化解(Dmg)",
-		"en|kr|tc": "Block(Dmg)"
+		"tc": "塊（DMG）",
+		"kr": "블록 (DMG)"
 	},
 	{
 		"id": "500010023",
 		"key": "adjType500010023",
+		"en": "Evade(%)",
 		"ch": "躲避(%)",
-		"en|kr|tc": "Evade(%)"
+		"tc": "逃避（％）",
+		"kr": "피하다(%)"
 	},
 	{
 		"id": "500010024",
 		"key": "adjType500010024",
+		"en": "Evade(%Max)",
 		"ch": "躲避(%Max)",
-		"en|kr|tc": "Evade(%Max)"
+		"tc": "逃避（最大％）",
+		"kr": "회피 (%max)"
 	},
 	{
 		"id": "500010025",
 		"key": "adjType500010025",
+		"en": "Nullify",
 		"ch": "解除",
-		"en|kr|tc": "Nullify"
+		"tc": "無效",
+		"kr": "무효"
 	},
 	{
 		"id": "500010026",
 		"key": "adjType500010026",
+		"en": "Shield",
 		"ch": "盾",
-		"en|kr|tc": "Shield"
+		"tc": "盾",
+		"kr": "방패"
 	},
 	{
 		"id": "500010027",
 		"key": "adjType500010027",
+		"en": "SCrit(%)",
 		"ch": "暴擊(%)",
-		"en|kr|tc": "SCrit(%)"
+		"tc": "刮擦（％）",
+		"kr": "스크리트 (%)"
 	},
 	{
 		"id": "500010028",
 		"key": "adjType500010028",
+		"en": "SCrit(%Max)",
 		"ch": "暴擊(%Max)",
-		"en|kr|tc": "SCrit(%Max)"
+		"tc": "滾動（最大％）",
+		"kr": "스크리트 (%max)"
 	},
 	{
 		"id": "500010029",
 		"key": "adjType500010029",
+		"en": "SCrit(%Dmg)",
 		"ch": "暴擊(%Dmg)",
-		"en|kr|tc": "SCrit(%Dmg)"
+		"tc": "滾動（％DMG）",
+		"kr": "스크릿 (%DMG)"
 	},
 	{
 		"id": "500010030",
 		"key": "adjType500010030",
+		"en": "Skill(%Dmg)",
 		"ch": "技能(%Dmg)",
-		"en|kr|tc": "Skill(%Dmg)"
+		"tc": "技能（％DMG）",
+		"kr": "기술 (%DMG)"
 	},
 	{
 		"id": "500010031",
 		"key": "adjType500010031",
+		"en": "Min-Dmg",
 		"ch": "最小傷害",
-		"en|kr|tc": "Min-Dmg"
+		"tc": "Min-DMG",
+		"kr": "Min-DMG"
 	},
 	{
 		"id": "500010032",
 		"key": "adjType500010032",
-		"ch|en|kr|tc": "Steal(Hp)"
+		"en": "Steal(Hp)",
+		"ch": "偷窃（HP）",
+		"tc": "偷竊（HP）",
+		"kr": "도둑질 (HP)"
 	},
 	{
 		"id": "500010033",
 		"key": "adjType500010033",
-		"ch|en|kr|tc": "Steal(Mp)"
+		"en": "Steal(Mp)",
+		"ch": "偷窃（MP）",
+		"tc": "偷竊（MP）",
+		"kr": "도둑질 (MP)"
 	},
 	{
 		"id": "500010034",
 		"key": "adjType500010034",
-		"ch|en|kr|tc": "Steal(Sp)"
+		"en": "Steal(Sp)",
+		"ch": "偷（SP）",
+		"tc": "偷（SP）",
+		"kr": "도둑질 (sp)"
 	},
 	{
 		"id": "500010035",
 		"key": "adjType500010035",
-		"ch|en|kr|tc": "Kill(%)"
-	},
+		"en": "Kill(%)",
+		"ch": "杀（％）",
+		"tc": "殺（％）",
+		"kr": "죽이다(%)"
+	}
 ]

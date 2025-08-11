@@ -2,89 +2,113 @@
 	{
 		"id": "420041120",
 		"key": "team420041120desc",
-		"ch": "team420041120desc",
 		"en": "team420041120desc",
-		"kr": "team420041120desc",
-		"tc": "team420041120desc"
+		"ch": "team420041120desc",
+		"tc": "team420041120desc",
+		"kr": "team420041120desc"
 	},
 	{
 		"id": "420041121",
 		"key": "team420041121",
-		"ch": "团队",
 		"en": "Team",
-		"kr": "팀",
-		"tc": "團隊"
+		"ch": "团队",
+		"tc": "團隊",
+		"kr": "팀"
 	},
 	{
 		"id": "420041123",
 		"key": "team420041123drama",
-		"ch": "可否一同上路？",
 		"en": "Do you wanna travel together?",
-		"kr": "함께 길을 떠날까요?",
-		"tc": "可否一同上路？"
+		"ch": "可否一同上路？",
+		"tc": "可否一同上路？",
+		"kr": "함께 길을 떠날까요?"
 	},
 	{
 		"id": "420041124",
 		"key": "team420041124dramaOpt1",
+		"en": "Yes",
 		"ch": "同意",
-		"en|tc|kr": "Yes"
+		"tc": "是的",
+		"kr": "예"
 	},
 	{
 		"id": "420041125",
 		"key": "team420041125dramaOpt2",
+		"en": "No",
 		"ch": "不",
-		"en|tc|kr": "No"
+		"tc": "No",
+		"kr": "No"
 	},
 	{
 		"id": "420041126",
 		"key": "team420041126",
+		"en": "Dismiss Team",
 		"ch": "解散",
-		"en|tc|kr": "Dismiss Team"
+		"tc": "解僱團隊",
+		"kr": "해산 팀"
 	},
 	{
 		"id": "420041127",
 		"key": "team420041127",
+		"en": "Manage Team",
 		"ch": "掌管",
-		"en|tc|kr": "Manage Team"
+		"tc": "管理團隊",
+		"kr": "팀 관리"
 	},
 	{
 		"id": "420041128",
 		"key": "team420041128",
+		"en": "Are you sure about adding this person?",
 		"ch": "确定要增加此人?",
-		"en|tc|kr": "Are you sure about adding this person?"
+		"tc": "您確定要添加這個人嗎？",
+		"kr": "이 사람을 추가하는 것이 확실합니까?"
 	},
 	{
 		"id": "420041129",
 		"key": "team420041129",
+		"en": "You have to quit current team!",
 		"ch": "你必須離開現在的隊伍！",
-		"en|tc|kr": "You have to quit current team!"
+		"tc": "您必須退出現任團隊！",
+		"kr": "현재 팀을 종료해야합니다!"
 	},
 	{
 		"id": "420041130",
 		"key": "team420041130",
+		"en": "Are you sure about dismissing this person?",
 		"ch": "確定要驅逐此人嗎?",
-		"en|tc|kr": "Are you sure about dismissing this person?"
+		"tc": "您確定要解僱這個人嗎？",
+		"kr": "이 사람을 해산하는 것에 대해 확신합니까?"
 	},
 	{
 		"id": "420041131",
 		"key": "team420041131",
+		"en": "Hire People",
 		"ch": "招募",
-		"en|tc|kr": "Hire People"
+		"tc": "僱用人",
+		"kr": "사람들을 고용하십시오"
 	},
 	{
 		"id": "420041132",
 		"key": "team420041132",
+		"en": "You dont have to pay for friends!",
 		"ch": "兄弟情义不能用钱买",
-		"en|tc|kr": "You dont have to pay for friends!"
+		"tc": "您不必為朋友付費！",
+		"kr": "당신은 친구를 지불 할 필요가 없습니다!"
 	},
 	{
 		"id": "420041133",
 		"key": "team420041133",
-		"ch|en|tc|kr": "Team up"
+		"en": "Team up",
+		"ch": "团队",
+		"tc": "團隊",
+		"kr": "팀을 이루십시오"
 	},
 	{
 		"id": "420041134",
 		"key": "team420041134",
-		"ch|en|tc|kr": "Are you sure about dismissing your team?"
+		"en": "Are you sure about dismissing your team?",
+		"ch": "您确定要解雇您的团队吗？",
+		"tc": "您確定要解僱您的團隊嗎？",
+		"kr": "팀을 해산하는 것에 대해 확신하십니까?"
 	}
 ]

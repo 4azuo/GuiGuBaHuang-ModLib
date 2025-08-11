@@ -2,61 +2,81 @@
 	{
 		"id": "420041110",
 		"key": "townmaster420041110desc",
-		"ch": "townmaster420041110desc",
 		"en": "townmaster420041110desc",
-		"kr": "townmaster420041110desc",
-		"tc": "townmaster420041110desc"
+		"ch": "townmaster420041110desc",
+		"tc": "townmaster420041110desc",
+		"kr": "townmaster420041110desc"
 	},
 	{
 		"id": "420041111",
 		"key": "townmaster420041111",
-		"ch": "城主",
 		"en": "Town Master",
-		"kr": "성주",
-		"tc": "城主"
+		"ch": "城主",
+		"tc": "城主",
+		"kr": "성주"
 	},
 	{
 		"id": "420041112",
 		"key": "townmaster420041112",
-		"ch": "守衛",
 		"en": "Town Guardian",
-		"kr": "수비병",
-		"tc": "守衛"
+		"ch": "守衛",
+		"tc": "守衛",
+		"kr": "수비병"
 	},
 	{
 		"id": "420041113",
 		"key": "townmaster420041113drama",
+		"en": "You become this town master.",
 		"ch": "就任城主",
-		"en|kr|tc": "You become this town master."
+		"tc": "你成為這個城鎮大師。",
+		"kr": "당신은이 마을 마스터가되었습니다."
 	},
 	{
 		"id": "420041114",
 		"key": "townmaster420041114drama",
-		"ch|en|kr|tc": "You received a invitation from {0}' Town Master for guardian position?\nDo you wanna become a Town Guardian?."
+		"en": "You received a invitation from {0}' Town Master for guardian position?\nDo you wanna become a Town Guardian?.",
+		"ch": "您收到了{0}'镇长职位大师的邀请吗？\n你想成为镇上的守护者吗？",
+		"tc": "您收到了{0}'鎮長職位大師的邀請嗎？\n你想成為鎮上的守護者嗎？",
+		"kr": "{0} 'Town Master for Guardian Position에서 초대를 받았습니까?\n당신은 마을 수호자가되고 싶습니까?."
 	},
 	{
 		"id": "420041115",
 		"key": "townmaster420041114dramaOpt1",
-		"ch|en|kr|tc": "Yes"
+		"en": "Yes",
+		"ch": "是的",
+		"tc": "是的",
+		"kr": "예"
 	},
 	{
 		"id": "420041116",
 		"key": "townmaster420041114dramaOpt2",
-		"ch|en|kr|tc": "No"
+		"en": "No",
+		"ch": "No",
+		"tc": "No",
+		"kr": "No"
 	},
 	{
 		"id": "420041117",
 		"key": "townmaster420041117",
-		"ch|en|kr|tc": "Town: {0}　／　Master: {1}"
+		"en": "Town: {0}　／　Master: {1}",
+		"ch": "城镇：{0} ／主：{1}",
+		"tc": "城鎮：{0} ／主：{1}",
+		"kr": "마을 : {0} ／ 마스터 : {1}"
 	},
 	{
 		"id": "420041118",
 		"key": "townmaster420041118",
-		"ch|en|kr|tc": "Budget: {0:#,##0}"
+		"en": "Budget: {0:#,##0}",
+		"ch": "预算：{0：＃，## 0}",
+		"tc": "預算：{0：＃，## 0}",
+		"kr": "예산 : {0 :#, ## 0}"
 	},
 	{
 		"id": "420041119",
 		"key": "townmaster420041119",
-		"ch|en|kr|tc": "Payment: {0:#,##0}/year"
+		"en": "Payment: {0:#,##0}/year",
+		"ch": "付款：{0：＃，## 0}/年",
+		"tc": "付款：{0：＃，## 0}/年",
+		"kr": "지불 : {0 :#, ## 0}/년"
 	}
 ]

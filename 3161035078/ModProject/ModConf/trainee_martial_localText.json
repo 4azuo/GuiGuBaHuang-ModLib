@@ -2,113 +2,161 @@
 	{
 		"id": "420072001",
 		"key": "trainee420071001",
-		"ch": "一品武师",
 		"en": "Martial Lvl-1",
-		"kr": "1급 무사",
-		"tc": "一品武師"
+		"ch": "一品武师",
+		"tc": "一品武師",
+		"kr": "1급 무사"
 	},
 	{
 		"id": "420073001",
 		"key": "trainee420071001desc",
-		"ch": "+2%体力",
 		"en": "+2% Max HP",
-		"kr": "+2% 최대 체력",
-		"tc": "+2%體力"
+		"ch": "+2%体力",
+		"tc": "+2%體力",
+		"kr": "+2% 최대 체력"
 	},
 	{
 		"id": "420072002",
 		"key": "trainee420071002",
-		"ch": "二品武师",
 		"en": "Martial Lvl-2",
-		"kr": "2급 무사",
-		"tc": "二品武師"
+		"ch": "二品武师",
+		"tc": "二品武師",
+		"kr": "2급 무사"
 	},
 	{
 		"id": "420073002",
 		"key": "trainee420071002desc",
-		"ch": "+4%体力",
 		"en": "+4% Max HP",
-		"kr": "+4% 최대 체력",
-		"tc": "+4%體力"
+		"ch": "+4%体力",
+		"tc": "+4%體力",
+		"kr": "+4% 최대 체력"
 	},
 	{
 		"id": "420072003",
 		"key": "trainee420071003",
-		"ch": "三品武师","en": "Martial Lvl-3"
+		"en": "Martial Lvl-3",
+		"ch": "三品武师",
+		"tc": "武術LVL-3",
+		"kr": "무술 LVL-3"
 	},
 	{
 		"id": "420073003",
 		"key": "trainee420071003desc",
-		"ch": "+7%体力","en": "+7% Max HP"
+		"en": "+7% Max HP",
+		"ch": "+7%体力",
+		"tc": "+最大HP 7％",
+		"kr": "+7% 최대 HP"
 	},
 	{
 		"id": "420072004",
 		"key": "trainee420071004",
-		"ch": "四品武师","en": "Martial Lvl-4"
+		"en": "Martial Lvl-4",
+		"ch": "四品武师",
+		"tc": "武術LVL-4",
+		"kr": "무술 LVL-4"
 	},
 	{
 		"id": "420073004",
 		"key": "trainee420071004desc",
-		"ch": "+10%体力","en": "+10% Max HP"
+		"en": "+10% Max HP",
+		"ch": "+10%体力",
+		"tc": "+最大HP 10％",
+		"kr": "+10% 최대 HP"
 	},
 	{
 		"id": "420072005",
 		"key": "trainee420071005",
-		"ch": "五品武师","en": "Martial Lvl-5"
+		"en": "Martial Lvl-5",
+		"ch": "五品武师",
+		"tc": "武術LVL-5",
+		"kr": "무술 LVL-5"
 	},
 	{
 		"id": "420073005",
 		"key": "trainee420071005desc",
-		"ch": "+15%体力","en": "+15% Max HP"
+		"en": "+15% Max HP",
+		"ch": "+15%体力",
+		"tc": "+最大HP 15％",
+		"kr": "+15% 최대 HP"
 	},
 	{
 		"id": "420072006",
 		"key": "trainee420071006",
-		"ch": "六品武师","en": "Martial Lvl-6"
+		"en": "Martial Lvl-6",
+		"ch": "六品武师",
+		"tc": "武術LVL-6",
+		"kr": "무술 LVL-6"
 	},
 	{
 		"id": "420073006",
 		"key": "trainee420071006desc",
-		"ch": "+20%体力","en": "+20% Max HP"
+		"en": "+20% Max HP",
+		"ch": "+20%体力",
+		"tc": "+最大HP 20％",
+		"kr": "+20% 최대 HP"
 	},
 	{
 		"id": "420072007",
 		"key": "trainee420071007",
-		"ch": "七品武师","en": "Martial Lvl-7"
+		"en": "Martial Lvl-7",
+		"ch": "七品武师",
+		"tc": "武術LVL-7",
+		"kr": "무술 LVL-7"
 	},
 	{
 		"id": "420073007",
 		"key": "trainee420071007desc",
-		"ch": "+30%体力","en": "+30% Max HP"
+		"en": "+30% Max HP",
+		"ch": "+30%体力",
+		"tc": "+30％最大HP",
+		"kr": "+30% 최대 HP"
 	},
 	{
 		"id": "420072008",
 		"key": "trainee420071008",
-		"ch": "八品武师","en": "Martial Lvl-8"
+		"en": "Martial Lvl-8",
+		"ch": "八品武师",
+		"tc": "武術LVL-8",
+		"kr": "무술 LVL-8"
 	},
 	{
 		"id": "420073008",
 		"key": "trainee420071008desc",
-		"ch": "+40%体力","en": "+40% Max HP"
+		"en": "+40% Max HP",
+		"ch": "+40%体力",
+		"tc": "+40％最大HP",
+		"kr": "+40% 최대 HP"
 	},
 	{
 		"id": "420072009",
 		"key": "trainee420071009",
-		"ch": "九品武师","en": "Martial Lvl-9"
+		"en": "Martial Lvl-9",
+		"ch": "九品武师",
+		"tc": "武術LVL-9",
+		"kr": "무술 LVL-9"
 	},
 	{
 		"id": "420073009",
 		"key": "trainee420071009desc",
-		"ch": "+60%体力","en": "+60% Max HP"
+		"en": "+60% Max HP",
+		"ch": "+60%体力",
+		"tc": "+60％最大HP",
+		"kr": "+60% 최대 HP"
 	},
 	{
 		"id": "420072010",
 		"key": "trainee420071010",
-		"ch": "十品武师","en": "Martial Lvl-10"
+		"en": "Martial Lvl-10",
+		"ch": "十品武师",
+		"tc": "武術LVL-10",
+		"kr": "무술 LVL-10"
 	},
 	{
 		"id": "420073010",
 		"key": "trainee420071010desc",
-		"ch": "+90%体力","en": "+90% Max HP"
-	},
+		"en": "+90% Max HP",
+		"ch": "+90%体力",
+		"tc": "+90％最大HP",
+		"kr": "+90% 최대 HP"
+	}
 ]

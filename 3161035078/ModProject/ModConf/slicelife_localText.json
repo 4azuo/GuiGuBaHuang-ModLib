@@ -2,158 +2,193 @@
 	{
 		"id": "444441001",
 		"key": "slicelife444441001",
-		"ch": "入世修行五年",
 		"en": "Slice of Life 1",
-		"kr": "입세수행 5년",
-		"tc": "入世修行五年"
+		"ch": "入世修行五年",
+		"tc": "入世修行五年",
+		"kr": "입세수행 5년"
 	},
 	{
 		"id": "444442001",
 		"key": "slicelife444441001desc",
-		"ch": "+25% 体力, +6% 灵力",
 		"en": "+25% Max HP, +6% Max MP",
-		"kr": "+25% 최대 체력, +6% 최대 영력",
-		"tc": "+25% 體力, +6% 靈力"
+		"ch": "+25% 体力, +6% 灵力",
+		"tc": "+25% 體力, +6% 靈力",
+		"kr": "+25% 최대 체력, +6% 최대 영력"
 	},
 	{
 		"id": "444443001",
 		"key": "taskName444443001",
-		"ch": "入世修行五年",
 		"en": "Slice of Life 1",
-		"kr": "입세수행 5년",
-		"tc": "入世修行五年"
+		"ch": "入世修行五年",
+		"tc": "入世修行五年",
+		"kr": "입세수행 5년"
 	},
 	{
 		"id": "444443101",
 		"key": "taskDesc444443001",
-		"ch": "五年没有参加任何战斗。",
 		"en": "Going 5 years without engaging in any battles.",
-		"kr": "5년간 어떤 전투에도 참여하지 않았습니다.",
-		"tc": "五年沒有參加任何戰鬥。"
+		"ch": "五年没有参加任何战斗。",
+		"tc": "五年沒有參加任何戰鬥。",
+		"kr": "5년간 어떤 전투에도 참여하지 않았습니다."
 	},
-	
-	
-	
-	
-	
 	{
 		"id": "444441002",
 		"key": "slicelife444441002",
-		"ch": "入世修行十年","en": "Slice of Life 2"
+		"en": "Slice of Life 2",
+		"ch": "入世修行十年",
+		"tc": "生命片2",
+		"kr": "생명의 슬라이스 2"
 	},
 	{
 		"id": "444442002",
 		"key": "slicelife444441002desc",
-		"ch": "+50% 体力, +12% 灵力","en": "+50% Max HP, +12% Max MP"
+		"en": "+50% Max HP, +12% Max MP",
+		"ch": "+50% 体力, +12% 灵力",
+		"tc": "+50％最大HP， +最大12％MP",
+		"kr": "+50% 최대 HP, +12% 최대 MP"
 	},
 	{
 		"id": "444443002",
 		"key": "taskName444443002",
-		"ch": "入世修行十年","en": "Slice of Life 2"
+		"en": "Slice of Life 2",
+		"ch": "入世修行十年",
+		"tc": "生命片2",
+		"kr": "생명의 슬라이스 2"
 	},
 	{
 		"id": "444443102",
 		"key": "taskDesc444443002",
-		"ch": "十年没有参加任何战斗。","en": "Going 10 years without engaging in any battles."
+		"en": "Going 10 years without engaging in any battles.",
+		"ch": "十年没有参加任何战斗。",
+		"tc": "在沒有進行任何戰鬥的情況下進行10年。",
+		"kr": "전투에 참여하지 않고 10 년이 걸립니다."
 	},
-	
-	
-	
-	
-	
 	{
 		"id": "444441003",
 		"key": "slicelife444441003",
-		"ch": "入世修行二十年","en": "Slice of Life 3"
+		"en": "Slice of Life 3",
+		"ch": "入世修行二十年",
+		"tc": "生命的切片3",
+		"kr": "생명의 슬라이스 3"
 	},
 	{
 		"id": "444442003",
 		"key": "slicelife444441003desc",
-		"ch": "+80% 体力, +20% 灵力","en": "+80% Max HP, +20% Max MP"
+		"en": "+80% Max HP, +20% Max MP",
+		"ch": "+80% 体力, +20% 灵力",
+		"tc": "+80％最大HP， +20％最大MP",
+		"kr": "+80% 최대 HP, +20% 최대 MP"
 	},
 	{
 		"id": "444443003",
 		"key": "taskName444443003",
-		"ch": "入世修行二十年","en": "Slice of Life 3"
+		"en": "Slice of Life 3",
+		"ch": "入世修行二十年",
+		"tc": "生命的切片3",
+		"kr": "생명의 슬라이스 3"
 	},
 	{
 		"id": "444443103",
 		"key": "taskDesc444443003",
-		"ch": "二十年没有参加任何战斗。","en": "Going 20 years without engaging in any battles."
+		"en": "Going 20 years without engaging in any battles.",
+		"ch": "二十年没有参加任何战斗。",
+		"tc": "在沒有進行任何戰鬥的情況下進行20年。",
+		"kr": "전투에 참여하지 않고 20 년이 걸립니다."
 	},
-	
-	
-	
-	
-	
 	{
 		"id": "444441004",
 		"key": "slicelife444441004",
-		"ch": "入世修行四十年","en": "Slice of Life 4"
+		"en": "Slice of Life 4",
+		"ch": "入世修行四十年",
+		"tc": "生命的切片4",
+		"kr": "생명의 슬라이스 4"
 	},
 	{
 		"id": "444442004",
 		"key": "slicelife444441004desc",
-		"ch": "+120% 体力, +30% 灵力, +2% 防御","en": "+120% Max HP, +30% Max MP, +2% Def"
+		"en": "+120% Max HP, +30% Max MP, +2% Def",
+		"ch": "+120% 体力, +30% 灵力, +2% 防御",
+		"tc": "+120％最大HP， +30％最大MP， +2％DEF",
+		"kr": "+120% 최대 HP, +30% 최대 MP, +2% DEF"
 	},
 	{
 		"id": "444443004",
 		"key": "taskName444443004",
-		"ch": "入世修行四十年","en": "Slice of Life 4"
+		"en": "Slice of Life 4",
+		"ch": "入世修行四十年",
+		"tc": "生命的切片4",
+		"kr": "생명의 슬라이스 4"
 	},
 	{
 		"id": "444443104",
 		"key": "taskDesc444443004",
-		"ch": "四十年没有参加任何战斗。","en": "Going 40 years without engaging in any battles."
+		"en": "Going 40 years without engaging in any battles.",
+		"ch": "四十年没有参加任何战斗。",
+		"tc": "40年沒有進行任何戰鬥。",
+		"kr": "전투에 참여하지 않고 40 년이 걸립니다."
 	},
-	
-	
-	
-	
-	
 	{
 		"id": "444441005",
 		"key": "slicelife444441005",
-		"ch": "入世修行一百年","en": "Slice of Life 5"
+		"en": "Slice of Life 5",
+		"ch": "入世修行一百年",
+		"tc": "生活的切片5",
+		"kr": "생명의 슬라이스 5"
 	},
 	{
 		"id": "444442005",
 		"key": "slicelife444441005desc",
-		"ch": "+160% 体力, +40% 灵力, +5% 防御","en": "+160% Max HP, +40% Max MP, +5% Def"
+		"en": "+160% Max HP, +40% Max MP, +5% Def",
+		"ch": "+160% 体力, +40% 灵力, +5% 防御",
+		"tc": "+160％最大HP， +40％最大MP， +5％DEF",
+		"kr": "+160% 최대 HP, +40% 최대 MP, +5% DEF"
 	},
 	{
 		"id": "444443005",
 		"key": "taskName444443005",
-		"ch": "入世修行一百年","en": "Slice of Life 5"
+		"en": "Slice of Life 5",
+		"ch": "入世修行一百年",
+		"tc": "生活的切片5",
+		"kr": "생명의 슬라이스 5"
 	},
 	{
 		"id": "444443105",
 		"key": "taskDesc444443005",
-		"ch": "一百年没有参加任何战斗。","en": "Going 100 years without engaging in any battles."
+		"en": "Going 100 years without engaging in any battles.",
+		"ch": "一百年没有参加任何战斗。",
+		"tc": "在沒有進行任何戰鬥的情況下進行100年。",
+		"kr": "전투에 참여하지 않고 100 년이 걸립니다."
 	},
-	
-	
-	
-	
-	
 	{
 		"id": "444441006",
 		"key": "slicelife444441006",
-		"ch": "入世修行三百年","en": "Slice of Life 6"
+		"en": "Slice of Life 6",
+		"ch": "入世修行三百年",
+		"tc": "生命的切片6",
+		"kr": "생명의 슬라이스 6"
 	},
 	{
 		"id": "444442006",
 		"key": "slicelife444441006desc",
-		"ch": "+220% 体力, +60% 灵力, +10% 防御","en": "+220% Max HP, +60% Max MP, +10% Def"
+		"en": "+220% Max HP, +60% Max MP, +10% Def",
+		"ch": "+220% 体力, +60% 灵力, +10% 防御",
+		"tc": "+220％最大HP， +60％最大MP， +10％DEF",
+		"kr": "+220% 최대 HP, +60% 최대 MP, +10% DEF"
 	},
 	{
 		"id": "444443006",
 		"key": "taskName444443006",
-		"ch": "入世修行","en": "Slice of Life 6"
+		"en": "Slice of Life 6",
+		"ch": "入世修行",
+		"tc": "生命的切片6",
+		"kr": "생명의 슬라이스 6"
 	},
 	{
 		"id": "444443106",
 		"key": "taskDesc444443006",
-		"ch": "三百年没有参加任何战斗。","en": "Going 300 years without engaging in any battles."
+		"en": "Going 300 years without engaging in any battles.",
+		"ch": "三百年没有参加任何战斗。",
+		"tc": "300年不參加任何戰鬥。",
+		"kr": "전투에 참여하지 않고 300 년이 걸립니다."
 	}
 ]

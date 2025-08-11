@@ -1,89 +1,698 @@
 [
-	{ "id": -1000001000, "key": "smcfgs000", "ch": "怪物", "en": "Monster:", "kr": "몬스터:", "tc": "怪物" },
-	{ "id": -1000001001, "key": "smcfgs001", "ch": "攻击", "en": "ATK", "kr": "공격력", "tc": "攻擊" },
-	{ "id": -1000001002, "key": "smcfgs002", "ch": "防御", "en": "DEF", "kr": "방어력", "tc": "防禦" },
-	{ "id": -1000001003, "key": "smcfgs003", "ch": "体力", "en": "Max HP", "kr": "최대 체력", "tc": "體力" },
-	{ "id": -1000001004, "key": "smcfgs004", "ch": "基础", "en": "Basis", "kr": "기초", "tc": "基礎" },
-	{ "id": -1000001005, "key": "smcfgs005", "ch": "(包括剑、刀、枪、拳、指、掌、火、水、雷、木、风、土)", "en": "(Included Sword, Blade, Spear, Fist, Finger, Palm, Fire, Water, Thunder, Wood, Wind, Earth)", "kr": "(검, 도, 창, 권, 지, 장, 화, 수, 뇌, 목, 풍, 토 포함)", "tc": "(包括劍、刀、槍、拳、指、掌、火、水、雷、木、風、土)" },
-	{ "id": -1000001006, "key": "smcfgs006", "ch": "特别怪物率", "en": "Special Monster Rate", "kr": "특별 몬스터 비율", "tc": "特別怪物率" },
-	{ "id": -1000001007, "key": "smcfgs007", "ch": "经济的:", "en": "Economic:", "kr": "경제:", "tc": "經濟的:" },
-	{ "id": -1000001008, "key": "smcfgs008", "ch": "税率", "en": "Tax Rate", "kr": "세율", "tc": "稅率" },
-	{ "id": -1000001009, "key": "smcfgs009", "ch": "通货膨胀率", "en": "Inflation Rate", "kr": "인플레이션율", "tc": "通貨膨脹率" },
-	{ "id": -1000001010, "key": "smcfgs010", "ch": "建筑成本","en|tc|kr": "Building Cost" },
-	{ "id": -1000001011, "key": "smcfgs011", "ch": "银行账户费用","en|tc|kr": "Bank Account Cost" },
-	{ "id": -1000001012, "key": "smcfgs012", "ch": "银行费用","en|tc|kr": "Bank Fee" },
-	{ "id": -1000001013, "key": "smcfgs013", "ch": "精炼成本","en|tc|kr": "Refine Cost" },
-	{ "id": -1000001014, "key": "smcfgs014", "ch": "宗派交换费","en|tc|kr": "Sect Exchange Fee" },
-	{ "id": -1000001015, "key": "smcfgs015", "ch": "物品价值","en|tc|kr": "Item Value" },
-	{ "id": -1000001016, "key": "smcfgs016", "ch": "NPC:","en|tc|kr": "NPC:" },
-	{ "id": -1000001017, "key": "smcfgs017", "ch": "增长率", "en|tc|kr": "Grow Rate" },
-	{ "id": -1000001018, "key": "smcfgs018", "ch": "杂项:", "en|tc|kr": "Misc:" },
-	{ "id": -1000001019, "key": "smcfgs019", "ch": "升级修为","en|tc|kr": "Levelup Exp" },
-	{ "id": -1000001020, "key": "smcfgs020", "ch": "系统:","en|tc|kr": "Systems:" },
-	{ "id": -1000001021, "key": "smcfgs021", "ch": "隐藏保存按钮","en|tc|kr": "Hide Save Button" },
-	{ "id": -1000001022, "key": "smcfgs022", "ch": "隐藏重新加载按钮","en|tc|kr": "Hide Reload Button" },
-	{ "id": -1000001023, "key": "smcfgs023", "ch": "一生一世","en|tc|kr": "One life" },
-	{ "id": -1000001024, "key": "smcfgs024", "ch": "隐藏战斗地图","en|tc|kr": "Hide Battle Map" },
-	{ "id": -1000001025, "key": "smcfgs025", "ch": "优先命运境界","en|tc|kr": "Priority Destiny Level" },
-	{ "id": -1000001026, "key": "smcfgs026", "ch": "通常", "en|tc|kr": "Default" },
-	{ "id": -1000001027, "key": "smcfgs027", "ch": "白色", "en|tc|kr": "White" },
-	{ "id": -1000001028, "key": "smcfgs028", "ch": "绿色", "en|tc|kr": "Green" },
-	{ "id": -1000001029, "key": "smcfgs029", "ch": "蓝色", "en|tc|kr": "Blue" },
-	{ "id": -1000001030, "key": "smcfgs030", "ch": "紫色", "en|tc|kr": "Violet" },
-	{ "id": -1000001031, "key": "smcfgs031", "ch": "黄色", "en|tc|kr": "Yellow" },
-	{ "id": -1000001032, "key": "smcfgs032", "ch": "红色", "en|tc|kr": "Red" },
-	{ "id": -1000001033, "key": "smcfgs033", "ch": "城邦和宗门的唯一门户", "en|tc|kr": "Only Portal at City and Sect" },
-	{ "id": -1000001034, "key": "smcfgs034", "ch": "宗派无交流", "en|tc|kr": "Sect No Exchange" },
-	{ "id": -1000001035, "key": "smcfgs035", "ch": "没有重生", "en|tc|kr": "No Rebirth" },
-	{ "id": -1000001036, "key": "smcfgs036", "ch": "允许自然升级", "en|tc|kr": "Allow Upgrade Naturally" },
-	{ "id": -1000001037, "key": "smcfgs037", "ch": "(这样不会增加你的属性)", "en|tc|kr": "(This way wont grow up your attributes/properties)" },
-	{ "id": -1000001038, "key": "smcfgs038", "ch": "Boss有盾牌", "en|tc|kr": "Boss Has Shield" },
-	{ "id": -1000001039, "key": "smcfgs039", "ch": "战斗没有成长", "en|tc|kr": "No Growup From Battles" },
-	{ "id": -1000001040, "key": "smcfgs040", "ch": "战斗没有经验值", "en|tc|kr": "No Exp from Battles" },
-	{ "id": -1000001041, "key": "smcfgs041", "ch": "启用训练器", "en|tc|kr": "Enable Trainer" },
-	{ "id": -1000001042, "key": "smcfgs042", "ch": "(不建议使用此选项！【Ctrl+1】)", "en|tc|kr": "(Not recommend to use this option! Hot key in game: 【Ctrl+1】)" },
-	{ "id": -1000001043, "key": "smcfgs043", "ch": "总分: {0}P", "en|tc|kr": "Total score: {0}P" },
-	{ "id": -1000001044, "key": "smcfgs044", "ch": "通常", "en|tc|kr": "Default" },
-	{ "id": -1000001045, "key": "smcfgs045", "ch": "境界", "en|tc|kr": "Level" },
-	{ "id": -1000001046, "key": "smcfgs046", "ch": "您必须开始新游戏才能应用这些配置！", "en|tc|kr": "You have to start a new game to apply these configs!" },
-	{ "id": -1000001047, "key": "smcfgs047", "ch": "NPC数量", "en|tc|kr": "NPC Amount" },
-	{ "id": -1000001048, "key": "smcfgs048", "ch": "必需的 RAM: {0}MB)", "en|tc|kr": "(Required RAM: {0}MB)" },
-	{ "id": -1000001049, "key": "smcfgs049", "ch": "(包括护盾、爆炸和倍增)", "en|tc|kr": "(Included Shield, Explode and Multiply)" },
-	{ "id": -1000001050, "key": "smcfgs050", "ch": "允许城镇随着时间推移而发展","en|tc|kr": "Allow Town Buildup Over Time" },
-	{ "id": -1000001051, "key": "smcfgs051", "ch": "成長速度","en|tc|kr": "Growup speed" },
-	{ "id": -1000001052, "key": "smcfgs052", "ch": "包括玩家、NPC和妖兽","en|tc|kr": "(Include player, npc and monsters)" },
-	{ "id": -1000001053, "key": "smcfgs053", "ch": "每{1}月 ({0}P)","en|tc|kr": "every {1} months ({0}P)" },
-	{ "id": -1000001054, "key": "smcfgs054", "ch": "导出配置","en|tc|kr": "Export Configs" },
-	{ "id": -1000001055, "key": "smcfgs055", "ch": "导入配置","en|tc|kr": "Import Configs" },
-	{ "id": -1000001056, "key": "smcfgs056", "ch": "死亡掉落物品","en|tc|kr": "Lost Items When Die" },
-	{ "id": -1000001057, "key": "smcfgs057", "ch|en|tc|kr": "(Include First Town)" },
-	{ "id": -1000001058, "key": "smcfgs058", "ch|en|tc|kr": "Monster Depend On Player" },
-	{ "id": -1000001059, "key": "smcfgs059", "ch|en|tc|kr": "Auto Save After Lost" },
-	{ "id": -1000001060, "key": "smcfgs060", "ch|en|tc|kr": "(The time will be skip to next month for healing)" },
-	{ "id": -1000001101, "key": "smcfgs101", "ch|en|tc|kr": "{1}% ({0}P)" },
-	{ "id": -1000001102, "key": "smcfgs102", "ch|en|tc|kr": "({0}P)" },
-	{ "id": -1000001103, "key": "smcfgs103", "ch|en|tc|kr": "{1} ({0}P)" },
-	{ "id": -1000001104, "key": "smcfgs104", "ch|en|tc|kr": "Startup" },
-	{ "id": -1000001105, "key": "smcfgs105", "ch|en|tc|kr": "Power Up: A character specialized in all aspects.\nSpeed Up: A character specialized in speed.\nTaoist: A character specialized in magic.\nPro Atk: A character specialized in attack.\nPro Def: A character specialized in defense.\nAngel: A kind-hearted angel, focused on defense and protection.\nEvil: A demon shunned by everyone, focused on attack.\nMerchant: A trader who crushes others with wealth." },
-	{ "id": -1000001106, "key": "smcfgs106", "ch|en|tc|kr": "Player Role" },
-	{ "id": -1000001107, "key": "smcfgs107", "ch|en|tc|kr": "Random" },
-	{ "id": -1000001108, "key": "smcfgs108", "ch|en|tc|kr": "Power Up" },
-	{ "id": -1000001109, "key": "smcfgs109", "ch|en|tc|kr": "Speed Up" },
-	{ "id": -1000001110, "key": "smcfgs110", "ch|en|tc|kr": "Taoist" },
-	{ "id": -1000001111, "key": "smcfgs111", "ch|en|tc|kr": "Pro Atk" },
-	{ "id": -1000001112, "key": "smcfgs112", "ch|en|tc|kr": "Pro Def" },
-	{ "id": -1000001113, "key": "smcfgs113", "ch|en|tc|kr": "Angel" },
-	{ "id": -1000001114, "key": "smcfgs114", "ch|en|tc|kr": "Evil" },
-	{ "id": -1000001115, "key": "smcfgs115", "ch|en|tc|kr": "Merchant" },
-	{ "id": -1000001116, "key": "smcfgs116", "ch|en|tc|kr": "Market Item" },
-	{ "id": -1000001117, "key": "smcfgs117", "ch|en|tc|kr": "Npc Join Rate" },
-	{ "id": -1000001118, "key": "smcfgs118", "ch|en|tc|kr": "Get Attacked Rate" },
-	{ "id": -1000001119, "key": "smcfgs119", "ch|en|tc|kr": "(Warning: This feature consumes a lot of RAM and may cause lag)" },
-	{ "id": -1000001120, "key": "smcfgs120", "ch|en|tc|kr": "Save Data" },
-	{ "id": -1000001121, "key": "smcfgs121", "ch|en|tc|kr": "Mod Configs" },
-	{ "id": -1000001122, "key": "smcfgs122", "ch|en|tc|kr": "No Taxing" },
-	{ "id": -1000001123, "key": "smcfgs123", "ch|en|tc|kr": "No Market Items" },
-	{ "id": -1000001124, "key": "smcfgs124", "ch|en|tc|kr": "No Stalkers" },
-	{ "id": -1000001125, "key": "smcfgs125", "ch|en|tc|kr": "No Qi Cultivation" },
-	{ "id": -1000001126, "key": "smcfgs126", "ch|en|tc|kr": "(NPCs still have to pay taxes)" },
+	{
+		"id": -1000001000,
+		"key": "smcfgs000",
+		"en": "Monster:",
+		"ch": "怪物",
+		"tc": "怪物",
+		"kr": "몬스터:"
+	},
+	{
+		"id": -1000001001,
+		"key": "smcfgs001",
+		"en": "ATK",
+		"ch": "攻击",
+		"tc": "攻擊",
+		"kr": "공격력"
+	},
+	{
+		"id": -1000001002,
+		"key": "smcfgs002",
+		"en": "DEF",
+		"ch": "防御",
+		"tc": "防禦",
+		"kr": "방어력"
+	},
+	{
+		"id": -1000001003,
+		"key": "smcfgs003",
+		"en": "Max HP",
+		"ch": "体力",
+		"tc": "體力",
+		"kr": "최대 체력"
+	},
+	{
+		"id": -1000001004,
+		"key": "smcfgs004",
+		"en": "Basis",
+		"ch": "基础",
+		"tc": "基礎",
+		"kr": "기초"
+	},
+	{
+		"id": -1000001005,
+		"key": "smcfgs005",
+		"en": "(Included Sword, Blade, Spear, Fist, Finger, Palm, Fire, Water, Thunder, Wood, Wind, Earth)",
+		"ch": "(包括剑、刀、枪、拳、指、掌、火、水、雷、木、风、土)",
+		"tc": "(包括劍、刀、槍、拳、指、掌、火、水、雷、木、風、土)",
+		"kr": "(검, 도, 창, 권, 지, 장, 화, 수, 뇌, 목, 풍, 토 포함)"
+	},
+	{
+		"id": -1000001006,
+		"key": "smcfgs006",
+		"en": "Special Monster Rate",
+		"ch": "特别怪物率",
+		"tc": "特別怪物率",
+		"kr": "특별 몬스터 비율"
+	},
+	{
+		"id": -1000001007,
+		"key": "smcfgs007",
+		"en": "Economic:",
+		"ch": "经济的:",
+		"tc": "經濟的:",
+		"kr": "경제:"
+	},
+	{
+		"id": -1000001008,
+		"key": "smcfgs008",
+		"en": "Tax Rate",
+		"ch": "税率",
+		"tc": "稅率",
+		"kr": "세율"
+	},
+	{
+		"id": -1000001009,
+		"key": "smcfgs009",
+		"en": "Inflation Rate",
+		"ch": "通货膨胀率",
+		"tc": "通貨膨脹率",
+		"kr": "인플레이션율"
+	},
+	{
+		"id": -1000001010,
+		"key": "smcfgs010",
+		"en": "Building Cost",
+		"ch": "建筑成本",
+		"tc": "建築成本",
+		"kr": "건물 비용"
+	},
+	{
+		"id": -1000001011,
+		"key": "smcfgs011",
+		"en": "Bank Account Cost",
+		"ch": "银行账户费用",
+		"tc": "銀行帳戶成本",
+		"kr": "은행 계좌 비용"
+	},
+	{
+		"id": -1000001012,
+		"key": "smcfgs012",
+		"en": "Bank Fee",
+		"ch": "银行费用",
+		"tc": "銀行費",
+		"kr": "은행 수수료"
+	},
+	{
+		"id": -1000001013,
+		"key": "smcfgs013",
+		"en": "Refine Cost",
+		"ch": "精炼成本",
+		"tc": "精煉成本",
+		"kr": "비용을 개선하십시오"
+	},
+	{
+		"id": -1000001014,
+		"key": "smcfgs014",
+		"en": "Sect Exchange Fee",
+		"ch": "宗派交换费",
+		"tc": "教派交換費",
+		"kr": "교환 수수료를 종파합니다"
+	},
+	{
+		"id": -1000001015,
+		"key": "smcfgs015",
+		"en": "Item Value",
+		"ch": "物品价值",
+		"tc": "項目值",
+		"kr": "항목 값"
+	},
+	{
+		"id": -1000001016,
+		"key": "smcfgs016",
+		"en": "NPC:",
+		"ch": "NPC:",
+		"tc": "NPC：",
+		"kr": "NPC :"
+	},
+	{
+		"id": -1000001017,
+		"key": "smcfgs017",
+		"en": "Grow Rate",
+		"ch": "增长率",
+		"tc": "增長率",
+		"kr": "성장률"
+	},
+	{
+		"id": -1000001018,
+		"key": "smcfgs018",
+		"en": "Misc:",
+		"ch": "杂项:",
+		"tc": "雜項：",
+		"kr": "기타 :"
+	},
+	{
+		"id": -1000001019,
+		"key": "smcfgs019",
+		"en": "Levelup Exp",
+		"ch": "升级修为",
+		"tc": "Levelup Exp",
+		"kr": "레벨 업 exp"
+	},
+	{
+		"id": -1000001020,
+		"key": "smcfgs020",
+		"en": "Systems:",
+		"ch": "系统:",
+		"tc": "系統：",
+		"kr": "시스템 :"
+	},
+	{
+		"id": -1000001021,
+		"key": "smcfgs021",
+		"en": "Hide Save Button",
+		"ch": "隐藏保存按钮",
+		"tc": "隱藏保存按鈕",
+		"kr": "저장 버튼을 숨 깁니다"
+	},
+	{
+		"id": -1000001022,
+		"key": "smcfgs022",
+		"en": "Hide Reload Button",
+		"ch": "隐藏重新加载按钮",
+		"tc": "隱藏重新加載按鈕",
+		"kr": "새로 고침 버튼을 숨 깁니다"
+	},
+	{
+		"id": -1000001023,
+		"key": "smcfgs023",
+		"en": "One life",
+		"ch": "一生一世",
+		"tc": "一生",
+		"kr": "하나의 삶"
+	},
+	{
+		"id": -1000001024,
+		"key": "smcfgs024",
+		"en": "Hide Battle Map",
+		"ch": "隐藏战斗地图",
+		"tc": "隱藏戰斗地圖",
+		"kr": "전투지도를 숨기십시오"
+	},
+	{
+		"id": -1000001025,
+		"key": "smcfgs025",
+		"en": "Priority Destiny Level",
+		"ch": "优先命运境界",
+		"tc": "優先命運級別",
+		"kr": "우선 순위가 운명 수준"
+	},
+	{
+		"id": -1000001026,
+		"key": "smcfgs026",
+		"en": "Default",
+		"ch": "通常",
+		"tc": "預設",
+		"kr": "기본"
+	},
+	{
+		"id": -1000001027,
+		"key": "smcfgs027",
+		"en": "White",
+		"ch": "白色",
+		"tc": "白色的",
+		"kr": "하얀색"
+	},
+	{
+		"id": -1000001028,
+		"key": "smcfgs028",
+		"en": "Green",
+		"ch": "绿色",
+		"tc": "綠色的",
+		"kr": "녹색"
+	},
+	{
+		"id": -1000001029,
+		"key": "smcfgs029",
+		"en": "Blue",
+		"ch": "蓝色",
+		"tc": "藍色的",
+		"kr": "파란색"
+	},
+	{
+		"id": -1000001030,
+		"key": "smcfgs030",
+		"en": "Violet",
+		"ch": "紫色",
+		"tc": "紫色",
+		"kr": "제비꽃"
+	},
+	{
+		"id": -1000001031,
+		"key": "smcfgs031",
+		"en": "Yellow",
+		"ch": "黄色",
+		"tc": "黃色的",
+		"kr": "노란색"
+	},
+	{
+		"id": -1000001032,
+		"key": "smcfgs032",
+		"en": "Red",
+		"ch": "红色",
+		"tc": "紅色的",
+		"kr": "빨간색"
+	},
+	{
+		"id": -1000001033,
+		"key": "smcfgs033",
+		"en": "Only Portal at City and Sect",
+		"ch": "城邦和宗门的唯一门户",
+		"tc": "僅在城市和教派的門戶網站",
+		"kr": "도시와 종파의 포털 만"
+	},
+	{
+		"id": -1000001034,
+		"key": "smcfgs034",
+		"en": "Sect No Exchange",
+		"ch": "宗派无交流",
+		"tc": "沒有交換",
+		"kr": "교환을 종파하지 마십시오"
+	},
+	{
+		"id": -1000001035,
+		"key": "smcfgs035",
+		"en": "No Rebirth",
+		"ch": "没有重生",
+		"tc": "沒有重生",
+		"kr": "중생이 없습니다"
+	},
+	{
+		"id": -1000001036,
+		"key": "smcfgs036",
+		"en": "Allow Upgrade Naturally",
+		"ch": "允许自然升级",
+		"tc": "自然升級",
+		"kr": "자연스럽게 업그레이드 할 수 있습니다"
+	},
+	{
+		"id": -1000001037,
+		"key": "smcfgs037",
+		"en": "(This way wont grow up your attributes/properties)",
+		"ch": "(这样不会增加你的属性)",
+		"tc": "（這種方式不會長大您的屬性/屬性）",
+		"kr": "(이런 식으로 속성/속성이 자라지 않을 것입니다)"
+	},
+	{
+		"id": -1000001038,
+		"key": "smcfgs038",
+		"en": "Boss Has Shield",
+		"ch": "Boss有盾牌",
+		"tc": "老闆有盾牌",
+		"kr": "보스에는 방패가 있습니다"
+	},
+	{
+		"id": -1000001039,
+		"key": "smcfgs039",
+		"en": "No Growup From Battles",
+		"ch": "战斗没有成长",
+		"tc": "沒有戰鬥成長",
+		"kr": "전투에서 성장하지 않습니다"
+	},
+	{
+		"id": -1000001040,
+		"key": "smcfgs040",
+		"en": "No Exp from Battles",
+		"ch": "战斗没有经验值",
+		"tc": "沒有戰鬥的經驗",
+		"kr": "전투에서 exp"
+	},
+	{
+		"id": -1000001041,
+		"key": "smcfgs041",
+		"en": "Enable Trainer",
+		"ch": "启用训练器",
+		"tc": "啟用培訓師",
+		"kr": "트레이너를 활성화하십시오"
+	},
+	{
+		"id": -1000001042,
+		"key": "smcfgs042",
+		"en": "(Not recommend to use this option! Hot key in game: 【Ctrl+1】)",
+		"ch": "(不建议使用此选项！【Ctrl+1】)",
+		"tc": "（不建議使用此選項！遊戲中的熱鍵：【ctrl+1】）",
+		"kr": "(이 옵션을 사용하지 않는 것이 좋습니다! 게임의 핫 키 : 【ctrl+1】)"
+	},
+	{
+		"id": -1000001043,
+		"key": "smcfgs043",
+		"en": "Total score: {0}P",
+		"ch": "总分: {0}P",
+		"tc": "總分：{0} p",
+		"kr": "총 점수 : {0} p"
+	},
+	{
+		"id": -1000001044,
+		"key": "smcfgs044",
+		"en": "Default",
+		"ch": "通常",
+		"tc": "預設",
+		"kr": "기본"
+	},
+	{
+		"id": -1000001045,
+		"key": "smcfgs045",
+		"en": "Level",
+		"ch": "境界",
+		"tc": "等級",
+		"kr": "수준"
+	},
+	{
+		"id": -1000001046,
+		"key": "smcfgs046",
+		"en": "You have to start a new game to apply these configs!",
+		"ch": "您必须开始新游戏才能应用这些配置！",
+		"tc": "您必須啟動一個新遊戲才能應用這些配置！",
+		"kr": "이 구성을 적용하려면 새로운 게임을 시작해야합니다!"
+	},
+	{
+		"id": -1000001047,
+		"key": "smcfgs047",
+		"en": "NPC Amount",
+		"ch": "NPC数量",
+		"tc": "NPC金額",
+		"kr": "NPC 금액"
+	},
+	{
+		"id": -1000001048,
+		"key": "smcfgs048",
+		"en": "(Required RAM: {0}MB)",
+		"ch": "必需的 RAM: {0}MB)",
+		"tc": "（必需的RAM：{0} MB）",
+		"kr": "(필수 RAM : {0} MB)"
+	},
+	{
+		"id": -1000001049,
+		"key": "smcfgs049",
+		"en": "(Included Shield, Explode and Multiply)",
+		"ch": "(包括护盾、爆炸和倍增)",
+		"tc": "（包括盾牌，爆炸和乘法）",
+		"kr": "(방패 포함, 폭발 및 곱하기)"
+	},
+	{
+		"id": -1000001050,
+		"key": "smcfgs050",
+		"en": "Allow Town Buildup Over Time",
+		"ch": "允许城镇随着时间推移而发展",
+		"tc": "隨著時間的流逝允許城鎮積累",
+		"kr": "시간이 지남에 따라 마을 축적을 허용하십시오"
+	},
+	{
+		"id": -1000001051,
+		"key": "smcfgs051",
+		"en": "Growup speed",
+		"ch": "成長速度",
+		"tc": "成長速度",
+		"kr": "성장 속도"
+	},
+	{
+		"id": -1000001052,
+		"key": "smcfgs052",
+		"en": "(Include player, npc and monsters)",
+		"ch": "包括玩家、NPC和妖兽",
+		"tc": "（包括玩家，NPC和怪物）",
+		"kr": "(플레이어, NPC 및 몬스터 포함)"
+	},
+	{
+		"id": -1000001053,
+		"key": "smcfgs053",
+		"en": "every {1} months ({0}P)",
+		"ch": "每{1}月 ({0}P)",
+		"tc": "每個{1}月（{0} P）",
+		"kr": "모든 {1} 달 ({0} p)"
+	},
+	{
+		"id": -1000001054,
+		"key": "smcfgs054",
+		"en": "Export Configs",
+		"ch": "导出配置",
+		"tc": "導出配置",
+		"kr": "내보내기 구성"
+	},
+	{
+		"id": -1000001055,
+		"key": "smcfgs055",
+		"en": "Import Configs",
+		"ch": "导入配置",
+		"tc": "導入配置",
+		"kr": "구성을 가져옵니다"
+	},
+	{
+		"id": -1000001056,
+		"key": "smcfgs056",
+		"en": "Lost Items When Die",
+		"ch": "死亡掉落物品",
+		"tc": "死亡時丟失的物品",
+		"kr": "죽을 때 잃어버린 아이템"
+	},
+	{
+		"id": -1000001057,
+		"key": "smcfgs057",
+		"en": "(Include First Town)",
+		"ch": "（包括第一城镇）",
+		"tc": "（包括第一城鎮）",
+		"kr": "(퍼스트 타운 포함)"
+	},
+	{
+		"id": -1000001058,
+		"key": "smcfgs058",
+		"en": "Monster Depend On Player",
+		"ch": "怪物依靠球员",
+		"tc": "怪物依靠球員",
+		"kr": "몬스터는 플레이어에 의존합니다"
+	},
+	{
+		"id": -1000001059,
+		"key": "smcfgs059",
+		"en": "Auto Save After Lost",
+		"ch": "丢失后自动节省",
+		"tc": "丟失後自動節省",
+		"kr": "손실 후 자동 저장"
+	},
+	{
+		"id": -1000001060,
+		"key": "smcfgs060",
+		"en": "(The time will be skip to next month for healing)",
+		"ch": "（时间将跳到下个月的康复）",
+		"tc": "（時間將跳到下個月的康復）",
+		"kr": "(시간은 치유를 위해 다음 달에 건너 뛸 것입니다)"
+	},
+	{
+		"id": -1000001101,
+		"key": "smcfgs101",
+		"en": "{1}% ({0}P)",
+		"ch": "{1}％（{0} P）",
+		"tc": "{1}％（{0} P）",
+		"kr": "{1}% ({0} p)"
+	},
+	{
+		"id": -1000001102,
+		"key": "smcfgs102",
+		"en": "({0}P)",
+		"ch": "（{0} P）",
+		"tc": "（{0} P）",
+		"kr": "({0} p)"
+	},
+	{
+		"id": -1000001103,
+		"key": "smcfgs103",
+		"en": "{1} ({0}P)",
+		"ch": "{1}（{0} P）",
+		"tc": "{1}（{0} P）",
+		"kr": "{1} ({0} p)"
+	},
+	{
+		"id": -1000001104,
+		"key": "smcfgs104",
+		"en": "Startup",
+		"ch": "启动",
+		"tc": "啟動",
+		"kr": "스타트 업"
+	},
+	{
+		"id": -1000001105,
+		"key": "smcfgs105",
+		"en": "Power Up: A character specialized in all aspects.\nSpeed Up: A character specialized in speed.\nTaoist: A character specialized in magic.\nPro Atk: A character specialized in attack.\nPro Def: A character specialized in defense.\nAngel: A kind-hearted angel, focused on defense and protection.\nEvil: A demon shunned by everyone, focused on attack.\nMerchant: A trader who crushes others with wealth.",
+		"ch": "电源：一个专门从事各个方面的角色。\n加快：专门从事速度的角色。\n道家：专门从事魔术的角色。\nPro ATK：专门从事攻击的角色。\nPro Def：专门从事防御的角色。\n天使：一个善良的天使，专注于防御和保护。\n邪恶：每个人都回避的恶魔，专注于进攻。\n商人：一个用财富粉碎他人的商人。",
+		"tc": "電源：一個專門從事各個方面的角色。\n加快：專門從事速度的角色。\n道家：專門從事魔術的角色。\nPro ATK：專門從事攻擊的角色。\nPro Def：專門從事防禦的角色。\n天使：一個善良的天使，專注於防禦和保護。\n邪惡：每個人都迴避的惡魔，專注於進攻。\n商人：一個用財富粉碎他人的商人。",
+		"kr": "파워 업 : 모든 측면에 특화된 캐릭터.\n속도 업 : 속도를 전문으로하는 캐릭터.\nTaoist : 마술을 전문으로하는 캐릭터.\nPro ATK : 공격 전문 캐릭터.\nPro Def : 방어를 전문으로하는 캐릭터.\n천사 : 방어와 보호에 중점을 둔 친절한 천사.\n악 : 공격에 초점을 맞춘 모든 사람이 기피 한 악마.\n상인 : 다른 사람들을 부를 부수는 상인."
+	},
+	{
+		"id": -1000001106,
+		"key": "smcfgs106",
+		"en": "Player Role",
+		"ch": "球员角色",
+		"tc": "球員角色",
+		"kr": "플레이어 역할"
+	},
+	{
+		"id": -1000001107,
+		"key": "smcfgs107",
+		"en": "Random",
+		"ch": "随机的",
+		"tc": "隨機的",
+		"kr": "무작위의"
+	},
+	{
+		"id": -1000001108,
+		"key": "smcfgs108",
+		"en": "Power Up",
+		"ch": "加电",
+		"tc": "加電",
+		"kr": "전원업"
+	},
+	{
+		"id": -1000001109,
+		"key": "smcfgs109",
+		"en": "Speed Up",
+		"ch": "加快",
+		"tc": "加快",
+		"kr": "속도를 높이십시오"
+	},
+	{
+		"id": -1000001110,
+		"key": "smcfgs110",
+		"en": "Taoist",
+		"ch": "道家",
+		"tc": "道家",
+		"kr": "도사"
+	},
+	{
+		"id": -1000001111,
+		"key": "smcfgs111",
+		"en": "Pro Atk",
+		"ch": "Pro ATK",
+		"tc": "Pro ATK",
+		"kr": "프로 ATK"
+	},
+	{
+		"id": -1000001112,
+		"key": "smcfgs112",
+		"en": "Pro Def",
+		"ch": "Pro Def",
+		"tc": "Pro Def",
+		"kr": "프로 데프"
+	},
+	{
+		"id": -1000001113,
+		"key": "smcfgs113",
+		"en": "Angel",
+		"ch": "天使",
+		"tc": "天使",
+		"kr": "천사"
+	},
+	{
+		"id": -1000001114,
+		"key": "smcfgs114",
+		"en": "Evil",
+		"ch": "邪恶的",
+		"tc": "邪惡的",
+		"kr": "사악한"
+	},
+	{
+		"id": -1000001115,
+		"key": "smcfgs115",
+		"en": "Merchant",
+		"ch": "商人",
+		"tc": "商人",
+		"kr": "상인"
+	},
+	{
+		"id": -1000001116,
+		"key": "smcfgs116",
+		"en": "Market Item",
+		"ch": "市场项目",
+		"tc": "市場項目",
+		"kr": "시장 품목"
+	},
+	{
+		"id": -1000001117,
+		"key": "smcfgs117",
+		"en": "Npc Join Rate",
+		"ch": "NPC加入费率",
+		"tc": "NPC加入費率",
+		"kr": "NPC 조인율"
+	},
+	{
+		"id": -1000001118,
+		"key": "smcfgs118",
+		"en": "Get Attacked Rate",
+		"ch": "获得攻击率",
+		"tc": "獲得攻擊率",
+		"kr": "공격 요율을 얻으십시오"
+	},
+	{
+		"id": -1000001119,
+		"key": "smcfgs119",
+		"en": "(Warning: This feature consumes a lot of RAM and may cause lag)",
+		"ch": "（警告：此功能会消耗大量RAM，并可能导致滞后）",
+		"tc": "（警告：此功能會消耗大量RAM，並可能導致滯後）",
+		"kr": "(경고 :이 기능은 많은 RAM을 소비하고 지연을 유발할 수 있습니다)"
+	},
+	{
+		"id": -1000001120,
+		"key": "smcfgs120",
+		"en": "Save Data",
+		"ch": "保存数据",
+		"tc": "保存數據",
+		"kr": "데이터 저장"
+	},
+	{
+		"id": -1000001121,
+		"key": "smcfgs121",
+		"en": "Mod Configs",
+		"ch": "mod配置",
+		"tc": "mod配置",
+		"kr": "모드 구성"
+	},
+	{
+		"id": -1000001122,
+		"key": "smcfgs122",
+		"en": "No Taxing",
+		"ch": "没有税收",
+		"tc": "沒有稅收",
+		"kr": "세금이 없습니다"
+	},
+	{
+		"id": -1000001123,
+		"key": "smcfgs123",
+		"en": "No Market Items",
+		"ch": "没有市场项目",
+		"tc": "沒有市場項目",
+		"kr": "시장 품목이 없습니다"
+	},
+	{
+		"id": -1000001124,
+		"key": "smcfgs124",
+		"en": "No Stalkers",
+		"ch": "没有跟踪者",
+		"tc": "沒有跟踪者",
+		"kr": "스토커가 없습니다"
+	},
+	{
+		"id": -1000001125,
+		"key": "smcfgs125",
+		"en": "No Qi Cultivation",
+		"ch": "没有Qi种植",
+		"tc": "沒有Qi種植",
+		"kr": "Qi 재배가 없습니다"
+	},
+	{
+		"id": -1000001126,
+		"key": "smcfgs126",
+		"en": "(NPCs still have to pay taxes)",
+		"ch": "（NPC仍然必须缴税）",
+		"tc": "（NPC仍然必須繳稅）",
+		"kr": "(NPC는 여전히 세금을 납부해야합니다)"
+	}
 ]

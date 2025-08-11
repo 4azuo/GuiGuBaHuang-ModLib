@@ -2,113 +2,161 @@
 	{
 		"id": "420042001",
 		"key": "apprentice420041001",
-		"ch": "一品风水",
 		"en": "Feng Shui Lvl-1",
-		"kr": "1급 풍수",
-		"tc": "一品風水"
+		"ch": "一品风水",
+		"tc": "一品風水",
+		"kr": "1급 풍수"
 	},
 	{
 		"id": "420043001",
 		"key": "apprentice420041001desc",
-		"ch": "+2%灵力",
 		"en": "+2% Max MP",
-		"kr": "+2% 최대 영력",
-		"tc": "+2%靈力"
+		"ch": "+2%灵力",
+		"tc": "+2%靈力",
+		"kr": "+2% 최대 영력"
 	},
 	{
 		"id": "420042002",
 		"key": "apprentice420041002",
-		"ch": "二品风水",
 		"en": "Feng Shui Lvl-2",
-		"kr": "2급 풍수",
-		"tc": "二品風水"
+		"ch": "二品风水",
+		"tc": "二品風水",
+		"kr": "2급 풍수"
 	},
 	{
 		"id": "420043002",
 		"key": "apprentice420041002desc",
-		"ch": "+4%灵力",
 		"en": "+4% Max MP",
-		"kr": "+4% 최대 영력",
-		"tc": "+4%靈力"
+		"ch": "+4%灵力",
+		"tc": "+4%靈力",
+		"kr": "+4% 최대 영력"
 	},
 	{
 		"id": "420042003",
 		"key": "apprentice420041003",
-		"ch": "三品风水","en": "Feng Shui Lvl-3"
+		"en": "Feng Shui Lvl-3",
+		"ch": "三品风水",
+		"tc": "風水LVL-3",
+		"kr": "풍수 LVL-3"
 	},
 	{
 		"id": "420043003",
 		"key": "apprentice420041003desc",
-		"ch": "+6%灵力","en": "+6% Max MP"
+		"en": "+6% Max MP",
+		"ch": "+6%灵力",
+		"tc": "+最大MP 6％",
+		"kr": "+6% 최대 MP"
 	},
 	{
 		"id": "420042004",
 		"key": "apprentice420041004",
-		"ch": "四品风水","en": "Feng Shui Lvl-4"
+		"en": "Feng Shui Lvl-4",
+		"ch": "四品风水",
+		"tc": "風水LVL-4",
+		"kr": "풍수 LVL-4"
 	},
 	{
 		"id": "420043004",
 		"key": "apprentice420041004desc",
-		"ch": "+8%灵力","en": "+8% Max MP"
+		"en": "+8% Max MP",
+		"ch": "+8%灵力",
+		"tc": "+最大MP 8％",
+		"kr": "+8% 최대 MP"
 	},
 	{
 		"id": "420042005",
 		"key": "apprentice420041005",
-		"ch": "五品风水","en": "Feng Shui Lvl-5"
+		"en": "Feng Shui Lvl-5",
+		"ch": "五品风水",
+		"tc": "風水LVL-5",
+		"kr": "풍수 LVL-5"
 	},
 	{
 		"id": "420043005",
 		"key": "apprentice420041005desc",
-		"ch": "+10%灵力","en": "+10% Max MP"
+		"en": "+10% Max MP",
+		"ch": "+10%灵力",
+		"tc": "+最大MP 10％",
+		"kr": "+10% 최대 MP"
 	},
 	{
 		"id": "420042006",
 		"key": "apprentice420041006",
-		"ch": "六品风水","en": "Feng Shui Lvl-6"
+		"en": "Feng Shui Lvl-6",
+		"ch": "六品风水",
+		"tc": "風水LVL-6",
+		"kr": "풍수 LVL-6"
 	},
 	{
 		"id": "420043006",
 		"key": "apprentice420041006desc",
-		"ch": "+12%灵力","en": "+12% Max MP"
+		"en": "+12% Max MP",
+		"ch": "+12%灵力",
+		"tc": "+最大MP 12％",
+		"kr": "+12% 최대 MP"
 	},
 	{
 		"id": "420042007",
 		"key": "apprentice420041007",
-		"ch": "七品风水","en": "Feng Shui Lvl-7"
+		"en": "Feng Shui Lvl-7",
+		"ch": "七品风水",
+		"tc": "風水LVL-7",
+		"kr": "풍수 LVL-7"
 	},
 	{
 		"id": "420043007",
 		"key": "apprentice420041007desc",
-		"ch": "+14%灵力","en": "+14% Max MP"
+		"en": "+14% Max MP",
+		"ch": "+14%灵力",
+		"tc": "+最大MP 14％",
+		"kr": "+14% 최대 MP"
 	},
 	{
 		"id": "420042008",
 		"key": "apprentice420041008",
-		"ch": "八品风水","en": "Feng Shui Lvl-8"
+		"en": "Feng Shui Lvl-8",
+		"ch": "八品风水",
+		"tc": "風水LVL-8",
+		"kr": "풍수 LVL-8"
 	},
 	{
 		"id": "420043008",
 		"key": "apprentice420041008desc",
-		"ch": "+16%灵力","en": "+16% Max MP"
+		"en": "+16% Max MP",
+		"ch": "+16%灵力",
+		"tc": "+最大MP 16％",
+		"kr": "+16% 최대 MP"
 	},
 	{
 		"id": "420042009",
 		"key": "apprentice420041009",
-		"ch": "九品风水","en": "Feng Shui Lvl-9"
+		"en": "Feng Shui Lvl-9",
+		"ch": "九品风水",
+		"tc": "風水LVL-9",
+		"kr": "풍수 LVL-9"
 	},
 	{
 		"id": "420043009",
 		"key": "apprentice420041009desc",
-		"ch": "+18%灵力","en": "+18% Max MP"
+		"en": "+18% Max MP",
+		"ch": "+18%灵力",
+		"tc": "+最大MP 18％",
+		"kr": "+18% 최대 MP"
 	},
 	{
 		"id": "420042010",
 		"key": "apprentice420041010",
-		"ch": "十品风水","en": "Feng Shui Lvl-10"
+		"en": "Feng Shui Lvl-10",
+		"ch": "十品风水",
+		"tc": "風水LVL-10",
+		"kr": "풍수 LVL-10"
 	},
 	{
 		"id": "420043010",
 		"key": "apprentice420041010desc",
-		"ch": "+20%灵力","en": "+20% Max MP"
-	},
+		"en": "+20% Max MP",
+		"ch": "+20%灵力",
+		"tc": "+最大MP 20％",
+		"kr": "+20% 최대 MP"
+	}
 ]
