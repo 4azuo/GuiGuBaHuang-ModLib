@@ -98,14 +98,14 @@ class JsonUtils:
         Returns:
             LocalTextData đã được sắp xếp
         """
-        if data.is_list:
-            # Sort list items by 'id' field nếu có
-            sorted_data = sorted(data.data, key=lambda x: x.get('id', ''))
-            return LocalTextData(sorted_data)
-        elif data.is_dict:
-            # Sort dict by keys
-            sorted_data = dict(sorted(data.data.items()))
-            return LocalTextData(sorted_data)
+        # if data.is_list:
+        #     # Sort list items by 'id' field nếu có
+        #     sorted_data = sorted(data.data, key=lambda x: x.get('id', ''))
+        #     return LocalTextData(sorted_data)
+        # elif data.is_dict:
+        #     # Sort dict by keys
+        #     sorted_data = dict(sorted(data.data.items()))
+        #     return LocalTextData(sorted_data)
         
         return data
     
