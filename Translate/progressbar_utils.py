@@ -20,6 +20,16 @@ class ProgressBar:
         self.start_time = time.time()
         self.last_update_time = 0
         self.min_update_interval = PROGRESS_BAR_CONFIG['min_update_interval']
+    
+    def _flush_line(self, content: str = "") -> None:
+        """Clear current line and write new content"""
+        clear_width = PROGRESS_BAR_CONFIG['clear_line_width']
+        sys.stdout.write(f"\r{' ' * clear_width}\r{content}")
+        sys.stdout.flush()
+    
+    def _clear_line(self) -> None:
+        """Clear current line completely"""
+        self._flush_line("")
         
     def update(self, increment: int = 1, description: str = "") -> None:
         """Update progress bar"""
@@ -41,9 +51,6 @@ class ProgressBar:
     def finish(self, description: str = "Hoàn thành") -> None:
         """Complete the progress bar"""
         self.current = self.total
-        # Clear the entire line để tránh text overlap
-        sys.stdout.write(f"\r{' ' * PROGRESS_BAR_CONFIG['clear_line_width']}\r")
-        sys.stdout.flush()
         self._render(description)
         print()  # New line after completion
     
@@ -96,15 +103,15 @@ class ProgressBar:
         if self.config.suffix:
             components.append(self.config.suffix)
         
-        # Print with carriage return to overwrite
+        # Print with clear line để tránh text overlap
         line = " ".join(components)
         # Đảm bảo line không quá dài cho terminal
         max_line_length = PROGRESS_BAR_CONFIG['max_line_length']
         if len(line) > max_line_length:
             line = line[:max_line_length-3] + "..."
         
-        sys.stdout.write(f"\r{line}")
-        sys.stdout.flush()
+        # Use flush helper function
+        self._flush_line(line)
     
     def _format_time(self, seconds: float) -> str:
         """Format time in readable format"""
@@ -155,6 +162,9 @@ class MultiProgressManager:
         for progress_bar in self.progress_bars.values():
             if progress_bar.current < progress_bar.total:
                 progress_bar.finish("Đã dừng")
+            else:
+                # Clear line for completed progress bars too
+                progress_bar._clear_line()
         self.progress_bars.clear()
 
 class ProgressContext:
