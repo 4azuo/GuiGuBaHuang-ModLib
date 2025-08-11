@@ -1,24 +1,69 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 """
-Script để xử lý các file *localText.json
-- Đọc và sửa JSON format
-- Dịch từ tiếng Anh sang Chinese, Traditional Chinese, Korean
-- Lưu lại file với format chuẩn
+Script để xử lý các file *localText.json - Tự động dịch đa ngôn ngữ
+
+Cấu trúc file:
+- Main files: ModConf/*localText.json (1 cấp thư mục)
+- Locale files: ModConf/*/*localText.json (2 cấp thư mục)
+
+Workflow:
+1. Xử lý file main trong ModConf/
+2. Xóa toàn bộ file locale cũ
+3. Tạo lại file locale mới từ file main
+4. Dịch tự động từ tiếng Anh
 
 Cách sử dụng:
-    python translate_localtext.py                           # Xử lý tất cả file trong thư mục hiện tại
-    python translate_localtext.py file.json                 # Xử lý file cụ thể
-    python translate_localtext.py folder/                   # Xử lý tất cả file trong folder
-    python translate_localtext.py --help                    # Hiển thị hướng dẫn
+    # BẮT BUỘC: Phải có cả --project và --path
+    
+    # Xử lý toàn bộ ModConf
+    python translate_localtext.py --project 3385996759 --path .
+    
+    # Xử lý file main cụ thể
+    python translate_localtext.py --project 3385996759 --path game_localText.json
+    
+    # Xử lý file locale (sẽ tự động chuyển về file main)
+    python translate_localtext.py --project 3385996759 --path vi/game_localText.json
+    
+    # Xử lý folder con trong ModConf
+    python translate_localtext.py --project 3385996759 --path subfolder
+    
+    # Tùy chọn ngôn ngữ
+    python translate_localtext.py --project 3385996759 --path . --create-locales vi,es
+    python translate_localtext.py --project 3385996759 --path . --create-locales all
+    
+    # Kiểm tra trước khi chạy
+    python translate_localtext.py --project 3385996759 --path . --dry-run
+    
+    # Trợ giúp
+    python translate_localtext.py --help
+
+Ngôn ngữ hỗ trợ:
+- Mặc định: vi (Vietnamese), es (Spanish), fr (French), de (German), 
+           ru (Russian), ja (Japanese), la (Latin)
+- Tùy chỉnh: Bất kỳ mã ngôn ngữ ISO nào
+
+Ví dụ cấu trúc:
+    ModConf/
+    ├── game_localText.json          # ← Main file (en, ch, tc, kr)
+    ├── balance_localText.json       # ← Main file
+    ├── vi/
+    │   ├── game_localText.json      # ← Locale Vietnamese
+    │   └── balance_localText.json   # ← Locale Vietnamese
+    ├── es/
+    │   ├── game_localText.json      # ← Locale Spanish
+    │   └── balance_localText.json   # ← Locale Spanish
+    └── fr/
+        ├── game_localText.json      # ← Locale French
+        └── balance_localText.json   # ← Locale French
 """
 
 import json
 import os
 import glob
 import time
-import sys
 import argparse
+import shutil
 from deep_translator import GoogleTranslator
 import re
 
@@ -94,21 +139,32 @@ class LocalTextProcessor:
         return None
     
     def is_locale_file(self, file_path):
-        """Kiểm tra xem có phải file locale không (nằm trong child folder của ModConf)"""
+        """Kiểm tra xem có phải file locale không (nằm trong ModConf/*/*localText.json)"""
         try:
             parts = file_path.split(os.sep)
             
-            # Tìm xem có ModConf không và file có nằm trong subfolder của ModConf không
+            # Tìm index của ModConf
+            modconf_index = None
             for i, part in enumerate(parts):
                 if part == "ModConf":
-                    # Nếu file nằm trực tiếp trong ModConf thì là main file
-                    if i + 1 == len(parts) - 1:
-                        return False
-                    # Nếu file nằm trong subfolder của ModConf thì là locale file
-                    elif i + 1 < len(parts) - 1:
-                        return True
+                    modconf_index = i
+                    break
             
-            return False
+            if modconf_index is None:
+                return False
+            
+            # Tính số cấp thư mục từ ModConf đến file (không tính tên file)
+            folder_levels = len(parts) - modconf_index - 2  # -2 để bỏ ModConf và tên file
+            
+            # File main: ModConf/*localText.json (0 cấp thư mục con)
+            # File locale: ModConf/*/*localText.json (1 cấp thư mục con)
+            if folder_levels == 1:  # ModConf/lang/file.json
+                return True
+            elif folder_levels == 0:  # ModConf/file.json
+                return False
+            else:
+                return False  # Không phải cấu trúc hợp lệ
+                
         except:
             return False
     
@@ -117,9 +173,9 @@ class LocalTextProcessor:
         try:
             parts = file_path.split(os.sep)
             
-            # Tìm folder chứa file (folder này chính là mã ngôn ngữ)
+            # Tìm ModConf và lấy thư mục ngôn ngữ (cấp kế tiếp)
             for i, part in enumerate(parts):
-                if part == "ModConf" and i + 1 < len(parts) - 1:
+                if part == "ModConf" and i + 1 < len(parts):
                     lang_folder = parts[i + 1]
                     
                     # Map các mã ngôn ngữ phổ biến
@@ -145,6 +201,39 @@ class LocalTextProcessor:
         except:
             return None
     
+    def clean_existing_locale_files(self, main_files):
+        """Xóa tất cả file locale cũ"""
+        cleaned_count = 0
+        
+        for main_file_path in main_files:
+            # Tìm thư mục ModConf
+            parts = main_file_path.split(os.sep)
+            modconf_index = None
+            for i, part in enumerate(parts):
+                if part == "ModConf":
+                    modconf_index = i
+                    break
+            
+            if modconf_index is None:
+                continue
+                
+            modconf_path = os.sep.join(parts[:modconf_index + 1])
+            
+            # Tìm và xóa các thư mục ngôn ngữ
+            for lang in self.target_languages:
+                lang_dir = os.path.join(modconf_path, lang)
+                if os.path.exists(lang_dir) and os.path.isdir(lang_dir):
+                    try:
+                        shutil.rmtree(lang_dir)
+                        cleaned_count += 1
+                    except Exception as e:
+                        print(f"Lỗi xóa {lang_dir}: {e}")
+        
+        if cleaned_count > 0:
+            print(f"Dọn dẹp {cleaned_count} thư mục locale cũ")
+        
+        return cleaned_count
+    
     def create_combined_translation(self, main_data, target_lang_code):
         """Tạo bản dịch cho locale file từ main file"""
         if isinstance(main_data, list):
@@ -160,12 +249,11 @@ class LocalTextProcessor:
                     # Dịch từ tiếng Anh sang ngôn ngữ đích
                     en_text = item['en']
                     if en_text and en_text.strip():
-                        print(f"    Đang dịch: {en_text[:50]}{'...' if len(en_text) > 50 else ''}")
                         translated = self.translate_text(en_text, target_lang_code)
-                        new_item[target_lang_code] = translated
-                        print(f"    → {translated}")
+                        # Sử dụng key gộp "en|ch|tc|kr" với giá trị đã dịch
+                        new_item['en|ch|tc|kr'] = translated
                     else:
-                        new_item[target_lang_code] = en_text
+                        new_item['en|ch|tc|kr'] = en_text
                     
                     result.append(new_item)
                 else:
@@ -181,12 +269,11 @@ class LocalTextProcessor:
                 
                 en_text = main_data['en']
                 if en_text and en_text.strip():
-                    print(f"    Đang dịch: {en_text[:50]}{'...' if len(en_text) > 50 else ''}")
                     translated = self.translate_text(en_text, target_lang_code)
-                    new_item[target_lang_code] = translated
-                    print(f"    → {translated}")
+                    # Sử dụng key gộp "en|ch|tc|kr" với giá trị đã dịch
+                    new_item['en|ch|tc|kr'] = translated
                 else:
-                    new_item[target_lang_code] = en_text
+                    new_item['en|ch|tc|kr'] = en_text
                 
                 return new_item
         
@@ -205,17 +292,11 @@ class LocalTextProcessor:
         if not en_text or en_text.strip() == "":
             return item
             
-        print(f"  Item {item_index + 1}: {en_text[:50]}{'...' if len(en_text) > 50 else ''}")
-        
         # Dịch sang các ngôn ngữ khác nếu chưa có hoặc rỗng
         for lang_key, google_lang_code in self.language_codes.items():
             if lang_key not in item or not item[lang_key] or item[lang_key].strip() == "":
-                print(f"    Đang dịch sang {lang_key}...")
                 translated = self.translate_text(en_text, google_lang_code)
                 item[lang_key] = translated
-                print(f"    {lang_key}: {translated}")
-            # else:
-            #     print(f"    {lang_key}: {item[lang_key]} (đã có)")
         
         # Kiểm tra nếu tất cả các giá trị ngôn ngữ giống nhau
         lang_keys = ['en', 'ch', 'tc', 'kr']
@@ -271,8 +352,6 @@ class LocalTextProcessor:
         created_files = []
         
         for main_file_path in main_files:
-            print(f"\nTạo file locale từ: {main_file_path}")
-            
             # Tìm thư mục ModConf
             parts = main_file_path.split(os.sep)
             modconf_index = None
@@ -289,35 +368,26 @@ class LocalTextProcessor:
             
             # Tạo file locale cho mỗi ngôn ngữ
             for lang in target_languages:
-                # Tạo thư mục ngôn ngữ nếu chưa có
+                # Tạo thư mục ngôn ngữ
                 lang_dir = os.path.join(modconf_path, lang)
-                if not os.path.exists(lang_dir):
-                    os.makedirs(lang_dir)
-                    print(f"  Tạo thư mục: {lang_dir}")
+                os.makedirs(lang_dir, exist_ok=True)
                 
                 # Đường dẫn file locale
                 locale_file_path = os.path.join(lang_dir, main_filename)
+                created_files.append(locale_file_path)
                 
-                # Chỉ tạo nếu file chưa tồn tại
-                if not os.path.exists(locale_file_path):
-                    created_files.append(locale_file_path)
-                    print(f"  Sẽ tạo: {locale_file_path}")
+        if created_files:
+            print(f"Tạo {len(created_files)} file locale mới")
                 
         return created_files
     
     def process_locale_file(self, file_path):
         """Xử lý file locale dựa trên file main"""
-        print(f"\n{'='*60}")
-        print(f"Đang xử lý file locale: {file_path}")
-        
         try:
             # Tìm file main tương ứng
             main_file_path = self.find_main_file(file_path)
             if not main_file_path:
-                print(f"Không tìm thấy file main cho {file_path}")
                 return self.process_json_file(file_path)  # Fallback to normal processing
-            
-            print(f"File main tương ứng: {main_file_path}")
             
             # Đọc file main
             with open(main_file_path, 'r', encoding='utf-8') as f:
@@ -329,16 +399,12 @@ class LocalTextProcessor:
             # Xác định ngôn ngữ đích từ thư mục chứa file locale
             target_lang = self.get_locale_language(file_path)
             if not target_lang:
-                print(f"Không xác định được ngôn ngữ đích cho {file_path}")
                 return False
-            
-            print(f"Ngôn ngữ đích: {target_lang}")
             
             # Tạo thư mục chứa file nếu chưa có
             locale_dir = os.path.dirname(file_path)
             if not os.path.exists(locale_dir):
                 os.makedirs(locale_dir)
-                print(f"Tạo thư mục: {locale_dir}")
             
             # Tạo bản dịch cho locale
             translated_data = self.create_combined_translation(main_data, target_lang)
@@ -350,12 +416,10 @@ class LocalTextProcessor:
                 except:
                     pass
             
-            # Lưu file locale (tạo mới hoặc ghi đè)
+            # Lưu file locale (tạo mới)
             with open(file_path, 'w', encoding='utf-8') as f:
                 json.dump(translated_data, f, ensure_ascii=False, indent='\t')
             
-            file_status = "tạo mới" if not os.path.exists(file_path) else "cập nhật"
-            print(f"✓ Hoàn thành file locale ({file_status}): {file_path}")
             self.processed_count += 1
             return True
             
@@ -365,9 +429,6 @@ class LocalTextProcessor:
 
     def process_json_file(self, file_path):
         """Xử lý một file JSON"""
-        print(f"\n{'='*60}")
-        print(f"Đang xử lý: {file_path}")
-        
         try:
             # Đọc file
             with open(file_path, 'r', encoding='utf-8') as f:
@@ -406,7 +467,6 @@ class LocalTextProcessor:
             with open(file_path, 'w', encoding='utf-8') as f:
                 json.dump(processed_data, f, ensure_ascii=False, indent='\t')
             
-            print(f"✓ Hoàn thành: {file_path}")
             self.processed_count += 1
             return True
             
@@ -490,17 +550,21 @@ class LocalTextProcessor:
             if self.process_json_file(file_path):
                 success_count += 1
         
-        # Tạo file locale mới từ file main nếu cần
+        # Dọn dẹp và tạo lại file locale
         if main_files:
-            print(f"\n--- Kiểm tra và tạo file locale mới ---")
+            print(f"\n--- Dọn dẹp file locale cũ ---")
+            self.clean_existing_locale_files(main_files)
+            
+            print(f"\n--- Tạo file locale mới ---")
             new_locale_files = self.create_locale_files_from_main(main_files)
             if new_locale_files:
                 print(f"Tạo {len(new_locale_files)} file locale mới")
-                locale_files.extend(new_locale_files)
+                locale_files = new_locale_files  # Chỉ xử lý file mới tạo
                 # Cập nhật lại tổng số file
                 files.extend(new_locale_files)
             else:
                 print("Không có file locale mới cần tạo")
+                locale_files = []
         
         # Xử lý file locale sau
         print(f"\n--- Xử lý {len(locale_files)} file locale ---")
@@ -511,33 +575,29 @@ class LocalTextProcessor:
         end_time = time.time()
         elapsed_time = end_time - start_time
         
-        print(f"\n{'='*60}")
-        print(f"=== KẾT QUẢ ===")
-        print(f"Tổng số file: {len(files)}")
-        print(f"Thành công: {success_count}")
-        print(f"Thất bại: {len(files) - success_count}")
-        print(f"Số lượt dịch: {self.translated_count}")
-        print(f"Thời gian: {elapsed_time:.2f} giây")
+        print(f"📊 KẾT QUẢ")
+        print(f"📁 Tổng số file: {len(files)}")
+        print(f"✅ Tạo: {success_count}")
+        print(f"❌ Xóa: {len(files) - success_count}")
+        print(f"🔄 Số lượt dịch: {self.translated_count}")
+        print(f"⏱️ Thời gian: {elapsed_time:.2f} giây")
 
 def main():
     parser = argparse.ArgumentParser(
-        description="Script xử lý file *localText.json - dịch tự động từ tiếng Anh sang Chinese, Traditional Chinese, Korean và các ngôn ngữ khác",
-        formatter_class=argparse.RawDescriptionHelpFormatter,
-        epilog="""
-Ví dụ sử dụng:
-  python translate_localtext.py                              # Xử lý tất cả file trong thư mục hiện tại
-  python translate_localtext.py game_localText.json         # Xử lý file cụ thể
-  python translate_localtext.py ModConf/                     # Xử lý tất cả file trong folder ModConf
-  python translate_localtext.py 3385996759/ModProject/ModConf      # Xử lý tất cả file trong project cụ thể
-  python translate_localtext.py --create-locales vi,es,fr   # Tạo file locale cho Vietnamese, Spanish, French
-        """
+        description="Script xử lý file *localText.json - Tự động dịch đa ngôn ngữ",
+        formatter_class=argparse.RawDescriptionHelpFormatter
     )
     
     parser.add_argument(
-        'path', 
-        nargs='?', 
-        default='.', 
-        help='Đường dẫn đến file hoặc thư mục cần xử lý (mặc định: thư mục hiện tại)'
+        '--project', 
+        required=True,
+        help='Tên project (vd: 3385996759)'
+    )
+    
+    parser.add_argument(
+        '--path', 
+        required=True,
+        help='Đường dẫn tương đối trong ModConf (folder hoặc file). Vd: "." cho toàn bộ, "game_localText.json" cho file cụ thể'
     )
     
     parser.add_argument(
@@ -549,39 +609,74 @@ Ví dụ sử dụng:
     parser.add_argument(
         '--create-locales',
         type=str,
-        help='Danh sách ngôn ngữ cần tạo file locale, cách nhau bởi dấu phẩy (vd: vi,es,fr,de)'
+        help='Danh sách ngôn ngữ cần tạo file locale, cách nhau bởi dấu phẩy. Ví dụ: vi,es,fr hoặc "all" cho tất cả'
     )
     
     args = parser.parse_args()
     
-    print("=== Script Xử Lý LocalText.json ===")
-    print(f"Đường dẫn: {os.path.abspath(args.path)}")
+    print("🚀 Script Xử Lý LocalText.json")
+    print(f"� Project: {args.project}")
+    print(f"�📂 Path: {args.path}")
+    
+    # Xây dựng đường dẫn đầy đủ
+    project_modconf_path = os.path.join(args.project, "ModProject", "ModConf")
+    
+    if not os.path.exists(project_modconf_path):
+        print(f"❌ Không tìm thấy thư mục: {project_modconf_path}")
+        return
+    
+    # Xử lý đường dẫn đích
+    if args.path == ".":
+        # Xử lý toàn bộ ModConf
+        target_path = project_modconf_path
+    else:
+        # Đường dẫn cụ thể trong ModConf
+        target_path = os.path.join(project_modconf_path, args.path)
+        
+        # Nếu là file locale, chuyển về file main
+        if os.path.isfile(target_path):
+            processor_temp = LocalTextProcessor()
+            if processor_temp.is_locale_file(target_path):
+                main_file = processor_temp.find_main_file(target_path)
+                if main_file:
+                    target_path = main_file
+                    print(f"🔄 Chuyển từ file locale sang file main: {os.path.relpath(main_file, os.getcwd())}")
+    
+    if not os.path.exists(target_path):
+        print(f"❌ Không tìm thấy đường dẫn: {target_path}")
+        return
+    
+    print(f"🎯 Đường dẫn đích: {os.path.relpath(target_path, os.getcwd())}")
     
     if args.dry_run:
-        print("Chế độ: DRY RUN (chỉ hiển thị danh sách file)")
+        print("🔍 Chế độ: DRY RUN (chỉ xem danh sách file)")
     
     # Xử lý danh sách ngôn ngữ tùy chỉnh
     target_languages = ['vi', 'es', 'fr', 'de', 'ru', 'ja', 'la']  # Mặc định
     if args.create_locales:
-        target_languages = [lang.strip() for lang in args.create_locales.split(',')]
-        print(f"Ngôn ngữ locale sẽ tạo: {', '.join(target_languages)}")
+        if args.create_locales.lower() == 'all':
+            target_languages = ['vi', 'es', 'fr', 'de', 'ru', 'ja', 'la', 'pt', 'it', 'th', 'ar', 'hi', 'tr']
+        else:
+            target_languages = [lang.strip() for lang in args.create_locales.split(',')]
+        print(f"🌍 Ngôn ngữ locale: {', '.join(target_languages)}")
     
     processor = LocalTextProcessor()
     processor.target_languages = target_languages  # Truyền danh sách ngôn ngữ
     
     if args.dry_run:
         # Chỉ hiển thị danh sách file
-        files = processor.find_localtext_files(args.path)
+        files = processor.find_localtext_files(target_path)
         if files:
             print(f"\nTìm thấy {len(files)} file:")
             for i, file_path in enumerate(files, 1):
                 rel_path = os.path.relpath(file_path, os.getcwd())
-                print(f"  {i}. {rel_path}")
+                file_type = "(locale)" if processor.is_locale_file(file_path) else "(main)"
+                print(f"  {i}. {rel_path} {file_type}")
         else:
             print("Không tìm thấy file nào!")
     else:
         # Xử lý thực tế
-        processor.process_files(args.path)
+        processor.process_files(target_path)
 
 if __name__ == "__main__":
     main()

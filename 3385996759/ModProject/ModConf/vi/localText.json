@@ -2,31 +2,31 @@
 	{
 		"id": "999990000",
 		"key": "libtxt999990000",
-		"ch|en|tc|kr": "Cảnh báo"
+		"en|ch|tc|kr": "Cảnh báo"
 	},
 	{
 		"id": "999990001",
 		"key": "libtxt999990001",
-		"ch|en|tc|kr": "Giao diện của ModLib được tối ưu hóa cho tỷ lệ màn hình 16:9."
+		"en|ch|tc|kr": "UI của Modlib được tối ưu hóa cho tỷ lệ màn hình 16: 9."
 	},
 	{
 		"id": "999990002",
 		"key": "libtxt999990002",
-		"ch|en|tc|kr": "Hệ thống sẽ chạy benchmark để khởi tạo RAM cho trò chơi."
+		"en|ch|tc|kr": "Nó sẽ chạy một điểm chuẩn để khởi tạo RAM cho trò chơi."
 	},
 	{
 		"id": "999990003",
 		"key": "libtxt999990003",
-		"ch|en|tc|kr": "Bạn cần phải khởi động lại trò chơi!"
+		"en|ch|tc|kr": "Bạn phải đặt lại trò chơi!"
 	},
 	{
 		"id": "999990004",
 		"key": "libtxt999990004",
-		"ch|en|tc|kr": "Đây là lần đầu tiên. Bạn có muốn chạy benchmark để khởi tạo RAM cho trò chơi không?"
+		"en|ch|tc|kr": "Đây là lần đầu tiên. Bạn có muốn chạy một điểm chuẩn để khởi tạo RAM cho trò chơi không?"
 	},
 	{
 		"id": "999990005",
 		"key": "libtxt999990005",
-		"ch|en|tc|kr": "DEFAULT_DRAMA_OPT"
+		"en|ch|tc|kr": "DEFAULT_DRAMA_OPT"
 	}
 ]
