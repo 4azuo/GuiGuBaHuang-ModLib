@@ -13,16 +13,46 @@ class TranslateUtils:
     """Utilities cho việc xử lý translation và locale data"""
     
     @staticmethod
+    def sort_language_keys(item_dict):
+        """
+        Sắp xếp các key trong dictionary theo thứ tự: en, ch, tc, kr, rồi đến các key khác
+        
+        Args:
+            item_dict: Dictionary cần sắp xếp
+            
+        Returns:
+            Dictionary đã được sắp xếp theo thứ tự key
+        """
+        # Thứ tự ưu tiên cho các key ngôn ngữ
+        language_order = ['__name', 'id', 'key', 'en', 'ch', 'tc', 'kr']
+        
+        # Tạo dict mới với thứ tự đã sắp xếp
+        sorted_dict = {}
+        
+        # Thêm các key ngôn ngữ theo thứ tự
+        for lang_key in language_order:
+            if lang_key in item_dict:
+                sorted_dict[lang_key] = item_dict[lang_key]
+        
+        # Thêm các key còn lại (không phải ngôn ngữ)
+        for key, value in item_dict.items():
+            if key not in language_order:
+                sorted_dict[key] = value
+                
+        return sorted_dict
+
+    @staticmethod
     def normalize_main_file_keys(main_data):
         """
         Chuẩn hóa các combined key trong main file thành key đơn giản
         Combined key có chứa 'en' sẽ được chuyển thành key 'en'
+        Đồng thời sắp xếp các key theo thứ tự: en, ch, tc, kr
         
         Args:
             main_data: Dữ liệu main file
             
         Returns:
-            LocalTextData với các key đã được chuẩn hóa
+            LocalTextData với các key đã được chuẩn hóa và sắp xếp
         """
         if main_data.is_list:
             result = []
@@ -41,6 +71,8 @@ class TranslateUtils:
                             new_item['en'] = value
                             break  # Chỉ lấy combined key đầu tiên
                     
+                    # Sắp xếp key theo thứ tự: en, ch, tc, kr
+                    new_item = TranslateUtils.sort_language_keys(new_item)
                     result.append(new_item)
                 else:
                     result.append(item)
@@ -61,6 +93,8 @@ class TranslateUtils:
                     new_item['en'] = value
                     break  # Chỉ lấy combined key đầu tiên
             
+            # Sắp xếp key theo thứ tự: en, ch, tc, kr
+            new_item = TranslateUtils.sort_language_keys(new_item)
             return LocalTextData(new_item)
         
         return main_data
@@ -184,6 +218,8 @@ class TranslateUtils:
                             translated_kr = translator_func(en_text, LANGUAGE_CODES['kr'])
                             new_item['kr'] = translated_kr
                     
+                    # Sắp xếp key theo thứ tự: en, ch, tc, kr
+                    new_item = TranslateUtils.sort_language_keys(new_item)
                     result.append(new_item)
                 else:
                     result.append(item)
@@ -210,6 +246,8 @@ class TranslateUtils:
                     translated_kr = translator_func(en_text, LANGUAGE_CODES['kr'])
                     new_item['kr'] = translated_kr
             
+            # Sắp xếp key theo thứ tự: en, ch, tc, kr
+            new_item = TranslateUtils.sort_language_keys(new_item)
             return LocalTextData(new_item)
         
         return main_data
