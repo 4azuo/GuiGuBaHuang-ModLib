@@ -10,15 +10,8 @@ import shutil
 from typing import List, Optional
 from pathlib import Path
 
-try:
-    from consts import DIR_PATTERNS, DEFAULT_TARGET_LANGUAGES
-    from data_types import FileType, FileInfo
-except ImportError:
-    # Fallback cho trường hợp import trực tiếp
-    import sys
-    sys.path.append(os.path.dirname(os.path.abspath(__file__)))
-    from consts import DIR_PATTERNS, DEFAULT_TARGET_LANGUAGES
-    from data_types import FileType, FileInfo
+from consts import DIR_PATTERNS, DEFAULT_TARGET_LANGUAGES, FILE_CONFIG
+from data_types import FileType, FileInfo
 
 class FileUtils:
     """Utilities cho việc xử lý files và directories"""
@@ -51,7 +44,7 @@ class FileUtils:
         
         if os.path.isfile(search_path):
             # Nếu là file cụ thể
-            if search_path.endswith('localText.json'):
+            if search_path.endswith(FILE_CONFIG['localtext_suffix']):
                 files.append(search_path)
         else:
             # Nếu là thư mục, tìm tất cả file localText

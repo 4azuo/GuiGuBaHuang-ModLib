@@ -8,16 +8,8 @@ import time
 import re
 from deep_translator import GoogleTranslator
 
-try:
-    from consts import TRANSLATION_CONFIG, SKIP_TRANSLATION_PATTERNS
-    from data_types import ProcessingStats, TranslationConfig
-except ImportError:
-    # Fallback cho trường hợp import trực tiếp
-    import sys
-    import os
-    sys.path.append(os.path.dirname(os.path.abspath(__file__)))
-    from consts import TRANSLATION_CONFIG, SKIP_TRANSLATION_PATTERNS
-    from data_types import ProcessingStats, TranslationConfig
+from consts import TRANSLATION_CONFIG, SKIP_TRANSLATION_PATTERNS
+from data_types import ProcessingStats, TranslationConfig
 
 class TranslationService:
     """Service để thực hiện dịch text"""
@@ -38,7 +30,7 @@ class TranslationService:
                     return text
             
             # Skip nếu text quá ngắn (1-2 ký tự)
-            if len(text.strip()) <= 2:
+            if len(text.strip()) <= TRANSLATION_CONFIG['min_text_length']:
                 return text
             
             # Retry mechanism for network issues

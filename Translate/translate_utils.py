@@ -4,16 +4,9 @@
 Translation utilities
 """
 
-try:
-    from consts import MAIN_LANGUAGE_KEYS, LOCALE_COMBINED_KEY
-    from data_types import LocalTextData
-except ImportError:
-    # Fallback cho trường hợp import trực tiếp
-    import sys
-    import os
-    sys.path.append(os.path.dirname(os.path.abspath(__file__)))
-    from consts import MAIN_LANGUAGE_KEYS, LOCALE_COMBINED_KEY
-    from data_types import LocalTextData
+from consts import MAIN_LANGUAGE_KEYS, LOCALE_COMBINED_KEY, COMBINED_KEY_WITH_EN_PATTERN, LANGUAGE_CODES
+from data_types import LocalTextData
+from json_utils import JsonUtils
 
 # Translation-specific utilities
 class TranslateUtils:
@@ -116,24 +109,26 @@ class TranslateUtils:
         if main_data.is_list:
             result = []
             for item in main_data.data:
-                if isinstance(item, dict) and 'en' in item:
+                if isinstance(item, dict):
                     new_item = item.copy()
-                    en_text = item['en']
+                    
+                    # Lấy text tiếng Anh từ item (hỗ trợ cả 'en' và combined keys)
+                    en_text = JsonUtils.get_english_text(item)
                     
                     if en_text and en_text.strip():
                         # Dịch sang Chinese Simplified (ch) nếu thiếu
                         if 'ch' not in new_item or not new_item['ch']:
-                            translated_ch = translator_func(en_text, 'zh-CN')
+                            translated_ch = translator_func(en_text, LANGUAGE_CODES['ch'])
                             new_item['ch'] = translated_ch
                         
                         # Dịch sang Traditional Chinese (tc) nếu thiếu  
                         if 'tc' not in new_item or not new_item['tc']:
-                            translated_tc = translator_func(en_text, 'zh-TW')
+                            translated_tc = translator_func(en_text, LANGUAGE_CODES['tc'])
                             new_item['tc'] = translated_tc
                         
                         # Dịch sang Korean (kr) nếu thiếu
                         if 'kr' not in new_item or not new_item['kr']:
-                            translated_kr = translator_func(en_text, 'ko')
+                            translated_kr = translator_func(en_text, LANGUAGE_CODES['kr'])
                             new_item['kr'] = translated_kr
                     
                     result.append(new_item)
@@ -142,22 +137,24 @@ class TranslateUtils:
             
             return LocalTextData(result)
             
-        elif main_data.is_dict and 'en' in main_data.data:
+        elif main_data.is_dict:
             new_item = main_data.data.copy()
-            en_text = main_data.data['en']
+            
+            # Lấy text tiếng Anh từ dict
+            en_text = JsonUtils.get_english_text(main_data.data)
             
             if en_text and en_text.strip():
                 # Dịch sang các ngôn ngữ thiếu
                 if 'ch' not in new_item or not new_item['ch']:
-                    translated_ch = translator_func(en_text, 'zh-CN')
+                    translated_ch = translator_func(en_text, LANGUAGE_CODES['ch'])
                     new_item['ch'] = translated_ch
                 
                 if 'tc' not in new_item or not new_item['tc']:
-                    translated_tc = translator_func(en_text, 'zh-TW')
+                    translated_tc = translator_func(en_text, LANGUAGE_CODES['tc'])
                     new_item['tc'] = translated_tc
                 
                 if 'kr' not in new_item or not new_item['kr']:
-                    translated_kr = translator_func(en_text, 'ko')
+                    translated_kr = translator_func(en_text, LANGUAGE_CODES['kr'])
                     new_item['kr'] = translated_kr
             
             return LocalTextData(new_item)
@@ -180,45 +177,45 @@ class TranslateUtils:
         if main_data.is_list:
             result = []
             for item in main_data.data:
-                if isinstance(item, dict) and 'en' in item:
-                    new_item = {}
-                    
-                    # Copy các key không phải ngôn ngữ
-                    for key, value in item.items():
-                        if key not in MAIN_LANGUAGE_KEYS:
-                            new_item[key] = value
-                    
-                    # Dịch từ tiếng Anh sang ngôn ngữ đích
-                    en_text = item['en']
+                if isinstance(item, dict):
+                    # Lấy text tiếng Anh từ item (hỗ trợ cả 'en' và combined keys)
+                    en_text = JsonUtils.get_english_text(item)
                     if en_text and en_text.strip():
+                        new_item = {}
+                        
+                        # Copy các key không phải ngôn ngữ
+                        for key, value in item.items():
+                            if key not in MAIN_LANGUAGE_KEYS and not COMBINED_KEY_WITH_EN_PATTERN.match(key):
+                                new_item[key] = value
+                        
+                        # Dịch từ tiếng Anh sang ngôn ngữ đích
                         translated = translator_func(en_text, target_language)
                         new_item[LOCALE_COMBINED_KEY] = translated
+                        
+                        result.append(new_item)
                     else:
-                        new_item[LOCALE_COMBINED_KEY] = en_text
-                    
-                    result.append(new_item)
+                        result.append(item)
                 else:
                     result.append(item)
             
             return LocalTextData(result)
             
-        elif main_data.is_dict and 'en' in main_data.data:
-            new_item = {}
-            
-            # Copy các key không phải ngôn ngữ
-            for key, value in main_data.data.items():
-                if key not in MAIN_LANGUAGE_KEYS:
-                    new_item[key] = value
-            
-            # Dịch từ tiếng Anh sang ngôn ngữ đích
-            en_text = main_data.data['en']
+        elif main_data.is_dict:
+            # Lấy text tiếng Anh từ dict
+            en_text = JsonUtils.get_english_text(main_data.data)
             if en_text and en_text.strip():
+                new_item = {}
+                
+                # Copy các key không phải ngôn ngữ
+                for key, value in main_data.data.items():
+                    if key not in MAIN_LANGUAGE_KEYS and not COMBINED_KEY_WITH_EN_PATTERN.match(key):
+                        new_item[key] = value
+                
+                # Dịch từ tiếng Anh sang ngôn ngữ đích
                 translated = translator_func(en_text, target_language)
                 new_item[LOCALE_COMBINED_KEY] = translated
-            else:
-                new_item[LOCALE_COMBINED_KEY] = en_text
-            
-            return LocalTextData(new_item)
+                
+                return LocalTextData(new_item)
         
         # Nếu không có dữ liệu cần dịch, trả về dữ liệu gốc
         return main_data

@@ -17,20 +17,11 @@ from typing import List
 import sys
 sys.path.append(os.path.dirname(os.path.abspath(__file__)))
 
-from consts import (
-    DEFAULT_TARGET_LANGUAGES, 
-    TRANSLATION_CONFIG, 
-    DIR_PATTERNS
-)
+from consts import DEFAULT_TARGET_LANGUAGES, TRANSLATION_CONFIG, DIR_PATTERNS, UI_MESSAGES, UI_ICONS
 from data_types import TranslationConfig, FileType
 from file_utils import FileUtils
 from local_text_processor import LocalTextProcessor
-from progressbar_utils import (
-    print_header, 
-    print_error, 
-    print_warning, 
-    print_info
-)
+from progressbar_utils import print_header, print_error, print_warning, print_info
 
 def parse_target_languages(languages_str: str) -> List[str]:
     """Parse chuỗi ngôn ngữ thành list"""
@@ -94,7 +85,7 @@ Ví dụ sử dụng:
     args = parser.parse_args()
     
     print_header(
-        "Script Xử Lý LocalText.json",
+        UI_MESSAGES['script_title'],
         f"Project: {args.project} | Path: {args.path} | Type: {args.file_type}"
     )
     
@@ -161,8 +152,8 @@ Ví dụ sử dụng:
             print_warning("Quá trình xử lý đã bị dừng bởi người dùng")
             
             interrupt_stats = {
-                "📁 Đã xử lý": f"{processor.stats.processed_count} file",
-                "🌍 Đã dịch": f"{processor.translation_service.stats.translated_count} text"
+                f"{UI_ICONS['folder']} Đã xử lý": f"{processor.stats.processed_count} file",
+                f"{UI_ICONS['globe']} Đã dịch": f"{processor.translation_service.stats.translated_count} text"
             }
             print_stats(interrupt_stats)
             print_info("Bạn có thể chạy lại lệnh để tiếp tục từ nơi đã dừng")
