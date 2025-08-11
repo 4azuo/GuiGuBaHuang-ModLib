@@ -100,10 +100,27 @@ class LocalTextProcessor:
             if len(text.strip()) <= 2:
                 return text
                 
-            result = GoogleTranslator(source='en', target=target_lang).translate(text)
-            time.sleep(0.2)  # Tránh rate limit
-            self.translated_count += 1
-            return result
+            # Retry mechanism for network issues
+            max_retries = 3
+            for attempt in range(max_retries):
+                try:
+                    result = GoogleTranslator(source='en', target=target_lang).translate(text)
+                    time.sleep(0.2)  # Tránh rate limit
+                    self.translated_count += 1
+                    return result
+                except KeyboardInterrupt:
+                    # Re-raise KeyboardInterrupt to allow clean exit
+                    raise
+                except Exception as network_error:
+                    if attempt < max_retries - 1:
+                        print(f"    Thử lại lần {attempt + 2} cho '{text[:50]}{'...' if len(text) > 50 else ''}'")
+                        time.sleep(1)  # Wait before retry
+                    else:
+                        print(f"    Lỗi dịch '{text}' sang {target_lang} sau {max_retries} lần thử: {network_error}")
+                        return text
+        except KeyboardInterrupt:
+            print(f"\n⚠️ Đã dừng bởi người dùng. Đã dịch {self.translated_count} text.")
+            raise
         except Exception as e:
             print(f"    Lỗi dịch '{text}' sang {target_lang}: {e}")
             return text
@@ -236,18 +253,39 @@ class LocalTextProcessor:
     
     def create_combined_translation(self, main_data, target_lang_code):
         """Tạo bản dịch cho locale file từ main file"""
-        if isinstance(main_data, list):
-            result = []
-            for item in main_data:
-                if isinstance(item, dict) and 'en' in item:
+        try:
+            if isinstance(main_data, list):
+                result = []
+                for item in main_data:
+                    if isinstance(item, dict) and 'en' in item:
+                        new_item = {}
+                        # Copy các key không phải ngôn ngữ
+                        for key, value in item.items():
+                            if key not in ['en', 'ch', 'tc', 'kr']:
+                                new_item[key] = value
+                        
+                        # Dịch từ tiếng Anh sang ngôn ngữ đích
+                        en_text = item['en']
+                        if en_text and en_text.strip():
+                            translated = self.translate_text(en_text, target_lang_code)
+                            # Sử dụng key gộp "en|ch|tc|kr" với giá trị đã dịch
+                            new_item['en|ch|tc|kr'] = translated
+                        else:
+                            new_item['en|ch|tc|kr'] = en_text
+                        
+                        result.append(new_item)
+                    else:
+                        result.append(item)
+                return result
+            elif isinstance(main_data, dict):
+                # Xử lý tương tự cho dict
+                if 'en' in main_data:
                     new_item = {}
-                    # Copy các key không phải ngôn ngữ
-                    for key, value in item.items():
+                    for key, value in main_data.items():
                         if key not in ['en', 'ch', 'tc', 'kr']:
                             new_item[key] = value
                     
-                    # Dịch từ tiếng Anh sang ngôn ngữ đích
-                    en_text = item['en']
+                    en_text = main_data['en']
                     if en_text and en_text.strip():
                         translated = self.translate_text(en_text, target_lang_code)
                         # Sử dụng key gộp "en|ch|tc|kr" với giá trị đã dịch
@@ -255,29 +293,15 @@ class LocalTextProcessor:
                     else:
                         new_item['en|ch|tc|kr'] = en_text
                     
-                    result.append(new_item)
-                else:
-                    result.append(item)
-            return result
-        elif isinstance(main_data, dict):
-            # Xử lý tương tự cho dict
-            if 'en' in main_data:
-                new_item = {}
-                for key, value in main_data.items():
-                    if key not in ['en', 'ch', 'tc', 'kr']:
-                        new_item[key] = value
-                
-                en_text = main_data['en']
-                if en_text and en_text.strip():
-                    translated = self.translate_text(en_text, target_lang_code)
-                    # Sử dụng key gộp "en|ch|tc|kr" với giá trị đã dịch
-                    new_item['en|ch|tc|kr'] = translated
-                else:
-                    new_item['en|ch|tc|kr'] = en_text
-                
-                return new_item
-        
-        return main_data
+                    return new_item
+            
+            return main_data
+        except KeyboardInterrupt:
+            print(f"\n⚠️ Dịch bị gián đoạn. Đã dịch {self.translated_count} text.")
+            raise
+        except Exception as e:
+            print(f"Lỗi trong quá trình dịch: {e}")
+            return main_data
     
     def process_json_item(self, item, item_index):
         """Xử lý một item JSON"""
@@ -619,7 +643,7 @@ def main():
     print(f"�📂 Path: {args.path}")
     
     # Xây dựng đường dẫn đầy đủ
-    project_modconf_path = os.path.join(args.project, "ModProject", "ModConf")
+    project_modconf_path = os.path.join("../", args.project, "ModProject", "ModConf")
     
     if not os.path.exists(project_modconf_path):
         print(f"❌ Không tìm thấy thư mục: {project_modconf_path}")
@@ -676,7 +700,18 @@ def main():
             print("Không tìm thấy file nào!")
     else:
         # Xử lý thực tế
-        processor.process_files(target_path)
+        try:
+            processor.process_files(target_path)
+        except KeyboardInterrupt:
+            print(f"\n⚠️ Quá trình xử lý đã bị dừng bởi người dùng.")
+            print(f"📊 Thống kê trước khi dừng:")
+            print(f"   - Đã xử lý: {processor.processed_count} file")
+            print(f"   - Đã dịch: {processor.translated_count} text")
+            print(f"💡 Bạn có thể chạy lại lệnh để tiếp tục từ nơi đã dừng.")
+            return
+        except Exception as e:
+            print(f"❌ Lỗi trong quá trình xử lý: {e}")
+            return
 
 if __name__ == "__main__":
     main()
