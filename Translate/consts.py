@@ -39,6 +39,11 @@ SKIP_TRANSLATION_PATTERNS = [
     r'^[\d\s\+\-\*\/\=\(\)\.%]+$',  # Chỉ số và ký tự toán học
 ]
 
+# Texts cần skip translation (không dịch)
+SKIP_TRANSLATION_TEXTS = [
+    "DEFAULT_DRAMA_OPT"
+]
+
 # Cấu hình file (gộp FILE_CONFIG và FILE_PATTERNS)
 FILE_CONFIG = {
     'encoding': 'utf-8',
@@ -65,7 +70,8 @@ UI_ICONS = {
     'info': 'ℹ️',
     'target': '🎯',
     'list': '📋',
-    'time': '⏱️'
+    'time': '⏱️',
+    'delete': '🗑️'
 }
 
 # Các thông điệp UI thường dùng
