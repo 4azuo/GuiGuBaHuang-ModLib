@@ -117,13 +117,18 @@ class LocalTextProcessor:
                             # Cắt ngắn filename cho progress display
                             display_name = filename[:25] + "..." if len(filename) > 25 else filename
                             progress.update(1, f"Xử lý {display_name}")
-                            
-                            # Xóa locale files cũ cho file này
-                            self.cleanup_locale_file(file_path, modconf_path)
-                            
-                            # Tạo lại locale files từ main file
-                            if self.process_locale_file(file_path):
-                                self.stats.processed_count += 1
+
+                            main_filename = os.path.basename(file_path)
+                            for lang in self.config.target_languages:
+                                locale_dir = os.path.join(modconf_path, lang)
+                                locale_file_path = os.path.join(locale_dir, main_filename)
+
+                                # Xóa locale files cũ cho file này
+                                self.cleanup_locale_file(locale_file_path)
+                                
+                                # Tạo lại locale files từ main file
+                                if self.process_locale_file(file_path, locale_file_path):
+                                    self.stats.processed_count += 1
                 else:
                     print_warning("Không tìm thấy main file nào để tạo locale files!")
         
@@ -181,9 +186,6 @@ class LocalTextProcessor:
                 progress_translator
             )
             
-            # Hoàn thành progress bar
-            progress_manager.finish_active(f"Hoàn thành dịch main file")
-            
             # Sắp xếp dữ liệu
             translated_data = JsonUtils.sort_json_data(translated_data)
             
@@ -192,7 +194,8 @@ class LocalTextProcessor:
                 print_result(UI_ICONS['error'], f"Lỗi ghi main file", filename)
                 return False
             
-            return True
+            # Hoàn thành progress bar
+            progress_manager.finish_active(f"Hoàn thành dịch main file")
             
         except KeyboardInterrupt:
             progress_manager.cleanup()
@@ -201,26 +204,16 @@ class LocalTextProcessor:
         except Exception as e:
             print_result(UI_ICONS['error'], f"Lỗi xử lý file {filename}", str(e))
             return False
-    
-    def process_locale_file(self, file_path: str) -> bool:
+
+    def process_locale_file(self, main_file_path: str, locale_file_path: str) -> bool:
         """Xử lý locale file dựa trên main file tương ứng"""
         from file_utils import FileUtils
         
         try:
-            filename = os.path.basename(file_path)
-            
-            # Dọn dẹp file locale cũ trước khi tạo mới
-            if os.path.exists(file_path):
-                os.remove(file_path)
-            
-            # Tìm main file tương ứng
-            main_file_path = FileUtils.find_main_file(file_path)
-            if not main_file_path:
-                print_warning(f"Không tìm thấy main file tương ứng cho {filename}")
-                return False
-            
+            filename = os.path.basename(main_file_path)
+
             # Xác định ngôn ngữ đích
-            target_lang = FileUtils.get_locale_language(file_path)
+            target_lang = FileUtils.get_locale_language(locale_file_path)
             if not target_lang:
                 print_result(UI_ICONS['error'], f"Không xác định được ngôn ngữ cho {filename}")
                 return False
@@ -230,9 +223,6 @@ class LocalTextProcessor:
             if not main_data:
                 print_result(UI_ICONS['error'], f"Không đọc được main file", main_file_path)
                 return False
-            
-            # Đếm số text cần dịch
-            translatable_count = JsonUtils.get_translatable_count(main_data)
             
             # Tạo progress-aware translator cho locale file
             progress_manager.set_active(f"locale_{target_lang}")
@@ -249,19 +239,19 @@ class LocalTextProcessor:
                 progress_translator
             )
             
-            # Hoàn thành progress bar
-            progress_manager.finish_active(f"Hoàn thành {target_lang}")
-            
             # Sắp xếp dữ liệu
             locale_data = JsonUtils.sort_json_data(locale_data)
             
             # Đảm bảo thư mục tồn tại
-            FileUtils.ensure_directory_exists(file_path)
+            FileUtils.ensure_directory_exists(locale_file_path)
             
             # Ghi file
-            if not JsonUtils.write_json_file(file_path, locale_data):
-                print_result(UI_ICONS['error'], f"Lỗi ghi locale file {filename}")
+            if not JsonUtils.write_json_file(locale_file_path, locale_data):
+                print_result(UI_ICONS['error'], f"Lỗi ghi locale file {locale_file_path}")
                 return False
+            
+            # Hoàn thành progress bar
+            progress_manager.finish_active(f"Hoàn thành {target_lang}")
                 
         except KeyboardInterrupt:
             progress_manager.cleanup()
@@ -271,23 +261,16 @@ class LocalTextProcessor:
             print_result(UI_ICONS['error'], f"Lỗi xử lý locale file {filename}", str(e))
             return False
 
-    def cleanup_locale_file(self, main_file_path: str, modconf_path: str) -> None:
+    def cleanup_locale_file(self, locale_file_path: str) -> None:
         """
         Xóa các file locale tương ứng với một main file cụ thể
         
         Args:
-            main_file_path: Đường dẫn main file
+            locale_file_path: Đường dẫn locale file
             modconf_path: Đường dẫn tới thư mục ModConf
         """
-        main_filename = os.path.basename(main_file_path)
-        
-        # Xóa locale files cho tất cả ngôn ngữ target
-        for lang in self.config.target_languages:
-            locale_dir = os.path.join(modconf_path, lang)
-            locale_file_path = os.path.join(locale_dir, main_filename)
-            
-            if os.path.exists(locale_file_path):
-                try:
-                    os.remove(locale_file_path)
-                except Exception as e:
-                    print_result(UI_ICONS['error'], f"Lỗi xóa {lang}/{main_filename}", str(e))
+        if os.path.exists(locale_file_path):
+            try:
+                os.remove(locale_file_path)
+            except Exception as e:
+                print_result(UI_ICONS['error'], f"Lỗi xóa {locale_file_path}", str(e))
