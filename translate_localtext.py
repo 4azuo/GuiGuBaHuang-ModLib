@@ -87,19 +87,49 @@ class LocalTextProcessor:
             # else:
             #     print(f"    {lang_key}: {item[lang_key]} (đã có)")
         
-        # Đảm bảo thứ tự key: id, key, __name (nếu có), en, ch, tc, kr, và các key khác
-        ordered_item = {}
+        # Kiểm tra nếu tất cả các giá trị ngôn ngữ giống nhau
+        lang_keys = ['en', 'ch', 'tc', 'kr']
+        lang_values = []
+        for lang_key in lang_keys:
+            if lang_key in item:
+                lang_values.append(item[lang_key])
         
-        # Thêm các key có thứ tự ưu tiên
-        priority_keys = ['id', 'key', '__name', 'en', 'ch', 'tc', 'kr']
-        for key in priority_keys:
-            if key in item:
-                ordered_item[key] = item[key]
-        
-        # Thêm các key còn lại
-        for key, value in item.items():
-            if key not in priority_keys:
-                ordered_item[key] = value
+        # Nếu tất cả giá trị giống nhau và có ít nhất 2 ngôn ngữ
+        if len(set(lang_values)) == 1 and len(lang_values) >= 2:
+            # Gộp thành key chung
+            combined_key = '|'.join([key for key in lang_keys if key in item])
+            combined_value = lang_values[0]
+            
+            # Tạo ordered_item với key gộp
+            ordered_item = {}
+            
+            # Thêm các key khác trước
+            priority_keys = ['__name', 'id', 'key']
+            for key in priority_keys:
+                if key in item:
+                    ordered_item[key] = item[key]
+            
+            # Thêm key gộp
+            ordered_item[combined_key] = combined_value
+            
+            # Thêm các key còn lại
+            for key, value in item.items():
+                if key not in priority_keys and key not in lang_keys:
+                    ordered_item[key] = value
+        else:
+            # Giữ nguyên logic cũ nếu các giá trị khác nhau
+            ordered_item = {}
+            
+            # Thêm các key có thứ tự ưu tiên
+            priority_keys = ['__name', 'id', 'key', 'en', 'ch', 'tc', 'kr']
+            for key in priority_keys:
+                if key in item:
+                    ordered_item[key] = item[key]
+            
+            # Thêm các key còn lại
+            for key, value in item.items():
+                if key not in priority_keys:
+                    ordered_item[key] = value
                 
         return ordered_item
     
@@ -109,15 +139,6 @@ class LocalTextProcessor:
         print(f"Đang xử lý: {file_path}")
         
         try:
-            # Tạo backup
-            backup_path = file_path + ".backup"
-            if not os.path.exists(backup_path):
-                with open(file_path, 'r', encoding='utf-8') as f:
-                    original_content = f.read()
-                with open(backup_path, 'w', encoding='utf-8') as f:
-                    f.write(original_content)
-                print(f"Đã tạo backup: {backup_path}")
-            
             # Đọc file
             with open(file_path, 'r', encoding='utf-8') as f:
                 content = f.read()
@@ -138,6 +159,13 @@ class LocalTextProcessor:
                 for i, item in enumerate(data):
                     processed_item = self.process_json_item(item, i)
                     processed_data.append(processed_item)
+                
+                # Sắp xếp theo id nếu có
+                try:
+                    processed_data.sort(key=lambda x: x.get('id', 0) if isinstance(x.get('id'), (int, float)) else 0)
+                except:
+                    pass  # Nếu không sort được thì giữ nguyên thứ tự
+                    
             elif isinstance(data, dict):
                 processed_data = self.process_json_item(data, 0)
             else:
@@ -177,10 +205,10 @@ class LocalTextProcessor:
             print(f"Đường dẫn không tồn tại: {path}")
             return []
         
-        # Loại bỏ duplicates và backup files
+        # Loại bỏ duplicates
         unique_files = []
         for file_path in files:
-            if not file_path.endswith('.backup') and file_path not in unique_files:
+            if file_path not in unique_files:
                 unique_files.append(file_path)
         
         return sorted(unique_files)
@@ -234,7 +262,7 @@ Ví dụ sử dụng:
   python translate_localtext.py                              # Xử lý tất cả file trong thư mục hiện tại
   python translate_localtext.py game_localText.json         # Xử lý file cụ thể
   python translate_localtext.py ModConf/                     # Xử lý tất cả file trong folder ModConf
-  python translate_localtext.py 3385996759/ModProject/      # Xử lý tất cả file trong project cụ thể
+  python translate_localtext.py 3385996759/ModProject/ModConf      # Xử lý tất cả file trong project cụ thể
         """
     )
     
