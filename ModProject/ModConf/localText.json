@@ -42,6 +42,9 @@
 	{
 		"id": "999990005",
 		"key": "libtxt999990005",
-		"en|ch|tc|kr": "DEFAULT_DRAMA_OPT"
+		"en": "DEFAULT_DRAMA_OPT",
+		"ch": "DEFAULT_DRAMA_OPT",
+		"tc": "DEFAULT_DRAMA_OPT",
+		"kr": "DEFAULT_DRAMA_OPT"
 	}
 ]
