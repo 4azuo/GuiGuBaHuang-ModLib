@@ -617,21 +617,30 @@ namespace MOD_nE7UL2.Mod
                 else
                 if (e.uiType.uiName == UIType.NPCInfo.uiName)
                 {
-                    var ui = new UICover<UINPCInfo>(e.ui);
-                    ui.UI.tglTitle1.gameObject.SetActive(false);
-                    ui.UI.tglTitle2.gameObject.SetActive(false);
-                    ui.UI.tglTitle3.gameObject.SetActive(false);
-                    ui.UI.tglTitle4.gameObject.SetActive(false);
-                    ui.UI.tglTitle5.gameObject.SetActive(false);
-                    ui.UI.tglTitle6.gameObject.SetActive(false);
-                    ui.UI.tglTitle7.gameObject.SetActive(false);
-                    ui.UI.uiProperty.goGroupRoot.SetActive(false);
                     if (IsOpenMarket)
                     {
+                        var ui = new UICover<UINPCInfo>(e.ui);
+                        ui.UI.tglTitle1.gameObject.SetActive(false);
+                        ui.UI.tglTitle2.gameObject.SetActive(false);
+                        ui.UI.tglTitle3.gameObject.SetActive(false);
+                        ui.UI.tglTitle4.gameObject.SetActive(false);
+                        ui.UI.tglTitle5.gameObject.SetActive(false);
+                        ui.UI.tglTitle6.gameObject.SetActive(false);
+                        ui.UI.tglTitle7.gameObject.SetActive(false);
+                        ui.UI.uiProperty.goGroupRoot.SetActive(false);
                         OpenSellingList(ui.UI.unit);
                     }
                     else if (IsOpenMySellingList)
                     {
+                        var ui = new UICover<UINPCInfo>(e.ui);
+                        ui.UI.tglTitle1.gameObject.SetActive(false);
+                        ui.UI.tglTitle2.gameObject.SetActive(false);
+                        ui.UI.tglTitle3.gameObject.SetActive(false);
+                        ui.UI.tglTitle4.gameObject.SetActive(false);
+                        ui.UI.tglTitle5.gameObject.SetActive(false);
+                        ui.UI.tglTitle6.gameObject.SetActive(false);
+                        ui.UI.tglTitle7.gameObject.SetActive(false);
+                        ui.UI.uiProperty.goGroupRoot.SetActive(false);
                         OpenDealingList(ui.UI.unit);
                     }
                 }
