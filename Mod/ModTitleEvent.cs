@@ -15,11 +15,13 @@ namespace ModLib.Mod
         public static List<string> TranslateCode { get; } = new List<string>
         {
             null,
-            "ja",
-            "vi",
-            "ru",
-            "la",
+            "de",
             "es",
+            "fr",
+            "ja",
+            "la",
+            "ru",
+            "vi",
         };
 
         public int TranslateIndex { get; set; } = 0;
@@ -53,7 +55,7 @@ namespace ModLib.Mod
                     var panelLangInit = ui.AddButton(ui.LastCol - 10, ui.FirstRow + 2, null, string.Empty)
                         .Size(320, 80)
                         .SetParentTransform(parentTransform);
-                    var slLang = ui.AddCompositeSelect(ui.Columns[ui.LastCol - 12], ui.Rows[ui.FirstRow + 2], "Language:", new string[] { "Default", "Japanese", "Vietnamese", "Russian", "Latin", "Spanish" }, TranslateIndex)
+                    var slLang = ui.AddCompositeSelect(ui.Columns[ui.LastCol - 12], ui.Rows[ui.FirstRow + 2], "Language:", new string[] { "Default", "German", "Spanish", "French", "Japanese", "Latin", "Russian", "Vietnamese" }, TranslateIndex)
                         .SetParentTransform(panelLangInit.Component.transform) as UIItemComposite;
                     (slLang.MainComponent as UIItemSelect)
                         .Size(160, 24)
