@@ -404,7 +404,7 @@ namespace MOD_nE7UL2.Mod
                     }, PriorityDestinyLevel, GameTool.LS("smcfgs102"));
 
                 col = 16; row = 0;
-                uiCustom.AddText(col, row++, GameTool.LS("smcfgs020")).Format(null, 17, FontStyle.Italic).Align(TextAnchor.MiddleRight);
+                uiCustom.AddText(col, row++, GameTool.LS("smcfgs127")).Format(null, 17, FontStyle.Italic).Align(TextAnchor.MiddleRight);
                 tglSysHideSave = uiCustom.AddCompositeToggle(col, row++, GameTool.LS("smcfgs021"), HideSaveButton, GameTool.LS("smcfgs102"));
                 tglSysHideReload = uiCustom.AddCompositeToggle(col, row++, GameTool.LS("smcfgs022"), HideReloadButton, GameTool.LS("smcfgs102"));
                 tglLostItemWhenDie = uiCustom.AddCompositeToggle(col, row++, GameTool.LS("smcfgs056"), HideReloadButton, GameTool.LS("smcfgs102"));
