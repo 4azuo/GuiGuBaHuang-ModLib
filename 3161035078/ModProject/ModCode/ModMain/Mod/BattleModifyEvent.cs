@@ -46,12 +46,17 @@ namespace MOD_nE7UL2.Mod
             {
                 var ui = new UICover<UIBattleInfo>(UIType.BattleInfo);
                 {
-                    TextDamageMultiplier = ui.AddText(ui.MidCol, ui.FirstRow + 5, GameTool.LS("other500020089")).Format(Color.white, 20);
-                    TextDamageMultiplier.SetWork(new UIItemWork
+                    //damage multiplier
+                    if (!UISettingScreenEvent.Instance.HideDamageMultiplier)
                     {
-                        Formatter = (x) => new object[] { Math.Pow(DMG_MULTIPLIER, ModBattleEvent.BattleTime.TotalSeconds).ToString("#,##0.00") }
-                    });
+                        TextDamageMultiplier = ui.AddText(ui.MidCol, ui.FirstRow + 5, GameTool.LS("other500020089")).Format(Color.white, 20);
+                        TextDamageMultiplier.SetWork(new UIItemWork
+                        {
+                            Formatter = (x) => new object[] { Math.Pow(DMG_MULTIPLIER, ModBattleEvent.BattleTime.TotalSeconds).ToString("#,##0.00") }
+                        });
+                    }
 
+                    //monster count
                     ui.UI.uiMap.goGroupRoot.SetActive(!SMLocalConfigsEvent.Instance.Configs.HideBattleMap);
                     if (IsShowCustomMonstCount)
                     {

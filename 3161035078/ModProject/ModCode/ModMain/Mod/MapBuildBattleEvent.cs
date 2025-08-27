@@ -7,6 +7,8 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using static DataBuildSchool;
+using static DataBuildTown;
 using static MOD_nE7UL2.Object.ModStts;
 
 namespace MOD_nE7UL2.Mod
@@ -168,6 +170,8 @@ namespace MOD_nE7UL2.Mod
 
         private static void Hated(MapBuildSchool school)
         {
+            if (school == null)
+                return;
             g.world.unit.GetUnitsInArea(g.world.playerUnit.data.unitData.pointGridData.areaBaseID).ToArray()
                 .Where(y =>
                 {
@@ -182,6 +186,8 @@ namespace MOD_nE7UL2.Mod
 
         private static void Loved(MapBuildSchool school)
         {
+            if (school == null)
+                return;
             if (school.schoolNameID == g.world.playerUnit.data.unitData.schoolID)
             {
                 g.world.unit.GetUnitsInArea(g.world.playerUnit.data.unitData.pointGridData.areaBaseID).ToArray()
@@ -199,6 +205,8 @@ namespace MOD_nE7UL2.Mod
 
         private static void Hated(MapBuildTown town)
         {
+            if (town == null)
+                return;
             MapBuildPropertyEvent.GetTownGuardians(town).ForEach(y =>
             {
                 if (!y.IsPlayer())
@@ -208,6 +216,8 @@ namespace MOD_nE7UL2.Mod
 
         private static void Loved(MapBuildTown town)
         {
+            if (town == null)
+                return;
             MapBuildPropertyEvent.GetTownGuardians(town).ForEach(y =>
             {
                 if (!y.IsPlayer())
@@ -217,6 +227,8 @@ namespace MOD_nE7UL2.Mod
 
         public static void TownWar(MapBuildTown townA_def, MapBuildTown townB_atk, bool proactive)
         {
+            if (townA_def == null || townB_atk == null)
+                return;
             if (JoinBattleFlg == GameHelper.GetGameTotalMonth())
             {
                 //DebugHelper.WriteLine("1");
@@ -318,6 +330,8 @@ namespace MOD_nE7UL2.Mod
 
         public static void JoinTownWar(MapBuildTown townA_def, MapBuildTown townB_atk, TeamSideEnum side)
         {
+            if (townA_def == null || townB_atk == null)
+                return;
             DebugHelper.WriteLine($"Join ({side}): {townA_def.name} vs {townB_atk.name}");
             JoinBattleFlg = GameHelper.GetGameTotalMonth();
             //init
@@ -336,6 +350,8 @@ namespace MOD_nE7UL2.Mod
 
         public static void SkipTownWar(MapBuildTown townA_def, MapBuildTown townB_atk)
         {
+            if (townA_def == null || townB_atk == null)
+                return;
             DebugHelper.WriteLine($"Skip: {townA_def.name} vs {townB_atk.name}");
             //init
             InitBattle();
@@ -434,6 +450,8 @@ namespace MOD_nE7UL2.Mod
 
         public static void MonstWave(MapBuildTown town)
         {
+            if (town == null)
+                return;
             if (JoinBattleFlg == GameHelper.GetGameTotalMonth())
             {
                 //DebugHelper.WriteLine("1");
@@ -508,6 +526,8 @@ namespace MOD_nE7UL2.Mod
 
         public static void MonstWave(MapBuildSchool school)
         {
+            if (school == null)
+                return;
             if (JoinBattleFlg == GameHelper.GetGameTotalMonth())
             {
                 //DebugHelper.WriteLine("1");
@@ -583,6 +603,8 @@ namespace MOD_nE7UL2.Mod
 
         public static void JoinMonstWave(MapBuildBase teamAbuildBase, int dungeonBaseId)
         {
+            if (teamAbuildBase == null)
+                return;
             DebugHelper.WriteLine($"Join ({dungeonBaseId}): {teamAbuildBase.name}");
             JoinBattleFlg = GameHelper.GetGameTotalMonth();
             //init
@@ -601,6 +623,8 @@ namespace MOD_nE7UL2.Mod
 
         public static void SkipMonstWave(MapBuildBase teamAbuildBase)
         {
+            if (teamAbuildBase == null)
+                return;
             DebugHelper.WriteLine($"Join: {teamAbuildBase.name}");
             //init
             InitBattle();
@@ -655,6 +679,9 @@ namespace MOD_nE7UL2.Mod
 
         public static void CalTownWarInfo(MapBuildTown townA_def, MapBuildTown townB_atk)
         {
+            if (townA_def == null || townB_atk == null)
+                return;
+
             var areaId = townA_def.gridData.areaBaseID;
 
             //guardians + others

@@ -100,7 +100,7 @@ namespace MOD_nE7UL2.Mod
                     if (!Instance.Stalkers.ContainsKey(unitId))
                     {
                         Instance.Stalkers.Add(unitId, reason);
-                        DebugHelper.WriteLine($"Get Stalked by {unit.data.unitData.propertyData.GetName()} ({unitId})");
+                        DebugHelper.WriteLine($"Get Stalked by {unit.GetName()} ({unitId})");
                     }
                 }
             }

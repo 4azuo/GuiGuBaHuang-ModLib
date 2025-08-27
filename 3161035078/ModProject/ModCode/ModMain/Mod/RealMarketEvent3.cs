@@ -17,6 +17,7 @@ namespace MOD_nE7UL2.Mod
 {
     /// <summary>
     /// NPC Market
+    /// Todo: IsHidden, sử lý drama
     /// </summary>
     [Cache(ModConst.REAL_MARKET_EVENT3)]
     public class RealMarketEvent3 : ModEvent
@@ -203,7 +204,8 @@ namespace MOD_nE7UL2.Mod
             }
 
             var seller = item.Seller;
-            if (seller == null || !item.IsValid)
+            var itemInfo = item.GetPropInfo();
+            if (seller == null || !item.IsValid || itemInfo == null)
             {
                 //seller cancel
                 Cancel(item);
@@ -224,7 +226,7 @@ namespace MOD_nE7UL2.Mod
             //seller cancel (%)
             if (CommonTool.Random(0f, 100f).IsBetween(0f, Configs.CancelDealLastMinuteRate))
             {
-                DebugHelper.WriteLine($"【{seller.data.unitData.propertyData.GetName()}】→【{buyer.data.unitData.propertyData.GetName()}】：「{item.GetPropInfo().name}」：The seller removed the product from sale.");
+                DebugHelper.WriteLine($"【{seller.GetName()}】→【{buyer.GetName()}】：「{itemInfo.name}」：The seller removed the product from sale.");
                 NG_Seller1(seller, buyer, item);
                 return;
             }
@@ -232,7 +234,7 @@ namespace MOD_nE7UL2.Mod
             //check market item
             if (!CheckMarketItemExists(item))
             {
-                DebugHelper.WriteLine($"【{seller.data.unitData.propertyData.GetName()}】→【{buyer.data.unitData.propertyData.GetName()}】：「{item.GetPropInfo().name}」：The item is no longer available.");
+                DebugHelper.WriteLine($"【{seller.GetName()}】→【{buyer.GetName()}】：「{itemInfo.name}」：The item is no longer available.");
                 NG_Seller2(seller, buyer, item);
                 return;
             }
@@ -242,7 +244,7 @@ namespace MOD_nE7UL2.Mod
             if ((price > 0 && buyer.GetUnitMoney() < price) ||
                 deal.Items.Any(x => !x.IsSpiritStones && !x.IsValid))
             {
-                DebugHelper.WriteLine($"【{seller.data.unitData.propertyData.GetName()}】→【{buyer.data.unitData.propertyData.GetName()}】：「{item.GetPropInfo().name}」：The buyer is unable to pay.");
+                DebugHelper.WriteLine($"【{seller.GetName()}】→【{buyer.GetName()}】：「{itemInfo.name}」：The buyer is unable to pay.");
                 NG_Buyer1(seller, buyer, item);
                 return;
             }
@@ -262,13 +264,13 @@ namespace MOD_nE7UL2.Mod
                 }
             }))
             {
-                DebugHelper.WriteLine($"【{seller.data.unitData.propertyData.GetName()}】→【{buyer.data.unitData.propertyData.GetName()}】：「{item.GetPropInfo().name}」：Are you try to dump me?");
+                DebugHelper.WriteLine($"【{seller.GetName()}】→【{buyer.GetName()}】：「{itemInfo.name}」：Are you try to dump me?");
                 NG_Buyer2(seller, buyer, item);
                 return;
             }
 
             //ok
-            DebugHelper.WriteLine($"【{seller.data.unitData.propertyData.GetName()}】→【{buyer.data.unitData.propertyData.GetName()}】：「{item.GetPropInfo().name}」：OK：{price}／{string.Join(", ", deal.Items.Where(x => x.NegotiatingPropSoleId != null).Select(x => x.GetPropInfo().name))}");
+            DebugHelper.WriteLine($"【{seller.GetName()}】→【{buyer.GetName()}】：「{itemInfo.name}」：OK：{price}／{string.Join(", ", deal.Items.Where(x => x.NegotiatingPropSoleId != null).Select(x => x.GetPropInfo().name))}");
             OK(seller, buyer, item);
 
             //transfer money to seller
@@ -439,7 +441,7 @@ namespace MOD_nE7UL2.Mod
                 var wunitsInTowns = towns.ToDictionary(x => x.buildData.id, x => g.world.unit.GetUnitExact(x.GetOrigiPoint(), Configs.JoinRange).ToArray());
 
                 //remove error
-                //DebugHelper.WriteLine("1");
+                DebugHelper.WriteLine("1");
                 foreach (var item in MarketStack.ToArray())
                 {
                     //cancel
@@ -471,7 +473,7 @@ namespace MOD_nE7UL2.Mod
                 }
 
                 //add item
-                //DebugHelper.WriteLine("2");
+                DebugHelper.WriteLine("2");
                 foreach (var wunitsInTown in wunitsInTowns)
                 {
                     //DebugHelper.WriteLine("2.1");
@@ -512,7 +514,7 @@ namespace MOD_nE7UL2.Mod
                 }
 
                 //process
-                //DebugHelper.WriteLine("3");
+                DebugHelper.WriteLine("3");
                 foreach (var item in MarketStack.ToArray())
                 {
                     if (!item.IsValid)

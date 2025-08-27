@@ -2,8 +2,8 @@
 {
     public static class ModConst
     {
-        public const string TAOIST_VERSION = "5.4.2";
-        public const string MODLIB_REQUIRED_VERSION = "2.1.17";
+        public const string TAOIST_VERSION = "5.4.4";
+        public const string MODLIB_REQUIRED_VERSION = "2.1.18";
 
         //Events
         public const string DEBUG_EVENT = "DEBUG";
@@ -42,6 +42,7 @@
         public const string SM_GLOBAL_CONFIGS_EVENT = "SMGlobalEvent";
         public const string SM_LOCAL_CONFIGS_EVENT = "SMLocalEvent";
         public const string UI_TITLE_SCREEN_EVENT = "UITitleScreenEvent";
+        public const string UI_SETTING_SCREEN_EVENT = "UISettingScreenEvent";
         public const string UI_CREATE_PLAYER_EVENT = "UICreatePlayerEvent";
         public const string UI_DIFFICULTY_EVENT = "UIDifficultyEvent";
         public const string UPGRADE_NATURALLY_EVENT = "UpgradeNaturallyEvent";

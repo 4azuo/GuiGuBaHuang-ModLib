@@ -67,6 +67,7 @@
     <Compile Include="Mod\UIDifficultyEvent.cs" />
     <Compile Include="Mod\UICreatePlayerEvent.cs" />
     <Compile Include="Mod\TimeSkipEvent.cs" />
+    <Compile Include="Mod\UISettingScreenEvent.cs" />
     <Compile Include="Mod\UITitleScreenEvent.cs" />
     <Compile Include="Mod\SpiritlockEvent.cs" />
     <Compile Include="Mod\UnitModifyEvent.cs" />
