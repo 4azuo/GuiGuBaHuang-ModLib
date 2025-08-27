@@ -739,4 +739,9 @@ public static class WUnitHelper
     {
         return wunitA.data.school?.schoolNameID == wunitB.data.school?.schoolNameID && wunitA.data.school?.schoolNameID != null;
     }
+
+    public static string GetName(this WorldUnitBase wunit)
+    {
+        return wunit?.data?.unitData?.propertyData?.GetName() ?? string.Empty;
+    }
 }

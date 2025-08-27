@@ -135,6 +135,9 @@
     <Compile Include="Object\UI\UIItemText.cs" />
     <Compile Include="Object\UI\UIItemBase.cs" />
     <Compile Include="Helper\DramaHelper.cs" />
+    <Compile Include="Object\WebClientWithTimeout.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

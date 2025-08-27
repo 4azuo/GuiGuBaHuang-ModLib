@@ -1,6 +1,4 @@
-﻿using System;
-using System.Net;
-using System.Net.Http;
+﻿using System.Net.Http;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 
@@ -27,7 +25,7 @@ public static class HttpHelper
 
     public static string DownloadWebContent(string url)
     {
-        using (var client = new WebClient())
+        using (var client = new WebClientWithTimeout() { Timeout = 10000 })
         {
             try
             {
