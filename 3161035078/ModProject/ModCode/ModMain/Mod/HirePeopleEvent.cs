@@ -392,7 +392,7 @@ namespace MOD_nE7UL2.Mod
 
         public static string GetTeamInfoStr(WorldUnitBase wunit)
         {
-            return GetTeamDetailData(wunit)?.Item1.data.unitData.propertyData.GetName();
+            return GetTeamDetailData(wunit)?.Item1.GetName();
         }
 
         public static bool IsHired(WorldUnitBase wunit)

@@ -86,7 +86,7 @@ namespace MOD_nE7UL2.Mod
                             if (stalker != null)
                             {
                                 var wunitId = stalker.GetUnitId();
-                                DebugHelper.WriteLine($"Stalker join: {stalker.data.unitData.propertyData.GetName()} ({wunitId})");
+                                DebugHelper.WriteLine($"Stalker join: {stalker.GetName()} ({wunitId})");
                                 var units = HirePeopleEvent.GetTeamDetailData(stalker).Item2;
                                 AroundUnits.RemoveAll(x => units.Any(y => y.GetUnitId() == x.GetUnitId()));
                                 foreach (var unit in units) { BattleAfterEvent.Instance.Stalkers.Remove(unit.GetUnitId()); }
@@ -116,7 +116,7 @@ namespace MOD_nE7UL2.Mod
                             var enemyUnit = AroundUnits.FirstOrDefault(x => IsEnemyUnit(x) >= 0);
                             if (enemyUnit != null)
                             {
-                                DebugHelper.WriteLine($"Enemy join: {enemyUnit.data.unitData.propertyData.GetName()} ({enemyUnit.GetUnitId()})");
+                                DebugHelper.WriteLine($"Enemy join: {enemyUnit.GetName()} ({enemyUnit.GetUnitId()})");
                                 var t = IsEnemyUnit(enemyUnit);
                                 var units = HirePeopleEvent.GetTeamDetailData(enemyUnit).Item2;
                                 AroundUnits.RemoveAll(x => units.Any(y => y.GetUnitId() == x.GetUnitId()));
@@ -140,7 +140,7 @@ namespace MOD_nE7UL2.Mod
                             var friendlyUnit = AroundUnits.FirstOrDefault(x => IsFriendlyUnit(x) >= 0);
                             if (friendlyUnit != null)
                             {
-                                DebugHelper.WriteLine($"Friend join: {friendlyUnit.data.unitData.propertyData.GetName()} ({friendlyUnit.GetUnitId()})");
+                                DebugHelper.WriteLine($"Friend join: {friendlyUnit.GetName()} ({friendlyUnit.GetUnitId()})");
                                 var units = HirePeopleEvent.GetTeamDetailData(friendlyUnit).Item2;
                                 AroundUnits.RemoveAll(x => units.Any(y => y.GetUnitId() == x.GetUnitId()));
                                 NPCJoin(UnitType.PlayerNPC, units);
@@ -155,7 +155,7 @@ namespace MOD_nE7UL2.Mod
                             var sectMember = AroundUnits.FirstOrDefault(x => MapBuildPropertyEvent.IsSchoolMember(ModBattleEvent.School, x));
                             if (sectMember != null)
                             {
-                                DebugHelper.WriteLine($"Sect-member ({ModBattleEvent.School.GetName(true)}) join: {sectMember.data.unitData.propertyData.GetName()} ({sectMember.GetUnitId()})");
+                                DebugHelper.WriteLine($"Sect-member ({ModBattleEvent.School.GetName(true)}) join: {sectMember.GetName()} ({sectMember.GetUnitId()})");
                                 var units = HirePeopleEvent.GetTeamDetailData(sectMember).Item2;
                                 AroundUnits.RemoveAll(x => units.Any(y => y.GetUnitId() == x.GetUnitId()));
                                 var ut = IsFriendlyUnit(sectMember) >= 0 || g.world.playerUnit.IsSameSect(sectMember) ? UnitType.PlayerNPC : UnitType.Monst;
@@ -171,7 +171,7 @@ namespace MOD_nE7UL2.Mod
                             var townguard = AroundUnits.FirstOrDefault(x => MapBuildPropertyEvent.IsTownGuardian(ModBattleEvent.Town, x));
                             if (townguard != null)
                             {
-                                DebugHelper.WriteLine($"Town-guard ({ModBattleEvent.Town.name}) join: {townguard.data.unitData.propertyData.GetName()} ({townguard.GetUnitId()})");
+                                DebugHelper.WriteLine($"Town-guard ({ModBattleEvent.Town.name}) join: {townguard.GetName()} ({townguard.GetUnitId()})");
                                 var units = HirePeopleEvent.GetTeamDetailData(townguard).Item2;
                                 AroundUnits.RemoveAll(x => units.Any(y => y.GetUnitId() == x.GetUnitId()));
                                 var ut = IsFriendlyUnit(townguard) >= 0 || g.world.playerUnit.IsSameSect(townguard) ? UnitType.PlayerNPC : UnitType.Monst;
@@ -187,7 +187,7 @@ namespace MOD_nE7UL2.Mod
                         {
                             if (CommonTool.Random(0.00f, 100.00f).IsBetween(0.00f, Configs.TeamMemberJoinRate))
                             {
-                                DebugHelper.WriteLine($"Team-member ({HirePeopleEvent.GetTeamInfoStr(g.world.playerUnit)}) join: {wmember.data.unitData.propertyData.GetName()} ({wmember.GetUnitId()})");
+                                DebugHelper.WriteLine($"Team-member ({HirePeopleEvent.GetTeamInfoStr(g.world.playerUnit)}) join: {wmember.GetName()} ({wmember.GetUnitId()})");
                                 JointTeamMembers.AddRange(NPCJoin(UnitType.PlayerNPC, wmember));
                                 TeamMembers.Remove(wmember);
                             }
@@ -200,7 +200,7 @@ namespace MOD_nE7UL2.Mod
                             if (!cmember.isDie && CommonTool.Random(0.00f, 100.00f).IsBetween(0.00f, Configs.TeamMemberBetrayRate))
                             {
                                 var wmember = g.world.unit.GetUnit(cmember);
-                                DebugHelper.WriteLine($"Team-member ({HirePeopleEvent.GetTeamInfoStr(g.world.playerUnit)}) betray: {wmember.data.unitData.propertyData.GetName()} ({wmember.GetUnitId()})");
+                                DebugHelper.WriteLine($"Team-member ({HirePeopleEvent.GetTeamInfoStr(g.world.playerUnit)}) betray: {wmember.GetName()} ({wmember.GetUnitId()})");
                                 var t = IsBetrayUnit(wmember);
                                 if (t >= 0)
                                 {

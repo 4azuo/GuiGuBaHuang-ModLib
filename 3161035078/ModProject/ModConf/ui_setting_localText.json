@@ -1,0 +1,17 @@
+[
+	{
+		"id": -1000003000,
+		"key": "setting000",
+		"en|ch|tc|kr": "Taoist Settings",
+	},
+	{
+		"id": -1000003001,
+		"key": "setting001",
+		"en|ch|tc|kr": "Apply on the next event.",
+	},
+	{
+		"id": -1000003002,
+		"key": "setting002",
+		"en|ch|tc|kr": "Hide Damage Multiplier",
+	}
+]

@@ -658,7 +658,7 @@ namespace MOD_nE7UL2.Mod
             //{
             //    var col = uiCover.MidCol - 11;
             //    var row = uiCover.MidRow;
-            //    uiCover.AddText(col, row + i++, string.Format(GameTool.LS("townmaster420041117"), town.name, GetTownMaster(town).data.unitData.propertyData.GetName())).Format().Align();
+            //    uiCover.AddText(col, row + i++, string.Format(GameTool.LS("townmaster420041117"), town.name, GetTownMaster(town).GetName())).Format().Align();
             //    uiCover.AddText(col, row + i++, GameTool.LS("townmaster420041118")).Format().Align().SetWork(new UIItemWork
             //    {
             //        Formatter = (ibase) => new object[] { GetBuildProperty(town) },
@@ -684,7 +684,7 @@ namespace MOD_nE7UL2.Mod
             {
                 var col = uiCover.MidCol - 11;
                 var row = uiCover.MidRow;
-                uiCover.AddText(col, row + i++, string.Format(GameTool.LS("townmaster420041117"), town.name, GetTownMaster(town).data.unitData.propertyData.GetName())).Format().Align();
+                uiCover.AddText(col, row + i++, string.Format(GameTool.LS("townmaster420041117"), town.name, GetTownMaster(town).GetName())).Format().Align();
                 uiCover.AddText(col, row + i++, GameTool.LS("townmaster420041118")).Format().Align().SetWork(new UIItemWork
                 {
                     Formatter = (ibase) => new object[] { GetBuildProperty(town) },
