@@ -13,5 +13,15 @@
 		"id": -1000003002,
 		"key": "setting002",
 		"en|ch|tc|kr": "Hide Damage Multiplier",
+	},
+	{
+		"id": -1000003003,
+		"key": "setting003",
+		"en|ch|tc|kr": "Hide Exceptions",
+	},
+	{
+		"id": -1000003004,
+		"key": "setting004",
+		"en|ch|tc|kr": "(Please turn on if you wanna feedback bugs)",
 	}
 ]
