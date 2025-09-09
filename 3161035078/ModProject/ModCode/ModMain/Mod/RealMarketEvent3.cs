@@ -57,7 +57,8 @@ namespace MOD_nE7UL2.Mod
 
         public static bool IsSellableItem(DataProps.PropsData x)
         {
-            return x.propsInfoBase.sale > 0 && ModLibConst.MONEY_PROP_ID != x.propsID && ModLibConst.CONTRIBUTION_PROP_ID != x.propsID && ModLibConst.MAYOR_DEGREE_PROP_ID != x.propsID;
+            return x != null && x.propsInfoBase != null && x.propsInfoBase.sale > 0 && 
+                ModLibConst.MONEY_PROP_ID != x.propsID && ModLibConst.CONTRIBUTION_PROP_ID != x.propsID && ModLibConst.MAYOR_DEGREE_PROP_ID != x.propsID;
         }
 
         public static MarketItem GetMarketItem(WorldUnitBase seller, DataProps.PropsData prop)
@@ -528,7 +529,7 @@ namespace MOD_nE7UL2.Mod
                         continue;
 
                     //add deal
-                    //DebugHelper.WriteLine("3.1");
+                    DebugHelper.WriteLine("3.1");
                     foreach (var buyer in wunitsInTowns[item.TownId])
                     {
                         var buyerId = buyer.GetUnitId();
@@ -558,15 +559,15 @@ namespace MOD_nE7UL2.Mod
                                         //DebugHelper.WriteLine("3.1.2");
                                         var curValue = GetNegotiatingValue(item, buyer);
                                         var curDeal = GetBuyerDeal(item, buyer);
-                                        foreach (var np in buyer.GetUnequippedProps().Where(x => IsSellableItem(x)))
+                                        foreach (var np in buyer.GetUnequippedProps().Where(x =>
                                         {
-                                            //DebugHelper.WriteLine("3.1.2.1");
-                                            if (!curDeal.Items.Any(x => x.NegotiatingPropSoleId == np.soleID) &&
-                                                np.propsInfoBase.level < dealPropInfo.level && curValue.TotalValue + (np.propsInfoBase.sale * np.propsCount) < highestValue.TotalValue)
-                                            {
-                                                //DebugHelper.WriteLine("3.1.2.2");
-                                                AddNegotiatingItem(item, buyer, np, np.propsCount);
-                                            }
+                                            return IsSellableItem(x) && 
+                                                !curDeal.Items.Any(y => y.NegotiatingPropSoleId == x.soleID) &&
+                                                x.propsInfoBase.level < dealPropInfo.level && 
+                                                (curValue?.TotalValue ?? 0) + (x.propsInfoBase.sale * x.propsCount) < highestValue.TotalValue;
+                                        }))
+                                        {
+                                            AddNegotiatingItem(item, buyer, np, np.propsCount);
                                         }
                                     }
                                 }

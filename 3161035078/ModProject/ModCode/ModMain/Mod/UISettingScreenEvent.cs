@@ -12,6 +12,13 @@ namespace MOD_nE7UL2.Mod
         public static UISettingScreenEvent Instance { get; set; }
 
         public bool HideDamageMultiplier { get; set; } = false;
+        public bool HideExceptionLogs { get; set; } = false;
+
+        public override void OnLoadGame()
+        {
+            base.OnLoadGame();
+            DebugHelper.IsDebugMode = !HideExceptionLogs;
+        }
 
         public override void OnOpenUIEnd(OpenUIEnd e)
         {
@@ -32,6 +39,15 @@ namespace MOD_nE7UL2.Mod
                                     HideDamageMultiplier = v.Parse<bool>();
                                 }
                             });
+                            uiTaoistSetting.AddCompositeToggle(uiTaoistSetting.MidCol, uiTaoistSetting.FirstRow + 1, GameTool.LS("setting003"), HideExceptionLogs).SetWork(new UIItemWork
+                            {
+                                ChangeAct = (s, v) =>
+                                {
+                                    HideExceptionLogs = v.Parse<bool>();
+                                    DebugHelper.IsDebugMode = !HideExceptionLogs;
+                                }
+                            });
+                            uiTaoistSetting.AddText(uiTaoistSetting.MidCol, uiTaoistSetting.FirstRow + 2, GameTool.LS("setting004")).Format(null, 13);
                         }
                     }, GameTool.LS("setting000"), ui.UI.btnSystemOK).Size(200, 40);
                 }

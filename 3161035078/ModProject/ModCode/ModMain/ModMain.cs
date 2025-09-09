@@ -21,6 +21,7 @@ namespace MOD_nE7UL2
             base.OnLoadClass(isNew, modId, attr);
             ModObj = this;
             ModSettings = JsonConvert.DeserializeObject<ModStts>(ConfHelper.ReadConfData(modId, "mod_configs.json"));
+            DebugHelper.WriteLine($"Taoist-Version: {ModConst.TAOIST_VERSION}");
             //exp
             foreach (var item in g.conf.roleGrade._allConfList)
             {

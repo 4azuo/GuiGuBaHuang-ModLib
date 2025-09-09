@@ -145,8 +145,8 @@ namespace MOD_nE7UL2.Mod
             {
                 var ui = new UICover<UIPlayerInfo>(UIType.PlayerInfo);
                 {
-                    ui.AddToolTipButton(GameTool.LS("other500020028")).SetParentTransform(ui.UI.uiPropertyCommon.goGroupRoot).Pos(ui.UI.uiPropertyCommon.goItem1_En, 0, -135);
-                    ui.AddToolTipButton(GameTool.LS("other500020038")).SetParentTransform(ui.UI.uiPropertyCommon.goGroupRoot).Pos(ui.UI.uiPropertyCommon.goItem2_En, 0, -135);
+                    ui.AddToolTipButton(GameTool.LS("other500020028")).SetParentTransform(ui.UI.uiPropertyCommon.goGroupRoot).Pos(ui.UI.uiPropertyCommon.goItem1_En, 0, -160);
+                    ui.AddToolTipButton(GameTool.LS("other500020038")).SetParentTransform(ui.UI.uiPropertyCommon.goGroupRoot).Pos(ui.UI.uiPropertyCommon.goItem2_En, 0, -160);
 
                     ui.AddText(0, 0, string.Empty).SetParentTransform(ui.UI.uiPropertyCommon.goGroupRoot)
                         .Pos(ui.UI.uiPropertyCommon.goItem6_En, 100, -160).SetWork(new UIItemWork
@@ -267,7 +267,7 @@ namespace MOD_nE7UL2.Mod
             else
             if (e.uiType.uiName == UIType.MartialInfo.uiName && g.ui.HasUI(UIType.PlayerInfo))
             {
-                uiMartialExpertInfo = g.ui.OpenUISafe<UINPCInfoPreview>(UIType.NPCInfoPreview);
+                ModDelayEvent.Instance.DelayEvent(this, "OnUIMartialInfoAsync", e, 1000);
             }
             else
             if (e.uiType.uiName == UIType.NPCInfoPreview.uiName && g.ui.HasUI(UIType.MartialInfo))
@@ -434,6 +434,14 @@ namespace MOD_nE7UL2.Mod
                 var ui = g.ui.GetUI<UIGameMemu>(UIType.GameMemu);
                 ui.btnSave.gameObject.SetActive(!SMLocalConfigsEvent.Instance.Configs.HideSaveButton);
                 ui.btnReloadCache.gameObject.SetActive(!SMLocalConfigsEvent.Instance.Configs.HideReloadButton);
+            }
+        }
+
+        public void OnUIMartialInfoAsync(OpenUIEnd e)
+        {
+            if (g.ui.HasUI(UIType.MartialInfo))
+            {
+                uiMartialExpertInfo = g.ui.OpenUISafe<UINPCInfoPreview>(UIType.NPCInfoPreview);
             }
         }
 
