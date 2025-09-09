@@ -53,5 +53,14 @@ namespace ModLib.Mod
                 });
             }
         }
+
+        public void DelayEvent(ModEvent ev, string methodName, object e, int delayMsec)
+        {
+            var method = ev.GetType().GetMethod(methodName);
+            if (method != null)
+            {
+                DelayEvent(ev, method, e, delayMsec);
+            }
+        }
     }
 }
