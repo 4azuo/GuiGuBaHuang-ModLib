@@ -1,4 +1,5 @@
-﻿using ModLib.Mod;
+﻿using ModLib.Const;
+using ModLib.Mod;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -8,6 +9,8 @@ public static class DebugHelper
 {
     public static readonly StringBuilder CurLog = new StringBuilder();
     public static readonly IList<Exception> Exceptions = new List<Exception>();
+
+    public static bool IsDebugMode { get; set; } = true;
 
     public static string GetDebugFileName()
     {
@@ -72,10 +75,12 @@ public static class DebugHelper
         if (Exceptions.Contains(e))
             return;
         Exceptions.Add(e);
+        WriteLine($"ModLib-Version: {ModMaster.ModObj.Version}");
         WriteLine($"{e.GetAllInnnerExceptionStr()}");
         Save();
 
-        ModMaster.ShowException(e, GetDebugFilePath());
+        if (IsDebugMode)
+            ModMaster.ShowException(e, GetDebugFilePath());
     }
 
     private static string Now()
