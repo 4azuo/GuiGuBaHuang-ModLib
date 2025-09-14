@@ -39,12 +39,12 @@ namespace MOD_nE7UL2.Mod
                                     HideDamageMultiplier = v.Parse<bool>();
                                 }
                             });
-                            uiTaoistSetting.AddCompositeToggle(uiTaoistSetting.MidCol, uiTaoistSetting.FirstRow + 1, GameTool.LS("setting003"), HideExceptionLogs).SetWork(new UIItemWork
+                            uiTaoistSetting.AddCompositeToggle(uiTaoistSetting.MidCol, uiTaoistSetting.FirstRow + 1, GameTool.LS("setting003"), !DebugHelper.IsDebugMode).SetWork(new UIItemWork
                             {
                                 ChangeAct = (s, v) =>
                                 {
-                                    HideExceptionLogs = v.Parse<bool>();
-                                    DebugHelper.IsDebugMode = !HideExceptionLogs;
+                                    DebugHelper.IsDebugMode = !v.Parse<bool>();
+                                    HideExceptionLogs = !DebugHelper.IsDebugMode;
                                 }
                             });
                             uiTaoistSetting.AddText(uiTaoistSetting.MidCol, uiTaoistSetting.FirstRow + 2, GameTool.LS("setting004")).Format(null, 13);

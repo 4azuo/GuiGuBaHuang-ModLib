@@ -348,8 +348,8 @@
 		"key": "smcfgs043",
 		"en": "Total score: {0}P",
 		"ch": "总分: {0}P",
-		"tc": "總分：{0} p",
-		"kr": "총 점수 : {0} p"
+		"tc": "總分： {0} p",
+		"kr": "총 점수: {0} p"
 	},
 	{
 		"id": -1000001044,
@@ -387,8 +387,8 @@
 		"id": -1000001048,
 		"key": "smcfgs048",
 		"en": "(Required RAM: {0}MB)",
-		"ch": "必需的 RAM: {0}MB)",
-		"tc": "（必需的RAM：{0} MB）",
+		"ch": "（必需的RAM: {0}MB)",
+		"tc": "（必需的RAM： {0} MB）",
 		"kr": "(필수 RAM : {0} MB)"
 	},
 	{
@@ -428,7 +428,7 @@
 		"key": "smcfgs053",
 		"en": "every {1} months ({0}P)",
 		"ch": "每{1}月 ({0}P)",
-		"tc": "每個{1}月（{0} P）",
+		"tc": "每個{1}月 （{0} P）",
 		"kr": "모든 {1} 달 ({0} p)"
 	},
 	{
@@ -491,14 +491,14 @@
 		"id": -1000001101,
 		"key": "smcfgs101",
 		"en": "{1}% ({0}P)",
-		"ch": "{1}％（{0} P）",
-		"tc": "{1}％（{0} P）",
+		"ch": "{1}％ （{0} P）",
+		"tc": "{1}％ （{0} P）",
 		"kr": "{1}% ({0} p)"
 	},
 	{
 		"id": -1000001102,
 		"key": "smcfgs102",
-		"en": "({0}P)",
+		"en": "({0} P)",
 		"ch": "（{0} P）",
 		"tc": "（{0} P）",
 		"kr": "({0} p)"
@@ -507,8 +507,8 @@
 		"id": -1000001103,
 		"key": "smcfgs103",
 		"en": "{1} ({0}P)",
-		"ch": "{1}（{0} P）",
-		"tc": "{1}（{0} P）",
+		"ch": "{1} （{0} P）",
+		"tc": "{1} （{0} P）",
 		"kr": "{1} ({0} p)"
 	},
 	{
@@ -699,5 +699,35 @@
 		"id": -1000001127,
 		"key": "smcfgs127",
 		"en|ch|tc|kr": "Hardcore:",
+	},
+	{
+		"id": -1000001128,
+		"key": "smcfgs128",
+		"en|ch|tc|kr": "(This config affect to monthly process time)",
+	},
+	{
+		"id": -1000001129,
+		"key": "smcfgs129",
+		"en|ch|tc|kr": "Lost Lifespan When Die/Lose",
+	},
+	{
+		"id": -1000001130,
+		"key": "smcfgs130",
+		"en|ch|tc|kr": "Max Sellers Each Town",
+	},
+	{
+		"id": -1000001131,
+		"key": "smcfgs131",
+		"en|ch|tc|kr": "Max Buyers On Selling Item",
+	},
+	{
+		"id": -1000001132,
+		"key": "smcfgs132",
+		"en|ch|tc|kr": "{0}",
+	},
+	{
+		"id": -1000001133,
+		"key": "smcfgs133",
+		"en|ch|tc|kr": "Max Items On Seller",
 	}
 ]

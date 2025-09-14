@@ -442,7 +442,7 @@ namespace MOD_nE7UL2.Mod
                 var wunitsInTowns = towns.ToDictionary(x => x.buildData.id, x => g.world.unit.GetUnitExact(x.GetOrigiPoint(), Configs.JoinRange).ToArray());
 
                 //remove error
-                DebugHelper.WriteLine("1");
+                //DebugHelper.WriteLine("1");
                 foreach (var item in MarketStack.ToArray())
                 {
                     //cancel
@@ -474,48 +474,59 @@ namespace MOD_nE7UL2.Mod
                 }
 
                 //add item
-                DebugHelper.WriteLine("2");
+                //DebugHelper.WriteLine("2");
                 foreach (var wunitsInTown in wunitsInTowns)
                 {
                     //DebugHelper.WriteLine("2.1");
-                    foreach (var seller in wunitsInTown.Value)
+                    var countSeller = MarketStack.Count(x => x.TownId == wunitsInTown.Key);
+                    if (countSeller < SMLocalConfigsEvent.Instance.Configs.MaxSellersEachTown)
                     {
-                        if (!seller.IsPlayer() && CommonTool.Random(0f, 100f).IsBetween(0f, sellerJoinRate))
+                        foreach (var seller in wunitsInTown.Value)
                         {
-                            //DebugHelper.WriteLine("2.1.1");
                             var sellerId = seller.GetUnitId();
-                            var props = seller.GetUnequippedProps()
-                                .Where(x => 
-                                    IsSellableItem(x) && 
-                                    !BoughtItems.ContainsKey(x.soleID) &&
-                                    !MarketStack.Any(z => z.SellerId == sellerId && z.SoleId == x.soleID) && 
-                                    CommonTool.Random(0f, 100f).IsBetween(0f, (7 - x.propsInfoBase.level) * Configs.SellRateDependOnGrade))
-                                .Select(x => new MarketItem
-                                {
-                                    SellerId = sellerId,
-                                    TownId = wunitsInTown.Key,
-                                    PropId = x.propsID,
-                                    //DataType = x.propsType,
-                                    //DataValues = x.valuesStr,
-                                    Count = CommonTool.Random(1, x.propsCount),
-                                    SellerPrice = (x.propsInfoBase.sale * CommonTool.Random(0.6f, 3.0f)).Parse<int>().FixValue(MIN_PRICE, MAX_PRICE),
-                                    SoleId = x.soleID,
-                                    CreateMonth = GameHelper.GetGameTotalMonth(),
-                                    IsPartialItem = x.IsPartialItem() == CheckEnum.True,
-                                    IsHidden = CommonTool.Random(0.00f, 100.00f).IsBetween(0.00f, Configs.HiddenRate),
-                                })
-                                .ToList();
-                            if (props.Count > 0)
+                            var countItemBySeller = MarketStack.Count(x => x.SellerId == sellerId);
+                            if (!seller.IsPlayer() && CommonTool.Random(0f, 100f).IsBetween(0f, sellerJoinRate) &&
+                                countItemBySeller < SMLocalConfigsEvent.Instance.Configs.MaxItemsOnSeller.Parse<int>())
                             {
-                                //DebugHelper.WriteLine("2.1.2");
-                                MarketStack.AddRange(props);
+                                //DebugHelper.WriteLine("2.1.1");
+                                var props = seller.GetUnequippedProps()
+                                    .Where(x =>
+                                        IsSellableItem(x) &&
+                                        !BoughtItems.ContainsKey(x.soleID) &&
+                                        !MarketStack.Any(z => z.SellerId == sellerId && z.SoleId == x.soleID) &&
+                                        CommonTool.Random(0f, 100f).IsBetween(0f, (7 - x.propsInfoBase.level) * Configs.SellRateDependOnGrade))
+                                    .Take(SMLocalConfigsEvent.Instance.Configs.MaxItemsOnSeller.Parse<int>() - countItemBySeller)
+                                    .Select(x => new MarketItem
+                                    {
+                                        SellerId = sellerId,
+                                        TownId = wunitsInTown.Key,
+                                        PropId = x.propsID,
+                                        //DataType = x.propsType,
+                                        //DataValues = x.valuesStr,
+                                        Count = CommonTool.Random(1, x.propsCount),
+                                        SellerPrice = (x.propsInfoBase.sale * CommonTool.Random(0.6f, 3.0f)).Parse<int>().FixValue(MIN_PRICE, MAX_PRICE),
+                                        SoleId = x.soleID,
+                                        CreateMonth = GameHelper.GetGameTotalMonth(),
+                                        IsPartialItem = x.IsPartialItem() == CheckEnum.True,
+                                        IsHidden = CommonTool.Random(0.00f, 100.00f).IsBetween(0.00f, Configs.HiddenRate),
+                                    })
+                                    .ToList();
+                                if (props.Count > 0)
+                                {
+                                    //DebugHelper.WriteLine("2.1.2");
+                                    MarketStack.AddRange(props);
+
+                                    countSeller++;
+                                    if (countSeller >= SMLocalConfigsEvent.Instance.Configs.MaxSellersEachTown)
+                                        break;
+                                }
                             }
                         }
                     }
                 }
 
                 //process
-                DebugHelper.WriteLine("3");
+                //DebugHelper.WriteLine("3");
                 foreach (var item in MarketStack.ToArray())
                 {
                     if (!item.IsValid)
@@ -528,8 +539,12 @@ namespace MOD_nE7UL2.Mod
                     if (dealPropInfo == null)
                         continue;
 
+                    var countBuyerOnItem = item.Deals.Select(x => x.BuyerId).Distinct().Count();
+                    if (countBuyerOnItem >= SMLocalConfigsEvent.Instance.Configs.MaxBuyersOnSellingItem)
+                        continue;
+
                     //add deal
-                    DebugHelper.WriteLine("3.1");
+                    //DebugHelper.WriteLine("3.1");
                     foreach (var buyer in wunitsInTowns[item.TownId])
                     {
                         var buyerId = buyer.GetUnitId();
@@ -572,6 +587,10 @@ namespace MOD_nE7UL2.Mod
                                     }
                                 }
                             }
+
+                            countBuyerOnItem++;
+                            if (countBuyerOnItem >= SMLocalConfigsEvent.Instance.Configs.MaxBuyersOnSellingItem)
+                                break;
                         }
                     }
                 }

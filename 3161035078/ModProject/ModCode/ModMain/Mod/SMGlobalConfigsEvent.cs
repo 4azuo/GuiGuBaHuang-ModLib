@@ -78,6 +78,10 @@ namespace MOD_nE7UL2.Mod
         public bool NoStalker { get; set; } = false;
         public bool NoTaxing { get; set; } = false;
         public bool NoQiCultivation { get; set; } = false;
+        public bool LostLifespanWhenDie { get; set; } = false;
+        public float MaxSellersEachTown { get; set; } = 8;
+        public float MaxItemsOnSeller { get; set; } = 4;
+        public float MaxBuyersOnSellingItem { get; set; } = 4;
 
         //UI
         private UICustom1 uiCustom;
@@ -123,6 +127,10 @@ namespace MOD_nE7UL2.Mod
         private UIItemComposite tglNoStalker;
         private UIItemComposite tglNoTaxing;
         private UIItemComposite tglNoQiCultivation;
+        private UIItemComposite tglLostLifespanWhenDie;
+        private UIItemComposite slMaxSellersEachTown;
+        private UIItemComposite slMaxItemsOnSeller;
+        private UIItemComposite slMaxBuyersOnSellingItem;
 
         //Score
         [JsonIgnore]
@@ -283,6 +291,57 @@ namespace MOD_nE7UL2.Mod
             Register(() => tglNoQiCultivation,
                 funcCal: s => 2000,
                 funcCond: s => s.Get().Parse<bool>());
+            Register(() => tglLostLifespanWhenDie,
+                funcCal: s => 2000,
+                funcCond: s => s.Get().Parse<bool>());
+            Register(() => slMaxSellersEachTown,
+                funcCal: s => 0,
+                funcFormatter: s =>
+                {
+                    var rs = new object[] { 0 };
+                    if (s.Parent != null)
+                    {
+                        //value
+                        var x = s.Parent as UIItemComposite;
+                        if (x.MainComponent is UIItemSlider)
+                        {
+                            rs[0] = x.Get().Parse<int>();
+                        }
+                    }
+                    return rs;
+                });
+            Register(() => slMaxItemsOnSeller,
+                funcCal: s => 0,
+                funcFormatter: s =>
+                {
+                    var rs = new object[] { 0 };
+                    if (s.Parent != null)
+                    {
+                        //value
+                        var x = s.Parent as UIItemComposite;
+                        if (x.MainComponent is UIItemSlider)
+                        {
+                            rs[0] = x.Get().Parse<int>();
+                        }
+                    }
+                    return rs;
+                });
+            Register(() => slMaxBuyersOnSellingItem,
+                funcCal: s => 0,
+                funcFormatter: s =>
+                {
+                    var rs = new object[] { 0 };
+                    if (s.Parent != null)
+                    {
+                        //value
+                        var x = s.Parent as UIItemComposite;
+                        if (x.MainComponent is UIItemSlider)
+                        {
+                            rs[0] = x.Get().Parse<int>();
+                        }
+                    }
+                    return rs;
+                });
         }
 
         private void Register(
@@ -405,6 +464,7 @@ namespace MOD_nE7UL2.Mod
 
                 col = 16; row = 0;
                 uiCustom.AddText(col, row++, GameTool.LS("smcfgs127")).Format(null, 17, FontStyle.Italic).Align(TextAnchor.MiddleRight);
+                tglLostLifespanWhenDie = uiCustom.AddCompositeToggle(col, row++, GameTool.LS("smcfgs129"), LostLifespanWhenDie, GameTool.LS("smcfgs102"));
                 tglSysHideSave = uiCustom.AddCompositeToggle(col, row++, GameTool.LS("smcfgs021"), HideSaveButton, GameTool.LS("smcfgs102"));
                 tglSysHideReload = uiCustom.AddCompositeToggle(col, row++, GameTool.LS("smcfgs022"), HideReloadButton, GameTool.LS("smcfgs102"));
                 tglLostItemWhenDie = uiCustom.AddCompositeToggle(col, row++, GameTool.LS("smcfgs056"), HideReloadButton, GameTool.LS("smcfgs102"));
@@ -445,6 +505,9 @@ namespace MOD_nE7UL2.Mod
                 uiCustom.AddText(col, row++, GameTool.LS("smcfgs116")).Format(null, 17, FontStyle.Italic).Align(TextAnchor.MiddleRight);
                 slMarketItemNpcJoinRate = uiCustom.AddCompositeSlider(col, row++, GameTool.LS("smcfgs117"), -0.50f, 1.00f, MarketItemNpcJoinRate, GameTool.LS("smcfgs101"));
                 slMarketItemGetAttackedRate = uiCustom.AddCompositeSlider(col, row++, GameTool.LS("smcfgs118"), -0.50f, 1.00f, MarketItemGetAttackedRate, GameTool.LS("smcfgs101"));
+                slMaxSellersEachTown = uiCustom.AddCompositeSlider(col, row++, GameTool.LS("smcfgs130"), 1, 30, MaxSellersEachTown, GameTool.LS("smcfgs132"));
+                slMaxItemsOnSeller = uiCustom.AddCompositeSlider(col, row++, GameTool.LS("smcfgs133"), 1, 10, MaxItemsOnSeller, GameTool.LS("smcfgs132"));
+                slMaxBuyersOnSellingItem = uiCustom.AddCompositeSlider(col, row++, GameTool.LS("smcfgs131"), 1, 20, MaxBuyersOnSellingItem, GameTool.LS("smcfgs132"));
                 uiCustom.AddText(col - 1, row++, GameTool.LS("smcfgs119")).Format(null, 13).Align(TextAnchor.MiddleLeft);
 
                 col = 16; row = 0;
@@ -461,6 +524,7 @@ namespace MOD_nE7UL2.Mod
                 tglNoTaxing = uiCustom.AddCompositeToggle(col, row++, GameTool.LS("smcfgs122"), NoTaxing, GameTool.LS("smcfgs102"));
                 uiCustom.AddText(col, row++, GameTool.LS("smcfgs126")).Format(null, 13).Align(TextAnchor.MiddleLeft);
                 tglNoMarketItem = uiCustom.AddCompositeToggle(col, row++, GameTool.LS("smcfgs123"), NoExpFromBattles, GameTool.LS("smcfgs102"));
+                uiCustom.AddText(col, row++, GameTool.LS("smcfgs128")).Format(null, 13).Align(TextAnchor.MiddleLeft);
                 tglNoStalker = uiCustom.AddCompositeToggle(col, row++, GameTool.LS("smcfgs124"), NoExpFromBattles, GameTool.LS("smcfgs102"));
                 tglNoQiCultivation = uiCustom.AddCompositeToggle(col, row++, GameTool.LS("smcfgs125"), NoQiCultivation, GameTool.LS("smcfgs102"));
                 row++;
@@ -606,6 +670,10 @@ namespace MOD_nE7UL2.Mod
             tglNoStalker.Set(false);
             tglNoTaxing.Set(false);
             tglNoQiCultivation.Set(false);
+            tglLostLifespanWhenDie.Set(false);
+            slMaxSellersEachTown.Set(8f);
+            slMaxItemsOnSeller.Set(4f);
+            slMaxBuyersOnSellingItem.Set(4f);
         }
 
         private void SetLevel(int level)
@@ -652,6 +720,10 @@ namespace MOD_nE7UL2.Mod
             tglNoStalker.Set(false);
             tglNoTaxing.Set(false);
             tglNoQiCultivation.Set(false);
+            tglLostLifespanWhenDie.Set(level > 0);
+            slMaxSellersEachTown.Set(8f);
+            slMaxItemsOnSeller.Set(4f);
+            slMaxBuyersOnSellingItem.Set(4f);
         }
 
         private void SetSMConfigs()
@@ -698,6 +770,10 @@ namespace MOD_nE7UL2.Mod
             NoStalker = tglNoStalker.Get().Parse<bool>();
             NoTaxing = tglNoTaxing.Get().Parse<bool>();
             NoQiCultivation = tglNoQiCultivation.Get().Parse<bool>();
+            LostLifespanWhenDie = tglLostLifespanWhenDie.Get().Parse<bool>();
+            MaxSellersEachTown = slMaxSellersEachTown.Get().Parse<int>();
+            MaxItemsOnSeller = slMaxItemsOnSeller.Get().Parse<int>();
+            MaxBuyersOnSellingItem = slMaxBuyersOnSellingItem.Get().Parse<int>();
             CacheHelper.SaveGlobalCache(this);
 
             //edit conf

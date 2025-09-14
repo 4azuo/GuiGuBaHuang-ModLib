@@ -23,34 +23,20 @@ namespace MOD_nE7UL2.Mod
                 var uiMain = new UICover<UIMapMain>(e.ui);
                 {
                     var btnFateFeature = uiMain.UI.playerInfo.btnFateFeature ?? uiMain.UI.playerInfo.btnFateFeature_En;
-                    uiMain.AddButton(uiMain.FirstCol + 11, uiMain.LastRow - 4, () =>
+                    uiMain.AddButton(uiMain.FirstCol + 12, uiMain.LastRow - 4, () =>
                     {
                         g.ui.MsgBox(GameTool.LS("other500020022"), string.Format(GameTool.LS("other500020029"), 1), MsgBoxButtonEnum.YesNo, () =>
                         {
-                            SkipTime(12, 30);
+                            SkipTime(12);
                         });
                     }, string.Format(GameTool.LS("other500020030"), 1)).Size(140, 40);
-                    uiMain.AddButton(uiMain.FirstCol + 13, uiMain.LastRow - 4, () =>
-                    {
-                        g.ui.MsgBox(GameTool.LS("other500020022"), string.Format(GameTool.LS("other500020029"), 1), MsgBoxButtonEnum.YesNo, () =>
-                        {
-                            SkipTime(12, 180);
-                        });
-                    }, string.Format(GameTool.LS("other500020032"), 1)).Size(40, 40);
                     uiMain.AddButton(uiMain.FirstCol + 15, uiMain.LastRow - 4, () =>
                     {
                         g.ui.MsgBox(GameTool.LS("other500020022"), string.Format(GameTool.LS("other500020029"), 10), MsgBoxButtonEnum.YesNo, () =>
                         {
-                            SkipTime(120, 30);
+                            SkipTime(120);
                         });
                     }, string.Format(GameTool.LS("other500020030"), 10)).Size(140, 40);
-                    uiMain.AddButton(uiMain.FirstCol + 17, uiMain.LastRow - 4, () =>
-                    {
-                        g.ui.MsgBox(GameTool.LS("other500020022"), string.Format(GameTool.LS("other500020029"), 10), MsgBoxButtonEnum.YesNo, () =>
-                        {
-                            SkipTime(120, 360);
-                        });
-                    }, string.Format(GameTool.LS("other500020032"), 1)).Size(40, 40);
                 }
             }
         }
