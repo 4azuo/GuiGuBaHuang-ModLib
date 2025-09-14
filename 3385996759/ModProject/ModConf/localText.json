@@ -46,5 +46,20 @@
 		"ch": "DEFAULT_DRAMA_OPT",
 		"tc": "DEFAULT_DRAMA_OPT",
 		"kr": "DEFAULT_DRAMA_OPT"
+	},
+	{
+		"id": "999990006",
+		"key": "libtxt999990006",
+		"en|ch|tc|kr": "Hide Exceptions",
+	},
+	{
+		"id": "999990007",
+		"key": "libtxt999990007",
+		"en|ch|tc|kr": "(Please turn on if you wanna feedback bugs)",
+	},
+	{
+		"id": "999990008",
+		"key": "libtxt999990008",
+		"en|ch|tc|kr": "Page {0}",
 	}
 ]

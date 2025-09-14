@@ -494,6 +494,17 @@ namespace ModLib.Mod
                 Process.Start("notepad.exe", log);
             }), true);
             ui.ptextInfo.fontSize = 14;
+            //var uiCover = new UICover<UITextInfoLong>(ui);
+            //{
+            //    uiCover.AddCompositeToggle(uiCover.MidCol, uiCover.LastRow - 1, GameTool.LS("libtxt999990006"), !DebugHelper.IsDebugMode).SetWork(new UIItemWork
+            //    {
+            //        ChangeAct = (s, v) =>
+            //        {
+            //            DebugHelper.IsDebugMode = !v.Parse<bool>();
+            //        }
+            //    });
+            //    uiCover.AddText(uiCover.MidCol, uiCover.LastRow, GameTool.LS("libtxt999990007")).Format(null, 13);
+            //}
         }
 
         public static void AddGlobalCaches()
