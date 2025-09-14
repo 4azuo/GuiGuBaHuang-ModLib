@@ -20,8 +20,16 @@ namespace ModLib.Object
             //navigation buttons
             UnPaging = true;
             {
-                PrevButton = AddButton(FirstCol, LastRow, () => PrevPage(), "≪").Format(Color.black, 13).Size(60, 30).Active(IsShowNavigationButtons);
-                NextButton = AddButton(LastCol, LastRow, () => NextPage(), "≫").Format(Color.black, 13).Size(60, 30).Active(IsShowNavigationButtons);
+                PrevButton = AddButton(FirstCol, LastRow, () => PrevPage(), GameTool.LS("libtxt999990008")).Format(Color.black, 13).Size(80, 40)
+                    .Active(IsShowNavigationButtons).SetWork(new UIItemWork
+                {
+                    Formatter = (item) => new object[] { CurrentPageIndex + 0 }
+                });
+                NextButton = AddButton(LastCol, LastRow, () => NextPage(), GameTool.LS("libtxt999990008")).Format(Color.black, 13).Size(80, 40)
+                    .Active(IsShowNavigationButtons).SetWork(new UIItemWork
+                {
+                    Formatter = (item) => new object[] { CurrentPageIndex + 2 }
+                });
             }
             UnPaging = false;
 
