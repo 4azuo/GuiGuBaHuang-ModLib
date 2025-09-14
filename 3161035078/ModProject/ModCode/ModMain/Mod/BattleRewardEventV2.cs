@@ -610,11 +610,14 @@ namespace MOD_nE7UL2.Mod
                 if (g.world.battle.data.isRealBattle)
                 {
                     //life drain
-                    //DebugHelper.WriteLine("3");
-                    var drainLife = Math.Max(6/*month*/ * g.game.data.dataWorld.data.gameLevel.Parse<int>(), dieUnit.data.maxHP.value / (3000 / g.game.data.dataWorld.data.gameLevel.Parse<int>()));
-                    dieUnitWUnit.AddProperty<int>(UnitPropertyEnum.Life, -drainLife);
-                    if (isKillerWUnit)
-                        killerWUnit.AddProperty<int>(UnitPropertyEnum.Life, drainLife / 2);
+                    if (SMLocalConfigsEvent.Instance.Configs.LostLifespanWhenDie)
+                    {
+                        //DebugHelper.WriteLine("3");
+                        var drainLife = Math.Max(6/*month*/ * g.game.data.dataWorld.data.gameLevel.Parse<int>(), dieUnit.data.maxHP.value / (3000 / g.game.data.dataWorld.data.gameLevel.Parse<int>()));
+                        dieUnitWUnit.AddProperty<int>(UnitPropertyEnum.Life, -drainLife);
+                        if (isKillerWUnit)
+                            killerWUnit.AddProperty<int>(UnitPropertyEnum.Life, drainLife / 2);
+                    }
 
                     //item
                     //DebugHelper.WriteLine("4");
