@@ -1,5 +1,4 @@
-﻿using ModLib.Const;
-using ModLib.Mod;
+﻿using ModLib.Mod;
 using System;
 using System.Collections.Generic;
 using System.IO;
