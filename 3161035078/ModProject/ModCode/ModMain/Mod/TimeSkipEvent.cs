@@ -47,6 +47,8 @@ namespace MOD_nE7UL2.Mod
             skip2Month = GameHelper.GetGameTotalMonth() + month;
         }
 
+        [ErrorIgnore]
+        [EventCondition(IsInGame = HandleEnum.True, IsInBattle = HandleEnum.False)]
         public override void OnTimeUpdate1000ms()
         {
             base.OnTimeUpdate1000ms();
