@@ -464,6 +464,7 @@ namespace ModLib.Mod
         {
             try
             {
+                var timeStart = DateTime.Now;
                 var method = this.GetType().GetMethod(methodName, BindingFlags.Public | BindingFlags.Instance | BindingFlags.FlattenHierarchy);
                 if (method.GetParameters().Length == 0)
                 {
@@ -473,10 +474,14 @@ namespace ModLib.Mod
                 {
                     method.Invoke(this, new object[] { e?.TryCast<T>()/* ?? e*/ });
                 }
+                var timeEnd = DateTime.Now;
+                var processTime = timeEnd - timeStart;
+                if (processTime.TotalMilliseconds >= 100)
+                    DebugHelper.WriteLine($"【{processTime.ToString(@"ss\.ff")}】CallEvents<{typeof(T).Name}>({methodName})");
             }
             catch (Exception ex)
             {
-                DebugHelper.WriteLine($"CallEvents<{typeof(T).Name}>({methodName})");
+                DebugHelper.WriteLine($"【Error】CallEvents<{typeof(T).Name}>({methodName})");
                 DebugHelper.WriteLine(ex);
             }
         }
