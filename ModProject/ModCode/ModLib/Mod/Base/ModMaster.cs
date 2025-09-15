@@ -532,6 +532,18 @@ namespace ModLib.Mod
             DebugHelper.Save();
         }
 
+        public WorldUnitBase[] WUnits { get; private set; }
+        public MapBuildBase[] Buildings { get; private set; }
+        public MapBuildTown[] Towns { get; private set; }
+        public MapBuildSchool[] Schools { get; private set; }
+        public void RefreshDataCaches()
+        {
+            WUnits = g.world.unit.GetUnits().ToArray();
+            Buildings = g.world.build.GetBuilds().ToArray();
+            Towns = g.world.build.GetBuilds<MapBuildTown>().ToArray();
+            Schools = g.world.build.GetBuilds<MapBuildSchool>().ToArray();
+        }
+
         public static void LoadEnumObj(Assembly ass)
         {
             if (ass == null)
