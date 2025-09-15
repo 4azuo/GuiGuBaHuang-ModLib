@@ -82,6 +82,7 @@ namespace MOD_nE7UL2.Mod
         public float MaxSellersEachTown { get; set; } = 8;
         public float MaxItemsOnSeller { get; set; } = 4;
         public float MaxBuyersOnSellingItem { get; set; } = 4;
+        public bool OnlyActiveOnCurOrNearArea { get; set; } = true;
 
         //UI
         private UICustom1 uiCustom;
@@ -131,6 +132,7 @@ namespace MOD_nE7UL2.Mod
         private UIItemComposite slMaxSellersEachTown;
         private UIItemComposite slMaxItemsOnSeller;
         private UIItemComposite slMaxBuyersOnSellingItem;
+        private UIItemComposite tglOnlyActiveOnCurOrNearArea;
 
         //Score
         [JsonIgnore]
@@ -342,6 +344,9 @@ namespace MOD_nE7UL2.Mod
                     }
                     return rs;
                 });
+            Register(() => tglOnlyActiveOnCurOrNearArea,
+                funcCal: s => -5000,
+                funcCond: s => s.Get().Parse<bool>());
         }
 
         private void Register(
@@ -435,6 +440,7 @@ namespace MOD_nE7UL2.Mod
                 slMiscLevelupExp = uiCustom.AddCompositeSlider(col, row++, GameTool.LS("smcfgs019"), 0.00f, 1.00f, AddLevelupExpRate, GameTool.LS("smcfgs101"));
                 slGrowUpSpeed = uiCustom.AddCompositeSlider(col, row++, GameTool.LS("smcfgs051"), 1, 36, GrowUpSpeed, GameTool.LS("smcfgs053"));
                 uiCustom.AddText(col + 2, row++, GameTool.LS("smcfgs052")).Format(null, 13).Align(TextAnchor.MiddleLeft);
+                uiCustom.AddText(col + 2, row++, GameTool.LS("smcfgs128")).Format(null, 13).Align(TextAnchor.MiddleLeft);
                 //
                 row++;
                 uiCustom.AddText(col, row++, GameTool.LS("smcfgs104")).Format(null, 17, FontStyle.Italic).Align(TextAnchor.MiddleRight);
@@ -509,6 +515,8 @@ namespace MOD_nE7UL2.Mod
                 slMaxItemsOnSeller = uiCustom.AddCompositeSlider(col, row++, GameTool.LS("smcfgs133"), 1, 10, MaxItemsOnSeller, GameTool.LS("smcfgs132"));
                 slMaxBuyersOnSellingItem = uiCustom.AddCompositeSlider(col, row++, GameTool.LS("smcfgs131"), 1, 20, MaxBuyersOnSellingItem, GameTool.LS("smcfgs132"));
                 uiCustom.AddText(col - 1, row++, GameTool.LS("smcfgs119")).Format(null, 13).Align(TextAnchor.MiddleLeft);
+                tglOnlyActiveOnCurOrNearArea = uiCustom.AddCompositeToggle(col, row++, GameTool.LS("smcfgs134"), OnlyActiveOnCurOrNearArea, GameTool.LS("smcfgs102"));
+                uiCustom.AddText(col - 1, row++, GameTool.LS("smcfgs135")).Format(null, 13).Align(TextAnchor.MiddleLeft);
 
                 col = 16; row = 0;
                 uiCustom.AddText(col, row++, GameTool.LS("smcfgs020")).Format(null, 17, FontStyle.Italic).Align(TextAnchor.MiddleRight);
@@ -674,6 +682,7 @@ namespace MOD_nE7UL2.Mod
             slMaxSellersEachTown.Set(8f);
             slMaxItemsOnSeller.Set(4f);
             slMaxBuyersOnSellingItem.Set(4f);
+            tglOnlyActiveOnCurOrNearArea.Set(true);
         }
 
         private void SetLevel(int level)
@@ -724,6 +733,7 @@ namespace MOD_nE7UL2.Mod
             slMaxSellersEachTown.Set(8f);
             slMaxItemsOnSeller.Set(4f);
             slMaxBuyersOnSellingItem.Set(4f);
+            tglOnlyActiveOnCurOrNearArea.Set(true);
         }
 
         private void SetSMConfigs()
@@ -774,6 +784,7 @@ namespace MOD_nE7UL2.Mod
             MaxSellersEachTown = slMaxSellersEachTown.Get().Parse<int>();
             MaxItemsOnSeller = slMaxItemsOnSeller.Get().Parse<int>();
             MaxBuyersOnSellingItem = slMaxBuyersOnSellingItem.Get().Parse<int>();
+            OnlyActiveOnCurOrNearArea = tglOnlyActiveOnCurOrNearArea.Get().Parse<bool>();
             CacheHelper.SaveGlobalCache(this);
 
             //edit conf

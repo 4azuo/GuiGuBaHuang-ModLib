@@ -438,7 +438,10 @@ namespace MOD_nE7UL2.Mod
                 var buyerJoinRate = SMLocalConfigsEvent.Instance.Calculate(Configs.BuyerJoinMarketRate, SMLocalConfigsEvent.Instance.Configs.MarketItemNpcJoinRate).Parse<float>();
 
                 //get wunits
-                var towns = ModMaster.ModObj.Towns.Where(x => x.GetBuildSub<MapBuildTownMarket>() != null).ToArray();
+                var curArea = g.world.playerUnit.GetUnitPosAreaId();
+                var towns = SMLocalConfigsEvent.Instance.Configs.OnlyActiveOnCurOrNearArea ?
+                    ModMaster.ModObj.Towns.Where(x => x.GetBuildSub<MapBuildTownMarket>() != null && x.gridData.areaBaseID.IsBetween(curArea - 1, curArea + 1)).ToArray() :
+                    ModMaster.ModObj.Towns.Where(x => x.GetBuildSub<MapBuildTownMarket>() != null).ToArray();
                 var wunitsInTowns = towns.ToDictionary(x => x.buildData.id, x => g.world.unit.GetUnitExact(x.GetOrigiPoint(), Configs.JoinRange).ToArray());
 
                 //remove error
@@ -545,6 +548,8 @@ namespace MOD_nE7UL2.Mod
 
                     //add deal
                     //DebugHelper.WriteLine("3.1");
+                    if (!wunitsInTowns.ContainsKey(item.TownId))
+                        continue;
                     foreach (var buyer in wunitsInTowns[item.TownId])
                     {
                         var buyerId = buyer.GetUnitId();

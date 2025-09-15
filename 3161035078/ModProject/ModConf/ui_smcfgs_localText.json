@@ -729,5 +729,15 @@
 		"id": -1000001133,
 		"key": "smcfgs133",
 		"en|ch|tc|kr": "Max Items On Seller",
+	},
+	{
+		"id": -1000001134,
+		"key": "smcfgs134",
+		"en|ch|tc|kr": "Only Active On Cur/Near Area",
+	},
+	{
+		"id": -1000001135,
+		"key": "smcfgs135",
+		"en|ch|tc|kr": "(Speed up process time, but affect NPCs)",
 	}
 ]
