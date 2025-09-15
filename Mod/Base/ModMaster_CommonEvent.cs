@@ -72,7 +72,9 @@ namespace ModLib.Mod
         public virtual void OnLoadGameCaches()
         {
             DebugHelper.WriteLine("Load game caches.");
-            //add game-cache
+            //init data-caches
+            RefreshDataCaches();
+            //add game-caches
             AddGameCaches();
         }
 
