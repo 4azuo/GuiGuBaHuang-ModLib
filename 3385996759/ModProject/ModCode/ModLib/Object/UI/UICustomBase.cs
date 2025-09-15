@@ -224,7 +224,7 @@ namespace ModLib.Object
 
         public UIItemPage NextPage()
         {
-            var nPageIndex = (CurrentPageIndex + 1).FixValue(0, CurrentPage.Items.Count - 1);
+            var nPageIndex = (CurrentPageIndex + 1).FixValue(0, Pages.Count - 1);
             if (CurrentPageIndex != nPageIndex)
                 Pages[nPageIndex].Active();
             return CurrentPage;
@@ -232,7 +232,7 @@ namespace ModLib.Object
 
         public UIItemPage PrevPage()
         {
-            var pPageIndex = (CurrentPageIndex - 1).FixValue(0, CurrentPage.Items.Count - 1);
+            var pPageIndex = (CurrentPageIndex - 1).FixValue(0, Pages.Count - 1);
             if (CurrentPageIndex != pPageIndex)
                 Pages[pPageIndex].Active();
             return CurrentPage;

@@ -1,9 +1,5 @@
 ﻿using System;
 using System.Reflection;
-using System.Threading.Tasks;
-using UnityEngine;
-using UnityEngine.EventSystems;
-using UnityEngine.UI;
 
 public static class ObjectHelper
 {
