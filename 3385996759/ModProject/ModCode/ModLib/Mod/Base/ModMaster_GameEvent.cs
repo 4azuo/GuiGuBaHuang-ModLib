@@ -58,6 +58,8 @@ namespace ModLib.Mod
 
             if (GameHelper.IsInGame())
             {
+                RefreshDataCaches();
+
                 if (Gamevars.CurMonth != g.game.world.run.roundMonth)
                 {
                     Gamevars.CurMonth = g.game.world.run.roundMonth;
@@ -292,7 +294,7 @@ namespace ModLib.Mod
 
         public virtual void OnMonthlyForEachWUnit()
         {
-            foreach (var wunit in g.world.unit.GetUnits())
+            foreach (var wunit in WUnits)
             {
                 EventHelper.RunMinorEvents("OnMonthlyForEachWUnit", wunit);
             }
