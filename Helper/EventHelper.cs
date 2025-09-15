@@ -1,10 +1,11 @@
-﻿using System.Linq;
+﻿using ModLib.Enum;
 using ModLib.Mod;
-using System.Collections.Generic;
-using System;
-using ModLib.Enum;
 using ModLib.Object;
+using System;
+using System.Collections.Generic;
+using System.Linq;
 using System.Reflection;
+using System.Threading.Tasks;
 
 public static class EventHelper
 {
@@ -51,7 +52,7 @@ public static class EventHelper
                 if (method?.GetAttributeOnMethodOrClass<ErrorIgnoreAttribute>() == null &&
                     exMethod?.GetAttributeOnMethodOrClass<ErrorIgnoreAttribute>() == null)
                 {
-                    DebugHelper.WriteLine($"{ev}.{methodName}({e}) : {ev.ModId}, {ev.CacheId}, {ev.CacheType}, {ev.WorkOn}");
+                    DebugHelper.WriteLine($"【Error】{ev}.{methodName}({e}) : {ev.ModId}, {ev.CacheId}, {ev.CacheType}, {ev.WorkOn}");
                     DebugHelper.WriteLine(ex);
                 }
             }
@@ -60,6 +61,7 @@ public static class EventHelper
 
     public static void RunMinorEvent(ModEvent ev, MethodInfo method, object e = null)
     {
+        var timeStart = DateTime.Now;
         if (method.GetParameters().Length == 0)
         {
             method.Invoke(ev, null);
@@ -68,6 +70,10 @@ public static class EventHelper
         {
             method.Invoke(ev, new object[] { e });
         }
+        var timeEnd = DateTime.Now;
+        var processTime = timeEnd - timeStart;
+        if (processTime.TotalMilliseconds >= 100)
+            DebugHelper.WriteLine($"【{processTime.ToString(@"ss\.ff")}】{ev}.{method.Name}({e}) : {ev.ModId}, {ev.CacheId}, {ev.CacheType}, {ev.WorkOn}");
     }
 
     public static T GetEvent<T>(string eventId) where T : ModEvent
