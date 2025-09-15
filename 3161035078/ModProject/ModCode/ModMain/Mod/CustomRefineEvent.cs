@@ -30,19 +30,25 @@ namespace MOD_nE7UL2.Mod
         public override void OnMonthly()
         {
             base.OnMonthly();
-            CachedValues.Clear();
+            if (GameHelper.GetGameTotalMonth() % SMLocalConfigsEvent.Instance.Configs.GrowUpSpeed == 0)
+            {
+                CachedValues.Clear();
+            }
         }
 
         public override void OnMonthlyForEachWUnit(WorldUnitBase wunit)
         {
             base.OnMonthlyForEachWUnit(wunit);
-            var location = wunit.GetUnitPos();
-            var town = g.world.build.GetBuild<MapBuildTown>(location);
-            if (!wunit.IsPlayer() && town.IsSmallTown() && wunit.GetUnitMoney() > MapBuildPropertyEvent.GetTax(town, wunit) * 3)
+            if (GameHelper.GetGameTotalMonth() % SMLocalConfigsEvent.Instance.Configs.GrowUpSpeed == 0)
             {
-                foreach (var item in GetRefinableItems(wunit))
+                var location = wunit.GetUnitPos();
+                var town = g.world.build.GetBuild<MapBuildTown>(location);
+                if (!wunit.IsPlayer() && town.IsSmallTown() && wunit.GetUnitMoney() > MapBuildPropertyEvent.GetTax(town, wunit) * 3)
                 {
-                    NpcRefine(wunit, item);
+                    foreach (var item in GetRefinableItems(wunit))
+                    {
+                        NpcRefine(wunit, item);
+                    }
                 }
             }
         }

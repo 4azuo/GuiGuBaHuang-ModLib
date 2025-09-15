@@ -98,7 +98,7 @@ namespace MOD_nE7UL2.Mod
             base.OnMonthly();
             var curYear = GameHelper.GetGameYear();
 
-            foreach (var town in g.world.build.GetBuilds<MapBuildTown>())
+            foreach (var town in ModMaster.ModObj.Towns)
             {
                 if (!LastYearEventHappen.ContainsKey(town.buildData.id))
                     LastYearEventHappen.Add(town.buildData.id, curYear);
@@ -111,7 +111,7 @@ namespace MOD_nE7UL2.Mod
                 }
             }
 
-            foreach (var school in g.world.build.GetBuilds<MapBuildSchool>())
+            foreach (var school in ModMaster.ModObj.Schools)
             {
                 if (!LastYearEventHappen.ContainsKey(school.buildData.id))
                     LastYearEventHappen.Add(school.buildData.id, curYear);
@@ -124,7 +124,7 @@ namespace MOD_nE7UL2.Mod
                 }
             }
 
-            foreach (var town in g.world.build.GetBuilds<MapBuildTown>())
+            foreach (var town in ModMaster.ModObj.Towns)
             {
                 if (!LastYearEventHappen.ContainsKey(town.buildData.id))
                     LastYearEventHappen.Add(town.buildData.id, curYear);

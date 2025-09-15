@@ -438,7 +438,7 @@ namespace MOD_nE7UL2.Mod
                 var buyerJoinRate = SMLocalConfigsEvent.Instance.Calculate(Configs.BuyerJoinMarketRate, SMLocalConfigsEvent.Instance.Configs.MarketItemNpcJoinRate).Parse<float>();
 
                 //get wunits
-                var towns = g.world.build.GetBuilds<MapBuildTown>().ToArray().Where(x => x.GetBuildSub<MapBuildTownMarket>() != null).ToArray();
+                var towns = ModMaster.ModObj.Towns.Where(x => x.GetBuildSub<MapBuildTownMarket>() != null).ToArray();
                 var wunitsInTowns = towns.ToDictionary(x => x.buildData.id, x => g.world.unit.GetUnitExact(x.GetOrigiPoint(), Configs.JoinRange).ToArray());
 
                 //remove error

@@ -382,5 +382,40 @@
 		"ch": "成为城镇大师",
 		"tc": "成為城鎮大師",
 		"kr": "타운 마스터가 되십시오"
+	},
+	{
+		"id": -1000002048,
+		"key": "trainer048",
+		"en|ch|tc|kr": "NPC Count {0}"
+	},
+	{
+		"id": -1000002049,
+		"key": "trainer049",
+		"en|ch|tc|kr": "Alchemy: {0}"
+	},
+	{
+		"id": -1000002050,
+		"key": "trainer050",
+		"en|ch|tc|kr": "{0} :Forge"
+	},
+	{
+		"id": -1000002051,
+		"key": "trainer051",
+		"en|ch|tc|kr": "Feng Shui: {0}"
+	},
+	{
+		"id": -1000002052,
+		"key": "trainer052",
+		"en|ch|tc|kr": "{0} :Talismans"
+	},
+	{
+		"id": -1000002053,
+		"key": "trainer053",
+		"en|ch|tc|kr": "Herbology: {0}"
+	},
+	{
+		"id": -1000002054,
+		"key": "trainer054",
+		"en|ch|tc|kr": "{0} :Mining"
 	}
 ]

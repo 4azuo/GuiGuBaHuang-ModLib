@@ -19,30 +19,34 @@ namespace MOD_nE7UL2.Mod
         public override void OnMonthlyForEachWUnit(WorldUnitBase wunit)
         {
             base.OnMonthlyForEachWUnit(wunit);
-            foreach (var martial in wunit.GetActionMartials())
+
+            if (GameHelper.GetGameTotalMonth() % SMLocalConfigsEvent.Instance.Configs.GrowUpSpeed == 0)
             {
-                var martialData = martial.Value.data.To<DataProps.MartialData>();
-                var martialType = martialData.martialType;
-                if (Configs.SkillExpRatios.ContainsKey(martialType))
+                foreach (var martial in wunit.GetActionMartials())
                 {
-                    if (wunit.IsPlayer())
+                    var martialData = martial.Value.data.To<DataProps.MartialData>();
+                    var martialType = martialData.martialType;
+                    if (Configs.SkillExpRatios.ContainsKey(martialType))
                     {
-                        if (martialType != MartialType.Ability || !wunit.data.unitData.abilitys.Contains(martialData.data.soleID))
-                            continue;
-                        AddExpertExp(wunit, martialData.data.soleID, Configs.SkillExpRatios[martialType]);
-                    }
-                    else
-                    {
-                        AddExpertExp(wunit, martialData.data.soleID, Configs.SkillExpRatios[martialType]);
+                        if (wunit.IsPlayer())
+                        {
+                            if (martialType != MartialType.Ability || !wunit.data.unitData.abilitys.Contains(martialData.data.soleID))
+                                continue;
+                            AddExpertExp(wunit, martialData.data.soleID, Configs.SkillExpRatios[martialType]);
+                        }
+                        else
+                        {
+                            AddExpertExp(wunit, martialData.data.soleID, Configs.SkillExpRatios[martialType]);
+                        }
                     }
                 }
-            }
 
-            if (wunit.IsPlayer())
-                return;
-            foreach (var artifact in wunit.GetEquippedArtifacts())
-            {
-                AddExpertExp(wunit, artifact.soleID, Configs.AutoArtifactExpRate);
+                if (wunit.IsPlayer())
+                    return;
+                foreach (var artifact in wunit.GetEquippedArtifacts())
+                {
+                    AddExpertExp(wunit, artifact.soleID, Configs.AutoArtifactExpRate);
+                }
             }
         }
 

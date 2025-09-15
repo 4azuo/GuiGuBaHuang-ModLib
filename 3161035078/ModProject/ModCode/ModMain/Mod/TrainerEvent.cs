@@ -295,27 +295,27 @@ namespace MOD_nE7UL2.Mod
 
                 row++;
                 uiTrainer.AddText(col - 1, row++, GameTool.LS("trainer040")).Format(null, 17, FontStyle.Italic).Align(TextAnchor.MiddleCenter);
-                uiTrainer.AddText(col, row, "Alchemy: {0}").Align(TextAnchor.MiddleLeft).Format(Color.black, 15).SetWork(new UIItemWork
+                uiTrainer.AddText(col, row, GameTool.LS("trainer049")).Align(TextAnchor.MiddleLeft).Format(Color.black, 15).SetWork(new UIItemWork
                 {
                     Formatter = (x) => new object[] { player.GetDynProperty(UnitDynPropertyEnum.RefineElixir).value },
                 });
-                uiTrainer.AddText(col - 3, row++, "{0} :Forge").Align(TextAnchor.MiddleRight).Format(Color.black, 15).SetWork(new UIItemWork
+                uiTrainer.AddText(col - 3, row++, GameTool.LS("trainer050")).Align(TextAnchor.MiddleRight).Format(Color.black, 15).SetWork(new UIItemWork
                 {
                     Formatter = (x) => new object[] { player.GetDynProperty(UnitDynPropertyEnum.RefineWeapon).value },
                 });
-                uiTrainer.AddText(col, row, "Feng Shui: {0}").Align(TextAnchor.MiddleLeft).Format(Color.black, 15).SetWork(new UIItemWork
+                uiTrainer.AddText(col, row, GameTool.LS("trainer051")).Align(TextAnchor.MiddleLeft).Format(Color.black, 15).SetWork(new UIItemWork
                 {
                     Formatter = (x) => new object[] { player.GetDynProperty(UnitDynPropertyEnum.Geomancy).value },
                 });
-                uiTrainer.AddText(col - 3, row++, "{0} :Talismans").Align(TextAnchor.MiddleRight).Format(Color.black, 15).SetWork(new UIItemWork
+                uiTrainer.AddText(col - 3, row++, GameTool.LS("trainer052")).Align(TextAnchor.MiddleRight).Format(Color.black, 15).SetWork(new UIItemWork
                 {
                     Formatter = (x) => new object[] { player.GetDynProperty(UnitDynPropertyEnum.Symbol).value },
                 });
-                uiTrainer.AddText(col, row, "Herbology: {0}").Align(TextAnchor.MiddleLeft).Format(Color.black, 15).SetWork(new UIItemWork
+                uiTrainer.AddText(col, row, GameTool.LS("trainer053")).Align(TextAnchor.MiddleLeft).Format(Color.black, 15).SetWork(new UIItemWork
                 {
                     Formatter = (x) => new object[] { player.GetDynProperty(UnitDynPropertyEnum.Herbal).value },
                 });
-                uiTrainer.AddText(col - 3, row++, "{0} :Mining").Align(TextAnchor.MiddleRight).Format(Color.black, 15).SetWork(new UIItemWork
+                uiTrainer.AddText(col - 3, row++, GameTool.LS("trainer054")).Align(TextAnchor.MiddleRight).Format(Color.black, 15).SetWork(new UIItemWork
                 {
                     Formatter = (x) => new object[] { player.GetDynProperty(UnitDynPropertyEnum.Mine).value },
                 });
@@ -335,7 +335,7 @@ namespace MOD_nE7UL2.Mod
                     [4] = 0,
                 };
                 int col = 0, areaId = -1;
-                foreach (var build in g.world.build.GetBuilds().ToArray().Where(x => !string.IsNullOrEmpty(x.name) && TELE_AREA_COL[x.gridData.areaBaseID].Value0.Parse<int>() >= 0 && ((Func<MapBuildBase, bool>)TELE_AREA_COL[x.gridData.areaBaseID].Value1).Invoke(x))
+                foreach (var build in ModMaster.ModObj.Buildings.Where(x => !string.IsNullOrEmpty(x.name) && TELE_AREA_COL[x.gridData.areaBaseID].Value0.Parse<int>() >= 0 && ((Func<MapBuildBase, bool>)TELE_AREA_COL[x.gridData.areaBaseID].Value1).Invoke(x))
                     .OrderBy(x => TELE_AREA_COL[x.gridData.areaBaseID].Value0.Parse<int>()).ThenBy(x => x.gridData.areaBaseID).ThenBy(x => x.name))
                 {
                     if (areaId != build.gridData.areaBaseID)
@@ -362,6 +362,15 @@ namespace MOD_nE7UL2.Mod
                         c++;
                     }
                 }
+            });
+
+            //page 4
+            uiTrainer.AddPage((ui) =>
+            {
+                int col, row;
+
+                col = 2; row = 2;
+                uiTrainer.AddText(col, row++, string.Format(GameTool.LS("trainer048"), g.world.unit.allUnits.Count)).Align(TextAnchor.MiddleLeft).Format(Color.black, 15);
             });
 
             uiTrainer.Pages[defPage].Active();

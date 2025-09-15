@@ -709,7 +709,7 @@ namespace MOD_nE7UL2.Mod
             slNPCAmount.SetPercent(level * 0.02000f, 2000f);
             tglAllowTownBuildupOverTime.Set(level > 0);
             tglAllowTownBuildupOverTime_IncludeFirstTown.Set(level > 5);
-            slGrowUpSpeed.SetPercent(1.0000f - (level * 0.10000f), 3, 24);
+            slGrowUpSpeed.SetPercent(1.0000f - (level * 0.10000f), 2, 12);
             tglLostItemWhenDie.Set(level > 4);
             tglMonsterPropertiesDependOnPlayerProperties.Set(level > 3);
             tglAutoSaveAfterLostInBattle.Set(level > 6);
