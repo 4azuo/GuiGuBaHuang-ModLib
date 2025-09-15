@@ -17,7 +17,7 @@ namespace MOD_nE7UL2.Mod
         public override void OnLoadGame()
         {
             base.OnLoadGame();
-            foreach (var wunit in g.world.unit.GetUnits())
+            foreach (var wunit in ModMaster.ModObj.WUnits)
             {
                 var unitId = wunit.GetUnitId();
                 if (UnitTypeDic.ContainsKey(unitId) && UnitTypeDic[unitId].CustomLuck != null)
@@ -99,7 +99,7 @@ namespace MOD_nE7UL2.Mod
         public override void OnYearly()
         {
             base.OnYearly();
-            foreach (var wunit in g.world.unit.GetUnits())
+            foreach (var wunit in ModMaster.ModObj.WUnits)
             {
                 if (!wunit.IsPlayer() && UnitTypeDic.ContainsKey(wunit.GetUnitId()) && UnitTypeDic[wunit.GetUnitId()] == UnitTypeEnum.SpeedUnit)
                 {

@@ -127,7 +127,7 @@
 //        //    g.world.playerUnit.data.unitData.propertyData.footSpeed = 10000;
 //        //    g.world.playerUnit.data.dynUnitData.playerView.baseValue = 111;
 
-//        //    foreach (var build in g.world.build.GetBuilds())
+//        //    foreach (var build in ModMaster.ModObj.Buildings)
 //        //    {
 //        //        MapBuildPropertyEvent.AddBuildProperty(build, 1000000000);
 //        //    }

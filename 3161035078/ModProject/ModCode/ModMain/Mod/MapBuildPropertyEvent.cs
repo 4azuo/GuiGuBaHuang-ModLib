@@ -52,7 +52,7 @@ namespace MOD_nE7UL2.Mod
         {
             base.OnLoadGame();
 
-            foreach (var town in g.world.build.GetBuilds<MapBuildTown>())
+            foreach (var town in ModMaster.ModObj.Towns)
             {
                 //default tax rate
                 if (!TaxRate.ContainsKey(town.buildData.id))
@@ -77,7 +77,7 @@ namespace MOD_nE7UL2.Mod
                     }
                 }
             }
-            foreach (var school in g.world.build.GetBuilds<MapBuildSchool>())
+            foreach (var school in ModMaster.ModObj.Schools)
             {
                 //default tax rate
                 if (!TaxRate.ContainsKey(school.buildData.id))
@@ -283,7 +283,7 @@ namespace MOD_nE7UL2.Mod
         {
             base.OnYearly();
 
-            foreach (var town in g.world.build.GetBuilds<MapBuildTown>())
+            foreach (var town in ModMaster.ModObj.Towns)
             {
                 if (!TownMasters.ContainsKey(town.buildData.id))
                     TownMasters.Add(town.buildData.id, new List<string>());
@@ -403,7 +403,7 @@ namespace MOD_nE7UL2.Mod
                 }
             }
 
-            foreach (var school in g.world.build.GetBuilds<MapBuildSchool>())
+            foreach (var school in ModMaster.ModObj.Schools)
             {
                 //school budget inc yearly
                 school.buildData.money += GetBaseTax(school) * SCHOOL_YEARLY_BUDGET;

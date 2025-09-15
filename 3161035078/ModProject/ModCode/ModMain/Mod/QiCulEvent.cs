@@ -26,7 +26,7 @@ namespace MOD_nE7UL2.Mod
         public override void OnMonthlyForEachWUnit(WorldUnitBase wunit)
         {
             base.OnMonthlyForEachWUnit(wunit);
-            if (wunit.IsFullExp())
+            if (wunit.IsFullExp() && GameHelper.GetGameTotalMonth() % SMLocalConfigsEvent.Instance.Configs.GrowUpSpeed == 0)
             {
                 var unitId = wunit.GetUnitId();
                 if (!Qi.ContainsKey(unitId))

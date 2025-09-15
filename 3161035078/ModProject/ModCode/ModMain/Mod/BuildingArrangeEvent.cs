@@ -23,7 +23,7 @@ namespace MOD_nE7UL2.Mod
             base.OnLoadNewGame();
 
             //add default
-            foreach (var build in g.world.build.GetBuilds())
+            foreach (var build in ModMaster.ModObj.Buildings)
             {
                 foreach (var e in BuildingCostEnum.GetAllEnums<BuildingCostEnum>())
                 {
@@ -34,7 +34,7 @@ namespace MOD_nE7UL2.Mod
 
             if (SMLocalConfigsEvent.Instance.Configs.AllowTownBuildupOverTime)
             {
-                foreach (var build in g.world.build.GetBuilds())
+                foreach (var build in ModMaster.ModObj.Buildings)
                 {
                     if (SMLocalConfigsEvent.Instance.Configs.AllowTownBuildupOverTime_IncludeFirstTown || build.gridData.areaBaseID > 1)
                     {
@@ -48,7 +48,7 @@ namespace MOD_nE7UL2.Mod
             else
             if (SMLocalConfigsEvent.Instance.Configs.OnlyPortalAtCityAndSect)
             {
-                foreach (var build in g.world.build.GetBuilds())
+                foreach (var build in ModMaster.ModObj.Buildings)
                 {
                     if (build.IsSmallTown())
                     {
@@ -62,7 +62,7 @@ namespace MOD_nE7UL2.Mod
         {
             base.OnMonthly();
 
-            foreach (var build in g.world.build.GetBuilds())
+            foreach (var build in ModMaster.ModObj.Buildings)
             {
                 if (build.IsTown() && MapBuildPropertyEvent.IsTownMaster(build.TryCast<MapBuildTown>(), g.world.playerUnit))
                     continue; //if player is town-master, then skip auto build

@@ -32,7 +32,7 @@ namespace MOD_nE7UL2.Mod
         public override void OnLoadGame()
         {
             base.OnLoadGame();
-            foreach (var town in g.world.build.GetBuilds().ToArray().Where(x => x.allBuildSub.ContainsKey(MapBuildSubType.TownMarketPill)))
+            foreach (var town in ModMaster.ModObj.Buildings.Where(x => x.allBuildSub.ContainsKey(MapBuildSubType.TownMarketPill)))
             {
                 if (!MarketPriceRate.ContainsKey(town.buildData.id))
                 {
@@ -45,7 +45,7 @@ namespace MOD_nE7UL2.Mod
         {
             base.OnMonthly();
             var eventSellRate = ModMain.ModObj.ModSettings.RealMarketConfigs.GetAddSellRate();
-            foreach (var town in g.world.build.GetBuilds().ToArray().Where(x => x.allBuildSub.ContainsKey(MapBuildSubType.TownMarketPill)))
+            foreach (var town in ModMaster.ModObj.Buildings.Where(x => x.allBuildSub.ContainsKey(MapBuildSubType.TownMarketPill)))
             {
                 MarketPriceRate[town.buildData.id] = CommonTool.Random(MinRate + eventSellRate, MaxRate + eventSellRate);
             }
