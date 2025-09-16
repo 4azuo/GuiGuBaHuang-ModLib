@@ -438,7 +438,7 @@ namespace MOD_nE7UL2.Mod
                 row++;
                 uiCustom.AddText(col, row++, GameTool.LS("smcfgs018")).Format(null, 17, FontStyle.Italic).Align(TextAnchor.MiddleRight);
                 slMiscLevelupExp = uiCustom.AddCompositeSlider(col, row++, GameTool.LS("smcfgs019"), 0.00f, 1.00f, AddLevelupExpRate, GameTool.LS("smcfgs101"));
-                slGrowUpSpeed = uiCustom.AddCompositeSlider(col, row++, GameTool.LS("smcfgs051"), 1, 36, GrowUpSpeed, GameTool.LS("smcfgs053"));
+                slGrowUpSpeed = uiCustom.AddCompositeSlider(col, row++, GameTool.LS("smcfgs051"), 1, 24, GrowUpSpeed, GameTool.LS("smcfgs053"));
                 uiCustom.AddText(col + 2, row++, GameTool.LS("smcfgs052")).Format(null, 13).Align(TextAnchor.MiddleLeft);
                 uiCustom.AddText(col + 2, row++, GameTool.LS("smcfgs128")).Format(null, 13).Align(TextAnchor.MiddleLeft);
                 //
