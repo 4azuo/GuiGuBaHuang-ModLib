@@ -22,7 +22,8 @@ namespace MOD_nE7UL2.Mod
         public const int BASIS_ON_DEF = 400;
         public const float BASIS_ON_BLOCK_RATIO = 10000f;
         public const int BASIS_ON_BLOCK_COST = 800;
-        public const float DMG_MULTIPLIER = 1.002f;
+        public const float LOCAL_DMG_MULTIPLIER = 1.003f;
+        public const float GLOBAL_DMG_MULTIPLIER = 1.001f;
 
         public static bool IsShowCustomMonstCount { get; set; } = false;
         public static Text TextCustomMonstCount1 { get; private set; }
@@ -52,7 +53,7 @@ namespace MOD_nE7UL2.Mod
                         TextDamageMultiplier = ui.AddText(ui.MidCol, ui.FirstRow + 5, GameTool.LS("other500020089")).Format(Color.white, 20);
                         TextDamageMultiplier.SetWork(new UIItemWork
                         {
-                            Formatter = (x) => new object[] { Math.Pow(DMG_MULTIPLIER, ModBattleEvent.BattleTime.TotalSeconds).ToString("#,##0.00") }
+                            Formatter = (x) => new object[] { GetDamageMultiplier().ToString("#,##0.00") }
                         });
                     }
 
@@ -97,7 +98,7 @@ namespace MOD_nE7UL2.Mod
             var attackUnitData = ModBattleEvent.AttackingUnit.data.TryCast<UnitDataHuman>();
             var hitUnitData = ModBattleEvent.HitUnit.data.TryCast<UnitDataHuman>();
 
-            var atkGradeLvl = attackUnitData?.worldUnitData?.unit?.GetGradeLvl() ?? 1;
+            var atkGradeLvl = attackUnitData?.worldUnitData?.unit?.GetGradeLvl() ?? ModBattleEvent.AttackingUnit.data.grade.value;
             var dType = ModBattleEvent.GetDmgBasisType(e.hitData);
             var pEnum = ModBattleEvent.GetDmgPropertyEnum(dType);
             var atk = ModBattleEvent.AttackingUnit.data.attack.baseValue;
@@ -151,7 +152,7 @@ namespace MOD_nE7UL2.Mod
 
             //DebugHelper.WriteLine($"x");
             //add dmg by time
-            e.dynV.baseValue += (Math.Pow(DMG_MULTIPLIER, ModBattleEvent.BattleTime.TotalSeconds) * e.dynV.baseValue).Parse<int>();
+            e.dynV.baseValue += (GetDamageMultiplier() * (atkGradeLvl / 3f) * e.dynV.baseValue).Parse<int>();
 
             //DebugHelper.WriteLine($"3: {e.dynV.baseValue}");
             //add dmg (skill)
@@ -370,6 +371,11 @@ namespace MOD_nE7UL2.Mod
                         humanData.sp += Convert.ToInt32(GetSpRecoveryBase(wunit) + GetSpRecoveryPlus(wunit));
                 }
             }
+        }
+
+        public double GetDamageMultiplier()
+        {
+            return Math.Pow(GLOBAL_DMG_MULTIPLIER, ModBattleEvent.BattleStayTime) * Math.Pow(LOCAL_DMG_MULTIPLIER, ModBattleEvent.RoomStayTime);
         }
 
         #region Modify
