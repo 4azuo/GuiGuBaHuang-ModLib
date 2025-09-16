@@ -212,7 +212,7 @@ namespace ModLib.Mod
         [JsonIgnore]
         public static SceneBattle SceneBattle => SceneType.battle;
         [JsonIgnore]
-        public static UnitCtrlPlayer PlayerUnit => SceneType.battle.battleData.playerUnit;
+        public static UnitCtrlPlayer PlayerUnit => SceneBattle.battleData.playerUnit;
         [JsonIgnore]
         public static UnitCtrlBase AttackingUnit { get; private set; }
         [JsonIgnore]
@@ -228,9 +228,9 @@ namespace ModLib.Mod
         [JsonIgnore]
         public static bool IsWorldUnitHit => HitWorldUnit != null;
         [JsonIgnore]
-        public static Il2CppSystem.Collections.Generic.List<UnitCtrlBase> BattleUnits => SceneType.battle.unit.allUnit;
+        public static Il2CppSystem.Collections.Generic.List<UnitCtrlBase> BattleUnits => SceneBattle.unit.allUnit;
         [JsonIgnore]
-        public static Il2CppSystem.Collections.Generic.List<UnitCtrlBase> BattleUnitsIncludeDie => SceneType.battle.unit.allUnitIncludeDie;
+        public static Il2CppSystem.Collections.Generic.List<UnitCtrlBase> BattleUnitsIncludeDie => SceneBattle.unit.allUnitIncludeDie;
         [JsonIgnore]
         public static List<UnitCtrlBase> BattleMonsters => BattleUnits.ToArray().Where(x => x.IsMonster()).ToList();
         [JsonIgnore]
@@ -240,9 +240,11 @@ namespace ModLib.Mod
         [JsonIgnore]
         public static MapBuildSchool School { get; private set; }
         [JsonIgnore]
-        public static DateTime StartTime { get; private set; }
+        public static float BattleTime => SceneBattle.battleData.battleTime;
         [JsonIgnore]
-        public static TimeSpan BattleTime => DateTime.Now - StartTime;
+        public static float BattleStayTime => SceneBattle.battleData.battleStayTime;
+        [JsonIgnore]
+        public static float RoomStayTime => SceneBattle.battleData.roomStayTime;
         [JsonIgnore]
         public static List<Tuple<UnitCtrlBase, UnitCtrlBase>> KillList { get; } = new List<Tuple<UnitCtrlBase, UnitCtrlBase>>();
 
@@ -274,7 +276,6 @@ namespace ModLib.Mod
 
             var playerPos = g.world.playerUnit.GetUnitPos();
 
-            StartTime = DateTime.Now;
             Town = g.world.build.GetBuild<MapBuildTown>(playerPos);
             School = g.world.build.GetBuild<MapBuildSchool>(playerPos);
             BattleDmg.Clear();
