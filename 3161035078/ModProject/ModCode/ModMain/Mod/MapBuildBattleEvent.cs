@@ -378,7 +378,8 @@ namespace MOD_nE7UL2.Mod
                 if (ratioAB < 2)
                 {
                     //building damaged
-                    BuildingArrangeEvent.Destroy(townA_def, BuildingCostEnum.GetAllEnums<BuildingCostEnum>().Where(x => BuildingArrangeEvent.IsBuilt(townA_def, x)).ToArray().Random());
+                    if (SMLocalConfigsEvent.Instance.Configs.DestroyBuildingAfterTownWar)
+                        BuildingArrangeEvent.Destroy(townA_def, BuildingCostEnum.GetAllEnums<BuildingCostEnum>().Where(x => BuildingArrangeEvent.IsBuilt(townA_def, x)).ToArray().Random());
                 }
                 MapBuildPropertyEvent.AddBuildProperty(townA_def, -(MapBuildPropertyEvent.GetBuildProperty(townA_def) * 0.3).Parse<long>());
                 //B damaged
@@ -401,8 +402,11 @@ namespace MOD_nE7UL2.Mod
                 DebugHelper.WriteLine($"Team B win!");
                 WinTeamSide = TeamSideEnum.TeamB;
                 //A damaged x2
-                BuildingArrangeEvent.Destroy(townA_def, BuildingCostEnum.GetAllEnums<BuildingCostEnum>().Where(x => BuildingArrangeEvent.IsBuilt(townA_def, x)).ToArray().Random());
-                BuildingArrangeEvent.Destroy(townA_def, BuildingCostEnum.GetAllEnums<BuildingCostEnum>().Where(x => BuildingArrangeEvent.IsBuilt(townA_def, x)).ToArray().Random());
+                if (SMLocalConfigsEvent.Instance.Configs.DestroyBuildingAfterTownWar)
+                {
+                    BuildingArrangeEvent.Destroy(townA_def, BuildingCostEnum.GetAllEnums<BuildingCostEnum>().Where(x => BuildingArrangeEvent.IsBuilt(townA_def, x)).ToArray().Random());
+                    BuildingArrangeEvent.Destroy(townA_def, BuildingCostEnum.GetAllEnums<BuildingCostEnum>().Where(x => BuildingArrangeEvent.IsBuilt(townA_def, x)).ToArray().Random());
+                }
                 var damagedBudget = MapBuildPropertyEvent.GetBuildProperty(townA_def);
                 MapBuildPropertyEvent.AddBuildProperty(townA_def, -damagedBudget);
                 //B damaged
@@ -660,7 +664,7 @@ namespace MOD_nE7UL2.Mod
                 //A damaged
                 foreach (var e in BuildingCostEnum.GetAllEnums<BuildingCostEnum>())
                 {
-                    if (BuildingArrangeEvent.IsBuilt(teamAbuildBase, e))
+                    if (BuildingArrangeEvent.IsBuilt(teamAbuildBase, e) && SMLocalConfigsEvent.Instance.Configs.DestroyBuildingAfterTownWar)
                         BuildingArrangeEvent.Destroy(teamAbuildBase, e);
                 }
                 var damagedBudget = MapBuildPropertyEvent.GetBuildProperty(teamAbuildBase);
@@ -859,7 +863,8 @@ namespace MOD_nE7UL2.Mod
                     //A damaged
                     if (IsBattleTownWar() || IsBattleMonstWaveOnTown())
                     {
-                        BuildingArrangeEvent.Destroy(BuildBaseA, BuildingCostEnum.GetAllEnums<BuildingCostEnum>().Where(x => BuildingArrangeEvent.IsBuilt(BuildBaseA, x)).ToArray().Random());
+                        if (SMLocalConfigsEvent.Instance.Configs.DestroyBuildingAfterTownWar)
+                            BuildingArrangeEvent.Destroy(BuildBaseA, BuildingCostEnum.GetAllEnums<BuildingCostEnum>().Where(x => BuildingArrangeEvent.IsBuilt(BuildBaseA, x)).ToArray().Random());
                     }
                     var lossrateA = 1f - (GetTeamInfo<float>(TeamSideEnum.TeamA, TeamInfoEnum.UnitCount) / GetTeamInfo<float>(TeamSideEnum.TeamA, TeamInfoEnum.UnitCountMax));
                     MapBuildPropertyEvent.AddBuildProperty(BuildBaseA, -(MapBuildPropertyEvent.GetBuildProperty(BuildBaseA) * lossrateA).Parse<long>());
@@ -887,8 +892,11 @@ namespace MOD_nE7UL2.Mod
                     //A damaged x2
                     if (IsBattleTownWar() || IsBattleMonstWaveOnTown())
                     {
-                        BuildingArrangeEvent.Destroy(BuildBaseA, BuildingCostEnum.GetAllEnums<BuildingCostEnum>().Where(x => BuildingArrangeEvent.IsBuilt(BuildBaseA, x)).ToArray().Random());
-                        BuildingArrangeEvent.Destroy(BuildBaseA, BuildingCostEnum.GetAllEnums<BuildingCostEnum>().Where(x => BuildingArrangeEvent.IsBuilt(BuildBaseA, x)).ToArray().Random());
+                        if (SMLocalConfigsEvent.Instance.Configs.DestroyBuildingAfterTownWar)
+                        {
+                            BuildingArrangeEvent.Destroy(BuildBaseA, BuildingCostEnum.GetAllEnums<BuildingCostEnum>().Where(x => BuildingArrangeEvent.IsBuilt(BuildBaseA, x)).ToArray().Random());
+                            BuildingArrangeEvent.Destroy(BuildBaseA, BuildingCostEnum.GetAllEnums<BuildingCostEnum>().Where(x => BuildingArrangeEvent.IsBuilt(BuildBaseA, x)).ToArray().Random());
+                        }
                     }
                     var damagedBudget = MapBuildPropertyEvent.GetBuildProperty(BuildBaseA);
                     MapBuildPropertyEvent.AddBuildProperty(BuildBaseA, -damagedBudget);
