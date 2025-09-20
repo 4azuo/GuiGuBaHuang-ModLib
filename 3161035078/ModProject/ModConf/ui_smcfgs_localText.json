@@ -739,5 +739,10 @@
 		"id": -1000001135,
 		"key": "smcfgs135",
 		"en|ch|tc|kr": "(Speed up process time, but affect NPCs)",
+	},
+	{
+		"id": -1000001136,
+		"key": "smcfgs136",
+		"en|ch|tc|kr": "Destroy Building After Town War",
 	}
 ]

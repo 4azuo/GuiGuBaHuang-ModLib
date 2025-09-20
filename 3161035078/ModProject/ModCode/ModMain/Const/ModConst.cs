@@ -2,7 +2,7 @@
 {
     public static class ModConst
     {
-        public const string TAOIST_VERSION = "5.4.11";
+        public const string TAOIST_VERSION = "5.4.12";
         public const string MODLIB_REQUIRED_VERSION = "2.1.24";
 
         //Events
@@ -50,6 +50,7 @@
         public const string SPECIAL_MONST_EVENT = "SpecialMonsterEvent";
         public const string TIME_SKIP_EVENT = "TimeSkipEvent";
         public const string USE_SPIRIT_STONE_CUL_EVENT = "UseSpiritStoneCulEvent";
+        public const string CUSTOM_SKILL_EVENT = "CustomSkillEvent";
 
         //Others
         public const string UTYPE_LUCK_EFX_FREE_STORAGE = "FreeStorage";

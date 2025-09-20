@@ -83,6 +83,7 @@ namespace MOD_nE7UL2.Mod
         public float MaxItemsOnSeller { get; set; } = 4;
         public float MaxBuyersOnSellingItem { get; set; } = 4;
         public bool OnlyActiveOnCurOrNearArea { get; set; } = true;
+        public bool DestroyBuildingAfterTownWar { get; set; } = true;
 
         //UI
         private UICustom1 uiCustom;
@@ -133,6 +134,7 @@ namespace MOD_nE7UL2.Mod
         private UIItemComposite slMaxItemsOnSeller;
         private UIItemComposite slMaxBuyersOnSellingItem;
         private UIItemComposite tglOnlyActiveOnCurOrNearArea;
+        private UIItemComposite tglDestroyBuildingAfterTownWar;
 
         //Score
         [JsonIgnore]
@@ -347,6 +349,9 @@ namespace MOD_nE7UL2.Mod
             Register(() => tglOnlyActiveOnCurOrNearArea,
                 funcCal: s => -5000,
                 funcCond: s => s.Get().Parse<bool>());
+            Register(() => tglDestroyBuildingAfterTownWar,
+                funcCal: s => 2000,
+                funcCond: s => s.Get().Parse<bool>());
         }
 
         private void Register(
@@ -521,6 +526,7 @@ namespace MOD_nE7UL2.Mod
                 col = 16; row = 0;
                 uiCustom.AddText(col, row++, GameTool.LS("smcfgs020")).Format(null, 17, FontStyle.Italic).Align(TextAnchor.MiddleRight);
                 tglSysHideBattleMap = uiCustom.AddCompositeToggle(col, row++, GameTool.LS("smcfgs024"), HideBattleMap, GameTool.LS("smcfgs102"));
+                tglDestroyBuildingAfterTownWar = uiCustom.AddCompositeToggle(col, row++, GameTool.LS("smcfgs136"), DestroyBuildingAfterTownWar, GameTool.LS("smcfgs102"));
                 tglAllowTownBuildupOverTime = uiCustom.AddCompositeToggle(col, row++, GameTool.LS("smcfgs050"), AllowTownBuildupOverTime, GameTool.LS("smcfgs102"));
                 tglAllowTownBuildupOverTime_IncludeFirstTown = uiCustom.AddCompositeToggle(col, row++, GameTool.LS("smcfgs057"), AllowTownBuildupOverTime_IncludeFirstTown, GameTool.LS("smcfgs102"));
                 tglSysOnlyPortalAtCityAndSect = uiCustom.AddCompositeToggle(col, row++, GameTool.LS("smcfgs033"), OnlyPortalAtCityAndSect, GameTool.LS("smcfgs102"));
@@ -683,6 +689,7 @@ namespace MOD_nE7UL2.Mod
             slMaxItemsOnSeller.Set(4f);
             slMaxBuyersOnSellingItem.Set(4f);
             tglOnlyActiveOnCurOrNearArea.Set(true);
+            tglDestroyBuildingAfterTownWar.Set(true);
         }
 
         private void SetLevel(int level)
@@ -734,6 +741,7 @@ namespace MOD_nE7UL2.Mod
             slMaxItemsOnSeller.Set(4f);
             slMaxBuyersOnSellingItem.Set(4f);
             tglOnlyActiveOnCurOrNearArea.Set(true);
+            tglDestroyBuildingAfterTownWar.Set(true);
         }
 
         private void SetSMConfigs()
@@ -785,6 +793,7 @@ namespace MOD_nE7UL2.Mod
             MaxItemsOnSeller = slMaxItemsOnSeller.Get().Parse<int>();
             MaxBuyersOnSellingItem = slMaxBuyersOnSellingItem.Get().Parse<int>();
             OnlyActiveOnCurOrNearArea = tglOnlyActiveOnCurOrNearArea.Get().Parse<bool>();
+            DestroyBuildingAfterTownWar = tglDestroyBuildingAfterTownWar.Get().Parse<bool>();
             CacheHelper.SaveGlobalCache(this);
 
             //edit conf
