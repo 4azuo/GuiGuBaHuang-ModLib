@@ -1,0 +1,14 @@
+[
+	{
+		"id": "0001",
+		"efx": "Effect\\Battle\\Skill\\chuanchengzhezhen"
+	},
+	{
+		"id": "0002",
+		"efx": "Effect\\Battle\\Skill\\chuanchengzhezhen1"
+	},
+	{
+		"id": "0003",
+		"efx": "Effect\\Battle\\Skill\\Fengyin"
+	}
+]
