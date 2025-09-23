@@ -4,5 +4,12 @@
     {
         public string Id { get; set; }
         public string Efx { get; set; }
+        public EfxType Type { get; set; }
+
+        public enum EfxType
+        {
+            Direct,
+            Instant
+        }
     }
 }
