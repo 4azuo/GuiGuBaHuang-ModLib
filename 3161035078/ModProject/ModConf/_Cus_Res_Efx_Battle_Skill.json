@@ -1,14 +1,17 @@
 [
 	{
 		"id": "0001",
-		"efx": "Effect\\Battle\\Skill\\chuanchengzhezhen"
+		"efx": "Effect\\Battle\\Skill\\chuanchengzhezhen",
+		"type": "instant"
 	},
 	{
 		"id": "0002",
-		"efx": "Effect\\Battle\\Skill\\chuanchengzhezhen1"
+		"efx": "Effect\\Battle\\Skill\\chuanchengzhezhen1",
+		"type": "instant"
 	},
 	{
 		"id": "0003",
-		"efx": "Effect\\Battle\\Skill\\Fengyin"
+		"efx": "Effect\\Battle\\Skill\\Fengyin",
+		"type": "instant"
 	}
 ]

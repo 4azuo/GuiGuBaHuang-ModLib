@@ -150,7 +150,7 @@ namespace MOD_nE7UL2.Mod
                         }
 
                         //sect member join battle
-                        if (ModBattleEvent.School != null && CommonTool.Random(0.00f, 100.00f).IsBetween(0.00f, Configs.SectNpcJoinRate))
+                        if (ModBattleEvent.School != null && DungeonHelper.IsArena() && CommonTool.Random(0.00f, 100.00f).IsBetween(0.00f, Configs.SectNpcJoinRate))
                         {
                             var sectMember = AroundUnits.FirstOrDefault(x => MapBuildPropertyEvent.IsSchoolMember(ModBattleEvent.School, x));
                             if (sectMember != null)
@@ -166,7 +166,7 @@ namespace MOD_nE7UL2.Mod
                         }
 
                         //town guard join battle
-                        if (ModBattleEvent.Town != null && CommonTool.Random(0.00f, 100.00f).IsBetween(0.00f, Configs.TownGuardNpcJoinRate))
+                        if (ModBattleEvent.Town != null && DungeonHelper.IsArena() && CommonTool.Random(0.00f, 100.00f).IsBetween(0.00f, Configs.TownGuardNpcJoinRate))
                         {
                             var townguard = AroundUnits.FirstOrDefault(x => MapBuildPropertyEvent.IsTownGuardian(ModBattleEvent.Town, x));
                             if (townguard != null)

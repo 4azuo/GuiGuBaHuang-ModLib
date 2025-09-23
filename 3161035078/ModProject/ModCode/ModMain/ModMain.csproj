@@ -94,6 +94,7 @@
     <Compile Include="Mod\CustomSkillEvent.cs" />
     <Compile Include="Mod\UseSpiritStoneCulEvent.cs" />
     <Compile Include="Mod\UpgradeNaturallyEvent.cs" />
+    <Compile Include="Object\CustomSkill.cs" />
     <Compile Include="Object\CustomEffect.cs" />
     <Compile Include="Object\MarketItem.cs" />
     <Compile Include="Object\NegotiatingDeal.cs" />
