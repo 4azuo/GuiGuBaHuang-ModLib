@@ -103,7 +103,7 @@ namespace MOD_nE7UL2.Mod
             var pEnum = ModBattleEvent.GetDmgPropertyEnum(dType);
             var atk = ModBattleEvent.AttackingUnit.data.attack.baseValue;
 
-            //DebugHelper.WriteLine($"1: {e.dynV.baseValue}");
+            DebugHelper.WriteLine($"1: {e.dynV.baseValue}");
             //nullify
             if (ModBattleEvent.IsWorldUnitHit)
             {
@@ -127,7 +127,7 @@ namespace MOD_nE7UL2.Mod
                 }
             }
 
-            //DebugHelper.WriteLine($"2: {e.dynV.baseValue}");
+            DebugHelper.WriteLine($"2: {e.dynV.baseValue}");
             //evasion
             if (ModBattleEvent.IsWorldUnitHit)
             {
@@ -154,7 +154,7 @@ namespace MOD_nE7UL2.Mod
             //add dmg by time
             e.dynV.baseValue += (GetDamageMultiplier() * (atkGradeLvl / 3f) * e.dynV.baseValue).Parse<int>();
 
-            //DebugHelper.WriteLine($"3: {e.dynV.baseValue}");
+            DebugHelper.WriteLine($"3: {e.dynV.baseValue}");
             //add dmg (skill)
             if (ModBattleEvent.IsWorldUnitAttacking)
             {
@@ -172,7 +172,7 @@ namespace MOD_nE7UL2.Mod
                 e.dynV.baseValue += atk * r / BASIS_ON_DMG;
             }
 
-            //DebugHelper.WriteLine($"4: {e.dynV.baseValue}");
+            DebugHelper.WriteLine($"4: {e.dynV.baseValue}");
             //add dmg (mp)
             if (ModBattleEvent.IsWorldUnitAttacking && attackUnitData.mp > 0)
             {
@@ -181,7 +181,7 @@ namespace MOD_nE7UL2.Mod
                 attackUnitData.AddMP(-(atkGradeLvl / 5));
             }
 
-            //DebugHelper.WriteLine($"5: {e.dynV.baseValue}");
+            DebugHelper.WriteLine($"5: {e.dynV.baseValue}");
             //add dmg (sp)
             if (ModBattleEvent.IsWorldUnitAttacking && attackUnitData.sp > 0 && atkGradeLvl >= 4)
             {
@@ -189,7 +189,7 @@ namespace MOD_nE7UL2.Mod
                 e.dynV.baseValue += (atk * r).Parse<int>();
             }
 
-            //DebugHelper.WriteLine($"6: {e.dynV.baseValue}");
+            DebugHelper.WriteLine($"6: {e.dynV.baseValue}");
             //add dmg (dp)
             if (ModBattleEvent.IsWorldUnitAttacking && attackUnitData.dp > 0 && atkGradeLvl >= 8)
             {
@@ -197,7 +197,7 @@ namespace MOD_nE7UL2.Mod
                 e.dynV.baseValue += (atk * r).Parse<int>();
             }
 
-            //DebugHelper.WriteLine($"7: {e.dynV.baseValue}");
+            DebugHelper.WriteLine($"7: {e.dynV.baseValue}");
             //critical
             if (!e.hitData.isCrit)
             {
@@ -232,7 +232,7 @@ namespace MOD_nE7UL2.Mod
                 }
             }
 
-            //DebugHelper.WriteLine($"8: {e.dynV.baseValue}");
+            DebugHelper.WriteLine($"8: {e.dynV.baseValue}");
             var defGradeLvl = hitUnitData?.worldUnitData?.unit?.GetGradeLvl() ?? ModBattleEvent.HitUnit.data.grade.value;
             var def = ModBattleEvent.HitUnit.data.defense.baseValue;
             var minDmg = (ModBattleEvent.IsWorldUnitAttacking ? (GetMinDmgBase(ModBattleEvent.AttackingWorldUnit) + GetMinDmgPlus(ModBattleEvent.AttackingWorldUnit)) : GetMinDmgBase(ModBattleEvent.AttackingUnit)) * defGradeLvl;
@@ -257,7 +257,7 @@ namespace MOD_nE7UL2.Mod
                 }
             }
 
-            //DebugHelper.WriteLine($"9: {e.dynV.baseValue}");
+            DebugHelper.WriteLine($"9: {e.dynV.baseValue}");
             //block dmg (basis)
             if (pEnum != null && e.dynV.baseValue > minDmg)
             {
@@ -265,7 +265,7 @@ namespace MOD_nE7UL2.Mod
                 e.dynV.baseValue -= def * r / BASIS_ON_DEF;
             }
 
-            //DebugHelper.WriteLine($"10: {e.dynV.baseValue}");
+            DebugHelper.WriteLine($"10: {e.dynV.baseValue}");
             //block dmg (mp)
             if (ModBattleEvent.IsWorldUnitHit && hitUnitData != null && hitUnitData.mp > 0 && e.dynV.baseValue > minDmg)
             {
@@ -274,7 +274,7 @@ namespace MOD_nE7UL2.Mod
                 var blockTimes = (mpRate * defGradeLvl).Parse<int>();
                 for (int i = 0; i < blockTimes && e.dynV.baseValue > minDmg; i++)
                 {
-                    var mpcost = Math.Max(defGradeLvl, e.dynV.baseValue / blockcost);
+                    var mpcost = Math.Max(defGradeLvl, e.dynV.baseValue / blockcost).Parse<int>(int.MaxValue);
                     if (hitUnitData.mp < mpcost)
                         break;
                     var r = mpRate * blockratio;
@@ -284,7 +284,7 @@ namespace MOD_nE7UL2.Mod
                 }
             }
 
-            //DebugHelper.WriteLine($"11: {e.dynV.baseValue}");
+            DebugHelper.WriteLine($"11: {e.dynV.baseValue}");
             //block dmg (sp)
             if (ModBattleEvent.IsWorldUnitHit && hitUnitData != null && hitUnitData.sp > 0 && e.dynV.baseValue > minDmg && defGradeLvl >= 4)
             {
@@ -293,7 +293,7 @@ namespace MOD_nE7UL2.Mod
                 hitUnitData.AddSP(-1);
             }
 
-            //DebugHelper.WriteLine($"12: {e.dynV.baseValue}");
+            DebugHelper.WriteLine($"12: {e.dynV.baseValue}");
             //block dmg (dp)
             if (ModBattleEvent.IsWorldUnitHit && hitUnitData != null && hitUnitData.dp > 0 && e.dynV.baseValue > minDmg && defGradeLvl >= 8)
             {
@@ -301,7 +301,7 @@ namespace MOD_nE7UL2.Mod
                 e.dynV.baseValue -= (def * r).Parse<int>();
             }
 
-            //DebugHelper.WriteLine($"13: {e.dynV.baseValue}");
+            DebugHelper.WriteLine($"13: {e.dynV.baseValue}");
             //min-dmg
             if (e.dynV.baseValue <= minDmg)
                 e.dynV.baseValue = minDmg;
@@ -402,11 +402,11 @@ namespace MOD_nE7UL2.Mod
             return BlockRatio[gradeLvl] + u.worldUnitData.unit.GetBasisMagicSum() / BASIS_ON_BLOCK_RATIO;
         }
 
-        public static int GetBlockMpCost(UnitDataHuman u)
+        public static float GetBlockMpCost(UnitDataHuman u)
         {
             if (u == null)
-                return 0;
-            return u.worldUnitData.unit.GetBasisPhysicSum() / BASIS_ON_BLOCK_COST;
+                return 0f;
+            return u.worldUnitData.unit.GetBasisPhysicSum().Parse<float>() / BASIS_ON_BLOCK_COST;
         }
 
         public static int GetSkillAdjDmgBase(WorldUnitBase wunit, Tuple<MartialType, DataProps.PropsData> skillData)
