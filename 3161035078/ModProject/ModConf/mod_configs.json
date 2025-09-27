@@ -314,4 +314,16 @@
 		"__tip": "Enemy righteous vs Player righteous",
 		"DifferenceRighteous": 80,
 	},
+	"CustomRefineConfigs": {
+		"LevelRates": {
+			"__tip": "Total = 100%",
+			"Common": 30.0,
+			"Uncommon": 20.0,
+			"Rare": 20.0,
+			"Myst": 16.0,
+			"Lgendary": 8.0,
+			"Beast": 4.0,
+			"Antique": 2.0
+		},
+	},
 }
