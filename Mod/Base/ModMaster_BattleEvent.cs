@@ -205,7 +205,7 @@ namespace ModLib.Mod
 
         public virtual void OnBattleStart(ETypeData e)
         {
-            DebugHelper.WriteLine($"Battle: SoleId:{g.world.battle.data.battleID}, DungeonId:{g.world.battle.data.dungeonBaseItem.id}, DungeonName:{g.world.battle.data.dungeonBaseItem.name}, Lvl:{g.world.battle.data.dungeonLevel}, SelfBattle:{g.world.battle.data.isSelfBattle}, RealBattle:{g.world.battle.data.isRealBattle}, RoomCount:{SceneType.battle.room.room.allRoom.Count}, RoomInfo:{string.Join(";", SceneType.battle.room.room.allRoom.ToArray().Select(x => $"(Id:{x.roomBaseItem.id}, Type:{x.roomBaseItem.type}, Width:{x.roomBaseItem.width}, Height:{x.roomBaseItem.height})"))}");
+            DebugHelper.WriteLine($"Battle: SoleId:{g.world.battle.data.battleID}, DungeonId:{g.world.battle.data.dungeonBaseItem.id}, DungeonName:{g.world.battle.data.dungeonBaseItem.name}, SceneBaseID:{g.world.battle.data.dungeonBaseItem.sceneBaseID}, ScaleBaseID:{g.world.battle.data.dungeonBaseItem.scaleBaseID}, Lvl:{g.world.battle.data.dungeonLevel}, SelfBattle:{g.world.battle.data.isSelfBattle}, RealBattle:{g.world.battle.data.isRealBattle}, RoomCount:{SceneType.battle.room.room.allRoom.Count}, RoomInfo:{string.Join(";", SceneType.battle.room.room.allRoom.ToArray().Select(x => $"(Id:{x.roomBaseItem.id}, Type:{x.roomBaseItem.type}, Width:{x.roomBaseItem.width}, Height:{x.roomBaseItem.height})"))}");
             EventHelper.RunMinorEvents("OnBattleStart", e);
         }
 
