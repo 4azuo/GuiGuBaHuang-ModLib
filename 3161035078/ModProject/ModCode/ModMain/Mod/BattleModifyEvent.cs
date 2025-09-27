@@ -21,7 +21,7 @@ namespace MOD_nE7UL2.Mod
         public const int BASIS_ON_DMG = 1000;
         public const int BASIS_ON_DEF = 400;
         public const float BASIS_ON_BLOCK_RATIO = 10000f;
-        public const int BASIS_ON_BLOCK_COST = 100;
+        public const int BASIS_ON_BLOCK_COST = 50;
         public const float LOCAL_DMG_MULTIPLIER = 1.003f;
         public const float GLOBAL_DMG_MULTIPLIER = 1.001f;
 
@@ -267,7 +267,7 @@ namespace MOD_nE7UL2.Mod
 
             DebugHelper.WriteLine($"10: {e.dynV.baseValue}");
             //block dmg (mp)
-            if (ModBattleEvent.IsWorldUnitHit && hitUnitData != null && hitUnitData.mp > 0 && e.dynV.baseValue > minDmg)
+            if (ModBattleEvent.IsWorldUnitHit && hitUnitData != null && hitUnitData.mp > hitUnitData.maxMP.value / 5 && e.dynV.baseValue > minDmg)
             {
                 var blockcost = GetBlockMpCost(hitUnitData);
                 var mpRate = hitUnitData.mp.Parse<float>() / hitUnitData.maxMP.value.Parse<float>(float.MaxValue);
@@ -283,7 +283,7 @@ namespace MOD_nE7UL2.Mod
                     hitUnitData.AddMP(-mpcost);
                 }
             }
-
+            
             DebugHelper.WriteLine($"11: {e.dynV.baseValue}");
             //block dmg (sp)
             if (ModBattleEvent.IsWorldUnitHit && hitUnitData != null && hitUnitData.sp > 0 && e.dynV.baseValue > minDmg && defGradeLvl >= 4)

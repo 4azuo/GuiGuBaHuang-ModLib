@@ -212,7 +212,7 @@ namespace MOD_nE7UL2.Mod
         {
             if (!IsRefinableItem(props))
                 return null;
-            if (index < 1 || index > MAX_ADJ_PER_PROP) //soleID.MaxLength = 6
+            if (index < 1 || index > MAX_ADJ_PER_PROP)
                 return null;
             var key = $"{props.soleID}_{index}";
             if (!Instance.CustomRefine.ContainsKey(key))

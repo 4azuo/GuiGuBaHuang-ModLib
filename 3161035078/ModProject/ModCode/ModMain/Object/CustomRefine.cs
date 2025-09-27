@@ -1,10 +1,13 @@
 ﻿using MOD_nE7UL2.Enum;
 using UnityEngine;
+using static MOD_nE7UL2.Object.ModStts;
 
 namespace MOD_nE7UL2.Object
 {
     public class CustomRefine
     {
+        public static _CustomRefineConfigs Configs => ModMain.ModObj.ModSettings.CustomRefineConfigs;
+
         #region AdjTypeSeeder
         public static AdjTypeEnum[] RingAdjTypes = new AdjTypeEnum[]
         {
@@ -41,11 +44,6 @@ namespace MOD_nE7UL2.Object
             AdjTypeEnum.SkillDamage, AdjTypeEnum.MinDamage
         };
 
-        public static AdjLevelEnum[] AdjLevels = new AdjLevelEnum[]
-        {
-            AdjLevelEnum.Common, AdjLevelEnum.Uncommon, AdjLevelEnum.Rare, AdjLevelEnum.Myst, AdjLevelEnum.Lgendary, AdjLevelEnum.Beast, AdjLevelEnum.Antique
-        };
-
         public static AdjTypeEnum[] GetCustomAdjSeeder(DataProps.PropsData props)
         {
             if (props?.propsItem?.IsRing() != null)
@@ -74,7 +72,7 @@ namespace MOD_nE7UL2.Object
             Index = index;
             var seeder = GetCustomAdjSeeder(props);
             AdjType = seeder[props.soleID[index - 1] % seeder.Length];
-            AdjLevel = AdjLevels[props.soleID[index] % AdjLevels.Length];
+            AdjLevel = Configs.RandomRefineLevel(CommonTool.Random(0.00f, 100.00f));
             RandomMultiplier = CommonTool.Random(0.60f, 1.40f);
         }
 

@@ -3,6 +3,7 @@ using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
 using System.Collections.Generic;
 using System.Linq;
+using System.Web.UI.WebControls;
 
 namespace MOD_nE7UL2.Object
 {
@@ -353,6 +354,30 @@ namespace MOD_nE7UL2.Object
             public int DifferenceRighteous { get; set; }
         }
         public _BattleConfigs BattleConfigs { get; set; }
+        #endregion
+
+        #region CustomRefineConfigs
+        public class _CustomRefineConfigs
+        {
+            public Dictionary<AdjLevelEnum, float> LevelRates { get; set; }
+
+            public AdjLevelEnum RandomRefineLevel(float r)
+            {
+                var min = 0.00f;
+                var max = min;
+                foreach (var ut in LevelRates)
+                {
+                    min = max;
+                    max = min + ut.Value;
+                    if (ValueHelper.IsBetween(r, min, max))
+                    {
+                        return ut.Key;
+                    }
+                }
+                return AdjLevelEnum.None;
+            }
+        }
+        public _CustomRefineConfigs CustomRefineConfigs { get; set; }
         #endregion
     }
 }
