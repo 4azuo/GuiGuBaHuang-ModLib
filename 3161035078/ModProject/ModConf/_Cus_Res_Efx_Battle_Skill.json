@@ -1,26 +1,26 @@
 [
 	{
-		"id": "0001",
-		"level": "3",
-		"basis": "Sword",
-		"skill": "Right",
-		"efx": "Effect\\Battle\\Skill\\chuanchengzhezhen",
-		"type": "Instant"
+		"Id": "0001",
+		"GradeLvl": "3",
+		"Basis": "Sword",
+		"Skill": "Right",
+		"Efx": "Effect\\Battle\\Skill\\chuanchengzhezhen",
+		"Type": "Instant"
 	},
 	{
-		"id": "0002",
-		"level": "5",
-		"basis": "Sword",
-		"skill": "Right",
-		"efx": "Effect\\Battle\\Skill\\chuanchengzhezhen1",
-		"type": "Instant"
+		"Id": "0002",
+		"GradeLvl": "5",
+		"Basis": "Sword",
+		"Skill": "Right",
+		"Efx": "Effect\\Battle\\Skill\\chuanchengzhezhen1",
+		"Type": "Instant"
 	},
 	{
-		"id": "0003",
-		"level": "2",
-		"basis": "Magic",
-		"skill": "Right",
-		"efx": "Effect\\Battle\\Skill\\Fengyin",
-		"type": "Instant"
+		"Id": "0003",
+		"GradeLvl": "2",
+		"Basis": "Magic",
+		"Skill": "Right",
+		"Efx": "Effect\\Battle\\Skill\\Fengyin",
+		"Type": "Instant"
 	}
 ]

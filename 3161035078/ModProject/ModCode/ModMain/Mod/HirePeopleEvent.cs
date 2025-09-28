@@ -1,12 +1,13 @@
 ﻿using EGameTypeData;
 using MOD_nE7UL2.Const;
+using ModLib.Enum;
 using ModLib.Mod;
-using UnityEngine;
+using ModLib.Object;
+using System;
 using System.Collections.Generic;
 using System.Linq;
-using ModLib.Object;
-using ModLib.Enum;
-using System;
+using UnityEngine;
+using static MOD_nE7UL2.Object.ModStts;
 
 namespace MOD_nE7UL2.Mod
 {
@@ -26,6 +27,8 @@ namespace MOD_nE7UL2.Mod
 
         public static bool isShowHirePeopleUI = false;
         public static bool isShowManageTeamUI = false;
+
+        public static _BattleConfigs BattleConfigs => ModMain.ModObj.ModSettings.BattleConfigs;
 
         public Dictionary<string, List<string>> TeamData { get; set; } = new Dictionary<string, List<string>>();
 
@@ -207,6 +210,10 @@ namespace MOD_nE7UL2.Mod
         public override void OnMonthlyForEachWUnit(WorldUnitBase wunit)
         {
             base.OnMonthlyForEachWUnit(wunit);
+
+            if (wunit == null)
+                return;
+
             //teamup with friends
             if (!wunit.IsPlayer() && !IsHired(wunit))
             {
@@ -222,6 +229,11 @@ namespace MOD_nE7UL2.Mod
                                     relationWUnit.data.unitData.relationData.GetIntim(wunit) >= (FRIEND_INTIM / 3) && 
                                     relationWUnit.data.school?.schoolNameID != null && 
                                     relationWUnit.data.school?.schoolNameID == wunit.data.school?.schoolNameID
+                                ) ||
+                            /*3*/(
+                                    BattleEvent.IsFriendlyUnit(wunit, relationWUnit) >= 0 &&
+                                    relationWUnit.IsRighteous() == wunit.IsRighteous() &&
+                                    Math.Abs(relationWUnit.GetStandValue() - wunit.GetStandValue()) < BattleConfigs.DifferenceRighteous
                                 )
                             )
                         {
@@ -254,43 +266,50 @@ namespace MOD_nE7UL2.Mod
             var masterId = wunit.GetUnitId();
             if (TeamData.ContainsKey(masterId))
             {
-                var teamData = GetTeamData(wunit);
-                foreach (var memberId in teamData.Value.ToArray())
+                if (wunit.isDie)
                 {
-                    if (memberId == masterId)
-                        continue;
-                    var member = g.world.unit.GetUnit(memberId);
-                    if (member == null)
-                    {
-                        teamData.Value.Remove(memberId);
-                        continue;
-                    }
-                    if (member.isDie)
-                    {
-                        teamData.Value.Remove(memberId);
-                        member.DelLuck(TEAM_LUCK_ID);
-                    }
-                    //free if intim >= FRIEND_INTIM
-                    else if (member.data.unitData.relationData.GetIntim(wunit) < FRIEND_INTIM)
-                    {
-                        var requiredSpiritStones = GetRequiredSpiritStones(wunit, member) / MONTHLY_PAYMENT_RATIO;
-                        if (wunit.GetUnitMoney() < requiredSpiritStones)
-                        {
-                            Dismiss(wunit, member);
-                            member.data.unitData.relationData.AddHate(masterId, 50);
-                        }
-                        else
-                        {
-                            wunit.AddUnitMoney(-requiredSpiritStones);
-                            member.SetUnitPos(wunit.GetUnitPos());
-                        }
-                    }
+                    DismissTeam(wunit);
                 }
-
-                if (teamData.Value.Count == 0 || teamData.Value.All(x => x == masterId))
+                else
                 {
-                    Instance.TeamData.Remove(masterId);
-                    wunit.DelLuck(TEAM_LUCK_ID);
+                    var teamData = GetTeamData(wunit);
+                    foreach (var memberId in teamData.Value.ToArray())
+                    {
+                        if (memberId == masterId)
+                            continue;
+                        var member = g.world.unit.GetUnit(memberId);
+                        if (member == null)
+                        {
+                            teamData.Value.Remove(memberId);
+                            continue;
+                        }
+                        if (member.isDie)
+                        {
+                            teamData.Value.Remove(memberId);
+                            member.DelLuck(TEAM_LUCK_ID);
+                        }
+                        //free if intim >= FRIEND_INTIM
+                        else if (member.data.unitData.relationData.GetIntim(wunit) < FRIEND_INTIM)
+                        {
+                            var requiredSpiritStones = GetRequiredSpiritStones(wunit, member) / MONTHLY_PAYMENT_RATIO;
+                            if (wunit.GetUnitMoney() < requiredSpiritStones)
+                            {
+                                Dismiss(wunit, member);
+                                member.data.unitData.relationData.AddHate(masterId, 50);
+                            }
+                            else
+                            {
+                                wunit.AddUnitMoney(-requiredSpiritStones);
+                                member.SetUnitPos(wunit.GetUnitPos());
+                            }
+                        }
+                    }
+
+                    if (teamData.Value.Count == 0 || teamData.Value.All(x => x == masterId))
+                    {
+                        Instance.TeamData.Remove(masterId);
+                        wunit.DelLuck(TEAM_LUCK_ID);
+                    }
                 }
             }
         }

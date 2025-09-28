@@ -495,7 +495,26 @@ namespace MOD_nE7UL2.Mod
             return false;
         }
 
-        [Trace]
+        public override void OnBattleEndHandler(BattleEndHandler e)
+        {
+            base.OnBattleEndHandler(e);
+
+            if (e.isWin)
+            {
+                var teamData = HirePeopleEvent.GetTeamDetailData(g.world.playerUnit);
+                var rewardItems = ModBattleEvent.SceneBattle.battleData.allDropRewardItem;
+                foreach (var item in rewardItems)
+                {
+                    var receiver = teamData.Item2.Random();
+                    if (receiver != null && !receiver.IsPlayer())
+                    {
+                        receiver.AddUnitProp(item);
+                        ModBattleEvent.SceneBattle.battleData.allDropRewardItem.Remove(item);
+                    }
+                }
+            }
+        }
+
         public override void OnBattleEndOnce(BattleEnd e)
         {
             base.OnBattleEndOnce(e);
@@ -634,6 +653,17 @@ namespace MOD_nE7UL2.Mod
                                 if (isKillerWUnit)
                                     killerWUnit.AddUnitProp(item);
                             }
+                        }
+                    }
+
+                    if (dieUnitWUnit.IsPlayer() && isKillerWUnit)
+                    {
+                        var teamData = HirePeopleEvent.GetTeamDetailData(g.world.playerUnit);
+                        var rewardItems = ModBattleEvent.SceneBattle.battleData.allDropRewardItem;
+                        foreach (var item in rewardItems)
+                        {
+                            killerWUnit.AddUnitProp(item);
+                            ModBattleEvent.SceneBattle.battleData.allDropRewardItem.Remove(item);
                         }
                     }
 

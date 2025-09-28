@@ -64,6 +64,10 @@ namespace MOD_nE7UL2.Mod
                 {
                     try { return GetAdjustMaxMp(wunit); } catch (Exception e) { DebugHelper.WriteLine(e); return 0; }
                 }));
+                wunit.GetDynProperty(UnitDynPropertyEnum.DpMax).AddValue((DynInt.DynObjectAddHandler)(() =>
+                {
+                    try { return GetAdjustMaxDp(wunit); } catch (Exception e) { DebugHelper.WriteLine(e); return 0; }
+                }));
                 wunit.GetDynProperty(UnitDynPropertyEnum.SpMax).AddValue((DynInt.DynObjectAddHandler)(() =>
                 {
                     try { return GetAdjustMaxSp(wunit); } catch (Exception e) { DebugHelper.WriteLine(e); return 0; }
@@ -330,6 +334,25 @@ namespace MOD_nE7UL2.Mod
                 rs += UnitModifyHelper.GetArtisanshipAdjSp(wunit);
 
                 rs += Convert.ToInt32(CustomRefineEvent.GetCustomAdjValue(wunit, AdjTypeEnum.MSp));
+
+                Instance.CachedValues[k] = rs;
+            }
+
+            return Instance.CachedValues[k];
+        }
+
+        public static int GetAdjustMaxDp(WorldUnitBase wunit)
+        {
+            var k = $"{wunit.GetUnitId()}_mdp";
+            if (GameHelper.IsInBattlle())
+                return Instance.CachedValues.ContainsKey(k) ? Instance.CachedValues[k] : 0;
+            if (!Instance.CachedValues.ContainsKey(k) || wunit.IsPlayer())
+            {
+                var rs = 0;
+
+                var dpMax = wunit.GetDynProperty(UnitDynPropertyEnum.DpMax).baseValue;
+
+                rs += Convert.ToInt32(CustomRefineEvent.GetCustomAdjValue(wunit, AdjTypeEnum.MDp));
 
                 Instance.CachedValues[k] = rs;
             }
