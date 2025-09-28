@@ -23,9 +23,9 @@ namespace MOD_nE7UL2.Mod
         public const int MAX_ADJ_PER_PROP = 5;
 
         [JsonIgnore]
-        public Dictionary<string, double> CachedValues { get; } = new Dictionary<string, double>();
-        public Dictionary<string, long> RefineExp { get; set; } = new Dictionary<string, long>();
-        public Dictionary<string, CustomRefine> CustomRefine { get; set; } = new Dictionary<string, CustomRefine>();
+        public IDictionary<string, double> CachedValues { get; } = new Dictionary<string, double>();
+        public IDictionary<string, long> RefineExp { get; set; } = new Dictionary<string, long>();
+        public IDictionary<string, CustomRefine> CustomRefine { get; set; } = new Dictionary<string, CustomRefine>();
 
         public override void OnMonthly()
         {

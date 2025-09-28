@@ -370,6 +370,8 @@ namespace MOD_nE7UL2.Mod
                         humanData.mp += Convert.ToInt32(GetMpRecoveryBase(wunit) + GetMpRecoveryPlus(wunit));
                     if (humanData.sp < humanData.maxSP.value)
                         humanData.sp += Convert.ToInt32(GetSpRecoveryBase(wunit) + GetSpRecoveryPlus(wunit));
+                    if (humanData.dp < humanData.maxDP.value)
+                        humanData.dp += Convert.ToInt32(GetDpRecoveryBase(wunit) + GetDpRecoveryPlus(wunit));
                 }
             }
         }
@@ -606,6 +608,17 @@ namespace MOD_nE7UL2.Mod
         public static double GetSpRecoveryPlus(WorldUnitBase wunit)
         {
             return CustomRefineEvent.GetCustomAdjValue(wunit, AdjTypeEnum.RSp);
+        }
+
+        //Dp Recovery
+        public static double GetDpRecoveryBase(WorldUnitBase wunit)
+        {
+            return 0.0d;
+        }
+
+        public static double GetDpRecoveryPlus(WorldUnitBase wunit)
+        {
+            return CustomRefineEvent.GetCustomAdjValue(wunit, AdjTypeEnum.RDp);
         }
 
         //Steal Hp

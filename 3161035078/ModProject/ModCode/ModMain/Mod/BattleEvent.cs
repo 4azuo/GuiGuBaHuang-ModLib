@@ -1,4 +1,5 @@
-﻿using MOD_nE7UL2.Const;
+﻿using EBattleTypeData;
+using MOD_nE7UL2.Const;
 using ModLib.Enum;
 using ModLib.Mod;
 using Newtonsoft.Json;
@@ -54,8 +55,8 @@ namespace MOD_nE7UL2.Mod
                 {
                     return CondJoinBattle(x) && 
                         (
-                            IsFriendlyUnit(x) >= 0 || 
-                            IsEnemyUnit(x) >= 0 || 
+                            IsFriendlyUnit(g.world.playerUnit, x) >= 0 || 
+                            IsEnemyUnit(g.world.playerUnit, x) >= 0 || 
                             MapBuildPropertyEvent.IsTownGuardian(x) || 
                             MapBuildPropertyEvent.IsSchoolMember(ModBattleEvent.School, x) ||
                             BattleAfterEvent.Instance.Stalkers.ContainsKey(x.GetUnitId())
@@ -113,11 +114,11 @@ namespace MOD_nE7UL2.Mod
                         //enemy unit join battle
                         if (CommonTool.Random(0.00f, 100.00f).IsBetween(0.00f, Configs.RandomNpcJoinRate))
                         {
-                            var enemyUnit = AroundUnits.FirstOrDefault(x => IsEnemyUnit(x) >= 0);
+                            var enemyUnit = AroundUnits.FirstOrDefault(x => IsEnemyUnit(g.world.playerUnit, x) >= 0);
                             if (enemyUnit != null)
                             {
                                 DebugHelper.WriteLine($"Enemy join: {enemyUnit.GetName()} ({enemyUnit.GetUnitId()})");
-                                var t = IsEnemyUnit(enemyUnit);
+                                var t = IsEnemyUnit(g.world.playerUnit, enemyUnit);
                                 var units = HirePeopleEvent.GetTeamDetailData(enemyUnit).Item2;
                                 AroundUnits.RemoveAll(x => units.Any(y => y.GetUnitId() == x.GetUnitId()));
                                 NPCJoin(UnitType.Monst, units);
@@ -137,7 +138,7 @@ namespace MOD_nE7UL2.Mod
                         //friendly unit join battle
                         if (CommonTool.Random(0.00f, 100.00f).IsBetween(0.00f, Configs.RandomNpcJoinRate))
                         {
-                            var friendlyUnit = AroundUnits.FirstOrDefault(x => IsFriendlyUnit(x) >= 0);
+                            var friendlyUnit = AroundUnits.FirstOrDefault(x => IsFriendlyUnit(g.world.playerUnit, x) >= 0);
                             if (friendlyUnit != null)
                             {
                                 DebugHelper.WriteLine($"Friend join: {friendlyUnit.GetName()} ({friendlyUnit.GetUnitId()})");
@@ -158,7 +159,7 @@ namespace MOD_nE7UL2.Mod
                                 DebugHelper.WriteLine($"Sect-member ({ModBattleEvent.School.GetName(true)}) join: {sectMember.GetName()} ({sectMember.GetUnitId()})");
                                 var units = HirePeopleEvent.GetTeamDetailData(sectMember).Item2;
                                 AroundUnits.RemoveAll(x => units.Any(y => y.GetUnitId() == x.GetUnitId()));
-                                var ut = IsFriendlyUnit(sectMember) >= 0 || g.world.playerUnit.IsSameSect(sectMember) ? UnitType.PlayerNPC : UnitType.Monst;
+                                var ut = IsFriendlyUnit(g.world.playerUnit, sectMember) >= 0 || g.world.playerUnit.IsSameSect(sectMember) ? UnitType.PlayerNPC : UnitType.Monst;
                                 NPCJoin(ut, units);
 
                                 DramaTool.OpenDrama(SECT_MEMBER_JOIN_DRAMA, new DramaData() { unitLeft = sectMember, unitRight = null });
@@ -174,7 +175,7 @@ namespace MOD_nE7UL2.Mod
                                 DebugHelper.WriteLine($"Town-guard ({ModBattleEvent.Town.name}) join: {townguard.GetName()} ({townguard.GetUnitId()})");
                                 var units = HirePeopleEvent.GetTeamDetailData(townguard).Item2;
                                 AroundUnits.RemoveAll(x => units.Any(y => y.GetUnitId() == x.GetUnitId()));
-                                var ut = IsFriendlyUnit(townguard) >= 0 || g.world.playerUnit.IsSameSect(townguard) ? UnitType.PlayerNPC : UnitType.Monst;
+                                var ut = IsFriendlyUnit(g.world.playerUnit, townguard) >= 0 || g.world.playerUnit.IsSameSect(townguard) ? UnitType.PlayerNPC : UnitType.Monst;
                                 NPCJoin(ut, units);
 
                                 DramaTool.OpenDrama(TOWN_GUARD_JOIN_DRAMA, new DramaData() { unitLeft = townguard, unitRight = null });
@@ -201,7 +202,7 @@ namespace MOD_nE7UL2.Mod
                             {
                                 var wmember = g.world.unit.GetUnit(cmember);
                                 DebugHelper.WriteLine($"Team-member ({HirePeopleEvent.GetTeamInfoStr(g.world.playerUnit)}) betray: {wmember.GetName()} ({wmember.GetUnitId()})");
-                                var t = IsBetrayUnit(wmember);
+                                var t = IsBetrayUnit(g.world.playerUnit, wmember);
                                 if (t >= 0)
                                 {
                                     cmember.data.unitType = UnitType.Monst; //change team
@@ -226,7 +227,7 @@ namespace MOD_nE7UL2.Mod
             }
         }
 
-        private List<UnitCtrlBase> NPCJoin(UnitType ut, params WorldUnitBase[] wunits)
+        public static List<UnitCtrlBase> NPCJoin(UnitType ut, params WorldUnitBase[] wunits)
         {
             var rs = new List<UnitCtrlBase>();
             var wpos = g.world.playerUnit.GetUnitPos();
@@ -252,35 +253,35 @@ namespace MOD_nE7UL2.Mod
                 cunit.move.SetPosition(posi.Random());
 
                 //set avgGrade
-                AvgGrade = ((AvgGrade + wunit.GetGradeLvl()) / 2f) + 0.1f;
+                Instance.AvgGrade = ((Instance.AvgGrade + wunit.GetGradeLvl()) / 2f) + 0.1f;
 
                 rs.Add(cunit);
             }
             return rs;
         }
 
-        private bool CondJoinBattle(WorldUnitBase wunit)
+        public static bool CondJoinBattle(WorldUnitBase wunit)
         {
-            return !wunit.isDie && wunit.GetGradeLvl() >= AvgGrade &&
+            return !wunit.isDie && wunit.GetGradeLvl() >= Instance.AvgGrade &&
                 wunit.GetDynProperty(UnitDynPropertyEnum.Hp).value > (wunit.GetDynProperty(UnitDynPropertyEnum.HpMax).value * 0.7f) &&
                 wunit.GetDynProperty(UnitDynPropertyEnum.Mp).value > (wunit.GetDynProperty(UnitDynPropertyEnum.MpMax).value * 0.5f) &&
                 wunit.GetDynProperty(UnitDynPropertyEnum.Sp).value > (wunit.GetDynProperty(UnitDynPropertyEnum.SpMax).value * 0.3f);
         }
 
-        private int IsFriendlyUnit(WorldUnitBase wunit)
+        public static int IsFriendlyUnit(WorldUnitBase originWUnit, WorldUnitBase targetWUnit)
         {
-            if (wunit.GetGradeLvl() >= AvgGrade)
+            if (targetWUnit.GetGradeLvl() >= Instance.AvgGrade)
             {
                 //from friend
-                if (friendlyInTraits.Contains(wunit.data.unitData.propertyData.inTrait) ||
-                    wunit.data.unitData.relationData.GetIntim(g.world.playerUnit) >= Configs.FriendlyIntim ||
-                    (g.world.playerUnit.data.school?.schoolData.GetSchoolIntim(wunit) ?? 0) >= Configs.FriendlyIntim ||
-                    (wunit.data.school?.schoolData.GetSchoolIntim(g.world.playerUnit) ?? 0) >= Configs.FriendlyIntim)
+                if (friendlyInTraits.Contains(targetWUnit.data.unitData.propertyData.inTrait) ||
+                    targetWUnit.data.unitData.relationData.GetIntim(originWUnit) >= Configs.FriendlyIntim ||
+                    (originWUnit.data.school?.schoolData.GetSchoolIntim(targetWUnit) ?? 0) >= Configs.FriendlyIntim ||
+                    (targetWUnit.data.school?.schoolData.GetSchoolIntim(originWUnit) ?? 0) >= Configs.FriendlyIntim)
                 {
                     return 1;
                 }
                 //from same sect member
-                if (g.world.playerUnit.IsSameSect(wunit))
+                if (originWUnit.IsSameSect(targetWUnit))
                 {
                     return 2;
                 }
@@ -288,25 +289,25 @@ namespace MOD_nE7UL2.Mod
             return -1;
         }
 
-        private int IsEnemyUnit(WorldUnitBase wunit)
+        public static int IsEnemyUnit(WorldUnitBase originWUnit, WorldUnitBase targetWUnit)
         {
-            if (wunit.GetGradeLvl() >= AvgGrade)
+            if (targetWUnit.GetGradeLvl() >= Instance.AvgGrade)
             {
                 //from hater
-                if (wunit.data.unitData.relationData.GetIntim(g.world.playerUnit) <= Configs.EnemyIntim ||
-                    (g.world.playerUnit.data.school?.schoolData.GetSchoolIntim(wunit) ?? 0) <= Configs.EnemyIntim ||
-                    (wunit.data.school?.schoolData.GetSchoolIntim(g.world.playerUnit) ?? 0) <= Configs.EnemyIntim)
+                if (targetWUnit.data.unitData.relationData.GetIntim(originWUnit) <= Configs.EnemyIntim ||
+                    (originWUnit.data.school?.schoolData.GetSchoolIntim(targetWUnit) ?? 0) <= Configs.EnemyIntim ||
+                    (targetWUnit.data.school?.schoolData.GetSchoolIntim(originWUnit) ?? 0) <= Configs.EnemyIntim)
                 {
                     return 1;
                 }
                 //from bad guys
-                if (enemyInTraits.Contains(wunit.data.unitData.propertyData.inTrait))
+                if (enemyInTraits.Contains(targetWUnit.data.unitData.propertyData.inTrait))
                 {
                     return 0;
                 }
                 //from good vs evil
-                if (wunit.IsRighteous() != g.world.playerUnit.IsRighteous() &&
-                    Math.Abs(wunit.GetStandValue() - g.world.playerUnit.GetStandValue()) > Configs.DifferenceRighteous)
+                if (targetWUnit.IsRighteous() != originWUnit.IsRighteous() &&
+                    Math.Abs(targetWUnit.GetStandValue() - originWUnit.GetStandValue()) > Configs.DifferenceRighteous)
                 {
                     return 2;
                 }
@@ -314,27 +315,27 @@ namespace MOD_nE7UL2.Mod
             return -1;
         }
 
-        private int IsBetrayUnit(WorldUnitBase wunit)
+        public static int IsBetrayUnit(WorldUnitBase originWUnit, WorldUnitBase targetWUnit)
         {
-            if (wunit.GetGradeLvl() >= AvgGrade)
+            if (targetWUnit.GetGradeLvl() >= Instance.AvgGrade)
             {
                 //from hater
-                if (wunit.data.unitData.relationData.GetIntim(g.world.playerUnit) <= Configs.EnemyIntim ||
-                    (g.world.playerUnit.data.school?.schoolData.GetSchoolIntim(wunit) ?? 0) <= Configs.EnemyIntim ||
-                    (wunit.data.school?.schoolData.GetSchoolIntim(g.world.playerUnit) ?? 0) <= Configs.EnemyIntim)
+                if (targetWUnit.data.unitData.relationData.GetIntim(originWUnit) <= Configs.EnemyIntim ||
+                    (originWUnit.data.school?.schoolData.GetSchoolIntim(targetWUnit) ?? 0) <= Configs.EnemyIntim ||
+                    (targetWUnit.data.school?.schoolData.GetSchoolIntim(originWUnit) ?? 0) <= Configs.EnemyIntim)
                 {
                     return 0;
                 }
                 //from bad guys
-                if (betrayInTraits.Contains(wunit.data.unitData.propertyData.inTrait) ||
-                    betrayOutTraits.Contains(wunit.data.unitData.propertyData.outTrait1) ||
-                    betrayOutTraits.Contains(wunit.data.unitData.propertyData.outTrait2))
+                if (betrayInTraits.Contains(targetWUnit.data.unitData.propertyData.inTrait) ||
+                    betrayOutTraits.Contains(targetWUnit.data.unitData.propertyData.outTrait1) ||
+                    betrayOutTraits.Contains(targetWUnit.data.unitData.propertyData.outTrait2))
                 {
                     return 1;
                 }
                 //from good vs evil
-                if (wunit.IsRighteous() != g.world.playerUnit.IsRighteous() &&
-                    Math.Abs(wunit.GetStandValue() - g.world.playerUnit.GetStandValue()) > Configs.DifferenceRighteous)
+                if (targetWUnit.IsRighteous() != originWUnit.IsRighteous() &&
+                    Math.Abs(targetWUnit.GetStandValue() - originWUnit.GetStandValue()) > Configs.DifferenceRighteous)
                 {
                     return 2;
                 }

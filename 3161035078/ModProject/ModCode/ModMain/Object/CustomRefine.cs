@@ -1,4 +1,6 @@
-﻿using MOD_nE7UL2.Enum;
+﻿using Il2CppSystem.Data;
+using MOD_nE7UL2.Enum;
+using System.Linq;
 using UnityEngine;
 using static MOD_nE7UL2.Object.ModStts;
 
@@ -11,16 +13,16 @@ namespace MOD_nE7UL2.Object
         #region AdjTypeSeeder
         public static AdjTypeEnum[] RingAdjTypes = new AdjTypeEnum[]
         {
-            AdjTypeEnum.Def, AdjTypeEnum.MHp, AdjTypeEnum.MMp, AdjTypeEnum.MSp,
-            AdjTypeEnum.Nullify, AdjTypeEnum.RHp, AdjTypeEnum.RMp, AdjTypeEnum.RSp,
-            AdjTypeEnum.SkillDamage, AdjTypeEnum.MinDamage,
+            AdjTypeEnum.Def, AdjTypeEnum.MHp, AdjTypeEnum.MMp, AdjTypeEnum.MSp, AdjTypeEnum.MDp,
+            AdjTypeEnum.Nullify, AdjTypeEnum.RHp, AdjTypeEnum.RMp, AdjTypeEnum.RSp, AdjTypeEnum.RDp,
+            AdjTypeEnum.SkillDamage, AdjTypeEnum.MinDamage, AdjTypeEnum.SummonPower,
             AdjTypeEnum.BasisBlade, AdjTypeEnum.BasisEarth, AdjTypeEnum.BasisFinger, AdjTypeEnum.BasisFire, AdjTypeEnum.BasisFist, AdjTypeEnum.BasisFroze,
             AdjTypeEnum.BasisPalm, AdjTypeEnum.BasisSpear, AdjTypeEnum.BasisSword, AdjTypeEnum.BasisThunder, AdjTypeEnum.BasisWind, AdjTypeEnum.BasisWood
         };
 
         public static AdjTypeEnum[] OutfitAdjTypes = new AdjTypeEnum[]
         {
-            AdjTypeEnum.Def, AdjTypeEnum.MHp, AdjTypeEnum.MMp, AdjTypeEnum.RHp, AdjTypeEnum.RMp,
+            AdjTypeEnum.Def, AdjTypeEnum.MHp, AdjTypeEnum.MMp, AdjTypeEnum.MDp, AdjTypeEnum.RHp, AdjTypeEnum.RMp, AdjTypeEnum.RDp,
             AdjTypeEnum.Nullify, AdjTypeEnum.BlockChanceMax, AdjTypeEnum.BlockDmg,
             AdjTypeEnum.EvadeChance, AdjTypeEnum.EvadeChanceMax,
             AdjTypeEnum.BasisBlade, AdjTypeEnum.BasisEarth, AdjTypeEnum.BasisFinger, AdjTypeEnum.BasisFire, AdjTypeEnum.BasisFist, AdjTypeEnum.BasisFroze,
@@ -31,7 +33,7 @@ namespace MOD_nE7UL2.Object
         {
             AdjTypeEnum.StealHp, AdjTypeEnum.StealMp, AdjTypeEnum.StealSp, AdjTypeEnum.InstantKill,
             AdjTypeEnum.Atk, AdjTypeEnum.Def, AdjTypeEnum.Speed, AdjTypeEnum.Manashield,
-            AdjTypeEnum.Nullify, AdjTypeEnum.SkillDamage, AdjTypeEnum.MinDamage,
+            AdjTypeEnum.Nullify, AdjTypeEnum.SkillDamage, AdjTypeEnum.MinDamage, AdjTypeEnum.SummonPower,
             AdjTypeEnum.BlockChanceMax, AdjTypeEnum.BlockDmg,
             AdjTypeEnum.EvadeChance, AdjTypeEnum.EvadeChanceMax,
             AdjTypeEnum.SCritChance, AdjTypeEnum.SCritChanceMax, AdjTypeEnum.SCritDamage
@@ -39,7 +41,7 @@ namespace MOD_nE7UL2.Object
 
         public static AdjTypeEnum[] MountAdjTypes = new AdjTypeEnum[]
         {
-            AdjTypeEnum.Atk, AdjTypeEnum.Def, AdjTypeEnum.Nullify, AdjTypeEnum.Manashield,
+            AdjTypeEnum.Atk, AdjTypeEnum.Def, AdjTypeEnum.Nullify, AdjTypeEnum.Manashield, AdjTypeEnum.SummonPower,
             AdjTypeEnum.StealHp, AdjTypeEnum.StealMp, AdjTypeEnum.StealSp, AdjTypeEnum.InstantKill,
             AdjTypeEnum.SkillDamage, AdjTypeEnum.MinDamage
         };
@@ -56,6 +58,12 @@ namespace MOD_nE7UL2.Object
                 return MountAdjTypes;
             return AdjTypeEnum.GetAllEnums<AdjTypeEnum>();
         }
+
+        public static AdjTypeEnum RandomCustomAdj(AdjTypeEnum[] seeder, int gradeLvl)
+        {
+            var t = seeder.Where(x => x.MinGradeLvl <= gradeLvl).ToArray();
+            return t[CommonTool.Random(0, 10000) % t.Length];
+        }
         #endregion
 
         public int Index { get; set; }
@@ -71,7 +79,7 @@ namespace MOD_nE7UL2.Object
         {
             Index = index;
             var seeder = GetCustomAdjSeeder(props);
-            AdjType = seeder[props.soleID[index - 1] % seeder.Length];
+            AdjType = RandomCustomAdj(seeder, props.propsInfoBase.grade);
             AdjLevel = Configs.RandomRefineLevel(CommonTool.Random(0.00f, 100.00f));
             RandomMultiplier = CommonTool.Random(0.60f, 1.40f);
         }
