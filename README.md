@@ -26,7 +26,9 @@
 
 [Taoist](https://steamcommunity.com/sharedfiles/filedetails/?id=3161035078)
 
-- Create a team and hire people for combat
+- Create a team and hire people for combat (NPCs also team up together)
+- Allow NPCs to betray under certain conditions
+- NPCs track the player and look for a chance to steal when they detect rare items
 - Become town master and get tax from people
 - Bank needs money to open account and charge monthly fee
 - Lock items when not paying
@@ -35,7 +37,7 @@
 - Hide map in battle (optional)
 - Hide unit number in battle
 - Hide training and preview skills
-- Player/NPC/Monster has manashield, and some special efx
+- Player/NPCs/Monsters has manashield, and some special efx
 - Modify dmg/def calculation in battle
 - Increase exp needed to level up
 - Modify item price and stats
@@ -60,8 +62,8 @@
 - Town manage, declare war to others, build your town, change tax rate, etc...
 - Monster waves
 - Potmon properties auto increase monthly and depend on player properties when summoned
-- NPC auto up level and grade of skills and auto craft new artifact
-- NPC/Player trade items in market
+- NPCs auto up level and grade of skills and auto craft new artifact
+- Allow NPCs/Player trade items in market
 - etc...
 
 
