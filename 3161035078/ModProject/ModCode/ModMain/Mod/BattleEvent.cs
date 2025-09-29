@@ -24,6 +24,7 @@ namespace MOD_nE7UL2.Mod
         //public const int STALKER_KILLBOSS_DRAMA = 480110700;
         public const int RIGHTEOUS_DRAMA = 480110501;
         public const int EVIL_DRAMA = 480110502;
+        public const float ARGUE_RATE = 20.00f;
 
         public float AvgGrade { get; private set; }
         [JsonIgnore]
@@ -65,6 +66,22 @@ namespace MOD_nE7UL2.Mod
 
                 //team member join
                 TeamMembers.AddRange(HirePeopleEvent.GetTeamDetailData(player).Item2.Where(x => !x.isDie && !x.IsPlayer()));
+            }
+        }
+
+        public override void OnBattleEndOnce(BattleEnd e)
+        {
+            base.OnBattleEndOnce(e);
+
+            var player = g.world.playerUnit;
+            var playerId = g.world.playerUnit.GetUnitId();
+            var teamInfo = HirePeopleEvent.GetTeamDetailData(player);
+            foreach (var wunit in teamInfo.Item2)
+            {
+                if (HirePeopleEvent.IsFriend(player, wunit, 0.2f) && CommonTool.Random(0.00f, 100.00f).IsBetween(0.00f, ARGUE_RATE))
+                {
+                    wunit.data.unitData.relationData.AddHate(playerId, 5);
+                }
             }
         }
 
@@ -270,75 +287,66 @@ namespace MOD_nE7UL2.Mod
 
         public static int IsFriendlyUnit(WorldUnitBase originWUnit, WorldUnitBase targetWUnit)
         {
-            if (targetWUnit.GetGradeLvl() >= Instance.AvgGrade)
+            //from friend
+            if (friendlyInTraits.Contains(targetWUnit.data.unitData.propertyData.inTrait) ||
+                targetWUnit.data.unitData.relationData.GetIntim(originWUnit) >= Configs.FriendlyIntim ||
+                (originWUnit.data.school?.schoolData.GetSchoolIntim(targetWUnit) ?? 0) >= Configs.FriendlyIntim ||
+                (targetWUnit.data.school?.schoolData.GetSchoolIntim(originWUnit) ?? 0) >= Configs.FriendlyIntim)
             {
-                //from friend
-                if (friendlyInTraits.Contains(targetWUnit.data.unitData.propertyData.inTrait) ||
-                    targetWUnit.data.unitData.relationData.GetIntim(originWUnit) >= Configs.FriendlyIntim ||
-                    (originWUnit.data.school?.schoolData.GetSchoolIntim(targetWUnit) ?? 0) >= Configs.FriendlyIntim ||
-                    (targetWUnit.data.school?.schoolData.GetSchoolIntim(originWUnit) ?? 0) >= Configs.FriendlyIntim)
-                {
-                    return 1;
-                }
-                //from same sect member
-                if (originWUnit.IsSameSect(targetWUnit))
-                {
-                    return 2;
-                }
+                return 1;
+            }
+            //from same sect member
+            if (originWUnit.IsSameSect(targetWUnit))
+            {
+                return 2;
             }
             return -1;
         }
 
         public static int IsEnemyUnit(WorldUnitBase originWUnit, WorldUnitBase targetWUnit)
         {
-            if (targetWUnit.GetGradeLvl() >= Instance.AvgGrade)
+            //from hater
+            if (targetWUnit.data.unitData.relationData.GetIntim(originWUnit) <= Configs.EnemyIntim ||
+                (originWUnit.data.school?.schoolData.GetSchoolIntim(targetWUnit) ?? 0) <= Configs.EnemyIntim ||
+                (targetWUnit.data.school?.schoolData.GetSchoolIntim(originWUnit) ?? 0) <= Configs.EnemyIntim)
             {
-                //from hater
-                if (targetWUnit.data.unitData.relationData.GetIntim(originWUnit) <= Configs.EnemyIntim ||
-                    (originWUnit.data.school?.schoolData.GetSchoolIntim(targetWUnit) ?? 0) <= Configs.EnemyIntim ||
-                    (targetWUnit.data.school?.schoolData.GetSchoolIntim(originWUnit) ?? 0) <= Configs.EnemyIntim)
-                {
-                    return 1;
-                }
-                //from bad guys
-                if (enemyInTraits.Contains(targetWUnit.data.unitData.propertyData.inTrait))
-                {
-                    return 0;
-                }
-                //from good vs evil
-                if (targetWUnit.IsRighteous() != originWUnit.IsRighteous() &&
-                    Math.Abs(targetWUnit.GetStandValue() - originWUnit.GetStandValue()) > Configs.DifferenceRighteous)
-                {
-                    return 2;
-                }
+                return 1;
+            }
+            //from bad guys
+            if (enemyInTraits.Contains(targetWUnit.data.unitData.propertyData.inTrait))
+            {
+                return 0;
+            }
+            //from good vs evil
+            if (targetWUnit.IsRighteous() != originWUnit.IsRighteous() &&
+                Math.Abs(targetWUnit.GetStandValue() - originWUnit.GetStandValue()) > Configs.DifferenceRighteous)
+            {
+                return 2;
             }
             return -1;
         }
 
         public static int IsBetrayUnit(WorldUnitBase originWUnit, WorldUnitBase targetWUnit)
         {
-            if (targetWUnit.GetGradeLvl() >= Instance.AvgGrade)
+            //from hater
+            if (targetWUnit.data.unitData.relationData.GetIntim(originWUnit) <= Configs.EnemyIntim ||
+                (originWUnit.data.school?.schoolData.GetSchoolIntim(targetWUnit) ?? 0) <= Configs.EnemyIntim ||
+                (targetWUnit.data.school?.schoolData.GetSchoolIntim(originWUnit) ?? 0) <= Configs.EnemyIntim)
             {
-                //from hater
-                if (targetWUnit.data.unitData.relationData.GetIntim(originWUnit) <= Configs.EnemyIntim ||
-                    (originWUnit.data.school?.schoolData.GetSchoolIntim(targetWUnit) ?? 0) <= Configs.EnemyIntim ||
-                    (targetWUnit.data.school?.schoolData.GetSchoolIntim(originWUnit) ?? 0) <= Configs.EnemyIntim)
-                {
-                    return 0;
-                }
-                //from bad guys
-                if (betrayInTraits.Contains(targetWUnit.data.unitData.propertyData.inTrait) ||
-                    betrayOutTraits.Contains(targetWUnit.data.unitData.propertyData.outTrait1) ||
-                    betrayOutTraits.Contains(targetWUnit.data.unitData.propertyData.outTrait2))
-                {
-                    return 1;
-                }
-                //from good vs evil
-                if (targetWUnit.IsRighteous() != originWUnit.IsRighteous() &&
-                    Math.Abs(targetWUnit.GetStandValue() - originWUnit.GetStandValue()) > Configs.DifferenceRighteous)
-                {
-                    return 2;
-                }
+                return 0;
+            }
+            //from bad guys
+            if (betrayInTraits.Contains(targetWUnit.data.unitData.propertyData.inTrait) ||
+                betrayOutTraits.Contains(targetWUnit.data.unitData.propertyData.outTrait1) ||
+                betrayOutTraits.Contains(targetWUnit.data.unitData.propertyData.outTrait2))
+            {
+                return 1;
+            }
+            //from good vs evil
+            if (targetWUnit.IsRighteous() != originWUnit.IsRighteous() &&
+                Math.Abs(targetWUnit.GetStandValue() - originWUnit.GetStandValue()) > Configs.DifferenceRighteous)
+            {
+                return 2;
             }
             return -1;
         }
