@@ -170,7 +170,7 @@ namespace MOD_nE7UL2.Object
         #region UnitTypeConfigs
         public class _UnitTypeConfigs
         {
-            public Dictionary<string, float> UnitTypes { get; set; }
+            public IDictionary<string, float> UnitTypes { get; set; }
 
             public UnitTypeEnum RandomUnitType(float r)
             {
@@ -223,7 +223,7 @@ namespace MOD_nE7UL2.Object
             public float MaxBuyRate { get; set; }
             public float TownGReduceBuyRate { get; set; }
             public float TownMReduceBuyRate { get; set; }
-            public Dictionary<string, _RealMarketConfigs_Event> Events { get; set; }
+            public IDictionary<string, _RealMarketConfigs_Event> Events { get; set; }
 
             public float GetAddSellRate()
             {
@@ -246,10 +246,10 @@ namespace MOD_nE7UL2.Object
             public float MHpR { get; set; }
             public float Additionnal { get; set; }
             public float RebirthAffect { get; set; }
-            public Dictionary<MonstType, float> GrowRate { get; set; }
-            public Dictionary<MonstType, float> KillGrowRate { get; set; }
-            public Dictionary<MonstType, float> PlayerAtk2Hp { get; set; }
-            public Dictionary<int, float> AreaBonus { get; set; }
+            public IDictionary<MonstType, float> GrowRate { get; set; }
+            public IDictionary<MonstType, float> KillGrowRate { get; set; }
+            public IDictionary<MonstType, float> PlayerAtk2Hp { get; set; }
+            public IDictionary<int, float> AreaBonus { get; set; }
         }
         public _MonstStrongerConfigs MonstStrongerConfigs { get; set; }
         #endregion
@@ -257,7 +257,7 @@ namespace MOD_nE7UL2.Object
         #region NpcUpgradeSkillConfigs
         public class _NpcUpgradeSkillConfigs
         {
-            public Dictionary<MartialType, float> UpgradeRates { get; set; }
+            public IDictionary<MartialType, float> UpgradeRates { get; set; }
 
             public MartialType RandomUpgradingMartial(float r, float ratio)
             {
@@ -281,8 +281,8 @@ namespace MOD_nE7UL2.Object
         #region ExpertConfigs
         public class _ExpertConfigs
         {
-            public Dictionary<MartialType, float> SkillDmgRatios { get; set; }
-            public Dictionary<MartialType, float> SkillExpRatios { get; set; }
+            public IDictionary<MartialType, float> SkillDmgRatios { get; set; }
+            public IDictionary<MartialType, float> SkillExpRatios { get; set; }
             public float AutoArtifactExpRate { get; set; }
             public float BattleArtifactExpRate { get; set; }
         }
@@ -359,7 +359,7 @@ namespace MOD_nE7UL2.Object
         #region CustomRefineConfigs
         public class _CustomRefineConfigs
         {
-            public Dictionary<AdjLevelEnum, float> LevelRates { get; set; }
+            public IDictionary<string, float> LevelRates { get; set; }
 
             public AdjLevelEnum RandomRefineLevel(float r)
             {
@@ -371,7 +371,7 @@ namespace MOD_nE7UL2.Object
                     max = min + ut.Value;
                     if (ValueHelper.IsBetween(r, min, max))
                     {
-                        return ut.Key;
+                        return AdjLevelEnum.GetEnumByName<AdjLevelEnum>(ut.Key);
                     }
                 }
                 return AdjLevelEnum.None;

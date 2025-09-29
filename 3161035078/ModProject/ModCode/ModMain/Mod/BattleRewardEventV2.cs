@@ -502,7 +502,7 @@ namespace MOD_nE7UL2.Mod
             if (e.isWin)
             {
                 var teamData = HirePeopleEvent.GetTeamDetailData(g.world.playerUnit);
-                var rewardItems = ModBattleEvent.SceneBattle.battleData.allDropRewardItem;
+                var rewardItems = ModBattleEvent.SceneBattle.battleData.allDropRewardItem.ToArray();
                 foreach (var item in rewardItems)
                 {
                     var receiver = teamData.Item2.Random();
@@ -659,7 +659,7 @@ namespace MOD_nE7UL2.Mod
                     if (dieUnitWUnit.IsPlayer() && isKillerWUnit)
                     {
                         var teamData = HirePeopleEvent.GetTeamDetailData(g.world.playerUnit);
-                        var rewardItems = ModBattleEvent.SceneBattle.battleData.allDropRewardItem;
+                        var rewardItems = ModBattleEvent.SceneBattle.battleData.allDropRewardItem.ToArray();
                         foreach (var item in rewardItems)
                         {
                             killerWUnit.AddUnitProp(item);

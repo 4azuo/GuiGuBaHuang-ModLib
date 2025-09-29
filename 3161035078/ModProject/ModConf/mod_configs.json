@@ -315,8 +315,8 @@
 		"DifferenceRighteous": 80,
 	},
 	"CustomRefineConfigs": {
+		"__tip": "Total rates = 100%",
 		"LevelRates": {
-			"__tip": "Total = 100%",
 			"Common": 30.0,
 			"Uncommon": 20.0,
 			"Rare": 20.0,
