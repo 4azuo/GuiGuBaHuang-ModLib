@@ -462,6 +462,7 @@ namespace MOD_nE7UL2.Mod
         public override void OnBattleUnitHit(UnitHit e)
         {
             base.OnBattleUnitHit(e);
+
             if (!SMLocalConfigsEvent.Instance.Configs.NoGrowupFromBattles)
             {
                 while (UpProperty(e))
@@ -472,6 +473,9 @@ namespace MOD_nE7UL2.Mod
 
         private bool UpProperty(UnitHit e)
         {
+            if (DungeonHelper.IsSkillPreview())
+                return false;
+
             var player = g.world.playerUnit;
             foreach (var prop in PLAYER_TRAINING_PROPERTIES)
             {
@@ -499,8 +503,17 @@ namespace MOD_nE7UL2.Mod
         {
             base.OnBattleEndHandler(e);
 
+            var localDmgDealt = ModBattleEvent.sGetDmg(ModBattleEvent.DmgSaveEnum.Local, ModBattleEvent.GetDmgKey(ModBattleEvent.DmgEnum.DmgDealt, ModBattleEvent.DmgTypeEnum.Damage));
+            var localDmgRecv = ModBattleEvent.sGetDmg(ModBattleEvent.DmgSaveEnum.Local, ModBattleEvent.GetDmgKey(ModBattleEvent.DmgEnum.DmgRecv, ModBattleEvent.DmgTypeEnum.Damage));
+            DebugHelper.WriteLine($"Damage dealt: {localDmgDealt}dmg, Damage recieve: {localDmgRecv}dmg");
+            var player = g.world.playerUnit;
+
             if (e.isWin)
             {
+                DebugHelper.WriteLine($"BattleRewardEvent: win");
+                var insight = player.GetDynProperty(UnitDynPropertyEnum.Talent).value;
+
+                //teammate get items
                 var teamData = HirePeopleEvent.GetTeamDetailData(g.world.playerUnit);
                 var rewardItems = ModBattleEvent.SceneBattle.battleData.allDropRewardItem.ToArray();
                 foreach (var item in rewardItems)
@@ -512,22 +525,6 @@ namespace MOD_nE7UL2.Mod
                         ModBattleEvent.SceneBattle.battleData.allDropRewardItem.Remove(item);
                     }
                 }
-            }
-        }
-
-        public override void OnBattleEndOnce(BattleEnd e)
-        {
-            base.OnBattleEndOnce(e);
-
-            var localDmgDealt = ModBattleEvent.sGetDmg(ModBattleEvent.DmgSaveEnum.Local, ModBattleEvent.GetDmgKey(ModBattleEvent.DmgEnum.DmgDealt, ModBattleEvent.DmgTypeEnum.Damage));
-            var localDmgRecv = ModBattleEvent.sGetDmg(ModBattleEvent.DmgSaveEnum.Local, ModBattleEvent.GetDmgKey(ModBattleEvent.DmgEnum.DmgRecv, ModBattleEvent.DmgTypeEnum.Damage));
-            DebugHelper.WriteLine($"Damage dealt: {localDmgDealt}dmg, Damage recieve: {localDmgRecv}dmg");
-            var player = g.world.playerUnit;
-
-            if (e.isWin)
-            {
-                DebugHelper.WriteLine($"BattleRewardEvent: win");
-                var insight = player.GetDynProperty(UnitDynPropertyEnum.Talent).value;
 
                 //player growup after battles
                 if (!SMLocalConfigsEvent.Instance.Configs.NoGrowupFromBattles)
@@ -612,7 +609,6 @@ namespace MOD_nE7UL2.Mod
                 //DebugHelper.WriteLine("1");
                 var dieUnit = e.unit;
                 var dieUnitWUnit = dieUnit.GetWorldUnit();
-                //var isDieUnitWUnit = dieUnit?.IsWorldUnit() ?? false; /*↑↑↑ checked ↑↑*/
                 var killer = e?.hitData?.attackUnit;
                 var killerWUnit = killer?.GetWorldUnit();
                 var isKillerWUnit = killer?.IsWorldUnit() ?? false;
@@ -629,9 +625,9 @@ namespace MOD_nE7UL2.Mod
                 if (g.world.battle.data.isRealBattle)
                 {
                     //life drain
+                    //DebugHelper.WriteLine("3");
                     if (SMLocalConfigsEvent.Instance.Configs.LostLifespanWhenDie)
                     {
-                        //DebugHelper.WriteLine("3");
                         var drainLife = Math.Max(6/*month*/ * g.game.data.dataWorld.data.gameLevel.Parse<int>(), dieUnit.data.maxHP.value / (3000 / g.game.data.dataWorld.data.gameLevel.Parse<int>()));
                         dieUnitWUnit.AddProperty<int>(UnitPropertyEnum.Life, -drainLife);
                         if (isKillerWUnit)
@@ -650,7 +646,9 @@ namespace MOD_nE7UL2.Mod
                                 !CommonTool.Random(0.00f, 100.00f).IsBetween(0.00f, (luck / 10.0f) + (ringLockScore / 100.0f)))
                             {
                                 dieUnitWUnit.RemoveUnitProp(item.soleID);
-                                if (isKillerWUnit)
+                                if (killerWUnit.IsPlayer())
+                                    ModBattleEvent.SceneBattle.battleData.allDropRewardItem.Remove(item);
+                                else if (isKillerWUnit)
                                     killerWUnit.AddUnitProp(item);
                             }
                         }

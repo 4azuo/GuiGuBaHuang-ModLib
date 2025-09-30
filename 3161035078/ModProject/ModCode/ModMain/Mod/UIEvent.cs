@@ -1,12 +1,8 @@
 ﻿using MOD_nE7UL2.Const;
 using ModLib.Mod;
 using UnityEngine;
-using System.Linq;
 using UnityEngine.UI;
 using EGameTypeData;
-using static MOD_nE7UL2.Object.ModStts._HideButtonConfigs;
-using static MOD_nE7UL2.Object.ModStts;
-using System.Collections.Generic;
 using ModLib.Enum;
 using MOD_nE7UL2.Enum;
 using ModLib.Object;
@@ -17,8 +13,6 @@ namespace MOD_nE7UL2.Mod
     public class UIEvent : ModEvent
     {
         public static UIEvent Instance { get; set; }
-
-        public static _HideButtonConfigs Configs => ModMain.ModObj.ModSettings.HideButtonConfigs;
 
         private Text uiArtifactInfo_textBasicTitle;
         private Text uiArtifactInfo_textBasicAdj1;
@@ -48,27 +42,6 @@ namespace MOD_nE7UL2.Mod
 
         public void OnUIOpen(OpenUIEnd e)
         {
-            /*
-             * Hide buttons
-             */
-            //DebugHelper.WriteLine("2");
-            IDictionary<string, SelectOption> buttonConfigs;
-            if (Configs.ButtonConfigs.TryGetValue(e.uiType.uiName, out buttonConfigs))
-            {
-                var ui = g.ui.GetUI(e.uiType);
-                if (ui == null)
-                    return;
-
-                foreach (var buttonConfig in buttonConfigs)
-                {
-                    var comp = ui.GetComponentsInChildren<MonoBehaviour>().Where(x => buttonConfig.Key == x.name);
-                    foreach (var c in comp)
-                    {
-                        c.gameObject.SetActive(buttonConfig.Value == SelectOption.Show);
-                    }
-                }
-            }
-
             /*
              * UI
              */

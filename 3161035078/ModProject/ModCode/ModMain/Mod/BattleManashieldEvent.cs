@@ -21,11 +21,7 @@ namespace MOD_nE7UL2.Mod
         public override void OnBattleUnitInto(UnitCtrlBase e)
         {
             base.OnBattleUnitInto(e);
-
-            if (e.IsWorldUnit())
-            {
-                ShieldUpHuman(e);
-            }
+            ShieldUpHuman(e);
         }
 
         public static int GetInitShield(WorldUnitBase wunit)
@@ -56,7 +52,7 @@ namespace MOD_nE7UL2.Mod
 
         public static void ShieldUpHuman(UnitCtrlBase e)
         {
-            if (e.IsWorldUnit())
+            if (e.IsHuman())
             {
                 var humanData = e?.data?.TryCast<UnitDataHuman>();
                 var shield = GetInitShield(humanData.worldUnitData.unit);
