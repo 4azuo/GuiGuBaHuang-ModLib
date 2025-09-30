@@ -9,11 +9,6 @@ public static class CUnitHelper
         return cunit?.TryCast<UnitCtrlHuman>() != null;
     }
 
-    public static bool IsWorldUnit(this UnitCtrlBase cunit)
-    {
-        return cunit?.TryCast<UnitCtrlHuman>()?.data?.worldUnitData?.unit != null;
-    }
-
     public static bool IsMonster(this UnitCtrlBase cunit)
     {
         return cunit?.TryCast<UnitCtrlMonst>() != null;
@@ -32,6 +27,39 @@ public static class CUnitHelper
     public static bool IsPlayer(this UnitCtrlBase cunit)
     {
         return cunit?.TryCast<UnitCtrlPlayer>() != null;
+    }
+
+    public static bool IsWorldUnit(this UnitCtrlBase cunit)
+    {
+        return cunit.GetWorldUnit() != null && !cunit.IsSummoned();
+    }
+
+    public static bool IsSummoned(this UnitCtrlBase cunit)
+    {
+        return cunit?.monstSummon != null || (cunit?.IsPotmon() ?? false);
+    }
+
+    public static UnitCtrlBase GetSummoner(this UnitCtrlBase cunit)
+    {
+        if (cunit == null || !cunit.IsSummoned())
+            return null;
+        if (cunit.IsPotmon())
+            return ModBattleEvent.PlayerUnit;
+        return cunit?.monstSummon?.skillValueData?.data?.unitCtrlBase ??
+            cunit?.monstSummon?.copySummonUnit ??
+            cunit?.monstSummon?.summonUnit;
+    }
+
+    public static UnitCtrlBase GetOriginSummoner(this UnitCtrlBase cunit)
+    {
+        if (cunit == null || !cunit.IsSummoned())
+            return null;
+        if (cunit.IsPotmon())
+            return ModBattleEvent.PlayerUnit;
+        var summoner = cunit.GetSummoner();
+        while (summoner != null && summoner.IsSummoned())
+            summoner = summoner.GetSummoner();
+        return summoner;
     }
 
     public static WorldUnitBase GetWorldUnit(this UnitCtrlBase cunit)
