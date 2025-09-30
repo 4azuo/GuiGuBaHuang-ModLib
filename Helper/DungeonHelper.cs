@@ -24,4 +24,9 @@
     {
         return g.world.battle.data.dungeonBaseItem.id == 2303;
     }
+
+    public static bool IsSkillPreview()
+    {
+        return g.world.battle.data.dungeonBaseItem.id == 10;
+    }
 }

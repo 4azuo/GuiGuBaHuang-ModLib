@@ -1,4 +1,5 @@
 ﻿using EBattleTypeData;
+using Newtonsoft.Json;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
@@ -8,7 +9,6 @@ namespace ModLib.Mod
     public abstract partial class ModMaster : MonoBehaviour
     {
         private static readonly List<string> battleCheckList = new List<string>();
-        private static bool isBattleEnd = true;
 
         #region ModLib - Handlers
         public virtual void _OnBattleUnitInit(ETypeData e)
@@ -89,17 +89,11 @@ namespace ModLib.Mod
 
         public virtual void _OnBattleStart(ETypeData e)
         {
-            isBattleEnd = false;
             CallEvents<ETypeData>("OnBattleStart", e);
         }
 
         public virtual void _OnBattleEnd(ETypeData e)
         {
-            if (!isBattleEnd)
-            {
-                CallEvents<BattleEnd>("OnBattleEndOnce", e);
-                isBattleEnd = true;
-            }
             CallEvents<BattleEnd>("OnBattleEnd", e);
             battleCheckList.Clear();
         }
@@ -199,7 +193,8 @@ namespace ModLib.Mod
         public virtual void OnBattleUnitInto(UnitCtrlBase e)
         {
             var monst = e.TryCast<UnitCtrlMonst>();
-            DebugHelper.WriteLine($"Unit: SoleId:{e.data.createUnitSoleID}, IsEnemy:{e.IsEnemy(UnitType.Player)}, IsWorldUnit:{e.IsWorldUnit()}, IsPlayer:{e.IsPlayer()}, IsNPC:{e.IsNPC()}, IsHuman:{e.IsHuman()}, IsMonster:{e.IsMonster()}, IsMonsterHuman:{e.IsMonsterHuman()}, IsFairy:{e.IsFairy()}, IsHerd:{e.IsHerd()}, IsPotmon:{e.IsPotmon()}, UnitType:{e.data.unitType}, MonstType:{monst?.data.monstType}, MonstId:{monst?.data.unitAttrItem.id}, MonstName:{monst?.data.unitAttrItem.name}");
+            //Ignore because can not be log here: "IsFairy:{ e.IsFairy()}, IsSummoned: { e.IsSummoned()}, IsSectGuardian: { e.IsSectGuardian()}, IsHerd: { e.IsHerd()}, IsPotmon: { e.IsPotmon()}"
+            DebugHelper.WriteLine($"Unit: SoleId:{e.data.createUnitSoleID}, IsEnemy:{e.IsEnemy(UnitType.Player)}, IsWorldUnit:{e.IsWorldUnit()}, IsPlayer:{e.IsPlayer()}, IsNPC:{e.IsNPC()}, IsHuman:{e.IsHuman()}, IsMonster:{e.IsMonster()}, IsMonsterHuman:{e.IsMonsterHuman()}, UnitType:{e.data.unitType}, MonstType:{monst?.data.monstType}, MonstId:{monst?.data.unitAttrItem.id}, MonstName:{monst?.data.unitAttrItem.name}");
             EventHelper.RunMinorEvents("OnBattleUnitInto", e);
         }
 
@@ -212,12 +207,6 @@ namespace ModLib.Mod
         public virtual void OnBattleEnd(BattleEnd e)
         {
             EventHelper.RunMinorEvents("OnBattleEnd", e);
-        }
-
-        public virtual void OnBattleEndOnce(BattleEnd e)
-        {
-            EventHelper.RunMinorEvents("OnBattleEndOnce", e);
-            DebugHelper.Save();
         }
 
         public virtual void OnBattleEndFront(ETypeData e)

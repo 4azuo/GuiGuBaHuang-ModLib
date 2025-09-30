@@ -101,8 +101,10 @@ public static class ParseHelper
     /// </summary>
     /// <param name="value"></param>
     /// <returns></returns>
-    public static string ToJson(this object value)
+    public static string ToJson(this object value, JsonSerializerSettings stts = null)
     {
-        return JsonConvert.SerializeObject(value, JSON_PARSER_CONF);
+        if (stts == null)
+            stts = JSON_PARSER_CONF;
+        return JsonConvert.SerializeObject(value, stts);
     }
 }
