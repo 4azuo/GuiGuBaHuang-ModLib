@@ -10,6 +10,8 @@ namespace ModLib.Mod
     [Cache("$BATTLE$", OrderIndex = 100, CacheType = CacheAttribute.CType.Local, WorkOn = CacheAttribute.WType.Local)]
     public class ModBattleEvent : ModEvent
     {
+        public static ModBattleEvent Instance { get; set; }
+
         #region DmgKey
         public enum DmgEnum
         {
@@ -138,7 +140,7 @@ namespace ModLib.Mod
 
         public static DmgTypeEnum sGetHighestDealtDmgTypeEnum()
         {
-            return ModBattleEvent.BattleInfo.GetHighestDealtDmgTypeEnum();
+            return ModBattleEvent.Instance.GetHighestDealtDmgTypeEnum();
         }
 
         public DmgTypeEnum GetHighestRecvDmgTypeEnum()
@@ -164,7 +166,7 @@ namespace ModLib.Mod
 
         public static DmgTypeEnum sGetHighestRecvDmgTypeEnum()
         {
-            return ModBattleEvent.BattleInfo.GetHighestRecvDmgTypeEnum();
+            return ModBattleEvent.Instance.GetHighestRecvDmgTypeEnum();
         }
         #endregion
 
@@ -198,7 +200,7 @@ namespace ModLib.Mod
 
         public static long sGetDmg(DmgSaveEnum dmgSaveEnum, string dmgKey)
         {
-            return BattleInfo.GetDmg(dmgSaveEnum, dmgKey);
+            return Instance.GetDmg(dmgSaveEnum, dmgKey);
         }
         #endregion
 
@@ -209,49 +211,24 @@ namespace ModLib.Mod
         }
         #endregion
 
-        [JsonIgnore]
         public static SceneBattle SceneBattle => SceneType.battle;
-        [JsonIgnore]
         public static UnitCtrlPlayer PlayerUnit => SceneBattle.battleData.playerUnit;
-        [JsonIgnore]
         public static UnitCtrlBase AttackingUnit { get; private set; }
-        [JsonIgnore]
         public static WorldUnitBase AttackingWorldUnit { get; private set; }
-        [JsonIgnore]
         public static bool IsWorldUnitAttacking => AttackingWorldUnit != null;
-        [JsonIgnore]
         public static bool IsPlayerAttacking => IsWorldUnitAttacking && AttackingWorldUnit.IsPlayer();
-        [JsonIgnore]
         public static UnitCtrlBase HitUnit { get; private set; }
-        [JsonIgnore]
         public static WorldUnitBase HitWorldUnit { get; private set; }
-        [JsonIgnore]
         public static bool IsWorldUnitHit => HitWorldUnit != null;
-        [JsonIgnore]
         public static Il2CppSystem.Collections.Generic.List<UnitCtrlBase> BattleUnits => SceneBattle.unit.allUnit;
-        [JsonIgnore]
         public static Il2CppSystem.Collections.Generic.List<UnitCtrlBase> BattleUnitsIncludeDie => SceneBattle.unit.allUnitIncludeDie;
-        [JsonIgnore]
         public static List<UnitCtrlBase> BattleMonsters => BattleUnits.ToArray().Where(x => x.IsMonster()).ToList();
-        [JsonIgnore]
-        public static ModBattleEvent BattleInfo { get; private set; }
-        [JsonIgnore]
         public static MapBuildTown Town { get; private set; }
-        [JsonIgnore]
         public static MapBuildSchool School { get; private set; }
-        [JsonIgnore]
         public static float BattleTime => SceneBattle.battleData.battleTime;
-        [JsonIgnore]
         public static float BattleStayTime => SceneBattle.battleData.battleStayTime;
-        [JsonIgnore]
         public static float RoomStayTime => SceneBattle.battleData.roomStayTime;
-        [JsonIgnore]
         public static List<Tuple<UnitCtrlBase, UnitCtrlBase>> KillList { get; } = new List<Tuple<UnitCtrlBase, UnitCtrlBase>>();
-
-        public ModBattleEvent() : base()
-        {
-            BattleInfo = this;
-        }
 
         public override void OnLoadGame()
         {
@@ -294,7 +271,7 @@ namespace ModLib.Mod
         {
             base.OnBattleUnitHitDynIntHandler(e);
             AttackingUnit = e?.hitData?.attackUnit;
-            AttackingWorldUnit = AttackingUnit?.data?.TryCast<UnitDataHuman>()?.worldUnitData?.unit;
+            AttackingWorldUnit = AttackingUnit?.GetWorldUnit();
             HitUnit = e?.hitUnit;
             HitWorldUnit = HitUnit?.data?.TryCast<UnitDataHuman>()?.worldUnitData?.unit;
         }
