@@ -28,7 +28,7 @@ namespace MOD_nE7UL2.Mod
         {
             base.OnBattleUnitInto(e);
 
-            if (e.IsMonster() && !e.IsPotmon())
+            if (e.IsMonster() && !e.IsPotmon() && !e.IsSummoned())
             {
                 var gameLvl = g.data.dataWorld.data.gameLevel.Parse<int>();
                 var monstData = e?.data?.TryCast<UnitDataMonst>();
@@ -52,7 +52,7 @@ namespace MOD_nE7UL2.Mod
             base.OnBattleUnitDie(e);
 
             var dieUnit = e.unit;
-            if (dieUnit.IsMonster() && !dieUnit.IsPotmon())
+            if (dieUnit.IsMonster() && !dieUnit.IsPotmon() && !dieUnit.IsSummoned())
             {
                 var gameLvl = g.data.dataWorld.data.gameLevel.Parse<int>();
                 var monstData = dieUnit?.data?.TryCast<UnitDataMonst>();

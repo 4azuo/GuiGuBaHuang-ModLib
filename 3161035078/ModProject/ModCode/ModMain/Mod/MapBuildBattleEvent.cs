@@ -851,9 +851,10 @@ namespace MOD_nE7UL2.Mod
             }
         }
 
-        public override void OnBattleEndOnce(BattleEnd e)
+        public override void OnBattleEndHandler(BattleEndHandler e)
         {
-            base.OnBattleEndOnce(e);
+            base.OnBattleEndHandler(e);
+
             if (ModBattleEvent.SceneBattle != null && (IsBattleTownWar() || IsBattleMonstWave()))
             {
                 if (WinTeamSide == TeamSideEnum.TeamA)

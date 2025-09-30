@@ -5,7 +5,19 @@ namespace MOD_nE7UL2.Enum
 {
     public class BuildingCostEnum : EnumObject
     {
-        public static BuildingCostEnum SchoolTrainingHallBuildCost { get; } = new BuildingCostEnum("building500030006", -1f, MapBuildSubType.SchoolTrainingHall, true, false, null);
+        public static BuildingCostEnum SchoolTrainingHallBuildCost { get; } = new BuildingCostEnum("building500030006", 5.00f, MapBuildSubType.SchoolTrainingHall, true, false, new long[]
+        {
+            /*01*/10000,
+            /*02*/20000,
+            /*03*/50000,
+            /*04*/50000,
+            /*05*/200000,
+            /*06*/200000,
+            /*07*/500000,
+            /*08*/500000,
+            /*09*/1000000,
+            /*10*/3000000,
+        });
         public static BuildingCostEnum SchoolPortalBuildCost { get; } = new BuildingCostEnum("building500030007", 4.00f, MapBuildSubType.SchoolTransfer, true, false, new long[]
         {
             /*01*/15000,

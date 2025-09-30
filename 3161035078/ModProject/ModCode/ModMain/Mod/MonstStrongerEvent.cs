@@ -25,8 +25,6 @@ namespace MOD_nE7UL2.Mod
         public IDictionary<MonstType, int> KillCounter { get; set; } = new Dictionary<MonstType, int>();
         public IDictionary<MonstType, float> Additional { get; set; } = new Dictionary<MonstType, float>();
 
-        private double[] petBuff = new double[] { 0f, 0f };
-
         public override void OnLoadGame()
         {
             base.OnLoadGame();
@@ -235,21 +233,21 @@ namespace MOD_nE7UL2.Mod
 
                 //pet buff
                 //DebugHelper.WriteLine("13");
-                var petbuffRatio = GetPetBuff(e);
-                monstData.attack.baseValue += (atk * petbuffRatio * Configs.AtkR).Parse<int>();
-                monstData.defense.baseValue += (def * petbuffRatio * Configs.DefR).Parse<int>();
-                monstData.maxHP.baseValue += (mhp * petbuffRatio * Configs.MHpR).Parse<int>();
+                if (e.IsSummoned())
+                {
+                    var summoner = e.GetOriginSummoner();
+                    if (summoner != null && summoner.IsWorldUnit())
+                    {
+                        var petbuffRatio = CustomRefineEvent.GetCustomAdjValue(summoner.GetWorldUnit(), AdjTypeEnum.SummonPower) / 100f;
+                        monstData.attack.baseValue += (atk * petbuffRatio * Configs.AtkR).Parse<int>();
+                        monstData.defense.baseValue += (def * petbuffRatio * Configs.DefR).Parse<int>();
+                        monstData.maxHP.baseValue += (mhp * petbuffRatio * Configs.MHpR).Parse<int>();
+                    }
+                }
 
                 //heal fullhp
                 //DebugHelper.WriteLine("14");
                 e.data.hp = e.data.maxHP.value;
-            }
-            else if (e.IsHuman())
-            {
-                //pet buff
-                var wunit = e.GetWorldUnit();
-                if (wunit != null)
-                    petBuff[GetPetBuffIndex(e)] += CustomRefineEvent.GetCustomAdjValue(wunit, AdjTypeEnum.SummonPower) / 100f;
             }
             //DebugHelper.Save();
         }
@@ -259,23 +257,5 @@ namespace MOD_nE7UL2.Mod
         //{
         //    base.OnBattleUnitHitDynIntHandler(e);
         //}
-
-        public static bool IsFriendly(UnitCtrlBase cunit)
-        {
-            return cunit.data.unitType == UnitType.Player || cunit.data.unitType == UnitType.PlayerNPC;
-        }
-
-        public static int GetPetBuffIndex(UnitCtrlBase cunit)
-        {
-            if (IsFriendly(cunit))
-                return 0;
-            else
-                return 1;
-        }
-
-        public static double GetPetBuff(UnitCtrlBase cunit)
-        {
-            return Instance.petBuff[GetPetBuffIndex(cunit)];
-        }
     }
 }

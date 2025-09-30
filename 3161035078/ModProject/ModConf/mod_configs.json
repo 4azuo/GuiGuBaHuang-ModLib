@@ -95,18 +95,6 @@
 		"PowerUpPillEfxRatio9": 80.0,
 		"PowerUpPillEfxRatio10": 100.0,
 	},
-	"HideButtonConfigs": {
-		"__select_options": "Hide/Show",
-		"ButtonConfigs": {
-			"GameMemu": {
-				"G:btnSave": "Show",
-				"G:btnReloadCache": "Show"
-			},
-			"MartialPropInfo": {
-				"G:btnPreview": "Hide"
-			}
-		}
-	},
 	"ContributionExchangeConfigs": {
 		"__formula": "item-sell-value / {ExchangeRatio}",
 		"ExchangeRatio": 40

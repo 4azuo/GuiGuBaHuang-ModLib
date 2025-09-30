@@ -123,20 +123,6 @@ namespace MOD_nE7UL2.Object
         public _BaseConfigs BaseConfigs { get; set; }
         #endregion
 
-        #region HideButtonConfigs
-        public class _HideButtonConfigs
-        {
-            [JsonConverter(typeof(StringEnumConverter))]
-            public enum SelectOption
-            {
-                Hide,
-                Show,
-            }
-            public IDictionary<string, IDictionary<string, SelectOption>> ButtonConfigs { get; set; }
-        }
-        public _HideButtonConfigs HideButtonConfigs { get; set; }
-        #endregion
-
         #region ContributionExchangeConfigs
         public class _ContributionExchangeConfigs
         {
