@@ -47,7 +47,7 @@ namespace MOD_nE7UL2.Mod
             AroundUnits.Clear();
             TeamMembers.Clear();
             JointTeamMembers.Clear();
-            if (g.world.battle.data.isRealBattle && IsJoinableBattle())
+            if (DungeonHelper.IsRealBattle() && IsJoinableBattle())
             {
                 var player = g.world.playerUnit;
 
@@ -92,7 +92,7 @@ namespace MOD_nE7UL2.Mod
             base.OnTimeUpdate1000ms();
             if (ModBattleEvent.SceneBattle != null && IsJoinableBattle())
             {
-                if (g.world.battle.data.isRealBattle && ModBattleEvent.SceneBattle.battleMap.isStartBattle &&
+                if (DungeonHelper.IsRealBattle() && ModBattleEvent.SceneBattle.battleMap.isStartBattle &&
                     ModBattleEvent.PlayerUnit != null && !ModBattleEvent.PlayerUnit.isDie && !ModBattleEvent.SceneBattle.unit.IsUnitHide(ModBattleEvent.PlayerUnit))
                 {
                     if (AroundUnits.Count > 0)

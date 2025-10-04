@@ -1,5 +1,6 @@
 ﻿using Il2CppSystem.Data;
 using MOD_nE7UL2.Enum;
+using MOD_nE7UL2.Mod;
 using System.Linq;
 using UnityEngine;
 using static MOD_nE7UL2.Object.ModStts;
@@ -11,20 +12,24 @@ namespace MOD_nE7UL2.Object
         public static _CustomRefineConfigs Configs => ModMain.ModObj.ModSettings.CustomRefineConfigs;
 
         #region AdjTypeSeeder
+        //public static AdjTypeEnum[] RingAdjTypes = new AdjTypeEnum[]
+        //{
+        //    AdjTypeEnum.Def, AdjTypeEnum.MHp, AdjTypeEnum.MMp, AdjTypeEnum.MSp, AdjTypeEnum.MDp,
+        //    AdjTypeEnum.Nullify, AdjTypeEnum.RHp, AdjTypeEnum.RMp, AdjTypeEnum.RSp, AdjTypeEnum.RDp,
+        //    AdjTypeEnum.SkillDamage, AdjTypeEnum.MinDamage, AdjTypeEnum.SummonPower, AdjTypeEnum.ItemCD, AdjTypeEnum.SkillCD,
+        //    AdjTypeEnum.BasisBlade, AdjTypeEnum.BasisEarth, AdjTypeEnum.BasisFinger, AdjTypeEnum.BasisFire, AdjTypeEnum.BasisFist, AdjTypeEnum.BasisFroze,
+        //    AdjTypeEnum.BasisPalm, AdjTypeEnum.BasisSpear, AdjTypeEnum.BasisSword, AdjTypeEnum.BasisThunder, AdjTypeEnum.BasisWind, AdjTypeEnum.BasisWood
+        //};
         public static AdjTypeEnum[] RingAdjTypes = new AdjTypeEnum[]
         {
-            AdjTypeEnum.Def, AdjTypeEnum.MHp, AdjTypeEnum.MMp, AdjTypeEnum.MSp, AdjTypeEnum.MDp,
-            AdjTypeEnum.Nullify, AdjTypeEnum.RHp, AdjTypeEnum.RMp, AdjTypeEnum.RSp, AdjTypeEnum.RDp,
-            AdjTypeEnum.SkillDamage, AdjTypeEnum.MinDamage, AdjTypeEnum.SummonPower,
-            AdjTypeEnum.BasisBlade, AdjTypeEnum.BasisEarth, AdjTypeEnum.BasisFinger, AdjTypeEnum.BasisFire, AdjTypeEnum.BasisFist, AdjTypeEnum.BasisFroze,
-            AdjTypeEnum.BasisPalm, AdjTypeEnum.BasisSpear, AdjTypeEnum.BasisSword, AdjTypeEnum.BasisThunder, AdjTypeEnum.BasisWind, AdjTypeEnum.BasisWood
+            AdjTypeEnum.SummonPower, AdjTypeEnum.ItemCD, AdjTypeEnum.SkillCD
         };
 
         public static AdjTypeEnum[] OutfitAdjTypes = new AdjTypeEnum[]
         {
             AdjTypeEnum.Def, AdjTypeEnum.MHp, AdjTypeEnum.MMp, AdjTypeEnum.MDp, AdjTypeEnum.RHp, AdjTypeEnum.RMp, AdjTypeEnum.RDp,
             AdjTypeEnum.Nullify, AdjTypeEnum.BlockChanceMax, AdjTypeEnum.BlockDmg,
-            AdjTypeEnum.EvadeChance, AdjTypeEnum.EvadeChanceMax,
+            AdjTypeEnum.EvadeChance, AdjTypeEnum.EvadeChanceMax, AdjTypeEnum.ItemCD, AdjTypeEnum.SkillCD,
             AdjTypeEnum.BasisBlade, AdjTypeEnum.BasisEarth, AdjTypeEnum.BasisFinger, AdjTypeEnum.BasisFire, AdjTypeEnum.BasisFist, AdjTypeEnum.BasisFroze,
             AdjTypeEnum.BasisPalm, AdjTypeEnum.BasisSpear, AdjTypeEnum.BasisSword, AdjTypeEnum.BasisThunder, AdjTypeEnum.BasisWind, AdjTypeEnum.BasisWood
         };
@@ -35,7 +40,7 @@ namespace MOD_nE7UL2.Object
             AdjTypeEnum.Atk, AdjTypeEnum.Def, AdjTypeEnum.Speed, AdjTypeEnum.Manashield,
             AdjTypeEnum.Nullify, AdjTypeEnum.SkillDamage, AdjTypeEnum.MinDamage, AdjTypeEnum.SummonPower,
             AdjTypeEnum.BlockChanceMax, AdjTypeEnum.BlockDmg,
-            AdjTypeEnum.EvadeChance, AdjTypeEnum.EvadeChanceMax,
+            AdjTypeEnum.EvadeChance, AdjTypeEnum.EvadeChanceMax, AdjTypeEnum.ItemCD, AdjTypeEnum.SkillCD,
             AdjTypeEnum.SCritChance, AdjTypeEnum.SCritChanceMax, AdjTypeEnum.SCritDamage
         };
 
@@ -84,12 +89,23 @@ namespace MOD_nE7UL2.Object
             RandomMultiplier = CommonTool.Random(0.60f, 1.40f);
         }
 
-        public double GetRefineCustommAdjValue(WorldUnitBase wunit, DataProps.PropsData props, int refineLvl)
+        public double GetRefineCustommAdjValue(WorldUnitBase wunit, DataProps.PropsData props, int refineLvl, dynamic optionalParams = null)
         {
+            var key = $"{props.soleID}_{Index}";
+            if (CustomRefineEvent.Instance.CachedValues.ContainsKey(key))
+                return CustomRefineEvent.Instance.CachedValues[key];
             if (!IsEnable(refineLvl))
                 return 0;
+            refineLvl = _DecreaseLevel(refineLvl);
             var r = 0.001f * props.propsInfoBase.grade + 0.0002f * props.propsInfoBase.level;
-            return AdjType.GetBaseValue(wunit) * r * refineLvl * AdjLevel.Multiplier * RandomMultiplier;
+            var v = AdjType.GetBaseValue(wunit, optionalParams) * r * refineLvl * AdjLevel.Multiplier * RandomMultiplier;
+            CustomRefineEvent.Instance.CachedValues[key] = v;
+            return v;
+        }
+
+        private int _DecreaseLevel(int refineLvl)
+        {
+            return refineLvl - (Index * 50);
         }
 
         public bool IsEnable(int refineLvl)
@@ -109,11 +125,13 @@ namespace MOD_nE7UL2.Object
 
         public CustomRefine Clone()
         {
-            var clone = new CustomRefine();
-            clone.Index = this.Index;
-            clone.AdjType = this.AdjType;
-            clone.AdjLevel = this.AdjLevel;
-            clone.RandomMultiplier = this.RandomMultiplier;
+            var clone = new CustomRefine
+            {
+                Index = this.Index,
+                AdjType = this.AdjType,
+                AdjLevel = this.AdjLevel,
+                RandomMultiplier = this.RandomMultiplier
+            };
             return clone;
         }
     }

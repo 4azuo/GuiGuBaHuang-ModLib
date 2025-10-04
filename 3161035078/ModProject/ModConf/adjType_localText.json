@@ -301,5 +301,15 @@
 		"id": "500010038",
 		"key": "adjType500010038",
 		"en|ch|tc|kr": "Heal Dp"
+	},
+	{
+		"id": "500010039",
+		"key": "adjType500010039",
+		"en|ch|tc|kr": "Item CD(%)"
+	},
+	{
+		"id": "500010040",
+		"key": "adjType500010040",
+		"en|ch|tc|kr": "Skill CD(%)"
 	}
 ]

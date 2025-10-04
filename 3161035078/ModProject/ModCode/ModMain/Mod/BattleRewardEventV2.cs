@@ -473,7 +473,7 @@ namespace MOD_nE7UL2.Mod
 
         private bool UpProperty(UnitHit e)
         {
-            if (DungeonHelper.IsSkillPreview())
+            if (!DungeonHelper.IsRealBattle())
                 return false;
 
             var player = g.world.playerUnit;
@@ -556,7 +556,7 @@ namespace MOD_nE7UL2.Mod
             else
             {
                 DebugHelper.WriteLine($"BattleRewardEvent: lose");
-                if (g.world.battle.data.isRealBattle && !MapBuildBattleEvent.IsBattleTownWar() && !MapBuildBattleEvent.IsBattleMonstWave())
+                if (DungeonHelper.IsRealBattle() && !MapBuildBattleEvent.IsBattleTownWar() && !MapBuildBattleEvent.IsBattleMonstWave())
                 {
                     if (ModBattleEvent.PlayerUnit.isDie)
                     {
@@ -622,7 +622,7 @@ namespace MOD_nE7UL2.Mod
                     killerWUnit.AddExp(rewardExp);
                 }
 
-                if (g.world.battle.data.isRealBattle)
+                if (DungeonHelper.IsRealBattle())
                 {
                     //life drain
                     //DebugHelper.WriteLine("3");

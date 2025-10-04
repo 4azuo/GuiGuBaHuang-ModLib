@@ -19,6 +19,15 @@ namespace MOD_nE7UL2.Mod
         [JsonIgnore]
         public Dictionary<string, int> CachedValues { get; } = new Dictionary<string, int>();
 
+        public override void OnLoadGame()
+        {
+            base.OnLoadGame();
+            foreach (var wunit in ModMaster.ModObj.WUnits)
+            {
+                AddWUnitModifier(wunit);
+            }
+        }
+
         public override void OnMonthly()
         {
             base.OnMonthly();
@@ -29,15 +38,6 @@ namespace MOD_nE7UL2.Mod
         {
             base.OnMonthlyForEachWUnit(wunit);
             AddWUnitModifier(wunit);
-        }
-
-        public override void OnLoadGame()
-        {
-            base.OnLoadGame();
-            foreach (var wunit in ModMaster.ModObj.WUnits)
-            {
-                AddWUnitModifier(wunit);
-            }
         }
 
         private void AddWUnitModifier(WorldUnitBase wunit)
@@ -129,6 +129,41 @@ namespace MOD_nE7UL2.Mod
             }
         }
 
+        public override void OnBattleUnitInto(UnitCtrlBase cunit)
+        {
+            base.OnBattleUnitInto(cunit);
+            AddCUnitModifier(cunit);
+        }
+
+        private void AddCUnitModifier(UnitCtrlBase cunit)
+        {
+            if (cunit != null && cunit.IsWorldUnit())
+            {
+                //cooldown
+                cunit.data.artifactCDRate.AddValue((DynInt.DynObjectAddHandler)(() =>
+                {
+                    try { return GetItemCD(cunit, cunit.data.artifactCDRate); } catch (Exception e) { DebugHelper.WriteLine(e); return 0; }
+                }));
+                cunit.data.itemCDRate.AddValue((DynInt.DynObjectAddHandler)(() =>
+                {
+                    try { return GetItemCD(cunit, cunit.data.itemCDRate); } catch (Exception e) { DebugHelper.WriteLine(e); return 0; }
+                }));
+                cunit.data.skillCDRate.AddValue((DynInt.DynObjectAddHandler)(() =>
+                {
+                    try { return GetSkillCD(cunit, cunit.data.skillCDRate); } catch (Exception e) { DebugHelper.WriteLine(e); return 0; }
+                }));
+                cunit.data.stepCDRate.AddValue((DynInt.DynObjectAddHandler)(() =>
+                {
+                    try { return GetSkillCD(cunit, cunit.data.stepCDRate); } catch (Exception e) { DebugHelper.WriteLine(e); return 0; }
+                }));
+                cunit.data.ultimateCDRate.AddValue((DynInt.DynObjectAddHandler)(() =>
+                {
+                    try { return GetSkillCD(cunit, cunit.data.ultimateCDRate); } catch (Exception e) { DebugHelper.WriteLine(e); return 0; }
+                }));
+            }
+        }
+
+        #region WUnit
         public static int GetAdjustAtk(WorldUnitBase wunit)
         {
             var k = $"{wunit.GetUnitId()}_atk";
@@ -590,5 +625,44 @@ namespace MOD_nE7UL2.Mod
 
             return Instance.CachedValues[k];
         }
+        #endregion
+
+        #region CUnit
+        public static int GetItemCD(UnitCtrlBase cunit, DynInt baseValue)
+        {
+            var k = $"{cunit.data.createUnitSoleID}_itemCD";
+            if (!cunit.IsWorldUnit())
+                return 0;
+            if (!Instance.CachedValues.ContainsKey(k))
+            {
+                var rs = 0;
+                var wunit = cunit.GetWorldUnit();
+
+                rs -= Convert.ToInt32(CustomRefineEvent.GetCustomAdjValue(wunit, AdjTypeEnum.ItemCD, baseValue.value));
+
+                Instance.CachedValues[k] = rs;
+            }
+
+            return Instance.CachedValues[k];
+        }
+
+        public static int GetSkillCD(UnitCtrlBase cunit, DynInt baseValue)
+        {
+            var k = $"{cunit.data.createUnitSoleID}_skillCD";
+            if (!cunit.IsWorldUnit())
+                return 0;
+            if (!Instance.CachedValues.ContainsKey(k))
+            {
+                var rs = 0;
+                var wunit = cunit.GetWorldUnit();
+
+                rs -= Convert.ToInt32(CustomRefineEvent.GetCustomAdjValue(wunit, AdjTypeEnum.SkillCD, baseValue.value));
+
+                Instance.CachedValues[k] = rs;
+            }
+
+            return Instance.CachedValues[k];
+        }
+        #endregion
     }
 }
