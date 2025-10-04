@@ -19,7 +19,7 @@ namespace MOD_nE7UL2.Mod
     {
         public static CustomRefineEvent Instance { get; set; }
 
-        public const int REFINE_EXP_RATE = 200;
+        public const int REFINE_EXP_RATE = 40;
         public const int MAX_ADJ_PER_PROP = 5;
 
         [JsonIgnore]
