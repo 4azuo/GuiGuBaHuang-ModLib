@@ -4,6 +4,36 @@ using System.Linq;
 
 public static class EnumerableHelper
 {
+    public static void RemoveKeysStartWith(this IDictionary<string, object> dict, string prefix)
+    {
+        if (dict == null || string.IsNullOrEmpty(prefix))
+            return;
+
+        var keysToRemove = dict.Keys
+                               .Where(k => !string.IsNullOrEmpty(k) && k.StartsWith(prefix))
+                               .ToList();
+
+        foreach (var key in keysToRemove)
+        {
+            dict.Remove(key);
+        }
+    }
+
+    public static void RemoveKeysStartWith<TValue>(this IDictionary<string, TValue> dict, string prefix)
+    {
+        if (dict == null || string.IsNullOrEmpty(prefix))
+            return;
+
+        var keysToRemove = dict.Keys
+                               .Where(k => !string.IsNullOrEmpty(k) && k.StartsWith(prefix))
+                               .ToList();
+
+        foreach (var key in keysToRemove)
+        {
+            dict.Remove(key);
+        }
+    }
+
     public static IEnumerable<TSource> DistinctBy<TSource, TKey>(this IEnumerable<TSource> source, Func<TSource, TKey> keySelector)
     {
         HashSet<TKey> seenKeys = new HashSet<TKey>();
