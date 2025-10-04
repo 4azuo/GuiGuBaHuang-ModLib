@@ -29,4 +29,9 @@
     {
         return g.world.battle.data.dungeonBaseItem.id == 10;
     }
+
+    public static bool IsRealBattle()
+    {
+        return g.world.battle.data.isRealBattle;
+    }
 }
