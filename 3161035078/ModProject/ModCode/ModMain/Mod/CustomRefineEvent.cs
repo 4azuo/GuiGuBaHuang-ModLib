@@ -1,16 +1,16 @@
 ﻿using EGameTypeData;
 using MOD_nE7UL2.Const;
-using ModLib.Mod;
-using UnityEngine;
-using System.Linq;
-using ModLib.Const;
-using System.Collections.Generic;
-using UnityEngine.Events;
-using System;
 using MOD_nE7UL2.Enum;
 using MOD_nE7UL2.Object;
+using ModLib.Const;
 using ModLib.Enum;
+using ModLib.Mod;
 using Newtonsoft.Json;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using UnityEngine;
+using UnityEngine.Events;
 
 namespace MOD_nE7UL2.Mod
 {
@@ -30,10 +30,7 @@ namespace MOD_nE7UL2.Mod
         public override void OnMonthly()
         {
             base.OnMonthly();
-            if (GameHelper.GetGameTotalMonth() % SMLocalConfigsEvent.Instance.Configs.GrowUpSpeed == 0)
-            {
-                CachedValues.Clear();
-            }
+            CachedValues.Clear();
         }
 
         public override void OnMonthlyForEachWUnit(WorldUnitBase wunit)
@@ -45,7 +42,7 @@ namespace MOD_nE7UL2.Mod
                 var town = g.world.build.GetBuild<MapBuildTown>(location);
                 if (!wunit.IsPlayer() && town.IsSmallTown() && wunit.GetUnitMoney() > MapBuildPropertyEvent.GetTax(town, wunit) * 3)
                 {
-                    foreach (var item in GetRefinableItems(wunit))
+                    foreach (var item in GetEquippedRefinableItems(wunit))
                     {
                         NpcRefine(wunit, item);
                     }
@@ -58,8 +55,8 @@ namespace MOD_nE7UL2.Mod
             if (item == null)
                 return;
             var money = wunit.GetUnitMoney();
-            var exp = money * wunit.GetDynProperty(UnitDynPropertyEnum.RefineWeapon).value / REFINE_EXP_RATE;
             var spend = Convert.ToInt32(Math.Sqrt(money));
+            var exp = spend * wunit.GetDynProperty(UnitDynPropertyEnum.RefineWeapon).value / REFINE_EXP_RATE;
             AddRefineExp(item, exp);
             wunit.AddUnitMoney(-spend);
             MapBuildPropertyEvent.AddBuildProperty(wunit.GetMapBuild<MapBuildBase>(), spend);
@@ -103,10 +100,21 @@ namespace MOD_nE7UL2.Mod
                     ui.allItems.AddProps(item);
                 }
             }
+            // Custom select để lấy prop
+            DataProps.PropsData selectedItem = null;
+            ui.onCustomSelectCall = (ReturnAction<string, DataProps.PropsData>)((x) =>
+            {
+                ui.ClearSelectItem();
+                ui.AddSelectProps(x);
+                ui.UpdateUI();
+                selectedItem = x;
+                return selectedItem.propsInfoBase.name;
+            });
             ui.btnOK.onClick.RemoveAllListeners();
             ui.btnOK.onClick.AddListener((UnityAction)(() =>
             {
-                var selectedItem = UIPropSelect.allSlectDataProps.allProps.ToArray().FirstOrDefault();
+                if (selectedItem == null)
+                    return;
                 OpenMaterialSelector(selectedItem);
             }));
             ui.UpdateUI();
@@ -131,6 +139,8 @@ namespace MOD_nE7UL2.Mod
                     ui.allItems.AddProps(item);
                 }
             }
+            // Custom select để lấy prop
+            ui.onCustomSelectCall = null;
             ui.btnOK.onClick.RemoveAllListeners();
             ui.btnOK.onClick.AddListener((UnityAction)(() =>
             {
@@ -138,19 +148,23 @@ namespace MOD_nE7UL2.Mod
 
                 var value = UIPropSelect.allSlectDataProps.allProps.ToArray().Sum(x => x.propsInfoBase.worth * x.propsCount);
                 var exp = value * g.world.playerUnit.GetDynProperty(UnitDynPropertyEnum.RefineWeapon).value / REFINE_EXP_RATE;
+
                 AddRefineExp(refineItem, exp);
+
                 g.world.playerUnit.AddUnitMoney(-value);
+                MapBuildPropertyEvent.AddBuildProperty(g.world.playerUnit.GetMapBuild<MapBuildBase>(), value);
+
                 g.ui.CloseUI(ui);
 
                 g.ui.MsgBox(GameTool.LS("other500020050"), string.Format(GameTool.LS("other500020051"), oldLvl, GetRefineLvl(refineItem), exp));
-                CachedValues.Remove(g.world.playerUnit.GetUnitId());
+                CachedValues.RemoveKeysStartWith(refineItem.soleID);
             }));
             ui.UpdateUI();
         }
 
-        public static List<DataProps.PropsData> GetRefinableItems(WorldUnitBase wunit)
+        public static List<DataProps.PropsData> GetEquippedRefinableItems(WorldUnitBase wunit)
         {
-            return wunit.GetUnitProps().Where(x => IsRefinableItem(x)).ToList();
+            return wunit.GetEquippedProps().Where(x => IsRefinableItem(x)).ToList();
         }
 
         public static bool IsRefinableItem(DataProps.PropsData props)
@@ -163,18 +177,20 @@ namespace MOD_nE7UL2.Mod
             return props.propsID == ModLibConst.MONEY_PROP_ID;
         }
 
-        public static void AddRefineExp(string soleId, long exp)
+        public static bool AddRefineExp(string soleId, long exp)
         {
             if (string.IsNullOrEmpty(soleId) || exp == 0)
-                return;
+                return false;
             if (!Instance.RefineExp.ContainsKey(soleId))
                 Instance.RefineExp.Add(soleId, 0);
             Instance.RefineExp[soleId] += exp;
+            DebugHelper.WriteLine($"[CustomRefineEvent] AddRefineExp: {soleId} +{exp} => {Instance.RefineExp[soleId]}");
+            return true;
         }
 
-        public static void AddRefineExp(DataProps.PropsData props, long exp)
+        public static bool AddRefineExp(DataProps.PropsData props, long exp)
         {
-            AddRefineExp(props?.soleID, exp);
+            return AddRefineExp(props?.soleID, exp);
         }
 
         public static long GetRefineExp(string soleId)
@@ -182,7 +198,8 @@ namespace MOD_nE7UL2.Mod
             if (string.IsNullOrEmpty(soleId))
                 return 0;
             if (!Instance.RefineExp.ContainsKey(soleId))
-                Instance.RefineExp.Add(soleId, 0);
+                return 0;
+            DebugHelper.WriteLine($"[CustomRefineEvent] GetRefineExp: {soleId} => {Instance.RefineExp[soleId]}");
             return Instance.RefineExp[soleId];
         }
 
@@ -191,21 +208,18 @@ namespace MOD_nE7UL2.Mod
             return GetRefineExp(props?.soleID);
         }
 
-        public static double GetRefineExpNeed(DataProps.PropsData props, int lvl)
-        {
-            return SMLocalConfigsEvent.Instance.Calculate((props.propsInfoBase.grade * 100 + props.propsInfoBase.level * 20) * Math.Pow(1.04d, lvl), SMLocalConfigsEvent.Instance.Configs.AddRefineCost);
-        }
-
         public static int GetRefineLvl(DataProps.PropsData props)
         {
             if (props == null)
                 return 0;
+
             var curExp = GetRefineExp(props);
-            for (int lvl = 0; ; lvl++)
-            {
-                if (GetRefineExpNeed(props, lvl) > curExp)
-                    return lvl;
-            }
+            var tempLevel1ExpNeed = SMLocalConfigsEvent.Instance.Calculate(props.propsInfoBase.grade * 100 + props.propsInfoBase.level * 20, SMLocalConfigsEvent.Instance.Configs.AddRefineCost);
+            var tempLevel = curExp / tempLevel1ExpNeed;
+            var realLevel1ExpNeed = Math.Max(tempLevel1ExpNeed * Math.Sqrt(tempLevel), 1);
+            var realLevel = curExp / realLevel1ExpNeed;
+
+            return Convert.ToInt32(realLevel);
         }
 
         public static CustomRefine GetCustomAdjType(DataProps.PropsData props, int index)
@@ -223,12 +237,7 @@ namespace MOD_nE7UL2.Mod
 
         public static List<CustomRefine> GetCustomAdjTypes(DataProps.PropsData props)
         {
-            var list = new List<CustomRefine>();
-            for (int i = 1; i <= MAX_ADJ_PER_PROP; i++)
-            {
-                list.Add(GetCustomAdjType(props, i));
-            }
-            return list;
+            return Instance.CustomRefine.Keys.Where(x => x.StartsWith(props.soleID)).Select(x => Instance.CustomRefine[x]).ToList();
         }
 
         public static List<CustomRefine> GetCustomAdjTypes(DataProps.PropsData props, AdjTypeEnum condition)
@@ -236,33 +245,34 @@ namespace MOD_nE7UL2.Mod
             return GetCustomAdjTypes(props).Where(x => x.AdjType == condition).ToList();
         }
 
-        public static double GetCustomAdjValue(WorldUnitBase wunit, AdjTypeEnum adjType)
+        public static double GetCustomAdjValue(WorldUnitBase wunit, AdjTypeEnum adjType, dynamic optionalParams = null)
         {
             if (wunit == null || adjType == null)
                 return 0d;
+
+            var rs = 0d;
             var unitId = wunit.GetUnitId();
-            if (!Instance.CachedValues.ContainsKey(unitId))
+
+            foreach (var props in GetEquippedRefinableItems(wunit))
             {
-                var rs = 0d;
-                foreach (var props in GetRefinableItems(wunit))
+                var refineLvl = GetRefineLvl(props);
+                foreach (var a in GetCustomAdjTypes(props, adjType))
                 {
-                    var refineLvl = GetRefineLvl(props);
-                    foreach (var a in GetCustomAdjTypes(props, adjType))
-                    {
-                        rs += a.GetRefineCustommAdjValue(wunit, props, refineLvl);
-                    }
+                    rs += a.GetRefineCustommAdjValue(wunit, props, refineLvl, optionalParams);
                 }
-                Instance.CachedValues[unitId] = rs;
             }
-            return Instance.CachedValues[unitId];
+
+            return rs;
         }
 
         public static void CopyAdj(DataProps.PropsData fromProp, DataProps.PropsData toProp)
         {
-            for (int i = 1; i <= MAX_ADJ_PER_PROP; i++)
+            var i = 1;
+            foreach (var fromAdj in GetCustomAdjTypes(fromProp))
             {
                 var toKey = $"{toProp.soleID}_{i}";
                 Instance.CustomRefine[toKey] = GetCustomAdjType(fromProp, i).Clone();
+                i++;
             }
             Instance.RefineExp[toProp.soleID] = GetRefineExp(fromProp);
         }

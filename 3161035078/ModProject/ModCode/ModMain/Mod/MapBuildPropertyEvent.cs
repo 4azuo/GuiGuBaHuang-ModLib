@@ -414,7 +414,7 @@ namespace MOD_nE7UL2.Mod
         {
             base.OnBattleUnitDie(e);
 
-            if (g.world.battle.data.isRealBattle &&
+            if (DungeonHelper.IsRealBattle() &&
                 e?.hitData?.attackUnit != null && e.hitData.attackUnit.IsWorldUnit() &&
                 e?.unit != null && e.unit.IsWorldUnit())
             {

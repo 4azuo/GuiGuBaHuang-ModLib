@@ -220,8 +220,8 @@
 		"key": "other500020027",
 		"en": "You dont have enough {0:#,##0} Spirit Stones to pay!",
 		"ch": "汝之灵石不足{0:#,##0}，无法支付",
-		"tc": "您沒有足夠的{0：＃，## 0} Spirit Stones付款！",
-		"kr": "당신은 충분하지 않습니다 {0 :#, ## 0} spirit stones를 지불합니다!"
+		"tc": "您沒有足夠的{0：#,##0} Spirit Stones付款！",
+		"kr": "당신은 충분하지 않습니다 {0:#,##0} spirit stones를 지불합니다!"
 	},
 	{
 		"id": 500020028,
@@ -339,17 +339,17 @@
 		"id": 500020042,
 		"key": "other500020042",
 		"en": "{0:#,##0} Spirit Stones/year",
-		"ch": "{0：＃，## 0} Spirit Stones/年",
-		"tc": "{0：＃，## 0} Spirit Stones/年",
-		"kr": "{0 :#, ## 0} Spirit Stones/Year"
+		"ch": "{0：#,##0} Spirit Stones/年",
+		"tc": "{0：#,##0} Spirit Stones/年",
+		"kr": "{0:#,##0} Spirit Stones/Year"
 	},
 	{
 		"id": 500020043,
 		"key": "other500020043",
 		"en": "{0:#,##0} Spirit Stones/month",
-		"ch": "{0：＃，## 0} Spirit Stones/一个月",
-		"tc": "{0：＃，## 0} Spirit Stones/一個月",
-		"kr": "{0 :#, ## 0} Spirit Stones/Month"
+		"ch": "{0：#,##0} Spirit Stones/一个月",
+		"tc": "{0：#,##0} Spirit Stones/一個月",
+		"kr": "{0:#,##0} Spirit Stones/Month"
 	},
 	{
 		"id": 500020044,
@@ -371,8 +371,8 @@
 		"id": 500020046,
 		"key": "other500020046",
 		"en": "[INFO] Taoist",
-		"ch": "[信息]道教",
-		"tc": "[信息]道教",
+		"ch": "[信息] 道教",
+		"tc": "[信息] 道教",
 		"kr": "[정보] 도교"
 	},
 	{
@@ -410,10 +410,10 @@
 	{
 		"id": 500020051,
 		"key": "other500020051",
-		"en": "Success! Level {0}→{1} (+{2:#,##0}Exp)",
-		"ch": "成功！等级{0}→{1}（+{2：＃，## 0} exp）",
-		"tc": "成功！等級{0}→{1}（+{2：＃，## 0} exp）",
-		"kr": "성공! 레벨 {0} → {1} (+{2 :#, ## 0} exp)"
+		"en": "Success! Level {0} → {1} (+{2:#,##0} exp)",
+		"ch": "成功！等级 {0} → {1} （+{2：#,##0} exp）",
+		"tc": "成功！等級 {0} → {1} （+{2：#,##0} exp）",
+		"kr": "성공! 레벨 {0} → {1} (+{2:#,##0} exp)"
 	},
 	{
 		"id": 500020052,
@@ -715,9 +715,9 @@
 		"id": 500020089,
 		"key": "other500020089",
 		"en": "Damage x{0}",
-		"ch": "损坏x {0}",
-		"tc": "損壞x {0}",
-		"kr": "손상 x {0}"
+		"ch": "损坏x{0}",
+		"tc": "損壞x{0}",
+		"kr": "손상 x{0}"
 	},
 	{
 		"id": 500020090,
@@ -829,7 +829,7 @@
 		"en": "Registered sale: {0} x{1} for {2}",
 		"ch": "注册销售：{0} x {1} {2}",
 		"tc": "註冊銷售：{0} x {1} {2}",
-		"kr": "등록 판매 : {0} x {1} {2}"
+		"kr": "등록 판매: {0} x {1} {2}"
 	},
 	{
 		"id": 500020104,
