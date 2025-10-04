@@ -184,7 +184,6 @@ namespace MOD_nE7UL2.Mod
             if (!Instance.RefineExp.ContainsKey(soleId))
                 Instance.RefineExp.Add(soleId, 0);
             Instance.RefineExp[soleId] += exp;
-            DebugHelper.WriteLine($"[CustomRefineEvent] AddRefineExp: {soleId} +{exp} => {Instance.RefineExp[soleId]}");
             return true;
         }
 
@@ -199,7 +198,6 @@ namespace MOD_nE7UL2.Mod
                 return 0;
             if (!Instance.RefineExp.ContainsKey(soleId))
                 return 0;
-            DebugHelper.WriteLine($"[CustomRefineEvent] GetRefineExp: {soleId} => {Instance.RefineExp[soleId]}");
             return Instance.RefineExp[soleId];
         }
 
