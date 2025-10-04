@@ -12,17 +12,13 @@ namespace MOD_nE7UL2.Object
         public static _CustomRefineConfigs Configs => ModMain.ModObj.ModSettings.CustomRefineConfigs;
 
         #region AdjTypeSeeder
-        //public static AdjTypeEnum[] RingAdjTypes = new AdjTypeEnum[]
-        //{
-        //    AdjTypeEnum.Def, AdjTypeEnum.MHp, AdjTypeEnum.MMp, AdjTypeEnum.MSp, AdjTypeEnum.MDp,
-        //    AdjTypeEnum.Nullify, AdjTypeEnum.RHp, AdjTypeEnum.RMp, AdjTypeEnum.RSp, AdjTypeEnum.RDp,
-        //    AdjTypeEnum.SkillDamage, AdjTypeEnum.MinDamage, AdjTypeEnum.SummonPower, AdjTypeEnum.ItemCD, AdjTypeEnum.SkillCD,
-        //    AdjTypeEnum.BasisBlade, AdjTypeEnum.BasisEarth, AdjTypeEnum.BasisFinger, AdjTypeEnum.BasisFire, AdjTypeEnum.BasisFist, AdjTypeEnum.BasisFroze,
-        //    AdjTypeEnum.BasisPalm, AdjTypeEnum.BasisSpear, AdjTypeEnum.BasisSword, AdjTypeEnum.BasisThunder, AdjTypeEnum.BasisWind, AdjTypeEnum.BasisWood
-        //};
         public static AdjTypeEnum[] RingAdjTypes = new AdjTypeEnum[]
         {
-            AdjTypeEnum.SummonPower, AdjTypeEnum.ItemCD, AdjTypeEnum.SkillCD
+            AdjTypeEnum.Def, AdjTypeEnum.MHp, AdjTypeEnum.MMp, AdjTypeEnum.MSp, AdjTypeEnum.MDp,
+            AdjTypeEnum.Nullify, AdjTypeEnum.RHp, AdjTypeEnum.RMp, AdjTypeEnum.RSp, AdjTypeEnum.RDp,
+            AdjTypeEnum.SkillDamage, AdjTypeEnum.MinDamage, AdjTypeEnum.SummonPower, AdjTypeEnum.ItemCD, AdjTypeEnum.SkillCD,
+            AdjTypeEnum.BasisBlade, AdjTypeEnum.BasisEarth, AdjTypeEnum.BasisFinger, AdjTypeEnum.BasisFire, AdjTypeEnum.BasisFist, AdjTypeEnum.BasisFroze,
+            AdjTypeEnum.BasisPalm, AdjTypeEnum.BasisSpear, AdjTypeEnum.BasisSword, AdjTypeEnum.BasisThunder, AdjTypeEnum.BasisWind, AdjTypeEnum.BasisWood
         };
 
         public static AdjTypeEnum[] OutfitAdjTypes = new AdjTypeEnum[]
