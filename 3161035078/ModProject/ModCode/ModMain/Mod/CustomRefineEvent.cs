@@ -243,7 +243,7 @@ namespace MOD_nE7UL2.Mod
             return GetCustomAdjTypes(props).Where(x => x.AdjType == condition).ToList();
         }
 
-        public static double GetCustomAdjValue(WorldUnitBase wunit, AdjTypeEnum adjType, dynamic optionalParams = null)
+        public static double GetCustomAdjValue(WorldUnitBase wunit, AdjTypeEnum adjType)
         {
             if (wunit == null || adjType == null)
                 return 0d;
@@ -256,7 +256,7 @@ namespace MOD_nE7UL2.Mod
                 var refineLvl = GetRefineLvl(props);
                 foreach (var a in GetCustomAdjTypes(props, adjType))
                 {
-                    rs += a.GetRefineCustommAdjValue(wunit, props, refineLvl, optionalParams);
+                    rs += a.GetRefineCustommAdjValue(wunit, props, refineLvl);
                 }
             }
 

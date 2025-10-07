@@ -14,5 +14,28 @@
 		"ch": "",
 		"tc": "",
 		"kr": ""
+	},
+	{
+		"id": "480030300",
+		"key": "commission480030300",
+		"en": "- - - - -",
+		"ch": "- - - - -",
+		"tc": "- - - - -",
+		"kr": "- - - - -"
+	},
+	{
+		"id": "480030400",
+		"key": "commission480030400",
+		"en|ch|tc|kr": "Cost {0:0} spirit stones (+{1:0} fee)"
+	},
+	{
+		"id": "480030500",
+		"key": "commission480030500",
+		"en|ch|tc|kr": "Cost {0:0} spirit stones (+{1:0} fee) and {2:0} Mayor's Degree"
+	},
+	{
+		"id": "480030600",
+		"key": "commission480030600",
+		"en|ch|tc|kr": "Cost {0:0} months ({1:0.0}% success rate + luck)"
 	}
 ]
