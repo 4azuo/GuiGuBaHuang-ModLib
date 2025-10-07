@@ -1,4 +1,5 @@
 ﻿using Il2CppSystem.Collections.Generic;
+using ModLib.Enum;
 using System;
 using System.Linq;
 using static MOD_nE7UL2.Object.ModStts;
@@ -34,7 +35,7 @@ namespace MOD_nE7UL2.Object
             Fee = ((Total * Configs.FeeRate) + Configs.FeeMinCost).Parse<int>();
             CostDegree = ((Total * Configs.DegreeCostRate) + Configs.DegreeMinCost).Parse<int>();
             CostTime = lst.Sum(x => Configs.CostTime[Math.Min(6, Math.Max(1, x.propsInfoBase.level)) - 1]);
-            SuccessRate = lst.Min(x => Configs.SuccessRate[Math.Min(6, Math.Max(1, x.propsInfoBase.level)) - 1]);
+            SuccessRate = lst.Min(x => Configs.SuccessRate[Math.Min(6, Math.Max(1, x.propsInfoBase.level)) - 1]) + g.world.playerUnit.GetProperty<int>(UnitPropertyEnum.Luck) / 100f;
         }
     }
 }

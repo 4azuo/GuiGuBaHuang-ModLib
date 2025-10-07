@@ -9,7 +9,6 @@ using MOD_nE7UL2.Object;
 using System.Text;
 using ModLib.Object;
 using ModLib.Enum;
-using static SpecialBattle83;
 
 namespace MOD_nE7UL2.Mod
 {
@@ -119,27 +118,29 @@ Your commissions:
                                 var commissionTask = new CommissionTask(UIPropSelect.allSlectDataProps.allProps);
                                 if (MapBuildPropertyEvent.IsTownGuardian(g.world.playerUnit.GetMapBuild<MapBuildTown>(), g.world.playerUnit))
                                 {
-                                    var allow = money >= commissionTask.Total;
+                                    var need = commissionTask.Total + commissionTask.Fee;
+                                    var allow = money >= need;
                                     uiSelector.btnOK.gameObject.SetActive(allow);
                                     txt1.InnerText.color = allow ? Color.black : Color.red;
-                                    txt1.Set($"Cost {commissionTask.Total + commissionTask.Fee:0} spirit stones");
-                                    txt2.Set($"Cost {commissionTask.CostTime:0} months ({commissionTask.SuccessRate:0.0}% success rate)");
+                                    txt1.Set(string.Format(GameTool.LS("commission480030400"), need, commissionTask.Fee));
+                                    txt2.Set(string.Format(GameTool.LS("commission480030600"), commissionTask.CostTime, commissionTask.SuccessRate));
                                 }
                                 else
                                 {
-                                    var allow = money >= (commissionTask.Total + commissionTask.Fee) && degree >= commissionTask.CostDegree;
+                                    var need = commissionTask.Total + commissionTask.Fee;
+                                    var allow = money >= need && degree >= commissionTask.CostDegree;
                                     uiSelector.btnOK.gameObject.SetActive(allow);
                                     txt1.InnerText.color = allow ? Color.black : Color.red;
-                                    txt1.Set($"Cost {commissionTask.Total + commissionTask.Fee:0} spirit stones (+{commissionTask.Fee:0} fee) and {commissionTask.CostDegree:0} Mayor's Degree");
-                                    txt2.Set($"Cost {commissionTask.CostTime:0} months ({commissionTask.SuccessRate:0.0}% success rate)");
+                                    txt1.Set(string.Format(GameTool.LS("commission480030500"), need, commissionTask.Fee, commissionTask.CostDegree));
+                                    txt2.Set(string.Format(GameTool.LS("commission480030600"), commissionTask.CostTime, commissionTask.SuccessRate));
                                 }
                             }
                             else
                             {
                                 uiSelector.btnOK.gameObject.SetActive(true);
                                 txt1.InnerText.color = Color.black;
-                                txt1.Set($"- - - - -");
-                                txt2.Set($"- - - - -");
+                                txt1.Set(GameTool.LS("commission480030300"));
+                                txt2.Set(GameTool.LS("commission480030300"));
                             }
                         }
                     };

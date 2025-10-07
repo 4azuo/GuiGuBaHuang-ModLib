@@ -630,38 +630,28 @@ namespace MOD_nE7UL2.Mod
         #region CUnit
         public static int GetItemCD(UnitCtrlBase cunit, DynInt baseValue)
         {
-            var k = $"{cunit.data.createUnitSoleID}_itemCD";
             if (!cunit.IsWorldUnit())
                 return 0;
-            if (!Instance.CachedValues.ContainsKey(k))
-            {
-                var rs = 0;
-                var wunit = cunit.GetWorldUnit();
 
-                rs -= Convert.ToInt32(CustomRefineEvent.GetCustomAdjValue(wunit, AdjTypeEnum.ItemCD, baseValue.value));
+            var rs = 0;
+            var wunit = cunit.GetWorldUnit();
 
-                Instance.CachedValues[k] = rs;
-            }
+            rs += Convert.ToInt32((CustomRefineEvent.GetCustomAdjValue(wunit, AdjTypeEnum.ItemCD) / 100d) * baseValue.value);
 
-            return Instance.CachedValues[k];
+            return rs;
         }
 
         public static int GetSkillCD(UnitCtrlBase cunit, DynInt baseValue)
         {
-            var k = $"{cunit.data.createUnitSoleID}_skillCD";
             if (!cunit.IsWorldUnit())
                 return 0;
-            if (!Instance.CachedValues.ContainsKey(k))
-            {
-                var rs = 0;
-                var wunit = cunit.GetWorldUnit();
 
-                rs -= Convert.ToInt32(CustomRefineEvent.GetCustomAdjValue(wunit, AdjTypeEnum.SkillCD, baseValue.value));
+            var rs = 0;
+            var wunit = cunit.GetWorldUnit();
 
-                Instance.CachedValues[k] = rs;
-            }
+            rs += Convert.ToInt32((CustomRefineEvent.GetCustomAdjValue(wunit, AdjTypeEnum.SkillCD) / 100d) * baseValue.value);
 
-            return Instance.CachedValues[k];
+            return rs;
         }
         #endregion
     }

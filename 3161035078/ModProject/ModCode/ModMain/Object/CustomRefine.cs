@@ -85,7 +85,7 @@ namespace MOD_nE7UL2.Object
             RandomMultiplier = CommonTool.Random(0.60f, 1.40f);
         }
 
-        public double GetRefineCustommAdjValue(WorldUnitBase wunit, DataProps.PropsData props, int refineLvl, dynamic optionalParams = null)
+        public double GetRefineCustommAdjValue(WorldUnitBase wunit, DataProps.PropsData props, int refineLvl)
         {
             var key = $"{props.soleID}_{Index}";
             if (CustomRefineEvent.Instance.CachedValues.ContainsKey(key))
@@ -94,7 +94,7 @@ namespace MOD_nE7UL2.Object
                 return 0;
             refineLvl = _DecreaseLevel(refineLvl);
             var r = 0.001f * props.propsInfoBase.grade + 0.0002f * props.propsInfoBase.level;
-            var v = AdjType.GetBaseValue(wunit, optionalParams) * r * refineLvl * AdjLevel.Multiplier * RandomMultiplier;
+            var v = AdjType.GetBaseValue(wunit) * r * refineLvl * AdjLevel.Multiplier * RandomMultiplier;
             CustomRefineEvent.Instance.CachedValues[key] = v;
             return v;
         }
