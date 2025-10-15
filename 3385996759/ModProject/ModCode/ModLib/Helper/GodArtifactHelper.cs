@@ -10,6 +10,11 @@
         return g.data.dataWorld.data.godEyeData.isDamage;
     }
 
+    public static bool IsPiscesPendantDamaged()
+    {
+        return g.data.dataWorld.data.resurgeCount <= 0;
+    }
+
     public static void RepairPotmonDamaged(int repairMonth = 0)
     {
         if (IsPotmonDamaged())
@@ -26,6 +31,21 @@
             g.data.dataWorld.data.godEyeData.isDamage = false;
             g.data.dataWorld.data.godEyeData.repairMonth = repairMonth;
         }
+    }
+
+    public static void AddFishJade(int add)
+    {
+        g.data.dataWorld.data.resurgeCount += add;
+    }
+
+    public static void SetFishJade(int add)
+    {
+        g.data.dataWorld.data.resurgeCount = add;
+    }
+
+    public static int GetFishJade()
+    {
+        return g.data.dataWorld.data.resurgeCount;
     }
 
     public static void SetAnimaWeapon(params GameAnimaWeapon[] weapons)
@@ -55,5 +75,10 @@
     {
         g.data.dataWorld.data.animaWeapons.Clear();
         g.data.dataWorld.data.animaWeapons.Add(GameAnimaWeapon.HootinEye);
+    }
+
+    public static string GetPiscesPendantNpcId()
+    {
+        return g.data.dataWorld.data.piscesData.npcUnitId;
     }
 }
