@@ -2,6 +2,7 @@
 using MOD_nE7UL2.Const;
 using ModLib.Mod;
 using ModLib.Object;
+using System;
 using UnityEngine;
 
 namespace MOD_nE7UL2.Mod
@@ -11,7 +12,7 @@ namespace MOD_nE7UL2.Mod
     {
         public override bool OnCacheHandler()
         {
-            return base.OnCacheHandler();
+            return SMLocalConfigsEvent.Instance.Configs.AllowRepairGodWeapon;
         }
 
         public override void OnOpenUIEnd(OpenUIEnd e)
@@ -21,7 +22,7 @@ namespace MOD_nE7UL2.Mod
             {
                 var ui = new UICover<UIDevilDemon>(e.ui);
                 {
-                    ui.AddButton(ui.MidCol, ui.FirstRow + 2, RepairDevilDemon, GameTool.LS("other500020113"));
+                    ui.AddButton(ui.MidCol, ui.FirstRow + 2, RepairDevilDemon, GameTool.LS("other500020113")).Size(200, 40);
                 }
             }
             else
@@ -29,7 +30,7 @@ namespace MOD_nE7UL2.Mod
             {
                 var ui = new UICover<UIGodEye>(e.ui);
                 {
-                    ui.AddButton(ui.MidCol, ui.FirstRow + 2, RepairGodEye, GameTool.LS("other500020113"));
+                    ui.AddButton(ui.MidCol, ui.FirstRow + 2, RepairGodEye, GameTool.LS("other500020113")).Size(200, 40);
                 }
             }
             else
@@ -37,26 +38,65 @@ namespace MOD_nE7UL2.Mod
             {
                 var ui = new UICover<UIPiscesPendant>(e.ui);
                 {
-                    ui.AddButton(ui.MidCol, ui.FirstRow + 2, Test, GameTool.LS("other500020113"));
+                    ui.AddButton(ui.MidCol, ui.FirstRow + 2, AddFishJade, GameTool.LS("other500020114")).Size(200, 40);
                 }
             }
         }
 
         private void RepairDevilDemon()
         {
-            GodArtifactHelper.RepairPotmonDamaged(1);
-            g.ui.CloseUI(UIType.DevilDemon);
+            var cost = (g.world.playerUnit.GetGradeLvl() + RebirthEvent.Instance.TotalGradeLvl) * 100 * Math.Pow(2, g.world.playerUnit.GetGradeLvl()).Parse<int>();
+            cost = InflationaryEvent.CalculateInflationary(cost);
+            g.ui.MsgBox(string.Empty, string.Format(GameTool.LS("other500020115"), cost), ModLib.Enum.MsgBoxButtonEnum.YesNo, () =>
+            {
+                if (g.world.playerUnit.GetUnitMoney() >= cost)
+                {
+                    g.world.playerUnit.AddUnitMoney(-cost);
+                    GodArtifactHelper.RepairPotmonDamaged(1);
+                    g.ui.CloseUI(UIType.DevilDemon);
+                }
+                else
+                {
+                    g.ui.MsgBox(string.Empty, GameTool.LS("other500020116"));
+                }
+            });
         }
 
         private void RepairGodEye()
         {
-            GodArtifactHelper.RepairGodEyeDamaged(1);
-            g.ui.CloseUI(UIType.GodEye);
+            var cost = (g.world.playerUnit.GetGradeLvl() + RebirthEvent.Instance.TotalGradeLvl) * 100 * Math.Pow(2, g.world.playerUnit.GetGradeLvl()).Parse<int>();
+            cost = InflationaryEvent.CalculateInflationary(cost);
+            g.ui.MsgBox(string.Empty, string.Format(GameTool.LS("other500020115"), cost), ModLib.Enum.MsgBoxButtonEnum.YesNo, () =>
+            {
+                if (g.world.playerUnit.GetUnitMoney() >= cost)
+                {
+                    g.world.playerUnit.AddUnitMoney(-cost);
+                    GodArtifactHelper.RepairGodEyeDamaged(1);
+                    g.ui.CloseUI(UIType.GodEye);
+                }
+                else
+                {
+                    g.ui.MsgBox(string.Empty, GameTool.LS("other500020116"));
+                }
+            });
         }
 
-        private void Test()
+        private void AddFishJade()
         {
-            //g.data.dataWorld.data.re
+            var cost = (g.world.playerUnit.GetGradeLvl() + (g.world.unit.GetUnit(GodArtifactHelper.GetPiscesPendantNpcId())?.GetGradeLvl() ?? 0)) * 100 * Math.Pow(2, g.world.playerUnit.GetGradeLvl()).Parse<int>();
+            cost = InflationaryEvent.CalculateInflationary(cost);
+            g.ui.MsgBox(string.Empty, string.Format(GameTool.LS("other500020115"), cost), ModLib.Enum.MsgBoxButtonEnum.YesNo, () =>
+            {
+                if (g.world.playerUnit.GetUnitMoney() >= cost)
+                {
+                    GodArtifactHelper.AddFishJade(1);
+                    g.ui.CloseUI(UIType.PiscesPendant);
+                }
+                else
+                {
+                    g.ui.MsgBox(string.Empty, GameTool.LS("other500020116"));
+                }
+            });
         }
     }
 }

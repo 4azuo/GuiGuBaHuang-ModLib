@@ -450,18 +450,18 @@
 	{
 		"id": 500020056,
 		"key": "other500020056",
-		"en": "{0} Spirit Stones → {1} Contribution",
-		"ch": "{0} Spirit Stones→{1}贡献",
-		"tc": "{0} Spirit Stones→{1}貢獻",
-		"kr": "{0} Spirit Stones → {1} 기여"
+		"en": "{0:#,##0} Spirit Stones → {1:#,##0} Contribution",
+		"ch": "{0:#,##0} Spirit Stones→{1:#,##0}贡献",
+		"tc": "{0:#,##0} Spirit Stones→{1:#,##0}貢獻",
+		"kr": "{0:#,##0} Spirit Stones → {1:#,##0} 기여"
 	},
 	{
 		"id": 500020057,
 		"key": "other500020057",
-		"en": "Exchannge Ratio {0} Spirit Stones → 1 Contribution",
-		"ch": "浓缩比{0}精神石头→1个贡献",
-		"tc": "濃縮比{0}精神石頭→1個貢獻",
-		"kr": "exchannge 비율 {0} spirit stones → 1 기여"
+		"en": "Exchannge Ratio {0:#,##0} Spirit Stones → 1 Contribution",
+		"ch": "浓缩比{0:#,##0}精神石头→1个贡献",
+		"tc": "濃縮比{0:#,##0}精神石頭→1個貢獻",
+		"kr": "exchannge 비율 {0:#,##0} spirit stones → 1 기여"
 	},
 	{
 		"id": 500020058,
@@ -506,10 +506,10 @@
 	{
 		"id": 500020063,
 		"key": "other500020063",
-		"en": "Min：{0}　　　Sell：{1}　　　Max：{2}　　　Your：{3}",
-		"ch": "最低：{0}卖出：{1} max：{2}你的：{3}",
-		"tc": "最低：{0}賣出：{1} max：{2}你的：{3}",
-		"kr": "Min ： {0} 판매 ： {1} max ： {2} 당신의 ： {3}"
+		"en": "Min：{0:#,##0}　　　Sell：{1:#,##0}　　　Max：{2:#,##0}　　　Your：{3:#,##0}",
+		"ch": "最低：{0:#,##0}　　　卖出：{1:#,##0}　　　Max：{2:#,##0}　　　你的：{3:#,##0}",
+		"tc": "最低：{0:#,##0}　　　賣出：{1:#,##0}　　　Max：{2:#,##0}　　　你的：{3:#,##0}",
+		"kr": "Min：{0:#,##0}　　　판매：{1:#,##0}　　　Max：{2:#,##0}　　　당신의：{3:#,##0}"
 	},
 	{
 		"id": 500020064,
@@ -554,7 +554,7 @@
 	{
 		"id": 500020069,
 		"key": "other500020069",
-		"en": "You need {0} spirit stones for cultivation.",
+		"en": "You need {0:#,##0} spirit stones for cultivation.",
 		"ch": "您需要{0}精神石材才能耕种。",
 		"tc": "您需要{0}精神石材才能耕種。",
 		"kr": "재배를 위해서는 {0} 스피릿 스톤이 필요합니다."
@@ -562,10 +562,10 @@
 	{
 		"id": 500020070,
 		"key": "other500020070",
-		"en": "{0} Spirit stones → {1} exps.",
-		"ch": "{0} Spirit Stones→{1} Exps。",
-		"tc": "{0} Spirit Stones→{1} Exps。",
-		"kr": "{0} spirit stones → {1} exps."
+		"en": "{0:#,##0} Spirit stones → {1:#,##0} Exps.",
+		"ch": "{0:#,##0} Spirit Stones → {1:#,##0} Exps。",
+		"tc": "{0:#,##0} Spirit Stones → {1:#,##0} Exps。",
+		"kr": "{0:#,##0} spirit stones → {1:#,##0} Exps."
 	},
 	{
 		"id": 500020071,
@@ -602,10 +602,10 @@
 	{
 		"id": 500020075,
 		"key": "other500020075",
-		"en": "Total value： {0}",
-		"ch": "总价值：{0}",
-		"tc": "總價值：{0}",
-		"kr": "총 값 ： {0}"
+		"en": "Total value： {0:#,##0}",
+		"ch": "总价值： {0:#,##0}",
+		"tc": "總價值： {0:#,##0}",
+		"kr": "총 값 ： {0:#,##0}"
 	},
 	{
 		"id": 500020076,
@@ -690,10 +690,10 @@
 	{
 		"id": 500020086,
 		"key": "other500020086",
-		"en": "Do you wanna pay {0} spirit stones for our service?",
-		"ch": "您想为我们的服务付费{0} Spirit Stones吗？",
-		"tc": "您想為我們的服務付費{0} Spirit Stones嗎？",
-		"kr": "우리 서비스에 {0} spirit stones를 지불하고 싶습니까?"
+		"en": "Do you wanna pay {0:#,##0} spirit stones for our service?",
+		"ch": "您想为我们的服务付费{0:#,##0} Spirit Stones吗？",
+		"tc": "您想為我們的服務付費{0:#,##0} Spirit Stones嗎？",
+		"kr": "우리 서비스에 {0:#,##0} spirit stones를 지불하고 싶습니까?"
 	},
 	{
 		"id": 500020087,
@@ -907,5 +907,20 @@
 		"id": 500020113,
 		"key": "other500020113",
 		"en|ch|tc|kr": "Repair"
+	},
+	{
+		"id": 500020114,
+		"key": "other500020114",
+		"en|ch|tc|kr": "Add Point"
+	},
+	{
+		"id": 500020115,
+		"key": "other500020115",
+		"en|ch|tc|kr": "Cost {0:#,##0}.\nAre your sure?"
+	},
+	{
+		"id": 500020116,
+		"key": "other500020116",
+		"en|ch|tc|kr": "You dont have enough spirit stones!"
 	}
 ]

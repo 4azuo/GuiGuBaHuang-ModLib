@@ -386,36 +386,36 @@
 	{
 		"id": -1000002048,
 		"key": "trainer048",
-		"en|ch|tc|kr": "NPC Amount: {0}"
+		"en|ch|tc|kr": "NPC Amount: {0:#,##0}"
 	},
 	{
 		"id": -1000002049,
 		"key": "trainer049",
-		"en|ch|tc|kr": "Alchemy: {0}"
+		"en|ch|tc|kr": "Alchemy: {0:#,##0}"
 	},
 	{
 		"id": -1000002050,
 		"key": "trainer050",
-		"en|ch|tc|kr": "{0} :Forge"
+		"en|ch|tc|kr": "{0:#,##0} :Forge"
 	},
 	{
 		"id": -1000002051,
 		"key": "trainer051",
-		"en|ch|tc|kr": "Feng Shui: {0}"
+		"en|ch|tc|kr": "Feng Shui: {0:#,##0}"
 	},
 	{
 		"id": -1000002052,
 		"key": "trainer052",
-		"en|ch|tc|kr": "{0} :Talismans"
+		"en|ch|tc|kr": "{0:#,##0} :Talismans"
 	},
 	{
 		"id": -1000002053,
 		"key": "trainer053",
-		"en|ch|tc|kr": "Herbology: {0}"
+		"en|ch|tc|kr": "Herbology: {0:#,##0}"
 	},
 	{
 		"id": -1000002054,
 		"key": "trainer054",
-		"en|ch|tc|kr": "{0} :Mining"
+		"en|ch|tc|kr": "{0:#,##0} :Mining"
 	}
 ]

@@ -354,6 +354,9 @@ namespace MOD_nE7UL2.Mod
             Register(() => tglDestroyBuildingAfterTownWar,
                 funcCal: s => 2000,
                 funcCond: s => s.Get().Parse<bool>());
+            Register(() => tglAllowRepairGodWeapon,
+                funcCal: s => -5000,
+                funcCond: s => s.Get().Parse<bool>());
         }
 
         private void Register(
@@ -543,6 +546,7 @@ namespace MOD_nE7UL2.Mod
                 uiCustom.AddText(col, row++, GameTool.LS("smcfgs128")).Format(null, 13).Align(TextAnchor.MiddleLeft);
                 tglNoStalker = uiCustom.AddCompositeToggle(col, row++, GameTool.LS("smcfgs124"), NoExpFromBattles, GameTool.LS("smcfgs102"));
                 tglNoQiCultivation = uiCustom.AddCompositeToggle(col, row++, GameTool.LS("smcfgs125"), NoQiCultivation, GameTool.LS("smcfgs102"));
+                tglAllowRepairGodWeapon = uiCustom.AddCompositeToggle(col, row++, GameTool.LS("smcfgs137"), AllowRepairGodWeapon, GameTool.LS("smcfgs102"));
                 row++;
                 tglAllowUpgradeNaturally = uiCustom.AddCompositeToggle(col, row++, GameTool.LS("smcfgs036"), AllowUpgradeNaturally, GameTool.LS("smcfgs102"));
                 uiCustom.AddText(col - 1, row++, GameTool.LS("smcfgs037")).Format(null, 13).Align(TextAnchor.MiddleLeft);
@@ -692,6 +696,7 @@ namespace MOD_nE7UL2.Mod
             slMaxBuyersOnSellingItem.Set(4f);
             tglOnlyActiveOnCurOrNearArea.Set(true);
             tglDestroyBuildingAfterTownWar.Set(true);
+            tglAllowRepairGodWeapon.Set(false);
         }
 
         private void SetLevel(int level)
@@ -744,6 +749,7 @@ namespace MOD_nE7UL2.Mod
             slMaxBuyersOnSellingItem.Set(4f);
             tglOnlyActiveOnCurOrNearArea.Set(true);
             tglDestroyBuildingAfterTownWar.Set(true);
+            tglAllowRepairGodWeapon.Set(false);
         }
 
         private void SetSMConfigs()
@@ -796,6 +802,7 @@ namespace MOD_nE7UL2.Mod
             MaxBuyersOnSellingItem = slMaxBuyersOnSellingItem.Get().Parse<int>();
             OnlyActiveOnCurOrNearArea = tglOnlyActiveOnCurOrNearArea.Get().Parse<bool>();
             DestroyBuildingAfterTownWar = tglDestroyBuildingAfterTownWar.Get().Parse<bool>();
+            AllowRepairGodWeapon = tglAllowRepairGodWeapon.Get().Parse<bool>();
             CacheHelper.SaveGlobalCache(this);
 
             //edit conf
