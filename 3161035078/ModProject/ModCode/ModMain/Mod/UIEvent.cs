@@ -45,7 +45,6 @@ namespace MOD_nE7UL2.Mod
             /*
              * UI
              */
-            //DebugHelper.WriteLine("3");
             if (e.uiType.uiName == UIType.MapMain.uiName)
             {
                 var ui = g.ui.GetUI<UIMapMain>(UIType.MapMain);

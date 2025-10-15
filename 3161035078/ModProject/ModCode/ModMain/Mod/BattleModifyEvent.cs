@@ -460,7 +460,7 @@ namespace MOD_nE7UL2.Mod
 
         public static int GetMinDmgBase(UnitCtrlBase cunit)
         {
-            var gameLvl = g.data.dataWorld.data.gameLevel.Parse<int>();
+            var gameLvl = GameHelper.GetGameLevel().Parse<int>();
             return cunit.data.grade.value * gameLvl;
         }
 

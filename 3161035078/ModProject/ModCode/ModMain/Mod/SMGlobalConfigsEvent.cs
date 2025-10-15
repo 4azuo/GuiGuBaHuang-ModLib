@@ -84,6 +84,7 @@ namespace MOD_nE7UL2.Mod
         public float MaxBuyersOnSellingItem { get; set; } = 4;
         public bool OnlyActiveOnCurOrNearArea { get; set; } = true;
         public bool DestroyBuildingAfterTownWar { get; set; } = true;
+        public bool AllowRepairGodWeapon { get; set; } = true;
 
         //UI
         private UICustom1 uiCustom;
@@ -135,6 +136,7 @@ namespace MOD_nE7UL2.Mod
         private UIItemComposite slMaxBuyersOnSellingItem;
         private UIItemComposite tglOnlyActiveOnCurOrNearArea;
         private UIItemComposite tglDestroyBuildingAfterTownWar;
+        private UIItemComposite tglAllowRepairGodWeapon;
 
         //Score
         [JsonIgnore]

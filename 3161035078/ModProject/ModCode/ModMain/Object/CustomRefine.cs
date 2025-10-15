@@ -1,5 +1,4 @@
-﻿using Il2CppSystem.Data;
-using MOD_nE7UL2.Enum;
+﻿using MOD_nE7UL2.Enum;
 using MOD_nE7UL2.Mod;
 using System.Linq;
 using UnityEngine;

@@ -2,8 +2,6 @@
 using ModLib.Const;
 using ModLib.Mod;
 using System;
-using System.Collections.Generic;
-using System.Linq;
 using static MOD_nE7UL2.Object.ModStts;
 
 namespace MOD_nE7UL2.Mod
@@ -14,32 +12,42 @@ namespace MOD_nE7UL2.Mod
         public static InflationaryEvent Instance { get; set; }
 
         public const int REACH_LIMIT_DRAMA = 499919998;
-        public const int LIMIT = 1000000000;
+        public const int LIMIT = 10000;
 
         public static _InflationaryConfigs Configs => ModMain.ModObj.ModSettings.InflationaryConfigs;
-        public static Dictionary<string, int> OriginItemValues { get; } = new Dictionary<string, int>();
 
         public int Corruption { get; set; } = 0;
+        public int WorldPrice { get; set; } = -1;
 
         public override void OnLoadGame()
         {
             base.OnLoadGame();
-            BackupItemmValues();
-            ItemInflationary();
+            if (WorldPrice == -1)
+            {
+                WorldPrice = SMLocalConfigsEvent.Instance.Calculate(EconomyHelper.GetWorldPrice(), SMLocalConfigsEvent.Instance.Configs.AddItemValueRate).Parse<int>();
+                for (int i = 0; i < GameHelper.GetGameYear(); i++)
+                {
+                    WorldPrice = (WorldPrice * SMLocalConfigsEvent.Instance.Calculate(Configs.InflationaryRate, SMLocalConfigsEvent.Instance.Configs.AddInflationRate)).Parse<int>();
+                }
+            }
+            EconomyHelper.SetWorldPrice(WorldPrice);
         }
 
         public override void OnYearly()
         {
             base.OnYearly();
-            ItemInflationary();
+            WorldPrice = (EconomyHelper.GetWorldPrice() * SMLocalConfigsEvent.Instance.Calculate(Configs.InflationaryRate, SMLocalConfigsEvent.Instance.Configs.AddInflationRate)).Parse<int>();
+            EconomyHelper.SetWorldPrice(WorldPrice);
             Corrupt();
         }
 
         private void Corrupt()
         {
-            if (GetHighestCost() > LIMIT)
+            if (EconomyHelper.GetWorldPrice() > LIMIT)
             {
                 Corruption++;
+                EconomyHelper.ResetWorldPrice();
+                WorldPrice = EconomyHelper.GetWorldPrice();
 
                 //affect to player
                 var player = g.world.playerUnit;
@@ -69,80 +77,18 @@ namespace MOD_nE7UL2.Mod
             }
         }
 
-        public static void BackupItemmValues()
-        {
-            foreach (var props in g.conf.itemProps._allConfList)
-            {
-                OriginItemValues[$"itemProps_{props.id}_sale"] = props.sale;
-                OriginItemValues[$"itemProps_{props.id}_worth"] = props.worth;
-            }
-            foreach (var item in g.conf.itemSkill._allConfList)
-            {
-                OriginItemValues[$"itemSkill_{item.id}_price"] = item.price;
-                OriginItemValues[$"itemSkill_{item.id}_cost"] = item.cost;
-                OriginItemValues[$"itemSkill_{item.id}_sale"] = item.sale;
-                OriginItemValues[$"itemSkill_{item.id}_worth"] = item.worth;
-            }
-            foreach (var refine in g.conf.townRefine._allConfList)
-            {
-                OriginItemValues[$"townRefine_{refine.id}_moneyCost"] = refine.moneyCost;
-            }
-        }
-
-        public static void ItemInflationary()
-        {
-            foreach (var props in g.conf.itemProps._allConfList)
-            {
-                if (props.type == (int)PropsType.Money)
-                    continue;
-
-                props.sale = CalculateInflationary(OriginItemValues[$"itemProps_{props.id}_sale"]);
-                props.worth = CalculateInflationary(OriginItemValues[$"itemProps_{props.id}_worth"]);
-
-                if (props.IsPillRecipe() != null)
-                {
-                    var factory = g.conf.townFactotySell.GetItem(props.id);
-                    if (factory != null)
-                        factory.makePrice = (props.worth * ModConst.PILL_RECIPE_RATE).Parse<int>();
-                }
-            }
-            foreach (var item in g.conf.itemSkill._allConfList)
-            {
-                item.price = CalculateInflationary(OriginItemValues[$"itemSkill_{item.id}_price"]);
-                item.cost = CalculateInflationary(OriginItemValues[$"itemSkill_{item.id}_cost"]);
-                item.sale = CalculateInflationary(OriginItemValues[$"itemSkill_{item.id}_sale"]);
-                item.worth = CalculateInflationary(OriginItemValues[$"itemSkill_{item.id}_worth"]);
-            }
-            foreach (var refine in g.conf.townRefine._allConfList)
-            {
-                refine.moneyCost = CalculateInflationary(OriginItemValues[$"townRefine_{refine.id}_moneyCost"]);
-            }
-        }
-
         public static int CalculateInflationary(int originValue)
         {
             if (originValue <= 0)
                 return originValue;
-            return Convert.ToInt32(originValue * Math.Pow(SMLocalConfigsEvent.Instance.Calculate(Configs.InflationaryRate, SMLocalConfigsEvent.Instance.Configs.AddInflationRate), GameHelper.GetGameYear()) / Math.Pow(100, Instance.Corruption));
+            return Convert.ToInt32((EconomyHelper.GetWorldPrice() / 100f) * originValue);
         }
 
         public static long CalculateInflationary(long originValue)
         {
             if (originValue <= 0)
                 return originValue;
-            return Convert.ToInt64(originValue * Math.Pow(SMLocalConfigsEvent.Instance.Calculate(Configs.InflationaryRate, SMLocalConfigsEvent.Instance.Configs.AddInflationRate), GameHelper.GetGameYear()) / Math.Pow(100, Instance.Corruption));
-        }
-
-        public static int GetHighestCost()
-        {
-            return new int[] {
-                g.conf.itemProps._allConfList.ToArray().Max(x => x.sale),
-                g.conf.itemProps._allConfList.ToArray().Max(x => x.worth),
-                g.conf.itemSkill._allConfList.ToArray().Max(x => x.price),
-                g.conf.itemSkill._allConfList.ToArray().Max(x => x.cost),
-                g.conf.itemSkill._allConfList.ToArray().Max(x => x.sale),
-                g.conf.itemSkill._allConfList.ToArray().Max(x => x.worth)
-            }.Max();
+            return Convert.ToInt64((EconomyHelper.GetWorldPrice() / 100f) * originValue);
         }
     }
 }

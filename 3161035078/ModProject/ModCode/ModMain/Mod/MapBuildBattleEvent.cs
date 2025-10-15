@@ -296,7 +296,7 @@ namespace MOD_nE7UL2.Mod
                 DramaTool.OpenDrama(DRAMA_ID, new DramaData
                 {
                     dialogueText = { [DRAMA_ID] = string.Format(GameTool.LS("battleevent480112894"), townB_atk.name, townA_def.name) },
-                    hideDialogueOptions = new int[] { DRAMA_DONT_CARE_OPT_ID, DRAMA_TRY_ESCAPE_OPT_ID }.ToIl2CppList(),
+                    hideDialogueOptions = new int[] { DRAMA_HELP_OPT_ID, DRAMA_TRY_ESCAPE_OPT_ID }.ToIl2CppList(),
                     onOptionsClickCall = (Il2CppSystem.Action<ConfDramaOptionsItem>)((x) =>
                     {
                         switch (x.id)
@@ -641,7 +641,7 @@ namespace MOD_nE7UL2.Mod
             //auto battle
             var teamAPoint = UnitPowerCalHelper.CalWUnitBattlePower(TeamAWUnits);
             var teamATotalPoint = teamAPoint * TeamAUnitCount * /*def point*/1.5;
-            var gameLvl = g.data.dataWorld.data.gameLevel.Parse<int>();
+            var gameLvl = GameHelper.GetGameLevel().Parse<int>();
             var areaId = teamAbuildBase.gridData.areaBaseID;
             var teamBPoint = UnitPowerCalHelper.CalMonstBattlePower(gameLvl, areaId);
             var teamBTotalPoint = teamBPoint * TeamBUnitCount;
@@ -704,7 +704,7 @@ namespace MOD_nE7UL2.Mod
 
         public static void CalMonstWaveInfo(MapBuildBase baseA_def)
         {
-            var gameLvl = g.data.dataWorld.data.gameLevel.Parse<int>();
+            var gameLvl = GameHelper.GetGameLevel().Parse<int>();
             var areaId = baseA_def.gridData.areaBaseID;
 
             //guardians + others
