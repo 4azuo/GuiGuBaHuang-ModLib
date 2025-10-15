@@ -61,6 +61,7 @@
     <Compile Include="Enum\LuckTypeEnum.cs" />
     <Compile Include="Enum\LuckRarityEnum.cs" />
     <Compile Include="Enum\UnitDynPropertyEnum.cs" />
+    <Compile Include="Helper\EconomyHelper.cs" />
     <Compile Include="Helper\HttpHelper.cs" />
     <Compile Include="Helper\DungeonHelper.cs" />
     <Compile Include="Helper\EncryptionHelper.cs" />
@@ -84,6 +85,7 @@
     <Compile Include="Helper\CUnitHelper.cs" />
     <Compile Include="Helper\VectorHelper.cs" />
     <Compile Include="Helper\ValueHelper.cs" />
+    <Compile Include="Helper\GodArtifactHelper.cs" />
     <Compile Include="Mod\Base\ModSkill.cs" />
     <Compile Include="Mod\ModBattleEvent.cs" />
     <Compile Include="Mod\Base\ModChild.cs" />
