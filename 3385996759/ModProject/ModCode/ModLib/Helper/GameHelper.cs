@@ -3,6 +3,11 @@ using UnityEngine;
 
 public static class GameHelper
 {
+    public static GameLevelType GetGameLevel()
+    {
+        return g.data.dataWorld.data.gameLevel;
+    }
+
     public static string GetDayCode()
     {
         return $"{(g.world?.run?.roundMonth / 12) + 1:0000}{(g.world?.run?.roundMonth % 12) + 1:00}{g.world?.run?.roundDay + 1:00}";
