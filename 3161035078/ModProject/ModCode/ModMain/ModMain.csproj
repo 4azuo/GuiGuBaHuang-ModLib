@@ -64,6 +64,7 @@
     <Compile Include="Mod\RebirthEvent.cs" />
     <Compile Include="Mod\SMLocalConfigsEvent.cs" />
     <Compile Include="Mod\SMGlobalConfigsEvent.cs" />
+    <Compile Include="Mod\RepairShinkiEvent.cs" />
     <Compile Include="Mod\UIDifficultyEvent.cs" />
     <Compile Include="Mod\UICreatePlayerEvent.cs" />
     <Compile Include="Mod\TimeSkipEvent.cs" />

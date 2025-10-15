@@ -12,9 +12,6 @@ namespace MOD_nE7UL2.Mod
     {
         public static TimeSkipEvent Instance { get; set; }
 
-        private int skip2Month = -1;
-        private int skipSpeed = 30;
-
         public override void OnOpenUIEnd(OpenUIEnd e)
         {
             base.OnOpenUIEnd(e);
@@ -41,21 +38,21 @@ namespace MOD_nE7UL2.Mod
             }
         }
 
-        public void SkipTime(int month, int speed = 30)
+        public void SkipTime(int month)
         {
-            skipSpeed = speed;
-            skip2Month = GameHelper.GetGameTotalMonth() + month;
-        }
-
-        [ErrorIgnore]
-        [EventCondition(IsInGame = HandleEnum.True, IsInBattle = HandleEnum.False)]
-        public override void OnTimeUpdate1000ms()
-        {
-            base.OnTimeUpdate1000ms();
-            if (GameHelper.GetGameTotalMonth() < skip2Month && !g.world.run.isRunning && g.world.run.IsCanRun())
+            if (month <= 0)
+                return;
+            for (int i = 0; i < month; i++)
             {
-                g.world.run.AddDay(skipSpeed, true);
+                g.world.run.AddDay(30);
+                g.world.playerUnit.AddExp(g.world.playerUnit.GetDynProperty(UnitDynPropertyEnum.Mp).value / 10 + g.world.playerUnit.GetDynProperty(UnitDynPropertyEnum.Sp).value / 2);
+                foreach (var e in g.events.allEvents[EGameType.SaveData])
+                {
+                    e.Call(new SaveData());
+                }
             }
+            g.world.playerUnit.SetProperty<int>(UnitPropertyEnum.Age, 16 * 12 + GameHelper.GetGameTotalMonth());
+            g.world.run.AddDay(1, true);
         }
     }
 }

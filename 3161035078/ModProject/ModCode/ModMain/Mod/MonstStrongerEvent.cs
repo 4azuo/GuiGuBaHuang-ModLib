@@ -82,7 +82,7 @@ namespace MOD_nE7UL2.Mod
             {
                 //DebugHelper.WriteLine("3");
                 var monstData = e?.data?.TryCast<UnitDataMonst>();
-                var gameLvl = g.data.dataWorld.data.gameLevel.Parse<int>();
+                var gameLvl = GameHelper.GetGameLevel().Parse<int>();
                 var atk = monstData.attack.baseValue;
                 var def = monstData.defense.baseValue;
                 var mhp = monstData.maxHP.baseValue;
