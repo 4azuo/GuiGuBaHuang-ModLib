@@ -417,5 +417,25 @@
 		"id": -1000002054,
 		"key": "trainer054",
 		"en|ch|tc|kr": "{0:#,##0} :Mining"
+	},
+	{
+		"id": -1000002055,
+		"key": "trainer055",
+		"en|ch|tc|kr": "No God Weapone"
+	},
+	{
+		"id": -1000002056,
+		"key": "trainer056",
+		"en|ch|tc|kr": "Devil Demon"
+	},
+	{
+		"id": -1000002057,
+		"key": "trainer057",
+		"en|ch|tc|kr": "God Eye"
+	},
+	{
+		"id": -1000002058,
+		"key": "trainer058",
+		"en|ch|tc|kr": "Pisces Pendant"
 	}
 ]

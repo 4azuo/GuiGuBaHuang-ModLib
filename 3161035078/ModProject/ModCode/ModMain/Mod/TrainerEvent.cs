@@ -43,6 +43,14 @@ namespace MOD_nE7UL2.Mod
             [13] = MultiValue.Create(4, new Func<MapBuildBase, bool>((x) => true)),
         };
 
+        private static readonly List<Tuple<string, GameAnimaWeapon, Action>> GodWeaponSelections = new List<Tuple<string, GameAnimaWeapon, Action>>
+        {
+            new Tuple<string, GameAnimaWeapon, Action>(GameTool.LS("trainer055"), GameAnimaWeapon.None, GodArtifactHelper.DisableAnimaWeapon),
+            new Tuple<string, GameAnimaWeapon, Action>(GameTool.LS("trainer058"), GameAnimaWeapon.PiscesPendant, GodArtifactHelper.EnableOnlyPiscesPendant),
+            new Tuple<string, GameAnimaWeapon, Action>(GameTool.LS("trainer056"), GameAnimaWeapon.DevilDemon, GodArtifactHelper.EnableOnlyDevilDemon),
+            new Tuple<string, GameAnimaWeapon, Action>(GameTool.LS("trainer057"), GameAnimaWeapon.HootinEye, GodArtifactHelper.EnableOnlyGodEye)
+        };
+
         private UICustom1 uiTrainer;
 
         public override bool OnCacheHandler()
@@ -127,6 +135,14 @@ namespace MOD_nE7UL2.Mod
                 FormatButton1(uiTrainer.AddButton(col, row += 2, AddReputation, GameTool.LS("trainer042")));
                 FormatButton1(uiTrainer.AddButton(col, row += 2, ReduceReputation, GameTool.LS("trainer043")));
                 FormatButton1(uiTrainer.AddButton(col, row += 2, BecomeTownMaster, GameTool.LS("trainer047")));
+                FormatButton1(uiTrainer.AddSelect(col, row += 2, GodWeaponSelections.Select(x => x.Item1).ToArray(), GodWeaponSelections.IndexOf(x => x.Item2 == GodArtifactHelper.GetAnimaWeapon()[0]).FixValue(0, GodWeaponSelections.Count - 1))
+                    .SetWork(new UIItemWork
+                    {
+                        ChangeAct = (comp, selectedIndex) =>
+                        {
+                            GodWeaponSelections[(comp as UIItemSelect).SelectedIndex].Item3.Invoke();
+                        }
+                    }) as UIItemSelect);
 
                 col = 14; row = 2;
                 FormatButton1((UIItemButton)uiTrainer.AddButton(col, row, GameHelper.ChangeGameSpeed, "{0}").SetWork(new UIItemWork
@@ -379,6 +395,11 @@ namespace MOD_nE7UL2.Mod
         private void FormatButton1(UIItemButton btn)
         {
             btn.Format(Color.black, PAGE1_FONT_SIZE).Size(PAGE1_BTN_WIDTH, PAGE1_BTN_HEIGHT);
+        }
+
+        private void FormatButton1(UIItemSelect slt)
+        {
+            slt.Format(Color.black, PAGE1_FONT_SIZE).Size(PAGE1_BTN_WIDTH, PAGE1_BTN_HEIGHT);
         }
 
         private void FormatButton2(UIItemButton btn)
