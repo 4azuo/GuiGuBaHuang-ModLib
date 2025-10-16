@@ -1,6 +1,8 @@
 {
+	"$PrepareEvent$": 1000,
+	
 	//common
-	"SMGlobalEvent": 1000,
+	"SMGlobalEvent": 1005,
 	"SMLocalEvent": 1010,
 	"InflationaryEvent": 1020,
 	"TrainerEvent": 1030,

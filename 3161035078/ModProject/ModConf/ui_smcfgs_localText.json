@@ -749,5 +749,10 @@
 		"id": -1000001137,
 		"key": "smcfgs137",
 		"en|ch|tc|kr": "Allow Repair God Weapon",
+	},
+	{
+		"id": -1000001138,
+		"key": "smcfgs138",
+		"en|ch|tc|kr": "All Functions Apply To Nearest Units",
 	}
 ]

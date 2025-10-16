@@ -93,6 +93,7 @@
     <Compile Include="Mod\SpecialMonsterEvent.cs" />
     <Compile Include="Mod\UnitTypeEvent.cs" />
     <Compile Include="Mod\CustomSkillEvent.cs" />
+    <Compile Include="Mod\PrepareEvent.cs" />
     <Compile Include="Mod\UseSpiritStoneCulEvent.cs" />
     <Compile Include="Mod\UpgradeNaturallyEvent.cs" />
     <Compile Include="Object\CustomSkill.cs" />
