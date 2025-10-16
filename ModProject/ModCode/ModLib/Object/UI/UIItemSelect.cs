@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.UI;
+using System.Linq;
 using static ModLib.Object.UIItemBase;
 
 namespace ModLib.Object
@@ -149,8 +150,9 @@ namespace ModLib.Object
 
         public virtual void UpdatePos()
         {
+            var y = (SelectionItems.FirstOrDefault()?.GetSize().y ?? 24) - 4;
             for (var i = 0; i < SelectionItems.Count; i++)
-                SelectionItems[i].Pos(Item, 0f, -20f * (i + 1));
+                SelectionItems[i].Pos(Item, 0f, -y * (i + 1));
         }
 
         public override Vector2 Pos()

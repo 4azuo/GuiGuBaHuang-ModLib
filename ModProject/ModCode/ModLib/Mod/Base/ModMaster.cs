@@ -532,10 +532,25 @@ namespace ModLib.Mod
             DebugHelper.Save();
         }
 
-        public WorldUnitBase[] WUnits { get; private set; }
-        public MapBuildBase[] Buildings { get; private set; }
-        public MapBuildTown[] Towns { get; private set; }
-        public MapBuildSchool[] Schools { get; private set; }
+        #region Caches On Monthly
+        /// <summary>
+        /// Feel free to use, but dont change if you dont know!
+        /// </summary>
+        public WorldUnitBase[] WUnits { get; set; }
+        /// <summary>
+        /// Feel free to use, but dont change if you dont know!
+        /// </summary>
+        public MapBuildBase[] Buildings { get; set; }
+        /// <summary>
+        /// Feel free to use, but dont change if you dont know!
+        /// </summary>
+        public MapBuildTown[] Towns { get; set; }
+        /// <summary>
+        /// Feel free to use, but dont change if you dont know!
+        /// </summary>
+        public MapBuildSchool[] Schools { get; set; }
+        #endregion
+
         public void RefreshDataCaches()
         {
             WUnits = g.world.unit.GetUnits().ToArray();
