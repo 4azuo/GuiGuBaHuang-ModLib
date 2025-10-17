@@ -45,7 +45,7 @@ namespace ModLib.Mod
         public virtual void OnFirstMonth() { }
         public virtual void OnYearly() { }
         public virtual void OnMonthly() { }
-        public virtual void OnRefreshDataCachesOnMonthly() { }
+        public virtual void OnRefreshParameterStoreOnMonthly() { }
         public virtual void OnMonthlyForEachWUnit(WorldUnitBase wunit) { }
         public virtual void OnSave(ETypeData e) { }
         public virtual void OnOpenDrama(OpenDrama e) { }

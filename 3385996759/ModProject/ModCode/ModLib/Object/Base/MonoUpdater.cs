@@ -9,6 +9,7 @@ namespace ModLib.Object
 
         public Action UpdateFunc { get; set; }
 
+        //Dont delete
         void Update()
         {
             UpdateFunc?.Invoke();

@@ -62,8 +62,8 @@ namespace ModLib.Mod
                 {
                     Gamevars.CurMonth = g.game.world.run.roundMonth;
 
-                    RefreshDataCaches();
-                    CallEvents("OnRefreshDataCachesOnMonthly");
+                    RefreshParameterStore();
+                    CallEvents("OnRefreshParameterStoreOnMonthly");
 
                     //first month
                     if (Gamevars.LoadFirstMonth)
@@ -293,14 +293,14 @@ namespace ModLib.Mod
             EventHelper.RunMinorEvents("OnMonthly");
         }
 
-        public virtual void OnRefreshDataCachesOnMonthly()
+        public virtual void OnRefreshParameterStoreOnMonthly()
         {
-            EventHelper.RunMinorEvents("OnRefreshDataCachesOnMonthly");
+            EventHelper.RunMinorEvents("OnRefreshParameterStoreOnMonthly");
         }
 
         public virtual void OnMonthlyForEachWUnit()
         {
-            foreach (var wunit in WUnits)
+            foreach (var wunit in ParameterStore.WUnits)
             {
                 EventHelper.RunMinorEvents("OnMonthlyForEachWUnit", wunit);
             }
