@@ -56,7 +56,7 @@ namespace MOD_nE7UL2.Mod
                 DramaTool.OpenDrama(REACH_LIMIT_DRAMA);
 
                 //affect to npc
-                foreach (var wunit in ModMaster.ModObj.WUnits)
+                foreach (var wunit in ModMaster.ModObj.ParameterStore.WUnits)
                 {
                     if (wunit != null && !wunit.isDie)
                     {
@@ -65,11 +65,11 @@ namespace MOD_nE7UL2.Mod
                 }
 
                 //affect to town & school
-                foreach (var town in ModMaster.ModObj.Towns)
+                foreach (var town in ModMaster.ModObj.ParameterStore.Towns)
                 {
                     MapBuildPropertyEvent.AddBuildProperty(town, -(MapBuildPropertyEvent.GetBuildProperty(town) * 0.8).Parse<long>());
                 }
-                foreach (var school in ModMaster.ModObj.Schools)
+                foreach (var school in ModMaster.ModObj.ParameterStore.Schools)
                 {
                     MapBuildPropertyEvent.AddBuildProperty(school, -(MapBuildPropertyEvent.GetBuildProperty(school) * 0.8).Parse<long>());
                 }

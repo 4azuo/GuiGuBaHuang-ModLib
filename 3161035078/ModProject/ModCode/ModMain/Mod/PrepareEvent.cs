@@ -6,13 +6,13 @@ namespace MOD_nE7UL2.Mod
     [Cache("$PrepareEvent$")]
     public class PrepareEvent : ModEvent
     {
-        public override void OnRefreshDataCachesOnMonthly()
+        public override void OnRefreshParameterStoreOnMonthly()
         {
-            base.OnRefreshDataCachesOnMonthly();
+            base.OnRefreshParameterStoreOnMonthly();
             if (SMLocalConfigsEvent.Instance.Configs.AllFunctionsApplyToNearestUnits)
             {
                 var curAreaId = g.world.playerUnit.GetUnitPosAreaId();
-                ModMaster.ModObj.WUnits = g.world.unit.GetUnits().ToArray().Where(x => x.GetUnitPosAreaId().IsBetween(curAreaId - 3, curAreaId + 3)).ToArray();
+                ModMaster.ModObj.ParameterStore.WUnits = g.world.unit.GetUnits().ToArray().Where(x => x.GetUnitPosAreaId().IsBetween(curAreaId - 3, curAreaId + 3)).ToArray();
             }
         }
     }
