@@ -1,4 +1,5 @@
 ﻿using ModLib.Object;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,6 +14,9 @@ namespace ModLib.Mod
         public static ModDelayEvent Instance { get; set; }
         private static List<DelayInfo> DelayEvents { get; } = new List<DelayInfo>();
 
+        [JsonIgnore]
+        public DelayInfo ProcessingEventInfo { get; set; }
+
         public override void OnTimeUpdate10ms()
         {
             base.OnTimeUpdate10ms();
@@ -24,7 +28,15 @@ namespace ModLib.Mod
                 {
                     try
                     {
-                        EventHelper.RunMinorEvent(e.Event, e.Method, e.Parameter);
+                        ProcessingEventInfo = e;
+                        if (e.CustomMethod != null)
+                        {
+                            EventHelper.RunMinorEvent(e.Event, e.CustomMethod);
+                        }
+                        else
+                        {
+                            EventHelper.RunMinorEvent(e.Event, e.Method, e.Parameter);
+                        }
                     }
                     catch (Exception ex)
                     {
@@ -60,6 +72,19 @@ namespace ModLib.Mod
             if (method != null)
             {
                 DelayEvent(ev, method, e, delayMsec);
+            }
+        }
+
+        public void DelayEvent(ModEvent ev, Action action, int delayMsec)
+        {
+            lock (DelayEvents)
+            {
+                DelayEvents.Add(new DelayInfo
+                {
+                    Event = ev,
+                    CustomMethod = action,
+                    Delay = delayMsec
+                });
             }
         }
     }

@@ -532,31 +532,16 @@ namespace ModLib.Mod
             DebugHelper.Save();
         }
 
-        #region Caches On Monthly
-        /// <summary>
-        /// Feel free to use, but dont change if you dont know!
-        /// </summary>
-        public WorldUnitBase[] WUnits { get; set; }
-        /// <summary>
-        /// Feel free to use, but dont change if you dont know!
-        /// </summary>
-        public MapBuildBase[] Buildings { get; set; }
-        /// <summary>
-        /// Feel free to use, but dont change if you dont know!
-        /// </summary>
-        public MapBuildTown[] Towns { get; set; }
-        /// <summary>
-        /// Feel free to use, but dont change if you dont know!
-        /// </summary>
-        public MapBuildSchool[] Schools { get; set; }
-        #endregion
-
-        public void RefreshDataCaches()
+        public ParameterStore ParameterStore { get; private set; }
+        public void RefreshParameterStore()
         {
-            WUnits = g.world.unit.GetUnits().ToArray();
-            Buildings = g.world.build.GetBuilds().ToArray();
-            Towns = g.world.build.GetBuilds<MapBuildTown>().ToArray();
-            Schools = g.world.build.GetBuilds<MapBuildSchool>().ToArray();
+            ParameterStore = new ParameterStore
+            {
+                WUnits = g.world.unit.GetUnits().ToArray(),
+                Buildings = g.world.build.GetBuilds().ToArray(),
+                Towns = g.world.build.GetBuilds<MapBuildTown>().ToArray(),
+                Schools = g.world.build.GetBuilds<MapBuildSchool>().ToArray(),
+            };
         }
 
         public static void LoadEnumObj(Assembly ass)

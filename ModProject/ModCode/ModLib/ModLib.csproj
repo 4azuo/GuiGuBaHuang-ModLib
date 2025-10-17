@@ -114,6 +114,7 @@
     <Compile Include="Helper\WUnitHelper.cs" />
     <Compile Include="Object\Base\CachableObject.cs" />
     <Compile Include="Mod\Base\ModMaster.cs" />
+    <Compile Include="Object\ParameterStore.cs" />
     <Compile Include="Object\Gamevar.cs" />
     <Compile Include="Object\Base\MonoUpdater.cs" />
     <Compile Include="Object\DelayInfo.cs" />
