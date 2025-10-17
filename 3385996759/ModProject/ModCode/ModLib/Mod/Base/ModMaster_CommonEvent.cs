@@ -73,7 +73,7 @@ namespace ModLib.Mod
         {
             DebugHelper.WriteLine("Load game caches.");
             //init data-caches
-            RefreshDataCaches();
+            RefreshParameterStore();
             //add game-caches
             AddGameCaches();
         }

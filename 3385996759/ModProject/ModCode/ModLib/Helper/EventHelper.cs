@@ -75,6 +75,16 @@ public static class EventHelper
             DebugHelper.WriteLine($"【{processTime.ToString(@"ss\.ff")}】{ev}.{method.Name}({e}) : {ev.ModId}, {ev.CacheId}, {ev.CacheType}, {ev.WorkOn}");
     }
 
+    public static void RunMinorEvent(ModEvent ev, Action method)
+    {
+        var timeStart = DateTime.Now;
+        method.Invoke();
+        var timeEnd = DateTime.Now;
+        var processTime = timeEnd - timeStart;
+        if (processTime.TotalMilliseconds >= 100)
+            DebugHelper.WriteLine($"【{processTime.ToString(@"ss\.ff")}】{ev}.{method.Method.Name}() : {ev.ModId}, {ev.CacheId}, {ev.CacheType}, {ev.WorkOn}");
+    }
+
     public static T GetEvent<T>(string eventId) where T : ModEvent
     {
         return CacheHelper.GetCachableObject<T>(eventId);
