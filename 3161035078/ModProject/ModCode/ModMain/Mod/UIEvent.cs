@@ -54,29 +54,41 @@ namespace MOD_nE7UL2.Mod
             else
             if (e.uiType.uiName == UIType.Town.uiName)
             {
-                var ui = new UICover<UITown>(e.ui);
+                ModDelayEvent.Instance.DelayEvent(this, () =>
                 {
-                    if (MapBuildPropertyEvent.IsTownGuardian(ui.UI.town, g.world.playerUnit))
+                    if (g.ui.HasUI(UIType.Town))
                     {
-                        ui.AddButton(ui.LastCol - 5, ui.FirstRow + 3, () => MapBuildPropertyEvent.OpenUITownManage(ui.UI.town), GameTool.LS("other500020005")).Size(300, 80);
+                        var ui = new UICover<UITown>(e.ui);
+                        {
+                            if (MapBuildPropertyEvent.IsTownGuardian(ui.UI.town, g.world.playerUnit))
+                            {
+                                ui.AddButton(ui.LastCol - 5, ui.FirstRow + 3, () => MapBuildPropertyEvent.OpenUITownManage(ui.UI.town), GameTool.LS("other500020005")).Size(300, 80);
+                            }
+                            else
+                            {
+                                ui.AddButton(ui.LastCol - 5, ui.FirstRow + 3, () => MapBuildPropertyEvent.OpenUITownGuardians(ui.UI.town), $"Tax: {MapBuildPropertyEvent.GetTax(ui.UI.town, g.world.playerUnit)} Spirit Stones\nView the town guardians").Size(300, 80);
+                            }
+                            ui.AddToolTipButton(ui.LastCol - 8, ui.FirstRow + 3, GameTool.LS("other500020020"));
+                        }
                     }
-                    else
-                    {
-                        ui.AddButton(ui.LastCol - 5, ui.FirstRow + 3, () => MapBuildPropertyEvent.OpenUITownGuardians(ui.UI.town), $"Tax: {MapBuildPropertyEvent.GetTax(ui.UI.town, g.world.playerUnit)} Spirit Stones\nView the town guardians").Size(300, 80);
-                    }
-                    ui.AddToolTipButton(ui.LastCol - 8, ui.FirstRow + 3, GameTool.LS("other500020020"));
-                }
+                }, 1);
             }
             else
             if (e.uiType.uiName == UIType.School.uiName)
             {
-                var ui = new UICover<UISchool>(e.ui);
+                ModDelayEvent.Instance.DelayEvent(this, () =>
                 {
-                    if (!MapBuildPropertyEvent.IsSchoolMember(ui.UI.school, g.world.playerUnit))
+                    if (g.ui.HasUI(UIType.School))
                     {
-                        ui.AddButton(ui.LastCol - 5, ui.FirstRow + 3, null, $"Tax: {MapBuildPropertyEvent.GetTax(ui.UI.school, g.world.playerUnit)} Spirit Stones").Size(300, 80).Enable = false;
+                        var ui = new UICover<UISchool>(e.ui);
+                        {
+                            if (!MapBuildPropertyEvent.IsSchoolMember(ui.UI.school, g.world.playerUnit))
+                            {
+                                ui.AddButton(ui.LastCol - 5, ui.FirstRow + 3, null, $"Tax: {MapBuildPropertyEvent.GetTax(ui.UI.school, g.world.playerUnit)} Spirit Stones").Size(300, 80).Enable = false;
+                            }
+                        }
                     }
-                }
+                }, 1);
             }
             else
             if (e.uiType.uiName == UIType.NPCInfo.uiName)
