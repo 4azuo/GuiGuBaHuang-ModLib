@@ -1,4 +1,5 @@
 ﻿using ModLib.Object;
+using Newtonsoft.Json;
 using System;
 using System.Diagnostics;
 using System.Linq;
@@ -532,16 +533,20 @@ namespace ModLib.Mod
             DebugHelper.Save();
         }
 
+        [JsonIgnore]
         public ParameterStore ParameterStore { get; private set; }
         public void RefreshParameterStore()
         {
-            ParameterStore = new ParameterStore
+            ResetModChildParameterStore();
+            ParameterStore = ParameterStore.CreateModMasterParameterStore();
+        }
+
+        public void ResetModChildParameterStore()
+        {
+            foreach (var e in EventHelper.GetModChilds())
             {
-                WUnits = g.world.unit.GetUnits().ToArray(),
-                Buildings = g.world.build.GetBuilds().ToArray(),
-                Towns = g.world.build.GetBuilds<MapBuildTown>().ToArray(),
-                Schools = g.world.build.GetBuilds<MapBuildSchool>().ToArray(),
-            };
+                e.SetParameterStore(null);
+            }
         }
 
         public static void LoadEnumObj(Assembly ass)
