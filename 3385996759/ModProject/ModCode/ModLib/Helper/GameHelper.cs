@@ -1,8 +1,15 @@
-﻿using System.Linq;
+﻿using EGameTypeData;
+using System.Linq;
 using UnityEngine;
 
 public static class GameHelper
 {
+    public static void SaveGame()
+    {
+        EventHelper.CallGameEvent<SaveData>(EGameType.SaveData);
+        g.data.SaveData((Il2CppSystem.Action<bool>)((b) => { }));
+    }
+
     public static GameLevelType GetGameLevel()
     {
         return g.data.dataWorld.data.gameLevel;
