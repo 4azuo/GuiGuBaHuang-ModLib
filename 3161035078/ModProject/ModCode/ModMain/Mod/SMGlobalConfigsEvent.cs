@@ -79,6 +79,7 @@ namespace MOD_nE7UL2.Mod
         public bool NoTaxing { get; set; } = false;
         public bool NoQiCultivation { get; set; } = false;
         public bool LostLifespanWhenDie { get; set; } = false;
+        public bool LostMoneyWhenDie { get; set; } = true;
         public float MaxSellersEachTown { get; set; } = 8;
         public float MaxItemsOnSeller { get; set; } = 4;
         public float MaxBuyersOnSellingItem { get; set; } = 4;
@@ -132,6 +133,7 @@ namespace MOD_nE7UL2.Mod
         private UIItemComposite tglNoTaxing;
         private UIItemComposite tglNoQiCultivation;
         private UIItemComposite tglLostLifespanWhenDie;
+        private UIItemComposite tglLostMoneyWhenDie;
         private UIItemComposite slMaxSellersEachTown;
         private UIItemComposite slMaxItemsOnSeller;
         private UIItemComposite slMaxBuyersOnSellingItem;
@@ -301,6 +303,9 @@ namespace MOD_nE7UL2.Mod
                 funcCond: s => s.Get().Parse<bool>());
             Register(() => tglLostLifespanWhenDie,
                 funcCal: s => 2000,
+                funcCond: s => s.Get().Parse<bool>());
+            Register(() => tglLostMoneyWhenDie,
+                funcCal: s => 1000,
                 funcCond: s => s.Get().Parse<bool>());
             Register(() => slMaxSellersEachTown,
                 funcCal: s => 0,
@@ -485,10 +490,11 @@ namespace MOD_nE7UL2.Mod
 
                 col = 16; row = 0;
                 uiCustom.AddText(col, row++, GameTool.LS("smcfgs127")).Format(null, 17, FontStyle.Italic).Align(TextAnchor.MiddleRight);
-                tglLostLifespanWhenDie = uiCustom.AddCompositeToggle(col, row++, GameTool.LS("smcfgs129"), LostLifespanWhenDie, GameTool.LS("smcfgs102"));
                 tglSysHideSave = uiCustom.AddCompositeToggle(col, row++, GameTool.LS("smcfgs021"), HideSaveButton, GameTool.LS("smcfgs102"));
                 tglSysHideReload = uiCustom.AddCompositeToggle(col, row++, GameTool.LS("smcfgs022"), HideReloadButton, GameTool.LS("smcfgs102"));
-                tglLostItemWhenDie = uiCustom.AddCompositeToggle(col, row++, GameTool.LS("smcfgs056"), HideReloadButton, GameTool.LS("smcfgs102"));
+                tglLostItemWhenDie = uiCustom.AddCompositeToggle(col, row++, GameTool.LS("smcfgs056"), LostItemWhenDie, GameTool.LS("smcfgs102"));
+                tglLostMoneyWhenDie = uiCustom.AddCompositeToggle(col, row++, GameTool.LS("smcfgs139"), LostMoneyWhenDie, GameTool.LS("smcfgs102"));
+                tglLostLifespanWhenDie = uiCustom.AddCompositeToggle(col, row++, GameTool.LS("smcfgs129"), LostLifespanWhenDie, GameTool.LS("smcfgs102"));
                 tglSysOnelife = uiCustom.AddCompositeToggle(col, row++, GameTool.LS("smcfgs023"), Onelife, GameTool.LS("smcfgs102"));
                 tglAutoSaveAfterLostInBattle = uiCustom.AddCompositeToggle(col, row++, GameTool.LS("smcfgs059"), AutoSaveAfterLostInBattle, GameTool.LS("smcfgs102"));
                 uiCustom.AddText(col - 1, row++, GameTool.LS("smcfgs060")).Format(null, 13).Align(TextAnchor.MiddleLeft);
@@ -699,6 +705,7 @@ namespace MOD_nE7UL2.Mod
             tglNoTaxing.Set(false);
             tglNoQiCultivation.Set(false);
             tglLostLifespanWhenDie.Set(false);
+            tglLostMoneyWhenDie.Set(true);
             slMaxSellersEachTown.Set(8f);
             slMaxItemsOnSeller.Set(4f);
             slMaxBuyersOnSellingItem.Set(4f);
@@ -760,6 +767,7 @@ namespace MOD_nE7UL2.Mod
             tglDestroyBuildingAfterTownWar.Set(true);
             tglAllowRepairGodWeapon.Set(false);
             tglAllFunctionsApplyToNearestUnits.Set(false);
+            tglLostMoneyWhenDie.Set(level > 0);
         }
 
         private void SetSMConfigs()
@@ -814,6 +822,7 @@ namespace MOD_nE7UL2.Mod
             DestroyBuildingAfterTownWar = tglDestroyBuildingAfterTownWar.Get().Parse<bool>();
             AllowRepairGodWeapon = tglAllowRepairGodWeapon.Get().Parse<bool>();
             AllFunctionsApplyToNearestUnits = tglAllFunctionsApplyToNearestUnits.Get().Parse<bool>();
+            LostMoneyWhenDie = tglLostMoneyWhenDie.Get().Parse<bool>();
             CacheHelper.SaveGlobalCache(this);
 
             //edit conf

@@ -667,9 +667,12 @@ namespace MOD_nE7UL2.Mod
 
                     //spirit stones
                     //DebugHelper.WriteLine("5");
-                    if (isKillerWUnit)
-                        killerWUnit.AddUnitMoney(dieUnitWUnit.GetUnitMoney());
-                    dieUnitWUnit.SetUnitMoney(0);
+                    if (SMLocalConfigsEvent.Instance.Configs.LostMoneyWhenDie)
+                    {
+                        if (isKillerWUnit)
+                            killerWUnit.AddUnitMoney(dieUnitWUnit.GetUnitMoney());
+                        dieUnitWUnit.SetUnitMoney(0);
+                    }
 
                     //reputation
                     //DebugHelper.WriteLine("6");

@@ -351,7 +351,7 @@ namespace MOD_nE7UL2.Mod
                     [4] = 0,
                 };
                 int col = 0, areaId = -1;
-                foreach (var build in ModMaster.ModObj.ParameterStore.Buildings.Where(x => !string.IsNullOrEmpty(x.name) && TELE_AREA_COL[x.gridData.areaBaseID].Value0.Parse<int>() >= 0 && ((Func<MapBuildBase, bool>)TELE_AREA_COL[x.gridData.areaBaseID].Value1).Invoke(x))
+                foreach (var build in GetModChildParameterStore().Buildings.Where(x => !string.IsNullOrEmpty(x.name) && TELE_AREA_COL[x.gridData.areaBaseID].Value0.Parse<int>() >= 0 && ((Func<MapBuildBase, bool>)TELE_AREA_COL[x.gridData.areaBaseID].Value1).Invoke(x))
                     .OrderBy(x => TELE_AREA_COL[x.gridData.areaBaseID].Value0.Parse<int>()).ThenBy(x => x.gridData.areaBaseID).ThenBy(x => x.name))
                 {
                     if (areaId != build.gridData.areaBaseID)

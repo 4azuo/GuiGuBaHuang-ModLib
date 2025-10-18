@@ -22,7 +22,7 @@ namespace MOD_nE7UL2.Mod
         public override void OnLoadGame()
         {
             base.OnLoadGame();
-            foreach (var wunit in ModMaster.ModObj.ParameterStore.WUnits)
+            foreach (var wunit in GetModChildParameterStore().WUnits)
             {
                 AddWUnitModifier(wunit);
             }
