@@ -57,8 +57,8 @@ namespace ModLib.Mod
         public virtual void OnTaskOverl(TaskOverl e) { }
         public virtual void OnUnitSetGrade(ETypeData e) { }
         public virtual void OnUnitSetHeartState(ETypeData e) { }
-        //public virtual void OnWorldRunStart() { }
-        //public virtual void OnWorldRunEnd() { }
+        public virtual void OnWorldRunStart(WorldRunStart e) { }
+        public virtual void OnWorldRunEnd(WorldRunEnd e) { }
         public virtual void OnMonoUpdate() { }
         #endregion
 

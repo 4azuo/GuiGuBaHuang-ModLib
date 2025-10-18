@@ -1,4 +1,5 @@
-﻿using ModLib.Enum;
+﻿using EGameTypeData;
+using ModLib.Enum;
 using ModLib.Mod;
 using ModLib.Object;
 using System;
@@ -108,5 +109,13 @@ public static class EventHelper
     public static List<ModChild> GetModChilds()
     {
         return CacheHelper.GetAllCachableObjects<ModChild>();
+    }
+
+    public static void CallGameEvent<T>(string eventsId) where T : ETypeData, new()
+    {
+        foreach (var e in g.events.allEvents[eventsId])
+        {
+            e.Call(new T());
+        }
     }
 }
