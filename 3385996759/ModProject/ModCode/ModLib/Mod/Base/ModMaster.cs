@@ -76,8 +76,8 @@ namespace ModLib.Mod
         private Action<ETypeData> callBattleEndHandler;
         private Action<ETypeData> callBattleEscapeFailed;
         private Action<ETypeData> callBattleExit;
-        private Action callWorldRunStart;
-        private Action callWorldRunEnd;
+        private Action<ETypeData> callWorldRunStart;
+        private Action<ETypeData> callWorldRunEnd;
         #endregion
 
         #region timer
@@ -146,6 +146,8 @@ namespace ModLib.Mod
         private EventsMgr.EventsData eventBattleEndHandler;
         private EventsMgr.EventsData eventBattleEscapeFailed;
         private EventsMgr.EventsData eventBattleExit;
+        private EventsMgr.EventsData eventWorldRunStart;
+        private EventsMgr.EventsData eventWorldRunEnd;
         #endregion
 
         #region mono
@@ -223,8 +225,8 @@ namespace ModLib.Mod
                 callBattleEndHandler = _OnBattleEndHandler;
                 callBattleEscapeFailed = _OnBattleEscapeFailed;
                 callBattleExit = _OnBattleExit;
-                //callWorldRunStart = _OnWorldRunStart;
-                //callWorldRunEnd = _OnWorldRunEnd;
+                callWorldRunStart = _OnWorldRunStart;
+                callWorldRunEnd = _OnWorldRunEnd;
                 #endregion
 
                 //register event
@@ -277,6 +279,8 @@ namespace ModLib.Mod
                 eventTaskOverl = RegEvent(EGameType.TaskOverl, callTaskOverl);
                 eventUnitSetGrade = RegEvent(EGameType.UnitSetGrade, callUnitSetGrade);
                 eventUnitSetHeartState = RegEvent(EGameType.UnitSetHeartState, callUnitSetHeartState);
+                eventWorldRunStart = RegEvent(EGameType.WorldRunStart, callWorldRunStart);
+                eventWorldRunEnd = RegEvent(EGameType.WorldRunEnd, callWorldRunEnd);
                 #endregion
 
                 #region EBattleType
@@ -307,11 +311,6 @@ namespace ModLib.Mod
                 monoUpdater = g.root.AddComponent<MonoUpdater>();
                 monoUpdater.UpdateFunc = OnMonoUpdate;
                 #endregion
-
-                //#region Others
-                //g.world.run.On(WorldRunOrder.Start, callWorldRunStart);
-                //g.world.run.On(WorldRunOrder.End, callWorldRunEnd);
-                //#endregion
 
                 //debug
                 //foreach (var e in g.timer.allTime)
