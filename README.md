@@ -22,6 +22,7 @@
 - Create and replace game configs
 - Translation system (replace LocalText.json)
 - Async and Delay functions
+- Support Parameter Store for each ModChild
 - etc...
 
 [Taoist](https://steamcommunity.com/sharedfiles/filedetails/?id=3161035078)
