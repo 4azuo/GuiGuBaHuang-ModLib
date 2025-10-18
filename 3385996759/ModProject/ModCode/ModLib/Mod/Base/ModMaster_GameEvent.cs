@@ -53,37 +53,7 @@ namespace ModLib.Mod
 
         public virtual void _OnSave(ETypeData e)
         {
-            if (Gamevars == null)
-                return;
-
-            if (GameHelper.IsInGame())
-            {
-                if (Gamevars.CurMonth != g.game.world.run.roundMonth)
-                {
-                    Gamevars.CurMonth = g.game.world.run.roundMonth;
-
-                    RefreshParameterStore();
-                    CallEvents("OnRefreshParameterStoreOnMonthly");
-
-                    //first month
-                    if (Gamevars.LoadFirstMonth)
-                    {
-                        CallEvents("OnFirstMonth");
-                        Gamevars.LoadFirstMonth = false;
-                    }
-                    //monthly
-                    CallEvents("OnMonthly");
-                    CallEvents("OnMonthlyForEachWUnit");
-                    //yearly
-                    if (g.world.run.roundMonth % 12 == 0)
-                    {
-                        CallEvents("OnYearly");
-                    }
-                }
-
-                //save
-                CallEvents<ETypeData>("OnSave", e);
-            }
+            CallEvents<ETypeData>("OnSave", e);
         }
 
         public virtual void _OnOpenDrama(ETypeData e)
@@ -131,17 +101,45 @@ namespace ModLib.Mod
             CallEvents<ETypeData>("OnUnitSetHeartState", e);
         }
 
-        //public virtual void _OnWorldRunStart()
-        //{
-        //    //start run
-        //    CallEvents("OnWorldRunStart");
-        //}
+        public virtual void _OnWorldRunStart(ETypeData e)
+        {
+            CallEvents<WorldRunStart>("OnWorldRunStart", e);
+        }
 
-        //public virtual void _OnWorldRunEnd()
-        //{
-        //    //end run
-        //    CallEvents("OnWorldRunEnd");
-        //}
+        public virtual void _OnWorldRunEnd(ETypeData e)
+        {
+            if (Gamevars == null)
+                return;
+
+            if (GameHelper.IsInGame())
+            {
+                if (Gamevars.CurMonth != g.game.world.run.roundMonth)
+                {
+                    Gamevars.CurMonth = g.game.world.run.roundMonth;
+
+                    RefreshParameterStore();
+                    CallEvents("OnRefreshParameterStoreOnMonthly");
+
+                    //first month
+                    if (Gamevars.LoadFirstMonth)
+                    {
+                        CallEvents("OnFirstMonth");
+                        Gamevars.LoadFirstMonth = false;
+                    }
+                    //monthly
+                    CallEvents("OnMonthly");
+                    CallEvents("OnMonthlyForEachWUnit");
+                    //yearly
+                    if (g.world.run.roundMonth % 12 == 0)
+                    {
+                        CallEvents("OnYearly");
+                    }
+                }
+
+                //end run
+                CallEvents<WorldRunEnd>("OnWorldRunEnd", e);
+            }
+        }
         #endregion
 
         #region ModLib - Events
@@ -308,7 +306,6 @@ namespace ModLib.Mod
 
         public virtual void OnSave(ETypeData e)
         {
-            //save log
             DebugHelper.WriteLine($"Save: {GameHelper.GetGameYear()}年{GameHelper.GetGameMonth()}月{GameHelper.GetGameDay()}日");
             EventHelper.RunMinorEvents("OnSave", e);
             Gamevars.Save();
@@ -361,15 +358,17 @@ namespace ModLib.Mod
             EventHelper.RunMinorEvents("OnUnitSetHeartState", e);
         }
 
-        //public virtual void OnWorldRunStart()
-        //{
-        //    EventHelper.RunMinorEvents("OnWorldRunStart");
-        //}
+        public virtual void OnWorldRunStart(WorldRunStart e)
+        {
+            EventHelper.RunMinorEvents("OnWorldRunStart", e);
+        }
 
-        //public virtual void OnWorldRunEnd()
-        //{
-        //    EventHelper.RunMinorEvents("OnWorldRunEnd");
-        //}
+        public virtual void OnWorldRunEnd(WorldRunEnd e)
+        {
+            DebugHelper.WriteLine($"WorldRunEnd: {GameHelper.GetGameYear()}年{GameHelper.GetGameMonth()}月{GameHelper.GetGameDay()}日");
+            EventHelper.RunMinorEvents("OnWorldRunEnd", e);
+            EventHelper.CallGameEvent<SaveData>(EGameType.SaveData);
+        }
 
         public virtual void OnMonoUpdate()
         {

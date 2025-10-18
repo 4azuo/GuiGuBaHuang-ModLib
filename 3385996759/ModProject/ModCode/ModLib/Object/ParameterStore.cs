@@ -1,5 +1,6 @@
 ﻿using ModLib.Mod;
 using Newtonsoft.Json;
+using System.Linq;
 
 namespace ModLib.Object
 {
@@ -20,7 +21,17 @@ namespace ModLib.Object
         {
             return new ParameterStore
             {
-                WUnits = g.world.unit.GetUnits().ToArray(),
+                WUnits = g.world.unit.GetUnits().ToArray().Where(x =>
+                {
+                    try
+                    {
+                        return x.GetUnitPosAreaId() > 0;
+                    }
+                    catch
+                    {
+                        return false;
+                    }
+                }).ToArray(),
                 Buildings = g.world.build.GetBuilds().ToArray(),
                 Towns = g.world.build.GetBuilds<MapBuildTown>().ToArray(),
                 Schools = g.world.build.GetBuilds<MapBuildSchool>().ToArray()
