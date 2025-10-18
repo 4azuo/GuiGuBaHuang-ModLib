@@ -41,18 +41,22 @@ namespace MOD_nE7UL2.Mod
         public void SkipTime(int month)
         {
             if (month <= 0)
+            {
+                g.data.SaveData((Il2CppSystem.Action<bool>)((b) => { }));
                 return;
-            for (int i = 0; i < month; i++)
+            }
+            ModDelayEvent.Instance.DelayEvent(this, () =>
             {
                 g.world.run.AddDay(30);
                 g.world.playerUnit.AddExp(g.world.playerUnit.GetDynProperty(UnitDynPropertyEnum.Mp).value / 10 + g.world.playerUnit.GetDynProperty(UnitDynPropertyEnum.Sp).value / 2);
-                foreach (var e in g.events.allEvents[EGameType.SaveData])
+                if (GameHelper.GetGameTotalMonth() % SMLocalConfigsEvent.Instance.Configs.GrowUpSpeed == 0)
                 {
-                    e.Call(new SaveData());
+                    EventHelper.CallGameEvent<WorldRunStart>(EGameType.WorldRunStart);
+                    EventHelper.CallGameEvent<WorldRunEnd>(EGameType.WorldRunEnd);
                 }
-            }
-            g.world.playerUnit.SetProperty<int>(UnitPropertyEnum.Age, 16 * 12 + GameHelper.GetGameTotalMonth());
-            g.world.run.AddDay(1, true);
+                g.world.playerUnit.SetProperty<int>(UnitPropertyEnum.Age, 16 * 12 + GameHelper.GetGameTotalMonth());
+                SkipTime(month - 1);
+            }, 1);
         }
     }
 }
