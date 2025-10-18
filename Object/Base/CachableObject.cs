@@ -1,4 +1,5 @@
 ﻿using ModLib.Mod;
+using Newtonsoft.Json;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -11,9 +12,11 @@ namespace ModLib.Object
         public int OrderIndex { get; set; } //ModChild always 0
         public CacheAttribute.CType CacheType { get; set; } //ModChild always Global
         public CacheAttribute.WType WorkOn { get; set; }
+        [JsonIgnore]
+        public ModChild Parent { get; set; }
 
         public ModChild GetParent() => CacheHelper.GetAllCachableObjects<ModChild>().FirstOrDefault(x => x.CacheId == ModId);
-        public List<ModEvent> GetChildren() => CacheHelper.GetAllCachableObjects<ModEvent>().Where(x => x.ModId == CacheId).ToList();
+        public IList<ModEvent> GetChildren() => CacheHelper.GetAllCachableObjects<ModEvent>().Where(x => x.ModId == CacheId).ToList();
 
         public virtual void OnLoadClass(bool isNew, string modId, CacheAttribute attr)
         {
@@ -22,6 +25,8 @@ namespace ModLib.Object
             OrderIndex = attr.OrderIndex;
             CacheType = attr.CacheType;
             WorkOn = attr.WorkOn;
+
+            Parent = GetParent();
 
             //autowire to [Instance] variable
             this.GetType().GetProperty("Instance", System.Reflection.BindingFlags.Static | System.Reflection.BindingFlags.Public)?.SetValue(null, this);
