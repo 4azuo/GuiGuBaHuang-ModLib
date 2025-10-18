@@ -85,5 +85,15 @@ namespace ModLib.Mod
         public virtual void OnBattleEscapeFailed(ETypeData e) { }
         public virtual void OnBattleExit(ETypeData e) { }
         #endregion
+
+        public void SetModChildParameterStore(ParameterStore parameterStore)
+        {
+            Parent.SetParameterStore(parameterStore);
+        }
+
+        public ParameterStore GetModChildParameterStore()
+        {
+            return Parent.ParameterStore ?? ModMaster.ModObj.ParameterStore;
+        }
     }
 }
