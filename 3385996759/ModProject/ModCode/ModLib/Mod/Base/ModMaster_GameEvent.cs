@@ -367,7 +367,7 @@ namespace ModLib.Mod
         {
             DebugHelper.WriteLine($"WorldRunEnd: {GameHelper.GetGameYear()}年{GameHelper.GetGameMonth()}月{GameHelper.GetGameDay()}日");
             EventHelper.RunMinorEvents("OnWorldRunEnd", e);
-            EventHelper.CallGameEvent<SaveData>(EGameType.SaveData);
+            GameHelper.SaveGame();
         }
 
         public virtual void OnMonoUpdate()
