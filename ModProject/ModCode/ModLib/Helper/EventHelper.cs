@@ -104,4 +104,9 @@ public static class EventHelper
     {
         return CacheHelper.GetAllCachableObjects<ModEvent>();
     }
+
+    public static List<ModChild> GetModChilds()
+    {
+        return CacheHelper.GetAllCachableObjects<ModChild>();
+    }
 }
