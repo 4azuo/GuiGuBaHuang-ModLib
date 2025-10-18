@@ -229,7 +229,7 @@ namespace MOD_nE7UL2.Mod
         {
             if (townA_def == null || townB_atk == null)
                 return;
-            if (JoinBattleFlg == GameHelper.GetGameTotalMonth())
+            if (JoinBattleFlg == GameHelper.GetGameTotalMonth() || TimeSkipEvent.Instance.IsProcessing)
             {
                 //DebugHelper.WriteLine("1");
                 SkipTownWar(townA_def, townB_atk);
@@ -456,7 +456,7 @@ namespace MOD_nE7UL2.Mod
         {
             if (town == null)
                 return;
-            if (JoinBattleFlg == GameHelper.GetGameTotalMonth())
+            if (JoinBattleFlg == GameHelper.GetGameTotalMonth() || TimeSkipEvent.Instance.IsProcessing)
             {
                 //DebugHelper.WriteLine("1");
                 SkipMonstWave(town);
@@ -532,7 +532,7 @@ namespace MOD_nE7UL2.Mod
         {
             if (school == null)
                 return;
-            if (JoinBattleFlg == GameHelper.GetGameTotalMonth())
+            if (JoinBattleFlg == GameHelper.GetGameTotalMonth() || TimeSkipEvent.Instance.IsProcessing)
             {
                 //DebugHelper.WriteLine("1");
                 SkipMonstWave(school);

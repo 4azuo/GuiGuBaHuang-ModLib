@@ -3,6 +3,7 @@ using MOD_nE7UL2.Const;
 using ModLib.Enum;
 using ModLib.Mod;
 using ModLib.Object;
+using Newtonsoft.Json;
 using UnityEngine;
 
 namespace MOD_nE7UL2.Mod
@@ -11,6 +12,9 @@ namespace MOD_nE7UL2.Mod
     public class TimeSkipEvent : ModEvent
     {
         public static TimeSkipEvent Instance { get; set; }
+
+        [JsonIgnore]
+        public bool IsProcessing { get; set; }
 
         public override void OnOpenUIEnd(OpenUIEnd e)
         {
@@ -40,11 +44,10 @@ namespace MOD_nE7UL2.Mod
 
         public void SkipTime(int month)
         {
+            IsProcessing = month > 0;
             if (month <= 0)
-            {
-                g.data.SaveData((Il2CppSystem.Action<bool>)((b) => { }));
                 return;
-            }
+
             ModDelayEvent.Instance.DelayEvent(this, () =>
             {
                 g.world.run.AddDay(30);
@@ -56,7 +59,7 @@ namespace MOD_nE7UL2.Mod
                 }
                 g.world.playerUnit.SetProperty<int>(UnitPropertyEnum.Age, 16 * 12 + GameHelper.GetGameTotalMonth());
                 SkipTime(month - 1);
-            }, 1);
+            }, 1000);
         }
     }
 }
