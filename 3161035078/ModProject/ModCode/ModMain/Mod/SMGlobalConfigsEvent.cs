@@ -745,7 +745,7 @@ namespace MOD_nE7UL2.Mod
             tglSysSectNoExchange.Set(level > 7);
             tglSysNoRebirth.Set(level > 8);
             tglSysOnelife.Set(level > 9);
-            slNPCAmount.SetPercent(level * 0.02000f, 2000f);
+            slNPCAmount.SetPercent(level * 0.05000f, 800f, 3200);
             tglAllowTownBuildupOverTime.Set(level > 0);
             tglAllowTownBuildupOverTime_IncludeFirstTown.Set(level > 5);
             slGrowUpSpeed.SetPercent(1.0000f - (level * 0.10000f), 2, 12);
