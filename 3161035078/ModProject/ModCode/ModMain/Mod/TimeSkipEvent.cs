@@ -46,11 +46,14 @@ namespace MOD_nE7UL2.Mod
         {
             IsProcessing = month > 0;
             if (month <= 0)
+            {
+                GameHelper.SaveGame();
                 return;
+            }
 
             ModDelayEvent.Instance.DelayEvent(this, () =>
             {
-                g.world.run.AddDay(30);
+                g.world.run.AddDay(g.world.run.roundDayMax + 1);
                 g.world.playerUnit.AddExp(g.world.playerUnit.GetDynProperty(UnitDynPropertyEnum.Mp).value / 10 + g.world.playerUnit.GetDynProperty(UnitDynPropertyEnum.Sp).value / 2);
                 if (GameHelper.GetGameTotalMonth() % SMLocalConfigsEvent.Instance.Configs.GrowUpSpeed == 0)
                 {

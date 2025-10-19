@@ -7,8 +7,6 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
-using static DataBuildSchool;
-using static DataBuildTown;
 using static MOD_nE7UL2.Object.ModStts;
 
 namespace MOD_nE7UL2.Mod
