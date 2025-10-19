@@ -64,7 +64,7 @@ namespace MOD_nE7UL2.Mod
                 {
                     uiTownMarketBuy.AddText(-300f, 210f, "Market: {0} Spirit Stones").Align().SetWork(new UIItemWork
                     {
-                        Formatter = (ibase) => new object[] { MapBuildPropertyEvent.GetBuildProperty(uiTownMarketBuy.UI.town) }
+                        Formatter = new ModLib.Helper.ActionHelper.TracedFunc<UIItemBase, object[]>((ibase) => new object[] { MapBuildPropertyEvent.GetBuildProperty(uiTownMarketBuy.UI.town) })
                     });
                     uiTownMarketBuy.AddText(-300f, 190f, $"Price rate: {GetBuyRate(uiTownMarketBuy.UI.town, g.world.playerUnit):0.00}%").Align().Format(Color.red);
                 }

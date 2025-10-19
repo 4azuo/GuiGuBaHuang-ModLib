@@ -34,18 +34,18 @@ namespace MOD_nE7UL2.Mod
                             uiTaoistSetting.AddText(uiTaoistSetting.MidCol, uiTaoistSetting.LastRow, GameTool.LS("setting001")).Format(Color.red, 17);
                             uiTaoistSetting.AddCompositeToggle(uiTaoistSetting.MidCol, uiTaoistSetting.FirstRow, GameTool.LS("setting002"), HideDamageMultiplier).SetWork(new UIItemWork
                             {
-                                ChangeAct = (s, v) =>
+                                ChangeAct = new ModLib.Helper.ActionHelper.TracedAction<UIItemBase, object>((s, v) =>
                                 {
                                     HideDamageMultiplier = v.Parse<bool>();
-                                }
+                                })
                             });
                             uiTaoistSetting.AddCompositeToggle(uiTaoistSetting.MidCol, uiTaoistSetting.FirstRow + 1, GameTool.LS("setting003"), !DebugHelper.IsDebugMode).SetWork(new UIItemWork
                             {
-                                ChangeAct = (s, v) =>
+                                ChangeAct = new ModLib.Helper.ActionHelper.TracedAction<UIItemBase, object>((s, v) =>
                                 {
                                     DebugHelper.IsDebugMode = !v.Parse<bool>();
                                     HideExceptionLogs = !DebugHelper.IsDebugMode;
-                                }
+                                })
                             });
                             uiTaoistSetting.AddText(uiTaoistSetting.MidCol, uiTaoistSetting.FirstRow + 2, GameTool.LS("setting004")).Format(null, 13);
                         }

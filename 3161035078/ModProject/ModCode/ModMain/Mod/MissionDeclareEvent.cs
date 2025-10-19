@@ -65,11 +65,11 @@ namespace MOD_nE7UL2.Mod
                 {
                     ui.AddButton(0, 0, SelectCommissionItems, GameTool.LS("other500020003")).Size(160, 40).Pos(ui.UI.btnTaskPut.transform, 200, 0).SetWork(new UIItemWork
                     {
-                        UpdateAct = (x) => x.Active(g.world.run.roundMonth != LastMonthCommission)
+                        UpdateAct = new ModLib.Helper.ActionHelper.TracedAction<UIItemBase>((x) => x.Active(g.world.run.roundMonth != LastMonthCommission))
                     });
                     ui.AddText(0, 0, string.Empty).Align(TextAnchor.UpperLeft).Format().Pos(ui.UI.ptextInfo.transform, 225, 150).SetWork(new UIItemWork
                     {
-                        UpdateAct = (x) =>
+                        UpdateAct = new ModLib.Helper.ActionHelper.TracedAction<UIItemBase>((x) =>
                         {
                             var msg = new StringBuilder();
                             foreach (var task in CommissionTasks)
@@ -84,7 +84,7 @@ Your commissions:
 {msg}
 ");
                             x.Active(!ui.UI.goTaskInfo.active);
-                        }
+                        })
                     });
                 }
                 ui.IsAutoUpdate = true;
@@ -109,7 +109,7 @@ Your commissions:
                         .Align(TextAnchor.MiddleCenter).Format().Pos(uiSelector.textTitle1.transform, 0, 0);
                     uiCover.UIWork = new UICustomWork
                     {
-                        UpdateAct = (ui) =>
+                        UpdateAct = new ModLib.Helper.ActionHelper.TracedAction<UICustomBase>((ui) =>
                         {
                             if (UIPropSelect.allSlectDataProps.allProps.Count > 0)
                             {
@@ -142,7 +142,7 @@ Your commissions:
                                 txt1.Set(GameTool.LS("commission480030300"));
                                 txt2.Set(GameTool.LS("commission480030300"));
                             }
-                        }
+                        })
                     };
                 }
                 uiCover.IsAutoUpdate = true;
