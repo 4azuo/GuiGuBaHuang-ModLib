@@ -1,5 +1,5 @@
-﻿using ModLib.Object;
-using Newtonsoft.Json;
+﻿using ModLib.Const;
+using ModLib.Object;
 using System;
 using System.Diagnostics;
 using System.Linq;
@@ -21,7 +21,9 @@ namespace ModLib.Mod
         public abstract string ModName { get; }
         public abstract string ModId { get; }
         public abstract string Version { get; }
-        public Gamevar Gamevars { get; protected set; }
+        public Gamevar Gamevars { get; private set; }
+        public ParameterStore ParameterStore { get; private set; }
+        public ModConfigs ModLibConfigs { get; private set; } = new ModConfigs(); //default
 
         #region caller
         private Action callTimeUpdate10ms;
@@ -476,7 +478,7 @@ namespace ModLib.Mod
                 }
                 var timeEnd = DateTime.Now;
                 var processTime = timeEnd - timeStart;
-                if (processTime.TotalMilliseconds >= 100)
+                if (ModLibConfigs.DebugMode == Enum.DebugModeEnum.Fine)
                     DebugHelper.WriteLine($"【{processTime.ToString(@"ss\.ff")}】CallEvents<{typeof(T).Name}>({methodName})");
             }
             catch (Exception ex)
@@ -532,8 +534,6 @@ namespace ModLib.Mod
             DebugHelper.Save();
         }
 
-        [JsonIgnore]
-        public ParameterStore ParameterStore { get; private set; }
         public void RefreshParameterStore()
         {
             ResetModChildParameterStore();
@@ -546,6 +546,11 @@ namespace ModLib.Mod
             {
                 e.SetParameterStore(null);
             }
+        }
+
+        public void SetModMasterConfigs(ModConfigs mc)
+        {
+            ModLibConfigs = mc;
         }
 
         public static void LoadEnumObj(Assembly ass)
