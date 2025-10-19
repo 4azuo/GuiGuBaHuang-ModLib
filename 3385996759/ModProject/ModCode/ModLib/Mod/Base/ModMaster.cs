@@ -484,8 +484,7 @@ namespace ModLib.Mod
             }
             catch (Exception ex)
             {
-                DebugHelper.WriteLine($"【Error】CallEvents<{typeof(T).Name}>({methodName})");
-                DebugHelper.WriteLine(ex);
+                DebugHelper.WriteLine(new Exception($"【Error】CallEvents<{typeof(T).Name}>({methodName})", ex));
             }
         }
 
