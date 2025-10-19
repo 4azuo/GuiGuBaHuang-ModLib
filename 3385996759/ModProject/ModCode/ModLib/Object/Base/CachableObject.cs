@@ -26,8 +26,8 @@ namespace ModLib.Object
             CacheType = attr.CacheType;
             WorkOn = attr.WorkOn;
 
+            //set parent
             Parent = GetParent();
-
             //autowire to [Instance] variable
             this.GetType().GetProperty("Instance", System.Reflection.BindingFlags.Static | System.Reflection.BindingFlags.Public)?.SetValue(null, this);
         }
