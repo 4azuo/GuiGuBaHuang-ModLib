@@ -2,6 +2,7 @@
 using MOD_nE7UL2.Const;
 using MOD_nE7UL2.Enum;
 using MOD_nE7UL2.Object;
+using ModLib.Helper;
 using ModLib.Mod;
 using ModLib.Object;
 using Newtonsoft.Json;
@@ -166,8 +167,7 @@ namespace MOD_nE7UL2.Mod
             Register(() => slEcoInfRate,
                 funcCal: s => (s.Get().Parse<float>() * 1000).Parse<int>());
             Register(() => slEcoBuildingCost,
-                funcCal: s => (s.Get().Parse<float>() * 100).Parse<int>(),
-                funcEna: s => tglAllowTownBuildupOverTime.Get().Parse<bool>());
+                funcCal: s => (s.Get().Parse<float>() * 100).Parse<int>());
             Register(() => slEcoBankAccCost,
                 funcCal: s => (s.Get().Parse<float>() * 100).Parse<int>());
             Register(() => slEcoBankFee,
@@ -176,8 +176,7 @@ namespace MOD_nE7UL2.Mod
                 funcCal: s => (s.Get().Parse<float>() * 2000).Parse<int>());
             Register(() => slEcoSectExchangeRate,
                 funcCal: s => (s.Get().Parse<float>() * 2000).Parse<int>(),
-                funcCond: s => !tglSysSectNoExchange.Get().Parse<bool>(),
-                funcEna: s => !tglSysSectNoExchange.Get().Parse<bool>());
+                funcCond: s => !tglSysSectNoExchange.Get().Parse<bool>());
             Register(() => slEcoItemValue,
                 funcCal: s => (s.Get().Parse<float>() * 1000).Parse<int>());
             Register(() => slNpcGrowRate,
@@ -187,12 +186,21 @@ namespace MOD_nE7UL2.Mod
             Register(() => tglSysHideSave,
                 funcCal: s => 1000,
                 funcCond: s => s.Get().Parse<bool>(),
-                onChange: (s, v) => tglSysHideReload.Set(false));
+                onChange: (s, v) =>
+                {
+                    var tgl = v.Parse<bool>();
+                    tglSysHideReload.SetEnable(tgl);
+                    tglSysHideReload.Set(false);
+                });
             Register(() => tglSysHideReload,
                 funcCal: s => 5000,
                 funcCond: s => s.Get().Parse<bool>(),
-                funcEna: s => tglSysHideSave.Get().Parse<bool>(),
-                onChange: (s, v) => tglSysOnelife.Set(false));
+                onChange: (s, v) =>
+                {
+                    var tgl = v.Parse<bool>();
+                    tglSysOnelife.SetEnable(tgl);
+                    tglSysOnelife.Set(false);
+                });
             Register(() => tglSysHideBattleMap,
                 funcCal: s => 2000,
                 funcCond: s => s.Get().Parse<bool>());
@@ -202,8 +210,12 @@ namespace MOD_nE7UL2.Mod
             Register(() => tglSysOnelife,
                 funcCal: s => 20000,
                 funcCond: s => s.Get().Parse<bool>(),
-                funcEna: s => tglSysHideReload.Get().Parse<bool>(),
-                onChange: (s, v) => { if (v.Parse<bool>()) tglAutoSaveAfterLostInBattle.Set(true); });
+                onChange: (s, v) =>
+                {
+                    var tgl = v.Parse<bool>();
+                    tglAutoSaveAfterLostInBattle.SetEnable(tgl);
+                    tglAutoSaveAfterLostInBattle.Set(tgl);
+                });
             Register(() => tglSysOnlyPortalAtCityAndSect, 
                 funcCal: s => 1000,
                 funcCond: s => s.Get().Parse<bool>());
@@ -212,7 +224,12 @@ namespace MOD_nE7UL2.Mod
                 funcCond: s => s.Get().Parse<bool>());
             Register(() => tglSysSectNoExchange, 
                 funcCal: s => 10000,
-                funcCond: s => s.Get().Parse<bool>());
+                funcCond: s => s.Get().Parse<bool>(),
+                onChange: (s, v) =>
+                {
+                    var tgl = v.Parse<bool>();
+                    slEcoSectExchangeRate.SetEnable(!tgl);
+                });
             Register(() => tglSysBossHasShield, 
                 funcCal: s => 10000,
                 funcCond: s => s.Get().Parse<bool>());
@@ -247,7 +264,13 @@ namespace MOD_nE7UL2.Mod
                 });
             Register(() => tglAllowTownBuildupOverTime,
                 funcCal: s => 1000,
-                funcCond: s => s.Get().Parse<bool>());
+                funcCond: s => s.Get().Parse<bool>(),
+                onChange: (s, v) =>
+                {
+                    var tgl = v.Parse<bool>();
+                    tglAllowTownBuildupOverTime_IncludeFirstTown.SetEnable(tgl);
+                    tglAllowTownBuildupOverTime_IncludeFirstTown.Set(false);
+                });
             Register(() => slGrowUpSpeed,
                 funcCal: s => ((12 - s.Get().Parse<int>()) * 1000).Parse<int>(),
                 funcFormatter: s =>
@@ -271,8 +294,7 @@ namespace MOD_nE7UL2.Mod
                 funcCond: s => s.Get().Parse<bool>());
             Register(() => tglAllowTownBuildupOverTime_IncludeFirstTown,
                 funcCal: s => 1000,
-                funcCond: s => s.Get().Parse<bool>(),
-                funcEna: s => tglAllowTownBuildupOverTime.Get().Parse<bool>());
+                funcCond: s => s.Get().Parse<bool>());
             Register(() => tglMonsterPropertiesDependOnPlayerProperties,
                 funcCal: s => 5000,
                 funcCond: s => s.Get().Parse<bool>());
@@ -283,15 +305,19 @@ namespace MOD_nE7UL2.Mod
                 funcCal: s => s.Get().Parse<int>() == 0 ? 0 : -10000);
             Register(() => slMarketItemNpcJoinRate,
                 funcCal: s => (s.Get().Parse<float>() * 100).Parse<int>(),
-                funcCond: s => !tglNoMarketItem.Get().Parse<bool>(),
-                funcEna: s => !tglNoMarketItem.Get().Parse<bool>());
+                funcCond: s => !tglNoMarketItem.Get().Parse<bool>());
             Register(() => slMarketItemGetAttackedRate,
                 funcCal: s => (s.Get().Parse<float>() * 1000).Parse<int>(),
-                funcCond: s => !tglNoMarketItem.Get().Parse<bool>(),
-                funcEna: s => !tglNoMarketItem.Get().Parse<bool>());
+                funcCond: s => !tglNoMarketItem.Get().Parse<bool>());
             Register(() => tglNoMarketItem,
                 funcCal: s => 10000,
-                funcCond: s => s.Get().Parse<bool>());
+                funcCond: s => s.Get().Parse<bool>(),
+                onChange: (s, v) =>
+                {
+                    var tgl = v.Parse<bool>();
+                    slMarketItemNpcJoinRate.SetEnable(!tgl);
+                    slMarketItemGetAttackedRate.SetEnable(!tgl);
+                });
             Register(() => tglNoStalker,
                 funcCal: s => -3000,
                 funcCond: s => s.Get().Parse<bool>());
@@ -370,10 +396,9 @@ namespace MOD_nE7UL2.Mod
         }
 
         private void Register(
-            Func<UIItemBase> funcComp, 
-            Func<UIItemBase, int> funcCal, 
+            Func<UIItemBase> funcComp,
+            Func<UIItemBase, int> funcCal,
             Func<UIItemBase, bool> funcCond = null,
-            Func<UIItemBase, bool> funcEna = null,
             Func<UIItemBase, object[]> funcFormatter = null,
             Action<UIItemBase, object> onChange = null)
         {
@@ -395,12 +420,11 @@ namespace MOD_nE7UL2.Mod
             });
             ScoreCalculator.Add(new SMItemWork
             {
-                Comp = funcComp,
-                Cal = funcCal,
-                Cond = funcCond ?? (s => true),
-                EnableAct = funcEna,
-                Formatter = formatter,
-                ChangeAct = onChange,
+                Comp = new ActionHelper.TracedFunc<UIItemBase>(funcComp),
+                Cal = new ActionHelper.TracedFunc<UIItemBase, int>(funcCal),
+                Cond = new ActionHelper.TracedFunc<UIItemBase, bool>(funcCond, s => true),
+                Formatter = formatter != null ? new ActionHelper.TracedFunc<UIItemBase, object[]>(formatter) : null,
+                ChangeAct = onChange != null ? new ActionHelper.TracedAction<UIItemBase, object>(onChange) : null,
             });
         }
 
@@ -452,7 +476,7 @@ namespace MOD_nE7UL2.Mod
                 slNPCAmount = uiCustom.AddCompositeSlider(col, row++, GameTool.LS("smcfgs047"), 1000, 10000, NPCAmount, GameTool.LS("smcfgs103"));
                 uiCustom.AddText(col + 3, row++, GameTool.LS("smcfgs048")).Format(null, 13).Align(TextAnchor.MiddleLeft).SetWork(new UIItemWork
                 {
-                    Formatter = (x) => new string[] { (slNPCAmount.Get().Parse<int>() / 2).ToString() },
+                    Formatter = new ActionHelper.TracedFunc<UIItemBase, object[]>((x) => new string[] { (slNPCAmount.Get().Parse<int>() / 2).ToString() }),
                 });
                 //
                 row++;
@@ -634,7 +658,7 @@ namespace MOD_nE7UL2.Mod
             int col = 30, row = 0;
             uiCustom.AddText(col, row, GameTool.LS("smcfgs043")).Format(Color.red, 17).Align(TextAnchor.MiddleRight).SetWork(new UIItemWork
             {
-                Formatter = (x) => new string[] { CalSMTotalScore().ToString() },
+                Formatter = new ActionHelper.TracedFunc<UIItemBase, object[]>((x) => new string[] { CalSMTotalScore().ToString() }),
             });
             uiCustom.AddButton(col, row += 2, () => SetLevelBase(), GameTool.LS("smcfgs044"));
             uiCustom.AddButton(col, row += 2, () => SetLevel(0), $"{GameTool.LS("smcfgs045")} 0");
@@ -747,7 +771,7 @@ namespace MOD_nE7UL2.Mod
             tglSysOnelife.Set(level > 9);
             slNPCAmount.SetPercent(level * 0.05000f, 800f, 3200);
             tglAllowTownBuildupOverTime.Set(level > 0);
-            tglAllowTownBuildupOverTime_IncludeFirstTown.Set(level > 5);
+            tglAllowTownBuildupOverTime_IncludeFirstTown.Set(false);
             slGrowUpSpeed.SetPercent(1.0000f - (level * 0.10000f), 2, 12);
             tglLostItemWhenDie.Set(level > 4);
             tglMonsterPropertiesDependOnPlayerProperties.Set(level > 3);

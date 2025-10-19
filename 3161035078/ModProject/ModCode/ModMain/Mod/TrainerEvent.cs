@@ -138,16 +138,16 @@ namespace MOD_nE7UL2.Mod
                 FormatButton1(uiTrainer.AddSelect(col, row += 2, GodWeaponSelections.Select(x => x.Item1).ToArray(), GodWeaponSelections.IndexOf(x => x.Item2 == GodArtifactHelper.GetAnimaWeapon()[0]).FixValue(0, GodWeaponSelections.Count - 1))
                     .SetWork(new UIItemWork
                     {
-                        ChangeAct = (comp, selectedIndex) =>
+                        ChangeAct = new ModLib.Helper.ActionHelper.TracedAction<UIItemBase, object>((comp, selectedIndex) =>
                         {
                             GodWeaponSelections[(comp as UIItemSelect).SelectedIndex].Item3.Invoke();
-                        }
+                        })
                     }) as UIItemSelect);
 
                 col = 14; row = 2;
                 FormatButton1((UIItemButton)uiTrainer.AddButton(col, row, GameHelper.ChangeGameSpeed, "{0}").SetWork(new UIItemWork
                 {
-                    Formatter = (x) => new object[] { Time.timeScale == 0 ? GameTool.LS("trainer024") : GameTool.LS("trainer025") },
+                    Formatter = new ModLib.Helper.ActionHelper.TracedFunc<UIItemBase, object[]>((x) => new object[] { Time.timeScale == 0 ? GameTool.LS("trainer024") : GameTool.LS("trainer025") }),
                 }));
                 FormatButton1(uiTrainer.AddButton(col, row += 2, () => GameHelper.SpeedGame(1), GameTool.LS("trainer026")));
                 FormatButton1(uiTrainer.AddButton(col, row += 2, () => GameHelper.SpeedGame(2), GameTool.LS("trainer027")));
@@ -166,87 +166,87 @@ namespace MOD_nE7UL2.Mod
                 uiTrainer.AddText(col - 1, row++, GameTool.LS("trainer038")).Format(null, 17, FontStyle.Italic).Align(TextAnchor.MiddleCenter);
                 uiTrainer.AddText(col, row, "HP: {0}/{1}").Align(TextAnchor.MiddleLeft).Format(Color.black, 15).SetWork(new UIItemWork
                 {
-                    Formatter = (x) => new object[] { player.GetDynProperty(UnitDynPropertyEnum.Hp).value.ToString(ModConst.FORMAT_NUMBER), player.GetDynProperty(UnitDynPropertyEnum.HpMax).value.ToString(ModConst.FORMAT_NUMBER) },
+                    Formatter = new ModLib.Helper.ActionHelper.TracedFunc<UIItemBase, object[]>((x) => new object[] { player.GetDynProperty(UnitDynPropertyEnum.Hp).value.ToString(ModConst.FORMAT_NUMBER), player.GetDynProperty(UnitDynPropertyEnum.HpMax).value.ToString(ModConst.FORMAT_NUMBER) }),
                 });
                 uiTrainer.AddText(col - 3, row++, "{0} :Money").Align(TextAnchor.MiddleRight).Format(Color.black, 15).SetWork(new UIItemWork
                 {
-                    Formatter = (x) => new object[] { player.GetUnitMoney().ToString(ModConst.FORMAT_NUMBER) },
+                    Formatter = new ModLib.Helper.ActionHelper.TracedFunc<UIItemBase, object[]>((x) => new object[] { player.GetUnitMoney().ToString(ModConst.FORMAT_NUMBER) }),
                 });
                 uiTrainer.AddText(col, row, "MP: {0}/{1}").Align(TextAnchor.MiddleLeft).Format(Color.black, 15).SetWork(new UIItemWork
                 {
-                    Formatter = (x) => new object[] { player.GetDynProperty(UnitDynPropertyEnum.Mp).value.ToString(ModConst.FORMAT_NUMBER), player.GetDynProperty(UnitDynPropertyEnum.MpMax).value.ToString(ModConst.FORMAT_NUMBER) },
+                    Formatter = new ModLib.Helper.ActionHelper.TracedFunc<UIItemBase, object[]>((x) => new object[] { player.GetDynProperty(UnitDynPropertyEnum.Mp).value.ToString(ModConst.FORMAT_NUMBER), player.GetDynProperty(UnitDynPropertyEnum.MpMax).value.ToString(ModConst.FORMAT_NUMBER) }),
                 });
                 uiTrainer.AddText(col - 3, row++, "{0} :Degree").Align(TextAnchor.MiddleRight).Format(Color.black, 15).SetWork(new UIItemWork
                 {
-                    Formatter = (x) => new object[] { player.GetUnitMayorDegree().ToString(ModConst.FORMAT_NUMBER) },
+                    Formatter = new ModLib.Helper.ActionHelper.TracedFunc<UIItemBase, object[]>((x) => new object[] { player.GetUnitMayorDegree().ToString(ModConst.FORMAT_NUMBER) }),
                 });
                 uiTrainer.AddText(col, row, "SP: {0}/{1}").Align(TextAnchor.MiddleLeft).Format(Color.black, 15).SetWork(new UIItemWork
                 {
-                    Formatter = (x) => new object[] { player.GetDynProperty(UnitDynPropertyEnum.Sp).value.ToString(ModConst.FORMAT_NUMBER), player.GetDynProperty(UnitDynPropertyEnum.SpMax).value.ToString(ModConst.FORMAT_NUMBER) },
+                    Formatter = new ModLib.Helper.ActionHelper.TracedFunc<UIItemBase, object[]>((x) => new object[] { player.GetDynProperty(UnitDynPropertyEnum.Sp).value.ToString(ModConst.FORMAT_NUMBER), player.GetDynProperty(UnitDynPropertyEnum.SpMax).value.ToString(ModConst.FORMAT_NUMBER) }),
                 });
                 uiTrainer.AddText(col - 3, row++, "{0} :Contribution").Align(TextAnchor.MiddleRight).Format(Color.black, 15).SetWork(new UIItemWork
                 {
-                    Formatter = (x) => new object[] { player.GetUnitContribution().ToString(ModConst.FORMAT_NUMBER) },
+                    Formatter = new ModLib.Helper.ActionHelper.TracedFunc<UIItemBase, object[]>((x) => new object[] { player.GetUnitContribution().ToString(ModConst.FORMAT_NUMBER) }),
                 });
                 uiTrainer.AddText(col, row, "Atk: {0}").Align(TextAnchor.MiddleLeft).Format(Color.black, 15).SetWork(new UIItemWork
                 {
-                    Formatter = (x) => new object[] { player.GetDynProperty(UnitDynPropertyEnum.Attack).value.ToString(ModConst.FORMAT_NUMBER) },
+                    Formatter = new ModLib.Helper.ActionHelper.TracedFunc<UIItemBase, object[]>((x) => new object[] { player.GetDynProperty(UnitDynPropertyEnum.Attack).value.ToString(ModConst.FORMAT_NUMBER) }),
                 });
                 uiTrainer.AddText(col - 3, row++, "{0} :Def").Align(TextAnchor.MiddleRight).Format(Color.black, 15).SetWork(new UIItemWork
                 {
-                    Formatter = (x) => new object[] { player.GetDynProperty(UnitDynPropertyEnum.Defense).value.ToString(ModConst.FORMAT_NUMBER) },
+                    Formatter = new ModLib.Helper.ActionHelper.TracedFunc<UIItemBase, object[]>((x) => new object[] { player.GetDynProperty(UnitDynPropertyEnum.Defense).value.ToString(ModConst.FORMAT_NUMBER) }),
                 });
                 uiTrainer.AddText(col, row, "Mood: {0}/{1}").Align(TextAnchor.MiddleLeft).Format(Color.black, 15).SetWork(new UIItemWork
                 {
-                    Formatter = (x) => new object[] { player.GetDynProperty(UnitDynPropertyEnum.Mood).value, player.GetDynProperty(UnitDynPropertyEnum.MoodMax).value },
+                    Formatter = new ModLib.Helper.ActionHelper.TracedFunc<UIItemBase, object[]>((x) => new object[] { player.GetDynProperty(UnitDynPropertyEnum.Mood).value, player.GetDynProperty(UnitDynPropertyEnum.MoodMax).value }),
                 });
                 uiTrainer.AddText(col - 3, row++, "{0}/{1} :Stanima").Align(TextAnchor.MiddleRight).Format(Color.black, 15).SetWork(new UIItemWork
                 {
-                    Formatter = (x) => new object[] { player.GetDynProperty(UnitDynPropertyEnum.Energy).value, player.GetDynProperty(UnitDynPropertyEnum.EnergyMax).value },
+                    Formatter = new ModLib.Helper.ActionHelper.TracedFunc<UIItemBase, object[]>((x) => new object[] { player.GetDynProperty(UnitDynPropertyEnum.Energy).value, player.GetDynProperty(UnitDynPropertyEnum.EnergyMax).value }),
                 });
                 uiTrainer.AddText(col, row, "Heath: {0}/{1}").Align(TextAnchor.MiddleLeft).Format(Color.black, 15).SetWork(new UIItemWork
                 {
-                    Formatter = (x) => new object[] { player.GetDynProperty(UnitDynPropertyEnum.Health).value, player.GetDynProperty(UnitDynPropertyEnum.HealthMax).value },
+                    Formatter = new ModLib.Helper.ActionHelper.TracedFunc<UIItemBase, object[]>((x) => new object[] { player.GetDynProperty(UnitDynPropertyEnum.Health).value, player.GetDynProperty(UnitDynPropertyEnum.HealthMax).value }),
                 });
                 uiTrainer.AddText(col - 3, row++, "{0}/{1} :Life").Align(TextAnchor.MiddleRight).Format(Color.black, 15).SetWork(new UIItemWork
                 {
-                    Formatter = (x) => new object[] { player.GetDynProperty(UnitDynPropertyEnum.Age).value.ToString(ModConst.FORMAT_NUMBER), player.GetDynProperty(UnitDynPropertyEnum.Life).value.ToString(ModConst.FORMAT_NUMBER) },
+                    Formatter = new ModLib.Helper.ActionHelper.TracedFunc<UIItemBase, object[]>((x) => new object[] { player.GetDynProperty(UnitDynPropertyEnum.Age).value.ToString(ModConst.FORMAT_NUMBER), player.GetDynProperty(UnitDynPropertyEnum.Life).value.ToString(ModConst.FORMAT_NUMBER) }),
                 });
                 uiTrainer.AddText(col, row, "Travel Speed: {0}").Align(TextAnchor.MiddleLeft).Format(Color.black, 15).SetWork(new UIItemWork
                 {
-                    Formatter = (x) => new object[] { player.GetDynProperty(UnitDynPropertyEnum.FootSpeed).value },
+                    Formatter = new ModLib.Helper.ActionHelper.TracedFunc<UIItemBase, object[]>((x) => new object[] { player.GetDynProperty(UnitDynPropertyEnum.FootSpeed).value }),
                 });
                 uiTrainer.AddText(col - 3, row++, "{0} :View Range").Align(TextAnchor.MiddleRight).Format(Color.black, 15).SetWork(new UIItemWork
                 {
-                    Formatter = (x) => new object[] { player.GetDynProperty(UnitDynPropertyEnum.PlayerView).value },
+                    Formatter = new ModLib.Helper.ActionHelper.TracedFunc<UIItemBase, object[]>((x) => new object[] { player.GetDynProperty(UnitDynPropertyEnum.PlayerView).value }),
                 });
                 uiTrainer.AddText(col, row, "Battle Speed: {0}").Align(TextAnchor.MiddleLeft).Format(Color.black, 15).SetWork(new UIItemWork
                 {
-                    Formatter = (x) => new object[] { player.GetDynProperty(UnitDynPropertyEnum.MoveSpeed).value },
+                    Formatter = new ModLib.Helper.ActionHelper.TracedFunc<UIItemBase, object[]>((x) => new object[] { player.GetDynProperty(UnitDynPropertyEnum.MoveSpeed).value }),
                 });
                 uiTrainer.AddText(col - 3, row++, "({1}) {0} :Ability").Align(TextAnchor.MiddleRight).Format(Color.black, 15).SetWork(new UIItemWork
                 {
-                    Formatter = (x) => new object[] { player.GetDynProperty(UnitDynPropertyEnum.AbilityExp).value.ToString(ModConst.FORMAT_NUMBER), player.GetDynProperty(UnitDynPropertyEnum.AbilityPoint).value.ToString(ModConst.FORMAT_NUMBER) },
+                    Formatter = new ModLib.Helper.ActionHelper.TracedFunc<UIItemBase, object[]>((x) => new object[] { player.GetDynProperty(UnitDynPropertyEnum.AbilityExp).value.ToString(ModConst.FORMAT_NUMBER), player.GetDynProperty(UnitDynPropertyEnum.AbilityPoint).value.ToString(ModConst.FORMAT_NUMBER) }),
                 });
                 uiTrainer.AddText(col, row, "Luck: {0}").Align(TextAnchor.MiddleLeft).Format(Color.black, 15).SetWork(new UIItemWork
                 {
-                    Formatter = (x) => new object[] { player.GetDynProperty(UnitDynPropertyEnum.Luck).value },
+                    Formatter = new ModLib.Helper.ActionHelper.TracedFunc<UIItemBase, object[]>((x) => new object[] { player.GetDynProperty(UnitDynPropertyEnum.Luck).value }),
                 });
                 uiTrainer.AddText(col - 3, row++, "{0} :Insight").Align(TextAnchor.MiddleRight).Format(Color.black, 15).SetWork(new UIItemWork
                 {
-                    Formatter = (x) => new object[] { player.GetDynProperty(UnitDynPropertyEnum.Talent).value },
+                    Formatter = new ModLib.Helper.ActionHelper.TracedFunc<UIItemBase, object[]>((x) => new object[] { player.GetDynProperty(UnitDynPropertyEnum.Talent).value }),
                 });
                 uiTrainer.AddText(col, row, "Exp: {0}/{1}").Align(TextAnchor.MiddleLeft).Format(Color.black, 15).SetWork(new UIItemWork
                 {
-                    Formatter = (x) => new object[] { player.GetExp().ToString(ModConst.FORMAT_NUMBER), player.GetMaxExpCurrentPhase().ToString(ModConst.FORMAT_NUMBER) },
+                    Formatter = new ModLib.Helper.ActionHelper.TracedFunc<UIItemBase, object[]>((x) => new object[] { player.GetExp().ToString(ModConst.FORMAT_NUMBER), player.GetMaxExpCurrentPhase().ToString(ModConst.FORMAT_NUMBER) }),
                 });
                 uiTrainer.AddText(col - 3, row++, "{0} :Reputation").Align(TextAnchor.MiddleRight).Format(Color.black, 15).SetWork(new UIItemWork
                 {
-                    Formatter = (x) => new object[] { player.GetDynProperty(UnitDynPropertyEnum.Reputation).value.ToString(ModConst.FORMAT_NUMBER) },
+                    Formatter = new ModLib.Helper.ActionHelper.TracedFunc<UIItemBase, object[]>((x) => new object[] { player.GetDynProperty(UnitDynPropertyEnum.Reputation).value.ToString(ModConst.FORMAT_NUMBER) }),
                 });
                 uiTrainer.AddText(col - 1, row++, "Grade: {0} {1} ― {2}").Align(TextAnchor.MiddleCenter).Format(Color.black, 15).SetWork(new UIItemWork
                 {
-                    Formatter = (x) =>
+                    Formatter = new ModLib.Helper.ActionHelper.TracedFunc<UIItemBase, object[]>((x) =>
                     {
                         var grade = player.GetGradeConf();
                         return new object[]
@@ -255,85 +255,85 @@ namespace MOD_nE7UL2.Mod
                             GameTool.LS(g.conf.roleGrade.GetItem(grade.id).phaseName),
                             GameTool.LS(g.conf.roleGrade.GetItem(grade.id).qualityName)
                         };
-                    },
+                    }),
                 });
 
                 row++;
                 uiTrainer.AddText(col - 1, row++, GameTool.LS("trainer039")).Format(null, 17, FontStyle.Italic).Align(TextAnchor.MiddleCenter);
                 uiTrainer.AddText(col, row, "Fire: {0}").Align(TextAnchor.MiddleLeft).Format(Color.black, 15).SetWork(new UIItemWork
                 {
-                    Formatter = (x) => new object[] { player.GetDynProperty(UnitDynPropertyEnum.BasisFire).value },
+                    Formatter = new ModLib.Helper.ActionHelper.TracedFunc<UIItemBase, object[]>((x) => new object[] { player.GetDynProperty(UnitDynPropertyEnum.BasisFire).value }),
                 });
                 uiTrainer.AddText(col - 3, row++, "{0} :Blade").Align(TextAnchor.MiddleRight).Format(Color.black, 15).SetWork(new UIItemWork
                 {
-                    Formatter = (x) => new object[] { player.GetDynProperty(UnitDynPropertyEnum.BasisBlade).value },
+                    Formatter = new ModLib.Helper.ActionHelper.TracedFunc<UIItemBase, object[]>((x) => new object[] { player.GetDynProperty(UnitDynPropertyEnum.BasisBlade).value }),
                 });
                 uiTrainer.AddText(col, row, "Water: {0}").Align(TextAnchor.MiddleLeft).Format(Color.black, 15).SetWork(new UIItemWork
                 {
-                    Formatter = (x) => new object[] { player.GetDynProperty(UnitDynPropertyEnum.BasisFroze).value },
+                    Formatter = new ModLib.Helper.ActionHelper.TracedFunc<UIItemBase, object[]>((x) => new object[] { player.GetDynProperty(UnitDynPropertyEnum.BasisFroze).value }),
                 });
                 uiTrainer.AddText(col - 3, row++, "{0} :Spear").Align(TextAnchor.MiddleRight).Format(Color.black, 15).SetWork(new UIItemWork
                 {
-                    Formatter = (x) => new object[] { player.GetDynProperty(UnitDynPropertyEnum.BasisSpear).value },
+                    Formatter = new ModLib.Helper.ActionHelper.TracedFunc<UIItemBase, object[]>((x) => new object[] { player.GetDynProperty(UnitDynPropertyEnum.BasisSpear).value }),
                 });
                 uiTrainer.AddText(col, row, "Lightning: {0}").Align(TextAnchor.MiddleLeft).Format(Color.black, 15).SetWork(new UIItemWork
                 {
-                    Formatter = (x) => new object[] { player.GetDynProperty(UnitDynPropertyEnum.BasisThunder).value },
+                    Formatter = new ModLib.Helper.ActionHelper.TracedFunc<UIItemBase, object[]>((x) => new object[] { player.GetDynProperty(UnitDynPropertyEnum.BasisThunder).value }),
                 });
                 uiTrainer.AddText(col - 3, row++, "{0} :Sword").Align(TextAnchor.MiddleRight).Format(Color.black, 15).SetWork(new UIItemWork
                 {
-                    Formatter = (x) => new object[] { player.GetDynProperty(UnitDynPropertyEnum.BasisSword).value },
+                    Formatter = new ModLib.Helper.ActionHelper.TracedFunc<UIItemBase, object[]>((x) => new object[] { player.GetDynProperty(UnitDynPropertyEnum.BasisSword).value }),
                 });
                 uiTrainer.AddText(col, row, "Wind: {0}").Align(TextAnchor.MiddleLeft).Format(Color.black, 15).SetWork(new UIItemWork
                 {
-                    Formatter = (x) => new object[] { player.GetDynProperty(UnitDynPropertyEnum.BasisWind).value },
+                    Formatter = new ModLib.Helper.ActionHelper.TracedFunc<UIItemBase, object[]>((x) => new object[] { player.GetDynProperty(UnitDynPropertyEnum.BasisWind).value }),
                 });
                 uiTrainer.AddText(col - 3, row++, "{0} :Fist").Align(TextAnchor.MiddleRight).Format(Color.black, 15).SetWork(new UIItemWork
                 {
-                    Formatter = (x) => new object[] { player.GetDynProperty(UnitDynPropertyEnum.BasisFist).value },
+                    Formatter = new ModLib.Helper.ActionHelper.TracedFunc<UIItemBase, object[]>((x) => new object[] { player.GetDynProperty(UnitDynPropertyEnum.BasisFist).value }),
                 });
                 uiTrainer.AddText(col, row, "Earth: {0}").Align(TextAnchor.MiddleLeft).Format(Color.black, 15).SetWork(new UIItemWork
                 {
-                    Formatter = (x) => new object[] { player.GetDynProperty(UnitDynPropertyEnum.BasisEarth).value },
+                    Formatter = new ModLib.Helper.ActionHelper.TracedFunc<UIItemBase, object[]>((x) => new object[] { player.GetDynProperty(UnitDynPropertyEnum.BasisEarth).value }),
                 });
                 uiTrainer.AddText(col - 3, row++, "{0} :Palm").Align(TextAnchor.MiddleRight).Format(Color.black, 15).SetWork(new UIItemWork
                 {
-                    Formatter = (x) => new object[] { player.GetDynProperty(UnitDynPropertyEnum.BasisPalm).value },
+                    Formatter = new ModLib.Helper.ActionHelper.TracedFunc<UIItemBase, object[]>((x) => new object[] { player.GetDynProperty(UnitDynPropertyEnum.BasisPalm).value }),
                 });
                 uiTrainer.AddText(col, row, "Wood: {0}").Align(TextAnchor.MiddleLeft).Format(Color.black, 15).SetWork(new UIItemWork
                 {
-                    Formatter = (x) => new object[] { player.GetDynProperty(UnitDynPropertyEnum.BasisWood).value },
+                    Formatter = new ModLib.Helper.ActionHelper.TracedFunc<UIItemBase, object[]>((x) => new object[] { player.GetDynProperty(UnitDynPropertyEnum.BasisWood).value }),
                 });
                 uiTrainer.AddText(col - 3, row++, "{0} :Finger").Align(TextAnchor.MiddleRight).Format(Color.black, 15).SetWork(new UIItemWork
                 {
-                    Formatter = (x) => new object[] { player.GetDynProperty(UnitDynPropertyEnum.BasisFinger).value },
+                    Formatter = new ModLib.Helper.ActionHelper.TracedFunc<UIItemBase, object[]>((x) => new object[] { player.GetDynProperty(UnitDynPropertyEnum.BasisFinger).value }),
                 });
 
                 row++;
                 uiTrainer.AddText(col - 1, row++, GameTool.LS("trainer040")).Format(null, 17, FontStyle.Italic).Align(TextAnchor.MiddleCenter);
                 uiTrainer.AddText(col, row, GameTool.LS("trainer049")).Align(TextAnchor.MiddleLeft).Format(Color.black, 15).SetWork(new UIItemWork
                 {
-                    Formatter = (x) => new object[] { player.GetDynProperty(UnitDynPropertyEnum.RefineElixir).value },
+                    Formatter = new ModLib.Helper.ActionHelper.TracedFunc<UIItemBase, object[]>((x) => new object[] { player.GetDynProperty(UnitDynPropertyEnum.RefineElixir).value }),
                 });
                 uiTrainer.AddText(col - 3, row++, GameTool.LS("trainer050")).Align(TextAnchor.MiddleRight).Format(Color.black, 15).SetWork(new UIItemWork
                 {
-                    Formatter = (x) => new object[] { player.GetDynProperty(UnitDynPropertyEnum.RefineWeapon).value },
+                    Formatter = new ModLib.Helper.ActionHelper.TracedFunc<UIItemBase, object[]>((x) => new object[] { player.GetDynProperty(UnitDynPropertyEnum.RefineWeapon).value }),
                 });
                 uiTrainer.AddText(col, row, GameTool.LS("trainer051")).Align(TextAnchor.MiddleLeft).Format(Color.black, 15).SetWork(new UIItemWork
                 {
-                    Formatter = (x) => new object[] { player.GetDynProperty(UnitDynPropertyEnum.Geomancy).value },
+                    Formatter = new ModLib.Helper.ActionHelper.TracedFunc<UIItemBase, object[]>((x) => new object[] { player.GetDynProperty(UnitDynPropertyEnum.Geomancy).value }),
                 });
                 uiTrainer.AddText(col - 3, row++, GameTool.LS("trainer052")).Align(TextAnchor.MiddleRight).Format(Color.black, 15).SetWork(new UIItemWork
                 {
-                    Formatter = (x) => new object[] { player.GetDynProperty(UnitDynPropertyEnum.Symbol).value },
+                    Formatter = new ModLib.Helper.ActionHelper.TracedFunc<UIItemBase, object[]>((x) => new object[] { player.GetDynProperty(UnitDynPropertyEnum.Symbol).value }),
                 });
                 uiTrainer.AddText(col, row, GameTool.LS("trainer053")).Align(TextAnchor.MiddleLeft).Format(Color.black, 15).SetWork(new UIItemWork
                 {
-                    Formatter = (x) => new object[] { player.GetDynProperty(UnitDynPropertyEnum.Herbal).value },
+                    Formatter = new ModLib.Helper.ActionHelper.TracedFunc<UIItemBase, object[]>((x) => new object[] { player.GetDynProperty(UnitDynPropertyEnum.Herbal).value }),
                 });
                 uiTrainer.AddText(col - 3, row++, GameTool.LS("trainer054")).Align(TextAnchor.MiddleRight).Format(Color.black, 15).SetWork(new UIItemWork
                 {
-                    Formatter = (x) => new object[] { player.GetDynProperty(UnitDynPropertyEnum.Mine).value },
+                    Formatter = new ModLib.Helper.ActionHelper.TracedFunc<UIItemBase, object[]>((x) => new object[] { player.GetDynProperty(UnitDynPropertyEnum.Mine).value }),
                 });
             });
 
