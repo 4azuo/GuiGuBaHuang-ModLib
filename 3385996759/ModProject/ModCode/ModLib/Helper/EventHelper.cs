@@ -1,5 +1,4 @@
-﻿using EGameTypeData;
-using ModLib.Enum;
+﻿using ModLib.Enum;
 using ModLib.Mod;
 using ModLib.Object;
 using System;
@@ -61,6 +60,8 @@ public static class EventHelper
 
     public static void RunMinorEvent(ModEvent ev, MethodInfo method, object e = null)
     {
+        if (ModMaster.ModObj.ModLibConfigs.DebugMode >= DebugModeEnum.Fine)
+            DebugHelper.WriteLine($"【Start】{ev}.{method.Name}({e}) : {ev.ModId}, {ev.CacheId}, {ev.CacheType}, {ev.WorkOn}");
         var timeStart = DateTime.Now;
         if (method.GetParameters().Length == 0)
         {
@@ -72,17 +73,19 @@ public static class EventHelper
         }
         var timeEnd = DateTime.Now;
         var processTime = timeEnd - timeStart;
-        if (ModMaster.ModObj.ModLibConfigs.DebugMode == DebugModeEnum.Fine)
+        if (ModMaster.ModObj.ModLibConfigs.DebugMode >= DebugModeEnum.Finest)
             DebugHelper.WriteLine($"【{processTime.ToString(@"ss\.ff")}】{ev}.{method.Name}({e}) : {ev.ModId}, {ev.CacheId}, {ev.CacheType}, {ev.WorkOn}");
     }
 
     public static void RunMinorEvent(ModEvent ev, Action method)
     {
+        if (ModMaster.ModObj.ModLibConfigs.DebugMode >= DebugModeEnum.Fine)
+            DebugHelper.WriteLine($"【Start】{ev}.{method.Method.Name}() : {ev.ModId}, {ev.CacheId}, {ev.CacheType}, {ev.WorkOn}");
         var timeStart = DateTime.Now;
         method.Invoke();
         var timeEnd = DateTime.Now;
         var processTime = timeEnd - timeStart;
-        if (ModMaster.ModObj.ModLibConfigs.DebugMode == DebugModeEnum.Fine)
+        if (ModMaster.ModObj.ModLibConfigs.DebugMode >= DebugModeEnum.Finest)
             DebugHelper.WriteLine($"【{processTime.ToString(@"ss\.ff")}】{ev}.{method.Method.Name}() : {ev.ModId}, {ev.CacheId}, {ev.CacheType}, {ev.WorkOn}");
     }
 

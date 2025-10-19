@@ -1,5 +1,4 @@
-﻿using ModLib.Const;
-using ModLib.Object;
+﻿using ModLib.Object;
 using System;
 using System.Diagnostics;
 using System.Linq;
@@ -466,6 +465,8 @@ namespace ModLib.Mod
         {
             try
             {
+                if (ModLibConfigs.DebugMode >= Enum.DebugModeEnum.Fine)
+                    DebugHelper.WriteLine($"【Start】CallEvents<{typeof(T).Name}>({methodName})");
                 var timeStart = DateTime.Now;
                 var method = this.GetType().GetMethod(methodName, BindingFlags.Public | BindingFlags.Instance | BindingFlags.FlattenHierarchy);
                 if (method.GetParameters().Length == 0)
@@ -478,7 +479,7 @@ namespace ModLib.Mod
                 }
                 var timeEnd = DateTime.Now;
                 var processTime = timeEnd - timeStart;
-                if (ModLibConfigs.DebugMode == Enum.DebugModeEnum.Fine)
+                if (ModLibConfigs.DebugMode >= Enum.DebugModeEnum.Finest)
                     DebugHelper.WriteLine($"【{processTime.ToString(@"ss\.ff")}】CallEvents<{typeof(T).Name}>({methodName})");
             }
             catch (Exception ex)
@@ -501,17 +502,6 @@ namespace ModLib.Mod
                 Process.Start("notepad.exe", log);
             }), true);
             ui.ptextInfo.fontSize = 14;
-            //var uiCover = new UICover<UITextInfoLong>(ui);
-            //{
-            //    uiCover.AddCompositeToggle(uiCover.MidCol, uiCover.LastRow - 1, GameTool.LS("libtxt999990006"), !DebugHelper.IsDebugMode).SetWork(new UIItemWork
-            //    {
-            //        ChangeAct = (s, v) =>
-            //        {
-            //            DebugHelper.IsDebugMode = !v.Parse<bool>();
-            //        }
-            //    });
-            //    uiCover.AddText(uiCover.MidCol, uiCover.LastRow, GameTool.LS("libtxt999990007")).Format(null, 13);
-            //}
         }
 
         public static void AddGlobalCaches()
