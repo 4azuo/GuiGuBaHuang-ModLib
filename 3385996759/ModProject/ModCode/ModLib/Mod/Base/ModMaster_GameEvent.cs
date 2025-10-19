@@ -53,7 +53,13 @@ namespace ModLib.Mod
 
         public virtual void _OnSave(ETypeData e)
         {
-            CallEvents<ETypeData>("OnSave", e);
+            if (Gamevars == null)
+                return;
+
+            if (GameHelper.IsInGame())
+            {
+                CallEvents<ETypeData>("OnSave", e);
+            }
         }
 
         public virtual void _OnOpenDrama(ETypeData e)

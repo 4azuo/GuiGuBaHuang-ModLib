@@ -20,9 +20,9 @@ namespace ModLib.Mod
         public abstract string ModName { get; }
         public abstract string ModId { get; }
         public abstract string Version { get; }
-        public Gamevar Gamevars { get; private set; }
-        public ParameterStore ParameterStore { get; private set; }
-        public ModConfigs ModLibConfigs { get; private set; } = new ModConfigs(); //default
+        public Gamevar Gamevars { get; protected set; }
+        public ParameterStore ParameterStore { get; protected set; }
+        public ModConfigs ModLibConfigs { get; protected set; } = new ModConfigs(); //default
 
         #region caller
         private Action callTimeUpdate10ms;
