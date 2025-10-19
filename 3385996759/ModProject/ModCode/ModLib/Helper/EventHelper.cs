@@ -1,6 +1,5 @@
 ﻿using ModLib.Enum;
 using ModLib.Mod;
-using ModLib.Object;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,15 +7,12 @@ using System.Reflection;
 
 public static class EventHelper
 {
-    public static CachableObject RunningEvent { get; private set; }
-
     public static void RunMinorEvents(string methodName, object e = null, int delayMsec = 0)
     {
         var isInGame = GameHelper.IsInGame();
         var isInBattle = GameHelper.IsInBattlle();
         foreach (var ev in GetEvents(methodName))
         {
-            RunningEvent = ev;
             var method = ev.GetType().GetMethod(methodName);
             try
             {
@@ -51,8 +47,7 @@ public static class EventHelper
                 if (method?.GetAttributeOnMethodOrClass<ErrorIgnoreAttribute>() == null &&
                     exMethod?.GetAttributeOnMethodOrClass<ErrorIgnoreAttribute>() == null)
                 {
-                    DebugHelper.WriteLine($"【Error】{ev}.{methodName}({e}) : {ev.ModId}, {ev.CacheId}, {ev.CacheType}, {ev.WorkOn}");
-                    DebugHelper.WriteLine(ex);
+                    DebugHelper.WriteLine(new Exception($"【Error】{ev}.{methodName}({e}) : {ev.ModId}, {ev.CacheId}, {ev.CacheType}, {ev.WorkOn}", ex));
                 }
             }
         }

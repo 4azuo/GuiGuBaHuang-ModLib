@@ -44,8 +44,7 @@ namespace ModLib.Mod
                         if (e.Method?.GetAttributeOnMethodOrClass<ErrorIgnoreAttribute>() == null &&
                             exMethod?.GetAttributeOnMethodOrClass<ErrorIgnoreAttribute>() == null)
                         {
-                            DebugHelper.WriteLine($"{e.Event}.{e.Method.Name}({e.Parameter}) : {e.Event.ModId}, {e.Event.CacheId}, {e.Event.CacheType}, {e.Event.WorkOn}");
-                            DebugHelper.WriteLine(ex);
+                            DebugHelper.WriteLine(new Exception($"{e.Event}.{e.Method.Name}({e.Parameter}) : {e.Event.ModId}, {e.Event.CacheId}, {e.Event.CacheType}, {e.Event.WorkOn}", ex));
                         }
                     }
                 }

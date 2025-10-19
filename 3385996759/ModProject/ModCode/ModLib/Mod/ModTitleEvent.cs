@@ -61,12 +61,12 @@ namespace ModLib.Mod
                         .Size(160, 24)
                         .SetWork(new UIItemWork
                         {
-                            ChangeAct = (a, b) =>
+                            ChangeAct = new Helper.ActionHelper.TracedAction<UIItemBase, object>((a, b) =>
                             {
                                 TranslateIndex = b.Parse<int>();
                                 CacheHelper.SaveGlobalCache(this);
                                 LoadLocalTexts(GetTranslateLanguage());
-                            }
+                            })
                         });
                 }
                 ui.UpdateUI();

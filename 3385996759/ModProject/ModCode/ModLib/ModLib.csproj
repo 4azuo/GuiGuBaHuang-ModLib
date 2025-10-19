@@ -115,6 +115,7 @@
     <Compile Include="Helper\WUnitHelper.cs" />
     <Compile Include="Object\Base\CachableObject.cs" />
     <Compile Include="Mod\Base\ModMaster.cs" />
+    <Compile Include="Helper\ActionHelper.cs" />
     <Compile Include="Object\ModConfigs.cs" />
     <Compile Include="Object\ParameterStore.cs" />
     <Compile Include="Object\Gamevar.cs" />
