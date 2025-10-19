@@ -23,12 +23,12 @@ namespace ModLib.Object
                 PrevButton = AddButton(FirstCol, LastRow, () => PrevPage(), GameTool.LS("libtxt999990008")).Format(Color.black, 13).Size(80, 40)
                     .Active(IsShowNavigationButtons).SetWork(new UIItemWork
                 {
-                    Formatter = (item) => new object[] { CurrentPageIndex + 0 }
+                    Formatter = new Helper.ActionHelper.TracedFunc<UIItemBase, object[]>((item) => new object[] { CurrentPageIndex + 0 })
                 });
                 NextButton = AddButton(LastCol, LastRow, () => NextPage(), GameTool.LS("libtxt999990008")).Format(Color.black, 13).Size(80, 40)
                     .Active(IsShowNavigationButtons).SetWork(new UIItemWork
                 {
-                    Formatter = (item) => new object[] { CurrentPageIndex + 2 }
+                    Formatter = new Helper.ActionHelper.TracedFunc<UIItemBase, object[]>((item) => new object[] { CurrentPageIndex + 2 })
                 });
             }
             UnPaging = false;
