@@ -72,7 +72,7 @@ public static class EventHelper
         }
         var timeEnd = DateTime.Now;
         var processTime = timeEnd - timeStart;
-        if (processTime.TotalMilliseconds >= 100)
+        if (ModMaster.ModObj.ModLibConfigs.DebugMode == DebugModeEnum.Fine)
             DebugHelper.WriteLine($"【{processTime.ToString(@"ss\.ff")}】{ev}.{method.Name}({e}) : {ev.ModId}, {ev.CacheId}, {ev.CacheType}, {ev.WorkOn}");
     }
 
@@ -82,7 +82,7 @@ public static class EventHelper
         method.Invoke();
         var timeEnd = DateTime.Now;
         var processTime = timeEnd - timeStart;
-        if (processTime.TotalMilliseconds >= 100)
+        if (ModMaster.ModObj.ModLibConfigs.DebugMode == DebugModeEnum.Fine)
             DebugHelper.WriteLine($"【{processTime.ToString(@"ss\.ff")}】{ev}.{method.Method.Name}() : {ev.ModId}, {ev.CacheId}, {ev.CacheType}, {ev.WorkOn}");
     }
 

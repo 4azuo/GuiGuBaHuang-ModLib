@@ -45,6 +45,7 @@
     <Compile Include="Attribute\TraceAttribute.cs" />
     <Compile Include="Const\ModLibConst.cs" />
     <Compile Include="Converter\EnumObjectConverter.cs" />
+    <Compile Include="Enum\DebugModeEnum.cs" />
     <Compile Include="Enum\CheckEnum.cs" />
     <Compile Include="Enum\MsgBoxButtonEnum.cs" />
     <Compile Include="Enum\UnitTraitEnum.cs" />
@@ -114,6 +115,7 @@
     <Compile Include="Helper\WUnitHelper.cs" />
     <Compile Include="Object\Base\CachableObject.cs" />
     <Compile Include="Mod\Base\ModMaster.cs" />
+    <Compile Include="Object\ModConfigs.cs" />
     <Compile Include="Object\ParameterStore.cs" />
     <Compile Include="Object\Gamevar.cs" />
     <Compile Include="Object\Base\MonoUpdater.cs" />
