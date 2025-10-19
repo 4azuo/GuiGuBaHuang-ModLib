@@ -19,11 +19,5 @@ namespace ModLib.Object
         public bool LoadFirstMonth { get; set; } = true;
         public bool LoadNewGame { get; set; } = true;
         public int CurMonth { get; set; } = -1;
-
-
-
-        public string CustomConfigFile { get; set; }
-        public int? CustomConfigVersion { get; set; }
-        public bool IsOldVersion { get; set; } = false;
     }
 }

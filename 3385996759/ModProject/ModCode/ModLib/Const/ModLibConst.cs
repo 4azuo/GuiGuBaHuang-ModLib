@@ -3,6 +3,7 @@
     public static class ModLibConst
     {
         public const string MODLIB_DLL = "ModLib.dll";
+        public const string MODLIB_CONFIGS = "mod_configs.json";
         public const string MODLIB_WEBSITE = "https://github.com/4azuo/GuiGuBaHuang-ModLib";
         public const int SUPPORT_SCREEN_WIDTH = 1600;
         public const int SUPPORT_SCREEN_HEIGHT = 900;

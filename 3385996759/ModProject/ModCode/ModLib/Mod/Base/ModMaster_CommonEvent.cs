@@ -1,4 +1,8 @@
-﻿using UnityEngine;
+﻿using ModLib.Const;
+using ModLib.Object;
+using Newtonsoft.Json;
+using System.IO;
+using UnityEngine;
 
 namespace ModLib.Mod
 {
@@ -9,6 +13,9 @@ namespace ModLib.Mod
         public virtual void OnInitMod()
         {
             DebugHelper.WriteLine("Load mod.");
+            //load ModMaster configs
+            SetModMasterConfigs(JsonConvert.DeserializeObject<ModConfigs>(File.ReadAllText(ConfHelper.GetConfFilePath(ModMaster.ModObj.ModId, ModLibConst.MODLIB_CONFIGS))));
+            //load sample component
             UISampleHelper.LoadUISampples();
         }
 
@@ -65,6 +72,7 @@ namespace ModLib.Mod
         public virtual void OnLoadGameVariables()
         {
             DebugHelper.WriteLine("Load ingame variables.");
+            //load game variables
             Gamevars = GamevarHelper.Load();
         }
 
