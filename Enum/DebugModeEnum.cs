@@ -3,6 +3,7 @@
     public enum DebugModeEnum
     {
         Info,
-        Fine
+        Fine,
+        Finest
     }
 }
