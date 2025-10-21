@@ -1,4 +1,5 @@
-﻿using ModLib.Object;
+﻿using ModLib.Helper;
+using ModLib.Object;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -15,7 +16,7 @@ public static class UISampleHelper
 
     public static void LoadUISampples()
     {
-        g.ui.Init((Il2CppSystem.Action)(() =>
+        g.ui.Init(ActionHelper.TracedIl2Action(() =>
         {
             // Create Canvas
             Il2CppSystem.Type canvasType = Il2CppSystem.Type.GetType("UnityEngine.Canvas, UnityEngine");
