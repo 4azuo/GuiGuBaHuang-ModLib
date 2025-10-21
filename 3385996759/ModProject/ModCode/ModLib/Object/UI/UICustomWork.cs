@@ -1,9 +1,9 @@
-﻿using ModLib.Helper;
+﻿using System;
 
 namespace ModLib.Object
 {
     public class UICustomWork
     {
-        public virtual ActionHelper.TracedAction<UICustomBase> UpdateAct { get; set; }
+        public virtual Action<UICustomBase> UpdateAct { get; set; }
     }
 }

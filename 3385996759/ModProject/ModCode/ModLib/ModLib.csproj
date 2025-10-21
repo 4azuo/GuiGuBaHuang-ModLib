@@ -62,6 +62,10 @@
     <Compile Include="Enum\LuckTypeEnum.cs" />
     <Compile Include="Enum\LuckRarityEnum.cs" />
     <Compile Include="Enum\UnitDynPropertyEnum.cs" />
+    <Compile Include="Helper\ActionHelper.cs" />
+    <Compile Include="Helper\ActionHelper_TracedIl2Action.cs" />
+    <Compile Include="Helper\ActionHelper_TracedUnityAction.cs" />
+    <Compile Include="Helper\ActionHelper_TracedAction.cs" />
     <Compile Include="Helper\EconomyHelper.cs" />
     <Compile Include="Helper\HttpHelper.cs" />
     <Compile Include="Helper\DungeonHelper.cs" />
@@ -115,7 +119,7 @@
     <Compile Include="Helper\WUnitHelper.cs" />
     <Compile Include="Object\Base\CachableObject.cs" />
     <Compile Include="Mod\Base\ModMaster.cs" />
-    <Compile Include="Helper\ActionHelper.cs" />
+    <Compile Include="Helper\ActionHelper_TracedFunc.cs" />
     <Compile Include="Object\ModConfigs.cs" />
     <Compile Include="Object\ParameterStore.cs" />
     <Compile Include="Object\Gamevar.cs" />
