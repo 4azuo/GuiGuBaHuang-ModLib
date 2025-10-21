@@ -687,16 +687,16 @@ namespace MOD_nE7UL2.Mod
                 uiCover.AddText(col, row + i++, string.Format(GameTool.LS("townmaster420041117"), town.name, GetTownMaster(town).GetName())).Format().Align();
                 uiCover.AddText(col, row + i++, GameTool.LS("townmaster420041118")).Format().Align().SetWork(new UIItemWork
                 {
-                    Formatter = new ModLib.Helper.ActionHelper.TracedFunc<UIItemBase, object[]>((ibase) => new object[] { GetBuildProperty(town) }),
+                    Formatter = ModLib.Helper.ActionHelper.TracedFunc<UIItemBase, object[]>((ibase) => new object[] { GetBuildProperty(town) }),
                 });
                 uiCover.AddText(col, row + i++, GameTool.LS("townmaster420041119")).Format().Align().SetWork(new UIItemWork
                 {
-                    Formatter = new ModLib.Helper.ActionHelper.TracedFunc<UIItemBase, object[]>((ibase) => new object[] { GetTotalMonthlyPayment(town) }),
+                    Formatter = ModLib.Helper.ActionHelper.TracedFunc<UIItemBase, object[]>((ibase) => new object[] { GetTotalMonthlyPayment(town) }),
                 });
                 uiCover.AddCompositeSlider(col, row + i++, $"Base Tax:", 0.40f, 20.00f, Instance.TaxRate[town.buildData.id], "{0}/month").SetWork(new UIItemWork
                 {
-                    Formatter = new ModLib.Helper.ActionHelper.TracedFunc<UIItemBase, object[]>((ibase) => new object[] { GetBaseTax(town) }),
-                    ChangeAct = new ModLib.Helper.ActionHelper.TracedAction<UIItemBase, object>((ibase, value) => Instance.TaxRate[town.buildData.id] = value.Parse<float>()),
+                    Formatter = ModLib.Helper.ActionHelper.TracedFunc<UIItemBase, object[]>((ibase) => new object[] { GetBaseTax(town) }),
+                    ChangeAct = ModLib.Helper.ActionHelper.TracedAction<UIItemBase, object>((ibase, value) => Instance.TaxRate[town.buildData.id] = value.Parse<float>()),
                 });
 
                 i++;

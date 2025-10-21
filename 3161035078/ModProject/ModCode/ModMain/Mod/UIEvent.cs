@@ -98,28 +98,28 @@ namespace MOD_nE7UL2.Mod
                     ui.AddText(0, 0, string.Empty).Format(Color.white).SetParentTransform(ui.UI.uiProperty.goGroupRoot)
                         .Pos(ui.UI.uiProperty.goItem6, 36, -150).SetWork(new UIItemWork
                         {
-                            UpdateAct = new ModLib.Helper.ActionHelper.TracedAction<UIItemBase>((x) => x.Set($"+Hp: {UnitModifyHelper.GetMartialAdjHp(ui.UI.unit)}"))
+                            UpdateAct = ModLib.Helper.ActionHelper.TracedAction<UIItemBase>((x) => x.Set($"+Hp: {UnitModifyHelper.GetMartialAdjHp(ui.UI.unit)}"))
                         });
                     ui.AddText(0, 0, string.Empty).Format(Color.white).SetParentTransform(ui.UI.uiProperty.goGroupRoot)
                         .Pos(ui.UI.uiProperty.goItem7, 72, -150).SetWork(new UIItemWork
                         {
-                            UpdateAct = new ModLib.Helper.ActionHelper.TracedAction<UIItemBase>((x) => x.Set($"+Mp: {UnitModifyHelper.GetSpiritualAdjMp(ui.UI.unit)}"))
+                            UpdateAct = ModLib.Helper.ActionHelper.TracedAction<UIItemBase>((x) => x.Set($"+Mp: {UnitModifyHelper.GetSpiritualAdjMp(ui.UI.unit)}"))
                         });
                     ui.AddText(0, 0, string.Empty).Format(Color.white).SetParentTransform(ui.UI.uiProperty.goGroupRoot)
                         .Pos(ui.UI.uiProperty.goItem8, 72, -150).SetWork(new UIItemWork
                         {
-                            UpdateAct = new ModLib.Helper.ActionHelper.TracedAction<UIItemBase>((x) => x.Set($"+Sp: {UnitModifyHelper.GetArtisanshipAdjSp(ui.UI.unit)}"))
+                            UpdateAct = ModLib.Helper.ActionHelper.TracedAction<UIItemBase>((x) => x.Set($"+Sp: {UnitModifyHelper.GetArtisanshipAdjSp(ui.UI.unit)}"))
                         });
 
                     ui.AddText(0, 0, string.Empty).Format(Color.white).SetParentTransform(ui.UI.uiSkill.textPoint1.transform)
                         .Pos(ui.UI.uiSkill.textPoint1.transform, 0, -12).SetWork(new UIItemWork
                         {
-                            UpdateAct = new ModLib.Helper.ActionHelper.TracedAction<UIItemBase>((x) => x.Set($"+Hp: {UnitModifyHelper.GetAbiPointAdjHp(ui.UI.unit)}"))
+                            UpdateAct = ModLib.Helper.ActionHelper.TracedAction<UIItemBase>((x) => x.Set($"+Hp: {UnitModifyHelper.GetAbiPointAdjHp(ui.UI.unit)}"))
                         });
                     ui.AddText(0, 0, string.Empty).Format(Color.white).SetParentTransform(ui.UI.uiSkill.textPoint1.transform)
                         .Pos(ui.UI.uiSkill.textPoint1.transform, 0, -36).SetWork(new UIItemWork
                         {
-                            UpdateAct = new ModLib.Helper.ActionHelper.TracedAction<UIItemBase>((x) => x.Set($"+Mp: {UnitModifyHelper.GetAbiPointAdjMp(ui.UI.unit)}"))
+                            UpdateAct = ModLib.Helper.ActionHelper.TracedAction<UIItemBase>((x) => x.Set($"+Mp: {UnitModifyHelper.GetAbiPointAdjMp(ui.UI.unit)}"))
                         });
                 }
                 ui.IsAutoUpdate = true;
@@ -135,31 +135,31 @@ namespace MOD_nE7UL2.Mod
                     ui.AddText(0, 0, string.Empty).SetParentTransform(ui.UI.uiPropertyCommon.goGroupRoot)
                         .Pos(ui.UI.uiPropertyCommon.goItem6_En, 100, -160).SetWork(new UIItemWork
                         {
-                            UpdateAct = new ModLib.Helper.ActionHelper.TracedAction<UIItemBase>((x) => x.Set($"+Hp: {UnitModifyHelper.GetMartialAdjHp(ui.UI.unit)}"))
+                            UpdateAct = ModLib.Helper.ActionHelper.TracedAction<UIItemBase>((x) => x.Set($"+Hp: {UnitModifyHelper.GetMartialAdjHp(ui.UI.unit)}"))
                         });
                     ui.AddToolTipButton(GameTool.LS("other500020033")).SetParentTransform(ui.UI.uiPropertyCommon.goGroupRoot).Pos(ui.UI.uiPropertyCommon.goItem6_En, 40, -160);
                     ui.AddText(0, 0, string.Empty).SetParentTransform(ui.UI.uiPropertyCommon.goGroupRoot)
                         .Pos(ui.UI.uiPropertyCommon.goItem7_En, 100, -160).SetWork(new UIItemWork
                         {
-                            UpdateAct = new ModLib.Helper.ActionHelper.TracedAction<UIItemBase>((x) => x.Set($"+Mp: {UnitModifyHelper.GetSpiritualAdjMp(ui.UI.unit)}"))
+                            UpdateAct = ModLib.Helper.ActionHelper.TracedAction<UIItemBase>((x) => x.Set($"+Mp: {UnitModifyHelper.GetSpiritualAdjMp(ui.UI.unit)}"))
                         });
                     ui.AddToolTipButton(GameTool.LS("other500020034")).SetParentTransform(ui.UI.uiPropertyCommon.goGroupRoot).Pos(ui.UI.uiPropertyCommon.goItem7_En, 40, -160);
                     ui.AddText(0, 0, string.Empty).SetParentTransform(ui.UI.uiPropertyCommon.goGroupRoot)
                         .Pos(ui.UI.uiPropertyCommon.goItem8_En, 100, -160).SetWork(new UIItemWork
                         {
-                            UpdateAct = new ModLib.Helper.ActionHelper.TracedAction<UIItemBase>((x) => x.Set($"+Sp: {UnitModifyHelper.GetArtisanshipAdjSp(ui.UI.unit)}"))
+                            UpdateAct = ModLib.Helper.ActionHelper.TracedAction<UIItemBase>((x) => x.Set($"+Sp: {UnitModifyHelper.GetArtisanshipAdjSp(ui.UI.unit)}"))
                         });
                     ui.AddToolTipButton(GameTool.LS("other500020035")).SetParentTransform(ui.UI.uiPropertyCommon.goGroupRoot).Pos(ui.UI.uiPropertyCommon.goItem8_En, 40, -160);
 
                     ui.AddText(0, 0, string.Empty).Format(Color.white).SetParentTransform(ui.UI.uiSkill.textPoint1.transform)
                         .Pos(ui.UI.uiSkill.textPoint1.transform, 0, -12).SetWork(new UIItemWork
                         {
-                            UpdateAct = new ModLib.Helper.ActionHelper.TracedAction<UIItemBase>((x) => x.Set($"+Hp: {UnitModifyHelper.GetAbiPointAdjHp(ui.UI.unit)}"))
+                            UpdateAct = ModLib.Helper.ActionHelper.TracedAction<UIItemBase>((x) => x.Set($"+Hp: {UnitModifyHelper.GetAbiPointAdjHp(ui.UI.unit)}"))
                         });
                     ui.AddText(0, 0, string.Empty).Format(Color.white).SetParentTransform(ui.UI.uiSkill.textPoint1.transform)
                         .Pos(ui.UI.uiSkill.textPoint1.transform, 0, -36).SetWork(new UIItemWork
                         {
-                            UpdateAct = new ModLib.Helper.ActionHelper.TracedAction<UIItemBase>((x) => x.Set($"+Mp: {UnitModifyHelper.GetAbiPointAdjMp(ui.UI.unit)}"))
+                            UpdateAct = ModLib.Helper.ActionHelper.TracedAction<UIItemBase>((x) => x.Set($"+Mp: {UnitModifyHelper.GetAbiPointAdjMp(ui.UI.unit)}"))
                         });
                     ui.AddToolTipButton(GameTool.LS("other500020036")).SetParentTransform(ui.UI.uiSkill.textPoint1.transform).Pos(ui.UI.uiSkill.textPoint1.transform, 0, -60);
                     ui.AddToolTipButton(GameTool.LS("other500020037")).SetParentTransform(ui.UI.uiSkill.goGroupRoot).Pos(ui.UI.uiSkill.goActionMartialRoot.transform, 0, 200);

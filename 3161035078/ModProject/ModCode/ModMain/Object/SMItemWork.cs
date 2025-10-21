@@ -1,12 +1,12 @@
-﻿using ModLib.Helper;
-using ModLib.Object;
+﻿using ModLib.Object;
+using System;
 
 namespace MOD_nE7UL2.Object
 {
     public class SMItemWork : UIItemWork
     {
-        public ActionHelper.TracedFunc<UIItemBase> Comp { get; set; }
-        public ActionHelper.TracedFunc<UIItemBase, int> Cal { get; set; }
-        public ActionHelper.TracedFunc<UIItemBase, bool> Cond { get; set; }
+        public Func<UIItemBase> Comp { get; set; }
+        public Func<UIItemBase, int> Cal { get; set; }
+        public Func<UIItemBase, bool> Cond { get; set; }
     }
 }
