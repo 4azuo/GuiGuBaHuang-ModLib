@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ModLib.Helper;
+using System;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -23,12 +24,12 @@ namespace ModLib.Object
                 PrevButton = AddButton(FirstCol, LastRow, () => PrevPage(), GameTool.LS("libtxt999990008")).Format(Color.black, 13).Size(80, 40)
                     .Active(IsShowNavigationButtons).SetWork(new UIItemWork
                 {
-                    Formatter = new Helper.ActionHelper.TracedFunc<UIItemBase, object[]>((item) => new object[] { CurrentPageIndex + 0 })
+                    Formatter = ActionHelper.TracedFunc<UIItemBase, object[]>((item) => new object[] { CurrentPageIndex + 0 })
                 });
                 NextButton = AddButton(LastCol, LastRow, () => NextPage(), GameTool.LS("libtxt999990008")).Format(Color.black, 13).Size(80, 40)
                     .Active(IsShowNavigationButtons).SetWork(new UIItemWork
                 {
-                    Formatter = new Helper.ActionHelper.TracedFunc<UIItemBase, object[]>((item) => new object[] { CurrentPageIndex + 2 })
+                    Formatter = ActionHelper.TracedFunc<UIItemBase, object[]>((item) => new object[] { CurrentPageIndex + 2 })
                 });
             }
             UnPaging = false;
@@ -74,7 +75,7 @@ namespace ModLib.Object
         {
             UI.InitData(title, string.Empty, btnText, okAct, showCancel);
             if (cancelAct != null)
-                UI.btnCancel.onClick.AddListener((UnityAction)cancelAct);
+                UI.btnCancel.onClick.AddListener(ActionHelper.TracedUnityAction(cancelAct));
         }
     }
 
