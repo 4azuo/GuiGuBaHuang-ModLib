@@ -1,7 +1,7 @@
-﻿using System;
+﻿using ModLib.Helper;
+using System;
 using System.Threading.Tasks;
 using UnityEngine;
-using UnityEngine.Events;
 using UnityEngine.UI;
 using static ModLib.Object.UIItemBase;
 
@@ -25,21 +25,8 @@ namespace ModLib.Object
             ButtonLabel = Item.GetComponentInChildren<Text>();
             Set(format);
 
-            Item.onClick.AddListener((UnityAction)(() =>
-            {
-                try
-                {
-                    act?.Invoke();
-                }
-                catch (Exception e)
-                {
-                    DebugHelper.WriteLine(e);
-                }
-                finally
-                {
-                    UI.UpdateUI();
-                }
-            }));
+            if (act != null)
+                Item.onClick.AddListener(ActionHelper.TracedUnityAction(act, fin: UI.UpdateUI));
         }
 
         public override object Get()
@@ -98,13 +85,13 @@ namespace ModLib.Object
 
         public UIItemButton Size(float scaleX = 0f, float scaleY = 0f)
         {
-            Parallel.ForEach(Item.GetComponentsInChildren<RectTransform>(), s => s.sizeDelta = new Vector2(scaleX, scaleY));
+            Parallel.ForEach(Item.GetComponentsInChildren<RectTransform>(), ActionHelper.TracedAction<RectTransform>(s => s.sizeDelta = new Vector2(scaleX, scaleY)));
             return this;
         }
 
         public UIItemButton AddSize(float scaleX = 0f, float scaleY = 0f)
         {
-            Parallel.ForEach(Item.GetComponentsInChildren<RectTransform>(), s => s.sizeDelta = new Vector2(s.sizeDelta.x + scaleX, s.sizeDelta.y + scaleY));
+            Parallel.ForEach(Item.GetComponentsInChildren<RectTransform>(), ActionHelper.TracedAction<RectTransform>(s => s.sizeDelta = new Vector2(s.sizeDelta.x + scaleX, s.sizeDelta.y + scaleY)));
             return this;
         }
     }

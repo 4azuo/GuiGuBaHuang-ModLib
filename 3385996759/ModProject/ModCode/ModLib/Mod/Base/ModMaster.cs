@@ -1,4 +1,5 @@
-﻿using ModLib.Object;
+﻿using ModLib.Helper;
+using ModLib.Object;
 using System;
 using System.Diagnostics;
 using System.Linq;
@@ -496,10 +497,7 @@ namespace ModLib.Mod
             }
 
             var ui = g.ui.OpenUISafe<UITextInfoLong>(UIType.TextInfoLong);
-            ui.InitData("Exception", ex.GetAllInnnerExceptionStr(), "Open log", (Il2CppSystem.Action)(() =>
-            {
-                Process.Start("notepad.exe", log);
-            }), true);
+            ui.InitData("Exception", ex.GetAllInnnerExceptionStr(), "Open log", ActionHelper.TracedIl2Action(() => Process.Start("notepad.exe", log)), true);
             ui.ptextInfo.fontSize = 14;
         }
 

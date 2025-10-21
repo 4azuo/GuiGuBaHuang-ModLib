@@ -1,4 +1,5 @@
 ﻿using ModLib.Enum;
+using ModLib.Helper;
 using ModLib.Object;
 using System;
 using System.Collections.Generic;
@@ -63,28 +64,8 @@ public static class UIHelper
     {
         var uiConfirm = g.OpenUISafe<UICheckPopup>(UIType.CheckPopup);
         uiConfirm.InitData(title, content, type.Parse<int>(), 
-            (Il2CppSystem.Action)(() =>
-            {
-                try
-                {
-                    onYesCall?.Invoke();
-                }
-                catch (Exception ex)
-                {
-                    DebugHelper.WriteLine(ex);
-                }
-            }), 
-            (Il2CppSystem.Action)(() =>
-            {
-                try
-                {
-                    onNoCall?.Invoke();
-                }
-                catch (Exception ex)
-                {
-                    DebugHelper.WriteLine(ex);
-                }
-            }));
+            ActionHelper.TracedIl2Action(() => onYesCall?.Invoke()),
+            ActionHelper.TracedIl2Action(() => onNoCall?.Invoke()));
     }
 
     public static void UpdateAllUI(Func<UICustomBase, bool> predicate = null)
