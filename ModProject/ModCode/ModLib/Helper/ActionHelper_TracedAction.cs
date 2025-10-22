@@ -14,8 +14,8 @@ namespace ModLib.Helper
                 }
                 catch (Exception ex)
                 {
-                    try { cat?.Invoke(); } catch { }
                     Error(ex);
+                    try { cat?.Invoke(); } catch { }
                 }
                 finally
                 {
@@ -34,8 +34,8 @@ namespace ModLib.Helper
                 }
                 catch (Exception ex)
                 {
-                    try { cat?.Invoke(v1); } catch { }
                     Error(ex);
+                    try { cat?.Invoke(v1); } catch { }
                 }
                 finally
                 {
@@ -54,8 +54,8 @@ namespace ModLib.Helper
                 }
                 catch (Exception ex)
                 {
-                    try { cat?.Invoke(v1, v2); } catch { }
                     Error(ex);
+                    try { cat?.Invoke(v1, v2); } catch { }
                 }
                 finally
                 {
@@ -74,8 +74,8 @@ namespace ModLib.Helper
                 }
                 catch (Exception ex)
                 {
-                    try { cat?.Invoke(v1, v2, v3); } catch { }
                     Error(ex);
+                    try { cat?.Invoke(v1, v2, v3); } catch { }
                 }
                 finally
                 {
