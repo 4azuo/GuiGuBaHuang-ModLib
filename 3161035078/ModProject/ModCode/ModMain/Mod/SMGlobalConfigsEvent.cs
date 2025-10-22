@@ -423,8 +423,8 @@ namespace MOD_nE7UL2.Mod
                 Comp = ActionHelper.TracedFunc(funcComp),
                 Cal = ActionHelper.TracedFunc(funcCal),
                 Cond = ActionHelper.TracedFunc(funcCond, true),
-                Formatter = formatter != null ? ActionHelper.TracedFunc(formatter) : null,
-                ChangeAct = onChange != null ? ActionHelper.TracedAction(onChange) : null,
+                Formatter = formatter != null ? ActionHelper.WTracedFunc(formatter) : null,
+                ChangeAct = onChange != null ? ActionHelper.WTracedAction(onChange) : null,
             });
         }
 
@@ -476,7 +476,7 @@ namespace MOD_nE7UL2.Mod
                 slNPCAmount = uiCustom.AddCompositeSlider(col, row++, GameTool.LS("smcfgs047"), 1000, 10000, NPCAmount, GameTool.LS("smcfgs103"));
                 uiCustom.AddText(col + 3, row++, GameTool.LS("smcfgs048")).Format(null, 13).Align(TextAnchor.MiddleLeft).SetWork(new UIItemWork
                 {
-                    Formatter = ActionHelper.TracedFunc<UIItemBase, object[]>((x) => new string[] { (slNPCAmount.Get().Parse<int>() / 2).ToString() }),
+                    Formatter = ActionHelper.WTracedFunc<UIItemBase, object[]>((x) => new string[] { (slNPCAmount.Get().Parse<int>() / 2).ToString() }),
                 });
                 //
                 row++;
@@ -658,7 +658,7 @@ namespace MOD_nE7UL2.Mod
             int col = 30, row = 0;
             uiCustom.AddText(col, row, GameTool.LS("smcfgs043")).Format(Color.red, 17).Align(TextAnchor.MiddleRight).SetWork(new UIItemWork
             {
-                Formatter = ActionHelper.TracedFunc<UIItemBase, object[]>((x) => new string[] { CalSMTotalScore().ToString() }),
+                Formatter = ActionHelper.WTracedFunc<UIItemBase, object[]>((x) => new string[] { CalSMTotalScore().ToString() }),
             });
             uiCustom.AddButton(col, row += 2, () => SetLevelBase(), GameTool.LS("smcfgs044"));
             uiCustom.AddButton(col, row += 2, () => SetLevel(0), $"{GameTool.LS("smcfgs045")} 0");

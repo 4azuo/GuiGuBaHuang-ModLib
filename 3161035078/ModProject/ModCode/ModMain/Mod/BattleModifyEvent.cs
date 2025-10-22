@@ -53,7 +53,7 @@ namespace MOD_nE7UL2.Mod
                         TextDamageMultiplier = ui.AddText(ui.MidCol, ui.FirstRow + 5, GameTool.LS("other500020089")).Format(Color.white, 20);
                         TextDamageMultiplier.SetWork(new UIItemWork
                         {
-                            Formatter = ModLib.Helper.ActionHelper.TracedFunc<UIItemBase, object[]>((x) => new object[] { GetDamageMultiplier().ToString("#,##0.00") })
+                            Formatter = ModLib.Helper.ActionHelper.WTracedFunc<UIItemBase, object[]>((x) => new object[] { GetDamageMultiplier().ToString("#,##0.00") })
                         });
                     }
 

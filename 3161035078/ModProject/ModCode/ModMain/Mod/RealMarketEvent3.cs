@@ -784,7 +784,7 @@ namespace MOD_nE7UL2.Mod
                 //show info about selected item
                 uiCover.AddText(0, 0, GameTool.LS("other500020091")).SetWork(new UIItemWork
                 {
-                    Formatter = ModLib.Helper.ActionHelper.TracedFunc<UIItemBase, object[]>(x =>
+                    Formatter = ModLib.Helper.ActionHelper.WTracedFunc<UIItemBase, object[]>(x =>
                     {
                         try
                         {
@@ -815,7 +815,7 @@ namespace MOD_nE7UL2.Mod
                 //show info about selected item
                 uiCover.AddText(0, 0, GameTool.LS("other500020063")).SetWork(new UIItemWork
                 {
-                    Formatter = ModLib.Helper.ActionHelper.TracedFunc<UIItemBase, object[]>(x =>
+                    Formatter = ModLib.Helper.ActionHelper.WTracedFunc<UIItemBase, object[]>(x =>
                     {
                         try
                         {
@@ -946,7 +946,7 @@ namespace MOD_nE7UL2.Mod
                 }, GameTool.LS("other500020076")).Pos(ui.btnOK.transform, +50, 0);
                 uiCover.AddText(0, 0, GameTool.LS("other500020075")).SetWork(new UIItemWork
                 {
-                    Formatter = ModLib.Helper.ActionHelper.TracedFunc<UIItemBase, object[]>(x =>
+                    Formatter = ModLib.Helper.ActionHelper.WTracedFunc<UIItemBase, object[]>(x =>
                     {
                         try
                         {
@@ -1152,7 +1152,7 @@ namespace MOD_nE7UL2.Mod
                 GameTool.LS("other500020096"), 1, 1, 1, "{0}"); // "Quantity"
             countSlider.Postfix.SetWork(new UIItemWork
             {
-                Formatter = ModLib.Helper.ActionHelper.TracedFunc<UIItemBase, object[]>(x =>
+                Formatter = ModLib.Helper.ActionHelper.WTracedFunc<UIItemBase, object[]>(x =>
                 {
                     return new string[] { countSlider.MainComponent.Get().Parse<int>().ToString() };
                 })
@@ -1163,7 +1163,7 @@ namespace MOD_nE7UL2.Mod
                 GameTool.LS("other500020095"), MIN_PRICE, MAX_PRICE, MIN_PRICE, "{0}"); // "Selling Price"
             priceSlider.Postfix.SetWork(new UIItemWork
             {
-                Formatter = ModLib.Helper.ActionHelper.TracedFunc<UIItemBase, object[]>(x =>
+                Formatter = ModLib.Helper.ActionHelper.WTracedFunc<UIItemBase, object[]>(x =>
                 {
                     return new string[] { priceSlider.MainComponent.Get().Parse<int>().ToString() };
                 })
@@ -1173,7 +1173,7 @@ namespace MOD_nE7UL2.Mod
             var infoText = uiCover.AddText(uiCover.MidCol, uiCover.MidRow + 9, "{0}").Align(TextAnchor.MiddleCenter);
             infoText.SetWork(new UIItemWork
             {
-                Formatter = ModLib.Helper.ActionHelper.TracedFunc<UIItemBase, object[]>(x =>
+                Formatter = ModLib.Helper.ActionHelper.WTracedFunc<UIItemBase, object[]>(x =>
                 {
                     if (selectedProp == null)
                         return new string[] { GameTool.LS("other500020098") }; // "Please select an item"

@@ -65,11 +65,11 @@ namespace MOD_nE7UL2.Mod
                 {
                     ui.AddButton(0, 0, SelectCommissionItems, GameTool.LS("other500020003")).Size(160, 40).Pos(ui.UI.btnTaskPut.transform, 200, 0).SetWork(new UIItemWork
                     {
-                        UpdateAct = ModLib.Helper.ActionHelper.TracedAction<UIItemBase>((x) => x.Active(g.world.run.roundMonth != LastMonthCommission))
+                        UpdateAct = ModLib.Helper.ActionHelper.WTracedAction<UIItemBase>((x) => x.Active(g.world.run.roundMonth != LastMonthCommission))
                     });
                     ui.AddText(0, 0, string.Empty).Align(TextAnchor.UpperLeft).Format().Pos(ui.UI.ptextInfo.transform, 225, 150).SetWork(new UIItemWork
                     {
-                        UpdateAct = ModLib.Helper.ActionHelper.TracedAction<UIItemBase>((x) =>
+                        UpdateAct = ModLib.Helper.ActionHelper.WTracedAction<UIItemBase>((x) =>
                         {
                             var msg = new StringBuilder();
                             foreach (var task in CommissionTasks)
