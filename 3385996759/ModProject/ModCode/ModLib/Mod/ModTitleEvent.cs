@@ -61,7 +61,7 @@ namespace ModLib.Mod
                         .Size(160, 24)
                         .SetWork(new UIItemWork
                         {
-                            ChangeAct = Helper.ActionHelper.TracedAction<UIItemBase, object>((a, b) =>
+                            ChangeAct = Helper.ActionHelper.WTracedAction<UIItemBase, object>((a, b) =>
                             {
                                 TranslateIndex = b.Parse<int>();
                                 CacheHelper.SaveGlobalCache(this);
