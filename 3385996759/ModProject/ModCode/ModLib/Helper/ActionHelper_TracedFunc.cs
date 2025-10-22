@@ -16,10 +16,10 @@ namespace ModLib.Helper
                 }
                 catch (Exception ex)
                 {
+                    Error(ex);
                     if (cat == null)
                         return def;
                     try { return cat.Invoke(); } catch { return def; }
-                    Error(ex);
                 }
                 finally
                 {
@@ -40,10 +40,10 @@ namespace ModLib.Helper
                 }
                 catch (Exception ex)
                 {
+                    Error(ex);
                     if (cat == null)
                         return def;
                     try { return cat.Invoke(v1); } catch { return def; }
-                    Error(ex);
                 }
                 finally
                 {
@@ -64,10 +64,10 @@ namespace ModLib.Helper
                 }
                 catch (Exception ex)
                 {
+                    Error(ex);
                     if (cat == null)
                         return def;
                     try { return cat.Invoke(v1, v2); } catch { return def; }
-                    Error(ex);
                 }
                 finally
                 {
@@ -88,10 +88,10 @@ namespace ModLib.Helper
                 }
                 catch (Exception ex)
                 {
+                    Error(ex);
                     if (cat == null)
                         return def;
                     try { return cat.Invoke(v1, v2, v3); } catch { return def; }
-                    Error(ex);
                 }
                 finally
                 {
