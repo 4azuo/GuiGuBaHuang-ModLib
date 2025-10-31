@@ -217,6 +217,12 @@
 			"11": 0.13,
 			"12": 0.16,
 			"13": 0.20
+		},
+		"PlayerAffectSummon": {
+			"Atk": 0.05,
+			"Def": 0.01,
+			"MHp": 0.10,
+			"Bas": 0.01
 		}
 	},
 	"NpcUpgradeSkillConfigs": {
