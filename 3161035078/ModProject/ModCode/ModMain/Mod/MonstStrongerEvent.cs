@@ -106,24 +106,30 @@ namespace MOD_nE7UL2.Mod
                 monstData.basisWood.baseValue = SMLocalConfigsEvent.Instance.Calculate(monstData.basisWood.value, SMLocalConfigsEvent.Instance.Configs.AddBasisRate).Parse<int>();
 
                 //potmon
-                if (e.IsPotmon())
+                if (e.IsSummoned())
                 {
-                    monstData.attack.baseValue += (ModBattleEvent.PlayerUnit.data.attack.value * 0.05f).Parse<int>();
-                    monstData.defense.baseValue += (ModBattleEvent.PlayerUnit.data.defense.value * 0.01f).Parse<int>();
-                    monstData.maxHP.baseValue += (ModBattleEvent.PlayerUnit.data.hp * 0.10f).Parse<int>();
+                    var summoner = e.GetOriginSummoner();
+                    var petbuffRatio = 1d + ((summoner != null && summoner.IsWorldUnit()) ?
+                        (CustomRefineEvent.GetCustomAdjValue(summoner.GetWorldUnit(), AdjTypeEnum.SummonPower) / 100d) :
+                        0d);
 
-                    monstData.basisBlade.baseValue += (ModBattleEvent.PlayerUnit.data.basisBlade.value * 0.01f).Parse<int>();
-                    monstData.basisEarth.baseValue += (ModBattleEvent.PlayerUnit.data.basisEarth.value * 0.01f).Parse<int>();
-                    monstData.basisFinger.baseValue += (ModBattleEvent.PlayerUnit.data.basisFinger.value * 0.01f).Parse<int>();
-                    monstData.basisFire.baseValue += (ModBattleEvent.PlayerUnit.data.basisFire.value * 0.01f).Parse<int>();
-                    monstData.basisFist.baseValue += (ModBattleEvent.PlayerUnit.data.basisFist.value * 0.01f).Parse<int>();
-                    monstData.basisFroze.baseValue += (ModBattleEvent.PlayerUnit.data.basisFroze.value * 0.01f).Parse<int>();
-                    monstData.basisPalm.baseValue += (ModBattleEvent.PlayerUnit.data.basisPalm.value * 0.01f).Parse<int>();
-                    monstData.basisSpear.baseValue += (ModBattleEvent.PlayerUnit.data.basisSpear.value * 0.01f).Parse<int>();
-                    monstData.basisSword.baseValue += (ModBattleEvent.PlayerUnit.data.basisSword.value * 0.01f).Parse<int>();
-                    monstData.basisThunder.baseValue += (ModBattleEvent.PlayerUnit.data.basisThunder.value * 0.01f).Parse<int>();
-                    monstData.basisWind.baseValue += (ModBattleEvent.PlayerUnit.data.basisWind.value * 0.01f).Parse<int>();
-                    monstData.basisWood.baseValue += (ModBattleEvent.PlayerUnit.data.basisWood.value * 0.01f).Parse<int>();
+                    monstData.attack.baseValue += (ModBattleEvent.PlayerUnit.data.attack.value * (Configs.PlayerAffectSummon["Atk"] * petbuffRatio)).Parse<int>();
+                    monstData.defense.baseValue += (ModBattleEvent.PlayerUnit.data.defense.value * (Configs.PlayerAffectSummon["Def"] * petbuffRatio)).Parse<int>();
+                    monstData.maxHP.baseValue += (ModBattleEvent.PlayerUnit.data.hp * (Configs.PlayerAffectSummon["MHp"] * petbuffRatio)).Parse<int>();
+
+                    var rate = Configs.PlayerAffectSummon["Bas"] * petbuffRatio;
+                    monstData.basisBlade.baseValue += (ModBattleEvent.PlayerUnit.data.basisBlade.value * rate).Parse<int>();
+                    monstData.basisEarth.baseValue += (ModBattleEvent.PlayerUnit.data.basisEarth.value * rate).Parse<int>();
+                    monstData.basisFinger.baseValue += (ModBattleEvent.PlayerUnit.data.basisFinger.value * rate).Parse<int>();
+                    monstData.basisFire.baseValue += (ModBattleEvent.PlayerUnit.data.basisFire.value * rate).Parse<int>();
+                    monstData.basisFist.baseValue += (ModBattleEvent.PlayerUnit.data.basisFist.value * rate).Parse<int>();
+                    monstData.basisFroze.baseValue += (ModBattleEvent.PlayerUnit.data.basisFroze.value * rate).Parse<int>();
+                    monstData.basisPalm.baseValue += (ModBattleEvent.PlayerUnit.data.basisPalm.value * rate).Parse<int>();
+                    monstData.basisSpear.baseValue += (ModBattleEvent.PlayerUnit.data.basisSpear.value * rate).Parse<int>();
+                    monstData.basisSword.baseValue += (ModBattleEvent.PlayerUnit.data.basisSword.value * rate).Parse<int>();
+                    monstData.basisThunder.baseValue += (ModBattleEvent.PlayerUnit.data.basisThunder.value * rate).Parse<int>();
+                    monstData.basisWind.baseValue += (ModBattleEvent.PlayerUnit.data.basisWind.value * rate).Parse<int>();
+                    monstData.basisWood.baseValue += (ModBattleEvent.PlayerUnit.data.basisWood.value * rate).Parse<int>();
                 }
 
                 //sect guardian
@@ -230,20 +236,6 @@ namespace MOD_nE7UL2.Mod
                 monstData.defense.baseValue += adjustDef1 + adjustDef2;
                 var adjustMs = (monstData.basisWind.value / 100.00f).Parse<int>();
                 monstData.moveSpeed.baseValue += adjustMs;
-
-                //pet buff
-                //DebugHelper.WriteLine("13");
-                if (e.IsSummoned())
-                {
-                    var summoner = e.GetOriginSummoner();
-                    if (summoner != null && summoner.IsWorldUnit())
-                    {
-                        var petbuffRatio = CustomRefineEvent.GetCustomAdjValue(summoner.GetWorldUnit(), AdjTypeEnum.SummonPower) / 100f;
-                        monstData.attack.baseValue += (atk * petbuffRatio * Configs.AtkR).Parse<int>();
-                        monstData.defense.baseValue += (def * petbuffRatio * Configs.DefR).Parse<int>();
-                        monstData.maxHP.baseValue += (mhp * petbuffRatio * Configs.MHpR).Parse<int>();
-                    }
-                }
 
                 //heal fullhp
                 //DebugHelper.WriteLine("14");

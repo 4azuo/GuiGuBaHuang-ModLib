@@ -519,7 +519,7 @@ namespace MOD_nE7UL2.Mod
                 foreach (var item in rewardItems)
                 {
                     var receiver = teamData.Item2.Random();
-                    if (receiver != null && !receiver.IsPlayer())
+                    if (receiver != null && !receiver.IsPlayer() && CommonTool.Random(0.00f, 100.00f).IsBetween(0.00f, (receiver?.GetDynProperty(UnitDynPropertyEnum.Luck).value ?? 0) / 10f))
                     {
                         receiver.AddUnitProp(item);
                         ModBattleEvent.SceneBattle.battleData.allDropRewardItem.Remove(item);
@@ -530,12 +530,12 @@ namespace MOD_nE7UL2.Mod
                 if (!SMLocalConfigsEvent.Instance.Configs.NoGrowupFromBattles)
                 {
                     var aBestBasis = ModBattleEvent.GetDmgPropertyEnum(ModBattleEvent.sGetHighestDealtDmgTypeEnum());
-                    if (aBestBasis != null && CommonTool.Random(0.00f, 100.00f).IsBetween(0.00f, insight / 10))
+                    if (aBestBasis != null && CommonTool.Random(0.00f, 100.00f).IsBetween(0.00f, insight / 10f))
                     {
                         player.AddProperty<int>(aBestBasis.GetPropertyEnum(), 1);
                     }
                     var bBestBasis = ModBattleEvent.GetDmgPropertyEnum(ModBattleEvent.sGetHighestRecvDmgTypeEnum());
-                    if (bBestBasis != null && CommonTool.Random(0.00f, 100.00f).IsBetween(0.00f, insight / 10))
+                    if (bBestBasis != null && CommonTool.Random(0.00f, 100.00f).IsBetween(0.00f, insight / 10f))
                     {
                         player.AddProperty<int>(bBestBasis.GetPropertyEnum(), 1);
                     }

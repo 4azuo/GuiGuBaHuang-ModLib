@@ -236,6 +236,7 @@ namespace MOD_nE7UL2.Object
             public IDictionary<MonstType, float> KillGrowRate { get; set; }
             public IDictionary<MonstType, float> PlayerAtk2Hp { get; set; }
             public IDictionary<int, float> AreaBonus { get; set; }
+            public IDictionary<string, double> PlayerAffectSummon { get; set; }
         }
         public _MonstStrongerConfigs MonstStrongerConfigs { get; set; }
         #endregion
