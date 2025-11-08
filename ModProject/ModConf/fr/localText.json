@@ -7,12 +7,12 @@
 	{
 		"id": "999990001",
 		"key": "libtxt999990001",
-		"en|ch|tc|kr": "L'interface utilisateur de Modlib est optimisée pour le rapport d'écran 16: 9."
+		"en|ch|tc|kr": "L'interface utilisateur de ModLib est optimisée pour un format d'écran 16:9."
 	},
 	{
 		"id": "999990002",
 		"key": "libtxt999990002",
-		"en|ch|tc|kr": "Il exécutera une référence pour initialiser RAM pour le jeu."
+		"en|ch|tc|kr": "Il exécutera un benchmark pour initialiser la RAM du jeu."
 	},
 	{
 		"id": "999990003",
@@ -22,11 +22,26 @@
 	{
 		"id": "999990004",
 		"key": "libtxt999990004",
-		"en|ch|tc|kr": "C'est la première fois. Voulez-vous exécuter une référence pour initialiser RAM pour le jeu?"
+		"en|ch|tc|kr": "C'est la première fois. Voulez-vous exécuter un benchmark pour initialiser la RAM du jeu ?"
 	},
 	{
 		"id": "999990005",
 		"key": "libtxt999990005",
 		"en|ch|tc|kr": "DEFAULT_DRAMA_OPT"
+	},
+	{
+		"id": "999990006",
+		"key": "libtxt999990006",
+		"en|ch|tc|kr": "Masquer les exceptions"
+	},
+	{
+		"id": "999990007",
+		"key": "libtxt999990007",
+		"en|ch|tc|kr": "(Veuillez activer si vous souhaitez signaler des bugs)"
+	},
+	{
+		"id": "999990008",
+		"key": "libtxt999990008",
+		"en|ch|tc|kr": "Page {0}"
 	}
 ]
