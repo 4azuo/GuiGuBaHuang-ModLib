@@ -7,9 +7,8 @@ Utilities để làm việc với files và directories
 import os
 import glob
 from typing import List, Optional
-from pathlib import Path
 
-from consts import DIR_PATTERNS, DEFAULT_TARGET_LANGUAGES, FILE_CONFIG
+from consts import DIR_PATTERNS, FILE_CONFIG
 from data_types import FileType, FileInfo
 
 class FileUtils:
