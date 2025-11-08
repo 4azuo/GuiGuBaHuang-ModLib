@@ -7,7 +7,7 @@ Constants cho hệ thống dịch localText
 import re
 
 # Ngôn ngữ mặc định được hỗ trợ
-DEFAULT_TARGET_LANGUAGES = ['vi', 'es', 'fr', 'de', 'ru', 'ja', 'la']
+DEFAULT_TARGET_LANGUAGES = ['vi', 'es', 'fr', 'de', 'ru', 'ja', 'la', 'th']
 
 # Mapping các mã ngôn ngữ
 LANGUAGE_CODES = {
@@ -35,7 +35,9 @@ TRANSLATION_CONFIG = {
 
 # Texts cần skip translation (không dịch)
 SKIP_TRANSLATION_TEXTS = [
-    "DEFAULT_DRAMA_OPT"
+    "DEFAULT_DRAMA_OPT",
+    "townmaster420041110desc",
+    "team420041120desc"
 ]
 
 # Format string patterns cần bảo vệ khỏi bị biến đổi trong quá trình dịch
