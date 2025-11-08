@@ -254,7 +254,7 @@ class TranslateUtils:
         return main_data
 
     @staticmethod
-    def create_locale_data_from_main(main_data: LocalTextData, target_language: str, translator_func, preserve_existing=False) -> LocalTextData:
+    def create_locale_data_from_main(main_data: LocalTextData, target_language: str, translator_func, existing_locale_data=None, preserve_existing=False) -> LocalTextData:
         """
         Tạo dữ liệu locale từ main data
         
@@ -282,11 +282,11 @@ class TranslateUtils:
                             if key not in MAIN_LANGUAGE_KEYS and not COMBINED_KEY_WITH_EN_PATTERN.match(key):
                                 new_item[key] = value
                         
-                        # Kiểm tra xem trong main item đã có bản dịch target language chưa
-                        existing_translation = TranslateUtils._get_existing_translation_from_main(item, target_language, preserve_existing)
+                        # Kiểm tra xem entry này đã có bản dịch trong locale file chưa (theo key/id)
+                        existing_translation = TranslateUtils._find_existing_translation_by_key(item, existing_locale_data, preserve_existing)
                         
                         if existing_translation:
-                            # Sử dụng bản dịch đã có từ main item
+                            # Sử dụng bản dịch đã có từ locale file
                             new_item[LOCALE_COMBINED_KEY] = existing_translation
                         else:
                             # Dịch từ tiếng Anh sang ngôn ngữ đích
@@ -312,11 +312,11 @@ class TranslateUtils:
                     if key not in MAIN_LANGUAGE_KEYS and not COMBINED_KEY_WITH_EN_PATTERN.match(key):
                         new_item[key] = value
                 
-                # Kiểm tra xem trong main item đã có bản dịch target language chưa
-                existing_translation = TranslateUtils._get_existing_translation_from_main(main_data.data, target_language, preserve_existing)
+                # Kiểm tra xem entry này đã có bản dịch trong locale file chưa (theo key/id)
+                existing_translation = TranslateUtils._find_existing_translation_by_key(main_data.data, existing_locale_data, preserve_existing)
                 
                 if existing_translation:
-                    # Sử dụng bản dịch đã có từ main item
+                    # Sử dụng bản dịch đã có từ locale file
                     new_item[LOCALE_COMBINED_KEY] = existing_translation
                 else:
                     # Dịch từ tiếng Anh sang ngôn ngữ đích
@@ -350,6 +350,53 @@ class TranslateUtils:
             if translation and isinstance(translation, str) and translation.strip():
                 return translation.strip()
         
+        return None
+    
+    @staticmethod
+    def _find_existing_translation_by_key(main_item, existing_locale_data, preserve_existing):
+        """
+        Tìm bản dịch đã có trong locale data dựa trên key/id của main item
+        
+        Args:
+            main_item: Item từ main file (dict)  
+            existing_locale_data: Dữ liệu locale đã có (LocalTextData hoặc None)
+            preserve_existing: Có bảo tồn bản dịch đã có không
+            
+        Returns:
+            str: Bản dịch đã có hoặc None nếu không tìm thấy
+        """
+        if not preserve_existing or not existing_locale_data or not isinstance(main_item, dict):
+            return None
+            
+        # Tìm identifier cho main item (ưu tiên key > id)
+        main_identifier = None
+        main_id_key = None
+        
+        for identifier_key in ['key', 'id']:
+            if identifier_key in main_item and main_item[identifier_key]:
+                main_identifier = main_item[identifier_key]
+                main_id_key = identifier_key
+                break
+                
+        if not main_identifier:
+            return None  # Không có identifier để so sánh
+            
+        # Tìm trong existing locale data
+        if existing_locale_data.is_list:
+            for locale_item in existing_locale_data.data:
+                if isinstance(locale_item, dict) and main_id_key in locale_item:
+                    if locale_item[main_id_key] == main_identifier:
+                        # Tìm thấy entry trùng key/id, lấy bản dịch
+                        translation = locale_item.get(LOCALE_COMBINED_KEY)
+                        if translation and isinstance(translation, str) and translation.strip():
+                            return translation.strip()
+                        
+        elif existing_locale_data.is_dict and main_id_key in existing_locale_data.data:
+            if existing_locale_data.data[main_id_key] == main_identifier:
+                translation = existing_locale_data.data.get(LOCALE_COMBINED_KEY)
+                if translation and isinstance(translation, str) and translation.strip():
+                    return translation.strip()
+                    
         return None
     
     @staticmethod

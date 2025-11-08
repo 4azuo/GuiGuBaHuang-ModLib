@@ -233,11 +233,17 @@ class LocalTextProcessor:
                 progress_manager.update_active(1, f"Dịch: {text[:30]}{'...' if len(text) > 30 else ''}")
                 return result
             
+            # Đọc locale data hiện có nếu preserve mode được bật
+            existing_locale_data = None
+            if self.config.preserve_existing_translations and os.path.exists(locale_file_path):
+                existing_locale_data = JsonUtils.read_json_file(locale_file_path)
+            
             # Tạo dữ liệu locale
             locale_data = TranslateUtils.create_locale_data_from_main(
                 main_data, 
                 target_lang, 
                 progress_translator,
+                existing_locale_data=existing_locale_data,
                 preserve_existing=self.config.preserve_existing_translations
             )
             
