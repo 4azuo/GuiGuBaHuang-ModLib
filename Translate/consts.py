@@ -30,19 +30,34 @@ TRANSLATION_CONFIG = {
     'max_retries': 3,
     'delay_between_requests': 0.2,  # giây
     'retry_delay': 1.0,  # giây
-    'source_language': 'en',
-    'min_text_length': 2
+    'source_language': 'en'
 }
-
-# Patterns để skip translation
-SKIP_TRANSLATION_PATTERNS = [
-    r'^[\d\s\+\-\*\/\=\(\)\.%]+$',  # Chỉ số và ký tự toán học
-]
 
 # Texts cần skip translation (không dịch)
 SKIP_TRANSLATION_TEXTS = [
     "DEFAULT_DRAMA_OPT"
 ]
+
+# Format string patterns cần bảo vệ khỏi bị biến đổi trong quá trình dịch
+FORMAT_PROTECTION_CONFIG = {
+    # Các patterns regex để nhận diện format strings cần bảo vệ
+    'patterns': [
+        r'{\d+(?::[^}]+)?}',  # Standard format strings: {0}, {1}, {0:#,##0}, {0:0.00}, etc.
+        r'%[sdf]',            # Printf style: %s, %d, %f
+        r'%\d+[sdf]',         # Printf with position: %1s, %2d, %3f
+        r'\$\{\w+\}',         # Template strings: ${variable}
+        r'[+\-*/=<>!]+',      # Mathematical operators: +, -, *, /, =, <, >, !
+        r'\([+\-*/=<>!\d\s,\.]+\)', # Mathematical expressions in parentheses
+        r'\[[+\-*/=<>!\d\s,\.]+\]', # Mathematical expressions in brackets
+        r'[\d\s]*[+\-*/=<>!]+[\d\s]*', # Simple math expressions with operators
+    ],
+    
+    # Placeholder prefix/suffix để thay thế format strings tạm thời
+    'placeholder': {
+        'prefix': 'FMPRTCT',
+        'suffix': 'FMPRTCT'
+    }
+}
 
 # Cấu hình file (gộp FILE_CONFIG và FILE_PATTERNS)
 FILE_CONFIG = {

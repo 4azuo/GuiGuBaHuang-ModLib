@@ -177,14 +177,33 @@ SKIP_TRANSLATION_TEXTS = [
 ]
 ```
 
-**Các text được skip mặc định:**
-- `DEFAULT_DRAMA_OPT` - Text dành cho drama option system
-- Text chỉ chứa số và ký tự toán học (vd: `+100`, `50%`)
-- Text quá ngắn (≤2 ký tự)
+### Cấu hình bảo vệ Format Strings
+
+Hệ thống tự động bảo vệ các format strings khỏi bị biến đổi thành ký tự zenkaku trong quá trình dịch. Để thêm format patterns mới:
+
+```python
+# Trong consts.py - FORMAT_PROTECTION_CONFIG
+'patterns': [
+    r'{\d+(?::[^}]+)?}',  # {0}, {1}, {0:#,##0} - Đã có
+    r'%[sdf]',            # %s, %d, %f - Đã có  
+    r'%\d+[sdf]',         # %1s, %2d, %3f - Đã có
+    r'\$\{\w+\}',         # ${variable} - Đã có
+    r'YOUR_PATTERN_HERE', # Thêm pattern mới ở đây
+]
+```
+
+**Format strings được bảo vệ mặc định:**
+- `{0}`, `{1}`, `{0:#,##0}` - C# format strings  
+- `%s`, `%d`, `%f` - Printf style formats
+- `${variable}` - Template strings
+
+**Ví dụ các vấn đề đã được sửa:**
+- ❌ `{0:#,##0}` → `｛０：＃，＃＃０｝` (zenkaku bị lỗi)
+- ✅ `{0:#,##0}` → `{0:#,##0}` (được bảo vệ)
 
 ---
 
-**Version**: 2.1 | **Updated**: August 2025  
+**Version**: 3.0 | **Updated**: 2025/11
 **Dependencies**: `deep-translator>=1.9.0`
 
 ## 📄 License
