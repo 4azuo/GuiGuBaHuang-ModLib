@@ -253,7 +253,7 @@ Hệ thống tự động bảo vệ các format strings khỏi bị biến đ�
 
 ---
 
-**Version**: 3.2 | **Updated**: 2025/11
+**Version**: 3.3 | **Updated**: 2025/11
 **Dependencies**: `deep-translator>=1.9.0`
 
 ## 📄 License
