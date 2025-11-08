@@ -42,6 +42,7 @@ class TranslationConfig:
     delay_between_requests: float = TRANSLATION_CONFIG['delay_between_requests']
     retry_delay: float = TRANSLATION_CONFIG['retry_delay']
     source_language: str = TRANSLATION_CONFIG['source_language']
+    preserve_existing_translations: bool = False
 
 @dataclass
 class ProcessingStats:

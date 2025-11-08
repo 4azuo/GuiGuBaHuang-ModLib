@@ -7,26 +7,41 @@
 	{
 		"id": "999990001",
 		"key": "libtxt999990001",
-		"en|ch|tc|kr": "Die Benutzeroberfläche von Modlib ist für das 16: 9 -Bildschirmverhältnis optimiert."
+		"en|ch|tc|kr": "Die Benutzeroberfläche von ModLib ist für das Bildschirmverhältnis 16:9 optimiert."
 	},
 	{
 		"id": "999990002",
 		"key": "libtxt999990002",
-		"en|ch|tc|kr": "Es wird einen Benchmark ausführen, um den RAM für das Spiel zu initialisieren."
+		"en|ch|tc|kr": "Es wird ein Benchmark ausgeführt, um den Arbeitsspeicher für das Spiel zu initialisieren."
 	},
 	{
 		"id": "999990003",
 		"key": "libtxt999990003",
-		"en|ch|tc|kr": "Sie müssen das Spiel zurücksetzen!"
+		"en|ch|tc|kr": "Sie müssen das Spiel ! zurücksetzen"
 	},
 	{
 		"id": "999990004",
 		"key": "libtxt999990004",
-		"en|ch|tc|kr": "Dies ist das erste Mal. Möchten Sie einen Benchmark ausführen, um den RAM für das Spiel zu initialisieren?"
+		"en|ch|tc|kr": "Dies ist das erste Mal. Möchten Sie einen Benchmark durchführen, um den RAM für das Spiel zu initialisieren?"
 	},
 	{
 		"id": "999990005",
 		"key": "libtxt999990005",
 		"en|ch|tc|kr": "DEFAULT_DRAMA_OPT"
+	},
+	{
+		"id": "999990006",
+		"key": "libtxt999990006",
+		"en|ch|tc|kr": "Ausnahmen ausblenden"
+	},
+	{
+		"id": "999990007",
+		"key": "libtxt999990007",
+		"en|ch|tc|kr": "(Bitte aktivieren Sie diese Option, wenn Sie Feedback zu Fehlern geben möchten.)"
+	},
+	{
+		"id": "999990008",
+		"key": "libtxt999990008",
+		"en|ch|tc|kr": "Seite {0}"
 	}
 ]

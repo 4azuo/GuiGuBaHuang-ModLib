@@ -11,33 +11,33 @@
 		"id": "999990001",
 		"key": "libtxt999990001",
 		"en": "ModLib's UI is optimized for 16:9 screen ratio.",
-		"ch": "ModLib 的用户界面针对 16:9 屏幕进行了优化。",
-		"tc": "ModLib 的用戶界面針對 16:9 螢幕進行了優化。",
+		"ch": "ModLib 的 UI 针对 16:9 屏幕比例进行了优化。",
+		"tc": "ModLib 的 UI 針對 16:9 屏幕比例進行了優化。",
 		"kr": "ModLib의 UI는 16:9 화면 비율에 최적화되어 있습니다."
 	},
 	{
 		"id": "999990002",
 		"key": "libtxt999990002",
 		"en": "It will run a benchmark to initialize RAM for the game.",
-		"ch": "它将运行基准测试来为游戏初始化内存。",
-		"tc": "它將運行基準測試來為遊戲初始化記憶體。",
-		"kr": "게임을 위한 RAM을 초기화하기 위해 벤치마크를 실행합니다."
+		"ch": "它将运行基准测试来初始化游戏的 RAM。",
+		"tc": "它將運行基準測試來初始化遊戲的 RAM。",
+		"kr": "게임용 RAM을 초기화하기 위해 벤치마크를 실행합니다."
 	},
 	{
 		"id": "999990003",
 		"key": "libtxt999990003",
 		"en": "You have to reset the game!",
-		"ch": "你必须重启游戏！",
-		"tc": "你必須重啟遊戲！",
-		"kr": "게임을 재시작해야 합니다!"
+		"ch": "您必须重置游戏!",
+		"tc": "您必須重置遊戲!",
+		"kr": "게임을 재설정해야 합니다!"
 	},
 	{
 		"id": "999990004",
 		"key": "libtxt999990004",
 		"en": "This is the first time. Do you wanna run a benchmark to initialize RAM for the game?",
-		"ch": "这是第一次。你想运行基准测试来为游戏初始化内存吗？",
-		"tc": "這是第一次。你想運行基準測試來為遊戲初始化記憶體嗎？",
-		"kr": "처음입니다. 게임용 RAM을 초기화하기 위해 벤치마크를 실행하시겠습니까?"
+		"ch": "这是第一次。您想运行基准测试来初始化游戏的 RAM 吗？",
+		"tc": "這是第一次。您想運行基準測試來初始化遊戲的 RAM 嗎？",
+		"kr": "이번이 처음입니다. 게임용 RAM을 초기화하기 위해 벤치마크를 실행하시겠습니까?"
 	},
 	{
 		"id": "999990005",
@@ -50,16 +50,25 @@
 	{
 		"id": "999990006",
 		"key": "libtxt999990006",
-		"en|ch|tc|kr": "Hide Exceptions",
+		"en": "Hide Exceptions",
+		"ch": "隐藏异常",
+		"tc": "隱藏異常",
+		"kr": "예외 숨기기"
 	},
 	{
 		"id": "999990007",
 		"key": "libtxt999990007",
-		"en|ch|tc|kr": "(Please turn on if you wanna feedback bugs)",
+		"en": "(Please turn on if you wanna feedback bugs)",
+		"ch": "（如果您想反馈Bug，请开启）",
+		"tc": "（如果您想反饋Bug，請開啟）",
+		"kr": "(버그 피드백을 원하시면 켜주세요)"
 	},
 	{
 		"id": "999990008",
 		"key": "libtxt999990008",
-		"en|ch|tc|kr": "Page {0}",
+		"en": "Page {0}",
+		"ch": "页 {0}",
+		"tc": "頁 {0}",
+		"kr": "페이지 {0}"
 	}
 ]

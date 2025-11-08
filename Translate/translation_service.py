@@ -9,7 +9,7 @@ import re
 from deep_translator import GoogleTranslator
 from typing import Dict, Tuple
 
-from consts import SKIP_TRANSLATION_TEXTS, FORMAT_PROTECTION_CONFIG, PLACEHOLDER_DETECTION_PATTERN
+from consts import SKIP_TRANSLATION_TEXTS, FORMAT_PROTECTION_CONFIG
 from data_types import ProcessingStats, TranslationConfig
 
 class TranslationService:
@@ -97,10 +97,6 @@ class TranslationService:
             
             # Skip nếu text nằm trong danh sách cần bỏ qua
             if text.strip() in SKIP_TRANSLATION_TEXTS:
-                return text
-            
-            # Skip nếu text khớp với placeholder pattern (có thể bị biến đổi zenkaku)
-            if PLACEHOLDER_DETECTION_PATTERN.match(text.strip()):
                 return text
 
             # Bảo vệ format strings trước khi dịch
