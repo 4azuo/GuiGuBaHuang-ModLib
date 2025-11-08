@@ -51,6 +51,7 @@ Ví dụ sử dụng:
   python run.py --project 3385996759 --path . --create-locales vi,es,fr
   python run.py --project 3385996759 --path . --file-type main
   python run.py --project 3385996759 --path . --file-type locale
+  python run.py --project 3385996759 --path . --preserve-translations
         '''
     )
     
@@ -85,11 +86,17 @@ Ví dụ sử dụng:
         help='Loại file cần xử lý: main (dịch main file với 4 key en,ch,tc,kr), locale (xóa locale cũ và tạo mới với combined key), both (cả hai - mặc định)'
     )
     
+    parser.add_argument(
+        '--preserve-translations',
+        action='store_true',
+        help='Giữ lại các bản dịch đã có, chỉ dịch thêm các từ mới chưa được dịch'
+    )
+    
     args = parser.parse_args()
     
     print_header(
         UI_MESSAGES['script_title'],
-        f"Project: {args.project} | Path: {args.path} | Type: {args.file_type}"
+        f"Project: {args.project} | Path: {args.path} | Type: {args.file_type} | Preserve: {'Yes' if args.preserve_translations else 'No'}"
     )
     
     # Xây dựng đường dẫn project
@@ -109,7 +116,8 @@ Ví dụ sử dụng:
         max_retries=TRANSLATION_CONFIG['max_retries'],
         delay_between_requests=TRANSLATION_CONFIG['delay_between_requests'],
         retry_delay=TRANSLATION_CONFIG['retry_delay'],
-        source_language=TRANSLATION_CONFIG['source_language']
+        source_language=TRANSLATION_CONFIG['source_language'],
+        preserve_existing_translations=args.preserve_translations
     )
     
     processor = LocalTextProcessor(translation_config)

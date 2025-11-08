@@ -75,7 +75,8 @@ class LocalTextProcessor:
             f"{UI_ICONS['file']} Main files": len(main_files),
             f"{UI_ICONS['globe']} Locale files": len(locale_files),
             f"{UI_ICONS['target']} Loại xử lý": file_type,
-            f"{UI_ICONS['globe']} Ngôn ngữ target": ', '.join(self.config.target_languages)
+            f"{UI_ICONS['globe']} Ngôn ngữ target": ', '.join(self.config.target_languages),
+            f"{UI_ICONS['success']} Preserve mode": 'Bật' if self.config.preserve_existing_translations else 'Tắt'
         }
         if file_type != "both":
             stats_info[f"{UI_ICONS['list']} Sẽ xử lý"] = f"{len(files_to_process)} file"
@@ -122,8 +123,9 @@ class LocalTextProcessor:
                             locale_dir = os.path.join(modconf_path, lang)
                             locale_file_path = os.path.join(locale_dir, main_filename)
 
-                            # Xóa locale files cũ cho file này
-                            self.cleanup_locale_file(locale_file_path)
+                            # Xóa locale files cũ cho file này (trừ khi preserve mode được bật)
+                            if not self.config.preserve_existing_translations:
+                                self.cleanup_locale_file(locale_file_path)
                             
                             # Tạo lại locale files từ main file
                             if self.process_locale_file(file_path, locale_file_path):
@@ -179,7 +181,8 @@ class LocalTextProcessor:
             # Dịch text trong main file (cập nhật các trường ngôn ngữ: ch, tc, kr)
             translated_data = TranslateUtils.translate_main_file_languages(
                 main_data,
-                progress_translator
+                progress_translator,
+                preserve_existing=self.config.preserve_existing_translations
             )
             
             # Sắp xếp dữ liệu
@@ -234,7 +237,8 @@ class LocalTextProcessor:
             locale_data = TranslateUtils.create_locale_data_from_main(
                 main_data, 
                 target_lang, 
-                progress_translator
+                progress_translator,
+                preserve_existing=self.config.preserve_existing_translations
             )
             
             # Sắp xếp dữ liệu

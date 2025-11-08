@@ -45,6 +45,7 @@ python run.py --project <PROJECT_ID> --path <PATH> [OPTIONS]
   - `main` - Chỉ xử lý main files (file gốc có en/ch/tc/kr)
   - `locale` - Chỉ xử lý locale files (file đã dịch trong thư mục con)
   - `both` - Xử lý cả hai loại (mặc định)
+- `--preserve-translations`: Giữ lại các bản dịch đã có, chỉ dịch thêm các từ mới
 
 ## 📖 Ví dụ Sử dụng
 
@@ -90,6 +91,19 @@ python run.py --project 3385996759 --path . --file-type main
 python run.py --project 3385996759 --path . --file-type locale
 ```
 
+### 8. Giữ bản dịch cũ, chỉ dịch thêm từ mới
+
+```bash
+python run.py --project 3385996759 --path . --preserve-translations
+```
+
+### 9. Kết hợp preserve mode với file type cụ thể
+
+```bash
+python run.py --project 3385996759 --path . --file-type main --preserve-translations
+python run.py --project 3385996759 --path . --file-type locale --preserve-translations
+```
+
 ## 🎯 Khi nào sử dụng File Type?
 
 ### `--file-type main`
@@ -111,6 +125,42 @@ Sử dụng khi:
 - ✅ Muốn xử lý toàn diện cả main và locale files
 - ✅ Không chắc chắn cần xử lý loại nào
 - ✅ Lần đầu chạy script trên project
+
+## 🔄 Preserve Mode (`--preserve-translations`)
+
+### Khi nào sử dụng Preserve Mode?
+
+**✅ Sử dụng khi:**
+- Đã có bản dịch cũ và muốn giữ lại
+- Chỉ muốn dịch thêm các từ/câu mới được thêm vào
+- Tiết kiệm thời gian và API calls cho Google Translate
+- Tránh làm mất những bản dịch đã được chỉnh sửa thủ công
+
+**❌ Không sử dụng khi:**
+- Muốn làm mới toàn bộ bản dịch
+- Bản dịch cũ có chất lượng kém cần thay thế
+- Lần đầu chạy dịch trên project mới
+
+### Cách hoạt động:
+
+1. **Main Files**: Kiểm tra các trường ngôn ngữ (`ch`, `tc`, `kr`)
+   - Nếu trường đã có nội dung → Giữ nguyên
+   - Nếu trường rỗng/thiếu → Dịch mới từ English
+
+2. **Locale Files**: So sánh với file locale hiện có
+   - Tìm bản dịch cũ dựa trên ID/key hoặc English text
+   - Nếu tìm thấy → Sử dụng bản dịch cũ
+   - Nếu không tìm thấy → Dịch mới từ English
+
+### Ví dụ thực tế:
+
+```bash
+# Lần đầu chạy - tạo toàn bộ bản dịch
+python run.py --project 3385996759 --path game_localText.json
+
+# Sau khi thêm nội dung mới vào file - chỉ dịch phần mới
+python run.py --project 3385996759 --path game_localText.json --preserve-translations
+```
 
 ## 🌍 Ngôn ngữ Hỗ trợ
 
@@ -203,7 +253,7 @@ Hệ thống tự động bảo vệ các format strings khỏi bị biến đ�
 
 ---
 
-**Version**: 3.0 | **Updated**: 2025/11
+**Version**: 3.1 | **Updated**: 2025/11
 **Dependencies**: `deep-translator>=1.9.0`
 
 ## 📄 License

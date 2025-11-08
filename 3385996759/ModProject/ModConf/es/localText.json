@@ -7,26 +7,41 @@
 	{
 		"id": "999990001",
 		"key": "libtxt999990001",
-		"en|ch|tc|kr": "La interfaz de usuario de Modlib está optimizada para la relación de pantalla 16: 9."
+		"en|ch|tc|kr": "La interfaz de usuario de ModLib está optimizada para una relación de pantalla de 16:9."
 	},
 	{
 		"id": "999990002",
 		"key": "libtxt999990002",
-		"en|ch|tc|kr": "Ejecutará un punto de referencia para inicializar RAM para el juego."
+		"en|ch|tc|kr": "Ejecutará una prueba para inicializar la RAM para el juego."
 	},
 	{
 		"id": "999990003",
 		"key": "libtxt999990003",
-		"en|ch|tc|kr": "¡Tienes que restablecer el juego!"
+		"en|ch|tc|kr": "Tienes que resetear el juego!"
 	},
 	{
 		"id": "999990004",
 		"key": "libtxt999990004",
-		"en|ch|tc|kr": "Esta es la primera vez. ¿Quieres ejecutar un punto de referencia para inicializar RAM para el juego?"
+		"en|ch|tc|kr": "Esta es la primera vez. ¿Quieres ejecutar un punto de referencia para inicializar la RAM para el juego?"
 	},
 	{
 		"id": "999990005",
 		"key": "libtxt999990005",
 		"en|ch|tc|kr": "DEFAULT_DRAMA_OPT"
+	},
+	{
+		"id": "999990006",
+		"key": "libtxt999990006",
+		"en|ch|tc|kr": "Ocultar excepciones"
+	},
+	{
+		"id": "999990007",
+		"key": "libtxt999990007",
+		"en|ch|tc|kr": "(Active si desea comentarios sobre errores)"
+	},
+	{
+		"id": "999990008",
+		"key": "libtxt999990008",
+		"en|ch|tc|kr": "Página {0}"
 	}
 ]
