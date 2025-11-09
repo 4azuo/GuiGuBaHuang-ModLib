@@ -17,7 +17,7 @@
 	{
 		"id": "999990003",
 		"key": "libtxt999990003",
-		"en|ch|tc|kr": "You have to reset the game!"
+		"en|ch|tc|kr": "Vos have ut reset ludum!"
 	},
 	{
 		"id": "999990004",
@@ -42,6 +42,6 @@
 	{
 		"id": "999990008",
 		"key": "libtxt999990008",
-		"en|ch|tc|kr": "Page {0}"
+		"en|ch|tc|kr": "Pagina {0}"
 	}
 ]

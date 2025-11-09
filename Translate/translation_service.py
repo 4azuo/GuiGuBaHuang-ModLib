@@ -9,7 +9,7 @@ import re
 from deep_translator import GoogleTranslator
 from typing import Dict, Tuple
 
-from consts import SKIP_TRANSLATION_TEXTS, FORMAT_PROTECTION_CONFIG
+from consts import SKIP_TRANSLATION_TEXTS, FORMAT_PROTECTION_CONFIG, CONTEXT_CONFIG
 from data_types import ProcessingStats, TranslationConfig
 
 class TranslationService:
@@ -69,7 +69,7 @@ class TranslationService:
     
     def _restore_format_strings(self, translated_text: str, format_map: Dict[str, str]) -> str:
         """
-        Khôi phục các format strings từ placeholders
+        Khôi phục các format strings từ placeholders sử dụng regex pattern
         
         Args:
             translated_text: Text đã được dịch có chứa placeholders
@@ -82,12 +82,57 @@ class TranslationService:
             return translated_text
             
         restored_text = translated_text
+        placeholder_pattern = FORMAT_PROTECTION_CONFIG['placeholder']['placeholder_marker']
         
-        # Khôi phục từng format string
-        for placeholder, format_str in format_map.items():
-            restored_text = restored_text.replace(placeholder, format_str)
+        # Tìm tất cả placeholder matches trong text
+        def replace_placeholder(match):
+            placeholder = match.group()
+            return format_map.get(placeholder, placeholder)  # Trả về format string hoặc giữ nguyên nếu không tìm thấy
+        
+        # Sử dụng regex để thay thế tất cả placeholders
+        restored_text = re.sub(placeholder_pattern, replace_placeholder, restored_text)
             
         return restored_text
+
+    def _add_context(self, text: str, target_lang: str) -> str:
+        """
+        Thêm ngữ cảnh vào text trước khi dịch
+        
+        Args:
+            text: Text cần thêm ngữ cảnh
+            target_lang: Ngôn ngữ đích (không sử dụng nhưng giữ để tương thích)
+            
+        Returns:
+            Text đã được thêm ngữ cảnh
+        """
+        if not text or not isinstance(text, str):
+            return text
+            
+        context_prefix = CONTEXT_CONFIG['context_prefix']
+        if context_prefix:
+            return context_prefix + text
+        return text
+    
+    def _remove_context(self, translated_text: str) -> str:
+        """
+        Xóa ngữ cảnh khỏi text đã dịch sử dụng regex pattern
+        
+        Args:
+            translated_text: Text đã được dịch có chứa ngữ cảnh
+            
+        Returns:
+            Text đã được xóa ngữ cảnh
+        """
+        if not translated_text or not isinstance(translated_text, str):
+            return translated_text
+            
+        context_marker = CONTEXT_CONFIG['context_marker']
+        if context_marker:
+            # Sử dụng regex để tìm và xóa context marker
+            cleaned_text = re.sub(context_marker, '', translated_text).strip()
+            return cleaned_text
+        
+        return translated_text
 
     def translate_text(self, text: str, target_lang: str) -> str:
         """Dịch text sang ngôn ngữ đích"""
@@ -101,6 +146,9 @@ class TranslationService:
 
             # Bảo vệ format strings trước khi dịch
             protected_text, format_map = self._protect_format_strings(text)
+            
+            # Thêm ngữ cảnh trước khi dịch
+            contextualized_text = self._add_context(protected_text, target_lang)
 
             # Retry mechanism for network issues
             for attempt in range(self.config.max_retries):
@@ -108,10 +156,13 @@ class TranslationService:
                     translated_result = GoogleTranslator(
                         source=self.config.source_language, 
                         target=target_lang
-                    ).translate(protected_text)
+                    ).translate(contextualized_text)
+                    
+                    # Xóa ngữ cảnh sau khi dịch
+                    decontextualized_result = self._remove_context(translated_result)
                     
                     # Khôi phục format strings sau khi dịch
-                    result = self._restore_format_strings(translated_result, format_map)
+                    result = self._restore_format_strings(decontextualized_result, format_map)
                     
                     time.sleep(self.config.delay_between_requests)
                     self.stats.translated_count += 1

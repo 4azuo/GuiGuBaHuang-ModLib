@@ -40,6 +40,13 @@ SKIP_TRANSLATION_TEXTS = [
     "team420041120desc"
 ]
 
+# Cấu hình ngữ cảnh cho dịch thuật
+CONTEXT_CONFIG = {
+    # Prefix ngữ cảnh chung cho tất cả ngôn ngữ (không bị dịch)
+    'context_prefix': '{\uF802}Game cultivation context{/\uF802}\n',
+    'context_marker': r'{\uF802}.+{/\uF802}'
+}
+
 # Format string patterns cần bảo vệ khỏi bị biến đổi trong quá trình dịch
 FORMAT_PROTECTION_CONFIG = {
     # Các patterns regex để nhận diện format strings cần bảo vệ
@@ -56,8 +63,9 @@ FORMAT_PROTECTION_CONFIG = {
     
     # Placeholder prefix/suffix để thay thế format strings tạm thời
     'placeholder': {
-        'prefix': 'FMPRTCT',
-        'suffix': 'FMPRTCT'
+        'prefix': '{\uF801}',
+        'suffix': '{/\uF801}',
+        'placeholder_marker': r'{\uF801}\d+{/\uF801}'
     }
 }
 
