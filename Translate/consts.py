@@ -40,6 +40,40 @@ SKIP_TRANSLATION_TEXTS = [
     "team420041120desc"
 ]
 
+# Cấu hình thuật ngữ (terminology) - các từ không được dịch
+TERMINOLOGY_CONFIG = {
+    # Prefix/suffix để bảo vệ thuật ngữ
+    'prefix': '{\uF8B3}',
+    'suffix': '{/\uF8B3}',
+    'marker_pattern': r'{\uF8B3}\d+{/\uF8B3}',  # Pattern cho indexed markers
+    
+    # Danh sách thuật ngữ cần bảo vệ (cultivation/martial arts terms)
+    'terms': [
+        # Realm/境界
+        'Qi Refining', 'Foundation Establishment', 'Core Formation', 'Nascent Soul',
+        'Soul Formation', 'Void Refinement', 'Body Integration', 'Mahayana', 'Tribulation',
+        'True Immortal', 'Golden Immortal', 'Taiyi Golden Immortal', 'Daluo Golden Immortal',
+        
+        # Cultivation terms/修炼术语
+        'Dantian', 'Meridian', 'Spiritual Root', 'Spiritual Qi', 'Dao', 'Tribulation Lightning',
+        'Heavenly Tribulation', 'Inner Demon', 'Dao Heart', 'Divine Sense', 'Soul',
+        
+        # Techniques/功法
+        'Cultivation Method', 'Martial Technique', 'Sword Technique', 'Formation',
+        'Alchemy', 'Artifact Refining', 'Talisman', 'Pill', 'Elixir',
+        
+        # Items/物品
+        'Spirit Stone', 'Magic Treasure', 'Spiritual Herb', 'Beast Core',
+        'Immortal Artifact', 'Divine Weapon', 'Profound Weapon',
+        
+        # Sects/宗门
+        'Sect', 'Elder', 'Disciple', 'Grand Elder', 'Patriarch', 'Ancestor',
+        
+        # Combat/战斗
+        'Sword Intent', 'Killing Intent', 'Bloodline', 'Physique', 'Constitution'
+    ]
+}
+
 # Cấu hình ngữ cảnh cho dịch thuật
 CONTEXT_CONFIG = {
     # Prefix ngữ cảnh chung cho tất cả ngôn ngữ (không bị dịch)

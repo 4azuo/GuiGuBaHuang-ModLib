@@ -11,6 +11,7 @@ from typing import Dict, Tuple
 
 from consts import SKIP_TRANSLATION_TEXTS, FORMAT_PROTECTION_CONFIG, CONTEXT_CONFIG
 from data_types import ProcessingStats, TranslationConfig
+from terminology_utils import TerminologyProcessor
 
 class TranslationService:
     """Service để thực hiện dịch text"""
@@ -22,6 +23,8 @@ class TranslationService:
         self.format_patterns = [
             re.compile(pattern) for pattern in FORMAT_PROTECTION_CONFIG['patterns']
         ]
+        # Khởi tạo terminology processor
+        self.terminology_processor = TerminologyProcessor()
     
     def _protect_format_strings(self, text: str) -> Tuple[str, Dict[str, str]]:
         """
@@ -144,8 +147,11 @@ class TranslationService:
             if text.strip() in SKIP_TRANSLATION_TEXTS:
                 return text
 
+            # Bảo vệ thuật ngữ trước khi xử lý khác
+            terminology_protected_text, terminology_map = self.terminology_processor.protect_terms(text)
+
             # Bảo vệ format strings trước khi dịch
-            protected_text, format_map = self._protect_format_strings(text)
+            protected_text, format_map = self._protect_format_strings(terminology_protected_text)
             
             # Thêm ngữ cảnh trước khi dịch
             contextualized_text = self._add_context(protected_text, target_lang)
@@ -162,7 +168,10 @@ class TranslationService:
                     decontextualized_result = self._remove_context(translated_result)
                     
                     # Khôi phục format strings sau khi dịch
-                    result = self._restore_format_strings(decontextualized_result, format_map)
+                    format_restored_result = self._restore_format_strings(decontextualized_result, format_map)
+                    
+                    # Khôi phục thuật ngữ sau cùng
+                    result = self.terminology_processor.restore_terms(format_restored_result, terminology_map)
                     
                     time.sleep(self.config.delay_between_requests)
                     self.stats.translated_count += 1

@@ -251,9 +251,32 @@ Hệ thống tự động bảo vệ các format strings khỏi bị biến đ�
 - ❌ `{0:#,##0}` → `｛０：＃，＃＃０｝` (zenkaku bị lỗi)
 - ✅ `{0:#,##0}` → `{0:#,##0}` (được bảo vệ)
 
+### Bảo vệ Thuật ngữ (Terminology Protection)
+
+Hệ thống tự động bảo vệ các thuật ngữ tu tiên/võ hiệp khỏi bị dịch sai:
+
+```python
+# Trong consts.py - TERMINOLOGY_CONFIG
+'terms': [
+    'Qi Refining', 'Foundation Establishment', 'Core Formation',
+    'Dantian', 'Spiritual Qi', 'Elder', 'Disciple'
+    # ... và nhiều thuật ngữ khác
+]
+```
+
+**Cách hoạt động:**
+1. **Bảo vệ**: `"Elder taught Qi Refining"` → `"Elder taught {\uF8B3}0{/\uF8B3}"`
+2. **Dịch**: `"Trưởng lão dạy {\uF8B3}0{/\uF8B3}"`
+3. **Khôi phục**: `"Trưởng lão dạy Qi Refining"`
+
+**Lợi ích:**
+- ✅ Thuật ngữ không bị dịch sai hoặc thay đổi
+- ✅ Tính nhất quán trong toàn bộ dự án  
+- ✅ Sử dụng indexed markers `{\uF8B3}0{/\uF8B3}` để tránh conflicts
+
 ---
 
-**Version**: 3.3 | **Updated**: 2025/11
+**Version**: 3.4 | **Updated**: 2025/11
 **Dependencies**: `deep-translator>=1.9.0`
 
 ## 📄 License
