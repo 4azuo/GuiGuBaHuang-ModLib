@@ -130,47 +130,6 @@ class ProgressBar:
             minutes = (seconds % 3600) // 60
             return f"{hours:.0f}h {minutes:.0f}m"
 
-class MultiProgressManager:
-    """Manager for multiple progress bars"""
-    
-    def __init__(self):
-        self.progress_bars: Dict[str, ProgressBar] = {}
-        self.active_key: Optional[str] = None
-    
-    def create_progress(self, key: str, total: int, config: Optional[ProgressConfig] = None) -> ProgressBar:
-        """Create a new progress bar"""
-        progress_bar = ProgressBar(total, config)
-        self.progress_bars[key] = progress_bar
-        return progress_bar
-    
-    def get_progress(self, key: str) -> Optional[ProgressBar]:
-        """Get existing progress bar"""
-        return self.progress_bars.get(key)
-    
-    def set_active(self, key: str) -> None:
-        """Set which progress bar is currently active for display"""
-        self.active_key = key
-    
-    def update_active(self, increment: int = 1, description: str = "") -> None:
-        """Update the currently active progress bar"""
-        if self.active_key and self.active_key in self.progress_bars:
-            self.progress_bars[self.active_key].update(increment, description)
-    
-    def finish_active(self, description: str = "Hoàn thành") -> None:
-        """Finish the currently active progress bar"""
-        if self.active_key and self.active_key in self.progress_bars:
-            self.progress_bars[self.active_key].finish(description)
-    
-    def cleanup(self) -> None:
-        """Clean up all progress bars"""
-        for progress_bar in self.progress_bars.values():
-            if progress_bar.current < progress_bar.total:
-                progress_bar.finish("Đã dừng")
-            else:
-                # Clear line for completed progress bars too
-                progress_bar._clear_line()
-        self.progress_bars.clear()
-
 class ProgressContext:
     """Context manager for progress bars"""
     
@@ -195,28 +154,10 @@ class ProgressContext:
             else:
                 self.progress_bar.finish()
 
-# Singleton manager instance
-progress_manager = MultiProgressManager()
-
 def create_file_progress_config(prefix: str = None) -> ProgressConfig:
     """Create progress config for file processing"""
     if prefix is None:
         prefix = UI_ICONS['folder']
-    
-    return ProgressConfig(
-        width=PROGRESS_BAR_CONFIG['width'],
-        fill_char=PROGRESS_BAR_CONFIG['fill_char'],
-        empty_char=PROGRESS_BAR_CONFIG['empty_char'],
-        prefix=prefix,
-        show_percentage=PROGRESS_BAR_CONFIG['show_percentage'],
-        show_count=PROGRESS_BAR_CONFIG['show_count'],
-        show_time=PROGRESS_BAR_CONFIG['show_time']
-    )
-
-def create_translation_progress_config(prefix: str = None) -> ProgressConfig:
-    """Create progress config for translation"""
-    if prefix is None:
-        prefix = UI_ICONS['globe']
     
     return ProgressConfig(
         width=PROGRESS_BAR_CONFIG['width'],
