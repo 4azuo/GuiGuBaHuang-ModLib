@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 """
-Terminology Processor - Xử lý thuật ngữ để bảo vệ khỏi bị dịch
+Terminology Processor - Handle terminology to protect from translation
 """
 
 import re
@@ -10,7 +10,7 @@ from consts import TERMINOLOGY_CONFIG
 
 
 class TerminologyProcessor:
-    """Xử lý thuật ngữ trong text để bảo vệ khỏi bị dịch"""
+    """Process terminology in text to protect from translation"""
     
     def __init__(self):
         self.config = TERMINOLOGY_CONFIG
@@ -19,22 +19,22 @@ class TerminologyProcessor:
         self.marker_pattern = re.compile(self.config['marker_pattern'], re.IGNORECASE)
         self.terms = self.config['terms']
         
-        # Tạo pattern để match các thuật ngữ (case insensitive, word boundary)
+        # Create patterns to match terminology (case insensitive, word boundary)
         self.term_patterns = []
         for term in self.terms:
-            # Escape special regex characters và tạo word boundary
+            # Escape special regex characters and create word boundary
             escaped_term = re.escape(term)
             pattern = re.compile(r'\b' + escaped_term + r'\b', re.IGNORECASE)
             self.term_patterns.append((term, pattern))
     
     def protect_terms(self, text: str, preserve_case: bool = False) -> Tuple[str, Dict[str, str]]:
         """
-        Bảo vệ thuật ngữ bằng cách thay thế bằng markers với index
+        Protect terminology by replacing with indexed markers
         
         Args:
-            text: Text cần xử lý
-            preserve_case: Nếu True, giữ nguyên case của text gốc khi khôi phục
-                          Nếu False, sử dụng case từ terminology config
+            text: Text to process
+            preserve_case: If True, preserve original text case when restoring
+                          If False, use case from terminology config
             
         Returns:
             Tuple[str, Dict[str, str]]: (protected_text, replacement_map)
@@ -46,25 +46,25 @@ class TerminologyProcessor:
         replacement_map = {}
         term_index = 0
         
-        # Tìm tất cả matches trước
+        # Find all matches first
         all_matches = []
         for original_term, pattern in self.term_patterns:
             matches = list(pattern.finditer(protected_text))
             for match in matches:
                 all_matches.append((match.start(), match.end(), match.group(), original_term, pattern))
         
-        # Sắp xếp theo vị trí xuất hiện để xử lý từ cuối lên đầu (tránh thay đổi index)
+        # Sort by position to process from end to start (avoid index changes)
         all_matches.sort(key=lambda x: x[0], reverse=True)
         
-        # Thay thế các thuật ngữ bằng indexed markers
+        # Replace terminology with indexed markers
         for start, end, match_text, original_term, pattern in all_matches:
-            # Tạo indexed marker
+            # Create indexed marker
             indexed_marker = f"{self.prefix}{term_index}{self.suffix}"
-            # Quyết định sử dụng case gốc hay case từ config
+            # Decide whether to use original case or case from config
             term_to_restore = match_text if preserve_case else original_term
             replacement_map[indexed_marker] = term_to_restore
             
-            # Thay thế trong text bằng cách sử dụng vị trí chính xác
+            # Replace in text using exact position
             protected_text = protected_text[:start] + indexed_marker + protected_text[end:]
             term_index += 1
         
@@ -72,31 +72,31 @@ class TerminologyProcessor:
     
     def restore_terms(self, text: str, replacement_map: Dict[str, str] = None) -> str:
         """
-        Khôi phục thuật ngữ từ indexed markers
+        Restore terminology from indexed markers
         
         Args:
-            text: Text đã được dịch
-            replacement_map: Map các indexed markers -> thuật ngữ gốc (optional)
+            text: Translated text
+            replacement_map: Map of indexed markers -> original terms (optional)
             
         Returns:
-            str: Text với thuật ngữ được khôi phục
+            str: Text with restored terminology
         """
         if not text or not isinstance(text, str):
             return text
         
         restored_text = text
         
-        # Nếu có replacement_map, sử dụng nó để khôi phục chính xác
+        # If replacement_map exists, use it for accurate restoration
         if replacement_map:
-            # Sắp xếp markers theo index để thay thế đúng thứ tự
+            # Sort markers by index for correct replacement order
             sorted_markers = sorted(replacement_map.items(), key=lambda x: x[0])
             for marker, original_term in sorted_markers:
                 restored_text = restored_text.replace(marker, original_term)
         else:
-            # Fallback: tìm tất cả indexed markers và cảnh báo
+            # Fallback: find all indexed markers and warn
             def restore_marker(match):
                 marker_content = match.group(0)
-                # Trả về marker gốc vì không có replacement_map
+                # Return original marker since no replacement_map
                 return marker_content
             
             restored_text = self.marker_pattern.sub(restore_marker, restored_text)
@@ -105,13 +105,13 @@ class TerminologyProcessor:
     
     def is_protected_text(self, text: str) -> bool:
         """
-        Kiểm tra xem text có chứa thuật ngữ được bảo vệ không
+        Check if text contains protected terminology
         
         Args:
-            text: Text cần kiểm tra
+            text: Text to check
             
         Returns:
-            bool: True nếu có chứa markers
+            bool: True if contains markers
         """
         if not text or not isinstance(text, str):
             return False
@@ -119,13 +119,13 @@ class TerminologyProcessor:
     
     def count_protected_terms(self, text: str) -> int:
         """
-        Đếm số lượng thuật ngữ được bảo vệ trong text
+        Count number of protected terms in text
         
         Args:
-            text: Text cần đếm
+            text: Text to count
             
         Returns:
-            int: Số lượng thuật ngữ được bảo vệ
+            int: Number of protected terms
         """
         if not text or not isinstance(text, str):
             return 0
@@ -133,14 +133,14 @@ class TerminologyProcessor:
     
     def get_protected_terms_list(self, text: str, replacement_map: Dict[str, str] = None) -> List[str]:
         """
-        Lấy danh sách các thuật ngữ được bảo vệ trong text
+        Get list of protected terms in text
         
         Args:
-            text: Text cần phân tích
-            replacement_map: Map để lấy thuật ngữ gốc từ indexed markers
+            text: Text to analyze
+            replacement_map: Map to get original terms from indexed markers
             
         Returns:
-            List[str]: Danh sách thuật ngữ được bảo vệ (không có markers)
+            List[str]: List of protected terms (without markers)
         """
         if not text or not isinstance(text, str):
             return []
@@ -149,14 +149,14 @@ class TerminologyProcessor:
         terms = []
         
         if replacement_map:
-            # Sử dụng replacement_map để lấy thuật ngữ gốc
+            # Use replacement_map to get original terms
             for match in matches:
                 if match in replacement_map:
                     term = replacement_map[match]
                     if term not in terms:
                         terms.append(term)
         else:
-            # Fallback: chỉ trả về danh sách indexed markers
+            # Fallback: only return list of indexed markers
             for match in matches:
                 if match not in terms:
                     terms.append(match)
@@ -165,28 +165,28 @@ class TerminologyProcessor:
     
     def add_custom_term(self, term: str):
         """
-        Thêm thuật ngữ tùy chỉnh vào danh sách bảo vệ
+        Add custom term to protection list
         
         Args:
-            term: Thuật ngữ mới cần bảo vệ
+            term: New term to protect
         """
         if term and term not in self.terms:
             self.terms.append(term)
-            # Tạo pattern mới cho thuật ngữ này
+            # Create new pattern for this term
             escaped_term = re.escape(term)
             pattern = re.compile(r'\b' + escaped_term + r'\b', re.IGNORECASE)
             self.term_patterns.append((term, pattern))
     
     def remove_custom_term(self, term: str):
         """
-        Xóa thuật ngữ khỏi danh sách bảo vệ
+        Remove term from protection list
         
         Args:
-            term: Thuật ngữ cần xóa
+            term: Term to remove
         """
         if term in self.terms:
             self.terms.remove(term)
-            # Xóa pattern tương ứng
+            # Remove corresponding pattern
             self.term_patterns = [
                 (t, p) for t, p in self.term_patterns 
                 if t.lower() != term.lower()
@@ -194,14 +194,14 @@ class TerminologyProcessor:
     
     def get_statistics(self, text: str, replacement_map: Dict[str, str] = None) -> Dict[str, any]:
         """
-        Lấy thống kê về thuật ngữ trong text
+        Get statistics about terminology in text
         
         Args:
-            text: Text cần phân tích
-            replacement_map: Map để lấy thuật ngữ gốc từ indexed markers
+            text: Text to analyze
+            replacement_map: Map to get original terms from indexed markers
             
         Returns:
-            Dict: Thông tin thống kê
+            Dict: Statistical information
         """
         if not text or not isinstance(text, str):
             return {

@@ -1,56 +1,56 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 """
-Constants cho hệ thống dịch localText
+Constants for localText translation system
 """
 
 import re
 
-# Ngôn ngữ mặc định được hỗ trợ
+# Default supported languages
 DEFAULT_TARGET_LANGUAGES = ['vi', 'es', 'fr', 'de', 'ru', 'ja', 'la', 'th']
 
-# Mapping các mã ngôn ngữ
+# Language code mapping
 LANGUAGE_CODES = {
     'ch': 'zh-CN',  # Chinese Simplified
     'tc': 'zh-TW',  # Traditional Chinese  
     'kr': 'ko'      # Korean
 }
 
-# Các key ngôn ngữ chính trong main files
+# Main language keys in main files
 MAIN_LANGUAGE_KEYS = ['en', 'ch', 'tc', 'kr']
 
-# Key gộp cho locale files
+# Combined key for locale files
 LOCALE_COMBINED_KEY = 'en|ch|tc|kr'
 
-# Pattern để nhận dạng combined keys có chứa 'en'
-COMBINED_KEY_WITH_EN_PATTERN = re.compile(r'.*\ben\b.*')  # Key có chứa 'en' ở bất kỳ vị trí nào
+# Pattern to recognize combined keys containing 'en'
+COMBINED_KEY_WITH_EN_PATTERN = re.compile(r'.*\ben\b.*')  # Key containing 'en' at any position
 
-# Cấu hình dịch
+# Translation configuration
 TRANSLATION_CONFIG = {
     'max_retries': 3,
-    'delay_between_requests': 0.2,  # giây
-    'retry_delay': 1.0,  # giây
+    'delay_between_requests': 0.2,  # seconds
+    'retry_delay': 1.0,  # seconds
     'source_language': 'en'
 }
 
-# Texts cần skip translation (không dịch)
+# Texts to skip translation (do not translate)
 SKIP_TRANSLATION_TEXTS = [
     "DEFAULT_DRAMA_OPT",
     "townmaster420041110desc",
     "team420041120desc"
 ]
 
-# Cấu hình thuật ngữ (terminology) - các từ không được dịch
+# Terminology configuration - terms that should not be translated
 TERMINOLOGY_CONFIG = {
-    # Prefix/suffix để bảo vệ thuật ngữ
+    # Prefix/suffix to protect terminology
     'prefix': '{\uF8B3}',
     'suffix': '{/\uF8B3}',
-    'marker_pattern': r'{\uF8B3}\d+{/\uF8B3}',  # Pattern cho indexed markers
+    'marker_pattern': r'{\uF8B3}\d+{/\uF8B3}',  # Pattern for indexed markers
     
-    # Danh sách thuật ngữ cần bảo vệ (cultivation/martial arts terms)
-    # LƯU Ý: Matching không phân biệt hoa thường (case-insensitive)
+    # List of terms to protect (cultivation/martial arts terms)
+    # NOTE: Matching is case-insensitive
     'terms': [
-        # Basic Game Stats/Chỉ số cơ bản
+        # Basic Game Stats
         'HP', 'MP', 'SP', 'DP', 'CD',
 
         # Game mechanics
@@ -59,21 +59,21 @@ TERMINOLOGY_CONFIG = {
         # Common abbreviations that should not be translated
         'NPC', 'AI', 'UI', 'GUI', 'RAM',
 
-        # Cultivation/Martial Arts terms - thuật ngữ tu luyện
+        # Cultivation/Martial Arts terms
         'Qi'
     ]
 }
 
-# Cấu hình ngữ cảnh cho dịch thuật
+# Context configuration for translation
 CONTEXT_CONFIG = {
-    # Prefix ngữ cảnh chung cho tất cả ngôn ngữ (không bị dịch)
+    # Context prefix for all languages (not translated)
     'context_prefix': '{\uF8B2}Game cultivation context{/\uF8B2}\n',
     'context_marker': r'{\uF8B2}.+?{/\uF8B2}'
 }
 
-# Format string patterns cần bảo vệ khỏi bị biến đổi trong quá trình dịch
+# Format string patterns to protect from modification during translation
 FORMAT_PROTECTION_CONFIG = {
-    # Các patterns regex để nhận diện format strings cần bảo vệ
+    # Regex patterns to identify format strings that need protection
     'patterns': [
         r'{\d+(?::[^}]+)?}',  # Standard format strings: {0}, {1}, {0:#,##0}, {0:0.00}, etc.
         r'%[sdf]',            # Printf style: %s, %d, %f
@@ -85,7 +85,7 @@ FORMAT_PROTECTION_CONFIG = {
         # r'[\d\s]*[+\-*/=<>!]+[\d\s]*', # Simple math expressions with operators
     ],
     
-    # Placeholder prefix/suffix để thay thế format strings tạm thời
+    # Placeholder prefix/suffix to temporarily replace format strings
     'placeholder': {
         'prefix': '{\uF8B1}',
         'suffix': '{/\uF8B1}',
@@ -93,7 +93,7 @@ FORMAT_PROTECTION_CONFIG = {
     }
 }
 
-# Cấu hình file (gộp FILE_CONFIG và FILE_PATTERNS)
+# File configuration (combines FILE_CONFIG and FILE_PATTERNS)
 FILE_CONFIG = {
     'encoding': 'utf-8',
     'json_indent': '\t',
@@ -102,13 +102,13 @@ FILE_CONFIG = {
     'json_extension': '.json'
 }
 
-# Thư mục và pattern file
+# Directory and file patterns
 DIR_PATTERNS = {
     'modconf_path': 'ModProject/ModConf',
     'localtext_pattern': '*localText.json'
 }
 
-# UI Icons và Symbols
+# UI Icons and Symbols
 UI_ICONS = {
     'folder': '📁',
     'file': '📄',
@@ -125,30 +125,30 @@ UI_ICONS = {
     'header': '🚀'
 }
 
-# Các thông điệp UI thường dùng
+# Common UI messages
 UI_MESSAGES = {
-    'processing': 'Đang xử lý',
-    'analyzing': 'Phân tích',
-    'translating': 'Dịch',
-    'completed': 'Hoàn thành',
-    'success': 'Thành công',
-    'failed': 'Thất bại',
-    'interrupted': 'Bị gián đoạn',
-    'no_files': 'Không tìm thấy file localText nào!',
-    'not_found_modconf': 'Không tìm thấy thư mục ModConf',
-    'script_title': 'Script Xử Lý LocalText.json'
+    'processing': 'Processing',
+    'analyzing': 'Analyzing',
+    'translating': 'Translating',
+    'completed': 'Completed',
+    'success': 'Success',
+    'failed': 'Failed',
+    'interrupted': 'Interrupted',
+    'no_files': 'No localText files found!',
+    'not_found_modconf': 'ModConf directory not found',
+    'script_title': 'LocalText.json Processing Script'
 }
 
-# Cấu hình progress bar
+# Progress bar configuration
 PROGRESS_BAR_CONFIG = {
-    'width': 40,  # Độ rộng cố định cho tất cả progress bar
+    'width': 40,  # Fixed width for all progress bars
     'fill_char': '█',
     'empty_char': '░',
     'show_percentage': True,
     'show_count': True,
     'show_time': True,
     'min_update_interval': 0.1,  # Minimum seconds between updates
-    # 'max_desc_length': 50,  # Giới hạn độ dài description
+    # 'max_desc_length': 50,  # Description length limit
     # 'max_line_length': 120,  # Terminal width limit
     'clear_line_width': 200  # Width for clearing terminal line
 }

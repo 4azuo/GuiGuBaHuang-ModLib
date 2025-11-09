@@ -10,31 +10,31 @@ from json_utils import JsonUtils
 
 # Translation-specific utilities
 class TranslateUtils:
-    """Utilities cho việc xử lý translation và locale data"""
+    """Utilities for handling translation and locale data"""
     
     @staticmethod
     def sort_language_keys(item_dict):
         """
-        Sắp xếp các key trong dictionary theo thứ tự: en, ch, tc, kr, rồi đến các key khác
+        Sort keys in dictionary by order: en, ch, tc, kr, then other keys
         
         Args:
-            item_dict: Dictionary cần sắp xếp
+            item_dict: Dictionary to sort
             
         Returns:
-            Dictionary đã được sắp xếp theo thứ tự key
+            Dictionary sorted by key order
         """
-        # Thứ tự ưu tiên cho các key ngôn ngữ
+        # Priority order for language keys
         language_order = ['__name', 'id', 'key', 'en', 'ch', 'tc', 'kr']
         
-        # Tạo dict mới với thứ tự đã sắp xếp
+        # Create new dict with sorted order
         sorted_dict = {}
         
-        # Thêm các key ngôn ngữ theo thứ tự
+        # Add language keys in order
         for lang_key in language_order:
             if lang_key in item_dict:
                 sorted_dict[lang_key] = item_dict[lang_key]
         
-        # Thêm các key còn lại (không phải ngôn ngữ)
+        # Add remaining keys (non-language keys)
         for key, value in item_dict.items():
             if key not in language_order:
                 sorted_dict[key] = value
@@ -44,15 +44,15 @@ class TranslateUtils:
     @staticmethod
     def normalize_main_file_keys(main_data):
         """
-        Chuẩn hóa các combined key trong main file thành key đơn giản
-        Combined key có chứa 'en' sẽ được chuyển thành key 'en'
-        Đồng thời sắp xếp các key theo thứ tự: en, ch, tc, kr
+        Normalize combined keys in main file to simple keys
+        Combined keys containing 'en' will be converted to 'en' key
+        Also sort keys by order: en, ch, tc, kr
         
         Args:
-            main_data: Dữ liệu main file
+            main_data: Main file data
             
         Returns:
-            LocalTextData với các key đã được chuẩn hóa và sắp xếp
+            LocalTextData with normalized and sorted keys
         """
         if main_data.is_list:
             result = []
@@ -60,18 +60,18 @@ class TranslateUtils:
                 if isinstance(item, dict):
                     new_item = {}
                     
-                    # Copy các key không phải combined key
+                    # Copy keys that are not combined keys
                     for key, value in item.items():
                         if not COMBINED_KEY_WITH_EN_PATTERN.match(key):
                             new_item[key] = value
                     
-                    # Tìm combined key có chứa 'en' và chuyển thành 'en'
+                    # Find combined key containing 'en' and convert to 'en'
                     for key, value in item.items():
                         if COMBINED_KEY_WITH_EN_PATTERN.match(key):
                             new_item['en'] = value
-                            break  # Chỉ lấy combined key đầu tiên
+                            break  # Only take the first combined key
                     
-                    # Sắp xếp key theo thứ tự: en, ch, tc, kr
+                    # Sort keys in order: en, ch, tc, kr
                     new_item = TranslateUtils.sort_language_keys(new_item)
                     result.append(new_item)
                 else:
@@ -82,18 +82,18 @@ class TranslateUtils:
         elif main_data.is_dict:
             new_item = {}
             
-            # Copy các key không phải combined key
+            # Copy keys that are not combined keys
             for key, value in main_data.data.items():
                 if not COMBINED_KEY_WITH_EN_PATTERN.match(key):
                     new_item[key] = value
             
-            # Tìm combined key có chứa 'en' và chuyển thành 'en'
+            # Find combined key containing 'en' and convert to 'en'
             for key, value in main_data.data.items():
                 if COMBINED_KEY_WITH_EN_PATTERN.match(key):
                     new_item['en'] = value
-                    break  # Chỉ lấy combined key đầu tiên
+                    break  # Only take the first combined key
             
-            # Sắp xếp key theo thứ tự: en, ch, tc, kr
+            # Sort keys in order: en, ch, tc, kr
             new_item = TranslateUtils.sort_language_keys(new_item)
             return LocalTextData(new_item)
         
@@ -102,14 +102,14 @@ class TranslateUtils:
     @staticmethod
     def translate_main_file_text(main_data, translator_func):
         """
-        Dịch text trong main file (ví dụ: cập nhật các trường tiếng Anh)
+        Translate text in main file (e.g., update English fields)
         
         Args:
-            main_data: Dữ liệu main file
-            translator_func: Hàm dịch text
+            main_data: Main file data
+            translator_func: Text translation function
             
         Returns:
-            LocalTextData với text đã được dịch
+            LocalTextData with translated text
         """
         if main_data.is_list:
             result = []
@@ -117,16 +117,16 @@ class TranslateUtils:
                 if isinstance(item, dict) and 'en' in item:
                     new_item = item.copy()
                     
-                    # Dịch tiếng Anh sang các ngôn ngữ khác trong main file
+                    # Translate English to other languages in main file
                     en_text = item['en']
                     item_id = item.get('id', 'N/A')
                     if en_text and en_text.strip():
-                        # Dịch sang tiếng Việt và cập nhật trường 'vi' (nếu có)
+                        # Translate to Vietnamese and update 'vi' field (if present)
                         if 'vi' not in new_item or not new_item['vi']:
                             translated_vi = translator_func(en_text, 'vi', item_id)
                             new_item['vi'] = translated_vi
                         
-                        # Có thể thêm dịch sang các ngôn ngữ khác
+                        # Can add translation to other languages
                         # if 'ch' not in new_item or not new_item['ch']:
                         #     translated_ch = translator_func(en_text, 'zh')
                         #     new_item['ch'] = translated_ch
@@ -140,11 +140,11 @@ class TranslateUtils:
         elif main_data.is_dict and 'en' in main_data.data:
             new_item = main_data.data.copy()
             
-            # Dịch tiếng Anh sang tiếng Việt trong main file
+            # Translate English to Vietnamese in main file
             en_text = main_data.data['en']
             item_id = main_data.data.get('id', 'N/A')
             if en_text and en_text.strip():
-                # Dịch sang tiếng Việt và cập nhật trường 'vi' (nếu có)
+                # Translate to Vietnamese and update 'vi' field (if present)
                 if 'vi' not in new_item or not new_item['vi']:
                     translated_vi = translator_func(en_text, 'vi', item_id)
                     new_item['vi'] = translated_vi
@@ -156,14 +156,14 @@ class TranslateUtils:
     @staticmethod
     def analyze_main_file_text(main_data, progress_callback):
         """
-        Phân tích text trong main file và đếm số lượng text có thể dịch
+        Analyze text in main file and count the number of translatable texts
         
         Args:
-            main_data: Dữ liệu main file
-            progress_callback: Hàm callback để cập nhật progress
+            main_data: Main file data
+            progress_callback: Callback function to update progress
             
         Returns:
-            Số lượng text đã phân tích
+            Number of texts analyzed
         """
         count = 0
         
@@ -185,16 +185,16 @@ class TranslateUtils:
     @staticmethod
     def translate_main_file_languages(main_data, translator_func, preserve_existing=False):
         """
-        Dịch và cập nhật các trường ngôn ngữ thiếu trong main file
-        Main file có cấu trúc: en, ch, tc, kr
+        Translate and update missing language fields in main file
+        Main file structure: en, ch, tc, kr
         
         Args:
-            main_data: Dữ liệu main file
-            translator_func: Hàm dịch text
-            preserve_existing: Nếu True, giữ lại bản dịch đã có, chỉ dịch các từ mới
+            main_data: Main file data
+            translator_func: Text translation function
+            preserve_existing: If True, keep existing translations, only translate new ones
             
         Returns:
-            LocalTextData với các trường ngôn ngữ đã được cập nhật
+            LocalTextData with updated language fields
         """
         if main_data.is_list:
             result = []
@@ -202,29 +202,29 @@ class TranslateUtils:
                 if isinstance(item, dict):
                     new_item = item.copy()
                     
-                    # Lấy text tiếng Anh từ item (hỗ trợ cả 'en' và combined keys)
+                    # Get English text from item (supports both 'en' and combined keys)
                     en_text = JsonUtils.get_english_text(item)
                     
-                    # Lấy id của item để hiển thị progress
+                    # Get item id for progress display
                     item_id = item.get('id', 'N/A')
                     
                     if en_text and en_text.strip():
-                        # Dịch sang Chinese Simplified (ch) nếu thiếu hoặc rỗng
+                        # Translate to Chinese Simplified (ch) if missing or empty
                         if not TranslateUtils._has_valid_translation(new_item, 'ch', preserve_existing):
                             translated_ch = translator_func(en_text, LANGUAGE_CODES['ch'], item_id)
                             new_item['ch'] = translated_ch
                         
-                        # Dịch sang Traditional Chinese (tc) nếu thiếu hoặc rỗng
+                        # Translate to Traditional Chinese (tc) if missing or empty
                         if not TranslateUtils._has_valid_translation(new_item, 'tc', preserve_existing):
                             translated_tc = translator_func(en_text, LANGUAGE_CODES['tc'], item_id)
                             new_item['tc'] = translated_tc
                         
-                        # Dịch sang Korean (kr) nếu thiếu hoặc rỗng
+                        # Translate to Korean (kr) if missing or empty
                         if not TranslateUtils._has_valid_translation(new_item, 'kr', preserve_existing):
                             translated_kr = translator_func(en_text, LANGUAGE_CODES['kr'], item_id)
                             new_item['kr'] = translated_kr
                     
-                    # Sắp xếp key theo thứ tự: en, ch, tc, kr
+                    # Sort keys in order: en, ch, tc, kr
                     new_item = TranslateUtils.sort_language_keys(new_item)
                     result.append(new_item)
                 else:
@@ -235,14 +235,14 @@ class TranslateUtils:
         elif main_data.is_dict:
             new_item = main_data.data.copy()
             
-            # Lấy text tiếng Anh từ dict
+            # Get English text from dict
             en_text = JsonUtils.get_english_text(main_data.data)
             
-            # Lấy id của dict để hiển thị progress
+            # Get dict id for progress display
             item_id = main_data.data.get('id', 'N/A')
             
             if en_text and en_text.strip():
-                # Dịch sang các ngôn ngữ thiếu hoặc rỗng
+                # Translate to missing or empty languages
                 if not TranslateUtils._has_valid_translation(new_item, 'ch', preserve_existing):
                     translated_ch = translator_func(en_text, LANGUAGE_CODES['ch'], item_id)
                     new_item['ch'] = translated_ch
@@ -255,7 +255,7 @@ class TranslateUtils:
                     translated_kr = translator_func(en_text, LANGUAGE_CODES['kr'], item_id)
                     new_item['kr'] = translated_kr
             
-            # Sắp xếp key theo thứ tự: en, ch, tc, kr
+            # Sort keys in order: en, ch, tc, kr
             new_item = TranslateUtils.sort_language_keys(new_item)
             return LocalTextData(new_item)
         
@@ -264,43 +264,43 @@ class TranslateUtils:
     @staticmethod
     def create_locale_data_from_main(main_data: LocalTextData, target_language: str, translator_func, existing_locale_data=None, preserve_existing=False) -> LocalTextData:
         """
-        Tạo dữ liệu locale từ main data
+        Create locale data from main data
         
         Args:
-            main_data: Dữ liệu main file
-            target_language: Ngôn ngữ đích
-            translator_func: Hàm dịch text
-            existing_locale_data: Dữ liệu locale đã có (nếu preserve mode)
-            preserve_existing: Nếu True, giữ lại bản dịch đã có, chỉ dịch các từ mới
+            main_data: Main file data
+            target_language: Target language
+            translator_func: Text translation function
+            existing_locale_data: Existing locale data (if preserve mode)
+            preserve_existing: If True, keep existing translations, only translate new ones
             
         Returns:
-            LocalTextData cho locale file
+            LocalTextData for locale file
         """
         if main_data.is_list:
             result = []
             for item in main_data.data:
                 if isinstance(item, dict):
-                    # Lấy text tiếng Anh từ item (hỗ trợ cả 'en' và combined keys)
+                    # Get English text from item (supports both 'en' and combined keys)
                     en_text = JsonUtils.get_english_text(item)
                     if en_text and en_text.strip():
                         new_item = {}
                         
-                        # Copy các key không phải ngôn ngữ
+                        # Copy non-language keys
                         for key, value in item.items():
                             if key not in MAIN_LANGUAGE_KEYS and not COMBINED_KEY_WITH_EN_PATTERN.match(key):
                                 new_item[key] = value
                         
-                        # Lấy id của item để hiển thị progress
+                        # Get item id for progress display
                         item_id = item.get('id', 'N/A')
                         
-                        # Kiểm tra xem entry này đã có bản dịch trong locale file chưa (theo key/id)
+                        # Check if this entry already has translation in locale file (by key/id)
                         existing_translation = TranslateUtils._find_existing_translation_by_key(item, existing_locale_data, preserve_existing)
                         
                         if existing_translation:
-                            # Sử dụng bản dịch đã có từ locale file
+                            # Use existing translation from locale file
                             new_item[LOCALE_COMBINED_KEY] = existing_translation
                         else:
-                            # Dịch từ tiếng Anh sang ngôn ngữ đích
+                            # Translate from English to target language
                             translated = translator_func(en_text, target_language, item_id)
                             new_item[LOCALE_COMBINED_KEY] = translated
                         
@@ -313,52 +313,52 @@ class TranslateUtils:
             return LocalTextData(result)
             
         elif main_data.is_dict:
-            # Lấy text tiếng Anh từ dict
+            # Get English text from dict
             en_text = JsonUtils.get_english_text(main_data.data)
             if en_text and en_text.strip():
                 new_item = {}
                 
-                # Copy các key không phải ngôn ngữ
+                # Copy non-language keys
                 for key, value in main_data.data.items():
                     if key not in MAIN_LANGUAGE_KEYS and not COMBINED_KEY_WITH_EN_PATTERN.match(key):
                         new_item[key] = value
                 
-                # Lấy id của item để hiển thị progress
+                # Get item id for progress display
                 item_id = main_data.data.get('id', 'N/A')
                 
-                # Kiểm tra xem entry này đã có bản dịch trong locale file chưa (theo key/id)
+                # Check if this entry already has translation in locale file (by key/id)
                 existing_translation = TranslateUtils._find_existing_translation_by_key(main_data.data, existing_locale_data, preserve_existing)
                 
                 if existing_translation:
-                    # Sử dụng bản dịch đã có từ locale file
+                    # Use existing translation from locale file
                     new_item[LOCALE_COMBINED_KEY] = existing_translation
                 else:
-                    # Dịch từ tiếng Anh sang ngôn ngữ đích
+                    # Translate from English to target language
                     translated = translator_func(en_text, target_language, item_id)
                     new_item[LOCALE_COMBINED_KEY] = translated
                 
                 return LocalTextData(new_item)
         
-        # Nếu không có dữ liệu cần dịch, trả về dữ liệu gốc
+        # If no data needs translation, return original data
         return main_data
     
     @staticmethod
     def _get_existing_translation_from_main(main_item, target_language, preserve_existing):
         """
-        Lấy bản dịch đã có từ main item cho target language
+        Get existing translation from main item for target language
         
         Args:
-            main_item: Item từ main file (dict)
-            target_language: Ngôn ngữ đích (vi, es, fr, ...)
-            preserve_existing: Có bảo tồn bản dịch đã có không
+            main_item: Item from main file (dict)
+            target_language: Target language (vi, es, fr, ...)
+            preserve_existing: Whether to preserve existing translations
             
         Returns:
-            str: Bản dịch đã có hoặc None nếu không tìm thấy
+            str: Existing translation or None if not found
         """
         if not preserve_existing or not isinstance(main_item, dict):
             return None
             
-        # Kiểm tra xem main item có trường ngôn ngữ target không
+        # Check if main item has target language field
         if target_language in main_item:
             translation = main_item[target_language]
             if translation and isinstance(translation, str) and translation.strip():
@@ -369,20 +369,20 @@ class TranslateUtils:
     @staticmethod
     def _find_existing_translation_by_key(main_item, existing_locale_data, preserve_existing):
         """
-        Tìm bản dịch đã có trong locale data dựa trên key/id của main item
+        Find existing translation in locale data based on key/id of main item
         
         Args:
-            main_item: Item từ main file (dict)  
-            existing_locale_data: Dữ liệu locale đã có (LocalTextData hoặc None)
-            preserve_existing: Có bảo tồn bản dịch đã có không
+            main_item: Item from main file (dict)  
+            existing_locale_data: Existing locale data (LocalTextData or None)
+            preserve_existing: Whether to preserve existing translations
             
         Returns:
-            str: Bản dịch đã có hoặc None nếu không tìm thấy
+            str: Existing translation or None if not found
         """
         if not preserve_existing or not existing_locale_data or not isinstance(main_item, dict):
             return None
             
-        # Tìm identifier cho main item (ưu tiên key > id)
+        # Find identifier for main item (priority: key > id)
         main_identifier = None
         main_id_key = None
         
@@ -393,14 +393,14 @@ class TranslateUtils:
                 break
                 
         if not main_identifier:
-            return None  # Không có identifier để so sánh
+            return None  # No identifier for comparison
             
-        # Tìm trong existing locale data
+        # Search in existing locale data
         if existing_locale_data.is_list:
             for locale_item in existing_locale_data.data:
                 if isinstance(locale_item, dict) and main_id_key in locale_item:
                     if locale_item[main_id_key] == main_identifier:
-                        # Tìm thấy entry trùng key/id, lấy bản dịch
+                        # Found entry with matching key/id, get translation
                         translation = locale_item.get(LOCALE_COMBINED_KEY)
                         if translation and isinstance(translation, str) and translation.strip():
                             return translation.strip()
@@ -416,27 +416,27 @@ class TranslateUtils:
     @staticmethod
     def _find_existing_translation(main_item, existing_locale_data):
         """
-        Tìm bản dịch đã có trong locale data dựa trên main item
+        Find existing translation in locale data based on main item
         
         Args:
-            main_item: Item từ main file (dict)
-            existing_locale_data: Dữ liệu locale đã có (LocalTextData)
+            main_item: Item from main file (dict)
+            existing_locale_data: Existing locale data (LocalTextData)
             
         Returns:
-            str: Bản dịch đã có hoặc None nếu không tìm thấy
+            str: Existing translation or None if not found
         """
         if not existing_locale_data or not existing_locale_data.data:
             return None
         
-        # Tìm item tương ứng trong locale data
+        # Find corresponding item in locale data
         if existing_locale_data.is_list:
             for locale_item in existing_locale_data.data:
                 if isinstance(locale_item, dict):
-                    # So sánh theo key/id để tìm item tương ứng
+                    # Compare by key/id to find corresponding item
                     if TranslateUtils._items_match(main_item, locale_item):
                         return locale_item.get(LOCALE_COMBINED_KEY)
         elif existing_locale_data.is_dict:
-            # Nếu là dict đơn lẻ, kiểm tra xem có khớp không
+            # If single dict, check if it matches
             if TranslateUtils._items_match(main_item, existing_locale_data.data):
                 return existing_locale_data.data.get(LOCALE_COMBINED_KEY)
         
@@ -445,27 +445,27 @@ class TranslateUtils:
     @staticmethod
     def _items_match(main_item, locale_item):
         """
-        Kiểm tra xem main item và locale item có khớp với nhau không
+        Check if main item and locale item match each other
         
         Args:
-            main_item: Item từ main file (dict)
-            locale_item: Item từ locale file (dict)
+            main_item: Item from main file (dict)
+            locale_item: Item from locale file (dict)
             
         Returns:
-            bool: True nếu khớp
+            bool: True if they match
         """
         if not isinstance(main_item, dict) or not isinstance(locale_item, dict):
             return False
         
-        # Ưu tiên so sánh theo các key định danh
+        # Priority comparison by identifier keys
         for key in ['id', 'key', '__name']:
             if key in main_item and key in locale_item:
                 return main_item[key] == locale_item[key]
         
-        # Nếu không có key định danh, so sánh theo English text
+        # If no identifier key, compare by English text
         main_en = JsonUtils.get_english_text(main_item)
         if main_en:
-            # Tìm English text tương ứng trong locale item (có thể là combined key)
+            # Find corresponding English text in locale item (may be combined key)
             for k, v in locale_item.items():
                 if k not in MAIN_LANGUAGE_KEYS and v == main_en:
                     return True
@@ -475,28 +475,28 @@ class TranslateUtils:
     @staticmethod
     def _has_valid_translation(item, lang_key, preserve_existing):
         """
-        Kiểm tra xem một entry có bản dịch hợp lệ cho ngôn ngữ cụ thể chưa
+        Check if an entry has valid translation for specific language
         
         Args:
-            item: Dictionary item cần kiểm tra
-            lang_key: Key ngôn ngữ cần kiểm tra ('ch', 'tc', 'kr', v.v.)
-            preserve_existing: Có bảo tồn bản dịch đã có không
+            item: Dictionary item to check
+            lang_key: Language key to check ('ch', 'tc', 'kr', etc.)
+            preserve_existing: Whether to preserve existing translations
             
         Returns:
-            bool: True nếu đã có bản dịch hợp lệ và nên bỏ qua dịch
+            bool: True if has valid translation and should skip translation
         """
         if not preserve_existing:
-            return False  # Không preserve -> luôn dịch lại
+            return False  # No preserve -> always retranslate
             
         if lang_key not in item:
-            return False  # Không có key -> cần dịch
+            return False  # No key -> need translation
             
         translation = item[lang_key]
         if not translation or not isinstance(translation, str):
-            return False  # Giá trị rỗng hoặc không phải string -> cần dịch
+            return False  # Empty value or not string -> need translation
             
         translation = translation.strip()
         if not translation:
-            return False  # String rỗng sau khi strip -> cần dịch
+            return False  # Empty string after strip -> need translation
             
-        return True  # Có bản dịch hợp lệ -> không cần dịch
+        return True  # Has valid translation -> no need to translate

@@ -207,7 +207,7 @@ def print_result(icon: str, message: str, details: str = "") -> None:
 
 def print_stats(stats_dict: Dict[str, Any]) -> None:
     """Print statistics"""
-    print(f"\n{UI_ICONS['result']} BÁO CÁO")
+    print(f"\n{UI_ICONS['result']} REPORT")
     for key, value in stats_dict.items():
         print(f"{key}: {value}")
 

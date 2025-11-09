@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 """
-Định nghĩa các class và types cho hệ thống dịch localText
+Class and type definitions for localText translation system
 """
 
 from dataclasses import dataclass
@@ -23,12 +23,12 @@ class ProgressConfig:
     suffix: str = ""
 
 class FileType(Enum):
-    """Loại file localText"""
+    """LocalText file type"""
     MAIN = "main"
     LOCALE = "locale"
 
 class ProcessingStatus(Enum):
-    """Trạng thái xử lý"""
+    """Processing status"""
     SUCCESS = "success"
     FAILED = "failed"
     SKIPPED = "skipped"
@@ -36,7 +36,7 @@ class ProcessingStatus(Enum):
 
 @dataclass
 class TranslationConfig:
-    """Cấu hình cho quá trình dịch"""
+    """Configuration for translation process"""
     target_languages: List[str]
     max_retries: int = TRANSLATION_CONFIG['max_retries']
     delay_between_requests: float = TRANSLATION_CONFIG['delay_between_requests']
@@ -46,7 +46,7 @@ class TranslationConfig:
 
 @dataclass
 class ProcessingStats:
-    """Thống kê quá trình xử lý"""
+    """Processing statistics"""
     processed_count: int = 0
     translated_count: int = 0
     failed_count: int = 0
@@ -57,7 +57,7 @@ class ProcessingStats:
 
 @dataclass
 class FileInfo:
-    """Thông tin về file localText"""
+    """Information about localText file"""
     path: str
     file_type: FileType
     language: Optional[str] = None
@@ -69,7 +69,7 @@ class FileInfo:
 
 @dataclass
 class TranslationItem:
-    """Item cần được dịch"""
+    """Item to be translated"""
     original_text: str
     target_language: str
     translated_text: Optional[str] = None
@@ -77,7 +77,7 @@ class TranslationItem:
     error_message: Optional[str] = None
 
 class LocalTextData:
-    """Wrapper cho dữ liệu localText JSON"""
+    """Wrapper for localText JSON data"""
     
     def __init__(self, data: Any):
         self.data = data
@@ -93,7 +93,7 @@ class LocalTextData:
         return self._is_dict
     
     def get_translatable_items(self) -> List[Dict[str, Any]]:
-        """Lấy danh sách các item có thể dịch được"""
+        """Get list of translatable items"""
         if self.is_list:
             return [item for item in self.data if isinstance(item, dict) and 'en' in item]
         elif self.is_dict and 'en' in self.data:
@@ -101,5 +101,5 @@ class LocalTextData:
         return []
     
     def to_dict(self) -> Any:
-        """Trả về dữ liệu dưới dạng dict/list để serialize"""
+        """Return data as dict/list for serialization"""
         return self.data

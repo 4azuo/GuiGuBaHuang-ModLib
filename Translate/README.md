@@ -1,185 +1,195 @@
 # 🌍 LocalText Translation System
 
-Hệ thống tự động dịch các file `*localText.json` cho game GuiGuBaHuang ModLib với khả năng xử lý cả main files và locale files.
+Automated translation system for `*localText.json` files in GuiGuBaHuang ModLib game with capability to process both main files and locale files.
 
-## 📁 Cấu trúc Project
+## 📁 Project Structure
 
 ```
 Translate/
-├── run.py                    # Script chính để chạy và dịch
-├── translation_service.py    # Service xử lý dịch text
-├── local_text_processor.py   # Processor xử lý localText files  
-├── translate_utils.py        # Utilities cho translation logic
-├── consts.py                 # Constants và cấu hình hệ thống
-├── data_types.py             # Định nghĩa class và types
-├── file_utils.py             # Utilities xử lý files và directories
-├── json_utils.py             # Utilities xử lý JSON data
-├── progressbar_utils.py      # Utilities cho progress bars và UI
-└── README.md                 # Hướng dẫn sử dụng
+├── run.py                    # Main script to run and translate
+├── translation_service.py    # Service for text translation processing
+├── local_text_processor.py   # Processor for handling localText files  
+├── translate_utils.py        # Utilities for translation logic
+├── terminology_utils.py      # Utilities for terminology protection
+├── consts.py                 # Constants and system configuration
+├── data_types.py             # Class and types definitions
+├── file_utils.py             # Utilities for files and directories handling
+├── json_utils.py             # Utilities for JSON data processing
+├── progressbar_utils.py      # Utilities for progress bars and UI
+├── README.md                 # Usage instructions
+└── __pycache__/             # Python cache directory
 ```
 
-## 🚀 Cách Sử Dụng
+## 🚀 How to Use
 
-### Cài đặt Dependencies
+### Install Dependencies
 
 ```bash
 pip install deep-translator
 ```
 
-### Cú pháp cơ bản
+### Basic Syntax
 
 ```bash
 python run.py --project <PROJECT_ID> --path <PATH> [OPTIONS]
 ```
 
-### Các tham số
+### Parameters
 
-- `--project`: ID của project (vd: `3385996759`)
-- `--path`: Đường dẫn tương đối trong ModConf
-  - `.` - Xử lý toàn bộ thư mục ModConf
-  - `game_localText.json` - Xử lý file cụ thể
-  - `subfolder` - Xử lý thư mục con
-- `--dry-run`: Chỉ hiển thị danh sách file, không thực hiện dịch
-- `--create-locales`: Danh sách ngôn ngữ cần tạo (vd: `vi,es,fr` hoặc `all`)
-- `--file-type`: Loại file cần xử lý
-  - `main` - Chỉ xử lý main files (file gốc có en/ch/tc/kr)
-  - `locale` - Chỉ xử lý locale files (file đã dịch trong thư mục con)
-  - `both` - Xử lý cả hai loại (mặc định)
-- `--preserve-translations`: Giữ lại các bản dịch đã có, chỉ dịch thêm các từ mới
+- `--project`: **Required**. Project directory name (e.g.: `3385996759`)
+- `--path`: **Required**. Relative path within ModConf folder or file
+  - `.` - Process entire ModConf directory
+  - `game_localText.json` - Process specific file
+  - `subfolder` - Process subdirectory
+- `--dry-run`: Only display list of files to be processed, don't perform translation
+- `--create-locales`: List of languages to create locale files for (e.g.: `vi,es,fr` or `all`)
+- `--file-type`: Type of files to process (choices: `main`, `locale`, `both`)
+  - `main` - Only process main files (original files with en/ch/tc/kr keys)
+  - `locale` - Only process locale files (translated files in subdirectories)  
+  - `both` - Process both types (default)
+- `--preserve-translations`: Keep existing translations, only translate new terms that haven't been translated yet
+- `--workers`: Number of parallel threads for file processing (default: 4). Reduce if encountering rate-limits from translation service
 
-## 📖 Ví dụ Sử dụng
+## 📖 Usage Examples
 
-### 1. Xử lý toàn bộ ModConf
+### 1. Process entire ModConf directory
 
 ```bash
 python run.py --project 3385996759 --path .
 ```
 
-### 2. Xử lý file cụ thể
+### 2. Process specific file
 
 ```bash
 python run.py --project 3385996759 --path game_localText.json
 ```
 
-### 3. Kiểm tra trước khi chạy (dry-run)
+### 3. Check files before running (dry-run)
 
 ```bash
 python run.py --project 3385996759 --path . --dry-run
 ```
 
-### 4. Chọn ngôn ngữ cụ thể
+### 4. Create specific language translations
 
 ```bash
 python run.py --project 3385996759 --path . --create-locales vi,es,fr
 ```
 
-### 5. Tạo tất cả ngôn ngữ
+### 5. Create all supported language translations
 
 ```bash
 python run.py --project 3385996759 --path . --create-locales all
 ```
 
-### 6. Chỉ xử lý main files
+### 6. Only process main files (original files)
 
 ```bash
 python run.py --project 3385996759 --path . --file-type main
 ```
 
-### 7. Chỉ xử lý locale files
+### 7. Only process locale files (translated files)
 
 ```bash
 python run.py --project 3385996759 --path . --file-type locale
 ```
 
-### 8. Giữ bản dịch cũ, chỉ dịch thêm từ mới
+### 8. Preserve existing translations, only translate new content
 
 ```bash
 python run.py --project 3385996759 --path . --preserve-translations
 ```
 
-### 9. Kết hợp preserve mode với file type cụ thể
+### 9. Adjust worker threads for performance
+
+```bash
+python run.py --project 3385996759 --path . --workers 8
+python run.py --project 3385996759 --path . --workers 1  # Sequential processing
+```
+
+### 10. Combine preserve mode with specific file type
 
 ```bash
 python run.py --project 3385996759 --path . --file-type main --preserve-translations
 python run.py --project 3385996759 --path . --file-type locale --preserve-translations
 ```
 
-## 🎯 Khi nào sử dụng File Type?
+## 🎯 When to use File Type?
 
 ### `--file-type main`
-Sử dụng khi:
-- ✅ Có file gốc mới cần dịch lần đầu
-- ✅ Cập nhật nội dung trong main files và cần tạo lại locale files
-- ✅ Muốn tạo bộ dịch hoàn toàn mới cho project
-- ⚠️ **Lưu ý**: Sẽ xóa tất cả locale files cũ và tạo mới
+Use when:
+- ✅ Have new original files that need first-time translation
+- ✅ Updated content in main files and need to recreate locale files
+- ✅ Want to create completely new translation set for project
+- ⚠️ **Note**: Will delete all old locale files and create new ones
 
 ### `--file-type locale`
-Sử dụng khi:
-- ✅ Chỉ muốn cập nhật/sửa chữa locale files hiện có
-- ✅ Thêm ngôn ngữ mới vào locale files đã tồn tại
-- ✅ Không muốn động đến main files hoặc làm mới locale files
-- ⚠️ **Lưu ý**: Không tạo locale files mới, chỉ cập nhật có sẵn
+Use when:
+- ✅ Only want to update/fix existing locale files
+- ✅ Add new languages to existing locale files
+- ✅ Don't want to touch main files or refresh locale files
+- ⚠️ **Note**: Doesn't create new locale files, only updates existing ones
 
-### `--file-type both` (mặc định)
-Sử dụng khi:
-- ✅ Muốn xử lý toàn diện cả main và locale files
-- ✅ Không chắc chắn cần xử lý loại nào
-- ✅ Lần đầu chạy script trên project
+### `--file-type both` (default)
+Use when:
+- ✅ Want comprehensive processing of both main and locale files
+- ✅ Not sure which type needs processing
+- ✅ First time running script on project
 
 ## 🔄 Preserve Mode (`--preserve-translations`)
 
-### Khi nào sử dụng Preserve Mode?
+### When to use Preserve Mode?
 
-**✅ Sử dụng khi:**
-- Đã có bản dịch cũ và muốn giữ lại
-- Chỉ muốn dịch thêm các từ/câu mới được thêm vào
-- Tiết kiệm thời gian và API calls cho Google Translate
-- Tránh làm mất những bản dịch đã được chỉnh sửa thủ công
+**✅ Use when:**
+- Already have old translations and want to keep them
+- Only want to translate new words/sentences that were added
+- Save time and API calls for Google Translate
+- Avoid losing manually edited translations
 
-**❌ Không sử dụng khi:**
-- Muốn làm mới toàn bộ bản dịch
-- Bản dịch cũ có chất lượng kém cần thay thế
-- Lần đầu chạy dịch trên project mới
+**❌ Don't use when:**
+- Want to refresh all translations
+- Old translations have poor quality and need replacement
+- First time running translation on new project
 
-### Cách hoạt động:
+### How it works:
 
-1. **Main Files**: Kiểm tra các trường ngôn ngữ (`ch`, `tc`, `kr`)
-   - Nếu trường đã có nội dung → Giữ nguyên
-   - Nếu trường rỗng/thiếu → Dịch mới từ English
+1. **Main Files**: Check language fields (`ch`, `tc`, `kr`)
+   - If field already has content → Keep as is
+   - If field is empty/missing → Translate new from English
 
-2. **Locale Files**: So sánh với file locale hiện có
-   - Tìm bản dịch cũ dựa trên ID/key hoặc English text
-   - Nếu tìm thấy → Sử dụng bản dịch cũ
-   - Nếu không tìm thấy → Dịch mới từ English
+2. **Locale Files**: Compare with existing locale file
+   - Find old translations based on ID/key or English text
+   - If found → Use old translation
+   - If not found → Translate new from English
 
-### Ví dụ thực tế:
+### Real examples:
 
 ```bash
-# Lần đầu chạy - tạo toàn bộ bản dịch
+# First run - create all translations
 python run.py --project 3385996759 --path game_localText.json
 
-# Sau khi thêm nội dung mới vào file - chỉ dịch phần mới
+# After adding new content to file - only translate new parts
 python run.py --project 3385996759 --path game_localText.json --preserve-translations
 ```
 
-## 🌍 Ngôn ngữ Hỗ trợ
+## 🌍 Supported Languages
 
-Mặc định hệ thống hỗ trợ các ngôn ngữ sau:
+By default, the system supports the following languages:
 
-- `vi` - Tiếng Việt (Vietnamese)
-- `es` - Tiếng Tây Ban Nha (Spanish)
-- `fr` - Tiếng Pháp (French)
-- `de` - Tiếng Đức (German)
-- `ru` - Tiếng Nga (Russian)
-- `ja` - Tiếng Nhật (Japanese)
-- `la` - Tiếng Latin (Latin)
+- `vi` - Vietnamese
+- `es` - Spanish
+- `fr` - French
+- `de` - German
+- `ru` - Russian
+- `ja` - Japanese
+- `la` - Latin
 
-Bạn có thể sử dụng bất kỳ mã ngôn ngữ ISO nào được Google Translate hỗ trợ.
+You can use any ISO language code supported by Google Translate.
 
-## 📂 Cấu trúc File
+## 📂 File Structure
 
-### Main Files (Thư mục gốc ModConf)
-Chứa các ngôn ngữ gốc: `en`, `ch`, `tc`, `kr`
+### Main Files (Root ModConf directory)
+Contains original languages: `en`, `ch`, `tc`, `kr`
 
 ```json
 [
@@ -193,8 +203,8 @@ Chứa các ngôn ngữ gốc: `en`, `ch`, `tc`, `kr`
 ]
 ```
 
-### Locale Files (Thư mục con)
-Chứa bản dịch với key gộp `en|ch|tc|kr`
+### Locale Files (Subdirectories)
+Contains translations with combined key `en|ch|tc|kr`
 
 ```json
 [
@@ -207,78 +217,78 @@ Chứa bản dịch với key gộp `en|ch|tc|kr`
 
 ## 📝 Development & Maintenance
 
-### Thêm ngôn ngữ mới
+### Adding new languages
 
-Chỉnh sửa `DEFAULT_TARGET_LANGUAGES` trong `consts.py`:
+Edit `DEFAULT_TARGET_LANGUAGES` in `consts.py`:
 
 ```python
-DEFAULT_TARGET_LANGUAGES = ['vi', 'es', 'fr', 'de', 'ru', 'ja', 'la', 'pt']  # Thêm Portuguese
+DEFAULT_TARGET_LANGUAGES = ['vi', 'es', 'fr', 'de', 'ru', 'ja', 'la', 'pt']  # Add Portuguese
 ```
 
-### Thêm text cần bỏ qua dịch
+### Adding text to skip translation
 
-Hệ thống có thể bỏ qua dịch các text cụ thể. Để thêm text mới cần skip:
+The system can skip translating specific texts. To add new text to skip:
 
 ```python
-# Trong consts.py
+# In consts.py
 SKIP_TRANSLATION_TEXTS = [
     "DEFAULT_DRAMA_OPT",
-    "YOUR_TEXT_HERE"  # Thêm text mới cần bỏ qua
+    "YOUR_TEXT_HERE"  # Add new text to skip here
 ]
 ```
 
-### Cấu hình bảo vệ Format Strings
+### Format String Protection Configuration
 
-Hệ thống tự động bảo vệ các format strings khỏi bị biến đổi thành ký tự zenkaku trong quá trình dịch. Để thêm format patterns mới:
+The system automatically protects format strings from being converted to zenkaku characters during translation. To add new format patterns:
 
 ```python
-# Trong consts.py - FORMAT_PROTECTION_CONFIG
+# In consts.py - FORMAT_PROTECTION_CONFIG
 'patterns': [
-    r'{\d+(?::[^}]+)?}',  # {0}, {1}, {0:#,##0} - Đã có
-    r'%[sdf]',            # %s, %d, %f - Đã có  
-    r'%\d+[sdf]',         # %1s, %2d, %3f - Đã có
-    r'\$\{\w+\}',         # ${variable} - Đã có
-    r'YOUR_PATTERN_HERE', # Thêm pattern mới ở đây
+    r'{\d+(?::[^}]+)?}',  # {0}, {1}, {0:#,##0} - Already exists
+    r'%[sdf]',            # %s, %d, %f - Already exists  
+    r'%\d+[sdf]',         # %1s, %2d, %3f - Already exists
+    r'\$\{\w+\}',         # ${variable} - Already exists
+    r'YOUR_PATTERN_HERE', # Add new pattern here
 ]
 ```
 
-**Format strings được bảo vệ mặc định:**
+**Format strings protected by default:**
 - `{0}`, `{1}`, `{0:#,##0}` - C# format strings  
 - `%s`, `%d`, `%f` - Printf style formats
 - `${variable}` - Template strings
 
-**Ví dụ các vấn đề đã được sửa:**
-- ❌ `{0:#,##0}` → `｛０：＃，＃＃０｝` (zenkaku bị lỗi)
-- ✅ `{0:#,##0}` → `{0:#,##0}` (được bảo vệ)
+**Examples of issues that have been fixed:**
+- ❌ `{0:#,##0}` → `｛０：＃，＃＃０｝` (zenkaku error)
+- ✅ `{0:#,##0}` → `{0:#,##0}` (protected)
 
-### Bảo vệ Thuật ngữ (Terminology Protection)
+### Terminology Protection
 
-Hệ thống tự động bảo vệ các thuật ngữ tu tiên/võ hiệp khỏi bị dịch sai:
+The system automatically protects cultivation/martial arts terminology from being mistranslated:
 
 ```python
-# Trong consts.py - TERMINOLOGY_CONFIG
+# In consts.py - TERMINOLOGY_CONFIG
 'terms': [
     'Qi Refining', 'Foundation Establishment', 'Core Formation',
     'Dantian', 'Spiritual Qi', 'Elder', 'Disciple'
-    # ... và nhiều thuật ngữ khác
+    # ... and many other terms
 ]
 ```
 
-**Cách hoạt động:**
-1. **Bảo vệ**: `"Elder taught Qi Refining"` → `"Elder taught {\uF8B3}0{/\uF8B3}"`
-2. **Dịch**: `"Trưởng lão dạy {\uF8B3}0{/\uF8B3}"`
-3. **Khôi phục**: `"Trưởng lão dạy Qi Refining"`
+**How it works:**
+1. **Protect**: `"Elder taught Qi Refining"` → `"Elder taught {\uF8B3}0{/\uF8B3}"`
+2. **Translate**: `"Trưởng lão dạy {\uF8B3}0{/\uF8B3}"`
+3. **Restore**: `"Trưởng lão dạy Qi Refining"`
 
-**Lợi ích:**
-- ✅ Thuật ngữ không bị dịch sai hoặc thay đổi
-- ✅ Tính nhất quán trong toàn bộ dự án  
-- ✅ Sử dụng indexed markers `{\uF8B3}0{/\uF8B3}` để tránh conflicts
+**Benefits:**
+- ✅ Terms are not mistranslated or changed
+- ✅ Consistency throughout the entire project  
+- ✅ Uses indexed markers `{\uF8B3}0{/\uF8B3}` to avoid conflicts
 
 ---
 
-**Version**: 3.4 | **Updated**: 2025/11
+**Version**: 3.5 | **Updated**: 2025/11
 **Dependencies**: `deep-translator>=1.9.0`
 
 ## 📄 License
 
-Project này thuộc về GuiGuBaHuang ModLib community.
+This project belongs to the GuiGuBaHuang ModLib community.

@@ -1,9 +1,9 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 """
-Script chính để xử lý và dịch các file *localText.json
+Main script to process and translate *localText.json files
 
-Cách sử dụng:
+Usage:
     python run.py --project 3385996759 --path .
     python run.py --project 3385996759 --path game_localText.json --dry-run
     python run.py --project 3385996759 --path . --create-locales vi,es,fr
@@ -24,27 +24,27 @@ from local_text_processor import LocalTextProcessor
 from progressbar_utils import print_header, print_error, print_warning, print_info
 
 def parse_target_languages(languages_str: str) -> List[str]:
-    """Parse chuỗi ngôn ngữ thành list"""
+    """Parse language string to list"""
     if not languages_str:
         return DEFAULT_TARGET_LANGUAGES
     
     if languages_str.lower() == 'all':
         return DEFAULT_TARGET_LANGUAGES
     
-    # Parse danh sách ngôn ngữ
+    # Parse language list
     languages = [lang.strip() for lang in languages_str.split(',') if lang.strip()]
     return languages if languages else DEFAULT_TARGET_LANGUAGES
 
 def main():
-    """Hàm main"""
-    # Clear console trước khi bắt đầu
+    """Main function"""
+    # Clear console before starting
     os.system('cls' if os.name == 'nt' else 'clear')
     
     parser = argparse.ArgumentParser(
-        description='Script xử lý và dịch file localText.json',
+        description='Script to process and translate localText.json files',
         formatter_class=argparse.RawDescriptionHelpFormatter,
         epilog='''
-Ví dụ sử dụng:
+Usage examples:
   python run.py --project 3385996759 --path .
   python run.py --project 3385996759 --path game_localText.json
   python run.py --project 3385996759 --path . --dry-run
@@ -60,45 +60,45 @@ Ví dụ sử dụng:
     parser.add_argument(
         '--project',
         required=True,
-        help='Tên thư mục project (vd: 3385996759)'
+        help='Project directory name (e.g.: 3385996759)'
     )
     
     parser.add_argument(
         '--path', 
         required=True,
-        help='Đường dẫn tương đối trong ModConf (folder hoặc file). Vd: "." cho toàn bộ, "game_localText.json" cho file cụ thể'
+        help='Relative path in ModConf (folder or file). E.g.: "." for entire directory, "game_localText.json" for specific file'
     )
     
     parser.add_argument(
         '--dry-run', 
         action='store_true', 
-        help='Chỉ hiển thị danh sách file sẽ được xử lý, không thực hiện dịch'
+        help='Only display list of files to be processed, do not perform translation'
     )
     
     parser.add_argument(
         '--create-locales',
         type=str,
-        help='Danh sách ngôn ngữ cần tạo file locale, cách nhau bởi dấu phẩy. Ví dụ: vi,es,fr hoặc "all" cho tất cả'
+        help='List of languages to create locale files for, separated by commas. Example: vi,es,fr or "all" for all languages'
     )
     
     parser.add_argument(
         '--file-type',
         choices=['main', 'locale', 'both'],
         default='both',
-        help='Loại file cần xử lý: main (dịch main file với 4 key en,ch,tc,kr), locale (xóa locale cũ và tạo mới với combined key), both (cả hai - mặc định)'
+        help='Type of files to process: main (translate main files with 4 keys en,ch,tc,kr), locale (delete old locales and create new with combined key), both (both types - default)'
     )
     
     parser.add_argument(
         '--preserve-translations',
         action='store_true',
-        help='Giữ lại các bản dịch đã có, chỉ dịch thêm các từ mới chưa được dịch'
+        help='Keep existing translations, only translate new terms that haven\'t been translated yet'
     )
     
     parser.add_argument(
         '--workers',
         type=int,
         default=4,
-        help='Số luồng song song để xử lý file (mặc định: 4). Giảm nếu gặp rate-limit từ translation service.'
+        help='Number of parallel threads for file processing (default: 4). Reduce if encountering rate-limits from translation service.'
     )
     
     args = parser.parse_args()
@@ -108,18 +108,18 @@ Ví dụ sử dụng:
         f"Project: {args.project} | Path: {args.path} | Type: {args.file_type} | Workers: {args.workers} | Preserve: {'Yes' if args.preserve_translations else 'No'}"
     )
     
-    # Xây dựng đường dẫn project
+    # Build project path
     project_path = os.path.join("..", args.project)
     
     if not os.path.exists(project_path):
-        print_error("Không tìm thấy project", project_path)
+        print_error("Project not found", project_path)
         return
     
     # Parse target languages
     target_languages = parse_target_languages(args.create_locales)
-    print_info("Ngôn ngữ locale", ', '.join(target_languages))
+    print_info("Locale languages", ', '.join(target_languages))
     
-    # Tạo config
+    # Create config
     translation_config = TranslationConfig(
         target_languages=target_languages,
         max_retries=TRANSLATION_CONFIG['max_retries'],
@@ -132,43 +132,43 @@ Ví dụ sử dụng:
     processor = LocalTextProcessor(translation_config)
     
     if args.dry_run:
-        # Chỉ hiển thị danh sách file
+        # Only display file list
         modconf_path = os.path.join(project_path, DIR_PATTERNS['modconf_path'])
         files = FileUtils.find_localtext_files(modconf_path, args.path)
         
         if files:
-            # Phân loại file để hiển thị theo file_type
+            # Classify files for display according to file_type
             main_files = [f for f in files if not FileUtils.is_locale_file(f)]
             locale_files = [f for f in files if FileUtils.is_locale_file(f)]
             
             if args.file_type == "main":
                 files_to_show = main_files
-                description = f"hiển thị {len(files_to_show)} file loại '{args.file_type}'"
+                description = f"showing {len(files_to_show)} files of type '{args.file_type}'"
             elif args.file_type == "locale":
-                # Với locale, sẽ tạo lại từ main files
+                # For locale, will recreate from main files
                 files_to_show = main_files
-                description = f"sẽ tạo lại locale từ {len(files_to_show)} main file"
+                description = f"will recreate locale from {len(files_to_show)} main files"
             else:  # both
                 files_to_show = files
-                description = f"hiển thị {len(files_to_show)} file loại '{args.file_type}'"
+                description = f"showing {len(files_to_show)} files of type '{args.file_type}'"
             
-            print_info(f"Tìm thấy {len(files)} file", description)
+            print_info(f"Found {len(files)} files", description)
             for i, file_path in enumerate(files_to_show, 1):
                 rel_path = os.path.relpath(file_path, os.getcwd())
                 file_info = FileUtils.get_file_info(file_path)
                 if args.file_type == "locale":
-                    # Hiển thị main file nhưng ghi chú sẽ tạo locale
-                    print(f"  {i}. {rel_path} [main → sẽ tạo locale]")
+                    # Show main file but note will create locale
+                    print(f"  {i}. {rel_path} [main → will create locale]")
                 else:
                     print(f"  {i}. {rel_path} [{file_info.file_type.value}]")
         else:
-            print_warning("Không tìm thấy file nào!")
+            print_warning("No files found!")
     else:
-        # Xử lý thực tế
+        # Actual processing
         try:
             processor.process_files(project_path, args.path, args.file_type, max_workers=args.workers)
         except Exception as e:
-            print_error("Lỗi trong quá trình xử lý", str(e))
+            print_error("Error during processing", str(e))
             return
 
 if __name__ == "__main__":
