@@ -14,7 +14,7 @@ from translation_service import TranslationService
 from translate_utils import TranslateUtils
 from json_utils import JsonUtils
 from progressbar_utils import (
-    ProgressContext, create_file_progress_config, 
+    ProgressBar, ProgressContext, create_file_progress_config, 
     print_info, print_section, print_warning, print_error, print_stats,
     print_result
 )
@@ -96,8 +96,7 @@ class LocalTextProcessor:
                         filename = os.path.basename(file_path)
                         progress.update(1, f"Xử lý {filename}")
                         
-                        # Tắt verbose output khi đang có progress bar
-                        if self.process_main_file(file_path):
+                        if self.process_main_file(progress, file_path):
                             self.stats.processed_count += 1
             
             # Bước 2: Xử lý locale files
@@ -124,7 +123,7 @@ class LocalTextProcessor:
                                 self.cleanup_locale_file(locale_file_path)
                             
                             # Tạo lại locale files từ main file
-                            if self.process_locale_file(file_path, locale_file_path):
+                            if self.process_locale_file(progress, file_path, locale_file_path):
                                 self.stats.processed_count += 1
         
         except KeyboardInterrupt:
@@ -143,7 +142,7 @@ class LocalTextProcessor:
         }
         print_stats(result_stats)
     
-    def process_main_file(self, file_path: str) -> bool:
+    def process_main_file(self, progress: ProgressBar, file_path: str) -> bool:
         """Xử lý main file và dịch các ngôn ngữ trong đó"""
         
         try:
@@ -163,10 +162,15 @@ class LocalTextProcessor:
                 print_result(UI_ICONS['warning'], f"File {filename} không có dữ liệu tiếng Anh để dịch")
                 return True  # Không phải lỗi, chỉ là file không cần dịch
             
+            def progress_translator(text: str, target_lang: str, item_id: str = 'N/A') -> str:
+                progress.rerender(f"Xử lý {filename}\nĐang dịch sang '{target_lang}'\nId: '{item_id}'")
+                result = self.translation_service.translate_text(text, target_lang)
+                return result
+            
             # Dịch text trong main file (cập nhật các trường ngôn ngữ: ch, tc, kr)
             translated_data = TranslateUtils.translate_main_file_languages(
                 main_data,
-                self.translation_service.translate_text,
+                progress_translator,
                 preserve_existing=self.config.preserve_existing_translations
             )
             
@@ -187,7 +191,7 @@ class LocalTextProcessor:
             print_result(UI_ICONS['error'], f"Lỗi xử lý file {filename}", str(e))
             return False
 
-    def process_locale_file(self, main_file_path: str, locale_file_path: str) -> bool:
+    def process_locale_file(self, progress: ProgressBar, main_file_path: str, locale_file_path: str) -> bool:
         """Xử lý locale file dựa trên main file tương ứng"""
         from file_utils import FileUtils
         
@@ -206,6 +210,11 @@ class LocalTextProcessor:
                 print_result(UI_ICONS['error'], f"Không đọc được main file", main_file_path)
                 return False
             
+            def progress_translator(text: str, target_lang: str, item_id: str = 'N/A') -> str:
+                progress.rerender(f"Xử lý {filename}\nĐang dịch sang '{target_lang}'\nId: '{item_id}'")
+                result = self.translation_service.translate_text(text, target_lang)
+                return result
+            
             # Đọc locale data hiện có nếu preserve mode được bật
             existing_locale_data = None
             if self.config.preserve_existing_translations and os.path.exists(locale_file_path):
@@ -215,7 +224,7 @@ class LocalTextProcessor:
             locale_data = TranslateUtils.create_locale_data_from_main(
                 main_data, 
                 target_lang, 
-                self.translation_service.translate_text,
+                progress_translator,
                 existing_locale_data=existing_locale_data,
                 preserve_existing=self.config.preserve_existing_translations
             )

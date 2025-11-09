@@ -20,28 +20,22 @@ class ProgressBar:
         self.start_time = time.time()
         self.last_update_time = 0
         self.min_update_interval = PROGRESS_BAR_CONFIG['min_update_interval']
-    
-    def _flush_line(self, content: str = "") -> None:
-        """Clear current line and write new content"""
-        # Chỉ clear khi có content, nếu không chỉ dùng carriage return
-        if content:
-            sys.stdout.write(f"\r{content}")
-        else:
-            # Clear line hoàn toàn
-            clear_width = PROGRESS_BAR_CONFIG['clear_line_width']
-            sys.stdout.write(f"\r{' ' * clear_width}\r")
-        sys.stdout.flush()
-    
-    def _clear_line(self) -> None:
-        """Clear current line completely"""
-        clear_width = PROGRESS_BAR_CONFIG['clear_line_width']
-        sys.stdout.write(f"\r{' ' * clear_width}\r")
-        sys.stdout.flush()
+        self.last_line_count = 0  # Track number of lines from last render
         
     def update(self, increment: int = 1, description: str = "") -> None:
         """Update progress bar"""
         self.current = min(self.current + increment, self.total)
         
+        # Throttle updates to avoid flickering
+        current_time = time.time()
+        if current_time - self.last_update_time < self.min_update_interval and self.current < self.total:
+            return
+        
+        self.last_update_time = current_time
+        self._render(description)
+        
+    def rerender(self, description: str = "") -> None:
+        """Rerender progress bar"""
         # Throttle updates to avoid flickering
         current_time = time.time()
         if current_time - self.last_update_time < self.min_update_interval and self.current < self.total:
@@ -60,9 +54,8 @@ class ProgressBar:
         if description is None:
             description = UI_MESSAGES['completed']
         self.current = self.total
-        # Clear line và render final state
-        self._clear_line()
-        self._render(description)
+        
+        print(f"\n{description}")
         print()  # New line after completion
     
     def _render(self, description: str = "") -> None:
@@ -105,17 +98,30 @@ class ProgressBar:
         
         # Description
         components.append(description)
-        
+
         # Suffix
         if self.config.suffix:
             components.append(self.config.suffix)
-        
-        # Print với carriage return, không cần clear line mỗi lần
+
+        # Progress bar line
         line = " ".join(components)
         
-        # Chỉ dùng carriage return để overwrite
+        # Clear previous render
+        self._clear_previous_render()
+        
+        # Handle multiline description
+        self.last_line_count = description.count('\n') + 1 if description else 1
+        
         sys.stdout.write(f"\r{line}")
         sys.stdout.flush()
+    
+    def _clear_previous_render(self) -> None:
+        """Clear previous render based on line count"""
+        # Move cursor up and clear each line
+        for i in range(self.last_line_count):
+            sys.stdout.write('\033[2K')  # Clear entire line
+            if i != self.last_line_count - 1:
+                sys.stdout.write('\033[1A')  # Move cursor up one line
     
     def _format_time(self, seconds: float) -> str:
         """Format time in readable format"""
@@ -171,7 +177,7 @@ def create_file_progress_config(prefix: str = None) -> ProgressConfig:
 
 def print_header(title: str, subtitle: str = "") -> None:
     """Print formatted header"""
-    print(f"\n🚀 {title}")
+    print(f"\n{UI_ICONS['header']} {title}")
     if subtitle:
         print(f"   {subtitle}")
 
@@ -200,7 +206,7 @@ def print_result(icon: str, message: str, details: str = "") -> None:
 
 def print_stats(stats_dict: Dict[str, Any]) -> None:
     """Print statistics"""
-    print("\n📊 KẾT QUẢ")
+    print(f"\n{UI_ICONS['result']} BÁO CÁO")
     for key, value in stats_dict.items():
         print(f"{key}: {value}")
 
