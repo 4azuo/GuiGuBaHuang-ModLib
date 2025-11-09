@@ -7,7 +7,7 @@
 	{
 		"id": "999990001",
 		"key": "libtxt999990001",
-		"en|ch|tc|kr": "La interfaz de usuario de ModLib está optimizada para una relación de pantalla de 16:9."
+		"en|ch|tc|kr": "El UI de ModLib está optimizado para una relación de pantalla de 16:9."
 	},
 	{
 		"id": "999990002",
@@ -17,7 +17,7 @@
 	{
 		"id": "999990003",
 		"key": "libtxt999990003",
-		"en|ch|tc|kr": "Tienes que restablecer el juego!"
+		"en|ch|tc|kr": "¡Tienes que reiniciar el juego!"
 	},
 	{
 		"id": "999990004",
