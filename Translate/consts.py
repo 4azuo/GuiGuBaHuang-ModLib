@@ -51,7 +51,7 @@ TERMINOLOGY_CONFIG = {
     # LƯU Ý: Matching không phân biệt hoa thường (case-insensitive)
     'terms': [
         # Basic Game Stats/Chỉ số cơ bản
-        'HP', 'MP', 'SP', 'ATK', 'DEF', 'Dmg', 'DP', 'EXP', 'CD',
+        'HP', 'MP', 'SP', 'DP', 'CD',
 
         # Game mechanics
         'DPS', 'DoT', 'AoE', 'PvP', 'PvE',
