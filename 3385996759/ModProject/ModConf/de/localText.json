@@ -12,12 +12,12 @@
 	{
 		"id": "999990002",
 		"key": "libtxt999990002",
-		"en|ch|tc|kr": "Es wird ein Benchmark ausgeführt, um den RAM für das Spiel zu initialisieren."
+		"en|ch|tc|kr": "Es wird ein Benchmark ausgeführt, um den Arbeitsspeicher für das Spiel zu initialisieren."
 	},
 	{
 		"id": "999990003",
 		"key": "libtxt999990003",
-		"en|ch|tc|kr": "Sie müssen das Spiel ! zurücksetzen"
+		"en|ch|tc|kr": "Du musst das Spiel zurücksetzen!"
 	},
 	{
 		"id": "999990004",
