@@ -48,29 +48,19 @@ TERMINOLOGY_CONFIG = {
     'marker_pattern': r'{\uF8B3}\d+{/\uF8B3}',  # Pattern cho indexed markers
     
     # Danh sách thuật ngữ cần bảo vệ (cultivation/martial arts terms)
+    # LƯU Ý: Matching không phân biệt hoa thường (case-insensitive)
     'terms': [
-        # Realm/境界
-        'Qi Refining', 'Foundation Establishment', 'Core Formation', 'Nascent Soul',
-        'Soul Formation', 'Void Refinement', 'Body Integration', 'Mahayana', 'Tribulation',
-        'True Immortal', 'Golden Immortal', 'Taiyi Golden Immortal', 'Daluo Golden Immortal',
-        
-        # Cultivation terms/修炼术语
-        'Dantian', 'Meridian', 'Spiritual Root', 'Spiritual Qi', 'Dao', 'Tribulation Lightning',
-        'Heavenly Tribulation', 'Inner Demon', 'Dao Heart', 'Divine Sense', 'Soul',
-        
-        # Techniques/功法
-        'Cultivation Method', 'Martial Technique', 'Sword Technique', 'Formation',
-        'Alchemy', 'Artifact Refining', 'Talisman', 'Pill', 'Elixir',
-        
-        # Items/物品
-        'Spirit Stone', 'Magic Treasure', 'Spiritual Herb', 'Beast Core',
-        'Immortal Artifact', 'Divine Weapon', 'Profound Weapon',
-        
-        # Sects/宗门
-        'Sect', 'Elder', 'Disciple', 'Grand Elder', 'Patriarch', 'Ancestor',
-        
-        # Combat/战斗
-        'Sword Intent', 'Killing Intent', 'Bloodline', 'Physique', 'Constitution'
+        # Basic Game Stats/Chỉ số cơ bản
+        'HP', 'MP', 'SP', 'ATK', 'DEF', 'Dmg', 'DP', 'EXP', 'CD',
+
+        # Game mechanics
+        'DPS', 'DoT', 'AoE', 'PvP', 'PvE',
+
+        # Common abbreviations that should not be translated
+        'NPC', 'AI', 'UI', 'GUI',
+
+        # Cultivation/Martial Arts terms - thuật ngữ tu luyện
+        'Qi'
     ]
 }
 
