@@ -27,12 +27,14 @@ class TerminologyProcessor:
             pattern = re.compile(r'\b' + escaped_term + r'\b', re.IGNORECASE)
             self.term_patterns.append((term, pattern))
     
-    def protect_terms(self, text: str) -> Tuple[str, Dict[str, str]]:
+    def protect_terms(self, text: str, preserve_case: bool = True) -> Tuple[str, Dict[str, str]]:
         """
         Bảo vệ thuật ngữ bằng cách thay thế bằng markers với index
         
         Args:
             text: Text cần xử lý
+            preserve_case: Nếu True, giữ nguyên case của text gốc khi khôi phục
+                          Nếu False, sử dụng case từ terminology config
             
         Returns:
             Tuple[str, Dict[str, str]]: (protected_text, replacement_map)
@@ -58,7 +60,9 @@ class TerminologyProcessor:
         for start, end, match_text, original_term, pattern in all_matches:
             # Tạo indexed marker
             indexed_marker = f"{self.prefix}{term_index}{self.suffix}"
-            replacement_map[indexed_marker] = match_text
+            # Quyết định sử dụng case gốc hay case từ config
+            term_to_restore = match_text if preserve_case else original_term
+            replacement_map[indexed_marker] = term_to_restore
             
             # Thay thế trong text bằng cách sử dụng vị trí chính xác
             protected_text = protected_text[:start] + indexed_marker + protected_text[end:]
@@ -215,65 +219,3 @@ class TerminologyProcessor:
             'protected_terms': protected_terms,
             'has_protection': len(protected_terms) > 0
         }
-
-
-# Singleton instance cho việc sử dụng global
-terminology_processor = TerminologyProcessor()
-
-
-def protect_terminology(text: str) -> Tuple[str, Dict[str, str]]:
-    """
-    Hàm tiện ích để bảo vệ thuật ngữ trong text
-    
-    Args:
-        text: Text cần bảo vệ
-        
-    Returns:
-        Tuple[str, Dict[str, str]]: (protected_text, replacement_map)
-    """
-    return terminology_processor.protect_terms(text)
-
-
-def restore_terminology(text: str, replacement_map: Dict[str, str] = None) -> str:
-    """
-    Hàm tiện ích để khôi phục thuật ngữ từ text đã dịch
-    
-    Args:
-        text: Text đã dịch
-        replacement_map: Map để khôi phục chính xác
-        
-    Returns:
-        str: Text với thuật ngữ được khôi phục
-    """
-    return terminology_processor.restore_terms(text, replacement_map)
-
-
-def is_text_protected(text: str) -> bool:
-    """
-    Kiểm tra xem text có chứa thuật ngữ được bảo vệ không
-    
-    Args:
-        text: Text cần kiểm tra
-        
-    Returns:
-        bool: True nếu có thuật ngữ được bảo vệ
-    """
-    return terminology_processor.is_protected_text(text)
-
-
-if __name__ == "__main__":
-    # Test functionality
-    processor = TerminologyProcessor()
-    
-    test_text = "The cultivator reached Foundation Establishment realm after refining his Dantian with Spiritual Qi."
-    print(f"Original: {test_text}")
-    
-    protected, replacement_map = processor.protect_terms(test_text)
-    print(f"Protected: {protected}")
-    print(f"Replacement map: {replacement_map}")
-    
-    restored = processor.restore_terms(protected, replacement_map)
-    print(f"Restored: {restored}")
-    
-    stats = processor.get_statistics(protected)
-    print(f"Statistics: {stats}")
