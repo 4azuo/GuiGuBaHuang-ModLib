@@ -12,12 +12,12 @@
 	{
 		"id": "999990002",
 		"key": "libtxt999990002",
-		"en|ch|tc|kr": "Il exécutera un benchmark pour initialiser la RAM pour le jeu."
+		"en|ch|tc|kr": "Il exécutera un benchmark pour initialiser la RAM du jeu."
 	},
 	{
 		"id": "999990003",
 		"key": "libtxt999990003",
-		"en|ch|tc|kr": "Vous devez réinitialiser le jeu!"
+		"en|ch|tc|kr": "Vous devez réinitialiser le jeu !"
 	},
 	{
 		"id": "999990004",
@@ -42,6 +42,6 @@
 	{
 		"id": "999990008",
 		"key": "libtxt999990008",
-		"en|ch|tc|kr": "Page {0}"
+		"en|ch|tc|kr": "Page {0}"
 	}
 ]
