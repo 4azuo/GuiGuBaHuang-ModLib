@@ -5,7 +5,9 @@ Local text processor for handling localText files
 """
 
 import os
+import sys
 import time
+import signal
 import threading
 import concurrent.futures
 from typing import List
@@ -28,6 +30,27 @@ class LocalTextProcessor:
         self.translation_service = TranslationService(translation_config)
         self.config = translation_config
         self.stats = ProcessingStats()
+        self.executor = None
+        self._setup_signal_handler()
+    
+    def _setup_signal_handler(self):
+        """Thiết lập signal handler để bắt Ctrl+C"""
+        def signal_handler(signum, frame):
+            print()
+            print_error("Nhận được tín hiệu dừng (Ctrl+C)...")
+            
+            # Shutdown executor nếu đang chạy
+            if self.executor:
+                print_info("Đang dừng các tác vụ đang chạy...")
+                self.executor.shutdown(wait=False)
+                self.executor = None
+                
+            print_error("Quá trình xử lý đã bị dừng")
+            # Sử dụng os._exit() để exit main thread và toàn bộ process
+            os._exit(1)
+        
+        # Đăng ký signal handler cho SIGINT (Ctrl+C)
+        signal.signal(signal.SIGINT, signal_handler)
     
     def process_files(self, project_path: str, target_path: str = ".", file_type: str = "both", max_workers: int = 4) -> None:
         """
@@ -85,115 +108,105 @@ class LocalTextProcessor:
         
         print_stats(stats_info)
         
-        try:
-            # Prepare thread-safety primitives for concurrent runs
-            stats_lock = threading.Lock()
+        # Prepare thread-safety primitives for concurrent runs
+        stats_lock = threading.Lock()
 
-            # Bước 1: Xử lý main files (song song)
-            if file_type in ["main", "both"] and main_files:
-                print_section(f"Xử lý {len(main_files)} main file (song song với {max_workers} worker)")
-                
-                def process_main_file_worker(file_path: str, progress: ProgressBar) -> bool:
-                    """Worker function để xử lý một main file"""
-                    filename = os.path.basename(file_path)
-                    try:
-                        result = self.process_main_file(progress, file_path)
-                        with stats_lock:
-                            if result:
-                                self.stats.processed_count += 1
-                        return result
-                    except KeyboardInterrupt:
-                        raise
-                    except Exception:
-                        # process_main_file đã log lỗi, tiếp tục
-                        return False
-                
-                with ProgressContext(
-                    len(main_files), 
-                    "Đang xử lý main files...", 
-                    create_file_progress_config(UI_ICONS['file'])
-                ) as progress:
-                    if max_workers == 1:
-                        # Sequential processing
-                        for file_path in main_files:
-                            filename = os.path.basename(file_path)
-                            progress.update(1, f"Xử lý {filename}")
-                            process_main_file_worker(file_path, progress)
-                    else:
-                        # Parallel processing with ThreadPoolExecutor
-                        with concurrent.futures.ThreadPoolExecutor(max_workers=max_workers) as executor:
-                            futures = {executor.submit(process_main_file_worker, fp, progress): fp for fp in main_files}
-                            for future in concurrent.futures.as_completed(futures):
-                                file_path = futures[future]
-                                try:
-                                    _ = future.result()
-                                except KeyboardInterrupt:
-                                    raise
-                                except Exception:
-                                    # Already handled in worker
-                                    pass
-                                filename = os.path.basename(file_path)
-                                progress.update(1, f"Đã xong {filename}")
+        # Bước 1: Xử lý main files (song song)
+        if file_type in ["main", "both"] and main_files:
+            print_section(f"Xử lý {len(main_files)} main file (song song với {max_workers} worker)")
             
-            # Bước 2: Xử lý locale files (song song)
-            if file_type in ["locale", "both"] and main_files:
-                print_section(f"Tạo lại locale files từ {len(main_files)} main file (song song với {max_workers} worker)")
-                
-                def process_locale_file_worker(file_path: str, progress: ProgressBar) -> bool:
-                    """Worker function để xử lý locale files từ một main file"""
-                    filename = os.path.basename(file_path)
+            def process_main_file_worker(file_path: str, progress: ProgressBar) -> bool:
+                """Worker function để xử lý một main file"""
+                try:
+                    result = self.process_main_file(progress, file_path)
+                    with stats_lock:
+                        if result:
+                            self.stats.processed_count += 1
+                    return result
+                except Exception:
+                    # process_main_file đã log lỗi, tiếp tục
+                    return False
+            
+            with ProgressContext(
+                len(main_files), 
+                "Đang xử lý main files...", 
+                create_file_progress_config(UI_ICONS['file'])
+            ) as progress:
+                if max_workers == 1:
+                    # Sequential processing
+                    for file_path in main_files:
+                        filename = os.path.basename(file_path)
+                        progress.update(1, f"Xử lý {filename}")
+                        process_main_file_worker(file_path, progress)
+                else:
+                    # Parallel processing with ThreadPoolExecutor
+                    self.executor = concurrent.futures.ThreadPoolExecutor(max_workers=max_workers)
                     try:
-                        main_filename = os.path.basename(file_path)
-                        success_any = False
-                        
-                        for lang in self.config.target_languages:
-                            locale_dir = os.path.join(modconf_path, lang)
-                            locale_file_path = os.path.join(locale_dir, main_filename)
-
-                            # Xóa locale files cũ cho file này (trừ khi preserve mode được bật)
-                            if not self.config.preserve_existing_translations:
-                                self.cleanup_locale_file(locale_file_path)
-                            
-                            # Tạo lại locale files từ main file
-                            if self.process_locale_file(progress, file_path, locale_file_path):
-                                with stats_lock:
-                                    self.stats.processed_count += 1
-                                success_any = True
-                        return success_any
-                    except KeyboardInterrupt:
-                        raise
-                    except Exception:
-                        return False
-                
-                with ProgressContext(
-                    len(main_files), 
-                    "Đang tạo lại locale files...", 
-                    create_file_progress_config(UI_ICONS['file'])
-                ) as progress:
-                    if max_workers == 1:
-                        # Sequential processing
-                        for file_path in main_files:
-                            filename = os.path.basename(file_path)
-                            progress.update(1, f"Xử lý {filename}")
-                            process_locale_file_worker(file_path, progress)
-                    else:
-                        # Parallel processing with ThreadPoolExecutor
-                        with concurrent.futures.ThreadPoolExecutor(max_workers=max_workers) as executor:
-                            futures = {executor.submit(process_locale_file_worker, fp, progress): fp for fp in main_files}
-                            for future in concurrent.futures.as_completed(futures):
-                                file_path = futures[future]
-                                try:
-                                    _ = future.result()
-                                except KeyboardInterrupt:
-                                    raise
-                                except Exception:
-                                    # Already handled in worker
-                                    pass
-                                filename = os.path.basename(file_path)
-                                progress.update(1, f"Đã xong {filename}")
+                        futures = {self.executor.submit(process_main_file_worker, fp, progress): fp for fp in main_files}
+                        for future in concurrent.futures.as_completed(futures):
+                            future.result()
+                            filename = os.path.basename(futures[future])
+                            progress.update(1, f"Đã xong {filename}")
+                    finally:
+                        if self.executor:
+                            self.executor.shutdown(wait=False)
+                            self.executor = None
         
-        except KeyboardInterrupt:
-            raise
+        # Bước 2: Xử lý locale files (song song)
+        if file_type in ["locale", "both"] and main_files and not self.interrupted:
+            print_section(f"Tạo lại locale files từ {len(main_files)} main file (song song với {max_workers} worker)")
+            
+            def process_locale_file_worker(file_path: str, progress: ProgressBar) -> bool:
+                """Worker function để xử lý locale files từ một main file"""
+                if self.interrupted:
+                    return False
+                
+                try:
+                    main_filename = os.path.basename(file_path)
+                    success_any = 0
+                    
+                    for lang in self.config.target_languages:
+                        locale_dir = os.path.join(modconf_path, lang)
+                        locale_file_path = os.path.join(locale_dir, main_filename)
+
+                        # Xóa locale files cũ cho file này (trừ khi preserve mode được bật)
+                        if not self.config.preserve_existing_translations:
+                            self.cleanup_locale_file(locale_file_path)
+                        
+                        # Tạo lại locale files từ main file
+                        if self.process_locale_file(progress, file_path, locale_file_path):
+                            with stats_lock:
+                                self.stats.processed_count += 1
+                            success_any += 1
+
+                    return success_any == len(self.config.target_languages)
+                except Exception:
+                    return False
+            
+            with ProgressContext(
+                len(main_files), 
+                "Đang tạo lại locale files...", 
+                create_file_progress_config(UI_ICONS['file'])
+            ) as progress:
+                if max_workers == 1:
+                    # Sequential processing
+                    for file_path in main_files:
+                        filename = os.path.basename(file_path)
+                        progress.update(1, f"Xử lý {filename}")
+                        process_locale_file_worker(file_path, progress)
+                else:
+                    # Parallel processing with ThreadPoolExecutor
+                    self.executor = concurrent.futures.ThreadPoolExecutor(max_workers=max_workers)
+                    try:
+                        futures = {self.executor.submit(process_locale_file_worker, fp, progress): fp for fp in main_files}
+                        for future in concurrent.futures.as_completed(futures):
+                            future.result()
+                            filename = os.path.basename(futures[future])
+                            progress.update(1, f"Đã xong {filename}")
+                    finally:
+                        if self.executor:
+                            self.executor.shutdown(wait=False)
+                            self.executor = None
         
         # Thống kê kết quả
         end_time = time.time()
@@ -250,9 +263,6 @@ class LocalTextProcessor:
 
             return True
             
-        except KeyboardInterrupt:
-            raise
-            
         except Exception as e:
             print_result(UI_ICONS['error'], f"Lỗi xử lý file {filename}", str(e))
             return False
@@ -307,9 +317,6 @@ class LocalTextProcessor:
                 return False
 
             return True
-                
-        except KeyboardInterrupt:
-            raise
             
         except Exception as e:
             print_result(UI_ICONS['error'], f"Lỗi xử lý locale file {filename}", str(e))
