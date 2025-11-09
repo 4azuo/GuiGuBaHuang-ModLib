@@ -275,8 +275,10 @@ class FileProgressState:
     def update_progress(self, progress: float, task: str = ""):
         progress_int = int(min(max(progress, 0.0), 1.0) * 100)
         self.progress_bar.set_progress(progress_int)
-        if task:
+        if progress_int < 100:
             self.set_processing(task)
+        else:
+            self.set_completed()
 
 
 class MultiFileProgressManager:

@@ -31,6 +31,7 @@ class LocalTextProcessor:
         self.config = translation_config
         self.stats = ProcessingStats()
         self.executor = None
+        self.locale_executor = None
         self.progress_manager = None
         self._setup_signal_handler()
     
@@ -41,6 +42,9 @@ class LocalTextProcessor:
             if self.executor:
                 self.executor.shutdown(wait=False)
                 self.executor = None
+            if self.locale_executor:
+                self.locale_executor.shutdown(wait=False)
+                self.locale_executor = None
             
             # Finish progress manager if running    
             if self.progress_manager:
@@ -168,11 +172,12 @@ class LocalTextProcessor:
             def process_locale_file_worker(file_path: str) -> bool:
                 """Worker function to process locale files from a main file"""
                 try:
+                    success_count = 0
                     main_filename = os.path.basename(file_path)
-                    success_any = 0
                     total_langs = len(self.config.target_languages)
                     
-                    for i, lang in enumerate(self.config.target_languages):
+                    def process_locale_file_worker2(i: int, lang: str) -> bool:
+                        """Inner worker to process locale file for a specific language"""
                         # Update progress for this language
                         progress_val = i / total_langs
                         self.progress_manager.update_file_progress(
@@ -187,18 +192,29 @@ class LocalTextProcessor:
                             self.cleanup_locale_file(locale_file_path)
                         
                         # Recreate locale files from main file
-                        if self.process_locale_file(file_path, locale_file_path):
-                            with stats_lock:
+                        result = self.process_locale_file(file_path, locale_file_path)
+                    
+                        # Update stats and progress
+                        with stats_lock:
+                            if result:
                                 self.stats.processed_count += 1
-                            success_any += 1
+                                self.progress_manager.complete_file(file_path)
+                            else:
+                                self.progress_manager.error_file(file_path, f"Error creating {lang} locale")
 
-                    # Final update
-                    if success_any == len(self.config.target_languages):
-                        self.progress_manager.complete_file(file_path)
-                    else:
-                        self.progress_manager.error_file(file_path, f"Only {success_any}/{total_langs} locales created")
+                    # Parallel processing with ThreadPoolExecutor
+                    self.locale_executor = concurrent.futures.ThreadPoolExecutor(max_workers=max_workers)
+                    try:
+                        futures = {self.locale_executor.submit(process_locale_file_worker2, i, lang): (i, lang) for i, lang in enumerate(self.config.target_languages)}
+                        for future in concurrent.futures.as_completed(futures):
+                            if future.result():
+                                success_count += 1
+                    finally:
+                        if self.locale_executor:
+                            self.locale_executor.shutdown(wait=False)
+                            self.locale_executor = None
 
-                    return success_any == len(self.config.target_languages)
+                    return success_count == len(self.config.target_languages)
                 except Exception as e:
                     self.progress_manager.error_file(file_path, f"Error: {str(e)}")
                     return False
@@ -246,18 +262,11 @@ class LocalTextProcessor:
         try:
             filename = os.path.basename(file_path)
             
-            # Update progress
-            if self.progress_manager:
-                self.progress_manager.update_file_progress(file_path, 0.1, "Reading file...")
-            
             # Read main file
             main_data = JsonUtils.read_json_file(file_path)
             if not main_data:
                 print_result(UI_ICONS['error'], f"Cannot read file {filename}")
                 return False
-            
-            if self.progress_manager:
-                self.progress_manager.update_file_progress(file_path, 0.2, "Normalizing data...")
             
             # Normalize combined keys to simple keys (e.g., "en|ch|tc|kr" -> "en")
             main_data = TranslateUtils.normalize_main_file_keys(main_data)
@@ -267,15 +276,26 @@ class LocalTextProcessor:
                 print_result(UI_ICONS['warning'], f"File {filename} has no English data to translate")
                 return True  # Not an error, just a file that doesn't need translation
             
-            if self.progress_manager:
-                self.progress_manager.update_file_progress(file_path, 0.3, "Starting translation...")
+            # Count total items that need translation
+            total_items = 0
+            if main_data.is_list:
+                for _ in main_data.data:
+                    total_items += 1
+            elif main_data.is_dict:
+                total_items += 1
+            
+            # Initialize progress counter
+            translated_count = 0
             
             def progress_translator(text: str, target_lang: str, item_id: str = 'N/A') -> str:
+                nonlocal translated_count
                 if self.progress_manager:
+                    progress = translated_count / max(total_items, 1)  # Avoid division by zero
                     self.progress_manager.update_file_progress(
-                        file_path, 0.4, f"Translating to '{target_lang}' - Id: '{item_id}'"
+                        file_path, progress, f"Translating to '{target_lang}' - Id: '{item_id}' ({translated_count}/{total_items})"
                     )
                 result = self.translation_service.translate_text(text, target_lang)
+                translated_count += 1
                 return result
             
             # Translate text in main file (update language fields: ch, tc, kr)
@@ -285,8 +305,11 @@ class LocalTextProcessor:
                 preserve_existing=self.config.preserve_existing_translations
             )
             
+            # Update progress to show completion
             if self.progress_manager:
-                self.progress_manager.update_file_progress(file_path, 0.9, "Sorting and writing...")
+                self.progress_manager.update_file_progress(
+                    file_path, 1.0, f"Translation completed ({translated_count}/{total_items})"
+                )
             
             # Sort data
             translated_data = JsonUtils.sort_json_data(translated_data)
