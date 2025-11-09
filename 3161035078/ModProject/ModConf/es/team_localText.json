@@ -2,12 +2,12 @@
 	{
 		"id": "420041120",
 		"key": "team420041120desc",
-		"en|ch|tc|kr": "equipo420041120desc"
+		"en|ch|tc|kr": "team420041120desc"
 	},
 	{
 		"id": "420041121",
 		"key": "team420041121",
-		"en|ch|tc|kr": "Equipo"
+		"en|ch|tc|kr": "equipo"
 	},
 	{
 		"id": "420041123",
@@ -17,7 +17,7 @@
 	{
 		"id": "420041124",
 		"key": "team420041124dramaOpt1",
-		"en|ch|tc|kr": "Sí"
+		"en|ch|tc|kr": "si"
 	},
 	{
 		"id": "420041125",
@@ -27,12 +27,12 @@
 	{
 		"id": "420041126",
 		"key": "team420041126",
-		"en|ch|tc|kr": "Equipo de despedida"
+		"en|ch|tc|kr": "Despedir equipo"
 	},
 	{
 		"id": "420041127",
 		"key": "team420041127",
-		"en|ch|tc|kr": "Administrar equipo"
+		"en|ch|tc|kr": "Gestionar equipo"
 	},
 	{
 		"id": "420041128",
@@ -42,7 +42,7 @@
 	{
 		"id": "420041129",
 		"key": "team420041129",
-		"en|ch|tc|kr": "¡Tienes que dejar el equipo actual!"
+		"en|ch|tc|kr": "¡Tienes que abandonar el equipo actual!"
 	},
 	{
 		"id": "420041130",
@@ -57,12 +57,12 @@
 	{
 		"id": "420041132",
 		"key": "team420041132",
-		"en|ch|tc|kr": "¡No tienes que pagar por los amigos!"
+		"en|ch|tc|kr": "¡No tienes que pagar por amigos!"
 	},
 	{
 		"id": "420041133",
 		"key": "team420041133",
-		"en|ch|tc|kr": "Formar"
+		"en|ch|tc|kr": "formar equipo"
 	},
 	{
 		"id": "420041134",

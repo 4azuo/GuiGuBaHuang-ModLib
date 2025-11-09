@@ -2,101 +2,101 @@
 	{
 		"id": "420022001",
 		"key": "apprentice420021001",
-		"en|ch|tc|kr": "Кузница lvl-1"
+		"en|ch|tc|kr": "Кузница Lvl-1"
 	},
 	{
 		"id": "420023001",
 		"key": "apprentice420021001desc",
-		"en|ch|tc|kr": "+5% def"
+		"en|ch|tc|kr": "+5% ЗАЩ"
 	},
 	{
 		"id": "420022002",
 		"key": "apprentice420021002",
-		"en|ch|tc|kr": "Кузница lvl-2"
+		"en|ch|tc|kr": "Кузница Lvl-2"
 	},
 	{
 		"id": "420023002",
 		"key": "apprentice420021002desc",
-		"en|ch|tc|kr": "+10% def"
+		"en|ch|tc|kr": "+10% ЗАЩ"
 	},
 	{
 		"id": "420022003",
 		"key": "apprentice420021003",
-		"en|ch|tc|kr": "Кузница lvl-3"
+		"en|ch|tc|kr": "Кузница ур.3"
 	},
 	{
 		"id": "420023003",
 		"key": "apprentice420021003desc",
-		"en|ch|tc|kr": "+15% def"
+		"en|ch|tc|kr": "+15% ЗАЩ"
 	},
 	{
 		"id": "420022004",
 		"key": "apprentice420021004",
-		"en|ch|tc|kr": "Кузница lvl-4"
+		"en|ch|tc|kr": "Кузница ур.4"
 	},
 	{
 		"id": "420023004",
 		"key": "apprentice420021004desc",
-		"en|ch|tc|kr": "+20% def"
+		"en|ch|tc|kr": "+20% ЗАЩ"
 	},
 	{
 		"id": "420022005",
 		"key": "apprentice420021005",
-		"en|ch|tc|kr": "Кузница lvl-5"
+		"en|ch|tc|kr": "Кузница 5-го уровня"
 	},
 	{
 		"id": "420023005",
 		"key": "apprentice420021005desc",
-		"en|ch|tc|kr": "+25% def"
+		"en|ch|tc|kr": "+25% ЗАЩ"
 	},
 	{
 		"id": "420022006",
 		"key": "apprentice420021006",
-		"en|ch|tc|kr": "Кузница lvl-6"
+		"en|ch|tc|kr": "Кузница Ур.6"
 	},
 	{
 		"id": "420023006",
 		"key": "apprentice420021006desc",
-		"en|ch|tc|kr": "+30% def"
+		"en|ch|tc|kr": "+30% ЗАЩ"
 	},
 	{
 		"id": "420022007",
 		"key": "apprentice420021007",
-		"en|ch|tc|kr": "Кузница lvl-7"
+		"en|ch|tc|kr": "Кузница 7-го уровня"
 	},
 	{
 		"id": "420023007",
 		"key": "apprentice420021007desc",
-		"en|ch|tc|kr": "+35% def"
+		"en|ch|tc|kr": "+35% ЗАЩ"
 	},
 	{
 		"id": "420022008",
 		"key": "apprentice420021008",
-		"en|ch|tc|kr": "Кузница lvl-8"
+		"en|ch|tc|kr": "Кузница 8-го уровня"
 	},
 	{
 		"id": "420023008",
 		"key": "apprentice420021008desc",
-		"en|ch|tc|kr": "+40% def"
+		"en|ch|tc|kr": "+40% ЗАЩ"
 	},
 	{
 		"id": "420022009",
 		"key": "apprentice420021009",
-		"en|ch|tc|kr": "Кузница lvl-9"
+		"en|ch|tc|kr": "Кузница 9-го уровня"
 	},
 	{
 		"id": "420023009",
 		"key": "apprentice420021009desc",
-		"en|ch|tc|kr": "+45% def"
+		"en|ch|tc|kr": "+45% ЗАЩ"
 	},
 	{
 		"id": "420022010",
 		"key": "apprentice420021010",
-		"en|ch|tc|kr": "Кузница lvl-10"
+		"en|ch|tc|kr": "Кузница 10-го уровня"
 	},
 	{
 		"id": "420023010",
 		"key": "apprentice420021010desc",
-		"en|ch|tc|kr": "+50% def"
+		"en|ch|tc|kr": "+50% ЗАщ."
 	}
 ]

@@ -2,12 +2,12 @@
 	{
 		"id": "480110100",
 		"key": "battleevent480110100",
-		"en|ch|tc|kr": "¡Ja, ja, ja! ¡El botín es mío! ¡Todo!"
+		"en|ch|tc|kr": "¡Ja, ja, ja! ¡El botín es mío! ¡Todo ello!"
 	},
 	{
 		"id": "480110200",
 		"key": "battleevent480110200",
-		"en|ch|tc|kr": "¡Déjame ayudar!"
+		"en|ch|tc|kr": "¡Déjame ayudarte!"
 	},
 	{
 		"id": "480110300",
@@ -17,27 +17,27 @@
 	{
 		"id": "480110400",
 		"key": "battleevent480110400",
-		"en|ch|tc|kr": "¡No se le permite pelear en la ciudad!"
+		"en|ch|tc|kr": "¡No tienes permitido pelear en la ciudad!"
 	},
 	{
 		"id": "480110500",
 		"key": "battleevent480110500",
-		"en|ch|tc|kr": "¡Tengo suficiente contigo! ¡Vete al diablo!"
+		"en|ch|tc|kr": "¡Ya tengo suficiente contigo! ¡Vete al diablo!"
 	},
 	{
 		"id": "480110501",
 		"key": "battleevent480110501",
-		"en|ch|tc|kr": "Las cosas que estás haciendo son repugnantes. ¡Ve al infierno, malvado!"
+		"en|ch|tc|kr": "Las cosas que estás haciendo son asquerosas. ¡Vete al infierno, malvado!"
 	},
 	{
 		"id": "480110502",
 		"key": "battleevent480110502",
-		"en|ch|tc|kr": "Tu elevado comportamiento realmente me da náuseas."
+		"en|ch|tc|kr": "Tu comportamiento elevado realmente me da náuseas."
 	},
 	{
 		"id": "480110600",
 		"key": "battleevent480110600",
-		"en|ch|tc|kr": "Sé que lo tienes. ¡Déme!"
+		"en|ch|tc|kr": "Sé que lo tienes. ¡Dámelo!"
 	},
 	{
 		"id": "480110601",
@@ -47,17 +47,17 @@
 	{
 		"id": "480110602",
 		"key": "battleevent480110602",
-		"en|ch|tc|kr": "No te preocupes, solo estoy \"tomando prestado\" tus cosas para siempre."
+		"en|ch|tc|kr": "No te preocupes, solo estoy \"tomando prestadas\" tus cosas para siempre."
 	},
 	{
 		"id": "480111990",
 		"key": "battleevent480111990typeDesc",
-		"en|ch|tc|kr": "Guerra"
+		"en|ch|tc|kr": "guerra"
 	},
 	{
 		"id": "480112990",
 		"key": "battleevent480112990name",
-		"en|ch|tc|kr": "Guerra de la Ciudad"
+		"en|ch|tc|kr": "Guerra de la ciudad"
 	},
 	{
 		"id": "480113990",
@@ -67,7 +67,7 @@
 	{
 		"id": "480112991",
 		"key": "battleevent480112991name",
-		"en|ch|tc|kr": "Ola de monstruos"
+		"en|ch|tc|kr": "Ola monstruo"
 	},
 	{
 		"id": "480113991",
@@ -77,12 +77,12 @@
 	{
 		"id": "480112880",
 		"key": "monstwave480112880name",
-		"en|ch|tc|kr": "Mago de frijoles de Lumos"
+		"en|ch|tc|kr": "Mago de frijol Lumos"
 	},
 	{
 		"id": "480112881",
 		"key": "monstwave480112881name",
-		"en|ch|tc|kr": "Bailarín de cuchilla verde"
+		"en|ch|tc|kr": "Bailarina de espadas verdes"
 	},
 	{
 		"id": "480112882",
@@ -107,52 +107,52 @@
 	{
 		"id": "480112886",
 		"key": "monstwave480112886name",
-		"en|ch|tc|kr": "Terra Maul"
+		"en|ch|tc|kr": "Masacre terrestre"
 	},
 	{
 		"id": "480112887",
 		"key": "monstwave480112887name",
-		"en|ch|tc|kr": "Savage Mountain Demon"
+		"en|ch|tc|kr": "Demonio de la montaña salvaje"
 	},
 	{
 		"id": "480112888",
 		"key": "monstwave480112888name",
-		"en|ch|tc|kr": "Siembra oscura"
+		"en|ch|tc|kr": "Cerda oscura"
 	},
 	{
 		"id": "480112889",
 		"key": "monstwave480112889name",
-		"en|ch|tc|kr": "Terror a escala"
+		"en|ch|tc|kr": "Terror escalado"
 	},
 	{
 		"id": "480112890",
 		"key": "battleevent480112890",
-		"en|ch|tc|kr": "La tierra tiembla debajo de tus pies a medida que se enfurece la batalla. ¡Tu elección ahora determinará tu camino!"
+		"en|ch|tc|kr": "La tierra tiembla bajo tus pies mientras la batalla continúa. ¡Tu elección ahora determinará tu camino!"
 	},
 	{
 		"id": "480112891",
 		"key": "battleevent480112891",
-		"en|ch|tc|kr": "Ayuda al defensor"
+		"en|ch|tc|kr": "Ayuda defensor"
 	},
 	{
 		"id": "480112892",
 		"key": "battleevent480112892",
-		"en|ch|tc|kr": "Ayuda al invasor"
+		"en|ch|tc|kr": "ayuda al invasor"
 	},
 	{
 		"id": "480112893",
 		"key": "battleevent480112893",
-		"en|ch|tc|kr": "Tratar de escapar"
+		"en|ch|tc|kr": "intenta escapar"
 	},
 	{
 		"id": "480112894",
 		"key": "battleevent480112894",
-		"en|ch|tc|kr": "{0} está invadiendo {1}!\n¿Te gustaría ayudar?"
+		"en|ch|tc|kr": "¡{0} está invadiendo {1}!\n¿Quieres ayudar?"
 	},
 	{
 		"id": "480112895",
 		"key": "battleevent480112895",
-		"en|ch|tc|kr": "{0} está bajo ataque!\n¿Te gustaría ayudar?"
+		"en|ch|tc|kr": "¡{0} está bajo ataque!\n¿Quieres ayudar?"
 	},
 	{
 		"id": "480112898",

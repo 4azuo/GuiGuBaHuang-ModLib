@@ -2,7 +2,7 @@
 	{
 		"id": "1000011000",
 		"key": "skill1000011000",
-		"en|ch|tc|kr": "Trọng lực tốt"
+		"en|ch|tc|kr": "Giếng trọng lực"
 	},
 	{
 		"id": "1000012000",
@@ -12,11 +12,11 @@
 	{
 		"id": "1000011001",
 		"key": "skill1000011001",
-		"en|ch|tc|kr": "Thanh kiếm thiên thể"
+		"en|ch|tc|kr": "Thiên kiếm rơi"
 	},
 	{
 		"id": "1000012001",
 		"key": "skill1000012001",
-		"en|ch|tc|kr": "Tạo mưa của kiếm."
+		"en|ch|tc|kr": "Tạo mưa kiếm."
 	}
 ]

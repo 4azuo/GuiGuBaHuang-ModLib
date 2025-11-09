@@ -7,32 +7,32 @@
 	{
 		"id": -1000001001,
 		"key": "smcfgs001",
-		"en|ch|tc|kr": "Atk"
+		"en|ch|tc|kr": "ATK"
 	},
 	{
 		"id": -1000001002,
 		"key": "smcfgs002",
-		"en|ch|tc|kr": "Def"
+		"en|ch|tc|kr": "DEF"
 	},
 	{
 		"id": -1000001003,
 		"key": "smcfgs003",
-		"en|ch|tc|kr": "Max HP"
+		"en|ch|tc|kr": "Maximale HP"
 	},
 	{
 		"id": -1000001004,
 		"key": "smcfgs004",
-		"en|ch|tc|kr": "Basis"
+		"en|ch|tc|kr": "Grundlage"
 	},
 	{
 		"id": -1000001005,
 		"key": "smcfgs005",
-		"en|ch|tc|kr": "(Schwert, Klinge, Speer, Faust, Finger, Handfläche, Feuer, Wasser, Donner, Holz, Wind, Erde)"
+		"en|ch|tc|kr": "(Enthalten sind Schwert, Klinge, Speer, Faust, Finger, Handfläche, Feuer, Wasser, Donner, Holz, Wind, Erde)"
 	},
 	{
 		"id": -1000001006,
 		"key": "smcfgs006",
-		"en|ch|tc|kr": "Spezielle Monsterrate"
+		"en|ch|tc|kr": "Spezieller Monsterpreis"
 	},
 	{
 		"id": -1000001007,
@@ -52,7 +52,7 @@
 	{
 		"id": -1000001010,
 		"key": "smcfgs010",
-		"en|ch|tc|kr": "Gebäudekosten"
+		"en|ch|tc|kr": "Baukosten"
 	},
 	{
 		"id": -1000001011,
@@ -72,7 +72,7 @@
 	{
 		"id": -1000001014,
 		"key": "smcfgs014",
-		"en|ch|tc|kr": "Sektenaustauschgebühr"
+		"en|ch|tc|kr": "Sektenwechselgebühr"
 	},
 	{
 		"id": -1000001015,
@@ -92,12 +92,12 @@
 	{
 		"id": -1000001018,
 		"key": "smcfgs018",
-		"en|ch|tc|kr": "MISC:"
+		"en|ch|tc|kr": "Sonstiges:"
 	},
 	{
 		"id": -1000001019,
 		"key": "smcfgs019",
-		"en|ch|tc|kr": "Levelup Exp"
+		"en|ch|tc|kr": "Levelup-Exp"
 	},
 	{
 		"id": -1000001020,
@@ -107,12 +107,12 @@
 	{
 		"id": -1000001021,
 		"key": "smcfgs021",
-		"en|ch|tc|kr": "Save Save Button ausblenden"
+		"en|ch|tc|kr": "Schaltfläche „Speichern“ ausblenden"
 	},
 	{
 		"id": -1000001022,
 		"key": "smcfgs022",
-		"en|ch|tc|kr": "Nachlade -Taste ausblenden"
+		"en|ch|tc|kr": "Schaltfläche „Neu laden“ ausblenden"
 	},
 	{
 		"id": -1000001023,
@@ -122,12 +122,12 @@
 	{
 		"id": -1000001024,
 		"key": "smcfgs024",
-		"en|ch|tc|kr": "Kampfkarte verbergen"
+		"en|ch|tc|kr": "Schlachtkarte ausblenden"
 	},
 	{
 		"id": -1000001025,
 		"key": "smcfgs025",
-		"en|ch|tc|kr": "Prioritätsniveau"
+		"en|ch|tc|kr": "Prioritätsstufe des Schicksals"
 	},
 	{
 		"id": -1000001026,
@@ -167,12 +167,12 @@
 	{
 		"id": -1000001033,
 		"key": "smcfgs033",
-		"en|ch|tc|kr": "Nur Portal in City und Sekte"
+		"en|ch|tc|kr": "Nur Portal bei Stadt und Sekte"
 	},
 	{
 		"id": -1000001034,
 		"key": "smcfgs034",
-		"en|ch|tc|kr": "Sekte kein Austausch"
+		"en|ch|tc|kr": "Sekte ohne Austausch"
 	},
 	{
 		"id": -1000001035,
@@ -182,12 +182,12 @@
 	{
 		"id": -1000001036,
 		"key": "smcfgs036",
-		"en|ch|tc|kr": "Das Upgrade auf natürliche Weise zulassen"
+		"en|ch|tc|kr": "Upgrade natürlich zulassen"
 	},
 	{
 		"id": -1000001037,
 		"key": "smcfgs037",
-		"en|ch|tc|kr": "(Auf diese Weise werden Ihre Attribute/Eigenschaften nicht erwachsen)"
+		"en|ch|tc|kr": "(Auf diese Weise werden Ihre Attribute/Eigenschaften nicht vergrößert)"
 	},
 	{
 		"id": -1000001038,
@@ -197,12 +197,12 @@
 	{
 		"id": -1000001039,
 		"key": "smcfgs039",
-		"en|ch|tc|kr": "Kein Ausbau aus Schlachten"
+		"en|ch|tc|kr": "Kein Erwachsenwerden aus Schlachten"
 	},
 	{
 		"id": -1000001040,
 		"key": "smcfgs040",
-		"en|ch|tc|kr": "KEINE EXP aus Schlachten"
+		"en|ch|tc|kr": "Keine EP aus Schlachten"
 	},
 	{
 		"id": -1000001041,
@@ -212,12 +212,12 @@
 	{
 		"id": -1000001042,
 		"key": "smcfgs042",
-		"en|ch|tc|kr": "(Nicht empfehlen, diese Option zu verwenden! Heißschlüssel in Spiel: 【Strg+1】)"
+		"en|ch|tc|kr": "(Die Verwendung dieser Option wird nicht empfohlen! Hotkey im Spiel: 【Strg+1】)"
 	},
 	{
 		"id": -1000001043,
 		"key": "smcfgs043",
-		"en|ch|tc|kr": "Gesamtpunktzahl: {0} p"
+		"en|ch|tc|kr": "Gesamtpunktzahl: {0}P"
 	},
 	{
 		"id": -1000001044,
@@ -237,42 +237,42 @@
 	{
 		"id": -1000001047,
 		"key": "smcfgs047",
-		"en|ch|tc|kr": "NPC -Betrag"
+		"en|ch|tc|kr": "NPC-Betrag"
 	},
 	{
 		"id": -1000001048,
 		"key": "smcfgs048",
-		"en|ch|tc|kr": "(Erforderlicher RAM: {0} mb)"
+		"en|ch|tc|kr": "(Erforderlicher RAM: {0}MB)"
 	},
 	{
 		"id": -1000001049,
 		"key": "smcfgs049",
-		"en|ch|tc|kr": "(Enthalten Schild, explodieren und multiplizieren)"
+		"en|ch|tc|kr": "(Inklusive Schild, Explodieren und Multiplizieren)"
 	},
 	{
 		"id": -1000001050,
 		"key": "smcfgs050",
-		"en|ch|tc|kr": "Lassen Sie die Stadt im Laufe der Zeit aufbauen"
+		"en|ch|tc|kr": "Erlauben Sie den Stadtaufbau im Laufe der Zeit"
 	},
 	{
 		"id": -1000001051,
 		"key": "smcfgs051",
-		"en|ch|tc|kr": "Ausbaugeschwindigkeit"
+		"en|ch|tc|kr": "Wachstumsgeschwindigkeit"
 	},
 	{
 		"id": -1000001052,
 		"key": "smcfgs052",
-		"en|ch|tc|kr": "(Einbeziehen Spieler, NPC und Monster)"
+		"en|ch|tc|kr": "(Spieler, NPC und Monster einschließen)"
 	},
 	{
 		"id": -1000001053,
 		"key": "smcfgs053",
-		"en|ch|tc|kr": "Jedes {1} Monate ({0} p)"
+		"en|ch|tc|kr": "alle {1} Monate ({0}P)"
 	},
 	{
 		"id": -1000001054,
 		"key": "smcfgs054",
-		"en|ch|tc|kr": "Exportieren von Konfigurationen"
+		"en|ch|tc|kr": "Konfigurationen exportieren"
 	},
 	{
 		"id": -1000001055,
@@ -282,52 +282,52 @@
 	{
 		"id": -1000001056,
 		"key": "smcfgs056",
-		"en|ch|tc|kr": "Verlorene Gegenstände beim Sterben"
+		"en|ch|tc|kr": "Verlorene Gegenstände, wenn sie sterben"
 	},
 	{
 		"id": -1000001057,
 		"key": "smcfgs057",
-		"en|ch|tc|kr": "(Inklusive erste Stadt)"
+		"en|ch|tc|kr": "(Erste Stadt einschließen)"
 	},
 	{
 		"id": -1000001058,
 		"key": "smcfgs058",
-		"en|ch|tc|kr": "Monster ist vom Spieler abhängig"
+		"en|ch|tc|kr": "Monster hängen vom Spieler ab"
 	},
 	{
 		"id": -1000001059,
 		"key": "smcfgs059",
-		"en|ch|tc|kr": "Automatisch sparen nach verloren"
+		"en|ch|tc|kr": "Automatisches Speichern nach Verlust"
 	},
 	{
 		"id": -1000001060,
 		"key": "smcfgs060",
-		"en|ch|tc|kr": "(Die Zeit wird zum nächsten Monat zur Heilung überspringen)"
+		"en|ch|tc|kr": "(Die Zeit zur Heilung wird auf den nächsten Monat verschoben.)"
 	},
 	{
 		"id": -1000001101,
 		"key": "smcfgs101",
-		"en|ch|tc|kr": "{1}% ({0} p)"
+		"en|ch|tc|kr": "{1} % ({0}P)"
 	},
 	{
 		"id": -1000001102,
 		"key": "smcfgs102",
-		"en|ch|tc|kr": "({0} p)"
+		"en|ch|tc|kr": "({0} P)"
 	},
 	{
 		"id": -1000001103,
 		"key": "smcfgs103",
-		"en|ch|tc|kr": "{1} ({0} p)"
+		"en|ch|tc|kr": "{1} ({0}P)"
 	},
 	{
 		"id": -1000001104,
 		"key": "smcfgs104",
-		"en|ch|tc|kr": "Start-up"
+		"en|ch|tc|kr": "Startup"
 	},
 	{
 		"id": -1000001105,
 		"key": "smcfgs105",
-		"en|ch|tc|kr": "Power Up: Ein Charakter, der auf alle Aspekte spezialisiert ist.\nBeschleunigen: Ein Charakter, der in Geschwindigkeit spezialisiert ist.\nTaoist: Ein auf Magie spezialisiertes Charakter.\nPro Atk: Ein auf Angriff spezialisiertes Charakter.\nPro Def: Ein auf Verteidigung spezialisiertes Charakter.\nAngel: Ein gutherziger Engel, der sich auf Verteidigung und Schutz konzentriert.\nEvil: Ein Dämon, der von allen gemieden wurde, konzentrierte sich auf den Angriff.\nHändler: Ein Händler, der andere mit Wohlstand zerdrückt."
+		"en|ch|tc|kr": "Power Up: Ein Charakter, der auf alle Aspekte spezialisiert ist.\nSpeed ​​Up: Ein auf Geschwindigkeit spezialisierter Charakter.\nTaoist: Ein auf Magie spezialisierter Charakter.\nPro Atk: Ein Charakter, der auf Angriffe spezialisiert ist.\nPro Def: Ein auf Verteidigung spezialisierter Charakter.\nEngel: Ein gutherziger Engel, der sich auf Verteidigung und Schutz konzentriert.\nDas Böse: Ein von allen gemiedener Dämon, der sich auf den Angriff konzentriert.\nHändler: Ein Händler, der andere mit Reichtum vernichtet."
 	},
 	{
 		"id": -1000001106,
@@ -342,27 +342,27 @@
 	{
 		"id": -1000001108,
 		"key": "smcfgs108",
-		"en|ch|tc|kr": "Starten"
+		"en|ch|tc|kr": "Einschalten"
 	},
 	{
 		"id": -1000001109,
 		"key": "smcfgs109",
-		"en|ch|tc|kr": "Beschleunigen"
+		"en|ch|tc|kr": "Beschleunigen Sie"
 	},
 	{
 		"id": -1000001110,
 		"key": "smcfgs110",
-		"en|ch|tc|kr": "Taoist"
+		"en|ch|tc|kr": "Taoistisch"
 	},
 	{
 		"id": -1000001111,
 		"key": "smcfgs111",
-		"en|ch|tc|kr": "Pro Atk"
+		"en|ch|tc|kr": "Pro-Angriff"
 	},
 	{
 		"id": -1000001112,
 		"key": "smcfgs112",
-		"en|ch|tc|kr": "Pro def"
+		"en|ch|tc|kr": "Pro Def"
 	},
 	{
 		"id": -1000001113,
@@ -372,12 +372,12 @@
 	{
 		"id": -1000001114,
 		"key": "smcfgs114",
-		"en|ch|tc|kr": "Teuflisch"
+		"en|ch|tc|kr": "Böse"
 	},
 	{
 		"id": -1000001115,
 		"key": "smcfgs115",
-		"en|ch|tc|kr": "Händler"
+		"en|ch|tc|kr": "Kaufmann"
 	},
 	{
 		"id": -1000001116,
@@ -387,17 +387,17 @@
 	{
 		"id": -1000001117,
 		"key": "smcfgs117",
-		"en|ch|tc|kr": "NPC -Join -Rate"
+		"en|ch|tc|kr": "NPC-Beitrittsrate"
 	},
 	{
 		"id": -1000001118,
 		"key": "smcfgs118",
-		"en|ch|tc|kr": "Angegriffen werden"
+		"en|ch|tc|kr": "Angriffsrate erhalten"
 	},
 	{
 		"id": -1000001119,
 		"key": "smcfgs119",
-		"en|ch|tc|kr": "(Warnung: Diese Funktion verbraucht viel RAM und kann eine Verzögerung verursachen)"
+		"en|ch|tc|kr": "(Warnung: Diese Funktion verbraucht viel RAM und kann zu Verzögerungen führen)"
 	},
 	{
 		"id": -1000001120,
@@ -407,17 +407,17 @@
 	{
 		"id": -1000001121,
 		"key": "smcfgs121",
-		"en|ch|tc|kr": "MOD -Konfigurationen"
+		"en|ch|tc|kr": "Mod-Konfigurationen"
 	},
 	{
 		"id": -1000001122,
 		"key": "smcfgs122",
-		"en|ch|tc|kr": "Keine Belastung"
+		"en|ch|tc|kr": "Keine Steuern"
 	},
 	{
 		"id": -1000001123,
 		"key": "smcfgs123",
-		"en|ch|tc|kr": "Keine Marktartikel"
+		"en|ch|tc|kr": "Keine Marktgegenstände"
 	},
 	{
 		"id": -1000001124,
@@ -427,11 +427,76 @@
 	{
 		"id": -1000001125,
 		"key": "smcfgs125",
-		"en|ch|tc|kr": "Kein Qi -Anbau"
+		"en|ch|tc|kr": "Keine Qi-Kultivierung"
 	},
 	{
 		"id": -1000001126,
 		"key": "smcfgs126",
-		"en|ch|tc|kr": "(NPCs müssen noch Steuern zahlen)"
+		"en|ch|tc|kr": "(NPCs müssen weiterhin Steuern zahlen)"
+	},
+	{
+		"id": -1000001127,
+		"key": "smcfgs127",
+		"en|ch|tc|kr": "Hardcore:"
+	},
+	{
+		"id": -1000001128,
+		"key": "smcfgs128",
+		"en|ch|tc|kr": "(Diese Konfiguration wirkt sich auf die monatliche Prozesszeit aus)"
+	},
+	{
+		"id": -1000001129,
+		"key": "smcfgs129",
+		"en|ch|tc|kr": "Verlorene Lebensspanne, wenn man stirbt/verliert"
+	},
+	{
+		"id": -1000001130,
+		"key": "smcfgs130",
+		"en|ch|tc|kr": "Max. Verkäufer pro Stadt"
+	},
+	{
+		"id": -1000001131,
+		"key": "smcfgs131",
+		"en|ch|tc|kr": "Maximale Anzahl an Käufern beim Verkauf eines Artikels"
+	},
+	{
+		"id": -1000001132,
+		"key": "smcfgs132",
+		"en|ch|tc|kr": "{0}"
+	},
+	{
+		"id": -1000001133,
+		"key": "smcfgs133",
+		"en|ch|tc|kr": "Maximale Anzahl an Artikeln für den Verkäufer"
+	},
+	{
+		"id": -1000001134,
+		"key": "smcfgs134",
+		"en|ch|tc|kr": "Nur im Cur/Near-Bereich aktiv"
+	},
+	{
+		"id": -1000001135,
+		"key": "smcfgs135",
+		"en|ch|tc|kr": "(Prozesszeit beschleunigen, aber Auswirkungen auf NPCs haben)"
+	},
+	{
+		"id": -1000001136,
+		"key": "smcfgs136",
+		"en|ch|tc|kr": "Gebäude nach Stadtkrieg zerstören"
+	},
+	{
+		"id": -1000001137,
+		"key": "smcfgs137",
+		"en|ch|tc|kr": "Erlaube die Reparatur einer Gotteswaffe"
+	},
+	{
+		"id": -1000001138,
+		"key": "smcfgs138",
+		"en|ch|tc|kr": "Alle Funktionen gelten für nächstgelegene Einheiten"
+	},
+	{
+		"id": -1000001139,
+		"key": "smcfgs139",
+		"en|ch|tc|kr": "Verlorenes Geld, wenn man stirbt"
 	}
 ]

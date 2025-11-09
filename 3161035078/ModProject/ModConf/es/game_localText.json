@@ -7,11 +7,11 @@
 	{
 		"id": "999999101",
 		"key": "gameopt999999101",
-		"en|ch|tc|kr": "Dejar"
+		"en|ch|tc|kr": "salir"
 	},
 	{
 		"id": "999999201",
 		"key": "gameopt999999201",
-		"en|ch|tc|kr": "No te muestres de nuevo"
+		"en|ch|tc|kr": "No mostrar de nuevo"
 	}
 ]

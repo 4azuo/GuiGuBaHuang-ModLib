@@ -3,12 +3,12 @@
 		"__name": "Old But Strong",
 		"id": "420700044",
 		"key": "balance420700044",
-		"en|ch|tc|kr": "古いが強い"
+		"en|ch|tc|kr": "老いても強い"
 	},
 	{
 		"__name": "Old But Strong",
 		"id": "421700044",
 		"key": "balance420700044desc",
-		"en|ch|tc|kr": "あなたのdef+2、hp+50毎年。"
+		"en|ch|tc|kr": "毎年DEF+2、HP+50。"
 	}
 ]

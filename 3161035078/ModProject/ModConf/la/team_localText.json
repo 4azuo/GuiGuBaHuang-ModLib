@@ -2,22 +2,22 @@
 	{
 		"id": "420041120",
 		"key": "team420041120desc",
-		"en|ch|tc|kr": "Team420041120desc"
+		"en|ch|tc|kr": "team420041120desc"
 	},
 	{
 		"id": "420041121",
 		"key": "team420041121",
-		"en|ch|tc|kr": "Bigas"
+		"en|ch|tc|kr": "Team"
 	},
 	{
 		"id": "420041123",
 		"key": "team420041123drama",
-		"en|ch|tc|kr": "Tu pretii peregrinatione simul?"
+		"en|ch|tc|kr": "Simul iter habes?"
 	},
 	{
 		"id": "420041124",
 		"key": "team420041124dramaOpt1",
-		"en|ch|tc|kr": "Sic"
+		"en|ch|tc|kr": "Ita"
 	},
 	{
 		"id": "420041125",
@@ -27,7 +27,7 @@
 	{
 		"id": "420041126",
 		"key": "team420041126",
-		"en|ch|tc|kr": "DISTRUO"
+		"en|ch|tc|kr": "dimitte Team"
 	},
 	{
 		"id": "420041127",
@@ -37,36 +37,36 @@
 	{
 		"id": "420041128",
 		"key": "team420041128",
-		"en|ch|tc|kr": "Tu certus de addendo hoc hominem?"
+		"en|ch|tc|kr": "Certus esne de hoc homine addendo?"
 	},
 	{
 		"id": "420041129",
 		"key": "team420041129",
-		"en|ch|tc|kr": "Vos have ut quieti current quadrigis!"
+		"en|ch|tc|kr": "Vos have ut current equos quieti!"
 	},
 	{
 		"id": "420041130",
 		"key": "team420041130",
-		"en|ch|tc|kr": "Tu certus de dimisso hoc homine?"
+		"en|ch|tc|kr": "Certusne es de hoc homine dimittendo?"
 	},
 	{
 		"id": "420041131",
 		"key": "team420041131",
-		"en|ch|tc|kr": "Hire populo"
+		"en|ch|tc|kr": "Hire Homines"
 	},
 	{
 		"id": "420041132",
 		"key": "team420041132",
-		"en|ch|tc|kr": "Vos dont have ut stipendium ad amicos!"
+		"en|ch|tc|kr": "Vos dont have ut solvere pro amicis!"
 	},
 	{
 		"id": "420041133",
 		"key": "team420041133",
-		"en|ch|tc|kr": "Quadrigis"
+		"en|ch|tc|kr": "Team up"
 	},
 	{
 		"id": "420041134",
 		"key": "team420041134",
-		"en|ch|tc|kr": "Tu certus de dimisso te dolor?"
+		"en|ch|tc|kr": "Certus esne de tuis quadrigis dimittere?"
 	}
 ]

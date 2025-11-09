@@ -7,12 +7,12 @@
 	{
 		"id": 500020001,
 		"key": "other500020001",
-		"en|ch|tc|kr": "Element auswählen"
+		"en|ch|tc|kr": "Wählen Sie Artikel aus"
 	},
 	{
 		"id": 500020002,
 		"key": "other500020002",
-		"en|ch|tc|kr": "Wählen Sie Materialien aus"
+		"en|ch|tc|kr": "Materialien auswählen"
 	},
 	{
 		"id": 500020003,
@@ -22,7 +22,7 @@
 	{
 		"id": 500020004,
 		"key": "other500020004",
-		"en|ch|tc|kr": "Gebühr: KOSTENLOS für Händlermeister und Erziehungsberechtigte"
+		"en|ch|tc|kr": "Gebühr: kostenlos für Handelsmeister und Wächter"
 	},
 	{
 		"id": 500020005,
@@ -32,27 +32,27 @@
 	{
 		"id": 500020006,
 		"key": "other500020006",
-		"en|ch|tc|kr": "Up grade"
+		"en|ch|tc|kr": "Höhere Klasse"
 	},
 	{
 		"id": 500020007,
 		"key": "other500020007",
-		"en|ch|tc|kr": "Sind Sie sich sicher, dass Sie diese Person entlassen?"
+		"en|ch|tc|kr": "Sind Sie sicher, dass Sie diese Person entlassen möchten?"
 	},
 	{
 		"id": 500020008,
 		"key": "other500020008",
-		"en|ch|tc|kr": "Sind Sie sich sicher, dass Sie diese Person hinzufügen?"
+		"en|ch|tc|kr": "Sind Sie sicher, dass Sie diese Person hinzufügen möchten?"
 	},
 	{
 		"id": 500020009,
 		"key": "other500020009",
-		"en|ch|tc|kr": "Bist du sicher, dass du gehen kannst?"
+		"en|ch|tc|kr": "Sind Sie sicher, dass Sie gehen?"
 	},
 	{
 		"id": 500020010,
 		"key": "other500020010",
-		"en|ch|tc|kr": "Bist du sicher, dass du mit dieser Stadt Krieg erklärst?"
+		"en|ch|tc|kr": "Sind Sie sicher, dass Sie dieser Stadt den Krieg erklären?"
 	},
 	{
 		"id": 500020011,
@@ -62,7 +62,7 @@
 	{
 		"id": 500020012,
 		"key": "other500020012",
-		"en|ch|tc|kr": "Zurückweisen"
+		"en|ch|tc|kr": "Entlassen"
 	},
 	{
 		"id": 500020013,
@@ -72,12 +72,12 @@
 	{
 		"id": 500020014,
 		"key": "other500020014",
-		"en|ch|tc|kr": "Krieg erkläre"
+		"en|ch|tc|kr": "Erklären Sie den Krieg"
 	},
 	{
 		"id": 500020015,
 		"key": "other500020015",
-		"en|ch|tc|kr": "Kaution"
+		"en|ch|tc|kr": "Anzahlung"
 	},
 	{
 		"id": 500020016,
@@ -92,22 +92,22 @@
 	{
 		"id": 500020018,
 		"key": "other500020018",
-		"en|ch|tc|kr": "Ihr Charakter wird sich ohne Anforderungen an die Elemente steigen. Die Charaktereigenschaften werden jedoch nicht erhöht."
+		"en|ch|tc|kr": "Dein Charakter steigt auf, ohne dass dafür Gegenstände erforderlich sind. Die Charaktereigenschaften werden jedoch nicht erhöht."
 	},
 	{
 		"id": 500020019,
 		"key": "other500020019",
-		"en|ch|tc|kr": "Nach Ihrem Charakter in jeder Phase voll exp. Er/sie wird Qi für stärker Auto trainieren.\nEs hängt von sp."
+		"en|ch|tc|kr": "Nachdem Ihr Charakter in jeder Phase die volle Erfahrung hat. Er/Sie wird das Qi automatisch trainieren, um es zu stärken.\nEs hängt von SP ab."
 	},
 	{
 		"id": 500020020,
 		"key": "other500020020",
-		"en|ch|tc|kr": "Wie werde man Stadtwächter? Es hängt von Ihrem Ruf und Ihrem Stadtbudget ab.\nWenn die Stadt über genügend Budget verfügt, um einen Vormund einzustellen, wird sie denjenigen einstellen, der den höchsten Ruf in der Stadt hat.\nUnd als Town Master verlor, wird der Guardian, der den höchsten Ruf hat, im nächsten Stadtmeister kommen."
+		"en|ch|tc|kr": "Wie werde ich Stadtwächter? Es hängt von Ihrem Ruf und Ihrem Stadtbudget ab.\nWenn die Stadt über genügend Budget verfügt, um einen Vormund einzustellen, wird derjenige eingestellt, der in der Stadt das höchste Ansehen genießt.\nUnd wenn der Stadtmeister verliert, wird der Wächter mit dem höchsten Ansehen der nächste Stadtmeister sein."
 	},
 	{
 		"id": 500020021,
 		"key": "other500020021",
-		"en|ch|tc|kr": "Das Land zittert unter Ihren Füßen, während die Schlacht weiter treibt. {0} Kämpfe, um ihr Zuhause zu schützen. {1} versuchen zu erobern. Ihre Wahl wird jetzt Ihren Weg bestimmen!\nJa: Hilfe {0}\nNein: Hilfe {1}"
+		"en|ch|tc|kr": "Das Land bebt unter deinen Füßen, während die Schlacht weiter tobt. {0} kämpfen für den Schutz ihres Zuhauses. {1} versuchen zu erobern. Ihre Wahl wird jetzt Ihren Weg bestimmen!\nJa: Hilfe {0}\nNein: Hilfe {1}"
 	},
 	{
 		"id": 500020022,
@@ -117,47 +117,47 @@
 	{
 		"id": 500020023,
 		"key": "other500020023",
-		"en|ch|tc|kr": "Ihre Stadt ({0}) wird angegriffen!\nMöchten Sie helfen?"
+		"en|ch|tc|kr": "Deine Stadt ({0}) wird angegriffen!\nMöchten Sie helfen?"
 	},
 	{
 		"id": 500020024,
 		"key": "other500020024",
-		"en|ch|tc|kr": "Ihre Sekte ({0}) wird angegriffen!\nMöchten Sie helfen?"
+		"en|ch|tc|kr": "Deine Sekte ({0}) wird angegriffen!\nMöchten Sie helfen?"
 	},
 	{
 		"id": 500020025,
 		"key": "other500020025",
-		"en|ch|tc|kr": "Das Budget der Stadt ist nicht genug!"
+		"en|ch|tc|kr": "Das Budget der Stadt reicht nicht aus!"
 	},
 	{
 		"id": 500020026,
 		"key": "other500020026",
-		"en|ch|tc|kr": "Sie haben eine Einladung von {0} 'Town Master for Guardian Position erhalten?\nWillst du Stadtwächter werden?"
+		"en|ch|tc|kr": "Sie haben eine Einladung von {0}' Stadtmeister für die Position eines Vormunds erhalten?\nWillst du Stadtwächter werden?"
 	},
 	{
 		"id": 500020027,
 		"key": "other500020027",
-		"en|ch|tc|kr": "Sie haben nicht genug {0:#, ## 0} Spirit Stones zu bezahlen!"
+		"en|ch|tc|kr": "Du hast nicht genug {0:#,##0} Geistersteine zum Bezahlen!"
 	},
 	{
 		"id": 500020028,
 		"key": "other500020028",
-		"en|ch|tc|kr": "Jedes Mal, wenn Sie im Kampf sterben, wird Ihr Leben verloren gehen. Und wenn Ihr Alter vorbeikommt, wird Ihr Speichern gelöscht. Bitte seien Sie vorsichtig."
+		"en|ch|tc|kr": "Jedes Mal, wenn du im Kampf stirbst, geht dein Leben verloren. Und wenn Ihr Alter erreicht ist, wird Ihr Speicherstand gelöscht. Bitte seien Sie vorsichtig."
 	},
 	{
 		"id": 500020029,
 		"key": "other500020029",
-		"en|ch|tc|kr": "Willst du wirklich {0} Jahr überspringen?"
+		"en|ch|tc|kr": "Möchten Sie wirklich {0} Jahr überspringen?"
 	},
 	{
 		"id": 500020030,
 		"key": "other500020030",
-		"en|ch|tc|kr": "Überspringen Sie {0} Jahr"
+		"en|ch|tc|kr": "Überspringe {0} Jahr"
 	},
 	{
 		"id": 500020031,
 		"key": "other500020031",
-		"en|ch|tc|kr": "Willst du wirklich {0} Jahr überspringen?\n(Ohne monatliche Veranstaltungen)"
+		"en|ch|tc|kr": "Möchten Sie wirklich {0} Jahr überspringen?\n(Ohne monatliche Veranstaltungen)"
 	},
 	{
 		"id": 500020032,
@@ -167,37 +167,37 @@
 	{
 		"id": 500020033,
 		"key": "other500020033",
-		"en|ch|tc|kr": "Beeinflussen Sie Ihren Schaden und Ihre Verteidigung gegen Schäden desselben Typs.\nSpezielle Finger, Handflächen und Fäuste steigern auch Ihre Verteidigung."
+		"en|ch|tc|kr": "Beeinflussen Sie Ihren Schaden und Ihre Verteidigung gegen Schaden derselben Art.\nSpezielle Finger, Handflächen und Fäuste stärken außerdem Ihre Verteidigung."
 	},
 	{
 		"id": 500020034,
 		"key": "other500020034",
-		"en|ch|tc|kr": "Beeinflussen Sie Ihren Schaden und Ihre Verteidigung gegen Schäden desselben Typs.\nFeuer → Kritikschäden\nWasser → MP -Erholung\nWind → ausweichen\nErde → Verteidigung\nDonner → Kritik Zufall und Verringerung von Versuchsschäden\nHolz → HP -Erholung"
+		"en|ch|tc|kr": "Beeinflussen Sie Ihren Schaden und Ihre Verteidigung gegen Schaden derselben Art.\nFeuer → Kritischer Schaden\nWasser → MP-Wiederherstellung\nWind → Ausweichen\nErde → Verteidigung\nDonner → Chance auf kritische Treffer und Reduzierung des Prüfungsschadens\nHolz → HP-Wiederherstellung"
 	},
 	{
 		"id": 500020035,
 		"key": "other500020035",
-		"en|ch|tc|kr": "Der Titel wird vergeben, wenn eine bestimmte Punktzahl erreicht ist."
+		"en|ch|tc|kr": "Der Titel wird bei Erreichen einer bestimmten Punktzahl verliehen."
 	},
 	{
 		"id": 500020036,
 		"key": "other500020036",
-		"en|ch|tc|kr": "Fähigkeitspunkte beeinflussen HP/MP basierend auf der Ebene des Charakters."
+		"en|ch|tc|kr": "Fähigkeitspunkte beeinflussen HP/MP basierend auf der Stufe des Charakters."
 	},
 	{
 		"id": 500020037,
 		"key": "other500020037",
-		"en|ch|tc|kr": "Das Skill -Level verbessert sich durch die Verwendung der entsprechenden Aktivitäten."
+		"en|ch|tc|kr": "Das Fähigkeitsniveau wird durch die Nutzung der entsprechenden Aktivitäten verbessert."
 	},
 	{
 		"id": 500020038,
 		"key": "other500020038",
-		"en|ch|tc|kr": "HP/MP beeinflusst den Schild beim Eintritt in den Kampf.\nEinblick und Glück haben einen erheblichen Einfluss auf zufällige Ereignisse sowie Wachstums- und Lerngeschwindigkeit."
+		"en|ch|tc|kr": "HP/MP wirken sich auf den Schild aus, wenn du in den Kampf eintrittst.\nEinsicht und Glück haben einen erheblichen Einfluss auf zufällige Ereignisse sowie auf Wachstum und Lerngeschwindigkeit."
 	},
 	{
 		"id": 500020039,
 		"key": "other500020039",
-		"en|ch|tc|kr": "Spielen Sie nicht mit einem anderen Mod, der das Spiel schwierig erhöht."
+		"en|ch|tc|kr": "Spielen Sie nicht mit einem anderen Mod, der das Spiel schwieriger macht."
 	},
 	{
 		"id": 500020040,
@@ -207,37 +207,37 @@
 	{
 		"id": 500020041,
 		"key": "other500020041",
-		"en|ch|tc|kr": "Hier können Sie Artikel mit NPC kaufen/verkaufen. Aber Sie können gehasst und ausgeraubt werden."
+		"en|ch|tc|kr": "Hier können Sie Gegenstände mit NPC kaufen/verkaufen. Aber man kann gehasst und ausgeraubt werden."
 	},
 	{
 		"id": 500020042,
 		"key": "other500020042",
-		"en|ch|tc|kr": "{0:#, ## 0} Spirit Stones/Jahr"
+		"en|ch|tc|kr": "{0:#,##0} Geistersteine/Jahr"
 	},
 	{
 		"id": 500020043,
 		"key": "other500020043",
-		"en|ch|tc|kr": "{0:#, ## 0} Spirit Stones/Monat"
+		"en|ch|tc|kr": "{0:#,##0} Geistersteine/Monat"
 	},
 	{
 		"id": 500020044,
 		"key": "other500020044",
-		"en|ch|tc|kr": "Hinterhältig durch"
+		"en|ch|tc|kr": "Schleichend durch"
 	},
 	{
 		"id": 500020045,
 		"key": "other500020045",
-		"en|ch|tc|kr": "Verlassen"
+		"en|ch|tc|kr": "Geh"
 	},
 	{
 		"id": 500020046,
 		"key": "other500020046",
-		"en|ch|tc|kr": "[Info] Taoist"
+		"en|ch|tc|kr": "[INFO] Taoist"
 	},
 	{
 		"id": 500020047,
 		"key": "other500020047",
-		"en|ch|tc|kr": "Liste verkaufen"
+		"en|ch|tc|kr": "Verkaufsliste"
 	},
 	{
 		"id": 500020048,
@@ -257,7 +257,7 @@
 	{
 		"id": 500020051,
 		"key": "other500020051",
-		"en|ch|tc|kr": "Erfolg! Ebene {0} → {1} (+{2:#, ## 0} exp)"
+		"en|ch|tc|kr": "Erfolg! Level {0} → {1} (+{2:#,##0} Erfahrung)"
 	},
 	{
 		"id": 500020052,
@@ -267,12 +267,12 @@
 	{
 		"id": 500020053,
 		"key": "other500020053",
-		"en|ch|tc|kr": "Liste verkaufen"
+		"en|ch|tc|kr": "Verkaufsliste"
 	},
 	{
 		"id": 500020054,
 		"key": "other500020054",
-		"en|ch|tc|kr": "Personen einstellen"
+		"en|ch|tc|kr": "Stellen Sie Leute ein"
 	},
 	{
 		"id": 500020055,
@@ -282,17 +282,17 @@
 	{
 		"id": 500020056,
 		"key": "other500020056",
-		"en|ch|tc|kr": "{0} Geiststeine → {1} Beitrag"
+		"en|ch|tc|kr": "{0:#,##0} Geistersteine → {1:#,##0} Beitrag"
 	},
 	{
 		"id": 500020057,
 		"key": "other500020057",
-		"en|ch|tc|kr": "Austauschverhältnis {0} Spirit Stones → 1 Beitrag"
+		"en|ch|tc|kr": "Tauschverhältnis {0:#,##0} Geistersteine → 1 Beitrag"
 	},
 	{
 		"id": 500020058,
 		"key": "other500020058",
-		"en|ch|tc|kr": "Elemente auswählen"
+		"en|ch|tc|kr": "Wählen Sie Artikel aus"
 	},
 	{
 		"id": 500020059,
@@ -317,7 +317,7 @@
 	{
 		"id": 500020063,
 		"key": "other500020063",
-		"en|ch|tc|kr": "Min ： {0} verkaufen ： {1} max ： {2} Ihr ： {3}"
+		"en|ch|tc|kr": "Min: {0:#,##0}　　　Verkauf: {1:#,##0}　　　Max: {2:#,##0}　　　Ihre: {3:#,##0}"
 	},
 	{
 		"id": 500020064,
@@ -327,12 +327,12 @@
 	{
 		"id": 500020065,
 		"key": "other500020065",
-		"en|ch|tc|kr": "Bitte stehen Sie in der Stadt!"
+		"en|ch|tc|kr": "Bitte bleiben Sie in der Stadt!"
 	},
 	{
 		"id": 500020066,
 		"key": "other500020066",
-		"en|ch|tc|kr": "Up"
+		"en|ch|tc|kr": "Auf"
 	},
 	{
 		"id": 500020067,
@@ -342,42 +342,42 @@
 	{
 		"id": 500020068,
 		"key": "other500020068",
-		"en|ch|tc|kr": "Pflegen"
+		"en|ch|tc|kr": "Kultivieren"
 	},
 	{
 		"id": 500020069,
 		"key": "other500020069",
-		"en|ch|tc|kr": "Sie brauchen {0} Geiststeine zur Kultivierung."
+		"en|ch|tc|kr": "Für die Kultivierung benötigst du {0:#,##0} Geistersteine."
 	},
 	{
 		"id": 500020070,
 		"key": "other500020070",
-		"en|ch|tc|kr": "{0} Spirit Stones → {1} Exps."
+		"en|ch|tc|kr": "{0:#,##0} Geistersteine → {1:#,##0} Exps."
 	},
 	{
 		"id": 500020071,
 		"key": "other500020071",
-		"en|ch|tc|kr": "QI -Übertragung"
+		"en|ch|tc|kr": "Qi-Transfer"
 	},
 	{
 		"id": 500020072,
 		"key": "other500020072",
-		"en|ch|tc|kr": "Empfang Qi"
+		"en|ch|tc|kr": "Empfange Qi"
 	},
 	{
 		"id": 500020073,
 		"key": "other500020073",
-		"en|ch|tc|kr": "Abhängig von Ihren Erkenntnissen und Basisse (Wurzeln)."
+		"en|ch|tc|kr": "Verlassen Sie sich auf Ihre Einsichten und Grundlagen (Wurzeln)."
 	},
 	{
 		"id": 500020074,
 		"key": "other500020074",
-		"en|ch|tc|kr": "Handeln"
+		"en|ch|tc|kr": "Deal"
 	},
 	{
 		"id": 500020075,
 		"key": "other500020075",
-		"en|ch|tc|kr": "Gesamtwert: {0}"
+		"en|ch|tc|kr": "Gesamtwert: {0:#,##0}"
 	},
 	{
 		"id": 500020076,
@@ -387,27 +387,27 @@
 	{
 		"id": 500020077,
 		"key": "other500020077",
-		"en|ch|tc|kr": "Aufgeben"
+		"en|ch|tc|kr": "Gib auf"
 	},
 	{
 		"id": 500020078,
 		"key": "other500020078",
-		"en|ch|tc|kr": "Sie haben sich zurückgezogen? Nach allem, worauf wir uns einigten? Ich nehme nicht freundlich zu kaputten Angeboten - du hast gerade meine Zeit verschwendet."
+		"en|ch|tc|kr": "Du hast einen Rückzieher gemacht? Nach allem, worüber wir uns geeinigt haben? Ich bin nicht gerade erfreut über gescheiterte Geschäfte – Sie haben nur meine Zeit verschwendet."
 	},
 	{
 		"id": 500020079,
 		"key": "other500020079",
-		"en|ch|tc|kr": "Das lief reibungslos! Immer toll mit jemandem zu arbeiten, der weiß, was sie tun."
+		"en|ch|tc|kr": "Das hat reibungslos geklappt! Es ist immer toll, mit jemandem zusammenzuarbeiten, der weiß, was er tut."
 	},
 	{
 		"id": 500020080,
 		"key": "other500020080",
-		"en|ch|tc|kr": "Sie können es nicht ernst meinen. Du schuldest mir mehr als ein 'Nein'!"
+		"en|ch|tc|kr": "Das kann doch nicht dein Ernst sein. Du schuldest mir mehr als ein „Nein“!"
 	},
 	{
 		"id": 500020081,
 		"key": "other500020081",
-		"en|ch|tc|kr": "Was? Du wusstest, dass ich kommen würde! Du hast es trotzdem verkauft?"
+		"en|ch|tc|kr": "Was? Du wusstest, dass ich komme! Du hast es trotzdem verkauft?"
 	},
 	{
 		"id": 500020082,
@@ -427,37 +427,37 @@
 	{
 		"id": 500020085,
 		"key": "other500020085",
-		"en|ch|tc|kr": "VIP -Markt"
+		"en|ch|tc|kr": "VIP-Markt"
 	},
 	{
 		"id": 500020086,
 		"key": "other500020086",
-		"en|ch|tc|kr": "Möchten Sie {0} Spirit Stones für unseren Dienst bezahlen?"
+		"en|ch|tc|kr": "Möchten Sie {0:#,##0} Geistersteine für unseren Service bezahlen?"
 	},
 	{
 		"id": 500020087,
 		"key": "other500020087",
-		"en|ch|tc|kr": "Du hast nicht genug Geiststeine!"
+		"en|ch|tc|kr": "Du hast nicht genug Geistersteine!"
 	},
 	{
 		"id": 500020088,
 		"key": "other500020088",
-		"en|ch|tc|kr": "Versuchst du mich zu fallen?"
+		"en|ch|tc|kr": "Versuchen Sie, mich fallen zu lassen?"
 	},
 	{
 		"id": 500020089,
 		"key": "other500020089",
-		"en|ch|tc|kr": "Schaden x {0}"
+		"en|ch|tc|kr": "Schaden x{0}"
 	},
 	{
 		"id": 500020090,
 		"key": "other500020090",
-		"en|ch|tc|kr": "Stornieren"
+		"en|ch|tc|kr": "Abbrechen"
 	},
 	{
 		"id": 500020091,
 		"key": "other500020091",
-		"en|ch|tc|kr": "Min ： {0} verkaufen ： {1} max ： {2}"
+		"en|ch|tc|kr": "Min: {0}　　　Verkauf: {1}　　　Max: {2}"
 	},
 	{
 		"id": 500020092,
@@ -467,12 +467,12 @@
 	{
 		"id": 500020093,
 		"key": "other500020093",
-		"en|ch|tc|kr": "Was?! Abgesagt? Sehe ich so aus, als hätte ich Zeit zu verschwenden?"
+		"en|ch|tc|kr": "Was?! Abgesagt? Sehe ich aus, als hätte ich Zeit zu verschwenden?"
 	},
 	{
 		"id": 500020094,
 		"key": "other500020094",
-		"en|ch|tc|kr": "Anonym (Kostengebühr)"
+		"en|ch|tc|kr": "Anonym (kostenpflichtig)"
 	},
 	{
 		"id": 500020095,
@@ -487,7 +487,7 @@
 	{
 		"id": 500020097,
 		"key": "other500020097",
-		"en|ch|tc|kr": "Anonyme Gebühr = 10% des Verkaufspreises"
+		"en|ch|tc|kr": "Anonyme Gebühr = 10 % des Verkaufspreises"
 	},
 	{
 		"id": 500020098,
@@ -507,7 +507,7 @@
 	{
 		"id": 500020101,
 		"key": "other500020101",
-		"en|ch|tc|kr": "Sie müssen in einer Stadt sein, um Artikel zu verkaufen"
+		"en|ch|tc|kr": "Sie müssen sich in einer Stadt befinden, um Gegenstände verkaufen zu können"
 	},
 	{
 		"id": 500020102,
@@ -517,12 +517,12 @@
 	{
 		"id": 500020103,
 		"key": "other500020103",
-		"en|ch|tc|kr": "Registrierter Verkauf: {0} x {1} für {2}"
+		"en|ch|tc|kr": "Registrierter Verkauf: {0} x{1} für {2}"
 	},
 	{
 		"id": 500020104,
 		"key": "other500020104",
-		"en|ch|tc|kr": "Nicht genug Geld für anonyme Gebühren"
+		"en|ch|tc|kr": "Nicht genug Geld für anonymes Honorar"
 	},
 	{
 		"id": 500020105,
@@ -532,7 +532,7 @@
 	{
 		"id": 500020106,
 		"key": "other500020106",
-		"en|ch|tc|kr": "Registrierter anonymer Verkauf: {0} x {1} für {2} (Gebühr: {3})"
+		"en|ch|tc|kr": "Registrierter anonymer Verkauf: {0} x{1} für {2} (Gebühr: {3})"
 	},
 	{
 		"id": 500020107,
@@ -557,11 +557,31 @@
 	{
 		"id": 500020111,
 		"key": "other500020111",
-		"en|ch|tc|kr": "Deal List"
+		"en|ch|tc|kr": "Deal-Liste"
 	},
 	{
 		"id": 500020112,
 		"key": "other500020112",
-		"en|ch|tc|kr": "Sie verkaufen diesen Artikel bei {0}!"
+		"en|ch|tc|kr": "Sie verkaufen diesen Artikel für {0}!"
+	},
+	{
+		"id": 500020113,
+		"key": "other500020113",
+		"en|ch|tc|kr": "Reparieren"
+	},
+	{
+		"id": 500020114,
+		"key": "other500020114",
+		"en|ch|tc|kr": "Punkt hinzufügen"
+	},
+	{
+		"id": 500020115,
+		"key": "other500020115",
+		"en|ch|tc|kr": "Kosten {0:#,##0}.\nSind Sie sicher?"
+	},
+	{
+		"id": 500020116,
+		"key": "other500020116",
+		"en|ch|tc|kr": "Du hast nicht genug Geistersteine!"
 	}
 ]

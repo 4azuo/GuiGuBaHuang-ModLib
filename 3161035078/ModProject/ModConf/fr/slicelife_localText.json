@@ -7,7 +7,7 @@
 	{
 		"id": "444442001",
 		"key": "slicelife444441001desc",
-		"en|ch|tc|kr": "+ 25% max hp, + 6% max MP"
+		"en|ch|tc|kr": "+25 % de PV maximum, +6 % de PM maximum"
 	},
 	{
 		"id": "444443001",
@@ -17,7 +17,7 @@
 	{
 		"id": "444443101",
 		"key": "taskDesc444443001",
-		"en|ch|tc|kr": "Aller 5 ans sans s'engager dans aucune bataille."
+		"en|ch|tc|kr": "Passer 5 ans sans s'engager dans aucune bataille."
 	},
 	{
 		"id": "444441002",
@@ -27,7 +27,7 @@
 	{
 		"id": "444442002",
 		"key": "slicelife444441002desc",
-		"en|ch|tc|kr": "+ 50% max hp, + 12% max MP"
+		"en|ch|tc|kr": "+50 % de PV maximum, +12 % de PM maximum"
 	},
 	{
 		"id": "444443002",
@@ -37,7 +37,7 @@
 	{
 		"id": "444443102",
 		"key": "taskDesc444443002",
-		"en|ch|tc|kr": "Aller 10 ans sans s'engager dans aucune bataille."
+		"en|ch|tc|kr": "Passer 10 ans sans s'engager dans aucune bataille."
 	},
 	{
 		"id": "444441003",
@@ -47,7 +47,7 @@
 	{
 		"id": "444442003",
 		"key": "slicelife444441003desc",
-		"en|ch|tc|kr": "+ 80% max hp, + 20% max MP"
+		"en|ch|tc|kr": "+80 % de PV maximum, +20 % de PM maximum"
 	},
 	{
 		"id": "444443003",
@@ -57,7 +57,7 @@
 	{
 		"id": "444443103",
 		"key": "taskDesc444443003",
-		"en|ch|tc|kr": "Aller 20 ans sans s'engager dans aucune bataille."
+		"en|ch|tc|kr": "Passer 20 ans sans s’engager dans aucune bataille."
 	},
 	{
 		"id": "444441004",
@@ -67,7 +67,7 @@
 	{
 		"id": "444442004",
 		"key": "slicelife444441004desc",
-		"en|ch|tc|kr": "+ 120% max hp, + 30% max MP, + 2% def"
+		"en|ch|tc|kr": "+120 % de PV maximum, +30 % de PM maximum, +2 % de Déf"
 	},
 	{
 		"id": "444443004",
@@ -77,7 +77,7 @@
 	{
 		"id": "444443104",
 		"key": "taskDesc444443004",
-		"en|ch|tc|kr": "Aller 40 ans sans s'engager dans aucune bataille."
+		"en|ch|tc|kr": "Passer 40 ans sans s'engager dans aucune bataille."
 	},
 	{
 		"id": "444441005",
@@ -87,7 +87,7 @@
 	{
 		"id": "444442005",
 		"key": "slicelife444441005desc",
-		"en|ch|tc|kr": "+ 160% max hp, + 40% max MP, + 5% def"
+		"en|ch|tc|kr": "+160 % de PV maximum, +40 % de PM maximum, +5 % de Déf"
 	},
 	{
 		"id": "444443005",
@@ -97,7 +97,7 @@
 	{
 		"id": "444443105",
 		"key": "taskDesc444443005",
-		"en|ch|tc|kr": "Aller 100 ans sans s'engager dans aucune bataille."
+		"en|ch|tc|kr": "Passer 100 ans sans s'engager dans aucune bataille."
 	},
 	{
 		"id": "444441006",
@@ -107,7 +107,7 @@
 	{
 		"id": "444442006",
 		"key": "slicelife444441006desc",
-		"en|ch|tc|kr": "+ 220% max hp, + 60% max MP, + 10% def"
+		"en|ch|tc|kr": "+220 % de PV maximum, +60 % de PM maximum, +10 % de Déf"
 	},
 	{
 		"id": "444443006",
@@ -117,6 +117,6 @@
 	{
 		"id": "444443106",
 		"key": "taskDesc444443006",
-		"en|ch|tc|kr": "Aller 300 ans sans s'engager dans aucune bataille."
+		"en|ch|tc|kr": "Passer 300 ans sans s'engager dans aucune bataille."
 	}
 ]

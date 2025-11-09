@@ -104,11 +104,11 @@ class ProgressBar:
                 components.append(f"ETA: {self._format_time(eta)}")
         
         # Description (truncate if too long)
-        if description:
-            max_desc_length = PROGRESS_BAR_CONFIG['max_desc_length']
-            if len(description) > max_desc_length:
-                description = description[:max_desc_length-3] + "..."
-            components.append(description)
+        # if description:
+        #     max_desc_length = PROGRESS_BAR_CONFIG['max_desc_length']
+        #     if len(description) > max_desc_length:
+        #         description = description[:max_desc_length-3] + "..."
+        #     components.append(description)
         
         # Suffix
         if self.config.suffix:
@@ -117,9 +117,9 @@ class ProgressBar:
         # Print với carriage return, không cần clear line mỗi lần
         line = " ".join(components)
         # Đảm bảo line không quá dài cho terminal
-        max_line_length = PROGRESS_BAR_CONFIG['max_line_length']
-        if len(line) > max_line_length:
-            line = line[:max_line_length-3] + "..."
+        # max_line_length = PROGRESS_BAR_CONFIG['max_line_length']
+        # if len(line) > max_line_length:
+        #     line = line[:max_line_length-3] + "..."
         
         # Chỉ dùng carriage return để overwrite
         sys.stdout.write(f"\r{line}")

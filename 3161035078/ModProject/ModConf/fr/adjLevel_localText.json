@@ -12,7 +12,7 @@
 	{
 		"id": "500060002",
 		"key": "adjLvl500060002",
-		"en|ch|tc|kr": "Rare"
+		"en|ch|tc|kr": "Peu fréquent"
 	},
 	{
 		"id": "500060003",
@@ -22,7 +22,7 @@
 	{
 		"id": "500060004",
 		"key": "adjLvl500060004",
-		"en|ch|tc|kr": "Myst"
+		"en|ch|tc|kr": "Mystère"
 	},
 	{
 		"id": "500060005",
@@ -37,6 +37,6 @@
 	{
 		"id": "500060007",
 		"key": "adjLvl500060007",
-		"en|ch|tc|kr": "Antique"
+		"en|ch|tc|kr": "Antiquité"
 	}
 ]

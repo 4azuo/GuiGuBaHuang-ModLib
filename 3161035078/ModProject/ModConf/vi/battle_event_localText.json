@@ -2,12 +2,12 @@
 	{
 		"id": "480110100",
 		"key": "battleevent480110100",
-		"en|ch|tc|kr": "Ha ha ha! Các chiến lợi phẩm là của tôi! Tất cả của nó!"
+		"en|ch|tc|kr": "Ha ha ha! Chiến lợi phẩm là của tôi! Tất cả!"
 	},
 	{
 		"id": "480110200",
 		"key": "battleevent480110200",
-		"en|ch|tc|kr": "Hãy để tôi giúp đỡ!"
+		"en|ch|tc|kr": "Hãy để tôi giúp!"
 	},
 	{
 		"id": "480110300",
@@ -22,17 +22,17 @@
 	{
 		"id": "480110500",
 		"key": "battleevent480110500",
-		"en|ch|tc|kr": "Tôi có đủ với bạn! Đi xuống địa ngục!"
+		"en|ch|tc|kr": "Tôi có đủ với bạn! Xuống địa ngục đi!"
 	},
 	{
 		"id": "480110501",
 		"key": "battleevent480110501",
-		"en|ch|tc|kr": "Những điều bạn đang làm thật kinh tởm. Đi xuống địa ngục, bạn xấu xa!"
+		"en|ch|tc|kr": "Những điều bạn đang làm thật kinh tởm. Xuống địa ngục đi, đồ ác độc!"
 	},
 	{
 		"id": "480110502",
 		"key": "battleevent480110502",
-		"en|ch|tc|kr": "Phong thái cao của bạn thực sự khiến tôi buồn nôn."
+		"en|ch|tc|kr": "Thái độ cao cả của bạn thực sự làm tôi buồn nôn."
 	},
 	{
 		"id": "480110600",
@@ -42,22 +42,22 @@
 	{
 		"id": "480110601",
 		"key": "battleevent480110601",
-		"en|ch|tc|kr": "Hãy cho tôi mọi thứ bạn có cho bạn!"
+		"en|ch|tc|kr": "Hãy cho tôi tất cả những gì bạn có về bạn!"
 	},
 	{
 		"id": "480110602",
 		"key": "battleevent480110602",
-		"en|ch|tc|kr": "Đừng lo lắng, tôi chỉ là ‘mượn công cụ của bạn mãi mãi."
+		"en|ch|tc|kr": "Đừng lo lắng, tôi chỉ ‘mượn’ đồ của bạn mãi mãi thôi."
 	},
 	{
 		"id": "480111990",
 		"key": "battleevent480111990typeDesc",
-		"en|ch|tc|kr": "Chiến tranh"
+		"en|ch|tc|kr": "chiến tranh"
 	},
 	{
 		"id": "480112990",
 		"key": "battleevent480112990name",
-		"en|ch|tc|kr": "Chiến tranh thị trấn"
+		"en|ch|tc|kr": "chiến tranh thị trấn"
 	},
 	{
 		"id": "480113990",
@@ -72,52 +72,52 @@
 	{
 		"id": "480113991",
 		"key": "battleevent480113991vicDesc",
-		"en|ch|tc|kr": "Giết tất cả quái vật."
+		"en|ch|tc|kr": "Tiêu diệt tất cả quái vật."
 	},
 	{
 		"id": "480112880",
 		"key": "monstwave480112880name",
-		"en|ch|tc|kr": "Lumos Bean Mage"
+		"en|ch|tc|kr": "Pháp sư đậu Lumos"
 	},
 	{
 		"id": "480112881",
 		"key": "monstwave480112881name",
-		"en|ch|tc|kr": "Vũ công Blade Blade"
+		"en|ch|tc|kr": "kiếm vũ công xanh tươi"
 	},
 	{
 		"id": "480112882",
 		"key": "monstwave480112882name",
-		"en|ch|tc|kr": "Chất độc hại nấm"
+		"en|ch|tc|kr": "Chất độc nấm"
 	},
 	{
 		"id": "480112883",
 		"key": "monstwave480112883name",
-		"en|ch|tc|kr": "Nắm tay bằng đá"
+		"en|ch|tc|kr": "Nắm đấm đá"
 	},
 	{
 		"id": "480112884",
 		"key": "monstwave480112884name",
-		"en|ch|tc|kr": "Búa gỗ tối"
+		"en|ch|tc|kr": "Búa gỗ đen"
 	},
 	{
 		"id": "480112885",
 		"key": "monstwave480112885name",
-		"en|ch|tc|kr": "Fiendal Fiend"
+		"en|ch|tc|kr": "Quỷ hoa"
 	},
 	{
 		"id": "480112886",
 		"key": "monstwave480112886name",
-		"en|ch|tc|kr": "Terra Maul"
+		"en|ch|tc|kr": "đất nung"
 	},
 	{
 		"id": "480112887",
 		"key": "monstwave480112887name",
-		"en|ch|tc|kr": "Quỷ núi Savage"
+		"en|ch|tc|kr": "Quỷ núi man rợ"
 	},
 	{
 		"id": "480112888",
 		"key": "monstwave480112888name",
-		"en|ch|tc|kr": "Gieo tối"
+		"en|ch|tc|kr": "lợn đen"
 	},
 	{
 		"id": "480112889",
@@ -127,17 +127,17 @@
 	{
 		"id": "480112890",
 		"key": "battleevent480112890",
-		"en|ch|tc|kr": "Vùng đất run rẩy dưới chân bạn khi trận chiến nổ ra. Sự lựa chọn của bạn bây giờ sẽ xác định con đường của bạn!"
+		"en|ch|tc|kr": "Mặt đất rung chuyển dưới chân bạn khi trận chiến diễn ra ác liệt. Sự lựa chọn của bạn bây giờ sẽ quyết định con đường của bạn!"
 	},
 	{
 		"id": "480112891",
 		"key": "battleevent480112891",
-		"en|ch|tc|kr": "Giúp người bảo vệ"
+		"en|ch|tc|kr": "Trợ giúp hậu vệ"
 	},
 	{
 		"id": "480112892",
 		"key": "battleevent480112892",
-		"en|ch|tc|kr": "Giúp xâm lược"
+		"en|ch|tc|kr": "Trợ giúp kẻ xâm lược"
 	},
 	{
 		"id": "480112893",
@@ -157,11 +157,11 @@
 	{
 		"id": "480112898",
 		"key": "battleevent480112898",
-		"en|ch|tc|kr": "Không quan tâm"
+		"en|ch|tc|kr": "không quan tâm"
 	},
 	{
 		"id": "480112899",
 		"key": "battleevent480112899",
-		"en|ch|tc|kr": "Giúp đỡ"
+		"en|ch|tc|kr": "Trợ giúp"
 	}
 ]

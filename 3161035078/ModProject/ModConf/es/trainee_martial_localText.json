@@ -2,101 +2,101 @@
 	{
 		"id": "420072001",
 		"key": "trainee420071001",
-		"en|ch|tc|kr": "LVL-1 marcial"
+		"en|ch|tc|kr": "Marcial Lvl-1"
 	},
 	{
 		"id": "420073001",
 		"key": "trainee420071001desc",
-		"en|ch|tc|kr": "+2% max hp"
+		"en|ch|tc|kr": "+2 % de vida máxima"
 	},
 	{
 		"id": "420072002",
 		"key": "trainee420071002",
-		"en|ch|tc|kr": "LVL-2 marcial"
+		"en|ch|tc|kr": "Marcial Lvl-2"
 	},
 	{
 		"id": "420073002",
 		"key": "trainee420071002desc",
-		"en|ch|tc|kr": "+4% máximo de HP"
+		"en|ch|tc|kr": "+4 % de vida máxima"
 	},
 	{
 		"id": "420072003",
 		"key": "trainee420071003",
-		"en|ch|tc|kr": "LVL-3 marcial"
+		"en|ch|tc|kr": "Marcial Lvl-3"
 	},
 	{
 		"id": "420073003",
 		"key": "trainee420071003desc",
-		"en|ch|tc|kr": "+7% máximo de HP"
+		"en|ch|tc|kr": "+7 % de vida máxima"
 	},
 	{
 		"id": "420072004",
 		"key": "trainee420071004",
-		"en|ch|tc|kr": "LVL-4 marcial"
+		"en|ch|tc|kr": "Marcial Lvl-4"
 	},
 	{
 		"id": "420073004",
 		"key": "trainee420071004desc",
-		"en|ch|tc|kr": "+10% máximo de HP"
+		"en|ch|tc|kr": "+10 % de vida máxima"
 	},
 	{
 		"id": "420072005",
 		"key": "trainee420071005",
-		"en|ch|tc|kr": "LVL-5 marcial"
+		"en|ch|tc|kr": "Marcial Lvl-5"
 	},
 	{
 		"id": "420073005",
 		"key": "trainee420071005desc",
-		"en|ch|tc|kr": "+15% max hp"
+		"en|ch|tc|kr": "+15 % de vida máxima"
 	},
 	{
 		"id": "420072006",
 		"key": "trainee420071006",
-		"en|ch|tc|kr": "LVL-6 marcial"
+		"en|ch|tc|kr": "Marcial Lvl-6"
 	},
 	{
 		"id": "420073006",
 		"key": "trainee420071006desc",
-		"en|ch|tc|kr": "+20% máximo de HP"
+		"en|ch|tc|kr": "+20 % de vida máxima"
 	},
 	{
 		"id": "420072007",
 		"key": "trainee420071007",
-		"en|ch|tc|kr": "LVL-7 marcial"
+		"en|ch|tc|kr": "Marcial Lvl-7"
 	},
 	{
 		"id": "420073007",
 		"key": "trainee420071007desc",
-		"en|ch|tc|kr": "+30% máximo de HP"
+		"en|ch|tc|kr": "+30 % de vida máxima"
 	},
 	{
 		"id": "420072008",
 		"key": "trainee420071008",
-		"en|ch|tc|kr": "LVL-8 marcial"
+		"en|ch|tc|kr": "Marcial Lvl-8"
 	},
 	{
 		"id": "420073008",
 		"key": "trainee420071008desc",
-		"en|ch|tc|kr": "+40% máximo de HP"
+		"en|ch|tc|kr": "+40 % de vida máxima"
 	},
 	{
 		"id": "420072009",
 		"key": "trainee420071009",
-		"en|ch|tc|kr": "LVL-9 marcial"
+		"en|ch|tc|kr": "Marcial Lvl-9"
 	},
 	{
 		"id": "420073009",
 		"key": "trainee420071009desc",
-		"en|ch|tc|kr": "+60% máximo de HP"
+		"en|ch|tc|kr": "+60 % de vida máxima"
 	},
 	{
 		"id": "420072010",
 		"key": "trainee420071010",
-		"en|ch|tc|kr": "LVL-10 marcial"
+		"en|ch|tc|kr": "Marcial Lvl-10"
 	},
 	{
 		"id": "420073010",
 		"key": "trainee420071010desc",
-		"en|ch|tc|kr": "+90% máximo de HP"
+		"en|ch|tc|kr": "+90 % de vida máxima"
 	}
 ]

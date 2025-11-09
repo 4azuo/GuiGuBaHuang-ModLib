@@ -7,7 +7,7 @@
 	{
 		"id": "420103001",
 		"key": "rebirth420101001desc",
-		"en|ch|tc|kr": "+5% máximo de HP"
+		"en|ch|tc|kr": "+5 % de vida máxima"
 	},
 	{
 		"id": "420102002",
@@ -17,7 +17,7 @@
 	{
 		"id": "420103002",
 		"key": "rebirth420101002desc",
-		"en|ch|tc|kr": "+10% máximo de HP"
+		"en|ch|tc|kr": "+10 % de vida máxima"
 	},
 	{
 		"id": "420102003",
@@ -27,7 +27,7 @@
 	{
 		"id": "420103003",
 		"key": "rebirth420101003desc",
-		"en|ch|tc|kr": "+15% max hp"
+		"en|ch|tc|kr": "+15 % de vida máxima"
 	},
 	{
 		"id": "420102004",
@@ -37,7 +37,7 @@
 	{
 		"id": "420103004",
 		"key": "rebirth420101004desc",
-		"en|ch|tc|kr": "+20% máximo de HP"
+		"en|ch|tc|kr": "+20 % de vida máxima"
 	},
 	{
 		"id": "420102005",
@@ -47,7 +47,7 @@
 	{
 		"id": "420103005",
 		"key": "rebirth420101005desc",
-		"en|ch|tc|kr": "+25% máximo de HP"
+		"en|ch|tc|kr": "+25 % de vida máxima"
 	},
 	{
 		"id": "420102006",
@@ -57,7 +57,7 @@
 	{
 		"id": "420103006",
 		"key": "rebirth420101006desc",
-		"en|ch|tc|kr": "+30% máximo de HP"
+		"en|ch|tc|kr": "+30 % de vida máxima"
 	},
 	{
 		"id": "420102007",
@@ -67,7 +67,7 @@
 	{
 		"id": "420103007",
 		"key": "rebirth420101007desc",
-		"en|ch|tc|kr": "+35% máximo de HP"
+		"en|ch|tc|kr": "+35 % de vida máxima"
 	},
 	{
 		"id": "420102008",
@@ -77,7 +77,7 @@
 	{
 		"id": "420103008",
 		"key": "rebirth420101008desc",
-		"en|ch|tc|kr": "+40% máximo de HP"
+		"en|ch|tc|kr": "+40 % de vida máxima"
 	},
 	{
 		"id": "420102009",
@@ -87,7 +87,7 @@
 	{
 		"id": "420103009",
 		"key": "rebirth420101009desc",
-		"en|ch|tc|kr": "+45% máximo de HP"
+		"en|ch|tc|kr": "+45 % de vida máxima"
 	},
 	{
 		"id": "420102010",
@@ -97,17 +97,17 @@
 	{
 		"id": "420103010",
 		"key": "rebirth420101010desc",
-		"en|ch|tc|kr": "+50% máximo de HP"
+		"en|ch|tc|kr": "+50 % de vida máxima"
 	},
 	{
 		"id": "420109999",
 		"key": "rebirth420109999dialog",
-		"en|ch|tc|kr": "Este renacimiento es una oportunidad. Una oportunidad de rectificar errores pasados, seguir un camino diferente. Debo elegir sabiamente. Qué habilidades retener, qué conocimiento descartar. Cada decisión dará forma a mi destino."
+		"en|ch|tc|kr": "Este renacimiento es una oportunidad. Una oportunidad de rectificar errores del pasado, de seguir un camino diferente. Debo elegir sabiamente. Qué habilidades retener, qué conocimientos descartar. Cada decisión moldeará mi destino."
 	},
 	{
 		"id": "420103100",
 		"key": "rebirth420103100",
-		"en|ch|tc|kr": "¡Tienes que dejar la secta!"
+		"en|ch|tc|kr": "¡Tienes que abandonar la secta!"
 	},
 	{
 		"id": "420103101",
@@ -122,6 +122,6 @@
 	{
 		"id": "420103103",
 		"key": "rebirth420103103",
-		"en|ch|tc|kr": "Este mecánico restablecerá todo su nivel de personaje, EXP y reputación.\nCuando regreses con el mismo nivel, tu personaje será más fuerte."
+		"en|ch|tc|kr": "Esta mecánica restablecerá todo el nivel, experiencia y reputación de tu personaje.\nCuando vuelvas con el mismo nivel, tu personaje será más fuerte."
 	}
 ]
