@@ -63,7 +63,7 @@ class TranslationService:
         for i, format_str in enumerate(unique_matches):
             placeholder = f"{prefix}{i}{suffix}"
             format_map[placeholder] = format_str
-            protected_text = protected_text.replace(format_str, placeholder, 1)
+            protected_text = protected_text.replace(format_str, placeholder)
             
         return protected_text, format_map
     

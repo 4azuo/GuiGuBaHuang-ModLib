@@ -43,8 +43,8 @@ SKIP_TRANSLATION_TEXTS = [
 # Cấu hình ngữ cảnh cho dịch thuật
 CONTEXT_CONFIG = {
     # Prefix ngữ cảnh chung cho tất cả ngôn ngữ (không bị dịch)
-    'context_prefix': '{\uF802}Game cultivation context{/\uF802}\n',
-    'context_marker': r'{\uF802}.+{/\uF802}'
+    'context_prefix': '{\uF8B2}Game cultivation context{/\uF8B2}\n',
+    'context_marker': r'{\uF8B2}.+?{/\uF8B2}'
 }
 
 # Format string patterns cần bảo vệ khỏi bị biến đổi trong quá trình dịch
@@ -55,17 +55,17 @@ FORMAT_PROTECTION_CONFIG = {
         r'%[sdf]',            # Printf style: %s, %d, %f
         r'%\d+[sdf]',         # Printf with position: %1s, %2d, %3f
         r'\$\{\w+\}',         # Template strings: ${variable}
-        r'[+\-*/=<>!]+',      # Mathematical operators: +, -, *, /, =, <, >, !
-        r'\([+\-*/=<>!\d\s,\.]+\)', # Mathematical expressions in parentheses
-        r'\[[+\-*/=<>!\d\s,\.]+\]', # Mathematical expressions in brackets
-        r'[\d\s]*[+\-*/=<>!]+[\d\s]*', # Simple math expressions with operators
+        # r'[+\-*/=<>!]+',      # Mathematical operators: +, -, *, /, =, <, >, !
+        # r'\([+\-*/=<>!\d\s,\.]+\)', # Mathematical expressions in parentheses
+        # r'\[[+\-*/=<>!\d\s,\.]+\]', # Mathematical expressions in brackets
+        # r'[\d\s]*[+\-*/=<>!]+[\d\s]*', # Simple math expressions with operators
     ],
     
     # Placeholder prefix/suffix để thay thế format strings tạm thời
     'placeholder': {
-        'prefix': '{\uF801}',
-        'suffix': '{/\uF801}',
-        'placeholder_marker': r'{\uF801}\d+{/\uF801}'
+        'prefix': '{\uF8B1}',
+        'suffix': '{/\uF8B1}',
+        'placeholder_marker': r'{\uF8B1}\d+?{/\uF8B1}'
     }
 }
 
