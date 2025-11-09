@@ -163,14 +163,10 @@ class LocalTextProcessor:
                 print_result(UI_ICONS['warning'], f"File {filename} không có dữ liệu tiếng Anh để dịch")
                 return True  # Không phải lỗi, chỉ là file không cần dịch
             
-            def progress_translator(text: str, target_lang: str) -> str:
-                result = self.translation_service.translate_text(text, target_lang)
-                return result
-            
             # Dịch text trong main file (cập nhật các trường ngôn ngữ: ch, tc, kr)
             translated_data = TranslateUtils.translate_main_file_languages(
                 main_data,
-                progress_translator,
+                self.translation_service.translate_text,
                 preserve_existing=self.config.preserve_existing_translations
             )
             
@@ -210,10 +206,6 @@ class LocalTextProcessor:
                 print_result(UI_ICONS['error'], f"Không đọc được main file", main_file_path)
                 return False
             
-            def progress_translator(text: str, target_lang: str) -> str:
-                result = self.translation_service.translate_text(text, target_lang)
-                return result
-            
             # Đọc locale data hiện có nếu preserve mode được bật
             existing_locale_data = None
             if self.config.preserve_existing_translations and os.path.exists(locale_file_path):
@@ -223,7 +215,7 @@ class LocalTextProcessor:
             locale_data = TranslateUtils.create_locale_data_from_main(
                 main_data, 
                 target_lang, 
-                progress_translator,
+                self.translation_service.translate_text,
                 existing_locale_data=existing_locale_data,
                 preserve_existing=self.config.preserve_existing_translations
             )
