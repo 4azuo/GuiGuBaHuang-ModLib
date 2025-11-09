@@ -167,17 +167,6 @@ Ví dụ sử dụng:
         # Xử lý thực tế
         try:
             processor.process_files(project_path, args.path, args.file_type, max_workers=args.workers)
-        except KeyboardInterrupt:
-            from progressbar_utils import print_stats
-            print_warning("Quá trình xử lý đã bị dừng bởi người dùng")
-            
-            interrupt_stats = {
-                f"{UI_ICONS['folder']} Đã xử lý": f"{processor.stats.processed_count} file",
-                f"{UI_ICONS['globe']} Đã dịch": f"{processor.translation_service.stats.translated_count} text"
-            }
-            print_stats(interrupt_stats)
-            print_info("Bạn có thể chạy lại lệnh để tiếp tục từ nơi đã dừng")
-            return
         except Exception as e:
             print_error("Lỗi trong quá trình xử lý", str(e))
             return

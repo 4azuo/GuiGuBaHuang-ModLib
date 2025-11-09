@@ -180,11 +180,7 @@ class TranslationService:
                         self.stats.translated_count += 1
                     return result
                     
-                except KeyboardInterrupt:
-                    # Re-raise KeyboardInterrupt to allow clean exit
-                    raise
-                    
-                except Exception as network_error:
+                except Exception:
                     if attempt < self.config.max_retries - 1:
                         # Silent retry - progress bar will show overall progress
                         time.sleep(self.config.retry_delay)
@@ -192,11 +188,8 @@ class TranslationService:
                         with self._stats_lock:
                             self.stats.failed_count += 1
                         return text
-                        
-        except KeyboardInterrupt:
-            raise
             
-        except Exception as e:
+        except Exception:
             with self._stats_lock:
                 self.stats.failed_count += 1
             return text

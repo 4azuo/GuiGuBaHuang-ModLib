@@ -159,12 +159,7 @@ class ProgressContext:
     
     def __exit__(self, exc_type, exc_val, exc_tb):
         if self.progress_bar:
-            if exc_type is KeyboardInterrupt:
-                self.progress_bar.finish("Đã dừng bởi người dùng")
-            elif exc_type:
-                self.progress_bar.finish("Lỗi xử lý")
-            else:
-                self.progress_bar.finish()
+            self.progress_bar.finish()
 
 def create_file_progress_config(prefix: str = None) -> ProgressConfig:
     """Create progress config for file processing"""
