@@ -122,7 +122,8 @@ UI_ICONS = {
     'time': '⏱️',
     'delete': '🗑️',
     'result': '📊',
-    'header': '🚀'
+    'header': '🚀',
+    'worker': '👷'
 }
 
 # Common UI messages
@@ -141,7 +142,8 @@ UI_MESSAGES = {
 
 # Progress bar configuration
 PROGRESS_BAR_CONFIG = {
-    'width': 40,  # Fixed width for all progress bars
+    'overall_width': 40,
+    'children_width': 20,
     'fill_char': '█',
     'empty_char': '░',
     'show_percentage': True,

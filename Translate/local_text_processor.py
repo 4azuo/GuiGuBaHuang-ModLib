@@ -18,7 +18,7 @@ from translation_service import TranslationService
 from translate_utils import TranslateUtils
 from json_utils import JsonUtils
 from progressbar_utils import (
-    ProgressBar, ProgressContext, create_file_progress_config, 
+    MultiFileProgressManager,
     print_info, print_section, print_warning, print_error, print_stats,
     print_result
 )
@@ -31,19 +31,20 @@ class LocalTextProcessor:
         self.config = translation_config
         self.stats = ProcessingStats()
         self.executor = None
+        self.progress_manager = None
         self._setup_signal_handler()
     
     def _setup_signal_handler(self):
         """Setup signal handler to catch Ctrl+C"""
         def signal_handler(signum, frame):
-            print()
-            print_error("Received stop signal (Ctrl+C)...")
-            
             # Shutdown executor if running
             if self.executor:
-                print_info("Stopping running tasks...")
                 self.executor.shutdown(wait=False)
                 self.executor = None
+            
+            # Finish progress manager if running    
+            if self.progress_manager:
+                self.progress_manager.finish()
                 
             print_error("Processing has been stopped")
             # Use os._exit() to exit main thread and entire process
@@ -101,71 +102,83 @@ class LocalTextProcessor:
             f"{UI_ICONS['globe']} Locale files": len(locale_files),
             f"{UI_ICONS['target']} Processing type": file_type,
             f"{UI_ICONS['globe']} Target languages": ', '.join(self.config.target_languages),
-            f"{UI_ICONS['success']} Preserve mode": 'On' if self.config.preserve_existing_translations else 'Off'
+            f"{UI_ICONS['success']} Preserve mode": 'On' if self.config.preserve_existing_translations else 'Off',
+            f"{UI_ICONS['worker']} Workers": max_workers
         }
         if file_type != "both":
             stats_info[f"{UI_ICONS['list']} Will process"] = f"{len(files_to_process)} files"
         
+        print("=" * 60)
         print_stats(stats_info)
-        
+        print("=" * 60)
+
         # Prepare thread-safety primitives for concurrent runs
         stats_lock = threading.Lock()
 
         # Step 1: Process main files (parallel)
         if file_type in ["main", "both"] and main_files:
             print_section(f"Processing {len(main_files)} main files (parallel with {max_workers} workers)")
+            self.progress_manager = MultiFileProgressManager(main_files)
             
-            def process_main_file_worker(file_path: str, progress: ProgressBar) -> bool:
+            def process_main_file_worker(file_path: str) -> bool:
                 """Worker function to process a main file"""
                 try:
-                    result = self.process_main_file(progress, file_path)
+                    # Process the file
+                    result = self.process_main_file(file_path)
+                    
+                    # Update stats and progress
                     with stats_lock:
                         if result:
                             self.stats.processed_count += 1
+                            self.progress_manager.complete_file(file_path)
+                        else:
+                            self.progress_manager.error_file(file_path, "Processing failed")
+                    
                     return result
-                except Exception:
-                    # process_main_file already logged error, continue
+                except Exception as e:
+                    self.progress_manager.error_file(file_path, f"Error: {str(e)}")
                     return False
             
-            with ProgressContext(
-                len(main_files), 
-                "Processing main files...", 
-                create_file_progress_config(UI_ICONS['file'])
-            ) as progress:
-                if max_workers == 1:
-                    # Sequential processing
-                    for file_path in main_files:
-                        filename = os.path.basename(file_path)
-                        progress.update(1, f"Processing {filename}")
-                        process_main_file_worker(file_path, progress)
-                else:
-                    # Parallel processing with ThreadPoolExecutor
-                    self.executor = concurrent.futures.ThreadPoolExecutor(max_workers=max_workers)
-                    try:
-                        futures = {self.executor.submit(process_main_file_worker, fp, progress): fp for fp in main_files}
-                        for future in concurrent.futures.as_completed(futures):
-                            future.result()
-                            filename = os.path.basename(futures[future])
-                            progress.update(1, f"Completed {filename}")
-                    finally:
-                        if self.executor:
-                            self.executor.shutdown(wait=False)
-                            self.executor = None
+            if max_workers == 1:
+                # Sequential processing
+                for file_path in main_files:
+                    process_main_file_worker(file_path)
+            else:
+                # Parallel processing with ThreadPoolExecutor
+                self.executor = concurrent.futures.ThreadPoolExecutor(max_workers=max_workers)
+                try:
+                    futures = {self.executor.submit(process_main_file_worker, fp): fp for fp in main_files}
+                    for future in concurrent.futures.as_completed(futures):
+                        future.result()
+                finally:
+                    if self.executor:
+                        self.executor.shutdown(wait=False)
+                        self.executor = None
+            
+            # Finish progress display
+            if self.progress_manager:
+                self.progress_manager.finish()
+                self.progress_manager = None
         
         # Step 2: Process locale files (parallel)
-        if file_type in ["locale", "both"] and main_files and not self.interrupted:
+        if file_type in ["locale", "both"] and main_files:
             print_section(f"Recreating locale files from {len(main_files)} main files (parallel with {max_workers} workers)")
+            self.progress_manager = MultiFileProgressManager(main_files)
             
-            def process_locale_file_worker(file_path: str, progress: ProgressBar) -> bool:
+            def process_locale_file_worker(file_path: str) -> bool:
                 """Worker function to process locale files from a main file"""
-                if self.interrupted:
-                    return False
-                
                 try:
                     main_filename = os.path.basename(file_path)
                     success_any = 0
+                    total_langs = len(self.config.target_languages)
                     
-                    for lang in self.config.target_languages:
+                    for i, lang in enumerate(self.config.target_languages):
+                        # Update progress for this language
+                        progress_val = i / total_langs
+                        self.progress_manager.update_file_progress(
+                            file_path, progress_val, f"Creating {lang} locale..."
+                        )
+                        
                         locale_dir = os.path.join(modconf_path, lang)
                         locale_file_path = os.path.join(locale_dir, main_filename)
 
@@ -174,39 +187,42 @@ class LocalTextProcessor:
                             self.cleanup_locale_file(locale_file_path)
                         
                         # Recreate locale files from main file
-                        if self.process_locale_file(progress, file_path, locale_file_path):
+                        if self.process_locale_file(file_path, locale_file_path):
                             with stats_lock:
                                 self.stats.processed_count += 1
                             success_any += 1
 
+                    # Final update
+                    if success_any == len(self.config.target_languages):
+                        self.progress_manager.complete_file(file_path)
+                    else:
+                        self.progress_manager.error_file(file_path, f"Only {success_any}/{total_langs} locales created")
+
                     return success_any == len(self.config.target_languages)
-                except Exception:
+                except Exception as e:
+                    self.progress_manager.error_file(file_path, f"Error: {str(e)}")
                     return False
             
-            with ProgressContext(
-                len(main_files), 
-                "Recreating locale files...", 
-                create_file_progress_config(UI_ICONS['file'])
-            ) as progress:
-                if max_workers == 1:
-                    # Sequential processing
-                    for file_path in main_files:
-                        filename = os.path.basename(file_path)
-                        progress.update(1, f"Processing {filename}")
-                        process_locale_file_worker(file_path, progress)
-                else:
-                    # Parallel processing with ThreadPoolExecutor
-                    self.executor = concurrent.futures.ThreadPoolExecutor(max_workers=max_workers)
-                    try:
-                        futures = {self.executor.submit(process_locale_file_worker, fp, progress): fp for fp in main_files}
-                        for future in concurrent.futures.as_completed(futures):
-                            future.result()
-                            filename = os.path.basename(futures[future])
-                            progress.update(1, f"Completed {filename}")
-                    finally:
-                        if self.executor:
-                            self.executor.shutdown(wait=False)
-                            self.executor = None
+            if max_workers == 1:
+                # Sequential processing
+                for file_path in main_files:
+                    process_locale_file_worker(file_path)
+            else:
+                # Parallel processing with ThreadPoolExecutor
+                self.executor = concurrent.futures.ThreadPoolExecutor(max_workers=max_workers)
+                try:
+                    futures = {self.executor.submit(process_locale_file_worker, fp): fp for fp in main_files}
+                    for future in concurrent.futures.as_completed(futures):
+                        future.result()
+                finally:
+                    if self.executor:
+                        self.executor.shutdown(wait=False)
+                        self.executor = None
+            
+            # Finish progress display
+            if self.progress_manager:
+                self.progress_manager.finish()
+                self.progress_manager = None
         
         # Result statistics
         end_time = time.time()
@@ -219,19 +235,29 @@ class LocalTextProcessor:
             f"{UI_ICONS['error']} Translation errors": f"{self.translation_service.stats.failed_count} text",
             f"{UI_ICONS['time']} Time elapsed": f"{elapsed_time:.1f}s"
         }
+        print("=" * 60)
         print_stats(result_stats)
+        print("=" * 60)
+
     
-    def process_main_file(self, progress: ProgressBar, file_path: str) -> bool:
+    def process_main_file(self, file_path: str) -> bool:
         """Process main file and translate languages within it"""
         
         try:
             filename = os.path.basename(file_path)
+            
+            # Update progress
+            if self.progress_manager:
+                self.progress_manager.update_file_progress(file_path, 0.1, "Reading file...")
             
             # Read main file
             main_data = JsonUtils.read_json_file(file_path)
             if not main_data:
                 print_result(UI_ICONS['error'], f"Cannot read file {filename}")
                 return False
+            
+            if self.progress_manager:
+                self.progress_manager.update_file_progress(file_path, 0.2, "Normalizing data...")
             
             # Normalize combined keys to simple keys (e.g., "en|ch|tc|kr" -> "en")
             main_data = TranslateUtils.normalize_main_file_keys(main_data)
@@ -241,8 +267,14 @@ class LocalTextProcessor:
                 print_result(UI_ICONS['warning'], f"File {filename} has no English data to translate")
                 return True  # Not an error, just a file that doesn't need translation
             
+            if self.progress_manager:
+                self.progress_manager.update_file_progress(file_path, 0.3, "Starting translation...")
+            
             def progress_translator(text: str, target_lang: str, item_id: str = 'N/A') -> str:
-                progress.rerender(f"Processing {filename}\nTranslating to '{target_lang}'\nId: '{item_id}'")
+                if self.progress_manager:
+                    self.progress_manager.update_file_progress(
+                        file_path, 0.4, f"Translating to '{target_lang}' - Id: '{item_id}'"
+                    )
                 result = self.translation_service.translate_text(text, target_lang)
                 return result
             
@@ -252,6 +284,9 @@ class LocalTextProcessor:
                 progress_translator,
                 preserve_existing=self.config.preserve_existing_translations
             )
+            
+            if self.progress_manager:
+                self.progress_manager.update_file_progress(file_path, 0.9, "Sorting and writing...")
             
             # Sort data
             translated_data = JsonUtils.sort_json_data(translated_data)
@@ -267,7 +302,7 @@ class LocalTextProcessor:
             print_result(UI_ICONS['error'], f"Error processing file {filename}", str(e))
             return False
 
-    def process_locale_file(self, progress: ProgressBar, main_file_path: str, locale_file_path: str) -> bool:
+    def process_locale_file(self, main_file_path: str, locale_file_path: str) -> bool:
         """Process locale file based on corresponding main file"""
         from file_utils import FileUtils
         
@@ -287,7 +322,7 @@ class LocalTextProcessor:
                 return False
             
             def progress_translator(text: str, target_lang: str, item_id: str = 'N/A') -> str:
-                progress.rerender(f"Processing {filename}\nTranslating to '{target_lang}'\nId: '{item_id}'")
+                # Progress is handled at the file level, not individual translations
                 result = self.translation_service.translate_text(text, target_lang)
                 return result
             

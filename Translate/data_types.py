@@ -13,9 +13,9 @@ from consts import TRANSLATION_CONFIG, PROGRESS_BAR_CONFIG, UI_ICONS
 @dataclass
 class ProgressConfig:
     """Configuration for progress bar"""
-    width: int = PROGRESS_BAR_CONFIG['width']
-    fill_char: str = UI_ICONS.get('success', '█')
-    empty_char: str = '░'
+    width: int = PROGRESS_BAR_CONFIG['overall_width']
+    fill_char: str = PROGRESS_BAR_CONFIG['fill_char']
+    empty_char: str = PROGRESS_BAR_CONFIG['empty_char']
     show_percentage: bool = True
     show_time: bool = True
     show_count: bool = True
