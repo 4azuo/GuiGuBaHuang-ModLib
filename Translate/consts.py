@@ -57,7 +57,7 @@ TERMINOLOGY_CONFIG = {
         'DPS', 'DoT', 'AoE', 'PvP', 'PvE',
 
         # Common abbreviations that should not be translated
-        'NPC', 'AI', 'UI', 'GUI',
+        'NPC', 'AI', 'UI', 'GUI', 'RAM',
 
         # Cultivation/Martial Arts terms - thuật ngữ tu luyện
         'Qi'
