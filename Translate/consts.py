@@ -120,7 +120,9 @@ UI_ICONS = {
     'target': '🎯',
     'list': '📋',
     'time': '⏱️',
-    'delete': '🗑️'
+    'delete': '🗑️',
+    'result': '📊',
+    'header': '🚀'
 }
 
 # Các thông điệp UI thường dùng

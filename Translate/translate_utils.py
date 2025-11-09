@@ -119,10 +119,11 @@ class TranslateUtils:
                     
                     # Dịch tiếng Anh sang các ngôn ngữ khác trong main file
                     en_text = item['en']
+                    item_id = item.get('id', 'N/A')
                     if en_text and en_text.strip():
                         # Dịch sang tiếng Việt và cập nhật trường 'vi' (nếu có)
                         if 'vi' not in new_item or not new_item['vi']:
-                            translated_vi = translator_func(en_text, 'vi')
+                            translated_vi = translator_func(en_text, 'vi', item_id)
                             new_item['vi'] = translated_vi
                         
                         # Có thể thêm dịch sang các ngôn ngữ khác
@@ -141,10 +142,11 @@ class TranslateUtils:
             
             # Dịch tiếng Anh sang tiếng Việt trong main file
             en_text = main_data.data['en']
+            item_id = main_data.data.get('id', 'N/A')
             if en_text and en_text.strip():
                 # Dịch sang tiếng Việt và cập nhật trường 'vi' (nếu có)
                 if 'vi' not in new_item or not new_item['vi']:
-                    translated_vi = translator_func(en_text, 'vi')
+                    translated_vi = translator_func(en_text, 'vi', item_id)
                     new_item['vi'] = translated_vi
             
             return LocalTextData(new_item)
@@ -203,20 +205,23 @@ class TranslateUtils:
                     # Lấy text tiếng Anh từ item (hỗ trợ cả 'en' và combined keys)
                     en_text = JsonUtils.get_english_text(item)
                     
+                    # Lấy id của item để hiển thị progress
+                    item_id = item.get('id', 'N/A')
+                    
                     if en_text and en_text.strip():
                         # Dịch sang Chinese Simplified (ch) nếu thiếu hoặc rỗng
                         if not TranslateUtils._has_valid_translation(new_item, 'ch', preserve_existing):
-                            translated_ch = translator_func(en_text, LANGUAGE_CODES['ch'])
+                            translated_ch = translator_func(en_text, LANGUAGE_CODES['ch'], item_id)
                             new_item['ch'] = translated_ch
                         
                         # Dịch sang Traditional Chinese (tc) nếu thiếu hoặc rỗng
                         if not TranslateUtils._has_valid_translation(new_item, 'tc', preserve_existing):
-                            translated_tc = translator_func(en_text, LANGUAGE_CODES['tc'])
+                            translated_tc = translator_func(en_text, LANGUAGE_CODES['tc'], item_id)
                             new_item['tc'] = translated_tc
                         
                         # Dịch sang Korean (kr) nếu thiếu hoặc rỗng
                         if not TranslateUtils._has_valid_translation(new_item, 'kr', preserve_existing):
-                            translated_kr = translator_func(en_text, LANGUAGE_CODES['kr'])
+                            translated_kr = translator_func(en_text, LANGUAGE_CODES['kr'], item_id)
                             new_item['kr'] = translated_kr
                     
                     # Sắp xếp key theo thứ tự: en, ch, tc, kr
@@ -233,18 +238,21 @@ class TranslateUtils:
             # Lấy text tiếng Anh từ dict
             en_text = JsonUtils.get_english_text(main_data.data)
             
+            # Lấy id của dict để hiển thị progress
+            item_id = main_data.data.get('id', 'N/A')
+            
             if en_text and en_text.strip():
                 # Dịch sang các ngôn ngữ thiếu hoặc rỗng
                 if not TranslateUtils._has_valid_translation(new_item, 'ch', preserve_existing):
-                    translated_ch = translator_func(en_text, LANGUAGE_CODES['ch'])
+                    translated_ch = translator_func(en_text, LANGUAGE_CODES['ch'], item_id)
                     new_item['ch'] = translated_ch
                 
                 if not TranslateUtils._has_valid_translation(new_item, 'tc', preserve_existing):
-                    translated_tc = translator_func(en_text, LANGUAGE_CODES['tc'])
+                    translated_tc = translator_func(en_text, LANGUAGE_CODES['tc'], item_id)
                     new_item['tc'] = translated_tc
                 
                 if not TranslateUtils._has_valid_translation(new_item, 'kr', preserve_existing):
-                    translated_kr = translator_func(en_text, LANGUAGE_CODES['kr'])
+                    translated_kr = translator_func(en_text, LANGUAGE_CODES['kr'], item_id)
                     new_item['kr'] = translated_kr
             
             # Sắp xếp key theo thứ tự: en, ch, tc, kr
@@ -282,6 +290,9 @@ class TranslateUtils:
                             if key not in MAIN_LANGUAGE_KEYS and not COMBINED_KEY_WITH_EN_PATTERN.match(key):
                                 new_item[key] = value
                         
+                        # Lấy id của item để hiển thị progress
+                        item_id = item.get('id', 'N/A')
+                        
                         # Kiểm tra xem entry này đã có bản dịch trong locale file chưa (theo key/id)
                         existing_translation = TranslateUtils._find_existing_translation_by_key(item, existing_locale_data, preserve_existing)
                         
@@ -290,7 +301,7 @@ class TranslateUtils:
                             new_item[LOCALE_COMBINED_KEY] = existing_translation
                         else:
                             # Dịch từ tiếng Anh sang ngôn ngữ đích
-                            translated = translator_func(en_text, target_language)
+                            translated = translator_func(en_text, target_language, item_id)
                             new_item[LOCALE_COMBINED_KEY] = translated
                         
                         result.append(new_item)
@@ -312,6 +323,9 @@ class TranslateUtils:
                     if key not in MAIN_LANGUAGE_KEYS and not COMBINED_KEY_WITH_EN_PATTERN.match(key):
                         new_item[key] = value
                 
+                # Lấy id của item để hiển thị progress
+                item_id = main_data.data.get('id', 'N/A')
+                
                 # Kiểm tra xem entry này đã có bản dịch trong locale file chưa (theo key/id)
                 existing_translation = TranslateUtils._find_existing_translation_by_key(main_data.data, existing_locale_data, preserve_existing)
                 
@@ -320,7 +334,7 @@ class TranslateUtils:
                     new_item[LOCALE_COMBINED_KEY] = existing_translation
                 else:
                     # Dịch từ tiếng Anh sang ngôn ngữ đích
-                    translated = translator_func(en_text, target_language)
+                    translated = translator_func(en_text, target_language, item_id)
                     new_item[LOCALE_COMBINED_KEY] = translated
                 
                 return LocalTextData(new_item)
