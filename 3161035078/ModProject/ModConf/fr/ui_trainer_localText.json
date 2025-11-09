@@ -7,67 +7,67 @@
 	{
 		"id": -1000002001,
 		"key": "trainer001",
-		"en|ch|tc|kr": "(HP / MP / SP / Mood / Stanima / Health)"
+		"en|ch|tc|kr": "(HP/MP/SP/Humeur/Stanima/Santé)"
 	},
 	{
 		"id": -1000002002,
 		"key": "trainer002",
-		"en|ch|tc|kr": "Récupérer tout"
+		"en|ch|tc|kr": "Récupérer TOUT"
 	},
 	{
 		"id": -1000002003,
 		"key": "trainer003",
-		"en|ch|tc|kr": "+100 000 HP max"
+		"en|ch|tc|kr": "+100 000 PV maximum"
 	},
 	{
 		"id": -1000002004,
 		"key": "trainer004",
-		"en|ch|tc|kr": "-100 000 HP max"
+		"en|ch|tc|kr": "-100 000 PV maximum"
 	},
 	{
 		"id": -1000002005,
 		"key": "trainer005",
-		"en|ch|tc|kr": "+10 000 MP max"
+		"en|ch|tc|kr": "+10 000 MP maximum"
 	},
 	{
 		"id": -1000002006,
 		"key": "trainer006",
-		"en|ch|tc|kr": "-10 000 MP max"
+		"en|ch|tc|kr": "-10 000 MP maximum"
 	},
 	{
 		"id": -1000002007,
 		"key": "trainer007",
-		"en|ch|tc|kr": "+1 000 max sp"
+		"en|ch|tc|kr": "+1 000 SP maximum"
 	},
 	{
 		"id": -1000002008,
 		"key": "trainer008",
-		"en|ch|tc|kr": "-1 000 max sp"
+		"en|ch|tc|kr": "-1 000 SP maximum"
 	},
 	{
 		"id": -1000002009,
 		"key": "trainer009",
-		"en|ch|tc|kr": "+100 toutes les bases"
+		"en|ch|tc|kr": "+100 TOUTES les bases"
 	},
 	{
 		"id": -1000002010,
 		"key": "trainer010",
-		"en|ch|tc|kr": "-100 toutes les bases"
+		"en|ch|tc|kr": "-100 TOUTES les bases"
 	},
 	{
 		"id": -1000002011,
 		"key": "trainer011",
-		"en|ch|tc|kr": "+10 000 attaques"
+		"en|ch|tc|kr": "+10 000 Attaque"
 	},
 	{
 		"id": -1000002012,
 		"key": "trainer012",
-		"en|ch|tc|kr": "-10 000 attaques"
+		"en|ch|tc|kr": "-10 000 Attaque"
 	},
 	{
 		"id": -1000002013,
 		"key": "trainer013",
-		"en|ch|tc|kr": "+1 000 défense"
+		"en|ch|tc|kr": "+1 000 Défense"
 	},
 	{
 		"id": -1000002014,
@@ -77,7 +77,7 @@
 	{
 		"id": -1000002015,
 		"key": "trainer015",
-		"en|ch|tc|kr": "Se téléporter"
+		"en|ch|tc|kr": "Téléportation"
 	},
 	{
 		"id": -1000002016,
@@ -87,27 +87,27 @@
 	{
 		"id": -1000002017,
 		"key": "trainer017",
-		"en|ch|tc|kr": "-1 000 000 de l'argent"
+		"en|ch|tc|kr": "-1 000 000 d'argent"
 	},
 	{
 		"id": -1000002018,
 		"key": "trainer018",
-		"en|ch|tc|kr": "+1 000 degré"
+		"en|ch|tc|kr": "+1 000 degrés"
 	},
 	{
 		"id": -1000002019,
 		"key": "trainer019",
-		"en|ch|tc|kr": "-1 000 degré"
+		"en|ch|tc|kr": "-1 000 degrés"
 	},
 	{
 		"id": -1000002020,
 		"key": "trainer020",
-		"en|ch|tc|kr": "+100 000 contribution"
+		"en|ch|tc|kr": "+100 000 Cotisations"
 	},
 	{
 		"id": -1000002021,
 		"key": "trainer021",
-		"en|ch|tc|kr": "-100 000 contribution"
+		"en|ch|tc|kr": "-100 000 Cotisations"
 	},
 	{
 		"id": -1000002022,
@@ -122,12 +122,12 @@
 	{
 		"id": -1000002024,
 		"key": "trainer024",
-		"en|ch|tc|kr": "Jeu de CV"
+		"en|ch|tc|kr": "Reprendre le jeu"
 	},
 	{
 		"id": -1000002025,
 		"key": "trainer025",
-		"en|ch|tc|kr": "Match de pointe"
+		"en|ch|tc|kr": "Arrêter le jeu"
 	},
 	{
 		"id": -1000002026,
@@ -147,96 +147,151 @@
 	{
 		"id": -1000002029,
 		"key": "trainer029",
-		"en|ch|tc|kr": "Monter à niveau"
+		"en|ch|tc|kr": "Monter de niveau"
 	},
 	{
 		"id": -1000002030,
 		"key": "trainer030",
-		"en|ch|tc|kr": "Niveau vers le bas"
+		"en|ch|tc|kr": "Niveau inférieur"
 	},
 	{
 		"id": -1000002031,
 		"key": "trainer031",
-		"en|ch|tc|kr": "+10 000 EXP"
+		"en|ch|tc|kr": "+10 000 points d'expérience"
 	},
 	{
 		"id": -1000002032,
 		"key": "trainer032",
-		"en|ch|tc|kr": "+100 Année"
+		"en|ch|tc|kr": "+100 ans de vie"
 	},
 	{
 		"id": -1000002033,
 		"key": "trainer033",
-		"en|ch|tc|kr": "-100 annuelle"
+		"en|ch|tc|kr": "-100 ans de vie"
 	},
 	{
 		"id": -1000002034,
 		"key": "trainer034",
-		"en|ch|tc|kr": "+1 000 vitesse de voyage"
+		"en|ch|tc|kr": "+1 000 vitesse de déplacement"
 	},
 	{
 		"id": -1000002035,
 		"key": "trainer035",
-		"en|ch|tc|kr": "-1 000 vitesse de voyage"
+		"en|ch|tc|kr": "-1 000 Vitesse de déplacement"
 	},
 	{
 		"id": -1000002036,
 		"key": "trainer036",
-		"en|ch|tc|kr": "+10 Range de vue"
+		"en|ch|tc|kr": "+10 Portée de vue"
 	},
 	{
 		"id": -1000002037,
 		"key": "trainer037",
-		"en|ch|tc|kr": "-10 plage de vue"
+		"en|ch|tc|kr": "-10 portée de vue"
 	},
 	{
 		"id": -1000002038,
 		"key": "trainer038",
-		"en|ch|tc|kr": "Propriétés générales:"
+		"en|ch|tc|kr": "Propriétés générales :"
 	},
 	{
 		"id": -1000002039,
 		"key": "trainer039",
-		"en|ch|tc|kr": "Martial / Spirituel:"
+		"en|ch|tc|kr": "Martial/spirituel :"
 	},
 	{
 		"id": -1000002040,
 		"key": "trainer040",
-		"en|ch|tc|kr": "Artisanat:"
+		"en|ch|tc|kr": "Artisanat :"
 	},
 	{
 		"id": -1000002041,
 		"key": "trainer041",
-		"en|ch|tc|kr": "Vous pouvez téléporter à n'importe où."
+		"en|ch|tc|kr": "Vous pouvez vous téléporter n'importe où."
 	},
 	{
 		"id": -1000002042,
 		"key": "trainer042",
-		"en|ch|tc|kr": "+10 000 réputation"
+		"en|ch|tc|kr": "+10 000 Réputation"
 	},
 	{
 		"id": -1000002043,
 		"key": "trainer043",
-		"en|ch|tc|kr": "-10 000 réputation"
+		"en|ch|tc|kr": "-10 000 Réputation"
 	},
 	{
 		"id": -1000002044,
 		"key": "trainer044",
-		"en|ch|tc|kr": "Ne pas autoriser l'entraîneur!"
+		"en|ch|tc|kr": "Ne pas autoriser l'entraîneur !"
 	},
 	{
 		"id": -1000002045,
 		"key": "trainer045",
-		"en|ch|tc|kr": "Ajoutez des éléments révolutionnaires à votre inventaire!"
+		"en|ch|tc|kr": "Ajoutez des objets révolutionnaires à votre inventaire !"
 	},
 	{
 		"id": -1000002046,
 		"key": "trainer046",
-		"en|ch|tc|kr": "Les articles ont été ajoutés!"
+		"en|ch|tc|kr": "Les éléments ont été ajoutés !"
 	},
 	{
 		"id": -1000002047,
 		"key": "trainer047",
-		"en|ch|tc|kr": "Devenir maître de la ville"
+		"en|ch|tc|kr": "Devenez le maître de la ville"
+	},
+	{
+		"id": -1000002048,
+		"key": "trainer048",
+		"en|ch|tc|kr": "Montant du PNJ : {0:#,##0}"
+	},
+	{
+		"id": -1000002049,
+		"key": "trainer049",
+		"en|ch|tc|kr": "Alchimie : {0:#,##0}"
+	},
+	{
+		"id": -1000002050,
+		"key": "trainer050",
+		"en|ch|tc|kr": "{0:#,##0} :Forger"
+	},
+	{
+		"id": -1000002051,
+		"key": "trainer051",
+		"en|ch|tc|kr": "Feng Shui : {0:#,##0}"
+	},
+	{
+		"id": -1000002052,
+		"key": "trainer052",
+		"en|ch|tc|kr": "{0:#,##0} : Talismans"
+	},
+	{
+		"id": -1000002053,
+		"key": "trainer053",
+		"en|ch|tc|kr": "Botanique : {0:#,##0}"
+	},
+	{
+		"id": -1000002054,
+		"key": "trainer054",
+		"en|ch|tc|kr": "{0:#,##0} : Exploitation minière"
+	},
+	{
+		"id": -1000002055,
+		"key": "trainer055",
+		"en|ch|tc|kr": "Pas d'arme divine"
+	},
+	{
+		"id": -1000002056,
+		"key": "trainer056",
+		"en|ch|tc|kr": "Diable Démon"
+	},
+	{
+		"id": -1000002057,
+		"key": "trainer057",
+		"en|ch|tc|kr": "Oeil de Dieu"
+	},
+	{
+		"id": -1000002058,
+		"key": "trainer058",
+		"en|ch|tc|kr": "Pendentif Poissons"
 	}
 ]

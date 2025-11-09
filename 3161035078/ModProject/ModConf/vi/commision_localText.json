@@ -2,7 +2,7 @@
 	{
 		"id": "480030100",
 		"key": "commission480030100",
-		"en|ch|tc|kr": "Đã gửi một yêu cầu ..."
+		"en|ch|tc|kr": "Đã gửi yêu cầu..."
 	},
 	{
 		"id": "480030200",
@@ -11,5 +11,25 @@
 		"ch": "",
 		"tc": "",
 		"kr": ""
+	},
+	{
+		"id": "480030300",
+		"key": "commission480030300",
+		"en|ch|tc|kr": "- - - - -"
+	},
+	{
+		"id": "480030400",
+		"key": "commission480030400",
+		"en|ch|tc|kr": "Giá {0:#,##0} đá tinh linh (+{1:#,##0} phí)"
+	},
+	{
+		"id": "480030500",
+		"key": "commission480030500",
+		"en|ch|tc|kr": "Giá {0:#,##0} đá linh hồn (+{1:#,##0} phí) và {2:#,##0} Bằng Thị trưởng"
+	},
+	{
+		"id": "480030600",
+		"key": "commission480030600",
+		"en|ch|tc|kr": "Chi phí {0:0} tháng ({1:0.0}% tỷ lệ thành công + may mắn)"
 	}
 ]

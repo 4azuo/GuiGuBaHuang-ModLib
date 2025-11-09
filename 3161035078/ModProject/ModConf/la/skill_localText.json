@@ -2,21 +2,21 @@
 	{
 		"id": "1000011000",
 		"key": "skill1000011000",
-		"en|ch|tc|kr": "Gravitas tum"
+		"en|ch|tc|kr": "gravitas bene"
 	},
 	{
 		"id": "1000012000",
 		"key": "skill1000012000",
-		"en|ch|tc|kr": "Creare circulus. Nemo potest evadere."
+		"en|ch|tc|kr": "Circulum creare. Nemo effugere potest."
 	},
 	{
 		"id": "1000011001",
 		"key": "skill1000011001",
-		"en|ch|tc|kr": "Caelestis"
+		"en|ch|tc|kr": "Coelestis gladius"
 	},
 	{
 		"id": "1000012001",
 		"key": "skill1000012001",
-		"en|ch|tc|kr": "Creare pluvia gladii."
+		"en|ch|tc|kr": "Gladii imbrem crea."
 	}
 ]

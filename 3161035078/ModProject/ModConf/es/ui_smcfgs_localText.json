@@ -12,12 +12,12 @@
 	{
 		"id": -1000001002,
 		"key": "smcfgs002",
-		"en|ch|tc|kr": "Defensor"
+		"en|ch|tc|kr": "DEF"
 	},
 	{
 		"id": -1000001003,
 		"key": "smcfgs003",
-		"en|ch|tc|kr": "Max HP"
+		"en|ch|tc|kr": "HP máx."
 	},
 	{
 		"id": -1000001004,
@@ -27,7 +27,7 @@
 	{
 		"id": -1000001005,
 		"key": "smcfgs005",
-		"en|ch|tc|kr": "(Incluyó espada, cuchilla, lanza, puño, dedo, palma, fuego, agua, trueno, madera, viento, tierra)"
+		"en|ch|tc|kr": "(Incluye espada, espada, lanza, puño, dedo, palma, fuego, agua, trueno, madera, viento, tierra)"
 	},
 	{
 		"id": -1000001006,
@@ -57,32 +57,32 @@
 	{
 		"id": -1000001011,
 		"key": "smcfgs011",
-		"en|ch|tc|kr": "Costo de cuenta bancaria"
+		"en|ch|tc|kr": "Costo de la cuenta bancaria"
 	},
 	{
 		"id": -1000001012,
 		"key": "smcfgs012",
-		"en|ch|tc|kr": "Tarifa bancaria"
+		"en|ch|tc|kr": "Comisión bancaria"
 	},
 	{
 		"id": -1000001013,
 		"key": "smcfgs013",
-		"en|ch|tc|kr": "Costo de refinar"
+		"en|ch|tc|kr": "Refinar costo"
 	},
 	{
 		"id": -1000001014,
 		"key": "smcfgs014",
-		"en|ch|tc|kr": "Tarifa de intercambio de la secta"
+		"en|ch|tc|kr": "Tarifa de intercambio de secta"
 	},
 	{
 		"id": -1000001015,
 		"key": "smcfgs015",
-		"en|ch|tc|kr": "Valor de artículo"
+		"en|ch|tc|kr": "Valor del artículo"
 	},
 	{
 		"id": -1000001016,
 		"key": "smcfgs016",
-		"en|ch|tc|kr": "NPC:"
+		"en|ch|tc|kr": "PNJ:"
 	},
 	{
 		"id": -1000001017,
@@ -92,12 +92,12 @@
 	{
 		"id": -1000001018,
 		"key": "smcfgs018",
-		"en|ch|tc|kr": "Misc:"
+		"en|ch|tc|kr": "Varios:"
 	},
 	{
 		"id": -1000001019,
 		"key": "smcfgs019",
-		"en|ch|tc|kr": "LevelUp Exp"
+		"en|ch|tc|kr": "Experiencia de subida de nivel"
 	},
 	{
 		"id": -1000001020,
@@ -117,7 +117,7 @@
 	{
 		"id": -1000001023,
 		"key": "smcfgs023",
-		"en|ch|tc|kr": "Una vida"
+		"en|ch|tc|kr": "una vida"
 	},
 	{
 		"id": -1000001024,
@@ -132,12 +132,12 @@
 	{
 		"id": -1000001026,
 		"key": "smcfgs026",
-		"en|ch|tc|kr": "Por defecto"
+		"en|ch|tc|kr": "Predeterminado"
 	},
 	{
 		"id": -1000001027,
 		"key": "smcfgs027",
-		"en|ch|tc|kr": "Blanco"
+		"en|ch|tc|kr": "blanco"
 	},
 	{
 		"id": -1000001028,
@@ -147,27 +147,27 @@
 	{
 		"id": -1000001029,
 		"key": "smcfgs029",
-		"en|ch|tc|kr": "Azul"
+		"en|ch|tc|kr": "azul"
 	},
 	{
 		"id": -1000001030,
 		"key": "smcfgs030",
-		"en|ch|tc|kr": "Violeta"
+		"en|ch|tc|kr": "violeta"
 	},
 	{
 		"id": -1000001031,
 		"key": "smcfgs031",
-		"en|ch|tc|kr": "Amarillo"
+		"en|ch|tc|kr": "amarillo"
 	},
 	{
 		"id": -1000001032,
 		"key": "smcfgs032",
-		"en|ch|tc|kr": "Rojo"
+		"en|ch|tc|kr": "rojo"
 	},
 	{
 		"id": -1000001033,
 		"key": "smcfgs033",
-		"en|ch|tc|kr": "Solo portal en la ciudad y la secta"
+		"en|ch|tc|kr": "Único portal en la ciudad y la secta"
 	},
 	{
 		"id": -1000001034,
@@ -182,12 +182,12 @@
 	{
 		"id": -1000001036,
 		"key": "smcfgs036",
-		"en|ch|tc|kr": "Permitir la actualización naturalmente"
+		"en|ch|tc|kr": "Permitir actualización de forma natural"
 	},
 	{
 		"id": -1000001037,
 		"key": "smcfgs037",
-		"en|ch|tc|kr": "(De esta manera no crecerá sus atributos/propiedades)"
+		"en|ch|tc|kr": "(De esta manera no aumentarán sus atributos/propiedades)"
 	},
 	{
 		"id": -1000001038,
@@ -197,12 +197,12 @@
 	{
 		"id": -1000001039,
 		"key": "smcfgs039",
-		"en|ch|tc|kr": "No hay creciente de batallas"
+		"en|ch|tc|kr": "No hay crecimiento de las batallas"
 	},
 	{
 		"id": -1000001040,
 		"key": "smcfgs040",
-		"en|ch|tc|kr": "No Exp de Battles"
+		"en|ch|tc|kr": "Sin experiencia en batallas"
 	},
 	{
 		"id": -1000001041,
@@ -212,17 +212,17 @@
 	{
 		"id": -1000001042,
 		"key": "smcfgs042",
-		"en|ch|tc|kr": "(¡No recomiendo usar esta opción! Clave caliente en el juego: 【Ctrl+1】)"
+		"en|ch|tc|kr": "(¡No se recomienda usar esta opción! Tecla de acceso rápido en el juego: 【Ctrl+1】)"
 	},
 	{
 		"id": -1000001043,
 		"key": "smcfgs043",
-		"en|ch|tc|kr": "Puntuación total: {0} P"
+		"en|ch|tc|kr": "Puntuación total: {0}P"
 	},
 	{
 		"id": -1000001044,
 		"key": "smcfgs044",
-		"en|ch|tc|kr": "Por defecto"
+		"en|ch|tc|kr": "Predeterminado"
 	},
 	{
 		"id": -1000001045,
@@ -232,22 +232,22 @@
 	{
 		"id": -1000001046,
 		"key": "smcfgs046",
-		"en|ch|tc|kr": "¡Tienes que comenzar un nuevo juego para aplicar estas configuraciones!"
+		"en|ch|tc|kr": "¡Tienes que empezar un nuevo juego para aplicar estas configuraciones!"
 	},
 	{
 		"id": -1000001047,
 		"key": "smcfgs047",
-		"en|ch|tc|kr": "Cantidad NPC"
+		"en|ch|tc|kr": "Cantidad de PNJ"
 	},
 	{
 		"id": -1000001048,
 		"key": "smcfgs048",
-		"en|ch|tc|kr": "(RAM requerido: {0} MB)"
+		"en|ch|tc|kr": "(RAM requerida: {0}MB)"
 	},
 	{
 		"id": -1000001049,
 		"key": "smcfgs049",
-		"en|ch|tc|kr": "(Incluido escudo, explotar y multiplicar)"
+		"en|ch|tc|kr": "(Incluye Escudo, Explosión y Multiplicación)"
 	},
 	{
 		"id": -1000001050,
@@ -257,22 +257,22 @@
 	{
 		"id": -1000001051,
 		"key": "smcfgs051",
-		"en|ch|tc|kr": "Velocidad de crecimiento"
+		"en|ch|tc|kr": "velocidad de crecimiento"
 	},
 	{
 		"id": -1000001052,
 		"key": "smcfgs052",
-		"en|ch|tc|kr": "(Incluir jugador, NPC y monstruos)"
+		"en|ch|tc|kr": "(Incluye jugador, npc y monstruos)"
 	},
 	{
 		"id": -1000001053,
 		"key": "smcfgs053",
-		"en|ch|tc|kr": "Cada {1} meses ({0} P)"
+		"en|ch|tc|kr": "cada {1} meses ({0}P)"
 	},
 	{
 		"id": -1000001054,
 		"key": "smcfgs054",
-		"en|ch|tc|kr": "Configuraciones de exportación"
+		"en|ch|tc|kr": "Exportar configuraciones"
 	},
 	{
 		"id": -1000001055,
@@ -282,32 +282,32 @@
 	{
 		"id": -1000001056,
 		"key": "smcfgs056",
-		"en|ch|tc|kr": "Artículos perdidos cuando muere"
+		"en|ch|tc|kr": "Artículos perdidos al morir"
 	},
 	{
 		"id": -1000001057,
 		"key": "smcfgs057",
-		"en|ch|tc|kr": "(Incluye la primera ciudad)"
+		"en|ch|tc|kr": "(Incluir primera ciudad)"
 	},
 	{
 		"id": -1000001058,
 		"key": "smcfgs058",
-		"en|ch|tc|kr": "El monstruo depende del jugador"
+		"en|ch|tc|kr": "El monstruo depende del jugador."
 	},
 	{
 		"id": -1000001059,
 		"key": "smcfgs059",
-		"en|ch|tc|kr": "Guardar automático después de perderse"
+		"en|ch|tc|kr": "Guardar automáticamente después de perder"
 	},
 	{
 		"id": -1000001060,
 		"key": "smcfgs060",
-		"en|ch|tc|kr": "(La hora se saltará al próximo mes para la curación)"
+		"en|ch|tc|kr": "(El tiempo pasará al próximo mes para la curación)"
 	},
 	{
 		"id": -1000001101,
 		"key": "smcfgs101",
-		"en|ch|tc|kr": "{1}% ({0} P)"
+		"en|ch|tc|kr": "{1} % ({0}P)"
 	},
 	{
 		"id": -1000001102,
@@ -317,22 +317,22 @@
 	{
 		"id": -1000001103,
 		"key": "smcfgs103",
-		"en|ch|tc|kr": "{1} ({0} P)"
+		"en|ch|tc|kr": "{1} ({0}P)"
 	},
 	{
 		"id": -1000001104,
 		"key": "smcfgs104",
-		"en|ch|tc|kr": "Puesta en marcha"
+		"en|ch|tc|kr": "Inicio"
 	},
 	{
 		"id": -1000001105,
 		"key": "smcfgs105",
-		"en|ch|tc|kr": "Power Up: un personaje especializado en todos los aspectos.\nSpeed Up: un personaje especializado en velocidad.\nTaoísta: un personaje especializado en magia.\nPro Atk: un personaje especializado en ataque.\nPro Def: un personaje especializado en defensa.\nÁngel: un ángel de buen corazón, centrado en la defensa y la protección.\nEvil: un demonio rechazado por todos, centrado en el ataque.\nComerciante: un comerciante que aplasta a otros con riqueza."
+		"en|ch|tc|kr": "Power Up: Un personaje especializado en todos los aspectos.\nSpeed ​​Up: Un personaje especializado en velocidad.\nTaoísta: Personaje especializado en magia.\nPro Atk: Un personaje especializado en ataque.\nPro Def: Un personaje especializado en defensa.\nÁngel: Un ángel de buen corazón, centrado en la defensa y la protección.\nMalvado: Un demonio rechazado por todos, centrado en el ataque.\nComerciante: Un comerciante que aplasta a otros con riqueza."
 	},
 	{
 		"id": -1000001106,
 		"key": "smcfgs106",
-		"en|ch|tc|kr": "Papel de jugador"
+		"en|ch|tc|kr": "Rol del jugador"
 	},
 	{
 		"id": -1000001107,
@@ -342,7 +342,7 @@
 	{
 		"id": -1000001108,
 		"key": "smcfgs108",
-		"en|ch|tc|kr": "Encender"
+		"en|ch|tc|kr": "Encendido"
 	},
 	{
 		"id": -1000001109,
@@ -352,32 +352,32 @@
 	{
 		"id": -1000001110,
 		"key": "smcfgs110",
-		"en|ch|tc|kr": "Taoísta"
+		"en|ch|tc|kr": "taoísta"
 	},
 	{
 		"id": -1000001111,
 		"key": "smcfgs111",
-		"en|ch|tc|kr": "Pro atk"
+		"en|ch|tc|kr": "ataque profesional"
 	},
 	{
 		"id": -1000001112,
 		"key": "smcfgs112",
-		"en|ch|tc|kr": "Pro Def"
+		"en|ch|tc|kr": "Defensa profesional"
 	},
 	{
 		"id": -1000001113,
 		"key": "smcfgs113",
-		"en|ch|tc|kr": "Ángel"
+		"en|ch|tc|kr": "ángel"
 	},
 	{
 		"id": -1000001114,
 		"key": "smcfgs114",
-		"en|ch|tc|kr": "Demonio"
+		"en|ch|tc|kr": "mal"
 	},
 	{
 		"id": -1000001115,
 		"key": "smcfgs115",
-		"en|ch|tc|kr": "Comerciante"
+		"en|ch|tc|kr": "comerciante"
 	},
 	{
 		"id": -1000001116,
@@ -387,17 +387,17 @@
 	{
 		"id": -1000001117,
 		"key": "smcfgs117",
-		"en|ch|tc|kr": "Tasa de unión de NPC"
+		"en|ch|tc|kr": "Tasa de unión a NPC"
 	},
 	{
 		"id": -1000001118,
 		"key": "smcfgs118",
-		"en|ch|tc|kr": "Obtenga una tasa atacada"
+		"en|ch|tc|kr": "Obtener tasa de ataque"
 	},
 	{
 		"id": -1000001119,
 		"key": "smcfgs119",
-		"en|ch|tc|kr": "(Advertencia: esta característica consume mucha carnero y puede causar retraso)"
+		"en|ch|tc|kr": "(Advertencia: esta función consume mucha RAM y puede provocar retrasos)"
 	},
 	{
 		"id": -1000001120,
@@ -407,7 +407,7 @@
 	{
 		"id": -1000001121,
 		"key": "smcfgs121",
-		"en|ch|tc|kr": "Configuraciones de mod"
+		"en|ch|tc|kr": "Configuraciones de modificación"
 	},
 	{
 		"id": -1000001122,
@@ -417,7 +417,7 @@
 	{
 		"id": -1000001123,
 		"key": "smcfgs123",
-		"en|ch|tc|kr": "Sin artículos del mercado"
+		"en|ch|tc|kr": "No hay artículos de mercado"
 	},
 	{
 		"id": -1000001124,
@@ -433,5 +433,70 @@
 		"id": -1000001126,
 		"key": "smcfgs126",
 		"en|ch|tc|kr": "(Los NPC todavía tienen que pagar impuestos)"
+	},
+	{
+		"id": -1000001127,
+		"key": "smcfgs127",
+		"en|ch|tc|kr": "Duro:"
+	},
+	{
+		"id": -1000001128,
+		"key": "smcfgs128",
+		"en|ch|tc|kr": "(Esta configuración afecta al tiempo de proceso mensual)"
+	},
+	{
+		"id": -1000001129,
+		"key": "smcfgs129",
+		"en|ch|tc|kr": "Esperanza de vida perdida al morir/perder"
+	},
+	{
+		"id": -1000001130,
+		"key": "smcfgs130",
+		"en|ch|tc|kr": "Vendedores máximos en cada ciudad"
+	},
+	{
+		"id": -1000001131,
+		"key": "smcfgs131",
+		"en|ch|tc|kr": "Compradores máximos al vender el artículo"
+	},
+	{
+		"id": -1000001132,
+		"key": "smcfgs132",
+		"en|ch|tc|kr": "{0}"
+	},
+	{
+		"id": -1000001133,
+		"key": "smcfgs133",
+		"en|ch|tc|kr": "Número máximo de artículos en el vendedor"
+	},
+	{
+		"id": -1000001134,
+		"key": "smcfgs134",
+		"en|ch|tc|kr": "Sólo activo en el área actual/cerca"
+	},
+	{
+		"id": -1000001135,
+		"key": "smcfgs135",
+		"en|ch|tc|kr": "(Acelera el tiempo del proceso, pero afecta a los NPC)"
+	},
+	{
+		"id": -1000001136,
+		"key": "smcfgs136",
+		"en|ch|tc|kr": "Destruir edificio después de la guerra de la ciudad"
+	},
+	{
+		"id": -1000001137,
+		"key": "smcfgs137",
+		"en|ch|tc|kr": "Permitir reparar el arma de Dios"
+	},
+	{
+		"id": -1000001138,
+		"key": "smcfgs138",
+		"en|ch|tc|kr": "Todas las funciones se aplican a las unidades más cercanas"
+	},
+	{
+		"id": -1000001139,
+		"key": "smcfgs139",
+		"en|ch|tc|kr": "Dinero perdido al morir"
 	}
 ]

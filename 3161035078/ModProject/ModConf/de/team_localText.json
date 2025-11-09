@@ -2,7 +2,7 @@
 	{
 		"id": "420041120",
 		"key": "team420041120desc",
-		"en|ch|tc|kr": "Team420041120Desc"
+		"en|ch|tc|kr": "team420041120desc"
 	},
 	{
 		"id": "420041121",
@@ -12,7 +12,7 @@
 	{
 		"id": "420041123",
 		"key": "team420041123drama",
-		"en|ch|tc|kr": "Willst du zusammen reisen?"
+		"en|ch|tc|kr": "Wollt ihr zusammen reisen?"
 	},
 	{
 		"id": "420041124",
@@ -22,7 +22,7 @@
 	{
 		"id": "420041125",
 		"key": "team420041125dramaOpt2",
-		"en|ch|tc|kr": "No"
+		"en|ch|tc|kr": "Nein"
 	},
 	{
 		"id": "420041126",
@@ -37,22 +37,22 @@
 	{
 		"id": "420041128",
 		"key": "team420041128",
-		"en|ch|tc|kr": "Sind Sie sich sicher, dass Sie diese Person hinzufügen?"
+		"en|ch|tc|kr": "Sind Sie sicher, dass Sie diese Person hinzufügen möchten?"
 	},
 	{
 		"id": "420041129",
 		"key": "team420041129",
-		"en|ch|tc|kr": "Sie müssen das aktuelle Team beenden!"
+		"en|ch|tc|kr": "Du musst das aktuelle Team verlassen!"
 	},
 	{
 		"id": "420041130",
 		"key": "team420041130",
-		"en|ch|tc|kr": "Sind Sie sich sicher, dass Sie diese Person entlassen?"
+		"en|ch|tc|kr": "Sind Sie sicher, dass Sie diese Person entlassen möchten?"
 	},
 	{
 		"id": "420041131",
 		"key": "team420041131",
-		"en|ch|tc|kr": "Personen einstellen"
+		"en|ch|tc|kr": "Stellen Sie Leute ein"
 	},
 	{
 		"id": "420041132",
@@ -62,11 +62,11 @@
 	{
 		"id": "420041133",
 		"key": "team420041133",
-		"en|ch|tc|kr": "Sich zusammenschließen"
+		"en|ch|tc|kr": "Verbünde dich"
 	},
 	{
 		"id": "420041134",
 		"key": "team420041134",
-		"en|ch|tc|kr": "Sind Sie sich sicher, dass Sie Ihr Team entlassen?"
+		"en|ch|tc|kr": "Sind Sie sicher, Ihr Team zu entlassen?"
 	}
 ]

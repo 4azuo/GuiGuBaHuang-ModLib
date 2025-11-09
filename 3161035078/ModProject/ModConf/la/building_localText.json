@@ -2,51 +2,51 @@
 	{
 		"id": 500030000,
 		"key": "building500030000",
-		"en|ch|tc|kr": "Urbs translatio"
+		"en|ch|tc|kr": "Urbs Transfer"
 	},
 	{
 		"id": 500030001,
 		"key": "building500030001",
-		"en|ch|tc|kr": "Villa auction"
+		"en|ch|tc|kr": "Urbs Auction"
 	},
 	{
 		"id": 500030002,
 		"key": "building500030002",
-		"en|ch|tc|kr": "Town Factory"
+		"en|ch|tc|kr": "Villa Factory"
 	},
 	{
 		"id": 500030003,
 		"key": "building500030003",
-		"en|ch|tc|kr": "Forum forum"
+		"en|ch|tc|kr": "Oppidum Market Book"
 	},
 	{
 		"id": 500030004,
 		"key": "building500030004",
-		"en|ch|tc|kr": "Forum Forum"
+		"en|ch|tc|kr": "Villa Market Dress"
 	},
 	{
 		"id": 500030005,
 		"key": "building500030005",
-		"en|ch|tc|kr": "Urbs largitio"
+		"en|ch|tc|kr": "Oppidum Bounty"
 	},
 	{
 		"id": 500030006,
 		"key": "building500030006",
-		"en|ch|tc|kr": "School traning Hall"
+		"en|ch|tc|kr": "School Traning Hall"
 	},
 	{
 		"id": 500030007,
 		"key": "building500030007",
-		"en|ch|tc|kr": "Schola translatio"
+		"en|ch|tc|kr": "School Transfer"
 	},
 	{
 		"id": 500030008,
 		"key": "building500030008",
-		"en|ch|tc|kr": "Schola adipiscing"
+		"en|ch|tc|kr": "School at"
 	},
 	{
 		"id": 500030009,
 		"key": "building500030009",
-		"en|ch|tc|kr": "Oppidum repono"
+		"en|ch|tc|kr": "Oppidum PRAECLUSIO"
 	}
 ]

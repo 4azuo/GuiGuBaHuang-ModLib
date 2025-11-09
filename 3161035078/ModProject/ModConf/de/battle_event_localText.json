@@ -2,7 +2,7 @@
 	{
 		"id": "480110100",
 		"key": "battleevent480110100",
-		"en|ch|tc|kr": "Ha ha ha! Die Beute gehört mir! Alles!"
+		"en|ch|tc|kr": "Ha ha ha! Die Beute gehört mir! Alles davon!"
 	},
 	{
 		"id": "480110200",
@@ -17,22 +17,22 @@
 	{
 		"id": "480110400",
 		"key": "battleevent480110400",
-		"en|ch|tc|kr": "Sie dürfen nicht in der Stadt kämpfen!"
+		"en|ch|tc|kr": "In der Stadt darf nicht gekämpft werden!"
 	},
 	{
 		"id": "480110500",
 		"key": "battleevent480110500",
-		"en|ch|tc|kr": "Ich habe genug mit dir! Geh zur Hölle!"
+		"en|ch|tc|kr": "Ich habe genug mit dir! Fahr zur Hölle!"
 	},
 	{
 		"id": "480110501",
 		"key": "battleevent480110501",
-		"en|ch|tc|kr": "Die Dinge, die Sie tun, sind ekelhaft. Geh zur Hölle, du böse!"
+		"en|ch|tc|kr": "Die Dinge, die du tust, sind widerlich. Fahr zur Hölle, du Böse!"
 	},
 	{
 		"id": "480110502",
 		"key": "battleevent480110502",
-		"en|ch|tc|kr": "Dein hohes Verhalten macht mich wirklich übel."
+		"en|ch|tc|kr": "Dein hochtrabendes Auftreten macht mir wirklich übel."
 	},
 	{
 		"id": "480110600",
@@ -42,12 +42,12 @@
 	{
 		"id": "480110601",
 		"key": "battleevent480110601",
-		"en|ch|tc|kr": "Gib mir alles, was du auf dir hast!"
+		"en|ch|tc|kr": "Gib mir alles, was du drauf hast!"
 	},
 	{
 		"id": "480110602",
 		"key": "battleevent480110602",
-		"en|ch|tc|kr": "Mach dir keine Sorgen, ich lieh nur für immer deine Sachen."
+		"en|ch|tc|kr": "Keine Sorge, ich „leihe“ mir deine Sachen einfach für immer aus."
 	},
 	{
 		"id": "480111990",
@@ -77,17 +77,17 @@
 	{
 		"id": "480112880",
 		"key": "monstwave480112880name",
-		"en|ch|tc|kr": "Lumos Bean Magier"
+		"en|ch|tc|kr": "Lumos Bohnenmagier"
 	},
 	{
 		"id": "480112881",
 		"key": "monstwave480112881name",
-		"en|ch|tc|kr": "Grüner Blattentänzer"
+		"en|ch|tc|kr": "Grüner Klingentänzer"
 	},
 	{
 		"id": "480112882",
 		"key": "monstwave480112882name",
-		"en|ch|tc|kr": "Pilzgiftmittel"
+		"en|ch|tc|kr": "Pilzgiftig"
 	},
 	{
 		"id": "480112883",
@@ -97,12 +97,12 @@
 	{
 		"id": "480112884",
 		"key": "monstwave480112884name",
-		"en|ch|tc|kr": "Darkwood Hammer"
+		"en|ch|tc|kr": "Dunkelholzhammer"
 	},
 	{
 		"id": "480112885",
 		"key": "monstwave480112885name",
-		"en|ch|tc|kr": "Florale Ähnlichkeit"
+		"en|ch|tc|kr": "Blumen-Unhold"
 	},
 	{
 		"id": "480112886",
@@ -112,7 +112,7 @@
 	{
 		"id": "480112887",
 		"key": "monstwave480112887name",
-		"en|ch|tc|kr": "Savage Mountain Dämon"
+		"en|ch|tc|kr": "Wilder Bergdämon"
 	},
 	{
 		"id": "480112888",
@@ -122,32 +122,32 @@
 	{
 		"id": "480112889",
 		"key": "monstwave480112889name",
-		"en|ch|tc|kr": "Skalierter Terror"
+		"en|ch|tc|kr": "Schuppiger Terror"
 	},
 	{
 		"id": "480112890",
 		"key": "battleevent480112890",
-		"en|ch|tc|kr": "Das Land zittert unter Ihren Füßen, während die Schlacht weiter treibt. Ihre Wahl wird jetzt Ihren Weg bestimmen!"
+		"en|ch|tc|kr": "Das Land bebt unter deinen Füßen, während die Schlacht weiter tobt. Ihre Wahl wird jetzt Ihren Weg bestimmen!"
 	},
 	{
 		"id": "480112891",
 		"key": "battleevent480112891",
-		"en|ch|tc|kr": "Helfen Sie Verteidiger"
+		"en|ch|tc|kr": "Helfen Sie dem Verteidiger"
 	},
 	{
 		"id": "480112892",
 		"key": "battleevent480112892",
-		"en|ch|tc|kr": "Helfen Sie Invader"
+		"en|ch|tc|kr": "Helfen Sie dem Eindringling"
 	},
 	{
 		"id": "480112893",
 		"key": "battleevent480112893",
-		"en|ch|tc|kr": "Versuchen Sie zu entkommen"
+		"en|ch|tc|kr": "Versuchen Sie zu fliehen"
 	},
 	{
 		"id": "480112894",
 		"key": "battleevent480112894",
-		"en|ch|tc|kr": "{0} Invading {1}!\nMöchten Sie helfen?"
+		"en|ch|tc|kr": "{0} dringt in {1} ein!\nMöchten Sie helfen?"
 	},
 	{
 		"id": "480112895",
@@ -157,11 +157,11 @@
 	{
 		"id": "480112898",
 		"key": "battleevent480112898",
-		"en|ch|tc|kr": "Kümmere dich nicht darum"
+		"en|ch|tc|kr": "Ist mir egal"
 	},
 	{
 		"id": "480112899",
 		"key": "battleevent480112899",
-		"en|ch|tc|kr": "Helfen"
+		"en|ch|tc|kr": "Hilfe"
 	}
 ]

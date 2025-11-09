@@ -1,0 +1,27 @@
+[
+	{
+		"id": -1000003000,
+		"key": "setting000",
+		"en|ch|tc|kr": "Taoistische Einstellungen"
+	},
+	{
+		"id": -1000003001,
+		"key": "setting001",
+		"en|ch|tc|kr": "Bewerben Sie sich bei der nächsten Veranstaltung."
+	},
+	{
+		"id": -1000003002,
+		"key": "setting002",
+		"en|ch|tc|kr": "Schadensmultiplikator ausblenden"
+	},
+	{
+		"id": -1000003003,
+		"key": "setting003",
+		"en|ch|tc|kr": "Ausnahmen ausblenden"
+	},
+	{
+		"id": -1000003004,
+		"key": "setting004",
+		"en|ch|tc|kr": "(Bitte aktivieren Sie diese Option, wenn Sie Feedback zu Fehlern geben möchten.)"
+	}
+]

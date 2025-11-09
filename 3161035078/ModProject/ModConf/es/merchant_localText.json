@@ -2,101 +2,101 @@
 	{
 		"id": "420092001",
 		"key": "merchant420091001",
-		"en|ch|tc|kr": "Comerciante lvl-1"
+		"en|ch|tc|kr": "Comerciante Nivel-1"
 	},
 	{
 		"id": "420093001",
 		"key": "merchant420091001desc",
-		"en|ch|tc|kr": "+2% de información, +0.3% vender, +0.1% de ingresos"
+		"en|ch|tc|kr": "+2% Insight, +0,3% Venta, +0,1% Ingresos"
 	},
 	{
 		"id": "420092002",
 		"key": "merchant420091002",
-		"en|ch|tc|kr": "Comerciante lvl-2"
+		"en|ch|tc|kr": "Comerciante Nivel-2"
 	},
 	{
 		"id": "420093002",
 		"key": "merchant420091002desc",
-		"en|ch|tc|kr": "+4% de información, +0.6% vender, +0.2% de ingresos"
+		"en|ch|tc|kr": "+4% Insight, +0,6% Venta, +0,2% Ingresos"
 	},
 	{
 		"id": "420092003",
 		"key": "merchant420091003",
-		"en|ch|tc|kr": "Comerciante lvl-3"
+		"en|ch|tc|kr": "Comerciante nivel 3"
 	},
 	{
 		"id": "420093003",
 		"key": "merchant420091003desc",
-		"en|ch|tc|kr": "+6% de información, +0.9% vender, +0.3% de ingresos"
+		"en|ch|tc|kr": "+6% Insight, +0,9% Venta, +0,3% Ingresos"
 	},
 	{
 		"id": "420092004",
 		"key": "merchant420091004",
-		"en|ch|tc|kr": "Comerciante lvl-4"
+		"en|ch|tc|kr": "Comerciante Nivel-4"
 	},
 	{
 		"id": "420093004",
 		"key": "merchant420091004desc",
-		"en|ch|tc|kr": "+8% de información, +1.2% vender, +0.4% de ingresos"
+		"en|ch|tc|kr": "+8% Insight, +1,2% Venta, +0,4% Ingresos"
 	},
 	{
 		"id": "420092005",
 		"key": "merchant420091005",
-		"en|ch|tc|kr": "Comerciante lvl-5"
+		"en|ch|tc|kr": "Comerciante nivel 5"
 	},
 	{
 		"id": "420093005",
 		"key": "merchant420091005desc",
-		"en|ch|tc|kr": "+10% de información, +1.5% Vender, +0.5% de ingresos"
+		"en|ch|tc|kr": "+10% Insight, +1,5% Venta, +0,5% Ingresos"
 	},
 	{
 		"id": "420092006",
 		"key": "merchant420091006",
-		"en|ch|tc|kr": "Comerciante lvl-6"
+		"en|ch|tc|kr": "Comerciante nivel 6"
 	},
 	{
 		"id": "420093006",
 		"key": "merchant420091006desc",
-		"en|ch|tc|kr": "+13% de información, +1.8% vender, +0.6% de ingresos"
+		"en|ch|tc|kr": "+13% Insight, +1,8% Venta, +0,6% Ingresos"
 	},
 	{
 		"id": "420092007",
 		"key": "merchant420091007",
-		"en|ch|tc|kr": "Comerciante lvl-7"
+		"en|ch|tc|kr": "Comerciante nivel 7"
 	},
 	{
 		"id": "420093007",
 		"key": "merchant420091007desc",
-		"en|ch|tc|kr": "+16% de información, +2.1% vender, +0.7% de ingresos"
+		"en|ch|tc|kr": "+16% Insight, +2,1% Venta, +0,7% Ingresos"
 	},
 	{
 		"id": "420092008",
 		"key": "merchant420091008",
-		"en|ch|tc|kr": "Comerciante lvl-8"
+		"en|ch|tc|kr": "Comerciante Niv. 8"
 	},
 	{
 		"id": "420093008",
 		"key": "merchant420091008desc",
-		"en|ch|tc|kr": "+19% de información, +2.4% vender, +0.8% de ingresos"
+		"en|ch|tc|kr": "+19% Insight, +2,4% Venta, +0,8% Ingresos"
 	},
 	{
 		"id": "420092009",
 		"key": "merchant420091009",
-		"en|ch|tc|kr": "Comerciante lvl-9"
+		"en|ch|tc|kr": "Comerciante Nivel-9"
 	},
 	{
 		"id": "420093009",
 		"key": "merchant420091009desc",
-		"en|ch|tc|kr": "+22% Insight, +2.7% Vender, +0.9% de ingresos"
+		"en|ch|tc|kr": "+22% Insight, +2,7% Venta, +0,9% Ingresos"
 	},
 	{
 		"id": "420092010",
 		"key": "merchant420091010",
-		"en|ch|tc|kr": "Comerciante lvl-10"
+		"en|ch|tc|kr": "Comerciante Nivel-10"
 	},
 	{
 		"id": "420093010",
 		"key": "merchant420091010desc",
-		"en|ch|tc|kr": "+25% de información, +3.0% vender, +1.0% de ingresos"
+		"en|ch|tc|kr": "+25% Insight, +3,0% Venta, +1,0% Ingresos"
 	}
 ]

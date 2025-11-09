@@ -2,101 +2,101 @@
 	{
 		"id": "420052001",
 		"key": "apprentice420051001",
-		"en|ch|tc|kr": "ハーブロジーLVL-1"
+		"en|ch|tc|kr": "薬草学 Lv1-1"
 	},
 	{
 		"id": "420053001",
 		"key": "apprentice420051001desc",
-		"en|ch|tc|kr": "+2％最大HP"
+		"en|ch|tc|kr": "+2% 最大 HP"
 	},
 	{
 		"id": "420052002",
 		"key": "apprentice420051002",
-		"en|ch|tc|kr": "ハーブロジーLVL-2"
+		"en|ch|tc|kr": "薬草学 Lv1-2"
 	},
 	{
 		"id": "420053002",
 		"key": "apprentice420051002desc",
-		"en|ch|tc|kr": "+4％最大HP"
+		"en|ch|tc|kr": "+4% 最大 HP"
 	},
 	{
 		"id": "420052003",
 		"key": "apprentice420051003",
-		"en|ch|tc|kr": "ハーブロジーLVL-3"
+		"en|ch|tc|kr": "薬草学 Lv3"
 	},
 	{
 		"id": "420053003",
 		"key": "apprentice420051003desc",
-		"en|ch|tc|kr": "+6％最大HP"
+		"en|ch|tc|kr": "+6% 最大 HP"
 	},
 	{
 		"id": "420052004",
 		"key": "apprentice420051004",
-		"en|ch|tc|kr": "ハーブロジーLVL-4"
+		"en|ch|tc|kr": "薬草学 Lv4"
 	},
 	{
 		"id": "420053004",
 		"key": "apprentice420051004desc",
-		"en|ch|tc|kr": "+8％最大HP"
+		"en|ch|tc|kr": "+8% 最大 HP"
 	},
 	{
 		"id": "420052005",
 		"key": "apprentice420051005",
-		"en|ch|tc|kr": "ハーブロジーLVL-5"
+		"en|ch|tc|kr": "薬草学 Lv1-5"
 	},
 	{
 		"id": "420053005",
 		"key": "apprentice420051005desc",
-		"en|ch|tc|kr": "+10％最大HP"
+		"en|ch|tc|kr": "+10% 最大 HP"
 	},
 	{
 		"id": "420052006",
 		"key": "apprentice420051006",
-		"en|ch|tc|kr": "ハーブロジーLVL-6"
+		"en|ch|tc|kr": "薬草学 Lv-6"
 	},
 	{
 		"id": "420053006",
 		"key": "apprentice420051006desc",
-		"en|ch|tc|kr": "+12％最大HP"
+		"en|ch|tc|kr": "+12% 最大 HP"
 	},
 	{
 		"id": "420052007",
 		"key": "apprentice420051007",
-		"en|ch|tc|kr": "ハーブロジーLVL-7"
+		"en|ch|tc|kr": "薬草学 Lv7"
 	},
 	{
 		"id": "420053007",
 		"key": "apprentice420051007desc",
-		"en|ch|tc|kr": "+14％最大HP"
+		"en|ch|tc|kr": "+14% 最大 HP"
 	},
 	{
 		"id": "420052008",
 		"key": "apprentice420051008",
-		"en|ch|tc|kr": "ハーブロジーLVL-8"
+		"en|ch|tc|kr": "薬草学 Lv-8"
 	},
 	{
 		"id": "420053008",
 		"key": "apprentice420051008desc",
-		"en|ch|tc|kr": "+16％最大HP"
+		"en|ch|tc|kr": "+16% 最大 HP"
 	},
 	{
 		"id": "420052009",
 		"key": "apprentice420051009",
-		"en|ch|tc|kr": "ハーブロジーLVL-9"
+		"en|ch|tc|kr": "薬草学 Lv9"
 	},
 	{
 		"id": "420053009",
 		"key": "apprentice420051009desc",
-		"en|ch|tc|kr": "+18％最大HP"
+		"en|ch|tc|kr": "+18% 最大 HP"
 	},
 	{
 		"id": "420052010",
 		"key": "apprentice420051010",
-		"en|ch|tc|kr": "ハーブロジーLVL-10"
+		"en|ch|tc|kr": "薬草学 Lv10"
 	},
 	{
 		"id": "420053010",
 		"key": "apprentice420051010desc",
-		"en|ch|tc|kr": "+20％最大HP"
+		"en|ch|tc|kr": "+20% 最大 HP"
 	}
 ]

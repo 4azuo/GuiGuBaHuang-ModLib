@@ -1,0 +1,27 @@
+[
+	{
+		"id": -1000003000,
+		"key": "setting000",
+		"en|ch|tc|kr": "Taoist Optiones"
+	},
+	{
+		"id": -1000003001,
+		"key": "setting001",
+		"en|ch|tc|kr": "Applicare proximo eventu."
+	},
+	{
+		"id": -1000003002,
+		"key": "setting002",
+		"en|ch|tc|kr": "Celare Damnum Multiplier"
+	},
+	{
+		"id": -1000003003,
+		"key": "setting003",
+		"en|ch|tc|kr": "Celare exceptiones"
+	},
+	{
+		"id": -1000003004,
+		"key": "setting004",
+		"en|ch|tc|kr": "(Quaeso conversus si habes feedback bugs)"
+	}
+]

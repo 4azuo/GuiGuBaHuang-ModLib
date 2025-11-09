@@ -1,0 +1,102 @@
+[
+	{
+		"id": "420062001",
+		"key": "apprentice420061001",
+		"en|ch|tc|kr": "การขุด Lvl-1"
+	},
+	{
+		"id": "420063001",
+		"key": "apprentice420061001desc",
+		"en|ch|tc|kr": "พลังป้องกัน +2%"
+	},
+	{
+		"id": "420062002",
+		"key": "apprentice420061002",
+		"en|ch|tc|kr": "การขุด Lvl-2"
+	},
+	{
+		"id": "420063002",
+		"key": "apprentice420061002desc",
+		"en|ch|tc|kr": "พลังป้องกัน +4%"
+	},
+	{
+		"id": "420062003",
+		"key": "apprentice420061003",
+		"en|ch|tc|kr": "การขุด Lvl-3"
+	},
+	{
+		"id": "420063003",
+		"key": "apprentice420061003desc",
+		"en|ch|tc|kr": "พลังป้องกัน +6%"
+	},
+	{
+		"id": "420062004",
+		"key": "apprentice420061004",
+		"en|ch|tc|kr": "การขุด Lvl-4"
+	},
+	{
+		"id": "420063004",
+		"key": "apprentice420061004desc",
+		"en|ch|tc|kr": "พลังป้องกัน +8%"
+	},
+	{
+		"id": "420062005",
+		"key": "apprentice420061005",
+		"en|ch|tc|kr": "การขุด Lvl-5"
+	},
+	{
+		"id": "420063005",
+		"key": "apprentice420061005desc",
+		"en|ch|tc|kr": "พลังป้องกัน +10%"
+	},
+	{
+		"id": "420062006",
+		"key": "apprentice420061006",
+		"en|ch|tc|kr": "การขุด Lvl-6"
+	},
+	{
+		"id": "420063006",
+		"key": "apprentice420061006desc",
+		"en|ch|tc|kr": "พลังป้องกัน +12%"
+	},
+	{
+		"id": "420062007",
+		"key": "apprentice420061007",
+		"en|ch|tc|kr": "การขุด Lvl-7"
+	},
+	{
+		"id": "420063007",
+		"key": "apprentice420061007desc",
+		"en|ch|tc|kr": "พลังป้องกัน +14%"
+	},
+	{
+		"id": "420062008",
+		"key": "apprentice420061008",
+		"en|ch|tc|kr": "การขุด Lvl-8"
+	},
+	{
+		"id": "420063008",
+		"key": "apprentice420061008desc",
+		"en|ch|tc|kr": "พลังป้องกัน +16%"
+	},
+	{
+		"id": "420062009",
+		"key": "apprentice420061009",
+		"en|ch|tc|kr": "การขุด Lvl-9"
+	},
+	{
+		"id": "420063009",
+		"key": "apprentice420061009desc",
+		"en|ch|tc|kr": "พลังป้องกัน +18%"
+	},
+	{
+		"id": "420062010",
+		"key": "apprentice420061010",
+		"en|ch|tc|kr": "การขุด Lvl-10"
+	},
+	{
+		"id": "420063010",
+		"key": "apprentice420061010desc",
+		"en|ch|tc|kr": "พลังป้องกัน +20%"
+	}
+]

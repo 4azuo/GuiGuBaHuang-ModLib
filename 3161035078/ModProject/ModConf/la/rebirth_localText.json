@@ -2,126 +2,126 @@
 	{
 		"id": "420102001",
 		"key": "rebirth420101001",
-		"en|ch|tc|kr": "Rebirth I"
+		"en|ch|tc|kr": "Renatus 1"
 	},
 	{
 		"id": "420103001",
 		"key": "rebirth420101001desc",
-		"en|ch|tc|kr": "+ V% Max HP"
+		"en|ch|tc|kr": "+5% Max HP"
 	},
 	{
 		"id": "420102002",
 		"key": "rebirth420101002",
-		"en|ch|tc|kr": "Rebirth II"
+		"en|ch|tc|kr": "Renati 2"
 	},
 	{
 		"id": "420103002",
 		"key": "rebirth420101002desc",
-		"en|ch|tc|kr": "+ X% Max HP"
+		"en|ch|tc|kr": "+10% Max HP"
 	},
 	{
 		"id": "420102003",
 		"key": "rebirth420101003",
-		"en|ch|tc|kr": "Rebirth III"
+		"en|ch|tc|kr": "Renatus 3"
 	},
 	{
 		"id": "420103003",
 		"key": "rebirth420101003desc",
-		"en|ch|tc|kr": "+ XV% Max HP"
+		"en|ch|tc|kr": "+15% Max HP"
 	},
 	{
 		"id": "420102004",
 		"key": "rebirth420101004",
-		"en|ch|tc|kr": "Rebirth IV"
+		"en|ch|tc|kr": "Renati 4"
 	},
 	{
 		"id": "420103004",
 		"key": "rebirth420101004desc",
-		"en|ch|tc|kr": "+ XX% Max HP"
+		"en|ch|tc|kr": "+20% Max HP"
 	},
 	{
 		"id": "420102005",
 		"key": "rebirth420101005",
-		"en|ch|tc|kr": "Rebirth V"
+		"en|ch|tc|kr": "Renatus 5"
 	},
 	{
 		"id": "420103005",
 		"key": "rebirth420101005desc",
-		"en|ch|tc|kr": "+ XXV% Max HP"
+		"en|ch|tc|kr": "+25% Max HP"
 	},
 	{
 		"id": "420102006",
 		"key": "rebirth420101006",
-		"en|ch|tc|kr": "Rebirth VI"
+		"en|ch|tc|kr": "Renatus 6"
 	},
 	{
 		"id": "420103006",
 		"key": "rebirth420101006desc",
-		"en|ch|tc|kr": "+ XXX% Max HP"
+		"en|ch|tc|kr": "+30% Max HP"
 	},
 	{
 		"id": "420102007",
 		"key": "rebirth420101007",
-		"en|ch|tc|kr": "Rebirth VII"
+		"en|ch|tc|kr": "Renatus 7"
 	},
 	{
 		"id": "420103007",
 		"key": "rebirth420101007desc",
-		"en|ch|tc|kr": "+ XXXV% Max HP"
+		"en|ch|tc|kr": "+35% Max HP"
 	},
 	{
 		"id": "420102008",
 		"key": "rebirth420101008",
-		"en|ch|tc|kr": "Rebirth VIII"
+		"en|ch|tc|kr": "Renatus 8"
 	},
 	{
 		"id": "420103008",
 		"key": "rebirth420101008desc",
-		"en|ch|tc|kr": "+ XL% Max HP"
+		"en|ch|tc|kr": "+40% Max HP"
 	},
 	{
 		"id": "420102009",
 		"key": "rebirth420101009",
-		"en|ch|tc|kr": "IX Rebirth"
+		"en|ch|tc|kr": "Renatus 9"
 	},
 	{
 		"id": "420103009",
 		"key": "rebirth420101009desc",
-		"en|ch|tc|kr": "+ XLV% Max HP"
+		"en|ch|tc|kr": "+45% Max HP"
 	},
 	{
 		"id": "420102010",
 		"key": "rebirth420101010",
-		"en|ch|tc|kr": "Rebirth X"
+		"en|ch|tc|kr": "Renatus 10"
 	},
 	{
 		"id": "420103010",
 		"key": "rebirth420101010desc",
-		"en|ch|tc|kr": "L% max HP"
+		"en|ch|tc|kr": "+50% Max HP"
 	},
 	{
 		"id": "420109999",
 		"key": "rebirth420109999dialog",
-		"en|ch|tc|kr": "Hoc regeneratio est occasio. A casu ad rectify praeter errat, persequi alia viam. Non est eligere sapienter. Quid artes retinere, quid scientia abiicias. Omnis arbitrium erit figura fatum."
+		"en|ch|tc|kr": "Renascentiae occasio est. Occasio est errata praeteriti corrigendi, aliam viam persequendi. Prudenter eligendum est. Quae artes retinere, quid abiicias scientiam. Omne consilium meum Fatum formabit."
 	},
 	{
 		"id": "420103100",
 		"key": "rebirth420103100",
-		"en|ch|tc|kr": "Vos have ut relinquam ad sectam!"
+		"en|ch|tc|kr": "tu heresim deserere!"
 	},
 	{
 		"id": "420103101",
 		"key": "rebirth420103101",
-		"en|ch|tc|kr": "Reputatione erit reseted!"
+		"en|ch|tc|kr": "Fama reponi!"
 	},
 	{
 		"id": "420103102",
 		"key": "rebirth420103102",
-		"en|ch|tc|kr": "REGRESSUS"
+		"en|ch|tc|kr": "Rebirth"
 	},
 	{
 		"id": "420103103",
 		"key": "rebirth420103103",
-		"en|ch|tc|kr": "Hoc mechanicus mos reset omnes ingenii gradu, exp et fama.\nCum reversus eodem gradu tua ingenium fortior."
+		"en|ch|tc|kr": "Hic mechanicus omnes mores tuos gradu, exp et fama reponit.\nCum aequo redieris, fortior erit ingenium tuum."
 	}
 ]

@@ -2,12 +2,12 @@
 	{
 		"id": "500060000",
 		"key": "adjLvl500060000",
-		"en|ch|tc|kr": "Keiner"
+		"en|ch|tc|kr": "Keine"
 	},
 	{
 		"id": "500060001",
 		"key": "adjLvl500060001",
-		"en|ch|tc|kr": "Gemeinsam"
+		"en|ch|tc|kr": "Gewöhnlich"
 	},
 	{
 		"id": "500060002",
@@ -32,11 +32,11 @@
 	{
 		"id": "500060006",
 		"key": "adjLvl500060006",
-		"en|ch|tc|kr": "Tier"
+		"en|ch|tc|kr": "Biest"
 	},
 	{
 		"id": "500060007",
 		"key": "adjLvl500060007",
-		"en|ch|tc|kr": "Antiquität"
+		"en|ch|tc|kr": "Antik"
 	}
 ]

@@ -7,7 +7,7 @@
 	{
 		"id": "500060001",
 		"key": "adjLvl500060001",
-		"en|ch|tc|kr": "Común"
+		"en|ch|tc|kr": "común"
 	},
 	{
 		"id": "500060002",
@@ -17,12 +17,12 @@
 	{
 		"id": "500060003",
 		"key": "adjLvl500060003",
-		"en|ch|tc|kr": "Extraño"
+		"en|ch|tc|kr": "raro"
 	},
 	{
 		"id": "500060004",
 		"key": "adjLvl500060004",
-		"en|ch|tc|kr": "Myst"
+		"en|ch|tc|kr": "misterio"
 	},
 	{
 		"id": "500060005",
@@ -37,6 +37,6 @@
 	{
 		"id": "500060007",
 		"key": "adjLvl500060007",
-		"en|ch|tc|kr": "Antigüedad"
+		"en|ch|tc|kr": "antiguo"
 	}
 ]

@@ -7,7 +7,7 @@
 	{
 		"id": 500020001,
 		"key": "other500020001",
-		"en|ch|tc|kr": "Seleccionar elemento"
+		"en|ch|tc|kr": "Seleccionar artículo"
 	},
 	{
 		"id": 500020002,
@@ -22,17 +22,17 @@
 	{
 		"id": 500020004,
 		"key": "other500020004",
-		"en|ch|tc|kr": "Tarifa: gratis para comerciantes y tutores"
+		"en|ch|tc|kr": "Tarifa: gratuita para comerciantes-maestros y guardianes"
 	},
 	{
 		"id": 500020005,
 		"key": "other500020005",
-		"en|ch|tc|kr": "Manejo de la ciudad"
+		"en|ch|tc|kr": "Gestión de la ciudad"
 	},
 	{
 		"id": 500020006,
 		"key": "other500020006",
-		"en|ch|tc|kr": "Mejora"
+		"en|ch|tc|kr": "Subir grado"
 	},
 	{
 		"id": 500020007,
@@ -47,22 +47,22 @@
 	{
 		"id": 500020009,
 		"key": "other500020009",
-		"en|ch|tc|kr": "¿Estás seguro de irse?"
+		"en|ch|tc|kr": "¿Estás seguro de irte?"
 	},
 	{
 		"id": 500020010,
 		"key": "other500020010",
-		"en|ch|tc|kr": "¿Estás seguro de declarar la guerra con esta ciudad?"
+		"en|ch|tc|kr": "¿Estás seguro de declarar la guerra a este pueblo?"
 	},
 	{
 		"id": 500020011,
 		"key": "other500020011",
-		"en|ch|tc|kr": "Ciudad"
+		"en|ch|tc|kr": "ciudad"
 	},
 	{
 		"id": 500020012,
 		"key": "other500020012",
-		"en|ch|tc|kr": "Despedir"
+		"en|ch|tc|kr": "Descartar"
 	},
 	{
 		"id": 500020013,
@@ -72,7 +72,7 @@
 	{
 		"id": 500020014,
 		"key": "other500020014",
-		"en|ch|tc|kr": "Declarar la guerra"
+		"en|ch|tc|kr": "declarar la guerra"
 	},
 	{
 		"id": 500020015,
@@ -87,27 +87,27 @@
 	{
 		"id": 500020017,
 		"key": "other500020017",
-		"en|ch|tc|kr": "Construir"
+		"en|ch|tc|kr": "construir"
 	},
 	{
 		"id": 500020018,
 		"key": "other500020018",
-		"en|ch|tc|kr": "Tu personaje se nivelará sin ningún elemento de requisito. Pero las propiedades del personaje no aumentarán."
+		"en|ch|tc|kr": "Tu personaje subirá de nivel sin ningún requisito. Pero las propiedades del personaje no aumentarán."
 	},
 	{
 		"id": 500020019,
 		"key": "other500020019",
-		"en|ch|tc|kr": "Después de tu personaje, Full Exp en cada etapa. Él/ella entrenará Auto Qi para más fuerte.\nDepende de SP."
+		"en|ch|tc|kr": "Después de que tu personaje tenga experiencia completa en cada etapa. Él/ella entrenará automáticamente el Qi para hacerlo más fuerte.\nDepende del SP."
 	},
 	{
 		"id": 500020020,
 		"key": "other500020020",
-		"en|ch|tc|kr": "¿Cómo convertirse en un tutor de la ciudad? Depende de su reputación y presupuesto de la ciudad.\nSi la ciudad tiene suficiente presupuesto para contratar a un tutor, entonces contratarán al que tiene la más alta reputación en la ciudad.\nY cuando el maestro de la ciudad perdió, el guardián que tiene la mayor reputación será el próximo maestro de la ciudad."
+		"en|ch|tc|kr": "¿Cómo convertirse en guardián de la ciudad? Depende de tu reputación y del presupuesto de la ciudad.\nSi la ciudad tiene suficiente presupuesto para contratar a un tutor, contratarán al que tenga mayor reputación en la ciudad.\nY cuando el maestro de la ciudad pierda, el guardián que tenga mayor reputación será el próximo maestro de la ciudad."
 	},
 	{
 		"id": 500020021,
 		"key": "other500020021",
-		"en|ch|tc|kr": "La tierra tiembla debajo de tus pies a medida que se enfurece la batalla. {0} lucha para proteger su hogar. {1} busca conquistar. ¡Tu elección ahora determinará tu camino!\nSí: ayuda {0}\nNo: ayuda {1}"
+		"en|ch|tc|kr": "La tierra tiembla bajo tus pies mientras la batalla continúa. {0} luchan para proteger su hogar. {1} buscan conquistar. ¡Tu elección ahora determinará tu camino!\nSí: Ayuda {0}\nNo: Ayuda {1}"
 	},
 	{
 		"id": 500020022,
@@ -117,12 +117,12 @@
 	{
 		"id": 500020023,
 		"key": "other500020023",
-		"en|ch|tc|kr": "¡Tu ciudad ({0}) está bajo ataque!\n¿Te gustaría ayudar?"
+		"en|ch|tc|kr": "¡Tu ciudad ({0}) está bajo ataque!\n¿Quieres ayudar?"
 	},
 	{
 		"id": 500020024,
 		"key": "other500020024",
-		"en|ch|tc|kr": "¡Tu secta ({0}) está bajo ataque!\n¿Te gustaría ayudar?"
+		"en|ch|tc|kr": "¡Tu secta ({0}) está bajo ataque!\n¿Quieres ayudar?"
 	},
 	{
 		"id": 500020025,
@@ -132,32 +132,32 @@
 	{
 		"id": 500020026,
 		"key": "other500020026",
-		"en|ch|tc|kr": "¿Recibiste una invitación de {0} 'Town Master para la posición de Guardian?\n¿Quieres convertirte en un tutor de la ciudad?"
+		"en|ch|tc|kr": "¿Recibiste una invitación del Ayuntamiento de {0}' para el puesto de guardián?\n¿Quieres convertirte en guardián de la ciudad?"
 	},
 	{
 		"id": 500020027,
 		"key": "other500020027",
-		"en|ch|tc|kr": "¡No tienes suficiente {0:#, ## 0} Spirit Stones para pagar!"
+		"en|ch|tc|kr": "¡No tienes suficientes {0:#,##0} piedras espirituales para pagar!"
 	},
 	{
 		"id": 500020028,
 		"key": "other500020028",
-		"en|ch|tc|kr": "Cada vez que mueras en la batalla, tu vida se perderá. Y cuando llegue su edad, su guardado será eliminado. Por favor ten cuidado."
+		"en|ch|tc|kr": "Cada vez que mueras en la batalla, perderás la vida. Y cuando llegue tu edad, tu guardado será eliminado. Por favor tenga cuidado."
 	},
 	{
 		"id": 500020029,
 		"key": "other500020029",
-		"en|ch|tc|kr": "¿De verdad quieres omitir {0} año?"
+		"en|ch|tc|kr": "¿De verdad quieres saltarte {0} año?"
 	},
 	{
 		"id": 500020030,
 		"key": "other500020030",
-		"en|ch|tc|kr": "Skip {0} año"
+		"en|ch|tc|kr": "Saltar {0} año"
 	},
 	{
 		"id": 500020031,
 		"key": "other500020031",
-		"en|ch|tc|kr": "¿De verdad quieres omitir {0} año?\n(Sin eventos mensuales)"
+		"en|ch|tc|kr": "¿De verdad quieres saltarte {0} año?\n(Sin eventos mensuales)"
 	},
 	{
 		"id": 500020032,
@@ -167,22 +167,22 @@
 	{
 		"id": 500020033,
 		"key": "other500020033",
-		"en|ch|tc|kr": "Afecte su daño y defensa contra el daño del mismo tipo.\nLos dedos especiales, las palmas y los puños también aumentan su defensa."
+		"en|ch|tc|kr": "Afecta tu daño y defensa contra daños del mismo tipo.\nLos dedos, palmas y puños especiales también aumentan tu defensa."
 	},
 	{
 		"id": 500020034,
 		"key": "other500020034",
-		"en|ch|tc|kr": "Afecte su daño y defensa contra el daño del mismo tipo.\nFuego → Daño crítico\nAgua → recuperación de MP\nViento → Evadir\nTierra → defensa\nTrueno → oportunidad crítica y reducir el daño de prueba\nMadera → Recuperación de HP"
+		"en|ch|tc|kr": "Afecta tu daño y defensa contra daños del mismo tipo.\nFuego → Daño crítico\nAgua → Recuperación MP\nViento → Evadir\nTierra → Defensa\nTrueno → Probabilidad de crítico y reducción del daño de prueba\nMadera → Recuperación de HP"
 	},
 	{
 		"id": 500020035,
 		"key": "other500020035",
-		"en|ch|tc|kr": "El título se otorgará cuando se alcance un cierto puntaje."
+		"en|ch|tc|kr": "El título se otorgará cuando se alcance una determinada puntuación."
 	},
 	{
 		"id": 500020036,
 		"key": "other500020036",
-		"en|ch|tc|kr": "Los puntos de habilidad afectan HP/MP en función del nivel del personaje."
+		"en|ch|tc|kr": "Los puntos de habilidad afectan HP/MP según el nivel del personaje."
 	},
 	{
 		"id": 500020037,
@@ -192,12 +192,12 @@
 	{
 		"id": 500020038,
 		"key": "other500020038",
-		"en|ch|tc|kr": "HP/MP afecta el escudo al ingresar a la batalla.\nLa información y la suerte tienen un impacto significativo en los eventos aleatorios, así como la velocidad de crecimiento y aprendizaje."
+		"en|ch|tc|kr": "HP/MP afectan el escudo al entrar en batalla.\nEl conocimiento y la suerte tienen un impacto significativo en los eventos aleatorios, así como en la velocidad de crecimiento y aprendizaje."
 	},
 	{
 		"id": 500020039,
 		"key": "other500020039",
-		"en|ch|tc|kr": "No juegues con otro mod que aumente el juego difícil."
+		"en|ch|tc|kr": "No juegues con otro mod que aumente la dificultad del juego."
 	},
 	{
 		"id": 500020040,
@@ -207,32 +207,32 @@
 	{
 		"id": 500020041,
 		"key": "other500020041",
-		"en|ch|tc|kr": "Puede comprar/vender artículos con NPC aquí. Pero puedes ser odiado y robado."
+		"en|ch|tc|kr": "Puedes comprar/vender artículos con npc aquí. Pero te pueden odiar y robar."
 	},
 	{
 		"id": 500020042,
 		"key": "other500020042",
-		"en|ch|tc|kr": "{0:#, ## 0} Spirit Stones/año"
+		"en|ch|tc|kr": "{0:#,##0} piedras espirituales/año"
 	},
 	{
 		"id": 500020043,
 		"key": "other500020043",
-		"en|ch|tc|kr": "{0:#, ## 0} Spirit Stones/mes"
+		"en|ch|tc|kr": "{0:#,##0} piedras espirituales/mes"
 	},
 	{
 		"id": 500020044,
 		"key": "other500020044",
-		"en|ch|tc|kr": "Aturdido"
+		"en|ch|tc|kr": "Furtivamente a través"
 	},
 	{
 		"id": 500020045,
 		"key": "other500020045",
-		"en|ch|tc|kr": "Dejar"
+		"en|ch|tc|kr": "salir"
 	},
 	{
 		"id": 500020046,
 		"key": "other500020046",
-		"en|ch|tc|kr": "[Información] Taoist"
+		"en|ch|tc|kr": "[INFO] Taoísta"
 	},
 	{
 		"id": 500020047,
@@ -257,7 +257,7 @@
 	{
 		"id": 500020051,
 		"key": "other500020051",
-		"en|ch|tc|kr": "¡Éxito! Nivel {0} → {1} (+{2:#, ## 0} exp)"
+		"en|ch|tc|kr": "¡Éxito! Nivel {0} → {1} (+{2:#,##0} exp)"
 	},
 	{
 		"id": 500020052,
@@ -277,27 +277,27 @@
 	{
 		"id": 500020055,
 		"key": "other500020055",
-		"en|ch|tc|kr": "Registro"
+		"en|ch|tc|kr": "Registrarse"
 	},
 	{
 		"id": 500020056,
 		"key": "other500020056",
-		"en|ch|tc|kr": "{0} Spirit Stones → {1} contribución"
+		"en|ch|tc|kr": "{0:#,##0} Piedras espirituales → {1:#,##0} Contribución"
 	},
 	{
 		"id": 500020057,
 		"key": "other500020057",
-		"en|ch|tc|kr": "Relación de Exchannge {0} Spirit Stones → 1 Contribución"
+		"en|ch|tc|kr": "Proporción de intercambio {0:#,##0} Piedras espirituales → 1 contribución"
 	},
 	{
 		"id": 500020058,
 		"key": "other500020058",
-		"en|ch|tc|kr": "Seleccionar elementos"
+		"en|ch|tc|kr": "Seleccionar artículos"
 	},
 	{
 		"id": 500020059,
 		"key": "other500020059",
-		"en|ch|tc|kr": "Claro"
+		"en|ch|tc|kr": "Borrar"
 	},
 	{
 		"id": 500020060,
@@ -307,7 +307,7 @@
 	{
 		"id": 500020061,
 		"key": "other500020061",
-		"en|ch|tc|kr": "Registro"
+		"en|ch|tc|kr": "Registrarse"
 	},
 	{
 		"id": 500020062,
@@ -317,27 +317,27 @@
 	{
 		"id": 500020063,
 		"key": "other500020063",
-		"en|ch|tc|kr": "Min ： {0} vender ： {1} max ： {2} su ： {3}"
+		"en|ch|tc|kr": "Mín:{0:#,##0}　　　Vender:{1:#,##0}　　　Máx:{2:#,##0}　　　Tu:{3:#,##0}"
 	},
 	{
 		"id": 500020064,
 		"key": "other500020064",
-		"en|ch|tc|kr": "Abajo"
+		"en|ch|tc|kr": "abajo"
 	},
 	{
 		"id": 500020065,
 		"key": "other500020065",
-		"en|ch|tc|kr": "¡Párate en la ciudad!"
+		"en|ch|tc|kr": "¡Por favor quédense en la ciudad!"
 	},
 	{
 		"id": 500020066,
 		"key": "other500020066",
-		"en|ch|tc|kr": "Up"
+		"en|ch|tc|kr": "arriba"
 	},
 	{
 		"id": 500020067,
 		"key": "other500020067",
-		"en|ch|tc|kr": "Negociar"
+		"en|ch|tc|kr": "negociar"
 	},
 	{
 		"id": 500020068,
@@ -347,12 +347,12 @@
 	{
 		"id": 500020069,
 		"key": "other500020069",
-		"en|ch|tc|kr": "Necesitas {0} Spirit Stones para el cultivo."
+		"en|ch|tc|kr": "Necesitas {0:#,##0} piedras espirituales para cultivar."
 	},
 	{
 		"id": 500020070,
 		"key": "other500020070",
-		"en|ch|tc|kr": "{0} Spirit Stones → {1} exp."
+		"en|ch|tc|kr": "{0:#,##0} Piedras espirituales → {1:#,##0} Exps."
 	},
 	{
 		"id": 500020071,
@@ -362,22 +362,22 @@
 	{
 		"id": 500020072,
 		"key": "other500020072",
-		"en|ch|tc|kr": "Recibir qi"
+		"en|ch|tc|kr": "Recibir Qi"
 	},
 	{
 		"id": 500020073,
 		"key": "other500020073",
-		"en|ch|tc|kr": "Depende de su conocimiento y bases (raíces)."
+		"en|ch|tc|kr": "Depende de su conocimiento y sus bases (raíces)."
 	},
 	{
 		"id": 500020074,
 		"key": "other500020074",
-		"en|ch|tc|kr": "Trato"
+		"en|ch|tc|kr": "Oferta"
 	},
 	{
 		"id": 500020075,
 		"key": "other500020075",
-		"en|ch|tc|kr": "Valor total: {0}"
+		"en|ch|tc|kr": "Valor total: {0:#,##0}"
 	},
 	{
 		"id": 500020076,
@@ -387,17 +387,17 @@
 	{
 		"id": 500020077,
 		"key": "other500020077",
-		"en|ch|tc|kr": "Abandonar"
+		"en|ch|tc|kr": "rendirse"
 	},
 	{
 		"id": 500020078,
 		"key": "other500020078",
-		"en|ch|tc|kr": "¿Retrocediste? ¿Después de todo lo que acordamos? No tardo amablemente en las ofertas rotas, solo perdiste mi tiempo."
+		"en|ch|tc|kr": "¿Te echaste atrás? ¿Después de todo lo que acordamos? No me gustan los acuerdos incumplidos; simplemente me hicieron perder el tiempo."
 	},
 	{
 		"id": 500020079,
 		"key": "other500020079",
-		"en|ch|tc|kr": "¡Eso fue sin problemas! Siempre es genial trabajar con alguien que sabe lo que está haciendo."
+		"en|ch|tc|kr": "¡Eso salió bien! Siempre es genial trabajar con alguien que sabe lo que está haciendo."
 	},
 	{
 		"id": 500020080,
@@ -407,12 +407,12 @@
 	{
 		"id": 500020081,
 		"key": "other500020081",
-		"en|ch|tc|kr": "¿Qué? ¡Sabías que iba a venir! ¿Lo vendiste de todos modos?"
+		"en|ch|tc|kr": "¿Qué? ¡Sabías que vendría! ¿Lo vendiste de todos modos?"
 	},
 	{
 		"id": 500020082,
 		"key": "other500020082",
-		"en|ch|tc|kr": "Se ha vendido el [{0}]."
+		"en|ch|tc|kr": "El [{0}] se ha vendido."
 	},
 	{
 		"id": 500020083,
@@ -422,7 +422,7 @@
 	{
 		"id": 500020084,
 		"key": "other500020084",
-		"en|ch|tc|kr": "Seleccione un artículo."
+		"en|ch|tc|kr": "Por favor seleccione un artículo."
 	},
 	{
 		"id": 500020085,
@@ -432,7 +432,7 @@
 	{
 		"id": 500020086,
 		"key": "other500020086",
-		"en|ch|tc|kr": "¿Quieres pagar {0} Spirit Stones por nuestro servicio?"
+		"en|ch|tc|kr": "¿Quieres pagar {0:#,##0} piedras espirituales por nuestro servicio?"
 	},
 	{
 		"id": 500020087,
@@ -442,12 +442,12 @@
 	{
 		"id": 500020088,
 		"key": "other500020088",
-		"en|ch|tc|kr": "¿Estás tratando de dejarme?"
+		"en|ch|tc|kr": "¿Estás intentando dejarme?"
 	},
 	{
 		"id": 500020089,
 		"key": "other500020089",
-		"en|ch|tc|kr": "Daño x {0}"
+		"en|ch|tc|kr": "Daño x{0}"
 	},
 	{
 		"id": 500020090,
@@ -457,7 +457,7 @@
 	{
 		"id": 500020091,
 		"key": "other500020091",
-		"en|ch|tc|kr": "Min ： {0} Vender ： {1} max ： {2}"
+		"en|ch|tc|kr": "Mín:{0}　　　Vender:{1}　　　Máx:{2}"
 	},
 	{
 		"id": 500020092,
@@ -492,7 +492,7 @@
 	{
 		"id": 500020098,
 		"key": "other500020098",
-		"en|ch|tc|kr": "Seleccione un artículo"
+		"en|ch|tc|kr": "Por favor seleccione un artículo"
 	},
 	{
 		"id": 500020099,
@@ -507,22 +507,22 @@
 	{
 		"id": 500020101,
 		"key": "other500020101",
-		"en|ch|tc|kr": "Debes estar en una ciudad para vender artículos"
+		"en|ch|tc|kr": "Debes estar en una ciudad para vender artículos."
 	},
 	{
 		"id": 500020102,
 		"key": "other500020102",
-		"en|ch|tc|kr": "Error"
+		"en|ch|tc|kr": "error"
 	},
 	{
 		"id": 500020103,
 		"key": "other500020103",
-		"en|ch|tc|kr": "Venta registrada: {0} x {1} para {2}"
+		"en|ch|tc|kr": "Venta registrada: {0} x{1} por {2}"
 	},
 	{
 		"id": 500020104,
 		"key": "other500020104",
-		"en|ch|tc|kr": "No hay suficiente dinero por tarifa anónima"
+		"en|ch|tc|kr": "No hay suficiente dinero para pagar una tarifa anónima"
 	},
 	{
 		"id": 500020105,
@@ -532,12 +532,12 @@
 	{
 		"id": 500020106,
 		"key": "other500020106",
-		"en|ch|tc|kr": "Venta anónima registrada: {0} x {1} para {2} (tarifa: {3})"
+		"en|ch|tc|kr": "Venta anónima registrada: {0} x{1} por {2} (tarifa: {3})"
 	},
 	{
 		"id": 500020107,
 		"key": "other500020107",
-		"en|ch|tc|kr": "Precio de venta: {0} | Tarifa anónima: {1} (pagado por adelantado)"
+		"en|ch|tc|kr": "Precio de venta: {0} | Tarifa anónima: {1} (pagada por adelantado)"
 	},
 	{
 		"id": 500020108,
@@ -557,11 +557,31 @@
 	{
 		"id": 500020111,
 		"key": "other500020111",
-		"en|ch|tc|kr": "Lista de acuerdos"
+		"en|ch|tc|kr": "Lista de ofertas"
 	},
 	{
 		"id": 500020112,
 		"key": "other500020112",
-		"en|ch|tc|kr": "¡Estás vendiendo este artículo en {0}!"
+		"en|ch|tc|kr": "¡Estás vendiendo este artículo a {0}!"
+	},
+	{
+		"id": 500020113,
+		"key": "other500020113",
+		"en|ch|tc|kr": "Reparación"
+	},
+	{
+		"id": 500020114,
+		"key": "other500020114",
+		"en|ch|tc|kr": "Agregar punto"
+	},
+	{
+		"id": 500020115,
+		"key": "other500020115",
+		"en|ch|tc|kr": "Coste {0:#,##0}.\n¿Estás seguro?"
+	},
+	{
+		"id": 500020116,
+		"key": "other500020116",
+		"en|ch|tc|kr": "¡No tienes suficientes piedras espirituales!"
 	}
 ]

@@ -1,0 +1,27 @@
+[
+	{
+		"id": -1000003000,
+		"key": "setting000",
+		"en|ch|tc|kr": "Paramètres taoïstes"
+	},
+	{
+		"id": -1000003001,
+		"key": "setting001",
+		"en|ch|tc|kr": "Postulez au prochain événement."
+	},
+	{
+		"id": -1000003002,
+		"key": "setting002",
+		"en|ch|tc|kr": "Masquer le multiplicateur de dégâts"
+	},
+	{
+		"id": -1000003003,
+		"key": "setting003",
+		"en|ch|tc|kr": "Masquer les exceptions"
+	},
+	{
+		"id": -1000003004,
+		"key": "setting004",
+		"en|ch|tc|kr": "(Veuillez activer si vous souhaitez signaler des bugs)"
+	}
+]

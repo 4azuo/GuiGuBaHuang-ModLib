@@ -7,7 +7,7 @@
 	{
 		"id": "420103001",
 		"key": "rebirth420101001desc",
-		"en|ch|tc|kr": "+ 5% Max HP"
+		"en|ch|tc|kr": "+5 % de PV maximum"
 	},
 	{
 		"id": "420102002",
@@ -17,7 +17,7 @@
 	{
 		"id": "420103002",
 		"key": "rebirth420101002desc",
-		"en|ch|tc|kr": "+ 10% max hp"
+		"en|ch|tc|kr": "+10 % de PV maximum"
 	},
 	{
 		"id": "420102003",
@@ -27,7 +27,7 @@
 	{
 		"id": "420103003",
 		"key": "rebirth420101003desc",
-		"en|ch|tc|kr": "+ 15% max hp"
+		"en|ch|tc|kr": "+15 % de PV maximum"
 	},
 	{
 		"id": "420102004",
@@ -37,7 +37,7 @@
 	{
 		"id": "420103004",
 		"key": "rebirth420101004desc",
-		"en|ch|tc|kr": "+ 20% max hp"
+		"en|ch|tc|kr": "+20 % de PV maximum"
 	},
 	{
 		"id": "420102005",
@@ -47,7 +47,7 @@
 	{
 		"id": "420103005",
 		"key": "rebirth420101005desc",
-		"en|ch|tc|kr": "+ 25% max hp"
+		"en|ch|tc|kr": "+25 % de PV maximum"
 	},
 	{
 		"id": "420102006",
@@ -57,7 +57,7 @@
 	{
 		"id": "420103006",
 		"key": "rebirth420101006desc",
-		"en|ch|tc|kr": "+ 30% Max HP"
+		"en|ch|tc|kr": "+30 % de PV maximum"
 	},
 	{
 		"id": "420102007",
@@ -67,7 +67,7 @@
 	{
 		"id": "420103007",
 		"key": "rebirth420101007desc",
-		"en|ch|tc|kr": "+ 35% max hp"
+		"en|ch|tc|kr": "+35 % de PV maximum"
 	},
 	{
 		"id": "420102008",
@@ -77,7 +77,7 @@
 	{
 		"id": "420103008",
 		"key": "rebirth420101008desc",
-		"en|ch|tc|kr": "+ 40% Max HP"
+		"en|ch|tc|kr": "+40 % de PV maximum"
 	},
 	{
 		"id": "420102009",
@@ -87,7 +87,7 @@
 	{
 		"id": "420103009",
 		"key": "rebirth420101009desc",
-		"en|ch|tc|kr": "+ 45% max hp"
+		"en|ch|tc|kr": "+45 % de PV maximum"
 	},
 	{
 		"id": "420102010",
@@ -97,22 +97,22 @@
 	{
 		"id": "420103010",
 		"key": "rebirth420101010desc",
-		"en|ch|tc|kr": "+ 50% max hp"
+		"en|ch|tc|kr": "+50 % de PV maximum"
 	},
 	{
 		"id": "420109999",
 		"key": "rebirth420109999dialog",
-		"en|ch|tc|kr": "Cette renaissance est une opportunité. Une chance de rectifier les erreurs passées, de poursuivre un chemin différent. Je dois choisir judicieusement. Quelles compétences à conserver, quelles connaissances rejeter. Chaque décision façonnera mon destin."
+		"en|ch|tc|kr": "Cette renaissance est une opportunité. Une chance de rectifier les erreurs du passé, de suivre une voie différente. Je dois choisir judicieusement. Quelles compétences conserver, quelles connaissances écarter. Chaque décision façonnera mon destin."
 	},
 	{
 		"id": "420103100",
 		"key": "rebirth420103100",
-		"en|ch|tc|kr": "Vous devez quitter la secte!"
+		"en|ch|tc|kr": "Vous devez quitter la secte !"
 	},
 	{
 		"id": "420103101",
 		"key": "rebirth420103101",
-		"en|ch|tc|kr": "La réputation sera réinitialisée!"
+		"en|ch|tc|kr": "La réputation sera réinitialisée !"
 	},
 	{
 		"id": "420103102",
@@ -122,6 +122,6 @@
 	{
 		"id": "420103103",
 		"key": "rebirth420103103",
-		"en|ch|tc|kr": "Ce mécanicien réinitialisera tous vos personnages, Exp et votre réputation.\nLorsque vous reviendrez avec le même niveau, votre personnage sera plus fort."
+		"en|ch|tc|kr": "Ce mécanisme réinitialisera le niveau, l'expérience et la réputation de votre personnage.\nLorsque vous reviendrez avec le même niveau, votre personnage sera plus fort."
 	}
 ]

@@ -2,7 +2,7 @@
 	{
 		"id": "484410100",
 		"key": "item_name484410100",
-		"en|ch|tc|kr": "Qi"
+		"en|ch|tc|kr": "chi"
 	},
 	{
 		"id": "480010100",
@@ -12,6 +12,6 @@
 	{
 		"id": "480010101",
 		"key": "qicul480010101",
-		"en|ch|tc|kr": "Dejar"
+		"en|ch|tc|kr": "salir"
 	}
 ]

@@ -2,52 +2,52 @@
 	{
 		"id": "480110100",
 		"key": "battleevent480110100",
-		"en|ch|tc|kr": "Ha ha ha! Le butin est à moi! Tout cela!"
+		"en|ch|tc|kr": "Ha ha ha ! Le butin est à moi ! Tout ça !"
 	},
 	{
 		"id": "480110200",
 		"key": "battleevent480110200",
-		"en|ch|tc|kr": "Laissez-moi aider!"
+		"en|ch|tc|kr": "Laissez-moi vous aider !"
 	},
 	{
 		"id": "480110300",
 		"key": "battleevent480110300",
-		"en|ch|tc|kr": "Ne jouez pas avec notre membre de la secte!"
+		"en|ch|tc|kr": "Ne plaisantez pas avec notre membre de la secte !"
 	},
 	{
 		"id": "480110400",
 		"key": "battleevent480110400",
-		"en|ch|tc|kr": "Vous n'êtes pas autorisé à vous battre en ville!"
+		"en|ch|tc|kr": "Vous n'avez pas le droit de vous battre en ville !"
 	},
 	{
 		"id": "480110500",
 		"key": "battleevent480110500",
-		"en|ch|tc|kr": "J'en ai assez avec toi! Allez en enfer!"
+		"en|ch|tc|kr": "J'en ai assez de toi ! Allez en enfer !"
 	},
 	{
 		"id": "480110501",
 		"key": "battleevent480110501",
-		"en|ch|tc|kr": "Les choses que vous faites sont dégoûtantes. Allez en enfer, le mal!"
+		"en|ch|tc|kr": "Les choses que vous faites sont dégoûtantes. Va en enfer, espèce de méchant !"
 	},
 	{
 		"id": "480110502",
 		"key": "battleevent480110502",
-		"en|ch|tc|kr": "Votre comportement élevé me rend vraiment nauséeux."
+		"en|ch|tc|kr": "Votre attitude noble me donne vraiment la nausée."
 	},
 	{
 		"id": "480110600",
 		"key": "battleevent480110600",
-		"en|ch|tc|kr": "Je sais que tu l'as. Donnez-moi!"
+		"en|ch|tc|kr": "Je sais que tu l'as. Donnez-le-moi !"
 	},
 	{
 		"id": "480110601",
 		"key": "battleevent480110601",
-		"en|ch|tc|kr": "Donnez-moi tout ce que vous avez sur vous!"
+		"en|ch|tc|kr": "Donne-moi tout ce que tu as sur toi !"
 	},
 	{
 		"id": "480110602",
 		"key": "battleevent480110602",
-		"en|ch|tc|kr": "Ne vous inquiétez pas, je «emprunte» vos affaires pour toujours."
+		"en|ch|tc|kr": "Ne vous inquiétez pas, je vous emprunte simplement vos affaires pour toujours."
 	},
 	{
 		"id": "480111990",
@@ -57,12 +57,12 @@
 	{
 		"id": "480112990",
 		"key": "battleevent480112990name",
-		"en|ch|tc|kr": "Guerre de la ville"
+		"en|ch|tc|kr": "Guerre de ville"
 	},
 	{
 		"id": "480113990",
 		"key": "battleevent480113990vicDesc",
-		"en|ch|tc|kr": "Vaincre vos adversaires."
+		"en|ch|tc|kr": "Battez vos adversaires."
 	},
 	{
 		"id": "480112991",
@@ -77,12 +77,12 @@
 	{
 		"id": "480112880",
 		"key": "monstwave480112880name",
-		"en|ch|tc|kr": "Mage de haricot lumos"
+		"en|ch|tc|kr": "Mage de haricots Lumos"
 	},
 	{
 		"id": "480112881",
 		"key": "monstwave480112881name",
-		"en|ch|tc|kr": "Danseuse de lame verdoyante"
+		"en|ch|tc|kr": "Danseur de lame verdoyante"
 	},
 	{
 		"id": "480112882",
@@ -97,22 +97,22 @@
 	{
 		"id": "480112884",
 		"key": "monstwave480112884name",
-		"en|ch|tc|kr": "Marteau de bois noir"
+		"en|ch|tc|kr": "Marteau de bois sombre"
 	},
 	{
 		"id": "480112885",
 		"key": "monstwave480112885name",
-		"en|ch|tc|kr": "Monnaie floral"
+		"en|ch|tc|kr": "Démon floral"
 	},
 	{
 		"id": "480112886",
 		"key": "monstwave480112886name",
-		"en|ch|tc|kr": "Terra Maul"
+		"en|ch|tc|kr": "Maille Terra"
 	},
 	{
 		"id": "480112887",
 		"key": "monstwave480112887name",
-		"en|ch|tc|kr": "Savage Mountain Demon"
+		"en|ch|tc|kr": "Démon sauvage des montagnes"
 	},
 	{
 		"id": "480112888",
@@ -122,37 +122,37 @@
 	{
 		"id": "480112889",
 		"key": "monstwave480112889name",
-		"en|ch|tc|kr": "Terreur à l'échelle"
+		"en|ch|tc|kr": "Terreur à grande échelle"
 	},
 	{
 		"id": "480112890",
 		"key": "battleevent480112890",
-		"en|ch|tc|kr": "La terre tremble sous vos pieds alors que la bataille rage. Votre choix déterminera maintenant votre chemin!"
+		"en|ch|tc|kr": "La terre tremble sous vos pieds tandis que la bataille fait rage. Votre choix déterminera désormais votre chemin !"
 	},
 	{
 		"id": "480112891",
 		"key": "battleevent480112891",
-		"en|ch|tc|kr": "Aider le défenseur"
+		"en|ch|tc|kr": "Aidez le défenseur"
 	},
 	{
 		"id": "480112892",
 		"key": "battleevent480112892",
-		"en|ch|tc|kr": "Aider l'envahisseur"
+		"en|ch|tc|kr": "Aide l'envahisseur"
 	},
 	{
 		"id": "480112893",
 		"key": "battleevent480112893",
-		"en|ch|tc|kr": "Essayer de s'échapper"
+		"en|ch|tc|kr": "Essayez de vous échapper"
 	},
 	{
 		"id": "480112894",
 		"key": "battleevent480112894",
-		"en|ch|tc|kr": "{0} envahit {1}!\nSouhaitez-vous aider?"
+		"en|ch|tc|kr": "{0} envahit {1} !\nVoulez-vous aider?"
 	},
 	{
 		"id": "480112895",
 		"key": "battleevent480112895",
-		"en|ch|tc|kr": "{0} est attaqué!\nSouhaitez-vous aider?"
+		"en|ch|tc|kr": "{0} est attaqué !\nVoulez-vous aider?"
 	},
 	{
 		"id": "480112898",

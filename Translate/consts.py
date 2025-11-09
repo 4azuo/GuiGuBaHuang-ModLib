@@ -122,7 +122,7 @@ PROGRESS_BAR_CONFIG = {
     'show_count': True,
     'show_time': True,
     'min_update_interval': 0.1,  # Minimum seconds between updates
-    'max_desc_length': 50,  # Giới hạn độ dài description
-    'max_line_length': 120,  # Terminal width limit
-    'clear_line_width': 150  # Width for clearing terminal line
+    # 'max_desc_length': 50,  # Giới hạn độ dài description
+    # 'max_line_length': 120,  # Terminal width limit
+    'clear_line_width': 200  # Width for clearing terminal line
 }

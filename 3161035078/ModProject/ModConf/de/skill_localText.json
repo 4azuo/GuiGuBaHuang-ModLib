@@ -2,7 +2,7 @@
 	{
 		"id": "1000011000",
 		"key": "skill1000011000",
-		"en|ch|tc|kr": "Schwerkraft gut"
+		"en|ch|tc|kr": "Schwerkraftbrunnen"
 	},
 	{
 		"id": "1000012000",
@@ -12,11 +12,11 @@
 	{
 		"id": "1000011001",
 		"key": "skill1000011001",
-		"en|ch|tc|kr": "Himmelsschwertfall"
+		"en|ch|tc|kr": "Himmlischer Schwertfall"
 	},
 	{
 		"id": "1000012001",
 		"key": "skill1000012001",
-		"en|ch|tc|kr": "Schaffen Sie Regen von Schwertern."
+		"en|ch|tc|kr": "Erschaffe einen Schwertregen."
 	}
 ]

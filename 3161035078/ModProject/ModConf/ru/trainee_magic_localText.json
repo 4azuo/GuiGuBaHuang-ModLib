@@ -2,101 +2,101 @@
 	{
 		"id": "420082001",
 		"key": "trainee420081001",
-		"en|ch|tc|kr": "Волшебство LVL-1"
+		"en|ch|tc|kr": "Магия 1-го уровня"
 	},
 	{
 		"id": "420083001",
 		"key": "trainee420081001desc",
-		"en|ch|tc|kr": "+2% макс"
+		"en|ch|tc|kr": "+2% Макс. MP"
 	},
 	{
 		"id": "420082002",
 		"key": "trainee420081002",
-		"en|ch|tc|kr": "Волшебная lvl-2"
+		"en|ch|tc|kr": "Магия 2-го уровня"
 	},
 	{
 		"id": "420083002",
 		"key": "trainee420081002desc",
-		"en|ch|tc|kr": "+4% макс"
+		"en|ch|tc|kr": "+4% к макс. MP"
 	},
 	{
 		"id": "420082003",
 		"key": "trainee420081003",
-		"en|ch|tc|kr": "Волшебство lvl-3"
+		"en|ch|tc|kr": "Магия 3-го уровня"
 	},
 	{
 		"id": "420083003",
 		"key": "trainee420081003desc",
-		"en|ch|tc|kr": "+7% макс"
+		"en|ch|tc|kr": "+7% к макс. MP"
 	},
 	{
 		"id": "420082004",
 		"key": "trainee420081004",
-		"en|ch|tc|kr": "Волшебная lvl-4"
+		"en|ch|tc|kr": "Магия 4-го уровня"
 	},
 	{
 		"id": "420083004",
 		"key": "trainee420081004desc",
-		"en|ch|tc|kr": "+10% макс"
+		"en|ch|tc|kr": "+10% Макс. MP"
 	},
 	{
 		"id": "420082005",
 		"key": "trainee420081005",
-		"en|ch|tc|kr": "Волшебство LVL-5"
+		"en|ch|tc|kr": "Магия 5-го уровня"
 	},
 	{
 		"id": "420083005",
 		"key": "trainee420081005desc",
-		"en|ch|tc|kr": "+15% макс"
+		"en|ch|tc|kr": "+15% Макс. MP"
 	},
 	{
 		"id": "420082006",
 		"key": "trainee420081006",
-		"en|ch|tc|kr": "Волшебство lvl-6"
+		"en|ch|tc|kr": "Магия 6-го уровня"
 	},
 	{
 		"id": "420083006",
 		"key": "trainee420081006desc",
-		"en|ch|tc|kr": "+20% макс"
+		"en|ch|tc|kr": "+20% Макс. MP"
 	},
 	{
 		"id": "420082007",
 		"key": "trainee420081007",
-		"en|ch|tc|kr": "Волшебная lvl-7"
+		"en|ch|tc|kr": "Магия 7-го уровня"
 	},
 	{
 		"id": "420083007",
 		"key": "trainee420081007desc",
-		"en|ch|tc|kr": "+30% макс"
+		"en|ch|tc|kr": "+30% Макс. MP"
 	},
 	{
 		"id": "420082008",
 		"key": "trainee420081008",
-		"en|ch|tc|kr": "Волшебство lvl-8"
+		"en|ch|tc|kr": "Магия 8-го уровня"
 	},
 	{
 		"id": "420083008",
 		"key": "trainee420081008desc",
-		"en|ch|tc|kr": "+40% макс"
+		"en|ch|tc|kr": "+40% Макс. MP"
 	},
 	{
 		"id": "420082009",
 		"key": "trainee420081009",
-		"en|ch|tc|kr": "Волшебство lvl-9"
+		"en|ch|tc|kr": "Магия 9-го уровня"
 	},
 	{
 		"id": "420083009",
 		"key": "trainee420081009desc",
-		"en|ch|tc|kr": "+60% макс"
+		"en|ch|tc|kr": "+60% Макс. MP"
 	},
 	{
 		"id": "420082010",
 		"key": "trainee420081010",
-		"en|ch|tc|kr": "Волшебство LVL-10"
+		"en|ch|tc|kr": "Магия 10 уровня"
 	},
 	{
 		"id": "420083010",
 		"key": "trainee420081010desc",
-		"en|ch|tc|kr": "+90% макс"
+		"en|ch|tc|kr": "+90% Макс. MP"
 	}
 ]

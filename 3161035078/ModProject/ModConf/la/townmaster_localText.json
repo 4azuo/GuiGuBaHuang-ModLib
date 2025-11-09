@@ -7,27 +7,27 @@
 	{
 		"id": "420041111",
 		"key": "townmaster420041111",
-		"en|ch|tc|kr": "Urbs Magister"
+		"en|ch|tc|kr": "Magister villae"
 	},
 	{
 		"id": "420041112",
 		"key": "townmaster420041112",
-		"en|ch|tc|kr": "Custos oppidum"
+		"en|ch|tc|kr": "Custos civitatis"
 	},
 	{
 		"id": "420041113",
 		"key": "townmaster420041113drama",
-		"en|ch|tc|kr": "Et facti huius oppidum Magister."
+		"en|ch|tc|kr": "Tu huius oppidi dominus factus es."
 	},
 	{
 		"id": "420041114",
 		"key": "townmaster420041114drama",
-		"en|ch|tc|kr": "Vos accepit a invitationem ex {0} 'oppidum magister ad custos situ?\nCustos in urbe Custos?."
+		"en|ch|tc|kr": "Invitationem accepistis ab {0}' Magistro Oppido ad custodiam loci?\nHabesne tutorem civitatis fieri?."
 	},
 	{
 		"id": "420041115",
 		"key": "townmaster420041114dramaOpt1",
-		"en|ch|tc|kr": "Sic"
+		"en|ch|tc|kr": "Ita"
 	},
 	{
 		"id": "420041116",
@@ -37,16 +37,16 @@
 	{
 		"id": "420041117",
 		"key": "townmaster420041117",
-		"en|ch|tc|kr": "Urbs: {0} / Magister: {I}"
+		"en|ch|tc|kr": "Oppidum: {0} & Magister: {1}"
 	},
 	{
 		"id": "420041118",
 		"key": "townmaster420041118",
-		"en|ch|tc|kr": "Budget: {0: #: ## 0}"
+		"en|ch|tc|kr": "Budget: {0:#,##0}"
 	},
 	{
 		"id": "420041119",
 		"key": "townmaster420041119",
-		"en|ch|tc|kr": "Payment: {0: #: ## 0} / Year"
+		"en|ch|tc|kr": "Redde: {0:#,##0}/year"
 	}
 ]

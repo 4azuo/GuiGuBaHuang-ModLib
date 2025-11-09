@@ -2,101 +2,101 @@
 	{
 		"id": "420052001",
 		"key": "apprentice420051001",
-		"en|ch|tc|kr": "Гербология lvl-1"
+		"en|ch|tc|kr": "Гербология Ур-1"
 	},
 	{
 		"id": "420053001",
 		"key": "apprentice420051001desc",
-		"en|ch|tc|kr": "+2% макс"
+		"en|ch|tc|kr": "+2% Макс. HP"
 	},
 	{
 		"id": "420052002",
 		"key": "apprentice420051002",
-		"en|ch|tc|kr": "Гербология lvl-2"
+		"en|ch|tc|kr": "Гербология Ур-2"
 	},
 	{
 		"id": "420053002",
 		"key": "apprentice420051002desc",
-		"en|ch|tc|kr": "+4% макс"
+		"en|ch|tc|kr": "+4% Макс. HP"
 	},
 	{
 		"id": "420052003",
 		"key": "apprentice420051003",
-		"en|ch|tc|kr": "Гербология lvl-3"
+		"en|ch|tc|kr": "Гербология ур.-3"
 	},
 	{
 		"id": "420053003",
 		"key": "apprentice420051003desc",
-		"en|ch|tc|kr": "+6% макс"
+		"en|ch|tc|kr": "+6% Макс. HP"
 	},
 	{
 		"id": "420052004",
 		"key": "apprentice420051004",
-		"en|ch|tc|kr": "Гербология lvl-4"
+		"en|ch|tc|kr": "Гербология ур.4"
 	},
 	{
 		"id": "420053004",
 		"key": "apprentice420051004desc",
-		"en|ch|tc|kr": "+8% макс"
+		"en|ch|tc|kr": "+8% Макс. HP"
 	},
 	{
 		"id": "420052005",
 		"key": "apprentice420051005",
-		"en|ch|tc|kr": "Гербология lvl-5"
+		"en|ch|tc|kr": "Гербология ур.5"
 	},
 	{
 		"id": "420053005",
 		"key": "apprentice420051005desc",
-		"en|ch|tc|kr": "+10% макс"
+		"en|ch|tc|kr": "+10% Макс. HP"
 	},
 	{
 		"id": "420052006",
 		"key": "apprentice420051006",
-		"en|ch|tc|kr": "Гербология lvl-6"
+		"en|ch|tc|kr": "Гербология ур.6"
 	},
 	{
 		"id": "420053006",
 		"key": "apprentice420051006desc",
-		"en|ch|tc|kr": "+12% макс"
+		"en|ch|tc|kr": "+12% Макс. HP"
 	},
 	{
 		"id": "420052007",
 		"key": "apprentice420051007",
-		"en|ch|tc|kr": "Гербология lvl-7"
+		"en|ch|tc|kr": "Гербология ур.7"
 	},
 	{
 		"id": "420053007",
 		"key": "apprentice420051007desc",
-		"en|ch|tc|kr": "+14% макс"
+		"en|ch|tc|kr": "+14% Макс. HP"
 	},
 	{
 		"id": "420052008",
 		"key": "apprentice420051008",
-		"en|ch|tc|kr": "Гербология lvl-8"
+		"en|ch|tc|kr": "Гербология 8-го уровня"
 	},
 	{
 		"id": "420053008",
 		"key": "apprentice420051008desc",
-		"en|ch|tc|kr": "+16% макс"
+		"en|ch|tc|kr": "+16% Макс. HP"
 	},
 	{
 		"id": "420052009",
 		"key": "apprentice420051009",
-		"en|ch|tc|kr": "Гербология lvl-9"
+		"en|ch|tc|kr": "Гербология 9-го уровня"
 	},
 	{
 		"id": "420053009",
 		"key": "apprentice420051009desc",
-		"en|ch|tc|kr": "+18% макс"
+		"en|ch|tc|kr": "+18% Макс. HP"
 	},
 	{
 		"id": "420052010",
 		"key": "apprentice420051010",
-		"en|ch|tc|kr": "Гербология lvl-10"
+		"en|ch|tc|kr": "Гербология ур.10"
 	},
 	{
 		"id": "420053010",
 		"key": "apprentice420051010desc",
-		"en|ch|tc|kr": "+20% макс"
+		"en|ch|tc|kr": "+20% Макс. HP"
 	}
 ]

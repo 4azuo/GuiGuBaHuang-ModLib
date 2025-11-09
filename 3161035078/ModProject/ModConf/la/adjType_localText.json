@@ -7,7 +7,7 @@
 	{
 		"id": "500010001",
 		"key": "adjType500010001",
-		"en|ch|tc|kr": "C"
+		"en|ch|tc|kr": "Def"
 	},
 	{
 		"id": "500010002",
@@ -27,17 +27,17 @@
 	{
 		"id": "500010005",
 		"key": "adjType500010005",
-		"en|ch|tc|kr": "Sana HP"
+		"en|ch|tc|kr": "sana Hp*"
 	},
 	{
 		"id": "500010006",
 		"key": "adjType500010006",
-		"en|ch|tc|kr": "Sana MP"
+		"en|ch|tc|kr": "sana Mp"
 	},
 	{
 		"id": "500010007",
 		"key": "adjType500010007",
-		"en|ch|tc|kr": "Sana sp"
+		"en|ch|tc|kr": "sana Sp"
 	},
 	{
 		"id": "500010008",
@@ -47,7 +47,7 @@
 	{
 		"id": "500010009",
 		"key": "adjType500010009",
-		"en|ch|tc|kr": "Tellus"
+		"en|ch|tc|kr": "Terra"
 	},
 	{
 		"id": "500010010",
@@ -57,7 +57,7 @@
 	{
 		"id": "500010011",
 		"key": "adjType500010011",
-		"en|ch|tc|kr": "Igneus"
+		"en|ch|tc|kr": "Ignis"
 	},
 	{
 		"id": "500010012",
@@ -67,32 +67,32 @@
 	{
 		"id": "500010013",
 		"key": "adjType500010013",
-		"en|ch|tc|kr": "Refrigesco"
+		"en|ch|tc|kr": "Froze"
 	},
 	{
 		"id": "500010014",
 		"key": "adjType500010014",
-		"en|ch|tc|kr": "Palma"
+		"en|ch|tc|kr": "Palm"
 	},
 	{
 		"id": "500010015",
 		"key": "adjType500010015",
-		"en|ch|tc|kr": "Hasta"
+		"en|ch|tc|kr": "hastam"
 	},
 	{
 		"id": "500010016",
 		"key": "adjType500010016",
-		"en|ch|tc|kr": "Gladio"
+		"en|ch|tc|kr": "gladius"
 	},
 	{
 		"id": "500010017",
 		"key": "adjType500010017",
-		"en|ch|tc|kr": "Tonitro"
+		"en|ch|tc|kr": "Tonitru"
 	},
 	{
 		"id": "500010018",
 		"key": "adjType500010018",
-		"en|ch|tc|kr": "Vento"
+		"en|ch|tc|kr": "Ventus"
 	},
 	{
 		"id": "500010019",
@@ -102,32 +102,32 @@
 	{
 		"id": "500010020",
 		"key": "adjType500010020",
-		"en|ch|tc|kr": "Celeritate"
+		"en|ch|tc|kr": "Celeritas"
 	},
 	{
 		"id": "500010021",
 		"key": "adjType500010021",
-		"en|ch|tc|kr": "Clausus (% max)"
+		"en|ch|tc|kr": "Obstructionum (%Max)"
 	},
 	{
 		"id": "500010022",
 		"key": "adjType500010022",
-		"en|ch|tc|kr": "Clausus (DMG)"
+		"en|ch|tc|kr": "Obstructionum (Dmg)"
 	},
 	{
 		"id": "500010023",
 		"key": "adjType500010023",
-		"en|ch|tc|kr": "Evadere (%)"
+		"en|ch|tc|kr": "Evade(%)"
 	},
 	{
 		"id": "500010024",
 		"key": "adjType500010024",
-		"en|ch|tc|kr": "Evadere (% max)"
+		"en|ch|tc|kr": "Evade (%Max)"
 	},
 	{
 		"id": "500010025",
 		"key": "adjType500010025",
-		"en|ch|tc|kr": "Induo"
+		"en|ch|tc|kr": "irritum facere"
 	},
 	{
 		"id": "500010026",
@@ -137,46 +137,71 @@
 	{
 		"id": "500010027",
 		"key": "adjType500010027",
-		"en|ch|tc|kr": "Scrit (%)"
+		"en|ch|tc|kr": "SCrit(%)"
 	},
 	{
 		"id": "500010028",
 		"key": "adjType500010028",
-		"en|ch|tc|kr": "Scrit (% max)"
+		"en|ch|tc|kr": "SCrit (%Max)"
 	},
 	{
 		"id": "500010029",
 		"key": "adjType500010029",
-		"en|ch|tc|kr": "Scrrit (% DMG)"
+		"en|ch|tc|kr": "SCrit(%Dmg)"
 	},
 	{
 		"id": "500010030",
 		"key": "adjType500010030",
-		"en|ch|tc|kr": "Arte (% dmg)"
+		"en|ch|tc|kr": "Scientia (% Dmg)"
 	},
 	{
 		"id": "500010031",
 		"key": "adjType500010031",
-		"en|ch|tc|kr": "DMG min-"
+		"en|ch|tc|kr": "Min-Dmg"
 	},
 	{
 		"id": "500010032",
 		"key": "adjType500010032",
-		"en|ch|tc|kr": "Furantur (HP)"
+		"en|ch|tc|kr": "Furantur (Hp)"
 	},
 	{
 		"id": "500010033",
 		"key": "adjType500010033",
-		"en|ch|tc|kr": "Furantur (procul)"
+		"en|ch|tc|kr": "Furari (Mp)"
 	},
 	{
 		"id": "500010034",
 		"key": "adjType500010034",
-		"en|ch|tc|kr": "Furantur (SP)"
+		"en|ch|tc|kr": "Furtum (Sp)"
 	},
 	{
 		"id": "500010035",
 		"key": "adjType500010035",
-		"en|ch|tc|kr": "Mors (%)"
+		"en|ch|tc|kr": "Occide(%)"
+	},
+	{
+		"id": "500010036",
+		"key": "adjType500010036",
+		"en|ch|tc|kr": "Pet Buff(%)"
+	},
+	{
+		"id": "500010037",
+		"key": "adjType500010037",
+		"en|ch|tc|kr": "Dp"
+	},
+	{
+		"id": "500010038",
+		"key": "adjType500010038",
+		"en|ch|tc|kr": "sana Dp*"
+	},
+	{
+		"id": "500010039",
+		"key": "adjType500010039",
+		"en|ch|tc|kr": "Item CD(%)"
+	},
+	{
+		"id": "500010040",
+		"key": "adjType500010040",
+		"en|ch|tc|kr": "Arte CD(%)"
 	}
 ]

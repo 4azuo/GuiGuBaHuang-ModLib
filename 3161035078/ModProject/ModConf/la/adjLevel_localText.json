@@ -2,22 +2,22 @@
 	{
 		"id": "500060000",
 		"key": "adjLvl500060000",
-		"en|ch|tc|kr": "Nemo"
+		"en|ch|tc|kr": "Nullus"
 	},
 	{
 		"id": "500060001",
 		"key": "adjLvl500060001",
-		"en|ch|tc|kr": "Conmunis"
+		"en|ch|tc|kr": "Communia"
 	},
 	{
 		"id": "500060002",
 		"key": "adjLvl500060002",
-		"en|ch|tc|kr": "Raris"
+		"en|ch|tc|kr": "Inusitatum"
 	},
 	{
 		"id": "500060003",
 		"key": "adjLvl500060003",
-		"en|ch|tc|kr": "Rara"
+		"en|ch|tc|kr": "Rare"
 	},
 	{
 		"id": "500060004",
@@ -37,6 +37,6 @@
 	{
 		"id": "500060007",
 		"key": "adjLvl500060007",
-		"en|ch|tc|kr": "Antiqua"
+		"en|ch|tc|kr": "Antique"
 	}
 ]
