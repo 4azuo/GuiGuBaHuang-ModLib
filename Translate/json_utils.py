@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 """
-Utilities để làm việc với JSON files
+Utilities for working with JSON files
 """
 
 import json
@@ -12,12 +12,12 @@ from data_types import LocalTextData
 from consts import FILE_CONFIG, COMBINED_KEY_WITH_EN_PATTERN
 
 class JsonUtils:
-    """Utilities cho việc xử lý JSON data"""
+    """Utilities for handling JSON data"""
     
     @staticmethod
     def fix_json_format(content: str) -> str:
         """
-        Sửa các lỗi format JSON phổ biến
+        Fix common JSON format errors
         
         Args:
             content: Raw JSON string content
@@ -25,10 +25,10 @@ class JsonUtils:
         Returns:
             Cleaned JSON string
         """
-        # Xóa trailing commas
+        # Remove trailing commas
         content = re.sub(r',(\s*[}\]])', r'\1', content)
         
-        # Thay single quotes thành double quotes cho keys
+        # Replace single quotes with double quotes for keys
         content = re.sub(r"'([^']*)':", r'"\1":', content)
         
         return content
@@ -36,19 +36,19 @@ class JsonUtils:
     @staticmethod
     def read_json_file(file_path: str) -> Optional[LocalTextData]:
         """
-        Đọc file JSON và trả về LocalTextData
+        Read JSON file and return LocalTextData
         
         Args:
-            file_path: Đường dẫn tới file JSON
+            file_path: Path to JSON file
             
         Returns:
-            LocalTextData object hoặc None nếu lỗi
+            LocalTextData object or None if error
         """
         try:
             with open(file_path, 'r', encoding=FILE_CONFIG['encoding']) as f:
                 content = f.read()
             
-            # Tự động sửa format nếu cần
+            # Auto-fix format if needed
             content = JsonUtils.fix_json_format(content)
             
             # Parse JSON
@@ -57,20 +57,20 @@ class JsonUtils:
             return LocalTextData(data)
             
         except Exception as e:
-            print(f"Lỗi đọc file {file_path}: {e}")
+            print(f"Error reading file {file_path}: {e}")
             return None
     
     @staticmethod
     def write_json_file(file_path: str, data: LocalTextData) -> bool:
         """
-        Ghi LocalTextData ra file JSON
+        Write LocalTextData to JSON file
         
         Args:
-            file_path: Đường dẫn tới file JSON
-            data: LocalTextData cần ghi
+            file_path: Path to JSON file
+            data: LocalTextData to write
             
         Returns:
-            True nếu thành công
+            True if successful
         """
         try:
             with open(file_path, 'w', encoding=FILE_CONFIG['encoding']) as f:
@@ -84,22 +84,22 @@ class JsonUtils:
             return True
             
         except Exception as e:
-            print(f"Lỗi ghi file {file_path}: {e}")
+            print(f"Error writing file {file_path}: {e}")
             return False
     
     @staticmethod
     def sort_json_data(data: LocalTextData) -> LocalTextData:
         """
-        Sắp xếp dữ liệu JSON theo thứ tự key
+        Sort JSON data by key order
         
         Args:
-            data: LocalTextData cần sắp xếp
+            data: LocalTextData to sort
             
         Returns:
-            LocalTextData đã được sắp xếp
+            Sorted LocalTextData
         """
         # if data.is_list:
-        #     # Sort list items by 'id' field nếu có
+        #     # Sort list items by 'id' field if available
         #     sorted_data = sorted(data.data, key=lambda x: x.get('id', ''))
         #     return LocalTextData(sorted_data)
         # elif data.is_dict:
@@ -112,16 +112,16 @@ class JsonUtils:
     @staticmethod
     def validate_json_structure(data: Any) -> bool:
         """
-        Kiểm tra cấu trúc JSON có hợp lệ cho việc dịch không
+        Check if JSON structure is valid for translation
         
         Args:
-            data: Dữ liệu JSON cần kiểm tra
+            data: JSON data to check
             
         Returns:
-            True nếu cấu trúc hợp lệ
+            True if structure is valid
         """
         if isinstance(data, list):
-            # Kiểm tra ít nhất một item có key 'en' hoặc combined key chứa 'en'
+            # Check if at least one item has 'en' key or combined key containing 'en'
             return any(
                 isinstance(item, dict) and (
                     'en' in item or 
@@ -130,7 +130,7 @@ class JsonUtils:
                 for item in data
             )
         elif isinstance(data, dict):
-            # Kiểm tra có key 'en' hoặc combined key chứa 'en'
+            # Check if has 'en' key or combined key containing 'en'
             return 'en' in data or any(COMBINED_KEY_WITH_EN_PATTERN.match(key) for key in data.keys())
         
         return False
@@ -138,13 +138,13 @@ class JsonUtils:
     @staticmethod
     def get_translatable_count(data: LocalTextData) -> int:
         """
-        Đếm số lượng text có thể dịch được
+        Count number of translatable texts
         
         Args:
-            data: LocalTextData cần đếm
+            data: LocalTextData to count
             
         Returns:
-            Số lượng text có thể dịch
+            Number of translatable texts
         """
         count = 0
         
@@ -156,13 +156,13 @@ class JsonUtils:
                         if en_text and en_text.strip():
                             count += 1
                     else:
-                        # Kiểm tra combined keys chứa 'en'
+                        # Check combined keys containing 'en'
                         for key in item.keys():
                             if COMBINED_KEY_WITH_EN_PATTERN.match(key):
                                 text = item[key]
                                 if text and text.strip():
                                     count += 1
-                                break  # Chỉ đếm một combined key per item
+                                break  # Only count one combined key per item
                         
         elif data.is_dict:
             if 'en' in data.data:
@@ -170,7 +170,7 @@ class JsonUtils:
                 if en_text and en_text.strip():
                     count += 1
             else:
-                # Kiểm tra combined keys chứa 'en'
+                # Check combined keys containing 'en'
                 for key in data.data.keys():
                     if COMBINED_KEY_WITH_EN_PATTERN.match(key):
                         text = data.data[key]
@@ -183,19 +183,19 @@ class JsonUtils:
     @staticmethod
     def get_english_text(item: dict) -> Optional[str]:
         """
-        Lấy text tiếng Anh từ item, hỗ trợ cả 'en' key và combined keys
+        Get English text from item, supporting both 'en' key and combined keys
         
         Args:
-            item: Dictionary item từ JSON
+            item: Dictionary item from JSON
             
         Returns:
-            Text tiếng Anh hoặc None
+            English text or None
         """
-        # Ưu tiên key 'en' trước
+        # Prioritize 'en' key first
         if 'en' in item:
             return item['en']
         
-        # Nếu không có, tìm combined key chứa 'en'
+        # If not available, find combined key containing 'en'
         for key in item.keys():
             if COMBINED_KEY_WITH_EN_PATTERN.match(key):
                 return item[key]

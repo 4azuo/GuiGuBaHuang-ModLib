@@ -27,8 +27,8 @@
 		"id": -1000001003,
 		"key": "smcfgs003",
 		"en": "Max HP",
-		"ch": "最大生命值",
-		"tc": "最大生命值",
+		"ch": "最多 HP",
+		"tc": "最多 HP",
 		"kr": "최대 HP"
 	},
 	{
@@ -379,16 +379,16 @@
 		"id": -1000001047,
 		"key": "smcfgs047",
 		"en": "NPC Amount",
-		"ch": "NPC数量",
-		"tc": "NPC數量",
+		"ch": "NPC 金额",
+		"tc": "NPC 金額",
 		"kr": "NPC 금액"
 	},
 	{
 		"id": -1000001048,
 		"key": "smcfgs048",
 		"en": "(Required RAM: {0}MB)",
-		"ch": "（所需 RAM：{0}MB）",
-		"tc": "（所需 RAM：{0}MB）",
+		"ch": "（需要 RAM：{0}MB）",
+		"tc": "（需要 RAM：{0}MB）",
 		"kr": "(필수 RAM: {0}MB)"
 	},
 	{
@@ -419,9 +419,9 @@
 		"id": -1000001052,
 		"key": "smcfgs052",
 		"en": "(Include player, npc and monsters)",
-		"ch": "（包括玩家、NPC、怪物）",
-		"tc": "（包括玩家、NPC、怪物）",
-		"kr": "(플레이어, NPC, 몬스터 포함)"
+		"ch": "（包括玩家、NPC 和怪物）",
+		"tc": "（包括玩家、NPC 和怪物）",
+		"kr": "(플레이어, NPC 및 몬스터 포함)"
 	},
 	{
 		"id": -1000001053,
@@ -619,9 +619,9 @@
 		"id": -1000001117,
 		"key": "smcfgs117",
 		"en": "Npc Join Rate",
-		"ch": "Npc加入率",
-		"tc": "Npc加入率",
-		"kr": "NPC 가입률"
+		"ch": "NPC 加入率",
+		"tc": "NPC 加入率",
+		"kr": "NPC 참여율"
 	},
 	{
 		"id": -1000001118,
@@ -683,9 +683,9 @@
 		"id": -1000001125,
 		"key": "smcfgs125",
 		"en": "No Qi Cultivation",
-		"ch": "无气修",
-		"tc": "無氣修",
-		"kr": "기 재배 없음"
+		"ch": "无Qi培养",
+		"tc": "無Qi培養",
+		"kr": "아니오 Qi 재배"
 	},
 	{
 		"id": -1000001126,

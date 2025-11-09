@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 """
-Utilities để làm việc với files và directories
+Utilities for working with files and directories
 """
 
 import os
@@ -12,24 +12,24 @@ from consts import DIR_PATTERNS, FILE_CONFIG
 from data_types import FileType, FileInfo
 
 class FileUtils:
-    """Utilities cho việc xử lý files và directories"""
+    """Utilities for handling files and directories"""
     
     @staticmethod
     def find_localtext_files(base_path: str, target_path: str = ".") -> List[str]:
         """
-        Tìm tất cả file *localText.json trong thư mục
+        Find all *localText.json files in directory
         
         Args:
-            base_path: Đường dẫn tới ModConf
-            target_path: Đường dẫn tương đối cần tìm
+            base_path: Path to ModConf
+            target_path: Relative path to search
             
         Returns:
-            List đường dẫn đầy đủ tới các file localText
+            List of full paths to localText files
         """
         if not os.path.exists(base_path):
             return []
         
-        # Xây dựng đường dẫn tìm kiếm
+        # Build search path
         if target_path == ".":
             search_path = base_path
         else:
@@ -41,11 +41,11 @@ class FileUtils:
         files = []
         
         if os.path.isfile(search_path):
-            # Nếu là file cụ thể
+            # If it's a specific file
             if search_path.endswith(FILE_CONFIG['localtext_suffix']):
                 files.append(search_path)
         else:
-            # Nếu là thư mục, tìm tất cả file localText
+            # If it's a directory, find all localText files
             pattern = os.path.join(search_path, "**", DIR_PATTERNS['localtext_pattern'])
             files = glob.glob(pattern, recursive=True)
         
@@ -54,29 +54,29 @@ class FileUtils:
     @staticmethod
     def is_locale_file(file_path: str) -> bool:
         """
-        Kiểm tra xem file có phải là locale file không
-        File locale là file nằm trong child folder của ModConf
+        Check if file is a locale file
+        Locale files are files located in child folders of ModConf
         
         Args:
-            file_path: Đường dẫn tới file
+            file_path: Path to file
             
         Returns:
-            True nếu là locale file
+            True if it's a locale file
         """
         try:
             # Normalize path for cross-platform compatibility
             normalized_path = os.path.normpath(file_path)
             
-            # Lấy thư mục cha của file
+            # Get parent directory of file
             parent_dir = os.path.dirname(normalized_path)
             
-            # Lấy thư mục cha của thư mục cha (should be ModConf)
+            # Get parent directory of parent directory (should be ModConf)
             grandparent_dir = os.path.dirname(parent_dir)
             
-            # Kiểm tra xem thư mục ông/bà có phải là ModConf không
+            # Check if grandparent directory is ModConf
             grandparent_name = os.path.basename(grandparent_dir)
             
-            # Nếu thư mục ông/bà là ModConf thì file này nằm trong child folder của ModConf
+            # If grandparent is ModConf then this file is in a child folder of ModConf
             return grandparent_name == "ModConf"
             
         except Exception:
@@ -85,23 +85,23 @@ class FileUtils:
     @staticmethod
     def get_locale_language(file_path: str) -> Optional[str]:
         """
-        Lấy mã ngôn ngữ từ đường dẫn locale file
-        Mã ngôn ngữ là tên folder locale
+        Get language code from locale file path
+        Language code is the locale folder name
         
         Args:
-            file_path: Đường dẫn tới locale file
+            file_path: Path to locale file
             
         Returns:
-            Mã ngôn ngữ hoặc None nếu không xác định được
+            Language code or None if cannot be determined
         """
         if not FileUtils.is_locale_file(file_path):
             return None
         
         try:
-            # Lấy thư mục cha của file (thư mục ngôn ngữ)
+            # Get parent directory of file (language directory)
             locale_dir = os.path.dirname(file_path)
             
-            # Tên thư mục chính là mã ngôn ngữ
+            # Directory name is the language code
             language_code = os.path.basename(locale_dir)
             
             return language_code if language_code else None
@@ -112,32 +112,32 @@ class FileUtils:
     @staticmethod
     def find_main_file(locale_file_path: str) -> Optional[str]:
         """
-        Tìm file main tương ứng với locale file
-        Tìm file có tên tương tự trong thư mục cha (parent folder)
+        Find main file corresponding to locale file
+        Find file with similar name in parent folder
         
         Args:
-            locale_file_path: Đường dẫn tới locale file
+            locale_file_path: Path to locale file
             
         Returns:
-            Đường dẫn tới main file tương ứng hoặc None
+            Path to corresponding main file or None
         """
         if not FileUtils.is_locale_file(locale_file_path):
             return None
         
         try:
-            # Lấy tên file từ locale file
+            # Get filename from locale file
             filename = os.path.basename(locale_file_path)
             
-            # Lấy thư mục cha của locale file (thư mục ngôn ngữ)
+            # Get parent directory of locale file (language directory)
             locale_dir = os.path.dirname(locale_file_path)
             
-            # Lấy thư mục cha của thư mục ngôn ngữ (ModConf)
+            # Get parent directory of language directory (ModConf)
             parent_dir = os.path.dirname(locale_dir)
             
-            # Tạo đường dẫn tới main file có cùng tên trong thư mục cha
+            # Create path to main file with same name in parent directory
             main_file_path = os.path.join(parent_dir, filename)
             
-            # Kiểm tra xem file có tồn tại không
+            # Check if file exists
             if os.path.exists(main_file_path) and os.path.isfile(main_file_path):
                 return main_file_path
             
@@ -149,10 +149,10 @@ class FileUtils:
     @staticmethod
     def ensure_directory_exists(file_path: str) -> None:
         """
-        Đảm bảo thư mục chứa file tồn tại
+        Ensure directory containing file exists
         
         Args:
-            file_path: Đường dẫn tới file
+            file_path: Path to file
         """
         directory = os.path.dirname(file_path)
         if not os.path.exists(directory):
@@ -161,13 +161,13 @@ class FileUtils:
     @staticmethod
     def get_file_info(file_path: str) -> FileInfo:
         """
-        Lấy thông tin chi tiết về file localText
+        Get detailed information about localText file
         
         Args:
-            file_path: Đường dẫn tới file
+            file_path: Path to file
             
         Returns:
-            FileInfo object chứa thông tin file
+            FileInfo object containing file information
         """
         if FileUtils.is_locale_file(file_path):
             file_type = FileType.LOCALE

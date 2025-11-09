@@ -15,28 +15,28 @@ from data_types import ProcessingStats, TranslationConfig
 from terminology_utils import TerminologyProcessor
 
 class TranslationService:
-    """Service để thực hiện dịch text"""
+    """Service for performing text translation"""
     
     def __init__(self, config: TranslationConfig):
         self.config = config
         self.stats = ProcessingStats()
         self._stats_lock = threading.Lock()  # Thread safety lock for stats
-        # Compile tất cả format patterns từ config
+        # Compile all format patterns from config
         self.format_patterns = [
             re.compile(pattern) for pattern in FORMAT_PROTECTION_CONFIG['patterns']
         ]
-        # Khởi tạo terminology processor
+        # Initialize terminology processor
         self.terminology_processor = TerminologyProcessor()
     
     def _protect_format_strings(self, text: str) -> Tuple[str, Dict[str, str]]:
         """
-        Bảo vệ format strings bằng cách thay thế chúng bằng placeholders
+        Protect format strings by replacing them with placeholders
         
         Args:
-            text: Text cần bảo vệ
+            text: Text to protect
             
         Returns:
-            Tuple[protected_text, format_map] - Text đã được bảo vệ và map các format strings
+            Tuple[protected_text, format_map] - Protected text and format strings map
         """
         if not text or not isinstance(text, str):
             return text, {}
@@ -44,7 +44,7 @@ class TranslationService:
         format_map = {}
         protected_text = text
         
-        # Tìm tất cả format strings từ các patterns
+        # Find all format strings from patterns
         all_matches = []
         for pattern in self.format_patterns:
             matches = pattern.findall(text)
@@ -53,7 +53,7 @@ class TranslationService:
         if not all_matches:
             return text, {}
         
-        # Loại bỏ duplicates và giữ thứ tự xuất hiện
+        # Remove duplicates and maintain order of appearance
         unique_matches = []
         seen = set()
         for match in all_matches:
@@ -61,7 +61,7 @@ class TranslationService:
                 unique_matches.append(match)
                 seen.add(match)
         
-        # Thay thế từng format string bằng placeholder an toàn
+        # Replace each format string with safe placeholder
         prefix = FORMAT_PROTECTION_CONFIG['placeholder']['prefix']
         suffix = FORMAT_PROTECTION_CONFIG['placeholder']['suffix']
         
@@ -74,14 +74,14 @@ class TranslationService:
     
     def _restore_format_strings(self, translated_text: str, format_map: Dict[str, str]) -> str:
         """
-        Khôi phục các format strings từ placeholders sử dụng regex pattern
+        Restore format strings from placeholders using regex pattern
         
         Args:
-            translated_text: Text đã được dịch có chứa placeholders
-            format_map: Map các placeholders và format strings tương ứng
+            translated_text: Translated text containing placeholders
+            format_map: Map of placeholders and corresponding format strings
             
         Returns:
-            Text đã được khôi phục format strings
+            Text with format strings restored
         """
         if not translated_text or not format_map:
             return translated_text
@@ -89,26 +89,26 @@ class TranslationService:
         restored_text = translated_text
         placeholder_pattern = FORMAT_PROTECTION_CONFIG['placeholder']['placeholder_marker']
         
-        # Tìm tất cả placeholder matches trong text
+        # Find all placeholder matches in text
         def replace_placeholder(match):
             placeholder = match.group()
-            return format_map.get(placeholder, placeholder)  # Trả về format string hoặc giữ nguyên nếu không tìm thấy
+            return format_map.get(placeholder, placeholder)  # Return format string or keep unchanged if not found
         
-        # Sử dụng regex để thay thế tất cả placeholders
+        # Use regex to replace all placeholders
         restored_text = re.sub(placeholder_pattern, replace_placeholder, restored_text)
             
         return restored_text
 
     def _add_context(self, text: str, target_lang: str) -> str:
         """
-        Thêm ngữ cảnh vào text trước khi dịch
+        Add context to text before translation
         
         Args:
-            text: Text cần thêm ngữ cảnh
-            target_lang: Ngôn ngữ đích (không sử dụng nhưng giữ để tương thích)
+            text: Text that needs context added
+            target_lang: Target language (not used but kept for compatibility)
             
         Returns:
-            Text đã được thêm ngữ cảnh
+            Text with context added
         """
         if not text or not isinstance(text, str):
             return text
@@ -120,42 +120,42 @@ class TranslationService:
     
     def _remove_context(self, translated_text: str) -> str:
         """
-        Xóa ngữ cảnh khỏi text đã dịch sử dụng regex pattern
+        Remove context from translated text using regex pattern
         
         Args:
-            translated_text: Text đã được dịch có chứa ngữ cảnh
+            translated_text: Translated text containing context
             
         Returns:
-            Text đã được xóa ngữ cảnh
+            Text with context removed
         """
         if not translated_text or not isinstance(translated_text, str):
             return translated_text
             
         context_marker = CONTEXT_CONFIG['context_marker']
         if context_marker:
-            # Sử dụng regex để tìm và xóa context marker
+            # Use regex to find and remove context marker
             cleaned_text = re.sub(context_marker, '', translated_text).strip()
             return cleaned_text
         
         return translated_text
 
     def translate_text(self, text: str, target_lang: str) -> str:
-        """Dịch text sang ngôn ngữ đích"""
+        """Translate text to target language"""
         try:
             if not text or text.strip() == "":
                 return text
             
-            # Skip nếu text nằm trong danh sách cần bỏ qua
+            # Skip if text is in the skip translation list
             if text.strip() in SKIP_TRANSLATION_TEXTS:
                 return text
 
-            # Bảo vệ thuật ngữ trước khi xử lý khác
+            # Protect terminology before other processing
             terminology_protected_text, terminology_map = self.terminology_processor.protect_terms(text)
 
-            # Bảo vệ format strings trước khi dịch
+            # Protect format strings before translation
             protected_text, format_map = self._protect_format_strings(terminology_protected_text)
             
-            # Thêm ngữ cảnh trước khi dịch
+            # Add context before translation
             contextualized_text = self._add_context(protected_text, target_lang)
 
             # Retry mechanism for network issues
@@ -166,13 +166,13 @@ class TranslationService:
                         target=target_lang
                     ).translate(contextualized_text)
                     
-                    # Xóa ngữ cảnh sau khi dịch
+                    # Remove context after translation
                     decontextualized_result = self._remove_context(translated_result)
                     
-                    # Khôi phục format strings sau khi dịch
+                    # Restore format strings after translation
                     format_restored_result = self._restore_format_strings(decontextualized_result, format_map)
                     
-                    # Khôi phục thuật ngữ sau cùng
+                    # Restore terminology last
                     result = self.terminology_processor.restore_terms(format_restored_result, terminology_map)
                     
                     time.sleep(self.config.delay_between_requests)
