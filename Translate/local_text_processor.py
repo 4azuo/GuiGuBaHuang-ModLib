@@ -14,7 +14,6 @@ from translation_service import TranslationService
 from translate_utils import TranslateUtils
 from json_utils import JsonUtils
 from progressbar_utils import (
-    progress_manager, create_translation_progress_config,
     ProgressContext, create_file_progress_config, 
     print_info, print_section, print_warning, print_error, print_stats,
     print_result
@@ -95,9 +94,7 @@ class LocalTextProcessor:
                 ) as progress:
                     for file_path in main_files:
                         filename = os.path.basename(file_path)
-                        # Cắt ngắn filename cho progress display
-                        display_name = filename[:25] + "..." if len(filename) > 25 else filename
-                        progress.update(1, f"Xử lý {display_name}")
+                        progress.update(1, f"Xử lý {filename}")
                         
                         # Tắt verbose output khi đang có progress bar
                         if self.process_main_file(file_path):
@@ -115,8 +112,7 @@ class LocalTextProcessor:
                     for file_path in main_files:
                         filename = os.path.basename(file_path)
                         # Cắt ngắn filename cho progress display
-                        display_name = filename[:25] + "..." if len(filename) > 25 else filename
-                        progress.update(1, f"Xử lý {display_name}")
+                        progress.update(1, f"Xử lý {filename}")
 
                         main_filename = os.path.basename(file_path)
                         for lang in self.config.target_languages:
@@ -132,9 +128,6 @@ class LocalTextProcessor:
                                 self.stats.processed_count += 1
         
         except KeyboardInterrupt:
-            print_warning("Quá trình xử lý đã bị dừng bởi người dùng")
-            # Cleanup progress bars
-            progress_manager.cleanup()
             raise
         
         # Thống kê kết quả
@@ -169,13 +162,9 @@ class LocalTextProcessor:
             if not JsonUtils.validate_json_structure(main_data.data):
                 print_result(UI_ICONS['warning'], f"File {filename} không có dữ liệu tiếng Anh để dịch")
                 return True  # Không phải lỗi, chỉ là file không cần dịch
-
-            # Tạo progress bar cho việc phân tích main file
-            progress_manager.set_active(f"translate_main")
             
             def progress_translator(text: str, target_lang: str) -> str:
                 result = self.translation_service.translate_text(text, target_lang)
-                progress_manager.update_active(1, f"Dịch: {text[:30]}{'...' if len(text) > 30 else ''}")
                 return result
             
             # Dịch text trong main file (cập nhật các trường ngôn ngữ: ch, tc, kr)
@@ -192,14 +181,10 @@ class LocalTextProcessor:
             if not JsonUtils.write_json_file(file_path, translated_data):
                 print_result(UI_ICONS['error'], f"Lỗi ghi main file", filename)
                 return False
-            
-            # Hoàn thành progress bar
-            progress_manager.finish_active(f"Hoàn thành dịch main file")
 
             return True
             
         except KeyboardInterrupt:
-            progress_manager.cleanup()
             raise
             
         except Exception as e:
@@ -225,12 +210,8 @@ class LocalTextProcessor:
                 print_result(UI_ICONS['error'], f"Không đọc được main file", main_file_path)
                 return False
             
-            # Tạo progress-aware translator cho locale file
-            progress_manager.set_active(f"locale_{target_lang}")
-            
             def progress_translator(text: str, target_lang: str) -> str:
                 result = self.translation_service.translate_text(text, target_lang)
-                progress_manager.update_active(1, f"Dịch: {text[:30]}{'...' if len(text) > 30 else ''}")
                 return result
             
             # Đọc locale data hiện có nếu preserve mode được bật
@@ -257,14 +238,10 @@ class LocalTextProcessor:
             if not JsonUtils.write_json_file(locale_file_path, locale_data):
                 print_result(UI_ICONS['error'], f"Lỗi ghi locale file {locale_file_path}")
                 return False
-            
-            # Hoàn thành progress bar
-            progress_manager.finish_active(f"Hoàn thành {target_lang}")
 
             return True
                 
         except KeyboardInterrupt:
-            progress_manager.cleanup()
             raise
             
         except Exception as e:
