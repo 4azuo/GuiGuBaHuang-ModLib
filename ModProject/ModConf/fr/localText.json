@@ -7,7 +7,7 @@
 	{
 		"id": "999990001",
 		"key": "libtxt999990001",
-		"en|ch|tc|kr": "L'interface utilisateur de ModLib est optimisée pour un format d'écran 16:9."
+		"en|ch|tc|kr": "Le UI de ModLib est optimisé pour le format d'écran 16:9."
 	},
 	{
 		"id": "999990002",
@@ -17,7 +17,7 @@
 	{
 		"id": "999990003",
 		"key": "libtxt999990003",
-		"en|ch|tc|kr": "Vous devez réinitialiser le jeu !"
+		"en|ch|tc|kr": "Vous devez réinitialiser le jeu !"
 	},
 	{
 		"id": "999990004",
