@@ -52,6 +52,8 @@ Ví dụ sử dụng:
   python run.py --project 3385996759 --path . --file-type main
   python run.py --project 3385996759 --path . --file-type locale
   python run.py --project 3385996759 --path . --preserve-translations
+  python run.py --project 3385996759 --path . --workers 8
+  python run.py --project 3385996759 --path . --workers 1  # Sequential processing
         '''
     )
     
@@ -92,11 +94,18 @@ Ví dụ sử dụng:
         help='Giữ lại các bản dịch đã có, chỉ dịch thêm các từ mới chưa được dịch'
     )
     
+    parser.add_argument(
+        '--workers',
+        type=int,
+        default=4,
+        help='Số luồng song song để xử lý file (mặc định: 4). Giảm nếu gặp rate-limit từ translation service.'
+    )
+    
     args = parser.parse_args()
     
     print_header(
         UI_MESSAGES['script_title'],
-        f"Project: {args.project} | Path: {args.path} | Type: {args.file_type} | Preserve: {'Yes' if args.preserve_translations else 'No'}"
+        f"Project: {args.project} | Path: {args.path} | Type: {args.file_type} | Workers: {args.workers} | Preserve: {'Yes' if args.preserve_translations else 'No'}"
     )
     
     # Xây dựng đường dẫn project
@@ -157,7 +166,7 @@ Ví dụ sử dụng:
     else:
         # Xử lý thực tế
         try:
-            processor.process_files(project_path, args.path, args.file_type)
+            processor.process_files(project_path, args.path, args.file_type, max_workers=args.workers)
         except KeyboardInterrupt:
             from progressbar_utils import print_stats
             print_warning("Quá trình xử lý đã bị dừng bởi người dùng")

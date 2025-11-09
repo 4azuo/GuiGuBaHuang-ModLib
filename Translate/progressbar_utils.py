@@ -6,12 +6,13 @@ Utility module for console progress bars
 
 import time
 import sys
+import threading
 from typing import Optional, Any, Dict
 from data_types import ProgressConfig
 from consts import PROGRESS_BAR_CONFIG, UI_ICONS, UI_MESSAGES
 
 class ProgressBar:
-    """Console progress bar with customizable display"""
+    """Console progress bar with customizable display (thread-safe)"""
     
     def __init__(self, total: int, config: Optional[ProgressConfig] = None):
         self.total = total
@@ -21,42 +22,47 @@ class ProgressBar:
         self.last_update_time = 0
         self.min_update_interval = PROGRESS_BAR_CONFIG['min_update_interval']
         self.last_line_count = 0  # Track number of lines from last render
+        self._lock = threading.Lock()  # Thread safety lock
         
     def update(self, increment: int = 1, description: str = "") -> None:
-        """Update progress bar"""
-        self.current = min(self.current + increment, self.total)
-        
-        # Throttle updates to avoid flickering
-        current_time = time.time()
-        if current_time - self.last_update_time < self.min_update_interval and self.current < self.total:
-            return
-        
-        self.last_update_time = current_time
-        self._render(description)
+        """Update progress bar (thread-safe)"""
+        with self._lock:
+            self.current = min(self.current + increment, self.total)
+            
+            # Throttle updates to avoid flickering
+            current_time = time.time()
+            if current_time - self.last_update_time < self.min_update_interval and self.current < self.total:
+                return
+            
+            self.last_update_time = current_time
+            self._render(description)
         
     def rerender(self, description: str = "") -> None:
-        """Rerender progress bar"""
-        # Throttle updates to avoid flickering
-        current_time = time.time()
-        if current_time - self.last_update_time < self.min_update_interval and self.current < self.total:
-            return
-        
-        self.last_update_time = current_time
-        self._render(description)
+        """Rerender progress bar (thread-safe)"""
+        with self._lock:
+            # Throttle updates to avoid flickering
+            current_time = time.time()
+            if current_time - self.last_update_time < self.min_update_interval and self.current < self.total:
+                return
+            
+            self.last_update_time = current_time
+            self._render(description)
     
     def set_progress(self, value: int, description: str = "") -> None:
-        """Set absolute progress value"""
-        self.current = min(max(value, 0), self.total)
-        self._render(description)
+        """Set absolute progress value (thread-safe)"""
+        with self._lock:
+            self.current = min(max(value, 0), self.total)
+            self._render(description)
     
     def finish(self, description: str = None) -> None:
-        """Complete the progress bar"""
-        if description is None:
-            description = UI_MESSAGES['completed']
-        self.current = self.total
-        
-        print(f"\n{description}")
-        print()  # New line after completion
+        """Complete the progress bar (thread-safe)"""
+        with self._lock:
+            if description is None:
+                description = UI_MESSAGES['completed']
+            self.current = self.total
+            
+            print(f"\n{description}")
+            print()  # New line after completion
     
     def _render(self, description: str = "") -> None:
         """Render the progress bar"""

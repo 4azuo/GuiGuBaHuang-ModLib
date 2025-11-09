@@ -27,7 +27,7 @@ class TerminologyProcessor:
             pattern = re.compile(r'\b' + escaped_term + r'\b', re.IGNORECASE)
             self.term_patterns.append((term, pattern))
     
-    def protect_terms(self, text: str, preserve_case: bool = True) -> Tuple[str, Dict[str, str]]:
+    def protect_terms(self, text: str, preserve_case: bool = False) -> Tuple[str, Dict[str, str]]:
         """
         Bảo vệ thuật ngữ bằng cách thay thế bằng markers với index
         

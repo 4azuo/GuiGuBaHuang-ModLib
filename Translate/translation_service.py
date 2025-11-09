@@ -6,6 +6,7 @@ Translation service for handling text translation
 
 import time
 import re
+import threading
 from deep_translator import GoogleTranslator
 from typing import Dict, Tuple
 
@@ -19,6 +20,7 @@ class TranslationService:
     def __init__(self, config: TranslationConfig):
         self.config = config
         self.stats = ProcessingStats()
+        self._stats_lock = threading.Lock()  # Thread safety lock for stats
         # Compile tất cả format patterns từ config
         self.format_patterns = [
             re.compile(pattern) for pattern in FORMAT_PROTECTION_CONFIG['patterns']
@@ -174,7 +176,8 @@ class TranslationService:
                     result = self.terminology_processor.restore_terms(format_restored_result, terminology_map)
                     
                     time.sleep(self.config.delay_between_requests)
-                    self.stats.translated_count += 1
+                    with self._stats_lock:
+                        self.stats.translated_count += 1
                     return result
                     
                 except KeyboardInterrupt:
@@ -186,12 +189,14 @@ class TranslationService:
                         # Silent retry - progress bar will show overall progress
                         time.sleep(self.config.retry_delay)
                     else:
-                        self.stats.failed_count += 1
+                        with self._stats_lock:
+                            self.stats.failed_count += 1
                         return text
                         
         except KeyboardInterrupt:
             raise
             
         except Exception as e:
-            self.stats.failed_count += 1
+            with self._stats_lock:
+                self.stats.failed_count += 1
             return text
