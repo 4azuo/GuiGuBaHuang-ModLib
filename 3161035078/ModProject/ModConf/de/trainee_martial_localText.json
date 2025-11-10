@@ -7,7 +7,7 @@
 	{
 		"id": "420073001",
 		"key": "trainee420071001desc",
-		"en|ch|tc|kr": "+2 % maximale HP"
+		"en|ch|tc|kr": "+2 % max. HP"
 	},
 	{
 		"id": "420072002",
@@ -17,7 +17,7 @@
 	{
 		"id": "420073002",
 		"key": "trainee420071002desc",
-		"en|ch|tc|kr": "+4 % maximale HP"
+		"en|ch|tc|kr": "+4 % max. HP"
 	},
 	{
 		"id": "420072003",
@@ -27,7 +27,7 @@
 	{
 		"id": "420073003",
 		"key": "trainee420071003desc",
-		"en|ch|tc|kr": "+7 % maximale HP"
+		"en|ch|tc|kr": "+7 % max. HP"
 	},
 	{
 		"id": "420072004",
@@ -37,7 +37,7 @@
 	{
 		"id": "420073004",
 		"key": "trainee420071004desc",
-		"en|ch|tc|kr": "+10 % maximale HP"
+		"en|ch|tc|kr": "+10 % max. HP"
 	},
 	{
 		"id": "420072005",
@@ -47,7 +47,7 @@
 	{
 		"id": "420073005",
 		"key": "trainee420071005desc",
-		"en|ch|tc|kr": "+15 % maximale HP"
+		"en|ch|tc|kr": "+15 % max. HP"
 	},
 	{
 		"id": "420072006",
@@ -57,7 +57,7 @@
 	{
 		"id": "420073006",
 		"key": "trainee420071006desc",
-		"en|ch|tc|kr": "+20 % maximale HP"
+		"en|ch|tc|kr": "+20 % max. HP"
 	},
 	{
 		"id": "420072007",
@@ -67,7 +67,7 @@
 	{
 		"id": "420073007",
 		"key": "trainee420071007desc",
-		"en|ch|tc|kr": "+30 % maximale HP"
+		"en|ch|tc|kr": "+30 % max. HP"
 	},
 	{
 		"id": "420072008",
@@ -77,7 +77,7 @@
 	{
 		"id": "420073008",
 		"key": "trainee420071008desc",
-		"en|ch|tc|kr": "+40 % maximale HP"
+		"en|ch|tc|kr": "+40 % max. HP"
 	},
 	{
 		"id": "420072009",
@@ -87,7 +87,7 @@
 	{
 		"id": "420073009",
 		"key": "trainee420071009desc",
-		"en|ch|tc|kr": "+60 % maximale HP"
+		"en|ch|tc|kr": "+60 % max. HP"
 	},
 	{
 		"id": "420072010",
@@ -97,6 +97,6 @@
 	{
 		"id": "420073010",
 		"key": "trainee420071010desc",
-		"en|ch|tc|kr": "+90 % maximale HP"
+		"en|ch|tc|kr": "+90 % max. HP"
 	}
 ]

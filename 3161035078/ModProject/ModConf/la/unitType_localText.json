@@ -42,7 +42,7 @@
 	{
 		"id": "421010100",
 		"key": "unitType420010100desc",
-		"en|ch|tc|kr": "Atk +10%, Hp +20%"
+		"en|ch|tc|kr": "Atk +10%, HP +20%"
 	},
 	{
 		"id": "421010200",
@@ -52,7 +52,7 @@
 	{
 		"id": "421010300",
 		"key": "unitType420010300desc",
-		"en|ch|tc|kr": "Atk +8%, Hp +15%, Mp +10%"
+		"en|ch|tc|kr": "Atk +8%, HP +15%, MP +10%"
 	},
 	{
 		"id": "421010400",
@@ -62,21 +62,21 @@
 	{
 		"id": "421010500",
 		"key": "unitType420010500desc",
-		"en|ch|tc|kr": "Hp +25%, Def +5%"
+		"en|ch|tc|kr": "HP +25%, Def +5%"
 	},
 	{
 		"id": "421010600",
 		"key": "unitType420010600desc",
-		"en|ch|tc|kr": "Atk +50%, Agi +10%, Hp +20%, Mp +10%, Justus +100%, Daemon -100%\n\nQuotienscumque occidis malum, tunc crescet tua civitas 20% per mala civitas.\n(Hp/Mp/Sp/Atk/Def/Optimus basis)"
+		"en|ch|tc|kr": "Atk +50%, Agi +10%, HP +20%, MP +10%, Iustum +100%, Demonicum -100%\n\nQuotienscumque occidis malum, tunc crescet tua civitas 20% per mala civitas.\n(HP/MP/SP/Atk/Def/Praecipuum fundamentum)"
 	},
 	{
 		"id": "421010700",
 		"key": "unitType420010700desc",
-		"en|ch|tc|kr": "Atk +30%, Def +10%, Hp +100%, Justus -100%, Daemon -30%\n\nQuotienscumque hominem occidis, tunc status tui 1% augentur ab unitatis occisorum statorum.\n(Hp/Mp/Sp/Atk/Def/Omnes bases)"
+		"en|ch|tc|kr": "Atk +30%, Def +10%, HP +100%, Justus -100%, Demonicus -30%\n\nQuotienscumque hominem occidis, tunc status tui 1% augentur ab unitatis occisorum statorum.\n(HP/MP/SP/Atk/Def/omnia fundamenta)"
 	},
 	{
 		"id": "421010800",
 		"key": "unitType420010800desc",
-		"en|ch|tc|kr": "Atk -10%, Def -10%, Hp -25%, Mp -50%, Free PRAECLUSIO, -10% forum emptum-sumptum, +10% fori venditionis valorem, +3% reditus menstruam\n\nPotes videre stata npc items."
+		"en|ch|tc|kr": "Atk -10%, Def -10%, HP -25%, MP -50%, Atk gratuita, -10% mercatum emptum-cost, +10% mercatum vendit-valorem, +3% reditus menstruam\n\nStatus rerum NPC videre potes."
 	}
 ]

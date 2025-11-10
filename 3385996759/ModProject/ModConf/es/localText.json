@@ -12,7 +12,7 @@
 	{
 		"id": "999990002",
 		"key": "libtxt999990002",
-		"en|ch|tc|kr": "Ejecutará una prueba para inicializar la RAM para el juego."
+		"en|ch|tc|kr": "Ejecutará una prueba comparativa para inicializar RAM para el juego."
 	},
 	{
 		"id": "999990003",
@@ -22,7 +22,7 @@
 	{
 		"id": "999990004",
 		"key": "libtxt999990004",
-		"en|ch|tc|kr": "Esta es la primera vez. ¿Quieres ejecutar un punto de referencia para inicializar la RAM para el juego?"
+		"en|ch|tc|kr": "Esta es la primera vez. ¿Quieres ejecutar una prueba comparativa para inicializar RAM para el juego?"
 	},
 	{
 		"id": "999990005",

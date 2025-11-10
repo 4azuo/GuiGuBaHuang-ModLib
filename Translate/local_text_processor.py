@@ -31,7 +31,6 @@ class LocalTextProcessor:
         self.config = translation_config
         self.stats = ProcessingStats()
         self.executor = None
-        self.locale_executor = None
         self.progress_manager = None
         self._setup_signal_handler()
     
@@ -40,11 +39,8 @@ class LocalTextProcessor:
         def signal_handler(signum, frame):
             # Shutdown executor if running
             if self.executor:
-                self.executor.shutdown(wait=False)
+                self.executor.shutdown(wait=False, cancel_futures=True)
                 self.executor = None
-            if self.locale_executor:
-                self.locale_executor.shutdown(wait=False)
-                self.locale_executor = None
             
             # Finish progress manager if running    
             if self.progress_manager:
@@ -109,8 +105,6 @@ class LocalTextProcessor:
             f"{UI_ICONS['success']} Preserve mode": 'On' if self.config.preserve_existing_translations else 'Off',
             f"{UI_ICONS['worker']} Workers": max_workers
         }
-        if file_type != "both":
-            stats_info[f"{UI_ICONS['list']} Will process"] = f"{len(files_to_process)} files"
         
         print("=" * 60)
         print_stats(stats_info)
@@ -164,6 +158,21 @@ class LocalTextProcessor:
                 self.progress_manager.finish()
                 self.progress_manager = None
         
+            # Result statistics for main files
+            end_time = time.time()
+            elapsed_time = end_time - start_time
+            
+            result_stats = {
+                f"{UI_ICONS['folder']} Total files": len(files),
+                f"{UI_ICONS['success']} Successfully processed": self.stats.processed_count,
+                f"{UI_ICONS['globe']} Translated": f"{self.translation_service.stats.translated_count} text",
+                f"{UI_ICONS['error']} Translation errors": f"{self.translation_service.stats.failed_count} text",
+                f"{UI_ICONS['time']} Time elapsed": f"{elapsed_time:.1f}s"
+            }
+            print("=" * 60)
+            print_stats(result_stats)
+            print("=" * 60)
+        
         # Step 2: Process locale files (parallel)
         if file_type in ["locale", "both"] and main_files:
             print_section(f"Recreating locale files from {len(main_files)} main files (parallel with {max_workers} workers)")
@@ -192,29 +201,28 @@ class LocalTextProcessor:
                             self.cleanup_locale_file(locale_file_path)
                         
                         # Recreate locale files from main file
-                        result = self.process_locale_file(file_path, locale_file_path)
-                    
-                        # Update stats and progress
-                        with stats_lock:
-                            if result:
-                                self.stats.processed_count += 1
-                                self.progress_manager.complete_file(file_path)
-                            else:
-                                self.progress_manager.error_file(file_path, f"Error creating {lang} locale")
+                        return self.process_locale_file(file_path, locale_file_path)
 
                     # Parallel processing with ThreadPoolExecutor
-                    self.locale_executor = concurrent.futures.ThreadPoolExecutor(max_workers=max_workers)
+                    locale_executor = concurrent.futures.ThreadPoolExecutor(max_workers=2)
                     try:
-                        futures = {self.locale_executor.submit(process_locale_file_worker2, i, lang): (i, lang) for i, lang in enumerate(self.config.target_languages)}
+                        futures = {locale_executor.submit(process_locale_file_worker2, i, lang): (i, lang) for i, lang in enumerate(self.config.target_languages)}
                         for future in concurrent.futures.as_completed(futures):
                             if future.result():
                                 success_count += 1
                     finally:
-                        if self.locale_executor:
-                            self.locale_executor.shutdown(wait=False)
-                            self.locale_executor = None
+                        if locale_executor:
+                            locale_executor.shutdown(wait=False)
+                            locale_executor = None
 
-                    return success_count == len(self.config.target_languages)
+                    with stats_lock:
+                        if success_count == total_langs:
+                            self.stats.processed_count += 1
+                            self.progress_manager.complete_file(file_path)
+                        else:
+                            self.progress_manager.error_file(file_path, f"Error creating locales")
+
+                    return success_count == total_langs
                 except Exception as e:
                     self.progress_manager.error_file(file_path, f"Error: {str(e)}")
                     return False
@@ -240,20 +248,20 @@ class LocalTextProcessor:
                 self.progress_manager.finish()
                 self.progress_manager = None
         
-        # Result statistics
-        end_time = time.time()
-        elapsed_time = end_time - start_time
-        
-        result_stats = {
-            f"{UI_ICONS['folder']} Total files": len(files),
-            f"{UI_ICONS['success']} Successfully processed": self.stats.processed_count,
-            f"{UI_ICONS['globe']} Translated": f"{self.translation_service.stats.translated_count} text",
-            f"{UI_ICONS['error']} Translation errors": f"{self.translation_service.stats.failed_count} text",
-            f"{UI_ICONS['time']} Time elapsed": f"{elapsed_time:.1f}s"
-        }
-        print("=" * 60)
-        print_stats(result_stats)
-        print("=" * 60)
+            # Result statistics for locale files
+            end_time = time.time()
+            elapsed_time = end_time - start_time
+            
+            result_stats = {
+                f"{UI_ICONS['folder']} Total files": len(files),
+                f"{UI_ICONS['success']} Successfully processed": self.stats.processed_count,
+                f"{UI_ICONS['globe']} Translated": f"{self.translation_service.stats.translated_count} text",
+                f"{UI_ICONS['error']} Translation errors": f"{self.translation_service.stats.failed_count} text",
+                f"{UI_ICONS['time']} Time elapsed": f"{elapsed_time:.1f}s"
+            }
+            print("=" * 60)
+            print_stats(result_stats)
+            print("=" * 60)
 
     
     def process_main_file(self, file_path: str) -> bool:
@@ -265,7 +273,7 @@ class LocalTextProcessor:
             # Read main file
             main_data = JsonUtils.read_json_file(file_path)
             if not main_data:
-                print_result(UI_ICONS['error'], f"Cannot read file {filename}")
+                # print_result(UI_ICONS['error'], f"Cannot read file {filename}")
                 return False
             
             # Normalize combined keys to simple keys (e.g., "en|ch|tc|kr" -> "en")
@@ -273,7 +281,7 @@ class LocalTextProcessor:
             
             # Check structure
             if not JsonUtils.validate_json_structure(main_data.data):
-                print_result(UI_ICONS['warning'], f"File {filename} has no English data to translate")
+                # print_result(UI_ICONS['warning'], f"File {filename} has no English data to translate")
                 return True  # Not an error, just a file that doesn't need translation
             
             # Count total items that need translation
@@ -316,13 +324,13 @@ class LocalTextProcessor:
             
             # Write back main file with translated text
             if not JsonUtils.write_json_file(file_path, translated_data):
-                print_result(UI_ICONS['error'], f"Error writing main file", filename)
+                # print_result(UI_ICONS['error'], f"Error writing main file", filename)
                 return False
 
             return True
             
         except Exception as e:
-            print_result(UI_ICONS['error'], f"Error processing file {filename}", str(e))
+            # print_result(UI_ICONS['error'], f"Error processing file {filename}", str(e))
             return False
 
     def process_locale_file(self, main_file_path: str, locale_file_path: str) -> bool:
@@ -330,18 +338,18 @@ class LocalTextProcessor:
         from file_utils import FileUtils
         
         try:
-            filename = os.path.basename(main_file_path)
+            # filename = os.path.basename(main_file_path)
 
             # Determine target language
             target_lang = FileUtils.get_locale_language(locale_file_path)
             if not target_lang:
-                print_result(UI_ICONS['error'], f"Cannot determine language for {filename}")
+                # print_result(UI_ICONS['error'], f"Cannot determine language for {filename}")
                 return False
             
             # Read main file
             main_data = JsonUtils.read_json_file(main_file_path)
             if not main_data:
-                print_result(UI_ICONS['error'], f"Cannot read main file", main_file_path)
+                # print_result(UI_ICONS['error'], f"Cannot read main file", main_file_path)
                 return False
             
             def progress_translator(text: str, target_lang: str, item_id: str = 'N/A') -> str:
@@ -371,13 +379,13 @@ class LocalTextProcessor:
             
             # Write file
             if not JsonUtils.write_json_file(locale_file_path, locale_data):
-                print_result(UI_ICONS['error'], f"Error writing locale file {locale_file_path}")
+                # print_result(UI_ICONS['error'], f"Error writing locale file {locale_file_path}")
                 return False
 
             return True
             
         except Exception as e:
-            print_result(UI_ICONS['error'], f"Error processing locale file {filename}", str(e))
+            # print_result(UI_ICONS['error'], f"Error processing locale file {filename}", str(e))
             return False
 
     def cleanup_locale_file(self, locale_file_path: str) -> None:
@@ -392,4 +400,5 @@ class LocalTextProcessor:
             try:
                 os.remove(locale_file_path)
             except Exception as e:
-                print_result(UI_ICONS['error'], f"Error deleting {locale_file_path}", str(e))
+                # print_result(UI_ICONS['error'], f"Error deleting {locale_file_path}", str(e))
+                pass

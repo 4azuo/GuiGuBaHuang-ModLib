@@ -7,7 +7,7 @@
 	{
 		"id": "420043001",
 		"key": "apprentice420041001desc",
-		"en|ch|tc|kr": "+2 % de PM maximum"
+		"en|ch|tc|kr": "+2 % Max MP"
 	},
 	{
 		"id": "420042002",
@@ -17,7 +17,7 @@
 	{
 		"id": "420043002",
 		"key": "apprentice420041002desc",
-		"en|ch|tc|kr": "+4 % de PM maximum"
+		"en|ch|tc|kr": "+4 % Max MP"
 	},
 	{
 		"id": "420042003",
@@ -27,7 +27,7 @@
 	{
 		"id": "420043003",
 		"key": "apprentice420041003desc",
-		"en|ch|tc|kr": "+6 % de PM maximum"
+		"en|ch|tc|kr": "+6 % Max MP"
 	},
 	{
 		"id": "420042004",
@@ -37,7 +37,7 @@
 	{
 		"id": "420043004",
 		"key": "apprentice420041004desc",
-		"en|ch|tc|kr": "+8 % de PM maximum"
+		"en|ch|tc|kr": "+8 % Max MP"
 	},
 	{
 		"id": "420042005",
@@ -47,7 +47,7 @@
 	{
 		"id": "420043005",
 		"key": "apprentice420041005desc",
-		"en|ch|tc|kr": "+10 % de PM maximum"
+		"en|ch|tc|kr": "+10 % Max MP"
 	},
 	{
 		"id": "420042006",
@@ -57,7 +57,7 @@
 	{
 		"id": "420043006",
 		"key": "apprentice420041006desc",
-		"en|ch|tc|kr": "+12 % de PM maximum"
+		"en|ch|tc|kr": "+12 % Max MP"
 	},
 	{
 		"id": "420042007",
@@ -67,7 +67,7 @@
 	{
 		"id": "420043007",
 		"key": "apprentice420041007desc",
-		"en|ch|tc|kr": "+14 % de PM maximum"
+		"en|ch|tc|kr": "+14 % Max MP"
 	},
 	{
 		"id": "420042008",
@@ -77,7 +77,7 @@
 	{
 		"id": "420043008",
 		"key": "apprentice420041008desc",
-		"en|ch|tc|kr": "+16 % de PM maximum"
+		"en|ch|tc|kr": "+16 % Max MP"
 	},
 	{
 		"id": "420042009",
@@ -87,7 +87,7 @@
 	{
 		"id": "420043009",
 		"key": "apprentice420041009desc",
-		"en|ch|tc|kr": "+18 % de PM maximum"
+		"en|ch|tc|kr": "+18 % Max MP"
 	},
 	{
 		"id": "420042010",
@@ -97,6 +97,6 @@
 	{
 		"id": "420043010",
 		"key": "apprentice420041010desc",
-		"en|ch|tc|kr": "+20 % de PM maximum"
+		"en|ch|tc|kr": "+20 % Max MP"
 	}
 ]

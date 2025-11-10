@@ -7,7 +7,7 @@
 	{
 		"id": "444442001",
 		"key": "slicelife444441001desc",
-		"en|ch|tc|kr": "+25 % de PV maximum, +6 % de PM maximum"
+		"en|ch|tc|kr": "+25 % Max HP, +6 % Max MP"
 	},
 	{
 		"id": "444443001",
@@ -27,7 +27,7 @@
 	{
 		"id": "444442002",
 		"key": "slicelife444441002desc",
-		"en|ch|tc|kr": "+50 % de PV maximum, +12 % de PM maximum"
+		"en|ch|tc|kr": "+50 % Max HP, +12 % Max MP"
 	},
 	{
 		"id": "444443002",
@@ -47,7 +47,7 @@
 	{
 		"id": "444442003",
 		"key": "slicelife444441003desc",
-		"en|ch|tc|kr": "+80 % de PV maximum, +20 % de PM maximum"
+		"en|ch|tc|kr": "+80 % Max HP, +20 % Max MP"
 	},
 	{
 		"id": "444443003",
@@ -67,7 +67,7 @@
 	{
 		"id": "444442004",
 		"key": "slicelife444441004desc",
-		"en|ch|tc|kr": "+120 % de PV maximum, +30 % de PM maximum, +2 % de Déf"
+		"en|ch|tc|kr": "+120 % Max HP, +30 % Max MP, +2 % Déf"
 	},
 	{
 		"id": "444443004",
@@ -87,7 +87,7 @@
 	{
 		"id": "444442005",
 		"key": "slicelife444441005desc",
-		"en|ch|tc|kr": "+160 % de PV maximum, +40 % de PM maximum, +5 % de Déf"
+		"en|ch|tc|kr": "+160 % Max HP, +40 % Max MP, +5 % Déf"
 	},
 	{
 		"id": "444443005",
@@ -107,7 +107,7 @@
 	{
 		"id": "444442006",
 		"key": "slicelife444441006desc",
-		"en|ch|tc|kr": "+220 % de PV maximum, +60 % de PM maximum, +10 % de Déf"
+		"en|ch|tc|kr": "+220 % Max HP, +60 % Max MP, +10 % Déf"
 	},
 	{
 		"id": "444443006",

@@ -7,12 +7,12 @@
 	{
 		"id": "999990001",
 		"key": "libtxt999990001",
-		"en|ch|tc|kr": "ModLibs UI ist für das Bildschirmverhältnis 16:9 optimiert."
+		"en|ch|tc|kr": "UI von ModLib ist für das Bildschirmverhältnis 16:9 optimiert."
 	},
 	{
 		"id": "999990002",
 		"key": "libtxt999990002",
-		"en|ch|tc|kr": "Es wird ein Benchmark ausgeführt, um den RAM für das Spiel zu initialisieren."
+		"en|ch|tc|kr": "Es wird ein Benchmark ausgeführt, um RAM für das Spiel zu initialisieren."
 	},
 	{
 		"id": "999990003",
@@ -22,7 +22,7 @@
 	{
 		"id": "999990004",
 		"key": "libtxt999990004",
-		"en|ch|tc|kr": "Dies ist das erste Mal. Möchten Sie einen Benchmark durchführen, um den RAM für das Spiel zu initialisieren?"
+		"en|ch|tc|kr": "Dies ist das erste Mal. Möchten Sie einen Benchmark ausführen, um RAM für das Spiel zu initialisieren?"
 	},
 	{
 		"id": "999990005",

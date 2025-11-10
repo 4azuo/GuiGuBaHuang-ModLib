@@ -12,7 +12,7 @@
 	{
 		"id": "500010002",
 		"key": "adjType500010002",
-		"en|ch|tc|kr": "CV"
+		"en|ch|tc|kr": "HP"
 	},
 	{
 		"id": "500010003",
@@ -22,22 +22,22 @@
 	{
 		"id": "500010004",
 		"key": "adjType500010004",
-		"en|ch|tc|kr": "sp"
+		"en|ch|tc|kr": "SP"
 	},
 	{
 		"id": "500010005",
 		"key": "adjType500010005",
-		"en|ch|tc|kr": "Curar HP"
+		"en|ch|tc|kr": "Cura a HP"
 	},
 	{
 		"id": "500010006",
 		"key": "adjType500010006",
-		"en|ch|tc|kr": "curar mp"
+		"en|ch|tc|kr": "Curar MP"
 	},
 	{
 		"id": "500010007",
 		"key": "adjType500010007",
-		"en|ch|tc|kr": "Sanar Sp"
+		"en|ch|tc|kr": "Curar SP"
 	},
 	{
 		"id": "500010008",
@@ -167,12 +167,12 @@
 	{
 		"id": "500010033",
 		"key": "adjType500010033",
-		"en|ch|tc|kr": "Robar(Mp)"
+		"en|ch|tc|kr": "Robar(MP)"
 	},
 	{
 		"id": "500010034",
 		"key": "adjType500010034",
-		"en|ch|tc|kr": "Robar(St)"
+		"en|ch|tc|kr": "Robar(SP)"
 	},
 	{
 		"id": "500010035",
@@ -187,12 +187,12 @@
 	{
 		"id": "500010037",
 		"key": "adjType500010037",
-		"en|ch|tc|kr": "dp"
+		"en|ch|tc|kr": "DP"
 	},
 	{
 		"id": "500010038",
 		"key": "adjType500010038",
-		"en|ch|tc|kr": "curar dp"
+		"en|ch|tc|kr": "Cura a DP"
 	},
 	{
 		"id": "500010039",
@@ -202,6 +202,6 @@
 	{
 		"id": "500010040",
 		"key": "adjType500010040",
-		"en|ch|tc|kr": "CD de habilidades(%)"
+		"en|ch|tc|kr": "Habilidad CD(%)"
 	}
 ]

@@ -12,7 +12,7 @@
 	{
 		"id": "500010002",
 		"key": "adjType500010002",
-		"en|ch|tc|kr": "馬力"
+		"en|ch|tc|kr": "HP"
 	},
 	{
 		"id": "500010003",
@@ -22,22 +22,22 @@
 	{
 		"id": "500010004",
 		"key": "adjType500010004",
-		"en|ch|tc|kr": "スプ"
+		"en|ch|tc|kr": "SP"
 	},
 	{
 		"id": "500010005",
 		"key": "adjType500010005",
-		"en|ch|tc|kr": "体力を回復する"
+		"en|ch|tc|kr": "HPを回復"
 	},
 	{
 		"id": "500010006",
 		"key": "adjType500010006",
-		"en|ch|tc|kr": "ヒールMP"
+		"en|ch|tc|kr": "MPを回復"
 	},
 	{
 		"id": "500010007",
 		"key": "adjType500010007",
-		"en|ch|tc|kr": "ヒールSP"
+		"en|ch|tc|kr": "SPを回復"
 	},
 	{
 		"id": "500010008",
@@ -192,16 +192,16 @@
 	{
 		"id": "500010038",
 		"key": "adjType500010038",
-		"en|ch|tc|kr": "ヒールDP"
+		"en|ch|tc|kr": "DPを回復"
 	},
 	{
 		"id": "500010039",
 		"key": "adjType500010039",
-		"en|ch|tc|kr": "アイテムCD(%)"
+		"en|ch|tc|kr": "項目 CD(%)"
 	},
 	{
 		"id": "500010040",
 		"key": "adjType500010040",
-		"en|ch|tc|kr": "スキルCD(%)"
+		"en|ch|tc|kr": "スキル CD(%)"
 	}
 ]

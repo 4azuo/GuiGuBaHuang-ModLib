@@ -22,22 +22,22 @@
 	{
 		"id": "500010004",
 		"key": "adjType500010004",
-		"en|ch|tc|kr": "Esp."
+		"en|ch|tc|kr": "SP"
 	},
 	{
 		"id": "500010005",
 		"key": "adjType500010005",
-		"en|ch|tc|kr": "Guérir HP"
+		"en|ch|tc|kr": "Guérison HP"
 	},
 	{
 		"id": "500010006",
 		"key": "adjType500010006",
-		"en|ch|tc|kr": "Guérir MP"
+		"en|ch|tc|kr": "Guérison MP"
 	},
 	{
 		"id": "500010007",
 		"key": "adjType500010007",
-		"en|ch|tc|kr": "Guérison Sp"
+		"en|ch|tc|kr": "Guérison SP"
 	},
 	{
 		"id": "500010008",
@@ -162,17 +162,17 @@
 	{
 		"id": "500010032",
 		"key": "adjType500010032",
-		"en|ch|tc|kr": "Voler (Hp)"
+		"en|ch|tc|kr": "Voler(HP)"
 	},
 	{
 		"id": "500010033",
 		"key": "adjType500010033",
-		"en|ch|tc|kr": "Voler (Mp)"
+		"en|ch|tc|kr": "Voler(MP)"
 	},
 	{
 		"id": "500010034",
 		"key": "adjType500010034",
-		"en|ch|tc|kr": "Voler (Sp)"
+		"en|ch|tc|kr": "Voler(SP)"
 	},
 	{
 		"id": "500010035",
@@ -187,21 +187,21 @@
 	{
 		"id": "500010037",
 		"key": "adjType500010037",
-		"en|ch|tc|kr": "Dp"
+		"en|ch|tc|kr": "DP"
 	},
 	{
 		"id": "500010038",
 		"key": "adjType500010038",
-		"en|ch|tc|kr": "Guérir Dp"
+		"en|ch|tc|kr": "Guérison DP"
 	},
 	{
 		"id": "500010039",
 		"key": "adjType500010039",
-		"en|ch|tc|kr": "Article CD(%)"
+		"en|ch|tc|kr": "Article CD(%)"
 	},
 	{
 		"id": "500010040",
 		"key": "adjType500010040",
-		"en|ch|tc|kr": "CD de compétences (%)"
+		"en|ch|tc|kr": "Compétence CD(%)"
 	}
 ]

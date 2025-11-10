@@ -237,12 +237,12 @@
 	{
 		"id": -1000001047,
 		"key": "smcfgs047",
-		"en|ch|tc|kr": "NPC vehicula"
+		"en|ch|tc|kr": "NPC Moles"
 	},
 	{
 		"id": -1000001048,
 		"key": "smcfgs048",
-		"en|ch|tc|kr": "(Requiritur RAM: {0}MB)"
+		"en|ch|tc|kr": "Requiritur RAM: {0}MB)"
 	},
 	{
 		"id": -1000001049,
@@ -262,7 +262,7 @@
 	{
 		"id": -1000001052,
 		"key": "smcfgs052",
-		"en|ch|tc|kr": "(include ludio npc et monstra)"
+		"en|ch|tc|kr": "(Include ludio ludius, NPC et monstra)"
 	},
 	{
 		"id": -1000001053,
@@ -387,7 +387,7 @@
 	{
 		"id": -1000001117,
 		"key": "smcfgs117",
-		"en|ch|tc|kr": "Npc Join Rate"
+		"en|ch|tc|kr": "NPC Coniungere Rate"
 	},
 	{
 		"id": -1000001118,
@@ -397,7 +397,7 @@
 	{
 		"id": -1000001119,
 		"key": "smcfgs119",
-		"en|ch|tc|kr": "(Admonitio: Hoc pluma multum RAM consumit et causa TARDO)"
+		"en|ch|tc|kr": "(Admonitio: Haec pluma multum consumit RAM et TARDO causare potest)"
 	},
 	{
 		"id": -1000001120,
@@ -487,7 +487,7 @@
 	{
 		"id": -1000001137,
 		"key": "smcfgs137",
-		"en|ch|tc|kr": "Patitur Restituo Deus Telum"
+		"en|ch|tc|kr": "Patitur Restituo Deus telum"
 	},
 	{
 		"id": -1000001138,

@@ -7,7 +7,7 @@
 	{
 		"id": "444442001",
 		"key": "slicelife444441001desc",
-		"en|ch|tc|kr": "+25% HP tối đa, +6% MP tối đa"
+		"en|ch|tc|kr": "+25% tối đa HP, +6% tối đa MP"
 	},
 	{
 		"id": "444443001",
@@ -27,7 +27,7 @@
 	{
 		"id": "444442002",
 		"key": "slicelife444441002desc",
-		"en|ch|tc|kr": "+50% HP tối đa, +12% MP tối đa"
+		"en|ch|tc|kr": "+50% tối đa HP, +12% tối đa MP"
 	},
 	{
 		"id": "444443002",
@@ -47,7 +47,7 @@
 	{
 		"id": "444442003",
 		"key": "slicelife444441003desc",
-		"en|ch|tc|kr": "+80% HP tối đa, +20% MP tối đa"
+		"en|ch|tc|kr": "+80% tối đa HP, +20% tối đa MP"
 	},
 	{
 		"id": "444443003",
@@ -67,7 +67,7 @@
 	{
 		"id": "444442004",
 		"key": "slicelife444441004desc",
-		"en|ch|tc|kr": "+120% HP tối đa, +30% MP tối đa, +2% phòng thủ"
+		"en|ch|tc|kr": "+120% Tối đa HP, +30% Tối đa MP, +2% Def"
 	},
 	{
 		"id": "444443004",
@@ -87,7 +87,7 @@
 	{
 		"id": "444442005",
 		"key": "slicelife444441005desc",
-		"en|ch|tc|kr": "+160% HP tối đa, +40% MP tối đa, +5% phòng thủ"
+		"en|ch|tc|kr": "+160% Tối đa HP, +40% Tối đa MP, +5% Def"
 	},
 	{
 		"id": "444443005",
@@ -107,7 +107,7 @@
 	{
 		"id": "444442006",
 		"key": "slicelife444441006desc",
-		"en|ch|tc|kr": "+220% HP tối đa, +60% MP tối đa, +10% phòng thủ"
+		"en|ch|tc|kr": "+220% Tối đa HP, +60% Tối đa MP, +10% Def"
 	},
 	{
 		"id": "444443006",

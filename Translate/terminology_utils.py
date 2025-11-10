@@ -27,7 +27,7 @@ class TerminologyProcessor:
             pattern = re.compile(r'\b' + escaped_term + r'\b', re.IGNORECASE)
             self.term_patterns.append((term, pattern))
     
-    def protect_terms(self, text: str, preserve_case: bool = False) -> Tuple[str, Dict[str, str]]:
+    def protect_terms(self, text: str, preserve_case: bool = False) -> Tuple[str, Dict[int, str]]:
         """
         Protect terminology by replacing with indexed markers
         
@@ -62,7 +62,7 @@ class TerminologyProcessor:
             indexed_marker = f"{self.prefix}{term_index}{self.suffix}"
             # Decide whether to use original case or case from config
             term_to_restore = match_text if preserve_case else original_term
-            replacement_map[indexed_marker] = term_to_restore
+            replacement_map[term_index] = term_to_restore
             
             # Replace in text using exact position
             protected_text = protected_text[:start] + indexed_marker + protected_text[end:]
@@ -70,7 +70,7 @@ class TerminologyProcessor:
         
         return protected_text, replacement_map
     
-    def restore_terms(self, text: str, replacement_map: Dict[str, str] = None) -> str:
+    def restore_terms(self, text: str, replacement_map: Dict[int, str] = None) -> str:
         """
         Restore terminology from indexed markers
         
@@ -81,27 +81,21 @@ class TerminologyProcessor:
         Returns:
             str: Text with restored terminology
         """
-        if not text or not isinstance(text, str):
+        if not text or not replacement_map:
             return text
         
         restored_text = text
         
-        # If replacement_map exists, use it for accurate restoration
-        if replacement_map:
-            # Sort markers by index for correct replacement order
-            sorted_markers = sorted(replacement_map.items(), key=lambda x: x[0])
-            for marker, original_term in sorted_markers:
-                restored_text = restored_text.replace(marker, original_term)
-        else:
-            # Fallback: find all indexed markers and warn
-            def restore_marker(match):
-                marker_content = match.group(0)
-                # Return original marker since no replacement_map
-                return marker_content
+        def restore_marker(match):
+            # Get index from capture group 2 (same as format strings)
+            index = int(match.group(2))
+            if index in replacement_map:
+                return replacement_map[index]
             
-            restored_text = self.marker_pattern.sub(restore_marker, restored_text)
+            # If index not found, return original marker
+            return match.group(0)
         
-        return restored_text
+        return self.marker_pattern.sub(restore_marker, restored_text)
     
     def is_protected_text(self, text: str) -> bool:
         """

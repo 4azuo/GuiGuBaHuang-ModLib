@@ -97,7 +97,7 @@
 	{
 		"id": 500020019,
 		"key": "other500020019",
-		"en|ch|tc|kr": "Après l'expérience complète de votre personnage à chaque étape. Il/Elle entraînera automatiquement le Qi pour le rendre plus fort.\nCela dépend de SP."
+		"en|ch|tc|kr": "Après l'expérience complète de votre personnage à chaque étape. Il/Elle entraînera automatiquement Qi pour devenir plus fort.\nCela dépend de SP."
 	},
 	{
 		"id": 500020020,
@@ -107,7 +107,7 @@
 	{
 		"id": 500020021,
 		"key": "other500020021",
-		"en|ch|tc|kr": "La terre tremble sous vos pieds tandis que la bataille fait rage. {0} se battent pour protéger leur maison. {1} cherchent à conquérir. Votre choix déterminera désormais votre chemin !\nOui : Aide {0}\nNon : Aide {1}"
+		"en|ch|tc|kr": "La terre tremble sous vos pieds tandis que la bataille fait rage. {0} se battent pour protéger leur maison. {1} cherche à conquérir. Votre choix déterminera désormais votre chemin !\nOui : Aide {0}\nNon : Aide {1}"
 	},
 	{
 		"id": 500020022,
@@ -132,7 +132,7 @@
 	{
 		"id": 500020026,
 		"key": "other500020026",
-		"en|ch|tc|kr": "Vous avez reçu une invitation de {0} maître de ville pour le poste de gardien ?\nVoulez-vous devenir gardien de ville ?"
+		"en|ch|tc|kr": "Vous avez reçu une invitation du maître de ville de {0} pour le poste de gardien ?\nVoulez-vous devenir gardien de ville ?"
 	},
 	{
 		"id": 500020027,
@@ -147,7 +147,7 @@
 	{
 		"id": 500020029,
 		"key": "other500020029",
-		"en|ch|tc|kr": "Voulez-vous vraiment sauter {0} an ?"
+		"en|ch|tc|kr": "Voulez-vous vraiment sauter {0} année ?"
 	},
 	{
 		"id": 500020030,
@@ -157,7 +157,7 @@
 	{
 		"id": 500020031,
 		"key": "other500020031",
-		"en|ch|tc|kr": "Voulez-vous vraiment sauter {0} an ?\n(Sans événements mensuels)"
+		"en|ch|tc|kr": "Voulez-vous vraiment sauter {0} année ?\n(Sans événements mensuels)"
 	},
 	{
 		"id": 500020032,
@@ -172,7 +172,7 @@
 	{
 		"id": 500020034,
 		"key": "other500020034",
-		"en|ch|tc|kr": "Affecte vos dégâts et votre défense contre les dégâts du même type.\nFeu → Dégâts critiques\nEau → Récupération de MP\nVent → Évasion\nTerre → Défense\nTonnerre → Chances de coup critique et réduction des dégâts d'essai\nBois → Récupération HP"
+		"en|ch|tc|kr": "Affecte vos dégâts et votre défense contre les dégâts du même type.\nFeu → Dégâts critiques\nEau → MP Récupération\nVent → Évasion\nTerre → Défense\nTonnerre → Chances de coup critique et réduction des dégâts d'essai\nBois → HP Récupération"
 	},
 	{
 		"id": 500020035,
@@ -182,7 +182,7 @@
 	{
 		"id": 500020036,
 		"key": "other500020036",
-		"en|ch|tc|kr": "Les points de capacité affectent les HP/MP en fonction du niveau du personnage."
+		"en|ch|tc|kr": "Les points de capacité affectent HP/MP en fonction du niveau du personnage."
 	},
 	{
 		"id": 500020037,
@@ -192,7 +192,7 @@
 	{
 		"id": 500020038,
 		"key": "other500020038",
-		"en|ch|tc|kr": "HP/MP affectent le bouclier en entrant dans la bataille.\nLa perspicacité et la chance ont un impact significatif sur les événements aléatoires ainsi que sur la vitesse de croissance et d'apprentissage."
+		"en|ch|tc|kr": "HP/MP affectent le bouclier lorsque vous entrez dans la bataille.\nLa perspicacité et la chance ont un impact significatif sur les événements aléatoires ainsi que sur la vitesse de croissance et d'apprentissage."
 	},
 	{
 		"id": 500020039,
@@ -207,7 +207,7 @@
 	{
 		"id": 500020041,
 		"key": "other500020041",
-		"en|ch|tc|kr": "Vous pouvez acheter/vendre des objets avec NPC ici. Mais vous pouvez être détesté et volé."
+		"en|ch|tc|kr": "Vous pouvez acheter/vendre des articles avec NPC ici. Mais vous pouvez être détesté et volé."
 	},
 	{
 		"id": 500020042,
@@ -282,12 +282,12 @@
 	{
 		"id": 500020056,
 		"key": "other500020056",
-		"en|ch|tc|kr": "{0:#,##0} Pierres spirituelles → {1:#,##0} Contribution"
+		"en|ch|tc|kr": "{0:#,##0} Pierres spirituelles → {1:#,##0} Contribution"
 	},
 	{
 		"id": 500020057,
 		"key": "other500020057",
-		"en|ch|tc|kr": "Ratio d'échange : }0{/} Pierres spirituelles → 1 Contribution"
+		"en|ch|tc|kr": "Ratio d'échange {0:#,##0} Pierres spirituelles → 1 Contribution"
 	},
 	{
 		"id": 500020058,
@@ -347,22 +347,22 @@
 	{
 		"id": 500020069,
 		"key": "other500020069",
-		"en|ch|tc|kr": "Vous avez besoin de {0:#,##0} pierres spirituelles pour cultiver."
+		"en|ch|tc|kr": "Vous avez besoin de {0:#,##0} pierres spirituelles pour la culture."
 	},
 	{
 		"id": 500020070,
 		"key": "other500020070",
-		"en|ch|tc|kr": "{0:#,##0} Pierres spirituelles → {1:#,##0} Exps."
+		"en|ch|tc|kr": "{0:#,##0} Pierres spirituelles → {1:#,##0} Exp."
 	},
 	{
 		"id": 500020071,
 		"key": "other500020071",
-		"en|ch|tc|kr": "Transfert Qi"
+		"en|ch|tc|kr": "Qi Transfert"
 	},
 	{
 		"id": 500020072,
 		"key": "other500020072",
-		"en|ch|tc|kr": "Recevoir du Qi"
+		"en|ch|tc|kr": "Recevez Qi"
 	},
 	{
 		"id": 500020073,
@@ -377,7 +377,7 @@
 	{
 		"id": 500020075,
 		"key": "other500020075",
-		"en|ch|tc|kr": "Valeur totale : {0:#,##0}"
+		"en|ch|tc|kr": "Valeur totale : {0:#,##0}"
 	},
 	{
 		"id": 500020076,
@@ -412,7 +412,7 @@
 	{
 		"id": 500020082,
 		"key": "other500020082",
-		"en|ch|tc|kr": "Le [{0}] a été vendu."
+		"en|ch|tc|kr": "Le [{0}] a été vendu."
 	},
 	{
 		"id": 500020083,
@@ -532,12 +532,12 @@
 	{
 		"id": 500020106,
 		"key": "other500020106",
-		"en|ch|tc|kr": "Vente anonyme enregistrée : {0} x{1} pour {2} (frais : {3})"
+		"en|ch|tc|kr": "Vente anonyme enregistrée : {0} x{1} pour {2} (frais : {3})"
 	},
 	{
 		"id": 500020107,
 		"key": "other500020107",
-		"en|ch|tc|kr": "Prix de vente : {0} | Frais anonyme : {1} (payés d'avance)"
+		"en|ch|tc|kr": "Prix de vente : {0} | Frais anonymes : {1} (payés d'avance)"
 	},
 	{
 		"id": 500020108,

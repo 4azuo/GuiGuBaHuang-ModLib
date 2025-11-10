@@ -17,7 +17,7 @@
 	{
 		"id": -1000001003,
 		"key": "smcfgs003",
-		"en|ch|tc|kr": "HP tối đa"
+		"en|ch|tc|kr": "Tối đa HP"
 	},
 	{
 		"id": -1000001004,
@@ -237,12 +237,12 @@
 	{
 		"id": -1000001047,
 		"key": "smcfgs047",
-		"en|ch|tc|kr": "Số lượng NPC"
+		"en|ch|tc|kr": "NPC Số tiền"
 	},
 	{
 		"id": -1000001048,
 		"key": "smcfgs048",
-		"en|ch|tc|kr": "(RAM yêu cầu: {0}MB)"
+		"en|ch|tc|kr": "(Bắt buộc RAM: {0}MB)"
 	},
 	{
 		"id": -1000001049,
@@ -262,7 +262,7 @@
 	{
 		"id": -1000001052,
 		"key": "smcfgs052",
-		"en|ch|tc|kr": "(Bao gồm người chơi, npc và quái vật)"
+		"en|ch|tc|kr": "(Bao gồm người chơi, NPC và quái vật)"
 	},
 	{
 		"id": -1000001053,
@@ -372,7 +372,7 @@
 	{
 		"id": -1000001114,
 		"key": "smcfgs114",
-		"en|ch|tc|kr": "Ác ma"
+		"en|ch|tc|kr": "Ác quỷ"
 	},
 	{
 		"id": -1000001115,
@@ -387,7 +387,7 @@
 	{
 		"id": -1000001117,
 		"key": "smcfgs117",
-		"en|ch|tc|kr": "Tỷ lệ tham gia Npc"
+		"en|ch|tc|kr": "NPC Tỷ lệ tham gia"
 	},
 	{
 		"id": -1000001118,
@@ -427,7 +427,7 @@
 	{
 		"id": -1000001125,
 		"key": "smcfgs125",
-		"en|ch|tc|kr": "Không tu khí"
+		"en|ch|tc|kr": "Không Qi trồng trọt"
 	},
 	{
 		"id": -1000001126,
