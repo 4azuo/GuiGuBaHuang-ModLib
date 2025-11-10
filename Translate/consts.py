@@ -43,9 +43,9 @@ SKIP_TRANSLATION_TEXTS = [
 # Terminology configuration - terms that should not be translated
 TERMINOLOGY_CONFIG = {
     # Prefix/suffix to protect terminology
-    'prefix': '[①⑪]',
-    'suffix': '[/①⑪]',
-    'marker_pattern': r'\[(①.|.⑪)\]\d+?\[/(①.|.⑪)\]',  # Pattern for indexed markers
+    'prefix': '{①⑪}',
+    'suffix': '{/①⑪}',
+    'marker_pattern': r'{(①.|.⑪)}(\d+?){/(①.|.⑪)}',  # Pattern for indexed markers
     
     # List of terms to protect (cultivation/martial arts terms)
     # NOTE: Matching is case-insensitive
@@ -67,8 +67,8 @@ TERMINOLOGY_CONFIG = {
 # Context configuration for translation
 CONTEXT_CONFIG = {
     # Context prefix for all languages (not translated)
-    'context_prefix': '[②⑫]Game cultivation context[/②⑫]\n',
-    'context_marker': r'\[(②.|.⑫)\].+?\[/(②.|.⑫)\]'
+    'context_prefix': '{②⑫}Game cultivation context{/②⑫}\n',
+    'context_marker': r'{(②.|.⑫)}(.*?){/(②.|.⑫)}'
 }
 
 # Format string patterns to protect from modification during translation
@@ -87,9 +87,9 @@ FORMAT_PROTECTION_CONFIG = {
     
     # Placeholder prefix/suffix to temporarily replace format strings
     'placeholder': {
-        'prefix': '[③⑬]',
-        'suffix': '[/③⑬]',
-        'placeholder_marker': r'\[(③.|.⑬)\]\d+?\[/(③.|.⑬)\]'
+        'prefix': '{③⑬}',
+        'suffix': '{/③⑬}',
+        'placeholder_marker': r'{(③.|.⑬)}(\d+?){/(③.|.⑬)}'
     }
 }
 

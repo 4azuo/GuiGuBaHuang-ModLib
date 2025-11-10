@@ -7,7 +7,7 @@
 	{
 		"id": "420033001",
 		"key": "apprentice420031001desc",
-		"en|ch|tc|kr": "+5% MP tối đa"
+		"en|ch|tc|kr": "+5% tối đa MP"
 	},
 	{
 		"id": "420032002",
@@ -17,7 +17,7 @@
 	{
 		"id": "420033002",
 		"key": "apprentice420031002desc",
-		"en|ch|tc|kr": "+10% MP tối đa"
+		"en|ch|tc|kr": "+10% tối đa MP"
 	},
 	{
 		"id": "420032003",
@@ -27,7 +27,7 @@
 	{
 		"id": "420033003",
 		"key": "apprentice420031003desc",
-		"en|ch|tc|kr": "+15% MP tối đa"
+		"en|ch|tc|kr": "+15% tối đa MP"
 	},
 	{
 		"id": "420032004",
@@ -37,7 +37,7 @@
 	{
 		"id": "420033004",
 		"key": "apprentice420031004desc",
-		"en|ch|tc|kr": "+20% MP tối đa"
+		"en|ch|tc|kr": "+20% tối đa MP"
 	},
 	{
 		"id": "420032005",
@@ -47,7 +47,7 @@
 	{
 		"id": "420033005",
 		"key": "apprentice420031005desc",
-		"en|ch|tc|kr": "+25% MP tối đa"
+		"en|ch|tc|kr": "+25% tối đa MP"
 	},
 	{
 		"id": "420032006",
@@ -57,7 +57,7 @@
 	{
 		"id": "420033006",
 		"key": "apprentice420031006desc",
-		"en|ch|tc|kr": "+30% MP tối đa"
+		"en|ch|tc|kr": "+30% tối đa MP"
 	},
 	{
 		"id": "420032007",
@@ -67,7 +67,7 @@
 	{
 		"id": "420033007",
 		"key": "apprentice420031007desc",
-		"en|ch|tc|kr": "+35% MP tối đa"
+		"en|ch|tc|kr": "+35% tối đa MP"
 	},
 	{
 		"id": "420032008",
@@ -77,7 +77,7 @@
 	{
 		"id": "420033008",
 		"key": "apprentice420031008desc",
-		"en|ch|tc|kr": "+40% MP tối đa"
+		"en|ch|tc|kr": "+40% tối đa MP"
 	},
 	{
 		"id": "420032009",
@@ -87,7 +87,7 @@
 	{
 		"id": "420033009",
 		"key": "apprentice420031009desc",
-		"en|ch|tc|kr": "+45% MP tối đa"
+		"en|ch|tc|kr": "+45% tối đa MP"
 	},
 	{
 		"id": "420032010",
@@ -97,6 +97,6 @@
 	{
 		"id": "420033010",
 		"key": "apprentice420031010desc",
-		"en|ch|tc|kr": "+50% MP tối đa"
+		"en|ch|tc|kr": "+50% tối đa MP"
 	}
 ]

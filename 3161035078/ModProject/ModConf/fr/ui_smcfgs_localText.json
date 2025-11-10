@@ -17,7 +17,7 @@
 	{
 		"id": -1000001003,
 		"key": "smcfgs003",
-		"en|ch|tc|kr": "PV maximum"
+		"en|ch|tc|kr": "Max HP"
 	},
 	{
 		"id": -1000001004,
@@ -82,7 +82,7 @@
 	{
 		"id": -1000001016,
 		"key": "smcfgs016",
-		"en|ch|tc|kr": "PNJ :"
+		"en|ch|tc|kr": "NPC :"
 	},
 	{
 		"id": -1000001017,
@@ -237,12 +237,12 @@
 	{
 		"id": -1000001047,
 		"key": "smcfgs047",
-		"en|ch|tc|kr": "Montant du PNJ"
+		"en|ch|tc|kr": "NPC Montant"
 	},
 	{
 		"id": -1000001048,
 		"key": "smcfgs048",
-		"en|ch|tc|kr": "(RAM requise : {0} Mo)"
+		"en|ch|tc|kr": "(Requis RAM : {0} Mo)"
 	},
 	{
 		"id": -1000001049,
@@ -262,7 +262,7 @@
 	{
 		"id": -1000001052,
 		"key": "smcfgs052",
-		"en|ch|tc|kr": "(Inclure le joueur, le PNJ et les monstres)"
+		"en|ch|tc|kr": "(Inclure le joueur, NPC et les monstres)"
 	},
 	{
 		"id": -1000001053,
@@ -387,7 +387,7 @@
 	{
 		"id": -1000001117,
 		"key": "smcfgs117",
-		"en|ch|tc|kr": "Taux de participation aux PNJ"
+		"en|ch|tc|kr": "NPC Taux d'adhésion"
 	},
 	{
 		"id": -1000001118,
@@ -397,7 +397,7 @@
 	{
 		"id": -1000001119,
 		"key": "smcfgs119",
-		"en|ch|tc|kr": "(Attention : cette fonctionnalité consomme beaucoup de RAM et peut entraîner des décalages)"
+		"en|ch|tc|kr": "(Attention : Cette fonctionnalité consomme beaucoup de RAM et peut entraîner un décalage)"
 	},
 	{
 		"id": -1000001120,
@@ -427,7 +427,7 @@
 	{
 		"id": -1000001125,
 		"key": "smcfgs125",
-		"en|ch|tc|kr": "Pas de culture du Qi"
+		"en|ch|tc|kr": "Pas de culture Qi"
 	},
 	{
 		"id": -1000001126,

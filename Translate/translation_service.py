@@ -28,7 +28,7 @@ class TranslationService:
         # Initialize terminology processor
         self.terminology_processor = TerminologyProcessor()
     
-    def _protect_format_strings(self, text: str) -> Tuple[str, Dict[str, str]]:
+    def _protect_format_strings(self, text: str) -> Tuple[str, Dict[int, str]]:
         """
         Protect format strings by replacing them with placeholders
         
@@ -67,18 +67,18 @@ class TranslationService:
         
         for i, format_str in enumerate(unique_matches):
             placeholder = f"{prefix}{i}{suffix}"
-            format_map[placeholder] = format_str
+            format_map[i] = format_str
             protected_text = protected_text.replace(format_str, placeholder)
             
         return protected_text, format_map
     
-    def _restore_format_strings(self, translated_text: str, format_map: Dict[str, str]) -> str:
+    def _restore_format_strings(self, translated_text: str, format_map: Dict[int, str]) -> str:
         """
-        Restore format strings from placeholders using regex pattern
+        Restore format strings from placeholders using index-based lookup
         
         Args:
             translated_text: Translated text containing placeholders
-            format_map: Map of placeholders and corresponding format strings
+            format_map: Map of index -> format_string
             
         Returns:
             Text with format strings restored
@@ -89,15 +89,18 @@ class TranslationService:
         restored_text = translated_text
         placeholder_pattern = FORMAT_PROTECTION_CONFIG['placeholder']['placeholder_marker']
         
-        # Find all placeholder matches in text
+        # Find all placeholder matches in text and replace by index
         def replace_placeholder(match):
-            placeholder = match.group()
-            return format_map.get(placeholder, placeholder)  # Return format string or keep unchanged if not found
+            # Get index from capture group 2
+            index = int(match.group(2))
+            if index in format_map:
+                return format_map[index]
+            
+            # If index not found in format_map, return original placeholder
+            return match.group(0)
         
         # Use regex to replace all placeholders
-        restored_text = re.sub(placeholder_pattern, replace_placeholder, restored_text)
-            
-        return restored_text
+        return re.sub(placeholder_pattern, replace_placeholder, restored_text)
 
     def _add_context(self, text: str, target_lang: str) -> str:
         """
@@ -187,9 +190,11 @@ class TranslationService:
                     else:
                         with self._stats_lock:
                             self.stats.failed_count += 1
-                        return text
+                        # return text
+                        raise
             
         except Exception:
             with self._stats_lock:
                 self.stats.failed_count += 1
-            return text
+            # return text
+            raise

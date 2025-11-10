@@ -17,7 +17,7 @@
 	{
 		"id": -1000001003,
 		"key": "smcfgs003",
-		"en|ch|tc|kr": "HP máx."
+		"en|ch|tc|kr": "Máx. HP"
 	},
 	{
 		"id": -1000001004,
@@ -82,7 +82,7 @@
 	{
 		"id": -1000001016,
 		"key": "smcfgs016",
-		"en|ch|tc|kr": "PNJ:"
+		"en|ch|tc|kr": "NPC:"
 	},
 	{
 		"id": -1000001017,
@@ -237,12 +237,12 @@
 	{
 		"id": -1000001047,
 		"key": "smcfgs047",
-		"en|ch|tc|kr": "Cantidad de PNJ"
+		"en|ch|tc|kr": "NPC Importe"
 	},
 	{
 		"id": -1000001048,
 		"key": "smcfgs048",
-		"en|ch|tc|kr": "(RAM requerida: {0}MB)"
+		"en|ch|tc|kr": "(Requerido RAM: {0}MB)"
 	},
 	{
 		"id": -1000001049,
@@ -262,7 +262,7 @@
 	{
 		"id": -1000001052,
 		"key": "smcfgs052",
-		"en|ch|tc|kr": "(Incluye jugador, npc y monstruos)"
+		"en|ch|tc|kr": "(Incluye jugador, NPC y monstruos)"
 	},
 	{
 		"id": -1000001053,
@@ -307,12 +307,12 @@
 	{
 		"id": -1000001101,
 		"key": "smcfgs101",
-		"en|ch|tc|kr": "{1} % ({0}P)"
+		"en|ch|tc|kr": "{1}% ({0}P)"
 	},
 	{
 		"id": -1000001102,
 		"key": "smcfgs102",
-		"en|ch|tc|kr": "({0} P)"
+		"en|ch|tc|kr": "({0}P)"
 	},
 	{
 		"id": -1000001103,
@@ -387,7 +387,7 @@
 	{
 		"id": -1000001117,
 		"key": "smcfgs117",
-		"en|ch|tc|kr": "Tasa de unión a NPC"
+		"en|ch|tc|kr": "NPC Tasa de inscripción"
 	},
 	{
 		"id": -1000001118,
@@ -397,7 +397,7 @@
 	{
 		"id": -1000001119,
 		"key": "smcfgs119",
-		"en|ch|tc|kr": "(Advertencia: esta función consume mucha RAM y puede provocar retrasos)"
+		"en|ch|tc|kr": "(Advertencia: esta función consume una gran cantidad de RAM y puede provocar un retraso)"
 	},
 	{
 		"id": -1000001120,
@@ -427,7 +427,7 @@
 	{
 		"id": -1000001125,
 		"key": "smcfgs125",
-		"en|ch|tc|kr": "Sin cultivo de Qi"
+		"en|ch|tc|kr": "Sin cultivo Qi"
 	},
 	{
 		"id": -1000001126,

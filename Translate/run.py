@@ -97,7 +97,7 @@ Usage examples:
     parser.add_argument(
         '--workers',
         type=int,
-        default=8,
+        default=4,
         help='Number of parallel threads for file processing (default: 4). Reduce if encountering rate-limits from translation service.'
     )
     

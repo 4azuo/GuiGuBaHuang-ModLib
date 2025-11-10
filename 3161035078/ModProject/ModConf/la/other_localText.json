@@ -32,7 +32,7 @@
 	{
 		"id": 500020006,
 		"key": "other500020006",
-		"en|ch|tc|kr": "Gradus"
+		"en|ch|tc|kr": "Gradus Sursum"
 	},
 	{
 		"id": 500020007,
@@ -97,7 +97,7 @@
 	{
 		"id": 500020019,
 		"key": "other500020019",
-		"en|ch|tc|kr": "Postquam mores tuos pleno exp in omni gradu. Ipse / Illa auto agmine Qi fortius erit.\nPENDET SP."
+		"en|ch|tc|kr": "Postquam mores tuos pleno exp in omni gradu. Ille/illa auto- instituendi Qi fortius erit.\nPendet ab SP."
 	},
 	{
 		"id": 500020020,
@@ -182,7 +182,7 @@
 	{
 		"id": 500020036,
 		"key": "other500020036",
-		"en|ch|tc|kr": "Facultas puncta HP/MP afficiunt in gradu ingenii."
+		"en|ch|tc|kr": "Facultates puncta afficiunt HP/MP secundum ipsius loci indolem."
 	},
 	{
 		"id": 500020037,
@@ -192,7 +192,7 @@
 	{
 		"id": 500020038,
 		"key": "other500020038",
-		"en|ch|tc|kr": "HP/MP scutum ingrediens proelium afficit.\nPrudentia et fortuna significantem labefactum habent in rebus incertis, necnon incrementum et celeritatem discendi."
+		"en|ch|tc|kr": "HP/MP clypeum venientem ad pugnam afficiunt.\nPrudentia et fortuna significantem labefactum habent in rebus incertis, necnon incrementum et celeritatem discendi."
 	},
 	{
 		"id": 500020039,
@@ -207,7 +207,7 @@
 	{
 		"id": 500020041,
 		"key": "other500020041",
-		"en|ch|tc|kr": "Emere potes / res vendere cum npc hic. Sed non odio ac."
+		"en|ch|tc|kr": "Emere potes/remen vendere cum NPC hic. Sed ac odio odio."
 	},
 	{
 		"id": 500020042,
@@ -357,12 +357,12 @@
 	{
 		"id": 500020071,
 		"key": "other500020071",
-		"en|ch|tc|kr": "Qi TRANSFERENDIS"
+		"en|ch|tc|kr": "Qi Transfer"
 	},
 	{
 		"id": 500020072,
 		"key": "other500020072",
-		"en|ch|tc|kr": "Qi accipite"
+		"en|ch|tc|kr": "Accipe Qi"
 	},
 	{
 		"id": 500020073,

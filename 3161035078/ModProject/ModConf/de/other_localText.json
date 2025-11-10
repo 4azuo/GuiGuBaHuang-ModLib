@@ -97,7 +97,7 @@
 	{
 		"id": 500020019,
 		"key": "other500020019",
-		"en|ch|tc|kr": "Nachdem Ihr Charakter in jeder Phase die volle Erfahrung hat. Er/Sie wird das Qi automatisch trainieren, um es zu stärken.\nEs hängt von SP ab."
+		"en|ch|tc|kr": "Nachdem Ihr Charakter in jeder Phase die volle Erfahrung hat. Er/Sie wird automatisch Qi trainieren, um stärker zu werden.\nEs hängt von SP ab."
 	},
 	{
 		"id": 500020020,
@@ -132,7 +132,7 @@
 	{
 		"id": 500020026,
 		"key": "other500020026",
-		"en|ch|tc|kr": "Sie haben eine Einladung von {0}' Stadtmeister für die Position eines Vormunds erhalten?\nWillst du Stadtwächter werden?"
+		"en|ch|tc|kr": "Sie haben vom Stadtmeister von {0} eine Einladung für die Position eines Vormunds erhalten?\nWillst du Stadtwächter werden?"
 	},
 	{
 		"id": 500020027,
@@ -152,7 +152,7 @@
 	{
 		"id": 500020030,
 		"key": "other500020030",
-		"en|ch|tc|kr": "Überspringe {0} Jahr"
+		"en|ch|tc|kr": "Überspringen Sie {0} Jahr"
 	},
 	{
 		"id": 500020031,
@@ -172,7 +172,7 @@
 	{
 		"id": 500020034,
 		"key": "other500020034",
-		"en|ch|tc|kr": "Beeinflussen Sie Ihren Schaden und Ihre Verteidigung gegen Schaden derselben Art.\nFeuer → Kritischer Schaden\nWasser → MP-Wiederherstellung\nWind → Ausweichen\nErde → Verteidigung\nDonner → Chance auf kritische Treffer und Reduzierung des Prüfungsschadens\nHolz → HP-Wiederherstellung"
+		"en|ch|tc|kr": "Beeinflussen Sie Ihren Schaden und Ihre Verteidigung gegen Schaden derselben Art.\nFeuer → Kritischer Schaden\nWasser → MP Erholung\nWind → Ausweichen\nErde → Verteidigung\nDonner → Chance auf kritische Treffer und Reduzierung des Prüfungsschadens\nHolz → HP Erholung"
 	},
 	{
 		"id": 500020035,
@@ -182,7 +182,7 @@
 	{
 		"id": 500020036,
 		"key": "other500020036",
-		"en|ch|tc|kr": "Fähigkeitspunkte beeinflussen HP/MP basierend auf der Stufe des Charakters."
+		"en|ch|tc|kr": "Fähigkeitspunkte wirken sich auf HP/MP basierend auf der Stufe des Charakters aus."
 	},
 	{
 		"id": 500020037,
@@ -192,7 +192,7 @@
 	{
 		"id": 500020038,
 		"key": "other500020038",
-		"en|ch|tc|kr": "HP/MP wirken sich auf den Schild aus, wenn du in den Kampf eintrittst.\nEinsicht und Glück haben einen erheblichen Einfluss auf zufällige Ereignisse sowie auf Wachstum und Lerngeschwindigkeit."
+		"en|ch|tc|kr": "HP/MP wirken sich auf den Schild aus, wenn man in den Kampf eintritt.\nEinsicht und Glück haben einen erheblichen Einfluss auf zufällige Ereignisse sowie auf Wachstum und Lerngeschwindigkeit."
 	},
 	{
 		"id": 500020039,
@@ -207,7 +207,7 @@
 	{
 		"id": 500020041,
 		"key": "other500020041",
-		"en|ch|tc|kr": "Hier können Sie Gegenstände mit NPC kaufen/verkaufen. Aber man kann gehasst und ausgeraubt werden."
+		"en|ch|tc|kr": "Hier können Sie Artikel mit NPC kaufen/verkaufen. Aber man kann gehasst und ausgeraubt werden."
 	},
 	{
 		"id": 500020042,
@@ -232,7 +232,7 @@
 	{
 		"id": 500020046,
 		"key": "other500020046",
-		"en|ch|tc|kr": "[INFO] Taoist"
+		"en|ch|tc|kr": "[INFO] Taoistisch"
 	},
 	{
 		"id": 500020047,
@@ -317,7 +317,7 @@
 	{
 		"id": 500020063,
 		"key": "other500020063",
-		"en|ch|tc|kr": "Min: {0:#,##0}　　　Verkauf: {1:#,##0}　　　Max: {2:#,##0}　　　Ihre: {3:#,##0}"
+		"en|ch|tc|kr": "Min: {0:#,##0}　　　Verkauf: {1:#,##0}　　　Max: {2:#,##0}　　　Ihr: {3:#,##0}"
 	},
 	{
 		"id": 500020064,
@@ -347,7 +347,7 @@
 	{
 		"id": 500020069,
 		"key": "other500020069",
-		"en|ch|tc|kr": "Für die Kultivierung benötigst du {0:#,##0} Geistersteine."
+		"en|ch|tc|kr": "Für den Anbau benötigst du {0:#,##0} Geistersteine."
 	},
 	{
 		"id": 500020070,
@@ -357,12 +357,12 @@
 	{
 		"id": 500020071,
 		"key": "other500020071",
-		"en|ch|tc|kr": "Qi-Transfer"
+		"en|ch|tc|kr": "Qi Übertragen"
 	},
 	{
 		"id": 500020072,
 		"key": "other500020072",
-		"en|ch|tc|kr": "Empfange Qi"
+		"en|ch|tc|kr": "Erhalte Qi"
 	},
 	{
 		"id": 500020073,

@@ -21,7 +21,7 @@
 		"en": "It will run a benchmark to initialize RAM for the game.",
 		"ch": "它将运行基准测试来初始化游戏的 RAM。",
 		"tc": "它將運行基準測試來初始化遊戲的 RAM。",
-		"kr": "게임용 RAM을 초기화하기 위해 벤치마크를 실행합니다."
+		"kr": "벤치마크를 실행하여 게임의 RAM을 초기화합니다."
 	},
 	{
 		"id": "999990003",
@@ -37,7 +37,7 @@
 		"en": "This is the first time. Do you wanna run a benchmark to initialize RAM for the game?",
 		"ch": "这是第一次。您想运行基准测试来初始化游戏的 RAM 吗？",
 		"tc": "這是第一次。您想運行基準測試來初始化遊戲的 RAM 嗎？",
-		"kr": "이번이 처음입니다. 게임용 RAM을 초기화하기 위해 벤치마크를 실행하시겠습니까?"
+		"kr": "이번이 처음입니다. 벤치마크를 실행하여 게임의 RAM을 초기화하시겠습니까?"
 	},
 	{
 		"id": "999990005",
@@ -67,8 +67,8 @@
 		"id": "999990008",
 		"key": "libtxt999990008",
 		"en": "Page {0}",
-		"ch": "第 {0} 页",
-		"tc": "第 {0} 頁",
+		"ch": "第{0}页",
+		"tc": "第{0}頁",
 		"kr": "페이지 {0}"
 	}
 ]

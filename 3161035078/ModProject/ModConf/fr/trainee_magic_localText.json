@@ -7,7 +7,7 @@
 	{
 		"id": "420083001",
 		"key": "trainee420081001desc",
-		"en|ch|tc|kr": "+2 % de PM maximum"
+		"en|ch|tc|kr": "+2 % Max MP"
 	},
 	{
 		"id": "420082002",
@@ -17,7 +17,7 @@
 	{
 		"id": "420083002",
 		"key": "trainee420081002desc",
-		"en|ch|tc|kr": "+4 % de PM maximum"
+		"en|ch|tc|kr": "+4 % Max MP"
 	},
 	{
 		"id": "420082003",
@@ -27,7 +27,7 @@
 	{
 		"id": "420083003",
 		"key": "trainee420081003desc",
-		"en|ch|tc|kr": "+7 % de PM maximum"
+		"en|ch|tc|kr": "+7 % Max MP"
 	},
 	{
 		"id": "420082004",
@@ -37,7 +37,7 @@
 	{
 		"id": "420083004",
 		"key": "trainee420081004desc",
-		"en|ch|tc|kr": "+10 % de PM maximum"
+		"en|ch|tc|kr": "+10 % Max MP"
 	},
 	{
 		"id": "420082005",
@@ -47,17 +47,17 @@
 	{
 		"id": "420083005",
 		"key": "trainee420081005desc",
-		"en|ch|tc|kr": "+15 % de PM maximum"
+		"en|ch|tc|kr": "+15 % Max MP"
 	},
 	{
 		"id": "420082006",
 		"key": "trainee420081006",
-		"en|ch|tc|kr": "Magie Niveau 6"
+		"en|ch|tc|kr": "Magie niveau 6"
 	},
 	{
 		"id": "420083006",
 		"key": "trainee420081006desc",
-		"en|ch|tc|kr": "+20 % de PM maximum"
+		"en|ch|tc|kr": "+20 % Max MP"
 	},
 	{
 		"id": "420082007",
@@ -67,7 +67,7 @@
 	{
 		"id": "420083007",
 		"key": "trainee420081007desc",
-		"en|ch|tc|kr": "+30 % de PM maximum"
+		"en|ch|tc|kr": "+30 % Max MP"
 	},
 	{
 		"id": "420082008",
@@ -77,7 +77,7 @@
 	{
 		"id": "420083008",
 		"key": "trainee420081008desc",
-		"en|ch|tc|kr": "+40 % de PM maximum"
+		"en|ch|tc|kr": "+40 % Max MP"
 	},
 	{
 		"id": "420082009",
@@ -87,7 +87,7 @@
 	{
 		"id": "420083009",
 		"key": "trainee420081009desc",
-		"en|ch|tc|kr": "+60 % de PM maximum"
+		"en|ch|tc|kr": "+60 % Max MP"
 	},
 	{
 		"id": "420082010",
@@ -97,6 +97,6 @@
 	{
 		"id": "420083010",
 		"key": "trainee420081010desc",
-		"en|ch|tc|kr": "+90 % de PM maximum"
+		"en|ch|tc|kr": "+90 % Max MP"
 	}
 ]

@@ -97,7 +97,7 @@
 	{
 		"id": 500020019,
 		"key": "other500020019",
-		"en|ch|tc|kr": "Sau khi nhân vật của bạn có đầy đủ điểm kinh nghiệm ở mọi giai đoạn. Anh ấy/Cô ấy sẽ tự động rèn luyện Khí để mạnh hơn.\nNó phụ thuộc vào SP."
+		"en|ch|tc|kr": "Sau khi nhân vật của bạn có đầy đủ điểm kinh nghiệm ở mọi giai đoạn. Anh ấy/Cô ấy sẽ tự động huấn luyện Qi để mạnh hơn.\nĐiều đó phụ thuộc vào SP."
 	},
 	{
 		"id": 500020020,
@@ -137,7 +137,7 @@
 	{
 		"id": 500020027,
 		"key": "other500020027",
-		"en|ch|tc|kr": "Bạn không có đủ {0:#,##0} Spirit Stone để thanh toán!"
+		"en|ch|tc|kr": "Bạn không có đủ {0:#,##0} Đá Linh hồn để thanh toán!"
 	},
 	{
 		"id": 500020028,
@@ -172,7 +172,7 @@
 	{
 		"id": 500020034,
 		"key": "other500020034",
-		"en|ch|tc|kr": "Ảnh hưởng đến sát thương và khả năng phòng thủ của bạn trước các sát thương cùng loại.\nLửa → Sát thương Chí mạng\nNước → Phục hồi MP\nGió → Trốn tránh\nTrái đất → Phòng thủ\nSấm sét → Tỉ lệ chí mạng và giảm sát thương thử nghiệm\nGỗ → Phục hồi HP"
+		"en|ch|tc|kr": "Ảnh hưởng đến sát thương và khả năng phòng thủ của bạn trước các sát thương cùng loại.\nLửa → Sát thương chí mạng\nNước → MP Phục hồi\nGió → Trốn tránh\nTrái đất → Phòng thủ\nSấm sét → Tỉ lệ chí mạng và giảm sát thương thử nghiệm\nGỗ → HP Phục hồi"
 	},
 	{
 		"id": 500020035,
@@ -192,7 +192,7 @@
 	{
 		"id": 500020038,
 		"key": "other500020038",
-		"en|ch|tc|kr": "HP/MP ảnh hưởng đến lá chắn khi vào trận.\nCái nhìn sâu sắc và may mắn có tác động đáng kể đến các sự kiện ngẫu nhiên cũng như tốc độ phát triển và học tập."
+		"en|ch|tc|kr": "HP/MP ảnh hưởng đến lá chắn khi bước vào trận chiến.\nCái nhìn sâu sắc và may mắn có tác động đáng kể đến các sự kiện ngẫu nhiên cũng như tốc độ phát triển và học tập."
 	},
 	{
 		"id": 500020039,
@@ -207,17 +207,17 @@
 	{
 		"id": 500020041,
 		"key": "other500020041",
-		"en|ch|tc|kr": "Bạn có thể mua/bán vật phẩm bằng npc tại đây. Nhưng bạn có thể bị ghét và bị cướp."
+		"en|ch|tc|kr": "Bạn có thể mua/bán vật phẩm bằng NPC tại đây. Nhưng bạn có thể bị ghét và bị cướp."
 	},
 	{
 		"id": 500020042,
 		"key": "other500020042",
-		"en|ch|tc|kr": "{0:#,##0} Đá Linh hồn/năm"
+		"en|ch|tc|kr": "{0:#,##0} Đá Linh Hồn/năm"
 	},
 	{
 		"id": 500020043,
 		"key": "other500020043",
-		"en|ch|tc|kr": "{0:#,##0} Đá Linh hồn/tháng"
+		"en|ch|tc|kr": "{0:#,##0} Đá Linh Hồn/tháng"
 	},
 	{
 		"id": 500020044,
@@ -282,12 +282,12 @@
 	{
 		"id": 500020056,
 		"key": "other500020056",
-		"en|ch|tc|kr": "{0:#,##0} Đá Thần → Đóng góp {1:#,##0}"
+		"en|ch|tc|kr": "{0:#,##0} Đá Linh hồn → {1:#,##0} Đóng góp"
 	},
 	{
 		"id": 500020057,
 		"key": "other500020057",
-		"en|ch|tc|kr": "Tỷ lệ trao đổi {0:#,##0} Đá linh hồn → 1 đóng góp"
+		"en|ch|tc|kr": "Tỷ lệ trao đổi {0:#,##0} Đá Tinh Linh → 1 Đóng góp"
 	},
 	{
 		"id": 500020058,
@@ -357,12 +357,12 @@
 	{
 		"id": 500020071,
 		"key": "other500020071",
-		"en|ch|tc|kr": "Chuyển Khí"
+		"en|ch|tc|kr": "Qi Chuyển khoản"
 	},
 	{
 		"id": 500020072,
 		"key": "other500020072",
-		"en|ch|tc|kr": "Nhận Khí"
+		"en|ch|tc|kr": "Nhận Qi"
 	},
 	{
 		"id": 500020073,
@@ -377,7 +377,7 @@
 	{
 		"id": 500020075,
 		"key": "other500020075",
-		"en|ch|tc|kr": "Tổng giá trị： {0:#,##0}"
+		"en|ch|tc|kr": "Tổng giá trị: {0:#,##0}"
 	},
 	{
 		"id": 500020076,
@@ -447,7 +447,7 @@
 	{
 		"id": 500020089,
 		"key": "other500020089",
-		"en|ch|tc|kr": "Thiệt hại x{0}"
+		"en|ch|tc|kr": "Sát thương x{0}"
 	},
 	{
 		"id": 500020090,
@@ -517,7 +517,7 @@
 	{
 		"id": 500020103,
 		"key": "other500020103",
-		"en|ch|tc|kr": "Bán đã đăng ký: {0} x{1} với giá {2}"
+		"en|ch|tc|kr": "Bán đã đăng ký: {0} x{1} cho {2}"
 	},
 	{
 		"id": 500020104,
@@ -532,7 +532,7 @@
 	{
 		"id": 500020106,
 		"key": "other500020106",
-		"en|ch|tc|kr": "Bán hàng ẩn danh đã đăng ký: {0} x{1} với giá {2} (phí: {3})"
+		"en|ch|tc|kr": "Bán hàng ẩn danh đã đăng ký: {0} x{1} cho {2} (phí: {3})"
 	},
 	{
 		"id": 500020107,

@@ -20,12 +20,12 @@
 	{
 		"id": "480030400",
 		"key": "commission480030400",
-		"en|ch|tc|kr": "Coût : {0:#,##0} pierres spirituelles (+{1:#,##0} de frais)"
+		"en|ch|tc|kr": "Coût : {0:#,##0} pierres spirituelles (+{1:#,##0} de frais)"
 	},
 	{
 		"id": "480030500",
 		"key": "commission480030500",
-		"en|ch|tc|kr": "Coût : {0:#,##0} pierres spirituelles (+{1:#,##0} de frais) et {2:#,##0} diplôme de maire"
+		"en|ch|tc|kr": "Coût : {0:#,##0} pierres spirituelles (+{1:#,##0} de frais) et {2:#,##0} diplôme de maire"
 	},
 	{
 		"id": "480030600",

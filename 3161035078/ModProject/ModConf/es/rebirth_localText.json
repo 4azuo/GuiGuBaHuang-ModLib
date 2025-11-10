@@ -7,7 +7,7 @@
 	{
 		"id": "420103001",
 		"key": "rebirth420101001desc",
-		"en|ch|tc|kr": "+5 % de vida máxima"
+		"en|ch|tc|kr": "+5 % máx. HP"
 	},
 	{
 		"id": "420102002",
@@ -17,7 +17,7 @@
 	{
 		"id": "420103002",
 		"key": "rebirth420101002desc",
-		"en|ch|tc|kr": "+10 % de vida máxima"
+		"en|ch|tc|kr": "+10 % máx. HP"
 	},
 	{
 		"id": "420102003",
@@ -27,7 +27,7 @@
 	{
 		"id": "420103003",
 		"key": "rebirth420101003desc",
-		"en|ch|tc|kr": "+15 % de vida máxima"
+		"en|ch|tc|kr": "+15 % máx. HP"
 	},
 	{
 		"id": "420102004",
@@ -37,7 +37,7 @@
 	{
 		"id": "420103004",
 		"key": "rebirth420101004desc",
-		"en|ch|tc|kr": "+20 % de vida máxima"
+		"en|ch|tc|kr": "+20 % máx. HP"
 	},
 	{
 		"id": "420102005",
@@ -47,7 +47,7 @@
 	{
 		"id": "420103005",
 		"key": "rebirth420101005desc",
-		"en|ch|tc|kr": "+25 % de vida máxima"
+		"en|ch|tc|kr": "+25 % máx. HP"
 	},
 	{
 		"id": "420102006",
@@ -57,7 +57,7 @@
 	{
 		"id": "420103006",
 		"key": "rebirth420101006desc",
-		"en|ch|tc|kr": "+30 % de vida máxima"
+		"en|ch|tc|kr": "+30 % máx. HP"
 	},
 	{
 		"id": "420102007",
@@ -67,7 +67,7 @@
 	{
 		"id": "420103007",
 		"key": "rebirth420101007desc",
-		"en|ch|tc|kr": "+35 % de vida máxima"
+		"en|ch|tc|kr": "+35 % máx. HP"
 	},
 	{
 		"id": "420102008",
@@ -77,7 +77,7 @@
 	{
 		"id": "420103008",
 		"key": "rebirth420101008desc",
-		"en|ch|tc|kr": "+40 % de vida máxima"
+		"en|ch|tc|kr": "+40 % máx. HP"
 	},
 	{
 		"id": "420102009",
@@ -87,7 +87,7 @@
 	{
 		"id": "420103009",
 		"key": "rebirth420101009desc",
-		"en|ch|tc|kr": "+45 % de vida máxima"
+		"en|ch|tc|kr": "+45 % máx. HP"
 	},
 	{
 		"id": "420102010",
@@ -97,7 +97,7 @@
 	{
 		"id": "420103010",
 		"key": "rebirth420101010desc",
-		"en|ch|tc|kr": "+50 % de vida máxima"
+		"en|ch|tc|kr": "+50 % máx. HP"
 	},
 	{
 		"id": "420109999",

@@ -17,7 +17,7 @@
 	{
 		"id": -1000001003,
 		"key": "smcfgs003",
-		"en|ch|tc|kr": "Maximale HP"
+		"en|ch|tc|kr": "Max. HP"
 	},
 	{
 		"id": -1000001004,
@@ -237,12 +237,12 @@
 	{
 		"id": -1000001047,
 		"key": "smcfgs047",
-		"en|ch|tc|kr": "NPC-Betrag"
+		"en|ch|tc|kr": "NPC Betrag"
 	},
 	{
 		"id": -1000001048,
 		"key": "smcfgs048",
-		"en|ch|tc|kr": "(Erforderlicher RAM: {0}MB)"
+		"en|ch|tc|kr": "(Erforderlich RAM: {0}MB)"
 	},
 	{
 		"id": -1000001049,
@@ -262,7 +262,7 @@
 	{
 		"id": -1000001052,
 		"key": "smcfgs052",
-		"en|ch|tc|kr": "(Spieler, NPC und Monster einschließen)"
+		"en|ch|tc|kr": "(Einschließlich Spieler, NPC und Monster)"
 	},
 	{
 		"id": -1000001053,
@@ -307,7 +307,7 @@
 	{
 		"id": -1000001101,
 		"key": "smcfgs101",
-		"en|ch|tc|kr": "{1} % ({0}P)"
+		"en|ch|tc|kr": "{1}% ({0}P)"
 	},
 	{
 		"id": -1000001102,
@@ -387,7 +387,7 @@
 	{
 		"id": -1000001117,
 		"key": "smcfgs117",
-		"en|ch|tc|kr": "NPC-Beitrittsrate"
+		"en|ch|tc|kr": "NPC Beitrittsrate"
 	},
 	{
 		"id": -1000001118,
@@ -397,7 +397,7 @@
 	{
 		"id": -1000001119,
 		"key": "smcfgs119",
-		"en|ch|tc|kr": "(Warnung: Diese Funktion verbraucht viel RAM und kann zu Verzögerungen führen)"
+		"en|ch|tc|kr": "(Warnung: Diese Funktion verbraucht viel RAM und kann zu Verzögerungen führen.)"
 	},
 	{
 		"id": -1000001120,
@@ -427,7 +427,7 @@
 	{
 		"id": -1000001125,
 		"key": "smcfgs125",
-		"en|ch|tc|kr": "Keine Qi-Kultivierung"
+		"en|ch|tc|kr": "Kein Qi Anbau"
 	},
 	{
 		"id": -1000001126,

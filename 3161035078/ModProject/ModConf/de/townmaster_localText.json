@@ -22,7 +22,7 @@
 	{
 		"id": "420041114",
 		"key": "townmaster420041114drama",
-		"en|ch|tc|kr": "Sie haben eine Einladung von {0}' Stadtmeister für die Position eines Vormunds erhalten?\nWillst du Stadtwächter werden?"
+		"en|ch|tc|kr": "Sie haben vom Stadtmeister von {0} eine Einladung für die Position eines Vormunds erhalten?\nWillst du Stadtwächter werden?"
 	},
 	{
 		"id": "420041115",

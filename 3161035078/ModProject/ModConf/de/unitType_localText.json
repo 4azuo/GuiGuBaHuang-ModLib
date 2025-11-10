@@ -67,16 +67,16 @@
 	{
 		"id": "421010600",
 		"key": "unitType420010600desc",
-		"en|ch|tc|kr": "Angriff +50 %, Agi +10 %, HP +20 %, MP +10 %, Rechtschaffen +100 %, Dämonisch -100 %\n\nJedes Mal, wenn du ein Böses tötest, erhöhen sich deine Werte um 20 % um die Werte des Bösen.\n(HP/Mp/Sp/Angriff/Verteidigung/Beste Basis)"
+		"en|ch|tc|kr": "Angriff +50 %, Agi +10 %, HP +20 %, MP +10 %, Rechtschaffen +100 %, Dämonisch -100 %\n\nJedes Mal, wenn du ein Böses tötest, erhöhen sich deine Werte um 20 % um die Werte des Bösen.\n(HP/MP/SP/Atk/Def/Beste Basis)"
 	},
 	{
 		"id": "421010700",
 		"key": "unitType420010700desc",
-		"en|ch|tc|kr": "Angriff +30 %, Verteidigung +10 %, HP +100 %, Rechtschaffen -100 %, Dämonisch -30 %\n\nJedes Mal, wenn Sie einen Menschen töten, erhöhen sich Ihre Werte um 1 % um die Werte der getöteten Einheit.\n(Hp/Mp/Sp/Angriff/Verteidigung/Alle Basiswerte)"
+		"en|ch|tc|kr": "Angriff +30 %, Verteidigung +10 %, HP +100 %, Rechtschaffen -100 %, Dämonisch -30 %\n\nJedes Mal, wenn Sie einen Menschen töten, erhöhen sich Ihre Werte um 1 % um die Werte der getöteten Einheit.\n(HP/MP/SP/Atk/Def/Alle Basiswerte)"
 	},
 	{
 		"id": "421010800",
 		"key": "unitType420010800desc",
-		"en|ch|tc|kr": "Angriff -10 %, Verteidigung -10 %, HP -25 %, Mp -50 %, freier Speicher, -10 % Marktkaufkosten, +10 % Marktverkaufswert, +3 % monatliches Einkommen\n\nSie können Statistiken von NPC-Gegenständen sehen."
+		"en|ch|tc|kr": "Atk -10 %, Def -10 %, HP -25 %, MP -50 %, freier Speicher, -10 % Marktkaufkosten, +10 % Marktverkaufswert, +3 % monatliches Einkommen\n\nSie können Statistiken von NPC Artikeln sehen."
 	}
 ]

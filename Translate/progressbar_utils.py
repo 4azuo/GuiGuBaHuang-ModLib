@@ -360,7 +360,7 @@ class MultiFileProgressManager:
 
         for i, filename in enumerate(self.file_order):
             state = self.file_states[filename]
-            if state.status in ["processing", "error"]:
+            if state.status == "processing":
                 overall_description += f"　{i:3} {self._render_file_progress(state)}\n"
         
         # Update overall progress bar display

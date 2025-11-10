@@ -32,7 +32,7 @@
 	{
 		"id": 500020006,
 		"key": "other500020006",
-		"en|ch|tc|kr": "Subir grado"
+		"en|ch|tc|kr": "Subir Grado"
 	},
 	{
 		"id": 500020007,
@@ -97,7 +97,7 @@
 	{
 		"id": 500020019,
 		"key": "other500020019",
-		"en|ch|tc|kr": "Después de que tu personaje tenga experiencia completa en cada etapa. Él/ella entrenará automáticamente el Qi para hacerlo más fuerte.\nDepende del SP."
+		"en|ch|tc|kr": "Después de que tu personaje tenga experiencia completa en cada etapa. Él/ella entrenará automáticamente a Qi para ser más fuerte.\nDepende de SP."
 	},
 	{
 		"id": 500020020,
@@ -107,7 +107,7 @@
 	{
 		"id": 500020021,
 		"key": "other500020021",
-		"en|ch|tc|kr": "La tierra tiembla bajo tus pies mientras la batalla continúa. {0} luchan para proteger su hogar. {1} buscan conquistar. ¡Tu elección ahora determinará tu camino!\nSí: Ayuda {0}\nNo: Ayuda {1}"
+		"en|ch|tc|kr": "La tierra tiembla bajo tus pies mientras la batalla continúa. {0} luchan para proteger su hogar. {1} busca conquistar. ¡Tu elección ahora determinará tu camino!\nSí: Ayuda {0}\nNo: Ayuda {1}"
 	},
 	{
 		"id": 500020022,
@@ -132,7 +132,7 @@
 	{
 		"id": 500020026,
 		"key": "other500020026",
-		"en|ch|tc|kr": "¿Recibiste una invitación del Ayuntamiento de {0}' para el puesto de guardián?\n¿Quieres convertirte en guardián de la ciudad?"
+		"en|ch|tc|kr": "¿Recibiste una invitación del maestro de la ciudad de {0}' para el puesto de guardián?\n¿Quieres convertirte en guardián de la ciudad?"
 	},
 	{
 		"id": 500020027,
@@ -142,7 +142,7 @@
 	{
 		"id": 500020028,
 		"key": "other500020028",
-		"en|ch|tc|kr": "Cada vez que mueras en la batalla, perderás la vida. Y cuando llegue tu edad, tu guardado será eliminado. Por favor tenga cuidado."
+		"en|ch|tc|kr": "Cada vez que mueras en batalla, perderás la vida. Y cuando llegue tu edad, tu guardado será eliminado. Por favor tenga cuidado."
 	},
 	{
 		"id": 500020029,
@@ -172,7 +172,7 @@
 	{
 		"id": 500020034,
 		"key": "other500020034",
-		"en|ch|tc|kr": "Afecta tu daño y defensa contra daños del mismo tipo.\nFuego → Daño crítico\nAgua → Recuperación MP\nViento → Evadir\nTierra → Defensa\nTrueno → Probabilidad de crítico y reducción del daño de prueba\nMadera → Recuperación de HP"
+		"en|ch|tc|kr": "Afecta tu daño y defensa contra daños del mismo tipo.\nFuego → Daño crítico\nAgua → MP Recuperación\nViento → Evadir\nTierra → Defensa\nTrueno → Probabilidad de crítico y reducción del daño de prueba\nMadera → HP Recuperación"
 	},
 	{
 		"id": 500020035,
@@ -182,7 +182,7 @@
 	{
 		"id": 500020036,
 		"key": "other500020036",
-		"en|ch|tc|kr": "Los puntos de habilidad afectan HP/MP según el nivel del personaje."
+		"en|ch|tc|kr": "Los puntos de habilidad afectan a HP/MP según el nivel del personaje."
 	},
 	{
 		"id": 500020037,
@@ -192,7 +192,7 @@
 	{
 		"id": 500020038,
 		"key": "other500020038",
-		"en|ch|tc|kr": "HP/MP afectan el escudo al entrar en batalla.\nEl conocimiento y la suerte tienen un impacto significativo en los eventos aleatorios, así como en la velocidad de crecimiento y aprendizaje."
+		"en|ch|tc|kr": "HP/MP afecta el escudo al entrar en batalla.\nEl conocimiento y la suerte tienen un impacto significativo en los eventos aleatorios, así como en la velocidad de crecimiento y aprendizaje."
 	},
 	{
 		"id": 500020039,
@@ -207,7 +207,7 @@
 	{
 		"id": 500020041,
 		"key": "other500020041",
-		"en|ch|tc|kr": "Puedes comprar/vender artículos con npc aquí. Pero te pueden odiar y robar."
+		"en|ch|tc|kr": "Puedes comprar/vender artículos con NPC aquí. Pero te pueden odiar y robar."
 	},
 	{
 		"id": 500020042,
@@ -217,7 +217,7 @@
 	{
 		"id": 500020043,
 		"key": "other500020043",
-		"en|ch|tc|kr": "{0:#,##0} piedras espirituales/mes"
+		"en|ch|tc|kr": "{0:#,##0} Piedras espirituales/mes"
 	},
 	{
 		"id": 500020044,
@@ -357,7 +357,7 @@
 	{
 		"id": 500020071,
 		"key": "other500020071",
-		"en|ch|tc|kr": "Transferencia de Qi"
+		"en|ch|tc|kr": "Qi Transferencia"
 	},
 	{
 		"id": 500020072,
@@ -537,7 +537,7 @@
 	{
 		"id": 500020107,
 		"key": "other500020107",
-		"en|ch|tc|kr": "Precio de venta: {0} | Tarifa anónima: {1} (pagada por adelantado)"
+		"en|ch|tc|kr": "Precio de venta: {0} | Tarifa anónima: {1} (pago por adelantado)"
 	},
 	{
 		"id": 500020108,

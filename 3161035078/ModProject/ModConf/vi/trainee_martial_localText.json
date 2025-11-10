@@ -7,7 +7,7 @@
 	{
 		"id": "420073001",
 		"key": "trainee420071001desc",
-		"en|ch|tc|kr": "+2% HP tối đa"
+		"en|ch|tc|kr": "+2% tối đa HP"
 	},
 	{
 		"id": "420072002",
@@ -17,7 +17,7 @@
 	{
 		"id": "420073002",
 		"key": "trainee420071002desc",
-		"en|ch|tc|kr": "+4% HP tối đa"
+		"en|ch|tc|kr": "+4% tối đa HP"
 	},
 	{
 		"id": "420072003",
@@ -27,7 +27,7 @@
 	{
 		"id": "420073003",
 		"key": "trainee420071003desc",
-		"en|ch|tc|kr": "+7% HP tối đa"
+		"en|ch|tc|kr": "+7% tối đa HP"
 	},
 	{
 		"id": "420072004",
@@ -37,7 +37,7 @@
 	{
 		"id": "420073004",
 		"key": "trainee420071004desc",
-		"en|ch|tc|kr": "+10% HP tối đa"
+		"en|ch|tc|kr": "+10% tối đa HP"
 	},
 	{
 		"id": "420072005",
@@ -47,7 +47,7 @@
 	{
 		"id": "420073005",
 		"key": "trainee420071005desc",
-		"en|ch|tc|kr": "+15% HP tối đa"
+		"en|ch|tc|kr": "+15% tối đa HP"
 	},
 	{
 		"id": "420072006",
@@ -57,7 +57,7 @@
 	{
 		"id": "420073006",
 		"key": "trainee420071006desc",
-		"en|ch|tc|kr": "+20% HP tối đa"
+		"en|ch|tc|kr": "+20% tối đa HP"
 	},
 	{
 		"id": "420072007",
@@ -67,7 +67,7 @@
 	{
 		"id": "420073007",
 		"key": "trainee420071007desc",
-		"en|ch|tc|kr": "+30% HP tối đa"
+		"en|ch|tc|kr": "+30% tối đa HP"
 	},
 	{
 		"id": "420072008",
@@ -77,7 +77,7 @@
 	{
 		"id": "420073008",
 		"key": "trainee420071008desc",
-		"en|ch|tc|kr": "+40% HP tối đa"
+		"en|ch|tc|kr": "+40% tối đa HP"
 	},
 	{
 		"id": "420072009",
@@ -87,7 +87,7 @@
 	{
 		"id": "420073009",
 		"key": "trainee420071009desc",
-		"en|ch|tc|kr": "+60% HP tối đa"
+		"en|ch|tc|kr": "+60% tối đa HP"
 	},
 	{
 		"id": "420072010",
@@ -97,6 +97,6 @@
 	{
 		"id": "420073010",
 		"key": "trainee420071010desc",
-		"en|ch|tc|kr": "+90% HP tối đa"
+		"en|ch|tc|kr": "+90% tối đa HP"
 	}
 ]
