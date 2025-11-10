@@ -215,7 +215,7 @@ Your commissions:
                 }
             }
 
-            var curMainTown = g.world.build.GetBuild<MapBuildTown>(g.world.playerUnit.GetUnitPos());
+            var curMainTown = g.world.playerUnit.GetMapBuild<MapBuildTown>();
             if (curMainTown != null && CommissionTasks.Any(x => x.Status != CommissionTask.CommissionTaskStatus.Progressing))
             {
                 var uiReward = g.ui.OpenUISafe<UIGetReward>(UIType.GetReward);
