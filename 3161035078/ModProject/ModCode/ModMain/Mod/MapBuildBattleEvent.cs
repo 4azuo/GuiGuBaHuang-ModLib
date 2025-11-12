@@ -246,7 +246,7 @@ namespace MOD_nE7UL2.Mod
                 {
                     dialogueText = { [DRAMA_ID] = GameTool.LS("battleevent480112890") },
                     hideDialogueOptions = new int[] { DRAMA_DONT_CARE_OPT_ID, DRAMA_HELP_OPT_ID }.ToIl2CppList(),
-                    onOptionsClickCall = (Il2CppSystem.Action<ConfDramaOptionsItem>)((x) =>
+                    onOptionsClickCall = ModLib.Helper.ActionHelper.TracedIl2Action<ConfDramaOptionsItem>((x) =>
                     {
                         switch (x.id)
                         {
@@ -295,7 +295,7 @@ namespace MOD_nE7UL2.Mod
                 {
                     dialogueText = { [DRAMA_ID] = string.Format(GameTool.LS("battleevent480112894"), townB_atk.name, townA_def.name) },
                     hideDialogueOptions = new int[] { DRAMA_HELP_OPT_ID, DRAMA_TRY_ESCAPE_OPT_ID }.ToIl2CppList(),
-                    onOptionsClickCall = (Il2CppSystem.Action<ConfDramaOptionsItem>)((x) =>
+                    onOptionsClickCall = ModLib.Helper.ActionHelper.TracedIl2Action<ConfDramaOptionsItem>((x) =>
                     {
                         switch (x.id)
                         {
@@ -467,7 +467,7 @@ namespace MOD_nE7UL2.Mod
                 {
                     dialogueText = { [DRAMA_ID] = GameTool.LS("battleevent480112890") },
                     hideDialogueOptions = new int[] { DRAMA_HELP_DEF_OPT_ID, DRAMA_HELP_ATK_OPT_ID, DRAMA_DONT_CARE_OPT_ID }.ToIl2CppList(),
-                    onOptionsClickCall = (Il2CppSystem.Action<ConfDramaOptionsItem>)((x) =>
+                    onOptionsClickCall = ModLib.Helper.ActionHelper.TracedIl2Action<ConfDramaOptionsItem>((x) =>
                     {
                         switch (x.id)
                         {
@@ -502,7 +502,7 @@ namespace MOD_nE7UL2.Mod
                 {
                     dialogueText = { [DRAMA_ID] = string.Format(GameTool.LS("battleevent480112895"), town.name) },
                     hideDialogueOptions = new int[] { DRAMA_HELP_DEF_OPT_ID, DRAMA_HELP_ATK_OPT_ID, DRAMA_TRY_ESCAPE_OPT_ID }.ToIl2CppList(),
-                    onOptionsClickCall = (Il2CppSystem.Action<ConfDramaOptionsItem>)((x) =>
+                    onOptionsClickCall = ModLib.Helper.ActionHelper.TracedIl2Action<ConfDramaOptionsItem>((x) =>
                     {
                         switch (x.id)
                         {
@@ -543,7 +543,7 @@ namespace MOD_nE7UL2.Mod
                 {
                     dialogueText = { [DRAMA_ID] = GameTool.LS("battleevent480112890") },
                     hideDialogueOptions = new int[] { DRAMA_HELP_DEF_OPT_ID, DRAMA_HELP_ATK_OPT_ID, DRAMA_DONT_CARE_OPT_ID }.ToIl2CppList(),
-                    onOptionsClickCall = (Il2CppSystem.Action<ConfDramaOptionsItem>)((x) =>
+                    onOptionsClickCall = ModLib.Helper.ActionHelper.TracedIl2Action<ConfDramaOptionsItem>((x) =>
                     {
                         switch (x.id)
                         {
@@ -579,7 +579,7 @@ namespace MOD_nE7UL2.Mod
                 {
                     dialogueText = { [DRAMA_ID] = string.Format(GameTool.LS("battleevent480112895"), g.world.playerUnit.data.school.GetName(true)) },
                     hideDialogueOptions = new int[] { DRAMA_HELP_DEF_OPT_ID, DRAMA_HELP_ATK_OPT_ID, DRAMA_TRY_ESCAPE_OPT_ID }.ToIl2CppList(),
-                    onOptionsClickCall = (Il2CppSystem.Action<ConfDramaOptionsItem>)((x) =>
+                    onOptionsClickCall = ModLib.Helper.ActionHelper.TracedIl2Action<ConfDramaOptionsItem>((x) =>
                     {
                         switch (x.id)
                         {

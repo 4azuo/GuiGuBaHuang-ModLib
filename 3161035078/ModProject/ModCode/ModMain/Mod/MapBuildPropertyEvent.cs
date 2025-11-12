@@ -325,7 +325,7 @@ namespace MOD_nE7UL2.Mod
                                 DramaTool.OpenDrama(BECOME_TOWN_GUARDIAN_DRAMA, new DramaData
                                 {
                                     dialogueText = { [BECOME_TOWN_GUARDIAN_DRAMA] = string.Format(GameTool.LS("townmaster420041114drama"), town.name) },
-                                    onOptionsClickCall = (Il2CppSystem.Action<ConfDramaOptionsItem>)((x) =>
+                                    onOptionsClickCall = ModLib.Helper.ActionHelper.TracedIl2Action<ConfDramaOptionsItem>((x) =>
                                     {
                                         switch (x.id)
                                         {
@@ -607,7 +607,7 @@ namespace MOD_nE7UL2.Mod
             uiPropSelectCount.maxCount = g.world.playerUnit.GetUnitMoney();
             uiPropSelectCount.oneCost = 1;
             uiPropSelectCount.btnOK.onClick.RemoveAllListeners();
-            uiPropSelectCount.btnOK.onClick.AddListener((UnityAction)(() =>
+            uiPropSelectCount.btnOK.onClick.AddListener(ModLib.Helper.ActionHelper.TracedUnityAction(() =>
             {
                 var town = g.world.playerUnit.GetMapBuild<MapBuildTown>();
                 AddBuildProperty(town, uiPropSelectCount.curSelectCount);
@@ -629,7 +629,7 @@ namespace MOD_nE7UL2.Mod
             uiPropSelectCount.maxCount = Instance.Budget[town.buildData.id].FixValue(0, int.MaxValue).Parse<int>();
             uiPropSelectCount.oneCost = 1;
             uiPropSelectCount.btnOK.onClick.RemoveAllListeners();
-            uiPropSelectCount.btnOK.onClick.AddListener((UnityAction)(() =>
+            uiPropSelectCount.btnOK.onClick.AddListener(ModLib.Helper.ActionHelper.TracedUnityAction(() =>
             {
                 AddBuildProperty(town, -uiPropSelectCount.curSelectCount);
                 g.world.playerUnit.AddUnitMoney(uiPropSelectCount.curSelectCount);
@@ -903,7 +903,7 @@ namespace MOD_nE7UL2.Mod
                 DramaTool.OpenDrama(TAXPAY_NOT_ENOUGH_MONEY_DRAMA, new DramaData
                 {
                     dialogueText = { [TAXPAY_NOT_ENOUGH_MONEY_DRAMA] = string.Format(GameTool.LS("other500020027"), tax) },
-                    onOptionsClickCall = (Il2CppSystem.Action<ConfDramaOptionsItem>)((x) =>
+                    onOptionsClickCall = ModLib.Helper.ActionHelper.TracedIl2Action<ConfDramaOptionsItem>((x) =>
                     {
                         switch (x.id)
                         {

@@ -74,7 +74,7 @@ namespace MOD_nE7UL2.Mod
                 if (!uiTownFactoryShapeOption.town.buildTownData.isMainTown)
                 {
                     var customEnhanceBtn = uiTownFactoryShapeOption.btnUpgrade.Replace();
-                    customEnhanceBtn.onClick.AddListener((UnityAction)(() =>
+                    customEnhanceBtn.onClick.AddListener(ModLib.Helper.ActionHelper.TracedUnityAction(() =>
                     {
                         OpenItemSelector();
                     }));
@@ -102,7 +102,7 @@ namespace MOD_nE7UL2.Mod
             }
             // Custom select để lấy prop
             DataProps.PropsData selectedItem = null;
-            ui.onCustomSelectCall = (ReturnAction<string, DataProps.PropsData>)((x) =>
+            ui.onCustomSelectCall = ModLib.Helper.ActionHelper.TracedFunc<DataProps.PropsData, string>((x) =>
             {
                 ui.ClearSelectItem();
                 ui.AddSelectProps(x);
@@ -111,7 +111,7 @@ namespace MOD_nE7UL2.Mod
                 return selectedItem.propsInfoBase.name;
             });
             ui.btnOK.onClick.RemoveAllListeners();
-            ui.btnOK.onClick.AddListener((UnityAction)(() =>
+            ui.btnOK.onClick.AddListener(ModLib.Helper.ActionHelper.TracedUnityAction(() =>
             {
                 if (selectedItem == null)
                     return;
@@ -142,7 +142,7 @@ namespace MOD_nE7UL2.Mod
             // Custom select để lấy prop
             ui.onCustomSelectCall = null;
             ui.btnOK.onClick.RemoveAllListeners();
-            ui.btnOK.onClick.AddListener((UnityAction)(() =>
+            ui.btnOK.onClick.AddListener(ModLib.Helper.ActionHelper.TracedUnityAction(() =>
             {
                 var oldLvl = GetRefineLvl(refineItem);
 

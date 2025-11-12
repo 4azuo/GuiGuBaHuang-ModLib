@@ -84,7 +84,7 @@ namespace MOD_nE7UL2.Mod
                     uiCover.AddText(0, 0, $"Price rate: {GetBuyRate(uiTownMarketBuy.town, g.world.playerUnit):0.00}%").Align(TextAnchor.MiddleCenter).Format(Color.red).Pos(uiPropSelectCount.ptextInfo.gameObject, 0f, 20f);
                 }
 
-                uiPropSelectCount.btnOK.onClick.m_Calls.m_RuntimeCalls.Insert(0, new InvokableCall((UnityAction)(() =>
+                uiPropSelectCount.btnOK.onClick.m_Calls.m_RuntimeCalls.Insert(0, new InvokableCall(ModLib.Helper.ActionHelper.TracedUnityAction(() =>
                 {
                     var totalPrice = uiPropSelectCount.iptNum.text.Parse<int>() * uiPropSelectCount.oneCost;
                     MapBuildPropertyEvent.AddBuildProperty(uiTownMarketBuy.town, totalPrice);

@@ -70,7 +70,7 @@ namespace MOD_nE7UL2.Mod
                 txtWarningMsg.gameObject.SetActive(false);
 
                 uiPropSell.btnOK.onClick.RemoveAllListeners();
-                uiPropSell.btnOK.onClick.AddListener((UnityAction)SellEvent);
+                uiPropSell.btnOK.onClick.AddListener(ModLib.Helper.ActionHelper.TracedUnityAction(SellEvent));
             }
         }
 
