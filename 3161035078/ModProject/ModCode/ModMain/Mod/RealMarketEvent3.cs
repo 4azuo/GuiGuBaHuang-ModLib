@@ -840,7 +840,7 @@ namespace MOD_nE7UL2.Mod
             }
 
             //custom select call
-            uiCover.UI.onCustomSelectCall = (ReturnAction<string, DataProps.PropsData>)((x) =>
+            uiCover.UI.onCustomSelectCall = ModLib.Helper.ActionHelper.TracedFunc<DataProps.PropsData, string>((x) =>
             {
                 uiCover.UI.ClearSelectItem();
                 uiCover.UI.AddSelectProps(x);
@@ -1107,7 +1107,7 @@ namespace MOD_nE7UL2.Mod
             uiCover.AddButton(0, 0, () => AcceptDeal(selectedMarketItem, deal), GameTool.LS("other500020074")).Pos(ui.btnOK.transform, 0, 0);
 
             //custom select call
-            uiCover.UI.onCustomSelectCall = (ReturnAction<string, DataProps.PropsData>)((x) =>
+            uiCover.UI.onCustomSelectCall = ModLib.Helper.ActionHelper.TracedFunc<DataProps.PropsData, string>((x) =>
             {
                 return x.propsInfoBase.name;
             });
@@ -1201,7 +1201,7 @@ namespace MOD_nE7UL2.Mod
             });
 
             // Custom select để lấy prop
-            uiCover.UI.onCustomSelectCall = (ReturnAction<string, DataProps.PropsData>)((x) =>
+            uiCover.UI.onCustomSelectCall = ModLib.Helper.ActionHelper.TracedFunc<DataProps.PropsData, string>((x) =>
             {
                 uiCover.UI.ClearSelectItem();
                 uiCover.UI.AddSelectProps(x);
@@ -1222,7 +1222,7 @@ namespace MOD_nE7UL2.Mod
 
             // Custom btnOK để xử lý đăng ký
             ui.btnOK.onClick.RemoveAllListeners();
-            ui.btnOK.onClick.AddListener((UnityAction)(() =>
+            ui.btnOK.onClick.AddListener(ModLib.Helper.ActionHelper.TracedUnityAction(() =>
             {
                 if (selectedProp == null)
                 {

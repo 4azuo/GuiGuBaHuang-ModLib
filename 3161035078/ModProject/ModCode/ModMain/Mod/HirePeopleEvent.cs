@@ -244,7 +244,7 @@ namespace MOD_nE7UL2.Mod
                                 {
                                     unitLeft = wunit,
                                     unitRight = relationWUnit,
-                                    onOptionsClickCall = (Il2CppSystem.Action<ConfDramaOptionsItem>)((x) =>
+                                    onOptionsClickCall = ModLib.Helper.ActionHelper.TracedIl2Action<ConfDramaOptionsItem>((x) =>
                                     {
                                         switch (x.id)
                                         {

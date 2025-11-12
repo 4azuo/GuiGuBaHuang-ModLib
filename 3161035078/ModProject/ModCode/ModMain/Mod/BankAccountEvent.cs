@@ -34,7 +34,7 @@ namespace MOD_nE7UL2.Mod
                         var uiTownStorage = g.ui.GetUI<UITownStorage>(UIType.TownStorage);
                         var btn1 = uiTownStorage.btnProps.Replace().Size(500f, 100f);
                         btn1.GetComponentInChildren<Text>().Align(UnityEngine.TextAnchor.MiddleCenter).text = $"Open account ({Cost(curTown.gridData.areaBaseID)} Spirit Stones)";
-                        btn1.onClick.AddListener((UnityAction)(() =>
+                        btn1.onClick.AddListener(ModLib.Helper.ActionHelper.TracedUnityAction(() =>
                         {
                             var cost = Cost(curTown.gridData.areaBaseID);
                             if (player.GetUnitMoney() >= cost)

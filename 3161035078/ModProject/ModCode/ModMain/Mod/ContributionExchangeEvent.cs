@@ -79,7 +79,7 @@ namespace MOD_nE7UL2.Mod
             var uiSelector = g.ui.OpenUISafe<UIPropSelect>(UIType.PropSelect);
             uiSelector.UpdateUI();
             uiSelector.tag = ModConst.CONTRIBUTION_EXCHANGE_EVENT;
-            uiSelector.onOKCall = (Il2CppSystem.Action)Exchange;
+            uiSelector.onOKCall = ModLib.Helper.ActionHelper.TracedIl2Action(Exchange);
 
             var txtExchangeRatio = uiSelector.textInfo.Copy().Format().Align(TextAnchor.MiddleCenter).Pos(uiSelector.textTitle1.gameObject, 0, 0);
             txtExchangeRatio.text = string.Format(GameTool.LS("other500020057"), CurMonthRatio);

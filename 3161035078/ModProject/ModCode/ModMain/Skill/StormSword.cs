@@ -17,7 +17,7 @@
 //            var sa = skill?.TryCast<SkillAttack>();
 //            if (skill != null && sa?.skillData?.data?.propsID == SKILL_ID)
 //            {
-//                ModBattleEvent.SceneBattle.effect.Create(NORMAL_EFX, Input.mousePosition, 3f, (Il2CppSystem.Action<GameObject>)((x) =>
+//                ModBattleEvent.SceneBattle.effect.Create(NORMAL_EFX, Input.mousePosition, 3f, ModLib.Helper.ActionHelper.TracedIl2Action<GameObject>((x) =>
 //                {
 //                    x.transform.rotation = new Quaternion();
 //                }));
