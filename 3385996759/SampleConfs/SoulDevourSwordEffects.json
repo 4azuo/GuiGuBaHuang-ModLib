@@ -1,0 +1,52 @@
+[
+  {
+    "id": "1",
+    "unitEffects": "0",
+    "isHide": "0",
+    "desc": "soulDevourSwordAddAtk",
+    "unlockDesc": "soulDevourSwordAddAtk",
+    "unlockType": "0",
+    "paramStr": "0",
+    "process": "0"
+  },
+  {
+    "id": "2",
+    "unitEffects": "2804001",
+    "isHide": "0",
+    "desc": "soleDevourEffect2",
+    "unlockDesc": "soleDevourEffect21",
+    "unlockType": "3",
+    "paramStr": "0",
+    "process": "3"
+  },
+  {
+    "id": "3",
+    "unitEffects": "2804002",
+    "isHide": "0",
+    "desc": "soleDevourEffect3",
+    "unlockDesc": "soleDevourEffect31",
+    "unlockType": "4",
+    "paramStr": "150",
+    "process": "6"
+  },
+  {
+    "id": "4",
+    "unitEffects": "2804044",
+    "isHide": "0",
+    "desc": "soleDevourEffect4",
+    "unlockDesc": "soleDevourEffect41",
+    "unlockType": "2",
+    "paramStr": "0",
+    "process": "1"
+  },
+  {
+    "id": "5",
+    "unitEffects": "2804004|2804005",
+    "isHide": "1",
+    "desc": "soleDevourEffect5",
+    "unlockDesc": "soleDevourEffect55",
+    "unlockType": "5",
+    "paramStr": "0",
+    "process": "1"
+  }
+]

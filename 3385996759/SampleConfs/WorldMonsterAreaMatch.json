@@ -1,0 +1,442 @@
+[
+  {
+    "id": "1",
+    "areaID": "1",
+    "dungeonID": "1012",
+    "specialID": "0",
+    "initLevel": "1",
+    "levelUpMonth": "6",
+    "maxLevel": "3",
+    "weight": "1000"
+  },
+  {
+    "id": "2",
+    "areaID": "1",
+    "dungeonID": "1013",
+    "specialID": "0",
+    "initLevel": "1",
+    "levelUpMonth": "6",
+    "maxLevel": "3",
+    "weight": "1000"
+  },
+  {
+    "id": "3",
+    "areaID": "1",
+    "dungeonID": "1014",
+    "specialID": "0",
+    "initLevel": "1",
+    "levelUpMonth": "6",
+    "maxLevel": "3",
+    "weight": "1000"
+  },
+  {
+    "id": "4",
+    "areaID": "1",
+    "dungeonID": "1015",
+    "specialID": "0",
+    "initLevel": "1",
+    "levelUpMonth": "6",
+    "maxLevel": "3",
+    "weight": "1000"
+  },
+  {
+    "id": "5",
+    "areaID": "1",
+    "dungeonID": "1016",
+    "specialID": "0",
+    "initLevel": "1",
+    "levelUpMonth": "6",
+    "maxLevel": "3",
+    "weight": "1000"
+  },
+  {
+    "id": "6",
+    "areaID": "1",
+    "dungeonID": "1017",
+    "specialID": "0",
+    "initLevel": "1",
+    "levelUpMonth": "6",
+    "maxLevel": "3",
+    "weight": "1000"
+  },
+  {
+    "id": "7",
+    "areaID": "1",
+    "dungeonID": "1018",
+    "specialID": "0",
+    "initLevel": "1",
+    "levelUpMonth": "6",
+    "maxLevel": "3",
+    "weight": "1000"
+  },
+  {
+    "id": "8",
+    "areaID": "2",
+    "dungeonID": "1022",
+    "specialID": "102288_800",
+    "initLevel": "2",
+    "levelUpMonth": "12",
+    "maxLevel": "7",
+    "weight": "1000"
+  },
+  {
+    "id": "9",
+    "areaID": "2",
+    "dungeonID": "1023",
+    "specialID": "102388_800",
+    "initLevel": "2",
+    "levelUpMonth": "12",
+    "maxLevel": "7",
+    "weight": "1000"
+  },
+  {
+    "id": "10",
+    "areaID": "2",
+    "dungeonID": "1024",
+    "specialID": "102488_800",
+    "initLevel": "2",
+    "levelUpMonth": "12",
+    "maxLevel": "7",
+    "weight": "1000"
+  },
+  {
+    "id": "11",
+    "areaID": "2",
+    "dungeonID": "1025",
+    "specialID": "102588_800",
+    "initLevel": "2",
+    "levelUpMonth": "12",
+    "maxLevel": "7",
+    "weight": "1000"
+  },
+  {
+    "id": "12",
+    "areaID": "2",
+    "dungeonID": "1026",
+    "specialID": "102688_800",
+    "initLevel": "2",
+    "levelUpMonth": "12",
+    "maxLevel": "7",
+    "weight": "1000"
+  },
+  {
+    "id": "13",
+    "areaID": "2",
+    "dungeonID": "1027",
+    "specialID": "102788_800",
+    "initLevel": "2",
+    "levelUpMonth": "12",
+    "maxLevel": "7",
+    "weight": "1000"
+  },
+  {
+    "id": "14",
+    "areaID": "2",
+    "dungeonID": "1028",
+    "specialID": "102888_800",
+    "initLevel": "2",
+    "levelUpMonth": "12",
+    "maxLevel": "7",
+    "weight": "1000"
+  },
+  {
+    "id": "15",
+    "areaID": "3",
+    "dungeonID": "1032",
+    "specialID": "0",
+    "initLevel": "7",
+    "levelUpMonth": "12",
+    "maxLevel": "10",
+    "weight": "1000"
+  },
+  {
+    "id": "16",
+    "areaID": "3",
+    "dungeonID": "1033",
+    "specialID": "0",
+    "initLevel": "7",
+    "levelUpMonth": "12",
+    "maxLevel": "10",
+    "weight": "1000"
+  },
+  {
+    "id": "17",
+    "areaID": "3",
+    "dungeonID": "1034",
+    "specialID": "0",
+    "initLevel": "7",
+    "levelUpMonth": "12",
+    "maxLevel": "10",
+    "weight": "1000"
+  },
+  {
+    "id": "18",
+    "areaID": "3",
+    "dungeonID": "1035",
+    "specialID": "0",
+    "initLevel": "7",
+    "levelUpMonth": "12",
+    "maxLevel": "10",
+    "weight": "1000"
+  },
+  {
+    "id": "19",
+    "areaID": "4",
+    "dungeonID": "1042",
+    "specialID": "104288_800",
+    "initLevel": "11",
+    "levelUpMonth": "12",
+    "maxLevel": "17",
+    "weight": "1000"
+  },
+  {
+    "id": "20",
+    "areaID": "4",
+    "dungeonID": "1043",
+    "specialID": "104388_800",
+    "initLevel": "11",
+    "levelUpMonth": "12",
+    "maxLevel": "17",
+    "weight": "1000"
+  },
+  {
+    "id": "21",
+    "areaID": "4",
+    "dungeonID": "1044",
+    "specialID": "104488_800",
+    "initLevel": "11",
+    "levelUpMonth": "12",
+    "maxLevel": "17",
+    "weight": "1000"
+  },
+  {
+    "id": "22",
+    "areaID": "4",
+    "dungeonID": "1045",
+    "specialID": "104588_800",
+    "initLevel": "11",
+    "levelUpMonth": "12",
+    "maxLevel": "17",
+    "weight": "1000"
+  },
+  {
+    "id": "23",
+    "areaID": "5",
+    "dungeonID": "1052",
+    "specialID": "0",
+    "initLevel": "17",
+    "levelUpMonth": "12",
+    "maxLevel": "20",
+    "weight": "1000"
+  },
+  {
+    "id": "24",
+    "areaID": "5",
+    "dungeonID": "1053",
+    "specialID": "0",
+    "initLevel": "17",
+    "levelUpMonth": "12",
+    "maxLevel": "20",
+    "weight": "1000"
+  },
+  {
+    "id": "25",
+    "areaID": "5",
+    "dungeonID": "1054",
+    "specialID": "0",
+    "initLevel": "17",
+    "levelUpMonth": "12",
+    "maxLevel": "20",
+    "weight": "1000"
+  },
+  {
+    "id": "26",
+    "areaID": "5",
+    "dungeonID": "1055",
+    "specialID": "0",
+    "initLevel": "17",
+    "levelUpMonth": "12",
+    "maxLevel": "20",
+    "weight": "1000"
+  },
+  {
+    "id": "27",
+    "areaID": "6",
+    "dungeonID": "1062",
+    "specialID": "106288_800",
+    "initLevel": "21",
+    "levelUpMonth": "12",
+    "maxLevel": "27",
+    "weight": "1000"
+  },
+  {
+    "id": "28",
+    "areaID": "6",
+    "dungeonID": "1063",
+    "specialID": "106388_800",
+    "initLevel": "21",
+    "levelUpMonth": "12",
+    "maxLevel": "27",
+    "weight": "1000"
+  },
+  {
+    "id": "29",
+    "areaID": "6",
+    "dungeonID": "1064",
+    "specialID": "106488_800",
+    "initLevel": "21",
+    "levelUpMonth": "12",
+    "maxLevel": "27",
+    "weight": "1000"
+  },
+  {
+    "id": "30",
+    "areaID": "6",
+    "dungeonID": "1065",
+    "specialID": "106588_800",
+    "initLevel": "21",
+    "levelUpMonth": "12",
+    "maxLevel": "27",
+    "weight": "1000"
+  },
+  {
+    "id": "31",
+    "areaID": "7",
+    "dungeonID": "1072",
+    "specialID": "0",
+    "initLevel": "27",
+    "levelUpMonth": "12",
+    "maxLevel": "30",
+    "weight": "1000"
+  },
+  {
+    "id": "32",
+    "areaID": "7",
+    "dungeonID": "1073",
+    "specialID": "0",
+    "initLevel": "27",
+    "levelUpMonth": "12",
+    "maxLevel": "30",
+    "weight": "1000"
+  },
+  {
+    "id": "33",
+    "areaID": "7",
+    "dungeonID": "1074",
+    "specialID": "0",
+    "initLevel": "27",
+    "levelUpMonth": "12",
+    "maxLevel": "30",
+    "weight": "1000"
+  },
+  {
+    "id": "34",
+    "areaID": "7",
+    "dungeonID": "1075",
+    "specialID": "0",
+    "initLevel": "27",
+    "levelUpMonth": "12",
+    "maxLevel": "30",
+    "weight": "1000"
+  },
+  {
+    "id": "35",
+    "areaID": "8",
+    "dungeonID": "1082",
+    "specialID": "108288_800",
+    "initLevel": "31",
+    "levelUpMonth": "12",
+    "maxLevel": "37",
+    "weight": "1000"
+  },
+  {
+    "id": "36",
+    "areaID": "8",
+    "dungeonID": "1083",
+    "specialID": "108388_800",
+    "initLevel": "31",
+    "levelUpMonth": "12",
+    "maxLevel": "37",
+    "weight": "1000"
+  },
+  {
+    "id": "37",
+    "areaID": "8",
+    "dungeonID": "1084",
+    "specialID": "108488_800",
+    "initLevel": "31",
+    "levelUpMonth": "12",
+    "maxLevel": "37",
+    "weight": "1000"
+  },
+  {
+    "id": "38",
+    "areaID": "8",
+    "dungeonID": "1085",
+    "specialID": "108588_800",
+    "initLevel": "31",
+    "levelUpMonth": "12",
+    "maxLevel": "37",
+    "weight": "1000"
+  },
+  {
+    "id": "39",
+    "areaID": "9",
+    "dungeonID": "1092",
+    "specialID": "0",
+    "initLevel": "37",
+    "levelUpMonth": "12",
+    "maxLevel": "40",
+    "weight": "1000"
+  },
+  {
+    "id": "40",
+    "areaID": "9",
+    "dungeonID": "1093",
+    "specialID": "0",
+    "initLevel": "37",
+    "levelUpMonth": "12",
+    "maxLevel": "40",
+    "weight": "1000"
+  },
+  {
+    "id": "41",
+    "areaID": "9",
+    "dungeonID": "1094",
+    "specialID": "0",
+    "initLevel": "37",
+    "levelUpMonth": "12",
+    "maxLevel": "40",
+    "weight": "1000"
+  },
+  {
+    "id": "42",
+    "areaID": "10",
+    "dungeonID": "1102",
+    "specialID": "110288_800",
+    "initLevel": "41",
+    "levelUpMonth": "12",
+    "maxLevel": "47",
+    "weight": "1000"
+  },
+  {
+    "id": "43",
+    "areaID": "10",
+    "dungeonID": "1103",
+    "specialID": "110388_800",
+    "initLevel": "41",
+    "levelUpMonth": "12",
+    "maxLevel": "47",
+    "weight": "1000"
+  },
+  {
+    "id": "44",
+    "areaID": "10",
+    "dungeonID": "1104",
+    "specialID": "110488_800",
+    "initLevel": "41",
+    "levelUpMonth": "12",
+    "maxLevel": "47",
+    "weight": "1000"
+  }
+]

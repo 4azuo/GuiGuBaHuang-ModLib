@@ -1,0 +1,50 @@
+[
+  {
+    "id": "30001",
+    "bulletNum": "1",
+    "bulletDistance": "0",
+    "lastType": "0",
+    "startType": "1",
+    "endType": "1",
+    "rangeType": "0",
+    "interval": "500",
+    "costPer": "0",
+    "duringEffect": "6031",
+    "mulUseSkill": "0",
+    "lerp": "0",
+    "modifyDmg": "1",
+    "minInterval": "0"
+  },
+  {
+    "id": "30003",
+    "bulletNum": "1",
+    "bulletDistance": "0",
+    "lastType": "0",
+    "startType": "1",
+    "endType": "1",
+    "rangeType": "0",
+    "interval": "250",
+    "costPer": "100",
+    "duringEffect": "0",
+    "mulUseSkill": "1",
+    "lerp": "0",
+    "modifyDmg": "1",
+    "minInterval": "0"
+  },
+  {
+    "id": "30008",
+    "bulletNum": "1",
+    "bulletDistance": "0",
+    "lastType": "1",
+    "startType": "1",
+    "endType": "2",
+    "rangeType": "1",
+    "interval": "200",
+    "costPer": "0",
+    "duringEffect": "0",
+    "mulUseSkill": "0",
+    "lerp": "0.3",
+    "modifyDmg": "1",
+    "minInterval": "0"
+  }
+]

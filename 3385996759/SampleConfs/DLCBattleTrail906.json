@@ -1,0 +1,22 @@
+[
+  {
+    "id": "906101",
+    "bulletNum": "&403_num",
+    "radius": "&403_range",
+    "radiusGrow": "0",
+    "angularSpeed": "&403_shieldRotateSpeed",
+    "radiusMax": "&403_range",
+    "time": "-1",
+    "offsetAngle": "0"
+  },
+  {
+    "id": "906003",
+    "bulletNum": "&304_num",
+    "radius": "100",
+    "radiusGrow": "0",
+    "angularSpeed": "60",
+    "radiusMax": "200",
+    "time": "-1",
+    "offsetAngle": "0"
+  }
+]

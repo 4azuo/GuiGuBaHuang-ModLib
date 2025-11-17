@@ -1,0 +1,450 @@
+[
+  {
+    "id": "0",
+    "level": "0",
+    "main": "0",
+    "condition": "grade_0_99_99",
+    "action": "callDrama_8011201",
+    "btnText": "pub_text1"
+  },
+  {
+    "id": "1",
+    "level": "1",
+    "main": "0",
+    "condition": "grade_0_99_99",
+    "action": "callDrama_8011201",
+    "btnText": "pub_text1"
+  },
+  {
+    "id": "2",
+    "level": "1",
+    "main": "1",
+    "condition": "grade_0_99_99",
+    "action": "callDrama_8011201",
+    "btnText": "pub_text1"
+  },
+  {
+    "id": "3",
+    "level": "1",
+    "main": "2",
+    "condition": "grade_0_99_99",
+    "action": "callDrama_8011201",
+    "btnText": "pub_text1"
+  },
+  {
+    "id": "4",
+    "level": "1",
+    "main": "3",
+    "condition": "grade_0_99_99",
+    "action": "callDrama_8011201",
+    "btnText": "pub_text1"
+  },
+  {
+    "id": "5",
+    "level": "1",
+    "main": "4",
+    "condition": "grade_0_99_99",
+    "action": "callDrama_8011201",
+    "btnText": "pub_text1"
+  },
+  {
+    "id": "6",
+    "level": "1",
+    "main": "5",
+    "condition": "grade_0_99_99",
+    "action": "callDrama_8011201",
+    "btnText": "pub_text1"
+  },
+  {
+    "id": "7",
+    "level": "2",
+    "main": "1",
+    "condition": "task_8000825_13",
+    "action": "callDrama_8011201",
+    "btnText": "town_mission7"
+  },
+  {
+    "id": "8",
+    "level": "2",
+    "main": "2",
+    "condition": "task_8000826_13",
+    "action": "callDrama_8011301",
+    "btnText": "town_mission8"
+  },
+  {
+    "id": "9",
+    "level": "2",
+    "main": "3",
+    "condition": "task_8000827_13",
+    "action": "callDrama_8011401",
+    "btnText": "town_mission9"
+  },
+  {
+    "id": "10",
+    "level": "2",
+    "main": "4",
+    "condition": "task_8000828_13",
+    "action": "callDrama_8011501",
+    "btnText": "town_mission10"
+  },
+  {
+    "id": "11",
+    "level": "2",
+    "main": "5",
+    "condition": "task_8000829_13",
+    "action": "callDrama_8011601",
+    "btnText": "town_mission11"
+  },
+  {
+    "id": "12",
+    "level": "2",
+    "main": "0",
+    "condition": "task_8000830_13|task_8000831_13",
+    "action": "callDrama_8011701",
+    "btnText": "town_mission12"
+  },
+  {
+    "id": "13",
+    "level": "2",
+    "main": "0",
+    "condition": "dialogue_8200002_1|task_2120013_13",
+    "action": "callDrama_8180101|callDrama_8180106",
+    "btnText": "pub_rune1"
+  },
+  {
+    "id": "14",
+    "level": "2",
+    "main": "0",
+    "condition": "dialogue_8200002_1|task_2120013_11|task_2120014_13|dialogueTime_8180115_3",
+    "action": "callDrama_8180201|callDrama_8180206",
+    "btnText": "pub_rune2"
+  },
+  {
+    "id": "15",
+    "level": "2",
+    "main": "1",
+    "condition": "dialogue_8200002_1|task_2120013_13",
+    "action": "callDrama_8180101|callDrama_8180106",
+    "btnText": "pub_rune1"
+  },
+  {
+    "id": "16",
+    "level": "2",
+    "main": "1",
+    "condition": "dialogue_8200002_1|task_2120013_11|task_2120014_13|dialogueTime_8180115_3",
+    "action": "callDrama_8180201|callDrama_8180206",
+    "btnText": "pub_rune2"
+  },
+  {
+    "id": "17",
+    "level": "2",
+    "main": "2",
+    "condition": "dialogue_8200002_1|task_2120013_13",
+    "action": "callDrama_8180101|callDrama_8180106",
+    "btnText": "pub_rune1"
+  },
+  {
+    "id": "18",
+    "level": "2",
+    "main": "2",
+    "condition": "dialogue_8200002_1|task_2120013_11|task_2120014_13|dialogueTime_8180115_3",
+    "action": "callDrama_8180201|callDrama_8180206",
+    "btnText": "pub_rune2"
+  },
+  {
+    "id": "19",
+    "level": "2",
+    "main": "3",
+    "condition": "dialogue_8200002_1|task_2120013_13",
+    "action": "callDrama_8180101|callDrama_8180106",
+    "btnText": "pub_rune1"
+  },
+  {
+    "id": "20",
+    "level": "2",
+    "main": "3",
+    "condition": "dialogue_8200002_1|task_2120013_11|task_2120014_13|dialogueTime_8180115_3",
+    "action": "callDrama_8180201|callDrama_8180206",
+    "btnText": "pub_rune2"
+  },
+  {
+    "id": "21",
+    "level": "2",
+    "main": "4",
+    "condition": "dialogue_8200002_1|task_2120013_13",
+    "action": "callDrama_8180101|callDrama_8180106",
+    "btnText": "pub_rune1"
+  },
+  {
+    "id": "22",
+    "level": "2",
+    "main": "4",
+    "condition": "dialogue_8200002_1|task_2120013_11|task_2120014_13|dialogueTime_8180115_3",
+    "action": "callDrama_8180201|callDrama_8180206",
+    "btnText": "pub_rune2"
+  },
+  {
+    "id": "23",
+    "level": "2",
+    "main": "5",
+    "condition": "dialogue_8200002_1|task_2120013_13",
+    "action": "callDrama_8180101|callDrama_8180106",
+    "btnText": "pub_rune1"
+  },
+  {
+    "id": "24",
+    "level": "2",
+    "main": "5",
+    "condition": "dialogue_8200002_1|task_2120013_11|task_2120014_13|dialogueTime_8180115_3",
+    "action": "callDrama_8180201|callDrama_8180206",
+    "btnText": "pub_rune2"
+  },
+  {
+    "id": "25",
+    "level": "3",
+    "main": "0",
+    "condition": "grade_0_99_99",
+    "action": "callDrama_8011201",
+    "btnText": "pub_text1"
+  },
+  {
+    "id": "26",
+    "level": "3",
+    "main": "1",
+    "condition": "grade_0_99_99",
+    "action": "callDrama_8011201",
+    "btnText": "pub_text1"
+  },
+  {
+    "id": "27",
+    "level": "3",
+    "main": "2",
+    "condition": "grade_0_99_99",
+    "action": "callDrama_8011201",
+    "btnText": "pub_text1"
+  },
+  {
+    "id": "28",
+    "level": "3",
+    "main": "3",
+    "condition": "grade_0_99_99",
+    "action": "callDrama_8011201",
+    "btnText": "pub_text1"
+  },
+  {
+    "id": "29",
+    "level": "3",
+    "main": "4",
+    "condition": "grade_0_99_99",
+    "action": "callDrama_8011201",
+    "btnText": "pub_text1"
+  },
+  {
+    "id": "30",
+    "level": "3",
+    "main": "5",
+    "condition": "grade_0_99_99",
+    "action": "callDrama_8011201",
+    "btnText": "pub_text1"
+  },
+  {
+    "id": "31",
+    "level": "3",
+    "main": "0",
+    "condition": "dialogue_8200002_1|task_2120014_11|task_2120015_13|dialogueTime_8180215_3",
+    "action": "callDrama_8180301|callDrama_8180306",
+    "btnText": "pub_rune3"
+  },
+  {
+    "id": "32",
+    "level": "3",
+    "main": "0",
+    "condition": "dialogue_8200002_1|task_2120015_11|task_2120016_13|dialogueTime_8180315_3",
+    "action": "callDrama_8180401|callDrama_8180406",
+    "btnText": "pub_rune4"
+  },
+  {
+    "id": "33",
+    "level": "3",
+    "main": "1",
+    "condition": "dialogue_8200002_1|task_2120014_11|task_2120015_13|dialogueTime_8180215_3",
+    "action": "callDrama_8180301|callDrama_8180306",
+    "btnText": "pub_rune3"
+  },
+  {
+    "id": "34",
+    "level": "3",
+    "main": "1",
+    "condition": "dialogue_8200002_1|task_2120015_11|task_2120016_13|dialogueTime_8180315_3",
+    "action": "callDrama_8180401|callDrama_8180406",
+    "btnText": "pub_rune4"
+  },
+  {
+    "id": "35",
+    "level": "3",
+    "main": "2",
+    "condition": "dialogue_8200002_1|task_2120014_11|task_2120015_13|dialogueTime_8180215_3",
+    "action": "callDrama_8180301|callDrama_8180306",
+    "btnText": "pub_rune3"
+  },
+  {
+    "id": "36",
+    "level": "3",
+    "main": "2",
+    "condition": "dialogue_8200002_1|task_2120015_11|task_2120016_13|dialogueTime_8180315_3",
+    "action": "callDrama_8180401|callDrama_8180406",
+    "btnText": "pub_rune4"
+  },
+  {
+    "id": "37",
+    "level": "3",
+    "main": "3",
+    "condition": "dialogue_8200002_1|task_2120014_11|task_2120015_13|dialogueTime_8180215_3",
+    "action": "callDrama_8180301|callDrama_8180306",
+    "btnText": "pub_rune3"
+  },
+  {
+    "id": "38",
+    "level": "3",
+    "main": "3",
+    "condition": "dialogue_8200002_1|task_2120015_11|task_2120016_13|dialogueTime_8180315_3",
+    "action": "callDrama_8180401|callDrama_8180406",
+    "btnText": "pub_rune4"
+  },
+  {
+    "id": "39",
+    "level": "3",
+    "main": "4",
+    "condition": "dialogue_8200002_1|task_2120014_11|task_2120015_13|dialogueTime_8180215_3",
+    "action": "callDrama_8180301|callDrama_8180306",
+    "btnText": "pub_rune3"
+  },
+  {
+    "id": "40",
+    "level": "3",
+    "main": "4",
+    "condition": "dialogue_8200002_1|task_2120015_11|task_2120016_13|dialogueTime_8180315_3",
+    "action": "callDrama_8180401|callDrama_8180406",
+    "btnText": "pub_rune4"
+  },
+  {
+    "id": "41",
+    "level": "3",
+    "main": "5",
+    "condition": "dialogue_8200002_1|task_2120014_11|task_2120015_13|dialogueTime_8180215_3",
+    "action": "callDrama_8180301|callDrama_8180306",
+    "btnText": "pub_rune3"
+  },
+  {
+    "id": "42",
+    "level": "3",
+    "main": "5",
+    "condition": "dialogue_8200002_1|task_2120015_11|task_2120016_13|dialogueTime_8180315_3",
+    "action": "callDrama_8180401|callDrama_8180406",
+    "btnText": "pub_rune4"
+  },
+  {
+    "id": "43",
+    "level": "4",
+    "main": "0",
+    "condition": "grade_0_99_99",
+    "action": "callDrama_8011201",
+    "btnText": "pub_text1"
+  },
+  {
+    "id": "44",
+    "level": "4",
+    "main": "1",
+    "condition": "grade_0_99_99",
+    "action": "callDrama_8011201",
+    "btnText": "pub_text1"
+  },
+  {
+    "id": "45",
+    "level": "4",
+    "main": "2",
+    "condition": "grade_0_99_99",
+    "action": "callDrama_8011201",
+    "btnText": "pub_text1"
+  },
+  {
+    "id": "46",
+    "level": "4",
+    "main": "3",
+    "condition": "grade_0_99_99",
+    "action": "callDrama_8011201",
+    "btnText": "pub_text1"
+  },
+  {
+    "id": "47",
+    "level": "4",
+    "main": "4",
+    "condition": "grade_0_99_99",
+    "action": "callDrama_8011201",
+    "btnText": "pub_text1"
+  },
+  {
+    "id": "48",
+    "level": "4",
+    "main": "5",
+    "condition": "grade_0_99_99",
+    "action": "callDrama_8011201",
+    "btnText": "pub_text1"
+  },
+  {
+    "id": "49",
+    "level": "4",
+    "main": "0",
+    "condition": "dialogue_8200002_1|task_2120016_11|task_2120017_13|dialogueTime_8180415_3",
+    "action": "callDrama_8180501|callDrama_8180506",
+    "btnText": "pub_rune5"
+  },
+  {
+    "id": "50",
+    "level": "4",
+    "main": "1",
+    "condition": "dialogue_8200002_1|task_2120016_11|task_2120017_13|dialogueTime_8180415_3",
+    "action": "callDrama_8180501|callDrama_8180506",
+    "btnText": "pub_rune5"
+  },
+  {
+    "id": "51",
+    "level": "4",
+    "main": "2",
+    "condition": "dialogue_8200002_1|task_2120016_11|task_2120017_13|dialogueTime_8180415_3",
+    "action": "callDrama_8180501|callDrama_8180506",
+    "btnText": "pub_rune5"
+  },
+  {
+    "id": "52",
+    "level": "4",
+    "main": "3",
+    "condition": "dialogue_8200002_1|task_2120016_11|task_2120017_13|dialogueTime_8180415_3",
+    "action": "callDrama_8180501|callDrama_8180506",
+    "btnText": "pub_rune5"
+  },
+  {
+    "id": "53",
+    "level": "4",
+    "main": "4",
+    "condition": "dialogue_8200002_1|task_2120016_11|task_2120017_13|dialogueTime_8180415_3",
+    "action": "callDrama_8180501|callDrama_8180506",
+    "btnText": "pub_rune5"
+  },
+  {
+    "id": "54",
+    "level": "4",
+    "main": "5",
+    "condition": "dialogue_8200002_1|task_2120016_11|task_2120017_13|dialogueTime_8180415_3",
+    "action": "callDrama_8180501|callDrama_8180506",
+    "btnText": "pub_rune5"
+  },
+  {
+    "id": "55",
+    "level": "5",
+    "main": "0",
+    "condition": "grade_0_99_99",
+    "action": "callDrama_8011201",
+    "btnText": "pub_text1"
+  }
+]

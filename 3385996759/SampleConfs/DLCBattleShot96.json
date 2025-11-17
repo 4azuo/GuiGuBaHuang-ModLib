@@ -1,0 +1,30 @@
+[
+  {
+    "id": "96002",
+    "dmgInit": "&1402_hurtModel",
+    "scaleInit": "&1402_hurtModel",
+    "growTime": "&1402_goTime",
+    "effect": "0",
+    "halo": "0",
+    "haloInit": "0",
+    "lastTime": "&1402_windTime|x#jncx|/100|f0&",
+    "removeEffect": "0",
+    "follow": "0",
+    "rangeCheck": "0",
+    "lerp": "1"
+  },
+  {
+    "id": "96003",
+    "dmgInit": "10",
+    "scaleInit": "10",
+    "growTime": "1000",
+    "effect": "0",
+    "halo": "14031",
+    "haloInit": "10",
+    "lastTime": "5000",
+    "removeEffect": "0",
+    "follow": "0",
+    "rangeCheck": "1",
+    "lerp": "0"
+  }
+]

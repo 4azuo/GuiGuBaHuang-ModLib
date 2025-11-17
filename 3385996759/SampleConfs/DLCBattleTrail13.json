@@ -1,0 +1,29 @@
+[
+  {
+    "id": "13001",
+    "bulletNum": "6",
+    "radius": "360",
+    "radiusGrow": "0",
+    "radiusMax": "360",
+    "angularSpeed": "0",
+    "limitDistance": "1"
+  },
+  {
+    "id": "13503",
+    "bulletNum": "&503_bulletNum",
+    "radius": "360",
+    "radiusGrow": "0",
+    "radiusMax": "360",
+    "angularSpeed": "0",
+    "limitDistance": "1"
+  },
+  {
+    "id": "13016",
+    "bulletNum": "5",
+    "radius": "30",
+    "radiusGrow": "200",
+    "radiusMax": "150",
+    "angularSpeed": "400",
+    "limitDistance": "0"
+  }
+]

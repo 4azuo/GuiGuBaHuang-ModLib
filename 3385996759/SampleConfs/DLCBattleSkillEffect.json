@@ -1,0 +1,7094 @@
+[
+  {
+    "id": "1021",
+    "triggerID": "105",
+    "triggerProb": "100",
+    "delay": "0",
+    "target": "0",
+    "effectID": "1021",
+    "minCD": "0"
+  },
+  {
+    "id": "10211",
+    "triggerID": "105",
+    "triggerProb": "100",
+    "delay": "0",
+    "target": "0",
+    "effectID": "10211",
+    "minCD": "0"
+  },
+  {
+    "id": "1031",
+    "triggerID": "105",
+    "triggerProb": "100",
+    "delay": "0",
+    "target": "0",
+    "effectID": "1031",
+    "minCD": "0"
+  },
+  {
+    "id": "10321",
+    "triggerID": "105",
+    "triggerProb": "100",
+    "delay": "0",
+    "target": "0",
+    "effectID": "10321",
+    "minCD": "0"
+  },
+  {
+    "id": "10331",
+    "triggerID": "105",
+    "triggerProb": "100",
+    "delay": "0",
+    "target": "0",
+    "effectID": "10331",
+    "minCD": "0"
+  },
+  {
+    "id": "1041",
+    "triggerID": "105",
+    "triggerProb": "100",
+    "delay": "0",
+    "target": "0",
+    "effectID": "1041",
+    "minCD": "0"
+  },
+  {
+    "id": "2011",
+    "triggerID": "1021",
+    "triggerProb": "&201_pfrDownProb",
+    "delay": "0",
+    "target": "1",
+    "effectID": "2011",
+    "minCD": "0"
+  },
+  {
+    "id": "20201",
+    "triggerID": "101",
+    "triggerProb": "100",
+    "delay": "0",
+    "target": "0",
+    "effectID": "20201",
+    "minCD": "0"
+  },
+  {
+    "id": "20202",
+    "triggerID": "105",
+    "triggerProb": "100",
+    "delay": "0",
+    "target": "0",
+    "effectID": "20202",
+    "minCD": "0"
+  },
+  {
+    "id": "20211",
+    "triggerID": "102",
+    "triggerProb": "100",
+    "delay": "0",
+    "target": "0",
+    "effectID": "20211",
+    "minCD": "0"
+  },
+  {
+    "id": "20212",
+    "triggerID": "1102",
+    "triggerProb": "&202_blastProb",
+    "delay": "0",
+    "target": "1",
+    "effectID": "20212",
+    "minCD": "0"
+  },
+  {
+    "id": "2022",
+    "triggerID": "101",
+    "triggerProb": "100",
+    "delay": "0",
+    "target": "0",
+    "effectID": "2022",
+    "minCD": "0"
+  },
+  {
+    "id": "2031",
+    "triggerID": "1021",
+    "triggerProb": "&203_pfrDownProb",
+    "delay": "0",
+    "target": "1",
+    "effectID": "2031",
+    "minCD": "0"
+  },
+  {
+    "id": "3021",
+    "triggerID": "102",
+    "triggerProb": "&302_bleedProb",
+    "delay": "0",
+    "target": "1",
+    "effectID": "3021",
+    "minCD": "0"
+  },
+  {
+    "id": "3031",
+    "triggerID": "105",
+    "triggerProb": "100",
+    "delay": "0",
+    "target": "0",
+    "effectID": "3031",
+    "minCD": "0"
+  },
+  {
+    "id": "3043",
+    "triggerID": "102",
+    "triggerProb": "&304_bleedProb",
+    "delay": "0",
+    "target": "1",
+    "effectID": "302101",
+    "minCD": "0"
+  },
+  {
+    "id": "4011",
+    "triggerID": "102",
+    "triggerProb": "&401_shieldProb",
+    "delay": "0",
+    "target": "0",
+    "effectID": "4011",
+    "minCD": "0"
+  },
+  {
+    "id": "4021",
+    "triggerID": "105",
+    "triggerProb": "100",
+    "delay": "0",
+    "target": "0",
+    "effectID": "4021",
+    "minCD": "0"
+  },
+  {
+    "id": "4022",
+    "triggerID": "1013",
+    "triggerProb": "100",
+    "delay": "0",
+    "target": "0",
+    "effectID": "4022",
+    "minCD": "0"
+  },
+  {
+    "id": "4031",
+    "triggerID": "101",
+    "triggerProb": "100",
+    "delay": "0",
+    "target": "0",
+    "effectID": "4031",
+    "minCD": "0"
+  },
+  {
+    "id": "5011",
+    "triggerID": "1092",
+    "triggerProb": "100",
+    "delay": "0",
+    "target": "1",
+    "effectID": "5011",
+    "minCD": "0"
+  },
+  {
+    "id": "5021",
+    "triggerID": "1021",
+    "triggerProb": "&502_injurySwitch",
+    "delay": "0",
+    "target": "1",
+    "effectID": "5021",
+    "minCD": "0"
+  },
+  {
+    "id": "5032",
+    "triggerID": "1021",
+    "triggerProb": "&503_injurySwitch",
+    "delay": "0",
+    "target": "1",
+    "effectID": "5021",
+    "minCD": "0"
+  },
+  {
+    "id": "5033",
+    "triggerID": "101",
+    "triggerProb": "&503_windSwitch",
+    "delay": "0",
+    "target": "0",
+    "effectID": "5033",
+    "minCD": "0"
+  },
+  {
+    "id": "5034",
+    "triggerID": "101",
+    "triggerProb": "&503_windSwitch",
+    "delay": "0",
+    "target": "0",
+    "effectID": "5034",
+    "minCD": "0"
+  },
+  {
+    "id": "6011",
+    "triggerID": "1021",
+    "triggerProb": "&601_sealProb",
+    "delay": "0",
+    "target": "1",
+    "effectID": "6011",
+    "minCD": "0"
+  },
+  {
+    "id": "60112",
+    "triggerID": "1021",
+    "triggerProb": "&601_sealProb",
+    "delay": "0",
+    "target": "1",
+    "effectID": "60112",
+    "minCD": "0"
+  },
+  {
+    "id": "101004",
+    "triggerID": "105",
+    "triggerProb": "&101_leechProb",
+    "delay": "0",
+    "target": "0",
+    "effectID": "101004",
+    "minCD": "0"
+  },
+  {
+    "id": "101005",
+    "triggerID": "105",
+    "triggerProb": "100",
+    "delay": "0",
+    "target": "0",
+    "effectID": "101005",
+    "minCD": "0"
+  },
+  {
+    "id": "101006",
+    "triggerID": "105",
+    "triggerProb": "100",
+    "delay": "0",
+    "target": "0",
+    "effectID": "101006",
+    "minCD": "0"
+  },
+  {
+    "id": "101007",
+    "triggerID": "105",
+    "triggerProb": "100",
+    "delay": "0",
+    "target": "0",
+    "effectID": "101007",
+    "minCD": "0"
+  },
+  {
+    "id": "101008",
+    "triggerID": "105",
+    "triggerProb": "100",
+    "delay": "0",
+    "target": "0",
+    "effectID": "101008",
+    "minCD": "0"
+  },
+  {
+    "id": "101009",
+    "triggerID": "105",
+    "triggerProb": "100",
+    "delay": "0",
+    "target": "0",
+    "effectID": "101009",
+    "minCD": "0"
+  },
+  {
+    "id": "101010",
+    "triggerID": "105",
+    "triggerProb": "100",
+    "delay": "0",
+    "target": "0",
+    "effectID": "101010",
+    "minCD": "0"
+  },
+  {
+    "id": "101011",
+    "triggerID": "105",
+    "triggerProb": "100",
+    "delay": "0",
+    "target": "0",
+    "effectID": "101011",
+    "minCD": "0"
+  },
+  {
+    "id": "101012",
+    "triggerID": "105",
+    "triggerProb": "100",
+    "delay": "0",
+    "target": "0",
+    "effectID": "101012",
+    "minCD": "0"
+  },
+  {
+    "id": "101013",
+    "triggerID": "105",
+    "triggerProb": "100",
+    "delay": "0",
+    "target": "0",
+    "effectID": "101013",
+    "minCD": "0"
+  },
+  {
+    "id": "101014",
+    "triggerID": "105",
+    "triggerProb": "100",
+    "delay": "0",
+    "target": "0",
+    "effectID": "101014",
+    "minCD": "0"
+  },
+  {
+    "id": "102006",
+    "triggerID": "105",
+    "triggerProb": "100",
+    "delay": "0",
+    "target": "0",
+    "effectID": "102006",
+    "minCD": "0"
+  },
+  {
+    "id": "102007",
+    "triggerID": "105",
+    "triggerProb": "100",
+    "delay": "0",
+    "target": "0",
+    "effectID": "102007",
+    "minCD": "0"
+  },
+  {
+    "id": "103003",
+    "triggerID": "105",
+    "triggerProb": "100",
+    "delay": "0",
+    "target": "0",
+    "effectID": "103003",
+    "minCD": "0"
+  },
+  {
+    "id": "103006",
+    "triggerID": "105",
+    "triggerProb": "100",
+    "delay": "0",
+    "target": "0",
+    "effectID": "103006",
+    "minCD": "0"
+  },
+  {
+    "id": "103007",
+    "triggerID": "105",
+    "triggerProb": "100",
+    "delay": "0",
+    "target": "0",
+    "effectID": "103007",
+    "minCD": "0"
+  },
+  {
+    "id": "103008",
+    "triggerID": "105",
+    "triggerProb": "100",
+    "delay": "0",
+    "target": "0",
+    "effectID": "103008",
+    "minCD": "0"
+  },
+  {
+    "id": "104006",
+    "triggerID": "105",
+    "triggerProb": "100",
+    "delay": "0",
+    "target": "0",
+    "effectID": "104006",
+    "minCD": "0"
+  },
+  {
+    "id": "104007",
+    "triggerID": "105",
+    "triggerProb": "100",
+    "delay": "0",
+    "target": "0",
+    "effectID": "104007",
+    "minCD": "0"
+  },
+  {
+    "id": "201006",
+    "triggerID": "105",
+    "triggerProb": "100",
+    "delay": "0",
+    "target": "0",
+    "effectID": "201006",
+    "minCD": "0"
+  },
+  {
+    "id": "202005",
+    "triggerID": "105",
+    "triggerProb": "100",
+    "delay": "0",
+    "target": "0",
+    "effectID": "202005",
+    "minCD": "0"
+  },
+  {
+    "id": "302007",
+    "triggerID": "105",
+    "triggerProb": "100",
+    "delay": "0",
+    "target": "0",
+    "effectID": "302007",
+    "minCD": "0"
+  },
+  {
+    "id": "303006",
+    "triggerID": "105",
+    "triggerProb": "100",
+    "delay": "0",
+    "target": "0",
+    "effectID": "303006",
+    "minCD": "0"
+  },
+  {
+    "id": "303007",
+    "triggerID": "105",
+    "triggerProb": "100",
+    "delay": "0",
+    "target": "0",
+    "effectID": "303007",
+    "minCD": "0"
+  },
+  {
+    "id": "401006",
+    "triggerID": "105",
+    "triggerProb": "100",
+    "delay": "0",
+    "target": "0",
+    "effectID": "401006",
+    "minCD": "0"
+  },
+  {
+    "id": "401007",
+    "triggerID": "105",
+    "triggerProb": "100",
+    "delay": "0",
+    "target": "0",
+    "effectID": "401007",
+    "minCD": "0"
+  },
+  {
+    "id": "402005",
+    "triggerID": "105",
+    "triggerProb": "100",
+    "delay": "0",
+    "target": "0",
+    "effectID": "402005",
+    "minCD": "0"
+  },
+  {
+    "id": "402006",
+    "triggerID": "105",
+    "triggerProb": "100",
+    "delay": "0",
+    "target": "0",
+    "effectID": "402006",
+    "minCD": "0"
+  },
+  {
+    "id": "402007",
+    "triggerID": "105",
+    "triggerProb": "100",
+    "delay": "0",
+    "target": "0",
+    "effectID": "402007",
+    "minCD": "0"
+  },
+  {
+    "id": "403005",
+    "triggerID": "105",
+    "triggerProb": "100",
+    "delay": "0",
+    "target": "0",
+    "effectID": "403005",
+    "minCD": "0"
+  },
+  {
+    "id": "403006",
+    "triggerID": "105",
+    "triggerProb": "100",
+    "delay": "0",
+    "target": "0",
+    "effectID": "403006",
+    "minCD": "0"
+  },
+  {
+    "id": "502007",
+    "triggerID": "105",
+    "triggerProb": "100",
+    "delay": "0",
+    "target": "0",
+    "effectID": "502007",
+    "minCD": "0"
+  },
+  {
+    "id": "601007",
+    "triggerID": "105",
+    "triggerProb": "100",
+    "delay": "0",
+    "target": "0",
+    "effectID": "601007",
+    "minCD": "0"
+  },
+  {
+    "id": "602004",
+    "triggerID": "105",
+    "triggerProb": "100",
+    "delay": "0",
+    "target": "0",
+    "effectID": "602004",
+    "minCD": "0"
+  },
+  {
+    "id": "602006",
+    "triggerID": "105",
+    "triggerProb": "100",
+    "delay": "0",
+    "target": "0",
+    "effectID": "603007",
+    "minCD": "0"
+  },
+  {
+    "id": "603007",
+    "triggerID": "105",
+    "triggerProb": "100",
+    "delay": "0",
+    "target": "0",
+    "effectID": "603007",
+    "minCD": "0"
+  },
+  {
+    "id": "1101005",
+    "triggerID": "105",
+    "triggerProb": "100",
+    "delay": "0",
+    "target": "0",
+    "effectID": "1101005",
+    "minCD": "0"
+  },
+  {
+    "id": "1101006",
+    "triggerID": "105",
+    "triggerProb": "100",
+    "delay": "0",
+    "target": "0",
+    "effectID": "1101006",
+    "minCD": "0"
+  },
+  {
+    "id": "1101007",
+    "triggerID": "105",
+    "triggerProb": "100",
+    "delay": "0",
+    "target": "0",
+    "effectID": "1101007",
+    "minCD": "0"
+  },
+  {
+    "id": "1102005",
+    "triggerID": "1021",
+    "triggerProb": "&1102_fireProb",
+    "delay": "0",
+    "target": "1",
+    "effectID": "1102005",
+    "minCD": "0"
+  },
+  {
+    "id": "1102006",
+    "triggerID": "105",
+    "triggerProb": "100",
+    "delay": "0",
+    "target": "0",
+    "effectID": "1102006",
+    "minCD": "0"
+  },
+  {
+    "id": "11031",
+    "triggerID": "107",
+    "triggerProb": "100",
+    "delay": "0",
+    "target": "0",
+    "effectID": "110311",
+    "minCD": "0"
+  },
+  {
+    "id": "11032",
+    "triggerID": "101",
+    "triggerProb": "100",
+    "delay": "0",
+    "target": "0",
+    "effectID": "110321",
+    "minCD": "0"
+  },
+  {
+    "id": "11033",
+    "triggerID": "101",
+    "triggerProb": "100",
+    "delay": "0",
+    "target": "0",
+    "effectID": "110331",
+    "minCD": "0"
+  },
+  {
+    "id": "1103006",
+    "triggerID": "105",
+    "triggerProb": "100",
+    "delay": "0",
+    "target": "0",
+    "effectID": "1103006",
+    "minCD": "0"
+  },
+  {
+    "id": "1103007",
+    "triggerID": "105",
+    "triggerProb": "100",
+    "delay": "0",
+    "target": "0",
+    "effectID": "1103007",
+    "minCD": "0"
+  },
+  {
+    "id": "120111",
+    "triggerID": "1021",
+    "triggerProb": "&1201_waterProb",
+    "delay": "0",
+    "target": "1",
+    "effectID": "12012119",
+    "minCD": "0"
+  },
+  {
+    "id": "1201005",
+    "triggerID": "105",
+    "triggerProb": "100",
+    "delay": "0",
+    "target": "0",
+    "effectID": "1201005",
+    "minCD": "0"
+  },
+  {
+    "id": "1201007",
+    "triggerID": "102",
+    "triggerProb": "&12017_sevenPro",
+    "delay": "0",
+    "target": "1",
+    "effectID": "1201007",
+    "minCD": "0"
+  },
+  {
+    "id": "120211",
+    "triggerID": "1021",
+    "triggerProb": "&1202_waterProb",
+    "delay": "0",
+    "target": "1",
+    "effectID": "12012119",
+    "minCD": "0"
+  },
+  {
+    "id": "120213",
+    "triggerID": "1021",
+    "triggerProb": "15",
+    "delay": "0",
+    "target": "1",
+    "effectID": "12012119",
+    "minCD": "0"
+  },
+  {
+    "id": "1202005",
+    "triggerID": "105",
+    "triggerProb": "100",
+    "delay": "0",
+    "target": "1",
+    "effectID": "1202005",
+    "minCD": "0"
+  },
+  {
+    "id": "1202006",
+    "triggerID": "105",
+    "triggerProb": "100",
+    "delay": "0",
+    "target": "0",
+    "effectID": "1202006",
+    "minCD": "0"
+  },
+  {
+    "id": "12020066",
+    "triggerID": "101",
+    "triggerProb": "100",
+    "delay": "0",
+    "target": "0",
+    "effectID": "12020066",
+    "minCD": "0"
+  },
+  {
+    "id": "1202007",
+    "triggerID": "1021",
+    "triggerProb": "&1202_sevenProb",
+    "delay": "0",
+    "target": "1",
+    "effectID": "1202007",
+    "minCD": "0"
+  },
+  {
+    "id": "12020071",
+    "triggerID": "102",
+    "triggerProb": "&1202_sevenTwoProb",
+    "delay": "500",
+    "target": "0",
+    "effectID": "12020071",
+    "minCD": "0"
+  },
+  {
+    "id": "120311",
+    "triggerID": "1021",
+    "triggerProb": "100",
+    "delay": "0",
+    "target": "1",
+    "effectID": "120311",
+    "minCD": "0"
+  },
+  {
+    "id": "120312",
+    "triggerID": "102",
+    "triggerProb": "100",
+    "delay": "500",
+    "target": "0",
+    "effectID": "120312",
+    "minCD": "0"
+  },
+  {
+    "id": "1203006",
+    "triggerID": "102",
+    "triggerProb": "100",
+    "delay": "0",
+    "target": "0",
+    "effectID": "1203006",
+    "minCD": "0"
+  },
+  {
+    "id": "12030062",
+    "triggerID": "105",
+    "triggerProb": "100",
+    "delay": "0",
+    "target": "0",
+    "effectID": "12030062",
+    "minCD": "0"
+  },
+  {
+    "id": "1203007",
+    "triggerID": "105",
+    "triggerProb": "100",
+    "delay": "0",
+    "target": "0",
+    "effectID": "1203007",
+    "minCD": "0"
+  },
+  {
+    "id": "1301005",
+    "triggerID": "1021",
+    "triggerProb": "&1301_lightingProb",
+    "delay": "0",
+    "target": "1",
+    "effectID": "1301005",
+    "minCD": "0"
+  },
+  {
+    "id": "1301006",
+    "triggerID": "101",
+    "triggerProb": "100",
+    "delay": "0",
+    "target": "0",
+    "effectID": "1301006",
+    "minCD": "0"
+  },
+  {
+    "id": "1301007",
+    "triggerID": "105",
+    "triggerProb": "100",
+    "delay": "0",
+    "target": "0",
+    "effectID": "1301007",
+    "minCD": "0"
+  },
+  {
+    "id": "1302005",
+    "triggerID": "101",
+    "triggerProb": "100",
+    "delay": "0",
+    "target": "0",
+    "effectID": "1302005",
+    "minCD": "0"
+  },
+  {
+    "id": "1302006",
+    "triggerID": "101",
+    "triggerProb": "&1302_sixProb",
+    "delay": "0",
+    "target": "1",
+    "effectID": "1302006",
+    "minCD": "0"
+  },
+  {
+    "id": "1302007",
+    "triggerID": "101",
+    "triggerProb": "100",
+    "delay": "0",
+    "target": "0",
+    "effectID": "1302007",
+    "minCD": "0"
+  },
+  {
+    "id": "1303006",
+    "triggerID": "105",
+    "triggerProb": "100",
+    "delay": "0",
+    "target": "0",
+    "effectID": "1303006",
+    "minCD": "0"
+  },
+  {
+    "id": "130321",
+    "triggerID": "1021",
+    "triggerProb": "100",
+    "delay": "0",
+    "target": "1",
+    "effectID": "1303007",
+    "minCD": "0"
+  },
+  {
+    "id": "14011",
+    "triggerID": "102",
+    "triggerProb": "0",
+    "delay": "0",
+    "target": "0",
+    "effectID": "140111",
+    "minCD": "0"
+  },
+  {
+    "id": "14012",
+    "triggerID": "102",
+    "triggerProb": "&1401_windKnight",
+    "delay": "0",
+    "target": "0",
+    "effectID": "14010071",
+    "minCD": "0"
+  },
+  {
+    "id": "1401005",
+    "triggerID": "105",
+    "triggerProb": "100",
+    "delay": "0",
+    "target": "0",
+    "effectID": "1401005",
+    "minCD": "0"
+  },
+  {
+    "id": "1401006",
+    "triggerID": "105",
+    "triggerProb": "100",
+    "delay": "0",
+    "target": "0",
+    "effectID": "1401006",
+    "minCD": "0"
+  },
+  {
+    "id": "1401007",
+    "triggerID": "105",
+    "triggerProb": "100",
+    "delay": "0",
+    "target": "0",
+    "effectID": "1401007",
+    "minCD": "0"
+  },
+  {
+    "id": "1402005",
+    "triggerID": "101",
+    "triggerProb": "&1402_fiveProb",
+    "delay": "0",
+    "target": "0",
+    "effectID": "1402005",
+    "minCD": "0"
+  },
+  {
+    "id": "14020061",
+    "triggerID": "101",
+    "triggerProb": "100",
+    "delay": "0",
+    "target": "0",
+    "effectID": "14020061",
+    "minCD": "0"
+  },
+  {
+    "id": "14020062",
+    "triggerID": "101",
+    "triggerProb": "100",
+    "delay": "0",
+    "target": "0",
+    "effectID": "14020062",
+    "minCD": "0"
+  },
+  {
+    "id": "14031",
+    "triggerID": "102",
+    "triggerProb": "&1403_windKnight",
+    "delay": "0",
+    "target": "0",
+    "effectID": "14030071",
+    "minCD": "0"
+  },
+  {
+    "id": "1403002",
+    "triggerID": "105",
+    "triggerProb": "100",
+    "delay": "0",
+    "target": "0",
+    "effectID": "1403002",
+    "minCD": "0"
+  },
+  {
+    "id": "1403006",
+    "triggerID": "102",
+    "triggerProb": "&1403_sixProb",
+    "delay": "0",
+    "target": "0",
+    "effectID": "1403006",
+    "minCD": "0"
+  },
+  {
+    "id": "1403007",
+    "triggerID": "105",
+    "triggerProb": "100",
+    "delay": "0",
+    "target": "0",
+    "effectID": "1403007",
+    "minCD": "0"
+  },
+  {
+    "id": "140311",
+    "triggerID": "102",
+    "triggerProb": "&11419_prob",
+    "delay": "0",
+    "target": "1",
+    "effectID": "140311",
+    "minCD": "0"
+  },
+  {
+    "id": "140312",
+    "triggerID": "102",
+    "triggerProb": "&11422_prob",
+    "delay": "0",
+    "target": "1",
+    "effectID": "302101",
+    "minCD": "0"
+  },
+  {
+    "id": "1501006",
+    "triggerID": "102",
+    "triggerProb": "100",
+    "delay": "0",
+    "target": "0",
+    "effectID": "1501006",
+    "minCD": "0"
+  },
+  {
+    "id": "1501007",
+    "triggerID": "105",
+    "triggerProb": "100",
+    "delay": "0",
+    "target": "0",
+    "effectID": "1501007",
+    "minCD": "0"
+  },
+  {
+    "id": "1502006",
+    "triggerID": "101",
+    "triggerProb": "100",
+    "delay": "0",
+    "target": "0",
+    "effectID": "1502006",
+    "minCD": "0"
+  },
+  {
+    "id": "15031",
+    "triggerID": "101",
+    "triggerProb": "100",
+    "delay": "0",
+    "target": "0",
+    "effectID": "150311",
+    "minCD": "0"
+  },
+  {
+    "id": "15032",
+    "triggerID": "101",
+    "triggerProb": "100",
+    "delay": "0",
+    "target": "0",
+    "effectID": "150321",
+    "minCD": "0"
+  },
+  {
+    "id": "1503005",
+    "triggerID": "105",
+    "triggerProb": "100",
+    "delay": "0",
+    "target": "0",
+    "effectID": "1503005",
+    "minCD": "0"
+  },
+  {
+    "id": "160131",
+    "triggerID": "101",
+    "triggerProb": "100",
+    "delay": "500",
+    "target": "0",
+    "effectID": "160131",
+    "minCD": "0"
+  },
+  {
+    "id": "1601006",
+    "triggerID": "105",
+    "triggerProb": "100",
+    "delay": "0",
+    "target": "0",
+    "effectID": "1601006",
+    "minCD": "0"
+  },
+  {
+    "id": "1601007",
+    "triggerID": "105",
+    "triggerProb": "100",
+    "delay": "0",
+    "target": "0",
+    "effectID": "1601007",
+    "minCD": "0"
+  },
+  {
+    "id": "160111",
+    "triggerID": "1021",
+    "triggerProb": "&16011_waterProb",
+    "delay": "0",
+    "target": "1",
+    "effectID": "12012119",
+    "minCD": "0"
+  },
+  {
+    "id": "1602111",
+    "triggerID": "1021",
+    "triggerProb": "100",
+    "delay": "0",
+    "target": "1",
+    "effectID": "1602111",
+    "minCD": "0"
+  },
+  {
+    "id": "160311",
+    "triggerID": "101",
+    "triggerProb": "100",
+    "delay": "0",
+    "target": "1",
+    "effectID": "1603111",
+    "minCD": "0"
+  },
+  {
+    "id": "160313",
+    "triggerID": "1021",
+    "triggerProb": "100",
+    "delay": "0",
+    "target": "1",
+    "effectID": "16031311",
+    "minCD": "0"
+  },
+  {
+    "id": "160312",
+    "triggerID": "101",
+    "triggerProb": "100",
+    "delay": "200",
+    "target": "0",
+    "effectID": "1603121",
+    "minCD": "0"
+  },
+  {
+    "id": "160331",
+    "triggerID": "101",
+    "triggerProb": "100",
+    "delay": "0",
+    "target": "0",
+    "effectID": "160331",
+    "minCD": "0"
+  },
+  {
+    "id": "1603006",
+    "triggerID": "105",
+    "triggerProb": "100",
+    "delay": "0",
+    "target": "0",
+    "effectID": "1603006",
+    "minCD": "0"
+  },
+  {
+    "id": "160411",
+    "triggerID": "101",
+    "triggerProb": "100",
+    "delay": "500",
+    "target": "0",
+    "effectID": "160411",
+    "minCD": "0"
+  },
+  {
+    "id": "1604151",
+    "triggerID": "102",
+    "triggerProb": "100",
+    "delay": "0",
+    "target": "1",
+    "effectID": "1604151",
+    "minCD": "0"
+  },
+  {
+    "id": "1604007",
+    "triggerID": "101",
+    "triggerProb": "100",
+    "delay": "0",
+    "target": "0",
+    "effectID": "1604007",
+    "minCD": "0"
+  },
+  {
+    "id": "128111",
+    "triggerID": "102",
+    "triggerProb": "100",
+    "delay": "0",
+    "target": "1",
+    "effectID": "128111",
+    "minCD": "0"
+  },
+  {
+    "id": "128121",
+    "triggerID": "1021",
+    "triggerProb": "50",
+    "delay": "0",
+    "target": "1",
+    "effectID": "16031311",
+    "minCD": "0"
+  },
+  {
+    "id": "210111",
+    "triggerID": "101",
+    "triggerProb": "100",
+    "delay": "0",
+    "target": "0",
+    "effectID": "210111",
+    "minCD": "0"
+  },
+  {
+    "id": "210112",
+    "triggerID": "101",
+    "triggerProb": "100",
+    "delay": "&21011_delayTime",
+    "target": "0",
+    "effectID": "210112",
+    "minCD": "0"
+  },
+  {
+    "id": "210121",
+    "triggerID": "102",
+    "triggerProb": "100",
+    "delay": "0",
+    "target": "1",
+    "effectID": "210121",
+    "minCD": "0"
+  },
+  {
+    "id": "2101212",
+    "triggerID": "101",
+    "triggerProb": "100",
+    "delay": "0",
+    "target": "0",
+    "effectID": "2101212",
+    "minCD": "0"
+  },
+  {
+    "id": "2101214",
+    "triggerID": "101",
+    "triggerProb": "100",
+    "delay": "0",
+    "target": "0",
+    "effectID": "2101214",
+    "minCD": "0"
+  },
+  {
+    "id": "210131",
+    "triggerID": "105",
+    "triggerProb": "100",
+    "delay": "0",
+    "target": "0",
+    "effectID": "210131",
+    "minCD": "0"
+  },
+  {
+    "id": "210132",
+    "triggerID": "101",
+    "triggerProb": "100",
+    "delay": "0",
+    "target": "0",
+    "effectID": "210132",
+    "minCD": "0"
+  },
+  {
+    "id": "210133",
+    "triggerID": "101",
+    "triggerProb": "100",
+    "delay": "500",
+    "target": "0",
+    "effectID": "210133",
+    "minCD": "0"
+  },
+  {
+    "id": "12012119",
+    "triggerID": "1021",
+    "triggerProb": "100",
+    "delay": "0",
+    "target": "1",
+    "effectID": "12012119",
+    "minCD": "0"
+  },
+  {
+    "id": "113204",
+    "triggerID": "102",
+    "triggerProb": "100",
+    "delay": "0",
+    "target": "1",
+    "effectID": "113204",
+    "minCD": "0"
+  },
+  {
+    "id": "2101321",
+    "triggerID": "101",
+    "triggerProb": "100",
+    "delay": "0",
+    "target": "0",
+    "effectID": "2101321",
+    "minCD": "0"
+  },
+  {
+    "id": "210141",
+    "triggerID": "101",
+    "triggerProb": "100",
+    "delay": "0",
+    "target": "0",
+    "effectID": "210141",
+    "minCD": "0"
+  },
+  {
+    "id": "210151",
+    "triggerID": "101",
+    "triggerProb": "100",
+    "delay": "0",
+    "target": "0",
+    "effectID": "210151",
+    "minCD": "0"
+  },
+  {
+    "id": "21015211",
+    "triggerID": "102",
+    "triggerProb": "100",
+    "delay": "0",
+    "target": "1",
+    "effectID": "21015211",
+    "minCD": "0"
+  },
+  {
+    "id": "210161",
+    "triggerID": "101",
+    "triggerProb": "100",
+    "delay": "0",
+    "target": "0",
+    "effectID": "210161",
+    "minCD": "0"
+  },
+  {
+    "id": "210162",
+    "triggerID": "105",
+    "triggerProb": "100",
+    "delay": "0",
+    "target": "0",
+    "effectID": "210162",
+    "minCD": "0"
+  },
+  {
+    "id": "21017",
+    "triggerID": "1021",
+    "triggerProb": "100",
+    "delay": "0",
+    "target": "1",
+    "effectID": "210173",
+    "minCD": "0"
+  },
+  {
+    "id": "210171",
+    "triggerID": "101",
+    "triggerProb": "100",
+    "delay": "0",
+    "target": "0",
+    "effectID": "210171",
+    "minCD": "0"
+  },
+  {
+    "id": "4000221",
+    "triggerID": "102",
+    "triggerProb": "100",
+    "delay": "0",
+    "target": "1",
+    "effectID": "400022",
+    "minCD": "0"
+  },
+  {
+    "id": "1000611",
+    "triggerID": "102",
+    "triggerProb": "100",
+    "delay": "0",
+    "target": "1",
+    "effectID": "100061",
+    "minCD": "0"
+  },
+  {
+    "id": "440101",
+    "triggerID": "101",
+    "triggerProb": "100",
+    "delay": "0",
+    "target": "0",
+    "effectID": "440101",
+    "minCD": "0"
+  },
+  {
+    "id": "440111",
+    "triggerID": "101",
+    "triggerProb": "100",
+    "delay": "0",
+    "target": "0",
+    "effectID": "440111",
+    "minCD": "0"
+  },
+  {
+    "id": "1000711",
+    "triggerID": "102",
+    "triggerProb": "50",
+    "delay": "0",
+    "target": "1",
+    "effectID": "100071",
+    "minCD": "0"
+  },
+  {
+    "id": "5000211",
+    "triggerID": "102",
+    "triggerProb": "100",
+    "delay": "0",
+    "target": "1",
+    "effectID": "500021",
+    "minCD": "0"
+  },
+  {
+    "id": "1100321",
+    "triggerID": "102",
+    "triggerProb": "100",
+    "delay": "0",
+    "target": "1",
+    "effectID": "110032",
+    "minCD": "0"
+  },
+  {
+    "id": "1100361",
+    "triggerID": "102",
+    "triggerProb": "100",
+    "delay": "0",
+    "target": "1",
+    "effectID": "1100361",
+    "minCD": "0"
+  },
+  {
+    "id": "1100362",
+    "triggerID": "102",
+    "triggerProb": "100",
+    "delay": "0",
+    "target": "1",
+    "effectID": "1100362",
+    "minCD": "0"
+  },
+  {
+    "id": "1100511",
+    "triggerID": "102",
+    "triggerProb": "100",
+    "delay": "0",
+    "target": "1",
+    "effectID": "110051",
+    "minCD": "0"
+  },
+  {
+    "id": "1100521",
+    "triggerID": "102",
+    "triggerProb": "100",
+    "delay": "0",
+    "target": "1",
+    "effectID": "110052",
+    "minCD": "0"
+  },
+  {
+    "id": "1100522",
+    "triggerID": "102",
+    "triggerProb": "100",
+    "delay": "0",
+    "target": "0",
+    "effectID": "150",
+    "minCD": "0"
+  },
+  {
+    "id": "1100621",
+    "triggerID": "102",
+    "triggerProb": "100",
+    "delay": "0",
+    "target": "1",
+    "effectID": "110061",
+    "minCD": "0"
+  },
+  {
+    "id": "1100622",
+    "triggerID": "102",
+    "triggerProb": "100",
+    "delay": "0",
+    "target": "1",
+    "effectID": "110062",
+    "minCD": "0"
+  },
+  {
+    "id": "1100623",
+    "triggerID": "102",
+    "triggerProb": "100",
+    "delay": "0",
+    "target": "0",
+    "effectID": "150",
+    "minCD": "0"
+  },
+  {
+    "id": "1100624",
+    "triggerID": "101",
+    "triggerProb": "100",
+    "delay": "0",
+    "target": "0",
+    "effectID": "110066",
+    "minCD": "0"
+  },
+  {
+    "id": "1100761",
+    "triggerID": "102",
+    "triggerProb": "100",
+    "delay": "0",
+    "target": "1",
+    "effectID": "110071",
+    "minCD": "0"
+  },
+  {
+    "id": "1100762",
+    "triggerID": "102",
+    "triggerProb": "100",
+    "delay": "0",
+    "target": "1",
+    "effectID": "110072",
+    "minCD": "0"
+  },
+  {
+    "id": "1300221",
+    "triggerID": "102",
+    "triggerProb": "100",
+    "delay": "0",
+    "target": "1",
+    "effectID": "130022",
+    "minCD": "0"
+  },
+  {
+    "id": "110022",
+    "triggerID": "102",
+    "triggerProb": "100",
+    "delay": "0",
+    "target": "1",
+    "effectID": "110022",
+    "minCD": "0"
+  },
+  {
+    "id": "110042",
+    "triggerID": "102",
+    "triggerProb": "100",
+    "delay": "0",
+    "target": "1",
+    "effectID": "110042",
+    "minCD": "0"
+  },
+  {
+    "id": "320251",
+    "triggerID": "103",
+    "triggerProb": "0",
+    "delay": "0",
+    "target": "0",
+    "effectID": "4111206",
+    "minCD": "0"
+  },
+  {
+    "id": "3202511",
+    "triggerID": "103",
+    "triggerProb": "0",
+    "delay": "0",
+    "target": "0",
+    "effectID": "3202516",
+    "minCD": "0"
+  },
+  {
+    "id": "711311",
+    "triggerID": "101",
+    "triggerProb": "100",
+    "delay": "0",
+    "target": "0",
+    "effectID": "711311",
+    "minCD": "0"
+  },
+  {
+    "id": "711312",
+    "triggerID": "101",
+    "triggerProb": "100",
+    "delay": "0",
+    "target": "0",
+    "effectID": "711312",
+    "minCD": "0"
+  },
+  {
+    "id": "71221",
+    "triggerID": "102",
+    "triggerProb": "100",
+    "delay": "0",
+    "target": "1",
+    "effectID": "71221",
+    "minCD": "0"
+  },
+  {
+    "id": "71222",
+    "triggerID": "102",
+    "triggerProb": "100",
+    "delay": "0",
+    "target": "1",
+    "effectID": "71222",
+    "minCD": "0"
+  },
+  {
+    "id": "71223",
+    "triggerID": "102",
+    "triggerProb": "100",
+    "delay": "0",
+    "target": "1",
+    "effectID": "71223",
+    "minCD": "0"
+  },
+  {
+    "id": "71224",
+    "triggerID": "102",
+    "triggerProb": "100",
+    "delay": "0",
+    "target": "1",
+    "effectID": "71224",
+    "minCD": "0"
+  },
+  {
+    "id": "71225",
+    "triggerID": "102",
+    "triggerProb": "100",
+    "delay": "0",
+    "target": "0",
+    "effectID": "712211",
+    "minCD": "0"
+  },
+  {
+    "id": "71226",
+    "triggerID": "102",
+    "triggerProb": "100",
+    "delay": "0",
+    "target": "0",
+    "effectID": "712221",
+    "minCD": "0"
+  },
+  {
+    "id": "71227",
+    "triggerID": "102",
+    "triggerProb": "100",
+    "delay": "0",
+    "target": "0",
+    "effectID": "712231",
+    "minCD": "0"
+  },
+  {
+    "id": "71228",
+    "triggerID": "102",
+    "triggerProb": "100",
+    "delay": "0",
+    "target": "0",
+    "effectID": "712241",
+    "minCD": "0"
+  },
+  {
+    "id": "71281",
+    "triggerID": "101",
+    "triggerProb": "100",
+    "delay": "0",
+    "target": "0",
+    "effectID": "71281",
+    "minCD": "0"
+  },
+  {
+    "id": "71282",
+    "triggerID": "101",
+    "triggerProb": "100",
+    "delay": "0",
+    "target": "0",
+    "effectID": "71282",
+    "minCD": "0"
+  },
+  {
+    "id": "47031",
+    "triggerID": "102",
+    "triggerProb": "100",
+    "delay": "0",
+    "target": "1",
+    "effectID": "47031",
+    "minCD": "0"
+  },
+  {
+    "id": "50811",
+    "triggerID": "102",
+    "triggerProb": "100",
+    "delay": "0",
+    "target": "1",
+    "effectID": "50811",
+    "minCD": "0"
+  },
+  {
+    "id": "50821",
+    "triggerID": "102",
+    "triggerProb": "100",
+    "delay": "0",
+    "target": "1",
+    "effectID": "50821",
+    "minCD": "0"
+  },
+  {
+    "id": "50911",
+    "triggerID": "102",
+    "triggerProb": "100",
+    "delay": "0",
+    "target": "1",
+    "effectID": "50911",
+    "minCD": "0"
+  },
+  {
+    "id": "51221",
+    "triggerID": "102",
+    "triggerProb": "100",
+    "delay": "0",
+    "target": "1",
+    "effectID": "51221",
+    "minCD": "0"
+  },
+  {
+    "id": "51231",
+    "triggerID": "102",
+    "triggerProb": "100",
+    "delay": "0",
+    "target": "1",
+    "effectID": "51231",
+    "minCD": "0"
+  },
+  {
+    "id": "71531",
+    "triggerID": "101",
+    "triggerProb": "100",
+    "delay": "0",
+    "target": "0",
+    "effectID": "71531",
+    "minCD": "0"
+  },
+  {
+    "id": "71532",
+    "triggerID": "101",
+    "triggerProb": "100",
+    "delay": "0",
+    "target": "0",
+    "effectID": "71532",
+    "minCD": "0"
+  },
+  {
+    "id": "71541",
+    "triggerID": "102",
+    "triggerProb": "100",
+    "delay": "0",
+    "target": "1",
+    "effectID": "71541",
+    "minCD": "0"
+  },
+  {
+    "id": "71542",
+    "triggerID": "101",
+    "triggerProb": "100",
+    "delay": "0",
+    "target": "0",
+    "effectID": "71542",
+    "minCD": "0"
+  },
+  {
+    "id": "71921",
+    "triggerID": "102",
+    "triggerProb": "100",
+    "delay": "0",
+    "target": "1",
+    "effectID": "71921",
+    "minCD": "0"
+  },
+  {
+    "id": "71922",
+    "triggerID": "102",
+    "triggerProb": "100",
+    "delay": "3000",
+    "target": "1",
+    "effectID": "71922",
+    "minCD": "0"
+  },
+  {
+    "id": "72031",
+    "triggerID": "102",
+    "triggerProb": "100",
+    "delay": "0",
+    "target": "1",
+    "effectID": "72031",
+    "minCD": "0"
+  },
+  {
+    "id": "72032",
+    "triggerID": "102",
+    "triggerProb": "100",
+    "delay": "0",
+    "target": "1",
+    "effectID": "72032",
+    "minCD": "0"
+  },
+  {
+    "id": "72033",
+    "triggerID": "102",
+    "triggerProb": "100",
+    "delay": "0",
+    "target": "1",
+    "effectID": "72033",
+    "minCD": "0"
+  },
+  {
+    "id": "72131",
+    "triggerID": "102",
+    "triggerProb": "100",
+    "delay": "0",
+    "target": "1",
+    "effectID": "72131",
+    "minCD": "0"
+  },
+  {
+    "id": "72132",
+    "triggerID": "101",
+    "triggerProb": "100",
+    "delay": "0",
+    "target": "0",
+    "effectID": "72132",
+    "minCD": "0"
+  },
+  {
+    "id": "51421",
+    "triggerID": "101",
+    "triggerProb": "100",
+    "delay": "0",
+    "target": "0",
+    "effectID": "51421",
+    "minCD": "0"
+  },
+  {
+    "id": "51422",
+    "triggerID": "101",
+    "triggerProb": "100",
+    "delay": "0",
+    "target": "0",
+    "effectID": "51422",
+    "minCD": "0"
+  },
+  {
+    "id": "515211",
+    "triggerID": "101",
+    "triggerProb": "100",
+    "delay": "0",
+    "target": "0",
+    "effectID": "515211",
+    "minCD": "0"
+  },
+  {
+    "id": "51611",
+    "triggerID": "101",
+    "triggerProb": "100",
+    "delay": "0",
+    "target": "0",
+    "effectID": "51611",
+    "minCD": "0"
+  },
+  {
+    "id": "51612",
+    "triggerID": "105",
+    "triggerProb": "100",
+    "delay": "0",
+    "target": "0",
+    "effectID": "51612",
+    "minCD": "0"
+  },
+  {
+    "id": "72311",
+    "triggerID": "105",
+    "triggerProb": "100",
+    "delay": "0",
+    "target": "1",
+    "effectID": "170",
+    "minCD": "0"
+  },
+  {
+    "id": "72312",
+    "triggerID": "102",
+    "triggerProb": "100",
+    "delay": "0",
+    "target": "1",
+    "effectID": "72312",
+    "minCD": "0"
+  },
+  {
+    "id": "72841",
+    "triggerID": "101",
+    "triggerProb": "100",
+    "delay": "0",
+    "target": "0",
+    "effectID": "72841",
+    "minCD": "0"
+  },
+  {
+    "id": "72811",
+    "triggerID": "105",
+    "triggerProb": "100",
+    "delay": "0",
+    "target": "0",
+    "effectID": "72811",
+    "minCD": "0"
+  },
+  {
+    "id": "52011",
+    "triggerID": "105",
+    "triggerProb": "100",
+    "delay": "0",
+    "target": "0",
+    "effectID": "52011",
+    "minCD": "0"
+  },
+  {
+    "id": "52021",
+    "triggerID": "105",
+    "triggerProb": "100",
+    "delay": "0",
+    "target": "0",
+    "effectID": "52021",
+    "minCD": "0"
+  },
+  {
+    "id": "73131",
+    "triggerID": "102",
+    "triggerProb": "100",
+    "delay": "200",
+    "target": "1",
+    "effectID": "73131",
+    "minCD": "0"
+  },
+  {
+    "id": "52211",
+    "triggerID": "101",
+    "triggerProb": "100",
+    "delay": "0",
+    "target": "0",
+    "effectID": "52211",
+    "minCD": "0"
+  },
+  {
+    "id": "7001035",
+    "triggerID": "102",
+    "triggerProb": "0",
+    "delay": "0",
+    "target": "1",
+    "effectID": "7001035",
+    "minCD": "0"
+  },
+  {
+    "id": "70010451",
+    "triggerID": "1102",
+    "triggerProb": "100",
+    "delay": "0",
+    "target": "0",
+    "effectID": "7001047",
+    "minCD": "0"
+  },
+  {
+    "id": "70010551",
+    "triggerID": "1102",
+    "triggerProb": "100",
+    "delay": "0",
+    "target": "0",
+    "effectID": "7001058",
+    "minCD": "0"
+  },
+  {
+    "id": "70010651",
+    "triggerID": "1102",
+    "triggerProb": "100",
+    "delay": "0",
+    "target": "0",
+    "effectID": "7001069",
+    "minCD": "0"
+  },
+  {
+    "id": "73211",
+    "triggerID": "102",
+    "triggerProb": "100",
+    "delay": "0",
+    "target": "1",
+    "effectID": "73211",
+    "minCD": "0"
+  },
+  {
+    "id": "73261",
+    "triggerID": "101",
+    "triggerProb": "100",
+    "delay": "0",
+    "target": "0",
+    "effectID": "73261",
+    "minCD": "0"
+  },
+  {
+    "id": "1100731",
+    "triggerID": "101",
+    "triggerProb": "100",
+    "delay": "0",
+    "target": "0",
+    "effectID": "1100731",
+    "minCD": "0"
+  },
+  {
+    "id": "73941",
+    "triggerID": "102",
+    "triggerProb": "100",
+    "delay": "0",
+    "target": "1",
+    "effectID": "73941",
+    "minCD": "0"
+  },
+  {
+    "id": "74041",
+    "triggerID": "102",
+    "triggerProb": "100",
+    "delay": "0",
+    "target": "1",
+    "effectID": "74041",
+    "minCD": "0"
+  },
+  {
+    "id": "74141",
+    "triggerID": "101",
+    "triggerProb": "100",
+    "delay": "0",
+    "target": "0",
+    "effectID": "74141",
+    "minCD": "0"
+  },
+  {
+    "id": "16611",
+    "triggerID": "101",
+    "triggerProb": "100",
+    "delay": "0",
+    "target": "0",
+    "effectID": "110",
+    "minCD": "0"
+  },
+  {
+    "id": "16621",
+    "triggerID": "101",
+    "triggerProb": "100",
+    "delay": "8000",
+    "target": "0",
+    "effectID": "16621",
+    "minCD": "0"
+  },
+  {
+    "id": "74311",
+    "triggerID": "102",
+    "triggerProb": "100",
+    "delay": "0",
+    "target": "1",
+    "effectID": "74311",
+    "minCD": "0"
+  },
+  {
+    "id": "74321",
+    "triggerID": "102",
+    "triggerProb": "100",
+    "delay": "0",
+    "target": "1",
+    "effectID": "74321",
+    "minCD": "0"
+  },
+  {
+    "id": "74341",
+    "triggerID": "105",
+    "triggerProb": "100",
+    "delay": "0",
+    "target": "0",
+    "effectID": "74341",
+    "minCD": "0"
+  },
+  {
+    "id": "74541",
+    "triggerID": "101",
+    "triggerProb": "100",
+    "delay": "6000",
+    "target": "0",
+    "effectID": "74541",
+    "minCD": "0"
+  },
+  {
+    "id": "74542",
+    "triggerID": "102",
+    "triggerProb": "100",
+    "delay": "0",
+    "target": "1",
+    "effectID": "74542",
+    "minCD": "0"
+  },
+  {
+    "id": "74641",
+    "triggerID": "101",
+    "triggerProb": "100",
+    "delay": "0",
+    "target": "0",
+    "effectID": "74641",
+    "minCD": "0"
+  },
+  {
+    "id": "75141",
+    "triggerID": "101",
+    "triggerProb": "100",
+    "delay": "0",
+    "target": "0",
+    "effectID": "75141",
+    "minCD": "0"
+  },
+  {
+    "id": "75143",
+    "triggerID": "101",
+    "triggerProb": "100",
+    "delay": "0",
+    "target": "0",
+    "effectID": "75143",
+    "minCD": "0"
+  },
+  {
+    "id": "75431",
+    "triggerID": "102",
+    "triggerProb": "100",
+    "delay": "0",
+    "target": "1",
+    "effectID": "75431",
+    "minCD": "0"
+  },
+  {
+    "id": "75531",
+    "triggerID": "102",
+    "triggerProb": "100",
+    "delay": "0",
+    "target": "1",
+    "effectID": "75531",
+    "minCD": "0"
+  },
+  {
+    "id": "75311",
+    "triggerID": "102",
+    "triggerProb": "100",
+    "delay": "0",
+    "target": "1",
+    "effectID": "75311",
+    "minCD": "0"
+  },
+  {
+    "id": "75721",
+    "triggerID": "102",
+    "triggerProb": "100",
+    "delay": "0",
+    "target": "1",
+    "effectID": "75721",
+    "minCD": "0"
+  },
+  {
+    "id": "75722",
+    "triggerID": "101",
+    "triggerProb": "100",
+    "delay": "0",
+    "target": "0",
+    "effectID": "75722",
+    "minCD": "0"
+  },
+  {
+    "id": "75761",
+    "triggerID": "101",
+    "triggerProb": "100",
+    "delay": "0",
+    "target": "0",
+    "effectID": "75761",
+    "minCD": "0"
+  },
+  {
+    "id": "75831",
+    "triggerID": "101",
+    "triggerProb": "100",
+    "delay": "0",
+    "target": "0",
+    "effectID": "75831",
+    "minCD": "0"
+  },
+  {
+    "id": "18411",
+    "triggerID": "102",
+    "triggerProb": "100",
+    "delay": "0",
+    "target": "1",
+    "effectID": "18411",
+    "minCD": "0"
+  },
+  {
+    "id": "76041",
+    "triggerID": "101",
+    "triggerProb": "100",
+    "delay": "0",
+    "target": "0",
+    "effectID": "76041",
+    "minCD": "0"
+  },
+  {
+    "id": "76221",
+    "triggerID": "102",
+    "triggerProb": "100",
+    "delay": "0",
+    "target": "1",
+    "effectID": "76221",
+    "minCD": "0"
+  },
+  {
+    "id": "19511",
+    "triggerID": "102",
+    "triggerProb": "100",
+    "delay": "0",
+    "target": "1",
+    "effectID": "19511",
+    "minCD": "0"
+  },
+  {
+    "id": "110311",
+    "triggerID": "101",
+    "triggerProb": "100",
+    "delay": "0",
+    "target": "0",
+    "effectID": "1103111",
+    "minCD": "0"
+  },
+  {
+    "id": "1103121",
+    "triggerID": "102",
+    "triggerProb": "100",
+    "delay": "0",
+    "target": "1",
+    "effectID": "1103121",
+    "minCD": "0"
+  },
+  {
+    "id": "1103122",
+    "triggerID": "102",
+    "triggerProb": "100",
+    "delay": "0",
+    "target": "1",
+    "effectID": "1103122",
+    "minCD": "0"
+  },
+  {
+    "id": "21411",
+    "triggerID": "101",
+    "triggerProb": "100",
+    "delay": "10000",
+    "target": "0",
+    "effectID": "21411",
+    "minCD": "0"
+  },
+  {
+    "id": "2141661",
+    "triggerID": "101",
+    "triggerProb": "100",
+    "delay": "&768366_yqsj",
+    "target": "0",
+    "effectID": "21411",
+    "minCD": "0"
+  },
+  {
+    "id": "2141662",
+    "triggerID": "102",
+    "triggerProb": "100",
+    "delay": "0",
+    "target": "1",
+    "effectID": "2141662",
+    "minCD": "0"
+  },
+  {
+    "id": "2141663",
+    "triggerID": "102",
+    "triggerProb": "100",
+    "delay": "0",
+    "target": "1",
+    "effectID": "2141663",
+    "minCD": "0"
+  },
+  {
+    "id": "230011",
+    "triggerID": "102",
+    "triggerProb": "100",
+    "delay": "0",
+    "target": "1",
+    "effectID": "230011",
+    "minCD": "0"
+  },
+  {
+    "id": "230021",
+    "triggerID": "102",
+    "triggerProb": "100",
+    "delay": "0",
+    "target": "1",
+    "effectID": "230021",
+    "minCD": "0"
+  },
+  {
+    "id": "230031",
+    "triggerID": "102",
+    "triggerProb": "100",
+    "delay": "0",
+    "target": "1",
+    "effectID": "230031",
+    "minCD": "0"
+  },
+  {
+    "id": "76921",
+    "triggerID": "1092",
+    "triggerProb": "100",
+    "delay": "0",
+    "target": "1",
+    "effectID": "76921",
+    "minCD": "0"
+  },
+  {
+    "id": "77021",
+    "triggerID": "1092",
+    "triggerProb": "100",
+    "delay": "0",
+    "target": "1",
+    "effectID": "77021",
+    "minCD": "0"
+  },
+  {
+    "id": "776101",
+    "triggerID": "1102",
+    "triggerProb": "100",
+    "delay": "0",
+    "target": "1",
+    "effectID": "776101",
+    "minCD": "0"
+  },
+  {
+    "id": "776201",
+    "triggerID": "102",
+    "triggerProb": "100",
+    "delay": "0",
+    "target": "1",
+    "effectID": "776201",
+    "minCD": "0"
+  },
+  {
+    "id": "777211",
+    "triggerID": "102",
+    "triggerProb": "100",
+    "delay": "0",
+    "target": "1",
+    "effectID": "776201",
+    "minCD": "0"
+  },
+  {
+    "id": "778211",
+    "triggerID": "102",
+    "triggerProb": "100",
+    "delay": "0",
+    "target": "1",
+    "effectID": "776201",
+    "minCD": "0"
+  },
+  {
+    "id": "779211",
+    "triggerID": "102",
+    "triggerProb": "100",
+    "delay": "0",
+    "target": "1",
+    "effectID": "776201",
+    "minCD": "0"
+  },
+  {
+    "id": "778212",
+    "triggerID": "102",
+    "triggerProb": "100",
+    "delay": "0",
+    "target": "1",
+    "effectID": "7762301",
+    "minCD": "0"
+  },
+  {
+    "id": "779212",
+    "triggerID": "102",
+    "triggerProb": "100",
+    "delay": "0",
+    "target": "1",
+    "effectID": "7762302",
+    "minCD": "0"
+  },
+  {
+    "id": "776301",
+    "triggerID": "101",
+    "triggerProb": "100",
+    "delay": "0",
+    "target": "0",
+    "effectID": "776301",
+    "minCD": "0"
+  },
+  {
+    "id": "776302",
+    "triggerID": "101",
+    "triggerProb": "100",
+    "delay": "0",
+    "target": "0",
+    "effectID": "776302",
+    "minCD": "0"
+  },
+  {
+    "id": "776303",
+    "triggerID": "101",
+    "triggerProb": "100",
+    "delay": "0",
+    "target": "0",
+    "effectID": "776303",
+    "minCD": "0"
+  },
+  {
+    "id": "776304",
+    "triggerID": "101",
+    "triggerProb": "100",
+    "delay": "5000",
+    "target": "0",
+    "effectID": "776304",
+    "minCD": "0"
+  },
+  {
+    "id": "776502",
+    "triggerID": "101",
+    "triggerProb": "100",
+    "delay": "1500",
+    "target": "1",
+    "effectID": "776502",
+    "minCD": "0"
+  },
+  {
+    "id": "21511",
+    "triggerID": "1102",
+    "triggerProb": "100",
+    "delay": "0",
+    "target": "1",
+    "effectID": "21511",
+    "minCD": "0"
+  },
+  {
+    "id": "21611",
+    "triggerID": "1102",
+    "triggerProb": "100",
+    "delay": "0",
+    "target": "1",
+    "effectID": "21611",
+    "minCD": "0"
+  },
+  {
+    "id": "777301",
+    "triggerID": "101",
+    "triggerProb": "100",
+    "delay": "0",
+    "target": "0",
+    "effectID": "777301",
+    "minCD": "0"
+  },
+  {
+    "id": "777302",
+    "triggerID": "101",
+    "triggerProb": "100",
+    "delay": "0",
+    "target": "0",
+    "effectID": "777302",
+    "minCD": "0"
+  },
+  {
+    "id": "777303",
+    "triggerID": "101",
+    "triggerProb": "100",
+    "delay": "0",
+    "target": "0",
+    "effectID": "777303",
+    "minCD": "0"
+  },
+  {
+    "id": "777304",
+    "triggerID": "101",
+    "triggerProb": "100",
+    "delay": "5000",
+    "target": "0",
+    "effectID": "777304",
+    "minCD": "0"
+  },
+  {
+    "id": "778301",
+    "triggerID": "101",
+    "triggerProb": "100",
+    "delay": "0",
+    "target": "0",
+    "effectID": "778301",
+    "minCD": "0"
+  },
+  {
+    "id": "778302",
+    "triggerID": "101",
+    "triggerProb": "100",
+    "delay": "0",
+    "target": "0",
+    "effectID": "778302",
+    "minCD": "0"
+  },
+  {
+    "id": "778303",
+    "triggerID": "101",
+    "triggerProb": "100",
+    "delay": "0",
+    "target": "0",
+    "effectID": "778303",
+    "minCD": "0"
+  },
+  {
+    "id": "778304",
+    "triggerID": "101",
+    "triggerProb": "100",
+    "delay": "5000",
+    "target": "0",
+    "effectID": "778304",
+    "minCD": "0"
+  },
+  {
+    "id": "779301",
+    "triggerID": "101",
+    "triggerProb": "100",
+    "delay": "0",
+    "target": "0",
+    "effectID": "779301",
+    "minCD": "0"
+  },
+  {
+    "id": "779302",
+    "triggerID": "101",
+    "triggerProb": "100",
+    "delay": "0",
+    "target": "0",
+    "effectID": "779302",
+    "minCD": "0"
+  },
+  {
+    "id": "779303",
+    "triggerID": "101",
+    "triggerProb": "100",
+    "delay": "0",
+    "target": "0",
+    "effectID": "779303",
+    "minCD": "0"
+  },
+  {
+    "id": "779304",
+    "triggerID": "101",
+    "triggerProb": "100",
+    "delay": "5000",
+    "target": "0",
+    "effectID": "779304",
+    "minCD": "0"
+  },
+  {
+    "id": "7001385",
+    "triggerID": "1102",
+    "triggerProb": "100",
+    "delay": "0",
+    "target": "1",
+    "effectID": "7001385",
+    "minCD": "0"
+  },
+  {
+    "id": "7001395",
+    "triggerID": "1102",
+    "triggerProb": "100",
+    "delay": "0",
+    "target": "1",
+    "effectID": "7001395",
+    "minCD": "0"
+  },
+  {
+    "id": "70015542",
+    "triggerID": "1092",
+    "triggerProb": "100",
+    "delay": "0",
+    "target": "1",
+    "effectID": "70015542",
+    "minCD": "0"
+  },
+  {
+    "id": "70015552",
+    "triggerID": "1092",
+    "triggerProb": "100",
+    "delay": "0",
+    "target": "1",
+    "effectID": "70015552",
+    "minCD": "0"
+  },
+  {
+    "id": "7001641",
+    "triggerID": "101",
+    "triggerProb": "100",
+    "delay": "0",
+    "target": "0",
+    "effectID": "7001641",
+    "minCD": "0"
+  },
+  {
+    "id": "700167",
+    "triggerID": "101",
+    "triggerProb": "100",
+    "delay": "0",
+    "target": "0",
+    "effectID": "700167",
+    "minCD": "0"
+  },
+  {
+    "id": "7001670",
+    "triggerID": "101",
+    "triggerProb": "100",
+    "delay": "0",
+    "target": "0",
+    "effectID": "7001670",
+    "minCD": "0"
+  },
+  {
+    "id": "700168",
+    "triggerID": "101",
+    "triggerProb": "100",
+    "delay": "0",
+    "target": "0",
+    "effectID": "700168",
+    "minCD": "0"
+  },
+  {
+    "id": "700169",
+    "triggerID": "101",
+    "triggerProb": "100",
+    "delay": "0",
+    "target": "0",
+    "effectID": "700169",
+    "minCD": "0"
+  },
+  {
+    "id": "700174",
+    "triggerID": "101",
+    "triggerProb": "100",
+    "delay": "0",
+    "target": "0",
+    "effectID": "700174",
+    "minCD": "0"
+  },
+  {
+    "id": "7001741",
+    "triggerID": "101",
+    "triggerProb": "100",
+    "delay": "0",
+    "target": "0",
+    "effectID": "7001741",
+    "minCD": "0"
+  },
+  {
+    "id": "700175",
+    "triggerID": "101",
+    "triggerProb": "100",
+    "delay": "0",
+    "target": "0",
+    "effectID": "700175",
+    "minCD": "0"
+  },
+  {
+    "id": "7001751",
+    "triggerID": "101",
+    "triggerProb": "100",
+    "delay": "0",
+    "target": "0",
+    "effectID": "7001751",
+    "minCD": "0"
+  },
+  {
+    "id": "700177",
+    "triggerID": "1102",
+    "triggerProb": "100",
+    "delay": "0",
+    "target": "1",
+    "effectID": "70017793",
+    "minCD": "0"
+  },
+  {
+    "id": "700178",
+    "triggerID": "101",
+    "triggerProb": "100",
+    "delay": "0",
+    "target": "0",
+    "effectID": "700178",
+    "minCD": "0"
+  },
+  {
+    "id": "70017801",
+    "triggerID": "101",
+    "triggerProb": "100",
+    "delay": "0",
+    "target": "0",
+    "effectID": "70017801",
+    "minCD": "0"
+  },
+  {
+    "id": "7001782",
+    "triggerID": "101",
+    "triggerProb": "100",
+    "delay": "0",
+    "target": "0",
+    "effectID": "7001782",
+    "minCD": "0"
+  },
+  {
+    "id": "700179",
+    "triggerID": "101",
+    "triggerProb": "100",
+    "delay": "0",
+    "target": "0",
+    "effectID": "700179",
+    "minCD": "0"
+  },
+  {
+    "id": "7001793",
+    "triggerID": "101",
+    "triggerProb": "100",
+    "delay": "0",
+    "target": "0",
+    "effectID": "7001793",
+    "minCD": "0"
+  },
+  {
+    "id": "700180",
+    "triggerID": "101",
+    "triggerProb": "100",
+    "delay": "0",
+    "target": "0",
+    "effectID": "700180",
+    "minCD": "0"
+  },
+  {
+    "id": "7001921",
+    "triggerID": "1102",
+    "triggerProb": "100",
+    "delay": "0",
+    "target": "1",
+    "effectID": "7001921",
+    "minCD": "0"
+  },
+  {
+    "id": "70019211",
+    "triggerID": "101",
+    "triggerProb": "100",
+    "delay": "0",
+    "target": "0",
+    "effectID": "70019215",
+    "minCD": "0"
+  },
+  {
+    "id": "7001962",
+    "triggerID": "102",
+    "triggerProb": "100",
+    "delay": "0",
+    "target": "1",
+    "effectID": "70019616",
+    "minCD": "0"
+  },
+  {
+    "id": "7001971",
+    "triggerID": "102",
+    "triggerProb": "100",
+    "delay": "0",
+    "target": "1",
+    "effectID": "70019714",
+    "minCD": "0"
+  },
+  {
+    "id": "781111",
+    "triggerID": "1102",
+    "triggerProb": "100",
+    "delay": "0",
+    "target": "1",
+    "effectID": "781111",
+    "minCD": "0"
+  },
+  {
+    "id": "781211",
+    "triggerID": "102",
+    "triggerProb": "100",
+    "delay": "0",
+    "target": "1",
+    "effectID": "781211",
+    "minCD": "0"
+  },
+  {
+    "id": "78141",
+    "triggerID": "101",
+    "triggerProb": "100",
+    "delay": "0",
+    "target": "1",
+    "effectID": "78141",
+    "minCD": "0"
+  },
+  {
+    "id": "781511",
+    "triggerID": "102",
+    "triggerProb": "100",
+    "delay": "0",
+    "target": "1",
+    "effectID": "781511",
+    "minCD": "0"
+  },
+  {
+    "id": "781611",
+    "triggerID": "102",
+    "triggerProb": "100",
+    "delay": "0",
+    "target": "1",
+    "effectID": "781611",
+    "minCD": "0"
+  },
+  {
+    "id": "10810071",
+    "triggerID": "102",
+    "triggerProb": "100",
+    "delay": "0",
+    "target": "1",
+    "effectID": "10810071",
+    "minCD": "0"
+  },
+  {
+    "id": "1081013",
+    "triggerID": "1102",
+    "triggerProb": "100",
+    "delay": "0",
+    "target": "1",
+    "effectID": "10810131",
+    "minCD": "0"
+  },
+  {
+    "id": "1081015",
+    "triggerID": "1102",
+    "triggerProb": "100",
+    "delay": "0",
+    "target": "1",
+    "effectID": "10810151",
+    "minCD": "0"
+  },
+  {
+    "id": "1081019",
+    "triggerID": "1102",
+    "triggerProb": "100",
+    "delay": "0",
+    "target": "1",
+    "effectID": "10810191",
+    "minCD": "0"
+  },
+  {
+    "id": "1081017",
+    "triggerID": "1102",
+    "triggerProb": "100",
+    "delay": "0",
+    "target": "1",
+    "effectID": "10810171",
+    "minCD": "0"
+  },
+  {
+    "id": "22811",
+    "triggerID": "102",
+    "triggerProb": "100",
+    "delay": "0",
+    "target": "1",
+    "effectID": "22811",
+    "minCD": "0"
+  },
+  {
+    "id": "22812",
+    "triggerID": "102",
+    "triggerProb": "100",
+    "delay": "0",
+    "target": "1",
+    "effectID": "22812",
+    "minCD": "0"
+  },
+  {
+    "id": "78741",
+    "triggerID": "102",
+    "triggerProb": "100",
+    "delay": "0",
+    "target": "1",
+    "effectID": "78741",
+    "minCD": "0"
+  },
+  {
+    "id": "78742",
+    "triggerID": "102",
+    "triggerProb": "100",
+    "delay": "0",
+    "target": "1",
+    "effectID": "78742",
+    "minCD": "0"
+  },
+  {
+    "id": "78811",
+    "triggerID": "101",
+    "triggerProb": "100",
+    "delay": "0",
+    "target": "0",
+    "effectID": "78811",
+    "minCD": "0"
+  },
+  {
+    "id": "788188",
+    "triggerID": "101",
+    "triggerProb": "100",
+    "delay": "0",
+    "target": "0",
+    "effectID": "788188",
+    "minCD": "0"
+  },
+  {
+    "id": "788166",
+    "triggerID": "101",
+    "triggerProb": "100",
+    "delay": "0",
+    "target": "0",
+    "effectID": "788166",
+    "minCD": "0"
+  },
+  {
+    "id": "78821",
+    "triggerID": "101",
+    "triggerProb": "100",
+    "delay": "50",
+    "target": "0",
+    "effectID": "78821",
+    "minCD": "0"
+  },
+  {
+    "id": "78822",
+    "triggerID": "101",
+    "triggerProb": "100",
+    "delay": "50",
+    "target": "0",
+    "effectID": "78822",
+    "minCD": "0"
+  },
+  {
+    "id": "78812",
+    "triggerID": "101",
+    "triggerProb": "100",
+    "delay": "0",
+    "target": "1",
+    "effectID": "78812",
+    "minCD": "0"
+  },
+  {
+    "id": "78815",
+    "triggerID": "101",
+    "triggerProb": "100",
+    "delay": "0",
+    "target": "1",
+    "effectID": "78815",
+    "minCD": "0"
+  },
+  {
+    "id": "78816",
+    "triggerID": "101",
+    "triggerProb": "100",
+    "delay": "0",
+    "target": "1",
+    "effectID": "78816",
+    "minCD": "0"
+  },
+  {
+    "id": "788159",
+    "triggerID": "101",
+    "triggerProb": "100",
+    "delay": "0",
+    "target": "0",
+    "effectID": "788159",
+    "minCD": "0"
+  },
+  {
+    "id": "78921",
+    "triggerID": "105",
+    "triggerProb": "100",
+    "delay": "0",
+    "target": "0",
+    "effectID": "78921",
+    "minCD": "0"
+  },
+  {
+    "id": "78931",
+    "triggerID": "101",
+    "triggerProb": "100",
+    "delay": "0",
+    "target": "0",
+    "effectID": "78931",
+    "minCD": "0"
+  },
+  {
+    "id": "78932",
+    "triggerID": "101",
+    "triggerProb": "100",
+    "delay": "0",
+    "target": "0",
+    "effectID": "78932",
+    "minCD": "0"
+  },
+  {
+    "id": "79011",
+    "triggerID": "101",
+    "triggerProb": "100",
+    "delay": "100",
+    "target": "0",
+    "effectID": "79011",
+    "minCD": "0"
+  },
+  {
+    "id": "79021",
+    "triggerID": "102",
+    "triggerProb": "100",
+    "delay": "0",
+    "target": "1",
+    "effectID": "79021",
+    "minCD": "0"
+  },
+  {
+    "id": "79051",
+    "triggerID": "101",
+    "triggerProb": "100",
+    "delay": "100",
+    "target": "0",
+    "effectID": "79051",
+    "minCD": "0"
+  },
+  {
+    "id": "790311",
+    "triggerID": "102",
+    "triggerProb": "100",
+    "delay": "0",
+    "target": "1",
+    "effectID": "790311",
+    "minCD": "0"
+  },
+  {
+    "id": "79031166",
+    "triggerID": "102",
+    "triggerProb": "100",
+    "delay": "0",
+    "target": "1",
+    "effectID": "79031166",
+    "minCD": "0"
+  },
+  {
+    "id": "54711",
+    "triggerID": "102",
+    "triggerProb": "100",
+    "delay": "0",
+    "target": "1",
+    "effectID": "54711",
+    "minCD": "0"
+  },
+  {
+    "id": "54712",
+    "triggerID": "102",
+    "triggerProb": "100",
+    "delay": "0",
+    "target": "1",
+    "effectID": "54712",
+    "minCD": "0"
+  },
+  {
+    "id": "54713",
+    "triggerID": "102",
+    "triggerProb": "100",
+    "delay": "0",
+    "target": "1",
+    "effectID": "54713",
+    "minCD": "0"
+  },
+  {
+    "id": "54714",
+    "triggerID": "102",
+    "triggerProb": "100",
+    "delay": "0",
+    "target": "0",
+    "effectID": "54714",
+    "minCD": "0"
+  },
+  {
+    "id": "548112",
+    "triggerID": "102",
+    "triggerProb": "100",
+    "delay": "0",
+    "target": "1",
+    "effectID": "548112",
+    "minCD": "0"
+  },
+  {
+    "id": "548113",
+    "triggerID": "102",
+    "triggerProb": "100",
+    "delay": "0",
+    "target": "1",
+    "effectID": "548113",
+    "minCD": "0"
+  },
+  {
+    "id": "548114",
+    "triggerID": "102",
+    "triggerProb": "100",
+    "delay": "0",
+    "target": "1",
+    "effectID": "548114",
+    "minCD": "0"
+  },
+  {
+    "id": "54821",
+    "triggerID": "102",
+    "triggerProb": "100",
+    "delay": "0",
+    "target": "1",
+    "effectID": "54821",
+    "minCD": "0"
+  },
+  {
+    "id": "54822",
+    "triggerID": "102",
+    "triggerProb": "100",
+    "delay": "0",
+    "target": "1",
+    "effectID": "54822",
+    "minCD": "0"
+  },
+  {
+    "id": "54911",
+    "triggerID": "102",
+    "triggerProb": "100",
+    "delay": "0",
+    "target": "0",
+    "effectID": "54911",
+    "minCD": "0"
+  },
+  {
+    "id": "54931",
+    "triggerID": "102",
+    "triggerProb": "100",
+    "delay": "0",
+    "target": "1",
+    "effectID": "54931",
+    "minCD": "0"
+  },
+  {
+    "id": "549211",
+    "triggerID": "102",
+    "triggerProb": "100",
+    "delay": "0",
+    "target": "0",
+    "effectID": "549211",
+    "minCD": "0"
+  },
+  {
+    "id": "549212",
+    "triggerID": "102",
+    "triggerProb": "100",
+    "delay": "0",
+    "target": "1",
+    "effectID": "549212",
+    "minCD": "0"
+  },
+  {
+    "id": "99022082",
+    "triggerID": "1093",
+    "triggerProb": "100",
+    "delay": "0",
+    "target": "1",
+    "effectID": "99022089",
+    "minCD": "0"
+  },
+  {
+    "id": "99022083",
+    "triggerID": "1093",
+    "triggerProb": "100",
+    "delay": "0",
+    "target": "1",
+    "effectID": "99022083",
+    "minCD": "0"
+  },
+  {
+    "id": "70019112",
+    "triggerID": "101",
+    "triggerProb": "100",
+    "delay": "0",
+    "target": "0",
+    "effectID": "70019112",
+    "minCD": "0"
+  },
+  {
+    "id": "4200141",
+    "triggerID": "1092",
+    "triggerProb": "100",
+    "delay": "0",
+    "target": "1",
+    "effectID": "4200141",
+    "minCD": "0"
+  },
+  {
+    "id": "79211",
+    "triggerID": "102",
+    "triggerProb": "100",
+    "delay": "0",
+    "target": "1",
+    "effectID": "79211",
+    "minCD": "0"
+  },
+  {
+    "id": "79212",
+    "triggerID": "102",
+    "triggerProb": "100",
+    "delay": "0",
+    "target": "1",
+    "effectID": "79212",
+    "minCD": "0"
+  },
+  {
+    "id": "79213",
+    "triggerID": "105",
+    "triggerProb": "100",
+    "delay": "0",
+    "target": "0",
+    "effectID": "79213",
+    "minCD": "0"
+  },
+  {
+    "id": "79221",
+    "triggerID": "102",
+    "triggerProb": "100",
+    "delay": "0",
+    "target": "1",
+    "effectID": "79221",
+    "minCD": "0"
+  },
+  {
+    "id": "792311",
+    "triggerID": "102",
+    "triggerProb": "100",
+    "delay": "0",
+    "target": "1",
+    "effectID": "792311",
+    "minCD": "0"
+  },
+  {
+    "id": "79241",
+    "triggerID": "101",
+    "triggerProb": "100",
+    "delay": "0",
+    "target": "0",
+    "effectID": "79241",
+    "minCD": "0"
+  },
+  {
+    "id": "79242",
+    "triggerID": "101",
+    "triggerProb": "100",
+    "delay": "0",
+    "target": "0",
+    "effectID": "79242",
+    "minCD": "0"
+  },
+  {
+    "id": "79261",
+    "triggerID": "102",
+    "triggerProb": "100",
+    "delay": "0",
+    "target": "1",
+    "effectID": "79261",
+    "minCD": "0"
+  },
+  {
+    "id": "79222",
+    "triggerID": "102",
+    "triggerProb": "100",
+    "delay": "0",
+    "target": "0",
+    "effectID": "79222",
+    "minCD": "0"
+  },
+  {
+    "id": "792388",
+    "triggerID": "1092",
+    "triggerProb": "100",
+    "delay": "0",
+    "target": "1",
+    "effectID": "792388",
+    "minCD": "0"
+  },
+  {
+    "id": "79511",
+    "triggerID": "102",
+    "triggerProb": "100",
+    "delay": "0",
+    "target": "1",
+    "effectID": "79511",
+    "minCD": "0"
+  },
+  {
+    "id": "79512",
+    "triggerID": "105",
+    "triggerProb": "100",
+    "delay": "0",
+    "target": "0",
+    "effectID": "79512",
+    "minCD": "0"
+  },
+  {
+    "id": "79513",
+    "triggerID": "105",
+    "triggerProb": "100",
+    "delay": "0",
+    "target": "0",
+    "effectID": "79513",
+    "minCD": "0"
+  },
+  {
+    "id": "79521",
+    "triggerID": "101",
+    "triggerProb": "100",
+    "delay": "0",
+    "target": "0",
+    "effectID": "79521",
+    "minCD": "0"
+  },
+  {
+    "id": "79522",
+    "triggerID": "101",
+    "triggerProb": "100",
+    "delay": "0",
+    "target": "0",
+    "effectID": "79522",
+    "minCD": "0"
+  },
+  {
+    "id": "515101",
+    "triggerID": "105",
+    "triggerProb": "100",
+    "delay": "0",
+    "target": "0",
+    "effectID": "515101",
+    "minCD": "0"
+  },
+  {
+    "id": "766201",
+    "triggerID": "105",
+    "triggerProb": "100",
+    "delay": "0",
+    "target": "0",
+    "effectID": "766201",
+    "minCD": "0"
+  },
+  {
+    "id": "767201",
+    "triggerID": "101",
+    "triggerProb": "100",
+    "delay": "0",
+    "target": "0",
+    "effectID": "767202",
+    "minCD": "0"
+  },
+  {
+    "id": "11006211",
+    "triggerID": "101",
+    "triggerProb": "100",
+    "delay": "0",
+    "target": "0",
+    "effectID": "1100621",
+    "minCD": "0"
+  },
+  {
+    "id": "11006212",
+    "triggerID": "105",
+    "triggerProb": "100",
+    "delay": "0",
+    "target": "0",
+    "effectID": "1100634",
+    "minCD": "0"
+  },
+  {
+    "id": "720101",
+    "triggerID": "105",
+    "triggerProb": "100",
+    "delay": "0",
+    "target": "0",
+    "effectID": "720101",
+    "minCD": "0"
+  },
+  {
+    "id": "7052101",
+    "triggerID": "101",
+    "triggerProb": "100",
+    "delay": "0",
+    "target": "0",
+    "effectID": "7052101",
+    "minCD": "0"
+  },
+  {
+    "id": "715101",
+    "triggerID": "101",
+    "triggerProb": "100",
+    "delay": "0",
+    "target": "0",
+    "effectID": "715101",
+    "minCD": "0"
+  },
+  {
+    "id": "715201",
+    "triggerID": "105",
+    "triggerProb": "100",
+    "delay": "0",
+    "target": "0",
+    "effectID": "715201",
+    "minCD": "0"
+  },
+  {
+    "id": "721401",
+    "triggerID": "105",
+    "triggerProb": "100",
+    "delay": "0",
+    "target": "0",
+    "effectID": "721401",
+    "minCD": "0"
+  },
+  {
+    "id": "721402",
+    "triggerID": "101",
+    "triggerProb": "100",
+    "delay": "0",
+    "target": "0",
+    "effectID": "721411",
+    "minCD": "0"
+  },
+  {
+    "id": "721201",
+    "triggerID": "101",
+    "triggerProb": "100",
+    "delay": "0",
+    "target": "0",
+    "effectID": "721201",
+    "minCD": "0"
+  },
+  {
+    "id": "721101",
+    "triggerID": "101",
+    "triggerProb": "100",
+    "delay": "0",
+    "target": "0",
+    "effectID": "721101",
+    "minCD": "0"
+  },
+  {
+    "id": "11002201",
+    "triggerID": "105",
+    "triggerProb": "100",
+    "delay": "0",
+    "target": "0",
+    "effectID": "11002201",
+    "minCD": "0"
+  },
+  {
+    "id": "711201",
+    "triggerID": "105",
+    "triggerProb": "100",
+    "delay": "0",
+    "target": "0",
+    "effectID": "711201",
+    "minCD": "0"
+  },
+  {
+    "id": "7113101",
+    "triggerID": "101",
+    "triggerProb": "100",
+    "delay": "0",
+    "target": "0",
+    "effectID": "7113101",
+    "minCD": "0"
+  },
+  {
+    "id": "7113102",
+    "triggerID": "101",
+    "triggerProb": "100",
+    "delay": "0",
+    "target": "0",
+    "effectID": "7113102",
+    "minCD": "0"
+  },
+  {
+    "id": "11004101",
+    "triggerID": "105",
+    "triggerProb": "100",
+    "delay": "0",
+    "target": "0",
+    "effectID": "11004101",
+    "minCD": "0"
+  },
+  {
+    "id": "736401",
+    "triggerID": "105",
+    "triggerProb": "100",
+    "delay": "0",
+    "target": "0",
+    "effectID": "736401",
+    "minCD": "0"
+  },
+  {
+    "id": "735101",
+    "triggerID": "105",
+    "triggerProb": "100",
+    "delay": "0",
+    "target": "0",
+    "effectID": "735101",
+    "minCD": "0"
+  },
+  {
+    "id": "735401",
+    "triggerID": "101",
+    "triggerProb": "100",
+    "delay": "0",
+    "target": "0",
+    "effectID": "735401",
+    "minCD": "0"
+  },
+  {
+    "id": "716201",
+    "triggerID": "105",
+    "triggerProb": "100",
+    "delay": "0",
+    "target": "0",
+    "effectID": "716201",
+    "minCD": "0"
+  },
+  {
+    "id": "717101",
+    "triggerID": "101",
+    "triggerProb": "100",
+    "delay": "0",
+    "target": "0",
+    "effectID": "717101",
+    "minCD": "0"
+  },
+  {
+    "id": "726101",
+    "triggerID": "101",
+    "triggerProb": "100",
+    "delay": "0",
+    "target": "0",
+    "effectID": "726101",
+    "minCD": "0"
+  },
+  {
+    "id": "734201",
+    "triggerID": "105",
+    "triggerProb": "100",
+    "delay": "0",
+    "target": "0",
+    "effectID": "734201",
+    "minCD": "0"
+  },
+  {
+    "id": "11003201",
+    "triggerID": "105",
+    "triggerProb": "100",
+    "delay": "0",
+    "target": "0",
+    "effectID": "11003201",
+    "minCD": "0"
+  },
+  {
+    "id": "1100322",
+    "triggerID": "102",
+    "triggerProb": "100",
+    "delay": "0",
+    "target": "1",
+    "effectID": "1100321",
+    "minCD": "0"
+  },
+  {
+    "id": "738101",
+    "triggerID": "101",
+    "triggerProb": "100",
+    "delay": "0",
+    "target": "0",
+    "effectID": "738101",
+    "minCD": "0"
+  },
+  {
+    "id": "738401",
+    "triggerID": "101",
+    "triggerProb": "100",
+    "delay": "0",
+    "target": "0",
+    "effectID": "738401",
+    "minCD": "0"
+  },
+  {
+    "id": "712201",
+    "triggerID": "101",
+    "triggerProb": "100",
+    "delay": "0",
+    "target": "0",
+    "effectID": "712201",
+    "minCD": "0"
+  },
+  {
+    "id": "722101",
+    "triggerID": "101",
+    "triggerProb": "100",
+    "delay": "0",
+    "target": "0",
+    "effectID": "722101",
+    "minCD": "0"
+  },
+  {
+    "id": "722301",
+    "triggerID": "101",
+    "triggerProb": "100",
+    "delay": "0",
+    "target": "0",
+    "effectID": "722301",
+    "minCD": "0"
+  },
+  {
+    "id": "722401",
+    "triggerID": "101",
+    "triggerProb": "100",
+    "delay": "0",
+    "target": "0",
+    "effectID": "722401",
+    "minCD": "0"
+  },
+  {
+    "id": "732101",
+    "triggerID": "101",
+    "triggerProb": "100",
+    "delay": "0",
+    "target": "0",
+    "effectID": "732101",
+    "minCD": "0"
+  },
+  {
+    "id": "732401",
+    "triggerID": "105",
+    "triggerProb": "100",
+    "delay": "0",
+    "target": "0",
+    "effectID": "732401",
+    "minCD": "0"
+  },
+  {
+    "id": "755101",
+    "triggerID": "101",
+    "triggerProb": "100",
+    "delay": "0",
+    "target": "0",
+    "effectID": "755101",
+    "minCD": "0"
+  },
+  {
+    "id": "755301",
+    "triggerID": "101",
+    "triggerProb": "100",
+    "delay": "0",
+    "target": "0",
+    "effectID": "755301",
+    "minCD": "0"
+  },
+  {
+    "id": "7572101",
+    "triggerID": "101",
+    "triggerProb": "100",
+    "delay": "0",
+    "target": "0",
+    "effectID": "7572101",
+    "minCD": "0"
+  },
+  {
+    "id": "757401",
+    "triggerID": "101",
+    "triggerProb": "100",
+    "delay": "0",
+    "target": "0",
+    "effectID": "757401",
+    "minCD": "0"
+  },
+  {
+    "id": "758201",
+    "triggerID": "101",
+    "triggerProb": "100",
+    "delay": "0",
+    "target": "0",
+    "effectID": "758201",
+    "minCD": "0"
+  },
+  {
+    "id": "731301",
+    "triggerID": "101",
+    "triggerProb": "100",
+    "delay": "0",
+    "target": "0",
+    "effectID": "731301",
+    "minCD": "0"
+  },
+  {
+    "id": "731302",
+    "triggerID": "105",
+    "triggerProb": "100",
+    "delay": "0",
+    "target": "0",
+    "effectID": "731311",
+    "minCD": "0"
+  },
+  {
+    "id": "768401",
+    "triggerID": "101",
+    "triggerProb": "100",
+    "delay": "0",
+    "target": "0",
+    "effectID": "768401",
+    "minCD": "0"
+  },
+  {
+    "id": "768301",
+    "triggerID": "101",
+    "triggerProb": "100",
+    "delay": "0",
+    "target": "0",
+    "effectID": "768301",
+    "minCD": "0"
+  },
+  {
+    "id": "1100763",
+    "triggerID": "102",
+    "triggerProb": "100",
+    "delay": "0",
+    "target": "0",
+    "effectID": "110073",
+    "minCD": "0"
+  },
+  {
+    "id": "100721",
+    "triggerID": "102",
+    "triggerProb": "100",
+    "delay": "0",
+    "target": "1",
+    "effectID": "100721",
+    "minCD": "0"
+  },
+  {
+    "id": "100722",
+    "triggerID": "102",
+    "triggerProb": "100",
+    "delay": "0",
+    "target": "1",
+    "effectID": "100722",
+    "minCD": "0"
+  },
+  {
+    "id": "100724",
+    "triggerID": "101",
+    "triggerProb": "100",
+    "delay": "0",
+    "target": "0",
+    "effectID": "1007241",
+    "minCD": "0"
+  },
+  {
+    "id": "5152113",
+    "triggerID": "101",
+    "triggerProb": "100",
+    "delay": "0",
+    "target": "0",
+    "effectID": "5152113",
+    "minCD": "0"
+  },
+  {
+    "id": "76621",
+    "triggerID": "105",
+    "triggerProb": "100",
+    "delay": "0",
+    "target": "0",
+    "effectID": "76621",
+    "minCD": "0"
+  },
+  {
+    "id": "76712",
+    "triggerID": "105",
+    "triggerProb": "100",
+    "delay": "0",
+    "target": "0",
+    "effectID": "76712",
+    "minCD": "0"
+  },
+  {
+    "id": "110063",
+    "triggerID": "101",
+    "triggerProb": "100",
+    "delay": "0",
+    "target": "0",
+    "effectID": "1100633",
+    "minCD": "0"
+  },
+  {
+    "id": "7203",
+    "triggerID": "105",
+    "triggerProb": "100",
+    "delay": "0",
+    "target": "0",
+    "effectID": "7203",
+    "minCD": "0"
+  },
+  {
+    "id": "7204",
+    "triggerID": "102",
+    "triggerProb": "100",
+    "delay": "0",
+    "target": "1",
+    "effectID": "7204",
+    "minCD": "0"
+  },
+  {
+    "id": "7051",
+    "triggerID": "105",
+    "triggerProb": "100",
+    "delay": "0",
+    "target": "0",
+    "effectID": "7051",
+    "minCD": "0"
+  },
+  {
+    "id": "7054",
+    "triggerID": "105",
+    "triggerProb": "100",
+    "delay": "0",
+    "target": "0",
+    "effectID": "7054",
+    "minCD": "0"
+  },
+  {
+    "id": "71543",
+    "triggerID": "105",
+    "triggerProb": "100",
+    "delay": "0",
+    "target": "0",
+    "effectID": "71543",
+    "minCD": "0"
+  },
+  {
+    "id": "71511",
+    "triggerID": "101",
+    "triggerProb": "100",
+    "delay": "0",
+    "target": "0",
+    "effectID": "71511",
+    "minCD": "0"
+  },
+  {
+    "id": "72133",
+    "triggerID": "105",
+    "triggerProb": "100",
+    "delay": "0",
+    "target": "0",
+    "effectID": "72133",
+    "minCD": "0"
+  },
+  {
+    "id": "110021",
+    "triggerID": "105",
+    "triggerProb": "100",
+    "delay": "0",
+    "target": "0",
+    "effectID": "110021",
+    "minCD": "0"
+  },
+  {
+    "id": "110023",
+    "triggerID": "102",
+    "triggerProb": "100",
+    "delay": "0",
+    "target": "1",
+    "effectID": "110023",
+    "minCD": "0"
+  },
+  {
+    "id": "1100421",
+    "triggerID": "105",
+    "triggerProb": "100",
+    "delay": "0",
+    "target": "0",
+    "effectID": "1100421",
+    "minCD": "0"
+  },
+  {
+    "id": "73611",
+    "triggerID": "102",
+    "triggerProb": "100",
+    "delay": "0",
+    "target": "0",
+    "effectID": "73611",
+    "minCD": "0"
+  },
+  {
+    "id": "73612",
+    "triggerID": "102",
+    "triggerProb": "100",
+    "delay": "0",
+    "target": "0",
+    "effectID": "73612",
+    "minCD": "0"
+  },
+  {
+    "id": "73621",
+    "triggerID": "102",
+    "triggerProb": "100",
+    "delay": "0",
+    "target": "0",
+    "effectID": "73621",
+    "minCD": "0"
+  },
+  {
+    "id": "73622",
+    "triggerID": "102",
+    "triggerProb": "100",
+    "delay": "0",
+    "target": "0",
+    "effectID": "73622",
+    "minCD": "0"
+  },
+  {
+    "id": "73623",
+    "triggerID": "101",
+    "triggerProb": "100",
+    "delay": "0",
+    "target": "0",
+    "effectID": "73623",
+    "minCD": "0"
+  },
+  {
+    "id": "73631",
+    "triggerID": "102",
+    "triggerProb": "100",
+    "delay": "0",
+    "target": "0",
+    "effectID": "73631",
+    "minCD": "0"
+  },
+  {
+    "id": "73632",
+    "triggerID": "102",
+    "triggerProb": "100",
+    "delay": "0",
+    "target": "0",
+    "effectID": "73632",
+    "minCD": "0"
+  },
+  {
+    "id": "73531",
+    "triggerID": "102",
+    "triggerProb": "100",
+    "delay": "0",
+    "target": "0",
+    "effectID": "73531",
+    "minCD": "0"
+  },
+  {
+    "id": "73532",
+    "triggerID": "102",
+    "triggerProb": "100",
+    "delay": "0",
+    "target": "0",
+    "effectID": "73532",
+    "minCD": "0"
+  },
+  {
+    "id": "73411",
+    "triggerID": "105",
+    "triggerProb": "100",
+    "delay": "0",
+    "target": "0",
+    "effectID": "73411",
+    "minCD": "0"
+  },
+  {
+    "id": "73431",
+    "triggerID": "105",
+    "triggerProb": "100",
+    "delay": "0",
+    "target": "0",
+    "effectID": "73431",
+    "minCD": "0"
+  },
+  {
+    "id": "73721",
+    "triggerID": "102",
+    "triggerProb": "100",
+    "delay": "0",
+    "target": "0",
+    "effectID": "73721",
+    "minCD": "0"
+  },
+  {
+    "id": "73722",
+    "triggerID": "102",
+    "triggerProb": "100",
+    "delay": "0",
+    "target": "0",
+    "effectID": "73722",
+    "minCD": "0"
+  },
+  {
+    "id": "73711",
+    "triggerID": "102",
+    "triggerProb": "100",
+    "delay": "0",
+    "target": "1",
+    "effectID": "73711",
+    "minCD": "0"
+  },
+  {
+    "id": "73741",
+    "triggerID": "105",
+    "triggerProb": "100",
+    "delay": "0",
+    "target": "0",
+    "effectID": "73741",
+    "minCD": "0"
+  },
+  {
+    "id": "110031",
+    "triggerID": "105",
+    "triggerProb": "100",
+    "delay": "0",
+    "target": "0",
+    "effectID": "110031",
+    "minCD": "0"
+  },
+  {
+    "id": "110033",
+    "triggerID": "102",
+    "triggerProb": "100",
+    "delay": "0",
+    "target": "1",
+    "effectID": "110033",
+    "minCD": "0"
+  },
+  {
+    "id": "73821",
+    "triggerID": "102",
+    "triggerProb": "100",
+    "delay": "0",
+    "target": "1",
+    "effectID": "73821",
+    "minCD": "0"
+  },
+  {
+    "id": "73822",
+    "triggerID": "101",
+    "triggerProb": "100",
+    "delay": "0",
+    "target": "0",
+    "effectID": "73822",
+    "minCD": "0"
+  },
+  {
+    "id": "71211",
+    "triggerID": "102",
+    "triggerProb": "100",
+    "delay": "0",
+    "target": "0",
+    "effectID": "71211",
+    "minCD": "0"
+  },
+  {
+    "id": "71261",
+    "triggerID": "102",
+    "triggerProb": "100",
+    "delay": "0",
+    "target": "1",
+    "effectID": "71261",
+    "minCD": "0"
+  },
+  {
+    "id": "72211",
+    "triggerID": "102",
+    "triggerProb": "100",
+    "delay": "0",
+    "target": "1",
+    "effectID": "72212",
+    "minCD": "0"
+  },
+  {
+    "id": "73221",
+    "triggerID": "105",
+    "triggerProb": "100",
+    "delay": "0",
+    "target": "0",
+    "effectID": "73221",
+    "minCD": "0"
+  },
+  {
+    "id": "73231",
+    "triggerID": "105",
+    "triggerProb": "100",
+    "delay": "0",
+    "target": "0",
+    "effectID": "73231",
+    "minCD": "0"
+  },
+  {
+    "id": "75432",
+    "triggerID": "102",
+    "triggerProb": "100",
+    "delay": "0",
+    "target": "1",
+    "effectID": "75432",
+    "minCD": "0"
+  },
+  {
+    "id": "75411",
+    "triggerID": "105",
+    "triggerProb": "100",
+    "delay": "0",
+    "target": "0",
+    "effectID": "75411",
+    "minCD": "0"
+  },
+  {
+    "id": "75421",
+    "triggerID": "102",
+    "triggerProb": "100",
+    "delay": "0",
+    "target": "0",
+    "effectID": "75421",
+    "minCD": "0"
+  },
+  {
+    "id": "75422",
+    "triggerID": "102",
+    "triggerProb": "100",
+    "delay": "0",
+    "target": "0",
+    "effectID": "75422",
+    "minCD": "0"
+  },
+  {
+    "id": "75521",
+    "triggerID": "105",
+    "triggerProb": "100",
+    "delay": "0",
+    "target": "0",
+    "effectID": "75521",
+    "minCD": "0"
+  },
+  {
+    "id": "75541",
+    "triggerID": "102",
+    "triggerProb": "100",
+    "delay": "0",
+    "target": "1",
+    "effectID": "75541",
+    "minCD": "0"
+  },
+  {
+    "id": "75711",
+    "triggerID": "105",
+    "triggerProb": "100",
+    "delay": "0",
+    "target": "0",
+    "effectID": "75711",
+    "minCD": "0"
+  },
+  {
+    "id": "75712",
+    "triggerID": "101",
+    "triggerProb": "100",
+    "delay": "0",
+    "target": "0",
+    "effectID": "75712",
+    "minCD": "0"
+  },
+  {
+    "id": "75731",
+    "triggerID": "102",
+    "triggerProb": "100",
+    "delay": "0",
+    "target": "0",
+    "effectID": "75731",
+    "minCD": "0"
+  },
+  {
+    "id": "75732",
+    "triggerID": "102",
+    "triggerProb": "100",
+    "delay": "0",
+    "target": "0",
+    "effectID": "75732",
+    "minCD": "0"
+  },
+  {
+    "id": "75841",
+    "triggerID": "102",
+    "triggerProb": "100",
+    "delay": "0",
+    "target": "0",
+    "effectID": "75841",
+    "minCD": "0"
+  },
+  {
+    "id": "75842",
+    "triggerID": "102",
+    "triggerProb": "100",
+    "delay": "0",
+    "target": "0",
+    "effectID": "75842",
+    "minCD": "0"
+  },
+  {
+    "id": "76811",
+    "triggerID": "101",
+    "triggerProb": "100",
+    "delay": "0",
+    "target": "0",
+    "effectID": "76811",
+    "minCD": "0"
+  },
+  {
+    "id": "79311",
+    "triggerID": "102",
+    "triggerProb": "100",
+    "delay": "0",
+    "target": "1",
+    "effectID": "79311",
+    "minCD": "0"
+  },
+  {
+    "id": "79312",
+    "triggerID": "105",
+    "triggerProb": "100",
+    "delay": "0",
+    "target": "0",
+    "effectID": "79312",
+    "minCD": "0"
+  },
+  {
+    "id": "79321",
+    "triggerID": "102",
+    "triggerProb": "100",
+    "delay": "0",
+    "target": "1",
+    "effectID": "79321",
+    "minCD": "0"
+  },
+  {
+    "id": "7932881",
+    "triggerID": "102",
+    "triggerProb": "100",
+    "delay": "0",
+    "target": "1",
+    "effectID": "7932881",
+    "minCD": "0"
+  },
+  {
+    "id": "79331",
+    "triggerID": "102",
+    "triggerProb": "100",
+    "delay": "0",
+    "target": "1",
+    "effectID": "79331",
+    "minCD": "0"
+  },
+  {
+    "id": "79332",
+    "triggerID": "102",
+    "triggerProb": "100",
+    "delay": "0",
+    "target": "1",
+    "effectID": "79332",
+    "minCD": "0"
+  },
+  {
+    "id": "79341",
+    "triggerID": "102",
+    "triggerProb": "100",
+    "delay": "150",
+    "target": "1",
+    "effectID": "79341",
+    "minCD": "0"
+  },
+  {
+    "id": "79342",
+    "triggerID": "102",
+    "triggerProb": "100",
+    "delay": "300",
+    "target": "1",
+    "effectID": "79341",
+    "minCD": "0"
+  },
+  {
+    "id": "798111",
+    "triggerID": "1092",
+    "triggerProb": "100",
+    "delay": "0",
+    "target": "1",
+    "effectID": "798111",
+    "minCD": "0"
+  },
+  {
+    "id": "79821",
+    "triggerID": "102",
+    "triggerProb": "100",
+    "delay": "0",
+    "target": "1",
+    "effectID": "79821",
+    "minCD": "0"
+  },
+  {
+    "id": "79831",
+    "triggerID": "102",
+    "triggerProb": "100",
+    "delay": "0",
+    "target": "1",
+    "effectID": "79831",
+    "minCD": "0"
+  },
+  {
+    "id": "79841",
+    "triggerID": "1092",
+    "triggerProb": "100",
+    "delay": "0",
+    "target": "1",
+    "effectID": "79841",
+    "minCD": "0"
+  },
+  {
+    "id": "79842",
+    "triggerID": "1092",
+    "triggerProb": "100",
+    "delay": "0",
+    "target": "1",
+    "effectID": "79842",
+    "minCD": "0"
+  },
+  {
+    "id": "79411",
+    "triggerID": "105",
+    "triggerProb": "100",
+    "delay": "0",
+    "target": "0",
+    "effectID": "79411",
+    "minCD": "0"
+  },
+  {
+    "id": "79412",
+    "triggerID": "102",
+    "triggerProb": "100",
+    "delay": "0",
+    "target": "1",
+    "effectID": "79412",
+    "minCD": "0"
+  },
+  {
+    "id": "7941881",
+    "triggerID": "101",
+    "triggerProb": "100",
+    "delay": "0",
+    "target": "0",
+    "effectID": "7941881",
+    "minCD": "0"
+  },
+  {
+    "id": "7941882",
+    "triggerID": "102",
+    "triggerProb": "100",
+    "delay": "0",
+    "target": "1",
+    "effectID": "7941882",
+    "minCD": "0"
+  },
+  {
+    "id": "79431",
+    "triggerID": "101",
+    "triggerProb": "100",
+    "delay": "0",
+    "target": "0",
+    "effectID": "79431",
+    "minCD": "0"
+  },
+  {
+    "id": "79432",
+    "triggerID": "102",
+    "triggerProb": "100",
+    "delay": "0",
+    "target": "1",
+    "effectID": "79432",
+    "minCD": "0"
+  },
+  {
+    "id": "79433",
+    "triggerID": "102",
+    "triggerProb": "100",
+    "delay": "0",
+    "target": "1",
+    "effectID": "79433",
+    "minCD": "0"
+  },
+  {
+    "id": "79611",
+    "triggerID": "102",
+    "triggerProb": "100",
+    "delay": "0",
+    "target": "1",
+    "effectID": "79611",
+    "minCD": "0"
+  },
+  {
+    "id": "79631",
+    "triggerID": "101",
+    "triggerProb": "100",
+    "delay": "0",
+    "target": "0",
+    "effectID": "79631",
+    "minCD": "0"
+  },
+  {
+    "id": "79632",
+    "triggerID": "101",
+    "triggerProb": "100",
+    "delay": "0",
+    "target": "0",
+    "effectID": "79632",
+    "minCD": "0"
+  },
+  {
+    "id": "79641",
+    "triggerID": "102",
+    "triggerProb": "100",
+    "delay": "0",
+    "target": "1",
+    "effectID": "79641",
+    "minCD": "0"
+  },
+  {
+    "id": "79651",
+    "triggerID": "105",
+    "triggerProb": "100",
+    "delay": "0",
+    "target": "1",
+    "effectID": "79651",
+    "minCD": "0"
+  },
+  {
+    "id": "79711",
+    "triggerID": "102",
+    "triggerProb": "100",
+    "delay": "0",
+    "target": "1",
+    "effectID": "79711",
+    "minCD": "0"
+  },
+  {
+    "id": "79731",
+    "triggerID": "101",
+    "triggerProb": "100",
+    "delay": "0",
+    "target": "0",
+    "effectID": "79731",
+    "minCD": "0"
+  },
+  {
+    "id": "79732",
+    "triggerID": "101",
+    "triggerProb": "100",
+    "delay": "0",
+    "target": "0",
+    "effectID": "79732",
+    "minCD": "0"
+  },
+  {
+    "id": "79741",
+    "triggerID": "102",
+    "triggerProb": "100",
+    "delay": "0",
+    "target": "1",
+    "effectID": "79741",
+    "minCD": "0"
+  },
+  {
+    "id": "79811",
+    "triggerID": "105",
+    "triggerProb": "100",
+    "delay": "0",
+    "target": "0",
+    "effectID": "79811",
+    "minCD": "0"
+  },
+  {
+    "id": "26711",
+    "triggerID": "101",
+    "triggerProb": "100",
+    "delay": "0",
+    "target": "0",
+    "effectID": "26711",
+    "minCD": "0"
+  },
+  {
+    "id": "267111",
+    "triggerID": "102",
+    "triggerProb": "100",
+    "delay": "0",
+    "target": "1",
+    "effectID": "267111",
+    "minCD": "0"
+  },
+  {
+    "id": "2671111",
+    "triggerID": "102",
+    "triggerProb": "100",
+    "delay": "0",
+    "target": "1",
+    "effectID": "2671121",
+    "minCD": "0"
+  },
+  {
+    "id": "2671112",
+    "triggerID": "102",
+    "triggerProb": "100",
+    "delay": "0",
+    "target": "1",
+    "effectID": "2671122",
+    "minCD": "0"
+  },
+  {
+    "id": "2671113",
+    "triggerID": "102",
+    "triggerProb": "100",
+    "delay": "0",
+    "target": "1",
+    "effectID": "2671123",
+    "minCD": "0"
+  },
+  {
+    "id": "2671114",
+    "triggerID": "102",
+    "triggerProb": "100",
+    "delay": "0",
+    "target": "1",
+    "effectID": "2671124",
+    "minCD": "0"
+  },
+  {
+    "id": "2671115",
+    "triggerID": "102",
+    "triggerProb": "100",
+    "delay": "0",
+    "target": "1",
+    "effectID": "2671125",
+    "minCD": "0"
+  },
+  {
+    "id": "2671116",
+    "triggerID": "102",
+    "triggerProb": "100",
+    "delay": "0",
+    "target": "1",
+    "effectID": "2671126",
+    "minCD": "0"
+  },
+  {
+    "id": "2671117",
+    "triggerID": "102",
+    "triggerProb": "100",
+    "delay": "0",
+    "target": "1",
+    "effectID": "2671127",
+    "minCD": "0"
+  },
+  {
+    "id": "2671118",
+    "triggerID": "102",
+    "triggerProb": "100",
+    "delay": "0",
+    "target": "1",
+    "effectID": "2671128",
+    "minCD": "0"
+  },
+  {
+    "id": "2671119",
+    "triggerID": "102",
+    "triggerProb": "100",
+    "delay": "0",
+    "target": "1",
+    "effectID": "2671129",
+    "minCD": "0"
+  },
+  {
+    "id": "2671120",
+    "triggerID": "102",
+    "triggerProb": "100",
+    "delay": "0",
+    "target": "1",
+    "effectID": "2671130",
+    "minCD": "0"
+  },
+  {
+    "id": "2671121",
+    "triggerID": "102",
+    "triggerProb": "100",
+    "delay": "0",
+    "target": "1",
+    "effectID": "2671131",
+    "minCD": "0"
+  },
+  {
+    "id": "2671122",
+    "triggerID": "102",
+    "triggerProb": "100",
+    "delay": "0",
+    "target": "1",
+    "effectID": "2671132",
+    "minCD": "0"
+  },
+  {
+    "id": "2671123",
+    "triggerID": "102",
+    "triggerProb": "100",
+    "delay": "0",
+    "target": "1",
+    "effectID": "2671133",
+    "minCD": "0"
+  },
+  {
+    "id": "2671124",
+    "triggerID": "102",
+    "triggerProb": "100",
+    "delay": "0",
+    "target": "1",
+    "effectID": "2671134",
+    "minCD": "0"
+  },
+  {
+    "id": "2671125",
+    "triggerID": "102",
+    "triggerProb": "100",
+    "delay": "0",
+    "target": "1",
+    "effectID": "2671135",
+    "minCD": "0"
+  },
+  {
+    "id": "2671126",
+    "triggerID": "102",
+    "triggerProb": "100",
+    "delay": "0",
+    "target": "1",
+    "effectID": "2671136",
+    "minCD": "0"
+  },
+  {
+    "id": "2671127",
+    "triggerID": "102",
+    "triggerProb": "100",
+    "delay": "0",
+    "target": "1",
+    "effectID": "2671137",
+    "minCD": "0"
+  },
+  {
+    "id": "2671128",
+    "triggerID": "102",
+    "triggerProb": "100",
+    "delay": "0",
+    "target": "1",
+    "effectID": "2671138",
+    "minCD": "0"
+  },
+  {
+    "id": "79911",
+    "triggerID": "102",
+    "triggerProb": "100",
+    "delay": "0",
+    "target": "1",
+    "effectID": "799001",
+    "minCD": "0"
+  },
+  {
+    "id": "79912",
+    "triggerID": "105",
+    "triggerProb": "100",
+    "delay": "0",
+    "target": "0",
+    "effectID": "79912",
+    "minCD": "0"
+  },
+  {
+    "id": "79921",
+    "triggerID": "101",
+    "triggerProb": "100",
+    "delay": "4000",
+    "target": "0",
+    "effectID": "79921",
+    "minCD": "0"
+  },
+  {
+    "id": "79931",
+    "triggerID": "102",
+    "triggerProb": "100",
+    "delay": "0",
+    "target": "1",
+    "effectID": "799004",
+    "minCD": "0"
+  },
+  {
+    "id": "799311",
+    "triggerID": "102",
+    "triggerProb": "100",
+    "delay": "0",
+    "target": "1",
+    "effectID": "799003",
+    "minCD": "0"
+  },
+  {
+    "id": "79941",
+    "triggerID": "101",
+    "triggerProb": "100",
+    "delay": "0",
+    "target": "0",
+    "effectID": "79941",
+    "minCD": "0"
+  },
+  {
+    "id": "5551011",
+    "triggerID": "102",
+    "triggerProb": "100",
+    "delay": "0",
+    "target": "1",
+    "effectID": "5551011",
+    "minCD": "0"
+  },
+  {
+    "id": "1410001",
+    "triggerID": "1092",
+    "triggerProb": "100",
+    "delay": "0",
+    "target": "1",
+    "effectID": "1410001",
+    "minCD": "0"
+  },
+  {
+    "id": "1410111",
+    "triggerID": "101",
+    "triggerProb": "100",
+    "delay": "0",
+    "target": "0",
+    "effectID": "1410111",
+    "minCD": "0"
+  },
+  {
+    "id": "1410121",
+    "triggerID": "101",
+    "triggerProb": "100",
+    "delay": "0",
+    "target": "0",
+    "effectID": "1410121",
+    "minCD": "0"
+  },
+  {
+    "id": "800311",
+    "triggerID": "101",
+    "triggerProb": "100",
+    "delay": "0",
+    "target": "0",
+    "effectID": "800311",
+    "minCD": "0"
+  },
+  {
+    "id": "800101",
+    "triggerID": "102",
+    "triggerProb": "100",
+    "delay": "0",
+    "target": "1",
+    "effectID": "800101",
+    "minCD": "0"
+  },
+  {
+    "id": "80131",
+    "triggerID": "101",
+    "triggerProb": "100",
+    "delay": "0",
+    "target": "0",
+    "effectID": "80131",
+    "minCD": "0"
+  },
+  {
+    "id": "80111",
+    "triggerID": "105",
+    "triggerProb": "100",
+    "delay": "0",
+    "target": "0",
+    "effectID": "801001",
+    "minCD": "0"
+  },
+  {
+    "id": "6121021",
+    "triggerID": "102",
+    "triggerProb": "100",
+    "delay": "0",
+    "target": "1",
+    "effectID": "6121021",
+    "minCD": "0"
+  },
+  {
+    "id": "6121022",
+    "triggerID": "102",
+    "triggerProb": "100",
+    "delay": "0",
+    "target": "1",
+    "effectID": "6121022",
+    "minCD": "0"
+  },
+  {
+    "id": "80211",
+    "triggerID": "105",
+    "triggerProb": "100",
+    "delay": "0",
+    "target": "0",
+    "effectID": "802001",
+    "minCD": "0"
+  },
+  {
+    "id": "80311",
+    "triggerID": "102",
+    "triggerProb": "100",
+    "delay": "0",
+    "target": "1",
+    "effectID": "80311",
+    "minCD": "0"
+  },
+  {
+    "id": "80312",
+    "triggerID": "105",
+    "triggerProb": "100",
+    "delay": "0",
+    "target": "0",
+    "effectID": "80312",
+    "minCD": "0"
+  },
+  {
+    "id": "80331",
+    "triggerID": "106",
+    "triggerProb": "100",
+    "delay": "0",
+    "target": "0",
+    "effectID": "80331",
+    "minCD": "0"
+  },
+  {
+    "id": "80341",
+    "triggerID": "102",
+    "triggerProb": "100",
+    "delay": "0",
+    "target": "1",
+    "effectID": "80341",
+    "minCD": "0"
+  },
+  {
+    "id": "80511",
+    "triggerID": "105",
+    "triggerProb": "100",
+    "delay": "0",
+    "target": "0",
+    "effectID": "805002",
+    "minCD": "0"
+  },
+  {
+    "id": "1410002",
+    "triggerID": "105",
+    "triggerProb": "100",
+    "delay": "0",
+    "target": "0",
+    "effectID": "1410002",
+    "minCD": "0"
+  },
+  {
+    "id": "80411",
+    "triggerID": "102",
+    "triggerProb": "100",
+    "delay": "0",
+    "target": "1",
+    "effectID": "80411",
+    "minCD": "0"
+  },
+  {
+    "id": "80431",
+    "triggerID": "106",
+    "triggerProb": "100",
+    "delay": "0",
+    "target": "0",
+    "effectID": "80431",
+    "minCD": "0"
+  },
+  {
+    "id": "80441",
+    "triggerID": "106",
+    "triggerProb": "100",
+    "delay": "0",
+    "target": "0",
+    "effectID": "80441",
+    "minCD": "0"
+  },
+  {
+    "id": "804421",
+    "triggerID": "102",
+    "triggerProb": "100",
+    "delay": "0",
+    "target": "1",
+    "effectID": "804316",
+    "minCD": "0"
+  },
+  {
+    "id": "80631",
+    "triggerID": "102",
+    "triggerProb": "100",
+    "delay": "0",
+    "target": "1",
+    "effectID": "80631",
+    "minCD": "0"
+  },
+  {
+    "id": "80721",
+    "triggerID": "102",
+    "triggerProb": "100",
+    "delay": "0",
+    "target": "1",
+    "effectID": "80721",
+    "minCD": "0"
+  },
+  {
+    "id": "80711",
+    "triggerID": "105",
+    "triggerProb": "100",
+    "delay": "0",
+    "target": "0",
+    "effectID": "807001",
+    "minCD": "0"
+  },
+  {
+    "id": "81111",
+    "triggerID": "102",
+    "triggerProb": "100",
+    "delay": "0",
+    "target": "1",
+    "effectID": "81111",
+    "minCD": "0"
+  },
+  {
+    "id": "81112",
+    "triggerID": "105",
+    "triggerProb": "100",
+    "delay": "0",
+    "target": "0",
+    "effectID": "81112",
+    "minCD": "0"
+  },
+  {
+    "id": "81231",
+    "triggerID": "101",
+    "triggerProb": "100",
+    "delay": "0",
+    "target": "0",
+    "effectID": "81231",
+    "minCD": "0"
+  },
+  {
+    "id": "81311",
+    "triggerID": "102",
+    "triggerProb": "100",
+    "delay": "0",
+    "target": "1",
+    "effectID": "81311",
+    "minCD": "0"
+  },
+  {
+    "id": "81331",
+    "triggerID": "101",
+    "triggerProb": "100",
+    "delay": "0",
+    "target": "0",
+    "effectID": "81331",
+    "minCD": "0"
+  },
+  {
+    "id": "81341",
+    "triggerID": "105",
+    "triggerProb": "100",
+    "delay": "0",
+    "target": "0",
+    "effectID": "81341",
+    "minCD": "0"
+  },
+  {
+    "id": "81411",
+    "triggerID": "1092",
+    "triggerProb": "100",
+    "delay": "0",
+    "target": "1",
+    "effectID": "81411",
+    "minCD": "0"
+  },
+  {
+    "id": "81421",
+    "triggerID": "1092",
+    "triggerProb": "100",
+    "delay": "0",
+    "target": "1",
+    "effectID": "81421",
+    "minCD": "0"
+  },
+  {
+    "id": "81422",
+    "triggerID": "1091",
+    "triggerProb": "100",
+    "delay": "0",
+    "target": "1",
+    "effectID": "81422",
+    "minCD": "0"
+  },
+  {
+    "id": "81431",
+    "triggerID": "101",
+    "triggerProb": "100",
+    "delay": "0",
+    "target": "1",
+    "effectID": "81431",
+    "minCD": "0"
+  },
+  {
+    "id": "81441",
+    "triggerID": "101",
+    "triggerProb": "100",
+    "delay": "0",
+    "target": "1",
+    "effectID": "81441",
+    "minCD": "0"
+  },
+  {
+    "id": "27611",
+    "triggerID": "105",
+    "triggerProb": "100",
+    "delay": "0",
+    "target": "0",
+    "effectID": "131",
+    "minCD": "0"
+  },
+  {
+    "id": "81631",
+    "triggerID": "102",
+    "triggerProb": "100",
+    "delay": "0",
+    "target": "1",
+    "effectID": "81631",
+    "minCD": "0"
+  },
+  {
+    "id": "81632",
+    "triggerID": "105",
+    "triggerProb": "100",
+    "delay": "0",
+    "target": "0",
+    "effectID": "81632",
+    "minCD": "0"
+  },
+  {
+    "id": "81711",
+    "triggerID": "105",
+    "triggerProb": "100",
+    "delay": "0",
+    "target": "0",
+    "effectID": "81711",
+    "minCD": "0"
+  },
+  {
+    "id": "81721",
+    "triggerID": "106",
+    "triggerProb": "100",
+    "delay": "0",
+    "target": "0",
+    "effectID": "81721",
+    "minCD": "0"
+  },
+  {
+    "id": "8172111",
+    "triggerID": "102",
+    "triggerProb": "100",
+    "delay": "0",
+    "target": "1",
+    "effectID": "8172111",
+    "minCD": "0"
+  },
+  {
+    "id": "8172121",
+    "triggerID": "102",
+    "triggerProb": "100",
+    "delay": "0",
+    "target": "1",
+    "effectID": "8172121",
+    "minCD": "0"
+  },
+  {
+    "id": "8172131",
+    "triggerID": "102",
+    "triggerProb": "100",
+    "delay": "0",
+    "target": "1",
+    "effectID": "8172131",
+    "minCD": "0"
+  },
+  {
+    "id": "8172141",
+    "triggerID": "102",
+    "triggerProb": "100",
+    "delay": "0",
+    "target": "1",
+    "effectID": "8172141",
+    "minCD": "0"
+  },
+  {
+    "id": "8172151",
+    "triggerID": "102",
+    "triggerProb": "100",
+    "delay": "0",
+    "target": "1",
+    "effectID": "8172151",
+    "minCD": "0"
+  },
+  {
+    "id": "81831",
+    "triggerID": "101",
+    "triggerProb": "100",
+    "delay": "100",
+    "target": "0",
+    "effectID": "81831",
+    "minCD": "0"
+  },
+  {
+    "id": "81839",
+    "triggerID": "105",
+    "triggerProb": "100",
+    "delay": "0",
+    "target": "0",
+    "effectID": "81839",
+    "minCD": "0"
+  },
+  {
+    "id": "82411",
+    "triggerID": "105",
+    "triggerProb": "100",
+    "delay": "0",
+    "target": "0",
+    "effectID": "824002",
+    "minCD": "0"
+  },
+  {
+    "id": "824003",
+    "triggerID": "102",
+    "triggerProb": "100",
+    "delay": "0",
+    "target": "1",
+    "effectID": "824003",
+    "minCD": "0"
+  },
+  {
+    "id": "810921",
+    "triggerID": "1093",
+    "triggerProb": "&81091_xkzbzskg",
+    "delay": "0",
+    "target": "1",
+    "effectID": "810921",
+    "minCD": "0"
+  },
+  {
+    "id": "810922",
+    "triggerID": "101",
+    "triggerProb": "100",
+    "delay": "0",
+    "target": "0",
+    "effectID": "810922",
+    "minCD": "0"
+  },
+  {
+    "id": "810931",
+    "triggerID": "102",
+    "triggerProb": "&81091_xbzskg",
+    "delay": "0",
+    "target": "1",
+    "effectID": "810931",
+    "minCD": "0"
+  },
+  {
+    "id": "810932",
+    "triggerID": "102",
+    "triggerProb": "&81091_xbjskg",
+    "delay": "0",
+    "target": "1",
+    "effectID": "810932",
+    "minCD": "0"
+  },
+  {
+    "id": "811012",
+    "triggerID": "101",
+    "triggerProb": "100",
+    "delay": "0",
+    "target": "1",
+    "effectID": "811012",
+    "minCD": "0"
+  },
+  {
+    "id": "811013",
+    "triggerID": "101",
+    "triggerProb": "100",
+    "delay": "0",
+    "target": "1",
+    "effectID": "811013",
+    "minCD": "0"
+  },
+  {
+    "id": "811014",
+    "triggerID": "101",
+    "triggerProb": "100",
+    "delay": "0",
+    "target": "0",
+    "effectID": "811014",
+    "minCD": "0"
+  },
+  {
+    "id": "811015",
+    "triggerID": "101",
+    "triggerProb": "100",
+    "delay": "0",
+    "target": "0",
+    "effectID": "811015",
+    "minCD": "0"
+  },
+  {
+    "id": "811016",
+    "triggerID": "101",
+    "triggerProb": "100",
+    "delay": "0",
+    "target": "0",
+    "effectID": "811016",
+    "minCD": "0"
+  },
+  {
+    "id": "811017",
+    "triggerID": "101",
+    "triggerProb": "100",
+    "delay": "0",
+    "target": "0",
+    "effectID": "811017",
+    "minCD": "0"
+  },
+  {
+    "id": "811018",
+    "triggerID": "101",
+    "triggerProb": "100",
+    "delay": "0",
+    "target": "0",
+    "effectID": "811018",
+    "minCD": "0"
+  },
+  {
+    "id": "811019",
+    "triggerID": "102",
+    "triggerProb": "100",
+    "delay": "0",
+    "target": "0",
+    "effectID": "811019",
+    "minCD": "0"
+  },
+  {
+    "id": "811020",
+    "triggerID": "101",
+    "triggerProb": "100",
+    "delay": "0",
+    "target": "0",
+    "effectID": "811020",
+    "minCD": "0"
+  },
+  {
+    "id": "81101311",
+    "triggerID": "1092",
+    "triggerProb": "100",
+    "delay": "0",
+    "target": "1",
+    "effectID": "81101311",
+    "minCD": "0"
+  },
+  {
+    "id": "81101312",
+    "triggerID": "1092",
+    "triggerProb": "100",
+    "delay": "0",
+    "target": "1",
+    "effectID": "81101312",
+    "minCD": "0"
+  },
+  {
+    "id": "27811",
+    "triggerID": "105",
+    "triggerProb": "100",
+    "delay": "0",
+    "target": "0",
+    "effectID": "27811",
+    "minCD": "0"
+  },
+  {
+    "id": "825001",
+    "triggerID": "102",
+    "triggerProb": "100",
+    "delay": "0",
+    "target": "1",
+    "effectID": "825001",
+    "minCD": "0"
+  },
+  {
+    "id": "825002",
+    "triggerID": "105",
+    "triggerProb": "100",
+    "delay": "0",
+    "target": "0",
+    "effectID": "825002",
+    "minCD": "0"
+  },
+  {
+    "id": "82691",
+    "triggerID": "105",
+    "triggerProb": "100",
+    "delay": "0",
+    "target": "0",
+    "effectID": "82691",
+    "minCD": "0"
+  },
+  {
+    "id": "82681",
+    "triggerID": "101",
+    "triggerProb": "100",
+    "delay": "0",
+    "target": "0",
+    "effectID": "82681",
+    "minCD": "0"
+  },
+  {
+    "id": "82611",
+    "triggerID": "102",
+    "triggerProb": "100",
+    "delay": "0",
+    "target": "1",
+    "effectID": "82611",
+    "minCD": "0"
+  },
+  {
+    "id": "82641",
+    "triggerID": "101",
+    "triggerProb": "100",
+    "delay": "0",
+    "target": "0",
+    "effectID": "82641",
+    "minCD": "0"
+  },
+  {
+    "id": "81511",
+    "triggerID": "105",
+    "triggerProb": "100",
+    "delay": "0",
+    "target": "0",
+    "effectID": "81511",
+    "minCD": "0"
+  },
+  {
+    "id": "81521",
+    "triggerID": "105",
+    "triggerProb": "100",
+    "delay": "0",
+    "target": "0",
+    "effectID": "81521",
+    "minCD": "0"
+  },
+  {
+    "id": "81532",
+    "triggerID": "101",
+    "triggerProb": "100",
+    "delay": "0",
+    "target": "0",
+    "effectID": "81532",
+    "minCD": "0"
+  },
+  {
+    "id": "81551",
+    "triggerID": "101",
+    "triggerProb": "100",
+    "delay": "0",
+    "target": "0",
+    "effectID": "81551",
+    "minCD": "0"
+  },
+  {
+    "id": "81561",
+    "triggerID": "101",
+    "triggerProb": "100",
+    "delay": "0",
+    "target": "0",
+    "effectID": "81561",
+    "minCD": "0"
+  },
+  {
+    "id": "81564",
+    "triggerID": "101",
+    "triggerProb": "100",
+    "delay": "0",
+    "target": "0",
+    "effectID": "81564",
+    "minCD": "0"
+  },
+  {
+    "id": "83032",
+    "triggerID": "101",
+    "triggerProb": "100",
+    "delay": "0",
+    "target": "0",
+    "effectID": "83031",
+    "minCD": "0"
+  },
+  {
+    "id": "83061",
+    "triggerID": "105",
+    "triggerProb": "100",
+    "delay": "0",
+    "target": "0",
+    "effectID": "83061",
+    "minCD": "0"
+  },
+  {
+    "id": "83021",
+    "triggerID": "105",
+    "triggerProb": "100",
+    "delay": "0",
+    "target": "0",
+    "effectID": "83021",
+    "minCD": "0"
+  },
+  {
+    "id": "82721",
+    "triggerID": "1092",
+    "triggerProb": "100",
+    "delay": "0",
+    "target": "1",
+    "effectID": "82721",
+    "minCD": "0"
+  },
+  {
+    "id": "82741",
+    "triggerID": "105",
+    "triggerProb": "100",
+    "delay": "0",
+    "target": "0",
+    "effectID": "82741",
+    "minCD": "0"
+  },
+  {
+    "id": "82751",
+    "triggerID": "105",
+    "triggerProb": "100",
+    "delay": "0",
+    "target": "0",
+    "effectID": "82751",
+    "minCD": "0"
+  },
+  {
+    "id": "82761",
+    "triggerID": "105",
+    "triggerProb": "100",
+    "delay": "0",
+    "target": "0",
+    "effectID": "82761",
+    "minCD": "0"
+  },
+  {
+    "id": "82742",
+    "triggerID": "105",
+    "triggerProb": "100",
+    "delay": "0",
+    "target": "0",
+    "effectID": "82742",
+    "minCD": "0"
+  },
+  {
+    "id": "83291",
+    "triggerID": "105",
+    "triggerProb": "100",
+    "delay": "0",
+    "target": "0",
+    "effectID": "83291",
+    "minCD": "0"
+  },
+  {
+    "id": "83294",
+    "triggerID": "105",
+    "triggerProb": "100",
+    "delay": "0",
+    "target": "0",
+    "effectID": "83294",
+    "minCD": "0"
+  },
+  {
+    "id": "83221",
+    "triggerID": "102",
+    "triggerProb": "100",
+    "delay": "0",
+    "target": "1",
+    "effectID": "83221",
+    "minCD": "0"
+  },
+  {
+    "id": "832001",
+    "triggerID": "102",
+    "triggerProb": "100",
+    "delay": "0",
+    "target": "0",
+    "effectID": "832001",
+    "minCD": "0"
+  },
+  {
+    "id": "832002",
+    "triggerID": "105",
+    "triggerProb": "100",
+    "delay": "0",
+    "target": "0",
+    "effectID": "832002",
+    "minCD": "0"
+  },
+  {
+    "id": "81911",
+    "triggerID": "105",
+    "triggerProb": "100",
+    "delay": "0",
+    "target": "0",
+    "effectID": "81901",
+    "minCD": "0"
+  },
+  {
+    "id": "81912",
+    "triggerID": "101",
+    "triggerProb": "100",
+    "delay": "0",
+    "target": "0",
+    "effectID": "81906",
+    "minCD": "0"
+  },
+  {
+    "id": "81931",
+    "triggerID": "101",
+    "triggerProb": "100",
+    "delay": "0",
+    "target": "0",
+    "effectID": "81931",
+    "minCD": "0"
+  },
+  {
+    "id": "81951",
+    "triggerID": "105",
+    "triggerProb": "100",
+    "delay": "500",
+    "target": "0",
+    "effectID": "81951",
+    "minCD": "0"
+  },
+  {
+    "id": "81952",
+    "triggerID": "105",
+    "triggerProb": "100",
+    "delay": "500",
+    "target": "0",
+    "effectID": "81952",
+    "minCD": "0"
+  },
+  {
+    "id": "81961",
+    "triggerID": "105",
+    "triggerProb": "100",
+    "delay": "500",
+    "target": "0",
+    "effectID": "81961",
+    "minCD": "0"
+  },
+  {
+    "id": "81941",
+    "triggerID": "101",
+    "triggerProb": "100",
+    "delay": "0",
+    "target": "0",
+    "effectID": "81941",
+    "minCD": "0"
+  },
+  {
+    "id": "81971",
+    "triggerID": "105",
+    "triggerProb": "100",
+    "delay": "0",
+    "target": "0",
+    "effectID": "81971",
+    "minCD": "0"
+  },
+  {
+    "id": "800021",
+    "triggerID": "102",
+    "triggerProb": "100",
+    "delay": "0",
+    "target": "1",
+    "effectID": "31000041",
+    "minCD": "0"
+  },
+  {
+    "id": "800022",
+    "triggerID": "102",
+    "triggerProb": "100",
+    "delay": "0",
+    "target": "0",
+    "effectID": "31000042",
+    "minCD": "0"
+  },
+  {
+    "id": "800023",
+    "triggerID": "102",
+    "triggerProb": "100",
+    "delay": "0",
+    "target": "1",
+    "effectID": "31000044",
+    "minCD": "0"
+  },
+  {
+    "id": "800031",
+    "triggerID": "102",
+    "triggerProb": "&31008_gdgl",
+    "delay": "0",
+    "target": "1",
+    "effectID": "800031",
+    "minCD": "0"
+  },
+  {
+    "id": "800051",
+    "triggerID": "101",
+    "triggerProb": "100",
+    "delay": "0",
+    "target": "0",
+    "effectID": "350005",
+    "minCD": "0"
+  },
+  {
+    "id": "800061",
+    "triggerID": "102",
+    "triggerProb": "100",
+    "delay": "0",
+    "target": "1",
+    "effectID": "36000041",
+    "minCD": "0"
+  },
+  {
+    "id": "800081",
+    "triggerID": "102",
+    "triggerProb": "100",
+    "delay": "0",
+    "target": "1",
+    "effectID": "38006101",
+    "minCD": "0"
+  },
+  {
+    "id": "800082",
+    "triggerID": "102",
+    "triggerProb": "100",
+    "delay": "0",
+    "target": "1",
+    "effectID": "38006102",
+    "minCD": "0"
+  },
+  {
+    "id": "800083",
+    "triggerID": "102",
+    "triggerProb": "100",
+    "delay": "0",
+    "target": "1",
+    "effectID": "38006105",
+    "minCD": "0"
+  },
+  {
+    "id": "800070",
+    "triggerID": "106",
+    "triggerProb": "100",
+    "delay": "0",
+    "target": "1",
+    "effectID": "800070",
+    "minCD": "0"
+  },
+  {
+    "id": "34000505",
+    "triggerID": "101",
+    "triggerProb": "100",
+    "delay": "0",
+    "target": "0",
+    "effectID": "34000505",
+    "minCD": "0"
+  },
+  {
+    "id": "39000026",
+    "triggerID": "102",
+    "triggerProb": "100",
+    "delay": "0",
+    "target": "1",
+    "effectID": "39000026",
+    "minCD": "0"
+  },
+  {
+    "id": "39000801",
+    "triggerID": "102",
+    "triggerProb": "100",
+    "delay": "0",
+    "target": "1",
+    "effectID": "39000801",
+    "minCD": "0"
+  },
+  {
+    "id": "39000802",
+    "triggerID": "102",
+    "triggerProb": "&39000701_kg",
+    "delay": "0",
+    "target": "1",
+    "effectID": "39000702",
+    "minCD": "0"
+  },
+  {
+    "id": "83391",
+    "triggerID": "105",
+    "triggerProb": "100",
+    "delay": "0",
+    "target": "0",
+    "effectID": "83391",
+    "minCD": "0"
+  },
+  {
+    "id": "833221",
+    "triggerID": "102",
+    "triggerProb": "100",
+    "delay": "0",
+    "target": "1",
+    "effectID": "833221",
+    "minCD": "0"
+  },
+  {
+    "id": "83531",
+    "triggerID": "105",
+    "triggerProb": "100",
+    "delay": "0",
+    "target": "0",
+    "effectID": "83531",
+    "minCD": "0"
+  },
+  {
+    "id": "83532",
+    "triggerID": "105",
+    "triggerProb": "100",
+    "delay": "0",
+    "target": "0",
+    "effectID": "83532",
+    "minCD": "0"
+  },
+  {
+    "id": "83691",
+    "triggerID": "105",
+    "triggerProb": "100",
+    "delay": "0",
+    "target": "0",
+    "effectID": "83691",
+    "minCD": "0"
+  },
+  {
+    "id": "836211",
+    "triggerID": "102",
+    "triggerProb": "100",
+    "delay": "0",
+    "target": "1",
+    "effectID": "836211",
+    "minCD": "0"
+  },
+  {
+    "id": "83741",
+    "triggerID": "101",
+    "triggerProb": "100",
+    "delay": "0",
+    "target": "0",
+    "effectID": "83741",
+    "minCD": "0"
+  },
+  {
+    "id": "83891",
+    "triggerID": "105",
+    "triggerProb": "100",
+    "delay": "0",
+    "target": "0",
+    "effectID": "83891",
+    "minCD": "0"
+  },
+  {
+    "id": "56511",
+    "triggerID": "102",
+    "triggerProb": "100",
+    "delay": "0",
+    "target": "1",
+    "effectID": "56511",
+    "minCD": "0"
+  },
+  {
+    "id": "56512",
+    "triggerID": "102",
+    "triggerProb": "100",
+    "delay": "0",
+    "target": "1",
+    "effectID": "56512",
+    "minCD": "0"
+  },
+  {
+    "id": "84431",
+    "triggerID": "101",
+    "triggerProb": "100",
+    "delay": "800",
+    "target": "0",
+    "effectID": "84431",
+    "minCD": "0"
+  },
+  {
+    "id": "28511",
+    "triggerID": "101",
+    "triggerProb": "100",
+    "delay": "0",
+    "target": "0",
+    "effectID": "28511",
+    "minCD": "0"
+  },
+  {
+    "id": "7100011",
+    "triggerID": "101",
+    "triggerProb": "100",
+    "delay": "200",
+    "target": "0",
+    "effectID": "7100011",
+    "minCD": "0"
+  },
+  {
+    "id": "7100021",
+    "triggerID": "102",
+    "triggerProb": "100",
+    "delay": "0",
+    "target": "1",
+    "effectID": "7100021",
+    "minCD": "0"
+  },
+  {
+    "id": "7100031",
+    "triggerID": "102",
+    "triggerProb": "100",
+    "delay": "0",
+    "target": "1",
+    "effectID": "7100031",
+    "minCD": "0"
+  },
+  {
+    "id": "7100041",
+    "triggerID": "102",
+    "triggerProb": "100",
+    "delay": "0",
+    "target": "1",
+    "effectID": "7100041",
+    "minCD": "0"
+  },
+  {
+    "id": "7100051",
+    "triggerID": "101",
+    "triggerProb": "100",
+    "delay": "0",
+    "target": "0",
+    "effectID": "7100051",
+    "minCD": "0"
+  },
+  {
+    "id": "7100061",
+    "triggerID": "105",
+    "triggerProb": "100",
+    "delay": "0",
+    "target": "0",
+    "effectID": "7100061",
+    "minCD": "0"
+  },
+  {
+    "id": "7100071",
+    "triggerID": "102",
+    "triggerProb": "100",
+    "delay": "0",
+    "target": "1",
+    "effectID": "7100071",
+    "minCD": "0"
+  },
+  {
+    "id": "7100015",
+    "triggerID": "101",
+    "triggerProb": "100",
+    "delay": "1400",
+    "target": "0",
+    "effectID": "7100015",
+    "minCD": "0"
+  },
+  {
+    "id": "7102011",
+    "triggerID": "101",
+    "triggerProb": "100",
+    "delay": "1800",
+    "target": "0",
+    "effectID": "7102021",
+    "minCD": "0"
+  },
+  {
+    "id": "7102012",
+    "triggerID": "101",
+    "triggerProb": "100",
+    "delay": "1800",
+    "target": "0",
+    "effectID": "7102031",
+    "minCD": "0"
+  },
+  {
+    "id": "7102058",
+    "triggerID": "102",
+    "triggerProb": "100",
+    "delay": "0",
+    "target": "1",
+    "effectID": "7102058",
+    "minCD": "0"
+  },
+  {
+    "id": "71020581",
+    "triggerID": "102",
+    "triggerProb": "100",
+    "delay": "0",
+    "target": "1",
+    "effectID": "71020581",
+    "minCD": "0"
+  },
+  {
+    "id": "7102072",
+    "triggerID": "102",
+    "triggerProb": "100",
+    "delay": "0",
+    "target": "1",
+    "effectID": "7102072",
+    "minCD": "0"
+  },
+  {
+    "id": "7104011",
+    "triggerID": "101",
+    "triggerProb": "100",
+    "delay": "0",
+    "target": "0",
+    "effectID": "7104011",
+    "minCD": "0"
+  },
+  {
+    "id": "71040111",
+    "triggerID": "101",
+    "triggerProb": "100",
+    "delay": "0",
+    "target": "0",
+    "effectID": "71040111",
+    "minCD": "0"
+  },
+  {
+    "id": "71040121",
+    "triggerID": "101",
+    "triggerProb": "&710005_sfstkg",
+    "delay": "0",
+    "target": "0",
+    "effectID": "71040001",
+    "minCD": "0"
+  },
+  {
+    "id": "71040122",
+    "triggerID": "101",
+    "triggerProb": "&710005_stshkg",
+    "delay": "0",
+    "target": "0",
+    "effectID": "710405",
+    "minCD": "0"
+  },
+  {
+    "id": "7104021",
+    "triggerID": "106",
+    "triggerProb": "100",
+    "delay": "0",
+    "target": "0",
+    "effectID": "7104021",
+    "minCD": "0"
+  },
+  {
+    "id": "71040211",
+    "triggerID": "1092",
+    "triggerProb": "100",
+    "delay": "0",
+    "target": "1",
+    "effectID": "71040211",
+    "minCD": "0"
+  },
+  {
+    "id": "71040212",
+    "triggerID": "1092",
+    "triggerProb": "100",
+    "delay": "0",
+    "target": "0",
+    "effectID": "71040212",
+    "minCD": "0"
+  },
+  {
+    "id": "71040221",
+    "triggerID": "1093",
+    "triggerProb": "100",
+    "delay": "0",
+    "target": "1",
+    "effectID": "71040221",
+    "minCD": "0"
+  },
+  {
+    "id": "71040222",
+    "triggerID": "1093",
+    "triggerProb": "100",
+    "delay": "0",
+    "target": "1",
+    "effectID": "71040222",
+    "minCD": "0"
+  },
+  {
+    "id": "7105011",
+    "triggerID": "101",
+    "triggerProb": "100",
+    "delay": "&710006_fzsl|x710006_fzjg|+7000|f0",
+    "target": "0",
+    "effectID": "7105021",
+    "minCD": "0"
+  },
+  {
+    "id": "7105041",
+    "triggerID": "102",
+    "triggerProb": "&710006_ylgl",
+    "delay": "0",
+    "target": "1",
+    "effectID": "7105041",
+    "minCD": "0"
+  },
+  {
+    "id": "7105042",
+    "triggerID": "105",
+    "triggerProb": "100",
+    "delay": "0",
+    "target": "0",
+    "effectID": "7105042",
+    "minCD": "0"
+  },
+  {
+    "id": "7105043",
+    "triggerID": "105",
+    "triggerProb": "100",
+    "delay": "0",
+    "target": "0",
+    "effectID": "7105043",
+    "minCD": "0"
+  },
+  {
+    "id": "7105051",
+    "triggerID": "105",
+    "triggerProb": "100",
+    "delay": "0",
+    "target": "0",
+    "effectID": "7105051",
+    "minCD": "0"
+  },
+  {
+    "id": "7105061",
+    "triggerID": "101",
+    "triggerProb": "100",
+    "delay": "0",
+    "target": "0",
+    "effectID": "7105061",
+    "minCD": "0"
+  },
+  {
+    "id": "7105062",
+    "triggerID": "105",
+    "triggerProb": "100",
+    "delay": "0",
+    "target": "0",
+    "effectID": "71050621",
+    "minCD": "0"
+  },
+  {
+    "id": "7105071",
+    "triggerID": "101",
+    "triggerProb": "100",
+    "delay": "0",
+    "target": "0",
+    "effectID": "7105071",
+    "minCD": "0"
+  },
+  {
+    "id": "7106011",
+    "triggerID": "101",
+    "triggerProb": "100",
+    "delay": "5000",
+    "target": "0",
+    "effectID": "7106011",
+    "minCD": "0"
+  },
+  {
+    "id": "7106012",
+    "triggerID": "101",
+    "triggerProb": "100",
+    "delay": "5000",
+    "target": "0",
+    "effectID": "7106012",
+    "minCD": "0"
+  },
+  {
+    "id": "7106013",
+    "triggerID": "1102",
+    "triggerProb": "100",
+    "delay": "2300",
+    "target": "1",
+    "effectID": "7106013",
+    "minCD": "0"
+  },
+  {
+    "id": "85911",
+    "triggerID": "105",
+    "triggerProb": "100",
+    "delay": "0",
+    "target": "0",
+    "effectID": "85911",
+    "minCD": "0"
+  },
+  {
+    "id": "85921",
+    "triggerID": "1102",
+    "triggerProb": "100",
+    "delay": "0",
+    "target": "1",
+    "effectID": "85921",
+    "minCD": "0"
+  },
+  {
+    "id": "85931",
+    "triggerID": "102",
+    "triggerProb": "100",
+    "delay": "0",
+    "target": "1",
+    "effectID": "85931",
+    "minCD": "0"
+  },
+  {
+    "id": "85941",
+    "triggerID": "101",
+    "triggerProb": "100",
+    "delay": "0",
+    "target": "0",
+    "effectID": "85941",
+    "minCD": "0"
+  },
+  {
+    "id": "859411",
+    "triggerID": "1102",
+    "triggerProb": "100",
+    "delay": "0",
+    "target": "1",
+    "effectID": "859411",
+    "minCD": "0"
+  },
+  {
+    "id": "859431",
+    "triggerID": "1102",
+    "triggerProb": "100",
+    "delay": "0",
+    "target": "1",
+    "effectID": "859431",
+    "minCD": "0"
+  },
+  {
+    "id": "859441",
+    "triggerID": "1102",
+    "triggerProb": "100",
+    "delay": "0",
+    "target": "1",
+    "effectID": "859441",
+    "minCD": "0"
+  },
+  {
+    "id": "859451",
+    "triggerID": "1102",
+    "triggerProb": "100",
+    "delay": "0",
+    "target": "1",
+    "effectID": "859451",
+    "minCD": "0"
+  },
+  {
+    "id": "85951",
+    "triggerID": "102",
+    "triggerProb": "100",
+    "delay": "0",
+    "target": "1",
+    "effectID": "85951",
+    "minCD": "0"
+  },
+  {
+    "id": "859511",
+    "triggerID": "1102",
+    "triggerProb": "100",
+    "delay": "0",
+    "target": "1",
+    "effectID": "859511",
+    "minCD": "0"
+  },
+  {
+    "id": "85952",
+    "triggerID": "101",
+    "triggerProb": "100",
+    "delay": "0",
+    "target": "0",
+    "effectID": "85952",
+    "minCD": "0"
+  },
+  {
+    "id": "85953",
+    "triggerID": "101",
+    "triggerProb": "100",
+    "delay": "0",
+    "target": "0",
+    "effectID": "85953",
+    "minCD": "0"
+  },
+  {
+    "id": "85961",
+    "triggerID": "102",
+    "triggerProb": "100",
+    "delay": "0",
+    "target": "1",
+    "effectID": "85961",
+    "minCD": "0"
+  },
+  {
+    "id": "85971",
+    "triggerID": "101",
+    "triggerProb": "100",
+    "delay": "0",
+    "target": "0",
+    "effectID": "859781",
+    "minCD": "0"
+  },
+  {
+    "id": "608221",
+    "triggerID": "1092",
+    "triggerProb": "100",
+    "delay": "0",
+    "target": "0",
+    "effectID": "6082211",
+    "minCD": "0"
+  },
+  {
+    "id": "6082411",
+    "triggerID": "1092",
+    "triggerProb": "100",
+    "delay": "0",
+    "target": "1",
+    "effectID": "6082411",
+    "minCD": "0"
+  },
+  {
+    "id": "6082412",
+    "triggerID": "101",
+    "triggerProb": "100",
+    "delay": "0",
+    "target": "0",
+    "effectID": "6082412",
+    "minCD": "0"
+  },
+  {
+    "id": "861311",
+    "triggerID": "102",
+    "triggerProb": "100",
+    "delay": "0",
+    "target": "1",
+    "effectID": "861311",
+    "minCD": "0"
+  },
+  {
+    "id": "861411",
+    "triggerID": "102",
+    "triggerProb": "100",
+    "delay": "0",
+    "target": "1",
+    "effectID": "861411",
+    "minCD": "0"
+  },
+  {
+    "id": "861521",
+    "triggerID": "102",
+    "triggerProb": "100",
+    "delay": "0",
+    "target": "1",
+    "effectID": "861521",
+    "minCD": "0"
+  },
+  {
+    "id": "861621",
+    "triggerID": "102",
+    "triggerProb": "100",
+    "delay": "0",
+    "target": "1",
+    "effectID": "861621",
+    "minCD": "0"
+  },
+  {
+    "id": "86151",
+    "triggerID": "105",
+    "triggerProb": "100",
+    "delay": "0",
+    "target": "0",
+    "effectID": "86151",
+    "minCD": "0"
+  },
+  {
+    "id": "86111",
+    "triggerID": "105",
+    "triggerProb": "100",
+    "delay": "0",
+    "target": "0",
+    "effectID": "86111",
+    "minCD": "0"
+  },
+  {
+    "id": "86011",
+    "triggerID": "102",
+    "triggerProb": "100",
+    "delay": "0",
+    "target": "1",
+    "effectID": "860131",
+    "minCD": "0"
+  },
+  {
+    "id": "86021",
+    "triggerID": "102",
+    "triggerProb": "100",
+    "delay": "0",
+    "target": "1",
+    "effectID": "860132",
+    "minCD": "0"
+  },
+  {
+    "id": "86031",
+    "triggerID": "102",
+    "triggerProb": "100",
+    "delay": "0",
+    "target": "1",
+    "effectID": "860311",
+    "minCD": "0"
+  },
+  {
+    "id": "86041",
+    "triggerID": "102",
+    "triggerProb": "100",
+    "delay": "0",
+    "target": "1",
+    "effectID": "860411",
+    "minCD": "0"
+  },
+  {
+    "id": "86051",
+    "triggerID": "101",
+    "triggerProb": "100",
+    "delay": "0",
+    "target": "0",
+    "effectID": "86051",
+    "minCD": "0"
+  },
+  {
+    "id": "86052",
+    "triggerID": "101",
+    "triggerProb": "100",
+    "delay": "0",
+    "target": "0",
+    "effectID": "860524",
+    "minCD": "0"
+  },
+  {
+    "id": "86053",
+    "triggerID": "101",
+    "triggerProb": "100",
+    "delay": "0",
+    "target": "0",
+    "effectID": "860522",
+    "minCD": "0"
+  },
+  {
+    "id": "86054",
+    "triggerID": "101",
+    "triggerProb": "100",
+    "delay": "0",
+    "target": "0",
+    "effectID": "860523",
+    "minCD": "0"
+  },
+  {
+    "id": "86061",
+    "triggerID": "101",
+    "triggerProb": "100",
+    "delay": "0",
+    "target": "0",
+    "effectID": "86062",
+    "minCD": "0"
+  },
+  {
+    "id": "86062",
+    "triggerID": "101",
+    "triggerProb": "100",
+    "delay": "0",
+    "target": "0",
+    "effectID": "86063",
+    "minCD": "0"
+  },
+  {
+    "id": "86063",
+    "triggerID": "101",
+    "triggerProb": "100",
+    "delay": "0",
+    "target": "0",
+    "effectID": "86066",
+    "minCD": "0"
+  },
+  {
+    "id": "86064",
+    "triggerID": "101",
+    "triggerProb": "100",
+    "delay": "0",
+    "target": "0",
+    "effectID": "86068",
+    "minCD": "0"
+  },
+  {
+    "id": "86071",
+    "triggerID": "101",
+    "triggerProb": "100",
+    "delay": "0",
+    "target": "0",
+    "effectID": "86072",
+    "minCD": "0"
+  },
+  {
+    "id": "86072",
+    "triggerID": "101",
+    "triggerProb": "100",
+    "delay": "0",
+    "target": "0",
+    "effectID": "86073",
+    "minCD": "0"
+  },
+  {
+    "id": "86073",
+    "triggerID": "101",
+    "triggerProb": "100",
+    "delay": "0",
+    "target": "0",
+    "effectID": "86076",
+    "minCD": "0"
+  },
+  {
+    "id": "86074",
+    "triggerID": "101",
+    "triggerProb": "100",
+    "delay": "0",
+    "target": "0",
+    "effectID": "86078",
+    "minCD": "0"
+  },
+  {
+    "id": "86012",
+    "triggerID": "101",
+    "triggerProb": "100",
+    "delay": "0",
+    "target": "0",
+    "effectID": "86012",
+    "minCD": "0"
+  },
+  {
+    "id": "86091",
+    "triggerID": "101",
+    "triggerProb": "100",
+    "delay": "5000",
+    "target": "0",
+    "effectID": "86091",
+    "minCD": "0"
+  },
+  {
+    "id": "86101",
+    "triggerID": "101",
+    "triggerProb": "100",
+    "delay": "5000",
+    "target": "0",
+    "effectID": "86101",
+    "minCD": "0"
+  },
+  {
+    "id": "86092",
+    "triggerID": "101",
+    "triggerProb": "100",
+    "delay": "0",
+    "target": "0",
+    "effectID": "860921",
+    "minCD": "0"
+  },
+  {
+    "id": "86093",
+    "triggerID": "101",
+    "triggerProb": "100",
+    "delay": "5000",
+    "target": "0",
+    "effectID": "860922",
+    "minCD": "0"
+  },
+  {
+    "id": "86211",
+    "triggerID": "101",
+    "triggerProb": "100",
+    "delay": "0",
+    "target": "0",
+    "effectID": "86211",
+    "minCD": "0"
+  },
+  {
+    "id": "86212",
+    "triggerID": "101",
+    "triggerProb": "100",
+    "delay": "5100",
+    "target": "0",
+    "effectID": "86213",
+    "minCD": "0"
+  },
+  {
+    "id": "86213",
+    "triggerID": "101",
+    "triggerProb": "100",
+    "delay": "5000",
+    "target": "0",
+    "effectID": "86214",
+    "minCD": "0"
+  },
+  {
+    "id": "86221",
+    "triggerID": "101",
+    "triggerProb": "100",
+    "delay": "0",
+    "target": "0",
+    "effectID": "86221",
+    "minCD": "0"
+  },
+  {
+    "id": "86222",
+    "triggerID": "101",
+    "triggerProb": "100",
+    "delay": "5100",
+    "target": "0",
+    "effectID": "86223",
+    "minCD": "0"
+  },
+  {
+    "id": "86223",
+    "triggerID": "101",
+    "triggerProb": "100",
+    "delay": "5000",
+    "target": "0",
+    "effectID": "86224",
+    "minCD": "0"
+  },
+  {
+    "id": "86224",
+    "triggerID": "101",
+    "triggerProb": "100",
+    "delay": "0",
+    "target": "0",
+    "effectID": "86225",
+    "minCD": "0"
+  },
+  {
+    "id": "86231",
+    "triggerID": "101",
+    "triggerProb": "100",
+    "delay": "0",
+    "target": "0",
+    "effectID": "86231",
+    "minCD": "0"
+  },
+  {
+    "id": "86232",
+    "triggerID": "101",
+    "triggerProb": "100",
+    "delay": "5100",
+    "target": "0",
+    "effectID": "86233",
+    "minCD": "0"
+  },
+  {
+    "id": "86233",
+    "triggerID": "101",
+    "triggerProb": "100",
+    "delay": "5000",
+    "target": "0",
+    "effectID": "86234",
+    "minCD": "0"
+  },
+  {
+    "id": "86234",
+    "triggerID": "101",
+    "triggerProb": "100",
+    "delay": "0",
+    "target": "0",
+    "effectID": "86235",
+    "minCD": "0"
+  },
+  {
+    "id": "86241",
+    "triggerID": "105",
+    "triggerProb": "100",
+    "delay": "0",
+    "target": "0",
+    "effectID": "86241",
+    "minCD": "0"
+  },
+  {
+    "id": "862711",
+    "triggerID": "102",
+    "triggerProb": "100",
+    "delay": "0",
+    "target": "1",
+    "effectID": "862711",
+    "minCD": "0"
+  },
+  {
+    "id": "862811",
+    "triggerID": "102",
+    "triggerProb": "100",
+    "delay": "0",
+    "target": "1",
+    "effectID": "862811",
+    "minCD": "0"
+  },
+  {
+    "id": "86291",
+    "triggerID": "101",
+    "triggerProb": "100",
+    "delay": "0",
+    "target": "0",
+    "effectID": "86291",
+    "minCD": "0"
+  },
+  {
+    "id": "86301",
+    "triggerID": "101",
+    "triggerProb": "100",
+    "delay": "0",
+    "target": "0",
+    "effectID": "86301",
+    "minCD": "0"
+  },
+  {
+    "id": "86311",
+    "triggerID": "101",
+    "triggerProb": "100",
+    "delay": "0",
+    "target": "0",
+    "effectID": "86311",
+    "minCD": "0"
+  },
+  {
+    "id": "86321",
+    "triggerID": "101",
+    "triggerProb": "100",
+    "delay": "0",
+    "target": "0",
+    "effectID": "86321",
+    "minCD": "0"
+  },
+  {
+    "id": "86341",
+    "triggerID": "101",
+    "triggerProb": "100",
+    "delay": "0",
+    "target": "0",
+    "effectID": "86341",
+    "minCD": "0"
+  },
+  {
+    "id": "886331",
+    "triggerID": "101",
+    "triggerProb": "100",
+    "delay": "0",
+    "target": "0",
+    "effectID": "886331",
+    "minCD": "0"
+  },
+  {
+    "id": "86411",
+    "triggerID": "102",
+    "triggerProb": "100",
+    "delay": "0",
+    "target": "1",
+    "effectID": "86411",
+    "minCD": "0"
+  },
+  {
+    "id": "864211",
+    "triggerID": "102",
+    "triggerProb": "100",
+    "delay": "0",
+    "target": "1",
+    "effectID": "864211",
+    "minCD": "0"
+  },
+  {
+    "id": "86461",
+    "triggerID": "101",
+    "triggerProb": "100",
+    "delay": "0",
+    "target": "0",
+    "effectID": "86461",
+    "minCD": "0"
+  },
+  {
+    "id": "859811",
+    "triggerID": "101",
+    "triggerProb": "100",
+    "delay": "0",
+    "target": "0",
+    "effectID": "859811",
+    "minCD": "0"
+  },
+  {
+    "id": "859819",
+    "triggerID": "101",
+    "triggerProb": "100",
+    "delay": "0",
+    "target": "1",
+    "effectID": "859819",
+    "minCD": "0"
+  },
+  {
+    "id": "86361",
+    "triggerID": "101",
+    "triggerProb": "100",
+    "delay": "0",
+    "target": "1",
+    "effectID": "86361",
+    "minCD": "0"
+  },
+  {
+    "id": "86362",
+    "triggerID": "101",
+    "triggerProb": "100",
+    "delay": "0",
+    "target": "1",
+    "effectID": "86362",
+    "minCD": "0"
+  },
+  {
+    "id": "8636111",
+    "triggerID": "101",
+    "triggerProb": "100",
+    "delay": "0",
+    "target": "0",
+    "effectID": "8636111",
+    "minCD": "0"
+  },
+  {
+    "id": "8636211",
+    "triggerID": "101",
+    "triggerProb": "100",
+    "delay": "0",
+    "target": "0",
+    "effectID": "8636211",
+    "minCD": "0"
+  },
+  {
+    "id": "8636311",
+    "triggerID": "101",
+    "triggerProb": "100",
+    "delay": "0",
+    "target": "0",
+    "effectID": "8636311",
+    "minCD": "0"
+  },
+  {
+    "id": "8636411",
+    "triggerID": "101",
+    "triggerProb": "100",
+    "delay": "0",
+    "target": "0",
+    "effectID": "8636411",
+    "minCD": "0"
+  },
+  {
+    "id": "8636511",
+    "triggerID": "101",
+    "triggerProb": "100",
+    "delay": "0",
+    "target": "0",
+    "effectID": "8636511",
+    "minCD": "0"
+  },
+  {
+    "id": "8636611",
+    "triggerID": "101",
+    "triggerProb": "100",
+    "delay": "0",
+    "target": "0",
+    "effectID": "8636611",
+    "minCD": "0"
+  },
+  {
+    "id": "861911",
+    "triggerID": "1092",
+    "triggerProb": "100",
+    "delay": "0",
+    "target": "1",
+    "effectID": "861911",
+    "minCD": "0"
+  },
+  {
+    "id": "861921",
+    "triggerID": "102",
+    "triggerProb": "100",
+    "delay": "0",
+    "target": "1",
+    "effectID": "861921",
+    "minCD": "0"
+  },
+  {
+    "id": "256311",
+    "triggerID": "105",
+    "triggerProb": "100",
+    "delay": "15000",
+    "target": "0",
+    "effectID": "256311",
+    "minCD": "0"
+  },
+  {
+    "id": "256312",
+    "triggerID": "105",
+    "triggerProb": "100",
+    "delay": "0",
+    "target": "0",
+    "effectID": "256312",
+    "minCD": "0"
+  },
+  {
+    "id": "256711",
+    "triggerID": "101",
+    "triggerProb": "100",
+    "delay": "0",
+    "target": "0",
+    "effectID": "256711",
+    "minCD": "0"
+  },
+  {
+    "id": "257411",
+    "triggerID": "105",
+    "triggerProb": "100",
+    "delay": "0",
+    "target": "0",
+    "effectID": "257411",
+    "minCD": "0"
+  },
+  {
+    "id": "257811",
+    "triggerID": "105",
+    "triggerProb": "100",
+    "delay": "0",
+    "target": "0",
+    "effectID": "257811",
+    "minCD": "0"
+  },
+  {
+    "id": "50111",
+    "triggerID": "1092",
+    "triggerProb": "100",
+    "delay": "0",
+    "target": "1",
+    "effectID": "50111",
+    "minCD": "0"
+  },
+  {
+    "id": "50121",
+    "triggerID": "1092",
+    "triggerProb": "100",
+    "delay": "0",
+    "target": "1",
+    "effectID": "50121",
+    "minCD": "0"
+  },
+  {
+    "id": "7000113",
+    "triggerID": "102",
+    "triggerProb": "100",
+    "delay": "0",
+    "target": "1",
+    "effectID": "7000113",
+    "minCD": "0"
+  },
+  {
+    "id": "7000121",
+    "triggerID": "102",
+    "triggerProb": "100",
+    "delay": "0",
+    "target": "1",
+    "effectID": "7000121",
+    "minCD": "0"
+  },
+  {
+    "id": "7000111",
+    "triggerID": "105",
+    "triggerProb": "100",
+    "delay": "0",
+    "target": "0",
+    "effectID": "7000111",
+    "minCD": "0"
+  },
+  {
+    "id": "7000141",
+    "triggerID": "102",
+    "triggerProb": "100",
+    "delay": "0",
+    "target": "1",
+    "effectID": "7000141",
+    "minCD": "0"
+  },
+  {
+    "id": "7000151",
+    "triggerID": "105",
+    "triggerProb": "100",
+    "delay": "0",
+    "target": "0",
+    "effectID": "7000151",
+    "minCD": "0"
+  },
+  {
+    "id": "7001267",
+    "triggerID": "105",
+    "triggerProb": "100",
+    "delay": "1",
+    "target": "0",
+    "effectID": "7001267",
+    "minCD": "0"
+  },
+  {
+    "id": "411011",
+    "triggerID": "101",
+    "triggerProb": "100",
+    "delay": "0",
+    "target": "0",
+    "effectID": "411011",
+    "minCD": "0"
+  },
+  {
+    "id": "411012",
+    "triggerID": "101",
+    "triggerProb": "100",
+    "delay": "&41202_fieldLag",
+    "target": "0",
+    "effectID": "411012",
+    "minCD": "0"
+  },
+  {
+    "id": "411016",
+    "triggerID": "101",
+    "triggerProb": "100",
+    "delay": "0",
+    "target": "0",
+    "effectID": "411016",
+    "minCD": "0"
+  },
+  {
+    "id": "411017",
+    "triggerID": "101",
+    "triggerProb": "100",
+    "delay": "0",
+    "target": "0",
+    "effectID": "411017",
+    "minCD": "0"
+  },
+  {
+    "id": "411021",
+    "triggerID": "101",
+    "triggerProb": "100",
+    "delay": "0",
+    "target": "0",
+    "effectID": "411021",
+    "minCD": "0"
+  },
+  {
+    "id": "42101",
+    "triggerID": "101",
+    "triggerProb": "100",
+    "delay": "0",
+    "target": "0",
+    "effectID": "42101",
+    "minCD": "0"
+  },
+  {
+    "id": "43101",
+    "triggerID": "101",
+    "triggerProb": "100",
+    "delay": "0",
+    "target": "0",
+    "effectID": "43101",
+    "minCD": "0"
+  },
+  {
+    "id": "6033",
+    "triggerID": "102",
+    "triggerProb": "&603_blastSwitch",
+    "delay": "0",
+    "target": "1",
+    "effectID": "6033",
+    "minCD": "&603_blastCD"
+  },
+  {
+    "id": "431021",
+    "triggerID": "101",
+    "triggerProb": "100",
+    "delay": "0",
+    "target": "0",
+    "effectID": "431021",
+    "minCD": "0"
+  },
+  {
+    "id": "431022",
+    "triggerID": "101",
+    "triggerProb": "100",
+    "delay": "0",
+    "target": "0",
+    "effectID": "431022",
+    "minCD": "0"
+  },
+  {
+    "id": "431023",
+    "triggerID": "101",
+    "triggerProb": "100",
+    "delay": "0",
+    "target": "0",
+    "effectID": "431023",
+    "minCD": "0"
+  },
+  {
+    "id": "45101",
+    "triggerID": "101",
+    "triggerProb": "100",
+    "delay": "0",
+    "target": "0",
+    "effectID": "45101",
+    "minCD": "0"
+  },
+  {
+    "id": "42102",
+    "triggerID": "101",
+    "triggerProb": "100",
+    "delay": "0",
+    "target": "0",
+    "effectID": "42102",
+    "minCD": "0"
+  },
+  {
+    "id": "4210288",
+    "triggerID": "101",
+    "triggerProb": "100",
+    "delay": "0",
+    "target": "0",
+    "effectID": "4210288",
+    "minCD": "0"
+  }
+]

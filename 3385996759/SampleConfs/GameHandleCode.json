@@ -1,0 +1,82 @@
+[
+  {
+    "id": "1",
+    "keyText": "Button_A",
+    "custon": "1"
+  },
+  {
+    "id": "2",
+    "keyText": "Button_B",
+    "custon": "1"
+  },
+  {
+    "id": "4",
+    "keyText": "Button_X",
+    "custon": "1"
+  },
+  {
+    "id": "8",
+    "keyText": "Button_Y",
+    "custon": "1"
+  },
+  {
+    "id": "16",
+    "keyText": "Button_LRstickDown",
+    "custon": "1"
+  },
+  {
+    "id": "32",
+    "keyText": "Button_RstickDown",
+    "custon": "1"
+  },
+  {
+    "id": "64",
+    "keyText": "Button_L",
+    "custon": "1"
+  },
+  {
+    "id": "128",
+    "keyText": "Button_R",
+    "custon": "1"
+  },
+  {
+    "id": "256",
+    "keyText": "Button_ZL",
+    "custon": "1"
+  },
+  {
+    "id": "512",
+    "keyText": "Button_ZR",
+    "custon": "1"
+  },
+  {
+    "id": "1024",
+    "keyText": "Button_plus",
+    "custon": "1"
+  },
+  {
+    "id": "2048",
+    "keyText": "Button_subtract",
+    "custon": "1"
+  },
+  {
+    "id": "4096",
+    "keyText": "Button_left",
+    "custon": "1"
+  },
+  {
+    "id": "8192",
+    "keyText": "Button_up",
+    "custon": "1"
+  },
+  {
+    "id": "16384",
+    "keyText": "Button_right",
+    "custon": "1"
+  },
+  {
+    "id": "32768",
+    "keyText": "Button_down",
+    "custon": "1"
+  }
+]

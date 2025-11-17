@@ -1,0 +1,114 @@
+[
+  {
+    "id": "700015",
+    "condition": "buffAmount",
+    "type": "0",
+    "value": "7000151_0_0",
+    "desc": "0"
+  },
+  {
+    "id": "16011",
+    "condition": "unitMax",
+    "type": "1241",
+    "value": "&16011_numSum",
+    "desc": "0"
+  },
+  {
+    "id": "210154",
+    "condition": "unitTypeEquip",
+    "type": "1",
+    "value": "1",
+    "desc": "0"
+  },
+  {
+    "id": "25671",
+    "condition": "buffAmount",
+    "type": "0",
+    "value": "256712_0_5",
+    "desc": "0"
+  },
+  {
+    "id": "7283",
+    "condition": "lose",
+    "type": "hp",
+    "value": "70",
+    "desc": "0"
+  },
+  {
+    "id": "72841",
+    "condition": "unit",
+    "type": "1491",
+    "value": "1",
+    "desc": "0"
+  },
+  {
+    "id": "72842",
+    "condition": "lose",
+    "type": "hp",
+    "value": "30",
+    "desc": "0"
+  },
+  {
+    "id": "7285",
+    "condition": "unitTypeMax",
+    "type": "1",
+    "value": "15",
+    "desc": "0"
+  },
+  {
+    "id": "7943",
+    "condition": "buff",
+    "type": "794112",
+    "value": "1",
+    "desc": "0"
+  },
+  {
+    "id": "7994",
+    "condition": "unitMax",
+    "type": "555",
+    "value": "1",
+    "desc": "0"
+  },
+  {
+    "id": "78911",
+    "condition": "unitMax",
+    "type": "232",
+    "value": "8",
+    "desc": "0"
+  },
+  {
+    "id": "7911",
+    "condition": "unitMax",
+    "type": "251",
+    "value": "30",
+    "desc": "0"
+  },
+  {
+    "id": "5142",
+    "condition": "unit",
+    "type": "0",
+    "value": "2",
+    "desc": "0"
+  },
+  {
+    "id": "1021",
+    "condition": "unitType",
+    "type": "2|3",
+    "value": "0",
+    "desc": "0"
+  },
+  {
+    "id": "1032",
+    "condition": "unitType",
+    "type": "2|3",
+    "value": "0",
+    "desc": "0"
+  },
+  {
+    "id": "1033",
+    "condition": "unitType",
+    "type": "3",
+    "value": "0",
+    "desc": "0"
+  }
+]

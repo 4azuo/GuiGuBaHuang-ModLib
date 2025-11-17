@@ -1,0 +1,68 @@
+[
+  {
+    "id": "15029",
+    "bulletNum": "1",
+    "degreeRange": "30",
+    "resetNearEnemyDire": "1"
+  },
+  {
+    "id": "15021",
+    "bulletNum": "1",
+    "degreeRange": "40",
+    "resetNearEnemyDire": "0"
+  },
+  {
+    "id": "15022",
+    "bulletNum": "1",
+    "degreeRange": "30",
+    "resetNearEnemyDire": "0"
+  },
+  {
+    "id": "15017",
+    "bulletNum": "2",
+    "degreeRange": "40",
+    "resetNearEnemyDire": "0"
+  },
+  {
+    "id": "15016",
+    "bulletNum": "1",
+    "degreeRange": "360",
+    "resetNearEnemyDire": "0"
+  },
+  {
+    "id": "15018",
+    "bulletNum": "3",
+    "degreeRange": "60",
+    "resetNearEnemyDire": "1"
+  },
+  {
+    "id": "15024",
+    "bulletNum": "1",
+    "degreeRange": "70",
+    "resetNearEnemyDire": "0"
+  },
+  {
+    "id": "15031",
+    "bulletNum": "1",
+    "degreeRange": "30",
+    "resetNearEnemyDire": "0"
+  },
+  {
+    "id": "15033",
+    "bulletNum": "5",
+    "degreeRange": "360",
+    "resetNearEnemyDire": "0"
+  },
+  {
+    "id": "15034",
+    "bulletNum": "3",
+    "degreeRange": "360",
+    "resetNearEnemyDire": "0"
+  },
+  {
+    "id": "15035",
+    "bulletNum": "5",
+    "degreeRange": "70",
+    "resetNearEnemyDire": "0"
+  }
+]
