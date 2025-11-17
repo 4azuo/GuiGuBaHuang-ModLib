@@ -1,0 +1,338 @@
+[
+  {
+    "id": "1",
+    "attr": "life",
+    "min": "960",
+    "max": "960",
+    "value": "0"
+  },
+  {
+    "id": "2",
+    "attr": "mood",
+    "min": "100",
+    "max": "100",
+    "value": "0"
+  },
+  {
+    "id": "3",
+    "attr": "health",
+    "min": "100",
+    "max": "100",
+    "value": "0"
+  },
+  {
+    "id": "4",
+    "attr": "energy",
+    "min": "80",
+    "max": "80",
+    "value": "0"
+  },
+  {
+    "id": "5",
+    "attr": "hpMax",
+    "min": "200",
+    "max": "350",
+    "value": "2"
+  },
+  {
+    "id": "6",
+    "attr": "mpMax",
+    "min": "100",
+    "max": "200",
+    "value": "2.27879852009892"
+  },
+  {
+    "id": "7",
+    "attr": "spMax",
+    "min": "75",
+    "max": "150",
+    "value": "3"
+  },
+  {
+    "id": "8",
+    "attr": "luck",
+    "min": "80",
+    "max": "80",
+    "value": "0"
+  },
+  {
+    "id": "9",
+    "attr": "talent",
+    "min": "60",
+    "max": "100",
+    "value": "5"
+  },
+  {
+    "id": "10",
+    "attr": "atk",
+    "min": "15",
+    "max": "15",
+    "value": "40.5566600397614"
+  },
+  {
+    "id": "11",
+    "attr": "def",
+    "min": "5",
+    "max": "5",
+    "value": "39.8648648648648"
+  },
+  {
+    "id": "12",
+    "attr": "fsp",
+    "min": "500",
+    "max": "500",
+    "value": "0"
+  },
+  {
+    "id": "13",
+    "attr": "pfr",
+    "min": "0",
+    "max": "0",
+    "value": "0"
+  },
+  {
+    "id": "14",
+    "attr": "mfr",
+    "min": "0",
+    "max": "0",
+    "value": "0"
+  },
+  {
+    "id": "15",
+    "attr": "crit",
+    "min": "30",
+    "max": "30",
+    "value": "0"
+  },
+  {
+    "id": "16",
+    "attr": "guard",
+    "min": "15",
+    "max": "15",
+    "value": "0"
+  },
+  {
+    "id": "17",
+    "attr": "msp",
+    "min": "350",
+    "max": "350",
+    "value": "0"
+  },
+  {
+    "id": "18",
+    "attr": "critV",
+    "min": "200",
+    "max": "200",
+    "value": "0"
+  },
+  {
+    "id": "19",
+    "attr": "guardV",
+    "min": "0",
+    "max": "0",
+    "value": "0"
+  },
+  {
+    "id": "20",
+    "attr": "bas1",
+    "min": "18",
+    "max": "26",
+    "value": "20"
+  },
+  {
+    "id": "21",
+    "attr": "bas2",
+    "min": "17",
+    "max": "23",
+    "value": "20"
+  },
+  {
+    "id": "22",
+    "attr": "bas3",
+    "min": "16",
+    "max": "20",
+    "value": "20"
+  },
+  {
+    "id": "23",
+    "attr": "bas4",
+    "min": "12",
+    "max": "20",
+    "value": "20"
+  },
+  {
+    "id": "24",
+    "attr": "bas5",
+    "min": "12",
+    "max": "16",
+    "value": "20"
+  },
+  {
+    "id": "25",
+    "attr": "bas6",
+    "min": "8",
+    "max": "16",
+    "value": "20"
+  },
+  {
+    "id": "26",
+    "attr": "bas7",
+    "min": "8",
+    "max": "12",
+    "value": "20"
+  },
+  {
+    "id": "27",
+    "attr": "bas8",
+    "min": "6",
+    "max": "10",
+    "value": "20"
+  },
+  {
+    "id": "28",
+    "attr": "bas9",
+    "min": "4",
+    "max": "8",
+    "value": "20"
+  },
+  {
+    "id": "29",
+    "attr": "bas10",
+    "min": "4",
+    "max": "8",
+    "value": "20"
+  },
+  {
+    "id": "30",
+    "attr": "bas11",
+    "min": "2",
+    "max": "6",
+    "value": "20"
+  },
+  {
+    "id": "31",
+    "attr": "bas12",
+    "min": "2",
+    "max": "6",
+    "value": "20"
+  },
+  {
+    "id": "32",
+    "attr": "bas13",
+    "min": "1",
+    "max": "5",
+    "value": "20"
+  },
+  {
+    "id": "33",
+    "attr": "bas14",
+    "min": "1",
+    "max": "5",
+    "value": "20"
+  },
+  {
+    "id": "34",
+    "attr": "bas15",
+    "min": "1",
+    "max": "3",
+    "value": "20"
+  },
+  {
+    "id": "35",
+    "attr": "bas16",
+    "min": "1",
+    "max": "3",
+    "value": "20"
+  },
+  {
+    "id": "36",
+    "attr": "bas17",
+    "min": "1",
+    "max": "3",
+    "value": "20"
+  },
+  {
+    "id": "37",
+    "attr": "bas18",
+    "min": "1",
+    "max": "3",
+    "value": "20"
+  },
+  {
+    "id": "38",
+    "attr": "standUp",
+    "min": "100",
+    "max": "100",
+    "value": "0"
+  },
+  {
+    "id": "39",
+    "attr": "standDown",
+    "min": "100",
+    "max": "100",
+    "value": "0"
+  },
+  {
+    "id": "40",
+    "attr": "initAge",
+    "min": "192",
+    "max": "192",
+    "value": "0"
+  },
+  {
+    "id": "41",
+    "attr": "initMood",
+    "min": "100",
+    "max": "100",
+    "value": "0"
+  },
+  {
+    "id": "42",
+    "attr": "initHealth",
+    "min": "100",
+    "max": "100",
+    "value": "0"
+  },
+  {
+    "id": "43",
+    "attr": "initEnergy",
+    "min": "80",
+    "max": "80",
+    "value": "0"
+  },
+  {
+    "id": "44",
+    "attr": "initAbilityPoint",
+    "min": "12",
+    "max": "12",
+    "value": "0"
+  },
+  {
+    "id": "45",
+    "attr": "initSight",
+    "min": "3",
+    "max": "3",
+    "value": "0"
+  },
+  {
+    "id": "46",
+    "attr": "initBag",
+    "min": "18",
+    "max": "18",
+    "value": "0"
+  },
+  {
+    "id": "47",
+    "attr": "playerBag",
+    "min": "16",
+    "max": "16",
+    "value": "0"
+  },
+  {
+    "id": "48",
+    "attr": "initGrade",
+    "min": "1",
+    "max": "1",
+    "value": "0"
+  }
+]

@@ -1,0 +1,32 @@
+[
+  {
+    "id": "1",
+    "name": "magic_fire",
+    "oneCharName": "skill_huo"
+  },
+  {
+    "id": "2",
+    "name": "magic_froze",
+    "oneCharName": "skill_shui"
+  },
+  {
+    "id": "3",
+    "name": "magic_thunder",
+    "oneCharName": "skill_lei"
+  },
+  {
+    "id": "4",
+    "name": "magic_wind",
+    "oneCharName": "skill_feng"
+  },
+  {
+    "id": "5",
+    "name": "magic_earth",
+    "oneCharName": "skill_tu"
+  },
+  {
+    "id": "6",
+    "name": "magic_wood",
+    "oneCharName": "skill_mu"
+  }
+]

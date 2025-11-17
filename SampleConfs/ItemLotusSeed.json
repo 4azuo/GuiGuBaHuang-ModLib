@@ -1,0 +1,123 @@
+[
+  {
+    "id": "8104201",
+    "className": "1001",
+    "useType": "1",
+    "isUse": "1",
+    "addLuck": "0",
+    "effectValue": "0",
+    "isGive": "0",
+    "addProp": "8104301",
+    "weight": "200"
+  },
+  {
+    "id": "8104301",
+    "className": "1001",
+    "useType": "1",
+    "isUse": "1",
+    "addLuck": "0",
+    "effectValue": "0",
+    "isGive": "0",
+    "addProp": "0",
+    "weight": "0"
+  },
+  {
+    "id": "8104202",
+    "className": "1002",
+    "useType": "1",
+    "isUse": "1",
+    "addLuck": "0",
+    "effectValue": "0",
+    "isGive": "0",
+    "addProp": "8104302",
+    "weight": "100"
+  },
+  {
+    "id": "8104302",
+    "className": "1002",
+    "useType": "1",
+    "isUse": "1",
+    "addLuck": "0",
+    "effectValue": "0",
+    "isGive": "0",
+    "addProp": "0",
+    "weight": "0"
+  },
+  {
+    "id": "8104203",
+    "className": "1003",
+    "useType": "1",
+    "isUse": "1",
+    "addLuck": "0",
+    "effectValue": "0",
+    "isGive": "0",
+    "addProp": "8104303",
+    "weight": "300"
+  },
+  {
+    "id": "8104303",
+    "className": "1003",
+    "useType": "1",
+    "isUse": "1",
+    "addLuck": "0",
+    "effectValue": "0",
+    "isGive": "0",
+    "addProp": "0",
+    "weight": "0"
+  },
+  {
+    "id": "8104204",
+    "className": "0",
+    "useType": "0",
+    "isUse": "1",
+    "addLuck": "0",
+    "effectValue": "8104204",
+    "isGive": "1",
+    "addProp": "0",
+    "weight": "300"
+  },
+  {
+    "id": "8104205",
+    "className": "0",
+    "useType": "1",
+    "isUse": "1",
+    "addLuck": "8104205",
+    "effectValue": "0",
+    "isGive": "0",
+    "addProp": "0",
+    "weight": "300"
+  },
+  {
+    "id": "8104206",
+    "className": "0",
+    "useType": "1",
+    "isUse": "1",
+    "addLuck": "0",
+    "effectValue": "8104206",
+    "isGive": "0",
+    "addProp": "0",
+    "weight": "300"
+  },
+  {
+    "id": "8104207",
+    "className": "0",
+    "useType": "1",
+    "isUse": "1",
+    "addLuck": "8104207",
+    "effectValue": "0",
+    "isGive": "0",
+    "addProp": "0",
+    "weight": "300"
+  },
+  {
+    "id": "8104208",
+    "className": "0",
+    "useType": "2",
+    "isUse": "0",
+    "addLuck": "0",
+    "effectValue": "0",
+    "isGive": "1",
+    "addProp": "0",
+    "weight": "0"
+  }
+]

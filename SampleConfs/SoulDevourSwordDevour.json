@@ -1,0 +1,72 @@
+[
+  {
+    "id": "1",
+    "npcGrade": "1",
+    "increaseExp": "2",
+    "atkUp": "2",
+    "devourCD": "3"
+  },
+  {
+    "id": "2",
+    "npcGrade": "2",
+    "increaseExp": "4",
+    "atkUp": "3",
+    "devourCD": "3"
+  },
+  {
+    "id": "3",
+    "npcGrade": "3",
+    "increaseExp": "8",
+    "atkUp": "6",
+    "devourCD": "3"
+  },
+  {
+    "id": "4",
+    "npcGrade": "4",
+    "increaseExp": "15",
+    "atkUp": "12",
+    "devourCD": "3"
+  },
+  {
+    "id": "5",
+    "npcGrade": "5",
+    "increaseExp": "28",
+    "atkUp": "27",
+    "devourCD": "3"
+  },
+  {
+    "id": "6",
+    "npcGrade": "6",
+    "increaseExp": "51",
+    "atkUp": "65",
+    "devourCD": "3"
+  },
+  {
+    "id": "7",
+    "npcGrade": "7",
+    "increaseExp": "84",
+    "atkUp": "110",
+    "devourCD": "3"
+  },
+  {
+    "id": "8",
+    "npcGrade": "8",
+    "increaseExp": "125",
+    "atkUp": "170",
+    "devourCD": "3"
+  },
+  {
+    "id": "9",
+    "npcGrade": "9",
+    "increaseExp": "169",
+    "atkUp": "240",
+    "devourCD": "3"
+  },
+  {
+    "id": "10",
+    "npcGrade": "10",
+    "increaseExp": "203",
+    "atkUp": "300",
+    "devourCD": "3"
+  }
+]

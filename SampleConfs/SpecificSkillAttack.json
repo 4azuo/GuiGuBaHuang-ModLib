@@ -1,0 +1,114 @@
+[
+  {
+    "id": "1",
+    "npcId": "6103",
+    "skillAttackID": "24113",
+    "name": "SpecificSkillAttackName24113",
+    "icon": "tianlingjianyi",
+    "desc": "SpecificSkillAttackDesc24113"
+  },
+  {
+    "id": "2",
+    "npcId": "6103",
+    "skillAttackID": "24111",
+    "name": "SpecificSkillAttackName24111",
+    "icon": "tianlingjianyijueyingshi",
+    "desc": "SpecificSkillAttackDesc24111"
+  },
+  {
+    "id": "3",
+    "npcId": "6089",
+    "skillAttackID": "56111",
+    "name": "SpecificSkillAttackName56111",
+    "icon": "youyingbiyu",
+    "desc": "SpecificSkillAttackDesc56111"
+  },
+  {
+    "id": "4",
+    "npcId": "6097",
+    "skillAttackID": "51111",
+    "name": "SpecificSkillAttackName51111",
+    "icon": "fenyuandihuo",
+    "desc": "SpecificSkillAttackDesc51111"
+  },
+  {
+    "id": "5",
+    "npcId": "6090",
+    "skillAttackID": "55115",
+    "name": "SpecificSkillAttackName55115",
+    "icon": "zhenyuliusha",
+    "desc": "SpecificSkillAttackDesc55115"
+  },
+  {
+    "id": "6",
+    "npcId": "6088",
+    "skillAttackID": "22113",
+    "name": "SpecificSkillAttackName22113",
+    "icon": "jianqizongheng",
+    "desc": "SpecificSkillAttackDesc22113"
+  },
+  {
+    "id": "7",
+    "npcId": "-521125",
+    "skillAttackID": "52112",
+    "name": "SpecificSkillAttackName52112",
+    "icon": "521125",
+    "desc": "SpecificSkillAttackDesc52112"
+  },
+  {
+    "id": "8",
+    "npcId": "-531145",
+    "skillAttackID": "53114",
+    "name": "SpecificSkillAttackName53114",
+    "icon": "531145",
+    "desc": "SpecificSkillAttackDesc53114"
+  },
+  {
+    "id": "11",
+    "npcId": "-231125",
+    "skillAttackID": "23112",
+    "name": "SpecificSkillAttackName23112",
+    "icon": "231125",
+    "desc": "SpecificSkillAttackDesc23112"
+  },
+  {
+    "id": "12",
+    "npcId": "-231125",
+    "skillAttackID": "23114",
+    "name": "SpecificSkillAttackName23114",
+    "icon": "231145",
+    "desc": "SpecificSkillAttackDesc23114"
+  },
+  {
+    "id": "13",
+    "npcId": "-231125",
+    "skillAttackID": "23115",
+    "name": "SpecificSkillAttackName23115",
+    "icon": "231155",
+    "desc": "SpecificSkillAttackDesc23115"
+  },
+  {
+    "id": "14",
+    "npcId": "-231125",
+    "skillAttackID": "23116",
+    "name": "SpecificSkillAttackName23116",
+    "icon": "231165",
+    "desc": "SpecificSkillAttackDesc23116"
+  },
+  {
+    "id": "15",
+    "npcId": "-541155",
+    "skillAttackID": "54115",
+    "name": "SpecificSkillAttackName54115",
+    "icon": "541155",
+    "desc": "SpecificSkillAttackDesc54115"
+  },
+  {
+    "id": "16",
+    "npcId": "-251125",
+    "skillAttackID": "25112",
+    "name": "SpecificSkillAttackName25112",
+    "icon": "251125",
+    "desc": "SpecificSkillAttackDesc25112"
+  }
+]

@@ -1,0 +1,387 @@
+[
+  {
+    "id": "1",
+    "className": "101001",
+    "condition": "dialogue_2800303_0|dialogue_2800101_1"
+  },
+  {
+    "id": "2",
+    "className": "101001",
+    "condition": "task_2112001_0"
+  },
+  {
+    "id": "3",
+    "className": "101001",
+    "condition": "dialogue_2800501_1|dialogue_2800751_0"
+  },
+  {
+    "id": "4",
+    "className": "101001",
+    "condition": "dialogue_2802305_0|dialogue_2801642_1"
+  },
+  {
+    "id": "5",
+    "className": "101001",
+    "condition": "dialogue_2802305_1|dialogue_2802412_0"
+  },
+  {
+    "id": "6",
+    "className": "101001",
+    "condition": "dialogue_2802412_1|dialogue_2802423_0"
+  },
+  {
+    "id": "7",
+    "className": "101001",
+    "condition": "dialogue_2803152_1|dialogue_2803211_0"
+  },
+  {
+    "id": "8",
+    "className": "101001",
+    "condition": "dramaPackageStep_240_4_1|dialogue_2803603_0|dialogue_2803441_1"
+  },
+  {
+    "id": "9",
+    "className": "101001",
+    "condition": "dramaPackageStep_240_4_1|dialogue_2803603_1|dialogue_2803621_0"
+  },
+  {
+    "id": "10",
+    "className": "101001",
+    "condition": "dramaPackageStep_240_4_1|dialogue_2803621_1|dialogue_2803662_0"
+  },
+  {
+    "id": "11",
+    "className": "101001",
+    "condition": "task_2112006_0|dialogue_2800751_1|dialogue_2800811_0"
+  },
+  {
+    "id": "12",
+    "className": "101001",
+    "condition": "dramaPackageStep_240_1_1|dialogue_2800861_1|dialogue_2800911_0"
+  },
+  {
+    "id": "13",
+    "className": "101002",
+    "condition": "dramaPackageStep_240_1_1|dialogue_2801201_1|dialogue_2801301_0"
+  },
+  {
+    "id": "14",
+    "className": "101002",
+    "condition": "dramaPackageStep_240_2_1|dialogue_2801501_1|dialogue_2801601_0"
+  },
+  {
+    "id": "15",
+    "className": "101002",
+    "condition": "dialogue_2800401_1|dialogue_2800411_0"
+  },
+  {
+    "id": "16",
+    "className": "101002",
+    "condition": "dialogue_2802422_1|dialogue_2802512_0"
+  },
+  {
+    "id": "17",
+    "className": "101002",
+    "condition": "dialogue_2802564_1|dialogue_2802711_0"
+  },
+  {
+    "id": "18",
+    "className": "101002",
+    "condition": "dramaPackageStep_240_3_1|dialogue_2802993_0|dialogue_2802981_0"
+  },
+  {
+    "id": "19",
+    "className": "101002",
+    "condition": "dialogue_2803231_1|dialogue_2803381_0|dialogue_2806602_0"
+  },
+  {
+    "id": "20",
+    "className": "101002",
+    "condition": "dramaPackageStep_240_4_1|dialogue_2803804_1|dialogue_2803871_0"
+  },
+  {
+    "id": "21",
+    "className": "101002",
+    "condition": "dialogueTime_2806401_6|dialogue_2806471_0"
+  },
+  {
+    "id": "22",
+    "className": "101002",
+    "condition": "dialogue_2806471_1|or|dialogue_2806522_0|dialogue_2806602_0"
+  },
+  {
+    "id": "23",
+    "className": "101001",
+    "condition": "0"
+  },
+  {
+    "id": "24",
+    "className": "101108",
+    "condition": "task_2112101_0"
+  },
+  {
+    "id": "25",
+    "className": "101108",
+    "condition": "dialogue_2811621_0|dialogue_2811603_1|numInRelationList_0_8_1_0"
+  },
+  {
+    "id": "26",
+    "className": "101108",
+    "condition": "dialogue_2811811_0|dialogue_2811753_1"
+  },
+  {
+    "id": "27",
+    "className": "101108",
+    "condition": "dialogue_2810911_0|dialogue_2810902_1"
+  },
+  {
+    "id": "28",
+    "className": "101108",
+    "condition": "dialogue_2811001_0|dialogue_2810911_1"
+  },
+  {
+    "id": "29",
+    "className": "101108",
+    "condition": "dialogue_2811121_1|dialogue_2811201_0"
+  },
+  {
+    "id": "30",
+    "className": "101108",
+    "condition": "dialogue_2811681_0|dialogue_2811672_1"
+  },
+  {
+    "id": "31",
+    "className": "101108",
+    "condition": "dialogue_2811881_0|dialogue_2811872_1"
+  },
+  {
+    "id": "32",
+    "className": "101108",
+    "condition": "dialogue_2812001_0|dialogue_2811924_1"
+  },
+  {
+    "id": "33",
+    "className": "101108",
+    "condition": "dialogue_2812321_0|dialogue_2812315_1"
+  },
+  {
+    "id": "34",
+    "className": "101108",
+    "condition": "dialogue_2812641_0|dialogue_2812631_1|gender_0_1|numInRelationList_0_8_1_0"
+  },
+  {
+    "id": "35",
+    "className": "101108",
+    "condition": "gender_0_1|dialogue_2812631_1|numInRelationList_0_8_2_1|dialogue_2816431_0"
+  },
+  {
+    "id": "36",
+    "className": "101108",
+    "condition": "gender_0_2|dialogueTime_2812593_192"
+  },
+  {
+    "id": "37",
+    "className": "101101",
+    "condition": "0"
+  },
+  {
+    "id": "38",
+    "className": "802407",
+    "condition": "dialogueCount_2821843_0_0"
+  },
+  {
+    "id": "39",
+    "className": "802407",
+    "condition": "dialogueCount_2822101_0_0|or|dialogueCount_2821868_2_1|dialogueCount_2821862_2_1|dialogueCount_2821864_2_1|dialogueCount_2821867_2_1"
+  },
+  {
+    "id": "40",
+    "className": "802407",
+    "condition": "dialogueCount_2822101_2_1|dialogueCount_2822117_2_1|dialogueCount_2822318_0_0|dialogueCount_2822307_0_0|dialogueCount_2822308_0_0|dialogueCount_2822309_0_0|dialogueCount_2824571_0_0|or|dialogueEx_1_2_3_2823806_2824010_2824203_2824402|dialogueCount_2824569_2_1"
+  },
+  {
+    "id": "41",
+    "className": "802407",
+    "condition": "dialogueCount_2822318_2_1|dialogueCount_2822319_0_0"
+  },
+  {
+    "id": "42",
+    "className": "802407",
+    "condition": "dialogueCount_2823029_2_1|dialogueCount_2823301_0_0"
+  },
+  {
+    "id": "43",
+    "className": "802407",
+    "condition": "dialogueCount_2823029_2_1|dialogueTime_2823301_1|dialogueCount_2823302_0_0"
+  },
+  {
+    "id": "44",
+    "className": "802407",
+    "condition": "dialogueCount_2823029_2_1|dialogueTime_2823302_1|dialogueCount_2823303_0_0"
+  },
+  {
+    "id": "45",
+    "className": "802407",
+    "condition": "dialogueCount_2823029_2_1|dialogueTime_2823303_1|dialogueCount_2823304_0_0"
+  },
+  {
+    "id": "46",
+    "className": "802407",
+    "condition": "dialogueCount_2824570_2_1|dialogueCount_2822301_0_0|or|dialogueEx_1_0_2_2823806_2824010_2824203_2824402|dialogueCount_2824570_2_1"
+  },
+  {
+    "id": "47",
+    "className": "802555",
+    "condition": "dialogueCount_2843901_2_1|dialogueCount_2843902_0_0"
+  },
+  {
+    "id": "48",
+    "className": "802555",
+    "condition": "dialogueTime_2843921_1|dialogueCount_2843902_2_1|dialogueCount_2844201_0_0"
+  },
+  {
+    "id": "49",
+    "className": "802555",
+    "condition": "dialogueTime_2844215_1|dialogueCount_2844201_2_1|dialogueCount_2844501_0_0"
+  },
+  {
+    "id": "50",
+    "className": "802555",
+    "condition": "dialogueTime_2844823_1|dialogueCount_2844501_2_1|dialogueCount_2845108_0_0"
+  },
+  {
+    "id": "51",
+    "className": "802555",
+    "condition": "dialogueTime_2845112_1|dialogueCount_2845101_2_1|dialogueCount_2845401_0_0"
+  },
+  {
+    "id": "52",
+    "className": "802555",
+    "condition": "dialogueTime_2845412_2|dialogueCount_2843902_2_1|dialogueCount_2845401_2_1|dialogueCount_2845706_0_0"
+  },
+  {
+    "id": "53",
+    "className": "802555",
+    "condition": "dialogueTime_2846009_1|dialogueCount_2845706_2_1|dialogueCount_2846301_0_0"
+  },
+  {
+    "id": "54",
+    "className": "802555",
+    "condition": "dialogueTime_2846617_1|dialogueCount_2846603_2_1|dialogueCount_2846901_0_0"
+  },
+  {
+    "id": "55",
+    "className": "802555",
+    "condition": "dialogueTime_2846909_1|dialogueCount_2846901_2_1|dialogueCount_2846910_0_0"
+  },
+  {
+    "id": "56",
+    "className": "802555",
+    "condition": "dialogueTime_2846301_1|dialogueCount_2846009_2_1|dialogueCount_2846603_0_0"
+  },
+  {
+    "id": "57",
+    "className": "72317",
+    "condition": "0"
+  },
+  {
+    "id": "58",
+    "className": "72319",
+    "condition": "0"
+  },
+  {
+    "id": "59",
+    "className": "72321",
+    "condition": "0"
+  },
+  {
+    "id": "60",
+    "className": "72324",
+    "condition": "0"
+  },
+  {
+    "id": "61",
+    "className": "72326",
+    "condition": "0"
+  },
+  {
+    "id": "62",
+    "className": "72328",
+    "condition": "0"
+  },
+  {
+    "id": "63",
+    "className": "72330",
+    "condition": "0"
+  },
+  {
+    "id": "64",
+    "className": "72332",
+    "condition": "0"
+  },
+  {
+    "id": "65",
+    "className": "72336",
+    "condition": "0"
+  },
+  {
+    "id": "66",
+    "className": "72340",
+    "condition": "0"
+  },
+  {
+    "id": "67",
+    "className": "72342",
+    "condition": "0"
+  },
+  {
+    "id": "68",
+    "className": "72343",
+    "condition": "0"
+  },
+  {
+    "id": "69",
+    "className": "72344",
+    "condition": "0"
+  },
+  {
+    "id": "70",
+    "className": "72347",
+    "condition": "0"
+  },
+  {
+    "id": "71",
+    "className": "72351",
+    "condition": "0"
+  },
+  {
+    "id": "72",
+    "className": "72354",
+    "condition": "0"
+  },
+  {
+    "id": "73",
+    "className": "72355",
+    "condition": "0"
+  },
+  {
+    "id": "74",
+    "className": "72356",
+    "condition": "0"
+  },
+  {
+    "id": "75",
+    "className": "72358",
+    "condition": "0"
+  },
+  {
+    "id": "76",
+    "className": "72360",
+    "condition": "0"
+  },
+  {
+    "id": "77",
+    "className": "72362",
+    "condition": "0"
+  }
+]

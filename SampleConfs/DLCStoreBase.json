@@ -1,0 +1,307 @@
+[
+  {
+    "id": "1",
+    "key": "storeRefreshPrice",
+    "value": "2"
+  },
+  {
+    "id": "2",
+    "key": "storeRefreshAdd",
+    "value": "35"
+  },
+  {
+    "id": "3",
+    "key": "attrRefreshPrice",
+    "value": "2"
+  },
+  {
+    "id": "4",
+    "key": "attrRefreshAdd",
+    "value": "35"
+  },
+  {
+    "id": "5",
+    "key": "treasureDrop",
+    "value": "0"
+  },
+  {
+    "id": "6",
+    "key": "treasureDropElite",
+    "value": "0"
+  },
+  {
+    "id": "7",
+    "key": "treasureDropBoss",
+    "value": "0"
+  },
+  {
+    "id": "8",
+    "key": "weightParaA",
+    "value": "2"
+  },
+  {
+    "id": "9",
+    "key": "propGiveUpPrice",
+    "value": "20"
+  },
+  {
+    "id": "10",
+    "key": "hadSkillPrefixWeightAdd",
+    "value": "400"
+  },
+  {
+    "id": "11",
+    "key": "maxMonstCount",
+    "value": "40"
+  },
+  {
+    "id": "12",
+    "key": "prefixsFromUnitSkillProp",
+    "value": "35"
+  },
+  {
+    "id": "13",
+    "key": "forgetSkillPriceRate",
+    "value": "70"
+  },
+  {
+    "id": "14",
+    "key": "skillPoolWeightBase",
+    "value": "30"
+  },
+  {
+    "id": "15",
+    "key": "skillPoolWeightAdd",
+    "value": "30"
+  },
+  {
+    "id": "16",
+    "key": "skillPoolStageInterval",
+    "value": "4"
+  },
+  {
+    "id": "17",
+    "key": "bossCrazyDownTime",
+    "value": "10"
+  },
+  {
+    "id": "18",
+    "key": "prefixRule1Param1",
+    "value": "1"
+  },
+  {
+    "id": "19",
+    "key": "prefixRule1Param2",
+    "value": "4"
+  },
+  {
+    "id": "20",
+    "key": "prefixRule2Param1",
+    "value": "2"
+  },
+  {
+    "id": "21",
+    "key": "prefixRule2Param2",
+    "value": "2"
+  },
+  {
+    "id": "22",
+    "key": "prefixRule3Param1",
+    "value": "3"
+  },
+  {
+    "id": "23",
+    "key": "prefixRule3Param2",
+    "value": "2"
+  },
+  {
+    "id": "24",
+    "key": "prefixRule3Param3",
+    "value": "1"
+  },
+  {
+    "id": "25",
+    "key": "prefixRule3Param4",
+    "value": "30"
+  },
+  {
+    "id": "26",
+    "key": "prefixRule4Param1",
+    "value": "5"
+  },
+  {
+    "id": "27",
+    "key": "prefixRule4Param2",
+    "value": "3"
+  },
+  {
+    "id": "28",
+    "key": "prefixRule4Param3",
+    "value": "1"
+  },
+  {
+    "id": "29",
+    "key": "prefixRule4Param4",
+    "value": "30"
+  },
+  {
+    "id": "30",
+    "key": "prefixRule5Param1",
+    "value": "6"
+  },
+  {
+    "id": "31",
+    "key": "prefixRule5Param2",
+    "value": "4"
+  },
+  {
+    "id": "32",
+    "key": "prefixRule5Param3",
+    "value": "1"
+  },
+  {
+    "id": "33",
+    "key": "prefixRule5Param4",
+    "value": "30"
+  },
+  {
+    "id": "34",
+    "key": "prefixRule6Param1",
+    "value": "8"
+  },
+  {
+    "id": "35",
+    "key": "prefixRule6Param2",
+    "value": "5"
+  },
+  {
+    "id": "36",
+    "key": "prefixRule6Param3",
+    "value": "1"
+  },
+  {
+    "id": "37",
+    "key": "prefixRule6Param4",
+    "value": "30"
+  },
+  {
+    "id": "38",
+    "key": "prefixRule7Param1",
+    "value": "9"
+  },
+  {
+    "id": "39",
+    "key": "prefixRule7Param2",
+    "value": "6"
+  },
+  {
+    "id": "40",
+    "key": "prefixRule7Param3",
+    "value": "1"
+  },
+  {
+    "id": "41",
+    "key": "prefixRule7Param4",
+    "value": "30"
+  },
+  {
+    "id": "42",
+    "key": "prefixRule8Param1",
+    "value": "10"
+  },
+  {
+    "id": "43",
+    "key": "prefixRule8Param2",
+    "value": "2"
+  },
+  {
+    "id": "44",
+    "key": "prefixRule8Param3",
+    "value": "2"
+  },
+  {
+    "id": "45",
+    "key": "prefixRule8Param4",
+    "value": "30"
+  },
+  {
+    "id": "46",
+    "key": "prefixRule9Param1",
+    "value": "12"
+  },
+  {
+    "id": "47",
+    "key": "prefixRule9Param2",
+    "value": "3"
+  },
+  {
+    "id": "48",
+    "key": "prefixRule9Param3",
+    "value": "2"
+  },
+  {
+    "id": "49",
+    "key": "prefixRule9Param4",
+    "value": "30"
+  },
+  {
+    "id": "50",
+    "key": "prefixRule10Param1",
+    "value": "13"
+  },
+  {
+    "id": "51",
+    "key": "prefixRule10Param2",
+    "value": "4"
+  },
+  {
+    "id": "52",
+    "key": "prefixRule10Param3",
+    "value": "2"
+  },
+  {
+    "id": "53",
+    "key": "prefixRule10Param4",
+    "value": "30"
+  },
+  {
+    "id": "54",
+    "key": "prefixRule11Param1",
+    "value": "14"
+  },
+  {
+    "id": "55",
+    "key": "prefixRule11Param2",
+    "value": "5"
+  },
+  {
+    "id": "56",
+    "key": "prefixRule11Param3",
+    "value": "2"
+  },
+  {
+    "id": "57",
+    "key": "prefixRule11Param4",
+    "value": "30"
+  },
+  {
+    "id": "58",
+    "key": "prefixRule12Param1",
+    "value": "16"
+  },
+  {
+    "id": "59",
+    "key": "prefixRule12Param2",
+    "value": "6"
+  },
+  {
+    "id": "60",
+    "key": "prefixRule12Param3",
+    "value": "2"
+  },
+  {
+    "id": "61",
+    "key": "prefixRule12Param4",
+    "value": "30"
+  }
+]

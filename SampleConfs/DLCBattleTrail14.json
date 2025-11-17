@@ -1,0 +1,92 @@
+[
+  {
+    "id": "14031",
+    "bulletNum": "&503_arrayNum",
+    "bulletDegree": "360",
+    "backConfirm": "0",
+    "stayTime": "0",
+    "changeDirection": "0",
+    "stayOnPlayer": "1"
+  },
+  {
+    "id": "14203",
+    "bulletNum": "&203_subBullet|+#ddsl|x203_subBulletRate|f0&",
+    "bulletDegree": "&203_subBullet|+#ddsl|x203_subBulletAngle|x203_subBulletRate|x203_subBulletAngleSwitch|+203_switchedAngle|f0&",
+    "backConfirm": "0",
+    "stayTime": "0",
+    "changeDirection": "0",
+    "stayOnPlayer": "1"
+  },
+  {
+    "id": "14602",
+    "bulletNum": "&602_array",
+    "bulletDegree": "360",
+    "backConfirm": "0",
+    "stayTime": "0",
+    "changeDirection": "0",
+    "stayOnPlayer": "1"
+  },
+  {
+    "id": "14201",
+    "bulletNum": "&201_bullet|+#ddsl|f0&",
+    "bulletDegree": "&201_bullet|+#ddsl|-1|x201_angularInterval|f0&",
+    "backConfirm": "&201_returnSwitch",
+    "stayTime": "&201_returnTime",
+    "changeDirection": "1",
+    "stayOnPlayer": "0"
+  },
+  {
+    "id": "14025",
+    "bulletNum": "9",
+    "bulletDegree": "360",
+    "backConfirm": "0",
+    "stayTime": "0",
+    "changeDirection": "0",
+    "stayOnPlayer": "0"
+  },
+  {
+    "id": "14032",
+    "bulletNum": "13",
+    "bulletDegree": "360",
+    "backConfirm": "0",
+    "stayTime": "0",
+    "changeDirection": "0",
+    "stayOnPlayer": "0"
+  },
+  {
+    "id": "14052",
+    "bulletNum": "3",
+    "bulletDegree": "80",
+    "backConfirm": "0",
+    "stayTime": "0",
+    "changeDirection": "0",
+    "stayOnPlayer": "0"
+  },
+  {
+    "id": "14063",
+    "bulletNum": "14",
+    "bulletDegree": "360",
+    "backConfirm": "0",
+    "stayTime": "0",
+    "changeDirection": "0",
+    "stayOnPlayer": "0"
+  },
+  {
+    "id": "14064",
+    "bulletNum": "6",
+    "bulletDegree": "360",
+    "backConfirm": "0",
+    "stayTime": "0",
+    "changeDirection": "0",
+    "stayOnPlayer": "0"
+  },
+  {
+    "id": "14073",
+    "bulletNum": "12",
+    "bulletDegree": "360",
+    "backConfirm": "0",
+    "stayTime": "1000",
+    "changeDirection": "0",
+    "stayOnPlayer": "0"
+  }
+]

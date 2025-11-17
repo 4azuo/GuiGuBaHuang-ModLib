@@ -1,0 +1,1619 @@
+[
+  {
+    "id": "10101",
+    "abilityId": "20001",
+    "battleEffect": "0",
+    "prefixKey": "0",
+    "roleEffect": "10101"
+  },
+  {
+    "id": "10102",
+    "abilityId": "10001",
+    "battleEffect": "0",
+    "prefixKey": "0",
+    "roleEffect": "10102"
+  },
+  {
+    "id": "10103",
+    "abilityId": "60001",
+    "battleEffect": "0",
+    "prefixKey": "0",
+    "roleEffect": "10103"
+  },
+  {
+    "id": "10105",
+    "abilityId": "80001",
+    "battleEffect": "0",
+    "prefixKey": "0",
+    "roleEffect": "10105"
+  },
+  {
+    "id": "10106",
+    "abilityId": "60001",
+    "battleEffect": "10106",
+    "prefixKey": "0",
+    "roleEffect": "10106"
+  },
+  {
+    "id": "10107",
+    "abilityId": "40001",
+    "battleEffect": "10107",
+    "prefixKey": "0",
+    "roleEffect": "10107"
+  },
+  {
+    "id": "10108",
+    "abilityId": "70001",
+    "battleEffect": "0",
+    "prefixKey": "0",
+    "roleEffect": "10108"
+  },
+  {
+    "id": "10109",
+    "abilityId": "40001",
+    "battleEffect": "10109",
+    "prefixKey": "0",
+    "roleEffect": "0"
+  },
+  {
+    "id": "10110",
+    "abilityId": "60001",
+    "battleEffect": "10110",
+    "prefixKey": "0",
+    "roleEffect": "0"
+  },
+  {
+    "id": "10111",
+    "abilityId": "10001",
+    "battleEffect": "0",
+    "prefixKey": "0",
+    "roleEffect": "0"
+  },
+  {
+    "id": "10112",
+    "abilityId": "10001",
+    "battleEffect": "10112",
+    "prefixKey": "0",
+    "roleEffect": "0"
+  },
+  {
+    "id": "10113",
+    "abilityId": "20001",
+    "battleEffect": "0",
+    "prefixKey": "0",
+    "roleEffect": "10113"
+  },
+  {
+    "id": "10114",
+    "abilityId": "50001",
+    "battleEffect": "0",
+    "prefixKey": "0",
+    "roleEffect": "10114"
+  },
+  {
+    "id": "10201",
+    "abilityId": "50001",
+    "battleEffect": "0",
+    "prefixKey": "0",
+    "roleEffect": "10201"
+  },
+  {
+    "id": "10202",
+    "abilityId": "60001",
+    "battleEffect": "0",
+    "prefixKey": "0",
+    "roleEffect": "10202"
+  },
+  {
+    "id": "10203",
+    "abilityId": "50001",
+    "battleEffect": "0",
+    "prefixKey": "&1003_chargeRange%1",
+    "roleEffect": "10203"
+  },
+  {
+    "id": "10205",
+    "abilityId": "60001",
+    "battleEffect": "10205",
+    "prefixKey": "0",
+    "roleEffect": "10205"
+  },
+  {
+    "id": "10206",
+    "abilityId": "20001",
+    "battleEffect": "10206",
+    "prefixKey": "0",
+    "roleEffect": "10206"
+  },
+  {
+    "id": "10207",
+    "abilityId": "80001",
+    "battleEffect": "0",
+    "prefixKey": "0",
+    "roleEffect": "102071|102072"
+  },
+  {
+    "id": "10208",
+    "abilityId": "70001",
+    "battleEffect": "0",
+    "prefixKey": "0",
+    "roleEffect": "10208"
+  },
+  {
+    "id": "10209",
+    "abilityId": "10001",
+    "battleEffect": "10209",
+    "prefixKey": "0",
+    "roleEffect": "10209"
+  },
+  {
+    "id": "10301",
+    "abilityId": "30001",
+    "battleEffect": "0",
+    "prefixKey": "0",
+    "roleEffect": "10301"
+  },
+  {
+    "id": "10302",
+    "abilityId": "50001",
+    "battleEffect": "0",
+    "prefixKey": "0",
+    "roleEffect": "10302"
+  },
+  {
+    "id": "10303",
+    "abilityId": "30001",
+    "battleEffect": "0",
+    "prefixKey": "0",
+    "roleEffect": "10303"
+  },
+  {
+    "id": "10305",
+    "abilityId": "10001",
+    "battleEffect": "10305",
+    "prefixKey": "0",
+    "roleEffect": "10305"
+  },
+  {
+    "id": "10306",
+    "abilityId": "10001",
+    "battleEffect": "10306",
+    "prefixKey": "0",
+    "roleEffect": "10306"
+  },
+  {
+    "id": "10307",
+    "abilityId": "10001",
+    "battleEffect": "0",
+    "prefixKey": "&1004_bleedingCoefficient%1",
+    "roleEffect": "10307"
+  },
+  {
+    "id": "10308",
+    "abilityId": "70001",
+    "battleEffect": "0",
+    "prefixKey": "0",
+    "roleEffect": "10308"
+  },
+  {
+    "id": "10309",
+    "abilityId": "20001",
+    "battleEffect": "10309",
+    "prefixKey": "0",
+    "roleEffect": "0"
+  },
+  {
+    "id": "10401",
+    "abilityId": "30001",
+    "battleEffect": "0",
+    "prefixKey": "0",
+    "roleEffect": "10401"
+  },
+  {
+    "id": "10402",
+    "abilityId": "40001",
+    "battleEffect": "0",
+    "prefixKey": "0",
+    "roleEffect": "10402"
+  },
+  {
+    "id": "10403",
+    "abilityId": "20001",
+    "battleEffect": "0",
+    "prefixKey": "0",
+    "roleEffect": "10403"
+  },
+  {
+    "id": "10405",
+    "abilityId": "80001",
+    "battleEffect": "10405",
+    "prefixKey": "0",
+    "roleEffect": "10405"
+  },
+  {
+    "id": "10406",
+    "abilityId": "30001",
+    "battleEffect": "10406",
+    "prefixKey": "&1005_shieldMax%1",
+    "roleEffect": "10406"
+  },
+  {
+    "id": "10407",
+    "abilityId": "30001",
+    "battleEffect": "10407",
+    "prefixKey": "0",
+    "roleEffect": "10407"
+  },
+  {
+    "id": "10408",
+    "abilityId": "70001",
+    "battleEffect": "0",
+    "prefixKey": "0",
+    "roleEffect": "10408"
+  },
+  {
+    "id": "10409",
+    "abilityId": "20001",
+    "battleEffect": "10409",
+    "prefixKey": "0",
+    "roleEffect": "10409"
+  },
+  {
+    "id": "10410",
+    "abilityId": "20001",
+    "battleEffect": "10410",
+    "prefixKey": "0",
+    "roleEffect": "0"
+  },
+  {
+    "id": "10411",
+    "abilityId": "60001",
+    "battleEffect": "0",
+    "prefixKey": "0",
+    "roleEffect": "10411"
+  },
+  {
+    "id": "10412",
+    "abilityId": "10001",
+    "battleEffect": "10412",
+    "prefixKey": "0",
+    "roleEffect": "0"
+  },
+  {
+    "id": "10413",
+    "abilityId": "20001",
+    "battleEffect": "10413",
+    "prefixKey": "0",
+    "roleEffect": "0"
+  },
+  {
+    "id": "10414",
+    "abilityId": "10001",
+    "battleEffect": "10414",
+    "prefixKey": "0",
+    "roleEffect": "0"
+  },
+  {
+    "id": "10415",
+    "abilityId": "20001",
+    "battleEffect": "10415",
+    "prefixKey": "0",
+    "roleEffect": "0"
+  },
+  {
+    "id": "10416",
+    "abilityId": "20001",
+    "battleEffect": "10416",
+    "prefixKey": "0",
+    "roleEffect": "0"
+  },
+  {
+    "id": "10501",
+    "abilityId": "30001",
+    "battleEffect": "0",
+    "prefixKey": "0",
+    "roleEffect": "10501"
+  },
+  {
+    "id": "10502",
+    "abilityId": "30001",
+    "battleEffect": "0",
+    "prefixKey": "0",
+    "roleEffect": "10502"
+  },
+  {
+    "id": "10503",
+    "abilityId": "50001",
+    "battleEffect": "0",
+    "prefixKey": "&1006_windSize%1",
+    "roleEffect": "10503"
+  },
+  {
+    "id": "10505",
+    "abilityId": "10001",
+    "battleEffect": "0",
+    "prefixKey": "&1007_injuryBonusDmg%1",
+    "roleEffect": "10505"
+  },
+  {
+    "id": "10506",
+    "abilityId": "20001",
+    "battleEffect": "0",
+    "prefixKey": "&1008_injurySuperposition%1",
+    "roleEffect": "10506"
+  },
+  {
+    "id": "10507",
+    "abilityId": "10001",
+    "battleEffect": "10507",
+    "prefixKey": "0",
+    "roleEffect": "10507"
+  },
+  {
+    "id": "10508",
+    "abilityId": "70001",
+    "battleEffect": "0",
+    "prefixKey": "0",
+    "roleEffect": "10508"
+  },
+  {
+    "id": "10509",
+    "abilityId": "10001",
+    "battleEffect": "0",
+    "prefixKey": "&10509_time%1",
+    "roleEffect": "0"
+  },
+  {
+    "id": "10601",
+    "abilityId": "40001",
+    "battleEffect": "0",
+    "prefixKey": "0",
+    "roleEffect": "10601"
+  },
+  {
+    "id": "10602",
+    "abilityId": "10001",
+    "battleEffect": "0",
+    "prefixKey": "0",
+    "roleEffect": "10602"
+  },
+  {
+    "id": "10603",
+    "abilityId": "10001",
+    "battleEffect": "0",
+    "prefixKey": "&50001_blastDmgCoefficient%1",
+    "roleEffect": "10603"
+  },
+  {
+    "id": "10605",
+    "abilityId": "40001",
+    "battleEffect": "10605",
+    "prefixKey": "0",
+    "roleEffect": "10605"
+  },
+  {
+    "id": "10606",
+    "abilityId": "20001",
+    "battleEffect": "10606",
+    "prefixKey": "0",
+    "roleEffect": "10606"
+  },
+  {
+    "id": "10607",
+    "abilityId": "80001",
+    "battleEffect": "0",
+    "prefixKey": "0",
+    "roleEffect": "10607"
+  },
+  {
+    "id": "10608",
+    "abilityId": "70001",
+    "battleEffect": "0",
+    "prefixKey": "0",
+    "roleEffect": "10608"
+  },
+  {
+    "id": "11101",
+    "abilityId": "10001",
+    "battleEffect": "0",
+    "prefixKey": "0",
+    "roleEffect": "11101|111011"
+  },
+  {
+    "id": "11102",
+    "abilityId": "20001",
+    "battleEffect": "0",
+    "prefixKey": "0",
+    "roleEffect": "11102"
+  },
+  {
+    "id": "11103",
+    "abilityId": "10001",
+    "battleEffect": "0",
+    "prefixKey": "&101011_dmgCoefficient%1",
+    "roleEffect": "11103"
+  },
+  {
+    "id": "11105",
+    "abilityId": "50001",
+    "battleEffect": "11105",
+    "prefixKey": "0",
+    "roleEffect": "11105"
+  },
+  {
+    "id": "11106",
+    "abilityId": "10001",
+    "battleEffect": "0",
+    "prefixKey": "&101011_dmgCoefficient%2",
+    "roleEffect": "11106"
+  },
+  {
+    "id": "11107",
+    "abilityId": "10001",
+    "battleEffect": "11107",
+    "prefixKey": "0",
+    "roleEffect": "11107"
+  },
+  {
+    "id": "11108",
+    "abilityId": "80001",
+    "battleEffect": "0",
+    "prefixKey": "0",
+    "roleEffect": "11108"
+  },
+  {
+    "id": "11109",
+    "abilityId": "10001",
+    "battleEffect": "11109",
+    "prefixKey": "0",
+    "roleEffect": "11109"
+  },
+  {
+    "id": "11110",
+    "abilityId": "30001",
+    "battleEffect": "11110|111102",
+    "prefixKey": "0",
+    "roleEffect": "11110"
+  },
+  {
+    "id": "11111",
+    "abilityId": "10001",
+    "battleEffect": "0",
+    "prefixKey": "0",
+    "roleEffect": "11111"
+  },
+  {
+    "id": "11112",
+    "abilityId": "10001",
+    "battleEffect": "0",
+    "prefixKey": "0",
+    "roleEffect": "11112"
+  },
+  {
+    "id": "11113",
+    "abilityId": "10001",
+    "battleEffect": "0",
+    "prefixKey": "0",
+    "roleEffect": "11113"
+  },
+  {
+    "id": "11114",
+    "abilityId": "10001",
+    "battleEffect": "11114",
+    "prefixKey": "0",
+    "roleEffect": "11114"
+  },
+  {
+    "id": "11115",
+    "abilityId": "40001",
+    "battleEffect": "11115",
+    "prefixKey": "0",
+    "roleEffect": "11115"
+  },
+  {
+    "id": "11116",
+    "abilityId": "60001",
+    "battleEffect": "11116",
+    "prefixKey": "0",
+    "roleEffect": "11116"
+  },
+  {
+    "id": "11201",
+    "abilityId": "10001",
+    "battleEffect": "11201",
+    "prefixKey": "0",
+    "roleEffect": "11201"
+  },
+  {
+    "id": "11202",
+    "abilityId": "40001",
+    "battleEffect": "0",
+    "prefixKey": "0",
+    "roleEffect": "11202"
+  },
+  {
+    "id": "11203",
+    "abilityId": "50001",
+    "battleEffect": "0",
+    "prefixKey": "&1201_iceSum%1|&1201_iceTime%1",
+    "roleEffect": "11203"
+  },
+  {
+    "id": "11205",
+    "abilityId": "30001",
+    "battleEffect": "11205",
+    "prefixKey": "0",
+    "roleEffect": "11205"
+  },
+  {
+    "id": "11206",
+    "abilityId": "60001",
+    "battleEffect": "11206",
+    "prefixKey": "0",
+    "roleEffect": "11206"
+  },
+  {
+    "id": "11207",
+    "abilityId": "40001",
+    "battleEffect": "0",
+    "prefixKey": "0",
+    "roleEffect": "11207"
+  },
+  {
+    "id": "11208",
+    "abilityId": "80001",
+    "battleEffect": "0",
+    "prefixKey": "0",
+    "roleEffect": "11208"
+  },
+  {
+    "id": "11209",
+    "abilityId": "40001",
+    "battleEffect": "11209",
+    "prefixKey": "0",
+    "roleEffect": "11209"
+  },
+  {
+    "id": "11210",
+    "abilityId": "40001",
+    "battleEffect": "11210",
+    "prefixKey": "0",
+    "roleEffect": "11210"
+  },
+  {
+    "id": "11211",
+    "abilityId": "40001",
+    "battleEffect": "0",
+    "prefixKey": "&11211_one%1",
+    "roleEffect": "11211"
+  },
+  {
+    "id": "11212",
+    "abilityId": "40001",
+    "battleEffect": "11212",
+    "prefixKey": "0",
+    "roleEffect": "11212"
+  },
+  {
+    "id": "11213",
+    "abilityId": "40001",
+    "battleEffect": "0",
+    "prefixKey": "0",
+    "roleEffect": "11213"
+  },
+  {
+    "id": "11214",
+    "abilityId": "40001",
+    "battleEffect": "0",
+    "prefixKey": "0",
+    "roleEffect": "11214"
+  },
+  {
+    "id": "11215",
+    "abilityId": "40001",
+    "battleEffect": "0",
+    "prefixKey": "0",
+    "roleEffect": "11215"
+  },
+  {
+    "id": "11301",
+    "abilityId": "30001",
+    "battleEffect": "11301|113014",
+    "prefixKey": "0",
+    "roleEffect": "11301"
+  },
+  {
+    "id": "11302",
+    "abilityId": "30001",
+    "battleEffect": "0",
+    "prefixKey": "0",
+    "roleEffect": "11302"
+  },
+  {
+    "id": "11303",
+    "abilityId": "20001",
+    "battleEffect": "11303",
+    "prefixKey": "0",
+    "roleEffect": "11303"
+  },
+  {
+    "id": "11305",
+    "abilityId": "10001",
+    "battleEffect": "0",
+    "prefixKey": "&113011_minDmg%1|&113011_maxDmg%1",
+    "roleEffect": "11305"
+  },
+  {
+    "id": "11306",
+    "abilityId": "60001",
+    "battleEffect": "0",
+    "prefixKey": "&113011_lightingSum%1",
+    "roleEffect": "11306"
+  },
+  {
+    "id": "11307",
+    "abilityId": "50001",
+    "battleEffect": "0",
+    "prefixKey": "0",
+    "roleEffect": "11307|113071"
+  },
+  {
+    "id": "11308",
+    "abilityId": "80001",
+    "battleEffect": "0",
+    "prefixKey": "0",
+    "roleEffect": "11308"
+  },
+  {
+    "id": "11309",
+    "abilityId": "10001",
+    "battleEffect": "0",
+    "prefixKey": "0",
+    "roleEffect": "11309"
+  },
+  {
+    "id": "11310",
+    "abilityId": "10001",
+    "battleEffect": "0",
+    "prefixKey": "0",
+    "roleEffect": "11310"
+  },
+  {
+    "id": "11311",
+    "abilityId": "10001",
+    "battleEffect": "0",
+    "prefixKey": "0",
+    "roleEffect": "11311"
+  },
+  {
+    "id": "11312",
+    "abilityId": "10001",
+    "battleEffect": "0",
+    "prefixKey": "0",
+    "roleEffect": "11312"
+  },
+  {
+    "id": "11313",
+    "abilityId": "10001",
+    "battleEffect": "0",
+    "prefixKey": "0",
+    "roleEffect": "11313"
+  },
+  {
+    "id": "11314",
+    "abilityId": "50001",
+    "battleEffect": "0",
+    "prefixKey": "0",
+    "roleEffect": "11314"
+  },
+  {
+    "id": "11315",
+    "abilityId": "10001",
+    "battleEffect": "0",
+    "prefixKey": "0",
+    "roleEffect": "11315"
+  },
+  {
+    "id": "11316",
+    "abilityId": "40001",
+    "battleEffect": "0",
+    "prefixKey": "0",
+    "roleEffect": "11316"
+  },
+  {
+    "id": "11317",
+    "abilityId": "10001",
+    "battleEffect": "0",
+    "prefixKey": "0",
+    "roleEffect": "11317"
+  },
+  {
+    "id": "11318",
+    "abilityId": "10001",
+    "battleEffect": "0",
+    "prefixKey": "0",
+    "roleEffect": "11318"
+  },
+  {
+    "id": "11319",
+    "abilityId": "10001",
+    "battleEffect": "0",
+    "prefixKey": "&11319_prob%1",
+    "roleEffect": "11319"
+  },
+  {
+    "id": "11320",
+    "abilityId": "60001",
+    "battleEffect": "11320",
+    "prefixKey": "0",
+    "roleEffect": "11320"
+  },
+  {
+    "id": "11321",
+    "abilityId": "30001",
+    "battleEffect": "0",
+    "prefixKey": "&11321_prob%1",
+    "roleEffect": "11321"
+  },
+  {
+    "id": "11322",
+    "abilityId": "20001",
+    "battleEffect": "11322",
+    "prefixKey": "0",
+    "roleEffect": "11322"
+  },
+  {
+    "id": "11323",
+    "abilityId": "20001",
+    "battleEffect": "0",
+    "prefixKey": "0",
+    "roleEffect": "11323|113231"
+  },
+  {
+    "id": "11401",
+    "abilityId": "30001",
+    "battleEffect": "0",
+    "prefixKey": "0",
+    "roleEffect": "11401"
+  },
+  {
+    "id": "11402",
+    "abilityId": "50001",
+    "battleEffect": "0",
+    "prefixKey": "0",
+    "roleEffect": "11402"
+  },
+  {
+    "id": "11403",
+    "abilityId": "50001",
+    "battleEffect": "0",
+    "prefixKey": "0",
+    "roleEffect": "11403"
+  },
+  {
+    "id": "11405",
+    "abilityId": "60001",
+    "battleEffect": "0",
+    "prefixKey": "0",
+    "roleEffect": "11405|114051|114052"
+  },
+  {
+    "id": "11406",
+    "abilityId": "50001",
+    "battleEffect": "11406",
+    "prefixKey": "0",
+    "roleEffect": "11406"
+  },
+  {
+    "id": "11407",
+    "abilityId": "40001",
+    "battleEffect": "11407",
+    "prefixKey": "0",
+    "roleEffect": "11407"
+  },
+  {
+    "id": "11408",
+    "abilityId": "80001",
+    "battleEffect": "0",
+    "prefixKey": "0",
+    "roleEffect": "11408"
+  },
+  {
+    "id": "11409",
+    "abilityId": "30001",
+    "battleEffect": "0",
+    "prefixKey": "0",
+    "roleEffect": "11409"
+  },
+  {
+    "id": "11410",
+    "abilityId": "30001",
+    "battleEffect": "0",
+    "prefixKey": "0",
+    "roleEffect": "11410"
+  },
+  {
+    "id": "11411",
+    "abilityId": "30001",
+    "battleEffect": "0",
+    "prefixKey": "0",
+    "roleEffect": "11411"
+  },
+  {
+    "id": "11412",
+    "abilityId": "10001",
+    "battleEffect": "0",
+    "prefixKey": "0",
+    "roleEffect": "11412"
+  },
+  {
+    "id": "11413",
+    "abilityId": "10001",
+    "battleEffect": "0",
+    "prefixKey": "0",
+    "roleEffect": "11413"
+  },
+  {
+    "id": "11414",
+    "abilityId": "10001",
+    "battleEffect": "0",
+    "prefixKey": "0",
+    "roleEffect": "11414"
+  },
+  {
+    "id": "11415",
+    "abilityId": "20001",
+    "battleEffect": "0",
+    "prefixKey": "0",
+    "roleEffect": "11415"
+  },
+  {
+    "id": "11416",
+    "abilityId": "30001",
+    "battleEffect": "0",
+    "prefixKey": "0",
+    "roleEffect": "11416"
+  },
+  {
+    "id": "11417",
+    "abilityId": "40001",
+    "battleEffect": "11417",
+    "prefixKey": "0",
+    "roleEffect": "11417"
+  },
+  {
+    "id": "11418",
+    "abilityId": "10001",
+    "battleEffect": "11418",
+    "prefixKey": "0",
+    "roleEffect": "11418"
+  },
+  {
+    "id": "11419",
+    "abilityId": "50001",
+    "battleEffect": "0",
+    "prefixKey": "&11419_prob%1",
+    "roleEffect": "11419"
+  },
+  {
+    "id": "11420",
+    "abilityId": "60001",
+    "battleEffect": "11420",
+    "prefixKey": "0",
+    "roleEffect": "11420"
+  },
+  {
+    "id": "11421",
+    "abilityId": "20001",
+    "battleEffect": "0",
+    "prefixKey": "0",
+    "roleEffect": "11421"
+  },
+  {
+    "id": "11422",
+    "abilityId": "60001",
+    "battleEffect": "0",
+    "prefixKey": "&11422_prob%1",
+    "roleEffect": "11422"
+  },
+  {
+    "id": "11423",
+    "abilityId": "20001",
+    "battleEffect": "11423",
+    "prefixKey": "0",
+    "roleEffect": "11423"
+  },
+  {
+    "id": "11424",
+    "abilityId": "20001",
+    "battleEffect": "11424",
+    "prefixKey": "0",
+    "roleEffect": "11424"
+  },
+  {
+    "id": "11425",
+    "abilityId": "20001",
+    "battleEffect": "0",
+    "prefixKey": "0",
+    "roleEffect": "11425"
+  },
+  {
+    "id": "11426",
+    "abilityId": "20001",
+    "battleEffect": "0",
+    "prefixKey": "0",
+    "roleEffect": "11426"
+  },
+  {
+    "id": "11427",
+    "abilityId": "20001",
+    "battleEffect": "11427",
+    "prefixKey": "0",
+    "roleEffect": "0"
+  },
+  {
+    "id": "11501",
+    "abilityId": "40001",
+    "battleEffect": "0",
+    "prefixKey": "0",
+    "roleEffect": "11501"
+  },
+  {
+    "id": "11502",
+    "abilityId": "30001",
+    "battleEffect": "0",
+    "prefixKey": "0",
+    "roleEffect": "11502"
+  },
+  {
+    "id": "11503",
+    "abilityId": "30001",
+    "battleEffect": "11503",
+    "prefixKey": "0",
+    "roleEffect": "11503"
+  },
+  {
+    "id": "11505",
+    "abilityId": "60001",
+    "battleEffect": "11505",
+    "prefixKey": "0",
+    "roleEffect": "11505"
+  },
+  {
+    "id": "11506",
+    "abilityId": "20001",
+    "battleEffect": "11506",
+    "prefixKey": "0",
+    "roleEffect": "11506"
+  },
+  {
+    "id": "11507",
+    "abilityId": "60001",
+    "battleEffect": "11507",
+    "prefixKey": "0",
+    "roleEffect": "11507"
+  },
+  {
+    "id": "11508",
+    "abilityId": "80001",
+    "battleEffect": "0",
+    "prefixKey": "0",
+    "roleEffect": "11508"
+  },
+  {
+    "id": "11509",
+    "abilityId": "20001",
+    "battleEffect": "11509",
+    "prefixKey": "0",
+    "roleEffect": "0"
+  },
+  {
+    "id": "11510",
+    "abilityId": "20001",
+    "battleEffect": "11510",
+    "prefixKey": "0",
+    "roleEffect": "0"
+  },
+  {
+    "id": "11511",
+    "abilityId": "20001",
+    "battleEffect": "11511",
+    "prefixKey": "0",
+    "roleEffect": "0"
+  },
+  {
+    "id": "11512",
+    "abilityId": "20001",
+    "battleEffect": "11512",
+    "prefixKey": "0",
+    "roleEffect": "0"
+  },
+  {
+    "id": "11601",
+    "abilityId": "20001",
+    "battleEffect": "0",
+    "prefixKey": "&16011_numSum%1",
+    "roleEffect": "11601"
+  },
+  {
+    "id": "11602",
+    "abilityId": "10001",
+    "battleEffect": "0",
+    "prefixKey": "&1603_telsondmg%1",
+    "roleEffect": "11602"
+  },
+  {
+    "id": "11603",
+    "abilityId": "10001",
+    "battleEffect": "0",
+    "prefixKey": "0",
+    "roleEffect": "11603"
+  },
+  {
+    "id": "11605",
+    "abilityId": "40001",
+    "battleEffect": "11605",
+    "prefixKey": "0",
+    "roleEffect": "11605"
+  },
+  {
+    "id": "11606",
+    "abilityId": "50001",
+    "battleEffect": "11606",
+    "prefixKey": "0",
+    "roleEffect": "11606"
+  },
+  {
+    "id": "11607",
+    "abilityId": "20001",
+    "battleEffect": "11607",
+    "prefixKey": "0",
+    "roleEffect": "11607"
+  },
+  {
+    "id": "11608",
+    "abilityId": "80001",
+    "battleEffect": "0",
+    "prefixKey": "0",
+    "roleEffect": "11608"
+  },
+  {
+    "id": "11609",
+    "abilityId": "40001",
+    "battleEffect": "0",
+    "prefixKey": "&16011_throughCount%1",
+    "roleEffect": "11609"
+  },
+  {
+    "id": "11610",
+    "abilityId": "40001",
+    "battleEffect": "11610",
+    "prefixKey": "0",
+    "roleEffect": "0"
+  },
+  {
+    "id": "11611",
+    "abilityId": "40001",
+    "battleEffect": "11611",
+    "prefixKey": "0",
+    "roleEffect": "0"
+  },
+  {
+    "id": "11612",
+    "abilityId": "40001",
+    "battleEffect": "11612",
+    "prefixKey": "0",
+    "roleEffect": "11612"
+  },
+  {
+    "id": "30101",
+    "abilityId": "60001",
+    "battleEffect": "0",
+    "prefixKey": "0",
+    "roleEffect": "30101"
+  },
+  {
+    "id": "30102",
+    "abilityId": "60001",
+    "battleEffect": "0",
+    "prefixKey": "0",
+    "roleEffect": "30102"
+  },
+  {
+    "id": "30103",
+    "abilityId": "60001",
+    "battleEffect": "0",
+    "prefixKey": "0",
+    "roleEffect": "30103"
+  },
+  {
+    "id": "30104",
+    "abilityId": "60001",
+    "battleEffect": "0",
+    "prefixKey": "0",
+    "roleEffect": "30104"
+  },
+  {
+    "id": "30105",
+    "abilityId": "60001",
+    "battleEffect": "0",
+    "prefixKey": "0",
+    "roleEffect": "30105"
+  },
+  {
+    "id": "30106",
+    "abilityId": "50001",
+    "battleEffect": "0",
+    "prefixKey": "0",
+    "roleEffect": "30106"
+  },
+  {
+    "id": "30107",
+    "abilityId": "50001",
+    "battleEffect": "0",
+    "prefixKey": "0",
+    "roleEffect": "30107"
+  },
+  {
+    "id": "30108",
+    "abilityId": "50001",
+    "battleEffect": "0",
+    "prefixKey": "0",
+    "roleEffect": "30108"
+  },
+  {
+    "id": "30109",
+    "abilityId": "50001",
+    "battleEffect": "0",
+    "prefixKey": "0",
+    "roleEffect": "30109"
+  },
+  {
+    "id": "30110",
+    "abilityId": "60001",
+    "battleEffect": "0",
+    "prefixKey": "0",
+    "roleEffect": "30110|301101"
+  },
+  {
+    "id": "30111",
+    "abilityId": "50001",
+    "battleEffect": "0",
+    "prefixKey": "0",
+    "roleEffect": "30111"
+  },
+  {
+    "id": "30112",
+    "abilityId": "60001",
+    "battleEffect": "0",
+    "prefixKey": "0",
+    "roleEffect": "30112"
+  },
+  {
+    "id": "30113",
+    "abilityId": "60001",
+    "battleEffect": "0",
+    "prefixKey": "0",
+    "roleEffect": "30113"
+  },
+  {
+    "id": "30114",
+    "abilityId": "60001",
+    "battleEffect": "0",
+    "prefixKey": "0",
+    "roleEffect": "30114"
+  },
+  {
+    "id": "30115",
+    "abilityId": "60001",
+    "battleEffect": "0",
+    "prefixKey": "0",
+    "roleEffect": "30115"
+  },
+  {
+    "id": "30116",
+    "abilityId": "60001",
+    "battleEffect": "0",
+    "prefixKey": "0",
+    "roleEffect": "30116"
+  },
+  {
+    "id": "30117",
+    "abilityId": "20001",
+    "battleEffect": "0",
+    "prefixKey": "0",
+    "roleEffect": "301171|301172"
+  },
+  {
+    "id": "30118",
+    "abilityId": "60001",
+    "battleEffect": "0",
+    "prefixKey": "0",
+    "roleEffect": "301181|301182"
+  },
+  {
+    "id": "30119",
+    "abilityId": "60001",
+    "battleEffect": "0",
+    "prefixKey": "0",
+    "roleEffect": "30119"
+  },
+  {
+    "id": "30120",
+    "abilityId": "60001",
+    "battleEffect": "0",
+    "prefixKey": "0",
+    "roleEffect": "30120"
+  },
+  {
+    "id": "30121",
+    "abilityId": "60001",
+    "battleEffect": "0",
+    "prefixKey": "0",
+    "roleEffect": "301211|301212"
+  },
+  {
+    "id": "30122",
+    "abilityId": "20001",
+    "battleEffect": "0",
+    "prefixKey": "0",
+    "roleEffect": "30122"
+  },
+  {
+    "id": "30123",
+    "abilityId": "10001",
+    "battleEffect": "0",
+    "prefixKey": "0",
+    "roleEffect": "30123"
+  },
+  {
+    "id": "30124",
+    "abilityId": "10001",
+    "battleEffect": "0",
+    "prefixKey": "0",
+    "roleEffect": "30124"
+  },
+  {
+    "id": "30125",
+    "abilityId": "30001",
+    "battleEffect": "0",
+    "prefixKey": "0",
+    "roleEffect": "30125"
+  },
+  {
+    "id": "30126",
+    "abilityId": "40001",
+    "battleEffect": "0",
+    "prefixKey": "0",
+    "roleEffect": "30126"
+  },
+  {
+    "id": "30127",
+    "abilityId": "40001",
+    "battleEffect": "0",
+    "prefixKey": "0",
+    "roleEffect": "30127"
+  },
+  {
+    "id": "30128",
+    "abilityId": "40001",
+    "battleEffect": "0",
+    "prefixKey": "0",
+    "roleEffect": "30128"
+  },
+  {
+    "id": "30129",
+    "abilityId": "30001",
+    "battleEffect": "0",
+    "prefixKey": "0",
+    "roleEffect": "30129"
+  },
+  {
+    "id": "30130",
+    "abilityId": "60001",
+    "battleEffect": "0",
+    "prefixKey": "0",
+    "roleEffect": "30130"
+  },
+  {
+    "id": "30131",
+    "abilityId": "10001",
+    "battleEffect": "0",
+    "prefixKey": "0",
+    "roleEffect": "30131"
+  },
+  {
+    "id": "30132",
+    "abilityId": "20001",
+    "battleEffect": "0",
+    "prefixKey": "0",
+    "roleEffect": "30132"
+  },
+  {
+    "id": "30133",
+    "abilityId": "50001",
+    "battleEffect": "0",
+    "prefixKey": "0",
+    "roleEffect": "30133"
+  },
+  {
+    "id": "30134",
+    "abilityId": "20001",
+    "battleEffect": "0",
+    "prefixKey": "0",
+    "roleEffect": "30134"
+  },
+  {
+    "id": "30135",
+    "abilityId": "70001",
+    "battleEffect": "0",
+    "prefixKey": "0",
+    "roleEffect": "30135"
+  },
+  {
+    "id": "30136",
+    "abilityId": "70001",
+    "battleEffect": "0",
+    "prefixKey": "0",
+    "roleEffect": "30136"
+  },
+  {
+    "id": "30137",
+    "abilityId": "70001",
+    "battleEffect": "0",
+    "prefixKey": "0",
+    "roleEffect": "30137"
+  },
+  {
+    "id": "30138",
+    "abilityId": "70001",
+    "battleEffect": "0",
+    "prefixKey": "0",
+    "roleEffect": "30138"
+  },
+  {
+    "id": "30139",
+    "abilityId": "70001",
+    "battleEffect": "0",
+    "prefixKey": "0",
+    "roleEffect": "30139"
+  },
+  {
+    "id": "30140",
+    "abilityId": "70001",
+    "battleEffect": "0",
+    "prefixKey": "0",
+    "roleEffect": "30140"
+  },
+  {
+    "id": "30141",
+    "abilityId": "70001",
+    "battleEffect": "0",
+    "prefixKey": "0",
+    "roleEffect": "30141"
+  },
+  {
+    "id": "30142",
+    "abilityId": "70001",
+    "battleEffect": "0",
+    "prefixKey": "0",
+    "roleEffect": "30142"
+  },
+  {
+    "id": "30143",
+    "abilityId": "70001",
+    "battleEffect": "0",
+    "prefixKey": "0",
+    "roleEffect": "30143"
+  },
+  {
+    "id": "30144",
+    "abilityId": "70001",
+    "battleEffect": "0",
+    "prefixKey": "0",
+    "roleEffect": "30144"
+  },
+  {
+    "id": "30145",
+    "abilityId": "70001",
+    "battleEffect": "0",
+    "prefixKey": "0",
+    "roleEffect": "30145"
+  },
+  {
+    "id": "30146",
+    "abilityId": "70001",
+    "battleEffect": "0",
+    "prefixKey": "0",
+    "roleEffect": "30146"
+  },
+  {
+    "id": "30147",
+    "abilityId": "70001",
+    "battleEffect": "0",
+    "prefixKey": "0",
+    "roleEffect": "30147"
+  },
+  {
+    "id": "30148",
+    "abilityId": "70001",
+    "battleEffect": "0",
+    "prefixKey": "0",
+    "roleEffect": "30148"
+  },
+  {
+    "id": "30149",
+    "abilityId": "70001",
+    "battleEffect": "0",
+    "prefixKey": "0",
+    "roleEffect": "30149"
+  },
+  {
+    "id": "30150",
+    "abilityId": "70001",
+    "battleEffect": "0",
+    "prefixKey": "0",
+    "roleEffect": "30150"
+  },
+  {
+    "id": "30151",
+    "abilityId": "70001",
+    "battleEffect": "0",
+    "prefixKey": "0",
+    "roleEffect": "30151"
+  },
+  {
+    "id": "30152",
+    "abilityId": "70001",
+    "battleEffect": "0",
+    "prefixKey": "0",
+    "roleEffect": "30152"
+  },
+  {
+    "id": "30153",
+    "abilityId": "70001",
+    "battleEffect": "0",
+    "prefixKey": "0",
+    "roleEffect": "30153"
+  },
+  {
+    "id": "30154",
+    "abilityId": "70001",
+    "battleEffect": "0",
+    "prefixKey": "0",
+    "roleEffect": "30154"
+  },
+  {
+    "id": "30155",
+    "abilityId": "70001",
+    "battleEffect": "0",
+    "prefixKey": "0",
+    "roleEffect": "30155"
+  },
+  {
+    "id": "30156",
+    "abilityId": "70001",
+    "battleEffect": "0",
+    "prefixKey": "0",
+    "roleEffect": "30156"
+  },
+  {
+    "id": "30157",
+    "abilityId": "70001",
+    "battleEffect": "0",
+    "prefixKey": "0",
+    "roleEffect": "30157"
+  },
+  {
+    "id": "30158",
+    "abilityId": "70001",
+    "battleEffect": "0",
+    "prefixKey": "0",
+    "roleEffect": "30158"
+  },
+  {
+    "id": "30159",
+    "abilityId": "70001",
+    "battleEffect": "0",
+    "prefixKey": "0",
+    "roleEffect": "30159"
+  },
+  {
+    "id": "30160",
+    "abilityId": "70001",
+    "battleEffect": "0",
+    "prefixKey": "0",
+    "roleEffect": "30160"
+  },
+  {
+    "id": "30161",
+    "abilityId": "70001",
+    "battleEffect": "0",
+    "prefixKey": "0",
+    "roleEffect": "30161"
+  },
+  {
+    "id": "30162",
+    "abilityId": "70001",
+    "battleEffect": "0",
+    "prefixKey": "0",
+    "roleEffect": "30162"
+  },
+  {
+    "id": "30163",
+    "abilityId": "70001",
+    "battleEffect": "0",
+    "prefixKey": "0",
+    "roleEffect": "30163"
+  },
+  {
+    "id": "30164",
+    "abilityId": "70001",
+    "battleEffect": "0",
+    "prefixKey": "0",
+    "roleEffect": "30164"
+  },
+  {
+    "id": "30165",
+    "abilityId": "70001",
+    "battleEffect": "0",
+    "prefixKey": "0",
+    "roleEffect": "30165"
+  },
+  {
+    "id": "30166",
+    "abilityId": "70001",
+    "battleEffect": "0",
+    "prefixKey": "0",
+    "roleEffect": "30166"
+  },
+  {
+    "id": "30167",
+    "abilityId": "70001",
+    "battleEffect": "0",
+    "prefixKey": "0",
+    "roleEffect": "30167"
+  },
+  {
+    "id": "30168",
+    "abilityId": "70001",
+    "battleEffect": "0",
+    "prefixKey": "0",
+    "roleEffect": "30168"
+  },
+  {
+    "id": "30169",
+    "abilityId": "70001",
+    "battleEffect": "0",
+    "prefixKey": "0",
+    "roleEffect": "30169"
+  },
+  {
+    "id": "30170",
+    "abilityId": "70001",
+    "battleEffect": "0",
+    "prefixKey": "0",
+    "roleEffect": "30170"
+  },
+  {
+    "id": "30171",
+    "abilityId": "80001",
+    "battleEffect": "30171",
+    "prefixKey": "0",
+    "roleEffect": "0"
+  },
+  {
+    "id": "30172",
+    "abilityId": "10001",
+    "battleEffect": "30172",
+    "prefixKey": "0",
+    "roleEffect": "0"
+  },
+  {
+    "id": "30173",
+    "abilityId": "60001",
+    "battleEffect": "30173",
+    "prefixKey": "0",
+    "roleEffect": "0"
+  }
+]

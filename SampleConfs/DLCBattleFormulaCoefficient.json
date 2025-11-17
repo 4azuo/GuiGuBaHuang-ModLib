@@ -1,0 +1,77 @@
+[
+  {
+    "id": "1",
+    "key": "critValueRangeMin",
+    "value": "1.25"
+  },
+  {
+    "id": "2",
+    "key": "critValueRangeMax",
+    "value": "5"
+  },
+  {
+    "id": "3",
+    "key": "defMaxPer",
+    "value": "70"
+  },
+  {
+    "id": "4",
+    "key": "critParaA",
+    "value": "4"
+  },
+  {
+    "id": "5",
+    "key": "critRangeMin",
+    "value": "0"
+  },
+  {
+    "id": "6",
+    "key": "critRangeMax",
+    "value": "0.5"
+  },
+  {
+    "id": "7",
+    "key": "freeParaA",
+    "value": "1"
+  },
+  {
+    "id": "8",
+    "key": "freeParaB",
+    "value": "30"
+  },
+  {
+    "id": "9",
+    "key": "freeRangeMin",
+    "value": "0"
+  },
+  {
+    "id": "10",
+    "key": "freeRangeMax",
+    "value": "1"
+  },
+  {
+    "id": "11",
+    "key": "dissolveParaA",
+    "value": "0.5"
+  },
+  {
+    "id": "12",
+    "key": "dissolveParaB",
+    "value": "60"
+  },
+  {
+    "id": "13",
+    "key": "dissolveParaC",
+    "value": "150"
+  },
+  {
+    "id": "14",
+    "key": "dissolveMin",
+    "value": "0"
+  },
+  {
+    "id": "15",
+    "key": "dissolveMax",
+    "value": "1"
+  }
+]
