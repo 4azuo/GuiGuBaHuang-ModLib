@@ -1,0 +1,24 @@
+[
+  {
+    "id": "1011051",
+    "effectType": "101",
+    "operUse": "1",
+    "operEquip": "1",
+    "autoUse": "0",
+    "effectValue": "1011051",
+    "basType": "0",
+    "basRequire": "0",
+    "grade": "1",
+    "spCost": "0",
+    "useIgnoreGrade": "0",
+    "applyCD": "0",
+    "cdGroup": "1",
+    "pillType": "1",
+    "fateRandomWeight": "0",
+    "carryCount": "1",
+    "noUseTogether": "0",
+    "cost": "0",
+    "battleUIHide": "0",
+    "consume": "0"
+  }
+]

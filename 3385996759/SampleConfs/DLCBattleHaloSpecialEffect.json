@@ -1,0 +1,882 @@
+[
+  {
+    "id": "1103111",
+    "type": "11",
+    "value": "0",
+    "value2": "0",
+    "value3": "0",
+    "value4": "0",
+    "value5": "0",
+    "value6": "0"
+  },
+  {
+    "id": "1403111",
+    "type": "6",
+    "value": "&1403_windRun|x(1403_windRunSpeed|+#msp|f0)|/2|f0&",
+    "value2": "0",
+    "value3": "0",
+    "value4": "0",
+    "value5": "0",
+    "value6": "0"
+  },
+  {
+    "id": "1403112",
+    "type": "1",
+    "value": "&1403_windForce",
+    "value2": "500",
+    "value3": "0",
+    "value4": "0",
+    "value5": "0",
+    "value6": "0"
+  },
+  {
+    "id": "140111",
+    "type": "11",
+    "value": "0",
+    "value2": "0",
+    "value3": "0",
+    "value4": "0",
+    "value5": "0",
+    "value6": "0"
+  },
+  {
+    "id": "140112",
+    "type": "12",
+    "value": "500",
+    "value2": "3",
+    "value3": "0",
+    "value4": "0",
+    "value5": "0",
+    "value6": "0"
+  },
+  {
+    "id": "140113",
+    "type": "12",
+    "value": "500",
+    "value2": "5",
+    "value3": "0",
+    "value4": "0",
+    "value5": "0",
+    "value6": "10"
+  },
+  {
+    "id": "1401111",
+    "type": "12",
+    "value": "500",
+    "value2": "&1401_sixBeatback",
+    "value3": "0",
+    "value4": "0",
+    "value5": "0",
+    "value6": "0"
+  },
+  {
+    "id": "130211",
+    "type": "11",
+    "value": "0",
+    "value2": "0",
+    "value3": "0",
+    "value4": "0",
+    "value5": "0",
+    "value6": "0"
+  },
+  {
+    "id": "1602111",
+    "type": "11",
+    "value": "0",
+    "value2": "0",
+    "value3": "0",
+    "value4": "0",
+    "value5": "0",
+    "value6": "0"
+  },
+  {
+    "id": "2101211",
+    "type": "1",
+    "value": "&21012_tractionPower",
+    "value2": "0",
+    "value3": "0",
+    "value4": "0",
+    "value5": "0",
+    "value6": "0"
+  },
+  {
+    "id": "2101212",
+    "type": "11",
+    "value": "0",
+    "value2": "0",
+    "value3": "0",
+    "value4": "0",
+    "value5": "0",
+    "value6": "0"
+  },
+  {
+    "id": "2101231",
+    "type": "12",
+    "value": "500",
+    "value2": "1",
+    "value3": "0",
+    "value4": "0",
+    "value5": "0",
+    "value6": "0"
+  },
+  {
+    "id": "114201",
+    "type": "1",
+    "value": "&11420_qianyinPower",
+    "value2": "0",
+    "value3": "0",
+    "value4": "0",
+    "value5": "0",
+    "value6": "0"
+  },
+  {
+    "id": "11211211",
+    "type": "1",
+    "value": "500",
+    "value2": "0",
+    "value3": "0",
+    "value4": "0",
+    "value5": "0",
+    "value6": "0"
+  },
+  {
+    "id": "1151211",
+    "type": "1",
+    "value": "250",
+    "value2": "0",
+    "value3": "0",
+    "value4": "0",
+    "value5": "0",
+    "value6": "0"
+  },
+  {
+    "id": "2101611",
+    "type": "11",
+    "value": "0",
+    "value2": "0",
+    "value3": "0",
+    "value4": "0",
+    "value5": "0",
+    "value6": "0"
+  },
+  {
+    "id": "320252",
+    "type": "2",
+    "value": "800",
+    "value2": "0",
+    "value3": "0",
+    "value4": "0",
+    "value5": "0",
+    "value6": "0"
+  },
+  {
+    "id": "10091",
+    "type": "1",
+    "value": "250",
+    "value2": "0",
+    "value3": "0",
+    "value4": "0",
+    "value5": "0",
+    "value6": "0"
+  },
+  {
+    "id": "200011",
+    "type": "1",
+    "value": "100",
+    "value2": "0",
+    "value3": "0",
+    "value4": "0",
+    "value5": "0",
+    "value6": "0"
+  },
+  {
+    "id": "1300211",
+    "type": "1",
+    "value": "150",
+    "value2": "0",
+    "value3": "0",
+    "value4": "0",
+    "value5": "0",
+    "value6": "0"
+  },
+  {
+    "id": "71743",
+    "type": "1",
+    "value": "180",
+    "value2": "0",
+    "value3": "0",
+    "value4": "0",
+    "value5": "0",
+    "value6": "0"
+  },
+  {
+    "id": "71941",
+    "type": "1",
+    "value": "150",
+    "value2": "0",
+    "value3": "0",
+    "value4": "0",
+    "value5": "0",
+    "value6": "0"
+  },
+  {
+    "id": "72021",
+    "type": "1",
+    "value": "800",
+    "value2": "0",
+    "value3": "0",
+    "value4": "0",
+    "value5": "0",
+    "value6": "0"
+  },
+  {
+    "id": "541122",
+    "type": "6",
+    "value": "&54112_xfsd|+8801001_xfsd|x8801001_gdsj|f0",
+    "value2": "0",
+    "value3": "0",
+    "value4": "0",
+    "value5": "0",
+    "value6": "0"
+  },
+  {
+    "id": "51521",
+    "type": "7",
+    "value": "0",
+    "value2": "0",
+    "value3": "0",
+    "value4": "0",
+    "value5": "0",
+    "value6": "0"
+  },
+  {
+    "id": "5101412",
+    "type": "1",
+    "value": "&510141_qyqd",
+    "value2": "0",
+    "value3": "0",
+    "value4": "0",
+    "value5": "0",
+    "value6": "0"
+  },
+  {
+    "id": "73131",
+    "type": "2",
+    "value": "600",
+    "value2": "0",
+    "value3": "0",
+    "value4": "0",
+    "value5": "0",
+    "value6": "0"
+  },
+  {
+    "id": "74241",
+    "type": "1",
+    "value": "250",
+    "value2": "0",
+    "value3": "0",
+    "value4": "0",
+    "value5": "0",
+    "value6": "0"
+  },
+  {
+    "id": "74541",
+    "type": "1",
+    "value": "300",
+    "value2": "0",
+    "value3": "0",
+    "value4": "0",
+    "value5": "0",
+    "value6": "0"
+  },
+  {
+    "id": "27203",
+    "type": "1",
+    "value": "&27203_qyqd",
+    "value2": "0",
+    "value3": "0",
+    "value4": "0",
+    "value5": "0",
+    "value6": "0"
+  },
+  {
+    "id": "314021",
+    "type": "1",
+    "value": "&31402_qyxg",
+    "value2": "0",
+    "value3": "0",
+    "value4": "0",
+    "value5": "0",
+    "value6": "0"
+  },
+  {
+    "id": "810312",
+    "type": "8",
+    "value": "0",
+    "value2": "0",
+    "value3": "0",
+    "value4": "0",
+    "value5": "0",
+    "value6": "0"
+  },
+  {
+    "id": "8104112",
+    "type": "8",
+    "value": "0",
+    "value2": "0",
+    "value3": "0",
+    "value4": "0",
+    "value5": "0",
+    "value6": "0"
+  },
+  {
+    "id": "810511",
+    "type": "8",
+    "value": "0",
+    "value2": "0",
+    "value3": "0",
+    "value4": "0",
+    "value5": "0",
+    "value6": "0"
+  },
+  {
+    "id": "810512",
+    "type": "8",
+    "value": "0",
+    "value2": "0",
+    "value3": "0",
+    "value4": "0",
+    "value5": "0",
+    "value6": "0"
+  },
+  {
+    "id": "810514",
+    "type": "8",
+    "value": "0",
+    "value2": "0",
+    "value3": "0",
+    "value4": "0",
+    "value5": "0",
+    "value6": "0"
+  },
+  {
+    "id": "9106311",
+    "type": "2",
+    "value": "&91061_hzyl",
+    "value2": "0",
+    "value3": "0",
+    "value4": "0",
+    "value5": "0",
+    "value6": "0"
+  },
+  {
+    "id": "75041",
+    "type": "1",
+    "value": "50",
+    "value2": "0",
+    "value3": "0",
+    "value4": "0",
+    "value5": "0",
+    "value6": "0"
+  },
+  {
+    "id": "75042",
+    "type": "1",
+    "value": "30",
+    "value2": "0",
+    "value3": "0",
+    "value4": "0",
+    "value5": "0",
+    "value6": "0"
+  },
+  {
+    "id": "53521",
+    "type": "1",
+    "value": "350",
+    "value2": "0",
+    "value3": "0",
+    "value4": "0",
+    "value5": "0",
+    "value6": "0"
+  },
+  {
+    "id": "7001212",
+    "type": "1",
+    "value": "&700121_qyqd",
+    "value2": "0",
+    "value3": "0",
+    "value4": "0",
+    "value5": "0",
+    "value6": "0"
+  },
+  {
+    "id": "920611",
+    "type": "8",
+    "value": "0",
+    "value2": "0",
+    "value3": "0",
+    "value4": "0",
+    "value5": "0",
+    "value6": "0"
+  },
+  {
+    "id": "767111",
+    "type": "1",
+    "value": "100",
+    "value2": "0",
+    "value3": "0",
+    "value4": "0",
+    "value5": "0",
+    "value6": "0"
+  },
+  {
+    "id": "766211",
+    "type": "1",
+    "value": "100",
+    "value2": "0",
+    "value3": "0",
+    "value4": "0",
+    "value5": "0",
+    "value6": "0"
+  },
+  {
+    "id": "214111",
+    "type": "1",
+    "value": "150",
+    "value2": "0",
+    "value3": "0",
+    "value4": "0",
+    "value5": "0",
+    "value6": "0"
+  },
+  {
+    "id": "214112",
+    "type": "8",
+    "value": "0",
+    "value2": "0",
+    "value3": "0",
+    "value4": "0",
+    "value5": "0",
+    "value6": "0"
+  },
+  {
+    "id": "769311",
+    "type": "1",
+    "value": "300",
+    "value2": "0",
+    "value3": "0",
+    "value4": "0",
+    "value5": "0",
+    "value6": "0"
+  },
+  {
+    "id": "7001781",
+    "type": "9",
+    "value": "100",
+    "value2": "0",
+    "value3": "0",
+    "value4": "0",
+    "value5": "0",
+    "value6": "0"
+  },
+  {
+    "id": "781211",
+    "type": "1",
+    "value": "200",
+    "value2": "0",
+    "value3": "0",
+    "value4": "0",
+    "value5": "0",
+    "value6": "0"
+  },
+  {
+    "id": "781611",
+    "type": "2",
+    "value": "1000",
+    "value2": "1",
+    "value3": "1000",
+    "value4": "0",
+    "value5": "0",
+    "value6": "0"
+  },
+  {
+    "id": "781711",
+    "type": "2",
+    "value": "800",
+    "value2": "1",
+    "value3": "1000",
+    "value4": "0",
+    "value5": "0",
+    "value6": "0"
+  },
+  {
+    "id": "12311",
+    "type": "2",
+    "value": "800",
+    "value2": "1",
+    "value3": "800",
+    "value4": "0",
+    "value5": "0",
+    "value6": "0"
+  },
+  {
+    "id": "70000711",
+    "type": "1",
+    "value": "&9901102_lgqy",
+    "value2": "0",
+    "value3": "0",
+    "value4": "0",
+    "value5": "0",
+    "value6": "0"
+  },
+  {
+    "id": "70000961",
+    "type": "1",
+    "value": "&9901136_qyxg",
+    "value2": "0",
+    "value3": "0",
+    "value4": "0",
+    "value5": "0",
+    "value6": "0"
+  },
+  {
+    "id": "78931",
+    "type": "2",
+    "value": "3000",
+    "value2": "0",
+    "value3": "0",
+    "value4": "0",
+    "value5": "0",
+    "value6": "0"
+  },
+  {
+    "id": "792511",
+    "type": "2",
+    "value": "5000",
+    "value2": "0",
+    "value3": "1000",
+    "value4": "300",
+    "value5": "0",
+    "value6": "0"
+  },
+  {
+    "id": "793211",
+    "type": "1",
+    "value": "400",
+    "value2": "0",
+    "value3": "0",
+    "value4": "0",
+    "value5": "0",
+    "value6": "0"
+  },
+  {
+    "id": "79541",
+    "type": "1",
+    "value": "600",
+    "value2": "0",
+    "value3": "0",
+    "value4": "0",
+    "value5": "0",
+    "value6": "0"
+  },
+  {
+    "id": "79631",
+    "type": "1",
+    "value": "800",
+    "value2": "0",
+    "value3": "0",
+    "value4": "0",
+    "value5": "0",
+    "value6": "0"
+  },
+  {
+    "id": "79731",
+    "type": "1",
+    "value": "800",
+    "value2": "0",
+    "value3": "0",
+    "value4": "0",
+    "value5": "0",
+    "value6": "0"
+  },
+  {
+    "id": "80131",
+    "type": "2",
+    "value": "100",
+    "value2": "1",
+    "value3": "0",
+    "value4": "0",
+    "value5": "1_0",
+    "value6": "0"
+  },
+  {
+    "id": "80141",
+    "type": "1",
+    "value": "220",
+    "value2": "0",
+    "value3": "0",
+    "value4": "0",
+    "value5": "0",
+    "value6": "0"
+  },
+  {
+    "id": "80331",
+    "type": "1",
+    "value": "150",
+    "value2": "0",
+    "value3": "0",
+    "value4": "0",
+    "value5": "0",
+    "value6": "0"
+  },
+  {
+    "id": "81431",
+    "type": "6",
+    "value": "150",
+    "value2": "0",
+    "value3": "0",
+    "value4": "0",
+    "value5": "0",
+    "value6": "0"
+  },
+  {
+    "id": "81441",
+    "type": "6",
+    "value": "300",
+    "value2": "0",
+    "value3": "0",
+    "value4": "0",
+    "value5": "0",
+    "value6": "0"
+  },
+  {
+    "id": "81731",
+    "type": "7",
+    "value": "0",
+    "value2": "0",
+    "value3": "0",
+    "value4": "0",
+    "value5": "0",
+    "value6": "0"
+  },
+  {
+    "id": "82441",
+    "type": "1",
+    "value": "800",
+    "value2": "0",
+    "value3": "0",
+    "value4": "0",
+    "value5": "0",
+    "value6": "0"
+  },
+  {
+    "id": "839111",
+    "type": "1",
+    "value": "150",
+    "value2": "0",
+    "value3": "0",
+    "value4": "0",
+    "value5": "0",
+    "value6": "0"
+  },
+  {
+    "id": "839112",
+    "type": "8",
+    "value": "0",
+    "value2": "0",
+    "value3": "0",
+    "value4": "0",
+    "value5": "0",
+    "value6": "0"
+  },
+  {
+    "id": "1550011",
+    "type": "2",
+    "value": "3000",
+    "value2": "0",
+    "value3": "100",
+    "value4": "0",
+    "value5": "0",
+    "value6": "0"
+  },
+  {
+    "id": "283111",
+    "type": "1",
+    "value": "150",
+    "value2": "0",
+    "value3": "0",
+    "value4": "0",
+    "value5": "0",
+    "value6": "0"
+  },
+  {
+    "id": "84433",
+    "type": "1",
+    "value": "600",
+    "value2": "0",
+    "value3": "0",
+    "value4": "0",
+    "value5": "0",
+    "value6": "0"
+  },
+  {
+    "id": "84434",
+    "type": "1",
+    "value": "800",
+    "value2": "0",
+    "value3": "0",
+    "value4": "0",
+    "value5": "0",
+    "value6": "0"
+  },
+  {
+    "id": "71020112",
+    "type": "10",
+    "value": "71020112",
+    "value2": "3000",
+    "value3": "1",
+    "value4": "0",
+    "value5": "0",
+    "value6": "0"
+  },
+  {
+    "id": "71020113",
+    "type": "10",
+    "value": "71020113|71020114",
+    "value2": "&710003_bzjlsj",
+    "value3": "&710003_dlmhkg",
+    "value4": "0",
+    "value5": "50",
+    "value6": "0"
+  },
+  {
+    "id": "71020114",
+    "type": "10",
+    "value": "71020115|71020116|71020117",
+    "value2": "&710003_bzjlsj",
+    "value3": "&710003_dljdkg",
+    "value4": "0",
+    "value5": "50",
+    "value6": "0"
+  },
+  {
+    "id": "71020115",
+    "type": "10",
+    "value": "71020118|71020119",
+    "value2": "&710003_bzjlsj",
+    "value3": "&710003_dlcfkg",
+    "value4": "0",
+    "value5": "50",
+    "value6": "0"
+  },
+  {
+    "id": "71020111",
+    "type": "7",
+    "value": "0",
+    "value2": "0",
+    "value3": "0",
+    "value4": "0",
+    "value5": "0",
+    "value6": "0"
+  },
+  {
+    "id": "71060211",
+    "type": "10",
+    "value": "71060211",
+    "value2": "&710007_jgsj",
+    "value3": "&710007_zlbzkg",
+    "value4": "0",
+    "value5": "0",
+    "value6": "0"
+  },
+  {
+    "id": "71060212",
+    "type": "10",
+    "value": "71060212",
+    "value2": "0",
+    "value3": "&710007_zykg",
+    "value4": "0",
+    "value5": "0",
+    "value6": "0"
+  },
+  {
+    "id": "71060213",
+    "type": "10",
+    "value": "71060213",
+    "value2": "0",
+    "value3": "&710007_hmkg",
+    "value4": "0",
+    "value5": "0",
+    "value6": "0"
+  },
+  {
+    "id": "7106022",
+    "type": "1",
+    "value": "&710007_dmxyjl",
+    "value2": "0",
+    "value3": "0",
+    "value4": "0",
+    "value5": "0",
+    "value6": "0"
+  },
+  {
+    "id": "7106023",
+    "type": "10",
+    "value": "71060221",
+    "value2": "&710007_dmhdsj",
+    "value3": "1",
+    "value4": "0",
+    "value5": "0",
+    "value6": "0"
+  },
+  {
+    "id": "86131",
+    "type": "1",
+    "value": "-5000",
+    "value2": "0",
+    "value3": "0",
+    "value4": "0",
+    "value5": "0",
+    "value6": "0"
+  },
+  {
+    "id": "86141",
+    "type": "1",
+    "value": "-6000",
+    "value2": "0",
+    "value3": "0",
+    "value4": "0",
+    "value5": "0",
+    "value6": "0"
+  },
+  {
+    "id": "86161",
+    "type": "1",
+    "value": "800",
+    "value2": "2500",
+    "value3": "0",
+    "value4": "0",
+    "value5": "0",
+    "value6": "0"
+  },
+  {
+    "id": "86441",
+    "type": "2",
+    "value": "500",
+    "value2": "1",
+    "value3": "0",
+    "value4": "0",
+    "value5": "-1_0",
+    "value6": "0"
+  },
+  {
+    "id": "85952",
+    "type": "1",
+    "value": "-300",
+    "value2": "0",
+    "value3": "0",
+    "value4": "0",
+    "value5": "0",
+    "value6": "0"
+  }
+]

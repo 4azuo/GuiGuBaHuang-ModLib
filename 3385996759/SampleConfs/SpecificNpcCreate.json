@@ -1,0 +1,42 @@
+[
+  {
+    "id": "1",
+    "npcId": "6103",
+    "clothingName": "SpecificNpcClothingName6091",
+    "flag": "yanchuchaoran",
+    "model": "32124",
+    "luck": "9300201"
+  },
+  {
+    "id": "2",
+    "npcId": "6097",
+    "clothingName": "SpecificNpcClothingName6097",
+    "flag": "jingxingfenglin",
+    "model": "32126",
+    "luck": "9300202"
+  },
+  {
+    "id": "3",
+    "npcId": "6089",
+    "clothingName": "SpecificNpcClothingName6089",
+    "flag": "zixuantianyun",
+    "model": "32125",
+    "luck": "9300203"
+  },
+  {
+    "id": "4",
+    "npcId": "6090",
+    "clothingName": "SpecificNpcClothingName6090",
+    "flag": "suyishouxian",
+    "model": "32127",
+    "luck": "9300204"
+  },
+  {
+    "id": "5",
+    "npcId": "6088",
+    "clothingName": "SpecificNpcClothingName6088",
+    "flag": "mengzhongke",
+    "model": "32128",
+    "luck": "9300205"
+  }
+]

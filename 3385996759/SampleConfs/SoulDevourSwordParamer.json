@@ -1,0 +1,352 @@
+[
+  {
+    "id": "1",
+    "key": "propId",
+    "value": "8104130"
+  },
+  {
+    "id": "2",
+    "key": "addLuckId",
+    "value": "9197"
+  },
+  {
+    "id": "3",
+    "key": "bornLuckId",
+    "value": "2804"
+  },
+  {
+    "id": "4",
+    "key": "roleDyingAddLuck",
+    "value": "9198"
+  },
+  {
+    "id": "5",
+    "key": "soulDevourOptionId",
+    "value": "8117100"
+  },
+  {
+    "id": "6",
+    "key": "dropFindRate",
+    "value": "15"
+  },
+  {
+    "id": "7",
+    "key": "playerFindDramaId",
+    "value": "8117000"
+  },
+  {
+    "id": "8",
+    "key": "playerDropDramaId",
+    "value": "8117004"
+  },
+  {
+    "id": "9",
+    "key": "swordPreEventId",
+    "value": "60701_50|60703_100"
+  },
+  {
+    "id": "10",
+    "key": "swordEventId",
+    "value": "60702"
+  },
+  {
+    "id": "11",
+    "key": "unitGetSwordLog",
+    "value": "unitGetSoulDevourSwordLog1000"
+  },
+  {
+    "id": "12",
+    "key": "swordDevourLog",
+    "value": "unitDevourSoulLog1000"
+  },
+  {
+    "id": "13",
+    "key": "swordDevourLog1",
+    "value": "unitDevourSoulLog1001"
+  },
+  {
+    "id": "14",
+    "key": "swordDevourMonthLog",
+    "value": "unitDevourSoulMonthLog"
+  },
+  {
+    "id": "15",
+    "key": "swordFindUnitRange",
+    "value": "3"
+  },
+  {
+    "id": "16",
+    "key": "swordFindUnitPlayerDramaID",
+    "value": "8117100"
+  },
+  {
+    "id": "17",
+    "key": "swordDevourInterval",
+    "value": "24"
+  },
+  {
+    "id": "18",
+    "key": "swordWarringInterval1",
+    "value": "6"
+  },
+  {
+    "id": "19",
+    "key": "swordWarringInterval2",
+    "value": "3"
+  },
+  {
+    "id": "20",
+    "key": "swordWarringDramaId",
+    "value": "8117101"
+  },
+  {
+    "id": "21",
+    "key": "npcSwordUpgradeInterval",
+    "value": "24"
+  },
+  {
+    "id": "22",
+    "key": "npcSwordDoKillInterval",
+    "value": "8"
+  },
+  {
+    "id": "23",
+    "key": "swordTargetMaxRange",
+    "value": "30"
+  },
+  {
+    "id": "24",
+    "key": "swordTargetHideRange",
+    "value": "5"
+  },
+  {
+    "id": "25",
+    "key": "swordExposureBreakRelationRate",
+    "value": "33"
+  },
+  {
+    "id": "26",
+    "key": "swordExposureIntim",
+    "value": "-2000"
+  },
+  {
+    "id": "27",
+    "key": "swordExposureBreakRelationDramaID",
+    "value": "8117121"
+  },
+  {
+    "id": "28",
+    "key": "swordExposureIntimLog",
+    "value": "swordExposureBreakRelationLog"
+  },
+  {
+    "id": "29",
+    "key": "swordAttackSelfDungeonId",
+    "value": "intoDungeon_193_0_25"
+  },
+  {
+    "id": "30",
+    "key": "swordAttackSelfDramaId",
+    "value": "8117102"
+  },
+  {
+    "id": "31",
+    "key": "swordAttackSelfWinDramaId",
+    "value": "8117103"
+  },
+  {
+    "id": "32",
+    "key": "swordArrestDungeonId",
+    "value": "194"
+  },
+  {
+    "id": "33",
+    "key": "swordArrestSwordUnitWinLog",
+    "value": "swordArrestSwordUnitWinLog"
+  },
+  {
+    "id": "34",
+    "key": "swordArrestSwordUnitFailLog",
+    "value": "swordArrestSwordUnitFailLog"
+  },
+  {
+    "id": "35",
+    "key": "swordArrestPlayerDramaId",
+    "value": "8117105"
+  },
+  {
+    "id": "36",
+    "key": "luckOpenToPlayer",
+    "value": "1"
+  },
+  {
+    "id": "37",
+    "key": "swordExposureUnitClickDrama",
+    "value": "8117301|8117311|8117321|8117331"
+  },
+  {
+    "id": "38",
+    "key": "soulDevourSwordAtkLimit",
+    "value": "1200"
+  },
+  {
+    "id": "39",
+    "key": "devilHunterReward",
+    "value": "-10"
+  },
+  {
+    "id": "40",
+    "key": "devilHunterCount",
+    "value": "3"
+  },
+  {
+    "id": "41",
+    "key": "swordExposureUnitDuration",
+    "value": "3"
+  },
+  {
+    "id": "42",
+    "key": "soulDevourSwordAtkInit",
+    "value": "0"
+  },
+  {
+    "id": "43",
+    "key": "playerRelationExcape",
+    "value": "playerRelationExcape"
+  },
+  {
+    "id": "44",
+    "key": "npcSoulDevourMonthRate",
+    "value": "25"
+  },
+  {
+    "id": "45",
+    "key": "npcSoulDevourMaxMonth",
+    "value": "6_10"
+  },
+  {
+    "id": "46",
+    "key": "soulSwordDropRetainExpAndAtk",
+    "value": "67"
+  },
+  {
+    "id": "47",
+    "key": "soulSwordDropRetainProcess",
+    "value": "50"
+  },
+  {
+    "id": "48",
+    "key": "swordPreEventRange",
+    "value": "10"
+  },
+  {
+    "id": "49",
+    "key": "swordFindUnitMaxRange",
+    "value": "30"
+  },
+  {
+    "id": "50",
+    "key": "swordAttackSelfUnitWinLog",
+    "value": "swordAttackSelfUnitWinLog"
+  },
+  {
+    "id": "51",
+    "key": "swordAttackSelfUnitFailLog",
+    "value": "swordAttackSelfUnitFailLog"
+  },
+  {
+    "id": "52",
+    "key": "swordAttackSelfEndLog",
+    "value": "swordAttackSelfEndLog"
+  },
+  {
+    "id": "53",
+    "key": "swordWakeUpDramaId",
+    "value": "8117201"
+  },
+  {
+    "id": "54",
+    "key": "swordWakeUpWinLog",
+    "value": "swordWakeUpWinLog"
+  },
+  {
+    "id": "55",
+    "key": "swordWakeUpFailLog",
+    "value": "swordWakeUpFailLog"
+  },
+  {
+    "id": "56",
+    "key": "swordWakeUpDungeonId",
+    "value": "196"
+  },
+  {
+    "id": "57",
+    "key": "swordAttackExposureNpcLog1",
+    "value": "swordAttackExposureNpcLog1"
+  },
+  {
+    "id": "58",
+    "key": "swordAttackExposureNpcLog2",
+    "value": "swordAttackExposureNpcLog2"
+  },
+  {
+    "id": "59",
+    "key": "swordAttackExposureNpcLog3",
+    "value": "swordAttackExposureNpcLog3"
+  },
+  {
+    "id": "60",
+    "key": "swordAttackExposureWinLog",
+    "value": "swordAttackExposureWinLog"
+  },
+  {
+    "id": "61",
+    "key": "swordAttackExposureWinLog1",
+    "value": "swordAttackExposureWinLog1"
+  },
+  {
+    "id": "62",
+    "key": "swordAttackExposureFailLog",
+    "value": "swordAttackExposureFailLog"
+  },
+  {
+    "id": "63",
+    "key": "swordAttackExposureFailLog1",
+    "value": "swordAttackExposureFailLog1"
+  },
+  {
+    "id": "64",
+    "key": "swordExposureBreakRelationLog1",
+    "value": "swordExposureBreakRelationLog1"
+  },
+  {
+    "id": "65",
+    "key": "swordExposureBreakRelationLog2",
+    "value": "swordExposureBreakRelationLog2"
+  },
+  {
+    "id": "66",
+    "key": "swordDevourHeroRate",
+    "value": "150"
+  },
+  {
+    "id": "67",
+    "key": "swordDevourPreHeroRate",
+    "value": "120"
+  },
+  {
+    "id": "68",
+    "key": "swordWakeUpFunctionStr",
+    "value": "intoDungeon_196_0_35"
+  },
+  {
+    "id": "69",
+    "key": "isSwordDungeonContainAtk",
+    "value": "0"
+  },
+  {
+    "id": "70",
+    "key": "catchAlertDramaId",
+    "value": "8117341"
+  }
+]

@@ -1,0 +1,452 @@
+[
+  {
+    "id": "1",
+    "storePrice": "100",
+    "storeRefreshPrice": "100",
+    "attrRefreshPrice": "100",
+    "skillNum": "2",
+    "skillProb": "10",
+    "skillPrefixAnyColorRate": "2"
+  },
+  {
+    "id": "2",
+    "storePrice": "101",
+    "storeRefreshPrice": "150",
+    "attrRefreshPrice": "150",
+    "skillNum": "2",
+    "skillProb": "10",
+    "skillPrefixAnyColorRate": "2"
+  },
+  {
+    "id": "3",
+    "storePrice": "104",
+    "storeRefreshPrice": "200",
+    "attrRefreshPrice": "200",
+    "skillNum": "2",
+    "skillProb": "10",
+    "skillPrefixAnyColorRate": "2"
+  },
+  {
+    "id": "4",
+    "storePrice": "108",
+    "storeRefreshPrice": "250",
+    "attrRefreshPrice": "250",
+    "skillNum": "1",
+    "skillProb": "20",
+    "skillPrefixAnyColorRate": "4"
+  },
+  {
+    "id": "5",
+    "storePrice": "112",
+    "storeRefreshPrice": "300",
+    "attrRefreshPrice": "300",
+    "skillNum": "1",
+    "skillProb": "20",
+    "skillPrefixAnyColorRate": "4"
+  },
+  {
+    "id": "6",
+    "storePrice": "118",
+    "storeRefreshPrice": "350",
+    "attrRefreshPrice": "350",
+    "skillNum": "1",
+    "skillProb": "20",
+    "skillPrefixAnyColorRate": "4"
+  },
+  {
+    "id": "7",
+    "storePrice": "125",
+    "storeRefreshPrice": "400",
+    "attrRefreshPrice": "400",
+    "skillNum": "0",
+    "skillProb": "10",
+    "skillPrefixAnyColorRate": "4"
+  },
+  {
+    "id": "8",
+    "storePrice": "133",
+    "storeRefreshPrice": "450",
+    "attrRefreshPrice": "450",
+    "skillNum": "0",
+    "skillProb": "30",
+    "skillPrefixAnyColorRate": "6"
+  },
+  {
+    "id": "9",
+    "storePrice": "141",
+    "storeRefreshPrice": "500",
+    "attrRefreshPrice": "500",
+    "skillNum": "0",
+    "skillProb": "30",
+    "skillPrefixAnyColorRate": "6"
+  },
+  {
+    "id": "10",
+    "storePrice": "151",
+    "storeRefreshPrice": "550",
+    "attrRefreshPrice": "550",
+    "skillNum": "0",
+    "skillProb": "30",
+    "skillPrefixAnyColorRate": "6"
+  },
+  {
+    "id": "11",
+    "storePrice": "161",
+    "storeRefreshPrice": "650",
+    "attrRefreshPrice": "650",
+    "skillNum": "0",
+    "skillProb": "10",
+    "skillPrefixAnyColorRate": "4"
+  },
+  {
+    "id": "12",
+    "storePrice": "173",
+    "storeRefreshPrice": "750",
+    "attrRefreshPrice": "750",
+    "skillNum": "0",
+    "skillProb": "20",
+    "skillPrefixAnyColorRate": "6"
+  },
+  {
+    "id": "13",
+    "storePrice": "185",
+    "storeRefreshPrice": "850",
+    "attrRefreshPrice": "850",
+    "skillNum": "0",
+    "skillProb": "20",
+    "skillPrefixAnyColorRate": "6"
+  },
+  {
+    "id": "14",
+    "storePrice": "199",
+    "storeRefreshPrice": "950",
+    "attrRefreshPrice": "950",
+    "skillNum": "0",
+    "skillProb": "20",
+    "skillPrefixAnyColorRate": "6"
+  },
+  {
+    "id": "15",
+    "storePrice": "213",
+    "storeRefreshPrice": "1050",
+    "attrRefreshPrice": "1050",
+    "skillNum": "0",
+    "skillProb": "10",
+    "skillPrefixAnyColorRate": "4"
+  },
+  {
+    "id": "16",
+    "storePrice": "228",
+    "storeRefreshPrice": "1150",
+    "attrRefreshPrice": "1150",
+    "skillNum": "0",
+    "skillProb": "15",
+    "skillPrefixAnyColorRate": "6"
+  },
+  {
+    "id": "17",
+    "storePrice": "244",
+    "storeRefreshPrice": "1250",
+    "attrRefreshPrice": "1250",
+    "skillNum": "0",
+    "skillProb": "15",
+    "skillPrefixAnyColorRate": "6"
+  },
+  {
+    "id": "18",
+    "storePrice": "262",
+    "storeRefreshPrice": "1350",
+    "attrRefreshPrice": "1350",
+    "skillNum": "0",
+    "skillProb": "15",
+    "skillPrefixAnyColorRate": "6"
+  },
+  {
+    "id": "19",
+    "storePrice": "280",
+    "storeRefreshPrice": "1450",
+    "attrRefreshPrice": "1450",
+    "skillNum": "0",
+    "skillProb": "10",
+    "skillPrefixAnyColorRate": "4"
+  },
+  {
+    "id": "20",
+    "storePrice": "300",
+    "storeRefreshPrice": "1600",
+    "attrRefreshPrice": "1600",
+    "skillNum": "0",
+    "skillProb": "15",
+    "skillPrefixAnyColorRate": "6"
+  },
+  {
+    "id": "21",
+    "storePrice": "350",
+    "storeRefreshPrice": "1750",
+    "attrRefreshPrice": "1750",
+    "skillNum": "0",
+    "skillProb": "15",
+    "skillPrefixAnyColorRate": "6"
+  },
+  {
+    "id": "22",
+    "storePrice": "400",
+    "storeRefreshPrice": "1900",
+    "attrRefreshPrice": "1900",
+    "skillNum": "0",
+    "skillProb": "15",
+    "skillPrefixAnyColorRate": "6"
+  },
+  {
+    "id": "23",
+    "storePrice": "450",
+    "storeRefreshPrice": "2050",
+    "attrRefreshPrice": "2050",
+    "skillNum": "0",
+    "skillProb": "15",
+    "skillPrefixAnyColorRate": "6"
+  },
+  {
+    "id": "24",
+    "storePrice": "500",
+    "storeRefreshPrice": "2200",
+    "attrRefreshPrice": "2200",
+    "skillNum": "0",
+    "skillProb": "15",
+    "skillPrefixAnyColorRate": "6"
+  },
+  {
+    "id": "25",
+    "storePrice": "550",
+    "storeRefreshPrice": "2350",
+    "attrRefreshPrice": "2350",
+    "skillNum": "0",
+    "skillProb": "15",
+    "skillPrefixAnyColorRate": "6"
+  },
+  {
+    "id": "26",
+    "storePrice": "600",
+    "storeRefreshPrice": "2500",
+    "attrRefreshPrice": "2500",
+    "skillNum": "0",
+    "skillProb": "15",
+    "skillPrefixAnyColorRate": "6"
+  },
+  {
+    "id": "27",
+    "storePrice": "650",
+    "storeRefreshPrice": "2650",
+    "attrRefreshPrice": "2650",
+    "skillNum": "0",
+    "skillProb": "15",
+    "skillPrefixAnyColorRate": "6"
+  },
+  {
+    "id": "28",
+    "storePrice": "700",
+    "storeRefreshPrice": "2800",
+    "attrRefreshPrice": "2800",
+    "skillNum": "0",
+    "skillProb": "15",
+    "skillPrefixAnyColorRate": "6"
+  },
+  {
+    "id": "29",
+    "storePrice": "750",
+    "storeRefreshPrice": "2950",
+    "attrRefreshPrice": "2950",
+    "skillNum": "0",
+    "skillProb": "15",
+    "skillPrefixAnyColorRate": "6"
+  },
+  {
+    "id": "30",
+    "storePrice": "800",
+    "storeRefreshPrice": "3100",
+    "attrRefreshPrice": "3100",
+    "skillNum": "0",
+    "skillProb": "15",
+    "skillPrefixAnyColorRate": "6"
+  },
+  {
+    "id": "31",
+    "storePrice": "850",
+    "storeRefreshPrice": "3250",
+    "attrRefreshPrice": "3250",
+    "skillNum": "0",
+    "skillProb": "15",
+    "skillPrefixAnyColorRate": "6"
+  },
+  {
+    "id": "32",
+    "storePrice": "900",
+    "storeRefreshPrice": "3400",
+    "attrRefreshPrice": "3400",
+    "skillNum": "0",
+    "skillProb": "15",
+    "skillPrefixAnyColorRate": "6"
+  },
+  {
+    "id": "33",
+    "storePrice": "950",
+    "storeRefreshPrice": "3550",
+    "attrRefreshPrice": "3550",
+    "skillNum": "0",
+    "skillProb": "15",
+    "skillPrefixAnyColorRate": "6"
+  },
+  {
+    "id": "34",
+    "storePrice": "1000",
+    "storeRefreshPrice": "3700",
+    "attrRefreshPrice": "3700",
+    "skillNum": "0",
+    "skillProb": "15",
+    "skillPrefixAnyColorRate": "6"
+  },
+  {
+    "id": "35",
+    "storePrice": "1050",
+    "storeRefreshPrice": "3850",
+    "attrRefreshPrice": "3850",
+    "skillNum": "0",
+    "skillProb": "15",
+    "skillPrefixAnyColorRate": "6"
+  },
+  {
+    "id": "36",
+    "storePrice": "1100",
+    "storeRefreshPrice": "4000",
+    "attrRefreshPrice": "4000",
+    "skillNum": "0",
+    "skillProb": "15",
+    "skillPrefixAnyColorRate": "6"
+  },
+  {
+    "id": "37",
+    "storePrice": "1150",
+    "storeRefreshPrice": "4150",
+    "attrRefreshPrice": "4150",
+    "skillNum": "0",
+    "skillProb": "15",
+    "skillPrefixAnyColorRate": "6"
+  },
+  {
+    "id": "38",
+    "storePrice": "1200",
+    "storeRefreshPrice": "4300",
+    "attrRefreshPrice": "4300",
+    "skillNum": "0",
+    "skillProb": "15",
+    "skillPrefixAnyColorRate": "6"
+  },
+  {
+    "id": "39",
+    "storePrice": "1250",
+    "storeRefreshPrice": "4450",
+    "attrRefreshPrice": "4450",
+    "skillNum": "0",
+    "skillProb": "15",
+    "skillPrefixAnyColorRate": "6"
+  },
+  {
+    "id": "40",
+    "storePrice": "1300",
+    "storeRefreshPrice": "4600",
+    "attrRefreshPrice": "4600",
+    "skillNum": "0",
+    "skillProb": "15",
+    "skillPrefixAnyColorRate": "6"
+  },
+  {
+    "id": "41",
+    "storePrice": "1350",
+    "storeRefreshPrice": "4750",
+    "attrRefreshPrice": "4750",
+    "skillNum": "0",
+    "skillProb": "15",
+    "skillPrefixAnyColorRate": "6"
+  },
+  {
+    "id": "42",
+    "storePrice": "1400",
+    "storeRefreshPrice": "4900",
+    "attrRefreshPrice": "4900",
+    "skillNum": "0",
+    "skillProb": "15",
+    "skillPrefixAnyColorRate": "6"
+  },
+  {
+    "id": "43",
+    "storePrice": "1450",
+    "storeRefreshPrice": "5050",
+    "attrRefreshPrice": "5050",
+    "skillNum": "0",
+    "skillProb": "15",
+    "skillPrefixAnyColorRate": "6"
+  },
+  {
+    "id": "44",
+    "storePrice": "1500",
+    "storeRefreshPrice": "5200",
+    "attrRefreshPrice": "5200",
+    "skillNum": "0",
+    "skillProb": "15",
+    "skillPrefixAnyColorRate": "6"
+  },
+  {
+    "id": "45",
+    "storePrice": "1550",
+    "storeRefreshPrice": "5350",
+    "attrRefreshPrice": "5350",
+    "skillNum": "0",
+    "skillProb": "15",
+    "skillPrefixAnyColorRate": "6"
+  },
+  {
+    "id": "46",
+    "storePrice": "1600",
+    "storeRefreshPrice": "5500",
+    "attrRefreshPrice": "5500",
+    "skillNum": "0",
+    "skillProb": "15",
+    "skillPrefixAnyColorRate": "6"
+  },
+  {
+    "id": "47",
+    "storePrice": "1650",
+    "storeRefreshPrice": "5650",
+    "attrRefreshPrice": "5650",
+    "skillNum": "0",
+    "skillProb": "15",
+    "skillPrefixAnyColorRate": "6"
+  },
+  {
+    "id": "48",
+    "storePrice": "1700",
+    "storeRefreshPrice": "5800",
+    "attrRefreshPrice": "5800",
+    "skillNum": "0",
+    "skillProb": "15",
+    "skillPrefixAnyColorRate": "6"
+  },
+  {
+    "id": "49",
+    "storePrice": "1750",
+    "storeRefreshPrice": "5950",
+    "attrRefreshPrice": "5950",
+    "skillNum": "0",
+    "skillProb": "15",
+    "skillPrefixAnyColorRate": "6"
+  },
+  {
+    "id": "50",
+    "storePrice": "1800",
+    "storeRefreshPrice": "6100",
+    "attrRefreshPrice": "6100",
+    "skillNum": "0",
+    "skillProb": "15",
+    "skillPrefixAnyColorRate": "6"
+  }
+]

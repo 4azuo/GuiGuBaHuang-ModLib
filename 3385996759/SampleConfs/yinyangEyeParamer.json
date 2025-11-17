@@ -1,0 +1,227 @@
+[
+  {
+    "id": "1",
+    "key": "dieUnitSoulInPointRange",
+    "value": "5"
+  },
+  {
+    "id": "2",
+    "key": "dieUnitIntimSoul",
+    "value": "0"
+  },
+  {
+    "id": "3",
+    "key": "dieUnitHateSoul",
+    "value": "0"
+  },
+  {
+    "id": "4",
+    "key": "dieUnitNoneFamilyHateSoul",
+    "value": "0"
+  },
+  {
+    "id": "5",
+    "key": "npcUnitSoul",
+    "value": "0"
+  },
+  {
+    "id": "6",
+    "key": "npcUnitIsHeroRate",
+    "value": "15"
+  },
+  {
+    "id": "7",
+    "key": "soulMaxNumInMap",
+    "value": "20"
+  },
+  {
+    "id": "8",
+    "key": "soulWeight",
+    "value": "0|85"
+  },
+  {
+    "id": "9",
+    "key": "soulRandomWeight",
+    "value": "40_0|30_1|20_2|10_3"
+  },
+  {
+    "id": "10",
+    "key": "soulTaskId",
+    "value": "132001"
+  },
+  {
+    "id": "11",
+    "key": "soulTaskPositionId",
+    "value": "1043"
+  },
+  {
+    "id": "12",
+    "key": "soulTaskOpenTownPubDramaId",
+    "value": "8118030"
+  },
+  {
+    "id": "13",
+    "key": "soulTaskPlayerAcceptDramaId",
+    "value": "81180021"
+  },
+  {
+    "id": "14",
+    "key": "soulTaskPlayerRefuseDramaId",
+    "value": "0"
+  },
+  {
+    "id": "15",
+    "key": "soulTaskCompleteDramaId",
+    "value": "8118007"
+  },
+  {
+    "id": "16",
+    "key": "soulTaskCompleteRewardId",
+    "value": "1410006"
+  },
+  {
+    "id": "17",
+    "key": "soul1001ToPlayerDramaId",
+    "value": "8118005"
+  },
+  {
+    "id": "18",
+    "key": "soul1001ToNpcDramaId",
+    "value": "8118002"
+  },
+  {
+    "id": "19",
+    "key": "soul1002DungeonId",
+    "value": "195"
+  },
+  {
+    "id": "20",
+    "key": "soul2001CharacterWeight",
+    "value": "1_0|2_0|3_100|4_0|5_-51|6_-50|7_-100|8_50|9_0|10_50|11_0|12_50|14_0|15_-100|16_0|17_50|18_100|19_100"
+  },
+  {
+    "id": "21",
+    "key": "soul2001DramaId1",
+    "value": "8118022"
+  },
+  {
+    "id": "22",
+    "key": "soul2001DramaId2",
+    "value": "8118023"
+  },
+  {
+    "id": "23",
+    "key": "soulEndDramaId",
+    "value": "8118041"
+  },
+  {
+    "id": "24",
+    "key": "soul3018AddAtkInGradeMax",
+    "value": "4|7|12|23|43|81|166|327|634|1216"
+  },
+  {
+    "id": "25",
+    "key": "soul3018AddAtkInGrade",
+    "value": "1|2|3|6|11|21|42|82|159|304"
+  },
+  {
+    "id": "26",
+    "key": "soul3022NPCAddAttrCount",
+    "value": "3"
+  },
+  {
+    "id": "27",
+    "key": "soul3006SoulEffectLog",
+    "value": "soul3006SoulEffectLog"
+  },
+  {
+    "id": "28",
+    "key": "soul3006SoulEffectLog1",
+    "value": "soul3006SoulEffectLog1"
+  },
+  {
+    "id": "29",
+    "key": "soul3012SoulEffectLog",
+    "value": "soul3012SoulEffectLog"
+  },
+  {
+    "id": "30",
+    "key": "soul3013SoulEffectLog",
+    "value": "soul3013SoulEffectLog"
+  },
+  {
+    "id": "31",
+    "key": "soul3014SoulEffectLog",
+    "value": "soul3014SoulEffectLog"
+  },
+  {
+    "id": "32",
+    "key": "soul3018SoulEffectLog",
+    "value": "soul3018SoulEffectLog"
+  },
+  {
+    "id": "33",
+    "key": "soul3019SoulEffectLog",
+    "value": "soul3019SoulEffectLog"
+  },
+  {
+    "id": "34",
+    "key": "soul3020SoulEffectLog",
+    "value": "soul3020SoulEffectLog"
+  },
+  {
+    "id": "35",
+    "key": "soul3021SoulEffectLog",
+    "value": "soul3021SoulEffectLog"
+  },
+  {
+    "id": "36",
+    "key": "soul3022SoulEffectLog",
+    "value": "soul3022SoulEffectLog"
+  },
+  {
+    "id": "37",
+    "key": "soul3023SoulEffectLog",
+    "value": "soul3023SoulEffectLog"
+  },
+  {
+    "id": "38",
+    "key": "soul3026SoulEffectLog",
+    "value": "soul3026SoulEffectLog"
+  },
+  {
+    "id": "39",
+    "key": "soul3027SoulEffectLog",
+    "value": "soul3027SoulEffectLog"
+  },
+  {
+    "id": "40",
+    "key": "soul3027SoulEffectLog1",
+    "value": "soul3027SoulEffectLog1"
+  },
+  {
+    "id": "41",
+    "key": "soul3028AddLuck",
+    "value": "9219"
+  },
+  {
+    "id": "42",
+    "key": "npcGetSoulRate",
+    "value": "33"
+  },
+  {
+    "id": "43",
+    "key": "npcSoulEffectRate",
+    "value": "50"
+  },
+  {
+    "id": "44",
+    "key": "luckOpenToPlayer",
+    "value": "1"
+  },
+  {
+    "id": "45",
+    "key": "additionalVision",
+    "value": "1"
+  }
+]

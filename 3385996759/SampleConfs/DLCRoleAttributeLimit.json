@@ -1,0 +1,547 @@
+[
+  {
+    "id": "1",
+    "key": "ageMin",
+    "value": "1"
+  },
+  {
+    "id": "2",
+    "key": "lifeMin",
+    "value": "360"
+  },
+  {
+    "id": "3",
+    "key": "beautyMin",
+    "value": "-9999"
+  },
+  {
+    "id": "4",
+    "key": "talentMin",
+    "value": "1"
+  },
+  {
+    "id": "5",
+    "key": "healthMin",
+    "value": "0"
+  },
+  {
+    "id": "6",
+    "key": "hpMin",
+    "value": "1"
+  },
+  {
+    "id": "7",
+    "key": "hpRestoreMin",
+    "value": "0"
+  },
+  {
+    "id": "8",
+    "key": "mpMin",
+    "value": "1"
+  },
+  {
+    "id": "9",
+    "key": "mpRestoreMin",
+    "value": "0"
+  },
+  {
+    "id": "10",
+    "key": "spMin",
+    "value": "1"
+  },
+  {
+    "id": "11",
+    "key": "spRestoreMin",
+    "value": "0"
+  },
+  {
+    "id": "12",
+    "key": "attackMin",
+    "value": "1"
+  },
+  {
+    "id": "13",
+    "key": "defenseMin",
+    "value": "1"
+  },
+  {
+    "id": "14",
+    "key": "footSpeedMin",
+    "value": "1"
+  },
+  {
+    "id": "15",
+    "key": "energyMin",
+    "value": "1"
+  },
+  {
+    "id": "16",
+    "key": "critMin",
+    "value": "0"
+  },
+  {
+    "id": "17",
+    "key": "critValueMin",
+    "value": "0"
+  },
+  {
+    "id": "18",
+    "key": "guardMin",
+    "value": "0"
+  },
+  {
+    "id": "19",
+    "key": "guardValueMin",
+    "value": "0"
+  },
+  {
+    "id": "20",
+    "key": "moveSpeedMin",
+    "value": "1"
+  },
+  {
+    "id": "21",
+    "key": "basisFireMin",
+    "value": "1"
+  },
+  {
+    "id": "22",
+    "key": "basisFrozeMin",
+    "value": "1"
+  },
+  {
+    "id": "23",
+    "key": "basisThunderMin",
+    "value": "1"
+  },
+  {
+    "id": "24",
+    "key": "basisWindMin",
+    "value": "1"
+  },
+  {
+    "id": "25",
+    "key": "basisEarthMin",
+    "value": "1"
+  },
+  {
+    "id": "26",
+    "key": "basisWoodMin",
+    "value": "1"
+  },
+  {
+    "id": "27",
+    "key": "basisSwordMin",
+    "value": "1"
+  },
+  {
+    "id": "28",
+    "key": "basisSpearMin",
+    "value": "1"
+  },
+  {
+    "id": "29",
+    "key": "basisBladeMin",
+    "value": "1"
+  },
+  {
+    "id": "30",
+    "key": "basisFistMin",
+    "value": "1"
+  },
+  {
+    "id": "31",
+    "key": "basisPalmMin",
+    "value": "1"
+  },
+  {
+    "id": "32",
+    "key": "basisFingerMin",
+    "value": "1"
+  },
+  {
+    "id": "33",
+    "key": "refineElixirMin",
+    "value": "1"
+  },
+  {
+    "id": "34",
+    "key": "refineWeaponMin",
+    "value": "1"
+  },
+  {
+    "id": "35",
+    "key": "geomancyMin",
+    "value": "1"
+  },
+  {
+    "id": "36",
+    "key": "herbalMin",
+    "value": "1"
+  },
+  {
+    "id": "37",
+    "key": "mineMin",
+    "value": "1"
+  },
+  {
+    "id": "38",
+    "key": "moodMin",
+    "value": "0"
+  },
+  {
+    "id": "39",
+    "key": "moodUpRateMin",
+    "value": "0"
+  },
+  {
+    "id": "40",
+    "key": "moodDownRateMin",
+    "value": "0"
+  },
+  {
+    "id": "41",
+    "key": "intimacyRateMin",
+    "value": "0"
+  },
+  {
+    "id": "42",
+    "key": "beautyMax",
+    "value": "9999"
+  },
+  {
+    "id": "43",
+    "key": "talentMax",
+    "value": "200"
+  },
+  {
+    "id": "44",
+    "key": "healthMax",
+    "value": "999"
+  },
+  {
+    "id": "45",
+    "key": "hpMax",
+    "value": "9999999"
+  },
+  {
+    "id": "46",
+    "key": "mpMax",
+    "value": "9999999"
+  },
+  {
+    "id": "47",
+    "key": "spMax",
+    "value": "9999999"
+  },
+  {
+    "id": "48",
+    "key": "attackMax",
+    "value": "99999"
+  },
+  {
+    "id": "49",
+    "key": "defenseMax",
+    "value": "99999"
+  },
+  {
+    "id": "50",
+    "key": "footSpeedMax",
+    "value": "9999"
+  },
+  {
+    "id": "51",
+    "key": "energyMax",
+    "value": "999"
+  },
+  {
+    "id": "52",
+    "key": "critMax",
+    "value": "99999"
+  },
+  {
+    "id": "53",
+    "key": "critValueMax",
+    "value": "10000"
+  },
+  {
+    "id": "54",
+    "key": "guardMax",
+    "value": "99999"
+  },
+  {
+    "id": "55",
+    "key": "guardValueMax",
+    "value": "10000"
+  },
+  {
+    "id": "56",
+    "key": "moveSpeedMax",
+    "value": "999"
+  },
+  {
+    "id": "57",
+    "key": "basisFireMax",
+    "value": "999"
+  },
+  {
+    "id": "58",
+    "key": "basisFrozeMax",
+    "value": "999"
+  },
+  {
+    "id": "59",
+    "key": "basisThunderMax",
+    "value": "999"
+  },
+  {
+    "id": "60",
+    "key": "basisWindMax",
+    "value": "999"
+  },
+  {
+    "id": "61",
+    "key": "basisEarthMax",
+    "value": "999"
+  },
+  {
+    "id": "62",
+    "key": "basisWoodMax",
+    "value": "999"
+  },
+  {
+    "id": "63",
+    "key": "basisSwordMax",
+    "value": "999"
+  },
+  {
+    "id": "64",
+    "key": "basisSpearMax",
+    "value": "999"
+  },
+  {
+    "id": "65",
+    "key": "basisBladeMax",
+    "value": "999"
+  },
+  {
+    "id": "66",
+    "key": "basisFistMax",
+    "value": "999"
+  },
+  {
+    "id": "67",
+    "key": "basisPalmMax",
+    "value": "999"
+  },
+  {
+    "id": "68",
+    "key": "basisFingerMax",
+    "value": "999"
+  },
+  {
+    "id": "69",
+    "key": "refineElixirMax",
+    "value": "999"
+  },
+  {
+    "id": "70",
+    "key": "refineWeaponMax",
+    "value": "999"
+  },
+  {
+    "id": "71",
+    "key": "geomancyMax",
+    "value": "999"
+  },
+  {
+    "id": "72",
+    "key": "herbalMax",
+    "value": "999"
+  },
+  {
+    "id": "73",
+    "key": "mineMax",
+    "value": "999"
+  },
+  {
+    "id": "74",
+    "key": "moodMax",
+    "value": "999"
+  },
+  {
+    "id": "75",
+    "key": "moodUpRateMax",
+    "value": "10000"
+  },
+  {
+    "id": "76",
+    "key": "moodDownRateMax",
+    "value": "10000"
+  },
+  {
+    "id": "77",
+    "key": "intimacyRateMax",
+    "value": "10000"
+  },
+  {
+    "id": "78",
+    "key": "phycicalFreeMin",
+    "value": "0"
+  },
+  {
+    "id": "79",
+    "key": "magicFreeMin",
+    "value": "0"
+  },
+  {
+    "id": "80",
+    "key": "phycicalFreeMax",
+    "value": "9999"
+  },
+  {
+    "id": "81",
+    "key": "magicFreeMax",
+    "value": "9999"
+  },
+  {
+    "id": "82",
+    "key": "abilityPointMin",
+    "value": "0"
+  },
+  {
+    "id": "83",
+    "key": "abilityPointMax",
+    "value": "9999"
+  },
+  {
+    "id": "84",
+    "key": "reputationMin",
+    "value": "0"
+  },
+  {
+    "id": "85",
+    "key": "reputationMax",
+    "value": "120000"
+  },
+  {
+    "id": "86",
+    "key": "luckMin",
+    "value": "0"
+  },
+  {
+    "id": "87",
+    "key": "luckMax",
+    "value": "200"
+  },
+  {
+    "id": "88",
+    "key": "weaponMagicGrowMin",
+    "value": "0"
+  },
+  {
+    "id": "89",
+    "key": "weaponMagicGrowMax",
+    "value": "500"
+  },
+  {
+    "id": "90",
+    "key": "expGrowMin",
+    "value": "0"
+  },
+  {
+    "id": "91",
+    "key": "expGrowMax",
+    "value": "500"
+  },
+  {
+    "id": "92",
+    "key": "healthDownStableMin",
+    "value": "0"
+  },
+  {
+    "id": "93",
+    "key": "healthDownStableMax",
+    "value": "10000"
+  },
+  {
+    "id": "94",
+    "key": "healthUpStableMin",
+    "value": "0"
+  },
+  {
+    "id": "95",
+    "key": "healthUpStableMax",
+    "value": "10000"
+  },
+  {
+    "id": "96",
+    "key": "townBuyDeclineMin",
+    "value": "50"
+  },
+  {
+    "id": "97",
+    "key": "townBuyDeclineMax",
+    "value": "500"
+  },
+  {
+    "id": "98",
+    "key": "energyDownStableMin",
+    "value": "0"
+  },
+  {
+    "id": "99",
+    "key": "energyDownStableMax",
+    "value": "10000"
+  },
+  {
+    "id": "100",
+    "key": "energyUpStableMin",
+    "value": "0"
+  },
+  {
+    "id": "101",
+    "key": "energyUpStableMax",
+    "value": "10000"
+  },
+  {
+    "id": "102",
+    "key": "stepGrowMin",
+    "value": "0"
+  },
+  {
+    "id": "103",
+    "key": "stepGrowMax",
+    "value": "500"
+  },
+  {
+    "id": "104",
+    "key": "hateRateMin",
+    "value": "0"
+  },
+  {
+    "id": "105",
+    "key": "hateRateMax",
+    "value": "10000"
+  },
+  {
+    "id": "106",
+    "key": "dpMin",
+    "value": "0"
+  },
+  {
+    "id": "107",
+    "key": "dpMax",
+    "value": "1000"
+  },
+  {
+    "id": "108",
+    "key": "immortalPointMin",
+    "value": "0"
+  },
+  {
+    "id": "109",
+    "key": "immortalPointMax",
+    "value": "40"
+  }
+]

@@ -1,0 +1,38 @@
+[
+  {
+    "id": "1",
+    "name": "weapon_blade",
+    "oneCharName": "skill_dao",
+    "missileDesc": "skill_missile_dao"
+  },
+  {
+    "id": "2",
+    "name": "weapon_spear",
+    "oneCharName": "skill_qiang",
+    "missileDesc": "skill_missile_qian"
+  },
+  {
+    "id": "3",
+    "name": "weapon_sword",
+    "oneCharName": "skill_jian",
+    "missileDesc": "skill_missile_jian"
+  },
+  {
+    "id": "4",
+    "name": "weapon_fist",
+    "oneCharName": "skill_quan",
+    "missileDesc": "skill_missile_quan"
+  },
+  {
+    "id": "5",
+    "name": "weapon_palm",
+    "oneCharName": "skill_zhang",
+    "missileDesc": "skill_missile_zhang"
+  },
+  {
+    "id": "6",
+    "name": "weapon_finger",
+    "oneCharName": "skill_zhi",
+    "missileDesc": "skill_missile_zhi"
+  }
+]

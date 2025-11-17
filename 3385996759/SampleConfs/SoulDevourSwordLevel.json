@@ -1,0 +1,23 @@
+[
+  {
+    "id": "1",
+    "propId": "8104130",
+    "needExp": "0",
+    "luck": "0",
+    "intoDungeon": "28041"
+  },
+  {
+    "id": "2",
+    "propId": "8104131",
+    "needExp": "50",
+    "luck": "0",
+    "intoDungeon": "28042"
+  },
+  {
+    "id": "3",
+    "propId": "8104132",
+    "needExp": "550",
+    "luck": "0",
+    "intoDungeon": "28043"
+  }
+]

@@ -1,0 +1,512 @@
+[
+  {
+    "id": "101",
+    "type": "1",
+    "uiLabel": "itemType_danyao"
+  },
+  {
+    "id": "102",
+    "type": "1",
+    "uiLabel": "itemType_danyao"
+  },
+  {
+    "id": "103",
+    "type": "1",
+    "uiLabel": "itemType_danyao"
+  },
+  {
+    "id": "104",
+    "type": "1",
+    "uiLabel": "itemType_danyao"
+  },
+  {
+    "id": "105",
+    "type": "1",
+    "uiLabel": "itemType_lingguo"
+  },
+  {
+    "id": "106",
+    "type": "1",
+    "uiLabel": "itemType_danyao"
+  },
+  {
+    "id": "107",
+    "type": "1",
+    "uiLabel": "itemType_danyao"
+  },
+  {
+    "id": "108",
+    "type": "1",
+    "uiLabel": "itemType_danyao"
+  },
+  {
+    "id": "109",
+    "type": "6",
+    "uiLabel": "itemType_qita"
+  },
+  {
+    "id": "110",
+    "type": "1",
+    "uiLabel": "itemType_danyao"
+  },
+  {
+    "id": "111",
+    "type": "1",
+    "uiLabel": "itemType_danyao"
+  },
+  {
+    "id": "112",
+    "type": "1",
+    "uiLabel": "itemType_danyao"
+  },
+  {
+    "id": "120",
+    "type": "1",
+    "uiLabel": "itemType_danyao"
+  },
+  {
+    "id": "501",
+    "type": "5",
+    "uiLabel": "itemType_lianqi"
+  },
+  {
+    "id": "502",
+    "type": "5",
+    "uiLabel": "itemType_yaoshou"
+  },
+  {
+    "id": "503",
+    "type": "5",
+    "uiLabel": "itemType_liandan"
+  },
+  {
+    "id": "504",
+    "type": "5",
+    "uiLabel": "itemType_lianqi"
+  },
+  {
+    "id": "505",
+    "type": "5",
+    "uiLabel": "itemType_tupo"
+  },
+  {
+    "id": "506",
+    "type": "5",
+    "uiLabel": "itemType_qita"
+  },
+  {
+    "id": "507",
+    "type": "5",
+    "uiLabel": "itemType_tupo"
+  },
+  {
+    "id": "508",
+    "type": "5",
+    "uiLabel": "itemType_tupo"
+  },
+  {
+    "id": "509",
+    "type": "5",
+    "uiLabel": "itemType_qita"
+  },
+  {
+    "id": "510",
+    "type": "5",
+    "uiLabel": "itemType_qita"
+  },
+  {
+    "id": "511",
+    "type": "5",
+    "uiLabel": "itemType_qita"
+  },
+  {
+    "id": "512",
+    "type": "5",
+    "uiLabel": "itemType_lianqi"
+  },
+  {
+    "id": "513",
+    "type": "5",
+    "uiLabel": "itemType_lianqi"
+  },
+  {
+    "id": "518",
+    "type": "5",
+    "uiLabel": "itemType_lianqi"
+  },
+  {
+    "id": "520",
+    "type": "5",
+    "uiLabel": "itemType_lianqi"
+  },
+  {
+    "id": "521",
+    "type": "5",
+    "uiLabel": "itemType_lianqi"
+  },
+  {
+    "id": "522",
+    "type": "5",
+    "uiLabel": "itemType_lianqi"
+  },
+  {
+    "id": "523",
+    "type": "5",
+    "uiLabel": "itemType_yaoshou"
+  },
+  {
+    "id": "524",
+    "type": "5",
+    "uiLabel": "itemType_yaoshou"
+  },
+  {
+    "id": "525",
+    "type": "5",
+    "uiLabel": "itemType_yaoshou"
+  },
+  {
+    "id": "526",
+    "type": "5",
+    "uiLabel": "itemType_lianqi"
+  },
+  {
+    "id": "527",
+    "type": "5",
+    "uiLabel": "itemType_lianqi"
+  },
+  {
+    "id": "528",
+    "type": "5",
+    "uiLabel": "itemType_lianqi"
+  },
+  {
+    "id": "529",
+    "type": "5",
+    "uiLabel": "itemType_qita"
+  },
+  {
+    "id": "530",
+    "type": "5",
+    "uiLabel": "itemType_qiling"
+  },
+  {
+    "id": "531",
+    "type": "5",
+    "uiLabel": "itemType_qiling"
+  },
+  {
+    "id": "532",
+    "type": "5",
+    "uiLabel": "itemType_qiling"
+  },
+  {
+    "id": "533",
+    "type": "5",
+    "uiLabel": "itemType_qiling"
+  },
+  {
+    "id": "534",
+    "type": "5",
+    "uiLabel": "itemType_lianqi"
+  },
+  {
+    "id": "535",
+    "type": "5",
+    "uiLabel": "itemType_tupo"
+  },
+  {
+    "id": "536",
+    "type": "5",
+    "uiLabel": "itemType_tupo"
+  },
+  {
+    "id": "537",
+    "type": "5",
+    "uiLabel": "itemType_tupo"
+  },
+  {
+    "id": "601",
+    "type": "7",
+    "uiLabel": "itemType_rengwu"
+  },
+  {
+    "id": "602",
+    "type": "7",
+    "uiLabel": "itemType_rengwu"
+  },
+  {
+    "id": "603",
+    "type": "7",
+    "uiLabel": "itemType_rengwu"
+  },
+  {
+    "id": "604",
+    "type": "7",
+    "uiLabel": "itemType_rengwu"
+  },
+  {
+    "id": "605",
+    "type": "2",
+    "uiLabel": "itemType_jiyi"
+  },
+  {
+    "id": "606",
+    "type": "5",
+    "uiLabel": "itemType_liandan"
+  },
+  {
+    "id": "607",
+    "type": "7",
+    "uiLabel": "itemType_shuxin"
+  },
+  {
+    "id": "608",
+    "type": "1",
+    "uiLabel": "itemType_fulu"
+  },
+  {
+    "id": "609",
+    "type": "7",
+    "uiLabel": "itemType_shuxin"
+  },
+  {
+    "id": "610",
+    "type": "7",
+    "uiLabel": "itemType_rengwu"
+  },
+  {
+    "id": "611",
+    "type": "1",
+    "uiLabel": "itemType_fulu"
+  },
+  {
+    "id": "612",
+    "type": "7",
+    "uiLabel": "itemType_rengwu"
+  },
+  {
+    "id": "613",
+    "type": "7",
+    "uiLabel": "itemType_rengwu"
+  },
+  {
+    "id": "614",
+    "type": "2",
+    "uiLabel": "itemType_jiyi"
+  },
+  {
+    "id": "615",
+    "type": "2",
+    "uiLabel": "itemType_jiyi"
+  },
+  {
+    "id": "616",
+    "type": "2",
+    "uiLabel": "itemType_jiyi"
+  },
+  {
+    "id": "617",
+    "type": "2",
+    "uiLabel": "itemType_jiyi"
+  },
+  {
+    "id": "618",
+    "type": "2",
+    "uiLabel": "itemType_jiyi"
+  },
+  {
+    "id": "619",
+    "type": "2",
+    "uiLabel": "itemType_jiyi"
+  },
+  {
+    "id": "624",
+    "type": "7",
+    "uiLabel": "itemType_rengwu"
+  },
+  {
+    "id": "625",
+    "type": "1",
+    "uiLabel": "itemType_fulu"
+  },
+  {
+    "id": "626",
+    "type": "7",
+    "uiLabel": "itemType_rengwu"
+  },
+  {
+    "id": "627",
+    "type": "7",
+    "uiLabel": "itemType_rengwu"
+  },
+  {
+    "id": "628",
+    "type": "7",
+    "uiLabel": "itemType_rengwu"
+  },
+  {
+    "id": "629",
+    "type": "1",
+    "uiLabel": "itemType_lingguo"
+  },
+  {
+    "id": "630",
+    "type": "5",
+    "uiLabel": "itemType_tupo"
+  },
+  {
+    "id": "631",
+    "type": "7",
+    "uiLabel": "itemType_rengwu"
+  },
+  {
+    "id": "632",
+    "type": "7",
+    "uiLabel": "itemType_rengwu"
+  },
+  {
+    "id": "633",
+    "type": "1",
+    "uiLabel": "itemType_fulu"
+  },
+  {
+    "id": "634",
+    "type": "7",
+    "uiLabel": "itemType_qita"
+  },
+  {
+    "id": "635",
+    "type": "7",
+    "uiLabel": "itemType_rengwu"
+  },
+  {
+    "id": "636",
+    "type": "7",
+    "uiLabel": "itemType_rengwu"
+  },
+  {
+    "id": "637",
+    "type": "7",
+    "uiLabel": "itemType_qita"
+  },
+  {
+    "id": "638",
+    "type": "7",
+    "uiLabel": "itemType_qita"
+  },
+  {
+    "id": "639",
+    "type": "7",
+    "uiLabel": "itemType_shuxin"
+  },
+  {
+    "id": "640",
+    "type": "7",
+    "uiLabel": "itemType_rengwu"
+  },
+  {
+    "id": "642",
+    "type": "7",
+    "uiLabel": "itemType_rengwu"
+  },
+  {
+    "id": "643",
+    "type": "7",
+    "uiLabel": "itemType_qita"
+  },
+  {
+    "id": "646",
+    "type": "7",
+    "uiLabel": "itemType_qita"
+  },
+  {
+    "id": "647",
+    "type": "7",
+    "uiLabel": "itemType_rengwu"
+  },
+  {
+    "id": "648",
+    "type": "7",
+    "uiLabel": "itemType_rengwu"
+  },
+  {
+    "id": "649",
+    "type": "7",
+    "uiLabel": "itemType_rengwu"
+  },
+  {
+    "id": "650",
+    "type": "7",
+    "uiLabel": "itemType_rengwu"
+  },
+  {
+    "id": "653",
+    "type": "5",
+    "uiLabel": "itemType_tupo"
+  },
+  {
+    "id": "656",
+    "type": "7",
+    "uiLabel": "itemType_xianci"
+  },
+  {
+    "id": "659",
+    "type": "7",
+    "uiLabel": "itemType_qita"
+  },
+  {
+    "id": "701",
+    "type": "6",
+    "uiLabel": "itemType_xingqu"
+  },
+  {
+    "id": "702",
+    "type": "6",
+    "uiLabel": "itemType_xingqu"
+  },
+  {
+    "id": "703",
+    "type": "6",
+    "uiLabel": "itemType_xingqu"
+  },
+  {
+    "id": "704",
+    "type": "6",
+    "uiLabel": "itemType_xingqu"
+  },
+  {
+    "id": "705",
+    "type": "6",
+    "uiLabel": "itemType_xingqu"
+  },
+  {
+    "id": "706",
+    "type": "6",
+    "uiLabel": "itemType_xingqu"
+  },
+  {
+    "id": "707",
+    "type": "6",
+    "uiLabel": "itemType_xingqu"
+  },
+  {
+    "id": "708",
+    "type": "6",
+    "uiLabel": "itemType_xingqu"
+  },
+  {
+    "id": "709",
+    "type": "6",
+    "uiLabel": "itemType_xingqu"
+  },
+  {
+    "id": "710",
+    "type": "6",
+    "uiLabel": "itemType_xingqu"
+  },
+  {
+    "id": "658",
+    "type": "2",
+    "uiLabel": "itemType_jiyi"
+  }
+]

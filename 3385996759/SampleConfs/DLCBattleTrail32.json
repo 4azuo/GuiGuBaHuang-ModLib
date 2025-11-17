@@ -1,0 +1,20 @@
+[
+  {
+    "id": "32002",
+    "lastType": "1",
+    "startType": "1",
+    "endType": "2",
+    "interval": "250",
+    "lerp": "1",
+    "mulUseSkill": "0"
+  },
+  {
+    "id": "32003",
+    "lastType": "1",
+    "startType": "1",
+    "endType": "2",
+    "interval": "250",
+    "lerp": "1",
+    "mulUseSkill": "0"
+  }
+]

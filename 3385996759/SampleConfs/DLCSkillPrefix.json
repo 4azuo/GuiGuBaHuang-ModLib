@@ -1,0 +1,2138 @@
+[
+  {
+    "id": "102001",
+    "skillId": "102",
+    "skillEffect": "0",
+    "prefixKey": "&102_dmg%1",
+    "roleEffect": "0",
+    "group": "0"
+  },
+  {
+    "id": "102002",
+    "skillId": "102",
+    "skillEffect": "0",
+    "prefixKey": "&102_dmg%2|&102_leechRate%1",
+    "roleEffect": "0",
+    "group": "1"
+  },
+  {
+    "id": "102003",
+    "skillId": "102",
+    "skillEffect": "0",
+    "prefixKey": "&102_dmg%3|&102_cd%1",
+    "roleEffect": "0",
+    "group": "2"
+  },
+  {
+    "id": "102004",
+    "skillId": "102",
+    "skillEffect": "0",
+    "prefixKey": "&102_dmg%4|&102_leechProb%1",
+    "roleEffect": "0",
+    "group": "3"
+  },
+  {
+    "id": "102005",
+    "skillId": "102",
+    "skillEffect": "0",
+    "prefixKey": "&102_dmg%5|&102_range%1",
+    "roleEffect": "0",
+    "group": "4"
+  },
+  {
+    "id": "102006",
+    "skillId": "102",
+    "skillEffect": "102006",
+    "prefixKey": "0",
+    "roleEffect": "0",
+    "group": "5"
+  },
+  {
+    "id": "102007",
+    "skillId": "102",
+    "skillEffect": "102007",
+    "prefixKey": "0",
+    "roleEffect": "0",
+    "group": "5"
+  },
+  {
+    "id": "103001",
+    "skillId": "103",
+    "skillEffect": "0",
+    "prefixKey": "&103_dmg%1",
+    "roleEffect": "0",
+    "group": "0"
+  },
+  {
+    "id": "103002",
+    "skillId": "103",
+    "skillEffect": "0",
+    "prefixKey": "&103_dmg%2|&103_cd%1",
+    "roleEffect": "0",
+    "group": "1"
+  },
+  {
+    "id": "103003",
+    "skillId": "103",
+    "skillEffect": "103003",
+    "prefixKey": "&103_dmg%3",
+    "roleEffect": "0",
+    "group": "2"
+  },
+  {
+    "id": "103004",
+    "skillId": "103",
+    "skillEffect": "0",
+    "prefixKey": "&103_dmg%4|&103_killHp%1",
+    "roleEffect": "0",
+    "group": "3"
+  },
+  {
+    "id": "103005",
+    "skillId": "103",
+    "skillEffect": "0",
+    "prefixKey": "&103_dmg%5|&103_range%1",
+    "roleEffect": "0",
+    "group": "4"
+  },
+  {
+    "id": "103006",
+    "skillId": "103",
+    "skillEffect": "103006",
+    "prefixKey": "0",
+    "roleEffect": "0",
+    "group": "5"
+  },
+  {
+    "id": "103007",
+    "skillId": "103",
+    "skillEffect": "103007",
+    "prefixKey": "0",
+    "roleEffect": "0",
+    "group": "0"
+  },
+  {
+    "id": "103008",
+    "skillId": "103",
+    "skillEffect": "103008",
+    "prefixKey": "0",
+    "roleEffect": "0",
+    "group": "5"
+  },
+  {
+    "id": "104001",
+    "skillId": "104",
+    "skillEffect": "0",
+    "prefixKey": "&104_dmg%1",
+    "roleEffect": "0",
+    "group": "0"
+  },
+  {
+    "id": "104002",
+    "skillId": "104",
+    "skillEffect": "0",
+    "prefixKey": "&104_dmg%2|&104_leechRate%1",
+    "roleEffect": "0",
+    "group": "1"
+  },
+  {
+    "id": "104003",
+    "skillId": "104",
+    "skillEffect": "0",
+    "prefixKey": "&104_dmg%3|&104_cd%1",
+    "roleEffect": "0",
+    "group": "2"
+  },
+  {
+    "id": "104004",
+    "skillId": "104",
+    "skillEffect": "0",
+    "prefixKey": "&104_dmg%4|&104_leechProb%1",
+    "roleEffect": "0",
+    "group": "3"
+  },
+  {
+    "id": "104005",
+    "skillId": "104",
+    "skillEffect": "0",
+    "prefixKey": "&104_dmg%5|&104_bullet%1",
+    "roleEffect": "0",
+    "group": "4"
+  },
+  {
+    "id": "104006",
+    "skillId": "104",
+    "skillEffect": "104006",
+    "prefixKey": "&104_ejectNum%1",
+    "roleEffect": "0",
+    "group": "5"
+  },
+  {
+    "id": "104007",
+    "skillId": "104",
+    "skillEffect": "104007",
+    "prefixKey": "0",
+    "roleEffect": "0",
+    "group": "5"
+  },
+  {
+    "id": "201001",
+    "skillId": "201",
+    "skillEffect": "0",
+    "prefixKey": "&201_dmg%1",
+    "roleEffect": "0",
+    "group": "0"
+  },
+  {
+    "id": "201002",
+    "skillId": "201",
+    "skillEffect": "0",
+    "prefixKey": "&201_dmg%2|&201_range%1",
+    "roleEffect": "0",
+    "group": "1"
+  },
+  {
+    "id": "201003",
+    "skillId": "201",
+    "skillEffect": "0",
+    "prefixKey": "&201_dmg%3|&201_cd%1",
+    "roleEffect": "0",
+    "group": "2"
+  },
+  {
+    "id": "201004",
+    "skillId": "201",
+    "skillEffect": "0",
+    "prefixKey": "&201_dmg%4|&201_pfrDown%1",
+    "roleEffect": "0",
+    "group": "3"
+  },
+  {
+    "id": "201005",
+    "skillId": "201",
+    "skillEffect": "0",
+    "prefixKey": "&201_dmg%5|&201_bullet%1",
+    "roleEffect": "0",
+    "group": "4"
+  },
+  {
+    "id": "201006",
+    "skillId": "201",
+    "skillEffect": "201006",
+    "prefixKey": "&201_angularInterval%1|&201_range%2",
+    "roleEffect": "0",
+    "group": "5"
+  },
+  {
+    "id": "201007",
+    "skillId": "201",
+    "skillEffect": "0",
+    "prefixKey": "&201_returnSwitch%1|&201_returnTime%1",
+    "roleEffect": "0",
+    "group": "5"
+  },
+  {
+    "id": "202001",
+    "skillId": "202",
+    "skillEffect": "0",
+    "prefixKey": "&202_dmg%1",
+    "roleEffect": "0",
+    "group": "0"
+  },
+  {
+    "id": "202002",
+    "skillId": "202",
+    "skillEffect": "0",
+    "prefixKey": "&202_dmg%2|&202_chargePointCD%1",
+    "roleEffect": "0",
+    "group": "1"
+  },
+  {
+    "id": "202003",
+    "skillId": "202",
+    "skillEffect": "0",
+    "prefixKey": "&202_dmg%3|&202_chargeRange%1",
+    "roleEffect": "0",
+    "group": "2"
+  },
+  {
+    "id": "202004",
+    "skillId": "202",
+    "skillEffect": "0",
+    "prefixKey": "&202_dmgUpSwitch%1|&202_dmg%4",
+    "roleEffect": "0",
+    "group": "3"
+  },
+  {
+    "id": "202005",
+    "skillId": "202",
+    "skillEffect": "202005",
+    "prefixKey": "&202_dmg%5",
+    "roleEffect": "0",
+    "group": "4"
+  },
+  {
+    "id": "202006",
+    "skillId": "202",
+    "skillEffect": "0",
+    "prefixKey": "&202_blastProb%1",
+    "roleEffect": "0",
+    "group": "5"
+  },
+  {
+    "id": "202007",
+    "skillId": "202",
+    "skillEffect": "0",
+    "prefixKey": "&202_dmg%6|&202_mirrorNum%1",
+    "roleEffect": "0",
+    "group": "5"
+  },
+  {
+    "id": "203001",
+    "skillId": "203",
+    "skillEffect": "0",
+    "prefixKey": "&203_dmg%1",
+    "roleEffect": "0",
+    "group": "0"
+  },
+  {
+    "id": "203002",
+    "skillId": "203",
+    "skillEffect": "0",
+    "prefixKey": "&203_dmg%2|&203_cd%1",
+    "roleEffect": "0",
+    "group": "1"
+  },
+  {
+    "id": "203003",
+    "skillId": "203",
+    "skillEffect": "0",
+    "prefixKey": "&203_dmg%3|&203_pfrDown%1",
+    "roleEffect": "0",
+    "group": "2"
+  },
+  {
+    "id": "203004",
+    "skillId": "203",
+    "skillEffect": "0",
+    "prefixKey": "&203_dmg%4|&203_subRange%1",
+    "roleEffect": "0",
+    "group": "3"
+  },
+  {
+    "id": "203005",
+    "skillId": "203",
+    "skillEffect": "0",
+    "prefixKey": "&203_dmg%5|&203_subBullet%1",
+    "roleEffect": "0",
+    "group": "4"
+  },
+  {
+    "id": "203006",
+    "skillId": "203",
+    "skillEffect": "0",
+    "prefixKey": "&203_subBulletRate%1|&203_subBulletAngleSwitch%1|&203_switchedAngle%1",
+    "roleEffect": "0",
+    "group": "5"
+  },
+  {
+    "id": "203007",
+    "skillId": "203",
+    "skillEffect": "0",
+    "prefixKey": "0",
+    "roleEffect": "0",
+    "group": "5"
+  },
+  {
+    "id": "302001",
+    "skillId": "302",
+    "skillEffect": "0",
+    "prefixKey": "&302_dmg%1",
+    "roleEffect": "0",
+    "group": "0"
+  },
+  {
+    "id": "302002",
+    "skillId": "302",
+    "skillEffect": "0",
+    "prefixKey": "&302_dmg%2|&302_bullet%1",
+    "roleEffect": "0",
+    "group": "1"
+  },
+  {
+    "id": "302003",
+    "skillId": "302",
+    "skillEffect": "0",
+    "prefixKey": "&302_dmg%3|&302_range%1",
+    "roleEffect": "0",
+    "group": "2"
+  },
+  {
+    "id": "302004",
+    "skillId": "302",
+    "skillEffect": "0",
+    "prefixKey": "&302_dmg%4|&302_bleedProb%1",
+    "roleEffect": "0",
+    "group": "3"
+  },
+  {
+    "id": "302005",
+    "skillId": "302",
+    "skillEffect": "0",
+    "prefixKey": "&302_dmg%5|&302_bullet%2",
+    "roleEffect": "0",
+    "group": "4"
+  },
+  {
+    "id": "302006",
+    "skillId": "302",
+    "skillEffect": "0",
+    "prefixKey": "&302_penetrateSwitch%1|&302_dmg%6",
+    "roleEffect": "0",
+    "group": "5"
+  },
+  {
+    "id": "302007",
+    "skillId": "302",
+    "skillEffect": "302007",
+    "prefixKey": "&302_dmg%7",
+    "roleEffect": "0",
+    "group": "5"
+  },
+  {
+    "id": "303001",
+    "skillId": "303",
+    "skillEffect": "0",
+    "prefixKey": "&303_dmg%1",
+    "roleEffect": "0",
+    "group": "0"
+  },
+  {
+    "id": "303002",
+    "skillId": "303",
+    "skillEffect": "0",
+    "prefixKey": "&303_dmg%2|&303_fieldRange%1",
+    "roleEffect": "0",
+    "group": "1"
+  },
+  {
+    "id": "303003",
+    "skillId": "303",
+    "skillEffect": "0",
+    "prefixKey": "&303_dmg%3|&303_fieldBonusDmg%1",
+    "roleEffect": "0",
+    "group": "2"
+  },
+  {
+    "id": "303004",
+    "skillId": "303",
+    "skillEffect": "0",
+    "prefixKey": "&303_dmg%4|&303_fieldTime%1",
+    "roleEffect": "0",
+    "group": "3"
+  },
+  {
+    "id": "303005",
+    "skillId": "303",
+    "skillEffect": "0",
+    "prefixKey": "&303_dmg%5|&303_cd%1",
+    "roleEffect": "0",
+    "group": "4"
+  },
+  {
+    "id": "303006",
+    "skillId": "303",
+    "skillEffect": "303006",
+    "prefixKey": "0",
+    "roleEffect": "0",
+    "group": "5"
+  },
+  {
+    "id": "303007",
+    "skillId": "303",
+    "skillEffect": "303007",
+    "prefixKey": "&303_fieldRange%2",
+    "roleEffect": "0",
+    "group": "5"
+  },
+  {
+    "id": "304001",
+    "skillId": "304",
+    "skillEffect": "0",
+    "prefixKey": "&304_dmg%1",
+    "roleEffect": "0",
+    "group": "0"
+  },
+  {
+    "id": "304002",
+    "skillId": "304",
+    "skillEffect": "0",
+    "prefixKey": "&304_dmg%2|&304_bleedProb%1",
+    "roleEffect": "0",
+    "group": "1"
+  },
+  {
+    "id": "304003",
+    "skillId": "304",
+    "skillEffect": "0",
+    "prefixKey": "&304_dmg%3|&304_cd%1",
+    "roleEffect": "0",
+    "group": "2"
+  },
+  {
+    "id": "304004",
+    "skillId": "304",
+    "skillEffect": "0",
+    "prefixKey": "&304_dmg%4|&304_range%1",
+    "roleEffect": "0",
+    "group": "3"
+  },
+  {
+    "id": "304005",
+    "skillId": "304",
+    "skillEffect": "0",
+    "prefixKey": "&304_dmg%5|&304_time%1",
+    "roleEffect": "0",
+    "group": "4"
+  },
+  {
+    "id": "304006",
+    "skillId": "304",
+    "skillEffect": "0",
+    "prefixKey": "&304_penetrateSwitch%1|&304_dmg%6",
+    "roleEffect": "0",
+    "group": "5"
+  },
+  {
+    "id": "304007",
+    "skillId": "304",
+    "skillEffect": "0",
+    "prefixKey": "&304_num%1|&304_dmg%7",
+    "roleEffect": "0",
+    "group": "5"
+  },
+  {
+    "id": "401001",
+    "skillId": "401",
+    "skillEffect": "0",
+    "prefixKey": "&401_dmg%1",
+    "roleEffect": "0",
+    "group": "0"
+  },
+  {
+    "id": "401002",
+    "skillId": "401",
+    "skillEffect": "0",
+    "prefixKey": "&401_dmg%2|&401_shield%1",
+    "roleEffect": "0",
+    "group": "1"
+  },
+  {
+    "id": "401003",
+    "skillId": "401",
+    "skillEffect": "0",
+    "prefixKey": "&401_dmg%3|&401_cd%1",
+    "roleEffect": "0",
+    "group": "2"
+  },
+  {
+    "id": "401004",
+    "skillId": "401",
+    "skillEffect": "0",
+    "prefixKey": "&401_dmg%4|&401_bullet%1",
+    "roleEffect": "0",
+    "group": "3"
+  },
+  {
+    "id": "401005",
+    "skillId": "401",
+    "skillEffect": "0",
+    "prefixKey": "&401_dmg%5|&401_shieldProb%1",
+    "roleEffect": "0",
+    "group": "4"
+  },
+  {
+    "id": "401006",
+    "skillId": "401",
+    "skillEffect": "401006",
+    "prefixKey": "0",
+    "roleEffect": "0",
+    "group": "5"
+  },
+  {
+    "id": "401007",
+    "skillId": "401",
+    "skillEffect": "401007",
+    "prefixKey": "0",
+    "roleEffect": "0",
+    "group": "5"
+  },
+  {
+    "id": "402001",
+    "skillId": "402",
+    "skillEffect": "0",
+    "prefixKey": "&402_dmg%1",
+    "roleEffect": "0",
+    "group": "0"
+  },
+  {
+    "id": "402002",
+    "skillId": "402",
+    "skillEffect": "0",
+    "prefixKey": "&402_dmg%2|&402_shield%1",
+    "roleEffect": "0",
+    "group": "1"
+  },
+  {
+    "id": "402003",
+    "skillId": "402",
+    "skillEffect": "0",
+    "prefixKey": "&402_dmg%3|&402_cd%1",
+    "roleEffect": "0",
+    "group": "2"
+  },
+  {
+    "id": "402004",
+    "skillId": "402",
+    "skillEffect": "0",
+    "prefixKey": "&402_dmg%4|&402_range%1",
+    "roleEffect": "0",
+    "group": "3"
+  },
+  {
+    "id": "402005",
+    "skillId": "402",
+    "skillEffect": "402005",
+    "prefixKey": "0",
+    "roleEffect": "0",
+    "group": "4"
+  },
+  {
+    "id": "402006",
+    "skillId": "402",
+    "skillEffect": "402006",
+    "prefixKey": "0",
+    "roleEffect": "0",
+    "group": "5"
+  },
+  {
+    "id": "402007",
+    "skillId": "402",
+    "skillEffect": "402007",
+    "prefixKey": "0",
+    "roleEffect": "0",
+    "group": "5"
+  },
+  {
+    "id": "403001",
+    "skillId": "403",
+    "skillEffect": "0",
+    "prefixKey": "&403_dmg%1",
+    "roleEffect": "0",
+    "group": "0"
+  },
+  {
+    "id": "403002",
+    "skillId": "403",
+    "skillEffect": "0",
+    "prefixKey": "&403_dmg%2|&403_cd%1",
+    "roleEffect": "0",
+    "group": "1"
+  },
+  {
+    "id": "403003",
+    "skillId": "403",
+    "skillEffect": "0",
+    "prefixKey": "&403_dmg%3|&403_block%1",
+    "roleEffect": "0",
+    "group": "2"
+  },
+  {
+    "id": "403004",
+    "skillId": "403",
+    "skillEffect": "0",
+    "prefixKey": "&403_dmg%4|&403_shieldTime%1",
+    "roleEffect": "0",
+    "group": "3"
+  },
+  {
+    "id": "403005",
+    "skillId": "403",
+    "skillEffect": "403005",
+    "prefixKey": "&403_dmg%5",
+    "roleEffect": "0",
+    "group": "4"
+  },
+  {
+    "id": "403006",
+    "skillId": "403",
+    "skillEffect": "403006",
+    "prefixKey": "0",
+    "roleEffect": "0",
+    "group": "5"
+  },
+  {
+    "id": "403007",
+    "skillId": "403",
+    "skillEffect": "0",
+    "prefixKey": "&403_shockSwitch%1",
+    "roleEffect": "0",
+    "group": "5"
+  },
+  {
+    "id": "501001",
+    "skillId": "501",
+    "skillEffect": "0",
+    "prefixKey": "&501_dmg%1",
+    "roleEffect": "0",
+    "group": "0"
+  },
+  {
+    "id": "501002",
+    "skillId": "501",
+    "skillEffect": "0",
+    "prefixKey": "&501_dmg%2|&501_range%1",
+    "roleEffect": "0",
+    "group": "1"
+  },
+  {
+    "id": "501003",
+    "skillId": "501",
+    "skillEffect": "0",
+    "prefixKey": "&501_dmg%3|&501_cd%2",
+    "roleEffect": "0",
+    "group": "2"
+  },
+  {
+    "id": "501004",
+    "skillId": "501",
+    "skillEffect": "0",
+    "prefixKey": "&501_dmg%4|&501_cd%1",
+    "roleEffect": "0",
+    "group": "3"
+  },
+  {
+    "id": "501005",
+    "skillId": "501",
+    "skillEffect": "0",
+    "prefixKey": "&501_dmg%5|&501_windRealDmg%1",
+    "roleEffect": "0",
+    "group": "4"
+  },
+  {
+    "id": "501006",
+    "skillId": "501",
+    "skillEffect": "0",
+    "prefixKey": "&501_wind2Switch%1",
+    "roleEffect": "0",
+    "group": "5"
+  },
+  {
+    "id": "501007",
+    "skillId": "501",
+    "skillEffect": "0",
+    "prefixKey": "&501_wind3Switch%1|&501_windProb%2|&501_penetrateSwitch%1",
+    "roleEffect": "0",
+    "group": "5"
+  },
+  {
+    "id": "502001",
+    "skillId": "502",
+    "skillEffect": "0",
+    "prefixKey": "&502_dmg%1",
+    "roleEffect": "0",
+    "group": "0"
+  },
+  {
+    "id": "502002",
+    "skillId": "502",
+    "skillEffect": "0",
+    "prefixKey": "&502_dmg%2|&502_waveNum%1",
+    "roleEffect": "0",
+    "group": "1"
+  },
+  {
+    "id": "502003",
+    "skillId": "502",
+    "skillEffect": "0",
+    "prefixKey": "&502_dmg%3|&502_chargeCoefficient%1|&502_addBulletCoefficient%1",
+    "roleEffect": "0",
+    "group": "2"
+  },
+  {
+    "id": "502004",
+    "skillId": "502",
+    "skillEffect": "0",
+    "prefixKey": "&502_dmg%4|&502_range%1",
+    "roleEffect": "0",
+    "group": "3"
+  },
+  {
+    "id": "502005",
+    "skillId": "502",
+    "skillEffect": "0",
+    "prefixKey": "&502_dmg%5|&502_speedUpTime%1",
+    "roleEffect": "0",
+    "group": "4"
+  },
+  {
+    "id": "502006",
+    "skillId": "502",
+    "skillEffect": "0",
+    "prefixKey": "&502_injurySwitch%1",
+    "roleEffect": "0",
+    "group": "5"
+  },
+  {
+    "id": "502007",
+    "skillId": "502",
+    "skillEffect": "502007",
+    "prefixKey": "0",
+    "roleEffect": "0",
+    "group": "5"
+  },
+  {
+    "id": "503001",
+    "skillId": "503",
+    "skillEffect": "0",
+    "prefixKey": "&503_dmg%1",
+    "roleEffect": "0",
+    "group": "0"
+  },
+  {
+    "id": "503002",
+    "skillId": "503",
+    "skillEffect": "0",
+    "prefixKey": "&503_dmg%2|&503_bulletNum%1",
+    "roleEffect": "0",
+    "group": "1"
+  },
+  {
+    "id": "503003",
+    "skillId": "503",
+    "skillEffect": "0",
+    "prefixKey": "&503_dmg%3|&503_cd%1",
+    "roleEffect": "0",
+    "group": "2"
+  },
+  {
+    "id": "503004",
+    "skillId": "503",
+    "skillEffect": "0",
+    "prefixKey": "&503_dmg%4|&503_chargeCoefficient%1|&503_strengthenCD%1",
+    "roleEffect": "0",
+    "group": "3"
+  },
+  {
+    "id": "503005",
+    "skillId": "503",
+    "skillEffect": "0",
+    "prefixKey": "&503_dmg%5|&503_dmgRangeCoefficient%1",
+    "roleEffect": "0",
+    "group": "4"
+  },
+  {
+    "id": "503006",
+    "skillId": "503",
+    "skillEffect": "0",
+    "prefixKey": "&503_windSwitch%1|&501_windSize1%1",
+    "roleEffect": "0",
+    "group": "5"
+  },
+  {
+    "id": "503007",
+    "skillId": "503",
+    "skillEffect": "0",
+    "prefixKey": "&503_injurySwitch%1",
+    "roleEffect": "0",
+    "group": "5"
+  },
+  {
+    "id": "601001",
+    "skillId": "601",
+    "skillEffect": "0",
+    "prefixKey": "&601_dmg%1",
+    "roleEffect": "0",
+    "group": "0"
+  },
+  {
+    "id": "601002",
+    "skillId": "601",
+    "skillEffect": "0",
+    "prefixKey": "&601_dmg%2|&601_num%1",
+    "roleEffect": "0",
+    "group": "1"
+  },
+  {
+    "id": "601003",
+    "skillId": "601",
+    "skillEffect": "0",
+    "prefixKey": "&601_dmg%3|&601_cd%1",
+    "roleEffect": "0",
+    "group": "2"
+  },
+  {
+    "id": "601004",
+    "skillId": "601",
+    "skillEffect": "0",
+    "prefixKey": "&601_dmg%4|&601_sealBlastDmg%1",
+    "roleEffect": "0",
+    "group": "3"
+  },
+  {
+    "id": "601005",
+    "skillId": "601",
+    "skillEffect": "0",
+    "prefixKey": "&601_dmg%5|&601_sealBlastField%1",
+    "roleEffect": "0",
+    "group": "4"
+  },
+  {
+    "id": "601006",
+    "skillId": "601",
+    "skillEffect": "0",
+    "prefixKey": "&601_blastLagSwitch%1",
+    "roleEffect": "0",
+    "group": "5"
+  },
+  {
+    "id": "601007",
+    "skillId": "601",
+    "skillEffect": "601007",
+    "prefixKey": "0",
+    "roleEffect": "0",
+    "group": "5"
+  },
+  {
+    "id": "602001",
+    "skillId": "602",
+    "skillEffect": "0",
+    "prefixKey": "&602_dmg%1",
+    "roleEffect": "0",
+    "group": "0"
+  },
+  {
+    "id": "602002",
+    "skillId": "602",
+    "skillEffect": "0",
+    "prefixKey": "&602_dmg%2|&602_cd%1",
+    "roleEffect": "0",
+    "group": "1"
+  },
+  {
+    "id": "602003",
+    "skillId": "602",
+    "skillEffect": "0",
+    "prefixKey": "&602_dmg%3|&602_num%1",
+    "roleEffect": "0",
+    "group": "2"
+  },
+  {
+    "id": "602004",
+    "skillId": "602",
+    "skillEffect": "602004",
+    "prefixKey": "&602_dmg%4|&602_blastLag%1",
+    "roleEffect": "0",
+    "group": "3"
+  },
+  {
+    "id": "602005",
+    "skillId": "602",
+    "skillEffect": "0",
+    "prefixKey": "&602_dmg%5|&602_ballField%1",
+    "roleEffect": "0",
+    "group": "4"
+  },
+  {
+    "id": "602006",
+    "skillId": "602",
+    "skillEffect": "602006",
+    "prefixKey": "0",
+    "roleEffect": "0",
+    "group": "5"
+  },
+  {
+    "id": "602007",
+    "skillId": "602",
+    "skillEffect": "0",
+    "prefixKey": "&602_array%1",
+    "roleEffect": "0",
+    "group": "5"
+  },
+  {
+    "id": "603001",
+    "skillId": "603",
+    "skillEffect": "0",
+    "prefixKey": "&603_dmg%1",
+    "roleEffect": "0",
+    "group": "0"
+  },
+  {
+    "id": "603002",
+    "skillId": "603",
+    "skillEffect": "0",
+    "prefixKey": "&603_dmg%2|&603_cd%1",
+    "roleEffect": "0",
+    "group": "1"
+  },
+  {
+    "id": "603003",
+    "skillId": "603",
+    "skillEffect": "0",
+    "prefixKey": "&603_dmg%3|&603_range%1",
+    "roleEffect": "0",
+    "group": "2"
+  },
+  {
+    "id": "603004",
+    "skillId": "603",
+    "skillEffect": "0",
+    "prefixKey": "&603_dmg%4|&603_time%1",
+    "roleEffect": "0",
+    "group": "3"
+  },
+  {
+    "id": "603005",
+    "skillId": "603",
+    "skillEffect": "0",
+    "prefixKey": "&603_dmg%5|&603_dmgUpRate%1",
+    "roleEffect": "0",
+    "group": "4"
+  },
+  {
+    "id": "603006",
+    "skillId": "603",
+    "skillEffect": "0",
+    "prefixKey": "&603_blastSwitch%1",
+    "roleEffect": "0",
+    "group": "5"
+  },
+  {
+    "id": "603007",
+    "skillId": "603",
+    "skillEffect": "603007",
+    "prefixKey": "0",
+    "roleEffect": "0",
+    "group": "5"
+  },
+  {
+    "id": "1101001",
+    "skillId": "1101",
+    "skillEffect": "0",
+    "prefixKey": "&1101_dmg%1",
+    "roleEffect": "0",
+    "group": "0"
+  },
+  {
+    "id": "1101002",
+    "skillId": "1101",
+    "skillEffect": "0",
+    "prefixKey": "&1101_dmg%2|&1101_num%1",
+    "roleEffect": "0",
+    "group": "1"
+  },
+  {
+    "id": "1101003",
+    "skillId": "1101",
+    "skillEffect": "0",
+    "prefixKey": "&1101_dmg%3|&1101_cd%1",
+    "roleEffect": "0",
+    "group": "2"
+  },
+  {
+    "id": "1101004",
+    "skillId": "1101",
+    "skillEffect": "0",
+    "prefixKey": "&1101_dmg%3|&1101_fireProb%1",
+    "roleEffect": "0",
+    "group": "3"
+  },
+  {
+    "id": "1101005",
+    "skillId": "1101",
+    "skillEffect": "1101005",
+    "prefixKey": "0",
+    "roleEffect": "0",
+    "group": "4"
+  },
+  {
+    "id": "1101006",
+    "skillId": "1101",
+    "skillEffect": "1101006",
+    "prefixKey": "0",
+    "roleEffect": "0",
+    "group": "5"
+  },
+  {
+    "id": "1101007",
+    "skillId": "1101",
+    "skillEffect": "1101007",
+    "prefixKey": "0",
+    "roleEffect": "0",
+    "group": "5"
+  },
+  {
+    "id": "1102001",
+    "skillId": "1102",
+    "skillEffect": "0",
+    "prefixKey": "&1102_dmg%1",
+    "roleEffect": "0",
+    "group": "0"
+  },
+  {
+    "id": "1102002",
+    "skillId": "1102",
+    "skillEffect": "0",
+    "prefixKey": "&1102_dmg%2|&1102_haloRange%1",
+    "roleEffect": "0",
+    "group": "1"
+  },
+  {
+    "id": "1102003",
+    "skillId": "1102",
+    "skillEffect": "0",
+    "prefixKey": "&1102_dmg%3|&1102_time%1",
+    "roleEffect": "0",
+    "group": "2"
+  },
+  {
+    "id": "1102004",
+    "skillId": "1102",
+    "skillEffect": "0",
+    "prefixKey": "&1102_dmg%4|&1102_cd%1",
+    "roleEffect": "0",
+    "group": "3"
+  },
+  {
+    "id": "1102005",
+    "skillId": "1102",
+    "skillEffect": "1102005",
+    "prefixKey": "0",
+    "roleEffect": "0",
+    "group": "4"
+  },
+  {
+    "id": "1102006",
+    "skillId": "1102",
+    "skillEffect": "1102006",
+    "prefixKey": "0",
+    "roleEffect": "0",
+    "group": "5"
+  },
+  {
+    "id": "1102007",
+    "skillId": "1102",
+    "skillEffect": "0",
+    "prefixKey": "&1102_launchTime%1",
+    "roleEffect": "0",
+    "group": "5"
+  },
+  {
+    "id": "1103001",
+    "skillId": "1103",
+    "skillEffect": "0",
+    "prefixKey": "&1103_dmg%1",
+    "roleEffect": "0",
+    "group": "0"
+  },
+  {
+    "id": "1103002",
+    "skillId": "1103",
+    "skillEffect": "0",
+    "prefixKey": "&1103_dmg%2|&1103_sumGuard%1",
+    "roleEffect": "0",
+    "group": "1"
+  },
+  {
+    "id": "1103003",
+    "skillId": "1103",
+    "skillEffect": "0",
+    "prefixKey": "&1103_dmg%3|&1103_cd%1",
+    "roleEffect": "0",
+    "group": "2"
+  },
+  {
+    "id": "1103004",
+    "skillId": "1103",
+    "skillEffect": "0",
+    "prefixKey": "&1103_dmg%4|&1103_time%1",
+    "roleEffect": "0",
+    "group": "3"
+  },
+  {
+    "id": "1103005",
+    "skillId": "1103",
+    "skillEffect": "0",
+    "prefixKey": "&1103_roadSum%1",
+    "roleEffect": "0",
+    "group": "4"
+  },
+  {
+    "id": "1103006",
+    "skillId": "1103",
+    "skillEffect": "1103006",
+    "prefixKey": "0",
+    "roleEffect": "0",
+    "group": "5"
+  },
+  {
+    "id": "1103007",
+    "skillId": "1103",
+    "skillEffect": "1103007",
+    "prefixKey": "0",
+    "roleEffect": "0",
+    "group": "5"
+  },
+  {
+    "id": "1201001",
+    "skillId": "1201",
+    "skillEffect": "0",
+    "prefixKey": "&12011_dmg%1",
+    "roleEffect": "0",
+    "group": "0"
+  },
+  {
+    "id": "1201002",
+    "skillId": "1201",
+    "skillEffect": "0",
+    "prefixKey": "&12011_dmg%2|&1201_waterRange%1",
+    "roleEffect": "0",
+    "group": "1"
+  },
+  {
+    "id": "1201003",
+    "skillId": "1201",
+    "skillEffect": "0",
+    "prefixKey": "&12011_dmg%3|&1201_waterTime%1",
+    "roleEffect": "0",
+    "group": "2"
+  },
+  {
+    "id": "1201004",
+    "skillId": "1201",
+    "skillEffect": "0",
+    "prefixKey": "&12011_dmg%4|&1201_waterProb%1",
+    "roleEffect": "0",
+    "group": "3"
+  },
+  {
+    "id": "1201005",
+    "skillId": "1201",
+    "skillEffect": "1201005",
+    "prefixKey": "0",
+    "roleEffect": "0",
+    "group": "4"
+  },
+  {
+    "id": "1201006",
+    "skillId": "1201",
+    "skillEffect": "0",
+    "prefixKey": "&12011_dmg%5|&12011_num%1",
+    "roleEffect": "0",
+    "group": "5"
+  },
+  {
+    "id": "1201007",
+    "skillId": "1201",
+    "skillEffect": "0",
+    "prefixKey": "&12017_sevenPro%1",
+    "roleEffect": "0",
+    "group": "5"
+  },
+  {
+    "id": "1202001",
+    "skillId": "1202",
+    "skillEffect": "0",
+    "prefixKey": "&1202_dmg%1",
+    "roleEffect": "0",
+    "group": "0"
+  },
+  {
+    "id": "1202002",
+    "skillId": "1202",
+    "skillEffect": "0",
+    "prefixKey": "&1202_dmg%2|&1202_waterProb%1",
+    "roleEffect": "0",
+    "group": "1"
+  },
+  {
+    "id": "1202003",
+    "skillId": "1202",
+    "skillEffect": "0",
+    "prefixKey": "&1202_dmg%3|&1202_onTime%1",
+    "roleEffect": "0",
+    "group": "2"
+  },
+  {
+    "id": "1202004",
+    "skillId": "1202",
+    "skillEffect": "0",
+    "prefixKey": "&1202_dmg%4|&1202_iceRange%1",
+    "roleEffect": "0",
+    "group": "3"
+  },
+  {
+    "id": "1202005",
+    "skillId": "1202",
+    "skillEffect": "1202005",
+    "prefixKey": "0",
+    "roleEffect": "0",
+    "group": "4"
+  },
+  {
+    "id": "1202006",
+    "skillId": "1202",
+    "skillEffect": "1202006|12020066",
+    "prefixKey": "0",
+    "roleEffect": "0",
+    "group": "5"
+  },
+  {
+    "id": "1202007",
+    "skillId": "1202",
+    "skillEffect": "0",
+    "prefixKey": "&1202_sevenProb%1|&1202_sevenTwoProb%1",
+    "roleEffect": "0",
+    "group": "5"
+  },
+  {
+    "id": "1203001",
+    "skillId": "1203",
+    "skillEffect": "0",
+    "prefixKey": "&1203_dmg%1",
+    "roleEffect": "0",
+    "group": "0"
+  },
+  {
+    "id": "1203002",
+    "skillId": "1203",
+    "skillEffect": "0",
+    "prefixKey": "&1203_dmg%2|&1203_range%1",
+    "roleEffect": "0",
+    "group": "1"
+  },
+  {
+    "id": "1203003",
+    "skillId": "1203",
+    "skillEffect": "0",
+    "prefixKey": "&1203_dmg%3|&1203_startRange%1",
+    "roleEffect": "0",
+    "group": "2"
+  },
+  {
+    "id": "1203004",
+    "skillId": "1203",
+    "skillEffect": "0",
+    "prefixKey": "&1203_dmg%4|&1203_cd%1",
+    "roleEffect": "0",
+    "group": "3"
+  },
+  {
+    "id": "1203005",
+    "skillId": "1203",
+    "skillEffect": "0",
+    "prefixKey": "&1203_dmg%5|&1203_hpSum%1",
+    "roleEffect": "0",
+    "group": "4"
+  },
+  {
+    "id": "1203006",
+    "skillId": "1203",
+    "skillEffect": "1203006|12030062",
+    "prefixKey": "0",
+    "roleEffect": "0",
+    "group": "5"
+  },
+  {
+    "id": "1203007",
+    "skillId": "1203",
+    "skillEffect": "1203007",
+    "prefixKey": "0",
+    "roleEffect": "0",
+    "group": "5"
+  },
+  {
+    "id": "1301001",
+    "skillId": "1301",
+    "skillEffect": "0",
+    "prefixKey": "&1301_dmg%1",
+    "roleEffect": "0",
+    "group": "0"
+  },
+  {
+    "id": "1301002",
+    "skillId": "1301",
+    "skillEffect": "0",
+    "prefixKey": "&1301_dmg%2|&1301_catapultNum%1",
+    "roleEffect": "0",
+    "group": "1"
+  },
+  {
+    "id": "1301003",
+    "skillId": "1301",
+    "skillEffect": "0",
+    "prefixKey": "&1301_dmg%3|&1301_range%1",
+    "roleEffect": "0",
+    "group": "2"
+  },
+  {
+    "id": "1301004",
+    "skillId": "1301",
+    "skillEffect": "0",
+    "prefixKey": "&1301_dmg%4|&1301_cd%1",
+    "roleEffect": "0",
+    "group": "3"
+  },
+  {
+    "id": "1301005",
+    "skillId": "1301",
+    "skillEffect": "1301005",
+    "prefixKey": "0",
+    "roleEffect": "0",
+    "group": "4"
+  },
+  {
+    "id": "1301006",
+    "skillId": "1301",
+    "skillEffect": "1301006",
+    "prefixKey": "0",
+    "roleEffect": "0",
+    "group": "5"
+  },
+  {
+    "id": "1301007",
+    "skillId": "1301",
+    "skillEffect": "1301007",
+    "prefixKey": "0",
+    "roleEffect": "0",
+    "group": "5"
+  },
+  {
+    "id": "1302001",
+    "skillId": "1302",
+    "skillEffect": "0",
+    "prefixKey": "&1302_dmg%1",
+    "roleEffect": "0",
+    "group": "0"
+  },
+  {
+    "id": "1302002",
+    "skillId": "1302",
+    "skillEffect": "0",
+    "prefixKey": "&1302_dmg%2|&1302_cd%1",
+    "roleEffect": "0",
+    "group": "1"
+  },
+  {
+    "id": "1302003",
+    "skillId": "1302",
+    "skillEffect": "0",
+    "prefixKey": "&1302_dmg%3|&1302_haloRange%1",
+    "roleEffect": "0",
+    "group": "2"
+  },
+  {
+    "id": "1302004",
+    "skillId": "1302",
+    "skillEffect": "0",
+    "prefixKey": "&1302_dmg%4|&1302_lightningTime%1",
+    "roleEffect": "0",
+    "group": "3"
+  },
+  {
+    "id": "1302005",
+    "skillId": "1302",
+    "skillEffect": "1302005",
+    "prefixKey": "0",
+    "roleEffect": "0",
+    "group": "4"
+  },
+  {
+    "id": "1302006",
+    "skillId": "1302",
+    "skillEffect": "1302006",
+    "prefixKey": "0",
+    "roleEffect": "0",
+    "group": "5"
+  },
+  {
+    "id": "1302007",
+    "skillId": "1302",
+    "skillEffect": "1302007",
+    "prefixKey": "0",
+    "roleEffect": "0",
+    "group": "5"
+  },
+  {
+    "id": "1303001",
+    "skillId": "1303",
+    "skillEffect": "0",
+    "prefixKey": "&1303_dmg%1",
+    "roleEffect": "0",
+    "group": "0"
+  },
+  {
+    "id": "1303002",
+    "skillId": "1303",
+    "skillEffect": "0",
+    "prefixKey": "&1303_dmg%2|&1303_num%1",
+    "roleEffect": "0",
+    "group": "1"
+  },
+  {
+    "id": "1303003",
+    "skillId": "1303",
+    "skillEffect": "0",
+    "prefixKey": "&1303_dmg%3|&1303_lightningRange%1",
+    "roleEffect": "0",
+    "group": "2"
+  },
+  {
+    "id": "1303004",
+    "skillId": "1303",
+    "skillEffect": "0",
+    "prefixKey": "&1303_dmg%4|&1303_cd%1",
+    "roleEffect": "0",
+    "group": "3"
+  },
+  {
+    "id": "1303005",
+    "skillId": "1303",
+    "skillEffect": "0",
+    "prefixKey": "&1303_ballSpeed%1|&1303_catapultNum%1",
+    "roleEffect": "0",
+    "group": "4"
+  },
+  {
+    "id": "1303006",
+    "skillId": "1303",
+    "skillEffect": "1303006",
+    "prefixKey": "0",
+    "roleEffect": "0",
+    "group": "5"
+  },
+  {
+    "id": "1303007",
+    "skillId": "1303",
+    "skillEffect": "0",
+    "prefixKey": "&1303_sevenProb%1",
+    "roleEffect": "0",
+    "group": "5"
+  },
+  {
+    "id": "1304001",
+    "skillId": "1304",
+    "skillEffect": "0",
+    "prefixKey": "0",
+    "roleEffect": "0",
+    "group": "0"
+  },
+  {
+    "id": "1304002",
+    "skillId": "1304",
+    "skillEffect": "0",
+    "prefixKey": "0",
+    "roleEffect": "0",
+    "group": "0"
+  },
+  {
+    "id": "1304003",
+    "skillId": "1304",
+    "skillEffect": "0",
+    "prefixKey": "0",
+    "roleEffect": "0",
+    "group": "0"
+  },
+  {
+    "id": "1304004",
+    "skillId": "1304",
+    "skillEffect": "0",
+    "prefixKey": "0",
+    "roleEffect": "0",
+    "group": "0"
+  },
+  {
+    "id": "1304005",
+    "skillId": "1304",
+    "skillEffect": "0",
+    "prefixKey": "0",
+    "roleEffect": "0",
+    "group": "0"
+  },
+  {
+    "id": "1304006",
+    "skillId": "1304",
+    "skillEffect": "0",
+    "prefixKey": "0",
+    "roleEffect": "0",
+    "group": "0"
+  },
+  {
+    "id": "1304007",
+    "skillId": "1304",
+    "skillEffect": "0",
+    "prefixKey": "0",
+    "roleEffect": "0",
+    "group": "0"
+  },
+  {
+    "id": "1401001",
+    "skillId": "1401",
+    "skillEffect": "0",
+    "prefixKey": "&1401_dmg%1",
+    "roleEffect": "0",
+    "group": "0"
+  },
+  {
+    "id": "1401002",
+    "skillId": "1401",
+    "skillEffect": "0",
+    "prefixKey": "&1401_dmg%2|&1401_haloRange%1",
+    "roleEffect": "0",
+    "group": "1"
+  },
+  {
+    "id": "1401003",
+    "skillId": "1401",
+    "skillEffect": "0",
+    "prefixKey": "&1401_dmg%3|&1401_beatbackProb%1",
+    "roleEffect": "0",
+    "group": "2"
+  },
+  {
+    "id": "1401004",
+    "skillId": "1401",
+    "skillEffect": "0",
+    "prefixKey": "&1401_dmg%4|&1401_beatbackRange%1",
+    "roleEffect": "0",
+    "group": "3"
+  },
+  {
+    "id": "1401005",
+    "skillId": "1401",
+    "skillEffect": "1401005",
+    "prefixKey": "0",
+    "roleEffect": "0",
+    "group": "4"
+  },
+  {
+    "id": "1401006",
+    "skillId": "1401",
+    "skillEffect": "1401006",
+    "prefixKey": "0",
+    "roleEffect": "0",
+    "group": "5"
+  },
+  {
+    "id": "1401007",
+    "skillId": "1401",
+    "skillEffect": "1401007",
+    "prefixKey": "0",
+    "roleEffect": "0",
+    "group": "5"
+  },
+  {
+    "id": "1402001",
+    "skillId": "1402",
+    "skillEffect": "0",
+    "prefixKey": "&1402_dmg%1",
+    "roleEffect": "0",
+    "group": "0"
+  },
+  {
+    "id": "1402002",
+    "skillId": "1402",
+    "skillEffect": "0",
+    "prefixKey": "&1402_dmg%2|&1402_cd%1",
+    "roleEffect": "0",
+    "group": "1"
+  },
+  {
+    "id": "1402003",
+    "skillId": "1402",
+    "skillEffect": "0",
+    "prefixKey": "&1402_dmg%3|&1402_hurtModel%1",
+    "roleEffect": "0",
+    "group": "2"
+  },
+  {
+    "id": "1402004",
+    "skillId": "1402",
+    "skillEffect": "0",
+    "prefixKey": "&1402_dmg%4|&1402_windTime%1",
+    "roleEffect": "0",
+    "group": "3"
+  },
+  {
+    "id": "1402005",
+    "skillId": "1402",
+    "skillEffect": "1402005",
+    "prefixKey": "0",
+    "roleEffect": "0",
+    "group": "4"
+  },
+  {
+    "id": "1402006",
+    "skillId": "1402",
+    "skillEffect": "14020061|14020062",
+    "prefixKey": "0",
+    "roleEffect": "0",
+    "group": "5"
+  },
+  {
+    "id": "1402007",
+    "skillId": "1402",
+    "skillEffect": "0",
+    "prefixKey": "&1402_goTime%1",
+    "roleEffect": "0",
+    "group": "5"
+  },
+  {
+    "id": "1403001",
+    "skillId": "1403",
+    "skillEffect": "0",
+    "prefixKey": "&1403_dmg%1",
+    "roleEffect": "0",
+    "group": "0"
+  },
+  {
+    "id": "1403002",
+    "skillId": "1403",
+    "skillEffect": "1403002",
+    "prefixKey": "&1403_dmg%2",
+    "roleEffect": "0",
+    "group": "1"
+  },
+  {
+    "id": "1403003",
+    "skillId": "1403",
+    "skillEffect": "0",
+    "prefixKey": "&1403_dmg%3|&1403_cd%1",
+    "roleEffect": "0",
+    "group": "2"
+  },
+  {
+    "id": "1403004",
+    "skillId": "1403",
+    "skillEffect": "0",
+    "prefixKey": "&1403_windForce%1",
+    "roleEffect": "0",
+    "group": "3"
+  },
+  {
+    "id": "1403005",
+    "skillId": "1403",
+    "skillEffect": "0",
+    "prefixKey": "&1403_windRun%1",
+    "roleEffect": "0",
+    "group": "4"
+  },
+  {
+    "id": "1403006",
+    "skillId": "1403",
+    "skillEffect": "1403006",
+    "prefixKey": "0",
+    "roleEffect": "0",
+    "group": "5"
+  },
+  {
+    "id": "1403007",
+    "skillId": "1403",
+    "skillEffect": "1403007",
+    "prefixKey": "&1403_windCd%1",
+    "roleEffect": "0",
+    "group": "5"
+  },
+  {
+    "id": "1501001",
+    "skillId": "1501",
+    "skillEffect": "0",
+    "prefixKey": "&1501_dmg%1",
+    "roleEffect": "0",
+    "group": "0"
+  },
+  {
+    "id": "1501002",
+    "skillId": "1501",
+    "skillEffect": "0",
+    "prefixKey": "&1501_dmg%2|&1501_shieldspeedProb%1",
+    "roleEffect": "0",
+    "group": "1"
+  },
+  {
+    "id": "1501003",
+    "skillId": "1501",
+    "skillEffect": "0",
+    "prefixKey": "&1501_dmg%3|&1501_cd%1",
+    "roleEffect": "0",
+    "group": "2"
+  },
+  {
+    "id": "1501004",
+    "skillId": "1501",
+    "skillEffect": "0",
+    "prefixKey": "&1501_dmg%4|&1501_haloRange%1",
+    "roleEffect": "0",
+    "group": "3"
+  },
+  {
+    "id": "1501005",
+    "skillId": "1501",
+    "skillEffect": "0",
+    "prefixKey": "&1501_dmg%5|&1501_shieldSum%1",
+    "roleEffect": "0",
+    "group": "4"
+  },
+  {
+    "id": "1501006",
+    "skillId": "1501",
+    "skillEffect": "1501006",
+    "prefixKey": "0",
+    "roleEffect": "0",
+    "group": "5"
+  },
+  {
+    "id": "1501007",
+    "skillId": "1501",
+    "skillEffect": "1501007",
+    "prefixKey": "0",
+    "roleEffect": "0",
+    "group": "5"
+  },
+  {
+    "id": "1502001",
+    "skillId": "1502",
+    "skillEffect": "0",
+    "prefixKey": "&1502_dmg%1",
+    "roleEffect": "0",
+    "group": "0"
+  },
+  {
+    "id": "1502002",
+    "skillId": "1502",
+    "skillEffect": "0",
+    "prefixKey": "&1502_dmg%2|&1502_haloRange%1|&1502_probOne%1",
+    "roleEffect": "0",
+    "group": "1"
+  },
+  {
+    "id": "1502003",
+    "skillId": "1502",
+    "skillEffect": "0",
+    "prefixKey": "&1502_dmg%3|&1502_stoneRange%1|&1502_probTwo%1",
+    "roleEffect": "0",
+    "group": "2"
+  },
+  {
+    "id": "1502004",
+    "skillId": "1502",
+    "skillEffect": "0",
+    "prefixKey": "&1502_dmg%4|&1502_cd%1|&1502_probThree%1",
+    "roleEffect": "0",
+    "group": "3"
+  },
+  {
+    "id": "1502005",
+    "skillId": "1502",
+    "skillEffect": "0",
+    "prefixKey": "&15021_lifeTime%1",
+    "roleEffect": "0",
+    "group": "4"
+  },
+  {
+    "id": "1502006",
+    "skillId": "1502",
+    "skillEffect": "1502006",
+    "prefixKey": "0",
+    "roleEffect": "0",
+    "group": "5"
+  },
+  {
+    "id": "1502007",
+    "skillId": "1502",
+    "skillEffect": "0",
+    "prefixKey": "&1502_num%1|&1502_stoneProb%1",
+    "roleEffect": "0",
+    "group": "5"
+  },
+  {
+    "id": "1503001",
+    "skillId": "1503",
+    "skillEffect": "0",
+    "prefixKey": "&1503_dmg%1",
+    "roleEffect": "0",
+    "group": "0"
+  },
+  {
+    "id": "1503002",
+    "skillId": "1503",
+    "skillEffect": "0",
+    "prefixKey": "&1503_dmg%2|&1503_stoneRange%1|&1503_probOne%1",
+    "roleEffect": "0",
+    "group": "1"
+  },
+  {
+    "id": "1503003",
+    "skillId": "1503",
+    "skillEffect": "0",
+    "prefixKey": "&1503_dmg%3|&1503_gunSpeed%1|&1503_probTwo%1",
+    "roleEffect": "0",
+    "group": "2"
+  },
+  {
+    "id": "1503004",
+    "skillId": "1503",
+    "skillEffect": "0",
+    "prefixKey": "&1503_dmg%4|&1503_cd%1|&1503_probThree%1",
+    "roleEffect": "0",
+    "group": "3"
+  },
+  {
+    "id": "1503005",
+    "skillId": "1503",
+    "skillEffect": "1503005",
+    "prefixKey": "0",
+    "roleEffect": "0",
+    "group": "4"
+  },
+  {
+    "id": "1503006",
+    "skillId": "1503",
+    "skillEffect": "0",
+    "prefixKey": "&1503_num%1|&1503_stoneProb%1",
+    "roleEffect": "0",
+    "group": "5"
+  },
+  {
+    "id": "1503007",
+    "skillId": "1503",
+    "skillEffect": "0",
+    "prefixKey": "&1503_spallProb%1|&1503_stoneProb%2",
+    "roleEffect": "0",
+    "group": "5"
+  },
+  {
+    "id": "1601001",
+    "skillId": "1601",
+    "skillEffect": "0",
+    "prefixKey": "&1601_dmg%1",
+    "roleEffect": "0",
+    "group": "0"
+  },
+  {
+    "id": "1601002",
+    "skillId": "1601",
+    "skillEffect": "0",
+    "prefixKey": "&1601_probOne%1|&1601_cd%1",
+    "roleEffect": "0",
+    "group": "1"
+  },
+  {
+    "id": "1601003",
+    "skillId": "1601",
+    "skillEffect": "0",
+    "prefixKey": "&1601_probTwo%1|&1601_attackRange%1",
+    "roleEffect": "0",
+    "group": "2"
+  },
+  {
+    "id": "1601004",
+    "skillId": "1601",
+    "skillEffect": "0",
+    "prefixKey": "&1601_probThree%1|&1601_attackSpeed%1",
+    "roleEffect": "0",
+    "group": "3"
+  },
+  {
+    "id": "1601005",
+    "skillId": "1601",
+    "skillEffect": "0",
+    "prefixKey": "&1601_fightingSum%1",
+    "roleEffect": "0",
+    "group": "4"
+  },
+  {
+    "id": "1601006",
+    "skillId": "1601",
+    "skillEffect": "1601006",
+    "prefixKey": "0",
+    "roleEffect": "0",
+    "group": "5"
+  },
+  {
+    "id": "1601007",
+    "skillId": "1601",
+    "skillEffect": "1601007",
+    "prefixKey": "0",
+    "roleEffect": "0",
+    "group": "5"
+  },
+  {
+    "id": "1602001",
+    "skillId": "1602",
+    "skillEffect": "0",
+    "prefixKey": "0",
+    "roleEffect": "0",
+    "group": "0"
+  },
+  {
+    "id": "1602002",
+    "skillId": "1602",
+    "skillEffect": "0",
+    "prefixKey": "0",
+    "roleEffect": "0",
+    "group": "0"
+  },
+  {
+    "id": "1602003",
+    "skillId": "1602",
+    "skillEffect": "0",
+    "prefixKey": "0",
+    "roleEffect": "0",
+    "group": "0"
+  },
+  {
+    "id": "1602004",
+    "skillId": "1602",
+    "skillEffect": "0",
+    "prefixKey": "0",
+    "roleEffect": "0",
+    "group": "0"
+  },
+  {
+    "id": "1602005",
+    "skillId": "1602",
+    "skillEffect": "0",
+    "prefixKey": "0",
+    "roleEffect": "0",
+    "group": "0"
+  },
+  {
+    "id": "1602006",
+    "skillId": "1602",
+    "skillEffect": "0",
+    "prefixKey": "0",
+    "roleEffect": "0",
+    "group": "0"
+  },
+  {
+    "id": "1602007",
+    "skillId": "1602",
+    "skillEffect": "0",
+    "prefixKey": "0",
+    "roleEffect": "0",
+    "group": "0"
+  },
+  {
+    "id": "1603001",
+    "skillId": "1603",
+    "skillEffect": "0",
+    "prefixKey": "&1603_dmg%1",
+    "roleEffect": "0",
+    "group": "0"
+  },
+  {
+    "id": "1603002",
+    "skillId": "1603",
+    "skillEffect": "0",
+    "prefixKey": "&1603_dmg%2|&1603_cd%1",
+    "roleEffect": "0",
+    "group": "1"
+  },
+  {
+    "id": "1603003",
+    "skillId": "1603",
+    "skillEffect": "0",
+    "prefixKey": "&1603_dmg%3|&1603_lifeTime%1",
+    "roleEffect": "0",
+    "group": "2"
+  },
+  {
+    "id": "1603004",
+    "skillId": "1603",
+    "skillEffect": "0",
+    "prefixKey": "&1603_dmg%4|&1603_haloRange%1",
+    "roleEffect": "0",
+    "group": "3"
+  },
+  {
+    "id": "1603005",
+    "skillId": "1603",
+    "skillEffect": "0",
+    "prefixKey": "&1603_dmg%5|&1603_telsonSum%1",
+    "roleEffect": "0",
+    "group": "4"
+  },
+  {
+    "id": "1603006",
+    "skillId": "1603",
+    "skillEffect": "1603006",
+    "prefixKey": "0",
+    "roleEffect": "0",
+    "group": "5"
+  },
+  {
+    "id": "1603007",
+    "skillId": "1603",
+    "skillEffect": "0",
+    "prefixKey": "&1603_moveSpeed%1|&1603_haloRange%2",
+    "roleEffect": "0",
+    "group": "5"
+  },
+  {
+    "id": "1604001",
+    "skillId": "1604",
+    "skillEffect": "0",
+    "prefixKey": "&1604_dmg%1",
+    "roleEffect": "0",
+    "group": "0"
+  },
+  {
+    "id": "1604002",
+    "skillId": "1604",
+    "skillEffect": "0",
+    "prefixKey": "&1604_probOne%1|&1604_twineRange%1",
+    "roleEffect": "0",
+    "group": "1"
+  },
+  {
+    "id": "1604003",
+    "skillId": "1604",
+    "skillEffect": "0",
+    "prefixKey": "&1604_probTwo%1|&1604_cd%1",
+    "roleEffect": "0",
+    "group": "2"
+  },
+  {
+    "id": "1604004",
+    "skillId": "1604",
+    "skillEffect": "0",
+    "prefixKey": "&1604_probThree%1|&16011_callRange%1",
+    "roleEffect": "0",
+    "group": "3"
+  },
+  {
+    "id": "1604005",
+    "skillId": "1604",
+    "skillEffect": "0",
+    "prefixKey": "&16011_waterProb%1",
+    "roleEffect": "0",
+    "group": "4"
+  },
+  {
+    "id": "1604006",
+    "skillId": "1604",
+    "skillEffect": "0",
+    "prefixKey": "&1604_twineTime%1",
+    "roleEffect": "0",
+    "group": "5"
+  },
+  {
+    "id": "1604007",
+    "skillId": "1604",
+    "skillEffect": "1604007",
+    "prefixKey": "0",
+    "roleEffect": "0",
+    "group": "5"
+  }
+]

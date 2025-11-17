@@ -1,0 +1,24 @@
+[
+  {
+    "id": "36005",
+    "bulletNum": "1",
+    "bulletDistance": "30",
+    "targetType": "0",
+    "targetOffsetPosi": "0",
+    "destroyType": "1",
+    "rangeMin": "100",
+    "warnEffect": "0",
+    "warnSize": "0"
+  },
+  {
+    "id": "36011",
+    "bulletNum": "1",
+    "bulletDistance": "0",
+    "targetType": "0",
+    "targetOffsetPosi": "100",
+    "destroyType": "1",
+    "rangeMin": "0",
+    "warnEffect": "yujingyuan",
+    "warnSize": "100"
+  }
+]
