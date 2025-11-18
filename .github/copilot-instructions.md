@@ -1,0 +1,2 @@
+- Khi tạo hoặc sửa file trong ModConf nên tham khảo file gốc trong SampleConfs để biết rõ các thuộc tính cần thiết và cấu trúc đúng của file. File trong ModConf có tên `*_<orginal_file_name>.json`.
+- Ưu tiên sử dụng các hàm tiện ích trong folder Helper của project 3385996759 và 3161035078.
