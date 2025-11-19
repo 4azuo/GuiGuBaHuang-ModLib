@@ -60,6 +60,7 @@
     <Compile Include="Mod\QiCulEvent.cs" />
     <Compile Include="Mod\RealMarketEvent3.cs" />
     <Compile Include="Mod\SliceLifeQuestEvent.cs" />
+    <Compile Include="Mod\ChallengeQuestEvent.cs" />
     <Compile Include="Mod\BankAccountEvent.cs" />
     <Compile Include="Mod\RebirthEvent.cs" />
     <Compile Include="Mod\SMLocalConfigsEvent.cs" />
