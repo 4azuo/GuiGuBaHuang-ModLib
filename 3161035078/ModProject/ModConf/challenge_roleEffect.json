@@ -1,0 +1,107 @@
+[
+	{
+		"__name": "Challenge-Lvl-1",
+		"id": "444442101",
+		"effectType": "1",
+		"value": "atk_0_1"
+	},
+	
+	
+	
+	
+	
+	{
+		"__name": "Challenge-Lvl-2",
+		"id": "444442102",
+		"effectType": "1",
+		"value": "atk_0_2"
+	},
+	
+	
+	
+	
+	
+	{
+		"__name": "Challenge-Lvl-3",
+		"id": "444442103",
+		"effectType": "1",
+		"value": "atk_0_4"
+	},
+	
+	
+	
+	
+	
+	{
+		"__name": "Challenge-Lvl-4",
+		"id": "444442104",
+		"effectType": "1",
+		"value": "atk_0_7"
+	},
+	
+	
+	
+	
+	
+	{
+		"__name": "Challenge-Lvl-5",
+		"id": "444442105",
+		"effectType": "1",
+		"value": "atk_0_11"
+	},
+	
+	
+	
+	
+	
+	{
+		"__name": "Challenge-Lvl-6",
+		"id": "444442106",
+		"effectType": "1",
+		"value": "atk_0_16"
+	},
+	
+	
+	
+	
+	
+	{
+		"__name": "Challenge-Lvl-7",
+		"id": "444442107",
+		"effectType": "1",
+		"value": "atk_0_22"
+	},
+	
+	
+	
+	
+	
+	{
+		"__name": "Challenge-Lvl-8",
+		"id": "444442108",
+		"effectType": "1",
+		"value": "atk_0_29"
+	},
+	
+	
+	
+	
+	
+	{
+		"__name": "Challenge-Lvl-9",
+		"id": "444442109",
+		"effectType": "1",
+		"value": "atk_0_37"
+	},
+	
+	
+	
+	
+	
+	{
+		"__name": "Challenge-Lvl-10",
+		"id": "444442110",
+		"effectType": "1",
+		"value": "atk_0_46"
+	}
+]

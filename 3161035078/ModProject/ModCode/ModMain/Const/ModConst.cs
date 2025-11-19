@@ -2,7 +2,7 @@
 {
     public static class ModConst
     {
-        public const string TAOIST_VERSION = "5.5.27";
+        public const string TAOIST_VERSION = "5.5.28";
         public const string MODLIB_REQUIRED_VERSION = "2.2.13";
 
         //Events
@@ -35,6 +35,7 @@
         public const string EXPERT_EVENT = "ExpertEvent";
         public const string SPIRITLOCK_EVENT = "SpiritlockEvent";
         public const string SLICE_LIFE_QUEST_EVENT = "SliceLifeQuestEvent";
+        public const string CHALLENGE_QUEST_EVENT = "ChallengeQuestEvent";
         public const string INFLATIONARY_EVENT = "InflationaryEvent";
         public const string BANK_ACCOUNT_EVENT = "BankAccountEvent";
         public const string REBIRTH_EVENT = "RebirthEvent";
