@@ -19,9 +19,11 @@ SCRIPT_DIR = Path(__file__).parent
 PROJECT_ROOT = SCRIPT_DIR.parent
 REBUILD_SCRIPT = SCRIPT_DIR / "rebuild-and-deploy.ps1"
 SETTINGS_FILE = SCRIPT_DIR / "settings.json"
+ERROR_LOG_FILE = SCRIPT_DIR / "auto-built-errors.log"
 WATCH_DIRS = [
     PROJECT_ROOT / "ModProject" / "ModCode",
     PROJECT_ROOT / "ModProject" / "ModConf",
+    PROJECT_ROOT / "ModProject" / "ModImg",
 ]
 
 # Load settings
@@ -30,19 +32,20 @@ def load_settings():
     try:
         with open(SETTINGS_FILE, 'r', encoding='utf-8') as f:
             settings = json.load(f)
-            return settings.get('autoBuildDebounceSeconds', 60)
+            auto_build_debounce = settings.get('autoBuildDebounceSeconds', 60)
+            rapid_change_debounce = settings.get('rapidChangeDebounceSeconds', 3)
+            return auto_build_debounce, rapid_change_debounce
     except Exception as e:
-        print(f"⚠️  Warning: Could not load settings.json, using default debounce (60s): {e}")
-        return 60
+        print(f"⚠️  Warning: Could not load settings.json, using defaults (auto: 60s, rapid: 3s): {e}")
+        return 60, 3
 
-DEBOUNCE_SECONDS = load_settings()
+DEBOUNCE_SECONDS, RAPID_CHANGE_DEBOUNCE_SECONDS = load_settings()
 
 class FileChangeHandler(FileSystemEventHandler):
     def __init__(self):
         self.last_triggered = 0
         self.timer_start = time.time()
         self.last_auto_build = time.time()  # Track last auto-build separately
-        self.pending_changes = set()  # Track files that changed during debounce
         self.is_rebuilding = False  # Flag to prevent double rebuilds
         
     def on_modified(self, event):
@@ -53,6 +56,10 @@ class FileChangeHandler(FileSystemEventHandler):
         file_path = Path(event.src_path)
         if not file_path.exists():
             return
+        
+        # Skip if it's the error log file itself
+        if file_path == ERROR_LOG_FILE:
+            return
             
         current_time = time.time()
         
@@ -60,21 +67,13 @@ class FileChangeHandler(FileSystemEventHandler):
         self.last_auto_build = current_time
         
         # Debounce: only trigger rebuild if enough time has passed since last rebuild
-        if current_time - self.last_triggered < 3:  # Use shorter debounce (3 seconds) for rapid saves
-            print(f"⏳ File changed: {file_path.name} (debouncing, will rebuild soon...)")
-            self.pending_changes.add(file_path.name)
+        if current_time - self.last_triggered < RAPID_CHANGE_DEBOUNCE_SECONDS:
             return
             
         self.last_triggered = current_time
         self.timer_start = current_time  # Reset timer when triggered by file change
         
-        # Include pending changes in the message
-        if self.pending_changes:
-            print(f"\n🔄 Files changed: {', '.join(self.pending_changes | {file_path.name})}")
-            self.pending_changes.clear()
-        else:
-            print(f"\n🔄 File changed: {file_path.name}")
-        
+        print(f"\n🔄 File changed: {file_path.name}")
         self.run_rebuild()
         
     def run_rebuild(self):
@@ -85,26 +84,91 @@ class FileChangeHandler(FileSystemEventHandler):
         print(f"🚀 Starting rebuild and deploy at {datetime.now().strftime('%H:%M:%S')}")
         print(f"{'='*60}\n")
         
+        stdout_lines = []
+        stderr_lines = []
+        
         try:
-            # Run PowerShell script
-            result = subprocess.run(
+            # Run PowerShell script with real-time output
+            process = subprocess.Popen(
                 ["powershell.exe", "-ExecutionPolicy", "Bypass", "-File", str(REBUILD_SCRIPT)],
                 cwd=str(SCRIPT_DIR),
-                capture_output=False,
-                text=True
+                stdout=subprocess.PIPE,
+                stderr=subprocess.STDOUT,  # Merge stderr to stdout
+                text=True,
+                encoding='utf-8',
+                errors='replace',
+                bufsize=1,  # Line buffered
+                universal_newlines=True
             )
             
-            if result.returncode == 0:
+            # Read output line by line in real-time
+            for line in iter(process.stdout.readline, ''):
+                if line:
+                    print(line, end='')
+                    stdout_lines.append(line)
+                    sys.stdout.flush()
+            
+            returncode = process.wait()
+            
+            if returncode == 0:
                 print(f"\n{'='*60}")
                 print(f"✅ Rebuild completed successfully!")
                 print(f"{'='*60}\n")
+                
+                # Delete error log file if build succeeded
+                if ERROR_LOG_FILE.exists():
+                    try:
+                        ERROR_LOG_FILE.unlink()
+                    except Exception as e:
+                        pass  # Ignore errors when deleting old log
             else:
                 print(f"\n{'='*60}")
-                print(f"❌ Rebuild failed with code {result.returncode}")
+                print(f"❌ Rebuild failed with code {returncode}")
                 print(f"{'='*60}\n")
+                
+                # Delete old log file before writing new one
+                if ERROR_LOG_FILE.exists():
+                    try:
+                        ERROR_LOG_FILE.unlink()
+                    except Exception:
+                        pass  # Ignore errors when deleting old log
+                
+                # Write errors to log file
+                try:
+                    with open(ERROR_LOG_FILE, 'w', encoding='utf-8') as f:
+                        f.write(f"Build failed at {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}\n")
+                        f.write(f"Exit code: {returncode}\n")
+                        f.write("="*60 + "\n\n")
+                        
+                        if stdout_lines:
+                            f.write("OUTPUT:\n")
+                            f.writelines(stdout_lines)
+                            f.write("\n")
+                    
+                    print(f"📝 Errors logged to: {ERROR_LOG_FILE.name}\n")
+                except Exception as e:
+                    print(f"⚠️  Warning: Could not write error log: {e}\n")
                 
         except Exception as e:
             print(f"\n❌ Error running rebuild script: {e}\n")
+            
+            # Delete old log file before writing new one
+            if ERROR_LOG_FILE.exists():
+                try:
+                    ERROR_LOG_FILE.unlink()
+                except Exception:
+                    pass  # Ignore errors when deleting old log
+            
+            # Log exception to file
+            try:
+                with open(ERROR_LOG_FILE, 'w', encoding='utf-8') as f:
+                    f.write(f"Exception at {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}\n")
+                    f.write("="*60 + "\n\n")
+                    f.write(f"Error: {str(e)}\n")
+                
+                print(f"📝 Exception logged to: {ERROR_LOG_FILE.name}\n")
+            except Exception as log_error:
+                print(f"⚠️  Warning: Could not write error log: {log_error}\n")
         finally:
             self.is_rebuilding = False  # Clear flag after rebuild
 
@@ -125,6 +189,7 @@ Watching directories:
     print(f"""
 Settings:
   • Auto-rebuild interval: {DEBOUNCE_SECONDS} seconds
+  • Rapid change debounce: {RAPID_CHANGE_DEBOUNCE_SECONDS} seconds
   • Rebuild script: {REBUILD_SCRIPT.name}
 
 Press Ctrl+C to stop monitoring...
@@ -155,10 +220,11 @@ Press Ctrl+C to stop monitoring...
                     event_handler.last_triggered = current_time
                     event_handler.last_auto_build = current_time
             else:
-                # Show countdown
-                remaining = DEBOUNCE_SECONDS - (current_time - event_handler.last_auto_build)
-                sys.stdout.write(f"\r⏳ Next auto-rebuild in {int(remaining)} seconds...  ")
-                sys.stdout.flush()
+                # Show countdown only if not rebuilding
+                if not event_handler.is_rebuilding:
+                    remaining = DEBOUNCE_SECONDS - (current_time - event_handler.last_auto_build)
+                    sys.stdout.write(f"\r⏳ Next auto-rebuild in {int(remaining)} seconds...  ")
+                    sys.stdout.flush()
                 
     except KeyboardInterrupt:
         print(f"\n\n{'='*60}")

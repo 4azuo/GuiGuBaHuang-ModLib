@@ -35,7 +35,7 @@ function Copy-WithErrorHandling {
     )
     
     # Get all items recursively
-    Get-ChildItem -Path $Source -Recurse | ForEach-Object {
+    Get-ChildItem -Path $Source -Recurse -ErrorAction SilentlyContinue | ForEach-Object {
         $relativePath = $_.FullName.Substring($Source.Length)
         $targetPath = Join-Path $Destination $relativePath
         
@@ -49,7 +49,7 @@ function Copy-WithErrorHandling {
             try {
                 Copy-Item -Path $_.FullName -Destination $targetPath -Force -ErrorAction Stop
             } catch {
-                Write-Host "⚠️  Skipped (in use): $($_.Name)" -ForegroundColor Yellow
+                Write-Host "⚠️  Skipped (in use): $relativePath" -ForegroundColor Yellow
             }
         }
     }
