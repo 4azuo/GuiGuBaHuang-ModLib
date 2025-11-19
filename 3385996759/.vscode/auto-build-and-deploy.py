@@ -32,14 +32,15 @@ def load_settings():
     try:
         with open(SETTINGS_FILE, 'r', encoding='utf-8') as f:
             settings = json.load(f)
+            project_id = settings.get('projectId', 'Unknown')
             auto_build_debounce = settings.get('autoBuildDebounceSeconds', 60)
             rapid_change_debounce = settings.get('rapidChangeDebounceSeconds', 3)
-            return auto_build_debounce, rapid_change_debounce
+            return project_id, auto_build_debounce, rapid_change_debounce
     except Exception as e:
         print(f"⚠️  Warning: Could not load settings.json, using defaults (auto: 60s, rapid: 3s): {e}")
-        return 60, 3
+        return 'Unknown', 60, 3
 
-DEBOUNCE_SECONDS, RAPID_CHANGE_DEBOUNCE_SECONDS = load_settings()
+PROJECT_ID, DEBOUNCE_SECONDS, RAPID_CHANGE_DEBOUNCE_SECONDS = load_settings()
 
 class FileChangeHandler(FileSystemEventHandler):
     def __init__(self):
@@ -175,7 +176,7 @@ class FileChangeHandler(FileSystemEventHandler):
 def main():
     print(f"""
 {'='*60}
-🤖 Auto Build and Deploy - Project 3385996759
+🤖 Auto Build and Deploy - Project {PROJECT_ID}
 {'='*60}
 Watching directories:
 """)

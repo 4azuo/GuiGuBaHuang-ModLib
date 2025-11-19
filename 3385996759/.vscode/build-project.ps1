@@ -1,6 +1,17 @@
-# Build Project 3385996759 - Release
+# Build Project - Release
+
+# Read settings from JSON file
+$settingsPath = Join-Path $PSScriptRoot "settings.json"
+if (!(Test-Path $settingsPath)) {
+    Write-Host "❌ Settings file not found: $settingsPath" -ForegroundColor Red
+    exit 1
+}
+
+$settings = Get-Content -Path $settingsPath -Raw | ConvertFrom-Json
+$projectId = $settings.projectId
+
 Write-Host "========================================" -ForegroundColor Cyan
-Write-Host "Building Project 3385996759 - Release" -ForegroundColor Cyan
+Write-Host "Building Project $projectId - Release" -ForegroundColor Cyan
 Write-Host "========================================" -ForegroundColor Cyan
 
 # Get the root directory (parent of 3161035078 and 3385996759)
@@ -8,7 +19,7 @@ $rootDir = Split-Path (Split-Path $PSScriptRoot -Parent) -Parent
 Push-Location $rootDir
 
 Write-Host "Building solution..." -ForegroundColor Yellow
-dotnet build "3385996759/ModProject/ModCode/ModMain/ModMain.sln" --configuration Release
+dotnet build "$projectId/ModProject/ModCode/ModMain/ModMain.sln" --configuration Release
 
 Pop-Location
 

@@ -1,6 +1,17 @@
-# Rebuild Project 3385996759 - Release
+# Rebuild Project - Release
+
+# Read settings from JSON file
+$settingsPath = Join-Path $PSScriptRoot "settings.json"
+if (!(Test-Path $settingsPath)) {
+    Write-Host "❌ Settings file not found: $settingsPath" -ForegroundColor Red
+    exit 1
+}
+
+$settings = Get-Content -Path $settingsPath -Raw | ConvertFrom-Json
+$projectId = $settings.projectId
+
 Write-Host "========================================" -ForegroundColor Cyan
-Write-Host "Rebuild Project 3385996759 - Release" -ForegroundColor Cyan
+Write-Host "Rebuild Project $projectId - Release" -ForegroundColor Cyan
 Write-Host "========================================" -ForegroundColor Cyan
 
 # Step 1: Run Clean Script

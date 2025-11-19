@@ -1,7 +1,4 @@
-# Copy to Steam Workshop - Project 3385996759
-Write-Host "========================================" -ForegroundColor Cyan
-Write-Host "Copy Project 3385996759 to Steam Workshop" -ForegroundColor Cyan
-Write-Host "========================================" -ForegroundColor Cyan
+# Copy to Steam Workshop
 
 # Read settings from JSON file
 $settingsPath = Join-Path $PSScriptRoot "settings.json"
@@ -11,7 +8,12 @@ if (!(Test-Path $settingsPath)) {
 }
 
 $settings = Get-Content -Path $settingsPath -Raw | ConvertFrom-Json
+$projectId = $settings.projectId
 $steamWorkshopPath = $settings.steamWorkshopPath
+
+Write-Host "========================================" -ForegroundColor Cyan
+Write-Host "Copy Project $projectId to Steam Workshop" -ForegroundColor Cyan
+Write-Host "========================================" -ForegroundColor Cyan
 
 Write-Host "Steam Workshop Path: $steamWorkshopPath" -ForegroundColor Cyan
 
@@ -25,7 +27,7 @@ if (!(Test-Path $steamWorkshopPath)) {
 
 # Get the root directory and set source path
 $rootDir = Split-Path (Split-Path $PSScriptRoot -Parent) -Parent
-$sourcePath = Join-Path $rootDir "3385996759"
+$sourcePath = Join-Path $rootDir $projectId
 
 # Function to copy with error handling
 function Copy-WithErrorHandling {
@@ -55,9 +57,9 @@ function Copy-WithErrorHandling {
     }
 }
 
-# Copy folder
-Write-Host "`nCopying 3385996759 folder to Steam Workshop..." -ForegroundColor Yellow
-$destination = Join-Path $steamWorkshopPath "3385996759"
+# Copy only project folder
+Write-Host "`nCopying $projectId folder to Steam Workshop..." -ForegroundColor Yellow
+$destination = Join-Path $steamWorkshopPath $projectId
 if (Test-Path $destination) {
     Remove-Item -Path $destination -Recurse -Force -ErrorAction SilentlyContinue
 }
@@ -66,4 +68,4 @@ Copy-WithErrorHandling -Source $sourcePath -Destination $destination
 Write-Host "`n========================================" -ForegroundColor Green
 Write-Host "✅ COPY COMPLETED SUCCESSFULLY!" -ForegroundColor Green
 Write-Host "========================================" -ForegroundColor Green
-Write-Host "Project 3385996759 has been copied to Steam Workshop!" -ForegroundColor White
+Write-Host "Project $projectId has been copied to Steam Workshop!" -ForegroundColor White
