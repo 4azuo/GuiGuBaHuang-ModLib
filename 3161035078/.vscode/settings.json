@@ -1,6 +1,7 @@
 {
+    "projectId": "3161035078",
     "steamWorkshopPath": "C:\\Program Files (x86)\\Steam\\steamapps\\workshop\\content\\1468810",
     "gitRepositoryPath": "C:\\git\\GuiGuBaHuang-ModLib",
-    "autoBuildDebounceSeconds": 300,
-    "rapidChangeDebounceSeconds": 5
+    "autoBuildDebounceSeconds": 60,
+    "rapidChangeDebounceSeconds": 3
 }
