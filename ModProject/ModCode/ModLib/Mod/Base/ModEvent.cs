@@ -4,7 +4,7 @@ using ModLib.Object;
 
 namespace ModLib.Mod
 {
-    [TraceIgnore]
+    // [TraceIgnore]
     public abstract class ModEvent : CachableObject
     {
         #region Timer
