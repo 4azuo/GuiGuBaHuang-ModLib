@@ -3,7 +3,7 @@ using System.IO;
 
 namespace ModLib.Mod
 {
-    [TraceIgnore]
+    // [TraceIgnore]
     public abstract class ModSkill
     {
         public string ModId { get; set; }
