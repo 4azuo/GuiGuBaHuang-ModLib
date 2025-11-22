@@ -13,8 +13,8 @@ namespace MOD_nE7UL2.Mod
     {
         public static ChallengeQuestEvent Instance { get; set; }
 
-        public const int TASK_BASE_ID = 444444000;
-        public const int LUCK_BASE_ID = 444442000;
+        public const int TASK_BASE_ID = 444446000;
+        public const int LUCK_BASE_ID = 444445000;
 
         public class ChallengeTaskInfo
         {

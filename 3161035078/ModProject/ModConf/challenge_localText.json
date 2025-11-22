@@ -1,319 +1,319 @@
 [
 	{
-		"id": "444442001",
-		"key": "challenge444442001",
+		"id": "444445001",
+		"key": "challenge444445001",
 		"en": "Challenge Master 1",
 		"ch": "挑战大师 1",
 		"tc": "挑戰大師 1",
 		"kr": "도전 마스터 1"
 	},
 	{
-		"id": "444442101",
-		"key": "challenge444442001desc",
+		"id": "444445101",
+		"key": "challenge444445001desc",
 		"en": "+1% Attack",
 		"ch": "+1% 攻击",
 		"tc": "+1% 攻擊",
 		"kr": "+1% 공격력"
 	},
 	{
-		"id": "444444001",
-		"key": "taskName444444001",
+		"id": "444446001",
+		"key": "taskName444446001",
 		"en": "Challenge Master 1",
 		"ch": "挑战大师 1",
 		"tc": "挑戰大師 1",
 		"kr": "도전 마스터 1"
 	},
 	{
-		"id": "444444101",
-		"key": "taskDesc444444001",
+		"id": "444446101",
+		"key": "taskDesc444446001",
 		"en": "Defeat 3 opponents who are at least 1 level higher than you.",
 		"ch": "击败3个至少比你高1级的对手。",
 		"tc": "擊敗3個至少比你高1級的對手。",
 		"kr": "당신보다 최소 1레벨 이상 높은 적 3명을 물리치세요."
 	},
 	{
-		"id": "444442002",
-		"key": "challenge444442002",
+		"id": "444445002",
+		"key": "challenge444445002",
 		"en": "Challenge Master 2",
 		"ch": "挑战大师 2",
 		"tc": "挑戰大師 2",
 		"kr": "도전 마스터 2"
 	},
 	{
-		"id": "444442102",
-		"key": "challenge444442002desc",
+		"id": "444445102",
+		"key": "challenge444445002desc",
 		"en": "+2% Attack",
 		"ch": "+2% 攻击",
 		"tc": "+2% 攻擊",
 		"kr": "+2% 공격력"
 	},
 	{
-		"id": "444444002",
-		"key": "taskName444444002",
+		"id": "444446002",
+		"key": "taskName444446002",
 		"en": "Challenge Master 2",
 		"ch": "挑战大师 2",
 		"tc": "挑戰大師 2",
 		"kr": "도전 마스터 2"
 	},
 	{
-		"id": "444444102",
-		"key": "taskDesc444444002",
+		"id": "444446102",
+		"key": "taskDesc444446002",
 		"en": "Defeat 5 opponents who are at least 2 levels higher than you.",
 		"ch": "击败5个至少比你高2级的对手。",
 		"tc": "擊敗5個至少比你高2級的對手。",
 		"kr": "당신보다 최소 2레벨 이상 높은 적 5명을 물리치세요."
 	},
 	{
-		"id": "444442003",
-		"key": "challenge444442003",
+		"id": "444445003",
+		"key": "challenge444445003",
 		"en": "Challenge Master 3",
 		"ch": "挑战大师 3",
 		"tc": "挑戰大師 3",
 		"kr": "도전 마스터 3"
 	},
 	{
-		"id": "444442103",
-		"key": "challenge444442003desc",
+		"id": "444445103",
+		"key": "challenge444445003desc",
 		"en": "+4% Attack",
 		"ch": "+4% 攻击",
 		"tc": "+4% 攻擊",
 		"kr": "+4% 공격력"
 	},
 	{
-		"id": "444444003",
-		"key": "taskName444444003",
+		"id": "444446003",
+		"key": "taskName444446003",
 		"en": "Challenge Master 3",
 		"ch": "挑战大师 3",
 		"tc": "挑戰大師 3",
 		"kr": "도전 마스터 3"
 	},
 	{
-		"id": "444444103",
-		"key": "taskDesc444444003",
+		"id": "444446103",
+		"key": "taskDesc444446003",
 		"en": "Defeat 8 opponents who are at least 3 levels higher than you.",
 		"ch": "击败8个至少比你高3级的对手。",
 		"tc": "擊敗8個至少比你高3級的對手。",
 		"kr": "당신보다 최소 3레벨 이상 높은 적 8명을 물리치세요."
 	},
 	{
-		"id": "444442004",
-		"key": "challenge444442004",
+		"id": "444445004",
+		"key": "challenge444445004",
 		"en": "Challenge Master 4",
 		"ch": "挑战大师 4",
 		"tc": "挑戰大師 4",
 		"kr": "도전 마스터 4"
 	},
 	{
-		"id": "444442104",
-		"key": "challenge444442004desc",
+		"id": "444445104",
+		"key": "challenge444445004desc",
 		"en": "+7% Attack",
 		"ch": "+7% 攻击",
 		"tc": "+7% 攻擊",
 		"kr": "+7% 공격력"
 	},
 	{
-		"id": "444444004",
-		"key": "taskName444444004",
+		"id": "444446004",
+		"key": "taskName444446004",
 		"en": "Challenge Master 4",
 		"ch": "挑战大师 4",
 		"tc": "挑戰大師 4",
 		"kr": "도전 마스터 4"
 	},
 	{
-		"id": "444444104",
-		"key": "taskDesc444444004",
+		"id": "444446104",
+		"key": "taskDesc444446004",
 		"en": "Defeat 10 opponents who are at least 4 levels higher than you.",
 		"ch": "击败10个至少比你高4级的对手。",
 		"tc": "擊敗10個至少比你高4級的對手。",
 		"kr": "당신보다 최소 4레벨 이상 높은 적 10명을 물리치세요."
 	},
 	{
-		"id": "444442005",
-		"key": "challenge444442005",
+		"id": "444445005",
+		"key": "challenge444445005",
 		"en": "Challenge Master 5",
 		"ch": "挑战大师 5",
 		"tc": "挑戰大師 5",
 		"kr": "도전 마스터 5"
 	},
 	{
-		"id": "444442105",
-		"key": "challenge444442005desc",
+		"id": "444445105",
+		"key": "challenge444445005desc",
 		"en": "+11% Attack",
 		"ch": "+11% 攻击",
 		"tc": "+11% 攻擊",
 		"kr": "+11% 공격력"
 	},
 	{
-		"id": "444444005",
-		"key": "taskName444444005",
+		"id": "444446005",
+		"key": "taskName444446005",
 		"en": "Challenge Master 5",
 		"ch": "挑战大师 5",
 		"tc": "挑戰大師 5",
 		"kr": "도전 마스터 5"
 	},
 	{
-		"id": "444444105",
-		"key": "taskDesc444444005",
+		"id": "444446105",
+		"key": "taskDesc444446005",
 		"en": "Defeat 15 opponents who are at least 5 levels higher than you.",
 		"ch": "击败15个至少比你高5级的对手。",
 		"tc": "擊敗15個至少比你高5級的對手。",
 		"kr": "당신보다 최소 5레벨 이상 높은 적 15명을 물리치세요."
 	},
 	{
-		"id": "444442006",
-		"key": "challenge444442006",
+		"id": "444445006",
+		"key": "challenge444445006",
 		"en": "Challenge Grandmaster",
 		"ch": "挑战宗师",
 		"tc": "挑戰宗師",
 		"kr": "도전 그랜드마스터"
 	},
 	{
-		"id": "444442106",
-		"key": "challenge444442006desc",
+		"id": "444445106",
+		"key": "challenge444445006desc",
 		"en": "+16% Attack",
 		"ch": "+16% 攻击",
 		"tc": "+16% 攻擊",
 		"kr": "+16% 공격력"
 	},
 	{
-		"id": "444444006",
-		"key": "taskName444444006",
+		"id": "444446006",
+		"key": "taskName444446006",
 		"en": "Challenge Grandmaster",
 		"ch": "挑战宗师",
 		"tc": "挑戰宗師",
 		"kr": "도전 그랜드마스터"
 	},
 	{
-		"id": "444444106",
-		"key": "taskDesc444444006",
+		"id": "444446106",
+		"key": "taskDesc444446006",
 		"en": "Defeat 20 opponents who are at least 6 levels higher than you.",
 		"ch": "击败20个至少比你高6级的对手。",
 		"tc": "擊敗20個至少比你高6級的對手。",
 		"kr": "당신보다 최소 6레벨 이상 높은 적 20명을 물리치세요."
 	},
 	{
-		"id": "444442007",
-		"key": "challenge444442007",
+		"id": "444445007",
+		"key": "challenge444445007",
 		"en": "Challenge Master 7",
 		"ch": "挑战大师 7",
 		"tc": "挑戰大師 7",
 		"kr": "도전 마스터 7"
 	},
 	{
-		"id": "444442107",
-		"key": "challenge444442007desc",
+		"id": "444445107",
+		"key": "challenge444445007desc",
 		"en": "+22% Attack",
 		"ch": "+22% 攻击",
 		"tc": "+22% 攻擊",
 		"kr": "+22% 공격력"
 	},
 	{
-		"id": "444444007",
-		"key": "taskName444444007",
+		"id": "444446007",
+		"key": "taskName444446007",
 		"en": "Challenge Master 7",
 		"ch": "挑战大师 7",
 		"tc": "挑戰大師 7",
 		"kr": "도전 마스터 7"
 	},
 	{
-		"id": "444444107",
-		"key": "taskDesc444444007",
+		"id": "444446107",
+		"key": "taskDesc444446007",
 		"en": "Defeat 25 opponents who are at least 7 levels higher than you.",
 		"ch": "击败25个至少比你高7级的对手。",
 		"tc": "擊敗25個至少比你高7級的對手。",
 		"kr": "당신보다 최소 7레벨 이상 높은 적 25명을 물리치세요."
 	},
 	{
-		"id": "444442008",
-		"key": "challenge444442008",
+		"id": "444445008",
+		"key": "challenge444445008",
 		"en": "Challenge Master 8",
 		"ch": "挑战大师 8",
 		"tc": "挑戰大師 8",
 		"kr": "도전 마스터 8"
 	},
 	{
-		"id": "444442108",
-		"key": "challenge444442008desc",
+		"id": "444445108",
+		"key": "challenge444445008desc",
 		"en": "+29% Attack",
 		"ch": "+29% 攻击",
 		"tc": "+29% 攻擊",
 		"kr": "+29% 공격력"
 	},
 	{
-		"id": "444444008",
-		"key": "taskName444444008",
+		"id": "444446008",
+		"key": "taskName444446008",
 		"en": "Challenge Master 8",
 		"ch": "挑战大师 8",
 		"tc": "挑戰大師 8",
 		"kr": "도전 마스터 8"
 	},
 	{
-		"id": "444444108",
-		"key": "taskDesc444444008",
+		"id": "444446108",
+		"key": "taskDesc444446008",
 		"en": "Defeat 30 opponents who are at least 8 levels higher than you.",
 		"ch": "击败30个至少比你高8级的对手。",
 		"tc": "擊敗30個至少比你高8級的對手。",
 		"kr": "당신보다 최소 8레벨 이상 높은 적 30명을 물리치세요."
 	},
 	{
-		"id": "444442009",
-		"key": "challenge444442009",
+		"id": "444445009",
+		"key": "challenge444445009",
 		"en": "Challenge Master 9",
 		"ch": "挑战大师 9",
 		"tc": "挑戰大師 9",
 		"kr": "도전 마스터 9"
 	},
 	{
-		"id": "444442109",
-		"key": "challenge444442009desc",
+		"id": "444445109",
+		"key": "challenge444445009desc",
 		"en": "+37% Attack",
 		"ch": "+37% 攻击",
 		"tc": "+37% 攻擊",
 		"kr": "+37% 공격력"
 	},
 	{
-		"id": "444444009",
-		"key": "taskName444444009",
+		"id": "444446009",
+		"key": "taskName444446009",
 		"en": "Challenge Master 9",
 		"ch": "挑战大师 9",
 		"tc": "挑戰大師 9",
 		"kr": "도전 마스터 9"
 	},
 	{
-		"id": "444444109",
-		"key": "taskDesc444444009",
+		"id": "444446109",
+		"key": "taskDesc444446009",
 		"en": "Defeat 35 opponents who are at least 9 levels higher than you.",
 		"ch": "击败35个至少比你高9级的对手。",
 		"tc": "擊敗35個至少比你高9級的對手。",
 		"kr": "당신보다 최소 9레벨 이상 높은 적 35명을 물리치세요."
 	},
 	{
-		"id": "444442010",
-		"key": "challenge444442010",
+		"id": "444445010",
+		"key": "challenge444445010",
 		"en": "Challenge Legend",
 		"ch": "挑战传奇",
 		"tc": "挑戰傳奇",
 		"kr": "도전 레전드"
 	},
 	{
-		"id": "444442110",
-		"key": "challenge444442010desc",
+		"id": "444445110",
+		"key": "challenge444445010desc",
 		"en": "+46% Attack",
 		"ch": "+46% 攻击",
 		"tc": "+46% 攻擊",
 		"kr": "+46% 공격력"
 	},
 	{
-		"id": "444444010",
-		"key": "taskName444444010",
+		"id": "444446010",
+		"key": "taskName444446010",
 		"en": "Challenge Legend",
 		"ch": "挑战传奇",
 		"tc": "挑戰傳奇",
 		"kr": "도전 레전드"
 	},
 	{
-		"id": "444444110",
-		"key": "taskDesc444444010",
+		"id": "444446110",
+		"key": "taskDesc444446010",
 		"en": "Defeat 40 opponents who are at least 10 levels higher than you.",
 		"ch": "击败40个至少比你高10级的对手。",
 		"tc": "擊敗40個至少比你高10級的對手。",

@@ -749,6 +749,7 @@
 rd "$(ProjectDir)\..\..\..\debug\Mod_nE7UL2\ModCode\dll" /s /q
 rd "$(ProjectDir)\..\..\..\debug\Mod_nE7UL2\ModConf" /s /q
 rd "$(ProjectDir)\..\..\..\debug\Mod_nE7UL2\ModImg" /s /q
+xcopy "$(ProjectDir)\..\..\..\..\3385996759\CodeArtifacts\*.dll" "$(ProjectDir)\..\..\..\debug\Mod_nE7UL2\ModCode\dll\" /y /i
 xcopy "$(ProjectDir)\bin\Release\*.dll" "$(ProjectDir)\..\..\..\debug\Mod_nE7UL2\ModCode\dll\" /y /i
 xcopy "$(ProjectDir)\..\..\ModConf\*.*" "$(ProjectDir)\..\..\..\debug\Mod_nE7UL2\ModConf\" /y /i /e /h /c
 xcopy "$(ProjectDir)\..\..\ModImg\*.*" "$(ProjectDir)\..\..\..\debug\Mod_nE7UL2\ModImg\" /y /i /e /h /c</PostBuildEvent>
