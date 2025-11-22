@@ -89,13 +89,14 @@
 
 **Add ModMain-BuildEvent**
 
-![image](https://github.com/user-attachments/assets/75dee2aa-088a-4617-9257-8535e880dfd5)
+![image](https://github.com/user-attachments/assets/c9fec3e0-7dfd-4e8c-8c0e-d740ce400e35)
 
 - `rd "$(ProjectDir)obj" /s /q`
 - `rd "$(ProjectDir)\..\..\..\debug\Mod_nE7UL2\ModCode\dll" /s /q`
 - `rd "$(ProjectDir)\..\..\..\debug\Mod_nE7UL2\ModConf" /s /q`
 - `rd "$(ProjectDir)\..\..\..\debug\Mod_nE7UL2\ModImg" /s /q`
 - `xcopy "$(ProjectDir)\bin\Release\*.dll" "$(ProjectDir)\..\..\..\debug\Mod_nE7UL2\ModCode\dll\" /y /i`
+- `xcopy "$(ProjectDir)\..\..\..\..\3385996759\debug\Mod_flQrxq\ModCode\dll\ModLib.dll" "$(ProjectDir)\..\..\..\debug\Mod_nE7UL2\ModCode\dll\" /y /i`
 - `xcopy "$(ProjectDir)\..\..\ModConf\*.*" "$(ProjectDir)\..\..\..\debug\Mod_nE7UL2\ModConf\" /y /i /e /h /c`
 - `xcopy "$(ProjectDir)\..\..\ModImg\*.*" "$(ProjectDir)\..\..\..\debug\Mod_nE7UL2\ModImg\" /y /i /e /h /c`
 
