@@ -3,23 +3,19 @@ Write-Host "========================================" -ForegroundColor Cyan
 Write-Host "Copy Both Projects to Steam Workshop" -ForegroundColor Cyan
 Write-Host "========================================" -ForegroundColor Cyan
 
-# Read settings from JSON file (try multiple locations)
-$settingsPath = "tasks/settings.json"
+# Read settings from tasks folder
+$settingsPath = "$PSScriptRoot/settings.json"
 if (!(Test-Path $settingsPath)) {
-    $settingsPath = "3161035078/.vscode/settings.json"
-    if (!(Test-Path $settingsPath)) {
-        $settingsPath = "3385996759/.vscode/settings.json"
-        if (!(Test-Path $settingsPath)) {
-            Write-Host "❌ Settings file not found in any expected location!" -ForegroundColor Red
-            exit 1
-        }
-    }
+    Write-Host "❌ Settings file not found: $settingsPath" -ForegroundColor Red
+    exit 1
 }
 
 $settings = Get-Content -Path $settingsPath -Raw | ConvertFrom-Json
 $steamWorkshopPath = $settings.steamWorkshopPath
+$gitRepositoryPath = $settings.gitRepositoryPath
 
 Write-Host "Steam Workshop Path: $steamWorkshopPath" -ForegroundColor Cyan
+Write-Host "Git Repository Path: $gitRepositoryPath" -ForegroundColor Cyan
 
 # Create directory if it doesn't exist
 if (!(Test-Path $steamWorkshopPath)) {
@@ -28,11 +24,6 @@ if (!(Test-Path $steamWorkshopPath)) {
 } else {
     Write-Host "Directory already exists: $steamWorkshopPath" -ForegroundColor Green
 }
-
-# Get the root directory (should be current directory when called from root)
-$rootDir = Get-Location
-$source3161 = Join-Path $rootDir "3161035078"
-$source3385 = Join-Path $rootDir "3385996759"
 
 # Function to copy with exclusions
 function Copy-WithExclusions {
@@ -62,25 +53,28 @@ function Copy-WithExclusions {
     }
 }
 
-# Copy 3161035078 folder
-Write-Host "`nCopying 3161035078 folder..." -ForegroundColor Cyan
-$dest3161 = Join-Path $steamWorkshopPath "3161035078"
-if (Test-Path $dest3161) {
-    Remove-Item -Path $dest3161 -Recurse -Force -ErrorAction SilentlyContinue
+# Process each project
+foreach ($projectId in $settings.projects) {
+    Write-Host "`n[Project $projectId]" -ForegroundColor Yellow
+    
+    $source = Join-Path $gitRepositoryPath $projectId
+    $dest = Join-Path $steamWorkshopPath $projectId
+    
+    # Check if source exists
+    if (!(Test-Path $source)) {
+        Write-Host "❌ Source folder not found: $source" -ForegroundColor Red
+        continue
+    }
+    
+    Write-Host "Copying to Steam Workshop..." -ForegroundColor Cyan
+    if (Test-Path $dest) {
+        Remove-Item -Path $dest -Recurse -Force -ErrorAction SilentlyContinue
+    }
+    Copy-WithExclusions -Source $source -Destination $dest
+    Write-Host "✅ $projectId copied successfully" -ForegroundColor Green
 }
-Copy-WithExclusions -Source $source3161 -Destination $dest3161
-Write-Host "✅ 3161035078 copied successfully" -ForegroundColor Green
-
-# Copy 3385996759 folder
-Write-Host "Copying 3385996759 folder..." -ForegroundColor Cyan
-$dest3385 = Join-Path $steamWorkshopPath "3385996759"
-if (Test-Path $dest3385) {
-    Remove-Item -Path $dest3385 -Recurse -Force -ErrorAction SilentlyContinue
-}
-Copy-WithExclusions -Source $source3385 -Destination $dest3385
-Write-Host "✅ 3385996759 copied successfully" -ForegroundColor Green
 
 Write-Host "`n========================================" -ForegroundColor Green
 Write-Host "✅ COPY COMPLETED SUCCESSFULLY!" -ForegroundColor Green
 Write-Host "========================================" -ForegroundColor Green
-Write-Host "Both projects have been copied to Steam Workshop!" -ForegroundColor White
+Write-Host "All projects have been copied to Steam Workshop!" -ForegroundColor White

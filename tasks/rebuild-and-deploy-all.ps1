@@ -3,30 +3,43 @@ Write-Host "========================================" -ForegroundColor Cyan
 Write-Host "Rebuild and Deploy All Projects to Steam" -ForegroundColor Cyan
 Write-Host "========================================" -ForegroundColor Cyan
 
-# Step 1: Rebuild Project 3385996759
-Write-Host "`n[Step 1/4] Rebuilding Project 3385996759..." -ForegroundColor Yellow
-$rebuild3385Script = "3385996759/.vscode/rebuild-project.ps1"
-& $rebuild3385Script
-if ($LASTEXITCODE -ne 0) {
-    Write-Host "Failed to rebuild project 3385996759" -ForegroundColor Red
-    exit $LASTEXITCODE
+# Read settings from tasks folder
+$settingsPath = "$PSScriptRoot/settings.json"
+if (!(Test-Path $settingsPath)) {
+    Write-Host "❌ Settings file not found: $settingsPath" -ForegroundColor Red
+    exit 1
 }
 
-# Step 2: Rebuild Project 3161035078
-Write-Host "`n[Step 2/4] Rebuilding Project 3161035078..." -ForegroundColor Yellow
-$rebuild3161Script = "3161035078/.vscode/rebuild-project.ps1"
-& $rebuild3161Script
-if ($LASTEXITCODE -ne 0) {
-    Write-Host "Failed to rebuild project 3161035078" -ForegroundColor Red
-    exit $LASTEXITCODE
+$settings = Get-Content -Path $settingsPath -Raw | ConvertFrom-Json
+$gitRepositoryPath = $settings.gitRepositoryPath
+
+$stepNum = 1
+$totalSteps = $settings.projects.Count + 1
+
+# Rebuild each project
+foreach ($projectId in $settings.projects) {
+    Write-Host "`n[Step $stepNum/$totalSteps] Rebuilding Project $projectId..." -ForegroundColor Yellow
+    $rebuildScript = Join-Path $gitRepositoryPath "$projectId\.vscode\rebuild-project.ps1"
+    
+    if (!(Test-Path $rebuildScript)) {
+        Write-Host "❌ Rebuild script not found: $rebuildScript" -ForegroundColor Red
+        exit 1
+    }
+    
+    & $rebuildScript
+    if ($LASTEXITCODE -ne 0) {
+        Write-Host "❌ Failed to rebuild project $projectId" -ForegroundColor Red
+        exit $LASTEXITCODE
+    }
+    $stepNum++
 }
 
 Write-Host "`n✅ All projects built successfully!" -ForegroundColor Green
 
-# Step 3: Copy Both Projects to Steam Workshop
-Write-Host "`n[Step 3/4] Running Copy Both Projects to Steam Script..." -ForegroundColor Yellow
-$copyBothScript = "tasks/copy-both-to-steam.ps1"
-& $copyBothScript
+# Copy all projects to Steam Workshop
+Write-Host "`n[Step $stepNum/$totalSteps] Running Copy All Projects to Steam Script..." -ForegroundColor Yellow
+$copyScript = "$PSScriptRoot\copy-both-to-steam.ps1"
+& $copyScript
 
 if ($LASTEXITCODE -eq 0) {
     Write-Host "`n========================================" -ForegroundColor Green
