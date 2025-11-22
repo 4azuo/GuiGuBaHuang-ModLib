@@ -38,6 +38,7 @@ namespace ModLib.Converter
             }
             catch (Exception ex)
             {
+                DebugHelper.WriteLine($"Failed to load enum: {objectType?.FullName ?? "null"}");
                 DebugHelper.WriteLine(ex);
                 throw ex;
             }

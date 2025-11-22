@@ -27,7 +27,7 @@ public static class ConfHelper
         return File.ReadAllText(GetConfFilePath(modId, fileName, subFolder));
     }
 
-    [Trace]
+    // [Trace]
     private static void LoadConf(string filePath, string confName)
     {
         //DebugHelper.WriteLine($"Edit Conf: {confName}");
@@ -141,8 +141,16 @@ public static class ConfHelper
             {
                 foreach (var filePath in Directory.GetFiles(assetFolder, searchPattern))
                 {
-                    var confName = Path.GetFileNameWithoutExtension(filePath).Split('_').Last();
-                    LoadConf(filePath, confName);
+                    try
+                    {
+                        var confName = Path.GetFileNameWithoutExtension(filePath).Split('_').Last();
+                        LoadConf(filePath, confName);
+                    }
+                    catch (Exception ex)
+                    {
+                        DebugHelper.WriteLine($"Failed to load conf file: {filePath}");
+                        throw ex;
+                    }
                 }
             }
         }
