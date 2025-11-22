@@ -246,7 +246,7 @@ namespace ModLib.Mod
             }
         }
 
-        [Trace]
+        // [Trace]
         public override void OnBattleStart(ETypeData e)
         {
             base.OnBattleStart(e);
