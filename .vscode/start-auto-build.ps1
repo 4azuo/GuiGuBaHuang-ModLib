@@ -1,12 +1,23 @@
-# Auto Build and Deploy Script for Project 3385996759
+# Auto Build and Deploy Script
 # Launches the Python auto-build watcher
 
 $ErrorActionPreference = "Stop"
 
+# Read settings from JSON file
+$settingsPath = Join-Path $PSScriptRoot "settings.json"
+if (!(Test-Path $settingsPath)) {
+    Write-Host "✗ Settings file not found: $settingsPath" -ForegroundColor Red
+    exit 1
+}
+
+$settings = Get-Content -Path $settingsPath -Raw | ConvertFrom-Json
+$projectId = $settings.projectId
+$modName = $settings.modName
+
 Write-Host ""
 Write-Host "============================================================" -ForegroundColor Cyan
 Write-Host "  Starting Auto Build and Deploy Watcher" -ForegroundColor Cyan
-Write-Host "  Project: 3385996759 (ModLib)" -ForegroundColor Cyan
+Write-Host "  Project: $projectId ($modName)" -ForegroundColor Cyan
 Write-Host "============================================================" -ForegroundColor Cyan
 Write-Host ""
 

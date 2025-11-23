@@ -1,7 +1,4 @@
-# Copy Project 3385996759 from Steam Workshop to Git
-Write-Host "========================================" -ForegroundColor Cyan
-Write-Host "Copy Project 3385996759 from Steam Workshop to Git" -ForegroundColor Cyan
-Write-Host "========================================" -ForegroundColor Cyan
+# Copy Project from Steam Workshop to Git
 
 # Read settings from JSON file
 $settingsPath = Join-Path $PSScriptRoot "settings.json"
@@ -11,15 +8,20 @@ if (!(Test-Path $settingsPath)) {
 }
 
 $settings = Get-Content -Path $settingsPath -Raw | ConvertFrom-Json
+$projectId = $settings.projectId
 $steamWorkshopPath = $settings.steamWorkshopPath
 $gitRepositoryPath = $settings.gitRepositoryPath
+
+Write-Host "========================================" -ForegroundColor Cyan
+Write-Host "Copy Project $projectId from Steam Workshop to Git" -ForegroundColor Cyan
+Write-Host "========================================" -ForegroundColor Cyan
 
 Write-Host "Steam Workshop Path: $steamWorkshopPath" -ForegroundColor Cyan
 Write-Host "Git Repository Path: $gitRepositoryPath" -ForegroundColor Cyan
 
 # Get the root directory and set paths
-$sourcePath = Join-Path $steamWorkshopPath "3385996759"
-$destinationPath = Join-Path $gitRepositoryPath "3385996759"
+$sourcePath = Join-Path $steamWorkshopPath $projectId
+$destinationPath = Join-Path $gitRepositoryPath $projectId
 
 # Check if source exists
 if (!(Test-Path $sourcePath)) {
@@ -56,10 +58,10 @@ function Copy-WithErrorHandling {
 }
 
 # Copy folder from Steam to Git
-Write-Host "`nCopying 3385996759 folder from Steam Workshop to Git..." -ForegroundColor Yellow
+Write-Host "`nCopying project $projectId folder from Steam Workshop to Git..." -ForegroundColor Yellow
 Copy-WithErrorHandling -Source $sourcePath -Destination $destinationPath
 
 Write-Host "`n========================================" -ForegroundColor Green
 Write-Host "✅ COPY COMPLETED SUCCESSFULLY!" -ForegroundColor Green
 Write-Host "========================================" -ForegroundColor Green
-Write-Host "Project 3385996759 has been copied from Steam Workshop to Git!" -ForegroundColor White
+Write-Host "Project $projectId has been copied from Steam Workshop to Git!" -ForegroundColor White
