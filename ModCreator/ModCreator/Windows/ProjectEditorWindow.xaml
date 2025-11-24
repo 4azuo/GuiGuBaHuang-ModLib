@@ -8,7 +8,7 @@
         xmlns:localData="clr-namespace:ModCreator.WindowData"
         xmlns:helper="clr-namespace:ModCreator.Helpers"
         mc:Ignorable="d"
-        Title="{x:Static helper:MessageHelper.ProjectEditorTitle}" 
+        Title="{x:Static helper:UITextHelper.ProjectEditorTitle}" 
         Height="700" Width="1200"
         WindowStartupLocation="CenterScreen"
         Icon="/Resources/app-icon.png"
@@ -41,15 +41,15 @@
                              Padding="5,2"
                              CaretBrush="White"/>
                     <TextBlock FontSize="12" Foreground="#FFCCCCCC" Margin="0,5,0,0">
-                        <Run Text="{x:Static helper:MessageHelper.ProjectIdLabel}"/>
+                        <Run Text="{x:Static helper:UITextHelper.ProjectIdLabel}"/>
                         <Run Text="{Binding Project.ProjectId, Mode=OneWay}" FontWeight="SemiBold"/>
                     </TextBlock>
                 </StackPanel>
 
                 <StackPanel Grid.Column="1" Orientation="Horizontal" VerticalAlignment="Center">
-                    <Button Content="{x:Static helper:MessageHelper.Save}" Click="Save_Click" 
+                    <Button Content="{x:Static helper:UITextHelper.Save}" Click="Save_Click" 
                             Style="{StaticResource PrimaryButton}" Width="100"/>
-                    <Button Content="{x:Static helper:MessageHelper.Cancel}" Click="Close_Click" 
+                    <Button Content="{x:Static helper:UITextHelper.Cancel}" Click="Close_Click" 
                             Style="{StaticResource ActionButton}" Width="100" Margin="10,0,0,0"/>
                 </StackPanel>
             </Grid>
@@ -58,17 +58,17 @@
         <!-- Edit Mode Toggle -->
         <Border Grid.Row="1" Background="#FFF5F5F5" Padding="10" BorderBrush="#FFDDDDDD" BorderThickness="0,0,0,1">
             <StackPanel Orientation="Horizontal">
-                <TextBlock Text="{x:Static helper:MessageHelper.EditModeLabel}" VerticalAlignment="Center" Margin="0,0,10,0" FontWeight="SemiBold"/>
-                <RadioButton Content="{x:Static helper:MessageHelper.UIModeLabel}" 
+                <TextBlock Text="{x:Static helper:UITextHelper.EditModeLabel}" VerticalAlignment="Center" Margin="0,0,10,0" FontWeight="SemiBold"/>
+                <RadioButton Content="{x:Static helper:UITextHelper.UIModeLabel}" 
                              IsChecked="{Binding IsUIMode, Mode=TwoWay}" 
                              GroupName="EditMode"
                              Margin="0,0,20,0"
                              VerticalAlignment="Center"/>
-                <RadioButton Content="{x:Static helper:MessageHelper.CodeModeLabel}" 
+                <RadioButton Content="{x:Static helper:UITextHelper.CodeModeLabel}" 
                              IsChecked="{Binding IsCodeMode, Mode=TwoWay}" 
                              GroupName="EditMode"
                              VerticalAlignment="Center"/>
-                <TextBlock Text="{x:Static helper:MessageHelper.CodeModeNote}" 
+                <TextBlock Text="{x:Static helper:UITextHelper.CodeModeNote}" 
                            Foreground="Gray" 
                            FontSize="11" 
                            Margin="20,0,0,0"
@@ -84,7 +84,7 @@
             </Grid.ColumnDefinitions>
 
             <!-- ModEvent List -->
-            <GroupBox Grid.Column="0" Header="{x:Static helper:MessageHelper.ModEventsHeader}" Margin="0,0,10,0">
+            <GroupBox Grid.Column="0" Header="{x:Static helper:UITextHelper.ModEventsHeader}" Margin="0,0,10,0">
                 <Grid>
                     <Grid.RowDefinitions>
                         <RowDefinition Height="*"/>
@@ -98,15 +98,15 @@
                              Margin="0,0,0,10"/>
 
                     <StackPanel Grid.Row="1">
-                        <Button Content="{x:Static helper:MessageHelper.AddEvent}" 
+                        <Button Content="{x:Static helper:UITextHelper.AddEvent}" 
                                 Style="{StaticResource ActionButton}" 
                                 Margin="0,0,0,5"
                                 Background="#FF4CAF50" 
                                 Foreground="White"/>
-                        <Button Content="{x:Static helper:MessageHelper.EditEvent}" 
+                        <Button Content="{x:Static helper:UITextHelper.EditEvent}" 
                                 Style="{StaticResource ActionButton}"
                                 Margin="0,0,0,5"/>
-                        <Button Content="{x:Static helper:MessageHelper.RemoveEvent}" 
+                        <Button Content="{x:Static helper:UITextHelper.RemoveEvent}" 
                                 Style="{StaticResource ActionButton}"
                                 Background="#FFFF5252" 
                                 Foreground="White"/>
@@ -115,31 +115,31 @@
             </GroupBox>
 
             <!-- Editor Panel -->
-            <GroupBox Grid.Column="1" Header="{x:Static helper:MessageHelper.EventEditorHeader}">
+            <GroupBox Grid.Column="1" Header="{x:Static helper:UITextHelper.EventEditorHeader}">
                 <Grid>
                     <!-- UI Mode Panel -->
                     <StackPanel Visibility="{Binding IsUIMode, Converter={StaticResource BoolToVisibilityConverter}}">
-                        <TextBlock Text="{x:Static helper:MessageHelper.UIModeEditorTitle}" FontSize="16" FontWeight="Bold" Margin="0,0,0,10"/>
-                        <TextBlock Text="{x:Static helper:MessageHelper.UIModeEditorSubtitle}" 
+                        <TextBlock Text="{x:Static helper:UITextHelper.UIModeEditorTitle}" FontSize="16" FontWeight="Bold" Margin="0,0,0,10"/>
+                        <TextBlock Text="{x:Static helper:UITextHelper.UIModeEditorSubtitle}" 
                                    Foreground="Gray" 
                                    TextWrapping="Wrap"
                                    Margin="0,0,0,20"/>
-                        <TextBlock Text="{x:Static helper:MessageHelper.FeatureComingSoon}" 
+                        <TextBlock Text="{x:Static helper:UITextHelper.FeatureComingSoon}" 
                                    Foreground="Gray" 
                                    FontStyle="Italic"/>
                     </StackPanel>
 
                     <!-- Code Mode Panel -->
                     <StackPanel Visibility="{Binding IsCodeMode, Converter={StaticResource BoolToVisibilityConverter}}">
-                        <TextBlock Text="{x:Static helper:MessageHelper.CodeModeEditorTitle}" FontSize="16" FontWeight="Bold" Margin="0,0,0,10"/>
-                        <TextBlock Text="{x:Static helper:MessageHelper.CodeModeEditorSubtitle}" 
+                        <TextBlock Text="{x:Static helper:UITextHelper.CodeModeEditorTitle}" FontSize="16" FontWeight="Bold" Margin="0,0,0,10"/>
+                        <TextBlock Text="{x:Static helper:UITextHelper.CodeModeEditorSubtitle}" 
                                    Foreground="Gray" 
                                    TextWrapping="Wrap"
                                    Margin="0,0,0,20"/>
                         <TextBox Style="{StaticResource MultilineTextBox}" 
                                  Height="400"
                                  FontFamily="Consolas"
-                                 Text="{x:Static helper:MessageHelper.CodeEditorPlaceholder}"/>
+                                 Text="{x:Static helper:UITextHelper.CodeEditorPlaceholder}"/>
                     </StackPanel>
                 </Grid>
             </GroupBox>

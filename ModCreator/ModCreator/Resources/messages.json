@@ -11,6 +11,8 @@
   "ErrorDeletingProject": "Error deleting project:\n{0}",
   "ErrorLoadingProjects": "Error loading projects:\n{0}",
   "ErrorOpeningFolder": "Error opening folder:\n{0}",
+  "ErrorOpeningHelpWindow": "Error opening Help window",
+  "ErrorOpeningAboutWindow": "Error opening About window",
   "ErrorUpdatingProject": "Error updating project:\n{0}",
   "LoadedProjects": "Loaded {0} projects",
   "NewProjectTitle": "Create New Project",
@@ -91,5 +93,9 @@
   "CodeModeEditorTitle": "Code Mode Editor",
   "CodeModeEditorSubtitle": "Direct code editing for ModEvents",
   "FeatureComingSoon": "This feature will be implemented in future updates.",
-  "CodeEditorPlaceholder": "// Code editor will be implemented here"
+  "CodeEditorPlaceholder": "// Code editor will be implemented here",
+  "ErrorFillRequiredFields": "Please fill in all required fields!",
+  "ErrorWorkplaceNotSet": "Workplace path is not set!",
+  "ErrorInitializingWindow": "Error initializing window {0}",
+  "InitializationError": "Initialization Error"
 }
