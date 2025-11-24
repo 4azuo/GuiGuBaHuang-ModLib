@@ -1,13 +1,13 @@
-using System;
-using System.ComponentModel;
+using ModCreator.Commons;
 using ModCreator.Enums;
+using System;
 
 namespace ModCreator.Models
 {
     /// <summary>
     /// Represents a mod project
     /// </summary>
-    public class ModProject : ModCreator.Commons.AutoNotifiableObject
+    public class ModProject : AutoNotifiableObject
     {
         public string ProjectId { get; set; }
         public string ProjectName { get; set; }
@@ -15,10 +15,6 @@ namespace ModCreator.Models
         public DateTime CreatedDate { get; set; }
         public DateTime LastModifiedDate { get; set; }
         public string Description { get; set; }
-        
-        /// <summary>
-        /// Project state (Valid or ProjectNotFound)
-        /// </summary>
         public ProjectState State { get; set; } = ProjectState.Valid;
     }
 }

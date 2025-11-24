@@ -18,16 +18,21 @@ namespace ModCreator.Windows
         /// </summary>
         public ModProject ProjectToEdit { get; set; }
 
+        private void ProjectEditorWindow_Loaded(object sender, RoutedEventArgs e)
+        {
+            // Now ProjectToEdit has been set by the caller
+            if (ProjectToEdit != null && WindowData != null)
+            {
+                WindowData.Project = ProjectToEdit;
+            }
+        }
+
         public override ProjectEditorWindowData InitData(CancelEventArgs e)
         {
             var data = new ProjectEditorWindowData();
             data.New();
             
-            // Set project if provided
-            if (ProjectToEdit != null)
-            {
-                data.Project = ProjectToEdit;
-            }
+            Loaded += ProjectEditorWindow_Loaded;
             
             return data;
         }
@@ -37,19 +42,16 @@ namespace ModCreator.Windows
             try
             {
                 WindowData.SaveProject();
-                DialogResult = true;
-                Close();
             }
             catch (Exception ex)
             {
-                DebugHelper.ShowError(ex, MessageHelper.Get("Error"),
-                    MessageHelper.GetFormat("ErrorUpdatingProject", ex.Message));
+                DebugHelper.ShowError(ex, MessageHelper.Get("Messages.Error.Title"),
+                    MessageHelper.GetFormat("Messages.Error.ErrorUpdatingProject", ex.Message));
             }
         }
 
         private void Close_Click(object sender, RoutedEventArgs e)
         {
-            DialogResult = false;
             Close();
         }
 
@@ -57,11 +59,38 @@ namespace ModCreator.Windows
 
         private void AddConf_Click(object sender, RoutedEventArgs e)
         {
-            // TODO: Show AddConfWindow dialog
-            MessageBox.Show(MessageHelper.Get("FeatureComingSoon"), 
-                MessageHelper.Get("Info"), 
-                MessageBoxButton.OK, 
-                MessageBoxImage.Information);
+            try
+            {
+                var addConfWindow = new AddConfWindow
+                {
+                    Owner = this
+                };
+
+                if (addConfWindow.ShowDialog() == true)
+                {
+                    var selectedConfig = addConfWindow.WindowData.SelectedConfig;
+                    if (selectedConfig != null)
+                    {
+                        // Copy the selected configuration file to ModConf folder
+                        var confPath = Path.Combine(WindowData.Project.ProjectPath, "ModProject", "ModConf");
+                        Directory.CreateDirectory(confPath);
+
+                        var fileName = addConfWindow.WindowData.GetFileName();
+                        var destPath = Path.Combine(confPath, fileName);
+                        File.Copy(selectedConfig.FilePath, destPath, true);
+
+                        // Reload configuration list
+                        WindowData.LoadConfFiles();
+
+                        // Select the newly added file
+                        WindowData.SelectedConfFile = fileName;
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                DebugHelper.ShowError(ex, MessageHelper.Get("Messages.Error.Title"), "Failed to add configuration file");
+            }
         }
 
         private void RemoveConf_Click(object sender, RoutedEventArgs e)
@@ -83,13 +112,13 @@ namespace ModCreator.Windows
                     if (File.Exists(filePath))
                     {
                         File.Delete(filePath);
-                        WindowData.ConfFiles.Remove(WindowData.SelectedConfFile);
-                        WindowData.SelectedConfFile = null;
+                        // Reload configuration list
+                        WindowData.LoadConfFiles();
                     }
                 }
                 catch (Exception ex)
                 {
-                    DebugHelper.ShowError(ex, MessageHelper.Get("Error"), "Failed to delete configuration file");
+                    DebugHelper.ShowError(ex, MessageHelper.Get("Messages.Error.Title"), "Failed to delete configuration file");
                 }
             }
         }
@@ -122,11 +151,11 @@ namespace ModCreator.Windows
                         }
 
                         // Reload image list
-                        WindowData.ReloadProjectData();
+                        WindowData.LoadImageFiles();
                     }
                     catch (Exception ex)
                     {
-                        DebugHelper.ShowError(ex, MessageHelper.Get("Error"), "Failed to import image");
+                        DebugHelper.ShowError(ex, MessageHelper.Get("Messages.Error.Title"), "Failed to import image");
                     }
                 }
             }
@@ -148,16 +177,16 @@ namespace ModCreator.Windows
                 {
                     try
                     {
-                        var sourcePath = WindowData.SelectedImagePath;
+                        var sourcePath = Path.Combine(WindowData.Project.ProjectPath, "ModProject", "ModImg", WindowData.SelectedImageFile);
                         File.Copy(sourcePath, dialog.FileName, true);
                         MessageBox.Show("Image exported successfully!", 
-                            MessageHelper.Get("Success"), 
+                            MessageHelper.Get("Messages.Success.Title"), 
                             MessageBoxButton.OK, 
                             MessageBoxImage.Information);
                     }
                     catch (Exception ex)
                     {
-                        DebugHelper.ShowError(ex, MessageHelper.Get("Error"), "Failed to export image");
+                        DebugHelper.ShowError(ex, MessageHelper.Get("Messages.Error.Title"), "Failed to export image");
                     }
                 }
             }
@@ -178,18 +207,97 @@ namespace ModCreator.Windows
             {
                 try
                 {
-                    var filePath = WindowData.SelectedImagePath;
+                    // Get file path before clearing selection
+                    var filePath = Path.Combine(WindowData.Project.ProjectPath, "ModProject", "ModImg", WindowData.SelectedImageFile);
+                    
+                    // Clear selection (this releases the BitmapImage since it's frozen)
+                    WindowData.SelectedImageFile = null;
+                    
+                    // Delete file - no lock since BitmapImage was loaded with CacheOption.OnLoad and Freeze()
                     if (File.Exists(filePath))
                     {
                         File.Delete(filePath);
-                        WindowData.ImageFiles.Remove(WindowData.SelectedImageFile);
-                        WindowData.SelectedImageFile = null;
+                        // Reload image list after deletion
+                        WindowData.LoadImageFiles();
                     }
                 }
                 catch (Exception ex)
                 {
-                    DebugHelper.ShowError(ex, MessageHelper.Get("Error"), "Failed to delete image");
+                    DebugHelper.ShowError(ex, MessageHelper.Get("Messages.Error.Title"), "Failed to delete image");
                 }
+            }
+        }
+
+        #endregion
+
+        #region Tab 1, 2, 3: Folder and Refresh Event Handlers
+
+        private void OpenProjectFolder_Click(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                if (WindowData?.Project != null && Directory.Exists(WindowData.Project.ProjectPath))
+                {
+                    var projectPath = Path.Combine(WindowData.Project.ProjectPath, "ModProject");
+                    if (Directory.Exists(projectPath))
+                    {
+                        System.Diagnostics.Process.Start("explorer.exe", projectPath);
+                    }
+                    else
+                    {
+                        System.Diagnostics.Process.Start("explorer.exe", WindowData.Project.ProjectPath);
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                DebugHelper.ShowError(ex, MessageHelper.Get("Messages.Error.Title"), "Failed to open folder");
+            }
+        }
+
+        private void OpenModConfFolder_Click(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                if (WindowData?.Project != null)
+                {
+                    var confPath = Path.Combine(WindowData.Project.ProjectPath, "ModProject", "ModConf");
+                    Directory.CreateDirectory(confPath);
+                    System.Diagnostics.Process.Start("explorer.exe", confPath);
+                }
+            }
+            catch (Exception ex)
+            {
+                DebugHelper.ShowError(ex, MessageHelper.Get("Messages.Error.Title"), "Failed to open ModConf folder");
+            }
+        }
+
+        private void OpenModImgFolder_Click(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                if (WindowData?.Project != null)
+                {
+                    var imgPath = Path.Combine(WindowData.Project.ProjectPath, "ModProject", "ModImg");
+                    Directory.CreateDirectory(imgPath);
+                    System.Diagnostics.Process.Start("explorer.exe", imgPath);
+                }
+            }
+            catch (Exception ex)
+            {
+                DebugHelper.ShowError(ex, MessageHelper.Get("Messages.Error.Title"), "Failed to open ModImg folder");
+            }
+        }
+
+        private void RefreshTab_Click(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                WindowData?.ReloadProjectData();
+            }
+            catch (Exception ex)
+            {
+                DebugHelper.ShowError(ex, MessageHelper.Get("Messages.Error.Title"), "Failed to refresh");
             }
         }
 
@@ -200,8 +308,8 @@ namespace ModCreator.Windows
         private void GenerateVariablesCode_Click(object sender, RoutedEventArgs e)
         {
             // TODO: Generate code from EventTemplate.tmp
-            MessageBox.Show(MessageHelper.Get("FeatureComingSoon"), 
-                MessageHelper.Get("Info"), 
+            MessageBox.Show(MessageHelper.Get("Windows.ProjectEditorWindow.FeatureComingSoon"), 
+                MessageHelper.Get("Messages.Info.Title"), 
                 MessageBoxButton.OK, 
                 MessageBoxImage.Information);
         }

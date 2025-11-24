@@ -21,11 +21,7 @@ namespace ModCreator.Helpers
         /// </summary>
         public static string GetProjectsDataFilePath()
         {
-            // Save projects.json in GUIGUBAHUANG-MODLIB/ModCreator/projects.json
-            var modCreatorDir = Path.Combine(ModCreator.Constants.RootDir, "ModCreator");
-            if (!Directory.Exists(modCreatorDir))
-                Directory.CreateDirectory(modCreatorDir);
-            return Path.Combine(modCreatorDir, PROJECTS_DATA_FILE);
+            return Path.GetFullPath(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, PROJECTS_DATA_FILE));
         }
 
         /// <summary>
@@ -33,9 +29,7 @@ namespace ModCreator.Helpers
         /// </summary>
         public static string GetProjectTemplatePath()
         {
-            // Use absolute path to ProjectTemplate folder
-            var templatePath = Path.Combine(ModCreator.Constants.ResourcesDir, PROJECT_TEMPLATE_NAME);
-            return templatePath;
+            return Path.GetFullPath(Path.Combine(Constants.ResourcesDir, PROJECT_TEMPLATE_NAME));
         }
 
         /// <summary>
@@ -117,15 +111,25 @@ namespace ModCreator.Helpers
         {
             try
             {
-                // Read replacements configuration
-                var replacementsFile = ModCreator.Constants.ProjectReplacementsFilePath;
-                if (!File.Exists(replacementsFile))
+                // Read replacements configuration from embedded resource
+                var assembly = System.Reflection.Assembly.GetExecutingAssembly();
+                var resourceName = "ModCreator.Resources.new-project-replacements.json";
+                
+                string json;
+                using (Stream stream = assembly.GetManifestResourceStream(resourceName))
                 {
-                    DebugHelper.Warning($"Replacements file not found at {replacementsFile}");
-                    return;
+                    if (stream == null)
+                    {
+                        DebugHelper.Warning($"Embedded resource not found: {resourceName}");
+                        return;
+                    }
+                    
+                    using (StreamReader reader = new StreamReader(stream))
+                    {
+                        json = reader.ReadToEnd();
+                    }
                 }
 
-                var json = FileHelper.ReadTextFile(replacementsFile);
                 var config = JsonConvert.DeserializeObject<ProjectReplacementsConfig>(json);
                 if (config == null || config.Position == null || config.KeyValues == null)
                 {

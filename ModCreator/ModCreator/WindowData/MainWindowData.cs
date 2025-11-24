@@ -148,11 +148,11 @@ namespace ModCreator.WindowData
                     }
                 }
                 
-                StatusMessage = MessageHelper.GetFormat("LoadedProjects", AllProjects.Count);
+                StatusMessage = MessageHelper.GetFormat("Messages.Success.LoadedProjects", AllProjects.Count);
             }
             catch (Exception ex)
             {
-                StatusMessage = MessageHelper.GetFormat("ErrorLoadingProjects", ex.Message);
+                StatusMessage = MessageHelper.GetFormat("Messages.Error.ErrorLoadingProjects", ex.Message);
                 AllProjects = new List<ModProject>();
             }
         }
@@ -166,7 +166,7 @@ namespace ModCreator.WindowData
             AllProjects.Add(newProject);
             ProjectHelper.SaveProjects(AllProjects);
             UpdateFilteredProjects();
-            StatusMessage = MessageHelper.GetFormat("CreatedProject", projectName);
+            StatusMessage = MessageHelper.GetFormat("Messages.Success.CreatedProject", projectName);
             return newProject;
         }
 
@@ -183,7 +183,7 @@ namespace ModCreator.WindowData
                 ProjectHelper.SaveProjects(AllProjects);
                 SelectedProject = null;
                 UpdateFilteredProjects();
-                StatusMessage = MessageHelper.GetFormat("DeletedProject", projectName);
+                StatusMessage = MessageHelper.GetFormat("Messages.Success.DeletedProject", projectName);
             }
         }
 
@@ -195,7 +195,7 @@ namespace ModCreator.WindowData
             if (SelectedProject != null)
             {
                 ProjectHelper.OpenProjectFolder(SelectedProject);
-                StatusMessage = MessageHelper.GetFormat("OpenedFolder", SelectedProject.ProjectName);
+                StatusMessage = MessageHelper.GetFormat("Messages.Success.OpenedFolder", SelectedProject.ProjectName);
             }
         }
 
@@ -234,13 +234,13 @@ namespace ModCreator.WindowData
             {
                 if (!Directory.Exists(WorkplacePath))
                 {
-                    StatusMessage = MessageHelper.GetFormat("WorkplacePathNotFound", WorkplacePath);
+                    StatusMessage = MessageHelper.GetFormat("Messages.Error.WorkplacePathNotFound", WorkplacePath);
                     return;
                 }
                 
                 Properties.Settings.Default.WorkplacePath = WorkplacePath;
                 Properties.Settings.Default.Save();
-                StatusMessage = MessageHelper.GetFormat("WorkplacePathSaved", WorkplacePath);
+                StatusMessage = MessageHelper.GetFormat("Messages.Success.WorkplacePathSaved", WorkplacePath);
             }
         }
 

@@ -49,7 +49,7 @@ namespace ModCreator.Windows
         {
             try
             {
-                System.Diagnostics.Debug.WriteLine($"[CWindow] Initializing {GetType().Name}");
+                DebugHelper.Info($"[CWindow] Initializing {GetType().Name}");
                 
                 // Call InitializeComponent
                 var initMethod = GetType().GetMethod(COMP_INIT_METHOD);
@@ -63,33 +63,33 @@ namespace ModCreator.Windows
                 initMethod.Invoke(this, null);
                 WindowStartupLocation = WindowStartupLocation.CenterScreen;
 
-                System.Diagnostics.Debug.WriteLine($"[CWindow] InitializeComponent completed for {GetType().Name}");
+                DebugHelper.Info($"[CWindow] InitializeComponent completed for {GetType().Name}");
 
                 // Initialize data
                 var initDataFlg = new CancelEventArgs(false);
                 WindowData = InitData(initDataFlg);
                 DataContext = WindowData;
 
-                System.Diagnostics.Debug.WriteLine($"[CWindow] WindowData initialized for {GetType().Name}");
+                DebugHelper.Info($"[CWindow] WindowData initialized for {GetType().Name}");
 
                 // Wire up events
                 Loaded += (s, e) =>
                 {
-                    System.Diagnostics.Debug.WriteLine($"[CWindow] Window Loaded event for {GetType().Name}");
+                    DebugHelper.Info($"[CWindow] Window Loaded event for {GetType().Name}");
                     WindowData.InitWindow(this, initDataFlg);
                 };
 
                 Closing += (s, e) =>
                 {
-                    System.Diagnostics.Debug.WriteLine($"[CWindow] Window Closing event for {GetType().Name}");
+                    DebugHelper.Info($"[CWindow] Window Closing event for {GetType().Name}");
                     ClosingWindow(s, e);
                 };
                 
-                System.Diagnostics.Debug.WriteLine($"[CWindow] Constructor completed successfully for {GetType().Name}");
+                DebugHelper.Info($"[CWindow] Constructor completed successfully for {GetType().Name}");
             }
             catch (Exception ex)
             {
-                DebugHelper.ShowError(ex, MessageHelper.Get("InitializationError"), MessageHelper.GetFormat("ErrorInitializingWindow", GetType().Name));
+                DebugHelper.ShowError(ex, MessageHelper.Get("Messages.Info.InitializationError"), MessageHelper.GetFormat("Messages.Error.ErrorInitializingWindow", GetType().Name));
                 throw;
             }
         }

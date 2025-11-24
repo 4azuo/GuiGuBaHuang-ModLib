@@ -12,6 +12,9 @@ namespace ModCreator
         {
             base.OnStartup(e);
 
+            // Load settings
+            SettingHelper.EnsureLoaded();
+
             // Cleanup old logs
             DebugHelper.CleanupOldLogs(keepDays: 7);
 

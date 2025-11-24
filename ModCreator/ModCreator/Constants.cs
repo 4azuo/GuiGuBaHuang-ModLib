@@ -1,3 +1,7 @@
+using ModCreator.Helpers;
+using System;
+using System.IO;
+
 namespace ModCreator
 {
     /// <summary>
@@ -6,34 +10,29 @@ namespace ModCreator
     public static class Constants
     {
         /// <summary>
-        /// Root directory of the project (GUIGUBAHUANG-MODLIB/ModCreator)
+        /// Root directory of the project
         /// </summary>
-        public static readonly string RootDir = @"C:\git\GuiGuBaHuang-ModLib\";
+        public static string RootDir => SettingHelper.Get("rootDir");
 
         /// <summary>
         /// Documentation directory (.github/docs)
         /// </summary>
-        public static readonly string DocsDir = System.IO.Path.Combine(RootDir, "..", ".github", "docs");
+        public static readonly string DocsDir = Path.GetFullPath(Path.Combine(RootDir, ".github", "docs"));
 
         /// <summary>
         /// Resources directory (bin/*/Resources)
         /// </summary>
-        public static readonly string ResourcesDir = System.IO.Path.Combine(System.AppDomain.CurrentDomain.BaseDirectory, "Resources");
+        public static readonly string ResourcesDir = Path.GetFullPath(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Resources"));
 
         /// <summary>
         /// Messages file path (bin/*/Resources/messages.json)
         /// </summary>
-        public static readonly string MessagesFilePath = System.IO.Path.Combine(ResourcesDir, "messages.json");
-
-        /// <summary>
-        /// Project replacements configuration file path
-        /// </summary>
-        public static readonly string ProjectReplacementsFilePath = System.IO.Path.Combine(ResourcesDir, "new-project-replacements.json");
+        public static readonly string MessagesFilePath = Path.GetFullPath(Path.Combine(ResourcesDir, "messages.json"));
 
         /// <summary>
         /// Log directory (Logs in root)
         /// </summary>
-        public static readonly string LogsDir = System.IO.Path.Combine(System.AppDomain.CurrentDomain.BaseDirectory, "logs");
+        public static readonly string LogsDir = Path.GetFullPath(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "logs"));
 
         /// <summary>
         /// Default workplace directory name

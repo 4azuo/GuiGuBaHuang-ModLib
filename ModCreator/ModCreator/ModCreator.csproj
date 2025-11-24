@@ -34,7 +34,7 @@
     <None Update="Resources\messages.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Update="Resources\new-project-replacements.json">
+    <None Update="Resources\settings.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
   </ItemGroup>
@@ -50,6 +50,28 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
       <Link>Resources\ModProject_0hKMNX\%(RecursiveDir)%(FileName)%(Extension)</Link>
     </None>
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="Resources\embeded-settings.json" />
+    <None Remove="Resources\var-types.json" />
+    <None Remove="Resources\new-project-replacements.json" />
+    <None Remove="Resources\image-extensions.json" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\embeded-settings.json">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\var-types.json">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\new-project-replacements.json">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\image-extensions.json">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </EmbeddedResource>
   </ItemGroup>
 
 </Project>

@@ -1,9 +1,14 @@
+using ModCreator.Attributes;
 using ModCreator.Commons;
 using ModCreator.Enums;
 using ModCreator.Models;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Reflection;
+using System.Text.Json;
+using System.Windows.Media.Imaging;
 
 namespace ModCreator.WindowData
 {
@@ -12,57 +17,13 @@ namespace ModCreator.WindowData
     /// </summary>
     public class ProjectEditorWindowData : CWindowData
     {
-        #region Private Fields
-        private ModProject _project;
-        private string _selectedConfFile;
-        private string _selectedConfContent;
-        private string _selectedImageFile;
-        #endregion
-
         #region Properties
 
         /// <summary>
         /// Project being edited
         /// </summary>
-        public ModProject Project
-        {
-            get => _project;
-            set
-            {
-                _project = value;
-                LoadProjectData();
-            }
-        }
-
-        /// <summary>
-        /// Project name (editable)
-        /// </summary>
-        public string ProjectName
-        {
-            get => Project?.ProjectName;
-            set
-            {
-                if (Project != null && Project.ProjectName != value)
-                {
-                    Project.ProjectName = value;
-                }
-            }
-        }
-
-        /// <summary>
-        /// Project description (editable)
-        /// </summary>
-        public string ProjectDescription
-        {
-            get => Project?.Description;
-            set
-            {
-                if (Project != null && Project.Description != value)
-                {
-                    Project.Description = value;
-                }
-            }
-        }
+        [NotifyMethod(nameof(LoadProjectData))]
+        public ModProject Project { get; set; }
 
         #region Tab 2: ModConf
 
@@ -74,24 +35,13 @@ namespace ModCreator.WindowData
         /// <summary>
         /// Selected configuration file
         /// </summary>
-        public string SelectedConfFile
-        {
-            get => _selectedConfFile;
-            set
-            {
-                _selectedConfFile = value;
-                LoadConfContent();
-            }
-        }
+        [NotifyMethod(nameof(LoadConfContent))]
+        public string SelectedConfFile { get; set; }
 
         /// <summary>
         /// Content of selected configuration file
         /// </summary>
-        public string SelectedConfContent
-        {
-            get => _selectedConfContent;
-            set => _selectedConfContent = value;
-        }
+        public string SelectedConfContent { get; set; }
 
         /// <summary>
         /// Check if a conf file is selected
@@ -108,24 +58,44 @@ namespace ModCreator.WindowData
         public List<string> ImageFiles { get; set; } = new List<string>();
 
         /// <summary>
-        /// Selected image file
+        /// Supported image extensions loaded from image-extensions.json
         /// </summary>
-        public string SelectedImageFile
-        {
-            get => _selectedImageFile;
-            set => _selectedImageFile = value;
-        }
+        public List<ImageExtension> ImageExtensions { get; set; } = new List<ImageExtension>();
 
         /// <summary>
-        /// Full path to selected image
+        /// Selected image file
         /// </summary>
-        public string SelectedImagePath
+        [NotifyMethod(nameof(OnSelectedImageChanged))]
+        public string SelectedImageFile { get; set; }
+
+        /// <summary>
+        /// BitmapImage for selected image (loaded without file locking)
+        /// </summary>
+        public BitmapImage SelectedImagePath
         {
             get
             {
                 if (string.IsNullOrEmpty(SelectedImageFile) || Project == null)
                     return null;
-                return Path.Combine(Project.ProjectPath, "ModProject", "ModImg", SelectedImageFile);
+
+                var filePath = Path.Combine(Project.ProjectPath, "ModProject", "ModImg", SelectedImageFile);
+                if (!File.Exists(filePath))
+                    return null;
+
+                try
+                {
+                    var bitmap = new BitmapImage();
+                    bitmap.BeginInit();
+                    bitmap.CacheOption = BitmapCacheOption.OnLoad; // Load into memory, release file handle
+                    bitmap.UriSource = new Uri(filePath, UriKind.Absolute);
+                    bitmap.EndInit();
+                    bitmap.Freeze(); // Make it cross-thread accessible and ensure file is released
+                    return bitmap;
+                }
+                catch
+                {
+                    return null;
+                }
             }
         }
 
@@ -143,6 +113,11 @@ namespace ModCreator.WindowData
         /// </summary>
         public List<GlobalVariable> GlobalVariables { get; set; } = new List<GlobalVariable>();
 
+        /// <summary>
+        /// Available variable types loaded from var-types.json
+        /// </summary>
+        public List<VarType> VarTypes { get; set; } = new List<VarType>();
+
         #endregion
 
         #endregion
@@ -152,10 +127,12 @@ namespace ModCreator.WindowData
         /// <summary>
         /// Load all project data when project is set
         /// </summary>
-        private void LoadProjectData()
+        public void LoadProjectData(string propName = "")
         {
             if (Project == null) return;
 
+            LoadVarTypes();
+            LoadImageExtensions();
             LoadConfFiles();
             LoadImageFiles();
             LoadGlobalVariables();
@@ -172,7 +149,7 @@ namespace ModCreator.WindowData
         /// <summary>
         /// Load configuration files from ModConf directory
         /// </summary>
-        private void LoadConfFiles()
+        public void LoadConfFiles()
         {
             ConfFiles.Clear();
             if (Project == null) return;
@@ -190,7 +167,7 @@ namespace ModCreator.WindowData
         /// <summary>
         /// Load content of selected configuration file
         /// </summary>
-        private void LoadConfContent()
+        public void LoadConfContent(string propName = "")
         {
             if (string.IsNullOrEmpty(SelectedConfFile) || Project == null)
             {
@@ -222,9 +199,45 @@ namespace ModCreator.WindowData
         }
 
         /// <summary>
+        /// Called when SelectedImageFile changes to trigger SelectedImagePath update
+        /// </summary>
+        public void OnSelectedImageChanged(string propName = "")
+        {
+            // Trigger SelectedImagePath property change notification
+            // This causes the Image control to reload with the new bitmap
+        }
+
+        /// <summary>
+        /// Load supported image extensions from image-extensions.json
+        /// </summary>
+        public void LoadImageExtensions()
+        {
+            ImageExtensions.Clear();
+
+            var assembly = Assembly.GetExecutingAssembly();
+            const string resourceName = "ModCreator.Resources.image-extensions.json";
+
+            using (var stream = assembly.GetManifestResourceStream(resourceName))
+            {
+                if (stream != null)
+                {
+                    using (var reader = new StreamReader(stream))
+                    {
+                        var json = reader.ReadToEnd();
+                        var extensions = JsonSerializer.Deserialize<List<ImageExtension>>(json);
+                        if (extensions != null)
+                        {
+                            ImageExtensions.AddRange(extensions);
+                        }
+                    }
+                }
+            }
+        }
+
+        /// <summary>
         /// Load image files from ModImg directory
         /// </summary>
-        private void LoadImageFiles()
+        public void LoadImageFiles()
         {
             ImageFiles.Clear();
             if (Project == null) return;
@@ -232,9 +245,15 @@ namespace ModCreator.WindowData
             var imgDir = Path.Combine(Project.ProjectPath, "ModProject", "ModImg");
             if (Directory.Exists(imgDir))
             {
+                if (ImageExtensions.Count == 0)
+                {
+                    throw new InvalidOperationException("ImageExtensions not loaded. Cannot load image files.");
+                }
+
+                var supportedExtensions = ImageExtensions.Select(e => e.Extension.ToLower()).ToList();
+
                 var files = Directory.GetFiles(imgDir, "*.*")
-                    .Where(f => new[] { ".png", ".jpg", ".jpeg", ".bmp", ".gif" }
-                        .Contains(Path.GetExtension(f).ToLower()))
+                    .Where(f => supportedExtensions.Contains(Path.GetExtension(f).ToLower()))
                     .Select(Path.GetFileName)
                     .ToList();
                 ImageFiles = files;
@@ -242,9 +261,33 @@ namespace ModCreator.WindowData
         }
 
         /// <summary>
-        /// Load global variables from file or create default
+        /// Load variable types from var-types.json
         /// </summary>
-        private void LoadGlobalVariables()
+        public void LoadVarTypes()
+        {
+            VarTypes.Clear();
+
+            var assembly = Assembly.GetExecutingAssembly();
+            const string resourceName = "ModCreator.Resources.var-types.json";
+
+            using (var stream = assembly.GetManifestResourceStream(resourceName))
+            {
+                if (stream != null)
+                {
+                    using (var reader = new StreamReader(stream))
+                    {
+                        var json = reader.ReadToEnd();
+                        var types = JsonSerializer.Deserialize<List<VarType>>(json);
+                        if (types != null)
+                        {
+                            VarTypes.AddRange(types);
+                        }
+                    }
+                }
+            }
+        }
+
+        public void LoadGlobalVariables()
         {
             GlobalVariables.Clear();
             // TODO: Load from file or database
@@ -282,22 +325,11 @@ namespace ModCreator.WindowData
         /// <summary>
         /// Save global variables to file
         /// </summary>
-        private void SaveGlobalVariables()
+        public void SaveGlobalVariables()
         {
             // TODO: Implement save to file
         }
 
         #endregion
-    }
-
-    /// <summary>
-    /// Global variable model
-    /// </summary>
-    public class GlobalVariable
-    {
-        public string Name { get; set; }
-        public string Type { get; set; }
-        public string Value { get; set; }
-        public string Description { get; set; }
     }
 }

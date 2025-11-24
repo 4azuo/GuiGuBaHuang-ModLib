@@ -7,13 +7,18 @@
         xmlns:local="clr-namespace:ModCreator.Windows"
         xmlns:localData="clr-namespace:ModCreator.WindowData"
         xmlns:helper="clr-namespace:ModCreator.Helpers"
+        xmlns:converter="clr-namespace:ModCreator.Converters"
         xmlns:markdig="clr-namespace:Markdig.Wpf;assembly=Markdig.Wpf"
         mc:Ignorable="d"
-        Title="{x:Static helper:UITextHelper.Help}" 
+        Title="{x:Static helper:HelpWindowText.Help}" 
         Height="700" Width="1000"
         WindowStartupLocation="CenterScreen"
         Icon="/Resources/app-icon.png"
         FontFamily="Segoe UI">
+
+    <Window.Resources>
+        <converter:BoolToIconConverter x:Key="BoolToIconConverter"/>
+    </Window.Resources>
 
     <Grid>
         <Grid.RowDefinitions>
@@ -24,8 +29,8 @@
         <!-- Header -->
         <Border Grid.Row="0" Background="#FF2E5090" Padding="15">
             <StackPanel>
-                <TextBlock Text="{x:Static helper:UITextHelper.HelpTitle}" FontSize="24" FontWeight="Bold" Foreground="White"/>
-                <TextBlock Text="{x:Static helper:UITextHelper.HelpSubtitle}" FontSize="12" Foreground="#FFCCCCCC" Margin="0,5,0,0"/>
+                <TextBlock Text="{x:Static helper:HelpWindowText.HelpTitle}" FontSize="24" FontWeight="Bold" Foreground="White"/>
+                <TextBlock Text="{x:Static helper:HelpWindowText.HelpSubtitle}" FontSize="12" Foreground="#FFCCCCCC" Margin="0,5,0,0"/>
             </StackPanel>
         </Border>
 
@@ -45,19 +50,33 @@
                     </Grid.RowDefinitions>
 
                     <TextBlock Grid.Row="0" 
-                               Text="{x:Static helper:UITextHelper.Topics}" 
+                               Text="{x:Static helper:HelpWindowText.Topics}" 
                                FontSize="14" 
                                FontWeight="SemiBold"
                                Padding="15,10"
                                Background="#FFF5F5F5"/>
 
-                    <ListBox Grid.Row="1" 
-                             Name="lstDocs"
-                             ItemsSource="{Binding DocItems, Mode=OneWay}"
-                             SelectedItem="{Binding SelectedDoc, Mode=TwoWay}"
-                             DisplayMemberPath="Title"
-                             SelectionMode="Single"
-                             BorderThickness="0"/>
+                    <TreeView Grid.Row="1" 
+                              Name="tvDocs"
+                              ItemsSource="{Binding DocItems, Mode=OneWay}"
+                              BorderThickness="0"
+                              SelectedItemChanged="TreeView_SelectedItemChanged">
+                        <TreeView.ItemContainerStyle>
+                            <Style TargetType="TreeViewItem">
+                                <Setter Property="IsExpanded" Value="True"/>
+                            </Style>
+                        </TreeView.ItemContainerStyle>
+                        <TreeView.ItemTemplate>
+                            <HierarchicalDataTemplate ItemsSource="{Binding Children}">
+                                <StackPanel Orientation="Horizontal">
+                                    <TextBlock Text="{Binding IsFolder, Converter={StaticResource BoolToIconConverter}}" 
+                                               FontFamily="Segoe UI Symbol" 
+                                               Margin="0,0,5,0"/>
+                                    <TextBlock Text="{Binding Title}" Padding="2"/>
+                                </StackPanel>
+                            </HierarchicalDataTemplate>
+                        </TreeView.ItemTemplate>
+                    </TreeView>
                 </Grid>
             </Border>
 

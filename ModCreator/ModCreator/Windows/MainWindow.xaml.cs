@@ -34,7 +34,7 @@ namespace ModCreator
             
             data.WorkplacePath = savedPath;
             data.OnLoad();
-            data.StatusMessage = MessageHelper.Get("Ready");
+            data.StatusMessage = MessageHelper.Get("Messages.Info.Ready");
             
             return data;
         }
@@ -61,8 +61,8 @@ namespace ModCreator
             if (!System.IO.Directory.Exists(project.ProjectPath))
             {
                 DebugHelper.ShowWarning(
-                    MessageHelper.GetFormat("ErrorProjectFolderMissing", project.ProjectPath),
-                    MessageHelper.Get("Error"));
+                    MessageHelper.GetFormat("Messages.Error.ErrorProjectFolderMissing", project.ProjectPath),
+                    MessageHelper.Get("Messages.Error.Title"));
                 return;
             }
             try
@@ -72,15 +72,12 @@ namespace ModCreator
                     Owner = this,
                     ProjectToEdit = project
                 };
-                if (editorWindow.ShowDialog() == true)
-                {
-                    WindowData.UpdateFilteredProjects();
-                }
+                editorWindow.Show();
             }
             catch (Exception ex)
             {
-                DebugHelper.ShowError(ex, MessageHelper.Get("Error"), 
-                    MessageHelper.GetFormat("ErrorUpdatingProject", ex.Message));
+                DebugHelper.ShowError(ex, MessageHelper.Get("Messages.Error.Title"), 
+                    MessageHelper.GetFormat("Messages.Error.ErrorUpdatingProject", ex.Message));
             }
         }
 
@@ -104,22 +101,22 @@ namespace ModCreator
                         WindowData.AllProjects.Add(newProject);
                         ModCreator.Helpers.ProjectHelper.SaveProjects(WindowData.AllProjects);
                         WindowData.UpdateFilteredProjects();
-                        MessageBox.Show(MessageHelper.GetFormat("ProjectSuccessMessage", newProject.ProjectPath), 
-                            MessageHelper.Get("Success"), MessageBoxButton.OK, MessageBoxImage.Information);
+                        MessageBox.Show(MessageHelper.GetFormat("Messages.Success.ProjectSuccessMessage", newProject.ProjectPath), 
+                            MessageHelper.Get("Messages.Success.Title"), MessageBoxButton.OK, MessageBoxImage.Information);
                         // Open editor window for new project
                         var editorWindow = new Windows.ProjectEditorWindow
                         {
                             Owner = this,
                             ProjectToEdit = newProject
                         };
-                        editorWindow.ShowDialog();
+                        editorWindow.Show();
                     }
                 }
             }
             catch (Exception ex)
             {
-                DebugHelper.ShowError(ex, MessageHelper.Get("Error"),
-                    MessageHelper.GetFormat("ErrorCreatingProject", ex.Message));
+                DebugHelper.ShowError(ex, MessageHelper.Get("Messages.Error.Title"),
+                    MessageHelper.GetFormat("Messages.Error.ErrorCreatingProject", ex.Message));
             }
         }
 
@@ -136,8 +133,8 @@ namespace ModCreator
                     !System.IO.Directory.Exists(WindowData.SelectedProject.ProjectPath))
                 {
                     MessageBox.Show(
-                        MessageHelper.GetFormat("ErrorProjectFolderMissing", WindowData.SelectedProject.ProjectPath),
-                        MessageHelper.Get("Error"),
+                        MessageHelper.GetFormat("Messages.Error.ErrorProjectFolderMissing", WindowData.SelectedProject.ProjectPath),
+                        MessageHelper.Get("Messages.Error.Title"),
                         MessageBoxButton.OK,
                         MessageBoxImage.Warning);
                     return;
@@ -146,8 +143,8 @@ namespace ModCreator
             }
             catch (Exception ex)
             {
-                DebugHelper.ShowError(ex, MessageHelper.Get("Error"),
-                    MessageHelper.GetFormat("ErrorOpeningFolder", ex.Message));
+                DebugHelper.ShowError(ex, MessageHelper.Get("Messages.Error.Title"),
+                    MessageHelper.GetFormat("Messages.Error.ErrorOpeningFolder", ex.Message));
             }
         }
 
@@ -158,8 +155,8 @@ namespace ModCreator
             if (!System.IO.Directory.Exists(WindowData.SelectedProject.ProjectPath))
             {
                 MessageBox.Show(
-                    MessageHelper.GetFormat("ErrorProjectFolderMissing", WindowData.SelectedProject.ProjectPath),
-                    MessageHelper.Get("Error"),
+                    MessageHelper.GetFormat("Messages.Error.ErrorProjectFolderMissing", WindowData.SelectedProject.ProjectPath),
+                    MessageHelper.Get("Messages.Error.Title"),
                     MessageBoxButton.OK,
                     MessageBoxImage.Warning);
                 return;
@@ -172,16 +169,12 @@ namespace ModCreator
                     Owner = this,
                     ProjectToEdit = WindowData.SelectedProject
                 };
-                
-                if (editorWindow.ShowDialog() == true)
-                {
-                    WindowData.UpdateFilteredProjects();
-                }
+                editorWindow.Show();
             }
             catch (Exception ex)
             {
-                DebugHelper.ShowError(ex, MessageHelper.Get("Error"),
-                    MessageHelper.GetFormat("ErrorUpdatingProject", ex.Message));
+                DebugHelper.ShowError(ex, MessageHelper.Get("Messages.Error.Title"),
+                    MessageHelper.GetFormat("Messages.Error.ErrorUpdatingProject", ex.Message));
             }
         }
 
@@ -191,12 +184,12 @@ namespace ModCreator
             
             var folderExists = System.IO.Directory.Exists(WindowData.SelectedProject.ProjectPath);
             var message = folderExists 
-                ? MessageHelper.GetFormat("ProjectDeleteMessage", WindowData.SelectedProject.ProjectName)
-                : MessageHelper.GetFormat("ProjectDeleteMessageNoFolder", WindowData.SelectedProject.ProjectName);
+                ? MessageHelper.GetFormat("Messages.Confirmation.ProjectDeleteMessage", WindowData.SelectedProject.ProjectName)
+                : MessageHelper.GetFormat("Messages.Confirmation.ProjectDeleteMessageNoFolder", WindowData.SelectedProject.ProjectName);
             
             var result = MessageBox.Show(
                 message,
-                MessageHelper.Get("ProjectDeleteTitle"),
+                MessageHelper.Get("Messages.Confirmation.ProjectDeleteTitle"),
                 folderExists ? MessageBoxButton.YesNoCancel : MessageBoxButton.OKCancel,
                 MessageBoxImage.Warning);
 
@@ -210,8 +203,8 @@ namespace ModCreator
             }
             catch (Exception ex)
             {
-                DebugHelper.ShowError(ex, MessageHelper.Get("Error"),
-                    MessageHelper.GetFormat("ErrorDeletingProject", ex.Message));
+                DebugHelper.ShowError(ex, MessageHelper.Get("Messages.Error.Title"),
+                    MessageHelper.GetFormat("Messages.Error.ErrorDeletingProject", ex.Message));
             }
         }
 
@@ -220,7 +213,7 @@ namespace ModCreator
         {
             using (var dialog = new FolderBrowserDialog())
             {
-                dialog.Description = MessageHelper.Get("SelectWorkplace");
+                dialog.Description = MessageHelper.Get("Windows.MainWindow.SelectWorkplace");
                 
                 if (!string.IsNullOrEmpty(WindowData.WorkplacePath))
                 {
@@ -246,7 +239,7 @@ namespace ModCreator
             }
             catch (Exception ex)
             {
-                DebugHelper.ShowError(ex, MessageHelper.Get("Error"), MessageHelper.Get("ErrorOpeningHelpWindow"));
+                DebugHelper.ShowError(ex, MessageHelper.Get("Messages.Error.Title"), MessageHelper.Get("Messages.Error.ErrorOpeningHelpWindow"));
             }
         }
 
@@ -262,7 +255,7 @@ namespace ModCreator
             }
             catch (Exception ex)
             {
-                DebugHelper.ShowError(ex, MessageHelper.Get("Error"), MessageHelper.Get("ErrorOpeningAboutWindow"));
+                DebugHelper.ShowError(ex, MessageHelper.Get("Messages.Error.Title"), MessageHelper.Get("Messages.Error.ErrorOpeningAboutWindow"));
             }
         }
 
