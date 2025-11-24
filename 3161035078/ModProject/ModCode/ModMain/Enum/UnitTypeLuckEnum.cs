@@ -1,7 +1,7 @@
 ﻿using MOD_nE7UL2.Const;
 using ModLib.Object;
+using System;
 using System.Collections.Generic;
-using System.Management.Instrumentation;
 
 namespace MOD_nE7UL2.Enum
 {
@@ -34,7 +34,7 @@ namespace MOD_nE7UL2.Enum
         private void CheckExists()
         {
             if (g.conf.roleCreateFeature.GetItemIndex(Value.Parse<int>()) == -1)
-                throw new InstanceNotFoundException();
+                throw new Exception("Instance Not Found");
         }
     }
 }
