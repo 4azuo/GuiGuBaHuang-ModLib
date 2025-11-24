@@ -43,6 +43,19 @@ namespace ModCreator
 
         private void ProjectList_DoubleClick(object sender, System.Windows.Input.MouseButtonEventArgs e)
         {
+            // Check if double-click is on a data row, not on header or empty space
+            var row = e.OriginalSource as System.Windows.FrameworkElement;
+            if (row == null) return;
+            
+            // Walk up the visual tree to find DataGridRow
+            while (row != null && !(row is System.Windows.Controls.DataGridRow))
+            {
+                row = System.Windows.Media.VisualTreeHelper.GetParent(row) as System.Windows.FrameworkElement;
+            }
+            
+            // If not clicked on a DataGridRow, ignore
+            if (row == null) return;
+            
             if (WindowData.SelectedProject == null) return;
             var project = WindowData.SelectedProject;
             if (!System.IO.Directory.Exists(project.ProjectPath))
@@ -119,6 +132,16 @@ namespace ModCreator
         {
             try
             {
+                if (WindowData.SelectedProject != null && 
+                    !System.IO.Directory.Exists(WindowData.SelectedProject.ProjectPath))
+                {
+                    MessageBox.Show(
+                        MessageHelper.GetFormat("ErrorProjectFolderMissing", WindowData.SelectedProject.ProjectPath),
+                        MessageHelper.Get("Error"),
+                        MessageBoxButton.OK,
+                        MessageBoxImage.Warning);
+                    return;
+                }
                 WindowData.OpenProjectFolder();
             }
             catch (Exception ex)
@@ -131,6 +154,16 @@ namespace ModCreator
         private void EditProject_Click(object sender, RoutedEventArgs e)
         {
             if (WindowData.SelectedProject == null) return;
+            
+            if (!System.IO.Directory.Exists(WindowData.SelectedProject.ProjectPath))
+            {
+                MessageBox.Show(
+                    MessageHelper.GetFormat("ErrorProjectFolderMissing", WindowData.SelectedProject.ProjectPath),
+                    MessageHelper.Get("Error"),
+                    MessageBoxButton.OK,
+                    MessageBoxImage.Warning);
+                return;
+            }
             
             try
             {
@@ -156,10 +189,15 @@ namespace ModCreator
         {
             if (WindowData.SelectedProject == null) return;
             
+            var folderExists = System.IO.Directory.Exists(WindowData.SelectedProject.ProjectPath);
+            var message = folderExists 
+                ? MessageHelper.GetFormat("ProjectDeleteMessage", WindowData.SelectedProject.ProjectName)
+                : MessageHelper.GetFormat("ProjectDeleteMessageNoFolder", WindowData.SelectedProject.ProjectName);
+            
             var result = MessageBox.Show(
-                MessageHelper.GetFormat("ProjectDeleteMessage", WindowData.SelectedProject.ProjectName),
+                message,
                 MessageHelper.Get("ProjectDeleteTitle"),
-                MessageBoxButton.YesNoCancel,
+                folderExists ? MessageBoxButton.YesNoCancel : MessageBoxButton.OKCancel,
                 MessageBoxImage.Warning);
 
             if (result == MessageBoxResult.Cancel)
@@ -167,7 +205,7 @@ namespace ModCreator
 
             try
             {
-                bool deleteFiles = result == MessageBoxResult.Yes;
+                bool deleteFiles = folderExists && (result == MessageBoxResult.Yes);
                 WindowData.DeleteProject(deleteFiles);
             }
             catch (Exception ex)

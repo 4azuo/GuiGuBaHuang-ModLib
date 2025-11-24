@@ -108,9 +108,6 @@ namespace ModCreator.WindowData
         public string ProjectId => SelectedProject?.ProjectId ?? "";
         
         [JsonIgnore]
-        public string ModId => string.IsNullOrEmpty(SelectedProject?.ModId) ? "-" : SelectedProject.ModId;
-        
-        [JsonIgnore]
         public string ProjectPath => SelectedProject?.ProjectPath ?? "";
         
         [JsonIgnore]
@@ -235,8 +232,15 @@ namespace ModCreator.WindowData
         {
             if (!string.IsNullOrWhiteSpace(WorkplacePath))
             {
+                if (!Directory.Exists(WorkplacePath))
+                {
+                    StatusMessage = MessageHelper.GetFormat("WorkplacePathNotFound", WorkplacePath);
+                    return;
+                }
+                
                 Properties.Settings.Default.WorkplacePath = WorkplacePath;
                 Properties.Settings.Default.Save();
+                StatusMessage = MessageHelper.GetFormat("WorkplacePathSaved", WorkplacePath);
             }
         }
 

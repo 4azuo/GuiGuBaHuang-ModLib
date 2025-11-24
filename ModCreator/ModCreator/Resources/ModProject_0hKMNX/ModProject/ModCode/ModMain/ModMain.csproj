@@ -7,8 +7,8 @@
     <ProjectGuid>{3591496F-6A4C-477A-A04C-177FB616E439}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>MOD_0hKMNX</RootNamespace>
-    <AssemblyName>MOD_0hKMNX</AssemblyName>
+    <RootNamespace>MOD_#PROJECTID#</RootNamespace>
+    <AssemblyName>MOD_#PROJECTID#</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <Deterministic>true</Deterministic>
@@ -31,8 +31,8 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="Example\Example.cs" />
     <Compile Include="ModMain.cs" />
+    <Compile Include="Mod\EventTemplate.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

@@ -8,7 +8,7 @@ namespace ModCreator
         /// <summary>
         /// Root directory of the project (GUIGUBAHUANG-MODLIB/ModCreator)
         /// </summary>
-        public static readonly string RootDir = System.IO.Path.GetFullPath(System.IO.Path.Combine(System.AppDomain.CurrentDomain.BaseDirectory, "..", "..", "..", ".."));
+        public static readonly string RootDir = @"C:\git\GuiGuBaHuang-ModLib\";
 
         /// <summary>
         /// Documentation directory (.github/docs)
@@ -26,9 +26,14 @@ namespace ModCreator
         public static readonly string MessagesFilePath = System.IO.Path.Combine(ResourcesDir, "messages.json");
 
         /// <summary>
+        /// Project replacements configuration file path
+        /// </summary>
+        public static readonly string ProjectReplacementsFilePath = System.IO.Path.Combine(ResourcesDir, "new-project-replacements.json");
+
+        /// <summary>
         /// Log directory (Logs in root)
         /// </summary>
-        public static readonly string LogsDir = System.IO.Path.Combine(RootDir, "Logs");
+        public static readonly string LogsDir = System.IO.Path.Combine(System.AppDomain.CurrentDomain.BaseDirectory, "logs");
 
         /// <summary>
         /// Default workplace directory name

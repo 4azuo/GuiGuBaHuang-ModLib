@@ -12,7 +12,6 @@ namespace ModCreator.Models
         public string ProjectId { get; set; }
         public string ProjectName { get; set; }
         public string ProjectPath { get; set; }
-        public string ModId { get; set; }
         public DateTime CreatedDate { get; set; }
         public DateTime LastModifiedDate { get; set; }
         public string Description { get; set; }

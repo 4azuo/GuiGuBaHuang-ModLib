@@ -34,7 +34,7 @@ namespace ModCreator.Helpers
         public static string GetProjectTemplatePath()
         {
             // Use absolute path to ProjectTemplate folder
-            var templatePath = Path.Combine(ModCreator.Constants.RootDir, "ProjectTemplate", PROJECT_TEMPLATE_NAME);
+            var templatePath = Path.Combine(ModCreator.Constants.ResourcesDir, PROJECT_TEMPLATE_NAME);
             return templatePath;
         }
 
@@ -93,19 +93,96 @@ namespace ModCreator.Helpers
             // Copy template
             FileHelper.CopyDirectory(templatePath, projectPath);
 
+            // Apply replacements based on new-project-replacements.json
+            ApplyProjectReplacements(projectPath, projectId);
+
             // Create project object
             var project = new ModProject
             {
                 ProjectId = projectId,
                 ProjectName = projectName,
                 ProjectPath = projectPath,
-                ModId = "", // Will be set when mod is configured
                 CreatedDate = DateTime.Now,
                 LastModifiedDate = DateTime.Now,
                 Description = description
             };
 
             return project;
+        }
+
+        /// <summary>
+        /// Apply replacements to project files based on new-project-replacements.json
+        /// </summary>
+        private static void ApplyProjectReplacements(string projectPath, string projectId)
+        {
+            try
+            {
+                // Read replacements configuration
+                var replacementsFile = ModCreator.Constants.ProjectReplacementsFilePath;
+                if (!File.Exists(replacementsFile))
+                {
+                    DebugHelper.Warning($"Replacements file not found at {replacementsFile}");
+                    return;
+                }
+
+                var json = FileHelper.ReadTextFile(replacementsFile);
+                var config = JsonConvert.DeserializeObject<ProjectReplacementsConfig>(json);
+                if (config == null || config.Position == null || config.KeyValues == null)
+                {
+                    DebugHelper.Warning("Invalid replacements configuration");
+                    return;
+                }
+
+                // Process each file in the Position list
+                foreach (var relativePath in config.Position)
+                {
+                    var filePath = Path.Combine(projectPath, relativePath);
+                    if (!File.Exists(filePath))
+                    {
+                        DebugHelper.Warning($"File not found for replacement: {filePath}");
+                        continue;
+                    }
+
+                    // Read file content
+                    var content = FileHelper.ReadTextFile(filePath);
+
+                    // Apply all key-value replacements
+                    foreach (var kvp in config.KeyValues)
+                    {
+                        var placeholder = kvp.Key;
+                        var propertyPath = kvp.Value; // e.g., "ModCreator.Models.ModProject.ProjectId"
+                        
+                        // Get the replacement value based on property path
+                        var replacementValue = GetReplacementValue(propertyPath, projectId);
+                        
+                        // Replace in content
+                        content = content.Replace(placeholder, replacementValue);
+                    }
+
+                    // Write back to file
+                    FileHelper.WriteTextFile(filePath, content);
+                }
+            }
+            catch (Exception ex)
+            {
+                DebugHelper.Error($"Error applying project replacements: {ex.Message}");
+            }
+        }
+
+        /// <summary>
+        /// Get replacement value based on property path
+        /// </summary>
+        private static string GetReplacementValue(string propertyPath, string projectId)
+        {
+            // Property path format: "ModCreator.Models.ModProject.ProjectId"
+            // For now, we only support ProjectId
+            if (propertyPath.EndsWith(".ProjectId"))
+            {
+                return projectId;
+            }
+
+            // Add more property mappings as needed
+            return string.Empty;
         }
 
         /// <summary>
