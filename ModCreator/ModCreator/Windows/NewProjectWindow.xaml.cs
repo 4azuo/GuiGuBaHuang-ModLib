@@ -11,11 +11,7 @@ namespace ModCreator.Windows
         {
             if (!WindowData.CanCreate)
             {
-                System.Windows.MessageBox.Show(
-                    "Please fill in all required fields!",
-                    MessageHelper.Error,
-                    MessageBoxButton.OK,
-                    MessageBoxImage.Warning);
+                DebugHelper.ShowWarning(MessageHelper.Get("ErrorFillRequiredFields"), MessageHelper.Get("Error"));
                 return;
             }
 
@@ -23,11 +19,7 @@ namespace ModCreator.Windows
             var workplacePath = WindowData.WorkplacePath;
             if (string.IsNullOrWhiteSpace(workplacePath))
             {
-                System.Windows.MessageBox.Show(
-                    "Workplace path is not set!",
-                    MessageHelper.Error,
-                    MessageBoxButton.OK,
-                    MessageBoxImage.Warning);
+                DebugHelper.ShowWarning(MessageHelper.Get("ErrorWorkplaceNotSet"), MessageHelper.Get("Error"));
                 return;
             }
             // ProjectId will be generated inside CreateProject

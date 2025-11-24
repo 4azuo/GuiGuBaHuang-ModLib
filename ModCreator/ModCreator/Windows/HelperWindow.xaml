@@ -9,7 +9,7 @@
         xmlns:helper="clr-namespace:ModCreator.Helpers"
         xmlns:markdig="clr-namespace:Markdig.Wpf;assembly=Markdig.Wpf"
         mc:Ignorable="d"
-        Title="{x:Static helper:MessageHelper.Help}" 
+        Title="{x:Static helper:UITextHelper.Help}" 
         Height="700" Width="1000"
         WindowStartupLocation="CenterScreen"
         Icon="/Resources/app-icon.png"
@@ -24,8 +24,8 @@
         <!-- Header -->
         <Border Grid.Row="0" Background="#FF2E5090" Padding="15">
             <StackPanel>
-                <TextBlock Text="{x:Static helper:MessageHelper.HelpTitle}" FontSize="24" FontWeight="Bold" Foreground="White"/>
-                <TextBlock Text="{x:Static helper:MessageHelper.HelpSubtitle}" FontSize="12" Foreground="#FFCCCCCC" Margin="0,5,0,0"/>
+                <TextBlock Text="{x:Static helper:UITextHelper.HelpTitle}" FontSize="24" FontWeight="Bold" Foreground="White"/>
+                <TextBlock Text="{x:Static helper:UITextHelper.HelpSubtitle}" FontSize="12" Foreground="#FFCCCCCC" Margin="0,5,0,0"/>
             </StackPanel>
         </Border>
 
@@ -45,7 +45,7 @@
                     </Grid.RowDefinitions>
 
                     <TextBlock Grid.Row="0" 
-                               Text="{x:Static helper:MessageHelper.Topics}" 
+                               Text="{x:Static helper:UITextHelper.Topics}" 
                                FontSize="14" 
                                FontWeight="SemiBold"
                                Padding="15,10"

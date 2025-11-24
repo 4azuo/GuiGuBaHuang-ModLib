@@ -1,3 +1,4 @@
+using ModCreator.Helpers;
 using ModCreator.WindowData;
 using System;
 using System.ComponentModel;
@@ -88,13 +89,7 @@ namespace ModCreator.Windows
             }
             catch (Exception ex)
             {
-                var errorMsg = $"Error initializing window {GetType().Name}:\n\n{ex.Message}\n\n{ex.StackTrace}";
-                System.Diagnostics.Debug.WriteLine($"[CWindow] ERROR: {errorMsg}");
-                MessageBox.Show(
-                    errorMsg,
-                    "Initialization Error",
-                    MessageBoxButton.OK,
-                    MessageBoxImage.Error);
+                DebugHelper.ShowError(ex, MessageHelper.Get("InitializationError"), MessageHelper.GetFormat("ErrorInitializingWindow", GetType().Name));
                 throw;
             }
         }

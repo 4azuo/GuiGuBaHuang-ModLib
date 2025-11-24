@@ -34,7 +34,7 @@ namespace ModCreator
             
             data.WorkplacePath = savedPath;
             data.OnLoad();
-            data.StatusMessage = MessageHelper.Ready;
+            data.StatusMessage = MessageHelper.Get("Ready");
             
             return data;
         }
@@ -47,8 +47,9 @@ namespace ModCreator
             var project = WindowData.SelectedProject;
             if (!System.IO.Directory.Exists(project.ProjectPath))
             {
-                MessageBox.Show(MessageHelper.GetFormat("ErrorProjectFolderMissing", project.ProjectPath),
-                    MessageHelper.Error, MessageBoxButton.OK, MessageBoxImage.Warning);
+                DebugHelper.ShowWarning(
+                    MessageHelper.GetFormat("ErrorProjectFolderMissing", project.ProjectPath),
+                    MessageHelper.Get("Error"));
                 return;
             }
             try
@@ -65,8 +66,8 @@ namespace ModCreator
             }
             catch (Exception ex)
             {
-                MessageBox.Show(MessageHelper.GetFormat("ErrorUpdatingProject", ex.Message),
-                    MessageHelper.Error, MessageBoxButton.OK, MessageBoxImage.Error);
+                DebugHelper.ShowError(ex, MessageHelper.Get("Error"), 
+                    MessageHelper.GetFormat("ErrorUpdatingProject", ex.Message));
             }
         }
 
@@ -91,7 +92,7 @@ namespace ModCreator
                         ModCreator.Helpers.ProjectHelper.SaveProjects(WindowData.AllProjects);
                         WindowData.UpdateFilteredProjects();
                         MessageBox.Show(MessageHelper.GetFormat("ProjectSuccessMessage", newProject.ProjectPath), 
-                            MessageHelper.Success, MessageBoxButton.OK, MessageBoxImage.Information);
+                            MessageHelper.Get("Success"), MessageBoxButton.OK, MessageBoxImage.Information);
                         // Open editor window for new project
                         var editorWindow = new Windows.ProjectEditorWindow
                         {
@@ -104,8 +105,8 @@ namespace ModCreator
             }
             catch (Exception ex)
             {
-                MessageBox.Show(MessageHelper.GetFormat("ErrorCreatingProject", ex.Message + "\n\n" + ex.StackTrace), 
-                    MessageHelper.Error, MessageBoxButton.OK, MessageBoxImage.Error);
+                DebugHelper.ShowError(ex, MessageHelper.Get("Error"),
+                    MessageHelper.GetFormat("ErrorCreatingProject", ex.Message));
             }
         }
 
@@ -122,8 +123,8 @@ namespace ModCreator
             }
             catch (Exception ex)
             {
-                MessageBox.Show(MessageHelper.GetFormat("ErrorOpeningFolder", ex.Message), 
-                    MessageHelper.Error, MessageBoxButton.OK, MessageBoxImage.Error);
+                DebugHelper.ShowError(ex, MessageHelper.Get("Error"),
+                    MessageHelper.GetFormat("ErrorOpeningFolder", ex.Message));
             }
         }
 
@@ -146,8 +147,8 @@ namespace ModCreator
             }
             catch (Exception ex)
             {
-                MessageBox.Show(MessageHelper.GetFormat("ErrorUpdatingProject", ex.Message), 
-                    MessageHelper.Error, MessageBoxButton.OK, MessageBoxImage.Error);
+                DebugHelper.ShowError(ex, MessageHelper.Get("Error"),
+                    MessageHelper.GetFormat("ErrorUpdatingProject", ex.Message));
             }
         }
 
@@ -157,7 +158,7 @@ namespace ModCreator
             
             var result = MessageBox.Show(
                 MessageHelper.GetFormat("ProjectDeleteMessage", WindowData.SelectedProject.ProjectName),
-                MessageHelper.ProjectDeleteTitle,
+                MessageHelper.Get("ProjectDeleteTitle"),
                 MessageBoxButton.YesNoCancel,
                 MessageBoxImage.Warning);
 
@@ -171,8 +172,8 @@ namespace ModCreator
             }
             catch (Exception ex)
             {
-                MessageBox.Show(MessageHelper.GetFormat("ErrorDeletingProject", ex.Message), 
-                    MessageHelper.Error, MessageBoxButton.OK, MessageBoxImage.Error);
+                DebugHelper.ShowError(ex, MessageHelper.Get("Error"),
+                    MessageHelper.GetFormat("ErrorDeletingProject", ex.Message));
             }
         }
 
@@ -181,7 +182,7 @@ namespace ModCreator
         {
             using (var dialog = new FolderBrowserDialog())
             {
-                dialog.Description = MessageHelper.SelectWorkplace;
+                dialog.Description = MessageHelper.Get("SelectWorkplace");
                 
                 if (!string.IsNullOrEmpty(WindowData.WorkplacePath))
                 {
@@ -199,23 +200,15 @@ namespace ModCreator
         {
             try
             {
-                System.Diagnostics.Debug.WriteLine("[MainWindow] Help_Click called");
                 var helpWindow = new Windows.HelperWindow
                 {
                     Owner = this
                 };
-                System.Diagnostics.Debug.WriteLine("[MainWindow] HelperWindow created, calling ShowDialog");
                 helpWindow.ShowDialog();
-                System.Diagnostics.Debug.WriteLine("[MainWindow] ShowDialog returned");
             }
             catch (Exception ex)
             {
-                System.Diagnostics.Debug.WriteLine($"[MainWindow] ERROR in Help_Click: {ex.Message}");
-                MessageBox.Show(
-                    $"Error opening Help window:\n\n{ex.Message}\n\n{ex.StackTrace}",
-                    MessageHelper.Error,
-                    MessageBoxButton.OK,
-                    MessageBoxImage.Error);
+                DebugHelper.ShowError(ex, MessageHelper.Get("Error"), MessageHelper.Get("ErrorOpeningHelpWindow"));
             }
         }
 
@@ -223,23 +216,15 @@ namespace ModCreator
         {
             try
             {
-                System.Diagnostics.Debug.WriteLine("[MainWindow] About_Click called");
                 var aboutWindow = new Windows.AboutWindow
                 {
                     Owner = this
                 };
-                System.Diagnostics.Debug.WriteLine("[MainWindow] AboutWindow created, calling ShowDialog");
                 aboutWindow.ShowDialog();
-                System.Diagnostics.Debug.WriteLine("[MainWindow] ShowDialog returned");
             }
             catch (Exception ex)
             {
-                System.Diagnostics.Debug.WriteLine($"[MainWindow] ERROR in About_Click: {ex.Message}");
-                MessageBox.Show(
-                    $"Error opening About window:\n\n{ex.Message}\n\n{ex.StackTrace}",
-                    MessageHelper.Error,
-                    MessageBoxButton.OK,
-                    MessageBoxImage.Error);
+                DebugHelper.ShowError(ex, MessageHelper.Get("Error"), MessageHelper.Get("ErrorOpeningAboutWindow"));
             }
         }
 

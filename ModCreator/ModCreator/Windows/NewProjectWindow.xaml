@@ -8,7 +8,7 @@
         xmlns:localData="clr-namespace:ModCreator.WindowData"
         xmlns:helper="clr-namespace:ModCreator.Helpers"
         mc:Ignorable="d"
-        Title="{x:Static helper:MessageHelper.NewProjectTitle}" 
+        Title="{x:Static helper:UITextHelper.NewProjectTitle}" 
         Height="300" Width="550"
         WindowStartupLocation="CenterOwner"
         ResizeMode="NoResize"
@@ -25,14 +25,14 @@
 
                 <!-- Project Name -->
                 <StackPanel Grid.Row="0">
-                <TextBlock Text="{x:Static helper:MessageHelper.ProjectFieldName}" Style="{StaticResource LabelText}" Margin="0,0,0,4"/>
+                <TextBlock Text="{x:Static helper:UITextHelper.ProjectFieldName}" Style="{StaticResource LabelText}" Margin="0,0,0,4"/>
                 <TextBox Text="{Binding ProjectName, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" 
                      Style="{StaticResource StandardTextBox}" Height="32"/>
                 </StackPanel>
 
                 <!-- Description -->
                 <StackPanel Grid.Row="1">
-                <TextBlock Text="{x:Static helper:MessageHelper.ProjectFieldDescription}" Style="{StaticResource LabelText}" Margin="0,0,0,4"/>
+                <TextBlock Text="{x:Static helper:UITextHelper.ProjectFieldDescription}" Style="{StaticResource LabelText}" Margin="0,0,0,4"/>
                 <TextBox Text="{Binding Description, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" 
                     Style="{StaticResource MultilineTextBox}" Height="80"/>
                 </StackPanel>
@@ -41,12 +41,12 @@
                 <StackPanel Grid.Row="2" 
                     Orientation="Horizontal" 
                     HorizontalAlignment="Right">
-                <Button Content="{x:Static helper:MessageHelper.Create}" 
+                <Button Content="{x:Static helper:UITextHelper.Create}" 
                     Click="CreateButton_Click"
                     Style="{StaticResource PrimaryButton}"
                     IsEnabled="{Binding CanCreate, Mode=OneWay}"
                     Width="100"/>
-                <Button Content="{x:Static helper:MessageHelper.Cancel}" 
+                <Button Content="{x:Static helper:UITextHelper.Cancel}" 
                     Click="CancelButton_Click"
                     Style="{StaticResource ActionButton}"
                     Width="100"/>
