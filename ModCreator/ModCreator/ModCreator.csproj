@@ -34,6 +34,22 @@
     <None Update="Resources\messages.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
+    <None Update="Resources\new-project-replacements.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+
+  <ItemGroup>
+    <!-- Exclude template project from compilation but include as content to copy -->
+    <Compile Remove="Resources\ModProject_0hKMNX\**" />
+    <EmbeddedResource Remove="Resources\ModProject_0hKMNX\**" />
+    <Page Remove="Resources\ModProject_0hKMNX\**" />
+    
+    <!-- Copy template project to output directory -->
+    <None Include="Resources\ModProject_0hKMNX\**\*.*">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <Link>Resources\ModProject_0hKMNX\%(RecursiveDir)%(FileName)%(Extension)</Link>
+    </None>
   </ItemGroup>
 
 </Project>

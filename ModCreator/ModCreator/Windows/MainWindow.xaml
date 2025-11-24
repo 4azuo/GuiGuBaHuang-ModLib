@@ -234,10 +234,6 @@
                                 <TextBlock Text="{x:Static helper:UITextHelper.ProjectDetailsId}" Style="{StaticResource LabelText}" Width="100"/>
                                 <TextBlock Text="{Binding ProjectId, Mode=OneWay}" TextWrapping="Wrap"/>
                             </StackPanel>
-                            <StackPanel Orientation="Horizontal" Margin="0,5">
-                                <TextBlock Text="{x:Static helper:UITextHelper.ProjectDetailsModId}" Style="{StaticResource LabelText}" Width="100"/>
-                                <TextBlock Text="{Binding ModId, Mode=OneWay}" TextWrapping="Wrap"/>
-                            </StackPanel>
                             <StackPanel Margin="0,5">
                                 <TextBlock Text="{x:Static helper:UITextHelper.ProjectDetailsPath}" Style="{StaticResource LabelText}"/>
                                 <TextBlock Text="{Binding ProjectPath, Mode=OneWay}" TextWrapping="Wrap" Margin="5"/>

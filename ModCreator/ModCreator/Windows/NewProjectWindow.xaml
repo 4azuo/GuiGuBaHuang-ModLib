@@ -26,7 +26,8 @@
                 <!-- Project Name -->
                 <StackPanel Grid.Row="0">
                 <TextBlock Text="{x:Static helper:UITextHelper.ProjectFieldName}" Style="{StaticResource LabelText}" Margin="0,0,0,4"/>
-                <TextBox Text="{Binding ProjectName, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" 
+                <TextBox x:Name="txtProjectName"
+                     Text="{Binding ProjectName, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" 
                      Style="{StaticResource StandardTextBox}" Height="32"/>
                 </StackPanel>
 

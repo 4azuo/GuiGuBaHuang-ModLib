@@ -29,7 +29,6 @@ namespace ModCreator.Helpers
         public static string ProjectDetails => MessageHelper.Get("ProjectDetails");
         public static string ProjectDetailsDescription => MessageHelper.Get("ProjectDetailsDescription");
         public static string ProjectDetailsId => MessageHelper.Get("ProjectDetailsId");
-        public static string ProjectDetailsModId => MessageHelper.Get("ProjectDetailsModId");
         public static string ProjectDetailsName => MessageHelper.Get("ProjectDetailsName");
         public static string ProjectDetailsPath => MessageHelper.Get("ProjectDetailsPath");
         public static string ProjectFieldDescription => MessageHelper.Get("ProjectFieldDescription");
@@ -99,5 +98,33 @@ namespace ModCreator.Helpers
         public static string ErrorWorkplaceNotSet => MessageHelper.Get("ErrorWorkplaceNotSet");
         public static string ErrorInitializingWindow => MessageHelper.Get("ErrorInitializingWindow");
         public static string InitializationError => MessageHelper.Get("InitializationError");
+        
+        // Tab labels
+        public static string TabProjectInfo => MessageHelper.Get("TabProjectInfo");
+        public static string TabModConf => MessageHelper.Get("TabModConf");
+        public static string TabModImg => MessageHelper.Get("TabModImg");
+        public static string TabGlobalVariables => MessageHelper.Get("TabGlobalVariables");
+        public static string TabModEvent => MessageHelper.Get("TabModEvent");
+        
+        // Tab 2: ModConf
+        public static string ConfFiles => MessageHelper.Get("ConfFiles");
+        public static string JsonEditor => MessageHelper.Get("JsonEditor");
+        public static string AddConf => MessageHelper.Get("AddConf");
+        public static string RemoveConf => MessageHelper.Get("RemoveConf");
+        
+        // Tab 3: ModImg
+        public static string ImageFiles => MessageHelper.Get("ImageFiles");
+        public static string ImagePreview => MessageHelper.Get("ImagePreview");
+        public static string ImportImage => MessageHelper.Get("ImportImage");
+        public static string ExportImage => MessageHelper.Get("ExportImage");
+        public static string RemoveImage => MessageHelper.Get("RemoveImage");
+        
+        // Tab 4: Global Variables
+        public static string VariableName => MessageHelper.Get("VariableName");
+        public static string VariableType => MessageHelper.Get("VariableType");
+        public static string VariableValue => MessageHelper.Get("VariableValue");
+        public static string VariableDescription => MessageHelper.Get("VariableDescription");
+        public static string GenerateCode => MessageHelper.Get("GenerateCode");
+        public static string GenerateCodeNote => MessageHelper.Get("GenerateCodeNote");
     }
 }

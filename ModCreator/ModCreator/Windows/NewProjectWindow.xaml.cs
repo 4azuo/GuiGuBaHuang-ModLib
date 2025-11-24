@@ -7,6 +7,12 @@ namespace ModCreator.Windows
 {
     public partial class NewProjectWindow : CWindow<NewProjectWindowData>
     {
+        public override NewProjectWindowData InitData(CancelEventArgs e)
+        {
+            txtProjectName.Focus();
+            return base.InitData(e);
+        }
+        
         private void CreateButton_Click(object sender, RoutedEventArgs e)
         {
             if (!WindowData.CanCreate)
