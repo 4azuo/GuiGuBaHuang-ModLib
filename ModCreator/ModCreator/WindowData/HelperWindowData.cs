@@ -52,20 +52,17 @@ namespace ModCreator.WindowData
         {
             try
             {
-                var docsPath = ModCreator.Constants.DocsDir;
+                var docsPath = Constants.DocsDir;
 
                 if (Directory.Exists(docsPath))
                 {
-                    var mdFiles = Directory.GetFiles(docsPath, "*.md", SearchOption.AllDirectories);
-                    DocItems = mdFiles.Select(f => new DocItem
-                    {
-                        Title = Path.GetFileNameWithoutExtension(f),
-                        FilePath = f
-                    }).OrderBy(d => d.Title).ToList();
+                    DocItems = BuildDocTree(docsPath, docsPath);
 
-                    if (DocItems.Count > 0)
+                    // Select first file
+                    var firstFile = FindFirstFile(DocItems);
+                    if (firstFile != null)
                     {
-                        SelectedDoc = DocItems[0];
+                        SelectedDoc = firstFile;
                     }
                 }
                 else
@@ -77,6 +74,71 @@ namespace ModCreator.WindowData
             {
                 DocContent = $"Error loading documentation:\n\n{ex.Message}";
             }
+        }
+
+        /// <summary>
+        /// Build tree structure from directory
+        /// </summary>
+        private List<DocItem> BuildDocTree(string rootPath, string currentPath)
+        {
+            var items = new List<DocItem>();
+
+            // Add subdirectories
+            var directories = Directory.GetDirectories(currentPath).OrderBy(d => d);
+            foreach (var dir in directories)
+            {
+                var dirName = Path.GetFileName(dir);
+                var folderItem = new DocItem
+                {
+                    Title = dirName,
+                    IsFolder = true,
+                    FilePath = dir
+                };
+
+                // Recursively add children
+                var children = BuildDocTree(rootPath, dir);
+                foreach (var child in children)
+                {
+                    folderItem.Children.Add(child);
+                }
+
+                items.Add(folderItem);
+            }
+
+            // Add markdown files
+            var mdFiles = Directory.GetFiles(currentPath, "*.md").OrderBy(f => f);
+            foreach (var file in mdFiles)
+            {
+                var fileItem = new DocItem
+                {
+                    Title = Path.GetFileNameWithoutExtension(file),
+                    FilePath = file,
+                    IsFolder = false
+                };
+                items.Add(fileItem);
+            }
+
+            return items;
+        }
+
+        /// <summary>
+        /// Find first file in tree
+        /// </summary>
+        private DocItem FindFirstFile(List<DocItem> items)
+        {
+            foreach (var item in items)
+            {
+                if (!item.IsFolder)
+                    return item;
+
+                if (item.Children.Count > 0)
+                {
+                    var found = FindFirstFile(item.Children.ToList());
+                    if (found != null)
+                        return found;
+                }
+            }
+            return null;
         }
 
         /// <summary>

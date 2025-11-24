@@ -1,0 +1,27 @@
+[
+  {
+    "name": "PNG",
+    "extension": ".png",
+    "desc": "Portable Network Graphics - Lossless compression with transparency support"
+  },
+  {
+    "name": "JPEG",
+    "extension": ".jpg",
+    "desc": "Joint Photographic Experts Group - Lossy compression, good for photos"
+  },
+  {
+    "name": "JPEG",
+    "extension": ".jpeg",
+    "desc": "Joint Photographic Experts Group - Lossy compression, good for photos"
+  },
+  {
+    "name": "BMP",
+    "extension": ".bmp",
+    "desc": "Bitmap - Uncompressed raster graphics"
+  },
+  {
+    "name": "GIF",
+    "extension": ".gif",
+    "desc": "Graphics Interchange Format - Supports animation and transparency"
+  }
+]

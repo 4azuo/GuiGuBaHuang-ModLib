@@ -3,128 +3,138 @@ using System;
 namespace ModCreator.Helpers
 {
     /// <summary>
-    /// Helper class for accessing UI text messages in XAML bindings.
-    /// Use this class for data binding in XAML files.
+    /// Main window UI texts helper for XAML bindings
     /// </summary>
-    public static class UITextHelper
+    public static class MainWindowText
     {
-        // Direct property accessors for XAML binding
-        public static string AppTitle => MessageHelper.Get("AppTitle");
-        public static string Browse => MessageHelper.Get("Browse");
-        public static string Cancel => MessageHelper.Get("Cancel");
-        public static string Create => MessageHelper.Get("Create");
-        public static string CreateNew => MessageHelper.Get("CreateNew");
-        public static string EditInfo => MessageHelper.Get("EditInfo");
-        public static string Error => MessageHelper.Get("Error");
-        public static string ErrorOpeningFolder => MessageHelper.Get("ErrorOpeningFolder");
-        public static string ErrorOpeningHelpWindow => MessageHelper.Get("ErrorOpeningHelpWindow");
-        public static string ErrorOpeningAboutWindow => MessageHelper.Get("ErrorOpeningAboutWindow");
-        public static string LoadedProjects => MessageHelper.Get("LoadedProjects");
-        public static string NewProjectTitle => MessageHelper.Get("NewProjectTitle");
-        public static string NoProjectSelected => MessageHelper.Get("NoProjectSelected");
-        public static string OpenFolder => MessageHelper.Get("OpenFolder");
-        public static string ProjectDeleted => MessageHelper.Get("ProjectDeleted");
-        public static string ProjectDeleteMessage => MessageHelper.Get("ProjectDeleteMessage");
-        public static string ProjectDeleteTitle => MessageHelper.Get("ProjectDeleteTitle");
-        public static string ProjectDetails => MessageHelper.Get("ProjectDetails");
-        public static string ProjectDetailsDescription => MessageHelper.Get("ProjectDetailsDescription");
-        public static string ProjectDetailsId => MessageHelper.Get("ProjectDetailsId");
-        public static string ProjectDetailsName => MessageHelper.Get("ProjectDetailsName");
-        public static string ProjectDetailsPath => MessageHelper.Get("ProjectDetailsPath");
-        public static string ProjectFieldDescription => MessageHelper.Get("ProjectFieldDescription");
-        public static string ProjectFieldName => MessageHelper.Get("ProjectFieldName");
-        public static string ProjectList => MessageHelper.Get("ProjectList");
-        public static string Ready => MessageHelper.Get("Ready");
-        public static string Refresh => MessageHelper.Get("Refresh");
-        public static string RemoveProject => MessageHelper.Get("RemoveProject");
-        public static string Save => MessageHelper.Get("Save");
-        public static string SearchPlaceholder => MessageHelper.Get("SearchPlaceholder");
-        public static string Success => MessageHelper.Get("Success");
-        public static string Workplace => MessageHelper.Get("Workplace");
-        public static string WorkplacePath => MessageHelper.Get("WorkplacePath");
-        public static string SelectWorkplace => MessageHelper.Get("SelectWorkplace");
-        public static string About => MessageHelper.Get("About");
-        public static string Help => MessageHelper.Get("Help");
-        public static string PleaseSetWorkplacePath => MessageHelper.Get("PleaseSetWorkplacePath");
-        public static string CreateNewProject => MessageHelper.Get("CreateNewProject");
-        public static string RefreshList => MessageHelper.Get("RefreshList");
-        public static string Actions => MessageHelper.Get("Actions");
-        public static string Info => MessageHelper.Get("Info");
-        public static string TotalProjects => MessageHelper.Get("TotalProjects");
-        public static string Template => MessageHelper.Get("Template");
-        public static string HeaderProjectName => MessageHelper.Get("HeaderProjectName");
-        public static string HeaderDescription => MessageHelper.Get("HeaderDescription");
-        public static string HeaderId => MessageHelper.Get("HeaderId");
-        public static string HeaderState => MessageHelper.Get("HeaderState");
-        public static string HeaderCreated => MessageHelper.Get("HeaderCreated");
-        public static string HeaderModified => MessageHelper.Get("HeaderModified");
-        public static string HeaderActions => MessageHelper.Get("HeaderActions");
-        public static string GridOpenFolder => MessageHelper.Get("GridOpenFolder");
-        public static string GridEditInfo => MessageHelper.Get("GridEditInfo");
-        public static string GridDelete => MessageHelper.Get("GridDelete");
-        public static string TooltipOpenFolder => MessageHelper.Get("TooltipOpenFolder");
-        public static string TooltipEditInfo => MessageHelper.Get("TooltipEditInfo");
-        public static string TooltipDelete => MessageHelper.Get("TooltipDelete");
-        public static string Version => MessageHelper.Get("Version");
-        public static string Author => MessageHelper.Get("Author");
-        public static string Repository => MessageHelper.Get("Repository");
-        public static string License => MessageHelper.Get("License");
-        public static string Features => MessageHelper.Get("Features");
-        public static string FeaturesList => MessageHelper.Get("FeaturesList");
-        public static string Close => MessageHelper.Get("Close");
-        public static string HelpTitle => MessageHelper.Get("HelpTitle");
-        public static string HelpSubtitle => MessageHelper.Get("HelpSubtitle");
-        public static string Topics => MessageHelper.Get("Topics");
-        public static string AppName => MessageHelper.Get("AppName");
-        public static string AppSubtitle => MessageHelper.Get("AppSubtitle");
-        public static string ProjectIdLabel => MessageHelper.Get("ProjectIdLabel");
-        public static string ProjectEditorTitle => MessageHelper.Get("ProjectEditorTitle");
-        public static string EditModeLabel => MessageHelper.Get("EditModeLabel");
-        public static string UIModeLabel => MessageHelper.Get("UIModeLabel");
-        public static string CodeModeLabel => MessageHelper.Get("CodeModeLabel");
-        public static string CodeModeNote => MessageHelper.Get("CodeModeNote");
-        public static string ModEventsHeader => MessageHelper.Get("ModEventsHeader");
-        public static string AddEvent => MessageHelper.Get("AddEvent");
-        public static string EditEvent => MessageHelper.Get("EditEvent");
-        public static string RemoveEvent => MessageHelper.Get("RemoveEvent");
-        public static string EventEditorHeader => MessageHelper.Get("EventEditorHeader");
-        public static string UIModeEditorTitle => MessageHelper.Get("UIModeEditorTitle");
-        public static string UIModeEditorSubtitle => MessageHelper.Get("UIModeEditorSubtitle");
-        public static string CodeModeEditorTitle => MessageHelper.Get("CodeModeEditorTitle");
-        public static string CodeModeEditorSubtitle => MessageHelper.Get("CodeModeEditorSubtitle");
-        public static string FeatureComingSoon => MessageHelper.Get("FeatureComingSoon");
-        public static string CodeEditorPlaceholder => MessageHelper.Get("CodeEditorPlaceholder");
-        public static string ErrorFillRequiredFields => MessageHelper.Get("ErrorFillRequiredFields");
-        public static string ErrorWorkplaceNotSet => MessageHelper.Get("ErrorWorkplaceNotSet");
-        public static string ErrorInitializingWindow => MessageHelper.Get("ErrorInitializingWindow");
-        public static string InitializationError => MessageHelper.Get("InitializationError");
-        
-        // Tab labels
-        public static string TabProjectInfo => MessageHelper.Get("TabProjectInfo");
-        public static string TabModConf => MessageHelper.Get("TabModConf");
-        public static string TabModImg => MessageHelper.Get("TabModImg");
-        public static string TabGlobalVariables => MessageHelper.Get("TabGlobalVariables");
-        public static string TabModEvent => MessageHelper.Get("TabModEvent");
-        
-        // Tab 2: ModConf
-        public static string ConfFiles => MessageHelper.Get("ConfFiles");
-        public static string JsonEditor => MessageHelper.Get("JsonEditor");
-        public static string AddConf => MessageHelper.Get("AddConf");
-        public static string RemoveConf => MessageHelper.Get("RemoveConf");
-        
-        // Tab 3: ModImg
-        public static string ImageFiles => MessageHelper.Get("ImageFiles");
-        public static string ImagePreview => MessageHelper.Get("ImagePreview");
-        public static string ImportImage => MessageHelper.Get("ImportImage");
-        public static string ExportImage => MessageHelper.Get("ExportImage");
-        public static string RemoveImage => MessageHelper.Get("RemoveImage");
-        
-        // Tab 4: Global Variables
-        public static string VariableName => MessageHelper.Get("VariableName");
-        public static string VariableType => MessageHelper.Get("VariableType");
-        public static string VariableValue => MessageHelper.Get("VariableValue");
-        public static string VariableDescription => MessageHelper.Get("VariableDescription");
-        public static string GenerateCode => MessageHelper.Get("GenerateCode");
-        public static string GenerateCodeNote => MessageHelper.Get("GenerateCodeNote");
+        public static string AppTitle => MessageHelper.Get("Windows.MainWindow.AppTitle");
+        public static string AppName => MessageHelper.Get("Windows.MainWindow.AppName");
+        public static string AppSubtitle => MessageHelper.Get("Windows.MainWindow.AppSubtitle");
+        public static string Help => MessageHelper.Get("Windows.MainWindow.Help");
+        public static string About => MessageHelper.Get("Windows.MainWindow.About");
+        public static string Workplace => MessageHelper.Get("Windows.MainWindow.Workplace");
+        public static string Browse => MessageHelper.Get("Windows.MainWindow.Browse");
+        public static string ProjectList => MessageHelper.Get("Windows.MainWindow.ProjectList");
+        public static string CreateNewProject => MessageHelper.Get("Windows.MainWindow.CreateNewProject");
+        public static string RefreshList => MessageHelper.Get("Windows.MainWindow.RefreshList");
+        public static string SearchPlaceholder => MessageHelper.Get("Windows.MainWindow.SearchPlaceholder");
+        public static string HeaderProjectName => MessageHelper.Get("Windows.MainWindow.HeaderProjectName");
+        public static string HeaderDescription => MessageHelper.Get("Windows.MainWindow.HeaderDescription");
+        public static string HeaderId => MessageHelper.Get("Windows.MainWindow.HeaderId");
+        public static string HeaderState => MessageHelper.Get("Windows.MainWindow.HeaderState");
+        public static string HeaderCreated => MessageHelper.Get("Windows.MainWindow.HeaderCreated");
+        public static string HeaderModified => MessageHelper.Get("Windows.MainWindow.HeaderModified");
+        public static string HeaderActions => MessageHelper.Get("Windows.MainWindow.HeaderActions");
+        public static string GridOpenFolder => MessageHelper.Get("Windows.MainWindow.GridOpenFolder");
+        public static string TooltipOpenFolder => MessageHelper.Get("Windows.MainWindow.TooltipOpenFolder");
+        public static string GridEditInfo => MessageHelper.Get("Windows.MainWindow.GridEditInfo");
+        public static string TooltipEditInfo => MessageHelper.Get("Windows.MainWindow.TooltipEditInfo");
+        public static string GridDelete => MessageHelper.Get("Windows.MainWindow.GridDelete");
+        public static string TooltipDelete => MessageHelper.Get("Windows.MainWindow.TooltipDelete");
+        public static string ProjectDetails => MessageHelper.Get("Windows.MainWindow.ProjectDetails");
+        public static string NoProjectSelected => MessageHelper.Get("Windows.MainWindow.NoProjectSelected");
+        public static string ProjectDetailsName => MessageHelper.Get("Windows.MainWindow.ProjectDetailsName");
+        public static string ProjectDetailsId => MessageHelper.Get("Windows.MainWindow.ProjectDetailsId");
+        public static string ProjectDetailsPath => MessageHelper.Get("Windows.MainWindow.ProjectDetailsPath");
+        public static string ProjectDetailsDescription => MessageHelper.Get("Windows.MainWindow.ProjectDetailsDescription");
+        public static string Actions => MessageHelper.Get("Windows.MainWindow.Actions");
+        public static string OpenFolder => MessageHelper.Get("Windows.MainWindow.OpenFolder");
+        public static string EditInfo => MessageHelper.Get("Windows.MainWindow.EditInfo");
+        public static string RemoveProject => MessageHelper.Get("Windows.MainWindow.RemoveProject");
+        public static string Info => MessageHelper.Get("Windows.MainWindow.Info");
+        public static string TotalProjects => MessageHelper.Get("Windows.MainWindow.TotalProjects");
+        public static string Template => MessageHelper.Get("Windows.MainWindow.Template");
+    }
+
+    /// <summary>
+    /// About window UI texts helper for XAML bindings
+    /// </summary>
+    public static class AboutWindowText
+    {
+        public static string About => MessageHelper.Get("Windows.AboutWindow.About");
+        public static string Version => MessageHelper.Get("Windows.AboutWindow.Version");
+        public static string Author => MessageHelper.Get("Windows.AboutWindow.Author");
+        public static string Repository => MessageHelper.Get("Windows.AboutWindow.Repository");
+        public static string License => MessageHelper.Get("Windows.AboutWindow.License");
+        public static string Features => MessageHelper.Get("Windows.AboutWindow.Features");
+        public static string FeaturesList => MessageHelper.Get("Windows.AboutWindow.FeaturesList");
+        public static string Close => MessageHelper.Get("Windows.AboutWindow.Close");
+    }
+
+    /// <summary>
+    /// Help window UI texts helper for XAML bindings
+    /// </summary>
+    public static class HelpWindowText
+    {
+        public static string Help => MessageHelper.Get("Windows.HelpWindow.Help");
+        public static string HelpTitle => MessageHelper.Get("Windows.HelpWindow.HelpTitle");
+        public static string HelpSubtitle => MessageHelper.Get("Windows.HelpWindow.HelpSubtitle");
+        public static string Topics => MessageHelper.Get("Windows.HelpWindow.Topics");
+    }
+
+    /// <summary>
+    /// New project window UI texts helper for XAML bindings
+    /// </summary>
+    public static class NewProjectWindowText
+    {
+        public static string NewProjectTitle => MessageHelper.Get("Windows.NewProjectWindow.NewProjectTitle");
+        public static string ProjectFieldName => MessageHelper.Get("Windows.NewProjectWindow.ProjectFieldName");
+        public static string ProjectFieldDescription => MessageHelper.Get("Windows.NewProjectWindow.ProjectFieldDescription");
+        public static string Create => MessageHelper.Get("Windows.NewProjectWindow.Create");
+        public static string Cancel => MessageHelper.Get("Windows.NewProjectWindow.Cancel");
+    }
+
+    /// <summary>
+    /// Project editor window UI texts helper for XAML bindings
+    /// </summary>
+    public static class ProjectEditorWindowText
+    {
+        public static string ProjectEditorTitle => MessageHelper.Get("Windows.ProjectEditorWindow.ProjectEditorTitle");
+        public static string ProjectIdLabel => MessageHelper.Get("Windows.ProjectEditorWindow.ProjectIdLabel");
+        public static string Save => MessageHelper.Get("Windows.ProjectEditorWindow.Save");
+        public static string Cancel => MessageHelper.Get("Windows.ProjectEditorWindow.Cancel");
+        public static string TabProjectInfo => MessageHelper.Get("Windows.ProjectEditorWindow.TabProjectInfo");
+        public static string ProjectDetailsId => MessageHelper.Get("Windows.ProjectEditorWindow.ProjectDetailsId");
+        public static string ProjectDetailsPath => MessageHelper.Get("Windows.ProjectEditorWindow.ProjectDetailsPath");
+        public static string ProjectDetailsDescription => MessageHelper.Get("Windows.ProjectEditorWindow.ProjectDetailsDescription");
+        public static string HeaderCreated => MessageHelper.Get("Windows.ProjectEditorWindow.HeaderCreated");
+        public static string HeaderModified => MessageHelper.Get("Windows.ProjectEditorWindow.HeaderModified");
+        public static string HeaderState => MessageHelper.Get("Windows.ProjectEditorWindow.HeaderState");
+        public static string TabModConf => MessageHelper.Get("Windows.ProjectEditorWindow.TabModConf");
+        public static string ConfFiles => MessageHelper.Get("Windows.ProjectEditorWindow.ConfFiles");
+        public static string AddConf => MessageHelper.Get("Windows.ProjectEditorWindow.AddConf");
+        public static string RemoveConf => MessageHelper.Get("Windows.ProjectEditorWindow.RemoveConf");
+        public static string JsonEditor => MessageHelper.Get("Windows.ProjectEditorWindow.JsonEditor");
+        public static string TabModImg => MessageHelper.Get("Windows.ProjectEditorWindow.TabModImg");
+        public static string ImageFiles => MessageHelper.Get("Windows.ProjectEditorWindow.ImageFiles");
+        public static string ImportImage => MessageHelper.Get("Windows.ProjectEditorWindow.ImportImage");
+        public static string ExportImage => MessageHelper.Get("Windows.ProjectEditorWindow.ExportImage");
+        public static string RemoveImage => MessageHelper.Get("Windows.ProjectEditorWindow.RemoveImage");
+        public static string ImagePreview => MessageHelper.Get("Windows.ProjectEditorWindow.ImagePreview");
+        public static string TabGlobalVariables => MessageHelper.Get("Windows.ProjectEditorWindow.TabGlobalVariables");
+        public static string VariableName => MessageHelper.Get("Windows.ProjectEditorWindow.VariableName");
+        public static string VariableType => MessageHelper.Get("Windows.ProjectEditorWindow.VariableType");
+        public static string VariableValue => MessageHelper.Get("Windows.ProjectEditorWindow.VariableValue");
+        public static string VariableDescription => MessageHelper.Get("Windows.ProjectEditorWindow.VariableDescription");
+        public static string GenerateCode => MessageHelper.Get("Windows.ProjectEditorWindow.GenerateCode");
+        public static string GenerateCodeNote => MessageHelper.Get("Windows.ProjectEditorWindow.GenerateCodeNote");
+        public static string TabModEvent => MessageHelper.Get("Windows.ProjectEditorWindow.TabModEvent");
+        public static string FeatureComingSoon => MessageHelper.Get("Windows.ProjectEditorWindow.FeatureComingSoon");
+        public static string OpenInExplorer => MessageHelper.Get("Windows.ProjectEditorWindow.OpenInExplorer");
+        public static string Refresh => MessageHelper.Get("Windows.ProjectEditorWindow.Refresh");
+    }
+
+    /// <summary>
+    /// Add configuration window UI texts helper for XAML bindings
+    /// </summary>
+    public static class AddConfWindowText
+    {
+        public static string AddConfTitle => MessageHelper.Get("Windows.AddConfWindow.AddConfTitle");
+        public static string SelectConf => MessageHelper.Get("Windows.AddConfWindow.SelectConf");
+        public static string Prefix => MessageHelper.Get("Windows.AddConfWindow.Prefix");
+        public static string Description => MessageHelper.Get("Windows.AddConfWindow.Description");
+        public static string Add => MessageHelper.Get("Windows.AddConfWindow.Add");
+        public static string Cancel => MessageHelper.Get("Windows.AddConfWindow.Cancel");
+        public static string SearchPlaceholder => MessageHelper.Get("Windows.AddConfWindow.SearchPlaceholder");
     }
 }

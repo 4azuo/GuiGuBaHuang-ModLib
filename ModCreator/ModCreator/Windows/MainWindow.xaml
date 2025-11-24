@@ -9,7 +9,7 @@
         xmlns:helper="clr-namespace:ModCreator.Helpers"
         xmlns:converters="clr-namespace:ModCreator.Converters"
         mc:Ignorable="d"
-        Title="{x:Static helper:UITextHelper.AppTitle}" 
+        Title="{x:Static helper:MainWindowText.AppTitle}" 
         Height="600" Width="1000" 
         WindowStartupLocation="CenterScreen"
         WindowState="Maximized"
@@ -28,29 +28,6 @@
             <Setter Property="FontWeight" Value="SemiBold"/>
             <Setter Property="Margin" Value="0,5,10,5"/>
             <Setter Property="VerticalAlignment" Value="Center"/>
-        </Style>
-        <Style x:Key="ProjectGridCellStyle" TargetType="DataGridCell">
-            <Setter Property="Padding" Value="8,8"/>
-            <Setter Property="BorderThickness" Value="1"/>
-            <Setter Property="BorderBrush" Value="#FFB0B0B0"/>
-            <Setter Property="VerticalContentAlignment" Value="Center"/>
-        </Style>
-        <Style x:Key="ProjectGridHeaderStyle" TargetType="DataGridColumnHeader">
-            <Setter Property="FontSize" Value="14"/>
-            <Setter Property="FontWeight" Value="Bold"/>
-            <Setter Property="Padding" Value="8,8"/>
-            <Setter Property="Background" Value="#FF2E5090"/>
-            <Setter Property="Foreground" Value="White"/>
-            <Setter Property="HorizontalContentAlignment" Value="Center"/>
-        </Style>
-        <Style x:Key="CenterTextBlockStyle" TargetType="TextBlock">
-            <Setter Property="TextAlignment" Value="Center"/>
-            <Setter Property="VerticalAlignment" Value="Center"/>
-        </Style>
-        <Style x:Key="LeftTextBlockStyle" TargetType="TextBlock">
-            <Setter Property="TextAlignment" Value="Left"/>
-            <Setter Property="VerticalAlignment" Value="Center"/>
-            <Setter Property="Margin" Value="8,0,0,0"/>
         </Style>
     </Window.Resources>
     
@@ -71,16 +48,16 @@
                 </Grid.ColumnDefinitions>
                 
                 <StackPanel Grid.Column="0">
-                    <TextBlock Text="{x:Static helper:UITextHelper.AppName}" FontSize="24" FontWeight="Bold" Foreground="White"/>
-                    <TextBlock Text="{x:Static helper:UITextHelper.AppSubtitle}" FontSize="12" Foreground="#FFCCCCCC" Margin="0,5,0,0"/>
+                    <TextBlock Text="{x:Static helper:MainWindowText.AppName}" FontSize="24" FontWeight="Bold" Foreground="White"/>
+                    <TextBlock Text="{x:Static helper:MainWindowText.AppSubtitle}" FontSize="12" Foreground="#FFCCCCCC" Margin="0,5,0,0"/>
                 </StackPanel>
                 
                 <StackPanel Grid.Column="1" Orientation="Horizontal" VerticalAlignment="Center">
-                    <Button Content="{x:Static helper:UITextHelper.Help}" Click="Help_Click" 
+                    <Button Content="{x:Static helper:MainWindowText.Help}" Click="Help_Click" 
                             Style="{StaticResource HeaderButton}" 
                             Width="70"
                             Margin="0,0,5,0"/>
-                    <Button Content="{x:Static helper:UITextHelper.About}" Click="About_Click" 
+                    <Button Content="{x:Static helper:MainWindowText.About}" Click="About_Click" 
                             Style="{StaticResource HeaderButton}" 
                             Width="70"
                             Margin="5,0,0,0"/>
@@ -89,9 +66,9 @@
         </Border>
 
         <!-- Workplace Setting -->
-        <GroupBox Grid.Row="1" Header="{x:Static helper:UITextHelper.Workplace}" Margin="0,0,0,10">
+        <GroupBox Grid.Row="1" Header="{x:Static helper:MainWindowText.Workplace}" Margin="0,0,0,10">
             <DockPanel>
-                <Button Content="{x:Static helper:UITextHelper.Browse}" 
+                <Button Content="{x:Static helper:MainWindowText.Browse}" 
                         Click="BrowseWorkplace_Click"
                         Style="{StaticResource ActionButton}"
                         Width="80" 
@@ -111,7 +88,7 @@
             </Grid.ColumnDefinitions>
 
             <!-- Projects List -->
-            <GroupBox Grid.Column="0" Header="{x:Static helper:UITextHelper.ProjectList}">
+            <GroupBox Grid.Column="0" Header="{x:Static helper:MainWindowText.ProjectList}">
                 <Grid>
                     <Grid.RowDefinitions>
                         <RowDefinition Height="Auto"/>
@@ -120,8 +97,8 @@
 
                     <!-- Toolbar -->
                     <StackPanel Grid.Row="0" Orientation="Horizontal" Margin="0,0,0,10">
-                        <Button Content="{x:Static helper:UITextHelper.CreateNewProject}" Style="{StaticResource PrimaryButton}" Click="CreateProject_Click" Foreground="White"/>
-                        <Button Content="{x:Static helper:UITextHelper.RefreshList}" Style="{StaticResource ActionButton}" Click="RefreshProjects_Click"/>
+                        <Button Content="{x:Static helper:MainWindowText.CreateNewProject}" Style="{StaticResource PrimaryButton}" Click="CreateProject_Click" Foreground="White"/>
+                        <Button Content="{x:Static helper:MainWindowText.RefreshList}" Style="{StaticResource ActionButton}" Click="RefreshProjects_Click"/>
                         <TextBox Text="{Binding SearchText, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" 
                                  Width="200" Margin="20,5,5,5" VerticalContentAlignment="Center">
                             <TextBox.Style>
@@ -133,7 +110,7 @@
                                                 <Setter.Value>
                                                     <VisualBrush Stretch="None" AlignmentX="Left">
                                                         <VisualBrush.Visual>
-                                                            <TextBlock Text="{x:Static helper:UITextHelper.SearchPlaceholder}" Foreground="Gray" Margin="5,0,0,0"/>
+                                                            <TextBlock Text="{x:Static helper:MainWindowText.SearchPlaceholder}" Foreground="Gray" Margin="5,0,0,0"/>
                                                         </VisualBrush.Visual>
                                                     </VisualBrush>
                                                 </Setter.Value>
@@ -165,48 +142,48 @@
                             </Style>
                         </DataGrid.RowStyle>
                         <DataGrid.Columns>
-                            <DataGridTextColumn Header="{x:Static helper:UITextHelper.HeaderProjectName}" 
+                            <DataGridTextColumn Header="{x:Static helper:MainWindowText.HeaderProjectName}" 
                                                 Binding="{Binding ProjectName, Mode=OneWay}" 
                                                 Width="200" 
                                                 MinWidth="150"
                                                 ElementStyle="{StaticResource LeftTextBlockStyle}"/>
-                            <DataGridTextColumn Header="{x:Static helper:UITextHelper.HeaderDescription}" 
+                            <DataGridTextColumn Header="{x:Static helper:MainWindowText.HeaderDescription}" 
                                                 Binding="{Binding Description, Mode=OneWay}" 
                                                 Width="*" 
                                                 MinWidth="200"
                                                 ElementStyle="{StaticResource LeftTextBlockStyle}"/>
-                            <DataGridTextColumn Header="{x:Static helper:UITextHelper.HeaderId}" 
+                            <DataGridTextColumn Header="{x:Static helper:MainWindowText.HeaderId}" 
                                                 Binding="{Binding ProjectId, Mode=OneWay}" 
                                                 Width="100"
                                                 ElementStyle="{StaticResource CenterTextBlockStyle}"/>
-                            <DataGridTextColumn Header="{x:Static helper:UITextHelper.HeaderState}" 
+                            <DataGridTextColumn Header="{x:Static helper:MainWindowText.HeaderState}" 
                                                 Binding="{Binding State, Mode=OneWay, Converter={StaticResource ProjectStateToTextConverter}}" 
                                                 Width="100"
                                                 ElementStyle="{StaticResource CenterTextBlockStyle}"/>
-                            <DataGridTextColumn Header="{x:Static helper:UITextHelper.HeaderCreated}" 
+                            <DataGridTextColumn Header="{x:Static helper:MainWindowText.HeaderCreated}" 
                                                 Binding="{Binding CreatedDate, Mode=OneWay, StringFormat=\{0:yyyy-MM-dd\}}" 
                                                 Width="110"
                                                 ElementStyle="{StaticResource CenterTextBlockStyle}"/>
-                            <DataGridTextColumn Header="{x:Static helper:UITextHelper.HeaderModified}" 
+                            <DataGridTextColumn Header="{x:Static helper:MainWindowText.HeaderModified}" 
                                                 Binding="{Binding LastModifiedDate, Mode=OneWay, StringFormat=\{0:yyyy-MM-dd\}}" 
                                                 Width="110"
                                                 ElementStyle="{StaticResource CenterTextBlockStyle}"/>
-                            <DataGridTemplateColumn Header="{x:Static helper:UITextHelper.HeaderActions}" Width="110">
+                            <DataGridTemplateColumn Header="{x:Static helper:MainWindowText.HeaderActions}" Width="110">
                                 <DataGridTemplateColumn.CellTemplate>
                                     <DataTemplate>
                                         <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
-                                            <Button Content="{x:Static helper:UITextHelper.GridOpenFolder}" 
-                                                    ToolTip="{x:Static helper:UITextHelper.TooltipOpenFolder}" 
+                                            <Button Content="{x:Static helper:MainWindowText.GridOpenFolder}" 
+                                                    ToolTip="{x:Static helper:MainWindowText.TooltipOpenFolder}" 
                                                     Click="GridOpenFolder_Click" 
                                                     IsEnabled="{Binding State, Converter={StaticResource ProjectStateToIsEnabledConverter}}"
                                                     Width="30" Margin="2" Padding="2"/>
-                                            <Button Content="{x:Static helper:UITextHelper.GridEditInfo}" 
-                                                    ToolTip="{x:Static helper:UITextHelper.TooltipEditInfo}" 
+                                            <Button Content="{x:Static helper:MainWindowText.GridEditInfo}" 
+                                                    ToolTip="{x:Static helper:MainWindowText.TooltipEditInfo}" 
                                                     Click="GridEditProject_Click" 
                                                     IsEnabled="{Binding State, Converter={StaticResource ProjectStateToIsEnabledConverter}}"
                                                     Width="30" Margin="2" Padding="2"/>
-                                            <Button Content="{x:Static helper:UITextHelper.GridDelete}" 
-                                                    ToolTip="{x:Static helper:UITextHelper.TooltipDelete}" 
+                                            <Button Content="{x:Static helper:MainWindowText.GridDelete}" 
+                                                    ToolTip="{x:Static helper:MainWindowText.TooltipDelete}" 
                                                     Click="GridDeleteProject_Click" Width="30" Margin="2" Padding="2" Foreground="Red"/>
                                         </StackPanel>
                                     </DataTemplate>
@@ -219,49 +196,49 @@
 
             <!-- Project Details & Actions -->
             <StackPanel Grid.Column="1">
-                <GroupBox Header="{x:Static helper:UITextHelper.ProjectDetails}">
+                <GroupBox Header="{x:Static helper:MainWindowText.ProjectDetails}">
                     <StackPanel x:Name="pnlProjectDetails">
-                        <TextBlock Text="{x:Static helper:UITextHelper.NoProjectSelected}" x:Name="txtNoSelection" 
+                        <TextBlock Text="{x:Static helper:MainWindowText.NoProjectSelected}" x:Name="txtNoSelection" 
                                    Foreground="Gray" HorizontalAlignment="Center" Margin="20"
                                    Visibility="{Binding HasNoSelectedProject, Converter={StaticResource BoolToVisConverter}}"/>
 
                         <StackPanel x:Name="pnlDetails" Visibility="{Binding HasSelectedProject, Converter={StaticResource BoolToVisConverter}}">
                             <StackPanel Orientation="Horizontal" Margin="0,5">
-                                <TextBlock Text="{x:Static helper:UITextHelper.ProjectDetailsName}" Style="{StaticResource LabelText}" Width="100"/>
+                                <TextBlock Text="{x:Static helper:MainWindowText.ProjectDetailsName}" Style="{StaticResource LabelText}" Width="100"/>
                                 <TextBlock Text="{Binding ProjectName, Mode=OneWay}" TextWrapping="Wrap"/>
                             </StackPanel>
                             <StackPanel Orientation="Horizontal" Margin="0,5">
-                                <TextBlock Text="{x:Static helper:UITextHelper.ProjectDetailsId}" Style="{StaticResource LabelText}" Width="100"/>
+                                <TextBlock Text="{x:Static helper:MainWindowText.ProjectDetailsId}" Style="{StaticResource LabelText}" Width="100"/>
                                 <TextBlock Text="{Binding ProjectId, Mode=OneWay}" TextWrapping="Wrap"/>
                             </StackPanel>
                             <StackPanel Margin="0,5">
-                                <TextBlock Text="{x:Static helper:UITextHelper.ProjectDetailsPath}" Style="{StaticResource LabelText}"/>
+                                <TextBlock Text="{x:Static helper:MainWindowText.ProjectDetailsPath}" Style="{StaticResource LabelText}"/>
                                 <TextBlock Text="{Binding ProjectPath, Mode=OneWay}" TextWrapping="Wrap" Margin="5"/>
                             </StackPanel>
                             <StackPanel Margin="0,5">
-                                <TextBlock Text="{x:Static helper:UITextHelper.ProjectDetailsDescription}" Style="{StaticResource LabelText}"/>
+                                <TextBlock Text="{x:Static helper:MainWindowText.ProjectDetailsDescription}" Style="{StaticResource LabelText}"/>
                                 <TextBlock Text="{Binding Description, Mode=OneWay}" TextWrapping="Wrap" Margin="5"/>
                             </StackPanel>
                         </StackPanel>
                     </StackPanel>
                 </GroupBox>
 
-                <GroupBox Header="{x:Static helper:UITextHelper.Actions}">
+                <GroupBox Header="{x:Static helper:MainWindowText.Actions}">
                     <StackPanel x:Name="pnlActions" IsEnabled="{Binding IsSelectedProjectValid}">
-                        <Button Content="{x:Static helper:UITextHelper.OpenFolder}" Click="OpenFolder_Click" Margin="5"/>
-                        <Button Content="{x:Static helper:UITextHelper.EditInfo}" Click="EditProject_Click" Margin="5"/>
+                        <Button Content="{x:Static helper:MainWindowText.OpenFolder}" Click="OpenFolder_Click" Margin="5"/>
+                        <Button Content="{x:Static helper:MainWindowText.EditInfo}" Click="EditProject_Click" Margin="5"/>
                         <Separator Margin="5,10"/>
-                        <Button Content="{x:Static helper:UITextHelper.RemoveProject}" Click="DeleteProject_Click" Margin="5"/>
+                        <Button Content="{x:Static helper:MainWindowText.RemoveProject}" Click="DeleteProject_Click" Margin="5"/>
                     </StackPanel>
                 </GroupBox>
 
-                <GroupBox Header="{x:Static helper:UITextHelper.Info}">
+                <GroupBox Header="{x:Static helper:MainWindowText.Info}">
                     <StackPanel>
                         <TextBlock TextWrapping="Wrap" FontSize="11" Foreground="Gray">
-                            <Run Text="{x:Static helper:UITextHelper.TotalProjects}"/>
+                            <Run Text="{x:Static helper:MainWindowText.TotalProjects}"/>
                             <Run Text="{Binding TotalCount, Mode=OneWay}" FontWeight="Bold"/>
                         </TextBlock>
-                        <TextBlock Text="{x:Static helper:UITextHelper.Template}" 
+                        <TextBlock Text="{x:Static helper:MainWindowText.Template}" 
                                    FontSize="11" Foreground="Gray" Margin="0,5,0,0"/>
                     </StackPanel>
                 </GroupBox>

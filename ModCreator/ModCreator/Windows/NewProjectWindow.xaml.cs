@@ -7,17 +7,11 @@ namespace ModCreator.Windows
 {
     public partial class NewProjectWindow : CWindow<NewProjectWindowData>
     {
-        public override NewProjectWindowData InitData(CancelEventArgs e)
-        {
-            txtProjectName.Focus();
-            return base.InitData(e);
-        }
-        
         private void CreateButton_Click(object sender, RoutedEventArgs e)
         {
             if (!WindowData.CanCreate)
             {
-                DebugHelper.ShowWarning(MessageHelper.Get("ErrorFillRequiredFields"), MessageHelper.Get("Error"));
+                DebugHelper.ShowWarning(MessageHelper.Get("Messages.Error.ErrorFillRequiredFields"), MessageHelper.Get("Messages.Error.Title"));
                 return;
             }
 
@@ -25,7 +19,7 @@ namespace ModCreator.Windows
             var workplacePath = WindowData.WorkplacePath;
             if (string.IsNullOrWhiteSpace(workplacePath))
             {
-                DebugHelper.ShowWarning(MessageHelper.Get("ErrorWorkplaceNotSet"), MessageHelper.Get("Error"));
+                DebugHelper.ShowWarning(MessageHelper.Get("Messages.Error.ErrorWorkplaceNotSet"), MessageHelper.Get("Messages.Error.Title"));
                 return;
             }
             // ProjectId will be generated inside CreateProject

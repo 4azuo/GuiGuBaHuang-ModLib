@@ -13,6 +13,7 @@ namespace ModCreator.WindowData
     /// - DO NOT manually call OnPropertyChanged() in derived classes - it's handled automatically
     /// - Use [NotifyMethod] attribute to trigger methods when properties change
     /// - Properties will automatically notify UI bindings without explicit calls
+    /// - DO NOT use private methods in derived classes - use public methods instead for [NotifyMethod] attribute to work
     /// 
     /// Lifecycle:
     /// 1. New() - Called when window data is created (optional override)

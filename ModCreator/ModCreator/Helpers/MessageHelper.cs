@@ -1,4 +1,5 @@
 using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -13,7 +14,7 @@ namespace ModCreator.Helpers
     /// </summary>
     public static class MessageHelper
     {
-        private static Dictionary<string, string> _messages;
+        private static JObject _messagesRoot;
         private static readonly object _lock = new object();
 
         /// <summary>
@@ -41,45 +42,53 @@ namespace ModCreator.Helpers
                     }
 
                     var jsonContent = File.ReadAllText(jsonPath);
-                    _messages = JsonConvert.DeserializeObject<Dictionary<string, string>>(jsonContent);
+                    _messagesRoot = JsonConvert.DeserializeObject<JObject>(jsonContent);
                 }
                 catch (Exception ex)
                 {
                     DebugHelper.ShowError(ex, "Error", $"Error loading messages: {ex.Message}");
-                    _messages = new Dictionary<string, string>();
+                    _messagesRoot = new JObject();
                 }
             }
         }
 
         /// <summary>
-        /// Get a message by key
+        /// Get a message by path (e.g., "Windows.MainWindow.AppTitle" or "Messages.Success.CreatedProject")
         /// </summary>
-        /// <param name="key">The message key</param>
-        /// <returns>The message string, or the key itself if not found</returns>
-        public static string Get(string key)
+        /// <param name="path">The message path using dot notation</param>
+        /// <returns>The message string, or the path itself if not found</returns>
+        public static string Get(string path)
         {
-            if (_messages == null)
+            if (_messagesRoot == null)
             {
                 LoadMessages();
             }
 
-            if (_messages.TryGetValue(key, out var value))
+            try
             {
-                return value;
+                var token = _messagesRoot.SelectToken(path.Replace(".", "."));
+                if (token != null && token.Type == JTokenType.String)
+                {
+                    return token.Value<string>();
+                }
+            }
+            catch
+            {
+                // Ignore exceptions and return default
             }
 
-            return $"[{key}]"; // Return key in brackets if not found
+            return $"[{path}]"; // Return path in brackets if not found
         }
 
         /// <summary>
         /// Get a formatted message with parameters
         /// </summary>
-        /// <param name="key">The message key</param>
+        /// <param name="path">The message path using dot notation</param>
         /// <param name="args">Format arguments</param>
         /// <returns>The formatted message string</returns>
-        public static string GetFormat(string key, params object[] args)
+        public static string GetFormat(string path, params object[] args)
         {
-            var message = Get(key);
+            var message = Get(path);
             try
             {
                 return string.Format(message, args);

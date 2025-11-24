@@ -222,7 +222,8 @@ namespace ModCreator.Commons
                     foreach (string mName in notiMethodAtt.Methods)
                     {
                         var runMethod = thisType.GetMethod(mName);
-                        if (runMethod.GetParameters().Length != 1 && runMethod.GetParameters()[0].ParameterType != typeof(string)) throw new ArgumentException();
+                        if (runMethod == null) throw new Exception("NotifyMethodAttribute: Method " + mName + " not found.");
+                        if (runMethod.GetParameters().Length != 1 && runMethod.GetParameters()[0].ParameterType != typeof(string)) throw new Exception("NotifyMethodAttribute: Method " + mName + " has invalid signature.");
                         listMethods.Add(runMethod);
                     }
                     ListNotifyMethods.Add(p, listMethods.ToArray());

@@ -231,7 +231,7 @@ namespace ModCreator.Helpers
         {
             try
             {
-                var logDir = Path.Combine(Constants.RootDir, "ModCreator", "Logs");
+                var logDir = Constants.LogsDir;
                 if (!Directory.Exists(logDir))
                     return;
 
