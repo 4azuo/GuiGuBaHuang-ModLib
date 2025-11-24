@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Runtime.CompilerServices;
 using System.Text;
 
 public static class DebugHelper
@@ -69,12 +70,16 @@ public static class DebugHelper
         return CurLog.Length;
     }
 
-    public static void WriteLine(Exception e)
+    public static void WriteLine(Exception e,
+            [CallerMemberName] string memberName = "",
+            [CallerFilePath] string filePath = "",
+            [CallerLineNumber] int lineNumber = 0)
     {
         if (Exceptions.Contains(e))
             return;
         Exceptions.Add(e);
         WriteLine($"ModLib-Version: {ModMaster.ModObj.Version}");
+        WriteLine($"Caller-Info: {filePath}:{memberName}:(line {lineNumber})");
         WriteLine($"{e.GetAllInnnerExceptionStr()}");
         Save();
 
