@@ -1,7 +1,7 @@
-using ModCreator.Helpers;
+﻿using ModCreator.Attributes;
 using ModCreator.WindowData;
-using System;
 using System.ComponentModel;
+using System.Reflection;
 using System.Windows;
 
 namespace ModCreator.Windows
@@ -27,71 +27,50 @@ namespace ModCreator.Windows
         /// <summary>
         /// Window data (business logic)
         /// </summary>
+        [IgnoredProperty]
         public T WindowData { get; private set; }
 
         /// <summary>
         /// Override only when you need custom initialization logic.
         /// Base implementation creates new T() and calls WindowData.New() automatically.
         /// </summary>
-        public virtual T InitData(CancelEventArgs e)
-        {
-            var data = new T();
-            data.New();
-            return data;
-        }
+        public virtual T InitData(CancelEventArgs e) { return new T(); }
 
         /// <summary>
-        /// Override to handle window closing
+        /// Handles the event triggered when a window is closing.
         /// </summary>
+        /// <remarks>Use the <see cref="CancelEventArgs.Cancel"/> property to prevent the window from
+        /// closing if necessary.</remarks>
+        /// <param name="s">The source of the event, typically the window being closed.</param>
+        /// <param name="e">An instance of <see cref="CancelEventArgs"/> that allows the operation to be canceled.</param>
         public virtual void ClosingWindow(object s, CancelEventArgs e) { }
+
+        public void ClearData()
+        {
+            WindowData = new T();
+            WindowData.InitWindow(this, new CancelEventArgs(false));
+            WindowData.NotifyAll();
+        }
 
         public CWindow()
         {
-            try
+            this.GetType().GetProperty("LastInstance", BindingFlags.Public | BindingFlags.Static)?.SetValue(this, this);
+            GetType().GetMethod(COMP_INIT_METHOD).Invoke(this, null);
+            WindowStartupLocation = WindowStartupLocation.CenterScreen;
+
+            var initDataFlg = new CancelEventArgs(false);
+            WindowData = InitData(initDataFlg);
+            DataContext = WindowData;
+            
+            Loaded += (s, e) =>
             {
-                DebugHelper.Info($"[CWindow] Initializing {GetType().Name}");
-                
-                // Call InitializeComponent
-                var initMethod = GetType().GetMethod(COMP_INIT_METHOD);
-                if (initMethod == null)
-                {
-                    throw new InvalidOperationException(
-                        $"InitializeComponent method not found on type {GetType().FullName}. " +
-                        "Make sure the XAML file is properly configured.");
-                }
-                
-                initMethod.Invoke(this, null);
-                WindowStartupLocation = WindowStartupLocation.CenterScreen;
+                WindowData.InitWindow(this, initDataFlg);
+            };
 
-                DebugHelper.Info($"[CWindow] InitializeComponent completed for {GetType().Name}");
-
-                // Initialize data
-                var initDataFlg = new CancelEventArgs(false);
-                WindowData = InitData(initDataFlg);
-                DataContext = WindowData;
-
-                DebugHelper.Info($"[CWindow] WindowData initialized for {GetType().Name}");
-
-                // Wire up events
-                Loaded += (s, e) =>
-                {
-                    DebugHelper.Info($"[CWindow] Window Loaded event for {GetType().Name}");
-                    WindowData.InitWindow(this, initDataFlg);
-                };
-
-                Closing += (s, e) =>
-                {
-                    DebugHelper.Info($"[CWindow] Window Closing event for {GetType().Name}");
-                    ClosingWindow(s, e);
-                };
-                
-                DebugHelper.Info($"[CWindow] Constructor completed successfully for {GetType().Name}");
-            }
-            catch (Exception ex)
+            Closing += (s, e) =>
             {
-                DebugHelper.ShowError(ex, MessageHelper.Get("Messages.Info.InitializationError"), MessageHelper.GetFormat("Messages.Error.ErrorInitializingWindow", GetType().Name));
-                throw;
-            }
+                ClosingWindow(s, e);
+            };
         }
     }
 }

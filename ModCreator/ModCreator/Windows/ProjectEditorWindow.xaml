@@ -7,13 +7,15 @@
         xmlns:local="clr-namespace:ModCreator.Windows"
         xmlns:localData="clr-namespace:ModCreator.WindowData"
         xmlns:helper="clr-namespace:ModCreator.Helpers"
+        xmlns:avalonedit="http://icsharpcode.net/sharpdevelop/avalonedit"
         mc:Ignorable="d"
         Title="{x:Static helper:ProjectEditorWindowText.ProjectEditorTitle}" 
         Height="700" Width="1200"
         WindowStartupLocation="CenterScreen"
         WindowState="Maximized"
         Icon="/Resources/app-icon.png"
-        FontFamily="Segoe UI">
+        FontFamily="Segoe UI"
+        PreviewKeyDown="Window_PreviewKeyDown">
 
     <Grid>
         <Grid.RowDefinitions>
@@ -56,7 +58,7 @@
         </Border>
 
         <!-- Tab Control -->
-        <TabControl Grid.Row="1" Margin="10">
+        <TabControl x:Name="tabControl" Grid.Row="1" Margin="10">
             <!-- Tab 1: Project Info -->
             <TabItem Header="{x:Static helper:ProjectEditorWindowText.TabProjectInfo}">
                 <Grid>
@@ -254,6 +256,20 @@
                                         Margin="0,0,0,5"
                                         Background="#FF4CAF50" 
                                         Foreground="White"/>
+                                <Button Content="{x:Static helper:ProjectEditorWindowText.CloneConf}" 
+                                        Click="CloneConf_Click"
+                                        Style="{StaticResource ActionButton}" 
+                                        Margin="0,0,0,5"
+                                        Background="#FF2196F3" 
+                                        Foreground="White"
+                                        IsEnabled="{Binding HasSelectedConfFile, Mode=OneWay}"/>
+                                <Button Content="{x:Static helper:ProjectEditorWindowText.RenameConf}" 
+                                        Click="RenameConf_Click"
+                                        Style="{StaticResource ActionButton}" 
+                                        Margin="0,0,0,5"
+                                        Background="#FFFF9800" 
+                                        Foreground="White"
+                                        IsEnabled="{Binding HasSelectedConfFile, Mode=OneWay}"/>
                                 <Button Content="{x:Static helper:ProjectEditorWindowText.RemoveConf}" 
                                         Click="RemoveConf_Click"
                                         Style="{StaticResource ActionButton}"
@@ -266,18 +282,131 @@
 
                     <!-- JSON Editor -->
                     <GroupBox Grid.Column="1" Grid.Row="0" Header="{x:Static helper:ProjectEditorWindowText.JsonEditor}">
-                        <TextBox Text="{Binding SelectedConfContent, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
-                                 Style="{StaticResource MultilineTextBox}"
-                                 FontFamily="Consolas"
-                                 IsEnabled="{Binding HasSelectedConfFile, Mode=OneWay}"
-                                 AcceptsReturn="True"
-                                 AcceptsTab="True"
-                                 VerticalScrollBarVisibility="Auto"
-                                 HorizontalScrollBarVisibility="Auto"/>
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="*"/>
+                            </Grid.RowDefinitions>
+                            
+                            <!-- Editor Toolbar -->
+                            <StackPanel Grid.Row="0" Orientation="Horizontal" Margin="5" Background="#FFF5F5F5">
+                                <Button Content="Search &amp; Replace" 
+                                        Click="ReplaceInEditor_Click"
+                                        Style="{StaticResource ActionButton}"
+                                        Width="130"
+                                        Height="28"
+                                        Margin="0,0,5,0"
+                                        Background="#FF4CAF50"
+                                        Foreground="White"
+                                        IsEnabled="{Binding HasSelectedConfFile, Mode=OneWay}"/>
+                                <Button Content="Open in Notepad" 
+                                        Click="OpenInNotepad_Click"
+                                        Style="{StaticResource ActionButton}"
+                                        Width="130"
+                                        Height="28"
+                                        Margin="0,0,5,0"
+                                        Background="#FF4CAF50"
+                                        Foreground="White"
+                                        IsEnabled="{Binding HasSelectedConfFile, Mode=OneWay}"/>
+                            </StackPanel>
+                            
+                            <!-- Replace Panel -->
+                            <Border x:Name="replacePanel" 
+                                    Grid.Row="1" 
+                                    Background="#FFF9F9F9" 
+                                    BorderBrush="#FFCCCCCC" 
+                                    BorderThickness="0,1,0,1"
+                                    Padding="10"
+                                    Visibility="Collapsed">
+                                <Grid>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="Auto"/>
+                                        <RowDefinition Height="Auto"/>
+                                    </Grid.RowDefinitions>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="70"/>
+                                        <ColumnDefinition Width="*"/>
+                                        <ColumnDefinition Width="Auto"/>
+                                    </Grid.ColumnDefinitions>
+                                    
+                                    <!-- Find Row -->
+                                    <TextBlock Grid.Row="0" Grid.Column="0" 
+                                               Text="Find:" 
+                                               VerticalAlignment="Center" 
+                                               Margin="0,0,10,0"/>
+                                    <TextBox x:Name="txtFindText" 
+                                             Grid.Row="0" Grid.Column="1"
+                                             Height="26"
+                                             VerticalContentAlignment="Center"
+                                             TextChanged="TxtFindText_TextChanged"
+                                             PreviewKeyDown="TxtFindText_KeyDown"
+                                             Margin="0,0,10,5"/>
+                                    <StackPanel Grid.Row="0" Grid.Column="2" 
+                                                Orientation="Horizontal">
+                                        <Button Content="Find Next" 
+                                                Click="FindNext_Click"
+                                                Style="{StaticResource ActionButton}"
+                                                Width="90"
+                                                Height="26"
+                                                Margin="0,0,5,5"/>
+                                        <Button Content="Close" 
+                                                Click="CloseReplacePanel_Click"
+                                                Style="{StaticResource ActionButton}"
+                                                Width="60"
+                                                Height="26"
+                                                Margin="0,0,0,5"/>
+                                    </StackPanel>
+                                    
+                                    <!-- Replace Row -->
+                                    <TextBlock Grid.Row="1" Grid.Column="0" 
+                                               Text="Replace:" 
+                                               VerticalAlignment="Center" 
+                                               Margin="0,0,10,0"/>
+                                    <TextBox x:Name="txtReplaceText" 
+                                             Grid.Row="1" Grid.Column="1"
+                                             Height="26"
+                                             VerticalContentAlignment="Center"
+                                             Margin="0,0,10,0"/>
+                                    <StackPanel Grid.Row="1" Grid.Column="2" 
+                                                Orientation="Horizontal">
+                                        <Button Content="Replace" 
+                                                Click="ReplaceOne_Click"
+                                                Style="{StaticResource ActionButton}"
+                                                Width="90"
+                                                Height="26"
+                                                Margin="0,0,5,0"/>
+                                        <Button Content="Replace All" 
+                                                Click="ReplaceAll_Click"
+                                                Style="{StaticResource ActionButton}"
+                                                Width="90"
+                                                Height="26"
+                                                Background="#FF2196F3"
+                                                Foreground="White"/>
+                                    </StackPanel>
+                                </Grid>
+                            </Border>
+                            
+                            <!-- AvalonEdit Editor -->
+                            <avalonedit:TextEditor x:Name="txtJsonEditor"
+                                                   Grid.Row="2"
+                                                   FontFamily="Consolas"
+                                                   FontSize="12"
+                                                   ShowLineNumbers="True"
+                                                   IsEnabled="{Binding HasSelectedConfFile, Mode=OneWay}"
+                                                   VerticalScrollBarVisibility="Auto"
+                                                   HorizontalScrollBarVisibility="Auto"/>
+                        </Grid>
                     </GroupBox>
                     
                     <!-- Tab 2 Actions -->
                     <StackPanel Grid.Column="0" Grid.ColumnSpan="2" Grid.Row="1" Margin="0,10,0,0" Orientation="Horizontal" HorizontalAlignment="Right">
+                        <TextBlock Text="Note: Changes are saved automatically (direct file management)" 
+                                   VerticalAlignment="Center"
+                                   Foreground="Gray"
+                                   FontSize="11"
+                                   FontStyle="Italic"
+                                   Margin="0,0,15,0"/>
                         <Button Content="{x:Static helper:ProjectEditorWindowText.OpenInExplorer}" 
                                 Click="OpenModConfFolder_Click"
                                 Style="{StaticResource ActionButton}" 
@@ -350,6 +479,12 @@
                     
                     <!-- Tab 3 Actions -->
                     <StackPanel Grid.Column="0" Grid.ColumnSpan="2" Grid.Row="1" Margin="0,10,0,0" Orientation="Horizontal" HorizontalAlignment="Right">
+                        <TextBlock Text="Note: Changes are saved automatically (direct file management)" 
+                                   VerticalAlignment="Center"
+                                   Foreground="Gray"
+                                   FontSize="11"
+                                   FontStyle="Italic"
+                                   Margin="0,0,15,0"/>
                         <Button Content="{x:Static helper:ProjectEditorWindowText.OpenInExplorer}" 
                                 Click="OpenModImgFolder_Click"
                                 Style="{StaticResource ActionButton}" 
@@ -372,24 +507,32 @@
                     </Grid.RowDefinitions>
 
                     <DataGrid Grid.Row="0" 
+                              Name="dgGlobalVariables"
                               ItemsSource="{Binding GlobalVariables, Mode=TwoWay}"
                               Style="{StaticResource EditableDataGridStyle}"
                               CellStyle="{StaticResource EditableDataGridCellStyle}"
                               ColumnHeaderStyle="{StaticResource EditableDataGridHeaderStyle}"
+                              CanUserAddRows="False"
+                              RowEditEnding="DataGrid_RowEditEnding"
+                              RowHeight="40"
+                              ColumnHeaderHeight="48"
                               Margin="0,0,0,10">
                         <DataGrid.Columns>
                             <DataGridTextColumn Header="{x:Static helper:ProjectEditorWindowText.VariableName}" 
                                                 Binding="{Binding Name, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" 
                                                 Width="200"
                                                 MinWidth="100"/>
-                            <DataGridComboBoxColumn Header="{x:Static helper:ProjectEditorWindowText.VariableType}" 
-                                                    SelectedItemBinding="{Binding Type, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
-                                                    Width="150"
-                                                    MinWidth="100">
+                            <DataGridComboBoxColumn Width="150"
+                                                    MinWidth="100"
+                                                    SelectedValueBinding="{Binding Type, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}">
+                                <DataGridComboBoxColumn.Header>
+                                    <TextBlock Text="{x:Static helper:ProjectEditorWindowText.VariableType}"
+                                               ToolTip="{x:Static helper:ProjectEditorWindowText.VariableTypeTooltip}"/>
+                                </DataGridComboBoxColumn.Header>
                                 <DataGridComboBoxColumn.ElementStyle>
                                     <Style TargetType="ComboBox">
-                                        <Setter Property="ItemsSource" Value="{Binding DataContext.VarTypes, RelativeSource={RelativeSource AncestorType=local:CWindow}}"/>
-                                        <Setter Property="DisplayMemberPath" Value="Type"/>
+                                        <Setter Property="ItemsSource" Value="{Binding DataContext.VarTypes, RelativeSource={RelativeSource AncestorType=Window}}"/>
+                                        <Setter Property="DisplayMemberPath" Value="Name"/>
                                         <Setter Property="SelectedValuePath" Value="Type"/>
                                         <Setter Property="IsEditable" Value="False"/>
                                         <Setter Property="VerticalContentAlignment" Value="Center"/>
@@ -397,8 +540,8 @@
                                 </DataGridComboBoxColumn.ElementStyle>
                                 <DataGridComboBoxColumn.EditingElementStyle>
                                     <Style TargetType="ComboBox">
-                                        <Setter Property="ItemsSource" Value="{Binding DataContext.VarTypes, RelativeSource={RelativeSource AncestorType=local:CWindow}}"/>
-                                        <Setter Property="DisplayMemberPath" Value="Type"/>
+                                        <Setter Property="ItemsSource" Value="{Binding DataContext.VarTypes, RelativeSource={RelativeSource AncestorType=Window}}"/>
+                                        <Setter Property="DisplayMemberPath" Value="Name"/>
                                         <Setter Property="SelectedValuePath" Value="Type"/>
                                         <Setter Property="IsEditable" Value="False"/>
                                         <Setter Property="VerticalContentAlignment" Value="Center"/>
@@ -413,10 +556,38 @@
                                                 Binding="{Binding Description, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" 
                                                 Width="*"
                                                 MinWidth="200"/>
+                            <DataGridTemplateColumn Header="{x:Static helper:ProjectEditorWindowText.HeaderActions}" Width="110">
+                                <DataGridTemplateColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                                            <Button Content="📋" 
+                                                    ToolTip="Clone Variable"
+                                                    Click="CloneVariable_Click"
+                                                    Tag="{Binding}"
+                                                    Background="Transparent"
+                                                    BorderThickness="0"
+                                                    Width="30" Margin="2" Padding="2"/>
+                                            <Button Content="🗑️" 
+                                                    ToolTip="Remove Variable"
+                                                    Click="RemoveVariable_Click"
+                                                    Tag="{Binding}"
+                                                    Background="Transparent"
+                                                    BorderThickness="0"
+                                                    Width="30" Margin="2" Padding="2" Foreground="Red"/>
+                                        </StackPanel>
+                                    </DataTemplate>
+                                </DataGridTemplateColumn.CellTemplate>
+                            </DataGridTemplateColumn>
                         </DataGrid.Columns>
                     </DataGrid>
 
                     <StackPanel Grid.Row="1" Orientation="Horizontal">
+                        <Button Content="{x:Static helper:ProjectEditorWindowText.AddVariable}" 
+                                Click="AddVariable_Click"
+                                Style="{StaticResource ActionButton}"
+                                Background="#FF4CAF50" 
+                                Foreground="White"
+                                Margin="0,0,10,0"/>
                         <Button Content="{x:Static helper:ProjectEditorWindowText.GenerateCode}" 
                                 Click="GenerateVariablesCode_Click"
                                 Style="{StaticResource PrimaryButton}"

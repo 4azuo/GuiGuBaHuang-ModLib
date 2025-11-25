@@ -54,7 +54,7 @@ namespace ModLib.Object
             return GetAllEnums<T>().FirstOrDefault(x => x.Name == nm);
         }
 
-        public static T GetEnumByProp<T>(string propName, object propValue) where T : EnumObject
+        public static T GetEnumByProp<T>(object obj, PropertyInfo prop, object oldValue, object newValue, object propValue) where T : EnumObject
         {
             var prop = typeof(T).GetProperty(propName, BindingFlags.Public | BindingFlags.Instance);
             return GetAllEnums<T>().FirstOrDefault(x => prop.GetValue(x, null) == propValue);

@@ -173,16 +173,22 @@
                                     <DataTemplate>
                                         <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
                                             <Button Content="{x:Static helper:MainWindowText.GridOpenFolder}" 
+                                                    Background="Transparent"
+                                                    BorderThickness="0"
                                                     ToolTip="{x:Static helper:MainWindowText.TooltipOpenFolder}" 
                                                     Click="GridOpenFolder_Click" 
                                                     IsEnabled="{Binding State, Converter={StaticResource ProjectStateToIsEnabledConverter}}"
                                                     Width="30" Margin="2" Padding="2"/>
                                             <Button Content="{x:Static helper:MainWindowText.GridEditInfo}" 
+                                                    Background="Transparent"
+                                                    BorderThickness="0"
                                                     ToolTip="{x:Static helper:MainWindowText.TooltipEditInfo}" 
                                                     Click="GridEditProject_Click" 
                                                     IsEnabled="{Binding State, Converter={StaticResource ProjectStateToIsEnabledConverter}}"
                                                     Width="30" Margin="2" Padding="2"/>
                                             <Button Content="{x:Static helper:MainWindowText.GridDelete}" 
+                                                    Background="Transparent"
+                                                    BorderThickness="0"
                                                     ToolTip="{x:Static helper:MainWindowText.TooltipDelete}" 
                                                     Click="GridDeleteProject_Click" Width="30" Margin="2" Padding="2" Foreground="Red"/>
                                         </StackPanel>

@@ -25,11 +25,6 @@ namespace ModCreator
         public static readonly string ResourcesDir = Path.GetFullPath(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Resources"));
 
         /// <summary>
-        /// Messages file path (bin/*/Resources/messages.json)
-        /// </summary>
-        public static readonly string MessagesFilePath = Path.GetFullPath(Path.Combine(ResourcesDir, "messages.json"));
-
-        /// <summary>
         /// Log directory (Logs in root)
         /// </summary>
         public static readonly string LogsDir = Path.GetFullPath(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "logs"));

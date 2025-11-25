@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.IO;
 using System.Linq;
+using System.Reflection;
 using System.Text.RegularExpressions;
 
 namespace ModCreator.WindowData
@@ -70,7 +71,7 @@ namespace ModCreator.WindowData
                     }
                 }
 
-                FilterConfigurations();
+                FilterConfigurations(this, null, null, null);
             }
             catch (Exception ex)
             {
@@ -78,7 +79,7 @@ namespace ModCreator.WindowData
             }
         }
 
-        public void FilterConfigurations(string propName = null)
+        public void FilterConfigurations(object obj, PropertyInfo prop, object oldValue, object newValue)
         {
             FilteredConfigs.Clear();
 

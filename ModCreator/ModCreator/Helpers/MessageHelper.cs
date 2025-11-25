@@ -34,7 +34,7 @@ namespace ModCreator.Helpers
             {
                 try
                 {
-                    var jsonPath = ModCreator.Constants.MessagesFilePath;
+                    var jsonPath = Path.GetFullPath(Path.Combine(Constants.ResourcesDir, "messages.json"));
                     
                     if (!File.Exists(jsonPath))
                     {

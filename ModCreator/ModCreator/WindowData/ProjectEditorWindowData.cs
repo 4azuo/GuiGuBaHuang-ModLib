@@ -1,9 +1,12 @@
 using ModCreator.Attributes;
 using ModCreator.Commons;
 using ModCreator.Enums;
+using ModCreator.Helpers;
 using ModCreator.Models;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.IO;
 using System.Linq;
 using System.Reflection;
@@ -60,7 +63,7 @@ namespace ModCreator.WindowData
         /// <summary>
         /// Supported image extensions loaded from image-extensions.json
         /// </summary>
-        public List<ImageExtension> ImageExtensions { get; set; } = new List<ImageExtension>();
+        public List<ImageExtension> ImageExtensions { get; set; } = Helpers.MasterDataHelper.LoadImageExtensions();
 
         /// <summary>
         /// Selected image file
@@ -108,15 +111,56 @@ namespace ModCreator.WindowData
 
         #region Tab 4: Global Variables
 
-        /// <summary>
-        /// List of global variables
-        /// </summary>
-        public List<GlobalVariable> GlobalVariables { get; set; } = new List<GlobalVariable>();
+        public ObservableCollection<GlobalVariable> GlobalVariables { get; set; } = new ObservableCollection<GlobalVariable>();
 
         /// <summary>
         /// Available variable types loaded from var-types.json
         /// </summary>
-        public List<VarType> VarTypes { get; set; } = new List<VarType>();
+        public List<VarType> VarTypes { get; set; } = Helpers.MasterDataHelper.LoadVarTypes();
+
+        #endregion
+
+        #region Backup/Restore
+
+        /// <summary>
+        /// Backup of original project state for Cancel operation
+        /// </summary>
+        internal ModProject _originalProject;
+
+        /// <summary>
+        /// Check if there are unsaved changes
+        /// </summary>
+        public bool HasUnsavedChanges()
+        {
+            if (Project == null || _originalProject == null) return false;
+            return !ObjectHelper.ArePropertiesEqual(Project, _originalProject);
+        }
+
+        /// <summary>
+        /// Create backup of current project state
+        /// </summary>
+        public void BackupProject()
+        {
+            if (Project == null) return;
+
+            // Deep clone using Newtonsoft.Json serialization
+            var json = JsonConvert.SerializeObject(Project);
+            _originalProject = JsonConvert.DeserializeObject<ModProject>(json);
+        }
+
+        /// <summary>
+        /// Restore project from backup
+        /// </summary>
+        public void RestoreProject()
+        {
+            if (_originalProject == null || Project == null) return;
+
+            // Deep clone the backup back to Project
+            ObjectHelper.CopyProperties(_originalProject, Project);
+
+            // Reload UI from restored data
+            LoadGlobalVariables();
+        }
 
         #endregion
 
@@ -127,15 +171,16 @@ namespace ModCreator.WindowData
         /// <summary>
         /// Load all project data when project is set
         /// </summary>
-        public void LoadProjectData(string propName = "")
+        public void LoadProjectData(object obj, PropertyInfo prop, object oldValue, object newValue)
         {
             if (Project == null) return;
 
-            LoadVarTypes();
-            LoadImageExtensions();
             LoadConfFiles();
             LoadImageFiles();
             LoadGlobalVariables();
+            
+            // Create backup for Cancel operation
+            BackupProject();
         }
 
         /// <summary>
@@ -143,7 +188,7 @@ namespace ModCreator.WindowData
         /// </summary>
         public void ReloadProjectData()
         {
-            LoadProjectData();
+            LoadProjectData(this, null, null, null);
         }
 
         /// <summary>
@@ -157,17 +202,25 @@ namespace ModCreator.WindowData
             var confDir = Path.Combine(Project.ProjectPath, "ModProject", "ModConf");
             if (Directory.Exists(confDir))
             {
-                var files = Directory.GetFiles(confDir, "*.json")
-                    .Select(Path.GetFileName)
-                    .ToList();
-                ConfFiles = files;
+                ConfFiles = Directory.GetFiles(confDir, "*.json").ToList();
+                
+                // Clear selection if the selected file no longer exists
+                if (!string.IsNullOrEmpty(SelectedConfFile) && !ConfFiles.Contains(SelectedConfFile))
+                {
+                    SelectedConfFile = null;
+                }
+            }
+            else
+            {
+                // Clear selection if directory doesn't exist
+                SelectedConfFile = null;
             }
         }
 
         /// <summary>
         /// Load content of selected configuration file
         /// </summary>
-        public void LoadConfContent(string propName = "")
+        public void LoadConfContent(object obj, PropertyInfo prop, object oldValue, object newValue)
         {
             if (string.IsNullOrEmpty(SelectedConfFile) || Project == null)
             {
@@ -201,37 +254,10 @@ namespace ModCreator.WindowData
         /// <summary>
         /// Called when SelectedImageFile changes to trigger SelectedImagePath update
         /// </summary>
-        public void OnSelectedImageChanged(string propName = "")
+        public void OnSelectedImageChanged(object obj, PropertyInfo prop, object oldValue, object newValue)
         {
             // Trigger SelectedImagePath property change notification
             // This causes the Image control to reload with the new bitmap
-        }
-
-        /// <summary>
-        /// Load supported image extensions from image-extensions.json
-        /// </summary>
-        public void LoadImageExtensions()
-        {
-            ImageExtensions.Clear();
-
-            var assembly = Assembly.GetExecutingAssembly();
-            const string resourceName = "ModCreator.Resources.image-extensions.json";
-
-            using (var stream = assembly.GetManifestResourceStream(resourceName))
-            {
-                if (stream != null)
-                {
-                    using (var reader = new StreamReader(stream))
-                    {
-                        var json = reader.ReadToEnd();
-                        var extensions = JsonSerializer.Deserialize<List<ImageExtension>>(json);
-                        if (extensions != null)
-                        {
-                            ImageExtensions.AddRange(extensions);
-                        }
-                    }
-                }
-            }
         }
 
         /// <summary>
@@ -250,55 +276,26 @@ namespace ModCreator.WindowData
                     throw new InvalidOperationException("ImageExtensions not loaded. Cannot load image files.");
                 }
 
-                var supportedExtensions = ImageExtensions.Select(e => e.Extension.ToLower()).ToList();
+                // Load files for each supported extension separately to avoid loading all files
+                ImageFiles = Directory.EnumerateFiles(imgDir, "*", SearchOption.TopDirectoryOnly)
+                    .Where(f => ImageExtensions.Any(ext => ext.Extension == Path.GetExtension(f).ToLower())).ToList();
 
-                var files = Directory.GetFiles(imgDir, "*.*")
-                    .Where(f => supportedExtensions.Contains(Path.GetExtension(f).ToLower()))
-                    .Select(Path.GetFileName)
-                    .ToList();
-                ImageFiles = files;
-            }
-        }
-
-        /// <summary>
-        /// Load variable types from var-types.json
-        /// </summary>
-        public void LoadVarTypes()
-        {
-            VarTypes.Clear();
-
-            var assembly = Assembly.GetExecutingAssembly();
-            const string resourceName = "ModCreator.Resources.var-types.json";
-
-            using (var stream = assembly.GetManifestResourceStream(resourceName))
-            {
-                if (stream != null)
+                // Clear selection if the selected file no longer exists
+                if (!string.IsNullOrEmpty(SelectedImageFile) && !ImageFiles.Contains(SelectedImageFile))
                 {
-                    using (var reader = new StreamReader(stream))
-                    {
-                        var json = reader.ReadToEnd();
-                        var types = JsonSerializer.Deserialize<List<VarType>>(json);
-                        if (types != null)
-                        {
-                            VarTypes.AddRange(types);
-                        }
-                    }
+                    SelectedImageFile = null;
                 }
+            }
+            else
+            {
+                // Clear selection if directory doesn't exist
+                SelectedConfFile = null;
             }
         }
 
         public void LoadGlobalVariables()
         {
-            GlobalVariables.Clear();
-            // TODO: Load from file or database
-            // For now, add some sample data
-            GlobalVariables.Add(new GlobalVariable
-            {
-                Name = "MOD_VERSION",
-                Type = "string",
-                Value = "1.0.0",
-                Description = "Mod version"
-            });
+            GlobalVariables = new ObservableCollection<GlobalVariable>(Project.GlobalVariables);
         }
 
         /// <summary>
@@ -327,7 +324,10 @@ namespace ModCreator.WindowData
         /// </summary>
         public void SaveGlobalVariables()
         {
-            // TODO: Implement save to file
+            if (Project == null) return;
+
+            // Sync GlobalVariables ObservableCollection back to Project.GlobalVariables
+            Project.GlobalVariables = new List<GlobalVariable>(GlobalVariables);
         }
 
         #endregion
