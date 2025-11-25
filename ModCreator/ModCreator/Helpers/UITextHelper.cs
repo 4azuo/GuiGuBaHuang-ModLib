@@ -37,6 +37,7 @@ namespace ModCreator.Helpers
         public static string ProjectDetailsId => MessageHelper.Get("Windows.MainWindow.ProjectDetailsId");
         public static string ProjectDetailsPath => MessageHelper.Get("Windows.MainWindow.ProjectDetailsPath");
         public static string ProjectDetailsDescription => MessageHelper.Get("Windows.MainWindow.ProjectDetailsDescription");
+        public static string ProjectDetailsAuthor => MessageHelper.Get("Windows.MainWindow.ProjectDetailsAuthor");
         public static string Actions => MessageHelper.Get("Windows.MainWindow.Actions");
         public static string OpenFolder => MessageHelper.Get("Windows.MainWindow.OpenFolder");
         public static string EditInfo => MessageHelper.Get("Windows.MainWindow.EditInfo");

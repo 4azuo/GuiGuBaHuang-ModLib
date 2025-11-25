@@ -99,16 +99,16 @@ namespace ModCreator.Helpers
                 CreatedDate = DateTime.Now,
                 LastModifiedDate = DateTime.Now,
                 Description = description,
-                GlobalVariables = new System.Collections.Generic.List<GlobalVariable>
-                {
-                    new GlobalVariable
-                    {
+                TitleImg = Path.GetFullPath(Path.Combine(projectPath, "ModProject", "ModProjectPreview.png")),
+                GlobalVariables =
+                [
+                    new() {
                         Name = "MOD_VERSION",
                         Type = "string",
                         Value = "1.0.0",
                         Description = "Mod version"
                     }
-                }
+                ]
             };
 
             return project;
@@ -126,7 +126,7 @@ namespace ModCreator.Helpers
                 var resourceName = "ModCreator.Resources.new-project-replacements.json";
                 
                 string json;
-                using (Stream stream = assembly.GetManifestResourceStream(resourceName))
+                using (var stream = assembly.GetManifestResourceStream(resourceName))
                 {
                     if (stream == null)
                     {
