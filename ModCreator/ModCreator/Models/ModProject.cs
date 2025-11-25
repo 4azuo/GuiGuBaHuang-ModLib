@@ -1,6 +1,7 @@
 using ModCreator.Commons;
 using ModCreator.Enums;
 using System;
+using System.Collections.Generic;
 
 namespace ModCreator.Models
 {
@@ -16,5 +17,6 @@ namespace ModCreator.Models
         public DateTime LastModifiedDate { get; set; }
         public string Description { get; set; }
         public ProjectState State { get; set; } = ProjectState.Valid;
+        public List<GlobalVariable> GlobalVariables { get; set; } = new List<GlobalVariable>();
     }
 }

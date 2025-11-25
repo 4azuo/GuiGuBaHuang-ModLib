@@ -99,8 +99,8 @@ namespace ModCreator
                     if (newProject != null)
                     {
                         WindowData.AllProjects.Add(newProject);
-                        ModCreator.Helpers.ProjectHelper.SaveProjects(WindowData.AllProjects);
-                        WindowData.UpdateFilteredProjects();
+                        ProjectHelper.SaveProjects(WindowData.AllProjects);
+                        WindowData.UpdateFilteredProjects(WindowData, null, null, null);
                         MessageBox.Show(MessageHelper.GetFormat("Messages.Success.ProjectSuccessMessage", newProject.ProjectPath), 
                             MessageHelper.Get("Messages.Success.Title"), MessageBoxButton.OK, MessageBoxImage.Information);
                         // Open editor window for new project

@@ -7,6 +7,7 @@ using System.Collections.Generic;
 using ModCreator.Attributes;
 using System.IO;
 using System.Linq;
+using System.Reflection;
 
 namespace ModCreator.WindowData
 {
@@ -38,7 +39,7 @@ namespace ModCreator.WindowData
             set
             {
                 _allProjects = value;
-                UpdateFilteredProjects();
+                UpdateFilteredProjects(this, null, null, null);
             }
         }
 
@@ -165,7 +166,7 @@ namespace ModCreator.WindowData
             var newProject = ProjectHelper.CreateProject(projectName, targetDirectory, description);
             AllProjects.Add(newProject);
             ProjectHelper.SaveProjects(AllProjects);
-            UpdateFilteredProjects();
+            UpdateFilteredProjects(this, null, null, null);
             StatusMessage = MessageHelper.GetFormat("Messages.Success.CreatedProject", projectName);
             return newProject;
         }
@@ -182,7 +183,7 @@ namespace ModCreator.WindowData
                 AllProjects.Remove(SelectedProject);
                 ProjectHelper.SaveProjects(AllProjects);
                 SelectedProject = null;
-                UpdateFilteredProjects();
+                UpdateFilteredProjects(this, null, null, null);
                 StatusMessage = MessageHelper.GetFormat("Messages.Success.DeletedProject", projectName);
             }
         }
@@ -202,7 +203,7 @@ namespace ModCreator.WindowData
         /// <summary>
         /// Update filtered projects based on search text
         /// </summary>
-        public void UpdateFilteredProjects(string propName = null)
+        public void UpdateFilteredProjects(object obj, PropertyInfo prop, object oldValue, object newValue)
         {
             if (AllProjects == null)
             {
@@ -228,7 +229,7 @@ namespace ModCreator.WindowData
         /// <summary>
         /// Save workplace path to settings
         /// </summary>
-        public void SaveWorkplacePath(string propName = null)
+        public void SaveWorkplacePath(object obj, PropertyInfo prop, object oldValue, object newValue)
         {
             if (!string.IsNullOrWhiteSpace(WorkplacePath))
             {

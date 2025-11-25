@@ -76,20 +76,19 @@
 
     <!-- Editable DataGrid Header Style -->
     <Style x:Key="EditableDataGridHeaderStyle" TargetType="DataGridColumnHeader">
-        <Setter Property="FontSize" Value="13"/>
-        <Setter Property="FontWeight" Value="SemiBold"/>
-        <Setter Property="Padding" Value="10,8"/>
-        <Setter Property="Background" Value="#FF3F51B5"/>
+        <Setter Property="FontSize" Value="14"/>
+        <Setter Property="FontWeight" Value="Bold"/>
+        <Setter Property="Padding" Value="8,8"/>
+        <Setter Property="Background" Value="#FF2E5090"/>
         <Setter Property="Foreground" Value="White"/>
-        <Setter Property="HorizontalContentAlignment" Value="Left"/>
-        <Setter Property="BorderThickness" Value="0,0,1,0"/>
-        <Setter Property="BorderBrush" Value="#FF5C6BC0"/>
+        <Setter Property="HorizontalContentAlignment" Value="Center"/>
     </Style>
 
     <!-- Editable DataGrid Cell Style -->
     <Style x:Key="EditableDataGridCellStyle" TargetType="DataGridCell">
-        <Setter Property="Padding" Value="10,8"/>
-        <Setter Property="BorderThickness" Value="0"/>
+        <Setter Property="Padding" Value="8,8"/>
+        <Setter Property="BorderThickness" Value="1"/>
+        <Setter Property="BorderBrush" Value="#FFB0B0B0"/>
         <Setter Property="VerticalContentAlignment" Value="Center"/>
         <Setter Property="Template">
             <Setter.Value>

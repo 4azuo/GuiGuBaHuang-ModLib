@@ -5,6 +5,7 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Reflection;
 
 namespace ModCreator.WindowData
 {
@@ -144,7 +145,7 @@ namespace ModCreator.WindowData
         /// <summary>
         /// Load content of selected documentation file
         /// </summary>
-        public void LoadDocContent(string propName = null)
+        public void LoadDocContent(object obj, PropertyInfo prop, object oldValue, object newValue)
         {
             if (SelectedDoc == null)
             {

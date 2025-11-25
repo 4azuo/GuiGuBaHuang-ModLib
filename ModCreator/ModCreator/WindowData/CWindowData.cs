@@ -1,7 +1,9 @@
+﻿using ModCreator.Attributes;
 using ModCreator.Commons;
 using Newtonsoft.Json;
 using System.ComponentModel;
 using System.Windows;
+using System.Reflection;
 
 namespace ModCreator.WindowData
 {
@@ -25,7 +27,7 @@ namespace ModCreator.WindowData
         /// <summary>
         /// Parent window reference
         /// </summary>
-        [JsonIgnore]
+        [JsonIgnore, IgnoredProperty]
         public Window Window { get; private set; }
 
         /// <summary>
@@ -46,10 +48,13 @@ namespace ModCreator.WindowData
         /// <summary>
         /// Initialize window reference
         /// </summary>
-        public virtual void InitWindow(Window window, CancelEventArgs initDataFlg)
+        /// <param name="iWindow"></param>
+        public virtual void InitWindow(Window iWindow, CancelEventArgs initDataFlg)
         {
-            Window = window;
+            Window = iWindow;
+            this.GetType().GetProperty("LastInstance", BindingFlags.Public | BindingFlags.Static)?.SetValue(this, this);
 
+            //load
             if (!initDataFlg.Cancel)
             {
                 Pause();

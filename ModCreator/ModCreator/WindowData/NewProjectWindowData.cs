@@ -3,6 +3,7 @@ using ModCreator.Helpers;
 using ModCreator.Attributes;
 using System.ComponentModel;
 using ModCreator.Models;
+using System.Reflection;
 
 namespace ModCreator.WindowData
 {
@@ -47,7 +48,7 @@ namespace ModCreator.WindowData
         /// <summary>
         /// Validate input fields
         /// </summary>
-        public void ValidateInput(string propName = null)
+        public void ValidateInput(object obj, PropertyInfo prop, object oldValue, object newValue)
         {
             CanCreate = !string.IsNullOrWhiteSpace(ProjectName);
         }

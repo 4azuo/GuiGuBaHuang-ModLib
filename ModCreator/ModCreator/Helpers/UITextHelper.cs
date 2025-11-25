@@ -103,6 +103,8 @@ namespace ModCreator.Helpers
         public static string TabModConf => MessageHelper.Get("Windows.ProjectEditorWindow.TabModConf");
         public static string ConfFiles => MessageHelper.Get("Windows.ProjectEditorWindow.ConfFiles");
         public static string AddConf => MessageHelper.Get("Windows.ProjectEditorWindow.AddConf");
+        public static string CloneConf => MessageHelper.Get("Windows.ProjectEditorWindow.CloneConf");
+        public static string RenameConf => MessageHelper.Get("Windows.ProjectEditorWindow.RenameConf");
         public static string RemoveConf => MessageHelper.Get("Windows.ProjectEditorWindow.RemoveConf");
         public static string JsonEditor => MessageHelper.Get("Windows.ProjectEditorWindow.JsonEditor");
         public static string TabModImg => MessageHelper.Get("Windows.ProjectEditorWindow.TabModImg");
@@ -112,10 +114,13 @@ namespace ModCreator.Helpers
         public static string RemoveImage => MessageHelper.Get("Windows.ProjectEditorWindow.RemoveImage");
         public static string ImagePreview => MessageHelper.Get("Windows.ProjectEditorWindow.ImagePreview");
         public static string TabGlobalVariables => MessageHelper.Get("Windows.ProjectEditorWindow.TabGlobalVariables");
+        public static string AddVariable => MessageHelper.Get("Windows.ProjectEditorWindow.AddVariable");
         public static string VariableName => MessageHelper.Get("Windows.ProjectEditorWindow.VariableName");
         public static string VariableType => MessageHelper.Get("Windows.ProjectEditorWindow.VariableType");
+        public static string VariableTypeTooltip => MessageHelper.Get("Windows.ProjectEditorWindow.VariableTypeTooltip");
         public static string VariableValue => MessageHelper.Get("Windows.ProjectEditorWindow.VariableValue");
         public static string VariableDescription => MessageHelper.Get("Windows.ProjectEditorWindow.VariableDescription");
+        public static string HeaderActions => MessageHelper.Get("Windows.ProjectEditorWindow.HeaderActions");
         public static string GenerateCode => MessageHelper.Get("Windows.ProjectEditorWindow.GenerateCode");
         public static string GenerateCodeNote => MessageHelper.Get("Windows.ProjectEditorWindow.GenerateCodeNote");
         public static string TabModEvent => MessageHelper.Get("Windows.ProjectEditorWindow.TabModEvent");

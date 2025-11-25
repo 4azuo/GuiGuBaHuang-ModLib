@@ -1,52 +1,52 @@
 [
   {
-    "name": "Boolean",
-    "type": "bool",
-    "desc": "True or False value"
+    "Name": "Boolean",
+    "Type": "bool",
+    "Desc": "True or False value"
   },
   {
-    "name": "Integer",
-    "type": "int",
-    "desc": "32-bit integer number"
+    "Name": "Integer",
+    "Type": "int",
+    "Desc": "32-bit integer number"
   },
   {
-    "name": "Long Integer",
-    "type": "long",
-    "desc": "64-bit integer number"
+    "Name": "Long Integer",
+    "Type": "long",
+    "Desc": "64-bit integer number"
   },
   {
-    "name": "Float",
-    "type": "float",
-    "desc": "Single precision floating point number"
+    "Name": "Float",
+    "Type": "float",
+    "Desc": "Single precision floating point number"
   },
   {
-    "name": "Double",
-    "type": "double",
-    "desc": "Double precision floating point number"
+    "Name": "Double",
+    "Type": "double",
+    "Desc": "Double precision floating point number"
   },
   {
-    "name": "String",
-    "type": "string",
-    "desc": "Text value"
+    "Name": "String",
+    "Type": "string",
+    "Desc": "Text value"
   },
   {
-    "name": "Integer Array",
-    "type": "int[]",
-    "desc": "Array of 32-bit integers"
+    "Name": "Integer Array",
+    "Type": "int[]",
+    "Desc": "Array of 32-bit integers"
   },
   {
-    "name": "Long Array",
-    "type": "long[]",
-    "desc": "Array of 64-bit integers"
+    "Name": "Long Array",
+    "Type": "long[]",
+    "Desc": "Array of 64-bit integers"
   },
   {
-    "name": "Float Array",
-    "type": "float[]",
-    "desc": "Array of single precision floats"
+    "Name": "Float Array",
+    "Type": "float[]",
+    "Desc": "Array of single precision floats"
   },
   {
-    "name": "Double Array",
-    "type": "double[]",
-    "desc": "Array of double precision floats"
+    "Name": "Double Array",
+    "Type": "double[]",
+    "Desc": "Array of double precision floats"
   }
 ]

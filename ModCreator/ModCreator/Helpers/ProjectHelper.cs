@@ -98,7 +98,17 @@ namespace ModCreator.Helpers
                 ProjectPath = projectPath,
                 CreatedDate = DateTime.Now,
                 LastModifiedDate = DateTime.Now,
-                Description = description
+                Description = description,
+                GlobalVariables = new System.Collections.Generic.List<GlobalVariable>
+                {
+                    new GlobalVariable
+                    {
+                        Name = "MOD_VERSION",
+                        Type = "string",
+                        Value = "1.0.0",
+                        Description = "Mod version"
+                    }
+                }
             };
 
             return project;
