@@ -7,6 +7,7 @@
         xmlns:local="clr-namespace:ModCreator.Windows"
         xmlns:localData="clr-namespace:ModCreator.WindowData"
         xmlns:helper="clr-namespace:ModCreator.Helpers"
+        xmlns:converter="clr-namespace:ModCreator.Converters"
         xmlns:avalonedit="http://icsharpcode.net/sharpdevelop/avalonedit"
         mc:Ignorable="d"
         Title="{x:Static helper:ProjectEditorWindowText.ProjectEditorTitle}" 
@@ -16,6 +17,10 @@
         Icon="/Resources/app-icon.png"
         FontFamily="Segoe UI"
         PreviewKeyDown="Window_PreviewKeyDown">
+
+    <Window.Resources>
+        <converter:BoolToIconConverter x:Key="BoolToIconConverter"/>
+    </Window.Resources>
 
     <Grid>
         <Grid.RowDefinitions>
@@ -242,14 +247,42 @@
                                 <RowDefinition Height="Auto"/>
                             </Grid.RowDefinitions>
 
-                            <ListBox Grid.Row="0" 
-                                     Name="lstConfFiles"
-                                     ItemsSource="{Binding ConfFiles, Mode=OneWay}"
-                                     SelectedItem="{Binding SelectedConfFile, Mode=TwoWay}"
-                                     SelectionMode="Single"
-                                     Margin="0,0,0,10"/>
+                            <TreeView Grid.Row="0" 
+                                      Name="tvConfFiles"
+                                      ItemsSource="{Binding ConfItems, Mode=OneWay}"
+                                      SelectedItemChanged="TreeView_ConfSelectedItemChanged"
+                                      Margin="0,0,0,10">
+                                <TreeView.ItemContainerStyle>
+                                    <Style TargetType="TreeViewItem">
+                                        <Setter Property="IsExpanded" Value="True"/>
+                                    </Style>
+                                </TreeView.ItemContainerStyle>
+                                <TreeView.ItemTemplate>
+                                    <HierarchicalDataTemplate ItemsSource="{Binding Children}">
+                                        <StackPanel Orientation="Horizontal">
+                                            <TextBlock Text="{Binding IsFolder, Converter={StaticResource BoolToIconConverter}}" 
+                                                       FontFamily="Segoe UI Symbol" 
+                                                       Margin="0,0,5,0"/>
+                                            <TextBlock Text="{Binding Name}" Padding="2"/>
+                                        </StackPanel>
+                                    </HierarchicalDataTemplate>
+                                </TreeView.ItemTemplate>
+                            </TreeView>
 
                             <StackPanel Grid.Row="1">
+                                <Button Content="{x:Static helper:ProjectEditorWindowText.CreateFolder}" 
+                                        Click="CreateFolder_Click"
+                                        Style="{StaticResource ActionButton}" 
+                                        Margin="0,0,0,5"
+                                        Background="#FF9C27B0" 
+                                        Foreground="White"/>
+                                <Button Content="{x:Static helper:ProjectEditorWindowText.DeleteFolder}" 
+                                        Click="DeleteFolder_Click"
+                                        Style="{StaticResource ActionButton}" 
+                                        Margin="0,0,0,5"
+                                        Background="#FFFF5252" 
+                                        Foreground="White"
+                                        IsEnabled="{Binding SelectedConfItem.IsFolder, Mode=OneWay}"/>
                                 <Button Content="{x:Static helper:ProjectEditorWindowText.AddConf}" 
                                         Click="AddConf_Click"
                                         Style="{StaticResource ActionButton}" 
@@ -440,14 +473,42 @@
                                 <RowDefinition Height="Auto"/>
                             </Grid.RowDefinitions>
 
-                            <ListBox Grid.Row="0" 
-                                        Name="lstImageFiles"
-                                        ItemsSource="{Binding ImageFiles, Mode=OneWay}"
-                                        SelectedItem="{Binding SelectedImageFile, Mode=TwoWay}"
-                                        SelectionMode="Single"
-                                        Margin="0,0,0,10"/>
+                            <TreeView Grid.Row="0" 
+                                      Name="tvImageFiles"
+                                      ItemsSource="{Binding ImageItems, Mode=OneWay}"
+                                      SelectedItemChanged="TreeView_ImageSelectedItemChanged"
+                                      Margin="0,0,0,10">
+                                <TreeView.ItemContainerStyle>
+                                    <Style TargetType="TreeViewItem">
+                                        <Setter Property="IsExpanded" Value="True"/>
+                                    </Style>
+                                </TreeView.ItemContainerStyle>
+                                <TreeView.ItemTemplate>
+                                    <HierarchicalDataTemplate ItemsSource="{Binding Children}">
+                                        <StackPanel Orientation="Horizontal">
+                                            <TextBlock Text="{Binding IsFolder, Converter={StaticResource BoolToIconConverter}}" 
+                                                       FontFamily="Segoe UI Symbol" 
+                                                       Margin="0,0,5,0"/>
+                                            <TextBlock Text="{Binding Name}" Padding="2"/>
+                                        </StackPanel>
+                                    </HierarchicalDataTemplate>
+                                </TreeView.ItemTemplate>
+                            </TreeView>
 
                             <StackPanel Grid.Row="1">
+                                <Button Content="{x:Static helper:ProjectEditorWindowText.CreateFolder}" 
+                                        Click="CreateImageFolder_Click"
+                                        Style="{StaticResource ActionButton}" 
+                                        Margin="0,0,0,5"
+                                        Background="#FF9C27B0" 
+                                        Foreground="White"/>
+                                <Button Content="{x:Static helper:ProjectEditorWindowText.DeleteFolder}" 
+                                        Click="DeleteImageFolder_Click"
+                                        Style="{StaticResource ActionButton}" 
+                                        Margin="0,0,0,5"
+                                        Background="#FFFF5252" 
+                                        Foreground="White"
+                                        IsEnabled="{Binding SelectedImageItem.IsFolder, Mode=OneWay}"/>
                                 <Button Content="{x:Static helper:ProjectEditorWindowText.ImportImage}" 
                                         Click="ImportImage_Click"
                                         Style="{StaticResource ActionButton}" 

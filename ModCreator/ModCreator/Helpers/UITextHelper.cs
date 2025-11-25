@@ -102,6 +102,8 @@ namespace ModCreator.Helpers
         public static string HeaderState => MessageHelper.Get("Windows.ProjectEditorWindow.HeaderState");
         public static string TabModConf => MessageHelper.Get("Windows.ProjectEditorWindow.TabModConf");
         public static string ConfFiles => MessageHelper.Get("Windows.ProjectEditorWindow.ConfFiles");
+        public static string CreateFolder => MessageHelper.Get("Windows.ProjectEditorWindow.CreateFolder");
+        public static string DeleteFolder => MessageHelper.Get("Windows.ProjectEditorWindow.DeleteFolder");
         public static string AddConf => MessageHelper.Get("Windows.ProjectEditorWindow.AddConf");
         public static string CloneConf => MessageHelper.Get("Windows.ProjectEditorWindow.CloneConf");
         public static string RenameConf => MessageHelper.Get("Windows.ProjectEditorWindow.RenameConf");

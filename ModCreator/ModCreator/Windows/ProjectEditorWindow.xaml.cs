@@ -145,6 +145,154 @@ namespace ModCreator.Windows
 
         #region Tab 2: ModConf Event Handlers
 
+        private void TreeView_ConfSelectedItemChanged(object sender, RoutedPropertyChangedEventArgs<object> e)
+        {
+            if (e.NewValue is FileItem fileItem)
+            {
+                WindowData.SelectedConfItem = fileItem;
+            }
+        }
+
+        private void CreateFolder_Click(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                var confPath = Path.Combine(WindowData.Project.ProjectPath, "ModProject", "ModConf");
+                
+                // Determine parent path
+                string parentPath = confPath;
+                if (WindowData.SelectedConfItem != null && WindowData.SelectedConfItem.IsFolder)
+                {
+                    parentPath = WindowData.SelectedConfItem.FullPath;
+                }
+                else if (WindowData.SelectedConfItem != null && !WindowData.SelectedConfItem.IsFolder)
+                {
+                    parentPath = Path.GetDirectoryName(WindowData.SelectedConfItem.FullPath);
+                }
+
+                // Show InputWindow to get folder name
+                var inputWindow = new InputWindow
+                {
+                    Owner = this
+                };
+                inputWindow.WindowData.WindowTitle = "Create New Folder";
+                inputWindow.WindowData.Label = "Folder name:";
+                inputWindow.WindowData.InputValue = "NewFolder";
+
+                if (inputWindow.ShowDialog() != true)
+                    return;
+
+                var folderName = inputWindow.WindowData.InputValue;
+
+                // Validate folder name
+                if (string.IsNullOrWhiteSpace(folderName))
+                {
+                    MessageBox.Show(
+                        "Folder name cannot be empty!",
+                        MessageHelper.Get("Messages.Warning.Title"),
+                        MessageBoxButton.OK,
+                        MessageBoxImage.Warning);
+                    return;
+                }
+
+                // Check if folder name contains invalid characters
+                var invalidChars = Path.GetInvalidFileNameChars();
+                if (folderName.IndexOfAny(invalidChars) >= 0)
+                {
+                    MessageBox.Show(
+                        "Folder name contains invalid characters!",
+                        MessageHelper.Get("Messages.Warning.Title"),
+                        MessageBoxButton.OK,
+                        MessageBoxImage.Warning);
+                    return;
+                }
+
+                var newFolderPath = Path.Combine(parentPath, folderName);
+
+                // Check if folder already exists
+                if (Directory.Exists(newFolderPath))
+                {
+                    MessageBox.Show(
+                        $"A folder with the name '{folderName}' already exists!",
+                        MessageHelper.Get("Messages.Warning.Title"),
+                        MessageBoxButton.OK,
+                        MessageBoxImage.Warning);
+                    return;
+                }
+
+                // Create the folder
+                Directory.CreateDirectory(newFolderPath);
+
+                // Reload configuration tree
+                WindowData.LoadConfFiles();
+
+                MessageBox.Show(
+                    $"Folder '{folderName}' created successfully!",
+                    MessageHelper.Get("Messages.Success.Title"),
+                    MessageBoxButton.OK,
+                    MessageBoxImage.Information);
+            }
+            catch (Exception ex)
+            {
+                DebugHelper.ShowError(ex, MessageHelper.Get("Messages.Error.Title"), "Failed to create folder");
+            }
+        }
+
+        private void DeleteFolder_Click(object sender, RoutedEventArgs e)
+        {
+            if (WindowData.SelectedConfItem == null || !WindowData.SelectedConfItem.IsFolder)
+                return;
+
+            try
+            {
+                var folderPath = WindowData.SelectedConfItem.FullPath;
+                var folderName = WindowData.SelectedConfItem.Name;
+
+                // Check if folder exists
+                if (!Directory.Exists(folderPath))
+                {
+                    MessageBox.Show(
+                        $"Folder '{folderName}' does not exist!",
+                        MessageHelper.Get("Messages.Warning.Title"),
+                        MessageBoxButton.OK,
+                        MessageBoxImage.Warning);
+                    WindowData.LoadConfFiles();
+                    return;
+                }
+
+                // Check if folder has contents
+                var hasContents = Directory.GetFileSystemEntries(folderPath).Length > 0;
+                var warningMessage = hasContents
+                    ? $"Are you sure you want to delete folder '{folderName}' and all its contents?"
+                    : $"Are you sure you want to delete folder '{folderName}'?";
+
+                var result = MessageBox.Show(
+                    warningMessage,
+                    "Delete Folder",
+                    MessageBoxButton.YesNo,
+                    MessageBoxImage.Warning);
+
+                if (result == MessageBoxResult.Yes)
+                {
+                    Directory.Delete(folderPath, true);
+                    
+                    // Reload configuration tree
+                    WindowData.LoadConfFiles();
+
+                    MessageBox.Show(
+                        $"Folder '{folderName}' deleted successfully!",
+                        MessageHelper.Get("Messages.Success.Title"),
+                        MessageBoxButton.OK,
+                        MessageBoxImage.Information);
+                }
+            }
+            catch (Exception ex)
+            {
+                DebugHelper.ShowError(ex, MessageHelper.Get("Messages.Error.Title"), "Failed to delete folder");
+                WindowData.LoadConfFiles();
+            }
+        }
+
         private void AddConf_Click(object sender, RoutedEventArgs e)
         {
             try
@@ -159,19 +307,30 @@ namespace ModCreator.Windows
                     var selectedConfig = addConfWindow.WindowData.SelectedConfig;
                     if (selectedConfig != null)
                     {
-                        // Copy the selected configuration file to ModConf folder
+                        // Determine target directory based on selected item
                         var confPath = Path.Combine(WindowData.Project.ProjectPath, "ModProject", "ModConf");
-                        Directory.CreateDirectory(confPath);
+                        string targetPath = confPath;
+                        
+                        if (WindowData.SelectedConfItem != null && WindowData.SelectedConfItem.IsFolder)
+                        {
+                            targetPath = WindowData.SelectedConfItem.FullPath;
+                        }
+                        else if (WindowData.SelectedConfItem != null && !WindowData.SelectedConfItem.IsFolder)
+                        {
+                            targetPath = Path.GetDirectoryName(WindowData.SelectedConfItem.FullPath);
+                        }
+                        
+                        Directory.CreateDirectory(targetPath);
 
                         var fileName = addConfWindow.WindowData.GetFileName();
-                        var destPath = Path.Combine(confPath, fileName);
+                        var destPath = Path.Combine(targetPath, fileName);
                         File.Copy(selectedConfig.FilePath, destPath, true);
 
                         // Reload configuration list
                         WindowData.LoadConfFiles();
 
-                        // Select the newly added file
-                        WindowData.SelectedConfFile = fileName;
+                        // Select the newly added file - calculate relative path
+                        WindowData.SelectedConfFile = Path.GetRelativePath(confPath, destPath);
                     }
                 }
             }
@@ -244,25 +403,28 @@ namespace ModCreator.Windows
                     return;
                 }
 
+                // Get directory where the file is located
+                var sourceDir = Path.GetDirectoryName(sourceFile);
+
                 // Generate new filename with _copy suffix
-                var fileNameWithoutExt = Path.GetFileNameWithoutExtension(WindowData.SelectedConfFile);
+                var fileNameWithoutExt = Path.GetFileNameWithoutExtension(Path.GetFileName(WindowData.SelectedConfFile));
                 var extension = Path.GetExtension(WindowData.SelectedConfFile);
                 var newFileName = $"{fileNameWithoutExt}_copy{extension}";
                 
                 // If file already exists, add number suffix
                 var counter = 1;
-                while (File.Exists(Path.Combine(confPath, newFileName)))
+                while (File.Exists(Path.Combine(sourceDir, newFileName)))
                 {
                     newFileName = $"{fileNameWithoutExt}_copy{counter}{extension}";
                     counter++;
                 }
 
-                var destFile = Path.Combine(confPath, newFileName);
+                var destFile = Path.Combine(sourceDir, newFileName);
                 File.Copy(sourceFile, destFile);
 
                 // Reload configuration list and select the cloned file
                 WindowData.LoadConfFiles();
-                WindowData.SelectedConfFile = newFileName;
+                WindowData.SelectedConfFile = Path.GetRelativePath(confPath, destFile);
 
                 MessageBox.Show(
                     $"Configuration file cloned successfully!\n\nNew file: {newFileName}",
@@ -640,6 +802,158 @@ namespace ModCreator.Windows
 
         #endregion
 
+        #region Tab 3: ModImg Event Handlers
+
+        private void TreeView_ImageSelectedItemChanged(object sender, RoutedPropertyChangedEventArgs<object> e)
+        {
+            if (e.NewValue is FileItem fileItem)
+            {
+                WindowData.SelectedImageItem = fileItem;
+            }
+        }
+
+        private void CreateImageFolder_Click(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                var imgPath = Path.Combine(WindowData.Project.ProjectPath, "ModProject", "ModImg");
+                
+                // Determine parent path
+                string parentPath = imgPath;
+                if (WindowData.SelectedImageItem != null && WindowData.SelectedImageItem.IsFolder)
+                {
+                    parentPath = WindowData.SelectedImageItem.FullPath;
+                }
+                else if (WindowData.SelectedImageItem != null && !WindowData.SelectedImageItem.IsFolder)
+                {
+                    parentPath = Path.GetDirectoryName(WindowData.SelectedImageItem.FullPath);
+                }
+
+                // Show InputWindow to get folder name
+                var inputWindow = new InputWindow
+                {
+                    Owner = this
+                };
+                inputWindow.WindowData.WindowTitle = "Create New Folder";
+                inputWindow.WindowData.Label = "Folder name:";
+                inputWindow.WindowData.InputValue = "NewFolder";
+
+                if (inputWindow.ShowDialog() != true)
+                    return;
+
+                var folderName = inputWindow.WindowData.InputValue;
+
+                // Validate folder name
+                if (string.IsNullOrWhiteSpace(folderName))
+                {
+                    MessageBox.Show(
+                        "Folder name cannot be empty!",
+                        MessageHelper.Get("Messages.Warning.Title"),
+                        MessageBoxButton.OK,
+                        MessageBoxImage.Warning);
+                    return;
+                }
+
+                // Check if folder name contains invalid characters
+                var invalidChars = Path.GetInvalidFileNameChars();
+                if (folderName.IndexOfAny(invalidChars) >= 0)
+                {
+                    MessageBox.Show(
+                        "Folder name contains invalid characters!",
+                        MessageHelper.Get("Messages.Warning.Title"),
+                        MessageBoxButton.OK,
+                        MessageBoxImage.Warning);
+                    return;
+                }
+
+                var newFolderPath = Path.Combine(parentPath, folderName);
+
+                // Check if folder already exists
+                if (Directory.Exists(newFolderPath))
+                {
+                    MessageBox.Show(
+                        $"A folder with the name '{folderName}' already exists!",
+                        MessageHelper.Get("Messages.Warning.Title"),
+                        MessageBoxButton.OK,
+                        MessageBoxImage.Warning);
+                    return;
+                }
+
+                // Create the folder
+                Directory.CreateDirectory(newFolderPath);
+
+                // Reload image tree
+                WindowData.LoadImageFiles();
+
+                MessageBox.Show(
+                    $"Folder '{folderName}' created successfully!",
+                    MessageHelper.Get("Messages.Success.Title"),
+                    MessageBoxButton.OK,
+                    MessageBoxImage.Information);
+            }
+            catch (Exception ex)
+            {
+                DebugHelper.ShowError(ex, MessageHelper.Get("Messages.Error.Title"), "Failed to create folder");
+            }
+        }
+
+        private void DeleteImageFolder_Click(object sender, RoutedEventArgs e)
+        {
+            if (WindowData.SelectedImageItem == null || !WindowData.SelectedImageItem.IsFolder)
+                return;
+
+            try
+            {
+                var folderPath = WindowData.SelectedImageItem.FullPath;
+                var folderName = WindowData.SelectedImageItem.Name;
+
+                // Check if folder exists
+                if (!Directory.Exists(folderPath))
+                {
+                    MessageBox.Show(
+                        $"Folder '{folderName}' does not exist!",
+                        MessageHelper.Get("Messages.Warning.Title"),
+                        MessageBoxButton.OK,
+                        MessageBoxImage.Warning);
+                    WindowData.LoadImageFiles();
+                    return;
+                }
+
+                // Check if folder has contents
+                var hasContents = Directory.GetFileSystemEntries(folderPath).Length > 0;
+                var warningMessage = hasContents
+                    ? $"Are you sure you want to delete folder '{folderName}' and all its contents?"
+                    : $"Are you sure you want to delete folder '{folderName}'?";
+
+                var result = MessageBox.Show(
+                    warningMessage,
+                    "Delete Folder",
+                    MessageBoxButton.YesNo,
+                    MessageBoxImage.Warning);
+
+                if (result == MessageBoxResult.Yes)
+                {
+                    Directory.Delete(folderPath, true);
+                    
+                    // Reload image tree
+                    WindowData.LoadImageFiles();
+
+                    MessageBox.Show(
+                        $"Folder '{folderName}' deleted successfully!",
+                        MessageHelper.Get("Messages.Success.Title"),
+                        MessageBoxButton.OK,
+                        MessageBoxImage.Information);
+                }
+            }
+            catch (Exception ex)
+            {
+                DebugHelper.ShowError(ex, MessageHelper.Get("Messages.Error.Title"), "Failed to delete folder");
+                WindowData.LoadImageFiles();
+            }
+        }
+
+        #endregion
+
         #region Tab 2: ModConf Event Handlers
 
         [SupportedOSPlatform("windows6.1")]
@@ -658,13 +972,25 @@ namespace ModCreator.Windows
                 {
                     try
                     {
-                        var imgDir = Path.Combine(WindowData.Project.ProjectPath, "ModProject", "ModImg");
-                        Directory.CreateDirectory(imgDir);
+                        // Determine target directory based on selected item
+                        var imgPath = Path.Combine(WindowData.Project.ProjectPath, "ModProject", "ModImg");
+                        string targetPath = imgPath;
+                        
+                        if (WindowData.SelectedImageItem != null && WindowData.SelectedImageItem.IsFolder)
+                        {
+                            targetPath = WindowData.SelectedImageItem.FullPath;
+                        }
+                        else if (WindowData.SelectedImageItem != null && !WindowData.SelectedImageItem.IsFolder)
+                        {
+                            targetPath = Path.GetDirectoryName(WindowData.SelectedImageItem.FullPath);
+                        }
+                        
+                        Directory.CreateDirectory(targetPath);
 
                         foreach (var file in dialog.FileNames)
                         {
                             var fileName = Path.GetFileName(file);
-                            var destPath = Path.Combine(imgDir, fileName);
+                            var destPath = Path.Combine(targetPath, fileName);
                             File.Copy(file, destPath, true);
                         }
 
