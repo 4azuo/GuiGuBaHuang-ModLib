@@ -31,6 +31,7 @@
       "ProjectDetailsId": "ID:",
       "ProjectDetailsPath": "Path:",
       "ProjectDetailsDescription": "Description:",
+      "ProjectDetailsAuthor": "Author:",
       "Actions": "Actions",
       "OpenFolder": "Open Folder",
       "EditInfo": "Edit Info",

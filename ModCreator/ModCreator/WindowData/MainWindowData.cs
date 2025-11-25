@@ -113,6 +113,12 @@ namespace ModCreator.WindowData
         
         [JsonIgnore]
         public string Description => string.IsNullOrEmpty(SelectedProject?.Description) ? "-" : SelectedProject.Description;
+        
+        [JsonIgnore]
+        public string Author => SelectedProject?.Author ?? "";
+        
+        [JsonIgnore]
+        public string TitleImg => SelectedProject?.TitleImg ?? "";
 
         #endregion
 

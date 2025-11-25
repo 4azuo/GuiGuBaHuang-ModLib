@@ -16,6 +16,8 @@ namespace ModCreator.Models
         public DateTime CreatedDate { get; set; }
         public DateTime LastModifiedDate { get; set; }
         public string Description { get; set; }
+        public string Author { get; set; }
+        public string TitleImg { get; set; }
         public ProjectState State { get; set; } = ProjectState.Valid;
         public List<GlobalVariable> GlobalVariables { get; set; } = new List<GlobalVariable>();
     }
