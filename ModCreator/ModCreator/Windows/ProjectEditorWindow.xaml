@@ -54,8 +54,12 @@
                 </StackPanel>
 
                 <StackPanel Grid.Column="1" Orientation="Horizontal" VerticalAlignment="Center">
+                    <Button Content="{x:Static helper:ProjectEditorWindowText.Help}" Click="Help_Click" 
+                            Style="{StaticResource HeaderButton}" 
+                            Width="70"
+                            Margin="10,0,0,0"/>
                     <Button Content="{x:Static helper:ProjectEditorWindowText.Save}" Click="Save_Click" 
-                            Style="{StaticResource PrimaryButton}" Width="100"/>
+                            Style="{StaticResource PrimaryButton}" Width="100" Margin="10,0,0,0"/>
                     <Button Content="{x:Static helper:ProjectEditorWindowText.Cancel}" Click="Close_Click" 
                             Style="{StaticResource ActionButton}" Width="100" Margin="10,0,0,0"/>
                 </StackPanel>
@@ -241,17 +245,18 @@
                         Padding="8,0"/>
 
                     <!-- Title Image -->
-                    <Border Grid.Column="8" Grid.Row="0" Grid.ColumnSpan="7" Grid.RowSpan="99"
+                    <Border x:Name="TitleImageContainer" Grid.Column="8" Grid.Row="0" Grid.ColumnSpan="7" Grid.RowSpan="99"
                         BorderBrush="#FFCCCCCC"
                         BorderThickness="1"
                         Background="#FFF5F5F5"
                         Padding="5"
                         Cursor="Hand"
-                        MouseLeftButtonUp="TitleImage_Click">
-                        <Image Source="{Binding TitleImagePath}"
-                               Stretch="Uniform"
-                               MaxHeight="300"
-                               ToolTip="Click to change image"/>
+                        Width="400"
+                        Height="300">
+                            <Image Source="{Binding Project.TitleImg, Mode=OneWay}"
+                                Stretch="Uniform"
+                                HorizontalAlignment="Center"
+                                VerticalAlignment="Center"/>
                     </Border>
                 </Grid>
                 
@@ -286,15 +291,63 @@
                     <GroupBox Grid.Column="0" Grid.Row="0" Header="{x:Static helper:ProjectEditorWindowText.ConfFiles}" Margin="0,0,10,0">
                         <Grid>
                             <Grid.RowDefinitions>
-                                <RowDefinition Height="*"/>
                                 <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="*"/>
                             </Grid.RowDefinitions>
 
-                            <TreeView Grid.Row="0" 
+                            <!-- Action Buttons -->
+                            <StackPanel Grid.Row="0" Orientation="Horizontal" Margin="0,0,0,5">
+                                <Button Content="📁" 
+                                        ToolTip="Create Folder"
+                                        Click="CreateFolder_Click"
+                                        Style="{StaticResource ActionButton}"
+                                        Width="30" Height="30"
+                                        FontSize="14"
+                                        Margin="0,0,2,0"/>
+                                <Button Content="🗑️" 
+                                        ToolTip="Delete Folder"
+                                        Click="DeleteFolder_Click"
+                                        Style="{StaticResource ActionButton}"
+                                        Width="30" Height="30"
+                                        FontSize="14"
+                                        Margin="0,0,2,0"
+                                        IsEnabled="{Binding SelectedConfItem.IsFolder, Mode=OneWay}"/>
+                                <Button Content="➕" 
+                                        ToolTip="Add Conf"
+                                        Click="AddConf_Click"
+                                        Style="{StaticResource ActionButton}"
+                                        Width="30" Height="30"
+                                        FontSize="14"
+                                        Margin="0,0,2,0"/>
+                                <Button Content="📋" 
+                                        ToolTip="Clone Conf"
+                                        Click="CloneConf_Click"
+                                        Style="{StaticResource ActionButton}"
+                                        Width="30" Height="30"
+                                        FontSize="14"
+                                        Margin="0,0,2,0"
+                                        IsEnabled="{Binding HasSelectedConfFile, Mode=OneWay}"/>
+                                <Button Content="✏️" 
+                                        ToolTip="Rename Conf"
+                                        Click="RenameConf_Click"
+                                        Style="{StaticResource ActionButton}"
+                                        Width="30" Height="30"
+                                        FontSize="14"
+                                        Margin="0,0,2,0"
+                                        IsEnabled="{Binding HasSelectedConfFile, Mode=OneWay}"/>
+                                <Button Content="❌" 
+                                        ToolTip="Remove Conf"
+                                        Click="RemoveConf_Click"
+                                        Style="{StaticResource ActionButton}"
+                                        Width="30" Height="30"
+                                        FontSize="14"
+                                        IsEnabled="{Binding HasSelectedConfFile, Mode=OneWay}"/>
+                            </StackPanel>
+
+                            <TreeView Grid.Row="1" 
                                       Name="tvConfFiles"
                                       ItemsSource="{Binding ConfItems, Mode=OneWay}"
-                                      SelectedItemChanged="TreeView_ConfSelectedItemChanged"
-                                      Margin="0,0,0,10">
+                                      SelectedItemChanged="TreeView_ConfSelectedItemChanged">
                                 <TreeView.ItemContainerStyle>
                                     <Style TargetType="TreeViewItem">
                                         <Setter Property="IsExpanded" Value="True"/>
@@ -311,48 +364,6 @@
                                     </HierarchicalDataTemplate>
                                 </TreeView.ItemTemplate>
                             </TreeView>
-
-                            <StackPanel Grid.Row="1">
-                                <Button Content="{x:Static helper:ProjectEditorWindowText.CreateFolder}" 
-                                        Click="CreateFolder_Click"
-                                        Style="{StaticResource ActionButton}" 
-                                        Margin="0,0,0,5"
-                                        Background="#FF9C27B0" 
-                                        Foreground="White"/>
-                                <Button Content="{x:Static helper:ProjectEditorWindowText.DeleteFolder}" 
-                                        Click="DeleteFolder_Click"
-                                        Style="{StaticResource ActionButton}" 
-                                        Margin="0,0,0,5"
-                                        Background="#FFFF5252" 
-                                        Foreground="White"
-                                        IsEnabled="{Binding SelectedConfItem.IsFolder, Mode=OneWay}"/>
-                                <Button Content="{x:Static helper:ProjectEditorWindowText.AddConf}" 
-                                        Click="AddConf_Click"
-                                        Style="{StaticResource ActionButton}" 
-                                        Margin="0,0,0,5"
-                                        Background="#FF4CAF50" 
-                                        Foreground="White"/>
-                                <Button Content="{x:Static helper:ProjectEditorWindowText.CloneConf}" 
-                                        Click="CloneConf_Click"
-                                        Style="{StaticResource ActionButton}" 
-                                        Margin="0,0,0,5"
-                                        Background="#FF2196F3" 
-                                        Foreground="White"
-                                        IsEnabled="{Binding HasSelectedConfFile, Mode=OneWay}"/>
-                                <Button Content="{x:Static helper:ProjectEditorWindowText.RenameConf}" 
-                                        Click="RenameConf_Click"
-                                        Style="{StaticResource ActionButton}" 
-                                        Margin="0,0,0,5"
-                                        Background="#FFFF9800" 
-                                        Foreground="White"
-                                        IsEnabled="{Binding HasSelectedConfFile, Mode=OneWay}"/>
-                                <Button Content="{x:Static helper:ProjectEditorWindowText.RemoveConf}" 
-                                        Click="RemoveConf_Click"
-                                        Style="{StaticResource ActionButton}"
-                                        Background="#FFFF5252" 
-                                        Foreground="White"
-                                        IsEnabled="{Binding HasSelectedConfFile, Mode=OneWay}"/>
-                            </StackPanel>
                         </Grid>
                     </GroupBox>
 
@@ -512,15 +523,55 @@
                     <GroupBox Grid.Column="0" Grid.Row="0" Header="{x:Static helper:ProjectEditorWindowText.ImageFiles}" Margin="0,0,10,0">
                         <Grid>
                             <Grid.RowDefinitions>
-                                <RowDefinition Height="*"/>
                                 <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="*"/>
                             </Grid.RowDefinitions>
 
-                            <TreeView Grid.Row="0" 
+                            <!-- Action Buttons -->
+                            <StackPanel Grid.Row="0" Orientation="Horizontal" Margin="0,0,0,5">
+                                <Button Content="📁" 
+                                        ToolTip="Create Folder"
+                                        Click="CreateImageFolder_Click"
+                                        Style="{StaticResource ActionButton}"
+                                        Width="30" Height="30"
+                                        FontSize="14"
+                                        Margin="0,0,2,0"/>
+                                <Button Content="🗑️" 
+                                        ToolTip="Delete Folder"
+                                        Click="DeleteImageFolder_Click"
+                                        Style="{StaticResource ActionButton}"
+                                        Width="30" Height="30"
+                                        FontSize="14"
+                                        Margin="0,0,2,0"
+                                        IsEnabled="{Binding SelectedImageItem.IsFolder, Mode=OneWay}"/>
+                                <Button Content="📥" 
+                                        ToolTip="Import Image"
+                                        Click="ImportImage_Click"
+                                        Style="{StaticResource ActionButton}"
+                                        Width="30" Height="30"
+                                        FontSize="14"
+                                        Margin="0,0,2,0"/>
+                                <Button Content="📤" 
+                                        ToolTip="Export Image"
+                                        Click="ExportImage_Click"
+                                        Style="{StaticResource ActionButton}"
+                                        Width="30" Height="30"
+                                        FontSize="14"
+                                        Margin="0,0,2,0"
+                                        IsEnabled="{Binding HasSelectedImageFile, Mode=OneWay}"/>
+                                <Button Content="❌" 
+                                        ToolTip="Remove Image"
+                                        Click="RemoveImage_Click"
+                                        Style="{StaticResource ActionButton}"
+                                        Width="30" Height="30"
+                                        FontSize="14"
+                                        IsEnabled="{Binding HasSelectedImageFile, Mode=OneWay}"/>
+                            </StackPanel>
+
+                            <TreeView Grid.Row="1" 
                                       Name="tvImageFiles"
                                       ItemsSource="{Binding ImageItems, Mode=OneWay}"
-                                      SelectedItemChanged="TreeView_ImageSelectedItemChanged"
-                                      Margin="0,0,0,10">
+                                      SelectedItemChanged="TreeView_ImageSelectedItemChanged">
                                 <TreeView.ItemContainerStyle>
                                     <Style TargetType="TreeViewItem">
                                         <Setter Property="IsExpanded" Value="True"/>
@@ -537,45 +588,12 @@
                                     </HierarchicalDataTemplate>
                                 </TreeView.ItemTemplate>
                             </TreeView>
-
-                            <StackPanel Grid.Row="1">
-                                <Button Content="{x:Static helper:ProjectEditorWindowText.CreateFolder}" 
-                                        Click="CreateImageFolder_Click"
-                                        Style="{StaticResource ActionButton}" 
-                                        Margin="0,0,0,5"
-                                        Background="#FF9C27B0" 
-                                        Foreground="White"/>
-                                <Button Content="{x:Static helper:ProjectEditorWindowText.DeleteFolder}" 
-                                        Click="DeleteImageFolder_Click"
-                                        Style="{StaticResource ActionButton}" 
-                                        Margin="0,0,0,5"
-                                        Background="#FFFF5252" 
-                                        Foreground="White"
-                                        IsEnabled="{Binding SelectedImageItem.IsFolder, Mode=OneWay}"/>
-                                <Button Content="{x:Static helper:ProjectEditorWindowText.ImportImage}" 
-                                        Click="ImportImage_Click"
-                                        Style="{StaticResource ActionButton}" 
-                                        Margin="0,0,0,5"
-                                        Background="#FF4CAF50" 
-                                        Foreground="White"/>
-                                <Button Content="{x:Static helper:ProjectEditorWindowText.ExportImage}" 
-                                        Click="ExportImage_Click"
-                                        Style="{StaticResource ActionButton}"
-                                        Margin="0,0,0,5"
-                                        IsEnabled="{Binding HasSelectedImageFile, Mode=OneWay}"/>
-                                <Button Content="{x:Static helper:ProjectEditorWindowText.RemoveImage}" 
-                                        Click="RemoveImage_Click"
-                                        Style="{StaticResource ActionButton}"
-                                        Background="#FFFF5252" 
-                                        Foreground="White"
-                                        IsEnabled="{Binding HasSelectedImageFile, Mode=OneWay}"/>
-                            </StackPanel>
                         </Grid>
                     </GroupBox>
 
                     <!-- Image Preview -->
                     <GroupBox Grid.Column="1" Grid.Row="0" Header="{x:Static helper:ProjectEditorWindowText.ImagePreview}">
-                        <Image  Source="{Binding SelectedImagePath, Mode=OneWay}"
+                        <Image Source="{Binding SelectedImagePath, Mode=OneWay}"
                                 Stretch="Uniform"
                                 HorizontalAlignment="Center"
                                 VerticalAlignment="Center"/>

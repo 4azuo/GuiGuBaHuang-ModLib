@@ -124,20 +124,6 @@ namespace ModCreator.WindowData
         /// </summary>
         public bool HasSelectedImageItem => SelectedImageItem != null;
 
-        /// <summary>
-        /// Title image path for displaying in Project Info tab
-        /// </summary>
-        public BitmapImage TitleImagePath
-        {
-            get
-            {
-                if (Project == null || string.IsNullOrEmpty(Project.TitleImg))
-                    return null;
-
-                return BitmapHelper.LoadFromFile(Project.TitleImg);
-            }
-        }
-
         #endregion
 
         #region Tab 4: Global Variables
@@ -220,14 +206,6 @@ namespace ModCreator.WindowData
         public void ReloadProjectData()
         {
             LoadProjectData(this, null, null, null);
-        }
-
-        /// <summary>
-        /// Refresh title image in UI after updating
-        /// </summary>
-        public void RefreshTitleImage()
-        {
-            Notify(this, nameof(Project));
         }
 
         /// <summary>

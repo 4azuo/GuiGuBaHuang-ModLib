@@ -15,6 +15,10 @@ namespace ModCreator
         public static string RootDir => SettingHelper.TryGet("rootDir", @"C:/git/GuiGuBaHuang-ModLib/");
 
         /// <summary>
+        /// Steam Workshop directory
+        /// </summary>
+        public static string SteamWorkshopDir => SettingHelper.TryGet("steamWorkshopDir", @"C:/Program Files (x86)/Steam/steamapps/workshop/content/1468810");
+        /// <summary>
         /// Documentation directory (.github/docs)
         /// </summary>
         public static readonly string DocsDir = Path.GetFullPath(Path.Combine(RootDir, ".github", "docs"));

@@ -10,6 +10,7 @@ using System.Runtime.Versioning;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Forms;
+using System.Windows.Media.Imaging;
 using MessageBox = System.Windows.MessageBox;
 
 namespace ModCreator.Windows
@@ -33,7 +34,7 @@ namespace ModCreator.Windows
             if (ProjectToEdit != null && WindowData != null)
             {
                 WindowData.Project = ProjectToEdit;
-                
+
                 // Setup AvalonEdit binding
                 SetupAvalonEditBinding();
                 
@@ -177,6 +178,22 @@ namespace ModCreator.Windows
             {
                 DebugHelper.ShowError(ex, MessageHelper.Get("Messages.Error.Title"),
                     MessageHelper.GetFormat("Messages.Error.ErrorUpdatingProject", ex.Message));
+            }
+        }
+
+        private void Help_Click(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                var helpWindow = new Windows.HelperWindow
+                {
+                    Owner = this
+                };
+                helpWindow.ShowDialog();
+            }
+            catch (Exception ex)
+            {
+                DebugHelper.ShowError(ex, MessageHelper.Get("Messages.Error.Title"), MessageHelper.Get("Messages.Error.ErrorOpeningHelpWindow"));
             }
         }
 
@@ -1136,62 +1153,6 @@ namespace ModCreator.Windows
 
         #endregion
 
-        #region Tab 1: Project Info Event Handlers
-
-        [SupportedOSPlatform("windows6.1")]
-        private void TitleImage_Click(object sender, System.Windows.Input.MouseButtonEventArgs e)
-        {
-            try
-            {
-                // Open file dialog to select new image
-                using (var openFileDialog = new OpenFileDialog())
-                {
-                    var extensionPatterns = string.Join(";", WindowData.ImageExtensions.Select(ext => $"*{ext.Extension}"));
-                    openFileDialog.Filter = $"Image Files|{extensionPatterns}";
-                    openFileDialog.Title = "Select Title Image";
-                    openFileDialog.RestoreDirectory = true;
-
-                    if (openFileDialog.ShowDialog() == System.Windows.Forms.DialogResult.OK)
-                    {
-                        var selectedImagePath = openFileDialog.FileName;
-                        if (!File.Exists(selectedImagePath))
-                        {
-                            MessageBox.Show(
-                                "Selected file does not exist!",
-                                MessageHelper.Get("Messages.Error.Title"),
-                                MessageBoxButton.OK,
-                                MessageBoxImage.Error);
-                            return;
-                        }
-
-                        // Update project's TitleImg path
-                        var targetPath = Path.GetFullPath(Path.Combine(WindowData.Project.ProjectPath, "ModProject", "ModProjectPreview.png"));
-                        
-                        // Copy selected image to target location, overwriting existing file
-                        File.Copy(selectedImagePath, targetPath, true);
-
-                        // Update the project's TitleImg property
-                        WindowData.Project.TitleImg = targetPath;
-
-                        // Notify UI to reload the image
-                        WindowData.RefreshTitleImage();
-
-                        MessageBox.Show(
-                            "Title image updated successfully!",
-                            MessageHelper.Get("Messages.Success.Title"),
-                            MessageBoxButton.OK,
-                            MessageBoxImage.Information);
-                    }
-                }
-            }
-            catch (Exception ex)
-            {
-                DebugHelper.ShowError(ex, MessageHelper.Get("Messages.Error.Title"), "Failed to update title image");
-            }
-        }
-
-        #endregion
-
         #region Tab 1, 2, 3: Folder and Refresh Event Handlers
 
         private void OpenProjectFolder_Click(object sender, RoutedEventArgs e)
@@ -1328,7 +1289,7 @@ namespace ModCreator.Windows
 
         private void DataGrid_RowEditEnding(object sender, System.Windows.Controls.DataGridRowEditEndingEventArgs e)
         {
-            if (e.EditAction == System.Windows.Controls.DataGridEditAction.Commit)
+            if (e.EditAction == DataGridEditAction.Commit)
             {
                 var variable = e.Row.Item as GlobalVariable;
                 if (variable != null && string.IsNullOrWhiteSpace(variable.Name))
@@ -1356,15 +1317,6 @@ namespace ModCreator.Windows
         {
             try
             {
-                if (WindowData.Project == null)
-                {
-                    MessageBox.Show("No project loaded!", 
-                        MessageHelper.Get("Messages.Error.Title"), 
-                        MessageBoxButton.OK, 
-                        MessageBoxImage.Error);
-                    return;
-                }
-
                 // Save variables first
                 WindowData.SaveGlobalVariables();
 
