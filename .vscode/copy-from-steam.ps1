@@ -10,18 +10,18 @@ if (!(Test-Path $settingsPath)) {
 $settings = Get-Content -Path $settingsPath -Raw | ConvertFrom-Json
 $projectId = $settings.projectId
 $steamWorkshopPath = $settings.steamWorkshopPath
-$gitRepositoryPath = $settings.gitRepositoryPath
+$repositoryPath = $settings.repositoryPath
 
 Write-Host "========================================" -ForegroundColor Cyan
 Write-Host "Copy Project $projectId from Steam Workshop to Git" -ForegroundColor Cyan
 Write-Host "========================================" -ForegroundColor Cyan
 
 Write-Host "Steam Workshop Path: $steamWorkshopPath" -ForegroundColor Cyan
-Write-Host "Git Repository Path: $gitRepositoryPath" -ForegroundColor Cyan
+Write-Host "Git Repository Path: $repositoryPath" -ForegroundColor Cyan
 
 # Get the root directory and set paths
 $sourcePath = Join-Path $steamWorkshopPath $projectId
-$destinationPath = Join-Path $gitRepositoryPath $projectId
+$destinationPath = Join-Path $repositoryPath $projectId
 
 # Check if source exists
 if (!(Test-Path $sourcePath)) {
