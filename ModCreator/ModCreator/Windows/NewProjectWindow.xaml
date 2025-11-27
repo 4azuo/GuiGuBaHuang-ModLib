@@ -9,7 +9,7 @@
         xmlns:helper="clr-namespace:ModCreator.Helpers"
         mc:Ignorable="d"
         Title="{x:Static helper:NewProjectWindowText.NewProjectTitle}" 
-        Height="300" Width="550"
+        Height="350" Width="550"
         WindowStartupLocation="CenterOwner"
         ResizeMode="NoResize"
         Icon="/Resources/app-icon.png"
@@ -21,10 +21,18 @@
                 <RowDefinition Height="Auto"/>
                 <RowDefinition Height="Auto"/>
                 <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
                 </Grid.RowDefinitions>
 
-                <!-- Project Name -->
+                <!-- Author -->
                 <StackPanel Grid.Row="0">
+                <TextBlock Text="{x:Static helper:NewProjectWindowText.ProjectFieldAuthor}" Style="{StaticResource LabelText}" Margin="0,0,0,4"/>
+                <TextBox Text="{Binding Author, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" 
+                    Style="{StaticResource StandardTextBox}" Height="32"/>
+                </StackPanel>
+
+                <!-- Project Name -->
+                <StackPanel Grid.Row="1">
                 <TextBlock Text="{x:Static helper:NewProjectWindowText.ProjectFieldName}" Style="{StaticResource LabelText}" Margin="0,0,0,4"/>
                 <TextBox
                      Text="{Binding ProjectName, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" 
@@ -32,14 +40,14 @@
                 </StackPanel>
 
                 <!-- Description -->
-                <StackPanel Grid.Row="1">
+                <StackPanel Grid.Row="2">
                 <TextBlock Text="{x:Static helper:NewProjectWindowText.ProjectFieldDescription}" Style="{StaticResource LabelText}" Margin="0,0,0,4"/>
                 <TextBox Text="{Binding Description, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" 
-                    Style="{StaticResource MultilineTextBox}" Height="80"/>
+                    Style="{StaticResource MultilineTextBox}" Height="60"/>
                 </StackPanel>
 
                 <!-- Buttons -->
-                <StackPanel Grid.Row="2" 
+                <StackPanel Grid.Row="3" 
                     Orientation="Horizontal" 
                     HorizontalAlignment="Right">
                 <Button Content="{x:Static helper:NewProjectWindowText.Create}" 

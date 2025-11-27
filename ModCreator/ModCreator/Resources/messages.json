@@ -61,6 +61,7 @@
       "NewProjectTitle": "Create New Project",
       "ProjectFieldName": "Project Name:",
       "ProjectFieldDescription": "Description:",
+      "ProjectFieldAuthor": "Author:",
       "Create": "Create",
       "Cancel": "Cancel"
     },
@@ -73,6 +74,8 @@
       "ProjectDetailsId": "Project ID:",
       "ProjectDetailsPath": "Project Path:",
       "ProjectDetailsDescription": "Description:",
+      "ProjectDetailsAuthor": "Author:",
+      "ProjectDetailsTitleImg": "Title Image:",
       "HeaderCreated": "Created:",
       "HeaderModified": "Modified:",
       "HeaderState": "State:",

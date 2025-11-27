@@ -1,0 +1,1 @@
+﻿public static #VARTYPE# #VARNAME# { get; set; } = #VARVALUE#;

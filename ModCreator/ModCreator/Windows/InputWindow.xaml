@@ -49,6 +49,8 @@
                      VerticalContentAlignment="Center"
                      Padding="8,0"
                      FontSize="13"
+                     Background="White"
+                     Foreground="Black"
                      BorderBrush="#FFCCCCCC"
                      BorderThickness="1"/>
         </Grid>

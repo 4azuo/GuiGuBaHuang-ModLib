@@ -12,7 +12,7 @@ namespace ModCreator
         /// <summary>
         /// Root directory of the project
         /// </summary>
-        public static string RootDir => SettingHelper.Get("rootDir");
+        public static string RootDir => SettingHelper.TryGet("rootDir", @"C:/git/GuiGuBaHuang-ModLib/");
 
         /// <summary>
         /// Documentation directory (.github/docs)

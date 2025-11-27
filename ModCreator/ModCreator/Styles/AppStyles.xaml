@@ -9,6 +9,7 @@
         <ResourceDictionary Source="TextBoxes.xaml"/>
         <ResourceDictionary Source="Containers.xaml"/>
         <ResourceDictionary Source="DataGrids.xaml"/>
+        <ResourceDictionary Source="TabControls.xaml"/>
     </ResourceDictionary.MergedDictionaries>
 
 </ResourceDictionary>

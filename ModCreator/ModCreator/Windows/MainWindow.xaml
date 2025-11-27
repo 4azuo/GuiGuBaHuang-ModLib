@@ -139,7 +139,99 @@
                               ColumnHeaderStyle="{StaticResource ProjectGridHeaderStyle}">
                         <DataGrid.RowStyle>
                             <Style TargetType="DataGridRow">
-                                <Setter Property="Background" Value="{Binding State, Converter={StaticResource ProjectStateToBackgroundConverter}}"/>
+                                <Setter Property="Background" Value="White"/>
+                                <Setter Property="Template">
+                                    <Setter.Value>
+                                        <ControlTemplate TargetType="DataGridRow">
+                                            <Border x:Name="DGR_Border" 
+                                                    BorderBrush="{TemplateBinding BorderBrush}" 
+                                                    BorderThickness="{TemplateBinding BorderThickness}" 
+                                                    SnapsToDevicePixels="True">
+                                                <Grid>
+                                                    <!-- Base background -->
+                                                    <Border x:Name="BaseBackground" 
+                                                            Background="{TemplateBinding Background}"/>
+                                                    
+                                                    <!-- State overlay -->
+                                                    <Border x:Name="StateOverlay" 
+                                                            Background="Transparent"
+                                                            Opacity="0.15"/>
+                                                    
+                                                    <!-- Hover overlay -->
+                                                    <Border x:Name="HoverOverlay" 
+                                                            Background="#FF2E5090"
+                                                            Opacity="0"/>
+                                                    
+                                                    <!-- Selection highlight -->
+                                                    <Border x:Name="SelectionHighlight"
+                                                            Background="#FF2E5090"
+                                                            Opacity="0"/>
+                                                    
+                                                    <!-- Content -->
+                                                    <SelectiveScrollingGrid>
+                                                        <SelectiveScrollingGrid.ColumnDefinitions>
+                                                            <ColumnDefinition Width="Auto"/>
+                                                            <ColumnDefinition Width="*"/>
+                                                        </SelectiveScrollingGrid.ColumnDefinitions>
+                                                        <SelectiveScrollingGrid.RowDefinitions>
+                                                            <RowDefinition Height="*"/>
+                                                            <RowDefinition Height="Auto"/>
+                                                        </SelectiveScrollingGrid.RowDefinitions>
+                                                        <DataGridCellsPresenter Grid.Column="1"
+                                                                                ItemsPanel="{TemplateBinding ItemsPanel}"
+                                                                                SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"/>
+                                                        <DataGridDetailsPresenter Grid.Column="1" Grid.Row="1"
+                                                                                  SelectiveScrollingGrid.SelectiveScrollingOrientation="{Binding AreRowDetailsFrozen, ConverterParameter={x:Static SelectiveScrollingOrientation.Vertical}, Converter={x:Static DataGrid.RowDetailsScrollingConverter}, RelativeSource={RelativeSource AncestorType={x:Type DataGrid}}}"
+                                                                                  Visibility="{TemplateBinding DetailsVisibility}"/>
+                                                        <DataGridRowHeader Grid.RowSpan="2"
+                                                                           SelectiveScrollingGrid.SelectiveScrollingOrientation="Vertical"
+                                                                           Visibility="{Binding HeadersVisibility, ConverterParameter={x:Static DataGridHeadersVisibility.Row}, Converter={x:Static DataGrid.HeadersVisibilityConverter}, RelativeSource={RelativeSource AncestorType={x:Type DataGrid}}}"/>
+                                                    </SelectiveScrollingGrid>
+                                                </Grid>
+                                            </Border>
+                                            <ControlTemplate.Triggers>
+                                                <!-- State: ProjectNotFound - Red overlay -->
+                                                <DataTrigger Binding="{Binding State}" Value="ProjectNotFound">
+                                                    <Setter TargetName="StateOverlay" Property="Background" Value="#FFFF0000"/>
+                                                </DataTrigger>
+                                                
+                                                <!-- Hover effect -->
+                                                <Trigger Property="IsMouseOver" Value="True">
+                                                    <Trigger.EnterActions>
+                                                        <BeginStoryboard>
+                                                            <Storyboard>
+                                                                <DoubleAnimation Storyboard.TargetName="HoverOverlay"
+                                                                                 Storyboard.TargetProperty="Opacity"
+                                                                                 To="0.08"
+                                                                                 Duration="0:0:0.2"/>
+                                                            </Storyboard>
+                                                        </BeginStoryboard>
+                                                    </Trigger.EnterActions>
+                                                    <Trigger.ExitActions>
+                                                        <BeginStoryboard>
+                                                            <Storyboard>
+                                                                <DoubleAnimation Storyboard.TargetName="HoverOverlay"
+                                                                                 Storyboard.TargetProperty="Opacity"
+                                                                                 To="0"
+                                                                                 Duration="0:0:0.2"/>
+                                                            </Storyboard>
+                                                        </BeginStoryboard>
+                                                    </Trigger.ExitActions>
+                                                </Trigger>
+                                                
+                                                <!-- Selection effect -->
+                                                <Trigger Property="IsSelected" Value="True">
+                                                    <Setter TargetName="SelectionHighlight" Property="Opacity" Value="0.15"/>
+                                                </Trigger>
+                                                
+                                                <!-- Alternating row -->
+                                                <Trigger Property="AlternationIndex" Value="1">
+                                                    <Setter TargetName="BaseBackground" Property="Background" Value="#FFF5F5F5"/>
+                                                </Trigger>
+                                            </ControlTemplate.Triggers>
+                                        </ControlTemplate>
+                                    </Setter.Value>
+                                </Setter>
                             </Style>
                         </DataGrid.RowStyle>
                         <DataGrid.Columns>
@@ -233,7 +325,7 @@
                             <Border BorderBrush="#CCCCCC" BorderThickness="1" Margin="0,10,0,0" CornerRadius="3">
                                 <Image Source="{Binding TitleImg, Mode=OneWay, Converter={StaticResource FilePathToImageConverter}}" 
                                        Stretch="Uniform" 
-                                       MaxHeight="400"
+                                       MaxHeight="300"
                                        Margin="5">
                                     <Image.Style>
                                         <Style TargetType="Image">

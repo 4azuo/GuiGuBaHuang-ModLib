@@ -1,16 +1,14 @@
 ﻿using EGameTypeData;
-using MOD_nE7UL2.Const;
 using ModLib.Enum;
 using ModLib.Mod;
 using System.Collections.Generic;
 using UnityEngine.Events;
 using UnityEngine.UI;
-using static MOD_nE7UL2.Object.ModStts;
 
 namespace ModCreatorChildEvent
 {
-    public class ModCreatorChildConstants
+    public class ModCreatorChildVars
     {
-        #CONSTANTS#
+        #VARIABLES#
     }
 }

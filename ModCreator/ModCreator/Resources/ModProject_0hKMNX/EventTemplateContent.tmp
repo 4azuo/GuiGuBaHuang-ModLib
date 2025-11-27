@@ -1,0 +1,12 @@
+﻿#EVENTMETHOD#
+{
+    if (CheckCondition())
+    {
+        #ACTION#
+    }
+}
+
+public bool CheckCondition()
+{
+    return #CONDITION#
+}

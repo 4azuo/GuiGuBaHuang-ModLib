@@ -7,6 +7,7 @@ using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.ComponentModel;
 using System.IO;
 using System.Linq;
 using System.Reflection;
@@ -84,7 +85,7 @@ namespace ModCreator.WindowData
         /// <summary>
         /// Supported image extensions loaded from image-extensions.json
         /// </summary>
-        public List<ImageExtension> ImageExtensions { get; set; } = Helpers.MasterDataHelper.LoadImageExtensions();
+        public List<ImageExtension> ImageExtensions { get; set; } = MasterDataHelper.LoadImageExtensions();
 
         /// <summary>
         /// Selected image file (legacy support)
@@ -109,23 +110,7 @@ namespace ModCreator.WindowData
                     return null;
 
                 var filePath = Path.Combine(Project.ProjectPath, "ModProject", "ModImg", SelectedImageFile);
-                if (!File.Exists(filePath))
-                    return null;
-
-                try
-                {
-                    var bitmap = new BitmapImage();
-                    bitmap.BeginInit();
-                    bitmap.CacheOption = BitmapCacheOption.OnLoad; // Load into memory, release file handle
-                    bitmap.UriSource = new Uri(filePath, UriKind.Absolute);
-                    bitmap.EndInit();
-                    bitmap.Freeze(); // Make it cross-thread accessible and ensure file is released
-                    return bitmap;
-                }
-                catch
-                {
-                    return null;
-                }
+                return BitmapHelper.LoadFromFile(filePath);
             }
         }
 
@@ -138,6 +123,20 @@ namespace ModCreator.WindowData
         /// Check if an image item is selected
         /// </summary>
         public bool HasSelectedImageItem => SelectedImageItem != null;
+
+        /// <summary>
+        /// Title image path for displaying in Project Info tab
+        /// </summary>
+        public BitmapImage TitleImagePath
+        {
+            get
+            {
+                if (Project == null || string.IsNullOrEmpty(Project.TitleImg))
+                    return null;
+
+                return BitmapHelper.LoadFromFile(Project.TitleImg);
+            }
+        }
 
         #endregion
 
@@ -221,6 +220,14 @@ namespace ModCreator.WindowData
         public void ReloadProjectData()
         {
             LoadProjectData(this, null, null, null);
+        }
+
+        /// <summary>
+        /// Refresh title image in UI after updating
+        /// </summary>
+        public void RefreshTitleImage()
+        {
+            Notify(this, nameof(Project));
         }
 
         /// <summary>
