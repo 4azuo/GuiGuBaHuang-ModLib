@@ -12,10 +12,10 @@ if (!(Test-Path $settingsPath)) {
 
 $settings = Get-Content -Path $settingsPath -Raw | ConvertFrom-Json
 $steamWorkshopPath = $settings.steamWorkshopPath
-$gitRepositoryPath = $settings.gitRepositoryPath
+$repositoryPath = $settings.repositoryPath
 
 Write-Host "Steam Workshop Path: $steamWorkshopPath" -ForegroundColor Cyan
-Write-Host "Git Repository Path: $gitRepositoryPath" -ForegroundColor Cyan
+Write-Host "Git Repository Path: $repositoryPath" -ForegroundColor Cyan
 
 # Create directory if it doesn't exist
 if (!(Test-Path $steamWorkshopPath)) {
@@ -57,7 +57,7 @@ function Copy-WithExclusions {
 foreach ($projectId in $settings.projects) {
     Write-Host "`n[Project $projectId]" -ForegroundColor Yellow
     
-    $source = Join-Path $gitRepositoryPath $projectId
+    $source = Join-Path $repositoryPath $projectId
     $dest = Join-Path $steamWorkshopPath $projectId
     
     # Check if source exists
