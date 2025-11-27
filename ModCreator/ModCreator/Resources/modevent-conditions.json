@@ -1,0 +1,142 @@
+[
+  {
+    "Category": "Basic",
+    "Name": "true",
+    "DisplayName": "Always True",
+    "Description": "Condition that always returns true",
+    "Code": "true"
+  },
+  {
+    "Category": "Basic",
+    "Name": "false",
+    "DisplayName": "Always False",
+    "Description": "Condition that always returns false",
+    "Code": "false"
+  },
+  {
+    "Category": "Player",
+    "Name": "IsPlayer",
+    "DisplayName": "Is Player",
+    "Description": "Check if the unit is player",
+    "Code": "e.Unit != null && g.world.playerUnit != null && e.Unit.GetUnitId() == g.world.playerUnit.GetUnitId()"
+  },
+  {
+    "Category": "Game State",
+    "Name": "IsInBattle",
+    "DisplayName": "Is In Battle",
+    "Description": "Check if currently in battle",
+    "Code": "g.world != null && g.world.battle != null"
+  },
+  {
+    "Category": "Game State",
+    "Name": "IsInWorld",
+    "DisplayName": "Is In World",
+    "Description": "Check if currently in world map",
+    "Code": "g.world != null && g.world.build != null"
+  },
+  {
+    "Category": "Player",
+    "Name": "PlayerExists",
+    "DisplayName": "Player Exists",
+    "Description": "Check if player unit exists",
+    "Code": "g.world != null && g.world.playerUnit != null"
+  },
+  {
+    "Category": "Player",
+    "Name": "PlayerAlive",
+    "DisplayName": "Player Is Alive",
+    "Description": "Check if player is alive",
+    "Code": "g.world != null && g.world.playerUnit != null && !g.world.playerUnit.IsDie()"
+  },
+  {
+    "Category": "Event",
+    "Name": "HasEventData",
+    "DisplayName": "Has Event Data",
+    "Description": "Check if event data is not null",
+    "Code": "e != null"
+  },
+  {
+    "Category": "Event",
+    "Name": "HasEventUnit",
+    "DisplayName": "Has Event Unit",
+    "Description": "Check if event has unit data",
+    "Code": "e != null && e.Unit != null"
+  },
+  {
+    "Category": "Random",
+    "Name": "RandomChance50",
+    "DisplayName": "Random 50% Chance",
+    "Description": "50% random chance to return true",
+    "Code": "UnityEngine.Random.Range(0, 100) < 50"
+  },
+  {
+    "Category": "Random",
+    "Name": "RandomChance25",
+    "DisplayName": "Random 25% Chance",
+    "Description": "25% random chance to return true",
+    "Code": "UnityEngine.Random.Range(0, 100) < 25"
+  },
+  {
+    "Category": "Random",
+    "Name": "RandomChance75",
+    "DisplayName": "Random 75% Chance",
+    "Description": "75% random chance to return true",
+    "Code": "UnityEngine.Random.Range(0, 100) < 75"
+  },
+  {
+    "Category": "Time",
+    "Name": "IsNewGame",
+    "DisplayName": "Is New Game",
+    "Description": "Check if this is a new game",
+    "Code": "g.world != null && g.world.run.roundMonth == 1"
+  },
+  {
+    "Category": "Time",
+    "Name": "IsFirstYear",
+    "DisplayName": "Is First Year",
+    "Description": "Check if current year is first year",
+    "Code": "g.world != null && g.world.run.roundYear == 1"
+  },
+  {
+    "Category": "Player",
+    "Name": "PlayerHasItem",
+    "DisplayName": "Player Has Item",
+    "Description": "Check if player has any items (modify with specific item ID)",
+    "Code": "g.world != null && g.world.playerUnit != null && g.world.playerUnit.data.unitData.propData.allItem.Count > 0"
+  },
+  {
+    "Category": "Location",
+    "Name": "PlayerInTown",
+    "DisplayName": "Player In Town",
+    "Description": "Check if player is in a town",
+    "Code": "g.world != null && g.world.playerUnit != null && g.world.playerUnit.data.unitData.GetPoint().isInTown"
+  },
+  {
+    "Category": "Location",
+    "Name": "PlayerInSchool",
+    "DisplayName": "Player In School",
+    "Description": "Check if player is in a school",
+    "Code": "g.world != null && g.world.playerUnit != null && g.world.playerUnit.data.unitData.GetPoint().isInSchool"
+  },
+  {
+    "Category": "Battle",
+    "Name": "BattleWin",
+    "DisplayName": "Battle Win",
+    "Description": "Check if battle result is win",
+    "Code": "e is BattleEnd battleEnd && battleEnd.result == BattleResult.Win"
+  },
+  {
+    "Category": "Battle",
+    "Name": "BattleLose",
+    "DisplayName": "Battle Lose",
+    "Description": "Check if battle result is lose",
+    "Code": "e is BattleEnd battleEnd && battleEnd.result == BattleResult.Lose"
+  },
+  {
+    "Category": "Custom",
+    "Name": "Custom",
+    "DisplayName": "Custom Condition",
+    "Description": "Write your own custom condition code",
+    "Code": "/* Write your condition here */"
+  }
+]

@@ -55,6 +55,12 @@
 
   <ItemGroup>
     <None Remove="Resources\embeded-settings.json" />
+    <None Remove="Resources\modevent-actions.json" />
+    <None Remove="Resources\modevent-cachetype.json" />
+    <None Remove="Resources\modevent-cats.json" />
+    <None Remove="Resources\modevent-conditions.json" />
+    <None Remove="Resources\modevent-events.json" />
+    <None Remove="Resources\modevent-workon.json" />
     <None Remove="Resources\var-types.json" />
     <None Remove="Resources\project-replacements.json" />
     <None Remove="Resources\image-extensions.json" />
@@ -65,6 +71,12 @@
     <EmbeddedResource Include="Resources\embeded-settings.json">
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
     </EmbeddedResource>
+    <EmbeddedResource Include="Resources\modevent-actions.json" />
+    <EmbeddedResource Include="Resources\modevent-cachetype.json" />
+    <EmbeddedResource Include="Resources\modevent-cats.json" />
+    <EmbeddedResource Include="Resources\modevent-conditions.json" />
+    <EmbeddedResource Include="Resources\modevent-events.json" />
+    <EmbeddedResource Include="Resources\modevent-workon.json" />
     <EmbeddedResource Include="Resources\var-types.json">
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
     </EmbeddedResource>
