@@ -26,10 +26,10 @@
 	{
 		"id": "444446101",
 		"key": "taskDesc444446001",
-		"en": "Defeat 3 opponents who are at least 1 level higher than you.",
-		"ch": "击败3个至少比你高1级的对手。",
-		"tc": "擊敗3個至少比你高1級的對手。",
-		"kr": "당신보다 최소 1레벨 이상 높은 적 3명을 물리치세요."
+		"en": "Defeat 1 opponents who are at least 1 level higher than you.",
+		"ch": "击败1个至少比你高1级的对手。",
+		"tc": "擊敗1個至少比你高1級的對手。",
+		"kr": "당신보다 최소 1레벨 이상 높은 적 1명을 물리치세요."
 	},
 	{
 		"id": "444445002",
@@ -58,10 +58,10 @@
 	{
 		"id": "444446102",
 		"key": "taskDesc444446002",
-		"en": "Defeat 5 opponents who are at least 2 levels higher than you.",
-		"ch": "击败5个至少比你高2级的对手。",
-		"tc": "擊敗5個至少比你高2級的對手。",
-		"kr": "당신보다 최소 2레벨 이상 높은 적 5명을 물리치세요."
+		"en": "Defeat 2 opponents who are at least 1 levels higher than you.",
+		"ch": "击败2个至少比你高1级的对手。",
+		"tc": "擊敗2個至少比你高1級的對手。",
+		"kr": "당신보다 최소 1레벨 이상 높은 적 2명을 물리치세요."
 	},
 	{
 		"id": "444445003",
@@ -90,10 +90,10 @@
 	{
 		"id": "444446103",
 		"key": "taskDesc444446003",
-		"en": "Defeat 8 opponents who are at least 3 levels higher than you.",
-		"ch": "击败8个至少比你高3级的对手。",
-		"tc": "擊敗8個至少比你高3級的對手。",
-		"kr": "당신보다 최소 3레벨 이상 높은 적 8명을 물리치세요."
+		"en": "Defeat 2 opponents who are at least 2 levels higher than you.",
+		"ch": "击败2个至少比你高2级的对手。",
+		"tc": "擊敗2個至少比你高2級的對手。",
+		"kr": "당신보다 최소 2레벨 이상 높은 적 2명을 물리치세요."
 	},
 	{
 		"id": "444445004",
@@ -122,10 +122,10 @@
 	{
 		"id": "444446104",
 		"key": "taskDesc444446004",
-		"en": "Defeat 10 opponents who are at least 4 levels higher than you.",
-		"ch": "击败10个至少比你高4级的对手。",
-		"tc": "擊敗10個至少比你高4級的對手。",
-		"kr": "당신보다 최소 4레벨 이상 높은 적 10명을 물리치세요."
+		"en": "Defeat 4 opponents who are at least 2 levels higher than you.",
+		"ch": "击败4个至少比你高2级的对手。",
+		"tc": "擊敗4個至少比你高2級的對手。",
+		"kr": "당신보다 최소 2레벨 이상 높은 적 4명을 물리치세요."
 	},
 	{
 		"id": "444445005",
@@ -154,10 +154,10 @@
 	{
 		"id": "444446105",
 		"key": "taskDesc444446005",
-		"en": "Defeat 15 opponents who are at least 5 levels higher than you.",
-		"ch": "击败15个至少比你高5级的对手。",
-		"tc": "擊敗15個至少比你高5級的對手。",
-		"kr": "당신보다 최소 5레벨 이상 높은 적 15명을 물리치세요."
+		"en": "Defeat 3 opponents who are at least 3 levels higher than you.",
+		"ch": "击败3个至少比你高3级的对手。",
+		"tc": "擊敗3個至少比你高3級的對手。",
+		"kr": "당신보다 최소 3레벨 이상 높은 적 3명을 물리치세요."
 	},
 	{
 		"id": "444445006",
@@ -186,10 +186,10 @@
 	{
 		"id": "444446106",
 		"key": "taskDesc444446006",
-		"en": "Defeat 20 opponents who are at least 6 levels higher than you.",
-		"ch": "击败20个至少比你高6级的对手。",
-		"tc": "擊敗20個至少比你高6級的對手。",
-		"kr": "당신보다 최소 6레벨 이상 높은 적 20명을 물리치세요."
+		"en": "Defeat 9 opponents who are at least 3 levels higher than you.",
+		"ch": "击败9个至少比你高3级的对手。",
+		"tc": "擊敗9個至少比你高3級的對手。",
+		"kr": "당신보다 최소 3레벨 이상 높은 적 9명을 물리치세요."
 	},
 	{
 		"id": "444445007",
@@ -218,10 +218,10 @@
 	{
 		"id": "444446107",
 		"key": "taskDesc444446007",
-		"en": "Defeat 25 opponents who are at least 7 levels higher than you.",
-		"ch": "击败25个至少比你高7级的对手。",
-		"tc": "擊敗25個至少比你高7級的對手。",
-		"kr": "당신보다 최소 7레벨 이상 높은 적 25명을 물리치세요."
+		"en": "Defeat 5 opponents who are at least 4 levels higher than you.",
+		"ch": "击败5个至少比你高4级的对手。",
+		"tc": "擊敗5個至少比你高4級的對手。",
+		"kr": "당신보다 최소 4레벨 이상 높은 적 5명을 물리치세요."
 	},
 	{
 		"id": "444445008",
@@ -250,10 +250,10 @@
 	{
 		"id": "444446108",
 		"key": "taskDesc444446008",
-		"en": "Defeat 30 opponents who are at least 8 levels higher than you.",
-		"ch": "击败30个至少比你高8级的对手。",
-		"tc": "擊敗30個至少比你高8級的對手。",
-		"kr": "당신보다 최소 8레벨 이상 높은 적 30명을 물리치세요."
+		"en": "Defeat 20 opponents who are at least 4 levels higher than you.",
+		"ch": "击败20个至少比你高4级的对手。",
+		"tc": "擊敗20個至少比你高4級的對手。",
+		"kr": "당신보다 최소 4레벨 이상 높은 적 20명을 물리치세요."
 	},
 	{
 		"id": "444445009",
@@ -282,10 +282,10 @@
 	{
 		"id": "444446109",
 		"key": "taskDesc444446009",
-		"en": "Defeat 35 opponents who are at least 9 levels higher than you.",
-		"ch": "击败35个至少比你高9级的对手。",
-		"tc": "擊敗35個至少比你高9級的對手。",
-		"kr": "당신보다 최소 9레벨 이상 높은 적 35명을 물리치세요."
+		"en": "Defeat 3 opponents who are at least 5 levels higher than you.",
+		"ch": "击败3个至少比你高5级的对手。",
+		"tc": "擊敗3個至少比你高5級的對手。",
+		"kr": "당신보다 최소 5레벨 이상 높은 적 3명을 물리치세요."
 	},
 	{
 		"id": "444445010",
@@ -314,9 +314,9 @@
 	{
 		"id": "444446110",
 		"key": "taskDesc444446010",
-		"en": "Defeat 40 opponents who are at least 10 levels higher than you.",
-		"ch": "击败40个至少比你高10级的对手。",
-		"tc": "擊敗40個至少比你高10級的對手。",
-		"kr": "당신보다 최소 10레벨 이상 높은 적 40명을 물리치세요."
+		"en": "Defeat 3 opponents who are at least 6 levels higher than you.",
+		"ch": "击败3个至少比你高6级的对手。",
+		"tc": "擊敗3個至少比你高6級的對手。",
+		"kr": "당신보다 최소 6레벨 이상 높은 적 3명을 물리치세요."
 	}
 ]
