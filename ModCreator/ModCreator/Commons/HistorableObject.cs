@@ -13,7 +13,7 @@ namespace ModCreator.Commons
 
         [JsonIgnore, IgnoredProperty]
         public List<string> Histories { get; } = new List<string>();
-        public void WriteHistory(object obj, PropertyInfo prop, object oldValue, object newValue) {
+        public void WriteHistory(object obj, PropertyInfo prop) {
             if (IsUpdated())
             {
                 Histories.Add(JsonConvert.SerializeObject(this));

@@ -72,6 +72,7 @@ namespace ModCreator
                     Owner = this,
                     ProjectToEdit = project
                 };
+                editorWindow.ProjectUpdated += (s, args) => WindowData.LoadProjects();
                 editorWindow.Show();
             }
             catch (Exception ex)
@@ -109,6 +110,7 @@ namespace ModCreator
                             Owner = this,
                             ProjectToEdit = newProject
                         };
+                        editorWindow.ProjectUpdated += (s, args) => WindowData.LoadProjects();
                         editorWindow.Show();
                     }
                 }

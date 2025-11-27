@@ -82,9 +82,20 @@
                         <ColumnDefinition Width="120"/>
                         <ColumnDefinition Width="15"/>
                         <ColumnDefinition Width="*"/>
-                        <ColumnDefinition Width="4*"/>
+                        <ColumnDefinition/>
+                        <ColumnDefinition Width="120"/>
+                        <ColumnDefinition Width="15"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="30"/>
+                        <ColumnDefinition Width="120"/>
+                        <ColumnDefinition Width="15"/>
+                        <ColumnDefinition Width="*"/>
                     </Grid.ColumnDefinitions>
                     <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="10"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="10"/>
                         <RowDefinition Height="Auto"/>
                         <RowDefinition Height="10"/>
                         <RowDefinition Height="Auto"/>
@@ -136,7 +147,7 @@
                         Padding="8,0"/>
 
                     <!-- Description -->
-                    <TextBlock Grid.Column="0" Grid.Row="4"
+                    <TextBlock Grid.Column="0" Grid.Row="6"
                         Text="{x:Static helper:ProjectEditorWindowText.ProjectDetailsDescription}" 
                         FontWeight="SemiBold"
                         FontSize="13"
@@ -144,7 +155,7 @@
                         HorizontalAlignment="Right"
                         Style="{StaticResource LabelText}" 
                         Margin="0,8,15,0"/>
-                    <TextBox Grid.Column="2" Grid.Row="4" Grid.ColumnSpan="5"
+                    <TextBox Grid.Column="2" Grid.Row="6" Grid.ColumnSpan="5"
                         Text="{Binding Project.Description, UpdateSourceTrigger=PropertyChanged}"
                         Height="100"
                         AcceptsReturn="True"
@@ -155,14 +166,32 @@
                         FontSize="13"
                         Padding="8"/>
                     
-                    <TextBlock Grid.Column="0" Grid.Row="6"
+                    <!-- Author -->
+                    <TextBlock Grid.Column="0" Grid.Row="4"
+                        Text="{x:Static helper:ProjectEditorWindowText.ProjectDetailsAuthor}" 
+                        FontWeight="SemiBold"
+                        FontSize="13"
+                        VerticalAlignment="Center"
+                        HorizontalAlignment="Right"
+                        Style="{StaticResource LabelText}" 
+                        Margin="0,0,15,0"/>
+                    <TextBox Grid.Column="2" Grid.Row="4" Grid.ColumnSpan="5"
+                        Text="{Binding Project.Author, UpdateSourceTrigger=PropertyChanged}"
+                        Height="32"
+                        VerticalContentAlignment="Center"
+                        BorderBrush="#FFCCCCCC"
+                        BorderThickness="1"
+                        FontSize="13"
+                        Padding="8,0"/>
+                    
+                    <TextBlock Grid.Column="0" Grid.Row="8"
                         Text="{x:Static helper:ProjectEditorWindowText.HeaderCreated}" 
                         FontWeight="SemiBold"
                         FontSize="13"
                         Style="{StaticResource LabelText}" 
                         VerticalAlignment="Center"
                         HorizontalAlignment="Right"/>
-                    <TextBox Grid.Column="2" Grid.Row="6"
+                    <TextBox Grid.Column="2" Grid.Row="8"
                         Text="{Binding Project.CreatedDate, StringFormat=\{0:yyyy-MM-dd HH:mm:ss\}}"
                         IsReadOnly="True"
                         Background="#FFF5F5F5"
@@ -173,14 +202,14 @@
                         FontSize="13"
                         Padding="8,0"/>
                     
-                    <TextBlock Grid.Column="4" Grid.Row="6"
+                    <TextBlock Grid.Column="4" Grid.Row="8"
                         Text="{x:Static helper:ProjectEditorWindowText.HeaderModified}" 
                         FontWeight="SemiBold"
                         FontSize="13"
                         Style="{StaticResource LabelText}" 
                         VerticalAlignment="Center"
                         HorizontalAlignment="Right"/>
-                    <TextBox Grid.Column="6" Grid.Row="6"
+                    <TextBox Grid.Column="6" Grid.Row="8"
                         Text="{Binding Project.LastModifiedDate, StringFormat=\{0:yyyy-MM-dd HH:mm:ss\}}"
                         IsReadOnly="True"
                         Background="#FFF5F5F5"
@@ -192,7 +221,7 @@
                         Padding="8,0"/>
 
                     <!-- State -->
-                    <TextBlock Grid.Column="0" Grid.Row="8"
+                    <TextBlock Grid.Column="0" Grid.Row="10"
                         Text="{x:Static helper:ProjectEditorWindowText.HeaderState}" 
                         FontWeight="SemiBold"
                         FontSize="13"
@@ -200,7 +229,7 @@
                         HorizontalAlignment="Right"
                         Style="{StaticResource LabelText}" 
                         Margin="0,0,15,0"/>
-                    <TextBox Grid.Column="2" Grid.Row="8" Grid.ColumnSpan="5"
+                    <TextBox Grid.Column="2" Grid.Row="10" Grid.ColumnSpan="5"
                         Text="{Binding Project.State}"
                         IsReadOnly="True"
                         Background="#FFF5F5F5"
@@ -210,6 +239,20 @@
                         VerticalContentAlignment="Center"
                         FontSize="13"
                         Padding="8,0"/>
+
+                    <!-- Title Image -->
+                    <Border Grid.Column="8" Grid.Row="0" Grid.ColumnSpan="7" Grid.RowSpan="99"
+                        BorderBrush="#FFCCCCCC"
+                        BorderThickness="1"
+                        Background="#FFF5F5F5"
+                        Padding="5"
+                        Cursor="Hand"
+                        MouseLeftButtonUp="TitleImage_Click">
+                        <Image Source="{Binding TitleImagePath}"
+                               Stretch="Uniform"
+                               MaxHeight="300"
+                               ToolTip="Click to change image"/>
+                    </Border>
                 </Grid>
                 
                 <!-- Tab 1 Actions -->
@@ -563,12 +606,29 @@
             <TabItem Header="{x:Static helper:ProjectEditorWindowText.TabGlobalVariables}">
                 <Grid Margin="10">
                     <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
                         <RowDefinition Height="*"/>
                         <RowDefinition Height="Auto"/>
                     </Grid.RowDefinitions>
 
-                    <DataGrid Grid.Row="0" 
-                              Name="dgGlobalVariables"
+                    <!-- View Toggle Buttons -->
+                    <StackPanel Grid.Row="0" Orientation="Horizontal" Margin="0,0,0,10">
+                        <Button x:Name="btnGridView" Content="📊 Grid View" 
+                                Click="ToggleGridView_Click"
+                                Style="{StaticResource ActionButton}"
+                                Background="#FF2E5090"
+                                Foreground="White"
+                                Width="120"
+                                Margin="0,0,5,0"/>
+                        <Button x:Name="btnSourceView" Content="📝 Source View" 
+                                Click="ToggleSourceView_Click"
+                                Style="{StaticResource ActionButton}"
+                                Width="120"/>
+                    </StackPanel>
+
+                    <!-- DataGrid View -->
+                    <DataGrid x:Name="dgGlobalVariables"
+                              Grid.Row="1" 
                               ItemsSource="{Binding GlobalVariables, Mode=TwoWay}"
                               Style="{StaticResource EditableDataGridStyle}"
                               CellStyle="{StaticResource EditableDataGridCellStyle}"
@@ -642,7 +702,17 @@
                         </DataGrid.Columns>
                     </DataGrid>
 
-                    <StackPanel Grid.Row="1" Orientation="Horizontal">
+                    <!-- Source View (JSON Editor) -->
+                    <avalonedit:TextEditor x:Name="txtVariablesSource"
+                                           Grid.Row="1"
+                                           FontFamily="Consolas"
+                                           FontSize="12"
+                                           ShowLineNumbers="True"
+                                           Visibility="Collapsed"
+                                           VerticalScrollBarVisibility="Auto"
+                                           HorizontalScrollBarVisibility="Auto"/>
+
+                    <StackPanel Grid.Row="2" Orientation="Horizontal">
                         <Button Content="{x:Static helper:ProjectEditorWindowText.AddVariable}" 
                                 Click="AddVariable_Click"
                                 Style="{StaticResource ActionButton}"

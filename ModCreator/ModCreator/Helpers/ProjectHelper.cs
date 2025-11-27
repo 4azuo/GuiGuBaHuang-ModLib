@@ -65,7 +65,7 @@ namespace ModCreator.Helpers
         /// <summary>
         /// Create a new project from template
         /// </summary>
-        public static ModProject CreateProject(string projectName, string targetDirectory, string description = "")
+        public static ModProject CreateProject(string projectName, string targetDirectory, string description = "", string author = "")
         {
             var templatePath = GetProjectTemplatePath();
             if (!Directory.Exists(templatePath))
@@ -99,6 +99,7 @@ namespace ModCreator.Helpers
                 CreatedDate = DateTime.Now,
                 LastModifiedDate = DateTime.Now,
                 Description = description,
+                Author = author,
                 TitleImg = Path.GetFullPath(Path.Combine(projectPath, "ModProject", "ModProjectPreview.png")),
                 GlobalVariables =
                 [

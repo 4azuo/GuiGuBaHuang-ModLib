@@ -1,5 +1,10 @@
 [
   {
+    "Name": "Any",
+    "Type": "dynamic",
+    "Desc": "Dynamic type"
+  },
+  {
     "Name": "Boolean",
     "Type": "bool",
     "Desc": "True or False value"

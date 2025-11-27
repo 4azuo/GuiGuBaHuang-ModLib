@@ -27,6 +27,11 @@ namespace ModCreator.WindowData
         public string Description { get; set; }
 
         /// <summary>
+        /// Project Author
+        /// </summary>
+        public string Author { get; set; }
+
+        /// <summary>
         /// Can create project (validation)
         /// </summary>
         public bool CanCreate { get; set; }
@@ -59,7 +64,7 @@ namespace ModCreator.WindowData
         public void CreateProject(string workplacePath)
         {
             var targetDirectory = workplacePath;
-            CreatedProject = ModCreator.Helpers.ProjectHelper.CreateProject(ProjectName, targetDirectory, Description);
+            CreatedProject = ModCreator.Helpers.ProjectHelper.CreateProject(ProjectName, targetDirectory, Description, Author);
         }
 
         #endregion

@@ -31,6 +31,24 @@ namespace ModCreator.Helpers
         }
 
         /// <summary>
+        /// Get setting value by key
+        /// </summary>
+        /// <param name="key">Setting key</param>
+        /// <param name="defaultValue">Default value if key not found</param>
+        /// <returns>Setting value or default value</returns>
+        public static string TryGet(string key, string defaultValue = null)
+        {
+            try
+            {
+                return _settings[key];
+            }
+            catch
+            {
+                return defaultValue;
+            }
+        }
+
+        /// <summary>
         /// Get all settings as dictionary
         /// </summary>
         public static Dictionary<string, string> GetAll()

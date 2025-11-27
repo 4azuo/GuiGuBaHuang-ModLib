@@ -112,14 +112,19 @@ namespace ModCreator.Commons
             }
         }
 
-        public void Notify(object obj, PropertyInfo prop, object oldValue, object newValue)
+        public void Notify(object obj, string propName)
         {
-            var p = ListNotifyProperties[GetType()].FirstOrDefault(x => x.Name == prop.Name);
+            var p = ListNotifyProperties[GetType()].FirstOrDefault(x => x.Name == propName);
             if (p != null)
             {
-                var val = PropertyOldValues.TryGetValue(prop, out object value) ? value : null;
-                Notify(prop, val);
+                var val = PropertyOldValues.TryGetValue(p, out object value) ? value : null;
+                Notify(p, val);
             }
+        }
+
+        public void Notify(object obj, PropertyInfo prop)
+        {
+            Notify(obj, prop.Name);
         }
 
         public void RefreshAll(bool recursive = false)
@@ -130,7 +135,7 @@ namespace ModCreator.Commons
             }
         }
 
-        public void Refresh(object obj, PropertyInfo prop, object oldValue, object newValue, bool recursive = false)
+        public void Refresh(object obj, PropertyInfo prop, bool recursive = false)
         {
             var p = ListNotifyProperties[GetType()].FirstOrDefault(x => x.Name == prop.Name);
             if (p != null)

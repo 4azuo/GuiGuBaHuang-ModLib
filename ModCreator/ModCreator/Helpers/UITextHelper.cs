@@ -81,6 +81,7 @@ namespace ModCreator.Helpers
         public static string NewProjectTitle => MessageHelper.Get("Windows.NewProjectWindow.NewProjectTitle");
         public static string ProjectFieldName => MessageHelper.Get("Windows.NewProjectWindow.ProjectFieldName");
         public static string ProjectFieldDescription => MessageHelper.Get("Windows.NewProjectWindow.ProjectFieldDescription");
+        public static string ProjectFieldAuthor => MessageHelper.Get("Windows.NewProjectWindow.ProjectFieldAuthor");
         public static string Create => MessageHelper.Get("Windows.NewProjectWindow.Create");
         public static string Cancel => MessageHelper.Get("Windows.NewProjectWindow.Cancel");
     }
@@ -98,6 +99,8 @@ namespace ModCreator.Helpers
         public static string ProjectDetailsId => MessageHelper.Get("Windows.ProjectEditorWindow.ProjectDetailsId");
         public static string ProjectDetailsPath => MessageHelper.Get("Windows.ProjectEditorWindow.ProjectDetailsPath");
         public static string ProjectDetailsDescription => MessageHelper.Get("Windows.ProjectEditorWindow.ProjectDetailsDescription");
+        public static string ProjectDetailsAuthor => MessageHelper.Get("Windows.ProjectEditorWindow.ProjectDetailsAuthor");
+        public static string ProjectDetailsTitleImg => MessageHelper.Get("Windows.ProjectEditorWindow.ProjectDetailsTitleImg");
         public static string HeaderCreated => MessageHelper.Get("Windows.ProjectEditorWindow.HeaderCreated");
         public static string HeaderModified => MessageHelper.Get("Windows.ProjectEditorWindow.HeaderModified");
         public static string HeaderState => MessageHelper.Get("Windows.ProjectEditorWindow.HeaderState");

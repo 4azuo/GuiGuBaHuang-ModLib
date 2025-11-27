@@ -2,6 +2,7 @@ using ModCreator.Helpers;
 using ModCreator.Models;
 using ModCreator.WindowData;
 using System;
+using System.Collections.Generic;
 using System.ComponentModel;
 using System.IO;
 using System.Linq;
@@ -20,6 +21,11 @@ namespace ModCreator.Windows
         /// </summary>
         public ModProject ProjectToEdit { get; set; }
 
+        /// <summary>
+        /// Event raised when the window is closed to notify parent window to refresh
+        /// </summary>
+        public event EventHandler ProjectUpdated;
+
         [SupportedOSPlatform("windows6.1")]
         private void ProjectEditorWindow_Loaded(object sender, RoutedEventArgs e)
         {
@@ -30,7 +36,19 @@ namespace ModCreator.Windows
                 
                 // Setup AvalonEdit binding
                 SetupAvalonEditBinding();
+                
+                // Setup Variables Source Editor binding
+                SetupVariablesSourceBinding();
             }
+
+            // Subscribe to Closed event to notify parent window
+            Closed += ProjectEditorWindow_Closed;
+        }
+
+        private void ProjectEditorWindow_Closed(object sender, EventArgs e)
+        {
+            // Notify parent window to refresh project list
+            ProjectUpdated?.Invoke(this, EventArgs.Empty);
         }
 
         [SupportedOSPlatform("windows6.1")]
@@ -63,6 +81,46 @@ namespace ModCreator.Windows
                     WindowData.SelectedConfContent = editor.Text;
                 }
             };
+        }
+
+        [SupportedOSPlatform("windows6.1")]
+        private void SetupVariablesSourceBinding()
+        {
+            var editor = this.FindName("txtVariablesSource") as ICSharpCode.AvalonEdit.TextEditor;
+            if (editor == null) return;
+
+            // Load C# syntax highlighting
+            AvalonHelper.LoadCSharpSyntaxHighlighting(editor);
+            
+            // Load content from ModCreatorChildVars.cs if exists
+            LoadVariablesSourceFile();
+        }
+
+        [SupportedOSPlatform("windows6.1")]
+        private void LoadVariablesSourceFile()
+        {
+            try
+            {
+                if (WindowData?.Project == null) return;
+                
+                var editor = this.FindName("txtVariablesSource") as ICSharpCode.AvalonEdit.TextEditor;
+                if (editor == null) return;
+
+                var filePath = Path.Combine(WindowData.Project.ProjectPath, "ModProject", "ModCode", "ModMain", "Const", "ModCreatorChildVars.cs");
+                
+                if (File.Exists(filePath))
+                {
+                    editor.Text = File.ReadAllText(filePath);
+                }
+                else
+                {
+                    editor.Text = "// File not found. Generate code first using 'Generate Code' button.";
+                }
+            }
+            catch (Exception ex)
+            {
+                DebugHelper.ShowError(ex, MessageHelper.Get("Messages.Error.Title"), "Failed to load variables source file");
+            }
         }
 
         [SupportedOSPlatform("windows6.1")]
@@ -1016,15 +1074,8 @@ namespace ModCreator.Windows
                 dialog.FileName = WindowData.SelectedImageFile;
                 
                 // Build filter from ImageExtensions
-                if (WindowData.ImageExtensions.Count > 0)
-                {
-                    var extensionPatterns = string.Join(";", WindowData.ImageExtensions.Select(ext => $"*{ext.Extension}"));
-                    dialog.Filter = $"Image Files|{extensionPatterns}|All Files|*.*";
-                }
-                else
-                {
-                    dialog.Filter = "Image Files|*.png;*.jpg;*.jpeg;*.bmp;*.gif|All Files|*.*";
-                }
+                var extensionPatterns = string.Join(";", WindowData.ImageExtensions.Select(ext => $"*{ext.Extension}"));
+                dialog.Filter = $"Image Files|{extensionPatterns}";
                 
                 dialog.Title = "Export Image";
 
@@ -1080,6 +1131,62 @@ namespace ModCreator.Windows
                 {
                     DebugHelper.ShowError(ex, MessageHelper.Get("Messages.Error.Title"), "Failed to delete image");
                 }
+            }
+        }
+
+        #endregion
+
+        #region Tab 1: Project Info Event Handlers
+
+        [SupportedOSPlatform("windows6.1")]
+        private void TitleImage_Click(object sender, System.Windows.Input.MouseButtonEventArgs e)
+        {
+            try
+            {
+                // Open file dialog to select new image
+                using (var openFileDialog = new OpenFileDialog())
+                {
+                    var extensionPatterns = string.Join(";", WindowData.ImageExtensions.Select(ext => $"*{ext.Extension}"));
+                    openFileDialog.Filter = $"Image Files|{extensionPatterns}";
+                    openFileDialog.Title = "Select Title Image";
+                    openFileDialog.RestoreDirectory = true;
+
+                    if (openFileDialog.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+                    {
+                        var selectedImagePath = openFileDialog.FileName;
+                        if (!File.Exists(selectedImagePath))
+                        {
+                            MessageBox.Show(
+                                "Selected file does not exist!",
+                                MessageHelper.Get("Messages.Error.Title"),
+                                MessageBoxButton.OK,
+                                MessageBoxImage.Error);
+                            return;
+                        }
+
+                        // Update project's TitleImg path
+                        var targetPath = Path.GetFullPath(Path.Combine(WindowData.Project.ProjectPath, "ModProject", "ModProjectPreview.png"));
+                        
+                        // Copy selected image to target location, overwriting existing file
+                        File.Copy(selectedImagePath, targetPath, true);
+
+                        // Update the project's TitleImg property
+                        WindowData.Project.TitleImg = targetPath;
+
+                        // Notify UI to reload the image
+                        WindowData.RefreshTitleImage();
+
+                        MessageBox.Show(
+                            "Title image updated successfully!",
+                            MessageHelper.Get("Messages.Success.Title"),
+                            MessageBoxButton.OK,
+                            MessageBoxImage.Information);
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                DebugHelper.ShowError(ex, MessageHelper.Get("Messages.Error.Title"), "Failed to update title image");
             }
         }
 
@@ -1207,7 +1314,7 @@ namespace ModCreator.Windows
                 var newVar = new GlobalVariable
                 {
                     Name = "",
-                    Type = "string",
+                    Type = "dynamic",
                     Value = "",
                     Description = ""
                 };
@@ -1247,11 +1354,150 @@ namespace ModCreator.Windows
 
         private void GenerateVariablesCode_Click(object sender, RoutedEventArgs e)
         {
-            // TODO: Generate code from EventTemplate.tmp
-            MessageBox.Show(MessageHelper.Get("Windows.ProjectEditorWindow.FeatureComingSoon"), 
-                MessageHelper.Get("Messages.Info.Title"), 
-                MessageBoxButton.OK, 
-                MessageBoxImage.Information);
+            try
+            {
+                if (WindowData.Project == null)
+                {
+                    MessageBox.Show("No project loaded!", 
+                        MessageHelper.Get("Messages.Error.Title"), 
+                        MessageBoxButton.OK, 
+                        MessageBoxImage.Error);
+                    return;
+                }
+
+                // Save variables first
+                WindowData.SaveGlobalVariables();
+
+                // Check if there are any variables to generate
+                if (WindowData.GlobalVariables == null || WindowData.GlobalVariables.Count == 0)
+                {
+                    MessageBox.Show("No variables to generate. Please add variables first.", 
+                        MessageHelper.Get("Messages.Warning.Title"), 
+                        MessageBoxButton.OK, 
+                        MessageBoxImage.Warning);
+                    return;
+                }
+
+                // Validate that all variables have names
+                var emptyVars = WindowData.GlobalVariables.Where(v => string.IsNullOrWhiteSpace(v.Name)).ToList();
+                if (emptyVars.Any())
+                {
+                    MessageBox.Show("All variables must have names. Please complete all variables before generating code.", 
+                        MessageHelper.Get("Messages.Warning.Title"), 
+                        MessageBoxButton.OK, 
+                        MessageBoxImage.Warning);
+                    return;
+                }
+
+                // Read template files from project path
+                var varTemplatePath = Path.Combine(WindowData.Project.ProjectPath, "VarTemplate.tmp");
+                var varTemplateContentPath = Path.Combine(WindowData.Project.ProjectPath, "VarTemplateContent.tmp");
+
+                if (!File.Exists(varTemplatePath))
+                {
+                    MessageBox.Show($"Template file not found: {varTemplatePath}\n\nPlease ensure VarTemplate.tmp exists in the project root.", 
+                        MessageHelper.Get("Messages.Error.Title"), 
+                        MessageBoxButton.OK, 
+                        MessageBoxImage.Error);
+                    return;
+                }
+
+                if (!File.Exists(varTemplateContentPath))
+                {
+                    MessageBox.Show($"Template file not found: {varTemplateContentPath}\n\nPlease ensure VarTemplateContent.tmp exists in the project root.", 
+                        MessageHelper.Get("Messages.Error.Title"), 
+                        MessageBoxButton.OK, 
+                        MessageBoxImage.Error);
+                    return;
+                }
+
+                // Read templates
+                var varTemplate = File.ReadAllText(varTemplatePath);
+                var varTemplateContent = File.ReadAllText(varTemplateContentPath);
+
+                // Generate variable properties
+                var variableProperties = new System.Text.StringBuilder();
+                foreach (var variable in WindowData.GlobalVariables)
+                {
+                    if (string.IsNullOrWhiteSpace(variable.Name))
+                        continue;
+
+                    var propertyCode = varTemplateContent
+                        .Replace("#VARTYPE#", variable.Type ?? "string")
+                        .Replace("#VARNAME#", variable.Name)
+                        .Replace("#VARVALUE#", FormatVariableValue(variable));
+
+                    // Add description as comment if available
+                    if (!string.IsNullOrWhiteSpace(variable.Description))
+                    {
+                        variableProperties.AppendLine($"        // {variable.Description}");
+                    }
+
+                    variableProperties.AppendLine($"        {propertyCode.Trim()}");
+                }
+
+                // Replace placeholder in main template
+                var generatedCode = varTemplate.Replace("#VARIABLES#", variableProperties.ToString());
+
+                // Save to file
+                var outputPath = Path.Combine(WindowData.Project.ProjectPath, "ModProject", "ModCode", "ModMain", "Const", "ModCreatorChildVars.cs");
+                var outputDir = Path.GetDirectoryName(outputPath);
+                
+                if (!Directory.Exists(outputDir))
+                {
+                    Directory.CreateDirectory(outputDir);
+                }
+
+                File.WriteAllText(outputPath, generatedCode);
+
+                MessageBox.Show($"Variables code generated successfully!\n\nOutput file: {outputPath}", 
+                    MessageHelper.Get("Messages.Info.Title"), 
+                    MessageBoxButton.OK, 
+                    MessageBoxImage.Information);
+            }
+            catch (Exception ex)
+            {
+                DebugHelper.ShowError(ex, MessageHelper.Get("Messages.Error.Title"), 
+                    "Failed to generate variables code");
+            }
+        }
+
+        /// <summary>
+        /// Format variable value for code generation
+        /// </summary>
+        private string FormatVariableValue(GlobalVariable variable)
+        {
+            var varType = variable.Type?.ToLower();
+            
+            // Default values when Value is empty
+            var defaultValues = new Dictionary<string, string>
+            {
+                ["string"] = "\"\"",
+                ["bool"] = "false",
+                ["int"] = "0",
+                ["long"] = "0L",
+                ["float"] = "0f",
+                ["double"] = "0.0"
+            };
+
+            if (string.IsNullOrWhiteSpace(variable.Value))
+            {
+                if (defaultValues.TryGetValue(varType ?? "", out var defaultValue))
+                    return defaultValue;
+                return "null"; // Arrays and unknown types default to null
+            }
+
+            var value = variable.Value.Trim();
+            
+            // Format value based on type
+            return varType switch
+            {
+                "string" => value.StartsWith("\"") && value.EndsWith("\"") ? value : $"\"{value}\"",
+                "bool" => value.ToLower() is "true" or "false" ? value.ToLower() : "false",
+                "float" => value.EndsWith("f") || value.EndsWith("F") ? value : $"{value}f",
+                "long" => value.EndsWith("L") || value.EndsWith("l") ? value : $"{value}L",
+                _ => value // Arrays, dynamic and other types return as-is
+            };
         }
 
         private void CloneVariable_Click(object sender, RoutedEventArgs e)
@@ -1312,6 +1558,65 @@ namespace ModCreator.Windows
             catch (Exception ex)
             {
                 DebugHelper.ShowError(ex, MessageHelper.Get("Messages.Error.Title"), "Failed to remove variable");
+            }
+        }
+
+        [SupportedOSPlatform("windows7.0")]
+        private void ToggleGridView_Click(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                var dgVariables = this.FindName("dgGlobalVariables") as System.Windows.Controls.DataGrid;
+                var txtSource = this.FindName("txtVariablesSource") as ICSharpCode.AvalonEdit.TextEditor;
+                var btnGrid = this.FindName("btnGridView") as System.Windows.Controls.Button;
+                var btnSource = this.FindName("btnSourceView") as System.Windows.Controls.Button;
+
+                if (dgVariables != null && txtSource != null && btnGrid != null && btnSource != null)
+                {
+                    dgVariables.Visibility = Visibility.Visible;
+                    txtSource.Visibility = Visibility.Collapsed;
+                    
+                    // Update button styles
+                    btnGrid.Background = new System.Windows.Media.SolidColorBrush((System.Windows.Media.Color)System.Windows.Media.ColorConverter.ConvertFromString("#FF2E5090"));
+                    btnGrid.Foreground = System.Windows.Media.Brushes.White;
+                    btnSource.Background = System.Windows.Media.Brushes.White;
+                    btnSource.Foreground = new System.Windows.Media.SolidColorBrush((System.Windows.Media.Color)System.Windows.Media.ColorConverter.ConvertFromString("#FF666666"));
+                }
+            }
+            catch (Exception ex)
+            {
+                DebugHelper.ShowError(ex, MessageHelper.Get("Messages.Error.Title"), "Failed to switch to grid view");
+            }
+        }
+
+        [SupportedOSPlatform("windows7.0")]
+        private void ToggleSourceView_Click(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                var dgVariables = this.FindName("dgGlobalVariables") as System.Windows.Controls.DataGrid;
+                var txtSource = this.FindName("txtVariablesSource") as ICSharpCode.AvalonEdit.TextEditor;
+                var btnGrid = this.FindName("btnGridView") as System.Windows.Controls.Button;
+                var btnSource = this.FindName("btnSourceView") as System.Windows.Controls.Button;
+
+                if (dgVariables != null && txtSource != null && btnGrid != null && btnSource != null)
+                {
+                    // Load/Refresh C# source file
+                    LoadVariablesSourceFile();
+
+                    dgVariables.Visibility = Visibility.Collapsed;
+                    txtSource.Visibility = Visibility.Visible;
+                    
+                    // Update button styles
+                    btnSource.Background = new System.Windows.Media.SolidColorBrush((System.Windows.Media.Color)System.Windows.Media.ColorConverter.ConvertFromString("#FF2E5090"));
+                    btnSource.Foreground = System.Windows.Media.Brushes.White;
+                    btnGrid.Background = System.Windows.Media.Brushes.White;
+                    btnGrid.Foreground = new System.Windows.Media.SolidColorBrush((System.Windows.Media.Color)System.Windows.Media.ColorConverter.ConvertFromString("#FF666666"));
+                }
+            }
+            catch (Exception ex)
+            {
+                DebugHelper.ShowError(ex, MessageHelper.Get("Messages.Error.Title"), "Failed to switch to source view");
             }
         }
 

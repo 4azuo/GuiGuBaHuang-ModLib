@@ -21,7 +21,7 @@
   },
   {
     "Name": "GIF",
-    "extension": ".gif",
+    "Extension": ".gif",
     "Desc": "Graphics Interchange Format - Supports animation and transparency"
   }
 ]
