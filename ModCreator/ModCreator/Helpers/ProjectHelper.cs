@@ -87,7 +87,7 @@ namespace ModCreator.Helpers
             // Copy template
             FileHelper.CopyDirectory(templatePath, projectPath);
 
-            // Apply replacements based on new-project-replacements.json
+            // Apply replacements based on project-replacements.json
             ApplyProjectReplacements(projectPath, projectId);
 
             // Create project object
@@ -116,7 +116,7 @@ namespace ModCreator.Helpers
         }
 
         /// <summary>
-        /// Apply replacements to project files based on new-project-replacements.json
+        /// Apply replacements to project files based on project-replacements.json
         /// </summary>
         private static void ApplyProjectReplacements(string projectPath, string projectId)
         {
@@ -124,7 +124,7 @@ namespace ModCreator.Helpers
             {
                 // Read replacements configuration from embedded resource
                 var assembly = System.Reflection.Assembly.GetExecutingAssembly();
-                var resourceName = "ModCreator.Resources.new-project-replacements.json";
+                var resourceName = "ModCreator.Resources.project-replacements.json";
                 
                 string json;
                 using (var stream = assembly.GetManifestResourceStream(resourceName))

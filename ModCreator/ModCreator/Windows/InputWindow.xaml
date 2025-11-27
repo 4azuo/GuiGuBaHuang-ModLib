@@ -8,7 +8,7 @@
         xmlns:localData="clr-namespace:ModCreator.WindowData"
         mc:Ignorable="d"
         Title="{Binding WindowTitle}" 
-        Height="200" Width="500"
+        Height="250" Width="500"
         WindowStartupLocation="CenterOwner"
         Icon="/Resources/app-icon.png"
         FontFamily="Segoe UI"
@@ -22,7 +22,7 @@
         </Grid.RowDefinitions>
 
         <!-- Header -->
-        <Border Grid.Row="0" Background="#FF2E5090" Padding="15">
+        <Border Grid.Row="0" Background="#FF2E5090" Padding="12">
             <TextBlock Text="{Binding WindowTitle}" 
                        FontSize="16" 
                        FontWeight="Bold" 
@@ -30,7 +30,7 @@
         </Border>
 
         <!-- Input Field -->
-        <Grid Grid.Row="1" Margin="20">
+        <Grid Grid.Row="1" Margin="16">
             <Grid.RowDefinitions>
                 <RowDefinition Height="Auto"/>
                 <RowDefinition Height="10"/>
@@ -45,18 +45,11 @@
             <TextBox Grid.Row="2"
                      Name="txtInput"
                      Text="{Binding InputValue, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
-                     Height="32"
-                     VerticalContentAlignment="Center"
-                     Padding="8,0"
-                     FontSize="13"
-                     Background="White"
-                     Foreground="Black"
-                     BorderBrush="#FFCCCCCC"
-                     BorderThickness="1"/>
+                     Style="{StaticResource StandardTextBox}"/>
         </Grid>
 
         <!-- Buttons -->
-        <StackPanel Grid.Row="2" Orientation="Horizontal" HorizontalAlignment="Right" Margin="15">
+        <StackPanel Grid.Row="2" Orientation="Horizontal" HorizontalAlignment="Right" Margin="12">
             <Button Content="OK" 
                     Click="OK_Click"
                     Style="{StaticResource PrimaryButton}" 

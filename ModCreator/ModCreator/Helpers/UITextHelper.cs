@@ -93,6 +93,7 @@ namespace ModCreator.Helpers
     {
         public static string ProjectEditorTitle => MessageHelper.Get("Windows.ProjectEditorWindow.ProjectEditorTitle");
         public static string ProjectIdLabel => MessageHelper.Get("Windows.ProjectEditorWindow.ProjectIdLabel");
+        public static string Help => MessageHelper.Get("Windows.ProjectEditorWindow.Help");
         public static string Save => MessageHelper.Get("Windows.ProjectEditorWindow.Save");
         public static string Cancel => MessageHelper.Get("Windows.ProjectEditorWindow.Cancel");
         public static string TabProjectInfo => MessageHelper.Get("Windows.ProjectEditorWindow.TabProjectInfo");

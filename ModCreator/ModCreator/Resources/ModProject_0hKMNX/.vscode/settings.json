@@ -1,0 +1,8 @@
+{
+    "projectId": "ModProject_#PROJECTID#",
+    "modName": "Mod_#PROJECTID#",
+    "steamWorkshopPath": "#STEAMWORKSHOPPATH#",
+    "repositoryPath": "#PROJECTPATH#",
+    "autoBuildDebounceSeconds": 60,
+    "rapidChangeDebounceSeconds": 3
+}
