@@ -1,0 +1,463 @@
+[
+  {
+    "Category": "Timer",
+    "Events": [
+      {
+        "Name": "OnTimeUpdate10ms",
+        "DisplayName": "On Time Update 10ms",
+        "Description": "Called every 10 milliseconds",
+        "Signature": "public override void OnTimeUpdate10ms()",
+        "Parameters": []
+      },
+      {
+        "Name": "OnTimeUpdate100ms",
+        "DisplayName": "On Time Update 100ms",
+        "Description": "Called every 100 milliseconds",
+        "Signature": "public override void OnTimeUpdate100ms()",
+        "Parameters": []
+      },
+      {
+        "Name": "OnTimeUpdate200ms",
+        "DisplayName": "On Time Update 200ms",
+        "Description": "Called every 200 milliseconds",
+        "Signature": "public override void OnTimeUpdate200ms()",
+        "Parameters": []
+      },
+      {
+        "Name": "OnTimeUpdate500ms",
+        "DisplayName": "On Time Update 500ms",
+        "Description": "Called every 500 milliseconds",
+        "Signature": "public override void OnTimeUpdate500ms()",
+        "Parameters": []
+      },
+      {
+        "Name": "OnTimeUpdate1000ms",
+        "DisplayName": "On Time Update 1000ms",
+        "Description": "Called every 1000 milliseconds (1 second)",
+        "Signature": "public override void OnTimeUpdate1000ms()",
+        "Parameters": []
+      }
+    ]
+  },
+  {
+    "Category": "EMapType",
+    "Events": [
+      {
+        "Name": "OnPlayerOpenTreeVault",
+        "DisplayName": "On Player Open Tree Vault",
+        "Description": "Called when player opens tree vault",
+        "Signature": "public override void OnPlayerOpenTreeVault(ETypeData e)",
+        "Parameters": ["ETypeData e"]
+      },
+      {
+        "Name": "OnPlayerEquipCloth",
+        "DisplayName": "On Player Equip Cloth",
+        "Description": "Called when player equips clothing",
+        "Signature": "public override void OnPlayerEquipCloth(ETypeData e)",
+        "Parameters": ["ETypeData e"]
+      },
+      {
+        "Name": "OnPlayerInMonstArea",
+        "DisplayName": "On Player In Monster Area",
+        "Description": "Called when player enters monster area",
+        "Signature": "public override void OnPlayerInMonstArea(ETypeData e)",
+        "Parameters": ["ETypeData e"]
+      },
+      {
+        "Name": "OnPlayerRoleEscapeInMap",
+        "DisplayName": "On Player Role Escape In Map",
+        "Description": "Called when player role escapes in map",
+        "Signature": "public override void OnPlayerRoleEscapeInMap(ETypeData e)",
+        "Parameters": ["ETypeData e"]
+      },
+      {
+        "Name": "OnPlayerRoleUpGradeBig",
+        "DisplayName": "On Player Role Upgrade Big",
+        "Description": "Called when player role has major grade upgrade",
+        "Signature": "public override void OnPlayerRoleUpGradeBig(ETypeData e)",
+        "Parameters": ["ETypeData e"]
+      },
+      {
+        "Name": "OnUpGradeAndCloseFateFeatureUI",
+        "DisplayName": "On Upgrade And Close Fate Feature UI",
+        "Description": "Called when upgrading and closing fate feature UI",
+        "Signature": "public override void OnUpGradeAndCloseFateFeatureUI(ETypeData e)",
+        "Parameters": ["ETypeData e"]
+      },
+      {
+        "Name": "OnUseHobbyProps",
+        "DisplayName": "On Use Hobby Props",
+        "Description": "Called when using hobby props",
+        "Signature": "public override void OnUseHobbyProps(ETypeData e)",
+        "Parameters": ["ETypeData e"]
+      }
+    ]
+  },
+  {
+    "Category": "EGameType",
+    "Events": [
+      {
+        "Name": "OnOpenUIStart",
+        "DisplayName": "On Open UI Start",
+        "Description": "Called when UI starts opening",
+        "Signature": "public override void OnOpenUIStart(OpenUIStart e)",
+        "Parameters": ["OpenUIStart e"]
+      },
+      {
+        "Name": "OnOpenUIEnd",
+        "DisplayName": "On Open UI End",
+        "Description": "Called when UI finishes opening",
+        "Signature": "public override void OnOpenUIEnd(OpenUIEnd e)",
+        "Parameters": ["OpenUIEnd e"]
+      },
+      {
+        "Name": "OnCloseUIStart",
+        "DisplayName": "On Close UI Start",
+        "Description": "Called when UI starts closing",
+        "Signature": "public override void OnCloseUIStart(CloseUIStart e)",
+        "Parameters": ["CloseUIStart e"]
+      },
+      {
+        "Name": "OnCloseUIEnd",
+        "DisplayName": "On Close UI End",
+        "Description": "Called when UI finishes closing",
+        "Signature": "public override void OnCloseUIEnd(CloseUIEnd e)",
+        "Parameters": ["CloseUIEnd e"]
+      },
+      {
+        "Name": "OnLoadNewGame",
+        "DisplayName": "On Load New Game",
+        "Description": "Called when loading a new game",
+        "Signature": "public override void OnLoadNewGame()",
+        "Parameters": []
+      },
+      {
+        "Name": "OnLoadGameBefore",
+        "DisplayName": "On Load Game Before",
+        "Description": "Called before loading game",
+        "Signature": "public override void OnLoadGameBefore()",
+        "Parameters": []
+      },
+      {
+        "Name": "OnLoadGame",
+        "DisplayName": "On Load Game",
+        "Description": "Called when loading game",
+        "Signature": "public override void OnLoadGame()",
+        "Parameters": []
+      },
+      {
+        "Name": "OnLoadGameAfter",
+        "DisplayName": "On Load Game After",
+        "Description": "Called after loading game",
+        "Signature": "public override void OnLoadGameAfter()",
+        "Parameters": []
+      },
+      {
+        "Name": "OnInitWorld",
+        "DisplayName": "On Init World",
+        "Description": "Called when initializing world",
+        "Signature": "public override void OnInitWorld(ETypeData e)",
+        "Parameters": ["ETypeData e"]
+      },
+      {
+        "Name": "OnLoadSceneStart",
+        "DisplayName": "On Load Scene Start",
+        "Description": "Called when scene starts loading",
+        "Signature": "public override void OnLoadSceneStart(LoadSceneStart e)",
+        "Parameters": ["LoadSceneStart e"]
+      },
+      {
+        "Name": "OnLoadScene",
+        "DisplayName": "On Load Scene",
+        "Description": "Called when loading scene",
+        "Signature": "public override void OnLoadScene(LoadScene e)",
+        "Parameters": ["LoadScene e"]
+      },
+      {
+        "Name": "OnIntoWorld",
+        "DisplayName": "On Into World",
+        "Description": "Called when entering world",
+        "Signature": "public override void OnIntoWorld(ETypeData e)",
+        "Parameters": ["ETypeData e"]
+      },
+      {
+        "Name": "OnFirstMonth",
+        "DisplayName": "On First Month",
+        "Description": "Called on first month",
+        "Signature": "public override void OnFirstMonth()",
+        "Parameters": []
+      },
+      {
+        "Name": "OnYearly",
+        "DisplayName": "On Yearly",
+        "Description": "Called yearly",
+        "Signature": "public override void OnYearly()",
+        "Parameters": []
+      },
+      {
+        "Name": "OnMonthly",
+        "DisplayName": "On Monthly",
+        "Description": "Called monthly",
+        "Signature": "public override void OnMonthly()",
+        "Parameters": []
+      },
+      {
+        "Name": "OnRefreshParameterStoreOnMonthly",
+        "DisplayName": "On Refresh Parameter Store On Monthly",
+        "Description": "Called to refresh parameter store monthly",
+        "Signature": "public override void OnRefreshParameterStoreOnMonthly()",
+        "Parameters": []
+      },
+      {
+        "Name": "OnMonthlyForEachWUnit",
+        "DisplayName": "On Monthly For Each World Unit",
+        "Description": "Called monthly for each world unit",
+        "Signature": "public override void OnMonthlyForEachWUnit(WorldUnitBase wunit)",
+        "Parameters": ["WorldUnitBase wunit"]
+      },
+      {
+        "Name": "OnSave",
+        "DisplayName": "On Save",
+        "Description": "Called when saving game",
+        "Signature": "public override void OnSave(ETypeData e)",
+        "Parameters": ["ETypeData e"]
+      },
+      {
+        "Name": "OnOpenDrama",
+        "DisplayName": "On Open Drama",
+        "Description": "Called when opening drama",
+        "Signature": "public override void OnOpenDrama(OpenDrama e)",
+        "Parameters": ["OpenDrama e"]
+      },
+      {
+        "Name": "OnOpenNPCInfoUI",
+        "DisplayName": "On Open NPC Info UI",
+        "Description": "Called when opening NPC info UI",
+        "Signature": "public override void OnOpenNPCInfoUI(OpenNPCInfoUI e)",
+        "Parameters": ["OpenNPCInfoUI e"]
+      },
+      {
+        "Name": "OnTaskAdd",
+        "DisplayName": "On Task Add",
+        "Description": "Called when task is added",
+        "Signature": "public override void OnTaskAdd(TaskAdd e)",
+        "Parameters": ["TaskAdd e"]
+      },
+      {
+        "Name": "OnTaskComplete",
+        "DisplayName": "On Task Complete",
+        "Description": "Called when task is completed",
+        "Signature": "public override void OnTaskComplete(TaskComplete e)",
+        "Parameters": ["TaskComplete e"]
+      },
+      {
+        "Name": "OnTaskFail",
+        "DisplayName": "On Task Fail",
+        "Description": "Called when task fails",
+        "Signature": "public override void OnTaskFail(TaskFail e)",
+        "Parameters": ["TaskFail e"]
+      },
+      {
+        "Name": "OnTaskGive",
+        "DisplayName": "On Task Give",
+        "Description": "Called when task is given",
+        "Signature": "public override void OnTaskGive(TaskGive e)",
+        "Parameters": ["TaskGive e"]
+      },
+      {
+        "Name": "OnTaskOverl",
+        "DisplayName": "On Task Overload",
+        "Description": "Called when task is overloaded",
+        "Signature": "public override void OnTaskOverl(TaskOverl e)",
+        "Parameters": ["TaskOverl e"]
+      },
+      {
+        "Name": "OnUnitSetGrade",
+        "DisplayName": "On Unit Set Grade",
+        "Description": "Called when unit grade is set",
+        "Signature": "public override void OnUnitSetGrade(ETypeData e)",
+        "Parameters": ["ETypeData e"]
+      },
+      {
+        "Name": "OnUnitSetHeartState",
+        "DisplayName": "On Unit Set Heart State",
+        "Description": "Called when unit heart state is set",
+        "Signature": "public override void OnUnitSetHeartState(ETypeData e)",
+        "Parameters": ["ETypeData e"]
+      },
+      {
+        "Name": "OnWorldRunStart",
+        "DisplayName": "On World Run Start",
+        "Description": "Called when world run starts",
+        "Signature": "public override void OnWorldRunStart(WorldRunStart e)",
+        "Parameters": ["WorldRunStart e"]
+      },
+      {
+        "Name": "OnWorldRunEnd",
+        "DisplayName": "On World Run End",
+        "Description": "Called when world run ends",
+        "Signature": "public override void OnWorldRunEnd(WorldRunEnd e)",
+        "Parameters": ["WorldRunEnd e"]
+      },
+      {
+        "Name": "OnMonoUpdate",
+        "DisplayName": "On Mono Update",
+        "Description": "Called on MonoBehaviour update",
+        "Signature": "public override void OnMonoUpdate()",
+        "Parameters": []
+      }
+    ]
+  },
+  {
+    "Category": "EBattleType",
+    "Events": [
+      {
+        "Name": "OnBattleUnitInit",
+        "DisplayName": "On Battle Unit Init",
+        "Description": "Called when battle unit is initialized",
+        "Signature": "public override void OnBattleUnitInit(UnitInit e)",
+        "Parameters": ["UnitInit e"]
+      },
+      {
+        "Name": "OnBattleUnitHit",
+        "DisplayName": "On Battle Unit Hit",
+        "Description": "Called when battle unit is hit",
+        "Signature": "public override void OnBattleUnitHit(UnitHit e)",
+        "Parameters": ["UnitHit e"]
+      },
+      {
+        "Name": "OnBattleUnitHitDynIntHandler",
+        "DisplayName": "On Battle Unit Hit Dynamic Int Handler",
+        "Description": "Called for battle unit hit dynamic int handling",
+        "Signature": "public override void OnBattleUnitHitDynIntHandler(UnitHitDynIntHandler e)",
+        "Parameters": ["UnitHitDynIntHandler e"]
+      },
+      {
+        "Name": "OnBattleUnitShieldHitDynIntHandler",
+        "DisplayName": "On Battle Unit Shield Hit Dynamic Int Handler",
+        "Description": "Called for battle unit shield hit dynamic int handling",
+        "Signature": "public override void OnBattleUnitShieldHitDynIntHandler(UnitShieldHitDynIntHandler e)",
+        "Parameters": ["UnitShieldHitDynIntHandler e"]
+      },
+      {
+        "Name": "OnBattleUnitUseProp",
+        "DisplayName": "On Battle Unit Use Prop",
+        "Description": "Called when battle unit uses prop",
+        "Signature": "public override void OnBattleUnitUseProp(UnitUseProp e)",
+        "Parameters": ["UnitUseProp e"]
+      },
+      {
+        "Name": "OnBattleUnitUseSkill",
+        "DisplayName": "On Battle Unit Use Skill",
+        "Description": "Called when battle unit uses skill",
+        "Signature": "public override void OnBattleUnitUseSkill(UnitUseSkill e)",
+        "Parameters": ["UnitUseSkill e"]
+      },
+      {
+        "Name": "OnBattleUnitUseStep",
+        "DisplayName": "On Battle Unit Use Step",
+        "Description": "Called when battle unit uses step",
+        "Signature": "public override void OnBattleUnitUseStep(UnitUseStep e)",
+        "Parameters": ["UnitUseStep e"]
+      },
+      {
+        "Name": "OnBattleUnitDie",
+        "DisplayName": "On Battle Unit Die",
+        "Description": "Called when battle unit dies",
+        "Signature": "public override void OnBattleUnitDie(UnitDie e)",
+        "Parameters": ["UnitDie e"]
+      },
+      {
+        "Name": "OnBattleUnitDieEnd",
+        "DisplayName": "On Battle Unit Die End",
+        "Description": "Called when battle unit die ends",
+        "Signature": "public override void OnBattleUnitDieEnd(ETypeData e)",
+        "Parameters": ["ETypeData e"]
+      },
+      {
+        "Name": "OnBattleUnitAddEffectStart",
+        "DisplayName": "On Battle Unit Add Effect Start",
+        "Description": "Called when battle unit effect starts adding",
+        "Signature": "public override void OnBattleUnitAddEffectStart(UnitAddEffectStart e)",
+        "Parameters": ["UnitAddEffectStart e"]
+      },
+      {
+        "Name": "OnBattleUnitAddEffect",
+        "DisplayName": "On Battle Unit Add Effect",
+        "Description": "Called when battle unit adds effect",
+        "Signature": "public override void OnBattleUnitAddEffect(UnitAddEffect e)",
+        "Parameters": ["UnitAddEffect e"]
+      },
+      {
+        "Name": "OnBattleUnitAddHP",
+        "DisplayName": "On Battle Unit Add HP",
+        "Description": "Called when battle unit adds HP",
+        "Signature": "public override void OnBattleUnitAddHP(UnitAddHP e)",
+        "Parameters": ["UnitAddHP e"]
+      },
+      {
+        "Name": "OnBattleUnitUpdateProperty",
+        "DisplayName": "On Battle Unit Update Property",
+        "Description": "Called when battle unit property updates",
+        "Signature": "public override void OnBattleUnitUpdateProperty(UnitUpdateProperty e)",
+        "Parameters": ["UnitUpdateProperty e"]
+      },
+      {
+        "Name": "OnBattleSetUnitType",
+        "DisplayName": "On Battle Set Unit Type",
+        "Description": "Called when battle unit type is set",
+        "Signature": "public override void OnBattleSetUnitType(SetUnitType e)",
+        "Parameters": ["SetUnitType e"]
+      },
+      {
+        "Name": "OnBattleUnitInto",
+        "DisplayName": "On Battle Unit Into",
+        "Description": "Called when unit enters battle",
+        "Signature": "public override void OnBattleUnitInto(UnitCtrlBase e)",
+        "Parameters": ["UnitCtrlBase e"]
+      },
+      {
+        "Name": "OnBattleStart",
+        "DisplayName": "On Battle Start",
+        "Description": "Called when battle starts",
+        "Signature": "public override void OnBattleStart(ETypeData e)",
+        "Parameters": ["ETypeData e"]
+      },
+      {
+        "Name": "OnBattleEnd",
+        "DisplayName": "On Battle End",
+        "Description": "Called when battle ends",
+        "Signature": "public override void OnBattleEnd(BattleEnd e)",
+        "Parameters": ["BattleEnd e"]
+      },
+      {
+        "Name": "OnBattleEndFront",
+        "DisplayName": "On Battle End Front",
+        "Description": "Called at battle end front",
+        "Signature": "public override void OnBattleEndFront(ETypeData e)",
+        "Parameters": ["ETypeData e"]
+      },
+      {
+        "Name": "OnBattleEndHandler",
+        "DisplayName": "On Battle End Handler",
+        "Description": "Called for battle end handling",
+        "Signature": "public override void OnBattleEndHandler(BattleEndHandler e)",
+        "Parameters": ["BattleEndHandler e"]
+      },
+      {
+        "Name": "OnBattleEscapeFailed",
+        "DisplayName": "On Battle Escape Failed",
+        "Description": "Called when battle escape fails",
+        "Signature": "public override void OnBattleEscapeFailed(ETypeData e)",
+        "Parameters": ["ETypeData e"]
+      },
+      {
+        "Name": "OnBattleExit",
+        "DisplayName": "On Battle Exit",
+        "Description": "Called when exiting battle",
+        "Signature": "public override void OnBattleExit(ETypeData e)",
+        "Parameters": ["ETypeData e"]
+      }
+    ]
+  }
+]

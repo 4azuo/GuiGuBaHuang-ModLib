@@ -18,6 +18,7 @@ namespace ModCreator
         /// Steam Workshop directory
         /// </summary>
         public static string SteamWorkshopDir => SettingHelper.TryGet("steamWorkshopDir", @"C:/Program Files (x86)/Steam/steamapps/workshop/content/1468810");
+        
         /// <summary>
         /// Documentation directory (.github/docs)
         /// </summary>
