@@ -43,20 +43,14 @@ namespace ModCreator
 
         private void ProjectList_DoubleClick(object sender, System.Windows.Input.MouseButtonEventArgs e)
         {
-            // Check if double-click is on a data row, not on header or empty space
             var row = e.OriginalSource as System.Windows.FrameworkElement;
             if (row == null) return;
             
-            // Walk up the visual tree to find DataGridRow
             while (row != null && !(row is System.Windows.Controls.DataGridRow))
-            {
                 row = System.Windows.Media.VisualTreeHelper.GetParent(row) as System.Windows.FrameworkElement;
-            }
             
-            // If not clicked on a DataGridRow, ignore
-            if (row == null) return;
+            if (row == null || WindowData.SelectedProject == null) return;
             
-            if (WindowData.SelectedProject == null) return;
             var project = WindowData.SelectedProject;
             if (!System.IO.Directory.Exists(project.ProjectPath))
             {
@@ -65,61 +59,42 @@ namespace ModCreator
                     MessageHelper.Get("Messages.Error.Title"));
                 return;
             }
-            try
+            
+            var editorWindow = new Windows.ProjectEditorWindow
             {
-                var editorWindow = new Windows.ProjectEditorWindow
-                {
-                    Owner = this,
-                    ProjectToEdit = project
-                };
-                editorWindow.ProjectUpdated += (s, args) => WindowData.LoadProjects();
-                editorWindow.Show();
-            }
-            catch (Exception ex)
-            {
-                DebugHelper.ShowError(ex, MessageHelper.Get("Messages.Error.Title"), 
-                    MessageHelper.GetFormat("Messages.Error.ErrorUpdatingProject", ex.Message));
-            }
+                Owner = this,
+                ProjectToEdit = project
+            };
+            editorWindow.ProjectUpdated += (s, args) => WindowData.LoadProjects();
+            editorWindow.Show();
         }
 
         private void CreateProject_Click(object sender, RoutedEventArgs e)
         {
-            try
+            var dialog = new Windows.NewProjectWindow
             {
-                // Show NewProjectWindow dialog
-                var dialog = new Windows.NewProjectWindow
-                {
-                    Owner = this
-                };
-                dialog.WindowData.WorkplacePath = WindowData.WorkplacePath;
-                
-                if (dialog.ShowDialog() == true)
-                {
-                    var projectData = dialog.WindowData;
-                    var newProject = projectData.CreatedProject;
-                    if (newProject != null)
-                    {
-                        WindowData.AllProjects.Add(newProject);
-                        ProjectHelper.SaveProjects(WindowData.AllProjects);
-                        WindowData.UpdateFilteredProjects(WindowData, null, null, null);
-                        MessageBox.Show(MessageHelper.GetFormat("Messages.Success.ProjectSuccessMessage", newProject.ProjectPath), 
-                            MessageHelper.Get("Messages.Success.Title"), MessageBoxButton.OK, MessageBoxImage.Information);
-                        // Open editor window for new project
-                        var editorWindow = new Windows.ProjectEditorWindow
-                        {
-                            Owner = this,
-                            ProjectToEdit = newProject
-                        };
-                        editorWindow.ProjectUpdated += (s, args) => WindowData.LoadProjects();
-                        editorWindow.Show();
-                    }
-                }
-            }
-            catch (Exception ex)
+                Owner = this,
+                WindowData = { WorkplacePath = WindowData.WorkplacePath }
+            };
+            
+            if (dialog.ShowDialog() != true) return;
+            
+            var newProject = dialog.WindowData.CreatedProject;
+            if (newProject == null) return;
+            
+            WindowData.AllProjects.Add(newProject);
+            ProjectHelper.SaveProjects(WindowData.AllProjects);
+            WindowData.UpdateFilteredProjects(WindowData, null, null, null);
+            MessageBox.Show(MessageHelper.GetFormat("Messages.Success.ProjectSuccessMessage", newProject.ProjectPath), 
+                MessageHelper.Get("Messages.Success.Title"), MessageBoxButton.OK, MessageBoxImage.Information);
+            
+            var editorWindow = new Windows.ProjectEditorWindow
             {
-                DebugHelper.ShowError(ex, MessageHelper.Get("Messages.Error.Title"),
-                    MessageHelper.GetFormat("Messages.Error.ErrorCreatingProject", ex.Message));
-            }
+                Owner = this,
+                ProjectToEdit = newProject
+            };
+            editorWindow.ProjectUpdated += (s, args) => WindowData.LoadProjects();
+            editorWindow.Show();
         }
 
         private void RefreshProjects_Click(object sender, RoutedEventArgs e)
@@ -129,25 +104,16 @@ namespace ModCreator
 
         private void OpenFolder_Click(object sender, RoutedEventArgs e)
         {
-            try
+            if (WindowData.SelectedProject != null && !System.IO.Directory.Exists(WindowData.SelectedProject.ProjectPath))
             {
-                if (WindowData.SelectedProject != null && 
-                    !System.IO.Directory.Exists(WindowData.SelectedProject.ProjectPath))
-                {
-                    MessageBox.Show(
-                        MessageHelper.GetFormat("Messages.Error.ErrorProjectFolderMissing", WindowData.SelectedProject.ProjectPath),
-                        MessageHelper.Get("Messages.Error.Title"),
-                        MessageBoxButton.OK,
-                        MessageBoxImage.Warning);
-                    return;
-                }
-                WindowData.OpenProjectFolder();
+                MessageBox.Show(
+                    MessageHelper.GetFormat("Messages.Error.ErrorProjectFolderMissing", WindowData.SelectedProject.ProjectPath),
+                    MessageHelper.Get("Messages.Error.Title"),
+                    MessageBoxButton.OK,
+                    MessageBoxImage.Warning);
+                return;
             }
-            catch (Exception ex)
-            {
-                DebugHelper.ShowError(ex, MessageHelper.Get("Messages.Error.Title"),
-                    MessageHelper.GetFormat("Messages.Error.ErrorOpeningFolder", ex.Message));
-            }
+            WindowData.OpenProjectFolder();
         }
 
         private void EditProject_Click(object sender, RoutedEventArgs e)
@@ -164,20 +130,12 @@ namespace ModCreator
                 return;
             }
             
-            try
+            var editorWindow = new Windows.ProjectEditorWindow
             {
-                var editorWindow = new Windows.ProjectEditorWindow
-                {
-                    Owner = this,
-                    ProjectToEdit = WindowData.SelectedProject
-                };
-                editorWindow.Show();
-            }
-            catch (Exception ex)
-            {
-                DebugHelper.ShowError(ex, MessageHelper.Get("Messages.Error.Title"),
-                    MessageHelper.GetFormat("Messages.Error.ErrorUpdatingProject", ex.Message));
-            }
+                Owner = this,
+                ProjectToEdit = WindowData.SelectedProject
+            };
+            editorWindow.Show();
         }
 
         private void DeleteProject_Click(object sender, RoutedEventArgs e)
@@ -195,19 +153,8 @@ namespace ModCreator
                 folderExists ? MessageBoxButton.YesNoCancel : MessageBoxButton.OKCancel,
                 MessageBoxImage.Warning);
 
-            if (result == MessageBoxResult.Cancel)
-                return;
-
-            try
-            {
-                bool deleteFiles = folderExists && (result == MessageBoxResult.Yes);
-                WindowData.DeleteProject(deleteFiles);
-            }
-            catch (Exception ex)
-            {
-                DebugHelper.ShowError(ex, MessageHelper.Get("Messages.Error.Title"),
-                    MessageHelper.GetFormat("Messages.Error.ErrorDeletingProject", ex.Message));
-            }
+            if (result != MessageBoxResult.Cancel)
+                WindowData.DeleteProject(folderExists && result == MessageBoxResult.Yes);
         }
 
         [SupportedOSPlatform("windows6.1")]
@@ -231,34 +178,14 @@ namespace ModCreator
 
         private void Help_Click(object sender, RoutedEventArgs e)
         {
-            try
-            {
-                var helpWindow = new Windows.HelperWindow
-                {
-                    Owner = this
-                };
-                helpWindow.ShowDialog();
-            }
-            catch (Exception ex)
-            {
-                DebugHelper.ShowError(ex, MessageHelper.Get("Messages.Error.Title"), MessageHelper.Get("Messages.Error.ErrorOpeningHelpWindow"));
-            }
+            var helpWindow = new Windows.HelperWindow { Owner = this };
+            helpWindow.ShowDialog();
         }
 
         private void About_Click(object sender, RoutedEventArgs e)
         {
-            try
-            {
-                var aboutWindow = new Windows.AboutWindow
-                {
-                    Owner = this
-                };
-                aboutWindow.ShowDialog();
-            }
-            catch (Exception ex)
-            {
-                DebugHelper.ShowError(ex, MessageHelper.Get("Messages.Error.Title"), MessageHelper.Get("Messages.Error.ErrorOpeningAboutWindow"));
-            }
+            var aboutWindow = new Windows.AboutWindow { Owner = this };
+            aboutWindow.ShowDialog();
         }
 
         #region Grid Action Handlers

@@ -4,8 +4,6 @@ using ModCreator.Models;
 using ModCreator.WindowData;
 using System;
 using System.ComponentModel;
-using System.IO;
-using System.Linq;
 using System.Runtime.Versioning;
 using System.Windows;
 using MessageBox = System.Windows.MessageBox;
@@ -95,54 +93,32 @@ namespace ModCreator.Windows
 
         private void Save_Click(object sender, RoutedEventArgs e)
         {
-            try
-            {
-                // Confirmation dialog
-                var result = MessageBox.Show(
-                    "Are you sure you want to save all changes?",
-                    "Confirm Save",
-                    MessageBoxButton.YesNo,
-                    MessageBoxImage.Question);
+            var result = MessageBox.Show(
+                "Are you sure you want to save all changes?",
+                "Confirm Save",
+                MessageBoxButton.YesNo,
+                MessageBoxImage.Question);
 
-                if (result != MessageBoxResult.Yes)
-                    return;
+            if (result != MessageBoxResult.Yes) return;
 
-                WindowData.SaveProject();
-                MessageBox.Show(
-                    MessageHelper.GetFormat("Messages.Success.UpdatedProject", WindowData.Project.ProjectName), 
-                    MessageHelper.Get("Messages.Success.Title"), 
-                    MessageBoxButton.OK, 
-                    MessageBoxImage.Information);
-                
-                // Update backup after successful save
-                WindowData.BackupProject();
-            }
-            catch (Exception ex)
-            {
-                DebugHelper.ShowError(ex, MessageHelper.Get("Messages.Error.Title"),
-                    MessageHelper.GetFormat("Messages.Error.ErrorUpdatingProject", ex.Message));
-            }
+            WindowData.SaveProject();
+            MessageBox.Show(
+                MessageHelper.GetFormat("Messages.Success.UpdatedProject", WindowData.Project.ProjectName), 
+                MessageHelper.Get("Messages.Success.Title"), 
+                MessageBoxButton.OK, 
+                MessageBoxImage.Information);
+            
+            WindowData.BackupProject();
         }
 
         private void Help_Click(object sender, RoutedEventArgs e)
         {
-            try
-            {
-                var helpWindow = new Windows.HelperWindow
-                {
-                    Owner = this
-                };
-                helpWindow.ShowDialog();
-            }
-            catch (Exception ex)
-            {
-                DebugHelper.ShowError(ex, MessageHelper.Get("Messages.Error.Title"), MessageHelper.Get("Messages.Error.ErrorOpeningHelpWindow"));
-            }
+            var helpWindow = new Windows.HelperWindow { Owner = this };
+            helpWindow.ShowDialog();
         }
 
         private void Close_Click(object sender, RoutedEventArgs e)
         {
-            // Check if there are unsaved changes
             if (WindowData.HasUnsavedChanges())
             {
                 var result = MessageBox.Show(
@@ -151,10 +127,8 @@ namespace ModCreator.Windows
                     MessageBoxButton.YesNo,
                     MessageBoxImage.Warning);
 
-                if (result != MessageBoxResult.Yes)
-                    return;
-
-                // Restore from backup
+                if (result != MessageBoxResult.Yes) return;
+                
                 WindowData.RestoreProject();
             }
 
@@ -164,43 +138,20 @@ namespace ModCreator.Windows
         [SupportedOSPlatform("windows6.1")]
         private void RefreshTab_Click(object sender, RoutedEventArgs e)
         {
-            try
+            var tabControl = this.FindName("tabControl") as System.Windows.Controls.TabControl;
+            if (tabControl == null || WindowData == null)
             {
-                // Get the currently selected tab to determine what to refresh
-                var tabControl = this.FindName("tabControl") as System.Windows.Controls.TabControl;
-                if (tabControl == null || WindowData == null)
-                {
-                    WindowData?.ReloadProjectData();
-                    return;
-                }
-
-                var selectedIndex = tabControl.SelectedIndex;
-                switch (selectedIndex)
-                {
-                    case 0: // Tab 1: Project Info
-                        // No reload needed - project info is bound directly
-                        break;
-                    case 1: // Tab 2: ModConf
-                        WindowData.LoadConfFiles();
-                        break;
-                    case 2: // Tab 3: ModImg
-                        WindowData.LoadImageFiles();
-                        break;
-                    case 3: // Tab 4: Global Variables
-                        WindowData.LoadGlobalVariables();
-                        break;
-                    case 4: // Tab 5: ModEvent
-                        WindowData.LoadModEventFiles();
-                        break;
-                    default:
-                        // For any other tabs, reload all data
-                        WindowData.ReloadProjectData();
-                        break;
-                }
+                WindowData?.ReloadProjectData();
+                return;
             }
-            catch (Exception ex)
+
+            switch (tabControl.SelectedIndex)
             {
-                DebugHelper.ShowError(ex, MessageHelper.Get("Messages.Error.Title"), "Failed to refresh");
+                case 1: WindowData.LoadConfFiles(); break;
+                case 2: WindowData.LoadImageFiles(); break;
+                case 3: WindowData.LoadGlobalVariables(); break;
+                case 4: WindowData.LoadModEventFiles(); break;
+                default: WindowData.ReloadProjectData(); break;
             }
         }
     }

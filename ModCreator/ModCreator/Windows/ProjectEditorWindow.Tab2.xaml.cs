@@ -1,17 +1,11 @@
-using ModCreator.Businesses;
 using ModCreator.Helpers;
 using ModCreator.Models;
 using ModCreator.WindowData;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.IO;
-using System.Linq;
 using System.Runtime.Versioning;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Forms;
-using System.Windows.Media.Imaging;
 using MessageBox = System.Windows.MessageBox;
 
 namespace ModCreator.Windows
@@ -60,437 +54,252 @@ namespace ModCreator.Windows
 
         private void CreateFolder_Click(object sender, RoutedEventArgs e)
         {
-            try
+            var confPath = Path.Combine(WindowData.Project.ProjectPath, "ModProject", "ModConf");
+            
+            string parentPath = confPath;
+            if (WindowData.SelectedConfItem != null)
             {
-                var confPath = Path.Combine(WindowData.Project.ProjectPath, "ModProject", "ModConf");
-                
-                // Determine parent path
-                string parentPath = confPath;
-                if (WindowData.SelectedConfItem != null && WindowData.SelectedConfItem.IsFolder)
-                {
-                    parentPath = WindowData.SelectedConfItem.FullPath;
-                }
-                else if (WindowData.SelectedConfItem != null && !WindowData.SelectedConfItem.IsFolder)
-                {
-                    parentPath = Path.GetDirectoryName(WindowData.SelectedConfItem.FullPath);
-                }
-
-                // Show InputWindow to get folder name
-                var inputWindow = new InputWindow
-                {
-                    Owner = this
-                };
-                inputWindow.WindowData.WindowTitle = "Create New Folder";
-                inputWindow.WindowData.Label = "Folder name:";
-                inputWindow.WindowData.InputValue = "NewFolder";
-
-                if (inputWindow.ShowDialog() != true)
-                    return;
-
-                var folderName = inputWindow.WindowData.InputValue;
-
-                // Validate folder name
-                if (string.IsNullOrWhiteSpace(folderName))
-                {
-                    MessageBox.Show(
-                        "Folder name cannot be empty!",
-                        MessageHelper.Get("Messages.Warning.Title"),
-                        MessageBoxButton.OK,
-                        MessageBoxImage.Warning);
-                    return;
-                }
-
-                // Check if folder name contains invalid characters
-                var invalidChars = Path.GetInvalidFileNameChars();
-                if (folderName.IndexOfAny(invalidChars) >= 0)
-                {
-                    MessageBox.Show(
-                        "Folder name contains invalid characters!",
-                        MessageHelper.Get("Messages.Warning.Title"),
-                        MessageBoxButton.OK,
-                        MessageBoxImage.Warning);
-                    return;
-                }
-
-                var newFolderPath = Path.Combine(parentPath, folderName);
-
-                // Check if folder already exists
-                if (Directory.Exists(newFolderPath))
-                {
-                    MessageBox.Show(
-                        $"A folder with the name '{folderName}' already exists!",
-                        MessageHelper.Get("Messages.Warning.Title"),
-                        MessageBoxButton.OK,
-                        MessageBoxImage.Warning);
-                    return;
-                }
-
-                // Create the folder
-                Directory.CreateDirectory(newFolderPath);
-
-                // Reload configuration tree
-                WindowData.LoadConfFiles();
-
-                MessageBox.Show(
-                    $"Folder '{folderName}' created successfully!",
-                    MessageHelper.Get("Messages.Success.Title"),
-                    MessageBoxButton.OK,
-                    MessageBoxImage.Information);
+                parentPath = WindowData.SelectedConfItem.IsFolder 
+                    ? WindowData.SelectedConfItem.FullPath 
+                    : Path.GetDirectoryName(WindowData.SelectedConfItem.FullPath);
             }
-            catch (Exception ex)
+
+            var inputWindow = new InputWindow
             {
-                DebugHelper.ShowError(ex, MessageHelper.Get("Messages.Error.Title"), "Failed to create folder");
+                Owner = this,
+                WindowData = { WindowTitle = "Create New Folder", Label = "Folder name:", InputValue = "NewFolder" }
+            };
+
+            if (inputWindow.ShowDialog() != true) return;
+
+            var folderName = inputWindow.WindowData.InputValue;
+
+            if (string.IsNullOrWhiteSpace(folderName))
+            {
+                MessageBox.Show("Folder name cannot be empty!", MessageHelper.Get("Messages.Warning.Title"), MessageBoxButton.OK, MessageBoxImage.Warning);
+                return;
             }
+
+            if (folderName.IndexOfAny(Path.GetInvalidFileNameChars()) >= 0)
+            {
+                MessageBox.Show("Folder name contains invalid characters!", MessageHelper.Get("Messages.Warning.Title"), MessageBoxButton.OK, MessageBoxImage.Warning);
+                return;
+            }
+
+            var newFolderPath = Path.Combine(parentPath, folderName);
+
+            if (Directory.Exists(newFolderPath))
+            {
+                MessageBox.Show($"A folder with the name '{folderName}' already exists!", MessageHelper.Get("Messages.Warning.Title"), MessageBoxButton.OK, MessageBoxImage.Warning);
+                return;
+            }
+
+            Directory.CreateDirectory(newFolderPath);
+            WindowData.LoadConfFiles();
+            MessageBox.Show($"Folder '{folderName}' created successfully!", MessageHelper.Get("Messages.Success.Title"), MessageBoxButton.OK, MessageBoxImage.Information);
         }
 
         private void DeleteFolder_Click(object sender, RoutedEventArgs e)
         {
-            if (WindowData.SelectedConfItem == null || !WindowData.SelectedConfItem.IsFolder)
-                return;
+            if (WindowData.SelectedConfItem == null || !WindowData.SelectedConfItem.IsFolder) return;
 
-            try
+            var folderPath = WindowData.SelectedConfItem.FullPath;
+            var folderName = WindowData.SelectedConfItem.Name;
+
+            if (!Directory.Exists(folderPath))
             {
-                var folderPath = WindowData.SelectedConfItem.FullPath;
-                var folderName = WindowData.SelectedConfItem.Name;
-
-                // Check if folder exists
-                if (!Directory.Exists(folderPath))
-                {
-                    MessageBox.Show(
-                        $"Folder '{folderName}' does not exist!",
-                        MessageHelper.Get("Messages.Warning.Title"),
-                        MessageBoxButton.OK,
-                        MessageBoxImage.Warning);
-                    WindowData.LoadConfFiles();
-                    return;
-                }
-
-                // Check if folder has contents
-                var hasContents = Directory.GetFileSystemEntries(folderPath).Length > 0;
-                var warningMessage = hasContents
-                    ? $"Are you sure you want to delete folder '{folderName}' and all its contents?"
-                    : $"Are you sure you want to delete folder '{folderName}'?";
-
-                var result = MessageBox.Show(
-                    warningMessage,
-                    "Delete Folder",
-                    MessageBoxButton.YesNo,
-                    MessageBoxImage.Warning);
-
-                if (result == MessageBoxResult.Yes)
-                {
-                    Directory.Delete(folderPath, true);
-                    
-                    // Reload configuration tree
-                    WindowData.LoadConfFiles();
-
-                    MessageBox.Show(
-                        $"Folder '{folderName}' deleted successfully!",
-                        MessageHelper.Get("Messages.Success.Title"),
-                        MessageBoxButton.OK,
-                        MessageBoxImage.Information);
-                }
-            }
-            catch (Exception ex)
-            {
-                DebugHelper.ShowError(ex, MessageHelper.Get("Messages.Error.Title"), "Failed to delete folder");
+                MessageBox.Show($"Folder '{folderName}' does not exist!", MessageHelper.Get("Messages.Warning.Title"), MessageBoxButton.OK, MessageBoxImage.Warning);
                 WindowData.LoadConfFiles();
+                return;
+            }
+
+            var hasContents = Directory.GetFileSystemEntries(folderPath).Length > 0;
+            var warningMessage = hasContents
+                ? $"Are you sure you want to delete folder '{folderName}' and all its contents?"
+                : $"Are you sure you want to delete folder '{folderName}'?";
+
+            var result = MessageBox.Show(warningMessage, "Delete Folder", MessageBoxButton.YesNo, MessageBoxImage.Warning);
+
+            if (result == MessageBoxResult.Yes)
+            {
+                Directory.Delete(folderPath, true);
+                WindowData.LoadConfFiles();
+                MessageBox.Show($"Folder '{folderName}' deleted successfully!", MessageHelper.Get("Messages.Success.Title"), MessageBoxButton.OK, MessageBoxImage.Information);
             }
         }
 
         private void AddConf_Click(object sender, RoutedEventArgs e)
         {
-            try
+            var addConfWindow = new AddConfWindow { Owner = this };
+
+            if (addConfWindow.ShowDialog() != true) return;
+
+            var selectedConfig = addConfWindow.WindowData.SelectedConfig;
+            if (selectedConfig == null) return;
+
+            var confPath = Path.Combine(WindowData.Project.ProjectPath, "ModProject", "ModConf");
+            string targetPath = confPath;
+            
+            if (WindowData.SelectedConfItem != null)
             {
-                var addConfWindow = new AddConfWindow
-                {
-                    Owner = this
-                };
-
-                if (addConfWindow.ShowDialog() == true)
-                {
-                    var selectedConfig = addConfWindow.WindowData.SelectedConfig;
-                    if (selectedConfig != null)
-                    {
-                        // Determine target directory based on selected item
-                        var confPath = Path.Combine(WindowData.Project.ProjectPath, "ModProject", "ModConf");
-                        string targetPath = confPath;
-                        
-                        if (WindowData.SelectedConfItem != null && WindowData.SelectedConfItem.IsFolder)
-                        {
-                            targetPath = WindowData.SelectedConfItem.FullPath;
-                        }
-                        else if (WindowData.SelectedConfItem != null && !WindowData.SelectedConfItem.IsFolder)
-                        {
-                            targetPath = Path.GetDirectoryName(WindowData.SelectedConfItem.FullPath);
-                        }
-                        
-                        Directory.CreateDirectory(targetPath);
-
-                        var fileName = addConfWindow.WindowData.GetFileName();
-                        var destPath = Path.Combine(targetPath, fileName);
-                        File.Copy(selectedConfig.FilePath, destPath, true);
-
-                        // Reload configuration list
-                        WindowData.LoadConfFiles();
-
-                        // Select the newly added file - calculate relative path
-                        WindowData.SelectedConfFile = Path.GetRelativePath(confPath, destPath);
-                    }
-                }
+                targetPath = WindowData.SelectedConfItem.IsFolder
+                    ? WindowData.SelectedConfItem.FullPath
+                    : Path.GetDirectoryName(WindowData.SelectedConfItem.FullPath);
             }
-            catch (Exception ex)
-            {
-                DebugHelper.ShowError(ex, MessageHelper.Get("Messages.Error.Title"), "Failed to add configuration file");
-            }
+            
+            Directory.CreateDirectory(targetPath);
+
+            var fileName = addConfWindow.WindowData.GetFileName();
+            var destPath = Path.Combine(targetPath, fileName);
+            File.Copy(selectedConfig.FilePath, destPath, true);
+
+            WindowData.LoadConfFiles();
+            WindowData.SelectedConfFile = Path.GetRelativePath(confPath, destPath);
         }
 
         private void RemoveConf_Click(object sender, RoutedEventArgs e)
         {
-            if (string.IsNullOrEmpty(WindowData.SelectedConfFile))
+            if (string.IsNullOrEmpty(WindowData.SelectedConfFile)) return;
+
+            var filePath = Path.Combine(WindowData.Project.ProjectPath, "ModProject", "ModConf", WindowData.SelectedConfFile);
+            
+            if (!File.Exists(filePath))
+            {
+                MessageBox.Show($"File '{WindowData.SelectedConfFile}' does not exist!", MessageHelper.Get("Messages.Warning.Title"), MessageBoxButton.OK, MessageBoxImage.Warning);
+                WindowData.LoadConfFiles();
                 return;
-
-            try
-            {
-                var filePath = Path.Combine(WindowData.Project.ProjectPath, "ModProject", "ModConf", WindowData.SelectedConfFile);
-                
-                // Check if file exists before attempting to delete
-                if (!File.Exists(filePath))
-                {
-                    MessageBox.Show(
-                        $"File '{WindowData.SelectedConfFile}' does not exist!",
-                        MessageHelper.Get("Messages.Warning.Title"),
-                        MessageBoxButton.OK,
-                        MessageBoxImage.Warning);
-                    WindowData.LoadConfFiles();
-                    return;
-                }
-
-                var result = MessageBox.Show(
-                    $"Are you sure you want to delete '{WindowData.SelectedConfFile}'?",
-                    "Delete Configuration",
-                    MessageBoxButton.YesNo,
-                    MessageBoxImage.Warning);
-
-                if (result == MessageBoxResult.Yes)
-                {
-                    File.Delete(filePath);
-                    // Reload configuration list
-                    WindowData.LoadConfFiles();
-                }
             }
-            catch (Exception ex)
+
+            var result = MessageBox.Show($"Are you sure you want to delete '{WindowData.SelectedConfFile}'?", "Delete Configuration", MessageBoxButton.YesNo, MessageBoxImage.Warning);
+
+            if (result == MessageBoxResult.Yes)
             {
-                DebugHelper.ShowError(ex, MessageHelper.Get("Messages.Error.Title"), "Failed to delete configuration file");
+                File.Delete(filePath);
                 WindowData.LoadConfFiles();
             }
         }
 
         private void CloneConf_Click(object sender, RoutedEventArgs e)
         {
-            if (string.IsNullOrEmpty(WindowData.SelectedConfFile))
+            if (string.IsNullOrEmpty(WindowData.SelectedConfFile)) return;
+
+            var confPath = Path.Combine(WindowData.Project.ProjectPath, "ModProject", "ModConf");
+            var sourceFile = Path.Combine(confPath, WindowData.SelectedConfFile);
+            
+            if (!File.Exists(sourceFile))
+            {
+                MessageBox.Show($"Source file '{WindowData.SelectedConfFile}' does not exist!", MessageHelper.Get("Messages.Warning.Title"), MessageBoxButton.OK, MessageBoxImage.Warning);
+                WindowData.LoadConfFiles();
                 return;
-
-            try
-            {
-                var confPath = Path.Combine(WindowData.Project.ProjectPath, "ModProject", "ModConf");
-                var sourceFile = Path.Combine(confPath, WindowData.SelectedConfFile);
-                
-                // Check if source file exists
-                if (!File.Exists(sourceFile))
-                {
-                    MessageBox.Show(
-                        $"Source file '{WindowData.SelectedConfFile}' does not exist!",
-                        MessageHelper.Get("Messages.Warning.Title"),
-                        MessageBoxButton.OK,
-                        MessageBoxImage.Warning);
-                    WindowData.LoadConfFiles();
-                    return;
-                }
-
-                // Get directory where the file is located
-                var sourceDir = Path.GetDirectoryName(sourceFile);
-
-                // Generate new filename with _copy suffix
-                var fileNameWithoutExt = Path.GetFileNameWithoutExtension(Path.GetFileName(WindowData.SelectedConfFile));
-                var extension = Path.GetExtension(WindowData.SelectedConfFile);
-                var newFileName = $"{fileNameWithoutExt}_copy{extension}";
-                
-                // If file already exists, add number suffix
-                var counter = 1;
-                while (File.Exists(Path.Combine(sourceDir, newFileName)))
-                {
-                    newFileName = $"{fileNameWithoutExt}_copy{counter}{extension}";
-                    counter++;
-                }
-
-                var destFile = Path.Combine(sourceDir, newFileName);
-                File.Copy(sourceFile, destFile);
-
-                // Reload configuration list and select the cloned file
-                WindowData.LoadConfFiles();
-                WindowData.SelectedConfFile = Path.GetRelativePath(confPath, destFile);
-
-                MessageBox.Show(
-                    $"Configuration file cloned successfully!\n\nNew file: {newFileName}",
-                    MessageHelper.Get("Messages.Success.Title"),
-                    MessageBoxButton.OK,
-                    MessageBoxImage.Information);
             }
-            catch (Exception ex)
+
+            var sourceDir = Path.GetDirectoryName(sourceFile);
+            var fileNameWithoutExt = Path.GetFileNameWithoutExtension(Path.GetFileName(WindowData.SelectedConfFile));
+            var extension = Path.GetExtension(WindowData.SelectedConfFile);
+            var newFileName = $"{fileNameWithoutExt}_copy{extension}";
+            
+            var counter = 1;
+            while (File.Exists(Path.Combine(sourceDir, newFileName)))
             {
-                DebugHelper.ShowError(ex, MessageHelper.Get("Messages.Error.Title"), "Failed to clone configuration file");
-                WindowData.LoadConfFiles();
+                newFileName = $"{fileNameWithoutExt}_copy{counter}{extension}";
+                counter++;
             }
+
+            var destFile = Path.Combine(sourceDir, newFileName);
+            File.Copy(sourceFile, destFile);
+
+            WindowData.LoadConfFiles();
+            WindowData.SelectedConfFile = Path.GetRelativePath(confPath, destFile);
+
+            MessageBox.Show($"Configuration file cloned successfully!\n\nNew file: {newFileName}", MessageHelper.Get("Messages.Success.Title"), MessageBoxButton.OK, MessageBoxImage.Information);
         }
 
         private void RenameConf_Click(object sender, RoutedEventArgs e)
         {
-            if (string.IsNullOrEmpty(WindowData.SelectedConfFile))
+            if (string.IsNullOrEmpty(WindowData.SelectedConfFile)) return;
+
+            var oldFileName = WindowData.SelectedConfFile;
+            var confPath = Path.Combine(WindowData.Project.ProjectPath, "ModProject", "ModConf");
+            var oldFilePath = Path.Combine(confPath, oldFileName);
+
+            if (!File.Exists(oldFilePath))
+            {
+                MessageBox.Show($"Source file '{oldFileName}' does not exist!", MessageHelper.Get("Messages.Error.Title"), MessageBoxButton.OK, MessageBoxImage.Error);
+                WindowData.LoadConfFiles();
                 return;
-
-            try
-            {
-                var oldFileName = WindowData.SelectedConfFile;
-                var confPath = Path.Combine(WindowData.Project.ProjectPath, "ModProject", "ModConf");
-                var oldFilePath = Path.Combine(confPath, oldFileName);
-
-                // Check if source file exists
-                if (!File.Exists(oldFilePath))
-                {
-                    MessageBox.Show(
-                        $"Source file '{oldFileName}' does not exist!",
-                        MessageHelper.Get("Messages.Error.Title"),
-                        MessageBoxButton.OK,
-                        MessageBoxImage.Error);
-                    WindowData.LoadConfFiles();
-                    return;
-                }
-
-                // Show InputWindow to get new filename
-                var inputWindow = new InputWindow
-                {
-                    Owner = this
-                };
-                inputWindow.WindowData.WindowTitle = "Rename Configuration File";
-                inputWindow.WindowData.Label = "New file name:";
-                inputWindow.WindowData.InputValue = oldFileName;
-
-                if (inputWindow.ShowDialog() != true)
-                    return;
-
-                var newFileName = inputWindow.WindowData.InputValue;
-
-                // Validate new filename
-                if (string.IsNullOrWhiteSpace(newFileName))
-                {
-                    MessageBox.Show(
-                        "File name cannot be empty!",
-                        MessageHelper.Get("Messages.Warning.Title"),
-                        MessageBoxButton.OK,
-                        MessageBoxImage.Warning);
-                    return;
-                }
-
-                // Check if filename contains invalid characters
-                var invalidChars = Path.GetInvalidFileNameChars();
-                if (newFileName.IndexOfAny(invalidChars) >= 0)
-                {
-                    MessageBox.Show(
-                        "File name contains invalid characters!",
-                        MessageHelper.Get("Messages.Warning.Title"),
-                        MessageBoxButton.OK,
-                        MessageBoxImage.Warning);
-                    return;
-                }
-
-                // Ensure .json extension
-                if (!newFileName.EndsWith(".json", StringComparison.OrdinalIgnoreCase))
-                {
-                    newFileName += ".json";
-                }
-
-                // If names are the same, no need to rename
-                if (oldFileName == newFileName)
-                {
-                    return;
-                }
-
-                var newFilePath = Path.Combine(confPath, newFileName);
-
-                // Check if new filename already exists
-                if (File.Exists(newFilePath))
-                {
-                    MessageBox.Show(
-                        $"A file with the name '{newFileName}' already exists!",
-                        MessageHelper.Get("Messages.Warning.Title"),
-                        MessageBoxButton.OK,
-                        MessageBoxImage.Warning);
-                    return;
-                }
-
-                // Rename the file
-                File.Move(oldFilePath, newFilePath);
-
-                // Reload configuration list and select the renamed file
-                WindowData.LoadConfFiles();
-                WindowData.SelectedConfFile = newFileName;
-
-                MessageBox.Show(
-                    $"Configuration file renamed successfully!\n\nOld: {oldFileName}\nNew: {newFileName}",
-                    MessageHelper.Get("Messages.Success.Title"),
-                    MessageBoxButton.OK,
-                    MessageBoxImage.Information);
             }
-            catch (Exception ex)
+
+            var inputWindow = new InputWindow
             {
-                DebugHelper.ShowError(ex, MessageHelper.Get("Messages.Error.Title"), "Failed to rename configuration file");
-                WindowData.LoadConfFiles();
+                Owner = this,
+                WindowData = { WindowTitle = "Rename Configuration File", Label = "New file name:", InputValue = oldFileName }
+            };
+
+            if (inputWindow.ShowDialog() != true) return;
+
+            var newFileName = inputWindow.WindowData.InputValue;
+
+            if (string.IsNullOrWhiteSpace(newFileName))
+            {
+                MessageBox.Show("File name cannot be empty!", MessageHelper.Get("Messages.Warning.Title"), MessageBoxButton.OK, MessageBoxImage.Warning);
+                return;
             }
+
+            if (newFileName.IndexOfAny(Path.GetInvalidFileNameChars()) >= 0)
+            {
+                MessageBox.Show("File name contains invalid characters!", MessageHelper.Get("Messages.Warning.Title"), MessageBoxButton.OK, MessageBoxImage.Warning);
+                return;
+            }
+
+            if (!newFileName.EndsWith(".json", StringComparison.OrdinalIgnoreCase))
+                newFileName += ".json";
+
+            if (oldFileName == newFileName) return;
+
+            var newFilePath = Path.Combine(confPath, newFileName);
+
+            if (File.Exists(newFilePath))
+            {
+                MessageBox.Show($"A file with the name '{newFileName}' already exists!", MessageHelper.Get("Messages.Warning.Title"), MessageBoxButton.OK, MessageBoxImage.Warning);
+                return;
+            }
+
+            File.Move(oldFilePath, newFilePath);
+            WindowData.LoadConfFiles();
+            WindowData.SelectedConfFile = newFileName;
+
+            MessageBox.Show($"Configuration file renamed successfully!\n\nOld: {oldFileName}\nNew: {newFileName}", MessageHelper.Get("Messages.Success.Title"), MessageBoxButton.OK, MessageBoxImage.Information);
         }
 
         [SupportedOSPlatform("windows6.1")]
         private void ReplaceInEditor_Click(object sender, RoutedEventArgs e)
         {
-            var replacePanel = this.FindName("replacePanel") as System.Windows.Controls.Border;
+            var replacePanel = this.FindName("replacePanel") as Border;
             if (replacePanel == null) return;
 
-            try
+            if (replacePanel.Visibility == Visibility.Collapsed)
             {
-                // Toggle replace panel visibility
-                if (replacePanel.Visibility == Visibility.Collapsed)
-                {
-                    replacePanel.Visibility = Visibility.Visible;
-                    var txtFindText = this.FindName("txtFindText") as System.Windows.Controls.TextBox;
-                    txtFindText?.Focus();
-                }
-                else
-                {
-                    replacePanel.Visibility = Visibility.Collapsed;
-                }
+                replacePanel.Visibility = Visibility.Visible;
+                (this.FindName("txtFindText") as TextBox)?.Focus();
             }
-            catch (Exception ex)
+            else
             {
-                DebugHelper.ShowError(ex, MessageHelper.Get("Messages.Error.Title"), "Failed to toggle replace panel");
+                replacePanel.Visibility = Visibility.Collapsed;
             }
         }
 
         [SupportedOSPlatform("windows6.1")]
-        private void TxtFindText_TextChanged(object sender, System.Windows.Controls.TextChangedEventArgs e)
+        private void TxtFindText_TextChanged(object sender, TextChangedEventArgs e)
         {
-            var txtFindText = sender as System.Windows.Controls.TextBox;
+            var txtFindText = sender as TextBox;
             var editor = this.FindName("txtJsonEditor") as ICSharpCode.AvalonEdit.TextEditor;
             
-            if (editor == null || txtFindText == null || string.IsNullOrEmpty(txtFindText.Text))
-                return;
+            if (editor == null || txtFindText == null || string.IsNullOrEmpty(txtFindText.Text)) return;
 
             try
             {
                 var searchText = txtFindText.Text;
-                var text = editor.Text;
-
-                // Always search from beginning when text changes
-                var index = text.IndexOf(searchText, 0, StringComparison.OrdinalIgnoreCase);
+                var index = editor.Text.IndexOf(searchText, 0, StringComparison.OrdinalIgnoreCase);
 
                 if (index >= 0)
                 {
@@ -499,10 +308,7 @@ namespace ModCreator.Windows
                     editor.ScrollToLine(editor.Document.GetLineByOffset(index).LineNumber);
                 }
             }
-            catch
-            {
-                // Silently ignore errors during text change
-            }
+            catch { }
         }
 
         [SupportedOSPlatform("windows6.1")]
@@ -519,42 +325,24 @@ namespace ModCreator.Windows
         private void FindNext_Click(object sender, RoutedEventArgs e)
         {
             var editor = this.FindName("txtJsonEditor") as ICSharpCode.AvalonEdit.TextEditor;
-            var txtFindText = this.FindName("txtFindText") as System.Windows.Controls.TextBox;
+            var txtFindText = this.FindName("txtFindText") as TextBox;
             
-            if (editor == null || txtFindText == null || string.IsNullOrEmpty(txtFindText.Text))
-                return;
+            if (editor == null || txtFindText == null || string.IsNullOrEmpty(txtFindText.Text)) return;
 
-            try
+            var searchText = txtFindText.Text;
+            var index = editor.Text.IndexOf(searchText, editor.CaretOffset, StringComparison.OrdinalIgnoreCase);
+            if (index == -1)
+                index = editor.Text.IndexOf(searchText, 0, StringComparison.OrdinalIgnoreCase);
+
+            if (index >= 0)
             {
-                var searchText = txtFindText.Text;
-                var text = editor.Text;
-                var startIndex = editor.CaretOffset;
-
-                var index = text.IndexOf(searchText, startIndex, StringComparison.OrdinalIgnoreCase);
-                if (index == -1)
-                {
-                    // Search from beginning if not found after caret
-                    index = text.IndexOf(searchText, 0, StringComparison.OrdinalIgnoreCase);
-                }
-
-                if (index >= 0)
-                {
-                    editor.Select(index, searchText.Length);
-                    editor.CaretOffset = index + searchText.Length;
-                    editor.ScrollToLine(editor.Document.GetLineByOffset(index).LineNumber);
-                }
-                else
-                {
-                    MessageBox.Show(
-                        $"Cannot find '{searchText}'",
-                        "Find",
-                        MessageBoxButton.OK,
-                        MessageBoxImage.Information);
-                }
+                editor.Select(index, searchText.Length);
+                editor.CaretOffset = index + searchText.Length;
+                editor.ScrollToLine(editor.Document.GetLineByOffset(index).LineNumber);
             }
-            catch (Exception ex)
+            else
             {
-                DebugHelper.ShowError(ex, MessageHelper.Get("Messages.Error.Title"), "Failed to find text");
+                MessageBox.Show($"Cannot find '{searchText}'", "Find", MessageBoxButton.OK, MessageBoxImage.Information);
             }
         }
 
@@ -562,160 +350,106 @@ namespace ModCreator.Windows
         private void ReplaceOne_Click(object sender, RoutedEventArgs e)
         {
             var editor = this.FindName("txtJsonEditor") as ICSharpCode.AvalonEdit.TextEditor;
-            var txtFindText = this.FindName("txtFindText") as System.Windows.Controls.TextBox;
-            var txtReplaceText = this.FindName("txtReplaceText") as System.Windows.Controls.TextBox;
+            var txtFindText = this.FindName("txtFindText") as TextBox;
+            var txtReplaceText = this.FindName("txtReplaceText") as TextBox;
             
-            if (editor == null || txtFindText == null || txtReplaceText == null || string.IsNullOrEmpty(txtFindText.Text))
-                return;
+            if (editor == null || txtFindText == null || txtReplaceText == null || string.IsNullOrEmpty(txtFindText.Text)) return;
 
-            try
+            var searchText = txtFindText.Text;
+            var replaceText = txtReplaceText.Text;
+
+            if (editor.SelectedText.Equals(searchText, StringComparison.OrdinalIgnoreCase))
             {
-                var searchText = txtFindText.Text;
-                var replaceText = txtReplaceText.Text;
-
-                // Check if current selection matches search text
-                if (editor.SelectedText.Equals(searchText, StringComparison.OrdinalIgnoreCase))
-                {
-                    var offset = editor.SelectionStart;
-                    editor.Document.Replace(offset, editor.SelectionLength, replaceText);
-                    editor.CaretOffset = offset + replaceText.Length;
-                }
-
-                // Find next occurrence
-                FindNext_Click(sender, e);
+                var offset = editor.SelectionStart;
+                editor.Document.Replace(offset, editor.SelectionLength, replaceText);
+                editor.CaretOffset = offset + replaceText.Length;
             }
-            catch (Exception ex)
-            {
-                DebugHelper.ShowError(ex, MessageHelper.Get("Messages.Error.Title"), "Failed to replace text");
-            }
+
+            FindNext_Click(sender, e);
         }
 
         [SupportedOSPlatform("windows6.1")]
         private void ReplaceAll_Click(object sender, RoutedEventArgs e)
         {
             var editor = this.FindName("txtJsonEditor") as ICSharpCode.AvalonEdit.TextEditor;
-            var txtFindText = this.FindName("txtFindText") as System.Windows.Controls.TextBox;
-            var txtReplaceText = this.FindName("txtReplaceText") as System.Windows.Controls.TextBox;
+            var txtFindText = this.FindName("txtFindText") as TextBox;
+            var txtReplaceText = this.FindName("txtReplaceText") as TextBox;
             
-            if (editor == null || txtFindText == null || txtReplaceText == null || string.IsNullOrEmpty(txtFindText.Text))
-                return;
+            if (editor == null || txtFindText == null || txtReplaceText == null || string.IsNullOrEmpty(txtFindText.Text)) return;
 
-            try
+            var searchText = txtFindText.Text;
+            var replaceText = txtReplaceText.Text;
+            var text = editor.Text;
+
+            var count = 0;
+            var index = 0;
+            var offset = 0;
+
+            while ((index = text.IndexOf(searchText, index, StringComparison.OrdinalIgnoreCase)) != -1)
             {
-                var searchText = txtFindText.Text;
-                var replaceText = txtReplaceText.Text;
-                var text = editor.Text;
-
-                var count = 0;
-                var index = 0;
-                var offset = 0;
-
-                while ((index = text.IndexOf(searchText, index, StringComparison.OrdinalIgnoreCase)) != -1)
-                {
-                    editor.Document.Replace(index + offset, searchText.Length, replaceText);
-                    offset += replaceText.Length - searchText.Length;
-                    index += searchText.Length;
-                    count++;
-                }
-
-                MessageBox.Show(
-                    $"Replaced {count} occurrence(s)",
-                    "Replace All",
-                    MessageBoxButton.OK,
-                    MessageBoxImage.Information);
+                editor.Document.Replace(index + offset, searchText.Length, replaceText);
+                offset += replaceText.Length - searchText.Length;
+                index += searchText.Length;
+                count++;
             }
-            catch (Exception ex)
-            {
-                DebugHelper.ShowError(ex, MessageHelper.Get("Messages.Error.Title"), "Failed to replace all");
-            }
+
+            MessageBox.Show($"Replaced {count} occurrence(s)", "Replace All", MessageBoxButton.OK, MessageBoxImage.Information);
         }
 
         private void CloseReplacePanel_Click(object sender, RoutedEventArgs e)
         {
-            var replacePanel = this.FindName("replacePanel") as System.Windows.Controls.Border;
-            if (replacePanel != null)
-            {
-                replacePanel.Visibility = Visibility.Collapsed;
-            }
+            (this.FindName("replacePanel") as Border)?.SetValue(VisibilityProperty, Visibility.Collapsed);
         }
 
         private void OpenInNotepad_Click(object sender, RoutedEventArgs e)
         {
-            if (string.IsNullOrEmpty(WindowData.SelectedConfFile))
-                return;
+            if (string.IsNullOrEmpty(WindowData.SelectedConfFile)) return;
 
-            try
+            var filePath = Path.Combine(WindowData.Project.ProjectPath, "ModProject", "ModConf", WindowData.SelectedConfFile);
+            
+            if (!File.Exists(filePath))
             {
-                var filePath = Path.Combine(WindowData.Project.ProjectPath, "ModProject", "ModConf", WindowData.SelectedConfFile);
-                
-                if (!File.Exists(filePath))
-                {
-                    MessageBox.Show(
-                        $"File '{WindowData.SelectedConfFile}' does not exist!",
-                        MessageHelper.Get("Messages.Warning.Title"),
-                        MessageBoxButton.OK,
-                        MessageBoxImage.Warning);
-                    return;
-                }
+                MessageBox.Show($"File '{WindowData.SelectedConfFile}' does not exist!", MessageHelper.Get("Messages.Warning.Title"), MessageBoxButton.OK, MessageBoxImage.Warning);
+                return;
+            }
 
-                // Try common Notepad++ installation paths
-                var notepadPlusPlusPaths = new[]
-                {
-                    @"C:\Program Files\Notepad++\notepad++.exe",
-                    @"C:\Program Files (x86)\Notepad++\notepad++.exe",
-                    Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ProgramFiles), @"Notepad++\notepad++.exe"),
-                    Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ProgramFilesX86), @"Notepad++\notepad++.exe")
-                };
+            var notepadPlusPlusPaths = new[]
+            {
+                @"C:\Program Files\Notepad++\notepad++.exe",
+                @"C:\Program Files (x86)\Notepad++\notepad++.exe",
+                Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ProgramFiles), @"Notepad++\notepad++.exe"),
+                Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ProgramFilesX86), @"Notepad++\notepad++.exe")
+            };
 
-                string notepadPlusPlusPath = null;
-                foreach (var path in notepadPlusPlusPaths)
+            string notepadPlusPlusPath = null;
+            foreach (var path in notepadPlusPlusPaths)
+            {
+                if (File.Exists(path))
                 {
-                    if (File.Exists(path))
-                    {
-                        notepadPlusPlusPath = path;
-                        break;
-                    }
-                }
-
-                if (notepadPlusPlusPath != null)
-                {
-                    System.Diagnostics.Process.Start(notepadPlusPlusPath, $"\"{filePath}\"");
-                }
-                else
-                {
-                    var result = MessageBox.Show(
-                        "Notepad++ not found. Would you like to open with Notepad instead?",
-                        MessageHelper.Get("Messages.Warning.Title"),
-                        MessageBoxButton.YesNo,
-                        MessageBoxImage.Question);
-
-                    if (result == MessageBoxResult.Yes)
-                    {
-                        System.Diagnostics.Process.Start("notepad.exe", filePath);
-                    }
+                    notepadPlusPlusPath = path;
+                    break;
                 }
             }
-            catch (Exception ex)
+
+            if (notepadPlusPlusPath != null)
             {
-                DebugHelper.ShowError(ex, MessageHelper.Get("Messages.Error.Title"), "Failed to open in Notepad++");
+                System.Diagnostics.Process.Start(notepadPlusPlusPath, $"\"{filePath}\"");
+            }
+            else
+            {
+                var result = MessageBox.Show("Notepad++ not found. Would you like to open with Notepad instead?", MessageHelper.Get("Messages.Warning.Title"), MessageBoxButton.YesNo, MessageBoxImage.Question);
+                if (result == MessageBoxResult.Yes)
+                    System.Diagnostics.Process.Start("notepad.exe", filePath);
             }
         }
 
         private void OpenModConfFolder_Click(object sender, RoutedEventArgs e)
         {
-            try
-            {
-                if (WindowData?.Project != null)
-                {
-                    var confPath = Path.Combine(WindowData.Project.ProjectPath, "ModProject", "ModConf");
-                    Directory.CreateDirectory(confPath);
-                    System.Diagnostics.Process.Start("explorer.exe", confPath);
-                }
-            }
-            catch (Exception ex)
-            {
-                DebugHelper.ShowError(ex, MessageHelper.Get("Messages.Error.Title"), "Failed to open ModConf folder");
-            }
+            if (WindowData?.Project == null) return;
+            
+            var confPath = Path.Combine(WindowData.Project.ProjectPath, "ModProject", "ModConf");
+            Directory.CreateDirectory(confPath);
+            System.Diagnostics.Process.Start("explorer.exe", confPath);
         }
     }
 }
