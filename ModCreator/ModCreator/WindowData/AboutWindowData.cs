@@ -1,5 +1,3 @@
-using ModCreator.Commons;
-
 namespace ModCreator.WindowData
 {
     /// <summary>

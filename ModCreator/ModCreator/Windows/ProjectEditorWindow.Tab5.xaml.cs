@@ -1,17 +1,13 @@
-using ModCreator.Businesses;
 using ModCreator.Helpers;
 using ModCreator.Models;
 using ModCreator.WindowData;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.IO;
 using System.Linq;
 using System.Runtime.Versioning;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Forms;
-using System.Windows.Media.Imaging;
+using System.Windows.Media;
 using MessageBox = System.Windows.MessageBox;
 
 namespace ModCreator.Windows
@@ -21,12 +17,10 @@ namespace ModCreator.Windows
         [SupportedOSPlatform("windows6.1")]
         private void PopulateEventsComboBox()
         {
-            var cmbEvents = this.FindName("cmbEvents") as System.Windows.Controls.ComboBox;
+            var cmbEvents = this.FindName("cmbEvents") as ComboBox;
             if (cmbEvents == null || WindowData == null) return;
 
-            // Flatten all events from all categories
-            var allEvents = WindowData.EventCategories.SelectMany(cat => cat.Events).ToList();
-            cmbEvents.ItemsSource = allEvents;
+            cmbEvents.ItemsSource = WindowData.EventCategories.SelectMany(cat => cat.Events).ToList();
         }
 
         private void TreeView_EventSelectedItemChanged(object sender, RoutedPropertyChangedEventArgs<object> e)
@@ -39,331 +33,222 @@ namespace ModCreator.Windows
 
         private void CreateModEvent_Click(object sender, RoutedEventArgs e)
         {
-            try
+            var inputWindow = new InputWindow
             {
-                var inputWindow = new InputWindow { Owner = this };
-                inputWindow.WindowData.WindowTitle = "Create New ModEvent";
-                inputWindow.WindowData.Label = "Class name:";
-                inputWindow.WindowData.InputValue = "NewModEvent";
+                Owner = this,
+                WindowData = { WindowTitle = "Create New ModEvent", Label = "Class name:", InputValue = "NewModEvent" }
+            };
 
-                if (inputWindow.ShowDialog() != true)
-                    return;
+            if (inputWindow.ShowDialog() != true) return;
 
-                var className = inputWindow.WindowData.InputValue;
-                
-                // Validate class name
-                if (string.IsNullOrWhiteSpace(className) || !System.Text.RegularExpressions.Regex.IsMatch(className, @"^[A-Za-z_][A-Za-z0-9_]*$"))
+            var className = inputWindow.WindowData.InputValue;
+            
+            if (string.IsNullOrWhiteSpace(className) || !System.Text.RegularExpressions.Regex.IsMatch(className, @"^[A-Za-z_][A-Za-z0-9_]*$"))
+            {
+                MessageBox.Show("Invalid class name! Must start with letter and contain only letters, numbers, and underscores.", MessageHelper.Get("Messages.Warning.Title"), MessageBoxButton.OK, MessageBoxImage.Warning);
+                return;
+            }
+
+            var modPath = Path.Combine(WindowData.Project.ProjectPath, "ModProject", "ModCode", "ModMain", "Mod");
+            Directory.CreateDirectory(modPath);
+
+            var filePath = Path.Combine(modPath, $"{className}.cs");
+            
+            if (File.Exists(filePath))
+            {
+                MessageBox.Show($"A ModEvent with name '{className}' already exists!", MessageHelper.Get("Messages.Warning.Title"), MessageBoxButton.OK, MessageBoxImage.Warning);
+                return;
+            }
+
+            var maxOrder = 0;
+            if (WindowData.EventItems != null)
+            {
+                void TraverseItems(System.Collections.Generic.IEnumerable<FileItem> items)
                 {
-                    MessageBox.Show("Invalid class name! Must start with letter and contain only letters, numbers, and underscores.",
-                        MessageHelper.Get("Messages.Warning.Title"),
-                        MessageBoxButton.OK,
-                        MessageBoxImage.Warning);
-                    return;
-                }
-
-                var modPath = Path.Combine(WindowData.Project.ProjectPath, "ModProject", "ModCode", "ModMain", "Mod");
-                Directory.CreateDirectory(modPath);
-
-                var filePath = Path.Combine(modPath, $"{className}.cs");
-                
-                if (File.Exists(filePath))
-                {
-                    MessageBox.Show($"A ModEvent with name '{className}' already exists!",
-                        MessageHelper.Get("Messages.Warning.Title"),
-                        MessageBoxButton.OK,
-                        MessageBoxImage.Warning);
-                    return;
-                }
-
-                // Create new ModEvent with template
-                // Calculate max OrderIndex from existing events
-                var maxOrder = 0;
-                if (WindowData.EventItems != null)
-                {
-                    void TraverseItems(IEnumerable<FileItem> items)
+                    foreach (var item in items)
                     {
-                        foreach (var item in items)
+                        if (!item.IsFolder && item.FullPath.EndsWith(".cs", StringComparison.OrdinalIgnoreCase))
                         {
-                            if (!item.IsFolder && item.FullPath.EndsWith(".cs", StringComparison.OrdinalIgnoreCase))
-                            {
-                                try
-                                {
-                                    var content = File.ReadAllText(item.FullPath);
-                                    var match = System.Text.RegularExpressions.Regex.Match(content, @"OrderIndex\s*=\s*(\d+)");
-                                    if (match.Success && int.TryParse(match.Groups[1].Value, out int order))
-                                    {
-                                        if (order > maxOrder)
-                                            maxOrder = order;
-                                    }
-                                }
-                                catch { }
-                            }
-                            if (item.Children != null && item.Children.Any())
-                            {
-                                TraverseItems(item.Children);
-                            }
+                            var content = File.ReadAllText(item.FullPath);
+                            var match = System.Text.RegularExpressions.Regex.Match(content, @"OrderIndex\s*=\s*(\d+)");
+                            if (match.Success && int.TryParse(match.Groups[1].Value, out int order) && order > maxOrder)
+                                maxOrder = order;
                         }
+                        if (item.Children?.Any() == true)
+                            TraverseItems(item.Children);
                     }
-                    TraverseItems(WindowData.EventItems);
                 }
-
-                var newEvent = new ModEventItem
-                {
-                    OrderIndex = maxOrder + 1,
-                    CacheType = "Local",
-                    WorkOn = "All",
-                    SelectedEvent = "OnTimeUpdate1000ms",
-                    ConditionLogic = "AND",
-                    FilePath = filePath
-                };
-
-                var code = WindowData.GenerateModEventCode(newEvent);
-                File.WriteAllText(filePath, code);
-
-                WindowData.LoadModEventFiles();
-                
-                MessageBox.Show($"ModEvent '{className}' created successfully!",
-                    MessageHelper.Get("Messages.Success.Title"),
-                    MessageBoxButton.OK,
-                    MessageBoxImage.Information);
+                TraverseItems(WindowData.EventItems);
             }
-            catch (Exception ex)
+
+            var newEvent = new ModEventItem
             {
-                DebugHelper.ShowError(ex, MessageHelper.Get("Messages.Error.Title"), "Failed to create ModEvent");
-            }
+                OrderIndex = maxOrder + 1,
+                CacheType = "Local",
+                WorkOn = "All",
+                SelectedEvent = "OnTimeUpdate1000ms",
+                ConditionLogic = "AND",
+                FilePath = filePath
+            };
+
+            File.WriteAllText(filePath, WindowData.GenerateModEventCode(newEvent));
+            WindowData.LoadModEventFiles();
+            
+            MessageBox.Show($"ModEvent '{className}' created successfully!", MessageHelper.Get("Messages.Success.Title"), MessageBoxButton.OK, MessageBoxImage.Information);
         }
 
         private void CloneModEvent_Click(object sender, RoutedEventArgs e)
         {
             if (WindowData.SelectedModEvent == null) return;
 
-            try
+            var newClassName = $"{WindowData.SelectedModEvent.FileName}_Copy";
+
+            var inputWindow = new InputWindow
             {
-                var oldClassName = WindowData.SelectedModEvent.FileName;
-                var newClassName = $"{oldClassName}_Copy";
+                Owner = this,
+                WindowData = { WindowTitle = "Clone ModEvent", Label = "New class name:", InputValue = newClassName }
+            };
 
-                var inputWindow = new InputWindow { Owner = this };
-                inputWindow.WindowData.WindowTitle = "Clone ModEvent";
-                inputWindow.WindowData.Label = "New class name:";
-                inputWindow.WindowData.InputValue = newClassName;
+            if (inputWindow.ShowDialog() != true) return;
 
-                if (inputWindow.ShowDialog() != true)
-                    return;
+            newClassName = inputWindow.WindowData.InputValue;
 
-                newClassName = inputWindow.WindowData.InputValue;
-
-                if (string.IsNullOrWhiteSpace(newClassName) || !System.Text.RegularExpressions.Regex.IsMatch(newClassName, @"^[A-Za-z_][A-Za-z0-9_]*$"))
-                {
-                    MessageBox.Show("Invalid class name!",
-                        MessageHelper.Get("Messages.Warning.Title"),
-                        MessageBoxButton.OK,
-                        MessageBoxImage.Warning);
-                    return;
-                }
-
-                var modPath = Path.GetDirectoryName(WindowData.SelectedModEvent.FilePath);
-                var newFilePath = Path.Combine(modPath, $"{newClassName}.cs");
-
-                if (File.Exists(newFilePath))
-                {
-                    MessageBox.Show($"A ModEvent with name '{newClassName}' already exists!",
-                        MessageHelper.Get("Messages.Warning.Title"),
-                        MessageBoxButton.OK,
-                        MessageBoxImage.Warning);
-                    return;
-                }
-
-                // Clone the event
-                var clonedEvent = new ModEventItem
-                {
-                    OrderIndex = WindowData.SelectedModEvent.OrderIndex,
-                    CacheType = WindowData.SelectedModEvent.CacheType,
-                    WorkOn = WindowData.SelectedModEvent.WorkOn,
-                    SelectedEvent = WindowData.SelectedModEvent.SelectedEvent,
-                    ConditionLogic = WindowData.SelectedModEvent.ConditionLogic,
-                    FilePath = newFilePath
-                };
-
-                // Clone conditions and actions
-                foreach (var condition in WindowData.SelectedModEvent.Conditions)
-                {
-                    clonedEvent.Conditions.Add(new EventCondition
-                    {
-                        Name = condition.Name,
-                        DisplayName = condition.DisplayName,
-                        Description = condition.Description,
-                        Code = condition.Code,
-                        Order = condition.Order
-                    });
-                }
-
-                foreach (var action in WindowData.SelectedModEvent.Actions)
-                {
-                    clonedEvent.Actions.Add(new EventAction
-                    {
-                        Name = action.Name,
-                        DisplayName = action.DisplayName,
-                        Description = action.Description,
-                        Code = action.Code,
-                        Order = action.Order
-                    });
-                }
-
-                var code = WindowData.GenerateModEventCode(clonedEvent);
-                File.WriteAllText(newFilePath, code);
-
-                WindowData.LoadModEventFiles();
-
-                MessageBox.Show($"ModEvent cloned successfully!",
-                    MessageHelper.Get("Messages.Success.Title"),
-                    MessageBoxButton.OK,
-                    MessageBoxImage.Information);
-            }
-            catch (Exception ex)
+            if (string.IsNullOrWhiteSpace(newClassName) || !System.Text.RegularExpressions.Regex.IsMatch(newClassName, @"^[A-Za-z_][A-Za-z0-9_]*$"))
             {
-                DebugHelper.ShowError(ex, MessageHelper.Get("Messages.Error.Title"), "Failed to clone ModEvent");
+                MessageBox.Show("Invalid class name!", MessageHelper.Get("Messages.Warning.Title"), MessageBoxButton.OK, MessageBoxImage.Warning);
+                return;
             }
+
+            var modPath = Path.GetDirectoryName(WindowData.SelectedModEvent.FilePath);
+            var newFilePath = Path.Combine(modPath, $"{newClassName}.cs");
+
+            if (File.Exists(newFilePath))
+            {
+                MessageBox.Show($"A ModEvent with name '{newClassName}' already exists!", MessageHelper.Get("Messages.Warning.Title"), MessageBoxButton.OK, MessageBoxImage.Warning);
+                return;
+            }
+
+            var clonedEvent = new ModEventItem
+            {
+                OrderIndex = WindowData.SelectedModEvent.OrderIndex,
+                CacheType = WindowData.SelectedModEvent.CacheType,
+                WorkOn = WindowData.SelectedModEvent.WorkOn,
+                SelectedEvent = WindowData.SelectedModEvent.SelectedEvent,
+                ConditionLogic = WindowData.SelectedModEvent.ConditionLogic,
+                FilePath = newFilePath
+            };
+
+            foreach (var condition in WindowData.SelectedModEvent.Conditions)
+            {
+                clonedEvent.Conditions.Add(new EventCondition
+                {
+                    Name = condition.Name,
+                    DisplayName = condition.DisplayName,
+                    Description = condition.Description,
+                    Code = condition.Code,
+                    Order = condition.Order
+                });
+            }
+
+            foreach (var action in WindowData.SelectedModEvent.Actions)
+            {
+                clonedEvent.Actions.Add(new EventAction
+                {
+                    Name = action.Name,
+                    DisplayName = action.DisplayName,
+                    Description = action.Description,
+                    Code = action.Code,
+                    Order = action.Order
+                });
+            }
+
+            File.WriteAllText(newFilePath, WindowData.GenerateModEventCode(clonedEvent));
+            WindowData.LoadModEventFiles();
+
+            MessageBox.Show("ModEvent cloned successfully!", MessageHelper.Get("Messages.Success.Title"), MessageBoxButton.OK, MessageBoxImage.Information);
         }
 
         private void RenameModEvent_Click(object sender, RoutedEventArgs e)
         {
             if (WindowData.SelectedModEvent == null) return;
 
-            try
+            var oldClassName = WindowData.SelectedModEvent.FileName;
+
+            var inputWindow = new InputWindow
             {
-                var oldClassName = WindowData.SelectedModEvent.FileName;
+                Owner = this,
+                WindowData = { WindowTitle = "Rename ModEvent", Label = "New class name:", InputValue = oldClassName }
+            };
 
-                var inputWindow = new InputWindow { Owner = this };
-                inputWindow.WindowData.WindowTitle = "Rename ModEvent";
-                inputWindow.WindowData.Label = "New class name:";
-                inputWindow.WindowData.InputValue = oldClassName;
+            if (inputWindow.ShowDialog() != true) return;
 
-                if (inputWindow.ShowDialog() != true)
-                    return;
+            var newClassName = inputWindow.WindowData.InputValue;
 
-                var newClassName = inputWindow.WindowData.InputValue;
+            if (newClassName == oldClassName) return;
 
-                if (newClassName == oldClassName)
-                    return;
-
-                if (string.IsNullOrWhiteSpace(newClassName) || !System.Text.RegularExpressions.Regex.IsMatch(newClassName, @"^[A-Za-z_][A-Za-z0-9_]*$"))
-                {
-                    MessageBox.Show("Invalid class name!",
-                        MessageHelper.Get("Messages.Warning.Title"),
-                        MessageBoxButton.OK,
-                        MessageBoxImage.Warning);
-                    return;
-                }
-
-                var oldFilePath = WindowData.SelectedModEvent.FilePath;
-                var modPath = Path.GetDirectoryName(oldFilePath);
-                var newFilePath = Path.Combine(modPath, $"{newClassName}.cs");
-
-                if (File.Exists(newFilePath))
-                {
-                    MessageBox.Show($"A ModEvent with name '{newClassName}' already exists!",
-                        MessageHelper.Get("Messages.Warning.Title"),
-                        MessageBoxButton.OK,
-                        MessageBoxImage.Warning);
-                    return;
-                }
-
-                // Update class name and save
-                WindowData.SelectedModEvent.FilePath = newFilePath;
-                WindowData.SaveModEvent();
-
-                // Delete old file
-                if (File.Exists(oldFilePath))
-                {
-                    File.Delete(oldFilePath);
-                }
-
-                WindowData.LoadModEventFiles();
-
-                MessageBox.Show($"ModEvent renamed successfully!",
-                    MessageHelper.Get("Messages.Success.Title"),
-                    MessageBoxButton.OK,
-                    MessageBoxImage.Information);
-            }
-            catch (Exception ex)
+            if (string.IsNullOrWhiteSpace(newClassName) || !System.Text.RegularExpressions.Regex.IsMatch(newClassName, @"^[A-Za-z_][A-Za-z0-9_]*$"))
             {
-                DebugHelper.ShowError(ex, MessageHelper.Get("Messages.Error.Title"), "Failed to rename ModEvent");
+                MessageBox.Show("Invalid class name!", MessageHelper.Get("Messages.Warning.Title"), MessageBoxButton.OK, MessageBoxImage.Warning);
+                return;
             }
+
+            var oldFilePath = WindowData.SelectedModEvent.FilePath;
+            var modPath = Path.GetDirectoryName(oldFilePath);
+            var newFilePath = Path.Combine(modPath, $"{newClassName}.cs");
+
+            if (File.Exists(newFilePath))
+            {
+                MessageBox.Show($"A ModEvent with name '{newClassName}' already exists!", MessageHelper.Get("Messages.Warning.Title"), MessageBoxButton.OK, MessageBoxImage.Warning);
+                return;
+            }
+
+            WindowData.SelectedModEvent.FilePath = newFilePath;
+            WindowData.SaveModEvent();
+
+            if (File.Exists(oldFilePath))
+                File.Delete(oldFilePath);
+
+            WindowData.LoadModEventFiles();
+
+            MessageBox.Show("ModEvent renamed successfully!", MessageHelper.Get("Messages.Success.Title"), MessageBoxButton.OK, MessageBoxImage.Information);
         }
 
         private void DeleteModEvent_Click(object sender, RoutedEventArgs e)
         {
             if (WindowData.SelectedModEvent == null) return;
 
-            try
-            {
-                var result = MessageBox.Show(
-                    $"Are you sure you want to delete ModEvent '{WindowData.SelectedModEvent.FileName}'?",
-                    "Delete ModEvent",
-                    MessageBoxButton.YesNo,
-                    MessageBoxImage.Warning);
+            var result = MessageBox.Show($"Are you sure you want to delete ModEvent '{WindowData.SelectedModEvent.FileName}'?", "Delete ModEvent", MessageBoxButton.YesNo, MessageBoxImage.Warning);
 
-                if (result != MessageBoxResult.Yes)
-                    return;
+            if (result != MessageBoxResult.Yes) return;
 
-                var filePath = WindowData.SelectedModEvent.FilePath;
-                if (File.Exists(filePath))
-                {
-                    File.Delete(filePath);
-                }
+            var filePath = WindowData.SelectedModEvent.FilePath;
+            if (File.Exists(filePath))
+                File.Delete(filePath);
 
-                WindowData.LoadModEventFiles();
-                WindowData.SelectedModEvent = null;
+            WindowData.LoadModEventFiles();
+            WindowData.SelectedModEvent = null;
 
-                MessageBox.Show("ModEvent deleted successfully!",
-                    MessageHelper.Get("Messages.Success.Title"),
-                    MessageBoxButton.OK,
-                    MessageBoxImage.Information);
-            }
-            catch (Exception ex)
-            {
-                DebugHelper.ShowError(ex, MessageHelper.Get("Messages.Error.Title"), "Failed to delete ModEvent");
-            }
+            MessageBox.Show("ModEvent deleted successfully!", MessageHelper.Get("Messages.Success.Title"), MessageBoxButton.OK, MessageBoxImage.Information);
         }
 
         private void SaveModEvent_Click(object sender, RoutedEventArgs e)
         {
-            try
-            {
-                WindowData.SaveModEvent();
-                
-                MessageBox.Show("ModEvent saved successfully!",
-                    MessageHelper.Get("Messages.Success.Title"),
-                    MessageBoxButton.OK,
-                    MessageBoxImage.Information);
-            }
-            catch (Exception ex)
-            {
-                DebugHelper.ShowError(ex, MessageHelper.Get("Messages.Error.Title"), "Failed to save ModEvent");
-            }
+            WindowData.SaveModEvent();
+            MessageBox.Show("ModEvent saved successfully!", MessageHelper.Get("Messages.Success.Title"), MessageBoxButton.OK, MessageBoxImage.Information);
         }
 
         private void AddEvent_Click(object sender, RoutedEventArgs e)
         {
             if (WindowData.SelectedModEvent == null) return;
 
-            try
-            {
-                var selectWindow = new ModEventItemSelectWindow { Owner = this };
-                selectWindow.WindowData.InitializeWithEvents(WindowData.EventCategories);
+            var selectWindow = new ModEventItemSelectWindow { Owner = this };
+            selectWindow.WindowData.InitializeWithEvents(WindowData.EventCategories);
 
-                if (selectWindow.ShowDialog() == true)
-                {
-                    var selectedItem = selectWindow.WindowData.SelectedItem as EventInfoDisplay;
-                    if (selectedItem != null)
-                    {
-                        WindowData.SelectedModEvent.SelectedEvent = selectedItem.Name;
-                    }
-                }
-            }
-            catch (Exception ex)
+            if (selectWindow.ShowDialog() == true)
             {
-                DebugHelper.ShowError(ex, MessageHelper.Get("Messages.Error.Title"), "Failed to add event");
+                var selectedItem = selectWindow.WindowData.SelectedItem as EventInfoDisplay;
+                if (selectedItem != null)
+                    WindowData.SelectedModEvent.SelectedEvent = selectedItem.Name;
             }
         }
 
@@ -371,39 +256,29 @@ namespace ModCreator.Windows
         {
             if (WindowData.SelectedModEvent == null) return;
 
-            try
-            {
-                var selectWindow = new ModEventItemSelectWindow { Owner = this };
-                selectWindow.WindowData.InitializeWithConditions(WindowData.AvailableConditions);
+            var selectWindow = new ModEventItemSelectWindow { Owner = this };
+            selectWindow.WindowData.InitializeWithConditions(WindowData.AvailableConditions);
 
-                if (selectWindow.ShowDialog() == true)
+            if (selectWindow.ShowDialog() == true)
+            {
+                var conditionInfo = selectWindow.WindowData.SelectedItem as ConditionInfo;
+                if (conditionInfo != null)
                 {
-                    var conditionInfo = selectWindow.WindowData.SelectedItem as ConditionInfo;
-                    if (conditionInfo != null)
+                    WindowData.SelectedModEvent.Conditions.Add(new EventCondition
                     {
-                        var condition = new EventCondition
-                        {
-                            Name = conditionInfo.Name,
-                            DisplayName = conditionInfo.DisplayName,
-                            Description = conditionInfo.Description,
-                            Code = conditionInfo.Code,
-                            Order = WindowData.SelectedModEvent.Conditions.Count
-                        };
-
-                        WindowData.SelectedModEvent.Conditions.Add(condition);
-                    }
+                        Name = conditionInfo.Name,
+                        DisplayName = conditionInfo.DisplayName,
+                        Description = conditionInfo.Description,
+                        Code = conditionInfo.Code,
+                        Order = WindowData.SelectedModEvent.Conditions.Count
+                    });
                 }
-            }
-            catch (Exception ex)
-            {
-                DebugHelper.ShowError(ex, MessageHelper.Get("Messages.Error.Title"), "Failed to add condition");
             }
         }
 
         private void RemoveCondition_Click(object sender, RoutedEventArgs e)
         {
-            var button = sender as System.Windows.Controls.Button;
-            var condition = button?.Tag as EventCondition;
+            var condition = (sender as Button)?.Tag as EventCondition;
             if (condition == null || WindowData.SelectedModEvent == null) return;
 
             WindowData.SelectedModEvent.Conditions.Remove(condition);
@@ -413,124 +288,86 @@ namespace ModCreator.Windows
         {
             if (WindowData.SelectedModEvent == null) return;
 
-            try
-            {
-                var selectWindow = new ModEventItemSelectWindow { Owner = this };
-                selectWindow.WindowData.InitializeWithActions(WindowData.AvailableActions);
+            var selectWindow = new ModEventItemSelectWindow { Owner = this };
+            selectWindow.WindowData.InitializeWithActions(WindowData.AvailableActions);
 
-                if (selectWindow.ShowDialog() == true)
+            if (selectWindow.ShowDialog() == true)
+            {
+                var actionInfo = selectWindow.WindowData.SelectedItem as ActionInfo;
+                if (actionInfo != null)
                 {
-                    var actionInfo = selectWindow.WindowData.SelectedItem as ActionInfo;
-                    if (actionInfo != null)
+                    WindowData.SelectedModEvent.Actions.Add(new EventAction
                     {
-                        var action = new EventAction
-                        {
-                            Name = actionInfo.Name,
-                            DisplayName = actionInfo.DisplayName,
-                            Description = actionInfo.Description,
-                            Code = actionInfo.Code,
-                            Order = WindowData.SelectedModEvent.Actions.Count
-                        };
-
-                        WindowData.SelectedModEvent.Actions.Add(action);
-                    }
+                        Name = actionInfo.Name,
+                        DisplayName = actionInfo.DisplayName,
+                        Description = actionInfo.Description,
+                        Code = actionInfo.Code,
+                        Order = WindowData.SelectedModEvent.Actions.Count
+                    });
                 }
-            }
-            catch (Exception ex)
-            {
-                DebugHelper.ShowError(ex, MessageHelper.Get("Messages.Error.Title"), "Failed to add action");
             }
         }
 
         private void RemoveAction_Click(object sender, RoutedEventArgs e)
         {
-            var button = sender as System.Windows.Controls.Button;
-            var action = button?.Tag as EventAction;
+            var action = (sender as Button)?.Tag as EventAction;
             if (action == null || WindowData.SelectedModEvent == null) return;
 
             WindowData.SelectedModEvent.Actions.Remove(action);
             
-            // Reorder remaining actions
             for (int i = 0; i < WindowData.SelectedModEvent.Actions.Count; i++)
-            {
                 WindowData.SelectedModEvent.Actions[i].Order = i;
-            }
         }
 
         private void OpenModEventFolder_Click(object sender, RoutedEventArgs e)
         {
-            try
-            {
-                if (WindowData?.Project != null)
-                {
-                    var modPath = Path.Combine(WindowData.Project.ProjectPath, "ModProject", "ModCode", "ModMain", "Mod");
-                    Directory.CreateDirectory(modPath);
-                    System.Diagnostics.Process.Start("explorer.exe", modPath);
-                }
-            }
-            catch (Exception ex)
-            {
-                DebugHelper.ShowError(ex, MessageHelper.Get("Messages.Error.Title"), "Failed to open Mod folder");
-            }
+            if (WindowData?.Project == null) return;
+            
+            var modPath = Path.Combine(WindowData.Project.ProjectPath, "ModProject", "ModCode", "ModMain", "Mod");
+            Directory.CreateDirectory(modPath);
+            System.Diagnostics.Process.Start("explorer.exe", modPath);
         }
 
         [SupportedOSPlatform("windows6.1")]
         private void ToggleGuiMode_Click(object sender, RoutedEventArgs e)
         {
-            try
-            {
-                var guiPanel = this.FindName("guiModePanel") as Grid;
-                var codePanel = this.FindName("codeModePanel") as Grid;
-                var btnGui = this.FindName("btnGuiMode") as System.Windows.Controls.Button;
-                var btnCode = this.FindName("btnCodeMode") as System.Windows.Controls.Button;
+            var guiPanel = this.FindName("guiModePanel") as Grid;
+            var codePanel = this.FindName("codeModePanel") as Grid;
+            var btnGui = this.FindName("btnGuiMode") as Button;
+            var btnCode = this.FindName("btnCodeMode") as Button;
 
-                if (guiPanel == null || codePanel == null || btnGui == null || btnCode == null) return;
+            if (guiPanel == null || codePanel == null || btnGui == null || btnCode == null) return;
 
-                guiPanel.Visibility = Visibility.Visible;
-                codePanel.Visibility = Visibility.Collapsed;
-                WindowData.IsGuiMode = true;
+            guiPanel.Visibility = Visibility.Visible;
+            codePanel.Visibility = Visibility.Collapsed;
+            WindowData.IsGuiMode = true;
 
-                // Update button styles
-                btnGui.Background = new System.Windows.Media.SolidColorBrush((System.Windows.Media.Color)System.Windows.Media.ColorConverter.ConvertFromString("#FF2E5090"));
-                btnGui.Foreground = System.Windows.Media.Brushes.White;
-                btnCode.Background = System.Windows.Media.Brushes.White;
-                btnCode.Foreground = new System.Windows.Media.SolidColorBrush((System.Windows.Media.Color)System.Windows.Media.ColorConverter.ConvertFromString("#FF666666"));
-            }
-            catch (Exception ex)
-            {
-                DebugHelper.ShowError(ex, MessageHelper.Get("Messages.Error.Title"), "Failed to switch to GUI mode");
-            }
+            btnGui.Background = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#FF2E5090"));
+            btnGui.Foreground = Brushes.White;
+            btnCode.Background = Brushes.White;
+            btnCode.Foreground = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#FF666666"));
         }
 
         [SupportedOSPlatform("windows6.1")]
         private void ToggleCodeMode_Click(object sender, RoutedEventArgs e)
         {
-            try
-            {
-                var guiPanel = this.FindName("guiModePanel") as Grid;
-                var codePanel = this.FindName("codeModePanel") as Grid;
-                var btnGui = this.FindName("btnGuiMode") as System.Windows.Controls.Button;
-                var btnCode = this.FindName("btnCodeMode") as System.Windows.Controls.Button;
+            var guiPanel = this.FindName("guiModePanel") as Grid;
+            var codePanel = this.FindName("codeModePanel") as Grid;
+            var btnGui = this.FindName("btnGuiMode") as Button;
+            var btnCode = this.FindName("btnCodeMode") as Button;
 
-                if (guiPanel == null || codePanel == null || btnGui == null || btnCode == null) return;
+            if (guiPanel == null || codePanel == null || btnGui == null || btnCode == null) return;
 
-                guiPanel.Visibility = Visibility.Collapsed;
-                codePanel.Visibility = Visibility.Visible;
-                WindowData.IsGuiMode = false;
+            guiPanel.Visibility = Visibility.Collapsed;
+            codePanel.Visibility = Visibility.Visible;
+            WindowData.IsGuiMode = false;
 
-                // Setup AvalonEdit if not already done
-                SetupEventSourceEditorBinding();
+            SetupEventSourceEditorBinding();
 
-                // Update button styles
-                btnCode.Background = new System.Windows.Media.SolidColorBrush((System.Windows.Media.Color)System.Windows.Media.ColorConverter.ConvertFromString("#FF2E5090"));
-                btnCode.Foreground = System.Windows.Media.Brushes.White;
-                btnGui.Background = System.Windows.Media.Brushes.White;
-                btnGui.Foreground = new System.Windows.Media.SolidColorBrush((System.Windows.Media.Color)System.Windows.Media.ColorConverter.ConvertFromString("#FF666666"));
-            }
-            catch (Exception ex)
-            {
-                DebugHelper.ShowError(ex, MessageHelper.Get("Messages.Error.Title"), "Failed to switch to Code mode");
-            }
+            btnCode.Background = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#FF2E5090"));
+            btnCode.Foreground = Brushes.White;
+            btnGui.Background = Brushes.White;
+            btnGui.Foreground = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#FF666666"));
         }
 
         [SupportedOSPlatform("windows6.1")]
@@ -678,53 +515,34 @@ namespace ModCreator.Windows
         [SupportedOSPlatform("windows6.1")]
         private void EventMode_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            var comboBox = sender as System.Windows.Controls.ComboBox;
-            if (comboBox == null || WindowData?.SelectedModEvent == null) return;
+            if (!(sender is ComboBox comboBox) || WindowData?.SelectedModEvent == null) return;
 
             var mode = comboBox.SelectedItem as string;
-            var grpEventSelection = this.FindName("grpEventSelection") as System.Windows.Controls.GroupBox;
+            var grpEventSelection = this.FindName("grpEventSelection") as GroupBox;
             var gridCustomEventName = this.FindName("gridCustomEventName") as Grid;
             
             // Get controls for OrderIndex, CacheType, and WorkOn
-            var txtOrderIndexLabel = this.FindName("txtOrderIndexLabel") as System.Windows.Controls.TextBlock;
-            var txtOrderIndex = this.FindName("txtOrderIndex") as System.Windows.Controls.TextBox;
-            var txtCacheTypeLabel = this.FindName("txtCacheTypeLabel") as System.Windows.Controls.TextBlock;
-            var cmbCacheType = this.FindName("cmbCacheType") as System.Windows.Controls.ComboBox;
-            var txtWorkOnLabel = this.FindName("txtWorkOnLabel") as System.Windows.Controls.TextBlock;
-            var cmbWorkOn = this.FindName("cmbWorkOn") as System.Windows.Controls.ComboBox;
+            var txtOrderIndexLabel = this.FindName("txtOrderIndexLabel") as TextBlock;
+            var txtOrderIndex = this.FindName("txtOrderIndex") as TextBox;
+            var txtCacheTypeLabel = this.FindName("txtCacheTypeLabel") as TextBlock;
+            var cmbCacheType = this.FindName("cmbCacheType") as ComboBox;
+            var txtWorkOnLabel = this.FindName("txtWorkOnLabel") as TextBlock;
+            var cmbWorkOn = this.FindName("cmbWorkOn") as ComboBox;
 
-            if (mode == "ModEvent")
-            {
-                // Show event selection, hide custom event name
-                if (grpEventSelection != null)
-                    grpEventSelection.Visibility = Visibility.Visible;
-                if (gridCustomEventName != null)
-                    gridCustomEventName.Visibility = Visibility.Collapsed;
-                    
-                // Show OrderIndex, CacheType, and WorkOn
-                if (txtOrderIndexLabel != null) txtOrderIndexLabel.Visibility = Visibility.Visible;
-                if (txtOrderIndex != null) txtOrderIndex.Visibility = Visibility.Visible;
-                if (txtCacheTypeLabel != null) txtCacheTypeLabel.Visibility = Visibility.Visible;
-                if (cmbCacheType != null) cmbCacheType.Visibility = Visibility.Visible;
-                if (txtWorkOnLabel != null) txtWorkOnLabel.Visibility = Visibility.Visible;
-                if (cmbWorkOn != null) cmbWorkOn.Visibility = Visibility.Visible;
-            }
-            else if (mode == "NonEvent")
-            {
-                // Hide event selection, show custom event name
-                if (grpEventSelection != null)
-                    grpEventSelection.Visibility = Visibility.Collapsed;
-                if (gridCustomEventName != null)
-                    gridCustomEventName.Visibility = Visibility.Visible;
-                    
-                // Hide OrderIndex, CacheType, and WorkOn
-                if (txtOrderIndexLabel != null) txtOrderIndexLabel.Visibility = Visibility.Collapsed;
-                if (txtOrderIndex != null) txtOrderIndex.Visibility = Visibility.Collapsed;
-                if (txtCacheTypeLabel != null) txtCacheTypeLabel.Visibility = Visibility.Collapsed;
-                if (cmbCacheType != null) cmbCacheType.Visibility = Visibility.Collapsed;
-                if (txtWorkOnLabel != null) txtWorkOnLabel.Visibility = Visibility.Collapsed;
-                if (cmbWorkOn != null) cmbWorkOn.Visibility = Visibility.Collapsed;
-            }
+            var isModEvent = mode == "ModEvent";
+            
+            if (grpEventSelection != null)
+                grpEventSelection.Visibility = isModEvent ? Visibility.Visible : Visibility.Collapsed;
+            if (gridCustomEventName != null)
+                gridCustomEventName.Visibility = isModEvent ? Visibility.Collapsed : Visibility.Visible;
+                
+            var targetVisibility = isModEvent ? Visibility.Visible : Visibility.Collapsed;
+            if (txtOrderIndexLabel != null) txtOrderIndexLabel.Visibility = targetVisibility;
+            if (txtOrderIndex != null) txtOrderIndex.Visibility = targetVisibility;
+            if (txtCacheTypeLabel != null) txtCacheTypeLabel.Visibility = targetVisibility;
+            if (cmbCacheType != null) cmbCacheType.Visibility = targetVisibility;
+            if (txtWorkOnLabel != null) txtWorkOnLabel.Visibility = targetVisibility;
+            if (cmbWorkOn != null) cmbWorkOn.Visibility = targetVisibility;
         }
 
         // Event editor search/replace handlers
@@ -737,35 +555,25 @@ namespace ModCreator.Windows
             replacePanel.Visibility = replacePanel.Visibility == Visibility.Collapsed ? Visibility.Visible : Visibility.Collapsed;
 
             if (replacePanel.Visibility == Visibility.Visible)
-            {
-                var txtFind = this.FindName("txtEventFindText") as System.Windows.Controls.TextBox;
-                txtFind?.Focus();
-            }
+                (this.FindName("txtEventFindText") as TextBox)?.Focus();
         }
 
         [SupportedOSPlatform("windows6.1")]
         private void TxtEventFindText_TextChanged(object sender, TextChangedEventArgs e)
         {
-            var txtFind = sender as System.Windows.Controls.TextBox;
+            var txtFind = sender as TextBox;
             var editor = this.FindName("txtEventSourceEditor") as ICSharpCode.AvalonEdit.TextEditor;
             
-            if (editor == null || txtFind == null || string.IsNullOrEmpty(txtFind.Text))
-                return;
+            if (editor == null || txtFind == null || string.IsNullOrEmpty(txtFind.Text)) return;
 
-            try
+            var index = editor.Text.IndexOf(txtFind.Text, 0, StringComparison.OrdinalIgnoreCase);
+
+            if (index >= 0)
             {
-                var searchText = txtFind.Text;
-                var text = editor.Text;
-                var index = text.IndexOf(searchText, 0, StringComparison.OrdinalIgnoreCase);
-
-                if (index >= 0)
-                {
-                    editor.Select(index, searchText.Length);
-                    editor.CaretOffset = index + searchText.Length;
-                    editor.ScrollToLine(editor.Document.GetLineByOffset(index).LineNumber);
-                }
+                editor.Select(index, txtFind.Text.Length);
+                editor.CaretOffset = index + txtFind.Text.Length;
+                editor.ScrollToLine(editor.Document.GetLineByOffset(index).LineNumber);
             }
-            catch { }
         }
 
         [SupportedOSPlatform("windows6.1")]
@@ -782,37 +590,25 @@ namespace ModCreator.Windows
         private void EventFindNext_Click(object sender, RoutedEventArgs e)
         {
             var editor = this.FindName("txtEventSourceEditor") as ICSharpCode.AvalonEdit.TextEditor;
-            var txtFind = this.FindName("txtEventFindText") as System.Windows.Controls.TextBox;
+            var txtFind = this.FindName("txtEventFindText") as TextBox;
             
-            if (editor == null || txtFind == null || string.IsNullOrEmpty(txtFind.Text))
-                return;
+            if (editor == null || txtFind == null || string.IsNullOrEmpty(txtFind.Text)) return;
 
-            try
+            var searchText = txtFind.Text;
+            var index = editor.Text.IndexOf(searchText, editor.CaretOffset, StringComparison.OrdinalIgnoreCase);
+
+            if (index == -1)
+                index = editor.Text.IndexOf(searchText, 0, StringComparison.OrdinalIgnoreCase);
+
+            if (index >= 0)
             {
-                var searchText = txtFind.Text;
-                var text = editor.Text;
-                var startIndex = editor.CaretOffset;
-                var index = text.IndexOf(searchText, startIndex, StringComparison.OrdinalIgnoreCase);
-
-                if (index == -1)
-                {
-                    index = text.IndexOf(searchText, 0, StringComparison.OrdinalIgnoreCase);
-                }
-
-                if (index >= 0)
-                {
-                    editor.Select(index, searchText.Length);
-                    editor.CaretOffset = index + searchText.Length;
-                    editor.ScrollToLine(editor.Document.GetLineByOffset(index).LineNumber);
-                }
-                else
-                {
-                    MessageBox.Show($"Cannot find '{searchText}'", "Find", MessageBoxButton.OK, MessageBoxImage.Information);
-                }
+                editor.Select(index, searchText.Length);
+                editor.CaretOffset = index + searchText.Length;
+                editor.ScrollToLine(editor.Document.GetLineByOffset(index).LineNumber);
             }
-            catch (Exception ex)
+            else
             {
-                DebugHelper.ShowError(ex, MessageHelper.Get("Messages.Error.Title"), "Failed to find text");
+                MessageBox.Show($"Cannot find '{searchText}'", "Find", MessageBoxButton.OK, MessageBoxImage.Information);
             }
         }
 
@@ -820,74 +616,54 @@ namespace ModCreator.Windows
         private void EventReplaceOne_Click(object sender, RoutedEventArgs e)
         {
             var editor = this.FindName("txtEventSourceEditor") as ICSharpCode.AvalonEdit.TextEditor;
-            var txtFind = this.FindName("txtEventFindText") as System.Windows.Controls.TextBox;
-            var txtReplace = this.FindName("txtEventReplaceText") as System.Windows.Controls.TextBox;
+            var txtFind = this.FindName("txtEventFindText") as TextBox;
+            var txtReplace = this.FindName("txtEventReplaceText") as TextBox;
             
-            if (editor == null || txtFind == null || txtReplace == null || string.IsNullOrEmpty(txtFind.Text))
-                return;
+            if (editor == null || txtFind == null || txtReplace == null || string.IsNullOrEmpty(txtFind.Text)) return;
 
-            try
+            var searchText = txtFind.Text;
+            var replaceText = txtReplace.Text;
+
+            if (editor.SelectedText.Equals(searchText, StringComparison.OrdinalIgnoreCase))
             {
-                var searchText = txtFind.Text;
-                var replaceText = txtReplace.Text;
-
-                if (editor.SelectedText.Equals(searchText, StringComparison.OrdinalIgnoreCase))
-                {
-                    var offset = editor.SelectionStart;
-                    editor.Document.Replace(offset, editor.SelectionLength, replaceText);
-                    editor.CaretOffset = offset + replaceText.Length;
-                }
-
-                EventFindNext_Click(sender, e);
+                var offset = editor.SelectionStart;
+                editor.Document.Replace(offset, editor.SelectionLength, replaceText);
+                editor.CaretOffset = offset + replaceText.Length;
             }
-            catch (Exception ex)
-            {
-                DebugHelper.ShowError(ex, MessageHelper.Get("Messages.Error.Title"), "Failed to replace text");
-            }
+
+            EventFindNext_Click(sender, e);
         }
 
         [SupportedOSPlatform("windows6.1")]
         private void EventReplaceAll_Click(object sender, RoutedEventArgs e)
         {
             var editor = this.FindName("txtEventSourceEditor") as ICSharpCode.AvalonEdit.TextEditor;
-            var txtFind = this.FindName("txtEventFindText") as System.Windows.Controls.TextBox;
-            var txtReplace = this.FindName("txtEventReplaceText") as System.Windows.Controls.TextBox;
+            var txtFind = this.FindName("txtEventFindText") as TextBox;
+            var txtReplace = this.FindName("txtEventReplaceText") as TextBox;
             
-            if (editor == null || txtFind == null || txtReplace == null || string.IsNullOrEmpty(txtFind.Text))
-                return;
+            if (editor == null || txtFind == null || txtReplace == null || string.IsNullOrEmpty(txtFind.Text)) return;
 
-            try
+            var searchText = txtFind.Text;
+            var replaceText = txtReplace.Text;
+            var text = editor.Text;
+            var count = 0;
+            var index = 0;
+            var offset = 0;
+
+            while ((index = text.IndexOf(searchText, index, StringComparison.OrdinalIgnoreCase)) != -1)
             {
-                var searchText = txtFind.Text;
-                var replaceText = txtReplace.Text;
-                var text = editor.Text;
-                var count = 0;
-                var index = 0;
-                var offset = 0;
-
-                while ((index = text.IndexOf(searchText, index, StringComparison.OrdinalIgnoreCase)) != -1)
-                {
-                    editor.Document.Replace(index + offset, searchText.Length, replaceText);
-                    offset += replaceText.Length - searchText.Length;
-                    index += searchText.Length;
-                    count++;
-                }
-
-                MessageBox.Show($"Replaced {count} occurrence(s)", "Replace All", MessageBoxButton.OK, MessageBoxImage.Information);
+                editor.Document.Replace(index + offset, searchText.Length, replaceText);
+                offset += replaceText.Length - searchText.Length;
+                index += searchText.Length;
+                count++;
             }
-            catch (Exception ex)
-            {
-                DebugHelper.ShowError(ex, MessageHelper.Get("Messages.Error.Title"), "Failed to replace all");
-            }
+
+            MessageBox.Show($"Replaced {count} occurrence(s)", "Replace All", MessageBoxButton.OK, MessageBoxImage.Information);
         }
 
         private void CloseEventReplacePanel_Click(object sender, RoutedEventArgs e)
         {
-            var replacePanel = this.FindName("eventReplacePanel") as Border;
-            if (replacePanel != null)
-            {
-                replacePanel.Visibility = Visibility.Collapsed;
-            }
+            (this.FindName("eventReplacePanel") as Border)?.SetValue(VisibilityProperty, Visibility.Collapsed);
         }
     }
 }

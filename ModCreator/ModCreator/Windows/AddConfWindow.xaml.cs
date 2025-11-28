@@ -1,4 +1,3 @@
-using ModCreator.Helpers;
 using ModCreator.WindowData;
 using System.ComponentModel;
 using System.Windows;

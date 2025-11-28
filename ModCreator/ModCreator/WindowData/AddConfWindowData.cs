@@ -44,39 +44,29 @@ namespace ModCreator.WindowData
         {
             _allConfigs.Clear();
 
-            try
+            var sampleConfsPath = Path.GetFullPath(Path.Combine(
+                Constants.RootDir,
+                "3385996759", "SampleConfs"));
+
+            if (Directory.Exists(sampleConfsPath))
             {
-                // Get SampleConfs folder path
-                var sampleConfsPath = Path.Combine(
-                    Constants.RootDir,
-                    "3385996759", "SampleConfs");
+                var jsonFiles = Directory.GetFiles(sampleConfsPath, "*.json");
 
-                sampleConfsPath = Path.GetFullPath(sampleConfsPath);
-
-                if (Directory.Exists(sampleConfsPath))
+                foreach (var file in jsonFiles)
                 {
-                    var jsonFiles = Directory.GetFiles(sampleConfsPath, "*.json");
+                    var fileName = Path.GetFileName(file);
+                    var description = GetConfigDescription(fileName);
 
-                    foreach (var file in jsonFiles)
+                    _allConfigs.Add(new ConfigFileInfo
                     {
-                        var fileName = Path.GetFileName(file);
-                        var description = GetConfigDescription(fileName);
-
-                        _allConfigs.Add(new ConfigFileInfo
-                        {
-                            Name = fileName,
-                            FilePath = file,
-                            Description = description
-                        });
-                    }
+                        Name = fileName,
+                        FilePath = file,
+                        Description = description
+                    });
                 }
+            }
 
-                FilterConfigurations(this, null, null, null);
-            }
-            catch (Exception ex)
-            {
-                Helpers.DebugHelper.ShowError(ex, "Error", "Failed to load configurations");
-            }
+            FilterConfigurations(this, null, null, null);
         }
 
         public void FilterConfigurations(object obj, PropertyInfo prop, object oldValue, object newValue)
@@ -126,88 +116,66 @@ namespace ModCreator.WindowData
 
         private void LoadDescriptionsFromDocs()
         {
-            try
-            {
-                var docsPath = Path.Combine(Constants.DocsDir, "details");
-                
-                if (!Directory.Exists(docsPath))
-                    return;
+            var docsPath = Path.Combine(Constants.DocsDir, "details");
+            
+            if (!Directory.Exists(docsPath))
+                return;
 
-                var mdFiles = Directory.GetFiles(docsPath, "*.md");
+            var mdFiles = Directory.GetFiles(docsPath, "*.md");
 
-                foreach (var mdFile in mdFiles)
-                {
-                    ParseMarkdownFile(mdFile);
-                }
-            }
-            catch (Exception ex)
+            foreach (var mdFile in mdFiles)
             {
-                // Silently fail - descriptions will use fallback
-                System.Diagnostics.Debug.WriteLine($"Failed to load descriptions: {ex.Message}");
+                ParseMarkdownFile(mdFile);
             }
         }
 
         private void ParseMarkdownFile(string filePath)
         {
-            try
-            {
-                var lines = File.ReadAllLines(filePath);
-                
-                // Pattern 1: - **FileName.json** - Description
-                var pattern1 = new Regex(@"^-\s+\*\*(.+?\.json)\*\*\s+-\s+(.+)$", RegexOptions.IgnoreCase);
-                
-                // Pattern 2: - **FileName.json**
-                //            Description on next line or same line after dash
-                var pattern2 = new Regex(@"^-\s+\*\*(.+?\.json)\*\*(?:\s+-\s+(.+))?$", RegexOptions.IgnoreCase);
+            var lines = File.ReadAllLines(filePath);
+            
+            // Pattern 1: - **FileName.json** - Description
+            var pattern1 = new Regex(@"^-\s+\*\*(.+?\.json)\*\*\s+-\s+(.+)$", RegexOptions.IgnoreCase);
+            
+            // Pattern 2: - **FileName.json**
+            var pattern2 = new Regex(@"^-\s+\*\*(.+?\.json)\*\*(?:\s+-\s+(.+))?$", RegexOptions.IgnoreCase);
 
-                for (int i = 0; i < lines.Length; i++)
+            for (int i = 0; i < lines.Length; i++)
+            {
+                var line = lines[i].Trim();
+                
+                // Try pattern 1 (with description on same line)
+                var match = pattern1.Match(line);
+                if (match.Success)
                 {
-                    var line = lines[i].Trim();
+                    var fileName = match.Groups[1].Value;
+                    var description = match.Groups[2].Value;
                     
-                    // Try pattern 1 (with description on same line)
-                    var match = pattern1.Match(line);
-                    if (match.Success)
-                    {
-                        var fileName = match.Groups[1].Value;
-                        var description = match.Groups[2].Value;
-                        
-                        if (!_configDescriptions.ContainsKey(fileName))
-                        {
-                            _configDescriptions[fileName] = description;
-                        }
-                        continue;
-                    }
-
-                    // Try pattern 2 (might have description or not)
-                    match = pattern2.Match(line);
-                    if (match.Success)
-                    {
-                        var fileName = match.Groups[1].Value;
-                        var description = match.Groups.Count > 2 && !string.IsNullOrEmpty(match.Groups[2].Value)
-                            ? match.Groups[2].Value
-                            : null;
-
-                        // If no description on same line, check if there's a paragraph after
-                        if (description == null && i + 1 < lines.Length)
-                        {
-                            var nextLine = lines[i + 1].Trim();
-                            // If next line is not another bullet or header, it might be a description
-                            if (!nextLine.StartsWith("-") && !nextLine.StartsWith("#") && !string.IsNullOrEmpty(nextLine))
-                            {
-                                description = nextLine;
-                            }
-                        }
-
-                        if (!_configDescriptions.ContainsKey(fileName))
-                        {
-                            _configDescriptions[fileName] = description ?? $"Configuration for {fileName}";
-                        }
-                    }
+                    if (!_configDescriptions.ContainsKey(fileName))
+                        _configDescriptions[fileName] = description;
+                    
+                    continue;
                 }
-            }
-            catch (Exception ex)
-            {
-                System.Diagnostics.Debug.WriteLine($"Failed to parse {filePath}: {ex.Message}");
+
+                // Try pattern 2 (might have description or not)
+                match = pattern2.Match(line);
+                if (match.Success)
+                {
+                    var fileName = match.Groups[1].Value;
+                    var description = match.Groups.Count > 2 && !string.IsNullOrEmpty(match.Groups[2].Value)
+                        ? match.Groups[2].Value
+                        : null;
+
+                    // If no description on same line, check if there's a paragraph after
+                    if (description == null && i + 1 < lines.Length)
+                    {
+                        var nextLine = lines[i + 1].Trim();
+                        if (!nextLine.StartsWith("-") && !nextLine.StartsWith("#") && !string.IsNullOrEmpty(nextLine))
+                            description = nextLine;
+                    }
+
+                    if (!_configDescriptions.ContainsKey(fileName))
+                        _configDescriptions[fileName] = description ?? $"Configuration for {fileName}";
+                }
             }
         }
     }

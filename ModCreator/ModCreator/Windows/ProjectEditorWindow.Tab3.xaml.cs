@@ -1,17 +1,11 @@
-using ModCreator.Businesses;
 using ModCreator.Helpers;
 using ModCreator.Models;
 using ModCreator.WindowData;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.IO;
 using System.Linq;
 using System.Runtime.Versioning;
 using System.Windows;
-using System.Windows.Controls;
 using System.Windows.Forms;
-using System.Windows.Media.Imaging;
 using MessageBox = System.Windows.MessageBox;
 
 namespace ModCreator.Windows
@@ -28,279 +22,160 @@ namespace ModCreator.Windows
 
         private void CreateImageFolder_Click(object sender, RoutedEventArgs e)
         {
-            try
+            var imgPath = Path.Combine(WindowData.Project.ProjectPath, "ModProject", "ModImg");
+            
+            string parentPath = imgPath;
+            if (WindowData.SelectedImageItem != null)
             {
-                var imgPath = Path.Combine(WindowData.Project.ProjectPath, "ModProject", "ModImg");
-                
-                // Determine parent path
-                string parentPath = imgPath;
-                if (WindowData.SelectedImageItem != null && WindowData.SelectedImageItem.IsFolder)
-                {
-                    parentPath = WindowData.SelectedImageItem.FullPath;
-                }
-                else if (WindowData.SelectedImageItem != null && !WindowData.SelectedImageItem.IsFolder)
-                {
-                    parentPath = Path.GetDirectoryName(WindowData.SelectedImageItem.FullPath);
-                }
-
-                // Show InputWindow to get folder name
-                var inputWindow = new InputWindow
-                {
-                    Owner = this
-                };
-                inputWindow.WindowData.WindowTitle = "Create New Folder";
-                inputWindow.WindowData.Label = "Folder name:";
-                inputWindow.WindowData.InputValue = "NewFolder";
-
-                if (inputWindow.ShowDialog() != true)
-                    return;
-
-                var folderName = inputWindow.WindowData.InputValue;
-
-                // Validate folder name
-                if (string.IsNullOrWhiteSpace(folderName))
-                {
-                    MessageBox.Show(
-                        "Folder name cannot be empty!",
-                        MessageHelper.Get("Messages.Warning.Title"),
-                        MessageBoxButton.OK,
-                        MessageBoxImage.Warning);
-                    return;
-                }
-
-                // Check if folder name contains invalid characters
-                var invalidChars = Path.GetInvalidFileNameChars();
-                if (folderName.IndexOfAny(invalidChars) >= 0)
-                {
-                    MessageBox.Show(
-                        "Folder name contains invalid characters!",
-                        MessageHelper.Get("Messages.Warning.Title"),
-                        MessageBoxButton.OK,
-                        MessageBoxImage.Warning);
-                    return;
-                }
-
-                var newFolderPath = Path.Combine(parentPath, folderName);
-
-                // Check if folder already exists
-                if (Directory.Exists(newFolderPath))
-                {
-                    MessageBox.Show(
-                        $"A folder with the name '{folderName}' already exists!",
-                        MessageHelper.Get("Messages.Warning.Title"),
-                        MessageBoxButton.OK,
-                        MessageBoxImage.Warning);
-                    return;
-                }
-
-                // Create the folder
-                Directory.CreateDirectory(newFolderPath);
-
-                // Reload image tree
-                WindowData.LoadImageFiles();
-
-                MessageBox.Show(
-                    $"Folder '{folderName}' created successfully!",
-                    MessageHelper.Get("Messages.Success.Title"),
-                    MessageBoxButton.OK,
-                    MessageBoxImage.Information);
+                parentPath = WindowData.SelectedImageItem.IsFolder
+                    ? WindowData.SelectedImageItem.FullPath
+                    : Path.GetDirectoryName(WindowData.SelectedImageItem.FullPath);
             }
-            catch (Exception ex)
+
+            var inputWindow = new InputWindow
             {
-                DebugHelper.ShowError(ex, MessageHelper.Get("Messages.Error.Title"), "Failed to create folder");
+                Owner = this,
+                WindowData = { WindowTitle = "Create New Folder", Label = "Folder name:", InputValue = "NewFolder" }
+            };
+
+            if (inputWindow.ShowDialog() != true) return;
+
+            var folderName = inputWindow.WindowData.InputValue;
+
+            if (string.IsNullOrWhiteSpace(folderName))
+            {
+                MessageBox.Show("Folder name cannot be empty!", MessageHelper.Get("Messages.Warning.Title"), MessageBoxButton.OK, MessageBoxImage.Warning);
+                return;
             }
+
+            if (folderName.IndexOfAny(Path.GetInvalidFileNameChars()) >= 0)
+            {
+                MessageBox.Show("Folder name contains invalid characters!", MessageHelper.Get("Messages.Warning.Title"), MessageBoxButton.OK, MessageBoxImage.Warning);
+                return;
+            }
+
+            var newFolderPath = Path.Combine(parentPath, folderName);
+
+            if (Directory.Exists(newFolderPath))
+            {
+                MessageBox.Show($"A folder with the name '{folderName}' already exists!", MessageHelper.Get("Messages.Warning.Title"), MessageBoxButton.OK, MessageBoxImage.Warning);
+                return;
+            }
+
+            Directory.CreateDirectory(newFolderPath);
+            WindowData.LoadImageFiles();
+            MessageBox.Show($"Folder '{folderName}' created successfully!", MessageHelper.Get("Messages.Success.Title"), MessageBoxButton.OK, MessageBoxImage.Information);
         }
 
         private void DeleteImageFolder_Click(object sender, RoutedEventArgs e)
         {
-            if (WindowData.SelectedImageItem == null || !WindowData.SelectedImageItem.IsFolder)
-                return;
+            if (WindowData.SelectedImageItem == null || !WindowData.SelectedImageItem.IsFolder) return;
 
-            try
+            var folderPath = WindowData.SelectedImageItem.FullPath;
+            var folderName = WindowData.SelectedImageItem.Name;
+
+            if (!Directory.Exists(folderPath))
             {
-                var folderPath = WindowData.SelectedImageItem.FullPath;
-                var folderName = WindowData.SelectedImageItem.Name;
-
-                // Check if folder exists
-                if (!Directory.Exists(folderPath))
-                {
-                    MessageBox.Show(
-                        $"Folder '{folderName}' does not exist!",
-                        MessageHelper.Get("Messages.Warning.Title"),
-                        MessageBoxButton.OK,
-                        MessageBoxImage.Warning);
-                    WindowData.LoadImageFiles();
-                    return;
-                }
-
-                // Check if folder has contents
-                var hasContents = Directory.GetFileSystemEntries(folderPath).Length > 0;
-                var warningMessage = hasContents
-                    ? $"Are you sure you want to delete folder '{folderName}' and all its contents?"
-                    : $"Are you sure you want to delete folder '{folderName}'?";
-
-                var result = MessageBox.Show(
-                    warningMessage,
-                    "Delete Folder",
-                    MessageBoxButton.YesNo,
-                    MessageBoxImage.Warning);
-
-                if (result == MessageBoxResult.Yes)
-                {
-                    Directory.Delete(folderPath, true);
-                    
-                    // Reload image tree
-                    WindowData.LoadImageFiles();
-
-                    MessageBox.Show(
-                        $"Folder '{folderName}' deleted successfully!",
-                        MessageHelper.Get("Messages.Success.Title"),
-                        MessageBoxButton.OK,
-                        MessageBoxImage.Information);
-                }
-            }
-            catch (Exception ex)
-            {
-                DebugHelper.ShowError(ex, MessageHelper.Get("Messages.Error.Title"), "Failed to delete folder");
+                MessageBox.Show($"Folder '{folderName}' does not exist!", MessageHelper.Get("Messages.Warning.Title"), MessageBoxButton.OK, MessageBoxImage.Warning);
                 WindowData.LoadImageFiles();
+                return;
+            }
+
+            var hasContents = Directory.GetFileSystemEntries(folderPath).Length > 0;
+            var warningMessage = hasContents
+                ? $"Are you sure you want to delete folder '{folderName}' and all its contents?"
+                : $"Are you sure you want to delete folder '{folderName}'?";
+
+            var result = MessageBox.Show(warningMessage, "Delete Folder", MessageBoxButton.YesNo, MessageBoxImage.Warning);
+
+            if (result == MessageBoxResult.Yes)
+            {
+                Directory.Delete(folderPath, true);
+                WindowData.LoadImageFiles();
+                MessageBox.Show($"Folder '{folderName}' deleted successfully!", MessageHelper.Get("Messages.Success.Title"), MessageBoxButton.OK, MessageBoxImage.Information);
             }
         }
 
         [SupportedOSPlatform("windows6.1")]
         private void ImportImage_Click(object sender, RoutedEventArgs e)
         {
-            using (var dialog = new OpenFileDialog())
+            using (var dialog = new OpenFileDialog
             {
-                // Build filter from ImageExtensions
-                var extensionPatterns = string.Join(";", WindowData.ImageExtensions.Select(ext => $"*{ext.Extension}"));
-                dialog.Filter = $"Image Files|{extensionPatterns}";
+                Filter = $"Image Files|{string.Join(";", WindowData.ImageExtensions.Select(ext => $"*{ext.Extension}"))}",
+                Title = "Select Image to Import",
+                Multiselect = true
+            })
+            {
+                if (dialog.ShowDialog() != System.Windows.Forms.DialogResult.OK) return;
+
+                var imgPath = Path.Combine(WindowData.Project.ProjectPath, "ModProject", "ModImg");
+                string targetPath = imgPath;
                 
-                dialog.Title = "Select Image to Import";
-                dialog.Multiselect = true;
-
-                if (dialog.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+                if (WindowData.SelectedImageItem != null)
                 {
-                    try
-                    {
-                        // Determine target directory based on selected item
-                        var imgPath = Path.Combine(WindowData.Project.ProjectPath, "ModProject", "ModImg");
-                        string targetPath = imgPath;
-                        
-                        if (WindowData.SelectedImageItem != null && WindowData.SelectedImageItem.IsFolder)
-                        {
-                            targetPath = WindowData.SelectedImageItem.FullPath;
-                        }
-                        else if (WindowData.SelectedImageItem != null && !WindowData.SelectedImageItem.IsFolder)
-                        {
-                            targetPath = Path.GetDirectoryName(WindowData.SelectedImageItem.FullPath);
-                        }
-                        
-                        Directory.CreateDirectory(targetPath);
-
-                        foreach (var file in dialog.FileNames)
-                        {
-                            var fileName = Path.GetFileName(file);
-                            var destPath = Path.Combine(targetPath, fileName);
-                            File.Copy(file, destPath, true);
-                        }
-
-                        // Reload image list
-                        WindowData.LoadImageFiles();
-                    }
-                    catch (Exception ex)
-                    {
-                        DebugHelper.ShowError(ex, MessageHelper.Get("Messages.Error.Title"), "Failed to import image");
-                    }
+                    targetPath = WindowData.SelectedImageItem.IsFolder
+                        ? WindowData.SelectedImageItem.FullPath
+                        : Path.GetDirectoryName(WindowData.SelectedImageItem.FullPath);
                 }
+                
+                Directory.CreateDirectory(targetPath);
+
+                foreach (var file in dialog.FileNames)
+                {
+                    var destPath = Path.Combine(targetPath, Path.GetFileName(file));
+                    File.Copy(file, destPath, true);
+                }
+
+                WindowData.LoadImageFiles();
             }
         }
 
         [SupportedOSPlatform("windows6.1")]
         private void ExportImage_Click(object sender, RoutedEventArgs e)
         {
-            if (string.IsNullOrEmpty(WindowData.SelectedImageFile))
-                return;
+            if (string.IsNullOrEmpty(WindowData.SelectedImageFile)) return;
 
-            using (var dialog = new SaveFileDialog())
+            using (var dialog = new SaveFileDialog
             {
-                dialog.FileName = WindowData.SelectedImageFile;
-                
-                // Build filter from ImageExtensions
-                var extensionPatterns = string.Join(";", WindowData.ImageExtensions.Select(ext => $"*{ext.Extension}"));
-                dialog.Filter = $"Image Files|{extensionPatterns}";
-                
-                dialog.Title = "Export Image";
+                FileName = WindowData.SelectedImageFile,
+                Filter = $"Image Files|{string.Join(";", WindowData.ImageExtensions.Select(ext => $"*{ext.Extension}"))}",
+                Title = "Export Image"
+            })
+            {
+                if (dialog.ShowDialog() != System.Windows.Forms.DialogResult.OK) return;
 
-                if (dialog.ShowDialog() == System.Windows.Forms.DialogResult.OK)
-                {
-                    try
-                    {
-                        var sourcePath = Path.Combine(WindowData.Project.ProjectPath, "ModProject", "ModImg", WindowData.SelectedImageFile);
-                        File.Copy(sourcePath, dialog.FileName, true);
-                        MessageBox.Show("Image exported successfully!", 
-                            MessageHelper.Get("Messages.Success.Title"), 
-                            MessageBoxButton.OK, 
-                            MessageBoxImage.Information);
-                    }
-                    catch (Exception ex)
-                    {
-                        DebugHelper.ShowError(ex, MessageHelper.Get("Messages.Error.Title"), "Failed to export image");
-                    }
-                }
+                var sourcePath = Path.Combine(WindowData.Project.ProjectPath, "ModProject", "ModImg", WindowData.SelectedImageFile);
+                File.Copy(sourcePath, dialog.FileName, true);
+                MessageBox.Show("Image exported successfully!", MessageHelper.Get("Messages.Success.Title"), MessageBoxButton.OK, MessageBoxImage.Information);
             }
         }
 
         private void RemoveImage_Click(object sender, RoutedEventArgs e)
         {
-            if (string.IsNullOrEmpty(WindowData.SelectedImageFile))
-                return;
+            if (string.IsNullOrEmpty(WindowData.SelectedImageFile)) return;
 
-            var result = MessageBox.Show(
-                $"Are you sure you want to delete '{WindowData.SelectedImageFile}'?",
-                "Delete Image",
-                MessageBoxButton.YesNo,
-                MessageBoxImage.Warning);
+            var result = MessageBox.Show($"Are you sure you want to delete '{WindowData.SelectedImageFile}'?", "Delete Image", MessageBoxButton.YesNo, MessageBoxImage.Warning);
 
             if (result == MessageBoxResult.Yes)
             {
-                try
+                var filePath = Path.Combine(WindowData.Project.ProjectPath, "ModProject", "ModImg", WindowData.SelectedImageFile);
+                WindowData.SelectedImageFile = null;
+                
+                if (File.Exists(filePath))
                 {
-                    // Get file path before clearing selection
-                    var filePath = Path.Combine(WindowData.Project.ProjectPath, "ModProject", "ModImg", WindowData.SelectedImageFile);
-                    
-                    // Clear selection (this releases the BitmapImage since it's frozen)
-                    WindowData.SelectedImageFile = null;
-                    
-                    // Delete file - no lock since BitmapImage was loaded with CacheOption.OnLoad and Freeze()
-                    if (File.Exists(filePath))
-                    {
-                        File.Delete(filePath);
-                        // Reload image list after deletion
-                        WindowData.LoadImageFiles();
-                    }
-                }
-                catch (Exception ex)
-                {
-                    DebugHelper.ShowError(ex, MessageHelper.Get("Messages.Error.Title"), "Failed to delete image");
+                    File.Delete(filePath);
+                    WindowData.LoadImageFiles();
                 }
             }
         }
 
         private void OpenModImgFolder_Click(object sender, RoutedEventArgs e)
         {
-            try
-            {
-                if (WindowData?.Project != null)
-                {
-                    var imgPath = Path.Combine(WindowData.Project.ProjectPath, "ModProject", "ModImg");
-                    Directory.CreateDirectory(imgPath);
-                    System.Diagnostics.Process.Start("explorer.exe", imgPath);
-                }
-            }
-            catch (Exception ex)
-            {
-                DebugHelper.ShowError(ex, MessageHelper.Get("Messages.Error.Title"), "Failed to open ModImg folder");
-            }
+            if (WindowData?.Project == null) return;
+            
+            var imgPath = Path.Combine(WindowData.Project.ProjectPath, "ModProject", "ModImg");
+            Directory.CreateDirectory(imgPath);
+            System.Diagnostics.Process.Start("explorer.exe", imgPath);
         }
     }
 }
