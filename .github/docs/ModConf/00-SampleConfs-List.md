@@ -75,4 +75,4 @@ Each category file contains:
 - Reference these templates when creating custom mod configurations
 - Copy sample files from `SampleConfs/` to your mod's `ModConf/` folder
 - Follow the structure shown in sample files for best results
-- Check instruction files in `.github/instructions/` for detailed guidanceAll files follow the game's original structure and can be used as templates for creating custom mod configs.
+- Check instruction files in `.github/instructions/` for detailed guidance All files follow the game's original structure and can be used as templates for creating custom mod configs.
