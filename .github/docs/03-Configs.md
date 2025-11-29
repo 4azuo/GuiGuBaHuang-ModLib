@@ -18,4 +18,4 @@ The `SampleConfs/` folder contains template files for all game config types. The
 
 **Important:** Always reference SampleConfs to ensure correct property names, data types, and file structure.
 
-For a complete list of all available config types, see [SampleConfs List](./details/SampleConfs-List.md).
+For a complete list of all available config types, see [SampleConfs List](./ModConf/00-SampleConfs-List.md).
