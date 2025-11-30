@@ -54,6 +54,7 @@ Usage examples:
   python run.py --project 3385996759 --path . --preserve-translations
   python run.py --project 3385996759 --path . --workers 8
   python run.py --project 3385996759 --path . --workers 1  # Sequential processing
+  python run.py --project 3385996759 --path . --source_lan ch  # Translate from Chinese
         '''
     )
     
@@ -101,6 +102,13 @@ Usage examples:
         help='Number of parallel threads for file processing (default: 4). Reduce if encountering rate-limits from translation service.'
     )
     
+    parser.add_argument(
+        '--source_lan',
+        type=str,
+        default=None,
+        help='Source language for translation (default: en). Example: en, ch, tc, kr'
+    )
+    
     args = parser.parse_args()
     
     print_header(
@@ -109,7 +117,11 @@ Usage examples:
     )
     
     # Build project path
-    project_path = os.path.join("..", args.project)
+    # If args.project is already a valid folder path, use it directly
+    if os.path.isdir(args.project):
+        project_path = args.project
+    else:
+        project_path = os.path.join("..", args.project)
     
     if not os.path.exists(project_path):
         print_error("Project not found", project_path)
@@ -119,13 +131,17 @@ Usage examples:
     target_languages = parse_target_languages(args.create_locales)
     print_info("Locale languages", ', '.join(target_languages))
     
+    # Determine source language
+    source_language = args.source_lan if args.source_lan else TRANSLATION_CONFIG['source_language']
+    print_info("Source language", source_language)
+    
     # Create config
     translation_config = TranslationConfig(
         target_languages=target_languages,
         max_retries=TRANSLATION_CONFIG['max_retries'],
         delay_between_requests=TRANSLATION_CONFIG['delay_between_requests'],
         retry_delay=TRANSLATION_CONFIG['retry_delay'],
-        source_language=TRANSLATION_CONFIG['source_language'],
+        source_language=source_language,
         preserve_existing_translations=args.preserve_translations
     )
     
