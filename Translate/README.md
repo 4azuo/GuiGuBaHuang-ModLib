@@ -36,7 +36,10 @@ python run.py --project <PROJECT_ID> --path <PATH> [OPTIONS]
 
 ### Parameters
 
-- `--project`: **Required**. Project directory name (e.g.: `3385996759`)
+- `--project`: **Required**. Project directory name or full path to project folder
+  - Can be project name: `3385996759` (will look in parent directory)
+  - Can be full path: `C:\git\GuiGuBaHuang-ModLib\3385996759`
+  - Can be relative path: `..\3385996759`
 - `--path`: **Required**. Relative path within ModConf folder or file
   - `.` - Process entire ModConf directory
   - `game_localText.json` - Process specific file
@@ -49,6 +52,7 @@ python run.py --project <PROJECT_ID> --path <PATH> [OPTIONS]
   - `both` - Process both types (default)
 - `--preserve-translations`: Keep existing translations, only translate new terms that haven't been translated yet
 - `--workers`: Number of parallel threads for file processing (default: 4). Reduce if encountering rate-limits from translation service
+- `--source_lan`: Source language for translation (default: `en`). Examples: `en`, `ch`, `tc`, `kr`
 
 ## 📖 Usage Examples
 
@@ -112,6 +116,32 @@ python run.py --project 3385996759 --path . --workers 1  # Sequential processing
 ```bash
 python run.py --project 3385996759 --path . --file-type main --preserve-translations
 python run.py --project 3385996759 --path . --file-type locale --preserve-translations
+```
+
+### 11. Use custom source language
+
+```bash
+# Translate from Chinese instead of English
+python run.py --project 3385996759 --path . --source_lan ch
+
+# Translate from Korean
+python run.py --project 3385996759 --path . --source_lan kr
+
+# Translate from Traditional Chinese
+python run.py --project 3385996759 --path . --source_lan tc
+```
+
+### 12. Use full path or relative path for project
+
+```bash
+# Using full path
+python run.py --project "C:\git\GuiGuBaHuang-ModLib\3385996759" --path .
+
+# Using relative path
+python run.py --project "..\3385996759" --path .
+
+# Using project name (default behavior)
+python run.py --project 3385996759 --path .
 ```
 
 ## 🎯 When to use File Type?
