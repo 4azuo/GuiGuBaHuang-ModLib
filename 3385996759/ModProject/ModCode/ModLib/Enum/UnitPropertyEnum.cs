@@ -76,10 +76,10 @@ namespace ModLib.Enum
         //public static UnitPropertyEnum UnitInfo { get; } = new UnitPropertyEnum("unitInfo");
         //public static UnitPropertyEnum Unit { get; } = new UnitPropertyEnum("_unit");
 
-        public object obj, PropertyInfo prop, object oldValue, object newValue { get; private set; }
+        public string PropName { get; private set; }
         public IntPtr PropAddr { get; private set; }
         public int PropOffset { get; private set; }
-        private UnitPropertyEnum(object obj, PropertyInfo prop, object oldValue, object newValue, IntPtr? propAddr = null) : base(propName)
+        private UnitPropertyEnum(string propName, IntPtr? propAddr = null) : base(propName)
         {
             PropName = propName;
             PropAddr = propAddr == null ?

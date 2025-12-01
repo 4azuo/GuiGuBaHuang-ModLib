@@ -115,10 +115,10 @@ namespace ModLib.Enum
         //public static UnitDynPropertyEnum CurGrade { get; } = new UnitDynPropertyEnum("curGrade");
         //public static UnitDynPropertyEnum LastUpdateGradeID { get; } = new UnitDynPropertyEnum("lastUpdateGradeID");
 
-        public object obj, PropertyInfo prop, object oldValue, object newValue { get; private set; }
+        public string PropName { get; private set; }
         public IntPtr PropAddr { get; private set; }
         public int PropOffset { get; private set; }
-        private UnitDynPropertyEnum(object obj, PropertyInfo prop, object oldValue, object newValue, IntPtr? propAddr = null) : base()
+        private UnitDynPropertyEnum(string propName, IntPtr? propAddr = null) : base()
         {
             PropName = propName;
             PropAddr = propAddr == null ?
