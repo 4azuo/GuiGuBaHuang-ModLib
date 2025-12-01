@@ -81,7 +81,7 @@ public static class ConfHelper
                     if (n.StartsWith(KEY_ARRAY))
                     {
                         char splitChar = n[1];
-                        object obj, PropertyInfo prop, object oldValue, object newValue = n.Substring(2);
+                        string propName = n.Substring(2);
                         Type propType = confItem.GetType().GetProperty(propName).PropertyType;
                         Type eleType = propType.GetGenericArguments()[0];
                         if (typeof(int).IsAssignableFrom(eleType))
@@ -154,7 +154,7 @@ public static class ConfHelper
                 }
             }
         }
-        catch(Exception ex)
+        catch (Exception ex)
         {
             DebugHelper.WriteLine(ex);
         }
