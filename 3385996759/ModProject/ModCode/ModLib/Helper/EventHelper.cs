@@ -1,4 +1,5 @@
-﻿using ModLib.Enum;
+﻿using ModLib.Attributes;
+using ModLib.Enum;
 using ModLib.Mod;
 using System;
 using System.Collections.Generic;

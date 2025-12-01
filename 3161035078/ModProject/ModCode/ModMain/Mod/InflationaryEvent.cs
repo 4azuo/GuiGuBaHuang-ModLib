@@ -1,4 +1,5 @@
 ﻿using MOD_nE7UL2.Const;
+using ModLib.Attributes;
 using ModLib.Const;
 using ModLib.Mod;
 using System;

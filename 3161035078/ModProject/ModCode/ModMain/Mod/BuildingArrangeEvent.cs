@@ -1,5 +1,6 @@
 ﻿using MOD_nE7UL2.Const;
 using MOD_nE7UL2.Enum;
+using ModLib.Attributes;
 using ModLib.Mod;
 using System.Collections.Generic;
 using UnityEngine;

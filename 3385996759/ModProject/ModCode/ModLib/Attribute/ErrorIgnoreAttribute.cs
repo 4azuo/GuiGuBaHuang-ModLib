@@ -1,6 +1,9 @@
 ﻿using System;
 
-[AttributeUsage(AttributeTargets.Method | AttributeTargets.Class, AllowMultiple = false, Inherited = true)]
-public class ErrorIgnoreAttribute : Attribute
+namespace ModLib.Attributes
 {
+    [AttributeUsage(AttributeTargets.Method | AttributeTargets.Class, AllowMultiple = false, Inherited = true)]
+    public class ErrorIgnoreAttribute : Attribute
+    {
+    }
 }

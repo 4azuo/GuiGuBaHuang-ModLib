@@ -6,6 +6,7 @@ using EBattleTypeData;
 using Newtonsoft.Json;
 using System.IO;
 using System.Threading.Tasks;
+using ModLib.Attributes;
 
 namespace ModLib.Mod
 {

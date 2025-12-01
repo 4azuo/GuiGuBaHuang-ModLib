@@ -1,4 +1,5 @@
 ﻿using EBattleTypeData;
+using ModLib.Attributes;
 using ModLib.Enum;
 using Newtonsoft.Json;
 using System;

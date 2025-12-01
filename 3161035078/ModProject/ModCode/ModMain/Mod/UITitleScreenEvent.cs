@@ -1,5 +1,6 @@
 ﻿using EGameTypeData;
 using MOD_nE7UL2.Const;
+using ModLib.Attributes;
 using ModLib.Mod;
 using ModLib.Object;
 using System.Diagnostics;

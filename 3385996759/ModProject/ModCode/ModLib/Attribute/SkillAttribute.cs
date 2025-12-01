@@ -1,13 +1,16 @@
 ﻿using System;
 
-[AttributeUsage(AttributeTargets.Class, AllowMultiple = false, Inherited = false)]
-public class SkillAttribute : Attribute
+namespace ModLib.Attributes
 {
-    public string CacheId { get; set; }
-    public bool IsCached { get; set; }
-
-    public SkillAttribute(string cacheId)
+    [AttributeUsage(AttributeTargets.Class, AllowMultiple = false, Inherited = false)]
+    public class SkillAttribute : Attribute
     {
-        CacheId = cacheId;
+        public string CacheId { get; set; }
+        public bool IsCached { get; set; }
+
+        public SkillAttribute(string cacheId)
+        {
+            CacheId = cacheId;
+        }
     }
 }

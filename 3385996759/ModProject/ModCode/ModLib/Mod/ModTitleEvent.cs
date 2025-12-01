@@ -1,4 +1,5 @@
 ﻿using EGameTypeData;
+using ModLib.Attributes;
 using ModLib.Const;
 using ModLib.Object;
 using System.Collections.Generic;

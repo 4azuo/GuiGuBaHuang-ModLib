@@ -8,6 +8,7 @@ using System.Linq;
 using UnityEngine.UI;
 using MOD_nE7UL2.Enum;
 using ModLib.Enum;
+using ModLib.Attributes;
 
 namespace MOD_nE7UL2.Mod
 {

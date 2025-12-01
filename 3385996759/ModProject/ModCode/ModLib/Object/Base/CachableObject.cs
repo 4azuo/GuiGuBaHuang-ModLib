@@ -1,4 +1,5 @@
-﻿using ModLib.Mod;
+﻿using ModLib.Attributes;
+using ModLib.Mod;
 using Newtonsoft.Json;
 using System.Collections.Generic;
 using System.Linq;

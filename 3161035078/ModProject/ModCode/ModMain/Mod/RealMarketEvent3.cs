@@ -11,7 +11,7 @@ using System;
 using ModLib.Enum;
 using static MOD_nE7UL2.Object.ModStts;
 using MOD_nE7UL2.Enum;
-using UnityEngine.Events;
+using ModLib.Attributes;
 
 namespace MOD_nE7UL2.Mod
 {

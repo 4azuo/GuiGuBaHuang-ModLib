@@ -9,6 +9,7 @@ using MOD_nE7UL2.Object;
 using System.Text;
 using ModLib.Object;
 using ModLib.Enum;
+using ModLib.Attributes;
 
 namespace MOD_nE7UL2.Mod
 {
