@@ -1,28 +1,31 @@
 ﻿using System;
 
-[AttributeUsage(AttributeTargets.Class, AllowMultiple = false, Inherited = false)]
-public class CacheAttribute : Attribute
+namespace ModLib.Attributes
 {
-    public enum CType
+    [AttributeUsage(AttributeTargets.Class, AllowMultiple = false, Inherited = false)]
+    public class CacheAttribute : Attribute
     {
-        Local,
-        Global,
-    }
+        public enum CType
+        {
+            Local,
+            Global,
+        }
 
-    public enum WType
-    {
-        All,
-        Local,
-        Global,
-    }
+        public enum WType
+        {
+            All,
+            Local,
+            Global,
+        }
 
-    public string CacheId { get; private set; }
-    public int OrderIndex { get; set; }
-    public CType CacheType { get; set; } = CType.Local;
-    public WType WorkOn { get; set; } = WType.All;
+        public string CacheId { get; private set; }
+        public int OrderIndex { get; set; }
+        public CType CacheType { get; set; } = CType.Local;
+        public WType WorkOn { get; set; } = WType.All;
 
-    public CacheAttribute(string cacheId)
-    {
-        CacheId = cacheId;
+        public CacheAttribute(string cacheId)
+        {
+            CacheId = cacheId;
+        }
     }
 }

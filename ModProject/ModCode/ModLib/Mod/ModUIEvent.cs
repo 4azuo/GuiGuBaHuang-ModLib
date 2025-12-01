@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using ModLib.Attributes;
+using UnityEngine;
 
 namespace ModLib.Mod
 {

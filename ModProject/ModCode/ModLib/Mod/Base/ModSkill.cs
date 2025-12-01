@@ -1,4 +1,5 @@
-﻿using Newtonsoft.Json;
+﻿using ModLib.Attributes;
+using Newtonsoft.Json;
 using System.IO;
 
 namespace ModLib.Mod

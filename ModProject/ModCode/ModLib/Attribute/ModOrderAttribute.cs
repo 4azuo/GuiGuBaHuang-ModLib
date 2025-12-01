@@ -1,12 +1,15 @@
 ﻿using System;
 
-[AttributeUsage(AttributeTargets.Class, Inherited = true)]
-public class ModOrderAttribute : Attribute
+namespace ModLib.Attributes
 {
-    public string OrderFile { get; private set; }
-
-    public ModOrderAttribute(string orderFile)
+    [AttributeUsage(AttributeTargets.Class, Inherited = true)]
+    public class ModOrderAttribute : Attribute
     {
-        OrderFile = orderFile;
+        public string OrderFile { get; private set; }
+
+        public ModOrderAttribute(string orderFile)
+        {
+            OrderFile = orderFile;
+        }
     }
 }
