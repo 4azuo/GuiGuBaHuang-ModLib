@@ -6,6 +6,7 @@ using EGameTypeData;
 using ModLib.Enum;
 using MOD_nE7UL2.Enum;
 using ModLib.Object;
+using ModLib.Attributes;
 
 namespace MOD_nE7UL2.Mod
 {

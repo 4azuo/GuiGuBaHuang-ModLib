@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using MOD_nE7UL2.Enum;
 using System;
 using Newtonsoft.Json;
+using ModLib.Attributes;
 
 namespace MOD_nE7UL2.Mod
 {
