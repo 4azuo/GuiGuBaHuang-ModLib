@@ -2,7 +2,7 @@
 
 namespace ModLib.Attributes
 {
-    [AttributeUsage(AttributeTargets.Method, AllowMultiple = false, Inherited = true)]
+    [AttributeUsage(AttributeTargets.Method | AttributeTargets.Class, AllowMultiple = false, Inherited = true)]
     public class EventCatAttribute : Attribute
     {
         public string Category { get; set; }

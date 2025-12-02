@@ -35,6 +35,9 @@
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="Attribute\EventCatIgnAttribute.cs" />
+    <Compile Include="Attribute\ActionCatIgnAttribute.cs" />
+    <Compile Include="Attribute\ActionCatAttribute.cs" />
     <Compile Include="Attribute\SkillAttribute.cs" />
     <Compile Include="Attribute\ModOrderAttribute.cs" />
     <Compile Include="Attribute\EventConditionAttribute.cs" />

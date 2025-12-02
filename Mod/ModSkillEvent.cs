@@ -7,6 +7,7 @@ using Newtonsoft.Json;
 using System.IO;
 using System.Threading.Tasks;
 using ModLib.Attributes;
+using ModLib.Helper;
 
 namespace ModLib.Mod
 {
