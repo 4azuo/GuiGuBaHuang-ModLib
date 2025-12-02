@@ -9,6 +9,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using MOD_nE7UL2.Enum;
 using ModLib.Attributes;
+using ModLib.Helper;
 
 namespace MOD_nE7UL2.Mod
 {

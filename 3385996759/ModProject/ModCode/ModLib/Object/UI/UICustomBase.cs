@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 using static ModLib.Object.UIItemBase;
+using ModLib.Helper;
 
 namespace ModLib.Object
 {

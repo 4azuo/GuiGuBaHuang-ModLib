@@ -6,6 +6,7 @@ using ModLib.Enum;
 using ModLib.Mod;
 using System.Collections.Generic;
 using UnityEngine;
+using ModLib.Helper;
 using static MOD_nE7UL2.Object.ModStts;
 
 namespace MOD_nE7UL2.Mod

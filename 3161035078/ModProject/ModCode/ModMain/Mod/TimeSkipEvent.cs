@@ -3,6 +3,7 @@ using MOD_nE7UL2.Const;
 using ModLib.Attributes;
 using ModLib.Enum;
 using ModLib.Mod;
+using ModLib.Helper;
 using ModLib.Object;
 using Newtonsoft.Json;
 using UnityEngine;

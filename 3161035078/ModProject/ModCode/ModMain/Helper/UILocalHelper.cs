@@ -1,4 +1,5 @@
 ﻿using ModLib.Object;
+using ModLib.Helper;
 
 public static class UILocalHelper
 {

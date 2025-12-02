@@ -3,6 +3,7 @@ using MOD_nE7UL2.Const;
 using ModLib.Attributes;
 using ModLib.Mod;
 using Newtonsoft.Json;
+using ModLib.Helper;
 using System.Collections.Generic;
 
 namespace MOD_nE7UL2.Mod
