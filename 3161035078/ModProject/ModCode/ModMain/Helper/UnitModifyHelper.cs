@@ -3,6 +3,7 @@ using MOD_nE7UL2.Mod;
 using ModLib.Enum;
 using System;
 using static MOD_nE7UL2.Object.ModStts;
+using ModLib.Helper;
 
 public static class UnitModifyHelper
 {

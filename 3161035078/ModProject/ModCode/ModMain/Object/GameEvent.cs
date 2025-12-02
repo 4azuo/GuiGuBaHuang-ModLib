@@ -1,4 +1,6 @@
-﻿namespace MOD_nE7UL2.Object
+﻿using ModLib.Helper;
+
+namespace MOD_nE7UL2.Object
 {
     public class GameEvent
     {

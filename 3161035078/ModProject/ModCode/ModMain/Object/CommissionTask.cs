@@ -3,6 +3,7 @@ using ModLib.Enum;
 using System;
 using System.Linq;
 using static MOD_nE7UL2.Object.ModStts;
+using ModLib.Helper;
 
 namespace MOD_nE7UL2.Object
 {

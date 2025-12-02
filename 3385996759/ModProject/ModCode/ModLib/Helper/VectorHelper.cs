@@ -1,11 +1,16 @@
-﻿using System;
+﻿using ModLib.Attributes;
+using System;
 using UnityEngine;
 
-public static class VectorHelper
+namespace ModLib.Helper
 {
-    public static int CalRange(this Vector2Int src, Vector2Int dest)
+    [ActionCat("Vector")]
+    public static class VectorHelper
     {
-        var newVec = src - dest;
-        return Math.Min(Math.Abs(newVec.x), Math.Abs(newVec.y));
+        public static int CalRange(this Vector2Int src, Vector2Int dest)
+        {
+            var newVec = src - dest;
+            return Math.Min(Math.Abs(newVec.x), Math.Abs(newVec.y));
+        }
     }
 }

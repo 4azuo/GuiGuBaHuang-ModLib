@@ -10,6 +10,7 @@ using System.Text;
 using ModLib.Object;
 using ModLib.Enum;
 using ModLib.Attributes;
+using ModLib.Helper;
 
 namespace MOD_nE7UL2.Mod
 {

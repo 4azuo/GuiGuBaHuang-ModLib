@@ -8,6 +8,7 @@ using MOD_nE7UL2.Enum;
 using ModLib.Const;
 using ModLib.Enum;
 using ModLib.Attributes;
+using ModLib.Helper;
 
 namespace MOD_nE7UL2.Mod
 {

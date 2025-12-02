@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using ModLib.Enum;
 using System;
 using MOD_nE7UL2.Mod;
+using ModLib.Helper;
 
 public static class UnitPowerCalHelper
 {

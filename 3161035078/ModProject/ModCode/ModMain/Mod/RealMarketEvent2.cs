@@ -7,6 +7,7 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine.UI;
 using MOD_nE7UL2.Enum;
+using ModLib.Helper;
 using ModLib.Object;
 using ModLib.Enum;
 using ModLib.Attributes;

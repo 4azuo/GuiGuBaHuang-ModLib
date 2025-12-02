@@ -3,11 +3,11 @@
 namespace ModLib.Attributes
 {
     [AttributeUsage(AttributeTargets.Method | AttributeTargets.Class, AllowMultiple = false, Inherited = true)]
-    public class EventCatAttribute : Attribute
+    public class ActionCatAttribute : Attribute
     {
         public string Category { get; set; }
 
-        public EventCatAttribute(string category)
+        public ActionCatAttribute(string category)
         {
             Category = category;
         }

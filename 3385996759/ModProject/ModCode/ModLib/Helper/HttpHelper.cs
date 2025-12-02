@@ -1,51 +1,56 @@
-﻿using System.Net.Http;
+﻿using ModLib.Attributes;
+using System.Net.Http;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 
-public static class HttpHelper
+namespace ModLib.Helper
 {
-    public static Regex REGEX_WORKSHOP_DESC { get; } = new Regex(@"<div class=""workshopItemDescription"" id=""highlightContent"">(.*?)<\/div>", RegexOptions.Multiline);
-
-    public static async Task<string> DownloadWebContentAsync(string url)
+    [ActionCat("Http")]
+    public static class HttpHelper
     {
-        using (var client = new HttpClient())
+        public static Regex REGEX_WORKSHOP_DESC { get; } = new Regex(@"<div class=""workshopItemDescription"" id=""highlightContent"">(.*?)<\/div>", RegexOptions.Multiline);
+
+        public static async Task<string> DownloadWebContentAsync(string url)
         {
-            try
+            using (var client = new HttpClient())
             {
-                var response = await client.GetAsync(url);
-                response.EnsureSuccessStatusCode();
-                return await response.Content.ReadAsStringAsync();
-            }
-            catch
-            {
-                return string.Empty;
+                try
+                {
+                    var response = await client.GetAsync(url);
+                    response.EnsureSuccessStatusCode();
+                    return await response.Content.ReadAsStringAsync();
+                }
+                catch
+                {
+                    return string.Empty;
+                }
             }
         }
-    }
 
-    public static string DownloadWebContent(string url)
-    {
-        using (var client = new WebClientWithTimeout() { Timeout = 10000 })
+        public static string DownloadWebContent(string url)
         {
-            try
+            using (var client = new WebClientWithTimeout() { Timeout = 10000 })
             {
-                return client.DownloadString(url);
-            }
-            catch
-            {
-                return string.Empty;
+                try
+                {
+                    return client.DownloadString(url);
+                }
+                catch
+                {
+                    return string.Empty;
+                }
             }
         }
-    }
 
-    public static string GetWorkshopDescription(string url)
-    {
-        var content = DownloadWebContent(url);
-        Match m = REGEX_WORKSHOP_DESC.Match(content);
-        if (m.Success)
+        public static string GetWorkshopDescription(string url)
         {
-            return m.Groups[1].Value;
+            var content = DownloadWebContent(url);
+            Match m = REGEX_WORKSHOP_DESC.Match(content);
+            if (m.Success)
+            {
+                return m.Groups[1].Value;
+            }
+            return string.Empty;
         }
-        return string.Empty;
     }
 }

@@ -1,19 +1,24 @@
-﻿using ModLib.Object;
+﻿using ModLib.Attributes;
+using ModLib.Object;
 using Newtonsoft.Json;
 using System.IO;
 
-public static class FileHelper
+namespace ModLib.Helper
 {
-    public static bool IsReadable<T>(string filePath) where T : CachableObject
+    [ActionCat("File")]
+    public static class FileHelper
     {
-        try
+        public static bool IsReadable<T>(string filePath) where T : CachableObject
         {
-            JsonConvert.DeserializeObject<T>(File.ReadAllText(filePath));
-            return true;
-        }
-        catch
-        {
-            return false;
+            try
+            {
+                JsonConvert.DeserializeObject<T>(File.ReadAllText(filePath));
+                return true;
+            }
+            catch
+            {
+                return false;
+            }
         }
     }
 }
