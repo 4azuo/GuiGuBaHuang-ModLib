@@ -62,9 +62,9 @@ $configItems = @(
         Type = "File"
     },
     @{
-        Path = "GuiGuBaHuang-ModCreator\ModCreator\bin\Release\net9.0-windows\Resources"
-        Description = "ModCreator Resources folder"
-        Type = "Folder"
+        Path = "GuiGuBaHuang-ModCreator\ModCreator\Resources\settings.json"
+        Description = "ModCreator Resources settings"
+        Type = "File"
     }
 )
 
