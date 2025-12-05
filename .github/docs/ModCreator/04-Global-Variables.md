@@ -8,19 +8,16 @@ Tab 4 in Project Editor. Define mod variables visually, auto-generate C# code.
 
 | Name | Type | Description |
 |------|------|-------------|
-| Any | dynamic | Dynamic type |
-| Boolean | bool | True or False value |
-| Integer | int | 32-bit integer number |
-| Long Integer | long | 64-bit integer number |
-| Float | float | Single precision floating point number |
-| Double | double | Double precision floating point number |
-| String | string | Text value |
-| Boolean Array | bool[] | Array of boolean values |
-| Integer Array | int[] | Array of 32-bit integers |
-| Long Array | long[] | Array of 64-bit integers |
-| Float Array | float[] | Array of single precision floats |
-| Double Array | double[] | Array of double precision floats |
-| String Array | string[] | Array of string values |
+| Any | Object | Object type |
+| Boolean | Boolean | True or False value |
+| Integer | Int32 | 32-bit integer number |
+| Long Integer | Int64 | 64-bit integer number |
+| Single | Single | Single precision floating point number |
+| Double | Double | Double precision floating point number |
+| String | String | Text value |
+| Array | Array | Array of values |
+| List | List | List of values |
+| Dictionary | Dictionary | Key-Value type |
 
 ## Key Functions
 
