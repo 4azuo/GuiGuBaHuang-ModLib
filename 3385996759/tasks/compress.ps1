@@ -2,7 +2,7 @@
 $ErrorActionPreference = "Stop"
 
 # Read settings
-$settings = Get-Content "$PSScriptRoot\..\.vscode\settings.json" | ConvertFrom-Json
+$settings = Get-Content "$PSScriptRoot\settings.json" | ConvertFrom-Json
 
 # Define paths
 $projectId = $settings.projectId

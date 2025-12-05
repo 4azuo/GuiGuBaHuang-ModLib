@@ -2,7 +2,7 @@
 
 ## Build Scripts
 
-Located in `3161035078/.vscode/`:
+Located in `3161035078/tasks/`:
 
 **clean-project.ps1**
 - Cleans build artifacts and output folders

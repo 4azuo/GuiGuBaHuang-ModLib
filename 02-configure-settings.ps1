@@ -3,8 +3,8 @@
     Configure project settings and open configuration files
 .DESCRIPTION
     This script prompts to open important configuration files and folders:
-    - 3161035078/.vscode/settings.json (Taoist mod settings)
-    - 3385996759/.vscode/settings.json (ModLib settings)
+    - 3161035078/tasks/settings.json (Taoist mod settings)
+    - 3385996759/tasks/settings.json (ModLib settings)
     - GuiGuBaHuang-ModCreator/ModCreator/bin/Release/net9.0-windows/Resources (Resources folder)
 .PARAMETER OpenAll
     Open all files without confirmation
@@ -52,12 +52,12 @@ $scriptDir = Split-Path -Parent $MyInvocation.MyCommand.Path
 # Configuration files and folders to open
 $configItems = @(
     @{
-        Path = "3161035078\.vscode\settings.json"
+        Path = "3161035078\tasks\settings.json"
         Description = "Taoist mod VS Code settings"
         Type = "File"
     },
     @{
-        Path = "3385996759\.vscode\settings.json"
+        Path = "3385996759\tasks\settings.json"
         Description = "ModLib VS Code settings"
         Type = "File"
     },

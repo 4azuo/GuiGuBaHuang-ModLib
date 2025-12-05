@@ -58,8 +58,8 @@ The script will automatically:
 
 The script opens these files in **Notepad** for manual configuration:
 
-1. **3161035078\.vscode\settings.json** - Taoist mod settings
-2. **3385996759\.vscode\settings.json** - ModLib settings
+1. **3161035078\tasks\settings.json** - Taoist mod settings
+2. **3385996759\tasks\settings.json** - ModLib settings
 3. **GuiGuBaHuang-ModCreator\ModCreator\Resources\settings.json** - ModCreator settings
 
 ### Step 5: Done!
