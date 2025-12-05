@@ -19,7 +19,7 @@ $totalSteps = $settings.projects.Count + 1
 # Rebuild each project
 foreach ($projectId in $settings.projects) {
     Write-Host "`n[Step $stepNum/$totalSteps] Rebuilding Project $projectId..." -ForegroundColor Yellow
-    $rebuildScript = Join-Path $repositoryPath "$projectId\.vscode\rebuild-project.ps1"
+    $rebuildScript = Join-Path $repositoryPath "$projectId\tasks\rebuild-project.ps1"
     
     if (!(Test-Path $rebuildScript)) {
         Write-Host "❌ Rebuild script not found: $rebuildScript" -ForegroundColor Red

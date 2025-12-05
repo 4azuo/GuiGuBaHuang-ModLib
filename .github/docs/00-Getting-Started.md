@@ -20,8 +20,7 @@ ModLib is a framework for creating mods for Gui Gu Ba Huang (鬼谷八荒).
 │   ├── ModImg/             # Assets
 │   └── SteamImg/           # Workshop images
 ├── debug/Mod_xxxxx/ModCode/dll/  # Output (ModMain.dll, ModLib.dll)
-├── tasks/                  # Build scripts
-└── .vscode/                # Settings & scripts
+├── tasks/                  # Settings & Build scripts
 ```
 
 ## Creating a New Mod
@@ -30,7 +29,7 @@ ModLib is a framework for creating mods for Gui Gu Ba Huang (鬼谷八荒).
 
 **Step 2:** Copy folder structure from 3161035078, create folders: ModMain/, Mod/, Const/, Helper/, ModConf/, ModImg/, debug/
 
-**Step 3:** Configure `.vscode/settings.json` (projectId, modName, paths) and add to `tasks/settings.json`
+**Step 3:** Configure `tasks/settings.json` (projectId, modName, paths) and add to `tasks/settings.json`
 
 ---
 
