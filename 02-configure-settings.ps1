@@ -235,10 +235,10 @@ function Main {
     
     Write-Info ""
     Write-Info "Next steps:"
-    Write-Info "  1. Build the projects: cd .vscode ; .\rebuild-and-deploy-all.ps1"
+    Write-Info "  1. Build the projects: cd tasks ; .\rebuild-and-deploy-all.ps1"
     Write-Info "  2. Or build individually:"
-    Write-Info "     - Taoist mod: cd 3161035078\.vscode ; .\rebuild-and-deploy.ps1"
-    Write-Info "     - ModLib: cd 3385996759\.vscode ; .\rebuild-and-deploy.ps1"
+    Write-Info "     - Taoist mod: cd 3161035078\tasks ; .\rebuild-and-deploy.ps1"
+    Write-Info "     - ModLib: cd 3385996759\tasks ; .\rebuild-and-deploy.ps1"
     Write-Info ""
     Write-Info "For more information, see:"
     Write-Info "  - .github/docs/00-Getting-Started.md"
