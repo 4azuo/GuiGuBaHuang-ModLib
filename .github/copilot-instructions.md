@@ -22,7 +22,7 @@ Two main projects:
 - Use `rebuild-and-deploy.ps1` in `tasks/` for build/deploy
 - Output: `debug/Mod_xxxxx/ModCode/dll/`
 - Batch independent operations when possible
-- Use localText.json for all user-facing text
+- Use LocalText.json for all user-facing text
 
 ## Documentation
 
