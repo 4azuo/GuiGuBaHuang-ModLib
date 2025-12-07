@@ -7,12 +7,23 @@ using System.Web;
 
 namespace ModLib.Helper
 {
+    /// <summary>
+    /// Helper for text translation using Google Translate API.
+    /// Provides utilities for translating text between languages.
+    /// </summary>
     [ActionCat("Translate")]
     public static class TranslateHelper
     {
         public const int MAX_LEN = 200;
         public const string TRANS_API = "https://translate.googleapis.com/translate_a/single?client=gtx&sl={2}&tl={1}&dt=t&q={0}";
 
+        /// <summary>
+        /// Translates text using Google Translate API.
+        /// </summary>
+        /// <param name="text">Text to translate (max 200 chars)</param>
+        /// <param name="targetLang">Target language code</param>
+        /// <param name="sourceLang">Source language code (auto-detect if "auto")</param>
+        /// <returns>Translated text or original on error</returns>
         public static string Translate(string text, string targetLang, string sourceLang = "auto")
         {
             try
@@ -40,6 +51,11 @@ namespace ModLib.Helper
             }
         }
 
+        /// <summary>
+        /// Encodes string for URL with special character replacement.
+        /// </summary>
+        /// <param name="str">String to encode</param>
+        /// <returns>Encoded string</returns>
         public static string Encode(string str)
         {
             return HttpUtility.UrlEncode(str
@@ -50,6 +66,11 @@ namespace ModLib.Helper
                 .Replace("\"", "/5/"));
         }
 
+        /// <summary>
+        /// Decodes URL-encoded string and restores special characters.
+        /// </summary>
+        /// <param name="str">Encoded string</param>
+        /// <returns>Decoded string</returns>
         public static string Decode(string str)
         {
             return Regex.Replace(str, @"\\u(?<code>\w{4})", To32bitChar)
@@ -60,6 +81,11 @@ namespace ModLib.Helper
                 .Replace("/5/", "\"");
         }
 
+        /// <summary>
+        /// Converts Unicode escape sequence to character.
+        /// </summary>
+        /// <param name="match">Regex match</param>
+        /// <returns>Character string</returns>
         public static string To32bitChar(Match match)
         {
             var code = match.Groups["code"].Value;
@@ -68,6 +94,11 @@ namespace ModLib.Helper
         }
 
         private static readonly Regex r = new Regex("\"(.*?)\",\"(.*?)\"");
+        /// <summary>
+        /// Parses Google Translate API response.
+        /// </summary>
+        /// <param name="input">API response</param>
+        /// <returns>Translated text</returns>
         public static string ReadGoogleResult(string input)
         {
             var builder = new StringBuilder();

@@ -3,9 +3,18 @@ using System;
 
 namespace ModLib.Helper
 {
+    /// <summary>
+    /// Helper for working with skills and abilities.
+    /// Provides utilities for skill cost calculation and skill data retrieval.
+    /// </summary>
     [ActionCat("Skill")]
     public static class SkillHelper
     {
+        /// <summary>
+        /// Gets the MP cost for a skill.
+        /// </summary>
+        /// <param name="props">Skill prop</param>
+        /// <returns>MP cost</returns>
         public static int GetSkillMpCost(this DataProps.PropsData props)
         {
             if (props == null)
@@ -19,6 +28,11 @@ namespace ModLib.Helper
             return 0;
         }
 
+        /// <summary>
+        /// Gets the MP cost for a movement skill (step).
+        /// </summary>
+        /// <param name="props">Step prop</param>
+        /// <returns>MP cost</returns>
         public static int GetStepMpCost(this DataProps.PropsData props)
         {
             if (props == null)
@@ -32,6 +46,11 @@ namespace ModLib.Helper
             return 0;
         }
 
+        /// <summary>
+        /// Gets the currently casting skill from hit data.
+        /// </summary>
+        /// <param name="hitData">Hit data</param>
+        /// <returns>Tuple of martial type and skill prop, or null</returns>
         public static Tuple<MartialType, DataProps.PropsData> GetCastingSkill(this MartialTool.HitData hitData)
         {
             var atkUnit = hitData?.attackUnit;

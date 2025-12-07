@@ -5,18 +5,33 @@ using UnityEngine.UI;
 
 namespace ModLib.Helper
 {
+    /// <summary>
+    /// Helper for accessing sample UI components.
+    /// Provides template UI elements (buttons, images, inputs, etc.) for cloning in custom UIs.
+    /// </summary>
     [ActionCatIgn]
     public static class UISampleHelper
     {
         public const string PERSISTENT_CANVAS_NAME = "PersistentCanvas";
+        /// <summary>Sample button for cloning</summary>
         public static Button ButtonSample { get; private set; }
+        /// <summary>Sample image for cloning</summary>
         public static Image ImageSample { get; private set; }
+        /// <summary>Sample input field for cloning</summary>
         public static InputField InputSample { get; private set; }
+        /// <summary>Sample select (toggle) for cloning</summary>
         public static Toggle SelectSample { get; private set; }
+        /// <summary>Sample slider for cloning</summary>
         public static Slider SliderSample { get; private set; }
+        /// <summary>Sample text for cloning</summary>
         public static Text TextSample { get; private set; }
+        /// <summary>Sample toggle for cloning</summary>
         public static Toggle ToggleSample { get; private set; }
 
+        /// <summary>
+        /// Loads UI sample components from game UIs for cloning.
+        /// Called during mod initialization.
+        /// </summary>
         public static void LoadUISampples()
         {
             g.ui.Init(ActionHelper.TracedIl2Action(() =>

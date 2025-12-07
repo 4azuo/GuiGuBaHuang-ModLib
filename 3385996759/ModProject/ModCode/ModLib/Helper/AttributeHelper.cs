@@ -26,7 +26,7 @@ namespace ModLib.Helper
     /// Your Attribute-derived class must implement Equals and GetHashCode, otherwise a run-time exception will occur, since this class
     /// creates a dictionary of attributes in order to speed up target lookups.
     /// </remarks>
-    [ActionCat("Attribute")]
+    [ActionCatIgn]
     public static class AttributeTargetHelper<TAttribute>
         where TAttribute : Attribute
     {
@@ -97,6 +97,7 @@ namespace ModLib.Helper
         /// </summary>
         /// <param name="attribute">The attribute for which a target is sought</param>
         /// <returns>The target of the attribute - either an Assembly, Type or MemberInfo instance.</returns>
+        [ActionCatIgn]
         public static object GetTarget(TAttribute attribute)
         {
             object result;
@@ -148,6 +149,7 @@ namespace ModLib.Helper
     /// <summary>
     /// Extends attributes so that their targets can be discovered
     /// </summary>
+    [ActionCatIgn]
     public static class AttributeHelperExtension
     {
         /// <summary>
