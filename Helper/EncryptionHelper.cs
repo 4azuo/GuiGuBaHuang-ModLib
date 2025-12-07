@@ -8,6 +8,11 @@ using System.Text;
 
 namespace ModLib.Helper
 {
+    /// <summary>
+    /// Helper for encryption and decryption operations.
+    /// Based on A Ghazal's implementation from StackOverflow.
+    /// https://stackoverflow.com/questions/10168240/encrypting-decrypting-a-string-in-c-sharp
+    /// </summary>
     /*
      * https://stackoverflow.com/questions/10168240/encrypting-decrypting-a-string-in-c-sharp
      * A Ghazal
@@ -17,6 +22,11 @@ namespace ModLib.Helper
     {
         private const string KEY = "f8545t";
 
+        /// <summary>
+        /// Encrypts a string using AES encryption.
+        /// </summary>
+        /// <param name="clearText">Plain text to encrypt</param>
+        /// <returns>Base64-encoded encrypted string</returns>
         public static string Encrypt(string clearText)
         {
             byte[] clearBytes = Encoding.Unicode.GetBytes(clearText);
@@ -38,6 +48,11 @@ namespace ModLib.Helper
             return clearText;
         }
 
+        /// <summary>
+        /// Decrypts an AES-encrypted string.
+        /// </summary>
+        /// <param name="cipherText">Base64-encoded encrypted text</param>
+        /// <returns>Decrypted plain text</returns>
         public static string Decrypt(string cipherText)
         {
             cipherText = cipherText.Replace(" ", "+");
@@ -60,6 +75,11 @@ namespace ModLib.Helper
             return cipherText;
         }
 
+        /// <summary>
+        /// Computes SHA256 hash of a string and returns as integer.
+        /// </summary>
+        /// <param name="input">Input string</param>
+        /// <returns>Hash as 32-bit integer</returns>
         public static int GetSha256HashAsInt(this string input)
         {
             using (SHA256 sha256 = SHA256.Create())
@@ -70,6 +90,11 @@ namespace ModLib.Helper
             }
         }
 
+        /// <summary>
+        /// Converts string to BigInteger by encoding each byte as 3-digit number.
+        /// </summary>
+        /// <param name="input">Input string</param>
+        /// <returns>BigInteger representation</returns>
         public static BigInteger GetByteCodeAsInt(this string input)
         {
             return BigInteger.Parse(string.Join(string.Empty, Encoding.ASCII.GetBytes(input).Select(x => x.ToString("000"))));

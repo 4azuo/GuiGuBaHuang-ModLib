@@ -3,10 +3,18 @@ using System;
 
 namespace ModLib.Helper
 {
-    [ActionCat("Action")]
+    /// <summary>
+    /// Helper for handling actions and lambda function errors.
+    /// Provides utilities for traced wrappers and error handling.
+    /// </summary>
+    [ActionCatIgn]
     public partial class ActionHelper
     {
-        [ActionCatIgn]
+        /// <summary>
+        /// Logs an error from an exception, specifically for lambda function errors.
+        /// Extracts the calling method and type information to provide detailed error context.
+        /// </summary>
+        /// <param name="ex">The exception that occurred</param>
         public static void Error(Exception ex)
         {
             var exMethod = ex?.GetCallingMethod();
