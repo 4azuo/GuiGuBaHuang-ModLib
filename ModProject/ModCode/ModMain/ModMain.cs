@@ -7,6 +7,6 @@ namespace MOD_flQrxq
         public static new ModMain ModObj => ModMaster.ModObj as ModMain;
         public override string ModName => "MOD_flQrxq";
         public override string ModId => "flQrxq";
-        public override string Version => "2.2.20";
+        public override string Version => "2.2.21";
     }
 }
