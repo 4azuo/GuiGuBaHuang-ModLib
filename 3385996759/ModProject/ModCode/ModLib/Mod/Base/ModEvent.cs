@@ -2,6 +2,7 @@
 using EGameTypeData;
 using ModLib.Attributes;
 using ModLib.Object;
+using Newtonsoft.Json;
 
 namespace ModLib.Mod
 {
@@ -16,6 +17,7 @@ namespace ModLib.Mod
         /// <summary>
         /// Gets or sets the dynamic event parameter passed to event handlers.
         /// </summary>
+        [JsonIgnore]
         public dynamic EventParameter { get; set; }
 
         #region Timer

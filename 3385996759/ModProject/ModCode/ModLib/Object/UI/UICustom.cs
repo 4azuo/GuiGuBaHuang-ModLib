@@ -73,7 +73,7 @@ namespace ModLib.Object
 
         public UICustom1(string title, string btnText = "", Action okAct = null, bool showCancel = false, Action cancelAct = null) : base()
         {
-            UI.InitData(title, string.Empty, btnText, okAct, showCancel);
+            UI.InitData(title, string.Empty, btnText, ActionHelper.TracedIl2Action(okAct), showCancel);
             if (cancelAct != null)
                 UI.btnCancel.onClick.AddListener(ActionHelper.TracedUnityAction(cancelAct));
         }
@@ -89,7 +89,7 @@ namespace ModLib.Object
 
         public UICustom2(string title, string btnText = "", Action okAct = null) : base()
         {
-            UI.InitData(title, string.Empty, btnText, okAct);
+            UI.InitData(title, string.Empty, btnText, ActionHelper.TracedIl2Action(okAct));
         }
     }
 }
