@@ -25,6 +25,7 @@ namespace ModLib.Mod
         {
             DebugHelper.WriteLine("Load configs.");
 
+            ConfHelper.LoadedIDs.Clear();
             foreach (var mod in g.mod.allModPaths)
             {
                 if (g.mod.IsLoadMod(mod.t1))

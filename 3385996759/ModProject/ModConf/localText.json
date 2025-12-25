@@ -70,5 +70,30 @@
 		"ch": "第{0}页",
 		"tc": "第{0}頁",
 		"kr": "페이지 {0}"
+	},
+	{
+		"id": "999990009",
+		"key": "libtxt999990009",
+		"en": "ModCreator"
+	},
+	{
+		"id": "999990010",
+		"key": "libtxt999990010",
+		"en": "Check IDs"
+	},
+	{
+		"id": "999990011",
+		"key": "libtxt999990011",
+		"en": "Check duplicated IDs which loaded by ModLib."
+	},
+	{
+		"id": "999990012",
+		"key": "libtxt999990012",
+		"en": "Export"
+	},
+	{
+		"id": "999990013",
+		"key": "libtxt999990013",
+		"en": "Export all game assets."
 	}
 ]

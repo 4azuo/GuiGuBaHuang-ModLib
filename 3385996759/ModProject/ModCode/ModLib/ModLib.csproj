@@ -84,6 +84,7 @@
     <Compile Include="Helper\EventHelper.cs" />
     <Compile Include="Helper\ItemHelper.cs" />
     <Compile Include="Helper\BuildHelper.cs" />
+    <Compile Include="Helper\PngEncodeHelper.cs" />
     <Compile Include="Helper\SpriteHelper.cs" />
     <Compile Include="Helper\SkillHelper.cs" />
     <Compile Include="Helper\UISampleHelper.cs" />

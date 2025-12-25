@@ -1,9 +1,11 @@
 ﻿using ModLib.Attributes;
 using Newtonsoft.Json;
 using System;
+using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Reflection;
+using System.Text;
 using UnhollowerBaseLib;
 
 namespace ModLib.Helper
@@ -34,6 +36,17 @@ namespace ModLib.Helper
         /// Prefix character for array properties in config files.
         /// </summary>
         public const string KEY_ARRAY = "@";
+
+        /// <summary>
+        /// Provides a mapping of loaded identifiers to their associated values.
+        /// Example: { "confName:ID", "[modId:fileName];[modId:fileName];[modId:fileName]" }
+        /// </summary>
+        public static Dictionary<string, string> LoadedIDs { get; } = new Dictionary<string, string>();
+
+        /// <summary>
+        /// Gets the list of base IDs that have been replaced.
+        /// </summary>
+        public static List<string> ReplacedBaseIDs { get; } = new List<string>();
 
         /// <summary>
         /// Gets the full path to a configuration file.
@@ -75,9 +88,10 @@ namespace ModLib.Helper
         /// Loads a configuration file and merges it with the game's configuration.
         /// Supports adding, updating, and deleting configuration items.
         /// </summary>
+        /// <param name="modId">Mod id</param>
         /// <param name="filePath">Path to the configuration file</param>
         /// <param name="confName">Name of the configuration class to modify</param>
-        private static void LoadConf(string filePath, string confName)
+        private static void LoadConf(string modId, string filePath, string confName)
         {
             //DebugHelper.WriteLine($"Edit Conf: {confName}");
             var confProp = g.conf.GetType().GetProperty(confName, BindingFlags.Public | BindingFlags.Instance | BindingFlags.IgnoreCase);
@@ -91,25 +105,31 @@ namespace ModLib.Helper
                 dynamic confItem;
                 var id = ParseHelper.Parse<int>(item.id.ToString());
                 var i = (int)confObj.GetItemIndex(id);
+                var loadedIdKey = $"{confName}:{id}";
+                var loadedIdValue = $"[{modId}:{Path.GetFileName(filePath)}];";
+                if (LoadedIDs.ContainsKey(loadedIdKey) && LoadedIDs[loadedIdKey].Contains(loadedIdValue))
+                    continue;
                 if (i >= 0 && confList[i].id == id)
                 {
                     //delete
-                    if (item.DELETE == "1")
-                    {
-                        //DebugHelper.WriteLine($" - Delete({id}): {JsonConvert.SerializeObject(item)}");
-                        confItem = null;
-                        confList.Remove(confList[i]);
-                        if (g.conf.localText.GetType() == confObj.GetType())
-                            g.conf.localText.allText.Remove(confItem.key);
-                    }
+                    //if (item.DELETE == "1")
+                    //{
+                    //    //DebugHelper.WriteLine($" - Delete({id}): {JsonConvert.SerializeObject(item)}");
+                    //    confItem = null;
+                    //    confList.Remove(confList[i]);
+                    //    if (g.conf.localText.GetType() == confObj.GetType())
+                    //        g.conf.localText.allText.Remove(confItem.key);
+                    //}
                     //update
-                    else
-                    {
+                    //else
+                    //{
+                        if (!LoadedIDs.ContainsKey(loadedIdKey))
+                            ReplacedBaseIDs.Add(loadedIdKey);
                         //DebugHelper.WriteLine($" - Update({id}): {JsonConvert.SerializeObject(item)}");
                         confItem = confList[i];
                         //if (g.conf.localText.GetType() == confObj.GetType())
                         //    g.conf.localText.allText[confItem.key] = confItem;
-                    }
+                    //}
                 }
                 //add new
                 else
@@ -121,6 +141,9 @@ namespace ModLib.Helper
                     if (g.conf.localText.GetType() == confObj.GetType())
                         g.conf.localText.allText.Add(confItem.key, confItem);
                 }
+                LoadedIDs[loadedIdKey] =
+                    (LoadedIDs.ContainsKey(loadedIdKey) ? LoadedIDs[loadedIdKey] : string.Empty) +
+                    loadedIdValue;
                 if (confItem != null)
                 {
                     foreach (var p in item)
@@ -200,7 +223,7 @@ namespace ModLib.Helper
                         try
                         {
                             var confName = Path.GetFileNameWithoutExtension(filePath).Split('_').Last();
-                            LoadConf(filePath, confName);
+                            LoadConf(modId, filePath, confName);
                         }
                         catch (Exception ex)
                         {

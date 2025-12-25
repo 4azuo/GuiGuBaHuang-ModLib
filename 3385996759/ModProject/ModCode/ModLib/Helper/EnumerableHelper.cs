@@ -2,6 +2,8 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using Unity.Collections;
+using Unity.Collections.LowLevel.Unsafe;
 
 namespace ModLib.Helper
 {
@@ -12,6 +14,30 @@ namespace ModLib.Helper
     [ActionCat("Enumerable")]
     public static class EnumerableHelper
     {
+        /// <summary>
+        /// Copies the contents of a <see cref="NativeArray{Byte}"/> to a managed byte array.
+        /// </summary>
+        /// <remarks>This method creates a new managed array and copies all elements from the specified
+        /// native array. The returned array is independent of the original native array; subsequent changes to one will
+        /// not affect the other.</remarks>
+        /// <param name="native">The native array whose contents will be copied to a managed array.</param>
+        /// <returns>A managed byte array containing the copied elements from the native array. The length of the returned array
+        /// matches the length of <paramref name="native"/>.</returns>
+        public static unsafe byte[] NativeToManaged(NativeArray<byte> native)
+        {
+            int len = native.Length;
+            byte[] managed = new byte[len];
+
+            void* src = NativeArrayUnsafeUtility.GetUnsafeReadOnlyPtr(native);
+
+            fixed (byte* dst = managed)
+            {
+                UnsafeUtility.MemCpy(dst, src, len);
+            }
+
+            return managed;
+        }
+
         /// <summary>
         /// Removes all keys starting with the specified prefix from dictionary.
         /// </summary>
