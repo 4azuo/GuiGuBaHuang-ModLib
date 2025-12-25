@@ -8,6 +8,17 @@ using ModLib.Helper;
 
 namespace ModLib.Object
 {
+    /// <summary>
+    /// Serves as the abstract base class for custom UI containers that manage layout, navigation, and dynamic UI item
+    /// creation.
+    /// </summary>
+    /// <remarks><para> <see cref="UICustomBase"/> provides a flexible framework for building custom user
+    /// interface panels with support for grid-based layouts, navigation between pages, and dynamic addition of various
+    /// UI elements such as buttons, sliders, toggles, and more. </para> <para> The class manages collections of UI
+    /// items and pages, and exposes methods for adding and organizing these elements either by grid coordinates or
+    /// absolute positions. It also supports navigation controls and auto-update functionality. </para> <para> Derived
+    /// classes must implement the <see cref="Dispose"/> method to release resources appropriately. The class is not
+    /// thread-safe. </para></remarks>
     public abstract class UICustomBase : IDisposable
     {
         public bool IsAutoUpdate { get; set; } = false;
