@@ -5,7 +5,7 @@
     This script prompts to open important configuration files and folders:
     - 3161035078/tasks/settings.json (Taoist mod settings)
     - 3385996759/tasks/settings.json (ModLib settings)
-    - GuiGuBaHuang-ModCreator/ModCreator/bin/Release/net9.0-windows/Resources (Resources folder)
+    - GuiGuBaHuang-ModCreator/ModCreator/Resources/settings.json (ModCreator settings)
 .PARAMETER OpenAll
     Open all files without confirmation
 .PARAMETER SkipConfirmation

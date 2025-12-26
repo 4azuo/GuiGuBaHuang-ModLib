@@ -212,8 +212,35 @@ try {
         Write-Success "Repository clone completed"
     }
     
-    # Step 3: Configure settings
-    Write-Step 3 "Configuring Settings"
+    # Step 3: Extract resources
+    Write-Step 3 "Extracting BaseGameResources"
+    
+    $script03 = Join-Path $clonedRepoPath "03-extract-resources.ps1"
+    Write-Host "DEBUG: Looking for: $script03" -ForegroundColor Gray
+    
+    if (-not (Test-Path $script03)) {
+        Write-Warning "Extract resources script not found: $script03"
+        Write-Warning "Skipping extraction step"
+    }
+    else {
+        Write-Info "Running: $script03"
+        
+        Push-Location $clonedRepoPath
+        try {
+            & $script03
+        }
+        catch {
+            Write-Warning "Resource extraction failed: $_"
+        }
+        finally {
+            Pop-Location
+        }
+        
+        Write-Success "Resource extraction completed"
+    }
+    
+    # Step 4: Configure settings
+    Write-Step 4 "Configuring Settings"
     
     $script02 = Join-Path $clonedRepoPath "02-configure-settings.ps1"
     Write-Host "DEBUG: Looking for: $script02" -ForegroundColor Gray
@@ -275,6 +302,7 @@ catch {
     Write-Info "  .\00-install-dependencies.ps1"
     Write-Info "  .\01-clone-repository.ps1"
     Write-Info "  cd C:\git\GuiGuBaHuang-ModLib"
+    Write-Info "  .\03-extract-resources.ps1"
     Write-Info "  .\02-configure-settings.ps1"
     exit 1
 }
