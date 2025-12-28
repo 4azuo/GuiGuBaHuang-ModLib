@@ -3,7 +3,6 @@
 **/obj/
 **/packages/
 **/debug/
-**/BaseGameResources*/
 
 # Python
 __pycache__/
