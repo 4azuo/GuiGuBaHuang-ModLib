@@ -71,5 +71,15 @@ namespace ModLib.Helper
         {
             return g.world.battle.data.isRealBattle;
         }
+
+        /// <summary>
+        /// Determines whether the current battle is a self battle.
+        /// </summary>
+        /// <returns><see langword="true"/> if the current battle involves the player themselves; otherwise, <see
+        /// langword="false"/>.</returns>
+        public static bool IsSelfBattle()
+        {
+            return g.world.battle.data.isSelfBattle;
+        }
     }
 }
