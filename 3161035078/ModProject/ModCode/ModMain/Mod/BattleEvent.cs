@@ -381,7 +381,7 @@ namespace MOD_nE7UL2.Mod
                 g.world.battle.data.dungeonBaseItem.id != 123 /*Sect battle*/ &&
                 g.world.battle.data.dungeonBaseItem.id != 124 /*Sect Flying Canoe Battle*/ &&
                 g.world.battle.data.dungeonBaseItem.id != 125 /*Sect Guardian Battle*/ &&
-                g.world.battle.data.dungeonBaseItem.id != 15 /*New Game Battle*/
+                g.world.battle.data.dungeonBaseItem.id != 15 /*New Game Battle*/ &&
                 //g.world.battle.data.dungeonBaseItem.id != 7007 /*Spiritlock Circle*/ &&
                 //g.world.battle.data.dungeonBaseItem.id != 7008 /*Spiritlock Circle*/ &&
                 //g.world.battle.data.dungeonBaseItem.id != 7009 /*Spiritlock Circle*/ &&
@@ -389,8 +389,8 @@ namespace MOD_nE7UL2.Mod
                 //g.world.battle.data.dungeonBaseItem.id != 7011 /*Demonseal Circle*/ &&
                 //g.world.battle.data.dungeonBaseItem.id != 7012 /*Demonseal Circle*/ &&
                 //g.world.battle.data.dungeonBaseItem.id != 7013 /*Demonseal Circle*/ &&
+                !DungeonHelper.IsSelfBattle() ////should block self battles???
                 ;
-            //should block self battles
         }
     }
 }
