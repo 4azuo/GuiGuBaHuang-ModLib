@@ -6,10 +6,10 @@ $settings = Get-Content "$PSScriptRoot\settings.json" | ConvertFrom-Json
 
 # Define paths
 $projectId = $settings.projectId
-$steamPath = $settings.steamWorkshopPath
 $modName = $settings.modName
-$sourcePath = Join-Path $steamPath "$projectId\debug\$modName"
-$targetPath = Join-Path $steamPath "$projectId\debug\$modName.rar"
+$projectRoot = Split-Path $PSScriptRoot -Parent
+$sourcePath = Join-Path $projectRoot "debug\$modName"
+$targetPath = Join-Path $projectRoot "debug\$modName.rar"
 
 # Check if WinRAR is installed
 $winrarPath = "C:\Program Files\WinRAR\WinRAR.exe"
