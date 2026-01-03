@@ -1,0 +1,323 @@
+{
+	"__name": "Mod Configurations",
+	"BaseConfigs": {
+		"LevelExpRatio": 1.00,
+		
+		"ArtifactDurableRatio": 5.0,
+		"ArtifactSpCostRatio": 6.0,
+		"ArtifactHpRatio": 6.0,
+		"ArtifactAtkRatio": 3.0,
+		"ArtifactDefRatio": 3.0,
+		
+		"SkillMasteryExpRatio1": 1.5,
+		"SkillMasteryExpRatio2": 1.6,
+		"SkillMasteryExpRatio3": 1.8,
+		"SkillMasteryExpRatio4": 2.0,
+		"SkillMasteryExpRatio5": 2.3,
+		"SkillMasteryExpRatio6": 2.6,
+		"SkillMasteryExpRatio7": 3.0,
+		"SkillMasteryExpRatio8": 3.5,
+		"SkillMasteryExpRatio9": 4.0,
+		"SkillMasteryExpRatio10": 5.0,
+		
+		"SkillMpCostRatio1": 1.7,
+		"SkillMpCostRatio2": 1.9,
+		"SkillMpCostRatio3": 2.6,
+		"SkillMpCostRatio4": 3.0,
+		"SkillMpCostRatio5": 4.0,
+		"SkillMpCostRatio6": 6.0,
+		"SkillMpCostRatio7": 9.0,
+		"SkillMpCostRatio8": 12.0,
+		"SkillMpCostRatio9": 18.0,
+		"SkillMpCostRatio10": 25.0,
+		
+		"SkillCdRatio1": 0.70,
+		"SkillCdRatio2": 0.72,
+		"SkillCdRatio3": 0.74,
+		"SkillCdRatio4": 0.76,
+		"SkillCdRatio5": 0.78,
+		"SkillCdRatio6": 0.80,
+		"SkillCdRatio7": 0.82,
+		"SkillCdRatio8": 0.84,
+		"SkillCdRatio9": 0.86,
+		"SkillCdRatio10": 0.88,
+		
+		"SkillZizhiBaseRatio1": 1.1,
+		"SkillZizhiBaseRatio2": 1.4,
+		"SkillZizhiBaseRatio3": 2.5,
+		"SkillZizhiBaseRatio4": 3.0,
+		"SkillZizhiBaseRatio5": 5.0,
+		"SkillZizhiBaseRatio6": 7.0,
+		"SkillZizhiBaseRatio7": 10.0,
+		"SkillZizhiBaseRatio8": 13.0,
+		"SkillZizhiBaseRatio9": 18.0,
+		"SkillZizhiBaseRatio10": 25.0,
+		"SkillZizhiAddRatio1": 1.10,
+		"SkillZizhiAddRatio2": 1.15,
+		"SkillZizhiAddRatio3": 1.20,
+		"SkillZizhiAddRatio4": 1.25,
+		"SkillZizhiAddRatio5": 1.35,
+		"SkillZizhiAddRatio6": 1.45,
+		"SkillZizhiAddRatio7": 1.65,
+		"SkillZizhiAddRatio8": 1.90,
+		"SkillZizhiAddRatio9": 2.20,
+		"SkillZizhiAddRatio10": 2.50,
+		
+		"SkillDaodianBaseRatio1": 1.10,
+		"SkillDaodianBaseRatio2": 1.20,
+		"SkillDaodianBaseRatio3": 1.30,
+		"SkillDaodianBaseRatio4": 1.40,
+		"SkillDaodianBaseRatio5": 1.50,
+		"SkillDaodianBaseRatio6": 1.65,
+		"SkillDaodianBaseRatio7": 1.80,
+		"SkillDaodianBaseRatio8": 1.95,
+		"SkillDaodianBaseRatio9": 2.10,
+		"SkillDaodianBaseRatio10": 2.40,
+		"SkillDaodianAddRatio1": 1.05,
+		"SkillDaodianAddRatio2": 1.10,
+		"SkillDaodianAddRatio3": 1.15,
+		"SkillDaodianAddRatio4": 1.20,
+		"SkillDaodianAddRatio5": 1.25,
+		"SkillDaodianAddRatio6": 1.30,
+		"SkillDaodianAddRatio7": 1.35,
+		"SkillDaodianAddRatio8": 1.40,
+		"SkillDaodianAddRatio9": 1.45,
+		"SkillDaodianAddRatio10": 1.50,
+		
+		"PowerUpPillEfxRatio1": 10.0,
+		"PowerUpPillEfxRatio2": 15.0,
+		"PowerUpPillEfxRatio3": 20.0,
+		"PowerUpPillEfxRatio4": 25.0,
+		"PowerUpPillEfxRatio5": 32.0,
+		"PowerUpPillEfxRatio6": 40.0,
+		"PowerUpPillEfxRatio7": 50.0,
+		"PowerUpPillEfxRatio8": 60.0,
+		"PowerUpPillEfxRatio9": 80.0,
+		"PowerUpPillEfxRatio10": 100.0,
+	},
+	"ContributionExchangeConfigs": {
+		"__formula": "item-sell-value / {ExchangeRatio}",
+		"ExchangeRatio": 40
+	},
+	"MissionDeclareConfigs": {
+		"FeeRate": 0.2,
+		"FeeMinCost": 100,
+		"DegreeCostRate": 0.001,
+		"DegreeMinCost": 1,
+		"__tip_CostTime": "(month)",
+		"CostTime": [
+			1,
+			2,
+			3,
+			5,
+			8,
+			12
+		],
+		"SuccessRate": [
+			100.0,
+			99.0,
+			98.0,
+			96.0,
+			94.0,
+			91.0
+		]
+	},
+	"BattleManashieldConfigs": {
+		"__formula": "(cur-mp * {ManaShieldRate1}) + (max-mp * {ManaShieldRate2}) + (cur-hp * 0.05 * {{Blood Energy} Level})",
+		"ManaShieldRate1": 0.15,
+		"ManaShieldRate2": 0.05
+	},
+	"UnitTypeConfigs": {
+		"__tip": "Appearance rate (%)",
+		"UnitTypes": {
+			"PowerUnit": 8.0,
+			"SpeedUnit": 8.0,
+			"TaoistUnit": 8.0,
+			"AtkUnit": 12.0,
+			"DefUnit": 12.0,
+			"Angel": 2.0,
+			"Evil": 4.0,
+			"Merchant": 16.0
+		}
+	},
+	"RealTrialConfigs": {
+		"PowerUpOnGameLevel": 0.64,
+		"PowerUpOnGradeLevel": 0.08
+	},
+	"RealStorageConfigs": {
+		"__tip": "-0.1% on total item-worth-value every month",
+		"FeeRate": 0.001
+	},
+	"RealMarketConfigs": {
+		"__tip": "(%)",
+		"MinSellRate": 85.0,
+		"MaxSellRate": 110.0,
+		"MinBuyRate": 90.0,
+		"MaxBuyRate": 115.0,
+		"TownGReduceBuyRate": -5.0,
+		"TownMReduceBuyRate": -10.0,
+		"Events": {
+			"HappyNewYear": {
+				"Name": "Happy New Year",
+				"__tip1": "Start, Dur, Period (month)",
+				"Start": 1,
+				"Dur": 1,
+				"Period": 12,
+				"__tip2": "AddSellRate, AddBuyRate (%)",
+				"AddSellRate": 25.0,
+				"AddBuyRate": 20.0
+			},
+			"HappyMidYear": {
+				"Name": "Happy Middle Year",
+				"__tip1": "Start, Dur, Period (month)",
+				"Start": 6,
+				"Dur": 1,
+				"Period": 12,
+				"__tip2": "AddSellRate, AddBuyRate (%)",
+				"AddSellRate": -20.0,
+				"AddBuyRate": -25.0
+			}
+		}
+	},
+	"MonstStrongerConfigs": {
+		"AtkR": 1.05,
+		"DefR": 0.5,
+		"MHpR": 1.5,
+		"Additionnal": 0.02,
+		"RebirthAffect": 0.04,
+		"GrowRate": {
+			"Common": 0.004,
+			"Elite": 0.002,
+			"BOSS": 0.001,
+			"NPC": 0.002
+		},
+		"KillGrowRate": {
+			"Common": 0.000005,
+			"Elite": 0.00005,
+			"BOSS": 0.0001,
+			"NPC": 0.00005
+		},
+		"PlayerAtk2Hp": {
+			"Common": 1.0,
+			"Elite": 10.0,
+			"BOSS": 100.0,
+			"NPC": 50.0
+		},
+		"AreaBonus": {
+			"1": 0.001,
+			"2": 0.005,
+			"3": 0.01,
+			"4": 0.015,
+			"5": 0.02,
+			"6": 0.03,
+			"7": 0.045,
+			"8": 0.06,
+			"9": 0.08,
+			"10": 0.10,
+			"11": 0.13,
+			"12": 0.16,
+			"13": 0.20
+		},
+		"PlayerAffectSummon": {
+			"Atk": 0.05,
+			"Def": 0.01,
+			"MHp": 0.10,
+			"Bas": 0.01
+		}
+	},
+	"NpcUpgradeSkillConfigs": {
+		"UpgradeRates": {
+			"SkillLeft": 7.0,
+			"SkillRight": 7.0,
+			"Step": 12.0,
+			"Ultimate": 8.0,
+			"Ability": 16.0
+		}
+	},
+	"ExpertConfigs": {
+		"SkillDmgRatios": {
+			"None": 0.0,
+			"SkillLeft": 0.1,
+			"SkillRight": 1.0,
+			"Step": 1.0,
+			"Ability": 0.4,
+			"Ultimate": 5.0
+		},
+		"SkillExpRatios": {
+			"None": 0.0,
+			"SkillLeft": 0.02,
+			"SkillRight": 0.8,
+			"Step": 0.1,
+			"Ability": 1.0,
+			"Ultimate": 0.6
+		},
+		"AutoArtifactExpRate": 1.0,
+		"BattleArtifactExpRate": 0.02
+	},
+	"BattleRewardConfigs": {
+		"ExpPerDmgDealt": 0.001,
+		"ExpPerDmgRecv": 0.01
+	},
+	"BankAccountConfigs": {
+		"OpenFee": {
+			"1": 100,
+			"2": 1000,
+			"3": 1000,
+			"4": 10000,
+			"5": 10000,
+			"6": 100000,
+			"7": 100000,
+			"8": 1000000,
+			"9": 1000000,
+			"10": 10000000,
+			"11": 20000000,
+			"12": 40000000,
+			"13": 100000000
+		}
+	},
+	"InflationaryConfigs": {
+		"InflationaryRate": 1.02
+	},
+	"MapBuildBattleConfigs": {
+		"EscapeChance": 10.00
+	},
+	"MarketItemConfigs": {
+		"JoinRange": 3,
+		"SellerJoinMarketRate": 8.00,
+		"SellRateDependOnGrade": 3.00,
+		"BuyerJoinMarketRate": 12.00,
+		"BuyRateDependOnGrade": 4.00,
+		"GetDealRate": 24.00,
+		"CancelDealOnMonth": 3.00,
+		"CancelDealLastMinuteRate": 8.00,
+		"HiddenRate": 20.00,
+		"GetStalkedRate": 10.00,
+	},
+	"BattleConfigs": {
+		"__tip": "These rates are checked every second.",
+		"JoinRange": 6,
+		"RandomNpcJoinRate": 0.10,
+		"SectNpcJoinRate": 1.00,
+		"TownGuardNpcJoinRate": 3.00,
+		"TeamMemberJoinRate": 5.00,
+		"TeamMemberBetrayRate": 0.20,
+		"StalkerJoinRate": 1.00,
+		"__tip": "From 250 to -250",
+		"FriendlyIntim": 160,
+		"EnemyIntim": -160,
+		"__tip": "Enemy righteous vs Player righteous",
+		"DifferenceRighteous": 80,
+	},
+	"CustomRefineConfigs": {
+		"__tip": "Total rates = 100%",
+		"LevelRates": {
+			"Common": 30.0,
+			"Uncommon": 20.0,
+			"Rare": 20.0,
+			"Myst": 16.0,
+			"Lgendary": 8.0,
+			"Beast": 4.0,
+			"Antique": 2.0
+		},
+	},
+}

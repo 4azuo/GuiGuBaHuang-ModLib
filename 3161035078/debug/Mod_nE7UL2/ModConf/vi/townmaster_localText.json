@@ -1,0 +1,52 @@
+[
+	{
+		"id": "420041110",
+		"key": "townmaster420041110desc",
+		"en|ch|tc|kr": "townmaster420041110desc"
+	},
+	{
+		"id": "420041111",
+		"key": "townmaster420041111",
+		"en|ch|tc|kr": "Chủ thị trấn"
+	},
+	{
+		"id": "420041112",
+		"key": "townmaster420041112",
+		"en|ch|tc|kr": "Người bảo vệ thị trấn"
+	},
+	{
+		"id": "420041113",
+		"key": "townmaster420041113drama",
+		"en|ch|tc|kr": "Bạn trở thành chủ thị trấn này."
+	},
+	{
+		"id": "420041114",
+		"key": "townmaster420041114drama",
+		"en|ch|tc|kr": "Bạn đã nhận được lời mời từ Chủ thị trấn {0}' cho vị trí người giám hộ?\nBạn có muốn trở thành Người bảo vệ thị trấn không?."
+	},
+	{
+		"id": "420041115",
+		"key": "townmaster420041114dramaOpt1",
+		"en|ch|tc|kr": "Có"
+	},
+	{
+		"id": "420041116",
+		"key": "townmaster420041114dramaOpt2",
+		"en|ch|tc|kr": "Không"
+	},
+	{
+		"id": "420041117",
+		"key": "townmaster420041117",
+		"en|ch|tc|kr": "Thị trấn: {0} & Chủ nhân: {1}"
+	},
+	{
+		"id": "420041118",
+		"key": "townmaster420041118",
+		"en|ch|tc|kr": "Ngân sách: {0:#,##0}"
+	},
+	{
+		"id": "420041119",
+		"key": "townmaster420041119",
+		"en|ch|tc|kr": "Mức lương: {0:#,##0}/năm"
+	}
+]

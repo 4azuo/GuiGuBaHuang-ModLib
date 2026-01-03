@@ -1,0 +1,102 @@
+[
+	{
+		"id": "420082001",
+		"key": "trainee420081001",
+		"en|ch|tc|kr": "Magia Nivel-1"
+	},
+	{
+		"id": "420083001",
+		"key": "trainee420081001desc",
+		"en|ch|tc|kr": "+2 % máx. MP"
+	},
+	{
+		"id": "420082002",
+		"key": "trainee420081002",
+		"en|ch|tc|kr": "Magia Nivel-2"
+	},
+	{
+		"id": "420083002",
+		"key": "trainee420081002desc",
+		"en|ch|tc|kr": "+4 % máx. MP"
+	},
+	{
+		"id": "420082003",
+		"key": "trainee420081003",
+		"en|ch|tc|kr": "Magia Lvl-3"
+	},
+	{
+		"id": "420083003",
+		"key": "trainee420081003desc",
+		"en|ch|tc|kr": "+7 % máx. MP"
+	},
+	{
+		"id": "420082004",
+		"key": "trainee420081004",
+		"en|ch|tc|kr": "Magia Nivel-4"
+	},
+	{
+		"id": "420083004",
+		"key": "trainee420081004desc",
+		"en|ch|tc|kr": "+10 % máx. MP"
+	},
+	{
+		"id": "420082005",
+		"key": "trainee420081005",
+		"en|ch|tc|kr": "Magia nivel 5"
+	},
+	{
+		"id": "420083005",
+		"key": "trainee420081005desc",
+		"en|ch|tc|kr": "+15 % máx. MP"
+	},
+	{
+		"id": "420082006",
+		"key": "trainee420081006",
+		"en|ch|tc|kr": "Magia Lvl-6"
+	},
+	{
+		"id": "420083006",
+		"key": "trainee420081006desc",
+		"en|ch|tc|kr": "+20 % máx. MP"
+	},
+	{
+		"id": "420082007",
+		"key": "trainee420081007",
+		"en|ch|tc|kr": "Magia Lvl-7"
+	},
+	{
+		"id": "420083007",
+		"key": "trainee420081007desc",
+		"en|ch|tc|kr": "+30 % máx. MP"
+	},
+	{
+		"id": "420082008",
+		"key": "trainee420081008",
+		"en|ch|tc|kr": "Magia Lvl-8"
+	},
+	{
+		"id": "420083008",
+		"key": "trainee420081008desc",
+		"en|ch|tc|kr": "+40 % máx. MP"
+	},
+	{
+		"id": "420082009",
+		"key": "trainee420081009",
+		"en|ch|tc|kr": "Magia Lvl-9"
+	},
+	{
+		"id": "420083009",
+		"key": "trainee420081009desc",
+		"en|ch|tc|kr": "+60 % máx. MP"
+	},
+	{
+		"id": "420082010",
+		"key": "trainee420081010",
+		"en|ch|tc|kr": "Magia Nivel-10"
+	},
+	{
+		"id": "420083010",
+		"key": "trainee420081010desc",
+		"en|ch|tc|kr": "+90 % máx. MP"
+	}
+]

@@ -1,0 +1,102 @@
+[
+	{
+		"id": "420092001",
+		"key": "merchant420091001",
+		"en|ch|tc|kr": "Thương gia cấp 1"
+	},
+	{
+		"id": "420093001",
+		"key": "merchant420091001desc",
+		"en|ch|tc|kr": "+2% Thông tin chi tiết, +0,3% Bán, +0,1% Thu nhập"
+	},
+	{
+		"id": "420092002",
+		"key": "merchant420091002",
+		"en|ch|tc|kr": "Thương gia cấp 2"
+	},
+	{
+		"id": "420093002",
+		"key": "merchant420091002desc",
+		"en|ch|tc|kr": "+4% Thông tin chi tiết, +0,6% Bán, +0,2% Thu nhập"
+	},
+	{
+		"id": "420092003",
+		"key": "merchant420091003",
+		"en|ch|tc|kr": "Thương gia cấp 3"
+	},
+	{
+		"id": "420093003",
+		"key": "merchant420091003desc",
+		"en|ch|tc|kr": "+6% Thông tin chi tiết, +0,9% Bán, +0,3% Thu nhập"
+	},
+	{
+		"id": "420092004",
+		"key": "merchant420091004",
+		"en|ch|tc|kr": "Thương gia cấp 4"
+	},
+	{
+		"id": "420093004",
+		"key": "merchant420091004desc",
+		"en|ch|tc|kr": "+8% Thông tin chi tiết, +1,2% Bán, +0,4% Thu nhập"
+	},
+	{
+		"id": "420092005",
+		"key": "merchant420091005",
+		"en|ch|tc|kr": "Thương gia cấp 5"
+	},
+	{
+		"id": "420093005",
+		"key": "merchant420091005desc",
+		"en|ch|tc|kr": "+10% Thông tin chi tiết, +1,5% Bán, +0,5% Thu nhập"
+	},
+	{
+		"id": "420092006",
+		"key": "merchant420091006",
+		"en|ch|tc|kr": "Thương gia cấp 6"
+	},
+	{
+		"id": "420093006",
+		"key": "merchant420091006desc",
+		"en|ch|tc|kr": "+13% Thông tin chi tiết, +1,8% Bán, +0,6% Thu nhập"
+	},
+	{
+		"id": "420092007",
+		"key": "merchant420091007",
+		"en|ch|tc|kr": "Thương nhân cấp 7"
+	},
+	{
+		"id": "420093007",
+		"key": "merchant420091007desc",
+		"en|ch|tc|kr": "+16% Thông tin chi tiết, +2,1% Bán, +0,7% Thu nhập"
+	},
+	{
+		"id": "420092008",
+		"key": "merchant420091008",
+		"en|ch|tc|kr": "Thương gia cấp 8"
+	},
+	{
+		"id": "420093008",
+		"key": "merchant420091008desc",
+		"en|ch|tc|kr": "+19% Thông tin chi tiết, +2,4% Bán, +0,8% Thu nhập"
+	},
+	{
+		"id": "420092009",
+		"key": "merchant420091009",
+		"en|ch|tc|kr": "Thương gia cấp 9"
+	},
+	{
+		"id": "420093009",
+		"key": "merchant420091009desc",
+		"en|ch|tc|kr": "+22% Thông tin chi tiết, +2,7% Bán, +0,9% Thu nhập"
+	},
+	{
+		"id": "420092010",
+		"key": "merchant420091010",
+		"en|ch|tc|kr": "Thương gia cấp 10"
+	},
+	{
+		"id": "420093010",
+		"key": "merchant420091010desc",
+		"en|ch|tc|kr": "+25% Thông tin chi tiết, +3,0% Bán, +1,0% Thu nhập"
+	}
+]

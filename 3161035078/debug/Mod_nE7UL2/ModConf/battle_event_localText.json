@@ -1,0 +1,266 @@
+[
+	{
+		"id": "480110100",
+		"key": "battleevent480110100",
+		"en": "Ha ha ha! The loot is mine! All of it!",
+		"ch": "哈哈哈！战利品是我的！所有这一切！",
+		"tc": "哈哈哈！戰利品是我的！所有這一切！",
+		"kr": "하하하! 전리품은 내꺼야! 전부!"
+	},
+	{
+		"id": "480110200",
+		"key": "battleevent480110200",
+		"en": "Let me help!",
+		"ch": "让我帮忙吧！",
+		"tc": "讓我幫忙吧！",
+		"kr": "제가 도와드리겠습니다!"
+	},
+	{
+		"id": "480110300",
+		"key": "battleevent480110300",
+		"en": "Don't mess with our sect member!",
+		"ch": "别惹我们宗门人！",
+		"tc": "別惹我們宗門人！",
+		"kr": "우리 종파원을 건드리지 마세요!"
+	},
+	{
+		"id": "480110400",
+		"key": "battleevent480110400",
+		"en": "You are not allowed to fight in town!",
+		"ch": "你不可以在城里打架！",
+		"tc": "你不可以在城裡打架！",
+		"kr": "마을에서는 싸울 수 없습니다!"
+	},
+	{
+		"id": "480110500",
+		"key": "battleevent480110500",
+		"en": "I have enough with you! Go to hell!",
+		"ch": "我和你已经够了！见鬼去吧！",
+		"tc": "我和你已經夠了！見鬼去吧！",
+		"kr": "나는 너와 함께라면 충분하다! 지옥에나 가라!"
+	},
+	{
+		"id": "480110501",
+		"key": "battleevent480110501",
+		"en": "The things you're doing are disgusting. Go to hell, you evil!",
+		"ch": "你所做的事情令人厌恶。下地狱去吧，你这个邪恶的人！",
+		"tc": "你所做的事情令人厭惡。下地獄去吧，你這個邪惡的人！",
+		"kr": "당신이 하고 있는 일은 역겹습니다. 지옥에나 가라, 이 악마야!"
+	},
+	{
+		"id": "480110502",
+		"key": "battleevent480110502",
+		"en": "Your lofty demeanor really makes me nauseous.",
+		"ch": "你那高高在上的神态真让我恶心。",
+		"tc": "你那高高在上的神態真讓我噁心。",
+		"kr": "당신의 고상한 태도가 정말 구역질이 나네요."
+	},
+	{
+		"id": "480110600",
+		"key": "battleevent480110600",
+		"en": "I know you have it. Give it to me!",
+		"ch": "我知道你有。把它给我！",
+		"tc": "我知道你有。把它給我！",
+		"kr": "나는 당신이 그것을 가지고 있다는 것을 알고 있습니다. 나에게 줘!"
+	},
+	{
+		"id": "480110601",
+		"key": "battleevent480110601",
+		"en": "Give me everything you've got on you!",
+		"ch": "把你身上的一切都给我！",
+		"tc": "把你身上的一切都給我！",
+		"kr": "당신이 가지고 있는 모든 것을 나에게 주세요!"
+	},
+	{
+		"id": "480110602",
+		"key": "battleevent480110602",
+		"en": "Don’t worry, I’m just ‘borrowing’ your stuff forever.",
+		"ch": "别担心，我只是永远“借用”你的东西。",
+		"tc": "別擔心，我只是永遠“借用”你的東西。",
+		"kr": "걱정하지 마세요. 저는 단지 당신의 물건을 영원히 '빌릴' 뿐입니다."
+	},
+	{
+		"id": "480111990",
+		"key": "battleevent480111990typeDesc",
+		"en": "War",
+		"ch": "战争",
+		"tc": "戰爭",
+		"kr": "전쟁"
+	},
+	{
+		"id": "480112990",
+		"key": "battleevent480112990name",
+		"en": "Town War",
+		"ch": "城镇战争",
+		"tc": "城鎮戰爭",
+		"kr": "마을 전쟁"
+	},
+	{
+		"id": "480113990",
+		"key": "battleevent480113990vicDesc",
+		"en": "Defeat your opponents.",
+		"ch": "击败你的对手。",
+		"tc": "擊敗你的對手。",
+		"kr": "상대방을 물리치세요."
+	},
+	{
+		"id": "480112991",
+		"key": "battleevent480112991name",
+		"en": "Monster Wave",
+		"ch": "怪物波",
+		"tc": "怪物波",
+		"kr": "몬스터 웨이브"
+	},
+	{
+		"id": "480113991",
+		"key": "battleevent480113991vicDesc",
+		"en": "Kill all monsters.",
+		"ch": "杀死所有怪物。",
+		"tc": "殺死所有怪物。",
+		"kr": "모든 몬스터를 죽여라."
+	},
+	{
+		"id": "480112880",
+		"key": "monstwave480112880name",
+		"en": "Lumos Bean Mage",
+		"ch": "荧光豆法师",
+		"tc": "熒光豆法師",
+		"kr": "루모스 콩 마법사"
+	},
+	{
+		"id": "480112881",
+		"key": "monstwave480112881name",
+		"en": "Verdant Blade Dancer",
+		"ch": "翠绿的剑舞者",
+		"tc": "翠綠的劍舞者",
+		"kr": "신록의 칼날 무희"
+	},
+	{
+		"id": "480112882",
+		"key": "monstwave480112882name",
+		"en": "Fungal Toxicant",
+		"ch": "真菌毒物",
+		"tc": "真菌毒物",
+		"kr": "곰팡이 독성물질"
+	},
+	{
+		"id": "480112883",
+		"key": "monstwave480112883name",
+		"en": "Stone Fist",
+		"ch": "石拳",
+		"tc": "石拳",
+		"kr": "돌주먹"
+	},
+	{
+		"id": "480112884",
+		"key": "monstwave480112884name",
+		"en": "Darkwood Hammer",
+		"ch": "黑木锤",
+		"tc": "黑木錘",
+		"kr": "흑목 망치"
+	},
+	{
+		"id": "480112885",
+		"key": "monstwave480112885name",
+		"en": "Floral Fiend",
+		"ch": "花魔",
+		"tc": "花魔",
+		"kr": "꽃마귀"
+	},
+	{
+		"id": "480112886",
+		"key": "monstwave480112886name",
+		"en": "Terra Maul",
+		"ch": "泰拉之锤",
+		"tc": "泰拉之鎚",
+		"kr": "테라 마울"
+	},
+	{
+		"id": "480112887",
+		"key": "monstwave480112887name",
+		"en": "Savage Mountain Demon",
+		"ch": "野蛮山魔",
+		"tc": "野蠻山魔",
+		"kr": "야만적인 산 악마"
+	},
+	{
+		"id": "480112888",
+		"key": "monstwave480112888name",
+		"en": "Dark Sow",
+		"ch": "黑母猪",
+		"tc": "黑母豬",
+		"kr": "다크 소우"
+	},
+	{
+		"id": "480112889",
+		"key": "monstwave480112889name",
+		"en": "Scaled Terror",
+		"ch": "鳞片恐怖",
+		"tc": "鱗片恐怖",
+		"kr": "확장된 공포"
+	},
+	{
+		"id": "480112890",
+		"key": "battleevent480112890",
+		"en": "The land trembles beneath your feet as the battle rages on. Your choice now will determine your path!",
+		"ch": "随着战斗的激烈进行，大地在你脚下颤抖。你现在的选择将决定你的道路！",
+		"tc": "隨著戰鬥的激烈進行，大地在你腳下顫抖。你現在的選擇將決定你的道路！",
+		"kr": "전투가 격렬해지면서 땅이 당신의 발 아래에서 떨립니다. 지금 당신의 선택이 당신의 길을 결정할 것입니다!"
+	},
+	{
+		"id": "480112891",
+		"key": "battleevent480112891",
+		"en": "Help defender",
+		"ch": "帮助后卫",
+		"tc": "幫助後衛",
+		"kr": "수비수를 도와주세요"
+	},
+	{
+		"id": "480112892",
+		"key": "battleevent480112892",
+		"en": "Help invader",
+		"ch": "帮助入侵者",
+		"tc": "幫助入侵者",
+		"kr": "침략자를 도와주세요"
+	},
+	{
+		"id": "480112893",
+		"key": "battleevent480112893",
+		"en": "Try to escape",
+		"ch": "尝试逃跑",
+		"tc": "嘗試逃跑",
+		"kr": "탈출을 시도해보세요"
+	},
+	{
+		"id": "480112894",
+		"key": "battleevent480112894",
+		"en": "{0} is invading {1}!\nWould you like to help?",
+		"ch": "{0}正在入侵{1}！\n您愿意帮忙吗？",
+		"tc": "{0}正在入侵{1}！\n您願意幫忙嗎？",
+		"kr": "{0}이(가) {1}을(를) 침공하고 있습니다!\n도와주시겠어요?"
+	},
+	{
+		"id": "480112895",
+		"key": "battleevent480112895",
+		"en": "{0} is under attack!\nWould you like to help?",
+		"ch": "{0} 受到攻击！\n您愿意帮忙吗？",
+		"tc": "{0} 受到攻擊！\n您願意幫忙嗎？",
+		"kr": "{0}이(가) 공격을 받고 있습니다!\n도와주시겠어요?"
+	},
+	{
+		"id": "480112898",
+		"key": "battleevent480112898",
+		"en": "Dont care",
+		"ch": "不在乎",
+		"tc": "不在乎",
+		"kr": "신경쓰지마"
+	},
+	{
+		"id": "480112899",
+		"key": "battleevent480112899",
+		"en": "Help",
+		"ch": "帮助",
+		"tc": "幫助",
+		"kr": "도움말"
+	}
+]

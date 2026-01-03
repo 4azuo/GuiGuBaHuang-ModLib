@@ -1,0 +1,162 @@
+[
+	{
+		"id": "420052001",
+		"key": "apprentice420051001",
+		"en": "Herbology Lvl-1",
+		"ch": "草药学 Lvl-1",
+		"tc": "草藥學 Lvl-1",
+		"kr": "약초학 Lvl-1"
+	},
+	{
+		"id": "420053001",
+		"key": "apprentice420051001desc",
+		"en": "+2% Max HP",
+		"ch": "+2% 最大值 HP",
+		"tc": "+2% 最大值 HP",
+		"kr": "+2% 최대 HP"
+	},
+	{
+		"id": "420052002",
+		"key": "apprentice420051002",
+		"en": "Herbology Lvl-2",
+		"ch": "草药学 Lvl-2",
+		"tc": "草藥學 Lvl-2",
+		"kr": "약초학 Lvl-2"
+	},
+	{
+		"id": "420053002",
+		"key": "apprentice420051002desc",
+		"en": "+4% Max HP",
+		"ch": "+4% 最大值 HP",
+		"tc": "+4% 最大值 HP",
+		"kr": "최대 +4% HP"
+	},
+	{
+		"id": "420052003",
+		"key": "apprentice420051003",
+		"en": "Herbology Lvl-3",
+		"ch": "草药学 Lvl-3",
+		"tc": "草藥學 Lvl-3",
+		"kr": "약초학 Lvl-3"
+	},
+	{
+		"id": "420053003",
+		"key": "apprentice420051003desc",
+		"en": "+6% Max HP",
+		"ch": "+6% 最大值 HP",
+		"tc": "+6% 最大值 HP",
+		"kr": "최대 +6% HP"
+	},
+	{
+		"id": "420052004",
+		"key": "apprentice420051004",
+		"en": "Herbology Lvl-4",
+		"ch": "草药学 Lvl-4",
+		"tc": "草藥學 Lvl-4",
+		"kr": "약초학 Lvl-4"
+	},
+	{
+		"id": "420053004",
+		"key": "apprentice420051004desc",
+		"en": "+8% Max HP",
+		"ch": "+8% 最大值 HP",
+		"tc": "+8% 最大值 HP",
+		"kr": "+8% 최대 HP"
+	},
+	{
+		"id": "420052005",
+		"key": "apprentice420051005",
+		"en": "Herbology Lvl-5",
+		"ch": "草药学 Lvl-5",
+		"tc": "草藥學 Lvl-5",
+		"kr": "약초학 Lvl-5"
+	},
+	{
+		"id": "420053005",
+		"key": "apprentice420051005desc",
+		"en": "+10% Max HP",
+		"ch": "+10% 最大值 HP",
+		"tc": "+10% 最大值 HP",
+		"kr": "+10% 최대 HP"
+	},
+	{
+		"id": "420052006",
+		"key": "apprentice420051006",
+		"en": "Herbology Lvl-6",
+		"ch": "草药学 Lvl-6",
+		"tc": "草藥學 Lvl-6",
+		"kr": "약초학 레벨-6"
+	},
+	{
+		"id": "420053006",
+		"key": "apprentice420051006desc",
+		"en": "+12% Max HP",
+		"ch": "+12% 最大值 HP",
+		"tc": "+12% 最大值 HP",
+		"kr": "+12% 최대 {⑪}0{/⑪⑪}"
+	},
+	{
+		"id": "420052007",
+		"key": "apprentice420051007",
+		"en": "Herbology Lvl-7",
+		"ch": "草药学 Lvl-7",
+		"tc": "草藥學 Lvl-7",
+		"kr": "약초학 Lvl-7"
+	},
+	{
+		"id": "420053007",
+		"key": "apprentice420051007desc",
+		"en": "+14% Max HP",
+		"ch": "+14% 最大值 HP",
+		"tc": "+14% 最大值 HP",
+		"kr": "+14% 최대 {⑪}0{/⑪⑪}"
+	},
+	{
+		"id": "420052008",
+		"key": "apprentice420051008",
+		"en": "Herbology Lvl-8",
+		"ch": "草药学 Lvl-8",
+		"tc": "草藥學 Lvl-8",
+		"kr": "약초학 Lvl-8"
+	},
+	{
+		"id": "420053008",
+		"key": "apprentice420051008desc",
+		"en": "+16% Max HP",
+		"ch": "+16% 最大值 HP",
+		"tc": "+16% 最大值 HP",
+		"kr": "+16% 최대 HP"
+	},
+	{
+		"id": "420052009",
+		"key": "apprentice420051009",
+		"en": "Herbology Lvl-9",
+		"ch": "草药学 Lvl-9",
+		"tc": "草藥學 Lvl-9",
+		"kr": "약초학 Lvl-9"
+	},
+	{
+		"id": "420053009",
+		"key": "apprentice420051009desc",
+		"en": "+18% Max HP",
+		"ch": "+18% 最大值 HP",
+		"tc": "+18% 最大值 HP",
+		"kr": "+18% 최대 HP"
+	},
+	{
+		"id": "420052010",
+		"key": "apprentice420051010",
+		"en": "Herbology Lvl-10",
+		"ch": "草药学 Lvl-10",
+		"tc": "草藥學 Lvl-10",
+		"kr": "약초학 Lvl-10"
+	},
+	{
+		"id": "420053010",
+		"key": "apprentice420051010desc",
+		"en": "+20% Max HP",
+		"ch": "+20% 最大值 HP",
+		"tc": "+20% 最大值 HP",
+		"kr": "+20% 최대 HP"
+	}
+]

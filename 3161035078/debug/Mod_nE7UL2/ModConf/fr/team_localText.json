@@ -1,0 +1,72 @@
+[
+	{
+		"id": "420041120",
+		"key": "team420041120desc",
+		"en|ch|tc|kr": "team420041120desc"
+	},
+	{
+		"id": "420041121",
+		"key": "team420041121",
+		"en|ch|tc|kr": "Équipe"
+	},
+	{
+		"id": "420041123",
+		"key": "team420041123drama",
+		"en|ch|tc|kr": "Voulez-vous voyager ensemble?"
+	},
+	{
+		"id": "420041124",
+		"key": "team420041124dramaOpt1",
+		"en|ch|tc|kr": "Oui"
+	},
+	{
+		"id": "420041125",
+		"key": "team420041125dramaOpt2",
+		"en|ch|tc|kr": "Non"
+	},
+	{
+		"id": "420041126",
+		"key": "team420041126",
+		"en|ch|tc|kr": "Licencier l'équipe"
+	},
+	{
+		"id": "420041127",
+		"key": "team420041127",
+		"en|ch|tc|kr": "Gérer l'équipe"
+	},
+	{
+		"id": "420041128",
+		"key": "team420041128",
+		"en|ch|tc|kr": "Etes-vous sûr d'ajouter cette personne ?"
+	},
+	{
+		"id": "420041129",
+		"key": "team420041129",
+		"en|ch|tc|kr": "Vous devez quitter l'équipe actuelle !"
+	},
+	{
+		"id": "420041130",
+		"key": "team420041130",
+		"en|ch|tc|kr": "Etes-vous sûr de licencier cette personne ?"
+	},
+	{
+		"id": "420041131",
+		"key": "team420041131",
+		"en|ch|tc|kr": "Embaucher des personnes"
+	},
+	{
+		"id": "420041132",
+		"key": "team420041132",
+		"en|ch|tc|kr": "Vous n'avez pas à payer pour des amis !"
+	},
+	{
+		"id": "420041133",
+		"key": "team420041133",
+		"en|ch|tc|kr": "Faites équipe"
+	},
+	{
+		"id": "420041134",
+		"key": "team420041134",
+		"en|ch|tc|kr": "Etes-vous sûr de licencier votre équipe ?"
+	}
+]

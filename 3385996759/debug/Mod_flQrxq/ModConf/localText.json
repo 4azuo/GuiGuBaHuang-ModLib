@@ -1,0 +1,99 @@
+[
+	{
+		"id": "999990000",
+		"key": "libtxt999990000",
+		"en": "Warning",
+		"ch": "警告",
+		"tc": "警告",
+		"kr": "경고"
+	},
+	{
+		"id": "999990001",
+		"key": "libtxt999990001",
+		"en": "ModLib's UI is optimized for 16:9 screen ratio.",
+		"ch": "ModLib 的 UI 针对 16:9 屏幕比例进行了优化。",
+		"tc": "ModLib 的 UI 針對 16:9 屏幕比例進行了優化。",
+		"kr": "ModLib의 UI은 16:9 화면 비율에 최적화되어 있습니다."
+	},
+	{
+		"id": "999990002",
+		"key": "libtxt999990002",
+		"en": "It will run a benchmark to initialize RAM for the game.",
+		"ch": "它将运行基准测试来初始化游戏的 RAM。",
+		"tc": "它將運行基準測試來初始化遊戲的 RAM。",
+		"kr": "벤치마크를 실행하여 게임의 RAM을 초기화합니다."
+	},
+	{
+		"id": "999990003",
+		"key": "libtxt999990003",
+		"en": "You have to reset the game!",
+		"ch": "你必须重置游戏！",
+		"tc": "你必須重置遊戲！",
+		"kr": "게임을 재설정해야 합니다!"
+	},
+	{
+		"id": "999990004",
+		"key": "libtxt999990004",
+		"en": "This is the first time. Do you wanna run a benchmark to initialize RAM for the game?",
+		"ch": "这是第一次。您想运行基准测试来初始化游戏的 RAM 吗？",
+		"tc": "這是第一次。您想運行基準測試來初始化遊戲的 RAM 嗎？",
+		"kr": "이번이 처음입니다. 벤치마크를 실행하여 게임의 RAM을 초기화하시겠습니까?"
+	},
+	{
+		"id": "999990005",
+		"key": "libtxt999990005",
+		"en": "DEFAULT_DRAMA_OPT",
+		"ch": "DEFAULT_DRAMA_OPT",
+		"tc": "DEFAULT_DRAMA_OPT",
+		"kr": "DEFAULT_DRAMA_OPT"
+	},
+	{
+		"id": "999990006",
+		"key": "libtxt999990006",
+		"en": "Hide Exceptions",
+		"ch": "隐藏异常",
+		"tc": "隱藏異常",
+		"kr": "예외 숨기기"
+	},
+	{
+		"id": "999990007",
+		"key": "libtxt999990007",
+		"en": "(Please turn on if you wanna feedback bugs)",
+		"ch": "（如果您想反馈Bug，请开启）",
+		"tc": "（如果您想反饋Bug，請開啟）",
+		"kr": "(버그 피드백을 원하시면 켜주세요)"
+	},
+	{
+		"id": "999990008",
+		"key": "libtxt999990008",
+		"en": "Page {0}",
+		"ch": "第{0}页",
+		"tc": "第{0}頁",
+		"kr": "페이지 {0}"
+	},
+	{
+		"id": "999990009",
+		"key": "libtxt999990009",
+		"en": "ModCreator"
+	},
+	{
+		"id": "999990010",
+		"key": "libtxt999990010",
+		"en": "Check IDs"
+	},
+	{
+		"id": "999990011",
+		"key": "libtxt999990011",
+		"en": "Check duplicated IDs which loaded by ModLib."
+	},
+	{
+		"id": "999990012",
+		"key": "libtxt999990012",
+		"en": "Export"
+	},
+	{
+		"id": "999990013",
+		"key": "libtxt999990013",
+		"en": "Export all game assets."
+	}
+]

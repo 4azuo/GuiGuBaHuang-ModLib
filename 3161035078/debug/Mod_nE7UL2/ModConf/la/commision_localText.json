@@ -1,0 +1,35 @@
+[
+	{
+		"id": "480030100",
+		"key": "commission480030100",
+		"en|ch|tc|kr": "Rogatum misit..."
+	},
+	{
+		"id": "480030200",
+		"key": "commission480030200",
+		"en": "",
+		"ch": "",
+		"tc": "",
+		"kr": ""
+	},
+	{
+		"id": "480030300",
+		"key": "commission480030300",
+		"en|ch|tc|kr": "- - - - -"
+	},
+	{
+		"id": "480030400",
+		"key": "commission480030400",
+		"en|ch|tc|kr": "Pretium {0:#,##0} lapidis spiritus (+{1:#,##0} mercedis)"
+	},
+	{
+		"id": "480030500",
+		"key": "commission480030500",
+		"en|ch|tc|kr": "Pretium {0:#,##0} lapidis spiritus (+{1:#,##0} mercedis) et {2:#,##0} Majoris gradus"
+	},
+	{
+		"id": "480030600",
+		"key": "commission480030600",
+		"en|ch|tc|kr": "Pretium {0:0} mensuum ({1:0.0}% successus rate + fortuna)"
+	}
+]

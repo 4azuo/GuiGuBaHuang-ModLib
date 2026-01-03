@@ -1,0 +1,102 @@
+[
+	{
+		"id": "420092001",
+		"key": "merchant420091001",
+		"en|ch|tc|kr": "Marchand Niveau 1"
+	},
+	{
+		"id": "420093001",
+		"key": "merchant420091001desc",
+		"en|ch|tc|kr": "+2% Insight, +0,3% Vente, +0,1% Revenu"
+	},
+	{
+		"id": "420092002",
+		"key": "merchant420091002",
+		"en|ch|tc|kr": "Marchand Niveau 2"
+	},
+	{
+		"id": "420093002",
+		"key": "merchant420091002desc",
+		"en|ch|tc|kr": "+4% Insight, +0,6% Vente, +0,2% Revenu"
+	},
+	{
+		"id": "420092003",
+		"key": "merchant420091003",
+		"en|ch|tc|kr": "Marchand Niveau 3"
+	},
+	{
+		"id": "420093003",
+		"key": "merchant420091003desc",
+		"en|ch|tc|kr": "+6% Insight, +0,9% Vente, +0,3% Revenu"
+	},
+	{
+		"id": "420092004",
+		"key": "merchant420091004",
+		"en|ch|tc|kr": "Marchand Niveau 4"
+	},
+	{
+		"id": "420093004",
+		"key": "merchant420091004desc",
+		"en|ch|tc|kr": "+8% Insight, +1,2% Vente, +0,4% Revenu"
+	},
+	{
+		"id": "420092005",
+		"key": "merchant420091005",
+		"en|ch|tc|kr": "Marchand Niveau 5"
+	},
+	{
+		"id": "420093005",
+		"key": "merchant420091005desc",
+		"en|ch|tc|kr": "+10 % de perspicacité, +1,5 % de vente, +0,5 % de revenus"
+	},
+	{
+		"id": "420092006",
+		"key": "merchant420091006",
+		"en|ch|tc|kr": "Marchand Niveau 6"
+	},
+	{
+		"id": "420093006",
+		"key": "merchant420091006desc",
+		"en|ch|tc|kr": "+13 % Insight, +1,8 % Vente, +0,6 % Revenu"
+	},
+	{
+		"id": "420092007",
+		"key": "merchant420091007",
+		"en|ch|tc|kr": "Marchand niveau 7"
+	},
+	{
+		"id": "420093007",
+		"key": "merchant420091007desc",
+		"en|ch|tc|kr": "+16% Insight, +2,1% Vente, +0,7% Revenu"
+	},
+	{
+		"id": "420092008",
+		"key": "merchant420091008",
+		"en|ch|tc|kr": "Marchand Niveau 8"
+	},
+	{
+		"id": "420093008",
+		"key": "merchant420091008desc",
+		"en|ch|tc|kr": "+19 % Insight, +2,4 % Vente, +0,8 % Revenu"
+	},
+	{
+		"id": "420092009",
+		"key": "merchant420091009",
+		"en|ch|tc|kr": "Marchand Niveau 9"
+	},
+	{
+		"id": "420093009",
+		"key": "merchant420091009desc",
+		"en|ch|tc|kr": "+22% Insight, +2,7% Vente, +0,9% Revenu"
+	},
+	{
+		"id": "420092010",
+		"key": "merchant420091010",
+		"en|ch|tc|kr": "Marchand Niveau 10"
+	},
+	{
+		"id": "420093010",
+		"key": "merchant420091010desc",
+		"en|ch|tc|kr": "+25 % de perspicacité, +3,0 % de vente, +1,0 % de revenus"
+	}
+]

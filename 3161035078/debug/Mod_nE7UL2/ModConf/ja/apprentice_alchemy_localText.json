@@ -1,0 +1,102 @@
+[
+	{
+		"id": "420012001",
+		"key": "apprentice420011001",
+		"en|ch|tc|kr": "錬金術Lv1"
+	},
+	{
+		"id": "420013001",
+		"key": "apprentice420011001desc",
+		"en|ch|tc|kr": "+5% 最大 HP"
+	},
+	{
+		"id": "420012002",
+		"key": "apprentice420011002",
+		"en|ch|tc|kr": "錬金術Lv2"
+	},
+	{
+		"id": "420013002",
+		"key": "apprentice420011002desc",
+		"en|ch|tc|kr": "+10% 最大 HP"
+	},
+	{
+		"id": "420012003",
+		"key": "apprentice420011003",
+		"en|ch|tc|kr": "錬金術Lv3"
+	},
+	{
+		"id": "420013003",
+		"key": "apprentice420011003desc",
+		"en|ch|tc|kr": "+15% 最大 HP"
+	},
+	{
+		"id": "420012004",
+		"key": "apprentice420011004",
+		"en|ch|tc|kr": "錬金術Lv4"
+	},
+	{
+		"id": "420013004",
+		"key": "apprentice420011004desc",
+		"en|ch|tc|kr": "+20% 最大 HP"
+	},
+	{
+		"id": "420012005",
+		"key": "apprentice420011005",
+		"en|ch|tc|kr": "錬金術Lv-5"
+	},
+	{
+		"id": "420013005",
+		"key": "apprentice420011005desc",
+		"en|ch|tc|kr": "+25% 最大 HP"
+	},
+	{
+		"id": "420012006",
+		"key": "apprentice420011006",
+		"en|ch|tc|kr": "錬金術Lv6"
+	},
+	{
+		"id": "420013006",
+		"key": "apprentice420011006desc",
+		"en|ch|tc|kr": "+30% 最大 HP"
+	},
+	{
+		"id": "420012007",
+		"key": "apprentice420011007",
+		"en|ch|tc|kr": "錬金術Lv7"
+	},
+	{
+		"id": "420013007",
+		"key": "apprentice420011007desc",
+		"en|ch|tc|kr": "+35% 最大 HP"
+	},
+	{
+		"id": "420012008",
+		"key": "apprentice420011008",
+		"en|ch|tc|kr": "錬金術Lv8"
+	},
+	{
+		"id": "420013008",
+		"key": "apprentice420011008desc",
+		"en|ch|tc|kr": "+40% 最大 HP"
+	},
+	{
+		"id": "420012009",
+		"key": "apprentice420011009",
+		"en|ch|tc|kr": "錬金術Lv9"
+	},
+	{
+		"id": "420013009",
+		"key": "apprentice420011009desc",
+		"en|ch|tc|kr": "+45% 最大 HP"
+	},
+	{
+		"id": "420012010",
+		"key": "apprentice420011010",
+		"en|ch|tc|kr": "錬金術Lv10"
+	},
+	{
+		"id": "420013010",
+		"key": "apprentice420011010desc",
+		"en|ch|tc|kr": "+50% 最大 HP"
+	}
+]

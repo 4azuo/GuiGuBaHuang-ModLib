@@ -1,0 +1,72 @@
+[
+	{
+		"id": "420041120",
+		"key": "team420041120desc",
+		"en|ch|tc|kr": "team420041120desc"
+	},
+	{
+		"id": "420041121",
+		"key": "team420041121",
+		"en|ch|tc|kr": "Team"
+	},
+	{
+		"id": "420041123",
+		"key": "team420041123drama",
+		"en|ch|tc|kr": "Wollen Sie zusammen reisen?"
+	},
+	{
+		"id": "420041124",
+		"key": "team420041124dramaOpt1",
+		"en|ch|tc|kr": "Ja"
+	},
+	{
+		"id": "420041125",
+		"key": "team420041125dramaOpt2",
+		"en|ch|tc|kr": "Nein"
+	},
+	{
+		"id": "420041126",
+		"key": "team420041126",
+		"en|ch|tc|kr": "Team entlassen"
+	},
+	{
+		"id": "420041127",
+		"key": "team420041127",
+		"en|ch|tc|kr": "Team verwalten"
+	},
+	{
+		"id": "420041128",
+		"key": "team420041128",
+		"en|ch|tc|kr": "Sind Sie sicher, dass Sie diese Person hinzufügen möchten?"
+	},
+	{
+		"id": "420041129",
+		"key": "team420041129",
+		"en|ch|tc|kr": "Du musst das aktuelle Team verlassen!"
+	},
+	{
+		"id": "420041130",
+		"key": "team420041130",
+		"en|ch|tc|kr": "Sind Sie sicher, dass Sie diese Person entlassen möchten?"
+	},
+	{
+		"id": "420041131",
+		"key": "team420041131",
+		"en|ch|tc|kr": "Stellen Sie Leute ein"
+	},
+	{
+		"id": "420041132",
+		"key": "team420041132",
+		"en|ch|tc|kr": "Du musst nicht für Freunde bezahlen!"
+	},
+	{
+		"id": "420041133",
+		"key": "team420041133",
+		"en|ch|tc|kr": "Verbünde dich"
+	},
+	{
+		"id": "420041134",
+		"key": "team420041134",
+		"en|ch|tc|kr": "Sind Sie sicher, Ihr Team zu entlassen?"
+	}
+]

@@ -1,0 +1,102 @@
+[
+	{
+		"id": "420092001",
+		"key": "merchant420091001",
+		"en|ch|tc|kr": "Mercator Lvl-1"
+	},
+	{
+		"id": "420093001",
+		"key": "merchant420091001desc",
+		"en|ch|tc|kr": "+2% Inspectio, +0.3% Vende, +0.1% Reditus"
+	},
+	{
+		"id": "420092002",
+		"key": "merchant420091002",
+		"en|ch|tc|kr": "Mercator Lvl-2"
+	},
+	{
+		"id": "420093002",
+		"key": "merchant420091002desc",
+		"en|ch|tc|kr": "+4% Inspectio, +0.6% Vende, +0.2% Reditus"
+	},
+	{
+		"id": "420092003",
+		"key": "merchant420091003",
+		"en|ch|tc|kr": "Mercator Lvl-3"
+	},
+	{
+		"id": "420093003",
+		"key": "merchant420091003desc",
+		"en|ch|tc|kr": "+6% Inspectio, +0.9% Vende, +0.3% Reditus"
+	},
+	{
+		"id": "420092004",
+		"key": "merchant420091004",
+		"en|ch|tc|kr": "Mercator Lvl-4"
+	},
+	{
+		"id": "420093004",
+		"key": "merchant420091004desc",
+		"en|ch|tc|kr": "+8% Inspectio, +1.2% Vende, +0.4% Reditus"
+	},
+	{
+		"id": "420092005",
+		"key": "merchant420091005",
+		"en|ch|tc|kr": "Mercator Lvl-5"
+	},
+	{
+		"id": "420093005",
+		"key": "merchant420091005desc",
+		"en|ch|tc|kr": "+10% Inspectio, +1.5% Vende, +0.5% Reditus"
+	},
+	{
+		"id": "420092006",
+		"key": "merchant420091006",
+		"en|ch|tc|kr": "Mercator Lvl-6"
+	},
+	{
+		"id": "420093006",
+		"key": "merchant420091006desc",
+		"en|ch|tc|kr": "+13% Inspectio, +1.8% Vende, +0.6% Reditus"
+	},
+	{
+		"id": "420092007",
+		"key": "merchant420091007",
+		"en|ch|tc|kr": "Mercator Lvl-7"
+	},
+	{
+		"id": "420093007",
+		"key": "merchant420091007desc",
+		"en|ch|tc|kr": "+16% Insight, +2.1% Vende, +0.7% Reditus"
+	},
+	{
+		"id": "420092008",
+		"key": "merchant420091008",
+		"en|ch|tc|kr": "Mercator Lvl-8"
+	},
+	{
+		"id": "420093008",
+		"key": "merchant420091008desc",
+		"en|ch|tc|kr": "+19% Insight, +2.4% Vende, +0.8% Reditus"
+	},
+	{
+		"id": "420092009",
+		"key": "merchant420091009",
+		"en|ch|tc|kr": "Mercator Lvl-9"
+	},
+	{
+		"id": "420093009",
+		"key": "merchant420091009desc",
+		"en|ch|tc|kr": "+22% Inspectio, +2.7% Vende, +0.9% Reditus"
+	},
+	{
+		"id": "420092010",
+		"key": "merchant420091010",
+		"en|ch|tc|kr": "Mercator Lvl-10"
+	},
+	{
+		"id": "420093010",
+		"key": "merchant420091010desc",
+		"en|ch|tc|kr": "+25% Insight, +3.0% Vende, +1.0% Reditus"
+	}
+]

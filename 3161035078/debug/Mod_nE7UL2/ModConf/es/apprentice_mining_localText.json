@@ -1,0 +1,102 @@
+[
+	{
+		"id": "420062001",
+		"key": "apprentice420061001",
+		"en|ch|tc|kr": "Minería Nivel-1"
+	},
+	{
+		"id": "420063001",
+		"key": "apprentice420061001desc",
+		"en|ch|tc|kr": "+2% DEF."
+	},
+	{
+		"id": "420062002",
+		"key": "apprentice420061002",
+		"en|ch|tc|kr": "Minería Nivel-2"
+	},
+	{
+		"id": "420063002",
+		"key": "apprentice420061002desc",
+		"en|ch|tc|kr": "+4% DEF."
+	},
+	{
+		"id": "420062003",
+		"key": "apprentice420061003",
+		"en|ch|tc|kr": "Minería Nivel-3"
+	},
+	{
+		"id": "420063003",
+		"key": "apprentice420061003desc",
+		"en|ch|tc|kr": "+6% DEF."
+	},
+	{
+		"id": "420062004",
+		"key": "apprentice420061004",
+		"en|ch|tc|kr": "Minería Nivel-4"
+	},
+	{
+		"id": "420063004",
+		"key": "apprentice420061004desc",
+		"en|ch|tc|kr": "+8% DEF."
+	},
+	{
+		"id": "420062005",
+		"key": "apprentice420061005",
+		"en|ch|tc|kr": "Minería Nivel-5"
+	},
+	{
+		"id": "420063005",
+		"key": "apprentice420061005desc",
+		"en|ch|tc|kr": "+10% DEF."
+	},
+	{
+		"id": "420062006",
+		"key": "apprentice420061006",
+		"en|ch|tc|kr": "Minería Nivel-6"
+	},
+	{
+		"id": "420063006",
+		"key": "apprentice420061006desc",
+		"en|ch|tc|kr": "+12% DEF."
+	},
+	{
+		"id": "420062007",
+		"key": "apprentice420061007",
+		"en|ch|tc|kr": "Minería Lvl-7"
+	},
+	{
+		"id": "420063007",
+		"key": "apprentice420061007desc",
+		"en|ch|tc|kr": "+14% DEF."
+	},
+	{
+		"id": "420062008",
+		"key": "apprentice420061008",
+		"en|ch|tc|kr": "Minería Lvl-8"
+	},
+	{
+		"id": "420063008",
+		"key": "apprentice420061008desc",
+		"en|ch|tc|kr": "+16% DEF."
+	},
+	{
+		"id": "420062009",
+		"key": "apprentice420061009",
+		"en|ch|tc|kr": "Minería Nivel-9"
+	},
+	{
+		"id": "420063009",
+		"key": "apprentice420061009desc",
+		"en|ch|tc|kr": "+18% DEF."
+	},
+	{
+		"id": "420062010",
+		"key": "apprentice420061010",
+		"en|ch|tc|kr": "Minería Nivel-10"
+	},
+	{
+		"id": "420063010",
+		"key": "apprentice420061010desc",
+		"en|ch|tc|kr": "+20% DEF."
+	}
+]

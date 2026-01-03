@@ -1,0 +1,26 @@
+[
+	{
+		"Id": "0001",
+		"GradeLvl": "3",
+		"Basis": "Sword",
+		"Skill": "Right",
+		"Efx": "Effect\\Battle\\Skill\\chuanchengzhezhen",
+		"Type": "Instant"
+	},
+	{
+		"Id": "0002",
+		"GradeLvl": "5",
+		"Basis": "Sword",
+		"Skill": "Right",
+		"Efx": "Effect\\Battle\\Skill\\chuanchengzhezhen1",
+		"Type": "Instant"
+	},
+	{
+		"Id": "0003",
+		"GradeLvl": "2",
+		"Basis": "Magic",
+		"Skill": "Right",
+		"Efx": "Effect\\Battle\\Skill\\Fengyin",
+		"Type": "Instant"
+	}
+]

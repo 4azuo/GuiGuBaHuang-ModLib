@@ -1,0 +1,35 @@
+[
+	{
+		"id": "480030100",
+		"key": "commission480030100",
+		"en|ch|tc|kr": "Habe eine Anfrage gesendet..."
+	},
+	{
+		"id": "480030200",
+		"key": "commission480030200",
+		"en": "",
+		"ch": "",
+		"tc": "",
+		"kr": ""
+	},
+	{
+		"id": "480030300",
+		"key": "commission480030300",
+		"en|ch|tc|kr": "- - - - -"
+	},
+	{
+		"id": "480030400",
+		"key": "commission480030400",
+		"en|ch|tc|kr": "Kosten {0:#,##0} Geistersteine (+{1:#,##0} Gebühr)"
+	},
+	{
+		"id": "480030500",
+		"key": "commission480030500",
+		"en|ch|tc|kr": "Kostet {0:#,##0} Geistersteine (+{1:#,##0} Gebühr) und {2:#,##0} Bürgermeistergrad"
+	},
+	{
+		"id": "480030600",
+		"key": "commission480030600",
+		"en|ch|tc|kr": "Kosten {0:0} Monate ({1:0.0} % Erfolgsquote + Glück)"
+	}
+]

@@ -1,0 +1,82 @@
+[
+	{
+		"id": 500030000,
+		"key": "building500030000",
+		"en": "Town Transfer",
+		"ch": "城镇交通",
+		"tc": "城鎮交通",
+		"kr": "타운 트랜스퍼"
+	},
+	{
+		"id": 500030001,
+		"key": "building500030001",
+		"en": "Town Auction",
+		"ch": "城镇拍卖",
+		"tc": "城鎮拍賣",
+		"kr": "타운 경매"
+	},
+	{
+		"id": 500030002,
+		"key": "building500030002",
+		"en": "Town Factory",
+		"ch": "镇工厂",
+		"tc": "鎮工廠",
+		"kr": "타운팩토리"
+	},
+	{
+		"id": 500030003,
+		"key": "building500030003",
+		"en": "Town Market Book",
+		"ch": "城镇市场书",
+		"tc": "城鎮市場書",
+		"kr": "타운마켓북"
+	},
+	{
+		"id": 500030004,
+		"key": "building500030004",
+		"en": "Town Market Dress",
+		"ch": "城镇市场连衣裙",
+		"tc": "城鎮市場連衣裙",
+		"kr": "타운 마켓 드레스"
+	},
+	{
+		"id": 500030005,
+		"key": "building500030005",
+		"en": "Town Bounty",
+		"ch": "城镇赏金",
+		"tc": "城鎮賞金",
+		"kr": "타운 바운티"
+	},
+	{
+		"id": 500030006,
+		"key": "building500030006",
+		"en": "School Traning Hall",
+		"ch": "学校训练馆",
+		"tc": "學校訓練館",
+		"kr": "학교 훈련실"
+	},
+	{
+		"id": 500030007,
+		"key": "building500030007",
+		"en": "School Transfer",
+		"ch": "转学",
+		"tc": "轉學",
+		"kr": "학교 편입"
+	},
+	{
+		"id": 500030008,
+		"key": "building500030008",
+		"en": "School Storage",
+		"ch": "学校仓库",
+		"tc": "學校倉庫",
+		"kr": "학교 창고"
+	},
+	{
+		"id": 500030009,
+		"key": "building500030009",
+		"en": "Town Storage",
+		"ch": "小镇仓储",
+		"tc": "小鎮倉儲",
+		"kr": "타운 창고"
+	}
+]

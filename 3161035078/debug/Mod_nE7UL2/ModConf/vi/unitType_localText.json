@@ -1,0 +1,82 @@
+[
+	{
+		"id": "420010100",
+		"key": "unitType420010100",
+		"en|ch|tc|kr": "Tăng sức mạnh"
+	},
+	{
+		"id": "420010200",
+		"key": "unitType420010200",
+		"en|ch|tc|kr": "Tăng tốc"
+	},
+	{
+		"id": "420010300",
+		"key": "unitType420010300",
+		"en|ch|tc|kr": "Đạo giáo"
+	},
+	{
+		"id": "420010400",
+		"key": "unitType420010400",
+		"en|ch|tc|kr": "Atk chuyên nghiệp"
+	},
+	{
+		"id": "420010500",
+		"key": "unitType420010500",
+		"en|ch|tc|kr": "chuyên nghiệp"
+	},
+	{
+		"id": "420010600",
+		"key": "unitType420010600",
+		"en|ch|tc|kr": "thiên thần"
+	},
+	{
+		"id": "420010700",
+		"key": "unitType420010700",
+		"en|ch|tc|kr": "Ác ma"
+	},
+	{
+		"id": "420010800",
+		"key": "unitType420010800",
+		"en|ch|tc|kr": "Thương gia"
+	},
+	{
+		"id": "421010100",
+		"key": "unitType420010100desc",
+		"en|ch|tc|kr": "Atk +10%, HP +20%"
+	},
+	{
+		"id": "421010200",
+		"key": "unitType420010200desc",
+		"en|ch|tc|kr": "Ag +30%"
+	},
+	{
+		"id": "421010300",
+		"key": "unitType420010300desc",
+		"en|ch|tc|kr": "Atk +8%, HP +15%, MP +10%"
+	},
+	{
+		"id": "421010400",
+		"key": "unitType420010400desc",
+		"en|ch|tc|kr": "Atk +30%"
+	},
+	{
+		"id": "421010500",
+		"key": "unitType420010500desc",
+		"en|ch|tc|kr": "HP +25%, Def +5%"
+	},
+	{
+		"id": "421010600",
+		"key": "unitType420010600desc",
+		"en|ch|tc|kr": "Atk +50%, Agi +10%, HP +20%, MP +10%, Chính nghĩa +100%, Ma quỷ -100%\n\nMỗi khi bạn tiêu diệt một ác quỷ, chỉ số của bạn sẽ tăng 20% theo chỉ số ác quỷ.\n(HP/MP/SP/Atk/Def/Cơ sở tốt nhất)"
+	},
+	{
+		"id": "421010700",
+		"key": "unitType420010700desc",
+		"en|ch|tc|kr": "Atk +30%, Def +10%, HP +100%, Chính nghĩa -100%, Ma quỷ -30%\n\nMỗi khi bạn giết một con người, chỉ số của bạn sẽ tăng 1% theo chỉ số của đơn vị bị giết.\n(HP/MP/SP/Atk/Def/Tất cả các cơ sở)"
+	},
+	{
+		"id": "421010800",
+		"key": "unitType420010800desc",
+		"en|ch|tc|kr": "Atk -10%, Def -10%, HP -25%, MP -50%, Dung lượng lưu trữ miễn phí, -10% chi phí mua trên thị trường, +10% giá trị bán trên thị trường, +3% thu nhập hàng tháng\n\nBạn có thể xem số liệu thống kê của NPC mục."
+	}
+]

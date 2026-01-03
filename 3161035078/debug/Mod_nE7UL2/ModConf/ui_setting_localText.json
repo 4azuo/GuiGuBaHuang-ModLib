@@ -1,0 +1,42 @@
+[
+	{
+		"id": -1000003000,
+		"key": "setting000",
+		"en": "Taoist Settings",
+		"ch": "道教设置",
+		"tc": "道教設置",
+		"kr": "도교 설정"
+	},
+	{
+		"id": -1000003001,
+		"key": "setting001",
+		"en": "Apply on the next event.",
+		"ch": "适用于下一个活动。",
+		"tc": "適用於下一個活動。",
+		"kr": "다음 이벤트에 응모해보세요."
+	},
+	{
+		"id": -1000003002,
+		"key": "setting002",
+		"en": "Hide Damage Multiplier",
+		"ch": "隐藏伤害倍数",
+		"tc": "隱藏傷害倍數",
+		"kr": "피해 배율 숨기기"
+	},
+	{
+		"id": -1000003003,
+		"key": "setting003",
+		"en": "Hide Exceptions",
+		"ch": "隐藏异常",
+		"tc": "隱藏異常",
+		"kr": "예외 숨기기"
+	},
+	{
+		"id": -1000003004,
+		"key": "setting004",
+		"en": "(Please turn on if you wanna feedback bugs)",
+		"ch": "（如果您想反馈Bug，请开启）",
+		"tc": "（如果您想反饋Bug，請開啟）",
+		"kr": "(버그 피드백을 원하시면 켜주세요)"
+	}
+]

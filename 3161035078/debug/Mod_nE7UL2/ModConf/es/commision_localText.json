@@ -1,0 +1,35 @@
+[
+	{
+		"id": "480030100",
+		"key": "commission480030100",
+		"en|ch|tc|kr": "Envió una solicitud..."
+	},
+	{
+		"id": "480030200",
+		"key": "commission480030200",
+		"en": "",
+		"ch": "",
+		"tc": "",
+		"kr": ""
+	},
+	{
+		"id": "480030300",
+		"key": "commission480030300",
+		"en|ch|tc|kr": "- - - - -"
+	},
+	{
+		"id": "480030400",
+		"key": "commission480030400",
+		"en|ch|tc|kr": "Cuesta {0:#,##0} piedras espirituales (+{1:#,##0} tarifa)"
+	},
+	{
+		"id": "480030500",
+		"key": "commission480030500",
+		"en|ch|tc|kr": "Cuesta {0:#,##0} piedras espirituales (+{1:#,##0} tarifa) y {2:#,##0} título de alcalde"
+	},
+	{
+		"id": "480030600",
+		"key": "commission480030600",
+		"en|ch|tc|kr": "Coste {0:0} meses ({1:0.0} % de tasa de éxito + suerte)"
+	}
+]

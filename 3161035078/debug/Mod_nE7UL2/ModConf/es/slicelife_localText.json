@@ -1,0 +1,122 @@
+[
+	{
+		"id": "444441001",
+		"key": "slicelife444441001",
+		"en|ch|tc|kr": "Recuento de la vida 1"
+	},
+	{
+		"id": "444442001",
+		"key": "slicelife444441001desc",
+		"en|ch|tc|kr": "+25 % máx. HP, +6 % máx. MP"
+	},
+	{
+		"id": "444443001",
+		"key": "taskName444443001",
+		"en|ch|tc|kr": "Recuento de la vida 1"
+	},
+	{
+		"id": "444443101",
+		"key": "taskDesc444443001",
+		"en|ch|tc|kr": "Lleva 5 años sin participar en ninguna batalla."
+	},
+	{
+		"id": "444441002",
+		"key": "slicelife444441002",
+		"en|ch|tc|kr": "Recuento de la vida 2"
+	},
+	{
+		"id": "444442002",
+		"key": "slicelife444441002desc",
+		"en|ch|tc|kr": "+50 % máx. HP, +12 % máx. MP"
+	},
+	{
+		"id": "444443002",
+		"key": "taskName444443002",
+		"en|ch|tc|kr": "Recuento de la vida 2"
+	},
+	{
+		"id": "444443102",
+		"key": "taskDesc444443002",
+		"en|ch|tc|kr": "Llevar 10 años sin participar en ninguna batalla."
+	},
+	{
+		"id": "444441003",
+		"key": "slicelife444441003",
+		"en|ch|tc|kr": "Recuento de la vida 3"
+	},
+	{
+		"id": "444442003",
+		"key": "slicelife444441003desc",
+		"en|ch|tc|kr": "+80 % máx. HP, +20 % máx. MP"
+	},
+	{
+		"id": "444443003",
+		"key": "taskName444443003",
+		"en|ch|tc|kr": "Recuento de la vida 3"
+	},
+	{
+		"id": "444443103",
+		"key": "taskDesc444443003",
+		"en|ch|tc|kr": "Llevar 20 años sin librar ninguna batalla."
+	},
+	{
+		"id": "444441004",
+		"key": "slicelife444441004",
+		"en|ch|tc|kr": "Recuento de la vida 4"
+	},
+	{
+		"id": "444442004",
+		"key": "slicelife444441004desc",
+		"en|ch|tc|kr": "+120 % máx. HP, +30 % máx. MP, +2 % def."
+	},
+	{
+		"id": "444443004",
+		"key": "taskName444443004",
+		"en|ch|tc|kr": "Recuento de la vida 4"
+	},
+	{
+		"id": "444443104",
+		"key": "taskDesc444443004",
+		"en|ch|tc|kr": "Llevar 40 años sin librar ninguna batalla."
+	},
+	{
+		"id": "444441005",
+		"key": "slicelife444441005",
+		"en|ch|tc|kr": "Recuentos de la vida 5"
+	},
+	{
+		"id": "444442005",
+		"key": "slicelife444441005desc",
+		"en|ch|tc|kr": "+160 % máx. HP, +40 % máx. MP, +5 % def."
+	},
+	{
+		"id": "444443005",
+		"key": "taskName444443005",
+		"en|ch|tc|kr": "Recuentos de la vida 5"
+	},
+	{
+		"id": "444443105",
+		"key": "taskDesc444443005",
+		"en|ch|tc|kr": "Pasar 100 años sin participar en ninguna batalla."
+	},
+	{
+		"id": "444441006",
+		"key": "slicelife444441006",
+		"en|ch|tc|kr": "Recuentos de la vida 6"
+	},
+	{
+		"id": "444442006",
+		"key": "slicelife444441006desc",
+		"en|ch|tc|kr": "+220 % máx. HP, +60 % máx. MP, +10 % def."
+	},
+	{
+		"id": "444443006",
+		"key": "taskName444443006",
+		"en|ch|tc|kr": "Recuentos de la vida 6"
+	},
+	{
+		"id": "444443106",
+		"key": "taskDesc444443006",
+		"en|ch|tc|kr": "Pasar 300 años sin participar en ninguna batalla."
+	}
+]

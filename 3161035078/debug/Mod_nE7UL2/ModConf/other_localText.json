@@ -1,0 +1,938 @@
+[
+	{
+		"id": 500020000,
+		"key": "other500020000",
+		"en": "Exchange Contribution",
+		"ch": "交易所贡献",
+		"tc": "交易所貢獻",
+		"kr": "교류기여"
+	},
+	{
+		"id": 500020001,
+		"key": "other500020001",
+		"en": "Select Item",
+		"ch": "选择项目",
+		"tc": "選擇項目",
+		"kr": "항목 선택"
+	},
+	{
+		"id": 500020002,
+		"key": "other500020002",
+		"en": "Select materials",
+		"ch": "选择材料",
+		"tc": "選擇材料",
+		"kr": "재료 선택"
+	},
+	{
+		"id": 500020003,
+		"key": "other500020003",
+		"en": "Commission",
+		"ch": "佣金",
+		"tc": "佣金",
+		"kr": "커미션"
+	},
+	{
+		"id": 500020004,
+		"key": "other500020004",
+		"en": "Fee: free for merchant-masters and guardians",
+		"ch": "费用：商人大师和监护人免费",
+		"tc": "費用：商人大師和監護人免費",
+		"kr": "수수료: 판매자-마스터 및 보호자는 무료"
+	},
+	{
+		"id": 500020005,
+		"key": "other500020005",
+		"en": "Town Manage",
+		"ch": "镇管理",
+		"tc": "鎮管理",
+		"kr": "타운 관리"
+	},
+	{
+		"id": 500020006,
+		"key": "other500020006",
+		"en": "Up Grade",
+		"ch": "升级",
+		"tc": "升級",
+		"kr": "업그레이드"
+	},
+	{
+		"id": 500020007,
+		"key": "other500020007",
+		"en": "Are you sure about dismissing this person?",
+		"ch": "您确定要解雇此人吗？",
+		"tc": "您確定要解僱此人嗎？",
+		"kr": "이 사람을 정말로 해고하시겠습니까?"
+	},
+	{
+		"id": 500020008,
+		"key": "other500020008",
+		"en": "Are you sure about adding this person?",
+		"ch": "您确定要添加此人吗？",
+		"tc": "您確定要添加此人嗎？",
+		"kr": "이 사람을 추가하시겠습니까?"
+	},
+	{
+		"id": 500020009,
+		"key": "other500020009",
+		"en": "Are you sure about leaving?",
+		"ch": "你确定要离开吗？",
+		"tc": "你確定要離開嗎？",
+		"kr": "떠날 것이 확실합니까?"
+	},
+	{
+		"id": 500020010,
+		"key": "other500020010",
+		"en": "Are you sure about declaring war with this town?",
+		"ch": "你确定要向这个城镇宣战吗？",
+		"tc": "你確定要向這個城鎮宣戰嗎？",
+		"kr": "이 마을에 전쟁을 선포할 의향이 있습니까?"
+	},
+	{
+		"id": 500020011,
+		"key": "other500020011",
+		"en": "Town",
+		"ch": "镇",
+		"tc": "鎮",
+		"kr": "타운"
+	},
+	{
+		"id": 500020012,
+		"key": "other500020012",
+		"en": "Dismiss",
+		"ch": "解雇",
+		"tc": "解僱",
+		"kr": "닫기"
+	},
+	{
+		"id": 500020013,
+		"key": "other500020013",
+		"en": "Hire",
+		"ch": "雇用",
+		"tc": "僱用",
+		"kr": "고용"
+	},
+	{
+		"id": 500020014,
+		"key": "other500020014",
+		"en": "Declare War",
+		"ch": "宣战",
+		"tc": "宣戰",
+		"kr": "전쟁을 선포하다"
+	},
+	{
+		"id": 500020015,
+		"key": "other500020015",
+		"en": "Deposit",
+		"ch": "押金",
+		"tc": "押金",
+		"kr": "예금"
+	},
+	{
+		"id": 500020016,
+		"key": "other500020016",
+		"en": "Withdraw",
+		"ch": "撤回",
+		"tc": "撤回",
+		"kr": "철수"
+	},
+	{
+		"id": 500020017,
+		"key": "other500020017",
+		"en": "Build",
+		"ch": "构建",
+		"tc": "構建",
+		"kr": "빌드"
+	},
+	{
+		"id": 500020018,
+		"key": "other500020018",
+		"en": "Your character will level up without any requirement items. But the character properties wont be increased.",
+		"ch": "您的角色将在没有任何要求物品的情况下升级。但人物属性不会增加。",
+		"tc": "您的角色將在沒有任何要求物品的情況下升級。但人物屬性不會增加。",
+		"kr": "캐릭터는 요구사항 아이템 없이 레벨업됩니다. 하지만 캐릭터 속성은 증가하지 않습니다."
+	},
+	{
+		"id": 500020019,
+		"key": "other500020019",
+		"en": "After your character full exp at every stage. He/She will auto train Qi for stronger.\nIt depend on SP.",
+		"ch": "当你的角色在每个阶段都得到充分的体验后。他/她会自动训练 Qi 以变得更强。\n它取决于 SP。",
+		"tc": "當你的角色在每個階段都得到充分的體驗後。他/她會自動訓練 Qi 以變得更強。\n它取決於 SP。",
+		"kr": "모든 단계에서 캐릭터가 완전한 경험치를 얻은 후. 그/그녀는 더 강해지기 위해 Qi을 자동 훈련할 것입니다.\nSP에 따라 다릅니다."
+	},
+	{
+		"id": 500020020,
+		"key": "other500020020",
+		"en": "How to become a town guardian? It depend on your reputation and town budget.\nIf the town has enough budget to hire a guardian, then they will hire the one who has highest reputation in town.\nAnd when town master lost, the guardian who has highest reputation will be come next town master.",
+		"ch": "如何成为城镇守护者？这取决于您的声誉和城镇预算。\n如果镇上有足够的预算聘请监护人，那么他们会聘请镇上声誉最高的监护人。\n而当镇主失败时，声望最高的守护者将成为下一个镇主。",
+		"tc": "如何成為城鎮守護者？這取決於您的聲譽和城鎮預算。\n如果鎮上有足夠的預算聘請監護人，那麼他們會聘請鎮上聲譽最高的監護人。\n而當鎮主失敗時，聲望最高的守護者將成為下一個鎮主。",
+		"kr": "마을 수호자가 되려면 어떻게 해야 하나요? 이는 귀하의 평판과 마을 예산에 따라 다릅니다.\n마을에 수호자를 고용할 만큼 예산이 충분하다면 마을에서 가장 평판이 좋은 사람을 고용하게 됩니다.\n그리고 마을 주인이 졌을 때, 가장 평판이 좋은 수호자가 다음 마을 주인이 됩니다."
+	},
+	{
+		"id": 500020021,
+		"key": "other500020021",
+		"en": "The land trembles beneath your feet as the battle rages on. {0} fight to protect their home. {1} seek to conquer. Your choice now will determine your path!\nYes: Help {0}\nNo: Help {1}",
+		"ch": "随着战斗的激烈进行，大地在你脚下颤抖。 {0} 为保护家园而奋斗。 {1} 寻求征服。你现在的选择将决定你的道路！\n是：帮助 {0}\n否：帮助 {1}",
+		"tc": "隨著戰鬥的激烈進行，大地在你腳下顫抖。 {0} 為保護家園而奮鬥。 {1} 尋求征服。你現在的選擇將決定你的道路！\n是：幫助 {0}\n否：幫助 {1}",
+		"kr": "전투가 격렬해지면서 땅이 당신의 발 아래에서 떨립니다. {0}은 자신의 집을 지키기 위해 싸웁니다. {1}은 정복을 추구합니다. 지금 당신의 선택이 당신의 길을 결정할 것입니다!\n예: 도움말 {0}\n아니요: 도움말 {1}"
+	},
+	{
+		"id": 500020022,
+		"key": "other500020022",
+		"en": "Warning",
+		"ch": "警告",
+		"tc": "警告",
+		"kr": "경고"
+	},
+	{
+		"id": 500020023,
+		"key": "other500020023",
+		"en": "Your town ({0}) is under attack!\nWould you like to help?",
+		"ch": "您的城镇 ({0}) 受到攻击！\n您愿意帮忙吗？",
+		"tc": "您的城鎮 ({0}) 受到攻擊！\n您願意幫忙嗎？",
+		"kr": "당신의 마을({0})이 공격을 받고 있습니다!\n도와주시겠어요?"
+	},
+	{
+		"id": 500020024,
+		"key": "other500020024",
+		"en": "Your sect ({0}) is under attack!\nWould you like to help?",
+		"ch": "您的教派 ({0}) 受到攻击！\n您愿意帮忙吗？",
+		"tc": "您的教派 ({0}) 受到攻擊！\n您願意幫忙嗎？",
+		"kr": "당신의 종파({0})가 공격을 받고 있습니다!\n도와주시겠어요?"
+	},
+	{
+		"id": 500020025,
+		"key": "other500020025",
+		"en": "Town's Budget is not enough!",
+		"ch": "镇的预算不够了！",
+		"tc": "鎮上的預算不夠了！",
+		"kr": "마을 예산이 부족해요!"
+	},
+	{
+		"id": 500020026,
+		"key": "other500020026",
+		"en": "You received a invitation from {0}' Town Master for guardian position?\nDo you wanna become a Town Guardian?",
+		"ch": "您收到了来自{0}'镇长的守护者职位邀请吗？\n你想成为城镇守护者吗？",
+		"tc": "您收到了來自{0}'鎮長的守護者職位邀請嗎？\n你想成為城鎮守護者嗎？",
+		"kr": "{0}' 마을 마스터로부터 보호자 자리에 대한 초대를 받으셨나요?\n마을 수호자가 되고 싶나요?"
+	},
+	{
+		"id": 500020027,
+		"key": "other500020027",
+		"en": "You dont have enough {0:#,##0} Spirit Stones to pay!",
+		"ch": "您没有足够的 {0:#,##0} 个灵石来支付！",
+		"tc": "您沒有足夠的 {0:#,##0} 個靈石來支付！",
+		"kr": "지불할 수 있는 정령석이 {0:#,##0}개 부족합니다!"
+	},
+	{
+		"id": 500020028,
+		"key": "other500020028",
+		"en": "Every time you die in battle, your life will be lost. And when your age comes over, your save will be deleted. Please be careful.",
+		"ch": "每次你在战斗中死亡，你的生命就会消失。当你的年龄结束时，你的保存将被删除。请小心。",
+		"tc": "每次你在戰鬥中死亡，你的生命就會消失。當你的年齡結束時，你的保存將被刪除。請小心。",
+		"kr": "전투에서 죽을 때마다 생명을 잃게 됩니다. 그리고 귀하의 연령이 지나면 저장 내용이 삭제됩니다. 주의하시기 바랍니다."
+	},
+	{
+		"id": 500020029,
+		"key": "other500020029",
+		"en": "Do you really wanna skip {0} year?",
+		"ch": "您真的想跳过 {0} 年吗？",
+		"tc": "您真的想跳過 {0} 年嗎？",
+		"kr": "정말로 {0}년을 건너뛰고 싶으신가요?"
+	},
+	{
+		"id": 500020030,
+		"key": "other500020030",
+		"en": "Skip {0} year",
+		"ch": "跳过 {0} 年",
+		"tc": "跳過 {0} 年",
+		"kr": "{0}년 건너뛰기"
+	},
+	{
+		"id": 500020031,
+		"key": "other500020031",
+		"en": "Do you really wanna skip {0} year?\n(Without monthly events)",
+		"ch": "您真的想跳过 {0} 年吗？\n（不含每月活动）",
+		"tc": "您真的想跳過 {0} 年嗎？\n（不含每月活動）",
+		"kr": "정말로 {0}년을 건너뛰고 싶으신가요?\n(월별 이벤트 없음)"
+	},
+	{
+		"id": 500020032,
+		"key": "other500020032",
+		"en": "≫",
+		"ch": "≫",
+		"tc": "≫",
+		"kr": "≫"
+	},
+	{
+		"id": 500020033,
+		"key": "other500020033",
+		"en": "Affect your damage and defense against damage of the same type.\nSpecial Fingers, Palms, and Fists also boost your defense.",
+		"ch": "影响你对同类型伤害的伤害和防御。\n特殊的手指、手掌和拳头也能增强你的防御力。",
+		"tc": "影響你對同類型傷害的傷害和防禦。\n特殊的手指、手掌和拳頭也能增強你的防禦力。",
+		"kr": "동일한 유형의 피해에 대한 피해와 방어력에 영향을 미칩니다.\n특수 손가락, 손바닥 및 주먹도 방어력을 향상시킵니다."
+	},
+	{
+		"id": 500020034,
+		"key": "other500020034",
+		"en": "Affect your damage and defense against damage of the same type.\nFire → Crit Damage\nWater → MP Recovery\nWind → Evade\nEarth → Defense\nThunder → Crit Chance and Reduce Trial Damage\nWood → HP Recovery",
+		"ch": "影响你对同类型伤害的伤害和防御。\n火焰 → 暴击伤害\n水→MP回收\n风→回避\n地球 → 防御\n雷霆 → 暴击几率并减少试炼伤害\n木材 → HP 恢复",
+		"tc": "影響你對同類型傷害的傷害和防禦。\n火焰 → 暴擊傷害\n水→MP回收\n風→迴避\n地球 → 防禦\n雷霆 → 暴擊機率並減少試煉傷害\n木材 → HP 恢復",
+		"kr": "동일한 유형의 피해에 대한 피해와 방어력에 영향을 미칩니다.\n화염 → 치명타 피해\n물 → MP 회수\n바람 → 회피\n지구 → 방어\n천둥 → 치명타 확률 및 시험 데미지 감소\n목재 → HP 회수"
+	},
+	{
+		"id": 500020035,
+		"key": "other500020035",
+		"en": "The title will be awarded when a certain score is reached.",
+		"ch": "当达到一定分数时将授予称号。",
+		"tc": "當達到一定分數時將授予稱號。",
+		"kr": "특정 점수에 도달하면 칭호가 부여됩니다."
+	},
+	{
+		"id": 500020036,
+		"key": "other500020036",
+		"en": "Ability points affect HP/MP based on the character's level.",
+		"ch": "能力点根据角色等级影响HP/MP。",
+		"tc": "能力點根據角色等級影響HP/MP。",
+		"kr": "능력치 포인트는 캐릭터의 레벨에 따라 HP/MP에 영향을 미칩니다."
+	},
+	{
+		"id": 500020037,
+		"key": "other500020037",
+		"en": "Skill level will improve by using the corresponding activities.",
+		"ch": "通过使用相应的活动，技能水平将会提高。",
+		"tc": "通過使用相應的活動，技能水平將會提高。",
+		"kr": "해당 활동을 사용하면 기술 수준이 향상됩니다."
+	},
+	{
+		"id": 500020038,
+		"key": "other500020038",
+		"en": "HP/MP affect the shield when entering battle.\nInsight and luck have a significant impact on random events as well as growth and learning speed.",
+		"ch": "HP/MP在进入战斗时影响护盾。\n洞察力和运气对随机事件以及成长和学习速度有重大影响。",
+		"tc": "HP/MP在進入戰鬥時影響護盾。\n洞察力和運氣對隨機事件以及成長和學習速度有重大影響。",
+		"kr": "HP/MP은 전투 진입 시 실드에 영향을 줍니다.\n통찰력과 행운은 무작위 사건은 물론 성장과 학습 속도에도 큰 영향을 미칩니다."
+	},
+	{
+		"id": 500020039,
+		"key": "other500020039",
+		"en": "Dont play with another mod which increase game difficult.",
+		"ch": "不要玩其他会增加游戏难度的模组。",
+		"tc": "不要玩其他會增加遊戲難度的模組。",
+		"kr": "게임을 어렵게 만드는 다른 모드로 플레이하지 마세요."
+	},
+	{
+		"id": 500020040,
+		"key": "other500020040",
+		"en": "Market",
+		"ch": "市场",
+		"tc": "市場",
+		"kr": "시장"
+	},
+	{
+		"id": 500020041,
+		"key": "other500020041",
+		"en": "You can buy/sell items with npc here. But you can be hated and robbed.",
+		"ch": "您可以在此处使用 NPC 购买/出售商品。但你可能会被仇恨和抢劫。",
+		"tc": "您可以在此處使用 NPC 購買/出售商品。但你可能會被仇恨和搶劫。",
+		"kr": "여기서는 NPC으로 아이템을 구매/판매할 수 있습니다. 그러나 당신은 미움을 받고 강탈당할 수 있습니다."
+	},
+	{
+		"id": 500020042,
+		"key": "other500020042",
+		"en": "{0:#,##0} Spirit Stones/year",
+		"ch": "{0:#,##0} 灵石/年",
+		"tc": "{0:#,##0} 靈石/年",
+		"kr": "{0:#,##0} 영혼석/년"
+	},
+	{
+		"id": 500020043,
+		"key": "other500020043",
+		"en": "{0:#,##0} Spirit Stones/month",
+		"ch": "{0:#,##0} 灵石/月",
+		"tc": "{0:#,##0} 靈石/月",
+		"kr": "{0:#,##0} 정령석/월"
+	},
+	{
+		"id": 500020044,
+		"key": "other500020044",
+		"en": "Sneaky through",
+		"ch": "偷偷通过",
+		"tc": "偷偷通過",
+		"kr": "몰래 빠져나가다"
+	},
+	{
+		"id": 500020045,
+		"key": "other500020045",
+		"en": "Leave",
+		"ch": "离开",
+		"tc": "離開",
+		"kr": "휴가"
+	},
+	{
+		"id": 500020046,
+		"key": "other500020046",
+		"en": "[INFO] Taoist",
+		"ch": "[信息] 道教",
+		"tc": "[信息] 道教",
+		"kr": "[정보] 도교"
+	},
+	{
+		"id": 500020047,
+		"key": "other500020047",
+		"en": "Sell List",
+		"ch": "销售清单",
+		"tc": "銷售清單",
+		"kr": "판매 목록"
+	},
+	{
+		"id": 500020048,
+		"key": "other500020048",
+		"en": "Step 1",
+		"ch": "步骤1",
+		"tc": "步驟1",
+		"kr": "1단계"
+	},
+	{
+		"id": 500020049,
+		"key": "other500020049",
+		"en": "Step 2",
+		"ch": "步骤2",
+		"tc": "步驟2",
+		"kr": "2단계"
+	},
+	{
+		"id": 500020050,
+		"key": "other500020050",
+		"en": "Refine",
+		"ch": "精炼",
+		"tc": "精煉",
+		"kr": "구체화"
+	},
+	{
+		"id": 500020051,
+		"key": "other500020051",
+		"en": "Success! Level {0} → {1} (+{2:#,##0} exp)",
+		"ch": "成功了！等级 {0} → {1}（+{2:#,##0} 经验值）",
+		"tc": "成功了！等級 {0} → {1}（+{2:#,##0} 經驗值）",
+		"kr": "성공! 레벨 {0} → {1} (+{2:#,##0} 경험치)"
+	},
+	{
+		"id": 500020052,
+		"key": "other500020052",
+		"en": "Market",
+		"ch": "市场",
+		"tc": "市場",
+		"kr": "시장"
+	},
+	{
+		"id": 500020053,
+		"key": "other500020053",
+		"en": "Sell List",
+		"ch": "销售清单",
+		"tc": "銷售清單",
+		"kr": "판매 목록"
+	},
+	{
+		"id": 500020054,
+		"key": "other500020054",
+		"en": "Hire People",
+		"ch": "雇用人员",
+		"tc": "僱用人員",
+		"kr": "인력 고용"
+	},
+	{
+		"id": 500020055,
+		"key": "other500020055",
+		"en": "Register",
+		"ch": "注册",
+		"tc": "註冊",
+		"kr": "등록"
+	},
+	{
+		"id": 500020056,
+		"key": "other500020056",
+		"en": "{0:#,##0} Spirit Stones → {1:#,##0} Contribution",
+		"ch": "{0:#,##0} 灵石 → {1:#,##0} 贡献",
+		"tc": "{0:#,##0} 靈石 → {1:#,##0} 貢獻",
+		"kr": "{0:#,##0} 정령석 → {1:#,##0} 공헌도"
+	},
+	{
+		"id": 500020057,
+		"key": "other500020057",
+		"en": "Exchannge Ratio {0:#,##0} Spirit Stones → 1 Contribution",
+		"ch": "兑换比例{0:#,##0}灵石→1贡献度",
+		"tc": "兌換比例{0:#,##0}靈石→1貢獻度",
+		"kr": "교환 비율 {0:#,##0} 정령석 → 기여도 1"
+	},
+	{
+		"id": 500020058,
+		"key": "other500020058",
+		"en": "Select Items",
+		"ch": "选择项目",
+		"tc": "選擇項目",
+		"kr": "항목 선택"
+	},
+	{
+		"id": 500020059,
+		"key": "other500020059",
+		"en": "Clear",
+		"ch": "清除",
+		"tc": "清除",
+		"kr": "지우기"
+	},
+	{
+		"id": 500020060,
+		"key": "other500020060",
+		"en": "My Items",
+		"ch": "我的物品",
+		"tc": "我的物品",
+		"kr": "내 아이템"
+	},
+	{
+		"id": 500020061,
+		"key": "other500020061",
+		"en": "Register",
+		"ch": "注册",
+		"tc": "註冊",
+		"kr": "등록"
+	},
+	{
+		"id": 500020062,
+		"key": "other500020062",
+		"en": "Total Price",
+		"ch": "总价",
+		"tc": "總價",
+		"kr": "총 가격"
+	},
+	{
+		"id": 500020063,
+		"key": "other500020063",
+		"en": "Min：{0:#,##0}　　　Sell：{1:#,##0}　　　Max：{2:#,##0}　　　Your：{3:#,##0}",
+		"ch": "最小值：{0:#,##0}、卖出：{1:#,##0}、最大值：{2:#,##0}、您的：{3:#,##0}",
+		"tc": "最小值：{0:#,##0}、賣出：{1:#,##0}、最大值：{2:#,##0}、您的：{3:#,##0}",
+		"kr": "최소:{0:#,##0}　　　판매:{1:#,##0}　　　최대:{2:#,##0}　　　귀하:{3:#,##0}"
+	},
+	{
+		"id": 500020064,
+		"key": "other500020064",
+		"en": "Down",
+		"ch": "向下",
+		"tc": "向下",
+		"kr": "아래로"
+	},
+	{
+		"id": 500020065,
+		"key": "other500020065",
+		"en": "Please stand in town!",
+		"ch": "请站在城里！",
+		"tc": "請站在城裡！",
+		"kr": "마을에 서주세요!"
+	},
+	{
+		"id": 500020066,
+		"key": "other500020066",
+		"en": "Up",
+		"ch": "向上",
+		"tc": "向上",
+		"kr": "위로"
+	},
+	{
+		"id": 500020067,
+		"key": "other500020067",
+		"en": "Negotiate",
+		"ch": "谈判",
+		"tc": "談判",
+		"kr": "협상하다"
+	},
+	{
+		"id": 500020068,
+		"key": "other500020068",
+		"en": "Cultivate",
+		"ch": "培养",
+		"tc": "培養",
+		"kr": "육성"
+	},
+	{
+		"id": 500020069,
+		"key": "other500020069",
+		"en": "You need {0:#,##0} spirit stones for cultivation.",
+		"ch": "修炼需要{0:#,##0}个灵石。",
+		"tc": "修煉需要{0:#,##0}個靈石。",
+		"kr": "재배에는 정령석 {0:#,##0}개가 필요합니다."
+	},
+	{
+		"id": 500020070,
+		"key": "other500020070",
+		"en": "{0:#,##0} Spirit stones → {1:#,##0} Exps.",
+		"ch": "{0:#,##0} 灵石 → {1:#,##0} 经验值。",
+		"tc": "{0:#,##0} 靈石 → {1:#,##0} 經驗值。",
+		"kr": "{0:#,##0} 정령석 → {1:#,##0} Exp."
+	},
+	{
+		"id": 500020071,
+		"key": "other500020071",
+		"en": "Qi Transfer",
+		"ch": "Qi 转账",
+		"tc": "Qi 轉賬",
+		"kr": "Qi 환승"
+	},
+	{
+		"id": 500020072,
+		"key": "other500020072",
+		"en": "Recieve Qi",
+		"ch": "收到 Qi",
+		"tc": "收到 Qi",
+		"kr": "Qi 수신"
+	},
+	{
+		"id": 500020073,
+		"key": "other500020073",
+		"en": "Depend on your insight and basises (roots).",
+		"ch": "取决于您的洞察力和基础（根源）。",
+		"tc": "取決於您的洞察力和基礎（根源）。",
+		"kr": "당신의 통찰력과 기초(뿌리)에 따라 달라집니다."
+	},
+	{
+		"id": 500020074,
+		"key": "other500020074",
+		"en": "Deal",
+		"ch": "交易",
+		"tc": "交易",
+		"kr": "거래"
+	},
+	{
+		"id": 500020075,
+		"key": "other500020075",
+		"en": "Total value： {0:#,##0}",
+		"ch": "总价值： {0:#,##0}",
+		"tc": "總價值： {0:#,##0}",
+		"kr": "총 가치： {0:#,##0}"
+	},
+	{
+		"id": 500020076,
+		"key": "other500020076",
+		"en": "Back",
+		"ch": "返回",
+		"tc": "返回",
+		"kr": "뒤로"
+	},
+	{
+		"id": 500020077,
+		"key": "other500020077",
+		"en": "Give up",
+		"ch": "放弃",
+		"tc": "放棄",
+		"kr": "포기하다"
+	},
+	{
+		"id": 500020078,
+		"key": "other500020078",
+		"en": "You backed out? After everything we agreed on? I don't take kindly to broken deals — you just wasted my time.",
+		"ch": "你退缩了？在我们达成一致的一切之后？我不会善意地对待失败的交易——你只是浪费了我的时间。",
+		"tc": "你退縮了？在我們達成一致的一切之後？我不會善意地對待失敗的交易——你只是浪費了我的時間。",
+		"kr": "물러났나요? 우리가 합의한 모든 것 이후에? 나는 깨진 거래를 친절하게 여기지 않습니다. 당신은 단지 내 시간을 낭비했을 뿐입니다."
+	},
+	{
+		"id": 500020079,
+		"key": "other500020079",
+		"en": "That went smoothly! Always great working with someone who knows what they're doing.",
+		"ch": "一切都很顺利！与知道自己在做什么的人一起工作总是很棒的。",
+		"tc": "一切都很順利！與知道自己在做什麼的人一起工作總是很棒的。",
+		"kr": "순조롭게 진행됐어요! 자신이 무엇을 하고 있는지 아는 사람과 함께 일하는 것은 항상 좋은 일입니다."
+	},
+	{
+		"id": 500020080,
+		"key": "other500020080",
+		"en": "You can't be serious. You owe me more than a 'no'!",
+		"ch": "你不可能是认真的。你欠我的不仅仅是一个“不”！",
+		"tc": "你不可能是認真的。你欠我的不僅僅是一個“不”！",
+		"kr": "진지하게 말할 수는 없습니다. 당신은 나에게 '안돼'라는 말보다 더 많은 빚을 지고 있어요!"
+	},
+	{
+		"id": 500020081,
+		"key": "other500020081",
+		"en": "What? You knew I was coming! You sold it anyway?",
+		"ch": "什么？你知道我会来！你还是卖掉了？",
+		"tc": "什麼？你知道我會來！你還是賣掉了？",
+		"kr": "무엇? 내가 올 줄 알았잖아! 그런데 그걸 팔았나요?"
+	},
+	{
+		"id": 500020082,
+		"key": "other500020082",
+		"en": "The [{0}] has been sold.",
+		"ch": "[{0}] 已售出。",
+		"tc": "[{0}] 已售出。",
+		"kr": "[{0}]이(가) 판매되었습니다."
+	},
+	{
+		"id": 500020083,
+		"key": "other500020083",
+		"en": "Unknown",
+		"ch": "未知",
+		"tc": "未知",
+		"kr": "알 수 없음"
+	},
+	{
+		"id": 500020084,
+		"key": "other500020084",
+		"en": "Please select an item.",
+		"ch": "请选择一个项目。",
+		"tc": "請選擇一個項目。",
+		"kr": "항목을 선택하세요."
+	},
+	{
+		"id": 500020085,
+		"key": "other500020085",
+		"en": "VIP Market",
+		"ch": "贵宾市场",
+		"tc": "貴賓市場",
+		"kr": "VIP 마켓"
+	},
+	{
+		"id": 500020086,
+		"key": "other500020086",
+		"en": "Do you wanna pay {0:#,##0} spirit stones for our service?",
+		"ch": "您愿意为我们的服务支付 {0:#,##0} 灵石吗？",
+		"tc": "您願意為我們的服務支付 {0:#,##0} 靈石嗎？",
+		"kr": "우리 서비스에 대한 대가로 정령석 {0:#,##0}개를 지불하시겠습니까?"
+	},
+	{
+		"id": 500020087,
+		"key": "other500020087",
+		"en": "You dont have enough spirit stones!",
+		"ch": "你的灵石还不够！",
+		"tc": "你的靈石還不夠！",
+		"kr": "영혼석이 부족해요!"
+	},
+	{
+		"id": 500020088,
+		"key": "other500020088",
+		"en": "Are you try to dump me?",
+		"ch": "你想甩掉我吗？",
+		"tc": "你想甩掉我嗎？",
+		"kr": "나를 차버리려고 하는 거야?"
+	},
+	{
+		"id": 500020089,
+		"key": "other500020089",
+		"en": "Damage x{0}",
+		"ch": "伤害 x{0}",
+		"tc": "傷害 x{0}",
+		"kr": "피해량 x{0}"
+	},
+	{
+		"id": 500020090,
+		"key": "other500020090",
+		"en": "Cancel",
+		"ch": "取消",
+		"tc": "取消",
+		"kr": "취소"
+	},
+	{
+		"id": 500020091,
+		"key": "other500020091",
+		"en": "Min：{0}　　　Sell：{1}　　　Max：{2}",
+		"ch": "最小值：{0}、卖出：{1}、最大值：{2}",
+		"tc": "最小值：{0}、賣出：{1}、最大值：{2}",
+		"kr": "최소:{0}　　　판매:{1}　　　최대:{2}"
+	},
+	{
+		"id": 500020092,
+		"key": "other500020092",
+		"en": "Deals",
+		"ch": "优惠",
+		"tc": "優惠",
+		"kr": "거래"
+	},
+	{
+		"id": 500020093,
+		"key": "other500020093",
+		"en": "What?! Cancelled? Do I look like I have time to waste?",
+		"ch": "什么？！取消？我看起来像有时间可以浪费吗？",
+		"tc": "什麼？ ！取消？我看起來像有時間可以浪費嗎？",
+		"kr": "뭐?! 취소? 내가 낭비할 시간이 있는 것처럼 보이나요?"
+	},
+	{
+		"id": 500020094,
+		"key": "other500020094",
+		"en": "Anonymous (costs fee)",
+		"ch": "匿名（费用）",
+		"tc": "匿名（費用）",
+		"kr": "익명(비용 수수료)"
+	},
+	{
+		"id": 500020095,
+		"key": "other500020095",
+		"en": "Selling Price",
+		"ch": "售价",
+		"tc": "售價",
+		"kr": "판매가격"
+	},
+	{
+		"id": 500020096,
+		"key": "other500020096",
+		"en": "Quantity",
+		"ch": "数量",
+		"tc": "數量",
+		"kr": "수량"
+	},
+	{
+		"id": 500020097,
+		"key": "other500020097",
+		"en": "Anonymous fee = 10% of selling price",
+		"ch": "匿名费用=售价的10%",
+		"tc": "匿名費用=售價的10%",
+		"kr": "익명 수수료 = 판매 가격의 10%"
+	},
+	{
+		"id": 500020098,
+		"key": "other500020098",
+		"en": "Please select an item",
+		"ch": "请选择一个项目",
+		"tc": "請選擇一個項目",
+		"kr": "항목을 선택해주세요"
+	},
+	{
+		"id": 500020099,
+		"key": "other500020099",
+		"en": "Invalid quantity",
+		"ch": "数量无效",
+		"tc": "數量無效",
+		"kr": "잘못된 수량"
+	},
+	{
+		"id": 500020100,
+		"key": "other500020100",
+		"en": "Invalid price",
+		"ch": "价格无效",
+		"tc": "價格無效",
+		"kr": "잘못된 가격"
+	},
+	{
+		"id": 500020101,
+		"key": "other500020101",
+		"en": "You must be in a town to sell items",
+		"ch": "您必须在城镇中才能出售物品",
+		"tc": "您必須在城鎮中才能出售物品",
+		"kr": "아이템을 팔려면 마을에 있어야 합니다."
+	},
+	{
+		"id": 500020102,
+		"key": "other500020102",
+		"en": "Error",
+		"ch": "错误",
+		"tc": "錯誤",
+		"kr": "오류"
+	},
+	{
+		"id": 500020103,
+		"key": "other500020103",
+		"en": "Registered sale: {0} x{1} for {2}",
+		"ch": "已登记销售：{0} x{1}，售价为 {2}",
+		"tc": "已登記銷售：{0} x{1}，售價為 {2}",
+		"kr": "등록된 판매: {2}에 대한 {0} x{1}"
+	},
+	{
+		"id": 500020104,
+		"key": "other500020104",
+		"en": "Not enough money for anonymous fee",
+		"ch": "没有足够的钱支付匿名费用",
+		"tc": "沒有足夠的錢支付匿名費用",
+		"kr": "익명 수수료를 지불할 돈이 부족합니다."
+	},
+	{
+		"id": 500020105,
+		"key": "other500020105",
+		"en": "Success",
+		"ch": "成功",
+		"tc": "成功",
+		"kr": "성공"
+	},
+	{
+		"id": 500020106,
+		"key": "other500020106",
+		"en": "Registered anonymous sale: {0} x{1} for {2} (fee: {3})",
+		"ch": "注册匿名销售：{0} x{1}，售价为 {2}（费用：{3}）",
+		"tc": "註冊匿名銷售：{0} x{1}，售價為 {2}（費用：{3}）",
+		"kr": "등록된 익명 판매: {2}에 대한 {0} x{1} (수수료: {3})"
+	},
+	{
+		"id": 500020107,
+		"key": "other500020107",
+		"en": "Selling price: {0} | Anonymous fee: {1} (paid upfront)",
+		"ch": "售价：{0} |匿名费用：{1}（预付）",
+		"tc": "售價：{0} |匿名費用：{1}（預付）",
+		"kr": "판매가: {0} | 익명 수수료: {1}(선불)"
+	},
+	{
+		"id": 500020108,
+		"key": "other500020108",
+		"en": "Selling price: {0}",
+		"ch": "售价：{0}",
+		"tc": "售價：{0}",
+		"kr": "판매가: {0}"
+	},
+	{
+		"id": 500020109,
+		"key": "other500020109",
+		"en": "No one is currently negotiating for this item.",
+		"ch": "目前没有人就该项目进行谈判。",
+		"tc": "目前沒有人就該項目進行談判。",
+		"kr": "현재 이 항목에 대해 협상 중인 사람이 없습니다."
+	},
+	{
+		"id": 500020110,
+		"key": "other500020110",
+		"en": "No valid buyers found.",
+		"ch": "未找到有效买家。",
+		"tc": "未找到有效買家。",
+		"kr": "유효한 구매자를 찾을 수 없습니다."
+	},
+	{
+		"id": 500020111,
+		"key": "other500020111",
+		"en": "Deal List",
+		"ch": "交易清单",
+		"tc": "交易清單",
+		"kr": "거래 목록"
+	},
+	{
+		"id": 500020112,
+		"key": "other500020112",
+		"en": "You are selling this item at {0}!",
+		"ch": "您正在以 {0} 的价格出售此商品！",
+		"tc": "您正在以 {0} 的價格出售此商品！",
+		"kr": "이 상품을 {0}에 판매 중입니다!"
+	},
+	{
+		"id": 500020113,
+		"key": "other500020113",
+		"en": "Repair",
+		"ch": "修复",
+		"tc": "修復",
+		"kr": "수리"
+	},
+	{
+		"id": 500020114,
+		"key": "other500020114",
+		"en": "Add Point",
+		"ch": "添加点",
+		"tc": "添加點",
+		"kr": "포인트 추가"
+	},
+	{
+		"id": 500020115,
+		"key": "other500020115",
+		"en": "Cost {0:#,##0}.\nAre your sure?",
+		"ch": "成本 {0:#,##0}。\n你确定吗？",
+		"tc": "成本 {0:#,##0}。\n你確定嗎？",
+		"kr": "비용은 {0:#,##0}입니다.\n확실합니까?"
+	},
+	{
+		"id": 500020116,
+		"key": "other500020116",
+		"en": "You dont have enough spirit stones!",
+		"ch": "你的灵石还不够！",
+		"tc": "你的靈石還不夠！",
+		"kr": "영혼석이 부족해요!"
+	}
+]

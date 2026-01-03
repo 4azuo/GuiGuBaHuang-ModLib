@@ -1,0 +1,20 @@
+[
+	{
+		"__name": "Old But Strong",
+		"id": "420700044",
+		"key": "balance420700044",
+		"en": "Old But Strong",
+		"ch": "老而坚强",
+		"tc": "老而堅強",
+		"kr": "늙었지만 강하다"
+	},
+	{
+		"__name": "Old But Strong",
+		"id": "421700044",
+		"key": "balance420700044desc",
+		"en": "Your DEF+2, HP+50 every year.",
+		"ch": "你的 DEF+2，每年 HP+50。",
+		"tc": "你的 DEF+2，每年 HP+50。",
+		"kr": "매년 DEF+2, HP+50입니다."
+	}
+]

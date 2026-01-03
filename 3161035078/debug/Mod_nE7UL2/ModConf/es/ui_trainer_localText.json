@@ -1,0 +1,297 @@
+[
+	{
+		"id": -1000002000,
+		"key": "trainer000",
+		"en|ch|tc|kr": "Hacer trampa destruirá tu experiencia."
+	},
+	{
+		"id": -1000002001,
+		"key": "trainer001",
+		"en|ch|tc|kr": "(HP/MP/SP/Estado de ánimo/Stanima/Salud)"
+	},
+	{
+		"id": -1000002002,
+		"key": "trainer002",
+		"en|ch|tc|kr": "Recuperar TODO"
+	},
+	{
+		"id": -1000002003,
+		"key": "trainer003",
+		"en|ch|tc|kr": "+100.000 máx. HP"
+	},
+	{
+		"id": -1000002004,
+		"key": "trainer004",
+		"en|ch|tc|kr": "-100.000 máx. HP"
+	},
+	{
+		"id": -1000002005,
+		"key": "trainer005",
+		"en|ch|tc|kr": "+10.000 máx. MP"
+	},
+	{
+		"id": -1000002006,
+		"key": "trainer006",
+		"en|ch|tc|kr": "-10.000 máx. MP"
+	},
+	{
+		"id": -1000002007,
+		"key": "trainer007",
+		"en|ch|tc|kr": "+1000 máx. SP"
+	},
+	{
+		"id": -1000002008,
+		"key": "trainer008",
+		"en|ch|tc|kr": "-1000 máx. SP"
+	},
+	{
+		"id": -1000002009,
+		"key": "trainer009",
+		"en|ch|tc|kr": "+100 TODAS las bases"
+	},
+	{
+		"id": -1000002010,
+		"key": "trainer010",
+		"en|ch|tc|kr": "-100 TODAS las bases"
+	},
+	{
+		"id": -1000002011,
+		"key": "trainer011",
+		"en|ch|tc|kr": "+10,000 ataque"
+	},
+	{
+		"id": -1000002012,
+		"key": "trainer012",
+		"en|ch|tc|kr": "-10,000 ataques"
+	},
+	{
+		"id": -1000002013,
+		"key": "trainer013",
+		"en|ch|tc|kr": "+1000 Defensa"
+	},
+	{
+		"id": -1000002014,
+		"key": "trainer014",
+		"en|ch|tc|kr": "-1000 Defensa"
+	},
+	{
+		"id": -1000002015,
+		"key": "trainer015",
+		"en|ch|tc|kr": "Teletransportarse"
+	},
+	{
+		"id": -1000002016,
+		"key": "trainer016",
+		"en|ch|tc|kr": "+1.000.000 de dinero"
+	},
+	{
+		"id": -1000002017,
+		"key": "trainer017",
+		"en|ch|tc|kr": "-1.000.000 de dinero"
+	},
+	{
+		"id": -1000002018,
+		"key": "trainer018",
+		"en|ch|tc|kr": "+1.000 grados"
+	},
+	{
+		"id": -1000002019,
+		"key": "trainer019",
+		"en|ch|tc|kr": "-1.000 grados"
+	},
+	{
+		"id": -1000002020,
+		"key": "trainer020",
+		"en|ch|tc|kr": "+100.000 Contribución"
+	},
+	{
+		"id": -1000002021,
+		"key": "trainer021",
+		"en|ch|tc|kr": "-100.000 Contribución"
+	},
+	{
+		"id": -1000002022,
+		"key": "trainer022",
+		"en|ch|tc|kr": "+100.000 puntos de habilidad"
+	},
+	{
+		"id": -1000002023,
+		"key": "trainer023",
+		"en|ch|tc|kr": "-100.000 puntos de habilidad"
+	},
+	{
+		"id": -1000002024,
+		"key": "trainer024",
+		"en|ch|tc|kr": "Reanudar el juego"
+	},
+	{
+		"id": -1000002025,
+		"key": "trainer025",
+		"en|ch|tc|kr": "Detener el juego"
+	},
+	{
+		"id": -1000002026,
+		"key": "trainer026",
+		"en|ch|tc|kr": "Velocidad del juego x1"
+	},
+	{
+		"id": -1000002027,
+		"key": "trainer027",
+		"en|ch|tc|kr": "Velocidad de juego x2"
+	},
+	{
+		"id": -1000002028,
+		"key": "trainer028",
+		"en|ch|tc|kr": "Velocidad de juego x3"
+	},
+	{
+		"id": -1000002029,
+		"key": "trainer029",
+		"en|ch|tc|kr": "subir de nivel"
+	},
+	{
+		"id": -1000002030,
+		"key": "trainer030",
+		"en|ch|tc|kr": "Bajar de nivel"
+	},
+	{
+		"id": -1000002031,
+		"key": "trainer031",
+		"en|ch|tc|kr": "+10,000 Exp."
+	},
+	{
+		"id": -1000002032,
+		"key": "trainer032",
+		"en|ch|tc|kr": "+100 años de vida"
+	},
+	{
+		"id": -1000002033,
+		"key": "trainer033",
+		"en|ch|tc|kr": "-100 años de vida"
+	},
+	{
+		"id": -1000002034,
+		"key": "trainer034",
+		"en|ch|tc|kr": "+1000 Velocidad de desplazamiento"
+	},
+	{
+		"id": -1000002035,
+		"key": "trainer035",
+		"en|ch|tc|kr": "-1000 Velocidad de desplazamiento"
+	},
+	{
+		"id": -1000002036,
+		"key": "trainer036",
+		"en|ch|tc|kr": "+10 rango de visión"
+	},
+	{
+		"id": -1000002037,
+		"key": "trainer037",
+		"en|ch|tc|kr": "-10 rango de visión"
+	},
+	{
+		"id": -1000002038,
+		"key": "trainer038",
+		"en|ch|tc|kr": "Propiedades generales:"
+	},
+	{
+		"id": -1000002039,
+		"key": "trainer039",
+		"en|ch|tc|kr": "Marcial/Espiritual:"
+	},
+	{
+		"id": -1000002040,
+		"key": "trainer040",
+		"en|ch|tc|kr": "Artesanía:"
+	},
+	{
+		"id": -1000002041,
+		"key": "trainer041",
+		"en|ch|tc|kr": "Puedes teletransportarte a cualquier lugar."
+	},
+	{
+		"id": -1000002042,
+		"key": "trainer042",
+		"en|ch|tc|kr": "+10.000 reputación"
+	},
+	{
+		"id": -1000002043,
+		"key": "trainer043",
+		"en|ch|tc|kr": "-10,000 reputación"
+	},
+	{
+		"id": -1000002044,
+		"key": "trainer044",
+		"en|ch|tc|kr": "¡No permitir entrenador!"
+	},
+	{
+		"id": -1000002045,
+		"key": "trainer045",
+		"en|ch|tc|kr": "¡Agregue artículos innovadores a su inventario!"
+	},
+	{
+		"id": -1000002046,
+		"key": "trainer046",
+		"en|ch|tc|kr": "¡Los artículos fueron agregados!"
+	},
+	{
+		"id": -1000002047,
+		"key": "trainer047",
+		"en|ch|tc|kr": "Conviértete en el maestro de la ciudad"
+	},
+	{
+		"id": -1000002048,
+		"key": "trainer048",
+		"en|ch|tc|kr": "NPC Importe: {0:#,##0}"
+	},
+	{
+		"id": -1000002049,
+		"key": "trainer049",
+		"en|ch|tc|kr": "Alquimia: {0:#,##0}"
+	},
+	{
+		"id": -1000002050,
+		"key": "trainer050",
+		"en|ch|tc|kr": "{0:#,##0}: Forja"
+	},
+	{
+		"id": -1000002051,
+		"key": "trainer051",
+		"en|ch|tc|kr": "Feng Shui: {0:#,##0}"
+	},
+	{
+		"id": -1000002052,
+		"key": "trainer052",
+		"en|ch|tc|kr": "{0:#,##0}: Talismanes"
+	},
+	{
+		"id": -1000002053,
+		"key": "trainer053",
+		"en|ch|tc|kr": "Herbología: {0:#,##0}"
+	},
+	{
+		"id": -1000002054,
+		"key": "trainer054",
+		"en|ch|tc|kr": "{0:#,##0}: Minería"
+	},
+	{
+		"id": -1000002055,
+		"key": "trainer055",
+		"en|ch|tc|kr": "No hay armas de Dios"
+	},
+	{
+		"id": -1000002056,
+		"key": "trainer056",
+		"en|ch|tc|kr": "diablo demonio"
+	},
+	{
+		"id": -1000002057,
+		"key": "trainer057",
+		"en|ch|tc|kr": "ojo de dios"
+	},
+	{
+		"id": -1000002058,
+		"key": "trainer058",
+		"en|ch|tc|kr": "Colgante Piscis"
+	}
+]

@@ -1,0 +1,502 @@
+[
+	{
+		"id": -1000001000,
+		"key": "smcfgs000",
+		"en|ch|tc|kr": "Monstre :"
+	},
+	{
+		"id": -1000001001,
+		"key": "smcfgs001",
+		"en|ch|tc|kr": "ATQ"
+	},
+	{
+		"id": -1000001002,
+		"key": "smcfgs002",
+		"en|ch|tc|kr": "DEF"
+	},
+	{
+		"id": -1000001003,
+		"key": "smcfgs003",
+		"en|ch|tc|kr": "Max HP"
+	},
+	{
+		"id": -1000001004,
+		"key": "smcfgs004",
+		"en|ch|tc|kr": "Base"
+	},
+	{
+		"id": -1000001005,
+		"key": "smcfgs005",
+		"en|ch|tc|kr": "(Inclus épée, lame, lance, poing, doigt, paume, feu, eau, tonnerre, bois, vent, terre)"
+	},
+	{
+		"id": -1000001006,
+		"key": "smcfgs006",
+		"en|ch|tc|kr": "Tarif Spécial Monstre"
+	},
+	{
+		"id": -1000001007,
+		"key": "smcfgs007",
+		"en|ch|tc|kr": "Économique :"
+	},
+	{
+		"id": -1000001008,
+		"key": "smcfgs008",
+		"en|ch|tc|kr": "Taux d'imposition"
+	},
+	{
+		"id": -1000001009,
+		"key": "smcfgs009",
+		"en|ch|tc|kr": "Taux d'inflation"
+	},
+	{
+		"id": -1000001010,
+		"key": "smcfgs010",
+		"en|ch|tc|kr": "Coût de construction"
+	},
+	{
+		"id": -1000001011,
+		"key": "smcfgs011",
+		"en|ch|tc|kr": "Coût du compte bancaire"
+	},
+	{
+		"id": -1000001012,
+		"key": "smcfgs012",
+		"en|ch|tc|kr": "Frais bancaires"
+	},
+	{
+		"id": -1000001013,
+		"key": "smcfgs013",
+		"en|ch|tc|kr": "Affiner le coût"
+	},
+	{
+		"id": -1000001014,
+		"key": "smcfgs014",
+		"en|ch|tc|kr": "Frais d'échange de secte"
+	},
+	{
+		"id": -1000001015,
+		"key": "smcfgs015",
+		"en|ch|tc|kr": "Valeur de l'article"
+	},
+	{
+		"id": -1000001016,
+		"key": "smcfgs016",
+		"en|ch|tc|kr": "NPC :"
+	},
+	{
+		"id": -1000001017,
+		"key": "smcfgs017",
+		"en|ch|tc|kr": "Taux de croissance"
+	},
+	{
+		"id": -1000001018,
+		"key": "smcfgs018",
+		"en|ch|tc|kr": "Divers :"
+	},
+	{
+		"id": -1000001019,
+		"key": "smcfgs019",
+		"en|ch|tc|kr": "Exp de niveau supérieur"
+	},
+	{
+		"id": -1000001020,
+		"key": "smcfgs020",
+		"en|ch|tc|kr": "Systèmes :"
+	},
+	{
+		"id": -1000001021,
+		"key": "smcfgs021",
+		"en|ch|tc|kr": "Masquer le bouton Enregistrer"
+	},
+	{
+		"id": -1000001022,
+		"key": "smcfgs022",
+		"en|ch|tc|kr": "Masquer le bouton de rechargement"
+	},
+	{
+		"id": -1000001023,
+		"key": "smcfgs023",
+		"en|ch|tc|kr": "Une vie"
+	},
+	{
+		"id": -1000001024,
+		"key": "smcfgs024",
+		"en|ch|tc|kr": "Masquer la carte de bataille"
+	},
+	{
+		"id": -1000001025,
+		"key": "smcfgs025",
+		"en|ch|tc|kr": "Niveau de destin prioritaire"
+	},
+	{
+		"id": -1000001026,
+		"key": "smcfgs026",
+		"en|ch|tc|kr": "Par défaut"
+	},
+	{
+		"id": -1000001027,
+		"key": "smcfgs027",
+		"en|ch|tc|kr": "Blanc"
+	},
+	{
+		"id": -1000001028,
+		"key": "smcfgs028",
+		"en|ch|tc|kr": "Vert"
+	},
+	{
+		"id": -1000001029,
+		"key": "smcfgs029",
+		"en|ch|tc|kr": "Bleu"
+	},
+	{
+		"id": -1000001030,
+		"key": "smcfgs030",
+		"en|ch|tc|kr": "Violette"
+	},
+	{
+		"id": -1000001031,
+		"key": "smcfgs031",
+		"en|ch|tc|kr": "Jaune"
+	},
+	{
+		"id": -1000001032,
+		"key": "smcfgs032",
+		"en|ch|tc|kr": "Rouge"
+	},
+	{
+		"id": -1000001033,
+		"key": "smcfgs033",
+		"en|ch|tc|kr": "Seul portail dans la ville et la secte"
+	},
+	{
+		"id": -1000001034,
+		"key": "smcfgs034",
+		"en|ch|tc|kr": "Secte sans échange"
+	},
+	{
+		"id": -1000001035,
+		"key": "smcfgs035",
+		"en|ch|tc|kr": "Pas de renaissance"
+	},
+	{
+		"id": -1000001036,
+		"key": "smcfgs036",
+		"en|ch|tc|kr": "Autoriser la mise à niveau naturellement"
+	},
+	{
+		"id": -1000001037,
+		"key": "smcfgs037",
+		"en|ch|tc|kr": "(De cette façon, vos attributs/propriétés n'augmenteront pas)"
+	},
+	{
+		"id": -1000001038,
+		"key": "smcfgs038",
+		"en|ch|tc|kr": "Le patron a un bouclier"
+	},
+	{
+		"id": -1000001039,
+		"key": "smcfgs039",
+		"en|ch|tc|kr": "Pas de croissance dans les batailles"
+	},
+	{
+		"id": -1000001040,
+		"key": "smcfgs040",
+		"en|ch|tc|kr": "Aucune expérience des batailles"
+	},
+	{
+		"id": -1000001041,
+		"key": "smcfgs041",
+		"en|ch|tc|kr": "Activer le formateur"
+	},
+	{
+		"id": -1000001042,
+		"key": "smcfgs042",
+		"en|ch|tc|kr": "(Il n'est pas recommandé d'utiliser cette option ! Touche de raccourci dans le jeu : 【Ctrl+1】)"
+	},
+	{
+		"id": -1000001043,
+		"key": "smcfgs043",
+		"en|ch|tc|kr": "Note totale : {0}P"
+	},
+	{
+		"id": -1000001044,
+		"key": "smcfgs044",
+		"en|ch|tc|kr": "Par défaut"
+	},
+	{
+		"id": -1000001045,
+		"key": "smcfgs045",
+		"en|ch|tc|kr": "Niveau"
+	},
+	{
+		"id": -1000001046,
+		"key": "smcfgs046",
+		"en|ch|tc|kr": "Il faut démarrer une nouvelle partie pour appliquer ces configs !"
+	},
+	{
+		"id": -1000001047,
+		"key": "smcfgs047",
+		"en|ch|tc|kr": "NPC Montant"
+	},
+	{
+		"id": -1000001048,
+		"key": "smcfgs048",
+		"en|ch|tc|kr": "(Requis RAM : {0} Mo)"
+	},
+	{
+		"id": -1000001049,
+		"key": "smcfgs049",
+		"en|ch|tc|kr": "(Inclus Bouclier, Explosion et Multiplication)"
+	},
+	{
+		"id": -1000001050,
+		"key": "smcfgs050",
+		"en|ch|tc|kr": "Autoriser la construction de la ville au fil du temps"
+	},
+	{
+		"id": -1000001051,
+		"key": "smcfgs051",
+		"en|ch|tc|kr": "Vitesse de croissance"
+	},
+	{
+		"id": -1000001052,
+		"key": "smcfgs052",
+		"en|ch|tc|kr": "(Inclure le joueur, NPC et les monstres)"
+	},
+	{
+		"id": -1000001053,
+		"key": "smcfgs053",
+		"en|ch|tc|kr": "tous les {1} mois ({0} P)"
+	},
+	{
+		"id": -1000001054,
+		"key": "smcfgs054",
+		"en|ch|tc|kr": "Exporter les configurations"
+	},
+	{
+		"id": -1000001055,
+		"key": "smcfgs055",
+		"en|ch|tc|kr": "Importer des configurations"
+	},
+	{
+		"id": -1000001056,
+		"key": "smcfgs056",
+		"en|ch|tc|kr": "Objets perdus à la mort"
+	},
+	{
+		"id": -1000001057,
+		"key": "smcfgs057",
+		"en|ch|tc|kr": "(Inclure la première ville)"
+	},
+	{
+		"id": -1000001058,
+		"key": "smcfgs058",
+		"en|ch|tc|kr": "Le monstre dépend du joueur"
+	},
+	{
+		"id": -1000001059,
+		"key": "smcfgs059",
+		"en|ch|tc|kr": "Sauvegarde automatique après perte"
+	},
+	{
+		"id": -1000001060,
+		"key": "smcfgs060",
+		"en|ch|tc|kr": "(Le temps sera passé au mois prochain pour la guérison)"
+	},
+	{
+		"id": -1000001101,
+		"key": "smcfgs101",
+		"en|ch|tc|kr": "{1} % ({0} P)"
+	},
+	{
+		"id": -1000001102,
+		"key": "smcfgs102",
+		"en|ch|tc|kr": "({0}P)"
+	},
+	{
+		"id": -1000001103,
+		"key": "smcfgs103",
+		"en|ch|tc|kr": "{1} ({0}P)"
+	},
+	{
+		"id": -1000001104,
+		"key": "smcfgs104",
+		"en|ch|tc|kr": "Démarrage"
+	},
+	{
+		"id": -1000001105,
+		"key": "smcfgs105",
+		"en|ch|tc|kr": "Power Up : Un personnage spécialisé dans tous les aspects.\nSpeed ​​Up : Un personnage spécialisé dans la vitesse.\nTaoïste : Un personnage spécialisé dans la magie.\nPro Atk : Un personnage spécialisé dans l'attaque.\nPro Def : Un personnage spécialisé dans la défense.\nAnge : Un ange au bon cœur, axé sur la défense et la protection.\nMal : Un démon boudé de tous, concentré sur l'attaque.\nMarchand : Un commerçant qui écrase les autres avec sa richesse."
+	},
+	{
+		"id": -1000001106,
+		"key": "smcfgs106",
+		"en|ch|tc|kr": "Rôle du joueur"
+	},
+	{
+		"id": -1000001107,
+		"key": "smcfgs107",
+		"en|ch|tc|kr": "Aléatoire"
+	},
+	{
+		"id": -1000001108,
+		"key": "smcfgs108",
+		"en|ch|tc|kr": "Mise sous tension"
+	},
+	{
+		"id": -1000001109,
+		"key": "smcfgs109",
+		"en|ch|tc|kr": "Accélérer"
+	},
+	{
+		"id": -1000001110,
+		"key": "smcfgs110",
+		"en|ch|tc|kr": "Taoïste"
+	},
+	{
+		"id": -1000001111,
+		"key": "smcfgs111",
+		"en|ch|tc|kr": "Attaque Pro"
+	},
+	{
+		"id": -1000001112,
+		"key": "smcfgs112",
+		"en|ch|tc|kr": "Pro Déf"
+	},
+	{
+		"id": -1000001113,
+		"key": "smcfgs113",
+		"en|ch|tc|kr": "Ange"
+	},
+	{
+		"id": -1000001114,
+		"key": "smcfgs114",
+		"en|ch|tc|kr": "Mal"
+	},
+	{
+		"id": -1000001115,
+		"key": "smcfgs115",
+		"en|ch|tc|kr": "Marchand"
+	},
+	{
+		"id": -1000001116,
+		"key": "smcfgs116",
+		"en|ch|tc|kr": "Article du marché"
+	},
+	{
+		"id": -1000001117,
+		"key": "smcfgs117",
+		"en|ch|tc|kr": "NPC Taux d'adhésion"
+	},
+	{
+		"id": -1000001118,
+		"key": "smcfgs118",
+		"en|ch|tc|kr": "Obtenez un taux d'attaque"
+	},
+	{
+		"id": -1000001119,
+		"key": "smcfgs119",
+		"en|ch|tc|kr": "(Attention : Cette fonctionnalité consomme beaucoup de RAM et peut entraîner un décalage)"
+	},
+	{
+		"id": -1000001120,
+		"key": "smcfgs120",
+		"en|ch|tc|kr": "Enregistrer les données"
+	},
+	{
+		"id": -1000001121,
+		"key": "smcfgs121",
+		"en|ch|tc|kr": "Configurations de modules"
+	},
+	{
+		"id": -1000001122,
+		"key": "smcfgs122",
+		"en|ch|tc|kr": "Pas de taxation"
+	},
+	{
+		"id": -1000001123,
+		"key": "smcfgs123",
+		"en|ch|tc|kr": "Aucun article du marché"
+	},
+	{
+		"id": -1000001124,
+		"key": "smcfgs124",
+		"en|ch|tc|kr": "Pas de harceleurs"
+	},
+	{
+		"id": -1000001125,
+		"key": "smcfgs125",
+		"en|ch|tc|kr": "Pas de culture Qi"
+	},
+	{
+		"id": -1000001126,
+		"key": "smcfgs126",
+		"en|ch|tc|kr": "(Les PNJ doivent toujours payer des impôts)"
+	},
+	{
+		"id": -1000001127,
+		"key": "smcfgs127",
+		"en|ch|tc|kr": "Inconditionnel :"
+	},
+	{
+		"id": -1000001128,
+		"key": "smcfgs128",
+		"en|ch|tc|kr": "(Cette configuration affecte le temps de traitement mensuel)"
+	},
+	{
+		"id": -1000001129,
+		"key": "smcfgs129",
+		"en|ch|tc|kr": "Durée de vie perdue en mourant/perdant"
+	},
+	{
+		"id": -1000001130,
+		"key": "smcfgs130",
+		"en|ch|tc|kr": "Nombre maximum de vendeurs par ville"
+	},
+	{
+		"id": -1000001131,
+		"key": "smcfgs131",
+		"en|ch|tc|kr": "Nombre maximum d'acheteurs sur la vente d'un article"
+	},
+	{
+		"id": -1000001132,
+		"key": "smcfgs132",
+		"en|ch|tc|kr": "{0}"
+	},
+	{
+		"id": -1000001133,
+		"key": "smcfgs133",
+		"en|ch|tc|kr": "Nombre maximum d'articles sur le vendeur"
+	},
+	{
+		"id": -1000001134,
+		"key": "smcfgs134",
+		"en|ch|tc|kr": "Actif uniquement sur la zone actuelle/proche"
+	},
+	{
+		"id": -1000001135,
+		"key": "smcfgs135",
+		"en|ch|tc|kr": "(Accélére le temps de processus, mais affecte les PNJ)"
+	},
+	{
+		"id": -1000001136,
+		"key": "smcfgs136",
+		"en|ch|tc|kr": "Détruire un bâtiment après la guerre de la ville"
+	},
+	{
+		"id": -1000001137,
+		"key": "smcfgs137",
+		"en|ch|tc|kr": "Autoriser la réparation de l'arme divine"
+	},
+	{
+		"id": -1000001138,
+		"key": "smcfgs138",
+		"en|ch|tc|kr": "Toutes les fonctions s'appliquent aux unités les plus proches"
+	},
+	{
+		"id": -1000001139,
+		"key": "smcfgs139",
+		"en|ch|tc|kr": "Argent perdu en mourant"
+	}
+]

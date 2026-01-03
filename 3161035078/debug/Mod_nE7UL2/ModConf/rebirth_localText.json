@@ -1,0 +1,202 @@
+[
+	{
+		"id": "420102001",
+		"key": "rebirth420101001",
+		"en": "Rebirth 1",
+		"ch": "重生1",
+		"tc": "重生1",
+		"kr": "환생 1"
+	},
+	{
+		"id": "420103001",
+		"key": "rebirth420101001desc",
+		"en": "+5% Max HP",
+		"ch": "+5% 最大值 HP",
+		"tc": "+5% 最大值 HP",
+		"kr": "+5% 최대 HP"
+	},
+	{
+		"id": "420102002",
+		"key": "rebirth420101002",
+		"en": "Rebirth 2",
+		"ch": "重生2",
+		"tc": "重生2",
+		"kr": "환생 2"
+	},
+	{
+		"id": "420103002",
+		"key": "rebirth420101002desc",
+		"en": "+10% Max HP",
+		"ch": "+10% 最大值 HP",
+		"tc": "+10% 最大值 HP",
+		"kr": "+10% 최대 HP"
+	},
+	{
+		"id": "420102003",
+		"key": "rebirth420101003",
+		"en": "Rebirth 3",
+		"ch": "重生3",
+		"tc": "重生3",
+		"kr": "환생 3"
+	},
+	{
+		"id": "420103003",
+		"key": "rebirth420101003desc",
+		"en": "+15% Max HP",
+		"ch": "+15% 最大值 HP",
+		"tc": "+15% 最大值 HP",
+		"kr": "+15% 최대 {⑪}0{/⑪⑪}"
+	},
+	{
+		"id": "420102004",
+		"key": "rebirth420101004",
+		"en": "Rebirth 4",
+		"ch": "重生4",
+		"tc": "重生4",
+		"kr": "환생 4"
+	},
+	{
+		"id": "420103004",
+		"key": "rebirth420101004desc",
+		"en": "+20% Max HP",
+		"ch": "+20% 最大值 HP",
+		"tc": "+20% 最大值 HP",
+		"kr": "+20% 최대 HP"
+	},
+	{
+		"id": "420102005",
+		"key": "rebirth420101005",
+		"en": "Rebirth 5",
+		"ch": "重生5",
+		"tc": "重生5",
+		"kr": "환생 5"
+	},
+	{
+		"id": "420103005",
+		"key": "rebirth420101005desc",
+		"en": "+25% Max HP",
+		"ch": "+25% 最大值 HP",
+		"tc": "+25% 最大值 HP",
+		"kr": "+25% 최대 {⑪}0{/⑪⑪}"
+	},
+	{
+		"id": "420102006",
+		"key": "rebirth420101006",
+		"en": "Rebirth 6",
+		"ch": "重生6",
+		"tc": "重生6",
+		"kr": "환생 6"
+	},
+	{
+		"id": "420103006",
+		"key": "rebirth420101006desc",
+		"en": "+30% Max HP",
+		"ch": "+30% 最大值 HP",
+		"tc": "+30% 最大值 HP",
+		"kr": "+30% 최대 HP"
+	},
+	{
+		"id": "420102007",
+		"key": "rebirth420101007",
+		"en": "Rebirth 7",
+		"ch": "重生7",
+		"tc": "重生7",
+		"kr": "환생 7"
+	},
+	{
+		"id": "420103007",
+		"key": "rebirth420101007desc",
+		"en": "+35% Max HP",
+		"ch": "+35% 最大值 HP",
+		"tc": "+35% 最大值 HP",
+		"kr": "+35% 최대 HP"
+	},
+	{
+		"id": "420102008",
+		"key": "rebirth420101008",
+		"en": "Rebirth 8",
+		"ch": "重生8",
+		"tc": "重生8",
+		"kr": "환생 8"
+	},
+	{
+		"id": "420103008",
+		"key": "rebirth420101008desc",
+		"en": "+40% Max HP",
+		"ch": "+40% 最大值 HP",
+		"tc": "+40% 最大值 HP",
+		"kr": "+40% 최대 HP"
+	},
+	{
+		"id": "420102009",
+		"key": "rebirth420101009",
+		"en": "Rebirth 9",
+		"ch": "重生9",
+		"tc": "重生9",
+		"kr": "환생 9"
+	},
+	{
+		"id": "420103009",
+		"key": "rebirth420101009desc",
+		"en": "+45% Max HP",
+		"ch": "+45% 最大值 HP",
+		"tc": "+45% 最大值 HP",
+		"kr": "+45% 최대 {⑪}0{/⑪⑪}"
+	},
+	{
+		"id": "420102010",
+		"key": "rebirth420101010",
+		"en": "Rebirth 10",
+		"ch": "重生10",
+		"tc": "重生10",
+		"kr": "환생 10"
+	},
+	{
+		"id": "420103010",
+		"key": "rebirth420101010desc",
+		"en": "+50% Max HP",
+		"ch": "+50% 最大值 HP",
+		"tc": "+50% 最大值 HP",
+		"kr": "+50% 최대 HP"
+	},
+	{
+		"id": "420109999",
+		"key": "rebirth420109999dialog",
+		"en": "This rebirth is an opportunity. A chance to rectify past mistakes, to pursue a different path. I must choose wisely. What skills to retain, what knowledge to discard. Every decision will shape my destiny.",
+		"ch": "这次重生是一个机会。一个纠正过去错误、追求不同道路的机会。我必须明智地选择。保留哪些技能，放弃哪些知识。每一个决定都会塑造我的命运。",
+		"tc": "這次重生是一個機會。一個糾正過去錯誤、追求不同道路的機會。我必須明智地選擇。保留哪些技能，放棄哪些知識。每一個決定都會塑造我的命運。",
+		"kr": "이번 환생은 기회입니다. 과거의 실수를 바로잡고 다른 길을 추구할 수 있는 기회입니다. 현명하게 선택해야겠습니다. 어떤 기술을 유지하고, 어떤 지식을 버려야 하는지. 모든 결정이 내 운명을 결정합니다."
+	},
+	{
+		"id": "420103100",
+		"key": "rebirth420103100",
+		"en": "You have to leave the sect!",
+		"ch": "你必须离开宗门！",
+		"tc": "你必須離開宗門！",
+		"kr": "종파를 떠나야합니다!"
+	},
+	{
+		"id": "420103101",
+		"key": "rebirth420103101",
+		"en": "Reputation will be reseted!",
+		"ch": "声望将被重置！",
+		"tc": "聲望將被重置！",
+		"kr": "평판이 초기화됩니다!"
+	},
+	{
+		"id": "420103102",
+		"key": "rebirth420103102",
+		"en": "Rebirth",
+		"ch": "重生",
+		"tc": "重生",
+		"kr": "환생"
+	},
+	{
+		"id": "420103103",
+		"key": "rebirth420103103",
+		"en": "This mechanic will reset all your character level, exp and reputation.\nWhen you come back with same level, your character will be stronger.",
+		"ch": "这个机制将重置你所有的角色等级、经验值和声望。\n当你以相同的等级回来时，你的性格会更强。",
+		"tc": "這個機制將重置你所有的角色等級、經驗值和聲望。\n當你以相同的等級回來時，你的性格會更強。",
+		"kr": "이 메커니즘은 모든 캐릭터 레벨, 경험치 및 평판을 재설정합니다.\n같은 레벨로 돌아오면 캐릭터가 더욱 강해집니다."
+	}
+]

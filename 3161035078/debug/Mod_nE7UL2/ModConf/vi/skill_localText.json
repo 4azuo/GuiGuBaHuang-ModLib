@@ -1,0 +1,22 @@
+[
+	{
+		"id": "1000011000",
+		"key": "skill1000011000",
+		"en|ch|tc|kr": "Giếng trọng lực"
+	},
+	{
+		"id": "1000012000",
+		"key": "skill1000012000",
+		"en|ch|tc|kr": "Tạo một vòng tròn. Không ai có thể trốn thoát."
+	},
+	{
+		"id": "1000011001",
+		"key": "skill1000011001",
+		"en|ch|tc|kr": "Thiên kiếm rơi"
+	},
+	{
+		"id": "1000012001",
+		"key": "skill1000012001",
+		"en|ch|tc|kr": "Tạo mưa kiếm."
+	}
+]

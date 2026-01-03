@@ -1,0 +1,22 @@
+[
+	{
+		"id": "1000011000",
+		"key": "skill1000011000",
+		"en|ch|tc|kr": "Pozo de gravedad"
+	},
+	{
+		"id": "1000012000",
+		"key": "skill1000012000",
+		"en|ch|tc|kr": "Crea un círculo. Nadie puede escapar."
+	},
+	{
+		"id": "1000011001",
+		"key": "skill1000011001",
+		"en|ch|tc|kr": "Caída de espada celestial"
+	},
+	{
+		"id": "1000012001",
+		"key": "skill1000012001",
+		"en|ch|tc|kr": "Crea lluvia de espadas."
+	}
+]

@@ -1,0 +1,112 @@
+[
+	{
+		"id": "480112870",
+		"name": "monstwave480112880name",
+		"baseID": "103",
+		"growPercent": "100",
+		"attrScale": "hp_20|def_1|atk_3|power_5",
+		"dropID": "0",
+		"firstReward": "0",
+		"exp": "0",
+		"@|unitDatas": "0"
+	},
+	{
+		"id": "480112871",
+		"name": "monstwave480112881name",
+		"baseID": "104",
+		"growPercent": "100",
+		"attrScale": "hp_40|def_2|atk_6|power_10",
+		"dropID": "0",
+		"firstReward": "0",
+		"exp": "0",
+		"@|unitDatas": "0"
+	},
+	{
+		"id": "480112872",
+		"name": "monstwave480112882name",
+		"baseID": "515",
+		"growPercent": "100",
+		"attrScale": "hp_60|def_3|atk_9|power_15",
+		"dropID": "0",
+		"firstReward": "0",
+		"exp": "0",
+		"@|unitDatas": "0"
+	},
+	{
+		"id": "480112873",
+		"name": "monstwave480112883name",
+		"baseID": "512",
+		"growPercent": "100",
+		"attrScale": "hp_100|def_4|atk_12|power_20",
+		"dropID": "0",
+		"firstReward": "0",
+		"exp": "0",
+		"@|unitDatas": "0"
+	},
+	{
+		"id": "480112874",
+		"name": "monstwave480112884name",
+		"baseID": "147",
+		"growPercent": "100",
+		"attrScale": "hp_140|def_5|atk_15|power_25",
+		"dropID": "0",
+		"firstReward": "0",
+		"exp": "0",
+		"@|unitDatas": "0"
+	},
+	{
+		"id": "480112875",
+		"name": "monstwave480112885name",
+		"baseID": "506",
+		"growPercent": "100",
+		"attrScale": "hp_180|def_6|atk_18|power_30",
+		"dropID": "0",
+		"firstReward": "0",
+		"exp": "0",
+		"@|unitDatas": "0"
+	},
+	{
+		"id": "480112876",
+		"name": "monstwave480112886name",
+		"baseID": "563",
+		"growPercent": "100",
+		"attrScale": "hp_240|def_7|atk_21|power_35",
+		"dropID": "0",
+		"firstReward": "0",
+		"exp": "0",
+		"@|unitDatas": "0"
+	},
+	{
+		"id": "480112877",
+		"name": "monstwave480112887name",
+		"baseID": "564",
+		"growPercent": "100",
+		"attrScale": "hp_300|def_8|atk_24|power_40",
+		"dropID": "0",
+		"firstReward": "0",
+		"exp": "0",
+		"@|unitDatas": "0"
+	},
+	{
+		"id": "480112878",
+		"name": "monstwave480112888name",
+		"baseID": "551",
+		"growPercent": "100",
+		"attrScale": "hp_360|def_9|atk_27|power_45",
+		"dropID": "0",
+		"firstReward": "0",
+		"exp": "0",
+		"@|unitDatas": "0"
+	},
+	{
+		"id": "480112879",
+		"name": "monstwave480112889name",
+		"baseID": "550",
+		"growPercent": "100",
+		"attrScale": "hp_440|def_10|atk_30|power_50",
+		"dropID": "0",
+		"firstReward": "0",
+		"exp": "0",
+		"@|unitDatas": "0"
+	}
+]

@@ -1,0 +1,17 @@
+[
+	{
+		"id": "999999001",
+		"key": "gamemsg999999001",
+		"en|ch|tc|kr": "Le mod taoïste a reçu une mise à jour majeure. Malheureusement, pour garantir la meilleure expérience de jeu, vous devrez recréer votre personnage."
+	},
+	{
+		"id": "999999101",
+		"key": "gameopt999999101",
+		"en|ch|tc|kr": "Partir"
+	},
+	{
+		"id": "999999201",
+		"key": "gameopt999999201",
+		"en|ch|tc|kr": "Ne plus montrer"
+	}
+]

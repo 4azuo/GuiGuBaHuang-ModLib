@@ -1,0 +1,207 @@
+[
+	{
+		"id": "500010000",
+		"key": "adjType500010000",
+		"en|ch|tc|kr": "ATK"
+	},
+	{
+		"id": "500010001",
+		"key": "adjType500010001",
+		"en|ch|tc|kr": "definición"
+	},
+	{
+		"id": "500010002",
+		"key": "adjType500010002",
+		"en|ch|tc|kr": "HP"
+	},
+	{
+		"id": "500010003",
+		"key": "adjType500010003",
+		"en|ch|tc|kr": "MP"
+	},
+	{
+		"id": "500010004",
+		"key": "adjType500010004",
+		"en|ch|tc|kr": "SP"
+	},
+	{
+		"id": "500010005",
+		"key": "adjType500010005",
+		"en|ch|tc|kr": "Cura a HP"
+	},
+	{
+		"id": "500010006",
+		"key": "adjType500010006",
+		"en|ch|tc|kr": "Curar MP"
+	},
+	{
+		"id": "500010007",
+		"key": "adjType500010007",
+		"en|ch|tc|kr": "Curar SP"
+	},
+	{
+		"id": "500010008",
+		"key": "adjType500010008",
+		"en|ch|tc|kr": "Hoja"
+	},
+	{
+		"id": "500010009",
+		"key": "adjType500010009",
+		"en|ch|tc|kr": "tierra"
+	},
+	{
+		"id": "500010010",
+		"key": "adjType500010010",
+		"en|ch|tc|kr": "dedo"
+	},
+	{
+		"id": "500010011",
+		"key": "adjType500010011",
+		"en|ch|tc|kr": "fuego"
+	},
+	{
+		"id": "500010012",
+		"key": "adjType500010012",
+		"en|ch|tc|kr": "puño"
+	},
+	{
+		"id": "500010013",
+		"key": "adjType500010013",
+		"en|ch|tc|kr": "Congelado"
+	},
+	{
+		"id": "500010014",
+		"key": "adjType500010014",
+		"en|ch|tc|kr": "palma"
+	},
+	{
+		"id": "500010015",
+		"key": "adjType500010015",
+		"en|ch|tc|kr": "lanza"
+	},
+	{
+		"id": "500010016",
+		"key": "adjType500010016",
+		"en|ch|tc|kr": "espada"
+	},
+	{
+		"id": "500010017",
+		"key": "adjType500010017",
+		"en|ch|tc|kr": "Trueno"
+	},
+	{
+		"id": "500010018",
+		"key": "adjType500010018",
+		"en|ch|tc|kr": "viento"
+	},
+	{
+		"id": "500010019",
+		"key": "adjType500010019",
+		"en|ch|tc|kr": "madera"
+	},
+	{
+		"id": "500010020",
+		"key": "adjType500010020",
+		"en|ch|tc|kr": "Velocidad"
+	},
+	{
+		"id": "500010021",
+		"key": "adjType500010021",
+		"en|ch|tc|kr": "Bloquear(%Máx.)"
+	},
+	{
+		"id": "500010022",
+		"key": "adjType500010022",
+		"en|ch|tc|kr": "Bloquear(Daño)"
+	},
+	{
+		"id": "500010023",
+		"key": "adjType500010023",
+		"en|ch|tc|kr": "Evadir(%)"
+	},
+	{
+		"id": "500010024",
+		"key": "adjType500010024",
+		"en|ch|tc|kr": "Evadir (% máx.)"
+	},
+	{
+		"id": "500010025",
+		"key": "adjType500010025",
+		"en|ch|tc|kr": "Anular"
+	},
+	{
+		"id": "500010026",
+		"key": "adjType500010026",
+		"en|ch|tc|kr": "Escudo"
+	},
+	{
+		"id": "500010027",
+		"key": "adjType500010027",
+		"en|ch|tc|kr": "SCrit(%)"
+	},
+	{
+		"id": "500010028",
+		"key": "adjType500010028",
+		"en|ch|tc|kr": "SCrit(%Máx.)"
+	},
+	{
+		"id": "500010029",
+		"key": "adjType500010029",
+		"en|ch|tc|kr": "SCrit(%Daño)"
+	},
+	{
+		"id": "500010030",
+		"key": "adjType500010030",
+		"en|ch|tc|kr": "Habilidad(%Daño)"
+	},
+	{
+		"id": "500010031",
+		"key": "adjType500010031",
+		"en|ch|tc|kr": "Daño mínimo"
+	},
+	{
+		"id": "500010032",
+		"key": "adjType500010032",
+		"en|ch|tc|kr": "Robar(HP)"
+	},
+	{
+		"id": "500010033",
+		"key": "adjType500010033",
+		"en|ch|tc|kr": "Robar(MP)"
+	},
+	{
+		"id": "500010034",
+		"key": "adjType500010034",
+		"en|ch|tc|kr": "Robar(SP)"
+	},
+	{
+		"id": "500010035",
+		"key": "adjType500010035",
+		"en|ch|tc|kr": "Matar(%)"
+	},
+	{
+		"id": "500010036",
+		"key": "adjType500010036",
+		"en|ch|tc|kr": "Mejora de mascotas (%)"
+	},
+	{
+		"id": "500010037",
+		"key": "adjType500010037",
+		"en|ch|tc|kr": "DP"
+	},
+	{
+		"id": "500010038",
+		"key": "adjType500010038",
+		"en|ch|tc|kr": "Cura a DP"
+	},
+	{
+		"id": "500010039",
+		"key": "adjType500010039",
+		"en|ch|tc|kr": "Artículo CD(%)"
+	},
+	{
+		"id": "500010040",
+		"key": "adjType500010040",
+		"en|ch|tc|kr": "Habilidad CD(%)"
+	}
+]

@@ -1,0 +1,26 @@
+[
+	{
+		"id": "420041124",
+		"condition": "0",
+		"hue": "0",
+		"optionsHide": "0",
+		"text": "team420041124dramaOpt1",
+		"cost": "0",
+		"costHide": "0",
+		"function": "0",
+		"clickTip": "0",
+		"nextDialogue": "0"
+	},
+	{
+		"id": "420041125",
+		"condition": "0",
+		"hue": "0",
+		"optionsHide": "0",
+		"text": "team420041125dramaOpt2",
+		"cost": "0",
+		"costHide": "0",
+		"function": "0",
+		"clickTip": "0",
+		"nextDialogue": "0"
+	},
+]

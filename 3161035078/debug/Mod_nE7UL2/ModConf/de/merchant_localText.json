@@ -1,0 +1,102 @@
+[
+	{
+		"id": "420092001",
+		"key": "merchant420091001",
+		"en|ch|tc|kr": "Händler Lvl-1"
+	},
+	{
+		"id": "420093001",
+		"key": "merchant420091001desc",
+		"en|ch|tc|kr": "+2 % Einblick, +0,3 % Verkauf, +0,1 % Einkommen"
+	},
+	{
+		"id": "420092002",
+		"key": "merchant420091002",
+		"en|ch|tc|kr": "Händler Lvl-2"
+	},
+	{
+		"id": "420093002",
+		"key": "merchant420091002desc",
+		"en|ch|tc|kr": "+4 % Einblick, +0,6 % Verkauf, +0,2 % Einkommen"
+	},
+	{
+		"id": "420092003",
+		"key": "merchant420091003",
+		"en|ch|tc|kr": "Händler Lvl-3"
+	},
+	{
+		"id": "420093003",
+		"key": "merchant420091003desc",
+		"en|ch|tc|kr": "+6 % Einblick, +0,9 % Verkauf, +0,3 % Einkommen"
+	},
+	{
+		"id": "420092004",
+		"key": "merchant420091004",
+		"en|ch|tc|kr": "Händler Lvl-4"
+	},
+	{
+		"id": "420093004",
+		"key": "merchant420091004desc",
+		"en|ch|tc|kr": "+8 % Einblick, +1,2 % Verkauf, +0,4 % Einkommen"
+	},
+	{
+		"id": "420092005",
+		"key": "merchant420091005",
+		"en|ch|tc|kr": "Händler Lvl-5"
+	},
+	{
+		"id": "420093005",
+		"key": "merchant420091005desc",
+		"en|ch|tc|kr": "+10 % Einblick, +1,5 % Verkauf, +0,5 % Einkommen"
+	},
+	{
+		"id": "420092006",
+		"key": "merchant420091006",
+		"en|ch|tc|kr": "Händler Lvl-6"
+	},
+	{
+		"id": "420093006",
+		"key": "merchant420091006desc",
+		"en|ch|tc|kr": "+13 % Einblick, +1,8 % Verkauf, +0,6 % Einkommen"
+	},
+	{
+		"id": "420092007",
+		"key": "merchant420091007",
+		"en|ch|tc|kr": "Händler Lvl-7"
+	},
+	{
+		"id": "420093007",
+		"key": "merchant420091007desc",
+		"en|ch|tc|kr": "+16 % Einblick, +2,1 % Verkauf, +0,7 % Einkommen"
+	},
+	{
+		"id": "420092008",
+		"key": "merchant420091008",
+		"en|ch|tc|kr": "Händler Lvl-8"
+	},
+	{
+		"id": "420093008",
+		"key": "merchant420091008desc",
+		"en|ch|tc|kr": "+19 % Einblick, +2,4 % Verkauf, +0,8 % Einkommen"
+	},
+	{
+		"id": "420092009",
+		"key": "merchant420091009",
+		"en|ch|tc|kr": "Händler Lvl-9"
+	},
+	{
+		"id": "420093009",
+		"key": "merchant420091009desc",
+		"en|ch|tc|kr": "+22 % Einblick, +2,7 % Verkauf, +0,9 % Einkommen"
+	},
+	{
+		"id": "420092010",
+		"key": "merchant420091010",
+		"en|ch|tc|kr": "Händler Lvl-10"
+	},
+	{
+		"id": "420093010",
+		"key": "merchant420091010desc",
+		"en|ch|tc|kr": "+25 % Einblick, +3,0 % Verkauf, +1,0 % Einkommen"
+	}
+]

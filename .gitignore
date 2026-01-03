@@ -2,7 +2,6 @@
 **/bin/
 **/obj/
 **/packages/
-**/debug/
 
 # Python
 __pycache__/

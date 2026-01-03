@@ -1,0 +1,22 @@
+[
+	{
+		"id": "1000011000",
+		"key": "skill1000011000",
+		"en|ch|tc|kr": "Puits gravitationnel"
+	},
+	{
+		"id": "1000012000",
+		"key": "skill1000012000",
+		"en|ch|tc|kr": "Créez un cercle. Personne ne peut y échapper."
+	},
+	{
+		"id": "1000011001",
+		"key": "skill1000011001",
+		"en|ch|tc|kr": "Chute d'épée céleste"
+	},
+	{
+		"id": "1000012001",
+		"key": "skill1000012001",
+		"en|ch|tc|kr": "Créez une pluie d'épées."
+	}
+]

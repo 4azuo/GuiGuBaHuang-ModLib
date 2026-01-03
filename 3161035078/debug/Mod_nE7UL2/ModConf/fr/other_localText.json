@@ -1,0 +1,587 @@
+[
+	{
+		"id": 500020000,
+		"key": "other500020000",
+		"en|ch|tc|kr": "Contribution d'échange"
+	},
+	{
+		"id": 500020001,
+		"key": "other500020001",
+		"en|ch|tc|kr": "Sélectionner un article"
+	},
+	{
+		"id": 500020002,
+		"key": "other500020002",
+		"en|ch|tc|kr": "Sélectionnez les matériaux"
+	},
+	{
+		"id": 500020003,
+		"key": "other500020003",
+		"en|ch|tc|kr": "Commissions"
+	},
+	{
+		"id": 500020004,
+		"key": "other500020004",
+		"en|ch|tc|kr": "Tarif : gratuit pour les marchands-maîtres et gardiens"
+	},
+	{
+		"id": 500020005,
+		"key": "other500020005",
+		"en|ch|tc|kr": "Ville Gérer"
+	},
+	{
+		"id": 500020006,
+		"key": "other500020006",
+		"en|ch|tc|kr": "Niveau supérieur"
+	},
+	{
+		"id": 500020007,
+		"key": "other500020007",
+		"en|ch|tc|kr": "Etes-vous sûr de licencier cette personne ?"
+	},
+	{
+		"id": 500020008,
+		"key": "other500020008",
+		"en|ch|tc|kr": "Etes-vous sûr d'ajouter cette personne ?"
+	},
+	{
+		"id": 500020009,
+		"key": "other500020009",
+		"en|ch|tc|kr": "Etes-vous sûr de partir ?"
+	},
+	{
+		"id": 500020010,
+		"key": "other500020010",
+		"en|ch|tc|kr": "Etes-vous sûr de déclarer la guerre à cette ville ?"
+	},
+	{
+		"id": 500020011,
+		"key": "other500020011",
+		"en|ch|tc|kr": "Ville"
+	},
+	{
+		"id": 500020012,
+		"key": "other500020012",
+		"en|ch|tc|kr": "Rejeter"
+	},
+	{
+		"id": 500020013,
+		"key": "other500020013",
+		"en|ch|tc|kr": "Embaucher"
+	},
+	{
+		"id": 500020014,
+		"key": "other500020014",
+		"en|ch|tc|kr": "Déclarer la guerre"
+	},
+	{
+		"id": 500020015,
+		"key": "other500020015",
+		"en|ch|tc|kr": "Dépôt"
+	},
+	{
+		"id": 500020016,
+		"key": "other500020016",
+		"en|ch|tc|kr": "Se retirer"
+	},
+	{
+		"id": 500020017,
+		"key": "other500020017",
+		"en|ch|tc|kr": "Construire"
+	},
+	{
+		"id": 500020018,
+		"key": "other500020018",
+		"en|ch|tc|kr": "Votre personnage passera au niveau supérieur sans aucun élément requis. Mais les propriétés des personnages ne seront pas augmentées."
+	},
+	{
+		"id": 500020019,
+		"key": "other500020019",
+		"en|ch|tc|kr": "Après l'expérience complète de votre personnage à chaque étape. Il/Elle entraînera automatiquement Qi pour devenir plus fort.\nCela dépend de SP."
+	},
+	{
+		"id": 500020020,
+		"key": "other500020020",
+		"en|ch|tc|kr": "Comment devenir gardien de ville ? Cela dépend de votre réputation et du budget de votre ville.\nSi la ville dispose d’un budget suffisant pour embaucher un gardien, elle embauchera alors celui qui a la plus haute réputation en ville.\nEt lorsque le maître de la ville perdra, le gardien qui a la plus haute réputation deviendra le prochain maître de la ville."
+	},
+	{
+		"id": 500020021,
+		"key": "other500020021",
+		"en|ch|tc|kr": "La terre tremble sous vos pieds tandis que la bataille fait rage. {0} se battent pour protéger leur maison. {1} cherche à conquérir. Votre choix déterminera désormais votre chemin !\nOui : Aide {0}\nNon : Aide {1}"
+	},
+	{
+		"id": 500020022,
+		"key": "other500020022",
+		"en|ch|tc|kr": "Avertissement"
+	},
+	{
+		"id": 500020023,
+		"key": "other500020023",
+		"en|ch|tc|kr": "Votre ville ({0}) est attaquée !\nVoulez-vous aider?"
+	},
+	{
+		"id": 500020024,
+		"key": "other500020024",
+		"en|ch|tc|kr": "Votre secte ({0}) est attaquée !\nVoulez-vous aider?"
+	},
+	{
+		"id": 500020025,
+		"key": "other500020025",
+		"en|ch|tc|kr": "Le budget de la ville ne suffit pas !"
+	},
+	{
+		"id": 500020026,
+		"key": "other500020026",
+		"en|ch|tc|kr": "Vous avez reçu une invitation du maître de ville de {0} pour le poste de gardien ?\nVoulez-vous devenir gardien de ville ?"
+	},
+	{
+		"id": 500020027,
+		"key": "other500020027",
+		"en|ch|tc|kr": "Vous n'avez pas assez de {0:#,##0} Pierres spirituelles pour payer !"
+	},
+	{
+		"id": 500020028,
+		"key": "other500020028",
+		"en|ch|tc|kr": "Chaque fois que vous mourrez au combat, votre vie sera perdue. Et lorsque votre âge aura dépassé, votre sauvegarde sera supprimée. S'il vous plaît soyez prudent."
+	},
+	{
+		"id": 500020029,
+		"key": "other500020029",
+		"en|ch|tc|kr": "Voulez-vous vraiment sauter {0} année ?"
+	},
+	{
+		"id": 500020030,
+		"key": "other500020030",
+		"en|ch|tc|kr": "Sauter {0} année"
+	},
+	{
+		"id": 500020031,
+		"key": "other500020031",
+		"en|ch|tc|kr": "Voulez-vous vraiment sauter {0} année ?\n(Sans événements mensuels)"
+	},
+	{
+		"id": 500020032,
+		"key": "other500020032",
+		"en|ch|tc|kr": "≫"
+	},
+	{
+		"id": 500020033,
+		"key": "other500020033",
+		"en|ch|tc|kr": "Affecte vos dégâts et votre défense contre les dégâts du même type.\nLes doigts, paumes et poings spéciaux renforcent également votre défense."
+	},
+	{
+		"id": 500020034,
+		"key": "other500020034",
+		"en|ch|tc|kr": "Affecte vos dégâts et votre défense contre les dégâts du même type.\nFeu → Dégâts critiques\nEau → MP Récupération\nVent → Évasion\nTerre → Défense\nTonnerre → Chances de coup critique et réduction des dégâts d'essai\nBois → HP Récupération"
+	},
+	{
+		"id": 500020035,
+		"key": "other500020035",
+		"en|ch|tc|kr": "Le titre sera décerné lorsqu'un certain score sera atteint."
+	},
+	{
+		"id": 500020036,
+		"key": "other500020036",
+		"en|ch|tc|kr": "Les points de capacité affectent HP/MP en fonction du niveau du personnage."
+	},
+	{
+		"id": 500020037,
+		"key": "other500020037",
+		"en|ch|tc|kr": "Le niveau de compétence s'améliorera en utilisant les activités correspondantes."
+	},
+	{
+		"id": 500020038,
+		"key": "other500020038",
+		"en|ch|tc|kr": "HP/MP affectent le bouclier lorsque vous entrez dans la bataille.\nLa perspicacité et la chance ont un impact significatif sur les événements aléatoires ainsi que sur la vitesse de croissance et d'apprentissage."
+	},
+	{
+		"id": 500020039,
+		"key": "other500020039",
+		"en|ch|tc|kr": "Ne jouez pas avec un autre mod qui augmente la difficulté du jeu."
+	},
+	{
+		"id": 500020040,
+		"key": "other500020040",
+		"en|ch|tc|kr": "Marché"
+	},
+	{
+		"id": 500020041,
+		"key": "other500020041",
+		"en|ch|tc|kr": "Vous pouvez acheter/vendre des articles avec NPC ici. Mais vous pouvez être détesté et volé."
+	},
+	{
+		"id": 500020042,
+		"key": "other500020042",
+		"en|ch|tc|kr": "{0:#,##0} Pierres spirituelles/an"
+	},
+	{
+		"id": 500020043,
+		"key": "other500020043",
+		"en|ch|tc|kr": "{0:#,##0} Pierres spirituelles/mois"
+	},
+	{
+		"id": 500020044,
+		"key": "other500020044",
+		"en|ch|tc|kr": "Se faufiler à travers"
+	},
+	{
+		"id": 500020045,
+		"key": "other500020045",
+		"en|ch|tc|kr": "Partir"
+	},
+	{
+		"id": 500020046,
+		"key": "other500020046",
+		"en|ch|tc|kr": "[INFO] Taoïste"
+	},
+	{
+		"id": 500020047,
+		"key": "other500020047",
+		"en|ch|tc|kr": "Liste de vente"
+	},
+	{
+		"id": 500020048,
+		"key": "other500020048",
+		"en|ch|tc|kr": "Étape 1"
+	},
+	{
+		"id": 500020049,
+		"key": "other500020049",
+		"en|ch|tc|kr": "Étape 2"
+	},
+	{
+		"id": 500020050,
+		"key": "other500020050",
+		"en|ch|tc|kr": "Affiner"
+	},
+	{
+		"id": 500020051,
+		"key": "other500020051",
+		"en|ch|tc|kr": "Succès ! Niveau {0} → {1} (+{2:#,##0} exp)"
+	},
+	{
+		"id": 500020052,
+		"key": "other500020052",
+		"en|ch|tc|kr": "Marché"
+	},
+	{
+		"id": 500020053,
+		"key": "other500020053",
+		"en|ch|tc|kr": "Liste de vente"
+	},
+	{
+		"id": 500020054,
+		"key": "other500020054",
+		"en|ch|tc|kr": "Embaucher des personnes"
+	},
+	{
+		"id": 500020055,
+		"key": "other500020055",
+		"en|ch|tc|kr": "S'inscrire"
+	},
+	{
+		"id": 500020056,
+		"key": "other500020056",
+		"en|ch|tc|kr": "{0:#,##0} Pierres spirituelles → {1:#,##0} Contribution"
+	},
+	{
+		"id": 500020057,
+		"key": "other500020057",
+		"en|ch|tc|kr": "Ratio d'échange {0:#,##0} Pierres spirituelles → 1 Contribution"
+	},
+	{
+		"id": 500020058,
+		"key": "other500020058",
+		"en|ch|tc|kr": "Sélectionner des articles"
+	},
+	{
+		"id": 500020059,
+		"key": "other500020059",
+		"en|ch|tc|kr": "Effacer"
+	},
+	{
+		"id": 500020060,
+		"key": "other500020060",
+		"en|ch|tc|kr": "Mes articles"
+	},
+	{
+		"id": 500020061,
+		"key": "other500020061",
+		"en|ch|tc|kr": "S'inscrire"
+	},
+	{
+		"id": 500020062,
+		"key": "other500020062",
+		"en|ch|tc|kr": "Prix total"
+	},
+	{
+		"id": 500020063,
+		"key": "other500020063",
+		"en|ch|tc|kr": "Min : {0:#,##0}　　　Vente :{1:#,##0}　　　Max :{2:#,##0}　　　Votre :{3:#,##0}"
+	},
+	{
+		"id": 500020064,
+		"key": "other500020064",
+		"en|ch|tc|kr": "Vers le bas"
+	},
+	{
+		"id": 500020065,
+		"key": "other500020065",
+		"en|ch|tc|kr": "S'il vous plaît, restez en ville !"
+	},
+	{
+		"id": 500020066,
+		"key": "other500020066",
+		"en|ch|tc|kr": "Vers le haut"
+	},
+	{
+		"id": 500020067,
+		"key": "other500020067",
+		"en|ch|tc|kr": "Négocier"
+	},
+	{
+		"id": 500020068,
+		"key": "other500020068",
+		"en|ch|tc|kr": "Cultiver"
+	},
+	{
+		"id": 500020069,
+		"key": "other500020069",
+		"en|ch|tc|kr": "Vous avez besoin de {0:#,##0} pierres spirituelles pour la culture."
+	},
+	{
+		"id": 500020070,
+		"key": "other500020070",
+		"en|ch|tc|kr": "{0:#,##0} Pierres spirituelles → {1:#,##0} Exp."
+	},
+	{
+		"id": 500020071,
+		"key": "other500020071",
+		"en|ch|tc|kr": "Qi Transfert"
+	},
+	{
+		"id": 500020072,
+		"key": "other500020072",
+		"en|ch|tc|kr": "Recevez Qi"
+	},
+	{
+		"id": 500020073,
+		"key": "other500020073",
+		"en|ch|tc|kr": "Dépendez de votre perspicacité et de vos bases (racines)."
+	},
+	{
+		"id": 500020074,
+		"key": "other500020074",
+		"en|ch|tc|kr": "Accord"
+	},
+	{
+		"id": 500020075,
+		"key": "other500020075",
+		"en|ch|tc|kr": "Valeur totale : {0:#,##0}"
+	},
+	{
+		"id": 500020076,
+		"key": "other500020076",
+		"en|ch|tc|kr": "Retour"
+	},
+	{
+		"id": 500020077,
+		"key": "other500020077",
+		"en|ch|tc|kr": "Abandonner"
+	},
+	{
+		"id": 500020078,
+		"key": "other500020078",
+		"en|ch|tc|kr": "Vous vous êtes retiré ? Après tout ce sur quoi nous étions convenus ? Je n'apprécie pas les accords rompus – vous m'avez juste fait perdre mon temps."
+	},
+	{
+		"id": 500020079,
+		"key": "other500020079",
+		"en|ch|tc|kr": "Cela s'est bien passé ! C'est toujours agréable de travailler avec quelqu'un qui sait ce qu'il fait."
+	},
+	{
+		"id": 500020080,
+		"key": "other500020080",
+		"en|ch|tc|kr": "Tu ne peux pas être sérieux. Vous me devez plus qu'un « non » !"
+	},
+	{
+		"id": 500020081,
+		"key": "other500020081",
+		"en|ch|tc|kr": "Quoi ? Tu savais que je venais ! Tu l'as vendu quand même ?"
+	},
+	{
+		"id": 500020082,
+		"key": "other500020082",
+		"en|ch|tc|kr": "Le [{0}] a été vendu."
+	},
+	{
+		"id": 500020083,
+		"key": "other500020083",
+		"en|ch|tc|kr": "Inconnu"
+	},
+	{
+		"id": 500020084,
+		"key": "other500020084",
+		"en|ch|tc|kr": "Veuillez sélectionner un élément."
+	},
+	{
+		"id": 500020085,
+		"key": "other500020085",
+		"en|ch|tc|kr": "Marché VIP"
+	},
+	{
+		"id": 500020086,
+		"key": "other500020086",
+		"en|ch|tc|kr": "Voulez-vous payer {0:#,##0} pierres spirituelles pour notre service ?"
+	},
+	{
+		"id": 500020087,
+		"key": "other500020087",
+		"en|ch|tc|kr": "Vous n’avez pas assez de pierres spirituelles !"
+	},
+	{
+		"id": 500020088,
+		"key": "other500020088",
+		"en|ch|tc|kr": "Essayez-vous de me larguer ?"
+	},
+	{
+		"id": 500020089,
+		"key": "other500020089",
+		"en|ch|tc|kr": "Dégâts x{0}"
+	},
+	{
+		"id": 500020090,
+		"key": "other500020090",
+		"en|ch|tc|kr": "Annuler"
+	},
+	{
+		"id": 500020091,
+		"key": "other500020091",
+		"en|ch|tc|kr": "Min : {0}　　　Vente :{1}　　　Max :{2}"
+	},
+	{
+		"id": 500020092,
+		"key": "other500020092",
+		"en|ch|tc|kr": "Offres"
+	},
+	{
+		"id": 500020093,
+		"key": "other500020093",
+		"en|ch|tc|kr": "Quoi ?! Annulé? Est-ce que j'ai l'air d'avoir du temps à perdre ?"
+	},
+	{
+		"id": 500020094,
+		"key": "other500020094",
+		"en|ch|tc|kr": "Anonyme (frais de frais)"
+	},
+	{
+		"id": 500020095,
+		"key": "other500020095",
+		"en|ch|tc|kr": "Prix de vente"
+	},
+	{
+		"id": 500020096,
+		"key": "other500020096",
+		"en|ch|tc|kr": "Quantité"
+	},
+	{
+		"id": 500020097,
+		"key": "other500020097",
+		"en|ch|tc|kr": "Honoraires anonymes = 10% du prix de vente"
+	},
+	{
+		"id": 500020098,
+		"key": "other500020098",
+		"en|ch|tc|kr": "Veuillez sélectionner un article"
+	},
+	{
+		"id": 500020099,
+		"key": "other500020099",
+		"en|ch|tc|kr": "Quantité invalide"
+	},
+	{
+		"id": 500020100,
+		"key": "other500020100",
+		"en|ch|tc|kr": "Prix invalide"
+	},
+	{
+		"id": 500020101,
+		"key": "other500020101",
+		"en|ch|tc|kr": "Vous devez être dans une ville pour vendre des objets"
+	},
+	{
+		"id": 500020102,
+		"key": "other500020102",
+		"en|ch|tc|kr": "Erreur"
+	},
+	{
+		"id": 500020103,
+		"key": "other500020103",
+		"en|ch|tc|kr": "Vente enregistrée : {0} x{1} pour {2}"
+	},
+	{
+		"id": 500020104,
+		"key": "other500020104",
+		"en|ch|tc|kr": "Pas assez d'argent pour les frais anonymes"
+	},
+	{
+		"id": 500020105,
+		"key": "other500020105",
+		"en|ch|tc|kr": "Succès"
+	},
+	{
+		"id": 500020106,
+		"key": "other500020106",
+		"en|ch|tc|kr": "Vente anonyme enregistrée : {0} x{1} pour {2} (frais : {3})"
+	},
+	{
+		"id": 500020107,
+		"key": "other500020107",
+		"en|ch|tc|kr": "Prix de vente : {0} | Frais anonymes : {1} (payés d'avance)"
+	},
+	{
+		"id": 500020108,
+		"key": "other500020108",
+		"en|ch|tc|kr": "Prix de vente : {0}"
+	},
+	{
+		"id": 500020109,
+		"key": "other500020109",
+		"en|ch|tc|kr": "Personne ne négocie actuellement cet article."
+	},
+	{
+		"id": 500020110,
+		"key": "other500020110",
+		"en|ch|tc|kr": "Aucun acheteur valide trouvé."
+	},
+	{
+		"id": 500020111,
+		"key": "other500020111",
+		"en|ch|tc|kr": "Liste des offres"
+	},
+	{
+		"id": 500020112,
+		"key": "other500020112",
+		"en|ch|tc|kr": "Vous vendez cet article à {0} !"
+	},
+	{
+		"id": 500020113,
+		"key": "other500020113",
+		"en|ch|tc|kr": "Réparation"
+	},
+	{
+		"id": 500020114,
+		"key": "other500020114",
+		"en|ch|tc|kr": "Ajouter un point"
+	},
+	{
+		"id": 500020115,
+		"key": "other500020115",
+		"en|ch|tc|kr": "Coût : {0:#,##0}.\nEtes-vous sûr ?"
+	},
+	{
+		"id": 500020116,
+		"key": "other500020116",
+		"en|ch|tc|kr": "Vous n’avez pas assez de pierres spirituelles !"
+	}
+]

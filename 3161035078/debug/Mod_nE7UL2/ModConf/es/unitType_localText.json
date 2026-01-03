@@ -1,0 +1,82 @@
+[
+	{
+		"id": "420010100",
+		"key": "unitType420010100",
+		"en|ch|tc|kr": "Encendido"
+	},
+	{
+		"id": "420010200",
+		"key": "unitType420010200",
+		"en|ch|tc|kr": "Acelerar"
+	},
+	{
+		"id": "420010300",
+		"key": "unitType420010300",
+		"en|ch|tc|kr": "taoísta"
+	},
+	{
+		"id": "420010400",
+		"key": "unitType420010400",
+		"en|ch|tc|kr": "ataque profesional"
+	},
+	{
+		"id": "420010500",
+		"key": "unitType420010500",
+		"en|ch|tc|kr": "Defensa profesional"
+	},
+	{
+		"id": "420010600",
+		"key": "unitType420010600",
+		"en|ch|tc|kr": "ángel"
+	},
+	{
+		"id": "420010700",
+		"key": "unitType420010700",
+		"en|ch|tc|kr": "mal"
+	},
+	{
+		"id": "420010800",
+		"key": "unitType420010800",
+		"en|ch|tc|kr": "comerciante"
+	},
+	{
+		"id": "421010100",
+		"key": "unitType420010100desc",
+		"en|ch|tc|kr": "ATAQUE +10%, HP +20%"
+	},
+	{
+		"id": "421010200",
+		"key": "unitType420010200desc",
+		"en|ch|tc|kr": "Agitud +30%"
+	},
+	{
+		"id": "421010300",
+		"key": "unitType420010300desc",
+		"en|ch|tc|kr": "ATAQUE +8%, HP +15%, MP +10%"
+	},
+	{
+		"id": "421010400",
+		"key": "unitType420010400desc",
+		"en|ch|tc|kr": "ATAQUE +30%"
+	},
+	{
+		"id": "421010500",
+		"key": "unitType420010500desc",
+		"en|ch|tc|kr": "HP +25 %, defensa +5 %"
+	},
+	{
+		"id": "421010600",
+		"key": "unitType420010600desc",
+		"en|ch|tc|kr": "Ataque +50%, Ag +10%, HP +20%, MP +10%, Justo +100%, Demoníaco -100%\n\nCada vez que matas a un mal, tus estadísticas aumentan un 20% según las estadísticas del mal.\n(HP/MP/SP/Atk/Def/Mejor base)"
+	},
+	{
+		"id": "421010700",
+		"key": "unitType420010700desc",
+		"en|ch|tc|kr": "Ataque +30%, Defensa +10%, HP +100%, Justo -100%, Demoníaco -30%\n\nCada vez que matas a un humano, tus estadísticas aumentan un 1% según las estadísticas de la unidad asesinada.\n(HP/MP/SP/Atk/Def/Todas las bases)"
+	},
+	{
+		"id": "421010800",
+		"key": "unitType420010800desc",
+		"en|ch|tc|kr": "Atk -10 %, Def -10 %, HP -25 %, MP -50 %, almacenamiento gratuito, -10 % de coste de compra de mercado, +10 % de valor de venta de mercado, +3 % de ingresos mensuales\n\nPuedes ver estadísticas de NPC elementos."
+	}
+]

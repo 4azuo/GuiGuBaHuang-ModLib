@@ -1,0 +1,42 @@
+[
+	{
+		"id": "500060000",
+		"key": "adjLvl500060000",
+		"en|ch|tc|kr": "Ninguno"
+	},
+	{
+		"id": "500060001",
+		"key": "adjLvl500060001",
+		"en|ch|tc|kr": "común"
+	},
+	{
+		"id": "500060002",
+		"key": "adjLvl500060002",
+		"en|ch|tc|kr": "Poco común"
+	},
+	{
+		"id": "500060003",
+		"key": "adjLvl500060003",
+		"en|ch|tc|kr": "raro"
+	},
+	{
+		"id": "500060004",
+		"key": "adjLvl500060004",
+		"en|ch|tc|kr": "misterio"
+	},
+	{
+		"id": "500060005",
+		"key": "adjLvl500060005",
+		"en|ch|tc|kr": "Legendario"
+	},
+	{
+		"id": "500060006",
+		"key": "adjLvl500060006",
+		"en|ch|tc|kr": "Bestia"
+	},
+	{
+		"id": "500060007",
+		"key": "adjLvl500060007",
+		"en|ch|tc|kr": "antiguo"
+	}
+]

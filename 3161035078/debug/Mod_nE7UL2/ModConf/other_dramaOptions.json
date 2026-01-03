@@ -1,0 +1,26 @@
+[
+	{
+		"id": "501120027",
+		"condition": "0",
+		"hue": "0",
+		"optionsHide": "0",
+		"text": "other500020044",
+		"cost": "0",
+		"costHide": "0",
+		"function": "0",
+		"clickTip": "0",
+		"nextDialogue": "0"
+	},
+	{
+		"id": "501220027",
+		"condition": "0",
+		"hue": "0",
+		"optionsHide": "0",
+		"text": "other500020045",
+		"cost": "0",
+		"costHide": "0",
+		"function": "0",
+		"clickTip": "0",
+		"nextDialogue": "0"
+	}
+]

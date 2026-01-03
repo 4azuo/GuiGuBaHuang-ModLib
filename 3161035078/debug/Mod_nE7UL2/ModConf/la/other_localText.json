@@ -1,0 +1,587 @@
+[
+	{
+		"id": 500020000,
+		"key": "other500020000",
+		"en|ch|tc|kr": "Commutatio Conlationem"
+	},
+	{
+		"id": 500020001,
+		"key": "other500020001",
+		"en|ch|tc|kr": "Lego Item"
+	},
+	{
+		"id": 500020002,
+		"key": "other500020002",
+		"en|ch|tc|kr": "Lego materiae"
+	},
+	{
+		"id": 500020003,
+		"key": "other500020003",
+		"en|ch|tc|kr": "Commissio"
+	},
+	{
+		"id": 500020004,
+		"key": "other500020004",
+		"en|ch|tc|kr": "Fee: gratis pro dominis mercatoribus et tutoribus"
+	},
+	{
+		"id": 500020005,
+		"key": "other500020005",
+		"en|ch|tc|kr": "Villa Curo"
+	},
+	{
+		"id": 500020006,
+		"key": "other500020006",
+		"en|ch|tc|kr": "Gradus Sursum"
+	},
+	{
+		"id": 500020007,
+		"key": "other500020007",
+		"en|ch|tc|kr": "Certusne es de hoc homine dimittendo?"
+	},
+	{
+		"id": 500020008,
+		"key": "other500020008",
+		"en|ch|tc|kr": "Certus esne de hoc homine addendo?"
+	},
+	{
+		"id": 500020009,
+		"key": "other500020009",
+		"en|ch|tc|kr": "Certus esne de relinquendo?"
+	},
+	{
+		"id": 500020010,
+		"key": "other500020010",
+		"en|ch|tc|kr": "Certus esne bellum cum hoc oppido declarare?"
+	},
+	{
+		"id": 500020011,
+		"key": "other500020011",
+		"en|ch|tc|kr": "Oppidum"
+	},
+	{
+		"id": 500020012,
+		"key": "other500020012",
+		"en|ch|tc|kr": "Dimitte"
+	},
+	{
+		"id": 500020013,
+		"key": "other500020013",
+		"en|ch|tc|kr": "Hire"
+	},
+	{
+		"id": 500020014,
+		"key": "other500020014",
+		"en|ch|tc|kr": "bellum annuntiate"
+	},
+	{
+		"id": 500020015,
+		"key": "other500020015",
+		"en|ch|tc|kr": "Depositum"
+	},
+	{
+		"id": 500020016,
+		"key": "other500020016",
+		"en|ch|tc|kr": "recedere"
+	},
+	{
+		"id": 500020017,
+		"key": "other500020017",
+		"en|ch|tc|kr": "aedificate"
+	},
+	{
+		"id": 500020018,
+		"key": "other500020018",
+		"en|ch|tc|kr": "Mores tui adaequabunt sine ulla necessitate items. Sed mores proprietates augeri solent."
+	},
+	{
+		"id": 500020019,
+		"key": "other500020019",
+		"en|ch|tc|kr": "Postquam mores tuos pleno exp in omni gradu. Ille/illa auto- instituendi Qi fortius erit.\nPendet ab SP."
+	},
+	{
+		"id": 500020020,
+		"key": "other500020020",
+		"en|ch|tc|kr": "Quomodo custos civitatis fiam? Dependet a famae et civitatis praevisione.\nSi satis pecuniae tutorem ville habeat, tum eum qui summam habet in urbe famam conducit.\nEt cum dominus villae amiserit, custos, qui summam famam habet, dominus iuxta oppidum veniet."
+	},
+	{
+		"id": 500020021,
+		"key": "other500020021",
+		"en|ch|tc|kr": "Sub pedibus vestris contremit terra, dum saevit pugna. {0} pugnare ad domum suam tuendam. {1} vincere quaerunt. Tua nunc electio viam tuam determinabit!\nIta: Subsidia {0}\nNon: Subsidia {1}"
+	},
+	{
+		"id": 500020022,
+		"key": "other500020022",
+		"en|ch|tc|kr": "Monitum"
+	},
+	{
+		"id": 500020023,
+		"key": "other500020023",
+		"en|ch|tc|kr": "Oppidum tuum ({0}) oppugnatur!\nVelisne adiuvare?"
+	},
+	{
+		"id": 500020024,
+		"key": "other500020024",
+		"en|ch|tc|kr": "Secta tua ({0}) oppugnatur!\nVelisne adiuvare?"
+	},
+	{
+		"id": 500020025,
+		"key": "other500020025",
+		"en|ch|tc|kr": "Donec oppidi satis est!"
+	},
+	{
+		"id": 500020026,
+		"key": "other500020026",
+		"en|ch|tc|kr": "Invitationem accepistis ab {0}' Magistro Oppido ad custodiam loci?\nHabesne tutorem civitatis fieri?"
+	},
+	{
+		"id": 500020027,
+		"key": "other500020027",
+		"en|ch|tc|kr": "Satis habes {0:#,##0} Lapides spiritus ad solvendum!"
+	},
+	{
+		"id": 500020028,
+		"key": "other500020028",
+		"en|ch|tc|kr": "Quotienscumque morieris in bello, vita tua peribit. Et cum aetas tua transierit, salva tua delebitur. Cave quaeso."
+	},
+	{
+		"id": 500020029,
+		"key": "other500020029",
+		"en|ch|tc|kr": "Num vere pretii skip {0} annum?"
+	},
+	{
+		"id": 500020030,
+		"key": "other500020030",
+		"en|ch|tc|kr": "Skip {0} annum"
+	},
+	{
+		"id": 500020031,
+		"key": "other500020031",
+		"en|ch|tc|kr": "Num vere pretii skip {0} annum?\n(Sine menstrua certe)"
+	},
+	{
+		"id": 500020032,
+		"key": "other500020032",
+		"en|ch|tc|kr": "≫"
+	},
+	{
+		"id": 500020033,
+		"key": "other500020033",
+		"en|ch|tc|kr": "Damnum tuum et defensionem contra damnum eiusdem generis afficias.\nSpeciales Digitis, Palmis, pugnis etiam defensionem tuam boost."
+	},
+	{
+		"id": 500020034,
+		"key": "other500020034",
+		"en|ch|tc|kr": "Damnum tuum et defensionem contra damnum eiusdem generis afficias.\nIgnis → Crit Damnum\nAqua → MP Recuperatio\nVentus → Evade\nTerra → Defensio\nTonitrua → Crit Fors et Damnum reducere\nLignum → HP Recuperatio"
+	},
+	{
+		"id": 500020035,
+		"key": "other500020035",
+		"en|ch|tc|kr": "Titulus iudicabitur cum ad certum spatium pervenitur."
+	},
+	{
+		"id": 500020036,
+		"key": "other500020036",
+		"en|ch|tc|kr": "Facultates puncta afficiunt HP/MP secundum ipsius loci indolem."
+	},
+	{
+		"id": 500020037,
+		"key": "other500020037",
+		"en|ch|tc|kr": "Scientia gradus emendabit utendo operationibus respondentibus."
+	},
+	{
+		"id": 500020038,
+		"key": "other500020038",
+		"en|ch|tc|kr": "HP/MP clypeum venientem ad pugnam afficiunt.\nPrudentia et fortuna significantem labefactum habent in rebus incertis, necnon incrementum et celeritatem discendi."
+	},
+	{
+		"id": 500020039,
+		"key": "other500020039",
+		"en|ch|tc|kr": "Noli ludere cum alio mod quod difficile ludum auget."
+	},
+	{
+		"id": 500020040,
+		"key": "other500020040",
+		"en|ch|tc|kr": "Forum"
+	},
+	{
+		"id": 500020041,
+		"key": "other500020041",
+		"en|ch|tc|kr": "Emere potes/remen vendere cum NPC hic. Sed ac odio odio."
+	},
+	{
+		"id": 500020042,
+		"key": "other500020042",
+		"en|ch|tc|kr": "{0:#,##0} Spiritus Sancti"
+	},
+	{
+		"id": 500020043,
+		"key": "other500020043",
+		"en|ch|tc|kr": "{0:#,##0} Lapides Spiritus/menses"
+	},
+	{
+		"id": 500020044,
+		"key": "other500020044",
+		"en|ch|tc|kr": "Sneaky per"
+	},
+	{
+		"id": 500020045,
+		"key": "other500020045",
+		"en|ch|tc|kr": "Relinquere"
+	},
+	{
+		"id": 500020046,
+		"key": "other500020046",
+		"en|ch|tc|kr": "[INFO] Taoist"
+	},
+	{
+		"id": 500020047,
+		"key": "other500020047",
+		"en|ch|tc|kr": "Vende List"
+	},
+	{
+		"id": 500020048,
+		"key": "other500020048",
+		"en|ch|tc|kr": "Gradus 1"
+	},
+	{
+		"id": 500020049,
+		"key": "other500020049",
+		"en|ch|tc|kr": "Gradus 2"
+	},
+	{
+		"id": 500020050,
+		"key": "other500020050",
+		"en|ch|tc|kr": "Refine"
+	},
+	{
+		"id": 500020051,
+		"key": "other500020051",
+		"en|ch|tc|kr": "Prosperitas! Level {0} → {1} (+{2:#,##0} exp)"
+	},
+	{
+		"id": 500020052,
+		"key": "other500020052",
+		"en|ch|tc|kr": "Market"
+	},
+	{
+		"id": 500020053,
+		"key": "other500020053",
+		"en|ch|tc|kr": "Vende List"
+	},
+	{
+		"id": 500020054,
+		"key": "other500020054",
+		"en|ch|tc|kr": "Hire Homines"
+	},
+	{
+		"id": 500020055,
+		"key": "other500020055",
+		"en|ch|tc|kr": "Register"
+	},
+	{
+		"id": 500020056,
+		"key": "other500020056",
+		"en|ch|tc|kr": "{0:#,##0} Lapides spiritus → {1:#,##0} Contributions"
+	},
+	{
+		"id": 500020057,
+		"key": "other500020057",
+		"en|ch|tc|kr": "Rationem commutare {0:#,##0} Lapides spiritus → 1 Contributions"
+	},
+	{
+		"id": 500020058,
+		"key": "other500020058",
+		"en|ch|tc|kr": "Lego Items"
+	},
+	{
+		"id": 500020059,
+		"key": "other500020059",
+		"en|ch|tc|kr": "Patet"
+	},
+	{
+		"id": 500020060,
+		"key": "other500020060",
+		"en|ch|tc|kr": "My Items"
+	},
+	{
+		"id": 500020061,
+		"key": "other500020061",
+		"en|ch|tc|kr": "Register"
+	},
+	{
+		"id": 500020062,
+		"key": "other500020062",
+		"en|ch|tc|kr": "Totalis Price"
+	},
+	{
+		"id": 500020063,
+		"key": "other500020063",
+		"en|ch|tc|kr": "Min：{0:#,##0}　　　Sell：{1:#,##0}　　　Max：{2:#,##0}　　　Your：{3:#,##0}"
+	},
+	{
+		"id": 500020064,
+		"key": "other500020064",
+		"en|ch|tc|kr": "Descende"
+	},
+	{
+		"id": 500020065,
+		"key": "other500020065",
+		"en|ch|tc|kr": "Quaeso, in urbe sta!"
+	},
+	{
+		"id": 500020066,
+		"key": "other500020066",
+		"en|ch|tc|kr": "Up"
+	},
+	{
+		"id": 500020067,
+		"key": "other500020067",
+		"en|ch|tc|kr": "pacisci"
+	},
+	{
+		"id": 500020068,
+		"key": "other500020068",
+		"en|ch|tc|kr": "Colere"
+	},
+	{
+		"id": 500020069,
+		"key": "other500020069",
+		"en|ch|tc|kr": "Opus {0:#,##0} spiritus ad culturam lapides."
+	},
+	{
+		"id": 500020070,
+		"key": "other500020070",
+		"en|ch|tc|kr": "{0:#,##0} Spiritus lapides → {1:#,##0} Exps."
+	},
+	{
+		"id": 500020071,
+		"key": "other500020071",
+		"en|ch|tc|kr": "Qi Transfer"
+	},
+	{
+		"id": 500020072,
+		"key": "other500020072",
+		"en|ch|tc|kr": "Accipe Qi"
+	},
+	{
+		"id": 500020073,
+		"key": "other500020073",
+		"en|ch|tc|kr": "Intuitu et fundamenta (radices)."
+	},
+	{
+		"id": 500020074,
+		"key": "other500020074",
+		"en|ch|tc|kr": "paciscor"
+	},
+	{
+		"id": 500020075,
+		"key": "other500020075",
+		"en|ch|tc|kr": "Totalis pretii {0:#,##0}"
+	},
+	{
+		"id": 500020076,
+		"key": "other500020076",
+		"en|ch|tc|kr": "Retro"
+	},
+	{
+		"id": 500020077,
+		"key": "other500020077",
+		"en|ch|tc|kr": "Da up"
+	},
+	{
+		"id": 500020078,
+		"key": "other500020078",
+		"en|ch|tc|kr": "Subnixus es? Postquam omnia inter nos convenit? Ego non sum benignus in fractis agit — modo perdideris tempus meum."
+	},
+	{
+		"id": 500020079,
+		"key": "other500020079",
+		"en|ch|tc|kr": "Id blande! Semper magno opere cum aliquo qui scit quid discis."
+	},
+	{
+		"id": 500020080,
+		"key": "other500020080",
+		"en|ch|tc|kr": "Gravis esse non potes. Plus mihi debes quam 'non'!"
+	},
+	{
+		"id": 500020081,
+		"key": "other500020081",
+		"en|ch|tc|kr": "Quid? Sciebas me venturum! Num usquam vendidisti?"
+	},
+	{
+		"id": 500020082,
+		"key": "other500020082",
+		"en|ch|tc|kr": "In [{0}] venditus est."
+	},
+	{
+		"id": 500020083,
+		"key": "other500020083",
+		"en|ch|tc|kr": "Ignotum"
+	},
+	{
+		"id": 500020084,
+		"key": "other500020084",
+		"en|ch|tc|kr": "Placere eligere an item."
+	},
+	{
+		"id": 500020085,
+		"key": "other500020085",
+		"en|ch|tc|kr": "VIP Market"
+	},
+	{
+		"id": 500020086,
+		"key": "other500020086",
+		"en|ch|tc|kr": "Num {0:#,##0} lapides spiritus ad nostrum servitium vis dare?"
+	},
+	{
+		"id": 500020087,
+		"key": "other500020087",
+		"en|ch|tc|kr": "Habes satis spiritus lapides!"
+	},
+	{
+		"id": 500020088,
+		"key": "other500020088",
+		"en|ch|tc|kr": "Tu me conaris effundere?"
+	},
+	{
+		"id": 500020089,
+		"key": "other500020089",
+		"en|ch|tc|kr": "Damnum x{0}"
+	},
+	{
+		"id": 500020090,
+		"key": "other500020090",
+		"en|ch|tc|kr": "Cancel"
+	},
+	{
+		"id": 500020091,
+		"key": "other500020091",
+		"en|ch|tc|kr": "Min：{0}　　　Sell：{1}　　　Max：{2}"
+	},
+	{
+		"id": 500020092,
+		"key": "other500020092",
+		"en|ch|tc|kr": "Agit"
+	},
+	{
+		"id": 500020093,
+		"key": "other500020093",
+		"en|ch|tc|kr": "Quid?! Remittitur? Videor ut tempus terere?"
+	},
+	{
+		"id": 500020094,
+		"key": "other500020094",
+		"en|ch|tc|kr": "Anonymous (cost fee)"
+	},
+	{
+		"id": 500020095,
+		"key": "other500020095",
+		"en|ch|tc|kr": "Vendere Price"
+	},
+	{
+		"id": 500020096,
+		"key": "other500020096",
+		"en|ch|tc|kr": "quantitas"
+	},
+	{
+		"id": 500020097,
+		"key": "other500020097",
+		"en|ch|tc|kr": "Anonymous feodo = 10% of venditionis pretium"
+	},
+	{
+		"id": 500020098,
+		"key": "other500020098",
+		"en|ch|tc|kr": "Placere eligere an item"
+	},
+	{
+		"id": 500020099,
+		"key": "other500020099",
+		"en|ch|tc|kr": "Quantitas invalida"
+	},
+	{
+		"id": 500020100,
+		"key": "other500020100",
+		"en|ch|tc|kr": "Aliquam pretium"
+	},
+	{
+		"id": 500020101,
+		"key": "other500020101",
+		"en|ch|tc|kr": "You must be in villa vendere items"
+	},
+	{
+		"id": 500020102,
+		"key": "other500020102",
+		"en|ch|tc|kr": "Error"
+	},
+	{
+		"id": 500020103,
+		"key": "other500020103",
+		"en|ch|tc|kr": "Descripserunt venditionem: {0} x{1} pro {2}"
+	},
+	{
+		"id": 500020104,
+		"key": "other500020104",
+		"en|ch|tc|kr": "Anonymi pretium non satis pretium"
+	},
+	{
+		"id": 500020105,
+		"key": "other500020105",
+		"en|ch|tc|kr": "Success"
+	},
+	{
+		"id": 500020106,
+		"key": "other500020106",
+		"en|ch|tc|kr": "Descripserunt venditionem anonymi: {0} x{1} pro {2} (feo: {3})"
+	},
+	{
+		"id": 500020107,
+		"key": "other500020107",
+		"en|ch|tc|kr": "Vendere pretium: {0} | Feudum anonymi: {1} (upfront solvit)"
+	},
+	{
+		"id": 500020108,
+		"key": "other500020108",
+		"en|ch|tc|kr": "Vendere pretium: {0}"
+	},
+	{
+		"id": 500020109,
+		"key": "other500020109",
+		"en|ch|tc|kr": "Nemo est currently tractanda pro this item."
+	},
+	{
+		"id": 500020110,
+		"key": "other500020110",
+		"en|ch|tc|kr": "Nihil validi emptores invenerunt."
+	},
+	{
+		"id": 500020111,
+		"key": "other500020111",
+		"en|ch|tc|kr": "Benigne List"
+	},
+	{
+		"id": 500020112,
+		"key": "other500020112",
+		"en|ch|tc|kr": "Hanc item vendis apud {0}!"
+	},
+	{
+		"id": 500020113,
+		"key": "other500020113",
+		"en|ch|tc|kr": "Reparare"
+	},
+	{
+		"id": 500020114,
+		"key": "other500020114",
+		"en|ch|tc|kr": "Add Point"
+	},
+	{
+		"id": 500020115,
+		"key": "other500020115",
+		"en|ch|tc|kr": "Pretium {0:#,##0}.\nCertusne es?"
+	},
+	{
+		"id": 500020116,
+		"key": "other500020116",
+		"en|ch|tc|kr": "Habes satis spiritus lapides!"
+	}
+]
