@@ -81,5 +81,15 @@ namespace ModLib.Helper
         {
             return g.world.battle.data.isSelfBattle;
         }
+
+        /// <summary>
+        /// Determines whether the current battle is a "Three Legs Crow" battle.
+        /// </summary>
+        /// <returns><see langword="true"/> if the current battle is identified as a "Three Legs Crow" battle; otherwise, <see
+        /// langword="false"/>.</returns>
+        public static bool IsThreeLegsCrowBattle()
+        {
+            return g.world.battle.data.dungeonBaseItem.id == 2039; //have to die
+        }
     }
 }
