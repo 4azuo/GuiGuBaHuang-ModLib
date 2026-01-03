@@ -389,7 +389,7 @@ namespace MOD_nE7UL2.Mod
                 //g.world.battle.data.dungeonBaseItem.id != 7011 /*Demonseal Circle*/ &&
                 //g.world.battle.data.dungeonBaseItem.id != 7012 /*Demonseal Circle*/ &&
                 //g.world.battle.data.dungeonBaseItem.id != 7013 /*Demonseal Circle*/ &&
-                !DungeonHelper.IsSelfBattle() ////should block self battles???
+                !DungeonHelper.IsThreeLegsCrowBattle()
                 ;
         }
     }

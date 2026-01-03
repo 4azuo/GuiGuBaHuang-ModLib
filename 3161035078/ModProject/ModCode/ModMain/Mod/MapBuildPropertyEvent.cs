@@ -326,7 +326,7 @@ namespace MOD_nE7UL2.Mod
                                 DramaTool.OpenDrama(BECOME_TOWN_GUARDIAN_DRAMA, new DramaData
                                 {
                                     dialogueText = { [BECOME_TOWN_GUARDIAN_DRAMA] = string.Format(GameTool.LS("townmaster420041114drama"), town.name) },
-                                    onOptionsClickCall = ModLib.Helper.ActionHelper.TracedIl2Action<ConfDramaOptionsItem>((x) =>
+                                    onOptionsClickCall = ActionHelper.TracedIl2Action<ConfDramaOptionsItem>((x) =>
                                     {
                                         switch (x.id)
                                         {
@@ -608,7 +608,7 @@ namespace MOD_nE7UL2.Mod
             uiPropSelectCount.maxCount = g.world.playerUnit.GetUnitMoney();
             uiPropSelectCount.oneCost = 1;
             uiPropSelectCount.btnOK.onClick.RemoveAllListeners();
-            uiPropSelectCount.btnOK.onClick.AddListener(ModLib.Helper.ActionHelper.TracedUnityAction(() =>
+            uiPropSelectCount.btnOK.onClick.AddListener(ActionHelper.TracedUnityAction(() =>
             {
                 var town = g.world.playerUnit.GetMapBuild<MapBuildTown>();
                 AddBuildProperty(town, uiPropSelectCount.curSelectCount);
@@ -630,7 +630,7 @@ namespace MOD_nE7UL2.Mod
             uiPropSelectCount.maxCount = Instance.Budget[town.buildData.id].FixValue(0, int.MaxValue).Parse<int>();
             uiPropSelectCount.oneCost = 1;
             uiPropSelectCount.btnOK.onClick.RemoveAllListeners();
-            uiPropSelectCount.btnOK.onClick.AddListener(ModLib.Helper.ActionHelper.TracedUnityAction(() =>
+            uiPropSelectCount.btnOK.onClick.AddListener(ActionHelper.TracedUnityAction(() =>
             {
                 AddBuildProperty(town, -uiPropSelectCount.curSelectCount);
                 g.world.playerUnit.AddUnitMoney(uiPropSelectCount.curSelectCount);
@@ -688,16 +688,16 @@ namespace MOD_nE7UL2.Mod
                 uiCover.AddText(col, row + i++, string.Format(GameTool.LS("townmaster420041117"), town.name, GetTownMaster(town).GetName())).Format().Align();
                 uiCover.AddText(col, row + i++, GameTool.LS("townmaster420041118")).Format().Align().SetWork(new UIItemWork
                 {
-                    Formatter = ModLib.Helper.ActionHelper.WTracedFunc<UIItemBase, object[]>((ibase) => new object[] { GetBuildProperty(town) }),
+                    Formatter = ActionHelper.WTracedFunc<UIItemBase, object[]>((ibase) => new object[] { GetBuildProperty(town) }),
                 });
                 uiCover.AddText(col, row + i++, GameTool.LS("townmaster420041119")).Format().Align().SetWork(new UIItemWork
                 {
-                    Formatter = ModLib.Helper.ActionHelper.WTracedFunc<UIItemBase, object[]>((ibase) => new object[] { GetTotalMonthlyPayment(town) }),
+                    Formatter = ActionHelper.WTracedFunc<UIItemBase, object[]>((ibase) => new object[] { GetTotalMonthlyPayment(town) }),
                 });
                 uiCover.AddCompositeSlider(col, row + i++, $"Base Tax:", 0.40f, 20.00f, Instance.TaxRate[town.buildData.id], "{0}/month").SetWork(new UIItemWork
                 {
-                    Formatter = ModLib.Helper.ActionHelper.WTracedFunc<UIItemBase, object[]>((ibase) => new object[] { GetBaseTax(town) }),
-                    ChangeAct = ModLib.Helper.ActionHelper.WTracedAction<UIItemBase, object>((ibase, value) => Instance.TaxRate[town.buildData.id] = value.Parse<float>()),
+                    Formatter = ActionHelper.WTracedFunc<UIItemBase, object[]>((ibase) => new object[] { GetBaseTax(town) }),
+                    ChangeAct = ActionHelper.WTracedAction<UIItemBase, object>((ibase, value) => Instance.TaxRate[town.buildData.id] = value.Parse<float>()),
                 });
 
                 i++;
@@ -904,7 +904,7 @@ namespace MOD_nE7UL2.Mod
                 DramaTool.OpenDrama(TAXPAY_NOT_ENOUGH_MONEY_DRAMA, new DramaData
                 {
                     dialogueText = { [TAXPAY_NOT_ENOUGH_MONEY_DRAMA] = string.Format(GameTool.LS("other500020027"), tax) },
-                    onOptionsClickCall = ModLib.Helper.ActionHelper.TracedIl2Action<ConfDramaOptionsItem>((x) =>
+                    onOptionsClickCall = ActionHelper.TracedIl2Action<ConfDramaOptionsItem>((x) =>
                     {
                         switch (x.id)
                         {

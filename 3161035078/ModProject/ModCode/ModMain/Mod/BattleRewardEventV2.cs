@@ -558,7 +558,7 @@ namespace MOD_nE7UL2.Mod
             else
             {
                 DebugHelper.WriteLine($"BattleRewardEvent: lose");
-                if (DungeonHelper.IsRealBattle() && !DungeonHelper.IsSelfBattle())
+                if (DungeonHelper.IsRealBattle() && !DungeonHelper.IsThreeLegsCrowBattle())
                 {
                     if (ModBattleEvent.PlayerUnit.isDie)
                     {
@@ -624,7 +624,7 @@ namespace MOD_nE7UL2.Mod
                     killerWUnit.AddExp(rewardExp);
                 }
 
-                if (DungeonHelper.IsRealBattle() && !DungeonHelper.IsSelfBattle())
+                if (DungeonHelper.IsRealBattle() && !DungeonHelper.IsThreeLegsCrowBattle())
                 {
                     //life drain
                     //DebugHelper.WriteLine("3");
