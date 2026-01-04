@@ -29,13 +29,13 @@ namespace MOD_nE7UL2.Enum
         public IDictionary<string, MultiValue> CustomEffects { get; private set; }
         private UnitTypeLuckEnum(int id) : base(id.ToString())
         {
-            CheckExists();
+            //CheckExists();
         }
 
-        private void CheckExists()
-        {
-            if (g.conf.roleCreateFeature.GetItemIndex(Value.Parse<int>()) == -1)
-                throw new Exception("Instance Not Found");
-        }
+        //private void CheckExists()
+        //{
+        //    if (g.conf.roleCreateFeature.GetItemIndex(Value.Parse<int>()) == -1)
+        //        throw new Exception("Instance Not Found");
+        //}
     }
 }
