@@ -270,7 +270,7 @@
     </Reference>
     <Reference Include="ModLib">
       <HintPath>..\..\..\..\3385996759\debug\Mod_flQrxq\ModCode\dll\ModLib.dll</HintPath>
-      <Private>False</Private>
+      <Private>True</Private>
     </Reference>
     <Reference Include="Mono.CompilerServices.SymbolWriter">
       <HintPath>C:\Program Files (x86)\Steam\steamapps\common\鬼谷八荒\MelonLoader\Managed\Mono.CompilerServices.SymbolWriter.dll</HintPath>
