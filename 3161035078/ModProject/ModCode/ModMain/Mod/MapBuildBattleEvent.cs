@@ -172,7 +172,7 @@ namespace MOD_nE7UL2.Mod
         {
             if (school == null)
                 return;
-            g.world.unit.GetUnitsInArea(g.world.playerUnit.data.unitData.pointGridData.areaBaseID).ToArray()
+            g.world.unit.GetUnitsInArea(g.world.playerUnit.GetUnitPosAreaId()).ToArray()
                 .Where(y =>
                 {
                     return !y.IsPlayer() && y.data.school?.schoolNameID == school.schoolNameID;
@@ -190,7 +190,7 @@ namespace MOD_nE7UL2.Mod
                 return;
             if (school.schoolNameID == g.world.playerUnit.data.unitData.schoolID)
             {
-                g.world.unit.GetUnitsInArea(g.world.playerUnit.data.unitData.pointGridData.areaBaseID).ToArray()
+                g.world.unit.GetUnitsInArea(g.world.playerUnit.GetUnitPosAreaId()).ToArray()
                     .Where(y =>
                     {
                         return !y.IsPlayer() && y.data.school?.schoolNameID == school.schoolNameID;
@@ -227,104 +227,111 @@ namespace MOD_nE7UL2.Mod
 
         public static void TownWar(MapBuildTown townA_def, MapBuildTown townB_atk, bool proactive)
         {
-            if (townA_def == null || townB_atk == null)
-                return;
-            if (JoinBattleFlg == GameHelper.GetGameTotalMonth() || TimeSkipEvent.Instance.IsProcessing)
+            try
             {
-                //DebugHelper.WriteLine("1");
-                SkipTownWar(townA_def, townB_atk);
-            }
-            else
-            if (proactive)
-            {
-                //DebugHelper.WriteLine("2");
-                JoinTownWar(townA_def, townB_atk, TeamSideEnum.TeamB);
-            }
-            else
-            if (townA_def.GetOpenBuildPoints().ToList().Any(x => x == g.world.playerUnit.GetUnitPos()))
-            {
-                //DebugHelper.WriteLine("3");
-                DramaTool.OpenDrama(DRAMA_ID, new DramaData
+                if (townA_def == null || townB_atk == null)
+                    return;
+                if (JoinBattleFlg == GameHelper.GetGameTotalMonth() || TimeSkipEvent.Instance.IsProcessing)
                 {
-                    dialogueText = { [DRAMA_ID] = GameTool.LS("battleevent480112890") },
-                    hideDialogueOptions = new int[] { DRAMA_DONT_CARE_OPT_ID, DRAMA_HELP_OPT_ID }.ToIl2CppList(),
-                    onOptionsClickCall = ModLib.Helper.ActionHelper.TracedIl2Action<ConfDramaOptionsItem>((x) =>
-                    {
-                        switch (x.id)
-                        {
-                            case DRAMA_HELP_DEF_OPT_ID:
-                                Loved(townA_def);
-                                Hated(townB_atk);
-                                JoinTownWar(townA_def, townB_atk, TeamSideEnum.TeamA);
-                                break;
-                            case DRAMA_HELP_ATK_OPT_ID:
-                                Loved(townB_atk);
-                                Hated(townA_def);
-                                JoinTownWar(townA_def, townB_atk, TeamSideEnum.TeamB);
-                                break;
-                            case DRAMA_TRY_ESCAPE_OPT_ID:
-                                if (CommonTool.Random(0.00f, 100.00f).IsBetween(0.00f, Configs.EscapeChance))
-                                {
-                                    g.world.playerUnit.AddProperty<int>(UnitPropertyEnum.Reputation, g.world.playerUnit.GetProperty<int>(UnitPropertyEnum.Reputation) / 2);
-                                    g.world.playerUnit.SetUnitRandomPos(g.world.playerUnit.GetUnitPos(), 4);
-                                    if (MapBuildPropertyEvent.IsTownGuardian(townA_def, g.world.playerUnit))
-                                    {
-                                        g.world.playerUnit.AddProperty<int>(UnitPropertyEnum.Reputation, g.world.playerUnit.GetProperty<int>(UnitPropertyEnum.Reputation) / 5);
-                                        Hated(townA_def);
-                                    }
-                                    else if (MapBuildPropertyEvent.IsTownGuardian(townB_atk, g.world.playerUnit))
-                                    {
-                                        g.world.playerUnit.AddProperty<int>(UnitPropertyEnum.Reputation, g.world.playerUnit.GetProperty<int>(UnitPropertyEnum.Reputation) / 5);
-                                        Hated(townB_atk);
-                                    }
-                                }
-                                else
-                                {
-                                    JoinTownWar(townA_def, townB_atk, TeamSideEnum.TeamA);
-                                    g.world.playerUnit.AddProperty<int>(UnitPropertyEnum.Reputation, g.world.playerUnit.GetProperty<int>(UnitPropertyEnum.Reputation) / 3);
-                                }
-                                break;
-                        }
-                    })
-                });
-            }
-            else
-            if (townA_def.gridData.areaBaseID == g.world.playerUnit.data.unitData.pointGridData.areaBaseID &&
-                townA_def.GetOrigiPoint().CalRange(g.world.playerUnit.data.unitData.GetPoint()) < 8)
-            {
-                //DebugHelper.WriteLine("4");
-                DramaTool.OpenDrama(DRAMA_ID, new DramaData
+                    //DebugHelper.WriteLine("1");
+                    SkipTownWar(townA_def, townB_atk);
+                }
+                else
+                if (proactive)
                 {
-                    dialogueText = { [DRAMA_ID] = string.Format(GameTool.LS("battleevent480112894"), townB_atk.name, townA_def.name) },
-                    hideDialogueOptions = new int[] { DRAMA_HELP_OPT_ID, DRAMA_TRY_ESCAPE_OPT_ID }.ToIl2CppList(),
-                    onOptionsClickCall = ModLib.Helper.ActionHelper.TracedIl2Action<ConfDramaOptionsItem>((x) =>
+                    //DebugHelper.WriteLine("2");
+                    JoinTownWar(townA_def, townB_atk, TeamSideEnum.TeamB);
+                }
+                else
+                if (townA_def.GetOpenBuildPoints().ToList().Any(x => x == g.world.playerUnit.GetUnitPos()))
+                {
+                    //DebugHelper.WriteLine("3");
+                    DramaTool.OpenDrama(DRAMA_ID, new DramaData
                     {
-                        switch (x.id)
+                        dialogueText = { [DRAMA_ID] = GameTool.LS("battleevent480112890") },
+                        hideDialogueOptions = new int[] { DRAMA_DONT_CARE_OPT_ID, DRAMA_HELP_OPT_ID }.ToIl2CppList(),
+                        onOptionsClickCall = ModLib.Helper.ActionHelper.TracedIl2Action<ConfDramaOptionsItem>((x) =>
                         {
-                            case DRAMA_HELP_DEF_OPT_ID:
-                                Loved(townA_def);
-                                Hated(townB_atk);
-                                JoinTownWar(townA_def, townB_atk, TeamSideEnum.TeamA);
-                                break;
-                            case DRAMA_HELP_ATK_OPT_ID:
-                                Loved(townB_atk);
-                                Hated(townA_def);
-                                JoinTownWar(townA_def, townB_atk, TeamSideEnum.TeamB);
-                                break;
-                            case DRAMA_DONT_CARE_OPT_ID:
-                                if (MapBuildPropertyEvent.IsTownGuardian(townA_def, g.world.playerUnit))
-                                    Hated(townA_def);
-                                else if (MapBuildPropertyEvent.IsTownGuardian(townB_atk, g.world.playerUnit))
+                            switch (x.id)
+                            {
+                                case DRAMA_HELP_DEF_OPT_ID:
+                                    Loved(townA_def);
                                     Hated(townB_atk);
-                                break;
-                        }
-                    })
-                });
+                                    JoinTownWar(townA_def, townB_atk, TeamSideEnum.TeamA);
+                                    break;
+                                case DRAMA_HELP_ATK_OPT_ID:
+                                    Loved(townB_atk);
+                                    Hated(townA_def);
+                                    JoinTownWar(townA_def, townB_atk, TeamSideEnum.TeamB);
+                                    break;
+                                case DRAMA_TRY_ESCAPE_OPT_ID:
+                                    if (CommonTool.Random(0.00f, 100.00f).IsBetween(0.00f, Configs.EscapeChance))
+                                    {
+                                        g.world.playerUnit.AddProperty<int>(UnitPropertyEnum.Reputation, g.world.playerUnit.GetProperty<int>(UnitPropertyEnum.Reputation) / 2);
+                                        g.world.playerUnit.SetUnitRandomPos(g.world.playerUnit.GetUnitPos(), 4);
+                                        if (MapBuildPropertyEvent.IsTownGuardian(townA_def, g.world.playerUnit))
+                                        {
+                                            g.world.playerUnit.AddProperty<int>(UnitPropertyEnum.Reputation, g.world.playerUnit.GetProperty<int>(UnitPropertyEnum.Reputation) / 5);
+                                            Hated(townA_def);
+                                        }
+                                        else if (MapBuildPropertyEvent.IsTownGuardian(townB_atk, g.world.playerUnit))
+                                        {
+                                            g.world.playerUnit.AddProperty<int>(UnitPropertyEnum.Reputation, g.world.playerUnit.GetProperty<int>(UnitPropertyEnum.Reputation) / 5);
+                                            Hated(townB_atk);
+                                        }
+                                    }
+                                    else
+                                    {
+                                        JoinTownWar(townA_def, townB_atk, TeamSideEnum.TeamA);
+                                        g.world.playerUnit.AddProperty<int>(UnitPropertyEnum.Reputation, g.world.playerUnit.GetProperty<int>(UnitPropertyEnum.Reputation) / 3);
+                                    }
+                                    break;
+                            }
+                        })
+                    });
+                }
+                else
+                if (townA_def.gridData.areaBaseID == g.world.playerUnit.GetUnitPosAreaId() &&
+                    townA_def.GetOrigiPoint().CalRange(g.world.playerUnit.GetUnitPos()) < 8)
+                {
+                    //DebugHelper.WriteLine("4");
+                    DramaTool.OpenDrama(DRAMA_ID, new DramaData
+                    {
+                        dialogueText = { [DRAMA_ID] = string.Format(GameTool.LS("battleevent480112894"), townB_atk.name, townA_def.name) },
+                        hideDialogueOptions = new int[] { DRAMA_HELP_OPT_ID, DRAMA_TRY_ESCAPE_OPT_ID }.ToIl2CppList(),
+                        onOptionsClickCall = ModLib.Helper.ActionHelper.TracedIl2Action<ConfDramaOptionsItem>((x) =>
+                        {
+                            switch (x.id)
+                            {
+                                case DRAMA_HELP_DEF_OPT_ID:
+                                    Loved(townA_def);
+                                    Hated(townB_atk);
+                                    JoinTownWar(townA_def, townB_atk, TeamSideEnum.TeamA);
+                                    break;
+                                case DRAMA_HELP_ATK_OPT_ID:
+                                    Loved(townB_atk);
+                                    Hated(townA_def);
+                                    JoinTownWar(townA_def, townB_atk, TeamSideEnum.TeamB);
+                                    break;
+                                case DRAMA_DONT_CARE_OPT_ID:
+                                    if (MapBuildPropertyEvent.IsTownGuardian(townA_def, g.world.playerUnit))
+                                        Hated(townA_def);
+                                    else if (MapBuildPropertyEvent.IsTownGuardian(townB_atk, g.world.playerUnit))
+                                        Hated(townB_atk);
+                                    break;
+                            }
+                        })
+                    });
+                }
+                else
+                {
+                    //DebugHelper.WriteLine("5");
+                    SkipTownWar(townA_def, townB_atk);
+                }
             }
-            else
+            catch
             {
-                //DebugHelper.WriteLine("5");
-                SkipTownWar(townA_def, townB_atk);
+                DebugHelper.WriteLine("TownWar: error!!! Please contact to modder!");
             }
         }
 
@@ -454,154 +461,168 @@ namespace MOD_nE7UL2.Mod
 
         public static void MonstWave(MapBuildTown town)
         {
-            if (town == null)
-                return;
-            if (JoinBattleFlg == GameHelper.GetGameTotalMonth() || TimeSkipEvent.Instance.IsProcessing)
+            try
             {
-                //DebugHelper.WriteLine("1");
-                SkipMonstWave(town);
-            }
-            else
-            if (town.GetOpenBuildPoints().ToList().Any(x => x == g.world.playerUnit.GetUnitPos()))
-            {
-                //DebugHelper.WriteLine("2");
-                DramaTool.OpenDrama(DRAMA_ID, new DramaData
+                if (town == null)
+                    return;
+                if (JoinBattleFlg == GameHelper.GetGameTotalMonth() || TimeSkipEvent.Instance.IsProcessing)
                 {
-                    dialogueText = { [DRAMA_ID] = GameTool.LS("battleevent480112890") },
-                    hideDialogueOptions = new int[] { DRAMA_HELP_DEF_OPT_ID, DRAMA_HELP_ATK_OPT_ID, DRAMA_DONT_CARE_OPT_ID }.ToIl2CppList(),
-                    onOptionsClickCall = ModLib.Helper.ActionHelper.TracedIl2Action<ConfDramaOptionsItem>((x) =>
+                    //DebugHelper.WriteLine("1");
+                    SkipMonstWave(town);
+                }
+                else
+                if (town.GetOpenBuildPoints().ToList().Any(x => x == g.world.playerUnit.GetUnitPos()))
+                {
+                    //DebugHelper.WriteLine("2");
+                    DramaTool.OpenDrama(DRAMA_ID, new DramaData
                     {
-                        switch (x.id)
+                        dialogueText = { [DRAMA_ID] = GameTool.LS("battleevent480112890") },
+                        hideDialogueOptions = new int[] { DRAMA_HELP_DEF_OPT_ID, DRAMA_HELP_ATK_OPT_ID, DRAMA_DONT_CARE_OPT_ID }.ToIl2CppList(),
+                        onOptionsClickCall = ModLib.Helper.ActionHelper.TracedIl2Action<ConfDramaOptionsItem>((x) =>
                         {
-                            case DRAMA_HELP_OPT_ID:
-                                Loved(town);
-                                g.world.playerUnit.AddProperty<int>(UnitPropertyEnum.Reputation, HELP_REPUTATION);
-                                JoinMonstWave(town, TOWN_MONST_WAVE_DUNGEON_BASE_ID);
-                                break;
-                            case DRAMA_TRY_ESCAPE_OPT_ID:
-                                if (CommonTool.Random(0.00f, 100.00f).IsBetween(0.00f, Configs.EscapeChance))
-                                {
-                                    g.world.playerUnit.AddProperty<int>(UnitPropertyEnum.Reputation, g.world.playerUnit.GetProperty<int>(UnitPropertyEnum.Reputation) / 2);
-                                    g.world.playerUnit.SetUnitRandomPos(g.world.playerUnit.GetUnitPos(), 4);
-                                    Hated(town);
-                                }
-                                else
-                                {
-                                    g.world.playerUnit.AddProperty<int>(UnitPropertyEnum.Reputation, g.world.playerUnit.GetProperty<int>(UnitPropertyEnum.Reputation) / 5);
+                            switch (x.id)
+                            {
+                                case DRAMA_HELP_OPT_ID:
+                                    Loved(town);
+                                    g.world.playerUnit.AddProperty<int>(UnitPropertyEnum.Reputation, HELP_REPUTATION);
                                     JoinMonstWave(town, TOWN_MONST_WAVE_DUNGEON_BASE_ID);
-                                }
-                                break;
-                        }
-                    })
-                });
-            }
-            else
-            if (town.gridData.areaBaseID == g.world.playerUnit.data.unitData.pointGridData.areaBaseID &&
-                town.GetOrigiPoint().CalRange(g.world.playerUnit.data.unitData.GetPoint()) < 8)
-            {
-                //DebugHelper.WriteLine("3");
-                DramaTool.OpenDrama(DRAMA_ID, new DramaData
+                                    break;
+                                case DRAMA_TRY_ESCAPE_OPT_ID:
+                                    if (CommonTool.Random(0.00f, 100.00f).IsBetween(0.00f, Configs.EscapeChance))
+                                    {
+                                        g.world.playerUnit.AddProperty<int>(UnitPropertyEnum.Reputation, g.world.playerUnit.GetProperty<int>(UnitPropertyEnum.Reputation) / 2);
+                                        g.world.playerUnit.SetUnitRandomPos(g.world.playerUnit.GetUnitPos(), 4);
+                                        Hated(town);
+                                    }
+                                    else
+                                    {
+                                        g.world.playerUnit.AddProperty<int>(UnitPropertyEnum.Reputation, g.world.playerUnit.GetProperty<int>(UnitPropertyEnum.Reputation) / 5);
+                                        JoinMonstWave(town, TOWN_MONST_WAVE_DUNGEON_BASE_ID);
+                                    }
+                                    break;
+                            }
+                        })
+                    });
+                }
+                else
+                if (town.gridData.areaBaseID == g.world.playerUnit.GetUnitPosAreaId() &&
+                    town.GetOrigiPoint().CalRange(g.world.playerUnit.GetUnitPos()) < 8)
                 {
-                    dialogueText = { [DRAMA_ID] = string.Format(GameTool.LS("battleevent480112895"), town.name) },
-                    hideDialogueOptions = new int[] { DRAMA_HELP_DEF_OPT_ID, DRAMA_HELP_ATK_OPT_ID, DRAMA_TRY_ESCAPE_OPT_ID }.ToIl2CppList(),
-                    onOptionsClickCall = ModLib.Helper.ActionHelper.TracedIl2Action<ConfDramaOptionsItem>((x) =>
+                    //DebugHelper.WriteLine("3");
+                    DramaTool.OpenDrama(DRAMA_ID, new DramaData
                     {
-                        switch (x.id)
+                        dialogueText = { [DRAMA_ID] = string.Format(GameTool.LS("battleevent480112895"), town.name) },
+                        hideDialogueOptions = new int[] { DRAMA_HELP_DEF_OPT_ID, DRAMA_HELP_ATK_OPT_ID, DRAMA_TRY_ESCAPE_OPT_ID }.ToIl2CppList(),
+                        onOptionsClickCall = ModLib.Helper.ActionHelper.TracedIl2Action<ConfDramaOptionsItem>((x) =>
                         {
-                            case DRAMA_HELP_OPT_ID:
-                                Loved(town);
-                                g.world.playerUnit.AddProperty<int>(UnitPropertyEnum.Reputation, HELP_REPUTATION);
-                                JoinMonstWave(town, TOWN_MONST_WAVE_DUNGEON_BASE_ID);
-                                break;
-                            case DRAMA_DONT_CARE_OPT_ID:
-                                if (MapBuildPropertyEvent.IsTownGuardian(town, g.world.playerUnit))
-                                    Hated(town);
-                                break;
-                        }
-                    })
-                });
+                            switch (x.id)
+                            {
+                                case DRAMA_HELP_OPT_ID:
+                                    Loved(town);
+                                    g.world.playerUnit.AddProperty<int>(UnitPropertyEnum.Reputation, HELP_REPUTATION);
+                                    JoinMonstWave(town, TOWN_MONST_WAVE_DUNGEON_BASE_ID);
+                                    break;
+                                case DRAMA_DONT_CARE_OPT_ID:
+                                    if (MapBuildPropertyEvent.IsTownGuardian(town, g.world.playerUnit))
+                                        Hated(town);
+                                    break;
+                            }
+                        })
+                    });
+                }
+                else
+                {
+                    //DebugHelper.WriteLine("4");
+                    SkipMonstWave(town);
+                }
             }
-            else
+            catch
             {
-                //DebugHelper.WriteLine("4");
-                SkipMonstWave(town);
+                DebugHelper.WriteLine("MonstWave (town): error!!! Please contact to modder!");
             }
         }
 
         public static void MonstWave(MapBuildSchool school)
         {
-            if (school == null)
-                return;
-            if (JoinBattleFlg == GameHelper.GetGameTotalMonth() || TimeSkipEvent.Instance.IsProcessing)
+            try
             {
-                //DebugHelper.WriteLine("1");
-                SkipMonstWave(school);
-            }
-            else
-            if (school.GetOpenBuildPoints().ToList().Any(x => x == g.world.playerUnit.GetUnitPos()))
-            {
-                //DebugHelper.WriteLine("2");
-                DramaTool.OpenDrama(DRAMA_ID, new DramaData
+                if (school == null)
+                    return;
+                if (JoinBattleFlg == GameHelper.GetGameTotalMonth() || TimeSkipEvent.Instance.IsProcessing)
                 {
-                    dialogueText = { [DRAMA_ID] = GameTool.LS("battleevent480112890") },
-                    hideDialogueOptions = new int[] { DRAMA_HELP_DEF_OPT_ID, DRAMA_HELP_ATK_OPT_ID, DRAMA_DONT_CARE_OPT_ID }.ToIl2CppList(),
-                    onOptionsClickCall = ModLib.Helper.ActionHelper.TracedIl2Action<ConfDramaOptionsItem>((x) =>
+                    //DebugHelper.WriteLine("1");
+                    SkipMonstWave(school);
+                }
+                else
+                if (school.GetOpenBuildPoints().ToList().Any(x => x == g.world.playerUnit.GetUnitPos()))
+                {
+                    //DebugHelper.WriteLine("2");
+                    DramaTool.OpenDrama(DRAMA_ID, new DramaData
                     {
-                        switch (x.id)
+                        dialogueText = { [DRAMA_ID] = GameTool.LS("battleevent480112890") },
+                        hideDialogueOptions = new int[] { DRAMA_HELP_DEF_OPT_ID, DRAMA_HELP_ATK_OPT_ID, DRAMA_DONT_CARE_OPT_ID }.ToIl2CppList(),
+                        onOptionsClickCall = ModLib.Helper.ActionHelper.TracedIl2Action<ConfDramaOptionsItem>((x) =>
                         {
-                            case DRAMA_HELP_OPT_ID:
-                                Loved(school);
-                                g.world.playerUnit.AddProperty<int>(UnitPropertyEnum.Reputation, HELP_REPUTATION);
-                                JoinMonstWave(school, SECT_MONST_WAVE_DUNGEON_BASE_ID);
-                                break;
-                            case DRAMA_TRY_ESCAPE_OPT_ID:
-                                if (CommonTool.Random(0.00f, 100.00f).IsBetween(0.00f, Configs.EscapeChance))
-                                {
-                                    g.world.playerUnit.AddProperty<int>(UnitPropertyEnum.Reputation, g.world.playerUnit.GetProperty<int>(UnitPropertyEnum.Reputation) / 2);
-                                    g.world.playerUnit.SetUnitRandomPos(g.world.playerUnit.GetUnitPos(), 4);
+                            switch (x.id)
+                            {
+                                case DRAMA_HELP_OPT_ID:
+                                    Loved(school);
+                                    g.world.playerUnit.AddProperty<int>(UnitPropertyEnum.Reputation, HELP_REPUTATION);
+                                    JoinMonstWave(school, SECT_MONST_WAVE_DUNGEON_BASE_ID);
+                                    break;
+                                case DRAMA_TRY_ESCAPE_OPT_ID:
+                                    if (CommonTool.Random(0.00f, 100.00f).IsBetween(0.00f, Configs.EscapeChance))
+                                    {
+                                        g.world.playerUnit.AddProperty<int>(UnitPropertyEnum.Reputation, g.world.playerUnit.GetProperty<int>(UnitPropertyEnum.Reputation) / 2);
+                                        g.world.playerUnit.SetUnitRandomPos(g.world.playerUnit.GetUnitPos(), 4);
+                                        if (school.schoolNameID == g.world.playerUnit.data.unitData.schoolID)
+                                            Hated(school);
+                                    }
+                                    else
+                                    {
+                                        g.world.playerUnit.AddProperty<int>(UnitPropertyEnum.Reputation, g.world.playerUnit.GetProperty<int>(UnitPropertyEnum.Reputation) / 5);
+                                        JoinMonstWave(school, SECT_MONST_WAVE_DUNGEON_BASE_ID);
+                                    }
+                                    break;
+                            }
+                        })
+                    });
+                }
+                else
+                if (school.gridData.areaBaseID == g.world.playerUnit.GetUnitPosAreaId() &&
+                    school.GetOrigiPoint().CalRange(g.world.playerUnit.GetUnitPos()) < 8)
+                {
+                    //DebugHelper.WriteLine("3");
+                    DramaTool.OpenDrama(DRAMA_ID, new DramaData
+                    {
+                        dialogueText = { [DRAMA_ID] = string.Format(GameTool.LS("battleevent480112895"), g.world.playerUnit.data.school.GetName(true)) },
+                        hideDialogueOptions = new int[] { DRAMA_HELP_DEF_OPT_ID, DRAMA_HELP_ATK_OPT_ID, DRAMA_TRY_ESCAPE_OPT_ID }.ToIl2CppList(),
+                        onOptionsClickCall = ModLib.Helper.ActionHelper.TracedIl2Action<ConfDramaOptionsItem>((x) =>
+                        {
+                            switch (x.id)
+                            {
+                                case DRAMA_HELP_OPT_ID:
+                                    Loved(school);
+                                    g.world.playerUnit.AddProperty<int>(UnitPropertyEnum.Reputation, HELP_REPUTATION);
+                                    JoinMonstWave(school, SECT_MONST_WAVE_DUNGEON_BASE_ID);
+                                    break;
+                                case DRAMA_DONT_CARE_OPT_ID:
                                     if (school.schoolNameID == g.world.playerUnit.data.unitData.schoolID)
                                         Hated(school);
-                                }
-                                else
-                                {
-                                    g.world.playerUnit.AddProperty<int>(UnitPropertyEnum.Reputation, g.world.playerUnit.GetProperty<int>(UnitPropertyEnum.Reputation) / 5);
-                                    JoinMonstWave(school, SECT_MONST_WAVE_DUNGEON_BASE_ID);
-                                }
-                                break;
-                        }
-                    })
-                });
-            }
-            else
-            if (school.gridData.areaBaseID == g.world.playerUnit.data.unitData.pointGridData.areaBaseID &&
-                school.GetOrigiPoint().CalRange(g.world.playerUnit.data.unitData.GetPoint()) < 8)
-            {
-                //DebugHelper.WriteLine("3");
-                DramaTool.OpenDrama(DRAMA_ID, new DramaData
+                                    break;
+                            }
+                        })
+                    });
+                }
+                else
                 {
-                    dialogueText = { [DRAMA_ID] = string.Format(GameTool.LS("battleevent480112895"), g.world.playerUnit.data.school.GetName(true)) },
-                    hideDialogueOptions = new int[] { DRAMA_HELP_DEF_OPT_ID, DRAMA_HELP_ATK_OPT_ID, DRAMA_TRY_ESCAPE_OPT_ID }.ToIl2CppList(),
-                    onOptionsClickCall = ModLib.Helper.ActionHelper.TracedIl2Action<ConfDramaOptionsItem>((x) =>
-                    {
-                        switch (x.id)
-                        {
-                            case DRAMA_HELP_OPT_ID:
-                                Loved(school);
-                                g.world.playerUnit.AddProperty<int>(UnitPropertyEnum.Reputation, HELP_REPUTATION);
-                                JoinMonstWave(school, SECT_MONST_WAVE_DUNGEON_BASE_ID);
-                                break;
-                            case DRAMA_DONT_CARE_OPT_ID:
-                                if (school.schoolNameID == g.world.playerUnit.data.unitData.schoolID)
-                                    Hated(school);
-                                break;
-                        }
-                    })
-                });
+                    //DebugHelper.WriteLine("4");
+                    SkipMonstWave(school);
+                }
             }
-            else
+            catch
             {
-                //DebugHelper.WriteLine("4");
-                SkipMonstWave(school);
+                DebugHelper.WriteLine("MonstWave (school): error!!! Please contact to modder!");
             }
         }
 
@@ -759,7 +780,7 @@ namespace MOD_nE7UL2.Mod
                     //team B
                     try
                     {
-                        var areaId = g.world.playerUnit.data.unitData.pointGridData.areaBaseID;
+                        var areaId = g.world.playerUnit.GetUnitPosAreaId();
                         for (int i = 0; i < TeamACUnits.Count * 2; i++)
                         {
                             var monstLvl = CommonTool.Random(areaId - 1, areaId + 1).FixValue(0, monstList.Length - 1);
@@ -837,7 +858,7 @@ namespace MOD_nE7UL2.Mod
                     //-point
                     AddTeamCount(TeamSideEnum.TeamB, -1);
                     //create new monster
-                    var areaId = g.world.playerUnit.data.unitData.pointGridData.areaBaseID;
+                    var areaId = g.world.playerUnit.GetUnitPosAreaId();
                     var monstLvl = CommonTool.Random(areaId - 1, areaId + 1).FixValue(0, monstList.Length - 1);
                     var cunit = ModBattleEvent.SceneBattle.unit.CreateUnitMonst(monstList[monstLvl], Vector2.zero, UnitType.Monst, CommonTool.Random(1, 5) + 5 * monstLvl);
                     TeamBCUnits.Add(cunit);

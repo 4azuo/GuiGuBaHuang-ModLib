@@ -180,7 +180,7 @@ namespace MOD_nE7UL2.Mod
 
                 //area bonus
                 //DebugHelper.WriteLine("7");
-                var areaId = g.world.playerUnit.data.unitData.pointGridData.areaBaseID;
+                var areaId = g.world.playerUnit.GetUnitPosAreaId();
                 if (Configs.AreaBonus.ContainsKey(areaId))
                 {
                     var r = Configs.AreaBonus[areaId] * gameLvl;
