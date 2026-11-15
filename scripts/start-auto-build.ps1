@@ -1,4 +1,4 @@
-# Auto Build and Deploy Script
+﻿# Auto Build and Deploy Script
 # Launches the Python auto-build watcher
 
 $ErrorActionPreference = "Stop"

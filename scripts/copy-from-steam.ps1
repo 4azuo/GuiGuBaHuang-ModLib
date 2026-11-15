@@ -1,4 +1,4 @@
-# Copy Project from Steam Workshop to Git
+﻿# Copy Project from Steam Workshop to Git
 
 # Read settings from JSON file
 $settingsPath = Join-Path $PSScriptRoot "settings.json"

@@ -1,4 +1,4 @@
-# Script to compress mod folder for project 3385996759
+﻿# Script to compress mod folder for project 3385996759
 $ErrorActionPreference = "Stop"
 
 # Read settings

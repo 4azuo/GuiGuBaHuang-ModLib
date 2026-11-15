@@ -1,4 +1,4 @@
-# Rebuild and Deploy Project to Steam
+﻿# Rebuild and Deploy Project to Steam
 
 # Read settings from JSON file
 $settingsPath = Join-Path $PSScriptRoot "settings.json"

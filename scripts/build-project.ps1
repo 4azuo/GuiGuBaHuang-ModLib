@@ -1,4 +1,4 @@
-# Build Project - Release
+﻿# Build Project - Release
 
 # Read settings from JSON file
 $settingsPath = Join-Path $PSScriptRoot "settings.json"

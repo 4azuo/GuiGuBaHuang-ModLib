@@ -1,4 +1,4 @@
-# Copy to Steam Workshop
+﻿# Copy to Steam Workshop
 
 # Read settings from JSON file
 $settingsPath = Join-Path $PSScriptRoot "settings.json"
