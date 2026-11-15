@@ -19,7 +19,7 @@ Two main projects:
 - Read docs from `.github/docs/` for context
 
 ### Workflow
-- Use `rebuild-and-deploy.ps1` in `tasks/` for build/deploy
+- Use `rebuild-and-deploy.ps1` in `<ProjectId>/scripts/` for build/deploy (or `scripts/rebuild-and-deploy-all.ps1` for all projects)
 - Output: `debug/Mod_xxxxx/ModCode/dll/`
 - Batch independent operations when possible
 - Use LocalText.json for all user-facing text

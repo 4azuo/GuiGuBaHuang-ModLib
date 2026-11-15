@@ -1,0 +1,190 @@
+{
+    "version": "2.0.0",
+    "options": {
+        "cwd": "${workspaceFolder}"
+    },
+    "presentation": {
+        "reveal": "always",
+        "panel": "shared",
+        "clear": true
+    },
+    "inputs": [
+        {
+            "id": "project",
+            "type": "pickString",
+            "description": "Select project",
+            "options": [
+                { "label": "3385996759 - ModLib", "value": "3385996759" },
+                { "label": "3161035078 - Taoist", "value": "3161035078" }
+            ],
+            "default": "3161035078"
+        }
+    ],
+    "tasks": [
+        // ===== All projects (scripts/) =====
+        {
+            "label": "All: Rebuild & Deploy",
+            "detail": "Rebuild every project in scripts/settings.json and copy all to Steam Workshop",
+            "type": "process",
+            "command": "powershell.exe",
+            "args": ["-NoProfile", "-ExecutionPolicy", "Bypass", "-File", "${workspaceFolder}/scripts/rebuild-and-deploy-all.ps1"],
+            "problemMatcher": "$msCompile",
+            "group": { "kind": "build", "isDefault": true }
+        },
+        {
+            "label": "All: Copy to Steam",
+            "detail": "Copy all projects to Steam Workshop folder",
+            "type": "process",
+            "command": "powershell.exe",
+            "args": ["-NoProfile", "-ExecutionPolicy", "Bypass", "-File", "${workspaceFolder}/scripts/copy-both-to-steam.ps1"],
+            "problemMatcher": []
+        },
+        {
+            "label": "All: Copy from Steam",
+            "detail": "Copy all projects from Steam Workshop folder back to the repository",
+            "type": "process",
+            "command": "powershell.exe",
+            "args": ["-NoProfile", "-ExecutionPolicy", "Bypass", "-File", "${workspaceFolder}/scripts/copy-both-from-steam.ps1"],
+            "problemMatcher": []
+        },
+        {
+            "label": "All: Compress Mods",
+            "detail": "Compress debug/Mod_xxxxx of every project to .rar (WinRAR)",
+            "type": "process",
+            "command": "powershell.exe",
+            "args": ["-NoProfile", "-ExecutionPolicy", "Bypass", "-File", "${workspaceFolder}/scripts/compress-mods.ps1"],
+            "problemMatcher": []
+        },
+
+        // ===== Single project (<ProjectId>/scripts/) =====
+        {
+            "label": "Project: Build",
+            "detail": "dotnet build (Release) + copy ModConf/ModImg/SteamImg to debug/",
+            "type": "process",
+            "command": "powershell.exe",
+            "args": ["-NoProfile", "-ExecutionPolicy", "Bypass", "-File", "${workspaceFolder}/${input:project}/scripts/build-project.ps1"],
+            "problemMatcher": "$msCompile",
+            "group": "build"
+        },
+        {
+            "label": "Project: Clean",
+            "detail": "dotnet clean (Release)",
+            "type": "process",
+            "command": "powershell.exe",
+            "args": ["-NoProfile", "-ExecutionPolicy", "Bypass", "-File", "${workspaceFolder}/${input:project}/scripts/clean-project.ps1"],
+            "problemMatcher": []
+        },
+        {
+            "label": "Project: Rebuild",
+            "detail": "Clean + Build",
+            "type": "process",
+            "command": "powershell.exe",
+            "args": ["-NoProfile", "-ExecutionPolicy", "Bypass", "-File", "${workspaceFolder}/${input:project}/scripts/rebuild-project.ps1"],
+            "problemMatcher": "$msCompile",
+            "group": "build"
+        },
+        {
+            "label": "Project: Rebuild & Deploy",
+            "detail": "Clean + Build + Copy to Steam Workshop",
+            "type": "process",
+            "command": "powershell.exe",
+            "args": ["-NoProfile", "-ExecutionPolicy", "Bypass", "-File", "${workspaceFolder}/${input:project}/scripts/rebuild-and-deploy.ps1"],
+            "problemMatcher": "$msCompile",
+            "group": "build"
+        },
+        {
+            "label": "Project: Copy to Steam",
+            "detail": "Copy project folder to Steam Workshop",
+            "type": "process",
+            "command": "powershell.exe",
+            "args": ["-NoProfile", "-ExecutionPolicy", "Bypass", "-File", "${workspaceFolder}/${input:project}/scripts/copy-to-steam.ps1"],
+            "problemMatcher": []
+        },
+        {
+            "label": "Project: Copy from Steam",
+            "detail": "Copy project folder from Steam Workshop back to the repository",
+            "type": "process",
+            "command": "powershell.exe",
+            "args": ["-NoProfile", "-ExecutionPolicy", "Bypass", "-File", "${workspaceFolder}/${input:project}/scripts/copy-from-steam.ps1"],
+            "problemMatcher": []
+        },
+        {
+            "label": "Project: Compress",
+            "detail": "Compress debug/Mod_xxxxx to .rar (WinRAR)",
+            "type": "process",
+            "command": "powershell.exe",
+            "args": ["-NoProfile", "-ExecutionPolicy", "Bypass", "-File", "${workspaceFolder}/${input:project}/scripts/compress.ps1"],
+            "problemMatcher": []
+        },
+        {
+            "label": "Project: Start Auto Build",
+            "detail": "Watch ModCode/ModConf/ModImg and rebuild & deploy on change (Python + watchdog). Errors -> scripts/auto-built-errors.log",
+            "type": "process",
+            "command": "powershell.exe",
+            "args": ["-NoProfile", "-ExecutionPolicy", "Bypass", "-File", "${workspaceFolder}/${input:project}/scripts/start-auto-build.ps1"],
+            "isBackground": true,
+            "problemMatcher": [],
+            "presentation": { "panel": "dedicated", "clear": true }
+        },
+
+        // ===== Repository =====
+        {
+            "label": "Repo: Update",
+            "detail": "git pull + update submodules (fails if there are local changes)",
+            "type": "process",
+            "command": "powershell.exe",
+            "args": ["-NoProfile", "-ExecutionPolicy", "Bypass", "-File", "${workspaceFolder}/scripts/update-repo.ps1"],
+            "problemMatcher": []
+        },
+        {
+            "label": "Repo: Update (Force)",
+            "detail": "Auto-stash local changes, git pull + update submodules, then restore stash",
+            "type": "process",
+            "command": "powershell.exe",
+            "args": ["-NoProfile", "-ExecutionPolicy", "Bypass", "-File", "${workspaceFolder}/scripts/update-repo.ps1", "-Force"],
+            "problemMatcher": []
+        },
+
+        // ===== Setup (scripts/setup/) =====
+        {
+            "label": "Setup: Configure Settings",
+            "detail": "Detect repo/Steam/game paths and write them into all settings.json files (asks to confirm each value)",
+            "type": "process",
+            "command": "powershell.exe",
+            "args": ["-NoProfile", "-ExecutionPolicy", "Bypass", "-File", "${workspaceFolder}/scripts/setup/02-configure-settings.ps1"],
+            "problemMatcher": []
+        },
+        {
+            "label": "Setup: Verify Environment",
+            "detail": "Check tools, ModCreator, settings paths, game + MelonLoader and .csproj references (read-only)",
+            "type": "process",
+            "command": "powershell.exe",
+            "args": ["-NoProfile", "-ExecutionPolicy", "Bypass", "-File", "${workspaceFolder}/scripts/setup/04-verify-environment.ps1"],
+            "problemMatcher": []
+        },
+        {
+            "label": "Setup: Get ModCreator",
+            "detail": "Check out GuiGuBaHuang-ModCreator if the folder is empty (skips clone when the repo already exists)",
+            "type": "process",
+            "command": "powershell.exe",
+            "args": ["-NoProfile", "-ExecutionPolicy", "Bypass", "-File", "${workspaceFolder}/scripts/setup/01-clone-repository.ps1", "-RepoPath", "${workspaceFolder}", "-NoExplorer", "-SkipStar"],
+            "problemMatcher": []
+        },
+        {
+            "label": "Setup: Extract BaseGameResources",
+            "detail": "Find BaseGameResources*.rar/.7z/.zip (ModCreator folder, repo, Downloads, Desktop) and extract it",
+            "type": "process",
+            "command": "powershell.exe",
+            "args": ["-NoProfile", "-ExecutionPolicy", "Bypass", "-File", "${workspaceFolder}/scripts/setup/03-extract-resources.ps1"],
+            "problemMatcher": []
+        },
+        {
+            "label": "Setup: Install Dependencies (Admin)",
+            "detail": "Install missing tools (.NET 4.7.2 DevPack, .NET 9 SDK, Git, Python, GitHub CLI, Notepad++, 7-Zip) via Chocolatey. VS Code must run as Administrator",
+            "type": "process",
+            "command": "powershell.exe",
+            "args": ["-NoProfile", "-ExecutionPolicy", "Bypass", "-File", "${workspaceFolder}/scripts/setup/00-install-dependencies.ps1"],
+            "problemMatcher": []
+        }
+    ]
+}

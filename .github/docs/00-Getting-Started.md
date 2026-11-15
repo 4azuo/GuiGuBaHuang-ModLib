@@ -10,6 +10,8 @@ ModLib is a framework for creating mods for Gui Gu Ba Huang (鬼谷八荒).
 
 **Dependencies:** ModLib.dll, MelonLoader, UnhollowerBaseLib, Il2CppInterop, Game DLLs
 
+**Setting up a new machine:** follow [INSTALLATION.md](../../INSTALLATION.md) (automatic `scripts/setup/install.ps1`, or step-by-step manual install)
+
 ## Project Structure
 
 ```
@@ -20,7 +22,7 @@ ModLib is a framework for creating mods for Gui Gu Ba Huang (鬼谷八荒).
 │   ├── ModImg/             # Assets
 │   └── SteamImg/           # Workshop images
 ├── debug/Mod_xxxxx/ModCode/dll/  # Output (ModMain.dll, ModLib.dll)
-├── tasks/                  # Settings & Build scripts
+├── scripts/                # Settings & Build scripts
 ```
 
 ## Creating a New Mod
@@ -29,7 +31,7 @@ ModLib is a framework for creating mods for Gui Gu Ba Huang (鬼谷八荒).
 
 **Step 2:** Copy folder structure from 3161035078, create folders: ModMain/, Mod/, Const/, Helper/, ModConf/, ModImg/, debug/
 
-**Step 3:** Configure `tasks/settings.json` (projectId, modName, paths) and add to `tasks/settings.json`
+**Step 3:** Configure `<ProjectId>/scripts/settings.json` (projectId, modName, paths) and add the project id to root `scripts/settings.json`
 
 ---
 
