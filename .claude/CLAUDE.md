@@ -37,6 +37,13 @@ Always build in Release. Run scripts with `powershell -NoProfile -ExecutionPolic
 - Auto-build watcher writes failures to `<ProjectId>/scripts/auto-built-errors.log` (use `/fix-build-errors`)
 - 3161035078 depends on ModLib.dll from `3385996759/CodeArtifacts/` — rebuild ModLib first when changing it
 - Same scripts are exposed as VS Code tasks in `.vscode/tasks.json`
+- Environment check: `scripts/setup/04-verify-environment.ps1` (many "missing type/member" build errors after a game update = stale `MelonLoader\Managed`, not code bugs)
+
+## Testing in game
+
+- Run the game and collect logs: `scripts/game/run-game.ps1` (e.g. `-UntilModLoaded -StopGame -Duration 600`); read `logs/game-runs/<latest>/summary.json` first, then `timeline.log`
+- Paths of game / Workshop / log folders: `scripts/open-folder.ps1 <target> -Print`
+- Details: `.github/docs/06-Debug.md`
 
 ## Documentation
 

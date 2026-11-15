@@ -214,6 +214,43 @@ Create a folder **ModConf** in **ModProject**, copy samples from below folder to
 
 
 
+# Known issues (developers)
+
+Setting up a machine: see [INSTALLATION.md](INSTALLATION.md). Run `scripts\setup\04-verify-environment.ps1` to detect the problems below.
+
+**1. The game closes ~2 seconds after starting / code mods never load (non-CJK Windows)**
+
+MelonLoader's `version.dll` refuses to start when the game folder path cannot be written in the Windows ANSI code page. Steam installs the game to `...\steamapps\common\鬼谷八荒`. That path works on Chinese/Japanese Windows, but on English/European/Vietnamese locales (code page 1252, 1258...) the game exits immediately (exit code 0, no MelonLoader log). If `version.dll` was deleted instead, the game runs but only mod *configs* load, and no mod DLL runs.
+
+Fix (pick one):
+- **Start the game through an ASCII junction** (no reboot):
+  ```bat
+  mklink /J "%LOCALAPPDATA%\ggbh-game-link" "C:\Program Files (x86)\Steam\steamapps\common\鬼谷八荒"
+  ```
+  Then in Steam → game → Properties → General → **Launch Options**:
+  ```
+  "C:\Users\<you>\AppData\Local\ggbh-game-link\guigubahuang.exe" %command%
+  ```
+  (If your Windows user name is not ASCII, put the junction somewhere like `C:\ggbh` from an Admin prompt.) `scripts\game\run-game.ps1` creates and uses this junction automatically.
+- **Or change the system locale**: Settings → Time & language → Language & region → Administrative language settings → *Change system locale* → Chinese (Simplified) or Japanese, then reboot. This affects other non-Unicode programs.
+
+Keep the junction path short: MelonLoader's assembly generator fails past 260-character paths.
+
+**2. Hundreds of "does not contain a definition" / "type not found" build errors after a game update**
+
+The code is usually fine. The projects compile against `<game>\MelonLoader\Managed\*.dll`, which MelonLoader regenerates only when it runs after a game update (see issue 1). Run it once and rebuild:
+```powershell
+.\scripts\game\run-game.ps1 -UntilModLoaded -StopGame -Duration 900
+```
+
+**3. Testing in game**
+
+`scripts\game\run-game.ps1` starts the game and follows Player.log, MelonLoader and ModLib logs live, then saves them to `logs\game-runs\<time>\`. Details: [.github/docs/06-Debug.md](.github/docs/06-Debug.md).
+
+
+
+
+
 # Credits
 
 Thanks [vuphuong878](https://steamcommunity.com/id/vuphuong878/) for translating to Chinese and Vietnamese.

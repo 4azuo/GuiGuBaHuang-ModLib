@@ -123,3 +123,7 @@ dmypy.json
 # Pyre type checker
 .pyre/
 *.rar
+
+# Game run logs (scripts/game/run-game.ps1)
+logs/game-runs/
+

@@ -36,6 +36,44 @@ Contains MelonLoader system logs, mod loading sequence, and framework-level erro
 Get-Content -Path "<GameFolder>\MelonLoader\Latest.log" -Wait -Tail 50
 ```
 
+## Unity Player Log
+
+**Location:** `C:\Users\<USER>\AppData\LocalLow\guigugame\guigubahuang\Player.log` (previous run: `Player-prev.log`)
+
+Shows the game's own mod loader: one `加载模组：<path>` line per mod config (`ModExportData.cache`) it loads, plus Unity errors.
+
+**MelonLoader must be active for code mods:** `<GameFolder>\version.dll` is the MelonLoader proxy. Without it the game still starts and still loads mod *configs*, but no mod DLL (ModLib, Taoist) runs and `MelonLoader\Latest.log` is not updated. Restore it with Steam → game → Properties → Installed Files → *Verify integrity of game files*.
+
+**Non-ASCII game path:** the proxy stops the game within about 2 s (exit code 0, no log) when the game path contains non-ASCII characters, as with Steam's default `...\common\鬼谷八荒`. `run-game.ps1` starts the game through an ASCII junction (`%LOCALAPPDATA%\ggbh-game-link`) to avoid this. `-Steam` forces a normal Steam launch instead.
+
+## Run the Game and Collect Logs
+
+`scripts\game\run-game.ps1` starts the game (through Steam), follows **Player.log**, **MelonLoader\Latest.log** and the **ModLib logs** (`mod\<modId>\*.log`, incl. per save game) live, and saves each run to `logs\game-runs\<yyyyMMdd-HHmmss>\`:
+
+| File | Content |
+|---|---|
+| `timeline.log` | Every new line of every log, time-stamped and tagged with its source |
+| `player.log`, `melonloader.log`, `mod-<modId>-<file>.log` | New content of each log during the run |
+| `summary.json` | `melonProxyPresent`, `melonLoaderStarted`, `assembliesRegenerated`, `modLoadComplete`, `modsConfLoaded`, `errorCount`, `errors`, `stopReason` |
+
+The console shows only important lines (errors, MelonLoader, ModLib logs, mod loading); `-ShowAll` shows everything.
+
+```powershell
+# start, follow logs until the game is closed
+.\scripts\game\run-game.ps1
+# automated check: wait until code mods are loaded (max 10 min), then close the game
+.\scripts\game\run-game.ps1 -UntilModLoaded -StopGame -Duration 600
+# stop when a log line matches a regex, e.g. a ModLib message
+.\scripts\game\run-game.ps1 -Until 'ModLib loaded' -StopGame
+# game already running: follow new lines only
+.\scripts\game\run-game.ps1 -Attach
+```
+
+Other options: `-Restart` (close a running game first), `-Direct` (start the exe instead of Steam), `-ExtraLog <path/glob>` (follow more log files), `-StartTimeout`, `-RestartGraceSec` (the game may restart itself, the new process is followed).
+Exit codes: `0` game ran, `1` setup error, `2` game did not start.
+
+VS Code tasks: **Game: Run & Watch Logs**, **Game: Run until Mods Loaded**, **Game: Watch Logs (attach)**, and **Open: Folder...** (game, MelonLoader, Workshop, build output, log folders; same as `scripts\open-folder.ps1 <target>`).
+
 ## Using DebugHelper
 
 **Basic logging:**

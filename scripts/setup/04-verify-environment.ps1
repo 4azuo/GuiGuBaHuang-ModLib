@@ -97,6 +97,26 @@ if ($repo) {
         Add-Check PASS 'Game installed' $gamePath
         if (Test-Path (Join-Path $gamePath 'MelonLoader\Managed\Assembly-CSharp.dll')) { Add-Check PASS 'MelonLoader game assemblies' }
         else { Add-Check FAIL 'MelonLoader game assemblies' 'MelonLoader\Managed\Assembly-CSharp.dll missing' 'install MelonLoader and start the game once' }
+
+        if (-not (Test-Path (Join-Path $gamePath 'version.dll'))) {
+            Add-Check FAIL 'MelonLoader proxy (version.dll)' 'missing - code mods will not load' 'Steam > game > Properties > Installed Files > Verify integrity of game files'
+        }
+        if ($gamePath -match '[^\x00-\x7F]') {
+            Add-Check WARN 'Game path is not ASCII' 'MelonLoader refuses to start from it' 'start the game with .\scripts\game\run-game.ps1 (uses an ASCII junction)'
+        }
+
+        # MelonLoader stores the GameAssembly.dll hash it generated Managed\ from;
+        # a different hash means the game updated and Managed\ is stale
+        $genCfg = Join-Path $gamePath 'MelonLoader\Dependencies\Il2CppAssemblyGenerator\Config.cfg'
+        $gameAsm = Join-Path $gamePath 'GameAssembly.dll'
+        if ((Test-Path $genCfg) -and (Test-Path $gameAsm)) {
+            $stored = [regex]::Match([IO.File]::ReadAllText($genCfg), 'GameAssemblyHash\s*=\s*"([0-9a-fA-F]+)"').Groups[1].Value
+            $current = (Get-FileHash $gameAsm -Algorithm SHA512).Hash
+            if ($stored -and $stored -ieq $current) { Add-Check PASS 'MelonLoader assemblies match game version' }
+            elseif ($stored) {
+                Add-Check FAIL 'MelonLoader assemblies match game version' 'game was updated after MelonLoader\Managed was generated - builds fail with missing types/members' '.\scripts\game\run-game.ps1 -UntilModLoaded -StopGame -Duration 900 (see INSTALLATION.md)'
+            }
+        }
     }
     else { Add-Check FAIL 'Game installed' 'game folder not found' 'install the game via Steam' }
 

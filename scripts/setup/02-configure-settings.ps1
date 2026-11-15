@@ -151,13 +151,25 @@ foreach ($e in $edits) {
 }
 
 # ---- optionally hide local path edits from git
-if ($changedFiles.Count -gt 0 -and -not $DryRun) {
+# Only files that now differ from what is committed in git
+$ErrorActionPreference = 'Continue'
+$dirtyFiles = @($changedFiles | Where-Object {
+    $dir = Split-Path $_ -Parent
+    git -C $dir diff --quiet -- (Split-Path $_ -Leaf)
+    $LASTEXITCODE -eq 1
+})
+$ErrorActionPreference = 'Stop'
+
+if ($dirtyFiles.Count -gt 0 -and -not $DryRun) {
     Write-Host ''
-    Write-Info 'These settings files are tracked by git, so your local paths now show as changes.'
-    $hide = $SkipWorktree -or (Confirm-Choice 'Hide them from git status/commit (git update-index --skip-worktree)?' $false)
+    Write-Info 'These files now differ from the committed version (your local paths):'
+    $dirtyFiles | ForEach-Object { Write-Info "  $_" }
+    Write-Info '  N = keep them visible in git (choose this if you want to commit the new paths)'
+    Write-Info '  y = hide them from git status/commit on this machine only (git update-index --skip-worktree)'
+    $hide = $SkipWorktree -or (Confirm-Choice 'Hide these local path changes from git?' $false)
     if ($hide) {
         $ErrorActionPreference = 'Continue'
-        foreach ($f in $changedFiles) {
+        foreach ($f in $dirtyFiles) {
             $dir = Split-Path $f -Parent
             git -C $dir update-index --skip-worktree (Split-Path $f -Leaf)
             if ($LASTEXITCODE -eq 0) { Write-Ok "skip-worktree: $f" }

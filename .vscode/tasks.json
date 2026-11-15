@@ -18,6 +18,31 @@
                 { "label": "3161035078 - Taoist", "value": "3161035078" }
             ],
             "default": "3161035078"
+        },
+        {
+            "id": "folder",
+            "type": "pickString",
+            "description": "Folder to open",
+            "options": [
+                { "label": "Game install folder", "value": "game" },
+                { "label": "Game: MelonLoader", "value": "melonloader" },
+                { "label": "Game: MelonLoader logs", "value": "melon-logs" },
+                { "label": "Steam Workshop (all subscribed mods)", "value": "workshop" },
+                { "label": "Steam Workshop: 3385996759 - ModLib", "value": "workshop-3385996759" },
+                { "label": "Steam Workshop: 3161035078 - Taoist", "value": "workshop-3161035078" },
+                { "label": "Build output: 3385996759 - ModLib (debug/)", "value": "debug-3385996759" },
+                { "label": "Build output: 3161035078 - Taoist (debug/)", "value": "debug-3161035078" },
+                { "label": "Game data (Player.log, LocalLow)", "value": "game-data" },
+                { "label": "ModLib logs (per save game)", "value": "mod-logs" },
+                { "label": "Game run logs (run-game.ps1 output)", "value": "game-runs" }
+            ],
+            "default": "workshop"
+        },
+        {
+            "id": "gameRunDuration",
+            "type": "promptString",
+            "description": "Stop after N seconds (0 = until the game is closed)",
+            "default": "0"
         }
     ],
     "tasks": [
@@ -125,6 +150,44 @@
             "isBackground": true,
             "problemMatcher": [],
             "presentation": { "panel": "dedicated", "clear": true }
+        },
+
+        // ===== Game (scripts/game/) =====
+        {
+            "label": "Game: Run & Watch Logs",
+            "detail": "Start the game through Steam and follow Player.log, MelonLoader and ModLib logs live (saved to logs/game-runs/)",
+            "type": "process",
+            "command": "powershell.exe",
+            "args": ["-NoProfile", "-ExecutionPolicy", "Bypass", "-File", "${workspaceFolder}/scripts/game/run-game.ps1", "-Duration", "${input:gameRunDuration}"],
+            "problemMatcher": [],
+            "presentation": { "panel": "dedicated", "clear": true }
+        },
+        {
+            "label": "Game: Run until Mods Loaded",
+            "detail": "Start the game, wait until MelonLoader finished loading code mods (max 10 min), then close it",
+            "type": "process",
+            "command": "powershell.exe",
+            "args": ["-NoProfile", "-ExecutionPolicy", "Bypass", "-File", "${workspaceFolder}/scripts/game/run-game.ps1", "-UntilModLoaded", "-StopGame", "-Duration", "600"],
+            "problemMatcher": [],
+            "presentation": { "panel": "dedicated", "clear": true }
+        },
+        {
+            "label": "Game: Watch Logs (attach)",
+            "detail": "Game already running: follow only the new log lines",
+            "type": "process",
+            "command": "powershell.exe",
+            "args": ["-NoProfile", "-ExecutionPolicy", "Bypass", "-File", "${workspaceFolder}/scripts/game/run-game.ps1", "-Attach"],
+            "problemMatcher": [],
+            "presentation": { "panel": "dedicated", "clear": true }
+        },
+        {
+            "label": "Open: Folder...",
+            "detail": "Open a game / Workshop / build output / log folder in Explorer",
+            "type": "process",
+            "command": "powershell.exe",
+            "args": ["-NoProfile", "-ExecutionPolicy", "Bypass", "-File", "${workspaceFolder}/scripts/open-folder.ps1", "${input:folder}"],
+            "problemMatcher": [],
+            "presentation": { "reveal": "silent" }
         },
 
         // ===== Repository =====
