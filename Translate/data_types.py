@@ -43,6 +43,7 @@ class TranslationConfig:
     retry_delay: float = TRANSLATION_CONFIG['retry_delay']
     source_language: str = TRANSLATION_CONFIG['source_language']
     preserve_existing_translations: bool = False
+    provider: str = 'google'
 
 @dataclass
 class ProcessingStats:

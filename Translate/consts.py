@@ -27,10 +27,23 @@ COMBINED_KEY_WITH_EN_PATTERN = re.compile(r'.*\ben\b.*')  # Key containing 'en' 
 
 # Translation configuration
 TRANSLATION_CONFIG = {
-    'max_retries': 3,
-    'delay_between_requests': 0.2,  # seconds
-    'retry_delay': 1.0,  # seconds
-    'source_language': 'en'
+    'max_retries': 6,
+    # minimum seconds between two requests, shared by all threads (Google answers 429 to fast clients)
+    'delay_between_requests': 1.0,
+    # first wait after an error; doubled at each retry (rate limit: 30 s, 60 s, 120 s...) up to max_backoff
+    'retry_delay': 30.0,
+    'max_backoff': 600.0,
+    'source_language': 'en',
+    # translations already made, by source text (Translate/.cache/<source>-<target>.json): never requested twice
+    'cache_dir': '.cache'
+}
+
+# Translation services (run.py --provider): google (fast, blocks clients that ask too much: HTTP 429),
+# mymemory (free, ~5000 characters a day per IP, needs region codes)
+PROVIDERS = ['google', 'mymemory']
+MYMEMORY_CODES = {
+    'en': 'en-GB', 'vi': 'vi-VN', 'es': 'es-ES', 'fr': 'fr-FR', 'de': 'de-DE', 'ru': 'ru-RU', 'ja': 'ja-JP',
+    'la': 'la-XN', 'th': 'th-TH', 'zh-CN': 'zh-CN', 'zh-TW': 'zh-TW', 'ko': 'ko-KR'
 }
 
 # Texts to skip translation (do not translate)

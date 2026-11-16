@@ -212,17 +212,20 @@ class TranslateUtils:
                         # Translate to Chinese Simplified (ch) if missing or empty
                         if not TranslateUtils._has_valid_translation(new_item, 'ch', preserve_existing):
                             translated_ch = translator_func(en_text, LANGUAGE_CODES['ch'], item_id)
-                            new_item['ch'] = translated_ch
+                            if translated_ch is not None:
+                                new_item['ch'] = translated_ch
                         
                         # Translate to Traditional Chinese (tc) if missing or empty
                         if not TranslateUtils._has_valid_translation(new_item, 'tc', preserve_existing):
                             translated_tc = translator_func(en_text, LANGUAGE_CODES['tc'], item_id)
-                            new_item['tc'] = translated_tc
+                            if translated_tc is not None:
+                                new_item['tc'] = translated_tc
                         
                         # Translate to Korean (kr) if missing or empty
                         if not TranslateUtils._has_valid_translation(new_item, 'kr', preserve_existing):
                             translated_kr = translator_func(en_text, LANGUAGE_CODES['kr'], item_id)
-                            new_item['kr'] = translated_kr
+                            if translated_kr is not None:
+                                new_item['kr'] = translated_kr
                     
                     # Sort keys in order: en, ch, tc, kr
                     new_item = TranslateUtils.sort_language_keys(new_item)
@@ -245,15 +248,18 @@ class TranslateUtils:
                 # Translate to missing or empty languages
                 if not TranslateUtils._has_valid_translation(new_item, 'ch', preserve_existing):
                     translated_ch = translator_func(en_text, LANGUAGE_CODES['ch'], item_id)
-                    new_item['ch'] = translated_ch
+                    if translated_ch is not None:
+                        new_item['ch'] = translated_ch
                 
                 if not TranslateUtils._has_valid_translation(new_item, 'tc', preserve_existing):
                     translated_tc = translator_func(en_text, LANGUAGE_CODES['tc'], item_id)
-                    new_item['tc'] = translated_tc
+                    if translated_tc is not None:
+                        new_item['tc'] = translated_tc
                 
                 if not TranslateUtils._has_valid_translation(new_item, 'kr', preserve_existing):
                     translated_kr = translator_func(en_text, LANGUAGE_CODES['kr'], item_id)
-                    new_item['kr'] = translated_kr
+                    if translated_kr is not None:
+                        new_item['kr'] = translated_kr
             
             # Sort keys in order: en, ch, tc, kr
             new_item = TranslateUtils.sort_language_keys(new_item)
@@ -302,6 +308,8 @@ class TranslateUtils:
                         else:
                             # Translate from English to target language
                             translated = translator_func(en_text, target_language, item_id)
+                            if translated is None:
+                                continue  # failed: left out, translated by the next run (or the AI export)
                             new_item[LOCALE_COMBINED_KEY] = translated
                         
                         result.append(new_item)
@@ -335,6 +343,8 @@ class TranslateUtils:
                 else:
                     # Translate from English to target language
                     translated = translator_func(en_text, target_language, item_id)
+                    if translated is None:
+                        return LocalTextData([])  # failed: left out, translated by the next run (or the AI export)
                     new_item[LOCALE_COMBINED_KEY] = translated
                 
                 return LocalTextData(new_item)

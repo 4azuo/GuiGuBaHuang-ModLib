@@ -54,6 +54,24 @@ python run.py --project <PROJECT_ID> --path <PATH> [OPTIONS]
 - `--workers`: Number of parallel threads for file processing (default: 4). Reduce if encountering rate-limits from translation service
 - `--source_lan`: Source language for translation (default: `en`). Examples: `en`, `ch`, `tc`, `kr`
 
+### Rate limits, cache, providers
+
+- `--delay <seconds>` (default 1.0): minimum time between two requests, all threads together. On HTTP 429 every thread waits
+  30 s, 60 s, 120 s... (up to 10 min, 6 attempts); a text that still fails is left missing, the next run retries it.
+- Every translation is cached in `Translate/.cache/<source>-<target>.json` (by source text): never requested twice.
+- `--provider google|mymemory`: MyMemory is free (about 5000 characters a day per IP) when Google blocks the machine.
+
+### AI translation (few tokens): `ai_bridge.py`
+
+```bash
+python ai_bridge.py status --projects 3161035078 3385996759          # missing entries per language
+python ai_bridge.py export --projects 3161035078 3385996759 --out ai_todo
+#   -> applies the cached translations, writes ai_todo.json (each missing English text once) + ai_todo.refs.json,
+#      prints the rules to give the AI; the AI writes <lang>.json = {"t1": "...", ...}
+python ai_bridge.py import --lang de --file de.json --out ai_todo    # validated, appended to the locale files, cached
+python ai_bridge.py seed-cache --projects 3161035078 3385996759      # cache <- translations already in the locale files
+```
+
 ## 📖 Usage Examples
 
 ### 1. Process entire ModConf directory

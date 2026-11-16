@@ -17,7 +17,7 @@ from typing import List
 import sys
 sys.path.append(os.path.dirname(os.path.abspath(__file__)))
 
-from consts import DEFAULT_TARGET_LANGUAGES, TRANSLATION_CONFIG, DIR_PATTERNS, UI_MESSAGES, UI_ICONS
+from consts import DEFAULT_TARGET_LANGUAGES, TRANSLATION_CONFIG, DIR_PATTERNS, UI_MESSAGES, UI_ICONS, PROVIDERS
 from data_types import TranslationConfig, FileType
 from file_utils import FileUtils
 from local_text_processor import LocalTextProcessor
@@ -55,6 +55,9 @@ Usage examples:
   python run.py --project 3385996759 --path . --workers 8
   python run.py --project 3385996759 --path . --workers 1  # Sequential processing
   python run.py --project 3385996759 --path . --source_lan ch  # Translate from Chinese
+  python run.py --project 3161035078 --path . --file-type locale --preserve-translations --create-locales all --delay 2
+  (failed texts are left out and retried by the next run; already translated texts are cached in Translate/.cache;
+   for the rest, translate with an AI: python ai_bridge.py export / import, see README)
         '''
     )
     
@@ -103,6 +106,20 @@ Usage examples:
     )
     
     parser.add_argument(
+        '--delay',
+        type=float,
+        default=TRANSLATION_CONFIG['delay_between_requests'],
+        help='Minimum seconds between two requests to the translation service, all threads together (default: %(default)s). Raise it when Google answers 429.'
+    )
+    
+    parser.add_argument(
+        '--provider',
+        choices=PROVIDERS,
+        default='google',
+        help='Translation service (default: google). mymemory: free, about 5000 characters a day; use it while Google answers 429.'
+    )
+    
+    parser.add_argument(
         '--source_lan',
         type=str,
         default=None,
@@ -139,10 +156,11 @@ Usage examples:
     translation_config = TranslationConfig(
         target_languages=target_languages,
         max_retries=TRANSLATION_CONFIG['max_retries'],
-        delay_between_requests=TRANSLATION_CONFIG['delay_between_requests'],
+        delay_between_requests=args.delay,
         retry_delay=TRANSLATION_CONFIG['retry_delay'],
         source_language=source_language,
-        preserve_existing_translations=args.preserve_translations
+        preserve_existing_translations=args.preserve_translations,
+        provider=args.provider
     )
     
     processor = LocalTextProcessor(translation_config)
