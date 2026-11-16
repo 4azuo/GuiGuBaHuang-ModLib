@@ -70,9 +70,30 @@ namespace ModLib.Helper
         /// <param name="r">Radius</param>
         public static void SetUnitRandomPos(this WorldUnitBase wunit, Vector2Int p, int r = 8)
         {
-            var x = (p.x + CommonTool.Random(-r, r)).FixValue(0, g.data.grid.mapWidth);
-            var y = (p.y + CommonTool.Random(-r, r)).FixValue(0, g.data.grid.mapHeight);
-            wunit.SetUnitPos(new Vector2Int(x, y));
+            // a point inside the map (width/height excluded) on an existing grid; the center otherwise
+            // (a unit on a missing grid breaks the month run of the game: NullReferenceException in AddAreaUnit / UnitActionSetPoint)
+            for (var i = 0; i < 10; i++)
+            {
+                var x = (p.x + CommonTool.Random(-r, r)).FixValue(0, g.data.grid.mapWidth - 1);
+                var y = (p.y + CommonTool.Random(-r, r)).FixValue(0, g.data.grid.mapHeight - 1);
+                var q = new Vector2Int(x, y);
+                if (IsValidPoint(q))
+                {
+                    wunit.SetUnitPos(q);
+                    return;
+                }
+            }
+            wunit.SetUnitPos(p);
+        }
+
+        /// <summary>
+        /// True when the point is inside the map on an existing grid.
+        /// </summary>
+        public static bool IsValidPoint(Vector2Int p)
+        {
+            if (p.x < 0 || p.y < 0 || p.x >= g.data.grid.mapWidth || p.y >= g.data.grid.mapHeight)
+                return false;
+            try { return g.data.grid.GetGridData(p) != null; } catch { return false; }
         }
 
         /// <summary>

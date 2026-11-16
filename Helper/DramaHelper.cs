@@ -14,6 +14,20 @@ namespace ModLib.Helper
     public static class DramaHelper
     {
         private const int DEFAULT_OPT_ID = 999790000;
+        /// <summary>
+        /// Dialogue with exactly n options (999890011-14 type 1, 999890021-24 type 2) for 2 to 4 options: the default
+        /// dialogues list 10 options that the game does not hide reliably. 0-1 option and more than 4: the default dialogue
+        /// (as before: no option shown, a click closes it).
+        /// </summary>
+        private static bool IsExact(int n) => n >= 2 && n <= 4;
+
+        private static int DialogueId(int defaultId, int n)
+        {
+            if (!IsExact(n))
+                return defaultId;
+            return (defaultId == ModLibConst.DEFAULT_TYPE1_DRAMA_ID ? 999890010 : 999890020) + n;
+        }
+
         private static int[] DEFAULT_OPTS = new int[] { 999790000, 999790001, 999790002, 999790003, 999790004, 999790005, 999790006, 999790007, 999790008, 999790009 };
 
         /// <summary>
@@ -25,11 +39,14 @@ namespace ModLib.Helper
         public static void OpenDrama1(string text, List<string> optMsgs, Action<ConfDramaOptionsItem> optClickCall)
         {
             var opts = optMsgs.Select((x, i) => new { Index = i, Value = x }).ToArray();
-            DramaTool.OpenDrama(ModLibConst.DEFAULT_TYPE1_DRAMA_ID, new DramaData
+            var dramaId = DialogueId(ModLibConst.DEFAULT_TYPE1_DRAMA_ID, opts.Length);
+            DramaTool.OpenDrama(dramaId, new DramaData
             {
-                dialogueText = { [ModLibConst.DEFAULT_TYPE1_DRAMA_ID] = text },
-                dialogueOptions = opts.ToIl2CppDictionary(x => DEFAULT_OPT_ID + x.Index, x => x.Value),
-                hideDialogueOptions = DEFAULT_OPTS.Except(opts.Select((x, i) => i)).ToIl2CppList(),
+                dialogueText = { [dramaId] = text },
+                // exact dialogue: its own options, texts replaced (dialogueOptions would add them a second time)
+                dialogueOptions = (IsExact(opts.Length) ? opts.Take(0) : opts).ToIl2CppDictionary(x => DEFAULT_OPT_ID + x.Index, x => x.Value),
+                dialogueOptionsText = (IsExact(opts.Length) ? opts : opts.Take(0)).ToIl2CppDictionary(x => DEFAULT_OPT_ID + x.Index, x => x.Value),
+                hideDialogueOptions = (IsExact(opts.Length) ? new int[0] : DEFAULT_OPTS.Except(opts.Select((x, i) => i))).ToIl2CppList(),
                 onOptionsClickCall = optClickCall,
             });
         }
@@ -46,11 +63,14 @@ namespace ModLib.Helper
             WorldUnitBase wunitLeft, WorldUnitBase wunitRight)
         {
             var opts = optMsgs.Select((x, i) => new { Index = i, Value = x }).ToArray();
-            DramaTool.OpenDrama(ModLibConst.DEFAULT_TYPE1_DRAMA_ID, new DramaData
+            var dramaId = DialogueId(ModLibConst.DEFAULT_TYPE1_DRAMA_ID, opts.Length);
+            DramaTool.OpenDrama(dramaId, new DramaData
             {
-                dialogueText = { [ModLibConst.DEFAULT_TYPE1_DRAMA_ID] = text },
-                dialogueOptions = opts.ToIl2CppDictionary(x => DEFAULT_OPT_ID + x.Index, x => x.Value),
-                hideDialogueOptions = DEFAULT_OPTS.Except(opts.Select((x, i) => i)).ToIl2CppList(),
+                dialogueText = { [dramaId] = text },
+                // exact dialogue: its own options, texts replaced (dialogueOptions would add them a second time)
+                dialogueOptions = (IsExact(opts.Length) ? opts.Take(0) : opts).ToIl2CppDictionary(x => DEFAULT_OPT_ID + x.Index, x => x.Value),
+                dialogueOptionsText = (IsExact(opts.Length) ? opts : opts.Take(0)).ToIl2CppDictionary(x => DEFAULT_OPT_ID + x.Index, x => x.Value),
+                hideDialogueOptions = (IsExact(opts.Length) ? new int[0] : DEFAULT_OPTS.Except(opts.Select((x, i) => i))).ToIl2CppList(),
                 onOptionsClickCall = optClickCall,
                 unitLeft = wunitLeft,
                 unitRight = wunitRight,
@@ -67,13 +87,16 @@ namespace ModLib.Helper
         public static void OpenDrama2(string text, List<string> optMsgs, Action<ConfDramaOptionsItem> optClickCall, string background)
         {
             var opts = optMsgs.Select((x, i) => new { Index = i, Value = x }).ToArray();
-            DramaTool.OpenDrama(ModLibConst.DEFAULT_TYPE2_DRAMA_ID, new DramaData
+            var dramaId = DialogueId(ModLibConst.DEFAULT_TYPE2_DRAMA_ID, opts.Length);
+            DramaTool.OpenDrama(dramaId, new DramaData
             {
-                dialogueText = { [ModLibConst.DEFAULT_TYPE2_DRAMA_ID] = text },
-                dialogueOptions = opts.ToIl2CppDictionary(x => DEFAULT_OPT_ID + x.Index, x => x.Value),
-                hideDialogueOptions = DEFAULT_OPTS.Except(opts.Select((x, i) => i)).ToIl2CppList(),
+                dialogueText = { [dramaId] = text },
+                // exact dialogue: its own options, texts replaced (dialogueOptions would add them a second time)
+                dialogueOptions = (IsExact(opts.Length) ? opts.Take(0) : opts).ToIl2CppDictionary(x => DEFAULT_OPT_ID + x.Index, x => x.Value),
+                dialogueOptionsText = (IsExact(opts.Length) ? opts : opts.Take(0)).ToIl2CppDictionary(x => DEFAULT_OPT_ID + x.Index, x => x.Value),
+                hideDialogueOptions = (IsExact(opts.Length) ? new int[0] : DEFAULT_OPTS.Except(opts.Select((x, i) => i))).ToIl2CppList(),
                 onOptionsClickCall = optClickCall,
-                backgroud = { [ModLibConst.DEFAULT_TYPE2_DRAMA_ID] = background },
+                backgroud = { [dramaId] = background },
             });
         }
 
