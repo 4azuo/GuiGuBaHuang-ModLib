@@ -11,6 +11,10 @@ using ModLib.Helper;
 
 namespace ModLib.Mod
 {
+    /// <summary>
+    /// Built-in custom skill host (Local, order 80). Discovers ModSkill classes of all mods, activates them at battle start
+    /// and forwards skill/step/prop usage to every skill's OnCast.
+    /// </summary>
     [Cache("$SKILL$", OrderIndex = 80, CacheType = CacheAttribute.CType.Local, WorkOn = CacheAttribute.WType.Local)]
     public class ModSkillEvent : ModEvent
     {
@@ -22,6 +26,9 @@ namespace ModLib.Mod
         /*
          * Load Classes
          */
+        /// <summary>
+        /// Finds ModSkill types (with their SkillAttribute) in an assembly, or in ModLib and all loaded mods.
+        /// </summary>
         public List<Tuple<string, SkillAttribute, Type>> GetSkillTypes(string modId, Assembly ass)
         {
             if (ass == null)
@@ -29,6 +36,9 @@ namespace ModLib.Mod
             return ass.GetLoadableTypes().Where(x => x.IsClass && x.IsSubclassOf(typeof(ModSkill))).Select(x => Tuple.Create(modId, x.GetCustomAttribute<SkillAttribute>(), x)).ToList();
         }
 
+        /// <summary>
+        /// Finds ModSkill types (with their SkillAttribute) in an assembly, or in ModLib and all loaded mods.
+        /// </summary>
         public List<Tuple<string, SkillAttribute, Type>> GetSkillTypes()
         {
             var rs = new List<Tuple<string, SkillAttribute, Type>>();
@@ -45,6 +55,9 @@ namespace ModLib.Mod
             return rs;
         }
 
+        /// <summary>
+        /// Creates every skill, restoring cached state from the skill cache file when present.
+        /// </summary>
         public void LoadSkillList()
         {
             foreach (var t in GetSkillTypes())
@@ -68,6 +81,9 @@ namespace ModLib.Mod
             }
         }
 
+        /// <summary>
+        /// Adds a skill to SkillList (once per CacheId).
+        /// </summary>
         public void LoadSkill(ModSkill s)
         {
             if (!SkillList.ContainsKey(s.CacheId))
@@ -77,6 +93,9 @@ namespace ModLib.Mod
             }
         }
 
+        /// <summary>
+        /// Loads the skill list when the event is created.
+        /// </summary>
         public override void OnLoadClass(bool isNew, string modId, CacheAttribute attr)
         {
             base.OnLoadClass(isNew, modId, attr);
@@ -86,6 +105,9 @@ namespace ModLib.Mod
         /*
          * Start Battle
          */
+        /// <summary>
+        /// Calls OnLoadBattleStart on each skill and marks it active.
+        /// </summary>
         public void LoadSkillEvents()
         {
             ActiveSkillList.Clear();
@@ -99,6 +121,9 @@ namespace ModLib.Mod
             }
         }
         
+        /// <summary>
+        /// Activates skills for the new battle.
+        /// </summary>
         public override void OnBattleStart(ETypeData e)
         {
             base.OnBattleStart(e);
@@ -108,6 +133,9 @@ namespace ModLib.Mod
         /*
          * End Battle
          */
+        /// <summary>
+        /// Deactivates skills and lets them save their state (OnUnloadBattleEnd).
+        /// </summary>
         public void ClearSkillEvents()
         {
             foreach (var t in ActiveSkillList.ToArray())
@@ -117,6 +145,9 @@ namespace ModLib.Mod
             }
         }
 
+        /// <summary>
+        /// Deactivates skills at the end of the battle.
+        /// </summary>
         public override void OnBattleEnd(BattleEnd e)
         {
             base.OnBattleEnd(e);
@@ -126,6 +157,9 @@ namespace ModLib.Mod
         /*
          * Skill Start
          */
+        /// <summary>
+        /// Calls OnCast of every skill in parallel.
+        /// </summary>
         public void MultiCast(UnitCtrlBase cunit, SkillBase skill, StepBase step, PropItemBase prop)
         {
             Parallel.ForEach(SkillList, s =>
@@ -134,18 +168,27 @@ namespace ModLib.Mod
             });
         }
 
+        /// <summary>
+        /// Forwards a skill cast to the skills.
+        /// </summary>
         public override void OnBattleUnitUseSkill(UnitUseSkill e)
         {
             base.OnBattleUnitUseSkill(e);
             MultiCast(e.unit, e.skill, null, null);
         }
 
+        /// <summary>
+        /// Forwards a movement step to the skills.
+        /// </summary>
         public override void OnBattleUnitUseStep(UnitUseStep e)
         {
             base.OnBattleUnitUseStep(e);
             MultiCast(e.unit, null, e.step, null);
         }
 
+        /// <summary>
+        /// Forwards an item use to the skills.
+        /// </summary>
         public override void OnBattleUnitUseProp(UnitUseProp e)
         {
             base.OnBattleUnitUseProp(e);

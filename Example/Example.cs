@@ -9,6 +9,9 @@ namespace ModLib
     /// </summary>
     public class Example
     {
+        /// <summary>
+        /// Sample code showing how to use ModLib helpers (not loaded by the game).
+        /// </summary>
         public Example()
         {
         }
@@ -225,9 +228,15 @@ namespace ModLib
         #endregion
     }
 
+    /// <summary>
+    /// Sample MonoBehaviour injected into Il2Cpp.
+    /// </summary>
     public class ExampleTestMono : MonoBehaviour
     {
         //必须有这行代码，否则无法MonoBehaviour类无法AddComponent
+        /// <summary>
+        /// Il2Cpp constructor.
+        /// </summary>
         public ExampleTestMono(IntPtr ptr) : base(ptr) { }
 
         void Update()

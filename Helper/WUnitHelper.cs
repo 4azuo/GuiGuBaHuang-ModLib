@@ -336,7 +336,8 @@ namespace ModLib.Helper
         /// <returns>Action result</returns>
         public static int AddLuck(this WorldUnitBase wunit, int luckId, int dur = -1)
         {
-            return wunit.CreateAction(new UnitActionLuckAdd(luckId, dur));
+            // no tip during a battle: the tip UI threw NullReferenceException inside CreateAction (luck added, caller aborted)
+            return wunit.CreateAction(new UnitActionLuckAdd(luckId, dur), !GameHelper.IsInBattlle());
         }
 
         /// <summary>
@@ -347,7 +348,7 @@ namespace ModLib.Helper
         /// <returns>Action result</returns>
         public static int DelLuck(this WorldUnitBase wunit, int luckId)
         {
-            return wunit.CreateAction(new UnitActionLuckDel(luckId));
+            return wunit.CreateAction(new UnitActionLuckDel(luckId), !GameHelper.IsInBattlle());
         }
 
         //public static void AddNatureLuck(this WorldUnitBase wunit, int luckId, AddLuckOptions option = AddLuckOptions.Dup)
@@ -424,6 +425,12 @@ namespace ModLib.Helper
         /// <param name="addValue">Value to add</param>
         public static void AddProperty<T>(this WorldUnitBase wunit, UnitPropertyEnum propType, T addValue)
         {
+            // int properties: sum in double and clamp (a float sum near int.MaxValue made Parse<int> overflow and return 0)
+            if (typeof(T) == typeof(int))
+            {
+                SetProperty<int>(wunit, propType, ValueHelper.SafeAddInt(wunit.GetProperty<int>(propType), addValue.Parse<double>()));
+                return;
+            }
             SetProperty<T>(wunit, propType, MathLogicOptions.Plus.Exe(wunit.GetProperty<T>(propType).Parse<float>(), addValue.Parse<float>()).Parse<T>());
         }
 
@@ -751,7 +758,13 @@ namespace ModLib.Helper
             //wunit.AddUnitProp(ModLibConst.MONEY_PROP_ID, addCount);
             //if (wunit.GetUnitMoney() <= 0)
             //    wunit.data.RewardPropMoney(int.MinValue);
-            wunit.data.RewardPropMoney(addCount);
+            // the game resets the money to 0 when the sum passes int.MaxValue: add only up to the int range
+            var cur = (long)wunit.GetUnitMoney();
+            var target = Math.Max(int.MinValue, Math.Min(int.MaxValue, cur + addCount));
+            var add = (int)(target - cur);
+            if (add == 0)
+                return;
+            wunit.data.RewardPropMoney(add);
         }
 
         /// <summary>
@@ -1136,10 +1149,14 @@ namespace ModLib.Helper
         {
             if (!wunit.IsPlayer())
                 return;
-            foreach (var item in GameHelper.GetStorageItems())
+            var items = GameHelper.GetStorageItems();
+            if (items == null)
+                return;
+            // copy first: removing from the list while enumerating it skipped items / threw
+            foreach (var item in items.ToArray())
             {
                 if (item.propsID == propId)
-                    GameHelper.GetStorage().data.propData.allProps.Remove(item);
+                    items.Remove(item);
             }
         }
 

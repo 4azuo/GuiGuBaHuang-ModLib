@@ -4,6 +4,9 @@ using UnhollowerBaseLib;
 
 namespace ModLib.Enum
 {
+    /// <summary>
+    /// Dynamic (DynInt) properties of a unit, i.e. values after all modifiers (attack, defense, max HP, basis...).
+    /// </summary>
     public class UnitDynPropertyEnum : EnumObject
     {
         //public static UnitDynPropertyEnum Example { get; } = new UnitDynPropertyEnum("example", IL2CPP.GetIl2CppField(Il2CppClassPointerStore<PropertyData>.NativeClassPtr, "example"));
@@ -118,6 +121,9 @@ namespace ModLib.Enum
         public string PropName { get; private set; }
         public IntPtr PropAddr { get; private set; }
         public int PropOffset { get; private set; }
+        /// <summary>
+        /// Creates an entry bound to a property name of UnitDynData.
+        /// </summary>
         private UnitDynPropertyEnum(string propName, IntPtr? propAddr = null) : base()
         {
             PropName = propName;
@@ -127,6 +133,9 @@ namespace ModLib.Enum
             PropOffset = (int)IL2CPP.il2cpp_field_get_offset(PropAddr);
         }
 
+        /// <summary>
+        /// Reads the DynInt of a unit.
+        /// </summary>
         public unsafe DynInt Get(WorldUnitDynData propData)
         {
             var num = (long)IL2CPP.Il2CppObjectBaseToPtrNotNull(propData) + PropOffset;
@@ -134,12 +143,18 @@ namespace ModLib.Enum
             return (intPtr != (System.IntPtr)0) ? new DynInt(intPtr) : null;
         }
 
+        /// <summary>
+        /// Writes the base value of the DynInt.
+        /// </summary>
         public unsafe void Set(WorldUnitDynData propData, DynInt newValue)
         {
             var num = IL2CPP.Il2CppObjectBaseToPtrNotNull(propData);
             IL2CPP.il2cpp_gc_wbarrier_set_field(num, *(System.IntPtr*)((long)num + PropOffset), IL2CPP.Il2CppObjectBaseToPtr(newValue));
         }
 
+        /// <summary>
+        /// Returns the matching static UnitPropertyEnum.
+        /// </summary>
         public UnitPropertyEnum GetPropertyEnum()
         {
             return UnitPropertyEnum.GetEnumByVal<UnitPropertyEnum>(this.PropName);

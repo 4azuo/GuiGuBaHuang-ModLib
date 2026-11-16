@@ -166,6 +166,41 @@ namespace ModLib.Helper
         }
 
         /// <summary>
+        /// Rounds a double to an int clamped to the int range (NaN = 0). Use it instead of Parse&lt;int&gt;() for
+        /// computed values that can grow without limit: Parse&lt;int&gt;() returns 0 on overflow.
+        /// </summary>
+        public static int ToIntClamp(this double value)
+        {
+            if (double.IsNaN(value))
+                return 0;
+            return (int)Math.Max(int.MinValue, Math.Min(int.MaxValue, Math.Round(value)));
+        }
+
+        /// <summary>Float version of <see cref="ToIntClamp(double)"/>.</summary>
+        public static int ToIntClamp(this float value)
+        {
+            return ToIntClamp((double)value);
+        }
+
+        /// <summary>a + b clamped to the int range (no wrap to negative).</summary>
+        public static int SafeAddInt(int a, double b)
+        {
+            // an invalid increment (NaN, e.g. 0/0 in a formula) leaves the value unchanged instead of making it 0
+            if (double.IsNaN(b))
+                return a;
+            return ToIntClamp(a + b);
+        }
+
+        /// <summary>a x b clamped to the int range (no wrap to negative).</summary>
+        public static int SafeMulInt(int a, double b)
+        {
+            // an invalid factor (NaN) leaves the value unchanged instead of making it 0
+            if (double.IsNaN(b))
+                return a;
+            return ToIntClamp((double)a * b);
+        }
+
+        /// <summary>
         /// Sums long values without overflow protection.
         /// </summary>
         /// <param name="values">Values to sum</param>
@@ -180,7 +215,18 @@ namespace ModLib.Helper
         /// </summary>
         /// <param name="values">Values to sum</param>
         /// <returns>Sum clamped to float range</returns>
+        [System.Obsolete("Returns a float, not an int: use SafeSumFloat (same result) or SafeSumInt(params long[]).")]
         public static float SafeSumInt(params double[] values)
+        {
+            return SafeSumFloat(values);
+        }
+
+        /// <summary>
+        /// Sums double values with float overflow protection (the clamped sum as float).
+        /// </summary>
+        /// <param name="values">Values to sum</param>
+        /// <returns>Sum clamped to float range</returns>
+        public static float SafeSumFloat(params double[] values)
         {
             return values.Sum().FixValue(float.MinValue, float.MaxValue).Parse<float>();
         }

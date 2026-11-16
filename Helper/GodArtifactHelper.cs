@@ -109,12 +109,23 @@ namespace ModLib.Helper
         }
 
         /// <summary>
+        /// Checks if the given anima weapon is active (any position of the list: several can be active).
+        /// </summary>
+        public static bool HasAnimaWeapon(GameAnimaWeapon weapon)
+        {
+            var list = g.data.dataWorld.data.animaWeapons;
+            for (var i = 0; i < list.Count; i++)
+                if (list[i] == weapon) return true;
+            return false;
+        }
+
+        /// <summary>
         /// Checks if Pisces Pendant is enabled.
         /// </summary>
         /// <returns>True if enabled</returns>
         public static bool IsEnabledPiscesPendant()
         {
-            return g.data.dataWorld.data.animaWeapons[0] == GameAnimaWeapon.PiscesPendant;
+            return HasAnimaWeapon(GameAnimaWeapon.PiscesPendant);
         }
 
         /// <summary>
@@ -123,7 +134,7 @@ namespace ModLib.Helper
         /// <returns>True if enabled</returns>
         public static bool IsEnabledDevilDemon()
         {
-            return g.data.dataWorld.data.animaWeapons[0] == GameAnimaWeapon.DevilDemon;
+            return HasAnimaWeapon(GameAnimaWeapon.DevilDemon);
         }
 
         /// <summary>
@@ -132,7 +143,7 @@ namespace ModLib.Helper
         /// <returns>True if enabled</returns>
         public static bool IsEnabledGodEye()
         {
-            return g.data.dataWorld.data.animaWeapons[0] == GameAnimaWeapon.HootinEye;
+            return HasAnimaWeapon(GameAnimaWeapon.HootinEye);
         }
 
         /// <summary>
@@ -141,7 +152,10 @@ namespace ModLib.Helper
         /// <returns>True if disabled</returns>
         public static bool IsDisabledAnimaWeapon()
         {
-            return g.data.dataWorld.data.animaWeapons[0] == GameAnimaWeapon.None;
+            var list = g.data.dataWorld.data.animaWeapons;
+            for (var i = 0; i < list.Count; i++)
+                if (list[i] != GameAnimaWeapon.None) return false;
+            return true;
         }
 
         /// <summary>

@@ -1,5 +1,8 @@
 ﻿namespace ModLib.Enum
 {
+    /// <summary>
+    /// Inner/outer character traits (Selfless, Evil, Power-hungry...).
+    /// </summary>
     public enum UnitTraitEnum
     {
         Selfless = 1,

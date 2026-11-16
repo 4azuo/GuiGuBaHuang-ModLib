@@ -3,6 +3,9 @@ using ModLib.Helper;
 
 namespace ModLib.Object
 {
+    /// <summary>
+    /// Adds custom items on top of an existing game UI (grid = whole screen). Items are destroyed with the UI.
+    /// </summary>
     public class UICover<T> : UICustomBase where T : UIBase
     {
         public UIType.UITypeBase UITypeBase { get; private set; }
@@ -14,16 +17,25 @@ namespace ModLib.Object
 
         public T UI { get; private set; }
 
+        /// <summary>
+        /// Covers an opened UI instance, or opens/finds the UI of the given type.
+        /// </summary>
         public UICover(UIBase ui) : base()
         {
             Init(ui.uiType);
         }
 
+        /// <summary>
+        /// Covers an opened UI instance, or opens/finds the UI of the given type.
+        /// </summary>
         public UICover(UIType.UITypeBase uiType) : base()
         {
             Init(uiType);
         }
 
+        /// <summary>
+        /// Binds the game UI and registers the cover in UIHelper.UIs.
+        /// </summary>
         protected virtual void Init(UIType.UITypeBase uiType)
         {
             UITypeBase = uiType;
@@ -41,6 +53,9 @@ namespace ModLib.Object
             DebugHelper.WriteLine($"Create a cover for {UI.uiType.uiName}");
         }
 
+        /// <summary>
+        /// Destroys added items and unregisters the cover.
+        /// </summary>
         public override void Dispose()
         {
             DebugHelper.WriteLine($"Dispose the cover of {UI.uiType.uiName}");

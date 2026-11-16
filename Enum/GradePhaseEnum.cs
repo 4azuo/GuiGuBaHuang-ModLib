@@ -2,6 +2,9 @@
 
 namespace ModLib.Enum
 {
+    /// <summary>
+    /// Cultivation phases (realm + early/middle/late) with their roleGrade config ids.
+    /// </summary>
     public class GradePhaseEnum : EnumObject
     {
         public static GradePhaseEnum QiRefining_Early { get; } = new GradePhaseEnum(1, GradeEnum.QiRefining, BottleneckEnum.QiRefining_Middle);
@@ -51,6 +54,9 @@ namespace ModLib.Enum
 
         public GradeEnum Grade { get; private set; }
         public BottleneckEnum Bottleneck { get; private set; }
+        /// <summary>
+        /// Creates a phase entry.
+        /// </summary>
         private GradePhaseEnum(int phaseId, GradeEnum grade, BottleneckEnum bottleneck = BottleneckEnum.None) : base(phaseId.ToString())
         {
             Grade = grade;

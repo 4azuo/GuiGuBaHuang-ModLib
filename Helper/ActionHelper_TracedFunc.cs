@@ -2,8 +2,14 @@
 
 namespace ModLib.Helper
 {
+    /// <summary>
+    /// Wraps delegates so exceptions are logged (partial: Func overloads).
+    /// </summary>
     public partial class ActionHelper
     {
+        /// <summary>
+        /// Wraps a Func so exceptions are logged and default(T) is returned.
+        /// </summary>
         public static Func<T1> TracedFunc<T1>(Func<T1> act, T1 def = default, Func<T1> cat = null, Action fin = null)
         {
             return () =>
@@ -28,6 +34,9 @@ namespace ModLib.Helper
             };
         }
 
+        /// <summary>
+        /// Wraps a Func so exceptions are logged and default(T) is returned.
+        /// </summary>
         public static Func<T1, T2> TracedFunc<T1, T2>(Func<T1, T2> act, T2 def = default, Func<T1, T2> cat = null, Action<T1> fin = null)
         {
             return (v1) =>
@@ -52,6 +61,9 @@ namespace ModLib.Helper
             };
         }
 
+        /// <summary>
+        /// Wraps a Func so exceptions are logged and default(T) is returned.
+        /// </summary>
         public static Func<T1, T2, T3> TracedFunc<T1, T2, T3>(Func<T1, T2, T3> act, T3 def = default, Func<T1, T2, T3> cat = null, Action<T1, T2> fin = null)
         {
             return (v1, v2) =>
@@ -76,6 +88,9 @@ namespace ModLib.Helper
             };
         }
 
+        /// <summary>
+        /// Wraps a Func so exceptions are logged and default(T) is returned.
+        /// </summary>
         public static Func<T1, T2, T3, T4> TracedFunc<T1, T2, T3, T4>(Func<T1, T2, T3, T4> act, T4 def = default, Func<T1, T2, T3, T4> cat = null, Action<T1, T2, T3> fin = null)
         {
             return (v1, v2, v3) =>
