@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-11-16T21:53:38",
+  "updatedAt": "2026-11-16T22:48:05",
   "counts": {
     "OK": 90,
     "NG": 0,
@@ -121,8 +121,8 @@
       "feature": "Pre-test (new character)",
       "title": "Create a new character (trainer on, CrueltyShura, 3 artifacts, intro skipped)",
       "result": "OK",
-      "lastRun": "2026-11-16T21:53:38",
-      "evidence": "test-viewer/index.html#tab=auto&run=20261116-214545",
+      "lastRun": "2026-11-16T22:48:05",
+      "evidence": "test-viewer/index.html#tab=auto&run=20261116-224256",
       "tester": "autotest",
       "note": null,
       "checks": {
@@ -1989,8 +1989,8 @@
       "feature": "FamilyEvent",
       "title": "Family, continue as a descendant, seclusion",
       "result": "OK",
-      "lastRun": "2026-11-16T21:53:38",
-      "evidence": "test-viewer/index.html#tab=auto&run=20261116-214545",
+      "lastRun": "2026-11-16T22:48:05",
+      "evidence": "test-viewer/index.html#tab=auto&run=20261116-224256",
       "tester": "autotest",
       "note": null,
       "checks": {
@@ -2034,7 +2034,11 @@
         "TX-08-38": "OK",
         "TX-08-39": "OK",
         "TX-08-40": "OK",
-        "TX-08-41": "OK"
+        "TX-08-41": "OK",
+        "TX-08-42": "OK",
+        "TX-08-43": "OK",
+        "TX-08-44": "OK",
+        "TX-08-45": "OK"
       }
     },
     {
@@ -2064,8 +2068,8 @@
       "feature": "FamilyFundEvent",
       "title": "Household upkeep, gifts and accounts",
       "result": "OK",
-      "lastRun": "2026-11-16T21:44:15",
-      "evidence": "test-viewer/index.html#tab=auto&run=20261116-214135",
+      "lastRun": "2026-11-16T22:48:05",
+      "evidence": "test-viewer/index.html#tab=auto&run=20261116-224256",
       "tester": "autotest",
       "note": null,
       "checks": {
