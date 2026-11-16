@@ -151,5 +151,6 @@ Có 5 nữ, 3 nam; 3 nhân vật nghiêm túc (1, 5, 7), 3 nhân vật pha hài 
 2. **Chọn NPC đóng vai:** chờ đến khi có NPC phù hợp. Nếu chờ lâu, mỗi năm có xác suất tự tạo NPC, bắt đầu 2 % ở năm thứ nhất và tăng thêm 2 % mỗi năm (năm 10: 20 %), tối đa 50 %.
 3. **Có giới hạn thời gian** cho từng hồi (ghi trong bản lời thoại `07-Storylines-Dialogue-Draft.md`). Quá hạn hoặc nhiệm vụ thất bại thì không đóng tuyến mà rẽ sang **tuyến phụ khi thất bại**.
 4. **Giữ tam giác tình cảm** ở tuyến D.
-5. **Vườn thuốc (tuyến E):** đề xuất dùng vườn làm nơi **bế quan theo ý**: chọn 1–20 năm, trả linh thạch, nhận exp theo năm, bị ngắt như skip. Chờ bạn chốt.
+5. **Vườn thuốc (tuyến E):** là nơi **bế quan theo ý** (1–20 năm, trả linh thạch, nhận exp theo năm, bị ngắt như skip). **Cần thân thiết với Thạch bà bà từ 300 trở lên**; nếu bà đã mất thì xét thân thiết lúc bà mất.
+7. **Tuyến dài hơn** (góp ý bản 1): 5–6 hồi mỗi tuyến, mỗi hồi ít nhất 3 bước. Xem bản 2 ở `07-Storylines-Dialogue-Draft.md`.
 6. **"Trọng thương hôn mê"** vẫn còn treo (khác với cốt truyện).
