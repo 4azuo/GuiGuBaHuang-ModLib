@@ -3,6 +3,9 @@ using System;
 using System.Collections.Generic;
 using ModLib.Helper;
 
+/// <summary>
+/// Price rebalancing formulas and ratios per item type.
+/// </summary>
 public static class PriceHelper
 {
     public static readonly IDictionary<ModItemTypeEnum, float> ITEM_TYPE_RATIO = new Dictionary<ModItemTypeEnum, float>
@@ -42,6 +45,9 @@ public static class PriceHelper
         1.00f, 1.05f, 1.10f, 1.20f, 1.40f, 1.80f,
     };
 
+    /// <summary>
+    /// New price from the old price, grade, level and type ratio.
+    /// </summary>
     public static int UpPrice(int cur, int grade, int level, float customRatio = 1.00f, int min = -1, int max = int.MaxValue)
     {
         grade = Math.Max(Math.Min(grade - 1, 9), 0);

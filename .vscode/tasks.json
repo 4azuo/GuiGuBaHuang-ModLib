@@ -39,6 +39,18 @@
             "default": "workshop"
         },
         {
+            "id": "autotestSave",
+            "type": "promptString",
+            "description": "Save to load for the autotest (name or folder). Empty = the pre-test TP-01 creates a new character (removed after the run)",
+            "default": ""
+        },
+        {
+            "id": "autotestScenario",
+            "type": "promptString",
+            "description": "Scenario ids, comma separated (e.g. TG-36,TB-03)",
+            "default": "TG-01"
+        },
+        {
             "id": "gameRunDuration",
             "type": "promptString",
             "description": "Stop after N seconds (0 = until the game is closed)",
@@ -186,6 +198,67 @@
             "type": "process",
             "command": "powershell.exe",
             "args": ["-NoProfile", "-ExecutionPolicy", "Bypass", "-File", "${workspaceFolder}/scripts/open-folder.ps1", "${input:folder}"],
+            "problemMatcher": [],
+            "presentation": { "reveal": "silent" }
+        },
+
+        // ===== Tests (scripts/, scripts/game/) - results: test-viewer/index.html, newest 10 runs kept =====
+        {
+            "label": "Test: Unit Tests",
+            "detail": "Build + run tests/UnitTests (no game), update the test viewer",
+            "type": "process",
+            "command": "powershell.exe",
+            "args": ["-NoProfile", "-ExecutionPolicy", "Bypass", "-File", "${workspaceFolder}/scripts/run-unittests.ps1"],
+            "problemMatcher": "$msCompile",
+            "group": "test",
+            "presentation": { "panel": "dedicated", "clear": true }
+        },
+        {
+            "label": "Test: Unit Tests (incl. Known Issues)",
+            "detail": "Also run the KnownIssue tests reproducing the open bugs of docs/Known-Issues.md (they fail until fixed)",
+            "type": "process",
+            "command": "powershell.exe",
+            "args": ["-NoProfile", "-ExecutionPolicy", "Bypass", "-File", "${workspaceFolder}/scripts/run-unittests.ps1", "-IncludeKnownIssues"],
+            "problemMatcher": "$msCompile",
+            "group": "test",
+            "presentation": { "panel": "dedicated", "clear": true }
+        },
+        {
+            "label": "Test: Autotest",
+            "detail": "Deploy ModLib + Taoist, start the game, load the save, run all scenarios with screenshots (saves restored after)",
+            "type": "process",
+            "command": "powershell.exe",
+            "args": ["-NoProfile", "-ExecutionPolicy", "Bypass", "-File", "${workspaceFolder}/scripts/game/run-autotest.ps1", "-Deploy", "-Timeout", "2700", "-Save", "${input:autotestSave}"],
+            "problemMatcher": [],
+            "group": "test",
+            "presentation": { "panel": "dedicated", "clear": true }
+        },
+        {
+            "label": "Test: Autotest (selected scenarios)",
+            "detail": "Run only the given scenario ids (no deploy)",
+            "type": "process",
+            "command": "powershell.exe",
+            "args": ["-NoProfile", "-ExecutionPolicy", "Bypass", "-File", "${workspaceFolder}/scripts/game/run-autotest.ps1", "-Save", "${input:autotestSave}", "-Scenario", "${input:autotestScenario}"],
+            "problemMatcher": [],
+            "group": "test",
+            "presentation": { "panel": "dedicated", "clear": true }
+        },
+        {
+            "label": "Test: All (Unit + Autotest)",
+            "detail": "Unit tests, then deploy + autotest in the game, then open the test viewer",
+            "type": "process",
+            "command": "powershell.exe",
+            "args": ["-NoProfile", "-ExecutionPolicy", "Bypass", "-File", "${workspaceFolder}/scripts/run-all-tests.ps1", "-Deploy", "-Save", "${input:autotestSave}"],
+            "problemMatcher": [],
+            "group": { "kind": "test", "isDefault": true },
+            "presentation": { "panel": "dedicated", "clear": true }
+        },
+        {
+            "label": "Test: Open Test Viewer",
+            "detail": "Regenerate test-viewer/data/runs.js and open test-viewer/index.html in the default browser",
+            "type": "process",
+            "command": "powershell.exe",
+            "args": ["-NoProfile", "-ExecutionPolicy", "Bypass", "-File", "${workspaceFolder}/scripts/update-test-viewer.ps1", "-Open"],
             "problemMatcher": [],
             "presentation": { "reveal": "silent" }
         },

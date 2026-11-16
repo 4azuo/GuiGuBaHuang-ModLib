@@ -108,7 +108,8 @@ function Get-SpecFiles($spec) {
     if ([Management.Automation.WildcardPattern]::ContainsWildcardCharacters($spec.Pattern)) {
         return @(Get-ChildItem -Path $spec.Pattern -File -ErrorAction SilentlyContinue)
     }
-    if (Test-Path -LiteralPath $spec.Pattern) { return @(Get-Item -LiteralPath $spec.Pattern) }
+    # the file can disappear between Test-Path and Get-Item (MelonLoader rotates Latest.log at startup): no error then
+    if (Test-Path -LiteralPath $spec.Pattern) { return @(Get-Item -LiteralPath $spec.Pattern -ErrorAction SilentlyContinue) }
     return @()
 }
 
@@ -271,6 +272,14 @@ try {
         elseif ($Direct) { $launchDir = $paths.GamePath }
 
         if ($launchDir) {
+            # Started outside Steam, the game cannot init the Steam API (no Workshop mods, no saves in
+            # Steam\CacheData) unless steam_appid.txt is next to the exe (Steam itself must be running).
+            $appIdFile = Join-Path $paths.GamePath 'steam_appid.txt'
+            if (-not (Test-Path -LiteralPath $appIdFile)) {
+                [IO.File]::WriteAllText($appIdFile, $GameAppId)
+                Write-Info "Created $appIdFile ($GameAppId) so the Steam API works when the exe is started directly"
+            }
+            if (-not (Get-Process -Name steam -ErrorAction SilentlyContinue)) { Write-Warn 'Steam is not running: Workshop mods will not be loaded' }
             $exe = Join-Path $launchDir 'guigubahuang.exe'
             Write-Info "Starting $exe"
             $launched = Start-Process -FilePath $exe -WorkingDirectory $launchDir -PassThru

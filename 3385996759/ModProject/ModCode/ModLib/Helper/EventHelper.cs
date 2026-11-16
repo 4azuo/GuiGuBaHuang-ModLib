@@ -64,6 +64,11 @@ namespace ModLib.Helper
                     {
                         DebugHelper.WriteLine(new Exception($"【Error】{ev}.{methodName}({e}) : {ev.ModId}, {ev.CacheId}, {ev.CacheType}, {ev.WorkOn}", ex));
                     }
+                    else
+                    {
+                        // [ErrorIgnore]: no dialog, but the error is still logged (once)
+                        DebugHelper.WriteIgnoredError($"{ev}.{methodName} : {ev.ModId}, {ev.CacheId}", ex);
+                    }
                 }
             }
         }
@@ -79,14 +84,19 @@ namespace ModLib.Helper
             if (ModMaster.ModObj.ModLibConfigs.DebugMode >= DebugModeEnum.Fine)
                 DebugHelper.WriteLine($"【Start】{ev}.{method.Name}({e}) : {ev.ModId}, {ev.CacheId}, {ev.CacheType}, {ev.WorkOn}");
             var timeStart = DateTime.Now;
-            if (method.GetParameters().Length == 0)
+            var trace = EventTraceHelper.Enter($"{ev.CacheId}.{method.Name}");
+            try
             {
-                method.Invoke(ev, null);
+                if (method.GetParameters().Length == 0)
+                {
+                    method.Invoke(ev, null);
+                }
+                else
+                {
+                    method.Invoke(ev, new object[] { e });
+                }
             }
-            else
-            {
-                method.Invoke(ev, new object[] { e });
-            }
+            finally { EventTraceHelper.Exit(trace); }
             var timeEnd = DateTime.Now;
             var processTime = timeEnd - timeStart;
             if (ModMaster.ModObj.ModLibConfigs.DebugMode >= DebugModeEnum.Finest)
@@ -103,7 +113,9 @@ namespace ModLib.Helper
             if (ModMaster.ModObj.ModLibConfigs.DebugMode >= DebugModeEnum.Fine)
                 DebugHelper.WriteLine($"【Start】{ev}.{method.Method.Name}() : {ev.ModId}, {ev.CacheId}, {ev.CacheType}, {ev.WorkOn}");
             var timeStart = DateTime.Now;
-            method.Invoke();
+            var trace = EventTraceHelper.Enter($"{ev.CacheId}.{method.Method.Name}");
+            try { method.Invoke(); }
+            finally { EventTraceHelper.Exit(trace); }
             var timeEnd = DateTime.Now;
             var processTime = timeEnd - timeStart;
             if (ModMaster.ModObj.ModLibConfigs.DebugMode >= DebugModeEnum.Finest)

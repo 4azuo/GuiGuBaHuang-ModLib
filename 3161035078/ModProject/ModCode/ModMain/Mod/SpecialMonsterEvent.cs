@@ -8,6 +8,9 @@ using System.Collections.Generic;
 
 namespace MOD_nE7UL2.Mod
 {
+    /// <summary>
+    /// Special monsters: random shields, explosion on death and splitting into copies.
+    /// </summary>
     [Cache(ModConst.SPECIAL_MONST_EVENT)]
     public class SpecialMonsterEvent : ModEvent
     {
@@ -26,6 +29,9 @@ namespace MOD_nE7UL2.Mod
         [JsonIgnore]
         public List<UnitCtrlBase> MultipliedUnits { get; } = new List<UnitCtrlBase>();
 
+        /// <summary>
+        /// Common/elite may get a shield; bosses too when BossHasShield.
+        /// </summary>
         public override void OnBattleUnitInto(UnitCtrlBase e)
         {
             base.OnBattleUnitInto(e);
@@ -49,6 +55,9 @@ namespace MOD_nE7UL2.Mod
             }
         }
 
+        /// <summary>
+        /// May explode (area damage) and/or multiply.
+        /// </summary>
         public override void OnBattleUnitDie(UnitDie e)
         {
             base.OnBattleUnitDie(e);
@@ -82,6 +91,9 @@ namespace MOD_nE7UL2.Mod
             }
         }
 
+        /// <summary>
+        /// Clears the multiplied list.
+        /// </summary>
         public override void OnBattleEnd(BattleEnd e)
         {
             base.OnBattleEnd(e);

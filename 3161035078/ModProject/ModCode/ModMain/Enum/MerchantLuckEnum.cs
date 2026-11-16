@@ -4,6 +4,9 @@ using ModLib.Helper;
 
 namespace MOD_nE7UL2.Enum
 {
+    /// <summary>
+    /// Merchant ranks by money owned: better sell value and passive income.
+    /// </summary>
     public class MerchantLuckEnum : EnumObject
     {
         public static MerchantLuckEnum Merchant { get; } = new MerchantLuckEnum(420091000, (wunit) => wunit.GetUnitMoney(), 0.003f, 0.001f);
@@ -22,6 +25,9 @@ namespace MOD_nE7UL2.Enum
             /*10*/ 38880000
         };
 
+        /// <summary>
+        /// Current merchant rank of a unit.
+        /// </summary>
         public int GetCurLevel(WorldUnitBase wunit)
         {
             for (int i = 0; i < MerchantLevels.Length; i++)
@@ -34,6 +40,9 @@ namespace MOD_nE7UL2.Enum
             return 0;
         }
 
+        /// <summary>
+        /// Rank the unit qualifies for now.
+        /// </summary>
         public int GetNxtLevel(WorldUnitBase wunit)
         {
             var propertyValue = CalFunc.Invoke(wunit);
@@ -47,6 +56,9 @@ namespace MOD_nE7UL2.Enum
             return MerchantLevels.Length;
         }
 
+        /// <summary>
+        /// Luck id of a rank.
+        /// </summary>
         public int GetMerchantLuckId(int lvl)
         {
             if (lvl <= 0)
@@ -57,6 +69,9 @@ namespace MOD_nE7UL2.Enum
         public Func<WorldUnitBase, int> CalFunc { get; private set; }
         public float IncSellValueEachLvl { get; private set; }
         public float IncPassiveIncomeEachLvl { get; private set; }
+        /// <summary>
+        /// Creates an entry.
+        /// </summary>
         private MerchantLuckEnum(int id, Func<WorldUnitBase, int> calFunc, float incSellValueEachLvl, float incPassiveIncomeEachLvl) : base(id.ToString())
         {
             CalFunc = calFunc;

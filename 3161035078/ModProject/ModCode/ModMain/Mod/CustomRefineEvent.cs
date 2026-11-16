@@ -16,6 +16,9 @@ using ModLib.Helper;
 
 namespace MOD_nE7UL2.Mod
 {
+    /// <summary>
+    /// Custom refine: spend spirit stones on rings/outfits/artifacts/mounts to gain refine exp, refine levels and random adjustment slots.
+    /// </summary>
     [Cache(ModConst.CUSTOM_REFINE_EVENT)]
     public class CustomRefineEvent : ModEvent
     {
@@ -29,12 +32,18 @@ namespace MOD_nE7UL2.Mod
         public IDictionary<string, long> RefineExp { get; set; } = new Dictionary<string, long>();
         public IDictionary<string, CustomRefine> CustomRefine { get; set; } = new Dictionary<string, CustomRefine>();
 
+        /// <summary>
+        /// Clears cached adjustment values.
+        /// </summary>
         public override void OnMonthly()
         {
             base.OnMonthly();
             CachedValues.Clear();
         }
 
+        /// <summary>
+        /// Rich NPCs in small towns refine their equipment.
+        /// </summary>
         public override void OnMonthlyForEachWUnit(WorldUnitBase wunit)
         {
             base.OnMonthlyForEachWUnit(wunit);
@@ -52,6 +61,9 @@ namespace MOD_nE7UL2.Mod
             }
         }
 
+        /// <summary>
+        /// NPC spends sqrt(money) on an item.
+        /// </summary>
         private void NpcRefine(WorldUnitBase wunit, DataProps.PropsData item)
         {
             if (item == null)
@@ -64,6 +76,9 @@ namespace MOD_nE7UL2.Mod
             MapBuildPropertyEvent.AddBuildProperty(wunit.GetMapBuild<MapBuildBase>(), spend);
         }
 
+        /// <summary>
+        /// Small town forge: replaces the upgrade button with custom refine.
+        /// </summary>
         [EventCondition(IsInGame = HandleEnum.True, IsInBattle = HandleEnum.False)]
         public override void OnOpenUIEnd(OpenUIEnd e)
         {
@@ -84,6 +99,9 @@ namespace MOD_nE7UL2.Mod
             }
         }
 
+        /// <summary>
+        /// Step 1: choose the item.
+        /// </summary>
         private void OpenItemSelector()
         {
             var ui = g.ui.OpenUISafe<UIPropSelect>(UIType.PropSelect);
@@ -122,6 +140,9 @@ namespace MOD_nE7UL2.Mod
             ui.UpdateUI();
         }
 
+        /// <summary>
+        /// Step 2: choose spirit stones; adds exp and shows the new level.
+        /// </summary>
         private void OpenMaterialSelector(DataProps.PropsData refineItem)
         {
             if (refineItem == null)
@@ -164,21 +185,33 @@ namespace MOD_nE7UL2.Mod
             ui.UpdateUI();
         }
 
+        /// <summary>
+        /// Equipped refinable items.
+        /// </summary>
         public static List<DataProps.PropsData> GetEquippedRefinableItems(WorldUnitBase wunit)
         {
             return wunit.GetEquippedProps().Where(x => IsRefinableItem(x)).ToList();
         }
 
+        /// <summary>
+        /// Ring, outfit, artifact or mount.
+        /// </summary>
         public static bool IsRefinableItem(DataProps.PropsData props)
         {
             return props?.propsItem?.IsRing() != null || props?.propsItem?.IsOutfit() != null || props?.propsItem?.IsArtifact() != null || props?.propsItem?.IsMount() != null;
         }
 
+        /// <summary>
+        /// Spirit stones.
+        /// </summary>
         public static bool IsRefinableMaterial(DataProps.PropsData props)
         {
             return props.propsID == ModLibConst.MONEY_PROP_ID;
         }
 
+        /// <summary>
+        /// Adds refine exp to an item.
+        /// </summary>
         public static bool AddRefineExp(string soleId, long exp)
         {
             if (string.IsNullOrEmpty(soleId) || exp == 0)
@@ -189,11 +222,17 @@ namespace MOD_nE7UL2.Mod
             return true;
         }
 
+        /// <summary>
+        /// Adds refine exp to an item.
+        /// </summary>
         public static bool AddRefineExp(DataProps.PropsData props, long exp)
         {
             return AddRefineExp(props?.soleID, exp);
         }
 
+        /// <summary>
+        /// Refine exp of an item.
+        /// </summary>
         public static long GetRefineExp(string soleId)
         {
             if (string.IsNullOrEmpty(soleId))
@@ -203,11 +242,17 @@ namespace MOD_nE7UL2.Mod
             return Instance.RefineExp[soleId];
         }
 
+        /// <summary>
+        /// Refine exp of an item.
+        /// </summary>
         public static long GetRefineExp(DataProps.PropsData props)
         {
             return GetRefineExp(props?.soleID);
         }
 
+        /// <summary>
+        /// Refine level from exp (square-root growth).
+        /// </summary>
         public static int GetRefineLvl(DataProps.PropsData props)
         {
             if (props == null)
@@ -222,6 +267,9 @@ namespace MOD_nE7UL2.Mod
             return Convert.ToInt32(realLevel);
         }
 
+        /// <summary>
+        /// Adjustment slot (created randomly on first access).
+        /// </summary>
         public static CustomRefine GetCustomAdjType(DataProps.PropsData props, int index)
         {
             if (!IsRefinableItem(props))
@@ -235,16 +283,25 @@ namespace MOD_nE7UL2.Mod
             return rs;
         }
 
+        /// <summary>
+        /// Adjustment slots of an item (optionally of a type).
+        /// </summary>
         public static List<CustomRefine> GetCustomAdjTypes(DataProps.PropsData props)
         {
             return Instance.CustomRefine.Keys.Where(x => x.StartsWith(props.soleID)).Select(x => Instance.CustomRefine[x]).ToList();
         }
 
+        /// <summary>
+        /// Adjustment slots of an item (optionally of a type).
+        /// </summary>
         public static List<CustomRefine> GetCustomAdjTypes(DataProps.PropsData props, AdjTypeEnum condition)
         {
             return GetCustomAdjTypes(props).Where(x => x.AdjType == condition).ToList();
         }
 
+        /// <summary>
+        /// Total value of an adjustment type on the unit's equipment.
+        /// </summary>
         public static double GetCustomAdjValue(WorldUnitBase wunit, AdjTypeEnum adjType)
         {
             if (wunit == null || adjType == null)
@@ -265,6 +322,9 @@ namespace MOD_nE7UL2.Mod
             return rs;
         }
 
+        /// <summary>
+        /// Copies slots and exp to another item.
+        /// </summary>
         public static void CopyAdj(DataProps.PropsData fromProp, DataProps.PropsData toProp)
         {
             var i = 1;

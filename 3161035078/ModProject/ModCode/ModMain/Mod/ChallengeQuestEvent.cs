@@ -1,4 +1,4 @@
-using EBattleTypeData;
+﻿using EBattleTypeData;
 using MOD_nE7UL2.Const;
 using ModLib.Attributes;
 using ModLib.Mod;
@@ -10,6 +10,9 @@ using ModLib.Helper;
 
 namespace MOD_nE7UL2.Mod
 {
+    /// <summary>
+    /// Challenge quest chain: defeat distinct opponents of higher grade to earn lucks.
+    /// </summary>
     [Cache(ModConst.CHALLENGE_QUEST_EVENT)]
     public class ChallengeQuestEvent : ModEvent
     {
@@ -18,6 +21,9 @@ namespace MOD_nE7UL2.Mod
         public const int TASK_BASE_ID = 444446000;
         public const int LUCK_BASE_ID = 444445000;
 
+        /// <summary>
+        /// Quest level definition.
+        /// </summary>
         public class ChallengeTaskInfo
         {
             public int TaskLevel { get; set; }
@@ -106,18 +112,61 @@ namespace MOD_nE7UL2.Mod
         public int CurrentWins { get; set; } = 0;
         public List<string> DefeatedOpponents { get; set; } = new List<string>();
 
+        /// <summary>
+        /// The luck of a level completed during a battle: the game cannot add a luck in a battle scene
+        /// (CreateAction(UnitActionLuckAdd) throws NullReferenceException), so it is given back on the map.
+        /// </summary>
+        public bool PendingLuck { get; set; } = false;
+
+        /// <summary>
+        /// Map screen: gives the luck of a level completed during the last battle.
+        /// </summary>
+        public override void OnOpenUIEnd(EGameTypeData.OpenUIEnd e)
+        {
+            base.OnOpenUIEnd(e);
+            if (PendingLuck && e.uiType.uiName == UIType.MapMain.uiName && !GameHelper.IsInBattlle())
+            {
+                // not in the open event itself: right after a battle the map is not ready yet and CreateAction
+                // still threw NullReferenceException (autotest TB-07); kept pending when it fails (next map opening)
+                ModDelayEvent.Instance.DelayEvent(this, () =>
+                {
+                    if (!PendingLuck || GameHelper.IsInBattlle() || !g.ui.HasUI(UIType.MapMain))
+                        return;
+                    try
+                    {
+                        PendingLuck = false;
+                        AddLuck();
+                    }
+                    catch (System.Exception ex)
+                    {
+                        PendingLuck = true;
+                        DebugHelper.WriteIgnoredError("ChallengeQuestEvent.PendingLuck", ex);
+                    }
+                }, 2000);
+            }
+        }
+
+        /// <summary>
+        /// Ensures the current quest exists.
+        /// </summary>
         public override void OnLoadGame()
         {
             base.OnLoadGame();
             AddTask();
         }
 
+        /// <summary>
+        /// Ensures the current quest exists.
+        /// </summary>
         public override void OnMonthly()
         {
             base.OnMonthly();
             AddTask();
         }
 
+        /// <summary>
+        /// Player killed a distinct world unit at least MinLevelDifference grades above: counts a win.
+        /// </summary>
         public override void OnBattleUnitDie(UnitDie e)
         {
             base.OnBattleUnitDie(e);
@@ -172,16 +221,23 @@ namespace MOD_nE7UL2.Mod
             }
         }
 
+        /// <summary>
+        /// Next level and reward.
+        /// </summary>
         private void CompleteTask()
         {
             TaskLevel++;
             CurrentWins = 0;
             DefeatedOpponents.Clear();
             
-            AddLuck();
+            // task first: the quest state stays right even if adding the luck fails
             RemoveTask();
+            AddLuck();
         }
 
+        /// <summary>
+        /// Removes quest tasks.
+        /// </summary>
         private void RemoveTask()
         {
             foreach (var tInfo in TaskInfo)
@@ -192,6 +248,9 @@ namespace MOD_nE7UL2.Mod
             }
         }
 
+        /// <summary>
+        /// Current quest task.
+        /// </summary>
         private TaskBase GetCurrentTask()
         {
             var taskInfo = TaskInfo.FirstOrDefault(x => x.TaskLevel == TaskLevel + 1);
@@ -201,6 +260,9 @@ namespace MOD_nE7UL2.Mod
             return g.world.playerUnit.GetTask(taskInfo.TaskId).ToArray().FirstOrDefault();
         }
 
+        /// <summary>
+        /// Creates the current quest task.
+        /// </summary>
         private TaskBase AddTask()
         {
             var taskInfo = TaskInfo.FirstOrDefault(x => x.TaskLevel == TaskLevel + 1);
@@ -224,6 +286,9 @@ namespace MOD_nE7UL2.Mod
             return existingTask;
         }
 
+        /// <summary>
+        /// Removes reward lucks.
+        /// </summary>
         private void RemoveLuck()
         {
             foreach (var tInfo in TaskInfo)
@@ -232,8 +297,16 @@ namespace MOD_nE7UL2.Mod
             }
         }
 
+        /// <summary>
+        /// Gives the luck of the completed level.
+        /// </summary>
         private void AddLuck()
         {
+            if (GameHelper.IsInBattlle())
+            {
+                PendingLuck = true;
+                return;
+            }
             RemoveLuck();
             if (TaskLevel > 0 && TaskLevel <= TaskInfo.Count)
             {
@@ -242,6 +315,9 @@ namespace MOD_nE7UL2.Mod
         }
 
         // Reset progress khi bắt đầu game mới
+        /// <summary>
+        /// Resets progress.
+        /// </summary>
         public override void OnLoadNewGame()
         {
             base.OnLoadNewGame();

@@ -7,6 +7,9 @@ using static MOD_nE7UL2.Object.ModStts;
 
 namespace MOD_nE7UL2.Object
 {
+    /// <summary>
+    /// One random adjustment slot of a refined item (type, quality level, random multiplier).
+    /// </summary>
     public class CustomRefine
     {
         public static _CustomRefineConfigs Configs => ModMain.ModObj.ModSettings.CustomRefineConfigs;
@@ -47,6 +50,9 @@ namespace MOD_nE7UL2.Object
             AdjTypeEnum.SkillDamage, AdjTypeEnum.MinDamage
         };
 
+        /// <summary>
+        /// Adjustment types allowed for the item kind (ring, outfit, artifact, mount).
+        /// </summary>
         public static AdjTypeEnum[] GetCustomAdjSeeder(DataProps.PropsData props)
         {
             if (props?.propsItem?.IsRing() != null)
@@ -60,6 +66,9 @@ namespace MOD_nE7UL2.Object
             return AdjTypeEnum.GetAllEnums<AdjTypeEnum>();
         }
 
+        /// <summary>
+        /// Random adjustment type allowed at the grade.
+        /// </summary>
         public static AdjTypeEnum RandomCustomAdj(AdjTypeEnum[] seeder, int gradeLvl)
         {
             var t = seeder.Where(x => x.MinGradeLvl <= gradeLvl).ToArray();
@@ -72,10 +81,16 @@ namespace MOD_nE7UL2.Object
         public AdjTypeEnum AdjType { get; set; }
         public AdjLevelEnum AdjLevel { get; set; }
 
+        /// <summary>
+        /// Creates a slot (empty for deserialization, or random for an item and index).
+        /// </summary>
         public CustomRefine()
         {
         }
 
+        /// <summary>
+        /// Creates a slot (empty for deserialization, or random for an item and index).
+        /// </summary>
         public CustomRefine(DataProps.PropsData props, int index)
         {
             Index = index;
@@ -85,6 +100,9 @@ namespace MOD_nE7UL2.Object
             RandomMultiplier = CommonTool.Random(0.60f, 1.40f);
         }
 
+        /// <summary>
+        /// Value of the adjustment: base value x grade/level ratio x effective refine level x quality x multiplier (cached monthly).
+        /// </summary>
         public double GetRefineCustommAdjValue(WorldUnitBase wunit, DataProps.PropsData props, int refineLvl)
         {
             var key = $"{props.soleID}_{Index}";
@@ -99,26 +117,41 @@ namespace MOD_nE7UL2.Object
             return v;
         }
 
+        /// <summary>
+        /// Effective refine level for this slot (each slot needs 50 more levels).
+        /// </summary>
         private int _DecreaseLevel(int refineLvl)
         {
             return refineLvl - (Index * 50);
         }
 
+        /// <summary>
+        /// True when the refine level unlocks this slot.
+        /// </summary>
         public bool IsEnable(int refineLvl)
         {
             return refineLvl >= Index * 100;
         }
 
+        /// <summary>
+        /// Display color of the quality.
+        /// </summary>
         public Color GetColor(int refineLvl)
         {
             return IsEnable(refineLvl) ? AdjLevel.Color : AdjLevelEnum.None.Color;
         }
 
+        /// <summary>
+        /// Display text of the adjustment.
+        /// </summary>
         public string GetText(WorldUnitBase wunit, DataProps.PropsData props, int refineLvl)
         {
             return $"+{GameTool.LS(AdjType.Label)}: {GetRefineCustommAdjValue(wunit, props, refineLvl).ToString(AdjType.ValueFormat)} {(IsEnable(refineLvl) ? string.Empty : $"(Req {Index * 100})")}";
         }
 
+        /// <summary>
+        /// Copy of the slot.
+        /// </summary>
         public CustomRefine Clone()
         {
             var clone = new CustomRefine

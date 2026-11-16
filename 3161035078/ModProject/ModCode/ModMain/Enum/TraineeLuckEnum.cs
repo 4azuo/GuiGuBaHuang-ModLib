@@ -4,6 +4,9 @@ using ModLib.Helper;
 
 namespace MOD_nE7UL2.Enum
 {
+    /// <summary>
+    /// Martial/magic trainee ranks given as lucks by basis values.
+    /// </summary>
     public class TraineeLuckEnum : EnumObject
     {
         public static TraineeLuckEnum Martial { get; } = new TraineeLuckEnum(420071000, (wunit) => wunit.GetBasisPhysicSum());
@@ -11,6 +14,9 @@ namespace MOD_nE7UL2.Enum
 
         public static int[] TraineeLevels { get; } = new int[] { 200, 400, 800, 1600, 3200, 6400, 12800, 25600, 51200, 102400 };
 
+        /// <summary>
+        /// Current rank of a unit.
+        /// </summary>
         public int GetTraineeLevel(WorldUnitBase wunit)
         {
             var propertyValue = CalFunc.Invoke(wunit);
@@ -24,6 +30,9 @@ namespace MOD_nE7UL2.Enum
             return TraineeLevels.Length;
         }
 
+        /// <summary>
+        /// Luck id of a rank.
+        /// </summary>
         public int GetTraineeLuckId(int lvl)
         {
             if (lvl <= 0)
@@ -32,6 +41,9 @@ namespace MOD_nE7UL2.Enum
         }
 
         public Func<WorldUnitBase, int> CalFunc { get; private set; }
+        /// <summary>
+        /// Creates an entry.
+        /// </summary>
         private TraineeLuckEnum(int id, Func<WorldUnitBase, int> calFunc) : base(id.ToString())
         {
             CalFunc = calFunc;

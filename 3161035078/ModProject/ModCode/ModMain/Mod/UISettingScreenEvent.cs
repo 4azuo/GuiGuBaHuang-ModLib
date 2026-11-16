@@ -8,6 +8,9 @@ using ModLib.Helper;
 
 namespace MOD_nE7UL2.Mod
 {
+    /// <summary>
+    /// Taoist settings in the game settings UI: hide damage multiplier, hide exception logs.
+    /// </summary>
     [Cache(ModConst.UI_SETTING_SCREEN_EVENT)]
     public class UISettingScreenEvent : ModEvent
     {
@@ -16,12 +19,18 @@ namespace MOD_nE7UL2.Mod
         public bool HideDamageMultiplier { get; set; } = false;
         public bool HideExceptionLogs { get; set; } = false;
 
+        /// <summary>
+        /// Applies the exception log setting.
+        /// </summary>
         public override void OnLoadGame()
         {
             base.OnLoadGame();
             DebugHelper.IsDebugMode = !HideExceptionLogs;
         }
 
+        /// <summary>
+        /// GameSetting: adds the Taoist settings button.
+        /// </summary>
         public override void OnOpenUIEnd(OpenUIEnd e)
         {
             base.OnOpenUIEnd(e);

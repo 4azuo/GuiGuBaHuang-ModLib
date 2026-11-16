@@ -5,6 +5,9 @@ using ModLib.Helper;
 
 namespace MOD_nE7UL2.Object
 {
+    /// <summary>
+    /// An item offered in a deal.
+    /// </summary>
     public class NegotiatingItem
     {
         public NegotiatingDeal ForDeal { get; set; }
@@ -41,16 +44,25 @@ namespace MOD_nE7UL2.Object
             }
         }
 
+        /// <summary>
+        /// The item in the buyer's bag.
+        /// </summary>
         public List<DataProps.PropsData> GetProps()
         {
             return IsPartialItem ? NegotiatingSameProps : new List<DataProps.PropsData> { NegotiatingProp };
         }
 
+        /// <summary>
+        /// Item base info.
+        /// </summary>
         public UIIconTool.PropsInfoDataBase GetPropInfo()
         {
             return GetProps().FirstOrDefault()?.propsInfoBase;
         }
 
+        /// <summary>
+        /// Creates an offered item.
+        /// </summary>
         public NegotiatingItem(NegotiatingDeal d)
         {
             ForDeal = d;

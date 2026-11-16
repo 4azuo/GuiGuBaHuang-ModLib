@@ -3,6 +3,9 @@ using System;
 
 namespace MOD_nE7UL2.Object
 {
+    /// <summary>
+    /// UIItemWork of an S&amp;M config component: component getter, score calculator and enable condition.
+    /// </summary>
     public class SMItemWork : UIItemWork
     {
         public Func<UIItemBase> Comp { get; set; }

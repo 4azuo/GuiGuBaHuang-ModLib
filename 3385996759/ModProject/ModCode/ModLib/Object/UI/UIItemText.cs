@@ -5,17 +5,26 @@ using ModLib.Helper;
 
 namespace ModLib.Object
 {
+    /// <summary>
+    /// Custom text with optional format arguments from the formatter.
+    /// </summary>
     public class UIItemText : UIItem<Text>, ITextFormat
     {
         public override Text InnerText => this.Item;
         public string FormatStr { get; set; }
         public Color Color { get; set; }
 
+        /// <summary>
+        /// Creates the item and registers it in the owner UI (and the current page when paging is used).
+        /// </summary>
         public UIItemText(UICustomBase ui, float x, float y, string format, Text copySource = null) : base(ui, (copySource ?? UISampleHelper.TextSample).Copy(ui.UIBase))
         {
             Init(x, y, format);
         }
 
+        /// <summary>
+        /// Creates the underlying Unity component (copied from a sample or copySource) and places it at the given position.
+        /// </summary>
         protected virtual void Init(float x, float y, string format)
         {
             Pos(x, y);
@@ -24,6 +33,9 @@ namespace ModLib.Object
             Format();
         }
 
+        /// <summary>
+        /// Returns the current value of the component.
+        /// </summary>
         public override object Get()
         {
             if (string.IsNullOrEmpty(FormatStr))
@@ -33,22 +45,34 @@ namespace ModLib.Object
             return string.Format(FormatStr, ItemWork?.Formatter?.Invoke(this));
         }
 
+        /// <summary>
+        /// Text format string.
+        /// </summary>
         public string GetFormat()
         {
             return FormatStr;
         }
 
+        /// <summary>
+        /// Sets the value of the component.
+        /// </summary>
         public override void Set(object input)
         {
             FormatStr = input?.ToString();
             Item.Set(Get()?.ToString());
         }
 
+        /// <summary>
+        /// Sets the text format string.
+        /// </summary>
         public void SetFormat(string format)
         {
             Set(format);
         }
 
+        /// <summary>
+        /// Refreshes the component from its UIItemData/UIItemWork (formatter, enable/visible conditions).
+        /// </summary>
         public override void Update()
         {
             base.Update();
@@ -58,12 +82,18 @@ namespace ModLib.Object
             Item.color = Enable ? Color : Color.gray;
         }
 
+        /// <summary>
+        /// Sets text alignment and wrap modes (fluent).
+        /// </summary>
         public UIItemText Align(TextAnchor tanchor = TextAnchor.MiddleLeft, VerticalWrapMode vMode = VerticalWrapMode.Overflow, HorizontalWrapMode hMode = HorizontalWrapMode.Overflow)
         {
             Item.Align(tanchor, vMode, hMode);
             return this;
         }
 
+        /// <summary>
+        /// Sets text color, font size and style (fluent).
+        /// </summary>
         public UIItemText Format(Color? color = null, int fsize = 15, FontStyle fstype = FontStyle.Normal)
         {
             Item.Format(color, fsize, fstype);

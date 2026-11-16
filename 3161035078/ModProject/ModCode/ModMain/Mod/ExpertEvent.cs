@@ -10,6 +10,9 @@ using static MOD_nE7UL2.Object.ModStts;
 
 namespace MOD_nE7UL2.Mod
 {
+    /// <summary>
+    /// Expertise: using skills, steps, abilities and artifacts grants expertise exp per item; levels add bonuses.
+    /// </summary>
     [Cache(ModConst.EXPERT_EVENT)]
     public class ExpertEvent : ModEvent
     {
@@ -18,6 +21,9 @@ namespace MOD_nE7UL2.Mod
 
         public IDictionary<string, int> ExpertExps { get; set; } = new Dictionary<string, int>();
 
+        /// <summary>
+        /// Monthly exp for equipped martial arts/abilities and NPC artifacts.
+        /// </summary>
         public override void OnMonthlyForEachWUnit(WorldUnitBase wunit)
         {
             base.OnMonthlyForEachWUnit(wunit);
@@ -52,6 +58,9 @@ namespace MOD_nE7UL2.Mod
             }
         }
 
+        /// <summary>
+        /// Exp for artifacts and left skill on hit.
+        /// </summary>
         public override void OnBattleUnitHit(UnitHit e)
         {
             base.OnBattleUnitHit(e);
@@ -76,6 +85,9 @@ namespace MOD_nE7UL2.Mod
             }
         }
 
+        /// <summary>
+        /// Exp for right skill/ultimate.
+        /// </summary>
         public override void OnBattleUnitUseSkill(UnitUseSkill e)
         {
             base.OnBattleUnitUseSkill(e);
@@ -94,6 +106,9 @@ namespace MOD_nE7UL2.Mod
 
         private int oldX;
         private int oldY;
+        /// <summary>
+        /// Exp for the step when the player moves on the map.
+        /// </summary>
         [ErrorIgnore]
         [EventCondition(IsInGame = HandleEnum.True, IsInBattle = HandleEnum.False)]
         public override void OnTimeUpdate200ms()
@@ -114,6 +129,9 @@ namespace MOD_nE7UL2.Mod
             }
         }
 
+        /// <summary>
+        /// Exp dictionary.
+        /// </summary>
         public static IDictionary<string, int> GetExpertExps()
         {
             if (Instance.ExpertExps == null)
@@ -121,15 +139,23 @@ namespace MOD_nE7UL2.Mod
             return Instance.ExpertExps;
         }
 
+        /// <summary>
+        /// Adds exp (ratio x grade x talent x random).
+        /// </summary>
         public static void AddExpertExp(WorldUnitBase wunit, string soleId, float exp)
         {
             var e = GetExpertExps();
             if (!e.ContainsKey(soleId))
                 e.Add(soleId, 0);
             var insight = wunit.GetDynProperty(UnitDynPropertyEnum.Talent).value;
-            e[soleId] += (exp * 100.0f * wunit.GetGradeLvl() * CommonTool.Random(1.0f, 2.0f) * (insight / 100.0f)).Parse<int>();
+            // long sum capped at int.MaxValue: the exp of a skill used for a very long game must not wrap to negative
+            var add = (double)exp * 100.0d * wunit.GetGradeLvl() * CommonTool.Random(1.0f, 2.0f) * (insight / 100.0d);
+            e[soleId] = (int)Math.Max(0, Math.Min(int.MaxValue, e[soleId] + (long)Math.Max(0, Math.Min(int.MaxValue, add))));
         }
 
+        /// <summary>
+        /// Exp of an item.
+        /// </summary>
         public static int GetExpertExp(string soleId)
         {
             var e = GetExpertExps();
@@ -138,20 +164,28 @@ namespace MOD_nE7UL2.Mod
             return 0;
         }
 
+        /// <summary>
+        /// Exp needed for a level (doubles each level).
+        /// </summary>
         public static int GetExpertNeedExp(int expertLvl, int propsGrade, int propsLevel)
         {
             if (expertLvl <= 0)
                 return 0;
             var r = 1000.0d * propsGrade * (1.0d + 0.2d * propsLevel);
-            return Convert.ToInt32(Math.Pow(2, expertLvl - 1) * r);
+            // capped at int.MaxValue (Convert.ToInt32 threw OverflowException for high levels)
+            return (int)Math.Min(int.MaxValue, Math.Pow(2, expertLvl - 1) * r);
         }
 
+        /// <summary>
+        /// Level from exp.
+        /// </summary>
         public static int GetExpertLvl(string soleId, int propsGrade, int propsLevel)
         {
             var exp = GetExpertExp(soleId);
             for (int i = 1; true; i++)
             {
-                if (exp < GetExpertNeedExp(i, propsGrade, propsLevel))
+                var need = GetExpertNeedExp(i, propsGrade, propsLevel);
+                if (exp < need || need == int.MaxValue)
                     return i - 1;
             }
         }

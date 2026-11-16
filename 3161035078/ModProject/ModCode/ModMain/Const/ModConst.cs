@@ -1,5 +1,8 @@
 ﻿namespace MOD_nE7UL2.Const
 {
+    /// <summary>
+    /// Taoist constants: version, required ModLib version, event cache ids, luck effect keys and limits.
+    /// </summary>
     public static class ModConst
     {
         public const string TAOIST_VERSION = "5.5.39";
@@ -46,6 +49,7 @@
         public const string UI_SETTING_SCREEN_EVENT = "UISettingScreenEvent";
         public const string UI_CREATE_PLAYER_EVENT = "UICreatePlayerEvent";
         public const string UI_DIFFICULTY_EVENT = "UIDifficultyEvent";
+        public const string NEW_GAME_EVENT = "NewGameEvent";
         public const string UPGRADE_NATURALLY_EVENT = "UpgradeNaturallyEvent";
         public const string TRAINER_EVENT = "TrainerEvent";
         public const string SPECIAL_MONST_EVENT = "SpecialMonsterEvent";
@@ -53,6 +57,7 @@
         public const string USE_SPIRIT_STONE_CUL_EVENT = "UseSpiritStoneCulEvent";
         public const string CUSTOM_SKILL_EVENT = "CustomSkillEvent";
         public const string REPAIR_SHINKI_EVENT = "RepairShinkiEvent";
+        public const string AUTOTEST_EVENT = "AutoTestEvent";
 
         //Others
         public const string UTYPE_LUCK_EFX_FREE_STORAGE = "FreeStorage";

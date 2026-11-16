@@ -17,6 +17,14 @@ namespace ModLib.Helper
         /// </summary>
         public static void SaveGame()
         {
+            // a second g.data.SaveData while one is writing fails (FileNotFoundException on the CacheDataTemp file)
+            // and hangs the game: wait for the running save, then save again
+            if (DataMgr.isSaveData)
+            {
+                DebugHelper.WriteLine("SaveGame: a save is running, retry in 1 s");
+                ModLib.Mod.ModDelayEvent.Instance.DelayEvent(ModLib.Mod.ModDelayEvent.Instance, SaveGame, 1000);
+                return;
+            }
             EventHelper.CallGameEvent<SaveData>(EGameType.SaveData);
             g.data.SaveData(ActionHelper.TracedIl2Action<bool>((b) => { }));
         }

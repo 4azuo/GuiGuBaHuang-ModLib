@@ -13,9 +13,16 @@ using ModLib.Helper;
 
 namespace MOD_nE7UL2.Mod
 {
+    /// <summary>
+    /// Town wars and monster waves on towns/sects. The player can help defend/attack, escape or ignore;
+    /// ignored battles are simulated by power comparison.
+    /// </summary>
     [Cache(ModConst.MAP_BUILD_BATTLE_EVENT)]
     public class MapBuildBattleEvent : ModEvent
     {
+        /// <summary>
+        /// Battle kind.
+        /// </summary>
         public enum BattleTypeEnum
         {
             None,
@@ -24,6 +31,9 @@ namespace MOD_nE7UL2.Mod
             SectVsMonster,
         }
 
+        /// <summary>
+        /// Team side.
+        /// </summary>
         public enum TeamSideEnum
         {
             Unmanaged,
@@ -31,6 +41,9 @@ namespace MOD_nE7UL2.Mod
             TeamB,
         }
 
+        /// <summary>
+        /// Team info keys.
+        /// </summary>
         public enum TeamInfoEnum
         {
             UnitCountMax,
@@ -93,6 +106,9 @@ namespace MOD_nE7UL2.Mod
 
         public Dictionary<string, int> LastYearEventHappen { get; set; } = new Dictionary<string, int>();
 
+        /// <summary>
+        /// Random monster waves per town/sect, and wars between hostile town masters.
+        /// </summary>
         public override void OnMonthly()
         {
             base.OnMonthly();
@@ -133,7 +149,7 @@ namespace MOD_nE7UL2.Mod
                 {
                     var master = MapBuildPropertyEvent.GetTownMaster(town);
                     if (master == null)
-                        return;
+                        continue; // this town only (BUG-04)
                     MapBuildTown townAtk = null;
                     var hasAttacker = MapBuildPropertyEvent.Instance.TownMasters.Any(x =>
                     {
@@ -168,6 +184,9 @@ namespace MOD_nE7UL2.Mod
             }
         }
 
+        /// <summary>
+        /// Relations penalty.
+        /// </summary>
         private static void Hated(MapBuildSchool school)
         {
             if (school == null)
@@ -184,6 +203,9 @@ namespace MOD_nE7UL2.Mod
                 });
         }
 
+        /// <summary>
+        /// Relations bonus.
+        /// </summary>
         private static void Loved(MapBuildSchool school)
         {
             if (school == null)
@@ -203,6 +225,9 @@ namespace MOD_nE7UL2.Mod
             }
         }
 
+        /// <summary>
+        /// Relations penalty.
+        /// </summary>
         private static void Hated(MapBuildTown town)
         {
             if (town == null)
@@ -214,6 +239,9 @@ namespace MOD_nE7UL2.Mod
             });
         }
 
+        /// <summary>
+        /// Relations bonus.
+        /// </summary>
         private static void Loved(MapBuildTown town)
         {
             if (town == null)
@@ -225,6 +253,9 @@ namespace MOD_nE7UL2.Mod
             });
         }
 
+        /// <summary>
+        /// Starts a war (drama for the player).
+        /// </summary>
         public static void TownWar(MapBuildTown townA_def, MapBuildTown townB_atk, bool proactive)
         {
             try
@@ -335,6 +366,9 @@ namespace MOD_nE7UL2.Mod
             }
         }
 
+        /// <summary>
+        /// Player joins a side.
+        /// </summary>
         public static void JoinTownWar(MapBuildTown townA_def, MapBuildTown townB_atk, TeamSideEnum side)
         {
             if (townA_def == null || townB_atk == null)
@@ -355,6 +389,9 @@ namespace MOD_nE7UL2.Mod
             g.world.battle.IntoBattle(new DataMap.MonstData() { id = TOWN_WAR_DUNGEON_BASE_ID, level = townA_def.gridData.areaBaseID * 5 });
         }
 
+        /// <summary>
+        /// Simulates the war result.
+        /// </summary>
         public static void SkipTownWar(MapBuildTown townA_def, MapBuildTown townB_atk)
         {
             if (townA_def == null || townB_atk == null)
@@ -459,6 +496,9 @@ namespace MOD_nE7UL2.Mod
             }
         }
 
+        /// <summary>
+        /// Starts a monster wave.
+        /// </summary>
         public static void MonstWave(MapBuildTown town)
         {
             try
@@ -542,6 +582,9 @@ namespace MOD_nE7UL2.Mod
             }
         }
 
+        /// <summary>
+        /// Starts a monster wave.
+        /// </summary>
         public static void MonstWave(MapBuildSchool school)
         {
             try
@@ -626,6 +669,9 @@ namespace MOD_nE7UL2.Mod
             }
         }
 
+        /// <summary>
+        /// Player joins the defense.
+        /// </summary>
         public static void JoinMonstWave(MapBuildBase teamAbuildBase, int dungeonBaseId)
         {
             if (teamAbuildBase == null)
@@ -646,6 +692,9 @@ namespace MOD_nE7UL2.Mod
             g.world.battle.IntoBattle(new DataMap.MonstData() { id = dungeonBaseId, level = teamAbuildBase.gridData.areaBaseID * 5 });
         }
 
+        /// <summary>
+        /// Simulates the wave result.
+        /// </summary>
         public static void SkipMonstWave(MapBuildBase teamAbuildBase)
         {
             if (teamAbuildBase == null)
@@ -702,6 +751,9 @@ namespace MOD_nE7UL2.Mod
             }
         }
 
+        /// <summary>
+        /// Prepares team counts.
+        /// </summary>
         public static void CalTownWarInfo(MapBuildTown townA_def, MapBuildTown townB_atk)
         {
             if (townA_def == null || townB_atk == null)
@@ -723,6 +775,9 @@ namespace MOD_nE7UL2.Mod
             DebugHelper.WriteLine($"{TeamAUnitCount} vs {TeamBUnitCount}");
         }
 
+        /// <summary>
+        /// Prepares team counts.
+        /// </summary>
         public static void CalMonstWaveInfo(MapBuildBase baseA_def)
         {
             var gameLvl = GameHelper.GetGameLevel().Parse<int>();
@@ -741,6 +796,9 @@ namespace MOD_nE7UL2.Mod
             DebugHelper.WriteLine($"{TeamAUnitCount} vs {TeamBUnitCount}");
         }
 
+        /// <summary>
+        /// Resets battle state.
+        /// </summary>
         public static void InitBattle()
         {
             InitBattleFlg = false;
@@ -752,6 +810,9 @@ namespace MOD_nE7UL2.Mod
             WinTeamSide = TeamSideEnum.Unmanaged;
         }
 
+        /// <summary>
+        /// Spawns units of both sides.
+        /// </summary>
         public override void OnBattleStart(ETypeData e)
         {
             base.OnBattleStart(e);
@@ -797,6 +858,9 @@ namespace MOD_nE7UL2.Mod
             }
         }
 
+        /// <summary>
+        /// Tracks hits.
+        /// </summary>
         public override void OnBattleUnitHit(UnitHit e)
         {
             base.OnBattleUnitHit(e);
@@ -848,6 +912,9 @@ namespace MOD_nE7UL2.Mod
             }
         }
 
+        /// <summary>
+        /// Updates counts, revives/replaces units.
+        /// </summary>
         public override void OnBattleUnitDie(UnitDie e)
         {
             base.OnBattleUnitDie(e);
@@ -872,6 +939,9 @@ namespace MOD_nE7UL2.Mod
             }
         }
 
+        /// <summary>
+        /// Applies the result (budgets, buildings, reputation).
+        /// </summary>
         public override void OnBattleEndHandler(BattleEndHandler e)
         {
             base.OnBattleEndHandler(e);
@@ -974,26 +1044,41 @@ namespace MOD_nE7UL2.Mod
             }
         }
 
+        /// <summary>
+        /// True in a town war.
+        /// </summary>
         public static bool IsBattleTownWar()
         {
             return g.world.battle?.data?.dungeonBaseItem?.id == TOWN_WAR_DUNGEON_BASE_ID;
         }
 
+        /// <summary>
+        /// True in a monster wave.
+        /// </summary>
         public static bool IsBattleMonstWave()
         {
             return IsBattleMonstWaveOnTown() || IsBattleMonstWaveOnSect();
         }
 
+        /// <summary>
+        /// Wave on a town.
+        /// </summary>
         public static bool IsBattleMonstWaveOnTown()
         {
             return g.world.battle?.data?.dungeonBaseItem?.id == TOWN_MONST_WAVE_DUNGEON_BASE_ID;
         }
 
+        /// <summary>
+        /// Wave on a sect.
+        /// </summary>
         public static bool IsBattleMonstWaveOnSect()
         {
             return g.world.battle?.data?.dungeonBaseItem?.id == SECT_MONST_WAVE_DUNGEON_BASE_ID;
         }
 
+        /// <summary>
+        /// Side of a unit.
+        /// </summary>
         public static TeamSideEnum GetTeamSide(UnitCtrlBase cunit)
         {
             if (cunit.IsPlayer())
@@ -1008,18 +1093,27 @@ namespace MOD_nE7UL2.Mod
                 return TeamSideEnum.Unmanaged;
         }
 
+        /// <summary>
+        /// Spawn of side A.
+        /// </summary>
         public static Vector2 GetTeamAPosi()
         {
             return new Vector2(ModBattleEvent.SceneBattle.battleMap.roomCenterPosi.x - 16,
                 CommonTool.Random(ModBattleEvent.SceneBattle.battleMap.roomCenterPosi.y - 16, ModBattleEvent.SceneBattle.battleMap.roomCenterPosi.y + 16));
         }
 
+        /// <summary>
+        /// Spawn of side B.
+        /// </summary>
         public static Vector2 GetTeamBPosi()
         {
             return new Vector2(ModBattleEvent.SceneBattle.battleMap.roomCenterPosi.x + 16,
                 CommonTool.Random(ModBattleEvent.SceneBattle.battleMap.roomCenterPosi.y - 16, ModBattleEvent.SceneBattle.battleMap.roomCenterPosi.y + 16));
         }
 
+        /// <summary>
+        /// Places a unit.
+        /// </summary>
         public static void InitUnitPosi(UnitCtrlBase cunit)
         {
             //set player posi
@@ -1030,6 +1124,9 @@ namespace MOD_nE7UL2.Mod
                 cunit.move.SetPosition(GetTeamBPosi());
         }
 
+        /// <summary>
+        /// Sets unit status.
+        /// </summary>
         public static void InitUnitStatus(UnitCtrlBase cunit)
         {
             cunit.data.hp = cunit.data.maxHP.value;
@@ -1037,6 +1134,9 @@ namespace MOD_nE7UL2.Mod
             cunit.data.sp = cunit.data.maxHP.value;
         }
 
+        /// <summary>
+        /// Places and sets a unit.
+        /// </summary>
         public static void InitUnit(UnitCtrlBase cunit)
         {
             cunit.AddState(UnitStateType.NotDie, float.MaxValue);
@@ -1044,12 +1144,18 @@ namespace MOD_nE7UL2.Mod
             InitUnitStatus(cunit);
         }
 
+        /// <summary>
+        /// Revives a unit.
+        /// </summary>
         public static void Revive(UnitCtrlBase cunit)
         {
             InitUnitPosi(cunit);
             InitUnitStatus(cunit);
         }
 
+        /// <summary>
+        /// Pauses a unit.
+        /// </summary>
         public static void Pause(UnitCtrlBase cunit)
         {
             cunit.AddState(UnitStateType.NotDie, float.MaxValue);
@@ -1069,6 +1175,9 @@ namespace MOD_nE7UL2.Mod
             cunit.AddState(UnitStateType.NotUserUltimate, float.MaxValue);
         }
 
+        /// <summary>
+        /// Kills a unit.
+        /// </summary>
         public static void Die(UnitCtrlBase cunit)
         {
             DieCUnits.Add(cunit.data.createUnitSoleID);
@@ -1076,6 +1185,9 @@ namespace MOD_nE7UL2.Mod
             cunit.unitMono.gameObject.SetActive(false);
         }
 
+        /// <summary>
+        /// Ends the battle immediately.
+        /// </summary>
         public static void BattleEndForce(TeamSideEnum loseSide, TeamSideEnum winSide)
         {
             //pause all units
@@ -1088,6 +1200,9 @@ namespace MOD_nE7UL2.Mod
             ModBattleEvent.SceneBattle.battleEnd.BattleEnd(PlayerSide == WinTeamSide);
         }
 
+        /// <summary>
+        /// Ends the battle.
+        /// </summary>
         public static void BattleEnd(TeamSideEnum loseSide, TeamSideEnum winSide)
         {
             var loseSideUnits = GetTeamInfo<List<UnitCtrlBase>>(loseSide, TeamInfoEnum.CUnit);
@@ -1104,11 +1219,17 @@ namespace MOD_nE7UL2.Mod
             }
         }
 
+        /// <summary>
+        /// True when the player side won.
+        /// </summary>
         public static bool IsPlayerTeamWin()
         {
             return PlayerSide == WinTeamSide;
         }
 
+        /// <summary>
+        /// Reads team info.
+        /// </summary>
         public static T GetTeamInfo<T>(TeamSideEnum side, TeamInfoEnum info)
         {
             if (side == TeamSideEnum.Unmanaged)
@@ -1116,6 +1237,9 @@ namespace MOD_nE7UL2.Mod
             return TeamInfo[$"{side}_{info}"].Parse<T>();
         }
 
+        /// <summary>
+        /// Writes team info.
+        /// </summary>
         public static void SetTeamInfo(TeamSideEnum side, TeamInfoEnum info, object value)
         {
             if (side == TeamSideEnum.Unmanaged)
@@ -1123,17 +1247,26 @@ namespace MOD_nE7UL2.Mod
             TeamInfo[$"{side}_{info}"] = value;
         }
 
+        /// <summary>
+        /// Adds units to a side.
+        /// </summary>
         public static void AddTeamCount(TeamSideEnum side, int count)
         {
             SetTeamInfo(side, TeamInfoEnum.UnitCount, GetTeamInfo<int>(side, TeamInfoEnum.UnitCount) + count);
         }
 
+        /// <summary>
+        /// Initializes a side.
+        /// </summary>
         public static void InitTeamInfo(TeamSideEnum side, int unitCount)
         {
             SetTeamInfo(side, TeamInfoEnum.UnitCountMax, unitCount);
             SetTeamInfo(side, TeamInfoEnum.UnitCount, unitCount);
         }
 
+        /// <summary>
+        /// Spawns reinforcements and checks the end condition.
+        /// </summary>
         [ErrorIgnore]
         [EventCondition(IsInGame = HandleEnum.Ignore, IsInBattle = HandleEnum.True)]
         public override void OnTimeUpdate1000ms()

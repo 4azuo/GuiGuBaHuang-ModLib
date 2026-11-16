@@ -4,6 +4,9 @@ using System.Linq;
 
 namespace MOD_nE7UL2.Object
 {
+    /// <summary>
+    /// A buyer's offer on a MarketItem (spirit stones + offered items).
+    /// </summary>
     public class NegotiatingDeal
     {
         public string BuyerId { get; set; }
@@ -32,6 +35,9 @@ namespace MOD_nE7UL2.Object
             }
         }
 
+        /// <summary>
+        /// Creates an offer.
+        /// </summary>
         public NegotiatingDeal(string buyerId, MarketItem i)
         {
             BuyerId = buyerId;

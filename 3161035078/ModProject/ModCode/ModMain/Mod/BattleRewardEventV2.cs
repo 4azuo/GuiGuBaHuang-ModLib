@@ -1,4 +1,5 @@
-﻿using EBattleTypeData;
+﻿using EGameTypeData;
+using EBattleTypeData;
 using MOD_nE7UL2.Const;
 using ModLib.Enum;
 using ModLib.Mod;
@@ -13,6 +14,9 @@ using ModLib.Helper;
 
 namespace MOD_nE7UL2.Mod
 {
+    /// <summary>
+    /// Battle growth: properties grow when damage thresholds are reached; exp from damage; penalties on defeat.
+    /// </summary>
     [Cache(ModConst.BATTLE_REWARD_EVENT_V2)]
     public class BattleRewardEventV2 : ModEvent
     {
@@ -420,33 +424,86 @@ namespace MOD_nE7UL2.Mod
 
         public IDictionary<string, double> TraningValues { get; set; } = new Dictionary<string, double>();
 
+        /// <summary>
+        /// Key of the growth ratio.
+        /// </summary>
         public string GetRatioKey(MultiValue p)
         {
             return $"{p.Value0}{RATIO_KEY}";
         }
+        /// <summary>
+        /// Key of the growth ratio.
+        /// </summary>
         public string GetRatioKey(string p)
         {
             return $"{p}{RATIO_KEY}";
         }
 
+        /// <summary>
+        /// Key of the growth factor.
+        /// </summary>
         public string GetFactorKey(MultiValue p)
         {
             return $"{p.Value0}{FACTOR_KEY}";
         }
+        /// <summary>
+        /// Key of the growth factor.
+        /// </summary>
         public string GetFactorKey(string p)
         {
             return $"{p}{FACTOR_KEY}";
         }
 
+        /// <summary>
+        /// Key of the threshold.
+        /// </summary>
         public string GetLimitKey(MultiValue p)
         {
             return $"{p.Value0}{LIMIT_KEY}";
         }
+        /// <summary>
+        /// Key of the threshold.
+        /// </summary>
         public string GetLimitKey(string p)
         {
             return $"{p}{LIMIT_KEY}";
         }
 
+        /// <summary>Lost battle with one-life: the character dies once back on the map.</summary>
+        public static bool PendingOneLifeDeath { get; set; }
+        /// <summary>Lost battle with one-life / auto save: one month passes (and the game is saved) once back on the map.</summary>
+        public static bool PendingLossMonth { get; set; }
+
+        /// <summary>
+        /// Back on the map after a lost battle: one-life death, or the month skip + save of AutoSaveAfterLostInBattle.
+        /// </summary>
+        public override void OnOpenUIEnd(OpenUIEnd e)
+        {
+            base.OnOpenUIEnd(e);
+            if (e.uiType.uiName != UIType.MapMain.uiName || (!PendingOneLifeDeath && !PendingLossMonth))
+                return;
+            var die = PendingOneLifeDeath;
+            var skip = PendingLossMonth;
+            PendingOneLifeDeath = false;
+            PendingLossMonth = false;
+            ModDelayEvent.Instance.DelayEvent(this, () =>
+            {
+                var player = g.world.playerUnit;
+                if (die && !player.isDie)
+                {
+                    DebugHelper.WriteLine("BattleRewardEvent: one-life, the character dies");
+                    player.Die();
+                }
+                else if (skip)
+                {
+                    TimeSkipEvent.Instance.SkipTime(1);
+                }
+            }, 500);
+        }
+
+        /// <summary>
+        /// Initializes thresholds of each training property.
+        /// </summary>
         public override void OnLoadGame()
         {
             base.OnLoadGame();
@@ -461,6 +518,9 @@ namespace MOD_nE7UL2.Mod
             }
         }
 
+        /// <summary>
+        /// Applies all property growths reached.
+        /// </summary>
         public override void OnBattleUnitHit(UnitHit e)
         {
             base.OnBattleUnitHit(e);
@@ -473,6 +533,9 @@ namespace MOD_nE7UL2.Mod
             }
         }
 
+        /// <summary>
+        /// Grows the first property whose threshold is reached and raises its threshold.
+        /// </summary>
         private bool UpProperty(UnitHit e)
         {
             if (!DungeonHelper.IsRealBattle())
@@ -501,6 +564,9 @@ namespace MOD_nE7UL2.Mod
             return false;
         }
 
+        /// <summary>
+        /// Win: teammates may take loot, basis growth, exp. Lose: exp lost (or body reconstruction item), optional one-life/lost items/lifespan/money.
+        /// </summary>
         public override void OnBattleEndHandler(BattleEndHandler e)
         {
             base.OnBattleEndHandler(e);
@@ -546,11 +612,11 @@ namespace MOD_nE7UL2.Mod
                 //player +exp
                 if (!SMLocalConfigsEvent.Instance.Configs.NoExpFromBattles)
                 {
-                    var rewardExp1 = Math.Max(localDmgDealt * ModMain.ModObj.ModSettings.BattleRewardConfigs.ExpPerDmgDealt, 1).Parse<int>();
-                    var rewardExp2 = Math.Max(localDmgRecv * ModMain.ModObj.ModSettings.BattleRewardConfigs.ExpPerDmgRecv, 1).Parse<int>();
-                    var rewardExp = rewardExp1 + rewardExp2;
+                    var rewardExp1 = Math.Max((double)localDmgDealt * ModMain.ModObj.ModSettings.BattleRewardConfigs.ExpPerDmgDealt, 1).ToIntClamp();
+                    var rewardExp2 = Math.Max((double)localDmgRecv * ModMain.ModObj.ModSettings.BattleRewardConfigs.ExpPerDmgRecv, 1).ToIntClamp();
+                    var rewardExp = ValueHelper.SafeAddInt(rewardExp1, rewardExp2);
 
-                    var myRewardExp = (rewardExp * (insight / 100f)).Parse<int>();
+                    var myRewardExp = ((double)rewardExp * (insight / 100d)).ToIntClamp();
                     player.AddExp(myRewardExp);
                     DebugHelper.WriteLine($"BattleRewardEvent: +{myRewardExp}exp");
                 }
@@ -575,13 +641,16 @@ namespace MOD_nE7UL2.Mod
                             player.RemoveUnitProp(item, 1);
                         }
 
+                        // done back on the map (OnOpenUIEnd): in battle the month skip + save ran before the battle end
+                        // and the game does not kill a unit there (found by autotest TZ-01: Life 0, character alive)
                         if (SMLocalConfigsEvent.Instance.Configs.Onelife)
                         {
                             player.SetProperty<int>(UnitPropertyEnum.Life, 0);
+                            PendingOneLifeDeath = true;
                         }
                         if (SMLocalConfigsEvent.Instance.Configs.Onelife || SMLocalConfigsEvent.Instance.Configs.AutoSaveAfterLostInBattle)
                         {
-                            TimeSkipEvent.Instance.SkipTime(1);
+                            PendingLossMonth = true;
                         }
                     }
 
@@ -602,6 +671,9 @@ namespace MOD_nE7UL2.Mod
             }
         }
 
+        /// <summary>
+        /// Rewards/penalties on unit death (righteous/evil, teammates).
+        /// </summary>
         public override void OnBattleUnitDie(UnitDie e)
         {
             base.OnBattleUnitDie(e);
@@ -620,7 +692,7 @@ namespace MOD_nE7UL2.Mod
                 if (isKillerWUnit && !killerWUnit.IsPlayer())
                 {
                     var insight = killerWUnit.GetDynProperty(UnitDynPropertyEnum.Talent).value;
-                    var rewardExp = ((dieUnit.data.maxHP.value + killer.data.maxHP.value) * (insight / 100f)).Parse<int>();
+                    var rewardExp = (((double)dieUnit.data.maxHP.value + killer.data.maxHP.value) * (insight / 100d)).ToIntClamp();
                     killerWUnit.AddExp(rewardExp);
                 }
 
@@ -647,11 +719,22 @@ namespace MOD_nE7UL2.Mod
                             if (item.propsInfoBase.sale > 0 &&
                                 !CommonTool.Random(0.00f, 100.00f).IsBetween(0.00f, (luck / 10.0f) + (ringLockScore / 100.0f)))
                             {
+                                // id/count read before the removal: the removed PropsData object could not be given to the killer
+                                // (found by autotest TB-12: items lost, the killer received nothing)
+                                var propsId = item.propsID;
+                                var propsCount = item.propsCount;
+                                var stackable = item.propsItem?.isOverlay == 1;
                                 dieUnitWUnit.RemoveUnitProp(item.soleID);
                                 if (killerWUnit.IsPlayer())
                                     ModBattleEvent.SceneBattle.battleData.allDropRewardItem.Remove(item);
                                 else if (isKillerWUnit)
-                                    killerWUnit.AddUnitProp(item);
+                                {
+                                    var before = killerWUnit.GetUnitPropCount(propsId);
+                                    if (!stackable)
+                                        killerWUnit.AddUnitProp(item); // keeps the item data (equipment, rings...)
+                                    if (killerWUnit.GetUnitPropCount(propsId) <= before)
+                                        killerWUnit.AddUnitProp(propsId, propsCount);
+                                }
                             }
                         }
                     }

@@ -10,6 +10,9 @@ using ModLib.Helper;
 
 namespace MOD_nE7UL2.Mod
 {
+    /// <summary>
+    /// Stalkers: after a valuable drop, strong evil NPCs around may follow the player and attack later.
+    /// </summary>
     [Cache(ModConst.BATTLE_AFTER_EVENT)]
     public class BattleAfterEvent : ModEvent
     {
@@ -28,6 +31,9 @@ namespace MOD_nE7UL2.Mod
 
         public Dictionary<string, StalkReasonEnum> Stalkers { get; set; } = new Dictionary<string, StalkReasonEnum>();
 
+        /// <summary>
+        /// Moves stalkers near the player.
+        /// </summary>
         public override void OnMonthly()
         {
             base.OnMonthly();
@@ -46,6 +52,9 @@ namespace MOD_nE7UL2.Mod
             }
         }
 
+        /// <summary>
+        /// Valuable drop: nearby stalker candidates follow the player or start hating them.
+        /// </summary>
         public override void OnBattleEndHandler(BattleEndHandler e)
         {
             base.OnBattleEndHandler(e);
@@ -64,7 +73,8 @@ namespace MOD_nE7UL2.Mod
                         {
                             foreach (var item in HirePeopleEvent.GetTeamDetailData(wunit).Item2)
                             {
-                                Stalkers.Add(item.GetUnitId(), StalkReasonEnum.KillBoss);
+                                if (!Stalkers.ContainsKey(item.GetUnitId())) // already stalking (BUG-03)
+                                    Stalkers.Add(item.GetUnitId(), StalkReasonEnum.KillBoss);
                             }
                         }
                         else
@@ -76,6 +86,9 @@ namespace MOD_nE7UL2.Mod
             }
         }
 
+        /// <summary>
+        /// Healthy, stronger than the player and evil or hostile.
+        /// </summary>
         public static bool IsStalker(WorldUnitBase wunit)
         {
             return 
@@ -92,6 +105,9 @@ namespace MOD_nE7UL2.Mod
                 );
         }
 
+        /// <summary>
+        /// Adds units (and their teams) as stalkers.
+        /// </summary>
         public static void AddStalker(StalkReasonEnum reason, params WorldUnitBase[] wunits)
         {
             foreach (var wunit in wunits)

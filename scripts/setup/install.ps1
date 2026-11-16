@@ -160,5 +160,5 @@ Write-Info 'Next steps:'
 Write-Info "  1. Open a NEW terminal, then: cd `"$RepoPath`""
 Write-Info '  2. Build ModLib first:  powershell -NoProfile -ExecutionPolicy Bypass -File .\3385996759\scripts\build-project.ps1'
 Write-Info '  3. Build Taoist:        powershell -NoProfile -ExecutionPolicy Bypass -File .\3161035078\scripts\build-project.ps1'
-Write-Info '  4. Read .github\docs\00-Getting-Started.md'
+Write-Info '  4. Read docs\00-Getting-Started.md'
 exit 0

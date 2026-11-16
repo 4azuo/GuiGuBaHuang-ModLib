@@ -8,6 +8,9 @@ using System.Collections.Generic;
 
 namespace MOD_nE7UL2.Mod
 {
+    /// <summary>
+    /// NPC cultivation: NPCs gain exp monthly and break through with a growing chance; a new NPC is born each year.
+    /// </summary>
     [Cache(ModConst.NPC_AUTO_EVENT)]
     public class NpcAutoEvent : ModEvent
     {
@@ -15,6 +18,9 @@ namespace MOD_nE7UL2.Mod
 
         public IDictionary<string, float> NpcUpGradeRate { get; set; } = new Dictionary<string, float>();
 
+        /// <summary>
+        /// NPC with full exp: accumulates breakthrough chance and may move to the next phase; otherwise gains exp (talent, grade, S&amp;M NPC grow rate).
+        /// </summary>
         public override void OnMonthlyForEachWUnit(WorldUnitBase wunit)
         {
             base.OnMonthlyForEachWUnit(wunit);
@@ -53,6 +59,9 @@ namespace MOD_nE7UL2.Mod
             }
         }
 
+        /// <summary>
+        /// Adds one random NPC up to the player grade.
+        /// </summary>
         public override void OnYearly()
         {
             base.OnYearly();

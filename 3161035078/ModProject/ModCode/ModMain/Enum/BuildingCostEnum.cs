@@ -4,6 +4,9 @@ using ModLib.Helper;
 
 namespace MOD_nE7UL2.Enum
 {
+    /// <summary>
+    /// Town/sect sub-buildings that can be built or destroyed, with build rate, cost per area and conditions.
+    /// </summary>
     public class BuildingCostEnum : EnumObject
     {
         public static BuildingCostEnum SchoolTrainingHallBuildCost { get; } = new BuildingCostEnum("building500030006", 5.00f, MapBuildSubType.SchoolTrainingHall, true, false, new long[]
@@ -144,6 +147,9 @@ namespace MOD_nE7UL2.Enum
         public bool IsCity { get; private set; }
         public long[] BuildCosts { get; private set; }
         public Action<BuildingCostEnum, MapBuildSubBase> BuiltAfter { get; private set; }
+        /// <summary>
+        /// Creates an entry.
+        /// </summary>
         private BuildingCostEnum(string name, float rate, MapBuildSubType type, bool isSchool, bool isCity, long[] costs, Action<BuildingCostEnum, MapBuildSubBase> after = null) : base()
         {
             BuildingName = name;
@@ -155,6 +161,9 @@ namespace MOD_nE7UL2.Enum
             BuiltAfter = after;
         }
 
+        /// <summary>
+        /// True when the building type allows this sub-building.
+        /// </summary>
         public bool IsMatchBuildConds(MapBuildBase build)
         {
             if (IsSchool && build.IsSchool())
@@ -166,6 +175,9 @@ namespace MOD_nE7UL2.Enum
             return false;
         }
 
+        /// <summary>
+        /// Creates the sub-building in the game; true on success.
+        /// </summary>
         public bool Build(MapBuildBase build)
         {
             try

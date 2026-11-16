@@ -5,8 +5,14 @@ using System;
 using MOD_nE7UL2.Mod;
 using ModLib.Helper;
 
+/// <summary>
+/// Rough battle power estimation used to compare units/teams.
+/// </summary>
 public static class UnitPowerCalHelper
 {
+    /// <summary>
+    /// Battle power of a world unit (or the sum for a list).
+    /// </summary>
     public static double CalWUnitBattlePower(WorldUnitBase wunit)
     {
         if (wunit == null)
@@ -20,6 +26,9 @@ public static class UnitPowerCalHelper
             (wunit.GetEquippedArtifacts().Select(a => Math.Pow(2, a.propsInfoBase.grade) * 10000 + Math.Pow(2, a.propsInfoBase.level) * 2000 + CustomRefineEvent.GetRefineLvl(a) * 100).Sum());
     }
 
+    /// <summary>
+    /// Battle power of a world unit (or the sum for a list).
+    /// </summary>
     public static double CalWUnitBattlePower(List<WorldUnitBase> wunits)
     {
         if (wunits == null || wunits.Count == 0)
@@ -27,6 +36,9 @@ public static class UnitPowerCalHelper
         return wunits.Average(x => CalWUnitBattlePower(x));
     }
 
+    /// <summary>
+    /// Battle power of a monster.
+    /// </summary>
     public static double CalMonstBattlePower(int gameLvl, int areaId)
     {
         return Math.Pow(3, areaId) * 10000 + Math.Pow(3, gameLvl) * 3000;

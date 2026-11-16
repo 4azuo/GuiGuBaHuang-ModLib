@@ -6,9 +6,16 @@ using ModLib.Helper;
 
 namespace MOD_nE7UL2.Mod
 {
+    /// <summary>
+    /// Runs first every month (order 1000): when "All functions apply to nearest units" is on, limits the units
+    /// used by Taoist events to areas within 3 of the player (performance).
+    /// </summary>
     [Cache("$PrepareEvent$")]
     public class PrepareEvent : ModEvent
     {
+        /// <summary>
+        /// Sets the Taoist ParameterStore to the nearby units.
+        /// </summary>
         public override void OnRefreshParameterStoreOnMonthly()
         {
             base.OnRefreshParameterStoreOnMonthly();

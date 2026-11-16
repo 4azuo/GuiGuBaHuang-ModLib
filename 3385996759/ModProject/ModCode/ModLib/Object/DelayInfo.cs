@@ -4,6 +4,9 @@ using System.Reflection;
 
 namespace ModLib.Object
 {
+    /// <summary>
+    /// A queued delayed call of ModDelayEvent (event, method or custom action, parameter, delay, start time).
+    /// </summary>
     public class DelayInfo
     {
         public ModEvent Event { get; set; }

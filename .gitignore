@@ -127,3 +127,9 @@ dmypy.json
 # Game run logs (scripts/game/run-game.ps1)
 logs/game-runs/
 
+
+# Autotest runs and status view (scripts/game/run-autotest.ps1)
+logs/autotest/
+logs/unittests/
+# Generated data of the test viewer (scripts/update-test-viewer.ps1)
+test-viewer/data/

@@ -6,6 +6,9 @@ using ModLib.Helper;
 
 namespace MOD_nE7UL2.Object
 {
+    /// <summary>
+    /// Item put on sale in the player market (RealMarketEvent3): seller, item, price, creation month, flags.
+    /// </summary>
     public class MarketItem
     {
         public string SellerId { get; set; }
@@ -46,11 +49,17 @@ namespace MOD_nE7UL2.Object
             }
         }
 
+        /// <summary>
+        /// The item in the seller's bag.
+        /// </summary>
         public List<DataProps.PropsData> GetProps()
         {
             return IsPartialItem ? SameProps : new List<DataProps.PropsData> { Prop };
         }
 
+        /// <summary>
+        /// Item base info (grade/level).
+        /// </summary>
         public UIIconTool.PropsInfoDataBase GetPropInfo()
         {
             return GetProps().FirstOrDefault()?.propsInfoBase;

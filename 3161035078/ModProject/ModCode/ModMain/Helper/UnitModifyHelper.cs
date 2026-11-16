@@ -5,11 +5,17 @@ using System;
 using static MOD_nE7UL2.Object.ModStts;
 using ModLib.Helper;
 
+/// <summary>
+/// Formulas of the bonuses Taoist adds to units (artifact, expertise, refine, ability, Qi...).
+/// </summary>
 public static class UnitModifyHelper
 {
     public static _ExpertConfigs ExpertConfigs => ModMain.ModObj.ModSettings.ExpertConfigs;
 
     #region Artifact
+    /// <summary>
+    /// Formula: artifact basic adj atk.
+    /// </summary>
     public static int GetArtifactBasicAdjAtk(int baseValue, DataProps.PropsData props, DataProps.PropsArtifact artifact)
     {
         if (props == null)
@@ -20,6 +26,9 @@ public static class UnitModifyHelper
         return (r * baseValue + r1 * aconf.atk).Parse<int>();
     }
 
+    /// <summary>
+    /// Formula: artifact basic adj def.
+    /// </summary>
     public static int GetArtifactBasicAdjDef(int baseValue, DataProps.PropsData props, DataProps.PropsArtifact artifact)
     {
         if (props == null)
@@ -30,6 +39,9 @@ public static class UnitModifyHelper
         return (r * baseValue + r1 * aconf.def).Parse<int>();
     }
 
+    /// <summary>
+    /// Formula: artifact basic adj hp.
+    /// </summary>
     public static int GetArtifactBasicAdjHp(int baseValue, DataProps.PropsData props, DataProps.PropsArtifact artifact)
     {
         if (props == null)
@@ -39,6 +51,9 @@ public static class UnitModifyHelper
         return (r3 * baseValue + artifact.level * artifact.grade * aconf.hp / 10).Parse<int>();
     }
 
+    /// <summary>
+    /// Formula: artifact expert atk.
+    /// </summary>
     public static int GetArtifactExpertAtk(int inputValue, int expertLvl, int propsGrade, int propsLevel)
     {
         if (expertLvl <= 0)
@@ -48,6 +63,9 @@ public static class UnitModifyHelper
         return (inputValue * expertLvl * r).Parse<int>() + v;
     }
 
+    /// <summary>
+    /// Formula: artifact expert def.
+    /// </summary>
     public static int GetArtifactExpertDef(int inputValue, int expertLvl, int propsGrade, int propsLevel)
     {
         if (expertLvl <= 0)
@@ -57,6 +75,9 @@ public static class UnitModifyHelper
         return (inputValue * expertLvl * r).Parse<int>() + v;
     }
 
+    /// <summary>
+    /// Formula: refine artifact adj atk.
+    /// </summary>
     public static int GetRefineArtifactAdjAtk(DataProps.PropsData props, int refineLvl)
     {
         if (props == null)
@@ -66,6 +87,9 @@ public static class UnitModifyHelper
         return (refineLvl * r * aconf.atk).Parse<int>();
     }
 
+    /// <summary>
+    /// Formula: refine artifact adj def.
+    /// </summary>
     public static int GetRefineArtifactAdjDef(DataProps.PropsData props, int refineLvl)
     {
         if (props == null)
@@ -77,6 +101,9 @@ public static class UnitModifyHelper
     #endregion
 
     #region Outfit
+    /// <summary>
+    /// Formula: refine outfit adj hp.
+    /// </summary>
     public static int GetRefineOutfitAdjHp(int baseValue, DataProps.PropsData props, int refineLvl)
     {
         if (props == null)
@@ -85,6 +112,9 @@ public static class UnitModifyHelper
         return (r * baseValue).Parse<int>();
     }
 
+    /// <summary>
+    /// Formula: refine outfit adj def.
+    /// </summary>
     public static int GetRefineOutfitAdjDef(int baseValue, DataProps.PropsData props, int refineLvl)
     {
         if (props == null)
@@ -95,6 +125,9 @@ public static class UnitModifyHelper
     #endregion
 
     #region Mount
+    /// <summary>
+    /// Formula: refine mount adj mp.
+    /// </summary>
     public static int GetRefineMountAdjMp(int baseValue, DataProps.PropsData props, int refineLvl)
     {
         if (props == null)
@@ -105,6 +138,9 @@ public static class UnitModifyHelper
     #endregion
 
     #region Ring
+    /// <summary>
+    /// Formula: refine ring adj hp.
+    /// </summary>
     public static int GetRefineRingAdjHp(int baseValue, DataProps.PropsData props, int refineLvl)
     {
         if (props == null)
@@ -115,6 +151,9 @@ public static class UnitModifyHelper
     #endregion
 
     #region Skill
+    /// <summary>
+    /// Formula: skill expert atk.
+    /// </summary>
     public static int GetSkillExpertAtk(int inputValue, int expertLvl, int propsGrade, int propsLevel, MartialType mType)
     {
         if (expertLvl <= 0)
@@ -124,6 +163,9 @@ public static class UnitModifyHelper
         return ((inputValue * expertLvl * r + v) * ExpertConfigs.SkillDmgRatios[mType]).Parse<int>();
     }
 
+    /// <summary>
+    /// Formula: skill expert mp cost.
+    /// </summary>
     public static int GetSkillExpertMpCost(int inputValue, int expertLvl, int propsGrade, int propsLevel, int least)
     {
         if (expertLvl <= 0)
@@ -134,6 +176,9 @@ public static class UnitModifyHelper
     #endregion
 
     #region Ability
+    /// <summary>
+    /// Formula: ability expert atk.
+    /// </summary>
     public static int GetAbilityExpertAtk(int inputValue, int expertLvl, int propsGrade, int propsLevel)
     {
         if (expertLvl <= 0)
@@ -143,6 +188,9 @@ public static class UnitModifyHelper
         return (inputValue * expertLvl * r).Parse<int>() + v;
     }
 
+    /// <summary>
+    /// Formula: ability expert def.
+    /// </summary>
     public static int GetAbilityExpertDef(int inputValue, int expertLvl, int propsGrade, int propsLevel)
     {
         if (expertLvl <= 0)
@@ -152,6 +200,9 @@ public static class UnitModifyHelper
         return (inputValue * expertLvl * r).Parse<int>() + v;
     }
 
+    /// <summary>
+    /// Formula: ability expert hp.
+    /// </summary>
     public static int GetAbilityExpertHp(int inputValue, int expertLvl, int propsGrade, int propsLevel)
     {
         if (expertLvl <= 0)
@@ -161,6 +212,9 @@ public static class UnitModifyHelper
         return (inputValue * expertLvl * r).Parse<int>() + v;
     }
 
+    /// <summary>
+    /// Formula: ability expert mp.
+    /// </summary>
     public static int GetAbilityExpertMp(int inputValue, int expertLvl, int propsGrade, int propsLevel)
     {
         if (expertLvl <= 0)
@@ -170,6 +224,9 @@ public static class UnitModifyHelper
         return (inputValue * expertLvl * r).Parse<int>() + v;
     }
 
+    /// <summary>
+    /// Formula: ability expert sp.
+    /// </summary>
     public static int GetAbilityExpertSp(int inputValue, int expertLvl, int propsGrade, int propsLevel)
     {
         if (expertLvl <= 0)
@@ -181,6 +238,9 @@ public static class UnitModifyHelper
     #endregion
 
     #region SkillStep
+    /// <summary>
+    /// Formula: step expert speed.
+    /// </summary>
     public static int GetStepExpertSpeed(int expertLvl, int propsGrade, int propsLevel)
     {
         if (expertLvl <= 0)
@@ -189,6 +249,9 @@ public static class UnitModifyHelper
         return expertLvl * v;
     }
 
+    /// <summary>
+    /// Formula: step expert evade.
+    /// </summary>
     public static float GetStepExpertEvade(int expertLvl, int propsGrade, int propsLevel)
     {
         if (expertLvl <= 0)
@@ -197,6 +260,9 @@ public static class UnitModifyHelper
         return expertLvl * v;
     }
 
+    /// <summary>
+    /// Formula: step expert mp cost.
+    /// </summary>
     public static int GetStepExpertMpCost(int inputValue, int expertLvl, int propsGrade, int propsLevel, int least)
     {
         if (expertLvl <= 0)
@@ -206,6 +272,9 @@ public static class UnitModifyHelper
     }
     #endregion
 
+    /// <summary>
+    /// Formula: abi point adj hp.
+    /// </summary>
     public static int GetAbiPointAdjHp(WorldUnitBase wunit)
     {
         if (wunit == null)
@@ -213,6 +282,9 @@ public static class UnitModifyHelper
         return wunit.GetDynProperty(UnitDynPropertyEnum.AbilityPoint).value * 10 * wunit.GetGradeLvl();
     }
 
+    /// <summary>
+    /// Formula: abi point adj mp.
+    /// </summary>
     public static int GetAbiPointAdjMp(WorldUnitBase wunit)
     {
         if (wunit == null)
@@ -220,6 +292,9 @@ public static class UnitModifyHelper
         return wunit.GetDynProperty(UnitDynPropertyEnum.AbilityPoint).value;
     }
 
+    /// <summary>
+    /// Formula: martial adj hp.
+    /// </summary>
     public static int GetMartialAdjHp(WorldUnitBase wunit)
     {
         if (wunit == null)
@@ -227,6 +302,9 @@ public static class UnitModifyHelper
         return wunit.GetBasisPhysicSum() * wunit.GetGradeLvl();
     }
 
+    /// <summary>
+    /// Formula: spiritual adj mp.
+    /// </summary>
     public static int GetSpiritualAdjMp(WorldUnitBase wunit)
     {
         if (wunit == null)
@@ -234,6 +312,9 @@ public static class UnitModifyHelper
         return wunit.GetBasisMagicSum();
     }
 
+    /// <summary>
+    /// Formula: artisanship adj sp.
+    /// </summary>
     public static int GetArtisanshipAdjSp(WorldUnitBase wunit)
     {
         if (wunit == null)
@@ -241,9 +322,12 @@ public static class UnitModifyHelper
         return wunit.GetArtisanshipSum();
     }
 
+    /// <summary>
+    /// Formula: qi adj atk.
+    /// </summary>
     public static int GetQiAdjAtk(WorldUnitBase wunit)
     {
-        if (wunit == null)
+        if (wunit == null || QiCulEvent.Instance == null) // Qi cultivation disabled (no Instance since BUG-16)
             return 0;
         var wunitId = wunit.GetUnitId();
         if (!QiCulEvent.Instance.Qi.ContainsKey(wunitId))
@@ -251,9 +335,12 @@ public static class UnitModifyHelper
         return Convert.ToInt32(QiCulEvent.Instance.Qi[wunitId] / (10000 * wunit.GetGradeLvl()));
     }
 
+    /// <summary>
+    /// Formula: qi adj hp.
+    /// </summary>
     public static int GetQiAdjHp(WorldUnitBase wunit)
     {
-        if (wunit == null)
+        if (wunit == null || QiCulEvent.Instance == null) // Qi cultivation disabled (no Instance since BUG-16)
             return 0;
         var wunitId = wunit.GetUnitId();
         if (!QiCulEvent.Instance.Qi.ContainsKey(wunitId))
@@ -261,9 +348,12 @@ public static class UnitModifyHelper
         return Convert.ToInt32(QiCulEvent.Instance.Qi[wunitId] / (1000 * wunit.GetGradeLvl()));
     }
 
+    /// <summary>
+    /// Formula: qi adj mp.
+    /// </summary>
     public static int GetQiAdjMp(WorldUnitBase wunit)
     {
-        if (wunit == null)
+        if (wunit == null || QiCulEvent.Instance == null) // Qi cultivation disabled (no Instance since BUG-16)
             return 0;
         var wunitId = wunit.GetUnitId();
         if (!QiCulEvent.Instance.Qi.ContainsKey(wunitId))

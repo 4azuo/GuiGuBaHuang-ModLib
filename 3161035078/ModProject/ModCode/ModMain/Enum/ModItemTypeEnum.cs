@@ -1,5 +1,8 @@
 ﻿namespace MOD_nE7UL2.Enum
 {
+    /// <summary>
+    /// Item categories used for price rebalancing (PriceHelper.ITEM_TYPE_RATIO).
+    /// </summary>
     public enum ModItemTypeEnum
     {
         BreakthroughItem,

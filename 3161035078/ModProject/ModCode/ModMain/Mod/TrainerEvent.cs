@@ -11,6 +11,9 @@ using UnityEngine;
 
 namespace MOD_nE7UL2.Mod
 {
+    /// <summary>
+    /// Cheat trainer (only when enabled in S&amp;M configs). Ctrl+1/2/3 opens its pages: stats, resources, teleport, god weapons...
+    /// </summary>
     [Cache(ModConst.TRAINER_EVENT)]
     public class TrainerEvent : ModEvent
     {
@@ -55,39 +58,45 @@ namespace MOD_nE7UL2.Mod
 
         private UICustom1 uiTrainer;
 
+        /// <summary>
+        /// Loaded only when EnableTrainer is on.
+        /// </summary>
         public override bool OnCacheHandler()
         {
             return SMLocalConfigsEvent.Instance.Configs.EnableTrainer;
         }
 
+        /// <summary>
+        /// Opens the trainer page for Ctrl+1, Ctrl+2 or Ctrl+3 (map screen only).
+        /// </summary>
         public override void OnMonoUpdate()
         {
             base.OnMonoUpdate();
             if (Input.GetKey(KeyCode.LeftControl) && Input.GetKeyDown(KeyCode.Alpha1))
-            {
-                if (uiTrainer == null)
-                    OpenTrainer(0);
-                else
-                    uiTrainer.Pages[0].Active();
-            }
+                OnHotkey(0);
             else
             if (Input.GetKey(KeyCode.LeftControl) && Input.GetKeyDown(KeyCode.Alpha2))
-            {
-                if (uiTrainer == null)
-                    OpenTrainer(1);
-                else
-                    uiTrainer.Pages[1].Active();
-            }
+                OnHotkey(1);
             else
             if (Input.GetKey(KeyCode.LeftControl) && Input.GetKeyDown(KeyCode.Alpha3))
-            {
-                if (uiTrainer == null)
-                    OpenTrainer(2);
-                else
-                    uiTrainer.Pages[2].Active();
-            }
+                OnHotkey(2);
         }
 
+        /// <summary>
+        /// Ctrl+1/2/3 (page 0/1/2): opens the trainer on that page, or switches the open trainer to it.
+        /// </summary>
+        public void OnHotkey(int page)
+        {
+            // the window can be closed without OK (close button, Esc): uiTrainer then points to a destroyed UI
+            if (uiTrainer == null || uiTrainer.UI == null || !g.ui.HasUI(UIType.TextInfoLong))
+                OpenTrainer(page);
+            else
+                uiTrainer.Pages[page].Active();
+        }
+
+        /// <summary>
+        /// Builds the trainer window and activates the given page.
+        /// </summary>
         public void OpenTrainer(int defPage)
         {
             if (!g.ui.HasUI(UIType.MapMain))
@@ -137,7 +146,7 @@ namespace MOD_nE7UL2.Mod
                 FormatButton1(uiTrainer.AddButton(col, row += 2, AddReputation, GameTool.LS("trainer042")));
                 FormatButton1(uiTrainer.AddButton(col, row += 2, ReduceReputation, GameTool.LS("trainer043")));
                 FormatButton1(uiTrainer.AddButton(col, row += 2, BecomeTownMaster, GameTool.LS("trainer047")));
-                FormatButton1(uiTrainer.AddSelect(col, row += 2, GodWeaponSelections.Select(x => x.Item1).ToArray(), GodWeaponSelections.IndexOf(x => x.Item2 == GodArtifactHelper.GetAnimaWeapon()[0]).FixValue(0, GodWeaponSelections.Count - 1))
+                FormatButton1(uiTrainer.AddSelect(col, row += 2, GodWeaponSelections.Select(x => x.Item1).ToArray(), GodWeaponSelections.IndexOf(x => x.Item2 == (GodArtifactHelper.GetAnimaWeapon().Count > 0 ? GodArtifactHelper.GetAnimaWeapon()[0] : GameAnimaWeapon.None)).FixValue(0, GodWeaponSelections.Count - 1))
                     .SetWork(new UIItemWork
                     {
                         ChangeAct = ModLib.Helper.ActionHelper.WTracedAction<UIItemBase, object>((comp, selectedIndex) =>
@@ -394,26 +403,41 @@ namespace MOD_nE7UL2.Mod
             uiTrainer.Pages[defPage].Active();
         }
 
+        /// <summary>
+        /// Applies the trainer page button style (size and font).
+        /// </summary>
         private void FormatButton1(UIItemButton btn)
         {
             btn.Format(Color.black, PAGE1_FONT_SIZE).Size(PAGE1_BTN_WIDTH, PAGE1_BTN_HEIGHT);
         }
 
+        /// <summary>
+        /// Applies the trainer page button style (size and font).
+        /// </summary>
         private void FormatButton1(UIItemSelect slt)
         {
             slt.Format(Color.black, PAGE1_FONT_SIZE).Size(PAGE1_BTN_WIDTH, PAGE1_BTN_HEIGHT);
         }
 
+        /// <summary>
+        /// Applies the trainer page button style (size and font).
+        /// </summary>
         private void FormatButton2(UIItemButton btn)
         {
             btn.Format(Color.black, PAGE2_FONT_SIZE).Size(PAGE2_BTN_WIDTH, PAGE2_BTN_HEIGHT);
         }
 
+        /// <summary>
+        /// Applies the trainer page button style (size and font).
+        /// </summary>
         private void FormatButton3(UIItemButton btn)
         {
             btn.Format(Color.black, PAGE3_FONT_SIZE).Size(PAGE3_BTN_WIDTH, PAGE3_BTN_HEIGHT);
         }
 
+        /// <summary>
+        /// Gives the breakthrough items of a grade.
+        /// </summary>
         public void AddBreakthroughItems(ConfRoleGradeItem conf)
         {
             if (conf.itemShowA != "0")
@@ -433,6 +457,9 @@ namespace MOD_nE7UL2.Mod
             g.ui.MsgBox("Info", GameTool.LS("trainer046"));
         }
 
+        /// <summary>
+        /// Restores HP/MP/SP.
+        /// </summary>
         public void Recover()
         {
             var player = g.world.playerUnit;
@@ -444,11 +471,17 @@ namespace MOD_nE7UL2.Mod
             player.SetProperty<int>(UnitPropertyEnum.Health, int.MaxValue);
         }
 
+        /// <summary>
+        /// Teleports the player.
+        /// </summary>
         public void Tele(Vector2Int p)
         {
             g.world.playerUnit.SetUnitPos(p);
         }
 
+        /// <summary>
+        /// Trainer button: increases the player's life.
+        /// </summary>
         public void AddLife()
         {
             var player = g.world.playerUnit;
@@ -456,6 +489,9 @@ namespace MOD_nE7UL2.Mod
                 player.AddProperty<int>(UnitPropertyEnum.Life, 1200); //100 * 12month
         }
 
+        /// <summary>
+        /// Trainer button: decreases the player's life.
+        /// </summary>
         public void ReduceLife()
         {
             var player = g.world.playerUnit;
@@ -463,6 +499,9 @@ namespace MOD_nE7UL2.Mod
                 player.AddProperty<int>(UnitPropertyEnum.Life, -1200); //100 * 12month
         }
 
+        /// <summary>
+        /// Trainer button: increases the player's max hp.
+        /// </summary>
         public void AddMaxHP()
         {
             var player = g.world.playerUnit;
@@ -470,6 +509,9 @@ namespace MOD_nE7UL2.Mod
                 player.AddProperty<int>(UnitPropertyEnum.HpMax, 100000);
         }
 
+        /// <summary>
+        /// Trainer button: decreases the player's max hp.
+        /// </summary>
         public void ReduceMaxHP()
         {
             var player = g.world.playerUnit;
@@ -477,6 +519,9 @@ namespace MOD_nE7UL2.Mod
                 player.AddProperty<int>(UnitPropertyEnum.HpMax, -100000);
         }
 
+        /// <summary>
+        /// Trainer button: increases the player's max mp.
+        /// </summary>
         public void AddMaxMP()
         {
             var player = g.world.playerUnit;
@@ -484,6 +529,9 @@ namespace MOD_nE7UL2.Mod
                 player.AddProperty<int>(UnitPropertyEnum.MpMax, 10000);
         }
 
+        /// <summary>
+        /// Trainer button: decreases the player's max mp.
+        /// </summary>
         public void ReduceMaxMP()
         {
             var player = g.world.playerUnit;
@@ -491,6 +539,9 @@ namespace MOD_nE7UL2.Mod
                 player.AddProperty<int>(UnitPropertyEnum.MpMax, -10000);
         }
 
+        /// <summary>
+        /// Trainer button: increases the player's max sp.
+        /// </summary>
         public void AddMaxSP()
         {
             var player = g.world.playerUnit;
@@ -498,6 +549,9 @@ namespace MOD_nE7UL2.Mod
                 player.AddProperty<int>(UnitPropertyEnum.SpMax, 1000);
         }
 
+        /// <summary>
+        /// Trainer button: decreases the player's max sp.
+        /// </summary>
         public void ReduceMaxSP()
         {
             var player = g.world.playerUnit;
@@ -505,90 +559,135 @@ namespace MOD_nE7UL2.Mod
                 player.AddProperty<int>(UnitPropertyEnum.SpMax, -1000);
         }
 
+        /// <summary>
+        /// Trainer button: increases the player's money.
+        /// </summary>
         public void AddMoney()
         {
             var player = g.world.playerUnit;
             player.AddUnitMoney(1000000);
         }
 
+        /// <summary>
+        /// Trainer button: decreases the player's money.
+        /// </summary>
         public void ReduceMoney()
         {
             var player = g.world.playerUnit;
             player.AddUnitMoney(-1000000);
         }
 
+        /// <summary>
+        /// Trainer button: increases the player's degree.
+        /// </summary>
         public void AddDegree()
         {
             var player = g.world.playerUnit;
             player.AddUnitMayorDegree(1000);
         }
 
+        /// <summary>
+        /// Trainer button: decreases the player's degree.
+        /// </summary>
         public void ReduceDegree()
         {
             var player = g.world.playerUnit;
             player.AddUnitMayorDegree(-1000);
         }
 
+        /// <summary>
+        /// Trainer button: increases the player's contribution.
+        /// </summary>
         public void AddContribution()
         {
             var player = g.world.playerUnit;
             player.AddUnitContribution(100000);
         }
 
+        /// <summary>
+        /// Trainer button: decreases the player's contribution.
+        /// </summary>
         public void ReduceContribution()
         {
             var player = g.world.playerUnit;
             player.AddUnitContribution(-100000);
         }
 
+        /// <summary>
+        /// Trainer button: increases the player's ability exp.
+        /// </summary>
         public void AddAbilityExp()
         {
             var player = g.world.playerUnit;
             player.AddProperty<int>(UnitPropertyEnum.AbilityExp, 100000);
         }
 
+        /// <summary>
+        /// Trainer button: decreases the player's ability exp.
+        /// </summary>
         public void ReduceAbilityExp()
         {
             var player = g.world.playerUnit;
             player.AddProperty<int>(UnitPropertyEnum.AbilityExp, -100000);
         }
 
+        /// <summary>
+        /// Trainer button: increases the player's reputation.
+        /// </summary>
         public void AddReputation()
         {
             var player = g.world.playerUnit;
             player.AddProperty<int>(UnitPropertyEnum.Reputation, 10000);
         }
 
+        /// <summary>
+        /// Trainer button: decreases the player's reputation.
+        /// </summary>
         public void ReduceReputation()
         {
             var player = g.world.playerUnit;
             player.AddProperty<int>(UnitPropertyEnum.Reputation, -10000);
         }
 
+        /// <summary>
+        /// Trainer button: increases the player's footspeed.
+        /// </summary>
         public void AddFootspeed()
         {
             var player = g.world.playerUnit;
             player.AddProperty<int>(UnitPropertyEnum.FootSpeed, 1000);
         }
 
+        /// <summary>
+        /// Trainer button: decreases the player's footspeed.
+        /// </summary>
         public void ReduceFootspeed()
         {
             var player = g.world.playerUnit;
             player.AddProperty<int>(UnitPropertyEnum.FootSpeed, -1000);
         }
 
+        /// <summary>
+        /// Trainer button: increases the player's view range.
+        /// </summary>
         public void AddViewRange()
         {
             var player = g.world.playerUnit;
             player.GetDynProperty(UnitDynPropertyEnum.PlayerView).baseValue += 10;
         }
 
+        /// <summary>
+        /// Trainer button: decreases the player's view range.
+        /// </summary>
         public void ReduceViewRange()
         {
             var player = g.world.playerUnit;
             player.GetDynProperty(UnitDynPropertyEnum.PlayerView).baseValue -= 10;
         }
 
+        /// <summary>
+        /// Trainer button: increases the player's basis.
+        /// </summary>
         public void AddBasis()
         {
             var v = 100;
@@ -613,6 +712,9 @@ namespace MOD_nE7UL2.Mod
             player.AddProperty<int>(UnitPropertyEnum.Mine, v);
         }
 
+        /// <summary>
+        /// Trainer button: decreases the player's basis.
+        /// </summary>
         public void ReduceBasis()
         {
             var v = -100;
@@ -637,6 +739,9 @@ namespace MOD_nE7UL2.Mod
             player.AddProperty<int>(UnitPropertyEnum.Mine, v);
         }
 
+        /// <summary>
+        /// Next cultivation phase.
+        /// </summary>
         public void Levelup()
         {
             var player = g.world.playerUnit;
@@ -647,6 +752,9 @@ namespace MOD_nE7UL2.Mod
             }
         }
 
+        /// <summary>
+        /// Previous cultivation phase.
+        /// </summary>
         public void Leveldown()
         {
             var player = g.world.playerUnit;
@@ -657,6 +765,9 @@ namespace MOD_nE7UL2.Mod
             }
         }
 
+        /// <summary>
+        /// Trainer button: increases the player's atk.
+        /// </summary>
         public void AddAtk()
         {
             var player = g.world.playerUnit;
@@ -664,6 +775,9 @@ namespace MOD_nE7UL2.Mod
                 player.AddProperty<int>(UnitPropertyEnum.Attack, 10000);
         }
 
+        /// <summary>
+        /// Trainer button: decreases the player's atk.
+        /// </summary>
         public void ReduceAtk()
         {
             var player = g.world.playerUnit;
@@ -671,6 +785,9 @@ namespace MOD_nE7UL2.Mod
                 player.AddProperty<int>(UnitPropertyEnum.Attack, -10000);
         }
 
+        /// <summary>
+        /// Trainer button: increases the player's def.
+        /// </summary>
         public void AddDef()
         {
             var player = g.world.playerUnit;
@@ -678,6 +795,9 @@ namespace MOD_nE7UL2.Mod
                 player.AddProperty<int>(UnitPropertyEnum.Defense, 1000);
         }
 
+        /// <summary>
+        /// Trainer button: decreases the player's def.
+        /// </summary>
         public void ReduceDef()
         {
             var player = g.world.playerUnit;
@@ -685,12 +805,18 @@ namespace MOD_nE7UL2.Mod
                 player.AddProperty<int>(UnitPropertyEnum.Defense, -1000);
         }
 
+        /// <summary>
+        /// Trainer button: increases the player's exp.
+        /// </summary>
         public void AddExp()
         {
             var player = g.world.playerUnit;
             player.AddExp(10000);
         }
 
+        /// <summary>
+        /// Makes the player the master of the current town.
+        /// </summary>
         public void BecomeTownMaster()
         {
             var player = g.world.playerUnit;

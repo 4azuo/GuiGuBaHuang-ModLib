@@ -3,6 +3,9 @@ using UnityEngine;
 
 namespace MOD_nE7UL2.Enum
 {
+    /// <summary>
+    /// Quality levels of a custom refine adjustment (multiplier and color).
+    /// </summary>
     public class AdjLevelEnum : EnumObject
     {
         public static AdjLevelEnum None { get; } = new AdjLevelEnum("adjLvl500060000", 0, 0.0, Color.gray);
@@ -18,6 +21,9 @@ namespace MOD_nE7UL2.Enum
         public int Level { get; private set; }
         public double Multiplier { get; private set; }
         public Color Color { get; private set; }
+        /// <summary>
+        /// Creates a level.
+        /// </summary>
         private AdjLevelEnum(string label, int lvl, double multiplier, Color color) : base(label)
         {
             Label = label;

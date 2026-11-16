@@ -14,6 +14,9 @@ using ModLib.Helper;
 
 namespace MOD_nE7UL2.Mod
 {
+    /// <summary>
+    /// Teams: the player (and NPCs) can hire NPCs. Members follow the master, are paid monthly, may leave or betray.
+    /// </summary>
     [Cache(ModConst.HIRE_PEOPLE_EVENT)]
     public class HirePeopleEvent : ModEvent
     {
@@ -35,6 +38,9 @@ namespace MOD_nE7UL2.Mod
 
         public Dictionary<string, List<string>> TeamData { get; set; } = new Dictionary<string, List<string>>();
 
+        /// <summary>
+        /// Adds "Hire people" on the bounty board and hire/dismiss/manage buttons on NPCInfo.
+        /// </summary>
         [EventCondition(IsInGame = HandleEnum.True, IsInBattle = HandleEnum.False)]
         public override void OnOpenUIEnd(OpenUIEnd e)
         {
@@ -173,6 +179,9 @@ namespace MOD_nE7UL2.Mod
             }
         }
 
+        /// <summary>
+        /// Resets the hire/manage flags when the NPC search UI closes.
+        /// </summary>
         public override void OnCloseUIStart(CloseUIStart e)
         {
             base.OnCloseUIStart(e);
@@ -185,6 +194,9 @@ namespace MOD_nE7UL2.Mod
             }
         }
 
+        /// <summary>
+        /// NPC search UI listing hirable people.
+        /// </summary>
         public static void OpenUIHirePeople()
         {
             var ui = g.ui.OpenUISafe<UINPCSearch>(UIType.NPCSearch);
@@ -194,6 +206,9 @@ namespace MOD_nE7UL2.Mod
             isShowHirePeopleUI = true;
         }
 
+        /// <summary>
+        /// NPC search UI listing the team, with payment info.
+        /// </summary>
         public static void OpenUIManageTeam()
         {
             var ui = g.ui.OpenUISafe<UINPCSearch>(UIType.NPCSearch);
@@ -210,6 +225,9 @@ namespace MOD_nE7UL2.Mod
             uiCover.UpdateUI();
         }
 
+        /// <summary>
+        /// NPC friends may team up (asks the player by drama); pays members, dismisses unpaid ones, cleans dead members.
+        /// </summary>
         public override void OnMonthlyForEachWUnit(WorldUnitBase wunit)
         {
             base.OnMonthlyForEachWUnit(wunit);
@@ -317,11 +335,17 @@ namespace MOD_nE7UL2.Mod
             }
         }
 
+        /// <summary>
+        /// True when intimacy &gt;= FRIEND_INTIM x r.
+        /// </summary>
         public static bool IsFriend(WorldUnitBase org, WorldUnitBase tar, float r = 1.0f)
         {
             return tar.data.unitData.relationData.GetIntim(org) >= FRIEND_INTIM * r;
         }
 
+        /// <summary>
+        /// Adds a member to the master's team (+ team luck).
+        /// </summary>
         public static void Hire(WorldUnitBase master, WorldUnitBase member)
         {
             var masterId = master.GetUnitId();
@@ -332,10 +356,15 @@ namespace MOD_nE7UL2.Mod
                 master.AddLuck(TEAM_LUCK_ID);
             }
             var teamData = Instance.TeamData[masterId];
+            if (teamData.Contains(member.GetUnitId())) // already in the team: no 2nd entry / payment (BUG-06)
+                return;
             teamData.Add(member.GetUnitId());
             member.AddLuck(TEAM_LUCK_ID);
         }
 
+        /// <summary>
+        /// Removes a member.
+        /// </summary>
         public static void Dismiss(WorldUnitBase master, WorldUnitBase member)
         {
             var masterId = master.GetUnitId();
@@ -358,6 +387,9 @@ namespace MOD_nE7UL2.Mod
             }
         }
 
+        /// <summary>
+        /// Disbands the team.
+        /// </summary>
         public static void DismissTeam(WorldUnitBase master)
         {
             var teamData = GetTeamDetailData(master);
@@ -374,11 +406,17 @@ namespace MOD_nE7UL2.Mod
             }
         }
 
+        /// <summary>
+        /// True when the unit can be hired.
+        /// </summary>
         public static bool IsMatchCondWUnit(WorldUnitBase wunit)
         {
             return !MapBuildPropertyEvent.IsTownGuardian(wunit) && !IsHired(wunit);
         }
 
+        /// <summary>
+        /// Hirable units around the player.
+        /// </summary>
         public static List<WorldUnitBase> GetHirablePeople()
         {
             var rs = new List<WorldUnitBase>();
@@ -393,11 +431,17 @@ namespace MOD_nE7UL2.Mod
             return rs;
         }
 
+        /// <summary>
+        /// Members of the unit's team.
+        /// </summary>
         public static WorldUnitBase[] GetTeamMember(WorldUnitBase wunit)
         {
             return GetTeamData(wunit).Value.Select(x => g.world.unit.GetUnit(x)).Where(x => x != null).ToArray();
         }
 
+        /// <summary>
+        /// Team entry (master id, member ids).
+        /// </summary>
         public static KeyValuePair<string, List<string>> GetTeamData(WorldUnitBase wunit)
         {
             var wunitId = wunit.GetUnitId();
@@ -406,38 +450,59 @@ namespace MOD_nE7UL2.Mod
             return Instance.TeamData.First(x => x.Value.Contains(wunitId));
         }
 
+        /// <summary>
+        /// Team master and members (the unit alone when not in a team).
+        /// </summary>
         public static Tuple<WorldUnitBase, WorldUnitBase[]> GetTeamDetailData(WorldUnitBase wunit)
         {
             var teamData = GetTeamData(wunit);
             return Tuple.Create(g.world.unit.GetUnit(teamData.Key), GetTeamMember(wunit));
         }
 
+        /// <summary>
+        /// Master of the unit's team.
+        /// </summary>
         public static WorldUnitBase GetTeamMaster(WorldUnitBase wunit)
         {
             return g.world.unit.GetUnit(GetTeamData(wunit).Key);
         }
 
+        /// <summary>
+        /// Team description.
+        /// </summary>
         public static string GetTeamInfoStr(WorldUnitBase wunit)
         {
             return GetTeamDetailData(wunit)?.Item1.GetName();
         }
 
+        /// <summary>
+        /// True when the unit is a member of a team.
+        /// </summary>
         public static bool IsHired(WorldUnitBase wunit)
         {
             return wunit != null && /*!wunit.isDie && */wunit.GetLuck(TEAM_LUCK_ID) != null;
         }
 
+        /// <summary>
+        /// True when the unit leads a team.
+        /// </summary>
         public static bool IsTeamMaster(WorldUnitBase wunit)
         {
             return Instance.TeamData.ContainsKey(wunit.GetUnitId());
         }
 
+        /// <summary>
+        /// True when member belongs to master's team.
+        /// </summary>
         public static bool IsTeam(WorldUnitBase master, WorldUnitBase member)
         {
             var masterId = master.GetUnitId();
             return Instance.TeamData.ContainsKey(masterId) && Instance.TeamData[masterId].Contains(member.GetUnitId());
         }
 
+        /// <summary>
+        /// Monthly payment of the whole team.
+        /// </summary>
         public static int GetTotalMonthlyPayment(WorldUnitBase master)
         {
             var rs = 0;
@@ -450,6 +515,9 @@ namespace MOD_nE7UL2.Mod
             return rs;
         }
 
+        /// <summary>
+        /// Hiring price (grade, team size, ability points, hero x2).
+        /// </summary>
         public static int GetRequiredSpiritStones(WorldUnitBase master, WorldUnitBase wunit)
         {
             var masterId = master.GetUnitId();
@@ -463,6 +531,9 @@ namespace MOD_nE7UL2.Mod
                 (wunit.IsHero() ? 2 : 1);
         }
 
+        /// <summary>
+        /// Reputation required to hire.
+        /// </summary>
         public static int GetRequiredReputations(WorldUnitBase master, WorldUnitBase wunit)
         {
             var masterId = master.GetUnitId();

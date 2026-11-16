@@ -255,7 +255,7 @@ powershell -NoProfile -ExecutionPolicy Bypass -File .\GuiGuBaHuang-ModCreator\bu
 ```
 
 Output goes to `<ProjectId>\debug\Mod_xxxxx\`. To build **and** copy everything to the Steam Workshop folder: `.\scripts\rebuild-and-deploy-all.ps1`.
-In VS Code: **Terminal → Run Task…** (`Ctrl+Shift+B` = "All: Rebuild & Deploy"). More in [.github/docs/07-Build-Deploy.md](.github/docs/07-Build-Deploy.md).
+In VS Code: **Terminal → Run Task…** (`Ctrl+Shift+B` = "All: Rebuild & Deploy"). More in [docs/07-Build-Deploy.md](docs/07-Build-Deploy.md).
 
 ---
 

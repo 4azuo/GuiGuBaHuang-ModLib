@@ -8,6 +8,9 @@ using ModLib.Object;
 
 namespace MOD_nE7UL2.Mod
 {
+    /// <summary>
+    /// Rebirth at the pub: reset grade/exp/reputation (must leave sect) for a permanent luck; monsters scale with total rebirth grades.
+    /// </summary>
     [Cache(ModConst.REBIRTH_EVENT)]
     public class RebirthEvent : ModEvent
     {
@@ -21,6 +24,9 @@ namespace MOD_nE7UL2.Mod
         public int RebirthCount { get; set; } = 0;
         public int TotalGradeLvl { get; set; } = 0;
 
+        /// <summary>
+        /// TownPub of a high enough town: adds the rebirth button.
+        /// </summary>
         [EventCondition(IsInGame = HandleEnum.True, IsInBattle = HandleEnum.False)]
         public override void OnOpenUIEnd(OpenUIEnd e)
         {
@@ -78,6 +84,9 @@ namespace MOD_nE7UL2.Mod
             }
         }
 
+        /// <summary>
+        /// Removes rebirth lucks.
+        /// </summary>
         private void RemoveLuck()
         {
             for (int i = 1; i <= MAX_LUCK_LVL; i++)
@@ -87,6 +96,9 @@ namespace MOD_nE7UL2.Mod
             }
         }
 
+        /// <summary>
+        /// Gives the luck of the rebirth count.
+        /// </summary>
         private void AddLuck()
         {
             RemoveLuck();

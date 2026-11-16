@@ -3,6 +3,9 @@ using System.Collections.Generic;
 
 namespace ModLib.Object
 {
+    /// <summary>
+    /// A page of items in a custom UI; only the active page is visible.
+    /// </summary>
     public class UIItemPage
     {
         public UICustomBase Parent { get; private set; }
@@ -10,12 +13,18 @@ namespace ModLib.Object
         public bool IsLoaded { get; private set; }
         public List<UIItemBase> Items { get; } = new List<UIItemBase>();
 
+        /// <summary>
+        /// Creates the item and registers it in the owner UI (and the current page when paging is used).
+        /// </summary>
         public UIItemPage(UICustomBase parent)
         {
             Parent = parent;
             IsLoaded = true;
         }
 
+        /// <summary>
+        /// Creates the item and registers it in the owner UI (and the current page when paging is used).
+        /// </summary>
         public UIItemPage(UICustomBase parent, Action<UICustomBase> loader)
         {
             Parent = parent;
@@ -23,6 +32,9 @@ namespace ModLib.Object
             IsLoaded = false;
         }
 
+        /// <summary>
+        /// Shows this page (loading it lazily) and hides the others.
+        /// </summary>
         public void Active()
         {
             Parent.CurrentPage = this;

@@ -1,4 +1,4 @@
-{
+﻿{
 	"$PrepareEvent$": 1000,
 	
 	//common
@@ -11,6 +11,7 @@
 	"SliceLifeQuestEvent": 2000,
 	"RebirthEvent": 2010,
 	"MissionDeclareEvent": 2020,
+	"ChallengeQuestEvent": 2025,
 	"ContributionExchangeEvent": 2030,
 	"NpcAutoEvent": 2040,
 	"NpcUpgradeSkillEvent": 2050,
@@ -18,6 +19,7 @@
 	"UnitTypeEvent": 2060,
 	"UpgradeNaturallyEvent": 2070,
 	"QiCulEvent": 2080,
+	"UseSpiritStoneCulEvent": 2085,
 	"HirePeopleEvent": 2090,
 
 	//eco
@@ -25,14 +27,15 @@
 	"BankAccountEvent": 3010,
 	"BuildingArrangeEvent": 3030,
 	"RealStorageEvent": 3040,
-	"RealMarketEvent": 3060,
 	"RealMarketEvent2": 3050,
 	"RealMarketEvent3": 3060,
+	"RealMarketEvent": 3065,
 
 	//affect attributes/properties
 	"CustomRefineEvent": 4000,
 	"ExpertEvent": 4010,
 	"UnitModifyEvent": 4020,
+	"RepairShinkiEvent": 4030,
 
 	//battle
 	"BattleEvent": 5000,
@@ -50,8 +53,14 @@
 	"UIDifficultyEvent": 6000,
 	"UICreatePlayerEvent": 6010,
 	"UITitleScreenEvent": 6020,
+	"UISettingScreenEvent": 6025,
 	"UIEvent": 6030,
+	"NewGameEvent": 6040,
+
+	//time (month skip: after every other event, as before)
+	"TimeSkipEvent": 7000,
 
 	//debug
+	"AutoTestEvent": 9990,
 	"DebugEvent": 9999
 }

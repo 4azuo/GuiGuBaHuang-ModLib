@@ -11,6 +11,9 @@ using ModLib.Helper;
 
 namespace MOD_nE7UL2.Mod
 {
+    /// <summary>
+    /// Town storage requires a bank account per town (one-time fee paid to the town budget).
+    /// </summary>
     [Cache(ModConst.BANK_ACCOUNT_EVENT)]
     public class BankAccountEvent : ModEvent
     {
@@ -19,6 +22,9 @@ namespace MOD_nE7UL2.Mod
 
         public IList<string> RegisterdTown { get; set; } = new List<string>();
 
+        /// <summary>
+        /// TownStorage without account: replaces the storage button with "Open account (cost)".
+        /// </summary>
         [EventCondition(IsInGame = HandleEnum.True, IsInBattle = HandleEnum.False)]
         public override void OnOpenUIEnd(OpenUIEnd e)
         {
@@ -52,12 +58,18 @@ namespace MOD_nE7UL2.Mod
             }
         }
 
+        /// <summary>
+        /// Account fee of an area (inflation and S&amp;M rate applied).
+        /// </summary>
         public static int Cost(int areaId)
         {
-            var round = BankAccountConfigs.OpenFee[areaId] / 100;
+            var round = System.Math.Max(1, BankAccountConfigs.OpenFee[areaId] / 100); // OpenFee < 100 (BUG-15)
             return SMLocalConfigsEvent.Instance.Calculate(InflationaryEvent.CalculateInflationary(BankAccountConfigs.OpenFee[areaId]) / round * round, SMLocalConfigsEvent.Instance.Configs.AddBankAccountCostRate).Parse<int>();
         }
 
+        /// <summary>
+        /// Closes every account.
+        /// </summary>
         public static void RemoveAllAccounts()
         {
             Instance.RegisterdTown.Clear();

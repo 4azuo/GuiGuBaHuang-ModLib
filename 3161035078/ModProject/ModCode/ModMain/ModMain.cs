@@ -11,6 +11,9 @@ using ModLib.Helper;
 
 namespace MOD_nE7UL2
 {
+    /// <summary>
+    /// Taoist entry class (ModChild, CacheId nE7UL2). Event order comes from _EventOrderIndex.json.
+    /// </summary>
     [ModOrder("_EventOrderIndex.json")]
     [Cache("nE7UL2", CacheType = CacheAttribute.CType.Global, OrderIndex = 0)]
     public class ModMain : ModChild
@@ -18,6 +21,11 @@ namespace MOD_nE7UL2
         public ModStts ModSettings { get; private set; }
         public static ModMain ModObj { get; private set; }
 
+        /// <summary>
+        /// Loads mod_configs.json into ModSettings and rebalances the base game configs once:
+        /// level exp, attribute limits, artifact stats, skill mastery exp, skill MP cost/CD/requirements,
+        /// item prices by item type (PriceHelper), pill effects, furnace durability, recipe/refine prices, skill prices and pet (potmon) stats.
+        /// </summary>
         public override void OnLoadClass(bool isNew, string modId, CacheAttribute attr)
         {
             base.OnLoadClass(isNew, modId, attr);

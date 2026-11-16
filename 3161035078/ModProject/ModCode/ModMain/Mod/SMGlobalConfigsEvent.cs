@@ -17,6 +17,10 @@ using UnityEngine;
 
 namespace MOD_nE7UL2.Mod
 {
+    /// <summary>
+    /// S&amp;M (sadism &amp; masochism) difficulty configs, edited on the title screen and saved globally.
+    /// Copied into each new save by SMLocalConfigsEvent. Each option has a score; the total gives the difficulty.
+    /// </summary>
     [Cache(ModConst.SM_GLOBAL_CONFIGS_EVENT, CacheType = CacheAttribute.CType.Global, WorkOn = CacheAttribute.WType.Global)]
     public class SMGlobalConfigsEvent : ModEvent
     {
@@ -148,6 +152,9 @@ namespace MOD_nE7UL2.Mod
         [JsonIgnore]
         public IList<SMItemWork> ScoreCalculator { get; } = new List<SMItemWork>();
 
+        /// <summary>
+        /// Builds the option/score registry.
+        /// </summary>
         public override void OnLoadClass(bool isNew, string modId, CacheAttribute attr)
         {
             base.OnLoadClass(isNew, modId, attr);
@@ -396,6 +403,9 @@ namespace MOD_nE7UL2.Mod
                 funcCond: s => s.Get().Parse<bool>());
         }
 
+        /// <summary>
+        /// Registers one UI component with its score calculator and condition.
+        /// </summary>
         private void Register(
             Func<UIItemBase> funcComp,
             Func<UIItemBase, int> funcCal,
@@ -429,6 +439,9 @@ namespace MOD_nE7UL2.Mod
             });
         }
 
+        /// <summary>
+        /// Adds the "S&amp;M Configs" button to the title screen.
+        /// </summary>
         public override void OnOpenUIEnd(OpenUIEnd e)
         {
             base.OnOpenUIEnd(e);
@@ -446,6 +459,9 @@ namespace MOD_nE7UL2.Mod
             }
         }
 
+        /// <summary>
+        /// Opens the S&amp;M configs window (sliders/toggles for every option, presets, import/export).
+        /// </summary>
         private void OpenSMConfigs()
         {
             uiCustom = new UICustom1(TITLE, string.Empty, SetSMConfigs, true);
@@ -581,9 +597,9 @@ namespace MOD_nE7UL2.Mod
                 tglSysNoExpFromBattle = uiCustom.AddCompositeToggle(col, row++, GameTool.LS("smcfgs040"), NoExpFromBattles, GameTool.LS("smcfgs102"));
                 tglNoTaxing = uiCustom.AddCompositeToggle(col, row++, GameTool.LS("smcfgs122"), NoTaxing, GameTool.LS("smcfgs102"));
                 uiCustom.AddText(col, row++, GameTool.LS("smcfgs126")).Format(null, 13).Align(TextAnchor.MiddleLeft);
-                tglNoMarketItem = uiCustom.AddCompositeToggle(col, row++, GameTool.LS("smcfgs123"), NoExpFromBattles, GameTool.LS("smcfgs102"));
+                tglNoMarketItem = uiCustom.AddCompositeToggle(col, row++, GameTool.LS("smcfgs123"), NoMarketItem, GameTool.LS("smcfgs102"));
                 uiCustom.AddText(col, row++, GameTool.LS("smcfgs128")).Format(null, 13).Align(TextAnchor.MiddleLeft);
-                tglNoStalker = uiCustom.AddCompositeToggle(col, row++, GameTool.LS("smcfgs124"), NoExpFromBattles, GameTool.LS("smcfgs102"));
+                tglNoStalker = uiCustom.AddCompositeToggle(col, row++, GameTool.LS("smcfgs124"), NoStalker, GameTool.LS("smcfgs102"));
                 tglNoQiCultivation = uiCustom.AddCompositeToggle(col, row++, GameTool.LS("smcfgs125"), NoQiCultivation, GameTool.LS("smcfgs102"));
                 row++;
                 tglAllowRepairGodWeapon = uiCustom.AddCompositeToggle(col, row++, GameTool.LS("smcfgs137"), AllowRepairGodWeapon, GameTool.LS("smcfgs102"));
@@ -597,6 +613,9 @@ namespace MOD_nE7UL2.Mod
             uiCustom.Pages[0].Active();
         }
 
+        /// <summary>
+        /// Writes the configs to a file.
+        /// </summary>
         private void ExportConfigs()
         {
             CacheHelper.SaveGlobalCache(this);
@@ -620,6 +639,9 @@ namespace MOD_nE7UL2.Mod
             }
         }
 
+        /// <summary>
+        /// Reads configs from a file.
+        /// </summary>
         private void ImportConfigs()
         {
             using (var dialog = new System.Windows.Forms.OpenFileDialog
@@ -644,16 +666,25 @@ namespace MOD_nE7UL2.Mod
             }
         }
 
+        /// <summary>
+        /// Opens the mod cache folder.
+        /// </summary>
         private void OpenSaveDataFolder()
         {
             Process.Start("explorer.exe", CacheHelper.GetCacheFolderName(ModId));
         }
 
+        /// <summary>
+        /// Opens mod_configs.json.
+        /// </summary>
         private void OpenModConfigs()
         {
             Process.Start("notepad.exe", ConfHelper.GetConfFilePath(ModId, "mod_configs.json"));
         }
 
+        /// <summary>
+        /// Adds the difficulty preset buttons.
+        /// </summary>
         private void AddDifButtons()
         {
             int col = 30, row = 0;
@@ -676,6 +707,9 @@ namespace MOD_nE7UL2.Mod
             uiCustom.AddText(uiCustom.MidCol, uiCustom.LastRow, GameTool.LS("smcfgs046")).Format(Color.red, 17);
         }
 
+        /// <summary>
+        /// Binds UI components to config properties.
+        /// </summary>
         private void SetWork()
         {
             foreach (var wk in ScoreCalculator)
@@ -685,6 +719,9 @@ namespace MOD_nE7UL2.Mod
             }
         }
 
+        /// <summary>
+        /// Resets every option to the base preset.
+        /// </summary>
         private void SetLevelBase()
         {
             slMonstAtk.Set(0f);
@@ -740,6 +777,9 @@ namespace MOD_nE7UL2.Mod
             tglAllFunctionsApplyToNearestUnits.Set(false);
         }
 
+        /// <summary>
+        /// Applies a difficulty preset.
+        /// </summary>
         private void SetLevel(int level)
         {
             slMonstAtk.SetPercent(level * 0.04000f);
@@ -795,6 +835,9 @@ namespace MOD_nE7UL2.Mod
             tglLostMoneyWhenDie.Set(level > 0);
         }
 
+        /// <summary>
+        /// Copies the UI values into the config properties.
+        /// </summary>
         private void SetSMConfigs()
         {
             AddAtkRate = slMonstAtk.Get().Parse<float>();
@@ -854,6 +897,9 @@ namespace MOD_nE7UL2.Mod
             g.conf.npcInitParameters.GetItem(1).value = NPCAmount;
         }
 
+        /// <summary>
+        /// Score of one component.
+        /// </summary>
         public static int CalCompScore(UIItemBase comp)
         {
             var x = Instance.ScoreCalculator.FirstOrDefault(k => k.Comp.Invoke() == comp);
@@ -862,6 +908,9 @@ namespace MOD_nE7UL2.Mod
             return x.Cal.Invoke(comp);
         }
 
+        /// <summary>
+        /// True when the component is enabled.
+        /// </summary>
         public static bool IsEnableComp(UIItemBase comp)
         {
             var x = Instance.ScoreCalculator.FirstOrDefault(k => k.Comp.Invoke() == comp);
@@ -870,6 +919,9 @@ namespace MOD_nE7UL2.Mod
             return x != null && x.Cond.Invoke(comp) && comp.IsEnable();
         }
 
+        /// <summary>
+        /// Total difficulty score.
+        /// </summary>
         public static int CalSMTotalScore()
         {
             var rs = 0;

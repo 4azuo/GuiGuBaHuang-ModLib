@@ -245,7 +245,15 @@ The code is usually fine. The projects compile against `<game>\MelonLoader\Manag
 
 **3. Testing in game**
 
-`scripts\game\run-game.ps1` starts the game and follows Player.log, MelonLoader and ModLib logs live, then saves them to `logs\game-runs\<time>\`. Details: [.github/docs/06-Debug.md](.github/docs/06-Debug.md).
+`scripts\game\run-game.ps1` starts the game and follows Player.log, MelonLoader and ModLib logs live, then saves them to `logs\game-runs\<time>\`. Details: [docs/06-Debug.md](docs/06-Debug.md).
+
+`scripts\game\run-autotest.ps1 -Save <test save>` runs the Taoist test scenarios in the game and writes the evidence (screenshots of every step, logs) to `logs\autotest\<time>\`. Open `test-viewer\index.html` to browse the results of every autotest and unit test run. Details: [docs/Taoist/04-Autotest.md](docs/Taoist/04-Autotest.md).
+
+**4. Documentation**
+
+- ModLib: [docs/ModLib/00-Architecture.md](docs/ModLib/00-Architecture.md)
+- Taoist: [docs/Taoist/00-Overview.md](docs/Taoist/00-Overview.md)
+- Getting started / configs / helpers: [docs/](docs/)
 
 
 

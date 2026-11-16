@@ -8,6 +8,10 @@ using static MOD_nE7UL2.Object.ModStts;
 
 namespace MOD_nE7UL2.Mod
 {
+    /// <summary>
+    /// Inflation: the world price index grows every year; most prices are scaled by it.
+    /// When the index exceeds LIMIT a currency reform ("corruption") divides all money by 10000.
+    /// </summary>
     [Cache(ModConst.INFLATIONARY_EVENT)]
     public class InflationaryEvent : ModEvent
     {
@@ -21,6 +25,9 @@ namespace MOD_nE7UL2.Mod
         public int Corruption { get; set; } = 0;
         public int WorldPrice { get; set; } = -1;
 
+        /// <summary>
+        /// First load: computes the index from the game year; applies it to the economy.
+        /// </summary>
         public override void OnLoadGame()
         {
             base.OnLoadGame();
@@ -35,6 +42,9 @@ namespace MOD_nE7UL2.Mod
             EconomyHelper.SetWorldPrice(WorldPrice);
         }
 
+        /// <summary>
+        /// Raises the index by the inflation rate and checks the limit.
+        /// </summary>
         public override void OnYearly()
         {
             base.OnYearly();
@@ -43,6 +53,9 @@ namespace MOD_nE7UL2.Mod
             Corrupt();
         }
 
+        /// <summary>
+        /// Currency reform: resets the index, divides money of player/NPCs, cuts town/sect budgets by 80 %, clears the market, shows a drama.
+        /// </summary>
         private void Corrupt()
         {
             if (EconomyHelper.GetWorldPrice() > LIMIT)
@@ -60,7 +73,8 @@ namespace MOD_nE7UL2.Mod
                 //affect to npc
                 foreach (var wunit in GetModChildParameterStore().WUnits)
                 {
-                    if (wunit != null && !wunit.isDie)
+                    // the player is in WUnits too: already divided above (was divided twice -> 0, autotest TX-02)
+                    if (wunit != null && !wunit.isDie && !wunit.IsPlayer())
                     {
                         wunit.SetUnitMoney(wunit.GetUnitMoney() / 10000);
                     }
@@ -79,13 +93,20 @@ namespace MOD_nE7UL2.Mod
             }
         }
 
+        /// <summary>
+        /// Scales a base price by the world price index (index 100 = x1).
+        /// </summary>
         public static int CalculateInflationary(int originValue)
         {
             if (originValue <= 0)
                 return originValue;
-            return Convert.ToInt32((EconomyHelper.GetWorldPrice() / 100f) * originValue);
+            // clamped: Convert.ToInt32 threw OverflowException for big prices with a high index
+            return ValueHelper.SafeMulInt(originValue, EconomyHelper.GetWorldPrice() / 100d);
         }
 
+        /// <summary>
+        /// Scales a base price by the world price index (index 100 = x1).
+        /// </summary>
         public static long CalculateInflationary(long originValue)
         {
             if (originValue <= 0)

@@ -8,11 +8,17 @@ using ModLib.Object;
 
 namespace MOD_nE7UL2.Mod
 {
+    /// <summary>
+    /// Cultivate with spirit stones: pay money for exp in the FateFeature UI.
+    /// </summary>
     [Cache(ModConst.USE_SPIRIT_STONE_CUL_EVENT)]
     public class UseSpiritStoneCulEvent : ModEvent
     {
         public static UseSpiritStoneCulEvent Instance { get; set; }
 
+        /// <summary>
+        /// Adds the button (exp not full): exp from grade, talent and basis.
+        /// </summary>
         public override void OnOpenUIEnd(OpenUIEnd e)
         {
             base.OnOpenUIEnd(e);
@@ -35,7 +41,9 @@ namespace MOD_nE7UL2.Mod
                                 var exp = (100 * playerGradeLvl * insightRate * basisRate * CommonTool.Random(0.8f, 1.2f)).Parse<int>();
                                 player.AddUnitMoney(-requiringMoney);
                                 player.AddExp(exp);
-                                ui.UI.UpdateUI();
+                                // UIFateFeature.UpdateUI throws NRE when no grade is selected (lastSelect == null)
+                                if (ui.UI.lastSelect != null)
+                                    ui.UI.UpdateUI();
                                 g.ui.MsgBox(string.Empty, string.Format(GameTool.LS("other500020070"), requiringMoney, exp));
                             }
                             else

@@ -32,6 +32,9 @@ namespace MOD_nE7UL2.Mod
 
         public IDictionary<string, float> MarketPriceRate { get; set; } = new Dictionary<string, float>();
 
+        /// <summary>
+        /// Initializes the rate of each market town.
+        /// </summary>
         public override void OnLoadGame()
         {
             base.OnLoadGame();
@@ -44,6 +47,9 @@ namespace MOD_nE7UL2.Mod
             }
         }
 
+        /// <summary>
+        /// Randomizes the buy rate (plus market events).
+        /// </summary>
         public override void OnMonthly()
         {
             base.OnMonthly();
@@ -54,6 +60,9 @@ namespace MOD_nE7UL2.Mod
             }
         }
 
+        /// <summary>
+        /// TownMarketBuy: shows budget and rate; PropSelectCount: applies the rate to the unit price and credits the town budget on OK.
+        /// </summary>
         [EventCondition(IsInGame = HandleEnum.True, IsInBattle = HandleEnum.False)]
         public override void OnOpenUIEnd(OpenUIEnd e)
         {
@@ -94,6 +103,9 @@ namespace MOD_nE7UL2.Mod
             }
         }
 
+        /// <summary>
+        /// Buy rate of a town for a unit (merchant, town master/guardian discounts).
+        /// </summary>
         public static float GetBuyRate(MapBuildTown town, WorldUnitBase wunit)
         {
             var r = Instance.MarketPriceRate[town.buildData.id];

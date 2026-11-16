@@ -10,6 +10,9 @@ using ModLib.Helper;
 
 namespace MOD_nE7UL2.Mod
 {
+    /// <summary>
+    /// Mana shield: humans start battles with a shield from MP, blood energy, fist basis and refine bonuses.
+    /// </summary>
     [Cache(ModConst.BATTLE_MANASHIELD_EVENT)]
     public class BattleManashieldEvent : ModEvent
     {
@@ -20,17 +23,26 @@ namespace MOD_nE7UL2.Mod
 
         public static _BattleManashieldConfigs ManashieldConfigs => ModMain.ModObj.ModSettings.BattleManashieldConfigs;
 
+        /// <summary>
+        /// Shields every human.
+        /// </summary>
         public override void OnBattleUnitInto(UnitCtrlBase e)
         {
             base.OnBattleUnitInto(e);
             ShieldUpHuman(e);
         }
 
+        /// <summary>
+        /// Initial shield of a unit.
+        /// </summary>
         public static int GetInitShield(WorldUnitBase wunit)
         {
             return GetManashieldBase(wunit) + GetManashieldBasePlus(wunit);
         }
 
+        /// <summary>
+        /// Adds the shield effect to a battle unit.
+        /// </summary>
         public static EffectBase ShieldUp(UnitCtrlBase cunit, int shield, int maxShield)
         {
             if (cunit == null || ModBattleEvent.SceneBattle.battleEnd.isEnd)
@@ -52,6 +64,9 @@ namespace MOD_nE7UL2.Mod
             return efx;
         }
 
+        /// <summary>
+        /// Shields a human unit (max = max HP).
+        /// </summary>
         public static void ShieldUpHuman(UnitCtrlBase e)
         {
             if (e.IsHuman())
@@ -63,6 +78,9 @@ namespace MOD_nE7UL2.Mod
             }
         }
 
+        /// <summary>
+        /// Blood energy level from lucks.
+        /// </summary>
         private static int GetBloodEnergyLevel(WorldUnitBase wunit)
         {
             if (wunit.GetLuck(700094) != null)
@@ -74,11 +92,17 @@ namespace MOD_nE7UL2.Mod
             return 0;
         }
 
+        /// <summary>
+        /// True with the Warlord Phantom luck.
+        /// </summary>
         private static bool IsWarlordPhantom(UnitDataHuman humanData)
         {
             return humanData.worldUnitData.unit.GetLuck(700026) != null;
         }
 
+        /// <summary>
+        /// Shield from MP, max MP, HP (blood energy) and fist basis x defense.
+        /// </summary>
         public static int GetManashieldBase(WorldUnitBase wunit)
         {
             return (wunit.GetDynProperty(UnitDynPropertyEnum.Mp).value * ManashieldConfigs.ManaShieldRate1).Parse<int>() +
@@ -87,6 +111,9 @@ namespace MOD_nE7UL2.Mod
                 (wunit.GetDynProperty(UnitDynPropertyEnum.BasisFist).value / 100.00f * wunit.GetDynProperty(UnitDynPropertyEnum.Defense).value).Parse<int>();
         }
 
+        /// <summary>
+        /// Shield from refine adjustments.
+        /// </summary>
         public static int GetManashieldBasePlus(WorldUnitBase wunit)
         {
             return Convert.ToInt32(CustomRefineEvent.GetCustomAdjValue(wunit, AdjTypeEnum.Manashield));

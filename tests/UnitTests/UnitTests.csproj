@@ -1,0 +1,59 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <!--
+    Unit tests of ModLib and Taoist code that does not need the running game (pure helpers, formulas, configs).
+    Il2Cpp game types can only be used in the game: they are referenced for compilation only and resolved
+    from <game>\MelonLoader\Managed at runtime (see TestSetup.cs).
+    Build ModLib and Taoist first (Release); run: scripts\run-unittests.ps1
+  -->
+
+  <PropertyGroup>
+    <TargetFramework>net472</TargetFramework>
+    <LangVersion>latest</LangVersion>
+    <IsPackable>false</IsPackable>
+    <IsTestProject>true</IsTestProject>
+    <RootNamespace>UnitTests</RootNamespace>
+    <GameFolder Condition="'$(GameFolder)' == ''">C:\Program Files (x86)\Steam\steamapps\common\鬼谷八荒</GameFolder>
+    <GameManaged>$(GameFolder)\MelonLoader\Managed</GameManaged>
+    <RepoRoot>$([System.IO.Path]::GetFullPath('$(MSBuildProjectDirectory)\..\..'))</RepoRoot>
+    <NoWarn>$(NoWarn);MSB3270;MSB3277</NoWarn>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.11.1" />
+    <PackageReference Include="MSTest.TestAdapter" Version="3.6.1" />
+    <PackageReference Include="MSTest.TestFramework" Version="3.6.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <!-- code under test (build output of the mods) -->
+    <Reference Include="ModLib">
+      <HintPath>$(RepoRoot)\3385996759\debug\Mod_flQrxq\ModCode\dll\ModLib.dll</HintPath>
+      <Private>true</Private>
+    </Reference>
+    <Reference Include="MOD_nE7UL2">
+      <HintPath>$(RepoRoot)\3161035078\debug\Mod_nE7UL2\ModCode\dll\MOD_nE7UL2.dll</HintPath>
+      <Private>true</Private>
+    </Reference>
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>$(RepoRoot)\3385996759\debug\Mod_flQrxq\ModCode\dll\Newtonsoft.Json.dll</HintPath>
+      <Private>true</Private>
+    </Reference>
+    <!-- game assemblies: compile-time only, resolved from the game folder at runtime -->
+    <Reference Include="$(GameManaged)\Assembly-CSharp.dll;$(GameManaged)\UnhollowerBaseLib.dll;$(GameManaged)\Il2Cppmscorlib.dll;$(GameManaged)\Il2CppSystem.dll;$(GameManaged)\UnityEngine.CoreModule.dll;$(GameManaged)\UnityEngine.UI.dll;$(GameManaged)\UnityEngine.UIModule.dll;$(GameManaged)\UnityEngine.TextRenderingModule.dll">
+      <Private>false</Private>
+    </Reference>
+  </ItemGroup>
+
+  <ItemGroup>
+    <AssemblyAttribute Include="System.Reflection.AssemblyMetadataAttribute">
+      <_Parameter1>GameManaged</_Parameter1>
+      <_Parameter2>$(GameManaged)</_Parameter2>
+    </AssemblyAttribute>
+    <AssemblyAttribute Include="System.Reflection.AssemblyMetadataAttribute">
+      <_Parameter1>RepoRoot</_Parameter1>
+      <_Parameter2>$(RepoRoot)</_Parameter2>
+    </AssemblyAttribute>
+  </ItemGroup>
+
+</Project>

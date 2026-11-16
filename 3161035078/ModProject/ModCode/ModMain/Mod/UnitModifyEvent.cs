@@ -11,6 +11,10 @@ using ModLib.Attributes;
 
 namespace MOD_nE7UL2.Mod
 {
+    /// <summary>
+    /// Hooks Taoist bonuses into units: DynInt add-handlers for attack, defense, max HP/MP/SP/DP, speed and basis,
+    /// and battle cooldown modifiers.
+    /// </summary>
     [Cache(ModConst.UNIT_MODIFY_EVENT)]
     public class UnitModifyEvent : ModEvent
     {
@@ -21,6 +25,9 @@ namespace MOD_nE7UL2.Mod
         [JsonIgnore]
         public Dictionary<string, int> CachedValues { get; } = new Dictionary<string, int>();
 
+        /// <summary>
+        /// Hooks every unit.
+        /// </summary>
         public override void OnLoadGame()
         {
             base.OnLoadGame();
@@ -30,18 +37,27 @@ namespace MOD_nE7UL2.Mod
             }
         }
 
+        /// <summary>
+        /// Clears cached values.
+        /// </summary>
         public override void OnMonthly()
         {
             base.OnMonthly();
             CachedValues.Clear();
         }
 
+        /// <summary>
+        /// Hooks new units.
+        /// </summary>
         public override void OnMonthlyForEachWUnit(WorldUnitBase wunit)
         {
             base.OnMonthlyForEachWUnit(wunit);
             AddWUnitModifier(wunit);
         }
 
+        /// <summary>
+        /// Adds the GetAdjust* handlers to the unit DynInts (once per unit).
+        /// </summary>
         private void AddWUnitModifier(WorldUnitBase wunit)
         {
             var unitId = wunit.GetUnitId();
@@ -131,12 +147,18 @@ namespace MOD_nE7UL2.Mod
             }
         }
 
+        /// <summary>
+        /// Hooks cooldown modifiers on battle units.
+        /// </summary>
         public override void OnBattleUnitInto(UnitCtrlBase cunit)
         {
             base.OnBattleUnitInto(cunit);
             AddCUnitModifier(cunit);
         }
 
+        /// <summary>
+        /// Adds item/skill cooldown handlers.
+        /// </summary>
         private void AddCUnitModifier(UnitCtrlBase cunit)
         {
             if (cunit != null && cunit.IsWorldUnit())
@@ -166,6 +188,10 @@ namespace MOD_nE7UL2.Mod
         }
 
         #region WUnit
+        /// <summary>
+        /// Extra atk the mod adds to the world unit (artifacts, expertise, refine adjustments, Qi...).
+        /// Cached per unit per month in CachedValues (always recalculated for the player outside battle); hooked into the DynInt by AddWUnitModifier.
+        /// </summary>
         public static int GetAdjustAtk(WorldUnitBase wunit)
         {
             var k = $"{wunit.GetUnitId()}_atk";
@@ -212,6 +238,10 @@ namespace MOD_nE7UL2.Mod
             return Instance.CachedValues[k];
         }
 
+        /// <summary>
+        /// Extra def the mod adds to the world unit (artifacts, expertise, refine adjustments, Qi...).
+        /// Cached per unit per month in CachedValues (always recalculated for the player outside battle); hooked into the DynInt by AddWUnitModifier.
+        /// </summary>
         public static int GetAdjustDef(WorldUnitBase wunit)
         {
             var k = $"{wunit.GetUnitId()}_def";
@@ -259,6 +289,10 @@ namespace MOD_nE7UL2.Mod
             return Instance.CachedValues[k];
         }
 
+        /// <summary>
+        /// Extra max hp the mod adds to the world unit (artifacts, expertise, refine adjustments, Qi...).
+        /// Cached per unit per month in CachedValues (always recalculated for the player outside battle); hooked into the DynInt by AddWUnitModifier.
+        /// </summary>
         public static int GetAdjustMaxHp(WorldUnitBase wunit)
         {
             var k = $"{wunit.GetUnitId()}_mhp";
@@ -309,6 +343,10 @@ namespace MOD_nE7UL2.Mod
             return Instance.CachedValues[k];
         }
 
+        /// <summary>
+        /// Extra max mp the mod adds to the world unit (artifacts, expertise, refine adjustments, Qi...).
+        /// Cached per unit per month in CachedValues (always recalculated for the player outside battle); hooked into the DynInt by AddWUnitModifier.
+        /// </summary>
         public static int GetAdjustMaxMp(WorldUnitBase wunit)
         {
             var k = $"{wunit.GetUnitId()}_mmp";
@@ -347,6 +385,10 @@ namespace MOD_nE7UL2.Mod
             return Instance.CachedValues[k];
         }
 
+        /// <summary>
+        /// Extra max sp the mod adds to the world unit (artifacts, expertise, refine adjustments, Qi...).
+        /// Cached per unit per month in CachedValues (always recalculated for the player outside battle); hooked into the DynInt by AddWUnitModifier.
+        /// </summary>
         public static int GetAdjustMaxSp(WorldUnitBase wunit)
         {
             var k = $"{wunit.GetUnitId()}_msp";
@@ -378,6 +420,10 @@ namespace MOD_nE7UL2.Mod
             return Instance.CachedValues[k];
         }
 
+        /// <summary>
+        /// Extra max dp the mod adds to the world unit (artifacts, expertise, refine adjustments, Qi...).
+        /// Cached per unit per month in CachedValues (always recalculated for the player outside battle); hooked into the DynInt by AddWUnitModifier.
+        /// </summary>
         public static int GetAdjustMaxDp(WorldUnitBase wunit)
         {
             var k = $"{wunit.GetUnitId()}_mdp";
@@ -397,6 +443,10 @@ namespace MOD_nE7UL2.Mod
             return Instance.CachedValues[k];
         }
 
+        /// <summary>
+        /// Extra speed the mod adds to the world unit (artifacts, expertise, refine adjustments, Qi...).
+        /// Cached per unit per month in CachedValues (always recalculated for the player outside battle); hooked into the DynInt by AddWUnitModifier.
+        /// </summary>
         public static int GetAdjustSpeed(WorldUnitBase wunit)
         {
             var k = $"{wunit.GetUnitId()}_speed";
@@ -424,6 +474,10 @@ namespace MOD_nE7UL2.Mod
             return Instance.CachedValues[k];
         }
 
+        /// <summary>
+        /// Extra blade the mod adds to the world unit (artifacts, expertise, refine adjustments, Qi...).
+        /// Cached per unit per month in CachedValues (always recalculated for the player outside battle); hooked into the DynInt by AddWUnitModifier.
+        /// </summary>
         public static int GetAdjustBlade(WorldUnitBase wunit)
         {
             var k = $"{wunit.GetUnitId()}_blade";
@@ -441,6 +495,10 @@ namespace MOD_nE7UL2.Mod
             return Instance.CachedValues[k];
         }
 
+        /// <summary>
+        /// Extra earth the mod adds to the world unit (artifacts, expertise, refine adjustments, Qi...).
+        /// Cached per unit per month in CachedValues (always recalculated for the player outside battle); hooked into the DynInt by AddWUnitModifier.
+        /// </summary>
         public static int GetAdjustEarth(WorldUnitBase wunit)
         {
             var k = $"{wunit.GetUnitId()}_earth";
@@ -458,6 +516,10 @@ namespace MOD_nE7UL2.Mod
             return Instance.CachedValues[k];
         }
 
+        /// <summary>
+        /// Extra finger the mod adds to the world unit (artifacts, expertise, refine adjustments, Qi...).
+        /// Cached per unit per month in CachedValues (always recalculated for the player outside battle); hooked into the DynInt by AddWUnitModifier.
+        /// </summary>
         public static int GetAdjustFinger(WorldUnitBase wunit)
         {
             var k = $"{wunit.GetUnitId()}_finger";
@@ -475,6 +537,10 @@ namespace MOD_nE7UL2.Mod
             return Instance.CachedValues[k];
         }
 
+        /// <summary>
+        /// Extra fire the mod adds to the world unit (artifacts, expertise, refine adjustments, Qi...).
+        /// Cached per unit per month in CachedValues (always recalculated for the player outside battle); hooked into the DynInt by AddWUnitModifier.
+        /// </summary>
         public static int GetAdjustFire(WorldUnitBase wunit)
         {
             var k = $"{wunit.GetUnitId()}_fire";
@@ -492,6 +558,10 @@ namespace MOD_nE7UL2.Mod
             return Instance.CachedValues[k];
         }
 
+        /// <summary>
+        /// Extra fist the mod adds to the world unit (artifacts, expertise, refine adjustments, Qi...).
+        /// Cached per unit per month in CachedValues (always recalculated for the player outside battle); hooked into the DynInt by AddWUnitModifier.
+        /// </summary>
         public static int GetAdjustFist(WorldUnitBase wunit)
         {
             var k = $"{wunit.GetUnitId()}_fist";
@@ -509,6 +579,10 @@ namespace MOD_nE7UL2.Mod
             return Instance.CachedValues[k];
         }
 
+        /// <summary>
+        /// Extra froze the mod adds to the world unit (artifacts, expertise, refine adjustments, Qi...).
+        /// Cached per unit per month in CachedValues (always recalculated for the player outside battle); hooked into the DynInt by AddWUnitModifier.
+        /// </summary>
         public static int GetAdjustFroze(WorldUnitBase wunit)
         {
             var k = $"{wunit.GetUnitId()}_froze";
@@ -526,6 +600,10 @@ namespace MOD_nE7UL2.Mod
             return Instance.CachedValues[k];
         }
 
+        /// <summary>
+        /// Extra palm the mod adds to the world unit (artifacts, expertise, refine adjustments, Qi...).
+        /// Cached per unit per month in CachedValues (always recalculated for the player outside battle); hooked into the DynInt by AddWUnitModifier.
+        /// </summary>
         public static int GetAdjustPalm(WorldUnitBase wunit)
         {
             var k = $"{wunit.GetUnitId()}_pallm";
@@ -543,6 +621,10 @@ namespace MOD_nE7UL2.Mod
             return Instance.CachedValues[k];
         }
 
+        /// <summary>
+        /// Extra spear the mod adds to the world unit (artifacts, expertise, refine adjustments, Qi...).
+        /// Cached per unit per month in CachedValues (always recalculated for the player outside battle); hooked into the DynInt by AddWUnitModifier.
+        /// </summary>
         public static int GetAdjustSpear(WorldUnitBase wunit)
         {
             var k = $"{wunit.GetUnitId()}_spear";
@@ -560,6 +642,10 @@ namespace MOD_nE7UL2.Mod
             return Instance.CachedValues[k];
         }
 
+        /// <summary>
+        /// Extra sword the mod adds to the world unit (artifacts, expertise, refine adjustments, Qi...).
+        /// Cached per unit per month in CachedValues (always recalculated for the player outside battle); hooked into the DynInt by AddWUnitModifier.
+        /// </summary>
         public static int GetAdjustSword(WorldUnitBase wunit)
         {
             var k = $"{wunit.GetUnitId()}_sword";
@@ -577,6 +663,10 @@ namespace MOD_nE7UL2.Mod
             return Instance.CachedValues[k];
         }
 
+        /// <summary>
+        /// Extra thunder the mod adds to the world unit (artifacts, expertise, refine adjustments, Qi...).
+        /// Cached per unit per month in CachedValues (always recalculated for the player outside battle); hooked into the DynInt by AddWUnitModifier.
+        /// </summary>
         public static int GetAdjustThunder(WorldUnitBase wunit)
         {
             var k = $"{wunit.GetUnitId()}_thunder";
@@ -594,6 +684,10 @@ namespace MOD_nE7UL2.Mod
             return Instance.CachedValues[k];
         }
 
+        /// <summary>
+        /// Extra wind the mod adds to the world unit (artifacts, expertise, refine adjustments, Qi...).
+        /// Cached per unit per month in CachedValues (always recalculated for the player outside battle); hooked into the DynInt by AddWUnitModifier.
+        /// </summary>
         public static int GetAdjustWind(WorldUnitBase wunit)
         {
             var k = $"{wunit.GetUnitId()}_wind";
@@ -611,6 +705,10 @@ namespace MOD_nE7UL2.Mod
             return Instance.CachedValues[k];
         }
 
+        /// <summary>
+        /// Extra wood the mod adds to the world unit (artifacts, expertise, refine adjustments, Qi...).
+        /// Cached per unit per month in CachedValues (always recalculated for the player outside battle); hooked into the DynInt by AddWUnitModifier.
+        /// </summary>
         public static int GetAdjustWood(WorldUnitBase wunit)
         {
             var k = $"{wunit.GetUnitId()}_wood";
@@ -630,6 +728,9 @@ namespace MOD_nE7UL2.Mod
         #endregion
 
         #region CUnit
+        /// <summary>
+        /// Item/artifact cooldown change from refine adjustments.
+        /// </summary>
         public static int GetItemCD(UnitCtrlBase cunit, DynInt baseValue)
         {
             if (!cunit.IsWorldUnit())
@@ -643,6 +744,9 @@ namespace MOD_nE7UL2.Mod
             return rs;
         }
 
+        /// <summary>
+        /// Skill/step/ultimate cooldown change from refine adjustments.
+        /// </summary>
         public static int GetSkillCD(UnitCtrlBase cunit, DynInt baseValue)
         {
             if (!cunit.IsWorldUnit())

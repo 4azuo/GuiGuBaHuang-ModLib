@@ -17,6 +17,9 @@ namespace ModLib.Helper
      * https://stackoverflow.com/questions/10168240/encrypting-decrypting-a-string-in-c-sharp
      * A Ghazal
      */
+    /// <summary>
+    /// Simple string encryption/decryption and hashing helpers.
+    /// </summary>
     [ActionCat("Encrypt")]
     public static class EncryptionHelper
     {

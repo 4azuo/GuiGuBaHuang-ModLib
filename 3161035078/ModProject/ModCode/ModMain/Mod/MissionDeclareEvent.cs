@@ -14,6 +14,9 @@ using ModLib.Helper;
 
 namespace MOD_nE7UL2.Mod
 {
+    /// <summary>
+    /// Commissions: order herbs/minerals/breakthrough items at the bounty board; delivered after some months if not failed.
+    /// </summary>
     [Cache(ModConst.MISSION_DECLARE_EVENT)]
     public class MissionDeclareEvent : ModEvent
     {
@@ -26,6 +29,9 @@ namespace MOD_nE7UL2.Mod
 
         public int LastMonthCommission { get; set; }
 
+        /// <summary>
+        /// Builds the list of commissionable items.
+        /// </summary>
         public override void OnLoadGame()
         {
             base.OnLoadGame();
@@ -57,6 +63,9 @@ namespace MOD_nE7UL2.Mod
             }
         }
 
+        /// <summary>
+        /// TownBounty: adds the commission button and the list of running commissions.
+        /// </summary>
         [EventCondition(IsInGame = HandleEnum.True, IsInBattle = HandleEnum.False)]
         public override void OnOpenUIEnd(OpenUIEnd e)
         {
@@ -93,6 +102,9 @@ Your commissions:
             }
         }
 
+        /// <summary>
+        /// Item selector with cost/fee/time/success preview.
+        /// </summary>
         private void SelectCommissionItems()
         {
             var uiTownBounty = g.ui.GetUI<UITownBounty>(UIType.TownBounty);
@@ -154,6 +166,9 @@ Your commissions:
             }
         }
 
+        /// <summary>
+        /// Fills the selector with items matching the town level.
+        /// </summary>
         private void ClearCommisionItems(UITownBounty uiTownBounty, UIPropSelect uiSelector)
         {
             uiSelector.ClearSelectItem();
@@ -176,6 +191,9 @@ Your commissions:
             }
         }
 
+        /// <summary>
+        /// Pays and registers the commission (once per month).
+        /// </summary>
         private void Commission()
         {
             if (UIPropSelect.allSlectDataProps.allProps.Count > 0)
@@ -195,8 +213,12 @@ Your commissions:
             }
         }
 
+        /// <summary>
+        /// Progresses commissions (random failure) and delivers finished ones.
+        /// </summary>
         public override void OnMonthly()
         {
+            base.OnMonthly();
             foreach (var task in CommissionTasks)
             {
                 if (task.Status == CommissionTask.CommissionTaskStatus.Progressing)

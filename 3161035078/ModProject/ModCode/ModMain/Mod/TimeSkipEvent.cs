@@ -10,6 +10,9 @@ using UnityEngine;
 
 namespace MOD_nE7UL2.Mod
 {
+    /// <summary>
+    /// Map buttons to skip 1 or 10 years (one month per second) with exp from MP/SP.
+    /// </summary>
     [Cache(ModConst.TIME_SKIP_EVENT)]
     public class TimeSkipEvent : ModEvent
     {
@@ -18,6 +21,9 @@ namespace MOD_nE7UL2.Mod
         [JsonIgnore]
         public bool IsProcessing { get; set; }
 
+        /// <summary>
+        /// MapMain: adds the skip buttons.
+        /// </summary>
         public override void OnOpenUIEnd(OpenUIEnd e)
         {
             base.OnOpenUIEnd(e);
@@ -44,6 +50,9 @@ namespace MOD_nE7UL2.Mod
             }
         }
 
+        /// <summary>
+        /// Skips one month then schedules the next; saves at the end.
+        /// </summary>
         public void SkipTime(int month)
         {
             IsProcessing = month > 0;
@@ -57,12 +66,20 @@ namespace MOD_nE7UL2.Mod
             {
                 g.world.run.AddDay(g.world.run.roundDayMax + 1);
                 g.world.playerUnit.AddExp(g.world.playerUnit.GetDynProperty(UnitDynPropertyEnum.Mp).value / 10 + g.world.playerUnit.GetDynProperty(UnitDynPropertyEnum.Sp).value / 2);
-                if (GameHelper.GetGameTotalMonth() % SMLocalConfigsEvent.Instance.Configs.GrowUpSpeed == 0)
+                var runEnd = GameHelper.GetGameTotalMonth() % SMLocalConfigsEvent.Instance.Configs.GrowUpSpeed == 0;
+                if (runEnd)
                 {
                     EventHelper.CallGameEvent<WorldRunStart>(EGameType.WorldRunStart);
                     EventHelper.CallGameEvent<WorldRunEnd>(EGameType.WorldRunEnd);
                 }
                 g.world.playerUnit.SetProperty<int>(UnitPropertyEnum.Age, 16 * 12 + GameHelper.GetGameTotalMonth());
+                if (month - 1 <= 0 && runEnd)
+                {
+                    // ModLib OnWorldRunEnd already started a save: a 2nd g.data.SaveData while it runs
+                    // fails (FileNotFoundException on the CacheDataTemp file) and hangs the game
+                    IsProcessing = false;
+                    return;
+                }
                 SkipTime(month - 1);
             }, 1000);
         }

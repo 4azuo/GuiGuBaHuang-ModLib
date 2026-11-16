@@ -1,0 +1,1475 @@
+{
+  "$comment": "Test scenarios of Taoist (3161035078) ModMain/Mod. kind: auto = run by AutoTestEvent (TT title, TG game, TB code-started battles, TX time-changing), watch = run automatically while the tester plays a battle (-WatchBattles), manual = steps for a human tester. Auto/watch ids must match AutoTest/AutoTestScenarios.cs. Docs: docs/Taoist/03-Test-Scenarios.md",
+  "scenarios": [
+    {
+      "id": "TT-01",
+      "kind": "auto",
+      "feature": "UITitleScreenEvent",
+      "title": "Title screen shows Taoist/ModLib buttons and versions are compatible",
+      "description": "Smoke test of the mod installation. On the title screen Taoist adds its own buttons (Taoist version, S&M configs) and ModLib adds its buttons. If they are missing the mods did not load; if ModLib is older than the version Taoist needs, a warning would appear. Passes when all buttons are there and no warning is shown.",
+      "preconditions": "Game started with ModLib and Taoist enabled",
+      "steps": [
+        "Open the title screen",
+        "Close the Workshop description popup"
+      ],
+      "expected": [
+        "ModLib, Taoist and S&M buttons are on the title screen",
+        "Button 'Taoist <version>' exists",
+        "No 'not supported in ModLib' warning (ModLib >= MODLIB_REQUIRED_VERSION)"
+      ]
+    },
+    {
+      "id": "TT-02",
+      "kind": "auto",
+      "feature": "SMGlobalConfigsEvent",
+      "title": "S&M configs window: pages, presets and cancel",
+      "description": "S&M (Settings & Modes) is the global Taoist settings window opened from the title screen: game speed, NPC amount, difficulty presets, etc. The test pages through the window, clicks a difficulty preset to check that the total difficulty score is recalculated, then presses Cancel to check that nothing is saved.",
+      "preconditions": "Title screen",
+      "steps": [
+        "Open S&M Configs",
+        "Look at page 1, go to page 2",
+        "Click Level 3 (score changes), then Default",
+        "Cancel"
+      ],
+      "expected": [
+        "Window with 2 pages",
+        "Valid saved values (GrowUpSpeed >= 1, NPCAmount > 0, StartupPlayerRole in range)",
+        "Preset changes the total score",
+        "Cancel keeps the saved configs"
+      ]
+    },
+    {
+      "id": "TT-03",
+      "kind": "auto",
+      "feature": "UIDifficultyEvent/PriorityDestinyLevel",
+      "title": "New game: difficulty and character creation screens",
+      "description": "Taoist changes the new-game screens: the vanilla difficulty descriptions are replaced, and the S&M option 'priority destiny level' makes destinies of a chosen level appear first when creating a character. The test opens both screens (no character is created) and checks those two behaviours.",
+      "preconditions": "Title screen",
+      "steps": [
+        "Open the difficulty screen",
+        "Set PriorityDestinyLevel=2 and open the character creation screen",
+        "Restore the config, close"
+      ],
+      "expected": [
+        "Vanilla difficulty descriptions are hidden",
+        "Level-2 destinies are prioritised in the creation screen",
+        "Config restored"
+      ],
+      "replaces": [
+        "TM-01",
+        "TM-02"
+      ]
+    },
+    {
+      "id": "TT-04",
+      "kind": "auto",
+      "feature": "ModLib title tools",
+      "title": "ModLib title: language selector and tools",
+      "description": "ModLib's own additions to the title screen: a language selector and a tools window (with the list of config ids defined twice by several mods). The test only checks that these open.",
+      "preconditions": "Title screen",
+      "steps": [
+        "Look at the language selector",
+        "Open the ModLib tools button",
+        "Open the duplicated ids window"
+      ],
+      "expected": [
+        "Language selector shown",
+        "Tools window opens",
+        "Duplicated ids window opens"
+      ],
+      "replaces": [
+        "TM-36"
+      ]
+    },
+    {
+      "id": "TT-05",
+      "kind": "auto",
+      "feature": "SMGlobalConfigsEvent",
+      "title": "S&M configs: OK without change keeps every value",
+      "description": "Opening the global S&M configs and pressing OK without touching anything must keep every value: each control has to save into the same field it was built from (NoMarketItem and NoStalker were built from NoExpFromBattles, so OK silently overwrote them). The global config file is written.",
+      "preconditions": "Title screen",
+      "steps": [
+        "Open S&M Configs",
+        "Press OK"
+      ],
+      "expected": [
+        "Every config value unchanged",
+        "Global config file written"
+      ]
+    },
+    {
+      "id": "TP-01",
+      "kind": "auto",
+      "feature": "Pre-test (new character)",
+      "title": "Create a new character (trainer on, CrueltyShura, 3 artifacts, intro skipped)",
+      "description": "Pre-test: creates a new character for the run in a free save slot (never over an existing save), with the S&M trainer on and the highest difficulty (CrueltyShura). Every other scenario then runs on it, from the same starting state on every run; the created save is removed by the restore after the run. Skipped with -Save / -ExistingSave / -ManualLoad (existing save).",
+      "preconditions": "Title screen, a free save slot",
+      "steps": [
+        "Turn the S&M trainer on (global configs)",
+        "Open the save list, find a free slot",
+        "Difficulty CrueltyShura, amount of NPCs Sparse (faster world creation); character creation, NewGameEvent: tick the 3 divine artifacts + skip intro, OK",
+        "Wait for the world (no intro drama / first battle expected)"
+      ],
+      "expected": [
+        "New save loaded on the map",
+        "Grade 1, CrueltyShura",
+        "Trainer on in the save configs, TrainerEvent loaded",
+        "Bagua Jade, God Eye and Devil Demon pot active; no intro screen and no first battle"
+      ]
+    },
+    {
+      "id": "TG-01",
+      "kind": "auto",
+      "feature": "ModMain",
+      "title": "Taoist settings and events are loaded in the save",
+      "description": "First check after the save is loaded: Taoist read its settings file (mod_configs.json) and created all its feature objects (events). Optional features (Trainer, Qi cultivation, natural upgrade, artifact repair) must exist only when enabled in S&M. If this fails, most other TG scenarios are meaningless.",
+      "preconditions": "Test save loaded (map screen)",
+      "steps": [
+        "Load the save"
+      ],
+      "expected": [
+        "mod_configs.json deserialized",
+        "Core events loaded",
+        "Optional events (Trainer, QiCul, UpgradeNaturally, RepairShinki) loaded only when enabled in S&M configs"
+      ]
+    },
+    {
+      "id": "TG-02",
+      "kind": "auto",
+      "feature": "SMLocalConfigsEvent",
+      "title": "Per-save S&M configs exist and Calculate applies rates",
+      "description": "Each save has its own copy of the S&M settings. Many Taoist features scale a value by an S&M rate through Calculate(value, rate). The test checks the copy exists and that Calculate(100, +50%) = 150, (100, 0%) = 100, (100, -50%) = 50.",
+      "preconditions": "Save loaded",
+      "steps": [
+        "Call Calculate(100, 0.5 / 0 / -0.5)"
+      ],
+      "expected": [
+        "150 / 100 / 50"
+      ]
+    },
+    {
+      "id": "TG-03",
+      "kind": "auto",
+      "feature": "PrepareEvent",
+      "title": "Nearest-units option limits the units used by Taoist events",
+      "description": "Performance option 'All functions apply to nearest units': when on, Taoist's monthly NPC logic only processes NPCs within 3 areas of the player instead of the whole world. The test turns the option on (temporarily), rebuilds the NPC list and checks no far NPC is in it.",
+      "preconditions": "Save loaded (the option is switched on temporarily when off)",
+      "steps": [
+        "Enable the option",
+        "Refresh the Taoist ParameterStore",
+        "Restore the option"
+      ],
+      "expected": [
+        "Only units within +-3 areas of the player",
+        "Towns not filtered",
+        "Option and store restored"
+      ]
+    },
+    {
+      "id": "TG-04",
+      "kind": "auto",
+      "feature": "InflationaryEvent",
+      "title": "World price index is applied to prices",
+      "description": "Inflation: Taoist keeps a world price index that grows every year and multiplies prices. The test checks the saved index equals the game economy index, is in a sane range, and that CalculateInflationary(1000) applies it while negative values stay unchanged.",
+      "preconditions": "Save loaded",
+      "steps": [
+        "Read the world price index",
+        "CalculateInflationary(1000), CalculateInflationary(-5)"
+      ],
+      "expected": [
+        "Saved WorldPrice = economy index, 0 < index <= 10000",
+        "1000 x index/100",
+        "Negative values unchanged"
+      ]
+    },
+    {
+      "id": "TG-05",
+      "kind": "auto",
+      "feature": "UnitTypeEvent",
+      "title": "Units receive a role",
+      "description": "Every unit (player and NPCs) gets a role (e.g. merchant, trainee, apprentice...) that gives a luck/bonus. The test checks that units have a role and that the player has the luck of its role.",
+      "preconditions": "Save loaded (on a new save the monthly handler is run once)",
+      "steps": [
+        "Assign roles when missing",
+        "Read roles"
+      ],
+      "expected": [
+        "Player and NPCs have a role",
+        "Player has the luck of its role"
+      ]
+    },
+    {
+      "id": "TG-06",
+      "kind": "auto",
+      "feature": "NpcAutoEvent",
+      "title": "NPC without full exp gains exp monthly",
+      "description": "NPCs that are not at full cultivation exp gain exp automatically every month (so the world does not fall behind the player). The test runs the monthly NPC handler once for one NPC and checks its exp went up.",
+      "preconditions": "An NPC without full exp exists",
+      "steps": [
+        "Run the monthly NPC handler once for that NPC"
+      ],
+      "expected": [
+        "NPC exp increases"
+      ]
+    },
+    {
+      "id": "TG-07",
+      "kind": "auto",
+      "feature": "ExpertEvent",
+      "title": "Expertise exp formulas",
+      "description": "Expertise: using a martial skill in battle raises an expertise level that gives bonuses. The test checks the exp needed per level (0/1000/2000/4000) and that adding exp works (on a temporary id, removed afterwards).",
+      "preconditions": "Save loaded",
+      "steps": [
+        "GetExpertNeedExp for several levels",
+        "AddExpertExp on a temporary id"
+      ],
+      "expected": [
+        "0 / 1000 / 2000 / 4000",
+        "Exp is added (temporary id removed afterwards)"
+      ]
+    },
+    {
+      "id": "TG-08",
+      "kind": "auto",
+      "feature": "CustomRefineEvent",
+      "title": "Refine exp API",
+      "description": "Custom refine: items refined at a small-town forge gain refine exp. The test calls the API directly: invalid inputs are rejected and 100 + 50 exp gives 150.",
+      "preconditions": "Save loaded",
+      "steps": [
+        "AddRefineExp(null), AddRefineExp(id, 0), AddRefineExp(id, 100+50)"
+      ],
+      "expected": [
+        "false / false / 150 exp"
+      ]
+    },
+    {
+      "id": "TG-09",
+      "kind": "auto",
+      "feature": "HirePeopleEvent",
+      "title": "Hire and dismiss a team member",
+      "description": "Hire people: the player can hire an NPC into a team for a monthly salary. The test hires a free NPC by code, checks price/reputation and monthly payment are positive, then dismisses it and checks it left the team.",
+      "preconditions": "A free NPC exists",
+      "steps": [
+        "Hire the NPC",
+        "Dismiss the NPC"
+      ],
+      "expected": [
+        "Price and reputation > 0",
+        "NPC in the team, monthly payment > 0",
+        "NPC removed after dismiss"
+      ]
+    },
+    {
+      "id": "TG-10",
+      "kind": "auto",
+      "feature": "MapBuildPropertyEvent",
+      "title": "Town budget add/remove and taxes",
+      "description": "Each town has a budget (money) that receives taxes and pays for things (buying from the player, rebuilding). The test adds 12345 to a town budget, removes it again, and checks taxes are not negative.",
+      "preconditions": "A town exists",
+      "steps": [
+        "Add 12345 to the budget then remove it",
+        "Read taxes"
+      ],
+      "expected": [
+        "Budget +12345 then restored",
+        "Taxes >= 0"
+      ]
+    },
+    {
+      "id": "TG-11",
+      "kind": "auto",
+      "feature": "BankAccountEvent",
+      "title": "Bank account fee is positive for every area",
+      "description": "Bank account: to use a town storage the player must open an account in that area for a fee. The test checks the fee is positive for every area.",
+      "preconditions": "Save loaded",
+      "steps": [
+        "Cost(area) for each configured area"
+      ],
+      "expected": [
+        "All fees > 0"
+      ]
+    },
+    {
+      "id": "TG-12",
+      "kind": "auto",
+      "feature": "RealStorageEvent",
+      "title": "Storage fee rate and storage value",
+      "description": "Real storage: items kept in the storage cost a monthly fee based on their value; unpaid fees become debt. The test checks fee rate, storage value and debt are valid numbers.",
+      "preconditions": "Save loaded",
+      "steps": [
+        "Read fee rate, storage value, debt"
+      ],
+      "expected": [
+        "Fee >= 0",
+        "Value >= cash",
+        "Debt >= 0"
+      ]
+    },
+    {
+      "id": "TG-13",
+      "kind": "auto",
+      "feature": "RealMarketEvent/RealMarketEvent2",
+      "title": "Shop sell/buy rates exist for every market town",
+      "description": "Real market: shops buy from / sell to the player at a rate that differs per town. The test checks every market town has positive sell and buy rates.",
+      "preconditions": "Save loaded",
+      "steps": [
+        "Read sell and buy rates"
+      ],
+      "expected": [
+        "Every market town has rates > 0"
+      ]
+    },
+    {
+      "id": "TG-14",
+      "kind": "auto",
+      "feature": "RealMarketEvent3",
+      "title": "Player market listings and VIP price are consistent",
+      "description": "Player market: the player can list items for sale to NPCs (VIP market costs money). The test checks existing listings have positive prices and VIP costs are positive.",
+      "preconditions": "Save loaded",
+      "steps": [
+        "Read listings",
+        "VIPCost(1..10)"
+      ],
+      "expected": [
+        "Listing prices > 0",
+        "VIP costs > 0"
+      ]
+    },
+    {
+      "id": "TG-15",
+      "kind": "auto",
+      "feature": "ContributionExchangeEvent",
+      "title": "Sect exchange ratio is positive",
+      "description": "Sect contribution exchange: items can be exchanged for sect contribution at a ratio that changes monthly. The test checks the ratio is positive and stays within 80%-130% of the base.",
+      "preconditions": "Save loaded",
+      "steps": [
+        "Read base and monthly ratio"
+      ],
+      "expected": [
+        "Base > 0",
+        "Monthly ratio within 80%..130% of base"
+      ]
+    },
+    {
+      "id": "TG-16",
+      "kind": "auto",
+      "feature": "BuildingArrangeEvent",
+      "title": "Original buildings are known and building costs are valid",
+      "description": "Building arrange: Taoist remembers the original buildings of each town (to rebuild them later) and has a cost for each building. The test checks that list is filled and costs are valid.",
+      "preconditions": "A town exists",
+      "steps": [
+        "Read DefaultBuilding and costs"
+      ],
+      "expected": [
+        "DefaultBuilding not empty",
+        "Costs >= 0"
+      ]
+    },
+    {
+      "id": "TG-17",
+      "kind": "auto",
+      "feature": "UnitModifyEvent/QiCulEvent",
+      "title": "Unit modifiers are hooked and bonuses are not negative",
+      "description": "Unit modify: Taoist adds stat bonuses (Atk/Def/HP/MP, and Qi bonuses) to units through a hook. The test checks the player is hooked and no bonus is negative (Qi part skipped when Qi cultivation is off).",
+      "preconditions": "Save loaded",
+      "steps": [
+        "Read player adjustments"
+      ],
+      "expected": [
+        "Player hooked",
+        "Atk/Def/HP/MP bonuses >= 0",
+        "Qi bonus >= 0 (SKIP when Qi is off)"
+      ]
+    },
+    {
+      "id": "TG-18",
+      "kind": "auto",
+      "feature": "BattleModifyEvent",
+      "title": "Block table and damage multiplier rules",
+      "description": "Battle modify: blocking reduces damage by a ratio per grade, and damage multipliers make fights harder. The test checks the block table has 10 non-decreasing grades and multipliers are above 1.",
+      "preconditions": "-",
+      "steps": [
+        "Read BlockRatio and multipliers"
+      ],
+      "expected": [
+        "10 grades, non decreasing",
+        "GetBlockRatio(null) = 0",
+        "Multipliers > 1"
+      ]
+    },
+    {
+      "id": "TG-19",
+      "kind": "auto",
+      "feature": "BattleManashieldEvent",
+      "title": "Mana shield of the player",
+      "description": "Mana shield: in battle the player (and humans) get a shield that absorbs damage, computed from MP. The test computes the player's shield and checks the values are sane.",
+      "preconditions": "Save loaded",
+      "steps": [
+        "Compute the shield"
+      ],
+      "expected": [
+        "Base >= 0, initial >= base"
+      ]
+    },
+    {
+      "id": "TG-20",
+      "kind": "auto",
+      "feature": "MonstStrongerEvent",
+      "title": "Monster growth counters exist",
+      "description": "Monsters stronger: monsters get stronger over time / with kills, tracked by counters per monster type. The test checks the Common/Elite/BOSS/NPC counters exist.",
+      "preconditions": "Save loaded",
+      "steps": [
+        "Read counters"
+      ],
+      "expected": [
+        "Common/Elite/BOSS/NPC counters exist"
+      ]
+    },
+    {
+      "id": "TG-21",
+      "kind": "auto",
+      "feature": "SliceLifeQuestEvent/ChallengeQuestEvent",
+      "title": "Quest chains have a consistent state",
+      "description": "Quest chains: the slice-of-life quest (months without fighting) and the challenge quest (beat stronger opponents) keep a level and a current task. The test checks the saved state is consistent (levels in range, current task exists).",
+      "preconditions": "Save loaded",
+      "steps": [
+        "Read quest levels and tasks"
+      ],
+      "expected": [
+        "Levels in range",
+        "Current unlocked task exists",
+        "Wins < required"
+      ]
+    },
+    {
+      "id": "TG-22",
+      "kind": "auto",
+      "feature": "RebirthEvent",
+      "title": "Rebirth state and luck",
+      "description": "Rebirth: the player can be reborn (grade reset) to get a permanent luck. The test checks the saved rebirth data is valid and the luck exists when the player was reborn at least once.",
+      "preconditions": "Save loaded",
+      "steps": [
+        "Read rebirth data"
+      ],
+      "expected": [
+        "Values >= 0",
+        "Rebirth luck present when count > 0"
+      ]
+    },
+    {
+      "id": "TG-23",
+      "kind": "auto",
+      "feature": "MissionDeclareEvent",
+      "title": "Running commissions are consistent",
+      "description": "Commissions: the player can post a commission at the bounty board (NPCs gather items for a reward). The test checks no running commission is past its deadline and success rates are 0..100%.",
+      "preconditions": "Save loaded",
+      "steps": [
+        "Read commissions"
+      ],
+      "expected": [
+        "No commission past its time",
+        "Success rates 0..100"
+      ]
+    },
+    {
+      "id": "TG-24",
+      "kind": "auto",
+      "feature": "TimeSkipEvent/UIEvent",
+      "title": "Map screen shows Taoist buttons and hides vanilla widgets",
+      "description": "Map screen UI: Taoist adds 'skip 1 year' / 'skip 10 years' buttons and hides some vanilla widgets (e.g. add-luck). The test looks at the map screen and checks both.",
+      "preconditions": "Map screen",
+      "steps": [
+        "Look at the map screen"
+      ],
+      "expected": [
+        "Skip 1/10 years buttons visible",
+        "Add-luck widget hidden"
+      ]
+    },
+    {
+      "id": "TG-25",
+      "kind": "auto",
+      "feature": "QiCulEvent/UseSpiritStoneCulEvent/UpgradeNaturallyEvent",
+      "title": "Cultivation screen shows Qi and cultivation buttons",
+      "description": "Cultivation (fate feature) screen: Taoist shows the player's Qi and its Atk/Hp/Mp bonuses and adds buttons (cultivate with spirit stones, natural upgrade). The test opens the screen and checks they are visible.",
+      "preconditions": "Map screen",
+      "steps": [
+        "Open the cultivation (fate feature) screen",
+        "Close"
+      ],
+      "expected": [
+        "Qi/Atk/Hp/Mp texts and cultivation buttons visible"
+      ]
+    },
+    {
+      "id": "TG-26",
+      "kind": "auto",
+      "feature": "UIEvent",
+      "title": "Game menu save/reload buttons follow the S&M configs",
+      "description": "Game menu (Esc): S&M can hide the Save and Reload buttons (hardcore mode). The test opens the menu and checks the buttons are hidden exactly when the options say so.",
+      "preconditions": "Map screen",
+      "steps": [
+        "Open the game menu (Esc)",
+        "Close"
+      ],
+      "expected": [
+        "Save/Reload buttons hidden exactly when HideSaveButton/HideReloadButton"
+      ]
+    },
+    {
+      "id": "TG-27",
+      "kind": "auto",
+      "feature": "UISettingScreenEvent",
+      "title": "Game settings: Taoist settings button and window",
+      "description": "Game settings: Taoist adds a button that opens its own small settings window (hide damage multiplier, hide exception logs). The test opens it and checks the window and its 2 toggles.",
+      "preconditions": "Map screen",
+      "steps": [
+        "Open game settings",
+        "Click the Taoist settings button",
+        "Close"
+      ],
+      "expected": [
+        "Button visible",
+        "Window with 2 toggles opens"
+      ]
+    },
+    {
+      "id": "TG-28",
+      "kind": "auto",
+      "feature": "TrainerEvent",
+      "title": "Trainer: all pages open and an action changes the player",
+      "description": "Trainer: a cheat window (money, items, properties...) for testing. The test opens every page and uses 'add money' to check an action really changes the player.",
+      "preconditions": "Map screen (when the trainer is disabled, its window is tested with a temporary instance)",
+      "steps": [
+        "Open trainer page 1",
+        "Add money",
+        "Pages 2..4",
+        "Close"
+      ],
+      "expected": [
+        "Window with >= 3 pages",
+        "Money increases",
+        "Each page can be shown"
+      ]
+    },
+    {
+      "id": "TG-29",
+      "kind": "auto",
+      "feature": "CachableObject (ModLib)",
+      "title": "Disabled features have no Instance (BUG-16)",
+      "description": "Known bug BUG-16 (docs/Known-Issues.md): a feature switched off in S&M should not be usable, but its static Instance is still created, so other code can still call it. This test reproduces the bug and is EXPECTED to be NG until BUG-16 is fixed.",
+      "preconditions": "At least one optional feature disabled (Trainer, Qi, UpgradeNaturally)",
+      "steps": [
+        "Read the static Instance of disabled features"
+      ],
+      "expected": [
+        "Instance is null (NG until BUG-16 is fixed)"
+      ]
+    },
+    {
+      "id": "TG-30",
+      "kind": "auto",
+      "feature": "UIEvent/MapBuildPropertyEvent",
+      "title": "Enter the town: town UI with Taoist info",
+      "description": "Entering a town: Taoist shows its info in the town UI (budget, master, etc.). The test enters the town and checks the town UI opens without error.",
+      "preconditions": "Test save in a town",
+      "steps": [
+        "Enter the town",
+        "Leave"
+      ],
+      "expected": [
+        "Town UI opens"
+      ]
+    },
+    {
+      "id": "TG-31",
+      "kind": "auto",
+      "feature": "BankAccountEvent",
+      "title": "Town storage: open a bank account",
+      "description": "Bank account in the town storage (UI part of TG-11): without an account the storage button is replaced by 'Open account (fee)'. The test clicks it and checks the fee went from the player to the town budget and the storage becomes usable.",
+      "preconditions": "Test save in a town without account",
+      "steps": [
+        "Open the storage",
+        "Click 'Open account (fee)'",
+        "Open the storage again"
+      ],
+      "expected": [
+        "Button replaces the storage button",
+        "Fee moved from the player to the town budget, account registered",
+        "Storage usable, no account button"
+      ],
+      "replaces": [
+        "TM-03"
+      ]
+    },
+    {
+      "id": "TG-32",
+      "kind": "auto",
+      "feature": "MissionDeclareEvent/HirePeopleEvent",
+      "title": "Bounty board: commission and hire people",
+      "description": "Bounty board: Taoist adds 'Commission' (post a job) and 'Hire People' (hire NPCs). The test checks both buttons and that each opens its window.",
+      "preconditions": "Test save in a town",
+      "steps": [
+        "Open the bounty board",
+        "Click Hire People, close",
+        "Click Commission, close"
+      ],
+      "expected": [
+        "Both buttons visible",
+        "Hire list opens (flag reset on close)",
+        "Commission item selector opens"
+      ]
+    },
+    {
+      "id": "TG-33",
+      "kind": "auto",
+      "feature": "RealMarketEvent3",
+      "title": "Town market: player market buttons and listings",
+      "description": "Town market: Taoist adds the player-market buttons (VIP Market, Market, My Items, Register). The test checks they exist and that 'Market' opens the listings.",
+      "preconditions": "Test save in a town with market",
+      "steps": [
+        "Open the market",
+        "Click Market"
+      ],
+      "expected": [
+        "VIP Market, Market, My Items, Register buttons",
+        "Listings window opens"
+      ]
+    },
+    {
+      "id": "TG-34",
+      "kind": "auto",
+      "feature": "RealMarketEvent2",
+      "title": "Shop: town budget and buy price rate",
+      "description": "Shop: Taoist shows the town budget ('Market: x Spirit Stones') and the current buy price rate. The test opens the shop and checks those texts and that the rate is in range.",
+      "preconditions": "Test save in a town with shop",
+      "steps": [
+        "Open the shop"
+      ],
+      "expected": [
+        "'Market: x Spirit Stones' and 'Price rate: y%' texts",
+        "Buy rate in range"
+      ]
+    },
+    {
+      "id": "TG-35",
+      "kind": "auto",
+      "feature": "RebirthEvent/CustomRefineEvent",
+      "title": "Pub rebirth button and forge custom refine",
+      "description": "Pub and forge: the pub shows a Rebirth button only when town level and player grade allow it; a small-town forge opens the custom refine item selector. The test checks both (rebirth is not clicked here, see TX-03).",
+      "preconditions": "Test save in a town",
+      "steps": [
+        "Open the pub",
+        "Open the forge, click refine"
+      ],
+      "expected": [
+        "Rebirth button shown exactly when the town/grade conditions allow it",
+        "Small town forge opens the custom refine item selector"
+      ]
+    },
+    {
+      "id": "TG-36",
+      "kind": "auto",
+      "feature": "RealStorageEvent",
+      "title": "Storage fee and debt",
+      "description": "Storage fee and debt (UI + monthly part of TG-12): the storage shows value/fee; with a debt it shows red warnings; at month end the debt and fee are paid from the player's money. The test creates a debt of 1234 and runs the monthly handler.",
+      "preconditions": "Save loaded",
+      "steps": [
+        "Travel to a town with storage",
+        "Set a debt of 1234, open the storage items",
+        "Run the monthly handler"
+      ],
+      "expected": [
+        "Value and fee texts shown",
+        "Red debt warning",
+        "Debt and fee paid from the player money"
+      ],
+      "replaces": [
+        "TM-04"
+      ]
+    },
+    {
+      "id": "TG-37",
+      "kind": "auto",
+      "feature": "RealMarketEvent",
+      "title": "Sell window: rate, town budget and over-budget block",
+      "description": "Selling to a shop: the sell window shows the rate and the town budget. A town cannot pay more than its budget: then the sell button is hidden and 'Over price' is shown. The test empties the budget to check the block, then restores it.",
+      "preconditions": "Save loaded",
+      "steps": [
+        "Travel to a town with a shop",
+        "Open the sell window",
+        "Empty the town budget",
+        "Restore the budget"
+      ],
+      "expected": [
+        "Rate and budget texts",
+        "Sell button hidden and 'Over price' when the town cannot pay",
+        "Budget restored"
+      ],
+      "replaces": [
+        "TM-05"
+      ]
+    },
+    {
+      "id": "TG-38",
+      "kind": "auto",
+      "feature": "MissionDeclareEvent",
+      "title": "Commission delivered by the monthly handler",
+      "description": "Commission delivery: when a commission is finished, the monthly handler gives the reward window, puts the items in the bag and removes the commission. The test creates a finished commission of 3 herbs and runs the month.",
+      "preconditions": "Save loaded",
+      "steps": [
+        "Travel to a town with a bounty board",
+        "Add a finished commission of 3 herbs",
+        "Run the monthly handler"
+      ],
+      "expected": [
+        "Reward window",
+        "3 items added to the bag",
+        "Commission removed"
+      ],
+      "replaces": [
+        "TM-09"
+      ]
+    },
+    {
+      "id": "TG-39",
+      "kind": "auto",
+      "feature": "HirePeopleEvent",
+      "title": "Team: NPC info, hire, monthly payment, dismiss",
+      "description": "Team (UI version of TG-09): from the NPC info the player hires an NPC, the team window shows the monthly payment, the monthly handler pays the member, then the player dismisses it. Team luck must be added and removed.",
+      "preconditions": "Save loaded, a free NPC",
+      "steps": [
+        "Open the NPC info",
+        "Hire the NPC, open the team window",
+        "Run the monthly handler",
+        "Dismiss"
+      ],
+      "expected": [
+        "Member in the team with the team luck",
+        "Monthly payment taken, member follows the master",
+        "Member and luck removed"
+      ],
+      "replaces": [
+        "TM-10"
+      ]
+    },
+    {
+      "id": "TG-40",
+      "kind": "auto",
+      "feature": "MapBuildPropertyEvent/RealMarketEvent2",
+      "title": "Become town master (trainer) and manage the town",
+      "description": "Town master: the player can become master of a town (here via the trainer) and gets a 'manage town' window plus a shop discount. The test makes the player master, opens the management window and checks the discount.",
+      "preconditions": "Save loaded",
+      "steps": [
+        "Travel to a town with a shop",
+        "Trainer: become town master",
+        "Open the town management"
+      ],
+      "expected": [
+        "Player is master and guardian",
+        "Master shop discount",
+        "Town management window"
+      ],
+      "replaces": [
+        "TM-11"
+      ]
+    },
+    {
+      "id": "TG-41",
+      "kind": "auto",
+      "feature": "BuildingArrangeEvent",
+      "title": "Town rebuilds a destroyed building with its budget",
+      "description": "Town rebuild: when an original building of a town is destroyed, the town rebuilds it over the months using its budget. The test destroys one, gives budget, runs the monthly build and checks it is rebuilt and the cost paid.",
+      "preconditions": "Save loaded",
+      "steps": [
+        "Travel to a town with a destroyable building",
+        "Destroy it, open the town",
+        "Give budget, run the monthly build until rebuilt"
+      ],
+      "expected": [
+        "Building destroyed",
+        "Building rebuilt, cost paid from the budget"
+      ],
+      "replaces": [
+        "TM-12"
+      ]
+    },
+    {
+      "id": "TG-42",
+      "kind": "auto",
+      "feature": "UseSpiritStoneCulEvent",
+      "title": "Cultivate with spirit stones",
+      "description": "Cultivate with spirit stones: a button on the cultivation screen converts 10000 x grade spirit stones into exp (more with talent and basis). The test clicks it and checks money paid and exp gained.",
+      "preconditions": "Save loaded, exp not full",
+      "steps": [
+        "Open the cultivation screen",
+        "Click 'cultivate with spirit stones'"
+      ],
+      "expected": [
+        "10000 x grade spirit stones paid",
+        "Exp increased"
+      ],
+      "replaces": [
+        "TM-17"
+      ]
+    },
+    {
+      "id": "TG-43",
+      "kind": "auto",
+      "feature": "QiCulEvent",
+      "title": "Qi in NPC info and Qi transfer",
+      "description": "Qi cultivation on NPCs: the NPC info shows its Qi and bonuses, and 'transfer Qi' moves part of the player's Qi to the NPC. The test sets Qi values, opens the NPC info and does a transfer.",
+      "preconditions": "Save loaded, Qi cultivation enabled",
+      "steps": [
+        "Set Qi of the player/NPC, open the NPC info",
+        "Click 'transfer Qi'"
+      ],
+      "expected": [
+        "Qi and Atk/Hp/Mp bonus texts",
+        "Qi moved from the player to the NPC"
+      ],
+      "replaces": [
+        "TM-19"
+      ]
+    },
+    {
+      "id": "TG-44",
+      "kind": "auto",
+      "feature": "NpcUpgradeSkillEvent/NpcAutoCraftArtifact/NpcAutoEvent",
+      "title": "NPC growth over 24 months",
+      "description": "NPC growth: every month NPCs upgrade martial skills, craft artifacts and gain exp so they keep up with the player. The test runs 24 monthly ticks on one NPC and checks its martial exp and cultivation exp/grade increased.",
+      "preconditions": "Save loaded",
+      "steps": [
+        "Open the NPC info",
+        "Run 24 monthly NPC growth ticks",
+        "Open the NPC info again"
+      ],
+      "expected": [
+        "Martial exp increased",
+        "Cultivation exp or grade increased"
+      ],
+      "replaces": [
+        "TM-34"
+      ]
+    },
+    {
+      "id": "TG-45",
+      "kind": "auto",
+      "feature": "RealMarketEvent2",
+      "title": "Buy from a shop: price rate, town budget, master discount",
+      "description": "Buying from a shop (vanilla shop with Taoist rules). The quantity dialog shows the town buy rate and its unit price must be base price x rate; confirming adds the paid money to the town budget; after becoming town master the unit price drops by the master discount.",
+      "preconditions": "Save loaded (a town with a shop where the player is not guardian)",
+      "steps": [
+        "Travel to the town, open the shop",
+        "Open the quantity dialog for a 1000 item, buy 2",
+        "Become town master (trainer), open the dialog again"
+      ],
+      "expected": [
+        "Unit price = 1000 x buy rate, 'Price rate' text shown",
+        "Town budget + 2 x unit price",
+        "Buy rate lowered by TownMReduceBuyRate, unit price follows"
+      ],
+      "replaces": [
+        "TM-06"
+      ]
+    },
+    {
+      "id": "TG-46",
+      "kind": "auto",
+      "feature": "RealMarketEvent3",
+      "title": "Player market: VIP, register, NPC offer, deal, buy",
+      "description": "Player market end to end. Buy VIP access (fee goes to the town), register a herb through the Register window, an NPC makes an offer, the deal is accepted (money to the player, item to the NPC), then the player buys an NPC listing at its price. Monthly random offers are not driven (random); the deal they lead to is.",
+      "preconditions": "Save loaded, player market on (NoMarketItem off)",
+      "steps": [
+        "Open the town market, buy VIP",
+        "Register 3 herbs",
+        "An NPC offers 123",
+        "Accept the deal",
+        "Buy an NPC listing"
+      ],
+      "expected": [
+        "VIP fee paid to the town budget, VIP listings open",
+        "Listing registered",
+        "First NPC offer keeps its price",
+        "Money and items transferred, listing removed",
+        "Player pays the seller price and gets the item"
+      ],
+      "replaces": [
+        "TM-07"
+      ]
+    },
+    {
+      "id": "TG-47",
+      "kind": "auto",
+      "feature": "ContributionExchangeEvent",
+      "title": "Exchange items for sect contribution",
+      "description": "In the player's own sect an 'Exchange' button opens an item selector showing the monthly ratio; confirming gives contribution = item value / ratio, adds the value to the sect money and takes the items. A player without sect joins the nearest sect for the test and leaves it afterwards.",
+      "preconditions": "Save loaded (sect joined temporarily when the player has none)",
+      "steps": [
+        "Join a sect if needed (SectNoExchange off for the test)",
+        "Open the sect, click Exchange",
+        "Select 5 herbs, OK",
+        "Leave the temporary sect"
+      ],
+      "expected": [
+        "Exchange button and ratio shown",
+        "Contribution + value/ratio, sect money + value",
+        "Items taken from the bag",
+        "Membership and config restored"
+      ],
+      "replaces": [
+        "TM-08"
+      ]
+    },
+    {
+      "id": "TG-48",
+      "kind": "auto",
+      "feature": "CustomRefineEvent",
+      "title": "Custom refine at a small town forge",
+      "description": "Full custom refine at a small-town forge: refine button -> item selector -> spirit stone selector -> OK. The item's refine exp/level increase, the stones are paid to the town budget, a result message is shown and the item has refine adjustments.",
+      "preconditions": "Save loaded (a ring/outfit is added to the bag)",
+      "steps": [
+        "Travel to a small town with forge",
+        "Click refine, select the item",
+        "Select 5000 spirit stones, OK"
+      ],
+      "expected": [
+        "Refine exp increases",
+        "Stones paid to the town budget",
+        "Result message, refine adjustment on the item"
+      ],
+      "replaces": [
+        "TM-13"
+      ]
+    },
+    {
+      "id": "TG-49",
+      "kind": "auto",
+      "feature": "RepairShinkiEvent",
+      "title": "Repair a damaged god artifact",
+      "description": "Option AllowRepairGodWeapon: a damaged god artifact (devil demon) gets a Repair button that asks the cost, takes the money and repairs it. The artifact is enabled and damaged for the test and restored afterwards; when the option is off a temporary instance of the feature is used.",
+      "preconditions": "Save loaded (artifact state changed temporarily)",
+      "steps": [
+        "Enable and damage the devil demon",
+        "Open it, click Repair, confirm"
+      ],
+      "expected": [
+        "Repair button and cost dialog",
+        "Artifact repaired, money paid, window closed",
+        "Artifact state restored"
+      ],
+      "replaces": [
+        "TM-15"
+      ]
+    },
+    {
+      "id": "TG-50",
+      "kind": "auto",
+      "feature": "UpgradeNaturallyEvent",
+      "title": "Break through without items",
+      "description": "Option AllowUpgradeNaturally: with full exp the cultivation screen shows 'Break through'; clicking it moves the player to the next phase and clears the exp. Grade and exp are restored afterwards; when the option is off a temporary instance of the feature is used.",
+      "preconditions": "Save loaded (exp filled, grade restored after)",
+      "steps": [
+        "Fill the exp",
+        "Open the cultivation screen, click Break through"
+      ],
+      "expected": [
+        "Grade = next phase",
+        "Exp cleared",
+        "Grade restored"
+      ],
+      "replaces": [
+        "TM-18"
+      ]
+    },
+    {
+      "id": "TG-51",
+      "kind": "auto",
+      "feature": "TrainerEvent",
+      "title": "Trainer hotkeys Ctrl+1/2/3",
+      "description": "The Ctrl+1/2/3 hotkeys (TrainerEvent.OnHotkey, called for the key presses) open the trainer on page 1/2/3, switch pages while it is open, and open it again after the window was closed with its close button. Only the 3 Input.GetKey lines are not covered.",
+      "preconditions": "Map screen (temporary trainer instance when the trainer is disabled)",
+      "steps": [
+        "Ctrl+2, Ctrl+3, Ctrl+1",
+        "Close with the window button, Ctrl+1"
+      ],
+      "expected": [
+        "Page 2/3/1 active",
+        "Trainer opens again after it was closed"
+      ],
+      "replaces": [
+        "TM-32"
+      ]
+    },
+    {
+      "id": "TG-52",
+      "kind": "auto",
+      "feature": "ExpertEvent",
+      "title": "Expertise level of an equipped skill",
+      "description": "Expertise on a real equipped skill of the player: one use adds exp in the expected range (grade and insight scaled), enough exp raises the expertise level, and an ability with expertise gives stat bonuses. The skill exp is restored afterwards.",
+      "preconditions": "Save loaded, the player has an equipped skill",
+      "steps": [
+        "Pick an equipped skill (ability first)",
+        "Add the exp of one use",
+        "Add the exp of the next level"
+      ],
+      "expected": [
+        "Exp gain in range",
+        "Expertise level +1",
+        "Ability bonus grows with the level"
+      ],
+      "replaces": [
+        "TM-33"
+      ]
+    },
+    {
+      "id": "TG-53",
+      "kind": "auto",
+      "feature": "ExpertEvent/WUnitHelper/InflationaryEvent",
+      "title": "Int limits: growing values do not overflow",
+      "description": "Values that keep growing over a long game are int: they must stop at the int maximum instead of wrapping to a negative number or falling back to 0 (ParseHelper.Parse returns 0 on overflow). Checks expertise exp, a player property (AddProperty), spirit stones and the inflation of a big price; monster buffs and the damage pipeline are checked in TB-06. Every value is restored.",
+      "preconditions": "Save loaded",
+      "steps": [
+        "Expertise exp near the max + one use",
+        "Attack near the max + 1000",
+        "Money at the max + 1000",
+        "CalculateInflationary(int.MaxValue / 2)"
+      ],
+      "expected": [
+        "No wrap, level kept",
+        "Attack stays at the max (not 0/negative)",
+        "Money stays positive",
+        "Positive, capped at int.MaxValue"
+      ]
+    },
+    {
+      "id": "TG-54",
+      "kind": "auto",
+      "feature": "MapBuildPropertyEvent",
+      "title": "Monthly town tax: NPC pays the town, or leaves",
+      "description": "Monthly town economy: an NPC staying in a town pays the town tax into the town budget and rests at the inn (HP back to max); an NPC who cannot pay the tax is sent out of the town.",
+      "preconditions": "Save loaded, taxes on",
+      "steps": [
+        "Put an NPC in a town",
+        "Run its monthly handler with money",
+        "Run it again without money"
+      ],
+      "expected": [
+        "Money - tax, budget + tax, HP full",
+        "NPC left the town"
+      ]
+    },
+    {
+      "id": "TB-01",
+      "kind": "watch",
+      "feature": "ModBattleEvent/MonstStrongerEvent/BattleManashieldEvent",
+      "title": "Battle start: statistics reset, monsters buffed, humans shielded",
+      "description": "Battle start (watched in a battle you play, -WatchBattles): damage statistics reset, monsters are buffed by 'monsters stronger', humans get their mana shield. Screenshots at start and after 10 s show the shield bar and damage multiplier.",
+      "preconditions": "Run with -WatchBattles, then enter any battle",
+      "steps": [
+        "Start a battle",
+        "Fight 10 s"
+      ],
+      "expected": [
+        "Battle damage statistics reset",
+        "Monster stats valid",
+        "Screenshots at start and after 10 s (shield bar, damage multiplier)"
+      ]
+    },
+    {
+      "id": "TB-02",
+      "kind": "watch",
+      "feature": "BattleRewardEventV2/SliceLifeQuestEvent/ChallengeQuestEvent",
+      "title": "Battle end: rewards logged, slice-life counter reset",
+      "description": "Battle end (watched, -WatchBattles): damage dealt/received is recorded, battle rewards are logged and the slice-of-life counter is reset (a battle breaks the 'no fighting' streak).",
+      "preconditions": "Run with -WatchBattles",
+      "steps": [
+        "Finish the battle"
+      ],
+      "expected": [
+        "Damage dealt/received recorded",
+        "Slice-life counter = 0",
+        "Screenshot of the result"
+      ]
+    },
+    {
+      "id": "TB-03",
+      "kind": "auto",
+      "feature": "MapBuildBattleEvent/ModBattleEvent/BattleManashieldEvent/BattleRewardEventV2",
+      "title": "Monster wave battle: join, kill, win, back to the map",
+      "description": "Monster wave battle (started by code): the player joins the monster wave attacking a town, kills 3 monsters, wins and returns to the map. Checks the battle features (buffed monsters, kill list, rewards, slice-life reset) in a real battle.",
+      "preconditions": "Save loaded",
+      "steps": [
+        "Travel to a town, join its monster wave (code)",
+        "Kill 3 monsters",
+        "Win, leave the battle"
+      ],
+      "expected": [
+        "Battle is a monster wave, monsters valid",
+        "Kill list counts the kills",
+        "Back on the map, slice-life counter reset"
+      ],
+      "replaces": [
+        "TM-23",
+        "TM-27",
+        "TM-28",
+        "TM-29"
+      ]
+    },
+    {
+      "id": "TB-04",
+      "kind": "auto",
+      "feature": "BattleEvent/BattleManashieldEvent/BattleRewardEventV2",
+      "title": "NPC duel: start, defeat the NPC, back to the map",
+      "description": "NPC duel (started by code): a 1-vs-1 battle with an NPC that has its mana shield; the player defeats it and returns to the map.",
+      "preconditions": "Save loaded",
+      "steps": [
+        "Start a duel with an NPC (code)",
+        "Defeat the NPC",
+        "Win, leave the battle"
+      ],
+      "expected": [
+        "Opponent in the battle",
+        "Opponent defeated",
+        "Back on the map"
+      ],
+      "replaces": []
+    },
+    {
+      "id": "TB-05",
+      "kind": "auto",
+      "feature": "SpiritlockEvent",
+      "title": "Spiritlock circle: tortoises cannot move",
+      "description": "Spiritlock circle dungeon (started by code): Taoist makes the venerable tortoises and the circle unable to move. The test enters dungeon 7007 and checks their move speed is 0.",
+      "preconditions": "Save loaded",
+      "steps": [
+        "Enter the spiritlock dungeon 7007 (code)",
+        "Wait for the tortoises/circle"
+      ],
+      "expected": [
+        "Their move speed is 0"
+      ],
+      "replaces": [
+        "TM-24"
+      ]
+    },
+    {
+      "id": "TB-06",
+      "kind": "auto",
+      "feature": "SpecialMonsterEvent/MonstStrongerEvent",
+      "title": "Special monsters (shield, split) and monsters getting stronger",
+      "description": "Monster wave started by code, with the S&M special monster rate raised for the test: every common/elite monster has a shield and splits when killed; kills raise the 'monsters stronger' kill counter; a monster spawned after the growth counter rose has more HP than the same monster before.",
+      "preconditions": "Save loaded (special monster rate raised during the battle)",
+      "steps": [
+        "Join a town monster wave",
+        "Spawn the same monster after +100 growth ticks",
+        "Kill 3 monsters",
+        "Win, back to the map"
+      ],
+      "expected": [
+        "All common/elite monsters shielded",
+        "Spawned monster has more max HP",
+        "Kill counters +3, killed monsters split",
+        "Split list cleared after the battle"
+      ],
+      "replaces": [
+        "TM-26",
+        "TM-35"
+      ]
+    },
+    {
+      "id": "TB-07",
+      "kind": "auto",
+      "feature": "BattleEvent/BattleAfterEvent/ChallengeQuestEvent",
+      "title": "NPCs join battles, stalkers, challenge quest",
+      "description": "Real NPC duel started by code with, around the player, a friend, an enemy, a stalker and a hired team member (join rates 100% for the test). Friend and team member join on the player side, enemy and stalker on the other side; killing an opponent a grade above counts for the challenge quest; the monthly stalker handler moves stalkers next to the player.",
+      "preconditions": "Save loaded (join rates, relations and team changed for the test)",
+      "steps": [
+        "Prepare friend/enemy/stalker/team member",
+        "Duel an NPC above the player grade",
+        "Wait for the NPCs to join",
+        "Kill the opponent, win",
+        "Run the monthly stalker handler"
+      ],
+      "expected": [
+        "Each NPC joins on the right side",
+        "Stalker removed from the list when it joins",
+        "Challenge quest progresses",
+        "Stalker moved next to the player"
+      ],
+      "replaces": [
+        "TM-21",
+        "TM-22",
+        "TM-30"
+      ]
+    },
+    {
+      "id": "TB-08",
+      "kind": "auto",
+      "feature": "RealTrialEvent",
+      "title": "Trial of lightning: damage scaled on the player, properties after surviving",
+      "description": "Trial of lightning (dungeon 110081) started by code: the lightning units hit with a damage scaled on the player (attack x game level/grade factors - defense x thunder basis), and surviving the trial raises the player properties of the Trial role.",
+      "preconditions": "Save loaded",
+      "steps": [
+        "Enter the trial",
+        "Check the trial units",
+        "Survive (win), back to the map"
+      ],
+      "expected": [
+        "Unit attack = formula",
+        "Atk/Def/HpMax/MpMax increased"
+      ],
+      "replaces": [
+        "TM-25"
+      ]
+    },
+    {
+      "id": "TB-09",
+      "kind": "auto",
+      "feature": "BattleRewardEventV2",
+      "title": "Battle won: training growth and exp from damage",
+      "description": "A real duel won by the player. A big hit makes the training growth (properties grow with the total damage dealt) run many times: it must end quickly and raise Attack; winning gives exp computed from the damage dealt and received (clamped, no overflow). Exp and Attack are restored.",
+      "preconditions": "Save loaded",
+      "steps": [
+        "Duel an NPC (real battle)",
+        "Hit for 50,000,000",
+        "Kill, win, back to the map"
+      ],
+      "expected": [
+        "Hit handled in < 3 s, Attack grew",
+        "Exp increased"
+      ]
+    },
+    {
+      "id": "TB-10",
+      "kind": "auto",
+      "feature": "BattleRewardEventV2",
+      "title": "Battle lost without body reconstruction item: exp lost",
+      "description": "Real duel lost by the player (the player unit is killed by the opponent). Every lose option off and no body reconstruction item for the grade: the cultivation exp falls to the phase minimum. Player state restored.",
+      "preconditions": "Save loaded",
+      "steps": [
+        "All lose options off, exp 500 above the minimum",
+        "Lose a duel"
+      ],
+      "expected": [
+        "Exp = phase minimum"
+      ]
+    },
+    {
+      "id": "TB-11",
+      "kind": "auto",
+      "feature": "BattleRewardEventV2",
+      "title": "Battle lost with a body reconstruction item: item used, exp kept",
+      "description": "Real duel lost by the player (the player unit is killed by the opponent). At grade 4 with a body reconstruction item (1011721) the item is used instead of the exp. Grade and exp restored.",
+      "preconditions": "Save loaded",
+      "steps": [
+        "Grade 4, 1 body reconstruction item",
+        "Lose a duel"
+      ],
+      "expected": [
+        "Item count -1",
+        "Exp kept"
+      ]
+    },
+    {
+      "id": "TB-12",
+      "kind": "auto",
+      "feature": "BattleRewardEventV2",
+      "title": "Battle lost with lost items when die: items go to the killer",
+      "description": "Real duel lost by the player (the player unit is killed by the opponent). With LostItemWhenDie the sellable items are lost (each kept with a chance of luck/10 % + ring lock score) and the killer receives them.",
+      "preconditions": "Save loaded",
+      "steps": [
+        "LostItemWhenDie on, 5 herb kinds in the bag",
+        "Lose a duel"
+      ],
+      "expected": [
+        "Some herbs lost",
+        "The killer received them"
+      ]
+    },
+    {
+      "id": "TB-13",
+      "kind": "auto",
+      "feature": "BattleRewardEventV2",
+      "title": "Battle lost with lost money when die: spirit stones go to the killer",
+      "description": "Real duel lost by the player (the player unit is killed by the opponent). With LostMoneyWhenDie the player loses all its spirit stones and the killer gets them.",
+      "preconditions": "Save loaded",
+      "steps": [
+        "LostMoneyWhenDie on, 12345 more spirit stones",
+        "Lose a duel"
+      ],
+      "expected": [
+        "Player money 0",
+        "Killer + the player money"
+      ]
+    },
+    {
+      "id": "TB-14",
+      "kind": "auto",
+      "feature": "BattleRewardEventV2",
+      "title": "Battle lost with lost lifespan when die: life drained to the killer",
+      "description": "Real duel lost by the player (the player unit is killed by the opponent). With LostLifespanWhenDie the player loses lifespan (at least 6 months x game level) and the killer gains half of it.",
+      "preconditions": "Save loaded",
+      "steps": [
+        "LostLifespanWhenDie on",
+        "Lose a duel"
+      ],
+      "expected": [
+        "Lifespan - drain (>= 6 x game level)",
+        "Killer + drain / 2"
+      ]
+    },
+    {
+      "id": "TB-15",
+      "kind": "auto",
+      "feature": "BattleRewardEventV2",
+      "title": "Battle lost with auto save after lost: one month passes and the game saves",
+      "description": "Real duel lost by the player (the player unit is killed by the opponent). With AutoSaveAfterLostInBattle a month passes after the defeat (TimeSkipEvent.SkipTime(1)) and the game is saved without overlapping saves.",
+      "preconditions": "Save loaded",
+      "steps": [
+        "AutoSaveAfterLostInBattle on",
+        "Lose a duel",
+        "Wait for the month and the save"
+      ],
+      "expected": [
+        "Month + 1",
+        "Save finished"
+      ]
+    },
+    {
+      "id": "TX-01",
+      "kind": "auto",
+      "feature": "TimeSkipEvent/InflationaryEvent",
+      "title": "Skip 1 year with the map button",
+      "description": "Skip 1 year: the map button passes 12 months (one per second) and gives exp from MP/SP. After it: time +12 months, age follows the time, yearly price index saved, quest chains still valid. Changes the save (restored after the run).",
+      "preconditions": "Save loaded (changes the save, restored after the run)",
+      "steps": [
+        "Click 'skip 1 year' on the map, confirm",
+        "Wait for 12 months"
+      ],
+      "expected": [
+        "Time +12 months",
+        "Age follows the time",
+        "Yearly price index saved"
+      ],
+      "replaces": [
+        "TM-16"
+      ]
+    },
+    {
+      "id": "TX-02",
+      "kind": "auto",
+      "feature": "InflationaryEvent",
+      "title": "Currency reform when the price index passes the limit",
+      "description": "Currency reform: when the price index passes its limit, money is re-denominated (divided by 10000), town budgets are cut by 80%, the index is reset and the market is cleared. The test forces the index to the limit and runs the yearly handler. Changes the save (restored after the run).",
+      "preconditions": "Save loaded (changes the save)",
+      "steps": [
+        "Set index to LIMIT and money 12,340,000",
+        "Run the yearly handler"
+      ],
+      "expected": [
+        "Reform counted, index reset",
+        "Money / 10000",
+        "Town budgets -80 %",
+        "Market cleared"
+      ],
+      "replaces": [
+        "TM-20"
+      ]
+    },
+    {
+      "id": "TX-03",
+      "kind": "auto",
+      "feature": "RebirthEvent",
+      "title": "Rebirth in the pub",
+      "description": "Rebirth (the action, see TG-22/TG-35): in the pub of a high-level town the player is reborn: grade reset to 1, rebirth counted, rebirth luck added. Changes the save (restored after the run).",
+      "preconditions": "Grade above the rebirth level, no sect (changes the save)",
+      "steps": [
+        "Travel to a town of a high enough level, open the pub",
+        "Click rebirth, confirm"
+      ],
+      "expected": [
+        "Rebirth counted",
+        "Grade reset to 1",
+        "Rebirth luck added"
+      ],
+      "replaces": [
+        "TM-14"
+      ]
+    },
+    {
+      "id": "TX-04",
+      "kind": "auto",
+      "feature": "SliceLifeQuestEvent",
+      "title": "Slice-of-life quest: monthly counter, reset by battle, completion luck",
+      "description": "From game year 2 (runs after TX-01 skipped a year) the slice-of-life quest is active: each month without battle increments its counter, a battle resets it, and reaching the required count completes the level and gives its luck. Changes the save (restored after the run).",
+      "preconditions": "Game year >= 2 (after TX-01; changes the save)",
+      "steps": [
+        "Run a month",
+        "End a battle",
+        "Set the count to required-1, run a month"
+      ],
+      "expected": [
+        "Counter +1",
+        "Counter reset to 0",
+        "Level +1, luck added"
+      ],
+      "replaces": [
+        "TM-31"
+      ]
+    },
+    {
+      "id": "TX-05",
+      "kind": "auto",
+      "feature": "ModLib save/monthly tick",
+      "title": "Month passes and the Taoist data is saved to disk",
+      "description": "One month passes through the world-run events (ModLib monthly tick, then ModLib saves the game). The Taoist caches written to disk (mod/nE7UL2/saves/<player>/*.json) must contain the values in memory, and two saves requested at the same time must not overlap (an overlapping save failed with FileNotFoundException and hung the game). Changes the save (restored after the run).",
+      "preconditions": "Save loaded (changes the save)",
+      "steps": [
+        "Pass one month",
+        "Change values, save",
+        "Read the cache files",
+        "Request two saves at once"
+      ],
+      "expected": [
+        "Month +1, monthly handlers ran",
+        "Cache files written after the save with the same values (counters, expertise, price index, exchange ratio, market)",
+        "No FileNotFoundException, game not stuck in a save"
+      ]
+    },
+    {
+      "id": "TX-06",
+      "kind": "auto",
+      "feature": "NpcAutoEvent/UnitTypeEvent/MapBuildPropertyEvent/InflationaryEvent",
+      "title": "Yearly handlers: NPC born, speed units, town masters",
+      "description": "The OnYearly event of every Taoist feature runs once: a new NPC is born, speed-unit NPCs get +1 move speed, every town with guardians has a master, the yearly price index is saved. Changes the save (restored after the run).",
+      "preconditions": "Save loaded (changes the save)",
+      "steps": [
+        "Run OnYearly"
+      ],
+      "expected": [
+        "One more unit in the world",
+        "Speed unit +1 move speed",
+        "Every town with guardians has a master",
+        "Price index saved"
+      ]
+    },
+    {
+      "id": "TZ-01",
+      "kind": "auto",
+      "feature": "BattleRewardEventV2",
+      "title": "Battle lost with one-life: the character dies",
+      "description": "Real duel lost by the player (the player unit is killed by the opponent). With the one-life option the lifespan is set to 0 and a month passes: the character dies. It ends the character, so it runs last (TZ); the save is restored after the run.",
+      "preconditions": "Last scenario of the run (ends the character)",
+      "steps": [
+        "Onelife on",
+        "Lose a duel",
+        "Wait for the death"
+      ],
+      "expected": [
+        "Lifespan 0",
+        "Character dead"
+      ]
+    }
+  ]
+}

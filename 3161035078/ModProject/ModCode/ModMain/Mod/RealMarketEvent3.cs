@@ -51,17 +51,26 @@ namespace MOD_nE7UL2.Mod
         //configs
         public static _MarketItemConfigs Configs => ModMain.ModObj.ModSettings.MarketItemConfigs;
 
+        /// <summary>
+        /// True while one of the market windows is open.
+        /// </summary>
         public static bool IsRealMarket3Open()
         {
             return IsOpenSellingList || IsOpenMySellingList || IsOpenRegister;
         }
 
+        /// <summary>
+        /// True when an item may be listed.
+        /// </summary>
         public static bool IsSellableItem(DataProps.PropsData x)
         {
             return x != null && x.propsInfoBase != null && x.propsInfoBase.sale > 0 && 
                 ModLibConst.MONEY_PROP_ID != x.propsID && ModLibConst.CONTRIBUTION_PROP_ID != x.propsID && ModLibConst.MAYOR_DEGREE_PROP_ID != x.propsID;
         }
 
+        /// <summary>
+        /// Listing of an item by a seller.
+        /// </summary>
         public static MarketItem GetMarketItem(WorldUnitBase seller, DataProps.PropsData prop)
         {
             var sellerId = seller.GetUnitId();
@@ -78,6 +87,9 @@ namespace MOD_nE7UL2.Mod
             });
         }
 
+        /// <summary>
+        /// Offer of a buyer on a listing.
+        /// </summary>
         public static NegotiatingDeal GetBuyerDeal(MarketItem prop, WorldUnitBase buyer)
         {
             var buyerId = buyer.GetUnitId();
@@ -90,6 +102,9 @@ namespace MOD_nE7UL2.Mod
             return deal;
         }
 
+        /// <summary>
+        /// Adds an item to a buyer's offer.
+        /// </summary>
         public static void AddNegotiatingItem(MarketItem prop, WorldUnitBase buyer, DataProps.PropsData negoProp, int count)
         {
             var curDeal = GetBuyerDeal(prop, buyer);
@@ -103,22 +118,34 @@ namespace MOD_nE7UL2.Mod
             });
         }
 
+        /// <summary>
+        /// Offer of a buyer.
+        /// </summary>
         public static NegotiatingDeal GetNegotiatingValue(MarketItem prop, WorldUnitBase buyer)
         {
             var buyerId = buyer.GetUnitId();
             return prop.Deals.FirstOrDefault(x => x.BuyerId == buyerId);
         }
 
+        /// <summary>
+        /// Best offer on a listing.
+        /// </summary>
         public static NegotiatingDeal GetNegotiatingHighestValue(MarketItem prop)
         {
             return prop.Deals.OrderByDescending(x => x.TotalValue).FirstOrDefault();
         }
 
+        /// <summary>
+        /// Lowest offer on a listing.
+        /// </summary>
         public static NegotiatingDeal GetNegotiatingLowestValue(MarketItem prop)
         {
             return prop.Deals.OrderBy(x => x.TotalValue).FirstOrDefault();
         }
 
+        /// <summary>
+        /// Spirit stones offered by a buyer.
+        /// </summary>
         public static int GetNegotiatingPrice(MarketItem prop, WorldUnitBase buyer)
         {
             var curDeal = GetBuyerDeal(prop, buyer);
@@ -130,6 +157,9 @@ namespace MOD_nE7UL2.Mod
             return dealPrice.Count;
         }
 
+        /// <summary>
+        /// Sets the spirit stones offered by a buyer.
+        /// </summary>
         public static void SetNegotiatingPrice(MarketItem prop, WorldUnitBase buyer, int value)
         {
             var curDeal = GetBuyerDeal(prop, buyer);
@@ -149,7 +179,8 @@ namespace MOD_nE7UL2.Mod
             {
                 curDeal.Items.Add(new NegotiatingItem(curDeal)
                 {
-                    Count = prop.SellerPrice,
+                    // first offer: the given price (NPC buyers), or the seller price when none is given (player without an offer yet)
+                    Count = value > 0 ? value : prop.SellerPrice,
                     IsSpiritStones = true,
                     IsPartialItem = true,
                     NegotiatingPropPropId = ModLibConst.MONEY_PROP_ID,
@@ -157,11 +188,17 @@ namespace MOD_nE7UL2.Mod
             }
         }
 
+        /// <summary>
+        /// Cancels a listing/offer silently.
+        /// </summary>
         public static void CancelWithoutMessage(MarketItem item)
         {
             Instance.MarketStack.Remove(item);
         }
 
+        /// <summary>
+        /// Cancels a listing/offer (with message), or the selected one from the UI.
+        /// </summary>
         public static void Cancel(MarketItem item)
         {
             if (item == null)
@@ -180,11 +217,17 @@ namespace MOD_nE7UL2.Mod
             CancelWithoutMessage(item);
         }
 
+        /// <summary>
+        /// Cancels a listing/offer silently.
+        /// </summary>
         public static void CancelWithoutMessage(NegotiatingDeal deal)
         {
             Instance.NegotiatingDeals.Remove(deal);
         }
 
+        /// <summary>
+        /// Cancels a listing/offer (with message), or the selected one from the UI.
+        /// </summary>
         public static void Cancel(NegotiatingDeal deal)
         {
             if (deal == null)
@@ -197,6 +240,9 @@ namespace MOD_nE7UL2.Mod
             CancelWithoutMessage(deal);
         }
 
+        /// <summary>
+        /// Executes a deal: checks both sides still have money/items (else negative outcomes), transfers item and payment.
+        /// </summary>
         public static void AcceptDeal(MarketItem item, NegotiatingDeal deal)
         {
             if (item == null || deal == null)
@@ -291,6 +337,9 @@ namespace MOD_nE7UL2.Mod
         }
 
         //seller cancel
+        /// <summary>
+        /// Bad outcome: seller no longer has the item (buyer hates seller).
+        /// </summary>
         private static void NG_Seller1(WorldUnitBase seller, WorldUnitBase buyer, MarketItem item)
         {
             var dealPropInfo = item.GetPropInfo();
@@ -302,6 +351,9 @@ namespace MOD_nE7UL2.Mod
         }
 
         //seller try to dump buyer
+        /// <summary>
+        /// Bad outcome: seller tries to dump the buyer.
+        /// </summary>
         private static void NG_Seller2(WorldUnitBase seller, WorldUnitBase buyer, MarketItem item)
         {
             var dealPropInfo = item.GetPropInfo();
@@ -313,6 +365,9 @@ namespace MOD_nE7UL2.Mod
         }
 
         //buyer cant pay for what he deals
+        /// <summary>
+        /// Bad outcome: buyer cannot pay.
+        /// </summary>
         private static void NG_Buyer1(WorldUnitBase seller, WorldUnitBase buyer, MarketItem item)
         {
             var dealPropInfo = item.GetPropInfo();
@@ -324,6 +379,9 @@ namespace MOD_nE7UL2.Mod
         }
 
         //buyer try to dump seller
+        /// <summary>
+        /// Bad outcome: buyer tries to dump the seller.
+        /// </summary>
         private static void NG_Buyer2(WorldUnitBase seller, WorldUnitBase buyer, MarketItem item)
         {
             var dealPropInfo = item.GetPropInfo();
@@ -335,6 +393,9 @@ namespace MOD_nE7UL2.Mod
         }
 
         //buyer cancel
+        /// <summary>
+        /// Bad outcome: buyer item missing.
+        /// </summary>
         private static void NG_Buyer3(WorldUnitBase seller, WorldUnitBase buyer, MarketItem item)
         {
             var dealPropInfo = item.GetPropInfo();
@@ -342,9 +403,12 @@ namespace MOD_nE7UL2.Mod
                 return;
             seller.data.unitData.relationData.AddHate(buyer.GetUnitId(), dealPropInfo.grade * 5);
             if (seller.IsPlayer() || buyer.IsPlayer())
-                DramaHelper.OpenDrama1(GameTool.LS("500020093"), new List<string> { GameTool.LS("other500020045") }, null, seller, buyer);
+                DramaHelper.OpenDrama1(GameTool.LS("other500020093"), new List<string> { GameTool.LS("other500020045") }, null, seller, buyer);
         }
 
+        /// <summary>
+        /// Successful deal message/relations.
+        /// </summary>
         private static void OK(WorldUnitBase seller, WorldUnitBase buyer, MarketItem item)
         {
             var dealPropInfo = item.GetPropInfo();
@@ -362,6 +426,9 @@ namespace MOD_nE7UL2.Mod
             }
         }
 
+        /// <summary>
+        /// Moves an item between seller and buyer.
+        /// </summary>
         public static void TransferItem(WorldUnitBase seller, WorldUnitBase buyer, MarketItem item)
         {
             if (item.IsPartialItem)
@@ -389,6 +456,9 @@ namespace MOD_nE7UL2.Mod
             }
         }
 
+        /// <summary>
+        /// Moves an item between seller and buyer.
+        /// </summary>
         public static void TransferItem(WorldUnitBase seller, WorldUnitBase buyer, NegotiatingItem item)
         {
             if (item.IsPartialItem)
@@ -416,6 +486,9 @@ namespace MOD_nE7UL2.Mod
             }
         }
 
+        /// <summary>
+        /// True when the listed item still exists.
+        /// </summary>
         public static bool CheckMarketItemExists(MarketItem item)
         {
             if (!item.IsValid)
@@ -428,6 +501,9 @@ namespace MOD_nE7UL2.Mod
         //    return !SMLocalConfigsEvent.Instance.Configs.NoMarketItem;
         //}
 
+        /// <summary>
+        /// Cancels expired listings, accepts best deals, lets NPC sellers list items and NPC buyers make offers.
+        /// </summary>
         public override void OnMonthly()
         {
             base.OnMonthly();
@@ -603,12 +679,18 @@ namespace MOD_nE7UL2.Mod
             }
         }
 
+        /// <summary>
+        /// VIP pass price of an area.
+        /// </summary>
         public static int VIPCost(int areaId)
         {
             var price = 100 * areaId;
             return InflationaryEvent.CalculateInflationary(price) / 10 * 10;
         }
 
+        /// <summary>
+        /// Adds market buttons to TownMarket and NPCInfo.
+        /// </summary>
         public override void OnOpenUIEnd(OpenUIEnd e)
         {
             base.OnOpenUIEnd(e);
@@ -621,13 +703,16 @@ namespace MOD_nE7UL2.Mod
                         ui.AddToolTipButton(ui.MidCol - 11, ui.MidRow - 1, GameTool.LS("other500020041"));
                         ui.AddButton(ui.MidCol - 8, ui.MidRow - 1, () =>
                         {
-                            var vipPrice = VIPCost(ui.UI.town.gridData.areaBaseID);
+                            // the town of the market open now (the cover could hold the UI object of an earlier opening)
+                            var town = g.ui.GetUI<UITownMarket>(UIType.TownMarket)?.town ?? ui.UI.town;
+                            var vipPrice = VIPCost(town.gridData.areaBaseID);
                             g.ui.MsgBox(GameTool.LS("other500020040"), string.Format(GameTool.LS("other500020086"), vipPrice), ModLib.Enum.MsgBoxButtonEnum.YesNo, () =>
                             {
                                 if (g.world.playerUnit.GetUnitMoney() >= vipPrice)
                                 {
                                     g.world.playerUnit.AddUnitMoney(-vipPrice);
-                                    MapBuildPropertyEvent.AddBuildProperty(ui.UI.town, vipPrice);
+                                    MapBuildPropertyEvent.AddBuildProperty(town, vipPrice);
+                                    DebugHelper.WriteLine($"RealMarketEvent3: VIP {vipPrice} paid to {town.name} (budget {MapBuildPropertyEvent.GetBuildProperty(town)})");
                                     OpenMarket(x => x.IsHidden || (x.GetPropInfo()?.grade ?? 0) >= 4);
                                 }
                                 else
@@ -675,6 +760,9 @@ namespace MOD_nE7UL2.Mod
             }
         }
 
+        /// <summary>
+        /// Resets market window flags.
+        /// </summary>
         public override void OnCloseUIStart(CloseUIStart e)
         {
             base.OnCloseUIStart(e);
@@ -734,6 +822,9 @@ namespace MOD_nE7UL2.Mod
             }
         }
 
+        /// <summary>
+        /// Lists all matching listings.
+        /// </summary>
         private void OpenMarket(Func<MarketItem, bool> predicate)
         {
             var ui = g.ui.OpenUISafe<UINPCSearch>(UIType.NPCSearch);
@@ -744,6 +835,9 @@ namespace MOD_nE7UL2.Mod
             IsOpenMarket = true;
         }
 
+        /// <summary>
+        /// Listings of a seller.
+        /// </summary>
         private void OpenSellingList(WorldUnitBase seller)
         {
             g.ui.CloseUI(UIType.PropSelect);
@@ -859,6 +953,9 @@ namespace MOD_nE7UL2.Mod
             IsOpenNegotiatingList = false;
         }
 
+        /// <summary>
+        /// Lowers the offer.
+        /// </summary>
         public void NegotiateDown(UIPropSelect uiSellingList, WorldUnitBase seller, DataProps.PropsData selectedProp, MarketItem selectedMarketItem)
         {
             if (seller == null || selectedProp == null || selectedMarketItem == null)
@@ -872,6 +969,9 @@ namespace MOD_nE7UL2.Mod
             SetNegotiatingPrice(selectedMarketItem, g.world.playerUnit, curPrice - (curPrice * CommonTool.Random(0.05f, 0.20f)).FixValue(0, g.world.playerUnit.GetUnitMoney()).Parse<int>());
         }
 
+        /// <summary>
+        /// Raises the offer.
+        /// </summary>
         public void NegotiateUp(UIPropSelect uiSellingList, WorldUnitBase seller, DataProps.PropsData selectedProp, MarketItem selectedMarketItem)
         {
             if (seller == null || selectedProp == null || selectedMarketItem == null)
@@ -896,6 +996,9 @@ namespace MOD_nE7UL2.Mod
             }
         }
 
+        /// <summary>
+        /// Places/updates the player offer.
+        /// </summary>
         public void Negotiate(UIPropSelect uiSellingList, WorldUnitBase seller, DataProps.PropsData selectedProp, MarketItem selectedMarketItem)
         {
             if (seller == null || selectedProp == null || selectedMarketItem == null)
@@ -968,6 +1071,9 @@ namespace MOD_nE7UL2.Mod
             IsOpenNegotiatingList = true;
         }
 
+        /// <summary>
+        /// Withdraws the player offer.
+        /// </summary>
         public void GiveUp(UIPropSelect uiSellingList, WorldUnitBase seller, DataProps.PropsData selectedProp, MarketItem selectedMarketItem)
         {
             if (seller == null || selectedProp == null || selectedMarketItem == null)
@@ -985,6 +1091,9 @@ namespace MOD_nE7UL2.Mod
             this.selectedMarketItem = null;
         }
 
+        /// <summary>
+        /// Lowers the player listing price.
+        /// </summary>
         public void DecreasePrice(UIPropSelect uiSellingList, WorldUnitBase seller, DataProps.PropsData selectedProp, MarketItem selectedMarketItem)
         {
             if (seller == null || selectedProp == null || selectedMarketItem == null)
@@ -997,6 +1106,9 @@ namespace MOD_nE7UL2.Mod
             selectedMarketItem.SellerPrice -= (selectedMarketItem.SellerPrice * CommonTool.Random(0.05f, 0.20f)).Parse<int>();
         }
 
+        /// <summary>
+        /// Raises the player listing price.
+        /// </summary>
         public void IncreasePrice(UIPropSelect uiSellingList, WorldUnitBase seller, DataProps.PropsData selectedProp, MarketItem selectedMarketItem)
         {
             if (seller == null || selectedProp == null || selectedMarketItem == null)
@@ -1009,6 +1121,9 @@ namespace MOD_nE7UL2.Mod
             selectedMarketItem.SellerPrice += (selectedMarketItem.SellerPrice * CommonTool.Random(0.05f, 0.20f)).Parse<int>();
         }
 
+        /// <summary>
+        /// Cancels a listing/offer (with message), or the selected one from the UI.
+        /// </summary>
         public void Cancel(UIPropSelect uiSellingList, WorldUnitBase seller, DataProps.PropsData selectedProp, MarketItem selectedMarketItem)
         {
             if (seller == null || selectedProp == null || selectedMarketItem == null)
@@ -1028,6 +1143,9 @@ namespace MOD_nE7UL2.Mod
         }
 
         //OpenSellingList -> ShowDeals
+        /// <summary>
+        /// Offers on the player listing.
+        /// </summary>
         public void ShowDeals(UIPropSelect uiSellingList, WorldUnitBase seller, DataProps.PropsData selectedProp, MarketItem selectedMarketItem)
         {
             if (seller == null || selectedProp == null || selectedMarketItem == null)
@@ -1067,6 +1185,9 @@ namespace MOD_nE7UL2.Mod
         }
 
         //ShowDeals -> OpenDealingList
+        /// <summary>
+        /// Offers made by the player.
+        /// </summary>
         private void OpenDealingList(WorldUnitBase buyer)
         {
             g.ui.CloseUI(UIType.PropSelect);
@@ -1119,6 +1240,9 @@ namespace MOD_nE7UL2.Mod
         }
 
         // 2. Hàm OpenRegister với custom btnOK
+        /// <summary>
+        /// Lists player items for sale.
+        /// </summary>
         private void OpenRegister(WorldUnitBase seller)
         {
             g.ui.CloseUI(UIType.PropSelect);

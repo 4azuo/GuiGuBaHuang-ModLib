@@ -61,4 +61,4 @@ Edit `ModCreator\Resources\embeded-settings.json`:
 
 - GitHub: https://github.com/4azuo/GuiGuBaHuang-ModLib
 - Issues: GitHub Issues
-- Docs: `.github/docs/`
+- Docs: `docs/`

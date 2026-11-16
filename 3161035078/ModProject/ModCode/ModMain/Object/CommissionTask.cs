@@ -7,8 +7,14 @@ using ModLib.Helper;
 
 namespace MOD_nE7UL2.Object
 {
+    /// <summary>
+    /// A commission (item order) placed at the bounty board: items, total value, fee, mayor degree cost, duration, success rate, status.
+    /// </summary>
     public class CommissionTask
     {
+        /// <summary>
+        /// Commission status.
+        /// </summary>
         public enum CommissionTaskStatus
         {
             Progressing,
@@ -26,8 +32,14 @@ namespace MOD_nE7UL2.Object
         public int PassTime { get; set; } = 0;
         public CommissionTaskStatus Status { get; set; } = CommissionTaskStatus.Progressing;
 
+        /// <summary>
+        /// Computes total, fee, cost, duration and success rate from the selected items.
+        /// </summary>
         public CommissionTask() { }
 
+        /// <summary>
+        /// Computes total, fee, cost, duration and success rate from the selected items.
+        /// </summary>
         public CommissionTask(List<DataProps.PropsData> selectedItems)
         {
             var lst = selectedItems.ToArray();

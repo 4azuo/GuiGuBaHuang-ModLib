@@ -9,14 +9,23 @@ using ModLib.Helper;
 
 namespace MOD_nE7UL2.Mod
 {
+    /// <summary>
+    /// Optional (S&amp;M): pay to repair god artifacts (Devil Demon, God Eye) or add fish jade to the Pisces Pendant.
+    /// </summary>
     [Cache(ModConst.REPAIR_SHINKI_EVENT)]
     public class RepairShinkiEvent : ModEvent
     {
+        /// <summary>
+        /// Loaded only when AllowRepairGodWeapon is on.
+        /// </summary>
         public override bool OnCacheHandler()
         {
             return SMLocalConfigsEvent.Instance.Configs.AllowRepairGodWeapon;
         }
 
+        /// <summary>
+        /// Adds the repair button to the god artifact UI.
+        /// </summary>
         public override void OnOpenUIEnd(OpenUIEnd e)
         {
             base.OnOpenUIEnd(e);
@@ -45,6 +54,9 @@ namespace MOD_nE7UL2.Mod
             }
         }
 
+        /// <summary>
+        /// Pays and repairs the Devil Demon.
+        /// </summary>
         private void RepairDevilDemon()
         {
             var cost = (g.world.playerUnit.GetGradeLvl() + RebirthEvent.Instance.TotalGradeLvl) * 100 * Math.Pow(2, g.world.playerUnit.GetGradeLvl()).Parse<int>();
@@ -64,6 +76,9 @@ namespace MOD_nE7UL2.Mod
             });
         }
 
+        /// <summary>
+        /// Pays and repairs the God Eye.
+        /// </summary>
         private void RepairGodEye()
         {
             var cost = (g.world.playerUnit.GetGradeLvl() + RebirthEvent.Instance.TotalGradeLvl) * 100 * Math.Pow(2, g.world.playerUnit.GetGradeLvl()).Parse<int>();
@@ -83,6 +98,9 @@ namespace MOD_nE7UL2.Mod
             });
         }
 
+        /// <summary>
+        /// Adds one fish jade.
+        /// </summary>
         private void AddFishJade()
         {
             var cost = (g.world.playerUnit.GetGradeLvl() + (g.world.unit.GetUnit(GodArtifactHelper.GetPiscesPendantNpcId())?.GetGradeLvl() ?? 0)) * 100 * Math.Pow(2, g.world.playerUnit.GetGradeLvl()).Parse<int>();
@@ -91,6 +109,7 @@ namespace MOD_nE7UL2.Mod
             {
                 if (g.world.playerUnit.GetUnitMoney() >= cost)
                 {
+                    g.world.playerUnit.AddUnitMoney(-cost); // (BUG-05)
                     GodArtifactHelper.AddFishJade(1);
                     g.ui.CloseUI(UIType.PiscesPendant);
                 }

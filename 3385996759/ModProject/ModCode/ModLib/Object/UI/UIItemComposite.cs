@@ -4,6 +4,9 @@ using ModLib.Helper;
 
 namespace ModLib.Object
 {
+    /// <summary>
+    /// Group "prefix text + main component + postfix text" handled as one item.
+    /// </summary>
     public class UIItemComposite : UIItemBase
     {
         public UIItemText Prefix { get; set; }
@@ -37,8 +40,14 @@ namespace ModLib.Object
         public override bool Enable { get => MainComponent.Enable; set => MainComponent.Enable = value; }
         public override object Tag { get => MainComponent.Tag; set => MainComponent.Tag = value; }
 
+        /// <summary>
+        /// Creates the item and registers it in the owner UI (and the current page when paging is used).
+        /// </summary>
         private UIItemComposite(UICustomBase ui) : base(ui) { }
 
+        /// <summary>
+        /// Creates a composite slider.
+        /// </summary>
         public static UIItemComposite CreateSlider(UICustomBase ui, float x, float y, string prefix, float min, float max, float def, string postfix = null, Slider copySource = null)
         {
             var rs = new UIItemComposite(ui);
@@ -53,6 +62,9 @@ namespace ModLib.Object
             return rs;
         }
 
+        /// <summary>
+        /// Creates a composite toggle.
+        /// </summary>
         public static UIItemComposite CreateToggle(UICustomBase ui, float x, float y, string prefix, bool def, string postfix = null, Toggle copySource = null)
         {
             var rs = new UIItemComposite(ui);
@@ -67,6 +79,9 @@ namespace ModLib.Object
             return rs;
         }
 
+        /// <summary>
+        /// Creates a composite selection.
+        /// </summary>
         public static UIItemComposite CreateSelect(UICustomBase ui, float x, float y, string prefix, string[] selections, int def, string postfix = null, Toggle copySource = null)
         {
             var rs = new UIItemComposite(ui);
@@ -81,6 +96,9 @@ namespace ModLib.Object
             return rs;
         }
 
+        /// <summary>
+        /// Creates a composite input.
+        /// </summary>
         public static UIItemComposite CreateInput(UICustomBase ui, float x, float y, string prefix, string def, string postfix = null, InputField copySource = null)
         {
             var rs = new UIItemComposite(ui);
@@ -95,21 +113,33 @@ namespace ModLib.Object
             return rs;
         }
 
+        /// <summary>
+        /// Returns the current value of the component.
+        /// </summary>
         public override object Get()
         {
             return MainComponent.Get();
         }
 
+        /// <summary>
+        /// Sets the value of the component.
+        /// </summary>
         public override void Set(object input)
         {
             MainComponent.Set(input);
         }
 
+        /// <summary>
+        /// Sets the slider value by percentage.
+        /// </summary>
         public void SetPercent(float percent, float min = float.MinValue, float max = float.MaxValue)
         {
             (MainComponent as UIItemSlider)?.SetPercent(percent, min, max);
         }
 
+        /// <summary>
+        /// Refreshes the component from its UIItemData/UIItemWork (formatter, enable/visible conditions).
+        /// </summary>
         public override void Update()
         {
             base.Update();
@@ -121,6 +151,9 @@ namespace ModLib.Object
                 Postfix.Item.gameObject.SetActive(IsEnable());
         }
 
+        /// <summary>
+        /// Destroys the created Unity objects and unregisters the item/UI.
+        /// </summary>
         public override void Dispose()
         {
             Prefix.Dispose();
@@ -128,22 +161,34 @@ namespace ModLib.Object
             Postfix.Dispose();
         }
 
+        /// <summary>
+        /// Shows or hides the component (fluent).
+        /// </summary>
         public override UIItemBase Active(bool flg)
         {
             MainComponent.Active(flg);
             return this;
         }
 
+        /// <summary>
+        /// True when the component is visible.
+        /// </summary>
         public override bool IsActive()
         {
             return MainComponent.IsActive();
         }
 
+        /// <summary>
+        /// True when the component is interactable.
+        /// </summary>
         public override bool IsEnable()
         {
             return MainComponent.IsEnable();
         }
 
+        /// <summary>
+        /// Enables or disables interaction with the component.
+        /// </summary>
         public override void SetEnable(bool value)
         {
             Prefix.SetEnable(value);
@@ -151,11 +196,17 @@ namespace ModLib.Object
             Postfix.SetEnable(value);
         }
 
+        /// <summary>
+        /// Gets or moves the component position: absolute coordinates, grid cell, or offset relative to another object (fluent).
+        /// </summary>
         public override Vector2 Pos()
         {
             return MainComponent.Pos();
         }
 
+        /// <summary>
+        /// Gets or moves the component position: absolute coordinates, grid cell, or offset relative to another object (fluent).
+        /// </summary>
         public override UIItemBase Pos(float x, float y)
         {
             var oldMainPos = MainComponent.Pos();
@@ -168,6 +219,9 @@ namespace ModLib.Object
             return this;
         }
 
+        /// <summary>
+        /// Gets or moves the component position: absolute coordinates, grid cell, or offset relative to another object (fluent).
+        /// </summary>
         public override UIItemBase Pos(int col, int row)
         {
             var oldMainPos = MainComponent.Pos();
@@ -180,6 +234,9 @@ namespace ModLib.Object
             return this;
         }
 
+        /// <summary>
+        /// Gets or moves the component position: absolute coordinates, grid cell, or offset relative to another object (fluent).
+        /// </summary>
         public virtual UIItemBase Pos(Vector2 org, float x, float y)
         {
             var oldMainPos = MainComponent.Pos();
@@ -192,16 +249,25 @@ namespace ModLib.Object
             return this;
         }
 
+        /// <summary>
+        /// Gets or moves the component position: absolute coordinates, grid cell, or offset relative to another object (fluent).
+        /// </summary>
         public override UIItemBase Pos(GameObject org, float x, float y)
         {
             return Pos(org.Pos(), x, y);
         }
 
+        /// <summary>
+        /// Gets or moves the component position: absolute coordinates, grid cell, or offset relative to another object (fluent).
+        /// </summary>
         public override UIItemBase Pos(Component org, float x, float y)
         {
             return Pos(org.gameObject, x, y);
         }
 
+        /// <summary>
+        /// Gets or moves the component position: absolute coordinates, grid cell, or offset relative to another object (fluent).
+        /// </summary>
         public override UIItemBase Pos(UIItemBase org, float x, float y)
         {
             var oldMainPos = MainComponent.Pos();
@@ -214,6 +280,9 @@ namespace ModLib.Object
             return this;
         }
 
+        /// <summary>
+        /// Re-parents the component under another transform (fluent).
+        /// </summary>
         public override UIItemBase SetParentTransform(Transform t)
         {
             Prefix.SetParentTransform(t);
@@ -222,11 +291,17 @@ namespace ModLib.Object
             return this;
         }
 
+        /// <summary>
+        /// Re-parents the component under another transform (fluent).
+        /// </summary>
         public override UIItemBase SetParentTransform(GameObject t)
         {
             return SetParentTransform(t.transform);
         }
 
+        /// <summary>
+        /// Re-parents the component under another transform (fluent).
+        /// </summary>
         public override UIItemBase SetParentTransform(Component t)
         {
             return SetParentTransform(t.gameObject);

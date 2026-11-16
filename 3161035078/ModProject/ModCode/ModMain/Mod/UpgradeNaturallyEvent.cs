@@ -8,16 +8,25 @@ using ModLib.Object;
 
 namespace MOD_nE7UL2.Mod
 {
+    /// <summary>
+    /// Optional (S&amp;M): break through without breakthrough items when exp is full.
+    /// </summary>
     [Cache(ModConst.UPGRADE_NATURALLY_EVENT)]
     public class UpgradeNaturallyEvent : ModEvent
     {
         public static UpgradeNaturallyEvent Instance { get; set; }
 
+        /// <summary>
+        /// Loaded only when AllowUpgradeNaturally is on.
+        /// </summary>
         public override bool OnCacheHandler()
         {
             return SMLocalConfigsEvent.Instance.Configs.AllowUpgradeNaturally;
         }
 
+        /// <summary>
+        /// FateFeature UI with full exp: adds an "upgrade" button setting the next phase.
+        /// </summary>
         public override void OnOpenUIEnd(OpenUIEnd e)
         {
             base.OnOpenUIEnd(e);

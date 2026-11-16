@@ -7,16 +7,25 @@ using System.Linq;
 
 namespace ModLib.Converter
 {
+    /// <summary>
+    /// Json.NET converter that stores EnumObject instances as "TypeFullName|Name" and resolves them back to the singleton instance.
+    /// </summary>
     public class EnumObjectConverter : JsonConverter
     {
         private const string TYPE = "$type";
         private const string NAME = "ObjName";
 
+        /// <summary>
+        /// True for every EnumObject type.
+        /// </summary>
         public override bool CanConvert(Type objectType)
         {
             return typeof(EnumObject).IsAssignableFrom(objectType);
         }
 
+        /// <summary>
+        /// Reads the new string format or the old object format and returns the existing singleton.
+        /// </summary>
         public override object ReadJson(JsonReader reader, Type objectType, object existingValue, JsonSerializer serializer)
         {
             try
@@ -45,12 +54,15 @@ namespace ModLib.Converter
             }
         }
 
+        /// <summary>
+        /// Writes the enum object as "TypeFullName|Name".
+        /// </summary>
         public override void WriteJson(JsonWriter writer, object value, JsonSerializer serializer)
         {
             try
             {
                 //new
-                writer.WriteValueAsync($"{value.GetType().FullName}|{(value as EnumObject).Name}");
+                writer.WriteValue($"{value.GetType().FullName}|{(value as EnumObject).Name}");
 
                 //old
                 //var t = JToken.FromObject(value);

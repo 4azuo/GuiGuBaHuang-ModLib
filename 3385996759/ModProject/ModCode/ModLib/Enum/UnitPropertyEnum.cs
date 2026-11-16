@@ -5,6 +5,9 @@ using static DataUnit;
 
 namespace ModLib.Enum
 {
+    /// <summary>
+    /// Static (saved) properties of a unit (grade, age, money, basis...).
+    /// </summary>
     public class UnitPropertyEnum : EnumObject
     {
         //public static UnitPropertyEnum Example { get; } = new UnitPropertyEnum("example", IL2CPP.GetIl2CppField(Il2CppClassPointerStore<PropertyData>.NativeClassPtr, "example"));
@@ -79,6 +82,9 @@ namespace ModLib.Enum
         public string PropName { get; private set; }
         public IntPtr PropAddr { get; private set; }
         public int PropOffset { get; private set; }
+        /// <summary>
+        /// Creates an entry bound to a property name of the unit property data.
+        /// </summary>
         private UnitPropertyEnum(string propName, IntPtr? propAddr = null) : base(propName)
         {
             PropName = propName;
@@ -88,6 +94,9 @@ namespace ModLib.Enum
             PropOffset = (int)IL2CPP.il2cpp_field_get_offset(PropAddr);
         }
 
+        /// <summary>
+        /// Reads the property value.
+        /// </summary>
         public unsafe T Get<T>(PropertyData propData)
         {
             var rs = *(T*)((long)IL2CPP.Il2CppObjectBaseToPtrNotNull(propData) + PropOffset);
@@ -95,6 +104,9 @@ namespace ModLib.Enum
             return rs;
         }
 
+        /// <summary>
+        /// Writes the property value.
+        /// </summary>
         public unsafe void Set<T>(PropertyData propData, T newValue)
         {
             //var oldValue = Get<T>(propData);
@@ -102,6 +114,9 @@ namespace ModLib.Enum
             *(T*)((long)IL2CPP.Il2CppObjectBaseToPtrNotNull(propData) + PropOffset) = newValue;
         }
 
+        /// <summary>
+        /// Returns the matching UnitDynPropertyEnum.
+        /// </summary>
         public UnitDynPropertyEnum GetDynPropertyEnum()
         {
             return UnitDynPropertyEnum.GetEnumByVal<UnitDynPropertyEnum>(this.PropName);

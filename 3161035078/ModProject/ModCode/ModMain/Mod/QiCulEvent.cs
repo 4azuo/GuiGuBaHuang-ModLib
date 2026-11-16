@@ -10,6 +10,9 @@ using UnityEngine;
 
 namespace MOD_nE7UL2.Mod
 {
+    /// <summary>
+    /// Qi cultivation: units with full exp accumulate Qi (from SP) which gives Atk/HP/MP bonuses; Qi can be transferred.
+    /// </summary>
     [Cache(ModConst.QI_CUL_EVENT)]
     public class QiCulEvent : ModEvent
     {
@@ -20,11 +23,17 @@ namespace MOD_nE7UL2.Mod
         public int LastYearReceiveQi { get; set; }
         public IDictionary<string, long> Qi { get; set; } = new Dictionary<string, long>();
 
+        /// <summary>
+        /// Disabled by NoQiCultivation.
+        /// </summary>
         public override bool OnCacheHandler()
         {
             return !SMLocalConfigsEvent.Instance.Configs.NoQiCultivation;
         }
 
+        /// <summary>
+        /// Adds Qi to units with full exp every GrowUpSpeed months.
+        /// </summary>
         public override void OnMonthlyForEachWUnit(WorldUnitBase wunit)
         {
             base.OnMonthlyForEachWUnit(wunit);
@@ -37,6 +46,9 @@ namespace MOD_nE7UL2.Mod
             }
         }
 
+        /// <summary>
+        /// Shows Qi and bonuses in FateFeature and NPCInfo; adds "transfer Qi" (and "receive from master" once a year).
+        /// </summary>
         public override void OnOpenUIEnd(OpenUIEnd e)
         {
             base.OnOpenUIEnd(e);
@@ -88,6 +100,9 @@ namespace MOD_nE7UL2.Mod
             }
         }
 
+        /// <summary>
+        /// Moves about 10 % of the sender Qi to the receiver (scaled by the receiver talent).
+        /// </summary>
         public static void QiTransmit(WorldUnitBase fwunit, WorldUnitBase twunit)
         {
             var fwunitId = fwunit.GetUnitId();

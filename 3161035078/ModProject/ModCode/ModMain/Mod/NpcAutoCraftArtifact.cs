@@ -8,18 +8,27 @@ using System.Linq;
 
 namespace MOD_nE7UL2.Mod
 {
+    /// <summary>
+    /// NPCs occasionally craft an artifact of their grade with random stats.
+    /// </summary>
     [Cache(ModConst.NPC_AUTO_CRAFT_ARTIFACT)]
     public class NpcAutoCraftArtifact : ModEvent
     {
         public static NpcAutoCraftArtifact Instance { get; set; }
         public static ConfItemPropsItem[] ArtifactConfs { get; set; }
 
+        /// <summary>
+        /// Caches the artifact item configs.
+        /// </summary>
         public override void OnLoadGame()
         {
             base.OnLoadGame();
             ArtifactConfs = g.conf.itemProps._allConfList.ToArray().Where(x => x.IsArtifact() != null).ToArray();
         }
 
+        /// <summary>
+        /// Chance (refine skill, luck) to give the NPC a random artifact with random grade/level/attributes.
+        /// </summary>
         public override void OnMonthlyForEachWUnit(WorldUnitBase wunit)
         {
             base.OnMonthlyForEachWUnit(wunit);
@@ -54,6 +63,9 @@ namespace MOD_nE7UL2.Mod
             }
         }
 
+        /// <summary>
+        /// Biased random between min and max (80 % chance to stop at each step).
+        /// </summary>
         private int Random(int min, int max)
         {
             for (var i = min; i < max; i++)

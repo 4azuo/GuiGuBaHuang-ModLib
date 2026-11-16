@@ -2,6 +2,9 @@
 
 namespace ModLib.Object
 {
+    /// <summary>
+    /// Per-save ModLib variables: one-shot load flags (not saved) and saved flags LoadFirstMonth, LoadNewGame, CurMonth.
+    /// </summary>
     public class Gamevar : CachableObject
     {
         //[JsonIgnore]

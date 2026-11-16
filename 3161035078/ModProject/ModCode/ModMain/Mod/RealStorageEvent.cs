@@ -12,6 +12,9 @@ using ModLib.Helper;
 
 namespace MOD_nE7UL2.Mod
 {
+    /// <summary>
+    /// Town storage fee: a monthly fee on stored value; unpaid fees become debt that blocks storage access.
+    /// </summary>
     [Cache(ModConst.REAL_STORAGE_EVENT)]
     public class RealStorageEvent : ModEvent
     {
@@ -19,6 +22,9 @@ namespace MOD_nE7UL2.Mod
 
         public const int DEBT_DRAMA = 480020100;
 
+        /// <summary>
+        /// Monthly fee rate (S&amp;M bank fee applied).
+        /// </summary>
         public static double FeeRate()
         {
             return SMLocalConfigsEvent.Instance.Calculate(ModMain.ModObj.ModSettings.RealStorageConfigs.FeeRate, SMLocalConfigsEvent.Instance.Configs.AddBankFee);
@@ -30,6 +36,9 @@ namespace MOD_nE7UL2.Mod
         public long Debt { get; set; } = 0L;
         private int count = 0;
 
+        /// <summary>
+        /// TownStorageProps: adds value/fee texts; with debt shows warnings and blocks item clicks.
+        /// </summary>
         [EventCondition(IsInGame = HandleEnum.True, IsInBattle = HandleEnum.False)]
         public override void OnOpenUIEnd(OpenUIEnd e)
         {
@@ -59,6 +68,9 @@ namespace MOD_nE7UL2.Mod
             }
         }
 
+        /// <summary>
+        /// Refreshes storage value and fee texts (merchants/guardians are free).
+        /// </summary>
         [ErrorIgnore]
         [EventCondition(IsInGame = HandleEnum.True, IsInBattle = HandleEnum.False)]
         public override void OnTimeUpdate200ms()
@@ -82,6 +94,9 @@ namespace MOD_nE7UL2.Mod
             }
         }
 
+        /// <summary>
+        /// Adds the fee to the debt, pays it when the player has enough money, otherwise warns by drama.
+        /// </summary>
         public override void OnMonthly()
         {
             base.OnMonthly();
@@ -106,18 +121,27 @@ namespace MOD_nE7UL2.Mod
             }
         }
 
+        /// <summary>
+        /// Worth of everything in storage.
+        /// </summary>
         public static long GetStorageValue()
         {
             var props = GameHelper.GetStorage().data.propData.allProps.ToArray() ?? new DataProps.PropsData[0];
             return props.Sum(x => x.propsCount * x.propsInfoBase.worth);
         }
 
+        /// <summary>
+        /// Spirit stones in storage.
+        /// </summary>
         public static int GetStorageSpiritStones()
         {
             var props = GameHelper.GetStorage().data.propData.allProps.ToArray() ?? new DataProps.PropsData[0];
             return props.Where(x => x.propsID == ModLibConst.MONEY_PROP_ID).Sum(x => x.propsCount * x.propsInfoBase.worth);
         }
 
+        /// <summary>
+        /// Clears the debt.
+        /// </summary>
         public static void RemoveDebt()
         {
             Instance.Debt = 0L;

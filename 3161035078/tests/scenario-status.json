@@ -1,0 +1,1615 @@
+{
+  "updatedAt": "2026-11-16T11:09:18",
+  "counts": {
+    "OK": 80,
+    "NG": 0,
+    "SKIP": 0,
+    "NOT RUN": 0,
+    "-": 2
+  },
+  "scenarios": [
+    {
+      "id": "TT-01",
+      "kind": "auto",
+      "feature": "UITitleScreenEvent",
+      "title": "Title screen shows Taoist/ModLib buttons and versions are compatible",
+      "result": "OK",
+      "lastRun": "2026-11-16T11:04:53",
+      "evidence": "test-viewer/index.html#tab=auto&run=20261116-104308",
+      "tester": "autotest",
+      "note": null,
+      "checks": {
+        "TT-01-01": "OK",
+        "TT-01-02": "OK",
+        "TT-01-03": "OK",
+        "TT-01-04": "OK",
+        "TT-01-05": "OK"
+      }
+    },
+    {
+      "id": "TT-02",
+      "kind": "auto",
+      "feature": "SMGlobalConfigsEvent",
+      "title": "S&M configs window: pages, presets and cancel",
+      "result": "OK",
+      "lastRun": "2026-11-16T11:04:53",
+      "evidence": "test-viewer/index.html#tab=auto&run=20261116-104308",
+      "tester": "autotest",
+      "note": null,
+      "checks": {
+        "TT-02-01": "OK",
+        "TT-02-02": "OK",
+        "TT-02-03": "OK",
+        "TT-02-04": "OK",
+        "TT-02-05": "OK",
+        "TT-02-06": "OK",
+        "TT-02-07": "OK",
+        "TT-02-08": "OK",
+        "TT-02-09": "OK",
+        "TT-02-10": "OK",
+        "TT-02-11": "OK",
+        "TT-02-12": "OK",
+        "TT-02-13": "OK",
+        "TT-02-14": "OK",
+        "TT-02-15": "OK"
+      }
+    },
+    {
+      "id": "TT-03",
+      "kind": "auto",
+      "feature": "UIDifficultyEvent/PriorityDestinyLevel",
+      "title": "New game: difficulty and character creation screens",
+      "result": "OK",
+      "lastRun": "2026-11-16T11:04:53",
+      "evidence": "test-viewer/index.html#tab=auto&run=20261116-104308",
+      "tester": "autotest",
+      "note": null,
+      "checks": {
+        "TT-03-01": "OK",
+        "TT-03-02": "OK",
+        "TT-03-03": "OK",
+        "TT-03-04": "OK",
+        "TT-03-05": "OK",
+        "TT-03-06": "OK"
+      }
+    },
+    {
+      "id": "TT-04",
+      "kind": "auto",
+      "feature": "ModLib title tools",
+      "title": "ModLib title: language selector and tools",
+      "result": "OK",
+      "lastRun": "2026-11-16T11:04:53",
+      "evidence": "test-viewer/index.html#tab=auto&run=20261116-104308",
+      "tester": "autotest",
+      "note": null,
+      "checks": {
+        "TT-04-01": "OK",
+        "TT-04-02": "OK",
+        "TT-04-03": "OK",
+        "TT-04-04": "OK",
+        "TT-04-05": "OK",
+        "TT-04-06": "OK",
+        "TT-04-07": "OK"
+      }
+    },
+    {
+      "id": "TT-05",
+      "kind": "auto",
+      "feature": "SMGlobalConfigsEvent",
+      "title": "S&M configs: OK without change keeps every value",
+      "result": "OK",
+      "lastRun": "2026-11-16T11:04:53",
+      "evidence": "test-viewer/index.html#tab=auto&run=20261116-104308",
+      "tester": "autotest",
+      "note": null,
+      "checks": {
+        "TT-05-01": "OK",
+        "TT-05-02": "OK",
+        "TT-05-03": "OK",
+        "TT-05-04": "OK",
+        "TT-05-05": "OK"
+      }
+    },
+    {
+      "id": "TP-01",
+      "kind": "auto",
+      "feature": "Pre-test (new character)",
+      "title": "Create a new character (trainer on, CrueltyShura, 3 artifacts, intro skipped)",
+      "result": "OK",
+      "lastRun": "2026-11-16T11:09:18",
+      "evidence": "test-viewer/index.html#tab=auto&run=20261116-110616",
+      "tester": "autotest",
+      "note": null,
+      "checks": {
+        "TP-01-01": "OK",
+        "TP-01-02": "OK",
+        "TP-01-03": "OK",
+        "TP-01-04": "OK",
+        "TP-01-05": "OK",
+        "TP-01-06": "OK",
+        "TP-01-07": "OK",
+        "TP-01-08": "OK",
+        "TP-01-09": "OK",
+        "TP-01-10": "OK",
+        "TP-01-11": "OK",
+        "TP-01-12": "OK",
+        "TP-01-13": "OK",
+        "TP-01-14": "OK",
+        "TP-01-15": "OK",
+        "TP-01-16": "OK",
+        "TP-01-17": "OK",
+        "TP-01-18": "OK",
+        "TP-01-19": "OK",
+        "TP-01-20": "OK"
+      }
+    },
+    {
+      "id": "TG-01",
+      "kind": "auto",
+      "feature": "ModMain",
+      "title": "Taoist settings and events are loaded in the save",
+      "result": "OK",
+      "lastRun": "2026-11-16T11:04:53",
+      "evidence": "test-viewer/index.html#tab=auto&run=20261116-104308",
+      "tester": "autotest",
+      "note": null,
+      "checks": {
+        "TG-01-01": "OK",
+        "TG-01-02": "OK",
+        "TG-01-03": "OK",
+        "TG-01-04": "OK",
+        "TG-01-05": "OK",
+        "TG-01-06": "OK",
+        "TG-01-07": "OK",
+        "TG-01-08": "OK",
+        "TG-01-09": "OK",
+        "TG-01-10": "OK",
+        "TG-01-11": "OK",
+        "TG-01-12": "OK",
+        "TG-01-13": "OK",
+        "TG-01-14": "OK"
+      }
+    },
+    {
+      "id": "TG-02",
+      "kind": "auto",
+      "feature": "SMLocalConfigsEvent",
+      "title": "Per-save S&M configs exist and Calculate applies rates",
+      "result": "OK",
+      "lastRun": "2026-11-16T11:04:53",
+      "evidence": "test-viewer/index.html#tab=auto&run=20261116-104308",
+      "tester": "autotest",
+      "note": null,
+      "checks": {
+        "TG-02-01": "OK",
+        "TG-02-02": "OK",
+        "TG-02-03": "OK",
+        "TG-02-04": "OK"
+      }
+    },
+    {
+      "id": "TG-03",
+      "kind": "auto",
+      "feature": "PrepareEvent",
+      "title": "Nearest-units option limits the units used by Taoist events",
+      "result": "OK",
+      "lastRun": "2026-11-16T11:04:53",
+      "evidence": "test-viewer/index.html#tab=auto&run=20261116-104308",
+      "tester": "autotest",
+      "note": null,
+      "checks": {
+        "TG-03-01": "OK",
+        "TG-03-02": "OK",
+        "TG-03-03": "OK",
+        "TG-03-04": "OK",
+        "TG-03-05": "OK",
+        "TG-03-06": "OK"
+      }
+    },
+    {
+      "id": "TG-04",
+      "kind": "auto",
+      "feature": "InflationaryEvent",
+      "title": "World price index is applied to prices",
+      "result": "OK",
+      "lastRun": "2026-11-16T11:04:53",
+      "evidence": "test-viewer/index.html#tab=auto&run=20261116-104308",
+      "tester": "autotest",
+      "note": null,
+      "checks": {
+        "TG-04-01": "OK",
+        "TG-04-02": "OK",
+        "TG-04-03": "OK",
+        "TG-04-04": "OK"
+      }
+    },
+    {
+      "id": "TG-05",
+      "kind": "auto",
+      "feature": "UnitTypeEvent",
+      "title": "Units receive a role",
+      "result": "OK",
+      "lastRun": "2026-11-16T11:04:53",
+      "evidence": "test-viewer/index.html#tab=auto&run=20261116-104308",
+      "tester": "autotest",
+      "note": null,
+      "checks": {
+        "TG-05-01": "OK",
+        "TG-05-02": "OK",
+        "TG-05-03": "OK"
+      }
+    },
+    {
+      "id": "TG-06",
+      "kind": "auto",
+      "feature": "NpcAutoEvent",
+      "title": "NPC without full exp gains exp monthly",
+      "result": "OK",
+      "lastRun": "2026-11-16T11:04:53",
+      "evidence": "test-viewer/index.html#tab=auto&run=20261116-104308",
+      "tester": "autotest",
+      "note": null,
+      "checks": {
+        "TG-06-01": "OK"
+      }
+    },
+    {
+      "id": "TG-07",
+      "kind": "auto",
+      "feature": "ExpertEvent",
+      "title": "Expertise exp formulas",
+      "result": "OK",
+      "lastRun": "2026-11-16T11:04:53",
+      "evidence": "test-viewer/index.html#tab=auto&run=20261116-104308",
+      "tester": "autotest",
+      "note": null,
+      "checks": {
+        "TG-07-01": "OK",
+        "TG-07-02": "OK",
+        "TG-07-03": "OK",
+        "TG-07-04": "OK",
+        "TG-07-05": "OK",
+        "TG-07-06": "OK"
+      }
+    },
+    {
+      "id": "TG-08",
+      "kind": "auto",
+      "feature": "CustomRefineEvent",
+      "title": "Refine exp API",
+      "result": "OK",
+      "lastRun": "2026-11-16T11:04:53",
+      "evidence": "test-viewer/index.html#tab=auto&run=20261116-104308",
+      "tester": "autotest",
+      "note": null,
+      "checks": {
+        "TG-08-01": "OK",
+        "TG-08-02": "OK",
+        "TG-08-03": "OK",
+        "TG-08-04": "OK"
+      }
+    },
+    {
+      "id": "TG-09",
+      "kind": "auto",
+      "feature": "HirePeopleEvent",
+      "title": "Hire and dismiss a team member",
+      "result": "OK",
+      "lastRun": "2026-11-16T11:04:53",
+      "evidence": "test-viewer/index.html#tab=auto&run=20261116-104308",
+      "tester": "autotest",
+      "note": null,
+      "checks": {
+        "TG-09-01": "OK",
+        "TG-09-02": "OK",
+        "TG-09-03": "OK",
+        "TG-09-04": "OK",
+        "TG-09-05": "OK"
+      }
+    },
+    {
+      "id": "TG-10",
+      "kind": "auto",
+      "feature": "MapBuildPropertyEvent",
+      "title": "Town budget add/remove and taxes",
+      "result": "OK",
+      "lastRun": "2026-11-16T11:04:53",
+      "evidence": "test-viewer/index.html#tab=auto&run=20261116-104308",
+      "tester": "autotest",
+      "note": null,
+      "checks": {
+        "TG-10-01": "OK",
+        "TG-10-02": "OK",
+        "TG-10-03": "OK",
+        "TG-10-04": "OK"
+      }
+    },
+    {
+      "id": "TG-11",
+      "kind": "auto",
+      "feature": "BankAccountEvent",
+      "title": "Bank account fee is positive for every area",
+      "result": "OK",
+      "lastRun": "2026-11-16T11:04:53",
+      "evidence": "test-viewer/index.html#tab=auto&run=20261116-104308",
+      "tester": "autotest",
+      "note": null,
+      "checks": {
+        "TG-11-01": "OK",
+        "TG-11-02": "OK",
+        "TG-11-03": "OK",
+        "TG-11-04": "OK",
+        "TG-11-05": "OK",
+        "TG-11-06": "OK",
+        "TG-11-07": "OK",
+        "TG-11-08": "OK",
+        "TG-11-09": "OK",
+        "TG-11-10": "OK",
+        "TG-11-11": "OK",
+        "TG-11-12": "OK",
+        "TG-11-13": "OK"
+      }
+    },
+    {
+      "id": "TG-12",
+      "kind": "auto",
+      "feature": "RealStorageEvent",
+      "title": "Storage fee rate and storage value",
+      "result": "OK",
+      "lastRun": "2026-11-16T11:04:53",
+      "evidence": "test-viewer/index.html#tab=auto&run=20261116-104308",
+      "tester": "autotest",
+      "note": null,
+      "checks": {
+        "TG-12-01": "OK",
+        "TG-12-02": "OK",
+        "TG-12-03": "OK"
+      }
+    },
+    {
+      "id": "TG-13",
+      "kind": "auto",
+      "feature": "RealMarketEvent/RealMarketEvent2",
+      "title": "Shop sell/buy rates exist for every market town",
+      "result": "OK",
+      "lastRun": "2026-11-16T11:04:53",
+      "evidence": "test-viewer/index.html#tab=auto&run=20261116-104308",
+      "tester": "autotest",
+      "note": null,
+      "checks": {
+        "TG-13-01": "OK",
+        "TG-13-02": "OK",
+        "TG-13-03": "OK",
+        "TG-13-04": "OK"
+      }
+    },
+    {
+      "id": "TG-14",
+      "kind": "auto",
+      "feature": "RealMarketEvent3",
+      "title": "Player market listings and VIP price are consistent",
+      "result": "OK",
+      "lastRun": "2026-11-16T11:04:53",
+      "evidence": "test-viewer/index.html#tab=auto&run=20261116-104308",
+      "tester": "autotest",
+      "note": null,
+      "checks": {
+        "TG-14-01": "OK",
+        "TG-14-02": "OK",
+        "TG-14-03": "OK",
+        "TG-14-04": "OK",
+        "TG-14-05": "OK",
+        "TG-14-06": "OK",
+        "TG-14-07": "OK",
+        "TG-14-08": "OK",
+        "TG-14-09": "OK",
+        "TG-14-10": "OK",
+        "TG-14-11": "OK"
+      }
+    },
+    {
+      "id": "TG-15",
+      "kind": "auto",
+      "feature": "ContributionExchangeEvent",
+      "title": "Sect exchange ratio is positive",
+      "result": "OK",
+      "lastRun": "2026-11-16T11:04:53",
+      "evidence": "test-viewer/index.html#tab=auto&run=20261116-104308",
+      "tester": "autotest",
+      "note": null,
+      "checks": {
+        "TG-15-01": "OK"
+      }
+    },
+    {
+      "id": "TG-16",
+      "kind": "auto",
+      "feature": "BuildingArrangeEvent",
+      "title": "Original buildings are known and building costs are valid",
+      "result": "OK",
+      "lastRun": "2026-11-16T11:04:53",
+      "evidence": "test-viewer/index.html#tab=auto&run=20261116-104308",
+      "tester": "autotest",
+      "note": null,
+      "checks": {
+        "TG-16-01": "OK",
+        "TG-16-02": "OK",
+        "TG-16-03": "OK",
+        "TG-16-04": "OK",
+        "TG-16-05": "OK",
+        "TG-16-06": "OK",
+        "TG-16-07": "OK",
+        "TG-16-08": "OK",
+        "TG-16-09": "OK"
+      }
+    },
+    {
+      "id": "TG-17",
+      "kind": "auto",
+      "feature": "UnitModifyEvent/QiCulEvent",
+      "title": "Unit modifiers are hooked and bonuses are not negative",
+      "result": "OK",
+      "lastRun": "2026-11-16T11:04:53",
+      "evidence": "test-viewer/index.html#tab=auto&run=20261116-104308",
+      "tester": "autotest",
+      "note": null,
+      "checks": {
+        "TG-17-01": "OK",
+        "TG-17-02": "OK",
+        "TG-17-03": "OK",
+        "TG-17-04": "OK",
+        "TG-17-05": "OK",
+        "TG-17-06": "OK"
+      }
+    },
+    {
+      "id": "TG-18",
+      "kind": "auto",
+      "feature": "BattleModifyEvent",
+      "title": "Block table and damage multiplier rules",
+      "result": "OK",
+      "lastRun": "2026-11-16T11:04:53",
+      "evidence": "test-viewer/index.html#tab=auto&run=20261116-104308",
+      "tester": "autotest",
+      "note": null,
+      "checks": {
+        "TG-18-01": "OK",
+        "TG-18-02": "OK",
+        "TG-18-03": "OK",
+        "TG-18-04": "OK"
+      }
+    },
+    {
+      "id": "TG-19",
+      "kind": "auto",
+      "feature": "BattleManashieldEvent",
+      "title": "Mana shield of the player",
+      "result": "OK",
+      "lastRun": "2026-11-16T11:04:53",
+      "evidence": "test-viewer/index.html#tab=auto&run=20261116-104308",
+      "tester": "autotest",
+      "note": null,
+      "checks": {
+        "TG-19-01": "OK",
+        "TG-19-02": "OK"
+      }
+    },
+    {
+      "id": "TG-20",
+      "kind": "auto",
+      "feature": "MonstStrongerEvent",
+      "title": "Monster growth counters exist",
+      "result": "OK",
+      "lastRun": "2026-11-16T11:04:53",
+      "evidence": "test-viewer/index.html#tab=auto&run=20261116-104308",
+      "tester": "autotest",
+      "note": null,
+      "checks": {
+        "TG-20-01": "OK",
+        "TG-20-02": "OK",
+        "TG-20-03": "OK",
+        "TG-20-04": "OK"
+      }
+    },
+    {
+      "id": "TG-21",
+      "kind": "auto",
+      "feature": "SliceLifeQuestEvent/ChallengeQuestEvent",
+      "title": "Quest chains have a consistent state",
+      "result": "OK",
+      "lastRun": "2026-11-16T11:04:53",
+      "evidence": "test-viewer/index.html#tab=auto&run=20261116-104308",
+      "tester": "autotest",
+      "note": null,
+      "checks": {
+        "TG-21-01": "OK",
+        "TG-21-02": "OK",
+        "TG-21-03": "OK",
+        "TG-21-04": "OK"
+      }
+    },
+    {
+      "id": "TG-22",
+      "kind": "auto",
+      "feature": "RebirthEvent",
+      "title": "Rebirth state and luck",
+      "result": "OK",
+      "lastRun": "2026-11-16T11:04:53",
+      "evidence": "test-viewer/index.html#tab=auto&run=20261116-104308",
+      "tester": "autotest",
+      "note": null,
+      "checks": {
+        "TG-22-01": "OK"
+      }
+    },
+    {
+      "id": "TG-23",
+      "kind": "auto",
+      "feature": "MissionDeclareEvent",
+      "title": "Running commissions are consistent",
+      "result": "OK",
+      "lastRun": "2026-11-16T11:04:53",
+      "evidence": "test-viewer/index.html#tab=auto&run=20261116-104308",
+      "tester": "autotest",
+      "note": null,
+      "checks": {
+        "TG-23-01": "OK",
+        "TG-23-02": "OK"
+      }
+    },
+    {
+      "id": "TG-24",
+      "kind": "auto",
+      "feature": "TimeSkipEvent/UIEvent",
+      "title": "Map screen shows Taoist buttons and hides vanilla widgets",
+      "result": "OK",
+      "lastRun": "2026-11-16T11:04:53",
+      "evidence": "test-viewer/index.html#tab=auto&run=20261116-104308",
+      "tester": "autotest",
+      "note": null,
+      "checks": {
+        "TG-24-01": "OK",
+        "TG-24-02": "OK"
+      }
+    },
+    {
+      "id": "TG-25",
+      "kind": "auto",
+      "feature": "QiCulEvent/UseSpiritStoneCulEvent/UpgradeNaturallyEvent",
+      "title": "Cultivation screen shows Qi and cultivation buttons",
+      "result": "OK",
+      "lastRun": "2026-11-16T11:04:53",
+      "evidence": "test-viewer/index.html#tab=auto&run=20261116-104308",
+      "tester": "autotest",
+      "note": null,
+      "checks": {
+        "TG-25-01": "OK",
+        "TG-25-02": "OK"
+      }
+    },
+    {
+      "id": "TG-26",
+      "kind": "auto",
+      "feature": "UIEvent",
+      "title": "Game menu save/reload buttons follow the S&M configs",
+      "result": "OK",
+      "lastRun": "2026-11-16T11:04:53",
+      "evidence": "test-viewer/index.html#tab=auto&run=20261116-104308",
+      "tester": "autotest",
+      "note": null,
+      "checks": {
+        "TG-26-01": "OK",
+        "TG-26-02": "OK",
+        "TG-26-03": "OK"
+      }
+    },
+    {
+      "id": "TG-27",
+      "kind": "auto",
+      "feature": "UISettingScreenEvent",
+      "title": "Game settings: Taoist settings button and window",
+      "result": "OK",
+      "lastRun": "2026-11-16T11:04:53",
+      "evidence": "test-viewer/index.html#tab=auto&run=20261116-104308",
+      "tester": "autotest",
+      "note": null,
+      "checks": {
+        "TG-27-01": "OK",
+        "TG-27-02": "OK",
+        "TG-27-03": "OK",
+        "TG-27-04": "OK",
+        "TG-27-05": "OK"
+      }
+    },
+    {
+      "id": "TG-28",
+      "kind": "auto",
+      "feature": "TrainerEvent",
+      "title": "Trainer: all pages open and an action changes the player",
+      "result": "OK",
+      "lastRun": "2026-11-16T11:04:53",
+      "evidence": "test-viewer/index.html#tab=auto&run=20261116-104308",
+      "tester": "autotest",
+      "note": null,
+      "checks": {
+        "TG-28-01": "OK",
+        "TG-28-02": "OK",
+        "TG-28-03": "OK",
+        "TG-28-04": "OK",
+        "TG-28-05": "OK",
+        "TG-28-06": "OK",
+        "TG-28-07": "OK",
+        "TG-28-08": "OK"
+      }
+    },
+    {
+      "id": "TG-29",
+      "kind": "auto",
+      "feature": "CachableObject (ModLib)",
+      "title": "Disabled features have no Instance (BUG-16)",
+      "result": "OK",
+      "lastRun": "2026-11-16T11:04:53",
+      "evidence": "test-viewer/index.html#tab=auto&run=20261116-104308",
+      "tester": "autotest",
+      "note": null,
+      "checks": {
+        "TG-29-01": "OK"
+      }
+    },
+    {
+      "id": "TG-30",
+      "kind": "auto",
+      "feature": "UIEvent/MapBuildPropertyEvent",
+      "title": "Enter the town: town UI with Taoist info",
+      "result": "OK",
+      "lastRun": "2026-11-16T11:04:53",
+      "evidence": "test-viewer/index.html#tab=auto&run=20261116-104308",
+      "tester": "autotest",
+      "note": null,
+      "checks": {
+        "TG-30-01": "OK",
+        "TG-30-02": "OK",
+        "TG-30-03": "OK"
+      }
+    },
+    {
+      "id": "TG-31",
+      "kind": "auto",
+      "feature": "BankAccountEvent",
+      "title": "Town storage: open a bank account",
+      "result": "OK",
+      "lastRun": "2026-11-16T11:04:53",
+      "evidence": "test-viewer/index.html#tab=auto&run=20261116-104308",
+      "tester": "autotest",
+      "note": null,
+      "checks": {
+        "TG-31-01": "OK",
+        "TG-31-02": "OK",
+        "TG-31-03": "OK",
+        "TG-31-04": "OK",
+        "TG-31-05": "OK",
+        "TG-31-06": "OK",
+        "TG-31-07": "OK",
+        "TG-31-08": "OK"
+      }
+    },
+    {
+      "id": "TG-32",
+      "kind": "auto",
+      "feature": "MissionDeclareEvent/HirePeopleEvent",
+      "title": "Bounty board: commission and hire people",
+      "result": "OK",
+      "lastRun": "2026-11-16T11:04:53",
+      "evidence": "test-viewer/index.html#tab=auto&run=20261116-104308",
+      "tester": "autotest",
+      "note": null,
+      "checks": {
+        "TG-32-01": "OK",
+        "TG-32-02": "OK",
+        "TG-32-03": "OK",
+        "TG-32-04": "OK",
+        "TG-32-05": "OK",
+        "TG-32-06": "OK",
+        "TG-32-07": "OK"
+      }
+    },
+    {
+      "id": "TG-33",
+      "kind": "auto",
+      "feature": "RealMarketEvent3",
+      "title": "Town market: player market buttons and listings",
+      "result": "OK",
+      "lastRun": "2026-11-16T11:09:18",
+      "evidence": "test-viewer/index.html#tab=auto&run=20261116-110616",
+      "tester": "autotest",
+      "note": null,
+      "checks": {
+        "TG-33-01": "OK",
+        "TG-33-02": "OK",
+        "TG-33-03": "OK",
+        "TG-33-04": "OK",
+        "TG-33-05": "OK",
+        "TG-33-06": "OK",
+        "TG-33-07": "OK",
+        "TG-33-08": "OK"
+      }
+    },
+    {
+      "id": "TG-34",
+      "kind": "auto",
+      "feature": "RealMarketEvent2",
+      "title": "Shop: town budget and buy price rate",
+      "result": "OK",
+      "lastRun": "2026-11-16T11:04:53",
+      "evidence": "test-viewer/index.html#tab=auto&run=20261116-104308",
+      "tester": "autotest",
+      "note": null,
+      "checks": {
+        "TG-34-01": "OK",
+        "TG-34-02": "OK",
+        "TG-34-03": "OK",
+        "TG-34-04": "OK",
+        "TG-34-05": "OK",
+        "TG-34-06": "OK"
+      }
+    },
+    {
+      "id": "TG-35",
+      "kind": "auto",
+      "feature": "RebirthEvent/CustomRefineEvent",
+      "title": "Pub rebirth button and forge custom refine",
+      "result": "OK",
+      "lastRun": "2026-11-16T11:04:53",
+      "evidence": "test-viewer/index.html#tab=auto&run=20261116-104308",
+      "tester": "autotest",
+      "note": null,
+      "checks": {
+        "TG-35-01": "OK",
+        "TG-35-02": "OK",
+        "TG-35-03": "OK",
+        "TG-35-04": "OK",
+        "TG-35-05": "OK",
+        "TG-35-06": "OK",
+        "TG-35-07": "OK",
+        "TG-35-08": "OK"
+      }
+    },
+    {
+      "id": "TG-36",
+      "kind": "auto",
+      "feature": "RealStorageEvent",
+      "title": "Storage fee and debt",
+      "result": "OK",
+      "lastRun": "2026-11-16T11:04:53",
+      "evidence": "test-viewer/index.html#tab=auto&run=20261116-104308",
+      "tester": "autotest",
+      "note": null,
+      "checks": {
+        "TG-36-01": "OK",
+        "TG-36-02": "OK",
+        "TG-36-03": "OK",
+        "TG-36-04": "OK",
+        "TG-36-05": "OK",
+        "TG-36-06": "OK",
+        "TG-36-07": "OK",
+        "TG-36-08": "OK"
+      }
+    },
+    {
+      "id": "TG-37",
+      "kind": "auto",
+      "feature": "RealMarketEvent",
+      "title": "Sell window: rate, town budget and over-budget block",
+      "result": "OK",
+      "lastRun": "2026-11-16T11:04:53",
+      "evidence": "test-viewer/index.html#tab=auto&run=20261116-104308",
+      "tester": "autotest",
+      "note": null,
+      "checks": {
+        "TG-37-01": "OK",
+        "TG-37-02": "OK",
+        "TG-37-03": "OK",
+        "TG-37-04": "OK",
+        "TG-37-05": "OK",
+        "TG-37-06": "OK",
+        "TG-37-07": "OK",
+        "TG-37-08": "OK",
+        "TG-37-09": "OK"
+      }
+    },
+    {
+      "id": "TG-38",
+      "kind": "auto",
+      "feature": "MissionDeclareEvent",
+      "title": "Commission delivered by the monthly handler",
+      "result": "OK",
+      "lastRun": "2026-11-16T11:04:53",
+      "evidence": "test-viewer/index.html#tab=auto&run=20261116-104308",
+      "tester": "autotest",
+      "note": null,
+      "checks": {
+        "TG-38-01": "OK",
+        "TG-38-02": "OK",
+        "TG-38-03": "OK",
+        "TG-38-04": "OK",
+        "TG-38-05": "OK"
+      }
+    },
+    {
+      "id": "TG-39",
+      "kind": "auto",
+      "feature": "HirePeopleEvent",
+      "title": "Team: NPC info, hire, monthly payment, dismiss",
+      "result": "OK",
+      "lastRun": "2026-11-16T11:04:53",
+      "evidence": "test-viewer/index.html#tab=auto&run=20261116-104308",
+      "tester": "autotest",
+      "note": null,
+      "checks": {
+        "TG-39-01": "OK",
+        "TG-39-02": "OK",
+        "TG-39-03": "OK",
+        "TG-39-04": "OK",
+        "TG-39-05": "OK",
+        "TG-39-06": "OK",
+        "TG-39-07": "OK",
+        "TG-39-08": "OK"
+      }
+    },
+    {
+      "id": "TG-40",
+      "kind": "auto",
+      "feature": "MapBuildPropertyEvent/RealMarketEvent2",
+      "title": "Become town master (trainer) and manage the town",
+      "result": "OK",
+      "lastRun": "2026-11-16T11:04:53",
+      "evidence": "test-viewer/index.html#tab=auto&run=20261116-104308",
+      "tester": "autotest",
+      "note": null,
+      "checks": {
+        "TG-40-01": "OK",
+        "TG-40-02": "OK",
+        "TG-40-03": "OK",
+        "TG-40-04": "OK",
+        "TG-40-05": "OK",
+        "TG-40-06": "OK"
+      }
+    },
+    {
+      "id": "TG-41",
+      "kind": "auto",
+      "feature": "BuildingArrangeEvent",
+      "title": "Town rebuilds a destroyed building with its budget",
+      "result": "OK",
+      "lastRun": "2026-11-16T11:04:53",
+      "evidence": "test-viewer/index.html#tab=auto&run=20261116-104308",
+      "tester": "autotest",
+      "note": null,
+      "checks": {
+        "TG-41-01": "OK",
+        "TG-41-02": "OK",
+        "TG-41-03": "OK",
+        "TG-41-04": "OK",
+        "TG-41-05": "OK"
+      }
+    },
+    {
+      "id": "TG-42",
+      "kind": "auto",
+      "feature": "UseSpiritStoneCulEvent",
+      "title": "Cultivate with spirit stones",
+      "result": "OK",
+      "lastRun": "2026-11-16T11:04:53",
+      "evidence": "test-viewer/index.html#tab=auto&run=20261116-104308",
+      "tester": "autotest",
+      "note": null,
+      "checks": {
+        "TG-42-01": "OK",
+        "TG-42-02": "OK",
+        "TG-42-03": "OK"
+      }
+    },
+    {
+      "id": "TG-43",
+      "kind": "auto",
+      "feature": "QiCulEvent",
+      "title": "Qi in NPC info and Qi transfer",
+      "result": "OK",
+      "lastRun": "2026-11-16T11:04:53",
+      "evidence": "test-viewer/index.html#tab=auto&run=20261116-104308",
+      "tester": "autotest",
+      "note": null,
+      "checks": {
+        "TG-43-01": "OK",
+        "TG-43-02": "OK",
+        "TG-43-03": "OK",
+        "TG-43-04": "OK",
+        "TG-43-05": "OK"
+      }
+    },
+    {
+      "id": "TG-44",
+      "kind": "auto",
+      "feature": "NpcUpgradeSkillEvent/NpcAutoCraftArtifact/NpcAutoEvent",
+      "title": "NPC growth over 24 months",
+      "result": "OK",
+      "lastRun": "2026-11-16T11:04:53",
+      "evidence": "test-viewer/index.html#tab=auto&run=20261116-104308",
+      "tester": "autotest",
+      "note": null,
+      "checks": {
+        "TG-44-01": "OK",
+        "TG-44-02": "OK",
+        "TG-44-03": "OK"
+      }
+    },
+    {
+      "id": "TG-45",
+      "kind": "auto",
+      "feature": "RealMarketEvent2",
+      "title": "Buy from a shop: price rate, town budget, master discount",
+      "result": "OK",
+      "lastRun": "2026-11-16T11:04:53",
+      "evidence": "test-viewer/index.html#tab=auto&run=20261116-104308",
+      "tester": "autotest",
+      "note": null,
+      "checks": {
+        "TG-45-01": "OK",
+        "TG-45-02": "OK",
+        "TG-45-03": "OK",
+        "TG-45-04": "OK",
+        "TG-45-05": "OK",
+        "TG-45-06": "OK",
+        "TG-45-07": "OK",
+        "TG-45-08": "OK",
+        "TG-45-09": "OK",
+        "TG-45-10": "OK",
+        "TG-45-11": "OK",
+        "TG-45-12": "OK"
+      }
+    },
+    {
+      "id": "TG-46",
+      "kind": "auto",
+      "feature": "RealMarketEvent3",
+      "title": "Player market: VIP, register, NPC offer, deal, buy",
+      "result": "OK",
+      "lastRun": "2026-11-16T11:09:18",
+      "evidence": "test-viewer/index.html#tab=auto&run=20261116-110616",
+      "tester": "autotest",
+      "note": null,
+      "checks": {
+        "TG-46-01": "OK",
+        "TG-46-02": "OK",
+        "TG-46-03": "OK",
+        "TG-46-04": "OK",
+        "TG-46-05": "OK",
+        "TG-46-06": "OK",
+        "TG-46-07": "OK",
+        "TG-46-08": "OK",
+        "TG-46-09": "OK",
+        "TG-46-10": "OK",
+        "TG-46-11": "OK",
+        "TG-46-12": "OK",
+        "TG-46-13": "OK",
+        "TG-46-14": "OK",
+        "TG-46-15": "OK",
+        "TG-46-16": "OK",
+        "TG-46-17": "OK",
+        "TG-46-18": "OK",
+        "TG-46-19": "OK",
+        "TG-46-20": "OK",
+        "TG-46-21": "OK",
+        "TG-46-22": "OK"
+      }
+    },
+    {
+      "id": "TG-47",
+      "kind": "auto",
+      "feature": "ContributionExchangeEvent",
+      "title": "Exchange items for sect contribution",
+      "result": "OK",
+      "lastRun": "2026-11-16T11:04:53",
+      "evidence": "test-viewer/index.html#tab=auto&run=20261116-104308",
+      "tester": "autotest",
+      "note": null,
+      "checks": {
+        "TG-47-01": "OK",
+        "TG-47-02": "OK",
+        "TG-47-03": "OK",
+        "TG-47-04": "OK",
+        "TG-47-05": "OK",
+        "TG-47-06": "OK",
+        "TG-47-07": "OK",
+        "TG-47-08": "OK",
+        "TG-47-09": "OK",
+        "TG-47-10": "OK"
+      }
+    },
+    {
+      "id": "TG-48",
+      "kind": "auto",
+      "feature": "CustomRefineEvent",
+      "title": "Custom refine at a small town forge",
+      "result": "OK",
+      "lastRun": "2026-11-16T11:04:53",
+      "evidence": "test-viewer/index.html#tab=auto&run=20261116-104308",
+      "tester": "autotest",
+      "note": null,
+      "checks": {
+        "TG-48-01": "OK",
+        "TG-48-02": "OK",
+        "TG-48-03": "OK",
+        "TG-48-04": "OK",
+        "TG-48-05": "OK",
+        "TG-48-06": "OK",
+        "TG-48-07": "OK",
+        "TG-48-08": "OK",
+        "TG-48-09": "OK",
+        "TG-48-10": "OK",
+        "TG-48-11": "OK",
+        "TG-48-12": "OK",
+        "TG-48-13": "OK",
+        "TG-48-14": "OK",
+        "TG-48-15": "OK",
+        "TG-48-16": "OK"
+      }
+    },
+    {
+      "id": "TG-49",
+      "kind": "auto",
+      "feature": "RepairShinkiEvent",
+      "title": "Repair a damaged god artifact",
+      "result": "OK",
+      "lastRun": "2026-11-16T11:04:53",
+      "evidence": "test-viewer/index.html#tab=auto&run=20261116-104308",
+      "tester": "autotest",
+      "note": null,
+      "checks": {
+        "TG-49-01": "OK",
+        "TG-49-02": "OK",
+        "TG-49-03": "OK",
+        "TG-49-04": "OK",
+        "TG-49-05": "OK",
+        "TG-49-06": "OK",
+        "TG-49-07": "OK",
+        "TG-49-08": "OK"
+      }
+    },
+    {
+      "id": "TG-50",
+      "kind": "auto",
+      "feature": "UpgradeNaturallyEvent",
+      "title": "Break through without items",
+      "result": "OK",
+      "lastRun": "2026-11-16T11:04:53",
+      "evidence": "test-viewer/index.html#tab=auto&run=20261116-104308",
+      "tester": "autotest",
+      "note": null,
+      "checks": {
+        "TG-50-01": "OK",
+        "TG-50-02": "OK",
+        "TG-50-03": "OK",
+        "TG-50-04": "OK",
+        "TG-50-05": "OK",
+        "TG-50-06": "OK",
+        "TG-50-07": "OK"
+      }
+    },
+    {
+      "id": "TG-51",
+      "kind": "auto",
+      "feature": "TrainerEvent",
+      "title": "Trainer hotkeys Ctrl+1/2/3",
+      "result": "OK",
+      "lastRun": "2026-11-16T11:04:53",
+      "evidence": "test-viewer/index.html#tab=auto&run=20261116-104308",
+      "tester": "autotest",
+      "note": null,
+      "checks": {
+        "TG-51-01": "OK",
+        "TG-51-02": "OK",
+        "TG-51-03": "OK",
+        "TG-51-04": "OK",
+        "TG-51-05": "OK",
+        "TG-51-06": "OK",
+        "TG-51-07": "OK",
+        "TG-51-08": "OK"
+      }
+    },
+    {
+      "id": "TG-52",
+      "kind": "auto",
+      "feature": "ExpertEvent",
+      "title": "Expertise level of an equipped skill",
+      "result": "OK",
+      "lastRun": "2026-11-16T11:04:53",
+      "evidence": "test-viewer/index.html#tab=auto&run=20261116-104308",
+      "tester": "autotest",
+      "note": null,
+      "checks": {
+        "TG-52-01": "OK",
+        "TG-52-02": "OK",
+        "TG-52-03": "OK",
+        "TG-52-04": "OK",
+        "TG-52-05": "OK"
+      }
+    },
+    {
+      "id": "TG-53",
+      "kind": "auto",
+      "feature": "ExpertEvent/WUnitHelper/InflationaryEvent",
+      "title": "Int limits: growing values do not overflow",
+      "result": "OK",
+      "lastRun": "2026-11-16T11:04:53",
+      "evidence": "test-viewer/index.html#tab=auto&run=20261116-104308",
+      "tester": "autotest",
+      "note": null,
+      "checks": {
+        "TG-53-01": "OK",
+        "TG-53-02": "OK",
+        "TG-53-03": "OK",
+        "TG-53-04": "OK",
+        "TG-53-05": "OK",
+        "TG-53-06": "OK",
+        "TG-53-07": "OK"
+      }
+    },
+    {
+      "id": "TG-54",
+      "kind": "auto",
+      "feature": "MapBuildPropertyEvent",
+      "title": "Monthly town tax: NPC pays the town, or leaves",
+      "result": "OK",
+      "lastRun": "2026-11-16T11:04:53",
+      "evidence": "test-viewer/index.html#tab=auto&run=20261116-104308",
+      "tester": "autotest",
+      "note": null,
+      "checks": {
+        "TG-54-01": "OK",
+        "TG-54-02": "OK",
+        "TG-54-03": "OK",
+        "TG-54-04": "OK",
+        "TG-54-05": "OK",
+        "TG-54-06": "OK",
+        "TG-54-07": "OK"
+      }
+    },
+    {
+      "id": "TB-01",
+      "kind": "watch",
+      "feature": "ModBattleEvent/MonstStrongerEvent/BattleManashieldEvent",
+      "title": "Battle start: statistics reset, monsters buffed, humans shielded",
+      "result": "-",
+      "lastRun": null,
+      "evidence": null,
+      "tester": null,
+      "note": null,
+      "checks": {}
+    },
+    {
+      "id": "TB-02",
+      "kind": "watch",
+      "feature": "BattleRewardEventV2/SliceLifeQuestEvent/ChallengeQuestEvent",
+      "title": "Battle end: rewards logged, slice-life counter reset",
+      "result": "-",
+      "lastRun": null,
+      "evidence": null,
+      "tester": null,
+      "note": null,
+      "checks": {}
+    },
+    {
+      "id": "TB-03",
+      "kind": "auto",
+      "feature": "MapBuildBattleEvent/ModBattleEvent/BattleManashieldEvent/BattleRewardEventV2",
+      "title": "Monster wave battle: join, kill, win, back to the map",
+      "result": "OK",
+      "lastRun": "2026-11-16T11:04:53",
+      "evidence": "test-viewer/index.html#tab=auto&run=20261116-104308",
+      "tester": "autotest",
+      "note": null,
+      "checks": {
+        "TB-03-01": "OK",
+        "TB-03-02": "OK",
+        "TB-03-03": "OK",
+        "TB-03-04": "OK",
+        "TB-03-05": "OK",
+        "TB-03-06": "OK",
+        "TB-03-07": "OK"
+      }
+    },
+    {
+      "id": "TB-04",
+      "kind": "auto",
+      "feature": "BattleEvent/BattleManashieldEvent/BattleRewardEventV2",
+      "title": "NPC duel: start, defeat the NPC, back to the map",
+      "result": "OK",
+      "lastRun": "2026-11-16T11:04:53",
+      "evidence": "test-viewer/index.html#tab=auto&run=20261116-104308",
+      "tester": "autotest",
+      "note": null,
+      "checks": {
+        "TB-04-01": "OK",
+        "TB-04-02": "OK",
+        "TB-04-03": "OK",
+        "TB-04-04": "OK",
+        "TB-04-05": "OK"
+      }
+    },
+    {
+      "id": "TB-05",
+      "kind": "auto",
+      "feature": "SpiritlockEvent",
+      "title": "Spiritlock circle: tortoises cannot move",
+      "result": "OK",
+      "lastRun": "2026-11-16T11:04:53",
+      "evidence": "test-viewer/index.html#tab=auto&run=20261116-104308",
+      "tester": "autotest",
+      "note": null,
+      "checks": {
+        "TB-05-01": "OK",
+        "TB-05-02": "OK",
+        "TB-05-03": "OK"
+      }
+    },
+    {
+      "id": "TB-06",
+      "kind": "auto",
+      "feature": "SpecialMonsterEvent/MonstStrongerEvent",
+      "title": "Special monsters (shield, split) and monsters getting stronger",
+      "result": "OK",
+      "lastRun": "2026-11-16T11:04:53",
+      "evidence": "test-viewer/index.html#tab=auto&run=20261116-104308",
+      "tester": "autotest",
+      "note": null,
+      "checks": {
+        "TB-06-01": "OK",
+        "TB-06-02": "OK",
+        "TB-06-03": "OK",
+        "TB-06-04": "OK",
+        "TB-06-05": "OK",
+        "TB-06-06": "OK",
+        "TB-06-07": "OK",
+        "TB-06-08": "OK",
+        "TB-06-09": "OK",
+        "TB-06-10": "OK",
+        "TB-06-11": "OK",
+        "TB-06-12": "OK",
+        "TB-06-13": "OK",
+        "TB-06-14": "OK",
+        "TB-06-15": "OK",
+        "TB-06-16": "OK",
+        "TB-06-17": "OK",
+        "TB-06-18": "OK"
+      }
+    },
+    {
+      "id": "TB-07",
+      "kind": "auto",
+      "feature": "BattleEvent/BattleAfterEvent/ChallengeQuestEvent",
+      "title": "NPCs join battles, stalkers, challenge quest",
+      "result": "OK",
+      "lastRun": "2026-11-16T11:04:53",
+      "evidence": "test-viewer/index.html#tab=auto&run=20261116-104308",
+      "tester": "autotest",
+      "note": null,
+      "checks": {
+        "TB-07-01": "OK",
+        "TB-07-02": "OK",
+        "TB-07-03": "OK",
+        "TB-07-04": "OK",
+        "TB-07-05": "OK",
+        "TB-07-06": "OK",
+        "TB-07-07": "OK",
+        "TB-07-08": "OK",
+        "TB-07-09": "OK",
+        "TB-07-10": "OK",
+        "TB-07-11": "OK",
+        "TB-07-12": "OK",
+        "TB-07-13": "OK",
+        "TB-07-14": "OK",
+        "TB-07-15": "OK",
+        "TB-07-16": "OK",
+        "TB-07-17": "OK",
+        "TB-07-18": "OK",
+        "TB-07-19": "OK",
+        "TB-07-20": "OK",
+        "TB-07-21": "OK"
+      }
+    },
+    {
+      "id": "TB-08",
+      "kind": "auto",
+      "feature": "RealTrialEvent",
+      "title": "Trial of lightning: damage scaled on the player, properties after surviving",
+      "result": "OK",
+      "lastRun": "2026-11-16T11:04:53",
+      "evidence": "test-viewer/index.html#tab=auto&run=20261116-104308",
+      "tester": "autotest",
+      "note": null,
+      "checks": {
+        "TB-08-01": "OK",
+        "TB-08-02": "OK",
+        "TB-08-03": "OK",
+        "TB-08-04": "OK",
+        "TB-08-05": "OK",
+        "TB-08-06": "OK"
+      }
+    },
+    {
+      "id": "TB-09",
+      "kind": "auto",
+      "feature": "BattleRewardEventV2",
+      "title": "Battle won: training growth and exp from damage",
+      "result": "OK",
+      "lastRun": "2026-11-16T11:04:53",
+      "evidence": "test-viewer/index.html#tab=auto&run=20261116-104308",
+      "tester": "autotest",
+      "note": null,
+      "checks": {
+        "TB-09-01": "OK",
+        "TB-09-02": "OK",
+        "TB-09-03": "OK",
+        "TB-09-04": "OK",
+        "TB-09-05": "OK",
+        "TB-09-06": "OK",
+        "TB-09-07": "OK",
+        "TB-09-08": "OK",
+        "TB-09-09": "OK"
+      }
+    },
+    {
+      "id": "TB-10",
+      "kind": "auto",
+      "feature": "BattleRewardEventV2",
+      "title": "Battle lost without body reconstruction item: exp lost",
+      "result": "OK",
+      "lastRun": "2026-11-16T11:04:53",
+      "evidence": "test-viewer/index.html#tab=auto&run=20261116-104308",
+      "tester": "autotest",
+      "note": null,
+      "checks": {
+        "TB-10-01": "OK",
+        "TB-10-02": "OK",
+        "TB-10-03": "OK",
+        "TB-10-04": "OK",
+        "TB-10-05": "OK"
+      }
+    },
+    {
+      "id": "TB-11",
+      "kind": "auto",
+      "feature": "BattleRewardEventV2",
+      "title": "Battle lost with a body reconstruction item: item used, exp kept",
+      "result": "OK",
+      "lastRun": "2026-11-16T11:04:53",
+      "evidence": "test-viewer/index.html#tab=auto&run=20261116-104308",
+      "tester": "autotest",
+      "note": null,
+      "checks": {
+        "TB-11-01": "OK",
+        "TB-11-02": "OK",
+        "TB-11-03": "OK",
+        "TB-11-04": "OK",
+        "TB-11-05": "OK",
+        "TB-11-06": "OK",
+        "TB-11-07": "OK",
+        "TB-11-08": "OK"
+      }
+    },
+    {
+      "id": "TB-12",
+      "kind": "auto",
+      "feature": "BattleRewardEventV2",
+      "title": "Battle lost with lost items when die: items go to the killer",
+      "result": "OK",
+      "lastRun": "2026-11-16T11:04:53",
+      "evidence": "test-viewer/index.html#tab=auto&run=20261116-104308",
+      "tester": "autotest",
+      "note": null,
+      "checks": {
+        "TB-12-01": "OK",
+        "TB-12-02": "OK",
+        "TB-12-03": "OK",
+        "TB-12-04": "OK",
+        "TB-12-05": "OK",
+        "TB-12-06": "OK"
+      }
+    },
+    {
+      "id": "TB-13",
+      "kind": "auto",
+      "feature": "BattleRewardEventV2",
+      "title": "Battle lost with lost money when die: spirit stones go to the killer",
+      "result": "OK",
+      "lastRun": "2026-11-16T11:04:53",
+      "evidence": "test-viewer/index.html#tab=auto&run=20261116-104308",
+      "tester": "autotest",
+      "note": null,
+      "checks": {
+        "TB-13-01": "OK",
+        "TB-13-02": "OK",
+        "TB-13-03": "OK",
+        "TB-13-04": "OK",
+        "TB-13-05": "OK",
+        "TB-13-06": "OK"
+      }
+    },
+    {
+      "id": "TB-14",
+      "kind": "auto",
+      "feature": "BattleRewardEventV2",
+      "title": "Battle lost with lost lifespan when die: life drained to the killer",
+      "result": "OK",
+      "lastRun": "2026-11-16T11:04:53",
+      "evidence": "test-viewer/index.html#tab=auto&run=20261116-104308",
+      "tester": "autotest",
+      "note": null,
+      "checks": {
+        "TB-14-01": "OK",
+        "TB-14-02": "OK",
+        "TB-14-03": "OK",
+        "TB-14-04": "OK",
+        "TB-14-05": "OK",
+        "TB-14-06": "OK"
+      }
+    },
+    {
+      "id": "TB-15",
+      "kind": "auto",
+      "feature": "BattleRewardEventV2",
+      "title": "Battle lost with auto save after lost: one month passes and the game saves",
+      "result": "OK",
+      "lastRun": "2026-11-16T11:04:53",
+      "evidence": "test-viewer/index.html#tab=auto&run=20261116-104308",
+      "tester": "autotest",
+      "note": null,
+      "checks": {
+        "TB-15-01": "OK",
+        "TB-15-02": "OK",
+        "TB-15-03": "OK",
+        "TB-15-04": "OK",
+        "TB-15-05": "OK",
+        "TB-15-06": "OK"
+      }
+    },
+    {
+      "id": "TX-01",
+      "kind": "auto",
+      "feature": "TimeSkipEvent/InflationaryEvent",
+      "title": "Skip 1 year with the map button",
+      "result": "OK",
+      "lastRun": "2026-11-16T11:04:53",
+      "evidence": "test-viewer/index.html#tab=auto&run=20261116-104308",
+      "tester": "autotest",
+      "note": null,
+      "checks": {
+        "TX-01-01": "OK",
+        "TX-01-02": "OK",
+        "TX-01-03": "OK",
+        "TX-01-04": "OK",
+        "TX-01-05": "OK"
+      }
+    },
+    {
+      "id": "TX-02",
+      "kind": "auto",
+      "feature": "InflationaryEvent",
+      "title": "Currency reform when the price index passes the limit",
+      "result": "OK",
+      "lastRun": "2026-11-16T11:04:53",
+      "evidence": "test-viewer/index.html#tab=auto&run=20261116-104308",
+      "tester": "autotest",
+      "note": null,
+      "checks": {
+        "TX-02-01": "OK",
+        "TX-02-02": "OK",
+        "TX-02-03": "OK",
+        "TX-02-04": "OK",
+        "TX-02-05": "OK"
+      }
+    },
+    {
+      "id": "TX-03",
+      "kind": "auto",
+      "feature": "RebirthEvent",
+      "title": "Rebirth in the pub",
+      "result": "OK",
+      "lastRun": "2026-11-16T11:04:53",
+      "evidence": "test-viewer/index.html#tab=auto&run=20261116-104308",
+      "tester": "autotest",
+      "note": null,
+      "checks": {
+        "TX-03-01": "OK",
+        "TX-03-02": "OK",
+        "TX-03-03": "OK",
+        "TX-03-04": "OK",
+        "TX-03-05": "OK",
+        "TX-03-06": "OK",
+        "TX-03-07": "OK"
+      }
+    },
+    {
+      "id": "TX-04",
+      "kind": "auto",
+      "feature": "SliceLifeQuestEvent",
+      "title": "Slice-of-life quest: monthly counter, reset by battle, completion luck",
+      "result": "OK",
+      "lastRun": "2026-11-16T11:04:53",
+      "evidence": "test-viewer/index.html#tab=auto&run=20261116-104308",
+      "tester": "autotest",
+      "note": null,
+      "checks": {
+        "TX-04-01": "OK",
+        "TX-04-02": "OK",
+        "TX-04-03": "OK",
+        "TX-04-04": "OK",
+        "TX-04-05": "OK",
+        "TX-04-06": "OK",
+        "TX-04-07": "OK",
+        "TX-04-08": "OK"
+      }
+    },
+    {
+      "id": "TX-05",
+      "kind": "auto",
+      "feature": "ModLib save/monthly tick",
+      "title": "Month passes and the Taoist data is saved to disk",
+      "result": "OK",
+      "lastRun": "2026-11-16T11:04:53",
+      "evidence": "test-viewer/index.html#tab=auto&run=20261116-104308",
+      "tester": "autotest",
+      "note": null,
+      "checks": {
+        "TX-05-01": "OK",
+        "TX-05-02": "OK",
+        "TX-05-03": "OK",
+        "TX-05-04": "OK",
+        "TX-05-05": "OK",
+        "TX-05-06": "OK",
+        "TX-05-07": "OK",
+        "TX-05-08": "OK",
+        "TX-05-09": "OK",
+        "TX-05-10": "OK",
+        "TX-05-11": "OK",
+        "TX-05-12": "OK"
+      }
+    },
+    {
+      "id": "TX-06",
+      "kind": "auto",
+      "feature": "NpcAutoEvent/UnitTypeEvent/MapBuildPropertyEvent/InflationaryEvent",
+      "title": "Yearly handlers: NPC born, speed units, town masters",
+      "result": "OK",
+      "lastRun": "2026-11-16T11:04:53",
+      "evidence": "test-viewer/index.html#tab=auto&run=20261116-104308",
+      "tester": "autotest",
+      "note": null,
+      "checks": {
+        "TX-06-01": "OK",
+        "TX-06-02": "OK",
+        "TX-06-03": "OK",
+        "TX-06-04": "OK"
+      }
+    },
+    {
+      "id": "TZ-01",
+      "kind": "auto",
+      "feature": "BattleRewardEventV2",
+      "title": "Battle lost with one-life: the character dies",
+      "result": "OK",
+      "lastRun": "2026-11-16T11:04:53",
+      "evidence": "test-viewer/index.html#tab=auto&run=20261116-104308",
+      "tester": "autotest",
+      "note": null,
+      "checks": {
+        "TZ-01-01": "OK",
+        "TZ-01-02": "OK",
+        "TZ-01-03": "OK",
+        "TZ-01-04": "OK"
+      }
+    }
+  ]
+}

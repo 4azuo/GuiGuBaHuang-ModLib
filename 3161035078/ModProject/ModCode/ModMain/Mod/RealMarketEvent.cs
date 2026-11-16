@@ -31,6 +31,9 @@ namespace MOD_nE7UL2.Mod
 
         public IDictionary<string, float> MarketPriceRate { get; set; } = new Dictionary<string, float>();
 
+        /// <summary>
+        /// Initializes the rate of each market town (100 %).
+        /// </summary>
         public override void OnLoadGame()
         {
             base.OnLoadGame();
@@ -43,6 +46,9 @@ namespace MOD_nE7UL2.Mod
             }
         }
 
+        /// <summary>
+        /// Randomizes the sell rate (plus market events).
+        /// </summary>
         public override void OnMonthly()
         {
             base.OnMonthly();
@@ -53,6 +59,9 @@ namespace MOD_nE7UL2.Mod
             }
         }
 
+        /// <summary>
+        /// PropSell UI: adds rate/budget texts and replaces the sell button.
+        /// </summary>
         [EventCondition(IsInGame = HandleEnum.True, IsInBattle = HandleEnum.False)]
         public override void OnOpenUIEnd(OpenUIEnd e)
         {
@@ -76,6 +85,9 @@ namespace MOD_nE7UL2.Mod
             }
         }
 
+        /// <summary>
+        /// Refreshes totals and hides the button when over budget.
+        /// </summary>
         [ErrorIgnore]
         [EventCondition(IsInGame = HandleEnum.True, IsInBattle = HandleEnum.False)]
         public override void OnTimeUpdate100ms()
@@ -98,6 +110,9 @@ namespace MOD_nE7UL2.Mod
             }
         }
 
+        /// <summary>
+        /// Sells the selected items at the town rate and takes the price from the town budget.
+        /// </summary>
         private void SellEvent()
         {
             if (g.ui.HasUI(UIType.PropSell))
@@ -122,11 +137,17 @@ namespace MOD_nE7UL2.Mod
             }
         }
 
+        /// <summary>
+        /// Base price of the selected items.
+        /// </summary>
         private long GetTotalPrice(UIPropSell uiPropSell)
         {
             return uiPropSell.selectProps.allProps.ToArray().Sum(x => x.propsInfoBase.sale.Parse<long>() * x.propsCount);
         }
 
+        /// <summary>
+        /// Sell rate of a town for a unit (merchant bonuses).
+        /// </summary>
         public static float GetSellRate(MapBuildTown town, WorldUnitBase wunit)
         {
             var r = Instance.MarketPriceRate[town.buildData.id];

@@ -6,6 +6,9 @@ using ModLib.Helper;
 
 namespace MOD_nE7UL2.Enum
 {
+    /// <summary>
+    /// Luck ids that represent unit roles.
+    /// </summary>
     public class UnitTypeLuckEnum : EnumObject
     {
         public static UnitTypeLuckEnum PowerUp { get; } = new UnitTypeLuckEnum(420010100);
@@ -27,11 +30,17 @@ namespace MOD_nE7UL2.Enum
         };
 
         public IDictionary<string, MultiValue> CustomEffects { get; private set; }
+        /// <summary>
+        /// Creates an entry.
+        /// </summary>
         private UnitTypeLuckEnum(int id) : base(id.ToString())
         {
             CheckExists();
         }
 
+        /// <summary>
+        /// True when the unit has this luck.
+        /// </summary>
         private void CheckExists()
         {
            if (g.conf.roleCreateFeature.GetItemIndex(Value.Parse<int>()) == -1)

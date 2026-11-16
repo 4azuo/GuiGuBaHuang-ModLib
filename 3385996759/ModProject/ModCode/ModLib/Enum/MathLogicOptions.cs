@@ -4,6 +4,9 @@ using static ModLib.Enum.MathLogicOptions;
 
 namespace ModLib.Enum
 {
+    /// <summary>
+    /// Arithmetic operators as enum objects (+, -, *, /) usable in data-driven formulas.
+    /// </summary>
     public class MathLogicOptions : EnumObject, ILogicOptions
     {
         public static ILogicOptions Plus { get; } = new MathLogicOptions("+", (a, b) => a + b);
@@ -14,6 +17,9 @@ namespace ModLib.Enum
         public string Logic { get; private set; }
 
         public Func<float, float, float> Method2Params { get; private set; }
+        /// <summary>
+        /// Creates an operator with its implementation.
+        /// </summary>
         private MathLogicOptions(string logic, Func<float, float, float> method) : base(logic)
         {
             Logic = logic;
@@ -21,22 +27,34 @@ namespace ModLib.Enum
         }
 
         public Func<float, float> Method1Param { get; private set; }
+        /// <summary>
+        /// Creates an operator with its implementation.
+        /// </summary>
         private MathLogicOptions(string logic, Func<float, float> method) : base(logic)
         {
             Logic = logic;
             Method1Param = method;
         }
 
+        /// <summary>
+        /// Applies the operator.
+        /// </summary>
         public float Exe(float a, float b)
         {
             return Method2Params.Invoke(a, b);
         }
 
+        /// <summary>
+        /// Applies the operator.
+        /// </summary>
         public float Exe(float a)
         {
             return Method1Param.Invoke(a);
         }
 
+        /// <summary>
+        /// Operator contract.
+        /// </summary>
         public interface ILogicOptions
         {
             float Exe(float a, float b);

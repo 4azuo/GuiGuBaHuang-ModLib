@@ -9,6 +9,9 @@ using static MOD_nE7UL2.Object.ModStts;
 
 namespace MOD_nE7UL2.Mod
 {
+    /// <summary>
+    /// Trial of lightning: lightning strength scales with the player; surviving grants properties.
+    /// </summary>
     [Cache(ModConst.REAL_TRIAL_EVENT)]
     public class RealTrialEvent : ModEvent
     {
@@ -16,6 +19,9 @@ namespace MOD_nE7UL2.Mod
         public static _RealTrialConfigs RealTrialConfigs => ModMain.ModObj.ModSettings.RealTrialConfigs;
         public static bool IsInTrial => DungeonHelper.IsTrailOfLightning();
 
+        /// <summary>
+        /// Sets the attack of trial units from player attack, game level and grade.
+        /// </summary>
         public override void OnBattleUnitInto(UnitCtrlBase e)
         {
             base.OnBattleUnitInto(e);
@@ -26,15 +32,18 @@ namespace MOD_nE7UL2.Mod
                 var atk = g.world.playerUnit.GetDynProperty(UnitDynPropertyEnum.Attack).value;
                 var def = g.world.playerUnit.GetDynProperty(UnitDynPropertyEnum.Defense).value;
                 var basisThunder = g.world.playerUnit.GetDynProperty(UnitDynPropertyEnum.BasisThunder).value;
-                var baseDmg = (atk * (
+                var baseDmg = ((double)atk * (
                         GameHelper.GetGameLevel().Parse<int>() * RealTrialConfigs.PowerUpOnGameLevel
                         + g.world.playerUnit.GetGradeLvl() * RealTrialConfigs.PowerUpOnGradeLevel
-                    )).Parse<int>()
-                    - (def * basisThunder / 100);
+                    )).ToIntClamp()
+                    - (int)((long)def * basisThunder / 100);
                 data.attack.baseValue = baseDmg;
             }
         }
 
+        /// <summary>
+        /// Survived: grows player properties.
+        /// </summary>
         public override void OnBattleEndHandler(BattleEndHandler e)
         {
             base.OnBattleEndHandler(e);

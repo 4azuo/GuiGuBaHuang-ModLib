@@ -1,10 +1,16 @@
 ﻿using ModLib.Object;
 using ModLib.Helper;
 
+/// <summary>
+/// Taoist UI shortcuts.
+/// </summary>
 public static class UILocalHelper
 {
     public const string LABEL = "?";
 
+    /// <summary>
+    /// Adds a "?" button showing a tooltip text.
+    /// </summary>
     public static UIItemButton AddToolTipButton(this UICustomBase ui, string content)
     {
         return ui.AddButton(0, 0, () =>
@@ -13,6 +19,9 @@ public static class UILocalHelper
         }, LABEL).Align(UnityEngine.TextAnchor.MiddleCenter).Size(32, 32);
     }
 
+    /// <summary>
+    /// Adds a "?" button showing a tooltip text.
+    /// </summary>
     public static UIItemButton AddToolTipButton(this UICustomBase ui, int col, int row, string content)
     {
         return ui.AddButton(col, row, () =>
@@ -21,6 +30,9 @@ public static class UILocalHelper
         }, LABEL).Align(UnityEngine.TextAnchor.MiddleCenter).Size(32, 32);
     }
 
+    /// <summary>
+    /// Adds a "?" button showing a tooltip text.
+    /// </summary>
     public static UIItemButton AddToolTipButton(this UICustomBase ui, float x, float y, string content)
     {
         return ui.AddButton(x, y, () =>

@@ -7,6 +7,9 @@ using ModLib.Helper;
 
 namespace MOD_nE7UL2.Enum
 {
+    /// <summary>
+    /// NPC/player roles (Default, Hero, Merchant, SpeedUnit, Trial...) with property growth ratios and optional custom luck.
+    /// </summary>
     public class UnitTypeEnum : EnumObject
     {
         public static UnitTypeEnum Default { get; } = new UnitTypeEnum()
@@ -144,11 +147,17 @@ namespace MOD_nE7UL2.Enum
 
         public UnitTypeLuckEnum CustomLuck { get; private set; }
         public IList<MultiValue> PropIncRatio { get; private set; }
+        /// <summary>
+        /// Creates a role.
+        /// </summary>
         private UnitTypeEnum(UnitTypeLuckEnum customLuck = null) : base(customLuck?.Value)
         {
             CustomLuck = customLuck;
         }
 
+        /// <summary>
+        /// Growth of one property: value x ratio x inputRatio, at least the configured minimum.
+        /// </summary>
         public int CalProp(UnitPropertyEnum pType, int propValue, float inputRatio = 1.00f)
         {
             var stt = PropIncRatio.FirstOrDefault(x => x.Values[0] == pType);
@@ -159,6 +168,9 @@ namespace MOD_nE7UL2.Enum
             return (int)Math.Max(MathLogicOptions.Multi.Exe(propValue, ratio) * inputRatio, min);
         }
 
+        /// <summary>
+        /// New property value after applying Default, the role and Hero growth.
+        /// </summary>
         public int CalType(WorldUnitBase wunit, UnitPropertyEnum pType, float ratio = 1.00f)
         {
             var propValue = wunit.GetProperty<int>(pType);

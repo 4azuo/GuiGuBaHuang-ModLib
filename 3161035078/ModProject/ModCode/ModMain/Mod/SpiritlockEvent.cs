@@ -5,6 +5,9 @@ using System.Linq;
 
 namespace MOD_nE7UL2.Mod
 {
+    /// <summary>
+    /// Spiritlock circle balance: venerable tortoises cannot move and have half defense.
+    /// </summary>
     [Cache(ModConst.SPIRITLOCK_EVENT)]
     public class SpiritlockEvent : ModEvent
     {
@@ -23,6 +26,9 @@ namespace MOD_nE7UL2.Mod
 
         public const int SPIRITLOCK_CIRCLE = 12012;
 
+        /// <summary>
+        /// Applies the changes.
+        /// </summary>
         public override void OnBattleUnitInto(UnitCtrlBase e)
         {
             base.OnBattleUnitInto(e);

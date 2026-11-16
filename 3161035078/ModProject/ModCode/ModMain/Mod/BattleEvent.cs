@@ -12,6 +12,9 @@ using ModLib.Helper;
 
 namespace MOD_nE7UL2.Mod
 {
+    /// <summary>
+    /// NPCs nearby may join the player's battle (enemies, friends, sect members, town guards, stalkers); team members join and may betray.
+    /// </summary>
     [Cache(ModConst.BATTLE_EVENT)]
     public class BattleEvent : ModEvent
     {
@@ -41,6 +44,9 @@ namespace MOD_nE7UL2.Mod
         public static readonly int[] betrayInTraits = new int[] { UnitTraitEnum.Selfish.Parse<int>(), UnitTraitEnum.Evil.Parse<int>() };
         public static readonly int[] betrayOutTraits = new int[] { UnitTraitEnum.Power_hungry.Parse<int>() };
 
+        /// <summary>
+        /// Collects candidate NPCs around and the player team (real, joinable battles only).
+        /// </summary>
         public override void OnBattleStart(ETypeData e)
         {
             base.OnBattleStart(e);
@@ -71,6 +77,9 @@ namespace MOD_nE7UL2.Mod
             }
         }
 
+        /// <summary>
+        /// Team members may dislike the player after battles.
+        /// </summary>
         public override void OnBattleEndHandler(BattleEndHandler e)
         {
             base.OnBattleEndHandler(e);
@@ -87,6 +96,9 @@ namespace MOD_nE7UL2.Mod
             }
         }
 
+        /// <summary>
+        /// Every second: random joins of stalkers/enemies/friends/sect members/guards, team member joins and betrayals.
+        /// </summary>
         [ErrorIgnore]
         [EventCondition(IsInGame = HandleEnum.Ignore, IsInBattle = HandleEnum.True)]
         public override void OnTimeUpdate1000ms()
@@ -107,12 +119,13 @@ namespace MOD_nE7UL2.Mod
                             {
                                 var wunitId = stalker.GetUnitId();
                                 DebugHelper.WriteLine($"Stalker join: {stalker.GetName()} ({wunitId})");
+                                // read the reason before the team is removed from Stalkers (the stalker is part of its team)
+                                var stalkReason = BattleAfterEvent.Instance.Stalkers[wunitId];
                                 var units = HirePeopleEvent.GetTeamDetailData(stalker).Item2;
                                 AroundUnits.RemoveAll(x => units.Any(y => y.GetUnitId() == x.GetUnitId()));
                                 foreach (var unit in units) { BattleAfterEvent.Instance.Stalkers.Remove(unit.GetUnitId()); }
                                 NPCJoin(UnitType.Monst, units);
 
-                                var stalkReason = BattleAfterEvent.Instance.Stalkers[wunitId];
                                 switch (stalkReason)
                                 {
                                     case Enum.StalkReasonEnum.KillBoss:
@@ -246,6 +259,9 @@ namespace MOD_nE7UL2.Mod
             }
         }
 
+        /// <summary>
+        /// Spawns world units in the battle on a side.
+        /// </summary>
         public static List<UnitCtrlBase> NPCJoin(UnitType ut, params WorldUnitBase[] wunits)
         {
             var rs = new List<UnitCtrlBase>();
@@ -279,6 +295,9 @@ namespace MOD_nE7UL2.Mod
             return rs;
         }
 
+        /// <summary>
+        /// Healthy and strong enough to join.
+        /// </summary>
         public static bool CondJoinBattle(WorldUnitBase wunit)
         {
             return !wunit.isDie && wunit.GetGradeLvl() >= Instance.AvgGrade &&
@@ -287,6 +306,9 @@ namespace MOD_nE7UL2.Mod
                 wunit.GetDynProperty(UnitDynPropertyEnum.Sp).value > (wunit.GetDynProperty(UnitDynPropertyEnum.SpMax).value * 0.3f);
         }
 
+        /// <summary>
+        /// 1 = friend, 2 = same sect, -1 = no.
+        /// </summary>
         public static int IsFriendlyUnit(WorldUnitBase originWUnit, WorldUnitBase targetWUnit)
         {
             //from friend
@@ -305,6 +327,9 @@ namespace MOD_nE7UL2.Mod
             return -1;
         }
 
+        /// <summary>
+        /// 1 = hater, 0 = bad trait, 2 = opposite alignment, -1 = no.
+        /// </summary>
         public static int IsEnemyUnit(WorldUnitBase originWUnit, WorldUnitBase targetWUnit)
         {
             //from hater
@@ -328,6 +353,9 @@ namespace MOD_nE7UL2.Mod
             return -1;
         }
 
+        /// <summary>
+        /// 0 = hater, 1 = bad trait, 2 = opposite alignment, -1 = loyal.
+        /// </summary>
         public static int IsBetrayUnit(WorldUnitBase originWUnit, WorldUnitBase targetWUnit)
         {
             //from hater
@@ -353,6 +381,9 @@ namespace MOD_nE7UL2.Mod
             return -1;
         }
 
+        /// <summary>
+        /// False for special dungeons (realms, sect battles, arena, trials...).
+        /// </summary>
         public static bool IsJoinableBattle()
         {
             return !MapBuildBattleEvent.IsBattleTownWar() && !MapBuildBattleEvent.IsBattleMonstWave() &&

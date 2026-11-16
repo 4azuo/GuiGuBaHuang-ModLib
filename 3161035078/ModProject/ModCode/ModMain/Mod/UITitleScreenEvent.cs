@@ -10,9 +10,15 @@ using UnityEngine;
 
 namespace MOD_nE7UL2.Mod
 {
+    /// <summary>
+    /// Title screen: version button (opens the cache folder), Workshop description, ModLib version check.
+    /// </summary>
     [Cache(ModConst.UI_TITLE_SCREEN_EVENT, CacheType = CacheAttribute.CType.Global, WorkOn = CacheAttribute.WType.Global)]
     public class UITitleScreenEvent : ModEvent
     {
+        /// <summary>
+        /// Login UI: adds the button, shows news and warns when ModLib is too old.
+        /// </summary>
         public override void OnOpenUIEnd(OpenUIEnd e)
         {
             base.OnOpenUIEnd(e);
@@ -36,6 +42,9 @@ namespace MOD_nE7UL2.Mod
             }
         }
 
+        /// <summary>
+        /// True when curVersion &gt;= reqVersion (numeric parts).
+        /// </summary>
         private bool CompareVersion(string reqVersion, string curVersion)
         {
             var reqIndexes = Regex.Split(reqVersion, @"\D");
@@ -52,6 +61,9 @@ namespace MOD_nE7UL2.Mod
             return true;
         }
 
+        /// <summary>
+        /// Downloads the Workshop description.
+        /// </summary>
         private string GetWorkshopDescription()
         {
             return HttpHelper.GetWorkshopDescription("https://steamcommunity.com/sharedfiles/filedetails/?id=3161035078");

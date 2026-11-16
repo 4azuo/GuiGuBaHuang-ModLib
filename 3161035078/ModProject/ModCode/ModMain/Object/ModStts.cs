@@ -5,9 +5,15 @@ using ModLib.Helper;
 
 namespace MOD_nE7UL2.Object
 {
+    /// <summary>
+    /// Taoist settings deserialized from ModConf/mod_configs.json (one nested class per feature).
+    /// </summary>
     public class ModStts
     {
         #region BaseConfigs
+        /// <summary>
+        /// Base config rebalancing ratios (exp, artifacts, skill mastery, MP cost, CD...).
+        /// </summary>
         public class _BaseConfigs
         {
             public float LevelExpRatio { get; set; }
@@ -122,6 +128,9 @@ namespace MOD_nE7UL2.Object
         #endregion
 
         #region ContributionExchangeConfigs
+        /// <summary>
+        /// Sect contribution exchange.
+        /// </summary>
         public class _ContributionExchangeConfigs
         {
             public int ExchangeRatio { get; set; }
@@ -130,6 +139,9 @@ namespace MOD_nE7UL2.Object
         #endregion
 
         #region MissionDeclareConfigs
+        /// <summary>
+        /// Bounty commissions.
+        /// </summary>
         public class _MissionDeclareConfigs
         {
             public float FeeRate { get; set; }
@@ -143,6 +155,9 @@ namespace MOD_nE7UL2.Object
         #endregion
 
         #region BattleManashieldConfigs
+        /// <summary>
+        /// Mana shield.
+        /// </summary>
         public class _BattleManashieldConfigs
         {
             public float ManaShieldRate1 { get; set; }
@@ -152,10 +167,16 @@ namespace MOD_nE7UL2.Object
         #endregion
 
         #region UnitTypeConfigs
+        /// <summary>
+        /// Unit role chances.
+        /// </summary>
         public class _UnitTypeConfigs
         {
             public IDictionary<string, float> UnitTypes { get; set; }
 
+            /// <summary>
+            /// Random role from the configured chances.
+            /// </summary>
             public UnitTypeEnum RandomUnitType(float r)
             {
                 var min = 0.00f;
@@ -176,6 +197,9 @@ namespace MOD_nE7UL2.Object
         #endregion
 
         #region RealTrialConfigs
+        /// <summary>
+        /// Trial of lightning.
+        /// </summary>
         public class _RealTrialConfigs
         {
             public float PowerUpOnGameLevel { get; set; }
@@ -185,6 +209,9 @@ namespace MOD_nE7UL2.Object
         #endregion
 
         #region RealStorageConfigs
+        /// <summary>
+        /// Storage fee.
+        /// </summary>
         public class _RealStorageConfigs
         {
             public float FeeRate { get; set; }
@@ -193,8 +220,14 @@ namespace MOD_nE7UL2.Object
         #endregion
 
         #region RealMarketConfigs
+        /// <summary>
+        /// Market buy/sell rates.
+        /// </summary>
         public class _RealMarketConfigs
         {
+            /// <summary>
+            /// Market price event window.
+            /// </summary>
             public class _RealMarketConfigs_Event : GameEvent
             {
                 public float AddSellRate { get; set; }
@@ -209,11 +242,17 @@ namespace MOD_nE7UL2.Object
             public float TownMReduceBuyRate { get; set; }
             public IDictionary<string, _RealMarketConfigs_Event> Events { get; set; }
 
+            /// <summary>
+            /// Sell rate bonus of running market events.
+            /// </summary>
             public float GetAddSellRate()
             {
                 return Events.Where(e => e.Value.IsRunningEvent()).Sum(e => e.Value.AddSellRate);
             }
 
+            /// <summary>
+            /// Buy rate bonus of running market events.
+            /// </summary>
             public float GetAddBuyRate()
             {
                 return Events.Where(e => e.Value.IsRunningEvent()).Sum(e => e.Value.AddBuyRate);
@@ -223,6 +262,9 @@ namespace MOD_nE7UL2.Object
         #endregion
 
         #region MonstStrongerConfigs
+        /// <summary>
+        /// Monster growth.
+        /// </summary>
         public class _MonstStrongerConfigs
         {
             public float AtkR { get; set; }
@@ -240,10 +282,16 @@ namespace MOD_nE7UL2.Object
         #endregion
 
         #region NpcUpgradeSkillConfigs
+        /// <summary>
+        /// NPC skill upgrade.
+        /// </summary>
         public class _NpcUpgradeSkillConfigs
         {
             public IDictionary<MartialType, float> UpgradeRates { get; set; }
 
+            /// <summary>
+            /// Random martial type to upgrade.
+            /// </summary>
             public MartialType RandomUpgradingMartial(float r, float ratio)
             {
                 var min = 0.00f;
@@ -264,6 +312,9 @@ namespace MOD_nE7UL2.Object
         #endregion
 
         #region ExpertConfigs
+        /// <summary>
+        /// Expertise exp.
+        /// </summary>
         public class _ExpertConfigs
         {
             public IDictionary<MartialType, float> SkillDmgRatios { get; set; }
@@ -275,6 +326,9 @@ namespace MOD_nE7UL2.Object
         #endregion
 
         #region BattleRewardConfigs
+        /// <summary>
+        /// Battle exp rewards.
+        /// </summary>
         public class _BattleRewardConfigs
         {
             public float ExpPerDmgDealt { get; set; }
@@ -284,6 +338,9 @@ namespace MOD_nE7UL2.Object
         #endregion
 
         #region BankAccountConfigs
+        /// <summary>
+        /// Bank account fees.
+        /// </summary>
         public class _BankAccountConfigs
         {
             public IDictionary<int, int> OpenFee { get; set; }
@@ -292,6 +349,9 @@ namespace MOD_nE7UL2.Object
         #endregion
 
         #region InflationaryConfigs
+        /// <summary>
+        /// Inflation.
+        /// </summary>
         public class _InflationaryConfigs
         {
             public float InflationaryRate { get; set; }
@@ -300,6 +360,9 @@ namespace MOD_nE7UL2.Object
         #endregion
 
         #region MapBuildBattleConfigs
+        /// <summary>
+        /// Town wars / monster waves.
+        /// </summary>
         public class _MapBuildBattleConfigs
         {
             public float EscapeChance { get; set; }
@@ -308,6 +371,9 @@ namespace MOD_nE7UL2.Object
         #endregion
 
         #region MarketItemConfigs
+        /// <summary>
+        /// Player market.
+        /// </summary>
         public class _MarketItemConfigs
         {
             public int JoinRange { get; set; }
@@ -325,6 +391,9 @@ namespace MOD_nE7UL2.Object
         #endregion
 
         #region BattleConfigs
+        /// <summary>
+        /// NPC join battle.
+        /// </summary>
         public class _BattleConfigs
         {
             public int JoinRange { get; set; }
@@ -342,10 +411,16 @@ namespace MOD_nE7UL2.Object
         #endregion
 
         #region CustomRefineConfigs
+        /// <summary>
+        /// Custom refine.
+        /// </summary>
         public class _CustomRefineConfigs
         {
             public IDictionary<string, float> LevelRates { get; set; }
 
+            /// <summary>
+            /// Random adjustment quality.
+            /// </summary>
             public AdjLevelEnum RandomRefineLevel(float r)
             {
                 var min = 0.00f;

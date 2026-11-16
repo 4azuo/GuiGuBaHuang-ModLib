@@ -16,7 +16,7 @@ Two main projects:
 - Use existing Helper utilities before creating new ones
 - Check SampleConfs when working with configs
 - Search for existing patterns before implementing new features
-- Read docs from `.github/docs/` for context
+- Read docs from `docs/` for context
 
 ### Workflow
 - Use `rebuild-and-deploy.ps1` in `<ProjectId>/scripts/` for build/deploy (or `scripts/rebuild-and-deploy-all.ps1` for all projects)
@@ -26,7 +26,7 @@ Two main projects:
 
 ## Documentation
 
-Files in `.github/docs/`:
+Files in `docs/`:
 - **00-Getting-Started.md** - Setup and structure
 - **01-ModMain.md** - ModMain class and initialization
 - **02-Events.md** - Event system
@@ -35,6 +35,8 @@ Files in `.github/docs/`:
 - **05-Helpers.md** - Helper functions
 - **06-Debug.md** - Debugging
 - **07-Build-Deploy.md** - Build scripts
-- **details/SampleConfs-List.md** - Config samples list
+- **ModConf/00-SampleConfs-List.md** - Config samples list
+- **ModLib/** - ModLib architecture, event reference, cache, built-in events, UI framework
+- **Taoist/** - Taoist features, configs, test scenarios, autotest
 
 Reference appropriate docs when answering questions.

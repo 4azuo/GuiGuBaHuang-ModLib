@@ -13,12 +13,18 @@ using UnityEngine.UI;
 
 namespace MOD_nE7UL2.Mod
 {
+    /// <summary>
+    /// Sect members can exchange items for sect contribution at a monthly ratio.
+    /// </summary>
     [Cache(ModConst.CONTRIBUTION_EXCHANGE_EVENT)]
     public class ContributionExchangeEvent : ModEvent
     {
         public static ContributionExchangeEvent Instance { get; set; }
 
         //SpiritStones (Sell Price) / Contribution
+        /// <summary>
+        /// Base ratio (inflation and S&amp;M rate applied).
+        /// </summary>
         public static int GetExchangeRatio()
         {
             return SMLocalConfigsEvent.Instance.Calculate(InflationaryEvent.CalculateInflationary(ModMain.ModObj.ModSettings.ContributionExchangeConfigs.ExchangeRatio), SMLocalConfigsEvent.Instance.Configs.AddSectExchangeRate).Parse<int>();
@@ -28,17 +34,26 @@ namespace MOD_nE7UL2.Mod
 
         private Text txtExchangeContribution;
 
+        /// <summary>
+        /// Picks a new ratio.
+        /// </summary>
         public override void OnMonthly()
         {
             base.OnMonthly();
             RandomRatio();
         }
 
+        /// <summary>
+        /// Ratio x random 0.8-1.3.
+        /// </summary>
         private void RandomRatio()
         {
             CurMonthRatio = (GetExchangeRatio() * CommonTool.Random(0.80f, 1.30f)).Parse<int>();
         }
 
+        /// <summary>
+        /// Own sect UI: adds the exchange button.
+        /// </summary>
         [EventCondition(IsInGame = HandleEnum.True, IsInBattle = HandleEnum.False)]
         public override void OnOpenUIEnd(OpenUIEnd e)
         {
@@ -61,6 +76,9 @@ namespace MOD_nE7UL2.Mod
             }
         }
 
+        /// <summary>
+        /// Refreshes the exchange preview.
+        /// </summary>
         [ErrorIgnore]
         [EventCondition(IsInGame = HandleEnum.True, IsInBattle = HandleEnum.False)]
         public override void OnTimeUpdate200ms()
@@ -76,8 +94,14 @@ namespace MOD_nE7UL2.Mod
             }
         }
 
+        /// <summary>
+        /// Opens the item selector.
+        /// </summary>
         private void OpenSelector()
         {
+            // no month passed yet on a new save: the ratio was never drawn (0 -> division by zero on exchange)
+            if (CurMonthRatio <= 0)
+                RandomRatio();
             var uiSelector = g.ui.OpenUISafe<UIPropSelect>(UIType.PropSelect);
             uiSelector.UpdateUI();
             uiSelector.tag = ModConst.CONTRIBUTION_EXCHANGE_EVENT;
@@ -89,6 +113,9 @@ namespace MOD_nE7UL2.Mod
             txtExchangeContribution = uiSelector.textInfo.Copy().Format().Align(TextAnchor.MiddleCenter).Pos(uiSelector.btnOK.gameObject, 0, 50);
         }
 
+        /// <summary>
+        /// Gives the items value to the sect and contribution to the player.
+        /// </summary>
         private void Exchange()
         {
             if (UIPropSelect.allSlectItems.Count > 0)
@@ -100,11 +127,17 @@ namespace MOD_nE7UL2.Mod
             }
         }
 
+        /// <summary>
+        /// Value of selected items.
+        /// </summary>
         private int CalExchangeSpiritStones()
         {
             return UIPropSelect.allSlectDataProps.allProps.ToArray().Sum(x => x.propsInfoBase.sale * x.propsCount);
         }
 
+        /// <summary>
+        /// Contribution for a value (at least 1).
+        /// </summary>
         private int CalExchangeContributions(int spiritStones)
         {
             if (spiritStones == 0)

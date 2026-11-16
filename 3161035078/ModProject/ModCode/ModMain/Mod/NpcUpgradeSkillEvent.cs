@@ -8,6 +8,9 @@ using System.Collections.Generic;
 
 namespace MOD_nE7UL2.Mod
 {
+    /// <summary>
+    /// NPC martial arts growth: monthly level-ups, higher grade versions, mastery exp and prefix upgrades.
+    /// </summary>
     [Cache(ModConst.NPC_UPGRADE_SKILL_EVENT)]
     public class NpcUpgradeSkillEvent : ModEvent
     {
@@ -22,6 +25,9 @@ namespace MOD_nE7UL2.Mod
             [MartialType.Ability] = 1.2f,
         };
 
+        /// <summary>
+        /// Upgrades a random martial type of each NPC.
+        /// </summary>
         public override void OnMonthlyForEachWUnit(WorldUnitBase wunit)
         {
             base.OnMonthlyForEachWUnit(wunit);
@@ -31,12 +37,18 @@ namespace MOD_nE7UL2.Mod
             }
         }
 
+        /// <summary>
+        /// Upgrades the martial arts of a type (chance from talent and luck).
+        /// </summary>
         public void UpgradeMartial(WorldUnitBase wunit)
         {
             var luck = wunit.GetDynProperty(UnitDynPropertyEnum.Luck).value;
-            UpgradeMartial(wunit, ModMain.ModObj.ModSettings.NpcUpgradeSkillConfigs.RandomUpgradingMartial(CommonTool.Random(0.00f, 100.00f), luck / 100));
+            UpgradeMartial(wunit, ModMain.ModObj.ModSettings.NpcUpgradeSkillConfigs.RandomUpgradingMartial(CommonTool.Random(0.00f, 100.00f), luck / 100f)); // float: luck / 100 (int) was 0 below 100 luck, NPCs never upgraded (found by autotest TG-44)
         }
 
+        /// <summary>
+        /// Upgrades the martial arts of a type (chance from talent and luck).
+        /// </summary>
         public void UpgradeMartial(WorldUnitBase wunit, MartialType martialType)
         {
             if (martialType == MartialType.None)
@@ -69,6 +81,9 @@ namespace MOD_nE7UL2.Mod
             }
         }
 
+        /// <summary>
+        /// Adds mastery exp (talent x grade x type ratio).
+        /// </summary>
         public void AddMartialExp(WorldUnitBase wunit, MartialType martialType, DataUnit.ActionMartialData actMartialData)
         {
             var insight = wunit.GetProperty<int>(UnitPropertyEnum.Talent);
@@ -78,6 +93,9 @@ namespace MOD_nE7UL2.Mod
             actMartialData.exp += mExp;
         }
 
+        /// <summary>
+        /// May raise the level of unlocked prefixes.
+        /// </summary>
         public void UpgradeMartialPrefix(WorldUnitBase wunit, DataUnit.ActionMartialData actMartialData)
         {
             var rateDec = 0;

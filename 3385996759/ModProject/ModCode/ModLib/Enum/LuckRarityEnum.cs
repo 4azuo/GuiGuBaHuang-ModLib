@@ -2,6 +2,9 @@
 
 namespace ModLib.Enum
 {
+    /// <summary>
+    /// Rarity levels of lucks.
+    /// </summary>
     public class LuckRarityEnum : EnumObject
     {
         public static LuckRarityEnum Common { get; } = new LuckRarityEnum("1");
@@ -17,6 +20,9 @@ namespace ModLib.Enum
         public static LuckRarityEnum NegativeLegendary { get; } = new LuckRarityEnum("-5");
         public static LuckRarityEnum NegativeMythic { get; } = new LuckRarityEnum("-6");
 
+        /// <summary>
+        /// Creates an entry.
+        /// </summary>
         public LuckRarityEnum(string value) : base(value) { }
     }
 }

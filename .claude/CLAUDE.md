@@ -43,11 +43,14 @@ Always build in Release. Run scripts with `powershell -NoProfile -ExecutionPolic
 
 - Run the game and collect logs: `scripts/game/run-game.ps1` (e.g. `-UntilModLoaded -StopGame -Duration 600`); read `logs/game-runs/<latest>/summary.json` first, then `timeline.log`
 - Paths of game / Workshop / log folders: `scripts/open-folder.ps1 <target> -Print`
-- Details: `.github/docs/06-Debug.md`
+- Details: `docs/06-Debug.md`
+- Unit tests (no game): `scripts/run-unittests.ps1` (`tests/UnitTests`; `-IncludeKnownIssues` runs the tests reproducing open bugs)
+- Known bugs to check: `docs/Known-Issues.md`
+- Taoist autotest (scenarios + evidence): `scripts/game/run-autotest.ps1 -Save <test save>` -> evidence in `logs/autotest/<time>/`; OK/NG per scenario id in `3161035078/tests/scenario-status.json`. All results (autotest + unit tests, every run, screenshots by step): `test-viewer/index.html` (data from `scripts/update-test-viewer.ps1`). Details: `docs/Taoist/04-Autotest.md`
 
 ## Documentation
 
-Read the relevant doc from `.github/docs/` before answering questions or making non-trivial changes:
+Read the relevant doc from `docs/` before answering questions or making non-trivial changes:
 
 - `00-Getting-Started.md` - Setup and structure
 - `01-ModMain.md` - ModMain class and initialization
@@ -59,3 +62,5 @@ Read the relevant doc from `.github/docs/` before answering questions or making 
 - `07-Build-Deploy.md` - Build scripts
 - `ModConf/00-SampleConfs-List.md` - Index of config samples (per-category files `01`-`12`)
 - `ModCreator/00-Overview.md` - ModCreator tool (per-feature files `01`-`05`)
+- `ModLib/00-Architecture.md` - ModLib internals: dispatch, load sequence, monthly tick (`01` event reference, `02` cache/persistence, `03` built-in events, `04` UI framework, `05` attributes/objects/enums)
+- `Taoist/00-Overview.md` - Taoist structure and event order (`01` features per event + known issues, `02` configs, `03` test scenarios, `04` autotest/evidence/unit tests)

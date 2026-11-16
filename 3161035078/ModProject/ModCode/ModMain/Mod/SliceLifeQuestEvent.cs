@@ -10,6 +10,9 @@ using UnityEngine;
 
 namespace MOD_nE7UL2.Mod
 {
+    /// <summary>
+    /// Slice-of-life quest chain: live months without fighting to reach levels (unlocked by game year) and earn lucks.
+    /// </summary>
     [Cache(ModConst.SLICE_LIFE_QUEST_EVENT)]
     public class SliceLifeQuestEvent : ModEvent
     {
@@ -18,6 +21,9 @@ namespace MOD_nE7UL2.Mod
         public const int TASK_BASE_ID = 444443000;
         public const int LUCK_BASE_ID = 444441000;
 
+        /// <summary>
+        /// Quest level definition.
+        /// </summary>
         public class SliceLifeTaskInfo
         {
             public int TaskLevel { get; set; }
@@ -81,12 +87,18 @@ namespace MOD_nE7UL2.Mod
         public int TaskLevel { get; set; } = 0;
         public int LastCount { get; set; } = 0;
 
+        /// <summary>
+        /// Ensures the current quest exists.
+        /// </summary>
         public override void OnLoadGame()
         {
             base.OnLoadGame();
             AddTask();
         }
 
+        /// <summary>
+        /// Counts a peaceful month; completes the level when the count is reached.
+        /// </summary>
         public override void OnMonthly()
         {
             base.OnMonthly();
@@ -110,6 +122,9 @@ namespace MOD_nE7UL2.Mod
             }
         }
 
+        /// <summary>
+        /// A battle resets the counter.
+        /// </summary>
         public override void OnBattleEndHandler(BattleEndHandler e)
         {
             base.OnBattleEndHandler(e);
@@ -126,6 +141,9 @@ namespace MOD_nE7UL2.Mod
             }
         }
 
+        /// <summary>
+        /// Removes quest tasks.
+        /// </summary>
         private void RemoveTask()
         {
             foreach (var tInfo in TaskInfo)
@@ -136,6 +154,9 @@ namespace MOD_nE7UL2.Mod
             }
         }
 
+        /// <summary>
+        /// Creates the next quest task when unlocked.
+        /// </summary>
         private TaskBase AddTask()
         {
             var taskInfo = TaskInfo.FirstOrDefault(x => x.TaskLevel == TaskLevel + 1);
@@ -144,7 +165,7 @@ namespace MOD_nE7UL2.Mod
                 return null;
             }
             var task = g.world.playerUnit.GetTask(taskInfo.TaskId).ToArray().FirstOrDefault();
-            if (task == null & taskInfo.ActiveCondition())
+            if (task == null && taskInfo.ActiveCondition())
             {
                 var rs = g.world.playerUnit.CreateTask(new DataUnit.TaskData
                 {
@@ -158,6 +179,9 @@ namespace MOD_nE7UL2.Mod
             return task;
         }
 
+        /// <summary>
+        /// Removes reward lucks.
+        /// </summary>
         private void RemoveLuck()
         {
             foreach (var tInfo in TaskInfo)
@@ -166,6 +190,9 @@ namespace MOD_nE7UL2.Mod
             }
         }
 
+        /// <summary>
+        /// Gives the luck of the completed level.
+        /// </summary>
         private void AddLuck()
         {
             RemoveLuck();

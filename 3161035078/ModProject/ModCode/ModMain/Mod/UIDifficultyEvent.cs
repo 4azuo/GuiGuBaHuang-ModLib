@@ -6,9 +6,15 @@ using UnityEngine;
 
 namespace MOD_nE7UL2.Mod
 {
+    /// <summary>
+    /// Difficulty UI: hides the base game difficulty descriptions (Taoist uses S&amp;M).
+    /// </summary>
     [Cache(ModConst.UI_DIFFICULTY_EVENT, CacheType = CacheAttribute.CType.Global, WorkOn = CacheAttribute.WType.Global)]
     public class UIDifficultyEvent : ModEvent
     {
+        /// <summary>
+        /// Hides the description roots.
+        /// </summary>
         public override void OnOpenUIEnd(OpenUIEnd e)
         {
             base.OnOpenUIEnd(e);

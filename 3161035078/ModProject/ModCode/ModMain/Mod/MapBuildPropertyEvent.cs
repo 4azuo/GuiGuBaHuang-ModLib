@@ -14,6 +14,9 @@ using ModLib.Helper;
 
 namespace MOD_nE7UL2.Mod
 {
+    /// <summary>
+    /// Town/sect economy and government: budgets, taxes, town masters and guardians, deposits, upgrade to city.
+    /// </summary>
     [Cache(ModConst.MAP_BUILD_PROPERTY_EVENT)]
     public class MapBuildPropertyEvent : ModEvent
     {
@@ -49,6 +52,9 @@ namespace MOD_nE7UL2.Mod
         public static bool isShowManageTeamUI1 = false;
         public static bool isShowManageTeamUI2 = false;
 
+        /// <summary>
+        /// Initializes tax rates, initial budgets and a town master for each town.
+        /// </summary>
         public override void OnLoadGame()
         {
             base.OnLoadGame();
@@ -88,6 +94,9 @@ namespace MOD_nE7UL2.Mod
             }
         }
 
+        /// <summary>
+        /// Adds town management/guardian/deposit buttons to town UIs and hire buttons on NPCInfo.
+        /// </summary>
         public override void OnOpenUIEnd(OpenUIEnd e)
         {
             base.OnOpenUIEnd(e);
@@ -191,6 +200,9 @@ namespace MOD_nE7UL2.Mod
             }
         }
 
+        /// <summary>
+        /// Resets UI flags.
+        /// </summary>
         public override void OnCloseUIStart(CloseUIStart e)
         {
             base.OnCloseUIStart(e);
@@ -205,6 +217,9 @@ namespace MOD_nE7UL2.Mod
             }
         }
 
+        /// <summary>
+        /// Clears the list of towns paid this month.
+        /// </summary>
         public override void OnMonthly()
         {
             base.OnMonthly();
@@ -212,6 +227,9 @@ namespace MOD_nE7UL2.Mod
             PayTaxTown.Clear();
         }
 
+        /// <summary>
+        /// Fixes guardian lucks, collects town/sect taxes from NPCs (inn rest included), expels NPCs that cannot pay.
+        /// </summary>
         public override void OnMonthlyForEachWUnit(WorldUnitBase wunit)
         {
             base.OnMonthlyForEachWUnit(wunit);
@@ -280,6 +298,9 @@ namespace MOD_nE7UL2.Mod
             }
         }
 
+        /// <summary>
+        /// Yearly budgets, elects a new master when needed, pays guardians.
+        /// </summary>
         public override void OnYearly()
         {
             base.OnYearly();
@@ -411,6 +432,9 @@ namespace MOD_nE7UL2.Mod
             }
         }
 
+        /// <summary>
+        /// Handles the death of masters/guardians.
+        /// </summary>
         public override void OnBattleUnitDie(UnitDie e)
         {
             base.OnBattleUnitDie(e);
@@ -454,12 +478,18 @@ namespace MOD_nE7UL2.Mod
             }
         }
 
+        /// <summary>
+        /// Makes a unit master/guardian of a town.
+        /// </summary>
         public static void Hire(MapBuildTown town, WorldUnitBase member, int luckId)
         {
             Instance.TownMasters[town.buildData.id].Add(member.GetUnitId());
             member.AddLuck(luckId);
         }
 
+        /// <summary>
+        /// Base tax of a building.
+        /// </summary>
         public static int GetBaseTax(MapBuildBase buildbase)
         {
             //default tax rate
@@ -484,6 +514,9 @@ namespace MOD_nE7UL2.Mod
             return baseTax;
         }
 
+        /// <summary>
+        /// Tax for a unit (S&amp;M tax rate, guardians exempt).
+        /// </summary>
         public static int GetTax(MapBuildBase buildbase, WorldUnitBase wunit)
         {
             if (wunit == null || wunit.isDie)
@@ -498,6 +531,9 @@ namespace MOD_nE7UL2.Mod
             return tax;
         }
 
+        /// <summary>
+        /// Budget (spirit stones) of a town/sect.
+        /// </summary>
         public static long GetBuildProperty(MapBuildBase build)
         {
             if (build == null)
@@ -520,6 +556,9 @@ namespace MOD_nE7UL2.Mod
             return 0;
         }
 
+        /// <summary>
+        /// Adds to (or removes from) a budget.
+        /// </summary>
         public static void AddBuildProperty(MapBuildBase build, long add)
         {
             if (build == null)
@@ -542,21 +581,33 @@ namespace MOD_nE7UL2.Mod
             }
         }
 
+        /// <summary>
+        /// True when the unit has a guardian luck without being registered.
+        /// </summary>
         public static bool IsErrorLuckId(WorldUnitBase wunit)
         {
             return wunit.GetLuck(TOWN_GUARDIAN_LUCK_ID) != null && wunit.GetLuck(TOWN_MASTER_LUCK_ID) != null;
         }
 
+        /// <summary>
+        /// True when the unit guards a (given) town.
+        /// </summary>
         public static bool IsTownGuardian(WorldUnitBase wunit)
         {
             return wunit != null && (wunit.GetLuck(TOWN_GUARDIAN_LUCK_ID) != null || wunit.GetLuck(TOWN_MASTER_LUCK_ID) != null);
         }
 
+        /// <summary>
+        /// True when the unit is master of a (given) town.
+        /// </summary>
         public static bool IsTownMaster(WorldUnitBase wunit)
         {
             return wunit != null && wunit.GetLuck(TOWN_MASTER_LUCK_ID) != null;
         }
 
+        /// <summary>
+        /// True when the unit guards a (given) town.
+        /// </summary>
         public static bool IsTownGuardian(MapBuildTown town, WorldUnitBase wunit)
         {
             if (town == null || wunit == null)
@@ -564,16 +615,25 @@ namespace MOD_nE7UL2.Mod
             return Instance.TownMasters[town.buildData.id].Contains(wunit.GetUnitId());
         }
 
+        /// <summary>
+        /// True when the unit is master of a (given) town.
+        /// </summary>
         public static bool IsTownMaster(MapBuildTown town, WorldUnitBase wunit)
         {
             return IsTownGuardian(town, wunit) && IsTownMaster(wunit);
         }
 
+        /// <summary>
+        /// True when the unit belongs to a (given) sect.
+        /// </summary>
         public static bool IsSchoolMember(WorldUnitBase wunit)
         {
             return wunit.data.school?.schoolNameID != null;
         }
 
+        /// <summary>
+        /// True when the unit belongs to a (given) sect.
+        /// </summary>
         public static bool IsSchoolMember(MapBuildSchool school, WorldUnitBase wunit)
         {
             if (school == null)
@@ -581,11 +641,17 @@ namespace MOD_nE7UL2.Mod
             return school.schoolNameID == wunit.data.school?.schoolNameID;
         }
 
+        /// <summary>
+        /// Cost to upgrade a town to a city.
+        /// </summary>
         public static long GetUpgrade2CityCost(MapBuildTown town)
         {
             return (Math.Pow(3, town.gridData.areaBaseID) * 1000000).Parse<long>();
         }
 
+        /// <summary>
+        /// Upgrades a town to a city.
+        /// </summary>
         public static void Upgrade2City(MapBuildTown town)
         {
             var budget = Instance.Budget[town.buildData.id];
@@ -601,6 +667,9 @@ namespace MOD_nE7UL2.Mod
             }
         }
 
+        /// <summary>
+        /// Moves player money to the town budget.
+        /// </summary>
         public static void Deposit()
         {
             var uiPropSelectCount = g.ui.OpenUISafe<UIPropSelectCount>(UIType.PropSelectCount);
@@ -622,6 +691,9 @@ namespace MOD_nE7UL2.Mod
             uiPropSelectCount.textTitle.text = GameTool.LS("other500020015");
         }
 
+        /// <summary>
+        /// Moves town budget to the player (town master).
+        /// </summary>
         public static void Withdraw()
         {
             var town = g.world.playerUnit.GetMapBuild<MapBuildTown>();
@@ -643,6 +715,9 @@ namespace MOD_nE7UL2.Mod
             uiPropSelectCount.textTitle.text = GameTool.LS("other500020016");
         }
 
+        /// <summary>
+        /// Guardian hiring UI.
+        /// </summary>
         public static void OpenUIHirePeople()
         {
             var ui = g.ui.OpenUISafe<UINPCSearch>(UIType.NPCSearch);
@@ -672,6 +747,9 @@ namespace MOD_nE7UL2.Mod
             //uiCover.UpdateUI();
         }
 
+        /// <summary>
+        /// Town management window.
+        /// </summary>
         public static void OpenUITownManage(MapBuildTown town)
         {
             var ui = g.ui.OpenUISafe<UINPCSearch>(UIType.NPCSearch);
@@ -743,6 +821,9 @@ namespace MOD_nE7UL2.Mod
             uiCover.UpdateUI();
         }
 
+        /// <summary>
+        /// Guardians list.
+        /// </summary>
         public static void OpenUITownGuardians(MapBuildTown town)
         {
             var ui = g.ui.OpenUISafe<UINPCSearch>(UIType.NPCSearch);
@@ -767,11 +848,17 @@ namespace MOD_nE7UL2.Mod
             }
         }
 
+        /// <summary>
+        /// True when the unit can become a guardian.
+        /// </summary>
         public static bool IsMatchCondWUnit(WorldUnitBase wunit)
         {
             return wunit != null && !wunit.isDie && ((!IsTownGuardian(wunit) && !HirePeopleEvent.IsHired(wunit)) || wunit.IsPlayer());
         }
 
+        /// <summary>
+        /// Units that can be hired as guardians.
+        /// </summary>
         public static List<WorldUnitBase> GetHirablePeople()
         {
             var rs = new List<WorldUnitBase>();
@@ -788,6 +875,9 @@ namespace MOD_nE7UL2.Mod
             return rs;
         }
 
+        /// <summary>
+        /// Guardians of a town.
+        /// </summary>
         public static List<WorldUnitBase> GetTownGuardians(MapBuildTown town)
         {
             var rs = new List<WorldUnitBase>();
@@ -803,6 +893,9 @@ namespace MOD_nE7UL2.Mod
             return rs;
         }
 
+        /// <summary>
+        /// Master of a town.
+        /// </summary>
         public static WorldUnitBase GetTownMaster(MapBuildTown town)
         {
             if (town == null || !Instance.TownMasters.ContainsKey(town.buildData.id))
@@ -818,6 +911,9 @@ namespace MOD_nE7UL2.Mod
             return null;
         }
 
+        /// <summary>
+        /// Town guarded by a unit.
+        /// </summary>
         public static MapBuildTown GetGuardTown(WorldUnitBase wunit)
         {
             var wunitId = wunit.GetUnitId();
@@ -829,11 +925,17 @@ namespace MOD_nE7UL2.Mod
             return null;
         }
 
+        /// <summary>
+        /// Guarded town description.
+        /// </summary>
         public static string GetGuardTownInfoStr(WorldUnitBase wunit)
         {
             return GetGuardTown(wunit)?.name;
         }
 
+        /// <summary>
+        /// Removes a unit from all towns and its lucks.
+        /// </summary>
         public static void RemoveFromTownGuardians(string wunitId, WorldUnitBase wunit)
         {
             if (!string.IsNullOrEmpty(wunitId))
@@ -851,6 +953,9 @@ namespace MOD_nE7UL2.Mod
             wunit?.DelLuck(TOWN_GUARDIAN_LUCK_ID);
         }
 
+        /// <summary>
+        /// A guardian leaves.
+        /// </summary>
         public static void Leave(WorldUnitBase wunit)
         {
             if (wunit == null)
@@ -858,6 +963,9 @@ namespace MOD_nE7UL2.Mod
             RemoveFromTownGuardians(wunit.GetUnitId(), wunit);
         }
 
+        /// <summary>
+        /// Monthly salary of all guardians.
+        /// </summary>
         public static int GetTotalMonthlyPayment(MapBuildTown town)
         {
             var rs = 0;
@@ -869,23 +977,35 @@ namespace MOD_nE7UL2.Mod
             return rs;
         }
 
+        /// <summary>
+        /// Guardian salary.
+        /// </summary>
         public static int GetRequiredSpiritStones(MapBuildTown town, int gradeLvl)
         {
             var k = (Instance.TownMasters.ContainsKey(town.buildData.id) ? Instance.TownMasters[town.buildData.id].Count : 1) + 1;
             return InflationaryEvent.CalculateInflationary((Math.Pow(3, gradeLvl) * 500 * k).Parse<int>());
         }
 
+        /// <summary>
+        /// Guardian salary.
+        /// </summary>
         public static int GetRequiredSpiritStones(MapBuildTown town, WorldUnitBase wunit)
         {
             return GetRequiredSpiritStones(town, wunit.GetGradeLvl());
         }
 
+        /// <summary>
+        /// Reputation required to hire a guardian.
+        /// </summary>
         public static int GetRequiredReputations(MapBuildTown town, WorldUnitBase wunit)
         {
             var k = (Instance.TownMasters.ContainsKey(town.buildData.id) ? Instance.TownMasters[town.buildData.id].Count : 1) + 1;
             return (Math.Pow(2, k) * 100 + Math.Pow(3, wunit.GetGradeLvl()) * 10).Parse<int>();
         }
 
+        /// <summary>
+        /// Guardian checks a sneaky unit (may start the catch battle).
+        /// </summary>
         public static void CheckIn(WorldUnitBase guard, MapBuildBase buildBase, UIBase ui)
         {
             if (SMLocalConfigsEvent.Instance.Configs.NoTaxing)
@@ -926,6 +1046,9 @@ namespace MOD_nE7UL2.Mod
             }
         }
 
+        /// <summary>
+        /// Periodic town UI refresh.
+        /// </summary>
         [ErrorIgnore]
         [EventCondition(IsInGame = HandleEnum.Ignore, IsInBattle = HandleEnum.True)]
         public override void OnTimeUpdate1000ms()

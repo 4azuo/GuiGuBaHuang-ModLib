@@ -1,0 +1,115 @@
+# Taoist - Test scenarios
+
+Source of truth: `3161035078/tests/scenarios.json` (this page is generated from it: `python scripts/game/export-scenarios-doc.py`).
+Latest OK/NG result of every id: `3161035078/tests/scenario-status.json` (updated by `run-autotest.ps1`, manual results with `set-scenario-status.ps1`; view: `test-viewer/index.html`, tab Scenario status).
+
+## Ids
+
+| Prefix | Kind | Executed by |
+|---|---|---|
+| `TT-nn` | auto, title screen | `AutoTestEvent` before the save is loaded |
+| `TP-nn` | auto, pre-test | creates the new character used by the run (trainer on, CrueltyShura); skipped with an existing save |
+| `TG-nn` | auto, in game | `AutoTestEvent` after the save is loaded |
+| `TB-01/02` | watch, battle | `AutoTestEvent` while you play battles (`-WatchBattles`) |
+| `TB-03+` | auto, battle | `AutoTestEvent` starts the battle by code, hits/kills units, ends it and goes back to the map |
+| `TX-nn` | auto, time-changing | `AutoTestEvent` last (skip time, currency reform, rebirth); the save is restored after the run |
+| `TZ-nn` | auto, very last | ends the character (one-life); the save is restored after the run |
+
+Each automatic check also gets an id `<scenario id>-<nn>` (e.g. `TG-04-02`) in `results.json`, the report and the status file, so a NG can be traced to the exact assertion.
+Automatic scenario code: `3161035078/ModProject/ModCode/ModMain/AutoTest/Scenarios/<Group>/<Id>_<Feature>.cs` (one file per id).
+
+**Test data**: use a dedicated copy of a save (mid game, in or near a town, a few NPCs around, some items in storage). The scenarios call mod functions on it (most changes are reverted, NPC exp is not).
+
+## Automatic scenarios (80)
+
+Field `replaces`: former manual ids now covered by the scenario.
+
+| Id | Feature | Title | Preconditions | Expected | Code |
+|---|---|---|---|---|---|
+| TT-01 | UITitleScreenEvent | Title screen shows Taoist/ModLib buttons and versions are compatible | Game started with ModLib and Taoist enabled | 1. ModLib, Taoist and S&M buttons are on the title screen<br>2. Button 'Taoist &lt;version&gt;' exists<br>3. No 'not supported in ModLib' warning (ModLib &gt;= MODLIB_REQUIRED_VERSION) | `Title/TT01_UITitleScreenEvent.cs` |
+| TT-02 | SMGlobalConfigsEvent | S&M configs window: pages, presets and cancel | Title screen | 1. Window with 2 pages<br>2. Valid saved values (GrowUpSpeed &gt;= 1, NPCAmount &gt; 0, StartupPlayerRole in range)<br>3. Preset changes the total score<br>4. Cancel keeps the saved configs | `Title/TT02_SMGlobalConfigsEvent.cs` |
+| TT-03 | UIDifficultyEvent/PriorityDestinyLevel | New game: difficulty and character creation screens | Title screen | 1. Vanilla difficulty descriptions are hidden<br>2. Level-2 destinies are prioritised in the creation screen<br>3. Config restored | `Title/TT03_NewGame.cs` |
+| TT-04 | ModLib title tools | ModLib title: language selector and tools | Title screen | 1. Language selector shown<br>2. Tools window opens<br>3. Duplicated ids window opens | `Title/TT04_ModLibTitle.cs` |
+| TT-05 | SMGlobalConfigsEvent | S&M configs: OK without change keeps every value | Title screen | 1. Every config value unchanged<br>2. Global config file written | `Title/TT05_SMConfigsOk.cs` |
+| TP-01 | Pre-test (new character) | Create a new character (trainer on, CrueltyShura, 3 artifacts, intro skipped) | Title screen, a free save slot | 1. New save loaded on the map<br>2. Grade 1, CrueltyShura<br>3. Trainer on in the save configs, TrainerEvent loaded<br>4. Bagua Jade, God Eye and Devil Demon pot active; no intro screen and no first battle | `Title/TP01_NewCharacter.cs` |
+| TG-01 | ModMain | Taoist settings and events are loaded in the save | Test save loaded (map screen) | 1. mod_configs.json deserialized<br>2. Core events loaded<br>3. Optional events (Trainer, QiCul, UpgradeNaturally, RepairShinki) loaded only when enabled in S&M configs | `Core/TG01_ModMain.cs` |
+| TG-02 | SMLocalConfigsEvent | Per-save S&M configs exist and Calculate applies rates | Save loaded | 1. 150 / 100 / 50 | `Core/TG02_SMLocalConfigsEvent.cs` |
+| TG-03 | PrepareEvent | Nearest-units option limits the units used by Taoist events | Save loaded (the option is switched on temporarily when off) | 1. Only units within +-3 areas of the player<br>2. Towns not filtered<br>3. Option and store restored | `Core/TG03_PrepareEvent.cs` |
+| TG-04 | InflationaryEvent | World price index is applied to prices | Save loaded | 1. Saved WorldPrice = economy index, 0 &lt; index &lt;= 10000<br>2. 1000 x index/100<br>3. Negative values unchanged | `Economy/TG04_InflationaryEvent.cs` |
+| TG-05 | UnitTypeEvent | Units receive a role | Save loaded (on a new save the monthly handler is run once) | 1. Player and NPCs have a role<br>2. Player has the luck of its role | `Unit/TG05_UnitTypeEvent.cs` |
+| TG-06 | NpcAutoEvent | NPC without full exp gains exp monthly | An NPC without full exp exists | 1. NPC exp increases | `Unit/TG06_NpcAutoEvent.cs` |
+| TG-07 | ExpertEvent | Expertise exp formulas | Save loaded | 1. 0 / 1000 / 2000 / 4000<br>2. Exp is added (temporary id removed afterwards) | `Unit/TG07_ExpertEvent.cs` |
+| TG-08 | CustomRefineEvent | Refine exp API | Save loaded | 1. false / false / 150 exp | `Unit/TG08_CustomRefineEvent.cs` |
+| TG-09 | HirePeopleEvent | Hire and dismiss a team member | A free NPC exists | 1. Price and reputation &gt; 0<br>2. NPC in the team, monthly payment &gt; 0<br>3. NPC removed after dismiss | `Unit/TG09_HirePeopleEvent.cs` |
+| TG-10 | MapBuildPropertyEvent | Town budget add/remove and taxes | A town exists | 1. Budget +12345 then restored<br>2. Taxes &gt;= 0 | `Economy/TG10_MapBuildPropertyEvent.cs` |
+| TG-11 | BankAccountEvent | Bank account fee is positive for every area | Save loaded | 1. All fees &gt; 0 | `Economy/TG11_BankAccountEvent.cs` |
+| TG-12 | RealStorageEvent | Storage fee rate and storage value | Save loaded | 1. Fee &gt;= 0<br>2. Value &gt;= cash<br>3. Debt &gt;= 0 | `Economy/TG12_RealStorageEvent.cs` |
+| TG-13 | RealMarketEvent/RealMarketEvent2 | Shop sell/buy rates exist for every market town | Save loaded | 1. Every market town has rates &gt; 0 | `Economy/TG13_RealMarketEvent.cs` |
+| TG-14 | RealMarketEvent3 | Player market listings and VIP price are consistent | Save loaded | 1. Listing prices &gt; 0<br>2. VIP costs &gt; 0 | `Economy/TG14_RealMarketEvent3.cs` |
+| TG-15 | ContributionExchangeEvent | Sect exchange ratio is positive | Save loaded | 1. Base &gt; 0<br>2. Monthly ratio within 80%..130% of base | `Economy/TG15_ContributionExchangeEvent.cs` |
+| TG-16 | BuildingArrangeEvent | Original buildings are known and building costs are valid | A town exists | 1. DefaultBuilding not empty<br>2. Costs &gt;= 0 | `Economy/TG16_BuildingArrangeEvent.cs` |
+| TG-17 | UnitModifyEvent/QiCulEvent | Unit modifiers are hooked and bonuses are not negative | Save loaded | 1. Player hooked<br>2. Atk/Def/HP/MP bonuses &gt;= 0<br>3. Qi bonus &gt;= 0 (SKIP when Qi is off) | `Unit/TG17_UnitModifyEvent.cs` |
+| TG-18 | BattleModifyEvent | Block table and damage multiplier rules | - | 1. 10 grades, non decreasing<br>2. GetBlockRatio(null) = 0<br>3. Multipliers &gt; 1 | `BattleRule/TG18_BattleModifyEvent.cs` |
+| TG-19 | BattleManashieldEvent | Mana shield of the player | Save loaded | 1. Base &gt;= 0, initial &gt;= base | `BattleRule/TG19_BattleManashieldEvent.cs` |
+| TG-20 | MonstStrongerEvent | Monster growth counters exist | Save loaded | 1. Common/Elite/BOSS/NPC counters exist | `BattleRule/TG20_MonstStrongerEvent.cs` |
+| TG-21 | SliceLifeQuestEvent/ChallengeQuestEvent | Quest chains have a consistent state | Save loaded | 1. Levels in range<br>2. Current unlocked task exists<br>3. Wins &lt; required | `Progression/TG21_SliceLifeQuestEvent.cs` |
+| TG-22 | RebirthEvent | Rebirth state and luck | Save loaded | 1. Values &gt;= 0<br>2. Rebirth luck present when count &gt; 0 | `Progression/TG22_RebirthEvent.cs` |
+| TG-23 | MissionDeclareEvent | Running commissions are consistent | Save loaded | 1. No commission past its time<br>2. Success rates 0..100 | `Progression/TG23_MissionDeclareEvent.cs` |
+| TG-24 | TimeSkipEvent/UIEvent | Map screen shows Taoist buttons and hides vanilla widgets | Map screen | 1. Skip 1/10 years buttons visible<br>2. Add-luck widget hidden | `UI/TG24_TimeSkipEvent.cs` |
+| TG-25 | QiCulEvent/UseSpiritStoneCulEvent/UpgradeNaturallyEvent | Cultivation screen shows Qi and cultivation buttons | Map screen | 1. Qi/Atk/Hp/Mp texts and cultivation buttons visible | `UI/TG25_QiCulEvent.cs` |
+| TG-26 | UIEvent | Game menu save/reload buttons follow the S&M configs | Map screen | 1. Save/Reload buttons hidden exactly when HideSaveButton/HideReloadButton | `UI/TG26_UIEvent.cs` |
+| TG-27 | UISettingScreenEvent | Game settings: Taoist settings button and window | Map screen | 1. Button visible<br>2. Window with 2 toggles opens | `UI/TG27_UISettingScreenEvent.cs` |
+| TG-28 | TrainerEvent | Trainer: all pages open and an action changes the player | Map screen (when the trainer is disabled, its window is tested with a temporary instance) | 1. Window with &gt;= 3 pages<br>2. Money increases<br>3. Each page can be shown | `UI/TG28_TrainerEvent.cs` |
+| TG-29 | CachableObject (ModLib) | Disabled features have no Instance (BUG-16) | At least one optional feature disabled (Trainer, Qi, UpgradeNaturally) | 1. Instance is null (NG until BUG-16 is fixed) | `Core/TG29_DisabledFeatures.cs` |
+| TG-30 | UIEvent/MapBuildPropertyEvent | Enter the town: town UI with Taoist info | Test save in a town | 1. Town UI opens | `Town/TG30_Town.cs` |
+| TG-31 | BankAccountEvent | Town storage: open a bank account | Test save in a town without account | 1. Button replaces the storage button<br>2. Fee moved from the player to the town budget, account registered<br>3. Storage usable, no account button | `Town/TG31_BankAccountEvent.cs` |
+| TG-32 | MissionDeclareEvent/HirePeopleEvent | Bounty board: commission and hire people | Test save in a town | 1. Both buttons visible<br>2. Hire list opens (flag reset on close)<br>3. Commission item selector opens | `Town/TG32_TownBounty.cs` |
+| TG-33 | RealMarketEvent3 | Town market: player market buttons and listings | Test save in a town with market | 1. VIP Market, Market, My Items, Register buttons<br>2. Listings window opens | `Town/TG33_RealMarketEvent3.cs` |
+| TG-34 | RealMarketEvent2 | Shop: town budget and buy price rate | Test save in a town with shop | 1. 'Market: x Spirit Stones' and 'Price rate: y%' texts<br>2. Buy rate in range | `Town/TG34_RealMarketEvent2.cs` |
+| TG-35 | RebirthEvent/CustomRefineEvent | Pub rebirth button and forge custom refine | Test save in a town | 1. Rebirth button shown exactly when the town/grade conditions allow it<br>2. Small town forge opens the custom refine item selector | `Town/TG35_RebirthRefine.cs` |
+| TG-36 | RealStorageEvent | Storage fee and debt | Save loaded | 1. Value and fee texts shown<br>2. Red debt warning<br>3. Debt and fee paid from the player money | `Town/TG36_RealStorageEvent.cs` |
+| TG-37 | RealMarketEvent | Sell window: rate, town budget and over-budget block | Save loaded | 1. Rate and budget texts<br>2. Sell button hidden and 'Over price' when the town cannot pay<br>3. Budget restored | `Town/TG37_RealMarketEvent.cs` |
+| TG-38 | MissionDeclareEvent | Commission delivered by the monthly handler | Save loaded | 1. Reward window<br>2. 3 items added to the bag<br>3. Commission removed | `Town/TG38_MissionDeclareEvent.cs` |
+| TG-39 | HirePeopleEvent | Team: NPC info, hire, monthly payment, dismiss | Save loaded, a free NPC | 1. Member in the team with the team luck<br>2. Monthly payment taken, member follows the master<br>3. Member and luck removed | `Town/TG39_HirePeopleEvent.cs` |
+| TG-40 | MapBuildPropertyEvent/RealMarketEvent2 | Become town master (trainer) and manage the town | Save loaded | 1. Player is master and guardian<br>2. Master shop discount<br>3. Town management window | `Town/TG40_TownMaster.cs` |
+| TG-41 | BuildingArrangeEvent | Town rebuilds a destroyed building with its budget | Save loaded | 1. Building destroyed<br>2. Building rebuilt, cost paid from the budget | `Town/TG41_BuildingArrangeEvent.cs` |
+| TG-42 | UseSpiritStoneCulEvent | Cultivate with spirit stones | Save loaded, exp not full | 1. 10000 x grade spirit stones paid<br>2. Exp increased | `UI/TG42_UseSpiritStoneCulEvent.cs` |
+| TG-43 | QiCulEvent | Qi in NPC info and Qi transfer | Save loaded, Qi cultivation enabled | 1. Qi and Atk/Hp/Mp bonus texts<br>2. Qi moved from the player to the NPC | `Unit/TG43_QiCulEvent.cs` |
+| TG-44 | NpcUpgradeSkillEvent/NpcAutoCraftArtifact/NpcAutoEvent | NPC growth over 24 months | Save loaded | 1. Martial exp increased<br>2. Cultivation exp or grade increased | `Unit/TG44_NpcGrowth.cs` |
+| TG-45 | RealMarketEvent2 | Buy from a shop: price rate, town budget, master discount | Save loaded (a town with a shop where the player is not guardian) | 1. Unit price = 1000 x buy rate, 'Price rate' text shown<br>2. Town budget + 2 x unit price<br>3. Buy rate lowered by TownMReduceBuyRate, unit price follows | `Town/TG45_ShopBuy.cs` |
+| TG-46 | RealMarketEvent3 | Player market: VIP, register, NPC offer, deal, buy | Save loaded, player market on (NoMarketItem off) | 1. VIP fee paid to the town budget, VIP listings open<br>2. Listing registered<br>3. First NPC offer keeps its price<br>4. Money and items transferred, listing removed<br>5. Player pays the seller price and gets the item | `Town/TG46_PlayerMarket.cs` |
+| TG-47 | ContributionExchangeEvent | Exchange items for sect contribution | Save loaded (sect joined temporarily when the player has none) | 1. Exchange button and ratio shown<br>2. Contribution + value/ratio, sect money + value<br>3. Items taken from the bag<br>4. Membership and config restored | `Town/TG47_SectExchange.cs` |
+| TG-48 | CustomRefineEvent | Custom refine at a small town forge | Save loaded (a ring/outfit is added to the bag) | 1. Refine exp increases<br>2. Stones paid to the town budget<br>3. Result message, refine adjustment on the item | `Town/TG48_CustomRefine.cs` |
+| TG-49 | RepairShinkiEvent | Repair a damaged god artifact | Save loaded (artifact state changed temporarily) | 1. Repair button and cost dialog<br>2. Artifact repaired, money paid, window closed<br>3. Artifact state restored | `UI/TG49_RepairShinki.cs` |
+| TG-50 | UpgradeNaturallyEvent | Break through without items | Save loaded (exp filled, grade restored after) | 1. Grade = next phase<br>2. Exp cleared<br>3. Grade restored | `UI/TG50_UpgradeNaturally.cs` |
+| TG-51 | TrainerEvent | Trainer hotkeys Ctrl+1/2/3 | Map screen (temporary trainer instance when the trainer is disabled) | 1. Page 2/3/1 active<br>2. Trainer opens again after it was closed | `UI/TG51_TrainerHotkeys.cs` |
+| TG-52 | ExpertEvent | Expertise level of an equipped skill | Save loaded, the player has an equipped skill | 1. Exp gain in range<br>2. Expertise level +1<br>3. Ability bonus grows with the level | `Unit/TG52_ExpertLevel.cs` |
+| TG-53 | ExpertEvent/WUnitHelper/InflationaryEvent | Int limits: growing values do not overflow | Save loaded | 1. No wrap, level kept<br>2. Attack stays at the max (not 0/negative)<br>3. Money stays positive<br>4. Positive, capped at int.MaxValue | `Unit/TG53_StatLimits.cs` |
+| TG-54 | MapBuildPropertyEvent | Monthly town tax: NPC pays the town, or leaves | Save loaded, taxes on | 1. Money - tax, budget + tax, HP full<br>2. NPC left the town | `Economy/TG54_TownTax.cs` |
+| TB-03 | MapBuildBattleEvent/ModBattleEvent/BattleManashieldEvent/BattleRewardEventV2 | Monster wave battle: join, kill, win, back to the map | Save loaded | 1. Battle is a monster wave, monsters valid<br>2. Kill list counts the kills<br>3. Back on the map, slice-life counter reset | `Battle/TB03_MonstWaveBattle.cs` |
+| TB-04 | BattleEvent/BattleManashieldEvent/BattleRewardEventV2 | NPC duel: start, defeat the NPC, back to the map | Save loaded | 1. Opponent in the battle<br>2. Opponent defeated<br>3. Back on the map | `Battle/TB04_NpcDuel.cs` |
+| TB-05 | SpiritlockEvent | Spiritlock circle: tortoises cannot move | Save loaded | 1. Their move speed is 0 | `Battle/TB05_SpiritlockBattle.cs` |
+| TB-06 | SpecialMonsterEvent/MonstStrongerEvent | Special monsters (shield, split) and monsters getting stronger | Save loaded (special monster rate raised during the battle) | 1. All common/elite monsters shielded<br>2. Spawned monster has more max HP<br>3. Kill counters +3, killed monsters split<br>4. Split list cleared after the battle | `Battle/TB06_SpecialMonsters.cs` |
+| TB-07 | BattleEvent/BattleAfterEvent/ChallengeQuestEvent | NPCs join battles, stalkers, challenge quest | Save loaded (join rates, relations and team changed for the test) | 1. Each NPC joins on the right side<br>2. Stalker removed from the list when it joins<br>3. Challenge quest progresses<br>4. Stalker moved next to the player | `Battle/TB07_NpcJoinBattle.cs` |
+| TB-08 | RealTrialEvent | Trial of lightning: damage scaled on the player, properties after surviving | Save loaded | 1. Unit attack = formula<br>2. Atk/Def/HpMax/MpMax increased | `Battle/TB08_TrialOfLightning.cs` |
+| TB-09 | BattleRewardEventV2 | Battle won: training growth and exp from damage | Save loaded | 1. Hit handled in &lt; 3 s, Attack grew<br>2. Exp increased | `Battle/TB09_BattleWinRewards.cs` |
+| TB-10 | BattleRewardEventV2 | Battle lost without body reconstruction item: exp lost | Save loaded | 1. Exp = phase minimum | `Battle/TB10_LoseNoBodyItem.cs` |
+| TB-11 | BattleRewardEventV2 | Battle lost with a body reconstruction item: item used, exp kept | Save loaded | 1. Item count -1<br>2. Exp kept | `Battle/TB11_LoseWithBodyItem.cs` |
+| TB-12 | BattleRewardEventV2 | Battle lost with lost items when die: items go to the killer | Save loaded | 1. Some herbs lost<br>2. The killer received them | `Battle/TB12_LoseItems.cs` |
+| TB-13 | BattleRewardEventV2 | Battle lost with lost money when die: spirit stones go to the killer | Save loaded | 1. Player money 0<br>2. Killer + the player money | `Battle/TB13_LoseMoney.cs` |
+| TB-14 | BattleRewardEventV2 | Battle lost with lost lifespan when die: life drained to the killer | Save loaded | 1. Lifespan - drain (&gt;= 6 x game level)<br>2. Killer + drain / 2 | `Battle/TB14_LoseLifespan.cs` |
+| TB-15 | BattleRewardEventV2 | Battle lost with auto save after lost: one month passes and the game saves | Save loaded | 1. Month + 1<br>2. Save finished | `Battle/TB15_LoseAutoSave.cs` |
+| TX-01 | TimeSkipEvent/InflationaryEvent | Skip 1 year with the map button | Save loaded (changes the save, restored after the run) | 1. Time +12 months<br>2. Age follows the time<br>3. Yearly price index saved | `Time/TX01_TimeSkipYear.cs` |
+| TX-02 | InflationaryEvent | Currency reform when the price index passes the limit | Save loaded (changes the save) | 1. Reform counted, index reset<br>2. Money / 10000<br>3. Town budgets -80 %<br>4. Market cleared | `Time/TX02_CurrencyReform.cs` |
+| TX-03 | RebirthEvent | Rebirth in the pub | Grade above the rebirth level, no sect (changes the save) | 1. Rebirth counted<br>2. Grade reset to 1<br>3. Rebirth luck added | `Time/TX03_Rebirth.cs` |
+| TX-04 | SliceLifeQuestEvent | Slice-of-life quest: monthly counter, reset by battle, completion luck | Game year &gt;= 2 (after TX-01; changes the save) | 1. Counter +1<br>2. Counter reset to 0<br>3. Level +1, luck added | `Time/TX04_SliceLifeQuest.cs` |
+| TX-05 | ModLib save/monthly tick | Month passes and the Taoist data is saved to disk | Save loaded (changes the save) | 1. Month +1, monthly handlers ran<br>2. Cache files written after the save with the same values (counters, expertise, price index, exchange ratio, market)<br>3. No FileNotFoundException, game not stuck in a save | `Time/TX05_MonthAndSave.cs` |
+| TX-06 | NpcAutoEvent/UnitTypeEvent/MapBuildPropertyEvent/InflationaryEvent | Yearly handlers: NPC born, speed units, town masters | Save loaded (changes the save) | 1. One more unit in the world<br>2. Speed unit +1 move speed<br>3. Every town with guardians has a master<br>4. Price index saved | `Time/TX06_Yearly.cs` |
+| TZ-01 | BattleRewardEventV2 | Battle lost with one-life: the character dies | Last scenario of the run (ends the character) | 1. Lifespan 0<br>2. Character dead | `Time/TZ01_OneLife.cs` |
+
+## Battle watch scenarios (2)
+
+| Id | Feature | Title | Preconditions | Expected | Code |
+|---|---|---|---|---|---|
+| TB-01 | ModBattleEvent/MonstStrongerEvent/BattleManashieldEvent | Battle start: statistics reset, monsters buffed, humans shielded | Run with -WatchBattles, then enter any battle | 1. Battle damage statistics reset<br>2. Monster stats valid<br>3. Screenshots at start and after 10 s (shield bar, damage multiplier) | `Battle/TB01_ModBattleEvent.cs` |
+| TB-02 | BattleRewardEventV2/SliceLifeQuestEvent/ChallengeQuestEvent | Battle end: rewards logged, slice-life counter reset | Run with -WatchBattles | 1. Damage dealt/received recorded<br>2. Slice-life counter = 0<br>3. Screenshot of the result | `Battle/TB02_BattleRewardEventV2.cs` |

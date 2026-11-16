@@ -9,6 +9,10 @@ using System.Collections.Generic;
 
 namespace MOD_nE7UL2.Mod
 {
+    /// <summary>
+    /// Gives every unit a role (UnitTypeEnum) and monthly growth: role luck, artisan/trainee/merchant ranks,
+    /// passive income, property growth (player from grade 3, NPCs scaled to catch up with the player).
+    /// </summary>
     [Cache(ModConst.UNIT_TYPE_EVENT)]
     public class UnitTypeEvent : ModEvent
     {
@@ -16,6 +20,9 @@ namespace MOD_nE7UL2.Mod
 
         public IDictionary<string, UnitTypeEnum> UnitTypeDic { get; set; } = new Dictionary<string, UnitTypeEnum>();
 
+        /// <summary>
+        /// Re-applies the role luck of every known unit.
+        /// </summary>
         public override void OnLoadGame()
         {
             base.OnLoadGame();
@@ -30,6 +37,9 @@ namespace MOD_nE7UL2.Mod
             }
         }
 
+        /// <summary>
+        /// Assigns a role on first sight (player role from S&amp;M configs), updates rank lucks, adds income and grows properties every GrowUpSpeed months.
+        /// </summary>
         public override void OnMonthlyForEachWUnit(WorldUnitBase wunit)
         {
             base.OnMonthlyForEachWUnit(wunit);
@@ -98,6 +108,9 @@ namespace MOD_nE7UL2.Mod
             }
         }
 
+        /// <summary>
+        /// SpeedUnit NPCs gain +1 move speed.
+        /// </summary>
         public override void OnYearly()
         {
             base.OnYearly();
@@ -110,6 +123,9 @@ namespace MOD_nE7UL2.Mod
             }
         }
 
+        /// <summary>
+        /// Removes all role lucks.
+        /// </summary>
         private void RemoveUnitTypeLuck(WorldUnitBase wunit)
         {
             foreach (var t in UnitTypeEnum.GetAllEnums<UnitTypeEnum>())
@@ -119,6 +135,9 @@ namespace MOD_nE7UL2.Mod
             }
         }
 
+        /// <summary>
+        /// Random role (+ its luck).
+        /// </summary>
         public static UnitTypeEnum AddRandomUnitType(WorldUnitBase wunit)
         {
             var t = ModMain.ModObj.ModSettings.UnitTypeConfigs.RandomUnitType(CommonTool.Random(0.00f, 100.00f));
@@ -127,6 +146,9 @@ namespace MOD_nE7UL2.Mod
             return t;
         }
 
+        /// <summary>
+        /// Updates the merchant rank luck.
+        /// </summary>
         public static void AddMerchantLuck(WorldUnitBase wunit)
         {
             foreach (var luck in MerchantLuckEnum.GetAllEnums<MerchantLuckEnum>())
@@ -145,6 +167,9 @@ namespace MOD_nE7UL2.Mod
             }
         }
 
+        /// <summary>
+        /// Updates the artisan rank lucks.
+        /// </summary>
         public static void AddApprenticeLuck(WorldUnitBase wunit)
         {
             foreach (var luck in ApprenticeLuckEnum.GetAllEnums<ApprenticeLuckEnum>())
@@ -163,6 +188,9 @@ namespace MOD_nE7UL2.Mod
             }
         }
 
+        /// <summary>
+        /// Updates the trainee rank lucks.
+        /// </summary>
         public static void AddTraineeLuck(WorldUnitBase wunit)
         {
             foreach (var luck in TraineeLuckEnum.GetAllEnums<TraineeLuckEnum>())
@@ -181,6 +209,9 @@ namespace MOD_nE7UL2.Mod
             }
         }
 
+        /// <summary>
+        /// Grows player properties by the Player role ratios.
+        /// </summary>
         public void AddPlayerProp(WorldUnitBase wunit, float ratio = 1.00f)
         {
             foreach (var p in UnitTypeEnum.Player.PropIncRatio)
@@ -190,6 +221,9 @@ namespace MOD_nE7UL2.Mod
             }
         }
 
+        /// <summary>
+        /// Grows NPC properties by their role, faster when far behind the player.
+        /// </summary>
         public void AddNpcProp(WorldUnitBase wunit, float ratio = 1.00f)
         {
             var utype = UnitTypeDic[wunit.GetUnitId()];
@@ -201,6 +235,9 @@ namespace MOD_nE7UL2.Mod
             }
         }
 
+        /// <summary>
+        /// Role of a unit (null when not assigned yet).
+        /// </summary>
         public static UnitTypeEnum GetUnitTypeEnum(WorldUnitBase wunit)
         {
             var unitId = wunit.GetUnitId();

@@ -2,6 +2,9 @@
 
 namespace ModLib.Object
 {
+    /// <summary>
+    /// Callbacks of an item: Formatter (text args), ChangeAct (value changed), UpdateAct, EnableAct, ActiveAct.
+    /// </summary>
     public class UIItemWork
     {
         public UIItemBase Item { get; set; }

@@ -11,6 +11,9 @@ using ModLib.Helper;
 
 namespace MOD_nE7UL2.Mod
 {
+    /// <summary>
+    /// UI tweaks: hides some map widgets, shows Taoist bonuses (artifact/expert/refine/Qi...) in item, martial and player UIs, hides save/reload buttons.
+    /// </summary>
     [Cache(ModConst.UI_EVENT)]
     public class UIEvent : ModEvent
     {
@@ -42,6 +45,9 @@ namespace MOD_nE7UL2.Mod
         private Text uiPropInfo_textRefineAdj3;
         private Text uiPropInfo_textRefineAdj4;
 
+        /// <summary>
+        /// Adds Taoist info texts to the opened UI.
+        /// </summary>
         public void OnUIOpen(OpenUIEnd e)
         {
             /*
@@ -423,6 +429,9 @@ namespace MOD_nE7UL2.Mod
             }
         }
 
+        /// <summary>
+        /// Opens the expertise preview next to MartialInfo.
+        /// </summary>
         public void OnUIMartialInfoAsync(OpenUIEnd e)
         {
             if (g.ui.HasUI(UIType.MartialInfo))
@@ -431,6 +440,9 @@ namespace MOD_nE7UL2.Mod
             }
         }
 
+        /// <summary>
+        /// Keeps info texts positioned on PropInfo/ArtifactInfo.
+        /// </summary>
         public void OnUIUpdate()
         {
             var uiArtifactInfo = g.ui.GetUI<UIArtifactInfo>(UIType.ArtifactInfo);
@@ -482,6 +494,9 @@ namespace MOD_nE7UL2.Mod
             }
         }
 
+        /// <summary>
+        /// Closes the expertise preview with MartialInfo.
+        /// </summary>
         public void OnUIClose(CloseUIEnd e)
         {
             if (e.uiType.uiName == UIType.MartialInfo.uiName && g.ui.HasUI(UIType.NPCInfoPreview))
@@ -490,6 +505,9 @@ namespace MOD_nE7UL2.Mod
             }
         }
 
+        /// <summary>
+        /// Calls OnUIOpen.
+        /// </summary>
         [EventCondition(IsInGame = HandleEnum.True, IsInBattle = HandleEnum.False)]
         public override void OnOpenUIEnd(OpenUIEnd e)
         {
@@ -497,6 +515,9 @@ namespace MOD_nE7UL2.Mod
             OnUIOpen(e);
         }
 
+        /// <summary>
+        /// Calls OnUIUpdate.
+        /// </summary>
         [ErrorIgnore]
         [EventCondition(IsInGame = HandleEnum.True, IsInBattle = HandleEnum.False)]
         public override void OnTimeUpdate100ms()
@@ -505,6 +526,9 @@ namespace MOD_nE7UL2.Mod
             OnUIUpdate();
         }
 
+        /// <summary>
+        /// Calls OnUIClose.
+        /// </summary>
         public override void OnCloseUIEnd(CloseUIEnd e)
         {
             base.OnCloseUIEnd(e);

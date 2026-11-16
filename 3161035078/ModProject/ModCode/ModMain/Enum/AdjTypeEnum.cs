@@ -6,6 +6,9 @@ using ModLib.Helper;
 
 namespace MOD_nE7UL2.Enum
 {
+    /// <summary>
+    /// Custom refine adjustment types (Atk, Def, MHp, Nullify, Evade, StealHp, InstantKill...), with minimum grade and base value function.
+    /// </summary>
     public class AdjTypeEnum : EnumObject
     {
         //Formula: GetRefineCustommAdjValue
@@ -56,6 +59,9 @@ namespace MOD_nE7UL2.Enum
         public int MinGradeLvl { get; private set; }
         public string ValueFormat { get; private set; }
         public Func<WorldUnitBase, double> BaseValueFunc { get; private set; }
+        /// <summary>
+        /// Creates a type.
+        /// </summary>
         private AdjTypeEnum(string label, int minGradeLvl, string format, Func<WorldUnitBase, double> baseValueFunc) : base(label)
         {
             Label = label;
@@ -64,6 +70,9 @@ namespace MOD_nE7UL2.Enum
             BaseValueFunc = baseValueFunc;
         }
 
+        /// <summary>
+        /// Base value of the adjustment for a unit (scaled by the refine level later).
+        /// </summary>
         public double GetBaseValue(WorldUnitBase wunit)
         {
             if (BaseValueFunc == null)
