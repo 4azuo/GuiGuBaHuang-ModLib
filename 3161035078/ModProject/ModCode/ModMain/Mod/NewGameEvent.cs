@@ -133,21 +133,50 @@ namespace MOD_nE7UL2.Mod
         {
             var cover = new UICover<UICreatePlayer>(ui);
             {
-                // bottom left of the scroll, right of its pillar; labels after the checkboxes (left aligned: long texts are not cut)
-                var col = cover.FirstCol + 6;
-                var row = cover.LastRow - 7;
-                cover.AddText(col + 2, row++, GameTool.LS("newgame000")).Format(Color.black, 16).Align(TextAnchor.MiddleLeft);
-                AddToggle(cover, col, row++, "newgame001", PiscesPendant, v => PiscesPendant = v);
-                AddToggle(cover, col, row++, "newgame002", GodEye, v => GodEye = v);
-                AddToggle(cover, col, row++, "newgame003", DevilDemon, v => DevilDemon = v);
-                AddToggle(cover, col, row++, "newgame004", SkipIntro, v => SkipIntro = v);
-                cover.AddText(col + 2, row, GameTool.LS("newgame005")).Format(Color.black, 12).Align(TextAnchor.MiddleLeft);
+                // one line level with the START GAME button (bottom right), from the right of the left pillar;
+                // the hint just below. Items are laid out from their measured widths: same gap between a checkbox and
+                // its label, and the same gap between two items
+                var dy = UIHelper.GetUIDeltaY();
+                var y = StartButtonY(cover) ?? cover.Rows[cover.LastRow - 5] + dy * 0.5f;
+                var x = cover.Columns[cover.FirstCol + 6];
+                var header = cover.AddText(x, y, GameTool.LS("newgame000")).Format(Color.black, 15).Align(TextAnchor.MiddleLeft);
+                x = PlaceLeft(header, x, y) + ITEM_GAP;
+                x = AddToggle(cover, x, y, "newgame001", PiscesPendant, v => PiscesPendant = v) + ITEM_GAP;
+                x = AddToggle(cover, x, y, "newgame002", GodEye, v => GodEye = v) + ITEM_GAP;
+                x = AddToggle(cover, x, y, "newgame003", DevilDemon, v => DevilDemon = v) + ITEM_GAP * 1.5f;
+                AddToggle(cover, x, y, "newgame004", SkipIntro, v => SkipIntro = v);
+                var hint = cover.AddText(0f, 0f, GameTool.LS("newgame005")).Format(Color.black, 12).Align(TextAnchor.MiddleLeft);
+                PlaceLeft(hint, cover.Columns[cover.FirstCol + 6], y - dy * 0.9f);
             }
         }
 
-        private void AddToggle(UICover<UICreatePlayer> cover, int col, int row, string labelKey, bool value, System.Action<bool> set)
+        // gaps between a checkbox and its label, and between two items (canvas units)
+        private const float LABEL_GAP = 8f;
+        private const float ITEM_GAP = 36f;
+
+        /// <summary>Height of the START GAME button in the cover coordinates (null when not found).</summary>
+        private static float? StartButtonY(UICover<UICreatePlayer> cover)
         {
-            cover.AddCompositeToggle(col, row, string.Empty, value, GameTool.LS(labelKey)).SetWork(new UIItemWork
+            var btn = cover.UI.btnOK_En != null && cover.UI.btnOK_En.gameObject.activeInHierarchy ? cover.UI.btnOK_En : cover.UI.btnOK;
+            var canvas = g.ui.canvas?.GetComponent<RectTransform>();
+            if (btn == null || canvas == null)
+                return null;
+            return canvas.InverseTransformPoint(btn.transform.position).y;
+        }
+
+        /// <summary>Puts a left aligned text with its left edge at x; returns the x of its right end.</summary>
+        private static float PlaceLeft(UIItemText text, float x, float y)
+        {
+            var rect = text.Item.rectTransform.rect.width;
+            text.Pos(x + rect / 2f, y);
+            return x + text.Item.preferredWidth;
+        }
+
+        /// <summary>Checkbox with its box left edge at x, then its label; returns the x of the label end.</summary>
+        private float AddToggle(UICover<UICreatePlayer> cover, float x, float y, string labelKey, bool value, System.Action<bool> set)
+        {
+            var comp = cover.AddCompositeToggle(x, y, string.Empty, value, GameTool.LS(labelKey));
+            comp.SetWork(new UIItemWork
             {
                 ChangeAct = ActionHelper.WTracedAction<UIItemBase, object>((s, v) =>
                 {
@@ -155,6 +184,13 @@ namespace MOD_nE7UL2.Mod
                     CacheHelper.SaveGlobalCache(this); // remembered for the next new game
                 })
             });
+            // the visible box is the toggle's target graphic (not always centered on the toggle)
+            var toggle = (comp.MainComponent as UIItemToggle).Item;
+            var box = toggle.targetGraphic != null ? toggle.targetGraphic.rectTransform : toggle.GetComponent<RectTransform>();
+            var boxWidth = box.rect.width * box.localScale.x;
+            var boxOffset = box == toggle.transform ? 0f : box.localPosition.x;
+            comp.MainComponent.Pos(x + boxWidth / 2f - boxOffset, y);
+            return PlaceLeft(comp.Postfix, x + boxWidth + LABEL_GAP, y);
         }
     }
 }

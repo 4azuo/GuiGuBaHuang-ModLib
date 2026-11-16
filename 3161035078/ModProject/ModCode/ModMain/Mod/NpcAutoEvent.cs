@@ -40,7 +40,7 @@ namespace MOD_nE7UL2.Mod
                     var supportRate = 0.001f;
                     foreach (var oldPhaseInfo in wunit.data.unitData.npcUpGrade)
                         supportRate += (0.001f * Math.Pow(2, oldPhaseInfo.value.quality)).Parse<float>();
-                    NpcUpGradeRate[unitId] += supportRate;
+                    NpcUpGradeRate[unitId] += supportRate * ModLib.Mod.ModMaster.MonthsPassed;
 
                     var r = CommonTool.Random(0.0000000f, 100.0000000f).Parse<double>();
                     if (r.IsBetween(0.0000000d, NpcUpGradeRate[unitId] / Math.Pow(2, nPhase.grade)))
@@ -54,7 +54,7 @@ namespace MOD_nE7UL2.Mod
                     var exp = SMLocalConfigsEvent.Instance.Calculate(CommonTool.Random(10.00f, 200.00f) * wunit.GetGradeLvl() * wunit.GetDynProperty(UnitDynPropertyEnum.Talent).value / 100f, SMLocalConfigsEvent.Instance.Configs.AddNpcGrowRate);
                     if (wunit.IsHero())
                         exp *= CommonTool.Random(0.50f, 2.00f);
-                    wunit.AddExp(exp.Parse<int>());
+                    wunit.AddExp((exp * ModLib.Mod.ModMaster.MonthsPassed).Parse<int>());
                 }
             }
         }
@@ -65,7 +65,8 @@ namespace MOD_nE7UL2.Mod
         public override void OnYearly()
         {
             base.OnYearly();
-            g.world.run.npc.AddUnit(CommonTool.Random(1, g.world.playerUnit.GetGradeLvl()), 1);
+            for (var y = 0; y < Math.Max(1, ModLib.Mod.ModMaster.YearsPassed); y++)
+                g.world.run.npc.AddUnit(CommonTool.Random(1, g.world.playerUnit.GetGradeLvl()), 1);
         }
     }
 }

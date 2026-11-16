@@ -6,6 +6,20 @@ using ModLib.Helper;
 /// </summary>
 public static class ItemHelper
 {
+    private static readonly System.Collections.Generic.Dictionary<int, int> gradeCache = new System.Collections.Generic.Dictionary<int, int>();
+
+    /// <summary>Grade (realm) of an item config (from its props info, cached).</summary>
+    public static int Grade(this ConfItemPropsItem conf)
+    {
+        int grade;
+        if (gradeCache.TryGetValue(conf.id, out grade))
+            return grade;
+        try { grade = DataProps.PropsData.NewPropsNotData(conf.id)?.propsInfoBase?.grade ?? 1; }
+        catch { grade = 1; }
+        gradeCache[conf.id] = grade;
+        return grade;
+    }
+
     /// <summary>
     /// Worth of an item stack.
     /// </summary>

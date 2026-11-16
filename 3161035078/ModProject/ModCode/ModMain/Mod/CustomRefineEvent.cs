@@ -13,6 +13,7 @@ using System.Linq;
 using UnityEngine;
 using UnityEngine.Events;
 using ModLib.Helper;
+using ModLib.Object;
 
 namespace MOD_nE7UL2.Mod
 {
@@ -47,7 +48,8 @@ namespace MOD_nE7UL2.Mod
         public override void OnMonthlyForEachWUnit(WorldUnitBase wunit)
         {
             base.OnMonthlyForEachWUnit(wunit);
-            if (GameHelper.GetGameTotalMonth() % SMLocalConfigsEvent.Instance.Configs.GrowUpSpeed == 0)
+            var ticks = ModLib.Mod.ModMaster.Ticks(SMLocalConfigsEvent.Instance.Configs.GrowUpSpeed);
+            for (var t = 0; t < ticks; t++)
             {
                 var location = wunit.GetUnitPos();
                 var town = g.world.build.GetBuild<MapBuildTown>(location);
@@ -137,7 +139,92 @@ namespace MOD_nE7UL2.Mod
                     return;
                 OpenMaterialSelector(selectedItem);
             }));
+            // progress of the selected item, and its slot rerolls
+            var cover = new UICover<UIPropSelect>(ui);
+            cover.AddText(0, 0, "{0}").Format(null, 14).SetWork(new UIItemWork
+            {
+                Formatter = ActionHelper.WTracedFunc<UIItemBase, object[]>(x => new object[] { selectedItem == null ? GameTool.LS("refine_pick") : ProgressText(selectedItem) })
+            }).Pos(ui.btnOK.transform, 0, 60);
+            cover.AddButton(0, 0, () =>
+            {
+                if (selectedItem != null)
+                    OpenReroll(selectedItem);
+            }, GameTool.LS("refine_reroll")).Size(160, 36).Pos(ui.btnOK.transform, 200, 0);
+            cover.IsAutoUpdate = true;
             ui.UpdateUI();
+        }
+
+        /// <summary>Exp needed for a refine level (GetRefineLvl = round(sqrt(exp / level-1 exp))).</summary>
+        public static long ExpForLevel(DataProps.PropsData props, int level)
+        {
+            var lvl1 = SMLocalConfigsEvent.Instance.Calculate(props.propsInfoBase.grade * 100 + props.propsInfoBase.level * 20, SMLocalConfigsEvent.Instance.Configs.AddRefineCost);
+            var root = Math.Max(0d, level - 0.5d);
+            return (long)Math.Ceiling(lvl1 * root * root);
+        }
+
+        /// <summary>"Refine level L (exp / next) - next slot at N".</summary>
+        public static string ProgressText(DataProps.PropsData props)
+        {
+            var lvl = GetRefineLvl(props);
+            var nextSlot = Enumerable.Range(1, MAX_ADJ_PER_PROP).Select(i => i * 100).FirstOrDefault(x => x > lvl);
+            var slotText = nextSlot > 0 ? string.Format(GameTool.LS("refine_nextslot"), nextSlot) : GameTool.LS("refine_allslots");
+            return string.Format(GameTool.LS("refine_progress"), lvl, GetRefineExp(props), ExpForLevel(props, lvl + 1), slotText);
+        }
+
+        /// <summary>Spirit stones to reroll a slot: 1,000 x grade² x slot index (inflation).</summary>
+        public static int RerollCost(DataProps.PropsData props, int index)
+        {
+            var grade = Math.Max(1, props.propsInfoBase.grade);
+            return InflationaryEvent.CalculateInflationary(1000 * grade * grade * index);
+        }
+
+        /// <summary>Rerolls an unlocked slot (new type, quality and multiplier), paid to the town budget. False when locked/unpaid.</summary>
+        public static bool Reroll(DataProps.PropsData props, int index)
+        {
+            var player = g.world.playerUnit;
+            var slot = GetCustomAdjType(props, index);
+            var cost = RerollCost(props, index);
+            if (slot == null || !slot.IsEnable(GetRefineLvl(props)) || player.GetUnitMoney() < cost)
+                return false;
+            player.AddUnitMoney(-cost);
+            MapBuildPropertyEvent.AddBuildProperty(player.GetMapBuild<MapBuildBase>(), cost);
+            var old = slot.GetText(player, props, GetRefineLvl(props));
+            Instance.CustomRefine[$"{props.soleID}_{index}"] = new CustomRefine(props, index);
+            Instance.CachedValues.RemoveKeysStartWith(props.soleID);
+            var now = GetCustomAdjType(props, index).GetText(player, props, GetRefineLvl(props));
+            TaoistLogEvent.Log("log_refine_reroll", props.propsInfoBase.name, index, old, now, cost);
+            DebugHelper.WriteLine($"CustomRefineEvent: reroll {props.propsInfoBase.name} #{index}: {old} -> {now}");
+            return true;
+        }
+
+        /// <summary>Reroll window: every slot with its value, a reroll button on the unlocked ones.</summary>
+        public void OpenReroll(DataProps.PropsData props)
+        {
+            g.ui.CloseUI(UIType.TextInfoLong);
+            var player = g.world.playerUnit;
+            var lvl = GetRefineLvl(props);
+            var ui = new UICustom1(GameTool.LS("refine_reroll"));
+            var row = ui.FirstRow + 1;
+            ui.AddText(ui.MidCol, row++, props.propsInfoBase.name).Format(null, 18);
+            ui.AddText(ui.MidCol, row++, ProgressText(props)).Format(null, 14);
+            row++;
+            for (var i = 1; i <= MAX_ADJ_PER_PROP; i++)
+            {
+                var index = i;
+                var slot = GetCustomAdjType(props, index);
+                ui.AddText(ui.MidCol - 3, row, $"#{index}  {slot.GetText(player, props, lvl)}").Format(slot.GetColor(lvl), 15);
+                if (slot.IsEnable(lvl))
+                {
+                    ui.AddButton(ui.MidCol + 8, row, () =>
+                    {
+                        if (!Reroll(props, index))
+                            g.ui.MsgBox(GameTool.LS("refine_reroll"), GameTool.LS("other500020087"));
+                        OpenReroll(props);
+                    }, string.Format(GameTool.LS("refine_reroll_btn"), RerollCost(props, index))).Size(200, 32);
+                }
+                row++;
+            }
+            ui.AddText(ui.MidCol, ui.LastRow - 1, GameTool.LS("refine_reroll_desc")).Format(null, 13);
         }
 
         /// <summary>
@@ -170,7 +257,8 @@ namespace MOD_nE7UL2.Mod
                 var oldLvl = GetRefineLvl(refineItem);
 
                 var value = UIPropSelect.allSlectDataProps.allProps.ToArray().Sum(x => x.propsInfoBase.worth * x.propsCount);
-                var exp = value * g.world.playerUnit.GetDynProperty(UnitDynPropertyEnum.RefineWeapon).value / REFINE_EXP_RATE;
+                // long: many stones x a high refine skill overflow an int
+                var exp = (long)value * g.world.playerUnit.GetDynProperty(UnitDynPropertyEnum.RefineWeapon).value / REFINE_EXP_RATE;
 
                 AddRefineExp(refineItem, exp);
 

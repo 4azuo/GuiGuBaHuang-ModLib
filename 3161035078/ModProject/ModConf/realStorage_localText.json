@@ -2,9 +2,17 @@
 	{
 		"id": "480020100",
 		"key": "realStorage480020100",
-		"en": "Bannkrupt...",
-		"ch": "破产...",
-		"tc": "破產...",
-		"kr": "파산..."
+		"en": "A letter from the storage keeper: \"Your fees remain unpaid. Until the debt is settled, your goods stay locked in our vault.\"",
+		"ch": "仓库管事来信：“阁下的保管费尚未结清。欠款还清之前，您的货物将一直封存在库中。”",
+		"tc": "倉庫管事來信：「閣下的保管費尚未結清。欠款還清之前，您的貨物將一直封存在庫中。」",
+		"kr": "창고 관리인의 편지: \"보관료가 아직 정산되지 않았습니다. 빚을 갚기 전까지 귀하의 물품은 금고에 봉인됩니다.\""
+	},
+	{
+		"id": "480020101",
+		"key": "realStorage480020101",
+		"en": "I'll find the spirit stones… somehow",
+		"ch": "灵石……总会想办法凑齐的",
+		"tc": "靈石……總會想辦法湊齊的",
+		"kr": "영석은… 어떻게든 마련하겠지"
 	}
 ]

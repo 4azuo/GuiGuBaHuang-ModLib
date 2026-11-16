@@ -87,6 +87,14 @@ namespace MOD_nE7UL2.Mod
             var player = g.world.playerUnit;
             var playerId = g.world.playerUnit.GetUnitId();
             var teamInfo = HirePeopleEvent.GetTeamDetailData(player);
+            //fought side by side: the members who joined and survived grow closer (friends serve for free)
+            foreach (var cmember in JointTeamMembers)
+            {
+                var wmember = cmember == null || cmember.isDie ? null : g.world.unit.GetUnit(cmember);
+                if (wmember == null || wmember.isDie)
+                    continue;
+                TeamBond(player, wmember, e.isWin);
+            }
             foreach (var wunit in teamInfo.Item2)
             {
                 if (HirePeopleEvent.IsFriend(player, wunit, 0.2f) && CommonTool.Random(0.00f, 100.00f).IsBetween(0.00f, ARGUE_RATE))
@@ -124,18 +132,18 @@ namespace MOD_nE7UL2.Mod
                                 var units = HirePeopleEvent.GetTeamDetailData(stalker).Item2;
                                 AroundUnits.RemoveAll(x => units.Any(y => y.GetUnitId() == x.GetUnitId()));
                                 foreach (var unit in units) { BattleAfterEvent.Instance.Stalkers.Remove(unit.GetUnitId()); }
-                                NPCJoin(UnitType.Monst, units);
+                                var joined = NPCJoin(UnitType.Monst, units);
 
                                 switch (stalkReason)
                                 {
                                     case Enum.StalkReasonEnum.KillBoss:
-                                        DramaHelper.OpenDrama1(GameTool.LS("battleevent480110600"), new List<string> { GameTool.LS("other500020045") }, null, stalker, g.world.playerUnit);
+                                        StalkerDrama("battleevent480110600", stalker, joined);
                                         break;
                                     case Enum.StalkReasonEnum.MarketBuyerShowUp_SpiritStones:
-                                        DramaHelper.OpenDrama1(GameTool.LS("battleevent480110601"), new List<string> { GameTool.LS("other500020045") }, null, stalker, g.world.playerUnit);
+                                        StalkerDrama("battleevent480110601", stalker, joined);
                                         break;
                                     case Enum.StalkReasonEnum.MarketBuyerShowUp_Items:
-                                        DramaHelper.OpenDrama1(GameTool.LS("battleevent480110602"), new List<string> { GameTool.LS("other500020045") }, null, stalker, g.world.playerUnit);
+                                        StalkerDrama("battleevent480110602", stalker, joined);
                                         break;
                                     default:
                                         break;
@@ -158,10 +166,10 @@ namespace MOD_nE7UL2.Mod
                                 switch (t)
                                 {
                                     case 2:
-                                        DramaTool.OpenDrama(enemyUnit.IsRighteous() ? RIGHTEOUS_DRAMA : EVIL_DRAMA, new DramaData() { unitLeft = enemyUnit, unitRight = g.world.playerUnit });
+                                        ModTextHelper.OpenDrama(enemyUnit.IsRighteous() ? RIGHTEOUS_DRAMA : EVIL_DRAMA, "battleevent" + (enemyUnit.IsRighteous() ? RIGHTEOUS_DRAMA : EVIL_DRAMA), enemyUnit, g.world.playerUnit);
                                         break;
                                     default:
-                                        DramaTool.OpenDrama(ENEMY_JOIN_DRAMA, new DramaData() { unitLeft = enemyUnit, unitRight = g.world.playerUnit });
+                                        ModTextHelper.OpenDrama(ENEMY_JOIN_DRAMA, "battleevent" + ENEMY_JOIN_DRAMA, enemyUnit, g.world.playerUnit);
                                         break;
                                 }
                             }
@@ -178,7 +186,7 @@ namespace MOD_nE7UL2.Mod
                                 AroundUnits.RemoveAll(x => units.Any(y => y.GetUnitId() == x.GetUnitId()));
                                 NPCJoin(UnitType.PlayerNPC, units);
 
-                                DramaTool.OpenDrama(FRIENDLY_JOIN_DRAMA, new DramaData() { unitLeft = friendlyUnit, unitRight = g.world.playerUnit });
+                                ModTextHelper.OpenDrama(FRIENDLY_JOIN_DRAMA, "battleevent" + FRIENDLY_JOIN_DRAMA, friendlyUnit, g.world.playerUnit);
                             }
                         }
 
@@ -194,7 +202,7 @@ namespace MOD_nE7UL2.Mod
                                 var ut = IsFriendlyUnit(g.world.playerUnit, sectMember) >= 0 || g.world.playerUnit.IsSameSect(sectMember) ? UnitType.PlayerNPC : UnitType.Monst;
                                 NPCJoin(ut, units);
 
-                                DramaTool.OpenDrama(SECT_MEMBER_JOIN_DRAMA, new DramaData() { unitLeft = sectMember, unitRight = null });
+                                ModTextHelper.OpenDrama(SECT_MEMBER_JOIN_DRAMA, "battleevent" + SECT_MEMBER_JOIN_DRAMA, sectMember, null);
                             }
                         }
 
@@ -210,7 +218,7 @@ namespace MOD_nE7UL2.Mod
                                 var ut = IsFriendlyUnit(g.world.playerUnit, townguard) >= 0 || g.world.playerUnit.IsSameSect(townguard) ? UnitType.PlayerNPC : UnitType.Monst;
                                 NPCJoin(ut, units);
 
-                                DramaTool.OpenDrama(TOWN_GUARD_JOIN_DRAMA, new DramaData() { unitLeft = townguard, unitRight = null });
+                                ModTextHelper.OpenDrama(TOWN_GUARD_JOIN_DRAMA, "battleevent" + TOWN_GUARD_JOIN_DRAMA, townguard, null);
                             }
                         }
                     }
@@ -245,10 +253,10 @@ namespace MOD_nE7UL2.Mod
                                     switch (t)
                                     {
                                         case 2:
-                                            DramaTool.OpenDrama(wmember.IsRighteous() ? RIGHTEOUS_DRAMA : EVIL_DRAMA, new DramaData() { unitLeft = wmember, unitRight = g.world.playerUnit });
+                                            ModTextHelper.OpenDrama(wmember.IsRighteous() ? RIGHTEOUS_DRAMA : EVIL_DRAMA, "battleevent" + (wmember.IsRighteous() ? RIGHTEOUS_DRAMA : EVIL_DRAMA), wmember, g.world.playerUnit);
                                             break;
                                         default:
-                                            DramaTool.OpenDrama(TEAM_MEMBER_BETRAY_DRAMA, new DramaData() { unitLeft = wmember, unitRight = g.world.playerUnit });
+                                            ModTextHelper.OpenDrama(TEAM_MEMBER_BETRAY_DRAMA, "battleevent" + TEAM_MEMBER_BETRAY_DRAMA, wmember, g.world.playerUnit);
                                             break;
                                     }
                                 }
@@ -257,6 +265,66 @@ namespace MOD_nE7UL2.Mod
                     }
                 }
             }
+        }
+
+        public const int TEAM_BOND_WIN = 20;
+        public const int TEAM_BOND_LOSE = 10;
+
+        /// <summary>A team member fought beside the player: intimacy both ways; logged when it becomes a friend.</summary>
+        public static void TeamBond(WorldUnitBase player, WorldUnitBase member, bool win)
+        {
+            var wasFriend = HirePeopleEvent.IsFriend(player, member);
+            var add = win ? TEAM_BOND_WIN : TEAM_BOND_LOSE;
+            member.data.unitData.relationData.AddIntim(player.GetUnitId(), add);
+            player.data.unitData.relationData.AddIntim(member.GetUnitId(), add);
+            if (!wasFriend && HirePeopleEvent.IsFriend(player, member))
+                TaoistLogEvent.Log("log_team_friend", member.GetName());
+        }
+
+        /// <summary>Spirit stones a stalker asks to leave: 500 x its grade (inflation), at least 10 % of the player's money.</summary>
+        public static int StalkerFee(WorldUnitBase stalker)
+        {
+            var byGrade = InflationaryEvent.CalculateInflationary(500 * Math.Max(1, stalker.GetGradeLvl()));
+            return Math.Max(byGrade, g.world.playerUnit.GetUnitMoney() / 10);
+        }
+
+        /// <summary>
+        /// A stalker joins the battle: fight it, or pay it off (the money goes to the stalker, its team leaves the battle).
+        /// </summary>
+        public static void StalkerDrama(string textKey, WorldUnitBase stalker, List<UnitCtrlBase> joined)
+        {
+            var fee = StalkerFee(stalker);
+            DramaHelper.OpenDrama1(ModTextHelper.RandomLS(textKey),
+                new List<string> { GameTool.LS("battleevent480110610"), string.Format(GameTool.LS("battleevent480110611"), fee) },
+                x =>
+                {
+                    if (x.id % 10 != 1) // option 2: pay
+                        return;
+                    var player = g.world.playerUnit;
+                    if (player.GetUnitMoney() < fee)
+                    {
+                        ModDelayEvent.Instance.DelayEvent(Instance, () => DramaHelper.OpenDrama1(GameTool.LS("battleevent480110613"), new List<string> { GameTool.LS("battleevent480110610") }, null, stalker, player), 300);
+                        return;
+                    }
+                    PayOffStalker(stalker, joined, fee);
+                    ModDelayEvent.Instance.DelayEvent(Instance, () => DramaHelper.OpenDrama1(GameTool.LS("battleevent480110612"), new List<string> { GameTool.LS("other500020045") }, null, stalker, player), 300);
+                }, stalker, g.world.playerUnit);
+        }
+
+        /// <summary>The player pays the stalker; the stalker team leaves the battle (removed, no kill rewards).</summary>
+        public static void PayOffStalker(WorldUnitBase stalker, List<UnitCtrlBase> joined, int fee)
+        {
+            g.world.playerUnit.AddUnitMoney(-fee);
+            stalker.AddUnitMoney(fee);
+            foreach (var cunit in joined ?? new List<UnitCtrlBase>())
+            {
+                if (cunit == null || cunit.isDie)
+                    continue;
+                try { ModBattleEvent.SceneBattle.unit.RemoveUnit(cunit); } catch { }
+                cunit.Destroy(false);
+            }
+            DebugHelper.WriteLine($"Stalker paid off: {stalker.GetName()} ({fee})");
+            TaoistLogEvent.Log("log_stalker_paid", stalker.GetName(), fee);
         }
 
         /// <summary>

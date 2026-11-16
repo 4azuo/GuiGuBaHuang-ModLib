@@ -240,7 +240,7 @@ namespace MOD_nE7UL2.Mod
             {
                 foreach (var relationWUnitIntim in wunit.data.unitData.relationData.intimToUnit)
                 {
-                    if (relationWUnitIntim.Value >= FRIEND_INTIM && CommonTool.Random(0.00f, 100.00f).IsBetween(0.00f, FRIEND_JOIN_RATE))
+                    if (relationWUnitIntim.Value >= FRIEND_INTIM && CommonTool.Random(0.00f, 100.00f).IsBetween(0.00f, ModLib.Mod.ModMaster.ChanceOver(FRIEND_JOIN_RATE, ModLib.Mod.ModMaster.MonthsPassed)))
                     {
                         var relationWUnit = g.world.unit.GetUnit(relationWUnitIntim.Key);
                         if (relationWUnit == null || relationWUnit.isDie)
@@ -312,7 +312,7 @@ namespace MOD_nE7UL2.Mod
                         //free if friend
                         else if (!IsFriend(wunit, member))
                         {
-                            var requiredSpiritStones = GetRequiredSpiritStones(wunit, member) / MONTHLY_PAYMENT_RATIO;
+                            var requiredSpiritStones = GetRequiredSpiritStones(wunit, member) / MONTHLY_PAYMENT_RATIO * ModLib.Mod.ModMaster.MonthsPassed;
                             if (wunit.GetUnitMoney() < requiredSpiritStones)
                             {
                                 Dismiss(wunit, member);

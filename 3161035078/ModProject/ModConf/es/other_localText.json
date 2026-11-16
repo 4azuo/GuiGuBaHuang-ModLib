@@ -135,11 +135,6 @@
 		"en|ch|tc|kr": "¿Recibiste una invitación del maestro de la ciudad de {0}' para el puesto de guardián?\n¿Quieres convertirte en guardián de la ciudad?"
 	},
 	{
-		"id": 500020027,
-		"key": "other500020027",
-		"en|ch|tc|kr": "¡No tienes suficientes {0:#,##0} piedras espirituales para pagar!"
-	},
-	{
 		"id": 500020028,
 		"key": "other500020028",
 		"en|ch|tc|kr": "Cada vez que mueras en batalla, perderás la vida. Y cuando llegue tu edad, tu guardado será eliminado. Por favor tenga cuidado."
@@ -218,11 +213,6 @@
 		"id": 500020043,
 		"key": "other500020043",
 		"en|ch|tc|kr": "{0:#,##0} Piedras espirituales/mes"
-	},
-	{
-		"id": 500020044,
-		"key": "other500020044",
-		"en|ch|tc|kr": "Furtivamente a través"
 	},
 	{
 		"id": 500020045,
@@ -390,31 +380,6 @@
 		"en|ch|tc|kr": "rendirse"
 	},
 	{
-		"id": 500020078,
-		"key": "other500020078",
-		"en|ch|tc|kr": "¿Te echaste atrás? ¿Después de todo lo que acordamos? No me gustan los acuerdos incumplidos; simplemente me hicieron perder el tiempo."
-	},
-	{
-		"id": 500020079,
-		"key": "other500020079",
-		"en|ch|tc|kr": "¡Eso salió bien! Siempre es genial trabajar con alguien que sabe lo que está haciendo."
-	},
-	{
-		"id": 500020080,
-		"key": "other500020080",
-		"en|ch|tc|kr": "No puedes hablar en serio. ¡Me debes más que un 'no'!"
-	},
-	{
-		"id": 500020081,
-		"key": "other500020081",
-		"en|ch|tc|kr": "¿Qué? ¡Sabías que vendría! ¿Lo vendiste de todos modos?"
-	},
-	{
-		"id": 500020082,
-		"key": "other500020082",
-		"en|ch|tc|kr": "El [{0}] se ha vendido."
-	},
-	{
 		"id": 500020083,
 		"key": "other500020083",
 		"en|ch|tc|kr": "Desconocido"
@@ -440,11 +405,6 @@
 		"en|ch|tc|kr": "¡No tienes suficientes piedras espirituales!"
 	},
 	{
-		"id": 500020088,
-		"key": "other500020088",
-		"en|ch|tc|kr": "¿Estás intentando dejarme?"
-	},
-	{
 		"id": 500020089,
 		"key": "other500020089",
 		"en|ch|tc|kr": "Daño x{0}"
@@ -463,11 +423,6 @@
 		"id": 500020092,
 		"key": "other500020092",
 		"en|ch|tc|kr": "Ofertas"
-	},
-	{
-		"id": 500020093,
-		"key": "other500020093",
-		"en|ch|tc|kr": "¡¿Qué?! ¿Cancelado? ¿Parece que tengo tiempo que perder?"
 	},
 	{
 		"id": 500020094,

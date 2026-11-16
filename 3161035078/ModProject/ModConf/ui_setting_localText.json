@@ -38,5 +38,77 @@
 		"ch": "（如果您想反馈Bug，请开启）",
 		"tc": "（如果您想反饋Bug，請開啟）",
 		"kr": "(버그 피드백을 원하시면 켜주세요)"
+	},
+	{
+		"id": -1000003005,
+		"key": "setting005",
+		"en": "Divine artifact hotkeys",
+		"ch": "神器快捷键",
+		"tc": "神器快捷鍵",
+		"kr": "신기 단축키"
+	},
+	{
+		"id": -1000003006,
+		"key": "setting006",
+		"en": "Click a row, then press a key (Esc cancels, Backspace clears). Map: opens the artifact window; battle: uses its skill. The game's artifact key still works.",
+		"ch": "点击一行后按下按键（Esc 取消，Backspace 清除）。地图上：打开神器界面；战斗中：施放神器技能。游戏原有的神器键依然有效。",
+		"tc": "點擊一行後按下按鍵（Esc 取消，Backspace 清除）。地圖上：打開神器介面；戰鬥中：施放神器技能。遊戲原有的神器鍵依然有效。",
+		"kr": "줄을 누른 뒤 키를 누르세요 (Esc 취소, Backspace 해제). 맵: 신기 창 열기, 전투: 신기 스킬 사용. 게임 기본 신기 키도 그대로 사용 가능."
+	},
+	{
+		"id": -1000003007,
+		"key": "setting007",
+		"en": "None",
+		"ch": "无",
+		"tc": "無",
+		"kr": "없음"
+	},
+	{
+		"id": -1000003008,
+		"key": "setting008",
+		"en": "{0} is already used by the game's key bindings. Choose another key.",
+		"ch": "{0} 已被游戏按键占用，请选择其他按键。",
+		"tc": "{0} 已被遊戲按鍵佔用，請選擇其他按鍵。",
+		"kr": "{0}은(는) 이미 게임 키에 사용 중입니다. 다른 키를 선택하세요."
+	},
+	{
+		"id": -1000003010,
+		"key": "setting010",
+		"en": "Display",
+		"ch": "显示",
+		"tc": "顯示",
+		"kr": "표시"
+	},
+	{
+		"id": -1000003011,
+		"key": "setting011",
+		"en": "Notifications and log",
+		"ch": "提示与日志",
+		"tc": "提示與日誌",
+		"kr": "알림 및 기록"
+	},
+	{
+		"id": -1000003012,
+		"key": "setting012",
+		"en": "Notify market offers and filled buy orders",
+		"ch": "提示集市报价与求购成交",
+		"tc": "提示集市報價與求購成交",
+		"kr": "시장 제안 및 구매 주문 체결 알림"
+	},
+	{
+		"id": -1000003013,
+		"key": "setting013",
+		"en": "Open the Taoist log",
+		"ch": "打开道教日志",
+		"tc": "打開道教日誌",
+		"kr": "도교 기록 열기"
+	},
+	{
+		"id": -1000003014,
+		"key": "setting014",
+		"en": "Random encounters",
+		"ch": "随机奇遇",
+		"tc": "隨機奇遇",
+		"kr": "무작위 기연"
 	}
 ]

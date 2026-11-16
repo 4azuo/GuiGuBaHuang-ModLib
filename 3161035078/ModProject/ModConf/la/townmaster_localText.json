@@ -15,26 +15,6 @@
 		"en|ch|tc|kr": "Custos civitatis"
 	},
 	{
-		"id": "420041113",
-		"key": "townmaster420041113drama",
-		"en|ch|tc|kr": "Tu huius oppidi dominus factus es."
-	},
-	{
-		"id": "420041114",
-		"key": "townmaster420041114drama",
-		"en|ch|tc|kr": "Invitationem accepistis ab {0}' Magistro Oppido ad custodiam loci?\nHabesne tutorem urbis fieri?."
-	},
-	{
-		"id": "420041115",
-		"key": "townmaster420041114dramaOpt1",
-		"en|ch|tc|kr": "Ita"
-	},
-	{
-		"id": "420041116",
-		"key": "townmaster420041114dramaOpt2",
-		"en|ch|tc|kr": "No"
-	},
-	{
 		"id": "420041117",
 		"key": "townmaster420041117",
 		"en|ch|tc|kr": "Oppidum: {0} & Magister: {1}"

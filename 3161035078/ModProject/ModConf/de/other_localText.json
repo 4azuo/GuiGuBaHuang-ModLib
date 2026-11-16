@@ -135,11 +135,6 @@
 		"en|ch|tc|kr": "Sie haben vom Stadtmeister von {0} eine Einladung für die Position eines Vormunds erhalten?\nWillst du Stadtwächter werden?"
 	},
 	{
-		"id": 500020027,
-		"key": "other500020027",
-		"en|ch|tc|kr": "Du hast nicht genug {0:#,##0} Geistersteine zum Bezahlen!"
-	},
-	{
 		"id": 500020028,
 		"key": "other500020028",
 		"en|ch|tc|kr": "Jedes Mal, wenn du im Kampf stirbst, geht dein Leben verloren. Und wenn Ihr Alter erreicht ist, wird Ihr Speicherstand gelöscht. Bitte seien Sie vorsichtig."
@@ -218,11 +213,6 @@
 		"id": 500020043,
 		"key": "other500020043",
 		"en|ch|tc|kr": "{0:#,##0} Geistersteine/Monat"
-	},
-	{
-		"id": 500020044,
-		"key": "other500020044",
-		"en|ch|tc|kr": "Schleichend durch"
 	},
 	{
 		"id": 500020045,
@@ -390,31 +380,6 @@
 		"en|ch|tc|kr": "Gib auf"
 	},
 	{
-		"id": 500020078,
-		"key": "other500020078",
-		"en|ch|tc|kr": "Du hast einen Rückzieher gemacht? Nach allem, worüber wir uns geeinigt haben? Ich bin nicht gerade erfreut über gescheiterte Geschäfte – Sie haben nur meine Zeit verschwendet."
-	},
-	{
-		"id": 500020079,
-		"key": "other500020079",
-		"en|ch|tc|kr": "Das hat reibungslos geklappt! Es ist immer toll, mit jemandem zusammenzuarbeiten, der weiß, was er tut."
-	},
-	{
-		"id": 500020080,
-		"key": "other500020080",
-		"en|ch|tc|kr": "Das kann doch nicht dein Ernst sein. Du schuldest mir mehr als ein „Nein“!"
-	},
-	{
-		"id": 500020081,
-		"key": "other500020081",
-		"en|ch|tc|kr": "Was? Du wusstest, dass ich komme! Du hast es trotzdem verkauft?"
-	},
-	{
-		"id": 500020082,
-		"key": "other500020082",
-		"en|ch|tc|kr": "Die [{0}] wurde verkauft."
-	},
-	{
 		"id": 500020083,
 		"key": "other500020083",
 		"en|ch|tc|kr": "Unbekannt"
@@ -440,11 +405,6 @@
 		"en|ch|tc|kr": "Du hast nicht genug Geistersteine!"
 	},
 	{
-		"id": 500020088,
-		"key": "other500020088",
-		"en|ch|tc|kr": "Versuchen Sie, mich fallen zu lassen?"
-	},
-	{
 		"id": 500020089,
 		"key": "other500020089",
 		"en|ch|tc|kr": "Schaden x{0}"
@@ -463,11 +423,6 @@
 		"id": 500020092,
 		"key": "other500020092",
 		"en|ch|tc|kr": "Angebote"
-	},
-	{
-		"id": 500020093,
-		"key": "other500020093",
-		"en|ch|tc|kr": "Was?! Abgesagt? Sehe ich aus, als hätte ich Zeit zu verschwenden?"
 	},
 	{
 		"id": 500020094,

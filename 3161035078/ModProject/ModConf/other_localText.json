@@ -218,10 +218,10 @@
 	{
 		"id": 500020027,
 		"key": "other500020027",
-		"en": "You dont have enough {0:#,##0} Spirit Stones to pay!",
-		"ch": "您没有足够的 {0:#,##0} 个灵石来支付！",
-		"tc": "您沒有足夠的 {0:#,##0} 個靈石來支付！",
-		"kr": "지불할 수 있는 정령석이 {0:#,##0}개 부족합니다!"
+		"en": "The gate guard holds out his hand: \"The tax is {0:#,##0} spirit stones.\" Your purse is not that heavy.",
+		"ch": "守卫伸出手：“税金 {0:#,##0} 灵石。”可你的钱袋没那么沉。",
+		"tc": "守衛伸出手：「稅金 {0:#,##0} 靈石。」可你的錢袋沒那麼沉。",
+		"kr": "수비병이 손을 내밀었다. \"세금은 영석 {0:#,##0}이오.\" 하지만 네 주머니는 그리 무겁지 않다."
 	},
 	{
 		"id": 500020028,
@@ -354,10 +354,10 @@
 	{
 		"id": 500020044,
 		"key": "other500020044",
-		"en": "Sneaky through",
-		"ch": "偷偷通过",
-		"tc": "偷偷通過",
-		"kr": "몰래 빠져나가다"
+		"en": "Sneak in when he looks away",
+		"ch": "趁他不注意溜进去",
+		"tc": "趁他不注意溜進去",
+		"kr": "그가 한눈판 사이 몰래 들어간다"
 	},
 	{
 		"id": 500020045,
@@ -626,42 +626,42 @@
 	{
 		"id": 500020078,
 		"key": "other500020078",
-		"en": "You backed out? After everything we agreed on? I don't take kindly to broken deals — you just wasted my time.",
-		"ch": "你退缩了？在我们达成一致的一切之后？我不会善意地对待失败的交易——你只是浪费了我的时间。",
-		"tc": "你退縮了？在我們達成一致的一切之後？我不會善意地對待失敗的交易——你只是浪費了我的時間。",
-		"kr": "물러났나요? 우리가 합의한 모든 것 이후에? 나는 깨진 거래를 친절하게 여기지 않습니다. 당신은 단지 내 시간을 낭비했을 뿐입니다."
+		"en": "We shook hands on it, and now you back out? My time is worth more than your excuses.",
+		"ch": "都谈妥了，你却临阵反悔？我的时间可比你的借口值钱。",
+		"tc": "都談妥了，你卻臨陣反悔？我的時間可比你的藉口值錢。",
+		"kr": "다 합의해 놓고 이제 와서 물러서? 내 시간은 네 변명보다 값지다."
 	},
 	{
 		"id": 500020079,
 		"key": "other500020079",
-		"en": "That went smoothly! Always great working with someone who knows what they're doing.",
-		"ch": "一切都很顺利！与知道自己在做什么的人一起工作总是很棒的。",
-		"tc": "一切都很順利！與知道自己在做什麼的人一起工作總是很棒的。",
-		"kr": "순조롭게 진행됐어요! 자신이 무엇을 하고 있는지 아는 사람과 함께 일하는 것은 항상 좋은 일입니다."
+		"en": "A fair price, quickly paid. A pleasure doing business with you.",
+		"ch": "价钱公道，银货两讫。与你做生意，痛快！",
+		"tc": "價錢公道，銀貨兩訖。與你做生意，痛快！",
+		"kr": "값도 공정하고 거래도 깔끔했군. 당신과 거래하니 시원하구먼!"
 	},
 	{
 		"id": 500020080,
 		"key": "other500020080",
-		"en": "You can't be serious. You owe me more than a 'no'!",
-		"ch": "你不可能是认真的。你欠我的不仅仅是一个“不”！",
-		"tc": "你不可能是認真的。你欠我的不僅僅是一個“不”！",
-		"kr": "진지하게 말할 수는 없습니다. 당신은 나에게 '안돼'라는 말보다 더 많은 빚을 지고 있어요!"
+		"en": "You sold it to someone else? After making me wait all month?",
+		"ch": "你把它卖给别人了？害我白等一个月？",
+		"tc": "你把它賣給別人了？害我白等一個月？",
+		"kr": "다른 사람에게 팔았다고? 한 달이나 기다리게 해 놓고?"
 	},
 	{
 		"id": 500020081,
 		"key": "other500020081",
-		"en": "What? You knew I was coming! You sold it anyway?",
-		"ch": "什么？你知道我会来！你还是卖掉了？",
-		"tc": "什麼？你知道我會來！你還是賣掉了？",
-		"kr": "무엇? 내가 올 줄 알았잖아! 그런데 그걸 팔았나요?"
+		"en": "Raising the price after we agreed? Shameless.",
+		"ch": "谈好了价还要坐地起价？真是无耻。",
+		"tc": "談好了價還要坐地起價？真是無恥。",
+		"kr": "값을 정해 놓고 또 올리겠다고? 정말 뻔뻔하군."
 	},
 	{
 		"id": 500020082,
 		"key": "other500020082",
-		"en": "The [{0}] has been sold.",
-		"ch": "[{0}] 已售出。",
-		"tc": "[{0}] 已售出。",
-		"kr": "[{0}]이(가) 판매되었습니다."
+		"en": "Word reaches you: the [{0}] you bid on has been sold to another buyer.",
+		"ch": "消息传来：你出价的【{0}】已被他人买走。",
+		"tc": "消息傳來：你出價的【{0}】已被他人買走。",
+		"kr": "소식이 전해졌다. 네가 값을 불렀던 [{0}]이(가) 다른 사람에게 팔렸다."
 	},
 	{
 		"id": 500020083,
@@ -706,10 +706,10 @@
 	{
 		"id": 500020088,
 		"key": "other500020088",
-		"en": "Are you try to dump me?",
-		"ch": "你想甩掉我吗？",
-		"tc": "你想甩掉我嗎？",
-		"kr": "나를 차버리려고 하는 거야?"
+		"en": "You thought you could walk off without paying? Think again.",
+		"ch": "想不付钱就走人？做梦。",
+		"tc": "想不付錢就走人？做夢。",
+		"kr": "돈도 안 내고 가겠다고? 꿈 깨라."
 	},
 	{
 		"id": 500020089,
@@ -746,10 +746,10 @@
 	{
 		"id": 500020093,
 		"key": "other500020093",
-		"en": "What?! Cancelled? Do I look like I have time to waste?",
-		"ch": "什么？！取消？我看起来像有时间可以浪费吗？",
-		"tc": "什麼？ ！取消？我看起來像有時間可以浪費嗎？",
-		"kr": "뭐?! 취소? 내가 낭비할 시간이 있는 것처럼 보이나요?"
+		"en": "Cancelled? Then don't waste my time haggling next time.",
+		"ch": "取消了？那下次就别来浪费我的时间讨价还价。",
+		"tc": "取消了？那下次就別來浪費我的時間討價還價。",
+		"kr": "취소라고? 그럼 다음엔 흥정으로 내 시간 낭비하지 마라."
 	},
 	{
 		"id": 500020094,
@@ -934,5 +934,13 @@
 		"ch": "你的灵石还不够！",
 		"tc": "你的靈石還不夠！",
 		"kr": "영혼석이 부족해요!"
+	},
+	{
+		"id": 500020117,
+		"key": "other500020117",
+		"en": "Turn back",
+		"ch": "转身离开",
+		"tc": "轉身離開",
+		"kr": "발길을 돌린다"
 	}
 ]

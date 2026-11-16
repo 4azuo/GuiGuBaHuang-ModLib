@@ -15,26 +15,6 @@
 		"en|ch|tc|kr": "Stadtwächter"
 	},
 	{
-		"id": "420041113",
-		"key": "townmaster420041113drama",
-		"en|ch|tc|kr": "Du wirst dieser Stadtmeister."
-	},
-	{
-		"id": "420041114",
-		"key": "townmaster420041114drama",
-		"en|ch|tc|kr": "Sie haben vom Stadtmeister von {0} eine Einladung für die Position eines Vormunds erhalten?\nWillst du Stadtwächter werden?"
-	},
-	{
-		"id": "420041115",
-		"key": "townmaster420041114dramaOpt1",
-		"en|ch|tc|kr": "Ja"
-	},
-	{
-		"id": "420041116",
-		"key": "townmaster420041114dramaOpt2",
-		"en|ch|tc|kr": "Nein"
-	},
-	{
 		"id": "420041117",
 		"key": "townmaster420041117",
 		"en|ch|tc|kr": "Stadt: {0} & Meister: {1}"

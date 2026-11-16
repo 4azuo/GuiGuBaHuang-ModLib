@@ -90,6 +90,8 @@
     <Compile Include="Helper\UISampleHelper.cs" />
     <Compile Include="Helper\UIHelper.cs" />
     <Compile Include="Helper\GameHelper.cs" />
+    <Compile Include="Helper\SaveCleanupHelper.cs" />
+    <Compile Include="Helper\TimeScaleHelper.cs" />
     <Compile Include="Helper\TraceHelper.cs" />
     <Compile Include="Helper\EffectHelper.cs" />
     <Compile Include="Helper\TranslateHelper.cs" />

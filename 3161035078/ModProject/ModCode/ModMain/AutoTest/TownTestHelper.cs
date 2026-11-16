@@ -147,7 +147,7 @@ namespace MOD_nE7UL2.AutoTest
         {
             var n = 0;
             // closed, not clicked: the first labeled button of a drama is "View" (opens the NPC info and blocks again)
-            foreach (var t in new[] { UIType.DramaDialogue, UIType.DramaFortuitous, UIType.DramaDialogueBigTexture, UIType.DramaBigTexture, UIType.NPCInfo })
+            foreach (var t in new[] { UIType.DramaDialogue, UIType.DramaFortuitous, UIType.DramaHerdNPC, UIType.DramaDialogueBigTexture, UIType.DramaBigTexture, UIType.NPCInfo })
             {
                 if (!g.ui.HasUI(t)) continue;
                 g.ui.CloseUI(t);

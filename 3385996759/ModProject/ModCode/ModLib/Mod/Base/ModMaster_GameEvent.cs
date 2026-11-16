@@ -174,8 +174,28 @@ namespace ModLib.Mod
         }
 
         /// <summary>
+        /// Months the running OnMonthly / OnMonthlyForEachWUnit stand for: 1 in normal play, N when the calendar moved
+        /// N months since the previous dispatch (a time skip advancing several months at once). Handlers that accumulate
+        /// (interest, fees, growth...) multiply by it; handlers that roll a monthly chance use ChanceOver.
+        /// </summary>
+        public static int MonthsPassed { get; private set; } = 1;
+
+        /// <summary>Years the running OnYearly stands for (year boundaries crossed since the previous dispatch).</summary>
+        public static int YearsPassed { get; private set; } = 1;
+
+        /// <summary>
+        /// Times an "every period months" handler is due in the running dispatch: the multiples of period passed in the
+        /// months it stands for (normal play: 1 when the month is a multiple of period, else 0).
+        /// </summary>
+        public static int Ticks(int period) => TimeScaleHelper.Ticks(GameHelper.GetGameTotalMonth(), MonthsPassed, period);
+
+        /// <summary>Chance (0-100) of something with a monthly (or yearly) chance happening at least once over n months (years).</summary>
+        public static float ChanceOver(float chance, int n) => TimeScaleHelper.ChanceOver(chance, n);
+
+        /// <summary>
         /// World-run end callback. When the month changed: refreshes the ParameterStore and raises
-        /// OnRefreshParameterStoreOnMonthly, OnFirstMonth (once), OnMonthly, OnMonthlyForEachWUnit and OnYearly (every 12 months), then OnWorldRunEnd.
+        /// OnRefreshParameterStoreOnMonthly, OnFirstMonth (once), OnMonthly, OnMonthlyForEachWUnit and OnYearly (when
+        /// a year boundary was crossed), then OnWorldRunEnd. MonthsPassed / YearsPassed tell what the dispatch stands for.
         /// </summary>
         public virtual void _OnWorldRunEnd(ETypeData e)
         {
@@ -186,7 +206,11 @@ namespace ModLib.Mod
             {
                 if (Gamevars.CurMonth != g.game.world.run.roundMonth)
                 {
-                    Gamevars.CurMonth = g.game.world.run.roundMonth;
+                    var prev = Gamevars.CurMonth;
+                    var cur = g.game.world.run.roundMonth;
+                    MonthsPassed = TimeScaleHelper.MonthsBetween(prev, cur);
+                    YearsPassed = TimeScaleHelper.YearsBetween(prev, cur);
+                    Gamevars.CurMonth = cur;
 
                     RefreshParameterStore();
                     CallEvents("OnRefreshParameterStoreOnMonthly");
@@ -200,11 +224,13 @@ namespace ModLib.Mod
                     //monthly
                     CallEvents("OnMonthly");
                     CallEvents("OnMonthlyForEachWUnit");
-                    //yearly
-                    if (g.world.run.roundMonth % 12 == 0)
+                    //yearly (once even when several years passed: YearsPassed)
+                    if (YearsPassed > 0)
                     {
                         CallEvents("OnYearly");
                     }
+                    MonthsPassed = 1;
+                    YearsPassed = 0;
                 }
 
                 //end run
@@ -332,6 +358,9 @@ namespace ModLib.Mod
         /// </summary>
         public virtual void OnLoadGame()
         {
+            //save folder of this save -> player unit id (to remove the mod data once the save is deleted)
+            try { SaveCleanupHelper.Register(SaveCleanupHelper.IndexPath(SaveCleanupHelper.GameDataPath), g.cache?.curCache?.data?.folder, g.world.playerUnit.GetUnitId()); }
+            catch (System.Exception ex) { DebugHelper.WriteLine($"Save index not updated: {ex.Message}"); }
             EventHelper.RunMinorEvents("OnLoadGame");
         }
 
@@ -521,13 +550,19 @@ namespace ModLib.Mod
         }
 
         /// <summary>
-        /// Dispatches OnWorldRunEnd, then saves the game.
+        /// True while a mod runs many months in a row (time skip) and saves only some of them: OnWorldRunEnd does not save.
+        /// </summary>
+        public static bool NoSaveOnWorldRunEnd { get; set; }
+
+        /// <summary>
+        /// Dispatches OnWorldRunEnd, then saves the game (unless NoSaveOnWorldRunEnd).
         /// </summary>
         public virtual void OnWorldRunEnd(WorldRunEnd e)
         {
-            DebugHelper.WriteLine($"WorldRunEnd: {GameHelper.GetGameYear()}年{GameHelper.GetGameMonth()}月{GameHelper.GetGameDay()}日");
+            DebugHelper.WriteLine($"WorldRunEnd: {GameHelper.GetGameYear()}年{GameHelper.GetGameMonth()}月{GameHelper.GetGameDay()}日{(NoSaveOnWorldRunEnd ? " (no save)" : string.Empty)}");
             EventHelper.RunMinorEvents("OnWorldRunEnd", e);
-            GameHelper.SaveGame();
+            if (!NoSaveOnWorldRunEnd)
+                GameHelper.SaveGame();
         }
 
         /// <summary>

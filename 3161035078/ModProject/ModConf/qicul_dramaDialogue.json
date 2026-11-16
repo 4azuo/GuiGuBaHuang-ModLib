@@ -14,7 +14,25 @@
 		"dialogue": "qicul480010100",
 		"openFunction": "0",
 		"function": "0",
-		"options": "480010101",
+		"options": "480010104",
+		"nextDialogue": "0"
+	},
+	{
+		"id": "480010102",
+		"uiType": "2",
+		"condition": "0",
+		"weight": "1",
+		"npcLeft": "0",
+		"npcRight": "0",
+		"speaker": "0",
+		"backgroud": "jinrushihai",
+		"soundsBg": "0",
+		"soundsEffect": "0",
+		"title": "0",
+		"dialogue": "qicul480010102",
+		"openFunction": "0",
+		"function": "0",
+		"options": "480010103",
 		"nextDialogue": "0"
 	}
 ]

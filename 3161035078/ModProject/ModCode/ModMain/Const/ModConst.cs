@@ -5,8 +5,8 @@
     /// </summary>
     public static class ModConst
     {
-        public const string TAOIST_VERSION = "5.5.39";
-        public const string MODLIB_REQUIRED_VERSION = "2.2.26";
+        public const string TAOIST_VERSION = "5.5.40";
+        public const string MODLIB_REQUIRED_VERSION = "2.2.27";
 
         //Events
         public const string DEBUG_EVENT = "DEBUG";
@@ -50,6 +50,14 @@
         public const string UI_CREATE_PLAYER_EVENT = "UICreatePlayerEvent";
         public const string UI_DIFFICULTY_EVENT = "UIDifficultyEvent";
         public const string NEW_GAME_EVENT = "NewGameEvent";
+        public const string ANIMA_WEAPON_EVENT = "AnimaWeaponEvent";
+        public const string TAOIST_LOG_EVENT = "TaoistLogEvent";
+        public const string ENCOUNTER_EVENT = "EncounterEvent";
+        public const string BANK_LOAN_EVENT = "BankLoanEvent";
+        public const string WANTED_EVENT = "WantedEvent";
+        public const string SECLUSION_EVENT = "SeclusionEvent";
+        public const string FAMILY_EVENT = "FamilyEvent";
+        public const string FAMILY_FUND_EVENT = "FamilyFundEvent";
         public const string UPGRADE_NATURALLY_EVENT = "UpgradeNaturallyEvent";
         public const string TRAINER_EVENT = "TrainerEvent";
         public const string SPECIAL_MONST_EVENT = "SpecialMonsterEvent";

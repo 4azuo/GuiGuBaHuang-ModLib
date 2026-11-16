@@ -17,11 +17,10 @@ using ModLib.Attributes;
 namespace MOD_nE7UL2.Mod
 {
     /// <summary>
-    /// NPC Market
-    /// Todo: IsHidden, sử lý drama
+    /// NPC Market (open work: docs/Taoist/05-Backlog.md)
     /// </summary>
     [Cache(ModConst.REAL_MARKET_EVENT3)]
-    public class RealMarketEvent3 : ModEvent
+    public partial class RealMarketEvent3 : ModEvent
     {
         public static RealMarketEvent3 Instance { get; set; }
 
@@ -328,6 +327,9 @@ namespace MOD_nE7UL2.Mod
             //transfer market item to buyer
             TransferItem(seller, buyer, item);
             Instance.BoughtItems[item.SoleId] = GameHelper.GetGameTotalMonth();
+            RecordPrice(item.PropId, deal.TotalValue, item.Count);
+            if (seller.IsPlayer() || buyer.IsPlayer())
+                TaoistLogEvent.Log(seller.IsPlayer() ? "log_market_sold" : "log_market_bought", item.Count, itemInfo.name, price, seller.IsPlayer() ? buyer.GetName() : seller.GetName());
 
             //transfer negotiated items to seller
             foreach (var ni in deal.Items.Where(x => !x.IsSpiritStones))
@@ -457,19 +459,19 @@ namespace MOD_nE7UL2.Mod
         }
 
         /// <summary>
-        /// Moves an item between seller and buyer.
+        /// Moves an item offered by the buyer (barter) to the seller.
         /// </summary>
         public static void TransferItem(WorldUnitBase seller, WorldUnitBase buyer, NegotiatingItem item)
         {
             if (item.IsPartialItem)
             {
-                buyer.AddUnitProp(item.NegotiatingPropPropId, item.Count);
-                seller.RemoveUnitProp(item.NegotiatingPropPropId, item.Count);
+                seller.AddUnitProp(item.NegotiatingPropPropId, item.Count);
+                buyer.RemoveUnitProp(item.NegotiatingPropPropId, item.Count);
             }
             else
             {
                 var fromProp = item.NegotiatingProp;
-                buyer.AddUnitProp(fromProp);
+                seller.AddUnitProp(fromProp);
                 foreach (var toProp in WUnitHelper.LastAddedItems)
                 {
                     if (toProp != null && toProp.propsItem != null && (
@@ -482,7 +484,7 @@ namespace MOD_nE7UL2.Mod
                         CustomRefineEvent.CopyAdj(fromProp, toProp);
                     }
                 }
-                seller.RemoveUnitProp(item.NegotiatingPropSoleId);
+                buyer.RemoveUnitProp(item.NegotiatingPropSoleId);
             }
         }
 
@@ -511,8 +513,9 @@ namespace MOD_nE7UL2.Mod
             {
                 var curMonth = GameHelper.GetGameTotalMonth();
                 var resellMonth = curMonth - 12;
-                var sellerJoinRate = SMLocalConfigsEvent.Instance.Calculate(Configs.SellerJoinMarketRate, SMLocalConfigsEvent.Instance.Configs.MarketItemNpcJoinRate).Parse<float>();
-                var buyerJoinRate = SMLocalConfigsEvent.Instance.Calculate(Configs.BuyerJoinMarketRate, SMLocalConfigsEvent.Instance.Configs.MarketItemNpcJoinRate).Parse<float>();
+                // one dispatch may stand for several months (time skip): the chances of the months it stands for
+                var sellerJoinRate = ModLib.Mod.ModMaster.ChanceOver(SMLocalConfigsEvent.Instance.Calculate(Configs.SellerJoinMarketRate, SMLocalConfigsEvent.Instance.Configs.MarketItemNpcJoinRate).Parse<float>(), ModLib.Mod.ModMaster.MonthsPassed);
+                var buyerJoinRate = ModLib.Mod.ModMaster.ChanceOver(SMLocalConfigsEvent.Instance.Calculate(Configs.BuyerJoinMarketRate, SMLocalConfigsEvent.Instance.Configs.MarketItemNpcJoinRate).Parse<float>(), ModLib.Mod.ModMaster.MonthsPassed);
 
                 //get wunits
                 var curArea = g.world.playerUnit.GetUnitPosAreaId();
@@ -527,7 +530,7 @@ namespace MOD_nE7UL2.Mod
                 {
                     //cancel
                     if (!item.IsValid ||
-                        CommonTool.Random(0f, 100f).IsBetween(0f, Configs.CancelDealOnMonth * (curMonth - item.CreateMonth)))
+                        CommonTool.Random(0f, 100f).IsBetween(0f, ModLib.Mod.ModMaster.ChanceOver(Configs.CancelDealOnMonth * (curMonth - item.CreateMonth), ModLib.Mod.ModMaster.MonthsPassed)))
                     {
                         //DebugHelper.WriteLine("1.1");
                         Cancel(item);
@@ -537,7 +540,7 @@ namespace MOD_nE7UL2.Mod
                     var highestDeal = GetNegotiatingHighestValue(item);
                     //get deal
                     if (highestDeal != null &&
-                        CommonTool.Random(0f, 100f).IsBetween(0f, Configs.GetDealRate * (highestDeal.TotalValue / item.SellerPrice)))
+                        CommonTool.Random(0f, 100f).IsBetween(0f, ModLib.Mod.ModMaster.ChanceOver((float)(Configs.GetDealRate * (highestDeal.TotalValue / item.SellerPrice)), ModLib.Mod.ModMaster.MonthsPassed)))
                     {
                         //DebugHelper.WriteLine("1.2");
                         AcceptDeal(item, highestDeal);
@@ -604,6 +607,9 @@ namespace MOD_nE7UL2.Mod
                         }
                     }
                 }
+
+                //offers on the player listings before the NPC buyers act (notified after)
+                var offerSnapshot = SnapshotPlayerOffers();
 
                 //process
                 //DebugHelper.WriteLine("3");
@@ -676,6 +682,9 @@ namespace MOD_nE7UL2.Mod
                         }
                     }
                 }
+
+                NotifyNewOffers(offerSnapshot);
+                ProcessBuyOrders(wunitsInTowns.ToDictionary(x => x.Key, x => x.Value.ToArray()));
             }
         }
 
@@ -724,6 +733,8 @@ namespace MOD_nE7UL2.Mod
                         ui.AddButton(ui.MidCol - 8, ui.MidRow + 1, () => OpenMarket(x => !x.IsHidden), GameTool.LS("other500020040")).Size(200, 40);
                         ui.AddButton(ui.MidCol - 8, ui.MidRow + 3, () => OpenSellingList(g.world.playerUnit), GameTool.LS("other500020060")).Size(200, 40);
                         ui.AddButton(ui.MidCol - 8, ui.MidRow + 5, () => OpenRegister(g.world.playerUnit), GameTool.LS("other500020061")).Size(200, 40);
+                        if (!SMLocalConfigsEvent.Instance.Configs.NoBuyOrder || BuyOrders.Count > 0)
+                            ui.AddButton(ui.MidCol - 8, ui.MidRow + 7, () => OpenBuyOrders(g.ui.GetUI<UITownMarket>(UIType.TownMarket)?.town ?? ui.UI.town), GameTool.LS("market_buyorders")).Size(200, 40);
                     }
                     ui.UpdateUI();
                 }
@@ -933,6 +944,12 @@ namespace MOD_nE7UL2.Mod
                     })
                 }).Pos(ui.btnOK.transform, 0, 40);
             }
+            //recent deal prices of the selected item
+            uiCover.AddText(0, 0, "{0}").SetWork(new UIItemWork
+            {
+                Formatter = ModLib.Helper.ActionHelper.WTracedFunc<UIItemBase, object[]>(x =>
+                    new object[] { selectedMarketItem == null ? string.Empty : PriceHint(selectedMarketItem.PropId) })
+            }).Pos(ui.btnOK.transform, 0, 70);
 
             //custom select call
             uiCover.UI.onCustomSelectCall = ModLib.Helper.ActionHelper.TracedFunc<DataProps.PropsData, string>((x) =>
@@ -1312,14 +1329,14 @@ namespace MOD_nE7UL2.Mod
                         return new string[] {
                             string.Format(GameTool.LS("other500020107"), // "Selling price: {0} | Anonymous fee: {1} (paid upfront)"
                                 price.ToString(ModConst.FORMAT_NUMBER),
-                                hiddenFee.ToString(ModConst.FORMAT_NUMBER))
+                                hiddenFee.ToString(ModConst.FORMAT_NUMBER)) + "\n" + PriceHint(selectedProp.propsID)
                         };
                     }
                     else
                     {
                         return new string[] {
                             string.Format(GameTool.LS("other500020108"), // "Selling price: {0}"
-                                price.ToString(ModConst.FORMAT_NUMBER))
+                                price.ToString(ModConst.FORMAT_NUMBER)) + "\n" + PriceHint(selectedProp.propsID)
                         };
                     }
                 })

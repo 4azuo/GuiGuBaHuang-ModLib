@@ -10,21 +10,6 @@
 		"en|ch|tc|kr": "Team"
 	},
 	{
-		"id": "420041123",
-		"key": "team420041123drama",
-		"en|ch|tc|kr": "Simul iter habes?"
-	},
-	{
-		"id": "420041124",
-		"key": "team420041124dramaOpt1",
-		"en|ch|tc|kr": "Ita"
-	},
-	{
-		"id": "420041125",
-		"key": "team420041125dramaOpt2",
-		"en|ch|tc|kr": "No"
-	},
-	{
 		"id": "420041126",
 		"key": "team420041126",
 		"en|ch|tc|kr": "dimitte Team"

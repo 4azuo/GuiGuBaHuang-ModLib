@@ -15,26 +15,6 @@
 		"en|ch|tc|kr": "Gardien de la ville"
 	},
 	{
-		"id": "420041113",
-		"key": "townmaster420041113drama",
-		"en|ch|tc|kr": "Vous devenez ce maître de la ville."
-	},
-	{
-		"id": "420041114",
-		"key": "townmaster420041114drama",
-		"en|ch|tc|kr": "Vous avez reçu une invitation du maître de ville de {0} pour le poste de gardien ?\nVoulez-vous devenir un gardien de ville ?."
-	},
-	{
-		"id": "420041115",
-		"key": "townmaster420041114dramaOpt1",
-		"en|ch|tc|kr": "Oui"
-	},
-	{
-		"id": "420041116",
-		"key": "townmaster420041114dramaOpt2",
-		"en|ch|tc|kr": "Non"
-	},
-	{
 		"id": "420041117",
 		"key": "townmaster420041117",
 		"en|ch|tc|kr": "Ville : {0} et maître : {1}"

@@ -53,7 +53,8 @@ namespace MOD_nE7UL2.Mod
         /// </summary>
         public override void OnMonthly()
         {
-            if (GameHelper.GetGameTotalMonth() % SMLocalConfigsEvent.Instance.Configs.GrowUpSpeed == 0)
+            var ticks = ModLib.Mod.ModMaster.Ticks(SMLocalConfigsEvent.Instance.Configs.GrowUpSpeed);
+            for (var t = 0; t < ticks; t++)
             {
                 Counter++;
                 foreach (var potmonData in g.data.dataWorld.data.devilDemonData.potmonData.potMonList)

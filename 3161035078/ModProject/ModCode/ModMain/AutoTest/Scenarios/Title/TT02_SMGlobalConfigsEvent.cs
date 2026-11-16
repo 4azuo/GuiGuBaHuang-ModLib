@@ -7,7 +7,7 @@ using static MOD_nE7UL2.AutoTest.AutoTestHelper;
 namespace MOD_nE7UL2.AutoTest.Scenarios.Title
 {
     /// <summary>
-    /// TT-02 (SMGlobalConfigsEvent): S&amp;M configs window - both pages, difficulty presets change the score,
+    /// TT-02 (SMGlobalConfigsEvent): S&amp;M configs window - the 3 pages (page 3: toggles of the additional features, no score), difficulty presets change the score,
     /// Cancel keeps the saved configs.
     /// </summary>
     public class TT02_SMGlobalConfigsEvent : IScenarioDefinition
@@ -39,7 +39,7 @@ namespace MOD_nE7UL2.AutoTest.Scenarios.Title
                 .Step("page 1", c =>
                 {
                     c.Assert(g.ui.HasUI(UIType.TextInfoLong) && Window != null, "S&M window is open");
-                    c.Assert(Window?.Pages.Count == 2, $"2 pages ({Window?.Pages.Count})");
+                    c.Assert(Window?.Pages.Count == 3, $"3 pages ({Window?.Pages.Count})");
                     c.AssertEqual(0, Window?.CurrentPageIndex ?? -1, "page 1 shown first");
                     c.Bag["score"] = SMGlobalConfigsEvent.CalSMTotalScore();
                     c.Info($"total score: {c.Bag["score"]}");
@@ -49,6 +49,23 @@ namespace MOD_nE7UL2.AutoTest.Scenarios.Title
                     Window.NextPage();
                     c.AssertEqual(1, Window.CurrentPageIndex, "next page shows page 2 (economy, battle, misc options)");
                 })
+                .Step("page 3", c =>
+                {
+                    Window.NextPage();
+                    c.AssertEqual(2, Window.CurrentPageIndex, "page 3: additional features");
+                    var score = SMGlobalConfigsEvent.CalSMTotalScore();
+                    var labels = new[] { "smcfgs151", "smcfgs152", "smcfgs153", "smcfgs154", "smcfgs156", "smcfgs157", "smcfgs158", "smcfgs159", "smcfgs164" }.Select(k => GameTool.LS(k)).ToList();
+                    var toggles = Window.Items.OfType<ModLib.Object.UIItemText>().Where(x => labels.Contains(x.GetFormat() ?? string.Empty))
+                        .Select(x => x.Parent as ModLib.Object.UIItemComposite).Where(x => x != null).ToList();
+                    c.AssertEqual(9, toggles.Count, "toggles: encounters, bank loans, buy orders, bounties, seclusion, forced seclusion, family, same-sex, descendant");
+                    var others = new[] { "smcfgs160", "smcfgs165", "smcfgs166" }.Select(k => GameTool.LS(k)).ToList();
+                    c.AssertEqual(3, Window.Items.OfType<ModLib.Object.UIItemText>().Count(x => others.Contains(x.GetFormat() ?? string.Empty)), "child surname select, encounter and seclusion rate sliders");
+                    foreach (var t in toggles) t.MainComponent.Set(true);
+                    c.AssertEqual(score, SMGlobalConfigsEvent.CalSMTotalScore(), "turning them on/off does not change the difficulty score");
+                    foreach (var t in toggles) t.MainComponent.Set(false);
+                })
+                .Step("page 3 shown", c => c.Info($"page {Window.CurrentPageIndex + 1}"), 1000) // screenshot of page 3
+                .Step("back to page 2", c => Window.PrevPage())
                 .Step("preset level 3", c =>
                 {
                     var btn = FindButtons(UIType.TextInfoLong, $"{GameTool.LS("smcfgs045")} 3").FirstOrDefault(x => x.GetFormat() == $"{GameTool.LS("smcfgs045")} 3");

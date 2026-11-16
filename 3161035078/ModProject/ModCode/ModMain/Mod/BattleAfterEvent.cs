@@ -46,7 +46,7 @@ namespace MOD_nE7UL2.Mod
                 {
                     foreach (var member in HirePeopleEvent.GetTeamDetailData(wunit).Item2)
                     {
-                        member.SetUnitPos(new UnityEngine.Vector2Int(CommonTool.Random(playerPos.x - 4, playerPos.x + 4), CommonTool.Random(playerPos.y - 4, playerPos.y + 4)));
+                        member.SetUnitRandomPos(playerPos, 4);
                     }
                 }
             }

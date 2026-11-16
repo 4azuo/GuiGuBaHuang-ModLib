@@ -492,6 +492,9 @@ namespace MOD_nE7UL2.Mod
                 if (die && !player.isDie)
                 {
                     DebugHelper.WriteLine("BattleRewardEvent: one-life, the character dies");
+                    // S&M "Continue as a descendant": an heir can take over instead
+                    if (FamilyEvent.Instance?.OfferInherit(() => player.Die()) ?? false)
+                        return;
                     player.Die();
                 }
                 else if (skip)

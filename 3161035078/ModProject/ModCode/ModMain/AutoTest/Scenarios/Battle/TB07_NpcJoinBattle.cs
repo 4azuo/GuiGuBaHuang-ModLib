@@ -131,6 +131,26 @@ namespace MOD_nE7UL2.AutoTest.Scenarios.Battle
                     c.AssertEqual("PlayerNPC", Side(member), "team member joined on the player side");
                     for (var i = 0; i < 3; i++) { DismissDramas(); ClickButton(CONFIRM); }
                 }, 1000)
+                .Step("stalker pay off", c =>
+                {
+                    // the stalker drama offers to pay it off: its team leaves the battle, the money goes to the stalker
+                    if (opponent == null || !InBattle) return;
+                    var su = InBattleUnit(stalker);
+                    if (su == null || su.isDie) { c.Skip("stalker not in the battle any more"); return; }
+                    var fee = BattleEvent.StalkerFee(stalker);
+                    c.Assert(fee >= InflationaryEvent.CalculateInflationary(500), $"stalker fee {fee} (500 x grade, at least 10 % of the money)");
+                    if (Player.GetUnitMoney() < fee) Player.AddUnitMoney(fee * 2);
+                    var pm = Player.GetUnitMoney(); var sm = stalker.GetUnitMoney();
+                    BattleEvent.PayOffStalker(stalker, new List<UnitCtrlBase> { su }, fee);
+                    c.AssertEqual(pm - fee, Player.GetUnitMoney(), $"player paid {fee}");
+                    c.AssertEqual(sm + fee, stalker.GetUnitMoney(), "the stalker got the money");
+                    var still = ModBattleEvent.BattleUnits.ToArray().Any(x => x != null && !x.isDie && x.IsWorldUnit() && x.GetWorldUnit()?.GetUnitId() == stalker.GetUnitId());
+                    c.Assert(!still, "the stalker left the battle");
+                    c.Assert(TaoistLogEvent.Instance.Entries.Any(x => x.Key == "log_stalker_paid"), "pay-off in the Taoist log");
+                    var mu = InBattleUnit(member);
+                    c.Bag["intim"] = member.data.unitData.relationData.GetIntim(Player);
+                    c.Bag["memberAlive"] = mu != null && !mu.isDie;
+                }, 1500)
                 .Step("challenge kill", c =>
                 {
                     if (opponent == null) return;
@@ -165,6 +185,11 @@ namespace MOD_nE7UL2.AutoTest.Scenarios.Battle
                     {
                         c.Assert(!ChallengeQuestEvent.Instance.PendingLuck, "pending challenge luck given on the map");
                         c.Assert(Player.GetLuck(ChallengeQuestEvent.LUCK_BASE_ID + (int)c.Bag["luckLevel"]) != null, "challenge luck added");
+                    }
+                    if (c.Bag.ContainsKey("intim") && (bool)c.Bag["memberAlive"])
+                    {
+                        var now = member.data.unitData.relationData.GetIntim(Player);
+                        c.Assert(now >= Convert.ToSingle(c.Bag["intim"]) + BattleEvent.TEAM_BOND_WIN - 0.01f, $"team member fought beside the player: intimacy {Convert.ToSingle(c.Bag["intim"])} -> {now}");
                     }
                     if (stalker == null) return;
                     var far = Player.GetUnitPos() + new UnityEngine.Vector2Int(30, 30);

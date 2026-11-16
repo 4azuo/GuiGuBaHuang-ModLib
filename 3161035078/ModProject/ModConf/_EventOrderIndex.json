@@ -5,6 +5,7 @@
 	"SMGlobalEvent": 1005,
 	"SMLocalEvent": 1010,
 	"InflationaryEvent": 1020,
+	"TaoistLogEvent": 1025,
 	"TrainerEvent": 1030,
 
 	//not affect
@@ -14,6 +15,7 @@
 	"ChallengeQuestEvent": 2025,
 	"ContributionExchangeEvent": 2030,
 	"NpcAutoEvent": 2040,
+	"EncounterEvent": 2045,
 	"NpcUpgradeSkillEvent": 2050,
 	"NpcAutoCraftArtifact": 2055,
 	"UnitTypeEvent": 2060,
@@ -25,6 +27,11 @@
 	//eco
 	"MapBuildPropertyEvent": 3000,
 	"BankAccountEvent": 3010,
+	"BankLoanEvent": 3015,
+	"WantedEvent": 3020,
+	"SeclusionEvent": 3022,
+	"FamilyEvent": 3024,
+	"FamilyFundEvent": 3025,
 	"BuildingArrangeEvent": 3030,
 	"RealStorageEvent": 3040,
 	"RealMarketEvent2": 3050,
@@ -56,6 +63,7 @@
 	"UISettingScreenEvent": 6025,
 	"UIEvent": 6030,
 	"NewGameEvent": 6040,
+	"AnimaWeaponEvent": 6045,
 
 	//time (month skip: after every other event, as before)
 	"TimeSkipEvent": 7000,

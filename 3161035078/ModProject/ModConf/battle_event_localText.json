@@ -2,82 +2,82 @@
 	{
 		"id": "480110100",
 		"key": "battleevent480110100",
-		"en": "Ha ha ha! The loot is mine! All of it!",
-		"ch": "哈哈哈！战利品是我的！所有这一切！",
-		"tc": "哈哈哈！戰利品是我的！所有這一切！",
-		"kr": "하하하! 전리품은 내꺼야! 전부!"
+		"en": "Fight all you like — when the dust settles, the loot is mine.",
+		"ch": "你们尽管打——尘埃落定之时，战利品归我。",
+		"tc": "你們儘管打——塵埃落定之時，戰利品歸我。",
+		"kr": "마음껏 싸워라. 먼지가 가라앉으면 전리품은 내 것이다."
 	},
 	{
 		"id": "480110200",
 		"key": "battleevent480110200",
-		"en": "Let me help!",
-		"ch": "让我帮忙吧！",
-		"tc": "讓我幫忙吧！",
-		"kr": "제가 도와드리겠습니다!"
+		"en": "Hold on, friend — I've got your back!",
+		"ch": "撑住，道友——我来助你！",
+		"tc": "撐住，道友——我來助你！",
+		"kr": "버텨라, 도우여—내가 돕겠다!"
 	},
 	{
 		"id": "480110300",
 		"key": "battleevent480110300",
-		"en": "Don't mess with our sect member!",
-		"ch": "别惹我们宗门人！",
-		"tc": "別惹我們宗門人！",
-		"kr": "우리 종파원을 건드리지 마세요!"
+		"en": "Whoever lays a hand on a disciple of our sect makes an enemy of the whole sect!",
+		"ch": "动我宗门弟子者，便是与我整个宗门为敌！",
+		"tc": "動我宗門弟子者，便是與我整個宗門為敵！",
+		"kr": "우리 종문 제자에게 손대는 자는 종문 전체의 적이다!"
 	},
 	{
 		"id": "480110400",
 		"key": "battleevent480110400",
-		"en": "You are not allowed to fight in town!",
-		"ch": "你不可以在城里打架！",
-		"tc": "你不可以在城裡打架！",
-		"kr": "마을에서는 싸울 수 없습니다!"
+		"en": "Brawling inside the town walls? Lay down your weapons, or the guard will lay you down!",
+		"ch": "胆敢在城中斗法？放下兵器，否则守卫替你放下！",
+		"tc": "膽敢在城中鬥法？放下兵器，否則守衛替你放下！",
+		"kr": "감히 성안에서 싸움질이냐? 무기를 내려놓아라, 아니면 수비대가 너를 눕히겠다!"
 	},
 	{
 		"id": "480110500",
 		"key": "battleevent480110500",
-		"en": "I have enough with you! Go to hell!",
-		"ch": "我和你已经够了！见鬼去吧！",
-		"tc": "我和你已經夠了！見鬼去吧！",
-		"kr": "나는 너와 함께라면 충분하다! 지옥에나 가라!"
+		"en": "I've followed you long enough. From today our paths part — at sword point.",
+		"ch": "跟了你这么久，够了。从今日起，你我刀兵相见。",
+		"tc": "跟了你這麼久，夠了。從今日起，你我刀兵相見。",
+		"kr": "너를 따른 것도 이제 충분하다. 오늘부터 우리는 칼끝으로 갈라선다."
 	},
 	{
 		"id": "480110501",
 		"key": "battleevent480110501",
-		"en": "The things you're doing are disgusting. Go to hell, you evil!",
-		"ch": "你所做的事情令人厌恶。下地狱去吧，你这个邪恶的人！",
-		"tc": "你所做的事情令人厭惡。下地獄去吧，你這個邪惡的人！",
-		"kr": "당신이 하고 있는 일은 역겹습니다. 지옥에나 가라, 이 악마야!"
+		"en": "I joined you to walk the righteous path, not to watch you stain it with blood. Today I set things right!",
+		"ch": "我随你是为行正道，不是看你满手血腥。今日，我替天行道！",
+		"tc": "我隨你是為行正道，不是看你滿手血腥。今日，我替天行道！",
+		"kr": "정도를 걷고자 너를 따랐지, 네 손에 피 묻히는 걸 보려던 게 아니다. 오늘 내가 바로잡겠다!"
 	},
 	{
 		"id": "480110502",
 		"key": "battleevent480110502",
-		"en": "Your lofty demeanor really makes me nauseous.",
-		"ch": "你那高高在上的神态真让我恶心。",
-		"tc": "你那高高在上的神態真讓我噁心。",
-		"kr": "당신의 고상한 태도가 정말 구역질이 나네요."
+		"en": "Spare me your sermons, 'righteous' one. I'll take your head and your treasures.",
+		"ch": "少跟我讲大道理，“正人君子”。你的人头和宝物，我都要了。",
+		"tc": "少跟我講大道理，「正人君子」。你的人頭和寶物，我都要了。",
+		"kr": "설교는 그만둬라, '정의로운' 양반. 네 목과 보물을 모두 가져가겠다."
 	},
 	{
 		"id": "480110600",
 		"key": "battleevent480110600",
-		"en": "I know you have it. Give it to me!",
-		"ch": "我知道你有。把它给我！",
-		"tc": "我知道你有。把它給我！",
-		"kr": "나는 당신이 그것을 가지고 있다는 것을 알고 있습니다. 나에게 줘!"
+		"en": "I saw you take the beast king's treasure. Hand it over and I might let you walk away.",
+		"ch": "我看见你拿走了那头妖王的宝物。交出来，或许我还能放你一条生路。",
+		"tc": "我看見你拿走了那頭妖王的寶物。交出來，或許我還能放你一條生路。",
+		"kr": "네가 요왕의 보물을 챙기는 걸 봤다. 내놓으면 살려 보내 줄 수도 있지."
 	},
 	{
 		"id": "480110601",
 		"key": "battleevent480110601",
-		"en": "Give me everything you've got on you!",
-		"ch": "把你身上的一切都给我！",
-		"tc": "把你身上的一切都給我！",
-		"kr": "당신이 가지고 있는 모든 것을 나에게 주세요!"
+		"en": "Your storage ring is heavy, isn't it? Let me lighten the load.",
+		"ch": "储物戒很沉吧？我来替你减轻点负担。",
+		"tc": "儲物戒很沉吧？我來替你減輕點負擔。",
+		"kr": "저장 반지가 꽤 무겁지? 내가 짐을 덜어 주마."
 	},
 	{
 		"id": "480110602",
 		"key": "battleevent480110602",
-		"en": "Don’t worry, I’m just ‘borrowing’ your stuff forever.",
-		"ch": "别担心，我只是永远“借用”你的东西。",
-		"tc": "別擔心，我只是永遠“借用”你的東西。",
-		"kr": "걱정하지 마세요. 저는 단지 당신의 물건을 영원히 '빌릴' 뿐입니다."
+		"en": "Think of it as a loan… one you'll never see again.",
+		"ch": "就当是借的……只不过永远不还罢了。",
+		"tc": "就當是借的……只不過永遠不還罷了。",
+		"kr": "빌려 가는 셈 치지… 다시는 돌려받지 못하겠지만."
 	},
 	{
 		"id": "480111990",
@@ -202,65 +202,193 @@
 	{
 		"id": "480112890",
 		"key": "battleevent480112890",
-		"en": "The land trembles beneath your feet as the battle rages on. Your choice now will determine your path!",
-		"ch": "随着战斗的激烈进行，大地在你脚下颤抖。你现在的选择将决定你的道路！",
-		"tc": "隨著戰鬥的激烈進行，大地在你腳下顫抖。你現在的選擇將決定你的道路！",
-		"kr": "전투가 격렬해지면서 땅이 당신의 발 아래에서 떨립니다. 지금 당신의 선택이 당신의 길을 결정할 것입니다!"
+		"en": "War drums thunder over the walls; arrows and spells fall like rain. You are caught between two armies — whichever side you choose, the other will remember.",
+		"ch": "城头战鼓如雷，箭矢与法术如雨而下。你被夹在两军之间——无论站在哪一边，另一边都会记住你。",
+		"tc": "城頭戰鼓如雷，箭矢與法術如雨而下。你被夾在兩軍之間——無論站在哪一邊，另一邊都會記住你。",
+		"kr": "성벽 위로 전고가 우레처럼 울리고 화살과 술법이 비처럼 쏟아진다. 두 군대 사이에 끼인 너—어느 편에 서든 다른 편은 너를 기억할 것이다."
 	},
 	{
 		"id": "480112891",
 		"key": "battleevent480112891",
-		"en": "Help defender",
-		"ch": "帮助后卫",
-		"tc": "幫助後衛",
-		"kr": "수비수를 도와주세요"
+		"en": "Defend the town",
+		"ch": "助守城",
+		"tc": "助守城",
+		"kr": "성을 지킨다"
 	},
 	{
 		"id": "480112892",
 		"key": "battleevent480112892",
-		"en": "Help invader",
-		"ch": "帮助入侵者",
-		"tc": "幫助入侵者",
-		"kr": "침략자를 도와주세요"
+		"en": "Join the attackers",
+		"ch": "助攻城",
+		"tc": "助攻城",
+		"kr": "공격군에 가담한다"
 	},
 	{
 		"id": "480112893",
 		"key": "battleevent480112893",
-		"en": "Try to escape",
-		"ch": "尝试逃跑",
-		"tc": "嘗試逃跑",
-		"kr": "탈출을 시도해보세요"
+		"en": "Slip away while you can",
+		"ch": "趁乱脱身",
+		"tc": "趁亂脫身",
+		"kr": "혼란을 틈타 빠져나간다"
 	},
 	{
 		"id": "480112894",
 		"key": "battleevent480112894",
-		"en": "{0} is invading {1}!\nWould you like to help?",
-		"ch": "{0}正在入侵{1}！\n您愿意帮忙吗？",
-		"tc": "{0}正在入侵{1}！\n您願意幫忙嗎？",
-		"kr": "{0}이(가) {1}을(를) 침공하고 있습니다!\n도와주시겠어요?"
+		"en": "{0}'s forces are storming the gates of {1}! The defenders are calling for any cultivator willing to fight.",
+		"ch": "{0}的大军正猛攻{1}的城门！守军正在召集愿意出手的修士。",
+		"tc": "{0}的大軍正猛攻{1}的城門！守軍正在召集願意出手的修士。",
+		"kr": "{0}의 군대가 {1}의 성문을 맹공하고 있다! 수비군이 싸울 의지가 있는 수사들을 모으고 있다."
 	},
 	{
 		"id": "480112895",
 		"key": "battleevent480112895",
-		"en": "{0} is under attack!\nWould you like to help?",
-		"ch": "{0} 受到攻击！\n您愿意帮忙吗？",
-		"tc": "{0} 受到攻擊！\n您願意幫忙嗎？",
-		"kr": "{0}이(가) 공격을 받고 있습니다!\n도와주시겠어요?"
+		"en": "{0} is under siege! Smoke rises from the walls, and the town's fate hangs by a thread.",
+		"ch": "{0}遭到围攻！城墙上浓烟滚滚，全城安危悬于一线。",
+		"tc": "{0}遭到圍攻！城牆上濃煙滾滾，全城安危懸於一線。",
+		"kr": "{0}이(가) 포위당했다! 성벽에서 연기가 피어오르고, 마을의 운명이 실낱같이 위태롭다."
 	},
 	{
 		"id": "480112898",
 		"key": "battleevent480112898",
-		"en": "Dont care",
-		"ch": "不在乎",
-		"tc": "不在乎",
-		"kr": "신경쓰지마"
+		"en": "Not my fight",
+		"ch": "与我无关",
+		"tc": "與我無關",
+		"kr": "내 싸움이 아니다"
 	},
 	{
 		"id": "480112899",
 		"key": "battleevent480112899",
-		"en": "Help",
-		"ch": "帮助",
-		"tc": "幫助",
-		"kr": "도움말"
+		"en": "Answer the call",
+		"ch": "出手相助",
+		"tc": "出手相助",
+		"kr": "도움에 응한다"
+	},
+	{
+		"id": "480114101",
+		"key": "battleevent480110100_1",
+		"en": "Two birds, one stone. Thank you both for softening each other up.",
+		"ch": "一石二鸟。多谢二位先替我耗尽了力气。",
+		"tc": "一石二鳥。多謝二位先替我耗盡了力氣。",
+		"kr": "일석이조로군. 서로 힘을 빼 줘서 고맙다."
+	},
+	{
+		"id": "480114102",
+		"key": "battleevent480110100_2",
+		"en": "I've been following you for three days. Today your storage ring changes owner.",
+		"ch": "我跟了你三天了。今天，你的储物戒该换主人了。",
+		"tc": "我跟了你三天了。今天，你的儲物戒該換主人了。",
+		"kr": "사흘 동안 너를 따라다녔다. 오늘 네 저장 반지의 주인이 바뀐다."
+	},
+	{
+		"id": "480114103",
+		"key": "battleevent480110100_3",
+		"en": "Heaven gives, and I take. Don't blame me — blame your luck.",
+		"ch": "天予不取，反受其咎。要怪就怪你运气不好。",
+		"tc": "天予不取，反受其咎。要怪就怪你運氣不好。",
+		"kr": "하늘이 주는 것을 마다할 수 없지. 원망하려면 네 운을 원망해라."
+	},
+	{
+		"id": "480114201",
+		"key": "battleevent480110200_1",
+		"en": "You owe me a jug of wine after this.",
+		"ch": "打完这一架，你可欠我一壶酒。",
+		"tc": "打完這一架，你可欠我一壺酒。",
+		"kr": "이 싸움이 끝나면 술 한 병은 사야 할 거다."
+	},
+	{
+		"id": "480114202",
+		"key": "battleevent480110200_2",
+		"en": "Picking on my friend? Then you answer to me as well.",
+		"ch": "欺负我的朋友？那就连我一起算上。",
+		"tc": "欺負我的朋友？那就連我一起算上。",
+		"kr": "내 친구를 괴롭혀? 그럼 나도 상대해야 할 거다."
+	},
+	{
+		"id": "480114301",
+		"key": "battleevent480110300_1",
+		"en": "Junior, stand back. Let me show them our sect's techniques.",
+		"ch": "师弟退后，让他们见识见识本门功法。",
+		"tc": "師弟退後，讓他們見識見識本門功法。",
+		"kr": "사제, 물러서라. 본문의 공법을 보여 주마."
+	},
+	{
+		"id": "480114302",
+		"key": "battleevent480110300_2",
+		"en": "The sect rules are clear: we never abandon our own.",
+		"ch": "门规写得明白：同门有难，绝不袖手。",
+		"tc": "門規寫得明白：同門有難，絕不袖手。",
+		"kr": "문규는 분명하다. 동문이 위험할 때 절대 외면하지 않는다."
+	},
+	{
+		"id": "480114401",
+		"key": "battleevent480110400_1",
+		"en": "By order of the Town Master: troublemakers will be dealt with on the spot!",
+		"ch": "奉镇长之命：滋事者，就地拿下！",
+		"tc": "奉鎮長之命：滋事者，就地拿下！",
+		"kr": "촌장의 명이다. 소란을 피우는 자는 즉시 제압한다!"
+	},
+	{
+		"id": "480114402",
+		"key": "battleevent480110400_2",
+		"en": "This town has laws. You'll learn them the hard way.",
+		"ch": "本镇自有法度，看来你得吃点苦头才记得住。",
+		"tc": "本鎮自有法度，看來你得吃點苦頭才記得住。",
+		"kr": "이 마을에도 법도가 있다. 몸으로 배우게 될 거다."
+	},
+	{
+		"id": "480114501",
+		"key": "battleevent480110500_1",
+		"en": "Someone offered me more than you ever did. Nothing personal.",
+		"ch": "有人出的价比你高。别怪我，这无关私怨。",
+		"tc": "有人出的價比你高。別怪我，這無關私怨。",
+		"kr": "누군가 너보다 더 많은 값을 쳐줬다. 개인적인 원한은 없다."
+	},
+	{
+		"id": "480114511",
+		"key": "battleevent480110501_1",
+		"en": "Every innocent you harmed weighs on my conscience. No more!",
+		"ch": "你害过的每一个无辜之人都压在我心头。到此为止！",
+		"tc": "你害過的每一個無辜之人都壓在我心頭。到此為止！",
+		"kr": "네가 해친 무고한 이들이 내 양심을 짓누른다. 여기까지다!"
+	},
+	{
+		"id": "480114521",
+		"key": "battleevent480110502_1",
+		"en": "Righteousness won't save you here. Only strength speaks in the jianghu.",
+		"ch": "江湖之上，正义救不了你，唯有拳头说话。",
+		"tc": "江湖之上，正義救不了你，唯有拳頭說話。",
+		"kr": "강호에서 정의는 너를 구하지 못한다. 오직 힘만이 말할 뿐."
+	},
+	{
+		"id": "480114610",
+		"key": "battleevent480110610",
+		"en": "Then come and take it!",
+		"ch": "有本事就来拿！",
+		"tc": "有本事就來拿！",
+		"kr": "가져갈 수 있으면 가져가 봐라!"
+	},
+	{
+		"id": "480114611",
+		"key": "battleevent480110611",
+		"en": "Pay them off ({0:#,##0} spirit stones)",
+		"ch": "破财消灾（{0:#,##0} 灵石）",
+		"tc": "破財消災（{0:#,##0} 靈石）",
+		"kr": "돈으로 해결한다 (영석 {0:#,##0})"
+	},
+	{
+		"id": "480114612",
+		"key": "battleevent480110612",
+		"en": "The stalker weighs the pouch, grins, and slips away with the others.",
+		"ch": "跟踪者掂了掂钱袋，咧嘴一笑，带着同伙悄然离去。",
+		"tc": "跟蹤者掂了掂錢袋，咧嘴一笑，帶著同夥悄然離去。",
+		"kr": "추적자는 돈주머니를 가늠해 보더니 씩 웃고 일행과 함께 사라졌다."
+	},
+	{
+		"id": "480114613",
+		"key": "battleevent480110613",
+		"en": "You don't have that many spirit stones. The stalker draws a blade.",
+		"ch": "你拿不出那么多灵石。跟踪者拔出了兵刃。",
+		"tc": "你拿不出那麼多靈石。跟蹤者拔出了兵刃。",
+		"kr": "그만한 영석이 없다. 추적자가 칼을 뽑아 들었다."
 	}
 ]

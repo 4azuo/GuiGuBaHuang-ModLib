@@ -74,8 +74,14 @@ sequenceDiagram
 
 1. `RefreshParameterStore()` - snapshot of units (with a valid area), buildings, towns, schools; ModChild overrides cleared.
 2. `OnRefreshParameterStoreOnMonthly` - mods can narrow the snapshot (`ModChild.SetParameterStore`, e.g. Taoist `PrepareEvent`).
-3. `OnFirstMonth` (once per save), `OnMonthly`, `OnMonthlyForEachWUnit(wunit)` for every unit of the store, `OnYearly` every 12 months.
-4. `OnWorldRunEnd`, then `GameHelper.SaveGame()`.
+3. `OnFirstMonth` (once per save), `OnMonthly`, `OnMonthlyForEachWUnit(wunit)` for every unit of the store, `OnYearly` when a year boundary (month multiple of 12) was crossed.
+4. `OnWorldRunEnd`, then `GameHelper.SaveGame()` (skipped while `ModMaster.NoSaveOnWorldRunEnd`).
+
+One dispatch can stand for several months: when the calendar moved N months since the previous dispatch (a time skip advancing months without dispatching them), `ModMaster.MonthsPassed` = N and `ModMaster.YearsPassed` = the year boundaries crossed (1 / 0 in normal play; formulas in `TimeScaleHelper`). Handlers scale by them:
+
+- amounts (interest, fees, taxes, wages, income, exp): x `MonthsPassed` (yearly ones x `YearsPassed`);
+- monthly chances: `ModMaster.ChanceOver(chance, MonthsPassed)` = the chance of at least one over N months;
+- "every P months" handlers (`GetGameTotalMonth() % P == 0`): `ModMaster.Ticks(P)` = the multiples of P passed (0, 1 or more).
 
 `OnSave` (game save) dispatches to events, then writes `Gamevar`, all caches (`CacheHelper.Save`) and the log (`DebugHelper.Save`).
 

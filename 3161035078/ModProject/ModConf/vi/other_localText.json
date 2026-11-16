@@ -135,11 +135,6 @@
 		"en|ch|tc|kr": "Bạn đã nhận được lời mời từ Chủ thị trấn {0}' cho vị trí người giám hộ?\nBạn có muốn trở thành Người bảo vệ thị trấn không?"
 	},
 	{
-		"id": 500020027,
-		"key": "other500020027",
-		"en|ch|tc|kr": "Bạn không có đủ {0:#,##0} Đá Linh hồn để thanh toán!"
-	},
-	{
 		"id": 500020028,
 		"key": "other500020028",
 		"en|ch|tc|kr": "Mỗi khi bạn chết trong trận chiến, mạng sống của bạn sẽ bị mất. Và khi tuổi của bạn qua đi, phần lưu của bạn sẽ bị xóa. Xin hãy cẩn thận."
@@ -218,11 +213,6 @@
 		"id": 500020043,
 		"key": "other500020043",
 		"en|ch|tc|kr": "{0:#,##0} Đá Linh Hồn/tháng"
-	},
-	{
-		"id": 500020044,
-		"key": "other500020044",
-		"en|ch|tc|kr": "Lẻn qua"
 	},
 	{
 		"id": 500020045,
@@ -390,31 +380,6 @@
 		"en|ch|tc|kr": "từ bỏ"
 	},
 	{
-		"id": 500020078,
-		"key": "other500020078",
-		"en|ch|tc|kr": "Bạn đã rút lui? Sau tất cả những gì chúng ta đã đồng ý? Tôi không hài lòng với những giao dịch thất bại - bạn chỉ lãng phí thời gian của tôi."
-	},
-	{
-		"id": 500020079,
-		"key": "other500020079",
-		"en|ch|tc|kr": "Việc đó diễn ra suôn sẻ! Luôn tuyệt vời khi làm việc với một người biết họ đang làm gì."
-	},
-	{
-		"id": 500020080,
-		"key": "other500020080",
-		"en|ch|tc|kr": "Bạn không thể nghiêm túc được. Bạn nợ tôi nhiều hơn một tiếng 'không'!"
-	},
-	{
-		"id": 500020081,
-		"key": "other500020081",
-		"en|ch|tc|kr": "Cái gì? Bạn biết tôi sẽ đến! Dù sao thì bạn cũng đã bán nó rồi phải không?"
-	},
-	{
-		"id": 500020082,
-		"key": "other500020082",
-		"en|ch|tc|kr": "[{0}] đã được bán."
-	},
-	{
 		"id": 500020083,
 		"key": "other500020083",
 		"en|ch|tc|kr": "Không xác định"
@@ -440,11 +405,6 @@
 		"en|ch|tc|kr": "Bạn không có đủ đá tinh thần!"
 	},
 	{
-		"id": 500020088,
-		"key": "other500020088",
-		"en|ch|tc|kr": "Bạn đang cố gắng bỏ rơi tôi phải không?"
-	},
-	{
 		"id": 500020089,
 		"key": "other500020089",
 		"en|ch|tc|kr": "Sát thương x{0}"
@@ -463,11 +423,6 @@
 		"id": 500020092,
 		"key": "other500020092",
 		"en|ch|tc|kr": "Ưu đãi"
-	},
-	{
-		"id": 500020093,
-		"key": "other500020093",
-		"en|ch|tc|kr": "Cái gì?! Đã hủy? Trông tôi có giống như đang lãng phí thời gian không?"
 	},
 	{
 		"id": 500020094,

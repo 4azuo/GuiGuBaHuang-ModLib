@@ -1,0 +1,1866 @@
+﻿[
+  {
+    "id": -1000006000,
+    "key": "log_title",
+    "en": "Taoist log",
+    "ch": "道教日志",
+    "tc": "道教日誌",
+    "kr": "도교 기록"
+  },
+  {
+    "id": -1000006001,
+    "key": "log_line",
+    "en": "Y{0} M{1}: {2}",
+    "ch": "{0}年{1}月：{2}",
+    "tc": "{0}年{1}月：{2}",
+    "kr": "{0}년 {1}월: {2}"
+  },
+  {
+    "id": -1000006002,
+    "key": "log_empty",
+    "en": "Nothing yet.",
+    "ch": "暂无记录。",
+    "tc": "暫無記錄。",
+    "kr": "아직 기록이 없습니다."
+  },
+  {
+    "id": -1000006003,
+    "key": "log_tax_paid",
+    "en": "Paid {0:#,##0} spirit stones of tax in {1}.",
+    "ch": "在{1}缴纳税金 {0:#,##0} 灵石。",
+    "tc": "在{1}繳納稅金 {0:#,##0} 靈石。",
+    "kr": "{1}에서 세금 영석 {0:#,##0}을 냈다."
+  },
+  {
+    "id": -1000006004,
+    "key": "log_storage_fee",
+    "en": "Paid {0:#,##0} spirit stones of storage fees.",
+    "ch": "支付仓库保管费 {0:#,##0} 灵石。",
+    "tc": "支付倉庫保管費 {0:#,##0} 靈石。",
+    "kr": "창고 보관료 영석 {0:#,##0}을 냈다."
+  },
+  {
+    "id": -1000006005,
+    "key": "log_market_sold",
+    "en": "Sold {0} x {1} for {2:#,##0} spirit stones to {3}.",
+    "ch": "以 {2:#,##0} 灵石将 {0} 个{1}卖给了{3}。",
+    "tc": "以 {2:#,##0} 靈石將 {0} 個{1}賣給了{3}。",
+    "kr": "{1} {0}개를 영석 {2:#,##0}에 {3}에게 팔았다."
+  },
+  {
+    "id": -1000006006,
+    "key": "log_market_bought",
+    "en": "Bought {0} x {1} for {2:#,##0} spirit stones from {3}.",
+    "ch": "以 {2:#,##0} 灵石从{3}处买下 {0} 个{1}。",
+    "tc": "以 {2:#,##0} 靈石從{3}處買下 {0} 個{1}。",
+    "kr": "{3}에게서 {1} {0}개를 영석 {2:#,##0}에 샀다."
+  },
+  {
+    "id": -1000006007,
+    "key": "log_stalker_paid",
+    "en": "Paid off the stalker {0} with {1:#,##0} spirit stones.",
+    "ch": "花费 {1:#,##0} 灵石打发了跟踪者{0}。",
+    "tc": "花費 {1:#,##0} 靈石打發了跟蹤者{0}。",
+    "kr": "영석 {1:#,##0}으로 추적자 {0}을(를) 돌려보냈다."
+  },
+  {
+    "id": -1000006008,
+    "key": "log_team_friend",
+    "en": "{0} fought beside you so often that they now call you a friend (no more salary).",
+    "ch": "{0}与你并肩作战多次，如今视你为挚友（不再收取酬劳）。",
+    "tc": "{0}與你並肩作戰多次，如今視你為摯友（不再收取酬勞）。",
+    "kr": "{0}은(는) 여러 번 함께 싸운 끝에 너를 친구로 여기게 되었다 (더 이상 보수를 받지 않음)."
+  },
+  {
+    "id": -1000006009,
+    "key": "log_town_call",
+    "en": "{0} was attacked by {1}; you were called back to defend it.",
+    "ch": "{0}遭{1}进攻，你被召回守城。",
+    "tc": "{0}遭{1}進攻，你被召回守城。",
+    "kr": "{0}이(가) {1}의 공격을 받아 방어를 위해 소환되었다."
+  },
+  {
+    "id": -1000006010,
+    "key": "log_town_defended",
+    "en": "{0} held thanks to you. +{1} reputation.",
+    "ch": "{0}因你而守住了。声望 +{1}。",
+    "tc": "{0}因你而守住了。聲望 +{1}。",
+    "kr": "네 덕분에 {0}을(를) 지켜냈다. 명성 +{1}."
+  },
+  {
+    "id": -1000006011,
+    "key": "log_refine_reroll",
+    "en": "Rerolled slot #{1} of {0}: {2} -> {3} ({4:#,##0} spirit stones).",
+    "ch": "重铸{0}的第{1}个词条：{2} -> {3}（{4:#,##0} 灵石）。",
+    "tc": "重鑄{0}的第{1}個詞條：{2} -> {3}（{4:#,##0} 靈石）。",
+    "kr": "{0}의 {1}번 슬롯 재설정: {2} -> {3} (영석 {4:#,##0})."
+  },
+  {
+    "id": -1000006020,
+    "key": "town_call",
+    "en": "A messenger bird drops a blood-stained note: {0} is under attack by {1}! The walls will not hold long. As its {2}, the town calls you back.",
+    "ch": "一只传信鸟落下一张染血的字条：{1}正在进攻{0}！城墙撑不了多久。身为{2}，城中众人盼你速归。",
+    "tc": "一隻傳信鳥落下一張染血的字條：{1}正在進攻{0}！城牆撐不了多久。身為{2}，城中眾人盼你速歸。",
+    "kr": "전서조가 피 묻은 쪽지를 떨어뜨렸다. {1}이(가) {0}을(를) 공격하고 있다! 성벽은 오래 버티지 못한다. {2}인 너를 마을이 부르고 있다."
+  },
+  {
+    "id": -1000006021,
+    "key": "town_call_o1",
+    "en": "Rush back and defend the town",
+    "ch": "火速回城守卫",
+    "tc": "火速回城守衛",
+    "kr": "서둘러 돌아가 마을을 지킨다"
+  },
+  {
+    "id": -1000006022,
+    "key": "town_call_o2",
+    "en": "Trust the guardians",
+    "ch": "相信守护者们",
+    "tc": "相信守護者們",
+    "kr": "수호자들을 믿는다"
+  },
+  {
+    "id": -1000006023,
+    "key": "town_taxstat",
+    "en": "Last month: {0:#,##0} spirit stones from {1} residents; {2} could not pay and left the town",
+    "ch": "上月：{1} 名居民缴税 {0:#,##0} 灵石；{2} 人无力缴税而离开",
+    "tc": "上月：{1} 名居民繳稅 {0:#,##0} 靈石；{2} 人無力繳稅而離開",
+    "kr": "지난달: 주민 {1}명에게서 영석 {0:#,##0}; {2}명은 세금을 내지 못해 떠남"
+  },
+  {
+    "id": -1000006024,
+    "key": "town_taxstat_none",
+    "en": "No tax collected yet",
+    "ch": "尚未征收税金",
+    "tc": "尚未徵收稅金",
+    "kr": "아직 징수한 세금이 없음"
+  },
+  {
+    "id": -1000006030,
+    "key": "market_history",
+    "en": "Recent deals: avg {0:#,##0} (min {1:#,##0}, max {2:#,##0}, {3} deals)",
+    "ch": "近期成交：均价 {0:#,##0}（最低 {1:#,##0}，最高 {2:#,##0}，共 {3} 笔）",
+    "tc": "近期成交：均價 {0:#,##0}（最低 {1:#,##0}，最高 {2:#,##0}，共 {3} 筆）",
+    "kr": "최근 거래: 평균 {0:#,##0} (최저 {1:#,##0}, 최고 {2:#,##0}, {3}건)"
+  },
+  {
+    "id": -1000006031,
+    "key": "market_nohistory",
+    "en": "No recent deal for this item",
+    "ch": "此物品近期无成交",
+    "tc": "此物品近期無成交",
+    "kr": "이 물건의 최근 거래 없음"
+  },
+  {
+    "id": -1000006032,
+    "key": "market_offer_title",
+    "en": "New offers on your listings",
+    "ch": "你的挂售有新报价",
+    "tc": "你的掛售有新報價",
+    "kr": "판매 물품에 새 제안"
+  },
+  {
+    "id": -1000006033,
+    "key": "market_offer_line",
+    "en": "{0}: {1} offers {2:#,##0} ({3} buyers)",
+    "ch": "{0}：{1}出价 {2:#,##0}（{3} 位买家）",
+    "tc": "{0}：{1}出價 {2:#,##0}（{3} 位買家）",
+    "kr": "{0}: {1}이(가) {2:#,##0} 제안 (구매자 {3}명)"
+  },
+  {
+    "id": -1000006034,
+    "key": "market_buyorders",
+    "en": "Buy Orders",
+    "ch": "求购",
+    "tc": "求購",
+    "kr": "구매 주문"
+  },
+  {
+    "id": -1000006035,
+    "key": "market_buyorders_desc",
+    "en": "Ask for an item at a price: the spirit stones are held now, and the townspeople who own it may sell it to you each month. Unfilled orders are refunded after {0} months.",
+    "ch": "以指定价格求购物品：灵石立即冻结，城中持有该物品的人每月可能卖给你。未成交的求购 {0} 个月后退款。",
+    "tc": "以指定價格求購物品：靈石立即凍結，城中持有該物品的人每月可能賣給你。未成交的求購 {0} 個月後退款。",
+    "kr": "원하는 가격으로 물건을 구합니다. 영석은 즉시 보관되며, 그 물건을 가진 주민이 매달 팔 수 있습니다. 체결되지 않은 주문은 {0}개월 후 환불됩니다."
+  },
+  {
+    "id": -1000006036,
+    "key": "market_buyorders_none",
+    "en": "You have no buy order.",
+    "ch": "你没有求购单。",
+    "tc": "你沒有求購單。",
+    "kr": "구매 주문이 없습니다."
+  },
+  {
+    "id": -1000006037,
+    "key": "market_buyorder_line",
+    "en": "{0} x {1} at {2:#,##0} in {3} ({4} months left)",
+    "ch": "{3}：{1} x{0}，单价 {2:#,##0}（剩余 {4} 个月）",
+    "tc": "{3}：{1} x{0}，單價 {2:#,##0}（剩餘 {4} 個月）",
+    "kr": "{3}: {1} {0}개, 개당 {2:#,##0} (남은 기간 {4}개월)"
+  },
+  {
+    "id": -1000006038,
+    "key": "market_buyorder_new",
+    "en": "New buy order",
+    "ch": "新建求购",
+    "tc": "新建求購",
+    "kr": "새 구매 주문"
+  },
+  {
+    "id": -1000006039,
+    "key": "market_buyorder_pick",
+    "en": "Choose the item you want",
+    "ch": "选择想要求购的物品",
+    "tc": "選擇想要求購的物品",
+    "kr": "원하는 물건을 고르세요"
+  },
+  {
+    "id": -1000006040,
+    "key": "market_buyorder_unitprice",
+    "en": "Unit price",
+    "ch": "单价",
+    "tc": "單價",
+    "kr": "개당 가격"
+  },
+  {
+    "id": -1000006041,
+    "key": "market_buyorder_total",
+    "en": "Held: {0:#,##0} spirit stones, chance a seller accepts each month: {1:0}%",
+    "ch": "冻结：{0:#,##0} 灵石，每月卖家接受概率：{1:0}%",
+    "tc": "凍結：{0:#,##0} 靈石，每月賣家接受機率：{1:0}%",
+    "kr": "보관: 영석 {0:#,##0}, 매달 판매자 수락 확률: {1:0}%"
+  },
+  {
+    "id": -1000006042,
+    "key": "market_buyorder_place",
+    "en": "Place the order",
+    "ch": "发布求购",
+    "tc": "發布求購",
+    "kr": "주문하기"
+  },
+  {
+    "id": -1000006043,
+    "key": "market_buyorder_fail",
+    "en": "Not enough spirit stones, or already {0} orders.",
+    "ch": "灵石不足，或求购单已达 {0} 个。",
+    "tc": "靈石不足，或求購單已達 {0} 個。",
+    "kr": "영석이 부족하거나 이미 주문이 {0}개입니다."
+  },
+  {
+    "id": -1000006044,
+    "key": "market_buyorder_filled",
+    "en": "Buy order: {2} sold you {0} x {1} for {3:#,##0} spirit stones.",
+    "ch": "求购成交：{2}以 {3:#,##0} 灵石卖给你 {0} 个{1}。",
+    "tc": "求購成交：{2}以 {3:#,##0} 靈石賣給你 {0} 個{1}。",
+    "kr": "구매 주문: {2}이(가) {1} {0}개를 영석 {3:#,##0}에 팔았다."
+  },
+  {
+    "id": -1000006045,
+    "key": "log_buyorder_new",
+    "en": "Buy order placed: {0} x {1} at {2:#,##0} in {3}.",
+    "ch": "在{3}发布求购：{1} x{0}，单价 {2:#,##0}。",
+    "tc": "在{3}發布求購：{1} x{0}，單價 {2:#,##0}。",
+    "kr": "{3}에 구매 주문: {1} {0}개, 개당 {2:#,##0}."
+  },
+  {
+    "id": -1000006046,
+    "key": "log_buyorder_cancel",
+    "en": "Buy order cancelled: {0} x {1}, {2:#,##0} spirit stones refunded.",
+    "ch": "取消求购：{1} x{0}，退还 {2:#,##0} 灵石。",
+    "tc": "取消求購：{1} x{0}，退還 {2:#,##0} 靈石。",
+    "kr": "구매 주문 취소: {1} {0}개, 영석 {2:#,##0} 환불."
+  },
+  {
+    "id": -1000006047,
+    "key": "log_buyorder_expired",
+    "en": "Buy order expired: {0} x {1}, {2:#,##0} spirit stones refunded.",
+    "ch": "求购到期：{1} x{0}，退还 {2:#,##0} 灵石。",
+    "tc": "求購到期：{1} x{0}，退還 {2:#,##0} 靈石。",
+    "kr": "구매 주문 만료: {1} {0}개, 영석 {2:#,##0} 환불."
+  },
+  {
+    "id": -1000006050,
+    "key": "refine_pick",
+    "en": "Select an item to see its refine progress",
+    "ch": "选择物品以查看精炼进度",
+    "tc": "選擇物品以查看精煉進度",
+    "kr": "물건을 고르면 연마 진행도가 표시됩니다"
+  },
+  {
+    "id": -1000006051,
+    "key": "refine_progress",
+    "en": "Refine level {0} ({1:#,##0} / {2:#,##0} exp) — {3}",
+    "ch": "精炼等级 {0}（经验 {1:#,##0} / {2:#,##0}）—— {3}",
+    "tc": "精煉等級 {0}（經驗 {1:#,##0} / {2:#,##0}）—— {3}",
+    "kr": "연마 레벨 {0} (경험 {1:#,##0} / {2:#,##0}) — {3}"
+  },
+  {
+    "id": -1000006052,
+    "key": "refine_nextslot",
+    "en": "next slot unlocks at level {0}",
+    "ch": "下一词条于 {0} 级解锁",
+    "tc": "下一詞條於 {0} 級解鎖",
+    "kr": "다음 슬롯은 {0}레벨에 해금"
+  },
+  {
+    "id": -1000006053,
+    "key": "refine_allslots",
+    "en": "all slots unlocked",
+    "ch": "所有词条已解锁",
+    "tc": "所有詞條已解鎖",
+    "kr": "모든 슬롯 해금됨"
+  },
+  {
+    "id": -1000006054,
+    "key": "refine_reroll",
+    "en": "Reroll slots",
+    "ch": "重铸词条",
+    "tc": "重鑄詞條",
+    "kr": "슬롯 재설정"
+  },
+  {
+    "id": -1000006055,
+    "key": "refine_reroll_btn",
+    "en": "Reroll ({0:#,##0})",
+    "ch": "重铸（{0:#,##0}）",
+    "tc": "重鑄（{0:#,##0}）",
+    "kr": "재설정 ({0:#,##0})"
+  },
+  {
+    "id": -1000006056,
+    "key": "refine_reroll_desc",
+    "en": "A reroll gives an unlocked slot a new random type, quality and strength. The smith keeps the spirit stones.",
+    "ch": "重铸会为已解锁的词条随机生成新的类型、品质与强度。灵石归铁匠铺所有。",
+    "tc": "重鑄會為已解鎖的詞條隨機生成新的類型、品質與強度。靈石歸鐵匠鋪所有。",
+    "kr": "재설정하면 해금된 슬롯의 종류, 품질, 강도가 새로 무작위로 정해집니다. 영석은 대장간이 가져갑니다."
+  },
+  {
+    "id": -1000006060,
+    "key": "loan_title",
+    "en": "Bank loan",
+    "ch": "钱庄借贷",
+    "tc": "錢莊借貸",
+    "kr": "은행 대출"
+  },
+  {
+    "id": -1000006061,
+    "key": "loan_terms",
+    "en": "Interest {0:0}% a month, due in {1} months. Overdue: +{2:0}% a month.",
+    "ch": "月息 {0:0}%，{1} 个月内还清。逾期：每月额外 +{2:0}%。",
+    "tc": "月息 {0:0}%，{1} 個月內還清。逾期：每月額外 +{2:0}%。",
+    "kr": "월 이자 {0:0}%, 상환 기한 {1}개월. 연체 시 매달 +{2:0}%."
+  },
+  {
+    "id": -1000006062,
+    "key": "loan_warning",
+    "en": "Unpaid debts are collected by force. Those who beat the collectors twice are blacklisted: no loans anywhere, the account here is closed and taxes here triple.",
+    "ch": "欠债不还，必遭追讨。两次击退讨债人者将被列入黑名单：各地钱庄不再放贷，本地账户被注销，本地税金三倍。",
+    "tc": "欠債不還，必遭追討。兩次擊退討債人者將被列入黑名單：各地錢莊不再放貸，本地帳戶被註銷，本地稅金三倍。",
+    "kr": "갚지 않은 빚은 강제로 받아냅니다. 추심인을 두 번 물리친 자는 블랙리스트에 올라 어디서도 대출을 받을 수 없고, 이곳 계좌는 해지되며 이곳 세금이 세 배가 됩니다."
+  },
+  {
+    "id": -1000006063,
+    "key": "loan_limit",
+    "en": "You may borrow up to {0:#,##0} spirit stones (bank vault: {1:#,##0}).",
+    "ch": "可借上限 {0:#,##0} 灵石（钱庄库存：{1:#,##0}）。",
+    "tc": "可借上限 {0:#,##0} 靈石（錢莊庫存：{1:#,##0}）。",
+    "kr": "최대 영석 {0:#,##0}까지 빌릴 수 있습니다 (은행 금고: {1:#,##0})."
+  },
+  {
+    "id": -1000006064,
+    "key": "loan_amount",
+    "en": "Amount",
+    "ch": "金额",
+    "tc": "金額",
+    "kr": "금액"
+  },
+  {
+    "id": -1000006065,
+    "key": "loan_borrow",
+    "en": "Borrow",
+    "ch": "借款",
+    "tc": "借款",
+    "kr": "빌리기"
+  },
+  {
+    "id": -1000006066,
+    "key": "loan_state",
+    "en": "Loan from {0}: borrowed {1:#,##0}, owed {2:#,##0}, due in {3} months",
+    "ch": "{0}借款：借入 {1:#,##0}，欠款 {2:#,##0}，{3} 个月后到期",
+    "tc": "{0}借款：借入 {1:#,##0}，欠款 {2:#,##0}，{3} 個月後到期",
+    "kr": "{0} 대출: 빌린 돈 {1:#,##0}, 갚을 돈 {2:#,##0}, 기한 {3}개월"
+  },
+  {
+    "id": -1000006067,
+    "key": "loan_state_blacklist",
+    "en": "You are on the blacklist of the bank of {0}. No bank will lend to you.",
+    "ch": "你已被{0}钱庄列入黑名单，再无钱庄肯借钱给你。",
+    "tc": "你已被{0}錢莊列入黑名單，再無錢莊肯借錢給你。",
+    "kr": "너는 {0} 은행의 블랙리스트에 올랐다. 어느 은행도 돈을 빌려주지 않는다."
+  },
+  {
+    "id": -1000006068,
+    "key": "loan_repay_amount",
+    "en": "Repay",
+    "ch": "还款金额",
+    "tc": "還款金額",
+    "kr": "상환액"
+  },
+  {
+    "id": -1000006069,
+    "key": "loan_repay",
+    "en": "Repay",
+    "ch": "还款",
+    "tc": "還款",
+    "kr": "상환하기"
+  },
+  {
+    "id": -1000006070,
+    "key": "loan_err_blacklist",
+    "en": "The clerk shakes his head: your name is on the blacklist.",
+    "ch": "掌柜摇了摇头：你的名字在黑名单上。",
+    "tc": "掌櫃搖了搖頭：你的名字在黑名單上。",
+    "kr": "점원이 고개를 젓는다. 네 이름이 블랙리스트에 있다."
+  },
+  {
+    "id": -1000006071,
+    "key": "loan_err_loan",
+    "en": "Repay your current loan first.",
+    "ch": "请先还清现有借款。",
+    "tc": "請先還清現有借款。",
+    "kr": "먼저 현재 대출을 갚으세요."
+  },
+  {
+    "id": -1000006072,
+    "key": "loan_err_account",
+    "en": "Open an account at this bank first.",
+    "ch": "请先在此钱庄开户。",
+    "tc": "請先在此錢莊開戶。",
+    "kr": "먼저 이 은행에 계좌를 여세요."
+  },
+  {
+    "id": -1000006073,
+    "key": "loan_err_limit",
+    "en": "That amount is above your limit.",
+    "ch": "金额超出你的借款上限。",
+    "tc": "金額超出你的借款上限。",
+    "kr": "한도를 넘는 금액입니다."
+  },
+  {
+    "id": -1000006074,
+    "key": "loan_err_budget",
+    "en": "The bank vault does not hold that much.",
+    "ch": "钱庄库存不足。",
+    "tc": "錢莊庫存不足。",
+    "kr": "은행 금고에 그만한 돈이 없습니다."
+  },
+  {
+    "id": -1000006075,
+    "key": "loan_letter",
+    "en": "A letter from the bank of {0}: \"Your loan is {2} month(s) overdue. You now owe {1:#,##0} spirit stones. We trust this is an oversight.\"",
+    "ch": "{0}钱庄来信：“阁下借款已逾期 {2} 个月，现欠 {1:#,##0} 灵石。想必只是一时疏忽。”",
+    "tc": "{0}錢莊來信：「閣下借款已逾期 {2} 個月，現欠 {1:#,##0} 靈石。想必只是一時疏忽。」",
+    "kr": "{0} 은행의 편지: \"대출이 {2}개월 연체되었습니다. 현재 갚으실 돈은 영석 {1:#,##0}입니다. 단순한 실수라고 믿겠습니다.\""
+  },
+  {
+    "id": -1000006076,
+    "key": "loan_letter_o1",
+    "en": "Put the letter away",
+    "ch": "把信收起来",
+    "tc": "把信收起來",
+    "kr": "편지를 치운다"
+  },
+  {
+    "id": -1000006077,
+    "key": "loan_collector",
+    "en": "\"The bank of {0} sends its regards.\" The collector cracks his knuckles. \"{1:#,##0} spirit stones. Today.\"",
+    "ch": "“{0}钱庄向你问好。”讨债人掰了掰指节，“{1:#,##0} 灵石，今天还清。”",
+    "tc": "「{0}錢莊向你問好。」討債人掰了掰指節，「{1:#,##0} 靈石，今天還清。」",
+    "kr": "\"{0} 은행에서 안부를 전하더군.\" 추심인이 손가락 마디를 꺾는다. \"영석 {1:#,##0}. 오늘 당장.\""
+  },
+  {
+    "id": -1000006078,
+    "key": "loan_collector_o1",
+    "en": "Pay {0:#,##0} spirit stones",
+    "ch": "支付 {0:#,##0} 灵石",
+    "tc": "支付 {0:#,##0} 靈石",
+    "kr": "영석 {0:#,##0}을 낸다"
+  },
+  {
+    "id": -1000006079,
+    "key": "loan_collector_o2",
+    "en": "Hand over what I have",
+    "ch": "交出身上的财物",
+    "tc": "交出身上的財物",
+    "kr": "가진 것을 내준다"
+  },
+  {
+    "id": -1000006080,
+    "key": "loan_collector_o3",
+    "en": "Fight",
+    "ch": "动手",
+    "tc": "動手",
+    "kr": "싸운다"
+  },
+  {
+    "id": -1000006081,
+    "key": "loan_paid",
+    "en": "The collector counts the stones twice, nods and leaves. The debt is settled.",
+    "ch": "讨债人把灵石数了两遍，点点头离开了。债务已清。",
+    "tc": "討債人把靈石數了兩遍，點點頭離開了。債務已清。",
+    "kr": "추심인이 영석을 두 번 세더니 고개를 끄덕이고 떠났다. 빚이 청산되었다."
+  },
+  {
+    "id": -1000006082,
+    "key": "loan_seized",
+    "en": "The collector takes goods worth {0:#,##0} spirit stones. The debt is settled, but your reputation suffers.",
+    "ch": "讨债人拿走了价值 {0:#,##0} 灵石的财物。债务已清，但你的名声受损。",
+    "tc": "討債人拿走了價值 {0:#,##0} 靈石的財物。債務已清，但你的名聲受損。",
+    "kr": "추심인이 영석 {0:#,##0} 상당의 재물을 가져갔다. 빚은 청산되었지만 명성이 떨어졌다."
+  },
+  {
+    "id": -1000006083,
+    "key": "loan_seized_part",
+    "en": "The collector takes goods worth {0:#,##0} spirit stones. You still owe {1:#,##0}.",
+    "ch": "讨债人拿走了价值 {0:#,##0} 灵石的财物。你仍欠 {1:#,##0}。",
+    "tc": "討債人拿走了價值 {0:#,##0} 靈石的財物。你仍欠 {1:#,##0}。",
+    "kr": "추심인이 영석 {0:#,##0} 상당의 재물을 가져갔다. 아직 {1:#,##0}을 갚아야 한다."
+  },
+  {
+    "id": -1000006084,
+    "key": "loan_lost",
+    "en": "Beaten, you watch the collector empty your bag: {0:#,##0} spirit stones' worth. Still owed: {1:#,##0}.",
+    "ch": "你被打倒在地，眼看着讨债人搜刮了价值 {0:#,##0} 灵石的财物。仍欠：{1:#,##0}。",
+    "tc": "你被打倒在地，眼看著討債人搜刮了價值 {0:#,##0} 靈石的財物。仍欠：{1:#,##0}。",
+    "kr": "쓰러진 채 추심인이 영석 {0:#,##0} 상당의 재물을 털어가는 것을 지켜볼 수밖에 없었다. 남은 빚: {1:#,##0}."
+  },
+  {
+    "id": -1000006085,
+    "key": "loan_beaten",
+    "en": "The collector limps away. \"The bank does not forget,\" he spits. \"Next time we send someone stronger.\"",
+    "ch": "讨债人一瘸一拐地逃走，啐了一口：“钱庄可不会忘。下次来的人会更厉害。”",
+    "tc": "討債人一瘸一拐地逃走，啐了一口：「錢莊可不會忘。下次來的人會更厲害。」",
+    "kr": "추심인이 절뚝이며 물러나 침을 뱉었다. \"은행은 잊지 않는다. 다음엔 더 강한 자를 보내겠다.\""
+  },
+  {
+    "id": -1000006086,
+    "key": "loan_blacklisted",
+    "en": "The bank of {1} gives up on its {0:#,##0} spirit stones — and on you. Your name goes on the blacklist: no more loans, your account there is closed and its guards will tax you three times over.",
+    "ch": "{1}钱庄放弃了那 {0:#,##0} 灵石——也放弃了你。你的名字被列入黑名单：再无借贷，当地账户被注销，守卫将向你征收三倍税金。",
+    "tc": "{1}錢莊放棄了那 {0:#,##0} 靈石——也放棄了你。你的名字被列入黑名單：再無借貸，當地帳戶被註銷，守衛將向你徵收三倍稅金。",
+    "kr": "{1} 은행은 영석 {0:#,##0}을—그리고 너를—포기했다. 네 이름이 블랙리스트에 올랐다: 더는 대출이 없고, 그곳 계좌는 해지되며 수비병이 세 배의 세금을 걷는다."
+  },
+  {
+    "id": -1000006087,
+    "key": "log_loan_borrow",
+    "en": "Borrowed {0:#,##0} spirit stones from the bank of {1} (due in {2} months).",
+    "ch": "从{1}钱庄借入 {0:#,##0} 灵石（{2} 个月后到期）。",
+    "tc": "從{1}錢莊借入 {0:#,##0} 靈石（{2} 個月後到期）。",
+    "kr": "{1} 은행에서 영석 {0:#,##0}을 빌렸다 (기한 {2}개월)."
+  },
+  {
+    "id": -1000006088,
+    "key": "log_loan_repay",
+    "en": "Repaid {0:#,##0} spirit stones (still owed {1:#,##0}).",
+    "ch": "还款 {0:#,##0} 灵石（仍欠 {1:#,##0}）。",
+    "tc": "還款 {0:#,##0} 靈石（仍欠 {1:#,##0}）。",
+    "kr": "영석 {0:#,##0} 상환 (남은 빚 {1:#,##0})."
+  },
+  {
+    "id": -1000006089,
+    "key": "log_loan_closed",
+    "en": "The loan is settled.",
+    "ch": "借款已结清。",
+    "tc": "借款已結清。",
+    "kr": "대출이 청산되었다."
+  },
+  {
+    "id": -1000006090,
+    "key": "log_loan_overdue",
+    "en": "Loan overdue for {0} month(s): {1:#,##0} owed.",
+    "ch": "借款逾期 {0} 个月：欠 {1:#,##0}。",
+    "tc": "借款逾期 {0} 個月：欠 {1:#,##0}。",
+    "kr": "대출 {0}개월 연체: 갚을 돈 {1:#,##0}."
+  },
+  {
+    "id": -1000006091,
+    "key": "log_loan_collector",
+    "en": "The debt collector {0} came for {1:#,##0} spirit stones.",
+    "ch": "讨债人{0}上门讨要 {1:#,##0} 灵石。",
+    "tc": "討債人{0}上門討要 {1:#,##0} 靈石。",
+    "kr": "추심인 {0}이(가) 영석 {1:#,##0}을 받으러 왔다."
+  },
+  {
+    "id": -1000006092,
+    "key": "log_loan_seized",
+    "en": "Goods worth {0:#,##0} seized for the debt (still owed {1:#,##0}).",
+    "ch": "被抵债收走价值 {0:#,##0} 的财物（仍欠 {1:#,##0}）。",
+    "tc": "被抵債收走價值 {0:#,##0} 的財物（仍欠 {1:#,##0}）。",
+    "kr": "빚 대신 {0:#,##0} 상당의 재물을 압류당했다 (남은 빚 {1:#,##0})."
+  },
+  {
+    "id": -1000006093,
+    "key": "log_loan_beaten",
+    "en": "Beat a debt collector ({0} so far).",
+    "ch": "击退讨债人（累计 {0} 次）。",
+    "tc": "擊退討債人（累計 {0} 次）。",
+    "kr": "추심인을 물리쳤다 (지금까지 {0}번)."
+  },
+  {
+    "id": -1000006094,
+    "key": "log_loan_blacklisted",
+    "en": "Blacklisted by the bank of {0}.",
+    "ch": "被{0}钱庄列入黑名单。",
+    "tc": "被{0}錢莊列入黑名單。",
+    "kr": "{0} 은행의 블랙리스트에 올랐다."
+  },
+  {
+    "id": -1000006100,
+    "key": "enc_leave",
+    "en": "Continue",
+    "ch": "继续",
+    "tc": "繼續",
+    "kr": "계속"
+  },
+  {
+    "id": -1000006101,
+    "key": "enc_nomoney",
+    "en": "You don't have enough spirit stones.",
+    "ch": "你的灵石不够。",
+    "tc": "你的靈石不夠。",
+    "kr": "영석이 부족하다."
+  },
+  {
+    "id": -1000006102,
+    "key": "enc_wounded",
+    "en": "A cultivator lies by the roadside, robes soaked in blood. \"Please… medicine… anything…\"",
+    "ch": "一名修士倒在路旁，衣衫浸满鲜血。“求你……给点药……什么都行……”",
+    "tc": "一名修士倒在路旁，衣衫浸滿鮮血。「求你……給點藥……什麼都行……」",
+    "kr": "길가에 한 수사가 피에 젖은 채 쓰러져 있다. \"제발… 약을… 뭐라도…\""
+  },
+  {
+    "id": -1000006103,
+    "key": "enc_wounded_o1",
+    "en": "Buy him medicine ({0:#,##0} spirit stones)",
+    "ch": "为他买药（{0:#,##0} 灵石）",
+    "tc": "為他買藥（{0:#,##0} 靈石）",
+    "kr": "약을 사 준다 (영석 {0:#,##0})"
+  },
+  {
+    "id": -1000006104,
+    "key": "enc_wounded_o2",
+    "en": "Search his belongings",
+    "ch": "搜他的身",
+    "tc": "搜他的身",
+    "kr": "그의 소지품을 뒤진다"
+  },
+  {
+    "id": -1000006105,
+    "key": "enc_wounded_o3",
+    "en": "Walk on",
+    "ch": "径直走开",
+    "tc": "徑直走開",
+    "kr": "지나친다"
+  },
+  {
+    "id": -1000006106,
+    "key": "enc_wounded_r1",
+    "en": "Color returns to his face. He grips your hand: \"I won't forget this.\" Before leaving he presses a {0} into your palm.",
+    "ch": "他的脸色渐渐恢复，紧握你的手：“此恩不忘。”临别前，他将一株{0}塞进你手里。",
+    "tc": "他的臉色漸漸恢復，緊握你的手：「此恩不忘。」臨別前，他將一株{0}塞進你手裡。",
+    "kr": "그의 얼굴에 혈색이 돌아왔다. 그는 네 손을 꼭 잡았다. \"이 은혜는 잊지 않겠소.\" 떠나기 전 그는 {0}을(를) 네 손에 쥐여 주었다."
+  },
+  {
+    "id": -1000006107,
+    "key": "enc_wounded_r2",
+    "en": "You take {0:#,##0} spirit stones from his pouch. His eyes follow you, full of hatred.",
+    "ch": "你从他的钱袋里拿走了 {0:#,##0} 灵石。他的目光紧随着你，满是仇恨。",
+    "tc": "你從他的錢袋裡拿走了 {0:#,##0} 靈石。他的目光緊隨著你，滿是仇恨。",
+    "kr": "그의 주머니에서 영석 {0:#,##0}을 챙겼다. 증오로 가득한 그의 눈빛이 너를 따라온다."
+  },
+  {
+    "id": -1000006108,
+    "key": "enc_chess",
+    "en": "An old man sits alone before a stone board in the mist. \"One game, young one? A stake of {0:#,##0} spirit stones keeps it interesting.\"",
+    "ch": "雾中，一位老者独坐石盘前。“小友，来一局？押上 {0:#,##0} 灵石才有趣。”",
+    "tc": "霧中，一位老者獨坐石盤前。「小友，來一局？押上 {0:#,##0} 靈石才有趣。」",
+    "kr": "안개 속, 한 노인이 홀로 돌 바둑판 앞에 앉아 있다. \"젊은이, 한 판 어떤가? 영석 {0:#,##0}을 걸어야 재미있지.\""
+  },
+  {
+    "id": -1000006109,
+    "key": "enc_chess_o1",
+    "en": "Play ({0:0}% chance to win)",
+    "ch": "对弈（胜率 {0:0}%）",
+    "tc": "對弈（勝率 {0:0}%）",
+    "kr": "둔다 (승률 {0:0}%)"
+  },
+  {
+    "id": -1000006110,
+    "key": "enc_chess_o2",
+    "en": "Bow and decline",
+    "ch": "行礼婉拒",
+    "tc": "行禮婉拒",
+    "kr": "예를 표하고 사양한다"
+  },
+  {
+    "id": -1000006111,
+    "key": "enc_chess_win",
+    "en": "The old man laughs and sweeps the stones away. \"A sharp mind!\" Following his moves has opened your understanding. (+{0:#,##0} exp, +{1:#,##0} spirit stones)",
+    "ch": "老者大笑，拂乱棋子：“好心思！”随他落子，你心有所悟。（经验 +{0:#,##0}，灵石 +{1:#,##0}）",
+    "tc": "老者大笑，拂亂棋子：「好心思！」隨他落子，你心有所悟。（經驗 +{0:#,##0}，靈石 +{1:#,##0}）",
+    "kr": "노인이 웃으며 돌을 쓸어냈다. \"날카로운 머리로군!\" 그의 수를 따라가며 깨달음을 얻었다. (경험 +{0:#,##0}, 영석 +{1:#,##0})"
+  },
+  {
+    "id": -1000006112,
+    "key": "enc_chess_lose",
+    "en": "The game ends within a few dozen moves. The old man pockets your stake with a gentle smile. (-{0:#,##0} spirit stones)",
+    "ch": "数十手便分了胜负。老者微笑着收下赌注。（灵石 -{0:#,##0}）",
+    "tc": "數十手便分了勝負。老者微笑著收下賭注。（靈石 -{0:#,##0}）",
+    "kr": "수십 수 만에 승부가 났다. 노인은 온화한 미소로 판돈을 챙겼다. (영석 -{0:#,##0})"
+  },
+  {
+    "id": -1000006113,
+    "key": "enc_peddler",
+    "en": "A hooded peddler opens his coat: rows of sealed boxes. \"Each holds a treasure… or nothing. {0:#,##0} spirit stones a box.\"",
+    "ch": "一名戴兜帽的货郎掀开衣襟，里面挂满了封好的木匣。“每个匣子里都有宝贝……或者什么都没有。一匣 {0:#,##0} 灵石。”",
+    "tc": "一名戴兜帽的貨郎掀開衣襟，裡面掛滿了封好的木匣。「每個匣子裡都有寶貝……或者什麼都沒有。一匣 {0:#,##0} 靈石。」",
+    "kr": "두건을 쓴 행상이 외투를 열자 봉인된 상자들이 줄지어 있다. \"하나하나에 보물이… 아니면 아무것도 없지. 한 상자에 영석 {0:#,##0}.\""
+  },
+  {
+    "id": -1000006114,
+    "key": "enc_peddler_o1",
+    "en": "Buy a box",
+    "ch": "买一个匣子",
+    "tc": "買一個匣子",
+    "kr": "상자를 산다"
+  },
+  {
+    "id": -1000006115,
+    "key": "enc_peddler_o2",
+    "en": "Haggle",
+    "ch": "讨价还价",
+    "tc": "討價還價",
+    "kr": "흥정한다"
+  },
+  {
+    "id": -1000006116,
+    "key": "enc_peddler_o3",
+    "en": "Ignore him",
+    "ch": "不予理会",
+    "tc": "不予理會",
+    "kr": "무시한다"
+  },
+  {
+    "id": -1000006117,
+    "key": "enc_peddler_item",
+    "en": "Inside the box lies a {0}.",
+    "ch": "匣中躺着一件{0}。",
+    "tc": "匣中躺著一件{0}。",
+    "kr": "상자 안에는 {0}이(가) 들어 있었다."
+  },
+  {
+    "id": -1000006118,
+    "key": "enc_peddler_deal",
+    "en": "\"Fine, fine — a discount for a friend.\" You pay {1:#,##0}. Inside the box lies a {0}.",
+    "ch": "“好吧好吧，给朋友打个折。”你付了 {1:#,##0}。匣中躺着一件{0}。",
+    "tc": "「好吧好吧，給朋友打個折。」你付了 {1:#,##0}。匣中躺著一件{0}。",
+    "kr": "\"알았네, 알았어. 친구니까 깎아 주지.\" 영석 {1:#,##0}을 냈다. 상자 안에는 {0}이(가) 들어 있었다."
+  },
+  {
+    "id": -1000006119,
+    "key": "enc_peddler_empty",
+    "en": "The box is empty. Somewhere, a peddler is laughing.",
+    "ch": "匣子是空的。某处，一个货郎正在偷笑。",
+    "tc": "匣子是空的。某處，一個貨郎正在偷笑。",
+    "kr": "상자는 비어 있었다. 어딘가에서 행상이 웃고 있겠지."
+  },
+  {
+    "id": -1000006120,
+    "key": "enc_peddler_leave",
+    "en": "\"No bargains for the stingy!\" He vanishes into the crowd.",
+    "ch": "“小气鬼没折扣！”他一闪便消失在人群中。",
+    "tc": "「小氣鬼沒折扣！」他一閃便消失在人群中。",
+    "kr": "\"구두쇠에게 깎아 줄 건 없다!\" 그는 인파 속으로 사라졌다."
+  },
+  {
+    "id": -1000006121,
+    "key": "enc_cave",
+    "en": "After a tremor, a hillside has collapsed, revealing a dark passage that smells of old spirit energy.",
+    "ch": "一阵地动之后，山坡塌陷，露出一条散发着古老灵气的幽暗通道。",
+    "tc": "一陣地動之後，山坡塌陷，露出一條散發著古老靈氣的幽暗通道。",
+    "kr": "땅이 흔들린 뒤 언덕이 무너지며, 오래된 영기가 풍기는 어두운 통로가 드러났다."
+  },
+  {
+    "id": -1000006122,
+    "key": "enc_cave_o1",
+    "en": "Explore the passage",
+    "ch": "探索通道",
+    "tc": "探索通道",
+    "kr": "통로를 탐색한다"
+  },
+  {
+    "id": -1000006123,
+    "key": "enc_cave_o2",
+    "en": "It looks unstable — leave",
+    "ch": "看着不稳，离开",
+    "tc": "看著不穩，離開",
+    "kr": "위태로워 보인다—떠난다"
+  },
+  {
+    "id": -1000006124,
+    "key": "enc_cave_items",
+    "en": "Among the rubble you find: {0}.",
+    "ch": "你在碎石中找到了：{0}。",
+    "tc": "你在碎石中找到了：{0}。",
+    "kr": "잔해 속에서 찾아냈다: {0}."
+  },
+  {
+    "id": -1000006125,
+    "key": "enc_cave_stones",
+    "en": "A forgotten cache of {0:#,##0} spirit stones lies in a rotten chest.",
+    "ch": "一只朽烂的箱子里藏着被遗忘的 {0:#,##0} 灵石。",
+    "tc": "一隻朽爛的箱子裡藏著被遺忘的 {0:#,##0} 靈石。",
+    "kr": "썩은 상자 속에 잊혀진 영석 {0:#,##0}이 숨겨져 있었다."
+  },
+  {
+    "id": -1000006126,
+    "key": "enc_cave_hurt",
+    "en": "The ceiling gives way. You crawl out bruised and bleeding. (-{0:#,##0} vitality)",
+    "ch": "洞顶坍塌，你满身伤痕地爬了出来。（生命 -{0:#,##0}）",
+    "tc": "洞頂坍塌，你滿身傷痕地爬了出來。（生命 -{0:#,##0}）",
+    "kr": "천장이 무너졌다. 상처투성이가 되어 기어 나왔다. (생명 -{0:#,##0})"
+  },
+  {
+    "id": -1000006127,
+    "key": "enc_cub",
+    "en": "A small spirit beast with a wounded paw watches you from the bushes, too weak to flee.",
+    "ch": "一只爪子受伤的小灵兽躲在草丛里望着你，虚弱得逃不动。",
+    "tc": "一隻爪子受傷的小靈獸躲在草叢裡望著你，虛弱得逃不動。",
+    "kr": "발을 다친 작은 영수가 덤불 속에서 너를 바라본다. 도망칠 힘도 없어 보인다."
+  },
+  {
+    "id": -1000006128,
+    "key": "enc_cub_o1",
+    "en": "Feed it a herb",
+    "ch": "喂它一株灵草",
+    "tc": "餵牠一株靈草",
+    "kr": "영초를 먹인다"
+  },
+  {
+    "id": -1000006129,
+    "key": "enc_cub_o2",
+    "en": "Leave it be",
+    "ch": "随它去吧",
+    "tc": "隨牠去吧",
+    "kr": "그냥 둔다"
+  },
+  {
+    "id": -1000006130,
+    "key": "enc_cub_r",
+    "en": "The cub eats, licks your hand and limps away. For a moment you feel the heavens smile on you. (+{0} luck)",
+    "ch": "小兽吃完，舔了舔你的手，一瘸一拐地走了。那一刻，你仿佛感到天道垂青。（气运 +{0}）",
+    "tc": "小獸吃完，舔了舔你的手，一瘸一拐地走了。那一刻，你彷彿感到天道垂青。（氣運 +{0}）",
+    "kr": "새끼 영수는 먹고 나서 네 손을 핥더니 절뚝이며 떠났다. 그 순간 하늘이 미소 짓는 듯했다. (운 +{0})"
+  },
+  {
+    "id": -1000006131,
+    "key": "enc_cub_noherb",
+    "en": "You search your bag — not a single herb. The cub slips away.",
+    "ch": "你翻遍行囊——一株灵草也没有。小兽悄悄溜走了。",
+    "tc": "你翻遍行囊——一株靈草也沒有。小獸悄悄溜走了。",
+    "kr": "가방을 뒤졌지만 영초가 하나도 없다. 새끼 영수는 슬그머니 사라졌다."
+  },
+  {
+    "id": -1000006132,
+    "key": "enc_festival",
+    "en": "Lanterns fill the streets of {0}: the town celebrates its founding day. Joining the festivities costs {1:#,##0} spirit stones.",
+    "ch": "{0}的街巷挂满了灯笼：全城正在庆祝建城之日。参加庆典需 {1:#,##0} 灵石。",
+    "tc": "{0}的街巷掛滿了燈籠：全城正在慶祝建城之日。參加慶典需 {1:#,##0} 靈石。",
+    "kr": "{0}의 거리가 등불로 가득하다. 마을의 창립일 축제다. 축제에 참가하려면 영석 {1:#,##0}이 든다."
+  },
+  {
+    "id": -1000006133,
+    "key": "enc_festival_o1",
+    "en": "Join the festival",
+    "ch": "参加庆典",
+    "tc": "參加慶典",
+    "kr": "축제에 참가한다"
+  },
+  {
+    "id": -1000006134,
+    "key": "enc_festival_o2",
+    "en": "Not today",
+    "ch": "今天就算了",
+    "tc": "今天就算了",
+    "kr": "오늘은 사양한다"
+  },
+  {
+    "id": -1000006135,
+    "key": "enc_festival_r",
+    "en": "You drink, laugh and release a lantern into the night sky. (+{0} mood, the townspeople like you more)",
+    "ch": "你饮酒欢笑，将一盏天灯放上夜空。（心情 +{0}，城中百姓对你更有好感）",
+    "tc": "你飲酒歡笑，將一盞天燈放上夜空。（心情 +{0}，城中百姓對你更有好感）",
+    "kr": "술을 마시고 웃으며 등불을 밤하늘로 띄웠다. (기분 +{0}, 마을 사람들의 호감이 올랐다)"
+  },
+  {
+    "id": -1000006025,
+    "key": "town_tax_help",
+    "en": "Each month every NPC staying in the town pays the tax to the budget and rests at the inn (HP/MP/SP full).\n- An NPC who cannot pay leaves the town and hates the master (-5).\n- Tax above 1% of an NPC's money: the NPC dislikes the master (-1 a month); below 0.1%: the NPC likes the master (+1 a month).\n- The player pays when entering a building guarded by the town (sneaking in may start a fight with a guard); town guardians pay nothing.\nHigher tax = more budget (buildings, guardians' pay, upgrade to city) but fewer and angrier residents.",
+    "ch": "每月城中所有NPC向预算缴税，并在客栈休整（生命/灵力/念力回满）。\n- 无力缴税的NPC会离开城镇并憎恨镇长（-5）。\n- 税额超过其财产1%：该NPC对镇长不满（每月-1）；低于0.1%：对镇长有好感（每月+1）。\n- 玩家进入守卫把守的建筑时缴税（偷溜可能与守卫交手）；城镇守护者免税。\n税越高=预算越多（建筑、守护者俸禄、升级为城），但居民越少、怨气越大。",
+    "tc": "每月城中所有NPC向預算繳稅，並在客棧休整（生命/靈力/念力回滿）。\n- 無力繳稅的NPC會離開城鎮並憎恨鎮長（-5）。\n- 稅額超過其財產1%：該NPC對鎮長不滿（每月-1）；低於0.1%：對鎮長有好感（每月+1）。\n- 玩家進入守衛把守的建築時繳稅（偷溜可能與守衛交手）；城鎮守護者免稅。\n稅越高=預算越多（建築、守護者俸祿、升級為城），但居民越少、怨氣越大。",
+    "kr": "매달 마을에 머무는 NPC는 모두 예산에 세금을 내고 여관에서 쉰다 (생명/영력/염력 회복).\n- 세금을 못 내는 NPC는 마을을 떠나고 촌장을 미워한다 (-5).\n- 세금이 NPC 재산의 1%를 넘으면 촌장을 싫어하고 (매달 -1), 0.1% 미만이면 좋아한다 (매달 +1).\n- 플레이어는 수비병이 지키는 건물에 들어갈 때 세금을 낸다 (몰래 들어가면 수비병과 싸울 수 있음). 마을 수호자는 면세.\n세금이 높을수록 예산(건물, 수호자 급여, 도시 승격)이 늘지만 주민은 줄고 불만은 커진다."
+  },
+  {
+    "id": -1000006095,
+    "key": "loan_err_off",
+    "en": "Bank loans are turned off in the S&M configs.",
+    "ch": "钱庄借贷已在S&M设置中关闭。",
+    "tc": "錢莊借貸已在S&M設定中關閉。",
+    "kr": "은행 대출이 S&M 설정에서 꺼져 있습니다."
+  },
+  {
+    "id": -1000006150,
+    "key": "wanted_title",
+    "en": "Bounty",
+    "ch": "悬赏",
+    "tc": "懸賞",
+    "kr": "현상금"
+  },
+  {
+    "id": -1000006151,
+    "key": "wanted_post",
+    "en": "Post a bounty",
+    "ch": "发布悬赏",
+    "tc": "發布懸賞",
+    "kr": "현상금 걸기"
+  },
+  {
+    "id": -1000006152,
+    "key": "wanted_list",
+    "en": "Wanted list",
+    "ch": "通缉榜",
+    "tc": "通緝榜",
+    "kr": "수배 목록"
+  },
+  {
+    "id": -1000006153,
+    "key": "wanted_post_desc",
+    "en": "Wanted: {0} (grade {1}), posted by {2}",
+    "ch": "通缉：{0}（{1}阶），发布：{2}",
+    "tc": "通緝：{0}（{1}階），發布：{2}",
+    "kr": "수배: {0} ({1}경지), 게시: {2}"
+  },
+  {
+    "id": -1000006154,
+    "key": "wanted_post_budget",
+    "en": "Town budget: {0:#,##0} — minimum reward: {1:#,##0}",
+    "ch": "城镇预算：{0:#,##0} —— 最低赏金：{1:#,##0}",
+    "tc": "城鎮預算：{0:#,##0} —— 最低賞金：{1:#,##0}",
+    "kr": "마을 예산: {0:#,##0} — 최소 현상금: {1:#,##0}"
+  },
+  {
+    "id": -1000006155,
+    "key": "wanted_reward",
+    "en": "Reward",
+    "ch": "赏金",
+    "tc": "賞金",
+    "kr": "현상금"
+  },
+  {
+    "id": -1000006156,
+    "key": "wanted_post_rule",
+    "en": "The reward leaves the town budget now. Hunters come more often for higher rewards. Unclaimed after 36 months (or if the target dies otherwise): refunded.",
+    "ch": "赏金立即从城镇预算中扣除。赏金越高，赏金猎人来得越频繁。36个月内无人领取（或目标死于他因）则退还。",
+    "tc": "賞金立即從城鎮預算中扣除。賞金越高，賞金獵人來得越頻繁。36個月內無人領取（或目標死於他因）則退還。",
+    "kr": "현상금은 즉시 마을 예산에서 빠집니다. 현상금이 높을수록 사냥꾼이 자주 옵니다. 36개월 동안 아무도 받지 않으면 (또는 대상이 다른 이유로 죽으면) 환불됩니다."
+  },
+  {
+    "id": -1000006157,
+    "key": "wanted_posted",
+    "en": "The wanted notice for {0} is nailed to the town gate.",
+    "ch": "{0}的通缉令已贴上城门。",
+    "tc": "{0}的通緝令已貼上城門。",
+    "kr": "{0}의 수배 전단이 성문에 붙었다."
+  },
+  {
+    "id": -1000006158,
+    "key": "wanted_err_off",
+    "en": "Bounties are turned off in the S&M configs.",
+    "ch": "悬赏已在S&M设置中关闭。",
+    "tc": "懸賞已在S&M設定中關閉。",
+    "kr": "현상수배가 S&M 설정에서 꺼져 있습니다."
+  },
+  {
+    "id": -1000006159,
+    "key": "wanted_err_target",
+    "en": "This target cannot be wanted.",
+    "ch": "无法通缉此目标。",
+    "tc": "無法通緝此目標。",
+    "kr": "이 대상은 수배할 수 없습니다."
+  },
+  {
+    "id": -1000006160,
+    "key": "wanted_err_already",
+    "en": "This town already has a bounty on them.",
+    "ch": "本镇已对其悬赏。",
+    "tc": "本鎮已對其懸賞。",
+    "kr": "이 마을은 이미 그에게 현상금을 걸었습니다."
+  },
+  {
+    "id": -1000006161,
+    "key": "wanted_err_min",
+    "en": "The reward is below the minimum.",
+    "ch": "赏金低于最低标准。",
+    "tc": "賞金低於最低標準。",
+    "kr": "현상금이 최소 금액보다 적습니다."
+  },
+  {
+    "id": -1000006162,
+    "key": "wanted_err_budget",
+    "en": "The town budget is too small.",
+    "ch": "城镇预算不足。",
+    "tc": "城鎮預算不足。",
+    "kr": "마을 예산이 부족합니다."
+  },
+  {
+    "id": -1000006163,
+    "key": "wanted_on_player",
+    "en": "A notice flutters on every gate of {0}: your portrait, and a reward of {1:#,##0} spirit stones. Bounty hunters will come.",
+    "ch": "{0}的每座城门都贴出了告示：你的画像，赏金 {1:#,##0} 灵石。赏金猎人很快就会找上门来。",
+    "tc": "{0}的每座城門都貼出了告示：你的畫像，賞金 {1:#,##0} 靈石。賞金獵人很快就會找上門來。",
+    "kr": "{0}의 모든 성문에 전단이 나붙었다. 네 초상화와 현상금 영석 {1:#,##0}. 현상금 사냥꾼들이 찾아올 것이다."
+  },
+  {
+    "id": -1000006164,
+    "key": "wanted_ambush",
+    "en": "\"{0} pays {1:#,##0} spirit stones for your head. Nothing personal.\" The bounty hunter blocks your way.",
+    "ch": "“{0}出 {1:#,##0} 灵石买你的人头。别怪我。”赏金猎人拦住了你的去路。",
+    "tc": "「{0}出 {1:#,##0} 靈石買你的人頭。別怪我。」賞金獵人攔住了你的去路。",
+    "kr": "\"{0}이(가) 네 목에 영석 {1:#,##0}을 걸었다. 개인적인 감정은 없다.\" 현상금 사냥꾼이 길을 막았다."
+  },
+  {
+    "id": -1000006165,
+    "key": "wanted_ambush_o1",
+    "en": "Fight",
+    "ch": "迎战",
+    "tc": "迎戰",
+    "kr": "맞서 싸운다"
+  },
+  {
+    "id": -1000006166,
+    "key": "wanted_ambush_o2",
+    "en": "Pay the town to clear my name ({0:#,##0})",
+    "ch": "向城镇赔付以洗清罪名（{0:#,##0}）",
+    "tc": "向城鎮賠付以洗清罪名（{0:#,##0}）",
+    "kr": "마을에 배상하고 누명을 벗는다 ({0:#,##0})"
+  },
+  {
+    "id": -1000006167,
+    "key": "wanted_done",
+    "en": "{0} has brought down {1}. Your bounty of {2:#,##0} spirit stones is paid.",
+    "ch": "{0}已击杀{1}，你悬赏的 {2:#,##0} 灵石已支付。",
+    "tc": "{0}已擊殺{1}，你懸賞的 {2:#,##0} 靈石已支付。",
+    "kr": "{0}이(가) {1}을(를) 처치했다. 네가 건 현상금 영석 {2:#,##0}이 지급되었다."
+  },
+  {
+    "id": -1000006168,
+    "key": "wanted_list_desc",
+    "en": "Wanted list: click a portrait to see the bounty. Kill a wanted unit in a battle to receive its reward.",
+    "ch": "通缉榜：点击头像查看悬赏。于战斗中击杀通缉之人即可领取赏金。",
+    "tc": "通緝榜：點擊頭像查看懸賞。於戰鬥中擊殺通緝之人即可領取賞金。",
+    "kr": "수배 목록: 초상화를 누르면 현상금을 볼 수 있다. 전투에서 수배자를 처치하면 현상금을 받는다."
+  },
+  {
+    "id": -1000006169,
+    "key": "wanted_none",
+    "en": "No one is wanted right now.",
+    "ch": "目前没有通缉。",
+    "tc": "目前沒有通緝。",
+    "kr": "현재 수배자가 없다."
+  },
+  {
+    "id": -1000006170,
+    "key": "wanted_line",
+    "en": "{0} (grade {1}) — {2:#,##0} — {3} ({4} months left)",
+    "ch": "{0}（{1}阶）—— {2:#,##0} —— {3}（剩余 {4} 个月）",
+    "tc": "{0}（{1}階）—— {2:#,##0} —— {3}（剩餘 {4} 個月）",
+    "kr": "{0} ({1}경지) — {2:#,##0} — {3} (남은 {4}개월)"
+  },
+  {
+    "id": -1000006171,
+    "key": "log_wanted_post",
+    "en": "{0} put a {2:#,##0} bounty on {1}.",
+    "ch": "{0}悬赏 {2:#,##0} 通缉{1}。",
+    "tc": "{0}懸賞 {2:#,##0} 通緝{1}。",
+    "kr": "{0}이(가) {1}에게 현상금 {2:#,##0}을 걸었다."
+  },
+  {
+    "id": -1000006172,
+    "key": "log_wanted_claimed",
+    "en": "{0} claimed the {2:#,##0} bounty on {1}.",
+    "ch": "{0}领取了{1}的 {2:#,##0} 赏金。",
+    "tc": "{0}領取了{1}的 {2:#,##0} 賞金。",
+    "kr": "{0}이(가) {1}의 현상금 {2:#,##0}을 받았다."
+  },
+  {
+    "id": -1000006173,
+    "key": "log_wanted_expired",
+    "en": "The bounty on {0} expired; {1:#,##0} back to {2}.",
+    "ch": "{0}的悬赏已过期，{1:#,##0} 退回{2}。",
+    "tc": "{0}的懸賞已過期，{1:#,##0} 退回{2}。",
+    "kr": "{0}의 현상금이 만료되어 {1:#,##0}이 {2}에 반환되었다."
+  },
+  {
+    "id": -1000006174,
+    "key": "log_wanted_dead",
+    "en": "{0} died before any hunter got them; {1:#,##0} back to {2}.",
+    "ch": "{0}在赏金猎人得手前已死，{1:#,##0} 退回{2}。",
+    "tc": "{0}在賞金獵人得手前已死，{1:#,##0} 退回{2}。",
+    "kr": "{0}은(는) 사냥꾼이 오기 전에 죽었다. {1:#,##0}이 {2}에 반환되었다."
+  },
+  {
+    "id": -1000006175,
+    "key": "log_wanted_cancel",
+    "en": "Bounty on {0} cancelled; {1:#,##0} back to {2}.",
+    "ch": "撤销对{0}的悬赏，{1:#,##0} 退回{2}。",
+    "tc": "撤銷對{0}的懸賞，{1:#,##0} 退回{2}。",
+    "kr": "{0}에 대한 현상금 취소, {1:#,##0}이 {2}에 반환되었다."
+  },
+  {
+    "id": -1000006176,
+    "key": "log_wanted_cleared",
+    "en": "You cleared your name; the bounty is withdrawn ({1:#,##0} back to {2}).",
+    "ch": "你洗清了罪名，悬赏撤销（{1:#,##0} 退回{2}）。",
+    "tc": "你洗清了罪名，懸賞撤銷（{1:#,##0} 退回{2}）。",
+    "kr": "누명을 벗어 현상금이 철회되었다 ({1:#,##0}이 {2}에 반환)."
+  },
+  {
+    "id": -1000006177,
+    "key": "log_wanted_failed",
+    "en": "{0} went after {1} and failed.",
+    "ch": "{0}追杀{1}失手。",
+    "tc": "{0}追殺{1}失手。",
+    "kr": "{0}이(가) {1}을(를) 노렸으나 실패했다."
+  },
+  {
+    "id": -1000006178,
+    "key": "log_wanted_ambush",
+    "en": "The bounty hunter {0} ambushed you (wanted by {1}).",
+    "ch": "赏金猎人{0}伏击了你（{1}通缉）。",
+    "tc": "賞金獵人{0}伏擊了你（{1}通緝）。",
+    "kr": "현상금 사냥꾼 {0}이(가) 너를 습격했다 ({1}의 수배)."
+  },
+  {
+    "id": -1000006179,
+    "key": "log_wanted_player_claimed",
+    "en": "You killed {0} and received the {1:#,##0} bounty of {2}.",
+    "ch": "你击杀了{0}，领取了{2}的 {1:#,##0} 赏金。",
+    "tc": "你擊殺了{0}，領取了{2}的 {1:#,##0} 賞金。",
+    "kr": "{0}을(를) 처치하고 {2}의 현상금 {1:#,##0}을 받았다."
+  },
+  {
+    "id": -1000006180,
+    "key": "wanted_detail",
+    "en": "Reward {0:#,##0} — {1} (posted by {2}) — {3} months left",
+    "ch": "赏金 {0:#,##0} —— {1}（{2}发布）—— 剩余 {3} 个月",
+    "tc": "賞金 {0:#,##0} —— {1}（{2}發布）—— 剩餘 {3} 個月",
+    "kr": "현상금 {0:#,##0} — {1} ({2} 게시) — 남은 {3}개월"
+  },
+  {
+    "id": -1000006190,
+    "key": "taoistMonthLogTitle",
+    "en": "Taoist",
+    "ch": "道教",
+    "tc": "道教",
+    "kr": "도교"
+  },
+  {
+    "id": -1000006191,
+    "key": "secl_SpiritVein",
+    "en": "Deep under the rocks a spirit vein is waking up, its qi as thick as mist. Absorbing it would take {0} years (lifespan left: {1} years). Enter seclusion?",
+    "ch": "岩层深处，一条灵脉正在苏醒，灵气浓如雾霭。将其炼化需要{0}年（剩余寿元：{1}年）。是否闭关？",
+    "tc": "岩層深處，一條靈脈正在甦醒，靈氣濃如霧靄。將其煉化需要{0}年（剩餘壽元：{1}年）。是否閉關？",
+    "kr": "바위 깊은 곳에서 영맥이 깨어나고 있다. 영기가 안개처럼 짙다. 이를 흡수하려면 {0}년이 걸린다 (남은 수명: {1}년). 폐관하겠는가?"
+  },
+  {
+    "id": -1000006192,
+    "key": "secl_Inheritance",
+    "en": "Behind a collapsed wall lies the cave of a long-gone master, his legacy sealed in jade slips. Understanding it would take {0} years (lifespan left: {1} years). Enter seclusion?",
+    "ch": "坍塌的石壁后，是一位早已坐化的前辈洞府，传承封存在玉简之中。参悟它需要{0}年（剩余寿元：{1}年）。是否闭关？",
+    "tc": "坍塌的石壁後，是一位早已坐化的前輩洞府，傳承封存在玉簡之中。參悟它需要{0}年（剩餘壽元：{1}年）。是否閉關？",
+    "kr": "무너진 벽 뒤에 오래전 좌화한 선배의 동부가 있다. 그 전승이 옥간에 봉인되어 있다. 깨닫는 데 {0}년이 걸린다 (남은 수명: {1}년). 폐관하겠는가?"
+  },
+  {
+    "id": -1000006193,
+    "key": "secl_OldTree",
+    "en": "An ancient tree hums with the Dao of the seasons. Sitting under it for {0} years could temper your foundation (lifespan left: {1} years). Enter seclusion?",
+    "ch": "一株古树低吟着四时之道。在树下静坐{0}年，或可淬炼根基（剩余寿元：{1}年）。是否闭关？",
+    "tc": "一株古樹低吟著四時之道。在樹下靜坐{0}年，或可淬煉根基（剩餘壽元：{1}年）。是否閉關？",
+    "kr": "고목이 사계의 도를 읊조린다. 그 아래에서 {0}년 정좌하면 근기를 단련할 수 있을 것이다 (남은 수명: {1}년). 폐관하겠는가?"
+  },
+  {
+    "id": -1000006194,
+    "key": "secl_HeartDemon",
+    "en": "Your thoughts twist; the faces of those you defeated rise in your sea of consciousness. A heart demon! You have no choice but to sit and fight it. It may take {0} years.",
+    "ch": "你心念扭曲，败于你手之人的面孔在识海中浮现——心魔来袭！你别无选择，只能闭关与之相斗，恐怕要耗费{0}年。",
+    "tc": "你心念扭曲，敗於你手之人的面孔在識海中浮現——心魔來襲！你別無選擇，只能閉關與之相鬥，恐怕要耗費{0}年。",
+    "kr": "생각이 뒤틀리고, 그대에게 패한 자들의 얼굴이 식해에 떠오른다. 심마다! 폐관하여 맞서는 수밖에 없다. {0}년이 걸릴지도 모른다."
+  },
+  {
+    "id": -1000006195,
+    "key": "secl_TimeRealm",
+    "en": "You step through a shimmering rift. Inside, only a few days seem to pass... but when you come out, {0} years have gone by in the world.",
+    "ch": "你踏入一道闪烁的裂隙。其中仿佛只过了数日……可当你走出时，世间已过去了{0}年。",
+    "tc": "你踏入一道閃爍的裂隙。其中彷彿只過了數日……可當你走出時，世間已過去了{0}年。",
+    "kr": "반짝이는 균열 속으로 발을 들였다. 안에서는 며칠밖에 지나지 않은 듯했지만... 밖으로 나오니 세상은 이미 {0}년이 흘러 있었다."
+  },
+  {
+    "id": -1000006196,
+    "key": "secl_warn_life",
+    "en": "<color=#ff4040>Warning: this is longer than your remaining lifespan ({0} years)!</color>",
+    "ch": "<color=#ff4040>警告：所需时间超过你的剩余寿元（{0}年）！</color>",
+    "tc": "<color=#ff4040>警告：所需時間超過你的剩餘壽元（{0}年）！</color>",
+    "kr": "<color=#ff4040>경고: 남은 수명({0}년)보다 길다!</color>"
+  },
+  {
+    "id": -1000006197,
+    "key": "secl_o1",
+    "en": "Enter seclusion ({0} years)",
+    "ch": "闭关（{0}年）",
+    "tc": "閉關（{0}年）",
+    "kr": "폐관한다 ({0}년)"
+  },
+  {
+    "id": -1000006198,
+    "key": "secl_o2",
+    "en": "Not now",
+    "ch": "暂且作罢",
+    "tc": "暫且作罷",
+    "kr": "지금은 아니다"
+  },
+  {
+    "id": -1000006199,
+    "key": "secl_forced_o1",
+    "en": "...",
+    "ch": "……",
+    "tc": "……",
+    "kr": "..."
+  },
+  {
+    "id": -1000006200,
+    "key": "secl_end_o1",
+    "en": "Leave seclusion",
+    "ch": "出关",
+    "tc": "出關",
+    "kr": "출관한다"
+  },
+  {
+    "id": -1000006201,
+    "key": "secl_name_SpiritVein",
+    "en": "Spirit vein",
+    "ch": "灵脉",
+    "tc": "靈脈",
+    "kr": "영맥"
+  },
+  {
+    "id": -1000006202,
+    "key": "secl_name_Inheritance",
+    "en": "Ancient inheritance",
+    "ch": "上古传承",
+    "tc": "上古傳承",
+    "kr": "상고 전승"
+  },
+  {
+    "id": -1000006203,
+    "key": "secl_name_OldTree",
+    "en": "Ancient tree",
+    "ch": "古树悟道",
+    "tc": "古樹悟道",
+    "kr": "고목 오도"
+  },
+  {
+    "id": -1000006204,
+    "key": "secl_name_HeartDemon",
+    "en": "Heart demon",
+    "ch": "心魔",
+    "tc": "心魔",
+    "kr": "심마"
+  },
+  {
+    "id": -1000006205,
+    "key": "secl_name_TimeRealm",
+    "en": "Time rift",
+    "ch": "时空裂隙",
+    "tc": "時空裂隙",
+    "kr": "시공 균열"
+  },
+  {
+    "id": -1000006206,
+    "key": "secl_res_SpiritVein",
+    "en": "The spirit vein runs dry; its qi is now yours.",
+    "ch": "灵脉枯竭，其中灵气尽归你所有。",
+    "tc": "靈脈枯竭，其中靈氣盡歸你所有。",
+    "kr": "영맥이 말라붙었다. 그 영기는 이제 그대의 것이다."
+  },
+  {
+    "id": -1000006207,
+    "key": "secl_res_Inheritance",
+    "en": "The master's legacy is engraved in your heart (Talent up). In the cave you also find: {0}.",
+    "ch": "前辈的传承已铭刻于心（悟性提升）。你还在洞府中找到了：{0}。",
+    "tc": "前輩的傳承已銘刻於心（悟性提升）。你還在洞府中找到了：{0}。",
+    "kr": "선배의 전승이 마음에 새겨졌다 (오성 상승). 동부에서 다음도 찾았다: {0}."
+  },
+  {
+    "id": -1000006208,
+    "key": "secl_res_OldTree",
+    "en": "Your foundation is tempered: {1} +{0}.",
+    "ch": "根基得到淬炼：{1} +{0}。",
+    "tc": "根基得到淬煉：{1} +{0}。",
+    "kr": "근기가 단련되었다: {1} +{0}."
+  },
+  {
+    "id": -1000006209,
+    "key": "secl_res_HeartDemon_win",
+    "en": "You cut through the heart demon. Your Dao heart is firmer than ever (Talent +5, Luck +5).",
+    "ch": "你斩破心魔，道心前所未有地坚定（悟性+5，气运+5）。",
+    "tc": "你斬破心魔，道心前所未有地堅定（悟性+5，氣運+5）。",
+    "kr": "심마를 베어냈다. 도심이 그 어느 때보다 굳건하다 (오성 +5, 기운 +5)."
+  },
+  {
+    "id": -1000006210,
+    "key": "secl_res_HeartDemon_lose",
+    "en": "The heart demon is driven out, but it gnawed at your cultivation (-{0:#,##0} exp).",
+    "ch": "心魔虽被驱散，却已侵蚀了你的修为（-{0:#,##0}修为）。",
+    "tc": "心魔雖被驅散，卻已侵蝕了你的修為（-{0:#,##0}修為）。",
+    "kr": "심마를 몰아냈지만, 수위가 갉아먹혔다 (경험치 -{0:#,##0})."
+  },
+  {
+    "id": -1000006211,
+    "key": "secl_res_TimeRealm",
+    "en": "From the rift you bring back: {0}.",
+    "ch": "你从裂隙中带回了：{0}。",
+    "tc": "你從裂隙中帶回了：{0}。",
+    "kr": "균열에서 가지고 나온 것: {0}."
+  },
+  {
+    "id": -1000006212,
+    "key": "secl_summary",
+    "en": "Years in seclusion: {0}\nExp gained: {1:#,##0}\nPrices in the world: +{2}%\nFriends who passed away: {3}\nBirths in your family: {4}\nAge: {5} (lifespan left: {6} years)",
+    "ch": "闭关年数：{0}\n获得修为：{1:#,##0}\n世间物价：+{2}%\n故友离世：{3}人\n家族新生：{4}人\n年龄：{5}（剩余寿元：{6}年）",
+    "tc": "閉關年數：{0}\n獲得修為：{1:#,##0}\n世間物價：+{2}%\n故友離世：{3}人\n家族新生：{4}人\n年齡：{5}（剩餘壽元：{6}年）",
+    "kr": "폐관 기간: {0}년\n얻은 경험치: {1:#,##0}\n세상 물가: +{2}%\n세상을 떠난 벗: {3}명\n가문의 출생: {4}명\n나이: {5} (남은 수명: {6}년)"
+  },
+  {
+    "id": -1000006213,
+    "key": "log_secl_start",
+    "en": "Entered seclusion ({0}, {1} years)",
+    "ch": "开始闭关（{0}，{1}年）",
+    "tc": "開始閉關（{0}，{1}年）",
+    "kr": "폐관 시작 ({0}, {1}년)"
+  },
+  {
+    "id": -1000006214,
+    "key": "log_secl_end",
+    "en": "Left seclusion ({0}) after {1} years, +{2:#,##0} exp",
+    "ch": "出关（{0}），历时{1}年，修为+{2:#,##0}",
+    "tc": "出關（{0}），歷時{1}年，修為+{2:#,##0}",
+    "kr": "출관 ({0}), {1}년 경과, 경험치 +{2:#,##0}"
+  },
+  {
+    "id": -1000006215,
+    "key": "log_secl_declined",
+    "en": "Declined a seclusion ({0})",
+    "ch": "放弃了一次闭关（{0}）",
+    "tc": "放棄了一次閉關（{0}）",
+    "kr": "폐관을 거절함 ({0})"
+  },
+  {
+    "id": -1000006216,
+    "key": "family_birth",
+    "en": "Good news! {0} has given birth to your child. In {1} years the child will be old enough to step onto the path of cultivation.",
+    "ch": "喜讯！{0}为你诞下了孩子。{1}年后，孩子便可踏上修行之路。",
+    "tc": "喜訊！{0}為你誕下了孩子。{1}年後，孩子便可踏上修行之路。",
+    "kr": "경사다! {0}이(가) 그대의 아이를 낳았다. {1}년 후면 아이도 수행의 길에 들어설 수 있다."
+  },
+  {
+    "id": -1000006217,
+    "key": "family_birth_o1",
+    "en": "Wonderful!",
+    "ch": "太好了！",
+    "tc": "太好了！",
+    "kr": "정말 기쁘다!"
+  },
+  {
+    "id": -1000006218,
+    "key": "family_grown",
+    "en": "I am sixteen today. Let me walk the path of cultivation, as you did!",
+    "ch": "我今日已满十六。让我也像你一样，踏上修行之路吧！",
+    "tc": "我今日已滿十六。讓我也像你一樣，踏上修行之路吧！",
+    "kr": "오늘로 열여섯이 되었습니다. 저도 당신처럼 수행의 길을 걷게 해주세요!"
+  },
+  {
+    "id": -1000006219,
+    "key": "family_grown_o1",
+    "en": "Go, and make the family proud.",
+    "ch": "去吧，莫要辱没了家门。",
+    "tc": "去吧，莫要辱沒了家門。",
+    "kr": "가거라. 가문을 빛내거라."
+  },
+  {
+    "id": -1000006220,
+    "key": "family_btn",
+    "en": "Family",
+    "ch": "家族",
+    "tc": "家族",
+    "kr": "가족"
+  },
+  {
+    "id": -1000006221,
+    "key": "family_title",
+    "en": "Family of {0}",
+    "ch": "{0}的家族",
+    "tc": "{0}的家族",
+    "kr": "{0}의 가족"
+  },
+  {
+    "id": -1000006222,
+    "key": "family_parents",
+    "en": "Parents: {0}",
+    "ch": "父母：{0}",
+    "tc": "父母：{0}",
+    "kr": "부모: {0}"
+  },
+  {
+    "id": -1000006223,
+    "key": "family_spouse",
+    "en": "Dao companion: {0}",
+    "ch": "道侣：{0}",
+    "tc": "道侶：{0}",
+    "kr": "도려: {0}"
+  },
+  {
+    "id": -1000006224,
+    "key": "family_children",
+    "en": "Children: {0}",
+    "ch": "子女：{0}",
+    "tc": "子女：{0}",
+    "kr": "자녀: {0}"
+  },
+  {
+    "id": -1000006225,
+    "key": "family_unborn",
+    "en": "A child growing up (comes of age in {0} years)",
+    "ch": "尚在成长的孩子（{0}年后成年）",
+    "tc": "尚在成長的孩子（{0}年後成年）",
+    "kr": "자라는 중인 아이 ({0}년 후 성인)"
+  },
+  {
+    "id": -1000006226,
+    "key": "family_siblings",
+    "en": "Siblings: {0}",
+    "ch": "兄弟姐妹：{0}",
+    "tc": "兄弟姊妹：{0}",
+    "kr": "형제자매: {0}"
+  },
+  {
+    "id": -1000006227,
+    "key": "family_dead",
+    "en": " (deceased)",
+    "ch": "（已故）",
+    "tc": "（已故）",
+    "kr": " (고인)"
+  },
+  {
+    "id": -1000006228,
+    "key": "log_family_married",
+    "en": "{0} and {1} became dao companions",
+    "ch": "{0}与{1}结为道侣",
+    "tc": "{0}與{1}結為道侶",
+    "kr": "{0}와(과) {1}이(가) 도려가 되었다"
+  },
+  {
+    "id": -1000006229,
+    "key": "log_family_birth",
+    "en": "{0} and {1} had a child",
+    "ch": "{0}与{1}诞下一子",
+    "tc": "{0}與{1}誕下一子",
+    "kr": "{0}와(과) {1} 사이에 아이가 태어났다"
+  },
+  {
+    "id": -1000006230,
+    "key": "log_family_grown",
+    "en": "{0}, child of {1} and {2}, came of age",
+    "ch": "{1}与{2}之子{0}已成年",
+    "tc": "{1}與{2}之子{0}已成年",
+    "kr": "{1}와(과) {2}의 자식 {0}이(가) 성인이 되었다"
+  },
+  {
+    "id": -1000006231,
+    "key": "log_family_revenge",
+    "en": "{0} put a bounty on you for killing {1} ({2})",
+    "ch": "{0}因你杀了{1}而悬赏你（{2}）",
+    "tc": "{0}因你殺了{1}而懸賞你（{2}）",
+    "kr": "{0}이(가) {1}을(를) 죽인 그대에게 현상금을 걸었다 ({2})"
+  },
+  {
+    "id": -1000006232,
+    "key": "secl_basis_0",
+    "en": "Blade",
+    "ch": "刀",
+    "tc": "刀",
+    "kr": "도"
+  },
+  {
+    "id": -1000006233,
+    "key": "secl_basis_1",
+    "en": "Spear",
+    "ch": "枪",
+    "tc": "槍",
+    "kr": "창"
+  },
+  {
+    "id": -1000006234,
+    "key": "secl_basis_2",
+    "en": "Sword",
+    "ch": "剑",
+    "tc": "劍",
+    "kr": "검"
+  },
+  {
+    "id": -1000006235,
+    "key": "secl_basis_3",
+    "en": "Fist",
+    "ch": "拳",
+    "tc": "拳",
+    "kr": "권"
+  },
+  {
+    "id": -1000006236,
+    "key": "secl_basis_4",
+    "en": "Palm",
+    "ch": "掌",
+    "tc": "掌",
+    "kr": "장"
+  },
+  {
+    "id": -1000006237,
+    "key": "secl_basis_5",
+    "en": "Finger",
+    "ch": "指",
+    "tc": "指",
+    "kr": "지"
+  },
+  {
+    "id": -1000006238,
+    "key": "secl_basis_6",
+    "en": "Fire",
+    "ch": "火",
+    "tc": "火",
+    "kr": "화"
+  },
+  {
+    "id": -1000006239,
+    "key": "secl_basis_7",
+    "en": "Water",
+    "ch": "水",
+    "tc": "水",
+    "kr": "수"
+  },
+  {
+    "id": -1000006240,
+    "key": "secl_basis_8",
+    "en": "Lightning",
+    "ch": "雷",
+    "tc": "雷",
+    "kr": "뇌"
+  },
+  {
+    "id": -1000006241,
+    "key": "secl_basis_9",
+    "en": "Wind",
+    "ch": "风",
+    "tc": "風",
+    "kr": "풍"
+  },
+  {
+    "id": -1000006242,
+    "key": "secl_basis_10",
+    "en": "Earth",
+    "ch": "土",
+    "tc": "土",
+    "kr": "토"
+  },
+  {
+    "id": -1000006243,
+    "key": "secl_basis_11",
+    "en": "Wood",
+    "ch": "木",
+    "tc": "木",
+    "kr": "목"
+  },
+  {
+    "id": -1000006244,
+    "key": "family_inherit",
+    "en": "Your lifespan is running out. Before your last breath, you may pass your legacy to one of your descendants and play on as them.\nThey take your belongings, your debts and your bonds (friendships at half the warmth, enmities in full); your reputation, your positions and the bounties on your head die with you.",
+    "ch": "寿元将尽。在咽下最后一口气之前，你可以将衣钵传给一位后人，并以其身份继续前行。\n后人继承你的财物、债务与人脉（交情减半，仇怨照旧）；你的声望、职位与悬赏随你而逝。",
+    "tc": "壽元將盡。在嚥下最後一口氣之前，你可以將衣缽傳給一位後人，並以其身份繼續前行。\n後人繼承你的財物、債務與人脈（交情減半，仇怨照舊）；你的聲望、職位與懸賞隨你而逝。",
+    "kr": "수명이 다해가고 있다. 마지막 숨을 거두기 전에 유산을 후손 중 한 명에게 물려주고 그 사람으로서 계속 나아갈 수 있다.\n후손은 재물과 빚, 인연(우정은 절반, 원한은 그대로)을 이어받는다. 명성과 직위, 그대에게 걸린 현상금은 그대와 함께 사라진다."
+  },
+  {
+    "id": -1000006245,
+    "key": "family_inherit_o",
+    "en": "Pass it on to {0} ({1} years, {2})",
+    "ch": "传给{0}（{1}岁，{2}）",
+    "tc": "傳給{0}（{1}歲，{2}）",
+    "kr": "{0}에게 물려준다 ({1}세, {2})"
+  },
+  {
+    "id": -1000006246,
+    "key": "family_inherit_no",
+    "en": "Let my journey end here",
+    "ch": "就让我的旅途止步于此",
+    "tc": "就讓我的旅途止步於此",
+    "kr": "나의 여정은 여기서 끝낸다"
+  },
+  {
+    "id": -1000006247,
+    "key": "family_inherited",
+    "en": "{0} has returned to the heavens and earth. {1} takes up the legacy: generation {2} of the family walks the path of cultivation.",
+    "ch": "{0}已归于天地。{1}继承衣钵，家族第{2}代踏上修行之路。",
+    "tc": "{0}已歸於天地。{1}繼承衣缽，家族第{2}代踏上修行之路。",
+    "kr": "{0}은(는) 천지로 돌아갔다. {1}이(가) 유산을 이어받아, 가문의 {2}대째가 수행의 길을 걷는다."
+  },
+  {
+    "id": -1000006248,
+    "key": "family_inherited_o1",
+    "en": "Carry on",
+    "ch": "继续前行",
+    "tc": "繼續前行",
+    "kr": "계속 나아간다"
+  },
+  {
+    "id": -1000006249,
+    "key": "log_family_inherit",
+    "en": "{0} passed away; {1} took up the legacy (generation {2})",
+    "ch": "{0}离世，{1}继承衣钵（第{2}代）",
+    "tc": "{0}離世，{1}繼承衣缽（第{2}代）",
+    "kr": "{0} 사망, {1}이(가) 유산을 계승 (제{2}대)"
+  },
+  {
+    "id": -1000006250,
+    "key": "log_npc_fortune",
+    "en": "{0} met with a fortune and made progress in cultivation",
+    "ch": "{0}偶得机缘，修为有所精进",
+    "tc": "{0}偶得機緣，修為有所精進",
+    "kr": "{0}이(가) 기연을 만나 수위가 정진했다"
+  },
+  {
+    "id": -1000006251,
+    "key": "log_npc_inheritance",
+    "en": "{0} found an ancient inheritance and made a leap in cultivation",
+    "ch": "{0}获得上古传承，修为突飞猛进",
+    "tc": "{0}獲得上古傳承，修為突飛猛進",
+    "kr": "{0}이(가) 상고 전승을 얻어 수위가 비약했다"
+  },
+  {
+    "id": -1000006252,
+    "key": "skip_progress",
+    "en": "Time passes... {0} / {1} months (Year {2}, Month {3})",
+    "ch": "岁月流逝……{0} / {1}个月（第{2}年{3}月）",
+    "tc": "歲月流逝……{0} / {1}個月（第{2}年{3}月）",
+    "kr": "세월이 흐른다... {0} / {1}개월 ({2}년 {3}월)"
+  },
+  {
+    "id": -1000006253,
+    "key": "family_inherit_skills",
+    "en": "{0} kneels before you. What of your techniques?",
+    "ch": "{0}跪在你面前。你的功法当如何处置？",
+    "tc": "{0}跪在你面前。你的功法當如何處置？",
+    "kr": "{0}이(가) 그대 앞에 무릎을 꿇었다. 그대의 공법은 어찌할 것인가?"
+  },
+  {
+    "id": -1000006254,
+    "key": "family_inherit_skills_keep",
+    "en": "Pass on my techniques",
+    "ch": "传下我的功法",
+    "tc": "傳下我的功法",
+    "kr": "나의 공법을 전한다"
+  },
+  {
+    "id": -1000006255,
+    "key": "family_inherit_skills_own",
+    "en": "Let {0} keep their own techniques",
+    "ch": "让{0}保留自己的功法",
+    "tc": "讓{0}保留自己的功法",
+    "kr": "{0}의 공법을 그대로 둔다"
+  },
+  {
+    "id": -1000006256,
+    "key": "log_wanted_heir",
+    "en": "The bounty on {0} ({1:#,##0}) ended with their death; the reward went back to {2}.",
+    "ch": "{0}身故，其悬赏（{1:#,##0}）作废，赏金退回{2}。",
+    "tc": "{0}身故，其懸賞（{1:#,##0}）作廢，賞金退回{2}。",
+    "kr": "{0}의 죽음으로 현상금({1:#,##0})이 취소되어 {2}에 반환되었다."
+  },
+  {
+    "id": -1000006257,
+    "key": "fund_button",
+    "en": "Family",
+    "ch": "家族",
+    "tc": "家族",
+    "kr": "가문"
+  },
+  {
+    "id": -1000006258,
+    "key": "fund_title",
+    "en": "Household of {0} (generation {1})",
+    "ch": "{0}之家（第{1}代）",
+    "tc": "{0}之家（第{1}代）",
+    "kr": "{0}의 가문 ({1}대)"
+  },
+  {
+    "id": -1000006259,
+    "key": "fund_members",
+    "en": "Members: {0} grown up, {1} children",
+    "ch": "成员：成年{0}人，孩童{1}人",
+    "tc": "成員：成年{0}人，孩童{1}人",
+    "kr": "구성원: 성인 {0}명, 아이 {1}명"
+  },
+  {
+    "id": -1000006260,
+    "key": "fund_upkeep",
+    "en": "Upkeep: {0:#,##0} a month (members {1:#,##0}, children {2:#,##0})",
+    "ch": "家用：每月{0:#,##0}（成员{1:#,##0}，孩童{2:#,##0}）",
+    "tc": "家用：每月{0:#,##0}（成員{1:#,##0}，孩童{2:#,##0}）",
+    "kr": "생활비: 매월 {0:#,##0} (구성원 {1:#,##0}, 아이 {2:#,##0})"
+  },
+  {
+    "id": -1000006261,
+    "key": "fund_year",
+    "en": "This year: paid {0:#,##0}, unpaid {1:#,##0}; gifts {2:#,##0} stones and {3} items; {4} items taken back",
+    "ch": "今年：已付{0:#,##0}，欠付{1:#,##0}；供奉灵石{2:#,##0}、物品{3}件；取用{4}件",
+    "tc": "今年：已付{0:#,##0}，欠付{1:#,##0}；供奉靈石{2:#,##0}、物品{3}件；取用{4}件",
+    "kr": "올해: 지불 {0:#,##0}, 미지불 {1:#,##0}; 공물 영석 {2:#,##0}, 물품 {3}개; 사용 {4}개"
+  },
+  {
+    "id": -1000006262,
+    "key": "fund_stored",
+    "en": "Gifted items in the bank storage: {0}",
+    "ch": "存于仓库的供奉物品：{0}件",
+    "tc": "存於倉庫的供奉物品：{0}件",
+    "kr": "창고에 보관된 공물: {0}개"
+  },
+  {
+    "id": -1000006263,
+    "key": "fund_last",
+    "en": "Latest:",
+    "ch": "近况：",
+    "tc": "近況：",
+    "kr": "최근:"
+  },
+  {
+    "id": -1000006264,
+    "key": "fund_when",
+    "en": "Y{0} M{1}: ",
+    "ch": "{0}年{1}月：",
+    "tc": "{0}年{1}月：",
+    "kr": "{0}년 {1}월: "
+  },
+  {
+    "id": -1000006265,
+    "key": "fund_entry_Upkeep",
+    "en": "upkeep paid {1:#,##0}",
+    "ch": "支付家用{1:#,##0}",
+    "tc": "支付家用{1:#,##0}",
+    "kr": "생활비 {1:#,##0} 지불"
+  },
+  {
+    "id": -1000006266,
+    "key": "fund_entry_Unpaid",
+    "en": "upkeep unpaid {1:#,##0}: the family is upset",
+    "ch": "家用欠付{1:#,##0}，家人心生不满",
+    "tc": "家用欠付{1:#,##0}，家人心生不滿",
+    "kr": "생활비 {1:#,##0} 미지불: 가족이 불만을 품었다"
+  },
+  {
+    "id": -1000006267,
+    "key": "fund_entry_GiftStones",
+    "en": "{0} brought {1:#,##0} spirit stones",
+    "ch": "{0}送来灵石{1:#,##0}",
+    "tc": "{0}送來靈石{1:#,##0}",
+    "kr": "{0}이(가) 영석 {1:#,##0}을 가져왔다"
+  },
+  {
+    "id": -1000006268,
+    "key": "fund_entry_GiftItem",
+    "en": "{0} brought {2}",
+    "ch": "{0}送来{2}",
+    "tc": "{0}送來{2}",
+    "kr": "{0}이(가) {2}을(를) 가져왔다"
+  },
+  {
+    "id": -1000006269,
+    "key": "fund_entry_Used",
+    "en": "{0} took {2} from the storage",
+    "ch": "{0}从仓库取用了{2}",
+    "tc": "{0}從倉庫取用了{2}",
+    "kr": "{0}이(가) 창고에서 {2}을(를) 가져갔다"
+  },
+  {
+    "id": -1000006270,
+    "key": "fund_help",
+    "en": "Every month the household (companion, grown-up descendants, children) costs spirit stones by grade, paid from your money, then from the stones in your bank storage. Unpaid upkeep upsets every member.\nNow and then a member brings spirit stones or a precious item to your bank storage; a member in need may also take one of those gifts back.",
+    "ch": "每月家族（道侣、成年后人、孩童）按境界消耗灵石，先从身上扣除，不足时从仓库灵石扣除。欠付会令全家不满。\n家人偶尔会把灵石或珍贵物品送入你的仓库；有需要时，家人也可能取走其中一件供奉。",
+    "tc": "每月家族（道侶、成年後人、孩童）按境界消耗靈石，先從身上扣除，不足時從倉庫靈石扣除。欠付會令全家不滿。\n家人偶爾會把靈石或珍貴物品送入你的倉庫；有需要時，家人也可能取走其中一件供奉。",
+    "kr": "매달 가문(도려, 성인 후손, 아이)은 경지에 따라 영석이 든다. 먼저 소지금에서, 부족하면 창고의 영석에서 지불한다. 미지불 시 모든 구성원이 불만을 품는다.\n가끔 구성원이 영석이나 귀한 물품을 창고에 들여오며, 필요할 때 그 공물 중 하나를 가져가기도 한다."
+  },
+  {
+    "id": -1000006271,
+    "key": "fund_tree",
+    "en": "Family tree",
+    "ch": "家谱",
+    "tc": "家譜",
+    "kr": "가계도"
+  },
+  {
+    "id": -1000006272,
+    "key": "log_family_unpaid",
+    "en": "Household upkeep unpaid ({0:#,##0}): the family is upset.",
+    "ch": "家用欠付（{0:#,##0}），家人心生不满。",
+    "tc": "家用欠付（{0:#,##0}），家人心生不滿。",
+    "kr": "생활비 미지불({0:#,##0}): 가족이 불만을 품었다."
+  },
+  {
+    "id": -1000006273,
+    "key": "log_family_gift_stones",
+    "en": "{0} brought {1:#,##0} spirit stones to the family storage.",
+    "ch": "{0}将灵石{1:#,##0}送入家族仓库。",
+    "tc": "{0}將靈石{1:#,##0}送入家族倉庫。",
+    "kr": "{0}이(가) 영석 {1:#,##0}을 가문 창고에 들여왔다."
+  },
+  {
+    "id": -1000006274,
+    "key": "log_family_gift_item",
+    "en": "{0} brought {1} to the family storage.",
+    "ch": "{0}将{1}送入家族仓库。",
+    "tc": "{0}將{1}送入家族倉庫。",
+    "kr": "{0}이(가) {1}을(를) 가문 창고에 들여왔다."
+  },
+  {
+    "id": -1000006275,
+    "key": "log_family_used",
+    "en": "{0} was in need and took {1} from the family storage.",
+    "ch": "{0}有急用，从家族仓库取走了{1}。",
+    "tc": "{0}有急用，從家族倉庫取走了{1}。",
+    "kr": "{0}이(가) 급히 필요해 가문 창고에서 {1}을(를) 가져갔다."
+  },
+  {
+    "id": -1000006276,
+    "key": "secl_interrupted",
+    "en": "Your seclusion was interrupted after {0} months: something in the world needs you.",
+    "ch": "闭关{0}个月后被打断：外界有事需要你。",
+    "tc": "閉關{0}個月後被打斷：外界有事需要你。",
+    "kr": "{0}개월 만에 폐관이 중단되었다. 바깥세상이 그대를 필요로 한다."
+  }
+]

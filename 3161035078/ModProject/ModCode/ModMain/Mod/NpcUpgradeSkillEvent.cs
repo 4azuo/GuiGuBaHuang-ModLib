@@ -33,7 +33,9 @@ namespace MOD_nE7UL2.Mod
             base.OnMonthlyForEachWUnit(wunit);
             if (!wunit.IsPlayer())
             {
-                UpgradeMartial(wunit);
+                // one dispatch may stand for several months (time skip)
+                for (var m = 0; m < ModLib.Mod.ModMaster.MonthsPassed; m++)
+                    UpgradeMartial(wunit);
             }
         }
 

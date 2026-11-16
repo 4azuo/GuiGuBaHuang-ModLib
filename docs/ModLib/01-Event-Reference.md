@@ -17,7 +17,7 @@ Legend - **Where**: T = title screen, G = in a save (map), B = in battle. Actual
 | `OnFirstMonth()` | First month change of the save (once) | G |
 | `OnMonthly()` | Every month | G |
 | `OnMonthlyForEachWUnit(WorldUnitBase)` | Every month, once per unit of the ParameterStore | G |
-| `OnYearly()` | Every 12 months | G |
+| `OnYearly()` | When a year boundary is crossed (`ModMaster.YearsPassed` years; `MonthsPassed` months for the monthly handlers, see 00-Architecture "Monthly tick") | G |
 | `OnSave(ETypeData)` | Game save (in a save only) | G |
 
 ## Timers

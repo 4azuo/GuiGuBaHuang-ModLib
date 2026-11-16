@@ -10,21 +10,6 @@
 		"en|ch|tc|kr": "Équipe"
 	},
 	{
-		"id": "420041123",
-		"key": "team420041123drama",
-		"en|ch|tc|kr": "Voulez-vous voyager ensemble?"
-	},
-	{
-		"id": "420041124",
-		"key": "team420041124dramaOpt1",
-		"en|ch|tc|kr": "Oui"
-	},
-	{
-		"id": "420041125",
-		"key": "team420041125dramaOpt2",
-		"en|ch|tc|kr": "Non"
-	},
-	{
 		"id": "420041126",
 		"key": "team420041126",
 		"en|ch|tc|kr": "Licencier l'équipe"

@@ -135,11 +135,6 @@
 		"en|ch|tc|kr": "Invitationem accepistis ab {0}' Magistro Oppido ad custodiam loci?\nHabesne tutorem civitatis fieri?"
 	},
 	{
-		"id": 500020027,
-		"key": "other500020027",
-		"en|ch|tc|kr": "Satis habes {0:#,##0} Lapides spiritus ad solvendum!"
-	},
-	{
 		"id": 500020028,
 		"key": "other500020028",
 		"en|ch|tc|kr": "Quotienscumque morieris in bello, vita tua peribit. Et cum aetas tua transierit, salva tua delebitur. Cave quaeso."
@@ -218,11 +213,6 @@
 		"id": 500020043,
 		"key": "other500020043",
 		"en|ch|tc|kr": "{0:#,##0} Lapides Spiritus/menses"
-	},
-	{
-		"id": 500020044,
-		"key": "other500020044",
-		"en|ch|tc|kr": "Sneaky per"
 	},
 	{
 		"id": 500020045,
@@ -390,31 +380,6 @@
 		"en|ch|tc|kr": "Da up"
 	},
 	{
-		"id": 500020078,
-		"key": "other500020078",
-		"en|ch|tc|kr": "Subnixus es? Postquam omnia inter nos convenit? Ego non sum benignus in fractis agit — modo perdideris tempus meum."
-	},
-	{
-		"id": 500020079,
-		"key": "other500020079",
-		"en|ch|tc|kr": "Id blande! Semper magno opere cum aliquo qui scit quid discis."
-	},
-	{
-		"id": 500020080,
-		"key": "other500020080",
-		"en|ch|tc|kr": "Gravis esse non potes. Plus mihi debes quam 'non'!"
-	},
-	{
-		"id": 500020081,
-		"key": "other500020081",
-		"en|ch|tc|kr": "Quid? Sciebas me venturum! Num usquam vendidisti?"
-	},
-	{
-		"id": 500020082,
-		"key": "other500020082",
-		"en|ch|tc|kr": "In [{0}] venditus est."
-	},
-	{
 		"id": 500020083,
 		"key": "other500020083",
 		"en|ch|tc|kr": "Ignotum"
@@ -440,11 +405,6 @@
 		"en|ch|tc|kr": "Habes satis spiritus lapides!"
 	},
 	{
-		"id": 500020088,
-		"key": "other500020088",
-		"en|ch|tc|kr": "Tu me conaris effundere?"
-	},
-	{
 		"id": 500020089,
 		"key": "other500020089",
 		"en|ch|tc|kr": "Damnum x{0}"
@@ -463,11 +423,6 @@
 		"id": 500020092,
 		"key": "other500020092",
 		"en|ch|tc|kr": "Agit"
-	},
-	{
-		"id": 500020093,
-		"key": "other500020093",
-		"en|ch|tc|kr": "Quid?! Remittitur? Videor ut tempus terere?"
 	},
 	{
 		"id": 500020094,

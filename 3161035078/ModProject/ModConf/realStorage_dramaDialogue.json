@@ -7,14 +7,14 @@
 		"npcLeft": "0",
 		"npcRight": "0",
 		"speaker": "0",
-		"backgroud": "dizizhenjing1",
+		"backgroud": "xinjianhualuo1",
 		"soundsBg": "0",
 		"soundsEffect": "0",
 		"title": "0",
 		"dialogue": "realStorage480020100",
 		"openFunction": "0",
 		"function": "0",
-		"options": "480010101",
+		"options": "480020101",
 		"nextDialogue": "0"
 	}
 ]

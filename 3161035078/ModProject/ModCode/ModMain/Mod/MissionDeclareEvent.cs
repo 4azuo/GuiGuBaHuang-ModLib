@@ -221,7 +221,8 @@ Your commissions:
             base.OnMonthly();
             foreach (var task in CommissionTasks)
             {
-                if (task.Status == CommissionTask.CommissionTaskStatus.Progressing)
+                // one dispatch may stand for several months (time skip): a month at a time
+                for (var m = 0; m < ModLib.Mod.ModMaster.MonthsPassed && task.Status == CommissionTask.CommissionTaskStatus.Progressing; m++)
                 {
                     task.PassTime++;
                     if (task.PassTime > task.CostTime)

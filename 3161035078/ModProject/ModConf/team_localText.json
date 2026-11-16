@@ -18,26 +18,26 @@
 	{
 		"id": "420041123",
 		"key": "team420041123drama",
-		"en": "Do you wanna travel together?",
-		"ch": "你想一起去旅行吗？",
-		"tc": "你想一起去旅行嗎？",
-		"kr": "같이 여행할래?"
+		"en": "The road ahead is long and dangerous. Shall we walk it together for a while?",
+		"ch": "前路漫长凶险，不如我们结伴同行一段？",
+		"tc": "前路漫長兇險，不如我們結伴同行一段？",
+		"kr": "앞길은 멀고 험하니, 한동안 함께 가는 게 어떻겠소?"
 	},
 	{
 		"id": "420041124",
 		"key": "team420041124dramaOpt1",
-		"en": "Yes",
-		"ch": "是的",
-		"tc": "是的",
-		"kr": "예"
+		"en": "Gladly — two swords are better than one",
+		"ch": "求之不得，多一把剑多一分照应",
+		"tc": "求之不得，多一把劍多一分照應",
+		"kr": "바라던 바요. 검 한 자루가 더 있으면 든든하지"
 	},
 	{
 		"id": "420041125",
 		"key": "team420041125dramaOpt2",
-		"en": "No",
-		"ch": "否",
-		"tc": "否",
-		"kr": "아니요"
+		"en": "I prefer to travel alone",
+		"ch": "我还是习惯独行",
+		"tc": "我還是習慣獨行",
+		"kr": "나는 혼자 다니는 게 익숙하오"
 	},
 	{
 		"id": "420041126",
@@ -110,5 +110,13 @@
 		"ch": "您确定要解散您的团队吗？",
 		"tc": "您確定要解散您的團隊嗎？",
 		"kr": "팀을 해산하시겠습니까?"
+	},
+	{
+		"id": "420041140",
+		"key": "team420041140drama",
+		"en": "Then may the road be kind to you. Find me if you change your mind.",
+		"ch": "那便祝你一路顺遂。改变主意了，随时来找我。",
+		"tc": "那便祝你一路順遂。改變主意了，隨時來找我。",
+		"kr": "그럼 순탄한 길이 되길 바라오. 마음이 바뀌면 언제든 찾아오시오."
 	}
 ]

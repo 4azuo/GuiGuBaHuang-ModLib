@@ -9,5 +9,7 @@ namespace ModLib.Object
     public class ModConfigs
     {
         public DebugModeEnum DebugMode { get; set; } = DebugModeEnum.Info;
+        /// <summary>At startup, remove the mod data (saves folders, configs, logs) of the saves deleted in the game.</summary>
+        public bool CleanOrphanSaves { get; set; } = true;
     }
 }

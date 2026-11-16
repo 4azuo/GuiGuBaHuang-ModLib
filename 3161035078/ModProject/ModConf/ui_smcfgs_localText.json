@@ -798,5 +798,141 @@
 		"ch": "死后损失金钱",
 		"tc": "死後損失金錢",
 		"kr": "죽을 때 돈을 잃었다"
+	},
+	{
+		"id": -1000001150,
+		"key": "smcfgs150",
+		"en": "Additional features",
+		"ch": "附加功能",
+		"tc": "附加功能",
+		"kr": "추가 기능"
+	},
+	{
+		"id": -1000001151,
+		"key": "smcfgs151",
+		"en": "No random encounters",
+		"ch": "关闭随机奇遇",
+		"tc": "關閉隨機奇遇",
+		"kr": "무작위 기연 끄기"
+	},
+	{
+		"id": -1000001152,
+		"key": "smcfgs152",
+		"en": "No bank loans",
+		"ch": "关闭钱庄借贷",
+		"tc": "關閉錢莊借貸",
+		"kr": "은행 대출 끄기"
+	},
+	{
+		"id": -1000001153,
+		"key": "smcfgs153",
+		"en": "No market buy orders",
+		"ch": "关闭集市求购",
+		"tc": "關閉集市求購",
+		"kr": "시장 구매 주문 끄기"
+	},
+	{
+		"id": -1000001154,
+		"key": "smcfgs154",
+		"en": "No bounties (wanted notices)",
+		"ch": "关闭悬赏通缉",
+		"tc": "關閉懸賞通緝",
+		"kr": "현상수배 끄기"
+	},
+	{
+		"id": -1000001155,
+		"key": "smcfgs155",
+		"en": "These features are on by default and do not change the difficulty score. Turning one off keeps what is already running (a loan can still be repaid, existing orders are still filled).",
+		"ch": "这些功能默认开启，不影响难度分数。关闭后，进行中的内容仍会处理（借款仍可偿还，已有求购仍会成交）。",
+		"tc": "這些功能預設開啟，不影響難度分數。關閉後，進行中的內容仍會處理（借款仍可償還，已有求購仍會成交）。",
+		"kr": "이 기능들은 기본으로 켜져 있으며 난이도 점수에 영향을 주지 않습니다. 꺼도 진행 중인 내용은 유지됩니다 (대출 상환 가능, 기존 주문 체결)."
+	},
+	{
+		"id": -1000001156,
+		"key": "smcfgs156",
+		"en": "No seclusion events",
+		"ch": "关闭闭关事件",
+		"tc": "關閉閉關事件",
+		"kr": "폐관 이벤트 없음"
+	},
+	{
+		"id": -1000001157,
+		"key": "smcfgs157",
+		"en": "No forced seclusion",
+		"ch": "关闭强制闭关",
+		"tc": "關閉強制閉關",
+		"kr": "강제 폐관 없음"
+	},
+	{
+		"id": -1000001158,
+		"key": "smcfgs158",
+		"en": "No family system (births)",
+		"ch": "关闭家族系统（生育）",
+		"tc": "關閉家族系統（生育）",
+		"kr": "가족 시스템 없음 (출생)"
+	},
+	{
+		"id": -1000001159,
+		"key": "smcfgs159",
+		"en": "Same-sex dao companions",
+		"ch": "允许同性道侣",
+		"tc": "允許同性道侶",
+		"kr": "동성 도려 허용"
+	},
+	{
+		"id": -1000001160,
+		"key": "smcfgs160",
+		"en": "Child surname",
+		"ch": "子女姓氏",
+		"tc": "子女姓氏",
+		"kr": "자녀의 성"
+	},
+	{
+		"id": -1000001161,
+		"key": "smcfgs161",
+		"en": "Father",
+		"ch": "随父",
+		"tc": "隨父",
+		"kr": "부성"
+	},
+	{
+		"id": -1000001162,
+		"key": "smcfgs162",
+		"en": "Mother",
+		"ch": "随母",
+		"tc": "隨母",
+		"kr": "모성"
+	},
+	{
+		"id": -1000001163,
+		"key": "smcfgs163",
+		"en": "Random",
+		"ch": "随机",
+		"tc": "隨機",
+		"kr": "무작위"
+	},
+	{
+		"id": -1000001164,
+		"key": "smcfgs164",
+		"en": "Continue as a descendant",
+		"ch": "以后代延续",
+		"tc": "以後代延續",
+		"kr": "후손으로 계속"
+	},
+	{
+		"id": -1000001165,
+		"key": "smcfgs165",
+		"en": "Random encounters (% a month)",
+		"ch": "随机奇遇（每月%）",
+		"tc": "隨機奇遇（每月%）",
+		"kr": "무작위 기연 (월 %)"
+	},
+	{
+		"id": -1000001166,
+		"key": "smcfgs166",
+		"en": "Seclusion events (% a month)",
+		"ch": "闭关事件（每月%）",
+		"tc": "閉關事件（每月%）",
+		"kr": "폐관 이벤트 (월 %)"
 	}
 ]

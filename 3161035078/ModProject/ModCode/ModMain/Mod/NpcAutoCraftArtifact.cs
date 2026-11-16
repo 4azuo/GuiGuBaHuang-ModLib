@@ -41,7 +41,7 @@ namespace MOD_nE7UL2.Mod
                     var curArts = wunit.GetEquippedArtifacts();
                     var refine = wunit.GetDynProperty(UnitDynPropertyEnum.RefineWeapon).value;
                     var luck = wunit.GetDynProperty(UnitDynPropertyEnum.Luck).value;
-                    if (CommonTool.Random(0.00f, 100.00f).IsBetween(0.00f, refine / 1000f + luck / 100f))
+                    if (CommonTool.Random(0.00f, 100.00f).IsBetween(0.00f, ModLib.Mod.ModMaster.ChanceOver(refine / 1000f + luck / 100f, ModLib.Mod.ModMaster.MonthsPassed)))
                     {
                         wunit.AddUnitProp(availableArtifacts[CommonTool.Random(0, availableArtifacts.Length - 1)].id, 1);
                         var addedArt = WUnitHelper.LastAddedItems.ToArray().FirstOrDefault();

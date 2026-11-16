@@ -26,34 +26,34 @@
 	{
 		"id": "420041113",
 		"key": "townmaster420041113drama",
-		"en": "You become this town master.",
-		"ch": "你成为这个镇长。",
-		"tc": "你成為這個鎮長。",
-		"kr": "당신은 이 마을 주인이 됩니다."
+		"en": "The elders bow and present the town seal. From today the walls, the markets and every soul within them are your responsibility.",
+		"ch": "众长老躬身奉上镇印。从今日起，城墙、集市与城中众生，皆由你执掌。",
+		"tc": "眾長老躬身奉上鎮印。從今日起，城牆、集市與城中眾生，皆由你執掌。",
+		"kr": "장로들이 몸을 숙여 마을 인장을 바쳤다. 오늘부터 성벽과 시장, 그리고 마을의 모든 이가 너의 책임이다."
 	},
 	{
 		"id": "420041114",
 		"key": "townmaster420041114drama",
-		"en": "You received a invitation from {0}' Town Master for guardian position?\nDo you wanna become a Town Guardian?.",
-		"ch": "您收到了来自{0}'镇长的守护者职位邀请吗？\n你想成为城镇守护者吗？",
-		"tc": "您收到了來自{0}'鎮長的守護者職位邀請嗎？\n你想成為城鎮守護者嗎？",
-		"kr": "{0}' 마을 마스터로부터 보호자 자리에 대한 초대를 받으셨나요?\n타운 가디언이 되고 싶나요?."
+		"en": "A messenger arrives with a sealed letter: the Town Master of {0} has heard of your strength and asks you to become one of the town's guardians.",
+		"ch": "一名信使送来封缄的书信：{0}镇长久闻阁下实力，诚邀阁下出任本镇守护者。",
+		"tc": "一名信使送來封緘的書信：{0}鎮長久聞閣下實力，誠邀閣下出任本鎮守護者。",
+		"kr": "전령이 봉인된 서신을 가져왔다. {0}의 촌장이 그대의 실력을 듣고 마을 수호자가 되어 달라고 청한다."
 	},
 	{
 		"id": "420041115",
 		"key": "townmaster420041114dramaOpt1",
-		"en": "Yes",
-		"ch": "是的",
-		"tc": "是的",
-		"kr": "예"
+		"en": "Accept the post",
+		"ch": "接受任命",
+		"tc": "接受任命",
+		"kr": "임명을 받아들인다"
 	},
 	{
 		"id": "420041116",
 		"key": "townmaster420041114dramaOpt2",
-		"en": "No",
-		"ch": "否",
-		"tc": "否",
-		"kr": "아니요"
+		"en": "Politely decline",
+		"ch": "婉言谢绝",
+		"tc": "婉言謝絕",
+		"kr": "정중히 거절한다"
 	},
 	{
 		"id": "420041117",
@@ -78,5 +78,13 @@
 		"ch": "薪资：{0:#,##0}/年",
 		"tc": "薪資：{0:#,##0}/年",
 		"kr": "지불: {0:#,##0}/년"
+	},
+	{
+		"id": "420041150",
+		"key": "townmaster420041120",
+		"en": "Accept the seal",
+		"ch": "接过镇印",
+		"tc": "接過鎮印",
+		"kr": "인장을 받는다"
 	}
 ]

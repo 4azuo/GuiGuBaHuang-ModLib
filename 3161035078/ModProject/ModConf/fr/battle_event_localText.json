@@ -1,55 +1,5 @@
 [
 	{
-		"id": "480110100",
-		"key": "battleevent480110100",
-		"en|ch|tc|kr": "Ha ha ha ! Le butin est à moi ! Tout ça !"
-	},
-	{
-		"id": "480110200",
-		"key": "battleevent480110200",
-		"en|ch|tc|kr": "Laissez-moi vous aider !"
-	},
-	{
-		"id": "480110300",
-		"key": "battleevent480110300",
-		"en|ch|tc|kr": "Ne plaisantez pas avec notre membre de la secte !"
-	},
-	{
-		"id": "480110400",
-		"key": "battleevent480110400",
-		"en|ch|tc|kr": "Vous n'avez pas le droit de vous battre en ville !"
-	},
-	{
-		"id": "480110500",
-		"key": "battleevent480110500",
-		"en|ch|tc|kr": "J'en ai assez de toi ! Allez en enfer !"
-	},
-	{
-		"id": "480110501",
-		"key": "battleevent480110501",
-		"en|ch|tc|kr": "Les choses que vous faites sont dégoûtantes. Va en enfer, espèce de méchant !"
-	},
-	{
-		"id": "480110502",
-		"key": "battleevent480110502",
-		"en|ch|tc|kr": "Votre attitude noble me donne vraiment la nausée."
-	},
-	{
-		"id": "480110600",
-		"key": "battleevent480110600",
-		"en|ch|tc|kr": "Je sais que tu l'as. Donnez-le-moi !"
-	},
-	{
-		"id": "480110601",
-		"key": "battleevent480110601",
-		"en|ch|tc|kr": "Donne-moi tout ce que tu as sur toi !"
-	},
-	{
-		"id": "480110602",
-		"key": "battleevent480110602",
-		"en|ch|tc|kr": "Ne vous inquiétez pas, je vous emprunte simplement vos affaires pour toujours."
-	},
-	{
 		"id": "480111990",
 		"key": "battleevent480111990typeDesc",
 		"en|ch|tc|kr": "Guerre"
@@ -123,45 +73,5 @@
 		"id": "480112889",
 		"key": "monstwave480112889name",
 		"en|ch|tc|kr": "Terreur à grande échelle"
-	},
-	{
-		"id": "480112890",
-		"key": "battleevent480112890",
-		"en|ch|tc|kr": "La terre tremble sous vos pieds tandis que la bataille fait rage. Votre choix déterminera désormais votre chemin !"
-	},
-	{
-		"id": "480112891",
-		"key": "battleevent480112891",
-		"en|ch|tc|kr": "Aidez le défenseur"
-	},
-	{
-		"id": "480112892",
-		"key": "battleevent480112892",
-		"en|ch|tc|kr": "Aide l'envahisseur"
-	},
-	{
-		"id": "480112893",
-		"key": "battleevent480112893",
-		"en|ch|tc|kr": "Essayez de vous échapper"
-	},
-	{
-		"id": "480112894",
-		"key": "battleevent480112894",
-		"en|ch|tc|kr": "{0} envahit {1} !\nVoulez-vous aider?"
-	},
-	{
-		"id": "480112895",
-		"key": "battleevent480112895",
-		"en|ch|tc|kr": "{0} est attaqué !\nVoulez-vous aider?"
-	},
-	{
-		"id": "480112898",
-		"key": "battleevent480112898",
-		"en|ch|tc|kr": "Je m'en fiche"
-	},
-	{
-		"id": "480112899",
-		"key": "battleevent480112899",
-		"en|ch|tc|kr": "Aide"
 	}
 ]

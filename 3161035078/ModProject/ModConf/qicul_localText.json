@@ -10,10 +10,10 @@
 	{
 		"id": "480010100",
 		"key": "qicul480010100",
-		"en": "Qi! I can feel it!",
-		"ch": "Qi！我能感觉到！",
-		"tc": "Qi！我能感覺到！",
-		"kr": "Qi! 나는 그것을 느낄 수 있다!"
+		"en": "A warm current flows from their palm into my meridians, circling once, twice… then settling deep in my dantian.",
+		"ch": "一股暖流自对方掌心涌入我的经脉，周天运转一遍、两遍……最终沉入丹田深处。",
+		"tc": "一股暖流自對方掌心湧入我的經脈，周天運轉一遍、兩遍……最終沉入丹田深處。",
+		"kr": "따뜻한 기류가 상대의 손바닥에서 내 경맥으로 흘러들어, 한 바퀴, 두 바퀴 주천을 돌더니… 단전 깊숙이 가라앉았다."
 	},
 	{
 		"id": "480010101",
@@ -22,5 +22,29 @@
 		"ch": "离开",
 		"tc": "離開",
 		"kr": "휴가"
+	},
+	{
+		"id": "480010102",
+		"key": "qicul480010102",
+		"en": "The Qi is not entirely mine yet, but with time I will make it my own.",
+		"ch": "这股真气尚未完全为我所用，但假以时日，必能化为己有。",
+		"tc": "這股真氣尚未完全為我所用，但假以時日，必能化為己有。",
+		"kr": "이 진기는 아직 온전히 내 것이 아니지만, 시간이 지나면 반드시 내 것으로 만들 것이다."
+	},
+	{
+		"id": "480010103",
+		"key": "qicul480010103",
+		"en": "Thank them and steady my breath",
+		"ch": "道谢，调匀气息",
+		"tc": "道謝，調勻氣息",
+		"kr": "감사를 표하고 호흡을 가다듬는다"
+	},
+	{
+		"id": "480010104",
+		"key": "qicul480010104",
+		"en": "Focus on the flow of Qi",
+		"ch": "凝神引导真气",
+		"tc": "凝神引導真氣",
+		"kr": "기의 흐름에 집중한다"
 	}
 ]

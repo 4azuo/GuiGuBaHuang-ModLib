@@ -2,9 +2,17 @@
 	{
 		"id": "499919998",
 		"key": "inflationary499919998dialog",
-		"en": "The price of everything is skyrocketing. What was once affordable is now a luxury. My hard-earned spirit stones are worthless. The value of my assets is plummeting. The once-thriving market is now a ghost town. The economy is collapsing.",
-		"ch": "所有东西的价格都在飞涨。曾经可以承受的东西现在变成了奢侈品。我辛辛苦苦赚来的灵石根本不值钱​​。我的资产价值直线下降。曾经繁荣的市场现在变成了一座鬼城。经济正在崩溃。",
-		"tc": "所有東西的價格都在飛漲。曾經可以承受的東西現在變成了奢侈品。我辛辛苦苦賺來的靈石根本不值錢​​。我的資產價值直線下降。曾經繁榮的市場現在變成了一座鬼城。經濟正在崩潰。",
-		"kr": "모든 것의 가격이 치솟고 있습니다. 한때 저렴했던 것이 이제는 사치품이 되었습니다. 내가 힘들게 얻은 영혼석은 쓸모가 없습니다. 내 자산의 가치가 급락하고 있습니다. 한때 번성했던 시장은 이제 유령도시가 됐다. 경제가 무너지고 있습니다."
+		"en": "In the market square a merchant tears up his old price board. \"A bowl of noodles for three hundred stones? Last year it was ten!\" Spirit stones flood every purse, yet buy less each month. The elders whisper that the currency must be reformed.",
+		"ch": "集市上，一名商贩撕掉了旧价牌：“一碗面三百灵石？去年才十块！”人人囊中灵石充盈，却一月比一月不值钱。长老们私下议论：币制恐怕非改不可了。",
+		"tc": "集市上，一名商販撕掉了舊價牌：「一碗麵三百靈石？去年才十塊！」人人囊中靈石充盈，卻一月比一月不值錢。長老們私下議論：幣制恐怕非改不可了。",
+		"kr": "시장에서 한 상인이 옛 가격표를 찢어 버렸다. \"국수 한 그릇에 영석 삼백? 작년엔 열 개였는데!\" 누구나 주머니에 영석이 넘치지만 달마다 가치가 떨어진다. 장로들은 화폐 개혁이 불가피하다고 수군거린다."
+	},
+	{
+		"id": "499919999",
+		"key": "inflationary499919999",
+		"en": "Spend them before they lose more value",
+		"ch": "趁还值钱，赶紧花掉",
+		"tc": "趁還值錢，趕緊花掉",
+		"kr": "가치가 더 떨어지기 전에 써 버리자"
 	}
 ]

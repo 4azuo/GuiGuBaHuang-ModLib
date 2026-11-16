@@ -46,3 +46,11 @@ Serializer: `CacheHelper.JSON_SETTINGS` (type names, error tolerant). `EnumObjec
 | `CacheHelper.ReadGlobalCacheFile<T>(modId, cacheId)` | Read a Global object's file from a Local object (Taoist copies S&M configs this way) |
 | `CacheHelper.SaveGlobalCache(obj)` | Save a Global object immediately (e.g. after a title screen setting change) |
 | `ModMaster.ModObj.ParameterStore` / `GetModChildParameterStore()` | Units/buildings snapshot of the month |
+
+## Data of deleted saves
+
+The game names a save folder `<game data>\<platform>\CacheData\<slot>_<key>`; the key is **not** the player unit id that ModLib and the mods use (`mod\<modId>\saves\<id>\`, `mod\<modId>\<id>_configs.json`, `mod\<modId>\<id>_debug-*.log`). So:
+
+- `OnLoadGame` records the save folder of the loaded save (`g.cache.curCache.data.folder`) and the player unit id in `mod\flQrxq\save-index.json` (`SaveCleanupHelper.Register`).
+- At startup (`OnLoadGlobals`) the folders of `g.cache.allCache` are compared with the index: a player id whose recorded folders are all gone loses its data in every mod folder (saves folder, configs, debug logs) and leaves the index (`SaveCleanupHelper.CleanDeletedSaves`). Ids never recorded (saves not loaded since this version) and global files are kept; with an empty save list nothing is removed.
+- Off with `"CleanOrphanSaves": false` in ModLib `ModConf/mod_configs.json`. Unit tests: `tests/UnitTests/ModLib/SaveCleanupHelperTests.cs`; in game: TP-01 checks the index entry of the new save.

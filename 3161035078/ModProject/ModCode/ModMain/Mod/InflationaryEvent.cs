@@ -48,7 +48,8 @@ namespace MOD_nE7UL2.Mod
         public override void OnYearly()
         {
             base.OnYearly();
-            WorldPrice = (EconomyHelper.GetWorldPrice() * SMLocalConfigsEvent.Instance.Calculate(Configs.InflationaryRate, SMLocalConfigsEvent.Instance.Configs.AddInflationRate)).Parse<int>();
+            // one dispatch may stand for several years (time skip): compounded
+            WorldPrice = (EconomyHelper.GetWorldPrice() * Math.Pow(SMLocalConfigsEvent.Instance.Calculate(Configs.InflationaryRate, SMLocalConfigsEvent.Instance.Configs.AddInflationRate), Math.Max(1, ModLib.Mod.ModMaster.YearsPassed))).Parse<int>();
             EconomyHelper.SetWorldPrice(WorldPrice);
             Corrupt();
         }

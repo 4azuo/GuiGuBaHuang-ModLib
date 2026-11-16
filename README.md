@@ -27,46 +27,58 @@
 
 [Taoist](https://steamcommunity.com/sharedfiles/filedetails/?id=3161035078)
 
-- Create a team and hire people for combat (NPCs also team up together)
-- Allow NPCs to betray under certain conditions
-- NPCs track the player and look for a chance to steal when they detect rare items
-- Become town master and get tax from people
-- Bank needs money to open account and charge monthly fee
-- Lock items when not paying
-- Prices increase over time
-- Towns build slowly over time (depend tax and inflationary)
-- Hide map in battle (optional)
-- Hide unit number in battle
-- Hide training and preview skills
-- Player/NPCs/Monsters has manashield, and some special efx
-- Modify dmg/def calculation in battle
-- Increase exp needed to level up
-- Modify item price and stats
-- Lose all exp at current lvl + items when dying
-- Item [Resurrection Pill] blocks exp loss (high lvl should use)
-- [Ring] blocks item loss when dying (depend on security points)
-- Add quests
-- Add roles when creating new character/npc: Power, Speed, Tao, Atk, Def, Angel, Evil, Merchant (each role has its own advantages)
-- Allows exchanging items for sect contribution points
-- Buying and selling in town has % price increase, there are sale off events or price increase in December and June
-- Ask npc to find items for you (Commission button in the quest board in town)
-- Rebirth to level 1 to cultivate again to increase basic stats
-- Increase stats through battles
-- Have titles corresponding to the profession
-- Deeply cultivate skills to increase stats (including artifacts)
-- Artifacts/Rings/Clothes, have random stats divided by rarity
-- Increase difficulty for monsters
-- Add "S&M Configs" 🐧
-- Add Trainer in game
-- Support language: English, Chinese, Vietnamese
-- Add custom language systeem
-- Town manage, declare war to others, build your town, change tax rate, etc...
-- Monster waves
-- Potmon properties auto increase monthly and depend on player properties when summoned
-- NPCs auto up level and grade of skills and auto craft new artifact
-- Allow NPCs/Player trade items in market
-- etc...
+Hardcore rework of the base game. Most features can be tuned or turned off in **S&M Configs** (title screen; page 3 holds the optional features).
 
+**New game**
+- Starting divine artifacts at character creation (Bagua Jade, Eye of Providence, Devil Demon pot; any combination) and "skip the intro and the first battle"
+- Roles when creating a character/NPC: Power, Speed, Tao, Atk, Def, Angel, Evil, Merchant (each with its own advantages)
+- Prioritized destiny level, S&M difficulty presets, one-life mode, in-game trainer
+
+**Divine artifacts**
+- Several artifacts at once: their buttons are laid out side by side on the map and in battles
+- A hotkey per artifact (Taoist Settings, same binding rows as the game): opens the artifact window on the map, uses its skill in a battle
+- Repair a damaged artifact
+
+**World and NPCs**
+- NPCs grow, level up skills, craft artifacts, get roles and titles
+- Teams: hire NPCs (monthly pay), friends join for free, members who fight beside you grow closer; members may betray you
+- NPCs join your battles (enemies, friends, sect members, town guards); stalkers follow you after you show rare items — fight them or pay them off
+- Random encounters with choices and rewards: wounded cultivator, chess hermit, hooded peddler, collapsed cave, spirit beast cub, town festival
+- Reworked dramas (several lines per situation, own choices) in English, Chinese (simplified/traditional) and Korean
+- Quests: slice-of-life, challenge master, commissions (ask NPCs to find items)
+- Rebirth to level 1 to cultivate again with better basic stats
+
+**Economy**
+- Prices rise over time (inflation, currency reform), sale/price events in June and December
+- Town budgets and taxes (tax statistics: income, residents who could not pay and left)
+- Bank accounts and storage fees (unpaid fees lock the storage)
+- Bank loans: 3 %/month, due in 12 months; overdue debts bring reminder letters, then debt collectors (pay / hand over goods / fight); beat them twice and the bank writes the debt off but blacklists you (no loans, account closed, triple taxes in that town)
+- Player market with NPCs: list items, negotiate (spirit stones and barter), VIP market, recent deal prices, offer notifications, buy orders filled by the townspeople
+- Exchange items for sect contribution
+
+**Towns**
+- Become town master/guardian, manage the budget, tax rate, buildings, upgrade to a city
+- Town wars and monster waves; when your town is attacked far away you are called back to defend it
+- Bounties: town masters post wanted notices paid from the town budget; hunters chase the targets (you included — fight or clear your name); hunt the wanted yourself from the bounty board
+
+**World and family**
+- Families: NPCs take dao companions (same-sex option), have children who join the world at 16 (surname of the father, the mother or random); family window in the NPC info; a family avenges its members
+- Play on as your grown-up child or grandchild when your character dies (S&M option): the legacy (items, spirit stones, techniques) is kept
+- Seclusion and enlightenment lasting years (spirit veins, ancient inheritances, heart demons, time rifts...) while the world keeps living; a forced one never ends your life
+- NPCs find their own fortunes and ancient inheritances (rarely)
+- Time skips run every month of the world and save only 4 times, with a progress window
+
+**Battle and growth**
+- Mana shields, special monsters, monsters growing stronger, reworked damage/defense, block/evade/crit rules
+- Exp from battles, stats grow through battles, harder level-ups, expertise of skills and artifacts
+- Losing a battle can cost exp, items, spirit stones, lifespan or the character (one-life) — Resurrection Pill and rings protect
+- Custom refine of rings/outfits/artifacts/mounts: refine levels, random adjustment slots with qualities (slot n unlocks at level n x 100), progress shown at the forge, reroll unlocked slots
+- Qi cultivation, cultivation with spirit stones, natural breakthroughs
+
+**Interface**
+- Taoist Settings (game settings): hide damage multiplier, notifications, encounters, artifact hotkeys, the **Taoist log** (taxes, fees, deals, loans, bounties, encounters... month by month)
+- Hide map / unit number in battle, hide training and skill previews
+- Languages: English, Chinese, Vietnamese (+ custom language system)
 
 
 

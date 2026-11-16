@@ -84,6 +84,23 @@ namespace MOD_nE7UL2.Mod
         public bool NoStalker { get; set; } = false;
         public bool NoTaxing { get; set; } = false;
         public bool NoQiCultivation { get; set; } = false;
+        // page 3 (features added later; "No..." so that saves made before keep them on)
+        public bool NoEncounter { get; set; } = false;
+        public bool NoBankLoan { get; set; } = false;
+        public bool NoBuyOrder { get; set; } = false;
+        public bool NoBounty { get; set; } = false;
+        public bool NoSeclusion { get; set; } = false;
+        public bool NoForcedSeclusion { get; set; } = false;
+        public bool NoFamily { get; set; } = false;
+        public bool AllowSameSexCouple { get; set; } = false;
+        /// <summary>Surname of a child: 0 father, 1 mother, 2 random (FamilyEvent.Surname).</summary>
+        public int ChildSurname { get; set; } = 0;
+        /// <summary>When the player dies, play on as a grown-up child or grandchild (FamilyEvent).</summary>
+        public bool ContinueAsDescendant { get; set; } = false;
+        /// <summary>Chance of a random encounter each month (%).</summary>
+        public float EncounterRate { get; set; } = 3f;
+        /// <summary>Chance of a seclusion offer each month (%); forced ones scale with it.</summary>
+        public float SeclusionRate { get; set; } = 0.5f;
         public bool LostLifespanWhenDie { get; set; } = false;
         public bool LostMoneyWhenDie { get; set; } = true;
         public float MaxSellersEachTown { get; set; } = 8;
@@ -138,6 +155,18 @@ namespace MOD_nE7UL2.Mod
         private UIItemComposite tglNoStalker;
         private UIItemComposite tglNoTaxing;
         private UIItemComposite tglNoQiCultivation;
+        private UIItemComposite tglNoEncounter;
+        private UIItemComposite tglNoBankLoan;
+        private UIItemComposite tglNoBuyOrder;
+        private UIItemComposite tglNoBounty;
+        private UIItemComposite tglNoSeclusion;
+        private UIItemComposite tglNoForcedSeclusion;
+        private UIItemComposite tglNoFamily;
+        private UIItemComposite tglAllowSameSexCouple;
+        private UIItemComposite selChildSurname;
+        private UIItemComposite tglContinueAsDescendant;
+        private UIItemComposite slEncounterRate;
+        private UIItemComposite slSeclusionRate;
         private UIItemComposite tglLostLifespanWhenDie;
         private UIItemComposite tglLostMoneyWhenDie;
         private UIItemComposite slMaxSellersEachTown;
@@ -335,6 +364,25 @@ namespace MOD_nE7UL2.Mod
             Register(() => tglNoQiCultivation,
                 funcCal: s => 2000,
                 funcCond: s => s.Get().Parse<bool>());
+            // optional content: no difficulty points
+            Register(() => tglNoEncounter, funcCal: s => 0, funcCond: s => s.Get().Parse<bool>());
+            Register(() => tglNoBankLoan, funcCal: s => 0, funcCond: s => s.Get().Parse<bool>());
+            Register(() => tglNoBuyOrder, funcCal: s => 0, funcCond: s => s.Get().Parse<bool>());
+            Register(() => tglNoBounty, funcCal: s => 0, funcCond: s => s.Get().Parse<bool>());
+            Register(() => tglNoSeclusion, funcCal: s => 0, funcCond: s => s.Get().Parse<bool>());
+            Register(() => tglNoForcedSeclusion, funcCal: s => 0, funcCond: s => s.Get().Parse<bool>());
+            Register(() => tglNoFamily, funcCal: s => 0, funcCond: s => s.Get().Parse<bool>());
+            Register(() => tglAllowSameSexCouple, funcCal: s => 0, funcCond: s => s.Get().Parse<bool>());
+            Register(() => selChildSurname, funcCal: s => 0, funcCond: s => false);
+            Register(() => tglContinueAsDescendant, funcCal: s => 0, funcCond: s => s.Get().Parse<bool>());
+            // rates in % a month, shown as they are ("3 %")
+            Func<UIItemBase, object[]> rateFormatter = s =>
+            {
+                var x = s.Parent as UIItemComposite;
+                return new object[] { 0, x == null ? "0" : x.Get().Parse<float>().ToString("0.0") + " %" };
+            };
+            Register(() => slEncounterRate, funcCal: s => 0, funcCond: s => false, funcFormatter: rateFormatter);
+            Register(() => slSeclusionRate, funcCal: s => 0, funcCond: s => false, funcFormatter: rateFormatter);
             Register(() => tglLostLifespanWhenDie,
                 funcCal: s => 2000,
                 funcCond: s => s.Get().Parse<bool>());
@@ -609,6 +657,34 @@ namespace MOD_nE7UL2.Mod
                 AddDifButtons();
             }
 
+            //page 3: features added later
+            uiCustom.AddPage();
+            {
+                int col, row;
+
+                uiCustom.AddToolTipButton(GameTool.LS("other500020039"));
+
+                col = 2; row = 0;
+                uiCustom.AddText(col, row++, GameTool.LS("smcfgs150")).Format(null, 17, FontStyle.Italic).Align(TextAnchor.MiddleRight);
+                tglNoEncounter = uiCustom.AddCompositeToggle(col, row++, GameTool.LS("smcfgs151"), NoEncounter, GameTool.LS("smcfgs102"));
+                tglNoBankLoan = uiCustom.AddCompositeToggle(col, row++, GameTool.LS("smcfgs152"), NoBankLoan, GameTool.LS("smcfgs102"));
+                tglNoBuyOrder = uiCustom.AddCompositeToggle(col, row++, GameTool.LS("smcfgs153"), NoBuyOrder, GameTool.LS("smcfgs102"));
+                tglNoBounty = uiCustom.AddCompositeToggle(col, row++, GameTool.LS("smcfgs154"), NoBounty, GameTool.LS("smcfgs102"));
+                tglNoSeclusion = uiCustom.AddCompositeToggle(col, row++, GameTool.LS("smcfgs156"), NoSeclusion, GameTool.LS("smcfgs102"));
+                tglNoForcedSeclusion = uiCustom.AddCompositeToggle(col, row++, GameTool.LS("smcfgs157"), NoForcedSeclusion, GameTool.LS("smcfgs102"));
+                tglNoFamily = uiCustom.AddCompositeToggle(col, row++, GameTool.LS("smcfgs158"), NoFamily, GameTool.LS("smcfgs102"));
+                tglAllowSameSexCouple = uiCustom.AddCompositeToggle(col, row++, GameTool.LS("smcfgs159"), AllowSameSexCouple, GameTool.LS("smcfgs102"));
+                selChildSurname = uiCustom.AddCompositeSelect(col, row++, GameTool.LS("smcfgs160"), new[] { GameTool.LS("smcfgs161"), GameTool.LS("smcfgs162"), GameTool.LS("smcfgs163") }, ChildSurname);
+                tglContinueAsDescendant = uiCustom.AddCompositeToggle(col, row++, GameTool.LS("smcfgs164"), ContinueAsDescendant, GameTool.LS("smcfgs102"));
+                row++;
+                // rates of the random events (second column)
+                slEncounterRate = uiCustom.AddCompositeSlider(16, 1, GameTool.LS("smcfgs165"), 0f, 10f, EncounterRate, GameTool.LS("smcfgs103"));
+                slSeclusionRate = uiCustom.AddCompositeSlider(16, 2, GameTool.LS("smcfgs166"), 0f, 3f, SeclusionRate, GameTool.LS("smcfgs103"));
+                uiCustom.AddText(col - 1, row++, GameTool.LS("smcfgs155")).Format(null, 13).Align(TextAnchor.MiddleLeft);
+
+                AddDifButtons();
+            }
+
             SetWork();
             uiCustom.Pages[0].Active();
         }
@@ -766,6 +842,18 @@ namespace MOD_nE7UL2.Mod
             tglNoStalker.Set(false);
             tglNoTaxing.Set(false);
             tglNoQiCultivation.Set(false);
+            tglNoEncounter.Set(false);
+            tglNoBankLoan.Set(false);
+            tglNoBuyOrder.Set(false);
+            tglNoBounty.Set(false);
+            tglNoSeclusion.Set(false);
+            tglNoForcedSeclusion.Set(false);
+            tglNoFamily.Set(false);
+            tglAllowSameSexCouple.Set(false);
+            selChildSurname.Set(0);
+            tglContinueAsDescendant.Set(false);
+            slEncounterRate.Set(3f);
+            slSeclusionRate.Set(0.5f);
             tglLostLifespanWhenDie.Set(false);
             tglLostMoneyWhenDie.Set(true);
             slMaxSellersEachTown.Set(8f);
@@ -824,6 +912,18 @@ namespace MOD_nE7UL2.Mod
             tglNoStalker.Set(false);
             tglNoTaxing.Set(false);
             tglNoQiCultivation.Set(false);
+            tglNoEncounter.Set(false);
+            tglNoBankLoan.Set(false);
+            tglNoBuyOrder.Set(false);
+            tglNoBounty.Set(false);
+            tglNoSeclusion.Set(false);
+            tglNoForcedSeclusion.Set(false);
+            tglNoFamily.Set(false);
+            tglAllowSameSexCouple.Set(false);
+            selChildSurname.Set(0);
+            tglContinueAsDescendant.Set(false);
+            slEncounterRate.Set(3f);
+            slSeclusionRate.Set(0.5f);
             tglLostLifespanWhenDie.Set(level > 0);
             slMaxSellersEachTown.Set(8f);
             slMaxItemsOnSeller.Set(4f);
@@ -882,6 +982,18 @@ namespace MOD_nE7UL2.Mod
             NoStalker = tglNoStalker.Get().Parse<bool>();
             NoTaxing = tglNoTaxing.Get().Parse<bool>();
             NoQiCultivation = tglNoQiCultivation.Get().Parse<bool>();
+            NoEncounter = tglNoEncounter.Get().Parse<bool>();
+            NoBankLoan = tglNoBankLoan.Get().Parse<bool>();
+            NoBuyOrder = tglNoBuyOrder.Get().Parse<bool>();
+            NoBounty = tglNoBounty.Get().Parse<bool>();
+            NoSeclusion = tglNoSeclusion.Get().Parse<bool>();
+            NoForcedSeclusion = tglNoForcedSeclusion.Get().Parse<bool>();
+            NoFamily = tglNoFamily.Get().Parse<bool>();
+            AllowSameSexCouple = tglAllowSameSexCouple.Get().Parse<bool>();
+            ChildSurname = selChildSurname.Get().Parse<int>();
+            ContinueAsDescendant = tglContinueAsDescendant.Get().Parse<bool>();
+            EncounterRate = slEncounterRate.Get().Parse<float>();
+            SeclusionRate = slSeclusionRate.Get().Parse<float>();
             LostLifespanWhenDie = tglLostLifespanWhenDie.Get().Parse<bool>();
             MaxSellersEachTown = slMaxSellersEachTown.Get().Parse<int>();
             MaxItemsOnSeller = slMaxItemsOnSeller.Get().Parse<int>();

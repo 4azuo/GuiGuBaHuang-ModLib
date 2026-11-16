@@ -28,7 +28,8 @@ namespace MOD_nE7UL2.Mod
         {
             base.OnMonthlyForEachWUnit(wunit);
 
-            if (GameHelper.GetGameTotalMonth() % SMLocalConfigsEvent.Instance.Configs.GrowUpSpeed == 0)
+            var ticks = ModLib.Mod.ModMaster.Ticks(SMLocalConfigsEvent.Instance.Configs.GrowUpSpeed);
+            if (ticks > 0)
             {
                 foreach (var martial in wunit.GetActionMartials())
                 {
@@ -40,11 +41,11 @@ namespace MOD_nE7UL2.Mod
                         {
                             if (martialType != MartialType.Ability || !wunit.data.unitData.abilitys.Contains(martialData.data.soleID))
                                 continue;
-                            AddExpertExp(wunit, martialData.data.soleID, Configs.SkillExpRatios[martialType]);
+                            AddExpertExp(wunit, martialData.data.soleID, Configs.SkillExpRatios[martialType] * ticks);
                         }
                         else
                         {
-                            AddExpertExp(wunit, martialData.data.soleID, Configs.SkillExpRatios[martialType]);
+                            AddExpertExp(wunit, martialData.data.soleID, Configs.SkillExpRatios[martialType] * ticks);
                         }
                     }
                 }
@@ -53,7 +54,7 @@ namespace MOD_nE7UL2.Mod
                     return;
                 foreach (var artifact in wunit.GetEquippedArtifacts())
                 {
-                    AddExpertExp(wunit, artifact.soleID, Configs.AutoArtifactExpRate);
+                    AddExpertExp(wunit, artifact.soleID, Configs.AutoArtifactExpRate * ticks);
                 }
             }
         }

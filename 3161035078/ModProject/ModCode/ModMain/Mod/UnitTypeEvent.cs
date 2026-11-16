@@ -83,10 +83,12 @@ namespace MOD_nE7UL2.Mod
                 income += (money * merchantLvl * MerchantLuckEnum.Merchant.IncPassiveIncomeEachLvl).Parse<int>();
             }
 
-            wunit.AddUnitMoney(income);
+            // one dispatch may stand for several months (time skip)
+            wunit.AddUnitMoney((int)Math.Min(int.MaxValue, (long)income * ModLib.Mod.ModMaster.MonthsPassed));
 
             //add property
-            if (GameHelper.GetGameTotalMonth() % SMLocalConfigsEvent.Instance.Configs.GrowUpSpeed == 0)
+            var ticks = ModLib.Mod.ModMaster.Ticks(SMLocalConfigsEvent.Instance.Configs.GrowUpSpeed);
+            for (var t = 0; t < ticks; t++)
             {
                 if (wunit.IsPlayer())
                 {
@@ -118,7 +120,7 @@ namespace MOD_nE7UL2.Mod
             {
                 if (!wunit.IsPlayer() && UnitTypeDic.ContainsKey(wunit.GetUnitId()) && UnitTypeDic[wunit.GetUnitId()] == UnitTypeEnum.SpeedUnit)
                 {
-                    wunit.AddProperty<int>(UnitPropertyEnum.MoveSpeed, 1);
+                    wunit.AddProperty<int>(UnitPropertyEnum.MoveSpeed, Math.Max(1, ModLib.Mod.ModMaster.YearsPassed));
                 }
             }
         }

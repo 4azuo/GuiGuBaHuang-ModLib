@@ -176,6 +176,10 @@ namespace MOD_nE7UL2.AutoTest.Scenarios.Title
                 {
                     if (!Requested || slot < 0) return;
                     c.Assert(GameHelper.IsInGame(), $"in the new save: {Player?.GetName()} ({Player?.GetUnitId()})");
+                    // ModLib records save folder -> player id (to remove the mod data of deleted saves at startup)
+                    var folder = g.cache.curCache?.data?.folder;
+                    var index = SaveCleanupHelper.ReadIndex(SaveCleanupHelper.IndexPath(SaveCleanupHelper.GameDataPath));
+                    c.Assert(folder != null && index.ContainsKey(folder) && index[folder] == Player.GetUnitId(), $"save index: {folder} -> {(folder != null && index.ContainsKey(folder) ? index[folder] : "?")} (player {Player.GetUnitId()})");
                     c.AssertEqual(1, Player.GetGradeLvl(), "grade 1");
                     c.AssertEqual(GameLevelType.CrueltyShura.ToString(), GameHelper.GetGameLevel().ToString(), "difficulty");
                     c.Assert(SMLocalConfigsEvent.Instance.Configs.EnableTrainer, "trainer on in the save configs");

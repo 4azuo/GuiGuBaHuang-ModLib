@@ -135,11 +135,6 @@
 		"en|ch|tc|kr": "Vous avez reçu une invitation du maître de ville de {0} pour le poste de gardien ?\nVoulez-vous devenir gardien de ville ?"
 	},
 	{
-		"id": 500020027,
-		"key": "other500020027",
-		"en|ch|tc|kr": "Vous n'avez pas assez de {0:#,##0} Pierres spirituelles pour payer !"
-	},
-	{
 		"id": 500020028,
 		"key": "other500020028",
 		"en|ch|tc|kr": "Chaque fois que vous mourrez au combat, votre vie sera perdue. Et lorsque votre âge aura dépassé, votre sauvegarde sera supprimée. S'il vous plaît soyez prudent."
@@ -218,11 +213,6 @@
 		"id": 500020043,
 		"key": "other500020043",
 		"en|ch|tc|kr": "{0:#,##0} Pierres spirituelles/mois"
-	},
-	{
-		"id": 500020044,
-		"key": "other500020044",
-		"en|ch|tc|kr": "Se faufiler à travers"
 	},
 	{
 		"id": 500020045,
@@ -390,31 +380,6 @@
 		"en|ch|tc|kr": "Abandonner"
 	},
 	{
-		"id": 500020078,
-		"key": "other500020078",
-		"en|ch|tc|kr": "Vous vous êtes retiré ? Après tout ce sur quoi nous étions convenus ? Je n'apprécie pas les accords rompus – vous m'avez juste fait perdre mon temps."
-	},
-	{
-		"id": 500020079,
-		"key": "other500020079",
-		"en|ch|tc|kr": "Cela s'est bien passé ! C'est toujours agréable de travailler avec quelqu'un qui sait ce qu'il fait."
-	},
-	{
-		"id": 500020080,
-		"key": "other500020080",
-		"en|ch|tc|kr": "Tu ne peux pas être sérieux. Vous me devez plus qu'un « non » !"
-	},
-	{
-		"id": 500020081,
-		"key": "other500020081",
-		"en|ch|tc|kr": "Quoi ? Tu savais que je venais ! Tu l'as vendu quand même ?"
-	},
-	{
-		"id": 500020082,
-		"key": "other500020082",
-		"en|ch|tc|kr": "Le [{0}] a été vendu."
-	},
-	{
 		"id": 500020083,
 		"key": "other500020083",
 		"en|ch|tc|kr": "Inconnu"
@@ -440,11 +405,6 @@
 		"en|ch|tc|kr": "Vous n’avez pas assez de pierres spirituelles !"
 	},
 	{
-		"id": 500020088,
-		"key": "other500020088",
-		"en|ch|tc|kr": "Essayez-vous de me larguer ?"
-	},
-	{
 		"id": 500020089,
 		"key": "other500020089",
 		"en|ch|tc|kr": "Dégâts x{0}"
@@ -463,11 +423,6 @@
 		"id": 500020092,
 		"key": "other500020092",
 		"en|ch|tc|kr": "Offres"
-	},
-	{
-		"id": 500020093,
-		"key": "other500020093",
-		"en|ch|tc|kr": "Quoi ?! Annulé? Est-ce que j'ai l'air d'avoir du temps à perdre ?"
 	},
 	{
 		"id": 500020094,

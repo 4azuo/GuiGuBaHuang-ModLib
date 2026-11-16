@@ -66,6 +66,7 @@ namespace MOD_nE7UL2.Mod
         public const int SECT_MONST_WAVE_DUNGEON_BASE_ID = 480110992;
 
         public const int DRAMA_ID = 480110600;
+        public const int TOWN_DEFENDED_REPUTATION = 200;
         public const int DRAMA_HELP_DEF_OPT_ID = 480110601;
         public const int DRAMA_HELP_ATK_OPT_ID = 480110602;
         public const int DRAMA_TRY_ESCAPE_OPT_ID = 480110603;
@@ -119,7 +120,7 @@ namespace MOD_nE7UL2.Mod
                 if (!LastYearEventHappen.ContainsKey(town.buildData.id))
                     LastYearEventHappen.Add(town.buildData.id, curYear);
 
-                if (CommonTool.Random(0.00f, 100.00f).IsBetween(0.00f, MONST_WAVE_RATE * (curYear - LastYearEventHappen[town.buildData.id])))
+                if (CommonTool.Random(0.00f, 100.00f).IsBetween(0.00f, ModLib.Mod.ModMaster.ChanceOver(MONST_WAVE_RATE * (curYear - LastYearEventHappen[town.buildData.id]), ModLib.Mod.ModMaster.MonthsPassed)))
                 {
                     DebugHelper.WriteLine($"{town.name}: monster wave");
                     LastYearEventHappen[town.buildData.id] = curYear;
@@ -132,7 +133,7 @@ namespace MOD_nE7UL2.Mod
                 if (!LastYearEventHappen.ContainsKey(school.buildData.id))
                     LastYearEventHappen.Add(school.buildData.id, curYear);
 
-                if (CommonTool.Random(0.00f, 100.00f).IsBetween(0.00f, MONST_WAVE_RATE * (curYear - LastYearEventHappen[school.buildData.id])))
+                if (CommonTool.Random(0.00f, 100.00f).IsBetween(0.00f, ModLib.Mod.ModMaster.ChanceOver(MONST_WAVE_RATE * (curYear - LastYearEventHappen[school.buildData.id]), ModLib.Mod.ModMaster.MonthsPassed)))
                 {
                     DebugHelper.WriteLine($"{school.name}: monster wave");
                     LastYearEventHappen[school.buildData.id] = curYear;
@@ -145,7 +146,7 @@ namespace MOD_nE7UL2.Mod
                 if (!LastYearEventHappen.ContainsKey(town.buildData.id))
                     LastYearEventHappen.Add(town.buildData.id, curYear);
 
-                if (CommonTool.Random(0.00f, 100.00f).IsBetween(0.00f, TOWN_WAR_RATE * (curYear - LastYearEventHappen[town.buildData.id])))
+                if (CommonTool.Random(0.00f, 100.00f).IsBetween(0.00f, ModLib.Mod.ModMaster.ChanceOver(TOWN_WAR_RATE * (curYear - LastYearEventHappen[town.buildData.id]), ModLib.Mod.ModMaster.MonthsPassed)))
                 {
                     var master = MapBuildPropertyEvent.GetTownMaster(town);
                     if (master == null)
@@ -355,6 +356,12 @@ namespace MOD_nE7UL2.Mod
                     });
                 }
                 else
+                if (MapBuildPropertyEvent.IsTownGuardian(townA_def, g.world.playerUnit))
+                {
+                    //the player's own town (master/guardian) is attacked far away: called back to defend it
+                    CallToDefend(townA_def, townB_atk);
+                }
+                else
                 {
                     //DebugHelper.WriteLine("5");
                     SkipTownWar(townA_def, townB_atk);
@@ -365,6 +372,36 @@ namespace MOD_nE7UL2.Mod
                 DebugHelper.WriteLine("TownWar: error!!! Please contact to modder!");
             }
         }
+
+        /// <summary>
+        /// The player's town (master/guardian) is attacked while the player is far away: rush back (the player is moved
+        /// to the town and joins the defense; +reputation when the defense wins, see OnBattleEndHandler) or trust the
+        /// guardians (simulated; the town hates a guardian who stayed away when the town falls).
+        /// </summary>
+        public static void CallToDefend(MapBuildTown townA_def, MapBuildTown townB_atk)
+        {
+            var role = MapBuildPropertyEvent.IsTownMaster(townA_def, g.world.playerUnit) ? GameTool.LS("townmaster420041111") : GameTool.LS("townmaster420041112");
+            TaoistLogEvent.Log("log_town_call", townA_def.name, townB_atk.name);
+            DramaHelper.OpenDrama2(string.Format(GameTool.LS("town_call"), townA_def.name, townB_atk.name, role),
+                new List<string> { GameTool.LS("town_call_o1"), GameTool.LS("town_call_o2") }, x =>
+                {
+                    if (x.id % 10 == 0)
+                    {
+                        g.world.playerUnit.SetUnitPos(townA_def.GetOrigiPoint());
+                        CalledToDefend = true;
+                        Loved(townA_def);
+                        Hated(townB_atk);
+                        JoinTownWar(townA_def, townB_atk, TeamSideEnum.TeamA);
+                    }
+                    else
+                    {
+                        SkipTownWar(townA_def, townB_atk);
+                    }
+                }, "choudaorenqiyu6");
+        }
+
+        /// <summary>The running town war is a defense the player was called back to.</summary>
+        public static bool CalledToDefend { get; set; }
 
         /// <summary>
         /// Player joins a side.
@@ -945,6 +982,17 @@ namespace MOD_nE7UL2.Mod
         public override void OnBattleEndHandler(BattleEndHandler e)
         {
             base.OnBattleEndHandler(e);
+
+            //called back to defend the own town: reputation when it holds
+            if (CalledToDefend && ModBattleEvent.SceneBattle != null && IsBattleTownWar())
+            {
+                CalledToDefend = false;
+                if (WinTeamSide == TeamSideEnum.TeamA && BuildBaseA != null)
+                {
+                    g.world.playerUnit.AddProperty<int>(UnitPropertyEnum.Reputation, TOWN_DEFENDED_REPUTATION);
+                    TaoistLogEvent.Log("log_town_defended", BuildBaseA.name, TOWN_DEFENDED_REPUTATION);
+                }
+            }
 
             if (ModBattleEvent.SceneBattle != null && (IsBattleTownWar() || IsBattleMonstWave()))
             {

@@ -44,6 +44,48 @@ namespace MOD_nE7UL2.Mod
         public const int CATCH_SNEAKY_DUNGEON_ID = 480110993;
 
         public Dictionary<string, float> TaxRate { get; set; } = new Dictionary<string, float>();
+        /// <summary>Town tax statistics (this month and the previous one), shown to the town master.</summary>
+        public Dictionary<string, TaxStat> TaxStats { get; set; } = new Dictionary<string, TaxStat>();
+
+        public class TaxStat
+        {
+            public int Month { get; set; }
+            public long Income { get; set; }
+            public int Payers { get; set; }
+            public int Leavers { get; set; }
+            public long LastIncome { get; set; }
+            public int LastPayers { get; set; }
+            public int LastLeavers { get; set; }
+        }
+
+        /// <summary>Counts a tax payment (paid) or a resident who left (not paid) for the month.</summary>
+        public static void RecordTax(MapBuildTown town, int tax, bool paid)
+        {
+            var id = town.buildData.id;
+            var month = GameHelper.GetGameTotalMonth();
+            if (!Instance.TaxStats.ContainsKey(id))
+                Instance.TaxStats[id] = new TaxStat { Month = month };
+            var s = Instance.TaxStats[id];
+            if (s.Month != month)
+            {
+                s.LastIncome = s.Month == month - 1 ? s.Income : 0;
+                s.LastPayers = s.Month == month - 1 ? s.Payers : 0;
+                s.LastLeavers = s.Month == month - 1 ? s.Leavers : 0;
+                s.Income = 0; s.Payers = 0; s.Leavers = 0; s.Month = month;
+            }
+            if (paid) { s.Income += tax; s.Payers++; }
+            else s.Leavers++;
+        }
+
+        /// <summary>"Last month: income from n residents, m left" of a town.</summary>
+        public static string TaxStatText(MapBuildTown town)
+        {
+            TaxStat s;
+            if (!Instance.TaxStats.TryGetValue(town.buildData.id, out s))
+                return GameTool.LS("town_taxstat_none");
+            var last = s.Month == GameHelper.GetGameTotalMonth();
+            return string.Format(GameTool.LS("town_taxstat"), last ? s.LastIncome : s.Income, last ? s.LastPayers : s.Payers, last ? s.LastLeavers : s.Leavers);
+        }
         public Dictionary<string, long> Budget { get; set; } = new Dictionary<string, long>();
         public Dictionary<string, List<string>> TownMasters { get; set; } = new Dictionary<string, List<string>>();
         public List<string> PayTaxTown { get; } = new List<string>();
@@ -260,7 +302,7 @@ namespace MOD_nE7UL2.Mod
                 }
                 else if (!wunit.IsPlayer()) //npc only
                 {
-                    var tax = GetTax(town, wunit);
+                    var tax = GetTax(town, wunit) * ModLib.Mod.ModMaster.MonthsPassed;
                     var townMaster = GetTownMaster(town);
                     if (wunit.GetUnitMoney() > tax)
                     {
@@ -271,6 +313,7 @@ namespace MOD_nE7UL2.Mod
 
                         wunit.AddUnitMoney(-tax);
                         AddBuildProperty(town, tax);
+                        RecordTax(town, tax, true);
 
                         //use inn
                         wunit.AddProperty<int>(UnitPropertyEnum.Hp, wunit.GetDynProperty(UnitDynPropertyEnum.HpMax).value);
@@ -280,6 +323,7 @@ namespace MOD_nE7UL2.Mod
                     else
                     {
                         //get out
+                        RecordTax(town, tax, false);
                         if (townMaster != null)
                             wunit.data.unitData.relationData.AddHate(townMaster.GetUnitId(), 5);
                         wunit.SetUnitRandomPos(wunit.GetUnitPos());
@@ -292,7 +336,7 @@ namespace MOD_nE7UL2.Mod
             if (school != null && !IsSchoolMember(school, wunit))
             {
                 //pay school tax
-                var tax = GetTax(school, wunit);
+                var tax = GetTax(school, wunit) * ModLib.Mod.ModMaster.MonthsPassed;
                 wunit.AddUnitMoney(-tax);
                 school.buildData.money += tax;
             }
@@ -304,6 +348,8 @@ namespace MOD_nE7UL2.Mod
         public override void OnYearly()
         {
             base.OnYearly();
+            // one dispatch may stand for several years (time skip): budgets and payments of every year
+            var years = Math.Max(1, ModLib.Mod.ModMaster.YearsPassed);
 
             foreach (var town in GetModChildParameterStore().Towns)
             {
@@ -370,13 +416,13 @@ namespace MOD_nE7UL2.Mod
                 }
 
                 //budget inc yearly
-                AddBuildProperty(town, GetBaseTax(town) * TOWN_YEARLY_BUDGET);
+                AddBuildProperty(town, GetBaseTax(town) * TOWN_YEARLY_BUDGET * years);
                 
                 //budget inc by auction
                 var auction = town.GetBuildSub<MapBuildTownAuction>();
                 if (auction != null)
                 {
-                    AddBuildProperty(town, GetBaseTax(town) * AUCTION_YEARLY_BUDGET);
+                    AddBuildProperty(town, GetBaseTax(town) * AUCTION_YEARLY_BUDGET * years);
                 }
 
                 //guardians
@@ -388,7 +434,7 @@ namespace MOD_nE7UL2.Mod
                             continue;
 
                         //payment
-                        var profit = GetRequiredSpiritStones(town, wunit);
+                        var profit = GetRequiredSpiritStones(town, wunit) * years;
                         if (Budget[town.buildData.id] > profit)
                         {
                             AddBuildProperty(town, -profit);
@@ -414,7 +460,7 @@ namespace MOD_nE7UL2.Mod
                 //master npc's payment
                 if (master != null && !master.IsPlayer())
                 {
-                    var profit = GetRequiredSpiritStones(town, master) + (GetBuildProperty(town) / 100).FixValue(0, int.MaxValue).Parse<int>();
+                    var profit = (GetRequiredSpiritStones(town, master) + (GetBuildProperty(town) / 100).FixValue(0, int.MaxValue).Parse<int>()) * years;
                     if (Budget[town.buildData.id] > profit)
                     {
                         AddBuildProperty(town, -profit);
@@ -428,7 +474,7 @@ namespace MOD_nE7UL2.Mod
             foreach (var school in GetModChildParameterStore().Schools)
             {
                 //school budget inc yearly
-                school.buildData.money += GetBaseTax(school) * SCHOOL_YEARLY_BUDGET;
+                school.buildData.money += GetBaseTax(school) * SCHOOL_YEARLY_BUDGET * years;
             }
         }
 
@@ -523,11 +569,15 @@ namespace MOD_nE7UL2.Mod
                 return 0;
             var tax = GetBaseTax(buildbase);
             //if merchant, add more tax
+            // (multiplied as floats: the rates are like 1.2, an int cast of the rate would drop the increase)
             if (UnitTypeEvent.GetUnitTypeEnum(wunit) == UnitTypeEnum.Merchant)
             {
-                tax *= (1.00f + UnitTypeLuckEnum.Merchant.CustomEffects[ModConst.UTYPE_LUCK_EFX_SELL_VALUE].Value0.Parse<float>()).Parse<int>();
+                tax = (tax * (1.00f + UnitTypeLuckEnum.Merchant.CustomEffects[ModConst.UTYPE_LUCK_EFX_SELL_VALUE].Value0.Parse<float>())).Parse<int>();
             }
-            tax *= (1.00f + MerchantLuckEnum.Merchant.GetCurLevel(wunit) * MerchantLuckEnum.Merchant.IncSellValueEachLvl).Parse<int>();
+            tax = (tax * (1.00f + MerchantLuckEnum.Merchant.GetCurLevel(wunit) * MerchantLuckEnum.Merchant.IncSellValueEachLvl)).Parse<int>();
+            //wanted by the bank of this town (unpaid loan, BankLoanEvent)
+            if (wunit.IsPlayer() && BankLoanEvent.IsWanted(buildbase))
+                tax *= BankLoanEvent.WANTED_TAX_RATE;
             return tax;
         }
 
@@ -777,6 +827,11 @@ namespace MOD_nE7UL2.Mod
                     Formatter = ActionHelper.WTracedFunc<UIItemBase, object[]>((ibase) => new object[] { GetBaseTax(town) }),
                     ChangeAct = ActionHelper.WTracedAction<UIItemBase, object>((ibase, value) => Instance.TaxRate[town.buildData.id] = value.Parse<float>()),
                 });
+                uiCover.AddToolTipButton(col - 2, row + i, GameTool.LS("town_tax_help"));
+                uiCover.AddText(col, row + i++, "{0}").Format().Align().SetWork(new UIItemWork
+                {
+                    Formatter = ActionHelper.WTracedFunc<UIItemBase, object[]>((ibase) => new object[] { TaxStatText(town) }),
+                });
 
                 i++;
                 var c = 0;
@@ -1018,6 +1073,7 @@ namespace MOD_nE7UL2.Mod
                 AddBuildProperty(buildBase, tax);
                 player.AddUnitMoney(-tax);
                 Instance.PayTaxTown.Add(buildBase.buildData.id);
+                TaoistLogEvent.Log("log_tax_paid", tax, buildBase.name);
             }
             else
             {

@@ -106,14 +106,16 @@ namespace MOD_nE7UL2.Mod
             {
                 var storageValue = GetStorageValue();
                 var money = g.world.playerUnit.GetUnitMoney();
-                Debt += (storageValue * FeeRate()).Parse<long>();
+                Debt += (storageValue * FeeRate() * ModLib.Mod.ModMaster.MonthsPassed).Parse<long>();
                 if (money >= Debt)
                 {
+                    if (Debt > 0)
+                        TaoistLogEvent.Log("log_storage_fee", Debt);
                     g.world.playerUnit.AddUnitMoney(-Debt.Parse<int>());
                     Debt = 0L;
                     count = 0;
                 }
-                if (Debt > 0 && (count < 3 || GameHelper.GetGameMonth() == 1))
+                if (Debt > 0 && (count < 3 || GameHelper.GetGameMonth() == 1) && !(TimeSkipEvent.Instance?.IsProcessing ?? false))
                 {
                     DramaTool.OpenDrama(DEBT_DRAMA);
                     count++;

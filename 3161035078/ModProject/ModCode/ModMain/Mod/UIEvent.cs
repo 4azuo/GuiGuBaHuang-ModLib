@@ -443,6 +443,11 @@ namespace MOD_nE7UL2.Mod
         /// <summary>
         /// Keeps info texts positioned on PropInfo/ArtifactInfo.
         /// </summary>
+        private static bool IsReady(Text text, UIBase ui)
+        {
+            return text != null && ui != null && text.transform.IsChildOf(ui.transform);
+        }
+
         public void OnUIUpdate()
         {
             var uiArtifactInfo = g.ui.GetUI<UIArtifactInfo>(UIType.ArtifactInfo);
@@ -451,14 +456,14 @@ namespace MOD_nE7UL2.Mod
             if (uiPropInfo.IsExists() &&
                 (g.ui.HasUI(UIType.PropSelect) || g.ui.HasUI(UIType.PlayerInfo) || g.ui.HasUI(UIType.TownStorage) || (g.ui.HasUI(UIType.NPCInfo) && g.world.playerUnit.GetLuck(UnitTypeLuckEnum.Merchant.Value.Parse<int>()) != null)))
             {
-                if (uiPropInfo.propData.propsItem.IsRing() != null)
+                if (uiPropInfo.propData.propsItem.IsRing() != null && IsReady(uiPropInfo_textRefineAdj3, uiPropInfo))
                 {
                     uiPropInfo_textRefineTitle.Pos(uiPropInfo.textGrade_En.gameObject, 0, -20);
                     uiPropInfo_textRefineAdj1.Pos(uiPropInfo.textGrade_En.gameObject, 5, -35);
                     uiPropInfo_textRefineAdj2.Pos(uiPropInfo.textGrade_En.gameObject, 5, -50);
                     uiPropInfo_textRefineAdj3.Pos(uiPropInfo.textGrade_En.gameObject, 5, -65);
                 }
-                else if (uiPropInfo.propData.propsItem.IsOutfit() != null)
+                else if (uiPropInfo.propData.propsItem.IsOutfit() != null && IsReady(uiPropInfo_textRefineAdj4, uiPropInfo))
                 {
                     uiPropInfo_textRefineTitle.Pos(uiPropInfo.textName.gameObject, 0, -0);
                     uiPropInfo_textRefineAdj1.Pos(uiPropInfo.textName.gameObject, 5, -15);
@@ -466,7 +471,7 @@ namespace MOD_nE7UL2.Mod
                     uiPropInfo_textRefineAdj3.Pos(uiPropInfo.textName.gameObject, 5, -45);
                     uiPropInfo_textRefineAdj4.Pos(uiPropInfo.textName.gameObject, 5, -60);
                 }
-                else if (uiPropInfo.propData.propsItem.IsMount() != null)
+                else if (uiPropInfo.propData.propsItem.IsMount() != null && IsReady(uiPropInfo_textRefineAdj3, uiPropInfo))
                 {
                     uiPropInfo_textRefineTitle.Pos(uiPropInfo.textGrade_En.gameObject, 0, -20);
                     uiPropInfo_textRefineAdj1.Pos(uiPropInfo.textGrade_En.gameObject, 5, -35);
@@ -475,7 +480,8 @@ namespace MOD_nE7UL2.Mod
                 }
             }
 
-            if (uiArtifactInfo.IsExists() &&
+            // the texts are created by OnOpenUIEnd: this tick can come first (or still hold the texts of a closed window)
+            if (uiArtifactInfo.IsExists() && IsReady(uiArtifactInfo_textRefineAdj5, uiArtifactInfo) &&
                 (g.ui.HasUI(UIType.PropSelect) || g.ui.HasUI(UIType.PlayerInfo) || g.ui.HasUI(UIType.TownStorage) || (g.ui.HasUI(UIType.NPCInfo) && g.world.playerUnit.GetLuck(UnitTypeLuckEnum.Merchant.Value.Parse<int>()) != null)))
             {
                 uiArtifactInfo_textBasicTitle.Pos(uiArtifactInfo.textGrade_En.gameObject, 0, -20);

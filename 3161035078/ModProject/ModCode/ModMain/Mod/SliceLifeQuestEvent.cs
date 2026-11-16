@@ -110,7 +110,7 @@ namespace MOD_nE7UL2.Mod
             else
             {
                 var task = curTask.TryCast<Task104>();
-                task.taskData.curCount++;
+                task.taskData.curCount += ModLib.Mod.ModMaster.MonthsPassed;
                 LastCount = task.taskData.curCount;
                 if (task.taskData.curCount >= task.data.task104Item.requireNumber)
                 {

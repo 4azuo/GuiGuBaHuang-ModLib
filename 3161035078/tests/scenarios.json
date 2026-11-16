@@ -22,20 +22,22 @@
       "id": "TT-02",
       "kind": "auto",
       "feature": "SMGlobalConfigsEvent",
-      "title": "S&M configs window: pages, presets and cancel",
-      "description": "S&M (Settings & Modes) is the global Taoist settings window opened from the title screen: game speed, NPC amount, difficulty presets, etc. The test pages through the window, clicks a difficulty preset to check that the total difficulty score is recalculated, then presses Cancel to check that nothing is saved.",
+      "title": "S&M configs window: 3 pages, presets and cancel",
+      "description": "S&M (Settings & Modes) is the global Taoist settings window opened from the title screen: game speed, NPC amount, difficulty presets, etc. The test pages through the window, clicks a difficulty preset to check that the total difficulty score is recalculated, then presses Cancel to check that nothing is saved. Page 3 holds the toggles of the additional features (encounters, bank loans, buy orders, bounties); they do not change the difficulty score.",
       "preconditions": "Title screen",
       "steps": [
         "Open S&M Configs",
         "Look at page 1, go to page 2",
         "Click Level 3 (score changes), then Default",
-        "Cancel"
+        "Cancel",
+        "Page 3: toggle the 4 additional features"
       ],
       "expected": [
         "Window with 2 pages",
         "Valid saved values (GrowUpSpeed >= 1, NPCAmount > 0, StartupPlayerRole in range)",
         "Preset changes the total score",
-        "Cancel keeps the saved configs"
+        "Cancel keeps the saved configs",
+        "4 toggles, score unchanged"
       ]
     },
     {
@@ -520,17 +522,18 @@
       "id": "TG-27",
       "kind": "auto",
       "feature": "UISettingScreenEvent",
-      "title": "Game settings: Taoist settings button and window",
-      "description": "Game settings: Taoist adds a button that opens its own small settings window (hide damage multiplier, hide exception logs). The test opens it and checks the window and its 2 toggles.",
+      "title": "Game settings: Taoist settings window and Taoist log",
+      "description": "Game settings show the Taoist settings button, which opens the large Taoist settings window: hide damage multiplier, hide exception logs, market notifications, random encounters, a hint that the artifact hotkeys are in the Bindings tab, and the Taoist log button which opens the log (pages, newest first).",
       "preconditions": "Map screen",
       "steps": [
-        "Open game settings",
+        "Open GameSetting",
         "Click the Taoist settings button",
-        "Close"
+        "Click 'Open the Taoist log'"
       ],
       "expected": [
-        "Button visible",
-        "Window with 2 toggles opens"
+        "Taoist settings button",
+        "Large window with 4 toggles, log button and hotkey hint",
+        "Log window with pages and the newest entry"
       ]
     },
     {
@@ -877,22 +880,34 @@
       "id": "TG-46",
       "kind": "auto",
       "feature": "RealMarketEvent3",
-      "title": "Player market: VIP, register, NPC offer, deal, buy",
-      "description": "Player market end to end. Buy VIP access (fee goes to the town), register a herb through the Register window, an NPC makes an offer, the deal is accepted (money to the player, item to the NPC), then the player buys an NPC listing at its price. Monthly random offers are not driven (random); the deal they lead to is.",
+      "title": "Player market: VIP, register, my items, price, deals, sell, buy, barter, buy orders",
+      "description": "Player market end to end through its windows. Sell: buy VIP access (fee to the town), register a herb in the Register window, the same item cannot be registered twice, the listing is shown in My Items with its price, Up/Down change the price, an NPC offers, the offer is listed under Deals, the player opens that NPC deal and clicks Deal (money to the player, item to the NPC). Buy: an NPC lists a herb, Market shows that NPC, its sell list shows the herb, the player offers with Up (first offer = seller price) and the seller accepts (money to the NPC, item to the player). The monthly random parts (NPCs joining, accept chance) are not driven; the deals they lead to are. Additions: recent deal prices are recorded and shown; a new NPC offer on a player listing is notified once (and logged); a barter deal moves the item offered by the buyer to the seller; Buy Orders opens a window and the new-order item list; a buy order holds the spirit stones, is filled by an NPC owning the item (paid from the held stones) and a cancelled order is refunded; market events are in the Taoist log.",
       "preconditions": "Save loaded, player market on (NoMarketItem off)",
       "steps": [
         "Open the town market, buy VIP",
-        "Register 3 herbs",
-        "An NPC offers 123",
-        "Accept the deal",
-        "Buy an NPC listing"
+        "Register a herb; register it again",
+        "My Items: select the listing, Up then Down",
+        "An NPC offers 123; Deals; open the NPC deal; Deal",
+        "An NPC lists a herb for 50; Market; open the NPC; select the herb; Up",
+        "The seller accepts the best offer",
+        "Check the price history",
+        "Notify a new NPC offer",
+        "Barter deal",
+        "Buy Orders window, new order list",
+        "Fill and cancel buy orders"
       ],
       "expected": [
         "VIP fee paid to the town budget, VIP listings open",
-        "Listing registered",
-        "First NPC offer keeps its price",
-        "Money and items transferred, listing removed",
-        "Player pays the seller price and gets the item"
+        "Listing registered once (second registration refused), register window closed",
+        "Listing and its price shown in My Items; Up raises and Down lowers the price",
+        "The NPC is in the buyers list, its deal shows 123 spirit stones; money and items transferred, listing removed, deal drama shown",
+        "The NPC is in the sellers list, its herb is shown, player offer = 50",
+        "Player pays 50 and gets the herb, the NPC gets 50 and loses the herb, listing removed",
+        "Average price recorded and shown",
+        "One message line with the offer, none without a new offer",
+        "Offered item: buyer -1, seller +1",
+        "Window and item list with the herb",
+        "Herbs delivered, NPC paid, refund on cancel, logged"
       ],
       "replaces": [
         "TM-07"
@@ -925,18 +940,28 @@
       "id": "TG-48",
       "kind": "auto",
       "feature": "CustomRefineEvent",
-      "title": "Custom refine at a small town forge",
-      "description": "Full custom refine at a small-town forge: refine button -> item selector -> spirit stone selector -> OK. The item's refine exp/level increase, the stones are paid to the town budget, a result message is shown and the item has refine adjustments.",
-      "preconditions": "Save loaded (a ring/outfit is added to the bag)",
+      "title": "Custom refine of an artifact: exp, level, adjustment quality, bonuses, progress, reroll",
+      "description": "Custom refine of an artifact (weapon) at a small-town forge, twice, through refine button -> item selector -> spirit stone selector -> OK. A small refine checks exp = stones x refine weapon / 40, the payment to the town budget and the result message. A large refine brings the artifact to refine level 100: the first adjustment slot unlocks (quality color, value above 0), the second still shows its requirement, the artifact Atk/Def bonuses grow and the artifact info window shows the refine level and Atk bonus. The forge shows the refine progress (exp between two levels, next slot at 200); an unlocked slot can be rerolled for spirit stones (a locked one cannot) in the reroll window.",
+      "preconditions": "Save loaded (an artifact is added to the bag, removed at the end)",
       "steps": [
-        "Travel to a small town with forge",
-        "Click refine, select the item",
-        "Select 5000 spirit stones, OK"
+        "Travel to a small town with a forge, add an artifact",
+        "Refine with 5000 spirit stones",
+        "Refine with the stones needed for level 100",
+        "Check the adjustment slots and bonuses",
+        "Open the artifact info",
+        "Check the progress text",
+        "Reroll slot 1 and try slot 2",
+        "Open the reroll window"
       ],
       "expected": [
-        "Refine exp increases",
-        "Stones paid to the town budget",
-        "Result message, refine adjustment on the item"
+        "New artifact without refine exp, player refine weapon > 0",
+        "Exp gained = stones x refine weapon / 40, stones paid to the town budget, message 'level old -> new (+exp)'",
+        "Refine level >= 100",
+        "Slot 1 unlocked with its quality and a value, slot 2 locked '(Req 200)', +Atk/+Def larger than at level 0",
+        "Artifact info shows 'Refine (level)' and the +Atk bonus",
+        "Exp between the level thresholds, text with the level and 200",
+        "Slot 1 rerolled and paid, slot 2 refused",
+        "Window with '(Req 200)'"
       ],
       "replaces": [
         "TM-13"
@@ -1182,20 +1207,24 @@
       "kind": "auto",
       "feature": "BattleEvent/BattleAfterEvent/ChallengeQuestEvent",
       "title": "NPCs join battles, stalkers, challenge quest",
-      "description": "Real NPC duel started by code with, around the player, a friend, an enemy, a stalker and a hired team member (join rates 100% for the test). Friend and team member join on the player side, enemy and stalker on the other side; killing an opponent a grade above counts for the challenge quest; the monthly stalker handler moves stalkers next to the player.",
+      "description": "Real NPC duel started by code with, around the player, a friend, an enemy, a stalker and a hired team member (join rates 100% for the test). Friend and team member join on the player side, enemy and stalker on the other side; killing an opponent a grade above counts for the challenge quest; the monthly stalker handler moves stalkers next to the player. The stalker can be paid off: the player pays the fee to the stalker, its team leaves the battle and the pay-off is logged; the team member who fought beside the player gains intimacy after the battle.",
       "preconditions": "Save loaded (join rates, relations and team changed for the test)",
       "steps": [
         "Prepare friend/enemy/stalker/team member",
         "Duel an NPC above the player grade",
         "Wait for the NPCs to join",
         "Kill the opponent, win",
-        "Run the monthly stalker handler"
+        "Run the monthly stalker handler",
+        "Pay off the stalker",
+        "Check the team member intimacy after the battle"
       ],
       "expected": [
         "Each NPC joins on the right side",
         "Stalker removed from the list when it joins",
         "Challenge quest progresses",
-        "Stalker moved next to the player"
+        "Stalker moved next to the player",
+        "Fee paid to the stalker, stalker out of the battle, logged",
+        "Intimacy + 20 (won)"
       ],
       "replaces": [
         "TM-21",
@@ -1469,6 +1498,216 @@
       "expected": [
         "Lifespan 0",
         "Character dead"
+      ]
+    },
+    {
+      "id": "TB-16",
+      "kind": "auto",
+      "feature": "AnimaWeaponEvent",
+      "title": "Divine artifact hotkeys: bindings, map, battle",
+      "description": "With the 3 divine artifacts, Settings > Bindings has a row per artifact in the combat and map key lists (copies of the game rows). A click waits for a key; a key of the game is refused, a key of another artifact moves, Esc cancels, Backspace clears. On the map the artifact buttons are side by side and show their keys, a hotkey opens the artifact window. In a duel the buttons show their keys, the hotkeys are read every frame and use the artifact (its cooldown starts). Keys restored at the end.",
+      "preconditions": "Save loaded (the 3 artifacts are set for the test)",
+      "steps": [
+        "Open Settings > Bindings",
+        "Bind 7/8/9 by clicking the rows",
+        "Try the game artifact key, move a key, Esc, Backspace",
+        "Map: buttons and God Eye hotkey",
+        "Duel: buttons, God Eye and Devil Demon hotkeys"
+      ],
+      "expected": [
+        "6 rows (combat + map) with the artifact names",
+        "Keys saved and shown in the rows",
+        "Game key refused, key moved, cancel/clear work",
+        "Buttons side by side showing 7/8/9, God Eye window opens",
+        "Battle buttons show 7/8/9 and are side by side, hotkeys read in battle, God Eye cooldown starts"
+      ]
+    },
+    {
+      "id": "TG-55",
+      "kind": "auto",
+      "feature": "EncounterEvent",
+      "title": "Random encounters: dramas, choices and rewards",
+      "description": "Random monthly encounters with choices: wounded cultivator (medicine: friendship + herb; rob: 30 % of his money), chess hermit (win: exp + stake; lose: the stake), hooded peddler (item / empty box / haggle: 30 % off or he leaves), collapsed cave (materials / spirit stones / injury), spirit beast cub (herb -> +luck; no herb), town festival (mood, cost to the town budget). The drama shows its options, the monthly handler opens one at 100 %, every result is checked with fixed rolls and written in the Taoist log.",
+      "preconditions": "Save loaded",
+      "steps": [
+        "Open the chess encounter, click 'decline'",
+        "Monthly handler at 100 %",
+        "Resolve every encounter with fixed rolls"
+      ],
+      "expected": [
+        "Drama with its options",
+        "An encounter opens",
+        "Money/items/exp/luck/mood/HP change as described, result drama shown, results logged"
+      ]
+    },
+    {
+      "id": "TG-56",
+      "kind": "auto",
+      "feature": "BattleEvent/QiCulEvent (dramas)",
+      "title": "Drama texts: variants, chains and options",
+      "description": "The reworked dramas: each battle drama key has its variants (key_1, key_2...) and a random pick uses them; an NPC-join drama shows one of its texts; the Qi transfer drama goes on to its second line and its own option; the stalker drama offers 'fight' and 'pay them off (fee)'.",
+      "preconditions": "Save loaded",
+      "steps": [
+        "Count the variants, pick 40 times",
+        "Open the friend join drama",
+        "Open the Qi drama and click on",
+        "Open a stalker drama"
+      ],
+      "expected": [
+        "Expected variant counts, picks among them",
+        "A variant text shown",
+        "Second line and its option",
+        "Both options shown"
+      ]
+    },
+    {
+      "id": "TG-57",
+      "kind": "auto",
+      "feature": "BankLoanEvent",
+      "title": "Bank loan: borrow, interest, overdue, collector, blacklist",
+      "description": "A bank loan from start to blacklist: the storage of a town with an account shows 'Bank loan' and opens the loan window; borrowing pays the player from the town budget (a second loan is refused); 3 % interest a month; a partial repayment goes to the budget; overdue: +5 % penalty and a reminder letter; then a debt collector: handing over takes money then items (-100 reputation); beating 2 collectors writes the debt off and blacklists the player (no loan, account closed, taxes x3 there).",
+      "preconditions": "Save loaded (account, budget and loan changed for the test, restored at the end)",
+      "steps": [
+        "Open the storage, 'Bank loan'",
+        "Borrow half the limit, try again",
+        "Monthly interest, repay 1,000",
+        "Overdue month",
+        "Collector, hand over",
+        "Beat 2 collectors"
+      ],
+      "expected": [
+        "Loan window with the limit",
+        "Money +, budget -, second loan refused",
+        "Debt +3 %, then -1,000 (budget +1,000)",
+        "+8 %, reminder letter",
+        "Money and items taken, -100 reputation",
+        "Debt written off, blacklisted, account closed, taxes x3, logged"
+      ]
+    },
+    {
+      "id": "TG-58",
+      "kind": "auto",
+      "feature": "MapBuildPropertyEvent/MapBuildBattleEvent",
+      "title": "Town master: tax statistics, called back to defend the town",
+      "description": "Tax statistics of a town count payers, income and residents who left, keep the previous month and are shown in the town management window. When the player's town is attacked far away, a drama calls the player back (rush back / trust the guardians); trusting simulates the war and logs it.",
+      "preconditions": "Save loaded (a town with a master)",
+      "steps": [
+        "Record 2 payments and 1 leaver, then a new month",
+        "Open the town management window",
+        "Call to defend, trust the guardians"
+      ],
+      "expected": [
+        "150 from 2, 1 left; kept as last month",
+        "Statistics shown",
+        "Drama, simulated war, logged"
+      ]
+    },
+    {
+      "id": "TG-59",
+      "kind": "auto",
+      "feature": "WantedEvent",
+      "title": "Bounties: post, hunt, expire, wanted player, wanted list",
+      "description": "Bounties paid from a town budget: posting takes the reward from the budget (duplicates and rewards under the minimum refused); a hunter who wins kills the target and gets the reward; a failed hunt keeps the bounty; an expired bounty is refunded; a bounty on the player shows a notice and brings an ambush (fight / pay 1.5 x the reward to clear the name); the bounty board shows the wanted list as portraits and a portrait opens the NPC info with the first tab only and the bounty details; everything is logged.",
+      "preconditions": "Save loaded (a town with a bounty board and an NPC master)",
+      "steps": [
+        "Post under the minimum, post, post again",
+        "Hunt with a winning roll",
+        "Post on a 2nd NPC, failed hunt, expiry",
+        "Post on the player, hunt (ambush), clear the name",
+        "Open the bounty board, Wanted list",
+        "Open a wanted portrait"
+      ],
+      "expected": [
+        "Refused / budget - reward / refused",
+        "Target dead, hunter paid, bounty done",
+        "Bounty kept, then refunded",
+        "Notice, ambush with 2 options, paid, town refunded, no longer wanted",
+        "The wanted NPC is listed, events logged",
+        "First tab only, bounty details"
+      ]
+    },
+    {
+      "id": "TX-07",
+      "kind": "auto",
+      "feature": "TaoistLogEvent",
+      "title": "Taoist log in the month log of the game",
+      "description": "Taoist log entries are also written in the month log of the game; the game buffers the lines of the month and writes them when the month ends. An entry is added, one month passes, the month log window shows it.",
+      "preconditions": "Save loaded (changes the save, restored)",
+      "steps": [
+        "Add a Taoist log entry",
+        "Skip one month",
+        "Open the month log"
+      ],
+      "expected": [
+        "Entry in the game buffer",
+        "Month passed",
+        "The entry is shown"
+      ]
+    },
+    {
+      "id": "TX-08",
+      "kind": "auto",
+      "feature": "FamilyEvent",
+      "title": "Family, continue as a descendant, seclusion",
+      "description": "Two NPCs marry; a child born 16 years ago grows up into an NPC (surname of the father, parents linked, family window). The player marries and has a grown-up child who takes over the player (S&M Continue as a descendant). An offered seclusion of 1 year passes the time (world simulated) and ends with the summary drama.",
+      "preconditions": "Save loaded (changes the save, restored)",
+      "steps": [
+        "Marry two NPCs, add a child born 16 years ago, run the monthly handler",
+        "Open the family window of the father",
+        "Marry the player, add a grown-up child",
+        "Offer the inheritance, choose the child, then keep the child's own techniques",
+        "Offer a 1-year seclusion and enter it",
+        "Wait for the end"
+      ],
+      "expected": [
+        "Married both ways; child NPC of 16 years with the father surname and linked parents",
+        "The window lists the child",
+        "The child is an heir",
+        "The player has the name, age, reputation and techniques of the heir; the heir NPC is gone; next generation; a friendship of the old player halved, an enmity in full; its town seat and the bounty on it ended",
+        "Secluded",
+        "12 months passed, more exp, summary drama, family and seclusion entries in the Taoist log"
+      ]
+    },
+    {
+      "id": "TX-09",
+      "kind": "auto",
+      "feature": "TimeSkipEvent",
+      "title": "Time skip: timings (full simulation, 10 years) and interruption",
+      "description": "Measures the time skip (the player hidden: no NPC drama): 3 months with the month run of the game every month (full simulation), then 10 years (the mods every 10 months, 4 month runs of the game). Then a 2-year skip is interrupted by a drama: it stops early.",
+      "preconditions": "Save loaded (changes the save, restored)",
+      "steps": [
+        "Skip 3 months with the full simulation",
+        "Skip 10 years",
+        "Skip 2 years and open a drama during it"
+      ],
+      "expected": [
+        "3 months passed, 3 month runs of the game; timing in the infos",
+        "120 months passed, 4 month runs of the game; timing in the infos; loading window closed",
+        "The skip stops before 24 months, interrupted, loading window closed"
+      ]
+    },
+    {
+      "id": "TX-10",
+      "kind": "auto",
+      "feature": "FamilyFundEvent",
+      "title": "Household upkeep, gifts and accounts",
+      "description": "The player has a companion, a grown-up child and a young one. The monthly upkeep is paid from the money, then from the bank storage stones; what is left is unpaid and upsets the family. A member brings spirit stones and an item to the bank storage and takes the item back. The map button opens the accounts window.",
+      "preconditions": "Save loaded (changes the save, restored)",
+      "steps": [
+        "Marry the player, add a grown-up child and a 2-year-old",
+        "Pay the upkeep with enough money",
+        "Pay the upkeep with half of it in the storage and no money",
+        "Gift stones, gift an item, take it back",
+        "Check the map button, open the accounts",
+        "Check the accounts window"
+      ],
+      "expected": [
+        "Companion and child are members, one child not grown up",
+        "Money down by the upkeep",
+        "Storage stones used, the rest unpaid, the companion's intimacy lower",
+        "Stones and the item in the storage, then the item gone; Taoist log entries",
+        "The Family button is on the map",
+        "Members listed, an entry with the child, the monthly upkeep shown"
       ]
     }
   ]
