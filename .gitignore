@@ -43,6 +43,8 @@ htmlcov/
 .coverage
 .coverage.*
 .cache
+# translation cache of Translate/ (shared: a text is never translated twice)
+!Translate/.cache/
 nosetests.xml
 coverage.xml
 *.cover
