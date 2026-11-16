@@ -8,5 +8,25 @@
 		"id": "480010101",
 		"key": "qicul480010101",
 		"en|ch|tc|kr": "salir"
+	},
+	{
+		"id": "480010100",
+		"key": "qicul480010100",
+		"en|ch|tc|kr": "Una corriente cálida fluye de su palma a mis meridianos, da una vuelta, dos… y se asienta en lo hondo de mi dantian."
+	},
+	{
+		"id": "480010102",
+		"key": "qicul480010102",
+		"en|ch|tc|kr": "El qi aún no es del todo mío, pero con el tiempo lo haré mío."
+	},
+	{
+		"id": "480010103",
+		"key": "qicul480010103",
+		"en|ch|tc|kr": "Darle las gracias y calmar la respiración"
+	},
+	{
+		"id": "480010104",
+		"key": "qicul480010104",
+		"en|ch|tc|kr": "Concentrarse en el flujo del qi"
 	}
 ]

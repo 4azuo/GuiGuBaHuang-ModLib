@@ -1,0 +1,1167 @@
+[
+	{
+		"id": "-1000006000",
+		"key": "log_title",
+		"en|ch|tc|kr": "Taoist-Tagebuch"
+	},
+	{
+		"id": "-1000006001",
+		"key": "log_line",
+		"en|ch|tc|kr": "J{0} M{1}: {2}"
+	},
+	{
+		"id": "-1000006002",
+		"key": "log_empty",
+		"en|ch|tc|kr": "Noch nichts."
+	},
+	{
+		"id": "-1000006003",
+		"key": "log_tax_paid",
+		"en|ch|tc|kr": "{0:#,##0} Geistersteine Steuern in {1} bezahlt."
+	},
+	{
+		"id": "-1000006004",
+		"key": "log_storage_fee",
+		"en|ch|tc|kr": "{0:#,##0} Geistersteine Lagergebühren bezahlt."
+	},
+	{
+		"id": "-1000006005",
+		"key": "log_market_sold",
+		"en|ch|tc|kr": "{0} x {1} für {2:#,##0} Geistersteine an {3} verkauft."
+	},
+	{
+		"id": "-1000006006",
+		"key": "log_market_bought",
+		"en|ch|tc|kr": "{0} x {1} für {2:#,##0} Geistersteine von {3} gekauft."
+	},
+	{
+		"id": "-1000006007",
+		"key": "log_stalker_paid",
+		"en|ch|tc|kr": "Den Verfolger {0} mit {1:#,##0} Geistersteinen abgefunden."
+	},
+	{
+		"id": "-1000006008",
+		"key": "log_team_friend",
+		"en|ch|tc|kr": "{0} hat so oft an deiner Seite gekämpft, dass er/sie dich nun einen Freund nennt (kein Lohn mehr)."
+	},
+	{
+		"id": "-1000006009",
+		"key": "log_town_call",
+		"en|ch|tc|kr": "{0} wurde von {1} angegriffen; du wurdest zur Verteidigung zurückgerufen."
+	},
+	{
+		"id": "-1000006010",
+		"key": "log_town_defended",
+		"en|ch|tc|kr": "{0} hat dank dir standgehalten. +{1} Ruf."
+	},
+	{
+		"id": "-1000006011",
+		"key": "log_refine_reroll",
+		"en|ch|tc|kr": "Platz #{1} von {0} neu ausgewürfelt: {2} -> {3} ({4:#,##0} Geistersteine)."
+	},
+	{
+		"id": "-1000006020",
+		"key": "town_call",
+		"en|ch|tc|kr": "Ein Botenvogel lässt eine blutbefleckte Nachricht fallen: {0} wird von {1} angegriffen! Die Mauern halten nicht lange. Als {2} ruft die Stadt dich zurück."
+	},
+	{
+		"id": "-1000006021",
+		"key": "town_call_o1",
+		"en|ch|tc|kr": "Zurückeilen und die Stadt verteidigen"
+	},
+	{
+		"id": "-1000006022",
+		"key": "town_call_o2",
+		"en|ch|tc|kr": "Den Wächtern vertrauen"
+	},
+	{
+		"id": "-1000006023",
+		"key": "town_taxstat",
+		"en|ch|tc|kr": "Letzter Monat: {0:#,##0} Geistersteine von {1} Einwohnern; {2} konnten nicht zahlen und haben die Stadt verlassen"
+	},
+	{
+		"id": "-1000006024",
+		"key": "town_taxstat_none",
+		"en|ch|tc|kr": "Noch keine Steuern eingenommen"
+	},
+	{
+		"id": "-1000006030",
+		"key": "market_history",
+		"en|ch|tc|kr": "Letzte Geschäfte: Ø {0:#,##0} (min. {1:#,##0}, max. {2:#,##0}, {3} Geschäfte)"
+	},
+	{
+		"id": "-1000006031",
+		"key": "market_nohistory",
+		"en|ch|tc|kr": "Kein kürzliches Geschäft für diesen Gegenstand"
+	},
+	{
+		"id": "-1000006032",
+		"key": "market_offer_title",
+		"en|ch|tc|kr": "Neue Angebote für deine Waren"
+	},
+	{
+		"id": "-1000006033",
+		"key": "market_offer_line",
+		"en|ch|tc|kr": "{0}: {1} bietet {2:#,##0} ({3} Käufer)"
+	},
+	{
+		"id": "-1000006034",
+		"key": "market_buyorders",
+		"en|ch|tc|kr": "Kaufaufträge"
+	},
+	{
+		"id": "-1000006035",
+		"key": "market_buyorders_desc",
+		"en|ch|tc|kr": "Frage einen Gegenstand zu einem Preis an: Die Geistersteine werden sofort zurückgehalten, und Einwohner, die ihn besitzen, können ihn dir jeden Monat verkaufen. Nicht erfüllte Aufträge werden nach {0} Monaten erstattet."
+	},
+	{
+		"id": "-1000006036",
+		"key": "market_buyorders_none",
+		"en|ch|tc|kr": "Du hast keinen Kaufauftrag."
+	},
+	{
+		"id": "-1000006037",
+		"key": "market_buyorder_line",
+		"en|ch|tc|kr": "{0} x {1} zu {2:#,##0} in {3} (noch {4} Monate)"
+	},
+	{
+		"id": "-1000006038",
+		"key": "market_buyorder_new",
+		"en|ch|tc|kr": "Neuer Kaufauftrag"
+	},
+	{
+		"id": "-1000006039",
+		"key": "market_buyorder_pick",
+		"en|ch|tc|kr": "Wähle den gewünschten Gegenstand"
+	},
+	{
+		"id": "-1000006040",
+		"key": "market_buyorder_unitprice",
+		"en|ch|tc|kr": "Stückpreis"
+	},
+	{
+		"id": "-1000006041",
+		"key": "market_buyorder_total",
+		"en|ch|tc|kr": "Zurückgehalten: {0:#,##0} Geistersteine, Chance pro Monat, dass ein Verkäufer annimmt: {1:0} %"
+	},
+	{
+		"id": "-1000006042",
+		"key": "market_buyorder_place",
+		"en|ch|tc|kr": "Auftrag erteilen"
+	},
+	{
+		"id": "-1000006043",
+		"key": "market_buyorder_fail",
+		"en|ch|tc|kr": "Nicht genug Geistersteine, oder bereits {0} Aufträge."
+	},
+	{
+		"id": "-1000006044",
+		"key": "market_buyorder_filled",
+		"en|ch|tc|kr": "Kaufauftrag: {2} hat dir {0} x {1} für {3:#,##0} Geistersteine verkauft."
+	},
+	{
+		"id": "-1000006045",
+		"key": "log_buyorder_new",
+		"en|ch|tc|kr": "Kaufauftrag erteilt: {0} x {1} zu {2:#,##0} in {3}."
+	},
+	{
+		"id": "-1000006046",
+		"key": "log_buyorder_cancel",
+		"en|ch|tc|kr": "Kaufauftrag storniert: {0} x {1}, {2:#,##0} Geistersteine erstattet."
+	},
+	{
+		"id": "-1000006047",
+		"key": "log_buyorder_expired",
+		"en|ch|tc|kr": "Kaufauftrag abgelaufen: {0} x {1}, {2:#,##0} Geistersteine erstattet."
+	},
+	{
+		"id": "-1000006050",
+		"key": "refine_pick",
+		"en|ch|tc|kr": "Wähle einen Gegenstand, um seinen Verfeinerungsfortschritt zu sehen"
+	},
+	{
+		"id": "-1000006051",
+		"key": "refine_progress",
+		"en|ch|tc|kr": "Verfeinerungsstufe {0} ({1:#,##0} / {2:#,##0} EP) — {3}"
+	},
+	{
+		"id": "-1000006052",
+		"key": "refine_nextslot",
+		"en|ch|tc|kr": "nächster Platz wird auf Stufe {0} freigeschaltet"
+	},
+	{
+		"id": "-1000006053",
+		"key": "refine_allslots",
+		"en|ch|tc|kr": "alle Plätze freigeschaltet"
+	},
+	{
+		"id": "-1000006054",
+		"key": "refine_reroll",
+		"en|ch|tc|kr": "Plätze neu auswürfeln"
+	},
+	{
+		"id": "-1000006055",
+		"key": "refine_reroll_btn",
+		"en|ch|tc|kr": "Neu auswürfeln ({0:#,##0})"
+	},
+	{
+		"id": "-1000006056",
+		"key": "refine_reroll_desc",
+		"en|ch|tc|kr": "Ein Neuauswürfeln gibt einem freigeschalteten Platz einen neuen zufälligen Typ, Qualität und Stärke. Der Schmied behält die Geistersteine."
+	},
+	{
+		"id": "-1000006060",
+		"key": "loan_title",
+		"en|ch|tc|kr": "Bankkredit"
+	},
+	{
+		"id": "-1000006061",
+		"key": "loan_terms",
+		"en|ch|tc|kr": "Zinsen {0:0} % pro Monat, fällig in {1} Monaten. Überfällig: +{2:0} % pro Monat."
+	},
+	{
+		"id": "-1000006062",
+		"key": "loan_warning",
+		"en|ch|tc|kr": "Unbezahlte Schulden werden mit Gewalt eingetrieben. Wer die Eintreiber zweimal besiegt, kommt auf die schwarze Liste: nirgends mehr Kredite, das Konto hier wird geschlossen und die Steuern hier verdreifachen sich."
+	},
+	{
+		"id": "-1000006063",
+		"key": "loan_limit",
+		"en|ch|tc|kr": "Du kannst bis zu {0:#,##0} Geistersteine leihen (Banktresor: {1:#,##0})."
+	},
+	{
+		"id": "-1000006064",
+		"key": "loan_amount",
+		"en|ch|tc|kr": "Betrag"
+	},
+	{
+		"id": "-1000006065",
+		"key": "loan_borrow",
+		"en|ch|tc|kr": "Leihen"
+	},
+	{
+		"id": "-1000006066",
+		"key": "loan_state",
+		"en|ch|tc|kr": "Kredit bei {0}: geliehen {1:#,##0}, geschuldet {2:#,##0}, fällig in {3} Monaten"
+	},
+	{
+		"id": "-1000006067",
+		"key": "loan_state_blacklist",
+		"en|ch|tc|kr": "Du stehst auf der schwarzen Liste der Bank von {0}. Keine Bank leiht dir mehr etwas."
+	},
+	{
+		"id": "-1000006068",
+		"key": "loan_repay_amount",
+		"en|ch|tc|kr": "Zurückzahlen"
+	},
+	{
+		"id": "-1000006069",
+		"key": "loan_repay",
+		"en|ch|tc|kr": "Zurückzahlen"
+	},
+	{
+		"id": "-1000006070",
+		"key": "loan_err_blacklist",
+		"en|ch|tc|kr": "Der Schreiber schüttelt den Kopf: Dein Name steht auf der schwarzen Liste."
+	},
+	{
+		"id": "-1000006071",
+		"key": "loan_err_loan",
+		"en|ch|tc|kr": "Zahle zuerst deinen aktuellen Kredit zurück."
+	},
+	{
+		"id": "-1000006072",
+		"key": "loan_err_account",
+		"en|ch|tc|kr": "Eröffne zuerst ein Konto bei dieser Bank."
+	},
+	{
+		"id": "-1000006073",
+		"key": "loan_err_limit",
+		"en|ch|tc|kr": "Dieser Betrag übersteigt dein Limit."
+	},
+	{
+		"id": "-1000006074",
+		"key": "loan_err_budget",
+		"en|ch|tc|kr": "So viel hat der Banktresor nicht."
+	},
+	{
+		"id": "-1000006075",
+		"key": "loan_letter",
+		"en|ch|tc|kr": "Ein Brief der Bank von {0}: „Ihr Kredit ist seit {2} Monat(en) überfällig. Sie schulden nun {1:#,##0} Geistersteine. Wir gehen von einem Versehen aus.“"
+	},
+	{
+		"id": "-1000006076",
+		"key": "loan_letter_o1",
+		"en|ch|tc|kr": "Den Brief weglegen"
+	},
+	{
+		"id": "-1000006077",
+		"key": "loan_collector",
+		"en|ch|tc|kr": "„Die Bank von {0} lässt grüßen.“ Der Eintreiber lässt die Knöchel knacken. „{1:#,##0} Geistersteine. Heute.“"
+	},
+	{
+		"id": "-1000006078",
+		"key": "loan_collector_o1",
+		"en|ch|tc|kr": "{0:#,##0} Geistersteine zahlen"
+	},
+	{
+		"id": "-1000006079",
+		"key": "loan_collector_o2",
+		"en|ch|tc|kr": "Übergeben, was ich habe"
+	},
+	{
+		"id": "-1000006080",
+		"key": "loan_collector_o3",
+		"en|ch|tc|kr": "Kämpfen"
+	},
+	{
+		"id": "-1000006081",
+		"key": "loan_paid",
+		"en|ch|tc|kr": "Der Eintreiber zählt die Steine zweimal, nickt und geht. Die Schuld ist beglichen."
+	},
+	{
+		"id": "-1000006082",
+		"key": "loan_seized",
+		"en|ch|tc|kr": "Der Eintreiber nimmt Waren im Wert von {0:#,##0} Geistersteinen mit. Die Schuld ist beglichen, aber dein Ruf leidet."
+	},
+	{
+		"id": "-1000006083",
+		"key": "loan_seized_part",
+		"en|ch|tc|kr": "Der Eintreiber nimmt Waren im Wert von {0:#,##0} Geistersteinen mit. Du schuldest noch {1:#,##0}."
+	},
+	{
+		"id": "-1000006084",
+		"key": "loan_lost",
+		"en|ch|tc|kr": "Besiegt siehst du zu, wie der Eintreiber deine Tasche leert: Waren im Wert von {0:#,##0} Geistersteinen. Noch geschuldet: {1:#,##0}."
+	},
+	{
+		"id": "-1000006085",
+		"key": "loan_beaten",
+		"en|ch|tc|kr": "Der Eintreiber humpelt davon. „Die Bank vergisst nicht“, spuckt er aus. „Nächstes Mal schicken wir jemand Stärkeren.“"
+	},
+	{
+		"id": "-1000006086",
+		"key": "loan_blacklisted",
+		"en|ch|tc|kr": "Die Bank von {1} gibt ihre {0:#,##0} Geistersteine auf — und dich gleich mit. Dein Name kommt auf die schwarze Liste: keine Kredite mehr, dein Konto dort wird geschlossen und die Wachen dort verlangen dreifache Steuern."
+	},
+	{
+		"id": "-1000006087",
+		"key": "log_loan_borrow",
+		"en|ch|tc|kr": "{0:#,##0} Geistersteine bei der Bank von {1} geliehen (fällig in {2} Monaten)."
+	},
+	{
+		"id": "-1000006088",
+		"key": "log_loan_repay",
+		"en|ch|tc|kr": "{0:#,##0} Geistersteine zurückgezahlt (noch geschuldet {1:#,##0})."
+	},
+	{
+		"id": "-1000006089",
+		"key": "log_loan_closed",
+		"en|ch|tc|kr": "Der Kredit ist beglichen."
+	},
+	{
+		"id": "-1000006090",
+		"key": "log_loan_overdue",
+		"en|ch|tc|kr": "Kredit seit {0} Monat(en) überfällig: {1:#,##0} geschuldet."
+	},
+	{
+		"id": "-1000006091",
+		"key": "log_loan_collector",
+		"en|ch|tc|kr": "Der Schuldeneintreiber {0} kam wegen {1:#,##0} Geistersteinen."
+	},
+	{
+		"id": "-1000006092",
+		"key": "log_loan_seized",
+		"en|ch|tc|kr": "Waren im Wert von {0:#,##0} wegen der Schulden beschlagnahmt (noch geschuldet {1:#,##0})."
+	},
+	{
+		"id": "-1000006093",
+		"key": "log_loan_beaten",
+		"en|ch|tc|kr": "Einen Schuldeneintreiber besiegt (bisher {0})."
+	},
+	{
+		"id": "-1000006094",
+		"key": "log_loan_blacklisted",
+		"en|ch|tc|kr": "Von der Bank von {0} auf die schwarze Liste gesetzt."
+	},
+	{
+		"id": "-1000006100",
+		"key": "enc_leave",
+		"en|ch|tc|kr": "Weiter"
+	},
+	{
+		"id": "-1000006101",
+		"key": "enc_nomoney",
+		"en|ch|tc|kr": "Du hast nicht genug Geistersteine."
+	},
+	{
+		"id": "-1000006102",
+		"key": "enc_wounded",
+		"en|ch|tc|kr": "Ein Kultivierender liegt am Wegesrand, die Robe blutgetränkt. „Bitte … Medizin … irgendetwas …“"
+	},
+	{
+		"id": "-1000006103",
+		"key": "enc_wounded_o1",
+		"en|ch|tc|kr": "Ihm Medizin kaufen ({0:#,##0} Geistersteine)"
+	},
+	{
+		"id": "-1000006104",
+		"key": "enc_wounded_o2",
+		"en|ch|tc|kr": "Seine Habseligkeiten durchsuchen"
+	},
+	{
+		"id": "-1000006105",
+		"key": "enc_wounded_o3",
+		"en|ch|tc|kr": "Weitergehen"
+	},
+	{
+		"id": "-1000006106",
+		"key": "enc_wounded_r1",
+		"en|ch|tc|kr": "Farbe kehrt in sein Gesicht zurück. Er ergreift deine Hand: „Das werde ich nie vergessen.“ Bevor er geht, drückt er dir einen {0} in die Hand."
+	},
+	{
+		"id": "-1000006107",
+		"key": "enc_wounded_r2",
+		"en|ch|tc|kr": "Du nimmst {0:#,##0} Geistersteine aus seinem Beutel. Seine Augen folgen dir, voller Hass."
+	},
+	{
+		"id": "-1000006108",
+		"key": "enc_chess",
+		"en|ch|tc|kr": "Ein alter Mann sitzt allein im Nebel vor einem steinernen Brett. „Eine Partie, junger Freund? Ein Einsatz von {0:#,##0} Geistersteinen macht es spannend.“"
+	},
+	{
+		"id": "-1000006109",
+		"key": "enc_chess_o1",
+		"en|ch|tc|kr": "Spielen ({0:0} % Gewinnchance)"
+	},
+	{
+		"id": "-1000006110",
+		"key": "enc_chess_o2",
+		"en|ch|tc|kr": "Verneigen und ablehnen"
+	},
+	{
+		"id": "-1000006111",
+		"key": "enc_chess_win",
+		"en|ch|tc|kr": "Der alte Mann lacht und wischt die Steine vom Brett. „Ein scharfer Verstand!“ Seinen Zügen zu folgen, hat dein Verständnis geöffnet. (+{0:#,##0} EP, +{1:#,##0} Geistersteine)"
+	},
+	{
+		"id": "-1000006112",
+		"key": "enc_chess_lose",
+		"en|ch|tc|kr": "Die Partie endet nach wenigen Dutzend Zügen. Der alte Mann steckt mit sanftem Lächeln deinen Einsatz ein. (-{0:#,##0} Geistersteine)"
+	},
+	{
+		"id": "-1000006113",
+		"key": "enc_peddler",
+		"en|ch|tc|kr": "Ein vermummter Hausierer öffnet seinen Mantel: Reihen versiegelter Kästchen. „Jedes enthält einen Schatz … oder nichts. {0:#,##0} Geistersteine pro Kästchen.“"
+	},
+	{
+		"id": "-1000006114",
+		"key": "enc_peddler_o1",
+		"en|ch|tc|kr": "Ein Kästchen kaufen"
+	},
+	{
+		"id": "-1000006115",
+		"key": "enc_peddler_o2",
+		"en|ch|tc|kr": "Feilschen"
+	},
+	{
+		"id": "-1000006116",
+		"key": "enc_peddler_o3",
+		"en|ch|tc|kr": "Ihn ignorieren"
+	},
+	{
+		"id": "-1000006117",
+		"key": "enc_peddler_item",
+		"en|ch|tc|kr": "Im Kästchen liegt ein {0}."
+	},
+	{
+		"id": "-1000006118",
+		"key": "enc_peddler_deal",
+		"en|ch|tc|kr": "„Schon gut, schon gut — Rabatt für einen Freund.“ Du zahlst {1:#,##0}. Im Kästchen liegt ein {0}."
+	},
+	{
+		"id": "-1000006119",
+		"key": "enc_peddler_empty",
+		"en|ch|tc|kr": "Das Kästchen ist leer. Irgendwo lacht ein Hausierer."
+	},
+	{
+		"id": "-1000006120",
+		"key": "enc_peddler_leave",
+		"en|ch|tc|kr": "„Keine Schnäppchen für Geizhälse!“ Er verschwindet in der Menge."
+	},
+	{
+		"id": "-1000006121",
+		"key": "enc_cave",
+		"en|ch|tc|kr": "Nach einem Beben ist ein Hang eingestürzt und hat einen dunklen Gang freigelegt, der nach alter Geisterenergie riecht."
+	},
+	{
+		"id": "-1000006122",
+		"key": "enc_cave_o1",
+		"en|ch|tc|kr": "Den Gang erkunden"
+	},
+	{
+		"id": "-1000006123",
+		"key": "enc_cave_o2",
+		"en|ch|tc|kr": "Sieht instabil aus — gehen"
+	},
+	{
+		"id": "-1000006124",
+		"key": "enc_cave_items",
+		"en|ch|tc|kr": "Im Geröll findest du: {0}."
+	},
+	{
+		"id": "-1000006125",
+		"key": "enc_cave_stones",
+		"en|ch|tc|kr": "In einer morschen Truhe liegt ein vergessenes Versteck mit {0:#,##0} Geistersteinen."
+	},
+	{
+		"id": "-1000006126",
+		"key": "enc_cave_hurt",
+		"en|ch|tc|kr": "Die Decke gibt nach. Du kriechst zerschunden und blutend heraus. (-{0:#,##0} Vitalität)"
+	},
+	{
+		"id": "-1000006127",
+		"key": "enc_cub",
+		"en|ch|tc|kr": "Ein kleines Geistertier mit verletzter Pfote beobachtet dich aus dem Gebüsch, zu schwach zum Fliehen."
+	},
+	{
+		"id": "-1000006128",
+		"key": "enc_cub_o1",
+		"en|ch|tc|kr": "Ihm ein Kraut füttern"
+	},
+	{
+		"id": "-1000006129",
+		"key": "enc_cub_o2",
+		"en|ch|tc|kr": "Es in Ruhe lassen"
+	},
+	{
+		"id": "-1000006130",
+		"key": "enc_cub_r",
+		"en|ch|tc|kr": "Das Junge frisst, leckt deine Hand und humpelt davon. Für einen Moment spürst du, wie der Himmel dir zulächelt. (+{0} Glück)"
+	},
+	{
+		"id": "-1000006131",
+		"key": "enc_cub_noherb",
+		"en|ch|tc|kr": "Du durchsuchst deine Tasche — kein einziges Kraut. Das Junge huscht davon."
+	},
+	{
+		"id": "-1000006132",
+		"key": "enc_festival",
+		"en|ch|tc|kr": "Laternen füllen die Straßen von {0}: Die Stadt feiert ihren Gründungstag. Die Teilnahme am Fest kostet {1:#,##0} Geistersteine."
+	},
+	{
+		"id": "-1000006133",
+		"key": "enc_festival_o1",
+		"en|ch|tc|kr": "Am Fest teilnehmen"
+	},
+	{
+		"id": "-1000006134",
+		"key": "enc_festival_o2",
+		"en|ch|tc|kr": "Heute nicht"
+	},
+	{
+		"id": "-1000006135",
+		"key": "enc_festival_r",
+		"en|ch|tc|kr": "Du trinkst, lachst und lässt eine Laterne in den Nachthimmel steigen. (+{0} Stimmung, die Einwohner mögen dich mehr)"
+	},
+	{
+		"id": "-1000006025",
+		"key": "town_tax_help",
+		"en|ch|tc|kr": "Jeden Monat zahlt jeder NPC in der Stadt die Steuer in die Stadtkasse und ruht im Gasthaus (LP/MP/SP voll).\n- Ein NPC, der nicht zahlen kann, verlässt die Stadt und hasst den Meister (-5).\n- Steuer über 1 % des Geldes eines NPC: Der NPC mag den Meister nicht (-1 pro Monat); unter 0,1 %: Der NPC mag den Meister (+1 pro Monat).\n- Der Spieler zahlt beim Betreten eines von der Stadt bewachten Gebäudes (Hineinschleichen kann einen Kampf mit einer Wache auslösen); Stadtwächter zahlen nichts.\nHöhere Steuer = mehr Budget (Gebäude, Wächterlohn, Aufstieg zur Großstadt), aber weniger und unzufriedenere Einwohner."
+	},
+	{
+		"id": "-1000006095",
+		"key": "loan_err_off",
+		"en|ch|tc|kr": "Bankkredite sind in den S&M-Einstellungen deaktiviert."
+	},
+	{
+		"id": "-1000006150",
+		"key": "wanted_title",
+		"en|ch|tc|kr": "Kopfgeld"
+	},
+	{
+		"id": "-1000006151",
+		"key": "wanted_post",
+		"en|ch|tc|kr": "Kopfgeld aussetzen"
+	},
+	{
+		"id": "-1000006152",
+		"key": "wanted_list",
+		"en|ch|tc|kr": "Fahndungsliste"
+	},
+	{
+		"id": "-1000006153",
+		"key": "wanted_post_desc",
+		"en|ch|tc|kr": "Gesucht: {0} (Rang {1}), ausgesetzt von {2}"
+	},
+	{
+		"id": "-1000006154",
+		"key": "wanted_post_budget",
+		"en|ch|tc|kr": "Stadtkasse: {0:#,##0} — Mindestbelohnung: {1:#,##0}"
+	},
+	{
+		"id": "-1000006155",
+		"key": "wanted_reward",
+		"en|ch|tc|kr": "Belohnung"
+	},
+	{
+		"id": "-1000006156",
+		"key": "wanted_post_rule",
+		"en|ch|tc|kr": "Die Belohnung wird sofort aus der Stadtkasse genommen. Bei höheren Belohnungen kommen Kopfgeldjäger öfter. Nach 36 Monaten ohne Abholung (oder wenn das Ziel anders stirbt): Rückerstattung."
+	},
+	{
+		"id": "-1000006157",
+		"key": "wanted_posted",
+		"en|ch|tc|kr": "Der Steckbrief von {0} wird an das Stadttor genagelt."
+	},
+	{
+		"id": "-1000006158",
+		"key": "wanted_err_off",
+		"en|ch|tc|kr": "Kopfgelder sind in den S&M-Einstellungen deaktiviert."
+	},
+	{
+		"id": "-1000006159",
+		"key": "wanted_err_target",
+		"en|ch|tc|kr": "Dieses Ziel kann nicht gesucht werden."
+	},
+	{
+		"id": "-1000006160",
+		"key": "wanted_err_already",
+		"en|ch|tc|kr": "Diese Stadt hat bereits ein Kopfgeld auf diese Person ausgesetzt."
+	},
+	{
+		"id": "-1000006161",
+		"key": "wanted_err_min",
+		"en|ch|tc|kr": "Die Belohnung liegt unter dem Minimum."
+	},
+	{
+		"id": "-1000006162",
+		"key": "wanted_err_budget",
+		"en|ch|tc|kr": "Die Stadtkasse reicht nicht aus."
+	},
+	{
+		"id": "-1000006163",
+		"key": "wanted_on_player",
+		"en|ch|tc|kr": "An jedem Tor von {0} flattert ein Steckbrief: dein Porträt und eine Belohnung von {1:#,##0} Geistersteinen. Kopfgeldjäger werden kommen."
+	},
+	{
+		"id": "-1000006164",
+		"key": "wanted_ambush",
+		"en|ch|tc|kr": "„{0} zahlt {1:#,##0} Geistersteine für deinen Kopf. Nichts Persönliches.“ Der Kopfgeldjäger versperrt dir den Weg."
+	},
+	{
+		"id": "-1000006165",
+		"key": "wanted_ambush_o1",
+		"en|ch|tc|kr": "Kämpfen"
+	},
+	{
+		"id": "-1000006166",
+		"key": "wanted_ambush_o2",
+		"en|ch|tc|kr": "Die Stadt bezahlen, um meinen Namen reinzuwaschen ({0:#,##0})"
+	},
+	{
+		"id": "-1000006167",
+		"key": "wanted_done",
+		"en|ch|tc|kr": "{0} hat {1} zur Strecke gebracht. Dein Kopfgeld von {2:#,##0} Geistersteinen ist ausgezahlt."
+	},
+	{
+		"id": "-1000006168",
+		"key": "wanted_list_desc",
+		"en|ch|tc|kr": "Fahndungsliste: Klicke auf ein Porträt, um das Kopfgeld zu sehen. Töte eine gesuchte Person im Kampf, um die Belohnung zu erhalten."
+	},
+	{
+		"id": "-1000006169",
+		"key": "wanted_none",
+		"en|ch|tc|kr": "Zurzeit wird niemand gesucht."
+	},
+	{
+		"id": "-1000006170",
+		"key": "wanted_line",
+		"en|ch|tc|kr": "{0} (Rang {1}) — {2:#,##0} — {3} (noch {4} Monate)"
+	},
+	{
+		"id": "-1000006171",
+		"key": "log_wanted_post",
+		"en|ch|tc|kr": "{0} hat ein Kopfgeld von {2:#,##0} auf {1} ausgesetzt."
+	},
+	{
+		"id": "-1000006172",
+		"key": "log_wanted_claimed",
+		"en|ch|tc|kr": "{0} hat das Kopfgeld von {2:#,##0} auf {1} kassiert."
+	},
+	{
+		"id": "-1000006173",
+		"key": "log_wanted_expired",
+		"en|ch|tc|kr": "Das Kopfgeld auf {0} ist abgelaufen; {1:#,##0} zurück an {2}."
+	},
+	{
+		"id": "-1000006174",
+		"key": "log_wanted_dead",
+		"en|ch|tc|kr": "{0} starb, bevor ein Jäger ihn/sie erwischte; {1:#,##0} zurück an {2}."
+	},
+	{
+		"id": "-1000006175",
+		"key": "log_wanted_cancel",
+		"en|ch|tc|kr": "Kopfgeld auf {0} aufgehoben; {1:#,##0} zurück an {2}."
+	},
+	{
+		"id": "-1000006176",
+		"key": "log_wanted_cleared",
+		"en|ch|tc|kr": "Du hast deinen Namen reingewaschen; das Kopfgeld wird zurückgezogen ({1:#,##0} zurück an {2})."
+	},
+	{
+		"id": "-1000006177",
+		"key": "log_wanted_failed",
+		"en|ch|tc|kr": "{0} hat {1} gejagt und ist gescheitert."
+	},
+	{
+		"id": "-1000006178",
+		"key": "log_wanted_ambush",
+		"en|ch|tc|kr": "Der Kopfgeldjäger {0} hat dich überfallen (gesucht von {1})."
+	},
+	{
+		"id": "-1000006179",
+		"key": "log_wanted_player_claimed",
+		"en|ch|tc|kr": "Du hast {0} getötet und das Kopfgeld von {1:#,##0} von {2} erhalten."
+	},
+	{
+		"id": "-1000006180",
+		"key": "wanted_detail",
+		"en|ch|tc|kr": "Belohnung {0:#,##0} — {1} (ausgesetzt von {2}) — noch {3} Monate"
+	},
+	{
+		"id": "-1000006190",
+		"key": "taoistMonthLogTitle",
+		"en|ch|tc|kr": "Taoist"
+	},
+	{
+		"id": "-1000006191",
+		"key": "secl_SpiritVein",
+		"en|ch|tc|kr": "Tief unter den Felsen erwacht eine Geisterader, ihr Qi dicht wie Nebel. Sie aufzunehmen würde {0} Jahre dauern (verbleibende Lebenszeit: {1} Jahre). In Abgeschiedenheit gehen?"
+	},
+	{
+		"id": "-1000006192",
+		"key": "secl_Inheritance",
+		"en|ch|tc|kr": "Hinter einer eingestürzten Mauer liegt die Höhle eines längst verstorbenen Meisters, sein Erbe in Jadeplättchen versiegelt. Es zu verstehen würde {0} Jahre dauern (verbleibende Lebenszeit: {1} Jahre). In Abgeschiedenheit gehen?"
+	},
+	{
+		"id": "-1000006193",
+		"key": "secl_OldTree",
+		"en|ch|tc|kr": "Ein uralter Baum summt vom Dao der Jahreszeiten. {0} Jahre unter ihm zu sitzen könnte dein Fundament stählen (verbleibende Lebenszeit: {1} Jahre). In Abgeschiedenheit gehen?"
+	},
+	{
+		"id": "-1000006194",
+		"key": "secl_HeartDemon",
+		"en|ch|tc|kr": "Deine Gedanken verdrehen sich; die Gesichter der Besiegten steigen in deinem Bewusstseinsmeer auf. Ein Herzdämon! Dir bleibt nichts anderes übrig, als dich hinzusetzen und gegen ihn zu kämpfen. Es kann {0} Jahre dauern."
+	},
+	{
+		"id": "-1000006195",
+		"key": "secl_TimeRealm",
+		"en|ch|tc|kr": "Du trittst durch einen schimmernden Riss. Drinnen scheinen nur wenige Tage zu vergehen … doch als du herauskommst, sind in der Welt {0} Jahre vergangen."
+	},
+	{
+		"id": "-1000006196",
+		"key": "secl_warn_life",
+		"en|ch|tc|kr": "<color=#ff4040>Warnung: Das ist länger als deine verbleibende Lebenszeit ({0} Jahre)!</color>"
+	},
+	{
+		"id": "-1000006197",
+		"key": "secl_o1",
+		"en|ch|tc|kr": "In Abgeschiedenheit gehen ({0} Jahre)"
+	},
+	{
+		"id": "-1000006198",
+		"key": "secl_o2",
+		"en|ch|tc|kr": "Nicht jetzt"
+	},
+	{
+		"id": "-1000006199",
+		"key": "secl_forced_o1",
+		"en|ch|tc|kr": "..."
+	},
+	{
+		"id": "-1000006200",
+		"key": "secl_end_o1",
+		"en|ch|tc|kr": "Die Abgeschiedenheit verlassen"
+	},
+	{
+		"id": "-1000006201",
+		"key": "secl_name_SpiritVein",
+		"en|ch|tc|kr": "Geisterader"
+	},
+	{
+		"id": "-1000006202",
+		"key": "secl_name_Inheritance",
+		"en|ch|tc|kr": "Uraltes Erbe"
+	},
+	{
+		"id": "-1000006203",
+		"key": "secl_name_OldTree",
+		"en|ch|tc|kr": "Uralter Baum"
+	},
+	{
+		"id": "-1000006204",
+		"key": "secl_name_HeartDemon",
+		"en|ch|tc|kr": "Herzdämon"
+	},
+	{
+		"id": "-1000006205",
+		"key": "secl_name_TimeRealm",
+		"en|ch|tc|kr": "Zeitriss"
+	},
+	{
+		"id": "-1000006206",
+		"key": "secl_res_SpiritVein",
+		"en|ch|tc|kr": "Die Geisterader ist versiegt; ihr Qi gehört nun dir."
+	},
+	{
+		"id": "-1000006207",
+		"key": "secl_res_Inheritance",
+		"en|ch|tc|kr": "Das Erbe des Meisters ist in dein Herz eingraviert (Begabung steigt). In der Höhle findest du außerdem: {0}."
+	},
+	{
+		"id": "-1000006208",
+		"key": "secl_res_OldTree",
+		"en|ch|tc|kr": "Dein Fundament ist gestählt: {1} +{0}."
+	},
+	{
+		"id": "-1000006209",
+		"key": "secl_res_HeartDemon_win",
+		"en|ch|tc|kr": "Du zerschlägst den Herzdämon. Dein Dao-Herz ist fester denn je (Begabung +3, Glück +1)."
+	},
+	{
+		"id": "-1000006210",
+		"key": "secl_res_HeartDemon_lose",
+		"en|ch|tc|kr": "Der Herzdämon ist vertrieben, doch er hat an deiner Kultivierung genagt (-{0:#,##0} EP)."
+	},
+	{
+		"id": "-1000006211",
+		"key": "secl_res_TimeRealm",
+		"en|ch|tc|kr": "Aus dem Riss bringst du mit: {0}."
+	},
+	{
+		"id": "-1000006212",
+		"key": "secl_summary",
+		"en|ch|tc|kr": "Jahre in Abgeschiedenheit: {0}\nGewonnene EP: {1:#,##0}\nPreise in der Welt: +{2} %\nVerstorbene Freunde: {3}\nGeburten in deiner Familie: {4}\nAlter: {5} (verbleibende Lebenszeit: {6} Jahre)"
+	},
+	{
+		"id": "-1000006213",
+		"key": "log_secl_start",
+		"en|ch|tc|kr": "In Abgeschiedenheit gegangen ({0}, {1} Jahre)"
+	},
+	{
+		"id": "-1000006214",
+		"key": "log_secl_end",
+		"en|ch|tc|kr": "Abgeschiedenheit ({0}) nach {1} Jahren verlassen, +{2:#,##0} EP"
+	},
+	{
+		"id": "-1000006215",
+		"key": "log_secl_declined",
+		"en|ch|tc|kr": "Eine Abgeschiedenheit abgelehnt ({0})"
+	},
+	{
+		"id": "-1000006216",
+		"key": "family_birth",
+		"en|ch|tc|kr": "Gute Nachricht! {0} hat dein Kind zur Welt gebracht. In {1} Jahren wird es alt genug sein, den Pfad der Kultivierung zu betreten."
+	},
+	{
+		"id": "-1000006217",
+		"key": "family_birth_o1",
+		"en|ch|tc|kr": "Wunderbar!"
+	},
+	{
+		"id": "-1000006218",
+		"key": "family_grown",
+		"en|ch|tc|kr": "Heute werde ich sechzehn. Lass mich den Pfad der Kultivierung gehen, wie du es getan hast!"
+	},
+	{
+		"id": "-1000006219",
+		"key": "family_grown_o1",
+		"en|ch|tc|kr": "Geh und mach der Familie Ehre."
+	},
+	{
+		"id": "-1000006220",
+		"key": "family_btn",
+		"en|ch|tc|kr": "Familie"
+	},
+	{
+		"id": "-1000006221",
+		"key": "family_title",
+		"en|ch|tc|kr": "Familie von {0}"
+	},
+	{
+		"id": "-1000006222",
+		"key": "family_parents",
+		"en|ch|tc|kr": "Eltern: {0}"
+	},
+	{
+		"id": "-1000006223",
+		"key": "family_spouse",
+		"en|ch|tc|kr": "Dao-Gefährte: {0}"
+	},
+	{
+		"id": "-1000006224",
+		"key": "family_children",
+		"en|ch|tc|kr": "Kinder: {0}"
+	},
+	{
+		"id": "-1000006225",
+		"key": "family_unborn",
+		"en|ch|tc|kr": "Ein heranwachsendes Kind (volljährig in {0} Jahren)"
+	},
+	{
+		"id": "-1000006226",
+		"key": "family_siblings",
+		"en|ch|tc|kr": "Geschwister: {0}"
+	},
+	{
+		"id": "-1000006227",
+		"key": "family_dead",
+		"en|ch|tc|kr": " (verstorben)"
+	},
+	{
+		"id": "-1000006228",
+		"key": "log_family_married",
+		"en|ch|tc|kr": "{0} und {1} wurden Dao-Gefährten"
+	},
+	{
+		"id": "-1000006229",
+		"key": "log_family_birth",
+		"en|ch|tc|kr": "{0} und {1} haben ein Kind bekommen"
+	},
+	{
+		"id": "-1000006230",
+		"key": "log_family_grown",
+		"en|ch|tc|kr": "{0}, Kind von {1} und {2}, ist volljährig geworden"
+	},
+	{
+		"id": "-1000006231",
+		"key": "log_family_revenge",
+		"en|ch|tc|kr": "{0} hat ein Kopfgeld auf dich ausgesetzt, weil du {1} getötet hast ({2})"
+	},
+	{
+		"id": "-1000006232",
+		"key": "secl_basis_0",
+		"en|ch|tc|kr": "Säbel"
+	},
+	{
+		"id": "-1000006233",
+		"key": "secl_basis_1",
+		"en|ch|tc|kr": "Speer"
+	},
+	{
+		"id": "-1000006234",
+		"key": "secl_basis_2",
+		"en|ch|tc|kr": "Schwert"
+	},
+	{
+		"id": "-1000006235",
+		"key": "secl_basis_3",
+		"en|ch|tc|kr": "Faust"
+	},
+	{
+		"id": "-1000006236",
+		"key": "secl_basis_4",
+		"en|ch|tc|kr": "Handfläche"
+	},
+	{
+		"id": "-1000006237",
+		"key": "secl_basis_5",
+		"en|ch|tc|kr": "Finger"
+	},
+	{
+		"id": "-1000006238",
+		"key": "secl_basis_6",
+		"en|ch|tc|kr": "Feuer"
+	},
+	{
+		"id": "-1000006239",
+		"key": "secl_basis_7",
+		"en|ch|tc|kr": "Wasser"
+	},
+	{
+		"id": "-1000006240",
+		"key": "secl_basis_8",
+		"en|ch|tc|kr": "Blitz"
+	},
+	{
+		"id": "-1000006241",
+		"key": "secl_basis_9",
+		"en|ch|tc|kr": "Wind"
+	},
+	{
+		"id": "-1000006242",
+		"key": "secl_basis_10",
+		"en|ch|tc|kr": "Erde"
+	},
+	{
+		"id": "-1000006243",
+		"key": "secl_basis_11",
+		"en|ch|tc|kr": "Holz"
+	},
+	{
+		"id": "-1000006244",
+		"key": "family_inherit",
+		"en|ch|tc|kr": "Deine Lebenszeit geht zu Ende. Vor deinem letzten Atemzug kannst du dein Erbe an einen deiner Nachkommen weitergeben und als dieser weiterspielen.\nEr übernimmt deinen Besitz, deine Schulden und deine Bindungen (Freundschaften zur Hälfte, Feindschaften voll); dein Ruf, deine Ämter und die Kopfgelder auf dich sterben mit dir."
+	},
+	{
+		"id": "-1000006245",
+		"key": "family_inherit_o",
+		"en|ch|tc|kr": "An {0} weitergeben ({1} Jahre, {2})"
+	},
+	{
+		"id": "-1000006246",
+		"key": "family_inherit_no",
+		"en|ch|tc|kr": "Lass meine Reise hier enden"
+	},
+	{
+		"id": "-1000006247",
+		"key": "family_inherited",
+		"en|ch|tc|kr": "{0} ist zu Himmel und Erde zurückgekehrt. {1} tritt das Erbe an: Die {2}. Generation der Familie geht den Pfad der Kultivierung."
+	},
+	{
+		"id": "-1000006248",
+		"key": "family_inherited_o1",
+		"en|ch|tc|kr": "Weitermachen"
+	},
+	{
+		"id": "-1000006249",
+		"key": "log_family_inherit",
+		"en|ch|tc|kr": "{0} ist verstorben; {1} hat das Erbe angetreten (Generation {2})"
+	},
+	{
+		"id": "-1000006250",
+		"key": "log_npc_fortune",
+		"en|ch|tc|kr": "{0} hatte eine glückliche Begegnung und kam in der Kultivierung voran"
+	},
+	{
+		"id": "-1000006251",
+		"key": "log_npc_inheritance",
+		"en|ch|tc|kr": "{0} fand ein uraltes Erbe und machte einen Sprung in der Kultivierung"
+	},
+	{
+		"id": "-1000006252",
+		"key": "skip_progress",
+		"en|ch|tc|kr": "Die Zeit vergeht … {0} / {1} Monate (Jahr {2}, Monat {3})"
+	},
+	{
+		"id": "-1000006253",
+		"key": "family_inherit_skills",
+		"en|ch|tc|kr": "{0} kniet vor dir. Was wird aus deinen Techniken?"
+	},
+	{
+		"id": "-1000006254",
+		"key": "family_inherit_skills_keep",
+		"en|ch|tc|kr": "Meine Techniken weitergeben"
+	},
+	{
+		"id": "-1000006255",
+		"key": "family_inherit_skills_own",
+		"en|ch|tc|kr": "{0} soll die eigenen Techniken behalten"
+	},
+	{
+		"id": "-1000006256",
+		"key": "log_wanted_heir",
+		"en|ch|tc|kr": "Das Kopfgeld auf {0} ({1:#,##0}) endete mit dem Tod; die Belohnung ging zurück an {2}."
+	},
+	{
+		"id": "-1000006257",
+		"key": "fund_button",
+		"en|ch|tc|kr": "Familie"
+	},
+	{
+		"id": "-1000006258",
+		"key": "fund_title",
+		"en|ch|tc|kr": "Haushalt von {0} (Generation {1})"
+	},
+	{
+		"id": "-1000006259",
+		"key": "fund_members",
+		"en|ch|tc|kr": "Mitglieder: {0} erwachsen, {1} Kinder"
+	},
+	{
+		"id": "-1000006260",
+		"key": "fund_upkeep",
+		"en|ch|tc|kr": "Unterhalt: {0:#,##0} pro Monat (Mitglieder {1:#,##0}, Kinder {2:#,##0})"
+	},
+	{
+		"id": "-1000006261",
+		"key": "fund_year",
+		"en|ch|tc|kr": "Dieses Jahr: bezahlt {0:#,##0}, unbezahlt {1:#,##0}; Gaben {2:#,##0} Steine und {3} Gegenstände; {4} Gegenstände zurückgenommen"
+	},
+	{
+		"id": "-1000006262",
+		"key": "fund_stored",
+		"en|ch|tc|kr": "Geschenkte Gegenstände im Banklager: {0}"
+	},
+	{
+		"id": "-1000006263",
+		"key": "fund_last",
+		"en|ch|tc|kr": "Zuletzt:"
+	},
+	{
+		"id": "-1000006264",
+		"key": "fund_when",
+		"en|ch|tc|kr": "J{0} M{1}: "
+	},
+	{
+		"id": "-1000006265",
+		"key": "fund_entry_Upkeep",
+		"en|ch|tc|kr": "Unterhalt bezahlt {1:#,##0}"
+	},
+	{
+		"id": "-1000006266",
+		"key": "fund_entry_Unpaid",
+		"en|ch|tc|kr": "Unterhalt unbezahlt {1:#,##0}: die Familie ist verärgert"
+	},
+	{
+		"id": "-1000006267",
+		"key": "fund_entry_GiftStones",
+		"en|ch|tc|kr": "{0} brachte {1:#,##0} Geistersteine"
+	},
+	{
+		"id": "-1000006268",
+		"key": "fund_entry_GiftItem",
+		"en|ch|tc|kr": "{0} brachte {2}"
+	},
+	{
+		"id": "-1000006269",
+		"key": "fund_entry_Used",
+		"en|ch|tc|kr": "{0} nahm {2} aus dem Lager"
+	},
+	{
+		"id": "-1000006270",
+		"key": "fund_help",
+		"en|ch|tc|kr": "Jeden Monat kostet der Haushalt (Gefährte, erwachsene Nachkommen, Kinder) Geistersteine je nach Rang, bezahlt von deinem Geld und dann von den Steinen in deinem Banklager. Unbezahlter Unterhalt verärgert jedes Mitglied.\nHin und wieder bringt ein Mitglied Geistersteine oder einen wertvollen Gegenstand in dein Banklager; ein Mitglied in Not kann eine dieser Gaben auch wieder nehmen."
+	},
+	{
+		"id": "-1000006271",
+		"key": "fund_tree",
+		"en|ch|tc|kr": "Stammbaum"
+	},
+	{
+		"id": "-1000006272",
+		"key": "log_family_unpaid",
+		"en|ch|tc|kr": "Haushaltsunterhalt unbezahlt ({0:#,##0}): die Familie ist verärgert."
+	},
+	{
+		"id": "-1000006273",
+		"key": "log_family_gift_stones",
+		"en|ch|tc|kr": "{0} brachte {1:#,##0} Geistersteine ins Familienlager."
+	},
+	{
+		"id": "-1000006274",
+		"key": "log_family_gift_item",
+		"en|ch|tc|kr": "{0} brachte {1} ins Familienlager."
+	},
+	{
+		"id": "-1000006275",
+		"key": "log_family_used",
+		"en|ch|tc|kr": "{0} war in Not und nahm {1} aus dem Familienlager."
+	},
+	{
+		"id": "-1000006276",
+		"key": "secl_interrupted",
+		"en|ch|tc|kr": "Deine Abgeschiedenheit wurde nach {0} Monaten unterbrochen: Etwas in der Welt braucht dich."
+	}
+]

@@ -538,5 +538,55 @@
 		"id": 500020116,
 		"key": "other500020116",
 		"en|ch|tc|kr": "Du hast nicht genug Geistersteine!"
+	},
+	{
+		"id": "500020027",
+		"key": "other500020027",
+		"en|ch|tc|kr": "Die Torwache streckt die Hand aus: „Die Steuer beträgt {0:#,##0} Geistersteine.“ So schwer ist dein Beutel nicht."
+	},
+	{
+		"id": "500020044",
+		"key": "other500020044",
+		"en|ch|tc|kr": "Hineinschleichen, wenn er wegschaut"
+	},
+	{
+		"id": "500020078",
+		"key": "other500020078",
+		"en|ch|tc|kr": "Wir haben eingeschlagen, und jetzt machst du einen Rückzieher? Meine Zeit ist mehr wert als deine Ausreden."
+	},
+	{
+		"id": "500020079",
+		"key": "other500020079",
+		"en|ch|tc|kr": "Ein fairer Preis, schnell bezahlt. Es war mir ein Vergnügen, mit dir Geschäfte zu machen."
+	},
+	{
+		"id": "500020080",
+		"key": "other500020080",
+		"en|ch|tc|kr": "Du hast es an jemand anderen verkauft? Nachdem du mich einen ganzen Monat hast warten lassen?"
+	},
+	{
+		"id": "500020081",
+		"key": "other500020081",
+		"en|ch|tc|kr": "Den Preis erhöhen, nachdem wir uns geeinigt haben? Schamlos."
+	},
+	{
+		"id": "500020082",
+		"key": "other500020082",
+		"en|ch|tc|kr": "Dich erreicht die Nachricht: Der [{0}], auf den du geboten hast, wurde an einen anderen Käufer verkauft."
+	},
+	{
+		"id": "500020088",
+		"key": "other500020088",
+		"en|ch|tc|kr": "Du dachtest, du könntest ohne zu zahlen gehen? Denk noch mal nach."
+	},
+	{
+		"id": "500020093",
+		"key": "other500020093",
+		"en|ch|tc|kr": "Storniert? Dann verschwende nächstes Mal nicht meine Zeit mit Feilschen."
+	},
+	{
+		"id": "500020117",
+		"key": "other500020117",
+		"en|ch|tc|kr": "Umkehren"
 	}
 ]

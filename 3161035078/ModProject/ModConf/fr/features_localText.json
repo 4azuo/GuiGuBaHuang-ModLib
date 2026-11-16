@@ -1,0 +1,1167 @@
+[
+	{
+		"id": "-1000006000",
+		"key": "log_title",
+		"en|ch|tc|kr": "Journal taoïste"
+	},
+	{
+		"id": "-1000006001",
+		"key": "log_line",
+		"en|ch|tc|kr": "A{0} M{1} : {2}"
+	},
+	{
+		"id": "-1000006002",
+		"key": "log_empty",
+		"en|ch|tc|kr": "Rien pour l'instant."
+	},
+	{
+		"id": "-1000006003",
+		"key": "log_tax_paid",
+		"en|ch|tc|kr": "{0:#,##0} pierres spirituelles d'impôts payées à {1}."
+	},
+	{
+		"id": "-1000006004",
+		"key": "log_storage_fee",
+		"en|ch|tc|kr": "{0:#,##0} pierres spirituelles de frais d'entrepôt payées."
+	},
+	{
+		"id": "-1000006005",
+		"key": "log_market_sold",
+		"en|ch|tc|kr": "{0} x {1} vendu(s) pour {2:#,##0} pierres spirituelles à {3}."
+	},
+	{
+		"id": "-1000006006",
+		"key": "log_market_bought",
+		"en|ch|tc|kr": "{0} x {1} acheté(s) pour {2:#,##0} pierres spirituelles à {3}."
+	},
+	{
+		"id": "-1000006007",
+		"key": "log_stalker_paid",
+		"en|ch|tc|kr": "Le traqueur {0} a été payé {1:#,##0} pierres spirituelles."
+	},
+	{
+		"id": "-1000006008",
+		"key": "log_team_friend",
+		"en|ch|tc|kr": "{0} a combattu si souvent à tes côtés qu'il/elle te considère désormais comme un ami (plus de salaire)."
+	},
+	{
+		"id": "-1000006009",
+		"key": "log_town_call",
+		"en|ch|tc|kr": "{0} a été attaquée par {1} ; tu as été rappelé pour la défendre."
+	},
+	{
+		"id": "-1000006010",
+		"key": "log_town_defended",
+		"en|ch|tc|kr": "{0} a tenu grâce à toi. +{1} de réputation."
+	},
+	{
+		"id": "-1000006011",
+		"key": "log_refine_reroll",
+		"en|ch|tc|kr": "Emplacement n°{1} de {0} relancé : {2} -> {3} ({4:#,##0} pierres spirituelles)."
+	},
+	{
+		"id": "-1000006020",
+		"key": "town_call",
+		"en|ch|tc|kr": "Un oiseau messager laisse tomber un billet taché de sang : {0} est attaquée par {1} ! Les remparts ne tiendront pas longtemps. En tant que {2}, la ville te rappelle."
+	},
+	{
+		"id": "-1000006021",
+		"key": "town_call_o1",
+		"en|ch|tc|kr": "Rentrer en hâte et défendre la ville"
+	},
+	{
+		"id": "-1000006022",
+		"key": "town_call_o2",
+		"en|ch|tc|kr": "Faire confiance aux gardiens"
+	},
+	{
+		"id": "-1000006023",
+		"key": "town_taxstat",
+		"en|ch|tc|kr": "Mois dernier : {0:#,##0} pierres spirituelles de {1} habitants ; {2} n'ont pas pu payer et ont quitté la ville"
+	},
+	{
+		"id": "-1000006024",
+		"key": "town_taxstat_none",
+		"en|ch|tc|kr": "Aucun impôt perçu pour l'instant"
+	},
+	{
+		"id": "-1000006030",
+		"key": "market_history",
+		"en|ch|tc|kr": "Ventes récentes : moy. {0:#,##0} (min. {1:#,##0}, max. {2:#,##0}, {3} ventes)"
+	},
+	{
+		"id": "-1000006031",
+		"key": "market_nohistory",
+		"en|ch|tc|kr": "Aucune vente récente pour cet objet"
+	},
+	{
+		"id": "-1000006032",
+		"key": "market_offer_title",
+		"en|ch|tc|kr": "Nouvelles offres sur tes annonces"
+	},
+	{
+		"id": "-1000006033",
+		"key": "market_offer_line",
+		"en|ch|tc|kr": "{0} : {1} offre {2:#,##0} ({3} acheteurs)"
+	},
+	{
+		"id": "-1000006034",
+		"key": "market_buyorders",
+		"en|ch|tc|kr": "Ordres d'achat"
+	},
+	{
+		"id": "-1000006035",
+		"key": "market_buyorders_desc",
+		"en|ch|tc|kr": "Demande un objet à un prix : les pierres spirituelles sont bloquées dès maintenant, et les habitants qui le possèdent peuvent te le vendre chaque mois. Les ordres non exécutés sont remboursés après {0} mois."
+	},
+	{
+		"id": "-1000006036",
+		"key": "market_buyorders_none",
+		"en|ch|tc|kr": "Tu n'as aucun ordre d'achat."
+	},
+	{
+		"id": "-1000006037",
+		"key": "market_buyorder_line",
+		"en|ch|tc|kr": "{0} x {1} à {2:#,##0} à {3} ({4} mois restants)"
+	},
+	{
+		"id": "-1000006038",
+		"key": "market_buyorder_new",
+		"en|ch|tc|kr": "Nouvel ordre d'achat"
+	},
+	{
+		"id": "-1000006039",
+		"key": "market_buyorder_pick",
+		"en|ch|tc|kr": "Choisis l'objet voulu"
+	},
+	{
+		"id": "-1000006040",
+		"key": "market_buyorder_unitprice",
+		"en|ch|tc|kr": "Prix unitaire"
+	},
+	{
+		"id": "-1000006041",
+		"key": "market_buyorder_total",
+		"en|ch|tc|kr": "Bloqué : {0:#,##0} pierres spirituelles ; chance mensuelle qu'un vendeur accepte : {1:0} %"
+	},
+	{
+		"id": "-1000006042",
+		"key": "market_buyorder_place",
+		"en|ch|tc|kr": "Passer l'ordre"
+	},
+	{
+		"id": "-1000006043",
+		"key": "market_buyorder_fail",
+		"en|ch|tc|kr": "Pas assez de pierres spirituelles, ou déjà {0} ordres."
+	},
+	{
+		"id": "-1000006044",
+		"key": "market_buyorder_filled",
+		"en|ch|tc|kr": "Ordre d'achat : {2} t'a vendu {0} x {1} pour {3:#,##0} pierres spirituelles."
+	},
+	{
+		"id": "-1000006045",
+		"key": "log_buyorder_new",
+		"en|ch|tc|kr": "Ordre d'achat passé : {0} x {1} à {2:#,##0} à {3}."
+	},
+	{
+		"id": "-1000006046",
+		"key": "log_buyorder_cancel",
+		"en|ch|tc|kr": "Ordre d'achat annulé : {0} x {1}, {2:#,##0} pierres spirituelles remboursées."
+	},
+	{
+		"id": "-1000006047",
+		"key": "log_buyorder_expired",
+		"en|ch|tc|kr": "Ordre d'achat expiré : {0} x {1}, {2:#,##0} pierres spirituelles remboursées."
+	},
+	{
+		"id": "-1000006050",
+		"key": "refine_pick",
+		"en|ch|tc|kr": "Choisis un objet pour voir la progression de son raffinage"
+	},
+	{
+		"id": "-1000006051",
+		"key": "refine_progress",
+		"en|ch|tc|kr": "Niveau de raffinage {0} ({1:#,##0} / {2:#,##0} exp) — {3}"
+	},
+	{
+		"id": "-1000006052",
+		"key": "refine_nextslot",
+		"en|ch|tc|kr": "prochain emplacement débloqué au niveau {0}"
+	},
+	{
+		"id": "-1000006053",
+		"key": "refine_allslots",
+		"en|ch|tc|kr": "tous les emplacements sont débloqués"
+	},
+	{
+		"id": "-1000006054",
+		"key": "refine_reroll",
+		"en|ch|tc|kr": "Relancer les emplacements"
+	},
+	{
+		"id": "-1000006055",
+		"key": "refine_reroll_btn",
+		"en|ch|tc|kr": "Relancer ({0:#,##0})"
+	},
+	{
+		"id": "-1000006056",
+		"key": "refine_reroll_desc",
+		"en|ch|tc|kr": "Une relance donne à un emplacement débloqué un nouveau type, une nouvelle qualité et une nouvelle puissance aléatoires. Le forgeron garde les pierres spirituelles."
+	},
+	{
+		"id": "-1000006060",
+		"key": "loan_title",
+		"en|ch|tc|kr": "Prêt bancaire"
+	},
+	{
+		"id": "-1000006061",
+		"key": "loan_terms",
+		"en|ch|tc|kr": "Intérêts de {0:0} % par mois, échéance dans {1} mois. En retard : +{2:0} % par mois."
+	},
+	{
+		"id": "-1000006062",
+		"key": "loan_warning",
+		"en|ch|tc|kr": "Les dettes impayées sont recouvrées par la force. Qui bat deux fois les recouvreurs est mis sur liste noire : plus aucun prêt nulle part, le compte ici est fermé et les impôts ici triplent."
+	},
+	{
+		"id": "-1000006063",
+		"key": "loan_limit",
+		"en|ch|tc|kr": "Tu peux emprunter jusqu'à {0:#,##0} pierres spirituelles (coffre de la banque : {1:#,##0})."
+	},
+	{
+		"id": "-1000006064",
+		"key": "loan_amount",
+		"en|ch|tc|kr": "Montant"
+	},
+	{
+		"id": "-1000006065",
+		"key": "loan_borrow",
+		"en|ch|tc|kr": "Emprunter"
+	},
+	{
+		"id": "-1000006066",
+		"key": "loan_state",
+		"en|ch|tc|kr": "Prêt de {0} : emprunté {1:#,##0}, dû {2:#,##0}, échéance dans {3} mois"
+	},
+	{
+		"id": "-1000006067",
+		"key": "loan_state_blacklist",
+		"en|ch|tc|kr": "Tu es sur la liste noire de la banque de {0}. Aucune banque ne te prêtera."
+	},
+	{
+		"id": "-1000006068",
+		"key": "loan_repay_amount",
+		"en|ch|tc|kr": "Rembourser"
+	},
+	{
+		"id": "-1000006069",
+		"key": "loan_repay",
+		"en|ch|tc|kr": "Rembourser"
+	},
+	{
+		"id": "-1000006070",
+		"key": "loan_err_blacklist",
+		"en|ch|tc|kr": "Le commis secoue la tête : ton nom est sur la liste noire."
+	},
+	{
+		"id": "-1000006071",
+		"key": "loan_err_loan",
+		"en|ch|tc|kr": "Rembourse d'abord ton prêt en cours."
+	},
+	{
+		"id": "-1000006072",
+		"key": "loan_err_account",
+		"en|ch|tc|kr": "Ouvre d'abord un compte dans cette banque."
+	},
+	{
+		"id": "-1000006073",
+		"key": "loan_err_limit",
+		"en|ch|tc|kr": "Ce montant dépasse ta limite."
+	},
+	{
+		"id": "-1000006074",
+		"key": "loan_err_budget",
+		"en|ch|tc|kr": "Le coffre de la banque ne contient pas autant."
+	},
+	{
+		"id": "-1000006075",
+		"key": "loan_letter",
+		"en|ch|tc|kr": "Une lettre de la banque de {0} : « Votre prêt a {2} mois de retard. Vous devez désormais {1:#,##0} pierres spirituelles. Nous voulons croire à un oubli. »"
+	},
+	{
+		"id": "-1000006076",
+		"key": "loan_letter_o1",
+		"en|ch|tc|kr": "Ranger la lettre"
+	},
+	{
+		"id": "-1000006077",
+		"key": "loan_collector",
+		"en|ch|tc|kr": "« La banque de {0} vous salue. » Le recouvreur fait craquer ses jointures. « {1:#,##0} pierres spirituelles. Aujourd'hui. »"
+	},
+	{
+		"id": "-1000006078",
+		"key": "loan_collector_o1",
+		"en|ch|tc|kr": "Payer {0:#,##0} pierres spirituelles"
+	},
+	{
+		"id": "-1000006079",
+		"key": "loan_collector_o2",
+		"en|ch|tc|kr": "Donner ce que j'ai"
+	},
+	{
+		"id": "-1000006080",
+		"key": "loan_collector_o3",
+		"en|ch|tc|kr": "Se battre"
+	},
+	{
+		"id": "-1000006081",
+		"key": "loan_paid",
+		"en|ch|tc|kr": "Le recouvreur compte les pierres deux fois, hoche la tête et s'en va. La dette est réglée."
+	},
+	{
+		"id": "-1000006082",
+		"key": "loan_seized",
+		"en|ch|tc|kr": "Le recouvreur emporte des biens d'une valeur de {0:#,##0} pierres spirituelles. La dette est réglée, mais ta réputation en souffre."
+	},
+	{
+		"id": "-1000006083",
+		"key": "loan_seized_part",
+		"en|ch|tc|kr": "Le recouvreur emporte des biens d'une valeur de {0:#,##0} pierres spirituelles. Tu dois encore {1:#,##0}."
+	},
+	{
+		"id": "-1000006084",
+		"key": "loan_lost",
+		"en|ch|tc|kr": "Vaincu, tu regardes le recouvreur vider ton sac : l'équivalent de {0:#,##0} pierres spirituelles. Encore dû : {1:#,##0}."
+	},
+	{
+		"id": "-1000006085",
+		"key": "loan_beaten",
+		"en|ch|tc|kr": "Le recouvreur s'éloigne en boitant. « La banque n'oublie pas », crache-t-il. « La prochaine fois, on enverra plus fort. »"
+	},
+	{
+		"id": "-1000006086",
+		"key": "loan_blacklisted",
+		"en|ch|tc|kr": "La banque de {1} renonce à ses {0:#,##0} pierres spirituelles… et à toi. Ton nom est mis sur liste noire : plus de prêts, ton compte là-bas est fermé et ses gardes te taxeront au triple."
+	},
+	{
+		"id": "-1000006087",
+		"key": "log_loan_borrow",
+		"en|ch|tc|kr": "{0:#,##0} pierres spirituelles empruntées à la banque de {1} (échéance dans {2} mois)."
+	},
+	{
+		"id": "-1000006088",
+		"key": "log_loan_repay",
+		"en|ch|tc|kr": "{0:#,##0} pierres spirituelles remboursées (encore dû {1:#,##0})."
+	},
+	{
+		"id": "-1000006089",
+		"key": "log_loan_closed",
+		"en|ch|tc|kr": "Le prêt est soldé."
+	},
+	{
+		"id": "-1000006090",
+		"key": "log_loan_overdue",
+		"en|ch|tc|kr": "Prêt en retard de {0} mois : {1:#,##0} dû."
+	},
+	{
+		"id": "-1000006091",
+		"key": "log_loan_collector",
+		"en|ch|tc|kr": "Le recouvreur {0} est venu réclamer {1:#,##0} pierres spirituelles."
+	},
+	{
+		"id": "-1000006092",
+		"key": "log_loan_seized",
+		"en|ch|tc|kr": "Biens d'une valeur de {0:#,##0} saisis pour la dette (encore dû {1:#,##0})."
+	},
+	{
+		"id": "-1000006093",
+		"key": "log_loan_beaten",
+		"en|ch|tc|kr": "Un recouvreur battu ({0} jusqu'ici)."
+	},
+	{
+		"id": "-1000006094",
+		"key": "log_loan_blacklisted",
+		"en|ch|tc|kr": "Mis sur liste noire par la banque de {0}."
+	},
+	{
+		"id": "-1000006100",
+		"key": "enc_leave",
+		"en|ch|tc|kr": "Continuer"
+	},
+	{
+		"id": "-1000006101",
+		"key": "enc_nomoney",
+		"en|ch|tc|kr": "Tu n'as pas assez de pierres spirituelles."
+	},
+	{
+		"id": "-1000006102",
+		"key": "enc_wounded",
+		"en|ch|tc|kr": "Un cultivateur gît au bord du chemin, la robe trempée de sang. « Pitié… un remède… n'importe quoi… »"
+	},
+	{
+		"id": "-1000006103",
+		"key": "enc_wounded_o1",
+		"en|ch|tc|kr": "Lui acheter un remède ({0:#,##0} pierres spirituelles)"
+	},
+	{
+		"id": "-1000006104",
+		"key": "enc_wounded_o2",
+		"en|ch|tc|kr": "Fouiller ses affaires"
+	},
+	{
+		"id": "-1000006105",
+		"key": "enc_wounded_o3",
+		"en|ch|tc|kr": "Passer son chemin"
+	},
+	{
+		"id": "-1000006106",
+		"key": "enc_wounded_r1",
+		"en|ch|tc|kr": "Les couleurs lui reviennent. Il te serre la main : « Je ne l'oublierai pas. » Avant de partir, il te glisse un {0} dans la paume."
+	},
+	{
+		"id": "-1000006107",
+		"key": "enc_wounded_r2",
+		"en|ch|tc|kr": "Tu prends {0:#,##0} pierres spirituelles dans sa bourse. Ses yeux te suivent, pleins de haine."
+	},
+	{
+		"id": "-1000006108",
+		"key": "enc_chess",
+		"en|ch|tc|kr": "Un vieil homme est assis seul devant un plateau de pierre dans la brume. « Une partie, jeune homme ? Une mise de {0:#,##0} pierres spirituelles la rend intéressante. »"
+	},
+	{
+		"id": "-1000006109",
+		"key": "enc_chess_o1",
+		"en|ch|tc|kr": "Jouer ({0:0} % de chances de gagner)"
+	},
+	{
+		"id": "-1000006110",
+		"key": "enc_chess_o2",
+		"en|ch|tc|kr": "S'incliner et refuser"
+	},
+	{
+		"id": "-1000006111",
+		"key": "enc_chess_win",
+		"en|ch|tc|kr": "Le vieil homme rit et balaie les pierres. « Un esprit vif ! » Suivre ses coups a élargi ta compréhension. (+{0:#,##0} exp, +{1:#,##0} pierres spirituelles)"
+	},
+	{
+		"id": "-1000006112",
+		"key": "enc_chess_lose",
+		"en|ch|tc|kr": "La partie s'achève en quelques dizaines de coups. Le vieil homme empoche ta mise avec un doux sourire. (-{0:#,##0} pierres spirituelles)"
+	},
+	{
+		"id": "-1000006113",
+		"key": "enc_peddler",
+		"en|ch|tc|kr": "Un colporteur encapuchonné ouvre son manteau : des rangées de boîtes scellées. « Chacune contient un trésor… ou rien. {0:#,##0} pierres spirituelles la boîte. »"
+	},
+	{
+		"id": "-1000006114",
+		"key": "enc_peddler_o1",
+		"en|ch|tc|kr": "Acheter une boîte"
+	},
+	{
+		"id": "-1000006115",
+		"key": "enc_peddler_o2",
+		"en|ch|tc|kr": "Marchander"
+	},
+	{
+		"id": "-1000006116",
+		"key": "enc_peddler_o3",
+		"en|ch|tc|kr": "L'ignorer"
+	},
+	{
+		"id": "-1000006117",
+		"key": "enc_peddler_item",
+		"en|ch|tc|kr": "Dans la boîte se trouve un {0}."
+	},
+	{
+		"id": "-1000006118",
+		"key": "enc_peddler_deal",
+		"en|ch|tc|kr": "« Bon, bon, une remise pour un ami. » Tu paies {1:#,##0}. Dans la boîte se trouve un {0}."
+	},
+	{
+		"id": "-1000006119",
+		"key": "enc_peddler_empty",
+		"en|ch|tc|kr": "La boîte est vide. Quelque part, un colporteur rit."
+	},
+	{
+		"id": "-1000006120",
+		"key": "enc_peddler_leave",
+		"en|ch|tc|kr": "« Pas d'affaire pour les radins ! » Il disparaît dans la foule."
+	},
+	{
+		"id": "-1000006121",
+		"key": "enc_cave",
+		"en|ch|tc|kr": "Après une secousse, un flanc de colline s'est effondré, révélant un passage obscur qui sent l'énergie spirituelle ancienne."
+	},
+	{
+		"id": "-1000006122",
+		"key": "enc_cave_o1",
+		"en|ch|tc|kr": "Explorer le passage"
+	},
+	{
+		"id": "-1000006123",
+		"key": "enc_cave_o2",
+		"en|ch|tc|kr": "Ça semble instable : partir"
+	},
+	{
+		"id": "-1000006124",
+		"key": "enc_cave_items",
+		"en|ch|tc|kr": "Parmi les gravats, tu trouves : {0}."
+	},
+	{
+		"id": "-1000006125",
+		"key": "enc_cave_stones",
+		"en|ch|tc|kr": "Un coffre pourri renferme une cache oubliée de {0:#,##0} pierres spirituelles."
+	},
+	{
+		"id": "-1000006126",
+		"key": "enc_cave_hurt",
+		"en|ch|tc|kr": "Le plafond cède. Tu rampes dehors, couvert de bleus et de sang. (-{0:#,##0} de vitalité)"
+	},
+	{
+		"id": "-1000006127",
+		"key": "enc_cub",
+		"en|ch|tc|kr": "Une petite bête spirituelle à la patte blessée t'observe depuis les buissons, trop faible pour fuir."
+	},
+	{
+		"id": "-1000006128",
+		"key": "enc_cub_o1",
+		"en|ch|tc|kr": "Lui donner une herbe"
+	},
+	{
+		"id": "-1000006129",
+		"key": "enc_cub_o2",
+		"en|ch|tc|kr": "La laisser tranquille"
+	},
+	{
+		"id": "-1000006130",
+		"key": "enc_cub_r",
+		"en|ch|tc|kr": "Le petit mange, te lèche la main et s'éloigne en boitant. Un instant, tu sens le Ciel te sourire. (+{0} de chance)"
+	},
+	{
+		"id": "-1000006131",
+		"key": "enc_cub_noherb",
+		"en|ch|tc|kr": "Tu fouilles ton sac : pas une seule herbe. Le petit s'éclipse."
+	},
+	{
+		"id": "-1000006132",
+		"key": "enc_festival",
+		"en|ch|tc|kr": "Des lanternes emplissent les rues de {0} : la ville fête le jour de sa fondation. Participer aux festivités coûte {1:#,##0} pierres spirituelles."
+	},
+	{
+		"id": "-1000006133",
+		"key": "enc_festival_o1",
+		"en|ch|tc|kr": "Participer à la fête"
+	},
+	{
+		"id": "-1000006134",
+		"key": "enc_festival_o2",
+		"en|ch|tc|kr": "Pas aujourd'hui"
+	},
+	{
+		"id": "-1000006135",
+		"key": "enc_festival_r",
+		"en|ch|tc|kr": "Tu bois, tu ris et tu lâches une lanterne dans le ciel nocturne. (+{0} d'humeur, les habitants t'apprécient davantage)"
+	},
+	{
+		"id": "-1000006025",
+		"key": "town_tax_help",
+		"en|ch|tc|kr": "Chaque mois, chaque PNJ séjournant en ville paie l'impôt au budget et se repose à l'auberge (PV/PM/PE au maximum).\n- Un PNJ qui ne peut pas payer quitte la ville et déteste le maître (-5).\n- Impôt au-dessus de 1 % de l'argent d'un PNJ : il n'aime pas le maître (-1 par mois) ; en dessous de 0,1 % : il l'apprécie (+1 par mois).\n- Le joueur paie en entrant dans un bâtiment gardé par la ville (s'y faufiler peut déclencher un combat avec un garde) ; les gardiens de la ville ne paient rien.\nImpôt plus élevé = plus de budget (bâtiments, solde des gardiens, passage au rang de cité), mais moins d'habitants et plus mécontents."
+	},
+	{
+		"id": "-1000006095",
+		"key": "loan_err_off",
+		"en|ch|tc|kr": "Les prêts bancaires sont désactivés dans la configuration S&M."
+	},
+	{
+		"id": "-1000006150",
+		"key": "wanted_title",
+		"en|ch|tc|kr": "Prime"
+	},
+	{
+		"id": "-1000006151",
+		"key": "wanted_post",
+		"en|ch|tc|kr": "Mettre une prime"
+	},
+	{
+		"id": "-1000006152",
+		"key": "wanted_list",
+		"en|ch|tc|kr": "Liste des recherchés"
+	},
+	{
+		"id": "-1000006153",
+		"key": "wanted_post_desc",
+		"en|ch|tc|kr": "Recherché : {0} (rang {1}), prime posée par {2}"
+	},
+	{
+		"id": "-1000006154",
+		"key": "wanted_post_budget",
+		"en|ch|tc|kr": "Budget de la ville : {0:#,##0} — prime minimale : {1:#,##0}"
+	},
+	{
+		"id": "-1000006155",
+		"key": "wanted_reward",
+		"en|ch|tc|kr": "Prime"
+	},
+	{
+		"id": "-1000006156",
+		"key": "wanted_post_rule",
+		"en|ch|tc|kr": "La prime est prélevée tout de suite sur le budget de la ville. Plus elle est élevée, plus les chasseurs viennent souvent. Non réclamée après 36 mois (ou si la cible meurt autrement) : remboursée."
+	},
+	{
+		"id": "-1000006157",
+		"key": "wanted_posted",
+		"en|ch|tc|kr": "L'avis de recherche de {0} est cloué à la porte de la ville."
+	},
+	{
+		"id": "-1000006158",
+		"key": "wanted_err_off",
+		"en|ch|tc|kr": "Les primes sont désactivées dans la configuration S&M."
+	},
+	{
+		"id": "-1000006159",
+		"key": "wanted_err_target",
+		"en|ch|tc|kr": "Cette cible ne peut pas être recherchée."
+	},
+	{
+		"id": "-1000006160",
+		"key": "wanted_err_already",
+		"en|ch|tc|kr": "Cette ville a déjà une prime sur cette personne."
+	},
+	{
+		"id": "-1000006161",
+		"key": "wanted_err_min",
+		"en|ch|tc|kr": "La prime est inférieure au minimum."
+	},
+	{
+		"id": "-1000006162",
+		"key": "wanted_err_budget",
+		"en|ch|tc|kr": "Le budget de la ville est insuffisant."
+	},
+	{
+		"id": "-1000006163",
+		"key": "wanted_on_player",
+		"en|ch|tc|kr": "Un avis flotte sur chaque porte de {0} : ton portrait, et une prime de {1:#,##0} pierres spirituelles. Des chasseurs de primes viendront."
+	},
+	{
+		"id": "-1000006164",
+		"key": "wanted_ambush",
+		"en|ch|tc|kr": "« {0} paie {1:#,##0} pierres spirituelles pour ta tête. Rien de personnel. » Le chasseur de primes te barre la route."
+	},
+	{
+		"id": "-1000006165",
+		"key": "wanted_ambush_o1",
+		"en|ch|tc|kr": "Se battre"
+	},
+	{
+		"id": "-1000006166",
+		"key": "wanted_ambush_o2",
+		"en|ch|tc|kr": "Payer la ville pour laver mon nom ({0:#,##0})"
+	},
+	{
+		"id": "-1000006167",
+		"key": "wanted_done",
+		"en|ch|tc|kr": "{0} a abattu {1}. Ta prime de {2:#,##0} pierres spirituelles est versée."
+	},
+	{
+		"id": "-1000006168",
+		"key": "wanted_list_desc",
+		"en|ch|tc|kr": "Liste des recherchés : clique sur un portrait pour voir la prime. Tue une personne recherchée en combat pour la toucher."
+	},
+	{
+		"id": "-1000006169",
+		"key": "wanted_none",
+		"en|ch|tc|kr": "Personne n'est recherché pour l'instant."
+	},
+	{
+		"id": "-1000006170",
+		"key": "wanted_line",
+		"en|ch|tc|kr": "{0} (rang {1}) — {2:#,##0} — {3} ({4} mois restants)"
+	},
+	{
+		"id": "-1000006171",
+		"key": "log_wanted_post",
+		"en|ch|tc|kr": "{0} a mis une prime de {2:#,##0} sur {1}."
+	},
+	{
+		"id": "-1000006172",
+		"key": "log_wanted_claimed",
+		"en|ch|tc|kr": "{0} a touché la prime de {2:#,##0} sur {1}."
+	},
+	{
+		"id": "-1000006173",
+		"key": "log_wanted_expired",
+		"en|ch|tc|kr": "La prime sur {0} a expiré ; {1:#,##0} retournent à {2}."
+	},
+	{
+		"id": "-1000006174",
+		"key": "log_wanted_dead",
+		"en|ch|tc|kr": "{0} est mort avant qu'un chasseur ne l'attrape ; {1:#,##0} retournent à {2}."
+	},
+	{
+		"id": "-1000006175",
+		"key": "log_wanted_cancel",
+		"en|ch|tc|kr": "Prime sur {0} annulée ; {1:#,##0} retournent à {2}."
+	},
+	{
+		"id": "-1000006176",
+		"key": "log_wanted_cleared",
+		"en|ch|tc|kr": "Tu as lavé ton nom ; la prime est retirée ({1:#,##0} retournent à {2})."
+	},
+	{
+		"id": "-1000006177",
+		"key": "log_wanted_failed",
+		"en|ch|tc|kr": "{0} a traqué {1} et a échoué."
+	},
+	{
+		"id": "-1000006178",
+		"key": "log_wanted_ambush",
+		"en|ch|tc|kr": "Le chasseur de primes {0} t'a tendu une embuscade (recherché par {1})."
+	},
+	{
+		"id": "-1000006179",
+		"key": "log_wanted_player_claimed",
+		"en|ch|tc|kr": "Tu as tué {0} et reçu la prime de {1:#,##0} de {2}."
+	},
+	{
+		"id": "-1000006180",
+		"key": "wanted_detail",
+		"en|ch|tc|kr": "Prime {0:#,##0} — {1} (posée par {2}) — {3} mois restants"
+	},
+	{
+		"id": "-1000006190",
+		"key": "taoistMonthLogTitle",
+		"en|ch|tc|kr": "Taoist"
+	},
+	{
+		"id": "-1000006191",
+		"key": "secl_SpiritVein",
+		"en|ch|tc|kr": "Sous la roche, une veine spirituelle s'éveille, son qi aussi dense que la brume. L'absorber prendrait {0} ans (espérance de vie restante : {1} ans). Entrer en retraite ?"
+	},
+	{
+		"id": "-1000006192",
+		"key": "secl_Inheritance",
+		"en|ch|tc|kr": "Derrière un mur effondré se trouve la grotte d'un maître disparu depuis longtemps, son héritage scellé dans des tablettes de jade. Le comprendre prendrait {0} ans (espérance de vie restante : {1} ans). Entrer en retraite ?"
+	},
+	{
+		"id": "-1000006193",
+		"key": "secl_OldTree",
+		"en|ch|tc|kr": "Un arbre ancien vibre du Dao des saisons. S'asseoir à son pied pendant {0} ans pourrait tremper tes fondations (espérance de vie restante : {1} ans). Entrer en retraite ?"
+	},
+	{
+		"id": "-1000006194",
+		"key": "secl_HeartDemon",
+		"en|ch|tc|kr": "Tes pensées se tordent ; les visages de ceux que tu as vaincus surgissent dans ta mer de conscience. Un démon intérieur ! Tu n'as d'autre choix que de t'asseoir et de le combattre. Cela peut prendre {0} ans."
+	},
+	{
+		"id": "-1000006195",
+		"key": "secl_TimeRealm",
+		"en|ch|tc|kr": "Tu franchis une faille scintillante. À l'intérieur, quelques jours seulement semblent passer… mais en ressortant, {0} ans se sont écoulés dans le monde."
+	},
+	{
+		"id": "-1000006196",
+		"key": "secl_warn_life",
+		"en|ch|tc|kr": "<color=#ff4040>Attention : c'est plus long que ton espérance de vie restante ({0} ans) !</color>"
+	},
+	{
+		"id": "-1000006197",
+		"key": "secl_o1",
+		"en|ch|tc|kr": "Entrer en retraite ({0} ans)"
+	},
+	{
+		"id": "-1000006198",
+		"key": "secl_o2",
+		"en|ch|tc|kr": "Pas maintenant"
+	},
+	{
+		"id": "-1000006199",
+		"key": "secl_forced_o1",
+		"en|ch|tc|kr": "..."
+	},
+	{
+		"id": "-1000006200",
+		"key": "secl_end_o1",
+		"en|ch|tc|kr": "Sortir de retraite"
+	},
+	{
+		"id": "-1000006201",
+		"key": "secl_name_SpiritVein",
+		"en|ch|tc|kr": "Veine spirituelle"
+	},
+	{
+		"id": "-1000006202",
+		"key": "secl_name_Inheritance",
+		"en|ch|tc|kr": "Héritage ancien"
+	},
+	{
+		"id": "-1000006203",
+		"key": "secl_name_OldTree",
+		"en|ch|tc|kr": "Arbre ancien"
+	},
+	{
+		"id": "-1000006204",
+		"key": "secl_name_HeartDemon",
+		"en|ch|tc|kr": "Démon intérieur"
+	},
+	{
+		"id": "-1000006205",
+		"key": "secl_name_TimeRealm",
+		"en|ch|tc|kr": "Faille temporelle"
+	},
+	{
+		"id": "-1000006206",
+		"key": "secl_res_SpiritVein",
+		"en|ch|tc|kr": "La veine spirituelle se tarit ; son qi est désormais tien."
+	},
+	{
+		"id": "-1000006207",
+		"key": "secl_res_Inheritance",
+		"en|ch|tc|kr": "L'héritage du maître est gravé dans ton cœur (talent accru). Dans la grotte, tu trouves aussi : {0}."
+	},
+	{
+		"id": "-1000006208",
+		"key": "secl_res_OldTree",
+		"en|ch|tc|kr": "Tes fondations sont trempées : {1} +{0}."
+	},
+	{
+		"id": "-1000006209",
+		"key": "secl_res_HeartDemon_win",
+		"en|ch|tc|kr": "Tu tranches le démon intérieur. Ton cœur du Dao est plus ferme que jamais (talent +3, chance +1)."
+	},
+	{
+		"id": "-1000006210",
+		"key": "secl_res_HeartDemon_lose",
+		"en|ch|tc|kr": "Le démon intérieur est chassé, mais il a rongé ta cultivation (-{0:#,##0} exp)."
+	},
+	{
+		"id": "-1000006211",
+		"key": "secl_res_TimeRealm",
+		"en|ch|tc|kr": "De la faille, tu rapportes : {0}."
+	},
+	{
+		"id": "-1000006212",
+		"key": "secl_summary",
+		"en|ch|tc|kr": "Années de retraite : {0}\nExp gagnée : {1:#,##0}\nPrix dans le monde : +{2} %\nAmis disparus : {3}\nNaissances dans ta famille : {4}\nÂge : {5} (espérance de vie restante : {6} ans)"
+	},
+	{
+		"id": "-1000006213",
+		"key": "log_secl_start",
+		"en|ch|tc|kr": "Entrée en retraite ({0}, {1} ans)"
+	},
+	{
+		"id": "-1000006214",
+		"key": "log_secl_end",
+		"en|ch|tc|kr": "Sortie de retraite ({0}) après {1} ans, +{2:#,##0} exp"
+	},
+	{
+		"id": "-1000006215",
+		"key": "log_secl_declined",
+		"en|ch|tc|kr": "Retraite refusée ({0})"
+	},
+	{
+		"id": "-1000006216",
+		"key": "family_birth",
+		"en|ch|tc|kr": "Bonne nouvelle ! {0} a donné naissance à ton enfant. Dans {1} ans, il sera assez grand pour emprunter la voie de la cultivation."
+	},
+	{
+		"id": "-1000006217",
+		"key": "family_birth_o1",
+		"en|ch|tc|kr": "Merveilleux !"
+	},
+	{
+		"id": "-1000006218",
+		"key": "family_grown",
+		"en|ch|tc|kr": "J'ai seize ans aujourd'hui. Laisse-moi suivre la voie de la cultivation, comme toi !"
+	},
+	{
+		"id": "-1000006219",
+		"key": "family_grown_o1",
+		"en|ch|tc|kr": "Va, et rends la famille fière."
+	},
+	{
+		"id": "-1000006220",
+		"key": "family_btn",
+		"en|ch|tc|kr": "Famille"
+	},
+	{
+		"id": "-1000006221",
+		"key": "family_title",
+		"en|ch|tc|kr": "Famille de {0}"
+	},
+	{
+		"id": "-1000006222",
+		"key": "family_parents",
+		"en|ch|tc|kr": "Parents : {0}"
+	},
+	{
+		"id": "-1000006223",
+		"key": "family_spouse",
+		"en|ch|tc|kr": "Compagnon du Dao : {0}"
+	},
+	{
+		"id": "-1000006224",
+		"key": "family_children",
+		"en|ch|tc|kr": "Enfants : {0}"
+	},
+	{
+		"id": "-1000006225",
+		"key": "family_unborn",
+		"en|ch|tc|kr": "Un enfant qui grandit (majeur dans {0} ans)"
+	},
+	{
+		"id": "-1000006226",
+		"key": "family_siblings",
+		"en|ch|tc|kr": "Frères et sœurs : {0}"
+	},
+	{
+		"id": "-1000006227",
+		"key": "family_dead",
+		"en|ch|tc|kr": " (décédé)"
+	},
+	{
+		"id": "-1000006228",
+		"key": "log_family_married",
+		"en|ch|tc|kr": "{0} et {1} sont devenus compagnons du Dao"
+	},
+	{
+		"id": "-1000006229",
+		"key": "log_family_birth",
+		"en|ch|tc|kr": "{0} et {1} ont eu un enfant"
+	},
+	{
+		"id": "-1000006230",
+		"key": "log_family_grown",
+		"en|ch|tc|kr": "{0}, enfant de {1} et {2}, est devenu majeur"
+	},
+	{
+		"id": "-1000006231",
+		"key": "log_family_revenge",
+		"en|ch|tc|kr": "{0} a mis ta tête à prix pour avoir tué {1} ({2})"
+	},
+	{
+		"id": "-1000006232",
+		"key": "secl_basis_0",
+		"en|ch|tc|kr": "Sabre"
+	},
+	{
+		"id": "-1000006233",
+		"key": "secl_basis_1",
+		"en|ch|tc|kr": "Lance"
+	},
+	{
+		"id": "-1000006234",
+		"key": "secl_basis_2",
+		"en|ch|tc|kr": "Épée"
+	},
+	{
+		"id": "-1000006235",
+		"key": "secl_basis_3",
+		"en|ch|tc|kr": "Poing"
+	},
+	{
+		"id": "-1000006236",
+		"key": "secl_basis_4",
+		"en|ch|tc|kr": "Paume"
+	},
+	{
+		"id": "-1000006237",
+		"key": "secl_basis_5",
+		"en|ch|tc|kr": "Doigt"
+	},
+	{
+		"id": "-1000006238",
+		"key": "secl_basis_6",
+		"en|ch|tc|kr": "Feu"
+	},
+	{
+		"id": "-1000006239",
+		"key": "secl_basis_7",
+		"en|ch|tc|kr": "Eau"
+	},
+	{
+		"id": "-1000006240",
+		"key": "secl_basis_8",
+		"en|ch|tc|kr": "Foudre"
+	},
+	{
+		"id": "-1000006241",
+		"key": "secl_basis_9",
+		"en|ch|tc|kr": "Vent"
+	},
+	{
+		"id": "-1000006242",
+		"key": "secl_basis_10",
+		"en|ch|tc|kr": "Terre"
+	},
+	{
+		"id": "-1000006243",
+		"key": "secl_basis_11",
+		"en|ch|tc|kr": "Bois"
+	},
+	{
+		"id": "-1000006244",
+		"key": "family_inherit",
+		"en|ch|tc|kr": "Ton espérance de vie touche à sa fin. Avant ton dernier souffle, tu peux transmettre ton héritage à l'un de tes descendants et continuer à jouer avec lui.\nIl reçoit tes biens, tes dettes et tes liens (amitiés à moitié, inimitiés entières) ; ta réputation, tes fonctions et les primes sur ta tête meurent avec toi."
+	},
+	{
+		"id": "-1000006245",
+		"key": "family_inherit_o",
+		"en|ch|tc|kr": "Le transmettre à {0} ({1} ans, {2})"
+	},
+	{
+		"id": "-1000006246",
+		"key": "family_inherit_no",
+		"en|ch|tc|kr": "Que mon voyage s'arrête ici"
+	},
+	{
+		"id": "-1000006247",
+		"key": "family_inherited",
+		"en|ch|tc|kr": "{0} est retourné au ciel et à la terre. {1} reprend l'héritage : la {2}e génération de la famille suit la voie de la cultivation."
+	},
+	{
+		"id": "-1000006248",
+		"key": "family_inherited_o1",
+		"en|ch|tc|kr": "Continuer"
+	},
+	{
+		"id": "-1000006249",
+		"key": "log_family_inherit",
+		"en|ch|tc|kr": "{0} est décédé ; {1} a repris l'héritage (génération {2})"
+	},
+	{
+		"id": "-1000006250",
+		"key": "log_npc_fortune",
+		"en|ch|tc|kr": "{0} a connu une rencontre fortuite et progressé dans sa cultivation"
+	},
+	{
+		"id": "-1000006251",
+		"key": "log_npc_inheritance",
+		"en|ch|tc|kr": "{0} a trouvé un héritage ancien et fait un bond dans sa cultivation"
+	},
+	{
+		"id": "-1000006252",
+		"key": "skip_progress",
+		"en|ch|tc|kr": "Le temps passe… {0} / {1} mois (année {2}, mois {3})"
+	},
+	{
+		"id": "-1000006253",
+		"key": "family_inherit_skills",
+		"en|ch|tc|kr": "{0} s'agenouille devant toi. Qu'en sera-t-il de tes techniques ?"
+	},
+	{
+		"id": "-1000006254",
+		"key": "family_inherit_skills_keep",
+		"en|ch|tc|kr": "Transmettre mes techniques"
+	},
+	{
+		"id": "-1000006255",
+		"key": "family_inherit_skills_own",
+		"en|ch|tc|kr": "Laisser {0} garder ses propres techniques"
+	},
+	{
+		"id": "-1000006256",
+		"key": "log_wanted_heir",
+		"en|ch|tc|kr": "La prime sur {0} ({1:#,##0}) a pris fin avec sa mort ; elle est retournée à {2}."
+	},
+	{
+		"id": "-1000006257",
+		"key": "fund_button",
+		"en|ch|tc|kr": "Famille"
+	},
+	{
+		"id": "-1000006258",
+		"key": "fund_title",
+		"en|ch|tc|kr": "Foyer de {0} (génération {1})"
+	},
+	{
+		"id": "-1000006259",
+		"key": "fund_members",
+		"en|ch|tc|kr": "Membres : {0} adultes, {1} enfants"
+	},
+	{
+		"id": "-1000006260",
+		"key": "fund_upkeep",
+		"en|ch|tc|kr": "Entretien : {0:#,##0} par mois (membres {1:#,##0}, enfants {2:#,##0})"
+	},
+	{
+		"id": "-1000006261",
+		"key": "fund_year",
+		"en|ch|tc|kr": "Cette année : payé {0:#,##0}, impayé {1:#,##0} ; dons {2:#,##0} pierres et {3} objets ; {4} objets repris"
+	},
+	{
+		"id": "-1000006262",
+		"key": "fund_stored",
+		"en|ch|tc|kr": "Objets offerts dans l'entrepôt de la banque : {0}"
+	},
+	{
+		"id": "-1000006263",
+		"key": "fund_last",
+		"en|ch|tc|kr": "Dernièrement :"
+	},
+	{
+		"id": "-1000006264",
+		"key": "fund_when",
+		"en|ch|tc|kr": "A{0} M{1} : "
+	},
+	{
+		"id": "-1000006265",
+		"key": "fund_entry_Upkeep",
+		"en|ch|tc|kr": "entretien payé {1:#,##0}"
+	},
+	{
+		"id": "-1000006266",
+		"key": "fund_entry_Unpaid",
+		"en|ch|tc|kr": "entretien impayé {1:#,##0} : la famille est mécontente"
+	},
+	{
+		"id": "-1000006267",
+		"key": "fund_entry_GiftStones",
+		"en|ch|tc|kr": "{0} a apporté {1:#,##0} pierres spirituelles"
+	},
+	{
+		"id": "-1000006268",
+		"key": "fund_entry_GiftItem",
+		"en|ch|tc|kr": "{0} a apporté {2}"
+	},
+	{
+		"id": "-1000006269",
+		"key": "fund_entry_Used",
+		"en|ch|tc|kr": "{0} a pris {2} dans l'entrepôt"
+	},
+	{
+		"id": "-1000006270",
+		"key": "fund_help",
+		"en|ch|tc|kr": "Chaque mois, le foyer (compagnon, descendants adultes, enfants) coûte des pierres spirituelles selon le rang, payées avec ton argent puis avec les pierres de ton entrepôt bancaire. Un entretien impayé mécontente chaque membre.\nDe temps en temps, un membre apporte des pierres spirituelles ou un objet précieux à ton entrepôt bancaire ; un membre dans le besoin peut aussi reprendre l'un de ces dons."
+	},
+	{
+		"id": "-1000006271",
+		"key": "fund_tree",
+		"en|ch|tc|kr": "Arbre généalogique"
+	},
+	{
+		"id": "-1000006272",
+		"key": "log_family_unpaid",
+		"en|ch|tc|kr": "Entretien du foyer impayé ({0:#,##0}) : la famille est mécontente."
+	},
+	{
+		"id": "-1000006273",
+		"key": "log_family_gift_stones",
+		"en|ch|tc|kr": "{0} a apporté {1:#,##0} pierres spirituelles à l'entrepôt familial."
+	},
+	{
+		"id": "-1000006274",
+		"key": "log_family_gift_item",
+		"en|ch|tc|kr": "{0} a apporté {1} à l'entrepôt familial."
+	},
+	{
+		"id": "-1000006275",
+		"key": "log_family_used",
+		"en|ch|tc|kr": "{0} était dans le besoin et a pris {1} dans l'entrepôt familial."
+	},
+	{
+		"id": "-1000006276",
+		"key": "secl_interrupted",
+		"en|ch|tc|kr": "Ta retraite a été interrompue après {0} mois : quelque chose dans le monde a besoin de toi."
+	}
+]

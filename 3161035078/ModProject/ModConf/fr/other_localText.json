@@ -538,5 +538,55 @@
 		"id": 500020116,
 		"key": "other500020116",
 		"en|ch|tc|kr": "Vous n’avez pas assez de pierres spirituelles !"
+	},
+	{
+		"id": "500020027",
+		"key": "other500020027",
+		"en|ch|tc|kr": "Le garde de la porte tend la main : « L'impôt est de {0:#,##0} pierres spirituelles. » Ta bourse n'est pas si lourde."
+	},
+	{
+		"id": "500020044",
+		"key": "other500020044",
+		"en|ch|tc|kr": "Se faufiler quand il regarde ailleurs"
+	},
+	{
+		"id": "500020078",
+		"key": "other500020078",
+		"en|ch|tc|kr": "On s'est serré la main, et maintenant tu te rétractes ? Mon temps vaut plus que tes excuses."
+	},
+	{
+		"id": "500020079",
+		"key": "other500020079",
+		"en|ch|tc|kr": "Un prix juste, vite payé. Un plaisir de faire affaire avec toi."
+	},
+	{
+		"id": "500020080",
+		"key": "other500020080",
+		"en|ch|tc|kr": "Tu l'as vendu à quelqu'un d'autre ? Après m'avoir fait attendre tout le mois ?"
+	},
+	{
+		"id": "500020081",
+		"key": "other500020081",
+		"en|ch|tc|kr": "Augmenter le prix après notre accord ? Quelle impudence."
+	},
+	{
+		"id": "500020082",
+		"key": "other500020082",
+		"en|ch|tc|kr": "La nouvelle te parvient : le [{0}] sur lequel tu avais misé a été vendu à un autre acheteur."
+	},
+	{
+		"id": "500020088",
+		"key": "other500020088",
+		"en|ch|tc|kr": "Tu croyais pouvoir partir sans payer ? Détrompe-toi."
+	},
+	{
+		"id": "500020093",
+		"key": "other500020093",
+		"en|ch|tc|kr": "Annulé ? Alors la prochaine fois, ne me fais pas perdre mon temps à marchander."
+	},
+	{
+		"id": "500020117",
+		"key": "other500020117",
+		"en|ch|tc|kr": "Faire demi-tour"
 	}
 ]

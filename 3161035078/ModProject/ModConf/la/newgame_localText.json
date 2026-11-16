@@ -1,0 +1,32 @@
+[
+	{
+		"id": "-1000005000",
+		"key": "newgame000",
+		"en|ch|tc|kr": "Artefacta:"
+	},
+	{
+		"id": "-1000005001",
+		"key": "newgame001",
+		"en|ch|tc|kr": "Iaspis Bagua"
+	},
+	{
+		"id": "-1000005002",
+		"key": "newgame002",
+		"en|ch|tc|kr": "Oculus Providentiae"
+	},
+	{
+		"id": "-1000005003",
+		"key": "newgame003",
+		"en|ch|tc|kr": "Olla daemonica"
+	},
+	{
+		"id": "-1000005004",
+		"key": "newgame004",
+		"en|ch|tc|kr": "Prooemium omittere"
+	},
+	{
+		"id": "-1000005005",
+		"key": "newgame005",
+		"en|ch|tc|kr": "Artefacta signata initio dantur (plura licent). Prooemium omittere: nulla fabula initialis neque primum proelium."
+	}
+]

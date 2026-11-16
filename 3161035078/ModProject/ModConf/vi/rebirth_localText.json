@@ -118,5 +118,15 @@
 		"id": "420103103",
 		"key": "rebirth420103103",
 		"en|ch|tc|kr": "Cơ chế này sẽ thiết lập lại tất cả cấp độ nhân vật, điểm kinh nghiệm và danh tiếng của bạn.\nKhi bạn trở lại với cấp độ tương tự, nhân vật của bạn sẽ mạnh mẽ hơn."
+	},
+	{
+		"id": "420109999",
+		"key": "rebirth420109999dialog",
+		"en|ch|tc|kr": "Dưới tán hoa đào ta mở mắt lần nữa. Thân thể trẻ lại, tu vi mất sạch — nhưng ký ức của cả một đời vẫn còn. Lần này ta biết con đường nào dẫn vào ngõ cụt."
+	},
+	{
+		"id": "420109998",
+		"key": "rebirth420109998",
+		"en|ch|tc|kr": "Bắt đầu lại"
 	}
 ]

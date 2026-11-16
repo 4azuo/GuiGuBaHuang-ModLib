@@ -498,5 +498,90 @@
 		"id": -1000001139,
 		"key": "smcfgs139",
 		"en|ch|tc|kr": "Argent perdu en mourant"
+	},
+	{
+		"id": "-1000001150",
+		"key": "smcfgs150",
+		"en|ch|tc|kr": "Fonctions supplémentaires"
+	},
+	{
+		"id": "-1000001151",
+		"key": "smcfgs151",
+		"en|ch|tc|kr": "Pas de rencontres aléatoires"
+	},
+	{
+		"id": "-1000001152",
+		"key": "smcfgs152",
+		"en|ch|tc|kr": "Pas de prêts bancaires"
+	},
+	{
+		"id": "-1000001153",
+		"key": "smcfgs153",
+		"en|ch|tc|kr": "Pas d'ordres d'achat au marché"
+	},
+	{
+		"id": "-1000001154",
+		"key": "smcfgs154",
+		"en|ch|tc|kr": "Pas de primes (avis de recherche)"
+	},
+	{
+		"id": "-1000001155",
+		"key": "smcfgs155",
+		"en|ch|tc|kr": "Ces fonctions sont actives par défaut et ne changent pas le score de difficulté. En désactiver une conserve ce qui est en cours (un prêt peut toujours être remboursé, les ordres existants sont toujours exécutés)."
+	},
+	{
+		"id": "-1000001156",
+		"key": "smcfgs156",
+		"en|ch|tc|kr": "Pas d'événements de retraite"
+	},
+	{
+		"id": "-1000001157",
+		"key": "smcfgs157",
+		"en|ch|tc|kr": "Pas de retraite forcée"
+	},
+	{
+		"id": "-1000001158",
+		"key": "smcfgs158",
+		"en|ch|tc|kr": "Pas de système familial (naissances)"
+	},
+	{
+		"id": "-1000001159",
+		"key": "smcfgs159",
+		"en|ch|tc|kr": "Compagnons du Dao de même sexe"
+	},
+	{
+		"id": "-1000001160",
+		"key": "smcfgs160",
+		"en|ch|tc|kr": "Nom de famille de l'enfant"
+	},
+	{
+		"id": "-1000001161",
+		"key": "smcfgs161",
+		"en|ch|tc|kr": "Du père"
+	},
+	{
+		"id": "-1000001162",
+		"key": "smcfgs162",
+		"en|ch|tc|kr": "De la mère"
+	},
+	{
+		"id": "-1000001163",
+		"key": "smcfgs163",
+		"en|ch|tc|kr": "Aléatoire"
+	},
+	{
+		"id": "-1000001164",
+		"key": "smcfgs164",
+		"en|ch|tc|kr": "Continuer avec un descendant"
+	},
+	{
+		"id": "-1000001165",
+		"key": "smcfgs165",
+		"en|ch|tc|kr": "Rencontres aléatoires (% par mois)"
+	},
+	{
+		"id": "-1000001166",
+		"key": "smcfgs166",
+		"en|ch|tc|kr": "Événements de retraite (% par mois)"
 	}
 ]

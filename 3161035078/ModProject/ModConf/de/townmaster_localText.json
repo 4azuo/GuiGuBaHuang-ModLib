@@ -28,5 +28,30 @@
 		"id": "420041119",
 		"key": "townmaster420041119",
 		"en|ch|tc|kr": "Bezahlung: {0:#,##0}/Jahr"
+	},
+	{
+		"id": "420041113",
+		"key": "townmaster420041113drama",
+		"en|ch|tc|kr": "Die Ältesten verneigen sich und überreichen das Stadtsiegel. Von heute an sind die Mauern, die Märkte und jede Seele darin deine Verantwortung."
+	},
+	{
+		"id": "420041114",
+		"key": "townmaster420041114drama",
+		"en|ch|tc|kr": "Ein Bote bringt einen versiegelten Brief: Der Stadtmeister von {0} hat von deiner Stärke gehört und bittet dich, einer der Wächter der Stadt zu werden."
+	},
+	{
+		"id": "420041115",
+		"key": "townmaster420041114dramaOpt1",
+		"en|ch|tc|kr": "Das Amt annehmen"
+	},
+	{
+		"id": "420041116",
+		"key": "townmaster420041114dramaOpt2",
+		"en|ch|tc|kr": "Höflich ablehnen"
+	},
+	{
+		"id": "420041150",
+		"key": "townmaster420041120",
+		"en|ch|tc|kr": "Das Siegel annehmen"
 	}
 ]

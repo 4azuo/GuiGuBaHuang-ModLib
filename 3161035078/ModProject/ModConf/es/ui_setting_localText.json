@@ -23,5 +23,50 @@
 		"id": -1000003004,
 		"key": "setting004",
 		"en|ch|tc|kr": "(Active si desea comentarios sobre errores)"
+	},
+	{
+		"id": "-1000003005",
+		"key": "setting005",
+		"en|ch|tc|kr": "Atajos de los artefactos divinos"
+	},
+	{
+		"id": "-1000003006",
+		"key": "setting006",
+		"en|ch|tc|kr": "Haz clic en una fila y pulsa una tecla (Esc cancela, Retroceso borra). Mapa: abre la ventana del artefacto; combate: usa su habilidad. La tecla de artefacto del juego sigue funcionando."
+	},
+	{
+		"id": "-1000003007",
+		"key": "setting007",
+		"en|ch|tc|kr": "Ninguna"
+	},
+	{
+		"id": "-1000003008",
+		"key": "setting008",
+		"en|ch|tc|kr": "{0} ya la usan los controles del juego. Elige otra tecla."
+	},
+	{
+		"id": "-1000003010",
+		"key": "setting010",
+		"en|ch|tc|kr": "Pantalla"
+	},
+	{
+		"id": "-1000003011",
+		"key": "setting011",
+		"en|ch|tc|kr": "Avisos y diario"
+	},
+	{
+		"id": "-1000003012",
+		"key": "setting012",
+		"en|ch|tc|kr": "Avisar de ofertas del mercado y órdenes de compra cumplidas"
+	},
+	{
+		"id": "-1000003013",
+		"key": "setting013",
+		"en|ch|tc|kr": "Abrir el diario taoísta"
+	},
+	{
+		"id": "-1000003014",
+		"key": "setting014",
+		"en|ch|tc|kr": "Encuentros aleatorios"
 	}
 ]

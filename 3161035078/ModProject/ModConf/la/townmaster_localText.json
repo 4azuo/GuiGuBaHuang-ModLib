@@ -28,5 +28,30 @@
 		"id": "420041119",
 		"key": "townmaster420041119",
 		"en|ch|tc|kr": "Redde: {0:#,##0}/year"
+	},
+	{
+		"id": "420041113",
+		"key": "townmaster420041113drama",
+		"en|ch|tc|kr": "Seniores se inclinant et sigillum oppidi offerunt. Ab hodie muri, fora et omnis anima intus tibi curae sunt."
+	},
+	{
+		"id": "420041114",
+		"key": "townmaster420041114drama",
+		"en|ch|tc|kr": "Nuntius cum epistula obsignata advenit: Dominus {0} de vi tua audivit et te rogat ut unus ex custodibus oppidi fias."
+	},
+	{
+		"id": "420041115",
+		"key": "townmaster420041114dramaOpt1",
+		"en|ch|tc|kr": "Munus accipere"
+	},
+	{
+		"id": "420041116",
+		"key": "townmaster420041114dramaOpt2",
+		"en|ch|tc|kr": "Comiter recusare"
+	},
+	{
+		"id": "420041150",
+		"key": "townmaster420041120",
+		"en|ch|tc|kr": "Sigillum accipere"
 	}
 ]

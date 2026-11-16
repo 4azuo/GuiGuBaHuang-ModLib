@@ -498,5 +498,90 @@
 		"id": -1000001139,
 		"key": "smcfgs139",
 		"en|ch|tc|kr": "Mất tiền khi chết"
+	},
+	{
+		"id": "-1000001150",
+		"key": "smcfgs150",
+		"en|ch|tc|kr": "Tính năng bổ sung"
+	},
+	{
+		"id": "-1000001151",
+		"key": "smcfgs151",
+		"en|ch|tc|kr": "Không có kỳ ngộ ngẫu nhiên"
+	},
+	{
+		"id": "-1000001152",
+		"key": "smcfgs152",
+		"en|ch|tc|kr": "Không vay ngân hàng"
+	},
+	{
+		"id": "-1000001153",
+		"key": "smcfgs153",
+		"en|ch|tc|kr": "Không có lệnh mua ở chợ"
+	},
+	{
+		"id": "-1000001154",
+		"key": "smcfgs154",
+		"en|ch|tc|kr": "Không truy nã (treo thưởng)"
+	},
+	{
+		"id": "-1000001155",
+		"key": "smcfgs155",
+		"en|ch|tc|kr": "Các tính năng này bật sẵn và không đổi điểm độ khó. Tắt đi thì những gì đang dở vẫn tiếp tục (khoản vay vẫn trả được, lệnh mua cũ vẫn khớp)."
+	},
+	{
+		"id": "-1000001156",
+		"key": "smcfgs156",
+		"en|ch|tc|kr": "Không có sự kiện bế quan"
+	},
+	{
+		"id": "-1000001157",
+		"key": "smcfgs157",
+		"en|ch|tc|kr": "Không bế quan cưỡng chế"
+	},
+	{
+		"id": "-1000001158",
+		"key": "smcfgs158",
+		"en|ch|tc|kr": "Không có hệ thống gia tộc (sinh con)"
+	},
+	{
+		"id": "-1000001159",
+		"key": "smcfgs159",
+		"en|ch|tc|kr": "Đạo lữ cùng giới"
+	},
+	{
+		"id": "-1000001160",
+		"key": "smcfgs160",
+		"en|ch|tc|kr": "Họ của con"
+	},
+	{
+		"id": "-1000001161",
+		"key": "smcfgs161",
+		"en|ch|tc|kr": "Theo cha"
+	},
+	{
+		"id": "-1000001162",
+		"key": "smcfgs162",
+		"en|ch|tc|kr": "Theo mẹ"
+	},
+	{
+		"id": "-1000001163",
+		"key": "smcfgs163",
+		"en|ch|tc|kr": "Ngẫu nhiên"
+	},
+	{
+		"id": "-1000001164",
+		"key": "smcfgs164",
+		"en|ch|tc|kr": "Chơi tiếp bằng hậu duệ"
+	},
+	{
+		"id": "-1000001165",
+		"key": "smcfgs165",
+		"en|ch|tc|kr": "Kỳ ngộ ngẫu nhiên (% mỗi tháng)"
+	},
+	{
+		"id": "-1000001166",
+		"key": "smcfgs166",
+		"en|ch|tc|kr": "Sự kiện bế quan (% mỗi tháng)"
 	}
 ]

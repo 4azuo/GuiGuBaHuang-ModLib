@@ -28,5 +28,30 @@
 		"id": "420041119",
 		"key": "townmaster420041119",
 		"en|ch|tc|kr": "Pago: {0:#,##0}/año"
+	},
+	{
+		"id": "420041113",
+		"key": "townmaster420041113drama",
+		"en|ch|tc|kr": "Los ancianos se inclinan y presentan el sello de la ciudad. Desde hoy las murallas, los mercados y cada alma que hay en ellos son tu responsabilidad."
+	},
+	{
+		"id": "420041114",
+		"key": "townmaster420041114drama",
+		"en|ch|tc|kr": "Un mensajero llega con una carta sellada: el Señor de {0} ha oído hablar de tu fuerza y te pide que seas uno de los guardianes de la ciudad."
+	},
+	{
+		"id": "420041115",
+		"key": "townmaster420041114dramaOpt1",
+		"en|ch|tc|kr": "Aceptar el cargo"
+	},
+	{
+		"id": "420041116",
+		"key": "townmaster420041114dramaOpt2",
+		"en|ch|tc|kr": "Declinar con cortesía"
+	},
+	{
+		"id": "420041150",
+		"key": "townmaster420041120",
+		"en|ch|tc|kr": "Aceptar el sello"
 	}
 ]

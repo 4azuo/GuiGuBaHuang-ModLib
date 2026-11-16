@@ -23,5 +23,50 @@
 		"id": -1000003004,
 		"key": "setting004",
 		"en|ch|tc|kr": "(Veuillez activer si vous souhaitez signaler des bugs)"
+	},
+	{
+		"id": "-1000003005",
+		"key": "setting005",
+		"en|ch|tc|kr": "Raccourcis des artefacts divins"
+	},
+	{
+		"id": "-1000003006",
+		"key": "setting006",
+		"en|ch|tc|kr": "Clique sur une ligne puis appuie sur une touche (Échap annule, Retour arrière efface). Carte : ouvre la fenêtre de l'artefact ; combat : utilise sa compétence. La touche d'artefact du jeu fonctionne toujours."
+	},
+	{
+		"id": "-1000003007",
+		"key": "setting007",
+		"en|ch|tc|kr": "Aucune"
+	},
+	{
+		"id": "-1000003008",
+		"key": "setting008",
+		"en|ch|tc|kr": "{0} est déjà utilisée par les raccourcis du jeu. Choisis une autre touche."
+	},
+	{
+		"id": "-1000003010",
+		"key": "setting010",
+		"en|ch|tc|kr": "Affichage"
+	},
+	{
+		"id": "-1000003011",
+		"key": "setting011",
+		"en|ch|tc|kr": "Notifications et journal"
+	},
+	{
+		"id": "-1000003012",
+		"key": "setting012",
+		"en|ch|tc|kr": "Signaler les offres du marché et les ordres d'achat exécutés"
+	},
+	{
+		"id": "-1000003013",
+		"key": "setting013",
+		"en|ch|tc|kr": "Ouvrir le journal taoïste"
+	},
+	{
+		"id": "-1000003014",
+		"key": "setting014",
+		"en|ch|tc|kr": "Rencontres aléatoires"
 	}
 ]

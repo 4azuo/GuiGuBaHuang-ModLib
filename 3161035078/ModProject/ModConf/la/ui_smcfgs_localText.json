@@ -498,5 +498,90 @@
 		"id": -1000001139,
 		"key": "smcfgs139",
 		"en|ch|tc|kr": "Pecunia cum amissa mori"
+	},
+	{
+		"id": "-1000001150",
+		"key": "smcfgs150",
+		"en|ch|tc|kr": "Facultates additae"
+	},
+	{
+		"id": "-1000001151",
+		"key": "smcfgs151",
+		"en|ch|tc|kr": "Nulli occursus fortuiti"
+	},
+	{
+		"id": "-1000001152",
+		"key": "smcfgs152",
+		"en|ch|tc|kr": "Nulla mutua argentarii"
+	},
+	{
+		"id": "-1000001153",
+		"key": "smcfgs153",
+		"en|ch|tc|kr": "Nulla mandata emendi in foro"
+	},
+	{
+		"id": "-1000001154",
+		"key": "smcfgs154",
+		"en|ch|tc|kr": "Nulla praemia capitis (edicta)"
+	},
+	{
+		"id": "-1000001155",
+		"key": "smcfgs155",
+		"en|ch|tc|kr": "Hae facultates per defaltam accensae sunt neque difficultatis numerum mutant. Exstincta una, quae iam currunt manent (mutuum adhuc reddi potest, mandata exsistentia adhuc implentur)."
+	},
+	{
+		"id": "-1000001156",
+		"key": "smcfgs156",
+		"en|ch|tc|kr": "Nulli eventus secessus"
+	},
+	{
+		"id": "-1000001157",
+		"key": "smcfgs157",
+		"en|ch|tc|kr": "Nullus secessus coactus"
+	},
+	{
+		"id": "-1000001158",
+		"key": "smcfgs158",
+		"en|ch|tc|kr": "Nulla ratio familiae (nativitates)"
+	},
+	{
+		"id": "-1000001159",
+		"key": "smcfgs159",
+		"en|ch|tc|kr": "Socii Tao eiusdem sexus"
+	},
+	{
+		"id": "-1000001160",
+		"key": "smcfgs160",
+		"en|ch|tc|kr": "Cognomen liberorum"
+	},
+	{
+		"id": "-1000001161",
+		"key": "smcfgs161",
+		"en|ch|tc|kr": "Patris"
+	},
+	{
+		"id": "-1000001162",
+		"key": "smcfgs162",
+		"en|ch|tc|kr": "Matris"
+	},
+	{
+		"id": "-1000001163",
+		"key": "smcfgs163",
+		"en|ch|tc|kr": "Fortuitum"
+	},
+	{
+		"id": "-1000001164",
+		"key": "smcfgs164",
+		"en|ch|tc|kr": "Ut posterus pergere"
+	},
+	{
+		"id": "-1000001165",
+		"key": "smcfgs165",
+		"en|ch|tc|kr": "Occursus fortuiti (% in mensem)"
+	},
+	{
+		"id": "-1000001166",
+		"key": "smcfgs166",
+		"en|ch|tc|kr": "Eventus secessus (% in mensem)"
 	}
 ]

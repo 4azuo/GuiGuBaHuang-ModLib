@@ -23,7 +23,7 @@ namespace MOD_nE7UL2.AutoTest.Scenarios.Time
         /// <summary>Builds the scenario and its steps.</summary>
         public Scenario Create()
         {
-            WorldUnitBase man = null, woman = null, child = null, mate = null, heir = null, friend = null, enemy = null;
+            WorldUnitBase man = null, woman = null, child = null, mate = null, heir = null, friend = null, enemy = null, heirFriend = null;
             string heirName = null, heirSkillLeft = null, seatTown = null;
             var heirSkills = 0;
             long exp = 0;
@@ -81,6 +81,8 @@ namespace MOD_nE7UL2.AutoTest.Scenarios.Time
                     var others = Npcs.Where(x => x != null && !x.isDie && x.GetUnitId() != heir.GetUnitId() && x != mate).ToList();
                     friend = others.First();
                     enemy = others.Skip(1).First();
+                    heirFriend = others.Skip(2).First();
+                    Intim(heir)[heirFriend.GetUnitId()] = 80f; Intim(heirFriend)[heir.GetUnitId()] = 80f;
                     Intim(Player)[friend.GetUnitId()] = 100f; Intim(friend)[pid] = 100f;
                     Intim(Player)[enemy.GetUnitId()] = -100f; Intim(enemy)[pid] = -100f;
                     heir.SetProperty<int>(UnitPropertyEnum.Reputation, 7);
@@ -133,6 +135,12 @@ namespace MOD_nE7UL2.AutoTest.Scenarios.Time
                     c.Assert(!MapBuildPropertyEvent.Instance.TownMasters[seatTown].Contains(pid), "the town seat of the old player ended");
                     c.Assert(!WantedEvent.Instance.Bounties.Any(x => x.TargetId == pid), "bounties on the old player ended");
                     c.Assert(string.IsNullOrEmpty(FamilyEvent.Spouse(Player)) || FamilyEvent.Spouse(Player) != mate.GetUnitId(), "the old companion is not the player's");
+                    // the heir's own relations moved to the player
+                    var f = FamilyEvent.Family(Player);
+                    c.Assert(f.Parents.Contains(mate.GetUnitId()), $"the heir's other parent is the player's parent: {string.Join(", ", f.Parents)}");
+                    c.Assert(FamilyEvent.Family(mate).Children.Contains(pid) && !FamilyEvent.Family(mate).Children.Contains(heir.GetUnitId()), "the parent's child is the player now");
+                    c.AssertEqual(80f, Intim(Player)[heirFriend.GetUnitId()], "the heir's friend (player side)");
+                    c.AssertEqual(80f, Intim(heirFriend)[pid], "the heir's friend (friend side)");
                     DismissDramas();
                 })
                 .Step("npc fortune", c =>

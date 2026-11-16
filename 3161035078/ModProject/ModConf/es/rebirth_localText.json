@@ -118,5 +118,15 @@
 		"id": "420103103",
 		"key": "rebirth420103103",
 		"en|ch|tc|kr": "Esta mecánica restablecerá todo el nivel, experiencia y reputación de tu personaje.\nCuando vuelvas con el mismo nivel, tu personaje será más fuerte."
+	},
+	{
+		"id": "420109999",
+		"key": "rebirth420109999dialog",
+		"en|ch|tc|kr": "Bajo los melocotoneros en flor vuelvo a abrir los ojos. Mi cuerpo es joven, mi cultivo se ha perdido, pero los recuerdos de toda una vida siguen ahí. Esta vez sé qué caminos no llevan a ninguna parte."
+	},
+	{
+		"id": "420109998",
+		"key": "rebirth420109998",
+		"en|ch|tc|kr": "Empezar de nuevo"
 	}
 ]

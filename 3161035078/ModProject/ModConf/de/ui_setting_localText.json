@@ -23,5 +23,50 @@
 		"id": -1000003004,
 		"key": "setting004",
 		"en|ch|tc|kr": "(Bitte aktivieren Sie diese Option, wenn Sie Feedback zu Fehlern geben möchten.)"
+	},
+	{
+		"id": "-1000003005",
+		"key": "setting005",
+		"en|ch|tc|kr": "Tastenkürzel für göttliche Artefakte"
+	},
+	{
+		"id": "-1000003006",
+		"key": "setting006",
+		"en|ch|tc|kr": "Klicke auf eine Zeile und drücke dann eine Taste (Esc bricht ab, Rücktaste löscht). Karte: öffnet das Artefaktfenster; Kampf: setzt seine Fähigkeit ein. Die Artefakttaste des Spiels funktioniert weiterhin."
+	},
+	{
+		"id": "-1000003007",
+		"key": "setting007",
+		"en|ch|tc|kr": "Keine"
+	},
+	{
+		"id": "-1000003008",
+		"key": "setting008",
+		"en|ch|tc|kr": "{0} wird bereits von der Tastenbelegung des Spiels verwendet. Wähle eine andere Taste."
+	},
+	{
+		"id": "-1000003010",
+		"key": "setting010",
+		"en|ch|tc|kr": "Anzeige"
+	},
+	{
+		"id": "-1000003011",
+		"key": "setting011",
+		"en|ch|tc|kr": "Benachrichtigungen und Tagebuch"
+	},
+	{
+		"id": "-1000003012",
+		"key": "setting012",
+		"en|ch|tc|kr": "Über Marktangebote und erfüllte Kaufaufträge benachrichtigen"
+	},
+	{
+		"id": "-1000003013",
+		"key": "setting013",
+		"en|ch|tc|kr": "Taoist-Tagebuch öffnen"
+	},
+	{
+		"id": "-1000003014",
+		"key": "setting014",
+		"en|ch|tc|kr": "Zufällige Begegnungen"
 	}
 ]

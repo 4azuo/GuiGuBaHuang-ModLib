@@ -538,5 +538,55 @@
 		"id": 500020116,
 		"key": "other500020116",
 		"en|ch|tc|kr": "Habes satis spiritus lapides!"
+	},
+	{
+		"id": "500020027",
+		"key": "other500020027",
+		"en|ch|tc|kr": "Custos portae manum porrigit: “Tributum est {0:#,##0} lapides spiritales.” Marsupium tuum non tam grave est."
+	},
+	{
+		"id": "500020044",
+		"key": "other500020044",
+		"en|ch|tc|kr": "Clam intrare dum aliorsum spectat"
+	},
+	{
+		"id": "500020078",
+		"key": "other500020078",
+		"en|ch|tc|kr": "Dextras iunximus, et nunc recedis? Tempus meum pluris est quam excusationes tuae."
+	},
+	{
+		"id": "500020079",
+		"key": "other500020079",
+		"en|ch|tc|kr": "Pretium aequum, cito solutum. Iucundum fuit tecum negotiari."
+	},
+	{
+		"id": "500020080",
+		"key": "other500020080",
+		"en|ch|tc|kr": "Alii vendidisti? Postquam me totum mensem exspectare coegisti?"
+	},
+	{
+		"id": "500020081",
+		"key": "other500020081",
+		"en|ch|tc|kr": "Pretium post pactum augere? Impudens."
+	},
+	{
+		"id": "500020082",
+		"key": "other500020082",
+		"en|ch|tc|kr": "Nuntius ad te pervenit: [{0}] pro quo licitus es alii emptori venditum est."
+	},
+	{
+		"id": "500020088",
+		"key": "other500020088",
+		"en|ch|tc|kr": "Putasne te sine solutione abire posse? Iterum cogita."
+	},
+	{
+		"id": "500020093",
+		"key": "other500020093",
+		"en|ch|tc|kr": "Revocatum? Ergo proxime noli tempus meum licitando terere."
+	},
+	{
+		"id": "500020117",
+		"key": "other500020117",
+		"en|ch|tc|kr": "Reverti"
 	}
 ]

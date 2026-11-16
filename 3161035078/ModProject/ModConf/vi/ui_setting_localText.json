@@ -23,5 +23,50 @@
 		"id": -1000003004,
 		"key": "setting004",
 		"en|ch|tc|kr": "(Vui lòng bật nếu bạn muốn phản hồi lỗi)"
+	},
+	{
+		"id": "-1000003005",
+		"key": "setting005",
+		"en|ch|tc|kr": "Phím tắt thần khí"
+	},
+	{
+		"id": "-1000003006",
+		"key": "setting006",
+		"en|ch|tc|kr": "Bấm vào một dòng rồi nhấn phím (Esc hủy, Backspace xóa). Trên bản đồ: mở cửa sổ thần khí; trong trận: dùng kỹ năng của nó. Phím thần khí gốc của game vẫn dùng được."
+	},
+	{
+		"id": "-1000003007",
+		"key": "setting007",
+		"en|ch|tc|kr": "Không"
+	},
+	{
+		"id": "-1000003008",
+		"key": "setting008",
+		"en|ch|tc|kr": "{0} đã được dùng trong phím tắt của game. Hãy chọn phím khác."
+	},
+	{
+		"id": "-1000003010",
+		"key": "setting010",
+		"en|ch|tc|kr": "Hiển thị"
+	},
+	{
+		"id": "-1000003011",
+		"key": "setting011",
+		"en|ch|tc|kr": "Thông báo và nhật ký"
+	},
+	{
+		"id": "-1000003012",
+		"key": "setting012",
+		"en|ch|tc|kr": "Báo khi có giá mới ở chợ và lệnh mua được khớp"
+	},
+	{
+		"id": "-1000003013",
+		"key": "setting013",
+		"en|ch|tc|kr": "Mở nhật ký Taoist"
+	},
+	{
+		"id": "-1000003014",
+		"key": "setting014",
+		"en|ch|tc|kr": "Kỳ ngộ ngẫu nhiên"
 	}
 ]

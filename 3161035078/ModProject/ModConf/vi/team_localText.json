@@ -53,5 +53,25 @@
 		"id": "420041134",
 		"key": "team420041134",
 		"en|ch|tc|kr": "Bạn có chắc chắn về việc giải tán nhóm của mình không?"
+	},
+	{
+		"id": "420041123",
+		"key": "team420041123drama",
+		"en|ch|tc|kr": "Đường phía trước còn dài và hiểm nguy. Ta cùng đi một đoạn nhé?"
+	},
+	{
+		"id": "420041124",
+		"key": "team420041124dramaOpt1",
+		"en|ch|tc|kr": "Rất sẵn lòng — hai thanh kiếm vẫn hơn một"
+	},
+	{
+		"id": "420041125",
+		"key": "team420041125dramaOpt2",
+		"en|ch|tc|kr": "Ta thích đi một mình"
+	},
+	{
+		"id": "420041140",
+		"key": "team420041140drama",
+		"en|ch|tc|kr": "Vậy chúc đường đi của ngươi bình an. Nếu đổi ý thì cứ tìm ta."
 	}
 ]

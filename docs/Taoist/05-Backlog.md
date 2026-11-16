@@ -28,9 +28,15 @@ Test: extend TG-46 (register a hidden item, NPC buys it, check the drama has no 
   the requests (HTTP 429) on 2026-11-16 and was still blocked 3 hours later: 736 keys / 24 files missing in the 8 folders; run the translate command again.
 - NPC storylines: outline of 5 lines / 8 characters (casting by sex, age, looks, traits) in `06-Storylines-Draft.md`, to be approved; then the dialogue draft, then the code.
 - Seclusion "stop early" button, "coma instead of exp loss" and a manual seclusion (Taoist Settings) were proposed; not decided.
-- Time skip: a month of the mods takes ~3 s, a month run of the game 15-60 s (4 of them per skip): 1 year ~2 min (TX-08: 110 s). The run end call of the game (`AddRunEndCall`) never came in tests: the skip goes on when `g.world.run.isRunning` turns false (`WatchRun`). Between two runs of the game the NPCs only grow by the mod events (Taoist NPC growth every GrowUpSpeed months); the runs of the game do the rest (breakthroughs, deaths of old age after the aging catch-up).
+- Time skip (measured, TX-09): the mods run every N months for N years (12 runs + 4 month runs of the game whatever the length): 1 year ~1.5 min, 10 years ~2.3 min; 100 years not measured (a run of the mods gets heavier with the months it stands for: 3.6 s for 1 month, 6.5 s for 10). The run end call of the game (`AddRunEndCall`) never came in tests: `WatchRun` goes on when `g.world.run.isRunning` turns false, 20 s after the save of the run, or after 2 min (a run stuck by an error of the game's AI).
 
 - A month run of the game during a time skip logged once `NullReferenceException at WorldUnitMgr.AddAreaUnit` (UpdateAreaUnits) after a "continue as a descendant" (heir removed with `DelUnitSecret`) and grown-up children (`npc.AddUnit`) in TX-08; the run went on. To check whether the removed heir stays in an area list.
+
+- Continue as a descendant **by switching the player unit** (instead of copying the heir onto the player, the current way). Possible with the game data, not done because of the risks:
+  - the player unit is `g.data.world.playerUnitID` (`DataWorld.World`) and `g.world.playerUnit` (`WorldMgr`, settable), `WorldUnitMgr.InitPlayer()` builds the player; set both to the heir, save, then reload the save (many systems cache the player);
+  - ModLib keys the mod data of a save by the player unit id (`saves/<id>`, `<id>_configs.json`, save index): copy them to the new id before the reload;
+  - an NPC lacks the data only the player has (tasks, player log, map fog, sect contributions, school tasks...): to be checked one by one; the old player unit stays as a dead unit;
+  - then apply the legacy on the heir (items, spirit stones, debts, techniques option, intimacies of the old player halved / enmities in full) instead of copying the heir's base properties.
 
 ## Ideas for later (to discuss before coding)
 

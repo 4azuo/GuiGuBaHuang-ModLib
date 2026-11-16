@@ -73,5 +73,175 @@
 		"id": "480112889",
 		"key": "monstwave480112889name",
 		"en|ch|tc|kr": "Terreur à grande échelle"
+	},
+	{
+		"id": "480110100",
+		"key": "battleevent480110100",
+		"en|ch|tc|kr": "Battez-vous tant que vous voulez : quand la poussière retombera, le butin sera à moi."
+	},
+	{
+		"id": "480110200",
+		"key": "battleevent480110200",
+		"en|ch|tc|kr": "Tiens bon, mon ami, je te couvre !"
+	},
+	{
+		"id": "480110300",
+		"key": "battleevent480110300",
+		"en|ch|tc|kr": "Quiconque porte la main sur un disciple de notre secte s'en fait une ennemie tout entière !"
+	},
+	{
+		"id": "480110400",
+		"key": "battleevent480110400",
+		"en|ch|tc|kr": "Une bagarre dans l'enceinte de la ville ? Baissez les armes, ou la garde vous mettra à terre !"
+	},
+	{
+		"id": "480110500",
+		"key": "battleevent480110500",
+		"en|ch|tc|kr": "Je t'ai suivi assez longtemps. Dès aujourd'hui, nos chemins se séparent… à la pointe de l'épée."
+	},
+	{
+		"id": "480110501",
+		"key": "battleevent480110501",
+		"en|ch|tc|kr": "Je t'ai rejoint pour suivre la voie juste, pas pour te regarder la souiller de sang. Aujourd'hui, je répare cela !"
+	},
+	{
+		"id": "480110502",
+		"key": "battleevent480110502",
+		"en|ch|tc|kr": "Épargne-moi tes sermons, « juste ». Je prendrai ta tête et tes trésors."
+	},
+	{
+		"id": "480110600",
+		"key": "battleevent480110600",
+		"en|ch|tc|kr": "Je t'ai vu prendre le trésor du roi des bêtes. Donne-le-moi, et je te laisserai peut-être partir."
+	},
+	{
+		"id": "480110601",
+		"key": "battleevent480110601",
+		"en|ch|tc|kr": "Ton anneau de stockage est lourd, n'est-ce pas ? Laisse-moi t'alléger."
+	},
+	{
+		"id": "480110602",
+		"key": "battleevent480110602",
+		"en|ch|tc|kr": "Vois ça comme un prêt… que tu ne reverras jamais."
+	},
+	{
+		"id": "480112890",
+		"key": "battleevent480112890",
+		"en|ch|tc|kr": "Les tambours de guerre tonnent sur les remparts ; flèches et sorts tombent comme la pluie. Te voilà pris entre deux armées : quel que soit ton camp, l'autre s'en souviendra."
+	},
+	{
+		"id": "480112891",
+		"key": "battleevent480112891",
+		"en|ch|tc|kr": "Défendre la ville"
+	},
+	{
+		"id": "480112892",
+		"key": "battleevent480112892",
+		"en|ch|tc|kr": "Rejoindre les assaillants"
+	},
+	{
+		"id": "480112893",
+		"key": "battleevent480112893",
+		"en|ch|tc|kr": "S'éclipser tant qu'il est temps"
+	},
+	{
+		"id": "480112894",
+		"key": "battleevent480112894",
+		"en|ch|tc|kr": "Les forces de {0} prennent d'assaut les portes de {1} ! Les défenseurs appellent tout cultivateur prêt à se battre."
+	},
+	{
+		"id": "480112895",
+		"key": "battleevent480112895",
+		"en|ch|tc|kr": "{0} est assiégée ! La fumée monte des remparts, et le sort de la ville ne tient qu'à un fil."
+	},
+	{
+		"id": "480112898",
+		"key": "battleevent480112898",
+		"en|ch|tc|kr": "Ce n'est pas mon combat"
+	},
+	{
+		"id": "480112899",
+		"key": "battleevent480112899",
+		"en|ch|tc|kr": "Répondre à l'appel"
+	},
+	{
+		"id": "480114101",
+		"key": "battleevent480110100_1",
+		"en|ch|tc|kr": "D'une pierre deux coups. Merci à vous deux de vous être affaiblis l'un l'autre."
+	},
+	{
+		"id": "480114102",
+		"key": "battleevent480110100_2",
+		"en|ch|tc|kr": "Je te suis depuis trois jours. Aujourd'hui, ton anneau de stockage change de propriétaire."
+	},
+	{
+		"id": "480114103",
+		"key": "battleevent480110100_3",
+		"en|ch|tc|kr": "Le Ciel donne, et moi je prends. Ne m'en veux pas : en veux à ta chance."
+	},
+	{
+		"id": "480114201",
+		"key": "battleevent480110200_1",
+		"en|ch|tc|kr": "Après ça, tu me dois une cruche de vin."
+	},
+	{
+		"id": "480114202",
+		"key": "battleevent480110200_2",
+		"en|ch|tc|kr": "On s'en prend à mon ami ? Alors on aura affaire à moi aussi."
+	},
+	{
+		"id": "480114301",
+		"key": "battleevent480110300_1",
+		"en|ch|tc|kr": "Cadet, recule. Laisse-moi leur montrer les techniques de notre secte."
+	},
+	{
+		"id": "480114302",
+		"key": "battleevent480110300_2",
+		"en|ch|tc|kr": "Les règles de la secte sont claires : nous n'abandonnons jamais les nôtres."
+	},
+	{
+		"id": "480114401",
+		"key": "battleevent480110400_1",
+		"en|ch|tc|kr": "Sur ordre du Maître de la ville : les fauteurs de troubles seront punis sur-le-champ !"
+	},
+	{
+		"id": "480114402",
+		"key": "battleevent480110400_2",
+		"en|ch|tc|kr": "Cette ville a des lois. Tu vas les apprendre à la dure."
+	},
+	{
+		"id": "480114501",
+		"key": "battleevent480110500_1",
+		"en|ch|tc|kr": "Quelqu'un m'a offert plus que tu ne l'as jamais fait. Rien de personnel."
+	},
+	{
+		"id": "480114511",
+		"key": "battleevent480110501_1",
+		"en|ch|tc|kr": "Chaque innocent que tu as blessé pèse sur ma conscience. C'est fini !"
+	},
+	{
+		"id": "480114521",
+		"key": "battleevent480110502_1",
+		"en|ch|tc|kr": "La justice ne te sauvera pas ici. Dans le jianghu, seule la force parle."
+	},
+	{
+		"id": "480114610",
+		"key": "battleevent480110610",
+		"en|ch|tc|kr": "Alors viens le prendre !"
+	},
+	{
+		"id": "480114611",
+		"key": "battleevent480110611",
+		"en|ch|tc|kr": "Les payer ({0:#,##0} pierres spirituelles)"
+	},
+	{
+		"id": "480114612",
+		"key": "battleevent480110612",
+		"en|ch|tc|kr": "Le traqueur soupèse la bourse, sourit et s'éclipse avec les autres."
+	},
+	{
+		"id": "480114613",
+		"key": "battleevent480110613",
+		"en|ch|tc|kr": "Tu n'as pas autant de pierres spirituelles. Le traqueur tire une lame."
 	}
 ]

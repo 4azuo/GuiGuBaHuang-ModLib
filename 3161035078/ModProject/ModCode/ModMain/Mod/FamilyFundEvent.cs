@@ -203,7 +203,31 @@ namespace MOD_nE7UL2.Mod
             if (FamilyEvent.Disabled || e.uiType.uiName != UIType.MapMain.uiName)
                 return;
             var uiMain = new UICover<UIMapMain>(e.ui);
-            uiMain.AddButton(uiMain.FirstCol + 18, uiMain.LastRow - 4, OpenAccounts, GameTool.LS("fund_button")).Size(140, 40);
+            _button = uiMain.AddButton(uiMain.FirstCol + 18, uiMain.LastRow - 4, OpenAccounts, GameTool.LS("fund_button")).Size(140, 40);
+            UpdateButton();
+        }
+
+        private UIItemButton _button;
+
+        /// <summary>The "Family" button is shown only when the player is married (a companion, alive or not).</summary>
+        public static bool ShowButton => !FamilyEvent.Disabled && !string.IsNullOrEmpty(FamilyEvent.Spouse(Player));
+
+        private void UpdateButton()
+        {
+            try
+            {
+                var go = _button?.Item?.gameObject;
+                if (go != null && go.activeSelf != ShowButton) go.SetActive(ShowButton);
+            }
+            catch { _button = null; }
+        }
+
+        /// <summary>Marriage / inheritance change the button.</summary>
+        [EventCondition(IsInGame = HandleEnum.True, IsInBattle = HandleEnum.False)]
+        public override void OnTimeUpdate1000ms()
+        {
+            base.OnTimeUpdate1000ms();
+            UpdateButton();
         }
 
         public string Line(Entry x)

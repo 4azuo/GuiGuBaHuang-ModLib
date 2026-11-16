@@ -1,0 +1,32 @@
+[
+	{
+		"id": "-1000005000",
+		"key": "newgame000",
+		"en|ch|tc|kr": "Thần khí:"
+	},
+	{
+		"id": "-1000005001",
+		"key": "newgame001",
+		"en|ch|tc|kr": "Bát Quái Ngọc"
+	},
+	{
+		"id": "-1000005002",
+		"key": "newgame002",
+		"en|ch|tc|kr": "Thiên Mục"
+	},
+	{
+		"id": "-1000005003",
+		"key": "newgame003",
+		"en|ch|tc|kr": "Ma Hồ"
+	},
+	{
+		"id": "-1000005004",
+		"key": "newgame004",
+		"en|ch|tc|kr": "Bỏ qua mở đầu"
+	},
+	{
+		"id": "-1000005005",
+		"key": "newgame005",
+		"en|ch|tc|kr": "Các thần khí được chọn sẽ có ngay từ đầu (chọn được nhiều). Bỏ qua mở đầu: không có cốt truyện mở màn và trận đánh đầu tiên."
+	}
+]

@@ -118,5 +118,15 @@
 		"id": "420103103",
 		"key": "rebirth420103103",
 		"en|ch|tc|kr": "Dieser Mechaniker setzt alle Level, Erfahrungspunkte und Reputationen deines Charakters zurück.\nWenn Sie mit demselben Level zurückkommen, wird Ihr Charakter stärker sein."
+	},
+	{
+		"id": "420109999",
+		"key": "rebirth420109999dialog",
+		"en|ch|tc|kr": "Unter den Pfirsichblüten öffne ich erneut die Augen. Mein Körper ist jung, meine Kultivierung verloren — doch die Erinnerungen eines ganzen Lebens sind geblieben. Diesmal weiß ich, welche Wege ins Nichts führen."
+	},
+	{
+		"id": "420109998",
+		"key": "rebirth420109998",
+		"en|ch|tc|kr": "Neu beginnen"
 	}
 ]

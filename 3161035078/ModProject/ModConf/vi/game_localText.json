@@ -1,1 +1,17 @@
-[]
+[
+	{
+		"id": "999999001",
+		"key": "gamemsg999999001",
+		"en|ch|tc|kr": "Mod Taoist vừa có bản cập nhật lớn thay đổi cách lưu dữ liệu. Để tránh lỗi lạ, hãy tạo nhân vật mới. Save cũ vẫn mở được nhưng có thể không chạy đúng như mong muốn."
+	},
+	{
+		"id": "999999101",
+		"key": "gameopt999999101",
+		"en|ch|tc|kr": "Đã hiểu"
+	},
+	{
+		"id": "999999201",
+		"key": "gameopt999999201",
+		"en|ch|tc|kr": "Không hiện lại nữa"
+	}
+]

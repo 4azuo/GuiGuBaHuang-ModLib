@@ -1,0 +1,1167 @@
+[
+	{
+		"id": "-1000006000",
+		"key": "log_title",
+		"en|ch|tc|kr": "Nhật ký Taoist"
+	},
+	{
+		"id": "-1000006001",
+		"key": "log_line",
+		"en|ch|tc|kr": "Năm {0} tháng {1}: {2}"
+	},
+	{
+		"id": "-1000006002",
+		"key": "log_empty",
+		"en|ch|tc|kr": "Chưa có gì."
+	},
+	{
+		"id": "-1000006003",
+		"key": "log_tax_paid",
+		"en|ch|tc|kr": "Đã nộp {0:#,##0} linh thạch tiền thuế ở {1}."
+	},
+	{
+		"id": "-1000006004",
+		"key": "log_storage_fee",
+		"en|ch|tc|kr": "Đã trả {0:#,##0} linh thạch phí kho."
+	},
+	{
+		"id": "-1000006005",
+		"key": "log_market_sold",
+		"en|ch|tc|kr": "Đã bán {0} x {1} được {2:#,##0} linh thạch cho {3}."
+	},
+	{
+		"id": "-1000006006",
+		"key": "log_market_bought",
+		"en|ch|tc|kr": "Đã mua {0} x {1} giá {2:#,##0} linh thạch từ {3}."
+	},
+	{
+		"id": "-1000006007",
+		"key": "log_stalker_paid",
+		"en|ch|tc|kr": "Đã trả {1:#,##0} linh thạch để kẻ bám đuôi {0} rời đi."
+	},
+	{
+		"id": "-1000006008",
+		"key": "log_team_friend",
+		"en|ch|tc|kr": "{0} kề vai chiến đấu cùng ngươi nhiều đến mức giờ coi ngươi là bằng hữu (không lấy lương nữa)."
+	},
+	{
+		"id": "-1000006009",
+		"key": "log_town_call",
+		"en|ch|tc|kr": "{0} bị {1} tấn công; ngươi được gọi về giữ thành."
+	},
+	{
+		"id": "-1000006010",
+		"key": "log_town_defended",
+		"en|ch|tc|kr": "{0} trụ vững nhờ có ngươi. +{1} danh vọng."
+	},
+	{
+		"id": "-1000006011",
+		"key": "log_refine_reroll",
+		"en|ch|tc|kr": "Đổi lại ô #{1} của {0}: {2} -> {3} ({4:#,##0} linh thạch)."
+	},
+	{
+		"id": "-1000006020",
+		"key": "town_call",
+		"en|ch|tc|kr": "Một con chim đưa tin thả xuống mảnh giấy dính máu: {0} đang bị {1} tấn công! Tường thành không trụ được lâu. Với tư cách {2}, thị trấn gọi ngươi trở về."
+	},
+	{
+		"id": "-1000006021",
+		"key": "town_call_o1",
+		"en|ch|tc|kr": "Gấp rút quay về giữ thành"
+	},
+	{
+		"id": "-1000006022",
+		"key": "town_call_o2",
+		"en|ch|tc|kr": "Tin tưởng các hộ vệ"
+	},
+	{
+		"id": "-1000006023",
+		"key": "town_taxstat",
+		"en|ch|tc|kr": "Tháng trước: {0:#,##0} linh thạch từ {1} cư dân; {2} người không nộp nổi và đã rời đi"
+	},
+	{
+		"id": "-1000006024",
+		"key": "town_taxstat_none",
+		"en|ch|tc|kr": "Chưa thu được thuế"
+	},
+	{
+		"id": "-1000006030",
+		"key": "market_history",
+		"en|ch|tc|kr": "Giao dịch gần đây: TB {0:#,##0} (thấp {1:#,##0}, cao {2:#,##0}, {3} giao dịch)"
+	},
+	{
+		"id": "-1000006031",
+		"key": "market_nohistory",
+		"en|ch|tc|kr": "Gần đây chưa có giao dịch nào cho món này"
+	},
+	{
+		"id": "-1000006032",
+		"key": "market_offer_title",
+		"en|ch|tc|kr": "Có giá mới cho hàng ngươi đăng bán"
+	},
+	{
+		"id": "-1000006033",
+		"key": "market_offer_line",
+		"en|ch|tc|kr": "{0}: {1} trả {2:#,##0} ({3} người mua)"
+	},
+	{
+		"id": "-1000006034",
+		"key": "market_buyorders",
+		"en|ch|tc|kr": "Lệnh mua"
+	},
+	{
+		"id": "-1000006035",
+		"key": "market_buyorders_desc",
+		"en|ch|tc|kr": "Đặt mua một món với giá định sẵn: linh thạch bị giữ lại ngay, và cư dân có món đó có thể bán cho ngươi mỗi tháng. Lệnh chưa khớp được hoàn tiền sau {0} tháng."
+	},
+	{
+		"id": "-1000006036",
+		"key": "market_buyorders_none",
+		"en|ch|tc|kr": "Ngươi chưa có lệnh mua nào."
+	},
+	{
+		"id": "-1000006037",
+		"key": "market_buyorder_line",
+		"en|ch|tc|kr": "{0} x {1} giá {2:#,##0} ở {3} (còn {4} tháng)"
+	},
+	{
+		"id": "-1000006038",
+		"key": "market_buyorder_new",
+		"en|ch|tc|kr": "Lệnh mua mới"
+	},
+	{
+		"id": "-1000006039",
+		"key": "market_buyorder_pick",
+		"en|ch|tc|kr": "Chọn món ngươi muốn mua"
+	},
+	{
+		"id": "-1000006040",
+		"key": "market_buyorder_unitprice",
+		"en|ch|tc|kr": "Đơn giá"
+	},
+	{
+		"id": "-1000006041",
+		"key": "market_buyorder_total",
+		"en|ch|tc|kr": "Tạm giữ: {0:#,##0} linh thạch, mỗi tháng có {1:0}% người bán chấp nhận"
+	},
+	{
+		"id": "-1000006042",
+		"key": "market_buyorder_place",
+		"en|ch|tc|kr": "Đặt lệnh"
+	},
+	{
+		"id": "-1000006043",
+		"key": "market_buyorder_fail",
+		"en|ch|tc|kr": "Không đủ linh thạch, hoặc đã có {0} lệnh."
+	},
+	{
+		"id": "-1000006044",
+		"key": "market_buyorder_filled",
+		"en|ch|tc|kr": "Lệnh mua: {2} đã bán cho ngươi {0} x {1} giá {3:#,##0} linh thạch."
+	},
+	{
+		"id": "-1000006045",
+		"key": "log_buyorder_new",
+		"en|ch|tc|kr": "Đã đặt lệnh mua: {0} x {1} giá {2:#,##0} ở {3}."
+	},
+	{
+		"id": "-1000006046",
+		"key": "log_buyorder_cancel",
+		"en|ch|tc|kr": "Đã hủy lệnh mua: {0} x {1}, hoàn {2:#,##0} linh thạch."
+	},
+	{
+		"id": "-1000006047",
+		"key": "log_buyorder_expired",
+		"en|ch|tc|kr": "Lệnh mua hết hạn: {0} x {1}, hoàn {2:#,##0} linh thạch."
+	},
+	{
+		"id": "-1000006050",
+		"key": "refine_pick",
+		"en|ch|tc|kr": "Chọn một món để xem tiến độ rèn"
+	},
+	{
+		"id": "-1000006051",
+		"key": "refine_progress",
+		"en|ch|tc|kr": "Cấp rèn {0} ({1:#,##0} / {2:#,##0} kinh nghiệm) — {3}"
+	},
+	{
+		"id": "-1000006052",
+		"key": "refine_nextslot",
+		"en|ch|tc|kr": "ô tiếp theo mở ở cấp {0}"
+	},
+	{
+		"id": "-1000006053",
+		"key": "refine_allslots",
+		"en|ch|tc|kr": "đã mở hết các ô"
+	},
+	{
+		"id": "-1000006054",
+		"key": "refine_reroll",
+		"en|ch|tc|kr": "Đổi lại ô"
+	},
+	{
+		"id": "-1000006055",
+		"key": "refine_reroll_btn",
+		"en|ch|tc|kr": "Đổi lại ({0:#,##0})"
+	},
+	{
+		"id": "-1000006056",
+		"key": "refine_reroll_desc",
+		"en|ch|tc|kr": "Đổi lại sẽ cho một ô đã mở loại, phẩm chất và sức mạnh ngẫu nhiên mới. Thợ rèn giữ số linh thạch."
+	},
+	{
+		"id": "-1000006060",
+		"key": "loan_title",
+		"en|ch|tc|kr": "Vay ngân hàng"
+	},
+	{
+		"id": "-1000006061",
+		"key": "loan_terms",
+		"en|ch|tc|kr": "Lãi {0:0}% mỗi tháng, hạn trả {1} tháng. Quá hạn: thêm {2:0}% mỗi tháng."
+	},
+	{
+		"id": "-1000006062",
+		"key": "loan_warning",
+		"en|ch|tc|kr": "Nợ không trả sẽ bị đòi bằng vũ lực. Ai đánh bại người đòi nợ hai lần sẽ vào sổ đen: không vay được ở đâu nữa, tài khoản ở đây bị đóng và thuế ở đây tăng gấp ba."
+	},
+	{
+		"id": "-1000006063",
+		"key": "loan_limit",
+		"en|ch|tc|kr": "Ngươi có thể vay tối đa {0:#,##0} linh thạch (kho ngân hàng: {1:#,##0})."
+	},
+	{
+		"id": "-1000006064",
+		"key": "loan_amount",
+		"en|ch|tc|kr": "Số tiền"
+	},
+	{
+		"id": "-1000006065",
+		"key": "loan_borrow",
+		"en|ch|tc|kr": "Vay"
+	},
+	{
+		"id": "-1000006066",
+		"key": "loan_state",
+		"en|ch|tc|kr": "Khoản vay ở {0}: đã vay {1:#,##0}, còn nợ {2:#,##0}, hạn trả còn {3} tháng"
+	},
+	{
+		"id": "-1000006067",
+		"key": "loan_state_blacklist",
+		"en|ch|tc|kr": "Ngươi nằm trong sổ đen của ngân hàng {0}. Không ngân hàng nào cho ngươi vay."
+	},
+	{
+		"id": "-1000006068",
+		"key": "loan_repay_amount",
+		"en|ch|tc|kr": "Trả nợ"
+	},
+	{
+		"id": "-1000006069",
+		"key": "loan_repay",
+		"en|ch|tc|kr": "Trả nợ"
+	},
+	{
+		"id": "-1000006070",
+		"key": "loan_err_blacklist",
+		"en|ch|tc|kr": "Người thủ quỹ lắc đầu: tên ngươi có trong sổ đen."
+	},
+	{
+		"id": "-1000006071",
+		"key": "loan_err_loan",
+		"en|ch|tc|kr": "Hãy trả hết khoản vay hiện tại trước."
+	},
+	{
+		"id": "-1000006072",
+		"key": "loan_err_account",
+		"en|ch|tc|kr": "Hãy mở tài khoản ở ngân hàng này trước."
+	},
+	{
+		"id": "-1000006073",
+		"key": "loan_err_limit",
+		"en|ch|tc|kr": "Số tiền vượt hạn mức của ngươi."
+	},
+	{
+		"id": "-1000006074",
+		"key": "loan_err_budget",
+		"en|ch|tc|kr": "Kho ngân hàng không có nhiều đến thế."
+	},
+	{
+		"id": "-1000006075",
+		"key": "loan_letter",
+		"en|ch|tc|kr": "Thư từ ngân hàng {0}: “Khoản vay của quý khách đã quá hạn {2} tháng. Số nợ hiện là {1:#,##0} linh thạch. Chúng tôi tin đây chỉ là sơ suất.”"
+	},
+	{
+		"id": "-1000006076",
+		"key": "loan_letter_o1",
+		"en|ch|tc|kr": "Cất lá thư đi"
+	},
+	{
+		"id": "-1000006077",
+		"key": "loan_collector",
+		"en|ch|tc|kr": "“Ngân hàng {0} gửi lời hỏi thăm.” Người đòi nợ bẻ khớp tay răng rắc. “{1:#,##0} linh thạch. Ngay hôm nay.”"
+	},
+	{
+		"id": "-1000006078",
+		"key": "loan_collector_o1",
+		"en|ch|tc|kr": "Trả {0:#,##0} linh thạch"
+	},
+	{
+		"id": "-1000006079",
+		"key": "loan_collector_o2",
+		"en|ch|tc|kr": "Đưa hết những gì ta có"
+	},
+	{
+		"id": "-1000006080",
+		"key": "loan_collector_o3",
+		"en|ch|tc|kr": "Đánh"
+	},
+	{
+		"id": "-1000006081",
+		"key": "loan_paid",
+		"en|ch|tc|kr": "Người đòi nợ đếm số linh thạch hai lần, gật đầu rồi bỏ đi. Món nợ đã xong."
+	},
+	{
+		"id": "-1000006082",
+		"key": "loan_seized",
+		"en|ch|tc|kr": "Người đòi nợ lấy đi số hàng trị giá {0:#,##0} linh thạch. Món nợ đã xong, nhưng danh tiếng của ngươi bị tổn hại."
+	},
+	{
+		"id": "-1000006083",
+		"key": "loan_seized_part",
+		"en|ch|tc|kr": "Người đòi nợ lấy đi số hàng trị giá {0:#,##0} linh thạch. Ngươi vẫn còn nợ {1:#,##0}."
+	},
+	{
+		"id": "-1000006084",
+		"key": "loan_lost",
+		"en|ch|tc|kr": "Bị đánh bại, ngươi chỉ biết nhìn người đòi nợ vét sạch túi: trị giá {0:#,##0} linh thạch. Vẫn còn nợ: {1:#,##0}."
+	},
+	{
+		"id": "-1000006085",
+		"key": "loan_beaten",
+		"en|ch|tc|kr": "Người đòi nợ khập khiễng bỏ đi. “Ngân hàng không quên đâu,” hắn nhổ nước bọt. “Lần sau sẽ có kẻ mạnh hơn.”"
+	},
+	{
+		"id": "-1000006086",
+		"key": "loan_blacklisted",
+		"en|ch|tc|kr": "Ngân hàng {1} đành bỏ khoản {0:#,##0} linh thạch — và bỏ luôn ngươi. Tên ngươi vào sổ đen: không được vay nữa, tài khoản ở đó bị đóng và lính canh ở đó sẽ thu thuế ngươi gấp ba."
+	},
+	{
+		"id": "-1000006087",
+		"key": "log_loan_borrow",
+		"en|ch|tc|kr": "Đã vay {0:#,##0} linh thạch từ ngân hàng {1} (hạn {2} tháng)."
+	},
+	{
+		"id": "-1000006088",
+		"key": "log_loan_repay",
+		"en|ch|tc|kr": "Đã trả {0:#,##0} linh thạch (còn nợ {1:#,##0})."
+	},
+	{
+		"id": "-1000006089",
+		"key": "log_loan_closed",
+		"en|ch|tc|kr": "Khoản vay đã tất toán."
+	},
+	{
+		"id": "-1000006090",
+		"key": "log_loan_overdue",
+		"en|ch|tc|kr": "Khoản vay quá hạn {0} tháng: nợ {1:#,##0}."
+	},
+	{
+		"id": "-1000006091",
+		"key": "log_loan_collector",
+		"en|ch|tc|kr": "Người đòi nợ {0} tìm đến đòi {1:#,##0} linh thạch."
+	},
+	{
+		"id": "-1000006092",
+		"key": "log_loan_seized",
+		"en|ch|tc|kr": "Bị tịch thu hàng trị giá {0:#,##0} để trừ nợ (còn nợ {1:#,##0})."
+	},
+	{
+		"id": "-1000006093",
+		"key": "log_loan_beaten",
+		"en|ch|tc|kr": "Đánh bại một người đòi nợ (lần thứ {0})."
+	},
+	{
+		"id": "-1000006094",
+		"key": "log_loan_blacklisted",
+		"en|ch|tc|kr": "Bị ngân hàng {0} đưa vào sổ đen."
+	},
+	{
+		"id": "-1000006100",
+		"key": "enc_leave",
+		"en|ch|tc|kr": "Tiếp tục"
+	},
+	{
+		"id": "-1000006101",
+		"key": "enc_nomoney",
+		"en|ch|tc|kr": "Ngươi không đủ linh thạch."
+	},
+	{
+		"id": "-1000006102",
+		"key": "enc_wounded",
+		"en|ch|tc|kr": "Một tu sĩ nằm bên vệ đường, áo bào đẫm máu. “Xin… thuốc… gì cũng được…”"
+	},
+	{
+		"id": "-1000006103",
+		"key": "enc_wounded_o1",
+		"en|ch|tc|kr": "Mua thuốc cho hắn ({0:#,##0} linh thạch)"
+	},
+	{
+		"id": "-1000006104",
+		"key": "enc_wounded_o2",
+		"en|ch|tc|kr": "Lục soát đồ của hắn"
+	},
+	{
+		"id": "-1000006105",
+		"key": "enc_wounded_o3",
+		"en|ch|tc|kr": "Bước tiếp"
+	},
+	{
+		"id": "-1000006106",
+		"key": "enc_wounded_r1",
+		"en|ch|tc|kr": "Sắc mặt hắn hồng hào trở lại. Hắn nắm chặt tay ngươi: “Ân này ta không quên.” Trước khi đi, hắn dúi vào tay ngươi một {0}."
+	},
+	{
+		"id": "-1000006107",
+		"key": "enc_wounded_r2",
+		"en|ch|tc|kr": "Ngươi lấy {0:#,##0} linh thạch trong túi hắn. Ánh mắt hắn dõi theo ngươi, đầy căm hận."
+	},
+	{
+		"id": "-1000006108",
+		"key": "enc_chess",
+		"en|ch|tc|kr": "Một lão nhân ngồi một mình trước bàn cờ đá trong sương. “Một ván chứ, người trẻ? Cược {0:#,##0} linh thạch cho thêm phần thú vị.”"
+	},
+	{
+		"id": "-1000006109",
+		"key": "enc_chess_o1",
+		"en|ch|tc|kr": "Chơi ({0:0}% cơ hội thắng)"
+	},
+	{
+		"id": "-1000006110",
+		"key": "enc_chess_o2",
+		"en|ch|tc|kr": "Cúi chào và từ chối"
+	},
+	{
+		"id": "-1000006111",
+		"key": "enc_chess_win",
+		"en|ch|tc|kr": "Lão nhân bật cười, gạt hết quân cờ. “Đầu óc sắc bén lắm!” Theo dõi nước cờ của lão giúp ngươi thông suốt hơn. (+{0:#,##0} kinh nghiệm, +{1:#,##0} linh thạch)"
+	},
+	{
+		"id": "-1000006112",
+		"key": "enc_chess_lose",
+		"en|ch|tc|kr": "Ván cờ kết thúc chỉ sau vài chục nước. Lão nhân mỉm cười hiền hậu, cất tiền cược của ngươi vào túi. (-{0:#,##0} linh thạch)"
+	},
+	{
+		"id": "-1000006113",
+		"key": "enc_peddler",
+		"en|ch|tc|kr": "Một gánh hàng rong trùm mũ mở vạt áo: hàng hàng hộp niêm phong. “Mỗi hộp là một bảo vật… hoặc chẳng có gì. {0:#,##0} linh thạch một hộp.”"
+	},
+	{
+		"id": "-1000006114",
+		"key": "enc_peddler_o1",
+		"en|ch|tc|kr": "Mua một hộp"
+	},
+	{
+		"id": "-1000006115",
+		"key": "enc_peddler_o2",
+		"en|ch|tc|kr": "Mặc cả"
+	},
+	{
+		"id": "-1000006116",
+		"key": "enc_peddler_o3",
+		"en|ch|tc|kr": "Mặc kệ hắn"
+	},
+	{
+		"id": "-1000006117",
+		"key": "enc_peddler_item",
+		"en|ch|tc|kr": "Trong hộp có một {0}."
+	},
+	{
+		"id": "-1000006118",
+		"key": "enc_peddler_deal",
+		"en|ch|tc|kr": "“Thôi được, thôi được — bớt cho người quen.” Ngươi trả {1:#,##0}. Trong hộp có một {0}."
+	},
+	{
+		"id": "-1000006119",
+		"key": "enc_peddler_empty",
+		"en|ch|tc|kr": "Hộp rỗng. Đâu đó, một gã bán rong đang cười."
+	},
+	{
+		"id": "-1000006120",
+		"key": "enc_peddler_leave",
+		"en|ch|tc|kr": "“Kẻ keo kiệt thì không có món hời!” Hắn biến mất trong đám đông."
+	},
+	{
+		"id": "-1000006121",
+		"key": "enc_cave",
+		"en|ch|tc|kr": "Sau một trận rung chuyển, sườn đồi sụp xuống, để lộ một lối đi tối tăm phảng phất linh khí cổ xưa."
+	},
+	{
+		"id": "-1000006122",
+		"key": "enc_cave_o1",
+		"en|ch|tc|kr": "Thám hiểm lối đi"
+	},
+	{
+		"id": "-1000006123",
+		"key": "enc_cave_o2",
+		"en|ch|tc|kr": "Trông không chắc chắn — rời đi"
+	},
+	{
+		"id": "-1000006124",
+		"key": "enc_cave_items",
+		"en|ch|tc|kr": "Giữa đống đổ nát ngươi tìm thấy: {0}."
+	},
+	{
+		"id": "-1000006125",
+		"key": "enc_cave_stones",
+		"en|ch|tc|kr": "Một rương mục chứa {0:#,##0} linh thạch bị bỏ quên."
+	},
+	{
+		"id": "-1000006126",
+		"key": "enc_cave_hurt",
+		"en|ch|tc|kr": "Trần hang sập xuống. Ngươi bò ra, bầm dập và chảy máu. (-{0:#,##0} sinh lực)"
+	},
+	{
+		"id": "-1000006127",
+		"key": "enc_cub",
+		"en|ch|tc|kr": "Một con linh thú nhỏ bị thương ở chân đang nhìn ngươi từ bụi rậm, quá yếu để bỏ chạy."
+	},
+	{
+		"id": "-1000006128",
+		"key": "enc_cub_o1",
+		"en|ch|tc|kr": "Cho nó ăn một cây thảo dược"
+	},
+	{
+		"id": "-1000006129",
+		"key": "enc_cub_o2",
+		"en|ch|tc|kr": "Để nó yên"
+	},
+	{
+		"id": "-1000006130",
+		"key": "enc_cub_r",
+		"en|ch|tc|kr": "Con thú nhỏ ăn xong, liếm tay ngươi rồi khập khiễng bỏ đi. Thoáng chốc ngươi cảm thấy trời cao mỉm cười với mình. (+{0} khí vận)"
+	},
+	{
+		"id": "-1000006131",
+		"key": "enc_cub_noherb",
+		"en|ch|tc|kr": "Ngươi lục túi — không có lấy một cọng thảo dược. Con thú nhỏ lẩn mất."
+	},
+	{
+		"id": "-1000006132",
+		"key": "enc_festival",
+		"en|ch|tc|kr": "Đèn lồng giăng khắp phố {0}: thị trấn mừng ngày thành lập. Tham gia lễ hội tốn {1:#,##0} linh thạch."
+	},
+	{
+		"id": "-1000006133",
+		"key": "enc_festival_o1",
+		"en|ch|tc|kr": "Tham gia lễ hội"
+	},
+	{
+		"id": "-1000006134",
+		"key": "enc_festival_o2",
+		"en|ch|tc|kr": "Hôm nay thì thôi"
+	},
+	{
+		"id": "-1000006135",
+		"key": "enc_festival_r",
+		"en|ch|tc|kr": "Ngươi uống rượu, cười đùa và thả một chiếc đèn trời vào màn đêm. (+{0} tâm trạng, dân trấn quý ngươi hơn)"
+	},
+	{
+		"id": "-1000006025",
+		"key": "town_tax_help",
+		"en|ch|tc|kr": "Mỗi tháng, mọi NPC ở trong thị trấn nộp thuế vào ngân sách và nghỉ ở quán trọ (hồi đầy HP/MP/SP).\n- NPC không nộp nổi sẽ rời thị trấn và ghét trấn chủ (-5).\n- Thuế trên 1% tài sản của NPC: NPC không ưa trấn chủ (-1 mỗi tháng); dưới 0,1%: NPC quý trấn chủ (+1 mỗi tháng).\n- Người chơi nộp thuế khi vào công trình có lính canh (lẻn vào có thể phải đánh với lính canh); hộ vệ của trấn không phải nộp.\nThuế càng cao = ngân sách càng nhiều (xây dựng, lương hộ vệ, nâng cấp thành thành phố) nhưng cư dân ít đi và bất mãn hơn."
+	},
+	{
+		"id": "-1000006095",
+		"key": "loan_err_off",
+		"en|ch|tc|kr": "Vay ngân hàng đã bị tắt trong S&M configs."
+	},
+	{
+		"id": "-1000006150",
+		"key": "wanted_title",
+		"en|ch|tc|kr": "Truy nã"
+	},
+	{
+		"id": "-1000006151",
+		"key": "wanted_post",
+		"en|ch|tc|kr": "Treo thưởng"
+	},
+	{
+		"id": "-1000006152",
+		"key": "wanted_list",
+		"en|ch|tc|kr": "Danh sách truy nã"
+	},
+	{
+		"id": "-1000006153",
+		"key": "wanted_post_desc",
+		"en|ch|tc|kr": "Truy nã: {0} (cảnh giới {1}), do {2} treo"
+	},
+	{
+		"id": "-1000006154",
+		"key": "wanted_post_budget",
+		"en|ch|tc|kr": "Ngân sách trấn: {0:#,##0} — tiền thưởng tối thiểu: {1:#,##0}"
+	},
+	{
+		"id": "-1000006155",
+		"key": "wanted_reward",
+		"en|ch|tc|kr": "Tiền thưởng"
+	},
+	{
+		"id": "-1000006156",
+		"key": "wanted_post_rule",
+		"en|ch|tc|kr": "Tiền thưởng được trừ khỏi ngân sách trấn ngay. Thưởng càng cao, thợ săn càng hay tìm đến. Sau 36 tháng không ai nhận (hoặc mục tiêu chết vì lý do khác): hoàn tiền."
+	},
+	{
+		"id": "-1000006157",
+		"key": "wanted_posted",
+		"en|ch|tc|kr": "Lệnh truy nã {0} đã được đóng lên cổng thành."
+	},
+	{
+		"id": "-1000006158",
+		"key": "wanted_err_off",
+		"en|ch|tc|kr": "Truy nã đã bị tắt trong S&M configs."
+	},
+	{
+		"id": "-1000006159",
+		"key": "wanted_err_target",
+		"en|ch|tc|kr": "Không thể truy nã mục tiêu này."
+	},
+	{
+		"id": "-1000006160",
+		"key": "wanted_err_already",
+		"en|ch|tc|kr": "Thị trấn này đã treo thưởng người này rồi."
+	},
+	{
+		"id": "-1000006161",
+		"key": "wanted_err_min",
+		"en|ch|tc|kr": "Tiền thưởng thấp hơn mức tối thiểu."
+	},
+	{
+		"id": "-1000006162",
+		"key": "wanted_err_budget",
+		"en|ch|tc|kr": "Ngân sách trấn không đủ."
+	},
+	{
+		"id": "-1000006163",
+		"key": "wanted_on_player",
+		"en|ch|tc|kr": "Trên mọi cổng của {0} phấp phới một tờ cáo thị: chân dung ngươi, và tiền thưởng {1:#,##0} linh thạch. Thợ săn tiền thưởng sẽ tìm đến."
+	},
+	{
+		"id": "-1000006164",
+		"key": "wanted_ambush",
+		"en|ch|tc|kr": "“{0} trả {1:#,##0} linh thạch cho cái đầu của ngươi. Không có gì cá nhân cả.” Gã thợ săn tiền thưởng chặn đường ngươi."
+	},
+	{
+		"id": "-1000006165",
+		"key": "wanted_ambush_o1",
+		"en|ch|tc|kr": "Đánh"
+	},
+	{
+		"id": "-1000006166",
+		"key": "wanted_ambush_o2",
+		"en|ch|tc|kr": "Trả tiền cho trấn để xóa tên ({0:#,##0})"
+	},
+	{
+		"id": "-1000006167",
+		"key": "wanted_done",
+		"en|ch|tc|kr": "{0} đã hạ được {1}. Khoản thưởng {2:#,##0} linh thạch của ngươi đã được trả."
+	},
+	{
+		"id": "-1000006168",
+		"key": "wanted_list_desc",
+		"en|ch|tc|kr": "Danh sách truy nã: bấm vào chân dung để xem tiền thưởng. Giết người bị truy nã trong trận để nhận thưởng."
+	},
+	{
+		"id": "-1000006169",
+		"key": "wanted_none",
+		"en|ch|tc|kr": "Hiện không ai bị truy nã."
+	},
+	{
+		"id": "-1000006170",
+		"key": "wanted_line",
+		"en|ch|tc|kr": "{0} (cảnh giới {1}) — {2:#,##0} — {3} (còn {4} tháng)"
+	},
+	{
+		"id": "-1000006171",
+		"key": "log_wanted_post",
+		"en|ch|tc|kr": "{0} treo thưởng {2:#,##0} cho {1}."
+	},
+	{
+		"id": "-1000006172",
+		"key": "log_wanted_claimed",
+		"en|ch|tc|kr": "{0} đã nhận khoản thưởng {2:#,##0} cho {1}."
+	},
+	{
+		"id": "-1000006173",
+		"key": "log_wanted_expired",
+		"en|ch|tc|kr": "Lệnh truy nã {0} hết hạn; {1:#,##0} trả về {2}."
+	},
+	{
+		"id": "-1000006174",
+		"key": "log_wanted_dead",
+		"en|ch|tc|kr": "{0} chết trước khi thợ săn tìm tới; {1:#,##0} trả về {2}."
+	},
+	{
+		"id": "-1000006175",
+		"key": "log_wanted_cancel",
+		"en|ch|tc|kr": "Đã hủy truy nã {0}; {1:#,##0} trả về {2}."
+	},
+	{
+		"id": "-1000006176",
+		"key": "log_wanted_cleared",
+		"en|ch|tc|kr": "Ngươi đã xóa tên mình; lệnh truy nã được rút ({1:#,##0} trả về {2})."
+	},
+	{
+		"id": "-1000006177",
+		"key": "log_wanted_failed",
+		"en|ch|tc|kr": "{0} truy đuổi {1} nhưng thất bại."
+	},
+	{
+		"id": "-1000006178",
+		"key": "log_wanted_ambush",
+		"en|ch|tc|kr": "Thợ săn tiền thưởng {0} phục kích ngươi (bị {1} truy nã)."
+	},
+	{
+		"id": "-1000006179",
+		"key": "log_wanted_player_claimed",
+		"en|ch|tc|kr": "Ngươi giết {0} và nhận khoản thưởng {1:#,##0} của {2}."
+	},
+	{
+		"id": "-1000006180",
+		"key": "wanted_detail",
+		"en|ch|tc|kr": "Thưởng {0:#,##0} — {1} (do {2} treo) — còn {3} tháng"
+	},
+	{
+		"id": "-1000006190",
+		"key": "taoistMonthLogTitle",
+		"en|ch|tc|kr": "Taoist"
+	},
+	{
+		"id": "-1000006191",
+		"key": "secl_SpiritVein",
+		"en|ch|tc|kr": "Sâu dưới lòng đá, một mạch linh khí đang thức tỉnh, linh khí dày như sương. Hấp thụ hết cần {0} năm (thọ nguyên còn: {1} năm). Bế quan chứ?"
+	},
+	{
+		"id": "-1000006192",
+		"key": "secl_Inheritance",
+		"en|ch|tc|kr": "Sau bức tường đổ là động phủ của một vị tiền bối đã khuất, truyền thừa phong ấn trong ngọc giản. Lĩnh ngộ cần {0} năm (thọ nguyên còn: {1} năm). Bế quan chứ?"
+	},
+	{
+		"id": "-1000006193",
+		"key": "secl_OldTree",
+		"en|ch|tc|kr": "Một cây cổ thụ ngân nga đạo của bốn mùa. Ngồi dưới gốc cây {0} năm có thể tôi luyện căn cơ (thọ nguyên còn: {1} năm). Bế quan chứ?"
+	},
+	{
+		"id": "-1000006194",
+		"key": "secl_HeartDemon",
+		"en|ch|tc|kr": "Tâm trí ngươi rối loạn; gương mặt những kẻ bại dưới tay ngươi trồi lên trong thức hải. Tâm ma! Ngươi buộc phải ngồi xuống đối đầu với nó. Có thể mất {0} năm."
+	},
+	{
+		"id": "-1000006195",
+		"key": "secl_TimeRealm",
+		"en|ch|tc|kr": "Ngươi bước qua một khe nứt lấp lánh. Bên trong dường như chỉ vài ngày trôi qua… nhưng khi bước ra, thế gian đã qua {0} năm."
+	},
+	{
+		"id": "-1000006196",
+		"key": "secl_warn_life",
+		"en|ch|tc|kr": "<color=#ff4040>Cảnh báo: thời gian này dài hơn thọ nguyên còn lại của ngươi ({0} năm)!</color>"
+	},
+	{
+		"id": "-1000006197",
+		"key": "secl_o1",
+		"en|ch|tc|kr": "Bế quan ({0} năm)"
+	},
+	{
+		"id": "-1000006198",
+		"key": "secl_o2",
+		"en|ch|tc|kr": "Để sau"
+	},
+	{
+		"id": "-1000006199",
+		"key": "secl_forced_o1",
+		"en|ch|tc|kr": "..."
+	},
+	{
+		"id": "-1000006200",
+		"key": "secl_end_o1",
+		"en|ch|tc|kr": "Xuất quan"
+	},
+	{
+		"id": "-1000006201",
+		"key": "secl_name_SpiritVein",
+		"en|ch|tc|kr": "Linh mạch"
+	},
+	{
+		"id": "-1000006202",
+		"key": "secl_name_Inheritance",
+		"en|ch|tc|kr": "Cổ truyền thừa"
+	},
+	{
+		"id": "-1000006203",
+		"key": "secl_name_OldTree",
+		"en|ch|tc|kr": "Cây cổ thụ"
+	},
+	{
+		"id": "-1000006204",
+		"key": "secl_name_HeartDemon",
+		"en|ch|tc|kr": "Tâm ma"
+	},
+	{
+		"id": "-1000006205",
+		"key": "secl_name_TimeRealm",
+		"en|ch|tc|kr": "Khe nứt thời gian"
+	},
+	{
+		"id": "-1000006206",
+		"key": "secl_res_SpiritVein",
+		"en|ch|tc|kr": "Linh mạch đã cạn; linh khí của nó giờ là của ngươi."
+	},
+	{
+		"id": "-1000006207",
+		"key": "secl_res_Inheritance",
+		"en|ch|tc|kr": "Truyền thừa của tiền bối khắc sâu trong tâm ngươi (ngộ tính tăng). Trong động ngươi còn tìm thấy: {0}."
+	},
+	{
+		"id": "-1000006208",
+		"key": "secl_res_OldTree",
+		"en|ch|tc|kr": "Căn cơ được tôi luyện: {1} +{0}."
+	},
+	{
+		"id": "-1000006209",
+		"key": "secl_res_HeartDemon_win",
+		"en|ch|tc|kr": "Ngươi chém tan tâm ma. Đạo tâm vững vàng hơn bao giờ hết (ngộ tính +3, khí vận +1)."
+	},
+	{
+		"id": "-1000006210",
+		"key": "secl_res_HeartDemon_lose",
+		"en|ch|tc|kr": "Tâm ma bị đẩy lui, nhưng nó đã gặm nhấm tu vi của ngươi (-{0:#,##0} kinh nghiệm)."
+	},
+	{
+		"id": "-1000006211",
+		"key": "secl_res_TimeRealm",
+		"en|ch|tc|kr": "Từ khe nứt ngươi mang về: {0}."
+	},
+	{
+		"id": "-1000006212",
+		"key": "secl_summary",
+		"en|ch|tc|kr": "Số năm bế quan: {0}\nKinh nghiệm nhận được: {1:#,##0}\nGiá cả thế gian: +{2}%\nBằng hữu đã qua đời: {3}\nCon cháu ra đời: {4}\nTuổi: {5} (thọ nguyên còn: {6} năm)"
+	},
+	{
+		"id": "-1000006213",
+		"key": "log_secl_start",
+		"en|ch|tc|kr": "Bắt đầu bế quan ({0}, {1} năm)"
+	},
+	{
+		"id": "-1000006214",
+		"key": "log_secl_end",
+		"en|ch|tc|kr": "Xuất quan ({0}) sau {1} năm, +{2:#,##0} kinh nghiệm"
+	},
+	{
+		"id": "-1000006215",
+		"key": "log_secl_declined",
+		"en|ch|tc|kr": "Từ chối một lần bế quan ({0})"
+	},
+	{
+		"id": "-1000006216",
+		"key": "family_birth",
+		"en|ch|tc|kr": "Tin vui! {0} đã sinh hạ con của ngươi. {1} năm nữa đứa trẻ sẽ đủ lớn để bước lên con đường tu luyện."
+	},
+	{
+		"id": "-1000006217",
+		"key": "family_birth_o1",
+		"en|ch|tc|kr": "Tuyệt quá!"
+	},
+	{
+		"id": "-1000006218",
+		"key": "family_grown",
+		"en|ch|tc|kr": "Hôm nay con tròn mười sáu. Xin cho con bước lên con đường tu luyện, như người đã từng!"
+	},
+	{
+		"id": "-1000006219",
+		"key": "family_grown_o1",
+		"en|ch|tc|kr": "Đi đi, và làm rạng danh gia tộc."
+	},
+	{
+		"id": "-1000006220",
+		"key": "family_btn",
+		"en|ch|tc|kr": "Gia tộc"
+	},
+	{
+		"id": "-1000006221",
+		"key": "family_title",
+		"en|ch|tc|kr": "Gia tộc của {0}"
+	},
+	{
+		"id": "-1000006222",
+		"key": "family_parents",
+		"en|ch|tc|kr": "Cha mẹ: {0}"
+	},
+	{
+		"id": "-1000006223",
+		"key": "family_spouse",
+		"en|ch|tc|kr": "Đạo lữ: {0}"
+	},
+	{
+		"id": "-1000006224",
+		"key": "family_children",
+		"en|ch|tc|kr": "Con cái: {0}"
+	},
+	{
+		"id": "-1000006225",
+		"key": "family_unborn",
+		"en|ch|tc|kr": "Một đứa trẻ đang lớn (trưởng thành sau {0} năm)"
+	},
+	{
+		"id": "-1000006226",
+		"key": "family_siblings",
+		"en|ch|tc|kr": "Anh chị em: {0}"
+	},
+	{
+		"id": "-1000006227",
+		"key": "family_dead",
+		"en|ch|tc|kr": " (đã mất)"
+	},
+	{
+		"id": "-1000006228",
+		"key": "log_family_married",
+		"en|ch|tc|kr": "{0} và {1} kết làm đạo lữ"
+	},
+	{
+		"id": "-1000006229",
+		"key": "log_family_birth",
+		"en|ch|tc|kr": "{0} và {1} có một đứa con"
+	},
+	{
+		"id": "-1000006230",
+		"key": "log_family_grown",
+		"en|ch|tc|kr": "{0}, con của {1} và {2}, đã trưởng thành"
+	},
+	{
+		"id": "-1000006231",
+		"key": "log_family_revenge",
+		"en|ch|tc|kr": "{0} treo thưởng truy nã ngươi vì đã giết {1} ({2})"
+	},
+	{
+		"id": "-1000006232",
+		"key": "secl_basis_0",
+		"en|ch|tc|kr": "Đao"
+	},
+	{
+		"id": "-1000006233",
+		"key": "secl_basis_1",
+		"en|ch|tc|kr": "Thương"
+	},
+	{
+		"id": "-1000006234",
+		"key": "secl_basis_2",
+		"en|ch|tc|kr": "Kiếm"
+	},
+	{
+		"id": "-1000006235",
+		"key": "secl_basis_3",
+		"en|ch|tc|kr": "Quyền"
+	},
+	{
+		"id": "-1000006236",
+		"key": "secl_basis_4",
+		"en|ch|tc|kr": "Chưởng"
+	},
+	{
+		"id": "-1000006237",
+		"key": "secl_basis_5",
+		"en|ch|tc|kr": "Chỉ"
+	},
+	{
+		"id": "-1000006238",
+		"key": "secl_basis_6",
+		"en|ch|tc|kr": "Hỏa"
+	},
+	{
+		"id": "-1000006239",
+		"key": "secl_basis_7",
+		"en|ch|tc|kr": "Thủy"
+	},
+	{
+		"id": "-1000006240",
+		"key": "secl_basis_8",
+		"en|ch|tc|kr": "Lôi"
+	},
+	{
+		"id": "-1000006241",
+		"key": "secl_basis_9",
+		"en|ch|tc|kr": "Phong"
+	},
+	{
+		"id": "-1000006242",
+		"key": "secl_basis_10",
+		"en|ch|tc|kr": "Thổ"
+	},
+	{
+		"id": "-1000006243",
+		"key": "secl_basis_11",
+		"en|ch|tc|kr": "Mộc"
+	},
+	{
+		"id": "-1000006244",
+		"key": "family_inherit",
+		"en|ch|tc|kr": "Thọ nguyên của ngươi sắp cạn. Trước hơi thở cuối cùng, ngươi có thể truyền lại y bát cho một hậu duệ và tiếp tục con đường bằng thân phận của họ.\nHọ nhận lại tài sản, các khoản nợ và mối quan hệ của ngươi (tình bạn còn một nửa, thù hận vẫn nguyên); danh vọng, chức vị và lệnh truy nã trên đầu ngươi sẽ theo ngươi xuống mồ."
+	},
+	{
+		"id": "-1000006245",
+		"key": "family_inherit_o",
+		"en|ch|tc|kr": "Truyền cho {0} ({1} tuổi, {2})"
+	},
+	{
+		"id": "-1000006246",
+		"key": "family_inherit_no",
+		"en|ch|tc|kr": "Hãy để hành trình của ta dừng ở đây"
+	},
+	{
+		"id": "-1000006247",
+		"key": "family_inherited",
+		"en|ch|tc|kr": "{0} đã trở về với trời đất. {1} kế thừa y bát: thế hệ thứ {2} của gia tộc bước lên con đường tu luyện."
+	},
+	{
+		"id": "-1000006248",
+		"key": "family_inherited_o1",
+		"en|ch|tc|kr": "Tiếp bước"
+	},
+	{
+		"id": "-1000006249",
+		"key": "log_family_inherit",
+		"en|ch|tc|kr": "{0} đã qua đời; {1} kế thừa y bát (thế hệ thứ {2})"
+	},
+	{
+		"id": "-1000006250",
+		"key": "log_npc_fortune",
+		"en|ch|tc|kr": "{0} gặp kỳ ngộ, tu vi tiến triển"
+	},
+	{
+		"id": "-1000006251",
+		"key": "log_npc_inheritance",
+		"en|ch|tc|kr": "{0} tìm được cổ truyền thừa, tu vi tiến vượt bậc"
+	},
+	{
+		"id": "-1000006252",
+		"key": "skip_progress",
+		"en|ch|tc|kr": "Thời gian trôi… {0} / {1} tháng (Năm {2}, Tháng {3})"
+	},
+	{
+		"id": "-1000006253",
+		"key": "family_inherit_skills",
+		"en|ch|tc|kr": "{0} quỳ trước mặt ngươi. Còn công pháp của ngươi thì sao?"
+	},
+	{
+		"id": "-1000006254",
+		"key": "family_inherit_skills_keep",
+		"en|ch|tc|kr": "Truyền lại công pháp của ta"
+	},
+	{
+		"id": "-1000006255",
+		"key": "family_inherit_skills_own",
+		"en|ch|tc|kr": "Để {0} giữ công pháp của mình"
+	},
+	{
+		"id": "-1000006256",
+		"key": "log_wanted_heir",
+		"en|ch|tc|kr": "Lệnh truy nã {0} ({1:#,##0}) chấm dứt cùng cái chết của họ; tiền thưởng trả về {2}."
+	},
+	{
+		"id": "-1000006257",
+		"key": "fund_button",
+		"en|ch|tc|kr": "Gia tộc"
+	},
+	{
+		"id": "-1000006258",
+		"key": "fund_title",
+		"en|ch|tc|kr": "Gia đình {0} (thế hệ thứ {1})"
+	},
+	{
+		"id": "-1000006259",
+		"key": "fund_members",
+		"en|ch|tc|kr": "Thành viên: {0} người trưởng thành, {1} trẻ con"
+	},
+	{
+		"id": "-1000006260",
+		"key": "fund_upkeep",
+		"en|ch|tc|kr": "Sinh hoạt phí: {0:#,##0} mỗi tháng (thành viên {1:#,##0}, trẻ con {2:#,##0})"
+	},
+	{
+		"id": "-1000006261",
+		"key": "fund_year",
+		"en|ch|tc|kr": "Năm nay: đã trả {0:#,##0}, còn thiếu {1:#,##0}; cung phụng {2:#,##0} linh thạch và {3} vật phẩm; {4} vật phẩm bị lấy đi"
+	},
+	{
+		"id": "-1000006262",
+		"key": "fund_stored",
+		"en|ch|tc|kr": "Vật phẩm cung phụng trong kho ngân hàng: {0}"
+	},
+	{
+		"id": "-1000006263",
+		"key": "fund_last",
+		"en|ch|tc|kr": "Gần đây:"
+	},
+	{
+		"id": "-1000006264",
+		"key": "fund_when",
+		"en|ch|tc|kr": "Năm {0} tháng {1}: "
+	},
+	{
+		"id": "-1000006265",
+		"key": "fund_entry_Upkeep",
+		"en|ch|tc|kr": "đã trả sinh hoạt phí {1:#,##0}"
+	},
+	{
+		"id": "-1000006266",
+		"key": "fund_entry_Unpaid",
+		"en|ch|tc|kr": "thiếu sinh hoạt phí {1:#,##0}: cả nhà bất mãn"
+	},
+	{
+		"id": "-1000006267",
+		"key": "fund_entry_GiftStones",
+		"en|ch|tc|kr": "{0} mang về {1:#,##0} linh thạch"
+	},
+	{
+		"id": "-1000006268",
+		"key": "fund_entry_GiftItem",
+		"en|ch|tc|kr": "{0} mang về {2}"
+	},
+	{
+		"id": "-1000006269",
+		"key": "fund_entry_Used",
+		"en|ch|tc|kr": "{0} lấy {2} từ kho"
+	},
+	{
+		"id": "-1000006270",
+		"key": "fund_help",
+		"en|ch|tc|kr": "Mỗi tháng gia đình (đạo lữ, hậu duệ đã trưởng thành, trẻ con) tốn linh thạch theo cảnh giới, trả từ tiền của ngươi, thiếu thì lấy linh thạch trong kho ngân hàng. Thiếu sinh hoạt phí khiến mọi thành viên bất mãn.\nThỉnh thoảng một thành viên mang linh thạch hoặc vật phẩm quý về kho ngân hàng của ngươi; thành viên nào cần cũng có thể lấy lại một món trong số đó."
+	},
+	{
+		"id": "-1000006271",
+		"key": "fund_tree",
+		"en|ch|tc|kr": "Gia phả"
+	},
+	{
+		"id": "-1000006272",
+		"key": "log_family_unpaid",
+		"en|ch|tc|kr": "Thiếu sinh hoạt phí gia đình ({0:#,##0}): cả nhà bất mãn."
+	},
+	{
+		"id": "-1000006273",
+		"key": "log_family_gift_stones",
+		"en|ch|tc|kr": "{0} mang {1:#,##0} linh thạch về kho gia tộc."
+	},
+	{
+		"id": "-1000006274",
+		"key": "log_family_gift_item",
+		"en|ch|tc|kr": "{0} mang {1} về kho gia tộc."
+	},
+	{
+		"id": "-1000006275",
+		"key": "log_family_used",
+		"en|ch|tc|kr": "{0} gặp lúc cần và đã lấy {1} từ kho gia tộc."
+	},
+	{
+		"id": "-1000006276",
+		"key": "secl_interrupted",
+		"en|ch|tc|kr": "Việc bế quan bị gián đoạn sau {0} tháng: thế gian đang cần đến ngươi."
+	}
+]

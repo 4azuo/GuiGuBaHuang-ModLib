@@ -53,5 +53,25 @@
 		"id": "420041134",
 		"key": "team420041134",
 		"en|ch|tc|kr": "¿Estás seguro de despedir a tu equipo?"
+	},
+	{
+		"id": "420041123",
+		"key": "team420041123drama",
+		"en|ch|tc|kr": "El camino es largo y peligroso. ¿Lo recorremos juntos un tiempo?"
+	},
+	{
+		"id": "420041124",
+		"key": "team420041124dramaOpt1",
+		"en|ch|tc|kr": "Con gusto: dos espadas valen más que una"
+	},
+	{
+		"id": "420041125",
+		"key": "team420041125dramaOpt2",
+		"en|ch|tc|kr": "Prefiero viajar solo"
+	},
+	{
+		"id": "420041140",
+		"key": "team420041140drama",
+		"en|ch|tc|kr": "Entonces que el camino te sea propicio. Búscame si cambias de idea."
 	}
 ]

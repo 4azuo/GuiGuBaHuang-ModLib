@@ -73,5 +73,175 @@
 		"id": "480112889",
 		"key": "monstwave480112889name",
 		"en|ch|tc|kr": "Khủng bố quy mô"
+	},
+	{
+		"id": "480110100",
+		"key": "battleevent480110100",
+		"en|ch|tc|kr": "Cứ đánh nhau cho thỏa — bụi lắng xuống rồi, chiến lợi phẩm là của ta."
+	},
+	{
+		"id": "480110200",
+		"key": "battleevent480110200",
+		"en|ch|tc|kr": "Đợi đã, bằng hữu — có ta yểm trợ!"
+	},
+	{
+		"id": "480110300",
+		"key": "battleevent480110300",
+		"en|ch|tc|kr": "Kẻ nào động đến đệ tử bổn môn là kết thù với cả tông môn!"
+	},
+	{
+		"id": "480110400",
+		"key": "battleevent480110400",
+		"en|ch|tc|kr": "Đánh nhau trong thành? Hạ binh khí xuống, không thì lính canh sẽ hạ các ngươi!"
+	},
+	{
+		"id": "480110500",
+		"key": "battleevent480110500",
+		"en|ch|tc|kr": "Ta theo ngươi đủ lâu rồi. Từ hôm nay đường ai nấy đi — bằng mũi kiếm."
+	},
+	{
+		"id": "480110501",
+		"key": "battleevent480110501",
+		"en|ch|tc|kr": "Ta theo ngươi để đi chính đạo, không phải để nhìn ngươi nhuộm nó bằng máu. Hôm nay ta sẽ sửa sai!"
+	},
+	{
+		"id": "480110502",
+		"key": "battleevent480110502",
+		"en|ch|tc|kr": "Bớt giảng đạo đi, kẻ 'chính nghĩa'. Ta sẽ lấy cả đầu lẫn bảo vật của ngươi."
+	},
+	{
+		"id": "480110600",
+		"key": "battleevent480110600",
+		"en|ch|tc|kr": "Ta thấy ngươi lấy bảo vật của yêu vương. Giao ra đây thì may ra ta để ngươi đi."
+	},
+	{
+		"id": "480110601",
+		"key": "battleevent480110601",
+		"en|ch|tc|kr": "Nhẫn trữ vật của ngươi nặng lắm phải không? Để ta san bớt gánh cho."
+	},
+	{
+		"id": "480110602",
+		"key": "battleevent480110602",
+		"en|ch|tc|kr": "Cứ coi như cho mượn… một món nợ ngươi sẽ chẳng bao giờ đòi lại."
+	},
+	{
+		"id": "480112890",
+		"key": "battleevent480112890",
+		"en|ch|tc|kr": "Trống trận vang dội trên tường thành; tên và pháp thuật rơi như mưa. Ngươi kẹt giữa hai đạo quân — chọn bên nào, bên kia cũng sẽ ghi nhớ."
+	},
+	{
+		"id": "480112891",
+		"key": "battleevent480112891",
+		"en|ch|tc|kr": "Bảo vệ thị trấn"
+	},
+	{
+		"id": "480112892",
+		"key": "battleevent480112892",
+		"en|ch|tc|kr": "Theo phe tấn công"
+	},
+	{
+		"id": "480112893",
+		"key": "battleevent480112893",
+		"en|ch|tc|kr": "Lẻn đi khi còn kịp"
+	},
+	{
+		"id": "480112894",
+		"key": "battleevent480112894",
+		"en|ch|tc|kr": "Quân của {0} đang công phá cổng {1}! Quân thủ thành kêu gọi mọi tu sĩ sẵn lòng chiến đấu."
+	},
+	{
+		"id": "480112895",
+		"key": "battleevent480112895",
+		"en|ch|tc|kr": "{0} đang bị vây hãm! Khói bốc lên từ tường thành, vận mệnh thị trấn treo trên sợi tóc."
+	},
+	{
+		"id": "480112898",
+		"key": "battleevent480112898",
+		"en|ch|tc|kr": "Không phải chuyện của ta"
+	},
+	{
+		"id": "480112899",
+		"key": "battleevent480112899",
+		"en|ch|tc|kr": "Hưởng ứng lời kêu gọi"
+	},
+	{
+		"id": "480114101",
+		"key": "battleevent480110100_1",
+		"en|ch|tc|kr": "Một mũi tên trúng hai đích. Đa tạ hai vị đã làm nhau yếu đi."
+	},
+	{
+		"id": "480114102",
+		"key": "battleevent480110100_2",
+		"en|ch|tc|kr": "Ta bám theo ngươi ba ngày rồi. Hôm nay nhẫn trữ vật của ngươi đổi chủ."
+	},
+	{
+		"id": "480114103",
+		"key": "battleevent480110100_3",
+		"en|ch|tc|kr": "Trời cho thì ta lấy. Đừng trách ta — trách vận của ngươi ấy."
+	},
+	{
+		"id": "480114201",
+		"key": "battleevent480110200_1",
+		"en|ch|tc|kr": "Xong trận này ngươi nợ ta một vò rượu."
+	},
+	{
+		"id": "480114202",
+		"key": "battleevent480110200_2",
+		"en|ch|tc|kr": "Bắt nạt bằng hữu của ta? Vậy thì tính sổ với cả ta."
+	},
+	{
+		"id": "480114301",
+		"key": "battleevent480110300_1",
+		"en|ch|tc|kr": "Sư đệ, lui ra. Để ta cho chúng thấy công pháp bổn môn."
+	},
+	{
+		"id": "480114302",
+		"key": "battleevent480110300_2",
+		"en|ch|tc|kr": "Môn quy đã rõ: không bao giờ bỏ rơi người của mình."
+	},
+	{
+		"id": "480114401",
+		"key": "battleevent480110400_1",
+		"en|ch|tc|kr": "Phụng lệnh Trấn chủ: kẻ gây rối sẽ bị xử ngay tại chỗ!"
+	},
+	{
+		"id": "480114402",
+		"key": "battleevent480110400_2",
+		"en|ch|tc|kr": "Thị trấn này có luật. Ngươi sẽ học nó theo cách đau đớn."
+	},
+	{
+		"id": "480114501",
+		"key": "battleevent480110500_1",
+		"en|ch|tc|kr": "Có người trả cho ta nhiều hơn ngươi. Không có gì cá nhân cả."
+	},
+	{
+		"id": "480114511",
+		"key": "battleevent480110501_1",
+		"en|ch|tc|kr": "Mỗi người vô tội ngươi hại đều đè nặng lương tâm ta. Đủ rồi!"
+	},
+	{
+		"id": "480114521",
+		"key": "battleevent480110502_1",
+		"en|ch|tc|kr": "Chính nghĩa không cứu được ngươi đâu. Giang hồ chỉ nói chuyện bằng sức mạnh."
+	},
+	{
+		"id": "480114610",
+		"key": "battleevent480110610",
+		"en|ch|tc|kr": "Vậy thì đến mà lấy!"
+	},
+	{
+		"id": "480114611",
+		"key": "battleevent480110611",
+		"en|ch|tc|kr": "Trả tiền cho chúng đi ({0:#,##0} linh thạch)"
+	},
+	{
+		"id": "480114612",
+		"key": "battleevent480110612",
+		"en|ch|tc|kr": "Kẻ bám đuôi cân thử túi tiền, nhếch mép cười rồi cùng đồng bọn lẩn mất."
+	},
+	{
+		"id": "480114613",
+		"key": "battleevent480110613",
+		"en|ch|tc|kr": "Ngươi không có nhiều linh thạch đến thế. Kẻ bám đuôi rút đao."
 	}
 ]

@@ -538,5 +538,55 @@
 		"id": 500020116,
 		"key": "other500020116",
 		"en|ch|tc|kr": "Bạn không có đủ đá tinh thần!"
+	},
+	{
+		"id": "500020027",
+		"key": "other500020027",
+		"en|ch|tc|kr": "Lính gác cổng chìa tay: “Thuế là {0:#,##0} linh thạch.” Túi tiền của ngươi không nặng đến thế."
+	},
+	{
+		"id": "500020044",
+		"key": "other500020044",
+		"en|ch|tc|kr": "Lẻn vào khi hắn quay đi"
+	},
+	{
+		"id": "500020078",
+		"key": "other500020078",
+		"en|ch|tc|kr": "Đã bắt tay thỏa thuận rồi mà giờ lại rút lui? Thời gian của ta đáng giá hơn mấy lời bào chữa của ngươi."
+	},
+	{
+		"id": "500020079",
+		"key": "other500020079",
+		"en|ch|tc|kr": "Giá công bằng, trả nhanh gọn. Làm ăn với ngươi thật vui."
+	},
+	{
+		"id": "500020080",
+		"key": "other500020080",
+		"en|ch|tc|kr": "Ngươi bán cho người khác rồi? Sau khi bắt ta chờ cả tháng?"
+	},
+	{
+		"id": "500020081",
+		"key": "other500020081",
+		"en|ch|tc|kr": "Đã thỏa thuận rồi còn nâng giá? Vô liêm sỉ."
+	},
+	{
+		"id": "500020082",
+		"key": "other500020082",
+		"en|ch|tc|kr": "Tin truyền đến: món [{0}] ngươi trả giá đã được bán cho người mua khác."
+	},
+	{
+		"id": "500020088",
+		"key": "other500020088",
+		"en|ch|tc|kr": "Tưởng có thể bỏ đi mà không trả tiền sao? Nghĩ lại đi."
+	},
+	{
+		"id": "500020093",
+		"key": "other500020093",
+		"en|ch|tc|kr": "Hủy rồi à? Vậy lần sau đừng phí thời gian của ta để mặc cả."
+	},
+	{
+		"id": "500020117",
+		"key": "other500020117",
+		"en|ch|tc|kr": "Quay lại"
 	}
 ]

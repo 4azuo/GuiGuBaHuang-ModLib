@@ -538,5 +538,55 @@
 		"id": 500020116,
 		"key": "other500020116",
 		"en|ch|tc|kr": "¡No tienes suficientes piedras espirituales!"
+	},
+	{
+		"id": "500020027",
+		"key": "other500020027",
+		"en|ch|tc|kr": "El guardia de la puerta tiende la mano: «El impuesto es de {0:#,##0} piedras espirituales». Tu bolsa no pesa tanto."
+	},
+	{
+		"id": "500020044",
+		"key": "other500020044",
+		"en|ch|tc|kr": "Colarse cuando mire a otro lado"
+	},
+	{
+		"id": "500020078",
+		"key": "other500020078",
+		"en|ch|tc|kr": "Nos dimos la mano, ¿y ahora te echas atrás? Mi tiempo vale más que tus excusas."
+	},
+	{
+		"id": "500020079",
+		"key": "other500020079",
+		"en|ch|tc|kr": "Un precio justo, pagado rápido. Un placer hacer negocios contigo."
+	},
+	{
+		"id": "500020080",
+		"key": "other500020080",
+		"en|ch|tc|kr": "¿Se lo vendiste a otro? ¿Después de hacerme esperar todo el mes?"
+	},
+	{
+		"id": "500020081",
+		"key": "other500020081",
+		"en|ch|tc|kr": "¿Subir el precio después de cerrar el trato? Qué desvergüenza."
+	},
+	{
+		"id": "500020082",
+		"key": "other500020082",
+		"en|ch|tc|kr": "Te llega la noticia: el [{0}] por el que pujaste se ha vendido a otro comprador."
+	},
+	{
+		"id": "500020088",
+		"key": "other500020088",
+		"en|ch|tc|kr": "¿Creías que podías irte sin pagar? Piénsalo otra vez."
+	},
+	{
+		"id": "500020093",
+		"key": "other500020093",
+		"en|ch|tc|kr": "¿Cancelado? Entonces la próxima vez no me hagas perder el tiempo regateando."
+	},
+	{
+		"id": "500020117",
+		"key": "other500020117",
+		"en|ch|tc|kr": "Dar media vuelta"
 	}
 ]

@@ -118,5 +118,15 @@
 		"id": "420103103",
 		"key": "rebirth420103103",
 		"en|ch|tc|kr": "Hic mechanicus omnes mores tuos gradu, exp et fama reponit.\nCum aequo redieris, fortior erit ingenium tuum."
+	},
+	{
+		"id": "420109999",
+		"key": "rebirth420109999dialog",
+		"en|ch|tc|kr": "Sub floribus persicorum iterum oculos aperio. Corpus iuvenile, cultus amissus — sed memoria totius vitae manet. Hoc tempore scio quae viae nusquam ducunt."
+	},
+	{
+		"id": "420109998",
+		"key": "rebirth420109998",
+		"en|ch|tc|kr": "Denuo incipere"
 	}
 ]

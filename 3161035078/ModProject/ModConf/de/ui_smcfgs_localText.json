@@ -498,5 +498,90 @@
 		"id": -1000001139,
 		"key": "smcfgs139",
 		"en|ch|tc|kr": "Verlorenes Geld, wenn man stirbt"
+	},
+	{
+		"id": "-1000001150",
+		"key": "smcfgs150",
+		"en|ch|tc|kr": "Zusätzliche Funktionen"
+	},
+	{
+		"id": "-1000001151",
+		"key": "smcfgs151",
+		"en|ch|tc|kr": "Keine zufälligen Begegnungen"
+	},
+	{
+		"id": "-1000001152",
+		"key": "smcfgs152",
+		"en|ch|tc|kr": "Keine Bankkredite"
+	},
+	{
+		"id": "-1000001153",
+		"key": "smcfgs153",
+		"en|ch|tc|kr": "Keine Kaufaufträge auf dem Markt"
+	},
+	{
+		"id": "-1000001154",
+		"key": "smcfgs154",
+		"en|ch|tc|kr": "Keine Kopfgelder (Steckbriefe)"
+	},
+	{
+		"id": "-1000001155",
+		"key": "smcfgs155",
+		"en|ch|tc|kr": "Diese Funktionen sind standardmäßig aktiv und ändern den Schwierigkeitswert nicht. Das Abschalten lässt Laufendes bestehen (ein Kredit kann weiterhin zurückgezahlt werden, bestehende Aufträge werden weiterhin erfüllt)."
+	},
+	{
+		"id": "-1000001156",
+		"key": "smcfgs156",
+		"en|ch|tc|kr": "Keine Abgeschiedenheits-Ereignisse"
+	},
+	{
+		"id": "-1000001157",
+		"key": "smcfgs157",
+		"en|ch|tc|kr": "Keine erzwungene Abgeschiedenheit"
+	},
+	{
+		"id": "-1000001158",
+		"key": "smcfgs158",
+		"en|ch|tc|kr": "Kein Familiensystem (Geburten)"
+	},
+	{
+		"id": "-1000001159",
+		"key": "smcfgs159",
+		"en|ch|tc|kr": "Gleichgeschlechtliche Dao-Gefährten"
+	},
+	{
+		"id": "-1000001160",
+		"key": "smcfgs160",
+		"en|ch|tc|kr": "Nachname des Kindes"
+	},
+	{
+		"id": "-1000001161",
+		"key": "smcfgs161",
+		"en|ch|tc|kr": "Vater"
+	},
+	{
+		"id": "-1000001162",
+		"key": "smcfgs162",
+		"en|ch|tc|kr": "Mutter"
+	},
+	{
+		"id": "-1000001163",
+		"key": "smcfgs163",
+		"en|ch|tc|kr": "Zufällig"
+	},
+	{
+		"id": "-1000001164",
+		"key": "smcfgs164",
+		"en|ch|tc|kr": "Als Nachkomme weiterspielen"
+	},
+	{
+		"id": "-1000001165",
+		"key": "smcfgs165",
+		"en|ch|tc|kr": "Zufällige Begegnungen (% pro Monat)"
+	},
+	{
+		"id": "-1000001166",
+		"key": "smcfgs166",
+		"en|ch|tc|kr": "Abgeschiedenheits-Ereignisse (% pro Monat)"
 	}
 ]

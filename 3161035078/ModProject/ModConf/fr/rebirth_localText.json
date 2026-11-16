@@ -118,5 +118,15 @@
 		"id": "420103103",
 		"key": "rebirth420103103",
 		"en|ch|tc|kr": "Ce mécanisme réinitialisera le niveau, l’expérience et la réputation de votre personnage.\nLorsque vous reviendrez avec le même niveau, votre personnage sera plus fort."
+	},
+	{
+		"id": "420109999",
+		"key": "rebirth420109999dialog",
+		"en|ch|tc|kr": "Sous les pêchers en fleurs, j'ouvre de nouveau les yeux. Mon corps est jeune, ma cultivation envolée, mais les souvenirs de toute une vie demeurent. Cette fois, je sais quelles routes ne mènent nulle part."
+	},
+	{
+		"id": "420109998",
+		"key": "rebirth420109998",
+		"en|ch|tc|kr": "Recommencer"
 	}
 ]

@@ -1,0 +1,32 @@
+[
+	{
+		"id": "-1000005000",
+		"key": "newgame000",
+		"en|ch|tc|kr": "Artefactos:"
+	},
+	{
+		"id": "-1000005001",
+		"key": "newgame001",
+		"en|ch|tc|kr": "Jade Bagua"
+	},
+	{
+		"id": "-1000005002",
+		"key": "newgame002",
+		"en|ch|tc|kr": "Ojo de la Providencia"
+	},
+	{
+		"id": "-1000005003",
+		"key": "newgame003",
+		"en|ch|tc|kr": "Olla demoníaca"
+	},
+	{
+		"id": "-1000005004",
+		"key": "newgame004",
+		"en|ch|tc|kr": "Saltar la introducción"
+	},
+	{
+		"id": "-1000005005",
+		"key": "newgame005",
+		"en|ch|tc|kr": "Los artefactos marcados se reciben al inicio (se permiten varios). Saltar la introducción: sin historia inicial ni primera batalla."
+	}
+]

@@ -28,5 +28,30 @@
 		"id": "420041119",
 		"key": "townmaster420041119",
 		"en|ch|tc|kr": "Salaire : {0:#,##0}/an"
+	},
+	{
+		"id": "420041113",
+		"key": "townmaster420041113drama",
+		"en|ch|tc|kr": "Les anciens s'inclinent et présentent le sceau de la ville. Dès aujourd'hui, les remparts, les marchés et chaque âme qui s'y trouve sont sous ta responsabilité."
+	},
+	{
+		"id": "420041114",
+		"key": "townmaster420041114drama",
+		"en|ch|tc|kr": "Un messager arrive avec une lettre scellée : le Maître de {0} a entendu parler de ta force et te demande de devenir l'un des gardiens de la ville."
+	},
+	{
+		"id": "420041115",
+		"key": "townmaster420041114dramaOpt1",
+		"en|ch|tc|kr": "Accepter le poste"
+	},
+	{
+		"id": "420041116",
+		"key": "townmaster420041114dramaOpt2",
+		"en|ch|tc|kr": "Refuser poliment"
+	},
+	{
+		"id": "420041150",
+		"key": "townmaster420041120",
+		"en|ch|tc|kr": "Accepter le sceau"
 	}
 ]

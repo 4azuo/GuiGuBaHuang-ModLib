@@ -498,5 +498,90 @@
 		"id": -1000001139,
 		"key": "smcfgs139",
 		"en|ch|tc|kr": "Dinero perdido al morir"
+	},
+	{
+		"id": "-1000001150",
+		"key": "smcfgs150",
+		"en|ch|tc|kr": "Funciones adicionales"
+	},
+	{
+		"id": "-1000001151",
+		"key": "smcfgs151",
+		"en|ch|tc|kr": "Sin encuentros aleatorios"
+	},
+	{
+		"id": "-1000001152",
+		"key": "smcfgs152",
+		"en|ch|tc|kr": "Sin préstamos bancarios"
+	},
+	{
+		"id": "-1000001153",
+		"key": "smcfgs153",
+		"en|ch|tc|kr": "Sin órdenes de compra en el mercado"
+	},
+	{
+		"id": "-1000001154",
+		"key": "smcfgs154",
+		"en|ch|tc|kr": "Sin recompensas (carteles de búsqueda)"
+	},
+	{
+		"id": "-1000001155",
+		"key": "smcfgs155",
+		"en|ch|tc|kr": "Estas funciones están activas por defecto y no cambian la puntuación de dificultad. Desactivar una mantiene lo que ya está en marcha (un préstamo aún se puede devolver, las órdenes existentes se siguen cumpliendo)."
+	},
+	{
+		"id": "-1000001156",
+		"key": "smcfgs156",
+		"en|ch|tc|kr": "Sin eventos de reclusión"
+	},
+	{
+		"id": "-1000001157",
+		"key": "smcfgs157",
+		"en|ch|tc|kr": "Sin reclusión forzada"
+	},
+	{
+		"id": "-1000001158",
+		"key": "smcfgs158",
+		"en|ch|tc|kr": "Sin sistema familiar (nacimientos)"
+	},
+	{
+		"id": "-1000001159",
+		"key": "smcfgs159",
+		"en|ch|tc|kr": "Compañeros del Dao del mismo sexo"
+	},
+	{
+		"id": "-1000001160",
+		"key": "smcfgs160",
+		"en|ch|tc|kr": "Apellido de los hijos"
+	},
+	{
+		"id": "-1000001161",
+		"key": "smcfgs161",
+		"en|ch|tc|kr": "Del padre"
+	},
+	{
+		"id": "-1000001162",
+		"key": "smcfgs162",
+		"en|ch|tc|kr": "De la madre"
+	},
+	{
+		"id": "-1000001163",
+		"key": "smcfgs163",
+		"en|ch|tc|kr": "Aleatorio"
+	},
+	{
+		"id": "-1000001164",
+		"key": "smcfgs164",
+		"en|ch|tc|kr": "Continuar como descendiente"
+	},
+	{
+		"id": "-1000001165",
+		"key": "smcfgs165",
+		"en|ch|tc|kr": "Encuentros aleatorios (% al mes)"
+	},
+	{
+		"id": "-1000001166",
+		"key": "smcfgs166",
+		"en|ch|tc|kr": "Eventos de reclusión (% al mes)"
 	}
 ]

@@ -1,0 +1,32 @@
+[
+	{
+		"id": "-1000005000",
+		"key": "newgame000",
+		"en|ch|tc|kr": "Artefakte:"
+	},
+	{
+		"id": "-1000005001",
+		"key": "newgame001",
+		"en|ch|tc|kr": "Bagua-Jade"
+	},
+	{
+		"id": "-1000005002",
+		"key": "newgame002",
+		"en|ch|tc|kr": "Auge der Vorsehung"
+	},
+	{
+		"id": "-1000005003",
+		"key": "newgame003",
+		"en|ch|tc|kr": "Dämonentopf"
+	},
+	{
+		"id": "-1000005004",
+		"key": "newgame004",
+		"en|ch|tc|kr": "Intro überspringen"
+	},
+	{
+		"id": "-1000005005",
+		"key": "newgame005",
+		"en|ch|tc|kr": "Angekreuzte Artefakte erhältst du zu Beginn (mehrere möglich). Intro überspringen: keine Eröffnungsgeschichte und kein erster Kampf."
+	}
+]

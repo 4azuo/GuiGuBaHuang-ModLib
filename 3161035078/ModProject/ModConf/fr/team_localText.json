@@ -53,5 +53,25 @@
 		"id": "420041134",
 		"key": "team420041134",
 		"en|ch|tc|kr": "Etes-vous sûr de licencier votre équipe ?"
+	},
+	{
+		"id": "420041123",
+		"key": "team420041123drama",
+		"en|ch|tc|kr": "La route est longue et dangereuse. La faisons-nous ensemble un moment ?"
+	},
+	{
+		"id": "420041124",
+		"key": "team420041124dramaOpt1",
+		"en|ch|tc|kr": "Avec plaisir : deux épées valent mieux qu'une"
+	},
+	{
+		"id": "420041125",
+		"key": "team420041125dramaOpt2",
+		"en|ch|tc|kr": "Je préfère voyager seul"
+	},
+	{
+		"id": "420041140",
+		"key": "team420041140drama",
+		"en|ch|tc|kr": "Alors que la route te soit clémente. Viens me trouver si tu changes d'avis."
 	}
 ]

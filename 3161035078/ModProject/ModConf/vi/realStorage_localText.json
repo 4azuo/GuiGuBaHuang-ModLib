@@ -1,1 +1,12 @@
-[]
+[
+	{
+		"id": "480020100",
+		"key": "realStorage480020100",
+		"en|ch|tc|kr": "Thư của người giữ kho: “Phí lưu kho của quý khách vẫn chưa thanh toán. Cho đến khi trả hết nợ, hàng hóa vẫn bị khóa trong kho của chúng tôi.”"
+	},
+	{
+		"id": "480020101",
+		"key": "realStorage480020101",
+		"en|ch|tc|kr": "Ta sẽ tìm ra linh thạch… bằng cách nào đó"
+	}
+]

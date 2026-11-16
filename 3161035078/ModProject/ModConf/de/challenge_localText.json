@@ -1,0 +1,202 @@
+[
+	{
+		"id": "444445001",
+		"key": "challenge444445001",
+		"en|ch|tc|kr": "Herausforderungsmeister 1"
+	},
+	{
+		"id": "444445101",
+		"key": "challenge444445001desc",
+		"en|ch|tc|kr": "+1 % Angriff"
+	},
+	{
+		"id": "444446001",
+		"key": "taskName444446001",
+		"en|ch|tc|kr": "Herausforderungsmeister 1"
+	},
+	{
+		"id": "444446101",
+		"key": "taskDesc444446001",
+		"en|ch|tc|kr": "Besiege 1 Gegner, der mindestens 1 Stufe über dir steht."
+	},
+	{
+		"id": "444445002",
+		"key": "challenge444445002",
+		"en|ch|tc|kr": "Herausforderungsmeister 2"
+	},
+	{
+		"id": "444445102",
+		"key": "challenge444445002desc",
+		"en|ch|tc|kr": "+2 % Angriff"
+	},
+	{
+		"id": "444446002",
+		"key": "taskName444446002",
+		"en|ch|tc|kr": "Herausforderungsmeister 2"
+	},
+	{
+		"id": "444446102",
+		"key": "taskDesc444446002",
+		"en|ch|tc|kr": "Besiege 2 Gegner, die mindestens 1 Stufe über dir stehen."
+	},
+	{
+		"id": "444445003",
+		"key": "challenge444445003",
+		"en|ch|tc|kr": "Herausforderungsmeister 3"
+	},
+	{
+		"id": "444445103",
+		"key": "challenge444445003desc",
+		"en|ch|tc|kr": "+4 % Angriff"
+	},
+	{
+		"id": "444446003",
+		"key": "taskName444446003",
+		"en|ch|tc|kr": "Herausforderungsmeister 3"
+	},
+	{
+		"id": "444446103",
+		"key": "taskDesc444446003",
+		"en|ch|tc|kr": "Besiege 2 Gegner, die mindestens 2 Stufen über dir stehen."
+	},
+	{
+		"id": "444445004",
+		"key": "challenge444445004",
+		"en|ch|tc|kr": "Herausforderungsmeister 4"
+	},
+	{
+		"id": "444445104",
+		"key": "challenge444445004desc",
+		"en|ch|tc|kr": "+7 % Angriff"
+	},
+	{
+		"id": "444446004",
+		"key": "taskName444446004",
+		"en|ch|tc|kr": "Herausforderungsmeister 4"
+	},
+	{
+		"id": "444446104",
+		"key": "taskDesc444446004",
+		"en|ch|tc|kr": "Besiege 4 Gegner, die mindestens 2 Stufen über dir stehen."
+	},
+	{
+		"id": "444445005",
+		"key": "challenge444445005",
+		"en|ch|tc|kr": "Herausforderungsmeister 5"
+	},
+	{
+		"id": "444445105",
+		"key": "challenge444445005desc",
+		"en|ch|tc|kr": "+11 % Angriff"
+	},
+	{
+		"id": "444446005",
+		"key": "taskName444446005",
+		"en|ch|tc|kr": "Herausforderungsmeister 5"
+	},
+	{
+		"id": "444446105",
+		"key": "taskDesc444446005",
+		"en|ch|tc|kr": "Besiege 3 Gegner, die mindestens 3 Stufen über dir stehen."
+	},
+	{
+		"id": "444445006",
+		"key": "challenge444445006",
+		"en|ch|tc|kr": "Großmeister der Herausforderung"
+	},
+	{
+		"id": "444445106",
+		"key": "challenge444445006desc",
+		"en|ch|tc|kr": "+16 % Angriff"
+	},
+	{
+		"id": "444446006",
+		"key": "taskName444446006",
+		"en|ch|tc|kr": "Großmeister der Herausforderung"
+	},
+	{
+		"id": "444446106",
+		"key": "taskDesc444446006",
+		"en|ch|tc|kr": "Besiege 9 Gegner, die mindestens 3 Stufen über dir stehen."
+	},
+	{
+		"id": "444445007",
+		"key": "challenge444445007",
+		"en|ch|tc|kr": "Herausforderungsmeister 7"
+	},
+	{
+		"id": "444445107",
+		"key": "challenge444445007desc",
+		"en|ch|tc|kr": "+22 % Angriff"
+	},
+	{
+		"id": "444446007",
+		"key": "taskName444446007",
+		"en|ch|tc|kr": "Herausforderungsmeister 7"
+	},
+	{
+		"id": "444446107",
+		"key": "taskDesc444446007",
+		"en|ch|tc|kr": "Besiege 5 Gegner, die mindestens 4 Stufen über dir stehen."
+	},
+	{
+		"id": "444445008",
+		"key": "challenge444445008",
+		"en|ch|tc|kr": "Herausforderungsmeister 8"
+	},
+	{
+		"id": "444445108",
+		"key": "challenge444445008desc",
+		"en|ch|tc|kr": "+29 % Angriff"
+	},
+	{
+		"id": "444446008",
+		"key": "taskName444446008",
+		"en|ch|tc|kr": "Herausforderungsmeister 8"
+	},
+	{
+		"id": "444446108",
+		"key": "taskDesc444446008",
+		"en|ch|tc|kr": "Besiege 20 Gegner, die mindestens 4 Stufen über dir stehen."
+	},
+	{
+		"id": "444445009",
+		"key": "challenge444445009",
+		"en|ch|tc|kr": "Herausforderungsmeister 9"
+	},
+	{
+		"id": "444445109",
+		"key": "challenge444445009desc",
+		"en|ch|tc|kr": "+37 % Angriff"
+	},
+	{
+		"id": "444446009",
+		"key": "taskName444446009",
+		"en|ch|tc|kr": "Herausforderungsmeister 9"
+	},
+	{
+		"id": "444446109",
+		"key": "taskDesc444446009",
+		"en|ch|tc|kr": "Besiege 3 Gegner, die mindestens 5 Stufen über dir stehen."
+	},
+	{
+		"id": "444445010",
+		"key": "challenge444445010",
+		"en|ch|tc|kr": "Legende der Herausforderung"
+	},
+	{
+		"id": "444445110",
+		"key": "challenge444445010desc",
+		"en|ch|tc|kr": "+46 % Angriff"
+	},
+	{
+		"id": "444446010",
+		"key": "taskName444446010",
+		"en|ch|tc|kr": "Legende der Herausforderung"
+	},
+	{
+		"id": "444446110",
+		"key": "taskDesc444446010",
+		"en|ch|tc|kr": "Besiege 3 Gegner, die mindestens 6 Stufen über dir stehen."
+	}
+]

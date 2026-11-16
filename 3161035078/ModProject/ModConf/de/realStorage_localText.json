@@ -1,1 +1,12 @@
-[]
+[
+	{
+		"id": "480020100",
+		"key": "realStorage480020100",
+		"en|ch|tc|kr": "Ein Brief des Lagerverwalters: „Ihre Gebühren sind weiterhin unbezahlt. Bis die Schuld beglichen ist, bleiben Ihre Waren in unserem Tresor verschlossen.“"
+	},
+	{
+		"id": "480020101",
+		"key": "realStorage480020101",
+		"en|ch|tc|kr": "Ich werde die Geistersteine finden … irgendwie"
+	}
+]

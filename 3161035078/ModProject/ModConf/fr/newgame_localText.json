@@ -1,0 +1,32 @@
+[
+	{
+		"id": "-1000005000",
+		"key": "newgame000",
+		"en|ch|tc|kr": "Artefacts :"
+	},
+	{
+		"id": "-1000005001",
+		"key": "newgame001",
+		"en|ch|tc|kr": "Jade Bagua"
+	},
+	{
+		"id": "-1000005002",
+		"key": "newgame002",
+		"en|ch|tc|kr": "Œil de la Providence"
+	},
+	{
+		"id": "-1000005003",
+		"key": "newgame003",
+		"en|ch|tc|kr": "Marmite démoniaque"
+	},
+	{
+		"id": "-1000005004",
+		"key": "newgame004",
+		"en|ch|tc|kr": "Passer l'introduction"
+	},
+	{
+		"id": "-1000005005",
+		"key": "newgame005",
+		"en|ch|tc|kr": "Les artefacts cochés sont donnés au départ (plusieurs possibles). Passer l'introduction : pas d'histoire d'ouverture ni de premier combat."
+	}
+]

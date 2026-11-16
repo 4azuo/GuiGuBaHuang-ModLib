@@ -23,5 +23,50 @@
 		"id": -1000003004,
 		"key": "setting004",
 		"en|ch|tc|kr": "(Quaeso conversus si habes feedback bugs)"
+	},
+	{
+		"id": "-1000003005",
+		"key": "setting005",
+		"en|ch|tc|kr": "Claves artefactorum divinorum"
+	},
+	{
+		"id": "-1000003006",
+		"key": "setting006",
+		"en|ch|tc|kr": "Ordinem preme, deinde clavem (Esc revocat, Backspace delet). Tabula: fenestram artefacti aperit; proelium: artem eius adhibet. Clavis artefacti ludi adhuc valet."
+	},
+	{
+		"id": "-1000003007",
+		"key": "setting007",
+		"en|ch|tc|kr": "Nulla"
+	},
+	{
+		"id": "-1000003008",
+		"key": "setting008",
+		"en|ch|tc|kr": "{0} iam a clavibus ludi adhibetur. Aliam clavem elige."
+	},
+	{
+		"id": "-1000003010",
+		"key": "setting010",
+		"en|ch|tc|kr": "Ostensio"
+	},
+	{
+		"id": "-1000003011",
+		"key": "setting011",
+		"en|ch|tc|kr": "Nuntii et diarium"
+	},
+	{
+		"id": "-1000003012",
+		"key": "setting012",
+		"en|ch|tc|kr": "De oblationibus fori et mandatis impletis nuntiare"
+	},
+	{
+		"id": "-1000003013",
+		"key": "setting013",
+		"en|ch|tc|kr": "Diarium Taoist aperire"
+	},
+	{
+		"id": "-1000003014",
+		"key": "setting014",
+		"en|ch|tc|kr": "Occursus fortuiti"
 	}
 ]

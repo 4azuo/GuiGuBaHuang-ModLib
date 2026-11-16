@@ -53,5 +53,25 @@
 		"id": "420041134",
 		"key": "team420041134",
 		"en|ch|tc|kr": "Sind Sie sicher, Ihr Team zu entlassen?"
+	},
+	{
+		"id": "420041123",
+		"key": "team420041123drama",
+		"en|ch|tc|kr": "Der Weg vor uns ist lang und gefährlich. Sollen wir ihn eine Weile gemeinsam gehen?"
+	},
+	{
+		"id": "420041124",
+		"key": "team420041124dramaOpt1",
+		"en|ch|tc|kr": "Gern — zwei Schwerter sind besser als eines"
+	},
+	{
+		"id": "420041125",
+		"key": "team420041125dramaOpt2",
+		"en|ch|tc|kr": "Ich reise lieber allein"
+	},
+	{
+		"id": "420041140",
+		"key": "team420041140drama",
+		"en|ch|tc|kr": "Dann sei der Weg gut zu dir. Such mich, wenn du es dir anders überlegst."
 	}
 ]
