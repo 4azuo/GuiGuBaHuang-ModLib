@@ -1,156 +1,150 @@
-# Bản nháp cốt truyện NPC (chờ duyệt, chưa code)
+# NPC storylines — design (approved outline, not coded yet)
 
-Bản nháp dàn ý để duyệt. Chưa có lời thoại. Sau khi chốt dàn ý, lời thoại sẽ viết đủ EN / 简 / 繁 / 한 để duyệt như các drama trước, rồi mới code.
+The design of the NPC storylines: casting, rules and the acts of every line. The dialogue of every step is in
+`07-Storylines-Dialogue-Draft.md` (same acts, same names). Both files are written in English; the other languages
+are translated when the dialogue is approved (`Translate/ai_bridge.py`).
 
-## 0. Cách chọn NPC đóng vai
+## 0. Decisions (2026-11-16)
 
-- Mỗi vai có **điều kiện chọn**:
-  - giới tính;
-  - tuổi so với tuổi thọ, vì tu sĩ thọ dài nên "trẻ" hay "già" tính theo tỉ lệ;
-  - ngoại hình: chỉ số `beauty`, theo bậc dung mạo của game (`RoleBeauty`);
-  - tính cách: nội tại (`inTrait` 1–7) và ngoại tại (`outTrait` 8–19), dùng đúng bảng tính cách của game;
-  - chính / tà: `standUp` / `standDown`;
-  - cảnh giới so với người chơi;
-  - một số vai cần tông môn hoặc thành trấn.
-- **Cách chọn:**
-  - Vai được gán khi tuyến truyện mở. Hệ thống chọn NPC còn sống, khớp điều kiện nhất (có chấm điểm), chưa giữ vai nào khác, không phải đạo lữ hay con cháu của người chơi.
-  - Nếu không có ai đủ điều kiện, hệ thống tạo NPC mới (`AddUnit`) rồi chỉnh lại giới tính, tuổi, tính cách và cảnh giới. Ngoại hình do game sinh, nên vai nào cần dung mạo cao thì lấy lại ngẫu nhiên vài lần, chọn kết quả tốt nhất.
-  - Tên của nhân vật là tên NPC trong thế giới. Lời thoại dùng `{name}`. Tên trong tài liệu này (Nguyệt Hàn, Lão Hoàng…) chỉ là tên gọi tạm.
-- **NPC đóng vai vẫn sống như NPC bình thường:** già, đột phá, kết hôn, có thể chết.
-  - Chết giữa chừng thì tuyến rẽ sang kết thúc tương ứng ("Hy sinh", "Người thừa kế"…), hoặc tuyến đóng lại và ghi vào Taoist log.
-- **Giọng văn theo tính cách:** mỗi nhân vật có một "giọng" ghi bên dưới. Cùng một nhân vật thì giữ giọng thống nhất qua các hồi.
-- **Nhịp độ:** mỗi hồi cách nhau vài năm trong game.
-  - Hồi tiếp theo mở khi đủ điều kiện (thời gian, cảnh giới, địa điểm), kiểm tra hàng tháng, có thể rơi vào lúc bế quan hoặc skip.
-  - Không có mốc thời gian bắt buộc: bỏ lỡ thì tuyến chờ.
-- **Phần thưởng:** vừa phải để tránh lạm phát.
-  - Chủ yếu là quan hệ (đồng minh, đạo lữ, kẻ thù), quyền lợi nhỏ (giảm giá, hàng gửi định kỳ), và một món đồ đặc trưng ở kết thúc.
-  - Không cho exp lớn.
-- **Tắt / bật:** tùy chọn S&M "Không có cốt truyện NPC" ở trang 3. Mỗi tuyến cũng có thể tắt riêng nếu bạn muốn.
+1. All 5 lines and the final battle are made.
+2. Casting: wait for a fitting NPC; when none comes, a new NPC is created with a chance growing every year
+   (2 % the first year, +2 % a year, at most 50 %).
+3. Every act has a time limit; a failed or late act does not close the line, it opens a **fail branch**.
+4. The love triangle of line D is kept.
+5. The herb garden of line E is a **manual seclusion** place (1-20 years, spirit stones, exp a year, interrupted like
+   a time skip), only with **intimacy ≥ 300 with Granny Shi** (her intimacy when she died, once she is dead).
+6. Every line has 5-6 acts of at least 3 steps each.
+7. Tone, dialogue, fail branches, the "Peace" ending (A), the secret "Kneel" ending (final battle) and the numbers
+   (chances 0.3-1 %, time limits, rewards) are approved.
+8. Still open (not storyline): "coma instead of exp loss" when the player loses a battle.
 
-## 1. Danh sách nhân vật
+## 1. Casting
 
-| # | Tạm gọi | Giới | Điều kiện chọn | Tính cách → giọng văn |
+- A role has **casting rules**:
+  - sex;
+  - age as a share of the lifespan (cultivators live long: "young" / "old" is relative);
+  - looks (`beauty`, the game's beauty tiers `RoleBeauty`);
+  - character: inner trait (`inTrait` 1-7) and outer traits (`outTrait` 8-19), the game's trait tables;
+  - alignment (`standUp` / `standDown`);
+  - grade compared with the player;
+  - for some roles, a sect or a town.
+- When a line opens, the role goes to the best-scoring living NPC that fits, has no other role, and is not the
+  player's companion or descendant. None fits: wait, with the yearly creation chance above (the new NPC is set to
+  the sex, age, traits and grade of the role; looks come from the game, rerolled a few times for the roles that need
+  beauty).
+- The name of the character is the name of the NPC in the world (`{A}`, `{H}`... in the dialogue); the names below
+  are working names.
+- Cast NPCs live as any NPC (age, break through, marry, may die). A death mid-line goes to the matching ending
+  ("Sacrifice", "The Heir"...) or closes the line, with a Taoist log entry.
+- Pacing: an act opens when the previous one is done and its conditions are met (checked monthly); it may come
+  during a time skip / seclusion (its drama interrupts the skip).
+- Rewards stay modest (no power creep): relations (allies, companions, enemies), small perks (discounts, yearly
+  goods), one signature item per ending; no big exp.
+- S&M page 3: "No NPC storylines" (and one toggle per line if wanted).
+- Every choice and ending goes to the Taoist log; Taoist Settings gets a "Stories" page to read them again.
+
+## 2. Characters
+
+| # | Working name | Sex | Casting rules | Voice |
 |---|---|---|---|---|
-| 1 | **Nguyệt Hàn** (kiếm tu bị trục xuất) | Nữ | Đã sống 15–35 % tuổi thọ; dung mạo ≥ "Thanh tú"; nội tại Chính trực/Vô tư; ngoại tại Thù dai hoặc Chung thủy; chính đạo; căn cơ kiếm cao nhất trong các căn cơ vũ khí; cùng cảnh giới hoặc hơn người chơi 1 cảnh giới; thuộc tông môn | Nghiêm, ít lời, câu ngắn; lạnh lùng lúc đầu, ấm dần theo thân thiết |
-| 2 | **Lão Hoàng** (thương nhân mắc nợ) | Nam | Đã sống ≥ 60 % tuổi thọ; nội tại Trung dung/Ích kỷ; ngoại tại Gia đình hoặc Danh tiếng; nhiều linh thạch; ở trấn có chợ | Lắm lời, hay than, nịnh khéo, pha hài; lúc nguy thì thật lòng |
-| 3 | **Tô Tiểu Mạn** (luyện đan sư tập sự) | Nữ | Đã sống ≤ 15 % tuổi thọ; nội tại Nhân thiện; ngoại tại Tùy hứng; kỹ năng luyện đan cao nhất trong các kỹ nghệ; cảnh giới thấp hơn người chơi | Lanh lợi, nói nhanh, hay đùa, hay gây họa; xưng "tiểu muội" |
-| 4 | **Thiết Ngưu** (thể tu chất phác) | Nam | Đã sống 15–40 % tuổi thọ; dung mạo thường; nội tại Chính trực; ngoại tại Nghĩa khí; căn cơ quyền / chưởng cao nhất | Thật thà, nói thẳng, ăn khỏe, hài kiểu ngây ngô; trọng tình anh em |
-| 5 | **Hồng Liên phu nhân** (trưởng lão ma đạo, kẻ đứng sau) | Nữ | Đã sống 40–70 % tuổi thọ; dung mạo ≥ "Khuynh thành"; nội tại Tà ác/Cuồng tà; ngoại tại Quyền lực; tà đạo; cảnh giới cao hơn người chơi 1–2 cảnh giới | Văn vẻ, mềm mỏng, mỉa mai; đe dọa mà không lớn tiếng |
-| 6 | **Mộ Dung Ca** (lãng tử cầm sư) | Nam | Đã sống 15–30 % tuổi thọ; dung mạo ≥ "Thanh tú"; ngoại tại Đa tình; nội tại Trung dung | Bay bổng, hay ngâm thơ, tán tỉnh; hài nhẹ nhàng, có nỗi buồn giấu kín |
-| 7 | **Thạch bà bà** (lão bà hái thuốc ẩn cư) | Nữ | Đã sống ≥ 75 % tuổi thọ; nội tại Nhân thiện/Vô tư; ngoại tại Truyền thừa; không tông môn | Hiền, chậm rãi, nói ví von; gọi người chơi là "hài tử" |
-| 8 | **A Ly** (cô bé mồ côi) | Nữ | Tạo mới khi tuyến mở (6–10 tuổi, chỉ là bản ghi như con chưa trưởng thành); 16 tuổi thì thành NPC | Rụt rè lúc nhỏ, lớn lên cứng cỏi; giọng phụ thuộc cách người chơi nuôi dạy |
+| 1 | **Yue Han** (exiled swordswoman) `{A}` | F | 15-35 % of life lived; looks ≥ "Fair"; inner Upstanding / Selfless; outer Vengeful or Faithful; righteous; sword is her best weapon basis; same grade as the player or 1 above; in a sect | Few words, short sentences, cold; warmer with intimacy |
+| 2 | **Old Huang** (indebted merchant) `{H}` | M | ≥ 60 % of life lived; inner Middle Way / Selfish; outer Family-Oriented or Glory Hound; rich; lives in a town with a market | Talkative, whiny, flattering, comic; sincere in danger |
+| 3 | **Su Xiaoman** (apprentice alchemist) `{X}` | F | ≤ 15 % of life lived; inner Kind; outer Carefree; alchemy is her best art; grade below the player | Quick, jokes, causes trouble, calls herself "little sister" |
+| 4 | **Iron Ox** (body cultivator) `{N}` | M | 15-40 % of life lived; plain looks; inner Upstanding; outer Loyal to friends; fist / palm is his best basis | Honest, blunt, big eater, naive comedy; loyal to brothers |
+| 5 | **Lady Honglian** (demonic elder, the mastermind) `{R}` | F | 40-70 % of life lived; looks ≥ "Stunning"; inner Evil / Wicked; outer Power-hungry; demonic; 1-2 grades above the player | Elegant, soft, mocking; threatens without raising her voice |
+| 6 | **Murong Ge** (wandering zither poet) `{C}` | M | 15-30 % of life lived; looks ≥ "Fair"; outer Romantic; inner Middle Way | Lyrical, recites poems, flirts; light humor, hidden grief |
+| 7 | **Granny Shi** (hermit herbalist) `{O}` | F | ≥ 75 % of life lived; inner Kind / Selfless; outer Traditional; no sect | Gentle, slow, speaks in images; calls the player "child" |
+| 8 | **A Li** (orphan girl) `{Y}` | F | Created when line E opens: a child record (6-10 years), an NPC at 16 | Shy as a child, firm when grown; shaped by how the player raises her |
 
-Có 5 nữ, 3 nam; 3 nhân vật nghiêm túc (1, 5, 7), 3 nhân vật pha hài (2, 3, 4), 2 nhân vật nửa này nửa kia (6, 8).
+Other roles: `{M}` Yue Han's master (an elder of her sect), `{S}` her sect, Old Lu (a sect treasurer who fled),
+`{G}` the grandmaster alchemist, `{L}` the woman Murong Ge courts, `{T}` / `{T2}` towns.
 
-## 2. Các tuyến truyện
+A Li as a child: no NPC, no portrait (the game has adult portraits only). Her lines are narration over a
+background, or told by Granny Shi. At 16 she becomes an NPC (new, female, game looks) with a portrait.
 
-### Tuyến A: "Kiếm lạnh" (Nguyệt Hàn; Hồng Liên đứng sau)
-- **Mở đầu** (người chơi ≥ cảnh giới 2, ngoài trấn): gặp Nguyệt Hàn bị thương, đang bị đồng môn truy sát.
-  - (a) Cứu nàng: vào tuyến.
-  - (b) Giao nàng cho kẻ truy sát: nhận linh thạch, tuyến đi tới kết thúc "Kẻ phản bội".
-  - (c) Bỏ đi: tuyến tạm đóng, 3 năm sau có thể gặp lại.
-- **Hồi 1:** nàng bị sư phụ vu oan. Vai sư phụ do một trưởng lão có thật của tông môn đó đảm nhận.
-  - Nhiệm vụ: tìm thư tay làm chứng cứ, mua ở chợ (hiện thành món hàng trong chợ của người chơi) hoặc lấy từ người bán hàng rong.
-  - Lựa chọn: tin nàng, hoặc điều tra thêm (mất 1–2 năm, nhưng biết được Hồng Liên đứng sau).
-- **Hồi 2** (5–10 năm sau): nàng đã mạnh lên và muốn báo thù.
-  - (a) Cùng nàng đánh lên tông môn (trận lớn).
-  - (b) Khuyên nàng buông bỏ.
-  - (c) Bán tin cho sư phụ nàng.
-- **Kết thúc:**
-  - **Đạo lữ:** chọn (a), thắng, thân thiết cao. Nàng ngỏ ý kết đạo lữ, nối vào hệ thống gia tộc.
-  - **Tông chủ:** chọn (a), thắng. Nàng lập tông, người chơi làm trưởng lão: giảm giá đổi cống hiến, đệ tử vào giúp trận.
-  - **Nhập ma:** chọn (b) nhưng thất bại (thân thiết thấp). Nàng giết sư phụ rồi theo Hồng Liên; người chơi phải đối đầu (trận boss, nàng treo thưởng người chơi).
-  - **Hy sinh:** người chơi sắp chết trong trận ở hồi 2, nàng chết thay. Người chơi nhận kiếm của nàng.
-  - **Kẻ phản bội:** chọn (c), hoặc (b) ở mở đầu. Nàng thành kẻ thù, định kỳ truy sát người chơi.
+## 3. Lines (acts; every act = at least 3 steps, see 07)
 
-### Tuyến B: "Món nợ của lão Hoàng" (Lão Hoàng; Hồng Liên đứng sau)
-- **Mở đầu** (ở chợ): lão Hoàng bán rẻ một món đồ tốt. Hôm sau sát thủ ma giáo tìm đến đòi món đó.
-  - (a) Trả đồ.
-  - (b) Đánh.
-  - (c) Chạy về tìm lão Hoàng.
-- **Hồi 1:** lão thú nhận vay nợ ma giáo, nhờ người chơi giúp. Hệ thống vay ngân hàng có sẵn được dùng ở đây.
-  - Bảo lãnh khoản vay: nếu lão không trả, người chơi gánh nợ.
-  - Cho mượn tiền riêng.
-  - Từ chối.
-- **Hồi 2:** ma giáo đòi chiếm trấn của lão (chiến tranh trấn). Người chơi là trưởng trấn hoặc hộ vệ thì đây là trận giữ thành.
-  - (a) Giữ thành.
-  - (b) Thương lượng nộp cống.
-  - (c) Bỏ mặc.
-- **Kết thúc:**
-  - **Đại phú thương:** chọn (a), thắng. Lão thành đồng minh hoặc trưởng trấn: giảm phí chợ, hàng gửi định kỳ.
-  - **Người thừa kế:** lão chết già. Người chơi nhận các món lão đang bán và một lệnh mua giá tốt.
-  - **Trấn sa ngã:** chọn (c), hoặc (a) mà thua. Trấn thành sào huyệt ma giáo: thuế cao, lính canh thù địch.
-  - **Bị phản bội:** người chơi bảo lãnh xong thì lão bỏ trốn. Người chơi gánh nợ, lão bị treo thưởng, người chơi có thể tự săn.
-  - **Ân nhân:** người chơi cho mượn tiền và lão trả đủ. Lão thành bạn thân, sau này cứu người chơi một lần khi bị truy nã.
+### Line A — "Cold Sword" (Yue Han, her master `{M}`)
+| Act | Content | Time limit / fail branch |
+|---|---|---|
+| A0 Meeting | Sect disciples hunt a wounded swordswoman: save her (fight), hand her over, or walk away; a blue silk token; a wanted notice | Hand over → "Traitor" ending; walk away → meet again in 3 years (once) |
+| A1 Old wound | She comes back poisoned: give a pill / herb; first truth (a woman in red bought the manual) | 1 year; late → she heals alone, intimacy -100 |
+| A2 The letter | Find the lost letter of `{M}` (market of `{T}` or a robber); red lotus seal | 3 years; late → **"Broken Sword"**: she is jailed; rescue her (battle) or she escapes to the demonic path in 5 years |
+| A3 The witness | Old Lu saw the deal; save him from killers (battle); his testimony | 2 years; he dies → steal the sect treasury ledger (battle, risk of bounty) |
+| A4 Sharpening | 5-10 years later: sparring, a new sword (gift), her breakthrough | — |
+| A5 Return to the sect | Before the elders: evidence or duel; battle with `{M}`; mercy question | 2 years |
 
-### Tuyến C: "Lò đan nổ" (Tô Tiểu Mạn; giọng hài)
-- **Mở đầu:** cô làm nổ lò đan, khói bay khắp trấn. Người chơi bị lôi vào làm "chuột thử thuốc".
-  - Đồng ý: nhận một viên đan ngẫu nhiên, có thể có tác dụng phụ buồn cười trong vài tháng (tóc đổi màu, tâm trạng thất thường), nhưng vô hại.
-  - Từ chối: cô bám theo nài nỉ thêm một lần nữa.
-- **Hồi 1:** cô muốn thi vào hội luyện đan nhưng thiếu dược liệu hiếm. Người chơi đi tìm cùng cô (một kỳ ngộ ngoài trấn), gặp Thạch bà bà, nối sang tuyến E.
-- **Hồi 2:** đơn thuốc của cô bị một đại sư danh tiếng đánh cắp.
-  - Vạch mặt đại sư: tranh luận trước trấn, cần danh vọng.
-  - Đánh tay đôi với đại sư.
-  - Khuyên cô nhịn: cô buồn, thân thiết giảm.
-- **Kết thúc:**
-  - **Đại sư luyện đan:** cô bán đan cho người chơi với giá rẻ (giảm giá vĩnh viễn khi mua đan từ cô).
-  - **Bạn đồng hành:** cô vào đội của người chơi miễn lương. Thỉnh thoảng có drama hài khi cô thử đan lên đồng đội.
-  - **Lò nổ lần cuối:** cô thất bại và bỏ nghề, mở quán trà. Kết thúc nhẹ nhàng, thỉnh thoảng cô tặng đồ ăn hồi tâm trạng.
+Endings: **Companion** (won, intimacy ≥ 500), **Sect Master** (won, < 500), **Peace** (let go, ≥ 300),
+**Fallen** (let go < 300, or abandoned in "Broken Sword"; boss of the final battle), **Sacrifice** (player about to
+die in A5; her sword), **Traitor** (she hunts the player every 3-5 years).
 
-### Tuyến D: "Huynh đệ kết nghĩa" (Thiết Ngưu, Mộ Dung Ca; giọng hài)
-- **Mở đầu:** Thiết Ngưu ăn quỵt ở quán trọ vì quên mang tiền, rồi đòi đánh tay đôi để trả nợ. Mộ Dung Ca đứng ngoài bình luận bằng thơ.
-  - Trả giúp: Thiết Ngưu thân thiết cao.
-  - Đánh với Thiết Ngưu: trận tay đôi, thắng hay thua đều được hắn nể.
-- **Hồi 1:** Mộ Dung Ca nhờ người chơi và Thiết Ngưu giúp hắn tỏ tình. Người được tỏ tình là một NPC nữ có thật, nếu tuyến A đang chạy thì có thể chính là Nguyệt Hàn.
-  - Giúp thật lòng.
-  - Phá đám.
-  - Người chơi tự tỏ tình với nàng (tạo tam giác tình cảm).
-- **Hồi 2:** Thiết Ngưu bị tông môn ép đi đánh trận chiến tranh trấn ở phe đối địch với người chơi.
-  - Thuyết phục hắn bỏ trận.
-  - Đánh với hắn.
-  - Đổi phe theo hắn.
-- **Kết thúc:**
-  - **Kết nghĩa ba người:** cả hai đều thân thiết cao. Hai người lập quan hệ anh em kết nghĩa, vào trận giúp người chơi như bạn bè, và báo thù nếu người chơi bị giết (nối với hệ thống truy nã).
-  - **Mộ Dung thành đạo lữ:** người chơi nữ, hoặc S&M cho phép cùng giới. Hắn bỏ thói lăng nhăng (tính cách Đa tình đổi thành Chung thủy).
-  - **Mất một người huynh đệ:** Thiết Ngưu chết ở hồi 2. Mộ Dung Ca viết khúc nhạc tiễn đưa, người chơi nhận "Ngưu quyền" (công pháp quyền của hắn).
-  - **Tình địch:** người chơi tranh người với Mộ Dung Ca và thắng. Hắn rời đi, sau này xuất hiện ở trận chiến tranh trấn của phe kia.
+### Line B — "Old Huang's Debt" (Old Huang, town `{T}`)
+| Act | Content | Time limit / fail branch |
+|---|---|---|
+| B0 Bargain | A cheap item; masked men claim it (return / fight / run to him) | Return → line paused 2 years |
+| B1 Confession | Find him hiding; his Red Lotus loan; vouch, lend, or refuse | 2 years |
+| B2 Last caravan | Escort his caravan to `{T2}` (ambush battle); share of the profit | 1 year; late / robbed → **"Vanished Debtor"**: debt doubled, find him in a far town |
+| B3 Red ledger | A Red Lotus envoy; half the merchants owe her; steal the ledger (battle), pay, or stall | 2 years |
+| B4 Siege | Red banners over `{T}`; his secret savings; defend (town war), tribute, or stay out | Next town war, at most 3 years |
+| B5 Aftermath | A drink, a gift, the ending | — |
 
-### Tuyến E: "Vườn thuốc của bà bà" (Thạch bà bà, A Ly; giọng nghiêm và ấm)
-- **Mở đầu** (có thể đến từ tuyến C, hoặc gặp ngẫu nhiên ở vùng núi): bà bà nhờ người chơi trông nom vườn thuốc.
-  - Đồng ý: mỗi năm có một "lời dạy", +1 căn cơ ngẫu nhiên, tối đa 5 lần.
-  - Từ chối.
-- **Hồi 1:** bà bà nhặt được A Ly, một bé gái mồ côi, nhưng bà đã quá già để nuôi.
-  - Nhận nuôi: A Ly thành con nuôi, theo hệ thống gia tộc như con ruột, 16 tuổi thành NPC và có thể làm người thừa kế.
-  - Gửi vào tông môn: A Ly thành đệ tử tông môn, sau này là đồng minh.
-  - Để bà bà tự nuôi: bà mất sớm hơn, A Ly lang thang.
-- **Hồi 2** (bà bà mất, theo tuổi thọ thật): để lại "hạt giống đạo" và di nguyện.
-  - Người chơi giữ vườn: mở một nơi bế quan tự chọn (nối với ý tưởng "nút bế quan theo ý" đang chờ chốt).
-  - Hoặc trao vườn cho A Ly.
-- **Kết thúc:**
-  - **Truyền nhân:** A Ly lớn lên thành luyện đan sư hoặc kiếm tu, tùy cách nuôi.
-    - Nếu là người thừa kế, A Ly được ưu tiên khi chơi tiếp bằng hậu duệ.
-  - **Đứa trẻ lạc lối:** người chơi bỏ mặc A Ly. Cô lớn lên theo ma đạo dưới tay Hồng Liên, gặp lại ở tuyến A hoặc B như một kẻ thù có lý do.
-  - **Vườn thuốc truyền đời:** vườn được giữ qua nhiều thế hệ.
-    - Hậu duệ của người chơi vẫn nhận "lời dạy".
-    - Đây là tuyến duy nhất kéo dài qua các thế hệ.
+Endings: **Merchant Prince** (defended: market discount, yearly goods), **The Heir** (he dies of old age: his
+listings and a good buy order), **Fallen Town** (lost / stayed out: demonic town, tax ×2, hostile guards),
+**Betrayed** (vouched and he fled: the player owes; bounty on him), **Benefactor** (lent and repaid: he clears a
+bounty on the player once).
 
-## 3. Liên kết giữa các tuyến
+### Line C — "Exploding Furnace" (Su Xiaoman, grandmaster `{G}`; comic)
+| Act | Content | Time limit / fail branch |
+|---|---|---|
+| C0 Test subject | A furnace explodes; test her pill (lavender hair for 3 months); a real pill as an apology | Refused twice → line closed |
+| C1 Moonfrost Lotus | A valley map; a giant snake (battle); Granny Shi appears (opens line E) | 2 years; late → **"Failed Exam"**: she goes alone and comes back hurt; nurse her (+1 year) or "Last Explosion" |
+| C2 The exam | Furnace fee; three fire-control choices (2 of 3 right = pass) | Fail → again next spring |
+| C3 Stolen recipe | `{G}` stole her recipe; two apprentices' favors as proof; expose, duel, or let go | 1 year; let go → "Last Explosion" |
+| C4 Grand Gathering | `{G}`'s challenge; a saboteur at night (battle); the contest | — |
 
-- **Hồng Liên phu nhân** là kẻ đứng sau tuyến A (vu oan Nguyệt Hàn) và tuyến B (ma giáo đòi nợ). Nếu cả hai tuyến tới hồi 2, sẽ mở **trận cuối**:
-  - Người chơi cùng các đồng minh đã có (Nguyệt Hàn, lão Hoàng, Thiết Ngưu, Mộ Dung Ca, A Ly) đánh lên sào huyệt của Hồng Liên.
-  - Những ai thành kẻ thù trong các tuyến sẽ đứng về phía Hồng Liên.
-  - Kết thúc lớn: Hồng Liên chết hoặc bị phong ấn. Người chơi nhận "Hồng Liên kính" (một món đồ đặc trưng duy nhất), và các trấn bị ma giáo chiếm được giải phóng.
-- Tuyến C dẫn sang tuyến E qua Thạch bà bà.
-- Ở tuyến D, người được tỏ tình có thể là Nguyệt Hàn.
-- Ở tuyến E, A Ly có thể sa vào ma đạo dưới tay Hồng Liên.
-- Mọi lựa chọn và kết thúc được ghi vào Taoist log. Thêm một mục "Truyện đã trải qua" trong Taoist Settings để xem lại.
+Endings: **Master Alchemist** (her pills -30 %), **Companion** (intimacy ≥ 300: joins the team without pay),
+**Last Explosion** (a teahouse; food that restores mood now and then).
 
-## 4. Đã chốt (2026-11-16)
+### Line D — "Sworn Brothers" (Iron Ox, Murong Ge, `{L}`; comic; love triangle kept)
+| Act | Content | Time limit / fail branch |
+|---|---|---|
+| D0 Eleven bowls | Ox can't pay the inn; pay for him or fight him; the poet's verse | — |
+| D1 Beast hunt | Hunt with both (allies); campfire talk; swear brotherhood (intimacy ≥ 200 with both) | 1 year |
+| D2 Forty-two poems | A gift for `{L}`; help, sabotage, or court her yourself (triangle) | 1 year |
+| D3 Murong's blood debt | His family burned by the Red Lotus; track a killer to a ruined shrine (battle) | 2 years |
+| D4 Two battle lines | A town war with Ox on the other side: talk, fight, or switch sides | When such a town war comes |
 
-1. **Làm cả 5 tuyến** và trận cuối.
-2. **Chọn NPC đóng vai:** chờ đến khi có NPC phù hợp. Nếu chờ lâu, mỗi năm có xác suất tự tạo NPC, bắt đầu 2 % ở năm thứ nhất và tăng thêm 2 % mỗi năm (năm 10: 20 %), tối đa 50 %.
-3. **Có giới hạn thời gian** cho từng hồi (ghi trong bản lời thoại `07-Storylines-Dialogue-Draft.md`). Quá hạn hoặc nhiệm vụ thất bại thì không đóng tuyến mà rẽ sang **tuyến phụ khi thất bại**.
-4. **Giữ tam giác tình cảm** ở tuyến D.
-5. **Vườn thuốc (tuyến E):** là nơi **bế quan theo ý** (1–20 năm, trả linh thạch, nhận exp theo năm, bị ngắt như skip). **Cần thân thiết với Thạch bà bà từ 300 trở lên**; nếu bà đã mất thì xét thân thiết lúc bà mất.
-7. **Tuyến dài hơn** (góp ý bản 1): 5–6 hồi mỗi tuyến, mỗi hồi ít nhất 3 bước. Xem bản 2 ở `07-Storylines-Dialogue-Draft.md`.
-6. **"Trọng thương hôn mê"** vẫn còn treo (khác với cốt truyện).
+Endings: **Three Sworn** (both help in battles; they put a bounty on the player's killer), **Murong as Companion**
+(female player or same-sex option; Romantic → Faithful), **A Brother Lost** (Ox dies: "Ox Fist" technique),
+**Rivals** (the player won `{L}`: Ge fights on the enemy side of town wars).
+
+### Line E — "Granny's Herb Garden" (Granny Shi, A Li; earnest and warm)
+| Act | Content | Time limit / fail branch |
+|---|---|---|
+| E0 Mountain garden | Keep her garden; monkeys stealing peaches (fun battle); a lesson a year (+1 basis, at most 5) | — |
+| E1 Child in the ashes | A Li, from a village burned under red banners; adopt, send to a sect, or leave with Granny | 1 year |
+| E2 A Li grows up | Moments at 8, 12 and 15 (visit within a year each) shape her: alchemist / sword / free | All 3 missed → "Lost Child" |
+| E3 Granny falls ill | ≤ 3 years of life left: a longevity herb (encounter + battle, or market); she accepts (+10 years) or declines (last lesson, +3 basis) | — |
+| E4 Last wish | She dies under the pear tree; a seed; keep the garden (manual seclusion with intimacy ≥ 300) or give it to A Li | — |
+
+Endings: **Successor** (A Li becomes alchemist or swordswoman; preferred heir when continuing as a descendant),
+**Lost Child** (A Li grows up under Lady Honglian), **Garden of Generations** (descendants get the first lesson).
+
+### Final battle — "Red Lotus" (Lady Honglian)
+- **Opens:** line A or B reached act 4, and at least 2 other lines ended.
+- **Time limit:** 5 years. Late → **"Spreading Demon Realm"**: 2 more fallen towns a year, harder battle.
+
+| Act | Content |
+|---|---|
+| F1 Demon realm | Towns raise red banners; her letter; gather allies or go alone |
+| F2 Allies | A short drama with every ally of a good ending (A, H, N, C, Y, X); enemies of bad endings join her |
+| F3 Lotus Pavilion | Guardians (battle); her offer (fight, or kneel: secret ending); the last battle |
+| F4 Aftermath | Her towns are freed, her debt ledger burned, "Red Lotus Mirror" (unique item); farewells |
+
+Secret ending **Kneel**: the whole world puts bounties on the player, who rules her towns.
+
+### Links between lines
+- Lady Honglian is behind A (the sold manual), B (the loans and the siege), D (Murong's family) and E (A Li's
+  village).
+- C leads to E through Granny Shi; `{L}` of D may be Yue Han (if line A has no Companion ending).
+- Bad endings feed the final battle: Fallen Yue Han, Lost A Li, Rival Murong fight for her.
