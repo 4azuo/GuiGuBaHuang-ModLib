@@ -124,7 +124,8 @@ dmypy.json
 .pyre/
 *.rar
 
-# Game run logs (scripts/game/run-game.ps1)
+# Game run / autotest / unit test logs (scripts/game, scripts/run-*.ps1)
+logs/
 logs/game-runs/
 
 
