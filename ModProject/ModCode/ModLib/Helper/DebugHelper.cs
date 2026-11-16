@@ -3,6 +3,7 @@ using ModLib.Mod;
 using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Text;
 
@@ -130,6 +131,27 @@ namespace ModLib.Helper
         /// <param name="memberName">Calling member name (auto-populated)</param>
         /// <param name="filePath">Calling file path (auto-populated)</param>
         /// <param name="lineNumber">Calling line number (auto-populated)</param>
+        private static readonly HashSet<string> _ignoredErrors = new HashSet<string>();
+
+        /// <summary>
+        /// Logs an exception of a [ErrorIgnore] handler without the in-game dialog. Each distinct error (source +
+        /// message + first stack line) is written once per session: these handlers run every 200 ms - 1 s.
+        /// </summary>
+        public static void WriteIgnoredError(string source, Exception e)
+        {
+            var inner = e;
+            while (inner?.InnerException != null) inner = inner.InnerException;
+            var key = $"{source}|{inner?.GetType().Name}|{inner?.Message}|{inner?.StackTrace?.Split('\n').FirstOrDefault()}";
+            lock (_ignoredErrors)
+            {
+                if (!_ignoredErrors.Add(key))
+                    return;
+            }
+            WriteLine($"【Error (ignored, logged once)】{source}");
+            WriteLine($"{e.GetAllInnnerExceptionStr()}");
+            Save();
+        }
+
         public static void WriteLine(Exception e,
                 [CallerMemberName] string memberName = "",
                 [CallerFilePath] string filePath = "",

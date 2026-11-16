@@ -124,6 +124,13 @@ namespace ModLib.Helper
             uiConfirm.InitData(title, content, type.Parse<int>(),
                 ActionHelper.TracedIl2Action(() => onYesCall?.Invoke()),
                 ActionHelper.TracedIl2Action(() => onNoCall?.Invoke()));
+            // the popup type 2/3 labels its buttons "Enable"/"Disable": a question needs Yes/No (game texts)
+            if (type == MsgBoxButtonEnum.YesNo || type == MsgBoxButtonEnum.YesNoCancel)
+            {
+                if (uiConfirm.textBtn1 != null) uiConfirm.textBtn1.text = GameTool.LS("common_shi");
+                if (uiConfirm.textBtn2 != null) uiConfirm.textBtn2.text = GameTool.LS("common_fou");
+                if (type == MsgBoxButtonEnum.YesNoCancel && uiConfirm.textBtn3 != null) uiConfirm.textBtn3.text = GameTool.LS("common_quxiao");
+            }
         }
 
         /// <summary>

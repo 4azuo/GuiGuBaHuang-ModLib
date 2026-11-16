@@ -1,10 +1,16 @@
 ﻿using System;
 using System.Net;
 
+/// <summary>
+/// WebClient with a request timeout.
+/// </summary>
 public class WebClientWithTimeout : WebClient
 {
     public int Timeout { get; set; } = 10000; // default 10s
 
+    /// <summary>
+    /// Applies the timeout to each request.
+    /// </summary>
     protected override WebRequest GetWebRequest(Uri address)
     {
         WebRequest request = base.GetWebRequest(address);

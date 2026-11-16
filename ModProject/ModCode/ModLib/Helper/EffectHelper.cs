@@ -8,6 +8,9 @@ namespace ModLib.Helper
     /// Provides utilities for effect reflection and discovery.
     /// </summary>
     //Effect3017: Shield
+    /// <summary>
+    /// Helpers for battle/role effects (create, read and modify effect values).
+    /// </summary>
     [ActionCat("Effect")]
     public static class EffectHelper
     {

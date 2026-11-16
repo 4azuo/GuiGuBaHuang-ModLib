@@ -1,5 +1,8 @@
 ﻿namespace ModLib.Const
 {
+    /// <summary>
+    /// ModLib constants: file names, website, supported screen ratio, well-known item ids and default drama ids.
+    /// </summary>
     public static class ModLibConst
     {
         public const string MODLIB_DLL = "ModLib.dll";

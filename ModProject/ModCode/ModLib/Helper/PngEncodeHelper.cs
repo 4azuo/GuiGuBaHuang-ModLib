@@ -5,14 +5,21 @@ using System.Text;
 
 namespace ModLib.Helper
 {
+    /// <summary>
+    /// Minimal PNG encoder (RGBA, no compression) used to export textures without Unity image modules.
+    /// </summary>
     [ActionCatIgn]
     public static class PngEncodeHelper
     {
+        /// <summary>
+        /// Encodes raw RGBA bytes into a PNG file.
+        /// </summary>
         public static byte[] EncodeRGBA(byte[] rgba, uint width, uint height)
         {
             using (var ms = new MemoryStream())
             {
-                Write(ms, "\x89PNG\r\n\x1a\n");
+                // signature as bytes: 0x89 is not ASCII, Encoding.ASCII wrote '?' (BUG-07)
+                ms.Write(new byte[] { 0x89, 0x50, 0x4E, 0x47, 0x0D, 0x0A, 0x1A, 0x0A }, 0, 8);
 
                 WriteChunk(ms, "IHDR", CreateIHDR(width, height));
                 WriteChunk(ms, "IDAT", CreateIDAT(rgba, width, height));
@@ -22,6 +29,9 @@ namespace ModLib.Helper
             }
         }
 
+        /// <summary>
+        /// Builds the IHDR chunk.
+        /// </summary>
         static byte[] CreateIHDR(uint w, uint h)
         {
             using (var ms = new MemoryStream())
@@ -37,6 +47,9 @@ namespace ModLib.Helper
             }
         }
 
+        /// <summary>
+        /// Builds the IDAT chunk (stored deflate blocks).
+        /// </summary>
         static byte[] CreateIDAT(byte[] rgba, uint w, uint h)
         {
             using (var raw = new MemoryStream())
@@ -61,6 +74,9 @@ namespace ModLib.Helper
             }
         }
 
+        /// <summary>
+        /// Writes one PNG chunk with its CRC.
+        /// </summary>
         static void WriteChunk(Stream s, string type, byte[] data)
         {
             WriteInt(s, (uint)data.Length);
@@ -69,9 +85,15 @@ namespace ModLib.Helper
             WriteInt(s, CRC(type, data));
         }
 
+        /// <summary>
+        /// Writes bytes to the stream.
+        /// </summary>
         static void Write(Stream s, string str)
             => s.Write(Encoding.ASCII.GetBytes(str), 0, str.Length);
 
+        /// <summary>
+        /// Writes a big-endian int.
+        /// </summary>
         static void WriteInt(Stream s, uint v)
         {
             s.WriteByte((byte)(v >> 24));
@@ -80,6 +102,9 @@ namespace ModLib.Helper
             s.WriteByte((byte)v);
         }
 
+        /// <summary>
+        /// Computes the CRC32 of a buffer.
+        /// </summary>
         static uint CRC(string type, byte[] data)
         {
             uint crc = 0xffffffff;
@@ -90,6 +115,9 @@ namespace ModLib.Helper
             return crc ^ 0xffffffff;
         }
 
+        /// <summary>
+        /// Updates a running CRC32.
+        /// </summary>
         static uint UpdateCRC(uint c, byte b)
         {
             c ^= b;

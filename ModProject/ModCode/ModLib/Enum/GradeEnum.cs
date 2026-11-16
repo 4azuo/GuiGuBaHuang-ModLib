@@ -1,5 +1,8 @@
 ﻿namespace ModLib.Enum
 {
+    /// <summary>
+    /// Cultivation grades (realms) of the game.
+    /// </summary>
     public enum GradeEnum
     {
         QiRefining = 1,

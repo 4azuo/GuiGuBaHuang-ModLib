@@ -11,6 +11,10 @@ using UnityEngine;
 
 namespace ModLib.Mod
 {
+    /// <summary>
+    /// ModLib core (MonoBehaviour created by the ModLib mod). Registers game timers/events, dispatches them to ModEvents,
+    /// manages the load sequence (mod -&gt; configs -&gt; enums -&gt; global caches -&gt; game variables -&gt; game caches) and saving.
+    /// </summary>
     public abstract partial class ModMaster : MonoBehaviour
     {
         protected static HarmonyLib.Harmony harmony;
@@ -157,6 +161,10 @@ namespace ModLib.Mod
         #endregion
 
         //GameEvent
+        /// <summary>
+        /// Called by the game when ModLib loads: patches Harmony, registers timers (10/100/200/500/1000 ms),
+        /// map/game/battle events and the MonoUpdater used for OnMonoUpdate.
+        /// </summary>
         public virtual void Init()
         {
             try
@@ -336,6 +344,9 @@ namespace ModLib.Mod
             }
         }
 
+        /// <summary>
+        /// Unloads the mod: calls OnUnload and unregisters every timer and event.
+        /// </summary>
         public void Destroy()
         {
             try
@@ -429,24 +440,36 @@ namespace ModLib.Mod
             }
         }
 
+        /// <summary>
+        /// Registers a looping game timer and returns it.
+        /// </summary>
         private TimerMgr.CoroutineTime RegTimer(Action action, float period)
         {
             g.timer.Time(action, period, true);
             return g.timer.allTime.ToArray().Last();
         }
 
+        /// <summary>
+        /// Registers a game event listener and returns its entry.
+        /// </summary>
         private EventsMgr.EventsData RegEvent(string id,  Action<ETypeData> action)
         {
             g.events.On(id, action, 0, true);
             return g.events.allEvents[id].ToArray().Last();
         }
 
+        /// <summary>
+        /// Stops and removes a timer.
+        /// </summary>
         private void UnregTimer(TimerMgr.CoroutineTime timer)
         {
             timer.Stop();
             g.timer.allTime.Remove(timer);
         }
 
+        /// <summary>
+        /// Disables and removes an event listener.
+        /// </summary>
         private void UnregEvent(EventsMgr.EventsData eItem)
         {
             eItem.isOff = true;
@@ -457,11 +480,17 @@ namespace ModLib.Mod
             }
         }
 
+        /// <summary>
+        /// Invokes a ModMaster method by name via reflection, casting the Il2Cpp event data to T; logs duration and errors.
+        /// </summary>
         private void CallEvents(string methodName)
         {
             CallEvents<Il2CppObjectBase>(methodName, null);
         }
 
+        /// <summary>
+        /// Invokes a ModMaster method by name via reflection, casting the Il2Cpp event data to T; logs duration and errors.
+        /// </summary>
         private void CallEvents<T>(string methodName, Il2CppObjectBase e) where T : Il2CppObjectBase
         {
             try
@@ -470,14 +499,19 @@ namespace ModLib.Mod
                     DebugHelper.WriteLine($"【Start】CallEvents<{typeof(T).Name}>({methodName})");
                 var timeStart = DateTime.Now;
                 var method = this.GetType().GetMethod(methodName, BindingFlags.Public | BindingFlags.Instance | BindingFlags.FlattenHierarchy);
-                if (method.GetParameters().Length == 0)
+                var trace = Helper.EventTraceHelper.Enter($"game:{methodName}");
+                try
                 {
-                    method.Invoke(this, null);
+                    if (method.GetParameters().Length == 0)
+                    {
+                        method.Invoke(this, null);
+                    }
+                    else
+                    {
+                        method.Invoke(this, new object[] { e?.TryCast<T>()/* ?? e*/ });
+                    }
                 }
-                else
-                {
-                    method.Invoke(this, new object[] { e?.TryCast<T>()/* ?? e*/ });
-                }
+                finally { Helper.EventTraceHelper.Exit(trace); }
                 var timeEnd = DateTime.Now;
                 var processTime = timeEnd - timeStart;
                 if (ModLibConfigs.DebugMode >= Enum.DebugModeEnum.Finest)
@@ -489,6 +523,9 @@ namespace ModLib.Mod
             }
         }
 
+        /// <summary>
+        /// Shows an exception in a long text dialog with a button opening the log.
+        /// </summary>
         public static void ShowException(Exception ex, string log)
         {
             if (g.ui.HasUI(UIType.TextInfoLong))
@@ -501,6 +538,9 @@ namespace ModLib.Mod
             ui.ptextInfo.fontSize = 14;
         }
 
+        /// <summary>
+        /// Loads all Global cachable objects (ModChilds and Global events).
+        /// </summary>
         public static void AddGlobalCaches()
         {
             //load
@@ -509,6 +549,9 @@ namespace ModLib.Mod
             DebugHelper.Save();
         }
 
+        /// <summary>
+        /// Loads Local cachable objects of the save, removes title-screen-only objects and sorts by order.
+        /// </summary>
         public static void AddGameCaches()
         {
             //load
@@ -521,12 +564,18 @@ namespace ModLib.Mod
             DebugHelper.Save();
         }
 
+        /// <summary>
+        /// Rebuilds the shared ParameterStore (units, buildings, towns, schools) and resets ModChild overrides.
+        /// </summary>
         public void RefreshParameterStore()
         {
             ResetModChildParameterStore();
             ParameterStore = ParameterStore.CreateModMasterParameterStore();
         }
 
+        /// <summary>
+        /// Clears the ParameterStore override of every ModChild.
+        /// </summary>
         public void ResetModChildParameterStore()
         {
             foreach (var e in EventHelper.GetModChilds())
@@ -535,11 +584,17 @@ namespace ModLib.Mod
             }
         }
 
+        /// <summary>
+        /// Sets the ModLib configs (mod_configs.json).
+        /// </summary>
         public void SetModMasterConfigs(ModConfigs mc)
         {
             ModLibConfigs = mc;
         }
 
+        /// <summary>
+        /// Runs the static constructors of all EnumObject types in an assembly so their instances exist.
+        /// </summary>
         public static void LoadEnumObj(Assembly ass)
         {
             if (ass == null)

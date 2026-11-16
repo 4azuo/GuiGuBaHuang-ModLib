@@ -5,6 +5,9 @@ using ModLib.Helper;
 
 namespace ModLib.Object
 {
+    /// <summary>
+    /// Snapshot of world data used by monthly events (units with a valid area, buildings, towns, schools).
+    /// </summary>
     public class ParameterStore
     {
         [JsonIgnore]
@@ -16,8 +19,14 @@ namespace ModLib.Object
         [JsonIgnore]
         public MapBuildSchool[] Schools { get; private set; }
 
+        /// <summary>
+        /// Use the factory methods.
+        /// </summary>
         private ParameterStore() { }
 
+        /// <summary>
+        /// Builds the snapshot from the current world.
+        /// </summary>
         public static ParameterStore CreateModMasterParameterStore()
         {
             return new ParameterStore
@@ -39,6 +48,9 @@ namespace ModLib.Object
             };
         }
 
+        /// <summary>
+        /// Builds a subset for a ModChild; missing arguments fall back to the ModMaster snapshot.
+        /// </summary>
         public static ParameterStore CreateModChildParameterStore(WorldUnitBase[] wunits = null, MapBuildBase[] buildings = null, MapBuildTown[] towns = null, MapBuildSchool[] schools = null)
         {
             return new ParameterStore

@@ -1,5 +1,8 @@
 ﻿namespace ModLib.Enum
 {
+    /// <summary>
+    /// Breakthrough bottleneck types of the game.
+    /// </summary>
     public enum BottleneckEnum
     {
         None = 0,

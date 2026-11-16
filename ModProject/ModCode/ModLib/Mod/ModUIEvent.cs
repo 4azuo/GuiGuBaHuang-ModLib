@@ -4,9 +4,15 @@ using ModLib.Helper;
 
 namespace ModLib.Mod
 {
+    /// <summary>
+    /// Built-in UI refresher (Global, order 10).
+    /// </summary>
     [Cache("$UI$", OrderIndex = 10, CacheType = CacheAttribute.CType.Global, WorkOn = CacheAttribute.WType.All)]
     public class ModUIEvent : ModEvent
     {
+        /// <summary>
+        /// Refreshes every custom UI with IsAutoUpdate = true.
+        /// </summary>
         [ErrorIgnore]
         public override void OnTimeUpdate100ms()
         {

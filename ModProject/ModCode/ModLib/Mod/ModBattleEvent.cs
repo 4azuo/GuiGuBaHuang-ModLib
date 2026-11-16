@@ -9,18 +9,28 @@ using ModLib.Helper;
 
 namespace ModLib.Mod
 {
+    /// <summary>
+    /// Built-in battle tracker (Local, order 100). Exposes the current battle (scene, player unit, units, town/school),
+    /// the last attacking/hit units, kill list, and damage statistics per damage type for the battle (BattleDmg) and the whole save (GameDmg).
+    /// </summary>
     [Cache("$BATTLE$", OrderIndex = 100, CacheType = CacheAttribute.CType.Local, WorkOn = CacheAttribute.WType.Local)]
     public class ModBattleEvent : ModEvent
     {
         public static ModBattleEvent Instance { get; set; }
 
         #region DmgKey
+        /// <summary>
+        /// Damage direction: dealt by the player or received by the player.
+        /// </summary>
         public enum DmgEnum
         {
             DmgDealt = 1,
             DmgRecv = 2,
         }
 
+        /// <summary>
+        /// Damage categories: total, physical/magic, and each basis (weapon or element).
+        /// </summary>
         public enum DmgTypeEnum
         {
             Damage = 1,
@@ -43,21 +53,33 @@ namespace ModLib.Mod
             Wood = 206,
         }
 
+        /// <summary>
+        /// Builds the dictionary key "&lt;DmgEnum&gt;_&lt;DmgTypeEnum&gt;".
+        /// </summary>
         public static string GetDmgKey(DmgEnum dmgEnum, DmgTypeEnum dmgTypeEnum)
         {
             return $"{dmgEnum}_{dmgTypeEnum}";
         }
 
+        /// <summary>
+        /// Maps a basis damage type to its UnitDynPropertyEnum (BasisBlade, BasisFire...).
+        /// </summary>
         public static UnitDynPropertyEnum GetDmgPropertyEnum(DmgTypeEnum dmgTypeEnum)
         {
             return UnitDynPropertyEnum.GetEnumByName<UnitDynPropertyEnum>($"Basis{dmgTypeEnum}");
         }
 
+        /// <summary>
+        /// Reads a dynamic property value of a battle unit.
+        /// </summary>
         public static int GetUnitPropertyValue(UnitCtrlBase uc, DmgTypeEnum dmgTypeEnum)
         {
             return GetUnitPropertyValue(uc, GetDmgPropertyEnum(dmgTypeEnum));
         }
 
+        /// <summary>
+        /// Reads a dynamic property value of a battle unit.
+        /// </summary>
         public static int GetUnitPropertyValue(UnitCtrlBase uc, UnitDynPropertyEnum pEnum)
         {
             if (pEnum == null)
@@ -65,6 +87,9 @@ namespace ModLib.Mod
             return (uc.data.GetValue(pEnum.PropName) as DynInt).value;
         }
 
+        /// <summary>
+        /// Basis type of a hit (weapon type or magic element), Damage when unknown.
+        /// </summary>
         public static DmgTypeEnum GetDmgBasisType(MartialTool.HitData hitData)
         {
             if (hitData != null)
@@ -85,6 +110,9 @@ namespace ModLib.Mod
             return DmgTypeEnum.Damage;
         }
 
+        /// <summary>
+        /// Physical / Magic / Damage category of a hit, from the skill data.
+        /// </summary>
         public static DmgTypeEnum GetDmgType(MartialTool.HitData hitData)
         {
             if (hitData != null)
@@ -103,22 +131,34 @@ namespace ModLib.Mod
             return DmgTypeEnum.Damage;
         }
 
+        /// <summary>
+        /// True for weapon or element basis types.
+        /// </summary>
         public static bool IsBasisDmg(DmgTypeEnum type)
         {
             return (type >= DmgTypeEnum.Blade && type <= DmgTypeEnum.Finger) ||
                 (type >= DmgTypeEnum.Fire && type <= DmgTypeEnum.Wood);
         }
 
+        /// <summary>
+        /// True for weapon basis types.
+        /// </summary>
         public static bool IsBasisPhysic(DmgTypeEnum type)
         {
             return (type >= DmgTypeEnum.Blade && type <= DmgTypeEnum.Finger);
         }
 
+        /// <summary>
+        /// True for element basis types.
+        /// </summary>
         public static bool IsBasisMagic(DmgTypeEnum type)
         {
             return (type >= DmgTypeEnum.Fire && type <= DmgTypeEnum.Wood);
         }
 
+        /// <summary>
+        /// Basis with the highest damage dealt by the player in the current battle.
+        /// </summary>
         public DmgTypeEnum GetHighestDealtDmgTypeEnum()
         {
             var basises = new Dictionary<DmgTypeEnum, long>
@@ -140,11 +180,17 @@ namespace ModLib.Mod
             return basises.FirstOrDefault(x => x.Value == max).Key;
         }
 
+        /// <summary>
+        /// Static shortcut of GetHighestDealtDmgTypeEnum.
+        /// </summary>
         public static DmgTypeEnum sGetHighestDealtDmgTypeEnum()
         {
             return ModBattleEvent.Instance.GetHighestDealtDmgTypeEnum();
         }
 
+        /// <summary>
+        /// Basis with the highest damage received by the player in the current battle.
+        /// </summary>
         public DmgTypeEnum GetHighestRecvDmgTypeEnum()
         {
             var basises = new Dictionary<DmgTypeEnum, long>
@@ -166,6 +212,9 @@ namespace ModLib.Mod
             return basises.FirstOrDefault(x => x.Value == max).Key;
         }
 
+        /// <summary>
+        /// Static shortcut of GetHighestRecvDmgTypeEnum.
+        /// </summary>
         public static DmgTypeEnum sGetHighestRecvDmgTypeEnum()
         {
             return ModBattleEvent.Instance.GetHighestRecvDmgTypeEnum();
@@ -173,6 +222,9 @@ namespace ModLib.Mod
         #endregion
 
         #region DmgInfo
+        /// <summary>
+        /// Damage statistic scope: Global = whole save game, Local = current battle.
+        /// </summary>
         public enum DmgSaveEnum
         {
             Global = 1,
@@ -183,6 +235,9 @@ namespace ModLib.Mod
         [JsonIgnore]
         public IDictionary<string, long> BattleDmg { get; set; } = new Dictionary<string, long>();
 
+        /// <summary>
+        /// Reads a damage statistic (creates the key with 0 when missing).
+        /// </summary>
         public long GetDmg(DmgSaveEnum dmgSaveEnum, string dmgKey)
         {
             switch (dmgSaveEnum)
@@ -200,6 +255,9 @@ namespace ModLib.Mod
             }
         }
 
+        /// <summary>
+        /// Static shortcut of GetDmg.
+        /// </summary>
         public static long sGetDmg(DmgSaveEnum dmgSaveEnum, string dmgKey)
         {
             return Instance.GetDmg(dmgSaveEnum, dmgKey);
@@ -207,6 +265,9 @@ namespace ModLib.Mod
         #endregion
 
         #region Funcs
+        /// <summary>
+        /// Unit that killed the given unit in the current battle.
+        /// </summary>
         public static UnitCtrlBase GetKiller(UnitCtrlBase cunit)
         {
             return KillList.FirstOrDefault(x => x.Item1.data.createUnitSoleID == cunit.data.createUnitSoleID)?.Item2;
@@ -232,6 +293,9 @@ namespace ModLib.Mod
         public static float RoomStayTime => SceneBattle.battleData.roomStayTime;
         public static List<Tuple<UnitCtrlBase, UnitCtrlBase>> KillList { get; } = new List<Tuple<UnitCtrlBase, UnitCtrlBase>>();
 
+        /// <summary>
+        /// Initializes every GameDmg key so later additions never fail.
+        /// </summary>
         public override void OnLoadGame()
         {
             base.OnLoadGame();
@@ -249,6 +313,9 @@ namespace ModLib.Mod
         }
 
         // [Trace]
+        /// <summary>
+        /// Resets battle statistics and the kill list; resolves the town/school at the player position.
+        /// </summary>
         public override void OnBattleStart(ETypeData e)
         {
             base.OnBattleStart(e);
@@ -269,6 +336,9 @@ namespace ModLib.Mod
             }
         }
 
+        /// <summary>
+        /// Remembers the attacking and hit units (and their world units) before damage is applied.
+        /// </summary>
         public override void OnBattleUnitHitDynIntHandler(UnitHitDynIntHandler e)
         {
             base.OnBattleUnitHitDynIntHandler(e);
@@ -278,6 +348,9 @@ namespace ModLib.Mod
             HitWorldUnit = HitUnit?.data?.TryCast<UnitDataHuman>()?.worldUnitData?.unit;
         }
 
+        /// <summary>
+        /// Adds the hit damage to the dealt/received statistics when the player is involved.
+        /// </summary>
         public override void OnBattleUnitHit(UnitHit e)
         {
             base.OnBattleUnitHit(e);
@@ -332,6 +405,9 @@ namespace ModLib.Mod
             }
         }
 
+        /// <summary>
+        /// Records (victim, killer) in KillList.
+        /// </summary>
         public override void OnBattleUnitDie(UnitDie e)
         {
             base.OnBattleUnitDie(e);

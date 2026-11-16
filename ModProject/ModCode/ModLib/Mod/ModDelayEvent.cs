@@ -10,6 +10,9 @@ using ModLib.Helper;
 
 namespace ModLib.Mod
 {
+    /// <summary>
+    /// Built-in scheduler (Global, order 1, works everywhere). Runs queued event methods/actions after a delay, checked every 10 ms.
+    /// </summary>
     [Cache("$DELAY$", OrderIndex = 1, CacheType = CacheAttribute.CType.Global, WorkOn = CacheAttribute.WType.All)]
     public class ModDelayEvent : ModEvent
     {
@@ -19,6 +22,9 @@ namespace ModLib.Mod
         [JsonIgnore]
         public DelayInfo ProcessingEventInfo { get; set; }
 
+        /// <summary>
+        /// Executes and removes all delayed events whose delay has elapsed; exceptions are logged unless ErrorIgnore is set.
+        /// </summary>
         public override void OnTimeUpdate10ms()
         {
             base.OnTimeUpdate10ms();
@@ -48,11 +54,19 @@ namespace ModLib.Mod
                         {
                             DebugHelper.WriteLine(new Exception($"{e.Event}.{e.Method.Name}({e.Parameter}) : {e.Event.ModId}, {e.Event.CacheId}, {e.Event.CacheType}, {e.Event.WorkOn}", ex));
                         }
+                        else
+                        {
+                            // [ErrorIgnore]: no dialog, but the error is still logged (once)
+                            DebugHelper.WriteIgnoredError($"{e.Event}.{e.Method?.Name ?? e.CustomMethod?.Method.Name} (delayed) : {e.Event.ModId}, {e.Event.CacheId}", ex);
+                        }
                     }
                 }
             }
         }
 
+        /// <summary>
+        /// Queues an event method (by MethodInfo or name) or a custom action to run after delayMsec.
+        /// </summary>
         public void DelayEvent(ModEvent ev, MethodInfo method, object e, int delayMsec)
         {
             lock (DelayEvents)
@@ -67,6 +81,9 @@ namespace ModLib.Mod
             }
         }
 
+        /// <summary>
+        /// Queues an event method (by MethodInfo or name) or a custom action to run after delayMsec.
+        /// </summary>
         public void DelayEvent(ModEvent ev, string methodName, object e, int delayMsec)
         {
             var method = ev.GetType().GetMethod(methodName);
@@ -76,6 +93,9 @@ namespace ModLib.Mod
             }
         }
 
+        /// <summary>
+        /// Queues an event method (by MethodInfo or name) or a custom action to run after delayMsec.
+        /// </summary>
         public void DelayEvent(ModEvent ev, Action action, int delayMsec)
         {
             lock (DelayEvents)

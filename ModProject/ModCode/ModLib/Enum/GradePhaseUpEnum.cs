@@ -2,6 +2,9 @@
 
 namespace ModLib.Enum
 {
+    /// <summary>
+    /// Breakthrough steps between phases.
+    /// </summary>
     public class GradePhaseUpEnum : EnumObject
     {
         public static GradePhaseUpEnum QiRefining_Early { get; } = new GradePhaseUpEnum(GradePhaseEnum.QiRefining_Early, GradePhaseEnum.QiRefining_Middle);
@@ -51,6 +54,9 @@ namespace ModLib.Enum
 
         public GradePhaseEnum Phase { get; private set; }
         public GradePhaseEnum NextPhase { get; private set; }
+        /// <summary>
+        /// Creates a phase-up entry.
+        /// </summary>
         private GradePhaseUpEnum(GradePhaseEnum phase, GradePhaseEnum nextPhase) : base(phase.Value)
         {
             Phase = phase;

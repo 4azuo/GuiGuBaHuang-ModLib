@@ -164,6 +164,9 @@ namespace ModLib.Helper
             return AttributeTargetHelper<TAttribute>.GetTarget(attribute);
         }
 
+        /// <summary>
+        /// Returns the attribute declared on the method, or on its declaring class when the method has none.
+        /// </summary>
         public static T GetAttributeOnMethodOrClass<T>(this MethodBase method) where T : Attribute
         {
             return method.GetCustomAttribute<T>() ?? method.DeclaringType.GetCustomAttribute<T>();

@@ -332,6 +332,22 @@ namespace ModLib.Helper
         }
 
         /// <summary>
+        /// Adds a loaded/created cache object when its OnCacheHandler accepts it (feature on). A rejected object
+        /// (feature off) also loses the static "Instance" assigned by OnLoadClass, so "Instance == null" means off (BUG-16).
+        /// </summary>
+        private static void AddIfAccepted(CachableObject e)
+        {
+            if (e.OnCacheHandler())
+            {
+                AddCachableObject(e);
+                return;
+            }
+            var prop = e.GetType().GetProperty("Instance", System.Reflection.BindingFlags.Static | System.Reflection.BindingFlags.Public);
+            if (prop != null && prop.CanWrite && ReferenceEquals(prop.GetValue(null), e))
+                prop.SetValue(null, null);
+        }
+
+        /// <summary>
         /// Loads all global cache objects from disk or creates new instances if files don't exist.
         /// Initializes ModLib and ModChild caches.
         /// </summary>
@@ -346,8 +362,7 @@ namespace ModLib.Helper
                     {
                         var e = (CachableObject)JsonConvert.DeserializeObject(File.ReadAllText(cacheFile), t.Item3, JSON_SETTINGS);
                         e.OnLoadClass(false, t.Item1, t.Item2);
-                        if (e.OnCacheHandler())
-                            AddCachableObject(e);
+                        AddIfAccepted(e);
                     }
                     else
                     {
@@ -355,8 +370,7 @@ namespace ModLib.Helper
                         {
                             var e = (CachableObject)Activator.CreateInstance(t.Item3);
                             e.OnLoadClass(true, t.Item1, t.Item2);
-                            if (e.OnCacheHandler())
-                                AddCachableObject(e);
+                            AddIfAccepted(e);
                         }
                     }
                 }
@@ -378,8 +392,7 @@ namespace ModLib.Helper
                     {
                         var e = (CachableObject)JsonConvert.DeserializeObject(File.ReadAllText(cacheFile), t.Item3, JSON_SETTINGS);
                         e.OnLoadClass(false, t.Item1, t.Item2);
-                        if (e.OnCacheHandler())
-                            AddCachableObject(e);
+                        AddIfAccepted(e);
                     }
                     else
                     {
@@ -387,8 +400,7 @@ namespace ModLib.Helper
                         {
                             var e = (CachableObject)Activator.CreateInstance(t.Item3);
                             e.OnLoadClass(true, t.Item1, t.Item2);
-                            if (e.OnCacheHandler())
-                                AddCachableObject(e);
+                            AddIfAccepted(e);
                         }
                     }
                 }

@@ -1,5 +1,8 @@
 ﻿namespace ModLib.Enum
 {
+    /// <summary>
+    /// Pill categories of the game.
+    /// </summary>
     public enum PillTypeEnum
     {
         RecoverVitality = 1,

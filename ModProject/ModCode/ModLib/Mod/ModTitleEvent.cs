@@ -14,6 +14,10 @@ using UnityEngine;
 
 namespace ModLib.Mod
 {
+    /// <summary>
+    /// Built-in title screen extension (Global, order 90): ModLib credit button, language selector (translated LocalText)
+    /// and the ModCreator tools window (duplicated config id check).
+    /// </summary>
     [Cache("$TITLES$", OrderIndex = 90, CacheType = CacheAttribute.CType.Global, WorkOn = CacheAttribute.WType.Global)]
     public class ModTitleEvent : ModEvent
     {
@@ -34,12 +38,18 @@ namespace ModLib.Mod
 
         public int TranslateIndex { get; set; } = 0;
 
+        /// <summary>
+        /// Loads the LocalText of the saved translation language.
+        /// </summary>
         public override void OnLoadClass(bool isNew, string modId, CacheAttribute attr)
         {
             base.OnLoadClass(isNew, modId, attr);
             LoadLocalTexts(GetTranslateLanguage());
         }
 
+        /// <summary>
+        /// On the Login UI: warns about unsupported screen ratio and adds the ModLib/language/tools buttons.
+        /// </summary>
         public override void OnOpenUIEnd(OpenUIEnd e)
         {
             base.OnOpenUIEnd(e);
@@ -100,6 +110,9 @@ namespace ModLib.Mod
             }
         }
 
+        /// <summary>
+        /// Lists config ids loaded by several mods (red) or replacing base game ids (blue).
+        /// </summary>
         private void ShowCheckedIDs()
         {
             var listWindow = new UICustom1(GameTool.LS("libtxt999990010"));
@@ -187,11 +200,17 @@ namespace ModLib.Mod
             return string.IsNullOrEmpty(name) ? "unnamed" : name;
         }
 
+        /// <summary>
+        /// Language code of the selected translation (null = default).
+        /// </summary>
         public static string GetTranslateLanguage()
         {
             return TranslateCode[Instance.TranslateIndex];
         }
 
+        /// <summary>
+        /// Reloads the LocalText configs of all loaded mods for a language.
+        /// </summary>
         public static void LoadLocalTexts(string transCode)
         {
             if (transCode == null)
