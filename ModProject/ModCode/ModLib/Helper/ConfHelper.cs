@@ -227,8 +227,9 @@ namespace ModLib.Helper
                         }
                         catch (Exception ex)
                         {
+                            // one broken file must not stop the other files (a mod would lose all its later configs)
                             DebugHelper.WriteLine($"Failed to load conf file: {filePath}");
-                            throw ex;
+                            DebugHelper.WriteLine(ex);
                         }
                     }
                 }

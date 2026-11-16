@@ -91,6 +91,22 @@ namespace ModLib.Mod
         public virtual void OnLoadGlobals()
         {
             DebugHelper.WriteLine("Load global caches.");
+            //mod data of the saves deleted in the game (only saves recorded by SaveCleanupHelper.Register)
+            if (ModLibConfigs?.CleanOrphanSaves ?? true)
+            {
+                try
+                {
+                    var folders = new System.Collections.Generic.HashSet<string>();
+                    foreach (var cache in g.cache.allCache)
+                        if (!string.IsNullOrEmpty(cache?.data?.folder)) folders.Add(cache.data.folder);
+                    var removed = SaveCleanupHelper.CleanDeletedSaves(SaveCleanupHelper.GameDataPath, folders);
+                    DebugHelper.WriteLine($"Save cleanup: {folders.Count} saves, removed {removed.Count}: {string.Join(", ", removed.ConvertAll(x => Path.GetFileName(x)))}");
+                }
+                catch (Exception ex)
+                {
+                    DebugHelper.WriteLine($"Save cleanup skipped: {ex.Message}");
+                }
+            }
             //load globals
             AddGlobalCaches();
         }
