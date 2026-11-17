@@ -68,5 +68,30 @@
 		"id": "999990013",
 		"key": "libtxt999990013",
 		"en|ch|tc|kr": "Exportar todos los recursos del juego."
+	},
+	{
+		"id": "999990014",
+		"key": "libtxt999990014",
+		"en|ch|tc|kr": "Con la tecnología de\nModLib de Fouru {0}"
+	},
+	{
+		"id": "999990015",
+		"key": "libtxt999990015",
+		"en|ch|tc|kr": "Idioma:"
+	},
+	{
+		"id": "999990016",
+		"key": "libtxt999990016",
+		"en|ch|tc|kr": "Predeterminado"
+	},
+	{
+		"id": "999990017",
+		"key": "libtxt999990017",
+		"en|ch|tc|kr": "Excepción"
+	},
+	{
+		"id": "999990018",
+		"key": "libtxt999990018",
+		"en|ch|tc|kr": "Abrir registro"
 	}
 ]

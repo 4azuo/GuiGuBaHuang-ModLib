@@ -68,5 +68,30 @@
 		"id": "999990013",
 		"key": "libtxt999990013",
 		"en|ch|tc|kr": "Xuất toàn bộ tài nguyên của game."
+	},
+	{
+		"id": "999990014",
+		"key": "libtxt999990014",
+		"en|ch|tc|kr": "Vận hành bởi\nModLib của Fouru {0}"
+	},
+	{
+		"id": "999990015",
+		"key": "libtxt999990015",
+		"en|ch|tc|kr": "Ngôn ngữ:"
+	},
+	{
+		"id": "999990016",
+		"key": "libtxt999990016",
+		"en|ch|tc|kr": "Mặc định"
+	},
+	{
+		"id": "999990017",
+		"key": "libtxt999990017",
+		"en|ch|tc|kr": "Ngoại lệ"
+	},
+	{
+		"id": "999990018",
+		"key": "libtxt999990018",
+		"en|ch|tc|kr": "Mở nhật ký"
 	}
 ]

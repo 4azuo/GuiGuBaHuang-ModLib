@@ -67,6 +67,7 @@
     <Compile Include="Enum\LuckRarityEnum.cs" />
     <Compile Include="Enum\UnitDynPropertyEnum.cs" />
     <Compile Include="Helper\ActionHelper_TracedWrapper.cs" />
+    <Compile Include="Helper\TextIconHelper.cs" />
     <Compile Include="Helper\ActionHelper.cs" />
     <Compile Include="Helper\ActionHelper_TracedIl2Action.cs" />
     <Compile Include="Helper\ActionHelper_TracedUnityAction.cs" />

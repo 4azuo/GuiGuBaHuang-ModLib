@@ -64,7 +64,7 @@ namespace ModLib.Mod
                 var ui = new UICover<UILogin>(UIType.Login);
                 {
                     var parentTransform = ui.UI.btnSet.transform.parent;
-                    ui.AddButton(ui.LastCol - 3, ui.FirstRow + 2, () => Process.Start(ModLibConst.MODLIB_WEBSITE), $"Powered by\nFouru's ModLib {ModMaster.ModObj.Version}")
+                    ui.AddButton(ui.LastCol - 3, ui.FirstRow + 2, () => Process.Start(ModLibConst.MODLIB_WEBSITE), string.Format(GameTool.LS("libtxt999990014"), ModMaster.ModObj.Version))
                         .Align(TextAnchor.MiddleCenter)
                         .Format(Color.black, 18)
                         .Size(300, 80)
@@ -73,7 +73,7 @@ namespace ModLib.Mod
                     var panelLangInit = ui.AddButton(ui.LastCol - 10, ui.FirstRow + 2, null, string.Empty)
                         .Size(330, 80)
                         .SetParentTransform(parentTransform);
-                    var slLang = ui.AddCompositeSelect(ui.Columns[ui.LastCol - 12], ui.Rows[ui.FirstRow + 2] + UIHelper.GetUIDeltaY() / 2, "Language:", new string[] { "Default", "German", "Spanish", "French", "Japanese", "Latin", "Russian", "Vietnamese", "Thai" }, TranslateIndex)
+                    var slLang = ui.AddCompositeSelect(ui.Columns[ui.LastCol - 12], ui.Rows[ui.FirstRow + 2] + UIHelper.GetUIDeltaY() / 2, GameTool.LS("libtxt999990015"), new string[] { GameTool.LS("libtxt999990016"), "Deutsch", "Español", "Français", "日本語", "Latina", "Русский", "Tiếng Việt", "ไทย" }, TranslateIndex)
                         .SetParentTransform(panelLangInit.Component.transform) as UIItemComposite;
                     (slLang.MainComponent as UIItemSelect)
                         .Size(160, 24)
@@ -223,6 +223,9 @@ namespace ModLib.Mod
                     ConfHelper.LoadCustomConf(mod.t1, transCode);
                 }
             }
+            //icons of the localTexts, after every load of the mod texts (the mod's and its translations): [icon:NAME] -> <sprite name=NAME>
+            try { TextIconHelper.ConvertLocalTexts(); }
+            catch (System.Exception ex) { DebugHelper.WriteLine($"TextIconHelper: {ex}"); }
         }
     }
 }

@@ -40,19 +40,6 @@ namespace ModLib.Helper
                 item.speaker = speaker;
         }
 
-        /// <summary>
-        /// Filter of the text of the dramas opened here (not of their options), set by a mod: e.g. icons in place of
-        /// words (the drama text is a TextMeshPro text: &lt;sprite&gt; tags work there, not in buttons or message boxes).
-        /// </summary>
-        public static Func<string, string> TextFilter { get; set; }
-
-        private static string Filter(string text)
-        {
-            if (TextFilter == null || string.IsNullOrEmpty(text)) return text;
-            try { return TextFilter(text) ?? text; }
-            catch { return text; }
-        }
-
         private static int[] DEFAULT_OPTS = new int[] { 999790000, 999790001, 999790002, 999790003, 999790004, 999790005, 999790006, 999790007, 999790008, 999790009 };
 
         /// <summary>
@@ -68,7 +55,7 @@ namespace ModLib.Helper
             SetSpeaker(dramaId, 0);
             DramaTool.OpenDrama(dramaId, new DramaData
             {
-                dialogueText = { [dramaId] = Filter(text) },
+                dialogueText = { [dramaId] = text },
                 // exact dialogue: its own options, texts replaced (dialogueOptions would add them a second time)
                 dialogueOptions = (IsExact(opts.Length) ? opts.Take(0) : opts).ToIl2CppDictionary(x => DEFAULT_OPT_ID + x.Index, x => x.Value),
                 dialogueOptionsText = (IsExact(opts.Length) ? opts : opts.Take(0)).ToIl2CppDictionary(x => DEFAULT_OPT_ID + x.Index, x => x.Value),
@@ -94,7 +81,7 @@ namespace ModLib.Helper
             SetSpeaker(dramaId, speaker);
             DramaTool.OpenDrama(dramaId, new DramaData
             {
-                dialogueText = { [dramaId] = Filter(text) },
+                dialogueText = { [dramaId] = text },
                 // exact dialogue: its own options, texts replaced (dialogueOptions would add them a second time)
                 dialogueOptions = (IsExact(opts.Length) ? opts.Take(0) : opts).ToIl2CppDictionary(x => DEFAULT_OPT_ID + x.Index, x => x.Value),
                 dialogueOptionsText = (IsExact(opts.Length) ? opts : opts.Take(0)).ToIl2CppDictionary(x => DEFAULT_OPT_ID + x.Index, x => x.Value),
@@ -118,7 +105,7 @@ namespace ModLib.Helper
             var dramaId = DialogueId(ModLibConst.DEFAULT_TYPE2_DRAMA_ID, opts.Length);
             DramaTool.OpenDrama(dramaId, new DramaData
             {
-                dialogueText = { [dramaId] = Filter(text) },
+                dialogueText = { [dramaId] = text },
                 // exact dialogue: its own options, texts replaced (dialogueOptions would add them a second time)
                 dialogueOptions = (IsExact(opts.Length) ? opts.Take(0) : opts).ToIl2CppDictionary(x => DEFAULT_OPT_ID + x.Index, x => x.Value),
                 dialogueOptionsText = (IsExact(opts.Length) ? opts : opts.Take(0)).ToIl2CppDictionary(x => DEFAULT_OPT_ID + x.Index, x => x.Value),

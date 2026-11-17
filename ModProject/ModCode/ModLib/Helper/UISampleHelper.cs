@@ -27,6 +27,8 @@ namespace ModLib.Helper
         public static Text TextSample { get; private set; }
         /// <summary>Sample toggle for cloning</summary>
         public static Toggle ToggleSample { get; private set; }
+        /// <summary>Sample TextMeshPro text (game font and sprites) for the twins of TextIconHelper</summary>
+        public static TMPro.TextMeshProUGUI TmpSample { get; private set; }
 
         /// <summary>
         /// Loads UI sample components from game UIs for cloning.
@@ -59,6 +61,11 @@ namespace ModLib.Helper
                 using (var s = new UISample<UIModWorkshopUpload>(UIType.ModWorkshopUpload))
                 {
                     InputSample = s.ui.iptDesc.Create(canvasGO.transform);
+                }
+
+                using (var s = new UISample<UITextInfo>(UIType.TextInfo))
+                {
+                    TmpSample = s.ui.ptextInfo.Create(canvasGO.transform);
                 }
 
                 using (var s = new UISample<UIPropInfo>(UIType.PropInfo))

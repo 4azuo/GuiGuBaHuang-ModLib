@@ -68,5 +68,30 @@
 		"id": "999990013",
 		"key": "libtxt999990013",
 		"en|ch|tc|kr": "Alle Spielressourcen exportieren."
+	},
+	{
+		"id": "999990014",
+		"key": "libtxt999990014",
+		"en|ch|tc|kr": "Unterstützt von\nFourus ModLib {0}"
+	},
+	{
+		"id": "999990015",
+		"key": "libtxt999990015",
+		"en|ch|tc|kr": "Sprache:"
+	},
+	{
+		"id": "999990016",
+		"key": "libtxt999990016",
+		"en|ch|tc|kr": "Standard"
+	},
+	{
+		"id": "999990017",
+		"key": "libtxt999990017",
+		"en|ch|tc|kr": "Ausnahme"
+	},
+	{
+		"id": "999990018",
+		"key": "libtxt999990018",
+		"en|ch|tc|kr": "Log öffnen"
 	}
 ]
