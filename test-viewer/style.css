@@ -90,6 +90,7 @@ button, select, input { font: inherit; color: inherit; }
 }
 .history span.sel { opacity: 1; outline: 2px solid var(--text); outline-offset: 1px; }
 .history span:hover { opacity: 1; }
+.history span.pinned { height: 22px; box-shadow: inset 0 3px 0 var(--text); } /* pinned run: taller, marked on top */
 
 /* ---------------------------------------------------------------- layout */
 main { padding: 14px 20px 40px; max-width: 2400px; margin: 0 auto; }

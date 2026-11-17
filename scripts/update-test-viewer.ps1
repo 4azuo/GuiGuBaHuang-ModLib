@@ -10,7 +10,8 @@
     Output: test-viewer\data\runs.js (window.TEST_DATA = {...}), git-ignored. Open test-viewer\index.html
     (works from file://). Called automatically by run-autotest.ps1 and run-unittests.ps1.
     Only the newest -Keep runs (default 10) of logs\autotest, logs\unittests and logs\game-runs are kept:
-    older run folders (screenshots, save backups, logs) are deleted to save disk space.
+    older run folders (screenshots, save backups, logs) are deleted to save disk space. Pinned runs (pinned.json in
+    the folder: scripts\pin-test-run.ps1) are never deleted and do not count in -Keep.
     Keep ASCII-only (Windows PowerShell 5.1 reads BOM-less scripts as ANSI).
 .PARAMETER Keep
     Number of runs kept per folder (0 = keep everything).
@@ -41,7 +42,8 @@ if ($Keep -gt 0) {
     foreach ($sub in 'logs\autotest', 'logs\unittests', 'logs\game-runs') {
         $root = Join-Path $repo $sub
         $old = @(Get-ChildItem -LiteralPath $root -Directory -ErrorAction SilentlyContinue |
-            Where-Object { $_.Name -match '^\d{8}-\d{6}' } | Sort-Object Name -Descending | Select-Object -Skip $Keep)
+            Where-Object { $_.Name -match '^\d{8}-\d{6}' -and -not (Test-Path -LiteralPath (Join-Path $_.FullName 'pinned.json')) } |
+            Sort-Object Name -Descending | Select-Object -Skip $Keep)
         foreach ($d in $old) {
             try { Remove-Item -LiteralPath $d.FullName -Recurse -Force -ErrorAction Stop; Write-Host "Removed old run $sub\$($d.Name)" -ForegroundColor DarkGray }
             catch { Write-Warning "Cannot remove $($d.FullName): $($_.Exception.Message)" }
@@ -81,6 +83,7 @@ foreach ($dir in @(Get-ChildItem -LiteralPath $atRoot -Directory -ErrorAction Si
     $autotest += [ordered]@{
         logs = $logs
         id = $dir.Name; time = Get-RunTime $dir.Name; status = $res.status; exitCode = if ($sum) { $sum.exitCode } else { $null }
+        pin = Read-Json (Join-Path $dir.FullName 'pinned.json')
         taoistVersion = $res.taoistVersion; modLibVersion = $res.modLibVersion; player = $res.player
         startedAt = $res.startedAt; updatedAt = $res.updatedAt
         logErrors = if ($game) { @($game.errors | Select-Object -First 30) } else { @() }
@@ -123,6 +126,7 @@ foreach ($trx in @(Get-ChildItem -LiteralPath $utRoot -Recurse -Filter *.trx -Er
     $id = if ($trx.Directory.Name -match '^\d{8}-\d{6}$') { $trx.Directory.Name } else { $trx.LastWriteTime.ToString('yyyyMMdd-HHmmss') }
     $unittest += [ordered]@{
         id = $id; time = $trx.LastWriteTime.ToString('s'); file = $trx.FullName.Substring($repo.Length + 1)
+        pin = Read-Json (Join-Path $trx.DirectoryName 'pinned.json')
         counts = [ordered]@{
             total = $tests.Count
             passed = @($tests | Where-Object outcome -eq 'Passed').Count

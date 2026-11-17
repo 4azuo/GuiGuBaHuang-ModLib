@@ -1486,6 +1486,7 @@
     {
       "id": "TZ-01",
       "kind": "auto",
+      "newCharacter": true,
       "feature": "BattleRewardEventV2",
       "title": "Battle lost with one-life: the character dies",
       "description": "Real duel lost by the player (the player unit is killed by the opponent). With the one-life option the lifespan is set to 0 and a month passes: the character dies. It ends the character, so it runs last (TZ); the save is restored after the run.",
@@ -1503,6 +1504,7 @@
     {
       "id": "TB-16",
       "kind": "auto",
+      "newCharacter": true,
       "feature": "AnimaWeaponEvent",
       "title": "Divine artifact hotkeys: bindings, map, battle",
       "description": "With the 3 divine artifacts, Settings > Bindings has a row per artifact in the combat and map key lists (copies of the game rows). A click waits for a key; a key of the game is refused, a key of another artifact moves, Esc cancels, Backspace clears. On the map the artifact buttons are side by side and show their keys, a hotkey opens the artifact window. In a duel the buttons show their keys, the hotkeys are read every frame and use the artifact (its cooldown starts). Keys restored at the end.",

@@ -1,9 +1,9 @@
 {
-  "updatedAt": "2026-11-17T08:42:48",
+  "updatedAt": "2026-11-17T08:49:38",
   "counts": {
-    "OK": 96,
+    "OK": 95,
     "NG": 0,
-    "SKIP": 0,
+    "SKIP": 1,
     "NOT RUN": 0,
     "-": 2
   },
@@ -120,34 +120,12 @@
       "kind": "auto",
       "feature": "Pre-test (new character)",
       "title": "Create a new character (trainer on, CrueltyShura, 3 artifacts, intro skipped)",
-      "result": "OK",
-      "lastRun": "2026-11-17T08:42:48",
-      "evidence": "test-viewer/index.html#tab=auto&run=20261117-083952",
+      "result": "SKIP",
+      "lastRun": "2026-11-17T08:49:38",
+      "evidence": "test-viewer/index.html#tab=auto&run=20261117-084810",
       "tester": "autotest",
       "note": null,
-      "checks": {
-        "TP-01-01": "OK",
-        "TP-01-02": "OK",
-        "TP-01-03": "OK",
-        "TP-01-04": "OK",
-        "TP-01-05": "OK",
-        "TP-01-06": "OK",
-        "TP-01-07": "OK",
-        "TP-01-08": "OK",
-        "TP-01-09": "OK",
-        "TP-01-10": "OK",
-        "TP-01-11": "OK",
-        "TP-01-12": "OK",
-        "TP-01-13": "OK",
-        "TP-01-14": "OK",
-        "TP-01-15": "OK",
-        "TP-01-16": "OK",
-        "TP-01-17": "OK",
-        "TP-01-18": "OK",
-        "TP-01-19": "OK",
-        "TP-01-20": "OK",
-        "TP-01-21": "OK"
-      }
+      "checks": {}
     },
     {
       "id": "TG-01",
@@ -155,8 +133,8 @@
       "feature": "ModMain",
       "title": "Taoist settings and events are loaded in the save",
       "result": "OK",
-      "lastRun": "2026-11-17T08:38:18",
-      "evidence": "test-viewer/index.html#tab=auto&run=20261117-074658",
+      "lastRun": "2026-11-17T08:49:38",
+      "evidence": "test-viewer/index.html#tab=auto&run=20261117-084810",
       "tester": "autotest",
       "note": null,
       "checks": {

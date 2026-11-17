@@ -9,6 +9,9 @@
        character (S&M trainer on, CrueltyShura) in a free save slot - or, with -Save <name>,
        -ExistingSave (first save) or -ManualLoad, an existing save is used -, executes the game scenarios and, with
        -WatchBattles, checks every battle you play until -WatchMinutes elapse.
+       TP-01 runs only when needed: a full run, -NewCharacter, or a selected scenario marked "newCharacter" in
+       scenarios.json (TB-16: the 3 artifacts of the new character; TZ-01: ends the character); otherwise the
+       first save of the list is used (backed up and restored as usual).
     4. Evidence is collected in <repo>\logs\autotest\<yyyyMMdd-HHmmss>\:
          results.json   results written by the game (checks, notes, runner log)
          screens\*.png  in-game screenshots taken by the scenarios
@@ -38,6 +41,10 @@
 .EXAMPLE
     .\scripts\game\run-autotest.ps1 -Scenario TT-01,TG-04,TG-10
 .EXAMPLE
+    .\scripts\game\run-autotest.ps1 -Failed
+    # only the scenarios whose latest result is NG or NOT RUN (a full run only when really wanted; a full run
+    # where everything passed is pinned: scripts\pin-test-run.ps1)
+.EXAMPLE
     .\scripts\game\run-autotest.ps1 -ListScenarios
     # scenario ids with their latest OK/NG result
 .EXAMPLE
@@ -51,6 +58,8 @@ param(
     [switch]$ExistingSave,
     [switch]$ManualLoad,
     [string[]]$Scenario,
+    [switch]$Failed,
+    [switch]$NewCharacter,
     [switch]$WatchBattles,
     [int]$WatchMinutes = 10,
     [int]$Timeout = 900,
@@ -68,6 +77,15 @@ $ErrorActionPreference = 'Stop'
 . (Join-Path $PSScriptRoot '_autotest.ps1')
 
 $TaoistModId = 'nE7UL2'
+
+# -Failed: only the auto scenarios whose latest result is NG or NOT RUN (scenario-status.json)
+if ($Failed) {
+    $statusFile = Join-Path (Split-Path (Split-Path $PSScriptRoot -Parent) -Parent) '3161035078\tests\scenario-status.json'
+    $st = Get-Content -LiteralPath $statusFile -Raw -Encoding UTF8 | ConvertFrom-Json
+    $Scenario = @($st.scenarios | Where-Object { $_.kind -eq 'auto' -and $_.result -in 'NG', 'NOT RUN' } | ForEach-Object { $_.id })
+    if ($Scenario.Count -eq 0) { Write-Host 'No NG / NOT RUN scenario in scenario-status.json: nothing to run.'; exit 0 }
+    Write-Host "Scenarios NG / NOT RUN: $($Scenario -join ', ')"
+}
 
 # ------------------------------------------------------------------ screenshots
 # The game cannot capture itself (UnityEngine.ScreenCapture is stripped): the runner writes
@@ -129,6 +147,16 @@ function Invoke-SnapRequests([string]$Dir) {
 }
 $paths = Get-GamePaths -GamePath $GamePath
 $definitions = Read-ScenarioDefinitions $paths.Repo
+# TP-01 (new character) only when needed: a full run (TZ-01 ends the character), -NewCharacter, or a selected
+# scenario marked "newCharacter" in scenarios.json (e.g. TB-16 needs the 3 artifacts of the new character);
+# otherwise the existing save (-Save <name>, else the first save of the list) is used. -Save / -ExistingSave /
+# -ManualLoad always use an existing save.
+$selectedIds = @($Scenario | Where-Object { $_ } | ForEach-Object { $_ -split ',' } | ForEach-Object { $_.Trim() } | Where-Object { $_ })
+$needNew = $NewCharacter -or $selectedIds.Count -eq 0 -or @($definitions | Where-Object { $_.newCharacter -and $selectedIds -contains $_.id }).Count -gt 0
+$useNewCharacter = $needNew -and -not ($Save -or $ExistingSave -or $ManualLoad)
+if ($needNew -and -not $useNewCharacter -and $selectedIds.Count -gt 0) {
+    Write-Warning "Scenarios needing a new character run on an existing save: $(@($definitions | Where-Object { $_.newCharacter -and $selectedIds -contains $_.id } | ForEach-Object { $_.id }) -join ', ')"
+}
 
 if ($ListScenarios) {
     $st = Read-ScenarioStatus $paths.Repo
@@ -179,7 +207,7 @@ else {
         OutDir       = $outDir
         Save         = $Save
         # new character by default (pre-test TP-01); -Save / -ExistingSave / -ManualLoad use an existing save
-        NewCharacter = -not ($Save -or $ExistingSave -or $ManualLoad)
+        NewCharacter = $useNewCharacter
         AutoLoad     = -not $ManualLoad
         Scenarios    = @($Scenario | Where-Object { $_ } | ForEach-Object { $_ -split ',' } | ForEach-Object { $_.Trim() } | Where-Object { $_ })
         StepDelayMs  = $StepDelayMs
@@ -187,12 +215,15 @@ else {
     }
     $utf8 = New-Object Text.UTF8Encoding($false)
     Write-Json2File $requestFile $request
+    if (-not $useNewCharacter -and -not ($Save -or $ExistingSave -or $ManualLoad)) {
+        Write-Info 'No selected scenario needs a new character ("newCharacter" in scenarios.json): TP-01 skipped, the existing save is used (-NewCharacter to force it).'
+    }
 
     Write-Title 'Taoist autotest'
     Write-Info "Run:       $runId"
     Write-Info "Evidence:  $outDir"
     Write-Info "Request:   $requestFile"
-    Write-Info ("Save:      " + $(if ($ManualLoad) { 'load it yourself in the game' } elseif ($Save) { $Save } elseif ($ExistingSave) { '(first save in the list)' } else { 'new character created by the pre-test TP-01 (removed by the restore)' }))
+    Write-Info ("Save:      " + $(if ($ManualLoad) { 'load it yourself in the game' } elseif ($Save) { $Save } elseif (-not $useNewCharacter) { '(first save in the list)' } else { 'new character created by the pre-test TP-01 (removed by the restore)' }))
     Write-Warn 'Use a throwaway copy of a save: scenarios run mod functions on it.'
 
     # ------------------------------------------------------------------ backup saves
@@ -421,6 +452,10 @@ Write-Info "Status by id:  3161035078\tests\scenario-status.json"
 Write-Info "Screenshots:   $($summary.screenshots)"
 if ($summary.logErrors) { Write-Warn "Errors in game logs: $($summary.logErrors) (see game-run\timeline.log)" }
 if ($exitCode -eq 2) { Write-Err 'The runner did not finish. Check results.json (log) and game-run\timeline.log; try -ManualLoad if the save could not be opened.' }
+# a full run (every auto scenario, none failed or left) is pinned: never deleted by the retention of the viewer
+if (-not $Scenario -and $exitCode -eq 0 -and $count.notRun -eq 0 -and $count.pass -gt 0) {
+    & powershell -NoProfile -ExecutionPolicy Bypass -File (Join-Path $paths.Repo 'scripts\pin-test-run.ps1') -Run $runId -Auto -Note 'full run, all passed'
+}
 & powershell -NoProfile -ExecutionPolicy Bypass -File (Join-Path $paths.Repo 'scripts\update-test-viewer.ps1')
 Write-Info "Results:       $($summary.viewer)  (run $runId, evidence in $outDir)"
 exit $exitCode

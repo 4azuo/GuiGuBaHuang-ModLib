@@ -32,10 +32,21 @@ The scenarios of [03-Test-Scenarios](03-Test-Scenarios.md) run **inside the real
 # auto scenarios, then play battles for 15 min: TB-xx run on every battle
 .\scripts\game\run-autotest.ps1 -Save "AutoTest" -WatchBattles -WatchMinutes 15
 
-# a subset / list ids with their latest result / rebuild a report without the game
+# a subset / only the ids NG or NOT RUN in scenario-status.json / list ids with their latest result /
+# rebuild a report without the game. A subset uses the existing save (first of the list) unless a selected
+# scenario is marked "newCharacter" in scenarios.json (TB-16, TZ-01) or -NewCharacter is given: then TP-01 runs.
 .\scripts\game\run-autotest.ps1 -Scenario TG-04,TG-10
+.\scripts\game\run-autotest.ps1 -Failed
+.\scripts\game\run-autotest.ps1 -Scenario TS-01 -NewCharacter
 .\scripts\game\run-autotest.ps1 -ListScenarios
 .\scripts\game\run-autotest.ps1 -ReportFrom logs\autotest\20261115-170000
+
+# keep a run: pinned runs are never deleted by the retention (newest 10 runs) of the test viewer; a full run where
+# every scenario passed is pinned automatically (newest 3 auto pins kept)
+.\scripts\pin-test-run.ps1 -List
+.\scripts\pin-test-run.ps1 -Best -Note "full run before the release"
+.\scripts\pin-test-run.ps1 -Run 20261117-074658 -Unpin
+.\scripts\pin-test-run.ps1 -Unit -Latest
 
 # record a result by hand
 .\scripts\game\set-scenario-status.ps1 -Id TG-45,TG-46 -Result OK
@@ -81,7 +92,7 @@ Only the newest 10 runs of `logs/autotest`, `logs/unittests` and `logs/game-runs
 
 ## Evidence rules (what a screenshot must show)
 
-* Run order: `TT` (title) -> `TP` (pre-test: new character, always run even with `-Scenario`) -> `TG` (game) -> `TB-03+` (battles started by code; TB-10..TB-15 = lost battle with each lose option) -> `TX` (time-changing: skip 1 year, currency reform, rebirth) -> `TZ` (ends the character: one-life). The save is restored after the run.
+* Run order: `TT` (title) -> `TP` (pre-test: new character; only for a full run, `-NewCharacter` or a selected scenario with `"newCharacter": true` in scenarios.json) -> `TG` (game) -> `TB-03+` (battles started by code; TB-10..TB-15 = lost battle with each lose option) -> `TX` (time-changing: skip 1 year, currency reform, rebirth) -> `TZ` (ends the character: one-life). The save is restored after the run.
 * Before each scenario the runner closes every non-base UI (game announcements, leftovers), so the "before" shot shows the real state.
 * Town scenarios first **travel** to a matching town (`TownTestHelper.FindTown` + `TravelTo`) and open the real town UI (`OpenTownUI`, `town.OpenBuild()`); battle scenarios start the battle by code (`JoinMonstWave`, `IntoBattle`), hit/kill units (`PlayerHit`), end it (`EndBattle`) and wait until the map is back (`Wait(...)` steps poll a condition with a timeout).
 * Steps that only check data (no UI) show an in-game overlay panel with their checks (`Scenario.Overlay`, default true; set false when the step opens its own UI).

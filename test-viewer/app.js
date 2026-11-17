@@ -23,7 +23,7 @@
   const label = s => OKNG[s] || s || '-';
   const badge = (s, text) => `<span class="badge b-${esc(String(s || 'none').replace(/\s/g, ''))}">${esc(text || label(s))}</span>`;
   const fmtTime = t => t ? t.replace('T', ' ').slice(0, 16) : '';
-  const runTitle = r => `${fmtTime(r.time) || r.id}  -  ${r.id}`;
+  const runTitle = r => `${fmtTime(r.time) || r.id}  -  ${r.id}${r.pin ? '  -  pinned' + (r.pin.note ? ': ' + r.pin.note : '') : ''}`;
 
   const state = { tab: 'auto', run: {}, filter: 'all', query: '', open: new Set() };
 
@@ -116,10 +116,11 @@
     })();
     sel.innerHTML = latestOpt + runs.slice().reverse().map((r, i) => {
       const extra = tab === 'unit' ? `${r.counts.passed}/${r.counts.total} passed` : (() => { const c = runCounts(r); return `OK ${c.OK} NG ${c.NG}`; })();
-      return `<option value="${esc(r.id)}" ${cur && r.id === cur.id ? 'selected' : ''}>${esc(fmtTime(r.time) || r.id)}${i === 0 ? ' (latest)' : ''} - ${esc(extra)}</option>`;
+      const pin = r.pin ? ` [PINNED${r.pin.note ? ': ' + r.pin.note : r.pin.auto ? ': full run, all passed' : ''}]` : '';
+      return `<option value="${esc(r.id)}" ${cur && r.id === cur.id ? 'selected' : ''}>${esc(fmtTime(r.time) || r.id)}${i === 0 ? ' (latest)' : ''} - ${esc(extra)}${esc(pin)}</option>`;
     }).join('');
     $('#history').innerHTML = runs.slice(-40).map(r =>
-      `<span data-run="${esc(r.id)}" class="${cur && r.id === cur.id ? 'sel' : ''}" style="background:${runColor(tab, r)}" title="${esc(runTitle(r))}"></span>`).join('');
+      `<span data-run="${esc(r.id)}" class="${cur && r.id === cur.id ? 'sel' : ''}${r.pin ? ' pinned' : ''}" style="background:${runColor(tab, r)}" title="${esc(runTitle(r))}"></span>`).join('');
   }
 
   // ------------------------------------------------------------------ autotest view
