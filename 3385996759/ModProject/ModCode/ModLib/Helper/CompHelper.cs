@@ -1,5 +1,4 @@
 ﻿using ModLib.Attributes;
-using System.Threading.Tasks;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
@@ -14,6 +13,9 @@ namespace ModLib.Helper
     public static class CompHelper
     {
         private static ulong _compCounter = 0;
+
+        /// <summary>Name prefix of the objects cloned here (UIItemBase.Dispose destroys them whole).</summary>
+        public const string CLONE_PREFIX = "CompHelper:";
 
         /// <summary>
         /// Initializes a UI component by resetting its properties and event handlers.
@@ -105,7 +107,7 @@ namespace ModLib.Helper
         {
             var t = transform ?? obj.transform.parent;
             var newObj = UnityEngine.Object.Instantiate(obj, t, false);
-            newObj.gameObject.name = $"CompHelper:{_compCounter++}";
+            newObj.gameObject.name = $"{CLONE_PREFIX}{_compCounter++}";
             newObj.gameObject.SetActive(false);
             return newObj.Init();
         }
@@ -122,7 +124,7 @@ namespace ModLib.Helper
             var t = transform ?? obj.transform.parent;
             var newObj = UnityEngine.Object.Instantiate(obj, t, false);
             newObj.Pos(obj);
-            newObj.gameObject.name = $"CompHelper:{_compCounter++}";
+            newObj.gameObject.name = $"{CLONE_PREFIX}{_compCounter++}";
             newObj.gameObject.SetActive(true);
             obj.gameObject.SetActive(false);
             return newObj.Init();
@@ -152,7 +154,7 @@ namespace ModLib.Helper
             var t = transform ?? obj.transform.parent;
             var newObj = UnityEngine.Object.Instantiate(obj, t, false);
             newObj.Pos(obj);
-            newObj.gameObject.name = $"CompHelper:{_compCounter++}";
+            newObj.gameObject.name = $"{CLONE_PREFIX}{_compCounter++}";
             newObj.gameObject.SetActive(true);
             return newObj.Init();
         }
@@ -342,7 +344,9 @@ namespace ModLib.Helper
         /// <returns>The resized component</returns>
         public static T Size<T>(this T obj, float scaleX = 0f, float scaleY = 0f) where T : Component
         {
-            Parallel.ForEach(obj.GetComponentsInChildren<RectTransform>(), s => s.sizeDelta = new Vector2(scaleX, scaleY));
+            // main thread only: Unity / Il2Cpp objects are not thread-safe (Parallel.ForEach caused random layout errors)
+            foreach (var s in obj.GetComponentsInChildren<RectTransform>())
+                s.sizeDelta = new Vector2(scaleX, scaleY);
             return obj;
         }
 
@@ -380,7 +384,8 @@ namespace ModLib.Helper
         /// </summary>
         public static T AddSize<T>(this T obj, float scaleX = 0f, float scaleY = 0f) where T : Component
         {
-            Parallel.ForEach(obj.GetComponentsInChildren<RectTransform>(), s => s.sizeDelta = new Vector2(s.sizeDelta.x + scaleX, s.sizeDelta.y + scaleY));
+            foreach (var s in obj.GetComponentsInChildren<RectTransform>())
+                s.sizeDelta = new Vector2(s.sizeDelta.x + scaleX, s.sizeDelta.y + scaleY);
             return obj;
         }
 

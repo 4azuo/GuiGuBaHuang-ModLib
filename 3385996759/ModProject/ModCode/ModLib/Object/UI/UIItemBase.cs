@@ -58,10 +58,28 @@ namespace ModLib.Object
         public virtual void Dispose()
         {
             UI.Items.Remove(this);
-            if (Component != null)
+            foreach (var page in UI.Pages)
+                page.Items.Remove(this);
+            try
             {
-                Component.gameObject.SetActive(false);
-                UnityEngine.Object.DestroyImmediate(Component);
+                if (Component == null || Component.gameObject == null)
+                    return; // already destroyed with its UI
+                var go = Component.gameObject;
+                go.SetActive(false);
+                // a clone made by CompHelper (Create/Copy/Replace): the whole object (its texts, images...);
+                // a component of the game wrapped by UICustomBase.Add: only the component, as before
+                if (go.name.StartsWith(CompHelper.CLONE_PREFIX))
+                    UnityEngine.Object.Destroy(go);
+                else
+                    UnityEngine.Object.Destroy(Component);
+            }
+            catch
+            {
+                // the Unity object was destroyed meanwhile (its UI closed)
+            }
+            finally
+            {
+                Component = null;
             }
         }
 

@@ -44,7 +44,8 @@ namespace ModLib.Object
             //clear
             foreach (var item in SelectionItems)
             {
-                UnityEngine.Object.Destroy(item);
+                // the whole option (its label and background), not only its Toggle
+                try { if (item != null && item.gameObject != null) UnityEngine.Object.Destroy(item.gameObject); } catch { }
             }
             SelectionItems.Clear();
 

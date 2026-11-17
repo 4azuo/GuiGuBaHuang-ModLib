@@ -156,9 +156,10 @@ namespace ModLib.Object
         /// </summary>
         public override void Dispose()
         {
-            Prefix.Dispose();
-            MainComponent.Dispose();
-            Postfix.Dispose();
+            Prefix?.Dispose();
+            MainComponent?.Dispose();
+            Postfix?.Dispose();
+            base.Dispose(); // out of UI.Items / the pages too
         }
 
         /// <summary>

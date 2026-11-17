@@ -17,6 +17,7 @@ namespace ModLib.Mod
         public override void OnTimeUpdate100ms()
         {
             base.OnTimeUpdate100ms();
+            UIHelper.DisposeClosedUI();
             UIHelper.UpdateAllUI(x => x.IsAutoUpdate);
         }
 

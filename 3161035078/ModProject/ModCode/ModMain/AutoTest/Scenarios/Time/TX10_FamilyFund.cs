@@ -70,6 +70,8 @@ namespace MOD_nE7UL2.AutoTest.Scenarios.Time
                     if (stones > 0) storage.data.propData.DelProps(ModLibConst.MONEY_PROP_ID, stones);
                     storage.data.propData.AddProps(ModLibConst.MONEY_PROP_ID, (int)(upkeep / 2));
                     Player.SetUnitMoney(0);
+                    // from 0: an intimacy already at its floor (-100) cannot drop
+                    mate.data.unitData.relationData.SetIntim(Player.GetUnitId(), 0);
                     var intim = mate.data.unitData.relationData.GetIntim(Player.GetUnitId());
                     I.PayUpkeep();
                     c.AssertEqual(0, Stored(ModLibConst.MONEY_PROP_ID), "the storage stones paid half");
