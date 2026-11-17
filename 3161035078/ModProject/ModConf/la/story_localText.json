@@ -1667,7 +1667,7 @@
 	{
 		"id": "-1000007333",
 		"key": "story_no_money",
-		"en|ch|tc|kr": "Lapides spiritales non satis: {0:#,##0} opus sunt, {1:#,##0} habes."
+		"en|ch|tc|kr": "Lapides spiritales non satis: {0:#,##0} [icon:zm_lingshi] opus sunt, {1:#,##0} [icon:zm_lingshi] habes."
 	},
 	{
 		"id": "-1000007334",

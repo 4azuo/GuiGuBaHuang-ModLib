@@ -134,6 +134,8 @@ namespace ModLib.Helper
                 if (uiConfirm.textBtn2 != null) uiConfirm.textBtn2.text = GameTool.LS("common_fou");
                 if (type == MsgBoxButtonEnum.YesNoCancel && uiConfirm.textBtn3 != null) uiConfirm.textBtn3.text = GameTool.LS("common_quxiao");
             }
+            // a message (one button): "OK", not "Yes"
+            else if (type == MsgBoxButtonEnum.Ok && uiConfirm.textBtn1 != null) uiConfirm.textBtn1.text = GameTool.LS("common_queding");
         }
 
         /// <summary>

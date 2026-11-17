@@ -2666,10 +2666,10 @@
   {
     "id": -1000007333,
     "key": "story_no_money",
-    "en": "Not enough spirit stones: {0:#,##0} needed, you have {1:#,##0}.",
-    "ch": "灵石不足：需要{0:#,##0}，你只有{1:#,##0}。",
-    "tc": "靈石不足：需要{0:#,##0}，你只有{1:#,##0}。",
-    "kr": "영석이 부족하다: {0:#,##0} 필요, 가진 것은 {1:#,##0}."
+    "en": "Not enough spirit stones: {0:#,##0} [icon:zm_lingshi] needed, you have {1:#,##0} [icon:zm_lingshi].",
+    "ch": "灵石不足：需要{0:#,##0} [icon:zm_lingshi]，你只有{1:#,##0} [icon:zm_lingshi]。",
+    "tc": "靈石不足：需要{0:#,##0} [icon:zm_lingshi]，你只有{1:#,##0} [icon:zm_lingshi]。",
+    "kr": "영석이 부족하다: {0:#,##0} [icon:zm_lingshi] 필요, 가진 것은 {1:#,##0} [icon:zm_lingshi]."
   },
   {
     "id": -1000007334,

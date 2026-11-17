@@ -1667,7 +1667,7 @@
 	{
 		"id": "-1000007333",
 		"key": "story_no_money",
-		"en|ch|tc|kr": "No tienes suficientes piedras espirituales: necesitas {0:#,##0}, tienes {1:#,##0}."
+		"en|ch|tc|kr": "No tienes suficientes piedras espirituales: necesitas {0:#,##0} [icon:zm_lingshi], tienes {1:#,##0} [icon:zm_lingshi]."
 	},
 	{
 		"id": "-1000007334",

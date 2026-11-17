@@ -1667,7 +1667,7 @@
 	{
 		"id": "-1000007333",
 		"key": "story_no_money",
-		"en|ch|tc|kr": "Nicht genug Geistersteine: {0:#,##0} nötig, du hast {1:#,##0}."
+		"en|ch|tc|kr": "Nicht genug Geistersteine: {0:#,##0} [icon:zm_lingshi] nötig, du hast {1:#,##0} [icon:zm_lingshi]."
 	},
 	{
 		"id": "-1000007334",
