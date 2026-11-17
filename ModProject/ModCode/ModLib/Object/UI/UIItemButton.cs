@@ -118,7 +118,7 @@ namespace ModLib.Object
         /// </summary>
         public UIItemButton Size(float scaleX = 0f, float scaleY = 0f)
         {
-            Parallel.ForEach(Item.GetComponentsInChildren<RectTransform>(), ActionHelper.TracedAction<RectTransform>(s => s.sizeDelta = new Vector2(scaleX, scaleY)));
+            foreach (var s in Item.GetComponentsInChildren<RectTransform>()) s.sizeDelta = new Vector2(scaleX, scaleY); // main thread only
             return this;
         }
 
@@ -127,7 +127,7 @@ namespace ModLib.Object
         /// </summary>
         public UIItemButton AddSize(float scaleX = 0f, float scaleY = 0f)
         {
-            Parallel.ForEach(Item.GetComponentsInChildren<RectTransform>(), ActionHelper.TracedAction<RectTransform>(s => s.sizeDelta = new Vector2(s.sizeDelta.x + scaleX, s.sizeDelta.y + scaleY)));
+            foreach (var s in Item.GetComponentsInChildren<RectTransform>()) s.sizeDelta = new Vector2(s.sizeDelta.x + scaleX, s.sizeDelta.y + scaleY); // main thread only
             return this;
         }
     }
