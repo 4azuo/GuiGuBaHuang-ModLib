@@ -92,7 +92,6 @@ namespace ModLib.Object
             Clear();
             if (this?.UI?.uiType != null && g.ui.HasUI(this.UI.uiType))
                 g.ui.CloseUI(this.UI);
-            GC.Collect();
         }
     }
 

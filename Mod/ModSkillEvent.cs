@@ -158,14 +158,13 @@ namespace ModLib.Mod
          * Skill Start
          */
         /// <summary>
-        /// Calls OnCast of every skill in parallel.
+        /// Calls OnCast of every skill, one after the other on the main thread (the skills use the game's battle
+        /// objects, which are not thread-safe: in parallel they could fail or crash at random).
         /// </summary>
         public void MultiCast(UnitCtrlBase cunit, SkillBase skill, StepBase step, PropItemBase prop)
         {
-            Parallel.ForEach(SkillList, s =>
-            {
+            foreach (var s in SkillList.ToArray())
                 s.Value.OnCast(cunit, skill, step, prop);
-            });
         }
 
         /// <summary>

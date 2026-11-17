@@ -145,7 +145,7 @@ namespace ModLib.Helper
             {
                 try
                 {
-                    if (g.ui.HasUI(ui.UIBase.uiType))
+                    if (IsAlive(ui))
                         ui?.UpdateUI();
                     else
                         ui?.Dispose();
@@ -158,13 +158,49 @@ namespace ModLib.Helper
         }
 
         /// <summary>
+        /// The game UI of a cover / custom UI is still open: the same instance (a UI opened again is a new instance:
+        /// the cover of the old one is stale).
+        /// </summary>
+        public static bool IsAlive(UICustomBase ui)
+        {
+            try
+            {
+                var b = ui?.UIBase;
+                if (b == null || b.gameObject == null || !g.ui.HasUI(b.uiType)) return false;
+                var cur = g.ui.GetUI(b.uiType);
+                return cur != null && cur.Pointer == b.Pointer;
+            }
+            catch
+            {
+                return false;
+            }
+        }
+
+        /// <summary>
+        /// Disposes the covers / custom UIs whose game UI was closed (every 100 ms, ModUIEvent): without it a cover
+        /// that is not auto-updated stayed in UIs forever with its destroyed Unity objects (memory leak, stale covers
+        /// returned by GetUICustomBase).
+        /// </summary>
+        public static int DisposeClosedUI()
+        {
+            var n = 0;
+            foreach (var ui in UIs.ToArray())
+            {
+                if (IsAlive(ui)) continue;
+                try { ui.Dispose(); } catch { UIs.Remove(ui); }
+                n++;
+            }
+            return n;
+        }
+
+        /// <summary>
         /// Gets all custom UIs of specified type.
         /// </summary>
         /// <param name="uiType">UI type</param>
         /// <returns>List of custom UIs</returns>
         public static List<UICustomBase> GetUICustomBase(UIType.UITypeBase uiType)
         {
-            return UIs.Where(x => x.UITypeName == uiType.uiName).ToList();
+            return UIs.Where(x => x.UITypeName == uiType.uiName && IsAlive(x)).ToList();
         }
 
         /// <summary>

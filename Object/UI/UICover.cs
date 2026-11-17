@@ -61,7 +61,6 @@ namespace ModLib.Object
             DebugHelper.WriteLine($"Dispose the cover of {UI.uiType.uiName}");
             UIHelper.UIs.Remove(this);
             Clear();
-            GC.Collect();
         }
     }
 }
