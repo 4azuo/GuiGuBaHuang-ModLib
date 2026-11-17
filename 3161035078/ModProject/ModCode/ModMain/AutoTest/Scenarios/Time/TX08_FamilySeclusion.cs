@@ -161,7 +161,7 @@ namespace MOD_nE7UL2.AutoTest.Scenarios.Time
                     c.Bag["probe"] = probe.GetUnitId();
                     c.Bag["probeAge"] = probe.GetProperty<int>(UnitPropertyEnum.Age);
                     c.Bag["probeExp"] = probe.GetExp();
-                    TimeSkipEvent.HidePlayer = true; // no NPC drama (they interrupt the seclusion): a full year
+                    TimeSkipEvent.HidePlayer = true; TimeSkipEvent.NoInterrupt = true; // no NPC drama (they interrupt the seclusion): a full year
                     SeclusionEvent.Instance.Offer(SeclusionEvent.Kind.SpiritVein, 1);
                 }, 1500)
                 .Step("enter", c =>
@@ -179,7 +179,7 @@ namespace MOD_nE7UL2.AutoTest.Scenarios.Time
                 .Wait("a year passes", c => !SeclusionEvent.IsSecluded && !TimeSkipEvent.Instance.IsProcessing, 300000, 1000)
                 .Step("summary", c =>
                 {
-                    TimeSkipEvent.HidePlayer = false;
+                    TimeSkipEvent.HidePlayer = false; TimeSkipEvent.NoInterrupt = false;
                     c.Assert(!g.ui.HasUI(UIType.Loading), "loading window closed");
                     var probe = g.world.unit.GetUnit((string)c.Bag["probe"]);
                     if (probe != null)

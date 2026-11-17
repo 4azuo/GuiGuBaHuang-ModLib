@@ -208,6 +208,8 @@ namespace MOD_nE7UL2.AutoTest.Scenarios.Town
                     var nHerbs = npc.GetUnitPropCount(item.PropId);
                     var count = item.Count;
                     NoCancel(() => btn.Item.onClick.Invoke());
+                    // the deal drama, seen at once (a random drama of the game may close the UIs before the next step)
+                    c.Bag["dealDrama"] = DramaUI() != null;
                     c.AssertEqual(pMoney + price, Player.GetUnitMoney(), $"seller (player) received {price}");
                     c.AssertEqual(nMoney - price, npc.GetUnitMoney(), "buyer (NPC) paid");
                     c.AssertEqual(pHerbs - count, Player.GetUnitPropCount(item.PropId), $"{count} item(s) left the player bag");
@@ -217,7 +219,7 @@ namespace MOD_nE7UL2.AutoTest.Scenarios.Town
                 .Step("close deal", c =>
                 {
                     if (item != null && npc != null)
-                        c.Assert(g.ui.HasUI(UIType.DramaDialogue) || g.ui.HasUI(UIType.DramaFortuitous) || g.ui.HasUI(UIType.DramaDialogueBigTexture) || g.ui.HasUI(UIType.DramaBigTexture), "deal drama shown");
+                        c.Assert((c.Bag.TryGetValue("dealDrama", out var shown) && (bool)shown) || DramaUI() != null, "deal drama shown");
                     DismissDramas();
                     for (var i = 0; i < 3; i++) ClickButton(CONFIRM);
                     CloseAll(UIType.PropSelect, UIType.NPCInfo, UIType.NPCSearch);

@@ -138,7 +138,7 @@ namespace MOD_nE7UL2.Mod
         }
 
         /// <summary>Lowers an intimacy by UNPAID_INTIM (AddIntim with no clamp does not change it).</summary>
-        private static void Cool(DataUnit.RelationData r, string id) => r.SetIntim(id, r.GetIntim(id) + UNPAID_INTIM);
+        private static void Cool(DataUnit.RelationData r, string id) => FamilyEvent.ChangeIntim(r, id, UNPAID_INTIM);
 
         public void Gifts()
         {

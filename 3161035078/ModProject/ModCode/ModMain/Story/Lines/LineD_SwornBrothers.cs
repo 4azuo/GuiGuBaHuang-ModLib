@@ -97,7 +97,7 @@ namespace MOD_nE7UL2.Story
                         {
                             var bonus = s.Has("gift") ? 400 : 200;
                             var lr = l.data.unitData.relationData;
-                            lr.SetIntim(c.GetUnitId(), lr.GetIntim(c.GetUnitId()) + bonus);
+                            FamilyEvent.ChangeIntim(lr, c.GetUnitId(), bonus);
                             AddIntim(s, "C", 100);
                             if (string.IsNullOrEmpty(FamilyEvent.Spouse(c)) && string.IsNullOrEmpty(FamilyEvent.Spouse(l)) && FamilyEvent.IsMan(c) != FamilyEvent.IsMan(l))
                                 FamilyEvent.SetMarried(c, l);

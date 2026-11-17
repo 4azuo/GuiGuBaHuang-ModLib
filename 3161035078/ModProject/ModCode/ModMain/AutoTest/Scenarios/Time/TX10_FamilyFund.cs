@@ -19,6 +19,13 @@ namespace MOD_nE7UL2.AutoTest.Scenarios.Time
         /// <summary>Scenario id (see 3161035078/tests/scenarios.json).</summary>
         public string Id => "TX-10";
 
+        /// <summary>Intimacy stored toward a unit (before the game's modifiers and clamp).</summary>
+        private static float Stored(WorldUnitBase u, string toId)
+        {
+            var d = u.data.unitData.relationData.intimToUnit;
+            return d != null && d.ContainsKey(toId) ? d[toId] : u.data.unitData.relationData.intimToPlayerUnit;
+        }
+
         private static int Stored(int propsId) => GameHelper.GetStorage().data.propData.allProps.ToArray().Where(x => x.propsID == propsId).Sum(x => x.propsCount);
 
         /// <summary>Builds the scenario and its steps.</summary>
@@ -72,13 +79,15 @@ namespace MOD_nE7UL2.AutoTest.Scenarios.Time
                     Player.SetUnitMoney(0);
                     // from 0: an intimacy already at its floor (-100) cannot drop
                     mate.data.unitData.relationData.SetIntim(Player.GetUnitId(), 0);
-                    var intim = mate.data.unitData.relationData.GetIntim(Player.GetUnitId());
+                    mate.data.unitData.relationData.intimToPlayerUnit = 0;
+                    var intim = Stored(mate, Player.GetUnitId());
                     I.PayUpkeep();
                     c.AssertEqual(0, Stored(ModLibConst.MONEY_PROP_ID), "the storage stones paid half");
                     c.AssertEqual(FamilyFundEvent.Kind.Unpaid, I.Ledger.Last().Kind, "ledger: unpaid");
                     c.AssertEqual(upkeep - upkeep / 2, I.Ledger.Last().Amount, "unpaid amount");
                     var member = FamilyFundEvent.Members().Any(x => x.GetUnitId() == mate.GetUnitId());
-                    c.Assert(mate.data.unitData.relationData.GetIntim(Player.GetUnitId()) < intim, $"the companion is upset: {intim} -> {mate.data.unitData.relationData.GetIntim(Player.GetUnitId())} (member {member}, spouse {FamilyEvent.Spouse(Player)} / {mate.GetUnitId()}, dead {mate.isDie}, player side {Player.data.unitData.relationData.GetIntim(mate.GetUnitId())})");
+                    // the stored intimacy (GetIntim adds other modifiers, e.g. a hatred, and clamps at -100)
+                    c.Assert(Stored(mate, Player.GetUnitId()) < intim, $"the companion is upset: stored {intim} -> {Stored(mate, Player.GetUnitId())}, shown {mate.data.unitData.relationData.GetIntim(Player.GetUnitId())} (member {member}, spouse {FamilyEvent.Spouse(Player)} / {mate.GetUnitId()}, dead {mate.isDie}, player side {Player.data.unitData.relationData.GetIntim(mate.GetUnitId())})");
                     Player.SetUnitMoney(100000);
                 })
                 .Step("gifts and use", c =>

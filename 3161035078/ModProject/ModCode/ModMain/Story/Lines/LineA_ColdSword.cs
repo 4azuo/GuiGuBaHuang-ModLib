@@ -90,7 +90,7 @@ namespace MOD_nE7UL2.Story
                         {
                             var master = MapBuildPropertyEvent.GetTownMaster(town);
                             if (master != null && !master.IsPlayer())
-                                master.data.unitData.relationData.SetIntim(Player.GetUnitId(), master.data.unitData.relationData.GetIntim(Player.GetUnitId()) - 20);
+                                FamilyEvent.ChangeIntim(master.data.unitData.relationData, Player.GetUnitId(), -20);
                         }
                         Act(s, 1, 6);
                     });

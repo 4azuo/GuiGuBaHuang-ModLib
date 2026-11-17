@@ -184,7 +184,20 @@ namespace MOD_nE7UL2.Mod
         }
 
         /// <summary>Marries two units (the relation of the game, both ways).</summary>
-        public static void SetMarried(WorldUnitBase a, WorldUnitBase b)
+/// <summary>
+        /// Changes an intimacy by delta (no clamp: AddIntim with clamp 0 does nothing). Toward the player the game also
+        /// keeps intimToPlayerUnit, read by GetIntim for some units (a spouse): both are written.
+        /// </summary>
+        public static void ChangeIntim(DataUnit.RelationData r, string toId, float delta)
+        {
+            if (r == null || string.IsNullOrEmpty(toId)) return;
+            var v = r.GetIntim(toId) + delta;
+            r.SetIntim(toId, v);
+            if (g.world.playerUnit != null && toId == g.world.playerUnit.GetUnitId())
+                r.intimToPlayerUnit = v;
+        }
+
+                public static void SetMarried(WorldUnitBase a, WorldUnitBase b)
         {
             try { a.CreateAction(new UnitActionRelationSet(b, UnitRelationType.Married, 0)); } catch (Exception ex) { DebugHelper.WriteLine($"FamilyEvent.SetMarried: {ex.Message}"); }
             if (Spouse(a) != b.GetUnitId()) Rel(a).married = b.GetUnitId();
@@ -256,7 +269,7 @@ namespace MOD_nE7UL2.Mod
             }
             LinkParents(u, father, mother, c);
             var mine = (father?.IsPlayer() ?? false) || (mother?.IsPlayer() ?? false);
-            if (mine) Rel(u).SetIntim(Player.GetUnitId(), Rel(u).GetIntim(Player.GetUnitId()) + 200f);
+            if (mine) ChangeIntim(Rel(u), Player.GetUnitId(), 200f);
             TaoistLogEvent.LogIf(mine || IsFamilyOfPlayer(u), "log_family_grown", u.GetName(), c.FatherName, c.MotherName);
             if (mine && !(TimeSkipEvent.Instance?.IsProcessing ?? false) && !GameHelper.IsInBattlle())
                 DramaHelper.OpenDrama1(string.Format(GameTool.LS("family_grown"), u.GetName()), new List<string> { GameTool.LS("family_grown_o1") }, null, u, Player);

@@ -24,7 +24,7 @@ namespace MOD_nE7UL2.AutoTest.Scenarios.Time
                 {
                     DismissDramas();
                     // no NPC drama (they interrupt the skip): deterministic timings
-                    TimeSkipEvent.HidePlayer = true;
+                    TimeSkipEvent.HidePlayer = true; TimeSkipEvent.NoInterrupt = true;
                     c.Bag["month"] = GameHelper.GetGameTotalMonth();
                     TimeSkipEvent.FullSimulation = true;
                     TimeSkipEvent.Instance.SkipTime(3);
@@ -49,7 +49,7 @@ namespace MOD_nE7UL2.AutoTest.Scenarios.Time
                     c.AssertEqual(TimeSkipEvent.SAVES, t.GameRuns, "4 month runs of the game");
                     c.Assert(!g.ui.HasUI(UIType.Loading), "loading window closed");
                     DismissDramas();
-                    TimeSkipEvent.HidePlayer = false;
+                    TimeSkipEvent.HidePlayer = false; TimeSkipEvent.NoInterrupt = false;
                 })
                 .Step("interrupted by a drama", c =>
                 {

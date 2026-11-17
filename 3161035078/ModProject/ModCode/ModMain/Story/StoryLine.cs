@@ -327,9 +327,9 @@ namespace MOD_nE7UL2.Story
             var u = U(s, role);
             if (u == null) return;
             var a = u.data.unitData.relationData;
-            a.SetIntim(Player.GetUnitId(), a.GetIntim(Player.GetUnitId()) + value);
+            FamilyEvent.ChangeIntim(a, Player.GetUnitId(), value);
             var b = Player.data.unitData.relationData;
-            b.SetIntim(u.GetUnitId(), b.GetIntim(u.GetUnitId()) + value);
+            FamilyEvent.ChangeIntim(b, u.GetUnitId(), value);
         }
 
         /// <summary>Is the player in a town (any, or this one)?</summary>
