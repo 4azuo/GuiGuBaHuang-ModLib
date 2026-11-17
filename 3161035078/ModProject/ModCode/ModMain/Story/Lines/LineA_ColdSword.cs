@@ -13,6 +13,7 @@ namespace MOD_nE7UL2.Story
     public class LineA_ColdSword : StoryLine
     {
         public override string Id => "A";
+        public override int Acts => 6;
 
         public override StoryRole[] Roles => new[]
         {

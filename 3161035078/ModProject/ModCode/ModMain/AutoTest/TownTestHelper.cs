@@ -29,7 +29,7 @@ namespace MOD_nE7UL2.AutoTest
             if (cur != null && match(cur))
                 return cur;
             var pos = Player.GetUnitPos();
-            return (ModMaster.ModObj.ParameterStore?.Towns ?? new MapBuildTown[0])
+            return (ModMain.Store?.Towns ?? new MapBuildTown[0])
                 .Where(x => x != null && match(x))
                 .OrderBy(x => Math.Abs(x.GetOrigiPoint().x - pos.x) + Math.Abs(x.GetOrigiPoint().y - pos.y))
                 .FirstOrDefault();

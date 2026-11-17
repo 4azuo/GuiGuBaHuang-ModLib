@@ -115,7 +115,7 @@ namespace MOD_nE7UL2.Mod
             base.OnMonthly();
             var curYear = GameHelper.GetGameYear();
 
-            foreach (var town in GetModChildParameterStore().Towns)
+            foreach (var town in ModMain.Store.Towns)
             {
                 if (!LastYearEventHappen.ContainsKey(town.buildData.id))
                     LastYearEventHappen.Add(town.buildData.id, curYear);
@@ -128,7 +128,7 @@ namespace MOD_nE7UL2.Mod
                 }
             }
 
-            foreach (var school in GetModChildParameterStore().Schools)
+            foreach (var school in ModMain.Store.Schools)
             {
                 if (!LastYearEventHappen.ContainsKey(school.buildData.id))
                     LastYearEventHappen.Add(school.buildData.id, curYear);
@@ -141,7 +141,7 @@ namespace MOD_nE7UL2.Mod
                 }
             }
 
-            foreach (var town in GetModChildParameterStore().Towns)
+            foreach (var town in ModMain.Store.Towns)
             {
                 if (!LastYearEventHappen.ContainsKey(town.buildData.id))
                     LastYearEventHappen.Add(town.buildData.id, curYear);

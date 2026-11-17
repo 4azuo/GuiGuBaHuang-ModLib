@@ -2,5 +2,29 @@
 	{
 		"id": "444447001",
 		"requireNumber": "1"
+	},
+	{
+		"id": "444447011",
+		"requireNumber": "6"
+	},
+	{
+		"id": "444447012",
+		"requireNumber": "6"
+	},
+	{
+		"id": "444447013",
+		"requireNumber": "5"
+	},
+	{
+		"id": "444447014",
+		"requireNumber": "5"
+	},
+	{
+		"id": "444447015",
+		"requireNumber": "5"
+	},
+	{
+		"id": "444447016",
+		"requireNumber": "5"
 	}
 ]

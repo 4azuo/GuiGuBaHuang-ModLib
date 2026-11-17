@@ -24,7 +24,8 @@ namespace MOD_nE7UL2.Mod
                 var curAreaId = g.world.playerUnit.GetUnitPosAreaId();
                 SetModChildParameterStore(ParameterStore.CreateModChildParameterStore
                 (
-                    wunits: ModMaster.ModObj.ParameterStore.WUnits.Where(x => x != null && x.GetUnitPosAreaId().IsBetween(curAreaId - 3, curAreaId + 3)).ToArray()
+                    wunits: ModLib.Mod.ModMaster.ModObj.ParameterStore.WUnits.Where( // the full list of ModLib (not the nearby units of last month)
+                    x => x != null && x.GetUnitPosAreaId().IsBetween(curAreaId - 3, curAreaId + 3)).ToArray()
                 ));
             }
         }

@@ -48,7 +48,7 @@ namespace MOD_nE7UL2.AutoTest.Scenarios.Story
             for (var d = 3; d < 30; d += 3)
                 foreach (var q in new[] { new UnityEngine.Vector2Int(p.x + d, p.y), new UnityEngine.Vector2Int(p.x - d, p.y), new UnityEngine.Vector2Int(p.x, p.y + d), new UnityEngine.Vector2Int(p.x, p.y - d) })
                 {
-                    if (!WUnitHelper.IsValidPoint(q)) continue;
+                    if (!WUnitHelper.IsValidPoint(q) || g.world.mapEvent.GetGridEvent(q) != null) continue; // not on a map event (its own drama)
                     Player.SetUnitPos(q);
                     if (Player.GetMapBuild<MapBuildTown>() == null) return;
                 }
@@ -119,7 +119,7 @@ namespace MOD_nE7UL2.AutoTest.Scenarios.Story
 
         public static Scenario Build(string scenarioId, string line, string title, Action<AutoTestContext> before, Action<StoryState> prep, string[] endings, int[] plan = null, Action<AutoTestContext, StoryState> after = null)
         {
-            return new Scenario { Id = scenarioId, Feature = "StoryEvent", Title = title, Overlay = false }
+            var sc = new Scenario { Id = scenarioId, Feature = "StoryEvent", Title = title, Overlay = false }
                 .Step("open", c =>
                 {
                     DismissDramas();
@@ -135,8 +135,44 @@ namespace MOD_nE7UL2.AutoTest.Scenarios.Story
                     var s = StoryEvent.Instance.State(line);
                     var opened = StoryEvent.Instance.Open(line, true);
                     c.Assert(opened, $"line {line} opened: roles {string.Join(", ", s.Roles.Select(x => $"{x.Key}={FamilyEvent.Unit(x.Value)?.GetName() ?? x.Value}"))}");
+                    // the quest of the line: name, progress (act), guide of the act with names
+                    StoryEvent.Instance.UpdateTasks();
+                    var task = Player.GetTask(StoryEvent.TaskId(line)).ToArray().FirstOrDefault();
+                    var guide = GameTool.LS("story_task_desc_" + line);
+                    c.Assert(task != null && !string.IsNullOrEmpty(guide) && !guide.Contains("{"), $"quest of the line: {GameTool.LS("story_name_" + line)} - {guide}");
+                    // the first drama waits for the evidence of the quest (next steps)
+                    s.Soon = false;
+                    s.NextMonth = GameHelper.GetGameTotalMonth() + 1;
                 }, 1000)
-                .Wait("to the ending", c => Drive(c, line, prep, plan), 1200000, 400)
+                .Step("open the Mission window", c =>
+                {
+                    // a game event of the place may have opened meanwhile; the window opened like its map button
+                    DismissDramas();
+                    g.ui.GetUI<UIMapMain>(UIType.MapMain)?.uiPlayerInfo?.OnTaskClick();
+                }, 2500)
+                .Step("select the quest", c =>
+                {
+                    // the quest of the line selected: its guide in Mission Info
+                    var ui = g.ui.GetUI<UIPlayerTask>(UIType.PlayerTask);
+                    var task = Player.GetTask(StoryEvent.TaskId(line)).ToArray().FirstOrDefault();
+                    if (!c.Assert(ui != null && task != null, "Mission window and quest")) return;
+                    ui.uiTaskInfo.InitData(task);
+                    c.Info($"Mission Info: {GameTool.LS("story_name_" + line)} - {GameTool.LS("story_task_desc_" + line)}");
+                }, 1500)
+                .Step("mission window", c =>
+                {
+                    c.Assert(g.ui.HasUI(UIType.PlayerTask), "Mission window opened (screenshot of the step before)");
+                    g.ui.CloseUI(UIType.PlayerTask);
+                }, 1000);
+            // one step per act (its dramas and screenshots grouped in the viewer), then the rest (fail branches) to the ending
+            var acts = StoryEvent.Line(line)?.Acts ?? 5;
+            for (var a = 0; a < acts; a++)
+            {
+                var act = a;
+                sc = sc.Wait($"{line}{act}", c => Drive(c, line, prep, plan) || StoryEvent.Instance.State(line).Act > act, 600000, 400);
+            }
+            return sc
+                .Wait("to the ending", c => Drive(c, line, prep, plan), 600000, 400)
                 .Step("ending", c =>
                 {
                     DismissDramas();
@@ -145,6 +181,8 @@ namespace MOD_nE7UL2.AutoTest.Scenarios.Story
                     var s = StoryEvent.Instance.State(line);
                     c.Assert(s.Closed && s.Ending != null && endings.Contains(s.Ending), $"line {line} ended: {s.Ending} (expected one of {string.Join(", ", endings)}); flags {string.Join(", ", s.Flags.Where(x => !x.Key.StartsWith("seen_")).Select(x => $"{x.Key}={x.Value}"))}");
                     c.Assert(TaoistLogEvent.Instance.Entries.Any(x => x.Key == "log_story_end"), "ending in the Taoist log");
+                    StoryEvent.Instance.UpdateTasks();
+                    c.Assert(!Player.GetTask(StoryEvent.TaskId(line)).ToArray().Any(), "quest of the line removed at the end");
                     after?.Invoke(c, s);
                 });
         }
@@ -207,10 +245,13 @@ namespace MOD_nE7UL2.AutoTest.Scenarios.Story
                 c.Assert(LineE_HerbGarden.GardenOpen(s), $"garden seclusion open (intimacy at her death {s.Flag("O_intim")})");
                 var point = StoryEvent.GardenPoint(s);
                 c.Assert(point != null, $"garden on the world map at {point}");
+                StoryEvent.Instance.UpdateGarden();
+                c.Assert(StoryEvent.GardenMarkerShown, "garden icon (fruit tree) on the world map");
                 // away from the garden: the quest leads there, no window
                 StoryDriver.LeaveTown();
-                Player.SetUnitPos(new UnityEngine.Vector2Int(point.Value.x + 5, point.Value.y));
+                Player.SetUnitPos(new UnityEngine.Vector2Int(point.Value.x + 2, point.Value.y));
                 StoryEvent.Instance.UpdateGarden();
+                c.Snap("garden-icon-on-the-map");
                 var task = Player.GetTask(StoryEvent.GARDEN_TASK_ID).ToArray().FirstOrDefault();
                 c.Assert(task != null, "quest \"Granny Shi's garden\" given");
                 c.Assert(g.conf.mapPosition.GetItem(StoryEvent.GARDEN_POSITION_ID)?.posiID == $"{point.Value.x}_{point.Value.y}", $"quest position = garden ({g.conf.mapPosition.GetItem(StoryEvent.GARDEN_POSITION_ID)?.posiID})");

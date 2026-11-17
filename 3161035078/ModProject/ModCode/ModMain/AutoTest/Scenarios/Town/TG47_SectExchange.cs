@@ -41,7 +41,7 @@ namespace MOD_nE7UL2.AutoTest.Scenarios.Town
                     {
                         var pos = Player.GetUnitPos();
                         // the nearest sect that accepts the player (a sect may refuse it)
-                        var schools = (ModMaster.ModObj.ParameterStore?.Schools ?? new MapBuildSchool[0])
+                        var schools = (ModMain.Store?.Schools ?? new MapBuildSchool[0])
                             .OrderBy(x => Math.Abs(x.GetOrigiPoint().x - pos.x) + Math.Abs(x.GetOrigiPoint().y - pos.y)).ToList();
                         if (!c.Assert(schools.Count > 0, "a sect exists")) return;
                         foreach (var sc in schools)

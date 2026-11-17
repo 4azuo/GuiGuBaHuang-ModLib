@@ -588,5 +588,40 @@
 		"id": "-1000001167",
 		"key": "smcfgs167",
 		"en|ch|tc|kr": "Keine NPC-Geschichten"
+	},
+	{
+		"id": "-1000001168",
+		"key": "smcfgs168",
+		"en|ch|tc|kr": "NPC-Geschichten"
+	},
+	{
+		"id": "-1000001169",
+		"key": "smcfgs169",
+		"en|ch|tc|kr": "Kaltes Schwert: eine verbannte Schwertkämpferin, von ihrem Meister verleumdet; reinige ihren Namen oder falle mit ihr."
+	},
+	{
+		"id": "-1000001170",
+		"key": "smcfgs170",
+		"en|ch|tc|kr": "Die Schuld des alten Huang: ein betrügerischer alter Händler, verschuldet beim Roten Lotus; seine letzte Karawane, seine Stadt."
+	},
+	{
+		"id": "-1000001171",
+		"key": "smcfgs171",
+		"en|ch|tc|kr": "Explodierender Ofen: eine tollpatschige junge Alchemistin, die Gildenprüfung und ein gestohlenes Rezept."
+	},
+	{
+		"id": "-1000001172",
+		"key": "smcfgs172",
+		"en|ch|tc|kr": "Geschworene Brüder: ein Raufbold, ein Dichter und eine Frau zwischen ihnen; eine Blutschuld und ein Stadtkrieg."
+	},
+	{
+		"id": "-1000001173",
+		"key": "smcfgs173",
+		"en|ch|tc|kr": "Großmutters Kräutergarten: eine alte Kräuterfrau, ein Waisenkind, ein Garten für die Abgeschiedenheit."
+	},
+	{
+		"id": "-1000001174",
+		"key": "smcfgs174",
+		"en|ch|tc|kr": "Roter Lotus: die Lady hinter den anderen Geschichten; deine Verbündeten gegen ihren Pavillon."
 	}
 ]

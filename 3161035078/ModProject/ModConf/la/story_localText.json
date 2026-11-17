@@ -1468,5 +1468,200 @@
 		"id": "-1000007293",
 		"key": "taskDesc444447001",
 		"en|ch|tc|kr": "I ad pirum in horto aviae Shi (hanc missionem in mappa sequere). Ibi per 1-20 annos in secessu sedere potes."
+	},
+	{
+		"id": "-1000007294",
+		"key": "story_task_desc_A",
+		"en|ch|tc|kr": "{0}"
+	},
+	{
+		"id": "-1000007295",
+		"key": "story_task_desc_B",
+		"en|ch|tc|kr": "{0}"
+	},
+	{
+		"id": "-1000007296",
+		"key": "story_task_desc_C",
+		"en|ch|tc|kr": "{0}"
+	},
+	{
+		"id": "-1000007297",
+		"key": "story_task_desc_D",
+		"en|ch|tc|kr": "{0}"
+	},
+	{
+		"id": "-1000007298",
+		"key": "story_task_desc_E",
+		"en|ch|tc|kr": "{0}"
+	},
+	{
+		"id": "-1000007299",
+		"key": "story_task_desc_F",
+		"en|ch|tc|kr": "{0}"
+	},
+	{
+		"id": "-1000007300",
+		"key": "story_task_A0",
+		"en|ch|tc|kr": "Gladiatrix exul {A} ex {S} fugit, a condiscipulis agitata. Ei adsta, deinde quamlibet urbem vise: ibi fabula eius pergit."
+	},
+	{
+		"id": "-1000007301",
+		"key": "story_task_A1",
+		"en|ch|tc|kr": "{A} gladio sectae venenata est. Da ei pilulam antidoti aut herbam fortem (in foro venduntur)."
+	},
+	{
+		"id": "-1000007302",
+		"key": "story_task_A2",
+		"en|ch|tc|kr": "Epistulam amissam {M} inveni: ad {T} i (ebrius latro aut taberna fori eam habet)."
+	},
+	{
+		"id": "-1000007303",
+		"key": "story_task_A3",
+		"en|ch|tc|kr": "Senex Lu, thesaurarius {S}, pactum vidit. Eum a sicariis protege, aut librum thesauri cape."
+	},
+	{
+		"id": "-1000007304",
+		"key": "story_task_A4",
+		"en|ch|tc|kr": "{A} per annos gladium acuit. Cum ea exerce et ei laminam da quae non frangatur."
+	},
+	{
+		"id": "-1000007305",
+		"key": "story_task_A5",
+		"en|ch|tc|kr": "Cum {A} ad {S} i et {M} coram senioribus aggredere: probationes ostende aut eum ad certamen provoca."
+	},
+	{
+		"id": "-1000007306",
+		"key": "story_task_A9",
+		"en|ch|tc|kr": "{A} sola se liberavit et viam daemonicam iniit. Aliquando te inveniet."
+	},
+	{
+		"id": "-1000007307",
+		"key": "story_task_B0",
+		"en|ch|tc|kr": "{H} tibi thesaurum Lotus Rubrae vili vendidit. Larvati eum repetunt: redde, pugna, aut ad eum in {T} curre."
+	},
+	{
+		"id": "-1000007308",
+		"key": "story_task_B1",
+		"en|ch|tc|kr": "{H} in {T} a Lotu Rubra latet. Eum inveni: pro eo apud argentariam sponde, lapides commoda, aut recusa."
+	},
+	{
+		"id": "-1000007309",
+		"key": "story_task_B2",
+		"en|ch|tc|kr": "Ultimum commeatum {H} ad {T2} comitare. Si evanuerit, eum in urbibus longinquis quaere."
+	},
+	{
+		"id": "-1000007310",
+		"key": "story_task_B3",
+		"en|ch|tc|kr": "Legatus Lotus Rubrae usuras a {H} in {T} poscit: librum rubrum furare, solve, aut morare."
+	},
+	{
+		"id": "-1000007311",
+		"key": "story_task_B4",
+		"en|ch|tc|kr": "Vexilla rubra super {T}: custodes conduce et urbem defende, tributum solve, aut abstine."
+	},
+	{
+		"id": "-1000007312",
+		"key": "story_task_B5",
+		"en|ch|tc|kr": "Debitum {H} aliquo modo solutum est. Eum in {T} vise."
+	},
+	{
+		"id": "-1000007313",
+		"key": "story_task_C0",
+		"en|ch|tc|kr": "{X} in urbe pilulas displodentes facit. Unam eius pilulam proba."
+	},
+	{
+		"id": "-1000007314",
+		"key": "story_task_C1",
+		"en|ch|tc|kr": "{X} lotum pruinae lunaris ad examen Collegii Alchimicorum requirit: mappam vallis cape et serpentem ingentem aggredere."
+	},
+	{
+		"id": "-1000007315",
+		"key": "story_task_C2",
+		"en|ch|tc|kr": "Examen Collegii Alchimicorum: mercedem fornacis solve et {X} ignem regere adiuva."
+	},
+	{
+		"id": "-1000007316",
+		"key": "story_task_C3",
+		"en|ch|tc|kr": "{G} formulam {X} furatus est: testimonia discipulorum cape, deinde eum detege, provoca, aut omitte."
+	},
+	{
+		"id": "-1000007317",
+		"key": "story_task_C4",
+		"en|ch|tc|kr": "Magnus Conventus: sabotatorem cape, deinde {X} cum {G} certantem specta."
+	},
+	{
+		"id": "-1000007318",
+		"key": "story_task_D0",
+		"en|ch|tc|kr": "Bos Ferreus {N} cauponae solvere non potest, poeta {C} eum deridet: pro eo solve aut cum eo pugna."
+	},
+	{
+		"id": "-1000007319",
+		"key": "story_task_D1",
+		"en|ch|tc|kr": "Bestiam cum {N} et {C} venare; ad ignem fraternitatem iurate (favor 200 cum ambobus)."
+	},
+	{
+		"id": "-1000007320",
+		"key": "story_task_D2",
+		"en|ch|tc|kr": "{C} quadraginta duo carmina pro {L} scripsit: eum adiuva, rem corrumpe, aut ipse eam ambi."
+	},
+	{
+		"id": "-1000007321",
+		"key": "story_task_D3",
+		"en|ch|tc|kr": "Lotus Rubra familiam {C} cremavit: sicarium ad sacellum dirutum sequere."
+	},
+	{
+		"id": "-1000007322",
+		"key": "story_task_D4",
+		"en|ch|tc|kr": "In bello urbium {N} in altera parte stat: cum eo loquere, pugna, aut partes muta."
+	},
+	{
+		"id": "-1000007323",
+		"key": "story_task_E0",
+		"en|ch|tc|kr": "Hortum montanum {O} cura (procul ab urbibus): simias spiritales abige, doctrinas eius disce."
+	},
+	{
+		"id": "-1000007324",
+		"key": "story_task_E1",
+		"en|ch|tc|kr": "{Y}, puella e vico cremato: eam adopta, ad sectam mitte, aut apud {O} relinque."
+	},
+	{
+		"id": "-1000007325",
+		"key": "story_task_E2",
+		"en|ch|tc|kr": "{Y} crescit: adesto ei annos VIII, XII et XV natae."
+	},
+	{
+		"id": "-1000007326",
+		"key": "story_task_E3",
+		"en|ch|tc|kr": "{O} aegrotat: herbam longaevitatis ex altis rupibus affer, aut apud eam mane."
+	},
+	{
+		"id": "-1000007327",
+		"key": "story_task_E4",
+		"en|ch|tc|kr": "Ultima voluntas {O}: hortum serva aut {Y} da. Hortus in mappa mundi est (missio \"Hortus aviae Shi\")."
+	},
+	{
+		"id": "-1000007328",
+		"key": "story_task_F0",
+		"en|ch|tc|kr": "Urbes vexilla rubra tollunt: Lotus Rubra crescit. Epistulam Dominae Honglian {R} exspecta."
+	},
+	{
+		"id": "-1000007329",
+		"key": "story_task_F1",
+		"en|ch|tc|kr": "Domina Honglian {R} te ad Pavilionem Loti vocat: socios collige aut solus i."
+	},
+	{
+		"id": "-1000007330",
+		"key": "story_task_F2",
+		"en|ch|tc|kr": "Socii fabularum finitarum vocationi respondent."
+	},
+	{
+		"id": "-1000007331",
+		"key": "story_task_F3",
+		"en|ch|tc|kr": "Pavilio Loti: custodes vince, deinde Dominam Honglian {R}."
+	},
+	{
+		"id": "-1000007332",
+		"key": "story_task_F4",
+		"en|ch|tc|kr": "Lotus Rubra fracta est: urbes eius liberatae sunt."
 	}
 ]

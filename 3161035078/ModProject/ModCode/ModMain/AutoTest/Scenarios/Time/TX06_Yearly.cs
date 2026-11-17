@@ -40,7 +40,7 @@ namespace MOD_nE7UL2.AutoTest.Scenarios.Time
                     c.Assert(g.world.unit.allUnit.Count > before, $"a new NPC was born: {before} -> {g.world.unit.allUnit.Count} units");
                     if (speed == null) c.Skip("no speed unit NPC");
                     else c.AssertEqual((int)c.Bag["speed"] + 1, speed.GetProperty<int>(UnitPropertyEnum.MoveSpeed), $"speed unit {speed.GetName()} moves faster");
-                    var towns = (ModMaster.ModObj.ParameterStore?.Towns ?? new MapBuildTown[0]).Where(t => MapBuildPropertyEvent.GetTownGuardians(t).Count > 0).ToList();
+                    var towns = (ModMain.Store?.Towns ?? new MapBuildTown[0]).Where(t => MapBuildPropertyEvent.GetTownGuardians(t).Count > 0).ToList();
                     var noMaster = towns.Where(t => MapBuildPropertyEvent.GetTownMaster(t) == null).Select(t => t.name).ToList();
                     c.Assert(noMaster.Count == 0, $"every town with guardians has a master ({towns.Count} towns{(noMaster.Count > 0 ? ", without: " + string.Join(", ", noMaster) : "")})");
                     c.AssertEqual(EconomyHelper.GetWorldPrice(), InflationaryEvent.Instance.WorldPrice, "yearly price index saved");

@@ -1,0 +1,31 @@
+﻿[
+	{
+		"id": "444447001",
+		"name": "taskName444447001",
+		"showName": "1",
+		"icon": "guoshu",
+		"moveCamGridEffect": "0",
+		"className": "0",
+		"type": "0",
+		"createDramaID": "0",
+		"dramaID": "0",
+		"isGeomantic": "0",
+		"isForceDel": "0",
+		"createFunction": "0",
+		"notTimeFunction": "0",
+		"function": "0",
+		"moveOnFunction": "0",
+		"duration": "-1",
+		"setNPCA": "0",
+		"setNPCB": "0",
+		"notNPCDramaID": "0",
+		"maxCount": "0",
+		"appearMap": "0",
+		"openView": "0",
+		"createMonthLog": "0",
+		"delMonthLog": "0",
+		"minMapIconType": "0",
+		"iconEffect": "0",
+		"effectCondition": "0"
+	}
+]

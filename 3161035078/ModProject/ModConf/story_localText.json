@@ -2350,5 +2350,317 @@
     "ch": "臣服",
     "tc": "臣服",
     "kr": "굴복"
+  },
+  {
+    "id": -1000007294,
+    "key": "story_task_desc_A",
+    "en": "{0}",
+    "ch": "{0}",
+    "tc": "{0}",
+    "kr": "{0}"
+  },
+  {
+    "id": -1000007295,
+    "key": "story_task_desc_B",
+    "en": "{0}",
+    "ch": "{0}",
+    "tc": "{0}",
+    "kr": "{0}"
+  },
+  {
+    "id": -1000007296,
+    "key": "story_task_desc_C",
+    "en": "{0}",
+    "ch": "{0}",
+    "tc": "{0}",
+    "kr": "{0}"
+  },
+  {
+    "id": -1000007297,
+    "key": "story_task_desc_D",
+    "en": "{0}",
+    "ch": "{0}",
+    "tc": "{0}",
+    "kr": "{0}"
+  },
+  {
+    "id": -1000007298,
+    "key": "story_task_desc_E",
+    "en": "{0}",
+    "ch": "{0}",
+    "tc": "{0}",
+    "kr": "{0}"
+  },
+  {
+    "id": -1000007299,
+    "key": "story_task_desc_F",
+    "en": "{0}",
+    "ch": "{0}",
+    "tc": "{0}",
+    "kr": "{0}"
+  },
+  {
+    "id": -1000007300,
+    "key": "story_task_A0",
+    "en": "The exiled swordswoman {A} fled {S}, hunted by its disciples. Stand by her, then visit any town: her story goes on there.",
+    "ch": "被放逐的剑修{A}逃离了{S}，正被同门追杀。站在她这边，然后前往任意城镇，故事将在那里继续。",
+    "tc": "被放逐的劍修{A}逃離了{S}，正被同門追殺。站在她這邊，然後前往任意城鎮，故事將在那裡繼續。",
+    "kr": "추방된 검수 {A}이(가) {S}에서 도망쳐 동문들에게 쫓기고 있다. 그녀의 편에 선 뒤, 아무 마을이나 방문하면 이야기가 이어진다."
+  },
+  {
+    "id": -1000007301,
+    "key": "story_task_A1",
+    "en": "{A} was poisoned by a sect blade. Give her an antidote pill or a strong herb (a market sells them).",
+    "ch": "{A}中了宗门剑上的毒。给她一颗解毒丹或一株足够强的药草（集市有售）。",
+    "tc": "{A}中了宗門劍上的毒。給她一顆解毒丹或一株足夠強的藥草（集市有售）。",
+    "kr": "{A}이(가) 종문의 검에 중독되었다. 해독단이나 강한 약초를 건네라(시장에서 판다)."
+  },
+  {
+    "id": -1000007302,
+    "key": "story_task_A2",
+    "en": "Find the lost letter of {M}: go to {T} (a drunk robber, or a stall of the market, has it).",
+    "ch": "找到{M}遗失的信：前往{T}（一个醉汉劫匪或集市的摊位手里有它）。",
+    "tc": "找到{M}遺失的信：前往{T}（一個醉漢劫匪或集市的攤位手裡有它）。",
+    "kr": "{M}의 잃어버린 편지를 찾아라: {T}(으)로 가라(술 취한 강도나 시장 노점이 가지고 있다)."
+  },
+  {
+    "id": -1000007303,
+    "key": "story_task_A3",
+    "en": "Old Lu, the treasurer of {S}, saw the deal. Protect him from the killers, or get the treasury ledger.",
+    "ch": "{S}的管库人老陆目睹了交易。保护他不被刺客杀害，或取得宝库的账册。",
+    "tc": "{S}的管庫人老陸目睹了交易。保護他不被刺客殺害，或取得寶庫的帳冊。",
+    "kr": "{S}의 창고지기 노육이 거래를 목격했다. 자객들로부터 그를 지키거나, 창고 장부를 손에 넣어라."
+  },
+  {
+    "id": -1000007304,
+    "key": "story_task_A4",
+    "en": "{A} sharpens her sword for years. Spar with her and give her a blade that does not break.",
+    "ch": "{A}多年磨剑。与她切磋，并送她一把不会折断的剑。",
+    "tc": "{A}多年磨劍。與她切磋，並送她一把不會折斷的劍。",
+    "kr": "{A}은(는) 수년간 검을 갈고닦는다. 그녀와 대련하고 부러지지 않는 검을 건네라."
+  },
+  {
+    "id": -1000007305,
+    "key": "story_task_A5",
+    "en": "Go with {A} to {S} and face {M} before the elders: show the proof, or duel him.",
+    "ch": "与{A}一同前往{S}，在长老面前对质{M}：出示证据，或与他决斗。",
+    "tc": "與{A}一同前往{S}，在長老面前對質{M}：出示證據，或與他決鬥。",
+    "kr": "{A}와(과) 함께 {S}(으)로 가서 장로들 앞에서 {M}와(과) 맞서라: 증거를 보이거나 결투하라."
+  },
+  {
+    "id": -1000007306,
+    "key": "story_task_A9",
+    "en": "{A} broke free alone and walked the demonic path. One day she will find you.",
+    "ch": "{A}独自脱身，走上了魔道。总有一天她会来找你。",
+    "tc": "{A}獨自脫身，走上了魔道。總有一天她會來找你。",
+    "kr": "{A}은(는) 홀로 풀려나 마도에 들어섰다. 언젠가 그녀가 너를 찾아올 것이다."
+  },
+  {
+    "id": -1000007307,
+    "key": "story_task_B0",
+    "en": "{H} sold you a cheap treasure of the Red Lotus. Masked men want it back: give it, fight, or run to him in {T}.",
+    "ch": "{H}贱卖给你一件红莲教的宝物。蒙面人要讨回：交还、开打，或去{T}找他。",
+    "tc": "{H}賤賣給你一件紅蓮教的寶物。蒙面人要討回：交還、開打，或去{T}找他。",
+    "kr": "{H}이(가) 홍련교의 보물을 싸게 팔았다. 복면인들이 되찾으려 한다: 돌려주거나, 싸우거나, {T}의 그에게 달려가라."
+  },
+  {
+    "id": -1000007308,
+    "key": "story_task_B1",
+    "en": "{H} hides from the Red Lotus in {T}. Find him: vouch for him at the bank, lend him stones, or refuse.",
+    "ch": "{H}躲在{T}躲避红莲教。找到他：在钱庄为他担保、借他灵石，或拒绝。",
+    "tc": "{H}躲在{T}躲避紅蓮教。找到他：在錢莊為他擔保、借他靈石，或拒絕。",
+    "kr": "{H}이(가) {T}에서 홍련교를 피해 숨어 있다. 그를 찾아 은행 보증을 서거나, 영석을 빌려주거나, 거절하라."
+  },
+  {
+    "id": -1000007309,
+    "key": "story_task_B2",
+    "en": "Escort the last caravan of {H} to {T2}. If he vanishes, look for him in the far towns.",
+    "ch": "护送{H}的最后一支商队前往{T2}。若他失踪，就去远方的城镇找他。",
+    "tc": "護送{H}的最後一支商隊前往{T2}。若他失蹤，就去遠方的城鎮找他。",
+    "kr": "{H}의 마지막 상단을 {T2}까지 호위하라. 그가 사라지면 먼 마을들에서 찾아라."
+  },
+  {
+    "id": -1000007310,
+    "key": "story_task_B3",
+    "en": "A Red Lotus envoy asks {H} for the interest in {T}: steal the red ledger, pay, or stall.",
+    "ch": "红莲教使者在{T}向{H}催讨利息：偷走红账本、付钱，或拖延。",
+    "tc": "紅蓮教使者在{T}向{H}催討利息：偷走紅帳本、付錢，或拖延。",
+    "kr": "홍련교 사자가 {T}에서 {H}에게 이자를 요구한다: 붉은 장부를 훔치거나, 갚거나, 시간을 끌어라."
+  },
+  {
+    "id": -1000007311,
+    "key": "story_task_B4",
+    "en": "Red banners over {T}: hire guards and defend the town, pay a tribute, or stay out.",
+    "ch": "红旗插满{T}：雇佣护卫守城、缴纳贡金，或袖手旁观。",
+    "tc": "紅旗插滿{T}：僱傭護衛守城、繳納貢金，或袖手旁觀。",
+    "kr": "{T} 위에 붉은 깃발이 걸렸다: 경비를 고용해 마을을 지키거나, 공물을 바치거나, 물러나 있어라."
+  },
+  {
+    "id": -1000007312,
+    "key": "story_task_B5",
+    "en": "The debt of {H} is settled one way or another. Visit him in {T}.",
+    "ch": "{H}的债总算有了了结。去{T}看看他。",
+    "tc": "{H}的債總算有了了結。去{T}看看他。",
+    "kr": "{H}의 빚은 어떻게든 정리되었다. {T}에 있는 그를 찾아가라."
+  },
+  {
+    "id": -1000007313,
+    "key": "story_task_C0",
+    "en": "{X} makes exploding pills in town. Test one of her pills.",
+    "ch": "{X}在城里炼出会爆炸的丹药。试吃她的一颗丹。",
+    "tc": "{X}在城裡煉出會爆炸的丹藥。試吃她的一顆丹。",
+    "kr": "{X}이(가) 마을에서 폭발하는 단약을 만든다. 그녀의 단약을 하나 시험해 보라."
+  },
+  {
+    "id": -1000007314,
+    "key": "story_task_C1",
+    "en": "{X} needs a Moonfrost Lotus for the Alchemy Guild exam: get the map of the valley and face the giant snake.",
+    "ch": "{X}参加丹师公会考试需要一朵月霜莲：拿到山谷地图，对付巨蛇。",
+    "tc": "{X}參加丹師公會考試需要一朵月霜蓮：拿到山谷地圖，對付巨蛇。",
+    "kr": "{X}은(는) 연단사 길드 시험에 월상련이 필요하다: 골짜기 지도를 구하고 거대한 뱀과 맞서라."
+  },
+  {
+    "id": -1000007315,
+    "key": "story_task_C2",
+    "en": "The Alchemy Guild exam: pay the furnace fee and help {X} control the fire.",
+    "ch": "丹师公会考试：付丹炉费，帮{X}控制火候。",
+    "tc": "丹師公會考試：付丹爐費，幫{X}控制火候。",
+    "kr": "연단사 길드 시험: 화로 비용을 내고 {X}이(가) 불을 다루도록 도와라."
+  },
+  {
+    "id": -1000007316,
+    "key": "story_task_C3",
+    "en": "{G} stole the recipe of {X}: get the proof of the apprentices, then expose him, duel him, or let it go.",
+    "ch": "{G}偷了{X}的丹方：取得学徒们的证词，然后揭发他、与他决斗，或放过。",
+    "tc": "{G}偷了{X}的丹方：取得學徒們的證詞，然後揭發他、與他決鬥，或放過。",
+    "kr": "{G}이(가) {X}의 단방을 훔쳤다: 견습생들의 증언을 얻은 뒤 그를 폭로하거나, 결투하거나, 넘어가라."
+  },
+  {
+    "id": -1000007317,
+    "key": "story_task_C4",
+    "en": "The Grand Gathering: catch the saboteur, then watch {X} face {G}.",
+    "ch": "丹会大典：抓住捣乱者，然后看{X}与{G}一决高下。",
+    "tc": "丹會大典：抓住搗亂者，然後看{X}與{G}一決高下。",
+    "kr": "대회합: 방해꾼을 잡고 {X}와(과) {G}의 대결을 지켜보라."
+  },
+  {
+    "id": -1000007318,
+    "key": "story_task_D0",
+    "en": "Iron Ox {N} cannot pay the inn; the poet {C} mocks him: pay for him, or fight him.",
+    "ch": "铁牛{N}付不起饭钱，诗人{C}在一旁调侃：替他付账，或跟他打一架。",
+    "tc": "鐵牛{N}付不起飯錢，詩人{C}在一旁調侃：替他付帳，或跟他打一架。",
+    "kr": "철우 {N}이(가) 객잔 값을 못 낸다. 시인 {C}이(가) 놀린다: 대신 내주거나 그와 싸워라."
+  },
+  {
+    "id": -1000007319,
+    "key": "story_task_D1",
+    "en": "Hunt the beast with {N} and {C}; by the campfire, swear brotherhood (intimacy 200 with both).",
+    "ch": "与{N}和{C}一同猎兽；在篝火旁结为兄弟（与两人好感各达200）。",
+    "tc": "與{N}和{C}一同獵獸；在篝火旁結為兄弟（與兩人好感各達200）。",
+    "kr": "{N}, {C}와(과) 함께 짐승을 사냥하고, 모닥불 곁에서 의형제를 맺어라(두 사람 모두 친밀도 200)."
+  },
+  {
+    "id": -1000007320,
+    "key": "story_task_D2",
+    "en": "{C} wrote 42 poems for {L}: help him, sabotage him, or court her yourself.",
+    "ch": "{C}为{L}写了42首诗：帮他、坏他的事，或自己去追求她。",
+    "tc": "{C}為{L}寫了42首詩：幫他、壞他的事，或自己去追求她。",
+    "kr": "{C}이(가) {L}에게 시 42수를 썼다: 그를 돕거나, 방해하거나, 직접 그녀에게 구애하라."
+  },
+  {
+    "id": -1000007321,
+    "key": "story_task_D3",
+    "en": "The Red Lotus burned the family of {C}: follow the killer to the ruined shrine.",
+    "ch": "红莲教烧死了{C}的家人：追踪刺客到废弃的神祠。",
+    "tc": "紅蓮教燒死了{C}的家人：追蹤刺客到廢棄的神祠。",
+    "kr": "홍련교가 {C}의 가족을 불태웠다: 자객을 쫓아 무너진 사당으로 가라."
+  },
+  {
+    "id": -1000007322,
+    "key": "story_task_D4",
+    "en": "In a town war {N} stands on the other side: talk to him, fight him, or switch sides.",
+    "ch": "城镇之战中{N}站在对面：劝他、与他交手，或倒戈。",
+    "tc": "城鎮之戰中{N}站在對面：勸他、與他交手，或倒戈。",
+    "kr": "마을 전쟁에서 {N}이(가) 반대편에 섰다: 설득하거나, 싸우거나, 편을 바꿔라."
+  },
+  {
+    "id": -1000007323,
+    "key": "story_task_E0",
+    "en": "Keep the mountain garden of {O} (away from towns): chase the spirit monkeys, learn her lessons.",
+    "ch": "替{O}照看山间药圃（在城镇之外）：赶走灵猴，学她的道理。",
+    "tc": "替{O}照看山間藥圃（在城鎮之外）：趕走靈猴，學她的道理。",
+    "kr": "{O}의 산속 약초밭을 돌봐라(마을 밖): 영원숭이를 쫓고 그녀의 가르침을 배워라."
+  },
+  {
+    "id": -1000007324,
+    "key": "story_task_E1",
+    "en": "{Y}, a child from a burned village: adopt her, send her to a sect, or leave her with {O}.",
+    "ch": "{Y}，来自被焚村庄的孩子：收养她、送去宗门，或留给{O}。",
+    "tc": "{Y}，來自被焚村莊的孩子：收養她、送去宗門，或留給{O}。",
+    "kr": "불탄 마을에서 온 아이 {Y}: 입양하거나, 종문에 보내거나, {O}에게 맡겨라."
+  },
+  {
+    "id": -1000007325,
+    "key": "story_task_E2",
+    "en": "{Y} grows up: be there for her at 8, 12 and 15.",
+    "ch": "{Y}渐渐长大：在她8岁、12岁和15岁时陪在她身边。",
+    "tc": "{Y}漸漸長大：在她8歲、12歲和15歲時陪在她身邊。",
+    "kr": "{Y}이(가) 자란다: 8살, 12살, 15살에 그녀 곁에 있어 주어라."
+  },
+  {
+    "id": -1000007326,
+    "key": "story_task_E3",
+    "en": "{O} is ill: fetch the longevity herb from the high cliffs, or stay by her side.",
+    "ch": "{O}病了：去高崖采长寿草，或守在她身边。",
+    "tc": "{O}病了：去高崖採長壽草，或守在她身邊。",
+    "kr": "{O}이(가) 병들었다: 높은 절벽에서 장수초를 가져오거나 곁을 지켜라."
+  },
+  {
+    "id": -1000007327,
+    "key": "story_task_E4",
+    "en": "The last wish of {O}: keep the garden or give it to {Y}. The garden is on the world map (quest \"Granny Shi's Garden\").",
+    "ch": "{O}的遗愿：留下药圃，或交给{Y}。药圃标在大地图上（任务“石婆婆的药圃”）。",
+    "tc": "{O}的遺願：留下藥圃，或交給{Y}。藥圃標在大地圖上（任務「石婆婆的藥圃」）。",
+    "kr": "{O}의 마지막 소원: 약초밭을 지키거나 {Y}에게 넘겨라. 약초밭은 월드맵에 있다(임무 \"석 할머니의 약초밭\")."
+  },
+  {
+    "id": -1000007328,
+    "key": "story_task_F0",
+    "en": "Towns raise red banners: the Red Lotus spreads. Wait for the letter of Lady Honglian {R}.",
+    "ch": "各城镇升起红旗：红莲教蔓延开来。等待红莲夫人{R}的来信。",
+    "tc": "各城鎮升起紅旗：紅蓮教蔓延開來。等待紅蓮夫人{R}的來信。",
+    "kr": "마을마다 붉은 깃발이 오른다: 홍련교가 퍼진다. 홍련 부인 {R}의 편지를 기다려라."
+  },
+  {
+    "id": -1000007329,
+    "key": "story_task_F1",
+    "en": "Lady Honglian {R} calls you to the Lotus Pavilion: gather your allies, or go alone.",
+    "ch": "红莲夫人{R}召你前往莲花阁：召集盟友，或独自前往。",
+    "tc": "紅蓮夫人{R}召你前往蓮花閣：召集盟友，或獨自前往。",
+    "kr": "홍련 부인 {R}이(가) 연화각으로 부른다: 동료를 모으거나 홀로 가라."
+  },
+  {
+    "id": -1000007330,
+    "key": "story_task_F2",
+    "en": "Your allies of the finished stories answer the call.",
+    "ch": "已完结故事中的盟友响应了你的召唤。",
+    "tc": "已完結故事中的盟友響應了你的召喚。",
+    "kr": "끝난 이야기들의 동료들이 부름에 응한다."
+  },
+  {
+    "id": -1000007331,
+    "key": "story_task_F3",
+    "en": "The Lotus Pavilion: defeat its guardians, then Lady Honglian {R}.",
+    "ch": "莲花阁：击败守卫，再击败红莲夫人{R}。",
+    "tc": "蓮花閣：擊敗守衛，再擊敗紅蓮夫人{R}。",
+    "kr": "연화각: 수호자들을 물리친 뒤 홍련 부인 {R}을(를) 물리쳐라."
+  },
+  {
+    "id": -1000007332,
+    "key": "story_task_F4",
+    "en": "The Red Lotus is broken: her towns are freed.",
+    "ch": "红莲已破：她占据的城镇重获自由。",
+    "tc": "紅蓮已破：她佔據的城鎮重獲自由。",
+    "kr": "홍련이 무너졌다: 그녀의 마을들이 해방되었다."
   }
 ]

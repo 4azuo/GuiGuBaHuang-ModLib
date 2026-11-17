@@ -180,6 +180,7 @@ namespace MOD_nE7UL2.Story
         {
             base.OnTimeUpdate1000ms();
             UpdateGarden();
+            UpdateTasks();
             if (!Disabled) RunDue(true);
         }
 
@@ -252,6 +253,10 @@ namespace MOD_nE7UL2.Story
         public const int GARDEN_TASK_ID = 444447001;
         public const int GARDEN_POSITION_ID = 444447001;
 
+        /// <summary>The garden on the world map: a fruit tree icon (story_worldFortuitousEventBase.json, no drama of its
+        /// own: standing there opens the garden window).</summary>
+        public const int GARDEN_EVENT_ID = 444447001;
+
         /// <summary>The garden on the world map: where Granny Shi met the player (E0, outside towns); fixed for the game.</summary>
         public static UnityEngine.Vector2Int? GardenPoint(StoryState s)
         {
@@ -285,6 +290,7 @@ namespace MOD_nE7UL2.Story
             var s = State("E");
             var open = !Disabled && LineE_HerbGarden.GardenOpen(s) && GardenPoint(s) != null;
             var task = Player?.GetTask(GARDEN_TASK_ID)?.ToArray().FirstOrDefault();
+            UpdateGardenMarker(s, open);
             if (!open)
             {
                 if (task != null) Player.DelTask(task);
@@ -301,6 +307,71 @@ namespace MOD_nE7UL2.Story
             if (_gardenShown || SeclusionEvent.IsSecluded || Busy()) return;
             _gardenShown = true;
             OpenGarden();
+        }
+
+        private bool _markerFailed;
+
+        /// <summary>The fruit tree of the garden on the world map while the garden is open (map events are saved with
+        /// the game: created once, removed when the garden closes).</summary>
+        private void UpdateGardenMarker(StoryState s, bool open)
+        {
+            var events = g.world.mapEvent.GetGridEvent(GARDEN_EVENT_ID);
+            var has = events != null && events.Count > 0;
+            if (open && !has && !_markerFailed)
+            {
+                var p = GardenPoint(s).Value;
+                var rs = g.world.mapEvent.AddGridEvent(p, GARDEN_EVENT_ID, null, false, false);
+                var ok = g.world.mapEvent.GetGridEvent(GARDEN_EVENT_ID)?.Count > 0;
+                if (!ok) { _markerFailed = true; DebugHelper.WriteLine($"Story garden: no map icon at {p} (grid taken?)"); }
+            }
+            else if (!open && has)
+            {
+                foreach (var e in events.ToArray())
+                    g.world.mapEvent.DelGridEvent(e, true);
+            }
+        }
+
+        /// <summary>The garden icon on the world map (tests).</summary>
+        public static bool GardenMarkerShown => g.world.mapEvent.GetGridEvent(GARDEN_EVENT_ID)?.Count > 0;
+
+        // ------------------------------------------------------------------ quests of the lines
+
+        /// <summary>Quests of the open lines (story_taskBase.json LINE_TASK_ID + 1..6 for A-F, type 104 never counted
+        /// by the game): name = the line, progress = the act, description = the guide of the act (story_task_&lt;line&gt;&lt;act&gt;
+        /// with names and places), rewritten in the text story_task_desc_&lt;line&gt; (all languages of the game).</summary>
+        public const int LINE_TASK_ID = 444447010;
+
+        public static int TaskId(string line) => LINE_TASK_ID + 1 + LINES.FindIndex(l => l.Id == line);
+
+        public void UpdateTasks()
+        {
+            if (Player == null) return;
+            foreach (var line in LINES)
+            {
+                var s = State(line.Id);
+                var id = TaskId(line.Id);
+                var task = Player.GetTask(id)?.ToArray().FirstOrDefault();
+                if (Disabled || !s.Open)
+                {
+                    if (task != null) Player.DelTask(task);
+                    continue;
+                }
+                if (task == null)
+                    task = Player.CreateTask(new DataUnit.TaskData { id = id, soleID = CommonTool.SoleID(), state = TaskState.Unfinished, curCount = 0 });
+                var act = Math.Min(s.Act, line.Acts - 1);
+                if (task?.taskData != null && task.taskData.curCount != act) task.taskData.curCount = act;
+                // roles not cast yet: "?"
+                SetText("story_task_desc_" + line.Id, System.Text.RegularExpressions.Regex.Replace(StoryLine.T(s, $"task_{line.Id}{s.Act}"), @"\{[A-Za-z][A-Za-z0-9]*\}", "?"));
+            }
+        }
+
+        /// <summary>The text of a key in every language of the game (the key exists: story_localText.json).</summary>
+        private static void SetText(string key, string text)
+        {
+            if (!g.conf.localText.allText.ContainsKey(key)) return;
+            var t = g.conf.localText.allText[key];
+            if (t.en == text && t.ch == text) return;
+            t.en = text; t.ch = text; t.tc = text; t.kr = text;
         }
 
         public static readonly int[] GARDEN_YEARS = { 1, 3, 5, 10, 20 };

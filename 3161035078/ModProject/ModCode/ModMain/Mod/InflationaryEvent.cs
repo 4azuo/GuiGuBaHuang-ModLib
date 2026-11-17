@@ -72,7 +72,7 @@ namespace MOD_nE7UL2.Mod
                 DramaTool.OpenDrama(REACH_LIMIT_DRAMA);
 
                 //affect to npc
-                foreach (var wunit in GetModChildParameterStore().WUnits)
+                foreach (var wunit in ModMain.Store.WUnits)
                 {
                     // the player is in WUnits too: already divided above (was divided twice -> 0, autotest TX-02)
                     if (wunit != null && !wunit.isDie && !wunit.IsPlayer())
@@ -82,11 +82,11 @@ namespace MOD_nE7UL2.Mod
                 }
 
                 //affect to town & school
-                foreach (var town in GetModChildParameterStore().Towns)
+                foreach (var town in ModMain.Store.Towns)
                 {
                     MapBuildPropertyEvent.AddBuildProperty(town, -(MapBuildPropertyEvent.GetBuildProperty(town) * 0.8).Parse<long>());
                 }
-                foreach (var school in GetModChildParameterStore().Schools)
+                foreach (var school in ModMain.Store.Schools)
                 {
                     MapBuildPropertyEvent.AddBuildProperty(school, -(MapBuildPropertyEvent.GetBuildProperty(school) * 0.8).Parse<long>());
                 }

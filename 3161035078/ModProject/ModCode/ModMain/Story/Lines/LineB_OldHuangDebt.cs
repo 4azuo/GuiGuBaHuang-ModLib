@@ -12,6 +12,7 @@ namespace MOD_nE7UL2.Story
     public class LineB_OldHuangDebt : StoryLine
     {
         public override string Id => "B";
+        public override int Acts => 6;
         public override float MonthlyChance => 1f;
 
         public override StoryRole[] Roles => new[]

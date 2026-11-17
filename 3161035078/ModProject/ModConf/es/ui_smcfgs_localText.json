@@ -588,5 +588,40 @@
 		"id": "-1000001167",
 		"key": "smcfgs167",
 		"en|ch|tc|kr": "Sin historias de PNJ"
+	},
+	{
+		"id": "-1000001168",
+		"key": "smcfgs168",
+		"en|ch|tc|kr": "Historias de PNJ"
+	},
+	{
+		"id": "-1000001169",
+		"key": "smcfgs169",
+		"en|ch|tc|kr": "Espada fría: una espadachina exiliada, calumniada por su maestro; limpia su nombre o cae con ella."
+	},
+	{
+		"id": "-1000001170",
+		"key": "smcfgs170",
+		"en|ch|tc|kr": "La deuda del viejo Huang: un viejo mercader tramposo endeudado con el Loto Rojo; su última caravana, su ciudad."
+	},
+	{
+		"id": "-1000001171",
+		"key": "smcfgs171",
+		"en|ch|tc|kr": "El horno que explota: una joven alquimista torpe, el examen del Gremio y una receta robada."
+	},
+	{
+		"id": "-1000001172",
+		"key": "smcfgs172",
+		"en|ch|tc|kr": "Hermanos jurados: un pendenciero, un poeta y una mujer entre ellos; una deuda de sangre y una guerra de ciudades."
+	},
+	{
+		"id": "-1000001173",
+		"key": "smcfgs173",
+		"en|ch|tc|kr": "El jardín de hierbas de la abuela: una vieja herbolaria, una huérfana que criar, un jardín para recluirse."
+	},
+	{
+		"id": "-1000001174",
+		"key": "smcfgs174",
+		"en|ch|tc|kr": "Loto Rojo: la dama detrás de las otras historias; tus aliados contra su pabellón."
 	}
 ]

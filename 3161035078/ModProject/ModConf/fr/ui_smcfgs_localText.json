@@ -588,5 +588,40 @@
 		"id": "-1000001167",
 		"key": "smcfgs167",
 		"en|ch|tc|kr": "Aucune histoire de PNJ"
+	},
+	{
+		"id": "-1000001168",
+		"key": "smcfgs168",
+		"en|ch|tc|kr": "Histoires de PNJ"
+	},
+	{
+		"id": "-1000001169",
+		"key": "smcfgs169",
+		"en|ch|tc|kr": "Épée froide : une bretteuse exilée, calomniée par son maître ; lavez son nom ou tombez avec elle."
+	},
+	{
+		"id": "-1000001170",
+		"key": "smcfgs170",
+		"en|ch|tc|kr": "La dette du vieux Huang : un vieux marchand tricheur endetté auprès du Lotus Rouge ; sa dernière caravane, sa ville."
+	},
+	{
+		"id": "-1000001171",
+		"key": "smcfgs171",
+		"en|ch|tc|kr": "Le fourneau qui explose : une jeune alchimiste maladroite, l'examen de la Guilde et une recette volée."
+	},
+	{
+		"id": "-1000001172",
+		"key": "smcfgs172",
+		"en|ch|tc|kr": "Frères jurés : un bagarreur, un poète et une femme entre eux ; une dette de sang et une guerre de villes."
+	},
+	{
+		"id": "-1000001173",
+		"key": "smcfgs173",
+		"en|ch|tc|kr": "Le jardin d'herbes de grand-mère : une vieille herboriste, une orpheline à élever, un jardin pour la retraite."
+	},
+	{
+		"id": "-1000001174",
+		"key": "smcfgs174",
+		"en|ch|tc|kr": "Lotus Rouge : la dame derrière les autres histoires ; vos alliés contre son pavillon."
 	}
 ]

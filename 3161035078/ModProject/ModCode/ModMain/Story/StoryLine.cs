@@ -4,6 +4,7 @@ using MOD_nE7UL2.Mod;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text.RegularExpressions;
 
 namespace MOD_nE7UL2.Story
 {
@@ -17,6 +18,9 @@ namespace MOD_nE7UL2.Story
     public abstract class StoryLine
     {
         public abstract string Id { get; }
+
+        /// <summary>Number of acts (0..Acts-1; fail branches above): the progress of the quest of the line.</summary>
+        public virtual int Acts => 5;
         /// <summary>Chance (%) a month to open when CanOpen.</summary>
         public virtual float MonthlyChance => 0.3f;
         /// <summary>Roles cast when the line opens.</summary>
@@ -55,9 +59,11 @@ namespace MOD_nE7UL2.Story
         public static string Name(StoryState s, string role) => U(s, role)?.GetName() ?? "?";
 
         /// <summary>Text of a key (story_ + key) with {p} and the role names, then {0}.. args.</summary>
-        public static string T(StoryState s, string key, params object[] args)
+        public static string T(StoryState s, string key, params object[] args) => Fill(s, GameTool.LS("story_" + key) ?? key, args);
+
+        /// <summary>{p}, the role names and the places of a text, then {0}.. args.</summary>
+        public static string Fill(StoryState s, string text, params object[] args)
         {
-            var text = GameTool.LS("story_" + key) ?? key;
             text = text.Replace("{p}", Player.GetName());
             foreach (var r in s.Roles.Keys.Where(x => !Places.ContainsKey(x)))
                 text = text.Replace("{" + r + "}", Name(s, r));
@@ -76,21 +82,132 @@ namespace MOD_nE7UL2.Story
             ["T2"] = s => s.Roles.TryGetValue("T2", out var id) ? (g.world.build.GetBuild(id)?.name ?? "?") : "?",
         };
 
-        /// <summary>A role speaks (portrait of the role and of the player). opts: text keys; pick(index from 0).</summary>
+        /// <summary>A role speaks (portrait of the role and of the player). opts: text keys; pick(index from 0).
+        /// The text is shown frame by frame (Frames): narration, then every speaker with their portrait lit.</summary>
         protected static void Say(StoryState s, string role, string key, string[] opts, Action<int> pick, params object[] args)
         {
             var unit = U(s, role);
-            var options = (opts ?? new[] { "continue" }).Select(o => T(s, o, args)).ToList();
-            Action<ConfDramaOptionsItem> cb = x => { try { pick?.Invoke(x.id % 10); } catch (Exception ex) { DebugHelper.WriteLine($"Story {s.Id}{s.Act}.{s.Step}: {ex}"); } };
             StoryEvent.Log(s, key);
-            var text = T(s, key, args);
-            Show(() =>
+            ShowFrames(s, key, args, unit, unit == null, BG, Options(s, opts, args), Answer(s, pick));
+        }
+
+        private static List<string> Options(StoryState s, string[] opts, object[] args) => (opts ?? new[] { "continue" }).Select(o => T(s, o, args)).ToList();
+
+        private static Action<ConfDramaOptionsItem> Answer(StoryState s, Action<int> pick) =>
+            x => { try { pick?.Invoke(x.id % 10); } catch (Exception ex) { DebugHelper.WriteLine($"Story {s.Id}{s.Act}.{s.Step}: {ex}"); } };
+
+        /// <summary>One frame of a drama: who speaks (null: narration) and the text.</summary>
+        public class Frame
+        {
+            public WorldUnitBase Who;
+            public string Text;
+        }
+
+        /// <summary>"Speaker: "words"" (any language: : or ：, then a quote " “ 「 « „ ‘).</summary>
+        private static readonly Regex SPEECH = new Regex("^\\s*([^:：\"“「«„]{1,40}?)\\s*[:：]\\s*([\"“「«„‘].*)$");
+        private static readonly Regex TOKEN = new Regex("\\{([A-Za-z][A-Za-z0-9]*)\\}");
+        private static readonly char[] QUOTES = { '"', '“', '「', '«', '„', '‘' };
+
+        /// <summary>
+        /// The frames of a text: narration lines together; a line "{X}: "words"" is a frame of the role X (the name is
+        /// on the nameplate: removed), "{X} does something: "words"" a frame of X with the whole line, "A disciple: "..."" a
+        /// frame of a third person (Extra: an NPC of the sect / town / area, the label removed); a narration starting
+        /// with a quote is said by `speaker` (the role of Say).
+        /// </summary>
+        public static List<Frame> Frames(StoryState s, string key, object[] args, WorldUnitBase speaker)
+        {
+            var raw = GameTool.LS("story_" + key) ?? key;
+            var frames = new List<Frame>();
+            var narration = new List<string>();
+            void Flush()
             {
-                if (unit == null)
-                    DramaHelper.OpenDrama2(text, options, cb, BG);
+                if (narration.Count == 0) return;
+                var text = string.Join("\n", narration);
+                frames.Add(new Frame { Who = speaker != null && text.TrimStart().IndexOfAny(QUOTES) == 0 ? speaker : null, Text = Fill(s, text, args) });
+                narration.Clear();
+            }
+            foreach (var line in raw.Split('\n'))
+            {
+                var m = SPEECH.Match(line);
+                if (!m.Success) { narration.Add(line); continue; }
+                var label = m.Groups[1].Value.Trim();
+                var tk = TOKEN.Match(label);
+                WorldUnitBase who;
+                string text;
+                if (tk.Success)
+                {
+                    var r = tk.Groups[1].Value;
+                    who = r == "p" ? Player : U(s, r);
+                    text = tk.Value == label ? m.Groups[2].Value : line;
+                }
                 else
-                    DramaHelper.OpenDrama1(text, options, cb, unit, Player, 1); // the NPC speaks: their portrait lit
-            });
+                {
+                    who = Extra(s, key);
+                    text = m.Groups[2].Value;
+                }
+                if (who == null) { narration.Add(line); continue; }
+                Flush();
+                frames.Add(new Frame { Who = who, Text = Fill(s, text, args) });
+            }
+            Flush();
+            if (frames.Count == 0) frames.Add(new Frame { Text = string.Empty });
+            return frames;
+        }
+
+        private static readonly Dictionary<string, string> _extras = new Dictionary<string, string>();
+
+        /// <summary>A third person of a drama ("A disciple", "The innkeeper"...): a member of the sect of the line, else
+        /// an NPC of the player's town, else of the area; the same NPC for the whole drama.</summary>
+        public static WorldUnitBase Extra(StoryState s, string key)
+        {
+            var k = s.Id + "/" + key;
+            if (_extras.TryGetValue(k, out var known))
+            {
+                var u0 = FamilyEvent.Unit(known);
+                if (u0 != null && !u0.isDie) return u0;
+            }
+            var roles = new HashSet<string>(s.Roles.Values);
+            var pool = StoryEvent.Units().Where(u => !roles.Contains(u.GetUnitId())).ToList();
+            var pick = new List<WorldUnitBase>();
+            if (s.Roles.TryGetValue("S", out var sect)) pick = pool.Where(u => u.data.unitData.schoolID == sect).ToList();
+            var town = PlayerTown();
+            if (pick.Count == 0 && town != null) pick = pool.Where(u => u.GetMapBuild<MapBuildTown>()?.buildData.id == town.buildData.id).ToList();
+            if (pick.Count == 0) { var area = Player.GetUnitPosAreaId(); pick = pool.Where(u => u.GetUnitPosAreaId() == area).ToList(); }
+            if (pick.Count == 0) pick = pool;
+            if (pick.Count == 0) return null;
+            var unit = pick[CommonTool.Random(0, pick.Count * 100) % pick.Count];
+            _extras[k] = unit.GetUnitId();
+            return unit;
+        }
+
+        /// <summary>
+        /// Shows the frames one after the other ("Continue"; the last one has the options and the answer): a speaker is
+        /// lit on the left (the player on the right); narration shows `main` and the player unlit, or the background.
+        /// </summary>
+        private static void ShowFrames(StoryState s, string key, object[] args, WorldUnitBase main, bool narrationOnBackground, string background, List<string> options, Action<ConfDramaOptionsItem> answer)
+        {
+            var frames = Frames(s, key, args, narrationOnBackground ? null : main);
+            var cont = new List<string> { T(s, "continue") };
+            void Open(int i)
+            {
+                var f = frames[i];
+                var last = i == frames.Count - 1;
+                var opts = last ? options : cont;
+                Action<ConfDramaOptionsItem> next = last ? answer : (_ => Show(() => Open(i + 1)));
+                var other = main ?? frames.Select(x => x.Who).FirstOrDefault(x => x != null && !x.IsPlayer());
+                if (f.Who == null)
+                {
+                    if (narrationOnBackground || main == null) DramaHelper.OpenDrama2(f.Text, opts, next, background);
+                    else DramaHelper.OpenDrama1(f.Text, opts, next, main, Player, 0);
+                }
+                else if (f.Who.IsPlayer())
+                {
+                    if (other == null) DramaHelper.OpenDrama2(f.Text, opts, next, background);
+                    else DramaHelper.OpenDrama1(f.Text, opts, next, other, Player, 2);
+                }
+                else DramaHelper.OpenDrama1(f.Text, opts, next, f.Who, Player, 1);
+            }
+            Show(() => Open(0));
         }
 
         /// <summary>Opens a drama now, or after the drama being answered has closed (StoryEvent.ShowLater).</summary>
@@ -103,10 +220,8 @@ namespace MOD_nE7UL2.Story
         /// <summary>Narration over a background.</summary>
         protected static void Tell(StoryState s, string key, string[] opts, Action<int> pick, string background = BG, params object[] args)
         {
-            var options = (opts ?? new[] { "continue" }).Select(o => T(s, o, args)).ToList();
             StoryEvent.Log(s, key);
-            var text = T(s, key, args);
-            Show(() => DramaHelper.OpenDrama2(text, options, x => { try { pick?.Invoke(x.id % 10); } catch (Exception ex) { DebugHelper.WriteLine($"Story {s.Id}{s.Act}.{s.Step}: {ex}"); } }, background));
+            ShowFrames(s, key, args, null, true, background, Options(s, opts, args), Answer(s, pick));
         }
 
         /// <summary>Next step, after `months` (0: as soon as the player is free).</summary>

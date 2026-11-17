@@ -35,7 +35,7 @@ namespace MOD_nE7UL2.AutoTest.Scenarios.Economy
                     c.Assert(MapBuildPropertyEvent.GetBaseTax(town) >= 0, $"base tax {MapBuildPropertyEvent.GetBaseTax(town)}");
                     var npc = Npcs.FirstOrDefault();
                     if (npc != null) c.Assert(MapBuildPropertyEvent.GetTax(town, npc) >= 0, $"tax of {npc.GetName()}: {MapBuildPropertyEvent.GetTax(town, npc)}");
-                    var towns = ModMaster.ModObj.ParameterStore.Towns;
+                    var towns = ModMain.Store.Towns;
                     c.Info($"towns with a master: {towns.Count(x => MapBuildPropertyEvent.GetTownMaster(x) != null)}/{towns.Length}");
                 });
         }

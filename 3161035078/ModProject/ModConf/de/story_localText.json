@@ -1468,5 +1468,200 @@
 		"id": "-1000007293",
 		"key": "taskDesc444447001",
 		"en|ch|tc|kr": "Geh zum Birnbaum in Granny Shis Garten (verfolge diese Aufgabe auf der Karte). Dort kannst du 1-20 Jahre in Abgeschiedenheit sitzen."
+	},
+	{
+		"id": "-1000007294",
+		"key": "story_task_desc_A",
+		"en|ch|tc|kr": "{0}"
+	},
+	{
+		"id": "-1000007295",
+		"key": "story_task_desc_B",
+		"en|ch|tc|kr": "{0}"
+	},
+	{
+		"id": "-1000007296",
+		"key": "story_task_desc_C",
+		"en|ch|tc|kr": "{0}"
+	},
+	{
+		"id": "-1000007297",
+		"key": "story_task_desc_D",
+		"en|ch|tc|kr": "{0}"
+	},
+	{
+		"id": "-1000007298",
+		"key": "story_task_desc_E",
+		"en|ch|tc|kr": "{0}"
+	},
+	{
+		"id": "-1000007299",
+		"key": "story_task_desc_F",
+		"en|ch|tc|kr": "{0}"
+	},
+	{
+		"id": "-1000007300",
+		"key": "story_task_A0",
+		"en|ch|tc|kr": "Die verbannte Schwertkämpferin {A} ist aus {S} geflohen, von ihren Mitschülern gejagt. Steh ihr bei und besuche dann eine Stadt: dort geht ihre Geschichte weiter."
+	},
+	{
+		"id": "-1000007301",
+		"key": "story_task_A1",
+		"en|ch|tc|kr": "{A} wurde von einer Sektenklinge vergiftet. Gib ihr eine Gegengiftpille oder ein starkes Kraut (ein Markt verkauft sie)."
+	},
+	{
+		"id": "-1000007302",
+		"key": "story_task_A2",
+		"en|ch|tc|kr": "Finde den verlorenen Brief von {M}: geh nach {T} (ein betrunkener Räuber oder ein Marktstand hat ihn)."
+	},
+	{
+		"id": "-1000007303",
+		"key": "story_task_A3",
+		"en|ch|tc|kr": "Der alte Lu, Schatzmeister von {S}, sah den Handel. Schütze ihn vor den Mördern oder besorge das Kassenbuch der Schatzkammer."
+	},
+	{
+		"id": "-1000007304",
+		"key": "story_task_A4",
+		"en|ch|tc|kr": "{A} schärft jahrelang ihr Schwert. Übe mit ihr und gib ihr eine Klinge, die nicht bricht."
+	},
+	{
+		"id": "-1000007305",
+		"key": "story_task_A5",
+		"en|ch|tc|kr": "Geh mit {A} nach {S} und stelle {M} vor den Ältesten: zeig die Beweise oder fordere ihn zum Duell."
+	},
+	{
+		"id": "-1000007306",
+		"key": "story_task_A9",
+		"en|ch|tc|kr": "{A} hat sich allein befreit und den dämonischen Pfad betreten. Eines Tages wird sie dich finden."
+	},
+	{
+		"id": "-1000007307",
+		"key": "story_task_B0",
+		"en|ch|tc|kr": "{H} hat dir billig einen Schatz des Roten Lotus verkauft. Maskierte wollen ihn zurück: gib ihn, kämpfe oder lauf zu ihm nach {T}."
+	},
+	{
+		"id": "-1000007308",
+		"key": "story_task_B1",
+		"en|ch|tc|kr": "{H} versteckt sich in {T} vor dem Roten Lotus. Finde ihn: bürge für ihn bei der Bank, leih ihm Steine oder lehne ab."
+	},
+	{
+		"id": "-1000007309",
+		"key": "story_task_B2",
+		"en|ch|tc|kr": "Begleite die letzte Karawane von {H} nach {T2}. Verschwindet er, such ihn in den fernen Städten."
+	},
+	{
+		"id": "-1000007310",
+		"key": "story_task_B3",
+		"en|ch|tc|kr": "Ein Gesandter des Roten Lotus fordert in {T} die Zinsen von {H}: stiehl das rote Kassenbuch, zahle oder halte ihn hin."
+	},
+	{
+		"id": "-1000007311",
+		"key": "story_task_B4",
+		"en|ch|tc|kr": "Rote Banner über {T}: heuere Wachen an und verteidige die Stadt, zahle Tribut oder halte dich heraus."
+	},
+	{
+		"id": "-1000007312",
+		"key": "story_task_B5",
+		"en|ch|tc|kr": "Die Schuld von {H} ist so oder so beglichen. Besuche ihn in {T}."
+	},
+	{
+		"id": "-1000007313",
+		"key": "story_task_C0",
+		"en|ch|tc|kr": "{X} macht in der Stadt explodierende Pillen. Teste eine ihrer Pillen."
+	},
+	{
+		"id": "-1000007314",
+		"key": "story_task_C1",
+		"en|ch|tc|kr": "{X} braucht für die Prüfung der Alchemistengilde einen Mondfrost-Lotus: besorge die Karte des Tals und stelle dich der Riesenschlange."
+	},
+	{
+		"id": "-1000007315",
+		"key": "story_task_C2",
+		"en|ch|tc|kr": "Die Prüfung der Alchemistengilde: bezahle die Ofengebühr und hilf {X}, das Feuer zu beherrschen."
+	},
+	{
+		"id": "-1000007316",
+		"key": "story_task_C3",
+		"en|ch|tc|kr": "{G} hat das Rezept von {X} gestohlen: hol die Aussagen der Lehrlinge, dann stelle ihn bloß, fordere ihn heraus oder lass es gut sein."
+	},
+	{
+		"id": "-1000007317",
+		"key": "story_task_C4",
+		"en|ch|tc|kr": "Die Große Versammlung: fang den Saboteur und sieh zu, wie {X} gegen {G} antritt."
+	},
+	{
+		"id": "-1000007318",
+		"key": "story_task_D0",
+		"en|ch|tc|kr": "Eisenochse {N} kann das Gasthaus nicht bezahlen, der Dichter {C} spottet: zahl für ihn oder kämpf gegen ihn."
+	},
+	{
+		"id": "-1000007319",
+		"key": "story_task_D1",
+		"en|ch|tc|kr": "Jage das Biest mit {N} und {C}; schwört am Lagerfeuer Bruderschaft (Zuneigung 200 mit beiden)."
+	},
+	{
+		"id": "-1000007320",
+		"key": "story_task_D2",
+		"en|ch|tc|kr": "{C} hat 42 Gedichte für {L} geschrieben: hilf ihm, sabotiere ihn oder wirb selbst um sie."
+	},
+	{
+		"id": "-1000007321",
+		"key": "story_task_D3",
+		"en|ch|tc|kr": "Der Rote Lotus hat die Familie von {C} verbrannt: folge dem Mörder zum verfallenen Schrein."
+	},
+	{
+		"id": "-1000007322",
+		"key": "story_task_D4",
+		"en|ch|tc|kr": "In einem Stadtkrieg steht {N} auf der anderen Seite: rede mit ihm, kämpfe gegen ihn oder wechsle die Seite."
+	},
+	{
+		"id": "-1000007323",
+		"key": "story_task_E0",
+		"en|ch|tc|kr": "Pflege den Berggarten von {O} (außerhalb der Städte): vertreibe die Geisteraffen, lerne ihre Lektionen."
+	},
+	{
+		"id": "-1000007324",
+		"key": "story_task_E1",
+		"en|ch|tc|kr": "{Y}, ein Kind aus einem verbrannten Dorf: adoptiere sie, schick sie zu einer Sekte oder lass sie bei {O}."
+	},
+	{
+		"id": "-1000007325",
+		"key": "story_task_E2",
+		"en|ch|tc|kr": "{Y} wächst heran: sei mit 8, 12 und 15 Jahren für sie da."
+	},
+	{
+		"id": "-1000007326",
+		"key": "story_task_E3",
+		"en|ch|tc|kr": "{O} ist krank: hol das Langlebigkeitskraut von den hohen Klippen oder bleib an ihrer Seite."
+	},
+	{
+		"id": "-1000007327",
+		"key": "story_task_E4",
+		"en|ch|tc|kr": "Der letzte Wunsch von {O}: behalte den Garten oder gib ihn {Y}. Der Garten ist auf der Weltkarte (Aufgabe \"Granny Shis Garten\")."
+	},
+	{
+		"id": "-1000007328",
+		"key": "story_task_F0",
+		"en|ch|tc|kr": "Städte hissen rote Banner: der Rote Lotus breitet sich aus. Warte auf den Brief von Lady Honglian {R}."
+	},
+	{
+		"id": "-1000007329",
+		"key": "story_task_F1",
+		"en|ch|tc|kr": "Lady Honglian {R} ruft dich zum Lotuspavillon: sammle deine Verbündeten oder geh allein."
+	},
+	{
+		"id": "-1000007330",
+		"key": "story_task_F2",
+		"en|ch|tc|kr": "Deine Verbündeten aus den beendeten Geschichten folgen dem Ruf."
+	},
+	{
+		"id": "-1000007331",
+		"key": "story_task_F3",
+		"en|ch|tc|kr": "Der Lotuspavillon: besiege die Wächter, dann Lady Honglian {R}."
+	},
+	{
+		"id": "-1000007332",
+		"key": "story_task_F4",
+		"en|ch|tc|kr": "Der Rote Lotus ist gebrochen: ihre Städte sind befreit."
 	}
 ]

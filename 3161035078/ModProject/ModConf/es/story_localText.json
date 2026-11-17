@@ -1468,5 +1468,200 @@
 		"id": "-1000007293",
 		"key": "taskDesc444447001",
 		"en|ch|tc|kr": "Ve al peral del jardín de la abuela Shi (sigue esta misión en el mapa). Allí puedes recluirte de 1 a 20 años."
+	},
+	{
+		"id": "-1000007294",
+		"key": "story_task_desc_A",
+		"en|ch|tc|kr": "{0}"
+	},
+	{
+		"id": "-1000007295",
+		"key": "story_task_desc_B",
+		"en|ch|tc|kr": "{0}"
+	},
+	{
+		"id": "-1000007296",
+		"key": "story_task_desc_C",
+		"en|ch|tc|kr": "{0}"
+	},
+	{
+		"id": "-1000007297",
+		"key": "story_task_desc_D",
+		"en|ch|tc|kr": "{0}"
+	},
+	{
+		"id": "-1000007298",
+		"key": "story_task_desc_E",
+		"en|ch|tc|kr": "{0}"
+	},
+	{
+		"id": "-1000007299",
+		"key": "story_task_desc_F",
+		"en|ch|tc|kr": "{0}"
+	},
+	{
+		"id": "-1000007300",
+		"key": "story_task_A0",
+		"en|ch|tc|kr": "La espadachina exiliada {A} huyó de {S}, perseguida por sus condiscípulos. Ponte de su lado y luego visita cualquier ciudad: allí sigue su historia."
+	},
+	{
+		"id": "-1000007301",
+		"key": "story_task_A1",
+		"en|ch|tc|kr": "A {A} la envenenó una espada de la secta. Dale una píldora antídoto o una hierba fuerte (se venden en el mercado)."
+	},
+	{
+		"id": "-1000007302",
+		"key": "story_task_A2",
+		"en|ch|tc|kr": "Encuentra la carta perdida de {M}: ve a {T} (la tiene un ladrón borracho o un puesto del mercado)."
+	},
+	{
+		"id": "-1000007303",
+		"key": "story_task_A3",
+		"en|ch|tc|kr": "El viejo Lu, tesorero de {S}, vio el trato. Protégelo de los asesinos o consigue el libro del tesoro."
+	},
+	{
+		"id": "-1000007304",
+		"key": "story_task_A4",
+		"en|ch|tc|kr": "{A} afila su espada durante años. Entrena con ella y dale una hoja que no se rompa."
+	},
+	{
+		"id": "-1000007305",
+		"key": "story_task_A5",
+		"en|ch|tc|kr": "Ve con {A} a {S} y enfréntate a {M} ante los ancianos: muestra las pruebas o rétalo a duelo."
+	},
+	{
+		"id": "-1000007306",
+		"key": "story_task_A9",
+		"en|ch|tc|kr": "{A} se liberó sola y tomó el camino demoníaco. Algún día te encontrará."
+	},
+	{
+		"id": "-1000007307",
+		"key": "story_task_B0",
+		"en|ch|tc|kr": "{H} te vendió barato un tesoro del Loto Rojo. Unos enmascarados lo reclaman: devuélvelo, lucha o corre hacia él en {T}."
+	},
+	{
+		"id": "-1000007308",
+		"key": "story_task_B1",
+		"en|ch|tc|kr": "{H} se esconde del Loto Rojo en {T}. Encuéntralo: aválalo en el banco, préstale piedras o niégate."
+	},
+	{
+		"id": "-1000007309",
+		"key": "story_task_B2",
+		"en|ch|tc|kr": "Escolta la última caravana de {H} hasta {T2}. Si desaparece, búscalo en las ciudades lejanas."
+	},
+	{
+		"id": "-1000007310",
+		"key": "story_task_B3",
+		"en|ch|tc|kr": "Un enviado del Loto Rojo reclama los intereses a {H} en {T}: roba el libro rojo, paga o dale largas."
+	},
+	{
+		"id": "-1000007311",
+		"key": "story_task_B4",
+		"en|ch|tc|kr": "Estandartes rojos sobre {T}: contrata guardias y defiende la ciudad, paga un tributo o mantente al margen."
+	},
+	{
+		"id": "-1000007312",
+		"key": "story_task_B5",
+		"en|ch|tc|kr": "La deuda de {H} quedó saldada de un modo u otro. Visítalo en {T}."
+	},
+	{
+		"id": "-1000007313",
+		"key": "story_task_C0",
+		"en|ch|tc|kr": "{X} fabrica píldoras explosivas en la ciudad. Prueba una de sus píldoras."
+	},
+	{
+		"id": "-1000007314",
+		"key": "story_task_C1",
+		"en|ch|tc|kr": "{X} necesita un loto de escarcha lunar para el examen del Gremio de Alquimia: consigue el mapa del valle y enfréntate a la serpiente gigante."
+	},
+	{
+		"id": "-1000007315",
+		"key": "story_task_C2",
+		"en|ch|tc|kr": "El examen del Gremio de Alquimia: paga la tasa del horno y ayuda a {X} a controlar el fuego."
+	},
+	{
+		"id": "-1000007316",
+		"key": "story_task_C3",
+		"en|ch|tc|kr": "{G} robó la receta de {X}: consigue el testimonio de los aprendices y luego desenmascáralo, rétalo o déjalo estar."
+	},
+	{
+		"id": "-1000007317",
+		"key": "story_task_C4",
+		"en|ch|tc|kr": "La Gran Reunión: atrapa al saboteador y luego mira a {X} enfrentarse a {G}."
+	},
+	{
+		"id": "-1000007318",
+		"key": "story_task_D0",
+		"en|ch|tc|kr": "Buey de Hierro {N} no puede pagar la posada y el poeta {C} se burla: paga por él o pelea con él."
+	},
+	{
+		"id": "-1000007319",
+		"key": "story_task_D1",
+		"en|ch|tc|kr": "Caza la bestia con {N} y {C}; junto a la hoguera, jurad hermandad (afecto 200 con ambos)."
+	},
+	{
+		"id": "-1000007320",
+		"key": "story_task_D2",
+		"en|ch|tc|kr": "{C} escribió 42 poemas para {L}: ayúdale, sabotéalo o cortéjala tú."
+	},
+	{
+		"id": "-1000007321",
+		"key": "story_task_D3",
+		"en|ch|tc|kr": "El Loto Rojo quemó a la familia de {C}: sigue al asesino hasta el santuario en ruinas."
+	},
+	{
+		"id": "-1000007322",
+		"key": "story_task_D4",
+		"en|ch|tc|kr": "En una guerra de ciudades {N} está en el otro bando: habla con él, lucha con él o cambia de bando."
+	},
+	{
+		"id": "-1000007323",
+		"key": "story_task_E0",
+		"en|ch|tc|kr": "Cuida el jardín de montaña de {O} (lejos de las ciudades): espanta a los monos espirituales y aprende sus lecciones."
+	},
+	{
+		"id": "-1000007324",
+		"key": "story_task_E1",
+		"en|ch|tc|kr": "{Y}, una niña de una aldea quemada: adóptala, envíala a una secta o déjala con {O}."
+	},
+	{
+		"id": "-1000007325",
+		"key": "story_task_E2",
+		"en|ch|tc|kr": "{Y} crece: acompáñala a los 8, 12 y 15 años."
+	},
+	{
+		"id": "-1000007326",
+		"key": "story_task_E3",
+		"en|ch|tc|kr": "{O} está enferma: trae la hierba de la longevidad de los acantilados o quédate a su lado."
+	},
+	{
+		"id": "-1000007327",
+		"key": "story_task_E4",
+		"en|ch|tc|kr": "El último deseo de {O}: conserva el jardín o dáselo a {Y}. El jardín está en el mapa del mundo (misión \"El jardín de la abuela Shi\")."
+	},
+	{
+		"id": "-1000007328",
+		"key": "story_task_F0",
+		"en|ch|tc|kr": "Las ciudades izan estandartes rojos: el Loto Rojo se extiende. Espera la carta de la dama Honglian {R}."
+	},
+	{
+		"id": "-1000007329",
+		"key": "story_task_F1",
+		"en|ch|tc|kr": "La dama Honglian {R} te llama al Pabellón del Loto: reúne a tus aliados o ve solo."
+	},
+	{
+		"id": "-1000007330",
+		"key": "story_task_F2",
+		"en|ch|tc|kr": "Tus aliados de las historias terminadas acuden a la llamada."
+	},
+	{
+		"id": "-1000007331",
+		"key": "story_task_F3",
+		"en|ch|tc|kr": "El Pabellón del Loto: derrota a sus guardianes y luego a la dama Honglian {R}."
+	},
+	{
+		"id": "-1000007332",
+		"key": "story_task_F4",
+		"en|ch|tc|kr": "El Loto Rojo está roto: sus ciudades son libres."
 	}
 ]

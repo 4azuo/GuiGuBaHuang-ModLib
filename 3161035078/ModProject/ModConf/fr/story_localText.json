@@ -1468,5 +1468,200 @@
 		"id": "-1000007293",
 		"key": "taskDesc444447001",
 		"en|ch|tc|kr": "Allez au poirier du jardin de grand-mère Shi (suivez cette quête sur la carte). Vous pourrez y faire une retraite de 1 à 20 ans."
+	},
+	{
+		"id": "-1000007294",
+		"key": "story_task_desc_A",
+		"en|ch|tc|kr": "{0}"
+	},
+	{
+		"id": "-1000007295",
+		"key": "story_task_desc_B",
+		"en|ch|tc|kr": "{0}"
+	},
+	{
+		"id": "-1000007296",
+		"key": "story_task_desc_C",
+		"en|ch|tc|kr": "{0}"
+	},
+	{
+		"id": "-1000007297",
+		"key": "story_task_desc_D",
+		"en|ch|tc|kr": "{0}"
+	},
+	{
+		"id": "-1000007298",
+		"key": "story_task_desc_E",
+		"en|ch|tc|kr": "{0}"
+	},
+	{
+		"id": "-1000007299",
+		"key": "story_task_desc_F",
+		"en|ch|tc|kr": "{0}"
+	},
+	{
+		"id": "-1000007300",
+		"key": "story_task_A0",
+		"en|ch|tc|kr": "La bretteuse exilée {A} a fui {S}, traquée par ses condisciples. Prenez son parti, puis rendez-vous dans une ville : son histoire continue là-bas."
+	},
+	{
+		"id": "-1000007301",
+		"key": "story_task_A1",
+		"en|ch|tc|kr": "{A} a été empoisonnée par une lame de la secte. Donnez-lui une pilule d'antidote ou une herbe puissante (vendues au marché)."
+	},
+	{
+		"id": "-1000007302",
+		"key": "story_task_A2",
+		"en|ch|tc|kr": "Retrouvez la lettre perdue de {M} : allez à {T} (un voleur ivre ou un étal du marché l'a)."
+	},
+	{
+		"id": "-1000007303",
+		"key": "story_task_A3",
+		"en|ch|tc|kr": "Le vieux Lu, trésorier de {S}, a vu la transaction. Protégez-le des assassins ou obtenez le registre du trésor."
+	},
+	{
+		"id": "-1000007304",
+		"key": "story_task_A4",
+		"en|ch|tc|kr": "{A} aiguise son épée pendant des années. Entraînez-vous avec elle et offrez-lui une lame qui ne se brise pas."
+	},
+	{
+		"id": "-1000007305",
+		"key": "story_task_A5",
+		"en|ch|tc|kr": "Allez avec {A} à {S} et affrontez {M} devant les anciens : montrez les preuves ou défiez-le en duel."
+	},
+	{
+		"id": "-1000007306",
+		"key": "story_task_A9",
+		"en|ch|tc|kr": "{A} s'est libérée seule et a pris la voie démoniaque. Un jour, elle vous retrouvera."
+	},
+	{
+		"id": "-1000007307",
+		"key": "story_task_B0",
+		"en|ch|tc|kr": "{H} vous a vendu à bas prix un trésor du Lotus Rouge. Des hommes masqués le réclament : rendez-le, battez-vous ou courez le voir à {T}."
+	},
+	{
+		"id": "-1000007308",
+		"key": "story_task_B1",
+		"en|ch|tc|kr": "{H} se cache du Lotus Rouge à {T}. Trouvez-le : portez-vous garant à la banque, prêtez-lui des pierres ou refusez."
+	},
+	{
+		"id": "-1000007309",
+		"key": "story_task_B2",
+		"en|ch|tc|kr": "Escortez la dernière caravane de {H} jusqu'à {T2}. S'il disparaît, cherchez-le dans les villes lointaines."
+	},
+	{
+		"id": "-1000007310",
+		"key": "story_task_B3",
+		"en|ch|tc|kr": "Un émissaire du Lotus Rouge réclame les intérêts à {H} à {T} : volez le registre rouge, payez ou gagnez du temps."
+	},
+	{
+		"id": "-1000007311",
+		"key": "story_task_B4",
+		"en|ch|tc|kr": "Des bannières rouges sur {T} : engagez des gardes et défendez la ville, payez un tribut ou restez à l'écart."
+	},
+	{
+		"id": "-1000007312",
+		"key": "story_task_B5",
+		"en|ch|tc|kr": "La dette de {H} est réglée d'une manière ou d'une autre. Rendez-lui visite à {T}."
+	},
+	{
+		"id": "-1000007313",
+		"key": "story_task_C0",
+		"en|ch|tc|kr": "{X} fabrique des pilules explosives en ville. Testez l'une de ses pilules."
+	},
+	{
+		"id": "-1000007314",
+		"key": "story_task_C1",
+		"en|ch|tc|kr": "{X} a besoin d'un lotus de givre lunaire pour l'examen de la Guilde des alchimistes : obtenez la carte de la vallée et affrontez le serpent géant."
+	},
+	{
+		"id": "-1000007315",
+		"key": "story_task_C2",
+		"en|ch|tc|kr": "L'examen de la Guilde des alchimistes : payez les frais de fourneau et aidez {X} à maîtriser le feu."
+	},
+	{
+		"id": "-1000007316",
+		"key": "story_task_C3",
+		"en|ch|tc|kr": "{G} a volé la recette de {X} : obtenez le témoignage des apprentis, puis démasquez-le, défiez-le ou laissez tomber."
+	},
+	{
+		"id": "-1000007317",
+		"key": "story_task_C4",
+		"en|ch|tc|kr": "Le Grand Rassemblement : attrapez le saboteur, puis regardez {X} affronter {G}."
+	},
+	{
+		"id": "-1000007318",
+		"key": "story_task_D0",
+		"en|ch|tc|kr": "Bœuf de Fer {N} ne peut pas payer l'auberge et le poète {C} se moque : payez pour lui ou battez-vous avec lui."
+	},
+	{
+		"id": "-1000007319",
+		"key": "story_task_D1",
+		"en|ch|tc|kr": "Chassez la bête avec {N} et {C} ; autour du feu, jurez la fraternité (affinité 200 avec les deux)."
+	},
+	{
+		"id": "-1000007320",
+		"key": "story_task_D2",
+		"en|ch|tc|kr": "{C} a écrit 42 poèmes pour {L} : aidez-le, sabotez-le ou courtisez-la vous-même."
+	},
+	{
+		"id": "-1000007321",
+		"key": "story_task_D3",
+		"en|ch|tc|kr": "Le Lotus Rouge a brûlé la famille de {C} : suivez l'assassin jusqu'au sanctuaire en ruine."
+	},
+	{
+		"id": "-1000007322",
+		"key": "story_task_D4",
+		"en|ch|tc|kr": "Dans une guerre de villes, {N} est dans l'autre camp : parlez-lui, combattez-le ou changez de camp."
+	},
+	{
+		"id": "-1000007323",
+		"key": "story_task_E0",
+		"en|ch|tc|kr": "Entretenez le jardin de montagne de {O} (loin des villes) : chassez les singes spirituels, apprenez ses leçons."
+	},
+	{
+		"id": "-1000007324",
+		"key": "story_task_E1",
+		"en|ch|tc|kr": "{Y}, une enfant d'un village brûlé : adoptez-la, envoyez-la dans une secte ou laissez-la à {O}."
+	},
+	{
+		"id": "-1000007325",
+		"key": "story_task_E2",
+		"en|ch|tc|kr": "{Y} grandit : soyez là pour elle à 8, 12 et 15 ans."
+	},
+	{
+		"id": "-1000007326",
+		"key": "story_task_E3",
+		"en|ch|tc|kr": "{O} est malade : rapportez l'herbe de longévité des hautes falaises ou restez à ses côtés."
+	},
+	{
+		"id": "-1000007327",
+		"key": "story_task_E4",
+		"en|ch|tc|kr": "Le dernier souhait de {O} : gardez le jardin ou donnez-le à {Y}. Le jardin est sur la carte du monde (quête \"Le jardin de grand-mère Shi\")."
+	},
+	{
+		"id": "-1000007328",
+		"key": "story_task_F0",
+		"en|ch|tc|kr": "Des villes hissent des bannières rouges : le Lotus Rouge s'étend. Attendez la lettre de Dame Honglian {R}."
+	},
+	{
+		"id": "-1000007329",
+		"key": "story_task_F1",
+		"en|ch|tc|kr": "Dame Honglian {R} vous convoque au Pavillon du Lotus : rassemblez vos alliés ou allez-y seul."
+	},
+	{
+		"id": "-1000007330",
+		"key": "story_task_F2",
+		"en|ch|tc|kr": "Vos alliés des histoires terminées répondent à l'appel."
+	},
+	{
+		"id": "-1000007331",
+		"key": "story_task_F3",
+		"en|ch|tc|kr": "Le Pavillon du Lotus : vainquez ses gardiens, puis Dame Honglian {R}."
+	},
+	{
+		"id": "-1000007332",
+		"key": "story_task_F4",
+		"en|ch|tc|kr": "Le Lotus Rouge est brisé : ses villes sont libérées."
 	}
 ]

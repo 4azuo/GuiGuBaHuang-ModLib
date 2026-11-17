@@ -942,5 +942,61 @@
 		"ch": "无NPC故事线",
 		"tc": "無NPC故事線",
 		"kr": "NPC 이야기 없음"
+	},
+	{
+		"id": -1000001168,
+		"key": "smcfgs168",
+		"en": "NPC storylines",
+		"ch": "NPC故事线",
+		"tc": "NPC故事線",
+		"kr": "NPC 이야기"
+	},
+	{
+		"id": -1000001169,
+		"key": "smcfgs169",
+		"en": "Cold Sword: an exiled swordswoman framed by her master; clear her name or fall with her.",
+		"ch": "冷剑：被师父陷害的放逐女剑修；为她洗清冤屈，或与她一同沉沦。",
+		"tc": "冷劍：被師父陷害的放逐女劍修；為她洗清冤屈，或與她一同沉淪。",
+		"kr": "차가운 검: 스승에게 누명을 쓴 추방된 여검수. 그녀의 누명을 벗기거나 함께 몰락하라."
+	},
+	{
+		"id": -1000001170,
+		"key": "smcfgs170",
+		"en": "Old Huang's Debt: a cheating old merchant in debt to the Red Lotus; his last caravan, his town.",
+		"ch": "老黄的债：欠下红莲教债务的奸商老头；他的最后一支商队，他的城镇。",
+		"tc": "老黃的債：欠下紅蓮教債務的奸商老頭；他的最後一支商隊，他的城鎮。",
+		"kr": "황 노인의 빚: 홍련교에 빚진 사기꾼 노상인. 그의 마지막 상단, 그의 마을."
+	},
+	{
+		"id": -1000001171,
+		"key": "smcfgs171",
+		"en": "Exploding Furnace: a clumsy young alchemist, the Guild exam and a stolen recipe.",
+		"ch": "爆炸丹炉：笨手笨脚的年轻丹师、公会考试与被盗的丹方。",
+		"tc": "爆炸丹爐：笨手笨腳的年輕丹師、公會考試與被盜的丹方。",
+		"kr": "폭발하는 화로: 서투른 젊은 연단사, 길드 시험, 그리고 도둑맞은 단방."
+	},
+	{
+		"id": -1000001172,
+		"key": "smcfgs172",
+		"en": "Sworn Brothers: a brawler, a poet and a woman between them; a blood debt and a town war.",
+		"ch": "结义兄弟：一个莽夫、一个诗人和夹在中间的女子；一笔血债与一场城战。",
+		"tc": "結義兄弟：一個莽夫、一個詩人和夾在中間的女子；一筆血債與一場城戰。",
+		"kr": "의형제: 싸움꾼, 시인, 그리고 두 사람 사이의 여인. 피의 빚과 마을 전쟁."
+	},
+	{
+		"id": -1000001173,
+		"key": "smcfgs173",
+		"en": "Granny's Herb Garden: an old herbalist, an orphan to raise, a garden for seclusion.",
+		"ch": "婆婆的药圃：年迈的药婆、需要抚养的孤儿、可供闭关的药圃。",
+		"tc": "婆婆的藥圃：年邁的藥婆、需要撫養的孤兒、可供閉關的藥圃。",
+		"kr": "할머니의 약초밭: 늙은 약초꾼, 키워야 할 고아, 폐관할 수 있는 약초밭."
+	},
+	{
+		"id": -1000001174,
+		"key": "smcfgs174",
+		"en": "Red Lotus: the lady behind the other stories; your allies against her pavilion.",
+		"ch": "红莲：其他故事背后的女人；与盟友一同攻打她的莲花阁。",
+		"tc": "紅蓮：其他故事背後的女人；與盟友一同攻打她的蓮花閣。",
+		"kr": "홍련: 다른 이야기들 뒤에 있는 여인. 동료들과 함께 그녀의 누각에 맞서라."
 	}
 ]

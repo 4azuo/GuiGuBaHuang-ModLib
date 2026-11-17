@@ -101,7 +101,7 @@ namespace MOD_nE7UL2.Mod
         {
             base.OnLoadGame();
 
-            foreach (var town in GetModChildParameterStore().Towns)
+            foreach (var town in ModMain.Store.Towns)
             {
                 //default tax rate
                 if (!TaxRate.ContainsKey(town.buildData.id))
@@ -126,7 +126,7 @@ namespace MOD_nE7UL2.Mod
                     }
                 }
             }
-            foreach (var school in GetModChildParameterStore().Schools)
+            foreach (var school in ModMain.Store.Schools)
             {
                 //default tax rate
                 if (!TaxRate.ContainsKey(school.buildData.id))
@@ -351,7 +351,7 @@ namespace MOD_nE7UL2.Mod
             // one dispatch may stand for several years (time skip): budgets and payments of every year
             var years = Math.Max(1, ModLib.Mod.ModMaster.YearsPassed);
 
-            foreach (var town in GetModChildParameterStore().Towns)
+            foreach (var town in ModMain.Store.Towns)
             {
                 if (!TownMasters.ContainsKey(town.buildData.id))
                     TownMasters.Add(town.buildData.id, new List<string>());
@@ -471,7 +471,7 @@ namespace MOD_nE7UL2.Mod
                 }
             }
 
-            foreach (var school in GetModChildParameterStore().Schools)
+            foreach (var school in ModMain.Store.Schools)
             {
                 //school budget inc yearly
                 school.buildData.money += GetBaseTax(school) * SCHOOL_YEARLY_BUDGET * years;

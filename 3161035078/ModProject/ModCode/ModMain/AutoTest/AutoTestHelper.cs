@@ -141,11 +141,11 @@ namespace MOD_nE7UL2.AutoTest
 
         /// <summary>Living NPCs of the current ParameterStore.</summary>
         public static IEnumerable<WorldUnitBase> Npcs =>
-            (ModMaster.ModObj.ParameterStore?.WUnits ?? new WorldUnitBase[0]).Where(x => x != null && !x.isDie && !x.IsPlayer());
+            (ModMain.Store?.WUnits ?? new WorldUnitBase[0]).Where(x => x != null && !x.isDie && !x.IsPlayer());
 
         /// <summary>Town at the player position, or the first town of the world.</summary>
         public static MapBuildTown AnyTown =>
-            Player.GetMapBuild<MapBuildTown>() ?? ModMaster.ModObj.ParameterStore?.Towns?.FirstOrDefault();
+            Player.GetMapBuild<MapBuildTown>() ?? ModMain.Store?.Towns?.FirstOrDefault();
 
         /// <summary>
         /// True when the event with this CacheId is loaded. Do not test "XxxEvent.Instance == null": ModLib sets

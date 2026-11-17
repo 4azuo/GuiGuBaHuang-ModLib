@@ -520,8 +520,8 @@ namespace MOD_nE7UL2.Mod
                 //get wunits
                 var curArea = g.world.playerUnit.GetUnitPosAreaId();
                 var towns = SMLocalConfigsEvent.Instance.Configs.OnlyActiveOnCurOrNearArea ?
-                    GetModChildParameterStore().Towns.Where(x => x.GetBuildSub<MapBuildTownMarket>() != null && x.gridData.areaBaseID.IsBetween(curArea - 2, curArea + 2)).ToArray() :
-                    GetModChildParameterStore().Towns.Where(x => x.GetBuildSub<MapBuildTownMarket>() != null).ToArray();
+                    ModMain.Store.Towns.Where(x => x.GetBuildSub<MapBuildTownMarket>() != null && x.gridData.areaBaseID.IsBetween(curArea - 2, curArea + 2)).ToArray() :
+                    ModMain.Store.Towns.Where(x => x.GetBuildSub<MapBuildTownMarket>() != null).ToArray();
                 var wunitsInTowns = towns.ToDictionary(x => x.buildData.id, x => g.world.unit.GetUnitExact(x.GetOrigiPoint(), Configs.JoinRange).ToArray());
 
                 //remove error

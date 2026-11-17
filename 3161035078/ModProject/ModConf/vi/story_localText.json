@@ -1468,5 +1468,200 @@
 		"id": "-1000007293",
 		"key": "taskDesc444447001",
 		"en|ch|tc|kr": "Đến gốc lê trong vườn thuốc của Thạch bà bà (theo dõi nhiệm vụ này trên bản đồ). Ở đó ngươi có thể bế quan 1-20 năm."
+	},
+	{
+		"id": "-1000007294",
+		"key": "story_task_desc_A",
+		"en|ch|tc|kr": "{0}"
+	},
+	{
+		"id": "-1000007295",
+		"key": "story_task_desc_B",
+		"en|ch|tc|kr": "{0}"
+	},
+	{
+		"id": "-1000007296",
+		"key": "story_task_desc_C",
+		"en|ch|tc|kr": "{0}"
+	},
+	{
+		"id": "-1000007297",
+		"key": "story_task_desc_D",
+		"en|ch|tc|kr": "{0}"
+	},
+	{
+		"id": "-1000007298",
+		"key": "story_task_desc_E",
+		"en|ch|tc|kr": "{0}"
+	},
+	{
+		"id": "-1000007299",
+		"key": "story_task_desc_F",
+		"en|ch|tc|kr": "{0}"
+	},
+	{
+		"id": "-1000007300",
+		"key": "story_task_A0",
+		"en|ch|tc|kr": "Nữ kiếm khách bị trục xuất {A} đã trốn khỏi {S}, bị đồng môn truy sát. Hãy đứng về phía nàng, rồi đến một thị trấn bất kỳ: câu chuyện sẽ tiếp tục ở đó."
+	},
+	{
+		"id": "-1000007301",
+		"key": "story_task_A1",
+		"en|ch|tc|kr": "{A} trúng độc từ kiếm của tông môn. Đưa nàng một viên giải độc đan hoặc thảo dược đủ mạnh (chợ có bán)."
+	},
+	{
+		"id": "-1000007302",
+		"key": "story_task_A2",
+		"en|ch|tc|kr": "Tìm lá thư thất lạc của {M}: đến {T} (một tên cướp say rượu hoặc một sạp ở chợ đang giữ nó)."
+	},
+	{
+		"id": "-1000007303",
+		"key": "story_task_A3",
+		"en|ch|tc|kr": "Lão Lục, người giữ kho của {S}, đã chứng kiến cuộc giao dịch. Bảo vệ ông khỏi sát thủ, hoặc lấy sổ kho."
+	},
+	{
+		"id": "-1000007304",
+		"key": "story_task_A4",
+		"en|ch|tc|kr": "{A} mài kiếm suốt nhiều năm. Đấu tập với nàng và tặng nàng một thanh kiếm không gãy."
+	},
+	{
+		"id": "-1000007305",
+		"key": "story_task_A5",
+		"en|ch|tc|kr": "Cùng {A} đến {S} đối chất với {M} trước các trưởng lão: đưa ra bằng chứng hoặc quyết đấu."
+	},
+	{
+		"id": "-1000007306",
+		"key": "story_task_A9",
+		"en|ch|tc|kr": "{A} tự mình thoát ra và bước vào ma đạo. Một ngày nào đó nàng sẽ tìm đến ngươi."
+	},
+	{
+		"id": "-1000007307",
+		"key": "story_task_B0",
+		"en|ch|tc|kr": "{H} bán rẻ cho ngươi một bảo vật của Hồng Liên giáo. Bọn bịt mặt muốn đòi lại: trả lại, đánh, hoặc chạy đến chỗ lão ở {T}."
+	},
+	{
+		"id": "-1000007308",
+		"key": "story_task_B1",
+		"en|ch|tc|kr": "{H} trốn Hồng Liên giáo ở {T}. Tìm lão: bảo lãnh ở ngân hàng, cho mượn linh thạch, hoặc từ chối."
+	},
+	{
+		"id": "-1000007309",
+		"key": "story_task_B2",
+		"en|ch|tc|kr": "Hộ tống chuyến hàng cuối của {H} đến {T2}. Nếu lão biến mất, hãy tìm ở các thị trấn xa."
+	},
+	{
+		"id": "-1000007310",
+		"key": "story_task_B3",
+		"en|ch|tc|kr": "Sứ giả Hồng Liên giáo đòi {H} trả lãi ở {T}: trộm sổ đỏ, trả tiền, hoặc kéo dài thời gian."
+	},
+	{
+		"id": "-1000007311",
+		"key": "story_task_B4",
+		"en|ch|tc|kr": "Cờ đỏ phủ {T}: thuê lính canh giữ thành, nộp cống, hoặc đứng ngoài."
+	},
+	{
+		"id": "-1000007312",
+		"key": "story_task_B5",
+		"en|ch|tc|kr": "Món nợ của {H} đã được giải quyết theo cách này hay cách khác. Ghé thăm lão ở {T}."
+	},
+	{
+		"id": "-1000007313",
+		"key": "story_task_C0",
+		"en|ch|tc|kr": "{X} luyện đan nổ trong thành. Thử một viên đan của cô."
+	},
+	{
+		"id": "-1000007314",
+		"key": "story_task_C1",
+		"en|ch|tc|kr": "{X} cần sen Nguyệt Sương cho kỳ thi Hội luyện đan: lấy bản đồ thung lũng và đối đầu con rắn khổng lồ."
+	},
+	{
+		"id": "-1000007315",
+		"key": "story_task_C2",
+		"en|ch|tc|kr": "Kỳ thi Hội luyện đan: trả phí lò và giúp {X} điều khiển lửa."
+	},
+	{
+		"id": "-1000007316",
+		"key": "story_task_C3",
+		"en|ch|tc|kr": "{G} đã trộm đơn thuốc của {X}: lấy lời chứng của các học đồ, rồi vạch mặt, quyết đấu, hoặc bỏ qua."
+	},
+	{
+		"id": "-1000007317",
+		"key": "story_task_C4",
+		"en|ch|tc|kr": "Đại hội luyện đan: bắt kẻ phá hoại, rồi xem {X} đối đầu {G}."
+	},
+	{
+		"id": "-1000007318",
+		"key": "story_task_D0",
+		"en|ch|tc|kr": "Thiết Ngưu {N} không trả nổi tiền quán, thi nhân {C} chế giễu hắn: trả giúp hoặc đánh với hắn."
+	},
+	{
+		"id": "-1000007319",
+		"key": "story_task_D1",
+		"en|ch|tc|kr": "Săn yêu thú cùng {N} và {C}; bên lửa trại, kết nghĩa huynh đệ (hảo cảm 200 với cả hai)."
+	},
+	{
+		"id": "-1000007320",
+		"key": "story_task_D2",
+		"en|ch|tc|kr": "{C} viết 42 bài thơ cho {L}: giúp hắn, phá đám, hoặc tự mình theo đuổi nàng."
+	},
+	{
+		"id": "-1000007321",
+		"key": "story_task_D3",
+		"en|ch|tc|kr": "Hồng Liên giáo đã thiêu chết gia đình {C}: lần theo sát thủ đến ngôi miếu đổ nát."
+	},
+	{
+		"id": "-1000007322",
+		"key": "story_task_D4",
+		"en|ch|tc|kr": "Trong một trận chiến thành trấn, {N} đứng ở phía bên kia: nói chuyện, giao đấu, hoặc đổi phe."
+	},
+	{
+		"id": "-1000007323",
+		"key": "story_task_E0",
+		"en|ch|tc|kr": "Trông vườn trên núi của {O} (ngoài thị trấn): đuổi linh hầu, học lời dạy của bà."
+	},
+	{
+		"id": "-1000007324",
+		"key": "story_task_E1",
+		"en|ch|tc|kr": "{Y}, đứa trẻ từ ngôi làng bị thiêu: nhận nuôi, gửi vào tông môn, hoặc để {O} nuôi."
+	},
+	{
+		"id": "-1000007325",
+		"key": "story_task_E2",
+		"en|ch|tc|kr": "{Y} lớn lên: hãy ở bên con bé lúc 8, 12 và 15 tuổi."
+	},
+	{
+		"id": "-1000007326",
+		"key": "story_task_E3",
+		"en|ch|tc|kr": "{O} lâm bệnh: lên vách núi cao lấy trường thọ thảo, hoặc ở bên bà."
+	},
+	{
+		"id": "-1000007327",
+		"key": "story_task_E4",
+		"en|ch|tc|kr": "Di nguyện của {O}: giữ lại khu vườn hoặc trao cho {Y}. Khu vườn có trên bản đồ thế giới (nhiệm vụ \"Vườn thuốc của Thạch bà bà\")."
+	},
+	{
+		"id": "-1000007328",
+		"key": "story_task_F0",
+		"en|ch|tc|kr": "Các thị trấn dựng cờ đỏ: Hồng Liên giáo lan rộng. Hãy chờ thư của Hồng Liên phu nhân {R}."
+	},
+	{
+		"id": "-1000007329",
+		"key": "story_task_F1",
+		"en|ch|tc|kr": "Hồng Liên phu nhân {R} gọi ngươi đến Hồng Liên Các: tập hợp đồng minh, hoặc đi một mình."
+	},
+	{
+		"id": "-1000007330",
+		"key": "story_task_F2",
+		"en|ch|tc|kr": "Các đồng minh từ những câu chuyện đã kết thúc đáp lời ngươi."
+	},
+	{
+		"id": "-1000007331",
+		"key": "story_task_F3",
+		"en|ch|tc|kr": "Hồng Liên Các: đánh bại các hộ pháp, rồi đến Hồng Liên phu nhân {R}."
+	},
+	{
+		"id": "-1000007332",
+		"key": "story_task_F4",
+		"en|ch|tc|kr": "Hồng Liên đã tan: các thị trấn của bà ta được giải phóng."
 	}
 ]

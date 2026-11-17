@@ -27,7 +27,7 @@ namespace MOD_nE7UL2.AutoTest.Scenarios.Economy
                 {
                     var sell = RealMarketEvent.Instance.MarketPriceRate;
                     var buy = RealMarketEvent2.Instance.MarketPriceRate;
-                    var towns = ModMaster.ModObj.ParameterStore.Buildings.Where(x => x.allBuildSub.ContainsKey(MapBuildSubType.TownMarketPill)).ToList();
+                    var towns = ModMain.Store.Buildings.Where(x => x.allBuildSub.ContainsKey(MapBuildSubType.TownMarketPill)).ToList();
                     c.Assert(towns.All(x => sell.ContainsKey(x.buildData.id)), $"sell rate for {towns.Count} market towns");
                     c.Assert(towns.All(x => buy.ContainsKey(x.buildData.id)), $"buy rate for {towns.Count} market towns");
                     c.Assert(sell.Values.All(x => x > 0), $"sell rates > 0 (min {(sell.Count > 0 ? sell.Values.Min() : 0):0.00})");

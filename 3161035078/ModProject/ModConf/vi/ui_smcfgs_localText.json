@@ -588,5 +588,40 @@
 		"id": "-1000001167",
 		"key": "smcfgs167",
 		"en|ch|tc|kr": "Không có cốt truyện NPC"
+	},
+	{
+		"id": "-1000001168",
+		"key": "smcfgs168",
+		"en|ch|tc|kr": "Cốt truyện NPC"
+	},
+	{
+		"id": "-1000001169",
+		"key": "smcfgs169",
+		"en|ch|tc|kr": "Kiếm lạnh: nữ kiếm khách bị sư phụ hãm hại và trục xuất; rửa oan cho nàng hoặc sa ngã cùng nàng."
+	},
+	{
+		"id": "-1000001170",
+		"key": "smcfgs170",
+		"en|ch|tc|kr": "Món nợ của lão Hoàng: lão thương nhân gian xảo nợ Hồng Liên giáo; chuyến hàng cuối, thị trấn của lão."
+	},
+	{
+		"id": "-1000001171",
+		"key": "smcfgs171",
+		"en|ch|tc|kr": "Lò đan nổ: cô luyện đan trẻ vụng về, kỳ thi của Hội và đơn thuốc bị đánh cắp."
+	},
+	{
+		"id": "-1000001172",
+		"key": "smcfgs172",
+		"en|ch|tc|kr": "Huynh đệ kết nghĩa: một gã đánh đấm, một thi nhân và người con gái giữa hai người; món nợ máu và trận chiến thành trấn."
+	},
+	{
+		"id": "-1000001173",
+		"key": "smcfgs173",
+		"en|ch|tc|kr": "Vườn thuốc của bà bà: bà lão hái thuốc, đứa trẻ mồ côi cần nuôi, khu vườn để bế quan."
+	},
+	{
+		"id": "-1000001174",
+		"key": "smcfgs174",
+		"en|ch|tc|kr": "Hồng Liên: người đàn bà đứng sau các câu chuyện khác; cùng đồng minh tấn công lầu các của bà ta."
 	}
 ]

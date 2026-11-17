@@ -588,5 +588,40 @@
 		"id": "-1000001167",
 		"key": "smcfgs167",
 		"en|ch|tc|kr": "Nullae fabulae NPC"
+	},
+	{
+		"id": "-1000001168",
+		"key": "smcfgs168",
+		"en|ch|tc|kr": "Fabulae NPC"
+	},
+	{
+		"id": "-1000001169",
+		"key": "smcfgs169",
+		"en|ch|tc|kr": "Gladius frigidus: gladiatrix exul a magistro calumniata; nomen eius purga aut cum ea cade."
+	},
+	{
+		"id": "-1000001170",
+		"key": "smcfgs170",
+		"en|ch|tc|kr": "Debitum senis Huang: senex mercator fallax Lotui Rubrae obnoxius; ultimus commeatus, urbs eius."
+	},
+	{
+		"id": "-1000001171",
+		"key": "smcfgs171",
+		"en|ch|tc|kr": "Fornax displodens: iuvenis alchimista inepta, examen Collegii et formula furto ablata."
+	},
+	{
+		"id": "-1000001172",
+		"key": "smcfgs172",
+		"en|ch|tc|kr": "Fratres iurati: rixator, poeta et mulier inter eos; debitum sanguinis et bellum urbium."
+	},
+	{
+		"id": "-1000001173",
+		"key": "smcfgs173",
+		"en|ch|tc|kr": "Hortus herbarum aviae: vetula herbaria, orba alenda, hortus secessui."
+	},
+	{
+		"id": "-1000001174",
+		"key": "smcfgs174",
+		"en|ch|tc|kr": "Lotus Rubra: domina post ceteras fabulas; socii tui contra pavilionem eius."
 	}
 ]

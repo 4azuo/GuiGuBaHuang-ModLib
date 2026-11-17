@@ -168,6 +168,8 @@ namespace MOD_nE7UL2.Mod
         private UIItemComposite selChildSurname;
         private UIItemComposite tglContinueAsDescendant;
         private UIItemComposite tglNoStory;
+        /// <summary>One line per NPC storyline under the "No NPC storylines" toggle (lines A-F).</summary>
+        private static readonly string[] STORY_DESCRIPTIONS = { "smcfgs169", "smcfgs170", "smcfgs171", "smcfgs172", "smcfgs173", "smcfgs174" };
         private UIItemComposite slEncounterRate;
         private UIItemComposite slSeclusionRate;
         private UIItemComposite tglLostLifespanWhenDie;
@@ -680,12 +682,17 @@ namespace MOD_nE7UL2.Mod
                 tglAllowSameSexCouple = uiCustom.AddCompositeToggle(col, row++, GameTool.LS("smcfgs159"), AllowSameSexCouple, GameTool.LS("smcfgs102"));
                 selChildSurname = uiCustom.AddCompositeSelect(col, row++, GameTool.LS("smcfgs160"), new[] { GameTool.LS("smcfgs161"), GameTool.LS("smcfgs162"), GameTool.LS("smcfgs163") }, ChildSurname);
                 tglContinueAsDescendant = uiCustom.AddCompositeToggle(col, row++, GameTool.LS("smcfgs164"), ContinueAsDescendant, GameTool.LS("smcfgs102"));
-                tglNoStory = uiCustom.AddCompositeToggle(col, row++, GameTool.LS("smcfgs167"), NoStory, GameTool.LS("smcfgs102"));
-                row++;
                 // rates of the random events (second column)
                 slEncounterRate = uiCustom.AddCompositeSlider(16, 1, GameTool.LS("smcfgs165"), 0f, 10f, EncounterRate, GameTool.LS("smcfgs103"));
                 slSeclusionRate = uiCustom.AddCompositeSlider(16, 2, GameTool.LS("smcfgs166"), 0f, 3f, SeclusionRate, GameTool.LS("smcfgs103"));
                 uiCustom.AddText(col - 1, row++, GameTool.LS("smcfgs155")).Format(null, 13).Align(TextAnchor.MiddleLeft);
+
+                // NPC storylines: one toggle for all, a line per story
+                row++;
+                uiCustom.AddText(col, row++, GameTool.LS("smcfgs168")).Format(null, 17, FontStyle.Italic).Align(TextAnchor.MiddleRight);
+                tglNoStory = uiCustom.AddCompositeToggle(col, row++, GameTool.LS("smcfgs167"), NoStory, GameTool.LS("smcfgs102"));
+                for (var i = 0; i < STORY_DESCRIPTIONS.Length; i++)
+                    uiCustom.AddText(col - 1, row++, "- " + GameTool.LS(STORY_DESCRIPTIONS[i])).Format(null, 13).Align(TextAnchor.MiddleLeft);
 
                 AddDifButtons();
             }
