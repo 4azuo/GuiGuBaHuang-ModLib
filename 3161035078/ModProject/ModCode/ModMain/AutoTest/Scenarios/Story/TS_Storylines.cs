@@ -29,6 +29,7 @@ namespace MOD_nE7UL2.AutoTest.Scenarios.Story
                 EncounterEvent.GiveItem(x => x.IsHerbItem() != null, grade);
                 EncounterEvent.GiveItem(x => x.IsHerbItem() != null, 1);
             }
+            EncounterEvent.GiveItem(x => x.IsArtifact() != null, grade); // A4 "Give her a sword"
         }
 
         /// <summary>A town (the player is moved there).</summary>
@@ -62,6 +63,19 @@ namespace MOD_nE7UL2.AutoTest.Scenarios.Story
         {
             var s = StoryEvent.Instance.State(id);
             if (s.Closed) return true;
+            var key = $"{s.Id}{s.Act}.{s.Step}";
+            // an option whose condition is not met (proofs, intimacy...; spirit stones and items: Supply): its message
+            // box, captured and closed; the choice comes again and the next option is taken
+            if (g.ui.HasUI(UIType.CheckPopup))
+            {
+                var popup = g.ui.GetUI<UICheckPopup>(UIType.CheckPopup);
+                var text = string.Join(" / ", popup.GetComponentsInChildren<UnityEngine.UI.Text>().Select(t => t.text?.Trim()).Where(t => !string.IsNullOrEmpty(t)));
+                c.Info($"{key}: condition of the option not met: {text}");
+                c.Snap("condition");
+                c.Bag["skip_" + key] = (c.Bag.TryGetValue("picked_" + key, out var p) ? (int)p : 0) + 1;
+                ClickIn(popup, "OK", "Ok", "确定", "確定", "확인");
+                return false;
+            }
             if (DramaUI() != null)
             {
                 if (!ReadDrama(c)) return false;
@@ -70,6 +84,8 @@ namespace MOD_nE7UL2.AutoTest.Scenarios.Story
                 var n = c.Bag.TryGetValue("dramas_" + id, out var v) ? (int)v : 0;
                 c.Bag["dramas_" + id] = n + 1;
                 var pick = plan != null && n < plan.Length ? Math.Min(plan[n], labels.Count - 1) : 0;
+                if (c.Bag.TryGetValue("skip_" + key, out var skip)) pick = Math.Min(Math.Max(pick, (int)skip), labels.Count - 1);
+                c.Bag["picked_" + key] = pick;
                 c.Info($"{s.Id}{s.Act}.{s.Step}: {string.Join(" | ", labels)} -> {labels[pick]}");
                 ChooseOption(labels[pick]);
                 return false;

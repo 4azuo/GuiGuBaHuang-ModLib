@@ -68,10 +68,10 @@ namespace MOD_nE7UL2.Story
         /// <summary>Units holding a role in any line.</summary>
         public HashSet<string> TakenUnits() => new HashSet<string>(Lines.Values.SelectMany(x => x.Roles.Values));
 
-        /// <summary>Busy: a drama, a battle, not on the map (the steps wait).</summary>
+        /// <summary>Busy: a drama, a message box, a battle, not on the map (the steps wait).</summary>
         public static bool Busy() =>
             GameHelper.IsInBattlle() || !g.ui.HasUI(UIType.MapMain) ||
-            new[] { UIType.DramaDialogue, UIType.DramaFortuitous, UIType.DramaDialogueBigTexture, UIType.DramaBigTexture }.Any(t => g.ui.HasUI(t));
+            new[] { UIType.DramaDialogue, UIType.DramaFortuitous, UIType.DramaDialogueBigTexture, UIType.DramaBigTexture, UIType.CheckPopup }.Any(t => g.ui.HasUI(t));
 
         // ------------------------------------------------------------------ opening
 
@@ -224,8 +224,10 @@ namespace MOD_nE7UL2.Story
                 var key = $"{s.Act}.{s.Step}";
                 try { line.Run(s); }
                 catch (Exception ex) { DebugHelper.WriteLine($"Story {s.Id}{key}: {ex}"); s.Soon = false; }
-                // a waiting step (nothing changed) is checked again at the next month tick only
-                if ($"{s.Act}.{s.Step}" == key && !Busy()) s.Soon = false;
+                // the step did not move (a waiting step, or its drama is open): checked again at the next month tick
+                // only; the answer moves it (Next / Act sets Soon). A drama closed without an answer is thus not
+                // reopened every second.
+                if ($"{s.Act}.{s.Step}" == key) s.Soon = false;
                 return;
             }
         }

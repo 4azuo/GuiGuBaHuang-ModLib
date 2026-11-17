@@ -74,7 +74,7 @@ namespace MOD_nE7UL2.Mod
                             }
                             else
                             {
-                                ui.AddButton(ui.LastCol - 5, ui.FirstRow + 3, () => MapBuildPropertyEvent.OpenUITownGuardians(ui.UI.town), $"Tax: {MapBuildPropertyEvent.GetTax(ui.UI.town, g.world.playerUnit)} Spirit Stones\nView the town guardians").Size(300, 80);
+                                ui.AddButton(ui.LastCol - 5, ui.FirstRow + 3, () => MapBuildPropertyEvent.OpenUITownGuardians(ui.UI.town), $"Tax: {MapBuildPropertyEvent.GetTax(ui.UI.town, g.world.playerUnit):#,##0} Spirit Stones\nView the town guardians").Size(300, 80);
                             }
                             ui.AddToolTipButton(ui.LastCol - 8, ui.FirstRow + 3, GameTool.LS("other500020020"));
                         }
@@ -92,7 +92,7 @@ namespace MOD_nE7UL2.Mod
                         {
                             if (!MapBuildPropertyEvent.IsSchoolMember(ui.UI.school, g.world.playerUnit))
                             {
-                                ui.AddButton(ui.LastCol - 5, ui.FirstRow + 3, null, $"Tax: {MapBuildPropertyEvent.GetTax(ui.UI.school, g.world.playerUnit)} Spirit Stones").Size(300, 80).Enable = false;
+                                ui.AddButton(ui.LastCol - 5, ui.FirstRow + 3, null, $"Tax: {MapBuildPropertyEvent.GetTax(ui.UI.school, g.world.playerUnit):#,##0} Spirit Stones").Size(300, 80).Enable = false;
                             }
                         }
                     }

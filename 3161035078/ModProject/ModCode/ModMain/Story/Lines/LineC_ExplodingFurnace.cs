@@ -71,8 +71,8 @@ namespace MOD_nE7UL2.Story
                     var price = EncounterEvent.Cost(3);
                     Tell(s, "C1_2", new[] { "C1_2_o1", "C1_2_o2", "C1_2_o3" }, i =>
                     {
-                        if (i == 0 && Player.GetUnitMoney() >= price) { Player.AddUnitMoney(-price); Next(s); }
-                        else if (i == 1 && TakeItem(p => p.IsHerbItem() != null, 1)) Next(s);
+                        if (i == 0) { if (Pay(s, price)) Next(s); }
+                        else if (i == 1) { if (Offer(s, p => p.IsHerbItem() != null, 1, "herb")) Next(s); }
                         else Wait(s, 1);
                     }, BG, price);
                     break;
@@ -91,7 +91,7 @@ namespace MOD_nE7UL2.Story
                 case 110: // "Failed Exam"
                     Say(s, "X", "C1_failed", new[] { "C1_failed_o1", "C1_failed_o2" }, i =>
                     {
-                        if (i == 0 && TakeItem(p => p.IsPill() != null, 1)) { AddIntim(s, "X", 100); Act(s, 2, 12); }
+                        if (i == 0) { if (Offer(s, p => p.IsPill() != null, 1, "pill")) { AddIntim(s, "X", 100); Act(s, 2, 12); } }
                         else LastExplosion(s);
                     });
                     break;
@@ -101,7 +101,7 @@ namespace MOD_nE7UL2.Story
                     var fee = EncounterEvent.Cost(4);
                     Tell(s, "C2_1", new[] { "C2_1_o1", "C2_1_o2" }, i =>
                     {
-                        if (i == 0 && Player.GetUnitMoney() >= fee) { Player.AddUnitMoney(-fee); AddIntim(s, "X", 50); }
+                        if (i == 0) { if (!Pay(s, fee)) return; AddIntim(s, "X", 50); }
                         s.Set("right", 0);
                         Next(s);
                     }, BG, fee);
@@ -137,7 +137,7 @@ namespace MOD_nE7UL2.Story
                     var n = s.Step - 1; // apprentice 1 / 2
                     Tell(s, "C3_app" + n, new[] { "C3_app_o1", "C3_app_o2", "C3_app_o3" }, i =>
                     {
-                        if (i == 0 && TakeItem(p => p.IsPill() != null || p.IsHerbItem() != null, 1)) { s.Set("proof", s.Flag("proof") + 1); Next(s); }
+                        if (i == 0) { if (Offer(s, p => p.IsPill() != null || p.IsHerbItem() != null, 1, "pill_herb")) { s.Set("proof", s.Flag("proof") + 1); Next(s); } }
                         else if (i == 1) Fight(s, Foe(s, null, -1), "C3_bully" + n);
                         else Next(s);
                     });
@@ -146,8 +146,8 @@ namespace MOD_nE7UL2.Story
                     var canExpose = s.Flag("proof") >= 2 || Player.GetProperty<int>(UnitPropertyEnum.Reputation) >= 500;
                     Say(s, "X", "C3_4", new[] { "C3_4_o1", "C3_4_o2", "C3_4_o3" }, i =>
                     {
-                        if (i == 0 && canExpose) Tell(s, "C3_exposed", null, _ => Act(s, 4, 12));
-                        else if (i == 0 || i == 1) Fight(s, U(s, "G"), "C3_duel");
+                        if (i == 0) { if (Require(s, canExpose, "need_proof_C", null, s.Flag("proof"), Player.GetProperty<int>(UnitPropertyEnum.Reputation))) Tell(s, "C3_exposed", null, _ => Act(s, 4, 12)); }
+                        else if (i == 1) Fight(s, U(s, "G"), "C3_duel");
                         else { AddIntim(s, "X", -100); LastExplosion(s); }
                     });
                     break;

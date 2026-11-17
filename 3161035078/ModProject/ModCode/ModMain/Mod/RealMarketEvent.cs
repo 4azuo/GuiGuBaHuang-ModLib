@@ -101,11 +101,11 @@ namespace MOD_nE7UL2.Mod
                 var budget = MapBuildPropertyEvent.GetBuildProperty(curMainTown);
                 var totalPrice = GetTotalPrice(uiPropSell);
                 var cashback = (totalPrice * ((GetSellRate(curMainTown, g.world.playerUnit) - 100.00f) / 100.00f)).Parse<int>();
-                uiPropSell.textMoney.text = $"Owned: {g.world.playerUnit.GetUnitMoney()} Spirit Stones";
-                uiPropSell.textPrice.text = $"Total: {totalPrice + cashback} ({cashback})";
+                uiPropSell.textMoney.text = $"Owned: {g.world.playerUnit.GetUnitMoney():#,##0} Spirit Stones";
+                uiPropSell.textPrice.text = $"Total: {totalPrice + cashback:#,##0} ({cashback:#,##0})";
                 uiPropSell.btnOK.gameObject.SetActive(totalPrice <= budget);
-                txtMarketST.text = $"Market: {budget} Spirit Stones";
-                txtPrice2.text = $"/{budget} Spirit Stones";
+                txtMarketST.text = $"Market: {budget:#,##0} Spirit Stones";
+                txtPrice2.text = $"/{budget:#,##0} Spirit Stones";
                 txtWarningMsg.gameObject.SetActive(totalPrice > budget);
             }
         }

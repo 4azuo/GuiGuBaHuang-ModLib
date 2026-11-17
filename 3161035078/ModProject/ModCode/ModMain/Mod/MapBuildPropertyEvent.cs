@@ -1079,7 +1079,7 @@ namespace MOD_nE7UL2.Mod
             {
                 DramaTool.OpenDrama(TAXPAY_NOT_ENOUGH_MONEY_DRAMA, new DramaData
                 {
-                    dialogueText = { [TAXPAY_NOT_ENOUGH_MONEY_DRAMA] = string.Format(GameTool.LS("other500020027"), tax) },
+                    dialogueText = { [TAXPAY_NOT_ENOUGH_MONEY_DRAMA] = ModTextHelper.StoneIcons(string.Format(GameTool.LS("other500020027"), tax)) },
                     onOptionsClickCall = ActionHelper.TracedIl2Action<ConfDramaOptionsItem>((x) =>
                     {
                         switch (x.id)

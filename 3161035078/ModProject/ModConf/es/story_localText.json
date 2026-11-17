@@ -1663,5 +1663,65 @@
 		"id": "-1000007332",
 		"key": "story_task_F4",
 		"en|ch|tc|kr": "El Loto Rojo está roto: sus ciudades son libres."
+	},
+	{
+		"id": "-1000007333",
+		"key": "story_no_money",
+		"en|ch|tc|kr": "No tienes suficientes piedras espirituales: necesitas {0:#,##0}, tienes {1:#,##0}."
+	},
+	{
+		"id": "-1000007334",
+		"key": "story_no_pill",
+		"en|ch|tc|kr": "No tienes ninguna píldora de grado {0} o superior."
+	},
+	{
+		"id": "-1000007335",
+		"key": "story_no_herb",
+		"en|ch|tc|kr": "No tienes ninguna hierba de grado {0} o superior."
+	},
+	{
+		"id": "-1000007336",
+		"key": "story_no_artifact",
+		"en|ch|tc|kr": "No tienes ningún artefacto sin equipar de grado {0} o superior."
+	},
+	{
+		"id": "-1000007337",
+		"key": "story_no_pill_herb",
+		"en|ch|tc|kr": "No tienes ninguna píldora ni hierba que dar."
+	},
+	{
+		"id": "-1000007338",
+		"key": "story_no_gift",
+		"en|ch|tc|kr": "No tienes nada que regalar (un objeto de afición, una hierba o una píldora)."
+	},
+	{
+		"id": "-1000007339",
+		"key": "story_need_intim",
+		"en|ch|tc|kr": "{0} aún no confía lo suficiente en ti: intimidad {1:#,##0} / {2:#,##0}."
+	},
+	{
+		"id": "-1000007340",
+		"key": "story_need_proof_A",
+		"en|ch|tc|kr": "Aún no tienes las pruebas: la carta, y un testigo o el libro de cuentas."
+	},
+	{
+		"id": "-1000007341",
+		"key": "story_need_proof_C",
+		"en|ch|tc|kr": "No basta para desenmascararlo: pruebas {0} / 2, o reputación {1:#,##0} / 500."
+	},
+	{
+		"id": "-1000007342",
+		"key": "story_need_unmarried",
+		"en|ch|tc|kr": "Tú o {0} ya tenéis un compañero del dao."
+	},
+	{
+		"id": "-1000007343",
+		"key": "story_need_sworn",
+		"en|ch|tc|kr": "Ambos deben confiar en ti primero: intimidad {N} {0:#,##0} / 200, {C} {1:#,##0} / 200."
+	},
+	{
+		"id": "-1000007344",
+		"key": "story_A5_1_o4",
+		"en|ch|tc|kr": "Dejarla con su venganza"
 	}
 ]

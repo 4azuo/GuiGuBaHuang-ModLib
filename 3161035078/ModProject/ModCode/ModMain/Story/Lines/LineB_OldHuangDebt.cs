@@ -50,9 +50,9 @@ namespace MOD_nE7UL2.Story
                     var price = EncounterEvent.Cost(3);
                     Say(s, "H", "B0_1", new[] { "B0_1_o1", "B0_1_o2" }, i =>
                     {
-                        if (i == 0 && Player.GetUnitMoney() >= price)
+                        if (i == 0)
                         {
-                            Player.AddUnitMoney(-price);
+                            if (!Pay(s, price)) return;
                             s.Set("item_name_set");
                             TaoistLogEvent.Log("log_story_item", Give(x => x.IsHerbItem() != null || x.IsPill() != null, Player.GetGradeLvl() + 1));
                             Next(s, 1);
@@ -86,7 +86,7 @@ namespace MOD_nE7UL2.Story
                     Say(s, "H", "B1_3", new[] { "B1_3_o1", "B1_3_o2", "B1_3_o3" }, i =>
                     {
                         if (i == 0) s.Set("vouched");
-                        else if (i == 1 && Player.GetUnitMoney() >= loan) { Player.AddUnitMoney(-loan); s.Set("lent", loan); AddIntim(s, "H", 100); }
+                        else if (i == 1) { if (!Pay(s, loan)) return; s.Set("lent", loan); AddIntim(s, "H", 100); }
                         else s.Set("refused");
                         Act(s, 2, 2);
                     }, loan);
@@ -127,7 +127,7 @@ namespace MOD_nE7UL2.Story
                     Say(s, "H", "B3_2", new[] { "B3_2_o1", "B3_2_o2", "B3_2_o3" }, i =>
                     {
                         if (i == 0) Fight(s, Foe(s, false, 1), "B3_ledger");
-                        else if (i == 1 && Player.GetUnitMoney() >= interest) { Player.AddUnitMoney(-interest); s.Set("paid"); Next(s); }
+                        else if (i == 1) { if (Pay(s, interest)) { s.Set("paid"); Next(s); } }
                         else { s.Set("stalled"); Next(s); }
                     }, interest);
                     break;

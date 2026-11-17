@@ -13,6 +13,8 @@ namespace MOD_nE7UL2.Story
     public class LineA_ColdSword : StoryLine
     {
         public override string Id => "A";
+        /// <summary>Intimacy for "Let it go" (A5, ending Peace).</summary>
+        public const int PEACE_INTIM = 300;
         public override int Acts => 6;
 
         public override StoryRole[] Roles => new[]
@@ -109,10 +111,9 @@ namespace MOD_nE7UL2.Story
                 case 2:
                     Say(s, "A", "A1_2", new[] { "A1_2_o1", "A1_2_o2", "A1_2_o3" }, i =>
                     {
-                        var ok = i == 0 ? TakeItem(x => x.IsPill() != null, grade)
-                            : i == 1 && TakeItem(x => x.IsHerbItem() != null, grade);
-                        if (ok) Next(s);
-                        else Tell(s, i == 2 ? "A1_2_search" : "A1_2_none", null, _ => Wait(s, 1));
+                        if (i == 0) { if (Offer(s, x => x.IsPill() != null, grade, "pill")) Next(s); }
+                        else if (i == 1) { if (Offer(s, x => x.IsHerbItem() != null, grade, "herb")) Next(s); }
+                        else Tell(s, "A1_2_search", null, _ => Wait(s, 1));
                     }, grade);
                     break;
                 case 3:
@@ -165,7 +166,7 @@ namespace MOD_nE7UL2.Story
                         var price = EncounterEvent.Cost(5);
                         Tell(s, "A2_2_market", new[] { "A2_2_buy", "A2_2_later" }, i =>
                         {
-                            if (i == 0 && Player.GetUnitMoney() >= price) { Player.AddUnitMoney(-price); Next(s); }
+                            if (i == 0) { if (Pay(s, price)) Next(s); }
                             else Wait(s, 1);
                         }, BG, price);
                     }
@@ -233,8 +234,8 @@ namespace MOD_nE7UL2.Story
                     var price = EncounterEvent.Cost(20);
                     Say(s, "A", "A4_2", new[] { "A4_2_o1", "A4_2_o2", "A4_2_o3" }, i =>
                     {
-                        if (i == 0 && TakeItem(x => x.IsArtifact() != null, a?.GetGradeLvl() ?? 1)) { s.Set("sword"); AddIntim(s, "A", 100); }
-                        else if (i == 1 && Player.GetUnitMoney() >= price) { Player.AddUnitMoney(-price); s.Set("sword"); AddIntim(s, "A", 50); }
+                        if (i == 0) { if (!Offer(s, x => x.IsArtifact() != null, a?.GetGradeLvl() ?? 1, "artifact")) return; s.Set("sword"); AddIntim(s, "A", 100); }
+                        else if (i == 1) { if (!Pay(s, price)) return; s.Set("sword"); AddIntim(s, "A", 50); }
                         Next(s, 12);
                     }, price);
                     break;
@@ -254,18 +255,20 @@ namespace MOD_nE7UL2.Story
             switch (s.Step)
             {
                 case 1:
-                    Say(s, "A", "A5_1", new[] { "A5_1_o1", "A5_1_o2", "A5_1_o3" }, i =>
+                    // "Let it go" needs her trust; without it she goes alone (o4: Fallen)
+                    Say(s, "A", "A5_1", new[] { "A5_1_o1", "A5_1_o2", "A5_1_o3", "A5_1_o4" }, i =>
                     {
                         if (i == 0) Next(s, 1);
-                        else if (i == 1) { if (Intim(s, "A") >= 300) Peace(s); else Fallen(s); }
-                        else Traitor(s);
+                        else if (i == 1) { if (Require(s, Intim(s, "A") >= PEACE_INTIM, "need_intim", null, Name(s, "A"), Intim(s, "A"), PEACE_INTIM)) Peace(s); }
+                        else if (i == 2) Traitor(s);
+                        else Fallen(s);
                     });
                     break;
                 case 2:
                     var proof = s.Has("letter") && (s.Has("witness") || s.Flag("A3_ledger") > 0);
                     Say(s, "M", "A5_2", new[] { "A5_2_o1", "A5_2_o2" }, i =>
                     {
-                        if (i == 0 && proof) Fight(s, U(s, "M"), "A5_master");
+                        if (i == 0) { if (Require(s, proof, "need_proof_A", null)) Fight(s, U(s, "M"), "A5_master"); }
                         else Fight(s, Foe(s, null, 1, s.Roles["S"]), "A5_guard");
                     });
                     break;
@@ -314,8 +317,12 @@ namespace MOD_nE7UL2.Story
 
         private void Companion(StoryState s) => Say(s, "A", "endA_Companion", new[] { "endA_Companion_o1", "endA_Companion_o2" }, i =>
         {
-            if (i == 0 && string.IsNullOrEmpty(FamilyEvent.Spouse(Player)) && string.IsNullOrEmpty(FamilyEvent.Spouse(U(s, "A"))))
+            if (i == 0)
+            {
+                var free = string.IsNullOrEmpty(FamilyEvent.Spouse(Player)) && string.IsNullOrEmpty(FamilyEvent.Spouse(U(s, "A")));
+                if (!Require(s, free, "need_unmarried", () => Companion(s), Name(s, "A"))) return;
                 FamilyEvent.SetMarried(Player, U(s, "A"));
+            }
             End(s, "A_Companion");
         });
 

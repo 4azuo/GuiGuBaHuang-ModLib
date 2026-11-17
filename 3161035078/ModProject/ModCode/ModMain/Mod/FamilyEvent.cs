@@ -650,18 +650,7 @@ namespace MOD_nE7UL2.Mod
 
         // ------------------------------------------------------------------ UI
 
-        [EventCondition(IsInGame = HandleEnum.True, IsInBattle = HandleEnum.False)]
-        public override void OnOpenUIEnd(OpenUIEnd e)
-        {
-            base.OnOpenUIEnd(e);
-            if (Disabled || e.uiType.uiName != UIType.NPCInfo.uiName || WantedEvent.IsOpenWantedList)
-                return;
-            var cover = new UICover<UINPCInfo>(e.ui);
-            cover.AddButton(200f, 95f, () => OpenFamily(cover.UI.unit), GameTool.LS("family_btn")).Format(Color.black).Size(100, 40)
-                .SetParentTransform(cover.UI.uiProperty.textAddLuckTitle);
-        }
-
-        /// <summary>Family window of a unit.</summary>
+        /// <summary>Family window of a unit (opened from the household accounts window; NPC info uses the game's own Family tab).</summary>
         public static void OpenFamily(WorldUnitBase u)
         {
             if (u == null) return;

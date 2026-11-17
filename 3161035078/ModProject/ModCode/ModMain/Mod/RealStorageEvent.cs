@@ -54,11 +54,11 @@ namespace MOD_nE7UL2.Mod
                 {
                     var txtWarning1 = uiTownStorageProps.textTip.Copy().Align(TextAnchor.MiddleCenter).Format(Color.red, 17)
                         .Pos(uiTownStorageProps.btnSearch1.gameObject, -300, 0)
-                        .Set($"You have to pay your debt ({Debt} Spirit Stones) next month!");
+                        .Set($"You have to pay your debt ({Debt:#,##0} Spirit Stones) next month!");
 
                     var txtWarning2 = uiTownStorageProps.textTip.Copy().Align(TextAnchor.MiddleCenter).Format(Color.red, 17)
                         .Pos(uiTownStorageProps.btnSearch2.gameObject, -300, 0)
-                        .Set($"You have to pay your debt ({Debt} Spirit Stones) next month!");
+                        .Set($"You have to pay your debt ({Debt:#,##0} Spirit Stones) next month!");
 
                     foreach (var item in uiTownStorageProps.GetComponentsInChildren<ScrollRect>().SelectMany(x => x.GetComponentsInChildren<Image>()))
                     {
@@ -80,7 +80,7 @@ namespace MOD_nE7UL2.Mod
             {
                 var storageValue = GetStorageValue();
                 var spValue = GetStorageSpiritStones();
-                txtStorageMoney.text = $"Storage: {storageValue} Spirit Stones ({spValue} cash, {storageValue - spValue} items)";
+                txtStorageMoney.text = $"Storage: {storageValue:#,##0} Spirit Stones ({spValue:#,##0} cash, {storageValue - spValue:#,##0} items)";
                 //FreeStorage
                 if (UnitTypeEvent.GetUnitTypeEnum(g.world.playerUnit) == UnitTypeEnum.Merchant || 
                     MapBuildPropertyEvent.IsTownGuardian(g.world.playerUnit.GetMapBuild<MapBuildTown>(), g.world.playerUnit))
@@ -89,7 +89,7 @@ namespace MOD_nE7UL2.Mod
                 }
                 else
                 {
-                    txtFee.text = $"Fee: {FeeRate() * 100:0.0}% (-{(storageValue * FeeRate()).Parse<int>()} Spirit Stones monthly)";
+                    txtFee.text = $"Fee: {FeeRate() * 100:0.0}% (-{(storageValue * FeeRate()).Parse<int>():#,##0} Spirit Stones monthly)";
                 }
             }
         }

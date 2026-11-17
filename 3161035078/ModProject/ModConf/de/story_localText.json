@@ -1663,5 +1663,65 @@
 		"id": "-1000007332",
 		"key": "story_task_F4",
 		"en|ch|tc|kr": "Der Rote Lotus ist gebrochen: ihre Städte sind befreit."
+	},
+	{
+		"id": "-1000007333",
+		"key": "story_no_money",
+		"en|ch|tc|kr": "Nicht genug Geistersteine: {0:#,##0} nötig, du hast {1:#,##0}."
+	},
+	{
+		"id": "-1000007334",
+		"key": "story_no_pill",
+		"en|ch|tc|kr": "Du hast keine Pille vom Rang {0} oder höher."
+	},
+	{
+		"id": "-1000007335",
+		"key": "story_no_herb",
+		"en|ch|tc|kr": "Du hast kein Kraut vom Rang {0} oder höher."
+	},
+	{
+		"id": "-1000007336",
+		"key": "story_no_artifact",
+		"en|ch|tc|kr": "Du hast kein nicht ausgerüstetes Artefakt vom Rang {0} oder höher."
+	},
+	{
+		"id": "-1000007337",
+		"key": "story_no_pill_herb",
+		"en|ch|tc|kr": "Du hast keine Pille und kein Kraut zum Verschenken."
+	},
+	{
+		"id": "-1000007338",
+		"key": "story_no_gift",
+		"en|ch|tc|kr": "Du hast nichts zum Verschenken (ein Hobbygegenstand, ein Kraut oder eine Pille)."
+	},
+	{
+		"id": "-1000007339",
+		"key": "story_need_intim",
+		"en|ch|tc|kr": "{0} vertraut dir noch nicht genug: Vertrautheit {1:#,##0} / {2:#,##0}."
+	},
+	{
+		"id": "-1000007340",
+		"key": "story_need_proof_A",
+		"en|ch|tc|kr": "Du hast die Beweise noch nicht: den Brief und einen Zeugen oder das Rechnungsbuch."
+	},
+	{
+		"id": "-1000007341",
+		"key": "story_need_proof_C",
+		"en|ch|tc|kr": "Nicht genug, um ihn bloßzustellen: Beweise {0} / 2 oder Ruf {1:#,##0} / 500."
+	},
+	{
+		"id": "-1000007342",
+		"key": "story_need_unmarried",
+		"en|ch|tc|kr": "Du oder {0} habt bereits einen Dao-Gefährten."
+	},
+	{
+		"id": "-1000007343",
+		"key": "story_need_sworn",
+		"en|ch|tc|kr": "Beide müssen dir zuerst vertrauen: Vertrautheit {N} {0:#,##0} / 200, {C} {1:#,##0} / 200."
+	},
+	{
+		"id": "-1000007344",
+		"key": "story_A5_1_o4",
+		"en|ch|tc|kr": "Überlass sie ihrer Rache"
 	}
 ]

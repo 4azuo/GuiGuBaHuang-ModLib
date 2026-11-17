@@ -1663,5 +1663,65 @@
 		"id": "-1000007332",
 		"key": "story_task_F4",
 		"en|ch|tc|kr": "Le Lotus Rouge est brisé : ses villes sont libérées."
+	},
+	{
+		"id": "-1000007333",
+		"key": "story_no_money",
+		"en|ch|tc|kr": "Pas assez de pierres spirituelles : il en faut {0:#,##0}, vous en avez {1:#,##0}."
+	},
+	{
+		"id": "-1000007334",
+		"key": "story_no_pill",
+		"en|ch|tc|kr": "Vous n'avez aucune pilule de rang {0} ou plus."
+	},
+	{
+		"id": "-1000007335",
+		"key": "story_no_herb",
+		"en|ch|tc|kr": "Vous n'avez aucune herbe de rang {0} ou plus."
+	},
+	{
+		"id": "-1000007336",
+		"key": "story_no_artifact",
+		"en|ch|tc|kr": "Vous n'avez aucun artefact non équipé de rang {0} ou plus."
+	},
+	{
+		"id": "-1000007337",
+		"key": "story_no_pill_herb",
+		"en|ch|tc|kr": "Vous n'avez ni pilule ni herbe à donner."
+	},
+	{
+		"id": "-1000007338",
+		"key": "story_no_gift",
+		"en|ch|tc|kr": "Vous n'avez rien à offrir (un objet de loisir, une herbe ou une pilule)."
+	},
+	{
+		"id": "-1000007339",
+		"key": "story_need_intim",
+		"en|ch|tc|kr": "{0} ne vous fait pas encore assez confiance : intimité {1:#,##0} / {2:#,##0}."
+	},
+	{
+		"id": "-1000007340",
+		"key": "story_need_proof_A",
+		"en|ch|tc|kr": "Vous n'avez pas encore les preuves : la lettre, et un témoin ou le registre."
+	},
+	{
+		"id": "-1000007341",
+		"key": "story_need_proof_C",
+		"en|ch|tc|kr": "Pas assez pour le démasquer : preuves {0} / 2, ou réputation {1:#,##0} / 500."
+	},
+	{
+		"id": "-1000007342",
+		"key": "story_need_unmarried",
+		"en|ch|tc|kr": "Vous ou {0} avez déjà un compagnon du dao."
+	},
+	{
+		"id": "-1000007343",
+		"key": "story_need_sworn",
+		"en|ch|tc|kr": "Tous deux doivent d'abord vous faire confiance : intimité {N} {0:#,##0} / 200, {C} {1:#,##0} / 200."
+	},
+	{
+		"id": "-1000007344",
+		"key": "story_A5_1_o4",
+		"en|ch|tc|kr": "La laisser à sa vengeance"
 	}
 ]

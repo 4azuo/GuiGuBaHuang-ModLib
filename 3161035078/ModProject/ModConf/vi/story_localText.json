@@ -1663,5 +1663,65 @@
 		"id": "-1000007332",
 		"key": "story_task_F4",
 		"en|ch|tc|kr": "Hồng Liên đã tan: các thị trấn của bà ta được giải phóng."
+	},
+	{
+		"id": "-1000007333",
+		"key": "story_no_money",
+		"en|ch|tc|kr": "Không đủ linh thạch: cần {0:#,##0}, ngươi chỉ có {1:#,##0}."
+	},
+	{
+		"id": "-1000007334",
+		"key": "story_no_pill",
+		"en|ch|tc|kr": "Ngươi không có đan dược phẩm {0} trở lên."
+	},
+	{
+		"id": "-1000007335",
+		"key": "story_no_herb",
+		"en|ch|tc|kr": "Ngươi không có dược thảo phẩm {0} trở lên."
+	},
+	{
+		"id": "-1000007336",
+		"key": "story_no_artifact",
+		"en|ch|tc|kr": "Ngươi không có pháp bảo chưa trang bị phẩm {0} trở lên."
+	},
+	{
+		"id": "-1000007337",
+		"key": "story_no_pill_herb",
+		"en|ch|tc|kr": "Ngươi không có đan dược hay dược thảo nào để đưa."
+	},
+	{
+		"id": "-1000007338",
+		"key": "story_no_gift",
+		"en|ch|tc|kr": "Ngươi không có gì để làm quà (vật phẩm sở thích, dược thảo hoặc đan dược)."
+	},
+	{
+		"id": "-1000007339",
+		"key": "story_need_intim",
+		"en|ch|tc|kr": "{0} chưa đủ tin tưởng ngươi: thân mật {1:#,##0} / {2:#,##0}."
+	},
+	{
+		"id": "-1000007340",
+		"key": "story_need_proof_A",
+		"en|ch|tc|kr": "Ngươi chưa có chứng cứ: cần bức thư, và nhân chứng hoặc sổ sách."
+	},
+	{
+		"id": "-1000007341",
+		"key": "story_need_proof_C",
+		"en|ch|tc|kr": "Chưa đủ để vạch mặt hắn: chứng cứ {0} / 2, hoặc danh vọng {1:#,##0} / 500."
+	},
+	{
+		"id": "-1000007342",
+		"key": "story_need_unmarried",
+		"en|ch|tc|kr": "Ngươi hoặc {0} đã có đạo lữ."
+	},
+	{
+		"id": "-1000007343",
+		"key": "story_need_sworn",
+		"en|ch|tc|kr": "Cả hai phải tin tưởng ngươi trước: thân mật {N} {0:#,##0} / 200, {C} {1:#,##0} / 200."
+	},
+	{
+		"id": "-1000007344",
+		"key": "story_A5_1_o4",
+		"en|ch|tc|kr": "Mặc nàng một mình báo thù"
 	}
 ]

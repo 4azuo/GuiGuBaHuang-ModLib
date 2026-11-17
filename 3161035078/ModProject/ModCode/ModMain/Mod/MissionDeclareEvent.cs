@@ -119,7 +119,7 @@ Your commissions:
                 {
                     var txt1 = uiCover.AddText(0, 0, string.Empty, uiSelector.textInfo).Format().Pos(uiSelector.btnOK.transform, 0, 100);
                     var txt2 = uiCover.AddText(0, 0, string.Empty, uiSelector.textInfo).Format().Pos(uiSelector.btnOK.transform, 0, 50);
-                    var txt3 = uiCover.AddText(0, 0, $"{g.world.playerUnit.GetUnitMoney()} Spirit Stones, {g.world.playerUnit.GetUnitMayorDegree()} Mayor Degrees", uiSelector.textInfo)
+                    var txt3 = uiCover.AddText(0, 0, $"{g.world.playerUnit.GetUnitMoney():#,##0} Spirit Stones, {g.world.playerUnit.GetUnitMayorDegree():#,##0} Mayor Degrees", uiSelector.textInfo)
                         .Align(TextAnchor.MiddleCenter).Format().Pos(uiSelector.textTitle1.transform, 0, 0);
                     uiCover.UIWork = new UICustomWork
                     {

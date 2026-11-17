@@ -1663,5 +1663,65 @@
 		"id": "-1000007332",
 		"key": "story_task_F4",
 		"en|ch|tc|kr": "Lotus Rubra fracta est: urbes eius liberatae sunt."
+	},
+	{
+		"id": "-1000007333",
+		"key": "story_no_money",
+		"en|ch|tc|kr": "Lapides spiritales non satis: {0:#,##0} opus sunt, {1:#,##0} habes."
+	},
+	{
+		"id": "-1000007334",
+		"key": "story_no_pill",
+		"en|ch|tc|kr": "Nullam pilulam gradus {0} aut altioris habes."
+	},
+	{
+		"id": "-1000007335",
+		"key": "story_no_herb",
+		"en|ch|tc|kr": "Nullam herbam gradus {0} aut altioris habes."
+	},
+	{
+		"id": "-1000007336",
+		"key": "story_no_artifact",
+		"en|ch|tc|kr": "Nullum artefactum non indutum gradus {0} aut altioris habes."
+	},
+	{
+		"id": "-1000007337",
+		"key": "story_no_pill_herb",
+		"en|ch|tc|kr": "Nullam pilulam neque herbam dandam habes."
+	},
+	{
+		"id": "-1000007338",
+		"key": "story_no_gift",
+		"en|ch|tc|kr": "Nihil habes quod dono des (rem studii, herbam aut pilulam)."
+	},
+	{
+		"id": "-1000007339",
+		"key": "story_need_intim",
+		"en|ch|tc|kr": "{0} tibi nondum satis confidit: familiaritas {1:#,##0} / {2:#,##0}."
+	},
+	{
+		"id": "-1000007340",
+		"key": "story_need_proof_A",
+		"en|ch|tc|kr": "Probationes nondum habes: epistulam, et testem aut codicem rationum."
+	},
+	{
+		"id": "-1000007341",
+		"key": "story_need_proof_C",
+		"en|ch|tc|kr": "Non satis ad eum detegendum: probationes {0} / 2, aut fama {1:#,##0} / 500."
+	},
+	{
+		"id": "-1000007342",
+		"key": "story_need_unmarried",
+		"en|ch|tc|kr": "Tu aut {0} iam socium dao habetis."
+	},
+	{
+		"id": "-1000007343",
+		"key": "story_need_sworn",
+		"en|ch|tc|kr": "Ambo tibi prius confidere debent: familiaritas {N} {0:#,##0} / 200, {C} {1:#,##0} / 200."
+	},
+	{
+		"id": "-1000007344",
+		"key": "story_A5_1_o4",
+		"en|ch|tc|kr": "Eam ultioni suae relinque"
 	}
 ]

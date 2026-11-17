@@ -52,7 +52,7 @@ namespace MOD_nE7UL2.Story
                     var bill = EncounterEvent.Cost(1);
                     Say(s, "N", "D0_2", new[] { "D0_2_o1", "D0_2_o2" }, i =>
                     {
-                        if (i == 0 && Player.GetUnitMoney() >= bill) { Player.AddUnitMoney(-bill); AddIntim(s, "N", 150); Next(s); }
+                        if (i == 0) { if (Pay(s, bill)) { AddIntim(s, "N", 150); Next(s); } }
                         else Spar(s, U(s, "N"), "D0_duel");
                     }, bill);
                     break;
@@ -68,10 +68,15 @@ namespace MOD_nE7UL2.Story
                     Tell(s, "D1_2", new[] { "D1_2_o1" }, _ => FightBeast(s, "D1_beast"));
                     break;
                 case 103:
+                    // swearing needs the trust of both (shown: a message box when not met)
                     var canSwear = Intim(s, "N") >= 200 && Intim(s, "C") >= 200;
-                    Say(s, "C", "D1_3", canSwear ? new[] { "D1_3_o1", "D1_3_o2" } : new[] { "D1_3_o2" }, i =>
+                    Say(s, "C", "D1_3", new[] { "D1_3_o1", "D1_3_o2" }, i =>
                     {
-                        if (canSwear && i == 0) { s.Set("sworn"); AddIntim(s, "N", 100); AddIntim(s, "C", 100); }
+                        if (i == 0)
+                        {
+                            if (!Require(s, canSwear, "need_sworn", null, Intim(s, "N"), Intim(s, "C"))) return;
+                            s.Set("sworn"); AddIntim(s, "N", 100); AddIntim(s, "C", 100);
+                        }
                         Act(s, 2, 6);
                     });
                     break;
@@ -84,7 +89,7 @@ namespace MOD_nE7UL2.Story
                 case 202:
                     Tell(s, "D2_2", new[] { "D2_2_o1", "D2_2_o2" }, i =>
                     {
-                        if (i == 0 && TakeItem(p => p.IsHobby() != null || p.IsHerbItem() != null || p.IsPill() != null, 1)) s.Set("gift");
+                        if (i == 0) { if (!Offer(s, p => p.IsHobby() != null || p.IsHerbItem() != null || p.IsPill() != null, 1, "gift")) return; s.Set("gift"); }
                         Next(s);
                     });
                     break;
@@ -133,7 +138,7 @@ namespace MOD_nE7UL2.Story
                     U(s, "N")?.SetUnitPos(Player.GetUnitPos());
                     Say(s, "N", "D4_1", new[] { "D4_1_o1", "D4_1_o2", "D4_1_o3" }, i =>
                     {
-                        if (i == 0 && Intim(s, "N") >= 300) { Say(s, "N", "D4_walk", null, _ => Ending(s)); }
+                        if (i == 0) { if (Require(s, Intim(s, "N") >= 300, "need_intim", null, Name(s, "N"), Intim(s, "N"), 300)) Say(s, "N", "D4_walk", null, _ => Ending(s)); }
                         else if (i == 2) { s.Set("switched"); Say(s, "N", "D4_switch", null, _ => Ending(s)); }
                         else Fight(s, U(s, "N"), "D4_duel", Intim(s, "N") < 300);
                     });

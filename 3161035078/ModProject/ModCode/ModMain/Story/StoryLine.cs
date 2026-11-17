@@ -188,6 +188,8 @@ namespace MOD_nE7UL2.Story
         {
             var frames = Frames(s, key, args, narrationOnBackground ? null : main);
             var cont = new List<string> { T(s, "continue") };
+            // the player chooses (options other than "Continue"): a narration frame lights the player's portrait
+            var choice = !(options.Count == 1 && options[0] == cont[0]);
             void Open(int i)
             {
                 var f = frames[i];
@@ -198,7 +200,7 @@ namespace MOD_nE7UL2.Story
                 if (f.Who == null)
                 {
                     if (narrationOnBackground || main == null) DramaHelper.OpenDrama2(f.Text, opts, next, background);
-                    else DramaHelper.OpenDrama1(f.Text, opts, next, main, Player, 0);
+                    else DramaHelper.OpenDrama1(f.Text, opts, next, main, Player, last && choice ? 2 : 0);
                 }
                 else if (f.Who.IsPlayer())
                 {
@@ -222,6 +224,51 @@ namespace MOD_nE7UL2.Story
         {
             StoryEvent.Log(s, key);
             ShowFrames(s, key, args, null, true, background, Options(s, opts, args), Answer(s, pick));
+        }
+
+        /// <summary>
+        /// The player pays `price` spirit stones (an answer of a step): true when paid. Too few: false, a message box (the
+        /// price and the stones owned), then the same step again (its choice is shown anew); the caller does nothing more.
+        /// </summary>
+        protected static bool Pay(StoryState s, int price)
+        {
+            if (Player.GetUnitMoney() >= price)
+            {
+                Player.AddUnitMoney(-price);
+                return true;
+            }
+            Refuse(s, T(s, "no_money", price, Player.GetUnitMoney()));
+            return false;
+        }
+
+        /// <summary>
+        /// The player gives one unequipped item of the kind with a grade ≥ minGrade (an answer of a step): true when
+        /// given. None: false, a message box (text story_no_&lt;what&gt;, {0} = minGrade), then the same step again.
+        /// </summary>
+        protected static bool Offer(StoryState s, Func<ConfItemPropsItem, bool> kind, int minGrade, string what)
+        {
+            if (TakeItem(kind, minGrade))
+                return true;
+            Refuse(s, T(s, "no_" + what, minGrade));
+            return false;
+        }
+
+        /// <summary>
+        /// A condition of the option chosen (an answer of a step): true when met. Not met: false, a message box (text
+        /// story_&lt;key&gt; with args), then the choice again (retry; null: the same step); the caller does nothing more.
+        /// </summary>
+        protected static bool Require(StoryState s, bool ok, string key, Action retry, params object[] args)
+        {
+            if (!ok) Refuse(s, T(s, key, args), retry);
+            return ok;
+        }
+
+        /// <summary>A condition of the option chosen is not met: a message box (title: the line), and once it is closed
+        /// the choice again (retry; null: the same step). Opened after the drama answered has closed.</summary>
+        private static void Refuse(StoryState s, string text, Action retry = null)
+        {
+            var title = T(s, "name_" + s.Id);
+            StoryEvent.ShowLater(() => g.ui.MsgBox(title, text, MsgBoxButtonEnum.Ok, () => { if (retry != null) retry(); else Wait(s, 0); }));
         }
 
         /// <summary>Next step, after `months` (0: as soon as the player is free).</summary>
