@@ -28,6 +28,17 @@ namespace ModLib.Helper
             return (defaultId == ModLibConst.DEFAULT_TYPE1_DRAMA_ID ? 999890010 : 999890020) + n;
         }
 
+        /// <summary>
+        /// Speaker of the shared dialogue (its config value is read when the drama opens): 0 none, 1 left unit lit,
+        /// 2 right unit lit (the other one is dimmed).
+        /// </summary>
+        private static void SetSpeaker(int dramaId, int speaker)
+        {
+            var item = g.conf.dramaDialogue.GetItem(dramaId);
+            if (item != null && item.speaker != speaker)
+                item.speaker = speaker;
+        }
+
         private static int[] DEFAULT_OPTS = new int[] { 999790000, 999790001, 999790002, 999790003, 999790004, 999790005, 999790006, 999790007, 999790008, 999790009 };
 
         /// <summary>
@@ -40,6 +51,7 @@ namespace ModLib.Helper
         {
             var opts = optMsgs.Select((x, i) => new { Index = i, Value = x }).ToArray();
             var dramaId = DialogueId(ModLibConst.DEFAULT_TYPE1_DRAMA_ID, opts.Length);
+            SetSpeaker(dramaId, 0);
             DramaTool.OpenDrama(dramaId, new DramaData
             {
                 dialogueText = { [dramaId] = text },
@@ -59,11 +71,13 @@ namespace ModLib.Helper
         /// <param name="optClickCall">Callback when an option is clicked</param>
         /// <param name="wunitLeft">World unit to display on left side</param>
         /// <param name="wunitRight">World unit to display on right side</param>
+        /// <param name="speaker">Who speaks (lit portrait, the other is dimmed): 0 none (both lit), 1 left, 2 right</param>
         public static void OpenDrama1(string text, List<string> optMsgs, Action<ConfDramaOptionsItem> optClickCall,
-            WorldUnitBase wunitLeft, WorldUnitBase wunitRight)
+            WorldUnitBase wunitLeft, WorldUnitBase wunitRight, int speaker = 0)
         {
             var opts = optMsgs.Select((x, i) => new { Index = i, Value = x }).ToArray();
             var dramaId = DialogueId(ModLibConst.DEFAULT_TYPE1_DRAMA_ID, opts.Length);
+            SetSpeaker(dramaId, speaker);
             DramaTool.OpenDrama(dramaId, new DramaData
             {
                 dialogueText = { [dramaId] = text },
