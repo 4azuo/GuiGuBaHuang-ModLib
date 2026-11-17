@@ -58,10 +58,10 @@ namespace MOD_nE7UL2.Mod
                 var ui = new UICover<UIFateFeature>(e.ui);
                 {
                     ui.AddToolTipButton(ui.MidCol - 4, ui.MidRow - 9, GameTool.LS("other500020019"));
-                    ui.AddText(ui.MidCol, ui.MidRow - 9, $"Qi: {Qi[g.world.playerUnit.GetUnitId()]}").Format(Color.black, 16).SetParentTransform(ui.UI.gradeInfo.goBgProTop);
-                    ui.AddText(ui.MidCol, ui.MidRow - 8, $"Atk: {UnitModifyHelper.GetQiAdjAtk(g.world.playerUnit)}").Format(Color.black, 16).SetParentTransform(ui.UI.gradeInfo.goBgProTop);
-                    ui.AddText(ui.MidCol, ui.MidRow - 7, $"Hp: {UnitModifyHelper.GetQiAdjHp(g.world.playerUnit)}").Format(Color.black, 16).SetParentTransform(ui.UI.gradeInfo.goBgProTop);
-                    ui.AddText(ui.MidCol, ui.MidRow - 6, $"Mp: {UnitModifyHelper.GetQiAdjMp(g.world.playerUnit)}").Format(Color.black, 16).SetParentTransform(ui.UI.gradeInfo.goBgProTop);
+                    ui.AddText(ui.MidCol, ui.MidRow - 9, ModTextHelper.LSF("ui_qi", Qi[g.world.playerUnit.GetUnitId()])).Format(Color.black, 16).SetParentTransform(ui.UI.gradeInfo.goBgProTop);
+                    ui.AddText(ui.MidCol, ui.MidRow - 8, ModTextHelper.LSF("ui_atk", UnitModifyHelper.GetQiAdjAtk(g.world.playerUnit))).Format(Color.black, 16).SetParentTransform(ui.UI.gradeInfo.goBgProTop);
+                    ui.AddText(ui.MidCol, ui.MidRow - 7, ModTextHelper.LSF("ui_hp", UnitModifyHelper.GetQiAdjHp(g.world.playerUnit))).Format(Color.black, 16).SetParentTransform(ui.UI.gradeInfo.goBgProTop);
+                    ui.AddText(ui.MidCol, ui.MidRow - 6, ModTextHelper.LSF("ui_mp", UnitModifyHelper.GetQiAdjMp(g.world.playerUnit))).Format(Color.black, 16).SetParentTransform(ui.UI.gradeInfo.goBgProTop);
                 }
                 ui.UpdateUI();
             }
@@ -74,10 +74,10 @@ namespace MOD_nE7UL2.Mod
                 {
                     var ui = new UICover<UINPCInfo>(uiBase);
                     {
-                        ui.AddText(ui.MidCol - 6, ui.MidRow - 4, $"Qi: {Qi[unitId].ToString(ModConst.FORMAT_NUMBER)}").Align().Format(Color.white, 16).SetParentTransform(ui.UI.uiHeart.goGroupRoot);
-                        ui.AddText(ui.MidCol - 6, ui.MidRow - 3, $"Atk: {UnitModifyHelper.GetQiAdjAtk(uiBase.unit)}").Align().Format(Color.white, 16).SetParentTransform(ui.UI.uiHeart.goGroupRoot);
-                        ui.AddText(ui.MidCol - 6, ui.MidRow - 2, $"Hp: {UnitModifyHelper.GetQiAdjHp(uiBase.unit)}").Align().Format(Color.white, 16).SetParentTransform(ui.UI.uiHeart.goGroupRoot);
-                        ui.AddText(ui.MidCol - 6, ui.MidRow - 1, $"Mp: {UnitModifyHelper.GetQiAdjMp(uiBase.unit)}").Align().Format(Color.white, 16).SetParentTransform(ui.UI.uiHeart.goGroupRoot);
+                        ui.AddText(ui.MidCol - 6, ui.MidRow - 4, ModTextHelper.LSF("ui_qi", Qi[unitId].ToString(ModConst.FORMAT_NUMBER))).Align().Format(Color.white, 16).SetParentTransform(ui.UI.uiHeart.goGroupRoot);
+                        ui.AddText(ui.MidCol - 6, ui.MidRow - 3, ModTextHelper.LSF("ui_atk", UnitModifyHelper.GetQiAdjAtk(uiBase.unit))).Align().Format(Color.white, 16).SetParentTransform(ui.UI.uiHeart.goGroupRoot);
+                        ui.AddText(ui.MidCol - 6, ui.MidRow - 2, ModTextHelper.LSF("ui_hp", UnitModifyHelper.GetQiAdjHp(uiBase.unit))).Align().Format(Color.white, 16).SetParentTransform(ui.UI.uiHeart.goGroupRoot);
+                        ui.AddText(ui.MidCol - 6, ui.MidRow - 1, ModTextHelper.LSF("ui_mp", UnitModifyHelper.GetQiAdjMp(uiBase.unit))).Align().Format(Color.white, 16).SetParentTransform(ui.UI.uiHeart.goGroupRoot);
                         ui.AddButton(ui.MidCol - 6, ui.MidRow, () =>
                         {
                             QiTransmit(g.world.playerUnit, uiBase.unit);
@@ -116,7 +116,7 @@ namespace MOD_nE7UL2.Mod
             Instance.Qi[twunitId] += tqi.Parse<long>();
 
             DramaTool.OpenDrama(QI_TRANSFER_DRAMA);
-            g.ui.MsgBox("Qi Transfer", $"Qi {oldFqi}→{Instance.Qi[fwunitId]}");
+            g.ui.MsgBox(GameTool.LS("ui_qi_transfer"), ModTextHelper.LSF("ui_qi_change", oldFqi, Instance.Qi[fwunitId]));
         }
     }
 }

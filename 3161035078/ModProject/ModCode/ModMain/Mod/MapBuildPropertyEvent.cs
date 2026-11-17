@@ -189,7 +189,7 @@ namespace MOD_nE7UL2.Mod
                         if (IsTownMaster(town, g.world.playerUnit))
                             uiCover.AddText(300f, 100f, string.Format(GameTool.LS("other500020042"), GetRequiredSpiritStones(town, uiCover.UI.unit))).Align().Format(Color.white)
                                     .SetParentTransform(uiCover.UI.uiProperty.textAddLuckTitle);
-                        uiCover.AddText(300f, 80f, $"Town: {GetGuardTownInfoStr(uiCover.UI.unit)}").Align().Format(Color.white)
+                        uiCover.AddText(300f, 80f, ModTextHelper.LSF("ui_town_info", GetGuardTownInfoStr(uiCover.UI.unit))).Align().Format(Color.white)
                                     .SetParentTransform(uiCover.UI.uiProperty.textAddLuckTitle);
                         if (isShowManageTeamUI1)
                         {
@@ -210,21 +210,21 @@ namespace MOD_nE7UL2.Mod
                         var town = uiCover.UI.unit.GetMapBuild<MapBuildTown>();
                         uiCover.AddText(300f, 100f, string.Format(GameTool.LS("other500020042"), GetRequiredSpiritStones(town, uiCover.UI.unit))).Align().Format(Color.white)
                                     .SetParentTransform(uiCover.UI.uiProperty.textAddLuckTitle);
-                        uiCover.AddText(300f, 80f, $"{GetRequiredReputations(town, uiCover.UI.unit):#,##0} Reputations").Align().Format(Color.white)
+                        uiCover.AddText(300f, 80f, ModTextHelper.LSF("ui_reputations_n", GetRequiredReputations(town, uiCover.UI.unit))).Align().Format(Color.white)
                                     .SetParentTransform(uiCover.UI.uiProperty.textAddLuckTitle);
                         uiCover.AddButton(200f, 90f, () =>
                         {
                             var requiredSpiritStones = GetRequiredSpiritStones(town, uiCover.UI.unit);
                             if (player.GetUnitMoney() < requiredSpiritStones)
                             {
-                                g.ui.MsgBox(GameTool.LS("other500020011"), $"Require {requiredSpiritStones:#,##0} Spirit Stones");
+                                g.ui.MsgBox(GameTool.LS("other500020011"), ModTextHelper.LSF("ui_require_stones", requiredSpiritStones));
                                 return;
                             }
 
                             var requiredReputations = GetRequiredReputations(town, uiCover.UI.unit);
                             if (player.GetDynProperty(UnitDynPropertyEnum.Reputation).value < requiredReputations)
                             {
-                                g.ui.MsgBox(GameTool.LS("other500020011"), $"Require {requiredReputations:#,##0} Reputations");
+                                g.ui.MsgBox(GameTool.LS("other500020011"), ModTextHelper.LSF("ui_require_reputations", requiredReputations));
                                 return;
                             }
 
@@ -735,10 +735,10 @@ namespace MOD_nE7UL2.Mod
                 g.ui.CloseUI(uiPropSelectCount);
                 UIHelper.UpdateAllUI();
             }));
-            uiPropSelectCount.textGrade.text = string.Empty;
-            uiPropSelectCount.textName.text = string.Empty;
+            uiPropSelectCount.textGrade.Set(string.Empty);
+            uiPropSelectCount.textName.Set(string.Empty);
             uiPropSelectCount.ptextInfo.text = string.Empty;
-            uiPropSelectCount.textTitle.text = GameTool.LS("other500020015");
+            uiPropSelectCount.textTitle.Set(GameTool.LS("other500020015"));
         }
 
         /// <summary>
@@ -759,10 +759,10 @@ namespace MOD_nE7UL2.Mod
                 g.ui.CloseUI(uiPropSelectCount);
                 UIHelper.UpdateAllUI();
             }));
-            uiPropSelectCount.textGrade.text = string.Empty;
-            uiPropSelectCount.textName.text = string.Empty;
+            uiPropSelectCount.textGrade.Set(string.Empty);
+            uiPropSelectCount.textName.Set(string.Empty);
             uiPropSelectCount.ptextInfo.text = string.Empty;
-            uiPropSelectCount.textTitle.text = GameTool.LS("other500020016");
+            uiPropSelectCount.textTitle.Set(GameTool.LS("other500020016"));
         }
 
         /// <summary>
@@ -822,7 +822,7 @@ namespace MOD_nE7UL2.Mod
                 {
                     Formatter = ActionHelper.WTracedFunc<UIItemBase, object[]>((ibase) => new object[] { GetTotalMonthlyPayment(town) }),
                 });
-                uiCover.AddCompositeSlider(col, row + i++, $"Base Tax:", 0.40f, 20.00f, Instance.TaxRate[town.buildData.id], "{0}/month").SetWork(new UIItemWork
+                uiCover.AddCompositeSlider(col, row + i++, GameTool.LS("ui_base_tax"), 0.40f, 20.00f, Instance.TaxRate[town.buildData.id], GameTool.LS("ui_per_month")).SetWork(new UIItemWork
                 {
                     Formatter = ActionHelper.WTracedFunc<UIItemBase, object[]>((ibase) => new object[] { GetBaseTax(town) }),
                     ChangeAct = ActionHelper.WTracedAction<UIItemBase, object>((ibase, value) => Instance.TaxRate[town.buildData.id] = value.Parse<float>()),
@@ -840,18 +840,18 @@ namespace MOD_nE7UL2.Mod
                     if (BuildingArrangeEvent.IsBuildable(town, em))
                     {
                         var cost = BuildingArrangeEvent.GetBuildingCost(town, em);
-                        uiCover.AddText(col + (c % 2 * 11), uiCover.MidRow + i + (c / 2 * 2), $"{GameTool.LS(em.BuildingName)}　／　Cost: {cost:#,##0}").Format().Align();
+                        uiCover.AddText(col + (c % 2 * 11), uiCover.MidRow + i + (c / 2 * 2), ModTextHelper.LSF("ui_building_cost", GameTool.LS(em.BuildingName), cost)).Format().Align();
                         uiCover.AddButton(col - 3 + (c % 2 * 11), uiCover.MidRow + i + (c / 2 * 2), () =>
                         {
                             if (GetBuildProperty(town) > cost)
                             {
                                 BuildingArrangeEvent.Build(town, em);
                                 g.ui.CloseUI(ui);
-                                g.ui.MsgBox(GameTool.LS("other500020011"), $"Built {GameTool.LS(em.BuildingName)}!");
+                                g.ui.MsgBox(GameTool.LS("other500020011"), ModTextHelper.LSF("ui_building_built", GameTool.LS(em.BuildingName)));
                             }
                             else
                             {
-                                g.ui.MsgBox(GameTool.LS("other500020011"), $"You cant build this building with current budget!\n{GetBuildProperty(town):#,##0}");
+                                g.ui.MsgBox(GameTool.LS("other500020011"), ModTextHelper.LSF("ui_building_no_budget", GetBuildProperty(town)));
                             }
                         }, GameTool.LS("other500020017")).Format().Align(TextAnchor.MiddleCenter);
                         c++;
@@ -859,7 +859,7 @@ namespace MOD_nE7UL2.Mod
                 }
 
                 if (IsTownMaster(town, g.world.playerUnit) && !town.buildTownData.isMainTown)
-                    uiCover.AddButton(uiCover.LastCol - 7, uiCover.LastRow - 20, () => Upgrade2City(town), $"Upgrade to City\n{GetUpgrade2CityCost(town):#,##0}").Format(Color.black, 17).Align(TextAnchor.MiddleCenter).Size(300, 64);
+                    uiCover.AddButton(uiCover.LastCol - 7, uiCover.LastRow - 20, () => Upgrade2City(town), ModTextHelper.LSF("ui_upgrade_city", GetUpgrade2CityCost(town))).Format(Color.black, 17).Align(TextAnchor.MiddleCenter).Size(300, 64);
                 uiCover.AddButton(uiCover.LastCol - 7, uiCover.LastRow - 17, Deposit, GameTool.LS("other500020015")).Format(Color.black, 17).Align(TextAnchor.MiddleCenter).Size(300, 64);
                 uiCover.AddButton(uiCover.LastCol - 7, uiCover.LastRow - 14, Withdraw, GameTool.LS("other500020016")).Format(Color.black, 17).Align(TextAnchor.MiddleCenter).Size(300, 64);
                 uiCover.AddButton(uiCover.LastCol - 7, uiCover.LastRow - 11, OpenUIHirePeople, GameTool.LS("other500020054")).Format(Color.black, 17).Align(TextAnchor.MiddleCenter).Size(300, 64);
@@ -1079,7 +1079,7 @@ namespace MOD_nE7UL2.Mod
             {
                 DramaTool.OpenDrama(TAXPAY_NOT_ENOUGH_MONEY_DRAMA, new DramaData
                 {
-                    dialogueText = { [TAXPAY_NOT_ENOUGH_MONEY_DRAMA] = ModTextHelper.StoneIcons(string.Format(GameTool.LS("other500020027"), tax)) },
+                    dialogueText = { [TAXPAY_NOT_ENOUGH_MONEY_DRAMA] = string.Format(GameTool.LS("other500020027"), tax) },
                     onOptionsClickCall = ActionHelper.TracedIl2Action<ConfDramaOptionsItem>((x) =>
                     {
                         switch (x.id)

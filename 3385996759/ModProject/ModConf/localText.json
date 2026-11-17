@@ -95,5 +95,45 @@
 		"id": "999990013",
 		"key": "libtxt999990013",
 		"en": "Export all game assets."
+	},
+	{
+		"id": "999990014",
+		"key": "libtxt999990014",
+		"en": "Powered by\nFouru's ModLib {0}",
+		"ch": "技术支持\nFouru 的 ModLib {0}",
+		"tc": "技術支援\nFouru 的 ModLib {0}",
+		"kr": "제공\nFouru의 ModLib {0}"
+	},
+	{
+		"id": "999990015",
+		"key": "libtxt999990015",
+		"en": "Language:",
+		"ch": "语言：",
+		"tc": "語言：",
+		"kr": "언어:"
+	},
+	{
+		"id": "999990016",
+		"key": "libtxt999990016",
+		"en": "Default",
+		"ch": "默认",
+		"tc": "預設",
+		"kr": "기본"
+	},
+	{
+		"id": "999990017",
+		"key": "libtxt999990017",
+		"en": "Exception",
+		"ch": "异常",
+		"tc": "例外",
+		"kr": "예외"
+	},
+	{
+		"id": "999990018",
+		"key": "libtxt999990018",
+		"en": "Open log",
+		"ch": "打开日志",
+		"tc": "開啟日誌",
+		"kr": "로그 열기"
 	}
 ]

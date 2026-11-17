@@ -192,7 +192,7 @@
 	{
 		"id": "-1000007030",
 		"key": "story_A2_2_market",
-		"en|ch|tc|kr": "Ở chợ {T}, một sạp hàng bán \"thư cũ, con dấu thú vị\". Một lá mang con dấu của {S}. Giá: {0:#,##0} linh thạch."
+		"en|ch|tc|kr": "Ở chợ {T}, một sạp hàng bán \"thư cũ, con dấu thú vị\". Một lá mang con dấu của {S}. Giá: {0:#,##0} [icon:zm_lingshi]."
 	},
 	{
 		"id": "-1000007031",
@@ -292,7 +292,7 @@
 	{
 		"id": "-1000007050",
 		"key": "story_A4_2",
-		"en|ch|tc|kr": "\"Ngày ta rời đi, kiếm của ta đã gãy. Ta cần một thanh kiếm không gãy.\" (thợ rèn đòi {0:#,##0} linh thạch)"
+		"en|ch|tc|kr": "\"Ngày ta rời đi, kiếm của ta đã gãy. Ta cần một thanh kiếm không gãy.\" (thợ rèn đòi {0:#,##0} [icon:zm_lingshi])"
 	},
 	{
 		"id": "-1000007051",
@@ -452,7 +452,7 @@
 	{
 		"id": "-1000007082",
 		"key": "story_B0_1",
-		"en|ch|tc|kr": "\"Ôi chao, khách quý biết hàng! Món này — đáng giá gấp ba, ta thề trên mộ bà nội ta. Với khách? Nửa giá: {0:#,##0} linh thạch.\""
+		"en|ch|tc|kr": "\"Ôi chao, khách quý biết hàng! Món này — đáng giá gấp ba, ta thề trên mộ bà nội ta. Với khách? Nửa giá: {0:#,##0} [icon:zm_lingshi].\""
 	},
 	{
 		"id": "-1000007084",
@@ -492,7 +492,7 @@
 	{
 		"id": "-1000007092",
 		"key": "story_B1_3",
-		"en|ch|tc|kr": "\"Đứng ra bảo lãnh cho ta ở ngân hàng nhé? Chỉ một chữ ký thôi! Có chuyện gì được chứ?\" (hoặc cho ta mượn {0:#,##0} linh thạch…)"
+		"en|ch|tc|kr": "\"Đứng ra bảo lãnh cho ta ở ngân hàng nhé? Chỉ một chữ ký thôi! Có chuyện gì được chứ?\" (hoặc cho ta mượn {0:#,##0} [icon:zm_lingshi]…)"
 	},
 	{
 		"id": "-1000007093",
@@ -527,7 +527,7 @@
 	{
 		"id": "-1000007099",
 		"key": "story_B2_3",
-		"en|ch|tc|kr": "\"Phần của ngươi: {0:#,##0} linh thạch. Đừng đếm trước mặt ta, ta sẽ khóc mất.\""
+		"en|ch|tc|kr": "\"Phần của ngươi: {0:#,##0} [icon:zm_lingshi]. Đừng đếm trước mặt ta, ta sẽ khóc mất.\""
 	},
 	{
 		"id": "-1000007100",
@@ -547,7 +547,7 @@
 	{
 		"id": "-1000007103",
 		"key": "story_B3_2",
-		"en|ch|tc|kr": "\"Ta đã liếc thấy sổ nợ của hắn. Không chỉ ta — một nửa thương nhân vùng này đều nợ bà ta. Bà ta đang mua dần các trấn, từng món nợ một.\" (lãi: {0:#,##0} linh thạch)"
+		"en|ch|tc|kr": "\"Ta đã liếc thấy sổ nợ của hắn. Không chỉ ta — một nửa thương nhân vùng này đều nợ bà ta. Bà ta đang mua dần các trấn, từng món nợ một.\" (lãi: {0:#,##0} [icon:zm_lingshi])"
 	},
 	{
 		"id": "-1000007104",
@@ -702,7 +702,7 @@
 	{
 		"id": "-1000007135",
 		"key": "story_C1_2",
-		"en|ch|tc|kr": "Một người bán thảo dược có bản đồ thung lũng: {0:#,##0} linh thạch, hoặc đổi bằng một cây thảo dược."
+		"en|ch|tc|kr": "Một người bán thảo dược có bản đồ thung lũng: {0:#,##0} [icon:zm_lingshi], hoặc đổi bằng một cây thảo dược."
 	},
 	{
 		"id": "-1000007136",
@@ -747,7 +747,7 @@
 	{
 		"id": "-1000007145",
 		"key": "story_C2_1",
-		"en|ch|tc|kr": "\"Phí lò đan: {0:#,##0} linh thạch,\" giám khảo nói. {X} nhìn ngươi bằng đôi mắt to tròn."
+		"en|ch|tc|kr": "\"Phí lò đan: {0:#,##0} [icon:zm_lingshi],\" giám khảo nói. {X} nhìn ngươi bằng đôi mắt to tròn."
 	},
 	{
 		"id": "-1000007146",
@@ -922,7 +922,7 @@
 	{
 		"id": "-1000007182",
 		"key": "story_D0_2",
-		"en|ch|tc|kr": "Mọi người đều nhìn ngươi. (hóa đơn: {0:#,##0} linh thạch)"
+		"en|ch|tc|kr": "Mọi người đều nhìn ngươi. (hóa đơn: {0:#,##0} [icon:zm_lingshi])"
 	},
 	{
 		"id": "-1000007183",
@@ -1322,7 +1322,7 @@
 	{
 		"id": "-1000007263",
 		"key": "story_garden_o",
-		"en|ch|tc|kr": "{0} năm ({1:#,##0} linh thạch)"
+		"en|ch|tc|kr": "{0} năm ({1:#,##0} [icon:zm_lingshi])"
 	},
 	{
 		"id": "-1000007265",

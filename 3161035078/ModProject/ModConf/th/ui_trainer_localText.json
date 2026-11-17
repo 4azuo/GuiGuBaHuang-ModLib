@@ -293,5 +293,175 @@
 		"id": -1000002058,
 		"key": "trainer058",
 		"en|ch|tc|kr": "จี้ราศีมีน"
+	},
+	{
+		"id": "-1000002059",
+		"key": "trainer_title",
+		"en|ch|tc|kr": "เทรนเนอร์"
+	},
+	{
+		"id": "-1000002060",
+		"key": "trainer_lbl_hp",
+		"en|ch|tc|kr": "พลังชีวิต: {0}/{1}"
+	},
+	{
+		"id": "-1000002061",
+		"key": "trainer_lbl_money",
+		"en|ch|tc|kr": "{0} :เงิน"
+	},
+	{
+		"id": "-1000002062",
+		"key": "trainer_lbl_mp",
+		"en|ch|tc|kr": "พลังวิญญาณ: {0}/{1}"
+	},
+	{
+		"id": "-1000002063",
+		"key": "trainer_lbl_degree",
+		"en|ch|tc|kr": "{0} :ระดับเจ้าเมือง"
+	},
+	{
+		"id": "-1000002064",
+		"key": "trainer_lbl_sp",
+		"en|ch|tc|kr": "พลังจิต: {0}/{1}"
+	},
+	{
+		"id": "-1000002065",
+		"key": "trainer_lbl_contribution",
+		"en|ch|tc|kr": "{0} :ผลงาน"
+	},
+	{
+		"id": "-1000002066",
+		"key": "trainer_lbl_def",
+		"en|ch|tc|kr": "{0} :ป้องกัน"
+	},
+	{
+		"id": "-1000002067",
+		"key": "trainer_lbl_mood",
+		"en|ch|tc|kr": "อารมณ์: {0}/{1}"
+	},
+	{
+		"id": "-1000002068",
+		"key": "trainer_lbl_stamina",
+		"en|ch|tc|kr": "{0}/{1} :ความอึด"
+	},
+	{
+		"id": "-1000002069",
+		"key": "trainer_lbl_health",
+		"en|ch|tc|kr": "สุขภาพ: {0}/{1}"
+	},
+	{
+		"id": "-1000002070",
+		"key": "trainer_lbl_life",
+		"en|ch|tc|kr": "{0}/{1} :อายุขัย"
+	},
+	{
+		"id": "-1000002071",
+		"key": "trainer_lbl_travel_speed",
+		"en|ch|tc|kr": "ความเร็วเดินทาง: {0}"
+	},
+	{
+		"id": "-1000002072",
+		"key": "trainer_lbl_view_range",
+		"en|ch|tc|kr": "{0} :ระยะมองเห็น"
+	},
+	{
+		"id": "-1000002073",
+		"key": "trainer_lbl_battle_speed",
+		"en|ch|tc|kr": "ความเร็วต่อสู้: {0}"
+	},
+	{
+		"id": "-1000002074",
+		"key": "trainer_lbl_ability",
+		"en|ch|tc|kr": "({1}) {0} :ความสามารถ"
+	},
+	{
+		"id": "-1000002075",
+		"key": "trainer_lbl_luck",
+		"en|ch|tc|kr": "โชค: {0}"
+	},
+	{
+		"id": "-1000002076",
+		"key": "trainer_lbl_insight",
+		"en|ch|tc|kr": "{0} :ปัญญา"
+	},
+	{
+		"id": "-1000002077",
+		"key": "trainer_lbl_exp",
+		"en|ch|tc|kr": "ประสบการณ์: {0}/{1}"
+	},
+	{
+		"id": "-1000002078",
+		"key": "trainer_lbl_reputation",
+		"en|ch|tc|kr": "{0} :ชื่อเสียง"
+	},
+	{
+		"id": "-1000002079",
+		"key": "trainer_lbl_grade",
+		"en|ch|tc|kr": "ขั้น: {0} {1} ― {2}"
+	},
+	{
+		"id": "-1000002080",
+		"key": "trainer_lbl_fire",
+		"en|ch|tc|kr": "ไฟ: {0}"
+	},
+	{
+		"id": "-1000002081",
+		"key": "trainer_lbl_blade",
+		"en|ch|tc|kr": "{0} :ดาบ"
+	},
+	{
+		"id": "-1000002082",
+		"key": "trainer_lbl_water",
+		"en|ch|tc|kr": "น้ำ: {0}"
+	},
+	{
+		"id": "-1000002083",
+		"key": "trainer_lbl_spear",
+		"en|ch|tc|kr": "{0} :ทวน"
+	},
+	{
+		"id": "-1000002084",
+		"key": "trainer_lbl_lightning",
+		"en|ch|tc|kr": "สายฟ้า: {0}"
+	},
+	{
+		"id": "-1000002085",
+		"key": "trainer_lbl_sword",
+		"en|ch|tc|kr": "{0} :กระบี่"
+	},
+	{
+		"id": "-1000002086",
+		"key": "trainer_lbl_wind",
+		"en|ch|tc|kr": "ลม: {0}"
+	},
+	{
+		"id": "-1000002087",
+		"key": "trainer_lbl_fist",
+		"en|ch|tc|kr": "{0} :หมัด"
+	},
+	{
+		"id": "-1000002088",
+		"key": "trainer_lbl_earth",
+		"en|ch|tc|kr": "ดิน: {0}"
+	},
+	{
+		"id": "-1000002089",
+		"key": "trainer_lbl_palm",
+		"en|ch|tc|kr": "{0} :ฝ่ามือ"
+	},
+	{
+		"id": "-1000002090",
+		"key": "trainer_lbl_wood",
+		"en|ch|tc|kr": "ไม้: {0}"
+	},
+	{
+		"id": "-1000002091",
+		"key": "trainer_lbl_finger",
+		"en|ch|tc|kr": "{0} :นิ้ว"
+	},
+	{
+		"id": "-1000002092",
+		"key": "trainer_lbl_area",
+		"en|ch|tc|kr": "พื้นที่ {0}:"
 	}
 ]

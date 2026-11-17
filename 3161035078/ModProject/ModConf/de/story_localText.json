@@ -192,7 +192,7 @@
 	{
 		"id": "-1000007030",
 		"key": "story_A2_2_market",
-		"en|ch|tc|kr": "Auf dem Markt von {T} verkauft ein Stand „alte Briefe, interessante Siegel“. Einer trägt das Siegel von {S}. Preis: {0:#,##0} Geistersteine."
+		"en|ch|tc|kr": "Auf dem Markt von {T} verkauft ein Stand „alte Briefe, interessante Siegel“. Einer trägt das Siegel von {S}. Preis: {0:#,##0} [icon:zm_lingshi]."
 	},
 	{
 		"id": "-1000007031",
@@ -292,7 +292,7 @@
 	{
 		"id": "-1000007050",
 		"key": "story_A4_2",
-		"en|ch|tc|kr": "„Mein Schwert brach an dem Tag, als ich ging. Ich brauche eine Klinge, die nicht bricht.“ (ein Schmied verlangt {0:#,##0} Geistersteine)"
+		"en|ch|tc|kr": "„Mein Schwert brach an dem Tag, als ich ging. Ich brauche eine Klinge, die nicht bricht.“ (ein Schmied verlangt {0:#,##0} [icon:zm_lingshi])"
 	},
 	{
 		"id": "-1000007051",
@@ -452,7 +452,7 @@
 	{
 		"id": "-1000007082",
 		"key": "story_B0_1",
-		"en|ch|tc|kr": "„Ah, ein Kenner! Dieses Stück — dreimal so viel wert, ich schwöre beim Grab meiner Großmutter. Für dich? Die Hälfte: {0:#,##0} Geistersteine.“"
+		"en|ch|tc|kr": "„Ah, ein Kenner! Dieses Stück — dreimal so viel wert, ich schwöre beim Grab meiner Großmutter. Für dich? Die Hälfte: {0:#,##0} [icon:zm_lingshi].“"
 	},
 	{
 		"id": "-1000007084",
@@ -492,7 +492,7 @@
 	{
 		"id": "-1000007092",
 		"key": "story_B1_3",
-		"en|ch|tc|kr": "„Bürgst du für mich bei der Bank? Nur eine Unterschrift! Was soll schon schiefgehen?“ (oder leih mir {0:#,##0} Geistersteine…)"
+		"en|ch|tc|kr": "„Bürgst du für mich bei der Bank? Nur eine Unterschrift! Was soll schon schiefgehen?“ (oder leih mir {0:#,##0} [icon:zm_lingshi]…)"
 	},
 	{
 		"id": "-1000007093",
@@ -527,7 +527,7 @@
 	{
 		"id": "-1000007099",
 		"key": "story_B2_3",
-		"en|ch|tc|kr": "„Dein Anteil: {0:#,##0} Geistersteine. Zähl sie nicht vor mir, sonst weine ich.“"
+		"en|ch|tc|kr": "„Dein Anteil: {0:#,##0} [icon:zm_lingshi]. Zähl sie nicht vor mir, sonst weine ich.“"
 	},
 	{
 		"id": "-1000007100",
@@ -547,7 +547,7 @@
 	{
 		"id": "-1000007103",
 		"key": "story_B3_2",
-		"en|ch|tc|kr": "„Ich habe sein Kassenbuch gesehen. Nicht nur ich — die Hälfte der Händler dieser Gegend schuldet ihr Geld. Sie kauft die Städte, eine Schuld nach der anderen.“ (Zinsen: {0:#,##0} Geistersteine)"
+		"en|ch|tc|kr": "„Ich habe sein Kassenbuch gesehen. Nicht nur ich — die Hälfte der Händler dieser Gegend schuldet ihr Geld. Sie kauft die Städte, eine Schuld nach der anderen.“ (Zinsen: {0:#,##0} [icon:zm_lingshi])"
 	},
 	{
 		"id": "-1000007104",
@@ -702,7 +702,7 @@
 	{
 		"id": "-1000007135",
 		"key": "story_C1_2",
-		"en|ch|tc|kr": "Ein Kräuterhändler hat eine Karte des Tals: {0:#,##0} Geistersteine oder ein Kraut im Tausch."
+		"en|ch|tc|kr": "Ein Kräuterhändler hat eine Karte des Tals: {0:#,##0} [icon:zm_lingshi] oder ein Kraut im Tausch."
 	},
 	{
 		"id": "-1000007136",
@@ -747,7 +747,7 @@
 	{
 		"id": "-1000007145",
 		"key": "story_C2_1",
-		"en|ch|tc|kr": "„Ofengebühr: {0:#,##0} Geistersteine“, sagt der Prüfer. {X} sieht dich mit riesigen Augen an."
+		"en|ch|tc|kr": "„Ofengebühr: {0:#,##0} [icon:zm_lingshi]“, sagt der Prüfer. {X} sieht dich mit riesigen Augen an."
 	},
 	{
 		"id": "-1000007146",
@@ -922,7 +922,7 @@
 	{
 		"id": "-1000007182",
 		"key": "story_D0_2",
-		"en|ch|tc|kr": "Alle sehen dich an. (die Rechnung: {0:#,##0} Geistersteine)"
+		"en|ch|tc|kr": "Alle sehen dich an. (die Rechnung: {0:#,##0} [icon:zm_lingshi])"
 	},
 	{
 		"id": "-1000007183",
@@ -1322,7 +1322,7 @@
 	{
 		"id": "-1000007263",
 		"key": "story_garden_o",
-		"en|ch|tc|kr": "{0} Jahr(e) ({1:#,##0} Geistersteine)"
+		"en|ch|tc|kr": "{0} Jahr(e) ({1:#,##0} [icon:zm_lingshi])"
 	},
 	{
 		"id": "-1000007265",

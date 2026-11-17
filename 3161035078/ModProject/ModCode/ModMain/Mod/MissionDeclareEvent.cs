@@ -87,7 +87,7 @@ namespace MOD_nE7UL2.Mod
                             {
                                 if (task.Status == CommissionTask.CommissionTaskStatus.Progressing)
                                 {
-                                    msg.AppendLine($"　{string.Join(Environment.NewLine, task.CommisionItems.Select((y, i) => $"{i + 1}. {g.conf.localText.allText[g.conf.itemProps.GetItem(y.Key).name].en} x{y.Value}: {(task.CostTime - task.PassTime) + 1} month"))}");
+                                    msg.AppendLine($"　{string.Join(Environment.NewLine, task.CommisionItems.Select((y, i) => $"{i + 1}. {GameTool.LS(g.conf.itemProps.GetItem(y.Key).name)} x{y.Value}: {(task.CostTime - task.PassTime) + 1} month"))}");
                                 }
                             }
                             x.Set($@"
@@ -119,7 +119,7 @@ Your commissions:
                 {
                     var txt1 = uiCover.AddText(0, 0, string.Empty, uiSelector.textInfo).Format().Pos(uiSelector.btnOK.transform, 0, 100);
                     var txt2 = uiCover.AddText(0, 0, string.Empty, uiSelector.textInfo).Format().Pos(uiSelector.btnOK.transform, 0, 50);
-                    var txt3 = uiCover.AddText(0, 0, $"{g.world.playerUnit.GetUnitMoney():#,##0} Spirit Stones, {g.world.playerUnit.GetUnitMayorDegree():#,##0} Mayor Degrees", uiSelector.textInfo)
+                    var txt3 = uiCover.AddText(0, 0, ModTextHelper.LSF("ui_mission_owned", g.world.playerUnit.GetUnitMoney(), g.world.playerUnit.GetUnitMayorDegree()), uiSelector.textInfo)
                         .Align(TextAnchor.MiddleCenter).Format().Pos(uiSelector.textTitle1.transform, 0, 0);
                     uiCover.UIWork = new UICustomWork
                     {
@@ -251,7 +251,7 @@ Your commissions:
                     x.Status != CommissionTask.CommissionTaskStatus.Progressing
                 ).ToList())
                 {
-                    msg.AppendLine($"　{string.Join(Environment.NewLine, task.CommisionItems.Select((x, i) => $"{i + 1}. {g.conf.localText.allText[g.conf.itemProps.GetItem(x.Key).name].en} x{x.Value}: {task.Status}"))}");
+                    msg.AppendLine($"　{string.Join(Environment.NewLine, task.CommisionItems.Select((x, i) => $"{i + 1}. {GameTool.LS(g.conf.itemProps.GetItem(x.Key).name)} x{x.Value}: {task.Status}"))}");
                     CommissionTasks.Remove(task);
 
                     if (task.Status == CommissionTask.CommissionTaskStatus.Success)

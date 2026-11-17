@@ -20,12 +20,12 @@
 	{
 		"id": "480030400",
 		"key": "commission480030400",
-		"en|ch|tc|kr": "Cuesta {0:#,##0} piedras espirituales (+{1:#,##0} tarifa)"
+		"en|ch|tc|kr": "Cuesta {0:#,##0} [icon:zm_lingshi] (+{1:#,##0} tarifa)"
 	},
 	{
 		"id": "480030500",
 		"key": "commission480030500",
-		"en|ch|tc|kr": "Cuesta {0:#,##0} piedras espirituales (+{1:#,##0} tarifa) y {2:#,##0} título de alcalde"
+		"en|ch|tc|kr": "Cuesta {0:#,##0} [icon:zm_lingshi] (+{1:#,##0} tarifa) y {2:#,##0} título de alcalde"
 	},
 	{
 		"id": "480030600",

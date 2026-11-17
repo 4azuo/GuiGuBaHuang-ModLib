@@ -242,10 +242,10 @@
   {
     "id": -1000007030,
     "key": "story_A2_2_market",
-    "en": "In the market of {T}, a stall sells \"old letters, interesting seals\". One bears the seal of {S}. Price: {0:#,##0} spirit stones.",
-    "ch": "{T}的市场上，有个摊子卖“旧书信，印章有趣”。其中一封盖着{S}的印。价格：{0:#,##0}灵石。",
-    "tc": "{T}的市場上，有個攤子賣“舊書信，印章有趣”。其中一封蓋著{S}的印。價格：{0:#,##0}靈石。",
-    "kr": "{T}의 시장에 \"오래된 편지, 재미있는 인장\"을 파는 노점이 있다. 그중 하나에 {S}의 인장이 찍혀 있다. 가격: 영석 {0:#,##0}."
+    "en": "In the market of {T}, a stall sells \"old letters, interesting seals\". One bears the seal of {S}. Price: {0:#,##0} [icon:zm_lingshi].",
+    "ch": "{T}的市场上，有个摊子卖“旧书信，印章有趣”。其中一封盖着{S}的印。价格：{0:#,##0} [icon:zm_lingshi]。",
+    "tc": "{T}的市場上，有個攤子賣“舊書信，印章有趣”。其中一封蓋著{S}的印。價格：{0:#,##0} [icon:zm_lingshi]。",
+    "kr": "{T}의 시장에 \"오래된 편지, 재미있는 인장\"을 파는 노점이 있다. 그중 하나에 {S}의 인장이 찍혀 있다. 가격: [icon:zm_lingshi] {0:#,##0}."
   },
   {
     "id": -1000007031,
@@ -402,10 +402,10 @@
   {
     "id": -1000007050,
     "key": "story_A4_2",
-    "en": "\"My sword broke the day I left. I need a blade that will not.\" (a smith asks {0:#,##0} spirit stones)",
-    "ch": "“离开那天我的剑断了。我需要一把不会断的剑。”（铁匠要价{0:#,##0}灵石）",
-    "tc": "“離開那天我的劍斷了。我需要一把不會斷的劍。”（鐵匠要價{0:#,##0}靈石）",
-    "kr": "\"떠나던 날 내 검이 부러졌다. 부러지지 않을 검이 필요하다.\" (대장장이는 영석 {0:#,##0}을 요구한다)"
+    "en": "\"My sword broke the day I left. I need a blade that will not.\" (a smith asks {0:#,##0} [icon:zm_lingshi])",
+    "ch": "“离开那天我的剑断了。我需要一把不会断的剑。”（铁匠要价{0:#,##0} [icon:zm_lingshi]）",
+    "tc": "“離開那天我的劍斷了。我需要一把不會斷的劍。”（鐵匠要價{0:#,##0} [icon:zm_lingshi]）",
+    "kr": "\"떠나던 날 내 검이 부러졌다. 부러지지 않을 검이 필요하다.\" (대장장이는 [icon:zm_lingshi] {0:#,##0}을 요구한다)"
   },
   {
     "id": -1000007051,
@@ -658,10 +658,10 @@
   {
     "id": -1000007082,
     "key": "story_B0_1",
-    "en": "\"Ah, a discerning customer! This piece — worth three times the price, I swear on my grandmother's tomb. For you? Half: {0:#,##0} spirit stones.\"",
-    "ch": "“哎呀，识货的客官！这件东西——值三倍价钱，我拿我奶奶的坟发誓。给您？半价：{0:#,##0}灵石。”",
-    "tc": "“哎呀，識貨的客官！這件東西——值三倍價錢，我拿我奶奶的墳發誓。給您？半價：{0:#,##0}靈石。”",
-    "kr": "\"아이고, 보는 눈이 있는 손님이시네! 이 물건 — 값의 세 배는 나간다오, 우리 할머니 무덤에 맹세하지. 손님께는? 반값: 영석 {0:#,##0}.\""
+    "en": "\"Ah, a discerning customer! This piece — worth three times the price, I swear on my grandmother's tomb. For you? Half: {0:#,##0} [icon:zm_lingshi].\"",
+    "ch": "“哎呀，识货的客官！这件东西——值三倍价钱，我拿我奶奶的坟发誓。给您？半价：{0:#,##0} [icon:zm_lingshi]。”",
+    "tc": "“哎呀，識貨的客官！這件東西——值三倍價錢，我拿我奶奶的墳發誓。給您？半價：{0:#,##0} [icon:zm_lingshi]。”",
+    "kr": "\"아이고, 보는 눈이 있는 손님이시네! 이 물건 — 값의 세 배는 나간다오, 우리 할머니 무덤에 맹세하지. 손님께는? 반값: [icon:zm_lingshi] {0:#,##0}.\""
   },
   {
     "id": -1000007083,
@@ -738,10 +738,10 @@
   {
     "id": -1000007092,
     "key": "story_B1_3",
-    "en": "\"Vouch for me at the bank? Just a signature! What could go wrong?\" (or lend me {0:#,##0} spirit stones…)",
-    "ch": "“去钱庄给我作个保？就签个名！能出什么事？”（或者借我{0:#,##0}灵石……）",
-    "tc": "“去錢莊給我作個保？就籤個名！能出什麼事？”（或者借我{0:#,##0}靈石……）",
-    "kr": "\"전장에서 보증 좀 서 주겠소? 서명 하나면 돼! 무슨 일이 있겠소?\" (아니면 영석 {0:#,##0}만 빌려주든가……)"
+    "en": "\"Vouch for me at the bank? Just a signature! What could go wrong?\" (or lend me {0:#,##0} [icon:zm_lingshi]…)",
+    "ch": "“去钱庄给我作个保？就签个名！能出什么事？”（或者借我{0:#,##0} [icon:zm_lingshi]……）",
+    "tc": "“去錢莊給我作個保？就籤個名！能出什麼事？”（或者借我{0:#,##0} [icon:zm_lingshi]……）",
+    "kr": "\"전장에서 보증 좀 서 주겠소? 서명 하나면 돼! 무슨 일이 있겠소?\" (아니면 [icon:zm_lingshi] {0:#,##0}만 빌려주든가……)"
   },
   {
     "id": -1000007093,
@@ -794,10 +794,10 @@
   {
     "id": -1000007099,
     "key": "story_B2_3",
-    "en": "\"Your share: {0:#,##0} spirit stones. Don't count it in front of me, I'll cry.\"",
-    "ch": "“你的那份：{0:#,##0}灵石。别当着我面数，我会哭的。”",
-    "tc": "“你的那份：{0:#,##0}靈石。別當著我面數，我會哭的。”",
-    "kr": "\"당신 몫이오: 영석 {0:#,##0}. 내 앞에서 세지 마시오, 울 것 같으니.\""
+    "en": "\"Your share: {0:#,##0} [icon:zm_lingshi]. Don't count it in front of me, I'll cry.\"",
+    "ch": "“你的那份：{0:#,##0} [icon:zm_lingshi]。别当着我面数，我会哭的。”",
+    "tc": "“你的那份：{0:#,##0} [icon:zm_lingshi]。別當著我面數，我會哭的。”",
+    "kr": "\"당신 몫이오: [icon:zm_lingshi] {0:#,##0}. 내 앞에서 세지 마시오, 울 것 같으니.\""
   },
   {
     "id": -1000007100,
@@ -826,10 +826,10 @@
   {
     "id": -1000007103,
     "key": "story_B3_2",
-    "en": "\"I saw his ledger. Not just me — half the merchants of this region owe her. She is buying the towns, one debt at a time.\" (interest: {0:#,##0} spirit stones)",
-    "ch": "“我瞥见了他的账本。不止我——这一带一半的商人都欠她的钱。她在一笔债一笔债地买下这些城。”（利息：{0:#,##0}灵石）",
-    "tc": "“我瞥見了他的賬本。不止我——這一帶一半的商人都欠她的錢。她在一筆債一筆債地買下這些城。”（利息：{0:#,##0}靈石）",
-    "kr": "\"그자의 장부를 봤소. 나만이 아니오 — 이 일대 상인 절반이 그 여자에게 빚을 졌소. 빚 하나하나로 마을들을 사들이고 있는 거요.\" (이자: 영석 {0:#,##0})"
+    "en": "\"I saw his ledger. Not just me — half the merchants of this region owe her. She is buying the towns, one debt at a time.\" (interest: {0:#,##0} [icon:zm_lingshi])",
+    "ch": "“我瞥见了他的账本。不止我——这一带一半的商人都欠她的钱。她在一笔债一笔债地买下这些城。”（利息：{0:#,##0} [icon:zm_lingshi]）",
+    "tc": "“我瞥見了他的賬本。不止我——這一帶一半的商人都欠她的錢。她在一筆債一筆債地買下這些城。”（利息：{0:#,##0} [icon:zm_lingshi]）",
+    "kr": "\"그자의 장부를 봤소. 나만이 아니오 — 이 일대 상인 절반이 그 여자에게 빚을 졌소. 빚 하나하나로 마을들을 사들이고 있는 거요.\" (이자: [icon:zm_lingshi] {0:#,##0})"
   },
   {
     "id": -1000007104,
@@ -1082,10 +1082,10 @@
   {
     "id": -1000007135,
     "key": "story_C1_2",
-    "en": "A herb seller has a map of the valley: {0:#,##0} spirit stones, or a herb in trade.",
-    "ch": "一个药贩有山谷的地图：{0:#,##0}灵石，或用一株药草交换。",
-    "tc": "一個藥販有山谷的地圖：{0:#,##0}靈石，或用一株藥草交換。",
-    "kr": "약초 상인에게 골짜기 지도가 있다. 영석 {0:#,##0}, 또는 약초 하나와 교환."
+    "en": "A herb seller has a map of the valley: {0:#,##0} [icon:zm_lingshi], or a herb in trade.",
+    "ch": "一个药贩有山谷的地图：{0:#,##0} [icon:zm_lingshi]，或用一株药草交换。",
+    "tc": "一個藥販有山谷的地圖：{0:#,##0} [icon:zm_lingshi]，或用一株藥草交換。",
+    "kr": "약초 상인에게 골짜기 지도가 있다. [icon:zm_lingshi] {0:#,##0}, 또는 약초 하나와 교환."
   },
   {
     "id": -1000007136,
@@ -1162,10 +1162,10 @@
   {
     "id": -1000007145,
     "key": "story_C2_1",
-    "en": "\"Furnace fee: {0:#,##0} spirit stones,\" says the examiner. {X} looks at you with enormous eyes.",
-    "ch": "“丹炉费：{0:#,##0}灵石。”考官说。{X}用一双大眼睛望着你。",
-    "tc": "“丹爐費：{0:#,##0}靈石。”考官說。{X}用一雙大眼睛望著你。",
-    "kr": "\"단로 사용료: 영석 {0:#,##0}.\" 시험관이 말한다. {X}가 커다란 눈으로 그대를 바라본다."
+    "en": "\"Furnace fee: {0:#,##0} [icon:zm_lingshi],\" says the examiner. {X} looks at you with enormous eyes.",
+    "ch": "“丹炉费：{0:#,##0} [icon:zm_lingshi]。”考官说。{X}用一双大眼睛望着你。",
+    "tc": "“丹爐費：{0:#,##0} [icon:zm_lingshi]。”考官說。{X}用一雙大眼睛望著你。",
+    "kr": "\"단로 사용료: [icon:zm_lingshi] {0:#,##0}.\" 시험관이 말한다. {X}가 커다란 눈으로 그대를 바라본다."
   },
   {
     "id": -1000007146,
@@ -1458,10 +1458,10 @@
   {
     "id": -1000007182,
     "key": "story_D0_2",
-    "en": "Everyone looks at you. (the bill: {0:#,##0} spirit stones)",
-    "ch": "所有人都看着你。（账单：{0:#,##0}灵石）",
-    "tc": "所有人都看著你。（賬單：{0:#,##0}靈石）",
-    "kr": "모두가 그대를 쳐다본다. (계산서: 영석 {0:#,##0})"
+    "en": "Everyone looks at you. (the bill: {0:#,##0} [icon:zm_lingshi])",
+    "ch": "所有人都看着你。（账单：{0:#,##0} [icon:zm_lingshi]）",
+    "tc": "所有人都看著你。（賬單：{0:#,##0} [icon:zm_lingshi]）",
+    "kr": "모두가 그대를 쳐다본다. (계산서: [icon:zm_lingshi] {0:#,##0})"
   },
   {
     "id": -1000007183,
@@ -2114,10 +2114,10 @@
   {
     "id": -1000007263,
     "key": "story_garden_o",
-    "en": "{0} year(s) ({1:#,##0} spirit stones)",
-    "ch": "{0}年（{1:#,##0}灵石）",
-    "tc": "{0}年（{1:#,##0}靈石）",
-    "kr": "{0}년 (영석 {1:#,##0})"
+    "en": "{0} year(s) ({1:#,##0} [icon:zm_lingshi])",
+    "ch": "{0}年（{1:#,##0} [icon:zm_lingshi]）",
+    "tc": "{0}年（{1:#,##0} [icon:zm_lingshi]）",
+    "kr": "{0}년 ([icon:zm_lingshi] {1:#,##0})"
   },
   {
     "id": -1000007264,

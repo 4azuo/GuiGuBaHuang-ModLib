@@ -207,12 +207,12 @@
 	{
 		"id": 500020042,
 		"key": "other500020042",
-		"en|ch|tc|kr": "{0:#,##0} piedras espirituales/año"
+		"en|ch|tc|kr": "{0:#,##0} [icon:zm_lingshi]/año"
 	},
 	{
 		"id": 500020043,
 		"key": "other500020043",
-		"en|ch|tc|kr": "{0:#,##0} Piedras espirituales/mes"
+		"en|ch|tc|kr": "{0:#,##0} [icon:zm_lingshi]/mes"
 	},
 	{
 		"id": 500020045,
@@ -272,12 +272,12 @@
 	{
 		"id": 500020056,
 		"key": "other500020056",
-		"en|ch|tc|kr": "{0:#,##0} Piedras espirituales → {1:#,##0} Contribución"
+		"en|ch|tc|kr": "{0:#,##0} [icon:zm_lingshi] → {1:#,##0} Contribución"
 	},
 	{
 		"id": 500020057,
 		"key": "other500020057",
-		"en|ch|tc|kr": "Proporción de intercambio {0:#,##0} Piedras espirituales → 1 contribución"
+		"en|ch|tc|kr": "Proporción de intercambio {0:#,##0} [icon:zm_lingshi] → 1 contribución"
 	},
 	{
 		"id": 500020058,
@@ -337,12 +337,12 @@
 	{
 		"id": 500020069,
 		"key": "other500020069",
-		"en|ch|tc|kr": "Necesitas {0:#,##0} piedras espirituales para cultivar."
+		"en|ch|tc|kr": "Necesitas {0:#,##0} [icon:zm_lingshi] para cultivar."
 	},
 	{
 		"id": 500020070,
 		"key": "other500020070",
-		"en|ch|tc|kr": "{0:#,##0} Piedras espirituales → {1:#,##0} Exps."
+		"en|ch|tc|kr": "{0:#,##0} [icon:zm_lingshi] → {1:#,##0} Exps."
 	},
 	{
 		"id": 500020071,
@@ -397,7 +397,7 @@
 	{
 		"id": 500020086,
 		"key": "other500020086",
-		"en|ch|tc|kr": "¿Quieres pagar {0:#,##0} piedras espirituales por nuestro servicio?"
+		"en|ch|tc|kr": "¿Quieres pagar {0:#,##0} [icon:zm_lingshi] por nuestro servicio?"
 	},
 	{
 		"id": 500020087,
@@ -542,7 +542,7 @@
 	{
 		"id": "500020027",
 		"key": "other500020027",
-		"en|ch|tc|kr": "El guardia de la puerta tiende la mano: «El impuesto es de {0:#,##0} piedras espirituales». Tu bolsa no pesa tanto."
+		"en|ch|tc|kr": "El guardia de la puerta tiende la mano: «El impuesto es de {0:#,##0} [icon:zm_lingshi]». Tu bolsa no pesa tanto."
 	},
 	{
 		"id": "500020044",

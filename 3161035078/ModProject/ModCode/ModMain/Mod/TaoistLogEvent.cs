@@ -127,9 +127,9 @@ namespace MOD_nE7UL2.Mod
                 for (var i = 0; i < ROWS_PER_PAGE; i++)
                 {
                     var idx = page * ROWS_PER_PAGE + i;
-                    rows[i].Item.text = idx < lines.Count ? lines[idx] : string.Empty;
+                    rows[i].Item.Set(idx < lines.Count ? lines[idx] : string.Empty);
                 }
-                pageText.Item.text = $"{page + 1} / {pages}";
+                pageText.Item.Set($"{page + 1} / {pages}");
             };
             ui.AddButton(ui.MidCol - 4, ui.LastRow, () => { if (page > 0) { page--; show(); } }, "<").Size(60, 32);
             ui.AddButton(ui.MidCol + 4, ui.LastRow, () => { if (page < pages - 1) { page++; show(); } }, ">").Size(60, 32);

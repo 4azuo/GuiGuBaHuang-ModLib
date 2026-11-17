@@ -66,7 +66,7 @@ namespace MOD_nE7UL2.Mod
                         if (IsTeam(g.world.playerUnit, uiCover.UI.unit) && !IsFriend(g.world.playerUnit, uiCover.UI.unit))
                             uiCover.AddText(300f, 100f, string.Format(GameTool.LS("other500020043"), GetRequiredSpiritStones(g.world.playerUnit, uiCover.UI.unit) / MONTHLY_PAYMENT_RATIO)).Align().Format(Color.white)
                                     .SetParentTransform(uiCover.UI.uiProperty.textAddLuckTitle);
-                        uiCover.AddText(300f, 80f, $"Team: {GetTeamInfoStr(uiCover.UI.unit)}").Align().Format(Color.white)
+                        uiCover.AddText(300f, 80f, ModTextHelper.LSF("ui_team_info", GetTeamInfoStr(uiCover.UI.unit))).Align().Format(Color.white)
                                     .SetParentTransform(uiCover.UI.uiProperty.textAddLuckTitle);
                         if (isShowManageTeamUI || IsTeam(g.world.playerUnit, uiCover.UI.unit))
                         {
@@ -88,16 +88,16 @@ namespace MOD_nE7UL2.Mod
                         {
                             if (!IsFriend(g.world.playerUnit, uiCover.UI.unit))
                             {
-                                uiCover.AddText(300f, 100f, $"{GetRequiredSpiritStones(g.world.playerUnit, uiCover.UI.unit).ToString(ModConst.FORMAT_NUMBER)} Spirit Stones ({GetRequiredSpiritStones(g.world.playerUnit, uiCover.UI.unit) / MONTHLY_PAYMENT_RATIO:#,##0}/month)").Align().Format(Color.white)
+                                uiCover.AddText(300f, 100f, ModTextHelper.LSF("ui_team_hire_cost", GetRequiredSpiritStones(g.world.playerUnit, uiCover.UI.unit).ToString(ModConst.FORMAT_NUMBER), GetRequiredSpiritStones(g.world.playerUnit, uiCover.UI.unit) / MONTHLY_PAYMENT_RATIO)).Align().Format(Color.white)
                                     .SetParentTransform(uiCover.UI.uiProperty.textAddLuckTitle);
-                                uiCover.AddText(300f, 80f, $"{GetRequiredReputations(g.world.playerUnit, uiCover.UI.unit).ToString(ModConst.FORMAT_NUMBER)} Reputations").Align().Format(Color.white)
+                                uiCover.AddText(300f, 80f, ModTextHelper.LSF("ui_reputations", GetRequiredReputations(g.world.playerUnit, uiCover.UI.unit).ToString(ModConst.FORMAT_NUMBER))).Align().Format(Color.white)
                                     .SetParentTransform(uiCover.UI.uiProperty.textAddLuckTitle);
                             }
                             else
                             {
                                 uiCover.AddText(300f, 100f, GameTool.LS("team420041132")).Align().Format(Color.white)
                                     .SetParentTransform(uiCover.UI.uiProperty.textAddLuckTitle);
-                                uiCover.AddText(300f, 80f, $"{GetRequiredReputations(g.world.playerUnit, uiCover.UI.unit):#,##0} Reputations").Align().Format(Color.white)
+                                uiCover.AddText(300f, 80f, ModTextHelper.LSF("ui_reputations_n", GetRequiredReputations(g.world.playerUnit, uiCover.UI.unit))).Align().Format(Color.white)
                                     .SetParentTransform(uiCover.UI.uiProperty.textAddLuckTitle);
                             }
                             uiCover.AddButton(200f, 90f, () =>
@@ -114,14 +114,14 @@ namespace MOD_nE7UL2.Mod
                                 var requiredSpiritStones = GetRequiredSpiritStones(player, uiCover.UI.unit);
                                 if (!isFriend && player.GetUnitMoney() < requiredSpiritStones)
                                 {
-                                    g.ui.MsgBox(GameTool.LS("team420041121"), $"Require {requiredSpiritStones:#,##0} Spirit Stones");
+                                    g.ui.MsgBox(GameTool.LS("team420041121"), ModTextHelper.LSF("ui_require_stones", requiredSpiritStones));
                                     return;
                                 }
 
                                 var requiredReputations = GetRequiredReputations(player, uiCover.UI.unit);
                                 if (player.GetDynProperty(UnitDynPropertyEnum.Reputation).value < requiredReputations)
                                 {
-                                    g.ui.MsgBox(GameTool.LS("team420041121"), $"Require {requiredReputations:#,##0} Reputations");
+                                    g.ui.MsgBox(GameTool.LS("team420041121"), ModTextHelper.LSF("ui_require_reputations", requiredReputations));
                                     return;
                                 }
 
@@ -160,7 +160,7 @@ namespace MOD_nE7UL2.Mod
                             }, GameTool.LS("team420041126")).Size(160, 40).Pos(pos, x + 0, 329);
                         }
                         uiCover.AddButton(0, 0, OpenUIManageTeam, GameTool.LS("team420041127")).Size(160, 40).Pos(pos, x + 170, 329);
-                        uiCover.AddText(0, 0, $"Team: {GetTeamInfoStr(uiCover.UI.unit)}").Align().Format().Pos(pos, x + 320, 329);
+                        uiCover.AddText(0, 0, ModTextHelper.LSF("ui_team_info", GetTeamInfoStr(uiCover.UI.unit))).Align().Format().Pos(pos, x + 320, 329);
                     }
                 }
                 uiCover.IsAutoUpdate = true;
@@ -219,8 +219,8 @@ namespace MOD_nE7UL2.Mod
 
             var uiCover = new UICover<UINPCSearch>(ui);
             {
-                uiCover.AddText(uiCover.MidCol, uiCover.MidRow, $"Team: {GetTeamInfoStr(g.world.playerUnit)}").Align().Format();
-                uiCover.AddText(uiCover.MidCol, uiCover.MidRow + 1, $"Payment: {GetTotalMonthlyPayment(g.world.playerUnit).ToString("#,##0")} Spirit Stones/month").Align().Format();
+                uiCover.AddText(uiCover.MidCol, uiCover.MidRow, ModTextHelper.LSF("ui_team_info", GetTeamInfoStr(g.world.playerUnit))).Align().Format();
+                uiCover.AddText(uiCover.MidCol, uiCover.MidRow + 1, ModTextHelper.LSF("ui_team_payment", GetTotalMonthlyPayment(g.world.playerUnit).ToString("#,##0"))).Align().Format();
             }
             uiCover.UpdateUI();
         }

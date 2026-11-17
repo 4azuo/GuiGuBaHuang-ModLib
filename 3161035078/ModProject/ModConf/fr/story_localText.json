@@ -192,7 +192,7 @@
 	{
 		"id": "-1000007030",
 		"key": "story_A2_2_market",
-		"en|ch|tc|kr": "Au marché de {T}, un étal vend « vieilles lettres, sceaux intéressants ». L'une porte le sceau de {S}. Prix : {0:#,##0} pierres spirituelles."
+		"en|ch|tc|kr": "Au marché de {T}, un étal vend « vieilles lettres, sceaux intéressants ». L'une porte le sceau de {S}. Prix : {0:#,##0} [icon:zm_lingshi]."
 	},
 	{
 		"id": "-1000007031",
@@ -292,7 +292,7 @@
 	{
 		"id": "-1000007050",
 		"key": "story_A4_2",
-		"en|ch|tc|kr": "« Mon épée s'est brisée le jour où je suis partie. Il me faut une lame qui ne se brise pas. » (un forgeron demande {0:#,##0} pierres spirituelles)"
+		"en|ch|tc|kr": "« Mon épée s'est brisée le jour où je suis partie. Il me faut une lame qui ne se brise pas. » (un forgeron demande {0:#,##0} [icon:zm_lingshi])"
 	},
 	{
 		"id": "-1000007051",
@@ -452,7 +452,7 @@
 	{
 		"id": "-1000007082",
 		"key": "story_B0_1",
-		"en|ch|tc|kr": "« Ah, un connaisseur ! Cette pièce — elle vaut trois fois plus, je le jure sur la tombe de ma grand-mère. Pour vous ? Moitié prix : {0:#,##0} pierres spirituelles. »"
+		"en|ch|tc|kr": "« Ah, un connaisseur ! Cette pièce — elle vaut trois fois plus, je le jure sur la tombe de ma grand-mère. Pour vous ? Moitié prix : {0:#,##0} [icon:zm_lingshi]. »"
 	},
 	{
 		"id": "-1000007084",
@@ -492,7 +492,7 @@
 	{
 		"id": "-1000007092",
 		"key": "story_B1_3",
-		"en|ch|tc|kr": "« Tu te portes garant pour moi à la banque ? Juste une signature ! Qu'est-ce qui pourrait mal tourner ? » (ou prête-moi {0:#,##0} pierres spirituelles…)"
+		"en|ch|tc|kr": "« Tu te portes garant pour moi à la banque ? Juste une signature ! Qu'est-ce qui pourrait mal tourner ? » (ou prête-moi {0:#,##0} [icon:zm_lingshi]…)"
 	},
 	{
 		"id": "-1000007093",
@@ -527,7 +527,7 @@
 	{
 		"id": "-1000007099",
 		"key": "story_B2_3",
-		"en|ch|tc|kr": "« Ta part : {0:#,##0} pierres spirituelles. Ne compte pas devant moi, je vais pleurer. »"
+		"en|ch|tc|kr": "« Ta part : {0:#,##0} [icon:zm_lingshi]. Ne compte pas devant moi, je vais pleurer. »"
 	},
 	{
 		"id": "-1000007100",
@@ -547,7 +547,7 @@
 	{
 		"id": "-1000007103",
 		"key": "story_B3_2",
-		"en|ch|tc|kr": "« J'ai vu son registre. Pas que moi — la moitié des marchands de la région lui doivent de l'argent. Elle achète les villes, une dette à la fois. » (intérêts : {0:#,##0} pierres spirituelles)"
+		"en|ch|tc|kr": "« J'ai vu son registre. Pas que moi — la moitié des marchands de la région lui doivent de l'argent. Elle achète les villes, une dette à la fois. » (intérêts : {0:#,##0} [icon:zm_lingshi])"
 	},
 	{
 		"id": "-1000007104",
@@ -702,7 +702,7 @@
 	{
 		"id": "-1000007135",
 		"key": "story_C1_2",
-		"en|ch|tc|kr": "Un marchand d'herbes a une carte de la vallée : {0:#,##0} pierres spirituelles, ou une herbe en échange."
+		"en|ch|tc|kr": "Un marchand d'herbes a une carte de la vallée : {0:#,##0} [icon:zm_lingshi], ou une herbe en échange."
 	},
 	{
 		"id": "-1000007136",
@@ -747,7 +747,7 @@
 	{
 		"id": "-1000007145",
 		"key": "story_C2_1",
-		"en|ch|tc|kr": "« Frais de fourneau : {0:#,##0} pierres spirituelles », dit l'examinateur. {X} vous regarde avec de grands yeux."
+		"en|ch|tc|kr": "« Frais de fourneau : {0:#,##0} [icon:zm_lingshi] », dit l'examinateur. {X} vous regarde avec de grands yeux."
 	},
 	{
 		"id": "-1000007146",
@@ -922,7 +922,7 @@
 	{
 		"id": "-1000007182",
 		"key": "story_D0_2",
-		"en|ch|tc|kr": "Tout le monde vous regarde. (l'addition : {0:#,##0} pierres spirituelles)"
+		"en|ch|tc|kr": "Tout le monde vous regarde. (l'addition : {0:#,##0} [icon:zm_lingshi])"
 	},
 	{
 		"id": "-1000007183",
@@ -1322,7 +1322,7 @@
 	{
 		"id": "-1000007263",
 		"key": "story_garden_o",
-		"en|ch|tc|kr": "{0} an(s) ({1:#,##0} pierres spirituelles)"
+		"en|ch|tc|kr": "{0} an(s) ({1:#,##0} [icon:zm_lingshi])"
 	},
 	{
 		"id": "-1000007265",

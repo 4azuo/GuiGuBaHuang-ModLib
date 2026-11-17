@@ -73,11 +73,11 @@ namespace MOD_nE7UL2.Mod
 
                 //add component
                 var txtInfo = uiPropSell.textMoney.Copy().Pos(-310, 250).Align().Format(Color.red);
-                txtInfo.text = $"Price rate: {GetSellRate(curMainTown, g.world.playerUnit):0.00}%";
+                txtInfo.Set(ModTextHelper.LSF("ui_price_rate", GetSellRate(curMainTown, g.world.playerUnit)));
 
                 txtMarketST = uiPropSell.textMoney.Copy().Pos(-310, 270).Align();
                 txtPrice2 = uiPropSell.textPrice.Copy().Pos(uiPropSell.textPrice, 0, -20);
-                txtWarningMsg = uiPropSell.textPrice.Copy().Pos(uiPropSell.btnOK).Format(Color.red).Set("Over price");
+                txtWarningMsg = uiPropSell.textPrice.Copy().Pos(uiPropSell.btnOK).Format(Color.red).Set(GameTool.LS("ui_over_price"));
                 txtWarningMsg.gameObject.SetActive(false);
 
                 uiPropSell.btnOK.onClick.RemoveAllListeners();
@@ -101,11 +101,11 @@ namespace MOD_nE7UL2.Mod
                 var budget = MapBuildPropertyEvent.GetBuildProperty(curMainTown);
                 var totalPrice = GetTotalPrice(uiPropSell);
                 var cashback = (totalPrice * ((GetSellRate(curMainTown, g.world.playerUnit) - 100.00f) / 100.00f)).Parse<int>();
-                uiPropSell.textMoney.text = $"Owned: {g.world.playerUnit.GetUnitMoney():#,##0} Spirit Stones";
-                uiPropSell.textPrice.text = $"Total: {totalPrice + cashback:#,##0} ({cashback:#,##0})";
+                uiPropSell.textMoney.Set(ModTextHelper.LSF("ui_market_owned", g.world.playerUnit.GetUnitMoney()));
+                uiPropSell.textPrice.Set(ModTextHelper.LSF("ui_market_total", totalPrice + cashback, cashback));
                 uiPropSell.btnOK.gameObject.SetActive(totalPrice <= budget);
-                txtMarketST.text = $"Market: {budget:#,##0} Spirit Stones";
-                txtPrice2.text = $"/{budget:#,##0} Spirit Stones";
+                txtMarketST.Set(ModTextHelper.LSF("ui_market_budget", budget));
+                txtPrice2.Set(ModTextHelper.LSF("ui_market_budget_max", budget));
                 txtWarningMsg.gameObject.SetActive(totalPrice > budget);
             }
         }

@@ -293,5 +293,175 @@
 		"id": -1000002058,
 		"key": "trainer058",
 		"en|ch|tc|kr": "Mặt dây chuyền Song Ngư"
+	},
+	{
+		"id": "-1000002059",
+		"key": "trainer_title",
+		"en|ch|tc|kr": "Trainer"
+	},
+	{
+		"id": "-1000002060",
+		"key": "trainer_lbl_hp",
+		"en|ch|tc|kr": "Sinh lực: {0}/{1}"
+	},
+	{
+		"id": "-1000002061",
+		"key": "trainer_lbl_money",
+		"en|ch|tc|kr": "{0} :Tiền"
+	},
+	{
+		"id": "-1000002062",
+		"key": "trainer_lbl_mp",
+		"en|ch|tc|kr": "Linh lực: {0}/{1}"
+	},
+	{
+		"id": "-1000002063",
+		"key": "trainer_lbl_degree",
+		"en|ch|tc|kr": "{0} :Lệnh thành chủ"
+	},
+	{
+		"id": "-1000002064",
+		"key": "trainer_lbl_sp",
+		"en|ch|tc|kr": "Niệm lực: {0}/{1}"
+	},
+	{
+		"id": "-1000002065",
+		"key": "trainer_lbl_contribution",
+		"en|ch|tc|kr": "{0} :Cống hiến"
+	},
+	{
+		"id": "-1000002066",
+		"key": "trainer_lbl_def",
+		"en|ch|tc|kr": "{0} :Thủ"
+	},
+	{
+		"id": "-1000002067",
+		"key": "trainer_lbl_mood",
+		"en|ch|tc|kr": "Tâm trạng: {0}/{1}"
+	},
+	{
+		"id": "-1000002068",
+		"key": "trainer_lbl_stamina",
+		"en|ch|tc|kr": "{0}/{1} :Thể lực"
+	},
+	{
+		"id": "-1000002069",
+		"key": "trainer_lbl_health",
+		"en|ch|tc|kr": "Sức khỏe: {0}/{1}"
+	},
+	{
+		"id": "-1000002070",
+		"key": "trainer_lbl_life",
+		"en|ch|tc|kr": "{0}/{1} :Thọ nguyên"
+	},
+	{
+		"id": "-1000002071",
+		"key": "trainer_lbl_travel_speed",
+		"en|ch|tc|kr": "Tốc độ di chuyển: {0}"
+	},
+	{
+		"id": "-1000002072",
+		"key": "trainer_lbl_view_range",
+		"en|ch|tc|kr": "{0} :Tầm nhìn"
+	},
+	{
+		"id": "-1000002073",
+		"key": "trainer_lbl_battle_speed",
+		"en|ch|tc|kr": "Tốc độ chiến đấu: {0}"
+	},
+	{
+		"id": "-1000002074",
+		"key": "trainer_lbl_ability",
+		"en|ch|tc|kr": "({1}) {0} :Năng lực"
+	},
+	{
+		"id": "-1000002075",
+		"key": "trainer_lbl_luck",
+		"en|ch|tc|kr": "Khí vận: {0}"
+	},
+	{
+		"id": "-1000002076",
+		"key": "trainer_lbl_insight",
+		"en|ch|tc|kr": "{0} :Ngộ tính"
+	},
+	{
+		"id": "-1000002077",
+		"key": "trainer_lbl_exp",
+		"en|ch|tc|kr": "Kinh nghiệm: {0}/{1}"
+	},
+	{
+		"id": "-1000002078",
+		"key": "trainer_lbl_reputation",
+		"en|ch|tc|kr": "{0} :Danh vọng"
+	},
+	{
+		"id": "-1000002079",
+		"key": "trainer_lbl_grade",
+		"en|ch|tc|kr": "Cảnh giới: {0} {1} ― {2}"
+	},
+	{
+		"id": "-1000002080",
+		"key": "trainer_lbl_fire",
+		"en|ch|tc|kr": "Hỏa: {0}"
+	},
+	{
+		"id": "-1000002081",
+		"key": "trainer_lbl_blade",
+		"en|ch|tc|kr": "{0} :Đao"
+	},
+	{
+		"id": "-1000002082",
+		"key": "trainer_lbl_water",
+		"en|ch|tc|kr": "Thủy: {0}"
+	},
+	{
+		"id": "-1000002083",
+		"key": "trainer_lbl_spear",
+		"en|ch|tc|kr": "{0} :Thương"
+	},
+	{
+		"id": "-1000002084",
+		"key": "trainer_lbl_lightning",
+		"en|ch|tc|kr": "Lôi: {0}"
+	},
+	{
+		"id": "-1000002085",
+		"key": "trainer_lbl_sword",
+		"en|ch|tc|kr": "{0} :Kiếm"
+	},
+	{
+		"id": "-1000002086",
+		"key": "trainer_lbl_wind",
+		"en|ch|tc|kr": "Phong: {0}"
+	},
+	{
+		"id": "-1000002087",
+		"key": "trainer_lbl_fist",
+		"en|ch|tc|kr": "{0} :Quyền"
+	},
+	{
+		"id": "-1000002088",
+		"key": "trainer_lbl_earth",
+		"en|ch|tc|kr": "Thổ: {0}"
+	},
+	{
+		"id": "-1000002089",
+		"key": "trainer_lbl_palm",
+		"en|ch|tc|kr": "{0} :Chưởng"
+	},
+	{
+		"id": "-1000002090",
+		"key": "trainer_lbl_wood",
+		"en|ch|tc|kr": "Mộc: {0}"
+	},
+	{
+		"id": "-1000002091",
+		"key": "trainer_lbl_finger",
+		"en|ch|tc|kr": "{0} :Chỉ"
+	},
+	{
+		"id": "-1000002092",
+		"key": "trainer_lbl_area",
+		"en|ch|tc|kr": "Khu vực {0}:"
 	}
 ]

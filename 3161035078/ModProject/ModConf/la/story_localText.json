@@ -192,7 +192,7 @@
 	{
 		"id": "-1000007030",
 		"key": "story_A2_2_market",
-		"en|ch|tc|kr": "In foro {T} taberna \"veteres epistulas, signa curiosa\" vendit. Una signum {S} gerit. Pretium: {0:#,##0} lapides spiritales."
+		"en|ch|tc|kr": "In foro {T} taberna \"veteres epistulas, signa curiosa\" vendit. Una signum {S} gerit. Pretium: {0:#,##0} [icon:zm_lingshi]."
 	},
 	{
 		"id": "-1000007031",
@@ -292,7 +292,7 @@
 	{
 		"id": "-1000007050",
 		"key": "story_A4_2",
-		"en|ch|tc|kr": "\"Gladius meus fractus est die quo discessi. Lamina mihi opus est quae non frangatur.\" (faber {0:#,##0} lapides spiritales poscit)"
+		"en|ch|tc|kr": "\"Gladius meus fractus est die quo discessi. Lamina mihi opus est quae non frangatur.\" (faber {0:#,##0} [icon:zm_lingshi] poscit)"
 	},
 	{
 		"id": "-1000007051",
@@ -452,7 +452,7 @@
 	{
 		"id": "-1000007082",
 		"key": "story_B0_1",
-		"en|ch|tc|kr": "\"Ah, emptor peritus! Haec res triplo valet, per sepulcrum aviae meae iuro. Tibi? Dimidio: {0:#,##0} lapides spiritales.\""
+		"en|ch|tc|kr": "\"Ah, emptor peritus! Haec res triplo valet, per sepulcrum aviae meae iuro. Tibi? Dimidio: {0:#,##0} [icon:zm_lingshi].\""
 	},
 	{
 		"id": "-1000007084",
@@ -492,7 +492,7 @@
 	{
 		"id": "-1000007092",
 		"key": "story_B1_3",
-		"en|ch|tc|kr": "\"Sponsor mihi apud argentariam eris? Una tantum subscriptio! Quid mali fieri potest?\" (aut mihi {0:#,##0} lapides spiritales commoda…)"
+		"en|ch|tc|kr": "\"Sponsor mihi apud argentariam eris? Una tantum subscriptio! Quid mali fieri potest?\" (aut mihi {0:#,##0} [icon:zm_lingshi] commoda…)"
 	},
 	{
 		"id": "-1000007093",
@@ -527,7 +527,7 @@
 	{
 		"id": "-1000007099",
 		"key": "story_B2_3",
-		"en|ch|tc|kr": "\"Pars tua: {0:#,##0} lapides spiritales. Noli coram me numerare, lacrimabo.\""
+		"en|ch|tc|kr": "\"Pars tua: {0:#,##0} [icon:zm_lingshi]. Noli coram me numerare, lacrimabo.\""
 	},
 	{
 		"id": "-1000007100",
@@ -547,7 +547,7 @@
 	{
 		"id": "-1000007103",
 		"key": "story_B3_2",
-		"en|ch|tc|kr": "\"Librum rationum eius vidi. Non ego solus: dimidia pars mercatorum huius regionis ei debet. Urbes emit, debito post debitum.\" (usurae: {0:#,##0} lapides spiritales)"
+		"en|ch|tc|kr": "\"Librum rationum eius vidi. Non ego solus: dimidia pars mercatorum huius regionis ei debet. Urbes emit, debito post debitum.\" (usurae: {0:#,##0} [icon:zm_lingshi])"
 	},
 	{
 		"id": "-1000007104",
@@ -702,7 +702,7 @@
 	{
 		"id": "-1000007135",
 		"key": "story_C1_2",
-		"en|ch|tc|kr": "Herbarius mappam vallis habet: {0:#,##0} lapides spiritales, aut herbam pro ea."
+		"en|ch|tc|kr": "Herbarius mappam vallis habet: {0:#,##0} [icon:zm_lingshi], aut herbam pro ea."
 	},
 	{
 		"id": "-1000007136",
@@ -747,7 +747,7 @@
 	{
 		"id": "-1000007145",
 		"key": "story_C2_1",
-		"en|ch|tc|kr": "\"Merces fornacis: {0:#,##0} lapides spiritales,\" ait examinator. {X} te oculis ingentibus aspicit."
+		"en|ch|tc|kr": "\"Merces fornacis: {0:#,##0} [icon:zm_lingshi],\" ait examinator. {X} te oculis ingentibus aspicit."
 	},
 	{
 		"id": "-1000007146",
@@ -922,7 +922,7 @@
 	{
 		"id": "-1000007182",
 		"key": "story_D0_2",
-		"en|ch|tc|kr": "Omnes te aspiciunt. (ratio: {0:#,##0} lapides spiritales)"
+		"en|ch|tc|kr": "Omnes te aspiciunt. (ratio: {0:#,##0} [icon:zm_lingshi])"
 	},
 	{
 		"id": "-1000007183",
@@ -1322,7 +1322,7 @@
 	{
 		"id": "-1000007263",
 		"key": "story_garden_o",
-		"en|ch|tc|kr": "{0} annus/anni ({1:#,##0} lapides spiritales)"
+		"en|ch|tc|kr": "{0} annus/anni ({1:#,##0} [icon:zm_lingshi])"
 	},
 	{
 		"id": "-1000007265",

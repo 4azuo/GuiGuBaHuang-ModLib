@@ -107,8 +107,8 @@ namespace MOD_nE7UL2.Mod
         private void OpenItemSelector()
         {
             var ui = g.ui.OpenUISafe<UIPropSelect>(UIType.PropSelect);
-            ui.textTitle1.text = GameTool.LS("other500020001");
-            ui.textSearchTip.text = GameTool.LS("other500020048");
+            ui.textTitle1.Set(GameTool.LS("other500020001"));
+            ui.textSearchTip.Set(GameTool.LS("other500020048"));
             ui.btnSearch.gameObject.SetActive(false);
             ui.goTabRoot.SetActive(false);
             ui.goSubToggleRoot.SetActive(false);
@@ -235,8 +235,8 @@ namespace MOD_nE7UL2.Mod
             if (refineItem == null)
                 return;
             var ui = g.ui.OpenUISafe<UIPropSelect>(UIType.PropSelect);
-            ui.textTitle1.text = GameTool.LS("other500020002");
-            ui.textSearchTip.text = GameTool.LS("other500020049");
+            ui.textTitle1.Set(GameTool.LS("other500020002"));
+            ui.textSearchTip.Set(GameTool.LS("other500020049"));
             ui.btnSearch.gameObject.SetActive(false);
             ui.goTabRoot.SetActive(false);
             ui.goSubToggleRoot.SetActive(false);

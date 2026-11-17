@@ -207,12 +207,12 @@
 	{
 		"id": 500020042,
 		"key": "other500020042",
-		"en|ch|tc|kr": "{0:#,##0} Geistersteine/Jahr"
+		"en|ch|tc|kr": "{0:#,##0} [icon:zm_lingshi]/Jahr"
 	},
 	{
 		"id": 500020043,
 		"key": "other500020043",
-		"en|ch|tc|kr": "{0:#,##0} Geistersteine/Monat"
+		"en|ch|tc|kr": "{0:#,##0} [icon:zm_lingshi]/Monat"
 	},
 	{
 		"id": 500020045,
@@ -272,12 +272,12 @@
 	{
 		"id": 500020056,
 		"key": "other500020056",
-		"en|ch|tc|kr": "{0:#,##0} Geistersteine → {1:#,##0} Beitrag"
+		"en|ch|tc|kr": "{0:#,##0} [icon:zm_lingshi] → {1:#,##0} Beitrag"
 	},
 	{
 		"id": 500020057,
 		"key": "other500020057",
-		"en|ch|tc|kr": "Tauschverhältnis {0:#,##0} Geistersteine → 1 Beitrag"
+		"en|ch|tc|kr": "Tauschverhältnis {0:#,##0} [icon:zm_lingshi] → 1 Beitrag"
 	},
 	{
 		"id": 500020058,
@@ -337,12 +337,12 @@
 	{
 		"id": 500020069,
 		"key": "other500020069",
-		"en|ch|tc|kr": "Für den Anbau benötigst du {0:#,##0} Geistersteine."
+		"en|ch|tc|kr": "Für den Anbau benötigst du {0:#,##0} [icon:zm_lingshi]."
 	},
 	{
 		"id": 500020070,
 		"key": "other500020070",
-		"en|ch|tc|kr": "{0:#,##0} Geistersteine → {1:#,##0} Exps."
+		"en|ch|tc|kr": "{0:#,##0} [icon:zm_lingshi] → {1:#,##0} Exps."
 	},
 	{
 		"id": 500020071,
@@ -397,7 +397,7 @@
 	{
 		"id": 500020086,
 		"key": "other500020086",
-		"en|ch|tc|kr": "Möchten Sie {0:#,##0} Geistersteine für unseren Service bezahlen?"
+		"en|ch|tc|kr": "Möchten Sie {0:#,##0} [icon:zm_lingshi] für unseren Service bezahlen?"
 	},
 	{
 		"id": 500020087,
@@ -542,7 +542,7 @@
 	{
 		"id": "500020027",
 		"key": "other500020027",
-		"en|ch|tc|kr": "Die Torwache streckt die Hand aus: „Die Steuer beträgt {0:#,##0} Geistersteine.“ So schwer ist dein Beutel nicht."
+		"en|ch|tc|kr": "Die Torwache streckt die Hand aus: „Die Steuer beträgt {0:#,##0} [icon:zm_lingshi].“ So schwer ist dein Beutel nicht."
 	},
 	{
 		"id": "500020044",

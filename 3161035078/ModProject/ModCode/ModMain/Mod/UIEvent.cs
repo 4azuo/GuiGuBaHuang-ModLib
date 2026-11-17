@@ -74,7 +74,7 @@ namespace MOD_nE7UL2.Mod
                             }
                             else
                             {
-                                ui.AddButton(ui.LastCol - 5, ui.FirstRow + 3, () => MapBuildPropertyEvent.OpenUITownGuardians(ui.UI.town), $"Tax: {MapBuildPropertyEvent.GetTax(ui.UI.town, g.world.playerUnit):#,##0} Spirit Stones\nView the town guardians").Size(300, 80);
+                                ui.AddButton(ui.LastCol - 5, ui.FirstRow + 3, () => MapBuildPropertyEvent.OpenUITownGuardians(ui.UI.town), ModTextHelper.LSF("ui_tax_town", MapBuildPropertyEvent.GetTax(ui.UI.town, g.world.playerUnit))).Size(300, 80);
                             }
                             ui.AddToolTipButton(ui.LastCol - 8, ui.FirstRow + 3, GameTool.LS("other500020020"));
                         }
@@ -92,7 +92,7 @@ namespace MOD_nE7UL2.Mod
                         {
                             if (!MapBuildPropertyEvent.IsSchoolMember(ui.UI.school, g.world.playerUnit))
                             {
-                                ui.AddButton(ui.LastCol - 5, ui.FirstRow + 3, null, $"Tax: {MapBuildPropertyEvent.GetTax(ui.UI.school, g.world.playerUnit):#,##0} Spirit Stones").Size(300, 80).Enable = false;
+                                ui.AddButton(ui.LastCol - 5, ui.FirstRow + 3, null, ModTextHelper.LSF("ui_tax", MapBuildPropertyEvent.GetTax(ui.UI.school, g.world.playerUnit))).Size(300, 80).Enable = false;
                             }
                         }
                     }
@@ -106,28 +106,28 @@ namespace MOD_nE7UL2.Mod
                     ui.AddText(0, 0, string.Empty).Format(Color.white).SetParentTransform(ui.UI.uiProperty.goGroupRoot)
                         .Pos(ui.UI.uiProperty.goItem6, 36, -150).SetWork(new UIItemWork
                         {
-                            UpdateAct = ModLib.Helper.ActionHelper.WTracedAction<UIItemBase>((x) => x.Set($"+Hp: {UnitModifyHelper.GetMartialAdjHp(ui.UI.unit)}"))
+                            UpdateAct = ModLib.Helper.ActionHelper.WTracedAction<UIItemBase>((x) => x.Set(ModTextHelper.LSF("ui_adj_hp", UnitModifyHelper.GetMartialAdjHp(ui.UI.unit))))
                         });
                     ui.AddText(0, 0, string.Empty).Format(Color.white).SetParentTransform(ui.UI.uiProperty.goGroupRoot)
                         .Pos(ui.UI.uiProperty.goItem7, 72, -150).SetWork(new UIItemWork
                         {
-                            UpdateAct = ModLib.Helper.ActionHelper.WTracedAction<UIItemBase>((x) => x.Set($"+Mp: {UnitModifyHelper.GetSpiritualAdjMp(ui.UI.unit)}"))
+                            UpdateAct = ModLib.Helper.ActionHelper.WTracedAction<UIItemBase>((x) => x.Set(ModTextHelper.LSF("ui_adj_mp", UnitModifyHelper.GetSpiritualAdjMp(ui.UI.unit))))
                         });
                     ui.AddText(0, 0, string.Empty).Format(Color.white).SetParentTransform(ui.UI.uiProperty.goGroupRoot)
                         .Pos(ui.UI.uiProperty.goItem8, 72, -150).SetWork(new UIItemWork
                         {
-                            UpdateAct = ModLib.Helper.ActionHelper.WTracedAction<UIItemBase>((x) => x.Set($"+Sp: {UnitModifyHelper.GetArtisanshipAdjSp(ui.UI.unit)}"))
+                            UpdateAct = ModLib.Helper.ActionHelper.WTracedAction<UIItemBase>((x) => x.Set(ModTextHelper.LSF("ui_adj_sp", UnitModifyHelper.GetArtisanshipAdjSp(ui.UI.unit))))
                         });
 
                     ui.AddText(0, 0, string.Empty).Format(Color.white).SetParentTransform(ui.UI.uiSkill.textPoint1.transform)
                         .Pos(ui.UI.uiSkill.textPoint1.transform, 0, -12).SetWork(new UIItemWork
                         {
-                            UpdateAct = ModLib.Helper.ActionHelper.WTracedAction<UIItemBase>((x) => x.Set($"+Hp: {UnitModifyHelper.GetAbiPointAdjHp(ui.UI.unit)}"))
+                            UpdateAct = ModLib.Helper.ActionHelper.WTracedAction<UIItemBase>((x) => x.Set(ModTextHelper.LSF("ui_adj_hp", UnitModifyHelper.GetAbiPointAdjHp(ui.UI.unit))))
                         });
                     ui.AddText(0, 0, string.Empty).Format(Color.white).SetParentTransform(ui.UI.uiSkill.textPoint1.transform)
                         .Pos(ui.UI.uiSkill.textPoint1.transform, 0, -36).SetWork(new UIItemWork
                         {
-                            UpdateAct = ModLib.Helper.ActionHelper.WTracedAction<UIItemBase>((x) => x.Set($"+Mp: {UnitModifyHelper.GetAbiPointAdjMp(ui.UI.unit)}"))
+                            UpdateAct = ModLib.Helper.ActionHelper.WTracedAction<UIItemBase>((x) => x.Set(ModTextHelper.LSF("ui_adj_mp", UnitModifyHelper.GetAbiPointAdjMp(ui.UI.unit))))
                         });
                 }
                 ui.IsAutoUpdate = true;
@@ -143,31 +143,31 @@ namespace MOD_nE7UL2.Mod
                     ui.AddText(0, 0, string.Empty).SetParentTransform(ui.UI.uiPropertyCommon.goGroupRoot)
                         .Pos(ui.UI.uiPropertyCommon.goItem6_En, 100, -160).SetWork(new UIItemWork
                         {
-                            UpdateAct = ModLib.Helper.ActionHelper.WTracedAction<UIItemBase>((x) => x.Set($"+Hp: {UnitModifyHelper.GetMartialAdjHp(ui.UI.unit)}"))
+                            UpdateAct = ModLib.Helper.ActionHelper.WTracedAction<UIItemBase>((x) => x.Set(ModTextHelper.LSF("ui_adj_hp", UnitModifyHelper.GetMartialAdjHp(ui.UI.unit))))
                         });
                     ui.AddToolTipButton(GameTool.LS("other500020033")).SetParentTransform(ui.UI.uiPropertyCommon.goGroupRoot).Pos(ui.UI.uiPropertyCommon.goItem6_En, 40, -160);
                     ui.AddText(0, 0, string.Empty).SetParentTransform(ui.UI.uiPropertyCommon.goGroupRoot)
                         .Pos(ui.UI.uiPropertyCommon.goItem7_En, 100, -160).SetWork(new UIItemWork
                         {
-                            UpdateAct = ModLib.Helper.ActionHelper.WTracedAction<UIItemBase>((x) => x.Set($"+Mp: {UnitModifyHelper.GetSpiritualAdjMp(ui.UI.unit)}"))
+                            UpdateAct = ModLib.Helper.ActionHelper.WTracedAction<UIItemBase>((x) => x.Set(ModTextHelper.LSF("ui_adj_mp", UnitModifyHelper.GetSpiritualAdjMp(ui.UI.unit))))
                         });
                     ui.AddToolTipButton(GameTool.LS("other500020034")).SetParentTransform(ui.UI.uiPropertyCommon.goGroupRoot).Pos(ui.UI.uiPropertyCommon.goItem7_En, 40, -160);
                     ui.AddText(0, 0, string.Empty).SetParentTransform(ui.UI.uiPropertyCommon.goGroupRoot)
                         .Pos(ui.UI.uiPropertyCommon.goItem8_En, 100, -160).SetWork(new UIItemWork
                         {
-                            UpdateAct = ModLib.Helper.ActionHelper.WTracedAction<UIItemBase>((x) => x.Set($"+Sp: {UnitModifyHelper.GetArtisanshipAdjSp(ui.UI.unit)}"))
+                            UpdateAct = ModLib.Helper.ActionHelper.WTracedAction<UIItemBase>((x) => x.Set(ModTextHelper.LSF("ui_adj_sp", UnitModifyHelper.GetArtisanshipAdjSp(ui.UI.unit))))
                         });
                     ui.AddToolTipButton(GameTool.LS("other500020035")).SetParentTransform(ui.UI.uiPropertyCommon.goGroupRoot).Pos(ui.UI.uiPropertyCommon.goItem8_En, 40, -160);
 
                     ui.AddText(0, 0, string.Empty).Format(Color.white).SetParentTransform(ui.UI.uiSkill.textPoint1.transform)
                         .Pos(ui.UI.uiSkill.textPoint1.transform, 0, -12).SetWork(new UIItemWork
                         {
-                            UpdateAct = ModLib.Helper.ActionHelper.WTracedAction<UIItemBase>((x) => x.Set($"+Hp: {UnitModifyHelper.GetAbiPointAdjHp(ui.UI.unit)}"))
+                            UpdateAct = ModLib.Helper.ActionHelper.WTracedAction<UIItemBase>((x) => x.Set(ModTextHelper.LSF("ui_adj_hp", UnitModifyHelper.GetAbiPointAdjHp(ui.UI.unit))))
                         });
                     ui.AddText(0, 0, string.Empty).Format(Color.white).SetParentTransform(ui.UI.uiSkill.textPoint1.transform)
                         .Pos(ui.UI.uiSkill.textPoint1.transform, 0, -36).SetWork(new UIItemWork
                         {
-                            UpdateAct = ModLib.Helper.ActionHelper.WTracedAction<UIItemBase>((x) => x.Set($"+Mp: {UnitModifyHelper.GetAbiPointAdjMp(ui.UI.unit)}"))
+                            UpdateAct = ModLib.Helper.ActionHelper.WTracedAction<UIItemBase>((x) => x.Set(ModTextHelper.LSF("ui_adj_mp", UnitModifyHelper.GetAbiPointAdjMp(ui.UI.unit))))
                         });
                     ui.AddToolTipButton(GameTool.LS("other500020036")).SetParentTransform(ui.UI.uiSkill.textPoint1.transform).Pos(ui.UI.uiSkill.textPoint1.transform, 0, -60);
                     ui.AddToolTipButton(GameTool.LS("other500020037")).SetParentTransform(ui.UI.uiSkill.goGroupRoot).Pos(ui.UI.uiSkill.goActionMartialRoot.transform, 0, 200);
@@ -202,10 +202,10 @@ namespace MOD_nE7UL2.Mod
                 uiArtifactInfo_textBasicAdj2.Pos(uiArtifactInfo.textGrade_En.gameObject, 5, -50);
                 uiArtifactInfo_textBasicAdj3.Pos(uiArtifactInfo.textGrade_En.gameObject, 5, -65);
 
-                uiArtifactInfo_textBasicTitle.text = $"Basic:";
-                uiArtifactInfo_textBasicAdj1.text = $"+Atk: {UnitModifyHelper.GetArtifactBasicAdjAtk(uiArtifactInfo.unit.GetDynProperty(UnitDynPropertyEnum.Attack).baseValue, uiArtifactInfo.shapeProp, artifact)}";
-                uiArtifactInfo_textBasicAdj2.text = $"+Def: {UnitModifyHelper.GetArtifactBasicAdjDef(uiArtifactInfo.unit.GetDynProperty(UnitDynPropertyEnum.Defense).baseValue, uiArtifactInfo.shapeProp, artifact)}";
-                uiArtifactInfo_textBasicAdj3.text = $"+Hp: {UnitModifyHelper.GetArtifactBasicAdjHp(uiArtifactInfo.unit.GetDynProperty(UnitDynPropertyEnum.HpMax).baseValue, uiArtifactInfo.shapeProp, artifact)}";
+                uiArtifactInfo_textBasicTitle.Set(GameTool.LS("ui_basic"));
+                uiArtifactInfo_textBasicAdj1.Set(ModTextHelper.LSF("ui_adj_atk", UnitModifyHelper.GetArtifactBasicAdjAtk(uiArtifactInfo.unit.GetDynProperty(UnitDynPropertyEnum.Attack).baseValue, uiArtifactInfo.shapeProp, artifact)));
+                uiArtifactInfo_textBasicAdj2.Set(ModTextHelper.LSF("ui_adj_def", UnitModifyHelper.GetArtifactBasicAdjDef(uiArtifactInfo.unit.GetDynProperty(UnitDynPropertyEnum.Defense).baseValue, uiArtifactInfo.shapeProp, artifact)));
+                uiArtifactInfo_textBasicAdj3.Set(ModTextHelper.LSF("ui_adj_hp", UnitModifyHelper.GetArtifactBasicAdjHp(uiArtifactInfo.unit.GetDynProperty(UnitDynPropertyEnum.HpMax).baseValue, uiArtifactInfo.shapeProp, artifact)));
 
                 //expert
                 uiArtifactInfo_textExpertLvl = uiArtifactInfo.textGrade_En.Copy().Align().Format(Color.white, 15);
@@ -216,9 +216,9 @@ namespace MOD_nE7UL2.Mod
                 uiArtifactInfo_textExpertAdj1.Pos(uiArtifactInfo.textGrade_En.gameObject, 5, -95);
                 uiArtifactInfo_textExpertAdj2.Pos(uiArtifactInfo.textGrade_En.gameObject, 5, -110);
 
-                uiArtifactInfo_textExpertLvl.text = $"Expert Lvl: {expertLvl} ({expertExp}/{expertNeedExp})";
-                uiArtifactInfo_textExpertAdj1.text = $"+Atk: {UnitModifyHelper.GetArtifactExpertAtk(artifactConf.atk, expertLvl, propsGrade, propsLevel)}";
-                uiArtifactInfo_textExpertAdj2.text = $"+Def: {UnitModifyHelper.GetArtifactExpertDef(artifactConf.def, expertLvl, propsGrade, propsLevel)}";
+                uiArtifactInfo_textExpertLvl.Set(ModTextHelper.LSF("ui_expert_lvl", expertLvl, expertExp, expertNeedExp));
+                uiArtifactInfo_textExpertAdj1.Set(ModTextHelper.LSF("ui_adj_atk", UnitModifyHelper.GetArtifactExpertAtk(artifactConf.atk, expertLvl, propsGrade, propsLevel)));
+                uiArtifactInfo_textExpertAdj2.Set(ModTextHelper.LSF("ui_adj_def", UnitModifyHelper.GetArtifactExpertDef(artifactConf.def, expertLvl, propsGrade, propsLevel)));
 
                 //refine
                 var refineLvl = CustomRefineEvent.GetRefineLvl(uiArtifactInfo.shapeProp);
@@ -240,20 +240,20 @@ namespace MOD_nE7UL2.Mod
                 uiArtifactInfo_textRefineAdj4.Pos(uiArtifactInfo.textGrade_En.gameObject, 5, -185);
                 uiArtifactInfo_textRefineAdj5.Pos(uiArtifactInfo.textGrade_En.gameObject, 5, -200);
 
-                uiArtifactInfo_textRefineTitle.text = $"Refine ({refineLvl}):";
-                uiArtifactInfo_textRefineAdj1.text = $"+Atk: {UnitModifyHelper.GetRefineArtifactAdjAtk(uiArtifactInfo.shapeProp, refineLvl)}";
-                uiArtifactInfo_textRefineAdj2.text = $"+Def: {UnitModifyHelper.GetRefineArtifactAdjDef(uiArtifactInfo.shapeProp, refineLvl)}";
+                uiArtifactInfo_textRefineTitle.Set(ModTextHelper.LSF("ui_refine_lvl", refineLvl));
+                uiArtifactInfo_textRefineAdj1.Set(ModTextHelper.LSF("ui_adj_atk", UnitModifyHelper.GetRefineArtifactAdjAtk(uiArtifactInfo.shapeProp, refineLvl)));
+                uiArtifactInfo_textRefineAdj2.Set(ModTextHelper.LSF("ui_adj_def", UnitModifyHelper.GetRefineArtifactAdjDef(uiArtifactInfo.shapeProp, refineLvl)));
                 if (g.ui.HasUI(UIType.PropSelect) && g.world.playerUnit.GetUnitProp(uiArtifactInfo.shapeProp.soleID) == null && g.world.playerUnit.GetLuck(UnitTypeLuckEnum.Merchant.Value.Parse<int>()) == null)
                 {
-                    uiArtifactInfo_textRefineAdj3.text = GameTool.LS("other500020083");
-                    uiArtifactInfo_textRefineAdj4.text = GameTool.LS("other500020083");
-                    uiArtifactInfo_textRefineAdj5.text = GameTool.LS("other500020083");
+                    uiArtifactInfo_textRefineAdj3.Set(GameTool.LS("other500020083"));
+                    uiArtifactInfo_textRefineAdj4.Set(GameTool.LS("other500020083"));
+                    uiArtifactInfo_textRefineAdj5.Set(GameTool.LS("other500020083"));
                 }
                 else
                 {
-                    uiArtifactInfo_textRefineAdj3.text = customAdj1?.GetText(uiArtifactInfo.unit, uiArtifactInfo.shapeProp, refineLvl);
-                    uiArtifactInfo_textRefineAdj4.text = customAdj2?.GetText(uiArtifactInfo.unit, uiArtifactInfo.shapeProp, refineLvl);
-                    uiArtifactInfo_textRefineAdj5.text = customAdj3?.GetText(uiArtifactInfo.unit, uiArtifactInfo.shapeProp, refineLvl);
+                    uiArtifactInfo_textRefineAdj3.Set(customAdj1?.GetText(uiArtifactInfo.unit, uiArtifactInfo.shapeProp, refineLvl));
+                    uiArtifactInfo_textRefineAdj4.Set(customAdj2?.GetText(uiArtifactInfo.unit, uiArtifactInfo.shapeProp, refineLvl));
+                    uiArtifactInfo_textRefineAdj5.Set(customAdj3?.GetText(uiArtifactInfo.unit, uiArtifactInfo.shapeProp, refineLvl));
                 }
             }
             else
@@ -286,28 +286,28 @@ namespace MOD_nE7UL2.Mod
 
                 uiMartialExpertInfo_textExpertLvl.fontSize++;
                 uiMartialExpertInfo_textExpertLvl.fontStyle = FontStyle.Bold;
-                uiMartialExpertInfo_textExpertLvl.text = $"Expert Lvl: {expertLvl} ({expertExp}/{expertNeedExp})";
+                uiMartialExpertInfo_textExpertLvl.Set(ModTextHelper.LSF("ui_expert_lvl", expertLvl, expertExp, expertNeedExp));
 
                 if (mType == MartialType.Ability)
                 {
-                    uiMartialExpertInfo_textAdj1.text = $"+Atk: {UnitModifyHelper.GetAbilityExpertAtk(uiMartialInfo.unit.GetDynProperty(UnitDynPropertyEnum.Attack).baseValue, expertLvl, propsGrade, propsLevel)}";
-                    uiMartialExpertInfo_textAdj2.text = $"+Def: {UnitModifyHelper.GetAbilityExpertDef(uiMartialInfo.unit.GetDynProperty(UnitDynPropertyEnum.Defense).baseValue, expertLvl, propsGrade, propsLevel)}";
-                    uiMartialExpertInfo_textAdj3.text = $"+Hp: {UnitModifyHelper.GetAbilityExpertHp(uiMartialInfo.unit.GetDynProperty(UnitDynPropertyEnum.HpMax).baseValue, expertLvl, propsGrade, propsLevel)}";
-                    uiMartialExpertInfo_textAdj4.text = $"+Mp: {UnitModifyHelper.GetAbilityExpertMp(uiMartialInfo.unit.GetDynProperty(UnitDynPropertyEnum.MpMax).baseValue, expertLvl, propsGrade, propsLevel)}";
-                    uiMartialExpertInfo_textAdj5.text = $"+Sp: {UnitModifyHelper.GetAbilityExpertSp(uiMartialInfo.unit.GetDynProperty(UnitDynPropertyEnum.SpMax).baseValue, expertLvl, propsGrade, propsLevel)}";
+                    uiMartialExpertInfo_textAdj1.Set(ModTextHelper.LSF("ui_adj_atk", UnitModifyHelper.GetAbilityExpertAtk(uiMartialInfo.unit.GetDynProperty(UnitDynPropertyEnum.Attack).baseValue, expertLvl, propsGrade, propsLevel)));
+                    uiMartialExpertInfo_textAdj2.Set(ModTextHelper.LSF("ui_adj_def", UnitModifyHelper.GetAbilityExpertDef(uiMartialInfo.unit.GetDynProperty(UnitDynPropertyEnum.Defense).baseValue, expertLvl, propsGrade, propsLevel)));
+                    uiMartialExpertInfo_textAdj3.Set(ModTextHelper.LSF("ui_adj_hp", UnitModifyHelper.GetAbilityExpertHp(uiMartialInfo.unit.GetDynProperty(UnitDynPropertyEnum.HpMax).baseValue, expertLvl, propsGrade, propsLevel)));
+                    uiMartialExpertInfo_textAdj4.Set(ModTextHelper.LSF("ui_adj_mp", UnitModifyHelper.GetAbilityExpertMp(uiMartialInfo.unit.GetDynProperty(UnitDynPropertyEnum.MpMax).baseValue, expertLvl, propsGrade, propsLevel)));
+                    uiMartialExpertInfo_textAdj5.Set(ModTextHelper.LSF("ui_adj_sp", UnitModifyHelper.GetAbilityExpertSp(uiMartialInfo.unit.GetDynProperty(UnitDynPropertyEnum.SpMax).baseValue, expertLvl, propsGrade, propsLevel)));
                 }
                 else if (mType == MartialType.Step)
                 {
-                    uiMartialExpertInfo_textAdj1.text = $"+Speed: {UnitModifyHelper.GetStepExpertSpeed(expertLvl, propsGrade, propsLevel)} (In Battle)";
-                    uiMartialExpertInfo_textAdj2.text = $"+Evade(%): {UnitModifyHelper.GetStepExpertEvade(expertLvl, propsGrade, propsLevel)}% (In Battle)";
-                    uiMartialExpertInfo_textAdj3.text = $"+Mp Cost: {UnitModifyHelper.GetStepExpertMpCost(SkillHelper.GetStepMpCost(uiMartialInfo.martialData.data), expertLvl, propsGrade, propsLevel, uiMartialInfo.unit.GetGradeLvl() * expertLvl / 5)} (In Battle)";
+                    uiMartialExpertInfo_textAdj1.Set(ModTextHelper.LSF("ui_adj_speed", UnitModifyHelper.GetStepExpertSpeed(expertLvl, propsGrade, propsLevel)));
+                    uiMartialExpertInfo_textAdj2.Set(ModTextHelper.LSF("ui_adj_evade", UnitModifyHelper.GetStepExpertEvade(expertLvl, propsGrade, propsLevel)));
+                    uiMartialExpertInfo_textAdj3.Set(ModTextHelper.LSF("ui_adj_mpcost", UnitModifyHelper.GetStepExpertMpCost(SkillHelper.GetStepMpCost(uiMartialInfo.martialData.data), expertLvl, propsGrade, propsLevel, uiMartialInfo.unit.GetGradeLvl() * expertLvl / 5)));
                     uiMartialExpertInfo_textAdj4.gameObject.SetActive(false);
                     uiMartialExpertInfo_textAdj5.gameObject.SetActive(false);
                 }
                 else
                 {
-                    uiMartialExpertInfo_textAdj1.text = $"+Dmg: {UnitModifyHelper.GetSkillExpertAtk(uiMartialInfo.unit.GetDynProperty(UnitDynPropertyEnum.Attack).baseValue, expertLvl, propsGrade, propsLevel, mType)} (In Battle)";
-                    uiMartialExpertInfo_textAdj2.text = $"+Mp Cost: {UnitModifyHelper.GetSkillExpertMpCost(SkillHelper.GetSkillMpCost(uiMartialInfo.martialData.data), expertLvl, propsGrade, propsLevel, uiMartialInfo.unit.GetGradeLvl() * expertLvl / 10)} (In Battle)";
+                    uiMartialExpertInfo_textAdj1.Set(ModTextHelper.LSF("ui_adj_dmg", UnitModifyHelper.GetSkillExpertAtk(uiMartialInfo.unit.GetDynProperty(UnitDynPropertyEnum.Attack).baseValue, expertLvl, propsGrade, propsLevel, mType)));
+                    uiMartialExpertInfo_textAdj2.Set(ModTextHelper.LSF("ui_adj_mpcost", UnitModifyHelper.GetSkillExpertMpCost(SkillHelper.GetSkillMpCost(uiMartialInfo.martialData.data), expertLvl, propsGrade, propsLevel, uiMartialInfo.unit.GetGradeLvl() * expertLvl / 10)));
                     uiMartialExpertInfo_textAdj3.gameObject.SetActive(false);
                     uiMartialExpertInfo_textAdj4.gameObject.SetActive(false);
                     uiMartialExpertInfo_textAdj5.gameObject.SetActive(false);
@@ -345,17 +345,17 @@ namespace MOD_nE7UL2.Mod
                     uiPropInfo_textRefineAdj2.Pos(uiPropInfo.textGrade_En.gameObject, 5, -50);
                     uiPropInfo_textRefineAdj3.Pos(uiPropInfo.textGrade_En.gameObject, 5, -65);
 
-                    uiPropInfo_textRefineTitle.text = $"Refine ({refineLvl}):";
-                    uiPropInfo_textRefineAdj1.text = $"+Hp: {UnitModifyHelper.GetRefineRingAdjHp(uiPropInfo.unit.GetDynProperty(UnitDynPropertyEnum.HpMax).baseValue, uiPropInfo.propData, refineLvl)}";
+                    uiPropInfo_textRefineTitle.Set(ModTextHelper.LSF("ui_refine_lvl", refineLvl));
+                    uiPropInfo_textRefineAdj1.Set(ModTextHelper.LSF("ui_adj_hp", UnitModifyHelper.GetRefineRingAdjHp(uiPropInfo.unit.GetDynProperty(UnitDynPropertyEnum.HpMax).baseValue, uiPropInfo.propData, refineLvl)));
                     if (g.ui.HasUI(UIType.PropSelect) && g.world.playerUnit.GetUnitProp(uiPropInfo.propData.soleID) == null && g.world.playerUnit.GetLuck(UnitTypeLuckEnum.Merchant.Value.Parse<int>()) == null)
                     {
-                        uiPropInfo_textRefineAdj2.text = GameTool.LS("other500020083");
-                        uiPropInfo_textRefineAdj3.text = GameTool.LS("other500020083");
+                        uiPropInfo_textRefineAdj2.Set(GameTool.LS("other500020083"));
+                        uiPropInfo_textRefineAdj3.Set(GameTool.LS("other500020083"));
                     }
                     else
                     {
-                        uiPropInfo_textRefineAdj2.text = customAdj1?.GetText(uiPropInfo.unit, uiPropInfo.propData, refineLvl);
-                        uiPropInfo_textRefineAdj3.text = customAdj2?.GetText(uiPropInfo.unit, uiPropInfo.propData, refineLvl);
+                        uiPropInfo_textRefineAdj2.Set(customAdj1?.GetText(uiPropInfo.unit, uiPropInfo.propData, refineLvl));
+                        uiPropInfo_textRefineAdj3.Set(customAdj2?.GetText(uiPropInfo.unit, uiPropInfo.propData, refineLvl));
                     }
                 }
                 else if (uiPropInfo.propData.propsItem.IsOutfit() != null)
@@ -376,18 +376,18 @@ namespace MOD_nE7UL2.Mod
                     uiPropInfo_textRefineAdj3.Pos(uiPropInfo.textName.gameObject, 5, -45);
                     uiPropInfo_textRefineAdj4.Pos(uiPropInfo.textName.gameObject, 5, -60);
 
-                    uiPropInfo_textRefineTitle.text = $"Refine ({refineLvl}):";
-                    uiPropInfo_textRefineAdj1.text = $"+Hp: {UnitModifyHelper.GetRefineOutfitAdjHp(uiPropInfo.unit.GetDynProperty(UnitDynPropertyEnum.HpMax).baseValue, uiPropInfo.propData, refineLvl)}";
-                    uiPropInfo_textRefineAdj2.text = $"+Def: {UnitModifyHelper.GetRefineOutfitAdjDef(uiPropInfo.unit.GetDynProperty(UnitDynPropertyEnum.Defense).baseValue, uiPropInfo.propData, refineLvl)}";
+                    uiPropInfo_textRefineTitle.Set(ModTextHelper.LSF("ui_refine_lvl", refineLvl));
+                    uiPropInfo_textRefineAdj1.Set(ModTextHelper.LSF("ui_adj_hp", UnitModifyHelper.GetRefineOutfitAdjHp(uiPropInfo.unit.GetDynProperty(UnitDynPropertyEnum.HpMax).baseValue, uiPropInfo.propData, refineLvl)));
+                    uiPropInfo_textRefineAdj2.Set(ModTextHelper.LSF("ui_adj_def", UnitModifyHelper.GetRefineOutfitAdjDef(uiPropInfo.unit.GetDynProperty(UnitDynPropertyEnum.Defense).baseValue, uiPropInfo.propData, refineLvl)));
                     if (RealMarketEvent3.IsOpenSellingList && g.world.playerUnit.GetLuck(UnitTypeLuckEnum.Merchant.Value.Parse<int>()) == null)
                     {
-                        uiPropInfo_textRefineAdj3.text = GameTool.LS("other500020083");
-                        uiPropInfo_textRefineAdj4.text = GameTool.LS("other500020083");
+                        uiPropInfo_textRefineAdj3.Set(GameTool.LS("other500020083"));
+                        uiPropInfo_textRefineAdj4.Set(GameTool.LS("other500020083"));
                     }
                     else
                     {
-                        uiPropInfo_textRefineAdj3.text = customAdj1?.GetText(uiPropInfo.unit, uiPropInfo.propData, refineLvl);
-                        uiPropInfo_textRefineAdj4.text = customAdj2?.GetText(uiPropInfo.unit, uiPropInfo.propData, refineLvl);
+                        uiPropInfo_textRefineAdj3.Set(customAdj1?.GetText(uiPropInfo.unit, uiPropInfo.propData, refineLvl));
+                        uiPropInfo_textRefineAdj4.Set(customAdj2?.GetText(uiPropInfo.unit, uiPropInfo.propData, refineLvl));
                     }
                 }
                 else if (uiPropInfo.propData.propsItem.IsMount() != null)
@@ -406,17 +406,17 @@ namespace MOD_nE7UL2.Mod
                     uiPropInfo_textRefineAdj2.Pos(uiPropInfo.textGrade_En.gameObject, 5, -50);
                     uiPropInfo_textRefineAdj3.Pos(uiPropInfo.textGrade_En.gameObject, 5, -65);
 
-                    uiPropInfo_textRefineTitle.text = $"Refine ({refineLvl}):";
-                    uiPropInfo_textRefineAdj1.text = $"+Mp: {UnitModifyHelper.GetRefineMountAdjMp(uiPropInfo.unit.GetDynProperty(UnitDynPropertyEnum.MpMax).baseValue, uiPropInfo.propData, refineLvl)}";
+                    uiPropInfo_textRefineTitle.Set(ModTextHelper.LSF("ui_refine_lvl", refineLvl));
+                    uiPropInfo_textRefineAdj1.Set(ModTextHelper.LSF("ui_adj_mp", UnitModifyHelper.GetRefineMountAdjMp(uiPropInfo.unit.GetDynProperty(UnitDynPropertyEnum.MpMax).baseValue, uiPropInfo.propData, refineLvl)));
                     if (RealMarketEvent3.IsOpenSellingList && g.world.playerUnit.GetLuck(UnitTypeLuckEnum.Merchant.Value.Parse<int>()) == null)
                     {
-                        uiPropInfo_textRefineAdj2.text = GameTool.LS("other500020083");
-                        uiPropInfo_textRefineAdj3.text = GameTool.LS("other500020083");
+                        uiPropInfo_textRefineAdj2.Set(GameTool.LS("other500020083"));
+                        uiPropInfo_textRefineAdj3.Set(GameTool.LS("other500020083"));
                     }
                     else
                     {
-                        uiPropInfo_textRefineAdj2.text = customAdj1?.GetText(uiPropInfo.unit, uiPropInfo.propData, refineLvl);
-                        uiPropInfo_textRefineAdj3.text = customAdj2?.GetText(uiPropInfo.unit, uiPropInfo.propData, refineLvl);
+                        uiPropInfo_textRefineAdj2.Set(customAdj1?.GetText(uiPropInfo.unit, uiPropInfo.propData, refineLvl));
+                        uiPropInfo_textRefineAdj3.Set(customAdj2?.GetText(uiPropInfo.unit, uiPropInfo.propData, refineLvl));
                     }
                 }
             }

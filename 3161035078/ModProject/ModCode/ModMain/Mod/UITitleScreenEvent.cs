@@ -37,7 +37,7 @@ namespace MOD_nE7UL2.Mod
                 if (!CompareVersion(ModConst.MODLIB_REQUIRED_VERSION, ModMaster.ModObj.Version))
                 {
                     var uiWarning = g.ui.OpenUISafe<UITextInfo>(UIType.TextInfo);
-                    uiWarning.InitData(GameTool.LS("other500020022"), $"Taoist {ModConst.TAOIST_VERSION} is not supported in ModLib {ModMaster.ModObj.Version}!\nPlease install ModLib {ModConst.MODLIB_REQUIRED_VERSION} or above.");
+                    uiWarning.InitData(GameTool.LS("other500020022"), ModTextHelper.LSF("ui_modlib_too_old", ModConst.TAOIST_VERSION, ModMaster.ModObj.Version, ModConst.MODLIB_REQUIRED_VERSION));
                 }
             }
         }

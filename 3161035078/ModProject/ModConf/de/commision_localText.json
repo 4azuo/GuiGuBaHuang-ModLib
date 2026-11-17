@@ -20,12 +20,12 @@
 	{
 		"id": "480030400",
 		"key": "commission480030400",
-		"en|ch|tc|kr": "Kosten {0:#,##0} Geistersteine (+{1:#,##0} Gebühr)"
+		"en|ch|tc|kr": "Kosten {0:#,##0} [icon:zm_lingshi] (+{1:#,##0} Gebühr)"
 	},
 	{
 		"id": "480030500",
 		"key": "commission480030500",
-		"en|ch|tc|kr": "Kostet {0:#,##0} Geistersteine (+{1:#,##0} Gebühr) und {2:#,##0} Bürgermeistergrad"
+		"en|ch|tc|kr": "Kostet {0:#,##0} [icon:zm_lingshi] (+{1:#,##0} Gebühr) und {2:#,##0} Bürgermeistergrad"
 	},
 	{
 		"id": "480030600",

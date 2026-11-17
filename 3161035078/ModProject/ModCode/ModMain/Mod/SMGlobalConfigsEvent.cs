@@ -748,7 +748,7 @@ namespace MOD_nE7UL2.Mod
                     }
                     else
                     {
-                        g.ui.MsgBox("Error", "This file has some errors!");
+                        g.ui.MsgBox(GameTool.LS("ui_error"), GameTool.LS("ui_file_errors"));
                     }
                 }
             }

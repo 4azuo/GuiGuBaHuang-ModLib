@@ -437,7 +437,7 @@ namespace MOD_nE7UL2.Mod
                 return;
             var s = KeyName(key);
             if (text.text != s)
-                text.text = s;
+                text.Set(s);
         }
 
         /// <summary>

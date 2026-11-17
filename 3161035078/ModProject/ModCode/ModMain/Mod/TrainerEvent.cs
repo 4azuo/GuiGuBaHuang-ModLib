@@ -101,7 +101,7 @@ namespace MOD_nE7UL2.Mod
         {
             if (!g.ui.HasUI(UIType.MapMain))
             {
-                g.ui.MsgBox("Trainer", GameTool.LS("trainer044"));
+                g.ui.MsgBox(GameTool.LS("trainer_title"), GameTool.LS("trainer044"));
                 return;
             }
 
@@ -175,87 +175,87 @@ namespace MOD_nE7UL2.Mod
 
                 col = 23; row = 2;
                 uiTrainer.AddText(col - 1, row++, GameTool.LS("trainer038")).Format(null, 17, FontStyle.Italic).Align(TextAnchor.MiddleCenter);
-                uiTrainer.AddText(col, row, "HP: {0}/{1}").Align(TextAnchor.MiddleLeft).Format(Color.black, 15).SetWork(new UIItemWork
+                uiTrainer.AddText(col, row, GameTool.LS("trainer_lbl_hp")).Align(TextAnchor.MiddleLeft).Format(Color.black, 15).SetWork(new UIItemWork
                 {
                     Formatter = ModLib.Helper.ActionHelper.WTracedFunc<UIItemBase, object[]>((x) => new object[] { player.GetDynProperty(UnitDynPropertyEnum.Hp).value.ToString(ModConst.FORMAT_NUMBER), player.GetDynProperty(UnitDynPropertyEnum.HpMax).value.ToString(ModConst.FORMAT_NUMBER) }),
                 });
-                uiTrainer.AddText(col - 3, row++, "{0} :Money").Align(TextAnchor.MiddleRight).Format(Color.black, 15).SetWork(new UIItemWork
+                uiTrainer.AddText(col - 3, row++, GameTool.LS("trainer_lbl_money")).Align(TextAnchor.MiddleRight).Format(Color.black, 15).SetWork(new UIItemWork
                 {
                     Formatter = ModLib.Helper.ActionHelper.WTracedFunc<UIItemBase, object[]>((x) => new object[] { player.GetUnitMoney().ToString(ModConst.FORMAT_NUMBER) }),
                 });
-                uiTrainer.AddText(col, row, "MP: {0}/{1}").Align(TextAnchor.MiddleLeft).Format(Color.black, 15).SetWork(new UIItemWork
+                uiTrainer.AddText(col, row, GameTool.LS("trainer_lbl_mp")).Align(TextAnchor.MiddleLeft).Format(Color.black, 15).SetWork(new UIItemWork
                 {
                     Formatter = ModLib.Helper.ActionHelper.WTracedFunc<UIItemBase, object[]>((x) => new object[] { player.GetDynProperty(UnitDynPropertyEnum.Mp).value.ToString(ModConst.FORMAT_NUMBER), player.GetDynProperty(UnitDynPropertyEnum.MpMax).value.ToString(ModConst.FORMAT_NUMBER) }),
                 });
-                uiTrainer.AddText(col - 3, row++, "{0} :Degree").Align(TextAnchor.MiddleRight).Format(Color.black, 15).SetWork(new UIItemWork
+                uiTrainer.AddText(col - 3, row++, GameTool.LS("trainer_lbl_degree")).Align(TextAnchor.MiddleRight).Format(Color.black, 15).SetWork(new UIItemWork
                 {
                     Formatter = ModLib.Helper.ActionHelper.WTracedFunc<UIItemBase, object[]>((x) => new object[] { player.GetUnitMayorDegree().ToString(ModConst.FORMAT_NUMBER) }),
                 });
-                uiTrainer.AddText(col, row, "SP: {0}/{1}").Align(TextAnchor.MiddleLeft).Format(Color.black, 15).SetWork(new UIItemWork
+                uiTrainer.AddText(col, row, GameTool.LS("trainer_lbl_sp")).Align(TextAnchor.MiddleLeft).Format(Color.black, 15).SetWork(new UIItemWork
                 {
                     Formatter = ModLib.Helper.ActionHelper.WTracedFunc<UIItemBase, object[]>((x) => new object[] { player.GetDynProperty(UnitDynPropertyEnum.Sp).value.ToString(ModConst.FORMAT_NUMBER), player.GetDynProperty(UnitDynPropertyEnum.SpMax).value.ToString(ModConst.FORMAT_NUMBER) }),
                 });
-                uiTrainer.AddText(col - 3, row++, "{0} :Contribution").Align(TextAnchor.MiddleRight).Format(Color.black, 15).SetWork(new UIItemWork
+                uiTrainer.AddText(col - 3, row++, GameTool.LS("trainer_lbl_contribution")).Align(TextAnchor.MiddleRight).Format(Color.black, 15).SetWork(new UIItemWork
                 {
                     Formatter = ModLib.Helper.ActionHelper.WTracedFunc<UIItemBase, object[]>((x) => new object[] { player.GetUnitContribution().ToString(ModConst.FORMAT_NUMBER) }),
                 });
-                uiTrainer.AddText(col, row, "Atk: {0}").Align(TextAnchor.MiddleLeft).Format(Color.black, 15).SetWork(new UIItemWork
+                uiTrainer.AddText(col, row, GameTool.LS("ui_atk")).Align(TextAnchor.MiddleLeft).Format(Color.black, 15).SetWork(new UIItemWork
                 {
                     Formatter = ModLib.Helper.ActionHelper.WTracedFunc<UIItemBase, object[]>((x) => new object[] { player.GetDynProperty(UnitDynPropertyEnum.Attack).value.ToString(ModConst.FORMAT_NUMBER) }),
                 });
-                uiTrainer.AddText(col - 3, row++, "{0} :Def").Align(TextAnchor.MiddleRight).Format(Color.black, 15).SetWork(new UIItemWork
+                uiTrainer.AddText(col - 3, row++, GameTool.LS("trainer_lbl_def")).Align(TextAnchor.MiddleRight).Format(Color.black, 15).SetWork(new UIItemWork
                 {
                     Formatter = ModLib.Helper.ActionHelper.WTracedFunc<UIItemBase, object[]>((x) => new object[] { player.GetDynProperty(UnitDynPropertyEnum.Defense).value.ToString(ModConst.FORMAT_NUMBER) }),
                 });
-                uiTrainer.AddText(col, row, "Mood: {0}/{1}").Align(TextAnchor.MiddleLeft).Format(Color.black, 15).SetWork(new UIItemWork
+                uiTrainer.AddText(col, row, GameTool.LS("trainer_lbl_mood")).Align(TextAnchor.MiddleLeft).Format(Color.black, 15).SetWork(new UIItemWork
                 {
                     Formatter = ModLib.Helper.ActionHelper.WTracedFunc<UIItemBase, object[]>((x) => new object[] { player.GetDynProperty(UnitDynPropertyEnum.Mood).value, player.GetDynProperty(UnitDynPropertyEnum.MoodMax).value }),
                 });
-                uiTrainer.AddText(col - 3, row++, "{0}/{1} :Stanima").Align(TextAnchor.MiddleRight).Format(Color.black, 15).SetWork(new UIItemWork
+                uiTrainer.AddText(col - 3, row++, GameTool.LS("trainer_lbl_stamina")).Align(TextAnchor.MiddleRight).Format(Color.black, 15).SetWork(new UIItemWork
                 {
                     Formatter = ModLib.Helper.ActionHelper.WTracedFunc<UIItemBase, object[]>((x) => new object[] { player.GetDynProperty(UnitDynPropertyEnum.Energy).value, player.GetDynProperty(UnitDynPropertyEnum.EnergyMax).value }),
                 });
-                uiTrainer.AddText(col, row, "Heath: {0}/{1}").Align(TextAnchor.MiddleLeft).Format(Color.black, 15).SetWork(new UIItemWork
+                uiTrainer.AddText(col, row, GameTool.LS("trainer_lbl_health")).Align(TextAnchor.MiddleLeft).Format(Color.black, 15).SetWork(new UIItemWork
                 {
                     Formatter = ModLib.Helper.ActionHelper.WTracedFunc<UIItemBase, object[]>((x) => new object[] { player.GetDynProperty(UnitDynPropertyEnum.Health).value, player.GetDynProperty(UnitDynPropertyEnum.HealthMax).value }),
                 });
-                uiTrainer.AddText(col - 3, row++, "{0}/{1} :Life").Align(TextAnchor.MiddleRight).Format(Color.black, 15).SetWork(new UIItemWork
+                uiTrainer.AddText(col - 3, row++, GameTool.LS("trainer_lbl_life")).Align(TextAnchor.MiddleRight).Format(Color.black, 15).SetWork(new UIItemWork
                 {
                     Formatter = ModLib.Helper.ActionHelper.WTracedFunc<UIItemBase, object[]>((x) => new object[] { player.GetDynProperty(UnitDynPropertyEnum.Age).value.ToString(ModConst.FORMAT_NUMBER), player.GetDynProperty(UnitDynPropertyEnum.Life).value.ToString(ModConst.FORMAT_NUMBER) }),
                 });
-                uiTrainer.AddText(col, row, "Travel Speed: {0}").Align(TextAnchor.MiddleLeft).Format(Color.black, 15).SetWork(new UIItemWork
+                uiTrainer.AddText(col, row, GameTool.LS("trainer_lbl_travel_speed")).Align(TextAnchor.MiddleLeft).Format(Color.black, 15).SetWork(new UIItemWork
                 {
                     Formatter = ModLib.Helper.ActionHelper.WTracedFunc<UIItemBase, object[]>((x) => new object[] { player.GetDynProperty(UnitDynPropertyEnum.FootSpeed).value }),
                 });
-                uiTrainer.AddText(col - 3, row++, "{0} :View Range").Align(TextAnchor.MiddleRight).Format(Color.black, 15).SetWork(new UIItemWork
+                uiTrainer.AddText(col - 3, row++, GameTool.LS("trainer_lbl_view_range")).Align(TextAnchor.MiddleRight).Format(Color.black, 15).SetWork(new UIItemWork
                 {
                     Formatter = ModLib.Helper.ActionHelper.WTracedFunc<UIItemBase, object[]>((x) => new object[] { player.GetDynProperty(UnitDynPropertyEnum.PlayerView).value }),
                 });
-                uiTrainer.AddText(col, row, "Battle Speed: {0}").Align(TextAnchor.MiddleLeft).Format(Color.black, 15).SetWork(new UIItemWork
+                uiTrainer.AddText(col, row, GameTool.LS("trainer_lbl_battle_speed")).Align(TextAnchor.MiddleLeft).Format(Color.black, 15).SetWork(new UIItemWork
                 {
                     Formatter = ModLib.Helper.ActionHelper.WTracedFunc<UIItemBase, object[]>((x) => new object[] { player.GetDynProperty(UnitDynPropertyEnum.MoveSpeed).value }),
                 });
-                uiTrainer.AddText(col - 3, row++, "({1}) {0} :Ability").Align(TextAnchor.MiddleRight).Format(Color.black, 15).SetWork(new UIItemWork
+                uiTrainer.AddText(col - 3, row++, GameTool.LS("trainer_lbl_ability")).Align(TextAnchor.MiddleRight).Format(Color.black, 15).SetWork(new UIItemWork
                 {
                     Formatter = ModLib.Helper.ActionHelper.WTracedFunc<UIItemBase, object[]>((x) => new object[] { player.GetDynProperty(UnitDynPropertyEnum.AbilityExp).value.ToString(ModConst.FORMAT_NUMBER), player.GetDynProperty(UnitDynPropertyEnum.AbilityPoint).value.ToString(ModConst.FORMAT_NUMBER) }),
                 });
-                uiTrainer.AddText(col, row, "Luck: {0}").Align(TextAnchor.MiddleLeft).Format(Color.black, 15).SetWork(new UIItemWork
+                uiTrainer.AddText(col, row, GameTool.LS("trainer_lbl_luck")).Align(TextAnchor.MiddleLeft).Format(Color.black, 15).SetWork(new UIItemWork
                 {
                     Formatter = ModLib.Helper.ActionHelper.WTracedFunc<UIItemBase, object[]>((x) => new object[] { player.GetDynProperty(UnitDynPropertyEnum.Luck).value }),
                 });
-                uiTrainer.AddText(col - 3, row++, "{0} :Insight").Align(TextAnchor.MiddleRight).Format(Color.black, 15).SetWork(new UIItemWork
+                uiTrainer.AddText(col - 3, row++, GameTool.LS("trainer_lbl_insight")).Align(TextAnchor.MiddleRight).Format(Color.black, 15).SetWork(new UIItemWork
                 {
                     Formatter = ModLib.Helper.ActionHelper.WTracedFunc<UIItemBase, object[]>((x) => new object[] { player.GetDynProperty(UnitDynPropertyEnum.Talent).value }),
                 });
-                uiTrainer.AddText(col, row, "Exp: {0}/{1}").Align(TextAnchor.MiddleLeft).Format(Color.black, 15).SetWork(new UIItemWork
+                uiTrainer.AddText(col, row, GameTool.LS("trainer_lbl_exp")).Align(TextAnchor.MiddleLeft).Format(Color.black, 15).SetWork(new UIItemWork
                 {
                     Formatter = ModLib.Helper.ActionHelper.WTracedFunc<UIItemBase, object[]>((x) => new object[] { player.GetExp().ToString(ModConst.FORMAT_NUMBER), player.GetMaxExpCurrentPhase().ToString(ModConst.FORMAT_NUMBER) }),
                 });
-                uiTrainer.AddText(col - 3, row++, "{0} :Reputation").Align(TextAnchor.MiddleRight).Format(Color.black, 15).SetWork(new UIItemWork
+                uiTrainer.AddText(col - 3, row++, GameTool.LS("trainer_lbl_reputation")).Align(TextAnchor.MiddleRight).Format(Color.black, 15).SetWork(new UIItemWork
                 {
                     Formatter = ModLib.Helper.ActionHelper.WTracedFunc<UIItemBase, object[]>((x) => new object[] { player.GetDynProperty(UnitDynPropertyEnum.Reputation).value.ToString(ModConst.FORMAT_NUMBER) }),
                 });
-                uiTrainer.AddText(col - 1, row++, "Grade: {0} {1} ― {2}").Align(TextAnchor.MiddleCenter).Format(Color.black, 15).SetWork(new UIItemWork
+                uiTrainer.AddText(col - 1, row++, GameTool.LS("trainer_lbl_grade")).Align(TextAnchor.MiddleCenter).Format(Color.black, 15).SetWork(new UIItemWork
                 {
                     Formatter = ModLib.Helper.ActionHelper.WTracedFunc<UIItemBase, object[]>((x) =>
                     {
@@ -271,51 +271,51 @@ namespace MOD_nE7UL2.Mod
 
                 row++;
                 uiTrainer.AddText(col - 1, row++, GameTool.LS("trainer039")).Format(null, 17, FontStyle.Italic).Align(TextAnchor.MiddleCenter);
-                uiTrainer.AddText(col, row, "Fire: {0}").Align(TextAnchor.MiddleLeft).Format(Color.black, 15).SetWork(new UIItemWork
+                uiTrainer.AddText(col, row, GameTool.LS("trainer_lbl_fire")).Align(TextAnchor.MiddleLeft).Format(Color.black, 15).SetWork(new UIItemWork
                 {
                     Formatter = ModLib.Helper.ActionHelper.WTracedFunc<UIItemBase, object[]>((x) => new object[] { player.GetDynProperty(UnitDynPropertyEnum.BasisFire).value }),
                 });
-                uiTrainer.AddText(col - 3, row++, "{0} :Blade").Align(TextAnchor.MiddleRight).Format(Color.black, 15).SetWork(new UIItemWork
+                uiTrainer.AddText(col - 3, row++, GameTool.LS("trainer_lbl_blade")).Align(TextAnchor.MiddleRight).Format(Color.black, 15).SetWork(new UIItemWork
                 {
                     Formatter = ModLib.Helper.ActionHelper.WTracedFunc<UIItemBase, object[]>((x) => new object[] { player.GetDynProperty(UnitDynPropertyEnum.BasisBlade).value }),
                 });
-                uiTrainer.AddText(col, row, "Water: {0}").Align(TextAnchor.MiddleLeft).Format(Color.black, 15).SetWork(new UIItemWork
+                uiTrainer.AddText(col, row, GameTool.LS("trainer_lbl_water")).Align(TextAnchor.MiddleLeft).Format(Color.black, 15).SetWork(new UIItemWork
                 {
                     Formatter = ModLib.Helper.ActionHelper.WTracedFunc<UIItemBase, object[]>((x) => new object[] { player.GetDynProperty(UnitDynPropertyEnum.BasisFroze).value }),
                 });
-                uiTrainer.AddText(col - 3, row++, "{0} :Spear").Align(TextAnchor.MiddleRight).Format(Color.black, 15).SetWork(new UIItemWork
+                uiTrainer.AddText(col - 3, row++, GameTool.LS("trainer_lbl_spear")).Align(TextAnchor.MiddleRight).Format(Color.black, 15).SetWork(new UIItemWork
                 {
                     Formatter = ModLib.Helper.ActionHelper.WTracedFunc<UIItemBase, object[]>((x) => new object[] { player.GetDynProperty(UnitDynPropertyEnum.BasisSpear).value }),
                 });
-                uiTrainer.AddText(col, row, "Lightning: {0}").Align(TextAnchor.MiddleLeft).Format(Color.black, 15).SetWork(new UIItemWork
+                uiTrainer.AddText(col, row, GameTool.LS("trainer_lbl_lightning")).Align(TextAnchor.MiddleLeft).Format(Color.black, 15).SetWork(new UIItemWork
                 {
                     Formatter = ModLib.Helper.ActionHelper.WTracedFunc<UIItemBase, object[]>((x) => new object[] { player.GetDynProperty(UnitDynPropertyEnum.BasisThunder).value }),
                 });
-                uiTrainer.AddText(col - 3, row++, "{0} :Sword").Align(TextAnchor.MiddleRight).Format(Color.black, 15).SetWork(new UIItemWork
+                uiTrainer.AddText(col - 3, row++, GameTool.LS("trainer_lbl_sword")).Align(TextAnchor.MiddleRight).Format(Color.black, 15).SetWork(new UIItemWork
                 {
                     Formatter = ModLib.Helper.ActionHelper.WTracedFunc<UIItemBase, object[]>((x) => new object[] { player.GetDynProperty(UnitDynPropertyEnum.BasisSword).value }),
                 });
-                uiTrainer.AddText(col, row, "Wind: {0}").Align(TextAnchor.MiddleLeft).Format(Color.black, 15).SetWork(new UIItemWork
+                uiTrainer.AddText(col, row, GameTool.LS("trainer_lbl_wind")).Align(TextAnchor.MiddleLeft).Format(Color.black, 15).SetWork(new UIItemWork
                 {
                     Formatter = ModLib.Helper.ActionHelper.WTracedFunc<UIItemBase, object[]>((x) => new object[] { player.GetDynProperty(UnitDynPropertyEnum.BasisWind).value }),
                 });
-                uiTrainer.AddText(col - 3, row++, "{0} :Fist").Align(TextAnchor.MiddleRight).Format(Color.black, 15).SetWork(new UIItemWork
+                uiTrainer.AddText(col - 3, row++, GameTool.LS("trainer_lbl_fist")).Align(TextAnchor.MiddleRight).Format(Color.black, 15).SetWork(new UIItemWork
                 {
                     Formatter = ModLib.Helper.ActionHelper.WTracedFunc<UIItemBase, object[]>((x) => new object[] { player.GetDynProperty(UnitDynPropertyEnum.BasisFist).value }),
                 });
-                uiTrainer.AddText(col, row, "Earth: {0}").Align(TextAnchor.MiddleLeft).Format(Color.black, 15).SetWork(new UIItemWork
+                uiTrainer.AddText(col, row, GameTool.LS("trainer_lbl_earth")).Align(TextAnchor.MiddleLeft).Format(Color.black, 15).SetWork(new UIItemWork
                 {
                     Formatter = ModLib.Helper.ActionHelper.WTracedFunc<UIItemBase, object[]>((x) => new object[] { player.GetDynProperty(UnitDynPropertyEnum.BasisEarth).value }),
                 });
-                uiTrainer.AddText(col - 3, row++, "{0} :Palm").Align(TextAnchor.MiddleRight).Format(Color.black, 15).SetWork(new UIItemWork
+                uiTrainer.AddText(col - 3, row++, GameTool.LS("trainer_lbl_palm")).Align(TextAnchor.MiddleRight).Format(Color.black, 15).SetWork(new UIItemWork
                 {
                     Formatter = ModLib.Helper.ActionHelper.WTracedFunc<UIItemBase, object[]>((x) => new object[] { player.GetDynProperty(UnitDynPropertyEnum.BasisPalm).value }),
                 });
-                uiTrainer.AddText(col, row, "Wood: {0}").Align(TextAnchor.MiddleLeft).Format(Color.black, 15).SetWork(new UIItemWork
+                uiTrainer.AddText(col, row, GameTool.LS("trainer_lbl_wood")).Align(TextAnchor.MiddleLeft).Format(Color.black, 15).SetWork(new UIItemWork
                 {
                     Formatter = ModLib.Helper.ActionHelper.WTracedFunc<UIItemBase, object[]>((x) => new object[] { player.GetDynProperty(UnitDynPropertyEnum.BasisWood).value }),
                 });
-                uiTrainer.AddText(col - 3, row++, "{0} :Finger").Align(TextAnchor.MiddleRight).Format(Color.black, 15).SetWork(new UIItemWork
+                uiTrainer.AddText(col - 3, row++, GameTool.LS("trainer_lbl_finger")).Align(TextAnchor.MiddleRight).Format(Color.black, 15).SetWork(new UIItemWork
                 {
                     Formatter = ModLib.Helper.ActionHelper.WTracedFunc<UIItemBase, object[]>((x) => new object[] { player.GetDynProperty(UnitDynPropertyEnum.BasisFinger).value }),
                 });
@@ -369,7 +369,7 @@ namespace MOD_nE7UL2.Mod
                     {
                         areaId = build.gridData.areaBaseID;
                         col = TELE_AREA_COL[areaId].Value0.Parse<int>() * 6 + 2;
-                        uiTrainer.AddText(col, 1 + row[TELE_AREA_COL[areaId].Value0.Parse<int>()]++, $"Area {areaId}:").Format(null, 16, FontStyle.Italic).Align(TextAnchor.MiddleCenter);
+                        uiTrainer.AddText(col, 1 + row[TELE_AREA_COL[areaId].Value0.Parse<int>()]++, ModTextHelper.LSF("trainer_lbl_area", areaId)).Format(null, 16, FontStyle.Italic).Align(TextAnchor.MiddleCenter);
                     }
                     FormatButton2(uiTrainer.AddButton(col, 1 + row[TELE_AREA_COL[areaId].Value0.Parse<int>()]++, () => Tele(build.GetOpenBuildPoints()[0]), build.name));
                 }
@@ -454,7 +454,7 @@ namespace MOD_nE7UL2.Mod
                     g.world.playerUnit.AddUnitProp(itemId.Parse<int>(), 1);
                 }
             }
-            g.ui.MsgBox("Info", GameTool.LS("trainer046"));
+            g.ui.MsgBox(GameTool.LS("ui_info"), GameTool.LS("trainer046"));
         }
 
         /// <summary>

@@ -259,8 +259,8 @@ namespace MOD_nE7UL2.Mod
         {
             g.ui.CloseUI(UIType.TextInfoLong);
             var ui = g.ui.OpenUISafe<UIPropSelect>(UIType.PropSelect);
-            ui.textTitle1.text = GameTool.LS("market_buyorder_new");
-            ui.textSearchTip.text = GameTool.LS("market_buyorder_pick");
+            ui.textTitle1.Set(GameTool.LS("market_buyorder_new"));
+            ui.textSearchTip.Set(GameTool.LS("market_buyorder_pick"));
             ui.btnSearch.gameObject.SetActive(false);
             ui.goSubToggleRoot.SetActive(false);
             ui.ClearSelectItem();

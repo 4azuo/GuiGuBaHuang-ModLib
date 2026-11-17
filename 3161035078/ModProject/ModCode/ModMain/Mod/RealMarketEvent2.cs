@@ -73,11 +73,11 @@ namespace MOD_nE7UL2.Mod
             {
                 var uiTownMarketBuy = new UICover<UITownMarketBuy>(e.ui);
                 {
-                    uiTownMarketBuy.AddText(-300f, 210f, "Market: {0} Spirit Stones").Align().SetWork(new UIItemWork
+                    uiTownMarketBuy.AddText(-300f, 210f, GameTool.LS("ui_market_budget_fmt")).Align().SetWork(new UIItemWork
                     {
                         Formatter = ModLib.Helper.ActionHelper.WTracedFunc<UIItemBase, object[]>((ibase) => new object[] { MapBuildPropertyEvent.GetBuildProperty(uiTownMarketBuy.UI.town) })
                     });
-                    uiTownMarketBuy.AddText(-300f, 190f, $"Price rate: {GetBuyRate(uiTownMarketBuy.UI.town, g.world.playerUnit):0.00}%").Align().Format(Color.red);
+                    uiTownMarketBuy.AddText(-300f, 190f, ModTextHelper.LSF("ui_price_rate", GetBuyRate(uiTownMarketBuy.UI.town, g.world.playerUnit))).Align().Format(Color.red);
                 }
                 uiTownMarketBuy.IsAutoUpdate = true;
             }
@@ -92,7 +92,7 @@ namespace MOD_nE7UL2.Mod
 
                 var uiCover = new UICover<UIPropSelectCount>(e.ui);
                 {
-                    uiCover.AddText(0, 0, $"Price rate: {GetBuyRate(uiTownMarketBuy.town, g.world.playerUnit):0.00}%").Align(TextAnchor.MiddleCenter).Format(Color.red).Pos(uiPropSelectCount.ptextInfo.gameObject, 0f, 20f);
+                    uiCover.AddText(0, 0, ModTextHelper.LSF("ui_price_rate", GetBuyRate(uiTownMarketBuy.town, g.world.playerUnit))).Align(TextAnchor.MiddleCenter).Format(Color.red).Pos(uiPropSelectCount.ptextInfo.gameObject, 0f, 20f);
                 }
 
                 uiPropSelectCount.btnOK.onClick.m_Calls.m_RuntimeCalls.Insert(0, new InvokableCall(ModLib.Helper.ActionHelper.TracedUnityAction(() =>

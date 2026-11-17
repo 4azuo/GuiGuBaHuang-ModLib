@@ -41,7 +41,7 @@ namespace MOD_nE7UL2.Mod
                     {
                         var uiTownStorage = g.ui.GetUI<UITownStorage>(UIType.TownStorage);
                         var btn1 = uiTownStorage.btnProps.Replace().Size(500f, 100f);
-                        btn1.GetComponentInChildren<Text>().Align(UnityEngine.TextAnchor.MiddleCenter).text = $"Open account ({Cost(curTown.gridData.areaBaseID):#,##0} Spirit Stones)";
+                        btn1.GetComponentInChildren<Text>().Align(UnityEngine.TextAnchor.MiddleCenter).Set(ModTextHelper.LSF("ui_bank_open", Cost(curTown.gridData.areaBaseID)));
                         btn1.onClick.AddListener(ModLib.Helper.ActionHelper.TracedUnityAction(() =>
                         {
                             var cost = Cost(curTown.gridData.areaBaseID);

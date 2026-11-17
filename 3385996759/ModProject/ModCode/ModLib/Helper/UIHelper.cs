@@ -124,6 +124,9 @@ namespace ModLib.Helper
             uiConfirm.InitData(title, content, type.Parse<int>(),
                 ActionHelper.TracedIl2Action(() => onYesCall?.Invoke()),
                 ActionHelper.TracedIl2Action(() => onNoCall?.Invoke()));
+            // icons: the texts again through Set (a TextMeshPro twin when they have a sprite; the popup is reused)
+            uiConfirm.textTitle?.Set(title);
+            uiConfirm.textContent?.Set(content);
             // the popup type 2/3 labels its buttons "Enable"/"Disable": a question needs Yes/No (game texts)
             if (type == MsgBoxButtonEnum.YesNo || type == MsgBoxButtonEnum.YesNoCancel)
             {

@@ -17,27 +17,27 @@
 	{
 		"id": "-1000006003",
 		"key": "log_tax_paid",
-		"en|ch|tc|kr": "{0:#,##0} Geistersteine Steuern in {1} bezahlt."
+		"en|ch|tc|kr": "{0:#,##0} [icon:zm_lingshi] Steuern in {1} bezahlt."
 	},
 	{
 		"id": "-1000006004",
 		"key": "log_storage_fee",
-		"en|ch|tc|kr": "{0:#,##0} Geistersteine Lagergebühren bezahlt."
+		"en|ch|tc|kr": "{0:#,##0} [icon:zm_lingshi] Lagergebühren bezahlt."
 	},
 	{
 		"id": "-1000006005",
 		"key": "log_market_sold",
-		"en|ch|tc|kr": "{0} x {1} für {2:#,##0} Geistersteine an {3} verkauft."
+		"en|ch|tc|kr": "{0} x {1} für {2:#,##0} [icon:zm_lingshi] an {3} verkauft."
 	},
 	{
 		"id": "-1000006006",
 		"key": "log_market_bought",
-		"en|ch|tc|kr": "{0} x {1} für {2:#,##0} Geistersteine von {3} gekauft."
+		"en|ch|tc|kr": "{0} x {1} für {2:#,##0} [icon:zm_lingshi] von {3} gekauft."
 	},
 	{
 		"id": "-1000006007",
 		"key": "log_stalker_paid",
-		"en|ch|tc|kr": "Den Verfolger {0} mit {1:#,##0} Geistersteinen abgefunden."
+		"en|ch|tc|kr": "Den Verfolger {0} mit {1:#,##0} [icon:zm_lingshi] abgefunden."
 	},
 	{
 		"id": "-1000006008",
@@ -57,7 +57,7 @@
 	{
 		"id": "-1000006011",
 		"key": "log_refine_reroll",
-		"en|ch|tc|kr": "Platz #{1} von {0} neu ausgewürfelt: {2} -> {3} ({4:#,##0} Geistersteine)."
+		"en|ch|tc|kr": "Platz #{1} von {0} neu ausgewürfelt: {2} -> {3} ({4:#,##0} [icon:zm_lingshi])."
 	},
 	{
 		"id": "-1000006020",
@@ -77,7 +77,7 @@
 	{
 		"id": "-1000006023",
 		"key": "town_taxstat",
-		"en|ch|tc|kr": "Letzter Monat: {0:#,##0} Geistersteine von {1} Einwohnern; {2} konnten nicht zahlen und haben die Stadt verlassen"
+		"en|ch|tc|kr": "Letzter Monat: {0:#,##0} [icon:zm_lingshi] von {1} Einwohnern; {2} konnten nicht zahlen und haben die Stadt verlassen"
 	},
 	{
 		"id": "-1000006024",
@@ -142,7 +142,7 @@
 	{
 		"id": "-1000006041",
 		"key": "market_buyorder_total",
-		"en|ch|tc|kr": "Zurückgehalten: {0:#,##0} Geistersteine, Chance pro Monat, dass ein Verkäufer annimmt: {1:0} %"
+		"en|ch|tc|kr": "Zurückgehalten: {0:#,##0} [icon:zm_lingshi], Chance pro Monat, dass ein Verkäufer annimmt: {1:0} %"
 	},
 	{
 		"id": "-1000006042",
@@ -157,7 +157,7 @@
 	{
 		"id": "-1000006044",
 		"key": "market_buyorder_filled",
-		"en|ch|tc|kr": "Kaufauftrag: {2} hat dir {0} x {1} für {3:#,##0} Geistersteine verkauft."
+		"en|ch|tc|kr": "Kaufauftrag: {2} hat dir {0} x {1} für {3:#,##0} [icon:zm_lingshi] verkauft."
 	},
 	{
 		"id": "-1000006045",
@@ -167,12 +167,12 @@
 	{
 		"id": "-1000006046",
 		"key": "log_buyorder_cancel",
-		"en|ch|tc|kr": "Kaufauftrag storniert: {0} x {1}, {2:#,##0} Geistersteine erstattet."
+		"en|ch|tc|kr": "Kaufauftrag storniert: {0} x {1}, {2:#,##0} [icon:zm_lingshi] erstattet."
 	},
 	{
 		"id": "-1000006047",
 		"key": "log_buyorder_expired",
-		"en|ch|tc|kr": "Kaufauftrag abgelaufen: {0} x {1}, {2:#,##0} Geistersteine erstattet."
+		"en|ch|tc|kr": "Kaufauftrag abgelaufen: {0} x {1}, {2:#,##0} [icon:zm_lingshi] erstattet."
 	},
 	{
 		"id": "-1000006050",
@@ -227,7 +227,7 @@
 	{
 		"id": "-1000006063",
 		"key": "loan_limit",
-		"en|ch|tc|kr": "Du kannst bis zu {0:#,##0} Geistersteine leihen (Banktresor: {1:#,##0})."
+		"en|ch|tc|kr": "Du kannst bis zu {0:#,##0} [icon:zm_lingshi] leihen (Banktresor: {1:#,##0})."
 	},
 	{
 		"id": "-1000006064",
@@ -287,7 +287,7 @@
 	{
 		"id": "-1000006075",
 		"key": "loan_letter",
-		"en|ch|tc|kr": "Ein Brief der Bank von {0}: „Ihr Kredit ist seit {2} Monat(en) überfällig. Sie schulden nun {1:#,##0} Geistersteine. Wir gehen von einem Versehen aus.“"
+		"en|ch|tc|kr": "Ein Brief der Bank von {0}: „Ihr Kredit ist seit {2} Monat(en) überfällig. Sie schulden nun {1:#,##0} [icon:zm_lingshi]. Wir gehen von einem Versehen aus.“"
 	},
 	{
 		"id": "-1000006076",
@@ -297,12 +297,12 @@
 	{
 		"id": "-1000006077",
 		"key": "loan_collector",
-		"en|ch|tc|kr": "„Die Bank von {0} lässt grüßen.“ Der Eintreiber lässt die Knöchel knacken. „{1:#,##0} Geistersteine. Heute.“"
+		"en|ch|tc|kr": "„Die Bank von {0} lässt grüßen.“ Der Eintreiber lässt die Knöchel knacken. „{1:#,##0} [icon:zm_lingshi]. Heute.“"
 	},
 	{
 		"id": "-1000006078",
 		"key": "loan_collector_o1",
-		"en|ch|tc|kr": "{0:#,##0} Geistersteine zahlen"
+		"en|ch|tc|kr": "{0:#,##0} [icon:zm_lingshi] zahlen"
 	},
 	{
 		"id": "-1000006079",
@@ -322,17 +322,17 @@
 	{
 		"id": "-1000006082",
 		"key": "loan_seized",
-		"en|ch|tc|kr": "Der Eintreiber nimmt Waren im Wert von {0:#,##0} Geistersteinen mit. Die Schuld ist beglichen, aber dein Ruf leidet."
+		"en|ch|tc|kr": "Der Eintreiber nimmt Waren im Wert von {0:#,##0} [icon:zm_lingshi] mit. Die Schuld ist beglichen, aber dein Ruf leidet."
 	},
 	{
 		"id": "-1000006083",
 		"key": "loan_seized_part",
-		"en|ch|tc|kr": "Der Eintreiber nimmt Waren im Wert von {0:#,##0} Geistersteinen mit. Du schuldest noch {1:#,##0}."
+		"en|ch|tc|kr": "Der Eintreiber nimmt Waren im Wert von {0:#,##0} [icon:zm_lingshi] mit. Du schuldest noch {1:#,##0}."
 	},
 	{
 		"id": "-1000006084",
 		"key": "loan_lost",
-		"en|ch|tc|kr": "Besiegt siehst du zu, wie der Eintreiber deine Tasche leert: Waren im Wert von {0:#,##0} Geistersteinen. Noch geschuldet: {1:#,##0}."
+		"en|ch|tc|kr": "Besiegt siehst du zu, wie der Eintreiber deine Tasche leert: Waren im Wert von {0:#,##0} [icon:zm_lingshi]. Noch geschuldet: {1:#,##0}."
 	},
 	{
 		"id": "-1000006085",
@@ -342,17 +342,17 @@
 	{
 		"id": "-1000006086",
 		"key": "loan_blacklisted",
-		"en|ch|tc|kr": "Die Bank von {1} gibt ihre {0:#,##0} Geistersteine auf — und dich gleich mit. Dein Name kommt auf die schwarze Liste: keine Kredite mehr, dein Konto dort wird geschlossen und die Wachen dort verlangen dreifache Steuern."
+		"en|ch|tc|kr": "Die Bank von {1} gibt ihre {0:#,##0} [icon:zm_lingshi] auf — und dich gleich mit. Dein Name kommt auf die schwarze Liste: keine Kredite mehr, dein Konto dort wird geschlossen und die Wachen dort verlangen dreifache Steuern."
 	},
 	{
 		"id": "-1000006087",
 		"key": "log_loan_borrow",
-		"en|ch|tc|kr": "{0:#,##0} Geistersteine bei der Bank von {1} geliehen (fällig in {2} Monaten)."
+		"en|ch|tc|kr": "{0:#,##0} [icon:zm_lingshi] bei der Bank von {1} geliehen (fällig in {2} Monaten)."
 	},
 	{
 		"id": "-1000006088",
 		"key": "log_loan_repay",
-		"en|ch|tc|kr": "{0:#,##0} Geistersteine zurückgezahlt (noch geschuldet {1:#,##0})."
+		"en|ch|tc|kr": "{0:#,##0} [icon:zm_lingshi] zurückgezahlt (noch geschuldet {1:#,##0})."
 	},
 	{
 		"id": "-1000006089",
@@ -367,7 +367,7 @@
 	{
 		"id": "-1000006091",
 		"key": "log_loan_collector",
-		"en|ch|tc|kr": "Der Schuldeneintreiber {0} kam wegen {1:#,##0} Geistersteinen."
+		"en|ch|tc|kr": "Der Schuldeneintreiber {0} kam wegen {1:#,##0} [icon:zm_lingshi]."
 	},
 	{
 		"id": "-1000006092",
@@ -402,7 +402,7 @@
 	{
 		"id": "-1000006103",
 		"key": "enc_wounded_o1",
-		"en|ch|tc|kr": "Ihm Medizin kaufen ({0:#,##0} Geistersteine)"
+		"en|ch|tc|kr": "Ihm Medizin kaufen ({0:#,##0} [icon:zm_lingshi])"
 	},
 	{
 		"id": "-1000006104",
@@ -422,12 +422,12 @@
 	{
 		"id": "-1000006107",
 		"key": "enc_wounded_r2",
-		"en|ch|tc|kr": "Du nimmst {0:#,##0} Geistersteine aus seinem Beutel. Seine Augen folgen dir, voller Hass."
+		"en|ch|tc|kr": "Du nimmst {0:#,##0} [icon:zm_lingshi] aus seinem Beutel. Seine Augen folgen dir, voller Hass."
 	},
 	{
 		"id": "-1000006108",
 		"key": "enc_chess",
-		"en|ch|tc|kr": "Ein alter Mann sitzt allein im Nebel vor einem steinernen Brett. „Eine Partie, junger Freund? Ein Einsatz von {0:#,##0} Geistersteinen macht es spannend.“"
+		"en|ch|tc|kr": "Ein alter Mann sitzt allein im Nebel vor einem steinernen Brett. „Eine Partie, junger Freund? Ein Einsatz von {0:#,##0} [icon:zm_lingshi] macht es spannend.“"
 	},
 	{
 		"id": "-1000006109",
@@ -442,17 +442,17 @@
 	{
 		"id": "-1000006111",
 		"key": "enc_chess_win",
-		"en|ch|tc|kr": "Der alte Mann lacht und wischt die Steine vom Brett. „Ein scharfer Verstand!“ Seinen Zügen zu folgen, hat dein Verständnis geöffnet. (+{0:#,##0} EP, +{1:#,##0} Geistersteine)"
+		"en|ch|tc|kr": "Der alte Mann lacht und wischt die Steine vom Brett. „Ein scharfer Verstand!“ Seinen Zügen zu folgen, hat dein Verständnis geöffnet. (+{0:#,##0} EP, +{1:#,##0} [icon:zm_lingshi])"
 	},
 	{
 		"id": "-1000006112",
 		"key": "enc_chess_lose",
-		"en|ch|tc|kr": "Die Partie endet nach wenigen Dutzend Zügen. Der alte Mann steckt mit sanftem Lächeln deinen Einsatz ein. (-{0:#,##0} Geistersteine)"
+		"en|ch|tc|kr": "Die Partie endet nach wenigen Dutzend Zügen. Der alte Mann steckt mit sanftem Lächeln deinen Einsatz ein. (-{0:#,##0} [icon:zm_lingshi])"
 	},
 	{
 		"id": "-1000006113",
 		"key": "enc_peddler",
-		"en|ch|tc|kr": "Ein vermummter Hausierer öffnet seinen Mantel: Reihen versiegelter Kästchen. „Jedes enthält einen Schatz … oder nichts. {0:#,##0} Geistersteine pro Kästchen.“"
+		"en|ch|tc|kr": "Ein vermummter Hausierer öffnet seinen Mantel: Reihen versiegelter Kästchen. „Jedes enthält einen Schatz … oder nichts. {0:#,##0} [icon:zm_lingshi] pro Kästchen.“"
 	},
 	{
 		"id": "-1000006114",
@@ -512,7 +512,7 @@
 	{
 		"id": "-1000006125",
 		"key": "enc_cave_stones",
-		"en|ch|tc|kr": "In einer morschen Truhe liegt ein vergessenes Versteck mit {0:#,##0} Geistersteinen."
+		"en|ch|tc|kr": "In einer morschen Truhe liegt ein vergessenes Versteck mit {0:#,##0} [icon:zm_lingshi]."
 	},
 	{
 		"id": "-1000006126",
@@ -547,7 +547,7 @@
 	{
 		"id": "-1000006132",
 		"key": "enc_festival",
-		"en|ch|tc|kr": "Laternen füllen die Straßen von {0}: Die Stadt feiert ihren Gründungstag. Die Teilnahme am Fest kostet {1:#,##0} Geistersteine."
+		"en|ch|tc|kr": "Laternen füllen die Straßen von {0}: Die Stadt feiert ihren Gründungstag. Die Teilnahme am Fest kostet {1:#,##0} [icon:zm_lingshi]."
 	},
 	{
 		"id": "-1000006133",
@@ -642,12 +642,12 @@
 	{
 		"id": "-1000006163",
 		"key": "wanted_on_player",
-		"en|ch|tc|kr": "An jedem Tor von {0} flattert ein Steckbrief: dein Porträt und eine Belohnung von {1:#,##0} Geistersteinen. Kopfgeldjäger werden kommen."
+		"en|ch|tc|kr": "An jedem Tor von {0} flattert ein Steckbrief: dein Porträt und eine Belohnung von {1:#,##0} [icon:zm_lingshi]. Kopfgeldjäger werden kommen."
 	},
 	{
 		"id": "-1000006164",
 		"key": "wanted_ambush",
-		"en|ch|tc|kr": "„{0} zahlt {1:#,##0} Geistersteine für deinen Kopf. Nichts Persönliches.“ Der Kopfgeldjäger versperrt dir den Weg."
+		"en|ch|tc|kr": "„{0} zahlt {1:#,##0} [icon:zm_lingshi] für deinen Kopf. Nichts Persönliches.“ Der Kopfgeldjäger versperrt dir den Weg."
 	},
 	{
 		"id": "-1000006165",
@@ -662,7 +662,7 @@
 	{
 		"id": "-1000006167",
 		"key": "wanted_done",
-		"en|ch|tc|kr": "{0} hat {1} zur Strecke gebracht. Dein Kopfgeld von {2:#,##0} Geistersteinen ist ausgezahlt."
+		"en|ch|tc|kr": "{0} hat {1} zur Strecke gebracht. Dein Kopfgeld von {2:#,##0} [icon:zm_lingshi] ist ausgezahlt."
 	},
 	{
 		"id": "-1000006168",
@@ -1117,7 +1117,7 @@
 	{
 		"id": "-1000006267",
 		"key": "fund_entry_GiftStones",
-		"en|ch|tc|kr": "{0} brachte {1:#,##0} Geistersteine"
+		"en|ch|tc|kr": "{0} brachte {1:#,##0} [icon:zm_lingshi]"
 	},
 	{
 		"id": "-1000006268",
@@ -1147,7 +1147,7 @@
 	{
 		"id": "-1000006273",
 		"key": "log_family_gift_stones",
-		"en|ch|tc|kr": "{0} brachte {1:#,##0} Geistersteine ins Familienlager."
+		"en|ch|tc|kr": "{0} brachte {1:#,##0} [icon:zm_lingshi] ins Familienlager."
 	},
 	{
 		"id": "-1000006274",

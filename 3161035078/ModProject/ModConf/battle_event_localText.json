@@ -370,10 +370,10 @@
 	{
 		"id": "480114611",
 		"key": "battleevent480110611",
-		"en": "Pay them off ({0:#,##0} spirit stones)",
-		"ch": "破财消灾（{0:#,##0} 灵石）",
-		"tc": "破財消災（{0:#,##0} 靈石）",
-		"kr": "돈으로 해결한다 (영석 {0:#,##0})"
+		"en": "Pay them off ({0:#,##0} [icon:zm_lingshi])",
+		"ch": "破财消灾（{0:#,##0} [icon:zm_lingshi]）",
+		"tc": "破財消災（{0:#,##0} [icon:zm_lingshi]）",
+		"kr": "돈으로 해결한다 ([icon:zm_lingshi] {0:#,##0})"
 	},
 	{
 		"id": "480114612",

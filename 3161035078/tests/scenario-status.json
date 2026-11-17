@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-11-17T12:19:29",
+  "updatedAt": "2026-11-17T18:31:07",
   "counts": {
     "OK": 95,
     "NG": 0,
@@ -121,8 +121,8 @@
       "feature": "Pre-test (new character)",
       "title": "Create a new character (trainer on, CrueltyShura, 3 artifacts, intro skipped)",
       "result": "SKIP",
-      "lastRun": "2026-11-17T12:19:29",
-      "evidence": "test-viewer/index.html#tab=auto&run=20261117-121742",
+      "lastRun": "2026-11-17T18:31:07",
+      "evidence": "test-viewer/index.html#tab=auto&run=20261117-182641",
       "tester": "autotest",
       "note": null,
       "checks": {}
@@ -829,8 +829,8 @@
       "feature": "HirePeopleEvent",
       "title": "Team: NPC info, hire, monthly payment, dismiss",
       "result": "OK",
-      "lastRun": "2026-11-17T12:00:20",
-      "evidence": "test-viewer/index.html#tab=auto&run=20261117-110934",
+      "lastRun": "2026-11-17T18:31:07",
+      "evidence": "test-viewer/index.html#tab=auto&run=20261117-182641",
       "tester": "autotest",
       "note": null,
       "checks": {
@@ -2140,8 +2140,8 @@
       "feature": "StoryEvent",
       "title": "Story D Sworn Brothers: D0-D4",
       "result": "OK",
-      "lastRun": "2026-11-17T12:00:20",
-      "evidence": "test-viewer/index.html#tab=auto&run=20261117-110934",
+      "lastRun": "2026-11-17T18:31:07",
+      "evidence": "test-viewer/index.html#tab=auto&run=20261117-182641",
       "tester": "autotest",
       "note": null,
       "checks": {

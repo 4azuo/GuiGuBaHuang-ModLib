@@ -28,6 +28,9 @@ Multi-language support for mods.
 
 ## Usage
 
+Rules (which file, ids, numbers, icons `[icon:NAME]`, no hardcoded text): README, section "LocalText - Rules".
+
+
 **In Code:** `GameTool.LS(key)`
 **In Configs:** Use key for `name`/`desc` properties
 

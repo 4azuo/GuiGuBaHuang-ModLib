@@ -293,5 +293,175 @@
 		"id": -1000002058,
 		"key": "trainer058",
 		"en|ch|tc|kr": "Кулон Рыбы"
+	},
+	{
+		"id": "-1000002059",
+		"key": "trainer_title",
+		"en|ch|tc|kr": "Трейнер"
+	},
+	{
+		"id": "-1000002060",
+		"key": "trainer_lbl_hp",
+		"en|ch|tc|kr": "ОЗ: {0}/{1}"
+	},
+	{
+		"id": "-1000002061",
+		"key": "trainer_lbl_money",
+		"en|ch|tc|kr": "{0} :Деньги"
+	},
+	{
+		"id": "-1000002062",
+		"key": "trainer_lbl_mp",
+		"en|ch|tc|kr": "МП: {0}/{1}"
+	},
+	{
+		"id": "-1000002063",
+		"key": "trainer_lbl_degree",
+		"en|ch|tc|kr": "{0} :Степень мэра"
+	},
+	{
+		"id": "-1000002064",
+		"key": "trainer_lbl_sp",
+		"en|ch|tc|kr": "СП: {0}/{1}"
+	},
+	{
+		"id": "-1000002065",
+		"key": "trainer_lbl_contribution",
+		"en|ch|tc|kr": "{0} :Вклад"
+	},
+	{
+		"id": "-1000002066",
+		"key": "trainer_lbl_def",
+		"en|ch|tc|kr": "{0} :Защ"
+	},
+	{
+		"id": "-1000002067",
+		"key": "trainer_lbl_mood",
+		"en|ch|tc|kr": "Настроение: {0}/{1}"
+	},
+	{
+		"id": "-1000002068",
+		"key": "trainer_lbl_stamina",
+		"en|ch|tc|kr": "{0}/{1} :Выносливость"
+	},
+	{
+		"id": "-1000002069",
+		"key": "trainer_lbl_health",
+		"en|ch|tc|kr": "Здоровье: {0}/{1}"
+	},
+	{
+		"id": "-1000002070",
+		"key": "trainer_lbl_life",
+		"en|ch|tc|kr": "{0}/{1} :Срок жизни"
+	},
+	{
+		"id": "-1000002071",
+		"key": "trainer_lbl_travel_speed",
+		"en|ch|tc|kr": "Скорость передвижения: {0}"
+	},
+	{
+		"id": "-1000002072",
+		"key": "trainer_lbl_view_range",
+		"en|ch|tc|kr": "{0} :Обзор"
+	},
+	{
+		"id": "-1000002073",
+		"key": "trainer_lbl_battle_speed",
+		"en|ch|tc|kr": "Скорость боя: {0}"
+	},
+	{
+		"id": "-1000002074",
+		"key": "trainer_lbl_ability",
+		"en|ch|tc|kr": "({1}) {0} :Способность"
+	},
+	{
+		"id": "-1000002075",
+		"key": "trainer_lbl_luck",
+		"en|ch|tc|kr": "Удача: {0}"
+	},
+	{
+		"id": "-1000002076",
+		"key": "trainer_lbl_insight",
+		"en|ch|tc|kr": "{0} :Проницательность"
+	},
+	{
+		"id": "-1000002077",
+		"key": "trainer_lbl_exp",
+		"en|ch|tc|kr": "Опыт: {0}/{1}"
+	},
+	{
+		"id": "-1000002078",
+		"key": "trainer_lbl_reputation",
+		"en|ch|tc|kr": "{0} :Репутация"
+	},
+	{
+		"id": "-1000002079",
+		"key": "trainer_lbl_grade",
+		"en|ch|tc|kr": "Ступень: {0} {1} ― {2}"
+	},
+	{
+		"id": "-1000002080",
+		"key": "trainer_lbl_fire",
+		"en|ch|tc|kr": "Огонь: {0}"
+	},
+	{
+		"id": "-1000002081",
+		"key": "trainer_lbl_blade",
+		"en|ch|tc|kr": "{0} :Клинок"
+	},
+	{
+		"id": "-1000002082",
+		"key": "trainer_lbl_water",
+		"en|ch|tc|kr": "Вода: {0}"
+	},
+	{
+		"id": "-1000002083",
+		"key": "trainer_lbl_spear",
+		"en|ch|tc|kr": "{0} :Копьё"
+	},
+	{
+		"id": "-1000002084",
+		"key": "trainer_lbl_lightning",
+		"en|ch|tc|kr": "Молния: {0}"
+	},
+	{
+		"id": "-1000002085",
+		"key": "trainer_lbl_sword",
+		"en|ch|tc|kr": "{0} :Меч"
+	},
+	{
+		"id": "-1000002086",
+		"key": "trainer_lbl_wind",
+		"en|ch|tc|kr": "Ветер: {0}"
+	},
+	{
+		"id": "-1000002087",
+		"key": "trainer_lbl_fist",
+		"en|ch|tc|kr": "{0} :Кулак"
+	},
+	{
+		"id": "-1000002088",
+		"key": "trainer_lbl_earth",
+		"en|ch|tc|kr": "Земля: {0}"
+	},
+	{
+		"id": "-1000002089",
+		"key": "trainer_lbl_palm",
+		"en|ch|tc|kr": "{0} :Ладонь"
+	},
+	{
+		"id": "-1000002090",
+		"key": "trainer_lbl_wood",
+		"en|ch|tc|kr": "Дерево: {0}"
+	},
+	{
+		"id": "-1000002091",
+		"key": "trainer_lbl_finger",
+		"en|ch|tc|kr": "{0} :Палец"
+	},
+	{
+		"id": "-1000002092",
+		"key": "trainer_lbl_area",
+		"en|ch|tc|kr": "Область {0}:"
 	}
 ]

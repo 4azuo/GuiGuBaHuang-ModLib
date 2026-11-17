@@ -854,8 +854,8 @@ namespace MOD_nE7UL2.Mod
             g.ui.CloseUI(UIType.PropSelect);
 
             var ui = g.ui.OpenUISafe<UIPropSelect>(UIType.PropSelect);
-            ui.textTitle1.text = GameTool.LS("other500020052");
-            ui.textSearchTip.text = GameTool.LS("other500020053");
+            ui.textTitle1.Set(GameTool.LS("other500020052"));
+            ui.textSearchTip.Set(GameTool.LS("other500020053"));
             ui.btnSearch.gameObject.SetActive(false);
             ui.goSubToggleRoot.SetActive(false);
             ui.ClearSelectItem();
@@ -1028,8 +1028,8 @@ namespace MOD_nE7UL2.Mod
             var curDeal = GetBuyerDeal(selectedMarketItem, g.world.playerUnit);
 
             var ui = g.ui.OpenUISafe<UIPropSelect>(UIType.PropSelect);
-            ui.textTitle1.text = GameTool.LS("other500020052");
-            ui.textSearchTip.text = GameTool.LS("other500020067");
+            ui.textTitle1.Set(GameTool.LS("other500020052"));
+            ui.textSearchTip.Set(GameTool.LS("other500020067"));
             ui.btnSearch.gameObject.SetActive(false);
             ui.goSubToggleRoot.SetActive(false);
             ui.ClearSelectItem();
@@ -1210,8 +1210,8 @@ namespace MOD_nE7UL2.Mod
             g.ui.CloseUI(UIType.PropSelect);
 
             var ui = g.ui.OpenUISafe<UIPropSelect>(UIType.PropSelect);
-            ui.textTitle1.text = GameTool.LS("other500020052");
-            ui.textSearchTip.text = GameTool.LS("other500020111");
+            ui.textTitle1.Set(GameTool.LS("other500020052"));
+            ui.textSearchTip.Set(GameTool.LS("other500020111"));
             ui.btnSearch.gameObject.SetActive(false);
             ui.goSubToggleRoot.SetActive(false);
             ui.ClearSelectItem();
@@ -1265,8 +1265,8 @@ namespace MOD_nE7UL2.Mod
             g.ui.CloseUI(UIType.PropSelect);
 
             var ui = g.ui.OpenUISafe<UIPropSelect>(UIType.PropSelect);
-            ui.textTitle1.text = GameTool.LS("other500020052");
-            ui.textSearchTip.text = GameTool.LS("other500020055");
+            ui.textTitle1.Set(GameTool.LS("other500020052"));
+            ui.textSearchTip.Set(GameTool.LS("other500020055"));
             ui.btnSearch.gameObject.SetActive(false);
             ui.goSubToggleRoot.SetActive(false);
             ui.ClearSelectItem();

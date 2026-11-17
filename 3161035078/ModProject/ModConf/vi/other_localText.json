@@ -542,7 +542,7 @@
 	{
 		"id": "500020027",
 		"key": "other500020027",
-		"en|ch|tc|kr": "Lính gác cổng chìa tay: “Thuế là {0:#,##0} linh thạch.” Túi tiền của ngươi không nặng đến thế."
+		"en|ch|tc|kr": "Lính gác cổng chìa tay: “Thuế là {0:#,##0} [icon:zm_lingshi].” Túi tiền của ngươi không nặng đến thế."
 	},
 	{
 		"id": "500020044",

@@ -218,10 +218,10 @@
 	{
 		"id": 500020027,
 		"key": "other500020027",
-		"en": "The gate guard holds out his hand: \"The tax is {0:#,##0} spirit stones.\" Your purse is not that heavy.",
-		"ch": "守卫伸出手：“税金 {0:#,##0} 灵石。”可你的钱袋没那么沉。",
-		"tc": "守衛伸出手：「稅金 {0:#,##0} 靈石。」可你的錢袋沒那麼沉。",
-		"kr": "수비병이 손을 내밀었다. \"세금은 영석 {0:#,##0}이오.\" 하지만 네 주머니는 그리 무겁지 않다."
+		"en": "The gate guard holds out his hand: \"The tax is {0:#,##0} [icon:zm_lingshi].\" Your purse is not that heavy.",
+		"ch": "守卫伸出手：“税金 {0:#,##0} [icon:zm_lingshi]。”可你的钱袋没那么沉。",
+		"tc": "守衛伸出手：「稅金 {0:#,##0} [icon:zm_lingshi]。」可你的錢袋沒那麼沉。",
+		"kr": "수비병이 손을 내밀었다. \"세금은 [icon:zm_lingshi] {0:#,##0}이오.\" 하지만 네 주머니는 그리 무겁지 않다."
 	},
 	{
 		"id": 500020028,
@@ -338,17 +338,17 @@
 	{
 		"id": 500020042,
 		"key": "other500020042",
-		"en": "{0:#,##0} Spirit Stones/year",
-		"ch": "{0:#,##0} 灵石/年",
-		"tc": "{0:#,##0} 靈石/年",
+		"en": "{0:#,##0} [icon:zm_lingshi]/year",
+		"ch": "{0:#,##0} [icon:zm_lingshi]/年",
+		"tc": "{0:#,##0} [icon:zm_lingshi]/年",
 		"kr": "{0:#,##0} 영혼석/년"
 	},
 	{
 		"id": 500020043,
 		"key": "other500020043",
-		"en": "{0:#,##0} Spirit Stones/month",
-		"ch": "{0:#,##0} 灵石/月",
-		"tc": "{0:#,##0} 靈石/月",
+		"en": "{0:#,##0} [icon:zm_lingshi]/month",
+		"ch": "{0:#,##0} [icon:zm_lingshi]/月",
+		"tc": "{0:#,##0} [icon:zm_lingshi]/月",
 		"kr": "{0:#,##0} 정령석/월"
 	},
 	{
@@ -450,17 +450,17 @@
 	{
 		"id": 500020056,
 		"key": "other500020056",
-		"en": "{0:#,##0} Spirit Stones → {1:#,##0} Contribution",
-		"ch": "{0:#,##0} 灵石 → {1:#,##0} 贡献",
-		"tc": "{0:#,##0} 靈石 → {1:#,##0} 貢獻",
+		"en": "{0:#,##0} [icon:zm_lingshi] → {1:#,##0} Contribution",
+		"ch": "{0:#,##0} [icon:zm_lingshi] → {1:#,##0} 贡献",
+		"tc": "{0:#,##0} [icon:zm_lingshi] → {1:#,##0} 貢獻",
 		"kr": "{0:#,##0} 정령석 → {1:#,##0} 공헌도"
 	},
 	{
 		"id": 500020057,
 		"key": "other500020057",
-		"en": "Exchannge Ratio {0:#,##0} Spirit Stones → 1 Contribution",
-		"ch": "兑换比例{0:#,##0}灵石→1贡献度",
-		"tc": "兌換比例{0:#,##0}靈石→1貢獻度",
+		"en": "Exchannge Ratio {0:#,##0} [icon:zm_lingshi] → 1 Contribution",
+		"ch": "兑换比例{0:#,##0} [icon:zm_lingshi]→1贡献度",
+		"tc": "兌換比例{0:#,##0} [icon:zm_lingshi]→1貢獻度",
 		"kr": "교환 비율 {0:#,##0} 정령석 → 기여도 1"
 	},
 	{
@@ -554,7 +554,7 @@
 	{
 		"id": 500020069,
 		"key": "other500020069",
-		"en": "You need {0:#,##0} spirit stones for cultivation.",
+		"en": "You need {0:#,##0} [icon:zm_lingshi] for cultivation.",
 		"ch": "修炼需要{0:#,##0}个灵石。",
 		"tc": "修煉需要{0:#,##0}個靈石。",
 		"kr": "재배에는 정령석 {0:#,##0}개가 필요합니다."
@@ -562,9 +562,9 @@
 	{
 		"id": 500020070,
 		"key": "other500020070",
-		"en": "{0:#,##0} Spirit stones → {1:#,##0} Exps.",
-		"ch": "{0:#,##0} 灵石 → {1:#,##0} 经验值。",
-		"tc": "{0:#,##0} 靈石 → {1:#,##0} 經驗值。",
+		"en": "{0:#,##0} [icon:zm_lingshi] → {1:#,##0} Exps.",
+		"ch": "{0:#,##0} [icon:zm_lingshi] → {1:#,##0} 经验值。",
+		"tc": "{0:#,##0} [icon:zm_lingshi] → {1:#,##0} 經驗值。",
 		"kr": "{0:#,##0} 정령석 → {1:#,##0} Exp."
 	},
 	{
@@ -690,9 +690,9 @@
 	{
 		"id": 500020086,
 		"key": "other500020086",
-		"en": "Do you wanna pay {0:#,##0} spirit stones for our service?",
-		"ch": "您愿意为我们的服务支付 {0:#,##0} 灵石吗？",
-		"tc": "您願意為我們的服務支付 {0:#,##0} 靈石嗎？",
+		"en": "Do you wanna pay {0:#,##0} [icon:zm_lingshi] for our service?",
+		"ch": "您愿意为我们的服务支付 {0:#,##0} [icon:zm_lingshi]吗？",
+		"tc": "您願意為我們的服務支付 {0:#,##0} [icon:zm_lingshi]嗎？",
 		"kr": "우리 서비스에 대한 대가로 정령석 {0:#,##0}개를 지불하시겠습니까?"
 	},
 	{

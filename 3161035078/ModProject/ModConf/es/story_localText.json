@@ -192,7 +192,7 @@
 	{
 		"id": "-1000007030",
 		"key": "story_A2_2_market",
-		"en|ch|tc|kr": "En el mercado de {T}, un puesto vende «cartas viejas, sellos curiosos». Una lleva el sello de {S}. Precio: {0:#,##0} piedras espirituales."
+		"en|ch|tc|kr": "En el mercado de {T}, un puesto vende «cartas viejas, sellos curiosos». Una lleva el sello de {S}. Precio: {0:#,##0} [icon:zm_lingshi]."
 	},
 	{
 		"id": "-1000007031",
@@ -292,7 +292,7 @@
 	{
 		"id": "-1000007050",
 		"key": "story_A4_2",
-		"en|ch|tc|kr": "«Mi espada se rompió el día que me fui. Necesito una hoja que no se rompa». (un herrero pide {0:#,##0} piedras espirituales)"
+		"en|ch|tc|kr": "«Mi espada se rompió el día que me fui. Necesito una hoja que no se rompa». (un herrero pide {0:#,##0} [icon:zm_lingshi])"
 	},
 	{
 		"id": "-1000007051",
@@ -452,7 +452,7 @@
 	{
 		"id": "-1000007082",
 		"key": "story_B0_1",
-		"en|ch|tc|kr": "«¡Ah, un cliente con buen ojo! Esta pieza vale el triple, lo juro por la tumba de mi abuela. ¿Para ti? La mitad: {0:#,##0} piedras espirituales»."
+		"en|ch|tc|kr": "«¡Ah, un cliente con buen ojo! Esta pieza vale el triple, lo juro por la tumba de mi abuela. ¿Para ti? La mitad: {0:#,##0} [icon:zm_lingshi]»."
 	},
 	{
 		"id": "-1000007084",
@@ -492,7 +492,7 @@
 	{
 		"id": "-1000007092",
 		"key": "story_B1_3",
-		"en|ch|tc|kr": "«¿Me avalas en el banco? ¡Solo una firma! ¿Qué podría salir mal?» (o préstame {0:#,##0} piedras espirituales…)"
+		"en|ch|tc|kr": "«¿Me avalas en el banco? ¡Solo una firma! ¿Qué podría salir mal?» (o préstame {0:#,##0} [icon:zm_lingshi]…)"
 	},
 	{
 		"id": "-1000007093",
@@ -527,7 +527,7 @@
 	{
 		"id": "-1000007099",
 		"key": "story_B2_3",
-		"en|ch|tc|kr": "«Tu parte: {0:#,##0} piedras espirituales. No las cuentes delante de mí, que me echo a llorar»."
+		"en|ch|tc|kr": "«Tu parte: {0:#,##0} [icon:zm_lingshi]. No las cuentes delante de mí, que me echo a llorar»."
 	},
 	{
 		"id": "-1000007100",
@@ -547,7 +547,7 @@
 	{
 		"id": "-1000007103",
 		"key": "story_B3_2",
-		"en|ch|tc|kr": "«Vi su libro de cuentas. No solo yo: la mitad de los comerciantes de la región le deben dinero. Está comprando las ciudades, deuda a deuda». (intereses: {0:#,##0} piedras espirituales)"
+		"en|ch|tc|kr": "«Vi su libro de cuentas. No solo yo: la mitad de los comerciantes de la región le deben dinero. Está comprando las ciudades, deuda a deuda». (intereses: {0:#,##0} [icon:zm_lingshi])"
 	},
 	{
 		"id": "-1000007104",
@@ -702,7 +702,7 @@
 	{
 		"id": "-1000007135",
 		"key": "story_C1_2",
-		"en|ch|tc|kr": "Un vendedor de hierbas tiene un mapa del valle: {0:#,##0} piedras espirituales, o una hierba a cambio."
+		"en|ch|tc|kr": "Un vendedor de hierbas tiene un mapa del valle: {0:#,##0} [icon:zm_lingshi], o una hierba a cambio."
 	},
 	{
 		"id": "-1000007136",
@@ -747,7 +747,7 @@
 	{
 		"id": "-1000007145",
 		"key": "story_C2_1",
-		"en|ch|tc|kr": "«Tasa del horno: {0:#,##0} piedras espirituales», dice el examinador. {X} te mira con ojos enormes."
+		"en|ch|tc|kr": "«Tasa del horno: {0:#,##0} [icon:zm_lingshi]», dice el examinador. {X} te mira con ojos enormes."
 	},
 	{
 		"id": "-1000007146",
@@ -922,7 +922,7 @@
 	{
 		"id": "-1000007182",
 		"key": "story_D0_2",
-		"en|ch|tc|kr": "Todos te miran. (la cuenta: {0:#,##0} piedras espirituales)"
+		"en|ch|tc|kr": "Todos te miran. (la cuenta: {0:#,##0} [icon:zm_lingshi])"
 	},
 	{
 		"id": "-1000007183",
@@ -1322,7 +1322,7 @@
 	{
 		"id": "-1000007263",
 		"key": "story_garden_o",
-		"en|ch|tc|kr": "{0} año(s) ({1:#,##0} piedras espirituales)"
+		"en|ch|tc|kr": "{0} año(s) ({1:#,##0} [icon:zm_lingshi])"
 	},
 	{
 		"id": "-1000007265",

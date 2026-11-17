@@ -33,8 +33,6 @@ namespace MOD_nE7UL2
         {
             base.OnLoadClass(isNew, modId, attr);
             ModObj = this;
-            // dramas of the mod: amounts of spirit stones with the game's icon
-            DramaHelper.TextFilter = ModTextHelper.StoneIcons;
             ModSettings = JsonConvert.DeserializeObject<ModStts>(ConfHelper.ReadConfData(modId, "mod_configs.json"));
             DebugHelper.WriteLine($"Taoist-Version: {ModConst.TAOIST_VERSION}");
             //exp

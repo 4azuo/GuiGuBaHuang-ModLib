@@ -36,7 +36,8 @@ Reusable utility functions in `Helper/` folder.
 - **TranslateHelper** - Translation and localization
 
 **Drama & Dialogue:**
-- **DramaHelper** - Dialogue and drama system (`OpenDrama1(text, options, callback, left, right, speaker)`: `speaker` 1 or 2 lights the left or right portrait and dims the other, 0 both lit; 1 to 4 options use dialogues with exactly that many options, so a single "Continue" is a real button that calls the callback; `TextFilter` rewrites the drama text, not the options: Taoist sets `ModTextHelper.StoneIcons`, amounts of spirit stones with the game's `<sprite name=zm_lingshi>`, which works only in TextMeshPro texts, not in message boxes or buttons)
+- **DramaHelper** - Dialogue and drama system (`OpenDrama1(text, options, callback, left, right, speaker)`: `speaker` 1 or 2 lights the left or right portrait and dims the other, 0 both lit; 1 to 4 options use dialogues with exactly that many options, so a single "Continue" is a real button that calls the callback)
+- **TextIconHelper** - Icons in texts: `[icon:NAME]` tokens of the localTexts become `<sprite name=NAME>` at load; `Text.Set` shows a text with a sprite through a TextMeshPro twin of the Text (rules in README, "LocalText - Rules")
 
 **Data Processing:**
 - **ObjectHelper** - Object operations (clone, compare, serialize)

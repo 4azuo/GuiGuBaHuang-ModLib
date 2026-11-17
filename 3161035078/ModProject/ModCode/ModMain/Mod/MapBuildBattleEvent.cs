@@ -1322,8 +1322,8 @@ namespace MOD_nE7UL2.Mod
             base.OnTimeUpdate1000ms();
             if (BattleModifyEvent.IsShowCustomMonstCount && (IsBattleTownWar() || IsBattleMonstWave()))
             {
-                BattleModifyEvent.TextCustomMonstCount1.text = TeamAUnitCount.ToString();
-                BattleModifyEvent.TextCustomMonstCount2.text = TeamBUnitCount.ToString();
+                BattleModifyEvent.TextCustomMonstCount1.Set(TeamAUnitCount.ToString());
+                BattleModifyEvent.TextCustomMonstCount2.Set(TeamBUnitCount.ToString());
 
                 if (TeamBUnitCount == 0)
                 {

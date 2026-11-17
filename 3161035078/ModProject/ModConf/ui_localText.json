@@ -1,0 +1,402 @@
+﻿[
+  {
+    "id": -1000008000,
+    "key": "ui_bank_open",
+    "en": "Open account ({0:#,##0} [icon:zm_lingshi])",
+    "ch": "开户（{0:#,##0} [icon:zm_lingshi]）",
+    "tc": "開戶（{0:#,##0} [icon:zm_lingshi]）",
+    "kr": "계좌 개설 ({0:#,##0} [icon:zm_lingshi])"
+  },
+  {
+    "id": -1000008001,
+    "key": "ui_team_info",
+    "en": "Team: {0}",
+    "ch": "团队：{0}",
+    "tc": "團隊：{0}",
+    "kr": "팀: {0}"
+  },
+  {
+    "id": -1000008002,
+    "key": "ui_team_hire_cost",
+    "en": "{0} [icon:zm_lingshi] ({1:#,##0}/month)",
+    "ch": "{0} [icon:zm_lingshi]（{1:#,##0}/月）",
+    "tc": "{0} [icon:zm_lingshi]（{1:#,##0}/月）",
+    "kr": "{0} [icon:zm_lingshi] ({1:#,##0}/월)"
+  },
+  {
+    "id": -1000008003,
+    "key": "ui_reputations",
+    "en": "{0} reputation",
+    "ch": "{0} 声望",
+    "tc": "{0} 聲望",
+    "kr": "명성 {0}"
+  },
+  {
+    "id": -1000008004,
+    "key": "ui_reputations_n",
+    "en": "{0:#,##0} reputation",
+    "ch": "{0:#,##0} 声望",
+    "tc": "{0:#,##0} 聲望",
+    "kr": "명성 {0:#,##0}"
+  },
+  {
+    "id": -1000008005,
+    "key": "ui_require_stones",
+    "en": "Require {0:#,##0} [icon:zm_lingshi]",
+    "ch": "需要 {0:#,##0} [icon:zm_lingshi]",
+    "tc": "需要 {0:#,##0} [icon:zm_lingshi]",
+    "kr": "{0:#,##0} [icon:zm_lingshi] 필요"
+  },
+  {
+    "id": -1000008006,
+    "key": "ui_require_reputations",
+    "en": "Requires {0:#,##0} reputation",
+    "ch": "需要 {0:#,##0} 声望",
+    "tc": "需要 {0:#,##0} 聲望",
+    "kr": "명성 {0:#,##0} 필요"
+  },
+  {
+    "id": -1000008007,
+    "key": "ui_team_payment",
+    "en": "Payment: {0} [icon:zm_lingshi]/month",
+    "ch": "薪酬：{0} [icon:zm_lingshi]/月",
+    "tc": "薪酬：{0} [icon:zm_lingshi]/月",
+    "kr": "급여: {0} [icon:zm_lingshi]/월"
+  },
+  {
+    "id": -1000008008,
+    "key": "ui_town_info",
+    "en": "Town: {0}",
+    "ch": "城镇：{0}",
+    "tc": "城鎮：{0}",
+    "kr": "마을: {0}"
+  },
+  {
+    "id": -1000008009,
+    "key": "ui_base_tax",
+    "en": "Base Tax:",
+    "ch": "基础税率：",
+    "tc": "基礎稅率：",
+    "kr": "기본 세율:"
+  },
+  {
+    "id": -1000008010,
+    "key": "ui_per_month",
+    "en": "{0}/month",
+    "ch": "{0}/月",
+    "tc": "{0}/月",
+    "kr": "{0}/월"
+  },
+  {
+    "id": -1000008011,
+    "key": "ui_building_cost",
+    "en": "{0}　／　Cost: {1:#,##0}",
+    "ch": "{0}　／　花费：{1:#,##0}",
+    "tc": "{0}　／　花費：{1:#,##0}",
+    "kr": "{0}　／　비용: {1:#,##0}"
+  },
+  {
+    "id": -1000008012,
+    "key": "ui_building_built",
+    "en": "Built {0}!",
+    "ch": "已建成{0}！",
+    "tc": "已建成{0}！",
+    "kr": "{0} 건설 완료!"
+  },
+  {
+    "id": -1000008013,
+    "key": "ui_building_no_budget",
+    "en": "The current budget is not enough to build this!\n{0:#,##0}",
+    "ch": "当前预算不足以建造此建筑！\n{0:#,##0}",
+    "tc": "當前預算不足以建造此建築！\n{0:#,##0}",
+    "kr": "현재 예산으로는 이 건물을 지을 수 없다!\n{0:#,##0}"
+  },
+  {
+    "id": -1000008014,
+    "key": "ui_upgrade_city",
+    "en": "Upgrade to City\n{0:#,##0}",
+    "ch": "升级为城市\n{0:#,##0}",
+    "tc": "升級為城市\n{0:#,##0}",
+    "kr": "도시로 승격\n{0:#,##0}"
+  },
+  {
+    "id": -1000008015,
+    "key": "ui_mission_owned",
+    "en": "{0:#,##0} [icon:zm_lingshi], {1:#,##0} Mayor's Degree",
+    "ch": "{0:#,##0} [icon:zm_lingshi]，{1:#,##0} 城主令",
+    "tc": "{0:#,##0} [icon:zm_lingshi]，{1:#,##0} 城主令",
+    "kr": "{0:#,##0} [icon:zm_lingshi], 시장 학위 {1:#,##0}"
+  },
+  {
+    "id": -1000008016,
+    "key": "ui_qi",
+    "en": "Qi: {0}",
+    "ch": "真气：{0}",
+    "tc": "真氣：{0}",
+    "kr": "진기: {0}"
+  },
+  {
+    "id": -1000008017,
+    "key": "ui_atk",
+    "en": "Atk: {0}",
+    "ch": "攻击：{0}",
+    "tc": "攻擊：{0}",
+    "kr": "공격: {0}"
+  },
+  {
+    "id": -1000008018,
+    "key": "ui_hp",
+    "en": "Hp: {0}",
+    "ch": "生命：{0}",
+    "tc": "生命：{0}",
+    "kr": "체력: {0}"
+  },
+  {
+    "id": -1000008019,
+    "key": "ui_mp",
+    "en": "Mp: {0}",
+    "ch": "灵力：{0}",
+    "tc": "靈力：{0}",
+    "kr": "영력: {0}"
+  },
+  {
+    "id": -1000008020,
+    "key": "ui_qi_transfer",
+    "en": "Qi Transfer",
+    "ch": "真气传递",
+    "tc": "真氣傳遞",
+    "kr": "진기 전수"
+  },
+  {
+    "id": -1000008021,
+    "key": "ui_qi_change",
+    "en": "Qi {0}→{1}",
+    "ch": "真气 {0}→{1}",
+    "tc": "真氣 {0}→{1}",
+    "kr": "진기 {0}→{1}"
+  },
+  {
+    "id": -1000008022,
+    "key": "ui_price_rate",
+    "en": "Price rate: {0:0.00}%",
+    "ch": "价格比率：{0:0.00}%",
+    "tc": "價格比率：{0:0.00}%",
+    "kr": "가격 비율: {0:0.00}%"
+  },
+  {
+    "id": -1000008023,
+    "key": "ui_over_price",
+    "en": "Price too high",
+    "ch": "价格过高",
+    "tc": "價格過高",
+    "kr": "가격이 너무 높다"
+  },
+  {
+    "id": -1000008024,
+    "key": "ui_market_owned",
+    "en": "Owned: {0:#,##0} [icon:zm_lingshi]",
+    "ch": "持有：{0:#,##0} [icon:zm_lingshi]",
+    "tc": "持有：{0:#,##0} [icon:zm_lingshi]",
+    "kr": "보유: {0:#,##0} [icon:zm_lingshi]"
+  },
+  {
+    "id": -1000008025,
+    "key": "ui_market_total",
+    "en": "Total: {0:#,##0} ({1:#,##0})",
+    "ch": "合计：{0:#,##0}（{1:#,##0}）",
+    "tc": "合計：{0:#,##0}（{1:#,##0}）",
+    "kr": "합계: {0:#,##0} ({1:#,##0})"
+  },
+  {
+    "id": -1000008026,
+    "key": "ui_market_budget",
+    "en": "Market: {0:#,##0} [icon:zm_lingshi]",
+    "ch": "市场：{0:#,##0} [icon:zm_lingshi]",
+    "tc": "市場：{0:#,##0} [icon:zm_lingshi]",
+    "kr": "시장: {0:#,##0} [icon:zm_lingshi]"
+  },
+  {
+    "id": -1000008027,
+    "key": "ui_market_budget_max",
+    "en": "/{0:#,##0} [icon:zm_lingshi]",
+    "ch": "/{0:#,##0} [icon:zm_lingshi]",
+    "tc": "/{0:#,##0} [icon:zm_lingshi]",
+    "kr": "/{0:#,##0} [icon:zm_lingshi]"
+  },
+  {
+    "id": -1000008028,
+    "key": "ui_market_budget_fmt",
+    "en": "Market: {0:#,##0} [icon:zm_lingshi]",
+    "ch": "市场：{0:#,##0} [icon:zm_lingshi]",
+    "tc": "市場：{0:#,##0} [icon:zm_lingshi]",
+    "kr": "시장: {0:#,##0} [icon:zm_lingshi]"
+  },
+  {
+    "id": -1000008029,
+    "key": "ui_storage_debt",
+    "en": "You have to pay your debt ({0:#,##0} [icon:zm_lingshi]) next month!",
+    "ch": "下个月你必须偿还债务（{0:#,##0} [icon:zm_lingshi]）！",
+    "tc": "下個月你必須償還債務（{0:#,##0} [icon:zm_lingshi]）！",
+    "kr": "다음 달에 빚({0:#,##0} [icon:zm_lingshi])을 갚아야 한다!"
+  },
+  {
+    "id": -1000008030,
+    "key": "ui_storage_value",
+    "en": "Storage: {0:#,##0} [icon:zm_lingshi] ({1:#,##0} cash, {2:#,##0} items)",
+    "ch": "仓库：{0:#,##0} [icon:zm_lingshi]（现金 {1:#,##0}，物品 {2:#,##0}）",
+    "tc": "倉庫：{0:#,##0} [icon:zm_lingshi]（現金 {1:#,##0}，物品 {2:#,##0}）",
+    "kr": "창고: {0:#,##0} [icon:zm_lingshi] (현금 {1:#,##0}, 물품 {2:#,##0})"
+  },
+  {
+    "id": -1000008031,
+    "key": "ui_storage_fee",
+    "en": "Fee: {0:0.0}% (-{1:#,##0} [icon:zm_lingshi] monthly)",
+    "ch": "费用：{0:0.0}%（每月 -{1:#,##0} [icon:zm_lingshi]）",
+    "tc": "費用：{0:0.0}%（每月 -{1:#,##0} [icon:zm_lingshi]）",
+    "kr": "수수료: {0:0.0}% (매달 -{1:#,##0} [icon:zm_lingshi])"
+  },
+  {
+    "id": -1000008032,
+    "key": "ui_error",
+    "en": "Error",
+    "ch": "错误",
+    "tc": "錯誤",
+    "kr": "오류"
+  },
+  {
+    "id": -1000008033,
+    "key": "ui_file_errors",
+    "en": "This file has some errors!",
+    "ch": "此文件有错误！",
+    "tc": "此檔案有錯誤！",
+    "kr": "이 파일에 오류가 있다!"
+  },
+  {
+    "id": -1000008034,
+    "key": "ui_info",
+    "en": "Info",
+    "ch": "提示",
+    "tc": "提示",
+    "kr": "정보"
+  },
+  {
+    "id": -1000008035,
+    "key": "ui_tax_town",
+    "en": "Tax: {0:#,##0} [icon:zm_lingshi]\nView the town guardians",
+    "ch": "税：{0:#,##0} [icon:zm_lingshi]\n查看城镇守卫",
+    "tc": "稅：{0:#,##0} [icon:zm_lingshi]\n查看城鎮守衛",
+    "kr": "세금: {0:#,##0} [icon:zm_lingshi]\n마을 수호자 보기"
+  },
+  {
+    "id": -1000008036,
+    "key": "ui_tax",
+    "en": "Tax: {0:#,##0} [icon:zm_lingshi]",
+    "ch": "税：{0:#,##0} [icon:zm_lingshi]",
+    "tc": "稅：{0:#,##0} [icon:zm_lingshi]",
+    "kr": "세금: {0:#,##0} [icon:zm_lingshi]"
+  },
+  {
+    "id": -1000008037,
+    "key": "ui_adj_hp",
+    "en": "+Hp: {0}",
+    "ch": "+生命：{0}",
+    "tc": "+生命：{0}",
+    "kr": "+체력: {0}"
+  },
+  {
+    "id": -1000008038,
+    "key": "ui_adj_mp",
+    "en": "+Mp: {0}",
+    "ch": "+灵力：{0}",
+    "tc": "+靈力：{0}",
+    "kr": "+영력: {0}"
+  },
+  {
+    "id": -1000008039,
+    "key": "ui_adj_sp",
+    "en": "+Sp: {0}",
+    "ch": "+念力：{0}",
+    "tc": "+念力：{0}",
+    "kr": "+염력: {0}"
+  },
+  {
+    "id": -1000008040,
+    "key": "ui_adj_atk",
+    "en": "+Atk: {0}",
+    "ch": "+攻击：{0}",
+    "tc": "+攻擊：{0}",
+    "kr": "+공격: {0}"
+  },
+  {
+    "id": -1000008041,
+    "key": "ui_adj_def",
+    "en": "+Def: {0}",
+    "ch": "+防御：{0}",
+    "tc": "+防禦：{0}",
+    "kr": "+방어: {0}"
+  },
+  {
+    "id": -1000008042,
+    "key": "ui_basic",
+    "en": "Basic:",
+    "ch": "基础：",
+    "tc": "基礎：",
+    "kr": "기본:"
+  },
+  {
+    "id": -1000008043,
+    "key": "ui_expert_lvl",
+    "en": "Expert Lvl: {0} ({1}/{2})",
+    "ch": "专精等级：{0}（{1}/{2}）",
+    "tc": "專精等級：{0}（{1}/{2}）",
+    "kr": "숙련 레벨: {0} ({1}/{2})"
+  },
+  {
+    "id": -1000008044,
+    "key": "ui_refine_lvl",
+    "en": "Refine ({0}):",
+    "ch": "精炼（{0}）：",
+    "tc": "精煉（{0}）：",
+    "kr": "연마 ({0}):"
+  },
+  {
+    "id": -1000008045,
+    "key": "ui_adj_speed",
+    "en": "+Speed: {0} (In Battle)",
+    "ch": "+速度：{0}（战斗中）",
+    "tc": "+速度：{0}（戰鬥中）",
+    "kr": "+속도: {0} (전투 중)"
+  },
+  {
+    "id": -1000008046,
+    "key": "ui_adj_evade",
+    "en": "+Evade(%): {0}% (In Battle)",
+    "ch": "+闪避(%)：{0}%（战斗中）",
+    "tc": "+閃避(%)：{0}%（戰鬥中）",
+    "kr": "+회피(%): {0}% (전투 중)"
+  },
+  {
+    "id": -1000008047,
+    "key": "ui_adj_mpcost",
+    "en": "+Mp Cost: {0} (In Battle)",
+    "ch": "+灵力消耗：{0}（战斗中）",
+    "tc": "+靈力消耗：{0}（戰鬥中）",
+    "kr": "+영력 소모: {0} (전투 중)"
+  },
+  {
+    "id": -1000008048,
+    "key": "ui_adj_dmg",
+    "en": "+Dmg: {0} (In Battle)",
+    "ch": "+伤害：{0}（战斗中）",
+    "tc": "+傷害：{0}（戰鬥中）",
+    "kr": "+피해: {0} (전투 중)"
+  },
+  {
+    "id": -1000008049,
+    "key": "ui_modlib_too_old",
+    "en": "Taoist {0} is not supported in ModLib {1}!\nPlease install ModLib {2} or above.",
+    "ch": "Taoist {0} 不支持 ModLib {1}！\n请安装 ModLib {2} 或更高版本。",
+    "tc": "Taoist {0} 不支援 ModLib {1}！\n請安裝 ModLib {2} 或更高版本。",
+    "kr": "Taoist {0}은(는) ModLib {1}을(를) 지원하지 않는다!\nModLib {2} 이상을 설치하라."
+  }
+]

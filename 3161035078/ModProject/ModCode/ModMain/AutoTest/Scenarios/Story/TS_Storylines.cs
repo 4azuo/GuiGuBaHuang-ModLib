@@ -73,7 +73,8 @@ namespace MOD_nE7UL2.AutoTest.Scenarios.Story
                 c.Info($"{key}: condition of the option not met: {text}");
                 c.Snap("condition");
                 c.Bag["skip_" + key] = (c.Bag.TryGetValue("picked_" + key, out var p) ? (int)p : 0) + 1;
-                ClickIn(popup, "OK", "Ok", "确定", "確定", "확인");
+                // its only button (the label depends on the game: "Yes" for the Ok popup)
+                popup.btn1?.onClick?.Invoke();
                 return false;
             }
             if (DramaUI() != null)

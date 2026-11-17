@@ -1,0 +1,252 @@
+﻿[
+	{
+		"id": "-1000008000",
+		"key": "ui_bank_open",
+		"en|ch|tc|kr": "Konto eröffnen ({0:#,##0} [icon:zm_lingshi])"
+	},
+	{
+		"id": "-1000008001",
+		"key": "ui_team_info",
+		"en|ch|tc|kr": "Team: {0}"
+	},
+	{
+		"id": "-1000008002",
+		"key": "ui_team_hire_cost",
+		"en|ch|tc|kr": "{0} [icon:zm_lingshi] ({1:#,##0}/Monat)"
+	},
+	{
+		"id": "-1000008003",
+		"key": "ui_reputations",
+		"en|ch|tc|kr": "{0} Ruf"
+	},
+	{
+		"id": "-1000008004",
+		"key": "ui_reputations_n",
+		"en|ch|tc|kr": "{0:#,##0} Ruf"
+	},
+	{
+		"id": "-1000008005",
+		"key": "ui_require_stones",
+		"en|ch|tc|kr": "Benötigt {0:#,##0} [icon:zm_lingshi]"
+	},
+	{
+		"id": "-1000008006",
+		"key": "ui_require_reputations",
+		"en|ch|tc|kr": "Benötigt {0:#,##0} Ruf"
+	},
+	{
+		"id": "-1000008007",
+		"key": "ui_team_payment",
+		"en|ch|tc|kr": "Bezahlung: {0} [icon:zm_lingshi]/Monat"
+	},
+	{
+		"id": "-1000008008",
+		"key": "ui_town_info",
+		"en|ch|tc|kr": "Stadt: {0}"
+	},
+	{
+		"id": "-1000008009",
+		"key": "ui_base_tax",
+		"en|ch|tc|kr": "Grundsteuer:"
+	},
+	{
+		"id": "-1000008010",
+		"key": "ui_per_month",
+		"en|ch|tc|kr": "{0}/Monat"
+	},
+	{
+		"id": "-1000008011",
+		"key": "ui_building_cost",
+		"en|ch|tc|kr": "{0}　／　Kosten: {1:#,##0}"
+	},
+	{
+		"id": "-1000008012",
+		"key": "ui_building_built",
+		"en|ch|tc|kr": "{0} gebaut!"
+	},
+	{
+		"id": "-1000008013",
+		"key": "ui_building_no_budget",
+		"en|ch|tc|kr": "Das aktuelle Budget reicht für dieses Gebäude nicht!\n{0:#,##0}"
+	},
+	{
+		"id": "-1000008014",
+		"key": "ui_upgrade_city",
+		"en|ch|tc|kr": "Zur Stadt ausbauen\n{0:#,##0}"
+	},
+	{
+		"id": "-1000008015",
+		"key": "ui_mission_owned",
+		"en|ch|tc|kr": "{0:#,##0} [icon:zm_lingshi], {1:#,##0} Bürgermeistergrad"
+	},
+	{
+		"id": "-1000008016",
+		"key": "ui_qi",
+		"en|ch|tc|kr": "Qi: {0}"
+	},
+	{
+		"id": "-1000008017",
+		"key": "ui_atk",
+		"en|ch|tc|kr": "Ang: {0}"
+	},
+	{
+		"id": "-1000008018",
+		"key": "ui_hp",
+		"en|ch|tc|kr": "LP: {0}"
+	},
+	{
+		"id": "-1000008019",
+		"key": "ui_mp",
+		"en|ch|tc|kr": "MP: {0}"
+	},
+	{
+		"id": "-1000008020",
+		"key": "ui_qi_transfer",
+		"en|ch|tc|kr": "Qi-Übertragung"
+	},
+	{
+		"id": "-1000008021",
+		"key": "ui_qi_change",
+		"en|ch|tc|kr": "Qi {0}→{1}"
+	},
+	{
+		"id": "-1000008022",
+		"key": "ui_price_rate",
+		"en|ch|tc|kr": "Preisrate: {0:0.00}%"
+	},
+	{
+		"id": "-1000008023",
+		"key": "ui_over_price",
+		"en|ch|tc|kr": "Preis zu hoch"
+	},
+	{
+		"id": "-1000008024",
+		"key": "ui_market_owned",
+		"en|ch|tc|kr": "Besitz: {0:#,##0} [icon:zm_lingshi]"
+	},
+	{
+		"id": "-1000008025",
+		"key": "ui_market_total",
+		"en|ch|tc|kr": "Gesamt: {0:#,##0} ({1:#,##0})"
+	},
+	{
+		"id": "-1000008026",
+		"key": "ui_market_budget",
+		"en|ch|tc|kr": "Markt: {0:#,##0} [icon:zm_lingshi]"
+	},
+	{
+		"id": "-1000008027",
+		"key": "ui_market_budget_max",
+		"en|ch|tc|kr": "/{0:#,##0} [icon:zm_lingshi]"
+	},
+	{
+		"id": "-1000008028",
+		"key": "ui_market_budget_fmt",
+		"en|ch|tc|kr": "Markt: {0:#,##0} [icon:zm_lingshi]"
+	},
+	{
+		"id": "-1000008029",
+		"key": "ui_storage_debt",
+		"en|ch|tc|kr": "Du musst deine Schulden ({0:#,##0} [icon:zm_lingshi]) nächsten Monat bezahlen!"
+	},
+	{
+		"id": "-1000008030",
+		"key": "ui_storage_value",
+		"en|ch|tc|kr": "Lager: {0:#,##0} [icon:zm_lingshi] ({1:#,##0} bar, {2:#,##0} Gegenstände)"
+	},
+	{
+		"id": "-1000008031",
+		"key": "ui_storage_fee",
+		"en|ch|tc|kr": "Gebühr: {0:0.0}% (-{1:#,##0} [icon:zm_lingshi] monatlich)"
+	},
+	{
+		"id": "-1000008032",
+		"key": "ui_error",
+		"en|ch|tc|kr": "Fehler"
+	},
+	{
+		"id": "-1000008033",
+		"key": "ui_file_errors",
+		"en|ch|tc|kr": "Diese Datei enthält Fehler!"
+	},
+	{
+		"id": "-1000008034",
+		"key": "ui_info",
+		"en|ch|tc|kr": "Info"
+	},
+	{
+		"id": "-1000008035",
+		"key": "ui_tax_town",
+		"en|ch|tc|kr": "Steuer: {0:#,##0} [icon:zm_lingshi]\nStadtwächter ansehen"
+	},
+	{
+		"id": "-1000008036",
+		"key": "ui_tax",
+		"en|ch|tc|kr": "Steuer: {0:#,##0} [icon:zm_lingshi]"
+	},
+	{
+		"id": "-1000008037",
+		"key": "ui_adj_hp",
+		"en|ch|tc|kr": "+LP: {0}"
+	},
+	{
+		"id": "-1000008038",
+		"key": "ui_adj_mp",
+		"en|ch|tc|kr": "+MP: {0}"
+	},
+	{
+		"id": "-1000008039",
+		"key": "ui_adj_sp",
+		"en|ch|tc|kr": "+SP: {0}"
+	},
+	{
+		"id": "-1000008040",
+		"key": "ui_adj_atk",
+		"en|ch|tc|kr": "+Ang: {0}"
+	},
+	{
+		"id": "-1000008041",
+		"key": "ui_adj_def",
+		"en|ch|tc|kr": "+Vert: {0}"
+	},
+	{
+		"id": "-1000008042",
+		"key": "ui_basic",
+		"en|ch|tc|kr": "Basis:"
+	},
+	{
+		"id": "-1000008043",
+		"key": "ui_expert_lvl",
+		"en|ch|tc|kr": "Meisterstufe: {0} ({1}/{2})"
+	},
+	{
+		"id": "-1000008044",
+		"key": "ui_refine_lvl",
+		"en|ch|tc|kr": "Veredelung ({0}):"
+	},
+	{
+		"id": "-1000008045",
+		"key": "ui_adj_speed",
+		"en|ch|tc|kr": "+Tempo: {0} (im Kampf)"
+	},
+	{
+		"id": "-1000008046",
+		"key": "ui_adj_evade",
+		"en|ch|tc|kr": "+Ausweichen(%): {0}% (im Kampf)"
+	},
+	{
+		"id": "-1000008047",
+		"key": "ui_adj_mpcost",
+		"en|ch|tc|kr": "+MP-Kosten: {0} (im Kampf)"
+	},
+	{
+		"id": "-1000008048",
+		"key": "ui_adj_dmg",
+		"en|ch|tc|kr": "+Schaden: {0} (im Kampf)"
+	},
+	{
+		"id": "-1000008049",
+		"key": "ui_modlib_too_old",
+		"en|ch|tc|kr": "Taoist {0} wird von ModLib {1} nicht unterstützt!\nBitte installiere ModLib {2} oder neuer."
+	}
+]

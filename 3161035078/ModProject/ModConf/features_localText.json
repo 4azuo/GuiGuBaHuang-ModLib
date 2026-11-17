@@ -26,42 +26,42 @@
   {
     "id": -1000006003,
     "key": "log_tax_paid",
-    "en": "Paid {0:#,##0} spirit stones of tax in {1}.",
-    "ch": "在{1}缴纳税金 {0:#,##0} 灵石。",
-    "tc": "在{1}繳納稅金 {0:#,##0} 靈石。",
-    "kr": "{1}에서 세금 영석 {0:#,##0}을 냈다."
+    "en": "Paid {0:#,##0} [icon:zm_lingshi] of tax in {1}.",
+    "ch": "在{1}缴纳税金 {0:#,##0} [icon:zm_lingshi]。",
+    "tc": "在{1}繳納稅金 {0:#,##0} [icon:zm_lingshi]。",
+    "kr": "{1}에서 세금 [icon:zm_lingshi] {0:#,##0}을 냈다."
   },
   {
     "id": -1000006004,
     "key": "log_storage_fee",
-    "en": "Paid {0:#,##0} spirit stones of storage fees.",
-    "ch": "支付仓库保管费 {0:#,##0} 灵石。",
-    "tc": "支付倉庫保管費 {0:#,##0} 靈石。",
-    "kr": "창고 보관료 영석 {0:#,##0}을 냈다."
+    "en": "Paid {0:#,##0} [icon:zm_lingshi] of storage fees.",
+    "ch": "支付仓库保管费 {0:#,##0} [icon:zm_lingshi]。",
+    "tc": "支付倉庫保管費 {0:#,##0} [icon:zm_lingshi]。",
+    "kr": "창고 보관료 [icon:zm_lingshi] {0:#,##0}을 냈다."
   },
   {
     "id": -1000006005,
     "key": "log_market_sold",
-    "en": "Sold {0} x {1} for {2:#,##0} spirit stones to {3}.",
-    "ch": "以 {2:#,##0} 灵石将 {0} 个{1}卖给了{3}。",
-    "tc": "以 {2:#,##0} 靈石將 {0} 個{1}賣給了{3}。",
-    "kr": "{1} {0}개를 영석 {2:#,##0}에 {3}에게 팔았다."
+    "en": "Sold {0} x {1} for {2:#,##0} [icon:zm_lingshi] to {3}.",
+    "ch": "以 {2:#,##0} [icon:zm_lingshi]将 {0} 个{1}卖给了{3}。",
+    "tc": "以 {2:#,##0} [icon:zm_lingshi]將 {0} 個{1}賣給了{3}。",
+    "kr": "{1} {0}개를 [icon:zm_lingshi] {2:#,##0}에 {3}에게 팔았다."
   },
   {
     "id": -1000006006,
     "key": "log_market_bought",
-    "en": "Bought {0} x {1} for {2:#,##0} spirit stones from {3}.",
-    "ch": "以 {2:#,##0} 灵石从{3}处买下 {0} 个{1}。",
-    "tc": "以 {2:#,##0} 靈石從{3}處買下 {0} 個{1}。",
-    "kr": "{3}에게서 {1} {0}개를 영석 {2:#,##0}에 샀다."
+    "en": "Bought {0} x {1} for {2:#,##0} [icon:zm_lingshi] from {3}.",
+    "ch": "以 {2:#,##0} [icon:zm_lingshi]从{3}处买下 {0} 个{1}。",
+    "tc": "以 {2:#,##0} [icon:zm_lingshi]從{3}處買下 {0} 個{1}。",
+    "kr": "{3}에게서 {1} {0}개를 [icon:zm_lingshi] {2:#,##0}에 샀다."
   },
   {
     "id": -1000006007,
     "key": "log_stalker_paid",
-    "en": "Paid off the stalker {0} with {1:#,##0} spirit stones.",
-    "ch": "花费 {1:#,##0} 灵石打发了跟踪者{0}。",
-    "tc": "花費 {1:#,##0} 靈石打發了跟蹤者{0}。",
-    "kr": "영석 {1:#,##0}으로 추적자 {0}을(를) 돌려보냈다."
+    "en": "Paid off the stalker {0} with {1:#,##0} [icon:zm_lingshi].",
+    "ch": "花费 {1:#,##0} [icon:zm_lingshi]打发了跟踪者{0}。",
+    "tc": "花費 {1:#,##0} [icon:zm_lingshi]打發了跟蹤者{0}。",
+    "kr": "[icon:zm_lingshi] {1:#,##0}으로 추적자 {0}을(를) 돌려보냈다."
   },
   {
     "id": -1000006008,
@@ -90,10 +90,10 @@
   {
     "id": -1000006011,
     "key": "log_refine_reroll",
-    "en": "Rerolled slot #{1} of {0}: {2} -> {3} ({4:#,##0} spirit stones).",
-    "ch": "重铸{0}的第{1}个词条：{2} -> {3}（{4:#,##0} 灵石）。",
-    "tc": "重鑄{0}的第{1}個詞條：{2} -> {3}（{4:#,##0} 靈石）。",
-    "kr": "{0}의 {1}번 슬롯 재설정: {2} -> {3} (영석 {4:#,##0})."
+    "en": "Rerolled slot #{1} of {0}: {2} -> {3} ({4:#,##0} [icon:zm_lingshi]).",
+    "ch": "重铸{0}的第{1}个词条：{2} -> {3}（{4:#,##0} [icon:zm_lingshi]）。",
+    "tc": "重鑄{0}的第{1}個詞條：{2} -> {3}（{4:#,##0} [icon:zm_lingshi]）。",
+    "kr": "{0}의 {1}번 슬롯 재설정: {2} -> {3} ([icon:zm_lingshi] {4:#,##0})."
   },
   {
     "id": -1000006020,
@@ -122,10 +122,10 @@
   {
     "id": -1000006023,
     "key": "town_taxstat",
-    "en": "Last month: {0:#,##0} spirit stones from {1} residents; {2} could not pay and left the town",
-    "ch": "上月：{1} 名居民缴税 {0:#,##0} 灵石；{2} 人无力缴税而离开",
-    "tc": "上月：{1} 名居民繳稅 {0:#,##0} 靈石；{2} 人無力繳稅而離開",
-    "kr": "지난달: 주민 {1}명에게서 영석 {0:#,##0}; {2}명은 세금을 내지 못해 떠남"
+    "en": "Last month: {0:#,##0} [icon:zm_lingshi] from {1} residents; {2} could not pay and left the town",
+    "ch": "上月：{1} 名居民缴税 {0:#,##0} [icon:zm_lingshi]；{2} 人无力缴税而离开",
+    "tc": "上月：{1} 名居民繳稅 {0:#,##0} [icon:zm_lingshi]；{2} 人無力繳稅而離開",
+    "kr": "지난달: 주민 {1}명에게서 [icon:zm_lingshi] {0:#,##0}; {2}명은 세금을 내지 못해 떠남"
   },
   {
     "id": -1000006024,
@@ -226,10 +226,10 @@
   {
     "id": -1000006041,
     "key": "market_buyorder_total",
-    "en": "Held: {0:#,##0} spirit stones, chance a seller accepts each month: {1:0}%",
-    "ch": "冻结：{0:#,##0} 灵石，每月卖家接受概率：{1:0}%",
-    "tc": "凍結：{0:#,##0} 靈石，每月賣家接受機率：{1:0}%",
-    "kr": "보관: 영석 {0:#,##0}, 매달 판매자 수락 확률: {1:0}%"
+    "en": "Held: {0:#,##0} [icon:zm_lingshi], chance a seller accepts each month: {1:0}%",
+    "ch": "冻结：{0:#,##0} [icon:zm_lingshi]，每月卖家接受概率：{1:0}%",
+    "tc": "凍結：{0:#,##0} [icon:zm_lingshi]，每月賣家接受機率：{1:0}%",
+    "kr": "보관: [icon:zm_lingshi] {0:#,##0}, 매달 판매자 수락 확률: {1:0}%"
   },
   {
     "id": -1000006042,
@@ -250,10 +250,10 @@
   {
     "id": -1000006044,
     "key": "market_buyorder_filled",
-    "en": "Buy order: {2} sold you {0} x {1} for {3:#,##0} spirit stones.",
-    "ch": "求购成交：{2}以 {3:#,##0} 灵石卖给你 {0} 个{1}。",
-    "tc": "求購成交：{2}以 {3:#,##0} 靈石賣給你 {0} 個{1}。",
-    "kr": "구매 주문: {2}이(가) {1} {0}개를 영석 {3:#,##0}에 팔았다."
+    "en": "Buy order: {2} sold you {0} x {1} for {3:#,##0} [icon:zm_lingshi].",
+    "ch": "求购成交：{2}以 {3:#,##0} [icon:zm_lingshi]卖给你 {0} 个{1}。",
+    "tc": "求購成交：{2}以 {3:#,##0} [icon:zm_lingshi]賣給你 {0} 個{1}。",
+    "kr": "구매 주문: {2}이(가) {1} {0}개를 [icon:zm_lingshi] {3:#,##0}에 팔았다."
   },
   {
     "id": -1000006045,
@@ -266,18 +266,18 @@
   {
     "id": -1000006046,
     "key": "log_buyorder_cancel",
-    "en": "Buy order cancelled: {0} x {1}, {2:#,##0} spirit stones refunded.",
-    "ch": "取消求购：{1} x{0}，退还 {2:#,##0} 灵石。",
-    "tc": "取消求購：{1} x{0}，退還 {2:#,##0} 靈石。",
-    "kr": "구매 주문 취소: {1} {0}개, 영석 {2:#,##0} 환불."
+    "en": "Buy order cancelled: {0} x {1}, {2:#,##0} [icon:zm_lingshi] refunded.",
+    "ch": "取消求购：{1} x{0}，退还 {2:#,##0} [icon:zm_lingshi]。",
+    "tc": "取消求購：{1} x{0}，退還 {2:#,##0} [icon:zm_lingshi]。",
+    "kr": "구매 주문 취소: {1} {0}개, [icon:zm_lingshi] {2:#,##0} 환불."
   },
   {
     "id": -1000006047,
     "key": "log_buyorder_expired",
-    "en": "Buy order expired: {0} x {1}, {2:#,##0} spirit stones refunded.",
-    "ch": "求购到期：{1} x{0}，退还 {2:#,##0} 灵石。",
-    "tc": "求購到期：{1} x{0}，退還 {2:#,##0} 靈石。",
-    "kr": "구매 주문 만료: {1} {0}개, 영석 {2:#,##0} 환불."
+    "en": "Buy order expired: {0} x {1}, {2:#,##0} [icon:zm_lingshi] refunded.",
+    "ch": "求购到期：{1} x{0}，退还 {2:#,##0} [icon:zm_lingshi]。",
+    "tc": "求購到期：{1} x{0}，退還 {2:#,##0} [icon:zm_lingshi]。",
+    "kr": "구매 주문 만료: {1} {0}개, [icon:zm_lingshi] {2:#,##0} 환불."
   },
   {
     "id": -1000006050,
@@ -362,10 +362,10 @@
   {
     "id": -1000006063,
     "key": "loan_limit",
-    "en": "You may borrow up to {0:#,##0} spirit stones (bank vault: {1:#,##0}).",
-    "ch": "可借上限 {0:#,##0} 灵石（钱庄库存：{1:#,##0}）。",
-    "tc": "可借上限 {0:#,##0} 靈石（錢莊庫存：{1:#,##0}）。",
-    "kr": "최대 영석 {0:#,##0}까지 빌릴 수 있습니다 (은행 금고: {1:#,##0})."
+    "en": "You may borrow up to {0:#,##0} [icon:zm_lingshi] (bank vault: {1:#,##0}).",
+    "ch": "可借上限 {0:#,##0} [icon:zm_lingshi]（钱庄库存：{1:#,##0}）。",
+    "tc": "可借上限 {0:#,##0} [icon:zm_lingshi]（錢莊庫存：{1:#,##0}）。",
+    "kr": "최대 [icon:zm_lingshi] {0:#,##0}까지 빌릴 수 있습니다 (은행 금고: {1:#,##0})."
   },
   {
     "id": -1000006064,
@@ -458,10 +458,10 @@
   {
     "id": -1000006075,
     "key": "loan_letter",
-    "en": "A letter from the bank of {0}: \"Your loan is {2} month(s) overdue. You now owe {1:#,##0} spirit stones. We trust this is an oversight.\"",
-    "ch": "{0}钱庄来信：“阁下借款已逾期 {2} 个月，现欠 {1:#,##0} 灵石。想必只是一时疏忽。”",
-    "tc": "{0}錢莊來信：「閣下借款已逾期 {2} 個月，現欠 {1:#,##0} 靈石。想必只是一時疏忽。」",
-    "kr": "{0} 은행의 편지: \"대출이 {2}개월 연체되었습니다. 현재 갚으실 돈은 영석 {1:#,##0}입니다. 단순한 실수라고 믿겠습니다.\""
+    "en": "A letter from the bank of {0}: \"Your loan is {2} month(s) overdue. You now owe {1:#,##0} [icon:zm_lingshi]. We trust this is an oversight.\"",
+    "ch": "{0}钱庄来信：“阁下借款已逾期 {2} 个月，现欠 {1:#,##0} [icon:zm_lingshi]。想必只是一时疏忽。”",
+    "tc": "{0}錢莊來信：「閣下借款已逾期 {2} 個月，現欠 {1:#,##0} [icon:zm_lingshi]。想必只是一時疏忽。」",
+    "kr": "{0} 은행의 편지: \"대출이 {2}개월 연체되었습니다. 현재 갚으실 돈은 [icon:zm_lingshi] {1:#,##0}입니다. 단순한 실수라고 믿겠습니다.\""
   },
   {
     "id": -1000006076,
@@ -474,18 +474,18 @@
   {
     "id": -1000006077,
     "key": "loan_collector",
-    "en": "\"The bank of {0} sends its regards.\" The collector cracks his knuckles. \"{1:#,##0} spirit stones. Today.\"",
-    "ch": "“{0}钱庄向你问好。”讨债人掰了掰指节，“{1:#,##0} 灵石，今天还清。”",
-    "tc": "「{0}錢莊向你問好。」討債人掰了掰指節，「{1:#,##0} 靈石，今天還清。」",
-    "kr": "\"{0} 은행에서 안부를 전하더군.\" 추심인이 손가락 마디를 꺾는다. \"영석 {1:#,##0}. 오늘 당장.\""
+    "en": "\"The bank of {0} sends its regards.\" The collector cracks his knuckles. \"{1:#,##0} [icon:zm_lingshi]. Today.\"",
+    "ch": "“{0}钱庄向你问好。”讨债人掰了掰指节，“{1:#,##0} [icon:zm_lingshi]，今天还清。”",
+    "tc": "「{0}錢莊向你問好。」討債人掰了掰指節，「{1:#,##0} [icon:zm_lingshi]，今天還清。」",
+    "kr": "\"{0} 은행에서 안부를 전하더군.\" 추심인이 손가락 마디를 꺾는다. \"[icon:zm_lingshi] {1:#,##0}. 오늘 당장.\""
   },
   {
     "id": -1000006078,
     "key": "loan_collector_o1",
-    "en": "Pay {0:#,##0} spirit stones",
-    "ch": "支付 {0:#,##0} 灵石",
-    "tc": "支付 {0:#,##0} 靈石",
-    "kr": "영석 {0:#,##0}을 낸다"
+    "en": "Pay {0:#,##0} [icon:zm_lingshi]",
+    "ch": "支付 {0:#,##0} [icon:zm_lingshi]",
+    "tc": "支付 {0:#,##0} [icon:zm_lingshi]",
+    "kr": "[icon:zm_lingshi] {0:#,##0}을 낸다"
   },
   {
     "id": -1000006079,
@@ -514,26 +514,26 @@
   {
     "id": -1000006082,
     "key": "loan_seized",
-    "en": "The collector takes goods worth {0:#,##0} spirit stones. The debt is settled, but your reputation suffers.",
-    "ch": "讨债人拿走了价值 {0:#,##0} 灵石的财物。债务已清，但你的名声受损。",
-    "tc": "討債人拿走了價值 {0:#,##0} 靈石的財物。債務已清，但你的名聲受損。",
-    "kr": "추심인이 영석 {0:#,##0} 상당의 재물을 가져갔다. 빚은 청산되었지만 명성이 떨어졌다."
+    "en": "The collector takes goods worth {0:#,##0} [icon:zm_lingshi]. The debt is settled, but your reputation suffers.",
+    "ch": "讨债人拿走了价值 {0:#,##0} [icon:zm_lingshi]的财物。债务已清，但你的名声受损。",
+    "tc": "討債人拿走了價值 {0:#,##0} [icon:zm_lingshi]的財物。債務已清，但你的名聲受損。",
+    "kr": "추심인이 [icon:zm_lingshi] {0:#,##0} 상당의 재물을 가져갔다. 빚은 청산되었지만 명성이 떨어졌다."
   },
   {
     "id": -1000006083,
     "key": "loan_seized_part",
-    "en": "The collector takes goods worth {0:#,##0} spirit stones. You still owe {1:#,##0}.",
-    "ch": "讨债人拿走了价值 {0:#,##0} 灵石的财物。你仍欠 {1:#,##0}。",
-    "tc": "討債人拿走了價值 {0:#,##0} 靈石的財物。你仍欠 {1:#,##0}。",
-    "kr": "추심인이 영석 {0:#,##0} 상당의 재물을 가져갔다. 아직 {1:#,##0}을 갚아야 한다."
+    "en": "The collector takes goods worth {0:#,##0} [icon:zm_lingshi]. You still owe {1:#,##0}.",
+    "ch": "讨债人拿走了价值 {0:#,##0} [icon:zm_lingshi]的财物。你仍欠 {1:#,##0}。",
+    "tc": "討債人拿走了價值 {0:#,##0} [icon:zm_lingshi]的財物。你仍欠 {1:#,##0}。",
+    "kr": "추심인이 [icon:zm_lingshi] {0:#,##0} 상당의 재물을 가져갔다. 아직 {1:#,##0}을 갚아야 한다."
   },
   {
     "id": -1000006084,
     "key": "loan_lost",
-    "en": "Beaten, you watch the collector empty your bag: {0:#,##0} spirit stones' worth. Still owed: {1:#,##0}.",
-    "ch": "你被打倒在地，眼看着讨债人搜刮了价值 {0:#,##0} 灵石的财物。仍欠：{1:#,##0}。",
-    "tc": "你被打倒在地，眼看著討債人搜刮了價值 {0:#,##0} 靈石的財物。仍欠：{1:#,##0}。",
-    "kr": "쓰러진 채 추심인이 영석 {0:#,##0} 상당의 재물을 털어가는 것을 지켜볼 수밖에 없었다. 남은 빚: {1:#,##0}."
+    "en": "Beaten, you watch the collector empty your bag: {0:#,##0} [icon:zm_lingshi] worth of goods. Still owed: {1:#,##0}.",
+    "ch": "你被打倒在地，眼看着讨债人搜刮了价值 {0:#,##0} [icon:zm_lingshi]的财物。仍欠：{1:#,##0}。",
+    "tc": "你被打倒在地，眼看著討債人搜刮了價值 {0:#,##0} [icon:zm_lingshi]的財物。仍欠：{1:#,##0}。",
+    "kr": "쓰러진 채 추심인이 [icon:zm_lingshi] {0:#,##0} 상당의 재물을 털어가는 것을 지켜볼 수밖에 없었다. 남은 빚: {1:#,##0}."
   },
   {
     "id": -1000006085,
@@ -546,26 +546,26 @@
   {
     "id": -1000006086,
     "key": "loan_blacklisted",
-    "en": "The bank of {1} gives up on its {0:#,##0} spirit stones — and on you. Your name goes on the blacklist: no more loans, your account there is closed and its guards will tax you three times over.",
-    "ch": "{1}钱庄放弃了那 {0:#,##0} 灵石——也放弃了你。你的名字被列入黑名单：再无借贷，当地账户被注销，守卫将向你征收三倍税金。",
-    "tc": "{1}錢莊放棄了那 {0:#,##0} 靈石——也放棄了你。你的名字被列入黑名單：再無借貸，當地帳戶被註銷，守衛將向你徵收三倍稅金。",
-    "kr": "{1} 은행은 영석 {0:#,##0}을—그리고 너를—포기했다. 네 이름이 블랙리스트에 올랐다: 더는 대출이 없고, 그곳 계좌는 해지되며 수비병이 세 배의 세금을 걷는다."
+    "en": "The bank of {1} gives up on its {0:#,##0} [icon:zm_lingshi] — and on you. Your name goes on the blacklist: no more loans, your account there is closed and its guards will tax you three times over.",
+    "ch": "{1}钱庄放弃了那 {0:#,##0} [icon:zm_lingshi]——也放弃了你。你的名字被列入黑名单：再无借贷，当地账户被注销，守卫将向你征收三倍税金。",
+    "tc": "{1}錢莊放棄了那 {0:#,##0} [icon:zm_lingshi]——也放棄了你。你的名字被列入黑名單：再無借貸，當地帳戶被註銷，守衛將向你徵收三倍稅金。",
+    "kr": "{1} 은행은 [icon:zm_lingshi] {0:#,##0}을—그리고 너를—포기했다. 네 이름이 블랙리스트에 올랐다: 더는 대출이 없고, 그곳 계좌는 해지되며 수비병이 세 배의 세금을 걷는다."
   },
   {
     "id": -1000006087,
     "key": "log_loan_borrow",
-    "en": "Borrowed {0:#,##0} spirit stones from the bank of {1} (due in {2} months).",
-    "ch": "从{1}钱庄借入 {0:#,##0} 灵石（{2} 个月后到期）。",
-    "tc": "從{1}錢莊借入 {0:#,##0} 靈石（{2} 個月後到期）。",
-    "kr": "{1} 은행에서 영석 {0:#,##0}을 빌렸다 (기한 {2}개월)."
+    "en": "Borrowed {0:#,##0} [icon:zm_lingshi] from the bank of {1} (due in {2} months).",
+    "ch": "从{1}钱庄借入 {0:#,##0} [icon:zm_lingshi]（{2} 个月后到期）。",
+    "tc": "從{1}錢莊借入 {0:#,##0} [icon:zm_lingshi]（{2} 個月後到期）。",
+    "kr": "{1} 은행에서 [icon:zm_lingshi] {0:#,##0}을 빌렸다 (기한 {2}개월)."
   },
   {
     "id": -1000006088,
     "key": "log_loan_repay",
-    "en": "Repaid {0:#,##0} spirit stones (still owed {1:#,##0}).",
-    "ch": "还款 {0:#,##0} 灵石（仍欠 {1:#,##0}）。",
-    "tc": "還款 {0:#,##0} 靈石（仍欠 {1:#,##0}）。",
-    "kr": "영석 {0:#,##0} 상환 (남은 빚 {1:#,##0})."
+    "en": "Repaid {0:#,##0} [icon:zm_lingshi] (still owed {1:#,##0}).",
+    "ch": "还款 {0:#,##0} [icon:zm_lingshi]（仍欠 {1:#,##0}）。",
+    "tc": "還款 {0:#,##0} [icon:zm_lingshi]（仍欠 {1:#,##0}）。",
+    "kr": "[icon:zm_lingshi] {0:#,##0} 상환 (남은 빚 {1:#,##0})."
   },
   {
     "id": -1000006089,
@@ -586,10 +586,10 @@
   {
     "id": -1000006091,
     "key": "log_loan_collector",
-    "en": "The debt collector {0} came for {1:#,##0} spirit stones.",
-    "ch": "讨债人{0}上门讨要 {1:#,##0} 灵石。",
-    "tc": "討債人{0}上門討要 {1:#,##0} 靈石。",
-    "kr": "추심인 {0}이(가) 영석 {1:#,##0}을 받으러 왔다."
+    "en": "The debt collector {0} came for {1:#,##0} [icon:zm_lingshi].",
+    "ch": "讨债人{0}上门讨要 {1:#,##0} [icon:zm_lingshi]。",
+    "tc": "討債人{0}上門討要 {1:#,##0} [icon:zm_lingshi]。",
+    "kr": "추심인 {0}이(가) [icon:zm_lingshi] {1:#,##0}을 받으러 왔다."
   },
   {
     "id": -1000006092,
@@ -642,10 +642,10 @@
   {
     "id": -1000006103,
     "key": "enc_wounded_o1",
-    "en": "Buy him medicine ({0:#,##0} spirit stones)",
-    "ch": "为他买药（{0:#,##0} 灵石）",
-    "tc": "為他買藥（{0:#,##0} 靈石）",
-    "kr": "약을 사 준다 (영석 {0:#,##0})"
+    "en": "Buy him medicine ({0:#,##0} [icon:zm_lingshi])",
+    "ch": "为他买药（{0:#,##0} [icon:zm_lingshi]）",
+    "tc": "為他買藥（{0:#,##0} [icon:zm_lingshi]）",
+    "kr": "약을 사 준다 ([icon:zm_lingshi] {0:#,##0})"
   },
   {
     "id": -1000006104,
@@ -674,18 +674,18 @@
   {
     "id": -1000006107,
     "key": "enc_wounded_r2",
-    "en": "You take {0:#,##0} spirit stones from his pouch. His eyes follow you, full of hatred.",
-    "ch": "你从他的钱袋里拿走了 {0:#,##0} 灵石。他的目光紧随着你，满是仇恨。",
-    "tc": "你從他的錢袋裡拿走了 {0:#,##0} 靈石。他的目光緊隨著你，滿是仇恨。",
-    "kr": "그의 주머니에서 영석 {0:#,##0}을 챙겼다. 증오로 가득한 그의 눈빛이 너를 따라온다."
+    "en": "You take {0:#,##0} [icon:zm_lingshi] from his pouch. His eyes follow you, full of hatred.",
+    "ch": "你从他的钱袋里拿走了 {0:#,##0} [icon:zm_lingshi]。他的目光紧随着你，满是仇恨。",
+    "tc": "你從他的錢袋裡拿走了 {0:#,##0} [icon:zm_lingshi]。他的目光緊隨著你，滿是仇恨。",
+    "kr": "그의 주머니에서 [icon:zm_lingshi] {0:#,##0}을 챙겼다. 증오로 가득한 그의 눈빛이 너를 따라온다."
   },
   {
     "id": -1000006108,
     "key": "enc_chess",
-    "en": "An old man sits alone before a stone board in the mist. \"One game, young one? A stake of {0:#,##0} spirit stones keeps it interesting.\"",
-    "ch": "雾中，一位老者独坐石盘前。“小友，来一局？押上 {0:#,##0} 灵石才有趣。”",
-    "tc": "霧中，一位老者獨坐石盤前。「小友，來一局？押上 {0:#,##0} 靈石才有趣。」",
-    "kr": "안개 속, 한 노인이 홀로 돌 바둑판 앞에 앉아 있다. \"젊은이, 한 판 어떤가? 영석 {0:#,##0}을 걸어야 재미있지.\""
+    "en": "An old man sits alone before a stone board in the mist. \"One game, young one? A stake of {0:#,##0} [icon:zm_lingshi] keeps it interesting.\"",
+    "ch": "雾中，一位老者独坐石盘前。“小友，来一局？押上 {0:#,##0} [icon:zm_lingshi]才有趣。”",
+    "tc": "霧中，一位老者獨坐石盤前。「小友，來一局？押上 {0:#,##0} [icon:zm_lingshi]才有趣。」",
+    "kr": "안개 속, 한 노인이 홀로 돌 바둑판 앞에 앉아 있다. \"젊은이, 한 판 어떤가? [icon:zm_lingshi] {0:#,##0}을 걸어야 재미있지.\""
   },
   {
     "id": -1000006109,
@@ -706,26 +706,26 @@
   {
     "id": -1000006111,
     "key": "enc_chess_win",
-    "en": "The old man laughs and sweeps the stones away. \"A sharp mind!\" Following his moves has opened your understanding. (+{0:#,##0} exp, +{1:#,##0} spirit stones)",
-    "ch": "老者大笑，拂乱棋子：“好心思！”随他落子，你心有所悟。（经验 +{0:#,##0}，灵石 +{1:#,##0}）",
-    "tc": "老者大笑，拂亂棋子：「好心思！」隨他落子，你心有所悟。（經驗 +{0:#,##0}，靈石 +{1:#,##0}）",
-    "kr": "노인이 웃으며 돌을 쓸어냈다. \"날카로운 머리로군!\" 그의 수를 따라가며 깨달음을 얻었다. (경험 +{0:#,##0}, 영석 +{1:#,##0})"
+    "en": "The old man laughs and sweeps the stones away. \"A sharp mind!\" Following his moves has opened your understanding. (+{0:#,##0} exp, +{1:#,##0} [icon:zm_lingshi])",
+    "ch": "老者大笑，拂乱棋子：“好心思！”随他落子，你心有所悟。（经验 +{0:#,##0}，[icon:zm_lingshi] +{1:#,##0}）",
+    "tc": "老者大笑，拂亂棋子：「好心思！」隨他落子，你心有所悟。（經驗 +{0:#,##0}，[icon:zm_lingshi] +{1:#,##0}）",
+    "kr": "노인이 웃으며 돌을 쓸어냈다. \"날카로운 머리로군!\" 그의 수를 따라가며 깨달음을 얻었다. (경험 +{0:#,##0}, [icon:zm_lingshi] +{1:#,##0})"
   },
   {
     "id": -1000006112,
     "key": "enc_chess_lose",
-    "en": "The game ends within a few dozen moves. The old man pockets your stake with a gentle smile. (-{0:#,##0} spirit stones)",
-    "ch": "数十手便分了胜负。老者微笑着收下赌注。（灵石 -{0:#,##0}）",
-    "tc": "數十手便分了勝負。老者微笑著收下賭注。（靈石 -{0:#,##0}）",
-    "kr": "수십 수 만에 승부가 났다. 노인은 온화한 미소로 판돈을 챙겼다. (영석 -{0:#,##0})"
+    "en": "The game ends within a few dozen moves. The old man pockets your stake with a gentle smile. (-{0:#,##0} [icon:zm_lingshi])",
+    "ch": "数十手便分了胜负。老者微笑着收下赌注。（[icon:zm_lingshi] -{0:#,##0}）",
+    "tc": "數十手便分了勝負。老者微笑著收下賭注。（[icon:zm_lingshi] -{0:#,##0}）",
+    "kr": "수십 수 만에 승부가 났다. 노인은 온화한 미소로 판돈을 챙겼다. ([icon:zm_lingshi] -{0:#,##0})"
   },
   {
     "id": -1000006113,
     "key": "enc_peddler",
-    "en": "A hooded peddler opens his coat: rows of sealed boxes. \"Each holds a treasure… or nothing. {0:#,##0} spirit stones a box.\"",
-    "ch": "一名戴兜帽的货郎掀开衣襟，里面挂满了封好的木匣。“每个匣子里都有宝贝……或者什么都没有。一匣 {0:#,##0} 灵石。”",
-    "tc": "一名戴兜帽的貨郎掀開衣襟，裡面掛滿了封好的木匣。「每個匣子裡都有寶貝……或者什麼都沒有。一匣 {0:#,##0} 靈石。」",
-    "kr": "두건을 쓴 행상이 외투를 열자 봉인된 상자들이 줄지어 있다. \"하나하나에 보물이… 아니면 아무것도 없지. 한 상자에 영석 {0:#,##0}.\""
+    "en": "A hooded peddler opens his coat: rows of sealed boxes. \"Each holds a treasure… or nothing. {0:#,##0} [icon:zm_lingshi] a box.\"",
+    "ch": "一名戴兜帽的货郎掀开衣襟，里面挂满了封好的木匣。“每个匣子里都有宝贝……或者什么都没有。一匣 {0:#,##0} [icon:zm_lingshi]。”",
+    "tc": "一名戴兜帽的貨郎掀開衣襟，裡面掛滿了封好的木匣。「每個匣子裡都有寶貝……或者什麼都沒有。一匣 {0:#,##0} [icon:zm_lingshi]。」",
+    "kr": "두건을 쓴 행상이 외투를 열자 봉인된 상자들이 줄지어 있다. \"하나하나에 보물이… 아니면 아무것도 없지. 한 상자에 [icon:zm_lingshi] {0:#,##0}.\""
   },
   {
     "id": -1000006114,
@@ -765,7 +765,7 @@
     "en": "\"Fine, fine — a discount for a friend.\" You pay {1:#,##0}. Inside the box lies a {0}.",
     "ch": "“好吧好吧，给朋友打个折。”你付了 {1:#,##0}。匣中躺着一件{0}。",
     "tc": "「好吧好吧，給朋友打個折。」你付了 {1:#,##0}。匣中躺著一件{0}。",
-    "kr": "\"알았네, 알았어. 친구니까 깎아 주지.\" 영석 {1:#,##0}을 냈다. 상자 안에는 {0}이(가) 들어 있었다."
+    "kr": "\"알았네, 알았어. 친구니까 깎아 주지.\" [icon:zm_lingshi] {1:#,##0}을 냈다. 상자 안에는 {0}이(가) 들어 있었다."
   },
   {
     "id": -1000006119,
@@ -818,10 +818,10 @@
   {
     "id": -1000006125,
     "key": "enc_cave_stones",
-    "en": "A forgotten cache of {0:#,##0} spirit stones lies in a rotten chest.",
-    "ch": "一只朽烂的箱子里藏着被遗忘的 {0:#,##0} 灵石。",
-    "tc": "一隻朽爛的箱子裡藏著被遺忘的 {0:#,##0} 靈石。",
-    "kr": "썩은 상자 속에 잊혀진 영석 {0:#,##0}이 숨겨져 있었다."
+    "en": "A forgotten cache of {0:#,##0} [icon:zm_lingshi] lies in a rotten chest.",
+    "ch": "一只朽烂的箱子里藏着被遗忘的 {0:#,##0} [icon:zm_lingshi]。",
+    "tc": "一隻朽爛的箱子裡藏著被遺忘的 {0:#,##0} [icon:zm_lingshi]。",
+    "kr": "썩은 상자 속에 잊혀진 [icon:zm_lingshi] {0:#,##0}이 숨겨져 있었다."
   },
   {
     "id": -1000006126,
@@ -874,10 +874,10 @@
   {
     "id": -1000006132,
     "key": "enc_festival",
-    "en": "Lanterns fill the streets of {0}: the town celebrates its founding day. Joining the festivities costs {1:#,##0} spirit stones.",
-    "ch": "{0}的街巷挂满了灯笼：全城正在庆祝建城之日。参加庆典需 {1:#,##0} 灵石。",
-    "tc": "{0}的街巷掛滿了燈籠：全城正在慶祝建城之日。參加慶典需 {1:#,##0} 靈石。",
-    "kr": "{0}의 거리가 등불로 가득하다. 마을의 창립일 축제다. 축제에 참가하려면 영석 {1:#,##0}이 든다."
+    "en": "Lanterns fill the streets of {0}: the town celebrates its founding day. Joining the festivities costs {1:#,##0} [icon:zm_lingshi].",
+    "ch": "{0}的街巷挂满了灯笼：全城正在庆祝建城之日。参加庆典需 {1:#,##0} [icon:zm_lingshi]。",
+    "tc": "{0}的街巷掛滿了燈籠：全城正在慶祝建城之日。參加慶典需 {1:#,##0} [icon:zm_lingshi]。",
+    "kr": "{0}의 거리가 등불로 가득하다. 마을의 창립일 축제다. 축제에 참가하려면 [icon:zm_lingshi] {1:#,##0}이 든다."
   },
   {
     "id": -1000006133,
@@ -1026,18 +1026,18 @@
   {
     "id": -1000006163,
     "key": "wanted_on_player",
-    "en": "A notice flutters on every gate of {0}: your portrait, and a reward of {1:#,##0} spirit stones. Bounty hunters will come.",
-    "ch": "{0}的每座城门都贴出了告示：你的画像，赏金 {1:#,##0} 灵石。赏金猎人很快就会找上门来。",
-    "tc": "{0}的每座城門都貼出了告示：你的畫像，賞金 {1:#,##0} 靈石。賞金獵人很快就會找上門來。",
-    "kr": "{0}의 모든 성문에 전단이 나붙었다. 네 초상화와 현상금 영석 {1:#,##0}. 현상금 사냥꾼들이 찾아올 것이다."
+    "en": "A notice flutters on every gate of {0}: your portrait, and a reward of {1:#,##0} [icon:zm_lingshi]. Bounty hunters will come.",
+    "ch": "{0}的每座城门都贴出了告示：你的画像，赏金 {1:#,##0} [icon:zm_lingshi]。赏金猎人很快就会找上门来。",
+    "tc": "{0}的每座城門都貼出了告示：你的畫像，賞金 {1:#,##0} [icon:zm_lingshi]。賞金獵人很快就會找上門來。",
+    "kr": "{0}의 모든 성문에 전단이 나붙었다. 네 초상화와 현상금 [icon:zm_lingshi] {1:#,##0}. 현상금 사냥꾼들이 찾아올 것이다."
   },
   {
     "id": -1000006164,
     "key": "wanted_ambush",
-    "en": "\"{0} pays {1:#,##0} spirit stones for your head. Nothing personal.\" The bounty hunter blocks your way.",
-    "ch": "“{0}出 {1:#,##0} 灵石买你的人头。别怪我。”赏金猎人拦住了你的去路。",
-    "tc": "「{0}出 {1:#,##0} 靈石買你的人頭。別怪我。」賞金獵人攔住了你的去路。",
-    "kr": "\"{0}이(가) 네 목에 영석 {1:#,##0}을 걸었다. 개인적인 감정은 없다.\" 현상금 사냥꾼이 길을 막았다."
+    "en": "\"{0} pays {1:#,##0} [icon:zm_lingshi] for your head. Nothing personal.\" The bounty hunter blocks your way.",
+    "ch": "“{0}出 {1:#,##0} [icon:zm_lingshi]买你的人头。别怪我。”赏金猎人拦住了你的去路。",
+    "tc": "「{0}出 {1:#,##0} [icon:zm_lingshi]買你的人頭。別怪我。」賞金獵人攔住了你的去路。",
+    "kr": "\"{0}이(가) 네 목에 [icon:zm_lingshi] {1:#,##0}을 걸었다. 개인적인 감정은 없다.\" 현상금 사냥꾼이 길을 막았다."
   },
   {
     "id": -1000006165,
@@ -1058,10 +1058,10 @@
   {
     "id": -1000006167,
     "key": "wanted_done",
-    "en": "{0} has brought down {1}. Your bounty of {2:#,##0} spirit stones is paid.",
-    "ch": "{0}已击杀{1}，你悬赏的 {2:#,##0} 灵石已支付。",
-    "tc": "{0}已擊殺{1}，你懸賞的 {2:#,##0} 靈石已支付。",
-    "kr": "{0}이(가) {1}을(를) 처치했다. 네가 건 현상금 영석 {2:#,##0}이 지급되었다."
+    "en": "{0} has brought down {1}. Your bounty of {2:#,##0} [icon:zm_lingshi] is paid.",
+    "ch": "{0}已击杀{1}，你悬赏的 {2:#,##0} [icon:zm_lingshi]已支付。",
+    "tc": "{0}已擊殺{1}，你懸賞的 {2:#,##0} [icon:zm_lingshi]已支付。",
+    "kr": "{0}이(가) {1}을(를) 처치했다. 네가 건 현상금 [icon:zm_lingshi] {2:#,##0}이 지급되었다."
   },
   {
     "id": -1000006168,
@@ -1739,9 +1739,9 @@
     "id": -1000006261,
     "key": "fund_year",
     "en": "This year: paid {0:#,##0}, unpaid {1:#,##0}; gifts {2:#,##0} stones and {3} items; {4} items taken back",
-    "ch": "今年：已付{0:#,##0}，欠付{1:#,##0}；供奉灵石{2:#,##0}、物品{3}件；取用{4}件",
-    "tc": "今年：已付{0:#,##0}，欠付{1:#,##0}；供奉靈石{2:#,##0}、物品{3}件；取用{4}件",
-    "kr": "올해: 지불 {0:#,##0}, 미지불 {1:#,##0}; 공물 영석 {2:#,##0}, 물품 {3}개; 사용 {4}개"
+    "ch": "今年：已付{0:#,##0}，欠付{1:#,##0}；供奉[icon:zm_lingshi] {2:#,##0}、物品{3}件；取用{4}件",
+    "tc": "今年：已付{0:#,##0}，欠付{1:#,##0}；供奉[icon:zm_lingshi] {2:#,##0}、物品{3}件；取用{4}件",
+    "kr": "올해: 지불 {0:#,##0}, 미지불 {1:#,##0}; 공물 [icon:zm_lingshi] {2:#,##0}, 물품 {3}개; 사용 {4}개"
   },
   {
     "id": -1000006262,
@@ -1786,10 +1786,10 @@
   {
     "id": -1000006267,
     "key": "fund_entry_GiftStones",
-    "en": "{0} brought {1:#,##0} spirit stones",
-    "ch": "{0}送来灵石{1:#,##0}",
-    "tc": "{0}送來靈石{1:#,##0}",
-    "kr": "{0}이(가) 영석 {1:#,##0}을 가져왔다"
+    "en": "{0} brought {1:#,##0} [icon:zm_lingshi]",
+    "ch": "{0}送来[icon:zm_lingshi] {1:#,##0}",
+    "tc": "{0}送來[icon:zm_lingshi] {1:#,##0}",
+    "kr": "{0}이(가) [icon:zm_lingshi] {1:#,##0}을 가져왔다"
   },
   {
     "id": -1000006268,
@@ -1834,10 +1834,10 @@
   {
     "id": -1000006273,
     "key": "log_family_gift_stones",
-    "en": "{0} brought {1:#,##0} spirit stones to the family storage.",
-    "ch": "{0}将灵石{1:#,##0}送入家族仓库。",
-    "tc": "{0}將靈石{1:#,##0}送入家族倉庫。",
-    "kr": "{0}이(가) 영석 {1:#,##0}을 가문 창고에 들여왔다."
+    "en": "{0} brought {1:#,##0} [icon:zm_lingshi] to the family storage.",
+    "ch": "{0}将[icon:zm_lingshi] {1:#,##0}送入家族仓库。",
+    "tc": "{0}將[icon:zm_lingshi] {1:#,##0}送入家族倉庫。",
+    "kr": "{0}이(가) [icon:zm_lingshi] {1:#,##0}을 가문 창고에 들여왔다."
   },
   {
     "id": -1000006274,

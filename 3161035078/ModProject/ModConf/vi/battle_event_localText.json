@@ -232,7 +232,7 @@
 	{
 		"id": "480114611",
 		"key": "battleevent480110611",
-		"en|ch|tc|kr": "Trả tiền cho chúng đi ({0:#,##0} linh thạch)"
+		"en|ch|tc|kr": "Trả tiền cho chúng đi ({0:#,##0} [icon:zm_lingshi])"
 	},
 	{
 		"id": "480114612",
