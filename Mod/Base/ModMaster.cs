@@ -534,7 +534,7 @@ namespace ModLib.Mod
             }
 
             var ui = g.ui.OpenUISafe<UITextInfoLong>(UIType.TextInfoLong);
-            ui.InitData("Exception", ex.GetAllInnnerExceptionStr(), "Open log", ActionHelper.TracedIl2Action(() => Process.Start("notepad.exe", log)), true);
+            ui.InitData(GameTool.LS("libtxt999990017"), ex.GetAllInnnerExceptionStr(), GameTool.LS("libtxt999990018"), ActionHelper.TracedIl2Action(() => Process.Start("notepad.exe", log)), true);
             ui.ptextInfo.fontSize = 14;
         }
 

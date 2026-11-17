@@ -184,6 +184,7 @@ namespace ModLib.Helper
             obj.alignment = tanchor;
             obj.verticalOverflow = vMode;
             obj.horizontalOverflow = hMode;
+            TextIconHelper.Sync(obj);
             return obj;
         }
 
@@ -235,6 +236,7 @@ namespace ModLib.Helper
             obj.fontSize = fsize;
             obj.fontStyle = fstype;
             obj.color = color ?? Color.black;
+            TextIconHelper.Sync(obj);
             return obj;
         }
 
@@ -456,7 +458,8 @@ namespace ModLib.Helper
         /// </summary>
         public static Text Set(this Text obj, string def)
         {
-            obj.text = def;
+            // a sprite (icon) needs TextMeshPro: shown by a twin of the Text
+            TextIconHelper.SetText(obj, def);
             return obj;
         }
 

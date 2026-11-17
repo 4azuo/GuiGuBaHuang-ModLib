@@ -80,6 +80,7 @@ namespace ModLib.Object
             if (ItemWork?.EnableAct != null)
                 Enable = ItemWork?.EnableAct?.Invoke(this) ?? false;
             Item.color = Enable ? Color : Color.gray;
+            TextIconHelper.Sync(Item);
         }
 
         /// <summary>
