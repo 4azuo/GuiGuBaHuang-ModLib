@@ -33,12 +33,12 @@ from consts import DEFAULT_TARGET_LANGUAGES, DIR_PATTERNS, LOCALE_COMBINED_KEY, 
 
 HERE = os.path.dirname(os.path.abspath(__file__))
 ROOT = os.path.dirname(HERE)
-PH = re.compile(r'\{\d+(?::[^}]*)?\}')
+PH = re.compile(r'\{\d+(?::[^}]*)?\}|\{[A-Za-z][A-Za-z0-9]*\}')  # {0}, {1:#,##0}, story name tokens {p} {A} {T2}...
 TAG = re.compile(r'</?color[^>]*>')
 
 RULES = """Translate the English texts of a cultivation (xianxia) game into {langs}.
 Input: {file} ({count} texts). For each language write <lang>.json = {{"t1": "translation", ...}} with every id.
-Rules: keep {{0}}, {{1:#,##0}}... and <color=...>...</color> exactly; keep the same number of line breaks (\\n);
+Rules: keep {{0}}, {{1:#,##0}}..., the name tokens {{p}} {{A}} {{T}}... and <color=...>...</color> exactly; keep the same number of line breaks (\\n);
 natural game style (dialogue sounds spoken, options short); no notes, only the JSON."""
 
 

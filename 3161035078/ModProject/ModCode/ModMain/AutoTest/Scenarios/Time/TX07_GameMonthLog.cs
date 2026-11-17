@@ -52,7 +52,7 @@ namespace MOD_nE7UL2.AutoTest.Scenarios.Time
                     c.Bag["month"] = GameHelper.GetGameTotalMonth();
                     TimeSkipEvent.Instance.SkipTime(1);
                 })
-                .Wait("next month", c => !TimeSkipEvent.Instance.IsProcessing && GameHelper.GetGameTotalMonth() > (int)c.Bag["month"], 120000, 1000)
+                .Wait("next month", c => !TimeSkipEvent.Instance.IsProcessing && GameHelper.GetGameTotalMonth() > (int)c.Bag["month"], 300000, 1000) // longer than the 2 min a stuck month run of the game may last (TimeSkipEvent.RUN_TIMEOUT_MS)
                 .Step("diagnose", c =>
                 {
                     var pid = Player.GetUnitId();

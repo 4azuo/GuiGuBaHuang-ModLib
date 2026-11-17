@@ -159,7 +159,7 @@ namespace MOD_nE7UL2.Mod
             var minGrade = Player.GetGradeLvl() + CollectorsBeaten;
             var town = Town;
             var guards = town == null ? new List<WorldUnitBase>() : MapBuildPropertyEvent.GetTownGuardians(town).Where(x => x != null && !x.isDie && !x.IsPlayer()).ToList();
-            var candidates = guards.Concat((ModMain.ModObj.ParameterStore?.WUnits ?? new WorldUnitBase[0]).Where(x => x != null && !x.isDie && !x.IsPlayer() && !HirePeopleEvent.IsHired(x)));
+            var candidates = guards.Concat((ModMain.Store?.WUnits ?? new WorldUnitBase[0]).Where(x => x != null && !x.isDie && !x.IsPlayer() && !HirePeopleEvent.IsHired(x)));
             return candidates.Where(x => x.GetGradeLvl() >= minGrade).OrderBy(x => x.GetGradeLvl()).FirstOrDefault()
                 ?? candidates.OrderByDescending(x => x.GetGradeLvl()).FirstOrDefault();
         }

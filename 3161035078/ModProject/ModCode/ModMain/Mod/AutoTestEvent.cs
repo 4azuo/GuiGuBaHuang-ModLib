@@ -85,6 +85,7 @@ namespace MOD_nE7UL2.Mod
             EventTraceHelper.Start(Path.Combine(_request.OutDir, "event-trace.log"));
             // no exception dialog during the run (it blocks the steps): errors are still logged and listed in the report
             DebugHelper.IsDebugMode = false;
+            MOD_nE7UL2.Story.StoryEvent.NoAutoOpen = true;
             Log($"request loaded: run={_request.RunId}, save={_request.Save}, autoLoad={_request.AutoLoad}, scenarios={(_request.Scenarios.Count == 0 ? "all" : string.Join(",", _request.Scenarios))}");
             WriteResults();
         }
@@ -93,6 +94,9 @@ namespace MOD_nE7UL2.Mod
 
         private DateTime _lastDramaCheck = DateTime.MinValue;
         private DateTime? _dramaSince;
+
+        /// <summary>Seconds a drama may stay open before the runner closes it (story tests read every drama: longer).</summary>
+        public static int DramaTimeoutSec { get; set; } = 5;
 
         /// <summary>
         /// Every second (real time): closes a drama dialog left open for 5 s (NPC/stalker joining a battle, an opponent
@@ -111,9 +115,9 @@ namespace MOD_nE7UL2.Mod
             var open = new[] { UIType.DramaDialogue, UIType.DramaFortuitous, UIType.DramaDialogueBigTexture, UIType.DramaBigTexture, UIType.ActionCourseInfo }.Any(t => g.ui.HasUI(t));
             if (!open) { _dramaSince = null; return; }
             if (_dramaSince == null) { _dramaSince = DateTime.Now; return; }
-            if ((DateTime.Now - _dramaSince.Value).TotalSeconds >= 5 && TownTestHelper.DismissDramas() > 0)
+            if ((DateTime.Now - _dramaSince.Value).TotalSeconds >= DramaTimeoutSec && TownTestHelper.DismissDramas() > 0)
             {
-                DebugHelper.WriteLine("[AUTOTEST] drama dialog dismissed (open for 5 s)");
+                DebugHelper.WriteLine($"[AUTOTEST] drama dialog dismissed (open for {DramaTimeoutSec} s)");
                 _dramaSince = null;
             }
         }

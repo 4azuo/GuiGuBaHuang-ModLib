@@ -1163,5 +1163,50 @@
 		"id": "-1000006276",
 		"key": "secl_interrupted",
 		"en|ch|tc|kr": "Việc bế quan bị gián đoạn sau {0} tháng: thế gian đang cần đến ngươi."
+	},
+	{
+		"id": "-1000006277",
+		"key": "log_story_end",
+		"en|ch|tc|kr": "Câu chuyện \"{0}\" kết thúc: {1}."
+	},
+	{
+		"id": "-1000006278",
+		"key": "log_story_item",
+		"en|ch|tc|kr": "Nhận được: {0}."
+	},
+	{
+		"id": "-1000006279",
+		"key": "log_story_gift",
+		"en|ch|tc|kr": "{0} gửi cho ngươi {1}."
+	},
+	{
+		"id": "-1000006280",
+		"key": "log_story_benefactor",
+		"en|ch|tc|kr": "{0} đã trả tiền xóa lệnh truy nã trên đầu ngươi."
+	},
+	{
+		"id": "-1000006281",
+		"key": "log_story_tea",
+		"en|ch|tc|kr": "{0} gửi cho ngươi trà bánh (tâm trạng tăng)."
+	},
+	{
+		"id": "-1000006282",
+		"key": "log_story_lesson",
+		"en|ch|tc|kr": "Lời dạy của Thạch bà bà được truyền lại trong gia tộc (+1 căn cơ)."
+	},
+	{
+		"id": "-1000006283",
+		"key": "log_story_ali",
+		"en|ch|tc|kr": "{0} đã trưởng thành."
+	},
+	{
+		"id": "-1000006284",
+		"key": "secl_name_Garden",
+		"en|ch|tc|kr": "Vườn lê"
+	},
+	{
+		"id": "-1000006285",
+		"key": "secl_res_Garden",
+		"en|ch|tc|kr": "Dưới gốc lê, bốn mùa trôi qua như hơi thở."
 	}
 ]

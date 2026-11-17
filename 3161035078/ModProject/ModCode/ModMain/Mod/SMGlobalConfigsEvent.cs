@@ -97,6 +97,8 @@ namespace MOD_nE7UL2.Mod
         public int ChildSurname { get; set; } = 0;
         /// <summary>When the player dies, play on as a grown-up child or grandchild (FamilyEvent).</summary>
         public bool ContinueAsDescendant { get; set; } = false;
+        /// <summary>No NPC storylines (StoryEvent).</summary>
+        public bool NoStory { get; set; } = false;
         /// <summary>Chance of a random encounter each month (%).</summary>
         public float EncounterRate { get; set; } = 3f;
         /// <summary>Chance of a seclusion offer each month (%); forced ones scale with it.</summary>
@@ -165,6 +167,7 @@ namespace MOD_nE7UL2.Mod
         private UIItemComposite tglAllowSameSexCouple;
         private UIItemComposite selChildSurname;
         private UIItemComposite tglContinueAsDescendant;
+        private UIItemComposite tglNoStory;
         private UIItemComposite slEncounterRate;
         private UIItemComposite slSeclusionRate;
         private UIItemComposite tglLostLifespanWhenDie;
@@ -375,6 +378,7 @@ namespace MOD_nE7UL2.Mod
             Register(() => tglAllowSameSexCouple, funcCal: s => 0, funcCond: s => s.Get().Parse<bool>());
             Register(() => selChildSurname, funcCal: s => 0, funcCond: s => false);
             Register(() => tglContinueAsDescendant, funcCal: s => 0, funcCond: s => s.Get().Parse<bool>());
+            Register(() => tglNoStory, funcCal: s => 0, funcCond: s => s.Get().Parse<bool>());
             // rates in % a month, shown as they are ("3 %")
             Func<UIItemBase, object[]> rateFormatter = s =>
             {
@@ -676,6 +680,7 @@ namespace MOD_nE7UL2.Mod
                 tglAllowSameSexCouple = uiCustom.AddCompositeToggle(col, row++, GameTool.LS("smcfgs159"), AllowSameSexCouple, GameTool.LS("smcfgs102"));
                 selChildSurname = uiCustom.AddCompositeSelect(col, row++, GameTool.LS("smcfgs160"), new[] { GameTool.LS("smcfgs161"), GameTool.LS("smcfgs162"), GameTool.LS("smcfgs163") }, ChildSurname);
                 tglContinueAsDescendant = uiCustom.AddCompositeToggle(col, row++, GameTool.LS("smcfgs164"), ContinueAsDescendant, GameTool.LS("smcfgs102"));
+                tglNoStory = uiCustom.AddCompositeToggle(col, row++, GameTool.LS("smcfgs167"), NoStory, GameTool.LS("smcfgs102"));
                 row++;
                 // rates of the random events (second column)
                 slEncounterRate = uiCustom.AddCompositeSlider(16, 1, GameTool.LS("smcfgs165"), 0f, 10f, EncounterRate, GameTool.LS("smcfgs103"));
@@ -852,6 +857,7 @@ namespace MOD_nE7UL2.Mod
             tglAllowSameSexCouple.Set(false);
             selChildSurname.Set(0);
             tglContinueAsDescendant.Set(false);
+            tglNoStory.Set(false);
             slEncounterRate.Set(3f);
             slSeclusionRate.Set(0.5f);
             tglLostLifespanWhenDie.Set(false);
@@ -922,6 +928,7 @@ namespace MOD_nE7UL2.Mod
             tglAllowSameSexCouple.Set(false);
             selChildSurname.Set(0);
             tglContinueAsDescendant.Set(false);
+            tglNoStory.Set(false);
             slEncounterRate.Set(3f);
             slSeclusionRate.Set(0.5f);
             tglLostLifespanWhenDie.Set(level > 0);
@@ -992,6 +999,7 @@ namespace MOD_nE7UL2.Mod
             AllowSameSexCouple = tglAllowSameSexCouple.Get().Parse<bool>();
             ChildSurname = selChildSurname.Get().Parse<int>();
             ContinueAsDescendant = tglContinueAsDescendant.Get().Parse<bool>();
+            NoStory = tglNoStory.Get().Parse<bool>();
             EncounterRate = slEncounterRate.Get().Parse<float>();
             SeclusionRate = slSeclusionRate.Get().Parse<float>();
             LostLifespanWhenDie = tglLostLifespanWhenDie.Get().Parse<bool>();

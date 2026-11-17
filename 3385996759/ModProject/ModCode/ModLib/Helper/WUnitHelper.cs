@@ -675,11 +675,15 @@ namespace ModLib.Helper
         public static void AddUnitProp(this WorldUnitBase wunit, int propID, int addCount)
         {
             LastAddedItems = new Il2CppSystem.Collections.Generic.List<DataProps.PropsData>();
+            if (wunit?.data?.unitData?.propData == null)
+                return;
 
             var curProps = wunit.GetUnitProps(propID);
-            if (curProps?.Count == 0)
+            if (curProps == null || curProps.Count == 0)
             {
                 var conf = g.conf.itemProps.GetItem(propID);
+                if (conf == null)
+                    return;
                 if (conf.isOverlay == 1)
                 {
                     LastAddedItems = wunit.data.unitData.propData.AddProps(propID, addCount);

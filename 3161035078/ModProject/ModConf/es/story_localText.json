@@ -1,0 +1,1472 @@
+[
+	{
+		"id": "-1000007000",
+		"key": "story_continue",
+		"en|ch|tc|kr": "Continuar"
+	},
+	{
+		"id": "-1000007032",
+		"key": "story_A2_2_later",
+		"en|ch|tc|kr": "Ahora no"
+	},
+	{
+		"id": "-1000007075",
+		"key": "story_endA_hunt_o1",
+		"en|ch|tc|kr": "Luchar"
+	},
+	{
+		"id": "-1000007087",
+		"key": "story_B0_2_o2",
+		"en|ch|tc|kr": "Luchar"
+	},
+	{
+		"id": "-1000007116",
+		"key": "story_B4_3_o1",
+		"en|ch|tc|kr": "Defender la ciudad"
+	},
+	{
+		"id": "-1000007138",
+		"key": "story_C1_2_o3",
+		"en|ch|tc|kr": "Ahora no"
+	},
+	{
+		"id": "-1000007264",
+		"key": "story_garden_no",
+		"en|ch|tc|kr": "Ahora no"
+	},
+	{
+		"id": "-1000007279",
+		"key": "story_F3_1_o1",
+		"en|ch|tc|kr": "Luchar"
+	},
+	{
+		"id": "-1000007001",
+		"key": "story_name_A",
+		"en|ch|tc|kr": "Espada fría"
+	},
+	{
+		"id": "-1000007002",
+		"key": "story_name_B",
+		"en|ch|tc|kr": "La deuda del viejo Huang"
+	},
+	{
+		"id": "-1000007003",
+		"key": "story_name_C",
+		"en|ch|tc|kr": "El horno que explota"
+	},
+	{
+		"id": "-1000007004",
+		"key": "story_name_D",
+		"en|ch|tc|kr": "Hermanos jurados"
+	},
+	{
+		"id": "-1000007005",
+		"key": "story_name_E",
+		"en|ch|tc|kr": "El jardín de hierbas de la abuela"
+	},
+	{
+		"id": "-1000007006",
+		"key": "story_name_F",
+		"en|ch|tc|kr": "Loto Rojo"
+	},
+	{
+		"id": "-1000007007",
+		"key": "story_name_Y",
+		"en|ch|tc|kr": "A Li"
+	},
+	{
+		"id": "-1000007008",
+		"key": "story_A0_1",
+		"en|ch|tc|kr": "Una mujer con la túnica de secta hecha jirones sale tambaleándose del juncal, con una espada rota en la mano. Discípulos de {S} la siguen con las armas desenvainadas.\n{A}: «No te metas. No es tu pelea».\nUn discípulo: «La traidora {A} robó el manual de espada de la secta. Entrégala y la secta recordará tu bondad»."
+	},
+	{
+		"id": "-1000007009",
+		"key": "story_A0_1_o1",
+		"en|ch|tc|kr": "Luchar contra los discípulos"
+	},
+	{
+		"id": "-1000007010",
+		"key": "story_A0_1_o2",
+		"en|ch|tc|kr": "«Es vuestra»."
+	},
+	{
+		"id": "-1000007011",
+		"key": "story_A0_1_o3",
+		"en|ch|tc|kr": "Marcharse"
+	},
+	{
+		"id": "-1000007012",
+		"key": "story_A0_handed",
+		"en|ch|tc|kr": "Mientras se la llevan a rastras, sus ojos buscan los tuyos: no hay ira, solo una promesa fría y paciente."
+	},
+	{
+		"id": "-1000007013",
+		"key": "story_A0_2",
+		"en|ch|tc|kr": "«…Gracias. No olvidaré esta deuda».\nArranca una tira de seda azul de su manga y te la pone en la mano. «Si vuelves a oír mi nombre, no creas lo que digan»."
+	},
+	{
+		"id": "-1000007014",
+		"key": "story_A0_2_lost",
+		"en|ch|tc|kr": "En la confusión de la pelea, ella escapa. Más tarde, una tira de seda azul aparece atada a tu puerta. «No olvidaré esta deuda. Si vuelves a oír mi nombre, no creas lo que digan»."
+	},
+	{
+		"id": "-1000007015",
+		"key": "story_A0_3",
+		"en|ch|tc|kr": "Un cartel en la puerta de la ciudad: «Se busca: {A}, ladrona de {S}». Alguien ha dibujado mal su cara."
+	},
+	{
+		"id": "-1000007016",
+		"key": "story_A0_3_o1",
+		"en|ch|tc|kr": "Arrancarlo"
+	},
+	{
+		"id": "-1000007017",
+		"key": "story_A0_3_o2",
+		"en|ch|tc|kr": "Dejarlo"
+	},
+	{
+		"id": "-1000007164",
+		"key": "story_C3_app_o3",
+		"en|ch|tc|kr": "Dejarlo"
+	},
+	{
+		"id": "-1000007018",
+		"key": "story_A1_1",
+		"en|ch|tc|kr": "De noche. Alguien golpea tu ventana: {A}, pálida, con una mano en el costado. «La herida no se cierra. Su espada estaba envenenada»."
+	},
+	{
+		"id": "-1000007019",
+		"key": "story_A1_2",
+		"en|ch|tc|kr": "«Necesito una píldora antídoto o una hierba bastante fuerte (grado {0} o superior)»."
+	},
+	{
+		"id": "-1000007020",
+		"key": "story_A1_2_o1",
+		"en|ch|tc|kr": "Darle una píldora"
+	},
+	{
+		"id": "-1000007021",
+		"key": "story_A1_2_o2",
+		"en|ch|tc|kr": "Darle una hierba"
+	},
+	{
+		"id": "-1000007022",
+		"key": "story_A1_2_o3",
+		"en|ch|tc|kr": "«No tengo nada». (buscar en el mercado)"
+	},
+	{
+		"id": "-1000007023",
+		"key": "story_A1_2_search",
+		"en|ch|tc|kr": "Prometes encontrar algo. Ella asiente y desaparece en la oscuridad."
+	},
+	{
+		"id": "-1000007024",
+		"key": "story_A1_2_none",
+		"en|ch|tc|kr": "No tienes nada lo bastante fuerte. Ella asiente y desaparece en la oscuridad; volverá."
+	},
+	{
+		"id": "-1000007025",
+		"key": "story_A1_3",
+		"en|ch|tc|kr": "«El manual nunca fue robado. Fue vendido. Vi a quien lo recibió: una mujer de rojo, con un loto en el abanico»."
+	},
+	{
+		"id": "-1000007026",
+		"key": "story_A1_late",
+		"en|ch|tc|kr": "Te llega la noticia: {A} se curó sola en una cueva durante todo un año. No volvió a preguntar por ti."
+	},
+	{
+		"id": "-1000007027",
+		"key": "story_A2_1",
+		"en|ch|tc|kr": "«Mi maestro guardaba cada carta. Una se extravió: al mensajero le robaron camino de {T}. Encuéntrala»."
+	},
+	{
+		"id": "-1000007028",
+		"key": "story_A2_2_robber",
+		"en|ch|tc|kr": "En {T}, un borracho presume de haber robado a un mensajero. En su cinturón lleva una carta sellada."
+	},
+	{
+		"id": "-1000007029",
+		"key": "story_A2_2_fight",
+		"en|ch|tc|kr": "Quitarle la carta"
+	},
+	{
+		"id": "-1000007030",
+		"key": "story_A2_2_market",
+		"en|ch|tc|kr": "En el mercado de {T}, un puesto vende «cartas viejas, sellos curiosos». Una lleva el sello de {S}. Precio: {0:#,##0} piedras espirituales."
+	},
+	{
+		"id": "-1000007031",
+		"key": "story_A2_2_buy",
+		"en|ch|tc|kr": "Comprarla"
+	},
+	{
+		"id": "-1000007083",
+		"key": "story_B0_1_o1",
+		"en|ch|tc|kr": "Comprarla"
+	},
+	{
+		"id": "-1000007033",
+		"key": "story_A2_3",
+		"en|ch|tc|kr": "La carta lleva el sello de {M}… y un loto rojo grabado en la cera. {A} la lee dos veces y la dobla con manos firmes. «Una prueba. Dirán que la falsifiqué»."
+	},
+	{
+		"id": "-1000007034",
+		"key": "story_A2_3_o1",
+		"en|ch|tc|kr": "«Entonces buscaremos una segunda»."
+	},
+	{
+		"id": "-1000007035",
+		"key": "story_A2_3_o2",
+		"en|ch|tc|kr": "«Demuestra que no es falsa». (un año más)"
+	},
+	{
+		"id": "-1000007036",
+		"key": "story_A2_jailed",
+		"en|ch|tc|kr": "Llega la noticia de {S}: {A} fue capturada y encerrada en la prisión de la secta."
+	},
+	{
+		"id": "-1000007037",
+		"key": "story_A2_jailed_o1",
+		"en|ch|tc|kr": "Rescatarla"
+	},
+	{
+		"id": "-1000007038",
+		"key": "story_A2_jailed_o2",
+		"en|ch|tc|kr": "No hacer nada"
+	},
+	{
+		"id": "-1000007039",
+		"key": "story_A_fallen",
+		"en|ch|tc|kr": "Años después, una mujer de negro con ribetes rojos te corta el paso: {A}. «Te esperé en aquella celda. Nunca viniste»."
+	},
+	{
+		"id": "-1000007040",
+		"key": "story_A3_1",
+		"en|ch|tc|kr": "«El viejo Lu guardaba el tesoro de la secta. Vio el trato. Un mes después huyó de la secta, aterrado»."
+	},
+	{
+		"id": "-1000007041",
+		"key": "story_A3_2",
+		"en|ch|tc|kr": "La puerta de la casa del viejo Lu ya está rota. Asesinos enmascarados rodean al anciano."
+	},
+	{
+		"id": "-1000007042",
+		"key": "story_A3_2_o1",
+		"en|ch|tc|kr": "Protegerlo"
+	},
+	{
+		"id": "-1000007043",
+		"key": "story_A3_3",
+		"en|ch|tc|kr": "«Hablaré ante los ancianos… si me mantenéis con vida hasta entonces»."
+	},
+	{
+		"id": "-1000007044",
+		"key": "story_A3_ledger",
+		"en|ch|tc|kr": "El viejo Lu ha muerto. El tesoro de la secta está vigilado día y noche; su libro de cuentas es la única prueba que queda."
+	},
+	{
+		"id": "-1000007045",
+		"key": "story_A3_ledger_o1",
+		"en|ch|tc|kr": "Colarse"
+	},
+	{
+		"id": "-1000007046",
+		"key": "story_A3_ledger_o2",
+		"en|ch|tc|kr": "Todavía no"
+	},
+	{
+		"id": "-1000007047",
+		"key": "story_A4_1",
+		"en|ch|tc|kr": "«Las pruebas no bastan contra un anciano. Debo ser lo bastante fuerte para plantarme ante él. Entrena conmigo, {p}»."
+	},
+	{
+		"id": "-1000007048",
+		"key": "story_A4_1_o1",
+		"en|ch|tc|kr": "Entrenar con ella"
+	},
+	{
+		"id": "-1000007049",
+		"key": "story_A4_1_o2",
+		"en|ch|tc|kr": "Otro día"
+	},
+	{
+		"id": "-1000007050",
+		"key": "story_A4_2",
+		"en|ch|tc|kr": "«Mi espada se rompió el día que me fui. Necesito una hoja que no se rompa». (un herrero pide {0:#,##0} piedras espirituales)"
+	},
+	{
+		"id": "-1000007051",
+		"key": "story_A4_2_o1",
+		"en|ch|tc|kr": "Darle una espada"
+	},
+	{
+		"id": "-1000007052",
+		"key": "story_A4_2_o2",
+		"en|ch|tc|kr": "Pagar a un herrero"
+	},
+	{
+		"id": "-1000007053",
+		"key": "story_A4_2_o3",
+		"en|ch|tc|kr": "«Tu voluntad es la hoja»."
+	},
+	{
+		"id": "-1000007054",
+		"key": "story_A4_3",
+		"en|ch|tc|kr": "El trueno retumba sobre la montaña. Cuando se abren las nubes, {A} está bajo la lluvia, con la mirada clara por primera vez. «Estoy lista»."
+	},
+	{
+		"id": "-1000007055",
+		"key": "story_A5_1",
+		"en|ch|tc|kr": "«Iré a {S} a recuperar mi nombre: con esta espada o con mi vida»."
+	},
+	{
+		"id": "-1000007056",
+		"key": "story_A5_1_o1",
+		"en|ch|tc|kr": "«Entonces iremos juntos»."
+	},
+	{
+		"id": "-1000007057",
+		"key": "story_A5_1_o2",
+		"en|ch|tc|kr": "«Déjalo. La venganza te devorará»."
+	},
+	{
+		"id": "-1000007058",
+		"key": "story_A5_1_o3",
+		"en|ch|tc|kr": "(en secreto) Avisar a {M}"
+	},
+	{
+		"id": "-1000007059",
+		"key": "story_A5_2",
+		"en|ch|tc|kr": "«Una ladrona y su cómplice. Ancianos, ved qué desvergüenza»."
+	},
+	{
+		"id": "-1000007060",
+		"key": "story_A5_2_o1",
+		"en|ch|tc|kr": "Mostrar las pruebas"
+	},
+	{
+		"id": "-1000007061",
+		"key": "story_A5_2_o2",
+		"en|ch|tc|kr": "Desafiar a {M} a un duelo"
+	},
+	{
+		"id": "-1000007062",
+		"key": "story_A5_3",
+		"en|ch|tc|kr": "{M} está de rodillas. «Dime, {p}: ¿cuánto vale la clemencia?»."
+	},
+	{
+		"id": "-1000007063",
+		"key": "story_A5_3_o1",
+		"en|ch|tc|kr": "«Que lo juzgue la secta»."
+	},
+	{
+		"id": "-1000007064",
+		"key": "story_A5_3_o2",
+		"en|ch|tc|kr": "«Tú decides, no yo»."
+	},
+	{
+		"id": "-1000007065",
+		"key": "story_A5_lost",
+		"en|ch|tc|kr": "Te hacen retroceder. {A} te saca a rastras del salón. «Hoy no. Pero algún día»."
+	},
+	{
+		"id": "-1000007066",
+		"key": "story_A5_late",
+		"en|ch|tc|kr": "{A} fue sola a {S}. Cuando salió, su túnica estaba roja, y también su espada."
+	},
+	{
+		"id": "-1000007067",
+		"key": "story_endA_Companion",
+		"en|ch|tc|kr": "«Cuando no tenía nada, estuviste a mi lado. Recorre conmigo el resto del camino, {p}»."
+	},
+	{
+		"id": "-1000007068",
+		"key": "story_endA_Companion_o1",
+		"en|ch|tc|kr": "«Juntos, entonces»."
+	},
+	{
+		"id": "-1000007069",
+		"key": "story_endA_Companion_o2",
+		"en|ch|tc|kr": "«Siempre seré tu amigo»."
+	},
+	{
+		"id": "-1000007070",
+		"key": "story_endA_SectMaster",
+		"en|ch|tc|kr": "«Fundaré una secta donde ningún maestro traicione a sus discípulos. Su primer anciano deberías ser tú»."
+	},
+	{
+		"id": "-1000007071",
+		"key": "story_endA_Peace",
+		"en|ch|tc|kr": "«La espada está más tranquila ahora. Yo también»."
+	},
+	{
+		"id": "-1000007072",
+		"key": "story_endA_Fallen",
+		"en|ch|tc|kr": "«La clemencia era una mentira que me enseñaron. La dama Honglian me enseñó la verdad»."
+	},
+	{
+		"id": "-1000007073",
+		"key": "story_endA_Sacrifice",
+		"en|ch|tc|kr": "Se interpone ante el golpe destinado a ti. «…Te toca… vivir». Su espada cae a tus pies."
+	},
+	{
+		"id": "-1000007074",
+		"key": "story_endA_hunt",
+		"en|ch|tc|kr": "{A} te corta el paso con la espada ya desenvainada. «Dije que vendría a cobrar la deuda»."
+	},
+	{
+		"id": "-1000007076",
+		"key": "story_end_A_Companion",
+		"en|ch|tc|kr": "Compañera"
+	},
+	{
+		"id": "-1000007179",
+		"key": "story_end_C_Companion",
+		"en|ch|tc|kr": "Compañera"
+	},
+	{
+		"id": "-1000007077",
+		"key": "story_end_A_SectMaster",
+		"en|ch|tc|kr": "Maestra de secta"
+	},
+	{
+		"id": "-1000007078",
+		"key": "story_end_A_Peace",
+		"en|ch|tc|kr": "Paz"
+	},
+	{
+		"id": "-1000007079",
+		"key": "story_end_A_Fallen",
+		"en|ch|tc|kr": "Caída"
+	},
+	{
+		"id": "-1000007080",
+		"key": "story_end_A_Sacrifice",
+		"en|ch|tc|kr": "Sacrificio"
+	},
+	{
+		"id": "-1000007081",
+		"key": "story_end_A_Traitor",
+		"en|ch|tc|kr": "Traidor"
+	},
+	{
+		"id": "-1000007082",
+		"key": "story_B0_1",
+		"en|ch|tc|kr": "«¡Ah, un cliente con buen ojo! Esta pieza vale el triple, lo juro por la tumba de mi abuela. ¿Para ti? La mitad: {0:#,##0} piedras espirituales»."
+	},
+	{
+		"id": "-1000007084",
+		"key": "story_B0_1_o2",
+		"en|ch|tc|kr": "«La tumba de tu abuela debe de estar muy ocupada»."
+	},
+	{
+		"id": "-1000007085",
+		"key": "story_B0_2",
+		"en|ch|tc|kr": "Dos enmascarados te cortan el paso. «Lo que te vendió el viejo pertenece al Loto Rojo. Devuélvelo y conservarás las manos»."
+	},
+	{
+		"id": "-1000007086",
+		"key": "story_B0_2_o1",
+		"en|ch|tc|kr": "Devolverlo"
+	},
+	{
+		"id": "-1000007088",
+		"key": "story_B0_2_o3",
+		"en|ch|tc|kr": "Correr hacia {H}"
+	},
+	{
+		"id": "-1000007089",
+		"key": "story_B0_3",
+		"en|ch|tc|kr": "«¿Ya han venido? ¿Tan pronto? ¡Ay, cielos, ay, antepasados, ay, mis pobres rodillas…!»"
+	},
+	{
+		"id": "-1000007090",
+		"key": "story_B1_1",
+		"en|ch|tc|kr": "La tienda de {H} está cerrada. Lo encuentras escondido tras unos sacos de arroz en un almacén."
+	},
+	{
+		"id": "-1000007091",
+		"key": "story_B1_2",
+		"en|ch|tc|kr": "«Cuando se hundió mi caravana, pedí prestado al Loto Rojo. Diez años de intereses… Vendí sus mercancías para pagarles. Mal, como has visto»."
+	},
+	{
+		"id": "-1000007092",
+		"key": "story_B1_3",
+		"en|ch|tc|kr": "«¿Me avalas en el banco? ¡Solo una firma! ¿Qué podría salir mal?» (o préstame {0:#,##0} piedras espirituales…)"
+	},
+	{
+		"id": "-1000007093",
+		"key": "story_B1_3_o1",
+		"en|ch|tc|kr": "Avalarlo"
+	},
+	{
+		"id": "-1000007094",
+		"key": "story_B1_3_o2",
+		"en|ch|tc|kr": "Prestarle piedras espirituales"
+	},
+	{
+		"id": "-1000007095",
+		"key": "story_B1_3_o3",
+		"en|ch|tc|kr": "«Cada “qué podría salir mal” acaba en un funeral»."
+	},
+	{
+		"id": "-1000007096",
+		"key": "story_B2_1",
+		"en|ch|tc|kr": "«Una última caravana a {T2}. Seda, hierbas, un poco de jade espiritual. Si llega, pago a todos. Si no… me hago un monje muy sincero»."
+	},
+	{
+		"id": "-1000007097",
+		"key": "story_B2_2",
+		"en|ch|tc|kr": "A medio camino de {T2}, las flechas alcanzan el primer carro. Los bandidos salen en tropel de entre los árboles."
+	},
+	{
+		"id": "-1000007098",
+		"key": "story_B2_2_o1",
+		"en|ch|tc|kr": "Defender la caravana"
+	},
+	{
+		"id": "-1000007099",
+		"key": "story_B2_3",
+		"en|ch|tc|kr": "«Tu parte: {0:#,##0} piedras espirituales. No las cuentes delante de mí, que me echo a llorar»."
+	},
+	{
+		"id": "-1000007100",
+		"key": "story_B2_vanished",
+		"en|ch|tc|kr": "La tienda de {H} está vacía. Una nota en la puerta: «He ido a ver a mi primo. Lejos. Muy lejos»."
+	},
+	{
+		"id": "-1000007101",
+		"key": "story_B2_found",
+		"en|ch|tc|kr": "En una ciudad lejana, una voz conocida regatea por un nabo. {H} palidece. «…Puedo explicarlo. ¡Puedo pagar! ¡En mercancía!»"
+	},
+	{
+		"id": "-1000007102",
+		"key": "story_B3_1",
+		"en|ch|tc|kr": "Un hombre de seda roja entra en la tienda de {H}. «La Dama os envía saludos. Toca pagar los intereses»."
+	},
+	{
+		"id": "-1000007103",
+		"key": "story_B3_2",
+		"en|ch|tc|kr": "«Vi su libro de cuentas. No solo yo: la mitad de los comerciantes de la región le deben dinero. Está comprando las ciudades, deuda a deuda». (intereses: {0:#,##0} piedras espirituales)"
+	},
+	{
+		"id": "-1000007104",
+		"key": "story_B3_2_o1",
+		"en|ch|tc|kr": "Robar el libro"
+	},
+	{
+		"id": "-1000007105",
+		"key": "story_B3_2_o2",
+		"en|ch|tc|kr": "Pagar los intereses"
+	},
+	{
+		"id": "-1000007106",
+		"key": "story_B3_2_o3",
+		"en|ch|tc|kr": "Darle largas"
+	},
+	{
+		"id": "-1000007107",
+		"key": "story_B3_3_ledger",
+		"en|ch|tc|kr": "El libro rojo está en tus manos: página tras página de comerciantes que deben a la Dama. Recordarán quién los liberó."
+	},
+	{
+		"id": "-1000007108",
+		"key": "story_B3_3_paid",
+		"en|ch|tc|kr": "El enviado cuenta las piedras y sonríe. «Hasta la próxima». Dos años tranquilos, al menos."
+	},
+	{
+		"id": "-1000007109",
+		"key": "story_B3_3_stalled",
+		"en|ch|tc|kr": "El enviado se va sin decir palabra. Esa noche se ven estandartes rojos en las colinas."
+	},
+	{
+		"id": "-1000007110",
+		"key": "story_B4_1",
+		"en|ch|tc|kr": "Estandartes rojos se alzan ante {T}. El Loto Rojo exige la ciudad como pago de la deuda de {H}."
+	},
+	{
+		"id": "-1000007111",
+		"key": "story_B4_2",
+		"en|ch|tc|kr": "«Tengo ahorros. Ahorros secretos. Muy secretos. Tómalos: contrata guardias, compra flechas, ¡lo que sea!»"
+	},
+	{
+		"id": "-1000007112",
+		"key": "story_B4_2_o1",
+		"en|ch|tc|kr": "Contratar guardias"
+	},
+	{
+		"id": "-1000007113",
+		"key": "story_B4_2_o2",
+		"en|ch|tc|kr": "Negociar un tributo"
+	},
+	{
+		"id": "-1000007114",
+		"key": "story_B4_2_o3",
+		"en|ch|tc|kr": "Mantenerse al margen"
+	},
+	{
+		"id": "-1000007115",
+		"key": "story_B4_3",
+		"en|ch|tc|kr": "El Loto Rojo ataca las puertas de {T}."
+	},
+	{
+		"id": "-1000007117",
+		"key": "story_B5_1",
+		"en|ch|tc|kr": "«¿Sabes, {p}? En cuarenta años de comercio eres mi único cliente que nunca regateó. Tonto»."
+	},
+	{
+		"id": "-1000007118",
+		"key": "story_B5_2",
+		"en|ch|tc|kr": "Desliza una cajita por la mesa. «No la abras aquí. Todos querrán una»."
+	},
+	{
+		"id": "-1000007119",
+		"key": "story_endB_Heir",
+		"en|ch|tc|kr": "Una carta de letra temblorosa: «A mi único cliente honrado… mi mercancía es tuya. Véndela cara»."
+	},
+	{
+		"id": "-1000007120",
+		"key": "story_endB_Betrayed",
+		"en|ch|tc|kr": "Una nota en un escritorio vacío: «Lo siento, amigo. Hay que vivir». Ahora el banco te reclama su deuda."
+	},
+	{
+		"id": "-1000007121",
+		"key": "story_endB_FallenTown",
+		"en|ch|tc|kr": "Los estandartes sobre {T} siguen rojos. Los impuestos se duplican y los guardias ya no sonríen."
+	},
+	{
+		"id": "-1000007122",
+		"key": "story_endB_Benefactor",
+		"en|ch|tc|kr": "«Confiaste en un tonto. El tonto no lo olvidará». Te lo devuelve todo, con intereses."
+	},
+	{
+		"id": "-1000007123",
+		"key": "story_endB_MerchantPrince",
+		"en|ch|tc|kr": "«Desde hoy, tu dinero no vale en mis tiendas. Bueno… vale la mitad»."
+	},
+	{
+		"id": "-1000007124",
+		"key": "story_end_B_MerchantPrince",
+		"en|ch|tc|kr": "Príncipe mercader"
+	},
+	{
+		"id": "-1000007125",
+		"key": "story_end_B_Heir",
+		"en|ch|tc|kr": "El heredero"
+	},
+	{
+		"id": "-1000007126",
+		"key": "story_end_B_FallenTown",
+		"en|ch|tc|kr": "Ciudad caída"
+	},
+	{
+		"id": "-1000007127",
+		"key": "story_end_B_Betrayed",
+		"en|ch|tc|kr": "Traicionado"
+	},
+	{
+		"id": "-1000007128",
+		"key": "story_end_B_Benefactor",
+		"en|ch|tc|kr": "Benefactor"
+	},
+	{
+		"id": "-1000007129",
+		"key": "story_C0_1",
+		"en|ch|tc|kr": "¡BUM! Un humo morado rueda calle abajo. Una chica con las cejas chamuscadas te saluda a través de la neblina.\n«Pareces sano. ¿Quieres probar una píldora? ¡Segura al noventa por ciento! Ochenta. Probablemente»."
+	},
+	{
+		"id": "-1000007130",
+		"key": "story_C0_1_o1",
+		"en|ch|tc|kr": "«…Vale»."
+	},
+	{
+		"id": "-1000007131",
+		"key": "story_C0_1_o2",
+		"en|ch|tc|kr": "Retroceder despacio"
+	},
+	{
+		"id": "-1000007132",
+		"key": "story_C0_2",
+		"en|ch|tc|kr": "Tu pelo se vuelve lavanda durante tres meses. {X} toma notas, encantada."
+	},
+	{
+		"id": "-1000007133",
+		"key": "story_C0_3",
+		"en|ch|tc|kr": "«¡Perdón, perdón, perdón! Toma, una píldora de verdad. Funciona siempre. Casi siempre»."
+	},
+	{
+		"id": "-1000007134",
+		"key": "story_C1_1",
+		"en|ch|tc|kr": "«El examen del Gremio de Alquimia es la próxima primavera. Necesito un loto de escarcha lunar. Un valle. Una serpiente enorme. Jeje»."
+	},
+	{
+		"id": "-1000007135",
+		"key": "story_C1_2",
+		"en|ch|tc|kr": "Un vendedor de hierbas tiene un mapa del valle: {0:#,##0} piedras espirituales, o una hierba a cambio."
+	},
+	{
+		"id": "-1000007136",
+		"key": "story_C1_2_o1",
+		"en|ch|tc|kr": "Comprar el mapa"
+	},
+	{
+		"id": "-1000007137",
+		"key": "story_C1_2_o2",
+		"en|ch|tc|kr": "Cambiar una hierba"
+	},
+	{
+		"id": "-1000007139",
+		"key": "story_C1_3",
+		"en|ch|tc|kr": "El valle está blanco de escarcha. Algo enorme se mueve bajo el estanque de lotos."
+	},
+	{
+		"id": "-1000007140",
+		"key": "story_C1_3_o1",
+		"en|ch|tc|kr": "Luchar contra la serpiente"
+	},
+	{
+		"id": "-1000007141",
+		"key": "story_C1_4",
+		"en|ch|tc|kr": "Una anciana está sentada junto al estanque, intacta tras la pelea. «Los jóvenes, siempre con prisa. Llévate el loto… y deja las raíces»."
+	},
+	{
+		"id": "-1000007142",
+		"key": "story_C1_failed",
+		"en|ch|tc|kr": "{X} fue sola. Vuelve cojeando, con las manos vacías, y no hace ni un chiste en una semana."
+	},
+	{
+		"id": "-1000007143",
+		"key": "story_C1_failed_o1",
+		"en|ch|tc|kr": "Cuidarla"
+	},
+	{
+		"id": "-1000007144",
+		"key": "story_C1_failed_o2",
+		"en|ch|tc|kr": "Dejarla tranquila"
+	},
+	{
+		"id": "-1000007145",
+		"key": "story_C2_1",
+		"en|ch|tc|kr": "«Tasa del horno: {0:#,##0} piedras espirituales», dice el examinador. {X} te mira con ojos enormes."
+	},
+	{
+		"id": "-1000007146",
+		"key": "story_C2_1_o1",
+		"en|ch|tc|kr": "Pagar"
+	},
+	{
+		"id": "-1000007147",
+		"key": "story_C2_1_o2",
+		"en|ch|tc|kr": "«Tú tienes ahorros»."
+	},
+	{
+		"id": "-1000007148",
+		"key": "story_C2_q1",
+		"en|ch|tc|kr": "«¿Fuego fuerte o fuego suave? ¡Rápido, rápido, está burbujeando!»"
+	},
+	{
+		"id": "-1000007149",
+		"key": "story_C2_q1_o1",
+		"en|ch|tc|kr": "Fuego fuerte"
+	},
+	{
+		"id": "-1000007150",
+		"key": "story_C2_q1_o2",
+		"en|ch|tc|kr": "Fuego suave"
+	},
+	{
+		"id": "-1000007151",
+		"key": "story_C2_q2",
+		"en|ch|tc|kr": "«¡Se está poniendo negro por abajo! ¡¿Qué hago?!»"
+	},
+	{
+		"id": "-1000007152",
+		"key": "story_C2_q2_o1",
+		"en|ch|tc|kr": "Fuego fuerte, que se queme del todo"
+	},
+	{
+		"id": "-1000007153",
+		"key": "story_C2_q2_o2",
+		"en|ch|tc|kr": "Apagar el fuego"
+	},
+	{
+		"id": "-1000007154",
+		"key": "story_C2_q3",
+		"en|ch|tc|kr": "«¡La píldora se está formando! El loto: ¿ahora o después?»"
+	},
+	{
+		"id": "-1000007155",
+		"key": "story_C2_q3_o1",
+		"en|ch|tc|kr": "Ahora"
+	},
+	{
+		"id": "-1000007156",
+		"key": "story_C2_q3_o2",
+		"en|ch|tc|kr": "Después"
+	},
+	{
+		"id": "-1000007157",
+		"key": "story_C2_pass",
+		"en|ch|tc|kr": "«¡HE APROBADO! ¿Lo has visto? ¡¿Lo han visto todos?!»"
+	},
+	{
+		"id": "-1000007158",
+		"key": "story_C2_fail",
+		"en|ch|tc|kr": "«…El año que viene. El año que viene lo conseguiré»."
+	},
+	{
+		"id": "-1000007159",
+		"key": "story_C3_1",
+		"en|ch|tc|kr": "Por una vez, {X} no bromea. «El gran maestro {G} presentó mi receta al Gremio. Mi receta. Se rio cuando lo dije»."
+	},
+	{
+		"id": "-1000007160",
+		"key": "story_C3_app1",
+		"en|ch|tc|kr": "Un aprendiz del Gremio vio a {X} escribir la receta. Hablará… si antes le ayudas."
+	},
+	{
+		"id": "-1000007161",
+		"key": "story_C3_app2",
+		"en|ch|tc|kr": "Una segunda aprendiz copió la receta para {G}. Tiene miedo… y sufre acoso."
+	},
+	{
+		"id": "-1000007162",
+		"key": "story_C3_app_o1",
+		"en|ch|tc|kr": "Dar una píldora o una hierba"
+	},
+	{
+		"id": "-1000007163",
+		"key": "story_C3_app_o2",
+		"en|ch|tc|kr": "Encargarse del abusón"
+	},
+	{
+		"id": "-1000007165",
+		"key": "story_C3_4",
+		"en|ch|tc|kr": "«Bueno. ¿Qué hacemos con el gran maestro?»"
+	},
+	{
+		"id": "-1000007166",
+		"key": "story_C3_4_o1",
+		"en|ch|tc|kr": "Desenmascararlo ante el Gremio"
+	},
+	{
+		"id": "-1000007167",
+		"key": "story_C3_4_o2",
+		"en|ch|tc|kr": "Retarlo a duelo"
+	},
+	{
+		"id": "-1000007168",
+		"key": "story_C3_4_o3",
+		"en|ch|tc|kr": "«Déjalo. Harás recetas mejores»."
+	},
+	{
+		"id": "-1000007169",
+		"key": "story_C3_exposed",
+		"en|ch|tc|kr": "Ante todo el Gremio, los aprendices hablan. {G} se pone blanco, luego rojo y después muy callado."
+	},
+	{
+		"id": "-1000007170",
+		"key": "story_C4_1",
+		"en|ch|tc|kr": "«Ladronzuela, enfréntate a mí en la Gran Reunión. Quien pierda dejará la alquimia para siempre»."
+	},
+	{
+		"id": "-1000007171",
+		"key": "story_C4_2",
+		"en|ch|tc|kr": "La noche antes de la Reunión, alguien entra a la fuerza en el taller de {X}."
+	},
+	{
+		"id": "-1000007172",
+		"key": "story_C4_2_o1",
+		"en|ch|tc|kr": "Atrapar al saboteador"
+	},
+	{
+		"id": "-1000007173",
+		"key": "story_C4_3_won",
+		"en|ch|tc|kr": "Dos hornos, un salón, mil ojos. La píldora de {X} se eleva de las llamas, brillando como una pequeña luna."
+	},
+	{
+		"id": "-1000007174",
+		"key": "story_C4_3_lost",
+		"en|ch|tc|kr": "La píldora de {G} es perfecta. La de {X} se agrieta en el último soplo de fuego."
+	},
+	{
+		"id": "-1000007175",
+		"key": "story_endC_Companion",
+		"en|ch|tc|kr": "«Me voy contigo. Alguien tiene que probar píldoras con tus enemigos»."
+	},
+	{
+		"id": "-1000007176",
+		"key": "story_endC_MasterAlchemist",
+		"en|ch|tc|kr": "«Píldoras de la maestra {X}: para ti, a precio de coste. ¡Para los demás, el doble!»"
+	},
+	{
+		"id": "-1000007177",
+		"key": "story_endC_LastExplosion",
+		"en|ch|tc|kr": "Abre una pequeña casa de té. El té es excelente. No explota nada."
+	},
+	{
+		"id": "-1000007178",
+		"key": "story_end_C_MasterAlchemist",
+		"en|ch|tc|kr": "Maestra alquimista"
+	},
+	{
+		"id": "-1000007180",
+		"key": "story_end_C_LastExplosion",
+		"en|ch|tc|kr": "Última explosión"
+	},
+	{
+		"id": "-1000007181",
+		"key": "story_D0_1",
+		"en|ch|tc|kr": "El posadero: «¡¿Once cuencos de fideos y sin dinero?!»\n{N}: «¡Puedo pagar con una pelea! ¡Una buena!»\n{C} rasguea su cítara: «Once cuencos, un tonto, ni una moneda: una tragedia en tres estrofas»."
+	},
+	{
+		"id": "-1000007182",
+		"key": "story_D0_2",
+		"en|ch|tc|kr": "Todos te miran. (la cuenta: {0:#,##0} piedras espirituales)"
+	},
+	{
+		"id": "-1000007183",
+		"key": "story_D0_2_o1",
+		"en|ch|tc|kr": "Pagar por él"
+	},
+	{
+		"id": "-1000007184",
+		"key": "story_D0_2_o2",
+		"en|ch|tc|kr": "«Entonces pelea conmigo»."
+	},
+	{
+		"id": "-1000007185",
+		"key": "story_D0_ribs",
+		"en|ch|tc|kr": "«¡Ja! ¡Mis costillas! ¿Otra vez mañana?»"
+	},
+	{
+		"id": "-1000007186",
+		"key": "story_D0_3",
+		"en|ch|tc|kr": "«Un tonto, un héroe y un poeta entran en una posada. Tengo que escribirlo»."
+	},
+	{
+		"id": "-1000007187",
+		"key": "story_D1_1",
+		"en|ch|tc|kr": "«Hay una bestia que se come los bueyes de los granjeros. ¡Los tres, pan comido! Ge, tú puedes cantarle»."
+	},
+	{
+		"id": "-1000007188",
+		"key": "story_D1_2",
+		"en|ch|tc|kr": "La guarida de la bestia apesta a sangre. {N} hace crujir los nudillos; {C} afina su cítara."
+	},
+	{
+		"id": "-1000007189",
+		"key": "story_D1_2_o1",
+		"en|ch|tc|kr": "Cazarla"
+	},
+	{
+		"id": "-1000007190",
+		"key": "story_D1_3",
+		"en|ch|tc|kr": "Junto a la hoguera.\n{N}: «Mi secta quiere que luche en sus guerras. Yo solo quiero dar puñetazos a bandidos».\n{C}: «Escribo poemas de amor porque los otros duelen demasiado»."
+	},
+	{
+		"id": "-1000007191",
+		"key": "story_D1_3_o1",
+		"en|ch|tc|kr": "«Entonces jurad hermandad conmigo»."
+	},
+	{
+		"id": "-1000007192",
+		"key": "story_D1_3_o2",
+		"en|ch|tc|kr": "«Dormid un poco»."
+	},
+	{
+		"id": "-1000007193",
+		"key": "story_D2_1",
+		"en|ch|tc|kr": "«He escrito cuarenta y dos poemas para {L}. No ha leído ninguno. Necesito un… estratega»."
+	},
+	{
+		"id": "-1000007194",
+		"key": "story_D2_2",
+		"en|ch|tc|kr": "Los poemas deberían ir con un regalo."
+	},
+	{
+		"id": "-1000007195",
+		"key": "story_D2_2_o1",
+		"en|ch|tc|kr": "Dar un regalo"
+	},
+	{
+		"id": "-1000007196",
+		"key": "story_D2_2_o2",
+		"en|ch|tc|kr": "Bastan los poemas"
+	},
+	{
+		"id": "-1000007197",
+		"key": "story_D2_3",
+		"en|ch|tc|kr": "«Ahora. Esta noche, bajo su ventana. ¿Me ayudarás?»"
+	},
+	{
+		"id": "-1000007198",
+		"key": "story_D2_3_o1",
+		"en|ch|tc|kr": "Ayudarle de verdad"
+	},
+	{
+		"id": "-1000007199",
+		"key": "story_D2_3_o2",
+		"en|ch|tc|kr": "Sabotearlo"
+	},
+	{
+		"id": "-1000007200",
+		"key": "story_D2_3_o3",
+		"en|ch|tc|kr": "Cortejar tú a {L}"
+	},
+	{
+		"id": "-1000007201",
+		"key": "story_D3_1",
+		"en|ch|tc|kr": "Esta noche no hay música. «Mi familia eran comerciantes. Rechazaron el préstamo del Loto Rojo. Una noche, la casa ardió con ellos dentro»."
+	},
+	{
+		"id": "-1000007202",
+		"key": "story_D3_2",
+		"en|ch|tc|kr": "El rastro de un asesino del Loto Rojo lleva a un santuario en ruinas."
+	},
+	{
+		"id": "-1000007203",
+		"key": "story_D3_2_o1",
+		"en|ch|tc|kr": "Entrar"
+	},
+	{
+		"id": "-1000007204",
+		"key": "story_D3_3",
+		"en|ch|tc|kr": "El asesino moribundo se ríe. «La Dama… os quemará… a vosotros también»."
+	},
+	{
+		"id": "-1000007205",
+		"key": "story_D3_3_o1",
+		"en|ch|tc|kr": "«Acabaremos con ella juntos»."
+	},
+	{
+		"id": "-1000007206",
+		"key": "story_D3_3_o2",
+		"en|ch|tc|kr": "«La venganza no los traerá de vuelta»."
+	},
+	{
+		"id": "-1000007207",
+		"key": "story_D4_1",
+		"en|ch|tc|kr": "Al otro lado del campo de batalla, {N} alza los puños. «Hermano… mi secta me lo ordenó. No puedo huir»."
+	},
+	{
+		"id": "-1000007208",
+		"key": "story_D4_1_o1",
+		"en|ch|tc|kr": "«Baja los puños y vente conmigo»."
+	},
+	{
+		"id": "-1000007209",
+		"key": "story_D4_1_o2",
+		"en|ch|tc|kr": "«Entonces pelea conmigo, y no te contengas»."
+	},
+	{
+		"id": "-1000007210",
+		"key": "story_D4_1_o3",
+		"en|ch|tc|kr": "Cambiar de bando"
+	},
+	{
+		"id": "-1000007211",
+		"key": "story_D4_walk",
+		"en|ch|tc|kr": "«Tus puños pesan más que las órdenes de mi secta». Baja los suyos."
+	},
+	{
+		"id": "-1000007212",
+		"key": "story_D4_switch",
+		"en|ch|tc|kr": "Caminas hacia su lado del campo. A tu espalda, tu ciudad natal no lo olvidará."
+	},
+	{
+		"id": "-1000007213",
+		"key": "story_endD_Rivals",
+		"en|ch|tc|kr": "«Te la has ganado. La próxima vez que nos veamos, será en el campo de batalla»."
+	},
+	{
+		"id": "-1000007214",
+		"key": "story_endD_BrotherLost",
+		"en|ch|tc|kr": "Una canción lenta flota sobre la tumba. «Siempre decía que aquí servían los mejores fideos»."
+	},
+	{
+		"id": "-1000007215",
+		"key": "story_endD_MurongCompanion",
+		"en|ch|tc|kr": "«Cuarenta y tres poemas. Este sí lo leerás»."
+	},
+	{
+		"id": "-1000007216",
+		"key": "story_endD_ThreeSworn",
+		"en|ch|tc|kr": "«¡El cielo arriba, la tierra abajo: los tres, una sola vida!»"
+	},
+	{
+		"id": "-1000007217",
+		"key": "story_end_D_ThreeSworn",
+		"en|ch|tc|kr": "Tres jurados"
+	},
+	{
+		"id": "-1000007218",
+		"key": "story_end_D_MurongCompanion",
+		"en|ch|tc|kr": "Murong como compañero"
+	},
+	{
+		"id": "-1000007219",
+		"key": "story_end_D_BrotherLost",
+		"en|ch|tc|kr": "Un hermano perdido"
+	},
+	{
+		"id": "-1000007220",
+		"key": "story_end_D_Rivals",
+		"en|ch|tc|kr": "Rivales"
+	},
+	{
+		"id": "-1000007221",
+		"key": "story_E0_1",
+		"en|ch|tc|kr": "«Niño, estas viejas rodillas ya no llegan a las terrazas altas. ¿Cuidarás mi jardín un tiempo?»"
+	},
+	{
+		"id": "-1000007222",
+		"key": "story_E0_1_o1",
+		"en|ch|tc|kr": "«Claro, abuela»."
+	},
+	{
+		"id": "-1000007223",
+		"key": "story_E0_1_o2",
+		"en|ch|tc|kr": "«No tengo tiempo para jardines»."
+	},
+	{
+		"id": "-1000007224",
+		"key": "story_E0_2",
+		"en|ch|tc|kr": "Quitar malas hierbas, regar… y una banda de monos espirituales robando melocotones."
+	},
+	{
+		"id": "-1000007225",
+		"key": "story_E0_2_o1",
+		"en|ch|tc|kr": "Ahuyentarlos"
+	},
+	{
+		"id": "-1000007226",
+		"key": "story_E0_3",
+		"en|ch|tc|kr": "«Una espada es como una raíz: crece hacia lo hondo antes de crecer hacia lo alto»."
+	},
+	{
+		"id": "-1000007227",
+		"key": "story_E1_1",
+		"en|ch|tc|kr": "Una niña flaca se esconde tras las faldas de {O}, aferrando una cuchara de madera como si fuera una espada."
+	},
+	{
+		"id": "-1000007228",
+		"key": "story_E1_2",
+		"en|ch|tc|kr": "«Su aldea ardió. Estandartes rojos, dijeron los supervivientes. Soy demasiado vieja para criarla, y demasiado vieja para decirle que no»."
+	},
+	{
+		"id": "-1000007229",
+		"key": "story_E1_3",
+		"en|ch|tc|kr": "«Se llama {Y}. ¿Qué harás, niño?»"
+	},
+	{
+		"id": "-1000007230",
+		"key": "story_E1_3_o1",
+		"en|ch|tc|kr": "Adoptarla"
+	},
+	{
+		"id": "-1000007231",
+		"key": "story_E1_3_o2",
+		"en|ch|tc|kr": "Enviarla a una secta"
+	},
+	{
+		"id": "-1000007232",
+		"key": "story_E1_3_o3",
+		"en|ch|tc|kr": "Dejarla contigo, abuela"
+	},
+	{
+		"id": "-1000007233",
+		"key": "story_E2_8",
+		"en|ch|tc|kr": "{Y} ha vuelto a quemar el arroz. Dice que era una «técnica de fuego»."
+	},
+	{
+		"id": "-1000007234",
+		"key": "story_E2_8_o1",
+		"en|ch|tc|kr": "Enseñarle a cocinar"
+	},
+	{
+		"id": "-1000007235",
+		"key": "story_E2_8_o2",
+		"en|ch|tc|kr": "Enseñarle una postura"
+	},
+	{
+		"id": "-1000007236",
+		"key": "story_E2_12",
+		"en|ch|tc|kr": "{Y} vuelve a casa con un ojo morado. «Dijo que no eras nadie. Le corregí»."
+	},
+	{
+		"id": "-1000007237",
+		"key": "story_E2_12_o1",
+		"en|ch|tc|kr": "Regañarla"
+	},
+	{
+		"id": "-1000007238",
+		"key": "story_E2_12_o2",
+		"en|ch|tc|kr": "Reírse"
+	},
+	{
+		"id": "-1000007239",
+		"key": "story_E2_12_o3",
+		"en|ch|tc|kr": "Enseñarle cuándo pelear"
+	},
+	{
+		"id": "-1000007240",
+		"key": "story_E2_15",
+		"en|ch|tc|kr": "{Y} pregunta cómo eran sus padres. {O} te mira."
+	},
+	{
+		"id": "-1000007241",
+		"key": "story_E2_15_o1",
+		"en|ch|tc|kr": "Decir la verdad"
+	},
+	{
+		"id": "-1000007242",
+		"key": "story_E2_15_o2",
+		"en|ch|tc|kr": "«Te querían mucho»."
+	},
+	{
+		"id": "-1000007243",
+		"key": "story_E3_1",
+		"en|ch|tc|kr": "{Y}: «La abuela tose por las noches. Dice que es el viento»."
+	},
+	{
+		"id": "-1000007244",
+		"key": "story_E3_2",
+		"en|ch|tc|kr": "Los vendedores de hierbas hablan de una hierba de la longevidad guardada por una bestia en los altos acantilados."
+	},
+	{
+		"id": "-1000007245",
+		"key": "story_E3_2_o1",
+		"en|ch|tc|kr": "Ir a por la hierba"
+	},
+	{
+		"id": "-1000007246",
+		"key": "story_E3_2_o2",
+		"en|ch|tc|kr": "Quedarse a su lado"
+	},
+	{
+		"id": "-1000007247",
+		"key": "story_E3_3",
+		"en|ch|tc|kr": "«¿Me has traído esto? …Niño. Un jardín necesita que caigan los árboles viejos para que los jóvenes reciban la luz»."
+	},
+	{
+		"id": "-1000007248",
+		"key": "story_E3_3_o1",
+		"en|ch|tc|kr": "Insistir"
+	},
+	{
+		"id": "-1000007249",
+		"key": "story_E3_3_o2",
+		"en|ch|tc|kr": "Respetar su deseo"
+	},
+	{
+		"id": "-1000007250",
+		"key": "story_E4_1",
+		"en|ch|tc|kr": "{O} se duerme bajo el viejo peral y no despierta. En su mano, una semilla envuelta en seda."
+	},
+	{
+		"id": "-1000007251",
+		"key": "story_E4_2",
+		"en|ch|tc|kr": "Una carta: «Para quien cuidó mi jardín: plántala donde vayas a descansar»."
+	},
+	{
+		"id": "-1000007252",
+		"key": "story_E4_2_o1",
+		"en|ch|tc|kr": "Quedarse el jardín"
+	},
+	{
+		"id": "-1000007253",
+		"key": "story_E4_2_o2",
+		"en|ch|tc|kr": "Dárselo a {Y}"
+	},
+	{
+		"id": "-1000007254",
+		"key": "story_endE_LostChild",
+		"en|ch|tc|kr": "Nadie vino por {Y}. Vino alguien más: una mujer de rojo. «Nadie vino por mí. Ella sí»."
+	},
+	{
+		"id": "-1000007255",
+		"key": "story_endE_Successor",
+		"en|ch|tc|kr": "«Me enseñaste a mantenerme en pie. Ahora déjame cargar con la familia»."
+	},
+	{
+		"id": "-1000007256",
+		"key": "story_endE_Garden",
+		"en|ch|tc|kr": "El peral florece. «Siéntate bajo el peral todo lo que necesites. El jardín guardará el tiempo por ti»."
+	},
+	{
+		"id": "-1000007257",
+		"key": "story_endE_Keepsake",
+		"en|ch|tc|kr": "El peral florece. El jardín está en calma: un recuerdo de una vieja amiga."
+	},
+	{
+		"id": "-1000007258",
+		"key": "story_end_E_Successor",
+		"en|ch|tc|kr": "Sucesora"
+	},
+	{
+		"id": "-1000007259",
+		"key": "story_end_E_LostChild",
+		"en|ch|tc|kr": "Niña perdida"
+	},
+	{
+		"id": "-1000007260",
+		"key": "story_end_E_GardenOfGenerations",
+		"en|ch|tc|kr": "Jardín de generaciones"
+	},
+	{
+		"id": "-1000007262",
+		"key": "story_garden",
+		"en|ch|tc|kr": "El jardín de la abuela Shi. Reclusión bajo el peral: ¿cuánto tiempo?"
+	},
+	{
+		"id": "-1000007263",
+		"key": "story_garden_o",
+		"en|ch|tc|kr": "{0} año(s) ({1:#,##0} piedras espirituales)"
+	},
+	{
+		"id": "-1000007265",
+		"key": "story_garden_money",
+		"en|ch|tc|kr": "No tienes suficientes piedras espirituales."
+	},
+	{
+		"id": "-1000007266",
+		"key": "story_F1_1",
+		"en|ch|tc|kr": "Tres ciudades izan estandartes rojos en una sola estación. Los mercaderes susurran un nombre: la Dama."
+	},
+	{
+		"id": "-1000007267",
+		"key": "story_F1_2",
+		"en|ch|tc|kr": "«Pequeño tirador de hilos, has estado ocupado. Ven al Pabellón del Loto. Trae a tus amigos: me encanta la compañía»."
+	},
+	{
+		"id": "-1000007268",
+		"key": "story_F1_3",
+		"en|ch|tc|kr": "El Pabellón del Loto espera."
+	},
+	{
+		"id": "-1000007269",
+		"key": "story_F1_3_o1",
+		"en|ch|tc|kr": "Reunir aliados"
+	},
+	{
+		"id": "-1000007270",
+		"key": "story_F1_3_o2",
+		"en|ch|tc|kr": "Ir solo ahora"
+	},
+	{
+		"id": "-1000007271",
+		"key": "story_F2_A",
+		"en|ch|tc|kr": "«Por fin»."
+	},
+	{
+		"id": "-1000007272",
+		"key": "story_F2_H",
+		"en|ch|tc|kr": "«Yo traigo las flechas. Y algo de picar»."
+	},
+	{
+		"id": "-1000007273",
+		"key": "story_F2_N",
+		"en|ch|tc|kr": "«¿A quién le pego?»"
+	},
+	{
+		"id": "-1000007274",
+		"key": "story_F2_C",
+		"en|ch|tc|kr": "«Por mi familia»."
+	},
+	{
+		"id": "-1000007275",
+		"key": "story_F2_Y",
+		"en|ch|tc|kr": "«Por mi aldea»."
+	},
+	{
+		"id": "-1000007276",
+		"key": "story_F2_X",
+		"en|ch|tc|kr": "«¡He hecho píldoras explosivas! ¡Esta vez a propósito!»"
+	},
+	{
+		"id": "-1000007277",
+		"key": "story_F2_o1",
+		"en|ch|tc|kr": "«Entonces ven»."
+	},
+	{
+		"id": "-1000007278",
+		"key": "story_F3_1",
+		"en|ch|tc|kr": "Las puertas del Pabellón del Loto. Sus guardianes salen."
+	},
+	{
+		"id": "-1000007280",
+		"key": "story_F3_2",
+		"en|ch|tc|kr": "«Tantos hilitos, y todos atados a mí. Arrodíllate y dejaré que tus amigos conserven la cabeza»."
+	},
+	{
+		"id": "-1000007281",
+		"key": "story_F3_2_o1",
+		"en|ch|tc|kr": "«Mis amigos responden por sí mismos»."
+	},
+	{
+		"id": "-1000007282",
+		"key": "story_F3_2_o2",
+		"en|ch|tc|kr": "Arrodillarse"
+	},
+	{
+		"id": "-1000007292",
+		"key": "story_end_F_Kneel",
+		"en|ch|tc|kr": "Arrodillarse"
+	},
+	{
+		"id": "-1000007283",
+		"key": "story_F3_3",
+		"en|ch|tc|kr": "La dama Honglian se levanta. El loto de su abanico se abre."
+	},
+	{
+		"id": "-1000007284",
+		"key": "story_F3_3_o1",
+		"en|ch|tc|kr": "La última batalla"
+	},
+	{
+		"id": "-1000007285",
+		"key": "story_endF_Kneel",
+		"en|ch|tc|kr": "«Niño sabio. Desde hoy mis ciudades son tus ciudades… y el odio del mundo también es tuyo»."
+	},
+	{
+		"id": "-1000007286",
+		"key": "story_F4_1",
+		"en|ch|tc|kr": "El loto rojo se marchita. Las ciudades que dominaba abren sus puertas."
+	},
+	{
+		"id": "-1000007287",
+		"key": "story_F4_2",
+		"en|ch|tc|kr": "Su libro de deudas arde. Entre las cenizas del pabellón hay un espejo: {0}."
+	},
+	{
+		"id": "-1000007288",
+		"key": "story_F4_3",
+		"en|ch|tc|kr": "Uno a uno, tus aliados se despiden y vuelven a sus propios caminos."
+	},
+	{
+		"id": "-1000007289",
+		"key": "story_F_spread",
+		"en|ch|tc|kr": "El reino demoníaco se extiende: más ciudades izan estandartes rojos. La Dama no esperará para siempre."
+	},
+	{
+		"id": "-1000007290",
+		"key": "story_F_dead",
+		"en|ch|tc|kr": "Llega la noticia: la dama Honglian ha muerto. El Loto Rojo se dispersa como pétalos al viento."
+	},
+	{
+		"id": "-1000007291",
+		"key": "story_end_F_Victory",
+		"en|ch|tc|kr": "Victoria"
+	},
+	{
+		"id": "-1000007261",
+		"key": "taskName444447001",
+		"en|ch|tc|kr": "El jardín de la abuela Shi"
+	},
+	{
+		"id": "-1000007293",
+		"key": "taskDesc444447001",
+		"en|ch|tc|kr": "Ve al peral del jardín de la abuela Shi (sigue esta misión en el mapa). Allí puedes recluirte de 1 a 20 años."
+	}
+]

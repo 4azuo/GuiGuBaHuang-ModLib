@@ -32,6 +32,7 @@
 	"SeclusionEvent": 3022,
 	"FamilyEvent": 3024,
 	"FamilyFundEvent": 3025,
+	"StoryEvent": 3026,
 	"BuildingArrangeEvent": 3030,
 	"RealStorageEvent": 3040,
 	"RealMarketEvent2": 3050,

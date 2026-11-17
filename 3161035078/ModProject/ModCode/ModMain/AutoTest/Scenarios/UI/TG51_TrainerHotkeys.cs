@@ -27,7 +27,7 @@ namespace MOD_nE7UL2.AutoTest.Scenarios.UI
             return new Scenario { Id = "TG-51", Feature = "TrainerEvent", Title = "Trainer hotkeys Ctrl+1/2/3" }
                 .Step("Ctrl+2", c =>
                 {
-                    CloseAll(UIType.TextInfoLong);
+                    CloseAll(UIType.GetReward, UIType.TextInfoLong);
                     c.Info(IsLoaded(ModConst.TRAINER_EVENT) ? "trainer enabled" : "trainer disabled in S&M configs: testing with a temporary instance");
                     trainer = FeatureEvent<TrainerEvent>(ModConst.TRAINER_EVENT);
                     trainer.OnHotkey(1);
@@ -56,7 +56,7 @@ namespace MOD_nE7UL2.AutoTest.Scenarios.UI
                 })
                 .Step("close", c =>
                 {
-                    CloseAll(UIType.TextInfoLong);
+                    CloseAll(UIType.GetReward, UIType.TextInfoLong);
                     c.Assert(!g.ui.HasUI(UIType.TextInfoLong), "trainer closed");
                 });
         }

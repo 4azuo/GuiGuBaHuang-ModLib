@@ -76,6 +76,16 @@
     <Compile Include="Mod\SeclusionEvent.cs" />
     <Compile Include="Mod\FamilyEvent.cs" />
     <Compile Include="Mod\FamilyFundEvent.cs" />
+    <Compile Include="Story\StoryState.cs" />
+    <Compile Include="Story\StoryCasting.cs" />
+    <Compile Include="Story\StoryLine.cs" />
+    <Compile Include="Story\StoryEvent.cs" />
+    <Compile Include="Story\Lines\LineA_ColdSword.cs" />
+    <Compile Include="Story\Lines\LineB_OldHuangDebt.cs" />
+    <Compile Include="Story\Lines\LineC_ExplodingFurnace.cs" />
+    <Compile Include="Story\Lines\LineD_SwornBrothers.cs" />
+    <Compile Include="Story\Lines\LineE_HerbGarden.cs" />
+    <Compile Include="Story\Lines\LineF_RedLotus.cs" />
     <Compile Include="Mod\RealMarketEvent3.Extra.cs" />
     <Compile Include="Helper\ModTextHelper.cs" />
     <Compile Include="Mod\UICreatePlayerEvent.cs" />
@@ -140,6 +150,7 @@
     <Compile Include="AutoTest\Scenarios\Town\TG59_Wanted.cs" />
     <Compile Include="AutoTest\Scenarios\Story\TG55_Encounters.cs" />
     <Compile Include="AutoTest\Scenarios\Story\TG56_DramaTexts.cs" />
+    <Compile Include="AutoTest\Scenarios\Story\TS_Storylines.cs" />
     <Compile Include="AutoTest\Scenarios\Battle\TB16_ArtifactHotkeys.cs" />
     <Compile Include="AutoTest\Scenarios\Time\TX07_GameMonthLog.cs" />
     <Compile Include="AutoTest\Scenarios\Time\TX08_FamilySeclusion.cs" />

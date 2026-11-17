@@ -28,7 +28,7 @@ namespace MOD_nE7UL2.Mod
     {
         public static SeclusionEvent Instance { get; set; }
 
-        public enum Kind { SpiritVein, Inheritance, OldTree, HeartDemon, TimeRealm }
+        public enum Kind { SpiritVein, Inheritance, OldTree, HeartDemon, TimeRealm, Garden }
 
         public static float OfferRate => SMLocalConfigsEvent.Instance?.Configs?.SeclusionRate ?? 0.5f; // % a month (S&M)
         public const float INHERITANCE_SHARE = 15f;  // % of the offers
@@ -79,6 +79,7 @@ namespace MOD_nE7UL2.Mod
                 case Kind.Inheritance: return Tuple.Create(10, 30);
                 case Kind.OldTree: return Tuple.Create(5, 5);
                 case Kind.HeartDemon: return Tuple.Create(2, 5);
+                case Kind.Garden: return Tuple.Create(1, 20);
                 default: return Tuple.Create(10, 20);
             }
         }
@@ -100,6 +101,7 @@ namespace MOD_nE7UL2.Mod
                 case Kind.Inheritance: return "dixiamushi";
                 case Kind.OldTree: return "xingxingqiyu";
                 case Kind.HeartDemon: return "hundengshangren";
+                case Kind.Garden: return "xingxingqiyu";
                 default: return "xianrencijiu";
             }
         }
@@ -186,6 +188,9 @@ namespace MOD_nE7UL2.Mod
                 case Kind.SpiritVein:
                     Player.AddExp(YearExp() * r.Months / 12);
                     return GameTool.LS("secl_res_SpiritVein");
+                case Kind.Garden: // manual seclusion in Granny Shi's garden (story line E): paid, a bit less than a spirit vein
+                    Player.AddExp(YearExp() * r.Months * 3 / 48);
+                    return GameTool.LS("secl_res_Garden");
                 case Kind.Inheritance:
                     Player.AddExp(YearExp() * r.Months * 3 / 24);
                     Player.AddProperty<int>(UnitPropertyEnum.Talent, 2 + years / 10);

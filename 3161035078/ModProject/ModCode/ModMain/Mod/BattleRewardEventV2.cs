@@ -732,11 +732,16 @@ namespace MOD_nE7UL2.Mod
                                     ModBattleEvent.SceneBattle.battleData.allDropRewardItem.Remove(item);
                                 else if (isKillerWUnit)
                                 {
-                                    var before = killerWUnit.GetUnitPropCount(propsId);
-                                    if (!stackable)
-                                        killerWUnit.AddUnitProp(item); // keeps the item data (equipment, rings...)
-                                    if (killerWUnit.GetUnitPropCount(propsId) <= before)
-                                        killerWUnit.AddUnitProp(propsId, propsCount);
+                                    // one item the killer cannot take must not stop the loss of the others
+                                    try
+                                    {
+                                        var before = killerWUnit.GetUnitPropCount(propsId);
+                                        if (!stackable)
+                                            killerWUnit.AddUnitProp(item); // keeps the item data (equipment, rings...)
+                                        if (killerWUnit.GetUnitPropCount(propsId) <= before)
+                                            killerWUnit.AddUnitProp(propsId, propsCount);
+                                    }
+                                    catch (Exception ex) { DebugHelper.WriteLine($"BattleRewardEventV2: lost item {propsId} to the killer: {ex.Message}"); }
                                 }
                             }
                         }

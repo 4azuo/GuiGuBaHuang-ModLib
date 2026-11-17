@@ -31,9 +31,10 @@ namespace MOD_nE7UL2.AutoTest.Scenarios.Time
                     var F = FamilyEvent.Instance;
                     if (!c.Assert(F != null && FamilyFundEvent.Instance != null, "FamilyEvent and FamilyFundEvent loaded")) return;
                     mate = FamilyEvent.Unit(FamilyEvent.Spouse(Player));
-                    if (mate == null)
+                    // a living companion (one married in an earlier scenario may have died since)
+                    if (mate == null || mate.isDie)
                     {
-                        mate = Npcs.FirstOrDefault(x => string.IsNullOrEmpty(FamilyEvent.Spouse(x)) && FamilyEvent.IsMan(x) != FamilyEvent.IsMan(Player) && !HirePeopleEvent.IsHired(x));
+                        mate = Npcs.FirstOrDefault(x => !x.isDie && string.IsNullOrEmpty(FamilyEvent.Spouse(x)) && FamilyEvent.IsMan(x) != FamilyEvent.IsMan(Player) && !HirePeopleEvent.IsHired(x));
                         if (!c.Assert(mate != null, "a single NPC of the other sex")) return;
                         FamilyEvent.SetMarried(Player, mate);
                     }
@@ -74,7 +75,8 @@ namespace MOD_nE7UL2.AutoTest.Scenarios.Time
                     c.AssertEqual(0, Stored(ModLibConst.MONEY_PROP_ID), "the storage stones paid half");
                     c.AssertEqual(FamilyFundEvent.Kind.Unpaid, I.Ledger.Last().Kind, "ledger: unpaid");
                     c.AssertEqual(upkeep - upkeep / 2, I.Ledger.Last().Amount, "unpaid amount");
-                    c.Assert(mate.data.unitData.relationData.GetIntim(Player.GetUnitId()) < intim, $"the companion is upset: {intim} -> {mate.data.unitData.relationData.GetIntim(Player.GetUnitId())}");
+                    var member = FamilyFundEvent.Members().Any(x => x.GetUnitId() == mate.GetUnitId());
+                    c.Assert(mate.data.unitData.relationData.GetIntim(Player.GetUnitId()) < intim, $"the companion is upset: {intim} -> {mate.data.unitData.relationData.GetIntim(Player.GetUnitId())} (member {member}, spouse {FamilyEvent.Spouse(Player)} / {mate.GetUnitId()}, dead {mate.isDie}, player side {Player.data.unitData.relationData.GetIntim(mate.GetUnitId())})");
                     Player.SetUnitMoney(100000);
                 })
                 .Step("gifts and use", c =>

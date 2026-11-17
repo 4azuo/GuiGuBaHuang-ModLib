@@ -23,7 +23,9 @@ namespace MOD_nE7UL2.AutoTest.Scenarios.Time
                 .Step("skip button", c =>
                 {
                     c.Bag["month"] = GameHelper.GetGameTotalMonth();
+                    TimeSkipEvent.NoInterrupt = true; // a full year (an NPC drama would stop it: tested by TX-09)
                     c.Bag["price"] = EconomyHelper.GetWorldPrice();
+                    c.Bag["age"] = Player.GetProperty<int>(UnitPropertyEnum.Age);
                     var btn = FindButtons(UIType.MapMain, string.Format(GameTool.LS("other500020030"), 1)).FirstOrDefault();
                     if (!c.Assert(btn != null, "'skip 1 year' button on the map")) return;
                     c.Info($"now {GameHelper.GetGameYear()}/{GameHelper.GetGameMonth()}, price index {c.Bag["price"]}");
@@ -34,8 +36,9 @@ namespace MOD_nE7UL2.AutoTest.Scenarios.Time
                 .Step("after", c =>
                 {
                     ClickButton(CONFIRM);
+                    TimeSkipEvent.NoInterrupt = false;
                     c.AssertEqual((int)c.Bag["month"] + 12, GameHelper.GetGameTotalMonth(), $"time {GameHelper.GetGameYear()}/{GameHelper.GetGameMonth()}");
-                    c.AssertEqual(16 * 12 + GameHelper.GetGameTotalMonth(), Player.GetProperty<int>(UnitPropertyEnum.Age), "age follows the game time");
+                    c.AssertEqual((int)c.Bag["age"] + 12, Player.GetProperty<int>(UnitPropertyEnum.Age), "the player aged 12 months");
                     c.AssertEqual(EconomyHelper.GetWorldPrice(), InflationaryEvent.Instance.WorldPrice, $"yearly price index saved: {c.Bag["price"]} -> {EconomyHelper.GetWorldPrice()}");
                     var s = SliceLifeQuestEvent.Instance;
                     c.AssertBetween(s.TaskLevel, 0, SliceLifeQuestEvent.TaskInfo.Count, "slice-life level still valid");

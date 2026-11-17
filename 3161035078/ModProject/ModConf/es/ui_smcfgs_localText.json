@@ -583,5 +583,10 @@
 		"id": "-1000001166",
 		"key": "smcfgs166",
 		"en|ch|tc|kr": "Eventos de reclusión (% al mes)"
+	},
+	{
+		"id": "-1000001167",
+		"key": "smcfgs167",
+		"en|ch|tc|kr": "Sin historias de PNJ"
 	}
 ]

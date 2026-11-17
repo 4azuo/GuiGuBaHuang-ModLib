@@ -58,6 +58,7 @@
         public const string SECLUSION_EVENT = "SeclusionEvent";
         public const string FAMILY_EVENT = "FamilyEvent";
         public const string FAMILY_FUND_EVENT = "FamilyFundEvent";
+        public const string STORY_EVENT = "StoryEvent";
         public const string UPGRADE_NATURALLY_EVENT = "UpgradeNaturallyEvent";
         public const string TRAINER_EVENT = "TrainerEvent";
         public const string SPECIAL_MONST_EVENT = "SpecialMonsterEvent";

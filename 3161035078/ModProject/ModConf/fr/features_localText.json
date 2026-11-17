@@ -1163,5 +1163,50 @@
 		"id": "-1000006276",
 		"key": "secl_interrupted",
 		"en|ch|tc|kr": "Ta retraite a été interrompue après {0} mois : quelque chose dans le monde a besoin de toi."
+	},
+	{
+		"id": "-1000006277",
+		"key": "log_story_end",
+		"en|ch|tc|kr": "Histoire « {0} » terminée : {1}."
+	},
+	{
+		"id": "-1000006278",
+		"key": "log_story_item",
+		"en|ch|tc|kr": "Reçu : {0}."
+	},
+	{
+		"id": "-1000006279",
+		"key": "log_story_gift",
+		"en|ch|tc|kr": "{0} vous a envoyé {1}."
+	},
+	{
+		"id": "-1000006280",
+		"key": "log_story_benefactor",
+		"en|ch|tc|kr": "{0} a payé la prime sur votre tête."
+	},
+	{
+		"id": "-1000006281",
+		"key": "log_story_tea",
+		"en|ch|tc|kr": "{0} vous a envoyé du thé et des gâteaux (humeur +)."
+	},
+	{
+		"id": "-1000006282",
+		"key": "log_story_lesson",
+		"en|ch|tc|kr": "La leçon de grand-mère Shi, transmise dans la famille (+1 fondation)."
+	},
+	{
+		"id": "-1000006283",
+		"key": "log_story_ali",
+		"en|ch|tc|kr": "{0} est devenu(e) adulte."
+	},
+	{
+		"id": "-1000006284",
+		"key": "secl_name_Garden",
+		"en|ch|tc|kr": "Jardin du poirier"
+	},
+	{
+		"id": "-1000006285",
+		"key": "secl_res_Garden",
+		"en|ch|tc|kr": "Sous le poirier, les saisons passèrent comme des respirations."
 	}
 ]

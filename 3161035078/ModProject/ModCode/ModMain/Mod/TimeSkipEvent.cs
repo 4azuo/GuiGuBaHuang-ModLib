@@ -143,9 +143,13 @@ namespace MOD_nE7UL2.Mod
         [JsonIgnore]
         public bool Interrupted { get; private set; }
 
+        /// <summary>Tests only: dramas / battles do not stop the skip (closed by the test runner): a full length.</summary>
+        [JsonIgnore]
+        public static bool NoInterrupt { get; set; }
+
         private void Interrupt(string why)
         {
-            if (Interrupted) return;
+            if (Interrupted || NoInterrupt) return;
             Interrupted = true;
             DebugHelper.WriteLine($"TimeSkipEvent: interrupted at month {Done}/{Total} ({why})");
             HideProgress();

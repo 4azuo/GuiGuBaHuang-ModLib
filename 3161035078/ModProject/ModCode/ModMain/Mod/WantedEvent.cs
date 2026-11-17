@@ -77,7 +77,7 @@ namespace MOD_nE7UL2.Mod
 
         /// <summary>Towns where the player is the master.</summary>
         public static List<MapBuildTown> PlayerTowns() =>
-            (ModMain.ModObj.ParameterStore?.Towns ?? new MapBuildTown[0]).Where(t => t != null && MapBuildPropertyEvent.IsTownMaster(t, Player)).ToList();
+            (ModMain.Store?.Towns ?? new MapBuildTown[0]).Where(t => t != null && MapBuildPropertyEvent.IsTownMaster(t, Player)).ToList();
 
         public static List<Bounty> On(WorldUnitBase target) =>
             Instance?.Bounties.Where(x => target != null && x.TargetId == target.GetUnitId()).ToList() ?? new List<Bounty>();
@@ -153,7 +153,7 @@ namespace MOD_nE7UL2.Mod
             var target = b.Target;
             if (target == null) return null;
             var team = HirePeopleEvent.GetTeamDetailData(target).Item2.Select(x => x.GetUnitId()).ToList();
-            var pool = (ModMain.ModObj.ParameterStore?.WUnits ?? new WorldUnitBase[0])
+            var pool = (ModMain.Store?.WUnits ?? new WorldUnitBase[0])
                 .Where(x => x != null && !x.isDie && !x.IsPlayer() && x.GetUnitId() != target.GetUnitId() && x.GetUnitId() != b.PosterId && !team.Contains(x.GetUnitId()))
                 .ToList();
             return pool.Where(x => x.GetGradeLvl() >= target.GetGradeLvl()).OrderBy(x => x.GetGradeLvl()).ThenBy(x => CommonTool.Random(0, 1000)).FirstOrDefault()
@@ -258,7 +258,7 @@ namespace MOD_nE7UL2.Mod
             base.OnYearly();
             if (Disabled)
                 return;
-            foreach (var town in ModMain.ModObj.ParameterStore?.Towns ?? new MapBuildTown[0])
+            foreach (var town in ModMain.Store?.Towns ?? new MapBuildTown[0])
             {
                 var master = town == null ? null : MapBuildPropertyEvent.GetTownMaster(town);
                 if (master == null || master.IsPlayer() || !CommonTool.Random(0f, 100f).IsBetween(0f, ModLib.Mod.ModMaster.ChanceOver(NPC_POST_RATE, ModLib.Mod.ModMaster.YearsPassed)))

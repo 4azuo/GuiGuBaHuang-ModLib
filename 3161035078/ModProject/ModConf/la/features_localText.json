@@ -1163,5 +1163,50 @@
 		"id": "-1000006276",
 		"key": "secl_interrupted",
 		"en|ch|tc|kr": "Secessus tuus post {0} menses interruptus est: aliquid in mundo te requirit."
+	},
+	{
+		"id": "-1000006277",
+		"key": "log_story_end",
+		"en|ch|tc|kr": "Fabula \"{0}\" finita: {1}."
+	},
+	{
+		"id": "-1000006278",
+		"key": "log_story_item",
+		"en|ch|tc|kr": "Acceptum: {0}."
+	},
+	{
+		"id": "-1000006279",
+		"key": "log_story_gift",
+		"en|ch|tc|kr": "{0} tibi {1} misit."
+	},
+	{
+		"id": "-1000006280",
+		"key": "log_story_benefactor",
+		"en|ch|tc|kr": "{0} praemium pro capite tuo solvit."
+	},
+	{
+		"id": "-1000006281",
+		"key": "log_story_tea",
+		"en|ch|tc|kr": "{0} tibi theam et crustula misit (animus crescit)."
+	},
+	{
+		"id": "-1000006282",
+		"key": "log_story_lesson",
+		"en|ch|tc|kr": "Doctrina aviae Shi in familia tradita (+1 fundamentum)."
+	},
+	{
+		"id": "-1000006283",
+		"key": "log_story_ali",
+		"en|ch|tc|kr": "{0} ad aetatem adultam pervenit."
+	},
+	{
+		"id": "-1000006284",
+		"key": "secl_name_Garden",
+		"en|ch|tc|kr": "Hortus piri"
+	},
+	{
+		"id": "-1000006285",
+		"key": "secl_res_Garden",
+		"en|ch|tc|kr": "Sub piro tempora anni ut spiritus transierunt."
 	}
 ]

@@ -21,6 +21,9 @@ namespace MOD_nE7UL2
         public ModStts ModSettings { get; private set; }
         public static ModMain ModObj { get; private set; }
 
+        /// <summary>World lists (units, towns, schools): the store of the mod, else the one of ModLib (the usual case; GetModChildParameterStore() for static code).</summary>
+        public static ModLib.Object.ParameterStore Store => ModObj?.ParameterStore ?? ModLib.Mod.ModMaster.ModObj?.ParameterStore;
+
         /// <summary>
         /// Loads mod_configs.json into ModSettings and rebalances the base game configs once:
         /// level exp, attribute limits, artifact stats, skill mastery exp, skill MP cost/CD/requirements,

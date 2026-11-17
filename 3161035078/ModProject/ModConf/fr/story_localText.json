@@ -1,0 +1,1472 @@
+[
+	{
+		"id": "-1000007000",
+		"key": "story_continue",
+		"en|ch|tc|kr": "Continuer"
+	},
+	{
+		"id": "-1000007032",
+		"key": "story_A2_2_later",
+		"en|ch|tc|kr": "Pas maintenant"
+	},
+	{
+		"id": "-1000007075",
+		"key": "story_endA_hunt_o1",
+		"en|ch|tc|kr": "Se battre"
+	},
+	{
+		"id": "-1000007087",
+		"key": "story_B0_2_o2",
+		"en|ch|tc|kr": "Se battre"
+	},
+	{
+		"id": "-1000007116",
+		"key": "story_B4_3_o1",
+		"en|ch|tc|kr": "Défendre la ville"
+	},
+	{
+		"id": "-1000007138",
+		"key": "story_C1_2_o3",
+		"en|ch|tc|kr": "Pas maintenant"
+	},
+	{
+		"id": "-1000007264",
+		"key": "story_garden_no",
+		"en|ch|tc|kr": "Pas maintenant"
+	},
+	{
+		"id": "-1000007279",
+		"key": "story_F3_1_o1",
+		"en|ch|tc|kr": "Se battre"
+	},
+	{
+		"id": "-1000007001",
+		"key": "story_name_A",
+		"en|ch|tc|kr": "Épée froide"
+	},
+	{
+		"id": "-1000007002",
+		"key": "story_name_B",
+		"en|ch|tc|kr": "La dette du vieux Huang"
+	},
+	{
+		"id": "-1000007003",
+		"key": "story_name_C",
+		"en|ch|tc|kr": "Le fourneau qui explose"
+	},
+	{
+		"id": "-1000007004",
+		"key": "story_name_D",
+		"en|ch|tc|kr": "Frères jurés"
+	},
+	{
+		"id": "-1000007005",
+		"key": "story_name_E",
+		"en|ch|tc|kr": "Le jardin d'herbes de grand-mère"
+	},
+	{
+		"id": "-1000007006",
+		"key": "story_name_F",
+		"en|ch|tc|kr": "Lotus Rouge"
+	},
+	{
+		"id": "-1000007007",
+		"key": "story_name_Y",
+		"en|ch|tc|kr": "A Li"
+	},
+	{
+		"id": "-1000007008",
+		"key": "story_A0_1",
+		"en|ch|tc|kr": "Une femme en robe de secte déchirée sort en titubant des roseaux, une épée brisée à la main. Des disciples de {S} la suivent, lames tirées.\n{A} : « Ne t'en mêle pas. Ce n'est pas ton combat. »\nUn disciple : « La traîtresse {A} a volé le manuel d'épée de la secte. Livre-la, et la secte se souviendra de ta bonté. »"
+	},
+	{
+		"id": "-1000007009",
+		"key": "story_A0_1_o1",
+		"en|ch|tc|kr": "Combattre les disciples"
+	},
+	{
+		"id": "-1000007010",
+		"key": "story_A0_1_o2",
+		"en|ch|tc|kr": "« Elle est à vous. »"
+	},
+	{
+		"id": "-1000007011",
+		"key": "story_A0_1_o3",
+		"en|ch|tc|kr": "S'en aller"
+	},
+	{
+		"id": "-1000007012",
+		"key": "story_A0_handed",
+		"en|ch|tc|kr": "Tandis qu'on l'emmène, son regard trouve le vôtre — pas de colère, seulement une promesse froide et patiente."
+	},
+	{
+		"id": "-1000007013",
+		"key": "story_A0_2",
+		"en|ch|tc|kr": "« …Merci. Je n'oublie pas une dette. »\nElle arrache une bande de soie bleue de sa manche et la glisse dans votre main. « Si tu entends encore mon nom, ne crois pas ce qu'ils disent. »"
+	},
+	{
+		"id": "-1000007014",
+		"key": "story_A0_2_lost",
+		"en|ch|tc|kr": "Dans la confusion du combat, elle s'échappe. Plus tard, une bande de soie bleue est nouée à votre porte. « Je n'oublie pas une dette. Si tu entends encore mon nom, ne crois pas ce qu'ils disent. »"
+	},
+	{
+		"id": "-1000007015",
+		"key": "story_A0_3",
+		"en|ch|tc|kr": "Une affiche à la porte de la ville : « Recherchée — {A}, voleuse de {S}. » Quelqu'un a mal dessiné son visage."
+	},
+	{
+		"id": "-1000007016",
+		"key": "story_A0_3_o1",
+		"en|ch|tc|kr": "L'arracher"
+	},
+	{
+		"id": "-1000007017",
+		"key": "story_A0_3_o2",
+		"en|ch|tc|kr": "La laisser"
+	},
+	{
+		"id": "-1000007164",
+		"key": "story_C3_app_o3",
+		"en|ch|tc|kr": "La laisser"
+	},
+	{
+		"id": "-1000007018",
+		"key": "story_A1_1",
+		"en|ch|tc|kr": "La nuit. On frappe à votre fenêtre : {A}, pâle, une main pressée contre son flanc. « La blessure ne se referme pas. Leur épée était empoisonnée. »"
+	},
+	{
+		"id": "-1000007019",
+		"key": "story_A1_2",
+		"en|ch|tc|kr": "« Il me faut une pilule d'antidote, ou une herbe assez puissante (rang {0} ou plus). »"
+	},
+	{
+		"id": "-1000007020",
+		"key": "story_A1_2_o1",
+		"en|ch|tc|kr": "Lui donner une pilule"
+	},
+	{
+		"id": "-1000007021",
+		"key": "story_A1_2_o2",
+		"en|ch|tc|kr": "Lui donner une herbe"
+	},
+	{
+		"id": "-1000007022",
+		"key": "story_A1_2_o3",
+		"en|ch|tc|kr": "« Je n'ai rien. » (chercher au marché)"
+	},
+	{
+		"id": "-1000007023",
+		"key": "story_A1_2_search",
+		"en|ch|tc|kr": "Vous promettez de trouver quelque chose. Elle hoche la tête et disparaît dans l'obscurité."
+	},
+	{
+		"id": "-1000007024",
+		"key": "story_A1_2_none",
+		"en|ch|tc|kr": "Vous n'avez rien d'assez puissant. Elle hoche la tête et disparaît dans l'obscurité — elle reviendra."
+	},
+	{
+		"id": "-1000007025",
+		"key": "story_A1_3",
+		"en|ch|tc|kr": "« Le manuel n'a jamais été volé. Il a été vendu. J'ai vu qui l'a reçu — une femme en rouge, avec un lotus sur son éventail. »"
+	},
+	{
+		"id": "-1000007026",
+		"key": "story_A1_late",
+		"en|ch|tc|kr": "La nouvelle vous parvient : {A} s'est soignée seule dans une grotte pendant toute une année. Elle n'a plus demandé après vous."
+	},
+	{
+		"id": "-1000007027",
+		"key": "story_A2_1",
+		"en|ch|tc|kr": "« Mon maître gardait chaque lettre. L'une s'est perdue — le messager a été dévalisé sur la route de {T}. Retrouve-la. »"
+	},
+	{
+		"id": "-1000007028",
+		"key": "story_A2_2_robber",
+		"en|ch|tc|kr": "À {T}, un ivrogne se vante d'avoir dévalisé un messager. Une lettre scellée dépasse de sa ceinture."
+	},
+	{
+		"id": "-1000007029",
+		"key": "story_A2_2_fight",
+		"en|ch|tc|kr": "Prendre la lettre"
+	},
+	{
+		"id": "-1000007030",
+		"key": "story_A2_2_market",
+		"en|ch|tc|kr": "Au marché de {T}, un étal vend « vieilles lettres, sceaux intéressants ». L'une porte le sceau de {S}. Prix : {0:#,##0} pierres spirituelles."
+	},
+	{
+		"id": "-1000007031",
+		"key": "story_A2_2_buy",
+		"en|ch|tc|kr": "L'acheter"
+	},
+	{
+		"id": "-1000007083",
+		"key": "story_B0_1_o1",
+		"en|ch|tc|kr": "L'acheter"
+	},
+	{
+		"id": "-1000007033",
+		"key": "story_A2_3",
+		"en|ch|tc|kr": "La lettre porte le sceau de {M} — et un lotus rouge imprimé dans la cire. {A} la lit deux fois, puis la plie d'une main ferme. « Une preuve. Ils diront que je l'ai forgée. »"
+	},
+	{
+		"id": "-1000007034",
+		"key": "story_A2_3_o1",
+		"en|ch|tc|kr": "« Alors trouvons-en une deuxième. »"
+	},
+	{
+		"id": "-1000007035",
+		"key": "story_A2_3_o2",
+		"en|ch|tc|kr": "« Prouve qu'elle n'est pas fausse. » (un an de plus)"
+	},
+	{
+		"id": "-1000007036",
+		"key": "story_A2_jailed",
+		"en|ch|tc|kr": "Nouvelle de {S} : {A} a été capturée et jetée dans la prison de la secte."
+	},
+	{
+		"id": "-1000007037",
+		"key": "story_A2_jailed_o1",
+		"en|ch|tc|kr": "La délivrer"
+	},
+	{
+		"id": "-1000007038",
+		"key": "story_A2_jailed_o2",
+		"en|ch|tc|kr": "Ne rien faire"
+	},
+	{
+		"id": "-1000007039",
+		"key": "story_A_fallen",
+		"en|ch|tc|kr": "Des années plus tard, une femme en noir bordé de rouge vous barre la route : {A}. « Je t'ai attendu dans cette cellule. Tu n'es jamais venu. »"
+	},
+	{
+		"id": "-1000007040",
+		"key": "story_A3_1",
+		"en|ch|tc|kr": "« Le vieux Lu gardait le trésor de la secte. Il a vu la transaction. Un mois plus tard, il a fui la secte — terrifié. »"
+	},
+	{
+		"id": "-1000007041",
+		"key": "story_A3_2",
+		"en|ch|tc|kr": "La porte de la maison du vieux Lu est déjà enfoncée. Des assassins masqués entourent le vieil homme."
+	},
+	{
+		"id": "-1000007042",
+		"key": "story_A3_2_o1",
+		"en|ch|tc|kr": "Le protéger"
+	},
+	{
+		"id": "-1000007043",
+		"key": "story_A3_3",
+		"en|ch|tc|kr": "« Je témoignerai devant les anciens — si vous me gardez en vie jusque-là. »"
+	},
+	{
+		"id": "-1000007044",
+		"key": "story_A3_ledger",
+		"en|ch|tc|kr": "Le vieux Lu est mort. Le trésor de la secte est gardé jour et nuit ; son registre est la seule preuve qui reste."
+	},
+	{
+		"id": "-1000007045",
+		"key": "story_A3_ledger_o1",
+		"en|ch|tc|kr": "S'y faufiler"
+	},
+	{
+		"id": "-1000007046",
+		"key": "story_A3_ledger_o2",
+		"en|ch|tc|kr": "Pas encore"
+	},
+	{
+		"id": "-1000007047",
+		"key": "story_A4_1",
+		"en|ch|tc|kr": "« Les preuves ne suffisent pas contre un ancien. Je dois être assez forte pour me tenir devant lui. Entraîne-toi avec moi, {p}. »"
+	},
+	{
+		"id": "-1000007048",
+		"key": "story_A4_1_o1",
+		"en|ch|tc|kr": "S'entraîner avec elle"
+	},
+	{
+		"id": "-1000007049",
+		"key": "story_A4_1_o2",
+		"en|ch|tc|kr": "Une autre fois"
+	},
+	{
+		"id": "-1000007050",
+		"key": "story_A4_2",
+		"en|ch|tc|kr": "« Mon épée s'est brisée le jour où je suis partie. Il me faut une lame qui ne se brise pas. » (un forgeron demande {0:#,##0} pierres spirituelles)"
+	},
+	{
+		"id": "-1000007051",
+		"key": "story_A4_2_o1",
+		"en|ch|tc|kr": "Lui donner une épée"
+	},
+	{
+		"id": "-1000007052",
+		"key": "story_A4_2_o2",
+		"en|ch|tc|kr": "Payer un forgeron"
+	},
+	{
+		"id": "-1000007053",
+		"key": "story_A4_2_o3",
+		"en|ch|tc|kr": "« Ta volonté est la lame. »"
+	},
+	{
+		"id": "-1000007054",
+		"key": "story_A4_3",
+		"en|ch|tc|kr": "Le tonnerre roule sur la montagne. Quand les nuages s'ouvrent, {A} se tient sous la pluie, le regard clair pour la première fois. « Je suis prête. »"
+	},
+	{
+		"id": "-1000007055",
+		"key": "story_A5_1",
+		"en|ch|tc|kr": "« J'irai à {S} reprendre mon nom — avec cette épée, ou avec ma vie. »"
+	},
+	{
+		"id": "-1000007056",
+		"key": "story_A5_1_o1",
+		"en|ch|tc|kr": "« Alors nous irons ensemble. »"
+	},
+	{
+		"id": "-1000007057",
+		"key": "story_A5_1_o2",
+		"en|ch|tc|kr": "« Laisse tomber. La vengeance te dévorera. »"
+	},
+	{
+		"id": "-1000007058",
+		"key": "story_A5_1_o3",
+		"en|ch|tc|kr": "(en secret) Prévenir {M}"
+	},
+	{
+		"id": "-1000007059",
+		"key": "story_A5_2",
+		"en|ch|tc|kr": "« Une voleuse et son complice. Anciens, voyez cette impudence. »"
+	},
+	{
+		"id": "-1000007060",
+		"key": "story_A5_2_o1",
+		"en|ch|tc|kr": "Montrer les preuves"
+	},
+	{
+		"id": "-1000007061",
+		"key": "story_A5_2_o2",
+		"en|ch|tc|kr": "Défier {M} en duel"
+	},
+	{
+		"id": "-1000007062",
+		"key": "story_A5_3",
+		"en|ch|tc|kr": "{M} est à genoux. « Dis-moi, {p} — que vaut la clémence ? »"
+	},
+	{
+		"id": "-1000007063",
+		"key": "story_A5_3_o1",
+		"en|ch|tc|kr": "« Que la secte le juge. »"
+	},
+	{
+		"id": "-1000007064",
+		"key": "story_A5_3_o2",
+		"en|ch|tc|kr": "« C'est à toi de choisir, pas à moi. »"
+	},
+	{
+		"id": "-1000007065",
+		"key": "story_A5_lost",
+		"en|ch|tc|kr": "Vous êtes repoussé. {A} vous traîne hors de la salle. « Pas aujourd'hui. Mais un jour. »"
+	},
+	{
+		"id": "-1000007066",
+		"key": "story_A5_late",
+		"en|ch|tc|kr": "{A} est allée seule à {S}. Quand elle en est sortie, sa robe était rouge, et sa lame aussi."
+	},
+	{
+		"id": "-1000007067",
+		"key": "story_endA_Companion",
+		"en|ch|tc|kr": "« Quand je n'avais rien, tu étais à mes côtés. Fais le reste du chemin avec moi, {p}. »"
+	},
+	{
+		"id": "-1000007068",
+		"key": "story_endA_Companion_o1",
+		"en|ch|tc|kr": "« Ensemble, alors. »"
+	},
+	{
+		"id": "-1000007069",
+		"key": "story_endA_Companion_o2",
+		"en|ch|tc|kr": "« Je serai toujours ton ami. »"
+	},
+	{
+		"id": "-1000007070",
+		"key": "story_endA_SectMaster",
+		"en|ch|tc|kr": "« Je fonderai une secte où aucun disciple n'est trahi par son maître. Son premier ancien, ce devrait être toi. »"
+	},
+	{
+		"id": "-1000007071",
+		"key": "story_endA_Peace",
+		"en|ch|tc|kr": "« L'épée est plus calme maintenant. Moi aussi. »"
+	},
+	{
+		"id": "-1000007072",
+		"key": "story_endA_Fallen",
+		"en|ch|tc|kr": "« La clémence était un mensonge qu'ils m'ont appris. Dame Honglian m'a appris la vérité. »"
+	},
+	{
+		"id": "-1000007073",
+		"key": "story_endA_Sacrifice",
+		"en|ch|tc|kr": "Elle s'interpose devant le coup qui vous était destiné. « …À ton tour… de vivre. » Son épée tombe à vos pieds."
+	},
+	{
+		"id": "-1000007074",
+		"key": "story_endA_hunt",
+		"en|ch|tc|kr": "{A} vous barre la route, lame déjà tirée. « J'ai dit que je viendrais réclamer la dette. »"
+	},
+	{
+		"id": "-1000007076",
+		"key": "story_end_A_Companion",
+		"en|ch|tc|kr": "Compagne"
+	},
+	{
+		"id": "-1000007179",
+		"key": "story_end_C_Companion",
+		"en|ch|tc|kr": "Compagne"
+	},
+	{
+		"id": "-1000007077",
+		"key": "story_end_A_SectMaster",
+		"en|ch|tc|kr": "Maîtresse de secte"
+	},
+	{
+		"id": "-1000007078",
+		"key": "story_end_A_Peace",
+		"en|ch|tc|kr": "Paix"
+	},
+	{
+		"id": "-1000007079",
+		"key": "story_end_A_Fallen",
+		"en|ch|tc|kr": "Déchue"
+	},
+	{
+		"id": "-1000007080",
+		"key": "story_end_A_Sacrifice",
+		"en|ch|tc|kr": "Sacrifice"
+	},
+	{
+		"id": "-1000007081",
+		"key": "story_end_A_Traitor",
+		"en|ch|tc|kr": "Traître"
+	},
+	{
+		"id": "-1000007082",
+		"key": "story_B0_1",
+		"en|ch|tc|kr": "« Ah, un connaisseur ! Cette pièce — elle vaut trois fois plus, je le jure sur la tombe de ma grand-mère. Pour vous ? Moitié prix : {0:#,##0} pierres spirituelles. »"
+	},
+	{
+		"id": "-1000007084",
+		"key": "story_B0_1_o2",
+		"en|ch|tc|kr": "« La tombe de ta grand-mère doit être très occupée. »"
+	},
+	{
+		"id": "-1000007085",
+		"key": "story_B0_2",
+		"en|ch|tc|kr": "Deux hommes masqués vous barrent la route. « Ce que le vieux t'a vendu appartient au Lotus Rouge. Rends-le et garde tes mains. »"
+	},
+	{
+		"id": "-1000007086",
+		"key": "story_B0_2_o1",
+		"en|ch|tc|kr": "Le rendre"
+	},
+	{
+		"id": "-1000007088",
+		"key": "story_B0_2_o3",
+		"en|ch|tc|kr": "Courir chez {H}"
+	},
+	{
+		"id": "-1000007089",
+		"key": "story_B0_3",
+		"en|ch|tc|kr": "« Ils sont venus ? Déjà ? Ô cieux, ô ancêtres, ô mes pauvres genoux— »"
+	},
+	{
+		"id": "-1000007090",
+		"key": "story_B1_1",
+		"en|ch|tc|kr": "La boutique de {H} est fermée. Vous le trouvez caché derrière des sacs de riz dans un entrepôt."
+	},
+	{
+		"id": "-1000007091",
+		"key": "story_B1_2",
+		"en|ch|tc|kr": "« Quand ma caravane a sombré, j'ai emprunté au Lotus Rouge. Dix ans d'intérêts… J'ai vendu leurs marchandises pour les rembourser. Mal, comme tu l'as vu. »"
+	},
+	{
+		"id": "-1000007092",
+		"key": "story_B1_3",
+		"en|ch|tc|kr": "« Tu te portes garant pour moi à la banque ? Juste une signature ! Qu'est-ce qui pourrait mal tourner ? » (ou prête-moi {0:#,##0} pierres spirituelles…)"
+	},
+	{
+		"id": "-1000007093",
+		"key": "story_B1_3_o1",
+		"en|ch|tc|kr": "Se porter garant"
+	},
+	{
+		"id": "-1000007094",
+		"key": "story_B1_3_o2",
+		"en|ch|tc|kr": "Lui prêter des pierres spirituelles"
+	},
+	{
+		"id": "-1000007095",
+		"key": "story_B1_3_o3",
+		"en|ch|tc|kr": "« Chaque “qu'est-ce qui pourrait mal tourner” finit par un enterrement. »"
+	},
+	{
+		"id": "-1000007096",
+		"key": "story_B2_1",
+		"en|ch|tc|kr": "« Une dernière caravane pour {T2}. Soie, herbes, un peu de jade spirituel. Si elle arrive, je rembourse tout le monde. Sinon… je deviens un moine très sincère. »"
+	},
+	{
+		"id": "-1000007097",
+		"key": "story_B2_2",
+		"en|ch|tc|kr": "À mi-chemin de {T2}, des flèches frappent la première charrette. Des bandits surgissent des arbres."
+	},
+	{
+		"id": "-1000007098",
+		"key": "story_B2_2_o1",
+		"en|ch|tc|kr": "Défendre la caravane"
+	},
+	{
+		"id": "-1000007099",
+		"key": "story_B2_3",
+		"en|ch|tc|kr": "« Ta part : {0:#,##0} pierres spirituelles. Ne compte pas devant moi, je vais pleurer. »"
+	},
+	{
+		"id": "-1000007100",
+		"key": "story_B2_vanished",
+		"en|ch|tc|kr": "La boutique de {H} est vide. Un mot sur la porte : « Parti voir mon cousin. Loin. Très loin. »"
+	},
+	{
+		"id": "-1000007101",
+		"key": "story_B2_found",
+		"en|ch|tc|kr": "Dans une ville lointaine, une voix familière marchande le prix d'un navet. {H} pâlit. « …Je peux expliquer. Je peux payer ! En marchandises ! »"
+	},
+	{
+		"id": "-1000007102",
+		"key": "story_B3_1",
+		"en|ch|tc|kr": "Un homme en soie rouge entre dans la boutique de {H}. « La Dame vous salue. Les intérêts sont dus. »"
+	},
+	{
+		"id": "-1000007103",
+		"key": "story_B3_2",
+		"en|ch|tc|kr": "« J'ai vu son registre. Pas que moi — la moitié des marchands de la région lui doivent de l'argent. Elle achète les villes, une dette à la fois. » (intérêts : {0:#,##0} pierres spirituelles)"
+	},
+	{
+		"id": "-1000007104",
+		"key": "story_B3_2_o1",
+		"en|ch|tc|kr": "Voler le registre"
+	},
+	{
+		"id": "-1000007105",
+		"key": "story_B3_2_o2",
+		"en|ch|tc|kr": "Payer les intérêts"
+	},
+	{
+		"id": "-1000007106",
+		"key": "story_B3_2_o3",
+		"en|ch|tc|kr": "Gagner du temps"
+	},
+	{
+		"id": "-1000007107",
+		"key": "story_B3_3_ledger",
+		"en|ch|tc|kr": "Le registre rouge est entre vos mains : page après page de marchands endettés auprès de la Dame. Ils se souviendront de qui les a libérés."
+	},
+	{
+		"id": "-1000007108",
+		"key": "story_B3_3_paid",
+		"en|ch|tc|kr": "L'émissaire compte les pierres et sourit. « À la prochaine. » Deux années tranquilles, au moins."
+	},
+	{
+		"id": "-1000007109",
+		"key": "story_B3_3_stalled",
+		"en|ch|tc|kr": "L'émissaire part sans un mot. Cette nuit-là, on voit des bannières rouges sur les collines."
+	},
+	{
+		"id": "-1000007110",
+		"key": "story_B4_1",
+		"en|ch|tc|kr": "Des bannières rouges se dressent devant {T}. Le Lotus Rouge exige la ville en paiement de la dette de {H}."
+	},
+	{
+		"id": "-1000007111",
+		"key": "story_B4_2",
+		"en|ch|tc|kr": "« J'ai des économies. Des économies secrètes. Très secrètes. Prends-les — engage des gardes, achète des flèches, n'importe quoi ! »"
+	},
+	{
+		"id": "-1000007112",
+		"key": "story_B4_2_o1",
+		"en|ch|tc|kr": "Engager des gardes"
+	},
+	{
+		"id": "-1000007113",
+		"key": "story_B4_2_o2",
+		"en|ch|tc|kr": "Négocier un tribut"
+	},
+	{
+		"id": "-1000007114",
+		"key": "story_B4_2_o3",
+		"en|ch|tc|kr": "Rester à l'écart"
+	},
+	{
+		"id": "-1000007115",
+		"key": "story_B4_3",
+		"en|ch|tc|kr": "Le Lotus Rouge attaque les portes de {T}."
+	},
+	{
+		"id": "-1000007117",
+		"key": "story_B5_1",
+		"en|ch|tc|kr": "« Tu sais, {p}, en quarante ans de commerce, tu es mon seul client qui n'a jamais marchandé. Idiot. »"
+	},
+	{
+		"id": "-1000007118",
+		"key": "story_B5_2",
+		"en|ch|tc|kr": "Il pousse une petite boîte sur la table. « Ne l'ouvre pas ici. Tout le monde en voudra une. »"
+	},
+	{
+		"id": "-1000007119",
+		"key": "story_endB_Heir",
+		"en|ch|tc|kr": "Une lettre d'une écriture tremblante : « À mon seul client honnête… mon stock est à toi. Vends-le cher. »"
+	},
+	{
+		"id": "-1000007120",
+		"key": "story_endB_Betrayed",
+		"en|ch|tc|kr": "Un mot sur un bureau vide : « Désolé, ami. Il faut bien vivre. » La banque vous réclame désormais sa dette."
+	},
+	{
+		"id": "-1000007121",
+		"key": "story_endB_FallenTown",
+		"en|ch|tc|kr": "Les bannières au-dessus de {T} restent rouges. Les impôts doublent et les gardes ne sourient plus."
+	},
+	{
+		"id": "-1000007122",
+		"key": "story_endB_Benefactor",
+		"en|ch|tc|kr": "« Tu as fait confiance à un idiot. L'idiot ne l'oubliera pas. » Il vous rembourse tout, avec les intérêts."
+	},
+	{
+		"id": "-1000007123",
+		"key": "story_endB_MerchantPrince",
+		"en|ch|tc|kr": "« À partir d'aujourd'hui, ton argent ne vaut rien dans mes boutiques. Enfin — la moitié. »"
+	},
+	{
+		"id": "-1000007124",
+		"key": "story_end_B_MerchantPrince",
+		"en|ch|tc|kr": "Prince marchand"
+	},
+	{
+		"id": "-1000007125",
+		"key": "story_end_B_Heir",
+		"en|ch|tc|kr": "L'héritier"
+	},
+	{
+		"id": "-1000007126",
+		"key": "story_end_B_FallenTown",
+		"en|ch|tc|kr": "Ville déchue"
+	},
+	{
+		"id": "-1000007127",
+		"key": "story_end_B_Betrayed",
+		"en|ch|tc|kr": "Trahi"
+	},
+	{
+		"id": "-1000007128",
+		"key": "story_end_B_Benefactor",
+		"en|ch|tc|kr": "Bienfaiteur"
+	},
+	{
+		"id": "-1000007129",
+		"key": "story_C0_1",
+		"en|ch|tc|kr": "BOUM. Une fumée violette dévale la rue. Une fille aux sourcils roussis vous fait signe à travers la brume.\n« Tu as l'air en bonne santé. Tu veux tester une pilule ? Sûre à quatre-vingt-dix pour cent ! Quatre-vingts. Probablement. »"
+	},
+	{
+		"id": "-1000007130",
+		"key": "story_C0_1_o1",
+		"en|ch|tc|kr": "« …D'accord. »"
+	},
+	{
+		"id": "-1000007131",
+		"key": "story_C0_1_o2",
+		"en|ch|tc|kr": "Reculer lentement"
+	},
+	{
+		"id": "-1000007132",
+		"key": "story_C0_2",
+		"en|ch|tc|kr": "Vos cheveux deviennent lavande pendant trois mois. {X} prend des notes, ravie."
+	},
+	{
+		"id": "-1000007133",
+		"key": "story_C0_3",
+		"en|ch|tc|kr": "« Pardon, pardon, pardon ! Tiens, une vraie pilule. Elle marche à chaque fois. La plupart du temps. »"
+	},
+	{
+		"id": "-1000007134",
+		"key": "story_C1_1",
+		"en|ch|tc|kr": "« L'examen de la Guilde des alchimistes, c'est au printemps prochain. Il me faut un lotus de givre lunaire. Une vallée. Un très gros serpent. Hihi. »"
+	},
+	{
+		"id": "-1000007135",
+		"key": "story_C1_2",
+		"en|ch|tc|kr": "Un marchand d'herbes a une carte de la vallée : {0:#,##0} pierres spirituelles, ou une herbe en échange."
+	},
+	{
+		"id": "-1000007136",
+		"key": "story_C1_2_o1",
+		"en|ch|tc|kr": "Acheter la carte"
+	},
+	{
+		"id": "-1000007137",
+		"key": "story_C1_2_o2",
+		"en|ch|tc|kr": "Échanger une herbe"
+	},
+	{
+		"id": "-1000007139",
+		"key": "story_C1_3",
+		"en|ch|tc|kr": "La vallée est blanche de givre. Quelque chose d'énorme bouge sous l'étang aux lotus."
+	},
+	{
+		"id": "-1000007140",
+		"key": "story_C1_3_o1",
+		"en|ch|tc|kr": "Combattre le serpent"
+	},
+	{
+		"id": "-1000007141",
+		"key": "story_C1_4",
+		"en|ch|tc|kr": "Une vieille femme est assise au bord de l'étang, indemne après le combat. « Les jeunes, toujours pressés. Prends le lotus — et laisse les racines. »"
+	},
+	{
+		"id": "-1000007142",
+		"key": "story_C1_failed",
+		"en|ch|tc|kr": "{X} est partie seule. Elle revient en boitant, les mains vides, et ne fait pas une seule blague de la semaine."
+	},
+	{
+		"id": "-1000007143",
+		"key": "story_C1_failed_o1",
+		"en|ch|tc|kr": "La soigner"
+	},
+	{
+		"id": "-1000007144",
+		"key": "story_C1_failed_o2",
+		"en|ch|tc|kr": "La laisser tranquille"
+	},
+	{
+		"id": "-1000007145",
+		"key": "story_C2_1",
+		"en|ch|tc|kr": "« Frais de fourneau : {0:#,##0} pierres spirituelles », dit l'examinateur. {X} vous regarde avec de grands yeux."
+	},
+	{
+		"id": "-1000007146",
+		"key": "story_C2_1_o1",
+		"en|ch|tc|kr": "Payer"
+	},
+	{
+		"id": "-1000007147",
+		"key": "story_C2_1_o2",
+		"en|ch|tc|kr": "« Tu as des économies. »"
+	},
+	{
+		"id": "-1000007148",
+		"key": "story_C2_q1",
+		"en|ch|tc|kr": "« Grand feu ou petit feu ? Vite, vite, ça bouillonne ! »"
+	},
+	{
+		"id": "-1000007149",
+		"key": "story_C2_q1_o1",
+		"en|ch|tc|kr": "Grand feu"
+	},
+	{
+		"id": "-1000007150",
+		"key": "story_C2_q1_o2",
+		"en|ch|tc|kr": "Petit feu"
+	},
+	{
+		"id": "-1000007151",
+		"key": "story_C2_q2",
+		"en|ch|tc|kr": "« Le fond noircit ! Qu'est-ce que je fais ?! »"
+	},
+	{
+		"id": "-1000007152",
+		"key": "story_C2_q2_o1",
+		"en|ch|tc|kr": "Grand feu, brûle tout"
+	},
+	{
+		"id": "-1000007153",
+		"key": "story_C2_q2_o2",
+		"en|ch|tc|kr": "Éteindre le feu"
+	},
+	{
+		"id": "-1000007154",
+		"key": "story_C2_q3",
+		"en|ch|tc|kr": "« La pilule se forme ! Le lotus — maintenant ou plus tard ? »"
+	},
+	{
+		"id": "-1000007155",
+		"key": "story_C2_q3_o1",
+		"en|ch|tc|kr": "Maintenant"
+	},
+	{
+		"id": "-1000007156",
+		"key": "story_C2_q3_o2",
+		"en|ch|tc|kr": "Plus tard"
+	},
+	{
+		"id": "-1000007157",
+		"key": "story_C2_pass",
+		"en|ch|tc|kr": "« J'AI RÉUSSI ! Tu as vu ? Tout le monde a vu ?! »"
+	},
+	{
+		"id": "-1000007158",
+		"key": "story_C2_fail",
+		"en|ch|tc|kr": "« …L'année prochaine. L'année prochaine, j'y arriverai. »"
+	},
+	{
+		"id": "-1000007159",
+		"key": "story_C3_1",
+		"en|ch|tc|kr": "Pour une fois, {X} ne plaisante pas. « Le grand maître {G} a présenté ma recette à la Guilde. Ma recette. Il a ri quand je l'ai dit. »"
+	},
+	{
+		"id": "-1000007160",
+		"key": "story_C3_app1",
+		"en|ch|tc|kr": "Un apprenti de la Guilde a vu {X} écrire la recette. Il témoignera — si vous l'aidez d'abord."
+	},
+	{
+		"id": "-1000007161",
+		"key": "story_C3_app2",
+		"en|ch|tc|kr": "Une deuxième apprentie a recopié la recette pour {G}. Elle a peur — et on la harcèle."
+	},
+	{
+		"id": "-1000007162",
+		"key": "story_C3_app_o1",
+		"en|ch|tc|kr": "Donner une pilule ou une herbe"
+	},
+	{
+		"id": "-1000007163",
+		"key": "story_C3_app_o2",
+		"en|ch|tc|kr": "S'occuper du tyran"
+	},
+	{
+		"id": "-1000007165",
+		"key": "story_C3_4",
+		"en|ch|tc|kr": "« Alors. Qu'est-ce qu'on fait du grand maître ? »"
+	},
+	{
+		"id": "-1000007166",
+		"key": "story_C3_4_o1",
+		"en|ch|tc|kr": "Le démasquer devant la Guilde"
+	},
+	{
+		"id": "-1000007167",
+		"key": "story_C3_4_o2",
+		"en|ch|tc|kr": "Le défier en duel"
+	},
+	{
+		"id": "-1000007168",
+		"key": "story_C3_4_o3",
+		"en|ch|tc|kr": "« Laisse tomber. Tu en feras de meilleures. »"
+	},
+	{
+		"id": "-1000007169",
+		"key": "story_C3_exposed",
+		"en|ch|tc|kr": "Devant toute la Guilde, les apprentis parlent. {G} devient blanc, puis rouge, puis très silencieux."
+	},
+	{
+		"id": "-1000007170",
+		"key": "story_C4_1",
+		"en|ch|tc|kr": "« Petite voleuse, affronte-moi au Grand Rassemblement. Le perdant quitte l'alchimie pour toujours. »"
+	},
+	{
+		"id": "-1000007171",
+		"key": "story_C4_2",
+		"en|ch|tc|kr": "La veille du Rassemblement, quelqu'un s'introduit dans l'atelier de {X}."
+	},
+	{
+		"id": "-1000007172",
+		"key": "story_C4_2_o1",
+		"en|ch|tc|kr": "Attraper le saboteur"
+	},
+	{
+		"id": "-1000007173",
+		"key": "story_C4_3_won",
+		"en|ch|tc|kr": "Deux fourneaux, une salle, mille regards. La pilule de {X} s'élève des flammes, brillant comme une petite lune."
+	},
+	{
+		"id": "-1000007174",
+		"key": "story_C4_3_lost",
+		"en|ch|tc|kr": "La pilule de {G} est sans défaut. Celle de {X} se fend dans le dernier souffle du feu."
+	},
+	{
+		"id": "-1000007175",
+		"key": "story_endC_Companion",
+		"en|ch|tc|kr": "« Je pars avec toi. Il faut bien que quelqu'un teste des pilules sur tes ennemis. »"
+	},
+	{
+		"id": "-1000007176",
+		"key": "story_endC_MasterAlchemist",
+		"en|ch|tc|kr": "« Pilules de maîtresse {X} — pour toi, à prix coûtant. Pour les autres, le double ! »"
+	},
+	{
+		"id": "-1000007177",
+		"key": "story_endC_LastExplosion",
+		"en|ch|tc|kr": "Une petite maison de thé ouvre. Le thé est excellent. Rien n'explose."
+	},
+	{
+		"id": "-1000007178",
+		"key": "story_end_C_MasterAlchemist",
+		"en|ch|tc|kr": "Maîtresse alchimiste"
+	},
+	{
+		"id": "-1000007180",
+		"key": "story_end_C_LastExplosion",
+		"en|ch|tc|kr": "Dernière explosion"
+	},
+	{
+		"id": "-1000007181",
+		"key": "story_D0_1",
+		"en|ch|tc|kr": "L'aubergiste : « Onze bols de nouilles et pas d'argent ?! »\n{N} : « Je peux payer avec un combat ! Un bon ! »\n{C} pince sa cithare : « Onze bols, un idiot, pas une pièce — une tragédie en trois strophes. »"
+	},
+	{
+		"id": "-1000007182",
+		"key": "story_D0_2",
+		"en|ch|tc|kr": "Tout le monde vous regarde. (l'addition : {0:#,##0} pierres spirituelles)"
+	},
+	{
+		"id": "-1000007183",
+		"key": "story_D0_2_o1",
+		"en|ch|tc|kr": "Payer pour lui"
+	},
+	{
+		"id": "-1000007184",
+		"key": "story_D0_2_o2",
+		"en|ch|tc|kr": "« Alors bats-toi contre moi. »"
+	},
+	{
+		"id": "-1000007185",
+		"key": "story_D0_ribs",
+		"en|ch|tc|kr": "« Ha ! Mes côtes ! On remet ça demain ? »"
+	},
+	{
+		"id": "-1000007186",
+		"key": "story_D0_3",
+		"en|ch|tc|kr": "« Un idiot, un héros et un poète entrent dans une auberge. Il faut que je l'écrive. »"
+	},
+	{
+		"id": "-1000007187",
+		"key": "story_D1_1",
+		"en|ch|tc|kr": "« Une bête mange les bœufs des fermiers. Nous trois — facile ! Ge, tu pourras lui chanter une chanson. »"
+	},
+	{
+		"id": "-1000007188",
+		"key": "story_D1_2",
+		"en|ch|tc|kr": "La tanière de la bête empeste le sang. {N} fait craquer ses jointures ; {C} accorde sa cithare."
+	},
+	{
+		"id": "-1000007189",
+		"key": "story_D1_2_o1",
+		"en|ch|tc|kr": "La chasser"
+	},
+	{
+		"id": "-1000007190",
+		"key": "story_D1_3",
+		"en|ch|tc|kr": "Autour du feu de camp.\n{N} : « Ma secte veut que je me batte dans ses guerres. Moi, je veux juste cogner des bandits. »\n{C} : « J'écris des poèmes d'amour parce que les autres font trop mal. »"
+	},
+	{
+		"id": "-1000007191",
+		"key": "story_D1_3_o1",
+		"en|ch|tc|kr": "« Alors jurez la fraternité avec moi. »"
+	},
+	{
+		"id": "-1000007192",
+		"key": "story_D1_3_o2",
+		"en|ch|tc|kr": "« Dormez un peu. »"
+	},
+	{
+		"id": "-1000007193",
+		"key": "story_D2_1",
+		"en|ch|tc|kr": "« J'ai écrit quarante-deux poèmes pour {L}. Elle n'en a lu aucun. Il me faut un… stratège. »"
+	},
+	{
+		"id": "-1000007194",
+		"key": "story_D2_2",
+		"en|ch|tc|kr": "Les poèmes devraient s'accompagner d'un cadeau."
+	},
+	{
+		"id": "-1000007195",
+		"key": "story_D2_2_o1",
+		"en|ch|tc|kr": "Offrir un cadeau"
+	},
+	{
+		"id": "-1000007196",
+		"key": "story_D2_2_o2",
+		"en|ch|tc|kr": "Les poèmes suffisent"
+	},
+	{
+		"id": "-1000007197",
+		"key": "story_D2_3",
+		"en|ch|tc|kr": "« Maintenant. Ce soir, sous sa fenêtre. Tu m'aideras ? »"
+	},
+	{
+		"id": "-1000007198",
+		"key": "story_D2_3_o1",
+		"en|ch|tc|kr": "L'aider sincèrement"
+	},
+	{
+		"id": "-1000007199",
+		"key": "story_D2_3_o2",
+		"en|ch|tc|kr": "Le saboter"
+	},
+	{
+		"id": "-1000007200",
+		"key": "story_D2_3_o3",
+		"en|ch|tc|kr": "Courtiser {L} vous-même"
+	},
+	{
+		"id": "-1000007201",
+		"key": "story_D3_1",
+		"en|ch|tc|kr": "Pas de musique ce soir. « Ma famille était marchande. Elle a refusé le prêt du Lotus Rouge. Une nuit, la maison a brûlé avec eux à l'intérieur. »"
+	},
+	{
+		"id": "-1000007202",
+		"key": "story_D3_2",
+		"en|ch|tc|kr": "La piste d'un assassin du Lotus Rouge mène à un sanctuaire en ruine."
+	},
+	{
+		"id": "-1000007203",
+		"key": "story_D3_2_o1",
+		"en|ch|tc|kr": "Entrer"
+	},
+	{
+		"id": "-1000007204",
+		"key": "story_D3_3",
+		"en|ch|tc|kr": "L'assassin mourant éclate de rire. « La Dame… vous brûlera… vous aussi. »"
+	},
+	{
+		"id": "-1000007205",
+		"key": "story_D3_3_o1",
+		"en|ch|tc|kr": "« Nous en finirons avec elle ensemble. »"
+	},
+	{
+		"id": "-1000007206",
+		"key": "story_D3_3_o2",
+		"en|ch|tc|kr": "« La vengeance ne les ramènera pas. »"
+	},
+	{
+		"id": "-1000007207",
+		"key": "story_D4_1",
+		"en|ch|tc|kr": "De l'autre côté du champ de bataille, {N} lève les poings. « Frère… ma secte l'a ordonné. Je ne peux pas fuir. »"
+	},
+	{
+		"id": "-1000007208",
+		"key": "story_D4_1_o1",
+		"en|ch|tc|kr": "« Baisse les poings et viens avec moi. »"
+	},
+	{
+		"id": "-1000007209",
+		"key": "story_D4_1_o2",
+		"en|ch|tc|kr": "« Alors bats-toi contre moi, et ne te retiens pas. »"
+	},
+	{
+		"id": "-1000007210",
+		"key": "story_D4_1_o3",
+		"en|ch|tc|kr": "Changer de camp"
+	},
+	{
+		"id": "-1000007211",
+		"key": "story_D4_walk",
+		"en|ch|tc|kr": "« Tes poings pèsent plus lourd que les ordres de ma secte. » Il baisse les siens."
+	},
+	{
+		"id": "-1000007212",
+		"key": "story_D4_switch",
+		"en|ch|tc|kr": "Vous passez de son côté du champ. Derrière vous, votre ville natale ne l'oubliera pas."
+	},
+	{
+		"id": "-1000007213",
+		"key": "story_endD_Rivals",
+		"en|ch|tc|kr": "« Tu l'as conquise. La prochaine fois que nous nous verrons, ce sera sur le champ de bataille. »"
+	},
+	{
+		"id": "-1000007214",
+		"key": "story_endD_BrotherLost",
+		"en|ch|tc|kr": "Une chanson lente flotte au-dessus de la tombe. « Il disait toujours que les nouilles d'ici étaient les meilleures. »"
+	},
+	{
+		"id": "-1000007215",
+		"key": "story_endD_MurongCompanion",
+		"en|ch|tc|kr": "« Quarante-trois poèmes. Celui-ci, tu le liras. »"
+	},
+	{
+		"id": "-1000007216",
+		"key": "story_endD_ThreeSworn",
+		"en|ch|tc|kr": "« Le ciel au-dessus, la terre en dessous — nous trois, une seule vie ! »"
+	},
+	{
+		"id": "-1000007217",
+		"key": "story_end_D_ThreeSworn",
+		"en|ch|tc|kr": "Trois jurés"
+	},
+	{
+		"id": "-1000007218",
+		"key": "story_end_D_MurongCompanion",
+		"en|ch|tc|kr": "Murong pour compagnon"
+	},
+	{
+		"id": "-1000007219",
+		"key": "story_end_D_BrotherLost",
+		"en|ch|tc|kr": "Un frère perdu"
+	},
+	{
+		"id": "-1000007220",
+		"key": "story_end_D_Rivals",
+		"en|ch|tc|kr": "Rivaux"
+	},
+	{
+		"id": "-1000007221",
+		"key": "story_E0_1",
+		"en|ch|tc|kr": "« Mon enfant, ces vieux genoux ne montent plus jusqu'aux hautes terrasses. Veux-tu t'occuper de mon jardin quelque temps ? »"
+	},
+	{
+		"id": "-1000007222",
+		"key": "story_E0_1_o1",
+		"en|ch|tc|kr": "« Bien sûr, grand-mère. »"
+	},
+	{
+		"id": "-1000007223",
+		"key": "story_E0_1_o2",
+		"en|ch|tc|kr": "« Je n'ai pas le temps pour les jardins. »"
+	},
+	{
+		"id": "-1000007224",
+		"key": "story_E0_2",
+		"en|ch|tc|kr": "Désherber, arroser — et une bande de singes spirituels qui volent des pêches."
+	},
+	{
+		"id": "-1000007225",
+		"key": "story_E0_2_o1",
+		"en|ch|tc|kr": "Les chasser"
+	},
+	{
+		"id": "-1000007226",
+		"key": "story_E0_3",
+		"en|ch|tc|kr": "« Une épée est comme une racine : elle pousse en profondeur avant de pousser en hauteur. »"
+	},
+	{
+		"id": "-1000007227",
+		"key": "story_E1_1",
+		"en|ch|tc|kr": "Une fillette maigre se cache derrière les jupes de {O}, serrant une cuillère en bois comme une épée."
+	},
+	{
+		"id": "-1000007228",
+		"key": "story_E1_2",
+		"en|ch|tc|kr": "« Son village a brûlé. Des bannières rouges, ont dit les survivants. Je suis trop vieille pour l'élever, et trop vieille pour lui dire non. »"
+	},
+	{
+		"id": "-1000007229",
+		"key": "story_E1_3",
+		"en|ch|tc|kr": "« Elle s'appelle {Y}. Que vas-tu faire, mon enfant ? »"
+	},
+	{
+		"id": "-1000007230",
+		"key": "story_E1_3_o1",
+		"en|ch|tc|kr": "L'adopter"
+	},
+	{
+		"id": "-1000007231",
+		"key": "story_E1_3_o2",
+		"en|ch|tc|kr": "L'envoyer dans une secte"
+	},
+	{
+		"id": "-1000007232",
+		"key": "story_E1_3_o3",
+		"en|ch|tc|kr": "La laisser avec vous, grand-mère"
+	},
+	{
+		"id": "-1000007233",
+		"key": "story_E2_8",
+		"en|ch|tc|kr": "{Y} a encore brûlé le riz. Elle dit que c'était une « technique de feu »."
+	},
+	{
+		"id": "-1000007234",
+		"key": "story_E2_8_o1",
+		"en|ch|tc|kr": "Lui apprendre à cuisiner"
+	},
+	{
+		"id": "-1000007235",
+		"key": "story_E2_8_o2",
+		"en|ch|tc|kr": "Lui apprendre une posture"
+	},
+	{
+		"id": "-1000007236",
+		"key": "story_E2_12",
+		"en|ch|tc|kr": "{Y} rentre avec un œil au beurre noir. « Il a dit que tu n'étais personne. Je l'ai corrigé. »"
+	},
+	{
+		"id": "-1000007237",
+		"key": "story_E2_12_o1",
+		"en|ch|tc|kr": "La gronder"
+	},
+	{
+		"id": "-1000007238",
+		"key": "story_E2_12_o2",
+		"en|ch|tc|kr": "Rire"
+	},
+	{
+		"id": "-1000007239",
+		"key": "story_E2_12_o3",
+		"en|ch|tc|kr": "Lui apprendre quand se battre"
+	},
+	{
+		"id": "-1000007240",
+		"key": "story_E2_15",
+		"en|ch|tc|kr": "{Y} demande comment étaient ses parents. {O} vous regarde."
+	},
+	{
+		"id": "-1000007241",
+		"key": "story_E2_15_o1",
+		"en|ch|tc|kr": "Dire la vérité"
+	},
+	{
+		"id": "-1000007242",
+		"key": "story_E2_15_o2",
+		"en|ch|tc|kr": "« Ils t'aimaient. »"
+	},
+	{
+		"id": "-1000007243",
+		"key": "story_E3_1",
+		"en|ch|tc|kr": "{Y} : « Grand-mère tousse la nuit maintenant. Elle dit que c'est le vent. »"
+	},
+	{
+		"id": "-1000007244",
+		"key": "story_E3_2",
+		"en|ch|tc|kr": "Les marchands d'herbes parlent d'une herbe de longévité dans les hautes falaises, gardée par une bête."
+	},
+	{
+		"id": "-1000007245",
+		"key": "story_E3_2_o1",
+		"en|ch|tc|kr": "Aller chercher l'herbe"
+	},
+	{
+		"id": "-1000007246",
+		"key": "story_E3_2_o2",
+		"en|ch|tc|kr": "Rester auprès d'elle"
+	},
+	{
+		"id": "-1000007247",
+		"key": "story_E3_3",
+		"en|ch|tc|kr": "« Tu m'as apporté ça ? …Mon enfant. Dans un jardin, les vieux arbres doivent tomber pour que les jeunes aient la lumière. »"
+	},
+	{
+		"id": "-1000007248",
+		"key": "story_E3_3_o1",
+		"en|ch|tc|kr": "Insister"
+	},
+	{
+		"id": "-1000007249",
+		"key": "story_E3_3_o2",
+		"en|ch|tc|kr": "Respecter son souhait"
+	},
+	{
+		"id": "-1000007250",
+		"key": "story_E4_1",
+		"en|ch|tc|kr": "{O} s'endort sous le vieux poirier et ne se réveille pas. Dans sa main, une graine enveloppée de soie."
+	},
+	{
+		"id": "-1000007251",
+		"key": "story_E4_2",
+		"en|ch|tc|kr": "Une lettre : « À celui qui a soigné mon jardin : plante-la là où tu te reposeras. »"
+	},
+	{
+		"id": "-1000007252",
+		"key": "story_E4_2_o1",
+		"en|ch|tc|kr": "Garder le jardin"
+	},
+	{
+		"id": "-1000007253",
+		"key": "story_E4_2_o2",
+		"en|ch|tc|kr": "Le donner à {Y}"
+	},
+	{
+		"id": "-1000007254",
+		"key": "story_endE_LostChild",
+		"en|ch|tc|kr": "Personne n'est venu pour {Y}. Quelqu'un d'autre est venu — une femme en rouge. « Personne n'est venu pour moi. Elle, si. »"
+	},
+	{
+		"id": "-1000007255",
+		"key": "story_endE_Successor",
+		"en|ch|tc|kr": "« Tu m'as appris à tenir debout. Maintenant, laisse-moi porter la famille. »"
+	},
+	{
+		"id": "-1000007256",
+		"key": "story_endE_Garden",
+		"en|ch|tc|kr": "Le poirier fleurit. « Assieds-toi sous le poirier aussi longtemps qu'il le faut. Le jardin gardera le temps pour toi. »"
+	},
+	{
+		"id": "-1000007257",
+		"key": "story_endE_Keepsake",
+		"en|ch|tc|kr": "Le poirier fleurit. Le jardin est paisible — un souvenir d'une vieille amie."
+	},
+	{
+		"id": "-1000007258",
+		"key": "story_end_E_Successor",
+		"en|ch|tc|kr": "Héritière"
+	},
+	{
+		"id": "-1000007259",
+		"key": "story_end_E_LostChild",
+		"en|ch|tc|kr": "Enfant perdue"
+	},
+	{
+		"id": "-1000007260",
+		"key": "story_end_E_GardenOfGenerations",
+		"en|ch|tc|kr": "Jardin des générations"
+	},
+	{
+		"id": "-1000007262",
+		"key": "story_garden",
+		"en|ch|tc|kr": "Le jardin de grand-mère Shi. Retraite sous le poirier : combien de temps ?"
+	},
+	{
+		"id": "-1000007263",
+		"key": "story_garden_o",
+		"en|ch|tc|kr": "{0} an(s) ({1:#,##0} pierres spirituelles)"
+	},
+	{
+		"id": "-1000007265",
+		"key": "story_garden_money",
+		"en|ch|tc|kr": "Vous n'avez pas assez de pierres spirituelles."
+	},
+	{
+		"id": "-1000007266",
+		"key": "story_F1_1",
+		"en|ch|tc|kr": "Trois villes hissent des bannières rouges en une seule saison. Les marchands murmurent un nom : la Dame."
+	},
+	{
+		"id": "-1000007267",
+		"key": "story_F1_2",
+		"en|ch|tc|kr": "« Petit tireur de ficelles, tu as été bien occupé. Viens au Pavillon du Lotus. Amène tes amis — j'adore la compagnie. »"
+	},
+	{
+		"id": "-1000007268",
+		"key": "story_F1_3",
+		"en|ch|tc|kr": "Le Pavillon du Lotus attend."
+	},
+	{
+		"id": "-1000007269",
+		"key": "story_F1_3_o1",
+		"en|ch|tc|kr": "Rassembler des alliés"
+	},
+	{
+		"id": "-1000007270",
+		"key": "story_F1_3_o2",
+		"en|ch|tc|kr": "Y aller seul maintenant"
+	},
+	{
+		"id": "-1000007271",
+		"key": "story_F2_A",
+		"en|ch|tc|kr": "« Enfin. »"
+	},
+	{
+		"id": "-1000007272",
+		"key": "story_F2_H",
+		"en|ch|tc|kr": "« J'apporte les flèches. Et des en-cas. »"
+	},
+	{
+		"id": "-1000007273",
+		"key": "story_F2_N",
+		"en|ch|tc|kr": "« Qui je frappe ? »"
+	},
+	{
+		"id": "-1000007274",
+		"key": "story_F2_C",
+		"en|ch|tc|kr": "« Pour ma famille. »"
+	},
+	{
+		"id": "-1000007275",
+		"key": "story_F2_Y",
+		"en|ch|tc|kr": "« Pour mon village. »"
+	},
+	{
+		"id": "-1000007276",
+		"key": "story_F2_X",
+		"en|ch|tc|kr": "« J'ai fait des pilules explosives ! Exprès, cette fois ! »"
+	},
+	{
+		"id": "-1000007277",
+		"key": "story_F2_o1",
+		"en|ch|tc|kr": "« Alors viens. »"
+	},
+	{
+		"id": "-1000007278",
+		"key": "story_F3_1",
+		"en|ch|tc|kr": "Les portes du Pavillon du Lotus. Ses gardiens s'avancent."
+	},
+	{
+		"id": "-1000007280",
+		"key": "story_F3_2",
+		"en|ch|tc|kr": "« Tant de petits fils, tous noués à moi. Agenouille-toi, et je laisserai tes amis garder leur tête. »"
+	},
+	{
+		"id": "-1000007281",
+		"key": "story_F3_2_o1",
+		"en|ch|tc|kr": "« Mes amis répondent pour eux-mêmes. »"
+	},
+	{
+		"id": "-1000007282",
+		"key": "story_F3_2_o2",
+		"en|ch|tc|kr": "S'agenouiller"
+	},
+	{
+		"id": "-1000007292",
+		"key": "story_end_F_Kneel",
+		"en|ch|tc|kr": "S'agenouiller"
+	},
+	{
+		"id": "-1000007283",
+		"key": "story_F3_3",
+		"en|ch|tc|kr": "Dame Honglian se lève. Le lotus de son éventail s'ouvre."
+	},
+	{
+		"id": "-1000007284",
+		"key": "story_F3_3_o1",
+		"en|ch|tc|kr": "La dernière bataille"
+	},
+	{
+		"id": "-1000007285",
+		"key": "story_endF_Kneel",
+		"en|ch|tc|kr": "« Enfant sage. À partir d'aujourd'hui, mes villes sont tes villes — et la haine du monde est à toi aussi. »"
+	},
+	{
+		"id": "-1000007286",
+		"key": "story_F4_1",
+		"en|ch|tc|kr": "Le lotus rouge se fane. Les villes qu'elle tenait ouvrent leurs portes."
+	},
+	{
+		"id": "-1000007287",
+		"key": "story_F4_2",
+		"en|ch|tc|kr": "Son registre des dettes brûle. Dans les cendres du pavillon gît un miroir : {0}."
+	},
+	{
+		"id": "-1000007288",
+		"key": "story_F4_3",
+		"en|ch|tc|kr": "Un par un, vos alliés vous disent adieu et reprennent leur propre chemin."
+	},
+	{
+		"id": "-1000007289",
+		"key": "story_F_spread",
+		"en|ch|tc|kr": "Le royaume démoniaque s'étend : d'autres villes hissent des bannières rouges. La Dame n'attendra pas éternellement."
+	},
+	{
+		"id": "-1000007290",
+		"key": "story_F_dead",
+		"en|ch|tc|kr": "La nouvelle arrive : Dame Honglian est morte. Le Lotus Rouge se disperse comme des pétales au vent."
+	},
+	{
+		"id": "-1000007291",
+		"key": "story_end_F_Victory",
+		"en|ch|tc|kr": "Victoire"
+	},
+	{
+		"id": "-1000007261",
+		"key": "taskName444447001",
+		"en|ch|tc|kr": "Le jardin de grand-mère Shi"
+	},
+	{
+		"id": "-1000007293",
+		"key": "taskDesc444447001",
+		"en|ch|tc|kr": "Allez au poirier du jardin de grand-mère Shi (suivez cette quête sur la carte). Vous pourrez y faire une retraite de 1 à 20 ans."
+	}
+]

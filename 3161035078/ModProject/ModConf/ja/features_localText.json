@@ -1163,5 +1163,50 @@
 		"id": "-1000006276",
 		"key": "secl_interrupted",
 		"en|ch|tc|kr": "閉関は{0}か月で中断された。世の中で何かがあなたを必要としている。"
+	},
+	{
+		"id": "-1000006277",
+		"key": "log_story_end",
+		"en|ch|tc|kr": "物語「{0}」終了：{1}。"
+	},
+	{
+		"id": "-1000006278",
+		"key": "log_story_item",
+		"en|ch|tc|kr": "入手：{0}。"
+	},
+	{
+		"id": "-1000006279",
+		"key": "log_story_gift",
+		"en|ch|tc|kr": "{0}から{1}が届いた。"
+	},
+	{
+		"id": "-1000006280",
+		"key": "log_story_benefactor",
+		"en|ch|tc|kr": "{0}があなたの懸賞金を支払った。"
+	},
+	{
+		"id": "-1000006281",
+		"key": "log_story_tea",
+		"en|ch|tc|kr": "{0}からお茶と菓子が届いた（気分上昇）。"
+	},
+	{
+		"id": "-1000006282",
+		"key": "log_story_lesson",
+		"en|ch|tc|kr": "石婆婆の教えが一族に受け継がれた（根基+1）。"
+	},
+	{
+		"id": "-1000006283",
+		"key": "log_story_ali",
+		"en|ch|tc|kr": "{0}が成人した。"
+	},
+	{
+		"id": "-1000006284",
+		"key": "secl_name_Garden",
+		"en|ch|tc|kr": "梨の園"
+	},
+	{
+		"id": "-1000006285",
+		"key": "secl_res_Garden",
+		"en|ch|tc|kr": "梨の木の下で、季節は呼吸のように過ぎていった。"
 	}
 ]

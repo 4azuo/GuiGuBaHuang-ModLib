@@ -1,0 +1,2354 @@
+﻿[
+  {
+    "id": -1000007000,
+    "key": "story_continue",
+    "en": "Continue",
+    "ch": "继续",
+    "tc": "繼續",
+    "kr": "계속"
+  },
+  {
+    "id": -1000007001,
+    "key": "story_name_A",
+    "en": "Cold Sword",
+    "ch": "寒剑",
+    "tc": "寒劍",
+    "kr": "차가운 검"
+  },
+  {
+    "id": -1000007002,
+    "key": "story_name_B",
+    "en": "Old Huang's Debt",
+    "ch": "黄老的债",
+    "tc": "黃老的債",
+    "kr": "황 노인의 빚"
+  },
+  {
+    "id": -1000007003,
+    "key": "story_name_C",
+    "en": "Exploding Furnace",
+    "ch": "炸炉",
+    "tc": "炸爐",
+    "kr": "폭발하는 단로"
+  },
+  {
+    "id": -1000007004,
+    "key": "story_name_D",
+    "en": "Sworn Brothers",
+    "ch": "结义兄弟",
+    "tc": "結義兄弟",
+    "kr": "의형제"
+  },
+  {
+    "id": -1000007005,
+    "key": "story_name_E",
+    "en": "Granny's Herb Garden",
+    "ch": "婆婆的药圃",
+    "tc": "婆婆的藥圃",
+    "kr": "할머니의 약초밭"
+  },
+  {
+    "id": -1000007006,
+    "key": "story_name_F",
+    "en": "Red Lotus",
+    "ch": "红莲",
+    "tc": "紅蓮",
+    "kr": "홍련"
+  },
+  {
+    "id": -1000007007,
+    "key": "story_name_Y",
+    "en": "A Li",
+    "ch": "阿璃",
+    "tc": "阿璃",
+    "kr": "아리"
+  },
+  {
+    "id": -1000007008,
+    "key": "story_A0_1",
+    "en": "A woman in torn sect robes stumbles out of the reeds, a broken sword in her hand. Disciples of {S} follow, blades drawn.\n{A}: \"Stay out of this. It is not your fight.\"\nA disciple: \"Traitor {A} stole the sect's sword manual. Hand her over, and the sect will remember your kindness.\"",
+    "ch": "一名身着残破宗门道袍的女子从芦苇中踉跄而出，手握断剑。{S}的弟子拔剑紧随其后。\n{A}：“别插手。这不是你的事。”\n一名弟子：“叛徒{A}盗走了宗门剑谱。把她交出来，宗门必有厚报。”",
+    "tc": "一名身著殘破宗門道袍的女子從蘆葦中踉蹌而出，手握斷劍。{S}的弟子拔劍緊隨其後。\n{A}：“別插手。這不是你的事。”\n一名弟子：“叛徒{A}盜走了宗門劍譜。把她交出來，宗門必有厚報。”",
+    "kr": "찢어진 종문 도포를 입은 여인이 갈대숲에서 비틀거리며 나온다. 손에는 부러진 검이 들려 있다. {S}의 제자들이 검을 뽑아 들고 뒤쫓는다.\n{A}: \"끼어들지 마라. 네 싸움이 아니다.\"\n한 제자: \"배신자 {A}가 종문의 검보를 훔쳤소. 넘겨주시면 종문이 그 은혜를 잊지 않을 것이오.\""
+  },
+  {
+    "id": -1000007009,
+    "key": "story_A0_1_o1",
+    "en": "Fight the disciples",
+    "ch": "与弟子交战",
+    "tc": "與弟子交戰",
+    "kr": "제자들과 싸운다"
+  },
+  {
+    "id": -1000007010,
+    "key": "story_A0_1_o2",
+    "en": "\"She's yours.\"",
+    "ch": "“人归你们。”",
+    "tc": "“人歸你們。”",
+    "kr": "\"데려가시오.\""
+  },
+  {
+    "id": -1000007011,
+    "key": "story_A0_1_o3",
+    "en": "Walk away",
+    "ch": "转身离开",
+    "tc": "轉身離開",
+    "kr": "떠난다"
+  },
+  {
+    "id": -1000007012,
+    "key": "story_A0_handed",
+    "en": "As they drag her away, her eyes find yours — no anger, only a cold, patient promise.",
+    "ch": "她被拖走时，目光落在你身上——没有愤怒，只有冰冷而耐心的承诺。",
+    "tc": "她被拖走時，目光落在你身上——沒有憤怒，只有冰冷而耐心的承諾。",
+    "kr": "끌려가면서 그녀의 눈이 그대를 찾는다. 분노는 없다. 차갑고 끈질긴 약속만이 있을 뿐."
+  },
+  {
+    "id": -1000007013,
+    "key": "story_A0_2",
+    "en": "\"…Thank you. I will not forget a debt.\"\nShe tears a strip of blue silk from her sleeve and presses it into your hand. \"If you hear my name again, do not believe what they say.\"",
+    "ch": "“……多谢。这份恩情，我不会忘。”\n她从袖口撕下一条蓝绸，塞进你手里。“若再听到我的名字，别信他们说的。”",
+    "tc": "“……多謝。這份恩情，我不會忘。”\n她從袖口撕下一條藍綢，塞進你手裡。“若再聽到我的名字，別信他們說的。”",
+    "kr": "\"……고맙다. 이 빚은 잊지 않겠다.\"\n그녀는 소매에서 푸른 비단 한 조각을 찢어 그대의 손에 쥐여 준다. \"내 이름을 다시 듣게 되거든, 그들의 말을 믿지 마라.\""
+  },
+  {
+    "id": -1000007014,
+    "key": "story_A0_2_lost",
+    "en": "In the confusion of the fight she slips away. Later, a strip of blue silk is tied to your door. \"I will not forget a debt. If you hear my name again, do not believe what they say.\"",
+    "ch": "混战中她悄然脱身。后来，你的门上系了一条蓝绸。“这份恩情，我不会忘。若再听到我的名字，别信他们说的。”",
+    "tc": "混戰中她悄然脫身。後來，你的門上繫了一條藍綢。“這份恩情，我不會忘。若再聽到我的名字，別信他們說的。”",
+    "kr": "혼전 속에 그녀는 몰래 빠져나간다. 훗날, 그대의 문에 푸른 비단 한 조각이 묶여 있다. \"이 빚은 잊지 않겠다. 내 이름을 다시 듣게 되거든, 그들의 말을 믿지 마라.\""
+  },
+  {
+    "id": -1000007015,
+    "key": "story_A0_3",
+    "en": "A notice on the town gate: \"Wanted — {A}, thief of {S}.\" Someone has drawn her face badly.",
+    "ch": "城门上贴着告示：“通缉——{A}，{S}窃贼。”画像画得很糟。",
+    "tc": "城門上貼著告示：“通緝——{A}，{S}竊賊。”畫像畫得很糟。",
+    "kr": "성문에 방이 붙어 있다. \"수배 — {A}, {S}의 도둑.\" 누군가 그녀의 얼굴을 형편없이 그려 놓았다."
+  },
+  {
+    "id": -1000007016,
+    "key": "story_A0_3_o1",
+    "en": "Tear it down",
+    "ch": "撕下告示",
+    "tc": "撕下告示",
+    "kr": "방을 찢는다"
+  },
+  {
+    "id": -1000007017,
+    "key": "story_A0_3_o2",
+    "en": "Leave it",
+    "ch": "不管它",
+    "tc": "不管它",
+    "kr": "내버려 둔다"
+  },
+  {
+    "id": -1000007018,
+    "key": "story_A1_1",
+    "en": "Night. Someone taps on your window: {A}, pale, a hand pressed to her side. \"The wound will not close. Their sword was poisoned.\"",
+    "ch": "深夜，有人轻叩你的窗：{A}脸色苍白，一手捂着腰侧。“伤口合不上。他们的剑上有毒。”",
+    "tc": "深夜，有人輕叩你的窗：{A}臉色蒼白，一手捂著腰側。“傷口合不上。他們的劍上有毒。”",
+    "kr": "깊은 밤, 누군가 창문을 두드린다. 창백한 얼굴의 {A}가 옆구리를 움켜쥐고 있다. \"상처가 아물지 않는다. 그들의 검에 독이 있었다.\""
+  },
+  {
+    "id": -1000007019,
+    "key": "story_A1_2",
+    "en": "\"I need an antidote pill, or a herb strong enough (grade {0} or higher).\"",
+    "ch": "“我需要一颗解毒丹，或一株足够强的药草（{0}阶及以上）。”",
+    "tc": "“我需要一顆解毒丹，或一株足夠強的藥草（{0}階及以上）。”",
+    "kr": "\"해독 단약이나 충분히 강한 약초가 필요하다({0}품 이상).\""
+  },
+  {
+    "id": -1000007020,
+    "key": "story_A1_2_o1",
+    "en": "Give her a pill",
+    "ch": "给她丹药",
+    "tc": "給她丹藥",
+    "kr": "단약을 준다"
+  },
+  {
+    "id": -1000007021,
+    "key": "story_A1_2_o2",
+    "en": "Give her a herb",
+    "ch": "给她药草",
+    "tc": "給她藥草",
+    "kr": "약초를 준다"
+  },
+  {
+    "id": -1000007022,
+    "key": "story_A1_2_o3",
+    "en": "\"I have nothing.\" (search the market)",
+    "ch": "“我身上没有。”（去市场找）",
+    "tc": "“我身上沒有。”（去市場找）",
+    "kr": "\"가진 게 없다.\" (시장을 찾아본다)"
+  },
+  {
+    "id": -1000007023,
+    "key": "story_A1_2_search",
+    "en": "You promise to find something. She nods and disappears into the dark.",
+    "ch": "你答应去找。她点点头，消失在夜色中。",
+    "tc": "你答應去找。她點點頭，消失在夜色中。",
+    "kr": "구해 오겠다고 약속한다. 그녀는 고개를 끄덕이고 어둠 속으로 사라진다."
+  },
+  {
+    "id": -1000007024,
+    "key": "story_A1_2_none",
+    "en": "You have nothing strong enough. She nods and disappears into the dark — she will come back.",
+    "ch": "你没有足够强的东西。她点点头，消失在夜色中——她还会再来。",
+    "tc": "你沒有足夠強的東西。她點點頭，消失在夜色中——她還會再來。",
+    "kr": "충분히 강한 것이 없다. 그녀는 고개를 끄덕이고 어둠 속으로 사라진다. 그녀는 다시 올 것이다."
+  },
+  {
+    "id": -1000007025,
+    "key": "story_A1_3",
+    "en": "\"The manual was never stolen. It was sold. I saw who received it — a woman in red, with a lotus on her fan.\"",
+    "ch": "“剑谱从未被盗，是被卖了。我看见了接货的人——一个红衣女子，扇上绣着一朵莲。”",
+    "tc": "“劍譜從未被盜，是被賣了。我看見了接貨的人——一個紅衣女子，扇上繡著一朵蓮。”",
+    "kr": "\"검보는 도둑맞은 게 아니다. 팔렸다. 받아 간 자를 봤다 — 붉은 옷의 여인, 부채에 연꽃이 수놓여 있었다.\""
+  },
+  {
+    "id": -1000007026,
+    "key": "story_A1_late",
+    "en": "Word reaches you: {A} healed alone, in a cave, for a whole year. She did not ask for you again.",
+    "ch": "消息传来：{A}在山洞里独自疗伤整整一年。她没有再来找你。",
+    "tc": "訊息傳來：{A}在山洞裡獨自療傷整整一年。她沒有再來找你。",
+    "kr": "소식이 전해진다. {A}는 동굴에서 꼬박 1년을 홀로 치료했다. 그녀는 다시 그대를 찾지 않았다."
+  },
+  {
+    "id": -1000007027,
+    "key": "story_A2_1",
+    "en": "\"My master kept every letter. One went astray — the courier was robbed on the road to {T}. Find it.\"",
+    "ch": "“我师父每封信都留着。有一封送丢了——信使在去{T}的路上被劫。找到它。”",
+    "tc": "“我師父每封信都留著。有一封送丟了——信使在去{T}的路上被劫。找到它。”",
+    "kr": "\"사부는 모든 편지를 보관했다. 한 통이 사라졌다 — {T}로 가던 전령이 습격당했지. 그것을 찾아라.\""
+  },
+  {
+    "id": -1000007028,
+    "key": "story_A2_2_robber",
+    "en": "In {T}, a drunk boasts about the courier he robbed. In his belt, a sealed letter.",
+    "ch": "在{T}，一个醉汉吹嘘自己抢过一个信使。他腰带里别着一封封好的信。",
+    "tc": "在{T}，一個醉漢吹噓自己搶過一個信使。他腰帶裡彆著一封封好的信。",
+    "kr": "{T}에서 한 술주정뱅이가 전령을 털었다고 떠벌린다. 그의 허리띠에 봉인된 편지가 꽂혀 있다."
+  },
+  {
+    "id": -1000007029,
+    "key": "story_A2_2_fight",
+    "en": "Take the letter",
+    "ch": "夺下书信",
+    "tc": "奪下書信",
+    "kr": "편지를 빼앗는다"
+  },
+  {
+    "id": -1000007030,
+    "key": "story_A2_2_market",
+    "en": "In the market of {T}, a stall sells \"old letters, interesting seals\". One bears the seal of {S}. Price: {0:#,##0} spirit stones.",
+    "ch": "{T}的市场上，有个摊子卖“旧书信，印章有趣”。其中一封盖着{S}的印。价格：{0:#,##0}灵石。",
+    "tc": "{T}的市場上，有個攤子賣“舊書信，印章有趣”。其中一封蓋著{S}的印。價格：{0:#,##0}靈石。",
+    "kr": "{T}의 시장에 \"오래된 편지, 재미있는 인장\"을 파는 노점이 있다. 그중 하나에 {S}의 인장이 찍혀 있다. 가격: 영석 {0:#,##0}."
+  },
+  {
+    "id": -1000007031,
+    "key": "story_A2_2_buy",
+    "en": "Buy it",
+    "ch": "买下",
+    "tc": "買下",
+    "kr": "산다"
+  },
+  {
+    "id": -1000007032,
+    "key": "story_A2_2_later",
+    "en": "Not now",
+    "ch": "以后再说",
+    "tc": "以後再說",
+    "kr": "나중에"
+  },
+  {
+    "id": -1000007033,
+    "key": "story_A2_3",
+    "en": "The letter bears the seal of {M} — and a red lotus pressed into the wax. {A} reads it twice, then folds it with steady hands. \"One proof. They will say I forged it.\"",
+    "ch": "信上盖着{M}的印——蜡封上压着一朵红莲。{A}读了两遍，手很稳地把信折好。“一份证据。他们会说是我伪造的。”",
+    "tc": "信上蓋著{M}的印——蠟封上壓著一朵紅蓮。{A}讀了兩遍，手很穩地把信摺好。“一份證據。他們會說是我偽造的。”",
+    "kr": "편지에는 {M}의 인장이 — 그리고 밀랍에 눌린 붉은 연꽃이 찍혀 있다. {A}는 두 번 읽고, 흔들림 없는 손으로 접는다. \"증거 하나. 그들은 내가 위조했다고 할 것이다.\""
+  },
+  {
+    "id": -1000007034,
+    "key": "story_A2_3_o1",
+    "en": "\"Then we find a second.\"",
+    "ch": "“那就再找一份。”",
+    "tc": "“那就再找一份。”",
+    "kr": "\"그럼 두 번째 증거를 찾자.\""
+  },
+  {
+    "id": -1000007035,
+    "key": "story_A2_3_o2",
+    "en": "\"Prove it was not forged.\" (one more year)",
+    "ch": "“先证明它不是伪造的。”（多花一年）",
+    "tc": "“先證明它不是偽造的。”（多花一年）",
+    "kr": "\"위조가 아님을 먼저 증명하자.\" (1년 더)"
+  },
+  {
+    "id": -1000007036,
+    "key": "story_A2_jailed",
+    "en": "Word comes from {S}: {A} was caught and thrown into the sect prison.",
+    "ch": "{S}传来消息：{A}被抓，关进了宗门大牢。",
+    "tc": "{S}傳來訊息：{A}被抓，關進了宗門大牢。",
+    "kr": "{S}에서 소식이 온다. {A}가 붙잡혀 종문 감옥에 갇혔다."
+  },
+  {
+    "id": -1000007037,
+    "key": "story_A2_jailed_o1",
+    "en": "Break her out",
+    "ch": "劫狱救她",
+    "tc": "劫獄救她",
+    "kr": "옥을 깨고 구한다"
+  },
+  {
+    "id": -1000007038,
+    "key": "story_A2_jailed_o2",
+    "en": "Do nothing",
+    "ch": "袖手旁观",
+    "tc": "袖手旁觀",
+    "kr": "아무것도 하지 않는다"
+  },
+  {
+    "id": -1000007039,
+    "key": "story_A_fallen",
+    "en": "Years later, a woman in red-trimmed black stands in your path: {A}. \"I waited for you in that cell. You never came.\"",
+    "ch": "多年后，一个身着红边黑衣的女子拦住你的去路：{A}。“我在那间牢房里等你。你始终没来。”",
+    "tc": "多年後，一個身著紅邊黑衣的女子攔住你的去路：{A}。“我在那間牢房裡等你。你始終沒來。”",
+    "kr": "몇 년 뒤, 붉은 테를 두른 검은 옷의 여인이 그대의 길을 막는다. {A}다. \"그 감옥에서 너를 기다렸다. 너는 끝내 오지 않았지.\""
+  },
+  {
+    "id": -1000007040,
+    "key": "story_A3_1",
+    "en": "\"Old Lu kept the sect's treasury. He saw the exchange. He fled the sect a month later — afraid.\"",
+    "ch": "“老陆管着宗门的库房。他看见了交易。一个月后他就逃出宗门了——吓坏了。”",
+    "tc": "“老陸管著宗門的庫房。他看見了交易。一個月後他就逃出宗門了——嚇壞了。”",
+    "kr": "\"육 노인은 종문의 창고를 관리했다. 거래를 봤지. 한 달 뒤 종문을 도망쳤다 — 겁에 질려서.\""
+  },
+  {
+    "id": -1000007041,
+    "key": "story_A3_2",
+    "en": "The door of Old Lu's house is already broken. Masked killers stand over the old man.",
+    "ch": "老陆家的门已经被砸开。蒙面杀手站在老人身前。",
+    "tc": "老陸家的門已經被砸開。蒙面殺手站在老人身前。",
+    "kr": "육 노인의 집 문은 이미 부서져 있다. 복면 살수들이 노인 앞에 서 있다."
+  },
+  {
+    "id": -1000007042,
+    "key": "story_A3_2_o1",
+    "en": "Protect him",
+    "ch": "保护他",
+    "tc": "保護他",
+    "kr": "그를 지킨다"
+  },
+  {
+    "id": -1000007043,
+    "key": "story_A3_3",
+    "en": "\"I will speak before the elders — if you keep me alive until then.\"",
+    "ch": "“我会在长老面前作证——只要你们让我活到那一天。”",
+    "tc": "“我會在長老面前作證——只要你們讓我活到那一天。”",
+    "kr": "\"장로들 앞에서 증언하겠소 — 그날까지 살아 있게만 해 준다면.\""
+  },
+  {
+    "id": -1000007044,
+    "key": "story_A3_ledger",
+    "en": "Old Lu is gone. The sect treasury is guarded day and night; its ledger is the only proof left.",
+    "ch": "老陆死了。宗门库房日夜有人把守；库房账本是仅剩的证据。",
+    "tc": "老陸死了。宗門庫房日夜有人把守；庫房賬本是僅剩的證據。",
+    "kr": "육 노인은 죽었다. 종문 창고는 밤낮으로 지켜지고, 그 장부가 남은 유일한 증거다."
+  },
+  {
+    "id": -1000007045,
+    "key": "story_A3_ledger_o1",
+    "en": "Sneak in",
+    "ch": "潜入库房",
+    "tc": "潛入庫房",
+    "kr": "몰래 들어간다"
+  },
+  {
+    "id": -1000007046,
+    "key": "story_A3_ledger_o2",
+    "en": "Not yet",
+    "ch": "暂且不去",
+    "tc": "暫且不去",
+    "kr": "아직은 아니다"
+  },
+  {
+    "id": -1000007047,
+    "key": "story_A4_1",
+    "en": "\"Proof is not enough against an elder. I must be strong enough to stand before him. Spar with me, {p}.\"",
+    "ch": "“对付长老，光有证据不够。我必须强到能站在他面前。陪我练剑，{p}。”",
+    "tc": "“對付長老，光有證據不夠。我必須強到能站在他面前。陪我練劍，{p}。”",
+    "kr": "\"장로를 상대하려면 증거만으로는 부족하다. 그 앞에 설 만큼 강해져야 한다. 나와 대련하자, {p}.\""
+  },
+  {
+    "id": -1000007048,
+    "key": "story_A4_1_o1",
+    "en": "Spar with her",
+    "ch": "陪她练剑",
+    "tc": "陪她練劍",
+    "kr": "그녀와 대련한다"
+  },
+  {
+    "id": -1000007049,
+    "key": "story_A4_1_o2",
+    "en": "Another time",
+    "ch": "改日吧",
+    "tc": "改日吧",
+    "kr": "다음에"
+  },
+  {
+    "id": -1000007050,
+    "key": "story_A4_2",
+    "en": "\"My sword broke the day I left. I need a blade that will not.\" (a smith asks {0:#,##0} spirit stones)",
+    "ch": "“离开那天我的剑断了。我需要一把不会断的剑。”（铁匠要价{0:#,##0}灵石）",
+    "tc": "“離開那天我的劍斷了。我需要一把不會斷的劍。”（鐵匠要價{0:#,##0}靈石）",
+    "kr": "\"떠나던 날 내 검이 부러졌다. 부러지지 않을 검이 필요하다.\" (대장장이는 영석 {0:#,##0}을 요구한다)"
+  },
+  {
+    "id": -1000007051,
+    "key": "story_A4_2_o1",
+    "en": "Give her a sword",
+    "ch": "赠她一把剑",
+    "tc": "贈她一把劍",
+    "kr": "검을 준다"
+  },
+  {
+    "id": -1000007052,
+    "key": "story_A4_2_o2",
+    "en": "Pay a smith",
+    "ch": "请铁匠打造",
+    "tc": "請鐵匠打造",
+    "kr": "대장장이에게 맡긴다"
+  },
+  {
+    "id": -1000007053,
+    "key": "story_A4_2_o3",
+    "en": "\"Your will is the blade.\"",
+    "ch": "“你的意志就是剑。”",
+    "tc": "“你的意志就是劍。”",
+    "kr": "\"너의 의지가 곧 검이다.\""
+  },
+  {
+    "id": -1000007054,
+    "key": "story_A4_3",
+    "en": "Thunder rolls over the mountain. When the clouds part, {A} stands in the rain, her eyes clear for the first time. \"I am ready.\"",
+    "ch": "雷声滚过山巅。云开之时，{A}站在雨中，眼神第一次如此清明。“我准备好了。”",
+    "tc": "雷聲滾過山巔。雲開之時，{A}站在雨中，眼神第一次如此清明。“我準備好了。”",
+    "kr": "산 위로 천둥이 구른다. 구름이 걷히자 {A}가 빗속에 서 있다. 처음으로 맑은 눈빛이다. \"준비됐다.\""
+  },
+  {
+    "id": -1000007055,
+    "key": "story_A5_1",
+    "en": "\"I will go to {S} and take back my name — with this sword, or with my life.\"",
+    "ch": "“我要去{S}，夺回我的名字——用这把剑，或用这条命。”",
+    "tc": "“我要去{S}，奪回我的名字——用這把劍，或用這條命。”",
+    "kr": "\"{S}로 가서 내 이름을 되찾겠다 — 이 검으로, 아니면 내 목숨으로.\""
+  },
+  {
+    "id": -1000007056,
+    "key": "story_A5_1_o1",
+    "en": "\"Then we go together.\"",
+    "ch": "“那我们一起去。”",
+    "tc": "“那我們一起去。”",
+    "kr": "\"그럼 함께 가자.\""
+  },
+  {
+    "id": -1000007057,
+    "key": "story_A5_1_o2",
+    "en": "\"Let it go. Revenge will eat you alive.\"",
+    "ch": "“放下吧。复仇会把你吞噬。”",
+    "tc": "“放下吧。復仇會把你吞噬。”",
+    "kr": "\"내려놓아라. 복수가 너를 삼킬 것이다.\""
+  },
+  {
+    "id": -1000007058,
+    "key": "story_A5_1_o3",
+    "en": "(secretly) Warn {M}",
+    "ch": "（暗中）向{M}通风报信",
+    "tc": "（暗中）向{M}通風報信",
+    "kr": "(몰래) {M}에게 알린다"
+  },
+  {
+    "id": -1000007059,
+    "key": "story_A5_2",
+    "en": "\"A thief and her accomplice. Elders, you see the shamelessness.\"",
+    "ch": "“一个窃贼和她的同党。诸位长老，看看这无耻之徒。”",
+    "tc": "“一個竊賊和她的同黨。諸位長老，看看這無恥之徒。”",
+    "kr": "\"도둑과 그 공범이로군. 장로들이여, 이 뻔뻔함을 보시오.\""
+  },
+  {
+    "id": -1000007060,
+    "key": "story_A5_2_o1",
+    "en": "Show the proofs",
+    "ch": "出示证据",
+    "tc": "出示證據",
+    "kr": "증거를 내보인다"
+  },
+  {
+    "id": -1000007061,
+    "key": "story_A5_2_o2",
+    "en": "Challenge {M} to a duel",
+    "ch": "向{M}发起决斗",
+    "tc": "向{M}發起決鬥",
+    "kr": "{M}에게 결투를 청한다"
+  },
+  {
+    "id": -1000007062,
+    "key": "story_A5_3",
+    "en": "{M} is on his knees. \"Tell me, {p} — what is mercy worth?\"",
+    "ch": "{M}跪倒在地。“告诉我，{p}——慈悲值多少？”",
+    "tc": "{M}跪倒在地。“告訴我，{p}——慈悲值多少？”",
+    "kr": "{M}가 무릎을 꿇었다. \"말해 봐라, {p} — 자비는 얼마짜리지?\""
+  },
+  {
+    "id": -1000007063,
+    "key": "story_A5_3_o1",
+    "en": "\"Let the sect judge him.\"",
+    "ch": "“交给宗门审判。”",
+    "tc": "“交給宗門審判。”",
+    "kr": "\"종문이 심판하게 하라.\""
+  },
+  {
+    "id": -1000007064,
+    "key": "story_A5_3_o2",
+    "en": "\"Your choice, not mine.\"",
+    "ch": "“你自己决定。”",
+    "tc": "“你自己決定。”",
+    "kr": "\"네가 정해라.\""
+  },
+  {
+    "id": -1000007065,
+    "key": "story_A5_lost",
+    "en": "You are thrown back. {A} drags you out of the hall. \"Not today. But one day.\"",
+    "ch": "你被击退。{A}把你拖出大殿。“不是今天。但总有一天。”",
+    "tc": "你被擊退。{A}把你拖出大殿。“不是今天。但總有一天。”",
+    "kr": "그대는 밀려난다. {A}가 그대를 전각 밖으로 끌어낸다. \"오늘은 아니다. 하지만 언젠가는.\""
+  },
+  {
+    "id": -1000007066,
+    "key": "story_A5_late",
+    "en": "{A} went to {S} alone. When she came out, her robes were red, and so was her blade.",
+    "ch": "{A}独自去了{S}。出来时，她的衣衫是红的，她的剑也是。",
+    "tc": "{A}獨自去了{S}。出來時，她的衣衫是紅的，她的劍也是。",
+    "kr": "{A}는 홀로 {S}에 갔다. 나왔을 때, 그녀의 옷은 붉었고 검도 그러했다."
+  },
+  {
+    "id": -1000007067,
+    "key": "story_endA_Companion",
+    "en": "\"When I had nothing, you stood beside me. Walk the rest of the road with me, {p}.\"",
+    "ch": "“我一无所有时，是你站在我身边。余下的路，与我同行吧，{p}。”",
+    "tc": "“我一無所有時，是你站在我身邊。餘下的路，與我同行吧，{p}。”",
+    "kr": "\"내가 아무것도 없을 때 네가 곁에 있었다. 남은 길을 나와 함께 걷자, {p}.\""
+  },
+  {
+    "id": -1000007068,
+    "key": "story_endA_Companion_o1",
+    "en": "\"Together, then.\"",
+    "ch": "“那就一起走。”",
+    "tc": "“那就一起走。”",
+    "kr": "\"함께 가자.\""
+  },
+  {
+    "id": -1000007069,
+    "key": "story_endA_Companion_o2",
+    "en": "\"I will always be your friend.\"",
+    "ch": "“我永远是你的朋友。”",
+    "tc": "“我永遠是你的朋友。”",
+    "kr": "\"나는 언제나 네 친구다.\""
+  },
+  {
+    "id": -1000007070,
+    "key": "story_endA_SectMaster",
+    "en": "\"I will build a sect where no disciple is betrayed by a master. Its first elder should be you.\"",
+    "ch": "“我要建立一个师父绝不背叛弟子的宗门。它的第一位长老，该是你。”",
+    "tc": "“我要建立一個師父絕不背叛弟子的宗門。它的第一位長老，該是你。”",
+    "kr": "\"사부가 제자를 배신하지 않는 종문을 세우겠다. 그 첫 장로는 네가 되어야 한다.\""
+  },
+  {
+    "id": -1000007071,
+    "key": "story_endA_Peace",
+    "en": "\"The sword is quieter now. So am I.\"",
+    "ch": "“剑静了。我也静了。”",
+    "tc": "“劍靜了。我也靜了。”",
+    "kr": "\"검이 조용해졌다. 나도 그렇다.\""
+  },
+  {
+    "id": -1000007072,
+    "key": "story_endA_Fallen",
+    "en": "\"Mercy was a lie they taught me. Lady Honglian taught me the truth.\"",
+    "ch": "“慈悲是他们教我的谎言。红莲夫人教会了我真相。”",
+    "tc": "“慈悲是他們教我的謊言。紅蓮夫人教會了我真相。”",
+    "kr": "\"자비는 그들이 가르친 거짓이었다. 홍련 부인이 진실을 가르쳐 주었다.\""
+  },
+  {
+    "id": -1000007073,
+    "key": "story_endA_Sacrifice",
+    "en": "She steps in front of the blow meant for you. \"…Your turn… to live.\" Her sword falls at your feet.",
+    "ch": "她挡在了刺向你的那一击之前。“……换你……活下去。”她的剑落在你脚边。",
+    "tc": "她擋在了刺向你的那一擊之前。“……換你……活下去。”她的劍落在你腳邊。",
+    "kr": "그녀가 그대를 향한 일격 앞을 막아선다. \"……네 차례다…… 살아라.\" 그녀의 검이 그대의 발치에 떨어진다."
+  },
+  {
+    "id": -1000007074,
+    "key": "story_endA_hunt",
+    "en": "{A} blocks your way, her blade already drawn. \"I said I would collect the debt.\"",
+    "ch": "{A}拦住你的去路，剑已出鞘。“我说过，这笔账我会来讨。”",
+    "tc": "{A}攔住你的去路，劍已出鞘。“我說過，這筆賬我會來討。”",
+    "kr": "{A}가 이미 검을 뽑은 채 길을 막는다. \"그 빚은 받으러 오겠다고 했지.\""
+  },
+  {
+    "id": -1000007075,
+    "key": "story_endA_hunt_o1",
+    "en": "Fight",
+    "ch": "交战",
+    "tc": "交戰",
+    "kr": "싸운다"
+  },
+  {
+    "id": -1000007076,
+    "key": "story_end_A_Companion",
+    "en": "Companion",
+    "ch": "道侣",
+    "tc": "道侶",
+    "kr": "도려"
+  },
+  {
+    "id": -1000007077,
+    "key": "story_end_A_SectMaster",
+    "en": "Sect Master",
+    "ch": "宗主",
+    "tc": "宗主",
+    "kr": "종주"
+  },
+  {
+    "id": -1000007078,
+    "key": "story_end_A_Peace",
+    "en": "Peace",
+    "ch": "宁静",
+    "tc": "寧靜",
+    "kr": "평온"
+  },
+  {
+    "id": -1000007079,
+    "key": "story_end_A_Fallen",
+    "en": "Fallen",
+    "ch": "入魔",
+    "tc": "入魔",
+    "kr": "입마"
+  },
+  {
+    "id": -1000007080,
+    "key": "story_end_A_Sacrifice",
+    "en": "Sacrifice",
+    "ch": "牺牲",
+    "tc": "犧牲",
+    "kr": "희생"
+  },
+  {
+    "id": -1000007081,
+    "key": "story_end_A_Traitor",
+    "en": "Traitor",
+    "ch": "背叛",
+    "tc": "背叛",
+    "kr": "배신자"
+  },
+  {
+    "id": -1000007082,
+    "key": "story_B0_1",
+    "en": "\"Ah, a discerning customer! This piece — worth three times the price, I swear on my grandmother's tomb. For you? Half: {0:#,##0} spirit stones.\"",
+    "ch": "“哎呀，识货的客官！这件东西——值三倍价钱，我拿我奶奶的坟发誓。给您？半价：{0:#,##0}灵石。”",
+    "tc": "“哎呀，識貨的客官！這件東西——值三倍價錢，我拿我奶奶的墳發誓。給您？半價：{0:#,##0}靈石。”",
+    "kr": "\"아이고, 보는 눈이 있는 손님이시네! 이 물건 — 값의 세 배는 나간다오, 우리 할머니 무덤에 맹세하지. 손님께는? 반값: 영석 {0:#,##0}.\""
+  },
+  {
+    "id": -1000007083,
+    "key": "story_B0_1_o1",
+    "en": "Buy it",
+    "ch": "买下",
+    "tc": "買下",
+    "kr": "산다"
+  },
+  {
+    "id": -1000007084,
+    "key": "story_B0_1_o2",
+    "en": "\"Your grandmother must be very busy.\"",
+    "ch": "“你奶奶的坟怕是很忙。”",
+    "tc": "“你奶奶的墳怕是很忙。”",
+    "kr": "\"할머니 무덤이 꽤 바쁘겠군.\""
+  },
+  {
+    "id": -1000007085,
+    "key": "story_B0_2",
+    "en": "Two masked men block your path. \"What the old man sold you belongs to the Red Lotus. Return it, and keep your hands.\"",
+    "ch": "两个蒙面人拦住你。“老头卖给你的东西是红莲教的。还回来，手还能留着。”",
+    "tc": "兩個蒙面人攔住你。“老頭賣給你的東西是紅蓮教的。還回來，手還能留著。”",
+    "kr": "복면을 쓴 두 사내가 길을 막는다. \"영감이 판 물건은 홍련교의 것이다. 돌려주면 손은 붙어 있을 거다.\""
+  },
+  {
+    "id": -1000007086,
+    "key": "story_B0_2_o1",
+    "en": "Return it",
+    "ch": "交还",
+    "tc": "交還",
+    "kr": "돌려준다"
+  },
+  {
+    "id": -1000007087,
+    "key": "story_B0_2_o2",
+    "en": "Fight",
+    "ch": "交战",
+    "tc": "交戰",
+    "kr": "싸운다"
+  },
+  {
+    "id": -1000007088,
+    "key": "story_B0_2_o3",
+    "en": "Run to {H}",
+    "ch": "去找{H}",
+    "tc": "去找{H}",
+    "kr": "{H}에게 달려간다"
+  },
+  {
+    "id": -1000007089,
+    "key": "story_B0_3",
+    "en": "\"They came? Already? Oh heavens, oh ancestors, oh my aching knees—\"",
+    "ch": "“他们来了？这么快？老天爷，列祖列宗，我这老膝盖——”",
+    "tc": "“他們來了？這麼快？老天爺，列祖列宗，我這老膝蓋——”",
+    "kr": "\"그놈들이 왔다고? 벌써? 아이고 하늘이시여, 조상님들이시여, 내 무릎이야—\""
+  },
+  {
+    "id": -1000007090,
+    "key": "story_B1_1",
+    "en": "{H}'s shop is shut. You find him hiding behind sacks of rice in a warehouse.",
+    "ch": "{H}的铺子关了门。你在仓库的米袋后面找到了他。",
+    "tc": "{H}的鋪子關了門。你在倉庫的米袋後面找到了他。",
+    "kr": "{H}의 가게는 문이 닫혔다. 창고의 쌀가마 뒤에 숨어 있는 그를 찾는다."
+  },
+  {
+    "id": -1000007091,
+    "key": "story_B1_2",
+    "en": "\"When my caravan sank, I borrowed from the Red Lotus. Ten years of interest… I sold their goods to pay them back. Badly, as you saw.\"",
+    "ch": "“商队沉了那年，我向红莲教借了钱。十年利滚利……我卖他们的货来还债。卖砸了，你也看到了。”",
+    "tc": "“商隊沉了那年，我向紅蓮教借了錢。十年利滾利……我賣他們的貨來還債。賣砸了，你也看到了。”",
+    "kr": "\"상단이 가라앉던 해에 홍련교에서 돈을 빌렸소. 10년 치 이자가…… 그놈들 물건을 팔아 갚으려 했는데. 보다시피 엉망이 됐지.\""
+  },
+  {
+    "id": -1000007092,
+    "key": "story_B1_3",
+    "en": "\"Vouch for me at the bank? Just a signature! What could go wrong?\" (or lend me {0:#,##0} spirit stones…)",
+    "ch": "“去钱庄给我作个保？就签个名！能出什么事？”（或者借我{0:#,##0}灵石……）",
+    "tc": "“去錢莊給我作個保？就籤個名！能出什麼事？”（或者借我{0:#,##0}靈石……）",
+    "kr": "\"전장에서 보증 좀 서 주겠소? 서명 하나면 돼! 무슨 일이 있겠소?\" (아니면 영석 {0:#,##0}만 빌려주든가……)"
+  },
+  {
+    "id": -1000007093,
+    "key": "story_B1_3_o1",
+    "en": "Vouch for him",
+    "ch": "为他作保",
+    "tc": "為他作保",
+    "kr": "보증을 선다"
+  },
+  {
+    "id": -1000007094,
+    "key": "story_B1_3_o2",
+    "en": "Lend him spirit stones",
+    "ch": "借他灵石",
+    "tc": "借他靈石",
+    "kr": "영석을 빌려준다"
+  },
+  {
+    "id": -1000007095,
+    "key": "story_B1_3_o3",
+    "en": "\"Every 'what could go wrong' ends in a funeral.\"",
+    "ch": "“每句‘能出什么事’最后都是一场葬礼。”",
+    "tc": "“每句‘能出什麼事’最後都是一場葬禮。”",
+    "kr": "\"'무슨 일이 있겠소'는 늘 장례식으로 끝나지.\""
+  },
+  {
+    "id": -1000007096,
+    "key": "story_B2_1",
+    "en": "\"One last caravan to {T2}. Silk, herbs, a little spirit jade. If it arrives, I pay everyone. If not… I become a very sincere monk.\"",
+    "ch": "“最后一趟去{T2}的商队。丝绸、药材、一点灵玉。货到了，我把债都还清。到不了……我就去当个很虔诚的和尚。”",
+    "tc": "“最後一趟去{T2}的商隊。絲綢、藥材、一點靈玉。貨到了，我把債都還清。到不了……我就去當個很虔誠的和尚。”",
+    "kr": "\"{T2}로 가는 마지막 상단이오. 비단, 약재, 영옥 조금. 도착하면 모두에게 갚겠소. 못 하면…… 아주 독실한 중이 되지.\""
+  },
+  {
+    "id": -1000007097,
+    "key": "story_B2_2",
+    "en": "Halfway to {T2}, arrows hit the first cart. Bandits pour out of the trees.",
+    "ch": "去{T2}的半路上，箭矢射中了头一辆车。山贼从林中涌出。",
+    "tc": "去{T2}的半路上，箭矢射中了頭一輛車。山賊從林中湧出。",
+    "kr": "{T2}로 가는 길 중간, 화살이 첫 수레에 꽂힌다. 산적들이 숲에서 쏟아져 나온다."
+  },
+  {
+    "id": -1000007098,
+    "key": "story_B2_2_o1",
+    "en": "Defend the caravan",
+    "ch": "护卫商队",
+    "tc": "護衛商隊",
+    "kr": "상단을 지킨다"
+  },
+  {
+    "id": -1000007099,
+    "key": "story_B2_3",
+    "en": "\"Your share: {0:#,##0} spirit stones. Don't count it in front of me, I'll cry.\"",
+    "ch": "“你的那份：{0:#,##0}灵石。别当着我面数，我会哭的。”",
+    "tc": "“你的那份：{0:#,##0}靈石。別當著我面數，我會哭的。”",
+    "kr": "\"당신 몫이오: 영석 {0:#,##0}. 내 앞에서 세지 마시오, 울 것 같으니.\""
+  },
+  {
+    "id": -1000007100,
+    "key": "story_B2_vanished",
+    "en": "{H}'s shop is empty. A note on the door: \"Gone to see my cousin. Far away. Very far.\"",
+    "ch": "{H}的铺子空了。门上贴着字条：“去看表哥了。很远。非常远。”",
+    "tc": "{H}的鋪子空了。門上貼著字條：“去看錶哥了。很遠。非常遠。”",
+    "kr": "{H}의 가게가 텅 비었다. 문에 쪽지가 붙어 있다. \"사촌 보러 감. 멀리. 아주 멀리.\""
+  },
+  {
+    "id": -1000007101,
+    "key": "story_B2_found",
+    "en": "In a far town, a familiar voice haggles over a turnip. {H} turns pale. \"…I can explain. I can pay! In goods!\"",
+    "ch": "在一座远方的城里，一个熟悉的声音正为一根萝卜讨价还价。{H}脸色煞白。“……我能解释。我能还！用货还！”",
+    "tc": "在一座遠方的城裡，一個熟悉的聲音正為一根蘿蔔討價還價。{H}臉色煞白。“……我能解釋。我能還！用貨還！”",
+    "kr": "먼 마을에서 익숙한 목소리가 무 하나 값을 흥정하고 있다. {H}의 얼굴이 하얗게 질린다. \"……설명할 수 있소. 갚을 수 있소! 물건으로!\""
+  },
+  {
+    "id": -1000007102,
+    "key": "story_B3_1",
+    "en": "A man in red silk walks into {H}'s shop. \"The Lady sends her regards. Interest is due.\"",
+    "ch": "一个身着红绸的男人走进{H}的铺子。“夫人问候您。利息该交了。”",
+    "tc": "一個身著紅綢的男人走進{H}的鋪子。“夫人問候您。利息該交了。”",
+    "kr": "붉은 비단옷의 사내가 {H}의 가게에 들어선다. \"부인께서 안부를 전하십니다. 이자 낼 때가 됐지요.\""
+  },
+  {
+    "id": -1000007103,
+    "key": "story_B3_2",
+    "en": "\"I saw his ledger. Not just me — half the merchants of this region owe her. She is buying the towns, one debt at a time.\" (interest: {0:#,##0} spirit stones)",
+    "ch": "“我瞥见了他的账本。不止我——这一带一半的商人都欠她的钱。她在一笔债一笔债地买下这些城。”（利息：{0:#,##0}灵石）",
+    "tc": "“我瞥見了他的賬本。不止我——這一帶一半的商人都欠她的錢。她在一筆債一筆債地買下這些城。”（利息：{0:#,##0}靈石）",
+    "kr": "\"그자의 장부를 봤소. 나만이 아니오 — 이 일대 상인 절반이 그 여자에게 빚을 졌소. 빚 하나하나로 마을들을 사들이고 있는 거요.\" (이자: 영석 {0:#,##0})"
+  },
+  {
+    "id": -1000007104,
+    "key": "story_B3_2_o1",
+    "en": "Steal the ledger",
+    "ch": "夺取账本",
+    "tc": "奪取賬本",
+    "kr": "장부를 빼앗는다"
+  },
+  {
+    "id": -1000007105,
+    "key": "story_B3_2_o2",
+    "en": "Pay the interest",
+    "ch": "付利息",
+    "tc": "付利息",
+    "kr": "이자를 낸다"
+  },
+  {
+    "id": -1000007106,
+    "key": "story_B3_2_o3",
+    "en": "Stall him",
+    "ch": "拖延他",
+    "tc": "拖延他",
+    "kr": "시간을 끈다"
+  },
+  {
+    "id": -1000007107,
+    "key": "story_B3_3_ledger",
+    "en": "The red ledger is in your hands: page after page of merchants who owe the Lady. They will remember who freed them.",
+    "ch": "红色账本落到你手里：一页又一页欠夫人钱的商人。他们会记住是谁解救了他们。",
+    "tc": "紅色賬本落到你手裡：一頁又一頁欠夫人錢的商人。他們會記住是誰解救了他們。",
+    "kr": "붉은 장부가 그대 손에 있다. 부인에게 빚진 상인들이 한 장 한 장 적혀 있다. 그들은 누가 자신들을 풀어 주었는지 기억할 것이다."
+  },
+  {
+    "id": -1000007108,
+    "key": "story_B3_3_paid",
+    "en": "The envoy counts the stones and smiles. \"Until next time.\" Two quiet years, at least.",
+    "ch": "使者数完灵石，笑了。“下次见。”至少能清静两年。",
+    "tc": "使者數完靈石，笑了。“下次見。”至少能清靜兩年。",
+    "kr": "사자는 영석을 세고 웃는다. \"다음에 뵙지요.\" 적어도 2년은 조용할 것이다."
+  },
+  {
+    "id": -1000007109,
+    "key": "story_B3_3_stalled",
+    "en": "The envoy leaves without a word. That night, red banners are seen on the hills.",
+    "ch": "使者一言不发地走了。当夜，山上出现了红旗。",
+    "tc": "使者一言不發地走了。當夜，山上出現了紅旗。",
+    "kr": "사자는 말없이 떠난다. 그날 밤, 언덕 위에 붉은 깃발이 보인다."
+  },
+  {
+    "id": -1000007110,
+    "key": "story_B4_1",
+    "en": "Red banners rise outside {T}. The Red Lotus demands the town as payment for {H}'s debt.",
+    "ch": "{T}城外升起红旗。红莲教要以整座城抵{H}的债。",
+    "tc": "{T}城外升起紅旗。紅蓮教要以整座城抵{H}的債。",
+    "kr": "{T} 밖에 붉은 깃발이 오른다. 홍련교가 {H}의 빚 대신 마을 전체를 내놓으라 한다."
+  },
+  {
+    "id": -1000007111,
+    "key": "story_B4_2",
+    "en": "\"I have savings. Secret savings. Very secret. Take them — hire guards, buy arrows, anything!\"",
+    "ch": "“我有积蓄。私房钱。很私的那种。拿去——雇人、买箭，什么都行！”",
+    "tc": "“我有積蓄。私房錢。很私的那種。拿去——僱人、買箭，什麼都行！”",
+    "kr": "\"모아 둔 돈이 있소. 비상금. 아주 비밀스러운. 가져가시오 — 경비를 고용하든, 화살을 사든, 뭐든!\""
+  },
+  {
+    "id": -1000007112,
+    "key": "story_B4_2_o1",
+    "en": "Hire guards",
+    "ch": "招募守卫",
+    "tc": "招募守衛",
+    "kr": "경비를 고용한다"
+  },
+  {
+    "id": -1000007113,
+    "key": "story_B4_2_o2",
+    "en": "Negotiate a tribute",
+    "ch": "谈判纳贡",
+    "tc": "談判納貢",
+    "kr": "조공을 협상한다"
+  },
+  {
+    "id": -1000007114,
+    "key": "story_B4_2_o3",
+    "en": "Stay out of it",
+    "ch": "袖手旁观",
+    "tc": "袖手旁觀",
+    "kr": "관여하지 않는다"
+  },
+  {
+    "id": -1000007115,
+    "key": "story_B4_3",
+    "en": "The Red Lotus attacks the gates of {T}.",
+    "ch": "红莲教攻打{T}的城门。",
+    "tc": "紅蓮教攻打{T}的城門。",
+    "kr": "홍련교가 {T}의 성문을 공격한다."
+  },
+  {
+    "id": -1000007116,
+    "key": "story_B4_3_o1",
+    "en": "Defend the town",
+    "ch": "守城",
+    "tc": "守城",
+    "kr": "마을을 지킨다"
+  },
+  {
+    "id": -1000007117,
+    "key": "story_B5_1",
+    "en": "\"You know, {p}, in forty years of trade you are my only customer who never haggled. Fool.\"",
+    "ch": "“你知道吗，{p}，我做了四十年买卖，你是唯一一个从不还价的客人。傻子。”",
+    "tc": "“你知道嗎，{p}，我做了四十年買賣，你是唯一一個從不還價的客人。傻子。”",
+    "kr": "\"알고 있소, {p}? 40년 장사하면서 값을 깎지 않은 손님은 당신뿐이었소. 바보 같으니.\""
+  },
+  {
+    "id": -1000007118,
+    "key": "story_B5_2",
+    "en": "He pushes a small box across the table. \"Don't open it here. People will want one.\"",
+    "ch": "他把一个小盒子推过桌面。“别在这儿打开。别人会想要的。”",
+    "tc": "他把一個小盒子推過桌面。“別在這兒開啟。別人會想要的。”",
+    "kr": "그가 작은 상자를 탁자 너머로 밀어 준다. \"여기서 열지 마시오. 다들 탐낼 테니.\""
+  },
+  {
+    "id": -1000007119,
+    "key": "story_endB_Heir",
+    "en": "A letter in shaky handwriting: \"To my only honest customer… my stock is yours. Sell it dearly.\"",
+    "ch": "一封字迹颤抖的信：“致我唯一诚实的客人……我的货都归你了。卖个好价钱。”",
+    "tc": "一封字跡顫抖的信：“致我唯一誠實的客人……我的貨都歸你了。賣個好價錢。”",
+    "kr": "떨리는 글씨의 편지. \"나의 유일한 정직한 손님에게…… 내 물건은 이제 당신 것이오. 비싸게 파시오.\""
+  },
+  {
+    "id": -1000007120,
+    "key": "story_endB_Betrayed",
+    "en": "A note on an empty desk: \"Sorry, friend. A man must live.\" The bank now asks you for his debt.",
+    "ch": "空桌上留下一张字条：“对不住了朋友。人总得活下去。”钱庄如今向你讨他的债。",
+    "tc": "空桌上留下一張字條：“對不住了朋友。人總得活下去。”錢莊如今向你討他的債。",
+    "kr": "빈 책상 위의 쪽지. \"미안하오, 친구. 사람은 살아야 하니.\" 이제 전장이 그의 빚을 그대에게 요구한다."
+  },
+  {
+    "id": -1000007121,
+    "key": "story_endB_FallenTown",
+    "en": "The banners over {T} stay red. Taxes double, and the guards no longer smile.",
+    "ch": "{T}上空的旗子依旧是红的。税翻了一倍，守卫再也不笑了。",
+    "tc": "{T}上空的旗子依舊是紅的。稅翻了一倍，守衛再也不笑了。",
+    "kr": "{T} 위의 깃발은 여전히 붉다. 세금은 두 배가 되고, 경비병은 더 이상 웃지 않는다."
+  },
+  {
+    "id": -1000007122,
+    "key": "story_endB_Benefactor",
+    "en": "\"You trusted a fool. The fool will not forget.\" He pays you back, with interest.",
+    "ch": "“你信了一个傻瓜。傻瓜不会忘恩。”他连本带利还了你。",
+    "tc": "“你信了一個傻瓜。傻瓜不會忘恩。”他連本帶利還了你。",
+    "kr": "\"바보를 믿어 주었구려. 바보는 은혜를 잊지 않소.\" 그는 이자까지 쳐서 갚는다."
+  },
+  {
+    "id": -1000007123,
+    "key": "story_endB_MerchantPrince",
+    "en": "\"From today, your coin is no good in my shops. Well — half good.\"",
+    "ch": "“从今天起，你在我铺子里的钱不好使了。嗯——半价好使。”",
+    "tc": "“從今天起，你在我鋪子裡的錢不好使了。嗯——半價好使。”",
+    "kr": "\"오늘부터 당신 돈은 내 가게에서 안 통하오. 음 — 반만 통하오.\""
+  },
+  {
+    "id": -1000007124,
+    "key": "story_end_B_MerchantPrince",
+    "en": "Merchant Prince",
+    "ch": "富商",
+    "tc": "富商",
+    "kr": "거상"
+  },
+  {
+    "id": -1000007125,
+    "key": "story_end_B_Heir",
+    "en": "The Heir",
+    "ch": "继承人",
+    "tc": "繼承人",
+    "kr": "상속자"
+  },
+  {
+    "id": -1000007126,
+    "key": "story_end_B_FallenTown",
+    "en": "Fallen Town",
+    "ch": "沦陷之城",
+    "tc": "淪陷之城",
+    "kr": "함락된 마을"
+  },
+  {
+    "id": -1000007127,
+    "key": "story_end_B_Betrayed",
+    "en": "Betrayed",
+    "ch": "被背叛",
+    "tc": "被背叛",
+    "kr": "배신당함"
+  },
+  {
+    "id": -1000007128,
+    "key": "story_end_B_Benefactor",
+    "en": "Benefactor",
+    "ch": "恩人",
+    "tc": "恩人",
+    "kr": "은인"
+  },
+  {
+    "id": -1000007129,
+    "key": "story_C0_1",
+    "en": "BOOM. Purple smoke rolls down the street. A girl with singed eyebrows waves at you through the haze.\n\"You look healthy. Want to test a pill? Ninety percent safe! Eighty. Probably.\"",
+    "ch": "轰！紫烟滚滚漫过街道。一个眉毛烧焦的少女在烟雾中向你挥手。\n“你看起来很健康。想试颗丹药吗？九成安全！八成。大概。”",
+    "tc": "轟！紫煙滾滾漫過街道。一個眉毛燒焦的少女在煙霧中向你揮手。\n“你看起來很健康。想試顆丹藥嗎？九成安全！八成。大概。”",
+    "kr": "펑! 보랏빛 연기가 거리를 뒤덮는다. 눈썹이 그을린 소녀가 연기 속에서 손을 흔든다.\n\"건강해 보이네요. 단약 시험해 볼래요? 90% 안전해요! 80%. 아마도.\""
+  },
+  {
+    "id": -1000007130,
+    "key": "story_C0_1_o1",
+    "en": "\"…Fine.\"",
+    "ch": "“……行吧。”",
+    "tc": "“……行吧。”",
+    "kr": "\"……좋아.\""
+  },
+  {
+    "id": -1000007131,
+    "key": "story_C0_1_o2",
+    "en": "Back away slowly",
+    "ch": "慢慢后退",
+    "tc": "慢慢後退",
+    "kr": "천천히 뒷걸음질 친다"
+  },
+  {
+    "id": -1000007132,
+    "key": "story_C0_2",
+    "en": "Your hair turns lavender for three months. {X} takes notes, delighted.",
+    "ch": "你的头发变成了淡紫色，持续三个月。{X}兴奋地做着记录。",
+    "tc": "你的頭髮變成了淡紫色，持續三個月。{X}興奮地做著記錄。",
+    "kr": "석 달 동안 그대의 머리카락이 연보라색이 된다. {X}는 신이 나서 기록한다."
+  },
+  {
+    "id": -1000007133,
+    "key": "story_C0_3",
+    "en": "\"Sorry sorry sorry! Here, a real pill. Works every time. Mostly.\"",
+    "ch": "“对不起对不起！给，一颗真丹药。每次都灵。基本上。”",
+    "tc": "“對不起對不起！給，一顆真丹藥。每次都靈。基本上。”",
+    "kr": "\"미안미안미안! 자, 진짜 단약이에요. 매번 효과 있어요. 대체로.\""
+  },
+  {
+    "id": -1000007134,
+    "key": "story_C1_1",
+    "en": "\"The Alchemy Guild exam is next spring. I need a Moonfrost Lotus. One valley. One very large snake. Hehe.\"",
+    "ch": "“丹会考核在明年春天。我需要一株月霜莲。一个山谷。一条很大很大的蛇。嘿嘿。”",
+    "tc": "“丹會考核在明年春天。我需要一株月霜蓮。一個山谷。一條很大很大的蛇。嘿嘿。”",
+    "kr": "\"단회 시험이 내년 봄이에요. 월상련이 필요해요. 골짜기 하나. 아주아주 큰 뱀 한 마리. 헤헤.\""
+  },
+  {
+    "id": -1000007135,
+    "key": "story_C1_2",
+    "en": "A herb seller has a map of the valley: {0:#,##0} spirit stones, or a herb in trade.",
+    "ch": "一个药贩有山谷的地图：{0:#,##0}灵石，或用一株药草交换。",
+    "tc": "一個藥販有山谷的地圖：{0:#,##0}靈石，或用一株藥草交換。",
+    "kr": "약초 상인에게 골짜기 지도가 있다. 영석 {0:#,##0}, 또는 약초 하나와 교환."
+  },
+  {
+    "id": -1000007136,
+    "key": "story_C1_2_o1",
+    "en": "Buy the map",
+    "ch": "买下地图",
+    "tc": "買下地圖",
+    "kr": "지도를 산다"
+  },
+  {
+    "id": -1000007137,
+    "key": "story_C1_2_o2",
+    "en": "Trade a herb",
+    "ch": "用药草交换",
+    "tc": "用藥草交換",
+    "kr": "약초와 바꾼다"
+  },
+  {
+    "id": -1000007138,
+    "key": "story_C1_2_o3",
+    "en": "Not now",
+    "ch": "以后再说",
+    "tc": "以後再說",
+    "kr": "나중에"
+  },
+  {
+    "id": -1000007139,
+    "key": "story_C1_3",
+    "en": "The valley is white with frost. Something huge moves under the lotus pond.",
+    "ch": "山谷白霜皑皑。莲池下有个庞然大物在游动。",
+    "tc": "山谷白霜皚皚。蓮池下有個龐然大物在遊動。",
+    "kr": "골짜기는 서리로 하얗다. 연못 아래에서 거대한 무언가가 움직인다."
+  },
+  {
+    "id": -1000007140,
+    "key": "story_C1_3_o1",
+    "en": "Fight the snake",
+    "ch": "与巨蛇交战",
+    "tc": "與巨蛇交戰",
+    "kr": "뱀과 싸운다"
+  },
+  {
+    "id": -1000007141,
+    "key": "story_C1_4",
+    "en": "An old woman sits by the pond, untouched by the fight. \"Young ones, always in a hurry. Take the lotus — and leave the roots.\"",
+    "ch": "一个老婆婆坐在池边，丝毫未受打斗波及。“年轻人，总是这么急。莲花拿去吧——根留下。”",
+    "tc": "一個老婆婆坐在池邊，絲毫未受打鬥波及。“年輕人，總是這麼急。蓮花拿去吧——根留下。”",
+    "kr": "싸움에도 아랑곳없이 한 노파가 연못가에 앉아 있다. \"젊은이들은 늘 서두르지. 연꽃은 가져가거라 — 뿌리는 남겨 두고.\""
+  },
+  {
+    "id": -1000007142,
+    "key": "story_C1_failed",
+    "en": "{X} went alone. She comes back limping, empty-handed, and does not joke for a week.",
+    "ch": "{X}独自去了。她一瘸一拐地回来，两手空空，一个星期没开过玩笑。",
+    "tc": "{X}獨自去了。她一瘸一拐地回來，兩手空空，一個星期沒開過玩笑。",
+    "kr": "{X}는 혼자 갔다. 빈손으로 절뚝이며 돌아와 일주일 동안 농담 한마디 하지 않는다."
+  },
+  {
+    "id": -1000007143,
+    "key": "story_C1_failed_o1",
+    "en": "Nurse her",
+    "ch": "照顾她",
+    "tc": "照顧她",
+    "kr": "돌봐 준다"
+  },
+  {
+    "id": -1000007144,
+    "key": "story_C1_failed_o2",
+    "en": "Leave her be",
+    "ch": "随她去吧",
+    "tc": "隨她去吧",
+    "kr": "그냥 둔다"
+  },
+  {
+    "id": -1000007145,
+    "key": "story_C2_1",
+    "en": "\"Furnace fee: {0:#,##0} spirit stones,\" says the examiner. {X} looks at you with enormous eyes.",
+    "ch": "“丹炉费：{0:#,##0}灵石。”考官说。{X}用一双大眼睛望着你。",
+    "tc": "“丹爐費：{0:#,##0}靈石。”考官說。{X}用一雙大眼睛望著你。",
+    "kr": "\"단로 사용료: 영석 {0:#,##0}.\" 시험관이 말한다. {X}가 커다란 눈으로 그대를 바라본다."
+  },
+  {
+    "id": -1000007146,
+    "key": "story_C2_1_o1",
+    "en": "Pay",
+    "ch": "付钱",
+    "tc": "付錢",
+    "kr": "낸다"
+  },
+  {
+    "id": -1000007147,
+    "key": "story_C2_1_o2",
+    "en": "\"You have savings.\"",
+    "ch": "“你有积蓄。”",
+    "tc": "“你有積蓄。”",
+    "kr": "\"네 비상금 있잖아.\""
+  },
+  {
+    "id": -1000007148,
+    "key": "story_C2_q1",
+    "en": "\"Big fire or small fire? Quick, quick, it's bubbling!\"",
+    "ch": "“大火还是小火？快快快，冒泡了！”",
+    "tc": "“大火還是小火？快快快，冒泡了！”",
+    "kr": "\"센 불이에요, 약한 불이에요? 빨리빨리, 끓어요!\""
+  },
+  {
+    "id": -1000007149,
+    "key": "story_C2_q1_o1",
+    "en": "Big fire",
+    "ch": "大火",
+    "tc": "大火",
+    "kr": "센 불"
+  },
+  {
+    "id": -1000007150,
+    "key": "story_C2_q1_o2",
+    "en": "Small fire",
+    "ch": "小火",
+    "tc": "小火",
+    "kr": "약한 불"
+  },
+  {
+    "id": -1000007151,
+    "key": "story_C2_q2",
+    "en": "\"It's turning black at the bottom! What do I do?!\"",
+    "ch": "“底下发黑了！怎么办？！”",
+    "tc": "“底下發黑了！怎麼辦？！”",
+    "kr": "\"바닥이 까맣게 타요! 어떡해요?!\""
+  },
+  {
+    "id": -1000007152,
+    "key": "story_C2_q2_o1",
+    "en": "Big fire, burn it through",
+    "ch": "大火，一口气烧透",
+    "tc": "大火，一口氣燒透",
+    "kr": "센 불로 단숨에 태운다"
+  },
+  {
+    "id": -1000007153,
+    "key": "story_C2_q2_o2",
+    "en": "Put the fire out",
+    "ch": "把火灭了",
+    "tc": "把火滅了",
+    "kr": "불을 끈다"
+  },
+  {
+    "id": -1000007154,
+    "key": "story_C2_q3",
+    "en": "\"The pill is forming! The lotus — now or later?\"",
+    "ch": "“丹要成了！月霜莲——现在放还是等会儿？”",
+    "tc": "“丹要成了！月霜蓮——現在放還是等會兒？”",
+    "kr": "\"단약이 맺혀요! 월상련 — 지금 넣어요, 나중에요?\""
+  },
+  {
+    "id": -1000007155,
+    "key": "story_C2_q3_o1",
+    "en": "Now",
+    "ch": "现在",
+    "tc": "現在",
+    "kr": "지금"
+  },
+  {
+    "id": -1000007156,
+    "key": "story_C2_q3_o2",
+    "en": "Later",
+    "ch": "等会儿",
+    "tc": "等會兒",
+    "kr": "나중에"
+  },
+  {
+    "id": -1000007157,
+    "key": "story_C2_pass",
+    "en": "\"I PASSED! Did you see? Did everyone see?!\"",
+    "ch": "“我考过了！你看到了吗？大家都看到了吗？！”",
+    "tc": "“我考過了！你看到了嗎？大家都看到了嗎？！”",
+    "kr": "\"합격했어요! 봤어요? 다들 봤어요?!\""
+  },
+  {
+    "id": -1000007158,
+    "key": "story_C2_fail",
+    "en": "\"…Next year. I'll do it next year.\"",
+    "ch": "“……明年。我明年一定行。”",
+    "tc": "“……明年。我明年一定行。”",
+    "kr": "\"……내년에. 내년엔 꼭 할 거예요.\""
+  },
+  {
+    "id": -1000007159,
+    "key": "story_C3_1",
+    "en": "{X} is not joking for once. \"Grandmaster {G} presented my recipe to the Guild. My recipe. He laughed when I said so.\"",
+    "ch": "{X}这一次没有开玩笑。“{G}大宗师把我的丹方献给了丹会。我的丹方。我说出来时，他笑了。”",
+    "tc": "{X}這一次沒有開玩笑。“{G}大宗師把我的丹方獻給了丹會。我的丹方。我說出來時，他笑了。”",
+    "kr": "이번만은 {X}가 농담을 하지 않는다. \"{G} 대종사가 내 단방을 단회에 바쳤어요. 내 단방을요. 내가 그렇게 말하자 웃더라고요.\""
+  },
+  {
+    "id": -1000007160,
+    "key": "story_C3_app1",
+    "en": "An apprentice of the Guild saw {X} write the recipe. He will speak — if you help him first.",
+    "ch": "丹会的一名学徒看见{X}写下丹方。他愿意作证——只要你先帮他。",
+    "tc": "丹會的一名學徒看見{X}寫下丹方。他願意作證——只要你先幫他。",
+    "kr": "단회의 한 견습생이 {X}가 단방을 쓰는 것을 봤다. 먼저 도와준다면 증언하겠단다."
+  },
+  {
+    "id": -1000007161,
+    "key": "story_C3_app2",
+    "en": "A second apprentice copied the recipe for {G}. She is afraid — and bullied.",
+    "ch": "第二名学徒替{G}抄过丹方。她很害怕——还被人欺负。",
+    "tc": "第二名學徒替{G}抄過丹方。她很害怕——還被人欺負。",
+    "kr": "두 번째 견습생은 {G}를 위해 단방을 베꼈다. 그녀는 겁에 질려 있고 — 괴롭힘을 당하고 있다."
+  },
+  {
+    "id": -1000007162,
+    "key": "story_C3_app_o1",
+    "en": "Give a pill or a herb",
+    "ch": "送一颗丹药或一株药草",
+    "tc": "送一顆丹藥或一株藥草",
+    "kr": "단약이나 약초를 준다"
+  },
+  {
+    "id": -1000007163,
+    "key": "story_C3_app_o2",
+    "en": "Deal with the bully",
+    "ch": "教训欺负人的家伙",
+    "tc": "教訓欺負人的傢伙",
+    "kr": "괴롭히는 자를 혼내 준다"
+  },
+  {
+    "id": -1000007164,
+    "key": "story_C3_app_o3",
+    "en": "Leave it",
+    "ch": "算了",
+    "tc": "算了",
+    "kr": "그만둔다"
+  },
+  {
+    "id": -1000007165,
+    "key": "story_C3_4",
+    "en": "\"So. What do we do with the grandmaster?\"",
+    "ch": "“那么。我们拿这位大宗师怎么办？”",
+    "tc": "“那麼。我們拿這位大宗師怎麼辦？”",
+    "kr": "\"그래서. 대종사를 어떻게 할까요?\""
+  },
+  {
+    "id": -1000007166,
+    "key": "story_C3_4_o1",
+    "en": "Expose him before the Guild",
+    "ch": "在丹会当众揭穿他",
+    "tc": "在丹會當眾揭穿他",
+    "kr": "단회 앞에서 폭로한다"
+  },
+  {
+    "id": -1000007167,
+    "key": "story_C3_4_o2",
+    "en": "Duel him",
+    "ch": "与他决斗",
+    "tc": "與他決鬥",
+    "kr": "결투한다"
+  },
+  {
+    "id": -1000007168,
+    "key": "story_C3_4_o3",
+    "en": "\"Let it go. You'll make better ones.\"",
+    "ch": "“算了吧。你会炼出更好的。”",
+    "tc": "“算了吧。你會煉出更好的。”",
+    "kr": "\"그만둬. 더 좋은 걸 만들 수 있어.\""
+  },
+  {
+    "id": -1000007169,
+    "key": "story_C3_exposed",
+    "en": "Before the whole Guild, the apprentices speak. {G} goes white, then red, then very quiet.",
+    "ch": "当着整个丹会，学徒们说出了真相。{G}脸色发白，又转红，然后一言不发。",
+    "tc": "當著整個丹會，學徒們說出了真相。{G}臉色發白，又轉紅，然後一言不發。",
+    "kr": "단회 전체 앞에서 견습생들이 입을 연다. {G}는 하얗게, 붉게 질리더니 이내 아주 조용해진다."
+  },
+  {
+    "id": -1000007170,
+    "key": "story_C4_1",
+    "en": "\"Little thief, face me at the Grand Gathering. The loser leaves alchemy forever.\"",
+    "ch": "“小贼，丹道大会上与我一较高下。输的人永离丹道。”",
+    "tc": "“小賊，丹道大會上與我一較高下。輸的人永離丹道。”",
+    "kr": "\"꼬마 도둑, 단도 대회에서 나와 겨뤄라. 지는 자는 영원히 연단을 떠난다.\""
+  },
+  {
+    "id": -1000007171,
+    "key": "story_C4_2",
+    "en": "The night before the Gathering, someone breaks into {X}'s workshop.",
+    "ch": "大会前夜，有人闯进了{X}的工坊。",
+    "tc": "大會前夜，有人闖進了{X}的工坊。",
+    "kr": "대회 전날 밤, 누군가 {X}의 작업장에 침입한다."
+  },
+  {
+    "id": -1000007172,
+    "key": "story_C4_2_o1",
+    "en": "Catch the saboteur",
+    "ch": "抓住破坏者",
+    "tc": "抓住破壞者",
+    "kr": "방해꾼을 잡는다"
+  },
+  {
+    "id": -1000007173,
+    "key": "story_C4_3_won",
+    "en": "Two furnaces, one hall, a thousand eyes. {X}'s pill rises from the flames, glowing like a small moon.",
+    "ch": "两座丹炉，一座大殿，千双眼睛。{X}的丹药从火中升起，像一轮小小的月亮。",
+    "tc": "兩座丹爐，一座大殿，千雙眼睛。{X}的丹藥從火中升起，像一輪小小的月亮。",
+    "kr": "단로 둘, 전각 하나, 천 개의 눈. {X}의 단약이 불길 속에서 작은 달처럼 빛나며 떠오른다."
+  },
+  {
+    "id": -1000007174,
+    "key": "story_C4_3_lost",
+    "en": "{G}'s pill is flawless. {X}'s cracks in the last breath of fire.",
+    "ch": "{G}的丹药完美无瑕。{X}的丹药在最后一口火中裂开了。",
+    "tc": "{G}的丹藥完美無瑕。{X}的丹藥在最後一口火中裂開了。",
+    "kr": "{G}의 단약은 흠잡을 데가 없다. {X}의 단약은 마지막 불길에 금이 간다."
+  },
+  {
+    "id": -1000007175,
+    "key": "story_endC_Companion",
+    "en": "\"I'm coming with you. Someone has to test pills on your enemies.\"",
+    "ch": "“我跟你走。总得有人拿你的敌人试药。”",
+    "tc": "“我跟你走。總得有人拿你的敵人試藥。”",
+    "kr": "\"따라갈게요. 누군가는 당신 적들에게 단약을 시험해야 하잖아요.\""
+  },
+  {
+    "id": -1000007176,
+    "key": "story_endC_MasterAlchemist",
+    "en": "\"Master {X}'s pills — for you, at cost. For everyone else, double!\"",
+    "ch": "“{X}大师的丹药——给你，成本价。给别人，翻倍！”",
+    "tc": "“{X}大師的丹藥——給你，成本價。給別人，翻倍！”",
+    "kr": "\"{X} 대사의 단약 — 당신에겐 원가로. 다른 사람한텐 두 배로!\""
+  },
+  {
+    "id": -1000007177,
+    "key": "story_endC_LastExplosion",
+    "en": "A small teahouse opens. The tea is excellent. Nothing explodes.",
+    "ch": "一家小茶馆开张了。茶很好。什么都没炸。",
+    "tc": "一家小茶館開張了。茶很好。什麼都沒炸。",
+    "kr": "작은 찻집이 문을 연다. 차는 훌륭하다. 아무것도 터지지 않는다."
+  },
+  {
+    "id": -1000007178,
+    "key": "story_end_C_MasterAlchemist",
+    "en": "Master Alchemist",
+    "ch": "丹道大师",
+    "tc": "丹道大師",
+    "kr": "연단 대사"
+  },
+  {
+    "id": -1000007179,
+    "key": "story_end_C_Companion",
+    "en": "Companion",
+    "ch": "同伴",
+    "tc": "同伴",
+    "kr": "동료"
+  },
+  {
+    "id": -1000007180,
+    "key": "story_end_C_LastExplosion",
+    "en": "Last Explosion",
+    "ch": "最后一炸",
+    "tc": "最後一炸",
+    "kr": "마지막 폭발"
+  },
+  {
+    "id": -1000007181,
+    "key": "story_D0_1",
+    "en": "The innkeeper: \"Eleven bowls of noodles and no money?!\"\n{N}: \"I can pay with a fight! A good one!\"\n{C} strums his zither: \"Eleven bowls, one fool, no coin — a tragedy in three verses.\"",
+    "ch": "掌柜：“吃了十一碗面，一文钱没有？！”\n{N}：“我可以打一架抵账！打得很精彩那种！”\n{C}拨着琴弦：“十一碗面，一个傻子，没有铜板——三段式悲剧。”",
+    "tc": "掌櫃：“吃了十一碗麵，一文錢沒有？！”\n{N}：“我可以打一架抵賬！打得很精彩那種！”\n{C}撥著琴絃：“十一碗麵，一個傻子，沒有銅板——三段式悲劇。”",
+    "kr": "주인: \"국수 열한 그릇에 돈이 없다고?!\"\n{N}: \"싸움으로 갚을 수 있소! 아주 멋진 걸로!\"\n{C}가 금을 뜯는다: \"국수 열한 그릇, 바보 하나, 동전은 없네 — 3절짜리 비극이로다.\""
+  },
+  {
+    "id": -1000007182,
+    "key": "story_D0_2",
+    "en": "Everyone looks at you. (the bill: {0:#,##0} spirit stones)",
+    "ch": "所有人都看着你。（账单：{0:#,##0}灵石）",
+    "tc": "所有人都看著你。（賬單：{0:#,##0}靈石）",
+    "kr": "모두가 그대를 쳐다본다. (계산서: 영석 {0:#,##0})"
+  },
+  {
+    "id": -1000007183,
+    "key": "story_D0_2_o1",
+    "en": "Pay for him",
+    "ch": "替他付账",
+    "tc": "替他付賬",
+    "kr": "대신 낸다"
+  },
+  {
+    "id": -1000007184,
+    "key": "story_D0_2_o2",
+    "en": "\"Fight me, then.\"",
+    "ch": "“那就和我打。”",
+    "tc": "“那就和我打。”",
+    "kr": "\"그럼 나와 싸우자.\""
+  },
+  {
+    "id": -1000007185,
+    "key": "story_D0_ribs",
+    "en": "\"Ha! My ribs! Again tomorrow?\"",
+    "ch": "“哈！我的肋骨！明天再来？”",
+    "tc": "“哈！我的肋骨！明天再來？”",
+    "kr": "\"하! 내 갈비뼈! 내일 또 할까?\""
+  },
+  {
+    "id": -1000007186,
+    "key": "story_D0_3",
+    "en": "\"A fool, a hero and a poet walk into an inn. I'll write it down.\"",
+    "ch": "“一个傻子、一个英雄和一个诗人走进客栈。我要把它写下来。”",
+    "tc": "“一個傻子、一個英雄和一個詩人走進客棧。我要把它寫下來。”",
+    "kr": "\"바보, 영웅, 시인이 객잔에 들어갔다. 이건 써 둬야겠군.\""
+  },
+  {
+    "id": -1000007187,
+    "key": "story_D1_1",
+    "en": "\"There's a beast eating the farmers' oxen. Three of us — easy! Ge, you can sing at it.\"",
+    "ch": "“有头妖兽在吃农户的牛。我们三个——轻松！阿歌，你可以对着它唱歌。”",
+    "tc": "“有頭妖獸在吃農戶的牛。我們三個——輕鬆！阿歌，你可以對著它唱歌。”",
+    "kr": "\"농부들 소를 잡아먹는 요수가 있대. 우리 셋이면 — 쉽지! 가야, 넌 그놈한테 노래나 불러.\""
+  },
+  {
+    "id": -1000007188,
+    "key": "story_D1_2",
+    "en": "The beast's den reeks of blood. {N} cracks his knuckles; {C} tunes his zither.",
+    "ch": "妖兽的巢穴血腥扑鼻。{N}捏响指节；{C}调着琴弦。",
+    "tc": "妖獸的巢穴血腥撲鼻。{N}捏響指節；{C}調著琴絃。",
+    "kr": "요수의 굴에서 피비린내가 진동한다. {N}가 손마디를 꺾고, {C}가 금을 조율한다."
+  },
+  {
+    "id": -1000007189,
+    "key": "story_D1_2_o1",
+    "en": "Hunt it",
+    "ch": "猎杀它",
+    "tc": "獵殺它",
+    "kr": "사냥한다"
+  },
+  {
+    "id": -1000007190,
+    "key": "story_D1_3",
+    "en": "Around the campfire.\n{N}: \"My sect wants me to fight in their wars. I just want to punch bandits.\"\n{C}: \"I write love poems because the other kind hurts too much.\"",
+    "ch": "篝火旁。\n{N}：“我的宗门要我去打他们的仗。我只想揍土匪。”\n{C}：“我写情诗，因为另一种诗太疼了。”",
+    "tc": "篝火旁。\n{N}：“我的宗門要我去打他們的仗。我只想揍土匪。”\n{C}：“我寫情詩，因為另一種詩太疼了。”",
+    "kr": "모닥불 곁.\n{N}: \"우리 종문은 나더러 자기들 전쟁에 나가래. 난 그냥 산적이나 패고 싶은데.\"\n{C}: \"나는 연시를 써. 다른 종류의 시는 너무 아프니까.\""
+  },
+  {
+    "id": -1000007191,
+    "key": "story_D1_3_o1",
+    "en": "\"Then swear brotherhood with me.\"",
+    "ch": "“那就和我结拜。”",
+    "tc": "“那就和我結拜。”",
+    "kr": "\"그럼 나와 의형제를 맺자.\""
+  },
+  {
+    "id": -1000007192,
+    "key": "story_D1_3_o2",
+    "en": "\"Get some sleep.\"",
+    "ch": "“睡吧。”",
+    "tc": "“睡吧。”",
+    "kr": "\"잠이나 자.\""
+  },
+  {
+    "id": -1000007193,
+    "key": "story_D2_1",
+    "en": "\"I have written forty-two poems for {L}. She has read none. I need a… strategist.\"",
+    "ch": "“我为{L}写了四十二首诗。她一首都没读。我需要一位……军师。”",
+    "tc": "“我為{L}寫了四十二首詩。她一首都沒讀。我需要一位……軍師。”",
+    "kr": "\"{L}에게 시를 마흔두 편 썼어. 한 편도 안 읽었지. 나한테는…… 책사가 필요해.\""
+  },
+  {
+    "id": -1000007194,
+    "key": "story_D2_2",
+    "en": "A gift should go with the poems.",
+    "ch": "诗该配一份礼物。",
+    "tc": "詩該配一份禮物。",
+    "kr": "시에는 선물이 함께 가야 하는 법."
+  },
+  {
+    "id": -1000007195,
+    "key": "story_D2_2_o1",
+    "en": "Give a gift",
+    "ch": "送一份礼物",
+    "tc": "送一份禮物",
+    "kr": "선물을 준비한다"
+  },
+  {
+    "id": -1000007196,
+    "key": "story_D2_2_o2",
+    "en": "Poems are enough",
+    "ch": "诗就够了",
+    "tc": "詩就夠了",
+    "kr": "시면 충분하다"
+  },
+  {
+    "id": -1000007197,
+    "key": "story_D2_3",
+    "en": "\"Now. Tonight, under her window. Will you help me?\"",
+    "ch": "“就是今晚，在她窗下。你会帮我吗？”",
+    "tc": "“就是今晚，在她窗下。你會幫我嗎？”",
+    "kr": "\"지금이야. 오늘 밤, 그녀의 창문 아래서. 도와줄 거지?\""
+  },
+  {
+    "id": -1000007198,
+    "key": "story_D2_3_o1",
+    "en": "Help him sincerely",
+    "ch": "真心帮他",
+    "tc": "真心幫他",
+    "kr": "진심으로 돕는다"
+  },
+  {
+    "id": -1000007199,
+    "key": "story_D2_3_o2",
+    "en": "Sabotage it",
+    "ch": "暗中搅局",
+    "tc": "暗中攪局",
+    "kr": "몰래 훼방 놓는다"
+  },
+  {
+    "id": -1000007200,
+    "key": "story_D2_3_o3",
+    "en": "Court {L} yourself",
+    "ch": "自己去追求{L}",
+    "tc": "自己去追求{L}",
+    "kr": "직접 {L}에게 구애한다"
+  },
+  {
+    "id": -1000007201,
+    "key": "story_D3_1",
+    "en": "No music tonight. \"My family were merchants. They refused the Red Lotus's loan. One night, the house burned with them in it.\"",
+    "ch": "今晚没有琴声。“我家是商人。他们拒绝了红莲教的借款。一天夜里，房子连同他们一起烧了。”",
+    "tc": "今晚沒有琴聲。“我家是商人。他們拒絕了紅蓮教的借款。一天夜裡，房子連同他們一起燒了。”",
+    "kr": "오늘 밤엔 음악이 없다. \"우리 집안은 상인이었어. 홍련교의 돈을 거절했지. 어느 밤, 집이 그들과 함께 불탔어.\""
+  },
+  {
+    "id": -1000007202,
+    "key": "story_D3_2",
+    "en": "The trail of a Red Lotus killer leads to a ruined shrine.",
+    "ch": "一名红莲教杀手的踪迹通向一座破庙。",
+    "tc": "一名紅蓮教殺手的蹤跡通向一座破廟。",
+    "kr": "홍련교 살수의 흔적이 무너진 사당으로 이어진다."
+  },
+  {
+    "id": -1000007203,
+    "key": "story_D3_2_o1",
+    "en": "Go in",
+    "ch": "进去",
+    "tc": "進去",
+    "kr": "들어간다"
+  },
+  {
+    "id": -1000007204,
+    "key": "story_D3_3",
+    "en": "The dying killer laughs. \"The Lady… will… burn you too.\"",
+    "ch": "垂死的杀手大笑。“夫人……会把你们……也烧了。”",
+    "tc": "垂死的殺手大笑。“夫人……會把你們……也燒了。”",
+    "kr": "죽어 가는 살수가 웃는다. \"부인께서…… 너희도…… 태우실 거다.\""
+  },
+  {
+    "id": -1000007205,
+    "key": "story_D3_3_o1",
+    "en": "\"We'll end her together.\"",
+    "ch": "“我们一起终结她。”",
+    "tc": "“我們一起終結她。”",
+    "kr": "\"함께 그녀를 끝내자.\""
+  },
+  {
+    "id": -1000007206,
+    "key": "story_D3_3_o2",
+    "en": "\"Revenge will not bring them back.\"",
+    "ch": "“复仇换不回他们。”",
+    "tc": "“復仇換不回他們。”",
+    "kr": "\"복수한다고 그들이 돌아오진 않아.\""
+  },
+  {
+    "id": -1000007207,
+    "key": "story_D4_1",
+    "en": "Across the battlefield, {N} raises his fists. \"Brother… my sect ordered me. I can't run.\"",
+    "ch": "战场对面，{N}举起双拳。“兄弟……宗门下了令。我不能逃。”",
+    "tc": "戰場對面，{N}舉起雙拳。“兄弟……宗門下了令。我不能逃。”",
+    "kr": "전장 건너편에서 {N}가 주먹을 든다. \"형제…… 종문의 명이야. 도망칠 수 없어.\""
+  },
+  {
+    "id": -1000007208,
+    "key": "story_D4_1_o1",
+    "en": "\"Lower your fists and walk away with me.\"",
+    "ch": "“放下拳头，跟我走。”",
+    "tc": "“放下拳頭，跟我走。”",
+    "kr": "\"주먹을 내리고 나와 함께 가자.\""
+  },
+  {
+    "id": -1000007209,
+    "key": "story_D4_1_o2",
+    "en": "\"Then fight me, and don't hold back.\"",
+    "ch": "“那就和我打，别留手。”",
+    "tc": "“那就和我打，別留手。”",
+    "kr": "\"그럼 싸우자. 봐주지 마라.\""
+  },
+  {
+    "id": -1000007210,
+    "key": "story_D4_1_o3",
+    "en": "Switch sides",
+    "ch": "倒戈与他并肩",
+    "tc": "倒戈與他並肩",
+    "kr": "편을 바꾼다"
+  },
+  {
+    "id": -1000007211,
+    "key": "story_D4_walk",
+    "en": "\"Your fists are heavier than my sect's orders.\" He lowers his.",
+    "ch": "“你的拳头比宗门的命令还重。”他放下了拳头。",
+    "tc": "“你的拳頭比宗門的命令還重。”他放下了拳頭。",
+    "kr": "\"네 주먹이 종문의 명령보다 무겁구나.\" 그가 주먹을 내린다."
+  },
+  {
+    "id": -1000007212,
+    "key": "story_D4_switch",
+    "en": "You walk to his side of the field. Behind you, your home town will not forget.",
+    "ch": "你走到他那一边。身后，你的故乡不会忘记。",
+    "tc": "你走到他那一邊。身後，你的故鄉不會忘記。",
+    "kr": "그대는 그의 편으로 걸어간다. 뒤에서, 고향 마을은 이를 잊지 않을 것이다."
+  },
+  {
+    "id": -1000007213,
+    "key": "story_endD_Rivals",
+    "en": "\"You won her. Next time we meet, it's on the battlefield.\"",
+    "ch": "“你赢了她。下次见面，就在战场上。”",
+    "tc": "“你贏了她。下次見面，就在戰場上。”",
+    "kr": "\"네가 그녀를 얻었군. 다음에 만날 땐 전장에서다.\""
+  },
+  {
+    "id": -1000007214,
+    "key": "story_endD_BrotherLost",
+    "en": "A slow song drifts over the grave. \"He always said the noodles here were the best.\"",
+    "ch": "一曲缓歌飘过坟头。“他总说这里的面最好吃。”",
+    "tc": "一曲緩歌飄過墳頭。“他總說這裡的面最好吃。”",
+    "kr": "느린 노래가 무덤 위로 흐른다. \"그는 늘 여기 국수가 최고라고 했지.\""
+  },
+  {
+    "id": -1000007215,
+    "key": "story_endD_MurongCompanion",
+    "en": "\"Forty-three poems. This one, you'll read.\"",
+    "ch": "“第四十三首。这一首，你会读的。”",
+    "tc": "“第四十三首。這一首，你會讀的。”",
+    "kr": "\"마흔세 번째 시. 이건 읽게 될 거야.\""
+  },
+  {
+    "id": -1000007216,
+    "key": "story_endD_ThreeSworn",
+    "en": "\"Heaven above, earth below — three of us, one life!\"",
+    "ch": "“皇天在上，后土在下——我们三人，同生共死！”",
+    "tc": "“皇天在上，后土在下——我們三人，同生共死！”",
+    "kr": "\"하늘이 위에 있고 땅이 아래에 있으니 — 우리 셋, 한 목숨이다!\""
+  },
+  {
+    "id": -1000007217,
+    "key": "story_end_D_ThreeSworn",
+    "en": "Three Sworn",
+    "ch": "三人结义",
+    "tc": "三人結義",
+    "kr": "삼인결의"
+  },
+  {
+    "id": -1000007218,
+    "key": "story_end_D_MurongCompanion",
+    "en": "Murong as Companion",
+    "ch": "慕容为侣",
+    "tc": "慕容為侶",
+    "kr": "모용과 도려로"
+  },
+  {
+    "id": -1000007219,
+    "key": "story_end_D_BrotherLost",
+    "en": "A Brother Lost",
+    "ch": "痛失兄弟",
+    "tc": "痛失兄弟",
+    "kr": "잃어버린 형제"
+  },
+  {
+    "id": -1000007220,
+    "key": "story_end_D_Rivals",
+    "en": "Rivals",
+    "ch": "情敌",
+    "tc": "情敵",
+    "kr": "연적"
+  },
+  {
+    "id": -1000007221,
+    "key": "story_E0_1",
+    "en": "\"Child, these old knees cannot reach the high terraces anymore. Will you keep my garden for a while?\"",
+    "ch": "“孩子，这双老腿再也爬不上高处的药圃了。你愿意替我照看一阵园子吗？”",
+    "tc": "“孩子，這雙老腿再也爬不上高處的藥圃了。你願意替我照看一陣園子嗎？”",
+    "kr": "\"얘야, 이 늙은 무릎으로는 더 이상 높은 밭까지 못 올라가는구나. 한동안 내 약초밭을 돌봐 주겠느냐?\""
+  },
+  {
+    "id": -1000007222,
+    "key": "story_E0_1_o1",
+    "en": "\"Of course, grandmother.\"",
+    "ch": "“当然，婆婆。”",
+    "tc": "“當然，婆婆。”",
+    "kr": "\"물론이죠, 할머니.\""
+  },
+  {
+    "id": -1000007223,
+    "key": "story_E0_1_o2",
+    "en": "\"I have no time for gardens.\"",
+    "ch": "“我没空种园子。”",
+    "tc": "“我沒空種園子。”",
+    "kr": "\"밭 가꿀 시간은 없습니다.\""
+  },
+  {
+    "id": -1000007224,
+    "key": "story_E0_2",
+    "en": "Weeding, watering — and a band of spirit monkeys stealing the peaches.",
+    "ch": "除草、浇水——还有一群偷桃子的灵猴。",
+    "tc": "除草、澆水——還有一群偷桃子的靈猴。",
+    "kr": "잡초 뽑기, 물 주기 — 그리고 복숭아를 훔치는 영원숭이 무리."
+  },
+  {
+    "id": -1000007225,
+    "key": "story_E0_2_o1",
+    "en": "Chase them off",
+    "ch": "把它们赶走",
+    "tc": "把它們趕走",
+    "kr": "쫓아낸다"
+  },
+  {
+    "id": -1000007226,
+    "key": "story_E0_3",
+    "en": "\"A sword is like a root: it grows deep before it grows tall.\"",
+    "ch": "“剑如根：先往深处长，再往高处长。”",
+    "tc": "“劍如根：先往深處長，再往高處長。”",
+    "kr": "\"검은 뿌리와 같단다. 높이 자라기 전에 깊이 자라지.\""
+  },
+  {
+    "id": -1000007227,
+    "key": "story_E1_1",
+    "en": "A thin girl hides behind {O}'s skirts, clutching a wooden spoon like a sword.",
+    "ch": "一个瘦小的女孩躲在{O}身后，像握剑一样攥着一把木勺。",
+    "tc": "一個瘦小的女孩躲在{O}身後，像握劍一樣攥著一把木勺。",
+    "kr": "마른 소녀가 {O}의 치마 뒤에 숨어 나무 국자를 검처럼 꼭 쥐고 있다."
+  },
+  {
+    "id": -1000007228,
+    "key": "story_E1_2",
+    "en": "\"Her village burned. Red banners, the survivors said. I am too old to raise her, and too old to say no to her.\"",
+    "ch": "“她的村子烧了。幸存的人说，有红色的旗。我老得养不动她，也老得拒绝不了她。”",
+    "tc": "“她的村子燒了。倖存的人說，有紅色的旗。我老得養不動她，也老得拒絕不了她。”",
+    "kr": "\"이 아이의 마을이 불탔단다. 살아남은 이들 말로는 붉은 깃발이 있었다는구나. 나는 이 아이를 키우기엔 너무 늙었고, 거절하기에도 너무 늙었어.\""
+  },
+  {
+    "id": -1000007229,
+    "key": "story_E1_3",
+    "en": "\"Her name is {Y}. What will you do, child?\"",
+    "ch": "“她叫{Y}。孩子，你打算怎么办？”",
+    "tc": "“她叫{Y}。孩子，你打算怎麼辦？”",
+    "kr": "\"이름은 {Y}란다. 얘야, 어떻게 하겠느냐?\""
+  },
+  {
+    "id": -1000007230,
+    "key": "story_E1_3_o1",
+    "en": "Adopt her",
+    "ch": "收养她",
+    "tc": "收養她",
+    "kr": "입양한다"
+  },
+  {
+    "id": -1000007231,
+    "key": "story_E1_3_o2",
+    "en": "Send her to a sect",
+    "ch": "送她去宗门",
+    "tc": "送她去宗門",
+    "kr": "종문에 보낸다"
+  },
+  {
+    "id": -1000007232,
+    "key": "story_E1_3_o3",
+    "en": "Leave her with you, grandmother",
+    "ch": "留给婆婆照顾",
+    "tc": "留給婆婆照顧",
+    "kr": "할머니께 맡긴다"
+  },
+  {
+    "id": -1000007233,
+    "key": "story_E2_8",
+    "en": "{Y} burned the rice again. She says it was a \"fire technique\".",
+    "ch": "{Y}又把饭烧糊了。她说那是“火系功法”。",
+    "tc": "{Y}又把飯燒糊了。她說那是“火系功法”。",
+    "kr": "{Y}가 또 밥을 태웠다. \"화계 공법\"이었다고 한다."
+  },
+  {
+    "id": -1000007234,
+    "key": "story_E2_8_o1",
+    "en": "Teach her to cook",
+    "ch": "教她做饭",
+    "tc": "教她做飯",
+    "kr": "요리를 가르친다"
+  },
+  {
+    "id": -1000007235,
+    "key": "story_E2_8_o2",
+    "en": "Teach her a stance",
+    "ch": "教她扎马步",
+    "tc": "教她扎馬步",
+    "kr": "자세를 가르친다"
+  },
+  {
+    "id": -1000007236,
+    "key": "story_E2_12",
+    "en": "{Y} came home with a black eye. \"He called you a nobody. I corrected him.\"",
+    "ch": "{Y}带着一只青眼圈回家。“他说你是无名小卒。我纠正了他。”",
+    "tc": "{Y}帶著一隻青眼圈回家。“他說你是無名小卒。我糾正了他。”",
+    "kr": "{Y}가 멍든 눈으로 돌아왔다. \"그 애가 당신을 별 볼 일 없는 사람이라고 했어요. 바로잡아 줬죠.\""
+  },
+  {
+    "id": -1000007237,
+    "key": "story_E2_12_o1",
+    "en": "Scold her",
+    "ch": "责备她",
+    "tc": "責備她",
+    "kr": "꾸짖는다"
+  },
+  {
+    "id": -1000007238,
+    "key": "story_E2_12_o2",
+    "en": "Laugh",
+    "ch": "大笑",
+    "tc": "大笑",
+    "kr": "웃는다"
+  },
+  {
+    "id": -1000007239,
+    "key": "story_E2_12_o3",
+    "en": "Teach her when to fight",
+    "ch": "教她何时该出手",
+    "tc": "教她何時該出手",
+    "kr": "언제 싸워야 하는지 가르친다"
+  },
+  {
+    "id": -1000007240,
+    "key": "story_E2_15",
+    "en": "{Y} asks what her parents were like. {O} looks at you.",
+    "ch": "{Y}问起她的父母是什么样的人。{O}看向了你。",
+    "tc": "{Y}問起她的父母是什麼樣的人。{O}看向了你。",
+    "kr": "{Y}가 부모님이 어떤 분들이었는지 묻는다. {O}가 그대를 바라본다."
+  },
+  {
+    "id": -1000007241,
+    "key": "story_E2_15_o1",
+    "en": "Tell the truth",
+    "ch": "说出真相",
+    "tc": "說出真相",
+    "kr": "진실을 말한다"
+  },
+  {
+    "id": -1000007242,
+    "key": "story_E2_15_o2",
+    "en": "\"They loved you.\"",
+    "ch": "“他们很爱你。”",
+    "tc": "“他們很愛你。”",
+    "kr": "\"너를 무척 사랑하셨단다.\""
+  },
+  {
+    "id": -1000007243,
+    "key": "story_E3_1",
+    "en": "{Y}: \"Grandmother coughs at night now. She says it's the wind.\"",
+    "ch": "{Y}：“婆婆夜里咳嗽了。她说是风。”",
+    "tc": "{Y}：“婆婆夜裡咳嗽了。她說是風。”",
+    "kr": "{Y}: \"할머니가 요즘 밤에 기침을 하세요. 바람 때문이래요.\""
+  },
+  {
+    "id": -1000007244,
+    "key": "story_E3_2",
+    "en": "Herb sellers speak of a longevity herb guarded by a beast in the high cliffs.",
+    "ch": "药贩们说，高崖上有一株长寿草，由一头妖兽守着。",
+    "tc": "藥販們說，高崖上有一株長壽草，由一頭妖獸守著。",
+    "kr": "약초 상인들이 높은 절벽 위, 요수가 지키는 장수초에 대해 이야기한다."
+  },
+  {
+    "id": -1000007245,
+    "key": "story_E3_2_o1",
+    "en": "Fetch the herb",
+    "ch": "去采药",
+    "tc": "去採藥",
+    "kr": "약초를 구하러 간다"
+  },
+  {
+    "id": -1000007246,
+    "key": "story_E3_2_o2",
+    "en": "Stay by her side",
+    "ch": "守在她身边",
+    "tc": "守在她身邊",
+    "kr": "곁을 지킨다"
+  },
+  {
+    "id": -1000007247,
+    "key": "story_E3_3",
+    "en": "\"You brought this for me? …Child. A garden needs old trees to fall, so young ones get the light.\"",
+    "ch": "“你为我带来的？……孩子。园子里，老树要倒下，小树才晒得到太阳。”",
+    "tc": "“你為我帶來的？……孩子。園子裡，老樹要倒下，小樹才曬得到太陽。”",
+    "kr": "\"나를 위해 가져왔느냐? ……얘야. 밭에서는 늙은 나무가 쓰러져야 어린 나무가 햇빛을 받는단다.\""
+  },
+  {
+    "id": -1000007248,
+    "key": "story_E3_3_o1",
+    "en": "Insist",
+    "ch": "坚持让她服下",
+    "tc": "堅持讓她服下",
+    "kr": "고집한다"
+  },
+  {
+    "id": -1000007249,
+    "key": "story_E3_3_o2",
+    "en": "Respect her wish",
+    "ch": "尊重她的心愿",
+    "tc": "尊重她的心願",
+    "kr": "뜻을 존중한다"
+  },
+  {
+    "id": -1000007250,
+    "key": "story_E4_1",
+    "en": "{O} sleeps under the old pear tree and does not wake. In her hand, a seed wrapped in silk.",
+    "ch": "{O}在老梨树下睡去，再没醒来。手中握着一颗用丝绢包好的种子。",
+    "tc": "{O}在老梨樹下睡去，再沒醒來。手中握著一顆用絲絹包好的種子。",
+    "kr": "{O}가 늙은 배나무 아래서 잠들어 깨어나지 않는다. 손에는 비단에 싼 씨앗 하나."
+  },
+  {
+    "id": -1000007251,
+    "key": "story_E4_2",
+    "en": "A letter: \"To the one who kept my garden: plant it where you will rest.\"",
+    "ch": "一封信：“给替我照看园子的人：把它种在你歇息的地方。”",
+    "tc": "一封信：“給替我照看園子的人：把它種在你歇息的地方。”",
+    "kr": "편지 한 통. \"내 밭을 돌봐 준 이에게: 네가 쉴 곳에 이것을 심거라.\""
+  },
+  {
+    "id": -1000007252,
+    "key": "story_E4_2_o1",
+    "en": "Keep the garden",
+    "ch": "留下药圃",
+    "tc": "留下藥圃",
+    "kr": "약초밭을 지킨다"
+  },
+  {
+    "id": -1000007253,
+    "key": "story_E4_2_o2",
+    "en": "Give it to {Y}",
+    "ch": "交给{Y}",
+    "tc": "交給{Y}",
+    "kr": "{Y}에게 준다"
+  },
+  {
+    "id": -1000007254,
+    "key": "story_endE_LostChild",
+    "en": "Nobody came for {Y}. Someone else did — a woman in red. \"Nobody came for me. She did.\"",
+    "ch": "没人来找{Y}。来的是别人——一个红衣女子。“没人来找我。只有她来了。”",
+    "tc": "沒人來找{Y}。來的是別人——一個紅衣女子。“沒人來找我。只有她來了。”",
+    "kr": "아무도 {Y}를 찾으러 오지 않았다. 다른 이가 왔다 — 붉은 옷의 여인. \"아무도 나를 찾아오지 않았어요. 그녀만 왔죠.\""
+  },
+  {
+    "id": -1000007255,
+    "key": "story_endE_Successor",
+    "en": "\"You taught me to stand. Now let me carry the family.\"",
+    "ch": "“是你教会我站起来。现在，让我来扛起这个家。”",
+    "tc": "“是你教會我站起來。現在，讓我來扛起這個家。”",
+    "kr": "\"당신이 서는 법을 가르쳐 주셨어요. 이제 제가 이 집안을 짊어질게요.\""
+  },
+  {
+    "id": -1000007256,
+    "key": "story_endE_Garden",
+    "en": "The pear tree blooms. \"Sit under the pear tree as long as you need. The garden will keep time for you.\"",
+    "ch": "梨树开花了。“在梨树下坐多久都行。园子会替你记着时辰。”",
+    "tc": "梨樹開花了。“在梨樹下坐多久都行。園子會替你記著時辰。”",
+    "kr": "배나무에 꽃이 핀다. \"배나무 아래 필요한 만큼 앉아 있거라. 밭이 너 대신 시간을 지켜 줄 게다.\""
+  },
+  {
+    "id": -1000007257,
+    "key": "story_endE_Keepsake",
+    "en": "The pear tree blooms. The garden is quiet — a keepsake of an old friend.",
+    "ch": "梨树开花了。园子很安静——一位老友留下的念想。",
+    "tc": "梨樹開花了。園子很安靜——一位老友留下的念想。",
+    "kr": "배나무에 꽃이 핀다. 밭은 고요하다 — 오랜 벗이 남긴 정표."
+  },
+  {
+    "id": -1000007258,
+    "key": "story_end_E_Successor",
+    "en": "Successor",
+    "ch": "传人",
+    "tc": "傳人",
+    "kr": "후계자"
+  },
+  {
+    "id": -1000007259,
+    "key": "story_end_E_LostChild",
+    "en": "Lost Child",
+    "ch": "迷途之子",
+    "tc": "迷途之子",
+    "kr": "길 잃은 아이"
+  },
+  {
+    "id": -1000007260,
+    "key": "story_end_E_GardenOfGenerations",
+    "en": "Garden of Generations",
+    "ch": "世代药圃",
+    "tc": "世代藥圃",
+    "kr": "대대로 이어진 약초밭"
+  },
+  {
+    "id": -1000007261,
+    "key": "taskName444447001",
+    "en": "Granny Shi's Garden",
+    "ch": "石婆婆的药圃",
+    "tc": "石婆婆的藥圃",
+    "kr": "석 할머니의 약초밭"
+  },
+  {
+    "id": -1000007293,
+    "key": "taskDesc444447001",
+    "en": "Go to the pear tree in Granny Shi's garden (follow this quest on the map). There you can sit in seclusion for 1-20 years.",
+    "ch": "前往石婆婆药圃中的梨树下（在地图上追踪此任务）。在那里可以闭关1至20年。",
+    "tc": "前往石婆婆藥圃中的梨樹下（在地圖上追蹤此任務）。在那裡可以閉關1至20年。",
+    "kr": "석 할머니 약초밭의 배나무로 가세요(지도에서 이 임무를 추적하세요). 그곳에서 1~20년 동안 폐관할 수 있습니다."
+  },
+  {
+    "id": -1000007262,
+    "key": "story_garden",
+    "en": "Granny Shi's garden. Sit under the pear tree in seclusion: how long?",
+    "ch": "石婆婆的药圃。在梨树下闭关：多久？",
+    "tc": "石婆婆的藥圃。在梨樹下閉關：多久？",
+    "kr": "석 할머니의 약초밭. 배나무 아래서 폐관한다: 얼마나?"
+  },
+  {
+    "id": -1000007263,
+    "key": "story_garden_o",
+    "en": "{0} year(s) ({1:#,##0} spirit stones)",
+    "ch": "{0}年（{1:#,##0}灵石）",
+    "tc": "{0}年（{1:#,##0}靈石）",
+    "kr": "{0}년 (영석 {1:#,##0})"
+  },
+  {
+    "id": -1000007264,
+    "key": "story_garden_no",
+    "en": "Not now",
+    "ch": "以后再说",
+    "tc": "以後再說",
+    "kr": "나중에"
+  },
+  {
+    "id": -1000007265,
+    "key": "story_garden_money",
+    "en": "You do not have enough spirit stones.",
+    "ch": "你的灵石不够。",
+    "tc": "你的靈石不夠。",
+    "kr": "영석이 부족하다."
+  },
+  {
+    "id": -1000007266,
+    "key": "story_F1_1",
+    "en": "Three towns raise red banners in one season. Merchants whisper a name: the Lady.",
+    "ch": "一季之内，三座城升起红旗。商人们低声念着一个名字：夫人。",
+    "tc": "一季之內，三座城升起紅旗。商人們低聲念著一個名字：夫人。",
+    "kr": "한 계절에 세 마을이 붉은 깃발을 올린다. 상인들이 한 이름을 속삭인다: 부인."
+  },
+  {
+    "id": -1000007267,
+    "key": "story_F1_2",
+    "en": "\"Little thread-puller, you have been busy. Come to the Lotus Pavilion. Bring your friends — I so love company.\"",
+    "ch": "“小小的牵线人，你可真忙。来红莲阁吧。带上你的朋友——我最喜欢热闹了。”",
+    "tc": "“小小的牽線人，你可真忙。來紅蓮閣吧。帶上你的朋友——我最喜歡熱鬧了。”",
+    "kr": "\"작은 실 당기는 이여, 꽤 바빴구나. 홍련각으로 오너라. 친구들도 데려오고 — 나는 북적이는 게 참 좋거든.\""
+  },
+  {
+    "id": -1000007268,
+    "key": "story_F1_3",
+    "en": "The Lotus Pavilion waits.",
+    "ch": "红莲阁在等着。",
+    "tc": "紅蓮閣在等著。",
+    "kr": "홍련각이 기다린다."
+  },
+  {
+    "id": -1000007269,
+    "key": "story_F1_3_o1",
+    "en": "Gather allies",
+    "ch": "召集盟友",
+    "tc": "召集盟友",
+    "kr": "동료를 모은다"
+  },
+  {
+    "id": -1000007270,
+    "key": "story_F1_3_o2",
+    "en": "Go alone now",
+    "ch": "立刻独自前往",
+    "tc": "立刻獨自前往",
+    "kr": "지금 홀로 간다"
+  },
+  {
+    "id": -1000007271,
+    "key": "story_F2_A",
+    "en": "\"Finally.\"",
+    "ch": "“终于。”",
+    "tc": "“終於。”",
+    "kr": "\"드디어.\""
+  },
+  {
+    "id": -1000007272,
+    "key": "story_F2_H",
+    "en": "\"I'll bring the arrows. And snacks.\"",
+    "ch": "“我带箭。还有点心。”",
+    "tc": "“我帶箭。還有點心。”",
+    "kr": "\"화살은 내가 챙기겠소. 간식도.\""
+  },
+  {
+    "id": -1000007273,
+    "key": "story_F2_N",
+    "en": "\"Who do I punch?\"",
+    "ch": "“揍谁？”",
+    "tc": "“揍誰？”",
+    "kr": "\"누굴 패면 돼?\""
+  },
+  {
+    "id": -1000007274,
+    "key": "story_F2_C",
+    "en": "\"For my family.\"",
+    "ch": "“为了我的家人。”",
+    "tc": "“為了我的家人。”",
+    "kr": "\"내 가족을 위해.\""
+  },
+  {
+    "id": -1000007275,
+    "key": "story_F2_Y",
+    "en": "\"For my village.\"",
+    "ch": "“为了我的村子。”",
+    "tc": "“為了我的村子。”",
+    "kr": "\"내 마을을 위해.\""
+  },
+  {
+    "id": -1000007276,
+    "key": "story_F2_X",
+    "en": "\"I made explosive pills! On purpose this time!\"",
+    "ch": "“我做了爆炸丹！这次是故意的！”",
+    "tc": "“我做了爆炸丹！這次是故意的！”",
+    "kr": "\"폭발 단약 만들었어요! 이번엔 일부러!\""
+  },
+  {
+    "id": -1000007277,
+    "key": "story_F2_o1",
+    "en": "\"Then come.\"",
+    "ch": "“那就来吧。”",
+    "tc": "“那就來吧。”",
+    "kr": "\"그럼 가자.\""
+  },
+  {
+    "id": -1000007278,
+    "key": "story_F3_1",
+    "en": "The gates of the Lotus Pavilion. Her guardians step out.",
+    "ch": "红莲阁的大门。她的护法走了出来。",
+    "tc": "紅蓮閣的大門。她的護法走了出來。",
+    "kr": "홍련각의 문. 그녀의 호법들이 걸어 나온다."
+  },
+  {
+    "id": -1000007279,
+    "key": "story_F3_1_o1",
+    "en": "Fight",
+    "ch": "交战",
+    "tc": "交戰",
+    "kr": "싸운다"
+  },
+  {
+    "id": -1000007280,
+    "key": "story_F3_2",
+    "en": "\"So many little threads, all tied back to me. Kneel, and I will let your friends keep their heads.\"",
+    "ch": "“这么多细线，都牵回到我身上。跪下，我便留你朋友们的脑袋。”",
+    "tc": "“這麼多細線，都牽回到我身上。跪下，我便留你朋友們的腦袋。”",
+    "kr": "\"이렇게 많은 실이 모두 나에게로 이어지는구나. 무릎을 꿇어라. 그러면 네 친구들의 목은 붙여 두마.\""
+  },
+  {
+    "id": -1000007281,
+    "key": "story_F3_2_o1",
+    "en": "\"My friends answer for themselves.\"",
+    "ch": "“我的朋友，自己替自己回答。”",
+    "tc": "“我的朋友，自己替自己回答。”",
+    "kr": "\"내 친구들은 스스로 답한다.\""
+  },
+  {
+    "id": -1000007282,
+    "key": "story_F3_2_o2",
+    "en": "Kneel",
+    "ch": "下跪",
+    "tc": "下跪",
+    "kr": "무릎을 꿇는다"
+  },
+  {
+    "id": -1000007283,
+    "key": "story_F3_3",
+    "en": "Lady Honglian rises. The lotus on her fan opens.",
+    "ch": "红莲夫人站起身。她扇上的莲花绽开了。",
+    "tc": "紅蓮夫人站起身。她扇上的蓮花綻開了。",
+    "kr": "홍련 부인이 일어선다. 그녀의 부채 위 연꽃이 피어난다."
+  },
+  {
+    "id": -1000007284,
+    "key": "story_F3_3_o1",
+    "en": "The last battle",
+    "ch": "最后一战",
+    "tc": "最後一戰",
+    "kr": "마지막 전투"
+  },
+  {
+    "id": -1000007285,
+    "key": "story_endF_Kneel",
+    "en": "\"Wise child. From today, my towns are your towns — and the world's hatred is yours too.\"",
+    "ch": "“聪明的孩子。从今天起，我的城就是你的城——天下的恨意也是你的了。”",
+    "tc": "“聰明的孩子。從今天起，我的城就是你的城——天下的恨意也是你的了。”",
+    "kr": "\"영리한 아이로구나. 오늘부터 내 마을은 네 마을이다 — 세상의 증오도 네 것이고.\""
+  },
+  {
+    "id": -1000007286,
+    "key": "story_F4_1",
+    "en": "The red lotus withers. The towns she held open their gates.",
+    "ch": "红莲凋零。她占据的城池纷纷打开城门。",
+    "tc": "紅蓮凋零。她佔據的城池紛紛開啟城門。",
+    "kr": "붉은 연꽃이 시든다. 그녀가 차지했던 마을들이 성문을 연다."
+  },
+  {
+    "id": -1000007287,
+    "key": "story_F4_2",
+    "en": "Her debt ledger burns. In the ashes of the pavilion lies a mirror: {0}.",
+    "ch": "她的债簿燃成灰烬。阁楼的灰烬里有一面镜子：{0}。",
+    "tc": "她的債簿燃成灰燼。閣樓的灰燼裡有一面鏡子：{0}。",
+    "kr": "그녀의 빚 장부가 불탄다. 누각의 잿더미 속에 거울 하나가 놓여 있다: {0}."
+  },
+  {
+    "id": -1000007288,
+    "key": "story_F4_3",
+    "en": "One by one, your allies say goodbye and walk back to their own roads.",
+    "ch": "盟友们一个个道别，走回各自的路。",
+    "tc": "盟友們一個個道別，走回各自的路。",
+    "kr": "동료들이 하나둘 작별을 고하고 각자의 길로 돌아간다."
+  },
+  {
+    "id": -1000007289,
+    "key": "story_F_spread",
+    "en": "The demon realm spreads: more towns raise red banners. The Lady will not wait forever.",
+    "ch": "魔域在蔓延：更多的城升起了红旗。夫人不会永远等下去。",
+    "tc": "魔域在蔓延：更多的城升起了紅旗。夫人不會永遠等下去。",
+    "kr": "마역이 퍼진다. 더 많은 마을이 붉은 깃발을 올린다. 부인은 영원히 기다려 주지 않는다."
+  },
+  {
+    "id": -1000007290,
+    "key": "story_F_dead",
+    "en": "Word comes: Lady Honglian is dead. The Red Lotus scatters like petals in the wind.",
+    "ch": "消息传来：红莲夫人死了。红莲教如风中花瓣般四散。",
+    "tc": "訊息傳來：紅蓮夫人死了。紅蓮教如風中花瓣般四散。",
+    "kr": "소식이 온다. 홍련 부인이 죽었다. 홍련교는 바람 속 꽃잎처럼 흩어진다."
+  },
+  {
+    "id": -1000007291,
+    "key": "story_end_F_Victory",
+    "en": "Victory",
+    "ch": "胜利",
+    "tc": "勝利",
+    "kr": "승리"
+  },
+  {
+    "id": -1000007292,
+    "key": "story_end_F_Kneel",
+    "en": "Kneel",
+    "ch": "臣服",
+    "tc": "臣服",
+    "kr": "굴복"
+  }
+]

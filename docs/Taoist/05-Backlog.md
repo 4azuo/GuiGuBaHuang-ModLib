@@ -1,4 +1,4 @@
-# Taoist - Backlog
+﻿# Taoist - Backlog
 
 Open work collected from the TODO notes of the code (the notes were removed, this file replaces them) and from the
 features not finished yet. Remove an item once it is done.
@@ -24,9 +24,12 @@ Test: extend TG-46 (register a hidden item, NPC buys it, check the drama has no 
 
 ## Features not finished
 
-- Translations of the new texts into `de/es/fr/ja/la/ru/th/vi` (see `docs/04-LocalText.md`): Google Translate refused
-  the requests (HTTP 429) on 2026-11-16 and was still blocked 3 hours later: 736 keys / 24 files missing in the 8 folders; run the translate command again.
-- NPC storylines: outline of 5 lines / 8 characters (casting by sex, age, looks, traits) approved (`06-Storylines-Draft.md`); dialogue draft v2 (English) in `07-Storylines-Dialogue-Draft.md`, to be approved; then the other languages and the code.
+- NPC storylines: coded in `ModMain/Story/` (lines A-F, tests TS-01..TS-06). Simplified against the design (`06-Storylines-Draft.md`), to extend later:
+  - A: the sect-master perk is a yearly pill; the duel with the elder is a single real battle.
+  - B: the siege of the town is a single battle (no town damage / budget loss modelled).
+  - D: the "Ox Fist" reward is +10 fist basis (no new technique item).
+  - E: "visit A Li within a year" is not enforced (moments come by time only); A Li becomes an NPC at the adult age of `FamilyEvent.ADULT_YEARS` (`GrowUpALi`).
+  - No "Stories" page in Taoist Settings (only the `NoStory` toggle); the story log uses the Taoist log.
 - Seclusion "stop early" button, "coma instead of exp loss" and a manual seclusion (Taoist Settings) were proposed; not decided.
 - Time skip (measured, TX-09): the mods run every N months for N years (12 runs + 4 month runs of the game whatever the length): 1 year ~1.5 min, 10 years ~2.3 min; 100 years not measured (a run of the mods gets heavier with the months it stands for: 3.6 s for 1 month, 6.5 s for 10). The run end call of the game (`AddRunEndCall`) never came in tests: `WatchRun` goes on when `g.world.run.isRunning` turns false, 20 s after the save of the run, or after 2 min (a run stuck by an error of the game's AI).
 

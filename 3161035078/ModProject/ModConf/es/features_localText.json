@@ -1163,5 +1163,50 @@
 		"id": "-1000006276",
 		"key": "secl_interrupted",
 		"en|ch|tc|kr": "Tu reclusión se interrumpió tras {0} meses: algo en el mundo te necesita."
+	},
+	{
+		"id": "-1000006277",
+		"key": "log_story_end",
+		"en|ch|tc|kr": "Historia «{0}» terminada: {1}."
+	},
+	{
+		"id": "-1000006278",
+		"key": "log_story_item",
+		"en|ch|tc|kr": "Recibido: {0}."
+	},
+	{
+		"id": "-1000006279",
+		"key": "log_story_gift",
+		"en|ch|tc|kr": "{0} te envió {1}."
+	},
+	{
+		"id": "-1000006280",
+		"key": "log_story_benefactor",
+		"en|ch|tc|kr": "{0} pagó la recompensa por tu cabeza."
+	},
+	{
+		"id": "-1000006281",
+		"key": "log_story_tea",
+		"en|ch|tc|kr": "{0} te envió té y pasteles (ánimo +)."
+	},
+	{
+		"id": "-1000006282",
+		"key": "log_story_lesson",
+		"en|ch|tc|kr": "La lección de la abuela Shi, transmitida en la familia (+1 base)."
+	},
+	{
+		"id": "-1000006283",
+		"key": "log_story_ali",
+		"en|ch|tc|kr": "{0} alcanzó la mayoría de edad."
+	},
+	{
+		"id": "-1000006284",
+		"key": "secl_name_Garden",
+		"en|ch|tc|kr": "Jardín del peral"
+	},
+	{
+		"id": "-1000006285",
+		"key": "secl_res_Garden",
+		"en|ch|tc|kr": "Bajo el peral, las estaciones pasaron como respiraciones."
 	}
 ]

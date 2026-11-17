@@ -114,7 +114,7 @@ namespace MOD_nE7UL2.Mod
         }
 
         private static IEnumerable<WorldUnitBase> Npcs() =>
-            (ModMain.ModObj.ParameterStore?.WUnits ?? new WorldUnitBase[0]).Where(x => Alive(x) && !x.IsPlayer());
+            (ModMain.Store?.WUnits ?? new WorldUnitBase[0]).Where(x => Alive(x) && !x.IsPlayer());
 
         // ------------------------------------------------------------------ yearly
 
@@ -624,7 +624,7 @@ namespace MOD_nE7UL2.Mod
             if (dead == null) return;
             var f = Family(dead);
             var relatives = f.Parents.Concat(f.Children).Concat(f.Siblings).Concat(f.Spouse == null ? new string[0] : new[] { f.Spouse });
-            foreach (var town in ModMain.ModObj.ParameterStore?.Towns ?? new MapBuildTown[0])
+            foreach (var town in ModMain.Store?.Towns ?? new MapBuildTown[0])
             {
                 var master = town == null ? null : MapBuildPropertyEvent.GetTownMaster(town);
                 if (master == null || master.IsPlayer() || !relatives.Contains(master.GetUnitId()))

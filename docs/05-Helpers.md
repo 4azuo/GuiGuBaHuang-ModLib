@@ -36,7 +36,7 @@ Reusable utility functions in `Helper/` folder.
 - **TranslateHelper** - Translation and localization
 
 **Drama & Dialogue:**
-- **DramaHelper** - Dialogue and drama system
+- **DramaHelper** - Dialogue and drama system (`OpenDrama1(text, options, callback, left, right, speaker)`: `speaker` 1 or 2 lights the left or right portrait and dims the other, 0 both lit)
 
 **Data Processing:**
 - **ObjectHelper** - Object operations (clone, compare, serialize)

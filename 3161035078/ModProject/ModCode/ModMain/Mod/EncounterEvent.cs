@@ -91,7 +91,7 @@ namespace MOD_nE7UL2.Mod
                 return;
             var count = 0;
             var friends = new HashSet<string>(Player.data.unitData.relationData.GetAllGoodRelationUnitID(false, false).ToArray());
-            foreach (var npc in (ModMain.ModObj.ParameterStore?.WUnits ?? new WorldUnitBase[0]).Where(x => x != null && !x.isDie && !x.IsPlayer()))
+            foreach (var npc in (ModMain.Store?.WUnits ?? new WorldUnitBase[0]).Where(x => x != null && !x.isDie && !x.IsPlayer()))
             {
                 if (count >= NPC_FORTUNES_A_YEAR * Math.Max(1, ModLib.Mod.ModMaster.YearsPassed)) break;
                 var roll = CommonTool.Random(0f, 100f);

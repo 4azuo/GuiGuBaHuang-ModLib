@@ -1,8 +1,8 @@
-# NPC storylines — design (approved outline, not coded yet)
+# NPC storylines — design (approved 2026-11-16, coded in `ModMain/Story/`; simplifications listed in `05-Backlog.md`)
 
 The design of the NPC storylines: casting, rules and the acts of every line. The dialogue of every step is in
-`07-Storylines-Dialogue-Draft.md` (same acts, same names). Both files are written in English; the other languages
-are translated when the dialogue is approved (`Translate/ai_bridge.py`).
+`Storylines/` (one file per line, same acts and names). Written in English; the other languages are translated from
+the game texts (`Translate/ai_bridge.py`). Code: `3161035078/ModProject/ModCode/ModMain/Story/`.
 
 ## 0. Decisions (2026-11-16)
 
@@ -13,6 +13,8 @@ are translated when the dialogue is approved (`Translate/ai_bridge.py`).
 4. The love triangle of line D is kept.
 5. The herb garden of line E is a **manual seclusion** place (1-20 years, spirit stones, exp a year, interrupted like
    a time skip), only with **intimacy ≥ 300 with Granny Shi** (her intimacy when she died, once she is dead).
+   The garden is a **fixed point of the world map** (where Granny Shi meets the player, outside towns; no map button):
+   the quest "Granny Shi's garden" leads there, and the garden window opens when the player stands on it (2026-11-17).
 6. Every line has 5-6 acts of at least 3 steps each.
 7. Tone, dialogue, fail branches, the "Peace" ending (A), the secret "Kneel" ending (final battle) and the numbers
    (chances 0.3-1 %, time limits, rewards) are approved.
@@ -47,12 +49,12 @@ are translated when the dialogue is approved (`Translate/ai_bridge.py`).
 
 | # | Working name | Sex | Casting rules | Voice |
 |---|---|---|---|---|
-| 1 | **Yue Han** (exiled swordswoman) `{A}` | F | 15-35 % of life lived; looks ≥ "Fair"; inner Upstanding / Selfless; outer Vengeful or Faithful; righteous; sword is her best weapon basis; same grade as the player or 1 above; in a sect | Few words, short sentences, cold; warmer with intimacy |
+| 1 | **Yue Han** (exiled swordswoman) `{A}` | F | 15-35 % of life lived; looks ≥ "Pretty" (beauty 250); inner Upstanding / Selfless; outer Vengeful or Faithful; righteous; sword is her best weapon basis; same grade as the player or 1 above; in a sect | Few words, short sentences, cold; warmer with intimacy |
 | 2 | **Old Huang** (indebted merchant) `{H}` | M | ≥ 60 % of life lived; inner Middle Way / Selfish; outer Family-Oriented or Glory Hound; rich; lives in a town with a market | Talkative, whiny, flattering, comic; sincere in danger |
 | 3 | **Su Xiaoman** (apprentice alchemist) `{X}` | F | ≤ 15 % of life lived; inner Kind; outer Carefree; alchemy is her best art; grade below the player | Quick, jokes, causes trouble, calls herself "little sister" |
 | 4 | **Iron Ox** (body cultivator) `{N}` | M | 15-40 % of life lived; plain looks; inner Upstanding; outer Loyal to friends; fist / palm is his best basis | Honest, blunt, big eater, naive comedy; loyal to brothers |
-| 5 | **Lady Honglian** (demonic elder, the mastermind) `{R}` | F | 40-70 % of life lived; looks ≥ "Stunning"; inner Evil / Wicked; outer Power-hungry; demonic; 1-2 grades above the player | Elegant, soft, mocking; threatens without raising her voice |
-| 6 | **Murong Ge** (wandering zither poet) `{C}` | M | 15-30 % of life lived; looks ≥ "Fair"; outer Romantic; inner Middle Way | Lyrical, recites poems, flirts; light humor, hidden grief |
+| 5 | **Lady Honglian** (demonic elder, the mastermind) `{R}` | F | 40-70 % of life lived; looks ≥ "Beautiful" (beauty 450); inner Evil / Wicked; outer Power-hungry; demonic; 1-2 grades above the player | Elegant, soft, mocking; threatens without raising her voice |
+| 6 | **Murong Ge** (wandering zither poet) `{C}` | M | 15-30 % of life lived; looks ≥ "Pretty" (beauty 250); outer Romantic; inner Middle Way | Lyrical, recites poems, flirts; light humor, hidden grief |
 | 7 | **Granny Shi** (hermit herbalist) `{O}` | F | ≥ 75 % of life lived; inner Kind / Selfless; outer Traditional; no sect | Gentle, slow, speaks in images; calls the player "child" |
 | 8 | **A Li** (orphan girl) `{Y}` | F | Created when line E opens: a child record (6-10 years), an NPC at 16 | Shy as a child, firm when grown; shaped by how the player raises her |
 

@@ -1,0 +1,29 @@
+﻿[
+	{
+		"id": "444447001",
+		"name": "taskName444447001",
+		"group": "1",
+		"type": "104",
+		"level": "1",
+		"duration": "-1",
+		"multiple": "0",
+		"rewardItem": "0",
+		"rewardStandUp": "0",
+		"rewardStandDown": "0",
+		"rewardContribution": "0",
+		"rewardMoney": "0",
+		"rewardToken": "0",
+		"rewardReputation": "0",
+		"contribution": "0",
+		"rewardFame": "0",
+		"submit": "0",
+		"isGive": "0",
+		"desc": "taskDesc444447001",
+		"addTaskFunction": "0",
+		"completeTaskFunction": "0",
+		"failedTaskFunction": "0",
+		"gainFeature": "0",
+		"positionID": "444447001",
+		"remind": "0"
+	}
+]

@@ -1709,6 +1709,114 @@
         "The Family button is on the map",
         "Members listed, an entry with the child, the monthly upkeep shown"
       ]
+    },
+    {
+      "id": "TS-01",
+      "kind": "auto",
+      "feature": "StoryEvent",
+      "title": "Story A Cold Sword: A0-A5",
+      "description": "Opens line A (its NPCs cast or created) and drives it to an ending: every drama answered with its first option, waits skipped, battles won at once (StoryEvent.NoBattles), step conditions met by the test (towns, Granny's lifespan). Dialogue: docs/Taoist/Storylines/.",
+      "preconditions": "Save loaded (changes the save, restored)",
+      "steps": [
+        "Open the line",
+        "Drive it to an ending",
+        "Check the ending"
+      ],
+      "expected": [
+        "Opened, roles cast",
+        "An ending is reached",
+        "Ending A_SectMaster / A_Companion; Taoist log entry"
+      ]
+    },
+    {
+      "id": "TS-02",
+      "kind": "auto",
+      "feature": "StoryEvent",
+      "title": "Story B Old Huang's Debt: B0-B5",
+      "description": "Opens line B (its NPCs cast or created) and drives it to an ending: every drama answered with its first option, waits skipped, battles won at once (StoryEvent.NoBattles), step conditions met by the test (towns, Granny's lifespan). Dialogue: docs/Taoist/Storylines/.",
+      "preconditions": "Save loaded (changes the save, restored)",
+      "steps": [
+        "Open the line",
+        "Drive it to an ending",
+        "Check the ending"
+      ],
+      "expected": [
+        "Opened, roles cast",
+        "An ending is reached",
+        "Ending B_MerchantPrince / B_Betrayed; Taoist log entry"
+      ]
+    },
+    {
+      "id": "TS-03",
+      "kind": "auto",
+      "feature": "StoryEvent",
+      "title": "Story C Exploding Furnace: C0-C4 (opens line E)",
+      "description": "Opens line C (its NPCs cast or created) and drives it to an ending: every drama answered with its first option, waits skipped, battles won at once (StoryEvent.NoBattles), step conditions met by the test (towns, Granny's lifespan). Dialogue: docs/Taoist/Storylines/.",
+      "preconditions": "Save loaded (changes the save, restored)",
+      "steps": [
+        "Open the line",
+        "Drive it to an ending",
+        "Check the ending"
+      ],
+      "expected": [
+        "Opened, roles cast",
+        "An ending is reached",
+        "Ending C_MasterAlchemist / C_Companion / C_LastExplosion; Taoist log entry"
+      ]
+    },
+    {
+      "id": "TS-04",
+      "kind": "auto",
+      "feature": "StoryEvent",
+      "title": "Story D Sworn Brothers: D0-D4",
+      "description": "Opens line D (its NPCs cast or created) and drives it to an ending: every drama answered with its first option, waits skipped, battles won at once (StoryEvent.NoBattles), step conditions met by the test (towns, Granny's lifespan). Dialogue: docs/Taoist/Storylines/.",
+      "preconditions": "Save loaded (changes the save, restored)",
+      "steps": [
+        "Open the line",
+        "Drive it to an ending",
+        "Check the ending"
+      ],
+      "expected": [
+        "Opened, roles cast",
+        "An ending is reached",
+        "Ending any D ending; Taoist log entry"
+      ]
+    },
+    {
+      "id": "TS-05",
+      "kind": "auto",
+      "feature": "StoryEvent",
+      "title": "Story E Granny's Herb Garden: E0-E4 (A Li adopted, Granny dies), garden seclusion choice",
+      "description": "Opens line E (its NPCs cast or created) and drives it to an ending: every drama answered with its first option, waits skipped, battles won at once (StoryEvent.NoBattles), step conditions met by the test (towns, Granny's lifespan). Dialogue: docs/Taoist/Storylines/.",
+      "preconditions": "Save loaded (changes the save, restored)",
+      "steps": [
+        "Open the line",
+        "Drive it to an ending",
+        "Check the ending"
+      ],
+      "expected": [
+        "Opened, roles cast",
+        "An ending is reached",
+        "Ending E_GardenOfGenerations / E_Successor / E_LostChild; Taoist log entry"
+      ]
+    },
+    {
+      "id": "TS-06",
+      "kind": "auto",
+      "feature": "StoryEvent",
+      "title": "Story F Red Lotus: F1-F4 (allies of the good endings join, then are dismissed)",
+      "description": "Opens line F (its NPCs cast or created) and drives it to an ending: every drama answered with its first option, waits skipped, battles won at once (StoryEvent.NoBattles), step conditions met by the test (towns, Granny's lifespan). Dialogue: docs/Taoist/Storylines/.",
+      "preconditions": "Save loaded (changes the save, restored)",
+      "steps": [
+        "Open the line",
+        "Drive it to an ending",
+        "Check the ending"
+      ],
+      "expected": [
+        "Opened, roles cast",
+        "An ending is reached",
+        "Ending F_Victory; Taoist log entry"
+      ]
     }
   ]
 }

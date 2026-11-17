@@ -1,0 +1,1472 @@
+[
+	{
+		"id": "-1000007000",
+		"key": "story_continue",
+		"en|ch|tc|kr": "Tiếp tục"
+	},
+	{
+		"id": "-1000007032",
+		"key": "story_A2_2_later",
+		"en|ch|tc|kr": "Để sau"
+	},
+	{
+		"id": "-1000007075",
+		"key": "story_endA_hunt_o1",
+		"en|ch|tc|kr": "Đánh"
+	},
+	{
+		"id": "-1000007087",
+		"key": "story_B0_2_o2",
+		"en|ch|tc|kr": "Đánh"
+	},
+	{
+		"id": "-1000007116",
+		"key": "story_B4_3_o1",
+		"en|ch|tc|kr": "Bảo vệ thị trấn"
+	},
+	{
+		"id": "-1000007138",
+		"key": "story_C1_2_o3",
+		"en|ch|tc|kr": "Để sau"
+	},
+	{
+		"id": "-1000007264",
+		"key": "story_garden_no",
+		"en|ch|tc|kr": "Để sau"
+	},
+	{
+		"id": "-1000007279",
+		"key": "story_F3_1_o1",
+		"en|ch|tc|kr": "Đánh"
+	},
+	{
+		"id": "-1000007001",
+		"key": "story_name_A",
+		"en|ch|tc|kr": "Kiếm lạnh"
+	},
+	{
+		"id": "-1000007002",
+		"key": "story_name_B",
+		"en|ch|tc|kr": "Món nợ của lão Hoàng"
+	},
+	{
+		"id": "-1000007003",
+		"key": "story_name_C",
+		"en|ch|tc|kr": "Lò đan nổ"
+	},
+	{
+		"id": "-1000007004",
+		"key": "story_name_D",
+		"en|ch|tc|kr": "Huynh đệ kết nghĩa"
+	},
+	{
+		"id": "-1000007005",
+		"key": "story_name_E",
+		"en|ch|tc|kr": "Vườn thuốc của bà bà"
+	},
+	{
+		"id": "-1000007006",
+		"key": "story_name_F",
+		"en|ch|tc|kr": "Hồng Liên"
+	},
+	{
+		"id": "-1000007007",
+		"key": "story_name_Y",
+		"en|ch|tc|kr": "A Ly"
+	},
+	{
+		"id": "-1000007008",
+		"key": "story_A0_1",
+		"en|ch|tc|kr": "Một nữ tử mặc đạo bào tông môn rách nát loạng choạng bước ra từ đám lau sậy, tay cầm thanh kiếm gãy. Đệ tử {S} rút kiếm đuổi theo.\n{A}: \"Đừng xen vào. Đây không phải chuyện của ngươi.\"\nMột đệ tử: \"Phản đồ {A} đã trộm kiếm phổ của tông môn. Giao nàng ra, tông môn sẽ ghi nhớ ân tình này.\""
+	},
+	{
+		"id": "-1000007009",
+		"key": "story_A0_1_o1",
+		"en|ch|tc|kr": "Đánh với các đệ tử"
+	},
+	{
+		"id": "-1000007010",
+		"key": "story_A0_1_o2",
+		"en|ch|tc|kr": "\"Người là của các ngươi.\""
+	},
+	{
+		"id": "-1000007011",
+		"key": "story_A0_1_o3",
+		"en|ch|tc|kr": "Bỏ đi"
+	},
+	{
+		"id": "-1000007012",
+		"key": "story_A0_handed",
+		"en|ch|tc|kr": "Khi bị lôi đi, ánh mắt nàng tìm đến ngươi — không giận dữ, chỉ là một lời hứa lạnh lùng và kiên nhẫn."
+	},
+	{
+		"id": "-1000007013",
+		"key": "story_A0_2",
+		"en|ch|tc|kr": "\"…Đa tạ. Món nợ này ta sẽ không quên.\"\nNàng xé một dải lụa xanh từ tay áo, nhét vào tay ngươi. \"Nếu còn nghe thấy tên ta, đừng tin những gì họ nói.\""
+	},
+	{
+		"id": "-1000007014",
+		"key": "story_A0_2_lost",
+		"en|ch|tc|kr": "Trong lúc hỗn chiến, nàng lặng lẽ thoát đi. Về sau, trên cửa nhà ngươi có buộc một dải lụa xanh. \"Món nợ này ta sẽ không quên. Nếu còn nghe thấy tên ta, đừng tin những gì họ nói.\""
+	},
+	{
+		"id": "-1000007015",
+		"key": "story_A0_3",
+		"en|ch|tc|kr": "Trên cổng thành dán một tờ cáo thị: \"Truy nã — {A}, kẻ trộm của {S}.\" Ai đó vẽ mặt nàng rất tệ."
+	},
+	{
+		"id": "-1000007016",
+		"key": "story_A0_3_o1",
+		"en|ch|tc|kr": "Xé nó đi"
+	},
+	{
+		"id": "-1000007017",
+		"key": "story_A0_3_o2",
+		"en|ch|tc|kr": "Mặc kệ"
+	},
+	{
+		"id": "-1000007164",
+		"key": "story_C3_app_o3",
+		"en|ch|tc|kr": "Mặc kệ"
+	},
+	{
+		"id": "-1000007018",
+		"key": "story_A1_1",
+		"en|ch|tc|kr": "Đêm khuya. Có người gõ cửa sổ: {A}, mặt tái nhợt, một tay ôm sườn. \"Vết thương không liền. Kiếm của bọn chúng có độc.\""
+	},
+	{
+		"id": "-1000007019",
+		"key": "story_A1_2",
+		"en|ch|tc|kr": "\"Ta cần một viên giải độc đan, hoặc một cây thảo dược đủ mạnh (phẩm {0} trở lên).\""
+	},
+	{
+		"id": "-1000007020",
+		"key": "story_A1_2_o1",
+		"en|ch|tc|kr": "Đưa nàng một viên đan"
+	},
+	{
+		"id": "-1000007021",
+		"key": "story_A1_2_o2",
+		"en|ch|tc|kr": "Đưa nàng một cây thảo dược"
+	},
+	{
+		"id": "-1000007022",
+		"key": "story_A1_2_o3",
+		"en|ch|tc|kr": "\"Ta không có gì.\" (đi tìm ở chợ)"
+	},
+	{
+		"id": "-1000007023",
+		"key": "story_A1_2_search",
+		"en|ch|tc|kr": "Ngươi hứa sẽ đi tìm. Nàng gật đầu rồi biến mất vào bóng tối."
+	},
+	{
+		"id": "-1000007024",
+		"key": "story_A1_2_none",
+		"en|ch|tc|kr": "Ngươi không có thứ gì đủ mạnh. Nàng gật đầu rồi biến mất vào bóng tối — nàng sẽ quay lại."
+	},
+	{
+		"id": "-1000007025",
+		"key": "story_A1_3",
+		"en|ch|tc|kr": "\"Kiếm phổ chưa bao giờ bị trộm. Nó bị bán. Ta đã thấy kẻ nhận hàng — một nữ nhân áo đỏ, trên quạt thêu một đóa sen.\""
+	},
+	{
+		"id": "-1000007026",
+		"key": "story_A1_late",
+		"en|ch|tc|kr": "Tin truyền đến: {A} đã một mình dưỡng thương trong hang suốt một năm. Nàng không tìm ngươi nữa."
+	},
+	{
+		"id": "-1000007027",
+		"key": "story_A2_1",
+		"en|ch|tc|kr": "\"Sư phụ ta giữ lại mọi lá thư. Có một lá bị thất lạc — người đưa thư bị cướp trên đường đến {T}. Hãy tìm nó.\""
+	},
+	{
+		"id": "-1000007028",
+		"key": "story_A2_2_robber",
+		"en|ch|tc|kr": "Ở {T}, một gã say khoe khoang đã cướp của một người đưa thư. Bên thắt lưng hắn giắt một lá thư niêm phong."
+	},
+	{
+		"id": "-1000007029",
+		"key": "story_A2_2_fight",
+		"en|ch|tc|kr": "Lấy lá thư"
+	},
+	{
+		"id": "-1000007030",
+		"key": "story_A2_2_market",
+		"en|ch|tc|kr": "Ở chợ {T}, một sạp hàng bán \"thư cũ, con dấu thú vị\". Một lá mang con dấu của {S}. Giá: {0:#,##0} linh thạch."
+	},
+	{
+		"id": "-1000007031",
+		"key": "story_A2_2_buy",
+		"en|ch|tc|kr": "Mua nó"
+	},
+	{
+		"id": "-1000007083",
+		"key": "story_B0_1_o1",
+		"en|ch|tc|kr": "Mua nó"
+	},
+	{
+		"id": "-1000007033",
+		"key": "story_A2_3",
+		"en|ch|tc|kr": "Lá thư mang con dấu của {M} — và một đóa sen đỏ ấn trên sáp. {A} đọc hai lần, rồi gấp lại với đôi tay vững vàng. \"Một bằng chứng. Họ sẽ nói ta làm giả.\""
+	},
+	{
+		"id": "-1000007034",
+		"key": "story_A2_3_o1",
+		"en|ch|tc|kr": "\"Vậy thì tìm cái thứ hai.\""
+	},
+	{
+		"id": "-1000007035",
+		"key": "story_A2_3_o2",
+		"en|ch|tc|kr": "\"Chứng minh nó không phải giả.\" (thêm một năm)"
+	},
+	{
+		"id": "-1000007036",
+		"key": "story_A2_jailed",
+		"en|ch|tc|kr": "Tin từ {S}: {A} bị bắt và tống vào ngục của tông môn."
+	},
+	{
+		"id": "-1000007037",
+		"key": "story_A2_jailed_o1",
+		"en|ch|tc|kr": "Cướp ngục cứu nàng"
+	},
+	{
+		"id": "-1000007038",
+		"key": "story_A2_jailed_o2",
+		"en|ch|tc|kr": "Không làm gì"
+	},
+	{
+		"id": "-1000007039",
+		"key": "story_A_fallen",
+		"en|ch|tc|kr": "Nhiều năm sau, một nữ nhân áo đen viền đỏ chặn đường ngươi: {A}. \"Ta đã đợi ngươi trong ngục tối đó. Ngươi chưa từng đến.\""
+	},
+	{
+		"id": "-1000007040",
+		"key": "story_A3_1",
+		"en|ch|tc|kr": "\"Lão Lục giữ kho của tông môn. Lão đã thấy cuộc giao dịch. Một tháng sau lão bỏ trốn khỏi tông môn — vì sợ.\""
+	},
+	{
+		"id": "-1000007041",
+		"key": "story_A3_2",
+		"en|ch|tc|kr": "Cửa nhà Lão Lục đã bị phá. Những sát thủ bịt mặt đứng trước mặt ông lão."
+	},
+	{
+		"id": "-1000007042",
+		"key": "story_A3_2_o1",
+		"en|ch|tc|kr": "Bảo vệ ông"
+	},
+	{
+		"id": "-1000007043",
+		"key": "story_A3_3",
+		"en|ch|tc|kr": "\"Ta sẽ làm chứng trước các trưởng lão — nếu các ngươi giữ được mạng ta đến ngày đó.\""
+	},
+	{
+		"id": "-1000007044",
+		"key": "story_A3_ledger",
+		"en|ch|tc|kr": "Lão Lục đã chết. Kho của tông môn được canh gác ngày đêm; sổ kho là bằng chứng duy nhất còn lại."
+	},
+	{
+		"id": "-1000007045",
+		"key": "story_A3_ledger_o1",
+		"en|ch|tc|kr": "Lẻn vào"
+	},
+	{
+		"id": "-1000007046",
+		"key": "story_A3_ledger_o2",
+		"en|ch|tc|kr": "Chưa phải lúc"
+	},
+	{
+		"id": "-1000007047",
+		"key": "story_A4_1",
+		"en|ch|tc|kr": "\"Chỉ có bằng chứng thì không đủ để đối đầu với một trưởng lão. Ta phải đủ mạnh để đứng trước mặt hắn. Đấu tập với ta, {p}.\""
+	},
+	{
+		"id": "-1000007048",
+		"key": "story_A4_1_o1",
+		"en|ch|tc|kr": "Đấu tập với nàng"
+	},
+	{
+		"id": "-1000007049",
+		"key": "story_A4_1_o2",
+		"en|ch|tc|kr": "Để lần khác"
+	},
+	{
+		"id": "-1000007050",
+		"key": "story_A4_2",
+		"en|ch|tc|kr": "\"Ngày ta rời đi, kiếm của ta đã gãy. Ta cần một thanh kiếm không gãy.\" (thợ rèn đòi {0:#,##0} linh thạch)"
+	},
+	{
+		"id": "-1000007051",
+		"key": "story_A4_2_o1",
+		"en|ch|tc|kr": "Tặng nàng một thanh kiếm"
+	},
+	{
+		"id": "-1000007052",
+		"key": "story_A4_2_o2",
+		"en|ch|tc|kr": "Thuê thợ rèn"
+	},
+	{
+		"id": "-1000007053",
+		"key": "story_A4_2_o3",
+		"en|ch|tc|kr": "\"Ý chí của nàng chính là kiếm.\""
+	},
+	{
+		"id": "-1000007054",
+		"key": "story_A4_3",
+		"en|ch|tc|kr": "Sấm rền qua đỉnh núi. Khi mây tan, {A} đứng giữa mưa, lần đầu tiên ánh mắt trong trẻo. \"Ta đã sẵn sàng.\""
+	},
+	{
+		"id": "-1000007055",
+		"key": "story_A5_1",
+		"en|ch|tc|kr": "\"Ta sẽ đến {S} đòi lại danh dự — bằng thanh kiếm này, hoặc bằng mạng sống của ta.\""
+	},
+	{
+		"id": "-1000007056",
+		"key": "story_A5_1_o1",
+		"en|ch|tc|kr": "\"Vậy thì chúng ta cùng đi.\""
+	},
+	{
+		"id": "-1000007057",
+		"key": "story_A5_1_o2",
+		"en|ch|tc|kr": "\"Buông bỏ đi. Thù hận sẽ nuốt chửng nàng.\""
+	},
+	{
+		"id": "-1000007058",
+		"key": "story_A5_1_o3",
+		"en|ch|tc|kr": "(lén) Báo tin cho {M}"
+	},
+	{
+		"id": "-1000007059",
+		"key": "story_A5_2",
+		"en|ch|tc|kr": "\"Một kẻ trộm và đồng bọn. Chư vị trưởng lão, hãy xem sự vô liêm sỉ này.\""
+	},
+	{
+		"id": "-1000007060",
+		"key": "story_A5_2_o1",
+		"en|ch|tc|kr": "Đưa ra bằng chứng"
+	},
+	{
+		"id": "-1000007061",
+		"key": "story_A5_2_o2",
+		"en|ch|tc|kr": "Thách {M} quyết đấu"
+	},
+	{
+		"id": "-1000007062",
+		"key": "story_A5_3",
+		"en|ch|tc|kr": "{M} quỳ xuống. \"Nói ta nghe, {p} — lòng từ bi đáng giá bao nhiêu?\""
+	},
+	{
+		"id": "-1000007063",
+		"key": "story_A5_3_o1",
+		"en|ch|tc|kr": "\"Để tông môn phán xử hắn.\""
+	},
+	{
+		"id": "-1000007064",
+		"key": "story_A5_3_o2",
+		"en|ch|tc|kr": "\"Nàng tự quyết định.\""
+	},
+	{
+		"id": "-1000007065",
+		"key": "story_A5_lost",
+		"en|ch|tc|kr": "Ngươi bị đánh lui. {A} kéo ngươi ra khỏi đại điện. \"Không phải hôm nay. Nhưng sẽ có một ngày.\""
+	},
+	{
+		"id": "-1000007066",
+		"key": "story_A5_late",
+		"en|ch|tc|kr": "{A} một mình đến {S}. Khi bước ra, y phục nàng nhuộm đỏ, và thanh kiếm cũng vậy."
+	},
+	{
+		"id": "-1000007067",
+		"key": "story_endA_Companion",
+		"en|ch|tc|kr": "\"Khi ta chẳng còn gì, ngươi đã đứng bên ta. Hãy cùng ta đi nốt quãng đường còn lại, {p}.\""
+	},
+	{
+		"id": "-1000007068",
+		"key": "story_endA_Companion_o1",
+		"en|ch|tc|kr": "\"Vậy thì cùng đi.\""
+	},
+	{
+		"id": "-1000007069",
+		"key": "story_endA_Companion_o2",
+		"en|ch|tc|kr": "\"Ta sẽ mãi là bằng hữu của nàng.\""
+	},
+	{
+		"id": "-1000007070",
+		"key": "story_endA_SectMaster",
+		"en|ch|tc|kr": "\"Ta sẽ lập một tông môn nơi không đệ tử nào bị sư phụ phản bội. Trưởng lão đầu tiên nên là ngươi.\""
+	},
+	{
+		"id": "-1000007071",
+		"key": "story_endA_Peace",
+		"en|ch|tc|kr": "\"Thanh kiếm đã tĩnh lặng. Ta cũng vậy.\""
+	},
+	{
+		"id": "-1000007072",
+		"key": "story_endA_Fallen",
+		"en|ch|tc|kr": "\"Từ bi là lời dối trá họ dạy ta. Hồng Liên phu nhân đã dạy ta sự thật.\""
+	},
+	{
+		"id": "-1000007073",
+		"key": "story_endA_Sacrifice",
+		"en|ch|tc|kr": "Nàng lao ra đỡ nhát đánh nhắm vào ngươi. \"…Đến lượt ngươi… sống tiếp.\" Thanh kiếm của nàng rơi xuống chân ngươi."
+	},
+	{
+		"id": "-1000007074",
+		"key": "story_endA_hunt",
+		"en|ch|tc|kr": "{A} chặn đường ngươi, kiếm đã tuốt khỏi vỏ. \"Ta đã nói sẽ đến đòi món nợ này.\""
+	},
+	{
+		"id": "-1000007076",
+		"key": "story_end_A_Companion",
+		"en|ch|tc|kr": "Đạo lữ"
+	},
+	{
+		"id": "-1000007179",
+		"key": "story_end_C_Companion",
+		"en|ch|tc|kr": "Đạo lữ"
+	},
+	{
+		"id": "-1000007077",
+		"key": "story_end_A_SectMaster",
+		"en|ch|tc|kr": "Tông chủ"
+	},
+	{
+		"id": "-1000007078",
+		"key": "story_end_A_Peace",
+		"en|ch|tc|kr": "Bình yên"
+	},
+	{
+		"id": "-1000007079",
+		"key": "story_end_A_Fallen",
+		"en|ch|tc|kr": "Nhập ma"
+	},
+	{
+		"id": "-1000007080",
+		"key": "story_end_A_Sacrifice",
+		"en|ch|tc|kr": "Hy sinh"
+	},
+	{
+		"id": "-1000007081",
+		"key": "story_end_A_Traitor",
+		"en|ch|tc|kr": "Kẻ phản bội"
+	},
+	{
+		"id": "-1000007082",
+		"key": "story_B0_1",
+		"en|ch|tc|kr": "\"Ôi chao, khách quý biết hàng! Món này — đáng giá gấp ba, ta thề trên mộ bà nội ta. Với khách? Nửa giá: {0:#,##0} linh thạch.\""
+	},
+	{
+		"id": "-1000007084",
+		"key": "story_B0_1_o2",
+		"en|ch|tc|kr": "\"Mộ bà nội ông chắc bận rộn lắm.\""
+	},
+	{
+		"id": "-1000007085",
+		"key": "story_B0_2",
+		"en|ch|tc|kr": "Hai kẻ bịt mặt chặn đường ngươi. \"Thứ lão già bán cho ngươi là của Hồng Liên giáo. Trả lại đây, tay còn giữ được.\""
+	},
+	{
+		"id": "-1000007086",
+		"key": "story_B0_2_o1",
+		"en|ch|tc|kr": "Trả lại"
+	},
+	{
+		"id": "-1000007088",
+		"key": "story_B0_2_o3",
+		"en|ch|tc|kr": "Chạy đến tìm {H}"
+	},
+	{
+		"id": "-1000007089",
+		"key": "story_B0_3",
+		"en|ch|tc|kr": "\"Chúng đến rồi à? Nhanh vậy sao? Ôi trời đất ơi, ôi tổ tiên ơi, ôi cái đầu gối già của ta—\""
+	},
+	{
+		"id": "-1000007090",
+		"key": "story_B1_1",
+		"en|ch|tc|kr": "Cửa hàng của {H} đóng cửa. Ngươi tìm thấy lão trốn sau mấy bao gạo trong nhà kho."
+	},
+	{
+		"id": "-1000007091",
+		"key": "story_B1_2",
+		"en|ch|tc|kr": "\"Năm thương đội của ta chìm, ta đã vay tiền Hồng Liên giáo. Mười năm lãi mẹ đẻ lãi con… Ta bán hàng của bọn chúng để trả nợ. Bán hỏng, như ngươi thấy đấy.\""
+	},
+	{
+		"id": "-1000007092",
+		"key": "story_B1_3",
+		"en|ch|tc|kr": "\"Đứng ra bảo lãnh cho ta ở ngân hàng nhé? Chỉ một chữ ký thôi! Có chuyện gì được chứ?\" (hoặc cho ta mượn {0:#,##0} linh thạch…)"
+	},
+	{
+		"id": "-1000007093",
+		"key": "story_B1_3_o1",
+		"en|ch|tc|kr": "Bảo lãnh cho lão"
+	},
+	{
+		"id": "-1000007094",
+		"key": "story_B1_3_o2",
+		"en|ch|tc|kr": "Cho lão mượn linh thạch"
+	},
+	{
+		"id": "-1000007095",
+		"key": "story_B1_3_o3",
+		"en|ch|tc|kr": "\"Câu 'có chuyện gì được chứ' nào cũng kết thúc bằng một đám tang.\""
+	},
+	{
+		"id": "-1000007096",
+		"key": "story_B2_1",
+		"en|ch|tc|kr": "\"Chuyến hàng cuối cùng đến {T2}. Lụa, thảo dược, chút linh ngọc. Đến nơi thì ta trả nợ cho tất cả. Không đến… ta đi làm một hòa thượng rất thành tâm.\""
+	},
+	{
+		"id": "-1000007097",
+		"key": "story_B2_2",
+		"en|ch|tc|kr": "Giữa đường đến {T2}, tên bắn trúng chiếc xe đầu tiên. Sơn tặc ùa ra từ rừng cây."
+	},
+	{
+		"id": "-1000007098",
+		"key": "story_B2_2_o1",
+		"en|ch|tc|kr": "Bảo vệ thương đội"
+	},
+	{
+		"id": "-1000007099",
+		"key": "story_B2_3",
+		"en|ch|tc|kr": "\"Phần của ngươi: {0:#,##0} linh thạch. Đừng đếm trước mặt ta, ta sẽ khóc mất.\""
+	},
+	{
+		"id": "-1000007100",
+		"key": "story_B2_vanished",
+		"en|ch|tc|kr": "Cửa hàng của {H} trống trơn. Trên cửa có mảnh giấy: \"Đi thăm biểu ca. Xa lắm. Rất xa.\""
+	},
+	{
+		"id": "-1000007101",
+		"key": "story_B2_found",
+		"en|ch|tc|kr": "Ở một trấn xa, một giọng nói quen thuộc đang mặc cả giá một củ cải. {H} tái mặt. \"…Ta giải thích được. Ta trả được! Bằng hàng!\""
+	},
+	{
+		"id": "-1000007102",
+		"key": "story_B3_1",
+		"en|ch|tc|kr": "Một gã áo lụa đỏ bước vào cửa hàng của {H}. \"Phu nhân gửi lời hỏi thăm. Đến hạn trả lãi rồi.\""
+	},
+	{
+		"id": "-1000007103",
+		"key": "story_B3_2",
+		"en|ch|tc|kr": "\"Ta đã liếc thấy sổ nợ của hắn. Không chỉ ta — một nửa thương nhân vùng này đều nợ bà ta. Bà ta đang mua dần các trấn, từng món nợ một.\" (lãi: {0:#,##0} linh thạch)"
+	},
+	{
+		"id": "-1000007104",
+		"key": "story_B3_2_o1",
+		"en|ch|tc|kr": "Cướp cuốn sổ"
+	},
+	{
+		"id": "-1000007105",
+		"key": "story_B3_2_o2",
+		"en|ch|tc|kr": "Trả lãi"
+	},
+	{
+		"id": "-1000007106",
+		"key": "story_B3_2_o3",
+		"en|ch|tc|kr": "Kéo dài thời gian"
+	},
+	{
+		"id": "-1000007107",
+		"key": "story_B3_3_ledger",
+		"en|ch|tc|kr": "Cuốn sổ đỏ nằm trong tay ngươi: trang này qua trang khác là những thương nhân nợ Phu nhân. Họ sẽ nhớ ai đã giải thoát cho họ."
+	},
+	{
+		"id": "-1000007108",
+		"key": "story_B3_3_paid",
+		"en|ch|tc|kr": "Sứ giả đếm số linh thạch rồi mỉm cười. \"Hẹn lần sau.\" Ít nhất cũng yên ổn được hai năm."
+	},
+	{
+		"id": "-1000007109",
+		"key": "story_B3_3_stalled",
+		"en|ch|tc|kr": "Sứ giả bỏ đi không nói một lời. Đêm đó, người ta thấy cờ đỏ trên những ngọn đồi."
+	},
+	{
+		"id": "-1000007110",
+		"key": "story_B4_1",
+		"en|ch|tc|kr": "Cờ đỏ dựng lên ngoài {T}. Hồng Liên giáo đòi cả thị trấn để trừ nợ cho {H}."
+	},
+	{
+		"id": "-1000007111",
+		"key": "story_B4_2",
+		"en|ch|tc|kr": "\"Ta có tiền để dành. Tiền riêng. Rất riêng. Cầm lấy — thuê lính canh, mua tên, gì cũng được!\""
+	},
+	{
+		"id": "-1000007112",
+		"key": "story_B4_2_o1",
+		"en|ch|tc|kr": "Thuê lính canh"
+	},
+	{
+		"id": "-1000007113",
+		"key": "story_B4_2_o2",
+		"en|ch|tc|kr": "Thương lượng nộp cống"
+	},
+	{
+		"id": "-1000007114",
+		"key": "story_B4_2_o3",
+		"en|ch|tc|kr": "Đứng ngoài"
+	},
+	{
+		"id": "-1000007115",
+		"key": "story_B4_3",
+		"en|ch|tc|kr": "Hồng Liên giáo tấn công cổng {T}."
+	},
+	{
+		"id": "-1000007117",
+		"key": "story_B5_1",
+		"en|ch|tc|kr": "\"Ngươi biết không, {p}, bốn mươi năm buôn bán, ngươi là khách duy nhất chưa từng mặc cả. Đồ ngốc.\""
+	},
+	{
+		"id": "-1000007118",
+		"key": "story_B5_2",
+		"en|ch|tc|kr": "Lão đẩy một chiếc hộp nhỏ qua bàn. \"Đừng mở ở đây. Người ta sẽ thèm đấy.\""
+	},
+	{
+		"id": "-1000007119",
+		"key": "story_endB_Heir",
+		"en|ch|tc|kr": "Một lá thư nét chữ run run: \"Gửi vị khách thật thà duy nhất của ta… hàng của ta giờ là của ngươi. Bán cho đắt vào.\""
+	},
+	{
+		"id": "-1000007120",
+		"key": "story_endB_Betrayed",
+		"en|ch|tc|kr": "Mảnh giấy trên chiếc bàn trống: \"Xin lỗi nhé bạn. Người ta phải sống.\" Giờ ngân hàng đòi ngươi trả món nợ của lão."
+	},
+	{
+		"id": "-1000007121",
+		"key": "story_endB_FallenTown",
+		"en|ch|tc|kr": "Cờ trên {T} vẫn đỏ. Thuế tăng gấp đôi, lính canh không còn cười nữa."
+	},
+	{
+		"id": "-1000007122",
+		"key": "story_endB_Benefactor",
+		"en|ch|tc|kr": "\"Ngươi đã tin một kẻ ngốc. Kẻ ngốc sẽ không quên ơn.\" Lão trả ngươi cả vốn lẫn lãi."
+	},
+	{
+		"id": "-1000007123",
+		"key": "story_endB_MerchantPrince",
+		"en|ch|tc|kr": "\"Từ hôm nay, tiền của ngươi không dùng được ở cửa hàng ta. À — dùng được một nửa thôi.\""
+	},
+	{
+		"id": "-1000007124",
+		"key": "story_end_B_MerchantPrince",
+		"en|ch|tc|kr": "Đại phú thương"
+	},
+	{
+		"id": "-1000007125",
+		"key": "story_end_B_Heir",
+		"en|ch|tc|kr": "Người thừa kế"
+	},
+	{
+		"id": "-1000007126",
+		"key": "story_end_B_FallenTown",
+		"en|ch|tc|kr": "Trấn sa ngã"
+	},
+	{
+		"id": "-1000007127",
+		"key": "story_end_B_Betrayed",
+		"en|ch|tc|kr": "Bị phản bội"
+	},
+	{
+		"id": "-1000007128",
+		"key": "story_end_B_Benefactor",
+		"en|ch|tc|kr": "Ân nhân"
+	},
+	{
+		"id": "-1000007129",
+		"key": "story_C0_1",
+		"en|ch|tc|kr": "BÙM. Khói tím cuồn cuộn tràn xuống phố. Một cô gái lông mày cháy xém vẫy tay với ngươi qua làn khói.\n\"Trông huynh khỏe đấy. Thử một viên đan không? An toàn chín phần mười! Tám phần. Chắc vậy.\""
+	},
+	{
+		"id": "-1000007130",
+		"key": "story_C0_1_o1",
+		"en|ch|tc|kr": "\"…Được thôi.\""
+	},
+	{
+		"id": "-1000007131",
+		"key": "story_C0_1_o2",
+		"en|ch|tc|kr": "Từ từ lùi lại"
+	},
+	{
+		"id": "-1000007132",
+		"key": "story_C0_2",
+		"en|ch|tc|kr": "Tóc ngươi biến thành màu tím nhạt trong ba tháng. {X} hớn hở ghi chép."
+	},
+	{
+		"id": "-1000007133",
+		"key": "story_C0_3",
+		"en|ch|tc|kr": "\"Xin lỗi xin lỗi xin lỗi! Đây, một viên đan thật. Lần nào cũng hiệu nghiệm. Hầu hết.\""
+	},
+	{
+		"id": "-1000007134",
+		"key": "story_C1_1",
+		"en|ch|tc|kr": "\"Kỳ thi của Hội luyện đan vào mùa xuân năm sau. Tiểu muội cần một đóa sen Nguyệt Sương. Một thung lũng. Một con rắn rất rất to. Hì hì.\""
+	},
+	{
+		"id": "-1000007135",
+		"key": "story_C1_2",
+		"en|ch|tc|kr": "Một người bán thảo dược có bản đồ thung lũng: {0:#,##0} linh thạch, hoặc đổi bằng một cây thảo dược."
+	},
+	{
+		"id": "-1000007136",
+		"key": "story_C1_2_o1",
+		"en|ch|tc|kr": "Mua bản đồ"
+	},
+	{
+		"id": "-1000007137",
+		"key": "story_C1_2_o2",
+		"en|ch|tc|kr": "Đổi một cây thảo dược"
+	},
+	{
+		"id": "-1000007139",
+		"key": "story_C1_3",
+		"en|ch|tc|kr": "Thung lũng trắng xóa sương giá. Có thứ gì đó khổng lồ đang chuyển động dưới hồ sen."
+	},
+	{
+		"id": "-1000007140",
+		"key": "story_C1_3_o1",
+		"en|ch|tc|kr": "Đánh với con rắn"
+	},
+	{
+		"id": "-1000007141",
+		"key": "story_C1_4",
+		"en|ch|tc|kr": "Một bà lão ngồi bên hồ, không hề hấn gì sau trận đánh. \"Người trẻ, lúc nào cũng vội. Lấy sen đi — nhưng để lại rễ.\""
+	},
+	{
+		"id": "-1000007142",
+		"key": "story_C1_failed",
+		"en|ch|tc|kr": "{X} đã đi một mình. Cô trở về khập khiễng, tay không, và cả tuần không nói đùa câu nào."
+	},
+	{
+		"id": "-1000007143",
+		"key": "story_C1_failed_o1",
+		"en|ch|tc|kr": "Chăm sóc cô"
+	},
+	{
+		"id": "-1000007144",
+		"key": "story_C1_failed_o2",
+		"en|ch|tc|kr": "Để cô ấy yên"
+	},
+	{
+		"id": "-1000007145",
+		"key": "story_C2_1",
+		"en|ch|tc|kr": "\"Phí lò đan: {0:#,##0} linh thạch,\" giám khảo nói. {X} nhìn ngươi bằng đôi mắt to tròn."
+	},
+	{
+		"id": "-1000007146",
+		"key": "story_C2_1_o1",
+		"en|ch|tc|kr": "Trả tiền"
+	},
+	{
+		"id": "-1000007147",
+		"key": "story_C2_1_o2",
+		"en|ch|tc|kr": "\"Muội có tiền để dành mà.\""
+	},
+	{
+		"id": "-1000007148",
+		"key": "story_C2_q1",
+		"en|ch|tc|kr": "\"Lửa lớn hay lửa nhỏ? Nhanh lên nhanh lên, nó sôi rồi!\""
+	},
+	{
+		"id": "-1000007149",
+		"key": "story_C2_q1_o1",
+		"en|ch|tc|kr": "Lửa lớn"
+	},
+	{
+		"id": "-1000007150",
+		"key": "story_C2_q1_o2",
+		"en|ch|tc|kr": "Lửa nhỏ"
+	},
+	{
+		"id": "-1000007151",
+		"key": "story_C2_q2",
+		"en|ch|tc|kr": "\"Đáy lò đen rồi! Làm sao bây giờ?!\""
+	},
+	{
+		"id": "-1000007152",
+		"key": "story_C2_q2_o1",
+		"en|ch|tc|kr": "Lửa lớn, đốt thông một lần"
+	},
+	{
+		"id": "-1000007153",
+		"key": "story_C2_q2_o2",
+		"en|ch|tc|kr": "Tắt lửa"
+	},
+	{
+		"id": "-1000007154",
+		"key": "story_C2_q3",
+		"en|ch|tc|kr": "\"Đan sắp thành rồi! Sen — bỏ vào bây giờ hay lát nữa?\""
+	},
+	{
+		"id": "-1000007155",
+		"key": "story_C2_q3_o1",
+		"en|ch|tc|kr": "Bây giờ"
+	},
+	{
+		"id": "-1000007156",
+		"key": "story_C2_q3_o2",
+		"en|ch|tc|kr": "Lát nữa"
+	},
+	{
+		"id": "-1000007157",
+		"key": "story_C2_pass",
+		"en|ch|tc|kr": "\"TIỂU MUỘI ĐỖ RỒI! Huynh thấy không? Mọi người thấy không?!\""
+	},
+	{
+		"id": "-1000007158",
+		"key": "story_C2_fail",
+		"en|ch|tc|kr": "\"…Năm sau. Năm sau tiểu muội nhất định làm được.\""
+	},
+	{
+		"id": "-1000007159",
+		"key": "story_C3_1",
+		"en|ch|tc|kr": "Lần này {X} không đùa. \"Đại sư {G} đã dâng đơn thuốc của tiểu muội cho Hội. Đơn thuốc của tiểu muội. Khi muội nói ra, lão ta cười.\""
+	},
+	{
+		"id": "-1000007160",
+		"key": "story_C3_app1",
+		"en|ch|tc|kr": "Một học đồ của Hội đã thấy {X} viết đơn thuốc. Cậu ta sẽ làm chứng — nếu ngươi giúp cậu ta trước."
+	},
+	{
+		"id": "-1000007161",
+		"key": "story_C3_app2",
+		"en|ch|tc|kr": "Học đồ thứ hai đã chép lại đơn thuốc cho {G}. Cô ấy sợ hãi — và bị bắt nạt."
+	},
+	{
+		"id": "-1000007162",
+		"key": "story_C3_app_o1",
+		"en|ch|tc|kr": "Đưa một viên đan hoặc thảo dược"
+	},
+	{
+		"id": "-1000007163",
+		"key": "story_C3_app_o2",
+		"en|ch|tc|kr": "Xử lý kẻ bắt nạt"
+	},
+	{
+		"id": "-1000007165",
+		"key": "story_C3_4",
+		"en|ch|tc|kr": "\"Vậy. Chúng ta làm gì với lão đại sư đây?\""
+	},
+	{
+		"id": "-1000007166",
+		"key": "story_C3_4_o1",
+		"en|ch|tc|kr": "Vạch mặt lão trước Hội"
+	},
+	{
+		"id": "-1000007167",
+		"key": "story_C3_4_o2",
+		"en|ch|tc|kr": "Quyết đấu với lão"
+	},
+	{
+		"id": "-1000007168",
+		"key": "story_C3_4_o3",
+		"en|ch|tc|kr": "\"Bỏ qua đi. Muội sẽ luyện ra đơn tốt hơn.\""
+	},
+	{
+		"id": "-1000007169",
+		"key": "story_C3_exposed",
+		"en|ch|tc|kr": "Trước toàn thể Hội, các học đồ lên tiếng. {G} trắng bệch, rồi đỏ mặt, rồi im bặt."
+	},
+	{
+		"id": "-1000007170",
+		"key": "story_C4_1",
+		"en|ch|tc|kr": "\"Tiểu tặc, hãy đối đầu với ta ở Đại hội luyện đan. Kẻ thua sẽ vĩnh viễn rời khỏi đan đạo.\""
+	},
+	{
+		"id": "-1000007171",
+		"key": "story_C4_2",
+		"en|ch|tc|kr": "Đêm trước Đại hội, có kẻ đột nhập vào xưởng của {X}."
+	},
+	{
+		"id": "-1000007172",
+		"key": "story_C4_2_o1",
+		"en|ch|tc|kr": "Bắt kẻ phá hoại"
+	},
+	{
+		"id": "-1000007173",
+		"key": "story_C4_3_won",
+		"en|ch|tc|kr": "Hai lò đan, một đại điện, nghìn đôi mắt. Viên đan của {X} bay lên từ ngọn lửa, sáng như một vầng trăng nhỏ."
+	},
+	{
+		"id": "-1000007174",
+		"key": "story_C4_3_lost",
+		"en|ch|tc|kr": "Viên đan của {G} hoàn hảo không tì vết. Viên đan của {X} nứt trong hơi lửa cuối cùng."
+	},
+	{
+		"id": "-1000007175",
+		"key": "story_endC_Companion",
+		"en|ch|tc|kr": "\"Tiểu muội đi cùng huynh. Phải có người thử đan lên kẻ thù của huynh chứ.\""
+	},
+	{
+		"id": "-1000007176",
+		"key": "story_endC_MasterAlchemist",
+		"en|ch|tc|kr": "\"Đan dược của đại sư {X} — với huynh, giá gốc. Với người khác, gấp đôi!\""
+	},
+	{
+		"id": "-1000007177",
+		"key": "story_endC_LastExplosion",
+		"en|ch|tc|kr": "Một quán trà nhỏ khai trương. Trà rất ngon. Không có gì nổ cả."
+	},
+	{
+		"id": "-1000007178",
+		"key": "story_end_C_MasterAlchemist",
+		"en|ch|tc|kr": "Đại sư luyện đan"
+	},
+	{
+		"id": "-1000007180",
+		"key": "story_end_C_LastExplosion",
+		"en|ch|tc|kr": "Lò nổ lần cuối"
+	},
+	{
+		"id": "-1000007181",
+		"key": "story_D0_1",
+		"en|ch|tc|kr": "Chủ quán: \"Mười một bát mì mà không có tiền?!\"\n{N}: \"Ta trả bằng một trận đánh! Một trận thật hay!\"\n{C} gảy đàn: \"Mười một bát mì, một kẻ ngốc, không một đồng — một bi kịch ba khổ.\""
+	},
+	{
+		"id": "-1000007182",
+		"key": "story_D0_2",
+		"en|ch|tc|kr": "Mọi người đều nhìn ngươi. (hóa đơn: {0:#,##0} linh thạch)"
+	},
+	{
+		"id": "-1000007183",
+		"key": "story_D0_2_o1",
+		"en|ch|tc|kr": "Trả tiền giúp hắn"
+	},
+	{
+		"id": "-1000007184",
+		"key": "story_D0_2_o2",
+		"en|ch|tc|kr": "\"Vậy thì đánh với ta.\""
+	},
+	{
+		"id": "-1000007185",
+		"key": "story_D0_ribs",
+		"en|ch|tc|kr": "\"Ha! Xương sườn của ta! Mai đánh tiếp nhé?\""
+	},
+	{
+		"id": "-1000007186",
+		"key": "story_D0_3",
+		"en|ch|tc|kr": "\"Một kẻ ngốc, một anh hùng và một thi nhân bước vào quán trọ. Ta phải chép lại mới được.\""
+	},
+	{
+		"id": "-1000007187",
+		"key": "story_D1_1",
+		"en|ch|tc|kr": "\"Có con yêu thú đang ăn bò của nông dân. Ba chúng ta — dễ ợt! Ca, đệ có thể hát cho nó nghe.\""
+	},
+	{
+		"id": "-1000007188",
+		"key": "story_D1_2",
+		"en|ch|tc|kr": "Hang yêu thú nồng mùi máu. {N} bẻ khớp tay; {C} lên dây đàn."
+	},
+	{
+		"id": "-1000007189",
+		"key": "story_D1_2_o1",
+		"en|ch|tc|kr": "Săn nó"
+	},
+	{
+		"id": "-1000007190",
+		"key": "story_D1_3",
+		"en|ch|tc|kr": "Bên đống lửa trại.\n{N}: \"Tông môn muốn ta đánh trận cho họ. Ta chỉ muốn đấm bọn cướp.\"\n{C}: \"Ta viết thơ tình, vì loại thơ kia đau đớn quá.\""
+	},
+	{
+		"id": "-1000007191",
+		"key": "story_D1_3_o1",
+		"en|ch|tc|kr": "\"Vậy thì kết nghĩa với ta.\""
+	},
+	{
+		"id": "-1000007192",
+		"key": "story_D1_3_o2",
+		"en|ch|tc|kr": "\"Ngủ đi.\""
+	},
+	{
+		"id": "-1000007193",
+		"key": "story_D2_1",
+		"en|ch|tc|kr": "\"Ta đã viết bốn mươi hai bài thơ cho {L}. Nàng chưa đọc bài nào. Ta cần một… quân sư.\""
+	},
+	{
+		"id": "-1000007194",
+		"key": "story_D2_2",
+		"en|ch|tc|kr": "Thơ nên đi kèm một món quà."
+	},
+	{
+		"id": "-1000007195",
+		"key": "story_D2_2_o1",
+		"en|ch|tc|kr": "Tặng một món quà"
+	},
+	{
+		"id": "-1000007196",
+		"key": "story_D2_2_o2",
+		"en|ch|tc|kr": "Thơ là đủ rồi"
+	},
+	{
+		"id": "-1000007197",
+		"key": "story_D2_3",
+		"en|ch|tc|kr": "\"Ngay bây giờ. Đêm nay, dưới cửa sổ nàng. Ngươi sẽ giúp ta chứ?\""
+	},
+	{
+		"id": "-1000007198",
+		"key": "story_D2_3_o1",
+		"en|ch|tc|kr": "Thật lòng giúp hắn"
+	},
+	{
+		"id": "-1000007199",
+		"key": "story_D2_3_o2",
+		"en|ch|tc|kr": "Phá đám"
+	},
+	{
+		"id": "-1000007200",
+		"key": "story_D2_3_o3",
+		"en|ch|tc|kr": "Tự mình theo đuổi {L}"
+	},
+	{
+		"id": "-1000007201",
+		"key": "story_D3_1",
+		"en|ch|tc|kr": "Đêm nay không có tiếng đàn. \"Nhà ta là thương nhân. Họ từ chối khoản vay của Hồng Liên giáo. Một đêm nọ, ngôi nhà bốc cháy cùng với họ bên trong.\""
+	},
+	{
+		"id": "-1000007202",
+		"key": "story_D3_2",
+		"en|ch|tc|kr": "Dấu vết của một sát thủ Hồng Liên giáo dẫn đến một ngôi miếu đổ nát."
+	},
+	{
+		"id": "-1000007203",
+		"key": "story_D3_2_o1",
+		"en|ch|tc|kr": "Đi vào"
+	},
+	{
+		"id": "-1000007204",
+		"key": "story_D3_3",
+		"en|ch|tc|kr": "Tên sát thủ hấp hối bật cười. \"Phu nhân… sẽ… thiêu cả các ngươi.\""
+	},
+	{
+		"id": "-1000007205",
+		"key": "story_D3_3_o1",
+		"en|ch|tc|kr": "\"Chúng ta sẽ cùng nhau kết liễu bà ta.\""
+	},
+	{
+		"id": "-1000007206",
+		"key": "story_D3_3_o2",
+		"en|ch|tc|kr": "\"Báo thù cũng không đưa họ trở về.\""
+	},
+	{
+		"id": "-1000007207",
+		"key": "story_D4_1",
+		"en|ch|tc|kr": "Bên kia chiến trường, {N} giơ nắm đấm. \"Huynh đệ… tông môn đã ra lệnh. Ta không thể bỏ chạy.\""
+	},
+	{
+		"id": "-1000007208",
+		"key": "story_D4_1_o1",
+		"en|ch|tc|kr": "\"Hạ nắm đấm xuống và đi cùng ta.\""
+	},
+	{
+		"id": "-1000007209",
+		"key": "story_D4_1_o2",
+		"en|ch|tc|kr": "\"Vậy thì đánh với ta, đừng nương tay.\""
+	},
+	{
+		"id": "-1000007210",
+		"key": "story_D4_1_o3",
+		"en|ch|tc|kr": "Đổi phe"
+	},
+	{
+		"id": "-1000007211",
+		"key": "story_D4_walk",
+		"en|ch|tc|kr": "\"Nắm đấm của ngươi nặng hơn mệnh lệnh của tông môn.\" Hắn hạ tay xuống."
+	},
+	{
+		"id": "-1000007212",
+		"key": "story_D4_switch",
+		"en|ch|tc|kr": "Ngươi bước sang phía hắn. Sau lưng ngươi, quê nhà sẽ không quên chuyện này."
+	},
+	{
+		"id": "-1000007213",
+		"key": "story_endD_Rivals",
+		"en|ch|tc|kr": "\"Ngươi đã có được nàng. Lần sau gặp lại, sẽ là trên chiến trường.\""
+	},
+	{
+		"id": "-1000007214",
+		"key": "story_endD_BrotherLost",
+		"en|ch|tc|kr": "Một khúc ca chậm rãi vang trên nấm mộ. \"Hắn luôn nói mì ở đây là ngon nhất.\""
+	},
+	{
+		"id": "-1000007215",
+		"key": "story_endD_MurongCompanion",
+		"en|ch|tc|kr": "\"Bài thơ thứ bốn mươi ba. Bài này, nàng sẽ đọc.\""
+	},
+	{
+		"id": "-1000007216",
+		"key": "story_endD_ThreeSworn",
+		"en|ch|tc|kr": "\"Trời cao trên đầu, đất dày dưới chân — ba chúng ta, chung một mạng!\""
+	},
+	{
+		"id": "-1000007217",
+		"key": "story_end_D_ThreeSworn",
+		"en|ch|tc|kr": "Kết nghĩa ba người"
+	},
+	{
+		"id": "-1000007218",
+		"key": "story_end_D_MurongCompanion",
+		"en|ch|tc|kr": "Mộ Dung thành đạo lữ"
+	},
+	{
+		"id": "-1000007219",
+		"key": "story_end_D_BrotherLost",
+		"en|ch|tc|kr": "Mất một người huynh đệ"
+	},
+	{
+		"id": "-1000007220",
+		"key": "story_end_D_Rivals",
+		"en|ch|tc|kr": "Tình địch"
+	},
+	{
+		"id": "-1000007221",
+		"key": "story_E0_1",
+		"en|ch|tc|kr": "\"Hài tử, đôi chân già này không leo lên được những ruộng bậc cao nữa. Con trông vườn giúp ta một thời gian nhé?\""
+	},
+	{
+		"id": "-1000007222",
+		"key": "story_E0_1_o1",
+		"en|ch|tc|kr": "\"Tất nhiên rồi, bà bà.\""
+	},
+	{
+		"id": "-1000007223",
+		"key": "story_E0_1_o2",
+		"en|ch|tc|kr": "\"Ta không có thời gian làm vườn.\""
+	},
+	{
+		"id": "-1000007224",
+		"key": "story_E0_2",
+		"en|ch|tc|kr": "Nhổ cỏ, tưới nước — và một bầy linh hầu đang trộm đào."
+	},
+	{
+		"id": "-1000007225",
+		"key": "story_E0_2_o1",
+		"en|ch|tc|kr": "Đuổi chúng đi"
+	},
+	{
+		"id": "-1000007226",
+		"key": "story_E0_3",
+		"en|ch|tc|kr": "\"Kiếm cũng như rễ: phải mọc sâu trước khi mọc cao.\""
+	},
+	{
+		"id": "-1000007227",
+		"key": "story_E1_1",
+		"en|ch|tc|kr": "Một bé gái gầy gò nấp sau váy {O}, nắm chặt chiếc muôi gỗ như nắm kiếm."
+	},
+	{
+		"id": "-1000007228",
+		"key": "story_E1_2",
+		"en|ch|tc|kr": "\"Làng của con bé bị thiêu rụi. Những người sống sót nói có cờ đỏ. Ta già quá để nuôi nó, mà cũng già quá để nói không với nó.\""
+	},
+	{
+		"id": "-1000007229",
+		"key": "story_E1_3",
+		"en|ch|tc|kr": "\"Con bé tên là {Y}. Con định thế nào, hài tử?\""
+	},
+	{
+		"id": "-1000007230",
+		"key": "story_E1_3_o1",
+		"en|ch|tc|kr": "Nhận nuôi con bé"
+	},
+	{
+		"id": "-1000007231",
+		"key": "story_E1_3_o2",
+		"en|ch|tc|kr": "Gửi con bé vào tông môn"
+	},
+	{
+		"id": "-1000007232",
+		"key": "story_E1_3_o3",
+		"en|ch|tc|kr": "Để bà bà nuôi"
+	},
+	{
+		"id": "-1000007233",
+		"key": "story_E2_8",
+		"en|ch|tc|kr": "{Y} lại làm cháy cơm. Con bé bảo đó là \"hỏa hệ công pháp\"."
+	},
+	{
+		"id": "-1000007234",
+		"key": "story_E2_8_o1",
+		"en|ch|tc|kr": "Dạy con bé nấu ăn"
+	},
+	{
+		"id": "-1000007235",
+		"key": "story_E2_8_o2",
+		"en|ch|tc|kr": "Dạy con bé đứng tấn"
+	},
+	{
+		"id": "-1000007236",
+		"key": "story_E2_12",
+		"en|ch|tc|kr": "{Y} về nhà với một bên mắt bầm tím. \"Nó bảo người là kẻ vô danh. Con đã sửa lại cho nó.\""
+	},
+	{
+		"id": "-1000007237",
+		"key": "story_E2_12_o1",
+		"en|ch|tc|kr": "Mắng con bé"
+	},
+	{
+		"id": "-1000007238",
+		"key": "story_E2_12_o2",
+		"en|ch|tc|kr": "Bật cười"
+	},
+	{
+		"id": "-1000007239",
+		"key": "story_E2_12_o3",
+		"en|ch|tc|kr": "Dạy con bé lúc nào nên ra tay"
+	},
+	{
+		"id": "-1000007240",
+		"key": "story_E2_15",
+		"en|ch|tc|kr": "{Y} hỏi cha mẹ mình là người thế nào. {O} nhìn sang ngươi."
+	},
+	{
+		"id": "-1000007241",
+		"key": "story_E2_15_o1",
+		"en|ch|tc|kr": "Nói sự thật"
+	},
+	{
+		"id": "-1000007242",
+		"key": "story_E2_15_o2",
+		"en|ch|tc|kr": "\"Họ rất yêu con.\""
+	},
+	{
+		"id": "-1000007243",
+		"key": "story_E3_1",
+		"en|ch|tc|kr": "{Y}: \"Đêm nào bà bà cũng ho. Bà bảo là do gió.\""
+	},
+	{
+		"id": "-1000007244",
+		"key": "story_E3_2",
+		"en|ch|tc|kr": "Những người bán thảo dược kể về một cây trường thọ thảo trên vách núi cao, có yêu thú canh giữ."
+	},
+	{
+		"id": "-1000007245",
+		"key": "story_E3_2_o1",
+		"en|ch|tc|kr": "Đi lấy thảo dược"
+	},
+	{
+		"id": "-1000007246",
+		"key": "story_E3_2_o2",
+		"en|ch|tc|kr": "Ở bên bà"
+	},
+	{
+		"id": "-1000007247",
+		"key": "story_E3_3",
+		"en|ch|tc|kr": "\"Con mang thứ này về cho ta à? …Hài tử. Trong vườn, cây già phải đổ thì cây non mới có ánh nắng.\""
+	},
+	{
+		"id": "-1000007248",
+		"key": "story_E3_3_o1",
+		"en|ch|tc|kr": "Nài nỉ bà dùng"
+	},
+	{
+		"id": "-1000007249",
+		"key": "story_E3_3_o2",
+		"en|ch|tc|kr": "Tôn trọng ý bà"
+	},
+	{
+		"id": "-1000007250",
+		"key": "story_E4_1",
+		"en|ch|tc|kr": "{O} ngủ dưới gốc lê già và không tỉnh lại nữa. Trong tay bà là một hạt giống bọc lụa."
+	},
+	{
+		"id": "-1000007251",
+		"key": "story_E4_2",
+		"en|ch|tc|kr": "Một lá thư: \"Gửi người đã trông vườn cho ta: hãy gieo nó ở nơi con dừng chân.\""
+	},
+	{
+		"id": "-1000007252",
+		"key": "story_E4_2_o1",
+		"en|ch|tc|kr": "Giữ lại khu vườn"
+	},
+	{
+		"id": "-1000007253",
+		"key": "story_E4_2_o2",
+		"en|ch|tc|kr": "Trao nó cho {Y}"
+	},
+	{
+		"id": "-1000007254",
+		"key": "story_endE_LostChild",
+		"en|ch|tc|kr": "Không ai đến tìm {Y}. Có một người khác đến — một nữ nhân áo đỏ. \"Không ai đến tìm con. Chỉ có bà ấy.\""
+	},
+	{
+		"id": "-1000007255",
+		"key": "story_endE_Successor",
+		"en|ch|tc|kr": "\"Người đã dạy con đứng vững. Giờ hãy để con gánh vác gia tộc.\""
+	},
+	{
+		"id": "-1000007256",
+		"key": "story_endE_Garden",
+		"en|ch|tc|kr": "Cây lê nở hoa. \"Cứ ngồi dưới gốc lê bao lâu tùy con. Khu vườn sẽ giữ thời gian thay con.\""
+	},
+	{
+		"id": "-1000007257",
+		"key": "story_endE_Keepsake",
+		"en|ch|tc|kr": "Cây lê nở hoa. Khu vườn yên tĩnh — kỷ vật của một người bạn cũ."
+	},
+	{
+		"id": "-1000007258",
+		"key": "story_end_E_Successor",
+		"en|ch|tc|kr": "Truyền nhân"
+	},
+	{
+		"id": "-1000007259",
+		"key": "story_end_E_LostChild",
+		"en|ch|tc|kr": "Đứa trẻ lạc lối"
+	},
+	{
+		"id": "-1000007260",
+		"key": "story_end_E_GardenOfGenerations",
+		"en|ch|tc|kr": "Vườn thuốc truyền đời"
+	},
+	{
+		"id": "-1000007262",
+		"key": "story_garden",
+		"en|ch|tc|kr": "Vườn thuốc của Thạch bà bà. Bế quan dưới gốc lê: bao lâu?"
+	},
+	{
+		"id": "-1000007263",
+		"key": "story_garden_o",
+		"en|ch|tc|kr": "{0} năm ({1:#,##0} linh thạch)"
+	},
+	{
+		"id": "-1000007265",
+		"key": "story_garden_money",
+		"en|ch|tc|kr": "Ngươi không đủ linh thạch."
+	},
+	{
+		"id": "-1000007266",
+		"key": "story_F1_1",
+		"en|ch|tc|kr": "Trong một mùa, ba thị trấn dựng cờ đỏ. Các thương nhân thì thầm một cái tên: Phu nhân."
+	},
+	{
+		"id": "-1000007267",
+		"key": "story_F1_2",
+		"en|ch|tc|kr": "\"Kẻ giật dây nhỏ bé, ngươi bận rộn quá nhỉ. Hãy đến Hồng Liên Các. Dẫn theo bạn bè — ta rất thích náo nhiệt.\""
+	},
+	{
+		"id": "-1000007268",
+		"key": "story_F1_3",
+		"en|ch|tc|kr": "Hồng Liên Các đang chờ."
+	},
+	{
+		"id": "-1000007269",
+		"key": "story_F1_3_o1",
+		"en|ch|tc|kr": "Tập hợp đồng minh"
+	},
+	{
+		"id": "-1000007270",
+		"key": "story_F1_3_o2",
+		"en|ch|tc|kr": "Đi một mình ngay bây giờ"
+	},
+	{
+		"id": "-1000007271",
+		"key": "story_F2_A",
+		"en|ch|tc|kr": "\"Cuối cùng.\""
+	},
+	{
+		"id": "-1000007272",
+		"key": "story_F2_H",
+		"en|ch|tc|kr": "\"Ta sẽ mang tên. Và cả đồ ăn vặt.\""
+	},
+	{
+		"id": "-1000007273",
+		"key": "story_F2_N",
+		"en|ch|tc|kr": "\"Đấm ai đây?\""
+	},
+	{
+		"id": "-1000007274",
+		"key": "story_F2_C",
+		"en|ch|tc|kr": "\"Vì gia đình ta.\""
+	},
+	{
+		"id": "-1000007275",
+		"key": "story_F2_Y",
+		"en|ch|tc|kr": "\"Vì ngôi làng của con.\""
+	},
+	{
+		"id": "-1000007276",
+		"key": "story_F2_X",
+		"en|ch|tc|kr": "\"Tiểu muội làm đan nổ rồi! Lần này là cố ý nhé!\""
+	},
+	{
+		"id": "-1000007277",
+		"key": "story_F2_o1",
+		"en|ch|tc|kr": "\"Vậy thì đi thôi.\""
+	},
+	{
+		"id": "-1000007278",
+		"key": "story_F3_1",
+		"en|ch|tc|kr": "Cổng Hồng Liên Các. Các hộ pháp của bà ta bước ra."
+	},
+	{
+		"id": "-1000007280",
+		"key": "story_F3_2",
+		"en|ch|tc|kr": "\"Bao nhiêu sợi chỉ nhỏ, tất cả đều buộc về ta. Quỳ xuống, ta sẽ để bạn bè ngươi giữ được đầu.\""
+	},
+	{
+		"id": "-1000007281",
+		"key": "story_F3_2_o1",
+		"en|ch|tc|kr": "\"Bạn bè ta tự trả lời cho chính họ.\""
+	},
+	{
+		"id": "-1000007282",
+		"key": "story_F3_2_o2",
+		"en|ch|tc|kr": "Quỳ xuống"
+	},
+	{
+		"id": "-1000007292",
+		"key": "story_end_F_Kneel",
+		"en|ch|tc|kr": "Quỳ xuống"
+	},
+	{
+		"id": "-1000007283",
+		"key": "story_F3_3",
+		"en|ch|tc|kr": "Hồng Liên phu nhân đứng dậy. Đóa sen trên quạt bà ta nở ra."
+	},
+	{
+		"id": "-1000007284",
+		"key": "story_F3_3_o1",
+		"en|ch|tc|kr": "Trận chiến cuối cùng"
+	},
+	{
+		"id": "-1000007285",
+		"key": "story_endF_Kneel",
+		"en|ch|tc|kr": "\"Đứa trẻ khôn ngoan. Từ hôm nay, thị trấn của ta là thị trấn của ngươi — và lòng căm ghét của thiên hạ cũng là của ngươi.\""
+	},
+	{
+		"id": "-1000007286",
+		"key": "story_F4_1",
+		"en|ch|tc|kr": "Hồng liên tàn úa. Những thị trấn bà ta chiếm giữ mở cổng."
+	},
+	{
+		"id": "-1000007287",
+		"key": "story_F4_2",
+		"en|ch|tc|kr": "Sổ nợ của bà ta cháy rụi. Trong đống tro tàn của các lầu có một chiếc gương: {0}."
+	},
+	{
+		"id": "-1000007288",
+		"key": "story_F4_3",
+		"en|ch|tc|kr": "Từng người một, các đồng minh nói lời từ biệt và quay về con đường của mình."
+	},
+	{
+		"id": "-1000007289",
+		"key": "story_F_spread",
+		"en|ch|tc|kr": "Ma vực lan rộng: thêm nhiều thị trấn dựng cờ đỏ. Phu nhân sẽ không chờ mãi."
+	},
+	{
+		"id": "-1000007290",
+		"key": "story_F_dead",
+		"en|ch|tc|kr": "Tin truyền đến: Hồng Liên phu nhân đã chết. Hồng Liên giáo tan tác như cánh hoa trong gió."
+	},
+	{
+		"id": "-1000007291",
+		"key": "story_end_F_Victory",
+		"en|ch|tc|kr": "Chiến thắng"
+	},
+	{
+		"id": "-1000007261",
+		"key": "taskName444447001",
+		"en|ch|tc|kr": "Vườn thuốc của Thạch bà bà"
+	},
+	{
+		"id": "-1000007293",
+		"key": "taskDesc444447001",
+		"en|ch|tc|kr": "Đến gốc lê trong vườn thuốc của Thạch bà bà (theo dõi nhiệm vụ này trên bản đồ). Ở đó ngươi có thể bế quan 1-20 năm."
+	}
+]

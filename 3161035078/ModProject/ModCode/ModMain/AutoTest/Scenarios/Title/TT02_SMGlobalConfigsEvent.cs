@@ -54,10 +54,10 @@ namespace MOD_nE7UL2.AutoTest.Scenarios.Title
                     Window.NextPage();
                     c.AssertEqual(2, Window.CurrentPageIndex, "page 3: additional features");
                     var score = SMGlobalConfigsEvent.CalSMTotalScore();
-                    var labels = new[] { "smcfgs151", "smcfgs152", "smcfgs153", "smcfgs154", "smcfgs156", "smcfgs157", "smcfgs158", "smcfgs159", "smcfgs164" }.Select(k => GameTool.LS(k)).ToList();
+                    var labels = new[] { "smcfgs151", "smcfgs152", "smcfgs153", "smcfgs154", "smcfgs156", "smcfgs157", "smcfgs158", "smcfgs159", "smcfgs164", "smcfgs167" }.Select(k => GameTool.LS(k)).ToList();
                     var toggles = Window.Items.OfType<ModLib.Object.UIItemText>().Where(x => labels.Contains(x.GetFormat() ?? string.Empty))
                         .Select(x => x.Parent as ModLib.Object.UIItemComposite).Where(x => x != null).ToList();
-                    c.AssertEqual(9, toggles.Count, "toggles: encounters, bank loans, buy orders, bounties, seclusion, forced seclusion, family, same-sex, descendant");
+                    c.AssertEqual(10, toggles.Count, "toggles: encounters, bank loans, buy orders, bounties, seclusion, forced seclusion, family, same-sex, descendant, storylines");
                     var others = new[] { "smcfgs160", "smcfgs165", "smcfgs166" }.Select(k => GameTool.LS(k)).ToList();
                     c.AssertEqual(3, Window.Items.OfType<ModLib.Object.UIItemText>().Count(x => others.Contains(x.GetFormat() ?? string.Empty)), "child surname select, encounter and seclusion rate sliders");
                     foreach (var t in toggles) t.MainComponent.Set(true);

@@ -40,10 +40,16 @@ namespace MOD_nE7UL2.AutoTest.Scenarios.Town
                     else
                     {
                         var pos = Player.GetUnitPos();
-                        school = (ModMaster.ModObj.ParameterStore?.Schools ?? new MapBuildSchool[0])
-                            .OrderBy(x => Math.Abs(x.GetOrigiPoint().x - pos.x) + Math.Abs(x.GetOrigiPoint().y - pos.y)).FirstOrDefault();
-                        if (!c.Assert(school != null, "a sect exists")) return;
-                        Player.CreateAction(new UnitActionSchoolJoin(school.buildData.id, SchoolPostType.Out, SchoolDepartmentType.None));
+                        // the nearest sect that accepts the player (a sect may refuse it)
+                        var schools = (ModMaster.ModObj.ParameterStore?.Schools ?? new MapBuildSchool[0])
+                            .OrderBy(x => Math.Abs(x.GetOrigiPoint().x - pos.x) + Math.Abs(x.GetOrigiPoint().y - pos.y)).ToList();
+                        if (!c.Assert(schools.Count > 0, "a sect exists")) return;
+                        foreach (var sc in schools)
+                        {
+                            school = sc;
+                            Player.CreateAction(new UnitActionSchoolJoin(sc.buildData.id, SchoolPostType.Out, SchoolDepartmentType.None));
+                            if (Player.data.school?.schoolNameID == sc.schoolNameID) break;
+                        }
                         c.Bag["joined"] = true;
                         c.Info($"player joins {school.name} for the test");
                     }
@@ -85,7 +91,7 @@ namespace MOD_nE7UL2.AutoTest.Scenarios.Town
                 }, 1000)
                 .Step("close", c =>
                 {
-                    CloseAll(UIType.PropSelect, UIType.School);
+                    CloseAll(UIType.GetReward, UIType.PropSelect, UIType.School); // the reward window of the contribution too (still open during TG-51, the game crashed refreshing it)
                     if (c.Bag.ContainsKey("joined")) Player.CreateAction(new UnitActionSchoolExit());
                     SMLocalConfigsEvent.Instance.Configs.SectNoExchange = (bool)c.Bag["noExchange"];
                 })
