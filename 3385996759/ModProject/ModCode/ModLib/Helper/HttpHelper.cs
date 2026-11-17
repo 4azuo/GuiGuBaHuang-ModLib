@@ -119,6 +119,8 @@ namespace ModLib.Helper
             foreach (var r in HTML_TO_RICH)
                 s = r.Item1.Replace(s, r.Item2);
             s = System.Net.WebUtility.HtmlDecode(s);
+            // symbols the game's font does not have (shown as a box)
+            s = Regex.Replace(s, @"[⚠️]\s*", string.Empty);
             s = Regex.Replace(s, @"[ \t]+\n", "\n");
             s = Regex.Replace(s, @"\n{3,}", "\n\n");
             return s.Trim();

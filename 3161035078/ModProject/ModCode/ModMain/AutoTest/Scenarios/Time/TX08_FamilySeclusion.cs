@@ -53,8 +53,9 @@ namespace MOD_nE7UL2.AutoTest.Scenarios.Time
                 .Step("family window", c =>
                 {
                     var texts = ScreenTexts();
-                    c.Assert(texts.Any(x => x.Contains(child?.GetName() ?? "?")), "the family window lists the child");
-                    CloseAll(UIType.TextInfoLong);
+                    c.Assert(g.ui.HasUI(UIType.NPCInfoRelation), "the family tree is the game's kinship screen (NPCInfoRelation)");
+                    c.Assert(texts.Any(x => x.Contains(child?.GetName() ?? "?")), "the family tree shows the child");
+                    CloseAll(UIType.NPCInfoRelation);
                     DismissDramas();
                 })
                 .Step("player family", c =>

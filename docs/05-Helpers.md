@@ -37,6 +37,7 @@ Reusable utility functions in `Helper/` folder.
 
 **Drama & Dialogue:**
 - **DramaHelper** - Dialogue and drama system (`OpenDrama1(text, options, callback, left, right, speaker)`: `speaker` 1 or 2 lights the left or right portrait and dims the other, 0 both lit; 1 to 4 options use dialogues with exactly that many options, so a single "Continue" is a real button that calls the callback)
+- **PortraitHelper** - Characters drawn with the game's portrait model into a RawImage (`Draw(parent, looks or unit, size, pos)`, `DrawOnScreen(looks, heightShare)` on its own overlay canvas, `RandomModelData(sex)` random looks without a world); the art goes from the head to the thighs; the texture takes the size of the RawImage when drawing
 - **TextIconHelper** - Icons in texts: `[icon:NAME]` tokens of the localTexts become `<sprite name=NAME>` at load; `Text.Set` shows a text with a sprite through a TextMeshPro twin of the Text (rules in README, "LocalText - Rules")
 
 **Data Processing:**

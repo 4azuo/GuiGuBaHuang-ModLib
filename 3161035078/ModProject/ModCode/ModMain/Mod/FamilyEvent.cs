@@ -650,29 +650,33 @@ namespace MOD_nE7UL2.Mod
 
         // ------------------------------------------------------------------ UI
 
-        /// <summary>Family window of a unit (opened from the household accounts window; NPC info uses the game's own Family tab).</summary>
+        /// <summary>
+        /// Family tree of a unit: the game's kinship screen (NPCInfoRelation: parents / master above, the unit and its
+        /// dao companion, children below; the family of the mod is in the relations of the game: SetMarried,
+        /// LinkParents), plus what only the mod knows (children not born yet, siblings) in a note at the bottom left.
+        /// Opened from the household accounts window (NPC info has the game's own Family tab).
+        /// </summary>
         public static void OpenFamily(WorldUnitBase u)
         {
             if (u == null) return;
+            var ui = g.ui.OpenUISafe<UINPCInfoRelation>(UIType.NPCInfoRelation);
+            ui.InitData(u);
+            var lines = FamilyNotes(u);
+            if (lines.Count == 0) return;
+            var cover = new UICover<UINPCInfoRelation>(ui);
+            cover.AddText(cover.FirstCol + 6, cover.LastRow - 3, string.Join("\n", lines)).Format(Color.black, 16).Align(TextAnchor.LowerLeft);
+        }
+
+        /// <summary>The lines of the family note: unborn children (years to adult), siblings.</summary>
+        public static List<string> FamilyNotes(WorldUnitBase u)
+        {
             var f = Family(u);
             var cur = GameHelper.GetGameTotalMonth();
             Func<string, string> name = id => { var x = Unit(id); return x == null ? "?" : x.GetName() + (x.isDie ? GameTool.LS("family_dead") : string.Empty); };
-            var lines = new List<string>
-            {
-                string.Format(GameTool.LS("family_parents"), f.Parents.Count == 0 ? "-" : string.Join(", ", f.Parents.Select(name))),
-                string.Format(GameTool.LS("family_spouse"), f.Spouse == null ? "-" : name(f.Spouse)),
-                string.Format(GameTool.LS("family_children"), f.Children.Count == 0 ? "-" : string.Join(", ", f.Children.Select(name))),
-            };
-            foreach (var c in f.Unborn)
-                lines.Add(string.Format(GameTool.LS("family_unborn"), c.YearsToAdult(cur)));
-            lines.Add(string.Format(GameTool.LS("family_siblings"), f.Siblings.Count == 0 ? "-" : string.Join(", ", f.Siblings.Select(name))));
-            var ui = new UICustom1(string.Format(GameTool.LS("family_title"), u.GetName()));
-            var row = ui.FirstRow;
-            foreach (var l in lines)
-            {
-                var t = ui.AddText(ui.FirstCol + 1, row++, l).Format(null, 15).Align(TextAnchor.MiddleLeft);
-                t.Pos(t.Item.rectTransform.anchoredPosition.x + t.Item.rectTransform.rect.width / 2f, t.Item.rectTransform.anchoredPosition.y);
-            }
+            var lines = f.Unborn.Select(c => string.Format(GameTool.LS("family_unborn"), c.YearsToAdult(cur))).ToList();
+            if (f.Siblings.Count > 0)
+                lines.Add(string.Format(GameTool.LS("family_siblings"), string.Join(", ", f.Siblings.Select(name))));
+            return lines;
         }
     }
 }

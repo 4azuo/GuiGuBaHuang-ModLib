@@ -116,7 +116,12 @@ namespace UnitTests.Taoist
                          .Concat(Directory.Exists(libConf) ? Directory.GetFiles(libConf, "*localText.json", SearchOption.TopDirectoryOnly) : new string[0]))
                 foreach (var t in JArray.Parse(File.ReadAllText(f)))
                     keys.Add((string)t["key"]);
-            var used = Directory.GetFiles(ModCode, "*.cs", SearchOption.AllDirectories)
+            // the game's own texts (e.g. common_queding "OK"): SampleConfs/LocalText.json
+            var gameTexts = TestSetup.Repo("3385996759", "SampleConfs", "LocalText.json");
+            if (File.Exists(gameTexts))
+                foreach (var t in JArray.Parse(File.ReadAllText(gameTexts)))
+                    keys.Add((string)t["key"]);
+            var used =Directory.GetFiles(ModCode, "*.cs", SearchOption.AllDirectories)
                 .Where(f => !f.Contains($"{Path.DirectorySeparatorChar}obj{Path.DirectorySeparatorChar}"))
                 .SelectMany(f => File.ReadAllLines(f).Where(l => !l.TrimStart().StartsWith("//"))
                     .SelectMany(l => Regex.Matches(l, @"GameTool\.LS\(""([^""{}]+)""\)").Cast<Match>().Select(m => (File: Path.GetFileName(f), Key: m.Groups[1].Value))))

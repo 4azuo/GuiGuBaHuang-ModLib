@@ -158,6 +158,8 @@ namespace MOD_nE7UL2.Mod
                             if (!AutoTestHelper.TitlePopups.Contains(name)) { AutoTestHelper.TitlePopups.Add(name); Log($"title popup: {name}"); }
                         if ((DateTime.Now - _titleSeen).TotalMilliseconds > TITLE_SETTLE_MS)
                         {
+                            // the title screen with its popups (Workshop description, announcements) before they are closed
+                            Snap("title-screen");
                             Enqueue(ScenarioScope.Title, null);
                             SetPhase(PhaseEnum.Title, 500);
                         }
@@ -358,6 +360,13 @@ namespace MOD_nE7UL2.Mod
                 _stepIndex = 0;
                 _pendingShot = _request.SnapSteps ? "before" : null;
                 CloseNonBaseUIs($"[{result.Id}] before");
+                // on the title screen: the game's announcements (StartGameTip) closed too; it stays a base
+                // UI while a save loads (its "mods loaded" warning is confirmed by TryConfirmDialogs)
+                if (GameHelper.IsLoginScreen() && g.ui.HasUI(UIType.StartGameTip))
+                {
+                    Log($"[{result.Id}] before: closing {UIType.StartGameTip.uiName}");
+                    g.ui.CloseUI(UIType.StartGameTip);
+                }
                 _uisBefore = new HashSet<int>(OpenUIs().Select(x => x.GetInstanceID()));
                 Log($"[{result.Id}] start: {result.Title}");
             }

@@ -31,7 +31,7 @@ namespace UnitTests.ModLib
             var text = HttpHelper.WorkshopRichText(HttpHelper.ExtractWorkshopDescription(PAGE));
             Check.Info(text);
             Check.Eq(true, text.StartsWith("<size=140%><b>Taoist — v5.5.40</b></size>\n"), "h1: big bold line");
-            Check.Eq(true, text.Contains("<size=120%><b>⚠ Requirements</b></size>\n"), "h2: bold line");
+            Check.Eq(true, text.Contains("<size=120%><b>Requirements</b></size>\n"), "h2: bold line, symbol missing from the font removed");
             Check.Eq(true, text.Contains("  • Fouru's ModLib v2.2.27 or newer\n  • <b>Move ModLib to the TOP</b>, then restart."), "list items, link text kept, one line each");
             Check.Eq(true, text.Contains("S&M Configs"), "entities decoded");
             Check.Eq(false, text.Contains("<div") || text.Contains("<a ") || text.Contains("<ul") || text.Contains("<li") || text.Contains("<br"), "no html tag left");
