@@ -1,2 +1,3 @@
 *.png !text !filter !merge !diff
 *.wav !text !filter !merge !diff
+docs/Effects/**/*.webp filter=lfs diff=lfs merge=lfs -text
