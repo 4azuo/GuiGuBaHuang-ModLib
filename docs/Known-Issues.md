@@ -44,6 +44,7 @@ Status: `Open` (to check) · `Confirmed` · `Fixed` · `Won't fix`. Severity: Hi
 | BUG-19 | Medium | Fixed | `3161035078/.../Mod/MapBuildPropertyEvent.cs` (`GetTax`) | `tax *= (1 + rate).Parse<int>()` casts the rate (e.g. 1.2) to int before multiplying: the merchant tax increases were always x1 | Multiply as float, then cast | - |
 | BUG-20 | Medium | Fixed | `3161035078/.../Mod/CustomRefineEvent.cs` (`OpenMaterialSelector`) | Refine exp `value * RefineWeapon / 40` computed in int: large refines (many spirit stones x high refine skill) overflow | Compute in long | TG-48 |
 | BUG-21 | Low | Fixed | `3161035078/.../Mod/UIEvent.cs` (`OnUIUpdate`) | The 100 ms update could run before `OnOpenUIEnd` created the refine texts of `ArtifactInfo`/`PropInfo` (or use the texts of a closed window): NullReferenceException logged | Only move texts that belong to the open window | TG-48 (artifact info) |
+| BUG-22 | Medium | Open | `3161035078/.../Mod/SeclusionEvent.cs` (`Kind.Garden`) / `TimeSkipEvent.cs` | The game froze in the garden seclusion of storyline E (TS-05 step 09, "Time passes... 1 / 12 months", vitality 0) when TS-05 ran after TR-02 in the same run (promotion run 20261119-095223: the character raised to Origin Spirit, married with children, town master with guardians); TS-05 alone passes (~1 min for the step). Not reproduced yet | Reproduce with `run-autotest.ps1 -Scenario TR-02,TS-05 -ConfirmTools`; check the month run of the skip (`TimeSkipEvent`) with the TR-02 world | - |
 
 (BUG-07 and BUG-08 were draft numbers merged into BUG-11/14.)
 

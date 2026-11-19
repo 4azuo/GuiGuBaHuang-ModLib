@@ -30,6 +30,8 @@ namespace MOD_nE7UL2.AutoTest.Scenarios.Tool
             return s
                 .Step($"open {name}", c =>
                 {
+                    // the mouse out of the game window: no hover tooltip in the picture
+                    MoveCursorAway();
                     try { ok = open(c); }
                     catch (Exception ex) { ok = false; c.Info($"{name}: {ex.Message}"); }
                     if (!ok) c.Info($"{name}: not available, no picture");
@@ -37,6 +39,19 @@ namespace MOD_nE7UL2.AutoTest.Scenarios.Tool
                 })
                 .Wait($"ready {name}", c => !ok || ready == null || ready() || (DateTime.Now - waited).TotalSeconds > 10, 15000, 300)
                 .Step($"promo {name}", c => { if (ok) c.Snap($"promo-{name}"); }, RENDER_MS);
+        }
+
+        [System.Runtime.InteropServices.DllImport("user32.dll")]
+        private static extern bool SetCursorPos(int x, int y);
+
+        [System.Runtime.InteropServices.DllImport("user32.dll")]
+        private static extern int GetSystemMetrics(int index);
+
+        /// <summary>Puts the mouse cursor in the bottom right corner of the screen (outside the game window of a promotion run).</summary>
+        public static void MoveCursorAway()
+        {
+            try { SetCursorPos(GetSystemMetrics(0) - 1, GetSystemMetrics(1) - 1); }
+            catch (Exception ex) { DebugHelper.WriteLine($"PromoShot: cursor not moved: {ex.Message}"); }
         }
 
         /// <summary>Appends a step confirming the message box left by a step (e.g. the town seal of BecomeTownMaster).</summary>
@@ -237,6 +252,16 @@ namespace MOD_nE7UL2.AutoTest.Scenarios.Tool
                 trainer.OpenTrainer(0);
                 return g.ui.HasUI(UIType.TextInfoLong);
             }).Close(() => CloseAll(UIType.TextInfoLong));
+            // its other pages: teleport to any town / sect, breakthrough items of every realm
+            foreach (var page in new[] { Tuple.Create(1, "trainer-teleport"), Tuple.Create(2, "trainer-breakthrough") })
+            {
+                var p = page;
+                s.Shot(p.Item2, c =>
+                {
+                    FeatureEvent<TrainerEvent>(ModConst.TRAINER_EVENT).OpenTrainer(p.Item1);
+                    return g.ui.HasUI(UIType.TextInfoLong);
+                }).Close(() => CloseAll(UIType.TextInfoLong));
+            }
 
             s.Shot("taoist-settings", c =>
             {
@@ -404,9 +429,21 @@ namespace MOD_nE7UL2.AutoTest.Scenarios.Tool
             {
                 if (town != null && !MapBuildPropertyEvent.IsTownMaster(town, Player)) FeatureEvent<TrainerEvent>(ModConst.TRAINER_EVENT).BecomeTownMaster();
             }).Confirm();
+            // the guardians to hire (the people of the town), then the town with 3 of them hired
+            s.Shot("town-hire", c =>
+            {
+                if (town == null || !MapBuildPropertyEvent.IsTownMaster(town, Player)) return false;
+                if (MapBuildPropertyEvent.GetHirablePeople().Count == 0) return false;
+                MapBuildPropertyEvent.OpenUIHirePeople();
+                return g.ui.HasUI(UIType.NPCSearch);
+            }).Close(() => CloseAll(UIType.NPCSearch));
             s.Shot("town-master", c =>
             {
                 if (town == null || !MapBuildPropertyEvent.IsTownMaster(town, Player)) return false;
+                var guardians = MapBuildPropertyEvent.GetTownGuardians(town).Count;
+                foreach (var npc in MapBuildPropertyEvent.GetHirablePeople().Where(x => !x.IsPlayer()).OrderByDescending(x => x.GetGradeLvl()).Take(Math.Max(0, 4 - guardians)))
+                    MapBuildPropertyEvent.Hire(town, npc, MapBuildPropertyEvent.TOWN_GUARDIAN_LUCK_ID);
+                c.Info($"guardians: {MapBuildPropertyEvent.GetTownGuardians(town).Count}");
                 MapBuildPropertyEvent.OpenUITownManage(town);
                 return g.ui.HasUI(UIType.NPCSearch);
             }).Close(() => CloseAll(UIType.NPCSearch, UIType.TextInfoLong, UIType.TextInfo));

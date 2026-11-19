@@ -74,6 +74,9 @@ namespace MOD_nE7UL2.AutoTest.Scenarios.Battle
                     // stays open; it restores the speed when closed)
                     UnityEngine.Time.timeScale = 1f;
                 }, 1500)
+                // the window drawn in full once the game runs again (its fade-in stops while the battle is paused): the
+                // screenshot of this step is the promo picture "damage-calc-battle"
+                .Step("window shown", c => c.Info($"window open: {DamageInfo.IsOpen}"), 1500)
                 .Step("recent foes page", c =>
                 {
                     if (!DamageInfo.IsOpen) return;

@@ -120,6 +120,14 @@
         "Grade 1, CrueltyShura",
         "Trainer on in the save configs, TrainerEvent loaded",
         "Bagua Jade, God Eye and Devil Demon pot active; no intro screen and no first battle"
+      ],
+      "promo": [
+        {
+          "step": "destinies-and-artifacts",
+          "nth": 1,
+          "name": "new-character",
+          "caption": "New character: start with divine artifacts and skip the intro"
+        }
       ]
     },
     {
@@ -1552,6 +1560,14 @@
         "The foe's card",
         "Window closed, battle running",
         "The foe is still in the recent foes"
+      ],
+      "promo": [
+        {
+          "step": "window-shown",
+          "nth": 1,
+          "name": "damage-calc-battle",
+          "caption": "Damage calculation in battle: every step of your hits"
+        }
       ]
     },
     {
@@ -1570,6 +1586,14 @@
         "Drama with its options",
         "An encounter opens",
         "Money/items/exp/luck/mood/HP change as described, result drama shown, results logged"
+      ],
+      "promo": [
+        {
+          "step": "encounter-drama",
+          "nth": 1,
+          "name": "encounter",
+          "caption": "Random encounters: hermits, peddlers, caves and spirit beasts"
+        }
       ]
     },
     {
@@ -1614,6 +1638,14 @@
         "+8 %, reminder letter",
         "Money and items taken, -100 reputation",
         "Debt written off, blacklisted, account closed, taxes x3, logged"
+      ],
+      "promo": [
+        {
+          "step": "collector",
+          "nth": 1,
+          "name": "debt-collector",
+          "caption": "Unpaid loans: the bank sends its debt collectors"
+        }
       ]
     },
     {
@@ -2176,6 +2208,18 @@
           "caption": "Trainer: money, items, realms and towns in one click"
         },
         {
+          "step": "promo-trainer-teleport",
+          "nth": 1,
+          "name": "trainer-teleport",
+          "caption": "Trainer: teleport to any town or sect"
+        },
+        {
+          "step": "promo-trainer-breakthrough",
+          "nth": 1,
+          "name": "trainer-breakthrough",
+          "caption": "Trainer: breakthrough items of every realm"
+        },
+        {
           "step": "promo-taoist-settings",
           "nth": 1,
           "name": "taoist-settings",
@@ -2294,6 +2338,12 @@
           "nth": 1,
           "name": "team",
           "caption": "Team up: your companions follow you into battle"
+        },
+        {
+          "step": "promo-town-hire",
+          "nth": 1,
+          "name": "town-hire",
+          "caption": "Town master: hire the people of your town as guardians"
         },
         {
           "step": "promo-town-master",

@@ -6,3 +6,9 @@ docs/GameAssets/**/*.png filter=lfs diff=lfs merge=lfs -text
 **/SteamImg/**/*.png filter=lfs diff=lfs merge=lfs -text
 **/SteamImg/**/*.jpg filter=lfs diff=lfs merge=lfs -text
 **/SteamImg/**/*.webp filter=lfs diff=lfs merge=lfs -text
+marketing/video/public/**/*.mp3 filter=lfs diff=lfs merge=lfs -text
+marketing/video/public/**/*.wav filter=lfs diff=lfs merge=lfs -text
+marketing/video/public/**/*.ogg filter=lfs diff=lfs merge=lfs -text
+marketing/video/public/**/*.png filter=lfs diff=lfs merge=lfs -text
+marketing/video/public/**/*.jpg filter=lfs diff=lfs merge=lfs -text
+marketing/video/public/**/*.webp filter=lfs diff=lfs merge=lfs -text

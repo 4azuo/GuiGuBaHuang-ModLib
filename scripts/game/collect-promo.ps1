@@ -51,15 +51,21 @@ function Save-GameArea([string]$src, [string]$dst) {
 # scenarios that ran to the end (results.json): only they may drop an older picture they skipped; a scenario that
 # stopped on an error keeps the pictures of its steps not reached
 $finished = @()
+$skipped = @()
 $resultsFile = Join-Path $Run 'results.json'
 if (Test-Path $resultsFile) {
     try {
         $finished = @((Get-Content $resultsFile -Raw -Encoding UTF8 | ConvertFrom-Json).scenarios |
             Where-Object { $_.Status -in @('PASS', 'OK', 'SKIP', 'DONE') } | ForEach-Object { $_.Id })
+        # a skipped test (e.g. TP-01 on an existing save) still takes the screenshot of each step, of whatever is on
+        # the screen: none of them (a tool reports SKIP after taking its pictures: kept)
+        $skipped = @((Get-Content $resultsFile -Raw -Encoding UTF8 | ConvertFrom-Json).scenarios |
+            Where-Object { $_.Status -eq 'SKIP' -and $_.Kind -ne 'Tool' } | ForEach-Object { $_.Id })
     } catch { Write-Host "results.json: $_" -ForegroundColor Yellow }
 }
 $copied = 0
 foreach ($d in $defs | Where-Object { $_.PSObject.Properties['promo'] }) {
+    if ($skipped -contains $d.id) { continue }
     foreach ($p in $d.promo) {
         # step "drama" = any step of that name; "07-drama" = step 07 only
         $pattern = if ($p.step -match '^\d+-') { "^\d+_$([regex]::Escape($d.id))_$([regex]::Escape($p.step))\.png$" }

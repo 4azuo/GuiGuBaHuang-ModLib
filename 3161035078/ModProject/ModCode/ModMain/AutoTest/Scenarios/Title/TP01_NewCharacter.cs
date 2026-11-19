@@ -131,7 +131,7 @@ namespace MOD_nE7UL2.AutoTest.Scenarios.Title
                     statsTab.isOn = true;
                     c.Info($"tab: {statsTab.name}");
                 }, 1500)
-                .Step("confirm", c =>
+                .Step("destinies and artifacts", c =>
                 {
                     if (!Requested || slot < 0) return;
                     var ui = g.ui.GetUI<UICreatePlayer>(UIType.CreatePlayer);
@@ -164,6 +164,13 @@ namespace MOD_nE7UL2.AutoTest.Scenarios.Title
                         ng.PiscesPendant = ng.GodEye = ng.DevilDemon = ng.SkipIntro = true;
                         CacheHelper.SaveGlobalCache(ng);
                     }
+                    // the screenshot of this step shows the ticked checkboxes (promo picture "new-character")
+                }, 1500)
+                .Step("confirm", c =>
+                {
+                    if (!Requested || slot < 0) return;
+                    var ui = g.ui.GetUI<UICreatePlayer>(UIType.CreatePlayer);
+                    if (!c.Assert(ui != null, "creation screen open")) return;
                     ui.OnOkClick();
                 }, 3000)
                 .Wait("world created", c =>

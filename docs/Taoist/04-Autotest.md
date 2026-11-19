@@ -222,28 +222,60 @@ windows until the end of the scenario (TG-32, TG-33, TG-40, TG-43, TG-59, TS-05)
   runs, by the tools **TR-01** (title screen: S&M configs pages) and **TR-02** (in the game: trainer, Taoist settings,
   bank account / loan, weapon details, player market / buy orders, shop, NPC hiring / team, town master, bounties,
   family accounts, Taoist log; `AutoTest/Scenarios/Tool/TR_PromoShots.cs`: `Shot(name, open)` opens a window and
-  captures `promo-<name>`; a feature missing in the save only skips its picture). Dramas and story texts are not
-  promo material. `.\scripts\game\run-promo.ps1 [-Deploy] [-Save <save>] [-Name <promo names>] [-List] [-ConfirmTools]`
+  captures `promo-<name>`, the mouse first moved out of the game window so that no hover tooltip shows; a feature
+  missing in the save only skips its picture; trainer pages, town guardians to hire and the town with its guardians
+  too), and the steps of test scenarios with a promo entry: TP-01 `destinies-and-artifacts` (character creation, the 3
+  divine artifacts and Skip intro ticked; run-promo then passes `-NewCharacter`), TB-17 `window-shown` (damage
+  calculation in a battle), TG-55 `encounter-drama`, TG-57 `collector`, the storylines TS-xx. `.\scripts\game\run-promo.ps1 [-Deploy] [-Save <save>] [-Name <promo names>] [-List] [-ConfirmTools]`
   runs them (`run-autotest.ps1 -Promo`: no check panels over the screenshots, 1600x900 window, scenario-status.json
   left as it is), then
   `scripts/game/collect-promo.ps1` copies them, without the window title bar, to
-  `3161035078/ModProject/SteamImg/promo_<name>.png` (Steam Workshop / Ko-fi); only pictures go there (SteamImg is
+  `3161035078/ModProject/SteamImg/promo_<name>.png` (Steam Workshop / Ko-fi; not from a test reported SKIP: its step
+  screenshots show whatever is on the screen); only pictures go there (SteamImg is
   deployed with the mod), the captions stay in scenarios.json; promo pictures without an entry anymore are removed. **Promo viewer**
   (`promo-viewer/index.html`, data from `python scripts/update-promo-viewer.py [--open]`, run by collect-promo; VS Code
   task "Test: Open Promo Viewer"): the SteamImg pictures with their captions (taken / not taken / no entry anymore),
   the takes of every promotion run still in logs/autotest (to compare and pick), and the videos of marketing/video/out. The test runs never write SteamImg; the
   other pictures there (1.jpg...) are kept.
-- **Marketing video** (`marketing/video`, Remotion, Node.js, Python + numpy): a fast-cut video from the SteamImg pictures and the
-  captions of the promo entries of scenarios.json, by chapter (`src/chapters.json`: Shape your world, Master your cultivator,
-  A living economy, Allies and enemies): intro (title slam), a card per chapter, every picture 4 beats with a punch-in, a
-  pulse on each beat and a "NEW" caption, end card with the feature count. 120 BPM at 30 fps = 15 frames a beat: every cut
-  lands on a beat; each scene comes in over the previous one with one of 9 transitions in turn (iris, wipe, slide, punch
-  zoom, ink diagonal, blur, spin, flash, blinds). The music is synthesized by `scripts/make-music.py` (epic xianxia: taiko and rolls, a low string ostinato,
-  an erhu / dizi-like lead with vibrato and slides, guzheng glissandi, brass swells, gongs; D minor pentatonic; no
-  sample, no licence) and cut to the timeline of each video by `prepare-assets` (written to
-  `public/music-long.wav` / `music-short.wav`). `npm install` once, then `npm run studio` (preview), `npm run render` (all
-  pictures, `out/taoist-promo.mp4`), `npm run render:short` (the `short` pictures of each chapter), `npm run render:still`.
-  `prepare-assets` (run by each) copies SteamImg to `public/steam` and makes the music (not in git).
+- **Marketing video** (`marketing/video`, Remotion, Node.js, Python + numpy): a calm xianxia-styled video from the
+  SteamImg pictures and the captions of the promo entries of scenarios.json, by chapter (`src/chapters.json`: Shape your
+  world, Master your cultivator, A living economy, Family allies and enemies, Living stories). Intro: the game's name, a
+  brush 道, TAOIST slams with its red seal; a card per chapter over its first picture, blurred (brush character of the
+  chapter, "第一卷" seal, VOLUME I and the title; the picture then comes into focus); then the scenes of the chapter:
+  a picture (a name in `pictures` / `short`) or the pictures of one feature (a list of names: S&M configs pages,
+  techniques, bank and loan...), shown in one of 11 ways, each once in the long video (`GROUP_ORDER` in `src/Promo.tsx`): a stack of cards (the one
+  shown drifts left, rises like qi, turns over like a page, is shuffled to the back or melts into a haze), a gallery
+  (each comes in big from the right, then shrinks into a column on the left), a handscroll (unrolled from the middle, side
+  by side between two rollers, the view panning, rolled up again at the end), an ascent (one heaven above the other, "第一重天"..., soaring up through the clouds),
+  a fan of cards, a turning prism (3D), a mosaic (the one shown rising out of its cell); every picture 4 beats, whole
+  (framed, nothing cut off) over itself blurred, motes of qi in front, with the chapter, "2 / 3" and its caption (one line, a 新 seal) below. The scenes and the chapter cards come in with 26 transitions, one per scene
+  (`ENTER_ORDER`, chosen for what comes: the yin-yang for the new character, a formation for the rules, ink for the
+  log, a tribulation for the techniques, the palm for the damage, temple gates for the bank, lanterns for the market,
+  frost for the seclusion, cranes for the team, a seal for the bounties, the furnace for the storylines), each with
+  its setting coming and going smoothly and its particles: mist, the yin-yang swelling over the screen, a formation
+  opening as a portal, a bank of clouds sweeping across, bamboo slips, a drop of ink spreading, qi from the centre, a
+  moon gate, a flying sword's slash (the scene split along the cut, its halves falling: `Exit`, the scene going out
+  over the next), a lightning tribulation (storm sky, a bolt, the scene cracking open from the strike), a scroll
+  opening, soaring up through the clouds, the Buddha's palm (its shockwave rippling the space of the old scene), a
+  pillar of heavenly light, red temple gates, sky lanterns rising at night, a drop resting on a leaf of a tree then
+  falling into a lake (rings), an immortal riding a cloud, peach blossom (a cherry tree in bloom), a dream haze, frost and snow (the
+  frozen scene shattering: `Exit`), a flight of cranes, a seal (golden chains, talismans, 封 stamped, cracks), an ink
+  wash, a talisman burning the picture away (`Exit`), the alchemy furnace (fire and smoke billowing over the screen).
+  A mist lies low under the texts all through the video (`LowMist`, flowing on across the scenes). Clouds, smoke and mist are lit fractal noise (SVG feTurbulence + feDiffuseLighting: `Vapour` in
+  `src/Effects.tsx`, with the immortal, trees, talisman, petals, gates, sparks and bursts; `src/Effects2.tsx`: bolt,
+  formation, taiji, cranes, lanterns, furnace, palm, chains, cracks, frost, shards, ragged masks); calm on purpose (eased
+  moves, no pulse or flash), the caption waiting for the scene to be in; end card over
+  the pictures,
+  blurred, with the music credit (no feature count: more keep coming). Cloud mist and qi motes on the cards; fonts Ma Shan Zheng (brush)
+  and Cinzel (titles), Google Fonts (OFL), downloaded to `public/fonts`. Music: "Samurai" by eBunny (Pixabay, free
+  licence, credited in the end card), `public/ebunny-samurai-354083.mp3`, 112 BPM: every scene starts on the nearest
+  frame of a beat (16.07 frames at 30 fps). `scripts/cut-music.py` cuts the song to each video on beats: the
+  sections of the song (`music` of chapters.json: intro, build, drop1, break, drop2, end) are trimmed so that each drop
+  starts on a chapter card and the song's ending plays under the end card (`public/music-long.wav` / `music-short.wav`).
+  `npm install` once, then `npm run studio` (preview), `npm run render` (all pictures, `out/taoist-promo.mp4`),
+  `npm run render:short` (the `short` pictures of each chapter), `npm run render:still`. `prepare-assets` (run by each)
+  copies SteamImg to `public/steam`, downloads the fonts, writes the plans (`src/promo.generated.json`) and cuts the
+  music (none in git).
 - **Preview images** (`marketing/preview`): `preview.html` (ink, gold title, red seal) rendered by `render.ps1` (Edge
   headless, 2x): `<mod>/ModProject/SteamImg/Preview.png` (1024 square, Steam Workshop) and
   `<mod>/ModProject/ModProjectPreview.png` (1092 x 300, the title in the game's mod list) for Taoist and ModLib.

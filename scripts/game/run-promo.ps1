@@ -62,6 +62,8 @@ $args2 = @{ Promo = $true; Scenario = $ids; Window = $Window; Timeout = $Timeout
 if ($Save) { $args2.Save = $Save }
 if ($Deploy) { $args2.Deploy = $true }
 if ($ConfirmTools) { $args2.ConfirmTools = $true }
+# a picture of the pre-test TP-01 (character creation) needs a new character: run-autotest skips TP-01 otherwise
+if ($ids -contains 'TP-01' -and -not $Save) { $args2.NewCharacter = $true }
 foreach ($k in $PassThru.Keys) { $args2[$k] = $PassThru[$k] }
 & (Join-Path $PSScriptRoot 'run-autotest.ps1') @args2
 $code = $LASTEXITCODE

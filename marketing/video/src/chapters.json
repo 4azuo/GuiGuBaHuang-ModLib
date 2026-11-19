@@ -1,24 +1,93 @@
 {
-  "$comment": "Timing and chapters of the marketing videos, read by src/data.ts and scripts/prepare-assets.mjs (music cut to the same timeline). 30 fps at 120 BPM = 15 frames a beat: every cut lands on a beat.",
+  "$comment": "Timing, music and chapters of the marketing videos, read by src/data.ts and scripts/prepare-assets.mjs (music cut to the same timeline). Lengths in beats of the song (112 BPM: 16.07 frames a beat at 30 fps; every cut lands on the nearest frame of a beat). glyph: the brush character of a chapter card (simplified Chinese: the brush font has no traditional forms). pictures / short: a name is a scene of one picture, a list of names a scene of several pictures of one feature (cards coming to the front in turn).",
   "fps": 30,
-  "bpm": 120,
-  "introBeats": 8,
   "chapterBeats": 4,
   "slideBeats": 4,
-  "outroBeats": 12,
+  "music": {
+    "$comment": "Song beats counted from firstBeat (seconds; a downbeat of a phrase, found by onset analysis). sections: [start, end) beats. A video plays intro, then its body sections (cut to fit: each drop starts on a chapter card), then outro.",
+    "file": "ebunny-samurai-354083.mp3",
+    "credit": "Music: \"Samurai\" by eBunny (Pixabay)",
+    "bpm": 112,
+    "firstBeat": 1.367,
+    "sections": {
+      "intro": [
+        0,
+        16
+      ],
+      "build": [
+        16,
+        44
+      ],
+      "drop1": [
+        44,
+        88
+      ],
+      "break": [
+        88,
+        136
+      ],
+      "drop2": [
+        136,
+        232
+      ],
+      "end": [
+        232,
+        248
+      ]
+    },
+    "long": {
+      "intro": [
+        0,
+        16
+      ],
+      "body": [
+        "build",
+        "drop1",
+        "break",
+        "drop2"
+      ],
+      "outro": [
+        232,
+        248
+      ]
+    },
+    "short": {
+      "intro": [
+        36,
+        44
+      ],
+      "body": [
+        "drop1",
+        "drop2"
+      ],
+      "outro": [
+        240,
+        248
+      ]
+    }
+  },
   "chapters": [
     {
       "title": "Shape your world",
       "subtitle": "Difficulty, rules and tools - your way",
+      "glyph": "天",
       "pictures": [
-        "sm-configs-1",
-        "sm-configs-2",
-        "sm-configs-3",
-        "trainer",
+        "new-character",
+        [
+          "sm-configs-1",
+          "sm-configs-2",
+          "sm-configs-3"
+        ],
+        [
+          "trainer",
+          "trainer-teleport",
+          "trainer-breakthrough"
+        ],
         "taoist-settings",
         "taoist-log"
       ],
       "short": [
+        "new-character",
         "sm-configs-3",
         "trainer"
       ]
@@ -26,59 +95,88 @@
     {
       "title": "Master your cultivator",
       "subtitle": "Mastery, refining and every number explained",
+      "glyph": "修",
       "pictures": [
         "player-info",
         "skills",
-        "technique-attack",
-        "technique-ultimate",
-        "technique-movement",
-        "technique-passive",
+        [
+          "technique-attack",
+          "technique-ultimate",
+          "technique-movement",
+          "technique-passive"
+        ],
         "items",
-        "weapon-detail",
-        "ring-detail",
-        "outfit-detail",
-        "damage-calc",
-        "damage-calc-foes"
+        [
+          "weapon-detail",
+          "ring-detail",
+          "outfit-detail"
+        ],
+        [
+          "damage-calc",
+          "damage-calc-foes",
+          "damage-calc-battle"
+        ]
       ],
       "short": [
         "technique-attack",
         "weapon-detail",
-        "damage-calc",
-        "damage-calc-foes"
+        [
+          "damage-calc",
+          "damage-calc-battle"
+        ]
       ]
     },
     {
       "title": "A living economy",
       "subtitle": "Banks, loans, markets and a town of your own",
+      "glyph": "财",
       "pictures": [
-        "bank",
-        "bank-loan",
-        "market",
-        "market-buy-orders",
+        [
+          "bank",
+          "bank-loan",
+          "debt-collector"
+        ],
+        [
+          "market",
+          "market-buy-orders"
+        ],
         "shop",
-        "town-master"
+        [
+          "town-master",
+          "town-hire"
+        ]
       ],
       "short": [
         "bank-loan",
         "market-buy-orders",
-        "town-master"
+        [
+          "town-master",
+          "town-hire"
+        ]
       ]
     },
     {
       "title": "Family, allies and enemies",
       "subtitle": "Raise a family, hire a team, post bounties",
+      "glyph": "缘",
       "pictures": [
-        "family-tree",
-        "family-heir",
-        "family-fund",
+        [
+          "family-tree",
+          "family-heir",
+          "family-fund"
+        ],
         "seclusion",
-        "npc-hire",
-        "team",
+        [
+          "npc-hire",
+          "team"
+        ],
         "wanted"
       ],
       "short": [
-        "family-tree",
-        "family-heir",
+        [
+          "family-tree",
+          "family-heir"
+        ],
         "team",
         "wanted"
       ]
@@ -86,17 +184,23 @@
     {
       "title": "Living stories",
       "subtitle": "NPC storylines where your choices matter",
+      "glyph": "命",
       "pictures": [
-        "story-cold-sword",
-        "story-furnace",
-        "story-sworn-brothers",
-        "story-herb-garden",
-        "story-wager"
+        "encounter",
+        [
+          "story-cold-sword",
+          "story-furnace",
+          "story-sworn-brothers",
+          "story-herb-garden",
+          "story-wager"
+        ]
       ],
       "short": [
-        "story-sworn-brothers",
-        "story-herb-garden",
-        "story-wager"
+        [
+          "story-sworn-brothers",
+          "story-herb-garden",
+          "story-wager"
+        ]
       ]
     }
   ]
