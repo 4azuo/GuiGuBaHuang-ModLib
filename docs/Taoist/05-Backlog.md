@@ -102,3 +102,12 @@ Test: extend TG-46 (register a hidden item, NPC buys it, check the drama has no 
   (`UIGameMemu.ReloadCache`) left the runner waiting (first run, 2026-11-18): to look at again with the logs of
   `logs/autotest/20261118-005106`; the "return to main menu" path was not reached.
 
+
+## Release CI, Nexus Mods and error reports (2026-11-19)
+
+- **Manual install path**: the release notes say to copy `Mod_xxx` into `<game>\ModExportData\`.
+  Not checked in the game yet: unsubscribe (or rename the Workshop folders), copy both zips' folders there, run
+  `scripts/game/run-game.ps1 -UntilModLoaded -StopGame` and look for `加载模组：...ModExportData...` in the log.
+- **Nexus Mods**: create the ModLib and Taoist pages and a first file on Nexus by hand, then run the VS Code task
+  "Setup: Nexus Mods (CI)" (the CI only adds versions to an existing file). The game domain of Tale of Immortal on
+  Nexus was not checked.

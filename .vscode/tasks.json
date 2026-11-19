@@ -93,6 +93,43 @@
             "problemMatcher": []
         },
 
+        // ===== Release (tag -> CI .github/workflows/release.yml: zip debug/<mod>, GitHub Release, Nexus Mods) =====
+        {
+            "label": "Release: Tag ModLib",
+            "detail": "Tag ModLib-<version in ModMain.cs> on HEAD and push it: the CI zips debug/Mod_flQrxq and publishes the release",
+            "type": "process",
+            "command": "powershell.exe",
+            "args": ["-NoProfile", "-ExecutionPolicy", "Bypass", "-File", "${workspaceFolder}/scripts/create-release-tag.ps1", "-Target", "ModLib"],
+            "presentation": { "focus": true },
+            "problemMatcher": []
+        },
+        {
+            "label": "Release: Tag Taoist",
+            "detail": "Tag Taoist-<TAOIST_VERSION> on HEAD and push it: the CI zips debug/Mod_nE7UL2 and publishes the release",
+            "type": "process",
+            "command": "powershell.exe",
+            "args": ["-NoProfile", "-ExecutionPolicy", "Bypass", "-File", "${workspaceFolder}/scripts/create-release-tag.ps1", "-Target", "Taoist"],
+            "presentation": { "focus": true },
+            "problemMatcher": []
+        },
+        {
+            "label": "Release: Tag All",
+            "detail": "Tag Release-<TAOIST_VERSION> on HEAD and push it: the CI zips both mods into one release",
+            "type": "process",
+            "command": "powershell.exe",
+            "args": ["-NoProfile", "-ExecutionPolicy", "Bypass", "-File", "${workspaceFolder}/scripts/create-release-tag.ps1", "-Target", "All"],
+            "presentation": { "focus": true },
+            "problemMatcher": []
+        },
+        {
+            "label": "Release: Package Zips (local)",
+            "detail": "Zip debug/<mod> of both projects into dist/ like the CI (no tag, nothing published)",
+            "type": "process",
+            "command": "powershell.exe",
+            "args": ["-NoProfile", "-ExecutionPolicy", "Bypass", "-File", "${workspaceFolder}/scripts/package-release.ps1", "-Target", "All"],
+            "problemMatcher": []
+        },
+
         // ===== Single project (<ProjectId>/scripts/) =====
         {
             "label": "Project: Build",
@@ -343,6 +380,15 @@
             "type": "process",
             "command": "powershell.exe",
             "args": ["-NoProfile", "-ExecutionPolicy", "Bypass", "-File", "${workspaceFolder}/scripts/setup/04-verify-environment.ps1"],
+            "problemMatcher": []
+        },
+        {
+            "label": "Setup: Nexus Mods (CI)",
+            "detail": "Set the GitHub secret NEXUSMODS_API_KEY and variables NEXUS_<MOD>_FILE_ID / _URL used by the release CI (needs gh)",
+            "type": "process",
+            "command": "powershell.exe",
+            "args": ["-NoProfile", "-ExecutionPolicy", "Bypass", "-File", "${workspaceFolder}/scripts/setup/setup-nexus.ps1"],
+            "presentation": { "focus": true },
             "problemMatcher": []
         },
         {

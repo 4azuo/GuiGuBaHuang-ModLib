@@ -1,4 +1,7 @@
 ﻿# Build Project - Release
+# -ResourcesOnly: no dotnet build, only the copy of ModConf/ModImg/SteamImg to debug/ (the CI, which cannot build:
+# debug/<mod>/ModCode/dll is committed, the copied folders are git-ignored)
+param([switch]$ResourcesOnly)
 
 # Read settings from JSON file
 $settingsPath = Join-Path $PSScriptRoot "settings.json"
@@ -18,8 +21,13 @@ Write-Host "========================================" -ForegroundColor Cyan
 $rootDir = Split-Path (Split-Path $PSScriptRoot -Parent) -Parent
 Push-Location $rootDir
 
-Write-Host "Building solution..." -ForegroundColor Yellow
-dotnet build "$projectId/ModProject/ModCode/ModMain/ModMain.sln" --configuration Release
+if ($ResourcesOnly) {
+    Write-Host "Resources only (no build)" -ForegroundColor Yellow
+    $global:LASTEXITCODE = 0
+} else {
+    Write-Host "Building solution..." -ForegroundColor Yellow
+    dotnet build "$projectId/ModProject/ModCode/ModMain/ModMain.sln" --configuration Release
+}
 
 Pop-Location
 
