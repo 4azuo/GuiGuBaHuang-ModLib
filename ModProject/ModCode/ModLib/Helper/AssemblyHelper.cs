@@ -149,5 +149,21 @@ namespace ModLib.Helper
                 }
             }
         }
+
+        /// <summary>
+        /// True when version <paramref name="cur"/> is the same as or newer than <paramref name="req"/>, part by part
+        /// ("2.2.31" &gt;= "2.2.9"; the parts are the numbers between non-digits).
+        /// </summary>
+        public static bool VersionGreaterOrEqual(string cur, string req)
+        {
+            var c = System.Text.RegularExpressions.Regex.Split(cur ?? "0", @"\D").Select(x => x.Parse<int>()).ToArray();
+            var r = System.Text.RegularExpressions.Regex.Split(req ?? "0", @"\D").Select(x => x.Parse<int>()).ToArray();
+            for (var i = 0; i < Math.Min(c.Length, r.Length); i++)
+            {
+                if (c[i] != r[i])
+                    return c[i] > r[i];
+            }
+            return true;
+        }
     }
 }

@@ -17,7 +17,7 @@ namespace ModLib.Helper
                 try
                 {
                     if (act == null)
-                        return default;
+                        return def;   // the default given (was default(T): e.g. a missing condition read as false)
                     return act.Invoke();
                 }
                 catch (Exception ex)
@@ -44,7 +44,7 @@ namespace ModLib.Helper
                 try
                 {
                     if (act == null)
-                        return default;
+                        return def;   // the default given (was default(T): e.g. a missing condition read as false)
                     return act.Invoke(v1);
                 }
                 catch (Exception ex)
@@ -71,7 +71,7 @@ namespace ModLib.Helper
                 try
                 {
                     if (act == null)
-                        return default;
+                        return def;   // the default given (was default(T): e.g. a missing condition read as false)
                     return act.Invoke(v1, v2);
                 }
                 catch (Exception ex)
@@ -98,7 +98,7 @@ namespace ModLib.Helper
                 try
                 {
                     if (act == null)
-                        return default;
+                        return def;   // the default given (was default(T): e.g. a missing condition read as false)
                     return act.Invoke(v1, v2, v3);
                 }
                 catch (Exception ex)

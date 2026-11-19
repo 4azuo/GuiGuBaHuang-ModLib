@@ -184,5 +184,11 @@ namespace ModLib.Helper
                 e.Call(new T());
             }
         }
+
+        /// <summary>
+        /// True when the event with this CacheId is loaded (its OnCacheHandler accepted it). Do not test
+        /// "XxxEvent.Instance == null": ModLib sets Instance in OnLoadClass, before OnCacheHandler can reject the object.
+        /// </summary>
+        public static bool IsLoaded(string cacheId) => GetEvents().Any(x => x.CacheId == cacheId);
     }
 }

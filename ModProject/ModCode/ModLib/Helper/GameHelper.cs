@@ -208,6 +208,31 @@ namespace ModLib.Helper
             SpeedGame(oldSpeed);
         }
 
+        private static float? _volumeBeforeMute;
+
+        /// <summary>True when the game is muted (Unity's master volume at 0).</summary>
+        public static bool IsMuted => AudioListener.volume == 0f;
+
+        /// <summary>
+        /// Mutes the game: Unity's master volume (AudioListener.volume, global, kept across scenes) at 0; the volume
+        /// before is kept for <see cref="Unmute"/>. Not saved: the game's own sound settings are unchanged, and the next
+        /// start has the sound back. Calling it again while muted does nothing.
+        /// </summary>
+        public static void Mute()
+        {
+            var v = AudioListener.volume;
+            if (v == 0f) return;
+            _volumeBeforeMute = v;
+            AudioListener.volume = 0f;
+        }
+
+        /// <summary>The volume of before <see cref="Mute"/> back (1 when unknown).</summary>
+        public static void Unmute()
+        {
+            AudioListener.volume = _volumeBeforeMute ?? 1f;
+            _volumeBeforeMute = null;
+        }
+
         /// <summary>
         /// Toggles between paused and running states.
         /// </summary>
