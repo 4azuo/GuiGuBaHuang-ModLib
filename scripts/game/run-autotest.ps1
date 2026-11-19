@@ -565,12 +565,14 @@ if ($res) {
 }
 
 # ------------------------------------------------------------------ OK/NG status per id
+# not for a promotion run (-Promo): its tools only take pictures, and the scenarios it does not run are not "NOT RUN"
 # read-modify-write under a lock shared by the runs of every game slot (run-autotest-parallel.ps1)
 $statusLock = New-Object System.Threading.Mutex($false, 'Global\ggbh-autotest-scenario-status')
 try { [void]$statusLock.WaitOne(120000) } catch [System.Threading.AbandonedMutexException] { }
 try {
 $status = Read-ScenarioStatus $paths.Repo
 $evidence = "test-viewer/index.html#tab=auto&run=$runId"
+if (-not $Promo) {
 foreach ($grp in ($results | Group-Object { ($_.id -split '#')[0] })) {
     if (-not $status.Contains($grp.Name)) { continue }
     $e = $status[$grp.Name]
@@ -590,6 +592,7 @@ foreach ($d in $notRun) {
     $e.result = 'NOT RUN'; $e.lastRun = (Get-Date).ToString('s'); $e.evidence = $evidence; $e.tester = 'autotest'
 }
 Save-ScenarioStatus $paths.Repo $status
+}
 }
 finally { try { $statusLock.ReleaseMutex() } catch { } ; $statusLock.Dispose() }
 $ngIds = @($status.Values | Where-Object { $_.result -eq 'NG' } | ForEach-Object { $_.id })

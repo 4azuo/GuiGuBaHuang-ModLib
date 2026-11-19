@@ -224,7 +224,8 @@ windows until the end of the scenario (TG-32, TG-33, TG-40, TG-43, TG-59, TS-05)
   family accounts, Taoist log; `AutoTest/Scenarios/Tool/TR_PromoShots.cs`: `Shot(name, open)` opens a window and
   captures `promo-<name>`; a feature missing in the save only skips its picture). Dramas and story texts are not
   promo material. `.\scripts\game\run-promo.ps1 [-Deploy] [-Save <save>] [-Name <promo names>] [-List] [-ConfirmTools]`
-  runs them (`run-autotest.ps1 -Promo`: no check panels over the screenshots, 1600x900 window), then
+  runs them (`run-autotest.ps1 -Promo`: no check panels over the screenshots, 1600x900 window, scenario-status.json
+  left as it is), then
   `scripts/game/collect-promo.ps1` copies them, without the window title bar, to
   `3161035078/ModProject/SteamImg/promo_<name>.png` (Steam Workshop / Ko-fi); only pictures go there (SteamImg is
   deployed with the mod), the captions stay in scenarios.json; promo pictures without an entry anymore are removed. **Promo viewer**
