@@ -75,7 +75,7 @@
           <div class="meta">${badge}${c.scenario ? `<span class="mono">${esc(c.scenario)} &middot; ${esc(c.step)}</span>` : ""}
             ${c.picture ? `<span>${esc(c.picture.time)} &middot; ${kb(c.picture.size)}</span>` : ""}
             ${c.takes.length ? `<span>${c.takes.length} take(s)</span>` : ""}</div>
-          <div class="meta mono">${esc(c.picture ? c.picture.file : "promo_" + c.name + ".png")}</div>
+          <div class="meta mono">${esc(c.picture ? c.picture.file : "promo_" + c.name + ".jpg")}</div>
           ${takes}
         </div></article>`;
     }).join("")}</div>`;

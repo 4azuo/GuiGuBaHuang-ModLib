@@ -230,7 +230,8 @@ windows until the end of the scenario (TG-32, TG-33, TG-40, TG-43, TG-59, TS-05)
   runs them (`run-autotest.ps1 -Promo`: no check panels over the screenshots, 1600x900 window, scenario-status.json
   left as it is), then
   `scripts/game/collect-promo.ps1` copies them, without the window title bar, to
-  `3161035078/ModProject/SteamImg/promo_<name>.png` (Steam Workshop / Ko-fi; not from a test reported SKIP: its step
+  `3161035078/ModProject/SteamImg/promo_<name>.jpg` (JPEG under 2 MB, the Steam Workshop limit: the quality lowered
+  until it fits; Steam Workshop / Ko-fi; not from a test reported SKIP: its step
   screenshots show whatever is on the screen); only pictures go there (SteamImg is
   deployed with the mod), the captions stay in scenarios.json; promo pictures without an entry anymore are removed. **Promo viewer**
   (`promo-viewer/index.html`, data from `python scripts/update-promo-viewer.py [--open]`, run by collect-promo; VS Code

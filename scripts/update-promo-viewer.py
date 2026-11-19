@@ -1,5 +1,5 @@
 """Data of the promo viewer (promo-viewer/index.html) -> promo-viewer/data/promo.js:
-- the pictures of 3161035078/ModProject/SteamImg (promo_*.png with the captions of scenarios.json, the other pictures);
+- the pictures of 3161035078/ModProject/SteamImg (promo_*.jpg with the captions of scenarios.json, the other pictures);
 - the promo entries of 3161035078/tests/scenarios.json (taken or not);
 - the promotion screenshots ("promo-<name>") of every autotest run still in logs/autotest, to compare the takes;
 - the rendered videos of marketing/video/out.
@@ -38,7 +38,7 @@ if os.path.isdir(steam):
         if not re.search(r"\.(png|jpe?g)$", f, re.I):
             continue
         full = os.path.join(steam, f)
-        m = re.match(r"promo_(.+)\.png$", f)
+        m = re.match(r"promo_(.+)\.(?:png|jpe?g)$", f, re.I)
         pictures.append({"file": f, "name": m.group(1) if m else None, "size": os.path.getsize(full),
                          "time": stamp(full), "stale": bool(m) and m.group(1) not in known})
 

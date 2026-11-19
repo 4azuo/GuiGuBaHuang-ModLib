@@ -7,7 +7,7 @@
     TR-01 (title screen: S&M configs) and TR-02 (in the game: the windows of the features - trainer, bank, market,
     weapon details, team, town master...; AutoTest/Scenarios/Tool/TR_PromoShots.cs), with no check panel over the
     screenshots, in a 1600x900 window by default. They are tools: confirmed at the prompt, or -ConfirmTools. collect-promo.ps1 then copies the marked
-    screenshots (without the window frame) to SteamImg/promo_<name>.png; the captions stay in scenarios.json,
+    screenshots (without the window frame) to SteamImg/promo_<name>.jpg (under 2 MB, the Steam limit); the captions stay in scenarios.json,
     read by the marketing video (marketing/video, Remotion) and the promo viewer (promo-viewer/index.html).
     The test runs no longer write SteamImg, and a promotion run does not write scenario-status.json (not a test run).
 
@@ -49,7 +49,7 @@ $pictures = foreach ($d in $defs | Where-Object { $_.PSObject.Properties['promo'
     foreach ($p in $d.promo) {
         if ($names.Count -gt 0 -and $names -notcontains $p.name) { continue }
         [pscustomobject]@{ Scenario = $d.id; Kind = $d.kind; Name = $p.name; Step = $p.step; Nth = $p.nth
-            InSteamImg = Test-Path (Join-Path $steamImg "promo_$($p.name).png"); Caption = $p.caption }
+            InSteamImg = Test-Path (Join-Path $steamImg "promo_$($p.name).jpg"); Caption = $p.caption }
     }
 }
 if (-not $pictures) { throw "No promo picture$(if ($names) { " named $($names -join ', ')" }) in scenarios.json" }
@@ -68,7 +68,7 @@ foreach ($k in $PassThru.Keys) { $args2[$k] = $PassThru[$k] }
 & (Join-Path $PSScriptRoot 'run-autotest.ps1') @args2
 $code = $LASTEXITCODE
 
-$missing = @($pictures | Where-Object { -not (Test-Path (Join-Path $steamImg "promo_$($_.Name).png")) })
+$missing = @($pictures | Where-Object { -not (Test-Path (Join-Path $steamImg "promo_$($_.Name).jpg")) })
 if ($missing) { Write-Host "Not taken: $(($missing | ForEach-Object Name) -join ', ')" -ForegroundColor Yellow }
 Write-Host "SteamImg: $steamImg (promo viewer: promo-viewer/index.html)"
 exit $code

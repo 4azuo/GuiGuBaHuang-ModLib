@@ -1,6 +1,6 @@
 <#
 .SYNOPSIS
-    Copies the promotion screenshots of an autotest run to 3161035078/ModProject/SteamImg/promo_<name>.png (Steam
+    Copies the promotion screenshots of an autotest run to 3161035078/ModProject/SteamImg/promo_<name>.jpg (Steam
     Workshop / Ko-fi pictures). The pictures are marked in 3161035078/tests/scenarios.json, per scenario:
         "promo": [ { "step": "NPCs-joined", "nth": 1, "name": "battle_npcs_join", "caption": "..." } ]
     step = the step part of the screenshot name (NNN_<id>_SS-<step>.png), nth = which one when a step has several
@@ -32,6 +32,18 @@ New-Item -ItemType Directory -Force -Path $out | Out-Null
 $all = if (Test-Path $screens) { @(Get-ChildItem $screens -Filter '*.png') } else { @() }
 Add-Type -AssemblyName System.Drawing
 
+# Steam Workshop refuses pictures over 2 MB: JPEG, the quality lowered until the file is under the limit
+$maxBytes = 1900KB
+$jpegCodec = [System.Drawing.Imaging.ImageCodecInfo]::GetImageEncoders() | Where-Object { $_.MimeType -eq 'image/jpeg' }
+function Save-Jpeg([System.Drawing.Image]$bmp, [string]$dst) {
+    foreach ($q in 92, 88, 84, 80, 75, 70, 65, 60) {
+        $params = New-Object System.Drawing.Imaging.EncoderParameters 1
+        $params.Param[0] = New-Object System.Drawing.Imaging.EncoderParameter ([System.Drawing.Imaging.Encoder]::Quality), ([long]$q)
+        $bmp.Save($dst, $jpegCodec, $params)
+        if ((Get-Item -LiteralPath $dst).Length -le $maxBytes) { return }
+    }
+}
+
 # the game area of a window screenshot: without the title bar and the borders (16:9 at the bottom of the window)
 function Save-GameArea([string]$src, [string]$dst) {
     $img = [System.Drawing.Image]::FromFile($src)
@@ -40,11 +52,11 @@ function Save-GameArea([string]$src, [string]$dst) {
         $w = $img.Width - 2 * $border
         $h = [int]($w * 9 / 16)
         $top = $img.Height - $border - $h
-        if ($w -le 0 -or $top -lt 0) { $img.Save($dst, [System.Drawing.Imaging.ImageFormat]::Png); return }
+        if ($w -le 0 -or $top -lt 0) { Save-Jpeg $img $dst; return }
         $bmp = New-Object System.Drawing.Bitmap $w, $h
         $gfx = [System.Drawing.Graphics]::FromImage($bmp)
         $gfx.DrawImage($img, (New-Object System.Drawing.Rectangle 0, 0, $w, $h), (New-Object System.Drawing.Rectangle $border, $top, $w, $h), [System.Drawing.GraphicsUnit]::Pixel)
-        $bmp.Save($dst, [System.Drawing.Imaging.ImageFormat]::Png)
+        Save-Jpeg $bmp $dst
         $gfx.Dispose(); $bmp.Dispose()
     } finally { $img.Dispose() }
 }
@@ -74,19 +86,20 @@ foreach ($d in $defs | Where-Object { $_.PSObject.Properties['promo'] }) {
         $nth = if ($p.PSObject.Properties['nth'] -and $p.nth) { [int]$p.nth } else { 1 }
         if ($shots.Count -lt $nth) {
             # the scenario ran but skipped this picture (nothing to show in this save): an older picture is removed
-            $old = Join-Path $out "promo_$($p.name).png"
+            $old = Join-Path $out "promo_$($p.name).jpg"
             if ((Test-Path $old) -and $finished -contains $d.id -and @($all | Where-Object { $_.Name -match "^\d+_$([regex]::Escape($d.id))_" }).Count -gt 0) {
-                Remove-Item -LiteralPath $old; Write-Host "removed (not taken in this run): promo_$($p.name).png"
+                Remove-Item -LiteralPath $old; Write-Host "removed (not taken in this run): promo_$($p.name).jpg"
             }
             continue
         }
-        Save-GameArea $shots[$nth - 1].FullName (Join-Path $out "promo_$($p.name).png")
+        Save-GameArea $shots[$nth - 1].FullName (Join-Path $out "promo_$($p.name).jpg")
         $copied++
     }
 }
-# pictures of names no longer in scenarios.json removed (renamed / dropped promo entries)
-$known = @($defs | Where-Object { $_.PSObject.Properties['promo'] } | ForEach-Object { $_.promo } | ForEach-Object { "promo_$($_.name).png" })
-foreach ($f in Get-ChildItem $out -Filter 'promo_*.png') {
+# pictures of names no longer in scenarios.json removed (renamed / dropped promo entries), and the PNG pictures of
+# the former format
+$known = @($defs | Where-Object { $_.PSObject.Properties['promo'] } | ForEach-Object { $_.promo } | ForEach-Object { "promo_$($_.name).jpg" })
+foreach ($f in Get-ChildItem $out -Filter 'promo_*.*' | Where-Object { $_.Extension -in '.png', '.jpg' }) {
     if ($known -notcontains $f.Name) { Remove-Item -LiteralPath $f.FullName; Write-Host "removed (no promo entry): $($f.Name)" }
 }
 # promo viewer (promo-viewer/index.html)

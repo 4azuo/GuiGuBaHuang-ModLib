@@ -30,7 +30,7 @@ for (const f of files) fs.copyFileSync(path.join(steamImg, f), path.join(steam, 
 
 const scenarios = JSON.parse(fs.readFileSync(scenariosFile, "utf8").replace(/^﻿/, "")).scenarios ?? [];
 const promo = scenarios
-  .flatMap((s) => (s.promo ?? []).map((p) => ({ name: p.name, file: `promo_${p.name}.png`, caption: p.caption ?? "" })))
+  .flatMap((s) => (s.promo ?? []).map((p) => ({ name: p.name, file: `promo_${p.name}.jpg`, caption: p.caption ?? "" })))
   .filter((p) => files.includes(p.file));
 const extra = files.filter((f) => !f.startsWith("promo_") && !/^preview\./i.test(f)).sort();
 console.log(`SteamImg: ${files.length} picture(s), ${promo.length} with a caption -> public/steam`);
