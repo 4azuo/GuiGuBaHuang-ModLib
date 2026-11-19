@@ -106,3 +106,35 @@ DebugHelper.IsDebugMode = false;  // Silent mode
 **Log format:**
 - Global: `[HH:mm:ss.fff] Message`
 - In-game: `[HH:mm:ss.fff (YYYY/MM/DD)] Message` (includes game date)
+
+## Error Reports (BugSplat)
+
+`DebugHelper.WriteLine(Exception)` also hands the exception to `CrashReportHelper` (ModLib), which sends it to [BugSplat](https://www.bugsplat.com), to the database **of the mod where the error happened**, only when the player allowed it.
+
+**Each mod sets its own database** in its `ModConf/crash_reports.json` (not a game config: `ConfHelper` skips it). No file / invalid database: the errors of that mod are never sent. Taoist: `3161035078/ModProject/ModConf/crash_reports.json`.
+
+```json
+{
+	"Database": "my-bugsplat-db",
+	"ModName": "My mod",
+	"LogLines": 200
+}
+```
+
+| Key | Meaning |
+|---|---|
+| `Database` | BugSplat database (`https://<db>.bugsplat.com`; letters, digits, `-`, `_`) |
+| `ModName` | Shown to the player in the consent dialog; BugSplat application name (default: the mod id) |
+| `LogLines` | Last lines of the ModLib log sent as `log.txt` (default 200, 0 = no log; at most 64 KB, the end kept) |
+
+Version of the reports: `CrashReportHelper.SetModVersion(modId, version)` at init (Taoist: `ModMain.OnLoadClass`, `TAOIST_VERSION`), else the ModLib version.
+
+**Mod of an error**: the first `MOD_<modId>` assembly with a database in the stack of the exception (innermost first), then in the stack of the code that logged it (an error inside ModLib called by Taoist goes to Taoist); else ModLib's own mod when it has a database; else not sent.
+
+**Consent**: on the title screen a Yes/No dialog lists the mods sending reports and what is sent; the answer is saved with its key (`ModTitleEvent.CrashReportConsent` + `CrashReportConsentKey` = `v<CONSENT_VERSION>:<mod ids>`, global cache). The player is asked again when the key changes: a new mod with a database, or `CrashReportHelper.CONSENT_VERSION` increased (do it whenever more data is sent). Change it any time: **title screen → ModCreator → Error reports**. Closing the dialog without answering = asked again next start.
+
+**Sent**: `Callstack.txt` (`Exception.ToString()`), `log.txt` (last `LogLines` lines of the ModLib log of the day, with the game data folder, the user folder, the Windows account and the player id replaced by `<game data>`, `<user folder>`, `<user>`, `<player>`), application name/version of the mod, a one-line description, an anonymous random id (`user`) and attributes `modId`, `modLibVersion`, `caller`, `gameVersion`, `mods` (loaded mod ids), `language`. Not sent: saves, Steam account. Each distinct error (`DebugHelper.GetErrorKey`) is sent once per session, at most 5 per session, on a worker thread (one retry); the result is in the MelonLoader log (`[CrashReport] sent` / `not sent`).
+
+Protocol (BugSplat .NET Standard client): `GET https://<db>.bugsplat.com/api/getCrashUploadUrl` → `PUT` zip to the returned URL → `POST /api/commitS3CrashUpload` (crashTypeId 18). Check a database without the game: `$env:BUGSPLAT_TEST_DB="<db>"; scripts/run-unittests.ps1` runs `CrashReportHelperTests.Live_SendToBugSplat` (skipped when the variable is not set).
+
+In the game: autotest **TT-06** (`.\scripts\game\run-autotest.ps1 -Deploy -Scenario TT-06`) drives the consent dialog and checks every request against a local stand-in of BugSplat (`AutoTest/MockBugSplatServer.cs`, through `CrashReportHelper.ServerUrlOverride`); evidence in the test viewer (screenshots: consent dialog, captured requests, ModCreator row) and in `logs/autotest/<run>/bugsplat/` (`requests.json`, uploaded zip, `Callstack.txt`, commit form). Set `$env:BUGSPLAT_TEST_DB` before the run to also send one real report.

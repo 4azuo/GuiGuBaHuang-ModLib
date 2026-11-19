@@ -4,6 +4,10 @@
 
 ※If you want to support the work: [Ko-fi](https://ko-fi.com/fouru)
 
+※Download: Steam Workshop (automatic updates), or the zips of the [latest GitHub release](https://github.com/4azuo/GuiGuBaHuang-ModLib/releases/latest) for a manual install (copy the `Mod_xxx` folder of the zip into the `ModExportData` folder of the game).
+
+※Error reports: ModLib can send the errors of a mod to its author (BugSplat) **only if you allow it** on the title screen (change it in ModCreator → Error reports). Sent: the error and its stack trace, the last lines of the mod log (your user folder, Windows account and player id removed), versions, loaded mod ids, language, an anonymous id. Never your saves or Steam account. Mod authors: set your own BugSplat database in `ModConf/crash_reports.json` (docs/06-Debug.md).
+
 ※If you have any problem about creating project. Feel free for contacting to me.
 
 ※If you wanna contribute to my project. Please contact to me.

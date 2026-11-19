@@ -35,6 +35,8 @@ namespace MOD_nE7UL2
             ModObj = this;
             ModSettings = JsonConvert.DeserializeObject<ModStts>(ConfHelper.ReadConfData(modId, "mod_configs.json"));
             DebugHelper.WriteLine($"Taoist-Version: {ModConst.TAOIST_VERSION}");
+            //version of the error reports of Taoist (database: ModConf/crash_reports.json)
+            CrashReportHelper.SetModVersion(modId, ModConst.TAOIST_VERSION);
             //exp
             foreach (var item in g.conf.roleGrade._allConfList)
             {

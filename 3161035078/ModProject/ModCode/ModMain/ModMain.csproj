@@ -182,6 +182,8 @@
     <Compile Include="AutoTest\Scenarios\Battle\TB10_LoseNoBodyItem.cs" />
     <Compile Include="AutoTest\Scenarios\Title\TP01_NewCharacter.cs" />
     <Compile Include="AutoTest\Scenarios\Title\TT05_SMConfigsOk.cs" />
+    <Compile Include="AutoTest\Scenarios\Title\TT06_CrashReports.cs" />
+    <Compile Include="AutoTest\MockBugSplatServer.cs" />
     <Compile Include="AutoTest\Scenarios\Time\TX06_Yearly.cs" />
     <Compile Include="AutoTest\Scenarios\Economy\TG54_TownTax.cs" />
     <Compile Include="AutoTest\Scenarios\Battle\TB09_BattleWinRewards.cs" />

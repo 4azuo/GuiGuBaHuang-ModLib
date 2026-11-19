@@ -93,5 +93,25 @@
 		"id": "999990018",
 		"key": "libtxt999990018",
 		"en|ch|tc|kr": "Log öffnen"
+	},
+	{
+		"id": "999990019",
+		"key": "libtxt999990019",
+		"en|ch|tc|kr": "Fehlerberichte"
+	},
+	{
+		"id": "999990020",
+		"key": "libtxt999990020",
+		"en|ch|tc|kr": "Darf ModLib bei einem Fehler in einem dieser Mods einen Fehlerbericht an dessen Autor senden (Dienst BugSplat)?\n{2}\n\nGesendet: die Fehlermeldung und die Stelle im Code, die letzten Zeilen des Mod-Logs (ohne deinen Benutzerordner, dein Windows-Konto und deine Spieler-ID), die Versionen von Spiel, ModLib und Mods, die IDs der geladenen Mods, die Sprache und eine anonyme Zufalls-ID.\nNie gesendet: deine Spielstände oder dein Steam-Konto.\n\nDu kannst die Antwort jederzeit ändern: Titelbildschirm > {0} > {1}."
+	},
+	{
+		"id": "999990021",
+		"key": "libtxt999990021",
+		"en|ch|tc|kr": "Erlaubt: Fehler werden an den Mod-Autor gesendet."
+	},
+	{
+		"id": "999990022",
+		"key": "libtxt999990022",
+		"en|ch|tc|kr": "Nicht erlaubt: es wird nichts gesendet."
 	}
 ]

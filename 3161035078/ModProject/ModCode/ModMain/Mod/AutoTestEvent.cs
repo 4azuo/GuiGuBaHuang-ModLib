@@ -206,6 +206,13 @@ namespace MOD_nE7UL2.Mod
                             Log("already in a save (the pre-test created the character)");
                             SetPhase(PhaseEnum.WaitGame, 1000);
                         }
+                        else if (!_request.NewCharacter && !NeedsSave())
+                        {
+                            // only title-screen scenarios selected (e.g. -Scenario TT-06): no save to load (a slot copy
+                            // would otherwise create its test character and run the title scenarios again)
+                            Log("only title-screen scenarios selected: no save loaded");
+                            Finish("DONE");
+                        }
                         else if (_request.NewCharacter)
                         {
                             Log("the pre-test did not create the character");
@@ -499,6 +506,13 @@ namespace MOD_nE7UL2.Mod
         #endregion
 
         #region Scenario execution
+        /// <summary>A save is needed after the title screen: a full run, battle watching or a selected game / battle scenario.</summary>
+        private bool NeedsSave()
+        {
+            return _request.WatchBattles || _request.Scenarios.Count == 0 ||
+                AutoTestScenarios.Create().Any(x => x.Scope != ScenarioScope.Title && _request.Scenarios.Contains(x.Id));
+        }
+
         private void Enqueue(ScenarioScope scope, string trigger)
         {
             foreach (var s in AutoTestScenarios.Create().Where(x => x.Scope == scope && x.Trigger == trigger))

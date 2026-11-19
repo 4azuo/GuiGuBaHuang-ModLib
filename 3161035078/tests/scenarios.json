@@ -103,6 +103,32 @@
       ]
     },
     {
+      "id": "TT-06",
+      "kind": "auto",
+      "exclusive": true,
+      "feature": "CrashReportHelper (ModLib)",
+      "title": "Error reports to BugSplat only with the player's consent",
+      "description": "ModLib can send the errors of a mod to that mod's BugSplat database (its ModConf/crash_reports.json), but only after the player said yes in a dialog that lists the mods and tells what is sent; an answer given for an older consent text or other mods is not used. A local stand-in of BugSplat (127.0.0.1) records every request the game makes: nothing before the answer or after 'No'; after 'Yes' the 3 requests of the BugSplat protocol for Taoist (the mod of the error: app name and version of Taoist, modId) with a zip of Callstack.txt and log.txt (last log lines, cut, user folder and Windows account removed), commit with crash type, ETag, anonymous id, attributes; nothing private (Windows account, game data path), and the same error only once. Evidence: screenshots of the dialog, of the captured requests and of the ModCreator row, plus <run folder>/bugsplat/ (requests.json, uploaded zip, Callstack.txt, commit form). With the environment variable BUGSPLAT_TEST_DB set before the run, one real report is also sent to that BugSplat database. The player's answer and the settings are restored.",
+      "preconditions": "Title screen",
+      "steps": [
+        "Set a test database and the stand-in server; log an error before any answer",
+        "Open the consent dialog, answer No, log an error",
+        "Open the consent dialog again, answer Yes, log an error",
+        "Check the requests received; show them; log the same error again",
+        "Open the ModCreator tools window",
+        "Optional: send one real report (BUGSPLAT_TEST_DB)"
+      ],
+      "expected": [
+        "No request before the answer and after No",
+        "An answer for another consent key is not used (asked again)",
+        "After Yes: GET upload url (Taoist name and version), PUT zip (Callstack.txt + log.txt without private values), POST commit with crashTypeId 18, md5 = ETag, anonymous user id, attributes with modId of Taoist",
+        "Nothing private sent; the same error sent once",
+        "ModCreator window shows 'Error reports' with the answer",
+        "Real upload accepted (when BUGSPLAT_TEST_DB is set)",
+        "Answer and settings restored"
+      ]
+    },
+    {
       "id": "TP-01",
       "kind": "auto",
       "feature": "Pre-test (new character)",
