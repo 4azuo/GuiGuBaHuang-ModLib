@@ -68,7 +68,10 @@ param(
     [int]$WatchMinutes = 10,
     [int]$Timeout = 900,
     [int]$StallSeconds = 300,
-    [ValidateRange(1, 9)][int]$Slot = 1,
+    # game slot: 0 (default) = the first free one (slot 1 = the normal game, 2..9 = new-game-slot.ps1 copies); a slot
+    # used by another run (other terminal / session, scripts\game\_slots.ps1) is never taken: the run waits
+    [ValidateRange(0, 9)][int]$Slot = 0,
+    [int]$SlotWaitMinutes = 60,
     [switch]$NoSaveBackup,
     [switch]$SlotCharacter,
     [string]$GameArgs,
@@ -91,6 +94,21 @@ param(
 )
 
 $ErrorActionPreference = 'Stop'
+. (Join-Path $PSScriptRoot '_slots.ps1')
+# game slot, locked for the whole run (released when this process ends): several runs at the same time each get their
+# own game; a slot used by another run is never restarted
+if ($ListScenarios -or $ReportFrom) { if ($Slot -lt 1) { $Slot = 1 } }
+else {
+    $autoSlot = $Slot -eq 0
+    # a named save / manual load: the saves of the normal game (slot 1); a slot copy has its own game data folder
+    $candidates = if ($Save -or $ManualLoad) { @(1) } else { Get-InstalledGameSlots }
+    $Slot = Select-GameSlot -Requested $Slot -Candidates $candidates -WaitMinutes $SlotWaitMinutes -What ("run-autotest " + (@($Scenario) -join ','))
+    Write-Host "Game slot: $Slot$(if ($autoSlot) { ' (first free)' })" -ForegroundColor Cyan
+    if ($autoSlot -and $Slot -ge 2 -and -not $ExistingSave -and -not $NewCharacter) {
+        # slot copy: its own test character "AutoTest Slot<n>" (created by TP-01 the first time), as the parallel runs
+        $SlotCharacter = $true
+    }
+}
 # game slot (new-game-slot.ps1): read by _game.ps1 here and by run-game.ps1 (inherited)
 $env:GGBH_SLOT = if ($Slot -ge 2) { "$Slot" } else { $null }
 . (Join-Path $PSScriptRoot '_game.ps1')
@@ -134,8 +152,12 @@ public static class AutoTestWin32b {
 # Falls back to a screen copy of the primary screen when the window is minimized or PrintWindow fails.
 function Save-GameScreenshot([string]$Path) {
     New-Item -ItemType Directory -Path (Split-Path $Path) -Force | Out-Null
-    $p = Get-GameProcess
-    if ($p -and $p.MainWindowHandle -ne [IntPtr]::Zero -and -not [AutoTestWin32b]::IsIconic($p.MainWindowHandle)) {
+    # a few tries: the window handle of the game is sometimes not readable for a moment (the screen copy below then
+    # gives the desktop instead of the game, TT-06 2026-11-19)
+    for ($try = 0; $try -lt 3; $try++) {
+        if ($try -gt 0) { Start-Sleep -Milliseconds 300 }
+        $p = Get-GameProcess
+        if (-not $p -or $p.MainWindowHandle -eq [IntPtr]::Zero -or [AutoTestWin32b]::IsIconic($p.MainWindowHandle)) { continue }
         $r = New-Object AutoTestWin32b+RECT
         if ([AutoTestWin32b]::GetWindowRect($p.MainWindowHandle, [ref]$r) -and ($r.Right - $r.Left) -gt 100) {
             $bmp = New-Object Drawing.Bitmap ($r.Right - $r.Left), ($r.Bottom - $r.Top)
@@ -284,12 +306,11 @@ else {
 
     # ------------------------------------------------------------------ deploy
     if ($Deploy) {
-        # ModLib first: Taoist is compiled against it
-        foreach ($proj in '3385996759', '3161035078') {
-            Write-Title "Rebuild and deploy $proj"
-            & powershell -NoProfile -ExecutionPolicy Bypass -File (Join-Path $paths.Repo "$proj\scripts\rebuild-and-deploy.ps1")
-            if ($LASTEXITCODE -ne 0) { Write-Err "Build/deploy of $proj failed"; exit 1 }
-        }
+        # ModLib first: Taoist is compiled against it. One deploy at a time; the copy waits until no game runs and is
+        # skipped when the Workshop folder already has this build (_slots.ps1)
+        Write-Title 'Rebuild and deploy'
+        try { Invoke-SafeDeploy $paths.Repo $paths.Workshop @('3385996759', '3161035078') }
+        catch { Write-Err "Build/deploy failed: $($_.Exception.Message)"; exit 1 }
     }
 
     # ------------------------------------------------------------------ request
@@ -366,6 +387,9 @@ else {
     # again at the title screen (request.Window)
     if (-not $GameArgs -and $Window) { $GameArgs = Set-GameWindow $repo $Window }
     if ($GameArgs) { $runGameArgs += @('-GameArgs', "`"$GameArgs`"") }
+
+    # another run copying the mods to the Workshop folder: start the game after it
+    try { Wait-DeployFree } catch { Write-Err $_.Exception.Message; exit 1 }
 
     $startTime = Get-Date
     $exitCode = 0

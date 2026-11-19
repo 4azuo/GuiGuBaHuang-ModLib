@@ -55,6 +55,19 @@ The scenarios of [03-Test-Scenarios](03-Test-Scenarios.md) run **inside the real
 .\scripts\game\set-scenario-status.ps1 -Open     # HTML view of all ids
 ```
 
+**Several runs at the same time** (other terminals, other AI sessions, `run-autotest-parallel.ps1`; `scripts/game/_slots.ps1`):
+
+- `-Slot` defaults to `0` = the first free game slot: slot 1 (the normal game) when free, else a slot copy 2..5
+  (`new-game-slot.ps1`; on a slot copy the run plays that slot's own test character, as `-SlotCharacter`). `-Save` /
+  `-ManualLoad` use slot 1 only (the saves of the normal game). `-Slot N` asks for that slot.
+- A run locks its slot for its whole life (`%LOCALAPPDATA%\ggbh-locks\slot<N>.lock`, an open file handle: released by
+  Windows when the process ends, never stale). A slot locked by another run is never used, restarted or closed: the run
+  waits (`-SlotWaitMinutes`, default 60) and prints who holds it. The parallel scripts lock their slots for the whole
+  run; their `run-autotest.ps1` children use them (`GGBH_LOCK_PARENT`).
+- `-Deploy` (`Invoke-SafeDeploy`): one build + copy at a time (`deploy.lock`); the copy to the Workshop folder is
+  skipped when it already has this build, otherwise it waits until no game runs (a running game reads that folder and
+  locks its DLLs: a copy then would mix versions). A run starts its game only when no deploy is copying.
+
 Options: `-Timeout` (s, default 900: the game is closed after it, "Stop reason: duration" - a full run takes about 1 h 30, use `-Timeout 7200`), `-StallSeconds` (default 300: no step for that long = the game stopped running the
 mod, e.g. an exception in its TimerMgr; the scenario is marked ERROR with its last step, `screens/stalled.png` taken, the game
 closed; 0 = off), `-StepDelayMs` (default 1500), `-KeepGame` (do not close the game), `-GamePath`.

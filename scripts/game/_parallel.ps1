@@ -8,6 +8,7 @@
 # - a snapshot of the test character of every slot ("AutoTest Slot<n>") restored before every run: each run starts from
 #   the same fresh character, like a single run does with a new character.
 
+. (Join-Path $PSScriptRoot '_slots.ps1')   # slot / deploy locks shared with every other run of the machine
 $script:ParallelUtf8 = New-Object Text.UTF8Encoding($false)
 $script:GameRegPath = 'HKCU:\Software\guigugame\guigubahuang'
 
@@ -42,6 +43,8 @@ function Stop-ParallelChildren([int[]]$SlotIds) {
     Get-CimInstance Win32_Process -Filter "ParentProcessId=$PID" -ErrorAction SilentlyContinue |
         ForEach-Object { Stop-ProcessTree $_.ProcessId }
     foreach ($s in $SlotIds) {
+        # never the game of a slot used by another run (other terminal / session)
+        if (Test-SlotLockedByOther $s) { continue }
         $env:GGBH_SLOT = if ($s -ge 2) { "$s" } else { $null }
         $g = Get-GameProcess
         if ($g) { Stop-Process -Id $g.Id -Force -ErrorAction SilentlyContinue }

@@ -47,7 +47,7 @@ Always build in Release. Run scripts with `powershell -NoProfile -ExecutionPolic
 - Details: `docs/06-Debug.md`
 - Unit tests (no game): `scripts/run-unittests.ps1` (`tests/UnitTests`; `-IncludeKnownIssues` runs the tests reproducing open bugs)
 - Known bugs to check: `docs/Known-Issues.md`
-- Taoist autotest (scenarios + evidence): `scripts/game/run-autotest.ps1 -Save <test save>` -> evidence in `logs/autotest/<time>/`; OK/NG per scenario id in `3161035078/tests/scenario-status.json`. All results (autotest + unit tests, every run, screenshots by step): `test-viewer/index.html` (data from `scripts/update-test-viewer.ps1`). Prefer `-Scenario` / `-Failed` (NG and NOT RUN ids) over full runs; TP-01 (new character) only runs for a full run or scenarios with `"newCharacter": true`. Keep a run: `scripts/pin-test-run.ps1` (a full all-pass run is pinned automatically). Details: `docs/Taoist/04-Autotest.md`
+- Taoist autotest (scenarios + evidence): `scripts/game/run-autotest.ps1 -Save <test save>` -> evidence in `logs/autotest/<time>/`; OK/NG per scenario id in `3161035078/tests/scenario-status.json`. All results (autotest + unit tests, every run, screenshots by step): `test-viewer/index.html` (data from `scripts/update-test-viewer.ps1`). Prefer `-Scenario` / `-Failed` (NG and NOT RUN ids) over full runs; TP-01 (new character) only runs for a full run or scenarios with `"newCharacter": true`. Keep a run: `scripts/pin-test-run.ps1` (a full all-pass run is pinned automatically). Several sessions may run autotests at once: each run takes a free game slot (slot copies 2..5) and never closes another run's game; `-Deploy` waits for the other games before copying a new build. Details: `docs/Taoist/04-Autotest.md`
 
 ## Documentation
 

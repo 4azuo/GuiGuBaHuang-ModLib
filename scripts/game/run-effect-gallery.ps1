@@ -120,12 +120,13 @@ try {
     Write-Log "$($queue.Count) batch(es) of $($Id -join ', ') on $Slots game(s); work folder $work"
     # ------------------------------------------------------------------ deploy, slots, window, backup
     if ($Deploy) {
-        foreach ($proj in '3385996759', '3161035078') {
-            & powershell -NoProfile -ExecutionPolicy Bypass -File (Join-Path $repo "$proj\scripts\rebuild-and-deploy.ps1") | Out-Null
-            if ($LASTEXITCODE -ne 0) { throw "Build/deploy of $proj failed" }
-        }
+        # one deploy at a time, the copy only when no game runs (or skipped: same build) - _slots.ps1
+        Invoke-SafeDeploy $repo $paths.Workshop @('3385996759', '3161035078') | Out-Null
         Write-Log 'built and deployed'
     }
+    # the slots of this run, locked until it ends (children: GGBH_LOCK_PARENT)
+    foreach ($s in $slotIds) { [void](Select-GameSlot -Requested $s -WaitMinutes 120 -What 'run-effect-gallery') }
+    $env:GGBH_LOCK_PARENT = "$PID"
     foreach ($s in $slotIds) { & (Join-Path $PSScriptRoot 'new-game-slot.ps1') -Slot $s | Out-Null }
     $gameArgs = Set-GameWindow $repo $Window
     $backups = Backup-Saves $paths (Join-Path $work 'save-backup')
