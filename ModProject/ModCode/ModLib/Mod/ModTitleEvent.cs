@@ -2,6 +2,7 @@
 using MelonLoader;
 using ModLib.Attributes;
 using ModLib.Const;
+using ModLib.Enum;
 using ModLib.Helper;
 using ModLib.Object;
 using System.Collections.Generic;
@@ -37,6 +38,18 @@ namespace ModLib.Mod
         };
 
         public int TranslateIndex { get; set; } = 0;
+
+        /// <summary>The player's answer about error reports (CrashReportHelper): asked once on the title screen.</summary>
+        public CrashReportConsentEnum CrashReportConsent { get; set; } = CrashReportConsentEnum.NotAsked;
+
+        /// <summary>
+        /// What the answer was given for (CrashReportHelper.ConsentKey: consent version + mods sending reports): another
+        /// key = asked again (a new mod with a database, more data sent).
+        /// </summary>
+        public string CrashReportConsentKey { get; set; }
+
+        /// <summary>Anonymous random id sent with the error reports (groups the reports of one player).</summary>
+        public string CrashReportUserId { get; set; }
 
         /// <summary>
         /// Loads the LocalText of the saved translation language.
@@ -96,6 +109,14 @@ namespace ModLib.Mod
                             //check duplicated IDs
                             miniWindow.AddButton(col, row, ShowCheckedIDs, GameTool.LS("libtxt999990010"));
                             miniWindow.AddText(txtCol, row, GameTool.LS("libtxt999990011")).Align();
+                            //error reports (only when a BugSplat database is set)
+                            if (CrashReportHelper.IsEnabled)
+                            {
+                                row += 2;
+                                UIItemText txtConsent = null;
+                                miniWindow.AddButton(col, row, () => AskCrashReportConsent(() => txtConsent?.Set(GetCrashReportConsentText())), GameTool.LS("libtxt999990019"));
+                                txtConsent = miniWindow.AddText(txtCol, row, GetCrashReportConsentText()).Align();
+                            }
                             //export assets
                             //row += 2;
                             //miniWindow.AddButton(col, row, ExportAssets, GameTool.LS("libtxt999990012"));
@@ -107,7 +128,39 @@ namespace ModLib.Mod
                         .SetParentTransform(panelLangInit.Component.transform);
                 }
                 ui.UpdateUI();
+
+                //error reports: ask once per consent key (the answer can be changed in the ModCreator window)
+                if (CrashReportHelper.NeedsAsking)
+                    AskCrashReportConsent(null);
             }
+        }
+
+        /// <summary>
+        /// Asks the player whether error reports may be sent (what is sent and what is not) and saves the answer.
+        /// Closing the dialog without an answer leaves it NotAsked (asked again next time).
+        /// </summary>
+        public void AskCrashReportConsent(System.Action onAnswer)
+        {
+            System.Action<CrashReportConsentEnum> answer = (v) =>
+            {
+                CrashReportConsent = v;
+                CrashReportConsentKey = CrashReportHelper.ConsentKey;
+                CacheHelper.SaveGlobalCache(this);
+                DebugHelper.WriteLine($"Error reports: {v} ({CrashReportConsentKey})");
+                DebugHelper.Save();
+                onAnswer?.Invoke();
+            };
+            g.ui.MsgBox(GameTool.LS("libtxt999990019"),
+                string.Format(GameTool.LS("libtxt999990020"), GameTool.LS("libtxt999990009"), GameTool.LS("libtxt999990019"),
+                    string.Join("\n", CrashReportHelper.ModNames.Select(x => $"  • {x}"))),
+                MsgBoxButtonEnum.YesNo,
+                () => answer(CrashReportConsentEnum.Allowed),
+                () => answer(CrashReportConsentEnum.Denied));
+        }
+
+        private string GetCrashReportConsentText()
+        {
+            return GameTool.LS(CrashReportHelper.IsAllowed ? "libtxt999990021" : "libtxt999990022");
         }
 
         /// <summary>

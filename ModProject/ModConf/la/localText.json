@@ -93,5 +93,25 @@
 		"id": "999990018",
 		"key": "libtxt999990018",
 		"en|ch|tc|kr": "Acta aperire"
+	},
+	{
+		"id": "999990019",
+		"key": "libtxt999990019",
+		"en|ch|tc|kr": "Relationes errorum"
+	},
+	{
+		"id": "999990020",
+		"key": "libtxt999990020",
+		"en|ch|tc|kr": "Cum error in uno ex his modis accidit, licetne ModLib relationem erroris auctori eius mittere (servitium BugSplat)?\n{2}\n\nMittitur: nuntius erroris et locus eius in codice, ultimae lineae actorum modi (sine tuo folle usoris, ratione Windows et ID lusoris), versiones ludi, ModLib et modorum, ID modorum oneratorum, lingua et ID fortuitum anonymum.\nNumquam mittitur: tua servata aut ratio Steam.\n\nResponsum tuum quovis tempore mutare potes: tabula tituli > {0} > {1}."
+	},
+	{
+		"id": "999990021",
+		"key": "libtxt999990021",
+		"en|ch|tc|kr": "Permissum: errores auctori modi mittuntur."
+	},
+	{
+		"id": "999990022",
+		"key": "libtxt999990022",
+		"en|ch|tc|kr": "Non permissum: nihil mittitur."
 	}
 ]

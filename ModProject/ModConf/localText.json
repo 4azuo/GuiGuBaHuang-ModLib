@@ -135,5 +135,37 @@
 		"ch": "打开日志",
 		"tc": "開啟日誌",
 		"kr": "로그 열기"
+	},
+	{
+		"id": "999990019",
+		"key": "libtxt999990019",
+		"en": "Error reports",
+		"ch": "错误报告",
+		"tc": "錯誤報告",
+		"kr": "오류 보고"
+	},
+	{
+		"id": "999990020",
+		"key": "libtxt999990020",
+		"en": "When an error happens in one of these mods, may ModLib send an error report to its author (BugSplat service)?\n{2}\n\nSent: the error message and where it happened in the code, the last lines of the mod log (your user folder, Windows account and player id removed), the versions of the game, ModLib and the mods, the ids of the loaded mods, the language and an anonymous random id.\nNever sent: your saves or Steam account.\n\nYou can change your answer at any time: title screen > {0} > {1}.",
+		"ch": "当以下模组出错时，是否允许 ModLib 向其作者发送错误报告（BugSplat 服务）？\n{2}\n\n发送内容：错误信息及其在代码中的位置、模组日志的最后几行（已去除你的用户文件夹、Windows 账户和玩家 ID）、游戏/ModLib/模组的版本、已加载模组的 ID、语言和一个匿名随机 ID。\n绝不发送：存档或 Steam 账号。\n\n随时可以更改：标题画面 > {0} > {1}。",
+		"tc": "當以下模組出錯時，是否允許 ModLib 向其作者傳送錯誤報告（BugSplat 服務）？\n{2}\n\n傳送內容：錯誤訊息及其在程式碼中的位置、模組日誌的最後幾行（已去除你的使用者資料夾、Windows 帳戶和玩家 ID）、遊戲/ModLib/模組的版本、已載入模組的 ID、語言和一個匿名隨機 ID。\n絕不傳送：存檔或 Steam 帳號。\n\n隨時可以更改：標題畫面 > {0} > {1}。",
+		"kr": "아래 모드에서 오류가 발생하면 ModLib가 제작자에게 오류 보고서를 보내도 될까요? (BugSplat 서비스)\n{2}\n\n보내는 내용: 오류 메시지와 코드상의 위치, 모드 로그의 마지막 줄들(사용자 폴더, Windows 계정, 플레이어 ID는 제거됨), 게임/ModLib/모드 버전, 로드된 모드 ID, 언어, 익명 무작위 ID.\n절대 보내지 않음: 세이브, Steam 계정.\n\n언제든지 변경 가능: 타이틀 화면 > {0} > {1}."
+	},
+	{
+		"id": "999990021",
+		"key": "libtxt999990021",
+		"en": "Allowed: errors are sent to the mod author.",
+		"ch": "已允许：错误会发送给模组作者。",
+		"tc": "已允許：錯誤會傳送給模組作者。",
+		"kr": "허용됨: 오류가 모드 제작자에게 전송됩니다."
+	},
+	{
+		"id": "999990022",
+		"key": "libtxt999990022",
+		"en": "Not allowed: nothing is sent.",
+		"ch": "未允许：不会发送任何内容。",
+		"tc": "未允許：不會傳送任何內容。",
+		"kr": "허용 안 됨: 아무것도 전송되지 않습니다."
 	}
 ]

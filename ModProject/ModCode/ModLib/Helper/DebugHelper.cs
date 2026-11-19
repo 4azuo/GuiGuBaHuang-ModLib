@@ -139,9 +139,7 @@ namespace ModLib.Helper
         /// </summary>
         public static void WriteIgnoredError(string source, Exception e)
         {
-            var inner = e;
-            while (inner?.InnerException != null) inner = inner.InnerException;
-            var key = $"{source}|{inner?.GetType().Name}|{inner?.Message}|{inner?.StackTrace?.Split('\n').FirstOrDefault()}";
+            var key = $"{source}|{GetErrorKey(e)}";
             lock (_ignoredErrors)
             {
                 if (!_ignoredErrors.Add(key))
@@ -165,8 +163,21 @@ namespace ModLib.Helper
             WriteLine($"{e.GetAllInnnerExceptionStr()}");
             Save();
 
+            //sent only when the player allowed it (ModTitleEvent.CrashReportConsent)
+            CrashReportHelper.Report(e, $"{Path.GetFileName(filePath)}:{memberName}:(line {lineNumber})");
+
             if (IsDebugMode)
                 ModMaster.ShowException(e, GetDebugFilePath());
+        }
+
+        /// <summary>
+        /// Identity of an error: type, message and first stack line of the innermost exception (same error = same key).
+        /// </summary>
+        public static string GetErrorKey(Exception e)
+        {
+            var inner = e;
+            while (inner?.InnerException != null) inner = inner.InnerException;
+            return $"{inner?.GetType().Name}|{inner?.Message}|{inner?.StackTrace?.Split('\n').FirstOrDefault()}";
         }
 
         /// <summary>

@@ -93,5 +93,25 @@
 		"id": "999990018",
 		"key": "libtxt999990018",
 		"en|ch|tc|kr": "Mở nhật ký"
+	},
+	{
+		"id": "999990019",
+		"key": "libtxt999990019",
+		"en|ch|tc|kr": "Báo cáo lỗi"
+	},
+	{
+		"id": "999990020",
+		"key": "libtxt999990020",
+		"en|ch|tc|kr": "Khi một trong các mod sau gặp lỗi, cho phép ModLib gửi báo cáo lỗi cho tác giả của mod đó (dịch vụ BugSplat)?\n{2}\n\nĐược gửi: thông báo lỗi và vị trí lỗi trong mã, các dòng cuối của log mod (đã bỏ thư mục người dùng, tài khoản Windows và id người chơi), phiên bản game, ModLib và các mod, id các mod đang bật, ngôn ngữ và một id ngẫu nhiên ẩn danh.\nKhông bao giờ gửi: save hay tài khoản Steam của bạn.\n\nCó thể đổi lựa chọn bất cứ lúc nào: màn hình tiêu đề > {0} > {1}."
+	},
+	{
+		"id": "999990021",
+		"key": "libtxt999990021",
+		"en|ch|tc|kr": "Đã cho phép: lỗi được gửi cho tác giả mod."
+	},
+	{
+		"id": "999990022",
+		"key": "libtxt999990022",
+		"en|ch|tc|kr": "Không cho phép: không gửi gì cả."
 	}
 ]
