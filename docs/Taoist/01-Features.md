@@ -1,6 +1,6 @@
 # Taoist - Features (ModMain/Mod)
 
-One row per event class. **Hooks** = overridden ModLib events. **Saved** = public properties persisted per save (Local cache) unless noted. **Switch** = S&M option (`SMLocalConfigsEvent.Configs`) or `mod_configs.json` section. Test ids refer to [03-Test-Scenarios](03-Test-Scenarios.md).
+One row per event class; the detailed page of each class (saved data, switches, flow, formulas, UI) is in [Features/](Features/README.md) (`Features/<Class>.md`). **Hooks** = overridden ModLib events. **Saved** = public properties persisted per save (Local cache) unless noted. **Switch** = S&M option (`SMLocalConfigsEvent.Configs`) or `mod_configs.json` section. Test ids refer to [03-Test-Scenarios](03-Test-Scenarios.md).
 
 ## Core / configuration
 
@@ -92,4 +92,4 @@ One row per event class. **Hooks** = overridden ModLib events. **Saved** = publi
 
 ## Known issues
 
-See [../Known-Issues.md](../Known-Issues.md) (BUG-01 ... BUG-21, with file/line, suggested fix and reproducing unit tests).
+See [../Known-Issues.md](../Known-Issues.md) (open issues only, with file/line, suggested fix and reproducing unit tests).

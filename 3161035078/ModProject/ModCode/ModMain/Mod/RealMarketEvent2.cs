@@ -110,7 +110,7 @@ namespace MOD_nE7UL2.Mod
         {
             var r = Instance.MarketPriceRate[town.buildData.id];
             if (UnitTypeEvent.GetUnitTypeEnum(wunit) == UnitTypeEnum.Merchant)
-                r += UnitTypeEnum.Merchant.CustomLuck.CustomEffects[ModConst.UTYPE_LUCK_EFX_BUY_COST].Value0.Parse<float>();
+                r += UnitTypeEnum.Merchant.CustomLuck.CustomEffects[ModConst.UTYPE_LUCK_EFX_BUY_COST].Value0.Parse<float>() * 100f; // fraction (-0.10 = -10 %) on a rate in percent (was -0.1 %)
             if (MapBuildPropertyEvent.IsTownGuardian(town, wunit))
             {
                 if (MapBuildPropertyEvent.IsTownMaster(town, wunit))

@@ -48,6 +48,8 @@ docs/
 │   ├── 04-Autotest.md            the autotest runner, evidence, unit tests, viewers, promo, marketing video
 │   ├── 05-Backlog.md             open work and former TODO notes
 │   ├── 06-Storylines-Draft.md    design of the NPC storylines A-L and the links between them
+│   ├── Features/                 one page per class of ModMain/Mod (saved data, switches, flow, formulas, UI)
+│   │   └── README.md             index by group + points found while documenting
 │   └── Storylines/               dialogue of every line
 │       ├── 00-Conventions.md
 │       ├── A-Cold-Sword.md .. F-Red-Lotus.md               lines A-F (early game)
@@ -71,7 +73,7 @@ docs/
 | set up the environment, build, deploy | `00-Getting-Started.md`, `07-Build-Deploy.md` |
 | write a feature (event, UI, config, text) | `02-Events.md`, `ModLib/04-UI-Framework.md`, `03-Configs.md`, `04-LocalText.md` |
 | find a config type of the game and its fields | `ModConf/00-SampleConfs-List.md` |
-| know what a Taoist feature does, its hooks and tests | `Taoist/01-Features.md` |
+| know what a Taoist feature does, its hooks and tests | `Taoist/01-Features.md` (summary), `Taoist/Features/<Class>.md` (details, formulas) |
 | run / read the autotests, the viewers, the promo pictures, the video | `Taoist/04-Autotest.md` |
 | see open work | `Taoist/05-Backlog.md`, `Known-Issues.md` |
 | write or change a storyline | `Taoist/06-Storylines-Draft.md`, `Taoist/Storylines/` |

@@ -5,7 +5,7 @@
     /// </summary>
     public static class ModConst
     {
-        public const string TAOIST_VERSION = "5.5.46";
+        public const string TAOIST_VERSION = "5.5.47";
         public const string MODLIB_REQUIRED_VERSION = "2.2.33";
 
         //Events

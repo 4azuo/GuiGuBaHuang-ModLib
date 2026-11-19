@@ -66,4 +66,4 @@ Read the relevant doc from `docs/` before answering questions or making non-triv
 - `ModConf/00-SampleConfs-List.md` - Index of config samples (per-category files `01`-`12`)
 - `ModCreator/00-Overview.md` - ModCreator tool (per-feature files `01`-`05`)
 - `ModLib/00-Architecture.md` - ModLib internals: dispatch, load sequence, monthly tick (`01` event reference, `02` cache/persistence, `03` built-in events, `04` UI framework, `05` attributes/objects/enums)
-- `Taoist/00-Overview.md` - Taoist structure and event order (`01` features per event + known issues, `02` configs, `03` test scenarios, `04` autotest/evidence/unit tests, `05` backlog: open work and former TODO notes, `06` storyline design, `Storylines/` dialogue per line)
+- `Taoist/00-Overview.md` - Taoist structure and event order (`01` features per event + known issues, `Features/<Class>.md` one detailed page per Mod class, `02` configs, `03` test scenarios, `04` autotest/evidence/unit tests, `05` backlog: open work and former TODO notes, `06` storyline design, `Storylines/` dialogue per line)

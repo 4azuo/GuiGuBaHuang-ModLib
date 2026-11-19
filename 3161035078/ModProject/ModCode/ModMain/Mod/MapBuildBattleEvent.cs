@@ -186,6 +186,16 @@ namespace MOD_nE7UL2.Mod
         }
 
         /// <summary>
+        /// Escaping (or failing to escape) a town war / monster wave: the player loses 1/divisor of the reputation, taken
+        /// from its absolute value so a negative reputation gets worse too (-(rep / n) raised a negative one).
+        /// </summary>
+        public static void LoseReputation(int divisor)
+        {
+            var rep = g.world.playerUnit.GetProperty<int>(UnitPropertyEnum.Reputation);
+            g.world.playerUnit.AddProperty<int>(UnitPropertyEnum.Reputation, -(int)(Math.Abs((long)rep) / divisor));
+        }
+
+        /// <summary>
         /// Relations penalty.
         /// </summary>
         private static void Hated(MapBuildSchool school)
@@ -299,23 +309,23 @@ namespace MOD_nE7UL2.Mod
                                 case DRAMA_TRY_ESCAPE_OPT_ID:
                                     if (CommonTool.Random(0.00f, 100.00f).IsBetween(0.00f, Configs.EscapeChance))
                                     {
-                                        g.world.playerUnit.AddProperty<int>(UnitPropertyEnum.Reputation, g.world.playerUnit.GetProperty<int>(UnitPropertyEnum.Reputation) / 2);
+                                        LoseReputation(2);
                                         g.world.playerUnit.SetUnitRandomPos(g.world.playerUnit.GetUnitPos(), 4);
                                         if (MapBuildPropertyEvent.IsTownGuardian(townA_def, g.world.playerUnit))
                                         {
-                                            g.world.playerUnit.AddProperty<int>(UnitPropertyEnum.Reputation, g.world.playerUnit.GetProperty<int>(UnitPropertyEnum.Reputation) / 5);
+                                            LoseReputation(5);
                                             Hated(townA_def);
                                         }
                                         else if (MapBuildPropertyEvent.IsTownGuardian(townB_atk, g.world.playerUnit))
                                         {
-                                            g.world.playerUnit.AddProperty<int>(UnitPropertyEnum.Reputation, g.world.playerUnit.GetProperty<int>(UnitPropertyEnum.Reputation) / 5);
+                                            LoseReputation(5);
                                             Hated(townB_atk);
                                         }
                                     }
                                     else
                                     {
                                         JoinTownWar(townA_def, townB_atk, TeamSideEnum.TeamA);
-                                        g.world.playerUnit.AddProperty<int>(UnitPropertyEnum.Reputation, g.world.playerUnit.GetProperty<int>(UnitPropertyEnum.Reputation) / 3);
+                                        LoseReputation(3);
                                     }
                                     break;
                             }
@@ -567,13 +577,13 @@ namespace MOD_nE7UL2.Mod
                                 case DRAMA_TRY_ESCAPE_OPT_ID:
                                     if (CommonTool.Random(0.00f, 100.00f).IsBetween(0.00f, Configs.EscapeChance))
                                     {
-                                        g.world.playerUnit.AddProperty<int>(UnitPropertyEnum.Reputation, g.world.playerUnit.GetProperty<int>(UnitPropertyEnum.Reputation) / 2);
+                                        LoseReputation(2);
                                         g.world.playerUnit.SetUnitRandomPos(g.world.playerUnit.GetUnitPos(), 4);
                                         Hated(town);
                                     }
                                     else
                                     {
-                                        g.world.playerUnit.AddProperty<int>(UnitPropertyEnum.Reputation, g.world.playerUnit.GetProperty<int>(UnitPropertyEnum.Reputation) / 5);
+                                        LoseReputation(5);
                                         JoinMonstWave(town, TOWN_MONST_WAVE_DUNGEON_BASE_ID);
                                     }
                                     break;
@@ -653,14 +663,14 @@ namespace MOD_nE7UL2.Mod
                                 case DRAMA_TRY_ESCAPE_OPT_ID:
                                     if (CommonTool.Random(0.00f, 100.00f).IsBetween(0.00f, Configs.EscapeChance))
                                     {
-                                        g.world.playerUnit.AddProperty<int>(UnitPropertyEnum.Reputation, g.world.playerUnit.GetProperty<int>(UnitPropertyEnum.Reputation) / 2);
+                                        LoseReputation(2);
                                         g.world.playerUnit.SetUnitRandomPos(g.world.playerUnit.GetUnitPos(), 4);
                                         if (school.schoolNameID == g.world.playerUnit.data.unitData.schoolID)
                                             Hated(school);
                                     }
                                     else
                                     {
-                                        g.world.playerUnit.AddProperty<int>(UnitPropertyEnum.Reputation, g.world.playerUnit.GetProperty<int>(UnitPropertyEnum.Reputation) / 5);
+                                        LoseReputation(5);
                                         JoinMonstWave(school, SECT_MONST_WAVE_DUNGEON_BASE_ID);
                                     }
                                     break;

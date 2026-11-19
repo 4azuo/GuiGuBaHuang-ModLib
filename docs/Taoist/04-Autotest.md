@@ -314,7 +314,7 @@ Results: console + `logs/unittests/unittests.trx`. The tests reference the mods'
 | `ModLib/ObjectTests.cs` | `EnumObject` lookups, `EnumObjectConverter` round trip, `MultiValue`, `MathLogicOptions`, `EncryptionHelper`, `PngEncodeHelper` chunks, `ModBattleEvent` damage keys/types |
 | `Taoist/FormulaTests.cs` | `ExpertEvent.GetExpertNeedExp`, `SMLocalConfigsEvent.Calculate`, `PriceHelper.UpPrice` and ratio tables, `BattleModifyEvent.BlockRatio` |
 | `Taoist/ConfigTests.cs` | every ModConf JSON parses, `mod_configs.json` sections/keys match `ModStts`, bank fees, unique CacheIds, `_EventOrderIndex.json` vs events, every `GameTool.LS("key")` exists in LocalText, unique LocalText ids/keys, `scenarios.json` vs scenario classes |
-| `KnownIssues.cs` | `[TestCategory("KnownIssue")]` tests reproducing [../Known-Issues.md](../Known-Issues.md) (BUG-07/08/09), excluded by default |
+| `KnownIssues.cs` | `[TestCategory("KnownIssue")]` tests reproducing the open issues of [../Known-Issues.md](../Known-Issues.md) (none at the moment), excluded by default |
 
 What can / cannot be unit tested:
 
