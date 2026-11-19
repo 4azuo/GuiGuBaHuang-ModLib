@@ -287,7 +287,27 @@ namespace MOD_nE7UL2.Mod
             if (town == null || (!BankAccountEvent.Instance.RegisterdTown.Contains(town.buildData.id) && !MapBuildPropertyEvent.IsTownGuardian(town, Player)))
                 return;
             var cover = new UICover<UITownStorage>(e.ui);
-            cover.AddButton(cover.LastCol - 6, cover.FirstRow + 3, () => OpenLoan(town), GameTool.LS("loan_title")).Size(200, 40);
+            // just below the game's "Storage" button, same size
+            var props = cover.UI.btnProps.GetComponent<RectTransform>().rect.size;
+            var btn = cover.AddButton(cover.LastCol - 6, cover.FirstRow + 3, () => OpenLoan(town), GameTool.LS("loan_title")).Size(props.x, props.y);
+            PlaceBelow(btn.Item, cover.UI.btnProps, 8f);
+        }
+
+        /// <summary>Moves a button just below another one: same parent and anchors, centered, gap in local units.</summary>
+        private static void PlaceBelow(Component item, Component anchor, float gap)
+        {
+            if (item == null || anchor == null)
+                return;
+            var org = anchor.GetComponent<RectTransform>();
+            var rect = item.GetComponent<RectTransform>();
+            rect.SetParent(org.parent, false);
+            rect.localScale = Vector3.one;
+            rect.anchorMin = org.anchorMin;
+            rect.anchorMax = org.anchorMax;
+            var orgBottom = org.anchoredPosition.y - org.rect.height * org.pivot.y;
+            var x = org.anchoredPosition.x + org.rect.width * (0.5f - org.pivot.x) - rect.rect.width * (0.5f - rect.pivot.x);
+            rect.anchoredPosition = new Vector2(x, orgBottom - gap - rect.rect.height * (1f - rect.pivot.y));
+            DebugHelper.WriteLine($"BankLoanEvent: loan button at {rect.anchoredPosition} under {org.parent?.name} (storage {org.anchoredPosition}, {org.rect.size})");
         }
 
         /// <summary>Loan window: state, borrow (amount), repay.</summary>
