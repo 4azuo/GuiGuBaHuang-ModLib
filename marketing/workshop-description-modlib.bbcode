@@ -1,0 +1,44 @@
+[h1]Fouru's ModLib — v2.2.32[/h1]
+A shared framework library used by my mods (e.g. [url=https://steamcommunity.com/sharedfiles/filedetails/?id=3161035078]Taoist[/url]). It does nothing on its own — it just lets other mods run.
+
+[h2]⚠ Installation[/h2]
+[list]
+[*]Subscribe, then [b]move ModLib to the TOP of your mod list[/b] (above every mod that uses it).
+[*][b]Restart the game[/b] after changing the load order.
+[*]Mods that need a newer ModLib tell you so on the title screen.
+[/list]
+
+[h2]Features (for players)[/h2]
+[list]
+[*][b]Save-safe:[/b] mod data is stored in separate JSON files and never written into your save file, so removing a mod will not break your save.
+[*]Mod data of saves you delete in the game is cleaned up automatically.
+[*]Child mods load and update in a fixed order, so they do not conflict with each other.
+[*]Translations: each mod's text can be replaced through LocalText.json.
+[/list]
+
+[h2]Features (for modders)[/h2]
+[list]
+[*][b]Event system:[/b] one ordered event model for game, map, battle, UI and timers (including a monthly tick), with conditions and delayed execution.
+[*][b]Persistence:[/b] global and per-save caches as plain JSON (no encryption), so they are easy to inspect and debug.
+[*][b]Data sharing:[/b] child mods can exchange data, and each mod gets its own Parameter Store.
+[*][b]Configs:[/b] create or replace game configs from JSON, with sample templates for every config type.
+[*][b]UI framework:[/b] build windows, buttons, inputs and other controls in code.
+[*][b]Icons in texts:[/b] write the game's icons (spirit stones, herbs, ores, stats...) in any localized text with [icon:NAME].
+[*][b]Dramas and portraits:[/b] open dialogs with options and backgrounds; draw characters with the game's portrait art.
+[*][b]Battle helpers:[/b] damage, skills, the game's visual effects, the battle scene and camera.
+[*][b]Helpers:[/b] units, items, async and delay functions, Workshop descriptions as rich text, UI automation for tests, and more.
+[*][b]Debug and logging:[/b] several log levels, error dialogs, and timing info.
+[/list]
+
+[h2]Open source[/h2]
+You are free to build your own mod on top of ModLib. A like is always appreciated!
+Source code, docs and the ModCreator tool: [url=https://github.com/4azuo/GuiGuBaHuang-ModLib/]https://github.com/4azuo/GuiGuBaHuang-ModLib/[/url]
+
+[h2]Support[/h2]
+ModLib is free and stays free. If it helps you, you can buy me a coffee on [url=https://ko-fi.com/fouru]Ko-fi (ko-fi.com/fouru)[/url]. Thank you!
+
+[h2]Feedback[/h2]
+[url=https://github.com/4azuo/GuiGuBaHuang-ModLib/issues/13]Feedback page[/url]
+If your feedback is not about Taoist, please open a new issue. Thanks!
+
+[i]※ Sorry for my English (^_-)-☆[/i]
