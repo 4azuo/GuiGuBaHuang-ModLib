@@ -6,7 +6,7 @@
 
 ※Download: Steam Workshop (automatic updates), or the zips of the [latest GitHub release](https://github.com/4azuo/GuiGuBaHuang-ModLib/releases/latest) for a manual install (copy the `Mod_xxx` folder of the zip into the `ModExportData` folder of the game).
 
-※Error reports: ModLib can send the errors of a mod to its author (BugSplat) **only if you allow it** on the title screen (change it in ModCreator → Error reports). Sent: the error and its stack trace, the last lines of the mod log (your user folder, Windows account and player id removed), versions, loaded mod ids, language, an anonymous id. Never your saves or Steam account. Mod authors: set your own BugSplat database in `ModConf/crash_reports.json` (docs/06-Debug.md).
+※Error reports: ModLib can send the errors of a mod to its author (BugSplat) **only if you allow it** on the title screen (change it in ModCreator → Error reports). Sent: the error and its stack trace, the last lines of the mod log (your user folder, Windows account and player id removed), versions, loaded mod ids, language, an anonymous id. Never your saves or Steam account. Mod authors: set your own BugSplat database in `ModConf/crash_reports.json` (see [Error reports (BugSplat)](#error-reports-bugsplat)).
 
 ※If you have any problem about creating project. Feel free for contacting to me.
 
@@ -177,6 +177,57 @@ You can use DebugHelper to write a log which will be saved to ↓ folder.
 ※All logs are created in ModLib with Mod-Id = `flQrxq`
 
 Also, you can use **TraceAttribute**/**TraceIgnoreAttribute** which catch calling method.
+
+
+
+
+
+# Error reports (BugSplat)
+
+ModLib can send the errors of your mod to your own [BugSplat](https://www.bugsplat.com) database, so you see the bugs of the players without asking them for logs. Nothing is sent before the player allows it (a Yes/No dialog on the title screen, changed later in **ModCreator → Error reports**).
+
+**1. Create a database**
+
+- Sign up at [bugsplat.com](https://www.bugsplat.com) (the free plan is enough for a mod).
+- Create a database in the BugSplat web app (Settings → Database). Its name goes into the upload URL (`https://<database>.bugsplat.com`): use letters, digits, `-` and `_` only, and **not your e-mail or real name** (e.g. `mymod-ggbh`). Taoist uses `taoist-ggbh`.
+
+**2. Add `ModConf/crash_reports.json` to your mod**
+
+```json
+{
+	"Database": "mymod-ggbh",
+	"ModName": "My mod",
+	"LogLines": 200
+}
+```
+
+- `Database`: the name of step 1. No file or an invalid name = the errors of your mod are never sent.
+- `ModName`: the name shown to the player in the consent dialog, and the application name in BugSplat.
+- `LogLines`: the last lines of the ModLib log sent with each error (0 = no log).
+
+The build copies `ModConf` to `debug/Mod_<id>/ModConf`, so the file ships with the mod. It is not a game config (ModLib skips it when loading the configs).
+
+**3. Set the version of your reports** (optional, else the ModLib version is used), in your `ModChild`:
+
+```csharp
+public override void OnLoadClass(bool isNew, string modId, CacheAttribute attr)
+{
+    base.OnLoadClass(isNew, modId, attr);
+    CrashReportHelper.SetModVersion(modId, "1.0.0");
+}
+```
+
+**4. Log your errors with `DebugHelper`**
+
+Every `DebugHelper.WriteLine(exception)` (also the errors ModLib catches in your events) is reported to the database of the mod found in the stack trace, so each mod gets only its own errors. The same error is sent once per game session, at most 5 per session.
+
+**5. Check the database**
+
+- Without the game: `$env:BUGSPLAT_TEST_DB="mymod-ggbh"; .\scripts\run-unittests.ps1` sends one test report (`CrashReportHelperTests.Live_SendToBugSplat`).
+- In the game: start it, answer **Yes** in the dialog; the MelonLoader log shows `[CrashReport] sent` / `not sent` for each error.
+- See the reports at `https://app.bugsplat.com/v2/crashes?database=<database>`: each one has `Callstack.txt` (the exception), `log.txt` (the end of the log, with the user folder, the Windows account and the player id removed) and the attributes `modId`, `modLibVersion`, `caller`, `gameVersion`, `mods`, `language`.
+
+The player is asked again when a new mod with a database is installed. Details (routing, consent key, protocol, autotest TT-06): [docs/06-Debug.md](docs/06-Debug.md#error-reports-bugsplat).
 
 
 
