@@ -1672,7 +1672,7 @@
 	{
 		"id": "-1000007334",
 		"key": "story_no_pill",
-		"en|ch|tc|kr": "Vous n'avez aucune pilule de rang {0} ou plus."
+		"en|ch|tc|kr": "Vous n'avez aucune pilule à lui donner."
 	},
 	{
 		"id": "-1000007335",
@@ -1723,5 +1723,1170 @@
 		"id": "-1000007344",
 		"key": "story_A5_1_o4",
 		"en|ch|tc|kr": "La laisser à sa vengeance"
+	},
+	{
+		"id": -1000007345,
+		"key": "story_name_G",
+		"en|ch|tc|kr": "Le Pari de cent ans"
+	},
+	{
+		"id": -1000007346,
+		"key": "story_task_desc_G",
+		"en|ch|tc|kr": "{0}"
+	},
+	{
+		"id": -1000007347,
+		"key": "story_task_G0",
+		"en|ch|tc|kr": "Le fier jeune cultivateur {W} vous bouscule à la porte d'une secte et parie sur qui atteindra le Noyau d'or le premier."
+	},
+	{
+		"id": -1000007348,
+		"key": "story_task_G1",
+		"en|ch|tc|kr": "Quinze ans plus tard, {W} vous appelle à une revanche dans un col (Condensation du Qi)."
+	},
+	{
+		"id": -1000007349,
+		"key": "story_task_G2",
+		"en|ch|tc|kr": "Trente ans : un repaire de bêtes plein d'herbes, l'un de vous y tombe (Noyau d'or)."
+	},
+	{
+		"id": -1000007350,
+		"key": "story_task_G3",
+		"en|ch|tc|kr": "Quarante-cinq ans : la secte de {W} est attaquée et, pour une fois, il demande de l'aide (2 ans)."
+	},
+	{
+		"id": -1000007351,
+		"key": "story_task_G4",
+		"en|ch|tc|kr": "Soixante-dix ans : un thé avec {W} sur un sommet, le score d'une vie (Âme naissante)."
+	},
+	{
+		"id": -1000007352,
+		"key": "story_task_G5",
+		"en|ch|tc|kr": "Cent ans : le dernier pari de {W} - sa tribulation, ou ses derniers jours (Formation de l'âme)."
+	},
+	{
+		"id": -1000007353,
+		"key": "story_G0_1",
+		"en|ch|tc|kr": "Devant la porte d'une secte, un jeune cultivateur double la file et fait tomber votre baluchon dans la boue.\n{W} : « Pousse-toi. Certains ici vont devenir immortels. »"
+	},
+	{
+		"id": -1000007354,
+		"key": "story_G0_1_o1",
+		"en|ch|tc|kr": "Le bousculer à son tour"
+	},
+	{
+		"id": -1000007355,
+		"key": "story_G0_1_o2",
+		"en|ch|tc|kr": "« Après vous, immortel. »"
+	},
+	{
+		"id": -1000007356,
+		"key": "story_G0_1_o3",
+		"en|ch|tc|kr": "Ramasser vos affaires"
+	},
+	{
+		"id": -1000007357,
+		"key": "story_G0_2",
+		"en|ch|tc|kr": "Quoi qu'il se soit passé, {W} vous toise deux fois.\n{W} : « Tu as la tête de quelqu'un qui se croit spécial. Le premier au Noyau d'or prend la bourse de l'autre - et le perdant écrit le nom du gagnant dans son journal. »"
+	},
+	{
+		"id": -1000007358,
+		"key": "story_G0_2_o1",
+		"en|ch|tc|kr": "« Marché conclu. »"
+	},
+	{
+		"id": -1000007359,
+		"key": "story_G0_2_o2",
+		"en|ch|tc|kr": "« Je ne parie pas. »"
+	},
+	{
+		"id": -1000007360,
+		"key": "story_G0_3",
+		"en|ch|tc|kr": "{W} : « Pari ou pas, tu es dedans maintenant, rival. Ne meurs pas avant que je te batte. Ça gâcherait tout. »"
+	},
+	{
+		"id": -1000007361,
+		"key": "story_G1_1",
+		"en|ch|tc|kr": "Une lettre pliée en grue de papier : « Rival. Quinze ans. Le col. Viens perdre. »\n{W} : « Tu es venu. Bien. Dégaine. »"
+	},
+	{
+		"id": -1000007362,
+		"key": "story_G1_1_o1",
+		"en|ch|tc|kr": "Duel"
+	},
+	{
+		"id": -1000007363,
+		"key": "story_G1_win",
+		"en|ch|tc|kr": "{W} : « De la chance. Pure chance. ...Ton jeu de jambes s'est amélioré. »"
+	},
+	{
+		"id": -1000007364,
+		"key": "story_G1_lose",
+		"en|ch|tc|kr": "{W} : « Ha ! Note-le. Note-le deux fois. »"
+	},
+	{
+		"id": -1000007365,
+		"key": "story_G1_3",
+		"en|ch|tc|kr": "Des bandits, ayant entendu parler de deux cultivateurs épuisés, encerclent le col.\n{W} : « Trêve ? Juste le temps de ce combat. »"
+	},
+	{
+		"id": -1000007366,
+		"key": "story_G1_3_o1",
+		"en|ch|tc|kr": "Combattre côte à côte"
+	},
+	{
+		"id": -1000007367,
+		"key": "story_G2_he",
+		"en|ch|tc|kr": "Un repaire plein d'herbes spirituelles. Vous arrivez la même nuit - et le sol cède sous {W}.\n{W} : « N'ose - n'ose pas rire. »"
+	},
+	{
+		"id": -1000007368,
+		"key": "story_G2_he_o1",
+		"en|ch|tc|kr": "Descendre combattre la bête"
+	},
+	{
+		"id": -1000007369,
+		"key": "story_G2_he_o2",
+		"en|ch|tc|kr": "Lancer une corde et partir"
+	},
+	{
+		"id": -1000007370,
+		"key": "story_G2_he_o3",
+		"en|ch|tc|kr": "S'en aller"
+	},
+	{
+		"id": -1000007371,
+		"key": "story_G2_you",
+		"en|ch|tc|kr": "Le sol cède sous vous. Une corde - puis {W} saute à vos côtés, épée au clair.\n{W} : « Ne me regarde pas comme ça. Il faut que tu vives pour perdre contre moi. »"
+	},
+	{
+		"id": -1000007372,
+		"key": "story_G2_3",
+		"en|ch|tc|kr": "Plus tard, près du feu.\n{W} : « J'avais un frère. Il cultivait plus vite que moi. Mort à la Fondation, en voulant suivre quelqu'un. ...Je ne te dis rien. »"
+	},
+	{
+		"id": -1000007373,
+		"key": "story_G3_1",
+		"en|ch|tc|kr": "Pour la première fois en quarante-cinq ans, une lettre sans insulte.\n{W} : « Rival - ils sont venus de nuit. Bannières rouges. J'ai besoin d'aide. Ne me fais pas demander deux fois. »"
+	},
+	{
+		"id": -1000007374,
+		"key": "story_G3_1_o1",
+		"en|ch|tc|kr": "Combattre pour sa secte"
+	},
+	{
+		"id": -1000007375,
+		"key": "story_G3_1_o2",
+		"en|ch|tc|kr": "L'abriter un an"
+	},
+	{
+		"id": -1000007376,
+		"key": "story_G3_1_o3",
+		"en|ch|tc|kr": "Refuser"
+	},
+	{
+		"id": -1000007377,
+		"key": "story_G3_owe",
+		"en|ch|tc|kr": "{W} : « ...Je te dois une. Ne fais pas cette tête. Je déteste devoir. »"
+	},
+	{
+		"id": -1000007378,
+		"key": "story_G3_alone",
+		"en|ch|tc|kr": "Il est parti seul. Il a survécu, mais a perdu un royaume.\n{W} : « Je m'en souviendrai. Chaque jour. »"
+	},
+	{
+		"id": -1000007379,
+		"key": "story_G4_1",
+		"en|ch|tc|kr": "Un thé sur un sommet. Ses tempes ont grisé.\n{W} : « Soixante-dix ans. {0} victoires pour moi, {1} pour toi. Qui compte ? »"
+	},
+	{
+		"id": -1000007380,
+		"key": "story_G4_1_o1",
+		"en|ch|tc|kr": "« Un dernier duel. »"
+	},
+	{
+		"id": -1000007381,
+		"key": "story_G4_1_o2",
+		"en|ch|tc|kr": "« Formons un disciple ensemble. »"
+	},
+	{
+		"id": -1000007382,
+		"key": "story_G4_1_o3",
+		"en|ch|tc|kr": "« Buvons, simplement. »"
+	},
+	{
+		"id": -1000007383,
+		"key": "story_G4_3",
+		"en|ch|tc|kr": "{W} : « Tu sais ce que je détestais le plus ? Que tu n'aies jamais eu l'air inquiet. Pas une fois en soixante-dix ans. »"
+	},
+	{
+		"id": -1000007384,
+		"key": "story_G5_1",
+		"en|ch|tc|kr": "Le tonnerre s'amasse au-dessus de sa grotte.\n{W} : « Dernier pari. Si je survis à ça, je gagne tout. »"
+	},
+	{
+		"id": -1000007385,
+		"key": "story_G5_dying",
+		"en|ch|tc|kr": "Il est maigre maintenant, il sourit au plafond.\n{W} : « On dirait que tu me survis. Ça compte comme une victoire. Ne prends pas la grosse tête. »"
+	},
+	{
+		"id": -1000007386,
+		"key": "story_G5_1_o1",
+		"en|ch|tc|kr": "Se tenir dans la foudre avec lui"
+	},
+	{
+		"id": -1000007387,
+		"key": "story_G5_1_o2",
+		"en|ch|tc|kr": "Regarder de loin"
+	},
+	{
+		"id": -1000007388,
+		"key": "story_G5_2",
+		"en|ch|tc|kr": "Il vous glisse la vieille bourse d'il y a un siècle - toujours pleine, avec cent ans d'intérêts."
+	},
+	{
+		"id": -1000007389,
+		"key": "story_endG_Friend",
+		"en|ch|tc|kr": "{W} : « Rival. Ami. Au fond, c'est le même mot. »"
+	},
+	{
+		"id": -1000007390,
+		"key": "story_endG_Rival",
+		"en|ch|tc|kr": "{W} : « Même heure dans dix ans. Trouve une meilleure excuse pour perdre. »"
+	},
+	{
+		"id": -1000007391,
+		"key": "story_endG_Surpassed",
+		"en|ch|tc|kr": "Une lettre et une pilule.\n{W} : « J'ai attendu au sommet. C'est solitaire ici. Dépêche-toi. »"
+	},
+	{
+		"id": -1000007392,
+		"key": "story_endG_Grave",
+		"en|ch|tc|kr": "Son épée attend sur sa tombe. Sur la pierre, de sa main : « Ci-gît le vainqueur. » Un jeune disciple s'incline et vous appelle « oncle »."
+	},
+	{
+		"id": -1000007393,
+		"key": "story_end_G_Friend",
+		"en|ch|tc|kr": "Ami pour la vie"
+	},
+	{
+		"id": -1000007394,
+		"key": "story_end_G_Rival",
+		"en|ch|tc|kr": "Rival éternel"
+	},
+	{
+		"id": -1000007395,
+		"key": "story_end_G_Surpassed",
+		"en|ch|tc|kr": "Dépassé"
+	},
+	{
+		"id": -1000007396,
+		"key": "story_end_G_Grave",
+		"en|ch|tc|kr": "La Tombe"
+	},
+	{
+		"id": -1000007397,
+		"key": "story_G_rival_letter",
+		"en|ch|tc|kr": "une lettre de duel et une leçon"
+	},
+	{
+		"id": -1000007398,
+		"key": "story_name_H",
+		"en|ch|tc|kr": "L'Auberge du bord de route"
+	},
+	{
+		"id": -1000007399,
+		"key": "story_task_desc_H",
+		"en|ch|tc|kr": "{0}"
+	},
+	{
+		"id": -1000007400,
+		"key": "story_task_H0",
+		"en|ch|tc|kr": "Une jeune veuve, {K}, ouvre une auberge à {T} avec un prêt qu'elle ne peut rembourser."
+	},
+	{
+		"id": -1000007401,
+		"key": "story_task_H1",
+		"en|ch|tc|kr": "Dix ans : {K} se marie. Soyez-y."
+	},
+	{
+		"id": -1000007402,
+		"key": "story_task_H2",
+		"en|ch|tc|kr": "Vingt-cinq ans : des bandits ont brûlé l'auberge de {K} (2 ans)."
+	},
+	{
+		"id": -1000007403,
+		"key": "story_task_H3",
+		"en|ch|tc|kr": "Quarante ans : le fils de {K} veut cultiver."
+	},
+	{
+		"id": -1000007404,
+		"key": "story_task_H4",
+		"en|ch|tc|kr": "{K} vieillit. Rendez-lui visite."
+	},
+	{
+		"id": -1000007405,
+		"key": "story_task_H5",
+		"en|ch|tc|kr": "Cent ans : le festin de l'auberge."
+	},
+	{
+		"id": -1000007406,
+		"key": "story_H0_1",
+		"en|ch|tc|kr": "Un toit qui fuit, trois tables et un usurier à la porte.\n{K} : « Mangez d'abord, cultivateur. Les soucis après. ...Sauf si vous voulez m'en ôter un peu ? (le prêt : {0:#,##0} [icon:zm_lingshi]) »"
+	},
+	{
+		"id": -1000007407,
+		"key": "story_H0_1_o1",
+		"en|ch|tc|kr": "Payer son prêt"
+	},
+	{
+		"id": -1000007408,
+		"key": "story_H0_1_o2",
+		"en|ch|tc|kr": "Chasser l'usurier"
+	},
+	{
+		"id": -1000007409,
+		"key": "story_H0_1_o3",
+		"en|ch|tc|kr": "Manger et partir"
+	},
+	{
+		"id": -1000007410,
+		"key": "story_H0_2",
+		"en|ch|tc|kr": "{K} : « Vous êtes un drôle de numéro. Revenez quand vous voulez - il y aura toujours un bol pour vous. »"
+	},
+	{
+		"id": -1000007411,
+		"key": "story_H0_small",
+		"en|ch|tc|kr": "Vous partez. Un an plus tard, l'auberge ouvre quand même - plus petite, mais chaleureuse.\n{K} : « Tiens, celui qui a mangé et filé ! Asseyez-vous. Cette fois, vous payez. »"
+	},
+	{
+		"id": -1000007412,
+		"key": "story_H1_1",
+		"en|ch|tc|kr": "L'auberge est pleine de lanternes. {K} épouse {R}, un garde de caravane au regard doux.\n{K} : « Vous êtes venu ! Tenez - buvez, buvez. (un cadeau : {0:#,##0} [icon:zm_lingshi]) »"
+	},
+	{
+		"id": -1000007413,
+		"key": "story_H1_1_o1",
+		"en|ch|tc|kr": "Offrir un cadeau de noces"
+	},
+	{
+		"id": -1000007414,
+		"key": "story_H1_1_o2",
+		"en|ch|tc|kr": "Porter un toast"
+	},
+	{
+		"id": -1000007415,
+		"key": "story_H2_1",
+		"en|ch|tc|kr": "De la fumée sur {T}. L'auberge de {K} brûle ; les bandits rient sur la route. (reconstruction : {0:#,##0} [icon:zm_lingshi])"
+	},
+	{
+		"id": -1000007416,
+		"key": "story_H2_1_o1",
+		"en|ch|tc|kr": "Traquer les bandits"
+	},
+	{
+		"id": -1000007417,
+		"key": "story_H2_1_o2",
+		"en|ch|tc|kr": "Payer la reconstruction"
+	},
+	{
+		"id": -1000007418,
+		"key": "story_H2_1_o3",
+		"en|ch|tc|kr": "La consoler et partir"
+	},
+	{
+		"id": -1000007419,
+		"key": "story_H2_saved",
+		"en|ch|tc|kr": "De nouvelles poutres, la même vieille enseigne.\n{K} : « Têtu que vous êtes. Cette auberge est à moitié à vous, maintenant. »"
+	},
+	{
+		"id": -1000007420,
+		"key": "story_H2_ashes",
+		"en|ch|tc|kr": "Seulement des cendres et une enseigne noircie.\n{K} : « Ce n'est que du bois. ...Ce n'était que du bois. »"
+	},
+	{
+		"id": -1000007421,
+		"key": "story_H3_1",
+		"en|ch|tc|kr": "Un grand garçon aux yeux de sa mère vous barre la route.\n{K2} : « Mère dit que vous êtes cultivateur. Enseignez-moi. Je ne veux pas servir du vin toute ma vie. »"
+	},
+	{
+		"id": -1000007422,
+		"key": "story_H3_1_o1",
+		"en|ch|tc|kr": "Le prendre pour disciple"
+	},
+	{
+		"id": -1000007423,
+		"key": "story_H3_1_o2",
+		"en|ch|tc|kr": "L'envoyer dans une secte"
+	},
+	{
+		"id": -1000007424,
+		"key": "story_H3_1_o3",
+		"en|ch|tc|kr": "L'en dissuader"
+	},
+	{
+		"id": -1000007425,
+		"key": "story_H4_1",
+		"en|ch|tc|kr": "{K} a les cheveux blancs, enveloppée d'une couverture près du poêle.\n{K} : « Promettez-moi de revenir. Il faut bien que quelqu'un mange le riz brûlé. »"
+	},
+	{
+		"id": -1000007426,
+		"key": "story_H4_1_o1",
+		"en|ch|tc|kr": "« Je vous le promets. »"
+	},
+	{
+		"id": -1000007427,
+		"key": "story_H4_2",
+		"en|ch|tc|kr": "Elle s'endort en souriant et ne se réveille pas. L'auberge ferme un jour ; le lendemain, le poêle est rallumé."
+	},
+	{
+		"id": -1000007428,
+		"key": "story_H4_gone",
+		"en|ch|tc|kr": "Vous arrivez trop tard : {K} est partie. Sa famille vous a gardé un bol et une place près du poêle."
+	},
+	{
+		"id": -1000007429,
+		"key": "story_H5_1",
+		"en|ch|tc|kr": "Cent ans depuis le toit qui fuyait. L'auberge est pleine : {0} - les gens de votre vie, ou leurs histoires, réunis autour d'une longue table."
+	},
+	{
+		"id": -1000007430,
+		"key": "story_H5_alone",
+		"en|ch|tc|kr": "de vieux amis et de nouveaux visages"
+	},
+	{
+		"id": -1000007431,
+		"key": "story_endH_InnOfAges",
+		"en|ch|tc|kr": "L'auberge de {K} tient toujours : chaque fois que vous venez, il y a un bol, un lit et des nouvelles du monde."
+	},
+	{
+		"id": -1000007432,
+		"key": "story_endH_Lineage",
+		"en|ch|tc|kr": "{K2} : « Maître. L'auberge de mère et vos enseignements - je porterai les deux. »"
+	},
+	{
+		"id": -1000007433,
+		"key": "story_endH_Ashes",
+		"en|ch|tc|kr": "Là où était l'auberge, une tombe et une enseigne noircie. Vous vous souvenez de l'odeur de sa soupe."
+	},
+	{
+		"id": -1000007434,
+		"key": "story_end_H_InnOfAges",
+		"en|ch|tc|kr": "Auberge des âges"
+	},
+	{
+		"id": -1000007435,
+		"key": "story_end_H_Lineage",
+		"en|ch|tc|kr": "Lignée de disciples"
+	},
+	{
+		"id": -1000007436,
+		"key": "story_end_H_Ashes",
+		"en|ch|tc|kr": "Cendres"
+	},
+	{
+		"id": -1000007437,
+		"key": "story_H_meal",
+		"en|ch|tc|kr": "un repas chaud à l'auberge"
+	},
+	{
+		"id": -1000007438,
+		"key": "story_name_I",
+		"en|ch|tc|kr": "Le Tombeau scellé"
+	},
+	{
+		"id": -1000007439,
+		"key": "story_task_desc_I",
+		"en|ch|tc|kr": "{0}"
+	},
+	{
+		"id": -1000007440,
+		"key": "story_task_I0",
+		"en|ch|tc|kr": "Une moitié de carte dans la main d'un cultivateur mort ; l'Ancien {Q} détient l'autre."
+	},
+	{
+		"id": -1000007441,
+		"key": "story_task_I1",
+		"en|ch|tc|kr": "Réunissez une équipe pour le tombeau, ou partez seul avec {Q} (1 an)."
+	},
+	{
+		"id": -1000007442,
+		"key": "story_task_I2",
+		"en|ch|tc|kr": "Les salles extérieures : gardiens, énigme, trésor (2 ans)."
+	},
+	{
+		"id": -1000007443,
+		"key": "story_task_I3",
+		"en|ch|tc|kr": "À la porte intérieure, {Q} montre son vrai visage."
+	},
+	{
+		"id": -1000007444,
+		"key": "story_task_I4",
+		"en|ch|tc|kr": "L'âme du maître du tombeau attend : prendre, libérer ou sceller."
+	},
+	{
+		"id": -1000007445,
+		"key": "story_I0_1",
+		"en|ch|tc|kr": "Un cultivateur mort au bord de la route, une moitié de carte dans le poing. Un vieil homme sort des arbres avec l'autre moitié.\n{Q} : « Ah. Le destin nous veut donc tous les deux. Associés - ou voyons-nous quelle moitié vaut le plus ? »"
+	},
+	{
+		"id": -1000007446,
+		"key": "story_I0_1_o1",
+		"en|ch|tc|kr": "« Associés. »"
+	},
+	{
+		"id": -1000007447,
+		"key": "story_I0_1_o2",
+		"en|ch|tc|kr": "« Rivaux. Que le plus rapide gagne. »"
+	},
+	{
+		"id": -1000007448,
+		"key": "story_I1_1",
+		"en|ch|tc|kr": "{Q} : « Le tombeau dévore les imprudents. Amenez deux compagnons de confiance - ou ne faites confiance qu'à moi. »"
+	},
+	{
+		"id": -1000007449,
+		"key": "story_I1_1_o1",
+		"en|ch|tc|kr": "Amener mon équipe"
+	},
+	{
+		"id": -1000007450,
+		"key": "story_I1_1_o2",
+		"en|ch|tc|kr": "Partir seul avec {Q}"
+	},
+	{
+		"id": -1000007451,
+		"key": "story_need_team",
+		"en|ch|tc|kr": "Il vous faut 2 membres d'équipe (engagez-les d'abord) : {0} dans l'équipe."
+	},
+	{
+		"id": -1000007452,
+		"key": "story_I2_1",
+		"en|ch|tc|kr": "Des salles de pierre. Les gardiens marionnettes tournent la tête d'un même geste."
+	},
+	{
+		"id": -1000007453,
+		"key": "story_I2_1_o1",
+		"en|ch|tc|kr": "Combattre les gardiens"
+	},
+	{
+		"id": -1000007454,
+		"key": "story_I2_2",
+		"en|ch|tc|kr": "Trois portes. Gravé au-dessus : « Les avides vont à gauche. Les craintifs à droite. Celui qui se connaît va tout droit. »"
+	},
+	{
+		"id": -1000007455,
+		"key": "story_I2_2_o1",
+		"en|ch|tc|kr": "La porte de gauche"
+	},
+	{
+		"id": -1000007456,
+		"key": "story_I2_2_o2",
+		"en|ch|tc|kr": "La porte du milieu"
+	},
+	{
+		"id": -1000007457,
+		"key": "story_I2_2_o3",
+		"en|ch|tc|kr": "La porte de droite"
+	},
+	{
+		"id": -1000007458,
+		"key": "story_I2_3",
+		"en|ch|tc|kr": "Un râtelier d'armes scintille dans le noir - superbe, avec une légère odeur de poison."
+	},
+	{
+		"id": -1000007459,
+		"key": "story_I2_3_o1",
+		"en|ch|tc|kr": "Prendre une arme"
+	},
+	{
+		"id": -1000007460,
+		"key": "story_I2_3_o2",
+		"en|ch|tc|kr": "La laisser"
+	},
+	{
+		"id": -1000007461,
+		"key": "story_I3_1",
+		"en|ch|tc|kr": "La porte intérieure s'ouvre. {Q} sourit et recule - ses hommes sortent de l'ombre.\n{Q} : « Une carte a besoin de deux moitiés. Un trésor, d'un seul propriétaire. »"
+	},
+	{
+		"id": -1000007462,
+		"key": "story_I3_team",
+		"en|ch|tc|kr": "La porte intérieure s'ouvre. {Q} sourit - mais vos compagnons ont déjà la main sur la garde.\n{Q} : « ...Malin. Réglons cela à l'ancienne, alors. »"
+	},
+	{
+		"id": -1000007463,
+		"key": "story_I3_1_o1",
+		"en|ch|tc|kr": "Combattre"
+	},
+	{
+		"id": -1000007464,
+		"key": "story_I4_1",
+		"en|ch|tc|kr": "La dernière salle. Une silhouette pâle sur un trône d'os ouvre les yeux.\nLe maître du tombeau, « Dix mille ans. Prendras-tu mon héritage, me libéreras-tu - ou me scelleras-tu à nouveau ? »"
+	},
+	{
+		"id": -1000007465,
+		"key": "story_I4_1_o1",
+		"en|ch|tc|kr": "Prendre l'héritage"
+	},
+	{
+		"id": -1000007466,
+		"key": "story_I4_1_o2",
+		"en|ch|tc|kr": "Libérer son âme"
+	},
+	{
+		"id": -1000007467,
+		"key": "story_I4_1_o3",
+		"en|ch|tc|kr": "Le sceller à nouveau"
+	},
+	{
+		"id": -1000007468,
+		"key": "story_endI_Heir",
+		"en|ch|tc|kr": "L'héritage se déverse dans vos méridiens comme un fleuve de feu. Quelque part, la secte de {Q} maudit votre nom."
+	},
+	{
+		"id": -1000007469,
+		"key": "story_endI_FreedSoul",
+		"en|ch|tc|kr": "La silhouette pâle sourit et s'efface.\nLe maître du tombeau, « Merci. Je m'en souviendrai. Une fois l'an, guettez mon présent. »"
+	},
+	{
+		"id": -1000007470,
+		"key": "story_endI_Sealer",
+		"en|ch|tc|kr": "Le sceau se referme dans un son de cloche. Les sectes vertueuses l'apprennent et s'inclinent devant vous sur les routes."
+	},
+	{
+		"id": -1000007471,
+		"key": "story_endI_Looted",
+		"en|ch|tc|kr": "Trop tard : une autre secte a ouvert le tombeau et tout emporté. Il ne reste que quelques herbes dans la salle extérieure."
+	},
+	{
+		"id": -1000007472,
+		"key": "story_end_I_Heir",
+		"en|ch|tc|kr": "Héritier du tombeau"
+	},
+	{
+		"id": -1000007473,
+		"key": "story_end_I_FreedSoul",
+		"en|ch|tc|kr": "Âme libérée"
+	},
+	{
+		"id": -1000007474,
+		"key": "story_end_I_Sealer",
+		"en|ch|tc|kr": "Scelleur"
+	},
+	{
+		"id": -1000007475,
+		"key": "story_end_I_Looted",
+		"en|ch|tc|kr": "Tombeau pillé"
+	},
+	{
+		"id": -1000007476,
+		"key": "story_I_owner",
+		"en|ch|tc|kr": "Le maître du tombeau"
+	},
+	{
+		"id": -1000007477,
+		"key": "story_name_J",
+		"en|ch|tc|kr": "Le Disciple maudit"
+	},
+	{
+		"id": -1000007478,
+		"key": "story_task_desc_J",
+		"en|ch|tc|kr": "{0}"
+	},
+	{
+		"id": -1000007479,
+		"key": "story_task_J0",
+		"en|ch|tc|kr": "Un garçon marqué d'un sceau démoniaque, {J}, va être exécuté par une secte."
+	},
+	{
+		"id": -1000007480,
+		"key": "story_task_J1",
+		"en|ch|tc|kr": "Enseignez à {J} : trois leçons en trois ans."
+	},
+	{
+		"id": -1000007481,
+		"key": "story_task_J2",
+		"en|ch|tc|kr": "Le sceau de {J} s'éveille (1 an)."
+	},
+	{
+		"id": -1000007482,
+		"key": "story_task_J3",
+		"en|ch|tc|kr": "La secte qui a marqué {J} revient (2 ans)."
+	},
+	{
+		"id": -1000007483,
+		"key": "story_task_J4",
+		"en|ch|tc|kr": "{J} perce : le démon lui fait une offre."
+	},
+	{
+		"id": -1000007484,
+		"key": "story_task_J5",
+		"en|ch|tc|kr": "L'élève dépasse le maître."
+	},
+	{
+		"id": -1000007485,
+		"key": "story_J0_1",
+		"en|ch|tc|kr": "Un lieu d'exécution. Un garçon maigre est à genoux, enchaîné, une marque noire brûlant sur sa nuque. Les anciens lèvent leurs épées. (son prix : {0:#,##0} [icon:zm_lingshi])"
+	},
+	{
+		"id": -1000007486,
+		"key": "story_J0_1_o1",
+		"en|ch|tc|kr": "Le sauver"
+	},
+	{
+		"id": -1000007487,
+		"key": "story_J0_1_o2",
+		"en|ch|tc|kr": "Acheter sa vie"
+	},
+	{
+		"id": -1000007488,
+		"key": "story_J0_1_o3",
+		"en|ch|tc|kr": "Regarder"
+	},
+	{
+		"id": -1000007489,
+		"key": "story_J0_2",
+		"en|ch|tc|kr": "Le garçon se frotte les poignets et vous regarde longuement.\n{J} : « ...Pourquoi ? »"
+	},
+	{
+		"id": -1000007490,
+		"key": "story_J1_1",
+		"en|ch|tc|kr": "{J} a attrapé un voleur qui dépouillait une vieille femme. Il lui tient le bras, prêt à le briser.\n{J} : « Maître. Que dois-je faire ? »"
+	},
+	{
+		"id": -1000007491,
+		"key": "story_J1_2",
+		"en|ch|tc|kr": "Un garçon plus grand d'une secte se moque devant tous de la marque au cou de {J}.\n{J} : « Maître. Il se moque de moi. »"
+	},
+	{
+		"id": -1000007492,
+		"key": "story_J1_3",
+		"en|ch|tc|kr": "{J} est assis sur une falaise la nuit, fixant les étoiles.\n{J} : « Maître. Suis-je un démon ? Dois-je rester caché toute ma vie ? »"
+	},
+	{
+		"id": -1000007493,
+		"key": "story_J1_o1",
+		"en|ch|tc|kr": "« La pitié est plus forte que la colère. »"
+	},
+	{
+		"id": -1000007494,
+		"key": "story_J1_o2",
+		"en|ch|tc|kr": "« Deviens assez fort pour que personne n'ose. »"
+	},
+	{
+		"id": -1000007495,
+		"key": "story_J1_o3",
+		"en|ch|tc|kr": "« Choisis toi-même. Tu es libre. »"
+	},
+	{
+		"id": -1000007496,
+		"key": "story_J2_1",
+		"en|ch|tc|kr": "Dans une rue bondée, la marque au cou de {J} s'embrase de noir. Les gens hurlent ; ses yeux ne sont plus les siens."
+	},
+	{
+		"id": -1000007497,
+		"key": "story_J2_1_o1",
+		"en|ch|tc|kr": "Le contenir avec une pilule"
+	},
+	{
+		"id": -1000007498,
+		"key": "story_J2_1_o2",
+		"en|ch|tc|kr": "Le combattre jusqu'à ce qu'il revienne à lui"
+	},
+	{
+		"id": -1000007499,
+		"key": "story_J2_1_o3",
+		"en|ch|tc|kr": "Laisser brûler"
+	},
+	{
+		"id": -1000007500,
+		"key": "story_J2_1_inn",
+		"en|ch|tc|kr": "Le porter à l'auberge de {K}"
+	},
+	{
+		"id": -1000007501,
+		"key": "story_J3_1",
+		"en|ch|tc|kr": "Des anciens en robe grise vous encerclent - ceux-là mêmes qui l'ont marqué.\n{J} : « Ils ne sont pas venus pour la justice. Ils sont venus enterrer quelque chose. »"
+	},
+	{
+		"id": -1000007502,
+		"key": "story_J3_inn",
+		"en|ch|tc|kr": "Ils l'ont trouvé à l'auberge de {K}. Elle se tient à la porte, une louche à la main, entre les anciens et le garçon.\n{J} : « Maître - ne les laissez pas lui faire de mal. »"
+	},
+	{
+		"id": -1000007503,
+		"key": "story_J3_1_o1",
+		"en|ch|tc|kr": "Combattre les anciens"
+	},
+	{
+		"id": -1000007504,
+		"key": "story_J3_2",
+		"en|ch|tc|kr": "Dans les lettres des anciens tombés, la vérité : la marque était le propre péché de leur maître de secte, transmis à un enfant sans nom.\n{J} : « Je n'ai donc jamais été le démon. Juste l'endroit où ils en cachaient un. »"
+	},
+	{
+		"id": -1000007505,
+		"key": "story_J4_1",
+		"en|ch|tc|kr": "{J} perce. La voix du démon lui offre tout - et il rit.\n{J} : « Mon maître m'a mieux appris. Retourne à celui qui t'a créé. »"
+	},
+	{
+		"id": -1000007506,
+		"key": "story_J4_demon",
+		"en|ch|tc|kr": "{J} perce. La voix du démon lui offre tout - et il écoute.\n{J} : « La force. Vous disiez toujours la force, Maître. La voici. »"
+	},
+	{
+		"id": -1000007507,
+		"key": "story_J5_1",
+		"en|ch|tc|kr": "Le maître de secte en personne arrive, la marque noire sur sa propre main.\n{J} : « Maître. Côte à côte, une dernière fois ? »"
+	},
+	{
+		"id": -1000007508,
+		"key": "story_J5_demon",
+		"en|ch|tc|kr": "{J} se tient désormais aux côtés du maître de secte, la marque sur la moitié du visage.\n{J} : « Maître. Montrez-moi qui avait raison. »"
+	},
+	{
+		"id": -1000007509,
+		"key": "story_J5_1_o1",
+		"en|ch|tc|kr": "Combattre le maître de secte"
+	},
+	{
+		"id": -1000007510,
+		"key": "story_J5_1_o2",
+		"en|ch|tc|kr": "Affronter {J} en duel"
+	},
+	{
+		"id": -1000007511,
+		"key": "story_J5_1_o3",
+		"en|ch|tc|kr": "Sceller la marque - et sa cultivation"
+	},
+	{
+		"id": -1000007512,
+		"key": "story_endJ_Righteous",
+		"en|ch|tc|kr": "{J} : « Maître. Où que vous alliez, je marche derrière vous. ...Enfin. À vos côtés, maintenant. »"
+	},
+	{
+		"id": -1000007513,
+		"key": "story_endJ_Demon",
+		"en|ch|tc|kr": "{J} s'éloigne dans l'obscurité, la marque luisante.\n{J} : « Nous nous reverrons, Maître. De l'autre côté d'une guerre. »"
+	},
+	{
+		"id": -1000007514,
+		"key": "story_endJ_Sealed",
+		"en|ch|tc|kr": "La marque s'efface - et sa cultivation avec elle. {J} devient un jeune homme ordinaire, et sourit plus que jamais."
+	},
+	{
+		"id": -1000007515,
+		"key": "story_endJ_SealedInn",
+		"en|ch|tc|kr": "La marque s'efface - et sa cultivation avec elle. {J} reste à l'auberge de {K}, porte la soupe et se dispute avec le cuisinier. Il n'a jamais eu l'air si heureux."
+	},
+	{
+		"id": -1000007516,
+		"key": "story_end_J_Righteous",
+		"en|ch|tc|kr": "Disciple vertueux"
+	},
+	{
+		"id": -1000007517,
+		"key": "story_end_J_Demon",
+		"en|ch|tc|kr": "Disciple démoniaque"
+	},
+	{
+		"id": -1000007518,
+		"key": "story_end_J_Sealed",
+		"en|ch|tc|kr": "Scellé"
+	},
+	{
+		"id": -1000007519,
+		"key": "story_name_K",
+		"en|ch|tc|kr": "Le Vestige du tonnerre"
+	},
+	{
+		"id": -1000007520,
+		"key": "story_task_desc_K",
+		"en|ch|tc|kr": "{0}"
+	},
+	{
+		"id": -1000007521,
+		"key": "story_task_K0",
+		"en|ch|tc|kr": "Une voix a parlé dans le tonnerre et laissé une cicatrice de foudre sur votre bras."
+	},
+	{
+		"id": -1000007522,
+		"key": "story_task_K1",
+		"en|ch|tc|kr": "Trouvez sa plateforme d'ascension brisée (3 ans)."
+	},
+	{
+		"id": -1000007523,
+		"key": "story_task_K2",
+		"en|ch|tc|kr": "Une secte qui le vénère veut votre cicatrice (2 ans)."
+	},
+	{
+		"id": -1000007524,
+		"key": "story_task_K3",
+		"en|ch|tc|kr": "La vérité sur son échec."
+	},
+	{
+		"id": -1000007525,
+		"key": "story_task_K4",
+		"en|ch|tc|kr": "La seconde tribulation."
+	},
+	{
+		"id": -1000007526,
+		"key": "story_K0_1",
+		"en|ch|tc|kr": "Votre percée. Le ciel se fend - et dans la foudre, une voix plus ancienne que les montagnes murmure, « Trente mille ans... enfin, quelqu'un qui m'entend. »\nQuand l'orage s'éloigne, une cicatrice de foudre court le long de votre bras."
+	},
+	{
+		"id": -1000007527,
+		"key": "story_K1_1",
+		"en|ch|tc|kr": "La cicatrice vous attire vers un pic mort. Une plateforme brisée, et des marionnettes de foudre qui s'éveillent quand vous y posez le pied."
+	},
+	{
+		"id": -1000007528,
+		"key": "story_K1_1_o1",
+		"en|ch|tc|kr": "Combattre les marionnettes"
+	},
+	{
+		"id": -1000007529,
+		"key": "story_K2_1",
+		"en|ch|tc|kr": "Des prêtres en robes bleu d'orage barrent la route, fixant votre bras.\nUn prêtre dit, « La cicatrice appartient à notre ancêtre. Donnez-la-nous - avec le bras, s'il le faut. » (leur prix pour vous laisser : {0:#,##0} [icon:zm_lingshi])"
+	},
+	{
+		"id": -1000007530,
+		"key": "story_K2_1_o1",
+		"en|ch|tc|kr": "Les combattre"
+	},
+	{
+		"id": -1000007531,
+		"key": "story_K2_1_o2",
+		"en|ch|tc|kr": "Les payer"
+	},
+	{
+		"id": -1000007532,
+		"key": "story_K3_1",
+		"en|ch|tc|kr": "La voix reparle, plus bas, « Je n'ai pas échoué face au ciel. J'ai failli envers elle. Ma compagne de dao se tenait derrière moi dans la foudre, et je me suis écarté pour me sauver. » Un long silence. « Laisse-moi réessayer. Prête-moi ton corps - ou contente-toi de regarder. »"
+	},
+	{
+		"id": -1000007533,
+		"key": "story_K3_1_o1",
+		"en|ch|tc|kr": "« Je resterai et regarderai. »"
+	},
+	{
+		"id": -1000007534,
+		"key": "story_K3_1_o2",
+		"en|ch|tc|kr": "« Mon corps est à moi. »"
+	},
+	{
+		"id": -1000007535,
+		"key": "story_K4_1",
+		"en|ch|tc|kr": "La seconde tribulation. Neuf nuages, neuf couleurs de foudre - et dans chaque éclair la voix du vestige, « Maintenant. Aide-moi, ou achève-moi. »"
+	},
+	{
+		"id": -1000007536,
+		"key": "story_K4_friend",
+		"en|ch|tc|kr": "La seconde tribulation. Neuf nuages de foudre - et une silhouette familière atterrit à vos côtés, cheveux gris, sourire aux lèvres. C'est {0}.\n« Tu croyais que je te laisserais faire le dernier pari seul, rival ? »"
+	},
+	{
+		"id": -1000007537,
+		"key": "story_K4_rival",
+		"en|ch|tc|kr": "La seconde tribulation. Neuf nuages de foudre - et de l'autre côté de l'orage se tient {0}, la lumière du vestige dans les yeux.\n« Il m'a offert les cieux, rival. Toi, tu ne m'as jamais offert que la défaite. »"
+	},
+	{
+		"id": -1000007538,
+		"key": "story_K4_1_o1",
+		"en|ch|tc|kr": "Le laisser vous guider"
+	},
+	{
+		"id": -1000007539,
+		"key": "story_K4_1_o2",
+		"en|ch|tc|kr": "Le détruire dans la foudre"
+	},
+	{
+		"id": -1000007540,
+		"key": "story_K4_1_o3",
+		"en|ch|tc|kr": "Le laisser renaître"
+	},
+	{
+		"id": -1000007541,
+		"key": "story_endK_Guided",
+		"en|ch|tc|kr": "La foudre vous contourne comme de l'eau. Quand c'est fini, la voix a disparu - et votre prochaine percée sera comme franchir une porte ouverte."
+	},
+	{
+		"id": -1000007542,
+		"key": "story_endK_Devourer",
+		"en|ch|tc|kr": "Vous déchirez le vestige au cœur de sa propre foudre. Ce qui reste de sa puissance se loge dans vos méridiens, crépitant."
+	},
+	{
+		"id": -1000007543,
+		"key": "story_endK_SecondChance",
+		"en|ch|tc|kr": "La foudre se replie en une seule étincelle et tombe sur la terre comme une graine. Quelque part naîtra un enfant aux yeux gris d'orage. Vous lui laissez une pilule au pied de la montagne."
+	},
+	{
+		"id": -1000007544,
+		"key": "story_end_K_Guided",
+		"en|ch|tc|kr": "Guidé"
+	},
+	{
+		"id": -1000007545,
+		"key": "story_end_K_Devourer",
+		"en|ch|tc|kr": "Dévoreur vaincu"
+	},
+	{
+		"id": -1000007546,
+		"key": "story_end_K_SecondChance",
+		"en|ch|tc|kr": "Seconde chance"
+	},
+	{
+		"id": -1000007547,
+		"key": "story_name_L",
+		"en|ch|tc|kr": "Le Démon du cœur"
+	},
+	{
+		"id": -1000007548,
+		"key": "story_task_desc_L",
+		"en|ch|tc|kr": "{0}"
+	},
+	{
+		"id": -1000007549,
+		"key": "story_task_L0",
+		"en|ch|tc|kr": "Des rêves des gens de votre vie."
+	},
+	{
+		"id": -1000007550,
+		"key": "story_task_L1",
+		"en|ch|tc|kr": "Le lac miroir : trois regrets."
+	},
+	{
+		"id": -1000007551,
+		"key": "story_task_L2",
+		"en|ch|tc|kr": "Les fantômes de votre passé."
+	},
+	{
+		"id": -1000007552,
+		"key": "story_task_L3",
+		"en|ch|tc|kr": "Une copie de vous-même."
+	},
+	{
+		"id": -1000007553,
+		"key": "story_task_L4",
+		"en|ch|tc|kr": "Un cœur limpide."
+	},
+	{
+		"id": -1000007554,
+		"key": "story_L0_1",
+		"en|ch|tc|kr": "Vous dormez - et ils viennent, un à un, tels que vous les avez quittés : {0}.\nAu bout du rêve, une silhouette à votre visage vous sourit."
+	},
+	{
+		"id": -1000007555,
+		"key": "story_L0_none",
+		"en|ch|tc|kr": "des visages dont vous vous souvenez à peine"
+	},
+	{
+		"id": -1000007556,
+		"key": "story_L1_1",
+		"en|ch|tc|kr": "Un lac immobile comme du verre. Dedans, un chemin que vous n'avez pas pris : quelqu'un que vous auriez pu sauver, et que vous avez dépassé.\nVotre reflet demande, « Le regrettes-tu ? »"
+	},
+	{
+		"id": -1000007557,
+		"key": "story_L1_2",
+		"en|ch|tc|kr": "Le lac montre un visage que vous avez aimé, attendant devant une porte où vous n'êtes jamais revenu.\nVotre reflet demande, « Le regrettes-tu ? »"
+	},
+	{
+		"id": -1000007558,
+		"key": "story_L1_3",
+		"en|ch|tc|kr": "Le lac vous montre, il y a longtemps, choisissant la puissance plutôt qu'un ami.\nVotre reflet demande, « Le regrettes-tu ? »"
+	},
+	{
+		"id": -1000007559,
+		"key": "story_L1_tomb",
+		"en|ch|tc|kr": "Le lac montre le tombeau que vous avez ouvert, l'héritage que vous avez pris - et l'âme laissée dans le noir.\nVotre reflet demande, « Cela en valait-il la peine ? »"
+	},
+	{
+		"id": -1000007560,
+		"key": "story_L1_o1",
+		"en|ch|tc|kr": "« Oui. Et je le porte. »"
+	},
+	{
+		"id": -1000007561,
+		"key": "story_L1_o2",
+		"en|ch|tc|kr": "« Non. C'était le seul chemin. »"
+	},
+	{
+		"id": -1000007562,
+		"key": "story_L2_1",
+		"en|ch|tc|kr": "Le lac bouillonne. En sortent les ennemis que vous vous êtes faits - des formes grises aux visages de chaque fin ratée."
+	},
+	{
+		"id": -1000007563,
+		"key": "story_L2_1_o1",
+		"en|ch|tc|kr": "Combattre les fantômes"
+	},
+	{
+		"id": -1000007564,
+		"key": "story_L3_1",
+		"en|ch|tc|kr": "La dernière forme sort de l'eau : vous. Votre visage, votre épée, vos techniques - et un sourire que vous n'avez jamais eu."
+	},
+	{
+		"id": -1000007565,
+		"key": "story_L3_1_o1",
+		"en|ch|tc|kr": "Vous combattre vous-même"
+	},
+	{
+		"id": -1000007566,
+		"key": "story_L4_1",
+		"en|ch|tc|kr": "La copie s'agenouille dans l'eau, s'effaçant.\nLe démon murmure, « Je suis chaque peur que tu n'as jamais regardée. Accepte-moi, renie-moi - ou deviens-moi. »"
+	},
+	{
+		"id": -1000007567,
+		"key": "story_L4_1_o1",
+		"en|ch|tc|kr": "L'accepter"
+	},
+	{
+		"id": -1000007568,
+		"key": "story_L4_1_o2",
+		"en|ch|tc|kr": "Le renier"
+	},
+	{
+		"id": -1000007569,
+		"key": "story_L4_1_o3",
+		"en|ch|tc|kr": "Devenir lui"
+	},
+	{
+		"id": -1000007570,
+		"key": "story_endL_ClearHeart",
+		"en|ch|tc|kr": "Le lac n'est plus qu'un lac. Vous les revoyez tous, en paix : {0}. Votre cœur est clair comme l'eau."
+	},
+	{
+		"id": -1000007571,
+		"key": "story_endL_Scarred",
+		"en|ch|tc|kr": "Vous partez. Le lac est calme - mais quelque part en dessous, le démon attend les vingt prochaines années."
+	},
+	{
+		"id": -1000007572,
+		"key": "story_endL_Embraced",
+		"en|ch|tc|kr": "Vous ouvrez les bras. Le démon se déverse en vous, et le monde paraît plus petit. Les vertueux vous traiteront de monstre ; qu'ils le fassent."
+	},
+	{
+		"id": -1000007573,
+		"key": "story_end_L_ClearHeart",
+		"en|ch|tc|kr": "Cœur limpide"
+	},
+	{
+		"id": -1000007574,
+		"key": "story_end_L_Scarred",
+		"en|ch|tc|kr": "Cœur balafré"
+	},
+	{
+		"id": -1000007575,
+		"key": "story_end_L_Embraced",
+		"en|ch|tc|kr": "Embrassé"
+	},
+	{
+		"id": -1000007576,
+		"key": "story_L_demon",
+		"en|ch|tc|kr": "Le démon du cœur"
+	},
+	{
+		"id": -1000007577,
+		"key": "story_L_nightmare",
+		"en|ch|tc|kr": "un cauchemar"
 	}
 ]

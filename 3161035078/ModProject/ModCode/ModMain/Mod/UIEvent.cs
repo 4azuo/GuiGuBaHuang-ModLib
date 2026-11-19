@@ -19,6 +19,9 @@ namespace MOD_nE7UL2.Mod
     {
         public static UIEvent Instance { get; set; }
 
+        /// <summary>Player info: the "Damage Calc" button and the S&amp;M score line on the top edge, offsets from the close button (canvas units).</summary>
+        public const float DMG_BUTTON_DX = -190f, SCORE_DX = -1150f;
+
         private Text uiArtifactInfo_textBasicTitle;
         private Text uiArtifactInfo_textBasicAdj1;
         private Text uiArtifactInfo_textBasicAdj2;
@@ -171,6 +174,19 @@ namespace MOD_nE7UL2.Mod
                         });
                     ui.AddToolTipButton(GameTool.LS("other500020036")).SetParentTransform(ui.UI.uiSkill.textPoint1.transform).Pos(ui.UI.uiSkill.textPoint1.transform, 0, -60);
                     ui.AddToolTipButton(GameTool.LS("other500020037")).SetParentTransform(ui.UI.uiSkill.goGroupRoot).Pos(ui.UI.uiSkill.goActionMartialRoot.transform, 0, 200);
+
+                    // damage calculation before a battle (DamageInfo; in a battle: its button / hotkey)
+                    if (ui.UI.unit != null && ui.UI.unit.IsPlayer())
+                    {
+                        // on the top edge of the scroll, on every tab: the button left of the close button (top right), the
+                        // score at the top left (same parent as the close button: positions relative to it)
+                        var close = ui.UI.btnClose;
+                        ui.AddButton(0, 0, () => DamageInfo.Open(), GameTool.LS("dmginfo_button")).Size(170, 32)
+                            .SetParentTransform(close.transform.parent).Pos(close, DMG_BUTTON_DX, 0);
+                        // S&M score of the save: title of its tier, P, reward bonus (SMScoreEvent)
+                        ui.AddText(0, 0, SMScoreEvent.TitleLine(SMScoreEvent.P)).Format(new Color(0.45f, 0.12f, 0.08f), 16).Align(TextAnchor.MiddleCenter)
+                            .SetParentTransform(close.transform.parent).Pos(close, SCORE_DX, 0);
+                    }
                 }
                 ui.IsAutoUpdate = true;
             }
@@ -370,11 +386,12 @@ namespace MOD_nE7UL2.Mod
                     uiPropInfo_textRefineAdj3 = uiPropInfo.textName.Copy().Align().Format(customAdj1?.GetColor(refineLvl) ?? AdjLevelEnum.None.Color, 14);
                     uiPropInfo_textRefineAdj4 = uiPropInfo.textName.Copy().Align().Format(customAdj2?.GetColor(refineLvl) ?? AdjLevelEnum.None.Color, 14);
 
-                    uiPropInfo_textRefineTitle.Pos(uiPropInfo.textName.gameObject, 0, -0);
-                    uiPropInfo_textRefineAdj1.Pos(uiPropInfo.textName.gameObject, 5, -15);
-                    uiPropInfo_textRefineAdj2.Pos(uiPropInfo.textName.gameObject, 5, -30);
-                    uiPropInfo_textRefineAdj3.Pos(uiPropInfo.textName.gameObject, 5, -45);
-                    uiPropInfo_textRefineAdj4.Pos(uiPropInfo.textName.gameObject, 5, -60);
+                    // top-left corner of the window (as the ring's block): over the name it hid the name and the type
+                    uiPropInfo_textRefineTitle.Pos(uiPropInfo.textName.gameObject, 0, 80);
+                    uiPropInfo_textRefineAdj1.Pos(uiPropInfo.textName.gameObject, 5, 65);
+                    uiPropInfo_textRefineAdj2.Pos(uiPropInfo.textName.gameObject, 5, 50);
+                    uiPropInfo_textRefineAdj3.Pos(uiPropInfo.textName.gameObject, 5, 35);
+                    uiPropInfo_textRefineAdj4.Pos(uiPropInfo.textName.gameObject, 5, 20);
 
                     uiPropInfo_textRefineTitle.Set(ModTextHelper.LSF("ui_refine_lvl", refineLvl));
                     uiPropInfo_textRefineAdj1.Set(ModTextHelper.LSF("ui_adj_hp", UnitModifyHelper.GetRefineOutfitAdjHp(uiPropInfo.unit.GetDynProperty(UnitDynPropertyEnum.HpMax).baseValue, uiPropInfo.propData, refineLvl)));
@@ -465,11 +482,12 @@ namespace MOD_nE7UL2.Mod
                 }
                 else if (uiPropInfo.propData.propsItem.IsOutfit() != null && IsReady(uiPropInfo_textRefineAdj4, uiPropInfo))
                 {
-                    uiPropInfo_textRefineTitle.Pos(uiPropInfo.textName.gameObject, 0, -0);
-                    uiPropInfo_textRefineAdj1.Pos(uiPropInfo.textName.gameObject, 5, -15);
-                    uiPropInfo_textRefineAdj2.Pos(uiPropInfo.textName.gameObject, 5, -30);
-                    uiPropInfo_textRefineAdj3.Pos(uiPropInfo.textName.gameObject, 5, -45);
-                    uiPropInfo_textRefineAdj4.Pos(uiPropInfo.textName.gameObject, 5, -60);
+                    // top-left corner of the window (as the ring's block): over the name it hid the name and the type
+                    uiPropInfo_textRefineTitle.Pos(uiPropInfo.textName.gameObject, 0, 80);
+                    uiPropInfo_textRefineAdj1.Pos(uiPropInfo.textName.gameObject, 5, 65);
+                    uiPropInfo_textRefineAdj2.Pos(uiPropInfo.textName.gameObject, 5, 50);
+                    uiPropInfo_textRefineAdj3.Pos(uiPropInfo.textName.gameObject, 5, 35);
+                    uiPropInfo_textRefineAdj4.Pos(uiPropInfo.textName.gameObject, 5, 20);
                 }
                 else if (uiPropInfo.propData.propsItem.IsMount() != null && IsReady(uiPropInfo_textRefineAdj3, uiPropInfo))
                 {

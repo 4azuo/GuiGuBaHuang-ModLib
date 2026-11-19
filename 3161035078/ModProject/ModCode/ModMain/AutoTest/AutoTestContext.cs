@@ -1,4 +1,4 @@
-﻿using System;
+﻿﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -21,6 +21,17 @@ namespace MOD_nE7UL2.AutoTest
         /// scenario runs on it (the save is removed by the restore after the run). False: Save / AutoLoad are used.
         /// </summary>
         public bool NewCharacter { get; set; } = false;
+        /// <summary>
+        /// Games side by side (run-autotest.ps1 -SlotCharacter): every game slot plays its own test character
+        /// "AutoTest Slot&lt;n&gt;" (kept between runs); created by TP-01 when missing - one game at a time
+        /// (&lt;mod cache&gt;\autotest-shared\creating.lock), so two games never pick the same free save slot.
+        /// </summary>
+        public bool SlotCharacter { get; set; } = false;
+        /// <summary>
+        /// Window of the game ("1600x900", empty: as set): the game's own settings (g.data.globle.gameSetting: windowed,
+        /// size) set and applied at the title screen, kept after the run.
+        /// </summary>
+        public string Window { get; set; }
         /// <summary>True: the runner opens the save itself. False: the tester loads it manually.</summary>
         public bool AutoLoad { get; set; } = true;
         /// <summary>Scenario ids to run (empty = all automatic scenarios).</summary>
@@ -31,6 +42,11 @@ namespace MOD_nE7UL2.AutoTest
         public bool WatchBattles { get; set; } = false;
         /// <summary>Capture the screen before the first step and after every step of each scenario.</summary>
         public bool SnapSteps { get; set; } = true;
+        /// <summary>
+        /// Promotion run (scripts/game/run-promo.ps1): the scenarios run only for their pictures ("promo" of
+        /// scenarios.json, copied to ModProject/SteamImg): no check panels over the screenshots.
+        /// </summary>
+        public bool Promo { get; set; } = false;
     }
 
     /// <summary>Execution kind of a scenario.</summary>
@@ -40,6 +56,8 @@ namespace MOD_nE7UL2.AutoTest
         Auto,
         /// <summary>Runs automatically when the tester starts a battle during the session.</summary>
         Watch,
+        /// <summary>A tool, not a test (e.g. the effect galleries): runs only when its id is asked (-Scenario).</summary>
+        Tool,
     }
 
     /// <summary>Where an automatic scenario can run.</summary>
@@ -90,6 +108,15 @@ namespace MOD_nE7UL2.AutoTest
         /// (logic checks: the evidence then shows the values computed in the game instead of an empty map).
         /// </summary>
         public bool Overlay { get; set; } = true;
+        /// <summary>
+        /// Keep the message boxes between steps. Default false: before every step the runner clicks the only button of
+        /// an information box (one button, already in the previous step's screenshot) and "Disable" in the game's
+        /// tutorial-tips prompt, so they do not cover the next windows. True for scenarios whose next step answers a
+        /// one-button box itself.
+        /// </summary>
+        public bool KeepPopups { get; set; } = false;
+        /// <summary>Screenshots before / after the steps (off for tools with thousands of steps: they capture what they need).</summary>
+        public bool SnapSteps { get; set; } = true;
         /// <summary>Steps executed in order.</summary>
         public List<ScenarioStep> Steps { get; } = new List<ScenarioStep>();
 

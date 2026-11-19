@@ -68,5 +68,15 @@
 		"id": "-1000003014",
 		"key": "setting014",
 		"en|ch|tc|kr": "Encuentros aleatorios"
+	},
+	{
+		"id": -1000003015,
+		"key": "setting015",
+		"en|ch|tc|kr": "Otros atajos"
+	},
+	{
+		"id": -1000003016,
+		"key": "setting016",
+		"en|ch|tc|kr": "Récords"
 	}
 ]

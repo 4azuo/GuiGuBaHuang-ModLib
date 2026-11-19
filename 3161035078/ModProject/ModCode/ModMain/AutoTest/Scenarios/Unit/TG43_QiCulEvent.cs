@@ -33,9 +33,10 @@ namespace MOD_nE7UL2.AutoTest.Scenarios.Unit
                     if (npc == null) { c.Skip("no NPC"); return; }
                     var ui = g.ui.GetUI<UINPCInfo>(UIType.NPCInfo);
                     // the Qi texts are on the "Taoist Mind" tab (uiHeart group), hidden while the Stats tab is shown
-                    var texts = ui?.uiHeart?.goGroupRoot?.GetComponentsInChildren<UnityEngine.UI.Text>(true).Select(t => t.text ?? "").ToList() ?? new System.Collections.Generic.List<string>();
+                    var texts = ui?.uiHeart?.goGroupRoot?.GetComponentsInChildren<UnityEngine.UI.Text>(true).Select(t => ModLib.Helper.TextIconHelper.GetShownText(t) ?? "").ToList() ?? new System.Collections.Generic.List<string>();
                     c.Assert(texts.Any(t => t.Contains("Qi: 1,000")), $"Qi text (Taoist Mind tab): {texts.FirstOrDefault(t => t.Contains("Qi:"))}");
-                    c.Assert(texts.Any(t => t.StartsWith("Atk:")) && texts.Any(t => t.StartsWith("Hp:")) && texts.Any(t => t.StartsWith("Mp:")), "Qi Atk/Hp/Mp bonus texts");
+                    // the texts start with the icon of the stat ("[icon:gongji] Atk: ...")
+                    c.Assert(texts.Any(t => t.Contains("Atk:")) && texts.Any(t => t.Contains("Hp:")) && texts.Any(t => t.Contains("Mp:")), "Qi Atk/Hp/Mp bonus texts");
                 }, 1500)
                 .Step("transfer", c =>
                 {

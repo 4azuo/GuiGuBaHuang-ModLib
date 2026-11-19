@@ -62,6 +62,7 @@ namespace MOD_nE7UL2.AutoTest.Scenarios.Story
         public static bool Drive(AutoTestContext c, string id, Action<StoryState> prep = null, int[] plan = null)
         {
             var s = StoryEvent.Instance.State(id);
+            if (StoryEvent.LastError != null) { c.Info($"error of a step: {StoryEvent.LastError}"); StoryEvent.LastError = null; }
             if (s.Closed) return true;
             var key = $"{s.Id}{s.Act}.{s.Step}";
             // an option whose condition is not met (proofs, intimacy...; spirit stones and items: Supply): its message
@@ -141,6 +142,7 @@ namespace MOD_nE7UL2.AutoTest.Scenarios.Story
                 {
                     DismissDramas();
                     StoryEvent.NoBattles = true;
+                    StoryEvent.NoGates = true;   // the long lines (G-L): their acts open without waiting for years / realms
                     Mod.AutoTestEvent.DramaTimeoutSec = 20; // every drama is read and captured before its answer
                     Supply();
                     before?.Invoke(c);
@@ -194,6 +196,7 @@ namespace MOD_nE7UL2.AutoTest.Scenarios.Story
                 {
                     DismissDramas();
                     StoryEvent.NoBattles = false;
+                    StoryEvent.NoGates = false;
                     Mod.AutoTestEvent.DramaTimeoutSec = 5;
                     var s = StoryEvent.Instance.State(line);
                     c.Assert(s.Closed && s.Ending != null && endings.Contains(s.Ending), $"line {line} ended: {s.Ending} (expected one of {string.Join(", ", endings)}); flags {string.Join(", ", s.Flags.Where(x => !x.Key.StartsWith("seen_")).Select(x => $"{x.Key}={x.Value}"))}");
@@ -292,5 +295,56 @@ namespace MOD_nE7UL2.AutoTest.Scenarios.Story
             var team = HirePeopleEvent.Instance.TeamData.TryGetValue(Player.GetUnitId(), out var t) ? t : new List<string>();
             c.Assert(!hired.Any(u => team.Contains(u.GetUnitId())), $"allies hired for the battle dismissed ({hired.Count} hired)");
         });
+    }
+
+    // ---- the long lines G-L (their acts open at once in the tests: StoryEvent.NoGates)
+
+    public class TS07_HundredYearWager : IScenarioDefinition
+    {
+        public string Id => "TS-07";
+        public Scenario Create() => StoryDriver.Build(Id, "G", "Story G Hundred-Year Wager: G0-G5 over a century, to an ending", null, null,
+            new[] { "G_Friend", "G_Rival", "G_Surpassed", "G_Grave" });
+    }
+
+    public class TS08_RoadsideInn : IScenarioDefinition
+    {
+        public string Id => "TS-08";
+        public Scenario Create() => StoryDriver.Build(Id, "H", "Story H Roadside Inn: H0-H5, the wedding, the fire, her son, her last years", c => StoryDriver.GoToTown(), null,
+            new[] { "H_InnOfAges", "H_Lineage", "H_Ashes" }, null, (c, s) =>
+            {
+                c.Assert(s.Roles.ContainsKey("R") && s.Roles.ContainsKey("K2"), "her husband and her son cast");
+                c.Assert(LineH_RoadsideInn.InnStands(s) == (s.Ending != "H_Ashes"), "the inn stands unless burned (read by line J)");
+            });
+    }
+
+    public class TS09_SealedTomb : IScenarioDefinition
+    {
+        public string Id => "TS-09";
+        public Scenario Create() => StoryDriver.Build(Id, "I", "Story I Sealed Tomb: the map, the halls, Gu's betrayal, the tomb owner", c => StoryDriver.LeaveTown(), null,
+            new[] { "I_Heir", "I_FreedSoul", "I_Sealer", "I_Looted" });
+    }
+
+    public class TS10_CursedDisciple : IScenarioDefinition
+    {
+        public string Id => "TS-10";
+        // J1: mercy twice (option 0), J5: side by side against the sect master (option 0)
+        public Scenario Create() => StoryDriver.Build(Id, "J", "Story J Cursed Disciple: the execution ground, 3 lessons, the hunters, the last duel", c => StoryDriver.GoToTown(), null,
+            new[] { "J_Righteous", "J_Demon", "J_Sealed" }, null, (c, s) =>
+                c.Assert(s.Flag("mercy") + s.Flag("strength") + s.Flag("freedom") >= 3, $"3 lessons taught (mercy {s.Flag("mercy")}, strength {s.Flag("strength")}, freedom {s.Flag("freedom")})"));
+    }
+
+    public class TS11_ThunderRemnant : IScenarioDefinition
+    {
+        public string Id => "TS-11";
+        public Scenario Create() => StoryDriver.Build(Id, "K", "Story K Thunder Remnant: the voice, the platform, his descendants, the second tribulation", null, null,
+            new[] { "K_Guided", "K_Devourer", "K_SecondChance" });
+    }
+
+    public class TS12_HeartDemon : IScenarioDefinition
+    {
+        public string Id => "TS-12";
+        public Scenario Create() => StoryDriver.Build(Id, "L", "Story L Heart Demon: dreams of the other lines, the mirror lake, the copy, clear heart", null, null,
+            new[] { "L_ClearHeart", "L_Scarred", "L_Embraced" }, null, (c, s) =>
+                c.Assert(!string.IsNullOrEmpty(LineL_HeartDemon.Dreams()), $"dreams of the other lines: {LineL_HeartDemon.Dreams()}"));
     }
 }

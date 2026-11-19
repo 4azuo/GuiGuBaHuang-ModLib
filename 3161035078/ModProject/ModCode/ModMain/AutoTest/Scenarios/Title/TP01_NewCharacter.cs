@@ -33,6 +33,18 @@ namespace MOD_nE7UL2.AutoTest.Scenarios.Title
                 {
                     if (!Requested) { c.Skip("the run uses an existing save"); return; }
                     var sm = SMGlobalConfigsEvent.Instance;
+                    // the scenarios are written for the default S&M settings (e.g. "towns build up over time" leaves new
+                    // towns without their buildings): defaults for the test, the tester's settings come back with the
+                    // restore of run-autotest.ps1 (mod globals)
+                    var defaults = new SMGlobalConfigsEvent();
+                    var changed = new System.Collections.Generic.List<string>();
+                    foreach (var p in typeof(SMGlobalConfigsEvent).GetProperties(System.Reflection.BindingFlags.Public | System.Reflection.BindingFlags.Instance | System.Reflection.BindingFlags.DeclaredOnly))
+                    {
+                        if (!p.CanRead || !p.CanWrite || p.GetIndexParameters().Length > 0) continue;
+                        var v = p.GetValue(defaults);
+                        if (!Equals(p.GetValue(sm), v)) { changed.Add(p.Name); p.SetValue(sm, v); }
+                    }
+                    c.Info(changed.Count == 0 ? "S&M: default settings" : $"S&M back to the defaults for the test: {string.Join(", ", changed)}");
                     sm.EnableTrainer = true;
                     CacheHelper.SaveGlobalCache(sm);
                     c.Assert(sm.EnableTrainer, "S&M trainer on (saved in the global configs copied by the new save)");
@@ -42,7 +54,9 @@ namespace MOD_nE7UL2.AutoTest.Scenarios.Title
                     if (!Requested) return;
                     var ui = g.ui.GetUI<UILogin>(UIType.Login);
                     if (!c.Assert(ui != null, "title screen")) return;
-                    ui.btnInto.onClick.Invoke();
+                    // already open when the runner looked for a free save first (AutoTestRequest.ClaimSave)
+                    var shown = ui.allCacheItem?.ToArray().Any(x => x?.goGroupRoot != null && x.goGroupRoot.activeInHierarchy) == true;
+                    if (!shown) ui.btnInto.onClick.Invoke();
                 }, 1000)
                 .Step("free slot", c =>
                 {

@@ -66,18 +66,18 @@
 	{
 		"id": "420041118",
 		"key": "townmaster420041118",
-		"en": "Budget: {0:#,##0}",
-		"ch": "预算：{0:#,##0}",
-		"tc": "預算：{0:#,##0}",
-		"kr": "예산: {0:#,##0}"
+		"en": "Budget: {0:#,##0} [icon:zm_lingshi]",
+		"ch": "预算：{0:#,##0} [icon:zm_lingshi]",
+		"tc": "預算：{0:#,##0} [icon:zm_lingshi]",
+		"kr": "예산: {0:#,##0} [icon:zm_lingshi]"
 	},
 	{
 		"id": "420041119",
 		"key": "townmaster420041119",
-		"en": "Pay: {0:#,##0}/year",
-		"ch": "薪资：{0:#,##0}/年",
-		"tc": "薪資：{0:#,##0}/年",
-		"kr": "지불: {0:#,##0}/년"
+		"en": "Pay: {0:#,##0} [icon:zm_lingshi]/year",
+		"ch": "薪资：{0:#,##0} [icon:zm_lingshi]/年",
+		"tc": "薪資：{0:#,##0} [icon:zm_lingshi]/年",
+		"kr": "지불: {0:#,##0} [icon:zm_lingshi]/년"
 	},
 	{
 		"id": "420041150",

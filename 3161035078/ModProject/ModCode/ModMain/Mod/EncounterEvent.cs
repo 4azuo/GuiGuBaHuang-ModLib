@@ -26,7 +26,7 @@ namespace MOD_nE7UL2.Mod
     {
         public static EncounterEvent Instance { get; set; }
 
-        public enum Encounter { Wounded, Chess, Peddler, Cave, Cub, Festival }
+        public enum Encounter { Wounded, Chess, Peddler, Cave, Cub, Festival, Heaven }
 
         /// <summary>Encounters on/off (Taoist Settings).</summary>
         public bool Enabled { get; set; } = true;
@@ -66,6 +66,8 @@ namespace MOD_nE7UL2.Mod
         /// <summary>NPC inheritance (% a year for each NPC): an ancient legacy (a lot of exp, Talent, Luck).</summary>
         public const float NPC_INHERITANCE_RATE = 0.02f;
         public const int NPC_FORTUNES_A_YEAR = 10;
+        /// <summary>Win chance (%) of the heavenly trial (rare encounter of the high S&amp;M scores).</summary>
+        public const float HEAVEN_WIN_CHANCE = 60f;
 
         /// <summary>NPC fortune of one NPC (roll 0..100 picks the kind). Returns the log key.</summary>
         public static string NpcFortune(WorldUnitBase npc, bool inheritance)
@@ -119,6 +121,8 @@ namespace MOD_nE7UL2.Mod
                 rs.Add(Encounter.Cub);
                 if (WoundedNpc() != null) rs.Add(Encounter.Wounded);
             }
+            // rare: a heavenly trial, only for the hard settings (S&M score tier Ascetic and above)
+            if (SMScoreEvent.HeavenUnlocked(SMScoreEvent.P)) rs.Add(Encounter.Heaven);
             return rs;
         }
 
@@ -166,6 +170,10 @@ namespace MOD_nE7UL2.Mod
                     DramaHelper.OpenDrama2(string.Format(GameTool.LS("enc_festival"), Town?.name, Cost()), new List<string> { GameTool.LS("enc_festival_o1"), GameTool.LS("enc_festival_o2") },
                         x => Resolve(e, Opt(x)), Background(Encounter.Festival));
                     break;
+                case Encounter.Heaven:
+                    DramaHelper.OpenDrama2(GameTool.LS("enc_heaven"), new List<string> { GameTool.LS("enc_heaven_o1"), GameTool.LS("enc_heaven_o2") },
+                        x => Resolve(e, Opt(x)), Background(Encounter.Heaven));
+                    break;
             }
         }
 
@@ -179,6 +187,7 @@ namespace MOD_nE7UL2.Mod
                 case Encounter.Cave: return "dixiamushi";           // dark opening in the rock
                 case Encounter.Cub: return "xingxingqiyu";          // small beast lying under a tree
                 case Encounter.Festival: return "shimengzhai_denglong"; // house with lanterns at night
+                case Encounter.Heaven: return "xianrencijiu";       // an immortal in a bamboo grove
                 default: return "huapaonanziganxie";                // cultivator bowing
             }
         }
@@ -303,6 +312,27 @@ namespace MOD_nE7UL2.Mod
                             foreach (var w in g.world.unit.GetUnitExact(town.GetOrigiPoint(), 6).ToArray().Where(x => !x.IsPlayer()).Take(5))
                                 w.data.unitData.relationData.AddIntim(Player.GetUnitId(), 20);
                         key = "enc_festival_r"; args = new object[] { add };
+                    }
+                    break;
+                case Encounter.Heaven:
+                    // a heavenly trial (S&M score tier Ascetic+): 60 % a lot of exp and an item of the next grade,
+                    // else a wound (-30 % HP); refusing does nothing
+                    if (opt == 0)
+                    {
+                        if (roll < HEAVEN_WIN_CHANCE)
+                        {
+                            var exp = 1000 * Grade;
+                            Player.AddExp(exp);
+                            var item = GiveItem(x => x.IsHerbItem() != null || x.IsMineItem() != null || x.IsPill() != null, Grade + 1);
+                            key = "enc_heaven_win"; args = new object[] { exp, item };
+                        }
+                        else
+                        {
+                            var hp = Player.GetDynProperty(UnitDynPropertyEnum.Hp).value;
+                            var lost = Math.Max(1, hp * 3 / 10);
+                            Player.AddProperty<int>(UnitPropertyEnum.Hp, -lost);
+                            key = "enc_heaven_lose"; args = new object[] { lost };
+                        }
                     }
                     break;
             }

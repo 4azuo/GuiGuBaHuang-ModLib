@@ -62,8 +62,17 @@ namespace MOD_nE7UL2.AutoTest.Scenarios.Battle
                 .Step("binding rows", c =>
                 {
                     c.Assert(g.ui.HasUI(UIType.TextInfoLong), "Taoist settings opened");
-                    var rows = AnimaWeaponEvent.GetRows();
+                    var all = AnimaWeaponEvent.GetRows();
+                    var rows = all.Where(r => AnimaWeaponEvent.WEAPONS.Any(w => r.name == AnimaWeaponEvent.ROW_PREFIX + w)).ToList();
                     c.AssertEqual(3, rows.Count, "a binding row per artifact (copies of the game key rows)");
+                    // the damage calculation hotkey: its own section ("Other hotkeys") under the artifacts
+                    var dmg = all.FirstOrDefault(r => r.name == AnimaWeaponEvent.ROW_PREFIX + AnimaWeaponEvent.DamageInfoRow);
+                    c.Assert(dmg != null && dmg.GetComponent<RectTransform>().anchoredPosition.y < rows.Min(r => r.GetComponent<RectTransform>().anchoredPosition.y),
+                        "damage calculation row under the artifact rows");
+                    var title = UIHelper.GetUICustomBase(UIType.TextInfoLong).SelectMany(x => x.Items).OfType<ModLib.Object.UIItemText>()
+                        .FirstOrDefault(x => x.Item.text == GameTool.LS("setting015"));
+                    c.Assert(title != null && dmg != null && title.Item.rectTransform.anchoredPosition.y > dmg.GetComponent<RectTransform>().anchoredPosition.y,
+                        $"'{GameTool.LS("setting015")}' title above it (not in the divine artifact section)");
                     var ys = rows.Select(r => r.GetComponent<RectTransform>().anchoredPosition.y).ToList();
                     c.Assert(ys.Distinct().Count() == 3, $"rows one below the other (y: {string.Join(", ", ys.Select(y => y.ToString("0")))})");
                     foreach (var w in AnimaWeaponEvent.WEAPONS)

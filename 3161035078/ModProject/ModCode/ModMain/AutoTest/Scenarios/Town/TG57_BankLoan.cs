@@ -56,9 +56,9 @@ namespace MOD_nE7UL2.AutoTest.Scenarios.Town
                 }, 1500)
                 .Step("loan window", c =>
                 {
-                    c.Assert(g.ui.HasUI(UIType.TextInfoLong), "loan window opened");
-                    c.Assert(FindTexts(g.ui.GetUI<UIBase>(UIType.TextInfoLong), BankLoanEvent.Limit().ToString("#,##0")).Any(), $"limit {BankLoanEvent.Limit():#,##0} shown");
-                    CloseAll(UIType.TextInfoLong, UIType.TownStorage);
+                    c.Assert(g.ui.HasUI(UIType.TextInfo), "loan window opened");
+                    c.Assert(FindTexts(g.ui.GetUI<UIBase>(UIType.TextInfo), BankLoanEvent.Limit().ToString("#,##0")).Any(), $"limit {BankLoanEvent.Limit():#,##0} shown");
+                    CloseAll(UIType.TextInfo, UIType.TownStorage);
                 })
                 .Step("borrow", c =>
                 {

@@ -527,7 +527,7 @@
 	{
 		"id": "-1000001155",
 		"key": "smcfgs155",
-		"en|ch|tc|kr": "Ces fonctions sont actives par défaut et ne changent pas le score de difficulté. En désactiver une conserve ce qui est en cours (un prêt peut toujours être remboursé, les ordres existants sont toujours exécutés)."
+		"en|ch|tc|kr": "Ces fonctions sont actives par défaut. En désactiver une change le score de difficulté : plus difficile sans une fonction qui aide (prêts, rencontres, famille), plus facile sans une qui nuit (primes, retraite forcée). En désactiver une conserve ce qui est en cours (un prêt peut toujours être remboursé, les ordres existants sont toujours exécutés)."
 	},
 	{
 		"id": "-1000001156",
@@ -623,5 +623,90 @@
 		"id": "-1000001174",
 		"key": "smcfgs174",
 		"en|ch|tc|kr": "Lotus Rouge : la dame derrière les autres histoires ; vos alliés contre son pavillon."
+	},
+	{
+		"id": -1000001175,
+		"key": "sm_title_0",
+		"en|ch|tc|kr": "Vagabond insouciant"
+	},
+	{
+		"id": -1000001176,
+		"key": "sm_title_1",
+		"en|ch|tc|kr": "Voie mortelle"
+	},
+	{
+		"id": -1000001177,
+		"key": "sm_title_2",
+		"en|ch|tc|kr": "Chercheur du Dao"
+	},
+	{
+		"id": -1000001178,
+		"key": "sm_title_3",
+		"en|ch|tc|kr": "Ascète"
+	},
+	{
+		"id": -1000001179,
+		"key": "sm_title_4",
+		"en|ch|tc|kr": "Asura"
+	},
+	{
+		"id": -1000001180,
+		"key": "sm_title_5",
+		"en|ch|tc|kr": "Défieur des cieux"
+	},
+	{
+		"id": -1000001181,
+		"key": "sm_title_line",
+		"en|ch|tc|kr": "{0} · {1:#,##0} P · récompenses {2}%"
+	},
+	{
+		"id": -1000001182,
+		"key": "sm_records_title",
+		"en|ch|tc|kr": "Records de score"
+	},
+	{
+		"id": -1000001183,
+		"key": "sm_records_desc",
+		"en|ch|tc|kr": "Chaque personnage de chaque sauvegarde : score S&M (P) de ses réglages, titre, meilleur royaume, années et générations."
+	},
+	{
+		"id": -1000001184,
+		"key": "sm_records_none",
+		"en|ch|tc|kr": "Aucun record : jouez une sauvegarde pour le voir ici."
+	},
+	{
+		"id": -1000001185,
+		"key": "sm_records_line",
+		"en|ch|tc|kr": "{0}. {1} — {2} · {3:#,##0} P · rang {4} · année {5} · génération {6} · {7}"
+	},
+	{
+		"id": -1000001186,
+		"key": "smcfgs186",
+		"en|ch|tc|kr": "Le pari de cent ans : un rival fier qui parie sur tout ; une vie de paris, des dettes de vie et un dernier pari."
+	},
+	{
+		"id": -1000001187,
+		"key": "smcfgs187",
+		"en|ch|tc|kr": "L'auberge du chemin : l'auberge d'une veuve dans votre première ville ; un usurier, un fils, un petit-fils, trois générations à protéger."
+	},
+	{
+		"id": -1000001188,
+		"key": "smcfgs188",
+		"en|ch|tc|kr": "Le tombeau scellé : un érudit poli, une demi-carte et un tombeau scellé depuis neuf mille ans ; associés, jusqu'au trésor."
+	},
+	{
+		"id": -1000001189,
+		"key": "smcfgs189",
+		"en|ch|tc|kr": "Le disciple maudit : un garçon marqué d'un sceau démoniaque ; élevez-le par la pitié, la force ou la liberté, il deviendra ce que vous enseignez."
+	},
+	{
+		"id": -1000001190,
+		"key": "smcfgs190",
+		"en|ch|tc|kr": "Le vestige du tonnerre : une voix ancienne dans la foudre ; un immortel déchu qui veut une seconde chance."
+	},
+	{
+		"id": -1000001191,
+		"key": "smcfgs191",
+		"en|ch|tc|kr": "Le démon du cœur : votre passé revient en rêve ; affrontez ce que toutes les autres histoires ont fait de vous."
 	}
 ]

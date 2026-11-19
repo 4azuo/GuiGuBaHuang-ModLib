@@ -22,12 +22,12 @@
 	{
 		"id": "420041118",
 		"key": "townmaster420041118",
-		"en|ch|tc|kr": "Budget : {0:#,##0}"
+		"en|ch|tc|kr": "Budget : {0:#,##0} [icon:zm_lingshi]"
 	},
 	{
 		"id": "420041119",
 		"key": "townmaster420041119",
-		"en|ch|tc|kr": "Salaire : {0:#,##0}/an"
+		"en|ch|tc|kr": "Salaire : {0:#,##0} [icon:zm_lingshi]/an"
 	},
 	{
 		"id": "420041113",

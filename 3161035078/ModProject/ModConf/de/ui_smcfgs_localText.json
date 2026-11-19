@@ -527,7 +527,7 @@
 	{
 		"id": "-1000001155",
 		"key": "smcfgs155",
-		"en|ch|tc|kr": "Diese Funktionen sind standardmäßig aktiv und ändern den Schwierigkeitswert nicht. Das Abschalten lässt Laufendes bestehen (ein Kredit kann weiterhin zurückgezahlt werden, bestehende Aufträge werden weiterhin erfüllt)."
+		"en|ch|tc|kr": "Diese Funktionen sind standardmäßig aktiv. Das Abschalten ändert den Schwierigkeitswert: schwerer ohne eine hilfreiche Funktion (Kredite, Begegnungen, Familie), leichter ohne eine schädliche (Kopfgelder, erzwungene Klausur). Das Abschalten lässt Laufendes bestehen (ein Kredit kann weiterhin zurückgezahlt werden, bestehende Aufträge werden weiterhin erfüllt)."
 	},
 	{
 		"id": "-1000001156",
@@ -623,5 +623,90 @@
 		"id": "-1000001174",
 		"key": "smcfgs174",
 		"en|ch|tc|kr": "Roter Lotus: die Lady hinter den anderen Geschichten; deine Verbündeten gegen ihren Pavillon."
+	},
+	{
+		"id": -1000001175,
+		"key": "sm_title_0",
+		"en|ch|tc|kr": "Müßiger Wanderer"
+	},
+	{
+		"id": -1000001176,
+		"key": "sm_title_1",
+		"en|ch|tc|kr": "Weg der Sterblichen"
+	},
+	{
+		"id": -1000001177,
+		"key": "sm_title_2",
+		"en|ch|tc|kr": "Sucher des Dao"
+	},
+	{
+		"id": -1000001178,
+		"key": "sm_title_3",
+		"en|ch|tc|kr": "Asket"
+	},
+	{
+		"id": -1000001179,
+		"key": "sm_title_4",
+		"en|ch|tc|kr": "Asura"
+	},
+	{
+		"id": -1000001180,
+		"key": "sm_title_5",
+		"en|ch|tc|kr": "Himmelstrotzer"
+	},
+	{
+		"id": -1000001181,
+		"key": "sm_title_line",
+		"en|ch|tc|kr": "{0} · {1:#,##0} P · Belohnungen {2}%"
+	},
+	{
+		"id": -1000001182,
+		"key": "sm_records_title",
+		"en|ch|tc|kr": "Punkte-Rekorde"
+	},
+	{
+		"id": -1000001183,
+		"key": "sm_records_desc",
+		"en|ch|tc|kr": "Jede Figur jedes Spielstands: S&M-Punkte (P) der Einstellungen, Titel, höchste Stufe, Jahre und Generationen."
+	},
+	{
+		"id": -1000001184,
+		"key": "sm_records_none",
+		"en|ch|tc|kr": "Noch kein Rekord: spiele einen Spielstand."
+	},
+	{
+		"id": -1000001185,
+		"key": "sm_records_line",
+		"en|ch|tc|kr": "{0}. {1} — {2} · {3:#,##0} P · Stufe {4} · Jahr {5} · Generation {6} · {7}"
+	},
+	{
+		"id": -1000001186,
+		"key": "smcfgs186",
+		"en|ch|tc|kr": "Die Hundertjahreswette: ein stolzer Rivale, der auf alles wettet; ein Leben voller Wetten, Lebensschulden und eine letzte Wette."
+	},
+	{
+		"id": -1000001187,
+		"key": "smcfgs187",
+		"en|ch|tc|kr": "Das Gasthaus am Weg: das Gasthaus einer Witwe in deiner ersten Stadt; ein Kredithai, ein Sohn, ein Enkel, drei Generationen zu beschützen."
+	},
+	{
+		"id": -1000001188,
+		"key": "smcfgs188",
+		"en|ch|tc|kr": "Das versiegelte Grab: ein höflicher Gelehrter, eine halbe Karte und ein seit neuntausend Jahren versiegeltes Grab; Partner, bis zum Schatz."
+	},
+	{
+		"id": -1000001189,
+		"key": "smcfgs189",
+		"en|ch|tc|kr": "Der verfluchte Schüler: ein Junge mit Dämonenmal; erziehe ihn mit Gnade, Stärke oder Freiheit, und er wird, was du lehrst."
+	},
+	{
+		"id": -1000001190,
+		"key": "smcfgs190",
+		"en|ch|tc|kr": "Der Donnerrest: eine uralte Stimme im Blitz; ein gefallener Unsterblicher, der eine zweite Chance will."
+	},
+	{
+		"id": -1000001191,
+		"key": "smcfgs191",
+		"en|ch|tc|kr": "Der Herzdämon: deine Vergangenheit kehrt in Träumen zurück; stelle dich dem, was alle anderen Geschichten aus dir gemacht haben."
 	}
 ]

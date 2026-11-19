@@ -128,7 +128,7 @@ namespace ModLib.Helper
         /// <returns>Path to the mod's cache root folder</returns>
         public static string GetCacheFolderName(string modId)
         {
-            var p = $"{Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData)}Low\\guigugame\\guigubahuang\\mod\\{modId}\\";
+            var p = $"{SaveCleanupHelper.GameDataPath}\\mod\\{modId}\\";
             if (!Directory.Exists(p))
                 Directory.CreateDirectory(p);
             return p;
@@ -390,20 +390,54 @@ namespace ModLib.Helper
                     var cacheFile = GetGameCacheFilePath(t.Item1, t.Item2.CacheId);
                     if (File.Exists(cacheFile))
                     {
-                        var e = (CachableObject)JsonConvert.DeserializeObject(File.ReadAllText(cacheFile), t.Item3, JSON_SETTINGS);
-                        e.OnLoadClass(false, t.Item1, t.Item2);
-                        AddIfAccepted(e);
+                        // one broken cache (bad file, exception in OnLoadClass) must not stop the others: before, the
+                        // loop stopped and every event after it had no Instance (NullReferenceException in their events)
+                        if (!LoadSafe(cacheFile, t.Item1, t.Item2, t.Item3))
+                            CreateSafe(t.Item1, t.Item2, t.Item3);
                     }
                     else
                     {
                         if (!CacheData.ContainsKey(t.Item2.CacheId))
-                        {
-                            var e = (CachableObject)Activator.CreateInstance(t.Item3);
-                            e.OnLoadClass(true, t.Item1, t.Item2);
-                            AddIfAccepted(e);
-                        }
+                            CreateSafe(t.Item1, t.Item2, t.Item3);
                     }
                 }
+            }
+        }
+
+        /// <summary>
+        /// Loads one cache object from its file (false when the file cannot be read or its OnLoadClass fails: the file is
+        /// kept as "&lt;file&gt;.broken" and the error logged, the caller creates a new object instead).
+        /// </summary>
+        private static bool LoadSafe(string cacheFile, string modId, CacheAttribute attr, Type type)
+        {
+            try
+            {
+                var e = (CachableObject)JsonConvert.DeserializeObject(File.ReadAllText(cacheFile), type, JSON_SETTINGS);
+                if (e == null) throw new InvalidDataException("empty cache file");
+                e.OnLoadClass(false, modId, attr);
+                AddIfAccepted(e);
+                return true;
+            }
+            catch (Exception ex)
+            {
+                DebugHelper.WriteLine($"Load Cache failed: Mod={modId}, Id={attr.CacheId}: {ex.Message} (file kept as .broken, new object created)");
+                try { File.Copy(cacheFile, cacheFile + ".broken", true); } catch { }
+                return false;
+            }
+        }
+
+        /// <summary>Creates a new cache object (isNew); an exception is logged, the other caches still load.</summary>
+        private static void CreateSafe(string modId, CacheAttribute attr, Type type)
+        {
+            try
+            {
+                var e = (CachableObject)Activator.CreateInstance(type);
+                e.OnLoadClass(true, modId, attr);
+                AddIfAccepted(e);
+            }
+            catch (Exception ex)
+            {
+                DebugHelper.WriteLine($"Create Cache failed: Mod={modId}, Id={attr.CacheId}: {ex}");
             }
         }
 

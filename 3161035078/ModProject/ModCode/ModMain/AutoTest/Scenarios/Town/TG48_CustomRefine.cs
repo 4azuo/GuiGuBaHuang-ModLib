@@ -120,7 +120,7 @@ namespace MOD_nE7UL2.AutoTest.Scenarios.Town
         public Scenario Create()
         {
             DataProps.PropsData item = null;
-            var s = new Scenario { Id = "TG-48", Feature = "CustomRefineEvent", Title = "Custom refine of an artifact: exp, level, adjustment quality, bonuses, progress, reroll", Overlay = false }
+            var s = new Scenario { Id = "TG-48", Feature = "CustomRefineEvent", Title = "Custom refine of an artifact: exp, level, adjustment quality, bonuses, progress, reroll", Overlay = false, KeepPopups = true /* the next step reads the result message box */ }
                 .Step("travel", c => TravelTo(c, FindTown(t => Has(t, MapBuildSubType.TownFactory) && !t.buildTownData.isMainTown)))
                 .Step("artifact", c =>
                 {
@@ -148,7 +148,9 @@ namespace MOD_nE7UL2.AutoTest.Scenarios.Town
                     c.Assert(CustomRefine_ArtifactTypes().Contains(adj1.AdjType), $"slot 1 type {adj1.AdjType} is an artifact adjustment");
                     c.Assert(adj1.IsEnable(lvl) && !adj2.IsEnable(lvl), $"slot 1 unlocked at level {lvl}, slot 2 still locked (needs 200)");
                     c.Assert(adj1.GetColor(lvl) != AdjLevelEnum.None.Color, $"slot 1 shows its quality {adj1.AdjLevel} (x{adj1.AdjLevel.Multiplier})");
-                    c.Assert(adj1.GetRefineCustommAdjValue(Player, item, lvl) > 0, $"slot 1 value: {adj1.GetText(Player, item, lvl)}");
+                    // the value scales a base of the player (e.g. Evade: sqrt(wind basis / 18)): 0 when that base is 0 (seen 2026-11-18)
+                    var baseValue = adj1.AdjType.GetBaseValue(Player);
+                    c.Assert(baseValue <= 0 || adj1.GetRefineCustommAdjValue(Player, item, lvl) > 0, $"slot 1 value: {adj1.GetText(Player, item, lvl)} (base {baseValue:0.###})");
                     c.Assert(adj2.GetText(Player, item, lvl).Contains("(Req 200)"), "slot 2 text shows its requirement");
                     var atk = UnitModifyHelper.GetRefineArtifactAdjAtk(item, lvl);
                     var def = UnitModifyHelper.GetRefineArtifactAdjDef(item, lvl);

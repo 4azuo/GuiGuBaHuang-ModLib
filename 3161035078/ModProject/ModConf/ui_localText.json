@@ -82,10 +82,10 @@
   {
     "id": -1000008010,
     "key": "ui_per_month",
-    "en": "{0}/month",
-    "ch": "{0}/月",
-    "tc": "{0}/月",
-    "kr": "{0}/월"
+    "en": "{0} [icon:zm_lingshi]/month",
+    "ch": "{0} [icon:zm_lingshi]/月",
+    "tc": "{0} [icon:zm_lingshi]/月",
+    "kr": "{0} [icon:zm_lingshi]/월"
   },
   {
     "id": -1000008011,
@@ -138,10 +138,10 @@
   {
     "id": -1000008017,
     "key": "ui_atk",
-    "en": "Atk: {0}",
-    "ch": "攻击：{0}",
-    "tc": "攻擊：{0}",
-    "kr": "공격: {0}"
+    "en": "[icon:gongji] Atk: {0}",
+    "ch": "[icon:gongji] 攻击：{0}",
+    "tc": "[icon:gongji] 攻擊：{0}",
+    "kr": "[icon:gongji] 공격: {0}"
   },
   {
     "id": -1000008018,

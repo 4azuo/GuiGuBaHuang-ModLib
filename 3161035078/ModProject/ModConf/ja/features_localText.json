@@ -7,7 +7,7 @@
 	{
 		"id": "-1000006001",
 		"key": "log_line",
-		"en|ch|tc|kr": "{0}年{1}月：{2}"
+		"en|ch|tc|kr": "{0}年目 {1}月：{2}"
 	},
 	{
 		"id": "-1000006002",
@@ -1208,5 +1208,75 @@
 		"id": "-1000006285",
 		"key": "secl_res_Garden",
 		"en|ch|tc|kr": "梨の木の下で、季節は呼吸のように過ぎていった。"
+	},
+	{
+		"id": -1000006286,
+		"key": "log_score_start",
+		"en|ch|tc|kr": "S&Mスコア {0:#,##0} P：能力ポイント +{1}、+{2:#,##0} [icon:zm_lingshi] で旅立つ。"
+	},
+	{
+		"id": -1000006287,
+		"key": "log_score_inherit",
+		"en|ch|tc|kr": "易しい設定（{1:#,##0} P）：子孫は遺産のうち {0:#,##0} [icon:zm_lingshi] を失った。"
+	},
+	{
+		"id": -1000006288,
+		"key": "enc_heaven",
+		"en|ch|tc|kr": "白髪の仙人が雲から現れる：「汝の選んだ険しい道を歩む者は少ない。我が試練を受けるか？」"
+	},
+	{
+		"id": -1000006289,
+		"key": "enc_heaven_o1",
+		"en|ch|tc|kr": "試練を受ける"
+	},
+	{
+		"id": -1000006290,
+		"key": "enc_heaven_o2",
+		"en|ch|tc|kr": "一礼して辞退する"
+	},
+	{
+		"id": -1000006291,
+		"key": "enc_heaven_win",
+		"en|ch|tc|kr": "天の試練を乗り越えた：経験 +{0:#,##0}、{1}を得た。"
+	},
+	{
+		"id": -1000006292,
+		"key": "enc_heaven_lose",
+		"en|ch|tc|kr": "試練は厳しすぎた：HP を {0:#,##0} 失った。"
+	},
+	{
+		"id": -1000006293,
+		"key": "log_date",
+		"en|ch|tc|kr": "{0}年目 {1}月"
+	},
+	{
+		"id": -1000006294,
+		"key": "market_bo_h_item",
+		"en|ch|tc|kr": "品物"
+	},
+	{
+		"id": -1000006295,
+		"key": "market_bo_h_count",
+		"en|ch|tc|kr": "数量"
+	},
+	{
+		"id": -1000006296,
+		"key": "market_bo_h_price",
+		"en|ch|tc|kr": "単価"
+	},
+	{
+		"id": -1000006297,
+		"key": "market_bo_h_town",
+		"en|ch|tc|kr": "町"
+	},
+	{
+		"id": -1000006298,
+		"key": "market_bo_h_left",
+		"en|ch|tc|kr": "残り期間"
+	},
+	{
+		"id": -1000006299,
+		"key": "market_bo_left",
+		"en|ch|tc|kr": "{0}か月"
 	}
 ]

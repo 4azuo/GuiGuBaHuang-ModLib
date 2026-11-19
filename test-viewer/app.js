@@ -175,6 +175,7 @@
           <div class="toolbar">
             ${['all', 'NG', 'OK', 'SKIP'].map(f => `<button class="chip ${state.filter === f ? 'on' : ''}" data-filter="${f}">${f === 'all' ? 'All' : f}</button>`).join('')}
             <input class="search" id="search" placeholder="Search id, feature, description, check..." value="${esc(state.query)}">
+            ${listActs()}
           </div>
         </div>
         <table class="rows">
@@ -345,7 +346,7 @@
       <div class="card">
         <div class="card-head"><h2>Tests</h2>
           <div class="toolbar">${['all', 'NG', 'OK', 'SKIP'].map(f => `<button class="chip ${state.filter === f ? 'on' : ''}" data-filter="${f}">${f === 'all' ? 'All' : f}</button>`).join('')}
-          <input class="search" id="search" placeholder="Search test, description, values..." value="${esc(state.query)}"></div>
+          <input class="search" id="search" placeholder="Search test, description, values..." value="${esc(state.query)}">${listActs()}</div>
           </div>
         <table class="rows"><thead><tr><th></th><th>Result</th><th>Test</th><th>Category</th><th class="num">Time</th></tr></thead>
         <tbody>${body || '<tr><td colspan="5" class="noshot">No test matches.</td></tr>'}</tbody></table>
@@ -424,9 +425,15 @@
       </div></div>
       <div class="card"><div class="card-head"><h2>Scenarios (${list.length})</h2>
         <div class="toolbar">${[['all', 'All'], ['NG', 'NG'], ['OK', 'OK'], ['SKIP', 'SKIP'], ['-', 'Not tested']].map(([f, t]) => `<button class="chip ${state.filter === f ? 'on' : ''}" data-filter="${f}">${t}</button>`).join('')}
-        <input class="search" id="search" placeholder="Search..." value="${esc(state.query)}"></div></div>
+        <input class="search" id="search" placeholder="Search..." value="${esc(state.query)}">${listActs()}</div></div>
         <table class="rows"><thead><tr><th></th><th>Id</th><th>Latest</th><th>Scenario</th><th>History</th><th>Last run</th></tr></thead><tbody>${body}</tbody></table>
       </div>`;
+  }
+
+  // expand / collapse every row of the list (next to its filters)
+  function listActs() {
+    return `<span class="list-acts"><button class="link" data-act="expandAll" title="Expand every row of the list (after filters)">&#9662; Expand all</button>`
+      + `<button class="link" data-act="collapse" title="Collapse every row">&#9656; Collapse all</button></span>`;
   }
 
   // ------------------------------------------------------------------ render
@@ -435,7 +442,6 @@
     if (!DATA) { $('#empty').hidden = false; $('#view').innerHTML = ''; return; }
     $('#generated').textContent = 'Data generated ' + fmtTime(DATA.generatedAt);
     renderRunPicker();
-    $('#hdrActs').style.visibility = state.tab === 'modlog' ? 'hidden' : 'visible';
     $('#view').innerHTML = state.tab === 'unit' ? renderUnit() : state.tab === 'status' ? renderStatus() : state.tab === 'modlog' ? renderModLogs() : renderAuto();
     writeHash();
   }

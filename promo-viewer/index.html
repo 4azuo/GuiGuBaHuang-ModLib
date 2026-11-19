@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Promo Viewer</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="top">
+    <div class="brand">
+      <span class="logo">&#9638;</span>
+      <div>
+        <div class="title">Promo Viewer</div>
+        <div class="sub" id="generated"></div>
+      </div>
+    </div>
+    <nav class="tabs" id="tabs"></nav>
+    <nav class="viewers" aria-label="Viewers"><a href="../test-viewer/index.html" title="Results of the autotest and the unit tests">Tests</a><a href="../effect-viewer/index.html" title="Effects recorded by the galleries (TE-xx)">Effects</a><a class="on" aria-current="page" href="../promo-viewer/index.html" title="Steam Workshop pictures, promotion takes, marketing videos">Promo</a></nav>
+  </header>
+
+  <section class="filters">
+    <input id="q" type="search" placeholder="Search name, caption, scenario...">
+    <select id="fState">
+      <option value="">Every picture</option>
+      <option value="taken">Taken (in SteamImg)</option>
+      <option value="missing">Not taken yet</option>
+      <option value="stale">No promo entry anymore</option>
+    </select>
+    <span class="count" id="count"></span>
+  </section>
+
+  <main id="main"></main>
+
+  <div id="lightbox" class="lightbox hidden">
+    <button class="close" id="lbClose" title="Close (Esc)">&#10005;</button>
+    <button class="nav prev" id="lbPrev" title="Previous (&#8592;)">&#8249;</button>
+    <figure>
+      <img id="lbImg" alt="">
+      <figcaption id="lbCap"></figcaption>
+    </figure>
+    <button class="nav next" id="lbNext" title="Next (&#8594;)">&#8250;</button>
+  </div>
+
+  <div id="empty" class="empty hidden">
+    No data: run <code>python scripts/update-promo-viewer.py</code> (after a promotion run: <code>scripts/game/run-promo.ps1</code>).
+  </div>
+
+  <script src="data/promo.js" onerror="window.PROMO_DATA = null"></script>
+  <script src="app.js"></script>
+</body>
+</html>

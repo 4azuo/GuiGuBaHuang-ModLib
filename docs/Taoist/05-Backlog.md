@@ -24,7 +24,7 @@ Test: extend TG-46 (register a hidden item, NPC buys it, check the drama has no 
 
 ## Features not finished
 
-- NPC storylines: coded in `ModMain/Story/` (lines A-F, tests TS-01..TS-06). Simplified against the design (`06-Storylines-Draft.md`), to extend later:
+- NPC storylines: coded in `ModMain/Story/` (lines A-L, tests TS-01..TS-12). Simplified against the design (`06-Storylines-Draft.md`), to extend later:
   - A: the sect-master perk is a yearly pill; the duel with the elder is a single real battle.
   - B: the siege of the town is a single battle (no town damage / budget loss modelled).
   - D: the "Ox Fist" reward is +10 fist basis (no new technique item).
@@ -45,3 +45,60 @@ Test: extend TG-46 (register a hidden item, NPC buys it, check the drama has no 
 
 - **Custom skills**: let the player create / edit skills (`CustomSkillEvent` is a start).
 - **Demonic possession (đoạt xá)**: a demonic art to take over the body of another cultivator; usable by the player and by NPCs; can be discovered, then the whole world hunts the possessor (bounties in every town, sects and families hostile). Conditions to use it (art, realm, target weaker / dying, cost...) to be discussed. Technically close to "continue as a descendant" (`FamilyEvent.Inherit` copies the base properties of a unit onto the player).
+
+## Autotest: effect galleries (TE-xx)
+
+- **TE-01 recordings: camera jumps and choppy frames** (seen 2026-11-18). Many skill effects still shake / jump the
+  camera in the webp although the camera is held every frame (`BattleSceneHelper.HoldCamera`, `StopCameraShake`,
+  `BattleEffectHelper.RemoveCameraControls`): to find which component still moves it (other camera scripts of the
+  effect prefab, the battle's camera follow of the player, shakes started by the effect's sub-objects) and hold it.
+  The recording step is ~110 ms instead of 100 ms (`Invoke-Recording` of `run-autotest.ps1`: the window capture +
+  JPEG save take longer than the 100 ms period, so the loop never waits): bring it down to a steady 100 ms
+  (capture and save in separate threads, a smaller capture of the game area only, or a lower JPEG quality) so the
+  effects look smoother and clearer; then `effect_strips.py` ("the fixed step, ~110 ms") and the frame count of the
+  webp follow.
+
+## Promotion pictures (SteamImg, run-promo.ps1)
+
+- TR-02 (2026-11-18) develops the character for the pictures (restored after the run): ring / outfit / weapon with
+  random refine levels 120-360, 4 techniques of grade ~5 moved from cultivators of the world (the game's book study
+  `StudyActionMartialProp` throws outside its window) with random mastery, sample recent foes for the damage
+  calculation. The realm stays Qi Refining (ATK 30): a trainer level-up before the pictures is still possible.
+- TR-01 turns the trainer toggle off in the window before the S&M pictures (score without the -1,000,000 P of the
+  trainer the test settings use); Cancel at the end, nothing saved.
+- Fixed 2026-11-19: the S&M sliders showed "(0P)" and did not count in the total: `ActionHelper.TracedFunc(null, def)`
+  returned default(T) (false) instead of def (ModLib).
+- `family-fund` is skipped when the character has no family; `taoist-log` when it has fewer than 5 entries.
+- Battle pictures (NPCs joining, monster waves, trial of lightning) are not in TR-02: a staged battle (camera centred
+  on the fight, `PlayerMask` off, a hand-picked moment) to add as TM-03.
+- `promo_story_cold_sword`: the drama reads "Disciples of ? follow" (the `{S}` sect of line A not found when TS-01
+  forces the opening, `StoryLine` place token `S`).
+
+## Damage calculation window (DamageInfo, 2026-11-18)
+
+- Seen in a battle by TB-17 (button under the damage multiplier, hotkey, pause, last hits, recent foes) and outside
+  by TG-61. The autotest runner works with the game time: TB-17 lets the game run again after checking the pause
+  (the window stays open), a runner step cannot wait while the game is paused.
+- Fixed 2026-11-19: "Skill bonus (-)" (the name of a technique is in its martial info); monster pictures cut at the
+  top (`MonsterOffsetY`, world units, found by an experiment).
+- The example hit uses ATK as the base damage of a skill (the game's own skill formula is not reproduced) and the
+  strongest basis of the attacker as the damage type. Sample monsters of TR-02 use the base numbers of their config
+  x the player's grade, not a real battle.
+
+## Storylines G-L
+
+- Coded 2026-11-19 (lines, links, 12 languages, TS-07..TS-12). Simplified from the design, to extend later: the
+  lightning trials of G5 / K are beast battles (not the `RealTrialEvent` dungeon), the heart demon's copy is a foe of
+  the player's grade (not a copy of the player's looks and arts), the son of Mei Niang is a young NPC cast (not a
+  child record born of her), Eternal Rival's "duel every 10 years" is a letter with exp, Guided is a one-time exp gift
+  (no tribulation damage -30 %).
+
+## Autotest: games side by side
+
+* Game slots have their own game data folder (tools/SlotDataPath, 2026-11-18). Left: the save index read and written
+  back once at the start of a slot game, before the plugin moves the paths (a native hook of the game's path code
+  would remove it); the extra save folders left in a slot by interrupted character creations are not cleaned.
+* TI-01 (investigation): start again from a save without closing the game. "Reload save" of the game menu
+  (`UIGameMemu.ReloadCache`) left the runner waiting (first run, 2026-11-18): to look at again with the logs of
+  `logs/autotest/20261118-005106`; the "return to main menu" path was not reached.
+

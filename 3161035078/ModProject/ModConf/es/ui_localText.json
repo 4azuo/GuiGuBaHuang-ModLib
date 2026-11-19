@@ -52,7 +52,7 @@
 	{
 		"id": "-1000008010",
 		"key": "ui_per_month",
-		"en|ch|tc|kr": "{0}/mes"
+		"en|ch|tc|kr": "{0} [icon:zm_lingshi]/mes"
 	},
 	{
 		"id": "-1000008011",
@@ -87,7 +87,7 @@
 	{
 		"id": "-1000008017",
 		"key": "ui_atk",
-		"en|ch|tc|kr": "Atq: {0}"
+		"en|ch|tc|kr": "[icon:gongji] Atq: {0}"
 	},
 	{
 		"id": "-1000008018",

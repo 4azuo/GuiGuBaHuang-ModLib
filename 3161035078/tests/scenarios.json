@@ -1,5 +1,5 @@
 {
-  "$comment": "Test scenarios of Taoist (3161035078) ModMain/Mod. kind: auto = run by AutoTestEvent (TT title, TG game, TB code-started battles, TX time-changing), watch = run automatically while the tester plays a battle (-WatchBattles), manual = steps for a human tester. Auto/watch ids must match AutoTest/AutoTestScenarios.cs. Docs: docs/Taoist/03-Test-Scenarios.md",
+  "$comment": "Test scenarios of Taoist (3161035078) ModMain/Mod. kind: auto = run by AutoTestEvent (TT title, TG game, TB code-started battles, TX time-changing), watch = run automatically while the tester plays a battle (-WatchBattles), manual = steps for a human tester. Auto/watch ids must match AutoTest/AutoTestScenarios.cs. exclusive: changes the global settings of the mods (run-autotest-parallel.ps1 runs it alone, after the others). Docs: docs/Taoist/03-Test-Scenarios.md",
   "scenarios": [
     {
       "id": "TT-01",
@@ -21,6 +21,7 @@
     {
       "id": "TT-02",
       "kind": "auto",
+      "exclusive": true,
       "feature": "SMGlobalConfigsEvent",
       "title": "S&M configs window: 3 pages, presets and cancel",
       "description": "S&M (Settings & Modes) is the global Taoist settings window opened from the title screen: game speed, NPC amount, difficulty presets, etc. The test pages through the window, clicks a difficulty preset to check that the total difficulty score is recalculated, then presses Cancel to check that nothing is saved. Page 3 holds the toggles of the additional features (encounters, bank loans, buy orders, bounties); they do not change the difficulty score.",
@@ -43,6 +44,7 @@
     {
       "id": "TT-03",
       "kind": "auto",
+      "exclusive": true,
       "feature": "UIDifficultyEvent/PriorityDestinyLevel",
       "title": "New game: difficulty and character creation screens",
       "description": "Taoist changes the new-game screens: the vanilla difficulty descriptions are replaced, and the S&M option 'priority destiny level' makes destinies of a chosen level appear first when creating a character. The test opens both screens (no character is created) and checks those two behaviours.",
@@ -58,8 +60,8 @@
         "Config restored"
       ],
       "replaces": [
-        "TM-01",
-        "TM-02"
+        "TR-01",
+        "TR-02"
       ]
     },
     {
@@ -86,6 +88,7 @@
     {
       "id": "TT-05",
       "kind": "auto",
+      "exclusive": true,
       "feature": "SMGlobalConfigsEvent",
       "title": "S&M configs: OK without change keeps every value",
       "description": "Opening the global S&M configs and pressing OK without touching anything must keep every value: each control has to save into the same field it was built from (NoMarketItem and NoStalker were built from NoExpFromBattles, so OK silently overwrote them). The global config file is written.",
@@ -1504,6 +1507,7 @@
     {
       "id": "TB-16",
       "kind": "auto",
+      "exclusive": true,
       "newCharacter": true,
       "feature": "AnimaWeaponEvent",
       "title": "Divine artifact hotkeys: bindings, map, battle",
@@ -1522,6 +1526,32 @@
         "Game key refused, key moved, cancel/clear work",
         "Buttons side by side showing 7/8/9, God Eye window opens",
         "Battle buttons show 7/8/9 and are side by side, hotkeys read in battle, God Eye cooldown starts"
+      ]
+    },
+    {
+      "id": "TB-17",
+      "kind": "auto",
+      "feature": "DamageInfo",
+      "title": "Damage calculation in a battle: button, hotkey, pause, last hits, recent foes",
+      "description": "In a duel: the battle screen has the 'Damage Calc' button under the damage multiplier (top centre, away from the skill bar); a hit dealt and a hit taken are recorded step by step, the foe becomes the target of the window and the newest recent cultivator with its numbers of that time (kept in the save); the hotkey opens the window (lines with icons, the foe as the target) and pauses the battle, page 2 shows the foe's card, the hotkey again closes it and the battle runs again.",
+      "preconditions": "Save loaded (an NPC to fight)",
+      "steps": [
+        "Start a duel",
+        "Find the Damage Calc button",
+        "A hit dealt and a hit taken",
+        "Hotkey",
+        "Next page",
+        "Hotkey again",
+        "Win, back to the map"
+      ],
+      "expected": [
+        "Battle started",
+        "Button in the top half",
+        "Both hits recorded with their steps; the foe recorded with ATK / DEF / HP / grade / date",
+        "Window open, battle paused, foe as the target, icons",
+        "The foe's card",
+        "Window closed, battle running",
+        "The foe is still in the recent foes"
       ]
     },
     {
@@ -1629,6 +1659,62 @@
       ]
     },
     {
+      "id": "TG-60",
+      "kind": "auto",
+      "feature": "SMScoreEvent",
+      "title": "S&M score (P): rewards, titles and records, rare encounter, start bonus, inheritance",
+      "description": "With the P of the save set for the test (restored at the end): 1. battle exp and loot x the reward multiplier (P / 2,000 %, -20 .. +50 %); 2. the title of the tier and P in the player info, the record of the character in the global records window (Taoist Settings > Score records); 3. the heavenly trial encounter only from 30,000 P (win: exp and an item, lose: HP, decline: nothing); 4. the start bonus of a new save (P / 10,000 ability points, P / 5 spirit stones), given once and logged; 5. a descendant keeps 100 % of the spirit stones at 0 P, 75 % at -10,000 P, 50 % at -20,000 P and below.",
+      "preconditions": "Save loaded",
+      "steps": [
+        "Read the P of the save",
+        "Exp and loot at 40,000 P and -100,000 P",
+        "Player info at 65,000 P",
+        "Record and records window",
+        "Possible encounters at 29,999 / 30,000 P, resolve the trial",
+        "Start bonus at 50,000 P twice",
+        "Inheritance shares",
+        "Restore"
+      ],
+      "expected": [
+        "P = score of the S&M settings of the save",
+        "x1.2 / x0.8",
+        "Title and 65,000 P shown",
+        "The character listed with its P",
+        "Trial only from 30,000 P; win / lose / decline",
+        "+5 ability points, +10,000 spirit stones, logged, once",
+        "1 / 0.75 / 0.5",
+        "P restored"
+      ]
+    },
+    {
+      "id": "TG-61",
+      "kind": "auto",
+      "feature": "DamageInfo",
+      "title": "Damage calculation window, Taoist log dates, buy order icons",
+      "description": "The player info has the 'Damage Calc' button on the top edge, left of the close button (every tab), and the S&M score line at the top left; recent foes keep the 3 newest of each kind (the same foe replaced); the window has 2 pages: the stats with icons (not paused outside a battle), then the recent monsters and cultivators as cards with their picture, their numbers of that time and the damage both ways. The Taoist log writes the full year and month with an icon per entry; the buy orders window shows the icon of each item. Recent foes and orders restored.",
+      "preconditions": "Save loaded",
+      "steps": [
+        "Open the player info",
+        "Find the Damage Calc button",
+        "Record 4 cultivators, the first again, a monster",
+        "Open the window",
+        "Next page",
+        "Close",
+        "Log an entry",
+        "Add a buy order, open the buy orders"
+      ],
+      "expected": [
+        "Player info open",
+        "Next to the close button, score at the top left",
+        "3 kept, newest first, replaced not added, monster recorded",
+        "2 pages, icons, not paused",
+        "A card with a picture per foe, damage both ways",
+        "Closed",
+        "Full date and an icon",
+        "An item icon per order"
+      ]
+    },
+    {
       "id": "TX-07",
       "kind": "auto",
       "feature": "TaoistLogEvent",
@@ -1728,6 +1814,14 @@
         "Opened, roles cast",
         "An ending is reached",
         "Ending A_SectMaster / A_Companion; Taoist log entry"
+      ],
+      "promo": [
+        {
+          "step": "07-drama",
+          "nth": 3,
+          "name": "story-cold-sword",
+          "caption": "Living storylines: every choice changes who stands by you"
+        }
       ]
     },
     {
@@ -1764,6 +1858,14 @@
         "Opened, roles cast",
         "An ending is reached",
         "Ending C_MasterAlchemist / C_Companion / C_LastExplosion; Taoist log entry"
+      ],
+      "promo": [
+        {
+          "step": "05-drama",
+          "nth": 1,
+          "name": "story-furnace",
+          "caption": "Storylines: an alchemist, a furnace and a lot of smoke"
+        }
       ]
     },
     {
@@ -1782,6 +1884,14 @@
         "Opened, roles cast",
         "An ending is reached",
         "Ending any D ending; Taoist log entry"
+      ],
+      "promo": [
+        {
+          "step": "09-drama",
+          "nth": 1,
+          "name": "story-sworn-brothers",
+          "caption": "Storylines: sworn brothers meet again on the battlefield"
+        }
       ]
     },
     {
@@ -1800,6 +1910,14 @@
         "Opened, roles cast",
         "An ending is reached",
         "Ending E_GardenOfGenerations / E_Successor / E_LostChild; Taoist log entry"
+      ],
+      "promo": [
+        {
+          "step": "06-drama",
+          "nth": 3,
+          "name": "story-herb-garden",
+          "caption": "Storylines: raise an orphan and shape who she becomes"
+        }
       ]
     },
     {
@@ -1818,6 +1936,407 @@
         "Opened, roles cast",
         "An ending is reached",
         "Ending F_Victory; Taoist log entry"
+      ]
+    },
+    {
+      "id": "TS-07",
+      "kind": "auto",
+      "feature": "StoryEvent",
+      "title": "Story G Hundred-Year Wager: G0-G5 over a century, to an ending",
+      "description": "The lifelong rival Lan Qiu: the wager at a sect gate, the rematch at 15 years, a life owed at 30, his sect burning at 45, tea at 70, the last wager at 100 (his tribulation or his last years). Wins and debts of life decide the ending. The test opens the line, answers every drama (first option; an option whose condition is not met: the next one), wins the battles at once (StoryEvent.NoBattles) and opens every act without waiting for its years / realm (StoryEvent.NoGates).",
+      "preconditions": "Save loaded (the save is restored after the run)",
+      "steps": [
+        "Open the line, its quest",
+        "Drive every act",
+        "Ending"
+      ],
+      "expected": [
+        "Roles cast, quest with the guide of the act",
+        "Every drama shown and answered",
+        "One of G_Friend / G_Rival / G_Surpassed / G_Grave, logged, quest removed"
+      ],
+      "promo": [
+        {
+          "step": "06-drama",
+          "nth": 4,
+          "name": "story-wager",
+          "caption": "Lifelong storylines: a rival for a hundred years, scenes drawn for every step"
+        }
+      ]
+    },
+    {
+      "id": "TS-08",
+      "kind": "auto",
+      "feature": "StoryEvent",
+      "title": "Story H Roadside Inn: H0-H5, the wedding, the fire, her son, her last years",
+      "description": "The innkeeper Mei Niang of the player's first town: her loan, her wedding at 10 years, the fire at 25, her son who wants to cultivate at 40, her last years, the feast of the hundredth year with the people of the other lines. The test opens the line, answers every drama (first option; an option whose condition is not met: the next one), wins the battles at once (StoryEvent.NoBattles) and opens every act without waiting for its years / realm (StoryEvent.NoGates).",
+      "preconditions": "Save loaded (the save is restored after the run)",
+      "steps": [
+        "Open the line, its quest",
+        "Drive every act",
+        "Ending"
+      ],
+      "expected": [
+        "Roles cast, quest with the guide of the act",
+        "Every drama shown and answered",
+        "One of H_InnOfAges / H_Lineage / H_Ashes, logged, quest removed"
+      ]
+    },
+    {
+      "id": "TS-09",
+      "kind": "auto",
+      "feature": "StoryEvent",
+      "title": "Story I Sealed Tomb: the map, the halls, Gu's betrayal, the tomb owner",
+      "description": "Elder Gu and half a map (Golden Core): the team (2 hired members or Gu alone), the outer halls (guardians, a riddle of 3 doors, a poisoned treasure), Gu's betrayal at the inner gate, the tomb owner: take, free or seal. The test opens the line, answers every drama (first option; an option whose condition is not met: the next one), wins the battles at once (StoryEvent.NoBattles) and opens every act without waiting for its years / realm (StoryEvent.NoGates).",
+      "preconditions": "Save loaded (the save is restored after the run)",
+      "steps": [
+        "Open the line, its quest",
+        "Drive every act",
+        "Ending"
+      ],
+      "expected": [
+        "Roles cast, quest with the guide of the act",
+        "Every drama shown and answered",
+        "One of I_Heir / I_FreedSoul / I_Sealer / I_Looted, logged, quest removed"
+      ]
+    },
+    {
+      "id": "TS-10",
+      "kind": "auto",
+      "feature": "StoryEvent",
+      "title": "Story J Cursed Disciple: the execution ground, 3 lessons, the hunters, the last duel",
+      "description": "The cursed boy Xiao Ye (Origin Spirit): saved or bought, 3 lessons (mercy / strength / freedom), the mark wakes (Mei Niang's inn as a hiding place when line H keeps it), the hunters and the truth, the demon's offer decided by the lessons, the last duel. The test opens the line, answers every drama (first option; an option whose condition is not met: the next one), wins the battles at once (StoryEvent.NoBattles) and opens every act without waiting for its years / realm (StoryEvent.NoGates).",
+      "preconditions": "Save loaded (the save is restored after the run)",
+      "steps": [
+        "Open the line, its quest",
+        "Drive every act",
+        "Ending"
+      ],
+      "expected": [
+        "Roles cast, quest with the guide of the act",
+        "Every drama shown and answered",
+        "One of J_Righteous / J_Demon / J_Sealed, logged, quest removed"
+      ]
+    },
+    {
+      "id": "TS-11",
+      "kind": "auto",
+      "feature": "StoryEvent",
+      "title": "Story K Thunder Remnant: the voice, the platform, his descendants, the second tribulation",
+      "description": "The voice in the thunder (Soul Formation): the broken platform, the sect of his descendants, the truth of his failure, the second tribulation (Lan Qiu of line G comes as a friend or with the remnant). The test opens the line, answers every drama (first option; an option whose condition is not met: the next one), wins the battles at once (StoryEvent.NoBattles) and opens every act without waiting for its years / realm (StoryEvent.NoGates).",
+      "preconditions": "Save loaded (the save is restored after the run)",
+      "steps": [
+        "Open the line, its quest",
+        "Drive every act",
+        "Ending"
+      ],
+      "expected": [
+        "Roles cast, quest with the guide of the act",
+        "Every drama shown and answered",
+        "One of K_Guided / K_Devourer / K_SecondChance, logged, quest removed"
+      ]
+    },
+    {
+      "id": "TS-12",
+      "kind": "auto",
+      "feature": "StoryEvent",
+      "title": "Story L Heart Demon: dreams of the other lines, the mirror lake, the copy, clear heart",
+      "description": "The last line (Enlightenment): dreams of the endings of the other lines, three regrets at the mirror lake (the tomb legacy of line I first), the ghosts, a copy of the player, accept / deny / become the demon. The test opens the line, answers every drama (first option; an option whose condition is not met: the next one), wins the battles at once (StoryEvent.NoBattles) and opens every act without waiting for its years / realm (StoryEvent.NoGates).",
+      "preconditions": "Save loaded (the save is restored after the run)",
+      "steps": [
+        "Open the line, its quest",
+        "Drive every act",
+        "Ending"
+      ],
+      "expected": [
+        "Roles cast, quest with the guide of the act",
+        "Every drama shown and answered",
+        "One of L_ClearHeart / L_Scarred / L_Embraced, logged, quest removed"
+      ]
+    },
+    {
+      "id": "TE-01",
+      "kind": "tool",
+      "feature": "Effects",
+      "title": "Effect gallery: skill effects",
+      "description": "Tool, not a test (runs only with -Scenario TE-01): in a battle, every effect of ModConf/_Def_Res_Efx_Battle_Skill.txt is created on the player, one per step, and captured (screenshot named after the effect), to classify the effects from their pictures for custom skills. Optional range: <autotest folder>/efx-range.txt = \"start count\".",
+      "preconditions": "A save with an NPC to fight",
+      "steps": [
+        "Start a battle with an NPC",
+        "Create each effect on the player and capture it",
+        "Win the battle"
+      ],
+      "expected": [
+        "One screenshot per effect"
+      ]
+    },
+    {
+      "id": "TE-02",
+      "kind": "tool",
+      "feature": "Effects",
+      "title": "Effect gallery: unit effects",
+      "description": "Tool, not a test (runs only with -Scenario TE-02): in a battle, every effect of ModConf/_Def_Res_Efx_Battle_Unit.txt is created on the player, one per step, and captured (screenshot named after the effect), to classify the effects from their pictures for custom skills. Optional range: <autotest folder>/efx-range.txt = \"start count\".",
+      "preconditions": "A save with an NPC to fight",
+      "steps": [
+        "Start a battle with an NPC",
+        "Create each effect on the player and capture it",
+        "Win the battle"
+      ],
+      "expected": [
+        "One screenshot per effect"
+      ]
+    },
+    {
+      "id": "TE-03",
+      "kind": "tool",
+      "feature": "Effects",
+      "title": "Effect gallery: scene effects",
+      "description": "Tool, not a test (runs only with -Scenario TE-03): in a battle, every effect of ModConf/_Def_Res_Efx_Battle_Scenes.txt is created on the player, one per step, and captured (screenshot named after the effect), to classify the effects from their pictures for custom skills. Optional range: <autotest folder>/efx-range.txt = \"start count\".",
+      "preconditions": "A save with an NPC to fight",
+      "steps": [
+        "Start a battle with an NPC",
+        "Create each effect on the player and capture it",
+        "Win the battle"
+      ],
+      "expected": [
+        "One screenshot per effect"
+      ]
+    },
+    {
+      "id": "TI-01",
+      "kind": "tool",
+      "feature": "Autotest",
+      "title": "Investigation: start again from a save without closing the game",
+      "description": "Tool, not a test (runs only with -Scenario TI-01): the save files of the character are put back while the game runs, then the save is opened again with the game menu's 'Reload save' (A) or by returning to the main menu and loading it (B). The money (game save) and an S&M value (mod save) must be the snapshot's again, and the timings are logged, to know whether run-autotest-parallel.ps1 can skip closing the game between groups.",
+      "preconditions": "An existing save",
+      "steps": [
+        "Snapshot the save",
+        "Change money and an S&M value, save",
+        "Put the files back, reload (A) / return to main menu and load (B)"
+      ],
+      "expected": [
+        "Money and S&M value of the snapshot after A and B"
+      ]
+    },
+    {
+      "id": "TR-01",
+      "kind": "tool",
+      "feature": "Promo",
+      "title": "Promotion pictures: S&M configs (title screen)",
+      "description": "Tool, not a test (run by scripts/game/run-promo.ps1): the S&M configs window and its 3 pages are captured for the Steam Workshop pictures (ModProject/SteamImg).",
+      "preconditions": "Title screen",
+      "steps": [
+        "Open the S&M configs window",
+        "Capture pages 1, 2 and 3"
+      ],
+      "expected": [
+        "promo_sm-configs-<n>.png in SteamImg"
+      ],
+      "promo": [
+        {
+          "step": "promo-sm-configs-1",
+          "nth": 1,
+          "name": "sm-configs-1",
+          "caption": "S&M Configs: tune the difficulty of the whole world"
+        },
+        {
+          "step": "promo-sm-configs-2",
+          "nth": 1,
+          "name": "sm-configs-2",
+          "caption": "S&M Configs: economy, battle and misc options"
+        },
+        {
+          "step": "promo-sm-configs-3",
+          "nth": 1,
+          "name": "sm-configs-3",
+          "caption": "S&M Configs: turn every additional feature on or off"
+        }
+      ]
+    },
+    {
+      "id": "TR-02",
+      "kind": "tool",
+      "feature": "Promo",
+      "title": "Promotion pictures: feature windows (in the game)",
+      "description": "Tool, not a test (run by scripts/game/run-promo.ps1): in a town with a storage and a market, the windows of the features are opened one after the other and captured for the Steam Workshop pictures (ModProject/SteamImg): trainer, Taoist settings, bank account and loan, character info (stats, techniques, items), the 4 kinds of techniques with mastery, refined weapon / ring / outfit details, damage calculation (stats and recent foes), player market and buy orders, shop, NPC hiring and team, town master, bounties, family accounts, Taoist log. The save is restored after the run.",
+      "preconditions": "An existing save",
+      "steps": [
+        "Travel to a town, money and a bank account",
+        "Refined ring / outfit / weapon (random refine levels), 4 techniques of a higher grade learnt and equipped (random mastery)",
+        "Open each feature window and capture it"
+      ],
+      "expected": [
+        "promo_<name>.png in SteamImg for every available feature"
+      ],
+      "promo": [
+        {
+          "step": "promo-trainer",
+          "nth": 1,
+          "name": "trainer",
+          "caption": "Trainer: money, items, realms and towns in one click"
+        },
+        {
+          "step": "promo-taoist-settings",
+          "nth": 1,
+          "name": "taoist-settings",
+          "caption": "Taoist settings in the game menu"
+        },
+        {
+          "step": "promo-bank",
+          "nth": 1,
+          "name": "bank",
+          "caption": "Banks: open an account in every town"
+        },
+        {
+          "step": "promo-bank-loan",
+          "nth": 1,
+          "name": "bank-loan",
+          "caption": "Bank loans: borrow from the town budget"
+        },
+        {
+          "step": "promo-player-info",
+          "nth": 1,
+          "name": "player-info",
+          "caption": "Character info: the mod's bonuses next to every number"
+        },
+        {
+          "step": "promo-skills",
+          "nth": 1,
+          "name": "skills",
+          "caption": "Techniques: higher grades and their mastery at a glance"
+        },
+        {
+          "step": "promo-technique-attack",
+          "nth": 1,
+          "name": "technique-attack",
+          "caption": "Attack techniques: mastery level and its damage bonus"
+        },
+        {
+          "step": "promo-technique-ultimate",
+          "nth": 1,
+          "name": "technique-ultimate",
+          "caption": "Ultimate techniques: mastery boosts damage and cooldown"
+        },
+        {
+          "step": "promo-technique-movement",
+          "nth": 1,
+          "name": "technique-movement",
+          "caption": "Movement techniques: mastery adds evasion"
+        },
+        {
+          "step": "promo-technique-passive",
+          "nth": 1,
+          "name": "technique-passive",
+          "caption": "Passive techniques: mastery adds attack and defense"
+        },
+        {
+          "step": "promo-items",
+          "nth": 1,
+          "name": "items",
+          "caption": "Equipment: refined rings, outfits and weapons"
+        },
+        {
+          "step": "promo-weapon-detail",
+          "nth": 1,
+          "name": "weapon-detail",
+          "caption": "Weapon details: mastery, refine and bonuses"
+        },
+        {
+          "step": "promo-ring-detail",
+          "nth": 1,
+          "name": "ring-detail",
+          "caption": "Rings: refine levels and extra bonuses"
+        },
+        {
+          "step": "promo-outfit-detail",
+          "nth": 1,
+          "name": "outfit-detail",
+          "caption": "Outfits: refine levels and extra bonuses"
+        },
+        {
+          "step": "promo-damage-calc",
+          "nth": 1,
+          "name": "damage-calc",
+          "caption": "Damage calculation: every step of a hit, before or during a battle"
+        },
+        {
+          "step": "promo-damage-calc-foes",
+          "nth": 1,
+          "name": "damage-calc-foes",
+          "caption": "Damage calculation: your last monsters and cultivators, damage both ways"
+        },
+        {
+          "step": "promo-market",
+          "nth": 1,
+          "name": "market",
+          "caption": "A living player market: sell, buy, bargain"
+        },
+        {
+          "step": "promo-market-buy-orders",
+          "nth": 1,
+          "name": "market-buy-orders",
+          "caption": "Buy orders: ask the market for what you need"
+        },
+        {
+          "step": "promo-shop",
+          "nth": 1,
+          "name": "shop",
+          "caption": "Town shops with prices that follow the economy"
+        },
+        {
+          "step": "promo-npc-hire",
+          "nth": 1,
+          "name": "npc-hire",
+          "caption": "Hire any cultivator for your team"
+        },
+        {
+          "step": "promo-team",
+          "nth": 1,
+          "name": "team",
+          "caption": "Team up: your companions follow you into battle"
+        },
+        {
+          "step": "promo-town-master",
+          "nth": 1,
+          "name": "town-master",
+          "caption": "Town master: taxes, budget, guardians and buildings"
+        },
+        {
+          "step": "promo-wanted",
+          "nth": 1,
+          "name": "wanted",
+          "caption": "Bounties: put a price on a head, or be hunted"
+        },
+        {
+          "step": "promo-family-tree",
+          "nth": 1,
+          "name": "family-tree",
+          "caption": "Families: marry, raise children, keep the family tree"
+        },
+        {
+          "step": "promo-family-heir",
+          "nth": 1,
+          "name": "family-heir",
+          "caption": "Your legacy: continue the journey as your descendant"
+        },
+        {
+          "step": "promo-seclusion",
+          "nth": 1,
+          "name": "seclusion",
+          "caption": "Seclusion: retreat for years to break through"
+        },
+        {
+          "step": "promo-family-fund",
+          "nth": 1,
+          "name": "family-fund",
+          "caption": "Families: household accounts and heirs"
+        },
+        {
+          "step": "promo-taoist-log",
+          "nth": 1,
+          "name": "taoist-log",
+          "caption": "Taoist log: everything that happened to you"
+        }
       ]
     }
   ]

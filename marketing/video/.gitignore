@@ -1,0 +1,6 @@
+node_modules/
+out/
+public/steam/
+src/promo.generated.json
+public/music-*.wav
+src/timeline-*.generated.json

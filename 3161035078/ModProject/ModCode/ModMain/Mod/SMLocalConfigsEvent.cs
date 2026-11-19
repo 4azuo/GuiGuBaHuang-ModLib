@@ -21,8 +21,13 @@ namespace MOD_nE7UL2.Mod
         public override void OnLoadClass(bool isNew, string modId, CacheAttribute attr)
         {
             base.OnLoadClass(isNew, modId, attr);
-            if (isNew)
-                Configs = CacheHelper.ReadGlobalCacheFile<SMGlobalConfigsEvent>(modId, ModConst.SM_GLOBAL_CONFIGS_EVENT) ?? new SMGlobalConfigsEvent();
+            // a new save, or a save without its copy (older save, broken file): the global configs
+            if (isNew || Configs == null)
+            {
+                try { Configs = CacheHelper.ReadGlobalCacheFile<SMGlobalConfigsEvent>(modId, ModConst.SM_GLOBAL_CONFIGS_EVENT); }
+                catch (System.Exception ex) { DebugHelper.WriteLine($"SMLocalConfigsEvent: global configs not read: {ex.Message}"); }
+                Configs = Configs ?? new SMGlobalConfigsEvent();
+            }
         }
 
         /// <summary>

@@ -44,7 +44,8 @@ namespace MOD_nE7UL2.AutoTest.Scenarios.Title
                     c.Assert(!g.ui.HasUI(UIType.TextInfoLong), "window closed by OK");
                     var before = Newtonsoft.Json.Linq.JObject.Parse((string)c.Bag["before"]);
                     var after = Newtonsoft.Json.Linq.JObject.Parse(JsonConvert.SerializeObject(SMGlobalConfigsEvent.Instance));
-                    var changed = before.Properties().Where(p => !Newtonsoft.Json.Linq.JToken.DeepEquals(p.Value, after[p.Name]))
+                    // Score: the total of the options, computed again by OK (SMScoreEvent)
+                    var changed = before.Properties().Where(p => p.Name != nameof(SMGlobalConfigsEvent.Score) && !Newtonsoft.Json.Linq.JToken.DeepEquals(p.Value, after[p.Name]))
                         .Select(p => $"{p.Name}: {p.Value} -> {after[p.Name]}").ToList();
                     c.Assert(changed.Count == 0, changed.Count == 0 ? $"all {before.Properties().Count()} values kept" : $"values changed by OK: {string.Join("; ", changed)}");
                     var file = CacheHelper.GetGlobalCacheFilePath(SMGlobalConfigsEvent.Instance.ModId, SMGlobalConfigsEvent.Instance.CacheId);

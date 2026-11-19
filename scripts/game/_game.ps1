@@ -11,8 +11,19 @@ $script:GameToolsDir = $PSScriptRoot
 $script:GameProcessName = 'guigubahuang'
 
 # All folders/files the game tools care about.
+# Game slot of this process (scripts/game/new-game-slot.ps1): $env:GGBH_SLOT, 1 when not set. Slot N >= 2 is the copy of
+# the game in %LOCALAPPDATA%\ggbh-slotN, run next to the normal game (slot 1) for parallel autotests.
+function Get-GameSlot {
+    $n = 0
+    if ([int]::TryParse("$env:GGBH_SLOT", [ref]$n) -and $n -ge 2) { return $n }
+    return 1
+}
+
+function Get-SlotGamePath([int]$Slot) { return (Join-Path $env:LOCALAPPDATA "ggbh-slot$Slot") }
+
 function Get-GamePaths {
     param([string]$GamePath)
+    if (-not $GamePath -and (Get-GameSlot) -ge 2) { $GamePath = Get-SlotGamePath (Get-GameSlot) }
 
     $repo = (Resolve-Path (Join-Path $script:GameToolsDir '..\..')).Path
     $settings = Read-JsonFile (Join-Path $repo 'scripts\settings.json')
@@ -32,6 +43,8 @@ function Get-GamePaths {
 
     # Unity persistent data: Player.log, ModLib logs (mod\<modId>\*.log)
     $data = Join-Path $env:USERPROFILE 'AppData\LocalLow\guigugame\guigubahuang'
+    # a game slot keeps its own game data folder (tools/SlotDataPath, installed by new-game-slot.ps1)
+    if ((Get-GameSlot) -ge 2) { $data += "-slot$(Get-GameSlot)" }
     $melon = if ($GamePath) { Join-Path $GamePath 'MelonLoader' } else { $null }
 
     return [pscustomobject]@{
@@ -83,8 +96,13 @@ function Get-AsciiGamePath {
     return $null
 }
 
+# The game of this slot (Get-GameSlot): slot N = the exe in ggbh-slotN, slot 1 = any other game.
 function Get-GameProcess {
-    return Get-Process -Name $script:GameProcessName -ErrorAction SilentlyContinue | Select-Object -First 1
+    $slot = Get-GameSlot
+    return Get-Process -Name $script:GameProcessName -ErrorAction SilentlyContinue | Where-Object {
+        $exe = "$($_.Path)"
+        if ($slot -ge 2) { $exe -match "\\ggbh-slot$slot\\" } else { $exe -notmatch '\\ggbh-slot\d+\\' }
+    } | Select-Object -First 1
 }
 
 # Ask the game to close, kill it after $TimeoutSec.

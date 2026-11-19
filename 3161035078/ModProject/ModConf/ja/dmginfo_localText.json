@@ -1,0 +1,367 @@
+[
+	{
+		"id": -1000009000,
+		"key": "dmginfo_title",
+		"en|ch|tc|kr": "ダメージ計算"
+	},
+	{
+		"id": -1000009001,
+		"key": "dmginfo_button",
+		"en|ch|tc|kr": "ダメージ計算"
+	},
+	{
+		"id": -1000009002,
+		"key": "dmginfo_hotkey",
+		"en|ch|tc|kr": "ダメージ計算"
+	},
+	{
+		"id": -1000009003,
+		"key": "dmginfo_monster",
+		"en|ch|tc|kr": "妖獣（{0}段階）"
+	},
+	{
+		"id": -1000009004,
+		"key": "dmginfo_target",
+		"en|ch|tc|kr": "対象：{0}（{1}段階）"
+	},
+	{
+		"id": -1000009005,
+		"key": "dmginfo_target_self",
+		"en|ch|tc|kr": "対象：あなたと同じ数値の修士（戦闘外、またはまだ交戦なし）"
+	},
+	{
+		"id": -1000009006,
+		"key": "dmginfo_attack",
+		"en|ch|tc|kr": "あなたの攻撃"
+	},
+	{
+		"id": -1000009007,
+		"key": "dmginfo_defense",
+		"en|ch|tc|kr": "あなたの防御"
+	},
+	{
+		"id": -1000009008,
+		"key": "dmginfo_atk",
+		"en|ch|tc|kr": "攻撃力：{0}"
+	},
+	{
+		"id": -1000009009,
+		"key": "dmginfo_def",
+		"en|ch|tc|kr": "防御力：{0}"
+	},
+	{
+		"id": -1000009010,
+		"key": "dmginfo_hp",
+		"en|ch|tc|kr": "HP：{0} / {1}"
+	},
+	{
+		"id": -1000009011,
+		"key": "dmginfo_time",
+		"en|ch|tc|kr": "戦闘時間倍率：x{0}"
+	},
+	{
+		"id": -1000009012,
+		"key": "dmginfo_skill",
+		"en|ch|tc|kr": "功法ボーナス（{0}）：+{1}"
+	},
+	{
+		"id": -1000009013,
+		"key": "dmginfo_basis",
+		"en|ch|tc|kr": "根基ボーナス（{0} {1}）：+{2}"
+	},
+	{
+		"id": -1000009014,
+		"key": "dmginfo_mp",
+		"en|ch|tc|kr": "霊力ボーナス（霊力{0}%）：+{1}"
+	},
+	{
+		"id": -1000009015,
+		"key": "dmginfo_sp",
+		"en|ch|tc|kr": "念力ボーナス（念力{0}%、金丹以上）：+{1}"
+	},
+	{
+		"id": -1000009016,
+		"key": "dmginfo_dp",
+		"en|ch|tc|kr": "道力ボーナス（道力{0}%、悟道以上）：+{1}"
+	},
+	{
+		"id": -1000009017,
+		"key": "dmginfo_crit",
+		"en|ch|tc|kr": "超会心：確率{0}%、ダメージx{1}"
+	},
+	{
+		"id": -1000009018,
+		"key": "dmginfo_kill",
+		"en|ch|tc|kr": "即死（妖獣）：{0}%"
+	},
+	{
+		"id": -1000009019,
+		"key": "dmginfo_mindmg",
+		"en|ch|tc|kr": "最低ダメージ：{0} x 対象段階{1} = {2}"
+	},
+	{
+		"id": -1000009020,
+		"key": "dmginfo_steal",
+		"en|ch|tc|kr": "吸収：HP {0}、霊力{1}、念力{2}"
+	},
+	{
+		"id": -1000009021,
+		"key": "dmginfo_evade",
+		"en|ch|tc|kr": "回避：{0}%（上限{1}% + 身法{2}%）"
+	},
+	{
+		"id": -1000009022,
+		"key": "dmginfo_block",
+		"en|ch|tc|kr": "ブロック：確率{0}%（上限{1}%）、ダメージ-{2}"
+	},
+	{
+		"id": -1000009023,
+		"key": "dmginfo_basisdef",
+		"en|ch|tc|kr": "根基防御（{0} {1}）：-{2}"
+	},
+	{
+		"id": -1000009024,
+		"key": "dmginfo_mpblock",
+		"en|ch|tc|kr": "霊力シールド：最大{0}回、各-{1}（比率{2}）"
+	},
+	{
+		"id": -1000009025,
+		"key": "dmginfo_spblock",
+		"en|ch|tc|kr": "念力シールド（金丹以上）：-{0}"
+	},
+	{
+		"id": -1000009026,
+		"key": "dmginfo_dpblock",
+		"en|ch|tc|kr": "道力シールド（悟道以上）：-{0}"
+	},
+	{
+		"id": -1000009027,
+		"key": "dmginfo_foe",
+		"en|ch|tc|kr": "攻撃{0}、防御{1}、HP {2} / {3}、回避{4}%、ブロック{5}%"
+	},
+	{
+		"id": -1000009028,
+		"key": "dmginfo_example_dealt",
+		"en|ch|tc|kr": "与える例（基礎=攻撃力、乱数なし）："
+	},
+	{
+		"id": -1000009029,
+		"key": "dmginfo_example_crit",
+		"en|ch|tc|kr": "超会心の場合："
+	},
+	{
+		"id": -1000009030,
+		"key": "dmginfo_example_taken",
+		"en|ch|tc|kr": "受ける例（基礎=対象の攻撃力）："
+	},
+	{
+		"id": -1000009031,
+		"key": "dmginfo_last",
+		"en|ch|tc|kr": "この戦闘の直近の攻撃"
+	},
+	{
+		"id": -1000009032,
+		"key": "dmginfo_last_dealt",
+		"en|ch|tc|kr": "与えた："
+	},
+	{
+		"id": -1000009033,
+		"key": "dmginfo_last_taken",
+		"en|ch|tc|kr": "受けた："
+	},
+	{
+		"id": -1000009034,
+		"key": "dmginfo_none",
+		"en|ch|tc|kr": "まだなし"
+	},
+	{
+		"id": -1000009035,
+		"key": "dmginfo_paused",
+		"en|ch|tc|kr": "このウィンドウを開いている間、戦闘は一時停止する。"
+	},
+	{
+		"id": -1000009036,
+		"key": "dmginfo_step_base",
+		"en|ch|tc|kr": "基礎"
+	},
+	{
+		"id": -1000009037,
+		"key": "dmginfo_step_time",
+		"en|ch|tc|kr": "+時間"
+	},
+	{
+		"id": -1000009038,
+		"key": "dmginfo_step_skill",
+		"en|ch|tc|kr": "+功法"
+	},
+	{
+		"id": -1000009039,
+		"key": "dmginfo_step_basis",
+		"en|ch|tc|kr": "+根基"
+	},
+	{
+		"id": -1000009040,
+		"key": "dmginfo_step_skillbasis",
+		"en|ch|tc|kr": "+功法/根基"
+	},
+	{
+		"id": -1000009041,
+		"key": "dmginfo_step_mp",
+		"en|ch|tc|kr": "+霊力"
+	},
+	{
+		"id": -1000009042,
+		"key": "dmginfo_step_sp",
+		"en|ch|tc|kr": "+念力"
+	},
+	{
+		"id": -1000009043,
+		"key": "dmginfo_step_dp",
+		"en|ch|tc|kr": "+道力"
+	},
+	{
+		"id": -1000009044,
+		"key": "dmginfo_step_crit",
+		"en|ch|tc|kr": "会心"
+	},
+	{
+		"id": -1000009045,
+		"key": "dmginfo_step_block",
+		"en|ch|tc|kr": "ブロック"
+	},
+	{
+		"id": -1000009046,
+		"key": "dmginfo_step_basisdef",
+		"en|ch|tc|kr": "-根基防御"
+	},
+	{
+		"id": -1000009047,
+		"key": "dmginfo_step_mpblock",
+		"en|ch|tc|kr": "-霊力シールド"
+	},
+	{
+		"id": -1000009048,
+		"key": "dmginfo_step_spblock",
+		"en|ch|tc|kr": "-念力シールド"
+	},
+	{
+		"id": -1000009049,
+		"key": "dmginfo_step_dpblock",
+		"en|ch|tc|kr": "-道力シールド"
+	},
+	{
+		"id": -1000009050,
+		"key": "dmginfo_step_min",
+		"en|ch|tc|kr": "最終"
+	},
+	{
+		"id": -1000009051,
+		"key": "dmginfo_step_nullified",
+		"en|ch|tc|kr": "無効"
+	},
+	{
+		"id": -1000009052,
+		"key": "dmginfo_step_kill",
+		"en|ch|tc|kr": "即死"
+	},
+	{
+		"id": -1000009053,
+		"key": "dmginfo_step_evaded",
+		"en|ch|tc|kr": "回避"
+	},
+	{
+		"id": -1000009054,
+		"key": "dmginfo_b_blade",
+		"en|ch|tc|kr": "刀"
+	},
+	{
+		"id": -1000009055,
+		"key": "dmginfo_b_spear",
+		"en|ch|tc|kr": "槍"
+	},
+	{
+		"id": -1000009056,
+		"key": "dmginfo_b_sword",
+		"en|ch|tc|kr": "剣"
+	},
+	{
+		"id": -1000009057,
+		"key": "dmginfo_b_fist",
+		"en|ch|tc|kr": "拳"
+	},
+	{
+		"id": -1000009058,
+		"key": "dmginfo_b_palm",
+		"en|ch|tc|kr": "掌"
+	},
+	{
+		"id": -1000009059,
+		"key": "dmginfo_b_finger",
+		"en|ch|tc|kr": "指"
+	},
+	{
+		"id": -1000009060,
+		"key": "dmginfo_b_fire",
+		"en|ch|tc|kr": "火"
+	},
+	{
+		"id": -1000009061,
+		"key": "dmginfo_b_froze",
+		"en|ch|tc|kr": "水"
+	},
+	{
+		"id": -1000009062,
+		"key": "dmginfo_b_thunder",
+		"en|ch|tc|kr": "雷"
+	},
+	{
+		"id": -1000009063,
+		"key": "dmginfo_b_wind",
+		"en|ch|tc|kr": "風"
+	},
+	{
+		"id": -1000009064,
+		"key": "dmginfo_b_earth",
+		"en|ch|tc|kr": "土"
+	},
+	{
+		"id": -1000009065,
+		"key": "dmginfo_b_wood",
+		"en|ch|tc|kr": "木"
+	},
+	{
+		"id": -1000009066,
+		"key": "dmginfo_foes_monsters",
+		"en|ch|tc|kr": "最近戦った妖獣"
+	},
+	{
+		"id": -1000009067,
+		"key": "dmginfo_foes_humans",
+		"en|ch|tc|kr": "最近戦った修士"
+	},
+	{
+		"id": -1000009068,
+		"key": "dmginfo_foes_none",
+		"en|ch|tc|kr": "まだなし：戦闘後、相手とその時の数値がここに保存される。"
+	},
+	{
+		"id": -1000009069,
+		"key": "dmginfo_foe_grade",
+		"en|ch|tc|kr": "{0}段階 · {1}年目{2}月"
+	},
+	{
+		"id": -1000009070,
+		"key": "dmginfo_foe_dealt",
+		"en|ch|tc|kr": "与ダメ {0:#,##0}（会心 {1:#,##0}）· {2}撃"
+	},
+	{
+		"id": -1000009071,
+		"key": "dmginfo_foe_taken",
+		"en|ch|tc|kr": "被ダメ {0:#,##0} · {1}撃で倒れる"
+	},
+	{
+		"id": -1000009072,
+		"key": "dmginfo_foes_hint",
+		"en|ch|tc|kr": "次のページ：最近戦った妖獣と修士、双方のダメージ。"
+	}
+]

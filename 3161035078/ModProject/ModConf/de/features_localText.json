@@ -7,7 +7,7 @@
 	{
 		"id": "-1000006001",
 		"key": "log_line",
-		"en|ch|tc|kr": "J{0} M{1}: {2}"
+		"en|ch|tc|kr": "Jahr {0}, Monat {1}: {2}"
 	},
 	{
 		"id": "-1000006002",
@@ -1208,5 +1208,75 @@
 		"id": "-1000006285",
 		"key": "secl_res_Garden",
 		"en|ch|tc|kr": "Unter dem Birnbaum vergingen die Jahreszeiten wie Atemzüge."
+	},
+	{
+		"id": -1000006286,
+		"key": "log_score_start",
+		"en|ch|tc|kr": "S&M-Punkte {0:#,##0} P: Start mit +{1} Fähigkeitspunkten und +{2:#,##0} [icon:zm_lingshi]."
+	},
+	{
+		"id": -1000006287,
+		"key": "log_score_inherit",
+		"en|ch|tc|kr": "Leichte Einstellungen ({1:#,##0} P): der Nachkomme verlor {0:#,##0} [icon:zm_lingshi] des Erbes."
+	},
+	{
+		"id": -1000006288,
+		"key": "enc_heaven",
+		"en|ch|tc|kr": "Ein weißhaariger Unsterblicher tritt aus den Wolken: „Wenige gehen den harten Weg, den du gewählt hast. Nimmst du meine Prüfung an?“"
+	},
+	{
+		"id": -1000006289,
+		"key": "enc_heaven_o1",
+		"en|ch|tc|kr": "Die Prüfung annehmen"
+	},
+	{
+		"id": -1000006290,
+		"key": "enc_heaven_o2",
+		"en|ch|tc|kr": "Verneigen und ablehnen"
+	},
+	{
+		"id": -1000006291,
+		"key": "enc_heaven_win",
+		"en|ch|tc|kr": "Du hast die himmlische Prüfung bestanden: +{0:#,##0} EP und {1}."
+	},
+	{
+		"id": -1000006292,
+		"key": "enc_heaven_lose",
+		"en|ch|tc|kr": "Die Prüfung war zu schwer: du verlierst {0:#,##0} LP."
+	},
+	{
+		"id": -1000006293,
+		"key": "log_date",
+		"en|ch|tc|kr": "Jahr {0}, Monat {1}"
+	},
+	{
+		"id": -1000006294,
+		"key": "market_bo_h_item",
+		"en|ch|tc|kr": "Gegenstand"
+	},
+	{
+		"id": -1000006295,
+		"key": "market_bo_h_count",
+		"en|ch|tc|kr": "Menge"
+	},
+	{
+		"id": -1000006296,
+		"key": "market_bo_h_price",
+		"en|ch|tc|kr": "Stückpreis"
+	},
+	{
+		"id": -1000006297,
+		"key": "market_bo_h_town",
+		"en|ch|tc|kr": "Stadt"
+	},
+	{
+		"id": -1000006298,
+		"key": "market_bo_h_left",
+		"en|ch|tc|kr": "Restzeit"
+	},
+	{
+		"id": -1000006299,
+		"key": "market_bo_left",
+		"en|ch|tc|kr": "{0} Monate"
 	}
 ]

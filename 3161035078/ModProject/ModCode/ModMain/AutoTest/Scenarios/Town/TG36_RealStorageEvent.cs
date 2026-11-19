@@ -35,7 +35,7 @@ namespace MOD_nE7UL2.AutoTest.Scenarios.Town
                     c.Assert(value != null, $"value text: {value}");
                     var fee = FindTexts(ui, "Fee:").FirstOrDefault() ?? FindTexts(ui, GameTool.LS("other500020004")).FirstOrDefault();
                     c.Assert(fee != null, $"fee text: {fee}");
-                    c.Assert(FindTexts(ui, "pay your debt (1234").Count >= 1, "red debt warning shown");
+                    c.Assert(FindTexts(ui, "pay your debt (1,234").Count >= 1, "red debt warning shown");
                 }, 1500)
                 .Step("monthly payment", c =>
                 {

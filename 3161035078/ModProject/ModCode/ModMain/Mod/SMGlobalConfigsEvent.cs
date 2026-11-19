@@ -12,6 +12,7 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
 using System.Linq;
+using System.Text;
 using System.Windows.Forms;
 using UnityEngine;
 
@@ -101,6 +102,8 @@ namespace MOD_nE7UL2.Mod
         public bool NoStory { get; set; } = false;
         /// <summary>Chance of a random encounter each month (%).</summary>
         public float EncounterRate { get; set; } = 3f;
+        /// <summary>Total score (P) of these settings, worked out when the window is confirmed (SMScoreEvent: what P does).</summary>
+        public int Score { get; set; } = 0;
         /// <summary>Chance of a seclusion offer each month (%); forced ones scale with it.</summary>
         public float SeclusionRate { get; set; } = 0.5f;
         public bool LostLifespanWhenDie { get; set; } = false;
@@ -168,8 +171,14 @@ namespace MOD_nE7UL2.Mod
         private UIItemComposite selChildSurname;
         private UIItemComposite tglContinueAsDescendant;
         private UIItemComposite tglNoStory;
-        /// <summary>One line per NPC storyline under the "No NPC storylines" toggle (lines A-F).</summary>
-        private static readonly string[] STORY_DESCRIPTIONS = { "smcfgs169", "smcfgs170", "smcfgs171", "smcfgs172", "smcfgs173", "smcfgs174" };
+        /// <summary>One line per NPC storyline under the "No NPC storylines" toggle (lines A-L).</summary>
+        private static readonly string[] STORY_DESCRIPTIONS = { "smcfgs169", "smcfgs170", "smcfgs171", "smcfgs172", "smcfgs173", "smcfgs174",
+            "smcfgs186", "smcfgs187", "smcfgs188", "smcfgs189", "smcfgs190", "smcfgs191" };
+        /// <summary>
+        /// Widths of the lines of page 3, in Latin characters: a storyline (a text box wraps itself at ~150 and the
+        /// overflow covers the next row), the hint of the features (right of the toggles, left of the level buttons).
+        /// </summary>
+        private const int WRAP_STORY = 140, WRAP_HINT = 80;
         private UIItemComposite slEncounterRate;
         private UIItemComposite slSeclusionRate;
         private UIItemComposite tglLostLifespanWhenDie;
@@ -369,26 +378,33 @@ namespace MOD_nE7UL2.Mod
             Register(() => tglNoQiCultivation,
                 funcCal: s => 2000,
                 funcCond: s => s.Get().Parse<bool>());
-            // optional content: no difficulty points
-            Register(() => tglNoEncounter, funcCal: s => 0, funcCond: s => s.Get().Parse<bool>());
-            Register(() => tglNoBankLoan, funcCal: s => 0, funcCond: s => s.Get().Parse<bool>());
-            Register(() => tglNoBuyOrder, funcCal: s => 0, funcCond: s => s.Get().Parse<bool>());
-            Register(() => tglNoBounty, funcCal: s => 0, funcCond: s => s.Get().Parse<bool>());
-            Register(() => tglNoSeclusion, funcCal: s => 0, funcCond: s => s.Get().Parse<bool>());
-            Register(() => tglNoForcedSeclusion, funcCal: s => 0, funcCond: s => s.Get().Parse<bool>());
-            Register(() => tglNoFamily, funcCal: s => 0, funcCond: s => s.Get().Parse<bool>());
-            Register(() => tglAllowSameSexCouple, funcCal: s => 0, funcCond: s => s.Get().Parse<bool>());
-            Register(() => selChildSurname, funcCal: s => 0, funcCond: s => false);
-            Register(() => tglContinueAsDescendant, funcCal: s => 0, funcCond: s => s.Get().Parse<bool>());
-            Register(() => tglNoStory, funcCal: s => 0, funcCond: s => s.Get().Parse<bool>());
-            // rates in % a month, shown as they are ("3 %")
+            // additional features (page 3): turning off a feature that helps the player costs points (harder), turning
+            // off one that hurts the player gives points back (easier); the rates count from their defaults
+            Register(() => tglNoEncounter, funcCal: s => 1000, funcCond: s => s.Get().Parse<bool>());          // encounters reward more than they hurt
+            Register(() => tglNoBankLoan, funcCal: s => 1000, funcCond: s => s.Get().Parse<bool>());           // no credit when short of stones
+            Register(() => tglNoBuyOrder, funcCal: s => 500, funcCond: s => s.Get().Parse<bool>());            // a convenience of the market
+            Register(() => tglNoBounty, funcCal: s => -2000, funcCond: s => s.Get().Parse<bool>());            // no hunters after the player
+            Register(() => tglNoSeclusion, funcCal: s => 1000, funcCond: s => s.Get().Parse<bool>());          // no offered seclusions (exp), no forced ones
+            Register(() => tglNoForcedSeclusion, funcCal: s => -2000,                                            // no heart demon / lost years
+                funcCond: s => s.Get().Parse<bool>() && !tglNoSeclusion.Get().Parse<bool>());
+            Register(() => tglNoFamily, funcCal: s => 2000, funcCond: s => s.Get().Parse<bool>());             // no children, no heir
+            Register(() => tglAllowSameSexCouple, funcCal: s => 0, funcCond: s => s.Get().Parse<bool>());      // no effect on difficulty
+            Register(() => selChildSurname, funcCal: s => 0, funcCond: s => false);                              // no effect on difficulty
+            Register(() => tglContinueAsDescendant, funcCal: s => -10000,                                        // a second life (as No rebirth +10000)
+                funcCond: s => s.Get().Parse<bool>() && !tglNoFamily.Get().Parse<bool>());
+            Register(() => tglNoStory, funcCal: s => 1000, funcCond: s => s.Get().Parse<bool>());              // no storyline allies and rewards
+            // rates in % a month, shown as they are ("3 %") with their points
             Func<UIItemBase, object[]> rateFormatter = s =>
             {
                 var x = s.Parent as UIItemComposite;
-                return new object[] { 0, x == null ? "0" : x.Get().Parse<float>().ToString("0.0") + " %" };
+                return new object[] { x == null ? 0 : CalCompScore(x), x == null ? "0" : x.Get().Parse<float>().ToString("0.0") + " %" };
             };
-            Register(() => slEncounterRate, funcCal: s => 0, funcCond: s => false, funcFormatter: rateFormatter);
-            Register(() => slSeclusionRate, funcCal: s => 0, funcCond: s => false, funcFormatter: rateFormatter);
+            // encounters: 3 % (default) = 0 P, 300 P a point below / above (0 % = +900, 10 % = -2100)
+            Register(() => slEncounterRate, funcCal: s => ((3f - s.Get().Parse<float>()) * 300).Parse<int>(),
+                funcCond: s => !tglNoEncounter.Get().Parse<bool>(), funcFormatter: rateFormatter);
+            // seclusion events: 0.5 % (default) = 0 P, 2000 P a point (0 % = +1000, 3 % = -5000)
+            Register(() => slSeclusionRate, funcCal: s => ((0.5f - s.Get().Parse<float>()) * 2000).Parse<int>(),
+                funcCond: s => !tglNoSeclusion.Get().Parse<bool>(), funcFormatter: rateFormatter);
             Register(() => tglLostLifespanWhenDie,
                 funcCal: s => 2000,
                 funcCond: s => s.Get().Parse<bool>());
@@ -513,6 +529,21 @@ namespace MOD_nE7UL2.Mod
             }
         }
 
+        // look of the window: section titles in the colour of the seal with an icon, the total score in colour
+        public static Color SECTION_COLOR => new Color(0.45f, 0.12f, 0.08f);
+        public static Color SCORE_POSITIVE => new Color(0.10f, 0.45f, 0.20f);
+        public static Color SCORE_NEGATIVE => new Color(0.75f, 0.10f, 0.08f);
+        private static readonly Dictionary<string, string> SECTION_ICONS = new Dictionary<string, string>
+        {
+            { "smcfgs000", "gongji" }, { "smcfgs016", "zm_renshu" }, { "smcfgs018", "xingyun" }, { "smcfgs104", "daodian" },
+            { "smcfgs127", "zhandouxiaoguo" }, { "smcfgs007", "zm_lingshi" }, { "smcfgs116", "yaocai" }, { "smcfgs020", "jineng" },
+            { "smcfgs150", "wuxing" }, { "smcfgs168", "shengwang" },
+        };
+
+        /// <summary>A section title: its icon and text.</summary>
+        public static string SectionTitle(string key) =>
+            (SECTION_ICONS.TryGetValue(key, out var icon) ? TextIconHelper.ToSprites($"[icon:{icon}]") + " " : string.Empty) + GameTool.LS(key);
+
         /// <summary>
         /// Opens the S&amp;M configs window (sliders/toggles for every option, presets, import/export).
         /// </summary>
@@ -526,11 +557,11 @@ namespace MOD_nE7UL2.Mod
             {
                 int col, row;
 
-                uiCustom.AddToolTipButton(GameTool.LS("other500020039"));
+                uiCustom.AddToolTipButton(GameTool.LS("other500020039")).Pos(uiCustom.Columns[0], uiCustom.Rows[0] + UIHelper.GetUIDeltaY());   // above the section titles (they covered it)
 
                 //
                 col = 2; row = 0;
-                uiCustom.AddText(col, row++, GameTool.LS("smcfgs000")).Format(null, 17, FontStyle.Italic).Align(TextAnchor.MiddleRight);
+                uiCustom.AddText(col, row++, SectionTitle("smcfgs000")).Format(SECTION_COLOR, 18, FontStyle.Bold).Align(TextAnchor.MiddleRight);
                 slMonstAtk = uiCustom.AddCompositeSlider(col, row++, GameTool.LS("smcfgs001"), -0.50f, 8.00f, AddAtkRate, GameTool.LS("smcfgs101"));
                 slMonstDef = uiCustom.AddCompositeSlider(col, row++, GameTool.LS("smcfgs002"), -0.50f, 8.00f, AddDefRate, GameTool.LS("smcfgs101"));
                 slMonstHp = uiCustom.AddCompositeSlider(col, row++, GameTool.LS("smcfgs003"), -0.50f, 8.00f, AddHpRate, GameTool.LS("smcfgs101"));
@@ -542,7 +573,7 @@ namespace MOD_nE7UL2.Mod
                 tglSysBossHasShield = uiCustom.AddCompositeToggle(col, row++, GameTool.LS("smcfgs038"), BossHasShield, GameTool.LS("smcfgs102"));
                 //
                 row++;
-                uiCustom.AddText(col, row++, GameTool.LS("smcfgs016")).Format(null, 17, FontStyle.Italic).Align(TextAnchor.MiddleRight);
+                uiCustom.AddText(col, row++, SectionTitle("smcfgs016")).Format(SECTION_COLOR, 18, FontStyle.Bold).Align(TextAnchor.MiddleRight);
                 slNpcGrowRate = uiCustom.AddCompositeSlider(col, row++, GameTool.LS("smcfgs017"), 0.00f, 8.00f, AddNpcGrowRate, GameTool.LS("smcfgs101"));
                 slNPCAmount = uiCustom.AddCompositeSlider(col, row++, GameTool.LS("smcfgs047"), 1000, 10000, NPCAmount, GameTool.LS("smcfgs103"));
                 uiCustom.AddText(col + 3, row++, GameTool.LS("smcfgs048")).Format(null, 13).Align(TextAnchor.MiddleLeft).SetWork(new UIItemWork
@@ -551,14 +582,14 @@ namespace MOD_nE7UL2.Mod
                 });
                 //
                 row++;
-                uiCustom.AddText(col, row++, GameTool.LS("smcfgs018")).Format(null, 17, FontStyle.Italic).Align(TextAnchor.MiddleRight);
+                uiCustom.AddText(col, row++, SectionTitle("smcfgs018")).Format(SECTION_COLOR, 18, FontStyle.Bold).Align(TextAnchor.MiddleRight);
                 slMiscLevelupExp = uiCustom.AddCompositeSlider(col, row++, GameTool.LS("smcfgs019"), 0.00f, 1.00f, AddLevelupExpRate, GameTool.LS("smcfgs101"));
                 slGrowUpSpeed = uiCustom.AddCompositeSlider(col, row++, GameTool.LS("smcfgs051"), 1, 24, GrowUpSpeed, GameTool.LS("smcfgs053"));
                 uiCustom.AddText(col + 2, row++, GameTool.LS("smcfgs052")).Format(null, 13).Align(TextAnchor.MiddleLeft);
                 uiCustom.AddText(col + 2, row++, GameTool.LS("smcfgs128")).Format(null, 13).Align(TextAnchor.MiddleLeft);
                 //
                 row++;
-                uiCustom.AddText(col, row++, GameTool.LS("smcfgs104")).Format(null, 17, FontStyle.Italic).Align(TextAnchor.MiddleRight);
+                uiCustom.AddText(col, row++, SectionTitle("smcfgs104")).Format(SECTION_COLOR, 18, FontStyle.Bold).Align(TextAnchor.MiddleRight);
                 uiCustom.AddToolTipButton(0, row, GameTool.LS("smcfgs105"));
                 cbStartupPlayerRole = uiCustom.AddCompositeSelect(col, row++, GameTool.LS("smcfgs106"),
                     new string[] {
@@ -584,7 +615,7 @@ namespace MOD_nE7UL2.Mod
                     }, PriorityDestinyLevel, GameTool.LS("smcfgs102"));
 
                 col = 16; row = 0;
-                uiCustom.AddText(col, row++, GameTool.LS("smcfgs127")).Format(null, 17, FontStyle.Italic).Align(TextAnchor.MiddleRight);
+                uiCustom.AddText(col, row++, SectionTitle("smcfgs127")).Format(SECTION_COLOR, 18, FontStyle.Bold).Align(TextAnchor.MiddleRight);
                 tglSysHideSave = uiCustom.AddCompositeToggle(col, row++, GameTool.LS("smcfgs021"), HideSaveButton, GameTool.LS("smcfgs102"));
                 tglSysHideReload = uiCustom.AddCompositeToggle(col, row++, GameTool.LS("smcfgs022"), HideReloadButton, GameTool.LS("smcfgs102"));
                 tglLostItemWhenDie = uiCustom.AddCompositeToggle(col, row++, GameTool.LS("smcfgs056"), LostItemWhenDie, GameTool.LS("smcfgs102"));
@@ -612,11 +643,11 @@ namespace MOD_nE7UL2.Mod
             {
                 int col, row;
 
-                uiCustom.AddToolTipButton(GameTool.LS("other500020039"));
+                uiCustom.AddToolTipButton(GameTool.LS("other500020039")).Pos(uiCustom.Columns[0], uiCustom.Rows[0] + UIHelper.GetUIDeltaY());   // above the section titles (they covered it)
 
                 col = 2; row = 0;
                 //
-                uiCustom.AddText(col, row++, GameTool.LS("smcfgs007")).Format(null, 17, FontStyle.Italic).Align(TextAnchor.MiddleRight);
+                uiCustom.AddText(col, row++, SectionTitle("smcfgs007")).Format(SECTION_COLOR, 18, FontStyle.Bold).Align(TextAnchor.MiddleRight);
                 slEcoTaxRate = uiCustom.AddCompositeSlider(col, row++, GameTool.LS("smcfgs008"), -0.50f, 5.00f, AddTaxRate, GameTool.LS("smcfgs101"));
                 slEcoInfRate = uiCustom.AddCompositeSlider(col, row++, GameTool.LS("smcfgs009"), -0.50f, 2.00f, AddInflationRate, GameTool.LS("smcfgs101"));
                 slEcoBuildingCost = uiCustom.AddCompositeSlider(col, row++, GameTool.LS("smcfgs010"), 0.00f, 8.00f, AddBuildingCostRate, GameTool.LS("smcfgs101"));
@@ -627,7 +658,7 @@ namespace MOD_nE7UL2.Mod
                 slEcoItemValue = uiCustom.AddCompositeSlider(col, row++, GameTool.LS("smcfgs015"), -0.50f, 1.00f, AddItemValueRate, GameTool.LS("smcfgs101"));
                 //
                 row++;
-                uiCustom.AddText(col, row++, GameTool.LS("smcfgs116")).Format(null, 17, FontStyle.Italic).Align(TextAnchor.MiddleRight);
+                uiCustom.AddText(col, row++, SectionTitle("smcfgs116")).Format(SECTION_COLOR, 18, FontStyle.Bold).Align(TextAnchor.MiddleRight);
                 slMarketItemNpcJoinRate = uiCustom.AddCompositeSlider(col, row++, GameTool.LS("smcfgs117"), -0.50f, 1.00f, MarketItemNpcJoinRate, GameTool.LS("smcfgs101"));
                 slMarketItemGetAttackedRate = uiCustom.AddCompositeSlider(col, row++, GameTool.LS("smcfgs118"), -0.50f, 1.00f, MarketItemGetAttackedRate, GameTool.LS("smcfgs101"));
                 slMaxSellersEachTown = uiCustom.AddCompositeSlider(col, row++, GameTool.LS("smcfgs130"), 1, 30, MaxSellersEachTown, GameTool.LS("smcfgs132"));
@@ -638,7 +669,7 @@ namespace MOD_nE7UL2.Mod
                 uiCustom.AddText(col - 1, row++, GameTool.LS("smcfgs135")).Format(null, 13).Align(TextAnchor.MiddleLeft);
 
                 col = 16; row = 0;
-                uiCustom.AddText(col, row++, GameTool.LS("smcfgs020")).Format(null, 17, FontStyle.Italic).Align(TextAnchor.MiddleRight);
+                uiCustom.AddText(col, row++, SectionTitle("smcfgs020")).Format(SECTION_COLOR, 18, FontStyle.Bold).Align(TextAnchor.MiddleRight);
                 tglSysHideBattleMap = uiCustom.AddCompositeToggle(col, row++, GameTool.LS("smcfgs024"), HideBattleMap, GameTool.LS("smcfgs102"));
                 tglDestroyBuildingAfterTownWar = uiCustom.AddCompositeToggle(col, row++, GameTool.LS("smcfgs136"), DestroyBuildingAfterTownWar, GameTool.LS("smcfgs102"));
                 tglAllowTownBuildupOverTime = uiCustom.AddCompositeToggle(col, row++, GameTool.LS("smcfgs050"), AllowTownBuildupOverTime, GameTool.LS("smcfgs102"));
@@ -668,10 +699,10 @@ namespace MOD_nE7UL2.Mod
             {
                 int col, row;
 
-                uiCustom.AddToolTipButton(GameTool.LS("other500020039"));
+                uiCustom.AddToolTipButton(GameTool.LS("other500020039")).Pos(uiCustom.Columns[0], uiCustom.Rows[0] + UIHelper.GetUIDeltaY());   // above the section titles (they covered it)
 
                 col = 2; row = 0;
-                uiCustom.AddText(col, row++, GameTool.LS("smcfgs150")).Format(null, 17, FontStyle.Italic).Align(TextAnchor.MiddleRight);
+                uiCustom.AddText(col, row++, SectionTitle("smcfgs150")).Format(SECTION_COLOR, 18, FontStyle.Bold).Align(TextAnchor.MiddleRight);
                 tglNoEncounter = uiCustom.AddCompositeToggle(col, row++, GameTool.LS("smcfgs151"), NoEncounter, GameTool.LS("smcfgs102"));
                 tglNoBankLoan = uiCustom.AddCompositeToggle(col, row++, GameTool.LS("smcfgs152"), NoBankLoan, GameTool.LS("smcfgs102"));
                 tglNoBuyOrder = uiCustom.AddCompositeToggle(col, row++, GameTool.LS("smcfgs153"), NoBuyOrder, GameTool.LS("smcfgs102"));
@@ -685,20 +716,55 @@ namespace MOD_nE7UL2.Mod
                 // rates of the random events (second column)
                 slEncounterRate = uiCustom.AddCompositeSlider(16, 1, GameTool.LS("smcfgs165"), 0f, 10f, EncounterRate, GameTool.LS("smcfgs103"));
                 slSeclusionRate = uiCustom.AddCompositeSlider(16, 2, GameTool.LS("smcfgs166"), 0f, 3f, SeclusionRate, GameTool.LS("smcfgs103"));
-                uiCustom.AddText(col - 1, row++, GameTool.LS("smcfgs155")).Format(null, 13).Align(TextAnchor.MiddleLeft);
+                // the hint in the free space under the sliders (below the toggles it took 3 rows and the storylines went off the page)
+                var hintRow = 4;
+                foreach (var line in WrapText(GameTool.LS("smcfgs155"), WRAP_HINT))
+                    uiCustom.AddText(Math.Min(13, uiCustom.Columns.Count - 1), hintRow++, line).Format(null, 13).Align(TextAnchor.MiddleLeft);
 
                 // NPC storylines: one toggle for all, a line per story
                 row++;
-                uiCustom.AddText(col, row++, GameTool.LS("smcfgs168")).Format(null, 17, FontStyle.Italic).Align(TextAnchor.MiddleRight);
+                uiCustom.AddText(col, row++, SectionTitle("smcfgs168")).Format(SECTION_COLOR, 18, FontStyle.Bold).Align(TextAnchor.MiddleRight);
                 tglNoStory = uiCustom.AddCompositeToggle(col, row++, GameTool.LS("smcfgs167"), NoStory, GameTool.LS("smcfgs102"));
-                for (var i = 0; i < STORY_DESCRIPTIONS.Length; i++)
-                    uiCustom.AddText(col - 1, row++, "- " + GameTool.LS(STORY_DESCRIPTIONS[i])).Format(null, 13).Align(TextAnchor.MiddleLeft);
+                foreach (var key in STORY_DESCRIPTIONS)
+                    foreach (var line in WrapText("- " + GameTool.LS(key), WRAP_STORY))
+                        uiCustom.AddText(col - 1, row++, line).Format(null, 13).Align(TextAnchor.MiddleLeft);
 
                 AddDifButtons();
             }
 
             SetWork();
             uiCustom.Pages[0].Active();
+        }
+
+        /// <summary>
+        /// Splits a text into lines of about max Latin characters: at spaces, or between two CJK characters (Chinese,
+        /// Japanese have no spaces); a CJK character counts as 2 (it is twice as wide).
+        /// </summary>
+        public static List<string> WrapText(string text, int max)
+        {
+            bool Wide(char c) => c >= 0x2E80 && c <= 0xFFEF;
+            var lines = new List<string>();
+            var cur = new StringBuilder();
+            var width = 0;
+            var lastBreak = -1;   // index in cur after which the line can break (a space or a CJK character)
+            foreach (var c in text ?? string.Empty)
+            {
+                cur.Append(c);
+                width += Wide(c) ? 2 : 1;
+                if (c == ' ' || Wide(c))
+                    lastBreak = cur.Length;
+                if (width > max && lastBreak > 0 && lastBreak < cur.Length)
+                {
+                    lines.Add(cur.ToString(0, lastBreak).TrimEnd());
+                    var rest = cur.ToString(lastBreak, cur.Length - lastBreak);
+                    cur.Clear().Append(rest);
+                    width = rest.Sum(x => Wide(x) ? 2 : 1);
+                    lastBreak = -1;
+                }
+            }
+            if (cur.ToString().Trim().Length > 0)
+                lines.Add(cur.ToString().TrimEnd());
+            return lines;
         }
 
         /// <summary>
@@ -775,10 +841,33 @@ namespace MOD_nE7UL2.Mod
         /// </summary>
         private void AddDifButtons()
         {
-            int col = 30, row = 0;
-            uiCustom.AddText(col, row, GameTool.LS("smcfgs043")).Format(Color.red, 17).Align(TextAnchor.MiddleRight).SetWork(new UIItemWork
+            int col = Math.Min(30, uiCustom.Columns.Count - 1), row = 0;   // fewer columns in a small game window
+            // the total score, green when positive, red when negative; the title of its tier (SMScoreEvent) under it
+            // at the level of the title of the window (as the "?" buttons): the score, then the title of its tier
+            var header = uiCustom.Rows[0] + UIHelper.GetUIDeltaY();
+            var scoreText = uiCustom.AddText(col, row, "{0}").Format(Color.red, 19, FontStyle.Bold).Align(TextAnchor.MiddleRight);
+            scoreText.SetWork(new UIItemWork
             {
-                Formatter = ActionHelper.WTracedFunc<UIItemBase, object[]>((x) => new string[] { CalSMTotalScore().ToString() }),
+                Formatter = ActionHelper.WTracedFunc<UIItemBase, object[]>((x) =>
+                {
+                    var score = CalSMTotalScore();
+                    var t = (UIItemText)x;
+                    var color = score >= 0 ? SCORE_POSITIVE : SCORE_NEGATIVE;
+                    if (t.Item.color != color) t.Item.color = color;
+                    return new object[] { string.Format(GameTool.LS("smcfgs043"), score.ToString("#,##0")) };
+                }),
+            });
+            scoreText.Pos(uiCustom.Columns[col], header + UIHelper.GetUIDeltaY() * 0.3f);
+            // the title of the tier on its own line under the score (one line was too long: over the section titles)
+            var tierText = uiCustom.AddText(col, row, "{0}").Format(SECTION_COLOR, 15, FontStyle.Italic).Align(TextAnchor.MiddleRight);
+            tierText.Pos(uiCustom.Columns[col], header - UIHelper.GetUIDeltaY() * 0.6f);
+            tierText.SetWork(new UIItemWork
+            {
+                Formatter = ActionHelper.WTracedFunc<UIItemBase, object[]>((x) =>
+                {
+                    var score = CalSMTotalScore();
+                    return new object[] { TextIconHelper.ToSprites($"[icon:{SMScoreEvent.TIER_ICONS[SMScoreEvent.Tier(score)]}]") + " " + SMScoreEvent.TitleText(score) };
+                }),
             });
             uiCustom.AddButton(col, row += 2, () => SetLevelBase(), GameTool.LS("smcfgs044"));
             uiCustom.AddButton(col, row += 2, () => SetLevel(0), $"{GameTool.LS("smcfgs045")} 0");
@@ -954,6 +1043,7 @@ namespace MOD_nE7UL2.Mod
         /// </summary>
         private void SetSMConfigs()
         {
+            Score = CalSMTotalScore();
             AddAtkRate = slMonstAtk.Get().Parse<float>();
             AddDefRate = slMonstDef.Get().Parse<float>();
             AddHpRate = slMonstHp.Get().Parse<float>();
@@ -1023,6 +1113,10 @@ namespace MOD_nE7UL2.Mod
             //edit conf
             g.conf.npcInitParameters.GetItem(1).value = NPCAmount;
         }
+
+        /// <summary>The trainer toggle of the open window (promotion pictures: the score without the trainer; not saved
+        /// unless the window is confirmed).</summary>
+        public void ShowTrainer(bool on) => tglEnableTrainer?.Set(on);
 
         /// <summary>
         /// Score of one component.

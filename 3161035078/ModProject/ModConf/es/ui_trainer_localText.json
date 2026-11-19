@@ -192,17 +192,17 @@
 	{
 		"id": -1000002038,
 		"key": "trainer038",
-		"en|ch|tc|kr": "Propiedades generales:"
+		"en|ch|tc|kr": "[icon:zhandouxiaoguo] Propiedades generales:"
 	},
 	{
 		"id": -1000002039,
 		"key": "trainer039",
-		"en|ch|tc|kr": "Marcial/Espiritual:"
+		"en|ch|tc|kr": "[icon:jianfa] Marcial/Espiritual:"
 	},
 	{
 		"id": -1000002040,
 		"key": "trainer040",
-		"en|ch|tc|kr": "Artesanía:"
+		"en|ch|tc|kr": "[icon:lianqi] Artesanía:"
 	},
 	{
 		"id": -1000002041,
@@ -247,32 +247,32 @@
 	{
 		"id": -1000002049,
 		"key": "trainer049",
-		"en|ch|tc|kr": "Alquimia: {0:#,##0}"
+		"en|ch|tc|kr": "[icon:liandan] Alquimia: {0:#,##0}"
 	},
 	{
 		"id": -1000002050,
 		"key": "trainer050",
-		"en|ch|tc|kr": "{0:#,##0}: Forja"
+		"en|ch|tc|kr": "{0:#,##0}: Forja [icon:lianqi]"
 	},
 	{
 		"id": -1000002051,
 		"key": "trainer051",
-		"en|ch|tc|kr": "Feng Shui: {0:#,##0}"
+		"en|ch|tc|kr": "[icon:fengshui] Feng Shui: {0:#,##0}"
 	},
 	{
 		"id": -1000002052,
 		"key": "trainer052",
-		"en|ch|tc|kr": "{0:#,##0}: Talismanes"
+		"en|ch|tc|kr": "{0:#,##0}: Talismanes [icon:huafu]"
 	},
 	{
 		"id": -1000002053,
 		"key": "trainer053",
-		"en|ch|tc|kr": "Herbología: {0:#,##0}"
+		"en|ch|tc|kr": "[icon:yaocai] Herbología: {0:#,##0}"
 	},
 	{
 		"id": -1000002054,
 		"key": "trainer054",
-		"en|ch|tc|kr": "{0:#,##0}: Minería"
+		"en|ch|tc|kr": "{0:#,##0}: Minería [icon:kuangcai]"
 	},
 	{
 		"id": -1000002055,
@@ -302,162 +302,162 @@
 	{
 		"id": "-1000002060",
 		"key": "trainer_lbl_hp",
-		"en|ch|tc|kr": "PV: {0}/{1}"
+		"en|ch|tc|kr": "[icon:jiankang] PV: {0}/{1}"
 	},
 	{
 		"id": "-1000002061",
 		"key": "trainer_lbl_money",
-		"en|ch|tc|kr": "{0} :Dinero"
+		"en|ch|tc|kr": "{0} :Dinero [icon:zm_lingshi]"
 	},
 	{
 		"id": "-1000002062",
 		"key": "trainer_lbl_mp",
-		"en|ch|tc|kr": "PM: {0}/{1}"
+		"en|ch|tc|kr": "[icon:lingli] PM: {0}/{1}"
 	},
 	{
 		"id": "-1000002063",
 		"key": "trainer_lbl_degree",
-		"en|ch|tc|kr": "{0} :Grado de alcalde"
+		"en|ch|tc|kr": "{0} :Grado de alcalde [icon:zm_mingyu]"
 	},
 	{
 		"id": "-1000002064",
 		"key": "trainer_lbl_sp",
-		"en|ch|tc|kr": "PE: {0}/{1}"
+		"en|ch|tc|kr": "[icon:nianli] PE: {0}/{1}"
 	},
 	{
 		"id": "-1000002065",
 		"key": "trainer_lbl_contribution",
-		"en|ch|tc|kr": "{0} :Contribución"
+		"en|ch|tc|kr": "{0} :Contribución [icon:zm_zhongchengdu]"
 	},
 	{
 		"id": "-1000002066",
 		"key": "trainer_lbl_def",
-		"en|ch|tc|kr": "{0} :Def"
+		"en|ch|tc|kr": "{0} :Def [icon:fangyu]"
 	},
 	{
 		"id": "-1000002067",
 		"key": "trainer_lbl_mood",
-		"en|ch|tc|kr": "Ánimo: {0}/{1}"
+		"en|ch|tc|kr": "[icon:xinqing] Ánimo: {0}/{1}"
 	},
 	{
 		"id": "-1000002068",
 		"key": "trainer_lbl_stamina",
-		"en|ch|tc|kr": "{0}/{1} :Aguante"
+		"en|ch|tc|kr": "{0}/{1} :Aguante [icon:jingli]"
 	},
 	{
 		"id": "-1000002069",
 		"key": "trainer_lbl_health",
-		"en|ch|tc|kr": "Salud: {0}/{1}"
+		"en|ch|tc|kr": "[icon:huifutili] Salud: {0}/{1}"
 	},
 	{
 		"id": "-1000002070",
 		"key": "trainer_lbl_life",
-		"en|ch|tc|kr": "{0}/{1} :Longevidad"
+		"en|ch|tc|kr": "{0}/{1} :Longevidad [icon:shouming]"
 	},
 	{
 		"id": "-1000002071",
 		"key": "trainer_lbl_travel_speed",
-		"en|ch|tc|kr": "Velocidad de viaje: {0}"
+		"en|ch|tc|kr": "[icon:yisu] Velocidad de viaje: {0}"
 	},
 	{
 		"id": "-1000002072",
 		"key": "trainer_lbl_view_range",
-		"en|ch|tc|kr": "{0} :Alcance de visión"
+		"en|ch|tc|kr": "{0} :Alcance de visión [icon:fanwei]"
 	},
 	{
 		"id": "-1000002073",
 		"key": "trainer_lbl_battle_speed",
-		"en|ch|tc|kr": "Velocidad de combate: {0}"
+		"en|ch|tc|kr": "[icon:gongsuD] Velocidad de combate: {0}"
 	},
 	{
 		"id": "-1000002074",
 		"key": "trainer_lbl_ability",
-		"en|ch|tc|kr": "({1}) {0} :Habilidad"
+		"en|ch|tc|kr": "({1}) {0} :Habilidad [icon:jineng]"
 	},
 	{
 		"id": "-1000002075",
 		"key": "trainer_lbl_luck",
-		"en|ch|tc|kr": "Suerte: {0}"
+		"en|ch|tc|kr": "[icon:xingyun] Suerte: {0}"
 	},
 	{
 		"id": "-1000002076",
 		"key": "trainer_lbl_insight",
-		"en|ch|tc|kr": "{0} :Perspicacia"
+		"en|ch|tc|kr": "{0} :Perspicacia [icon:wuxing]"
 	},
 	{
 		"id": "-1000002077",
 		"key": "trainer_lbl_exp",
-		"en|ch|tc|kr": "Exp: {0}/{1}"
+		"en|ch|tc|kr": "[icon:daodian] Exp: {0}/{1}"
 	},
 	{
 		"id": "-1000002078",
 		"key": "trainer_lbl_reputation",
-		"en|ch|tc|kr": "{0} :Reputación"
+		"en|ch|tc|kr": "{0} :Reputación [icon:shengwang]"
 	},
 	{
 		"id": "-1000002079",
 		"key": "trainer_lbl_grade",
-		"en|ch|tc|kr": "Grado: {0} {1} ― {2}"
+		"en|ch|tc|kr": "[icon:daoli] Grado: {0} {1} ― {2}"
 	},
 	{
 		"id": "-1000002080",
 		"key": "trainer_lbl_fire",
-		"en|ch|tc|kr": "Fuego: {0}"
+		"en|ch|tc|kr": "[icon:huolinggen] Fuego: {0}"
 	},
 	{
 		"id": "-1000002081",
 		"key": "trainer_lbl_blade",
-		"en|ch|tc|kr": "{0} :Sable"
+		"en|ch|tc|kr": "{0} :Sable [icon:daofa]"
 	},
 	{
 		"id": "-1000002082",
 		"key": "trainer_lbl_water",
-		"en|ch|tc|kr": "Agua: {0}"
+		"en|ch|tc|kr": "[icon:shuilinggen] Agua: {0}"
 	},
 	{
 		"id": "-1000002083",
 		"key": "trainer_lbl_spear",
-		"en|ch|tc|kr": "{0} :Lanza"
+		"en|ch|tc|kr": "{0} :Lanza [icon:qiangfa]"
 	},
 	{
 		"id": "-1000002084",
 		"key": "trainer_lbl_lightning",
-		"en|ch|tc|kr": "Rayo: {0}"
+		"en|ch|tc|kr": "[icon:leilinggen] Rayo: {0}"
 	},
 	{
 		"id": "-1000002085",
 		"key": "trainer_lbl_sword",
-		"en|ch|tc|kr": "{0} :Espada"
+		"en|ch|tc|kr": "{0} :Espada [icon:jianfa]"
 	},
 	{
 		"id": "-1000002086",
 		"key": "trainer_lbl_wind",
-		"en|ch|tc|kr": "Viento: {0}"
+		"en|ch|tc|kr": "[icon:fenglinggen] Viento: {0}"
 	},
 	{
 		"id": "-1000002087",
 		"key": "trainer_lbl_fist",
-		"en|ch|tc|kr": "{0} :Puño"
+		"en|ch|tc|kr": "{0} :Puño [icon:quanfa]"
 	},
 	{
 		"id": "-1000002088",
 		"key": "trainer_lbl_earth",
-		"en|ch|tc|kr": "Tierra: {0}"
+		"en|ch|tc|kr": "[icon:tulinggen] Tierra: {0}"
 	},
 	{
 		"id": "-1000002089",
 		"key": "trainer_lbl_palm",
-		"en|ch|tc|kr": "{0} :Palma"
+		"en|ch|tc|kr": "{0} :Palma [icon:zhangfa]"
 	},
 	{
 		"id": "-1000002090",
 		"key": "trainer_lbl_wood",
-		"en|ch|tc|kr": "Madera: {0}"
+		"en|ch|tc|kr": "[icon:mulinggen] Madera: {0}"
 	},
 	{
 		"id": "-1000002091",
 		"key": "trainer_lbl_finger",
-		"en|ch|tc|kr": "{0} :Dedo"
+		"en|ch|tc|kr": "{0} :Dedo [icon:zhifa]"
 	},
 	{
 		"id": "-1000002092",

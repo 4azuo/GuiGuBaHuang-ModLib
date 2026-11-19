@@ -22,12 +22,12 @@
 	{
 		"id": "420041118",
 		"key": "townmaster420041118",
-		"en|ch|tc|kr": "Ngân sách: {0:#,##0}"
+		"en|ch|tc|kr": "Ngân sách: {0:#,##0} [icon:zm_lingshi]"
 	},
 	{
 		"id": "420041119",
 		"key": "townmaster420041119",
-		"en|ch|tc|kr": "Mức lương: {0:#,##0}/năm"
+		"en|ch|tc|kr": "Mức lương: {0:#,##0} [icon:zm_lingshi]/năm"
 	},
 	{
 		"id": "420041113",

@@ -509,6 +509,18 @@ namespace MOD_nE7UL2.Mod
                 if (c.UnitId == hid) c.UnitId = pid;
             }
 
+            // 7. S&M score: with easy settings (P < 0) the descendant keeps only a share of the spirit stones
+            var share = SMScoreEvent.InheritShare(SMScoreEvent.P);
+            if (share < 1f)
+            {
+                var lost = (int)(Player.GetUnitMoney() * (1f - share));
+                if (lost > 0)
+                {
+                    Player.AddUnitMoney(-lost);
+                    TaoistLogEvent.Log("log_score_inherit", lost, SMScoreEvent.P);
+                }
+            }
+
             g.world.unit.DelUnitSecret(heir);
             RefreshPlayerLook();
             Generation++;

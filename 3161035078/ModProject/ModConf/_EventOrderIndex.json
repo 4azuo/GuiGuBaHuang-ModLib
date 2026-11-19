@@ -6,6 +6,9 @@
 	"SMLocalEvent": 1010,
 	"InflationaryEvent": 1020,
 	"TaoistLogEvent": 1025,
+	"SMScoreRecordsEvent": 1026,
+	"SMScoreEvent": 1027,
+	"DamageInfoEvent": 1028,
 	"TrainerEvent": 1030,
 
 	//not affect

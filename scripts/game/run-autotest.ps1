@@ -45,6 +45,10 @@
     # only the scenarios whose latest result is NG or NOT RUN (a full run only when really wanted; a full run
     # where everything passed is pinned: scripts\pin-test-run.ps1)
 .EXAMPLE
+    .\scripts\game\run-autotest.ps1 -Promo -Scenario TG-57,TB-07
+    # promotion run: no check panels on the screenshots; the "promo" pictures are copied to ModProject\SteamImg
+    # (only promotion runs write SteamImg; scripts\game\run-promo.ps1 runs every scenario with pictures)
+.EXAMPLE
     .\scripts\game\run-autotest.ps1 -ListScenarios
     # scenario ids with their latest OK/NG result
 .EXAMPLE
@@ -63,18 +67,35 @@ param(
     [switch]$WatchBattles,
     [int]$WatchMinutes = 10,
     [int]$Timeout = 900,
+    [int]$StallSeconds = 300,
+    [ValidateRange(1, 9)][int]$Slot = 1,
+    [switch]$NoSaveBackup,
+    [switch]$SlotCharacter,
+    [string]$GameArgs,
+    # window of the game ("1600x900"): set by the mod in the game's own settings (kept)
+    # game window: windowed at this size for every run (default 1600x900; '' keeps the game's own setting)
+    [string]$Window = '1600x900',
+    [switch]$NoViewerUpdate,
+    # the user confirmed the tool scenarios (TE-xx, TI-xx) of -Scenario: no prompt
+    [switch]$ConfirmTools,
     [int]$StepDelayMs = 1500,
     [switch]$Deploy,
     [switch]$KeepGame,
     [switch]$NoRestore,
     [switch]$ListScenarios,
+    [switch]$Promo,
+    # the game window may come to the front (default: kept behind the other windows, the focus given back)
+    [switch]$Foreground,
     [string]$ReportFrom,
     [string]$GamePath
 )
 
 $ErrorActionPreference = 'Stop'
+# game slot (new-game-slot.ps1): read by _game.ps1 here and by run-game.ps1 (inherited)
+$env:GGBH_SLOT = if ($Slot -ge 2) { "$Slot" } else { $null }
 . (Join-Path $PSScriptRoot '_game.ps1')
 . (Join-Path $PSScriptRoot '_autotest.ps1')
+. (Join-Path $PSScriptRoot '_parallel.ps1')   # Set-GameWindow
 
 $TaoistModId = 'nE7UL2'
 
@@ -101,6 +122,9 @@ public static class AutoTestWin32b {
     [DllImport("user32.dll")] public static extern bool PrintWindow(IntPtr hWnd, IntPtr hdc, uint flags);
     [DllImport("user32.dll")] public static extern bool IsIconic(IntPtr hWnd);
     [DllImport("user32.dll")] public static extern bool SetProcessDPIAware();
+    [DllImport("user32.dll")] public static extern IntPtr GetForegroundWindow();
+    [DllImport("user32.dll")] public static extern bool SetForegroundWindow(IntPtr hWnd);
+    [DllImport("user32.dll")] public static extern bool SetWindowPos(IntPtr hWnd, IntPtr after, int x, int y, int cx, int cy, uint flags);
 }
 '@
 }
@@ -134,8 +158,70 @@ function Save-GameScreenshot([string]$Path) {
     finally { $gfx.Dispose(); $bmp.Dispose() }
 }
 
+# The game window as a bitmap (PrintWindow), null when it cannot be captured this way.
+function Get-GameBitmap {
+    $p = Get-GameProcess
+    if (-not $p -or $p.MainWindowHandle -eq [IntPtr]::Zero -or [AutoTestWin32b]::IsIconic($p.MainWindowHandle)) { return $null }
+    $r = New-Object AutoTestWin32b+RECT
+    if (-not [AutoTestWin32b]::GetWindowRect($p.MainWindowHandle, [ref]$r) -or ($r.Right - $r.Left) -le 100) { return $null }
+    $bmp = New-Object Drawing.Bitmap ($r.Right - $r.Left), ($r.Bottom - $r.Top)
+    $gfx = [Drawing.Graphics]::FromImage($bmp)
+    $hdc = $gfx.GetHdc()
+    try { $ok = [AutoTestWin32b]::PrintWindow($p.MainWindowHandle, $hdc, 2) }
+    finally { $gfx.ReleaseHdc($hdc); $gfx.Dispose() }
+    if (-not $ok) { $bmp.Dispose(); return $null }
+    return $bmp
+}
+
+# The game window kept behind the other windows while the game starts (Windows activates a new window, and again
+# when the game applies its window settings at the title screen): sent to the bottom without activation, the focus
+# given back to the window used before the run. Only during the first minutes, so a window the tester brings to the
+# front later stays there. Screenshots use PrintWindow: they work behind other windows.
+$script:UserWindow = [AutoTestWin32b]::GetForegroundWindow()
+function Push-GameBehind {
+    $p = Get-GameProcess
+    if (-not $p -or $p.MainWindowHandle -eq [IntPtr]::Zero) { return }
+    if ([AutoTestWin32b]::GetForegroundWindow() -ne $p.MainWindowHandle) { return }
+    # HWND_BOTTOM, SWP_NOSIZE | SWP_NOMOVE | SWP_NOACTIVATE
+    [AutoTestWin32b]::SetWindowPos($p.MainWindowHandle, [IntPtr]1, 0, 0, 0, 0, 0x13) | Out-Null
+    if ($script:UserWindow -ne [IntPtr]::Zero -and $script:UserWindow -ne $p.MainWindowHandle) {
+        [AutoTestWin32b]::SetForegroundWindow($script:UserWindow) | Out-Null
+    }
+}
+
+# A recording request of the game (<n>.rec = "<frame folder>|<ms>"): frames of the game window (jpg, ~10 a second) and
+# frames.txt (time of each frame in ms) for the duration; the request is deleted when done (the game waits for it).
+$jpegCodec = [Drawing.Imaging.ImageCodecInfo]::GetImageEncoders() | Where-Object { $_.MimeType -eq 'image/jpeg' }
+$jpegParams = New-Object Drawing.Imaging.EncoderParameters 1
+$jpegParams.Param[0] = New-Object Drawing.Imaging.EncoderParameter ([Drawing.Imaging.Encoder]::Quality), 85L
+function Invoke-Recording([IO.FileInfo]$Req) {
+    $spec = (Get-Content -LiteralPath $Req.FullName -Raw).Trim() -split '\|'
+    $dir = $spec[0]; $ms = [int]$spec[1]
+    New-Item -ItemType Directory -Path $dir -Force | Out-Null
+    # the game waits for it before it plays the effect: the recording has its whole start
+    [IO.File]::WriteAllText((Join-Path $dir 'started'), '')
+    $times = New-Object System.Collections.Generic.List[string]
+    $sw = [Diagnostics.Stopwatch]::StartNew()
+    $n = 0
+    while ($sw.ElapsedMilliseconds -lt $ms) {
+        $t = $sw.ElapsedMilliseconds
+        $bmp = Get-GameBitmap
+        if ($bmp) {
+            try { $bmp.Save((Join-Path $dir ('f{0:000}.jpg' -f $n)), $jpegCodec, $jpegParams) } finally { $bmp.Dispose() }
+            $times.Add("$t"); $n++
+        }
+        $wait = 100 - ($sw.ElapsedMilliseconds - $t)
+        if ($wait -gt 0) { Start-Sleep -Milliseconds $wait }
+    }
+    [IO.File]::WriteAllLines((Join-Path $dir 'frames.txt'), $times)
+}
+
 function Invoke-SnapRequests([string]$Dir) {
     if (-not (Test-Path -LiteralPath $Dir)) { return }
+    foreach ($req in @(Get-ChildItem -LiteralPath $Dir -Filter *.rec -ErrorAction SilentlyContinue | Sort-Object Name)) {
+        try { Invoke-Recording $req } catch { Write-Warn "Recording failed ($($req.Name)): $($_.Exception.Message)" }
+        Remove-Item -LiteralPath $req.FullName -ErrorAction SilentlyContinue
+    }
     foreach ($req in @(Get-ChildItem -LiteralPath $Dir -Filter *.req -ErrorAction SilentlyContinue | Sort-Object Name)) {
         try {
             $target = (Get-Content -LiteralPath $req.FullName -Raw).Trim()
@@ -153,10 +239,27 @@ $definitions = Read-ScenarioDefinitions $paths.Repo
 # -ManualLoad always use an existing save.
 $selectedIds = @($Scenario | Where-Object { $_ } | ForEach-Object { $_ -split ',' } | ForEach-Object { $_.Trim() } | Where-Object { $_ })
 $needNew = $NewCharacter -or $selectedIds.Count -eq 0 -or @($definitions | Where-Object { $_.newCharacter -and $selectedIds -contains $_.id }).Count -gt 0
-$useNewCharacter = $needNew -and -not ($Save -or $ExistingSave -or $ManualLoad)
+# -SlotCharacter (games side by side): the game plays the test character of its slot ("AutoTest Slot<n>", created when missing)
+$useNewCharacter = $needNew -and -not ($Save -or $ExistingSave -or $ManualLoad -or $SlotCharacter)
 if ($needNew -and -not $useNewCharacter -and $selectedIds.Count -gt 0) {
     Write-Warning "Scenarios needing a new character run on an existing save: $(@($definitions | Where-Object { $_.newCharacter -and $selectedIds -contains $_.id } | ForEach-Object { $_.id }) -join ', ')"
 }
+
+# Tools (kind "tool": the effect galleries TE-xx, the investigations TI-xx) run for a long time: only once the user
+# confirmed it - a prompt in an interactive terminal, -ConfirmTools otherwise (never just because the scenarios ran).
+function Confirm-ToolRun([string[]]$Ids, [switch]$Confirmed) {
+    if ($Ids.Count -eq 0 -or $Confirmed) { return $true }
+    $interactive = [Environment]::UserInteractive -and -not [Console]::IsInputRedirected -and $Host.Name -eq 'ConsoleHost'
+    if ($interactive) {
+        $a = Read-Host "Run the tool scenario(s) $($Ids -join ', ') (long, records the game)? [y/N]"
+        return $a -match '^(y|yes)$'
+    }
+    Write-Host "Tool scenario(s) $($Ids -join ', '): not run without the user's confirmation (add -ConfirmTools)." -ForegroundColor Yellow
+    return $false
+}
+
+$toolIds = @($definitions | Where-Object { $_.kind -eq 'tool' -and @($Scenario | ForEach-Object { $_ -split ',' } | ForEach-Object { $_.Trim().ToUpper() }) -contains $_.id } | ForEach-Object { $_.id })
+if (-not $ListScenarios -and -not $ReportFrom -and -not (Confirm-ToolRun $toolIds -Confirmed:$ConfirmTools)) { exit 0 }
 
 if ($ListScenarios) {
     $st = Read-ScenarioStatus $paths.Repo
@@ -190,10 +293,14 @@ else {
     }
 
     # ------------------------------------------------------------------ request
-    $runId = Get-Date -Format 'yyyyMMdd-HHmmss'
+    $runId = (Get-Date -Format 'yyyyMMdd-HHmmss') + $(if ($Slot -ge 2) { "-s$Slot" })
     $outDir = Join-Path $paths.Repo "logs\autotest\$runId"
     New-Item -ItemType Directory -Path (Join-Path $outDir 'screens') -Force | Out-Null
-    $atDir = Join-Path $paths.ModLogs "$TaoistModId\autotest"
+    $atDir = Join-Path $paths.ModLogs ("$TaoistModId\autotest" + $(if ($Slot -ge 2) { "-slot$Slot" }))   # AutoTestEvent.GetAutoTestFolder
+    if ($Slot -ge 2 -and -not (Test-Path -LiteralPath $paths.GameExe)) {
+        Write-Err "Game slot $Slot not found ($($paths.GamePath)): .\scripts\game\new-game-slot.ps1 -Slot $Slot"
+        exit 1
+    }
     New-Item -ItemType Directory -Path $atDir -Force | Out-Null
     $requestFile = Join-Path $atDir 'request.json'
     $stopFile = Join-Path $atDir 'stop.flag'
@@ -208,10 +315,13 @@ else {
         Save         = $Save
         # new character by default (pre-test TP-01); -Save / -ExistingSave / -ManualLoad use an existing save
         NewCharacter = $useNewCharacter
+        SlotCharacter = [bool]$SlotCharacter
+        Window       = $Window
         AutoLoad     = -not $ManualLoad
         Scenarios    = @($Scenario | Where-Object { $_ } | ForEach-Object { $_ -split ',' } | ForEach-Object { $_.Trim() } | Where-Object { $_ })
         StepDelayMs  = $StepDelayMs
         WatchBattles = [bool]$WatchBattles
+        Promo        = [bool]$Promo
     }
     $utf8 = New-Object Text.UTF8Encoding($false)
     Write-Json2File $requestFile $request
@@ -228,10 +338,11 @@ else {
 
     # ------------------------------------------------------------------ backup saves
     # game saves (<game data>\<platform>\CacheData) and the ModLib caches of every mod (mod\<id>\globals|saves)
-    $saveDirs = @(
+    # -NoSaveBackup: the caller backs up / restores (parallel runs share the save folders)
+    $saveDirs = if ($NoSaveBackup) { @() } else { @(
         @(Get-ChildItem -LiteralPath $paths.GameData -Directory -ErrorAction SilentlyContinue | ForEach-Object { Join-Path $_.FullName 'CacheData' })
         @(Get-ChildItem -LiteralPath $paths.ModLogs -Directory -ErrorAction SilentlyContinue | ForEach-Object { Join-Path $_.FullName 'globals'; Join-Path $_.FullName 'saves' })
-    ) | Where-Object { Test-Path -LiteralPath $_ }
+    ) | Where-Object { Test-Path -LiteralPath $_ } }
     $backupDir = Join-Path $outDir 'save-backup'
     function Get-BackupName([string]$Dir) { return ($Dir.Substring($paths.GameData.Length).Trim('\') -replace '[\\/]', '_') }
     $backupCounts = @{}
@@ -242,15 +353,19 @@ else {
         $backupCounts[$sd] = @(Get-ChildItem -LiteralPath $sd -Recurse -File -ErrorAction SilentlyContinue).Count
         Write-Info "Save backup: $sd -> $dest"
     }
-    if ($saveDirs.Count -eq 0) { Write-Warn "No save folder found under $($paths.GameData)" }
+    if ($saveDirs.Count -eq 0 -and -not $NoSaveBackup) { Write-Warn "No save folder found under $($paths.GameData)" }
 
     # ------------------------------------------------------------------ run the game
     $maxDuration = $Timeout + $(if ($WatchBattles) { $WatchMinutes * 60 } else { 0 })
     $runGameArgs = @('-NoProfile', '-ExecutionPolicy', 'Bypass', '-File', (Join-Path $PSScriptRoot 'run-game.ps1'),
-        '-Duration', $maxDuration, '-Until', '"\[AUTOTEST\] finished"')
+        '-Duration', $maxDuration, '-Until', $(if ($Slot -ge 2) { "`"\[AUTOTEST\] finished \[slot $Slot\]`"" } else { '"\[AUTOTEST\] finished:"' }))
     if (Get-GameProcess) { $runGameArgs += '-Restart' }   # the request is read when the game starts
     if (-not $KeepGame) { $runGameArgs += '-StopGame' }
     if ($GamePath) { $runGameArgs += @('-GamePath', "`"$GamePath`"") }
+    # windowed at -Window from the start (Unity registry keys + command line), as the parallel runs; the mod applies it
+    # again at the title screen (request.Window)
+    if (-not $GameArgs -and $Window) { $GameArgs = Set-GameWindow $repo $Window }
+    if ($GameArgs) { $runGameArgs += @('-GameArgs', "`"$GameArgs`"") }
 
     $startTime = Get-Date
     $exitCode = 0
@@ -261,9 +376,12 @@ else {
         $runner = Start-Process -FilePath 'powershell.exe' -ArgumentList $runGameArgs -NoNewWindow -PassThru
         $finishedAt = $null
         $tick = 0
+        $lastUpdate = $null
+        $lastUpdateAt = Get-Date
         while (-not $runner.HasExited) {
             Start-Sleep -Milliseconds 250
             Invoke-SnapRequests $snapDir
+            if (-not $Foreground -and ((Get-Date) - $startTime).TotalMinutes -lt 4) { Push-GameBehind }
             if ((++$tick % 4) -ne 0) { continue }
             if (-not (Test-Path -LiteralPath $resultsFile)) { continue }
             try { $res = Get-Content -LiteralPath $resultsFile -Raw -Encoding UTF8 | ConvertFrom-Json } catch { continue }
@@ -283,6 +401,24 @@ else {
             }
             }
             catch { Write-Warn "progress output: $($_.Exception.Message)" }
+            # watchdog: the runner writes results.json after every step; no write for StallSeconds = the game stopped
+            # running the mod's ticks (e.g. an exception inside the game's TimerMgr stops every timer for good)
+            if ("$($res.updatedAt)" -ne $lastUpdate) { $lastUpdate = "$($res.updatedAt)"; $lastUpdateAt = Get-Date }
+            elseif ($res.status -eq 'RUNNING' -and $res.phase -ne 'Watch' -and $StallSeconds -gt 0 -and
+                ((Get-Date) - $lastUpdateAt).TotalSeconds -ge $StallSeconds) {
+                $cur = @($res.scenarios) | Where-Object { $_.status -eq 'RUNNING' } | Select-Object -Last 1
+                $lastCheck = if ($cur) { @($cur.checks) | Select-Object -Last 1 } else { $null }
+                $msg = "stalled: no progress for $StallSeconds s (last: $(if ($lastCheck) { $lastCheck.step } else { $res.phase })) - the game stopped running the mod (see Player.log)"
+                Write-Err $msg
+                try { Save-GameScreenshot (Join-Path $outDir 'screens\stalled.png') | Out-Null } catch { }
+                $res.status = 'ERROR'
+                if ($cur) { $cur.status = 'ERROR'; $cur.error = $msg; $cur.endedAt = (Get-Date).ToString('s') }
+                [IO.File]::WriteAllText($resultsFile, ($res | ConvertTo-Json -Depth 30), $utf8)
+                $status = 'ERROR'
+                Stop-Game
+                if (-not $runner.WaitForExit(30000)) { Stop-Process -Id $runner.Id -Force -ErrorAction SilentlyContinue }
+                break
+            }
             if ($res.phase -eq 'Watch') {
                 if (-not $watchStart) {
                     $watchStart = Get-Date
@@ -357,8 +493,11 @@ $results = @(if ($res) { $res.scenarios })
 $timelineFile = Join-Path $outDir 'game-run\timeline.log'
 if ($res -and (Test-Path -LiteralPath $timelineFile)) {
     $errMark = [string][char]0x3010 + 'Error' + [char]0x3011
+    # games side by side share the mod logs: only the log of this game's character (<mod>\<player id>_debug-<day>.log)
+    $logTag = '\[mod-[^\]]+\]'
+    if ($SlotCharacter -and "$($res.player)" -match '\(([^)]+)\)\s*$') { $logTag = '\[mod-[^\]]*-' + [regex]::Escape($Matches[1]) + '_debug[^\]]*\]' }
     $logErrors = @(Get-Content -LiteralPath $timelineFile -Encoding UTF8 | ForEach-Object {
-        if ($_ -match '\[mod-[^\]]+\] \[(\d\d:\d\d:\d\d\.\d{3})\] (.*)$' -and $Matches[2].Contains($errMark)) {
+        if ($_ -match ($logTag + ' \[(\d\d:\d\d:\d\d\.\d{3})\] (.*)$') -and $Matches[2].Contains($errMark)) {
             [pscustomobject]@{ Time = [TimeSpan]::Parse($Matches[1]); Text = $Matches[2].Replace($errMark, '').Trim() }
         }
     })
@@ -383,7 +522,25 @@ if ($res -and (Test-Path -LiteralPath $timelineFile)) {
     }
 }
 $executedIds = @($results | ForEach-Object { ($_.id -split '#')[0] })
-$notRun = @($definitions | Where-Object { $_.kind -ne 'manual' -and ($_.kind -ne 'watch' -or $WatchBattles) -and $executedIds -notcontains $_.id -and ($request.Scenarios.Count -eq 0 -or $request.Scenarios -contains $_.id) })
+# effect galleries (TE-xx): their pictures to docs/Effects (in git)
+if ($executedIds | Where-Object { $_ -like 'TE-*' }) {
+    # a game slot (parallel galleries): in a background process, so the slot starts its next batch at once (the
+    # collects of several runs lock index.json); otherwise here
+    if ($Slot -ge 2) {
+        Start-Process -FilePath 'powershell.exe' -WindowStyle Hidden -ArgumentList @('-NoProfile', '-ExecutionPolicy', 'Bypass', '-File',
+            "`"$(Join-Path $PSScriptRoot 'collect-effects.ps1')`"", '-Run', "`"$outDir`"") | Out-Null
+        Write-Host "collect-effects: started in the background ($outDir)"
+    }
+    else {
+        try { & (Join-Path $PSScriptRoot 'collect-effects.ps1') -Run $outDir } catch { Write-Host "collect-effects: $_" -ForegroundColor Yellow }
+    }
+}
+# promotion pictures ("promo" of scenarios.json) to ModProject/SteamImg: only from a promotion run (run-promo.ps1),
+# never from the test runs (their screenshots carry check panels and test states)
+if ($Promo) {
+    try { & (Join-Path $PSScriptRoot 'collect-promo.ps1') -Run $outDir } catch { Write-Host "collect-promo: $_" -ForegroundColor Yellow }
+}
+$notRun = @($definitions | Where-Object { $_.kind -ne 'manual' -and ($_.kind -ne 'watch' -or $WatchBattles) -and ($_.kind -ne 'tool' -or $request.Scenarios -contains $_.id) -and $executedIds -notcontains $_.id -and ($request.Scenarios.Count -eq 0 -or $request.Scenarios -contains $_.id) })
 $manual = @($definitions | Where-Object { $_.kind -eq 'manual' })
 $count = [ordered]@{
     pass   = @($results | Where-Object status -eq 'PASS').Count
@@ -408,6 +565,10 @@ if ($res) {
 }
 
 # ------------------------------------------------------------------ OK/NG status per id
+# read-modify-write under a lock shared by the runs of every game slot (run-autotest-parallel.ps1)
+$statusLock = New-Object System.Threading.Mutex($false, 'Global\ggbh-autotest-scenario-status')
+try { [void]$statusLock.WaitOne(120000) } catch [System.Threading.AbandonedMutexException] { }
+try {
 $status = Read-ScenarioStatus $paths.Repo
 $evidence = "test-viewer/index.html#tab=auto&run=$runId"
 foreach ($grp in ($results | Group-Object { ($_.id -split '#')[0] })) {
@@ -429,6 +590,8 @@ foreach ($d in $notRun) {
     $e.result = 'NOT RUN'; $e.lastRun = (Get-Date).ToString('s'); $e.evidence = $evidence; $e.tester = 'autotest'
 }
 Save-ScenarioStatus $paths.Repo $status
+}
+finally { try { $statusLock.ReleaseMutex() } catch { } ; $statusLock.Dispose() }
 $ngIds = @($status.Values | Where-Object { $_.result -eq 'NG' } | ForEach-Object { $_.id })
 
 $summary = [ordered]@{
@@ -456,6 +619,7 @@ if ($exitCode -eq 2) { Write-Err 'The runner did not finish. Check results.json 
 if (-not $Scenario -and $exitCode -eq 0 -and $count.notRun -eq 0 -and $count.pass -gt 0) {
     & powershell -NoProfile -ExecutionPolicy Bypass -File (Join-Path $paths.Repo 'scripts\pin-test-run.ps1') -Run $runId -Auto -Note 'full run, all passed'
 }
-& powershell -NoProfile -ExecutionPolicy Bypass -File (Join-Path $paths.Repo 'scripts\update-test-viewer.ps1')
+# -NoViewerUpdate: the caller updates the viewer once (run-autotest-parallel.ps1)
+if (-not $NoViewerUpdate) { & powershell -NoProfile -ExecutionPolicy Bypass -File (Join-Path $paths.Repo 'scripts\update-test-viewer.ps1') }
 Write-Info "Results:       $($summary.viewer)  (run $runId, evidence in $outDir)"
 exit $exitCode

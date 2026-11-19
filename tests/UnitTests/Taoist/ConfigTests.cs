@@ -168,6 +168,7 @@ namespace UnitTests.Taoist
                 Assert.IsTrue(s.Steps.Count > 0, $"{s.Id} has steps");
                 var kind = defs.First(x => x.Id == s.Id).Kind;
                 Assert.AreEqual(kind == "watch", s.Kind == ScenarioKind.Watch, $"{s.Id} kind");
+                Assert.AreEqual(kind == "tool", s.Kind == ScenarioKind.Tool, $"{s.Id} kind (tool)");
                 Assert.AreEqual(kind == "watch", s.Trigger != null, $"{s.Id} trigger");
             }
         }

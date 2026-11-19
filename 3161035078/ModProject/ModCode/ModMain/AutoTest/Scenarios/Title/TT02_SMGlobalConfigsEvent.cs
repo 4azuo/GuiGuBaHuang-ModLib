@@ -60,9 +60,20 @@ namespace MOD_nE7UL2.AutoTest.Scenarios.Title
                     c.AssertEqual(10, toggles.Count, "toggles: encounters, bank loans, buy orders, bounties, seclusion, forced seclusion, family, same-sex, descendant, storylines");
                     var others = new[] { "smcfgs160", "smcfgs165", "smcfgs166" }.Select(k => GameTool.LS(k)).ToList();
                     c.AssertEqual(3, Window.Items.OfType<ModLib.Object.UIItemText>().Count(x => others.Contains(x.GetFormat() ?? string.Empty)), "child surname select, encounter and seclusion rate sliders");
-                    foreach (var t in toggles) t.MainComponent.Set(true);
-                    c.AssertEqual(score, SMGlobalConfigsEvent.CalSMTotalScore(), "turning them on/off does not change the difficulty score");
+                    // each toggle has its points (2026-11-18): No family +2000 alone, then Continue as a descendant -10000
+                    // only with the family system on; No bounties -2000 (easier)
+                    var family = (ModLib.Object.UIItemComposite)Window.Items.OfType<ModLib.Object.UIItemText>().First(x => x.GetFormat() == GameTool.LS("smcfgs158")).Parent;
+                    var bounty = (ModLib.Object.UIItemComposite)Window.Items.OfType<ModLib.Object.UIItemText>().First(x => x.GetFormat() == GameTool.LS("smcfgs154")).Parent;
                     foreach (var t in toggles) t.MainComponent.Set(false);
+                    var off = SMGlobalConfigsEvent.CalSMTotalScore();
+                    family.MainComponent.Set(true);
+                    c.AssertEqual(off + 2000, SMGlobalConfigsEvent.CalSMTotalScore(), "No family system: +2000 P");
+                    family.MainComponent.Set(false);
+                    bounty.MainComponent.Set(true);
+                    c.AssertEqual(off - 2000, SMGlobalConfigsEvent.CalSMTotalScore(), "No bounties: -2000 P (easier)");
+                    bounty.MainComponent.Set(false);
+                    c.AssertEqual(off, SMGlobalConfigsEvent.CalSMTotalScore(), "all off again: the score of before");
+                    c.Info($"score {score} with the saved toggles, {off} with all off");
                 })
                 .Step("page 3 shown", c => c.Info($"page {Window.CurrentPageIndex + 1}"), 1000) // screenshot of page 3
                 .Step("back to page 2", c => Window.PrevPage())

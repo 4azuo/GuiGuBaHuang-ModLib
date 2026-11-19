@@ -37,6 +37,8 @@ namespace MOD_nE7UL2.Story
         {
             new LineA_ColdSword(), new LineB_OldHuangDebt(), new LineC_ExplodingFurnace(),
             new LineD_SwornBrothers(), new LineE_HerbGarden(), new LineF_RedLotus(),
+            new LineG_HundredYearWager(), new LineH_RoadsideInn(), new LineI_SealedTomb(),
+            new LineJ_CursedDisciple(), new LineK_ThunderRemnant(), new LineL_HeartDemon(),
         };
 
         public Dictionary<string, StoryState> Lines { get; set; } = new Dictionary<string, StoryState>();
@@ -48,6 +50,14 @@ namespace MOD_nE7UL2.Story
         /// <summary>Autotests: no line opens by itself (the story tests open theirs; other tests are not interrupted).</summary>
         [JsonIgnore]
         public static bool NoAutoOpen { get; set; }
+
+        /// <summary>Tests only: the acts of the long lines (G-L) open without waiting for their years / realm (StoryLine.Gate).</summary>
+        [JsonIgnore]
+        public static bool NoGates { get; set; }
+
+        /// <summary>The last error of a step (the story tests report it).</summary>
+        [JsonIgnore]
+        public static string LastError { get; set; }
 
         public static bool Disabled => SMLocalConfigsEvent.Instance?.Configs?.NoStory ?? false;
         private static WorldUnitBase Player => g.world.playerUnit;
@@ -110,6 +120,7 @@ namespace MOD_nE7UL2.Story
             if (line == null || s.Open || s.Closed || !Cast(line, s, forceCreate))
                 return false;
             s.Open = true;
+            s.Set("opened", Now);   // the long lines count their years from here (StoryLine.Gate)
             line.OnCast(s);
             StoryLine.Act(s, 0);
             DebugHelper.WriteLine($"Story {id}: opened ({string.Join(", ", s.Roles.Select(x => $"{x.Key}={x.Value}"))})");
@@ -223,7 +234,7 @@ namespace MOD_nE7UL2.Story
                 if (s.Battle != null || s.NextMonth > Now || (soonOnly && !s.Soon)) continue;
                 var key = $"{s.Act}.{s.Step}";
                 try { line.Run(s); }
-                catch (Exception ex) { DebugHelper.WriteLine($"Story {s.Id}{key}: {ex}"); s.Soon = false; }
+                catch (Exception ex) { DebugHelper.WriteLine($"Story {s.Id}{key}: {ex}"); LastError = $"Story {s.Id}{key}: {ex.GetType().Name}: {ex.Message} {ex.StackTrace?.Split('\n').FirstOrDefault()?.Trim()}"; s.Soon = false; }
                 // the step did not move (a waiting step, or its drama is open): checked again at the next month tick
                 // only; the answer moves it (Next / Act sets Soon). A drama closed without an answer is thus not
                 // reopened every second.

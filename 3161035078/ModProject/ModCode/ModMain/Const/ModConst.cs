@@ -5,8 +5,8 @@
     /// </summary>
     public static class ModConst
     {
-        public const string TAOIST_VERSION = "5.5.44";
-        public const string MODLIB_REQUIRED_VERSION = "2.2.31";
+        public const string TAOIST_VERSION = "5.5.45";
+        public const string MODLIB_REQUIRED_VERSION = "2.2.32";
 
         //Events
         public const string DEBUG_EVENT = "DEBUG";
@@ -52,6 +52,9 @@
         public const string NEW_GAME_EVENT = "NewGameEvent";
         public const string ANIMA_WEAPON_EVENT = "AnimaWeaponEvent";
         public const string TAOIST_LOG_EVENT = "TaoistLogEvent";
+        public const string DAMAGE_INFO_EVENT = "DamageInfoEvent";
+        public const string SM_SCORE_EVENT = "SMScoreEvent";
+        public const string SM_SCORE_RECORDS_EVENT = "SMScoreRecordsEvent";
         public const string ENCOUNTER_EVENT = "EncounterEvent";
         public const string BANK_LOAN_EVENT = "BankLoanEvent";
         public const string WANTED_EVENT = "WantedEvent";

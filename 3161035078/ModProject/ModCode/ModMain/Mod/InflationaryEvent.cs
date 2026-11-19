@@ -33,10 +33,15 @@ namespace MOD_nE7UL2.Mod
             base.OnLoadGame();
             if (WorldPrice == -1)
             {
-                WorldPrice = SMLocalConfigsEvent.Instance.Calculate(EconomyHelper.GetWorldPrice(), SMLocalConfigsEvent.Instance.Configs.AddItemValueRate).Parse<int>();
+                // first load of the mod on this save (new save, or the mod added to a running one); the S&M rates of the
+                // save when they are loaded, none otherwise (was a NullReferenceException when they were not)
+                var sm = SMLocalConfigsEvent.Instance?.Configs;
+                var price = (double)EconomyHelper.GetWorldPrice();
+                WorldPrice = (price + price * (sm?.AddItemValueRate ?? 0f)).Parse<int>();
+                var rate = Configs?.InflationaryRate ?? 1d;
                 for (int i = 0; i < GameHelper.GetGameYear(); i++)
                 {
-                    WorldPrice = (WorldPrice * SMLocalConfigsEvent.Instance.Calculate(Configs.InflationaryRate, SMLocalConfigsEvent.Instance.Configs.AddInflationRate)).Parse<int>();
+                    WorldPrice = (WorldPrice * (rate + rate * (sm?.AddInflationRate ?? 0f))).Parse<int>();
                 }
             }
             EconomyHelper.SetWorldPrice(WorldPrice);

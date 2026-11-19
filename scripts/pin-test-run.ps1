@@ -68,7 +68,7 @@ function Get-RunInfo($dir) {
     [pscustomobject]$info
 }
 
-$dirs = @(Get-ChildItem -LiteralPath $root -Directory -ErrorAction SilentlyContinue | Where-Object { $_.Name -match '^\d{8}-\d{6}' } | Sort-Object Name)
+$dirs = @(Get-ChildItem -LiteralPath $root -Directory -ErrorAction SilentlyContinue | Where-Object { $_.Name -match '^\d{8}-\d{6}(-s\d+)?' } | Sort-Object Name)
 if ($dirs.Count -eq 0) { Write-Host "No runs in $root"; exit 0 }
 $runs = @($dirs | ForEach-Object { Get-RunInfo $_ })
 

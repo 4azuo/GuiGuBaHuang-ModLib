@@ -192,17 +192,17 @@
 	{
 		"id": -1000002038,
 		"key": "trainer038",
-		"en|ch|tc|kr": "Thuộc tính chung:"
+		"en|ch|tc|kr": "[icon:zhandouxiaoguo] Thuộc tính chung:"
 	},
 	{
 		"id": -1000002039,
 		"key": "trainer039",
-		"en|ch|tc|kr": "Võ thuật/Tâm linh:"
+		"en|ch|tc|kr": "[icon:jianfa] Võ thuật/Tâm linh:"
 	},
 	{
 		"id": -1000002040,
 		"key": "trainer040",
-		"en|ch|tc|kr": "Nghề thủ công:"
+		"en|ch|tc|kr": "[icon:lianqi] Nghề thủ công:"
 	},
 	{
 		"id": -1000002041,
@@ -247,32 +247,32 @@
 	{
 		"id": -1000002049,
 		"key": "trainer049",
-		"en|ch|tc|kr": "Giả kim thuật: {0:#,##0}"
+		"en|ch|tc|kr": "[icon:liandan] Giả kim thuật: {0:#,##0}"
 	},
 	{
 		"id": -1000002050,
 		"key": "trainer050",
-		"en|ch|tc|kr": "{0:#,##0} :Rèn"
+		"en|ch|tc|kr": "{0:#,##0} :Rèn [icon:lianqi]"
 	},
 	{
 		"id": -1000002051,
 		"key": "trainer051",
-		"en|ch|tc|kr": "Phong Thủy: {0:#,##0}"
+		"en|ch|tc|kr": "[icon:fengshui] Phong Thủy: {0:#,##0}"
 	},
 	{
 		"id": -1000002052,
 		"key": "trainer052",
-		"en|ch|tc|kr": "{0:#,##0} :Bùa"
+		"en|ch|tc|kr": "{0:#,##0} :Bùa [icon:huafu]"
 	},
 	{
 		"id": -1000002053,
 		"key": "trainer053",
-		"en|ch|tc|kr": "Thảo mộc học: {0:#,##0}"
+		"en|ch|tc|kr": "[icon:yaocai] Thảo mộc học: {0:#,##0}"
 	},
 	{
 		"id": -1000002054,
 		"key": "trainer054",
-		"en|ch|tc|kr": "{0:#,##0} :Khai thác"
+		"en|ch|tc|kr": "{0:#,##0} :Khai thác [icon:kuangcai]"
 	},
 	{
 		"id": -1000002055,
@@ -302,162 +302,162 @@
 	{
 		"id": "-1000002060",
 		"key": "trainer_lbl_hp",
-		"en|ch|tc|kr": "Sinh lực: {0}/{1}"
+		"en|ch|tc|kr": "[icon:jiankang] Sinh lực: {0}/{1}"
 	},
 	{
 		"id": "-1000002061",
 		"key": "trainer_lbl_money",
-		"en|ch|tc|kr": "{0} :Tiền"
+		"en|ch|tc|kr": "{0} :Tiền [icon:zm_lingshi]"
 	},
 	{
 		"id": "-1000002062",
 		"key": "trainer_lbl_mp",
-		"en|ch|tc|kr": "Linh lực: {0}/{1}"
+		"en|ch|tc|kr": "[icon:lingli] Linh lực: {0}/{1}"
 	},
 	{
 		"id": "-1000002063",
 		"key": "trainer_lbl_degree",
-		"en|ch|tc|kr": "{0} :Lệnh thành chủ"
+		"en|ch|tc|kr": "{0} :Lệnh thành chủ [icon:zm_mingyu]"
 	},
 	{
 		"id": "-1000002064",
 		"key": "trainer_lbl_sp",
-		"en|ch|tc|kr": "Niệm lực: {0}/{1}"
+		"en|ch|tc|kr": "[icon:nianli] Niệm lực: {0}/{1}"
 	},
 	{
 		"id": "-1000002065",
 		"key": "trainer_lbl_contribution",
-		"en|ch|tc|kr": "{0} :Cống hiến"
+		"en|ch|tc|kr": "{0} :Cống hiến [icon:zm_zhongchengdu]"
 	},
 	{
 		"id": "-1000002066",
 		"key": "trainer_lbl_def",
-		"en|ch|tc|kr": "{0} :Thủ"
+		"en|ch|tc|kr": "{0} :Thủ [icon:fangyu]"
 	},
 	{
 		"id": "-1000002067",
 		"key": "trainer_lbl_mood",
-		"en|ch|tc|kr": "Tâm trạng: {0}/{1}"
+		"en|ch|tc|kr": "[icon:xinqing] Tâm trạng: {0}/{1}"
 	},
 	{
 		"id": "-1000002068",
 		"key": "trainer_lbl_stamina",
-		"en|ch|tc|kr": "{0}/{1} :Thể lực"
+		"en|ch|tc|kr": "{0}/{1} :Thể lực [icon:jingli]"
 	},
 	{
 		"id": "-1000002069",
 		"key": "trainer_lbl_health",
-		"en|ch|tc|kr": "Sức khỏe: {0}/{1}"
+		"en|ch|tc|kr": "[icon:huifutili] Sức khỏe: {0}/{1}"
 	},
 	{
 		"id": "-1000002070",
 		"key": "trainer_lbl_life",
-		"en|ch|tc|kr": "{0}/{1} :Thọ nguyên"
+		"en|ch|tc|kr": "{0}/{1} :Thọ nguyên [icon:shouming]"
 	},
 	{
 		"id": "-1000002071",
 		"key": "trainer_lbl_travel_speed",
-		"en|ch|tc|kr": "Tốc độ di chuyển: {0}"
+		"en|ch|tc|kr": "[icon:yisu] Tốc độ di chuyển: {0}"
 	},
 	{
 		"id": "-1000002072",
 		"key": "trainer_lbl_view_range",
-		"en|ch|tc|kr": "{0} :Tầm nhìn"
+		"en|ch|tc|kr": "{0} :Tầm nhìn [icon:fanwei]"
 	},
 	{
 		"id": "-1000002073",
 		"key": "trainer_lbl_battle_speed",
-		"en|ch|tc|kr": "Tốc độ chiến đấu: {0}"
+		"en|ch|tc|kr": "[icon:gongsuD] Tốc độ chiến đấu: {0}"
 	},
 	{
 		"id": "-1000002074",
 		"key": "trainer_lbl_ability",
-		"en|ch|tc|kr": "({1}) {0} :Năng lực"
+		"en|ch|tc|kr": "({1}) {0} :Năng lực [icon:jineng]"
 	},
 	{
 		"id": "-1000002075",
 		"key": "trainer_lbl_luck",
-		"en|ch|tc|kr": "Khí vận: {0}"
+		"en|ch|tc|kr": "[icon:xingyun] Khí vận: {0}"
 	},
 	{
 		"id": "-1000002076",
 		"key": "trainer_lbl_insight",
-		"en|ch|tc|kr": "{0} :Ngộ tính"
+		"en|ch|tc|kr": "{0} :Ngộ tính [icon:wuxing]"
 	},
 	{
 		"id": "-1000002077",
 		"key": "trainer_lbl_exp",
-		"en|ch|tc|kr": "Kinh nghiệm: {0}/{1}"
+		"en|ch|tc|kr": "[icon:daodian] Kinh nghiệm: {0}/{1}"
 	},
 	{
 		"id": "-1000002078",
 		"key": "trainer_lbl_reputation",
-		"en|ch|tc|kr": "{0} :Danh vọng"
+		"en|ch|tc|kr": "{0} :Danh vọng [icon:shengwang]"
 	},
 	{
 		"id": "-1000002079",
 		"key": "trainer_lbl_grade",
-		"en|ch|tc|kr": "Cảnh giới: {0} {1} ― {2}"
+		"en|ch|tc|kr": "[icon:daoli] Cảnh giới: {0} {1} ― {2}"
 	},
 	{
 		"id": "-1000002080",
 		"key": "trainer_lbl_fire",
-		"en|ch|tc|kr": "Hỏa: {0}"
+		"en|ch|tc|kr": "[icon:huolinggen] Hỏa: {0}"
 	},
 	{
 		"id": "-1000002081",
 		"key": "trainer_lbl_blade",
-		"en|ch|tc|kr": "{0} :Đao"
+		"en|ch|tc|kr": "{0} :Đao [icon:daofa]"
 	},
 	{
 		"id": "-1000002082",
 		"key": "trainer_lbl_water",
-		"en|ch|tc|kr": "Thủy: {0}"
+		"en|ch|tc|kr": "[icon:shuilinggen] Thủy: {0}"
 	},
 	{
 		"id": "-1000002083",
 		"key": "trainer_lbl_spear",
-		"en|ch|tc|kr": "{0} :Thương"
+		"en|ch|tc|kr": "{0} :Thương [icon:qiangfa]"
 	},
 	{
 		"id": "-1000002084",
 		"key": "trainer_lbl_lightning",
-		"en|ch|tc|kr": "Lôi: {0}"
+		"en|ch|tc|kr": "[icon:leilinggen] Lôi: {0}"
 	},
 	{
 		"id": "-1000002085",
 		"key": "trainer_lbl_sword",
-		"en|ch|tc|kr": "{0} :Kiếm"
+		"en|ch|tc|kr": "{0} :Kiếm [icon:jianfa]"
 	},
 	{
 		"id": "-1000002086",
 		"key": "trainer_lbl_wind",
-		"en|ch|tc|kr": "Phong: {0}"
+		"en|ch|tc|kr": "[icon:fenglinggen] Phong: {0}"
 	},
 	{
 		"id": "-1000002087",
 		"key": "trainer_lbl_fist",
-		"en|ch|tc|kr": "{0} :Quyền"
+		"en|ch|tc|kr": "{0} :Quyền [icon:quanfa]"
 	},
 	{
 		"id": "-1000002088",
 		"key": "trainer_lbl_earth",
-		"en|ch|tc|kr": "Thổ: {0}"
+		"en|ch|tc|kr": "[icon:tulinggen] Thổ: {0}"
 	},
 	{
 		"id": "-1000002089",
 		"key": "trainer_lbl_palm",
-		"en|ch|tc|kr": "{0} :Chưởng"
+		"en|ch|tc|kr": "{0} :Chưởng [icon:zhangfa]"
 	},
 	{
 		"id": "-1000002090",
 		"key": "trainer_lbl_wood",
-		"en|ch|tc|kr": "Mộc: {0}"
+		"en|ch|tc|kr": "[icon:mulinggen] Mộc: {0}"
 	},
 	{
 		"id": "-1000002091",
 		"key": "trainer_lbl_finger",
-		"en|ch|tc|kr": "{0} :Chỉ"
+		"en|ch|tc|kr": "{0} :Chỉ [icon:zhifa]"
 	},
 	{
 		"id": "-1000002092",

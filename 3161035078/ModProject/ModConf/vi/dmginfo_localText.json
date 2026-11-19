@@ -1,0 +1,367 @@
+[
+	{
+		"id": -1000009000,
+		"key": "dmginfo_title",
+		"en|ch|tc|kr": "Tính sát thương"
+	},
+	{
+		"id": -1000009001,
+		"key": "dmginfo_button",
+		"en|ch|tc|kr": "Tính sát thương"
+	},
+	{
+		"id": -1000009002,
+		"key": "dmginfo_hotkey",
+		"en|ch|tc|kr": "Tính sát thương"
+	},
+	{
+		"id": -1000009003,
+		"key": "dmginfo_monster",
+		"en|ch|tc|kr": "Yêu thú (cấp {0})"
+	},
+	{
+		"id": -1000009004,
+		"key": "dmginfo_target",
+		"en|ch|tc|kr": "Mục tiêu: {0} (cấp {1})"
+	},
+	{
+		"id": -1000009005,
+		"key": "dmginfo_target_self",
+		"en|ch|tc|kr": "Mục tiêu: một tu sĩ có chỉ số như bạn (ngoài trận, hoặc chưa đánh ai)"
+	},
+	{
+		"id": -1000009006,
+		"key": "dmginfo_attack",
+		"en|ch|tc|kr": "Tấn công của bạn"
+	},
+	{
+		"id": -1000009007,
+		"key": "dmginfo_defense",
+		"en|ch|tc|kr": "Phòng thủ của bạn"
+	},
+	{
+		"id": -1000009008,
+		"key": "dmginfo_atk",
+		"en|ch|tc|kr": "Công: {0}"
+	},
+	{
+		"id": -1000009009,
+		"key": "dmginfo_def",
+		"en|ch|tc|kr": "Thủ: {0}"
+	},
+	{
+		"id": -1000009010,
+		"key": "dmginfo_hp",
+		"en|ch|tc|kr": "Máu: {0} / {1}"
+	},
+	{
+		"id": -1000009011,
+		"key": "dmginfo_time",
+		"en|ch|tc|kr": "Hệ số theo thời gian trận: x{0}"
+	},
+	{
+		"id": -1000009012,
+		"key": "dmginfo_skill",
+		"en|ch|tc|kr": "Cộng công pháp ({0}): +{1}"
+	},
+	{
+		"id": -1000009013,
+		"key": "dmginfo_basis",
+		"en|ch|tc|kr": "Cộng căn cơ ({0} {1}): +{2}"
+	},
+	{
+		"id": -1000009014,
+		"key": "dmginfo_mp",
+		"en|ch|tc|kr": "Cộng linh lực ({0}% MP): +{1}"
+	},
+	{
+		"id": -1000009015,
+		"key": "dmginfo_sp",
+		"en|ch|tc|kr": "Cộng niệm lực ({0}% SP, Kim Đan trở lên): +{1}"
+	},
+	{
+		"id": -1000009016,
+		"key": "dmginfo_dp",
+		"en|ch|tc|kr": "Cộng đạo lực ({0}% DP, Ngộ Đạo trở lên): +{1}"
+	},
+	{
+		"id": -1000009017,
+		"key": "dmginfo_crit",
+		"en|ch|tc|kr": "Siêu chí mạng: {0}% tỉ lệ, x{1} sát thương"
+	},
+	{
+		"id": -1000009018,
+		"key": "dmginfo_kill",
+		"en|ch|tc|kr": "Giết ngay (yêu thú): {0}%"
+	},
+	{
+		"id": -1000009019,
+		"key": "dmginfo_mindmg",
+		"en|ch|tc|kr": "Sát thương tối thiểu: {0} x cấp mục tiêu {1} = {2}"
+	},
+	{
+		"id": -1000009020,
+		"key": "dmginfo_steal",
+		"en|ch|tc|kr": "Hút: máu {0}, MP {1}, SP {2}"
+	},
+	{
+		"id": -1000009021,
+		"key": "dmginfo_evade",
+		"en|ch|tc|kr": "Né: {0}% (trần {1}% + thân pháp {2}%)"
+	},
+	{
+		"id": -1000009022,
+		"key": "dmginfo_block",
+		"en|ch|tc|kr": "Đỡ: {0}% tỉ lệ (trần {1}%), -{2} sát thương"
+	},
+	{
+		"id": -1000009023,
+		"key": "dmginfo_basisdef",
+		"en|ch|tc|kr": "Thủ căn cơ ({0} {1}): -{2}"
+	},
+	{
+		"id": -1000009024,
+		"key": "dmginfo_mpblock",
+		"en|ch|tc|kr": "Khiên linh lực: tối đa {0} lần, mỗi lần -{1} (hệ số {2})"
+	},
+	{
+		"id": -1000009025,
+		"key": "dmginfo_spblock",
+		"en|ch|tc|kr": "Khiên niệm lực (Kim Đan trở lên): -{0}"
+	},
+	{
+		"id": -1000009026,
+		"key": "dmginfo_dpblock",
+		"en|ch|tc|kr": "Khiên đạo lực (Ngộ Đạo trở lên): -{0}"
+	},
+	{
+		"id": -1000009027,
+		"key": "dmginfo_foe",
+		"en|ch|tc|kr": "Công {0}, thủ {1}, máu {2} / {3}, né {4}%, đỡ {5}%"
+	},
+	{
+		"id": -1000009028,
+		"key": "dmginfo_example_dealt",
+		"en|ch|tc|kr": "Đòn mẫu bạn gây ra (gốc = Công, không ngẫu nhiên):"
+	},
+	{
+		"id": -1000009029,
+		"key": "dmginfo_example_crit",
+		"en|ch|tc|kr": "Khi siêu chí mạng:"
+	},
+	{
+		"id": -1000009030,
+		"key": "dmginfo_example_taken",
+		"en|ch|tc|kr": "Đòn mẫu bạn nhận (gốc = Công mục tiêu):"
+	},
+	{
+		"id": -1000009031,
+		"key": "dmginfo_last",
+		"en|ch|tc|kr": "Đòn gần nhất của trận này"
+	},
+	{
+		"id": -1000009032,
+		"key": "dmginfo_last_dealt",
+		"en|ch|tc|kr": "Gây ra:"
+	},
+	{
+		"id": -1000009033,
+		"key": "dmginfo_last_taken",
+		"en|ch|tc|kr": "Nhận:"
+	},
+	{
+		"id": -1000009034,
+		"key": "dmginfo_none",
+		"en|ch|tc|kr": "chưa có"
+	},
+	{
+		"id": -1000009035,
+		"key": "dmginfo_paused",
+		"en|ch|tc|kr": "Trận đấu tạm dừng khi cửa sổ này mở."
+	},
+	{
+		"id": -1000009036,
+		"key": "dmginfo_step_base",
+		"en|ch|tc|kr": "gốc"
+	},
+	{
+		"id": -1000009037,
+		"key": "dmginfo_step_time",
+		"en|ch|tc|kr": "+thời gian"
+	},
+	{
+		"id": -1000009038,
+		"key": "dmginfo_step_skill",
+		"en|ch|tc|kr": "+công pháp"
+	},
+	{
+		"id": -1000009039,
+		"key": "dmginfo_step_basis",
+		"en|ch|tc|kr": "+căn cơ"
+	},
+	{
+		"id": -1000009040,
+		"key": "dmginfo_step_skillbasis",
+		"en|ch|tc|kr": "+công pháp/căn cơ"
+	},
+	{
+		"id": -1000009041,
+		"key": "dmginfo_step_mp",
+		"en|ch|tc|kr": "+MP"
+	},
+	{
+		"id": -1000009042,
+		"key": "dmginfo_step_sp",
+		"en|ch|tc|kr": "+SP"
+	},
+	{
+		"id": -1000009043,
+		"key": "dmginfo_step_dp",
+		"en|ch|tc|kr": "+DP"
+	},
+	{
+		"id": -1000009044,
+		"key": "dmginfo_step_crit",
+		"en|ch|tc|kr": "chí mạng"
+	},
+	{
+		"id": -1000009045,
+		"key": "dmginfo_step_block",
+		"en|ch|tc|kr": "đỡ"
+	},
+	{
+		"id": -1000009046,
+		"key": "dmginfo_step_basisdef",
+		"en|ch|tc|kr": "-thủ căn cơ"
+	},
+	{
+		"id": -1000009047,
+		"key": "dmginfo_step_mpblock",
+		"en|ch|tc|kr": "-khiên MP"
+	},
+	{
+		"id": -1000009048,
+		"key": "dmginfo_step_spblock",
+		"en|ch|tc|kr": "-khiên SP"
+	},
+	{
+		"id": -1000009049,
+		"key": "dmginfo_step_dpblock",
+		"en|ch|tc|kr": "-khiên DP"
+	},
+	{
+		"id": -1000009050,
+		"key": "dmginfo_step_min",
+		"en|ch|tc|kr": "cuối"
+	},
+	{
+		"id": -1000009051,
+		"key": "dmginfo_step_nullified",
+		"en|ch|tc|kr": "vô hiệu"
+	},
+	{
+		"id": -1000009052,
+		"key": "dmginfo_step_kill",
+		"en|ch|tc|kr": "giết ngay"
+	},
+	{
+		"id": -1000009053,
+		"key": "dmginfo_step_evaded",
+		"en|ch|tc|kr": "né"
+	},
+	{
+		"id": -1000009054,
+		"key": "dmginfo_b_blade",
+		"en|ch|tc|kr": "Đao"
+	},
+	{
+		"id": -1000009055,
+		"key": "dmginfo_b_spear",
+		"en|ch|tc|kr": "Thương"
+	},
+	{
+		"id": -1000009056,
+		"key": "dmginfo_b_sword",
+		"en|ch|tc|kr": "Kiếm"
+	},
+	{
+		"id": -1000009057,
+		"key": "dmginfo_b_fist",
+		"en|ch|tc|kr": "Quyền"
+	},
+	{
+		"id": -1000009058,
+		"key": "dmginfo_b_palm",
+		"en|ch|tc|kr": "Chưởng"
+	},
+	{
+		"id": -1000009059,
+		"key": "dmginfo_b_finger",
+		"en|ch|tc|kr": "Chỉ"
+	},
+	{
+		"id": -1000009060,
+		"key": "dmginfo_b_fire",
+		"en|ch|tc|kr": "Hỏa"
+	},
+	{
+		"id": -1000009061,
+		"key": "dmginfo_b_froze",
+		"en|ch|tc|kr": "Thủy"
+	},
+	{
+		"id": -1000009062,
+		"key": "dmginfo_b_thunder",
+		"en|ch|tc|kr": "Lôi"
+	},
+	{
+		"id": -1000009063,
+		"key": "dmginfo_b_wind",
+		"en|ch|tc|kr": "Phong"
+	},
+	{
+		"id": -1000009064,
+		"key": "dmginfo_b_earth",
+		"en|ch|tc|kr": "Thổ"
+	},
+	{
+		"id": -1000009065,
+		"key": "dmginfo_b_wood",
+		"en|ch|tc|kr": "Mộc"
+	},
+	{
+		"id": -1000009066,
+		"key": "dmginfo_foes_monsters",
+		"en|ch|tc|kr": "Yêu thú gần đây"
+	},
+	{
+		"id": -1000009067,
+		"key": "dmginfo_foes_humans",
+		"en|ch|tc|kr": "Tu sĩ gần đây"
+	},
+	{
+		"id": -1000009068,
+		"key": "dmginfo_foes_none",
+		"en|ch|tc|kr": "Chưa có: sau mỗi trận, đối thủ và chỉ số lúc đó được lưu ở đây."
+	},
+	{
+		"id": -1000009069,
+		"key": "dmginfo_foe_grade",
+		"en|ch|tc|kr": "Cấp {0} · năm {1}, tháng {2}"
+	},
+	{
+		"id": -1000009070,
+		"key": "dmginfo_foe_dealt",
+		"en|ch|tc|kr": "Bạn gây {0:#,##0} (chí mạng {1:#,##0}) · {2} đòn"
+	},
+	{
+		"id": -1000009071,
+		"key": "dmginfo_foe_taken",
+		"en|ch|tc|kr": "Bạn nhận {0:#,##0} · gục sau {1} đòn"
+	},
+	{
+		"id": -1000009072,
+		"key": "dmginfo_foes_hint",
+		"en|ch|tc|kr": "Trang sau: yêu thú và tu sĩ bạn vừa giao chiến, kèm sát thương hai bên."
+	}
+]

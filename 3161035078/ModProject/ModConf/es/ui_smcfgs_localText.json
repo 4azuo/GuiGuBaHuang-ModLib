@@ -527,7 +527,7 @@
 	{
 		"id": "-1000001155",
 		"key": "smcfgs155",
-		"en|ch|tc|kr": "Estas funciones están activas por defecto y no cambian la puntuación de dificultad. Desactivar una mantiene lo que ya está en marcha (un préstamo aún se puede devolver, las órdenes existentes se siguen cumpliendo)."
+		"en|ch|tc|kr": "Estas funciones están activas por defecto. Desactivar una cambia la puntuación de dificultad: más difícil sin una función que ayuda (préstamos, encuentros, familia), más fácil sin una que perjudica (recompensas por cabeza, reclusión forzada). Desactivar una mantiene lo que ya está en marcha (un préstamo aún se puede devolver, las órdenes existentes se siguen cumpliendo)."
 	},
 	{
 		"id": "-1000001156",
@@ -623,5 +623,90 @@
 		"id": "-1000001174",
 		"key": "smcfgs174",
 		"en|ch|tc|kr": "Loto Rojo: la dama detrás de las otras historias; tus aliados contra su pabellón."
+	},
+	{
+		"id": -1000001175,
+		"key": "sm_title_0",
+		"en|ch|tc|kr": "Errante despreocupado"
+	},
+	{
+		"id": -1000001176,
+		"key": "sm_title_1",
+		"en|ch|tc|kr": "Senda mortal"
+	},
+	{
+		"id": -1000001177,
+		"key": "sm_title_2",
+		"en|ch|tc|kr": "Buscador del Dao"
+	},
+	{
+		"id": -1000001178,
+		"key": "sm_title_3",
+		"en|ch|tc|kr": "Asceta"
+	},
+	{
+		"id": -1000001179,
+		"key": "sm_title_4",
+		"en|ch|tc|kr": "Asura"
+	},
+	{
+		"id": -1000001180,
+		"key": "sm_title_5",
+		"en|ch|tc|kr": "Desafiante del cielo"
+	},
+	{
+		"id": -1000001181,
+		"key": "sm_title_line",
+		"en|ch|tc|kr": "{0} · {1:#,##0} P · recompensas {2}%"
+	},
+	{
+		"id": -1000001182,
+		"key": "sm_records_title",
+		"en|ch|tc|kr": "Récords de puntuación"
+	},
+	{
+		"id": -1000001183,
+		"key": "sm_records_desc",
+		"en|ch|tc|kr": "Cada personaje de cada partida: puntuación S&M (P) de sus ajustes, título, mejor reino, años y generaciones."
+	},
+	{
+		"id": -1000001184,
+		"key": "sm_records_none",
+		"en|ch|tc|kr": "Sin récords: juega una partida para verla aquí."
+	},
+	{
+		"id": -1000001185,
+		"key": "sm_records_line",
+		"en|ch|tc|kr": "{0}. {1} — {2} · {3:#,##0} P · grado {4} · año {5} · generación {6} · {7}"
+	},
+	{
+		"id": -1000001186,
+		"key": "smcfgs186",
+		"en|ch|tc|kr": "La apuesta de cien años: un rival orgulloso que apuesta por todo; una vida de apuestas, deudas de vida y una última apuesta."
+	},
+	{
+		"id": -1000001187,
+		"key": "smcfgs187",
+		"en|ch|tc|kr": "La posada del camino: la posada de una viuda en tu primer pueblo; un usurero, un hijo, un nieto, tres generaciones que proteger."
+	},
+	{
+		"id": -1000001188,
+		"key": "smcfgs188",
+		"en|ch|tc|kr": "La tumba sellada: un erudito cortés, medio mapa y una tumba sellada durante nueve mil años; socios, hasta el tesoro."
+	},
+	{
+		"id": -1000001189,
+		"key": "smcfgs189",
+		"en|ch|tc|kr": "El discípulo maldito: un niño con una marca demoníaca; edúcalo con piedad, fuerza o libertad, y será lo que le enseñes."
+	},
+	{
+		"id": -1000001190,
+		"key": "smcfgs190",
+		"en|ch|tc|kr": "El remanente del trueno: una voz antigua en el rayo; un inmortal caído que quiere una segunda oportunidad."
+	},
+	{
+		"id": -1000001191,
+		"key": "smcfgs191",
+		"en|ch|tc|kr": "El demonio del corazón: tu pasado vuelve en sueños; enfréntate a lo que las demás historias hicieron de ti."
 	}
 ]

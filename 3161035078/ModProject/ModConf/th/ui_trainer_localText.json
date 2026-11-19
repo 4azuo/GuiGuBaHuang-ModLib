@@ -192,17 +192,17 @@
 	{
 		"id": -1000002038,
 		"key": "trainer038",
-		"en|ch|tc|kr": "คุณสมบัติทั่วไป:"
+		"en|ch|tc|kr": "[icon:zhandouxiaoguo] คุณสมบัติทั่วไป:"
 	},
 	{
 		"id": -1000002039,
 		"key": "trainer039",
-		"en|ch|tc|kr": "การต่อสู้/จิตวิญญาณ:"
+		"en|ch|tc|kr": "[icon:jianfa] การต่อสู้/จิตวิญญาณ:"
 	},
 	{
 		"id": -1000002040,
 		"key": "trainer040",
-		"en|ch|tc|kr": "งานฝีมือ:"
+		"en|ch|tc|kr": "[icon:lianqi] งานฝีมือ:"
 	},
 	{
 		"id": -1000002041,
@@ -247,32 +247,32 @@
 	{
 		"id": -1000002049,
 		"key": "trainer049",
-		"en|ch|tc|kr": "การเล่นแร่แปรธาตุ: {0:#,##0}"
+		"en|ch|tc|kr": "[icon:liandan] การเล่นแร่แปรธาตุ: {0:#,##0}"
 	},
 	{
 		"id": -1000002050,
 		"key": "trainer050",
-		"en|ch|tc|kr": "{0:#,##0} :ฟอร์จ"
+		"en|ch|tc|kr": "{0:#,##0} :ฟอร์จ [icon:lianqi]"
 	},
 	{
 		"id": -1000002051,
 		"key": "trainer051",
-		"en|ch|tc|kr": "ฮวงจุ้ย: {0:#,##0}"
+		"en|ch|tc|kr": "[icon:fengshui] ฮวงจุ้ย: {0:#,##0}"
 	},
 	{
 		"id": -1000002052,
 		"key": "trainer052",
-		"en|ch|tc|kr": "{0:#,##0} :เครื่องราง"
+		"en|ch|tc|kr": "{0:#,##0} :เครื่องราง [icon:huafu]"
 	},
 	{
 		"id": -1000002053,
 		"key": "trainer053",
-		"en|ch|tc|kr": "สมุนไพรวิทยา: {0:#,##0}"
+		"en|ch|tc|kr": "[icon:yaocai] สมุนไพรวิทยา: {0:#,##0}"
 	},
 	{
 		"id": -1000002054,
 		"key": "trainer054",
-		"en|ch|tc|kr": "{0:#,##0} :การขุด"
+		"en|ch|tc|kr": "{0:#,##0} :การขุด [icon:kuangcai]"
 	},
 	{
 		"id": -1000002055,
@@ -302,162 +302,162 @@
 	{
 		"id": "-1000002060",
 		"key": "trainer_lbl_hp",
-		"en|ch|tc|kr": "พลังชีวิต: {0}/{1}"
+		"en|ch|tc|kr": "[icon:jiankang] พลังชีวิต: {0}/{1}"
 	},
 	{
 		"id": "-1000002061",
 		"key": "trainer_lbl_money",
-		"en|ch|tc|kr": "{0} :เงิน"
+		"en|ch|tc|kr": "{0} :เงิน [icon:zm_lingshi]"
 	},
 	{
 		"id": "-1000002062",
 		"key": "trainer_lbl_mp",
-		"en|ch|tc|kr": "พลังวิญญาณ: {0}/{1}"
+		"en|ch|tc|kr": "[icon:lingli] พลังวิญญาณ: {0}/{1}"
 	},
 	{
 		"id": "-1000002063",
 		"key": "trainer_lbl_degree",
-		"en|ch|tc|kr": "{0} :ระดับเจ้าเมือง"
+		"en|ch|tc|kr": "{0} :ระดับเจ้าเมือง [icon:zm_mingyu]"
 	},
 	{
 		"id": "-1000002064",
 		"key": "trainer_lbl_sp",
-		"en|ch|tc|kr": "พลังจิต: {0}/{1}"
+		"en|ch|tc|kr": "[icon:nianli] พลังจิต: {0}/{1}"
 	},
 	{
 		"id": "-1000002065",
 		"key": "trainer_lbl_contribution",
-		"en|ch|tc|kr": "{0} :ผลงาน"
+		"en|ch|tc|kr": "{0} :ผลงาน [icon:zm_zhongchengdu]"
 	},
 	{
 		"id": "-1000002066",
 		"key": "trainer_lbl_def",
-		"en|ch|tc|kr": "{0} :ป้องกัน"
+		"en|ch|tc|kr": "{0} :ป้องกัน [icon:fangyu]"
 	},
 	{
 		"id": "-1000002067",
 		"key": "trainer_lbl_mood",
-		"en|ch|tc|kr": "อารมณ์: {0}/{1}"
+		"en|ch|tc|kr": "[icon:xinqing] อารมณ์: {0}/{1}"
 	},
 	{
 		"id": "-1000002068",
 		"key": "trainer_lbl_stamina",
-		"en|ch|tc|kr": "{0}/{1} :ความอึด"
+		"en|ch|tc|kr": "{0}/{1} :ความอึด [icon:jingli]"
 	},
 	{
 		"id": "-1000002069",
 		"key": "trainer_lbl_health",
-		"en|ch|tc|kr": "สุขภาพ: {0}/{1}"
+		"en|ch|tc|kr": "[icon:huifutili] สุขภาพ: {0}/{1}"
 	},
 	{
 		"id": "-1000002070",
 		"key": "trainer_lbl_life",
-		"en|ch|tc|kr": "{0}/{1} :อายุขัย"
+		"en|ch|tc|kr": "{0}/{1} :อายุขัย [icon:shouming]"
 	},
 	{
 		"id": "-1000002071",
 		"key": "trainer_lbl_travel_speed",
-		"en|ch|tc|kr": "ความเร็วเดินทาง: {0}"
+		"en|ch|tc|kr": "[icon:yisu] ความเร็วเดินทาง: {0}"
 	},
 	{
 		"id": "-1000002072",
 		"key": "trainer_lbl_view_range",
-		"en|ch|tc|kr": "{0} :ระยะมองเห็น"
+		"en|ch|tc|kr": "{0} :ระยะมองเห็น [icon:fanwei]"
 	},
 	{
 		"id": "-1000002073",
 		"key": "trainer_lbl_battle_speed",
-		"en|ch|tc|kr": "ความเร็วต่อสู้: {0}"
+		"en|ch|tc|kr": "[icon:gongsuD] ความเร็วต่อสู้: {0}"
 	},
 	{
 		"id": "-1000002074",
 		"key": "trainer_lbl_ability",
-		"en|ch|tc|kr": "({1}) {0} :ความสามารถ"
+		"en|ch|tc|kr": "({1}) {0} :ความสามารถ [icon:jineng]"
 	},
 	{
 		"id": "-1000002075",
 		"key": "trainer_lbl_luck",
-		"en|ch|tc|kr": "โชค: {0}"
+		"en|ch|tc|kr": "[icon:xingyun] โชค: {0}"
 	},
 	{
 		"id": "-1000002076",
 		"key": "trainer_lbl_insight",
-		"en|ch|tc|kr": "{0} :ปัญญา"
+		"en|ch|tc|kr": "{0} :ปัญญา [icon:wuxing]"
 	},
 	{
 		"id": "-1000002077",
 		"key": "trainer_lbl_exp",
-		"en|ch|tc|kr": "ประสบการณ์: {0}/{1}"
+		"en|ch|tc|kr": "[icon:daodian] ประสบการณ์: {0}/{1}"
 	},
 	{
 		"id": "-1000002078",
 		"key": "trainer_lbl_reputation",
-		"en|ch|tc|kr": "{0} :ชื่อเสียง"
+		"en|ch|tc|kr": "{0} :ชื่อเสียง [icon:shengwang]"
 	},
 	{
 		"id": "-1000002079",
 		"key": "trainer_lbl_grade",
-		"en|ch|tc|kr": "ขั้น: {0} {1} ― {2}"
+		"en|ch|tc|kr": "[icon:daoli] ขั้น: {0} {1} ― {2}"
 	},
 	{
 		"id": "-1000002080",
 		"key": "trainer_lbl_fire",
-		"en|ch|tc|kr": "ไฟ: {0}"
+		"en|ch|tc|kr": "[icon:huolinggen] ไฟ: {0}"
 	},
 	{
 		"id": "-1000002081",
 		"key": "trainer_lbl_blade",
-		"en|ch|tc|kr": "{0} :ดาบ"
+		"en|ch|tc|kr": "{0} :ดาบ [icon:daofa]"
 	},
 	{
 		"id": "-1000002082",
 		"key": "trainer_lbl_water",
-		"en|ch|tc|kr": "น้ำ: {0}"
+		"en|ch|tc|kr": "[icon:shuilinggen] น้ำ: {0}"
 	},
 	{
 		"id": "-1000002083",
 		"key": "trainer_lbl_spear",
-		"en|ch|tc|kr": "{0} :ทวน"
+		"en|ch|tc|kr": "{0} :ทวน [icon:qiangfa]"
 	},
 	{
 		"id": "-1000002084",
 		"key": "trainer_lbl_lightning",
-		"en|ch|tc|kr": "สายฟ้า: {0}"
+		"en|ch|tc|kr": "[icon:leilinggen] สายฟ้า: {0}"
 	},
 	{
 		"id": "-1000002085",
 		"key": "trainer_lbl_sword",
-		"en|ch|tc|kr": "{0} :กระบี่"
+		"en|ch|tc|kr": "{0} :กระบี่ [icon:jianfa]"
 	},
 	{
 		"id": "-1000002086",
 		"key": "trainer_lbl_wind",
-		"en|ch|tc|kr": "ลม: {0}"
+		"en|ch|tc|kr": "[icon:fenglinggen] ลม: {0}"
 	},
 	{
 		"id": "-1000002087",
 		"key": "trainer_lbl_fist",
-		"en|ch|tc|kr": "{0} :หมัด"
+		"en|ch|tc|kr": "{0} :หมัด [icon:quanfa]"
 	},
 	{
 		"id": "-1000002088",
 		"key": "trainer_lbl_earth",
-		"en|ch|tc|kr": "ดิน: {0}"
+		"en|ch|tc|kr": "[icon:tulinggen] ดิน: {0}"
 	},
 	{
 		"id": "-1000002089",
 		"key": "trainer_lbl_palm",
-		"en|ch|tc|kr": "{0} :ฝ่ามือ"
+		"en|ch|tc|kr": "{0} :ฝ่ามือ [icon:zhangfa]"
 	},
 	{
 		"id": "-1000002090",
 		"key": "trainer_lbl_wood",
-		"en|ch|tc|kr": "ไม้: {0}"
+		"en|ch|tc|kr": "[icon:mulinggen] ไม้: {0}"
 	},
 	{
 		"id": "-1000002091",
 		"key": "trainer_lbl_finger",
-		"en|ch|tc|kr": "{0} :นิ้ว"
+		"en|ch|tc|kr": "{0} :นิ้ว [icon:zhifa]"
 	},
 	{
 		"id": "-1000002092",

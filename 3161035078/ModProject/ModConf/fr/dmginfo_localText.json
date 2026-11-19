@@ -1,0 +1,367 @@
+[
+	{
+		"id": -1000009000,
+		"key": "dmginfo_title",
+		"en|ch|tc|kr": "Calcul des dégâts"
+	},
+	{
+		"id": -1000009001,
+		"key": "dmginfo_button",
+		"en|ch|tc|kr": "Calcul dégâts"
+	},
+	{
+		"id": -1000009002,
+		"key": "dmginfo_hotkey",
+		"en|ch|tc|kr": "Calcul des dégâts"
+	},
+	{
+		"id": -1000009003,
+		"key": "dmginfo_monster",
+		"en|ch|tc|kr": "Monstre (rang {0})"
+	},
+	{
+		"id": -1000009004,
+		"key": "dmginfo_target",
+		"en|ch|tc|kr": "Cible : {0} (rang {1})"
+	},
+	{
+		"id": -1000009005,
+		"key": "dmginfo_target_self",
+		"en|ch|tc|kr": "Cible : un cultivateur avec vos propres valeurs (hors combat, ou aucun ennemi touché)"
+	},
+	{
+		"id": -1000009006,
+		"key": "dmginfo_attack",
+		"en|ch|tc|kr": "Votre attaque"
+	},
+	{
+		"id": -1000009007,
+		"key": "dmginfo_defense",
+		"en|ch|tc|kr": "Votre défense"
+	},
+	{
+		"id": -1000009008,
+		"key": "dmginfo_atk",
+		"en|ch|tc|kr": "ATQ : {0}"
+	},
+	{
+		"id": -1000009009,
+		"key": "dmginfo_def",
+		"en|ch|tc|kr": "DÉF : {0}"
+	},
+	{
+		"id": -1000009010,
+		"key": "dmginfo_hp",
+		"en|ch|tc|kr": "PV : {0} / {1}"
+	},
+	{
+		"id": -1000009011,
+		"key": "dmginfo_time",
+		"en|ch|tc|kr": "Multiplicateur de durée : x{0}"
+	},
+	{
+		"id": -1000009012,
+		"key": "dmginfo_skill",
+		"en|ch|tc|kr": "Bonus de technique ({0}) : +{1}"
+	},
+	{
+		"id": -1000009013,
+		"key": "dmginfo_basis",
+		"en|ch|tc|kr": "Bonus de base ({0} {1}) : +{2}"
+	},
+	{
+		"id": -1000009014,
+		"key": "dmginfo_mp",
+		"en|ch|tc|kr": "Bonus de PM ({0}% PM) : +{1}"
+	},
+	{
+		"id": -1000009015,
+		"key": "dmginfo_sp",
+		"en|ch|tc|kr": "Bonus de PS ({0}% PS, Noyau d'or+) : +{1}"
+	},
+	{
+		"id": -1000009016,
+		"key": "dmginfo_dp",
+		"en|ch|tc|kr": "Bonus de PD ({0}% PD, Illumination+) : +{1}"
+	},
+	{
+		"id": -1000009017,
+		"key": "dmginfo_crit",
+		"en|ch|tc|kr": "Super critique : {0}% de chance, dégâts x{1}"
+	},
+	{
+		"id": -1000009018,
+		"key": "dmginfo_kill",
+		"en|ch|tc|kr": "Mort instantanée (monstres) : {0}%"
+	},
+	{
+		"id": -1000009019,
+		"key": "dmginfo_mindmg",
+		"en|ch|tc|kr": "Dégâts minimum : {0} x rang de la cible {1} = {2}"
+	},
+	{
+		"id": -1000009020,
+		"key": "dmginfo_steal",
+		"en|ch|tc|kr": "Vol : PV {0}, PM {1}, PS {2}"
+	},
+	{
+		"id": -1000009021,
+		"key": "dmginfo_evade",
+		"en|ch|tc|kr": "Esquive : {0}% (max {1}% + pas {2}%)"
+	},
+	{
+		"id": -1000009022,
+		"key": "dmginfo_block",
+		"en|ch|tc|kr": "Blocage : {0}% de chance (max {1}%), -{2} dégâts"
+	},
+	{
+		"id": -1000009023,
+		"key": "dmginfo_basisdef",
+		"en|ch|tc|kr": "Défense de base ({0} {1}) : -{2}"
+	},
+	{
+		"id": -1000009024,
+		"key": "dmginfo_mpblock",
+		"en|ch|tc|kr": "Bouclier de PM : jusqu'à {0} blocages de -{1} (ratio {2})"
+	},
+	{
+		"id": -1000009025,
+		"key": "dmginfo_spblock",
+		"en|ch|tc|kr": "Bouclier de PS (Noyau d'or+) : -{0}"
+	},
+	{
+		"id": -1000009026,
+		"key": "dmginfo_dpblock",
+		"en|ch|tc|kr": "Bouclier de PD (Illumination+) : -{0}"
+	},
+	{
+		"id": -1000009027,
+		"key": "dmginfo_foe",
+		"en|ch|tc|kr": "ATQ {0}, DÉF {1}, PV {2} / {3}, esquive {4}%, blocage {5}%"
+	},
+	{
+		"id": -1000009028,
+		"key": "dmginfo_example_dealt",
+		"en|ch|tc|kr": "Exemple de coup porté (base = ATQ, sans hasard) :"
+	},
+	{
+		"id": -1000009029,
+		"key": "dmginfo_example_crit",
+		"en|ch|tc|kr": "Le même en super critique :"
+	},
+	{
+		"id": -1000009030,
+		"key": "dmginfo_example_taken",
+		"en|ch|tc|kr": "Exemple de coup reçu (base = ATQ de la cible) :"
+	},
+	{
+		"id": -1000009031,
+		"key": "dmginfo_last",
+		"en|ch|tc|kr": "Derniers coups de ce combat"
+	},
+	{
+		"id": -1000009032,
+		"key": "dmginfo_last_dealt",
+		"en|ch|tc|kr": "Infligé :"
+	},
+	{
+		"id": -1000009033,
+		"key": "dmginfo_last_taken",
+		"en|ch|tc|kr": "Reçu :"
+	},
+	{
+		"id": -1000009034,
+		"key": "dmginfo_none",
+		"en|ch|tc|kr": "aucun pour l'instant"
+	},
+	{
+		"id": -1000009035,
+		"key": "dmginfo_paused",
+		"en|ch|tc|kr": "Le combat est en pause tant que cette fenêtre est ouverte."
+	},
+	{
+		"id": -1000009036,
+		"key": "dmginfo_step_base",
+		"en|ch|tc|kr": "base"
+	},
+	{
+		"id": -1000009037,
+		"key": "dmginfo_step_time",
+		"en|ch|tc|kr": "+durée"
+	},
+	{
+		"id": -1000009038,
+		"key": "dmginfo_step_skill",
+		"en|ch|tc|kr": "+technique"
+	},
+	{
+		"id": -1000009039,
+		"key": "dmginfo_step_basis",
+		"en|ch|tc|kr": "+base"
+	},
+	{
+		"id": -1000009040,
+		"key": "dmginfo_step_skillbasis",
+		"en|ch|tc|kr": "+technique/base"
+	},
+	{
+		"id": -1000009041,
+		"key": "dmginfo_step_mp",
+		"en|ch|tc|kr": "+PM"
+	},
+	{
+		"id": -1000009042,
+		"key": "dmginfo_step_sp",
+		"en|ch|tc|kr": "+PS"
+	},
+	{
+		"id": -1000009043,
+		"key": "dmginfo_step_dp",
+		"en|ch|tc|kr": "+PD"
+	},
+	{
+		"id": -1000009044,
+		"key": "dmginfo_step_crit",
+		"en|ch|tc|kr": "critique"
+	},
+	{
+		"id": -1000009045,
+		"key": "dmginfo_step_block",
+		"en|ch|tc|kr": "blocage"
+	},
+	{
+		"id": -1000009046,
+		"key": "dmginfo_step_basisdef",
+		"en|ch|tc|kr": "-déf. de base"
+	},
+	{
+		"id": -1000009047,
+		"key": "dmginfo_step_mpblock",
+		"en|ch|tc|kr": "-bouclier PM"
+	},
+	{
+		"id": -1000009048,
+		"key": "dmginfo_step_spblock",
+		"en|ch|tc|kr": "-bouclier PS"
+	},
+	{
+		"id": -1000009049,
+		"key": "dmginfo_step_dpblock",
+		"en|ch|tc|kr": "-bouclier PD"
+	},
+	{
+		"id": -1000009050,
+		"key": "dmginfo_step_min",
+		"en|ch|tc|kr": "final"
+	},
+	{
+		"id": -1000009051,
+		"key": "dmginfo_step_nullified",
+		"en|ch|tc|kr": "annulé"
+	},
+	{
+		"id": -1000009052,
+		"key": "dmginfo_step_kill",
+		"en|ch|tc|kr": "mort instantanée"
+	},
+	{
+		"id": -1000009053,
+		"key": "dmginfo_step_evaded",
+		"en|ch|tc|kr": "esquivé"
+	},
+	{
+		"id": -1000009054,
+		"key": "dmginfo_b_blade",
+		"en|ch|tc|kr": "Sabre"
+	},
+	{
+		"id": -1000009055,
+		"key": "dmginfo_b_spear",
+		"en|ch|tc|kr": "Lance"
+	},
+	{
+		"id": -1000009056,
+		"key": "dmginfo_b_sword",
+		"en|ch|tc|kr": "Épée"
+	},
+	{
+		"id": -1000009057,
+		"key": "dmginfo_b_fist",
+		"en|ch|tc|kr": "Poing"
+	},
+	{
+		"id": -1000009058,
+		"key": "dmginfo_b_palm",
+		"en|ch|tc|kr": "Paume"
+	},
+	{
+		"id": -1000009059,
+		"key": "dmginfo_b_finger",
+		"en|ch|tc|kr": "Doigt"
+	},
+	{
+		"id": -1000009060,
+		"key": "dmginfo_b_fire",
+		"en|ch|tc|kr": "Feu"
+	},
+	{
+		"id": -1000009061,
+		"key": "dmginfo_b_froze",
+		"en|ch|tc|kr": "Eau"
+	},
+	{
+		"id": -1000009062,
+		"key": "dmginfo_b_thunder",
+		"en|ch|tc|kr": "Foudre"
+	},
+	{
+		"id": -1000009063,
+		"key": "dmginfo_b_wind",
+		"en|ch|tc|kr": "Vent"
+	},
+	{
+		"id": -1000009064,
+		"key": "dmginfo_b_earth",
+		"en|ch|tc|kr": "Terre"
+	},
+	{
+		"id": -1000009065,
+		"key": "dmginfo_b_wood",
+		"en|ch|tc|kr": "Bois"
+	},
+	{
+		"id": -1000009066,
+		"key": "dmginfo_foes_monsters",
+		"en|ch|tc|kr": "Monstres récents"
+	},
+	{
+		"id": -1000009067,
+		"key": "dmginfo_foes_humans",
+		"en|ch|tc|kr": "Cultivateurs récents"
+	},
+	{
+		"id": -1000009068,
+		"key": "dmginfo_foes_none",
+		"en|ch|tc|kr": "Aucun : après un combat, les adversaires et leurs valeurs du moment sont gardés ici."
+	},
+	{
+		"id": -1000009069,
+		"key": "dmginfo_foe_grade",
+		"en|ch|tc|kr": "Rang {0} · année {1}, mois {2}"
+	},
+	{
+		"id": -1000009070,
+		"key": "dmginfo_foe_dealt",
+		"en|ch|tc|kr": "Vous infligez {0:#,##0} (crit. {1:#,##0}) · {2} coups"
+	},
+	{
+		"id": -1000009071,
+		"key": "dmginfo_foe_taken",
+		"en|ch|tc|kr": "Vous subissez {0:#,##0} · à terre en {1} coups"
+	},
+	{
+		"id": -1000009072,
+		"key": "dmginfo_foes_hint",
+		"en|ch|tc|kr": "Page suivante : les derniers monstres et cultivateurs affrontés, avec les dégâts dans les deux sens."
+	}
+]

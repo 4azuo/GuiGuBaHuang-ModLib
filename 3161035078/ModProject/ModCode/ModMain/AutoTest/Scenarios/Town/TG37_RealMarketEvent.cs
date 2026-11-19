@@ -40,7 +40,7 @@ namespace MOD_nE7UL2.AutoTest.Scenarios.Town
                 {
                     var ui = g.ui.GetUI<UIPropSell>(UIType.PropSell);
                     c.Assert(!ui.btnOK.gameObject.activeSelf, "sell button hidden");
-                    c.Assert(FindTexts(ui, "Over price").Any(), "'Over price' warning shown");
+                    c.Assert(FindTexts(ui, GameTool.LS("ui_over_price")).Any(), $"'{GameTool.LS("ui_over_price")}' warning shown");
                 }, 1000)
                 .Step("restore", c =>
                 {

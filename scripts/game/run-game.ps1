@@ -45,6 +45,8 @@ param(
     [switch]$ShowAll,
     [string[]]$ExtraLog,
     [string]$GamePath,
+    # arguments of the exe (e.g. Unity's "-screen-fullscreen 0 -screen-width 1600 -screen-height 900"); started directly only
+    [string]$GameArgs,
     [int]$RestartGraceSec = 30,
     [int]$PollMs = 300
 )
@@ -66,7 +68,7 @@ $framePattern = '^\s*(\(Filename:|[\w\.<>`$\[\],]+:[\w<>`$\.\[\],]+\(.*\)\s*$)'
 $errorPattern = '(?i)exception\b|\[error\]|\berror\b|\bfailed\b'
 
 # ------------------------------------------------------------------ session
-$session = Join-Path $paths.GameRuns (Get-Date -Format 'yyyyMMdd-HHmmss')
+$session = Join-Path $paths.GameRuns ((Get-Date -Format 'yyyyMMdd-HHmmss') + $(if ((Get-GameSlot) -ge 2) { "-s$(Get-GameSlot)" }))
 New-Item -ItemType Directory -Path $session -Force | Out-Null
 $utf8 = New-Object Text.UTF8Encoding($false)
 $writers = @{}
@@ -269,7 +271,7 @@ try {
             $launchDir = Get-AsciiGamePath -GamePath $paths.GamePath -Repo $paths.Repo
             if (-not $launchDir) { Write-Warn 'No ASCII junction available - MelonLoader will probably refuse to start' }
         }
-        elseif ($Direct) { $launchDir = $paths.GamePath }
+        elseif ($Direct -or (Get-GameSlot) -ge 2) { $launchDir = $paths.GamePath }   # a slot copy: its own exe
 
         if ($launchDir) {
             # Started outside Steam, the game cannot init the Steam API (no Workshop mods, no saves in
@@ -282,7 +284,8 @@ try {
             if (-not (Get-Process -Name steam -ErrorAction SilentlyContinue)) { Write-Warn 'Steam is not running: Workshop mods will not be loaded' }
             $exe = Join-Path $launchDir 'guigubahuang.exe'
             Write-Info "Starting $exe"
-            $launched = Start-Process -FilePath $exe -WorkingDirectory $launchDir -PassThru
+            $launched = if ($GameArgs) { Start-Process -FilePath $exe -WorkingDirectory $launchDir -ArgumentList $GameArgs -PassThru }
+                        else { Start-Process -FilePath $exe -WorkingDirectory $launchDir -PassThru }
         }
         else {
             Write-Info "Starting through Steam (steam://rungameid/$GameAppId)"

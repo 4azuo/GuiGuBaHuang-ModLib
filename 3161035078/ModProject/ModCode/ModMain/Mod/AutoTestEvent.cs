@@ -1,4 +1,4 @@
-﻿using EBattleTypeData;
+﻿﻿using EBattleTypeData;
 using MOD_nE7UL2.AutoTest;
 using MOD_nE7UL2.Const;
 using ModLib.Attributes;
@@ -9,6 +9,8 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Text.RegularExpressions;
+using Application = UnityEngine.Application;
 
 namespace MOD_nE7UL2.Mod
 {
@@ -57,10 +59,33 @@ namespace MOD_nE7UL2.Mod
         private AutoTestContext _ctx;
         private int _stepIndex;
 
-        /// <summary>Folder of the request/stop files: &lt;mod cache&gt;\autotest\.</summary>
+        /// <summary>
+        /// Game slot of this game (scripts/game/new-game-slot.ps1): 1 for the normal game folder, N for a copy started from
+        /// %LOCALAPPDATA%\ggbh-slotN (several games side by side, each with its own autotest folder).
+        /// </summary>
+        public static int Slot
+        {
+            get
+            {
+                if (_slot == 0)
+                {
+                    _slot = 1;
+                    try
+                    {
+                        var m = Regex.Match(Application.dataPath ?? "", @"ggbh-slot(\d+)", RegexOptions.IgnoreCase);
+                        if (m.Success) _slot = int.Parse(m.Groups[1].Value);
+                    }
+                    catch { }
+                }
+                return _slot;
+            }
+        }
+        private static int _slot;
+
+        /// <summary>Folder of the request/stop files: &lt;mod cache&gt;\autotest\ (slot N: autotest-slotN\).</summary>
         public static string GetAutoTestFolder(string modId)
         {
-            return Path.Combine(CacheHelper.GetCacheFolderName(modId), "autotest");
+            return Path.Combine(CacheHelper.GetCacheFolderName(modId), Slot > 1 ? $"autotest-slot{Slot}" : "autotest");
         }
 
         /// <summary>Loads the runner only when a request file exists.</summary>
@@ -86,6 +111,7 @@ namespace MOD_nE7UL2.Mod
             // no exception dialog during the run (it blocks the steps): errors are still logged and listed in the report
             DebugHelper.IsDebugMode = false;
             MOD_nE7UL2.Story.StoryEvent.NoAutoOpen = true;
+            Mute();
             Log($"request loaded: run={_request.RunId}, save={_request.Save}, autoLoad={_request.AutoLoad}, scenarios={(_request.Scenarios.Count == 0 ? "all" : string.Join(",", _request.Scenarios))}");
             WriteResults();
         }
@@ -126,6 +152,11 @@ namespace MOD_nE7UL2.Mod
         public override void OnTimeUpdate100ms()
         {
             base.OnTimeUpdate100ms();
+            // the battle's pause menu (Esc, focus lost) stops the battle: Resume at once, also between the steps
+            if (_request != null && _phase != PhaseEnum.Done && GameHelper.IsInBattlle())
+            {
+                try { if (BattleHelper.ResumeIfPaused()) Log("battle pause menu closed (Resume)"); } catch { }
+            }
             if (_request == null || _phase == PhaseEnum.Done || DateTime.Now < _nextAt)
                 return;
             try
@@ -151,6 +182,8 @@ namespace MOD_nE7UL2.Mod
                 case PhaseEnum.WaitTitle:
                     if (GameHelper.IsLoginScreen() && g.ui.HasUI(UIType.Login))
                     {
+                        if (_titleSeen == DateTime.MinValue)
+                            ApplyWindow();
                         if (_titleSeen == DateTime.MinValue)
                             _titleSeen = DateTime.Now;
                         // popups of the title screen (Taoist Workshop description, game announcements...) appear late
@@ -196,6 +229,15 @@ namespace MOD_nE7UL2.Mod
                 case PhaseEnum.WaitGame:
                     if (GameHelper.IsInGame() && g.ui.HasUI(UIType.MapMain) && !GameHelper.IsLoadingScreen())
                     {
+                        var created = _creating;
+                        if (!FinishNewCharacter())
+                        {
+                            _nextAt = DateTime.Now.AddMilliseconds(1000);
+                            break;
+                        }
+                        // read by run-autotest-parallel.ps1 (snapshot of the slot's character)
+                        if (_request.SlotCharacter)
+                            Log($"slot character: slot={Slot} folder={g.cache.curCache?.data?.folder} id={g.world.playerUnit.GetUnitId()} created={created}");
                         Log($"save loaded: {g.world.playerUnit.GetName()} ({g.world.playerUnit.GetUnitId()}), {GameHelper.GetGameYear()}/{GameHelper.GetGameMonth()}");
                         Enqueue(ScenarioScope.Game, null);
                         SetPhase(PhaseEnum.Game, 5000); //let OnLoadGame/OnLoadGameAfter of all events finish
@@ -276,9 +318,27 @@ namespace MOD_nE7UL2.Mod
                     var items = ui.allCacheItem.ToArray().Where(x => x != null && x.cacheData != null).ToList();
                     Log($"saves: {string.Join(" | ", items.Select(x => $"{x.cacheData.data.name} [{x.cacheData.data.folder}]"))}");
                     var wanted = (_request.Save ?? string.Empty).Trim();
-                    var item = string.IsNullOrEmpty(wanted) ? items.FirstOrDefault(x => !x.isDie) :
-                        items.FirstOrDefault(x => string.Equals(x.cacheData.data.name, wanted, StringComparison.OrdinalIgnoreCase) ||
-                                                  string.Equals(x.cacheData.data.folder, wanted, StringComparison.OrdinalIgnoreCase));
+                    UILoginCacheItem item;
+                    if (_request.SlotCharacter)
+                    {
+                        item = FindSlotSave(items);
+                        if (item == null)
+                        {
+                            if (_loadStep < 3)   // the list may still be filling
+                            {
+                                _nextAt = DateTime.Now.AddMilliseconds(2000);
+                                return;
+                            }
+                            StartNewCharacter();
+                            return;
+                        }
+                    }
+                    else
+                    {
+                        item = string.IsNullOrEmpty(wanted) ? items.FirstOrDefault(x => !x.isDie) :
+                            items.FirstOrDefault(x => string.Equals(x.cacheData.data.name, wanted, StringComparison.OrdinalIgnoreCase) ||
+                                                      string.Equals(x.cacheData.data.folder, wanted, StringComparison.OrdinalIgnoreCase));
+                    }
                     Snap("save-list");
                     if (item == null)
                     {
@@ -297,6 +357,116 @@ namespace MOD_nE7UL2.Mod
                     break;
             }
         }
+        /// <summary>
+        /// The window of the request ("1600x900"): the game's own settings (windowed, size) set and applied - the game
+        /// applies them at start, over Unity's command line and registry. Kept after the run.
+        /// </summary>
+        private void ApplyWindow()
+        {
+            var m = Regex.Match(_request?.Window ?? "", @"^(\d+)x(\d+)$");
+            if (!m.Success) return;
+            try
+            {
+                int w = int.Parse(m.Groups[1].Value), h = int.Parse(m.Groups[2].Value);
+                var gs = g.data.globle.gameSetting;
+                if (gs.windowModel && gs.screenWidth == w && gs.screenHeight == h && !UnityEngine.Screen.fullScreen) return;
+                gs.windowModel = true;
+                gs.screenWidth = w;
+                gs.screenHeight = h;
+                gs.UpdateSetting();
+                UnityEngine.Screen.SetResolution(w, h, false);
+                Log($"window: {w} x {h}, windowed");
+            }
+            catch (Exception ex) { Log($"window: {ex.Message}"); }
+        }
+
+        #region Test character of a game slot (AutoTestRequest.SlotCharacter)
+        /// <summary>Family name of the test characters: "AutoTest Slot1", "AutoTest Slot2"... (kept, used again by the next runs).</summary>
+        public const string TEST_FAMILY_NAME = "AutoTest";
+        public const string SHARED_FOLDER = "autotest-shared";
+        public const string CREATING_LOCK = "creating.lock";
+        /// <summary>A creation lock older than this is left by a killed game.</summary>
+        public const int CREATING_LOCK_MAX_SEC = 600;
+        private bool _creating;
+        private bool _waitingLock;
+        private DateTime _savedAt = DateTime.MinValue;
+
+        /// <summary>Given name of the test character of this game slot.</summary>
+        public static string TestGivenName => $"Slot{Slot}";
+
+        private string SharedFolder => Path.Combine(CacheHelper.GetCacheFolderName(ModId), SHARED_FOLDER);
+
+        private static string NameKey(string name) => new string((name ?? string.Empty).Where(ch => !char.IsWhiteSpace(ch)).ToArray()).ToLowerInvariant();
+
+        /// <summary>The living test character of this slot ("AutoTest Slot&lt;n&gt;"), null when there is none yet.</summary>
+        private UILoginCacheItem FindSlotSave(List<UILoginCacheItem> items)
+        {
+            var key = NameKey(TEST_FAMILY_NAME + TestGivenName);
+            var item = items.FirstOrDefault(x => !x.isDie && NameKey(x.cacheData.data.name) == key);
+            if (item != null)
+                Log($"test character of slot {Slot}: {item.cacheData.data.name} [{item.cacheData.data.folder}]");
+            return item;
+        }
+
+        /// <summary>
+        /// No test character for this slot yet: a new one (TP-01), one game at a time - the game picks the first free save
+        /// slot of the list read from the disk, so the next game waits until this one's new save is written.
+        /// </summary>
+        private void StartNewCharacter()
+        {
+            Directory.CreateDirectory(SharedFolder);
+            var lockFile = Path.Combine(SharedFolder, CREATING_LOCK);
+            try
+            {
+                if (File.Exists(lockFile) && (DateTime.Now - File.GetLastWriteTime(lockFile)).TotalSeconds > CREATING_LOCK_MAX_SEC)
+                    File.Delete(lockFile);
+                using (var fs = new FileStream(lockFile, FileMode.CreateNew, FileAccess.Write, FileShare.None))
+                using (var sw = new StreamWriter(fs))
+                    sw.Write(Slot);
+            }
+            catch (IOException)
+            {
+                if (!_waitingLock) Log("an other game creates its test character - waiting");
+                _waitingLock = true;
+                _loadStep = 3;   // stay on the list, look again
+                _nextAt = DateTime.Now.AddMilliseconds(3000);
+                return;
+            }
+            Log($"no test character for slot {Slot}: creating {TEST_FAMILY_NAME} {TestGivenName}");
+            _creating = true;
+            _request.NewCharacter = true;
+            Scenarios_NewCharacter(true);
+            Enqueue(ScenarioScope.Title, null);
+            SetPhase(PhaseEnum.Title, 500);
+        }
+
+        /// <summary>
+        /// After the creation: the character named "AutoTest Slot&lt;n&gt;", saved, then the creation lock freed once the
+        /// save is on the disk. False while it is not there yet (60 s at most).
+        /// </summary>
+        private bool FinishNewCharacter()
+        {
+            if (!_creating) return true;
+            var folder = g.cache.curCache?.data?.folder;
+            if (_savedAt == DateTime.MinValue)
+            {
+                try
+                {
+                    g.world.playerUnit.data.unitData.propertyData.name = new UnhollowerBaseLib.Il2CppStringArray(new[] { TEST_FAMILY_NAME, TestGivenName });
+                    GameHelper.SaveGame();
+                }
+                catch (Exception ex) { Log($"name / save of the new character: {ex.Message}"); }
+                _savedAt = DateTime.Now;
+            }
+            var onDisk = !string.IsNullOrEmpty(folder) && Directory.Exists(Path.Combine(SaveCleanupHelper.GameDataPath, "Steam", "CacheData", folder));
+            if (!onDisk && (DateTime.Now - _savedAt).TotalSeconds < 60) return false;
+            Log($"test character of slot {Slot}: {g.world.playerUnit.GetName()}, save {folder} {(onDisk ? "written" : "NOT seen on the disk")}; creation lock freed");
+            try { File.Delete(Path.Combine(SharedFolder, CREATING_LOCK)); } catch { }
+            _creating = false;
+            return true;
+        }
+        #endregion
+
         private static readonly string[] CONFIRM_LABELS = { "ok", "confirm", "continue", "yes", "确定", "確定", "继续", "繼續", "确认", "確認", "是" };
         private DateTime _lastConfirm = DateTime.MinValue;
 
@@ -336,6 +506,9 @@ namespace MOD_nE7UL2.Mod
                 // the pre-test (TP: new character) always runs: the selected scenarios need its character
                 if (_request.Scenarios.Count > 0 && !_request.Scenarios.Contains(s.Id) && !s.Id.StartsWith("TP"))
                     continue;
+                // tools (effect galleries...) only when asked by id: never in a full run
+                if (s.Kind == ScenarioKind.Tool && !_request.Scenarios.Contains(s.Id))
+                    continue;
                 _queue.Enqueue(s);
             }
         }
@@ -355,10 +528,13 @@ namespace MOD_nE7UL2.Mod
                     Kind = _current.Kind.ToString(),
                     StartedAt = DateTime.Now.ToString("s"),
                 };
+                // a scenario run again in the same run (TP-01: skipped for an existing save, then run to create the
+                // test character of the slot) replaces its earlier skipped result: one row per id
+                _results.RemoveAll(x => x.Id == result.Id && x.Status == "SKIP");
                 _results.Add(result);
                 _ctx = new AutoTestContext(result) { ScreenshotFunc = label => Snap($"{result.Id}_{label}") };
                 _stepIndex = 0;
-                _pendingShot = _request.SnapSteps ? "before" : null;
+                _pendingShot = _request.SnapSteps && _current.SnapSteps ? "before" : null;
                 CloseNonBaseUIs($"[{result.Id}] before");
                 // on the title screen: the game's announcements (StartGameTip) closed too; it stays a base
                 // UI while a save loads (its "mods loaded" warning is confirmed by TryConfirmDialogs)
@@ -374,7 +550,7 @@ namespace MOD_nE7UL2.Mod
             // once the previous step had StepDelayMs to render); the capture itself needs ~0.3 s (run-autotest.ps1)
             if (_pendingShot != null)
             {
-                if (_shotStage == 0 && _stepIndex > 0 && _current.Overlay && ShowOverlay())
+                if (_shotStage == 0 && _stepIndex > 0 && _current.Overlay && !_request.Promo && ShowOverlay())
                 {
                     _shotStage = 1;
                     _nextAt = DateTime.Now.AddMilliseconds(700);
@@ -434,6 +610,7 @@ namespace MOD_nE7UL2.Mod
                 }
                 else
                 {
+                    if (!_current.KeepPopups) DismissStalePopups();
                     step.Action(_ctx);
                 }
                 _stepIndex++;
@@ -445,7 +622,7 @@ namespace MOD_nE7UL2.Mod
                 _waitStart = null;
                 _stepIndex = _current.Steps.Count;
             }
-            if (_request.SnapSteps)
+            if (_request.SnapSteps && _current != null && _current.SnapSteps)
                 _pendingShot = step.Label;
             var next = _stepIndex < _current.Steps.Count ? _current.Steps[_stepIndex].DelayMs : 0;
             _nextAt = DateTime.Now.AddMilliseconds(next >= 0 ? next : _request.StepDelayMs);
@@ -472,6 +649,39 @@ namespace MOD_nE7UL2.Mod
         private static bool IsBaseUI(string name) =>
             name == UIType.Mask.uiName || name.StartsWith("Loading") || name == UIType.Login.uiName || name == UIType.MapMain.uiName ||
             name == UIType.BattleInfo.uiName || name.StartsWith("Battle") || name == UIType.StartGameTip.uiName;
+
+        private static readonly string[] TIPS_OFF_LABELS = { "disable", "关闭", "關閉", "否", "no" };
+
+        /// <summary>
+        /// Before a step: message boxes left by the previous steps (already in their screenshots) are answered, so they
+        /// do not cover the next windows - the only button of an information box (OK), and "Disable" of the game's
+        /// tutorial-tips prompt ("Tips will pop up... Enable this function?", buttons Enable / Disable). Boxes with a
+        /// real choice (Yes / No) are left to the scenario. Off with Scenario.KeepPopups.
+        /// </summary>
+        private void DismissStalePopups()
+        {
+            try
+            {
+                foreach (var ui in OpenUIs().Where(x => UIName(x) == UIType.CheckPopup.uiName).ToList())
+                {
+                    var buttons = ui.GetComponentsInChildren<UnityEngine.UI.Button>()
+                        .Where(b => b != null && b.gameObject.activeInHierarchy && b.interactable)
+                        .Select(b => new { Button = b, Label = b.GetComponentInChildren<UnityEngine.UI.Text>()?.text?.Trim() ?? string.Empty })
+                        .Where(b => b.Label.Length > 0).ToList();
+                    var labels = buttons.Select(b => b.Label.ToLowerInvariant()).ToList();
+                    var pick = buttons.Count == 1 ? buttons[0]
+                        : labels.Contains("enable") || labels.Contains("开启") || labels.Contains("開啟")
+                            ? buttons.FirstOrDefault(b => TIPS_OFF_LABELS.Contains(b.Label.ToLowerInvariant())) : null;
+                    if (pick == null) continue;
+                    Log($"[{_ctx.Result.Id}] message box left open: click '{pick.Label}'");
+                    pick.Button.onClick.Invoke();
+                }
+            }
+            catch (Exception ex)
+            {
+                Log($"[{_ctx?.Result?.Id}] cannot answer message boxes: {ex.Message}");
+            }
+        }
 
         /// <summary>Closes every popup (announcements, dialogs, windows) so a scenario starts from a clean screen.</summary>
         private void CloseNonBaseUIs(string tag)
@@ -541,8 +751,18 @@ namespace MOD_nE7UL2.Mod
         }
 
         #region Output
+        /// <summary>
+        /// The game muted while the autotest runs (GameHelper.Mute: Unity's master volume, not saved - the game's sound
+        /// settings are unchanged). Set when the request is loaded and checked again at every phase.
+        /// </summary>
+        private static void Mute()
+        {
+            try { GameHelper.Mute(); } catch { }
+        }
+
         private void SetPhase(PhaseEnum phase, int delayMs)
         {
+            Mute();
             _phase = phase;
             _phaseStart = DateTime.Now;
             _nextAt = DateTime.Now.AddMilliseconds(delayMs);
@@ -553,7 +773,8 @@ namespace MOD_nE7UL2.Mod
         private void Finish(string status)
         {
             _phase = PhaseEnum.Done;
-            Log($"finished: {status}");
+            // the mod logs are shared by the games of every slot: run-game.ps1 of slot N waits for its own line
+            Log(Slot > 1 ? $"finished [slot {Slot}]: {status}" : $"finished: {status}");
             WriteResults(status);
             DebugHelper.Save();
         }
@@ -564,6 +785,27 @@ namespace MOD_nE7UL2.Mod
         /// a request file (&lt;autotest&gt;\snaps\&lt;n&gt;.req containing the target path) that run-autotest.ps1 captures
         /// within ~0.3 s (steps wait StepDelayMs before changing the screen).
         /// </summary>
+        /// <summary>Output folder of the running autotest (null outside a run).</summary>
+        public static string OutDir => Instance?._request?.OutDir;
+
+        /// <summary>
+        /// Requests a recording of the game window by run-autotest.ps1: frames (jpg, ~10 a second) into frameDir for ms
+        /// milliseconds; the request file (&lt;autotest&gt;\snaps\&lt;n&gt;.rec) is deleted when the recording is done.
+        /// Returns the request file (null when it could not be written).
+        /// </summary>
+        public static string Record(string frameDir, int ms)
+        {
+            try
+            {
+                var snapDir = Path.Combine(GetAutoTestFolder(ModMain.ModObj.ModId), "snaps");
+                Directory.CreateDirectory(snapDir);
+                var file = Path.Combine(snapDir, $"rec-{DateTime.Now:HHmmssfff}.rec");
+                File.WriteAllText(file, $"{frameDir}|{ms}");
+                return file;
+            }
+            catch { return null; }
+        }
+
         public string Snap(string label)
         {
             try

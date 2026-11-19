@@ -584,6 +584,9 @@ namespace MOD_nE7UL2.Mod
                 DebugHelper.WriteLine($"BattleRewardEvent: win");
                 var insight = player.GetDynProperty(UnitDynPropertyEnum.Talent).value;
 
+                //S&M score: the loot x the reward multiplier of P
+                SMScoreEvent.ScaleLoot(ModBattleEvent.SceneBattle.battleData.allDropRewardItem.ToArray());
+
                 //teammate get items
                 var teamData = HirePeopleEvent.GetTeamDetailData(g.world.playerUnit);
                 var rewardItems = ModBattleEvent.SceneBattle.battleData.allDropRewardItem.ToArray();
@@ -619,7 +622,7 @@ namespace MOD_nE7UL2.Mod
                     var rewardExp2 = Math.Max((double)localDmgRecv * ModMain.ModObj.ModSettings.BattleRewardConfigs.ExpPerDmgRecv, 1).ToIntClamp();
                     var rewardExp = ValueHelper.SafeAddInt(rewardExp1, rewardExp2);
 
-                    var myRewardExp = ((double)rewardExp * (insight / 100d)).ToIntClamp();
+                    var myRewardExp = SMScoreEvent.ScaleExp(((double)rewardExp * (insight / 100d)).ToIntClamp());
                     player.AddExp(myRewardExp);
                     DebugHelper.WriteLine($"BattleRewardEvent: +{myRewardExp}exp");
                 }

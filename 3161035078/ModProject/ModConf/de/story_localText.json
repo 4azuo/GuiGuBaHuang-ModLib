@@ -1672,7 +1672,7 @@
 	{
 		"id": "-1000007334",
 		"key": "story_no_pill",
-		"en|ch|tc|kr": "Du hast keine Pille vom Rang {0} oder höher."
+		"en|ch|tc|kr": "Du hast keine Pille für ihn."
 	},
 	{
 		"id": "-1000007335",
@@ -1723,5 +1723,1170 @@
 		"id": "-1000007344",
 		"key": "story_A5_1_o4",
 		"en|ch|tc|kr": "Überlass sie ihrer Rache"
+	},
+	{
+		"id": -1000007345,
+		"key": "story_name_G",
+		"en|ch|tc|kr": "Die Hundertjährige Wette"
+	},
+	{
+		"id": -1000007346,
+		"key": "story_task_desc_G",
+		"en|ch|tc|kr": "{0}"
+	},
+	{
+		"id": -1000007347,
+		"key": "story_task_G0",
+		"en|ch|tc|kr": "Der stolze junge Kultivierende {W} stößt dich am Sektentor und wettet, wer zuerst den Goldenen Kern erreicht."
+	},
+	{
+		"id": -1000007348,
+		"key": "story_task_G1",
+		"en|ch|tc|kr": "Fünfzehn Jahre später ruft {W} dich zum Rückkampf an einen Pass (Qi-Verdichtung)."
+	},
+	{
+		"id": -1000007349,
+		"key": "story_task_G2",
+		"en|ch|tc|kr": "Dreißig Jahre: eine Bestienhöhle voller Kräuter, einer von euch fällt hinein (Goldener Kern)."
+	},
+	{
+		"id": -1000007350,
+		"key": "story_task_G3",
+		"en|ch|tc|kr": "Fünfundvierzig Jahre: {W}s Sekte wird angegriffen, und zum ersten Mal bittet er um Hilfe (2 Jahre)."
+	},
+	{
+		"id": -1000007351,
+		"key": "story_task_G4",
+		"en|ch|tc|kr": "Siebzig Jahre: Tee mit {W} auf einem Gipfel, die Bilanz eines Lebens (Naszierende Seele)."
+	},
+	{
+		"id": -1000007352,
+		"key": "story_task_G5",
+		"en|ch|tc|kr": "Hundert Jahre: die letzte Wette von {W} - seine Trübsal oder seine letzten Tage (Seelenformung)."
+	},
+	{
+		"id": -1000007353,
+		"key": "story_G0_1",
+		"en|ch|tc|kr": "Vor einem Sektentor drängt sich ein junger Kultivierender vor und stößt dein Bündel in den Schlamm.\n{W}: „Aus dem Weg. Manche von uns werden Unsterbliche.“"
+	},
+	{
+		"id": -1000007354,
+		"key": "story_G0_1_o1",
+		"en|ch|tc|kr": "Zurückstoßen"
+	},
+	{
+		"id": -1000007355,
+		"key": "story_G0_1_o2",
+		"en|ch|tc|kr": "„Nach dir, Unsterblicher.“"
+	},
+	{
+		"id": -1000007356,
+		"key": "story_G0_1_o3",
+		"en|ch|tc|kr": "Deine Sachen aufheben"
+	},
+	{
+		"id": -1000007357,
+		"key": "story_G0_2",
+		"en|ch|tc|kr": "Was auch geschah, {W} mustert dich zweimal.\n{W}: „Du siehst aus wie jemand, der sich für besonders hält. Wer zuerst den Goldenen Kern erreicht, bekommt den Beutel des anderen - und der Verlierer schreibt den Namen des Siegers in sein Tagebuch.“"
+	},
+	{
+		"id": -1000007358,
+		"key": "story_G0_2_o1",
+		"en|ch|tc|kr": "„Abgemacht.“"
+	},
+	{
+		"id": -1000007359,
+		"key": "story_G0_2_o2",
+		"en|ch|tc|kr": "„Ich wette nicht.“"
+	},
+	{
+		"id": -1000007360,
+		"key": "story_G0_3",
+		"en|ch|tc|kr": "{W}: „Wette oder nicht, du bist jetzt drin, Rivale. Stirb nicht, bevor ich dich schlage. Das würde alles verderben.“"
+	},
+	{
+		"id": -1000007361,
+		"key": "story_G1_1",
+		"en|ch|tc|kr": "Ein Brief, zu einem Papierkranich gefaltet: „Rivale. Fünfzehn Jahre. Der Pass. Komm und verliere.“\n{W}: „Du bist gekommen. Gut. Zieh.“"
+	},
+	{
+		"id": -1000007362,
+		"key": "story_G1_1_o1",
+		"en|ch|tc|kr": "Duell"
+	},
+	{
+		"id": -1000007363,
+		"key": "story_G1_win",
+		"en|ch|tc|kr": "{W}: „Glück. Reines Glück. ...Deine Beinarbeit ist besser als beim letzten Mal.“"
+	},
+	{
+		"id": -1000007364,
+		"key": "story_G1_lose",
+		"en|ch|tc|kr": "{W}: „Ha! Schreib es auf. Schreib es zweimal auf.“"
+	},
+	{
+		"id": -1000007365,
+		"key": "story_G1_3",
+		"en|ch|tc|kr": "Banditen, die von zwei erschöpften Kultivierenden hörten, umstellen den Pass.\n{W}: „Waffenstillstand? Nur für diesen Kampf.“"
+	},
+	{
+		"id": -1000007366,
+		"key": "story_G1_3_o1",
+		"en|ch|tc|kr": "Seite an Seite kämpfen"
+	},
+	{
+		"id": -1000007367,
+		"key": "story_G2_he",
+		"en|ch|tc|kr": "Eine Bestienhöhle voller Geisterkräuter. Ihr kommt in derselben Nacht - und der Boden unter {W} bricht ein.\n{W}: „Wag es - wag es ja nicht zu lachen.“"
+	},
+	{
+		"id": -1000007368,
+		"key": "story_G2_he_o1",
+		"en|ch|tc|kr": "Hinabsteigen und die Bestie bekämpfen"
+	},
+	{
+		"id": -1000007369,
+		"key": "story_G2_he_o2",
+		"en|ch|tc|kr": "Ein Seil werfen und gehen"
+	},
+	{
+		"id": -1000007370,
+		"key": "story_G2_he_o3",
+		"en|ch|tc|kr": "Weggehen"
+	},
+	{
+		"id": -1000007371,
+		"key": "story_G2_you",
+		"en|ch|tc|kr": "Der Boden gibt unter dir nach. Ein Seil - dann springt {W} mit gezogenem Schwert neben dich.\n{W}: „Sieh mich nicht so an. Ich brauche dich lebend, um gegen mich zu verlieren.“"
+	},
+	{
+		"id": -1000007372,
+		"key": "story_G2_3",
+		"en|ch|tc|kr": "Danach, am Feuer.\n{W}: „Ich hatte einen Bruder. Er kultivierte schneller als ich. Starb bei der Grundlegung, als er mit jemandem mithalten wollte. ...Ich erzähle dir gar nichts.“"
+	},
+	{
+		"id": -1000007373,
+		"key": "story_G3_1",
+		"en|ch|tc|kr": "Zum ersten Mal in fünfundvierzig Jahren ein Brief ohne Beleidigung.\n{W}: „Rivale - sie kamen nachts. Rote Banner. Ich brauche Hilfe. Lass mich nicht zweimal fragen.“"
+	},
+	{
+		"id": -1000007374,
+		"key": "story_G3_1_o1",
+		"en|ch|tc|kr": "Für seine Sekte kämpfen"
+	},
+	{
+		"id": -1000007375,
+		"key": "story_G3_1_o2",
+		"en|ch|tc|kr": "Ihm ein Jahr Unterschlupf geben"
+	},
+	{
+		"id": -1000007376,
+		"key": "story_G3_1_o3",
+		"en|ch|tc|kr": "Ablehnen"
+	},
+	{
+		"id": -1000007377,
+		"key": "story_G3_owe",
+		"en|ch|tc|kr": "{W}: „...Ich schulde dir was. Zieh kein Gesicht. Ich hasse Schulden.“"
+	},
+	{
+		"id": -1000007378,
+		"key": "story_G3_alone",
+		"en|ch|tc|kr": "Er ging allein. Er überlebte, verlor aber eine Stufe.\n{W}: „Das vergesse ich nicht. Keinen Tag.“"
+	},
+	{
+		"id": -1000007379,
+		"key": "story_G4_1",
+		"en|ch|tc|kr": "Tee auf einem Gipfel. Seine Schläfen sind grau.\n{W}: „Siebzig Jahre. {0} Siege für mich, {1} für dich. Wer zählt schon.“"
+	},
+	{
+		"id": -1000007380,
+		"key": "story_G4_1_o1",
+		"en|ch|tc|kr": "„Ein letztes Duell.“"
+	},
+	{
+		"id": -1000007381,
+		"key": "story_G4_1_o2",
+		"en|ch|tc|kr": "„Lass uns gemeinsam einen Schüler ausbilden.“"
+	},
+	{
+		"id": -1000007382,
+		"key": "story_G4_1_o3",
+		"en|ch|tc|kr": "„Lass uns einfach trinken.“"
+	},
+	{
+		"id": -1000007383,
+		"key": "story_G4_3",
+		"en|ch|tc|kr": "{W}: „Weißt du, was ich am meisten hasste? Dass du nie besorgt aussahst. Kein einziges Mal in siebzig Jahren.“"
+	},
+	{
+		"id": -1000007384,
+		"key": "story_G5_1",
+		"en|ch|tc|kr": "Donner sammelt sich über seiner Höhle.\n{W}: „Letzte Wette. Überlebe ich das, gewinne ich alles.“"
+	},
+	{
+		"id": -1000007385,
+		"key": "story_G5_dying",
+		"en|ch|tc|kr": "Er ist mager geworden und lächelt zur Decke.\n{W}: „Sieht aus, als überlebst du mich. Das zählt als Sieg. Bild dir nichts ein.“"
+	},
+	{
+		"id": -1000007386,
+		"key": "story_G5_1_o1",
+		"en|ch|tc|kr": "Mit ihm im Blitz stehen"
+	},
+	{
+		"id": -1000007387,
+		"key": "story_G5_1_o2",
+		"en|ch|tc|kr": "Aus der Ferne zusehen"
+	},
+	{
+		"id": -1000007388,
+		"key": "story_G5_2",
+		"en|ch|tc|kr": "Er drückt dir den alten Beutel von vor einem Jahrhundert in die Hand - noch voll, mit hundert Jahren Zinsen."
+	},
+	{
+		"id": -1000007389,
+		"key": "story_endG_Friend",
+		"en|ch|tc|kr": "{W}: „Rivale. Freund. Eigentlich dasselbe Wort.“"
+	},
+	{
+		"id": -1000007390,
+		"key": "story_endG_Rival",
+		"en|ch|tc|kr": "{W}: „Gleiche Zeit in zehn Jahren. Bring eine bessere Ausrede fürs Verlieren mit.“"
+	},
+	{
+		"id": -1000007391,
+		"key": "story_endG_Surpassed",
+		"en|ch|tc|kr": "Ein Brief und eine Pille.\n{W}: „Ich habe oben gewartet. Es ist einsam hier. Beeil dich.“"
+	},
+	{
+		"id": -1000007392,
+		"key": "story_endG_Grave",
+		"en|ch|tc|kr": "Sein Schwert wartet auf seinem Grab. Auf dem Stein, in seiner Hand: „Hier ruht der Sieger.“ Ein junger Schüler verneigt sich und nennt dich „Onkel“."
+	},
+	{
+		"id": -1000007393,
+		"key": "story_end_G_Friend",
+		"en|ch|tc|kr": "Freund fürs Leben"
+	},
+	{
+		"id": -1000007394,
+		"key": "story_end_G_Rival",
+		"en|ch|tc|kr": "Ewiger Rivale"
+	},
+	{
+		"id": -1000007395,
+		"key": "story_end_G_Surpassed",
+		"en|ch|tc|kr": "Übertroffen"
+	},
+	{
+		"id": -1000007396,
+		"key": "story_end_G_Grave",
+		"en|ch|tc|kr": "Das Grab"
+	},
+	{
+		"id": -1000007397,
+		"key": "story_G_rival_letter",
+		"en|ch|tc|kr": "einen Duellbrief und eine Lektion"
+	},
+	{
+		"id": -1000007398,
+		"key": "story_name_H",
+		"en|ch|tc|kr": "Das Gasthaus am Weg"
+	},
+	{
+		"id": -1000007399,
+		"key": "story_task_desc_H",
+		"en|ch|tc|kr": "{0}"
+	},
+	{
+		"id": -1000007400,
+		"key": "story_task_H0",
+		"en|ch|tc|kr": "Die junge Witwe {K} eröffnet in {T} ein Gasthaus mit einem Kredit, den sie nicht zahlen kann."
+	},
+	{
+		"id": -1000007401,
+		"key": "story_task_H1",
+		"en|ch|tc|kr": "Zehn Jahre: {K} heiratet. Sei dabei."
+	},
+	{
+		"id": -1000007402,
+		"key": "story_task_H2",
+		"en|ch|tc|kr": "Fünfundzwanzig Jahre: Banditen haben das Gasthaus von {K} niedergebrannt (2 Jahre)."
+	},
+	{
+		"id": -1000007403,
+		"key": "story_task_H3",
+		"en|ch|tc|kr": "Vierzig Jahre: der Sohn von {K} will kultivieren."
+	},
+	{
+		"id": -1000007404,
+		"key": "story_task_H4",
+		"en|ch|tc|kr": "{K} wird alt. Besuche sie."
+	},
+	{
+		"id": -1000007405,
+		"key": "story_task_H5",
+		"en|ch|tc|kr": "Hundert Jahre: das Fest des Gasthauses."
+	},
+	{
+		"id": -1000007406,
+		"key": "story_H0_1",
+		"en|ch|tc|kr": "Ein undichtes Dach, drei Tische und ein Kredithai an der Tür.\n{K}: „Iss zuerst, Kultivierender. Sorgen kommen danach. ...Außer du willst mir helfen, mich weniger zu sorgen? (der Kredit: {0:#,##0} [icon:zm_lingshi])“"
+	},
+	{
+		"id": -1000007407,
+		"key": "story_H0_1_o1",
+		"en|ch|tc|kr": "Ihren Kredit zahlen"
+	},
+	{
+		"id": -1000007408,
+		"key": "story_H0_1_o2",
+		"en|ch|tc|kr": "Den Kredithai verjagen"
+	},
+	{
+		"id": -1000007409,
+		"key": "story_H0_1_o3",
+		"en|ch|tc|kr": "Essen und gehen"
+	},
+	{
+		"id": -1000007410,
+		"key": "story_H0_2",
+		"en|ch|tc|kr": "{K}: „Du bist ein seltsamer Mensch. Komm, wann du willst - hier gibt es immer eine Schale für dich.“"
+	},
+	{
+		"id": -1000007411,
+		"key": "story_H0_small",
+		"en|ch|tc|kr": "Du gehst. Ein Jahr später öffnet das Gasthaus trotzdem - kleiner, aber warm.\n{K}: „Oh, der, der aß und davonlief! Setz dich. Diesmal zahlst du.“"
+	},
+	{
+		"id": -1000007412,
+		"key": "story_H1_1",
+		"en|ch|tc|kr": "Das Gasthaus ist voller Laternen. {K} heiratet {R}, einen Karawanenwächter mit gütigen Augen.\n{K}: „Du bist gekommen! Hier - trink, trink. (ein Geschenk: {0:#,##0} [icon:zm_lingshi])“"
+	},
+	{
+		"id": -1000007413,
+		"key": "story_H1_1_o1",
+		"en|ch|tc|kr": "Ein Hochzeitsgeschenk geben"
+	},
+	{
+		"id": -1000007414,
+		"key": "story_H1_1_o2",
+		"en|ch|tc|kr": "Einen Trinkspruch ausbringen"
+	},
+	{
+		"id": -1000007415,
+		"key": "story_H2_1",
+		"en|ch|tc|kr": "Rauch über {T}. Das Gasthaus von {K} brennt; die Banditen lachen auf der Straße. (Wiederaufbau: {0:#,##0} [icon:zm_lingshi])"
+	},
+	{
+		"id": -1000007416,
+		"key": "story_H2_1_o1",
+		"en|ch|tc|kr": "Die Banditen jagen"
+	},
+	{
+		"id": -1000007417,
+		"key": "story_H2_1_o2",
+		"en|ch|tc|kr": "Den Wiederaufbau bezahlen"
+	},
+	{
+		"id": -1000007418,
+		"key": "story_H2_1_o3",
+		"en|ch|tc|kr": "Sie trösten und weiterziehen"
+	},
+	{
+		"id": -1000007419,
+		"key": "story_H2_saved",
+		"en|ch|tc|kr": "Neue Balken, das alte Schild.\n{K}: „Du Sturkopf. Dieses Gasthaus gehört jetzt halb dir, weißt du.“"
+	},
+	{
+		"id": -1000007420,
+		"key": "story_H2_ashes",
+		"en|ch|tc|kr": "Nur Asche und ein geschwärztes Schild.\n{K}: „Es ist nur Holz. ...Es war nur Holz.“"
+	},
+	{
+		"id": -1000007421,
+		"key": "story_H3_1",
+		"en|ch|tc|kr": "Ein großer Junge mit den Augen seiner Mutter versperrt dir den Weg.\n{K2}: „Mutter sagt, du bist ein Kultivierender. Lehre mich. Ich will nicht mein ganzes Leben Wein einschenken.“"
+	},
+	{
+		"id": -1000007422,
+		"key": "story_H3_1_o1",
+		"en|ch|tc|kr": "Ihn als Schüler annehmen"
+	},
+	{
+		"id": -1000007423,
+		"key": "story_H3_1_o2",
+		"en|ch|tc|kr": "Ihn zu einer Sekte schicken"
+	},
+	{
+		"id": -1000007424,
+		"key": "story_H3_1_o3",
+		"en|ch|tc|kr": "Es ihm ausreden"
+	},
+	{
+		"id": -1000007425,
+		"key": "story_H4_1",
+		"en|ch|tc|kr": "{K} ist jetzt weißhaarig, in eine Decke gehüllt am Ofen.\n{K}: „Versprich mir, dass du weiter kommst. Jemand muss den angebrannten Reis essen.“"
+	},
+	{
+		"id": -1000007426,
+		"key": "story_H4_1_o1",
+		"en|ch|tc|kr": "„Ich verspreche es.“"
+	},
+	{
+		"id": -1000007427,
+		"key": "story_H4_2",
+		"en|ch|tc|kr": "Sie schläft lächelnd ein und erwacht nicht mehr. Das Gasthaus schließt einen Tag; am nächsten Morgen brennt der Ofen wieder."
+	},
+	{
+		"id": -1000007428,
+		"key": "story_H4_gone",
+		"en|ch|tc|kr": "Du kommst zu spät: {K} ist gestorben. Ihre Familie hat dir eine Schale und einen Platz am Ofen freigehalten."
+	},
+	{
+		"id": -1000007429,
+		"key": "story_H5_1",
+		"en|ch|tc|kr": "Hundert Jahre seit dem undichten Dach. Das Gasthaus ist voll: {0} - die Menschen deines Lebens, oder ihre Geschichten, an einer langen Tafel."
+	},
+	{
+		"id": -1000007430,
+		"key": "story_H5_alone",
+		"en|ch|tc|kr": "alte Freunde und neue Gesichter"
+	},
+	{
+		"id": -1000007431,
+		"key": "story_endH_InnOfAges",
+		"en|ch|tc|kr": "Das Gasthaus von {K} besteht fort: wann immer du kommst, gibt es eine Schale, ein Bett und Neuigkeiten aus der Welt."
+	},
+	{
+		"id": -1000007432,
+		"key": "story_endH_Lineage",
+		"en|ch|tc|kr": "{K2}: „Meister. Mutters Gasthaus und deine Lehren - ich trage beides weiter.“"
+	},
+	{
+		"id": -1000007433,
+		"key": "story_endH_Ashes",
+		"en|ch|tc|kr": "Wo das Gasthaus stand, ein Grab und ein geschwärztes Schild. Du erinnerst dich an den Duft ihrer Suppe."
+	},
+	{
+		"id": -1000007434,
+		"key": "story_end_H_InnOfAges",
+		"en|ch|tc|kr": "Gasthaus der Zeitalter"
+	},
+	{
+		"id": -1000007435,
+		"key": "story_end_H_Lineage",
+		"en|ch|tc|kr": "Schülerlinie"
+	},
+	{
+		"id": -1000007436,
+		"key": "story_end_H_Ashes",
+		"en|ch|tc|kr": "Asche"
+	},
+	{
+		"id": -1000007437,
+		"key": "story_H_meal",
+		"en|ch|tc|kr": "eine warme Mahlzeit im Gasthaus"
+	},
+	{
+		"id": -1000007438,
+		"key": "story_name_I",
+		"en|ch|tc|kr": "Das versiegelte Grab"
+	},
+	{
+		"id": -1000007439,
+		"key": "story_task_desc_I",
+		"en|ch|tc|kr": "{0}"
+	},
+	{
+		"id": -1000007440,
+		"key": "story_task_I0",
+		"en|ch|tc|kr": "Eine halbe Karte in der Hand eines toten Kultivierenden; Ältester {Q} hat die andere Hälfte."
+	},
+	{
+		"id": -1000007441,
+		"key": "story_task_I1",
+		"en|ch|tc|kr": "Stelle ein Team für das Grab zusammen oder geh allein mit {Q} (1 Jahr)."
+	},
+	{
+		"id": -1000007442,
+		"key": "story_task_I2",
+		"en|ch|tc|kr": "Die äußeren Hallen des Grabes: Wächter, ein Rätsel, ein Schatz (2 Jahre)."
+	},
+	{
+		"id": -1000007443,
+		"key": "story_task_I3",
+		"en|ch|tc|kr": "Am inneren Tor zeigt {Q} sein wahres Gesicht."
+	},
+	{
+		"id": -1000007444,
+		"key": "story_task_I4",
+		"en|ch|tc|kr": "Die Seele des Grabherrn wartet: nehmen, befreien oder versiegeln."
+	},
+	{
+		"id": -1000007445,
+		"key": "story_I0_1",
+		"en|ch|tc|kr": "Ein toter Kultivierender am Weg, eine halbe Karte in der Faust. Ein alter Mann tritt mit der anderen Hälfte aus den Bäumen.\n{Q}: „Ah. Dann will das Schicksal uns beide. Partner - oder sehen wir, wessen Hälfte mehr wert ist?“"
+	},
+	{
+		"id": -1000007446,
+		"key": "story_I0_1_o1",
+		"en|ch|tc|kr": "„Partner.“"
+	},
+	{
+		"id": -1000007447,
+		"key": "story_I0_1_o2",
+		"en|ch|tc|kr": "„Rivalen. Der Schnellere gewinnt.“"
+	},
+	{
+		"id": -1000007448,
+		"key": "story_I1_1",
+		"en|ch|tc|kr": "{Q}: „Das Grab frisst die Unvorsichtigen. Bring zwei Gefährten, denen du traust - oder traue nur mir.“"
+	},
+	{
+		"id": -1000007449,
+		"key": "story_I1_1_o1",
+		"en|ch|tc|kr": "Mein Team mitnehmen"
+	},
+	{
+		"id": -1000007450,
+		"key": "story_I1_1_o2",
+		"en|ch|tc|kr": "Allein mit {Q} gehen"
+	},
+	{
+		"id": -1000007451,
+		"key": "story_need_team",
+		"en|ch|tc|kr": "Du brauchst 2 Teammitglieder (zuerst anheuern): {0} im Team."
+	},
+	{
+		"id": -1000007452,
+		"key": "story_I2_1",
+		"en|ch|tc|kr": "Steinerne Hallen. Puppenwächter drehen gleichzeitig die Köpfe."
+	},
+	{
+		"id": -1000007453,
+		"key": "story_I2_1_o1",
+		"en|ch|tc|kr": "Die Wächter bekämpfen"
+	},
+	{
+		"id": -1000007454,
+		"key": "story_I2_2",
+		"en|ch|tc|kr": "Drei Türen. Darüber gemeißelt: „Die Gierigen gehen links. Die Ängstlichen rechts. Wer sich selbst kennt, geht weiter.“"
+	},
+	{
+		"id": -1000007455,
+		"key": "story_I2_2_o1",
+		"en|ch|tc|kr": "Die linke Tür"
+	},
+	{
+		"id": -1000007456,
+		"key": "story_I2_2_o2",
+		"en|ch|tc|kr": "Die mittlere Tür"
+	},
+	{
+		"id": -1000007457,
+		"key": "story_I2_2_o3",
+		"en|ch|tc|kr": "Die rechte Tür"
+	},
+	{
+		"id": -1000007458,
+		"key": "story_I2_3",
+		"en|ch|tc|kr": "Ein Waffenständer glänzt im Dunkeln - wunderschön, mit leichtem Giftgeruch."
+	},
+	{
+		"id": -1000007459,
+		"key": "story_I2_3_o1",
+		"en|ch|tc|kr": "Eine Waffe nehmen"
+	},
+	{
+		"id": -1000007460,
+		"key": "story_I2_3_o2",
+		"en|ch|tc|kr": "Liegen lassen"
+	},
+	{
+		"id": -1000007461,
+		"key": "story_I3_1",
+		"en|ch|tc|kr": "Das innere Tor öffnet sich. {Q} lächelt und tritt zurück - seine Männer kommen aus den Schatten.\n{Q}: „Eine Karte braucht zwei Hälften. Ein Schatz nur einen Besitzer.“"
+	},
+	{
+		"id": -1000007462,
+		"key": "story_I3_team",
+		"en|ch|tc|kr": "Das innere Tor öffnet sich. {Q} lächelt - doch deine Gefährten haben die Hände schon an den Griffen.\n{Q}: „...Klug. Dann regeln wir es auf die alte Art.“"
+	},
+	{
+		"id": -1000007463,
+		"key": "story_I3_1_o1",
+		"en|ch|tc|kr": "Kämpfen"
+	},
+	{
+		"id": -1000007464,
+		"key": "story_I4_1",
+		"en|ch|tc|kr": "Die letzte Halle. Eine bleiche Gestalt auf einem Knochenthron öffnet die Augen.\nDer Grabherr, „Zehntausend Jahre. Nimmst du mein Erbe, befreist du mich - oder versiegelst du mich erneut?“"
+	},
+	{
+		"id": -1000007465,
+		"key": "story_I4_1_o1",
+		"en|ch|tc|kr": "Das Erbe nehmen"
+	},
+	{
+		"id": -1000007466,
+		"key": "story_I4_1_o2",
+		"en|ch|tc|kr": "Seine Seele befreien"
+	},
+	{
+		"id": -1000007467,
+		"key": "story_I4_1_o3",
+		"en|ch|tc|kr": "Ihn erneut versiegeln"
+	},
+	{
+		"id": -1000007468,
+		"key": "story_endI_Heir",
+		"en|ch|tc|kr": "Das Erbe strömt wie ein Feuerfluss in deine Meridiane. Irgendwo verflucht die Sekte von {Q} deinen Namen."
+	},
+	{
+		"id": -1000007469,
+		"key": "story_endI_FreedSoul",
+		"en|ch|tc|kr": "Die bleiche Gestalt lächelt und verblasst.\nDer Grabherr, „Danke. Ich werde es nicht vergessen. Einmal im Jahr, achte auf mein Geschenk.“"
+	},
+	{
+		"id": -1000007470,
+		"key": "story_endI_Sealer",
+		"en|ch|tc|kr": "Das Siegel schließt sich mit einem Glockenklang. Die rechtschaffenen Sekten hören davon und verneigen sich auf den Straßen vor dir."
+	},
+	{
+		"id": -1000007471,
+		"key": "story_endI_Looted",
+		"en|ch|tc|kr": "Zu spät: eine andere Sekte hat das Grab geöffnet und alles fortgetragen. Nur ein paar Kräuter bleiben in der äußeren Halle."
+	},
+	{
+		"id": -1000007472,
+		"key": "story_end_I_Heir",
+		"en|ch|tc|kr": "Erbe des Grabes"
+	},
+	{
+		"id": -1000007473,
+		"key": "story_end_I_FreedSoul",
+		"en|ch|tc|kr": "Befreite Seele"
+	},
+	{
+		"id": -1000007474,
+		"key": "story_end_I_Sealer",
+		"en|ch|tc|kr": "Versiegler"
+	},
+	{
+		"id": -1000007475,
+		"key": "story_end_I_Looted",
+		"en|ch|tc|kr": "Geplündertes Grab"
+	},
+	{
+		"id": -1000007476,
+		"key": "story_I_owner",
+		"en|ch|tc|kr": "Der Grabherr"
+	},
+	{
+		"id": -1000007477,
+		"key": "story_name_J",
+		"en|ch|tc|kr": "Der verfluchte Schüler"
+	},
+	{
+		"id": -1000007478,
+		"key": "story_task_desc_J",
+		"en|ch|tc|kr": "{0}"
+	},
+	{
+		"id": -1000007479,
+		"key": "story_task_J0",
+		"en|ch|tc|kr": "Ein Junge mit Dämonenmal, {J}, soll von einer Sekte hingerichtet werden."
+	},
+	{
+		"id": -1000007480,
+		"key": "story_task_J1",
+		"en|ch|tc|kr": "Lehre {J}: drei Lektionen in drei Jahren."
+	},
+	{
+		"id": -1000007481,
+		"key": "story_task_J2",
+		"en|ch|tc|kr": "Das Mal von {J} erwacht (1 Jahr)."
+	},
+	{
+		"id": -1000007482,
+		"key": "story_task_J3",
+		"en|ch|tc|kr": "Die Sekte, die {J} gezeichnet hat, kehrt zurück (2 Jahre)."
+	},
+	{
+		"id": -1000007483,
+		"key": "story_task_J4",
+		"en|ch|tc|kr": "{J} bricht durch: der Dämon macht ihm ein Angebot."
+	},
+	{
+		"id": -1000007484,
+		"key": "story_task_J5",
+		"en|ch|tc|kr": "Der Schüler übertrifft den Meister."
+	},
+	{
+		"id": -1000007485,
+		"key": "story_J0_1",
+		"en|ch|tc|kr": "Ein Richtplatz. Ein magerer Junge kniet in Ketten, ein schwarzes Mal brennt an seinem Hals. Sektenälteste heben ihre Schwerter. (sein Preis: {0:#,##0} [icon:zm_lingshi])"
+	},
+	{
+		"id": -1000007486,
+		"key": "story_J0_1_o1",
+		"en|ch|tc|kr": "Ihn retten"
+	},
+	{
+		"id": -1000007487,
+		"key": "story_J0_1_o2",
+		"en|ch|tc|kr": "Sein Leben kaufen"
+	},
+	{
+		"id": -1000007488,
+		"key": "story_J0_1_o3",
+		"en|ch|tc|kr": "Zusehen"
+	},
+	{
+		"id": -1000007489,
+		"key": "story_J0_2",
+		"en|ch|tc|kr": "Der Junge reibt sich die Handgelenke und sieht dich lange an.\n{J}: „...Warum?“"
+	},
+	{
+		"id": -1000007490,
+		"key": "story_J1_1",
+		"en|ch|tc|kr": "{J} hat einen Dieb gefasst, der eine alte Frau bestahl. Er hält dessen Arm, bereit, ihn zu brechen.\n{J}: „Meister. Was soll ich tun?“"
+	},
+	{
+		"id": -1000007491,
+		"key": "story_J1_2",
+		"en|ch|tc|kr": "Ein größerer Junge einer Sekte verspottet vor allen das Mal an {J}s Hals.\n{J}: „Meister. Er lacht mich aus.“"
+	},
+	{
+		"id": -1000007492,
+		"key": "story_J1_3",
+		"en|ch|tc|kr": "{J} sitzt nachts auf einer Klippe und starrt zu den Sternen.\n{J}: „Meister. Bin ich ein Dämon? Muss ich mich mein Leben lang verstecken?“"
+	},
+	{
+		"id": -1000007493,
+		"key": "story_J1_o1",
+		"en|ch|tc|kr": "„Gnade ist stärker als Zorn.“"
+	},
+	{
+		"id": -1000007494,
+		"key": "story_J1_o2",
+		"en|ch|tc|kr": "„Werde so stark, dass es keiner wagt.“"
+	},
+	{
+		"id": -1000007495,
+		"key": "story_J1_o3",
+		"en|ch|tc|kr": "„Entscheide selbst. Du bist frei.“"
+	},
+	{
+		"id": -1000007496,
+		"key": "story_J2_1",
+		"en|ch|tc|kr": "In einer belebten Straße flammt das Mal an {J}s Hals schwarz auf. Leute schreien; seine Augen sind nicht mehr seine."
+	},
+	{
+		"id": -1000007497,
+		"key": "story_J2_1_o1",
+		"en|ch|tc|kr": "Mit einer Pille unterdrücken"
+	},
+	{
+		"id": -1000007498,
+		"key": "story_J2_1_o2",
+		"en|ch|tc|kr": "Mit ihm kämpfen, bis er erwacht"
+	},
+	{
+		"id": -1000007499,
+		"key": "story_J2_1_o3",
+		"en|ch|tc|kr": "Ausbrennen lassen"
+	},
+	{
+		"id": -1000007500,
+		"key": "story_J2_1_inn",
+		"en|ch|tc|kr": "Ihn zum Gasthaus von {K} tragen"
+	},
+	{
+		"id": -1000007501,
+		"key": "story_J3_1",
+		"en|ch|tc|kr": "Älteste in grauen Roben umzingeln euch - dieselben, die ihn zeichneten.\n{J}: „Sie sind nicht für Gerechtigkeit gekommen. Sie wollen etwas begraben.“"
+	},
+	{
+		"id": -1000007502,
+		"key": "story_J3_inn",
+		"en|ch|tc|kr": "Sie fanden ihn im Gasthaus von {K}. Sie steht mit einer Kelle in der Tür, zwischen den Ältesten und dem Jungen.\n{J}: „Meister - lass nicht zu, dass sie ihr wehtun.“"
+	},
+	{
+		"id": -1000007503,
+		"key": "story_J3_1_o1",
+		"en|ch|tc|kr": "Die Ältesten bekämpfen"
+	},
+	{
+		"id": -1000007504,
+		"key": "story_J3_2",
+		"en|ch|tc|kr": "In den Briefen der gefallenen Ältesten die Wahrheit: das Mal war die eigene Sünde ihres Sektenmeisters, auf ein namenloses Kind übertragen.\n{J}: „Ich war also nie der Dämon. Nur das Versteck für einen.“"
+	},
+	{
+		"id": -1000007505,
+		"key": "story_J4_1",
+		"en|ch|tc|kr": "{J} bricht durch. Die Stimme des Dämons bietet ihm alles an - und er lacht.\n{J}: „Mein Meister hat mich Besseres gelehrt. Geh zurück zu dem, der dich gemacht hat.“"
+	},
+	{
+		"id": -1000007506,
+		"key": "story_J4_demon",
+		"en|ch|tc|kr": "{J} bricht durch. Die Stimme des Dämons bietet ihm alles an - und er hört zu.\n{J}: „Stärke. Du hast immer Stärke gesagt, Meister. Hier ist sie.“"
+	},
+	{
+		"id": -1000007507,
+		"key": "story_J5_1",
+		"en|ch|tc|kr": "Der Sektenmeister selbst kommt, das schwarze Mal an seiner eigenen Hand.\n{J}: „Meister. Ein letztes Mal Seite an Seite?“"
+	},
+	{
+		"id": -1000007508,
+		"key": "story_J5_demon",
+		"en|ch|tc|kr": "{J} steht jetzt neben dem Sektenmeister, das Mal über sein halbes Gesicht.\n{J}: „Meister. Zeig mir, wer recht hatte.“"
+	},
+	{
+		"id": -1000007509,
+		"key": "story_J5_1_o1",
+		"en|ch|tc|kr": "Den Sektenmeister bekämpfen"
+	},
+	{
+		"id": -1000007510,
+		"key": "story_J5_1_o2",
+		"en|ch|tc|kr": "Gegen {J} kämpfen"
+	},
+	{
+		"id": -1000007511,
+		"key": "story_J5_1_o3",
+		"en|ch|tc|kr": "Das Mal versiegeln - und seine Kultivierung"
+	},
+	{
+		"id": -1000007512,
+		"key": "story_endJ_Righteous",
+		"en|ch|tc|kr": "{J}: „Meister. Wohin du gehst, gehe ich hinter dir. ...Nun. Jetzt neben dir.“"
+	},
+	{
+		"id": -1000007513,
+		"key": "story_endJ_Demon",
+		"en|ch|tc|kr": "{J} geht ins Dunkel, das Mal leuchtet.\n{J}: „Wir sehen uns wieder, Meister. Auf der anderen Seite eines Krieges.“"
+	},
+	{
+		"id": -1000007514,
+		"key": "story_endJ_Sealed",
+		"en|ch|tc|kr": "Das Mal verblasst - und mit ihm seine Kultivierung. {J} wird ein gewöhnlicher junger Mann und lächelt mehr als je zuvor."
+	},
+	{
+		"id": -1000007515,
+		"key": "story_endJ_SealedInn",
+		"en|ch|tc|kr": "Das Mal verblasst - und mit ihm seine Kultivierung. {J} bleibt im Gasthaus von {K}, trägt Suppe und streitet mit dem Koch. Er sah nie glücklicher aus."
+	},
+	{
+		"id": -1000007516,
+		"key": "story_end_J_Righteous",
+		"en|ch|tc|kr": "Rechtschaffener Schüler"
+	},
+	{
+		"id": -1000007517,
+		"key": "story_end_J_Demon",
+		"en|ch|tc|kr": "Dämonischer Schüler"
+	},
+	{
+		"id": -1000007518,
+		"key": "story_end_J_Sealed",
+		"en|ch|tc|kr": "Versiegelt"
+	},
+	{
+		"id": -1000007519,
+		"key": "story_name_K",
+		"en|ch|tc|kr": "Der Donnerrest"
+	},
+	{
+		"id": -1000007520,
+		"key": "story_task_desc_K",
+		"en|ch|tc|kr": "{0}"
+	},
+	{
+		"id": -1000007521,
+		"key": "story_task_K0",
+		"en|ch|tc|kr": "Eine Stimme sprach im Donner und hinterließ eine Blitznarbe an deinem Arm."
+	},
+	{
+		"id": -1000007522,
+		"key": "story_task_K1",
+		"en|ch|tc|kr": "Finde seine zerbrochene Aufstiegsplattform (3 Jahre)."
+	},
+	{
+		"id": -1000007523,
+		"key": "story_task_K2",
+		"en|ch|tc|kr": "Eine Sekte, die ihn verehrt, will deine Narbe (2 Jahre)."
+	},
+	{
+		"id": -1000007524,
+		"key": "story_task_K3",
+		"en|ch|tc|kr": "Die Wahrheit über sein Scheitern."
+	},
+	{
+		"id": -1000007525,
+		"key": "story_task_K4",
+		"en|ch|tc|kr": "Die zweite Trübsal."
+	},
+	{
+		"id": -1000007526,
+		"key": "story_K0_1",
+		"en|ch|tc|kr": "Dein Durchbruch. Der Himmel reißt auf - und im Blitz flüstert eine Stimme, älter als die Berge, „Dreißigtausend Jahre... endlich jemand, der mich hört.“\nAls der Sturm vorbei ist, zieht sich eine Blitznarbe über deinen Arm."
+	},
+	{
+		"id": -1000007527,
+		"key": "story_K1_1",
+		"en|ch|tc|kr": "Die Narbe zieht dich zu einem toten Gipfel. Eine zerbrochene Plattform, und Puppen aus Blitzen, die erwachen, als du sie betrittst."
+	},
+	{
+		"id": -1000007528,
+		"key": "story_K1_1_o1",
+		"en|ch|tc|kr": "Die Puppen bekämpfen"
+	},
+	{
+		"id": -1000007529,
+		"key": "story_K2_1",
+		"en|ch|tc|kr": "Priester in sturmblauen Roben versperren den Weg und starren auf deinen Arm.\nEin Priester sagt, „Die Narbe gehört unserem Ahnen. Gib sie uns - notfalls mit dem Arm.“ (ihr Preis, dich ziehen zu lassen: {0:#,##0} [icon:zm_lingshi])"
+	},
+	{
+		"id": -1000007530,
+		"key": "story_K2_1_o1",
+		"en|ch|tc|kr": "Gegen sie kämpfen"
+	},
+	{
+		"id": -1000007531,
+		"key": "story_K2_1_o2",
+		"en|ch|tc|kr": "Sie bezahlen"
+	},
+	{
+		"id": -1000007532,
+		"key": "story_K3_1",
+		"en|ch|tc|kr": "Die Stimme spricht wieder, leiser, „Ich bin nicht am Himmel gescheitert. Ich habe sie verraten. Meine Dao-Gefährtin stand im Blitz hinter mir, und ich trat beiseite, um mich zu retten.“ Langes Schweigen. „Lass es mich noch einmal versuchen. Leih mir deinen Körper - oder steh nur da und sieh zu.“"
+	},
+	{
+		"id": -1000007533,
+		"key": "story_K3_1_o1",
+		"en|ch|tc|kr": "„Ich stehe und sehe zu.“"
+	},
+	{
+		"id": -1000007534,
+		"key": "story_K3_1_o2",
+		"en|ch|tc|kr": "„Mein Körper gehört mir.“"
+	},
+	{
+		"id": -1000007535,
+		"key": "story_K4_1",
+		"en|ch|tc|kr": "Die zweite Trübsal. Neun Wolken, neun Farben von Blitzen - und in jedem die Stimme des Rests, „Jetzt. Hilf mir oder beende mich.“"
+	},
+	{
+		"id": -1000007536,
+		"key": "story_K4_friend",
+		"en|ch|tc|kr": "Die zweite Trübsal. Neun Blitzwolken - und eine vertraute Gestalt landet neben dir, grauhaarig, grinsend. Es ist {0}.\n„Dachtest du, ich lasse dich die letzte Wette allein machen, Rivale?“"
+	},
+	{
+		"id": -1000007537,
+		"key": "story_K4_rival",
+		"en|ch|tc|kr": "Die zweite Trübsal. Neun Blitzwolken - und auf der anderen Seite des Sturms steht {0}, das Licht des Rests in den Augen.\n„Er hat mir den Himmel angeboten, Rivale. Du hast mir nie etwas anderes als Niederlagen geboten.“"
+	},
+	{
+		"id": -1000007538,
+		"key": "story_K4_1_o1",
+		"en|ch|tc|kr": "Dich von ihm führen lassen"
+	},
+	{
+		"id": -1000007539,
+		"key": "story_K4_1_o2",
+		"en|ch|tc|kr": "Ihn im Blitz vernichten"
+	},
+	{
+		"id": -1000007540,
+		"key": "story_K4_1_o3",
+		"en|ch|tc|kr": "Ihn wiedergeboren werden lassen"
+	},
+	{
+		"id": -1000007541,
+		"key": "story_endK_Guided",
+		"en|ch|tc|kr": "Der Blitz biegt sich um dich wie Wasser. Als es endet, ist die Stimme fort - und dein nächster Durchbruch wird sein wie durch eine offene Tür zu gehen."
+	},
+	{
+		"id": -1000007542,
+		"key": "story_endK_Devourer",
+		"en|ch|tc|kr": "Du zerreißt den Rest in seinem eigenen Blitz. Was von seiner Kraft bleibt, setzt sich knisternd in deinen Meridianen fest."
+	},
+	{
+		"id": -1000007543,
+		"key": "story_endK_SecondChance",
+		"en|ch|tc|kr": "Der Blitz faltet sich zu einem einzigen Funken und fällt wie ein Samen zur Erde. Irgendwo wird ein Kind mit sturmgrauen Augen geboren. Du lässt am Fuß des Berges eine Pille für es."
+	},
+	{
+		"id": -1000007544,
+		"key": "story_end_K_Guided",
+		"en|ch|tc|kr": "Geführt"
+	},
+	{
+		"id": -1000007545,
+		"key": "story_end_K_Devourer",
+		"en|ch|tc|kr": "Verschlinger besiegt"
+	},
+	{
+		"id": -1000007546,
+		"key": "story_end_K_SecondChance",
+		"en|ch|tc|kr": "Zweite Chance"
+	},
+	{
+		"id": -1000007547,
+		"key": "story_name_L",
+		"en|ch|tc|kr": "Der Herzdämon"
+	},
+	{
+		"id": -1000007548,
+		"key": "story_task_desc_L",
+		"en|ch|tc|kr": "{0}"
+	},
+	{
+		"id": -1000007549,
+		"key": "story_task_L0",
+		"en|ch|tc|kr": "Träume von den Menschen deines Lebens."
+	},
+	{
+		"id": -1000007550,
+		"key": "story_task_L1",
+		"en|ch|tc|kr": "Der Spiegelsee: drei Reuegefühle."
+	},
+	{
+		"id": -1000007551,
+		"key": "story_task_L2",
+		"en|ch|tc|kr": "Die Geister deiner Vergangenheit."
+	},
+	{
+		"id": -1000007552,
+		"key": "story_task_L3",
+		"en|ch|tc|kr": "Eine Kopie deiner selbst."
+	},
+	{
+		"id": -1000007553,
+		"key": "story_task_L4",
+		"en|ch|tc|kr": "Ein klares Herz."
+	},
+	{
+		"id": -1000007554,
+		"key": "story_L0_1",
+		"en|ch|tc|kr": "Du schläfst - und sie kommen, einer nach dem anderen, wie du sie verlassen hast: {0}.\nAm Ende des Traums lächelt dich eine Gestalt mit deinem Gesicht an."
+	},
+	{
+		"id": -1000007555,
+		"key": "story_L0_none",
+		"en|ch|tc|kr": "Gesichter, an die du dich kaum erinnerst"
+	},
+	{
+		"id": -1000007556,
+		"key": "story_L1_1",
+		"en|ch|tc|kr": "Ein See, still wie Glas. Darin ein Weg, den du nicht gingst: jemand, den du hättest retten können, und an dem du vorbeigingst.\nDein Spiegelbild fragt, „Bereust du es?“"
+	},
+	{
+		"id": -1000007557,
+		"key": "story_L1_2",
+		"en|ch|tc|kr": "Der See zeigt ein Gesicht, das du geliebt hast, wartend an einer Tür, zu der du nie zurückkehrtest.\nDein Spiegelbild fragt, „Bereust du es?“"
+	},
+	{
+		"id": -1000007558,
+		"key": "story_L1_3",
+		"en|ch|tc|kr": "Der See zeigt dich, vor langer Zeit, wie du Macht einem Freund vorziehst.\nDein Spiegelbild fragt, „Bereust du es?“"
+	},
+	{
+		"id": -1000007559,
+		"key": "story_L1_tomb",
+		"en|ch|tc|kr": "Der See zeigt das Grab, das du geöffnet hast, das Erbe, das du nahmst - und die Seele, die du im Dunkeln ließest.\nDein Spiegelbild fragt, „War es das wert?“"
+	},
+	{
+		"id": -1000007560,
+		"key": "story_L1_o1",
+		"en|ch|tc|kr": "„Ja. Und ich trage es.“"
+	},
+	{
+		"id": -1000007561,
+		"key": "story_L1_o2",
+		"en|ch|tc|kr": "„Nein. Es war der einzige Weg.“"
+	},
+	{
+		"id": -1000007562,
+		"key": "story_L2_1",
+		"en|ch|tc|kr": "Der See kocht. Heraus treten die Feinde, die du dir gemacht hast - graue Gestalten mit den Gesichtern jedes schiefgegangenen Endes."
+	},
+	{
+		"id": -1000007563,
+		"key": "story_L2_1_o1",
+		"en|ch|tc|kr": "Die Geister bekämpfen"
+	},
+	{
+		"id": -1000007564,
+		"key": "story_L3_1",
+		"en|ch|tc|kr": "Die letzte Gestalt steigt aus dem Wasser: du. Dein Gesicht, dein Schwert, deine Techniken - und ein Lächeln, das du nie getragen hast."
+	},
+	{
+		"id": -1000007565,
+		"key": "story_L3_1_o1",
+		"en|ch|tc|kr": "Gegen dich selbst kämpfen"
+	},
+	{
+		"id": -1000007566,
+		"key": "story_L4_1",
+		"en|ch|tc|kr": "Die Kopie kniet im Wasser und verblasst.\nDer Dämon flüstert, „Ich bin jede Angst, die du nie angesehen hast. Nimm mich an, verleugne mich - oder werde ich.“"
+	},
+	{
+		"id": -1000007567,
+		"key": "story_L4_1_o1",
+		"en|ch|tc|kr": "Ihn annehmen"
+	},
+	{
+		"id": -1000007568,
+		"key": "story_L4_1_o2",
+		"en|ch|tc|kr": "Ihn verleugnen"
+	},
+	{
+		"id": -1000007569,
+		"key": "story_L4_1_o3",
+		"en|ch|tc|kr": "Er werden"
+	},
+	{
+		"id": -1000007570,
+		"key": "story_endL_ClearHeart",
+		"en|ch|tc|kr": "Der See ist wieder nur ein See. Du siehst sie alle noch einmal, in Frieden: {0}. Dein Herz ist klar wie Wasser."
+	},
+	{
+		"id": -1000007571,
+		"key": "story_endL_Scarred",
+		"en|ch|tc|kr": "Du gehst. Der See ist ruhig - doch irgendwo darunter wartet der Dämon auf die nächsten zwanzig Jahre."
+	},
+	{
+		"id": -1000007572,
+		"key": "story_endL_Embraced",
+		"en|ch|tc|kr": "Du öffnest die Arme. Der Dämon strömt in dich, und die Welt wirkt kleiner. Die Rechtschaffenen werden dich ein Monster nennen; sollen sie."
+	},
+	{
+		"id": -1000007573,
+		"key": "story_end_L_ClearHeart",
+		"en|ch|tc|kr": "Klares Herz"
+	},
+	{
+		"id": -1000007574,
+		"key": "story_end_L_Scarred",
+		"en|ch|tc|kr": "Vernarbtes Herz"
+	},
+	{
+		"id": -1000007575,
+		"key": "story_end_L_Embraced",
+		"en|ch|tc|kr": "Umarmt"
+	},
+	{
+		"id": -1000007576,
+		"key": "story_L_demon",
+		"en|ch|tc|kr": "Der Herzdämon"
+	},
+	{
+		"id": -1000007577,
+		"key": "story_L_nightmare",
+		"en|ch|tc|kr": "einen Albtraum"
 	}
 ]

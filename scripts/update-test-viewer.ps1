@@ -42,7 +42,7 @@ if ($Keep -gt 0) {
     foreach ($sub in 'logs\autotest', 'logs\unittests', 'logs\game-runs') {
         $root = Join-Path $repo $sub
         $old = @(Get-ChildItem -LiteralPath $root -Directory -ErrorAction SilentlyContinue |
-            Where-Object { $_.Name -match '^\d{8}-\d{6}' -and -not (Test-Path -LiteralPath (Join-Path $_.FullName 'pinned.json')) } |
+            Where-Object { $_.Name -match '^\d{8}-\d{6}(-s\d+)?' -and -not (Test-Path -LiteralPath (Join-Path $_.FullName 'pinned.json')) } |
             Sort-Object Name -Descending | Select-Object -Skip $Keep)
         foreach ($d in $old) {
             try { Remove-Item -LiteralPath $d.FullName -Recurse -Force -ErrorAction Stop; Write-Host "Removed old run $sub\$($d.Name)" -ForegroundColor DarkGray }
@@ -54,7 +54,7 @@ if ($Keep -gt 0) {
 # ------------------------------------------------------------------ autotest
 $autotest = @()
 $atRoot = Join-Path $repo 'logs\autotest'
-foreach ($dir in @(Get-ChildItem -LiteralPath $atRoot -Directory -ErrorAction SilentlyContinue | Where-Object { $_.Name -match '^\d{8}-\d{6}$' } | Sort-Object Name)) {
+foreach ($dir in @(Get-ChildItem -LiteralPath $atRoot -Directory -ErrorAction SilentlyContinue | Where-Object { $_.Name -match '^\d{8}-\d{6}(-s\d+)?$' } | Sort-Object Name)) {
     $res = Read-Json (Join-Path $dir.FullName 'report.json')
     if (-not $res) { $res = Read-Json (Join-Path $dir.FullName 'results.json') }
     if (-not $res) { continue }
@@ -123,7 +123,7 @@ foreach ($trx in @(Get-ChildItem -LiteralPath $utRoot -Recurse -Filter *.trx -Er
             stack = if ($r.Output.ErrorInfo) { [string]$r.Output.ErrorInfo.StackTrace } else { $null }
         }
     })
-    $id = if ($trx.Directory.Name -match '^\d{8}-\d{6}$') { $trx.Directory.Name } else { $trx.LastWriteTime.ToString('yyyyMMdd-HHmmss') }
+    $id = if ($trx.Directory.Name -match '^\d{8}-\d{6}(-s\d+)?$') { $trx.Directory.Name } else { $trx.LastWriteTime.ToString('yyyyMMdd-HHmmss') }
     $unittest += [ordered]@{
         id = $id; time = $trx.LastWriteTime.ToString('s'); file = $trx.FullName.Substring($repo.Length + 1)
         pin = Read-Json (Join-Path $trx.DirectoryName 'pinned.json')

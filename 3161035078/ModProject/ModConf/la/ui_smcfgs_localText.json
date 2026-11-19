@@ -527,7 +527,7 @@
 	{
 		"id": "-1000001155",
 		"key": "smcfgs155",
-		"en|ch|tc|kr": "Hae facultates per defaltam accensae sunt neque difficultatis numerum mutant. Exstincta una, quae iam currunt manent (mutuum adhuc reddi potest, mandata exsistentia adhuc implentur)."
+		"en|ch|tc|kr": "Hae facultates per defaltam accensae sunt. Exstincta una difficultatis numerum mutat: difficilius sine facultate quae iuvat (mutua, occursus, familia), facilius sine ea quae nocet (praemia capitis, secessus coactus). Exstincta una, quae iam currunt manent (mutuum adhuc reddi potest, mandata exsistentia adhuc implentur)."
 	},
 	{
 		"id": "-1000001156",
@@ -623,5 +623,90 @@
 		"id": "-1000001174",
 		"key": "smcfgs174",
 		"en|ch|tc|kr": "Lotus Rubra: domina post ceteras fabulas; socii tui contra pavilionem eius."
+	},
+	{
+		"id": -1000001175,
+		"key": "sm_title_0",
+		"en|ch|tc|kr": "Vagus otiosus"
+	},
+	{
+		"id": -1000001176,
+		"key": "sm_title_1",
+		"en|ch|tc|kr": "Via mortalis"
+	},
+	{
+		"id": -1000001177,
+		"key": "sm_title_2",
+		"en|ch|tc|kr": "Quaesitor Dao"
+	},
+	{
+		"id": -1000001178,
+		"key": "sm_title_3",
+		"en|ch|tc|kr": "Asceta"
+	},
+	{
+		"id": -1000001179,
+		"key": "sm_title_4",
+		"en|ch|tc|kr": "Asura"
+	},
+	{
+		"id": -1000001180,
+		"key": "sm_title_5",
+		"en|ch|tc|kr": "Caeli contemptor"
+	},
+	{
+		"id": -1000001181,
+		"key": "sm_title_line",
+		"en|ch|tc|kr": "{0} · {1:#,##0} P · praemia {2}%"
+	},
+	{
+		"id": -1000001182,
+		"key": "sm_records_title",
+		"en|ch|tc|kr": "Tabulae punctorum"
+	},
+	{
+		"id": -1000001183,
+		"key": "sm_records_desc",
+		"en|ch|tc|kr": "Omnes personae omnium servationum: puncta S&M (P), titulus, summus gradus, anni, generationes."
+	},
+	{
+		"id": -1000001184,
+		"key": "sm_records_none",
+		"en|ch|tc|kr": "Nulla tabula adhuc: lude ut hic videas."
+	},
+	{
+		"id": -1000001185,
+		"key": "sm_records_line",
+		"en|ch|tc|kr": "{0}. {1} — {2} · {3:#,##0} P · gradus {4} · annus {5} · generatio {6} · {7}"
+	},
+	{
+		"id": -1000001186,
+		"key": "smcfgs186",
+		"en|ch|tc|kr": "Sponsio centum annorum: aemulus superbus qui de omnibus spondet; vita sponsionum, debita vitae et sponsio ultima."
+	},
+	{
+		"id": -1000001187,
+		"key": "smcfgs187",
+		"en|ch|tc|kr": "Caupona viae: caupona viduae in primo oppido tuo; faenerator, filius, nepos, tres generationes tuendae."
+	},
+	{
+		"id": -1000001188,
+		"key": "smcfgs188",
+		"en|ch|tc|kr": "Sepulcrum signatum: doctus urbanus, dimidia tabula et sepulcrum novem milia annorum signatum; socii, usque ad thesaurum."
+	},
+	{
+		"id": -1000001189,
+		"key": "smcfgs189",
+		"en|ch|tc|kr": "Discipulus exsecratus: puer nota daemonis signatus; educa eum misericordia, vi aut libertate, et fiet quod doces."
+	},
+	{
+		"id": -1000001190,
+		"key": "smcfgs190",
+		"en|ch|tc|kr": "Reliquiae tonitrus: vox antiqua in fulmine; immortalis lapsus qui alteram occasionem cupit."
+	},
+	{
+		"id": -1000001191,
+		"key": "smcfgs191",
+		"en|ch|tc|kr": "Daemon cordis: praeteritum tuum in somniis redit; obviam i eis quae ceterae fabulae ex te fecerunt."
 	}
 ]

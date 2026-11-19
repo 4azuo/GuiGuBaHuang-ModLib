@@ -234,6 +234,43 @@
             "presentation": { "panel": "dedicated", "clear": true }
         },
         {
+            "label": "Test: Promotion Pictures (SteamImg)",
+            "detail": "Deploy, run only the scenarios with promo pictures (no check panels, 1600x900) and copy them to 3161035078/ModProject/SteamImg",
+            "type": "process",
+            "command": "powershell.exe",
+            "args": ["-NoProfile", "-ExecutionPolicy", "Bypass", "-File", "${workspaceFolder}/scripts/game/run-promo.ps1", "-Deploy", "-Save", "${input:autotestSave}"],
+            "problemMatcher": [],
+            "presentation": { "panel": "dedicated", "clear": true }
+        },
+        {
+            "label": "Test: Open Promo Viewer",
+            "detail": "SteamImg pictures with their captions, the takes of every promotion run, the marketing videos (promo-viewer/index.html)",
+            "type": "process",
+            "command": "python",
+            "args": ["${workspaceFolder}/scripts/update-promo-viewer.py", "--open"],
+            "problemMatcher": [],
+            "presentation": { "reveal": "silent" }
+        },
+        {
+            "label": "Marketing: Render Video",
+            "detail": "Remotion video from SteamImg (marketing/video): out/taoist-promo.mp4 and out/taoist-promo-short.mp4",
+            "type": "shell",
+            "command": "npm install --no-audit --no-fund && npm run render && npm run render:short",
+            "options": { "cwd": "${workspaceFolder}/marketing/video" },
+            "problemMatcher": [],
+            "presentation": { "panel": "dedicated", "clear": true }
+        },
+        {
+            "label": "Marketing: Video Studio",
+            "detail": "Remotion studio (preview / edit the marketing video) - stop it with the terminal",
+            "type": "shell",
+            "command": "npm install --no-audit --no-fund && npm run studio",
+            "options": { "cwd": "${workspaceFolder}/marketing/video" },
+            "isBackground": true,
+            "problemMatcher": [],
+            "presentation": { "panel": "dedicated" }
+        },
+        {
             "label": "Test: Autotest (selected scenarios)",
             "detail": "Run only the given scenario ids (no deploy)",
             "type": "process",
@@ -261,6 +298,16 @@
             "args": ["-NoProfile", "-ExecutionPolicy", "Bypass", "-File", "${workspaceFolder}/scripts/update-test-viewer.ps1", "-Open"],
             "problemMatcher": [],
             "presentation": { "reveal": "silent" }
+        },
+        {
+            "label": "Test: Open Effect Viewer",
+            "detail": "Effect viewer with saving (your own assessment: user-* fields of docs/Effects/*/index.json): local server http://localhost:8765/effect-viewer/ - stop it with the terminal",
+            "type": "process",
+            "command": "python",
+            "args": ["${workspaceFolder}/scripts/effect-viewer-server.py", "--open"],
+            "isBackground": true,
+            "problemMatcher": [],
+            "presentation": { "reveal": "always", "panel": "dedicated" }
         },
 
         // ===== Repository =====

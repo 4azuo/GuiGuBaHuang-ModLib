@@ -53,6 +53,118 @@ namespace MOD_nE7UL2.Story
         protected static int Now => GameHelper.GetGameTotalMonth();
         public const string BG = "xinjianhualuo1";
 
+        /// <summary>
+        /// Background of a step's narration by its text key (pictures of docs/GameAssets/DramaBackgrounds, chosen to match
+        /// the scene: a cave, a tomb, bandits, a storm, a lake...); BG for the others.
+        /// </summary>
+        public static readonly Dictionary<string, string> BACKGROUNDS = new Dictionary<string, string>
+        {
+            ["A0_3"] = "menshangzhizi1",
+            ["A0_handed"] = "zhuanshenjianxue1",
+            ["A1_2_search"] = "linzhongxiaodao",
+            ["A1_late"] = "shandong",
+            ["A2_2_market"] = "laoren",
+            ["A2_2_robber"] = "shanzei2",
+            ["A2_jailed"] = "wujinlangdao",
+            ["A3_2"] = "heipaoansha1",
+            ["A3_ledger"] = "baojuanziji",
+            ["A4_3"] = "tianjianfadong",
+            ["A5_lost"] = "faqigongji",
+            ["endA_Sacrifice"] = "zhanshengwuluo",
+            ["B0_2"] = "shanzei",
+            ["B1_1"] = "laoren",
+            ["B2_2"] = "shanzei",
+            ["B2_vanished"] = "menshangzhizi1",
+            ["B3_1"] = "xunwenshenminanzi",
+            ["B4_1"] = "qunxingfumie1",
+            ["B4_3"] = "faqigongji",
+            ["endB_Betrayed"] = "menshangzhizi1",
+            ["endB_FallenTown"] = "faqigongji",
+            ["endB_Heir"] = "baojuanziji",
+            ["C0_2"] = "baozha",
+            ["C1_2"] = "mozhuiditu",
+            ["C1_3"] = "bingyuan",
+            ["C1_4"] = "lianhua2",
+            ["C2_1"] = "tianqifu2",
+            ["C3_exposed"] = "dalaoguangdian",
+            ["C4_2"] = "heipaoansha1",
+            ["C4_3_lost"] = "baozha",
+            ["C4_3_won"] = "lingqixuanwo",
+            ["endC_LastExplosion"] = "linjiantingtai",
+            ["D1_2"] = "yaoshoudaoxia",
+            ["D2_2"] = "yanxinbingkui",
+            ["D3_2"] = "weizhijitan",
+            ["D3_3"] = "heipaoansha1",
+            ["E0_2"] = "yaoyuan",
+            ["E1_1"] = "suirenyouyu",
+            ["E2_8"] = "yaoyuan",
+            ["E2_12"] = "suirenyouyu",
+            ["E2_15"] = "lengyankanlai1",
+            ["E3_1"] = "laoren",
+            ["E3_2"] = "jiandaoshoushan",
+            ["E4_1"] = "shuxiayuxi",
+            ["E4_2"] = "baojuanziji",
+            ["endE_LostChild"] = "zhuanshenjianxue1",
+            ["endE_Successor"] = "shuxiayuxi",
+            ["F_dead"] = "lianhua2",
+            ["F_spread"] = "faqigongji",
+            ["F1_1"] = "qunxingfumie1",
+            ["F1_3"] = "qunxingfumie1",
+            ["F3_1"] = "faqigongji",
+            ["F3_3"] = "shoulingchuxian",
+            ["F4_1"] = "lianhua2",
+            ["F4_2"] = "mengjingguodu",
+            ["F4_3"] = "gaoshanshnag",
+            ["G1_3"] = "shanzei",
+            ["G2_he"] = "dixiamushi",
+            ["G5_2"] = "mingshan",
+            ["endG_Grave"] = "shibei2",
+            ["H2_1"] = "baozha",
+            ["H4_2"] = "yuexiazhucha1",
+            ["H4_gone"] = "shibei2",
+            ["H5_1"] = "linjiantingtai",
+            ["endH_Ashes"] = "shibei2",
+            ["endH_InnOfAges"] = "linjiantingtai",
+            ["I2_1"] = "youshendongxue",
+            ["I2_2"] = "wujinlangdao",
+            ["I2_3"] = "zongmenmijing1",
+            ["I4_1"] = "shenguan",
+            ["endI_FreedSoul"] = "lingqixuanwo",
+            ["endI_Heir"] = "tianqifu2",
+            ["endI_Looted"] = "zongmenbaozang1",
+            ["endI_Sealer"] = "shenmizhenfa",
+            ["J0_1"] = "zhanshengwuluo",
+            ["J2_1"] = "xueguangchongxiao",
+            ["J3_1"] = "heipaoansha1",
+            ["endJ_Sealed"] = "linjiantingtai",
+            ["endJ_SealedInn"] = "linjiantingtai",
+            ["K0_1"] = "tianjianfadong",
+            ["K1_1"] = "weizhijitan",
+            ["K2_1"] = "tianqifu2",
+            ["K3_1"] = "lingqixuanwo",
+            ["K4_1"] = "tianjianfadong",
+            ["K4_friend"] = "tianjianfadong",
+            ["K4_rival"] = "tianjianfadong",
+            ["endK_Devourer"] = "tianjianfadong",
+            ["endK_Guided"] = "lingqixuanwo",
+            ["endK_SecondChance"] = "mingchichenggong1",
+            ["L0_1"] = "jinrushihai",
+            ["L1_1"] = "lianhua2",
+            ["L1_2"] = "lianhua2",
+            ["L1_3"] = "lianhua2",
+            ["L1_tomb"] = "shenguan",
+            ["L2_1"] = "faqigongji",
+            ["L3_1"] = "lianhua2",
+            ["L4_1"] = "mingzhongkuangnu",
+            ["endL_ClearHeart"] = "lianhua2",
+            ["endL_Embraced"] = "mingzhongkuangnu",
+            ["endL_Scarred"] = "mengjingguodu",
+        };
+
+        /// <summary>The background of a text key.</summary>
+        public static string Bg(string key) => key != null && BACKGROUNDS.TryGetValue(key, out var bg) ? bg : BG;
+
+
         public static WorldUnitBase U(StoryState s, string role) =>
             s.Roles.TryGetValue(role, out var id) ? FamilyEvent.Unit(id) : null;
 
@@ -88,7 +200,7 @@ namespace MOD_nE7UL2.Story
         {
             var unit = U(s, role);
             StoryEvent.Log(s, key);
-            ShowFrames(s, key, args, unit, unit == null, BG, Options(s, opts, args), Answer(s, pick));
+            ShowFrames(s, key, args, unit, unit == null, Bg(key), Options(s, opts, args), Answer(s, pick));
         }
 
         private static List<string> Options(StoryState s, string[] opts, object[] args) => (opts ?? new[] { "continue" }).Select(o => T(s, o, args)).ToList();
@@ -223,7 +335,7 @@ namespace MOD_nE7UL2.Story
         protected static void Tell(StoryState s, string key, string[] opts, Action<int> pick, string background = BG, params object[] args)
         {
             StoryEvent.Log(s, key);
-            ShowFrames(s, key, args, null, true, background, Options(s, opts, args), Answer(s, pick));
+            ShowFrames(s, key, args, null, true, background == BG ? Bg(key) : background, Options(s, opts, args), Answer(s, pick));
         }
 
         /// <summary>
@@ -270,6 +382,24 @@ namespace MOD_nE7UL2.Story
             var title = T(s, "name_" + s.Id);
             StoryEvent.ShowLater(() => g.ui.MsgBox(title, text, MsgBoxButtonEnum.Ok, () => { if (retry != null) retry(); else Wait(s, 0); }));
         }
+
+        /// <summary>
+        /// The long lines (G-L): an act opens at the later of its year (years since the line opened) and its realm (grade),
+        /// so a slow player meets it later and never skips it. Not yet: false, the step is checked again in 6 months.
+        /// </summary>
+        protected static bool Gate(StoryState s, int years, int grade)
+        {
+            if (StoryEvent.NoGates) return true;
+            if (Now - s.Flag("opened") >= years * 12 && Player.GetGradeLvl() >= grade) return true;
+            Wait(s, 6);
+            return false;
+        }
+
+        /// <summary>Ending reached by another line (null when it has none): the lines change each other (06 section 5).</summary>
+        public static string EndingOf(string line) => StoryEvent.Instance?.State(line)?.Ending;
+
+        /// <summary>Counter flag + 1.</summary>
+        protected static void Count(StoryState s, string flag) => s.Set(flag, s.Flag(flag) + 1);
 
         /// <summary>Next step, after `months` (0: as soon as the player is free).</summary>
         public static void Next(StoryState s, int months = 0)

@@ -22,5 +22,19 @@ namespace ModLib.Helper
             var newVec = src - dest;
             return Math.Min(Math.Abs(newVec.x), Math.Abs(newVec.y));
         }
+
+        /// <summary>Names of the 8 directions, counterclockwise from the right (screen: y up).</summary>
+        public static readonly string[] DIRECTIONS8 = { "right", "up-right", "up", "up-left", "left", "down-left", "down", "down-right" };
+
+        /// <summary>
+        /// Direction of a move as one of 8 names (<see cref="DIRECTIONS8"/>), or "static" when it is shorter than
+        /// <paramref name="minLength"/>.
+        /// </summary>
+        public static string ToDirection8(this Vector2 move, float minLength = 0.0001f)
+        {
+            if (move.magnitude < minLength) return "static";
+            var a = (float)(Math.Atan2(move.y, move.x) * 180.0 / Math.PI);
+            return DIRECTIONS8[(int)Mathf.Repeat(Mathf.Round(a / 45f), 8)];
+        }
     }
 }

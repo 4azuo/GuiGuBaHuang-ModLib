@@ -29,6 +29,11 @@ namespace MOD_nE7UL2.Mod
 
         // no field of a game/Unity enum type: the class must load outside the game (unit tests)
         public static GameAnimaWeapon[] WEAPONS => new[] { GameAnimaWeapon.PiscesPendant, GameAnimaWeapon.HootinEye, GameAnimaWeapon.DevilDemon };
+        /// <summary>Row of the damage calculation window (DamageInfo): not an artifact, a value outside the game's enum.</summary>
+        public const int DAMAGE_INFO_ROW = 1000;
+        public static GameAnimaWeapon DamageInfoRow => (GameAnimaWeapon)DAMAGE_INFO_ROW;
+        /// <summary>Every binding row: the artifacts, then the damage calculation window.</summary>
+        public static GameAnimaWeapon[] BINDINGS => WEAPONS.Concat(new[] { DamageInfoRow }).ToArray();
         public const string ROW_PREFIX = "Taoist:Key:";
 
         /// <summary>Hotkey (KeyCode value) of the Bagua Jade (Pisces Pendant).</summary>
@@ -37,10 +42,13 @@ namespace MOD_nE7UL2.Mod
         public int GodEyeKeyCode { get; set; }
         /// <summary>Hotkey (KeyCode value) of the Devil Demon pot.</summary>
         public int DevilDemonKeyCode { get; set; }
+        /// <summary>Hotkey (KeyCode value) of the damage calculation window (battle; default F9).</summary>
+        public int DamageInfoKeyCode { get; set; } = DamageInfo.DEFAULT_KEY;
 
         [Newtonsoft.Json.JsonIgnore] public KeyCode PiscesPendantKey { get => (KeyCode)PiscesPendantKeyCode; set => PiscesPendantKeyCode = (int)value; }
         [Newtonsoft.Json.JsonIgnore] public KeyCode GodEyeKey { get => (KeyCode)GodEyeKeyCode; set => GodEyeKeyCode = (int)value; }
         [Newtonsoft.Json.JsonIgnore] public KeyCode DevilDemonKey { get => (KeyCode)DevilDemonKeyCode; set => DevilDemonKeyCode = (int)value; }
+        [Newtonsoft.Json.JsonIgnore] public KeyCode DamageInfoKey { get => (KeyCode)DamageInfoKeyCode; set => DamageInfoKeyCode = (int)value; }
 
         private static int capturing;
         /// <summary>Artifact waiting for a key press (binding row clicked), None otherwise.</summary>
@@ -65,6 +73,7 @@ namespace MOD_nE7UL2.Mod
             if (w == GameAnimaWeapon.PiscesPendant) return PiscesPendantKey;
             if (w == GameAnimaWeapon.HootinEye) return GodEyeKey;
             if (w == GameAnimaWeapon.DevilDemon) return DevilDemonKey;
+            if (w == DamageInfoRow) return DamageInfoKey;
             return KeyCode.None;
         }
 
@@ -73,12 +82,14 @@ namespace MOD_nE7UL2.Mod
             if (w == GameAnimaWeapon.PiscesPendant) PiscesPendantKey = key;
             else if (w == GameAnimaWeapon.HootinEye) GodEyeKey = key;
             else if (w == GameAnimaWeapon.DevilDemon) DevilDemonKey = key;
+            else if (w == DamageInfoRow) DamageInfoKey = key;
         }
 
         public static string WeaponName(GameAnimaWeapon w)
         {
             if (w == GameAnimaWeapon.PiscesPendant) return GameTool.LS("newgame001");
             if (w == GameAnimaWeapon.HootinEye) return GameTool.LS("newgame002");
+            if (w == DamageInfoRow) return GameTool.LS("dmginfo_hotkey");
             return GameTool.LS("newgame003");
         }
 
@@ -159,11 +170,12 @@ namespace MOD_nE7UL2.Mod
                 return;
             var inBattle = GameHelper.IsInBattlle();
             if (inBattle) MonoTicksInBattle++;
-            if (PiscesPendantKey == KeyCode.None && GodEyeKey == KeyCode.None && DevilDemonKey == KeyCode.None)
+            DamageInfo.Watch();   // window closed by Esc / X: the battle runs again (every frame: the battle may be paused)
+            if (PiscesPendantKey == KeyCode.None && GodEyeKey == KeyCode.None && DevilDemonKey == KeyCode.None && DamageInfoKey == KeyCode.None)
                 return;
             if (IsTyping())
                 return;
-            foreach (var w in WEAPONS)
+            foreach (var w in BINDINGS)
             {
                 var key = GetKey(w);
                 if (key != KeyCode.None && Input.GetKeyDown(key))
@@ -185,6 +197,15 @@ namespace MOD_nE7UL2.Mod
         /// </summary>
         public bool Trigger(GameAnimaWeapon w)
         {
+            if (w == DamageInfoRow)
+            {
+                // in a battle only (outside: the button of the player info)
+                if (!GameHelper.IsInGame() || !GameHelper.IsInBattlle() || ModBattleEvent.PlayerUnit == null)
+                    return false;
+                DamageInfo.Toggle();
+                LastUse = "battle:DamageInfo";
+                return true;
+            }
             if (!GameHelper.IsInGame() || !GodArtifactHelper.HasAnimaWeapon(w))
                 return false;
             if (GameHelper.IsInBattlle())
@@ -265,7 +286,7 @@ namespace MOD_nE7UL2.Mod
                 RefreshUI();
                 return;
             }
-            foreach (var other in WEAPONS)
+            foreach (var other in BINDINGS)
                 if (other != w && key != KeyCode.None && GetKey(other) == key)
                     SetKey(other, KeyCode.None);
             SetKey(w, key);
@@ -317,11 +338,11 @@ namespace MOD_nE7UL2.Mod
         /// game settings (same look and use: click, then press a key). Without the game settings open: plain buttons.
         /// Returns the next free row.
         /// </summary>
-        public int AddBindingRows(ModLib.Object.UICustomBase ui, int row)
+        public int AddBindingRows(ModLib.Object.UICustomBase ui, int row, IEnumerable<GameAnimaWeapon> bindings = null, bool clear = true)
         {
-            rows.Clear();
+            if (clear) rows.Clear();
             var template = BindingTemplate();
-            foreach (var w in WEAPONS)
+            foreach (var w in bindings ?? BINDINGS)
             {
                 var weapon = w;
                 if (template != null)
@@ -401,6 +422,17 @@ namespace MOD_nE7UL2.Mod
             }
             foreach (var g2 in row.GetComponentsInChildren<Graphic>(true))
                 g2.color = new Color(g2.color.r, g2.color.g, g2.color.b, Math.Max(g2.color.a, 0.9f));
+            // the name cell of a game row fits a short key name: a longer one ("Damage Calculation") shrinks to fit on
+            // one line instead of wrapping out of the cell
+            var name = RowTexts(row).Item1;
+            if (name != null)
+            {
+                name.horizontalOverflow = HorizontalWrapMode.Wrap;
+                name.verticalOverflow = VerticalWrapMode.Truncate;
+                name.resizeTextMaxSize = name.fontSize;
+                name.resizeTextMinSize = Math.Max(8, name.fontSize / 2);
+                name.resizeTextForBestFit = true;
+            }
         }
 
         // ------------------------------------------------------------------ layout

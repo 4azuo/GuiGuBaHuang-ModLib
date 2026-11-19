@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Mod Previews</title>
+<!--
+  Preview images of the mods, rendered by marketing/preview/render.ps1 (Edge headless, one URL per image):
+    preview.html?mod=taoist&kind=square  -> 3161035078/ModProject/SteamImg/Preview.png (Steam Workshop)
+    preview.html?mod=taoist&kind=banner  -> 3161035078/ModProject/ModProjectPreview.png (title in the game's mod list)
+    preview.html?mod=modlib&kind=...      -> the same for 3385996759
+-->
+<style>
+  :root { --ink: #120d08; --paper: #f3ead6; --gold: #e8b54a; --seal: #b8322a; }
+  html, body { margin: 0; padding: 0; background: var(--ink); overflow: hidden; }
+  .card { position: relative; overflow: hidden; color: var(--paper); font-family: Georgia, 'Times New Roman', serif;
+    background: radial-gradient(ellipse at 50% 38%, #4a3420 0%, #22170d 55%, #0b0805 100%); }
+  .square { width: 512px; height: 512px; }
+  .banner { width: 546px; height: 150px; }
+  svg.mountains { position: absolute; left: 0; bottom: 0; width: 100%; }
+  .sun { position: absolute; border-radius: 50%; background: radial-gradient(circle, rgba(232,181,74,.55) 0%, rgba(232,181,74,.12) 55%, rgba(232,181,74,0) 72%); }
+  .title { position: absolute; left: 0; right: 0; text-align: center; font-weight: 700; letter-spacing: .14em;
+    text-shadow: 0 0 18px rgba(232,181,74,.75), 0 2px 0 #000; }
+  .sub { position: absolute; left: 0; right: 0; text-align: center; font-family: 'Segoe UI', Arial, sans-serif; color: var(--gold); letter-spacing: .32em; text-transform: uppercase; }
+  .seal { position: absolute; border: 3px solid var(--seal); color: var(--seal); background: rgba(243,234,214,.92); font-weight: 700;
+    display: flex; align-items: center; justify-content: center; border-radius: 6px; transform: rotate(-6deg);
+    box-shadow: 0 2px 10px rgba(0,0,0,.6); font-family: 'KaiTi', 'STKaiti', 'SimSun', serif; }
+  .tags { position: absolute; left: 0; right: 0; display: flex; justify-content: center; gap: 8px; flex-wrap: wrap; font-family: 'Segoe UI', Arial, sans-serif; }
+  .tags span { font-size: 13px; padding: 4px 10px; border-radius: 999px; background: rgba(18,13,8,.72); border: 1px solid rgba(232,181,74,.6); color: var(--paper); }
+  .spark { position: absolute; width: 4px; height: 4px; border-radius: 4px; background: var(--gold); box-shadow: 0 0 8px var(--gold); opacity: .7; }
+</style>
+</head>
+<body>
+<div id="root"></div>
+<script>
+  const q = new URLSearchParams(location.search);
+  const mod = q.get('mod') || 'taoist';
+  const kind = q.get('kind') || 'square';
+  const D = {
+    taoist: { title: 'TAOIST', sub: 'A living world', seal: '道', tags: ['Economy', 'Banks', 'Families', 'Storylines', 'Damage calc', 'S&M difficulty'] },
+    modlib: { title: 'MODLIB', sub: 'Mod framework', seal: '庫', tags: ['Events', 'UI', 'Configs', 'Localization', 'Helpers', 'Autotest'] },
+  }[mod];
+  const card = document.createElement('div');
+  card.className = 'card ' + kind;
+  const W = kind === 'square' ? 512 : 546, H = kind === 'square' ? 512 : 150;
+  // far and near ink mountains
+  const ridge = (seed, base, amp, n) => {
+    let d = `M0 ${H}`;
+    for (let i = 0; i <= n; i++) {
+      const x = i * W / n;
+      const y = base - amp * (0.5 + 0.5 * Math.sin(i * 1.7 + seed) * Math.cos(i * 0.6 + seed * 2));
+      d += ` L${x.toFixed(1)} ${y.toFixed(1)}`;
+    }
+    return d + ` L${W} ${H} Z`;
+  };
+  const svg = `<svg class="mountains" viewBox="0 0 ${W} ${H}" preserveAspectRatio="none" height="${H}">
+      <path d="${ridge(1, H * .78, H * .22, 9)}" fill="#3a2a1b" opacity=".75"/>
+      <path d="${ridge(4, H * .9, H * .16, 7)}" fill="#1a120a"/></svg>`;
+  let html = svg;
+  for (let i = 0; i < 18; i++)
+    html += `<div class="spark" style="left:${(i * 137.5) % 100}%;top:${(i * 61.8) % 70}%;opacity:${.3 + (i % 3) * .2}"></div>`;
+  if (kind === 'square') {
+    html += `<div class="sun" style="width:300px;height:300px;left:106px;top:40px"></div>
+      <div class="title" style="top:150px;font-size:${mod === 'taoist' ? 92 : 86}px">${D.title}</div>
+      <div class="sub" style="top:268px;font-size:17px">${D.sub}</div>
+      <div class="seal" style="width:64px;height:64px;font-size:44px;right:44px;top:44px">${D.seal}</div>
+      <div class="tags" style="top:316px;padding:0 40px">${D.tags.map(t => `<span>${t}</span>`).join('')}</div>`;
+  } else {
+    html += `<div class="sun" style="width:200px;height:200px;left:173px;top:-40px"></div>
+      <div class="title" style="top:22px;font-size:${mod === 'taoist' ? 62 : 58}px">${D.title}</div>
+      <div class="sub" style="top:104px;font-size:13px">${D.sub}</div>
+      <div class="seal" style="width:44px;height:44px;font-size:30px;right:22px;top:22px">${D.seal}</div>`;
+  }
+  card.innerHTML = html;
+  document.getElementById('root').appendChild(card);
+</script>
+</body>
+</html>

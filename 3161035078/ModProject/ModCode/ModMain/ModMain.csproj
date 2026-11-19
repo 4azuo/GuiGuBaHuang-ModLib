@@ -51,6 +51,8 @@
     <Compile Include="Helper\PriceHelper.cs" />
     <Compile Include="ModMain.cs" />
     <Compile Include="Mod\BattleAfterEvent.cs" />
+    <Compile Include="Mod\DamageInfo.cs" />
+    <Compile Include="Mod\SMScoreEvent.cs" />
     <Compile Include="Mod\ExpertEvent.cs" />
     <Compile Include="Mod\InflationaryEvent.cs" />
     <Compile Include="Mod\CustomRefineEvent.cs" />
@@ -86,6 +88,12 @@
     <Compile Include="Story\Lines\LineD_SwornBrothers.cs" />
     <Compile Include="Story\Lines\LineE_HerbGarden.cs" />
     <Compile Include="Story\Lines\LineF_RedLotus.cs" />
+    <Compile Include="Story\Lines\LineG_HundredYearWager.cs" />
+    <Compile Include="Story\Lines\LineH_RoadsideInn.cs" />
+    <Compile Include="Story\Lines\LineI_SealedTomb.cs" />
+    <Compile Include="Story\Lines\LineJ_CursedDisciple.cs" />
+    <Compile Include="Story\Lines\LineK_ThunderRemnant.cs" />
+    <Compile Include="Story\Lines\LineL_HeartDemon.cs" />
     <Compile Include="Mod\RealMarketEvent3.Extra.cs" />
     <Compile Include="Helper\ModTextHelper.cs" />
     <Compile Include="Mod\UICreatePlayerEvent.cs" />
@@ -152,6 +160,7 @@
     <Compile Include="AutoTest\Scenarios\Story\TG56_DramaTexts.cs" />
     <Compile Include="AutoTest\Scenarios\Story\TS_Storylines.cs" />
     <Compile Include="AutoTest\Scenarios\Battle\TB16_ArtifactHotkeys.cs" />
+    <Compile Include="AutoTest\Scenarios\Battle\TB17_DamageInfoBattle.cs" />
     <Compile Include="AutoTest\Scenarios\Time\TX07_GameMonthLog.cs" />
     <Compile Include="AutoTest\Scenarios\Time\TX08_FamilySeclusion.cs" />
     <Compile Include="AutoTest\Scenarios\Time\TX09_SkipTiming.cs" />
@@ -198,11 +207,16 @@
     <Compile Include="AutoTest\Scenarios\Economy\TG16_BuildingArrangeEvent.cs" />
     <Compile Include="AutoTest\Scenarios\Progression\TG21_SliceLifeQuestEvent.cs" />
     <Compile Include="AutoTest\Scenarios\Progression\TG22_RebirthEvent.cs" />
+    <Compile Include="AutoTest\Scenarios\Progression\TG60_SMScore.cs" />
     <Compile Include="AutoTest\Scenarios\Progression\TG23_MissionDeclareEvent.cs" />
     <Compile Include="AutoTest\Scenarios\Title\TT01_UITitleScreenEvent.cs" />
+    <Compile Include="AutoTest\Scenarios\Tool\TE_EffectGallery.cs" />
+    <Compile Include="AutoTest\Scenarios\Tool\TI01_SaveReloadProbe.cs" />
+    <Compile Include="AutoTest\Scenarios\Tool\TR_PromoShots.cs" />
     <Compile Include="AutoTest\Scenarios\Title\TT02_SMGlobalConfigsEvent.cs" />
     <Compile Include="AutoTest\Scenarios\UI\TG24_TimeSkipEvent.cs" />
     <Compile Include="AutoTest\Scenarios\UI\TG25_QiCulEvent.cs" />
+    <Compile Include="AutoTest\Scenarios\UI\TG61_DamageInfoWindow.cs" />
     <Compile Include="AutoTest\Scenarios\UI\TG26_UIEvent.cs" />
     <Compile Include="AutoTest\Scenarios\UI\TG27_UISettingScreenEvent.cs" />
     <Compile Include="AutoTest\Scenarios\UI\TG28_TrainerEvent.cs" />

@@ -57,7 +57,7 @@ button, select, input { font: inherit; color: inherit; }
 /* ---------------------------------------------------------------- header */
 .top {
   position: sticky; top: 0; z-index: 10;
-  display: flex; align-items: center; gap: 16px; flex-wrap: wrap;
+  display: flex; align-items: center; gap: 12px; flex-wrap: nowrap;
   padding: 8px 16px;
   background: var(--panel);
   border-bottom: 1px solid var(--line);
@@ -71,20 +71,20 @@ button, select, input { font: inherit; color: inherit; }
   border: 0; background: transparent; padding: 5px 12px; border-radius: 6px; cursor: pointer; color: var(--muted);
 }
 .tabs button.active { background: var(--panel); color: var(--text); box-shadow: var(--shadow); font-weight: 600; }
-.hdr-acts { display: flex; align-items: center; gap: 4px; }
-.hdr-acts .link { font-size: 13px; padding: 4px 8px; border-radius: 6px; }
-.hdr-acts .link:hover { background: var(--panel-2); }
+.list-acts { display: inline-flex; align-items: center; gap: 2px; margin-left: 4px; padding-left: 8px; border-left: 1px solid var(--line); }
+.list-acts .link { font-size: 12px; padding: 3px 8px; border-radius: 6px; white-space: nowrap; }
+.list-acts .link:hover { background: var(--panel-2); }
 .sdesc { color: var(--muted); font-size: 12px; line-height: 1.35; margin-top: 2px; max-width: 900px;
   display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
 .what { padding: 10px 12px; margin-bottom: 10px; border: 1px solid var(--line); border-radius: 8px; background: var(--panel-2); font-size: 12px; }
 .what > p { margin: 0 0 8px; font-size: 13px; line-height: 1.45; }
 .what .manual { padding: 0; }
-.runpick { margin-left: auto; display: flex; align-items: center; gap: 8px; }
+.runpick { margin-left: auto; display: flex; align-items: center; gap: 8px; flex: 0 1 auto; min-width: 0; }
 .runpick label { color: var(--muted); }
 .runpick select {
-  background: var(--panel-2); border: 1px solid var(--line); border-radius: 6px; padding: 4px 8px; min-width: 210px;
+  background: var(--panel-2); border: 1px solid var(--line); border-radius: 6px; padding: 4px 8px; min-width: 140px; max-width: 420px; flex: 0 1 420px; text-overflow: ellipsis;
 }
-.history { display: flex; gap: 2px; align-items: flex-end; max-width: 260px; overflow-x: auto; }
+.history { display: flex; gap: 2px; align-items: flex-end; max-width: 200px; overflow-x: auto; flex: 0 1 auto; }
 .history span {
   width: 9px; height: 18px; border-radius: 2px; cursor: pointer; opacity: .55; flex: 0 0 auto;
 }
@@ -272,3 +272,17 @@ details.sclog[open] > summary { border-bottom: 1px solid var(--line); }
 .modlog-files { display: flex; flex-wrap: wrap; gap: 4px; }
 .modlog-files .chip small { color: var(--muted); margin-left: 4px; }.runlink { cursor: pointer; border: 1px solid var(--line); background: transparent; color: var(--accent); font: inherit; font-size: 11px; }
 .runlink:hover { background: var(--panel-2); }
+
+/* switch between the viewers (test / effect / promo): one compact group at the right of the header */
+.viewers { margin-left: auto; flex: 0 0 auto; display: inline-flex; align-items: stretch; border: 1px solid var(--line); border-radius: 999px;
+  overflow: hidden; font-size: 12px; background: var(--panel-2); }
+.viewers a { padding: 4px 12px; color: var(--muted); text-decoration: none; white-space: nowrap; }
+.viewers a + a { border-left: 1px solid var(--line); }
+.viewers a:hover { color: var(--text); background: var(--panel); }
+.viewers a.on { background: var(--accent); color: #fff; font-weight: 600; cursor: default; }
+
+.runpick + .viewers { margin-left: 0; }
+.brand, .tabs { flex: 0 0 auto; }
+.brand .sub { white-space: nowrap; }
+/* narrow windows: wrap instead of overflowing */
+@media (max-width: 1100px) { .top { flex-wrap: wrap; } }

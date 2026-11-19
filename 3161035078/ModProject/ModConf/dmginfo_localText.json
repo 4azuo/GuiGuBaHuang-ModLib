@@ -1,0 +1,586 @@
+﻿[
+	{
+		"id": -1000009000,
+		"key": "dmginfo_title",
+		"en": "Damage Calculation",
+		"ch": "伤害计算",
+		"tc": "傷害計算",
+		"kr": "피해 계산"
+	},
+	{
+		"id": -1000009001,
+		"key": "dmginfo_button",
+		"en": "Damage Calc",
+		"ch": "伤害计算",
+		"tc": "傷害計算",
+		"kr": "피해 계산"
+	},
+	{
+		"id": -1000009002,
+		"key": "dmginfo_hotkey",
+		"en": "Damage Calculation",
+		"ch": "伤害计算",
+		"tc": "傷害計算",
+		"kr": "피해 계산"
+	},
+	{
+		"id": -1000009003,
+		"key": "dmginfo_monster",
+		"en": "Monster (grade {0})",
+		"ch": "妖兽（{0}阶）",
+		"tc": "妖獸（{0}階）",
+		"kr": "요수 ({0}단계)"
+	},
+	{
+		"id": -1000009004,
+		"key": "dmginfo_target",
+		"en": "Target: {0} (grade {1})",
+		"ch": "目标：{0}（{1}阶）",
+		"tc": "目標：{0}（{1}階）",
+		"kr": "대상: {0} ({1}단계)"
+	},
+	{
+		"id": -1000009005,
+		"key": "dmginfo_target_self",
+		"en": "Target: a cultivator with your own numbers (no battle, or no foe hit yet)",
+		"ch": "目标：与你数值相同的修士（不在战斗中，或尚未交手）",
+		"tc": "目標：與你數值相同的修士（不在戰鬥中，或尚未交手）",
+		"kr": "대상: 당신과 같은 수치의 수사 (전투 중이 아니거나 아직 교전 전)"
+	},
+	{
+		"id": -1000009006,
+		"key": "dmginfo_attack",
+		"en": "Your attack",
+		"ch": "你的攻击",
+		"tc": "你的攻擊",
+		"kr": "나의 공격"
+	},
+	{
+		"id": -1000009007,
+		"key": "dmginfo_defense",
+		"en": "Your defense",
+		"ch": "你的防御",
+		"tc": "你的防禦",
+		"kr": "나의 방어"
+	},
+	{
+		"id": -1000009008,
+		"key": "dmginfo_atk",
+		"en": "ATK: {0}",
+		"ch": "攻击力：{0}",
+		"tc": "攻擊力：{0}",
+		"kr": "공격력: {0}"
+	},
+	{
+		"id": -1000009009,
+		"key": "dmginfo_def",
+		"en": "DEF: {0}",
+		"ch": "防御力：{0}",
+		"tc": "防禦力：{0}",
+		"kr": "방어력: {0}"
+	},
+	{
+		"id": -1000009010,
+		"key": "dmginfo_hp",
+		"en": "HP: {0} / {1}",
+		"ch": "生命：{0} / {1}",
+		"tc": "生命：{0} / {1}",
+		"kr": "체력: {0} / {1}"
+	},
+	{
+		"id": -1000009011,
+		"key": "dmginfo_time",
+		"en": "Battle time multiplier: x{0}",
+		"ch": "战斗时长倍率：x{0}",
+		"tc": "戰鬥時長倍率：x{0}",
+		"kr": "전투 시간 배율: x{0}"
+	},
+	{
+		"id": -1000009012,
+		"key": "dmginfo_skill",
+		"en": "Skill bonus ({0}): +{1}",
+		"ch": "功法加成（{0}）：+{1}",
+		"tc": "功法加成（{0}）：+{1}",
+		"kr": "무공 보너스 ({0}): +{1}"
+	},
+	{
+		"id": -1000009013,
+		"key": "dmginfo_basis",
+		"en": "Basis bonus ({0} {1}): +{2}",
+		"ch": "根基加成（{0} {1}）：+{2}",
+		"tc": "根基加成（{0} {1}）：+{2}",
+		"kr": "근기 보너스 ({0} {1}): +{2}"
+	},
+	{
+		"id": -1000009014,
+		"key": "dmginfo_mp",
+		"en": "MP bonus ({0}% MP): +{1}",
+		"ch": "灵力加成（灵力{0}%）：+{1}",
+		"tc": "靈力加成（靈力{0}%）：+{1}",
+		"kr": "영력 보너스 (영력 {0}%): +{1}"
+	},
+	{
+		"id": -1000009015,
+		"key": "dmginfo_sp",
+		"en": "SP bonus ({0}% SP, Golden Core+): +{1}",
+		"ch": "念力加成（念力{0}%，金丹以上）：+{1}",
+		"tc": "念力加成（念力{0}%，金丹以上）：+{1}",
+		"kr": "념력 보너스 (념력 {0}%, 금단 이상): +{1}"
+	},
+	{
+		"id": -1000009016,
+		"key": "dmginfo_dp",
+		"en": "DP bonus ({0}% DP, Enlightenment+): +{1}",
+		"ch": "道力加成（道力{0}%，悟道以上）：+{1}",
+		"tc": "道力加成（道力{0}%，悟道以上）：+{1}",
+		"kr": "도력 보너스 (도력 {0}%, 오도 이상): +{1}"
+	},
+	{
+		"id": -1000009017,
+		"key": "dmginfo_crit",
+		"en": "Super critical: {0}% chance, x{1} damage",
+		"ch": "超级暴击：{0}%几率，x{1}伤害",
+		"tc": "超級暴擊：{0}%機率，x{1}傷害",
+		"kr": "초월 치명타: 확률 {0}%, 피해 x{1}"
+	},
+	{
+		"id": -1000009018,
+		"key": "dmginfo_kill",
+		"en": "Instant kill (monsters): {0}%",
+		"ch": "秒杀（妖兽）：{0}%",
+		"tc": "秒殺（妖獸）：{0}%",
+		"kr": "즉사 (요수): {0}%"
+	},
+	{
+		"id": -1000009019,
+		"key": "dmginfo_mindmg",
+		"en": "Minimum damage: {0} x target grade {1} = {2}",
+		"ch": "最低伤害：{0} x 目标阶级{1} = {2}",
+		"tc": "最低傷害：{0} x 目標階級{1} = {2}",
+		"kr": "최소 피해: {0} x 대상 단계 {1} = {2}"
+	},
+	{
+		"id": -1000009020,
+		"key": "dmginfo_steal",
+		"en": "Steal: HP {0}, MP {1}, SP {2}",
+		"ch": "吸取：生命{0}，灵力{1}，念力{2}",
+		"tc": "吸取：生命{0}，靈力{1}，念力{2}",
+		"kr": "흡수: 체력 {0}, 영력 {1}, 념력 {2}"
+	},
+	{
+		"id": -1000009021,
+		"key": "dmginfo_evade",
+		"en": "Evasion: {0}% (cap {1}% + step {2}%)",
+		"ch": "闪避：{0}%（上限{1}% + 身法{2}%）",
+		"tc": "閃避：{0}%（上限{1}% + 身法{2}%）",
+		"kr": "회피: {0}% (상한 {1}% + 신법 {2}%)"
+	},
+	{
+		"id": -1000009022,
+		"key": "dmginfo_block",
+		"en": "Block: {0}% chance (cap {1}%), -{2} damage",
+		"ch": "格挡：{0}%几率（上限{1}%），-{2}伤害",
+		"tc": "格擋：{0}%機率（上限{1}%），-{2}傷害",
+		"kr": "막기: 확률 {0}% (상한 {1}%), 피해 -{2}"
+	},
+	{
+		"id": -1000009023,
+		"key": "dmginfo_basisdef",
+		"en": "Basis defense ({0} {1}): -{2}",
+		"ch": "根基防御（{0} {1}）：-{2}",
+		"tc": "根基防禦（{0} {1}）：-{2}",
+		"kr": "근기 방어 ({0} {1}): -{2}"
+	},
+	{
+		"id": -1000009024,
+		"key": "dmginfo_mpblock",
+		"en": "MP shield: up to {0} blocks of -{1} (ratio {2})",
+		"ch": "灵力护盾：最多{0}次，每次-{1}（比率{2}）",
+		"tc": "靈力護盾：最多{0}次，每次-{1}（比率{2}）",
+		"kr": "영력 방패: 최대 {0}회, 회당 -{1} (비율 {2})"
+	},
+	{
+		"id": -1000009025,
+		"key": "dmginfo_spblock",
+		"en": "SP shield (Golden Core+): -{0}",
+		"ch": "念力护盾（金丹以上）：-{0}",
+		"tc": "念力護盾（金丹以上）：-{0}",
+		"kr": "념력 방패 (금단 이상): -{0}"
+	},
+	{
+		"id": -1000009026,
+		"key": "dmginfo_dpblock",
+		"en": "DP shield (Enlightenment+): -{0}",
+		"ch": "道力护盾（悟道以上）：-{0}",
+		"tc": "道力護盾（悟道以上）：-{0}",
+		"kr": "도력 방패 (오도 이상): -{0}"
+	},
+	{
+		"id": -1000009027,
+		"key": "dmginfo_foe",
+		"en": "ATK {0}, DEF {1}, HP {2} / {3}, evasion {4}%, block {5}%",
+		"ch": "攻击{0}，防御{1}，生命{2} / {3}，闪避{4}%，格挡{5}%",
+		"tc": "攻擊{0}，防禦{1}，生命{2} / {3}，閃避{4}%，格擋{5}%",
+		"kr": "공격 {0}, 방어 {1}, 체력 {2} / {3}, 회피 {4}%, 막기 {5}%"
+	},
+	{
+		"id": -1000009028,
+		"key": "dmginfo_example_dealt",
+		"en": "Example hit you deal (base = ATK, no random):",
+		"ch": "你造成的示例伤害（基础=攻击力，不含随机）：",
+		"tc": "你造成的示例傷害（基礎=攻擊力，不含隨機）：",
+		"kr": "가하는 예시 피해 (기본 = 공격력, 무작위 제외):"
+	},
+	{
+		"id": -1000009029,
+		"key": "dmginfo_example_crit",
+		"en": "The same with a super critical:",
+		"ch": "触发超级暴击时：",
+		"tc": "觸發超級暴擊時：",
+		"kr": "초월 치명타 시:"
+	},
+	{
+		"id": -1000009030,
+		"key": "dmginfo_example_taken",
+		"en": "Example hit you take (base = target ATK):",
+		"ch": "你承受的示例伤害（基础=目标攻击力）：",
+		"tc": "你承受的示例傷害（基礎=目標攻擊力）：",
+		"kr": "받는 예시 피해 (기본 = 대상 공격력):"
+	},
+	{
+		"id": -1000009031,
+		"key": "dmginfo_last",
+		"en": "Last hits of this battle",
+		"ch": "本场战斗最近的攻击",
+		"tc": "本場戰鬥最近的攻擊",
+		"kr": "이번 전투의 최근 공격"
+	},
+	{
+		"id": -1000009032,
+		"key": "dmginfo_last_dealt",
+		"en": "Dealt:",
+		"ch": "造成：",
+		"tc": "造成：",
+		"kr": "가함:"
+	},
+	{
+		"id": -1000009033,
+		"key": "dmginfo_last_taken",
+		"en": "Taken:",
+		"ch": "承受：",
+		"tc": "承受：",
+		"kr": "받음:"
+	},
+	{
+		"id": -1000009034,
+		"key": "dmginfo_none",
+		"en": "none yet",
+		"ch": "暂无",
+		"tc": "暫無",
+		"kr": "아직 없음"
+	},
+	{
+		"id": -1000009035,
+		"key": "dmginfo_paused",
+		"en": "The battle is paused while this window is open.",
+		"ch": "此窗口打开时战斗暂停。",
+		"tc": "此視窗開啟時戰鬥暫停。",
+		"kr": "이 창이 열려 있는 동안 전투가 일시 정지됩니다."
+	},
+	{
+		"id": -1000009036,
+		"key": "dmginfo_step_base",
+		"en": "base",
+		"ch": "基础",
+		"tc": "基礎",
+		"kr": "기본"
+	},
+	{
+		"id": -1000009037,
+		"key": "dmginfo_step_time",
+		"en": "+time",
+		"ch": "+时长",
+		"tc": "+時長",
+		"kr": "+시간"
+	},
+	{
+		"id": -1000009038,
+		"key": "dmginfo_step_skill",
+		"en": "+skill",
+		"ch": "+功法",
+		"tc": "+功法",
+		"kr": "+무공"
+	},
+	{
+		"id": -1000009039,
+		"key": "dmginfo_step_basis",
+		"en": "+basis",
+		"ch": "+根基",
+		"tc": "+根基",
+		"kr": "+근기"
+	},
+	{
+		"id": -1000009040,
+		"key": "dmginfo_step_skillbasis",
+		"en": "+skill/basis",
+		"ch": "+功法/根基",
+		"tc": "+功法/根基",
+		"kr": "+무공/근기"
+	},
+	{
+		"id": -1000009041,
+		"key": "dmginfo_step_mp",
+		"en": "+MP",
+		"ch": "+灵力",
+		"tc": "+靈力",
+		"kr": "+영력"
+	},
+	{
+		"id": -1000009042,
+		"key": "dmginfo_step_sp",
+		"en": "+SP",
+		"ch": "+念力",
+		"tc": "+念力",
+		"kr": "+념력"
+	},
+	{
+		"id": -1000009043,
+		"key": "dmginfo_step_dp",
+		"en": "+DP",
+		"ch": "+道力",
+		"tc": "+道力",
+		"kr": "+도력"
+	},
+	{
+		"id": -1000009044,
+		"key": "dmginfo_step_crit",
+		"en": "critical",
+		"ch": "暴击",
+		"tc": "暴擊",
+		"kr": "치명타"
+	},
+	{
+		"id": -1000009045,
+		"key": "dmginfo_step_block",
+		"en": "block",
+		"ch": "格挡",
+		"tc": "格擋",
+		"kr": "막기"
+	},
+	{
+		"id": -1000009046,
+		"key": "dmginfo_step_basisdef",
+		"en": "-basis def",
+		"ch": "-根基防御",
+		"tc": "-根基防禦",
+		"kr": "-근기 방어"
+	},
+	{
+		"id": -1000009047,
+		"key": "dmginfo_step_mpblock",
+		"en": "-MP shield",
+		"ch": "-灵力护盾",
+		"tc": "-靈力護盾",
+		"kr": "-영력 방패"
+	},
+	{
+		"id": -1000009048,
+		"key": "dmginfo_step_spblock",
+		"en": "-SP shield",
+		"ch": "-念力护盾",
+		"tc": "-念力護盾",
+		"kr": "-념력 방패"
+	},
+	{
+		"id": -1000009049,
+		"key": "dmginfo_step_dpblock",
+		"en": "-DP shield",
+		"ch": "-道力护盾",
+		"tc": "-道力護盾",
+		"kr": "-도력 방패"
+	},
+	{
+		"id": -1000009050,
+		"key": "dmginfo_step_min",
+		"en": "final",
+		"ch": "最终",
+		"tc": "最終",
+		"kr": "최종"
+	},
+	{
+		"id": -1000009051,
+		"key": "dmginfo_step_nullified",
+		"en": "nullified",
+		"ch": "抵消",
+		"tc": "抵消",
+		"kr": "무효"
+	},
+	{
+		"id": -1000009052,
+		"key": "dmginfo_step_kill",
+		"en": "instant kill",
+		"ch": "秒杀",
+		"tc": "秒殺",
+		"kr": "즉사"
+	},
+	{
+		"id": -1000009053,
+		"key": "dmginfo_step_evaded",
+		"en": "evaded",
+		"ch": "闪避",
+		"tc": "閃避",
+		"kr": "회피"
+	},
+	{
+		"id": -1000009054,
+		"key": "dmginfo_b_blade",
+		"en": "Blade",
+		"ch": "刀",
+		"tc": "刀",
+		"kr": "도"
+	},
+	{
+		"id": -1000009055,
+		"key": "dmginfo_b_spear",
+		"en": "Spear",
+		"ch": "枪",
+		"tc": "槍",
+		"kr": "창"
+	},
+	{
+		"id": -1000009056,
+		"key": "dmginfo_b_sword",
+		"en": "Sword",
+		"ch": "剑",
+		"tc": "劍",
+		"kr": "검"
+	},
+	{
+		"id": -1000009057,
+		"key": "dmginfo_b_fist",
+		"en": "Fist",
+		"ch": "拳",
+		"tc": "拳",
+		"kr": "권"
+	},
+	{
+		"id": -1000009058,
+		"key": "dmginfo_b_palm",
+		"en": "Palm",
+		"ch": "掌",
+		"tc": "掌",
+		"kr": "장"
+	},
+	{
+		"id": -1000009059,
+		"key": "dmginfo_b_finger",
+		"en": "Finger",
+		"ch": "指",
+		"tc": "指",
+		"kr": "지"
+	},
+	{
+		"id": -1000009060,
+		"key": "dmginfo_b_fire",
+		"en": "Fire",
+		"ch": "火",
+		"tc": "火",
+		"kr": "화"
+	},
+	{
+		"id": -1000009061,
+		"key": "dmginfo_b_froze",
+		"en": "Water",
+		"ch": "水",
+		"tc": "水",
+		"kr": "수"
+	},
+	{
+		"id": -1000009062,
+		"key": "dmginfo_b_thunder",
+		"en": "Lightning",
+		"ch": "雷",
+		"tc": "雷",
+		"kr": "뇌"
+	},
+	{
+		"id": -1000009063,
+		"key": "dmginfo_b_wind",
+		"en": "Wind",
+		"ch": "风",
+		"tc": "風",
+		"kr": "풍"
+	},
+	{
+		"id": -1000009064,
+		"key": "dmginfo_b_earth",
+		"en": "Earth",
+		"ch": "土",
+		"tc": "土",
+		"kr": "토"
+	},
+	{
+		"id": -1000009065,
+		"key": "dmginfo_b_wood",
+		"en": "Wood",
+		"ch": "木",
+		"tc": "木",
+		"kr": "목"
+	},
+	{
+		"id": -1000009066,
+		"key": "dmginfo_foes_monsters",
+		"en": "Recent monsters",
+		"ch": "最近交手的妖兽",
+		"tc": "最近交手的妖獸",
+		"kr": "최근 상대한 요수"
+	},
+	{
+		"id": -1000009067,
+		"key": "dmginfo_foes_humans",
+		"en": "Recent cultivators",
+		"ch": "最近交手的修士",
+		"tc": "最近交手的修士",
+		"kr": "최근 상대한 수사"
+	},
+	{
+		"id": -1000009068,
+		"key": "dmginfo_foes_none",
+		"en": "None fought yet: fight a battle, its foes are kept here with their numbers of that time.",
+		"ch": "尚无：战斗后，对手及其当时的数值会保存在这里。",
+		"tc": "尚無：戰鬥後，對手及其當時的數值會保存在這裡。",
+		"kr": "아직 없음: 전투 후 상대와 그때의 수치가 여기에 저장됩니다."
+	},
+	{
+		"id": -1000009069,
+		"key": "dmginfo_foe_grade",
+		"en": "Grade {0} · Year {1}, Month {2}",
+		"ch": "{0}阶 · 第{1}年{2}月",
+		"tc": "{0}階 · 第{1}年{2}月",
+		"kr": "{0}단계 · {1}년 {2}월"
+	},
+	{
+		"id": -1000009070,
+		"key": "dmginfo_foe_dealt",
+		"en": "You deal {0:#,##0} (crit {1:#,##0}) · {2} hits",
+		"ch": "你造成{0:#,##0}（暴击{1:#,##0}）· {2}击",
+		"tc": "你造成{0:#,##0}（暴擊{1:#,##0}）· {2}擊",
+		"kr": "가하는 피해 {0:#,##0} (치명 {1:#,##0}) · {2}타"
+	},
+	{
+		"id": -1000009071,
+		"key": "dmginfo_foe_taken",
+		"en": "You take {0:#,##0} · down in {1} hits",
+		"ch": "你承受{0:#,##0} · {1}击倒下",
+		"tc": "你承受{0:#,##0} · {1}擊倒下",
+		"kr": "받는 피해 {0:#,##0} · {1}타에 쓰러짐"
+	},
+	{
+		"id": -1000009072,
+		"key": "dmginfo_foes_hint",
+		"en": "Next page: the last monsters and cultivators you fought, with the damage both ways.",
+		"ch": "下一页：最近交手的妖兽与修士，以及双方的伤害。",
+		"tc": "下一頁：最近交手的妖獸與修士，以及雙方的傷害。",
+		"kr": "다음 페이지: 최근 상대한 요수와 수사, 서로의 피해."
+	}
+]

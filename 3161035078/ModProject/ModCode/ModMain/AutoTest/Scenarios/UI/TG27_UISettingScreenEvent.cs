@@ -34,7 +34,9 @@ namespace MOD_nE7UL2.AutoTest.Scenarios.UI
                     c.Assert(g.ui.HasUI(UIType.TextInfoLong) && w != null, "Taoist settings window opened (large window)");
                     c.Assert((w?.Items.OfType<UIItemToggle>().Count() ?? 0) >= 4, $"4 toggles (damage multiplier, exceptions, market notifications, encounters): {w?.Items.OfType<UIItemToggle>().Count()}");
                     c.Assert(FindButtons(UIType.TextInfoLong, GameTool.LS("setting013")).Any(), "Taoist log button");
-                    c.Assert(w != null && w.Items.OfType<UIItemText>().Any(x => (x.GetFormat() ?? string.Empty) == GameTool.LS("setting006")), "hint: the artifact hotkeys are in the Bindings tab");
+                    // the hint is word-wrapped: its first line
+                    var hint = BankLoanEvent.WrapWords(GameTool.LS("setting006"), 110).FirstOrDefault() ?? string.Empty;
+                    c.Assert(w != null && w.Items.OfType<UIItemText>().Any(x => (x.GetFormat() ?? string.Empty) == hint), "hint: the artifact hotkeys are in the Bindings tab");
                     c.Info($"HideDamageMultiplier={UISettingScreenEvent.Instance.HideDamageMultiplier}, HideExceptionLogs={UISettingScreenEvent.Instance.HideExceptionLogs}");
                     TaoistLogEvent.Log("log_empty");
                     FindButtons(UIType.TextInfoLong, GameTool.LS("setting013")).Last().Item.onClick.Invoke();

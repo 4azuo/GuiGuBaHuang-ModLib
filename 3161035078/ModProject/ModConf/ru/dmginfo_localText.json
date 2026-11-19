@@ -1,0 +1,367 @@
+[
+	{
+		"id": -1000009000,
+		"key": "dmginfo_title",
+		"en|ch|tc|kr": "Расчёт урона"
+	},
+	{
+		"id": -1000009001,
+		"key": "dmginfo_button",
+		"en|ch|tc|kr": "Расчёт урона"
+	},
+	{
+		"id": -1000009002,
+		"key": "dmginfo_hotkey",
+		"en|ch|tc|kr": "Расчёт урона"
+	},
+	{
+		"id": -1000009003,
+		"key": "dmginfo_monster",
+		"en|ch|tc|kr": "Монстр (ранг {0})"
+	},
+	{
+		"id": -1000009004,
+		"key": "dmginfo_target",
+		"en|ch|tc|kr": "Цель: {0} (ранг {1})"
+	},
+	{
+		"id": -1000009005,
+		"key": "dmginfo_target_self",
+		"en|ch|tc|kr": "Цель: культиватор с вашими показателями (вне боя или ещё не было ударов)"
+	},
+	{
+		"id": -1000009006,
+		"key": "dmginfo_attack",
+		"en|ch|tc|kr": "Ваша атака"
+	},
+	{
+		"id": -1000009007,
+		"key": "dmginfo_defense",
+		"en|ch|tc|kr": "Ваша защита"
+	},
+	{
+		"id": -1000009008,
+		"key": "dmginfo_atk",
+		"en|ch|tc|kr": "АТК: {0}"
+	},
+	{
+		"id": -1000009009,
+		"key": "dmginfo_def",
+		"en|ch|tc|kr": "ЗАЩ: {0}"
+	},
+	{
+		"id": -1000009010,
+		"key": "dmginfo_hp",
+		"en|ch|tc|kr": "ОЗ: {0} / {1}"
+	},
+	{
+		"id": -1000009011,
+		"key": "dmginfo_time",
+		"en|ch|tc|kr": "Множитель времени боя: x{0}"
+	},
+	{
+		"id": -1000009012,
+		"key": "dmginfo_skill",
+		"en|ch|tc|kr": "Бонус техники ({0}): +{1}"
+	},
+	{
+		"id": -1000009013,
+		"key": "dmginfo_basis",
+		"en|ch|tc|kr": "Бонус основы ({0} {1}): +{2}"
+	},
+	{
+		"id": -1000009014,
+		"key": "dmginfo_mp",
+		"en|ch|tc|kr": "Бонус МП ({0}% МП): +{1}"
+	},
+	{
+		"id": -1000009015,
+		"key": "dmginfo_sp",
+		"en|ch|tc|kr": "Бонус СП ({0}% СП, с Золотого ядра): +{1}"
+	},
+	{
+		"id": -1000009016,
+		"key": "dmginfo_dp",
+		"en|ch|tc|kr": "Бонус ДП ({0}% ДП, с Просветления): +{1}"
+	},
+	{
+		"id": -1000009017,
+		"key": "dmginfo_crit",
+		"en|ch|tc|kr": "Суперкрит: шанс {0}%, урон x{1}"
+	},
+	{
+		"id": -1000009018,
+		"key": "dmginfo_kill",
+		"en|ch|tc|kr": "Мгновенное убийство (монстры): {0}%"
+	},
+	{
+		"id": -1000009019,
+		"key": "dmginfo_mindmg",
+		"en|ch|tc|kr": "Мин. урон: {0} x ранг цели {1} = {2}"
+	},
+	{
+		"id": -1000009020,
+		"key": "dmginfo_steal",
+		"en|ch|tc|kr": "Похищение: ОЗ {0}, МП {1}, СП {2}"
+	},
+	{
+		"id": -1000009021,
+		"key": "dmginfo_evade",
+		"en|ch|tc|kr": "Уклонение: {0}% (макс {1}% + шаг {2}%)"
+	},
+	{
+		"id": -1000009022,
+		"key": "dmginfo_block",
+		"en|ch|tc|kr": "Блок: шанс {0}% (макс {1}%), -{2} урона"
+	},
+	{
+		"id": -1000009023,
+		"key": "dmginfo_basisdef",
+		"en|ch|tc|kr": "Защита основы ({0} {1}): -{2}"
+	},
+	{
+		"id": -1000009024,
+		"key": "dmginfo_mpblock",
+		"en|ch|tc|kr": "Щит МП: до {0} блоков по -{1} (коэф. {2})"
+	},
+	{
+		"id": -1000009025,
+		"key": "dmginfo_spblock",
+		"en|ch|tc|kr": "Щит СП (с Золотого ядра): -{0}"
+	},
+	{
+		"id": -1000009026,
+		"key": "dmginfo_dpblock",
+		"en|ch|tc|kr": "Щит ДП (с Просветления): -{0}"
+	},
+	{
+		"id": -1000009027,
+		"key": "dmginfo_foe",
+		"en|ch|tc|kr": "АТК {0}, ЗАЩ {1}, ОЗ {2} / {3}, уклонение {4}%, блок {5}%"
+	},
+	{
+		"id": -1000009028,
+		"key": "dmginfo_example_dealt",
+		"en|ch|tc|kr": "Пример вашего удара (база = АТК, без случайности):"
+	},
+	{
+		"id": -1000009029,
+		"key": "dmginfo_example_crit",
+		"en|ch|tc|kr": "То же с суперкритом:"
+	},
+	{
+		"id": -1000009030,
+		"key": "dmginfo_example_taken",
+		"en|ch|tc|kr": "Пример удара по вам (база = АТК цели):"
+	},
+	{
+		"id": -1000009031,
+		"key": "dmginfo_last",
+		"en|ch|tc|kr": "Последние удары этого боя"
+	},
+	{
+		"id": -1000009032,
+		"key": "dmginfo_last_dealt",
+		"en|ch|tc|kr": "Нанесено:"
+	},
+	{
+		"id": -1000009033,
+		"key": "dmginfo_last_taken",
+		"en|ch|tc|kr": "Получено:"
+	},
+	{
+		"id": -1000009034,
+		"key": "dmginfo_none",
+		"en|ch|tc|kr": "пока нет"
+	},
+	{
+		"id": -1000009035,
+		"key": "dmginfo_paused",
+		"en|ch|tc|kr": "Бой приостановлен, пока открыто это окно."
+	},
+	{
+		"id": -1000009036,
+		"key": "dmginfo_step_base",
+		"en|ch|tc|kr": "база"
+	},
+	{
+		"id": -1000009037,
+		"key": "dmginfo_step_time",
+		"en|ch|tc|kr": "+время"
+	},
+	{
+		"id": -1000009038,
+		"key": "dmginfo_step_skill",
+		"en|ch|tc|kr": "+техника"
+	},
+	{
+		"id": -1000009039,
+		"key": "dmginfo_step_basis",
+		"en|ch|tc|kr": "+основа"
+	},
+	{
+		"id": -1000009040,
+		"key": "dmginfo_step_skillbasis",
+		"en|ch|tc|kr": "+техника/основа"
+	},
+	{
+		"id": -1000009041,
+		"key": "dmginfo_step_mp",
+		"en|ch|tc|kr": "+МП"
+	},
+	{
+		"id": -1000009042,
+		"key": "dmginfo_step_sp",
+		"en|ch|tc|kr": "+СП"
+	},
+	{
+		"id": -1000009043,
+		"key": "dmginfo_step_dp",
+		"en|ch|tc|kr": "+ДП"
+	},
+	{
+		"id": -1000009044,
+		"key": "dmginfo_step_crit",
+		"en|ch|tc|kr": "крит"
+	},
+	{
+		"id": -1000009045,
+		"key": "dmginfo_step_block",
+		"en|ch|tc|kr": "блок"
+	},
+	{
+		"id": -1000009046,
+		"key": "dmginfo_step_basisdef",
+		"en|ch|tc|kr": "-защ. основы"
+	},
+	{
+		"id": -1000009047,
+		"key": "dmginfo_step_mpblock",
+		"en|ch|tc|kr": "-щит МП"
+	},
+	{
+		"id": -1000009048,
+		"key": "dmginfo_step_spblock",
+		"en|ch|tc|kr": "-щит СП"
+	},
+	{
+		"id": -1000009049,
+		"key": "dmginfo_step_dpblock",
+		"en|ch|tc|kr": "-щит ДП"
+	},
+	{
+		"id": -1000009050,
+		"key": "dmginfo_step_min",
+		"en|ch|tc|kr": "итог"
+	},
+	{
+		"id": -1000009051,
+		"key": "dmginfo_step_nullified",
+		"en|ch|tc|kr": "поглощён"
+	},
+	{
+		"id": -1000009052,
+		"key": "dmginfo_step_kill",
+		"en|ch|tc|kr": "мгнов. убийство"
+	},
+	{
+		"id": -1000009053,
+		"key": "dmginfo_step_evaded",
+		"en|ch|tc|kr": "уклонение"
+	},
+	{
+		"id": -1000009054,
+		"key": "dmginfo_b_blade",
+		"en|ch|tc|kr": "Клинок"
+	},
+	{
+		"id": -1000009055,
+		"key": "dmginfo_b_spear",
+		"en|ch|tc|kr": "Копьё"
+	},
+	{
+		"id": -1000009056,
+		"key": "dmginfo_b_sword",
+		"en|ch|tc|kr": "Меч"
+	},
+	{
+		"id": -1000009057,
+		"key": "dmginfo_b_fist",
+		"en|ch|tc|kr": "Кулак"
+	},
+	{
+		"id": -1000009058,
+		"key": "dmginfo_b_palm",
+		"en|ch|tc|kr": "Ладонь"
+	},
+	{
+		"id": -1000009059,
+		"key": "dmginfo_b_finger",
+		"en|ch|tc|kr": "Палец"
+	},
+	{
+		"id": -1000009060,
+		"key": "dmginfo_b_fire",
+		"en|ch|tc|kr": "Огонь"
+	},
+	{
+		"id": -1000009061,
+		"key": "dmginfo_b_froze",
+		"en|ch|tc|kr": "Вода"
+	},
+	{
+		"id": -1000009062,
+		"key": "dmginfo_b_thunder",
+		"en|ch|tc|kr": "Молния"
+	},
+	{
+		"id": -1000009063,
+		"key": "dmginfo_b_wind",
+		"en|ch|tc|kr": "Ветер"
+	},
+	{
+		"id": -1000009064,
+		"key": "dmginfo_b_earth",
+		"en|ch|tc|kr": "Земля"
+	},
+	{
+		"id": -1000009065,
+		"key": "dmginfo_b_wood",
+		"en|ch|tc|kr": "Дерево"
+	},
+	{
+		"id": -1000009066,
+		"key": "dmginfo_foes_monsters",
+		"en|ch|tc|kr": "Недавние монстры"
+	},
+	{
+		"id": -1000009067,
+		"key": "dmginfo_foes_humans",
+		"en|ch|tc|kr": "Недавние культиваторы"
+	},
+	{
+		"id": -1000009068,
+		"key": "dmginfo_foes_none",
+		"en|ch|tc|kr": "Пока нет: после боя противники и их показатели того момента сохраняются здесь."
+	},
+	{
+		"id": -1000009069,
+		"key": "dmginfo_foe_grade",
+		"en|ch|tc|kr": "Ранг {0} · год {1}, месяц {2}"
+	},
+	{
+		"id": -1000009070,
+		"key": "dmginfo_foe_dealt",
+		"en|ch|tc|kr": "Вы наносите {0:#,##0} (крит {1:#,##0}) · {2} ударов"
+	},
+	{
+		"id": -1000009071,
+		"key": "dmginfo_foe_taken",
+		"en|ch|tc|kr": "Вы получаете {0:#,##0} · падаете за {1} ударов"
+	},
+	{
+		"id": -1000009072,
+		"key": "dmginfo_foes_hint",
+		"en|ch|tc|kr": "След. страница: последние монстры и культиваторы, урон в обе стороны."
+	}
+]

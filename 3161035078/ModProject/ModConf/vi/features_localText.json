@@ -7,7 +7,7 @@
 	{
 		"id": "-1000006001",
 		"key": "log_line",
-		"en|ch|tc|kr": "Năm {0} tháng {1}: {2}"
+		"en|ch|tc|kr": "Năm {0}, tháng {1}: {2}"
 	},
 	{
 		"id": "-1000006002",
@@ -1208,5 +1208,75 @@
 		"id": "-1000006285",
 		"key": "secl_res_Garden",
 		"en|ch|tc|kr": "Dưới gốc lê, bốn mùa trôi qua như hơi thở."
+	},
+	{
+		"id": -1000006286,
+		"key": "log_score_start",
+		"en|ch|tc|kr": "Điểm S&M {0:#,##0} P: khởi đầu với +{1} điểm năng lực và +{2:#,##0} [icon:zm_lingshi]."
+	},
+	{
+		"id": -1000006287,
+		"key": "log_score_inherit",
+		"en|ch|tc|kr": "Thiết lập dễ ({1:#,##0} P): hậu duệ mất {0:#,##0} [icon:zm_lingshi] tiền thừa kế."
+	},
+	{
+		"id": -1000006288,
+		"key": "enc_heaven",
+		"en|ch|tc|kr": "Một tiên nhân tóc bạc bước ra từ mây: \"Ít ai đi con đường gian nan ngươi đã chọn. Ngươi có nhận thử thách của ta?\""
+	},
+	{
+		"id": -1000006289,
+		"key": "enc_heaven_o1",
+		"en|ch|tc|kr": "Nhận thử thách"
+	},
+	{
+		"id": -1000006290,
+		"key": "enc_heaven_o2",
+		"en|ch|tc|kr": "Cúi chào và từ chối"
+	},
+	{
+		"id": -1000006291,
+		"key": "enc_heaven_win",
+		"en|ch|tc|kr": "Bạn vượt qua thử thách của trời: +{0:#,##0} kinh nghiệm và {1}."
+	},
+	{
+		"id": -1000006292,
+		"key": "enc_heaven_lose",
+		"en|ch|tc|kr": "Thử thách quá khó: bạn mất {0:#,##0} máu."
+	},
+	{
+		"id": -1000006293,
+		"key": "log_date",
+		"en|ch|tc|kr": "Năm {0}, tháng {1}"
+	},
+	{
+		"id": -1000006294,
+		"key": "market_bo_h_item",
+		"en|ch|tc|kr": "Vật phẩm"
+	},
+	{
+		"id": -1000006295,
+		"key": "market_bo_h_count",
+		"en|ch|tc|kr": "Số lượng"
+	},
+	{
+		"id": -1000006296,
+		"key": "market_bo_h_price",
+		"en|ch|tc|kr": "Đơn giá"
+	},
+	{
+		"id": -1000006297,
+		"key": "market_bo_h_town",
+		"en|ch|tc|kr": "Thị trấn"
+	},
+	{
+		"id": -1000006298,
+		"key": "market_bo_h_left",
+		"en|ch|tc|kr": "Thời gian còn lại"
+	},
+	{
+		"id": -1000006299,
+		"key": "market_bo_left",
+		"en|ch|tc|kr": "{0} tháng"
 	}
 ]

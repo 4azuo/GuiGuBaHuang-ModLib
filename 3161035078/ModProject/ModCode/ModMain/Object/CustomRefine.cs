@@ -72,6 +72,13 @@ namespace MOD_nE7UL2.Object
         public static AdjTypeEnum RandomCustomAdj(AdjTypeEnum[] seeder, int gradeLvl)
         {
             var t = seeder.Where(x => x.MinGradeLvl <= gradeLvl).ToArray();
+            // an item below every minimum grade (e.g. grade 0 outfits): the types of the lowest minimum grade
+            // (was a division by zero when its info window opened, 2026-11-18)
+            if (t.Length == 0 && seeder.Length > 0)
+            {
+                var min = seeder.Min(x => x.MinGradeLvl);
+                t = seeder.Where(x => x.MinGradeLvl == min).ToArray();
+            }
             return t[CommonTool.Random(0, 10000) % t.Length];
         }
         #endregion

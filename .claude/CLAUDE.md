@@ -53,6 +53,8 @@ Always build in Release. Run scripts with `powershell -NoProfile -ExecutionPolic
 
 Read the relevant doc from `docs/` before answering questions or making non-trivial changes:
 
+- `README.md` - Map of the documentation (tree, where to look); `GameAssets/` - icons and drama backgrounds extracted from the game (`scripts/extract-game-assets.py`)
+
 - `00-Getting-Started.md` - Setup and structure
 - `01-ModMain.md` - ModMain class and initialization
 - `02-Events.md` - Event system

@@ -192,17 +192,17 @@
 	{
 		"id": -1000002038,
 		"key": "trainer038",
-		"en|ch|tc|kr": "Общие свойства:"
+		"en|ch|tc|kr": "[icon:zhandouxiaoguo] Общие свойства:"
 	},
 	{
 		"id": -1000002039,
 		"key": "trainer039",
-		"en|ch|tc|kr": "Боевой/Духовный:"
+		"en|ch|tc|kr": "[icon:jianfa] Боевой/Духовный:"
 	},
 	{
 		"id": -1000002040,
 		"key": "trainer040",
-		"en|ch|tc|kr": "Мастерство:"
+		"en|ch|tc|kr": "[icon:lianqi] Мастерство:"
 	},
 	{
 		"id": -1000002041,
@@ -247,32 +247,32 @@
 	{
 		"id": -1000002049,
 		"key": "trainer049",
-		"en|ch|tc|kr": "Алхимия: {0:#,##0}"
+		"en|ch|tc|kr": "[icon:liandan] Алхимия: {0:#,##0}"
 	},
 	{
 		"id": -1000002050,
 		"key": "trainer050",
-		"en|ch|tc|kr": "{0:#,##0} :Кузница"
+		"en|ch|tc|kr": "{0:#,##0} :Кузница [icon:lianqi]"
 	},
 	{
 		"id": -1000002051,
 		"key": "trainer051",
-		"en|ch|tc|kr": "Фэн-шуй: {0:#,##0}"
+		"en|ch|tc|kr": "[icon:fengshui] Фэн-шуй: {0:#,##0}"
 	},
 	{
 		"id": -1000002052,
 		"key": "trainer052",
-		"en|ch|tc|kr": "{0:#,##0} :Талисманы"
+		"en|ch|tc|kr": "{0:#,##0} :Талисманы [icon:huafu]"
 	},
 	{
 		"id": -1000002053,
 		"key": "trainer053",
-		"en|ch|tc|kr": "Гербология: {0:#,##0}"
+		"en|ch|tc|kr": "[icon:yaocai] Гербология: {0:#,##0}"
 	},
 	{
 		"id": -1000002054,
 		"key": "trainer054",
-		"en|ch|tc|kr": "{0:#,##0} :Горное дело"
+		"en|ch|tc|kr": "{0:#,##0} :Горное дело [icon:kuangcai]"
 	},
 	{
 		"id": -1000002055,
@@ -302,162 +302,162 @@
 	{
 		"id": "-1000002060",
 		"key": "trainer_lbl_hp",
-		"en|ch|tc|kr": "ОЗ: {0}/{1}"
+		"en|ch|tc|kr": "[icon:jiankang] ОЗ: {0}/{1}"
 	},
 	{
 		"id": "-1000002061",
 		"key": "trainer_lbl_money",
-		"en|ch|tc|kr": "{0} :Деньги"
+		"en|ch|tc|kr": "{0} :Деньги [icon:zm_lingshi]"
 	},
 	{
 		"id": "-1000002062",
 		"key": "trainer_lbl_mp",
-		"en|ch|tc|kr": "МП: {0}/{1}"
+		"en|ch|tc|kr": "[icon:lingli] МП: {0}/{1}"
 	},
 	{
 		"id": "-1000002063",
 		"key": "trainer_lbl_degree",
-		"en|ch|tc|kr": "{0} :Степень мэра"
+		"en|ch|tc|kr": "{0} :Степень мэра [icon:zm_mingyu]"
 	},
 	{
 		"id": "-1000002064",
 		"key": "trainer_lbl_sp",
-		"en|ch|tc|kr": "СП: {0}/{1}"
+		"en|ch|tc|kr": "[icon:nianli] СП: {0}/{1}"
 	},
 	{
 		"id": "-1000002065",
 		"key": "trainer_lbl_contribution",
-		"en|ch|tc|kr": "{0} :Вклад"
+		"en|ch|tc|kr": "{0} :Вклад [icon:zm_zhongchengdu]"
 	},
 	{
 		"id": "-1000002066",
 		"key": "trainer_lbl_def",
-		"en|ch|tc|kr": "{0} :Защ"
+		"en|ch|tc|kr": "{0} :Защ [icon:fangyu]"
 	},
 	{
 		"id": "-1000002067",
 		"key": "trainer_lbl_mood",
-		"en|ch|tc|kr": "Настроение: {0}/{1}"
+		"en|ch|tc|kr": "[icon:xinqing] Настроение: {0}/{1}"
 	},
 	{
 		"id": "-1000002068",
 		"key": "trainer_lbl_stamina",
-		"en|ch|tc|kr": "{0}/{1} :Выносливость"
+		"en|ch|tc|kr": "{0}/{1} :Выносливость [icon:jingli]"
 	},
 	{
 		"id": "-1000002069",
 		"key": "trainer_lbl_health",
-		"en|ch|tc|kr": "Здоровье: {0}/{1}"
+		"en|ch|tc|kr": "[icon:huifutili] Здоровье: {0}/{1}"
 	},
 	{
 		"id": "-1000002070",
 		"key": "trainer_lbl_life",
-		"en|ch|tc|kr": "{0}/{1} :Срок жизни"
+		"en|ch|tc|kr": "{0}/{1} :Срок жизни [icon:shouming]"
 	},
 	{
 		"id": "-1000002071",
 		"key": "trainer_lbl_travel_speed",
-		"en|ch|tc|kr": "Скорость передвижения: {0}"
+		"en|ch|tc|kr": "[icon:yisu] Скорость передвижения: {0}"
 	},
 	{
 		"id": "-1000002072",
 		"key": "trainer_lbl_view_range",
-		"en|ch|tc|kr": "{0} :Обзор"
+		"en|ch|tc|kr": "{0} :Обзор [icon:fanwei]"
 	},
 	{
 		"id": "-1000002073",
 		"key": "trainer_lbl_battle_speed",
-		"en|ch|tc|kr": "Скорость боя: {0}"
+		"en|ch|tc|kr": "[icon:gongsuD] Скорость боя: {0}"
 	},
 	{
 		"id": "-1000002074",
 		"key": "trainer_lbl_ability",
-		"en|ch|tc|kr": "({1}) {0} :Способность"
+		"en|ch|tc|kr": "({1}) {0} :Способность [icon:jineng]"
 	},
 	{
 		"id": "-1000002075",
 		"key": "trainer_lbl_luck",
-		"en|ch|tc|kr": "Удача: {0}"
+		"en|ch|tc|kr": "[icon:xingyun] Удача: {0}"
 	},
 	{
 		"id": "-1000002076",
 		"key": "trainer_lbl_insight",
-		"en|ch|tc|kr": "{0} :Проницательность"
+		"en|ch|tc|kr": "{0} :Проницательность [icon:wuxing]"
 	},
 	{
 		"id": "-1000002077",
 		"key": "trainer_lbl_exp",
-		"en|ch|tc|kr": "Опыт: {0}/{1}"
+		"en|ch|tc|kr": "[icon:daodian] Опыт: {0}/{1}"
 	},
 	{
 		"id": "-1000002078",
 		"key": "trainer_lbl_reputation",
-		"en|ch|tc|kr": "{0} :Репутация"
+		"en|ch|tc|kr": "{0} :Репутация [icon:shengwang]"
 	},
 	{
 		"id": "-1000002079",
 		"key": "trainer_lbl_grade",
-		"en|ch|tc|kr": "Ступень: {0} {1} ― {2}"
+		"en|ch|tc|kr": "[icon:daoli] Ступень: {0} {1} ― {2}"
 	},
 	{
 		"id": "-1000002080",
 		"key": "trainer_lbl_fire",
-		"en|ch|tc|kr": "Огонь: {0}"
+		"en|ch|tc|kr": "[icon:huolinggen] Огонь: {0}"
 	},
 	{
 		"id": "-1000002081",
 		"key": "trainer_lbl_blade",
-		"en|ch|tc|kr": "{0} :Клинок"
+		"en|ch|tc|kr": "{0} :Клинок [icon:daofa]"
 	},
 	{
 		"id": "-1000002082",
 		"key": "trainer_lbl_water",
-		"en|ch|tc|kr": "Вода: {0}"
+		"en|ch|tc|kr": "[icon:shuilinggen] Вода: {0}"
 	},
 	{
 		"id": "-1000002083",
 		"key": "trainer_lbl_spear",
-		"en|ch|tc|kr": "{0} :Копьё"
+		"en|ch|tc|kr": "{0} :Копьё [icon:qiangfa]"
 	},
 	{
 		"id": "-1000002084",
 		"key": "trainer_lbl_lightning",
-		"en|ch|tc|kr": "Молния: {0}"
+		"en|ch|tc|kr": "[icon:leilinggen] Молния: {0}"
 	},
 	{
 		"id": "-1000002085",
 		"key": "trainer_lbl_sword",
-		"en|ch|tc|kr": "{0} :Меч"
+		"en|ch|tc|kr": "{0} :Меч [icon:jianfa]"
 	},
 	{
 		"id": "-1000002086",
 		"key": "trainer_lbl_wind",
-		"en|ch|tc|kr": "Ветер: {0}"
+		"en|ch|tc|kr": "[icon:fenglinggen] Ветер: {0}"
 	},
 	{
 		"id": "-1000002087",
 		"key": "trainer_lbl_fist",
-		"en|ch|tc|kr": "{0} :Кулак"
+		"en|ch|tc|kr": "{0} :Кулак [icon:quanfa]"
 	},
 	{
 		"id": "-1000002088",
 		"key": "trainer_lbl_earth",
-		"en|ch|tc|kr": "Земля: {0}"
+		"en|ch|tc|kr": "[icon:tulinggen] Земля: {0}"
 	},
 	{
 		"id": "-1000002089",
 		"key": "trainer_lbl_palm",
-		"en|ch|tc|kr": "{0} :Ладонь"
+		"en|ch|tc|kr": "{0} :Ладонь [icon:zhangfa]"
 	},
 	{
 		"id": "-1000002090",
 		"key": "trainer_lbl_wood",
-		"en|ch|tc|kr": "Дерево: {0}"
+		"en|ch|tc|kr": "[icon:mulinggen] Дерево: {0}"
 	},
 	{
 		"id": "-1000002091",
 		"key": "trainer_lbl_finger",
-		"en|ch|tc|kr": "{0} :Палец"
+		"en|ch|tc|kr": "{0} :Палец [icon:zhifa]"
 	},
 	{
 		"id": "-1000002092",

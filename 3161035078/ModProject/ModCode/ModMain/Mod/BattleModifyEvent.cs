@@ -54,8 +54,13 @@ namespace MOD_nE7UL2.Mod
             else
             if (e.uiType.uiName == UIType.BattleInfo.uiName)
             {
+                DamageInfo.Reset();
                 var ui = new UICover<UIBattleInfo>(UIType.BattleInfo);
                 {
+                    //damage calculation window (also the hotkey of Taoist Settings): under the damage multiplier, top
+                    //centre (free: the minimap is at the top right, the skill bar at the bottom)
+                    ui.AddButton(ui.MidCol, ui.FirstRow + 7, DamageInfo.Toggle, GameTool.LS("dmginfo_button")).Size(150, 30);
+
                     //damage multiplier
                     if (!UISettingScreenEvent.Instance.HideDamageMultiplier)
                     {
@@ -106,8 +111,19 @@ namespace MOD_nE7UL2.Mod
         /// <summary>Logs the damage after each step of OnBattleUnitHitDynIntHandler (debug, e.g. autotest TB-04).</summary>
         public static bool TraceDamage { get; set; } = false;
 
+        // steps of the pipeline shown by the damage calculation window (DamageInfo): Trace label -> step
+        private static readonly Dictionary<string, string> STEP_NAMES = new Dictionary<string, string>
+        {
+            ["1"] = "base", ["3"] = "time", ["4"] = "skillbasis", ["5"] = "mp", ["6"] = "sp", ["7"] = "dp", ["8"] = "crit",
+            ["9"] = "block", ["10"] = "basisdef", ["11"] = "mpblock", ["12"] = "spblock", ["13"] = "dpblock", ["final"] = "min",
+            ["nullified"] = "nullified", ["kill"] = "kill", ["evaded"] = "evaded",
+        };
+
         private static void Trace(string step, UnitHitDynIntHandler e)
         {
+            var key = step.StartsWith("final") ? "final" : step;
+            if (STEP_NAMES.TryGetValue(key, out var name))
+                DamageInfo.Step(name, e.dynV.baseValue);
             if (TraceDamage)
                 DebugHelper.WriteLine($"BattleModifyEvent dmg {step}: {e.dynV.baseValue} (evade {e.hitData.isEvade}, crit {e.hitData.isCrit}, world unit hit {ModBattleEvent.IsWorldUnitHit}, attacking {ModBattleEvent.IsWorldUnitAttacking})");
         }
@@ -118,6 +134,7 @@ namespace MOD_nE7UL2.Mod
         public override void OnBattleUnitHitDynIntHandler(UnitHitDynIntHandler e)
         {
             base.OnBattleUnitHitDynIntHandler(e);
+            DamageInfo.BeginHit();
 
             var attackUnitData = ModBattleEvent.AttackingUnit.data.TryCast<UnitDataHuman>();
             var hitUnitData = ModBattleEvent.HitUnit.data.TryCast<UnitDataHuman>();
@@ -136,6 +153,7 @@ namespace MOD_nE7UL2.Mod
                 {
                     _nullify[unitId]--;
                     e.dynV.baseValue = 0;
+                    Trace("nullified", e);
                     return;
                 }
             }
@@ -147,6 +165,7 @@ namespace MOD_nE7UL2.Mod
                 if (ValueHelper.IsBetween(CommonTool.Random(0.00f, 100.00f), 0.00f, rate))
                 {
                     e.dynV.baseValue = int.MaxValue;
+                    Trace("kill", e);
                     return;
                 }
             }
@@ -160,6 +179,7 @@ namespace MOD_nE7UL2.Mod
                 {
                     e.hitData.isEvade = true;
                     e.dynV.baseValue = 0;
+                    Trace("evaded", e);
                     return;
                 }
             }
@@ -170,6 +190,7 @@ namespace MOD_nE7UL2.Mod
                 {
                     e.hitData.isEvade = true;
                     e.dynV.baseValue = 0;
+                    Trace("evaded", e);
                     return;
                 }
             }
@@ -381,7 +402,10 @@ namespace MOD_nE7UL2.Mod
         public override void OnTimeUpdate200ms()
         {
             base.OnTimeUpdate200ms();
-            
+            // the battle scene is gone (leaving the battle, the game closing)
+            if (ModBattleEvent.SceneBattle?.unit?.allUnit == null)
+                return;
+
             foreach (var unit in ModBattleEvent.BattleUnits)
             {
                 //monster recovery

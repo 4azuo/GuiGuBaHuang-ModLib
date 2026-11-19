@@ -37,9 +37,22 @@ namespace MOD_nE7UL2.Mod
                 catch (FormatException) { return GameTool.LS(Key); }
             }
 
-            /// <summary>"Y1 M2: text" in the current language.</summary>
-            public string Render() => string.Format(GameTool.LS("log_line"), Year, Month, RenderText());
+            /// <summary>"[icon] Year 1, Month 2: text" in the current language.</summary>
+            public string Render() => $"{TextIconHelper.ToSprites($"[icon:{Icon(Key)}]")} {string.Format(GameTool.LS("log_line"), Year, Month, RenderText())}";
         }
+
+        // icon of an entry by the feature of its key (sprites of the game's TextMeshPro sprite asset)
+        private static readonly string[][] ICONS =
+        {
+            new[] { "log_tax", "zm_fanrongdu" }, new[] { "log_storage", "zm_lingshi" }, new[] { "log_loan", "zm_lingshi" },
+            new[] { "log_stalker", "shanbiD" }, new[] { "log_buyorder", "yaocai" }, new[] { "log_market", "zm_lingshi" },
+            new[] { "market_", "zm_lingshi" }, new[] { "log_family", "zm_renshu" }, new[] { "log_secl", "wuxing" },
+            new[] { "log_story", "daodian" }, new[] { "log_wanted", "gongji" }, new[] { "log_town", "zm_andingdu" },
+            new[] { "log_team", "shengwang" }, new[] { "log_refine", "lianqi" }, new[] { "log_score", "daoli" }, new[] { "enc_", "xingyun" },
+        };
+
+        /// <summary>Icon of an entry key ("xingyun" for the others).</summary>
+        public static string Icon(string key) => ICONS.FirstOrDefault(x => key != null && key.StartsWith(x[0]))?[1] ?? "xingyun";
 
         public List<Entry> Entries { get; set; } = new List<Entry>();
 
@@ -100,7 +113,7 @@ namespace MOD_nE7UL2.Mod
                 if (shown >= 0) { year = shown / 12 + 1; month = shown % 12 + 1; }
             }
             catch { }
-            var lines = OfMonth(year, month).Select(x => "• " + x.RenderText()).ToList();
+            var lines = OfMonth(year, month).Select(x => TextIconHelper.ToSprites($"[icon:{Icon(x.Key)}] ") + x.RenderText()).ToList();
             if (lines.Count == 0) lines.Add(GameTool.LS("log_empty"));
             return lines;
         }
@@ -108,35 +121,44 @@ namespace MOD_nE7UL2.Mod
         public static List<Entry> OfMonth(int year, int month) =>
             Instance?.Entries.Where(x => x.Year == year && x.Month == month).ToList() ?? new List<Entry>();
 
-        /// <summary>Log window: newest first, page by page.</summary>
+        /// <summary>Log window: newest first, page by page; 2 columns: the date, then the icon and the text.</summary>
         public void OpenLog()
         {
             var ui = new UICustom1(GameTool.LS("log_title"));
-            var lines = Entries.AsEnumerable().Reverse().Select(x => x.Render()).ToList();
+            var lines = Entries.AsEnumerable().Reverse()
+                .Select(x => Tuple.Create(string.Format(GameTool.LS("log_date"), x.Year, x.Month), TextIconHelper.ToSprites($"[icon:{Icon(x.Key)}]") + " " + x.RenderText()))
+                .ToList();
             if (lines.Count == 0)
-                lines.Add(GameTool.LS("log_empty"));
+                lines.Add(Tuple.Create(string.Empty, GameTool.LS("log_empty")));
             var pages = Math.Max(1, (lines.Count + ROWS_PER_PAGE - 1) / ROWS_PER_PAGE);
             var page = 0;
-            var rows = new List<UIItemText>();
-            var col = ui.FirstCol + 1;
+            var dates = new List<UIItemText>();
+            var texts = new List<UIItemText>();
             for (var i = 0; i < ROWS_PER_PAGE; i++)
-                rows.Add(ui.AddText(col, ui.FirstRow + i, string.Empty).Format(null, 14).Align(TextAnchor.MiddleLeft));
+            {
+                dates.Add(ui.AddText(ui.FirstCol + 1, ui.FirstRow + i, string.Empty).Format(new Color(0.45f, 0.12f, 0.08f), 14).Align(TextAnchor.MiddleLeft));
+                texts.Add(ui.AddText(ui.FirstCol + DATE_COLS + 1, ui.FirstRow + i, string.Empty).Format(null, 14).Align(TextAnchor.MiddleLeft));
+            }
             var pageText = ui.AddText(ui.MidCol, ui.LastRow, string.Empty).Format(null, 14);
             Action show = () =>
             {
                 for (var i = 0; i < ROWS_PER_PAGE; i++)
                 {
                     var idx = page * ROWS_PER_PAGE + i;
-                    rows[i].Item.Set(idx < lines.Count ? lines[idx] : string.Empty);
+                    dates[i].Item.Set(idx < lines.Count ? lines[idx].Item1 : string.Empty);
+                    texts[i].Item.Set(idx < lines.Count ? lines[idx].Item2 : string.Empty);
                 }
                 pageText.Item.Set($"{page + 1} / {pages}");
             };
             ui.AddButton(ui.MidCol - 4, ui.LastRow, () => { if (page > 0) { page--; show(); } }, "<").Size(60, 32);
             ui.AddButton(ui.MidCol + 4, ui.LastRow, () => { if (page < pages - 1) { page++; show(); } }, ">").Size(60, 32);
-            // left aligned rows: their rect starts at the column
-            foreach (var r in rows)
+            // left aligned columns: the rect of each text starts at its column
+            foreach (var r in dates.Concat(texts))
                 r.Pos(r.Item.rectTransform.anchoredPosition.x + r.Item.rectTransform.rect.width / 2f, r.Item.rectTransform.anchoredPosition.y);
             show();
         }
+
+        /// <summary>Grid columns of the date column of the log window.</summary>
+        public const int DATE_COLS = 4;
     }
 }

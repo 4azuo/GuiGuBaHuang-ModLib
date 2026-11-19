@@ -55,7 +55,9 @@ The scenarios of [03-Test-Scenarios](03-Test-Scenarios.md) run **inside the real
 .\scripts\game\set-scenario-status.ps1 -Open     # HTML view of all ids
 ```
 
-Options: `-Timeout` (s, default 900), `-StepDelayMs` (default 1500), `-KeepGame` (do not close the game), `-GamePath`.
+Options: `-Timeout` (s, default 900: the game is closed after it, "Stop reason: duration" - a full run takes about 1 h 30, use `-Timeout 7200`), `-StallSeconds` (default 300: no step for that long = the game stopped running the
+mod, e.g. an exception in its TimerMgr; the scenario is marked ERROR with its last step, `screens/stalled.png` taken, the game
+closed; 0 = off), `-StepDelayMs` (default 1500), `-KeepGame` (do not close the game), `-GamePath`.
 Exit codes: 0 all OK, 1 setup error, 2 runner did not finish (timeout, save not found), 3 at least one NG.
 
 Automatic save loading clicks the title screen "Continue/Into" button and the save whose name or folder equals `-Save` (first save when empty). If it fails, the run ends with `load-timeout`/`save not found` in the runner log: use `-ManualLoad`.
@@ -121,6 +123,131 @@ public class TG29_MyFeature : IScenarioDefinition
 ```
 
 Rules: revert what you change on the save, never call the world run / save, prefer `Skip` when a precondition is missing, keep check order stable (check ids are positional).
+
+Game window: every run plays windowed at 1600x900 (`run-autotest.ps1 -Window`, default `1600x900`; `-Window ''` keeps
+the game's own setting): Unity's registry keys and command line at the start (`Set-GameWindow`, as the parallel runs),
+then the game's settings at the title screen. The window is kept behind the other windows during the first minutes
+(sent to the bottom without activation, the focus given back to the window used before the run); `-Foreground` lets it
+come to the front. Screenshots use PrintWindow and work behind other windows.
+
+Message boxes between steps: before every step the runner answers the message boxes (`CheckPopup`) left by the earlier
+steps, which are already in their screenshots - the only button of an information box (OK: e.g. the town seal of
+`BecomeTownMaster`, the Qi transfer result) and "Disable" in the game's tutorial-tips prompt ("Tips will pop up...
+Enable this function?"). Boxes with a real choice (Yes / No) are left to the scenario. A scenario whose next step
+answers a one-button box itself sets `KeepPopups = true`. Before this (2026-11-18) the boxes stayed over the next
+windows until the end of the scenario (TG-32, TG-33, TG-40, TG-43, TG-59, TS-05).
+
+## Tools: effect galleries (TE-xx) and promotion pictures
+
+- `kind: "tool"` scenarios (`ScenarioKind.Tool`) are not tests: they run only when asked by id (`-Scenario TE-01`), never in a
+  full run or `-Failed`. They run long: only once the user confirmed it (a prompt in an interactive terminal,
+  `-ConfirmTools` otherwise - `run-autotest.ps1` and `run-effect-gallery.ps1` refuse them without it).
+- **Effect galleries** (`AutoTest/Scenarios/Tool/TE_EffectGallery.cs`): TE-01 skill, TE-02 unit, TE-03 scene effects. The list is
+  read from the game (`Resources` + asset bundles) and written to the run folder; `ModConf/_Def_Res_Efx_Battle_*.txt` is the
+  fallback and is replaced by the fresh list after the run (added / removed effects printed). In a battle with the other units
+  moved away and hidden, their AI stopped, every effect removed, the HUD, the weather and the player's view (`PlayerMask`, the
+  dark cover around the player) off, each effect is played twice:
+  - **measure**: its renderers sampled every 100 ms (bounds, first / last visible time, movement of its centre) and the timing of
+    its particle systems (start delay, duration, lifetime, loop);
+  - **record**: the camera placed by hand (its controller off) on the effect, sized to it (ortho 1.2 to 8), and the game window
+    recorded by `run-autotest.ps1` (`snaps\<n>.rec` = `<frame folder>|<ms>`: jpg frames ~10 a second + `frames.txt`).
+  The unit commands of an effect (`Unit*Ctrl` components, e.g. `UnitCmdCtrl`) are removed when it is created: alone they throw
+  inside the game's TimerMgr, which then stops every timer (the run hangs). `scripts/game/collect-effects.ps1`
+  (`collect_effects.py`, Python + Pillow; run by `run-autotest.ps1`) makes `docs/Effects/<Skill|Unit|Scenes>/NNNN_<effect>.webp`
+  (animated, 960x540) and `index.json` (in git): `castingTimeMs`, `durationMs` (-1 = loops until the skill removes it), `loop`,
+  `direction` (static or one of 8), `width` / `height` (world units), `zoom`, `camera`, `visible`, and the classification
+  fields (element, shape, range, color, motion, tags, note) kept between runs.
+  `scripts/game/extract_effects.py` reads the effects from the game files (UnityPy, offline, read only: the prefabs of
+  resources.assets through the Resources catalogue of globalgamemanagers) and adds `asset` to every entry of the index:
+  exact `castingTimeMs` / `durationMs` / `loop` from the ParticleSystem settings (stripped in the running game: the
+  recording only samples every 100 ms), every particle system (length, loop, delay, lifetime, size, speed, max
+  particles, shape, radius), the scripts of the prefab (MonoBehaviour classes) and its object count. Run it again after
+  a game update; the game's assets stay out of the repository (only these numbers).
+  In a game slot the webp of a batch are made in a background process: the slot starts its next batch at once.
+  `scripts/game/assess_effects.py --sheets` assesses the recorded effects (fields `ai-*`): picture analysis of every webp
+  (`ai-colors`, `ai-motion`, `ai-coverage`) and contact sheets (`docs/Effects/<kind>/review/`, not in git) for the AI
+  reviewer, whose labels (`ai-element`: the 12 attributes of the game + extended ones, `ai-usage`, `ai-shape`, `ai-size`,
+  `ai-tags`, `ai-note`, `ai-skill-ideas`) are written into index.json by `label_effects.py` (one source: the scripts that
+  write index.json again keep every `ai-*` field and the `asset`). Effect viewer: `effect-viewer/index.html`; `python scripts/effect-viewer-server.py --open` (VS Code task "Test: Open Effect
+  Viewer") serves it with saving: the tester's own assessment next to the AI's, written as `user-*` fields (static data:
+  `python scripts/update-effect-viewer.py --open`, VS Code task "Test: Open Effect Viewer"; linked with the test viewer).
+  The webp are stored with Git LFS (`.gitattributes`).
+  A part of a list: `<autotest folder>\efx-range.txt` = `start count` (e.g. `0 300`; ~10 s an effect).
+  `.\scripts\game\run-autotest.ps1 -Deploy -Scenario TE-01 -Timeout 7200`
+  The whole galleries, on several games side by side (below): `.\scripts\game\run-effect-gallery.ps1 -Id TE-01 -Deploy`
+  (4 games, batches of 100 effects: a failed run loses little; `-Resume` goes on with an earlier gallery - only the
+  effects without measures in docs/Effects/<kind>/index.json; `-Id TE-02,TE-03`, `-Slots`, `-Batch`, `-Start` / `-End`). The scene code is ModLib's
+  (`BattleSceneHelper`, `BattleEffectHelper`, docs/05-Helpers.md). The mouse is hidden (cursor and the objects following it).
+- **Games side by side** (game slots 2..5; the normal game is never used): every slot has its own game data folder
+  `...\LocalLow\guigugame\guigubahuang-slot<n>` (saves, save index, mod data, autotest folder), from the MelonLoader
+  plugin `tools/SlotDataPath` (in the slot's own `Plugins` folder; the normal game does not load it). It patches
+  `Application.persistentDataPath` (calls from the mods: ModLib reads its data folder from it,
+  `SaveCleanupHelper.GameDataPath`) and moves the game's own path fields (`CacheMgr.cachePath`..., `DLCMgr.dlcCachePath`)
+  on the first frame: Harmony patches of Il2Cpp methods (MelonLoader 0.5.4) do not catch the calls of the game's own
+  Il2Cpp code. Before that frame a slot game reads the usual save index and writes it back unchanged
+  (docs/Known-Issues.md). Scripts: `Get-GamePaths` gives the slot's data folder when `$env:GGBH_SLOT` is set.
+  Game slots: the game is built with Unity's "Force Single Instance" (a second exe quits at
+  once). `scripts/game/new-game-slot.ps1 -Slot N` makes `%LOCALAPPDATA%\ggbh-slotN`: the game folder shared through hard
+  links / junctions (no disk space), `globalgamemanagers` copied with `forceSingleInstance` = 0, MelonLoader with its own
+  logs; the real game folder is not changed (run it again with `-Force` after a game update). Slot 1 is the normal game.
+  - `run-autotest.ps1 -Slot N`: the game of that slot only (process found by its exe path, `$env:GGBH_SLOT`), the request
+    in `mod\nE7UL2\autotest-slotN\` (the mod finds its slot from `Application.dataPath`), run id `<time>-sN`, waits for
+    its own `[AUTOTEST] finished [slot N]` line (the mod logs are shared).
+  - `-SlotCharacter`: every slot plays its own test character, "AutoTest Slot<n>" (the other saves are never loaded).
+    The first time it is created (TP-01, then renamed and saved), one game at a time
+    (`mod\nE7UL2\autotest-shared\creating.lock`, freed once the new save is on the disk: the game picks the first free
+    save slot of the list read from the disk); the next runs play it again.
+  - `-NoSaveBackup`: the caller backs up the saves. `run-effect-gallery.ps1` backs them up once
+    (`logs\effect-gallery\<time>\save-backup`), keeps them after (the test characters), restores only the global
+    settings of the mods (`mod\<id>\globals`), and sets the games windowed (`-Window 1600x900`, kept after the run: the
+    mod sets the game's own settings `g.data.globle.gameSetting` at the title screen - the game applies them at start,
+    over Unity's command line and the registry keys, which are set too).
+  - **All the tests on 4 games**: `.\scripts\game\run-autotest-parallel.ps1 -Deploy` (`-Failed`, `-Scenario`, `-Slots`,
+    `-GroupSeconds`). The scenarios are cut into groups of ~5 min (the longest first, durations of the latest runs) taken
+    by the free games from one queue. Every slot plays its test character; its save is snapshot when created
+    (`mod\nE7UL2\autotest-shared\snapshots\slot<n>`) and restored before every run: every group starts from the same
+    fresh character, like a single run with a new character. TP-01 runs only when a slot creates its character.
+    `"exclusive": true` scenarios (scenarios.json: they change the global settings every game reads - TT-02, TT-03,
+    TT-05, TB-16) run after the others, alone, on slot 1. Every run updates scenario-status.json under a lock (named
+    mutex); the "errors in the game log" check reads only the log of the slot's character (`<player id>_debug-*.log`);
+    the viewer is updated once; merged summary in `logs\autotest-parallel\<time>\summary.json` (`parallel.log`: what
+    every game did). One parallel script at a time (`logs\parallel.lock`); to stop one, stop its process tree
+    (`taskkill /F /T /PID <pid>`): its children (jobs, runs, games) are cleaned at the next
+    start or by its `finally`. Shared code: `scripts/game/_parallel.ps1`.
+  - Memory: ~3 GB a game in a battle (4 games ~12 GB on 32 GB). Shared logs (Player.log, the mod logs) mix the lines
+    of every game: the "errors in the game log" check of a scenario may then count the errors of another game.
+- **Promotion pictures**: `"promo"` of a scenario in `tests/scenarios.json` marks its best screenshots
+  (`{ "step": "NPCs-joined", "nth": 1, "name": "battle_npcs_join", "caption": "..." }`; step = the step part of the screenshot name,
+  nth = which one when the step has several). They are taken in a **promotion run** of their own, not picked from the test
+  runs, by the tools **TR-01** (title screen: S&M configs pages) and **TR-02** (in the game: trainer, Taoist settings,
+  bank account / loan, weapon details, player market / buy orders, shop, NPC hiring / team, town master, bounties,
+  family accounts, Taoist log; `AutoTest/Scenarios/Tool/TR_PromoShots.cs`: `Shot(name, open)` opens a window and
+  captures `promo-<name>`; a feature missing in the save only skips its picture). Dramas and story texts are not
+  promo material. `.\scripts\game\run-promo.ps1 [-Deploy] [-Save <save>] [-Name <promo names>] [-List] [-ConfirmTools]`
+  runs them (`run-autotest.ps1 -Promo`: no check panels over the screenshots, 1600x900 window), then
+  `scripts/game/collect-promo.ps1` copies them, without the window title bar, to
+  `3161035078/ModProject/SteamImg/promo_<name>.png` (Steam Workshop / Ko-fi); only pictures go there (SteamImg is
+  deployed with the mod), the captions stay in scenarios.json; promo pictures without an entry anymore are removed. **Promo viewer**
+  (`promo-viewer/index.html`, data from `python scripts/update-promo-viewer.py [--open]`, run by collect-promo; VS Code
+  task "Test: Open Promo Viewer"): the SteamImg pictures with their captions (taken / not taken / no entry anymore),
+  the takes of every promotion run still in logs/autotest (to compare and pick), and the videos of marketing/video/out. The test runs never write SteamImg; the
+  other pictures there (1.jpg...) are kept.
+- **Marketing video** (`marketing/video`, Remotion, Node.js, Python + numpy): a fast-cut video from the SteamImg pictures and the
+  captions of the promo entries of scenarios.json, by chapter (`src/chapters.json`: Shape your world, Master your cultivator,
+  A living economy, Allies and enemies): intro (title slam), a card per chapter, every picture 4 beats with a punch-in, a
+  pulse on each beat and a "NEW" caption, end card with the feature count. 120 BPM at 30 fps = 15 frames a beat: every cut
+  lands on a beat; each scene comes in over the previous one with one of 9 transitions in turn (iris, wipe, slide, punch
+  zoom, ink diagonal, blur, spin, flash, blinds). The music is synthesized by `scripts/make-music.py` (epic xianxia: taiko and rolls, a low string ostinato,
+  an erhu / dizi-like lead with vibrato and slides, guzheng glissandi, brass swells, gongs; D minor pentatonic; no
+  sample, no licence) and cut to the timeline of each video by `prepare-assets` (written to
+  `public/music-long.wav` / `music-short.wav`). `npm install` once, then `npm run studio` (preview), `npm run render` (all
+  pictures, `out/taoist-promo.mp4`), `npm run render:short` (the `short` pictures of each chapter), `npm run render:still`.
+  `prepare-assets` (run by each) copies SteamImg to `public/steam` and makes the music (not in git).
+- **Preview images** (`marketing/preview`): `preview.html` (ink, gold title, red seal) rendered by `render.ps1` (Edge
+  headless, 2x): `<mod>/ModProject/SteamImg/Preview.png` (1024 square, Steam Workshop) and
+  `<mod>/ModProject/ModProjectPreview.png` (1092 x 300, the title in the game's mod list) for Taoist and ModLib.
+- `scripts/game/contact-sheet.ps1 -Images <files> -Out <folder>` puts many pictures in grids with their names (choosing
+  pictures, classifying effects).
 
 ## Unit tests
 

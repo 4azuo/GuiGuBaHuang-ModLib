@@ -141,3 +141,7 @@ test-viewer/data/
 */debug/*/ModConf/
 */debug/*/ModImg/
 */debug/*/SteamImg/
+docs/Effects/**/review/
+effect-viewer/data/
+# Generated data of the promo viewer (scripts/update-promo-viewer.py)
+promo-viewer/data/

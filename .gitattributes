@@ -1,3 +1,8 @@
 *.png !text !filter !merge !diff
 *.wav !text !filter !merge !diff
 docs/Effects/**/*.webp filter=lfs diff=lfs merge=lfs -text
+docs/GameAssets/**/*.webp filter=lfs diff=lfs merge=lfs -text
+docs/GameAssets/**/*.png filter=lfs diff=lfs merge=lfs -text
+**/SteamImg/**/*.png filter=lfs diff=lfs merge=lfs -text
+**/SteamImg/**/*.jpg filter=lfs diff=lfs merge=lfs -text
+**/SteamImg/**/*.webp filter=lfs diff=lfs merge=lfs -text

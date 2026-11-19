@@ -227,7 +227,7 @@ namespace MOD_nE7UL2.Mod
         }
 
         /// <summary>Buy orders window of a town: the player's orders (cancel), a new order.</summary>
-        public void OpenBuyOrders(MapBuildTown town)
+        public void OpenBuyOrders(MapBuildTown town, int page = 0)
         {
             if (town == null)
                 return;
@@ -235,24 +235,62 @@ namespace MOD_nE7UL2.Mod
             var ui = new UICustom1(GameTool.LS("market_buyorders"));
             var row = ui.FirstRow + 1;
             ui.AddText(ui.MidCol, row++, string.Format(GameTool.LS("market_buyorders_desc"), BUY_ORDER_MONTHS)).Format(null, 14);
-            row++;
+            // the "new order" button at a fixed place (under the description), whatever the number of orders
+            ui.AddButton(ui.MidCol, row + 1, () => SelectOrderItem(town), GameTool.LS("market_buyorder_new")).Size(220, 40);
+            row += 4;
             var orders = BuyOrders.ToArray();
             if (orders.Length == 0)
                 ui.AddText(ui.MidCol, row++, GameTool.LS("market_buyorders_none")).Format(null, 15);
-            foreach (var order in orders)
+            // a page of orders (MAX_BUY_ORDERS fit on one page; pages when there are more, e.g. a bigger limit later)
+            // orders that fit between the header of the table and the pager (the rows depend on the size of the game window)
+            var perPage = Math.Max(1, Math.Min(BUY_ORDERS_PER_PAGE, (ui.LastRow - 3 - (row + 2)) / 2 + 1));
+            var pages = Math.Max(1, (orders.Length + perPage - 1) / perPage);
+            page = Math.Max(0, Math.Min(page, pages - 1));
+            // a table: cancel, icon, item | quantity | price | town | time left (headers over the columns)
+            var colItem = ui.Columns[ui.FirstCol + 7] + 10f;
+            int colCount = ui.MidCol + 3, colPrice = ui.MidCol + 6, colTown = ui.MidCol + 9, colLeft = ui.MidCol + 12;
+            UIItemText Left(float x, int r, string t, Color? color = null)
+            {
+                var text = ui.AddText(x, ui.Rows[r], t).Format(color ?? Color.black, 15).Align(TextAnchor.MiddleLeft);
+                text.Pos(x + text.Item.rectTransform.rect.width / 2f, ui.Rows[r]);
+                return text;
+            }
+            if (orders.Length > 0)
+            {
+                var head = new Color(0.45f, 0.12f, 0.08f);
+                Left(colItem, row, GameTool.LS("market_bo_h_item"), head);
+                foreach (var (col, key) in new[] { (colCount, "market_bo_h_count"), (colPrice, "market_bo_h_price"), (colTown, "market_bo_h_town"), (colLeft, "market_bo_h_left") })
+                    ui.AddText(col, row, GameTool.LS(key)).Format(head, 15);
+                row += 2;
+            }
+            foreach (var order in orders.Skip(page * perPage).Take(perPage))
             {
                 var o = order;
-                ui.AddText(ui.MidCol - 3, row, string.Format(GameTool.LS("market_buyorder_line"), o.Count, o.Name, o.Price, o.Town?.name,
-                    BUY_ORDER_MONTHS - (GameHelper.GetGameTotalMonth() - o.CreateMonth))).Format(null, 15);
-                ui.AddButton(ui.MidCol + 9, row++, () =>
+                // left to right: cancel, the item's icon (as in the bag), the columns; one order every 2 rows (icon height)
+                ui.AddButton(ui.FirstCol + 3, row, () =>
                 {
                     CancelBuyOrder(o);
-                    OpenBuyOrders(town);
+                    OpenBuyOrders(town, page);
                 }, GameTool.LS("other500020090")).Size(120, 32);
+                ui.AddPropIcon(ui.Columns[ui.FirstCol + 6], ui.Rows[row], o.PropId, 46f);
+                Left(colItem, row, o.Name);
+                ui.AddText(colCount, row, $"x{o.Count:#,##0}").Format(null, 15);
+                ui.AddText(colPrice, row, TextIconHelper.ToSprites($"{o.Price:#,##0} [icon:zm_lingshi]")).Format(null, 15);
+                ui.AddText(colTown, row, o.Town?.name ?? "?").Format(null, 15);
+                ui.AddText(colLeft, row, string.Format(GameTool.LS("market_bo_left"), BUY_ORDER_MONTHS - (GameHelper.GetGameTotalMonth() - o.CreateMonth))).Format(null, 15);
+                row += 2;
             }
-            row++;
-            ui.AddButton(ui.MidCol, row, () => SelectOrderItem(town), GameTool.LS("market_buyorder_new")).Size(220, 40);
+            if (pages > 1)
+            {
+                var p = page;
+                ui.AddButton(ui.MidCol - 4, ui.LastRow - 2, () => OpenBuyOrders(town, p - 1), "<").Size(60, 32);
+                ui.AddText(ui.MidCol, ui.LastRow - 2, $"{page + 1} / {pages}").Format(null, 14);
+                ui.AddButton(ui.MidCol + 4, ui.LastRow - 2, () => OpenBuyOrders(town, p + 1), ">").Size(60, 32);
+            }
         }
+
+        /// <summary>Most orders on a page of the buy orders window (2 rows each, under the fixed header; fewer when the window has fewer rows).</summary>
+        public const int BUY_ORDERS_PER_PAGE = 8;
 
         /// <summary>New order step 1: choose the item.</summary>
         private void SelectOrderItem(MapBuildTown town)

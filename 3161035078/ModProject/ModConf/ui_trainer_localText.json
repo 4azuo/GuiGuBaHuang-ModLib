@@ -306,26 +306,26 @@
 	{
 		"id": -1000002038,
 		"key": "trainer038",
-		"en": "General Properties:",
-		"ch": "一般特性：",
-		"tc": "一般特性：",
-		"kr": "일반 속성:"
+		"en": "[icon:zhandouxiaoguo] General Properties:",
+		"ch": "[icon:zhandouxiaoguo] 一般特性：",
+		"tc": "[icon:zhandouxiaoguo] 一般特性：",
+		"kr": "[icon:zhandouxiaoguo] 일반 속성:"
 	},
 	{
 		"id": -1000002039,
 		"key": "trainer039",
-		"en": "Martial/Spiritual:",
-		"ch": "武术/精神：",
-		"tc": "武術/精神：",
-		"kr": "무술/영적:"
+		"en": "[icon:jianfa] Martial/Spiritual:",
+		"ch": "[icon:jianfa] 武术/精神：",
+		"tc": "[icon:jianfa] 武術/精神：",
+		"kr": "[icon:jianfa] 무술/영적:"
 	},
 	{
 		"id": -1000002040,
 		"key": "trainer040",
-		"en": "Artisanship:",
-		"ch": "工艺：",
-		"tc": "工藝：",
-		"kr": "장인정신:"
+		"en": "[icon:lianqi] Artisanship:",
+		"ch": "[icon:lianqi] 工艺：",
+		"tc": "[icon:lianqi] 工藝：",
+		"kr": "[icon:lianqi] 장인정신:"
 	},
 	{
 		"id": -1000002041,
@@ -394,50 +394,50 @@
 	{
 		"id": -1000002049,
 		"key": "trainer049",
-		"en": "Alchemy: {0:#,##0}",
-		"ch": "炼金术：{0:#,##0}",
-		"tc": "煉金術：{0:#,##0}",
-		"kr": "연금술: {0:#,##0}"
+		"en": "[icon:liandan] Alchemy: {0:#,##0}",
+		"ch": "[icon:liandan] 炼金术：{0:#,##0}",
+		"tc": "[icon:liandan] 煉金術：{0:#,##0}",
+		"kr": "[icon:liandan] 연금술: {0:#,##0}"
 	},
 	{
 		"id": -1000002050,
 		"key": "trainer050",
-		"en": "{0:#,##0} :Forge",
-		"ch": "{0:#,##0}：锻造",
-		"tc": "{0:#,##0}：鍛造",
-		"kr": "{0:#,##0} :포지"
+		"en": "{0:#,##0} :Forge [icon:lianqi]",
+		"ch": "{0:#,##0}：锻造 [icon:lianqi]",
+		"tc": "{0:#,##0}：鍛造 [icon:lianqi]",
+		"kr": "{0:#,##0} :포지 [icon:lianqi]"
 	},
 	{
 		"id": -1000002051,
 		"key": "trainer051",
-		"en": "Feng Shui: {0:#,##0}",
-		"ch": "风水：{0:#,##0}",
-		"tc": "風水：{0:#,##0}",
-		"kr": "풍수: {0:#,##0}"
+		"en": "[icon:fengshui] Feng Shui: {0:#,##0}",
+		"ch": "[icon:fengshui] 风水：{0:#,##0}",
+		"tc": "[icon:fengshui] 風水：{0:#,##0}",
+		"kr": "[icon:fengshui] 풍수: {0:#,##0}"
 	},
 	{
 		"id": -1000002052,
 		"key": "trainer052",
-		"en": "{0:#,##0} :Talismans",
-		"ch": "{0:#,##0}：护身符",
-		"tc": "{0:#,##0}：護身符",
-		"kr": "{0:#,##0} :부적"
+		"en": "{0:#,##0} :Talismans [icon:huafu]",
+		"ch": "{0:#,##0}：护身符 [icon:huafu]",
+		"tc": "{0:#,##0}：護身符 [icon:huafu]",
+		"kr": "{0:#,##0} :부적 [icon:huafu]"
 	},
 	{
 		"id": -1000002053,
 		"key": "trainer053",
-		"en": "Herbology: {0:#,##0}",
-		"ch": "草药学：{0:#,##0}",
-		"tc": "草藥學：{0:#,##0}",
-		"kr": "약초학: {0:#,##0}"
+		"en": "[icon:yaocai] Herbology: {0:#,##0}",
+		"ch": "[icon:yaocai] 草药学：{0:#,##0}",
+		"tc": "[icon:yaocai] 草藥學：{0:#,##0}",
+		"kr": "[icon:yaocai] 약초학: {0:#,##0}"
 	},
 	{
 		"id": -1000002054,
 		"key": "trainer054",
-		"en": "{0:#,##0} :Mining",
-		"ch": "{0:#,##0}：采矿",
-		"tc": "{0:#,##0}：採礦",
-		"kr": "{0:#,##0} :채굴"
+		"en": "{0:#,##0} :Mining [icon:kuangcai]",
+		"ch": "{0:#,##0}：采矿 [icon:kuangcai]",
+		"tc": "{0:#,##0}：採礦 [icon:kuangcai]",
+		"kr": "{0:#,##0} :채굴 [icon:kuangcai]"
 	},
 	{
 		"id": -1000002055,
@@ -471,276 +471,276 @@
 		"tc": "雙魚座吊墜",
 		"kr": "물고기자리 펜던트"
 	},
-  {
-    "id": -1000002059,
-    "key": "trainer_title",
-    "en": "Trainer",
-    "ch": "训练器",
-    "tc": "訓練器",
-    "kr": "트레이너"
-  },
-  {
-    "id": -1000002060,
-    "key": "trainer_lbl_hp",
-    "en": "HP: {0}/{1}",
-    "ch": "生命：{0}/{1}",
-    "tc": "生命：{0}/{1}",
-    "kr": "체력: {0}/{1}"
-  },
-  {
-    "id": -1000002061,
-    "key": "trainer_lbl_money",
-    "en": "{0} :Money",
-    "ch": "{0} ：灵石",
-    "tc": "{0} ：靈石",
-    "kr": "{0} :영석"
-  },
-  {
-    "id": -1000002062,
-    "key": "trainer_lbl_mp",
-    "en": "MP: {0}/{1}",
-    "ch": "灵力：{0}/{1}",
-    "tc": "靈力：{0}/{1}",
-    "kr": "영력: {0}/{1}"
-  },
-  {
-    "id": -1000002063,
-    "key": "trainer_lbl_degree",
-    "en": "{0} :Mayor's Degree",
-    "ch": "{0} ：城主令",
-    "tc": "{0} ：城主令",
-    "kr": "{0} :시장 학위"
-  },
-  {
-    "id": -1000002064,
-    "key": "trainer_lbl_sp",
-    "en": "SP: {0}/{1}",
-    "ch": "念力：{0}/{1}",
-    "tc": "念力：{0}/{1}",
-    "kr": "염력: {0}/{1}"
-  },
-  {
-    "id": -1000002065,
-    "key": "trainer_lbl_contribution",
-    "en": "{0} :Contribution",
-    "ch": "{0} ：贡献",
-    "tc": "{0} ：貢獻",
-    "kr": "{0} :기여"
-  },
-  {
-    "id": -1000002066,
-    "key": "trainer_lbl_def",
-    "en": "{0} :Def",
-    "ch": "{0} ：防御",
-    "tc": "{0} ：防禦",
-    "kr": "{0} :방어"
-  },
-  {
-    "id": -1000002067,
-    "key": "trainer_lbl_mood",
-    "en": "Mood: {0}/{1}",
-    "ch": "心情：{0}/{1}",
-    "tc": "心情：{0}/{1}",
-    "kr": "기분: {0}/{1}"
-  },
-  {
-    "id": -1000002068,
-    "key": "trainer_lbl_stamina",
-    "en": "{0}/{1} :Stamina",
-    "ch": "{0}/{1} ：体力",
-    "tc": "{0}/{1} ：體力",
-    "kr": "{0}/{1} :체력"
-  },
-  {
-    "id": -1000002069,
-    "key": "trainer_lbl_health",
-    "en": "Health: {0}/{1}",
-    "ch": "健康：{0}/{1}",
-    "tc": "健康：{0}/{1}",
-    "kr": "건강: {0}/{1}"
-  },
-  {
-    "id": -1000002070,
-    "key": "trainer_lbl_life",
-    "en": "{0}/{1} :Lifespan",
-    "ch": "{0}/{1} ：寿元",
-    "tc": "{0}/{1} ：壽元",
-    "kr": "{0}/{1} :수명"
-  },
-  {
-    "id": -1000002071,
-    "key": "trainer_lbl_travel_speed",
-    "en": "Travel Speed: {0}",
-    "ch": "移动速度：{0}",
-    "tc": "移動速度：{0}",
-    "kr": "이동 속도: {0}"
-  },
-  {
-    "id": -1000002072,
-    "key": "trainer_lbl_view_range",
-    "en": "{0} :View Range",
-    "ch": "{0} ：视野",
-    "tc": "{0} ：視野",
-    "kr": "{0} :시야"
-  },
-  {
-    "id": -1000002073,
-    "key": "trainer_lbl_battle_speed",
-    "en": "Battle Speed: {0}",
-    "ch": "战斗速度：{0}",
-    "tc": "戰鬥速度：{0}",
-    "kr": "전투 속도: {0}"
-  },
-  {
-    "id": -1000002074,
-    "key": "trainer_lbl_ability",
-    "en": "({1}) {0} :Ability",
-    "ch": "（{1}）{0} ：能力点",
-    "tc": "（{1}）{0} ：能力點",
-    "kr": "({1}) {0} :능력치"
-  },
-  {
-    "id": -1000002075,
-    "key": "trainer_lbl_luck",
-    "en": "Luck: {0}",
-    "ch": "气运：{0}",
-    "tc": "氣運：{0}",
-    "kr": "기운: {0}"
-  },
-  {
-    "id": -1000002076,
-    "key": "trainer_lbl_insight",
-    "en": "{0} :Insight",
-    "ch": "{0} ：悟性",
-    "tc": "{0} ：悟性",
-    "kr": "{0} :오성"
-  },
-  {
-    "id": -1000002077,
-    "key": "trainer_lbl_exp",
-    "en": "Exp: {0}/{1}",
-    "ch": "经验：{0}/{1}",
-    "tc": "經驗：{0}/{1}",
-    "kr": "경험: {0}/{1}"
-  },
-  {
-    "id": -1000002078,
-    "key": "trainer_lbl_reputation",
-    "en": "{0} :Reputation",
-    "ch": "{0} ：声望",
-    "tc": "{0} ：聲望",
-    "kr": "{0} :명성"
-  },
-  {
-    "id": -1000002079,
-    "key": "trainer_lbl_grade",
-    "en": "Grade: {0} {1} ― {2}",
-    "ch": "境界：{0} {1} ― {2}",
-    "tc": "境界：{0} {1} ― {2}",
-    "kr": "경지: {0} {1} ― {2}"
-  },
-  {
-    "id": -1000002080,
-    "key": "trainer_lbl_fire",
-    "en": "Fire: {0}",
-    "ch": "火：{0}",
-    "tc": "火：{0}",
-    "kr": "화: {0}"
-  },
-  {
-    "id": -1000002081,
-    "key": "trainer_lbl_blade",
-    "en": "{0} :Blade",
-    "ch": "{0} ：刀",
-    "tc": "{0} ：刀",
-    "kr": "{0} :도"
-  },
-  {
-    "id": -1000002082,
-    "key": "trainer_lbl_water",
-    "en": "Water: {0}",
-    "ch": "水：{0}",
-    "tc": "水：{0}",
-    "kr": "수: {0}"
-  },
-  {
-    "id": -1000002083,
-    "key": "trainer_lbl_spear",
-    "en": "{0} :Spear",
-    "ch": "{0} ：枪",
-    "tc": "{0} ：槍",
-    "kr": "{0} :창"
-  },
-  {
-    "id": -1000002084,
-    "key": "trainer_lbl_lightning",
-    "en": "Lightning: {0}",
-    "ch": "雷：{0}",
-    "tc": "雷：{0}",
-    "kr": "뇌: {0}"
-  },
-  {
-    "id": -1000002085,
-    "key": "trainer_lbl_sword",
-    "en": "{0} :Sword",
-    "ch": "{0} ：剑",
-    "tc": "{0} ：劍",
-    "kr": "{0} :검"
-  },
-  {
-    "id": -1000002086,
-    "key": "trainer_lbl_wind",
-    "en": "Wind: {0}",
-    "ch": "风：{0}",
-    "tc": "風：{0}",
-    "kr": "풍: {0}"
-  },
-  {
-    "id": -1000002087,
-    "key": "trainer_lbl_fist",
-    "en": "{0} :Fist",
-    "ch": "{0} ：拳",
-    "tc": "{0} ：拳",
-    "kr": "{0} :권"
-  },
-  {
-    "id": -1000002088,
-    "key": "trainer_lbl_earth",
-    "en": "Earth: {0}",
-    "ch": "土：{0}",
-    "tc": "土：{0}",
-    "kr": "토: {0}"
-  },
-  {
-    "id": -1000002089,
-    "key": "trainer_lbl_palm",
-    "en": "{0} :Palm",
-    "ch": "{0} ：掌",
-    "tc": "{0} ：掌",
-    "kr": "{0} :장"
-  },
-  {
-    "id": -1000002090,
-    "key": "trainer_lbl_wood",
-    "en": "Wood: {0}",
-    "ch": "木：{0}",
-    "tc": "木：{0}",
-    "kr": "목: {0}"
-  },
-  {
-    "id": -1000002091,
-    "key": "trainer_lbl_finger",
-    "en": "{0} :Finger",
-    "ch": "{0} ：指",
-    "tc": "{0} ：指",
-    "kr": "{0} :지"
-  },
-  {
-    "id": -1000002092,
-    "key": "trainer_lbl_area",
-    "en": "Area {0}:",
-    "ch": "区域 {0}：",
-    "tc": "區域 {0}：",
-    "kr": "지역 {0}:"
-  }
+	{
+		"id": -1000002059,
+		"key": "trainer_title",
+		"en": "Trainer",
+		"ch": "训练器",
+		"tc": "訓練器",
+		"kr": "트레이너"
+	},
+	{
+		"id": -1000002060,
+		"key": "trainer_lbl_hp",
+		"en": "[icon:jiankang] HP: {0}/{1}",
+		"ch": "[icon:jiankang] 生命：{0}/{1}",
+		"tc": "[icon:jiankang] 生命：{0}/{1}",
+		"kr": "[icon:jiankang] 체력: {0}/{1}"
+	},
+	{
+		"id": -1000002061,
+		"key": "trainer_lbl_money",
+		"en": "{0} :Money [icon:zm_lingshi]",
+		"ch": "{0} ：灵石 [icon:zm_lingshi]",
+		"tc": "{0} ：靈石 [icon:zm_lingshi]",
+		"kr": "{0} :영석 [icon:zm_lingshi]"
+	},
+	{
+		"id": -1000002062,
+		"key": "trainer_lbl_mp",
+		"en": "[icon:lingli] MP: {0}/{1}",
+		"ch": "[icon:lingli] 灵力：{0}/{1}",
+		"tc": "[icon:lingli] 靈力：{0}/{1}",
+		"kr": "[icon:lingli] 영력: {0}/{1}"
+	},
+	{
+		"id": -1000002063,
+		"key": "trainer_lbl_degree",
+		"en": "{0} :Mayor's Degree [icon:zm_mingyu]",
+		"ch": "{0} ：城主令 [icon:zm_mingyu]",
+		"tc": "{0} ：城主令 [icon:zm_mingyu]",
+		"kr": "{0} :시장 학위 [icon:zm_mingyu]"
+	},
+	{
+		"id": -1000002064,
+		"key": "trainer_lbl_sp",
+		"en": "[icon:nianli] SP: {0}/{1}",
+		"ch": "[icon:nianli] 念力：{0}/{1}",
+		"tc": "[icon:nianli] 念力：{0}/{1}",
+		"kr": "[icon:nianli] 염력: {0}/{1}"
+	},
+	{
+		"id": -1000002065,
+		"key": "trainer_lbl_contribution",
+		"en": "{0} :Contribution [icon:zm_zhongchengdu]",
+		"ch": "{0} ：贡献 [icon:zm_zhongchengdu]",
+		"tc": "{0} ：貢獻 [icon:zm_zhongchengdu]",
+		"kr": "{0} :기여 [icon:zm_zhongchengdu]"
+	},
+	{
+		"id": -1000002066,
+		"key": "trainer_lbl_def",
+		"en": "{0} :Def [icon:fangyu]",
+		"ch": "{0} ：防御 [icon:fangyu]",
+		"tc": "{0} ：防禦 [icon:fangyu]",
+		"kr": "{0} :방어 [icon:fangyu]"
+	},
+	{
+		"id": -1000002067,
+		"key": "trainer_lbl_mood",
+		"en": "[icon:xinqing] Mood: {0}/{1}",
+		"ch": "[icon:xinqing] 心情：{0}/{1}",
+		"tc": "[icon:xinqing] 心情：{0}/{1}",
+		"kr": "[icon:xinqing] 기분: {0}/{1}"
+	},
+	{
+		"id": -1000002068,
+		"key": "trainer_lbl_stamina",
+		"en": "{0}/{1} :Stamina [icon:jingli]",
+		"ch": "{0}/{1} ：体力 [icon:jingli]",
+		"tc": "{0}/{1} ：體力 [icon:jingli]",
+		"kr": "{0}/{1} :체력 [icon:jingli]"
+	},
+	{
+		"id": -1000002069,
+		"key": "trainer_lbl_health",
+		"en": "[icon:huifutili] Health: {0}/{1}",
+		"ch": "[icon:huifutili] 健康：{0}/{1}",
+		"tc": "[icon:huifutili] 健康：{0}/{1}",
+		"kr": "[icon:huifutili] 건강: {0}/{1}"
+	},
+	{
+		"id": -1000002070,
+		"key": "trainer_lbl_life",
+		"en": "{0}/{1} :Lifespan [icon:shouming]",
+		"ch": "{0}/{1} ：寿元 [icon:shouming]",
+		"tc": "{0}/{1} ：壽元 [icon:shouming]",
+		"kr": "{0}/{1} :수명 [icon:shouming]"
+	},
+	{
+		"id": -1000002071,
+		"key": "trainer_lbl_travel_speed",
+		"en": "[icon:yisu] Travel Speed: {0}",
+		"ch": "[icon:yisu] 移动速度：{0}",
+		"tc": "[icon:yisu] 移動速度：{0}",
+		"kr": "[icon:yisu] 이동 속도: {0}"
+	},
+	{
+		"id": -1000002072,
+		"key": "trainer_lbl_view_range",
+		"en": "{0} :View Range [icon:fanwei]",
+		"ch": "{0} ：视野 [icon:fanwei]",
+		"tc": "{0} ：視野 [icon:fanwei]",
+		"kr": "{0} :시야 [icon:fanwei]"
+	},
+	{
+		"id": -1000002073,
+		"key": "trainer_lbl_battle_speed",
+		"en": "[icon:gongsuD] Battle Speed: {0}",
+		"ch": "[icon:gongsuD] 战斗速度：{0}",
+		"tc": "[icon:gongsuD] 戰鬥速度：{0}",
+		"kr": "[icon:gongsuD] 전투 속도: {0}"
+	},
+	{
+		"id": -1000002074,
+		"key": "trainer_lbl_ability",
+		"en": "({1}) {0} :Ability [icon:jineng]",
+		"ch": "[icon:jineng] （{1}）{0} ：能力点",
+		"tc": "[icon:jineng] （{1}）{0} ：能力點",
+		"kr": "({1}) {0} :능력치 [icon:jineng]"
+	},
+	{
+		"id": -1000002075,
+		"key": "trainer_lbl_luck",
+		"en": "[icon:xingyun] Luck: {0}",
+		"ch": "[icon:xingyun] 气运：{0}",
+		"tc": "[icon:xingyun] 氣運：{0}",
+		"kr": "[icon:xingyun] 기운: {0}"
+	},
+	{
+		"id": -1000002076,
+		"key": "trainer_lbl_insight",
+		"en": "{0} :Insight [icon:wuxing]",
+		"ch": "{0} ：悟性 [icon:wuxing]",
+		"tc": "{0} ：悟性 [icon:wuxing]",
+		"kr": "{0} :오성 [icon:wuxing]"
+	},
+	{
+		"id": -1000002077,
+		"key": "trainer_lbl_exp",
+		"en": "[icon:daodian] Exp: {0}/{1}",
+		"ch": "[icon:daodian] 经验：{0}/{1}",
+		"tc": "[icon:daodian] 經驗：{0}/{1}",
+		"kr": "[icon:daodian] 경험: {0}/{1}"
+	},
+	{
+		"id": -1000002078,
+		"key": "trainer_lbl_reputation",
+		"en": "{0} :Reputation [icon:shengwang]",
+		"ch": "{0} ：声望 [icon:shengwang]",
+		"tc": "{0} ：聲望 [icon:shengwang]",
+		"kr": "{0} :명성 [icon:shengwang]"
+	},
+	{
+		"id": -1000002079,
+		"key": "trainer_lbl_grade",
+		"en": "[icon:daoli] Grade: {0} {1} ― {2}",
+		"ch": "[icon:daoli] 境界：{0} {1} ― {2}",
+		"tc": "[icon:daoli] 境界：{0} {1} ― {2}",
+		"kr": "[icon:daoli] 경지: {0} {1} ― {2}"
+	},
+	{
+		"id": -1000002080,
+		"key": "trainer_lbl_fire",
+		"en": "[icon:huolinggen] Fire: {0}",
+		"ch": "[icon:huolinggen] 火：{0}",
+		"tc": "[icon:huolinggen] 火：{0}",
+		"kr": "[icon:huolinggen] 화: {0}"
+	},
+	{
+		"id": -1000002081,
+		"key": "trainer_lbl_blade",
+		"en": "{0} :Blade [icon:daofa]",
+		"ch": "{0} ：刀 [icon:daofa]",
+		"tc": "{0} ：刀 [icon:daofa]",
+		"kr": "{0} :도 [icon:daofa]"
+	},
+	{
+		"id": -1000002082,
+		"key": "trainer_lbl_water",
+		"en": "[icon:shuilinggen] Water: {0}",
+		"ch": "[icon:shuilinggen] 水：{0}",
+		"tc": "[icon:shuilinggen] 水：{0}",
+		"kr": "[icon:shuilinggen] 수: {0}"
+	},
+	{
+		"id": -1000002083,
+		"key": "trainer_lbl_spear",
+		"en": "{0} :Spear [icon:qiangfa]",
+		"ch": "{0} ：枪 [icon:qiangfa]",
+		"tc": "{0} ：槍 [icon:qiangfa]",
+		"kr": "{0} :창 [icon:qiangfa]"
+	},
+	{
+		"id": -1000002084,
+		"key": "trainer_lbl_lightning",
+		"en": "[icon:leilinggen] Lightning: {0}",
+		"ch": "[icon:leilinggen] 雷：{0}",
+		"tc": "[icon:leilinggen] 雷：{0}",
+		"kr": "[icon:leilinggen] 뇌: {0}"
+	},
+	{
+		"id": -1000002085,
+		"key": "trainer_lbl_sword",
+		"en": "{0} :Sword [icon:jianfa]",
+		"ch": "{0} ：剑 [icon:jianfa]",
+		"tc": "{0} ：劍 [icon:jianfa]",
+		"kr": "{0} :검 [icon:jianfa]"
+	},
+	{
+		"id": -1000002086,
+		"key": "trainer_lbl_wind",
+		"en": "[icon:fenglinggen] Wind: {0}",
+		"ch": "[icon:fenglinggen] 风：{0}",
+		"tc": "[icon:fenglinggen] 風：{0}",
+		"kr": "[icon:fenglinggen] 풍: {0}"
+	},
+	{
+		"id": -1000002087,
+		"key": "trainer_lbl_fist",
+		"en": "{0} :Fist [icon:quanfa]",
+		"ch": "{0} ：拳 [icon:quanfa]",
+		"tc": "{0} ：拳 [icon:quanfa]",
+		"kr": "{0} :권 [icon:quanfa]"
+	},
+	{
+		"id": -1000002088,
+		"key": "trainer_lbl_earth",
+		"en": "[icon:tulinggen] Earth: {0}",
+		"ch": "[icon:tulinggen] 土：{0}",
+		"tc": "[icon:tulinggen] 土：{0}",
+		"kr": "[icon:tulinggen] 토: {0}"
+	},
+	{
+		"id": -1000002089,
+		"key": "trainer_lbl_palm",
+		"en": "{0} :Palm [icon:zhangfa]",
+		"ch": "{0} ：掌 [icon:zhangfa]",
+		"tc": "{0} ：掌 [icon:zhangfa]",
+		"kr": "{0} :장 [icon:zhangfa]"
+	},
+	{
+		"id": -1000002090,
+		"key": "trainer_lbl_wood",
+		"en": "[icon:mulinggen] Wood: {0}",
+		"ch": "[icon:mulinggen] 木：{0}",
+		"tc": "[icon:mulinggen] 木：{0}",
+		"kr": "[icon:mulinggen] 목: {0}"
+	},
+	{
+		"id": -1000002091,
+		"key": "trainer_lbl_finger",
+		"en": "{0} :Finger [icon:zhifa]",
+		"ch": "{0} ：指 [icon:zhifa]",
+		"tc": "{0} ：指 [icon:zhifa]",
+		"kr": "{0} :지 [icon:zhifa]"
+	},
+	{
+		"id": -1000002092,
+		"key": "trainer_lbl_area",
+		"en": "Area {0}:",
+		"ch": "区域 {0}：",
+		"tc": "區域 {0}：",
+		"kr": "지역 {0}:"
+	}
 ]

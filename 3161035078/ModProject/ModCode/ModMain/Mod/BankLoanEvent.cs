@@ -291,15 +291,34 @@ namespace MOD_nE7UL2.Mod
         }
 
         /// <summary>Loan window: state, borrow (amount), repay.</summary>
+        /// <summary>Characters per line of the loan window (UICustom2 is ~550 px wide).</summary>
+        private const int WRAP_CHARS = 70;
+
+        /// <summary>Splits a text into lines of at most max characters, at spaces (a longer word stays whole).</summary>
+        public static List<string> WrapWords(string text, int max)
+        {
+            var lines = new List<string>();
+            var cur = string.Empty;
+            foreach (var word in (text ?? string.Empty).Split(' '))
+            {
+                if (cur.Length > 0 && cur.Length + 1 + word.Length > max) { lines.Add(cur); cur = word; }
+                else cur = cur.Length == 0 ? word : cur + " " + word;
+            }
+            if (cur.Length > 0) lines.Add(cur);
+            return lines;
+        }
+
         public void OpenLoan(MapBuildTown town)
         {
-            g.ui.CloseUI(UIType.TextInfoLong);
-            var ui = new UICustom1(GameTool.LS("loan_title"));
+            // a small window (TextInfo): the loan has few lines; long texts are wrapped by words
+            g.ui.CloseUI(UIType.TextInfo);
+            var ui = new UICustom2(GameTool.LS("loan_title"));
             var col = ui.MidCol;
-            var row = ui.FirstRow + 1;
-            ui.AddText(col, row++, string.Format(GameTool.LS("loan_terms"), INTEREST * 100, TERM_MONTHS, PENALTY * 100)).Format(null, 14);
-            ui.AddText(col, row++, GameTool.LS("loan_warning")).Format(Color.red, 13);
-            row++;
+            var row = ui.FirstRow;
+            foreach (var line in WrapWords(string.Format(GameTool.LS("loan_terms"), INTEREST * 100, TERM_MONTHS, PENALTY * 100), WRAP_CHARS))
+                ui.AddText(col, row++, line).Format(null, 13);
+            foreach (var line in WrapWords(GameTool.LS("loan_warning"), WRAP_CHARS))
+                ui.AddText(col, row++, line).Format(Color.red, 12);
             if (Blacklisted)
             {
                 ui.AddText(col, row++, string.Format(GameTool.LS("loan_state_blacklist"), g.world.build.GetBuild(BlacklistTownId)?.name)).Format(Color.red, 16);

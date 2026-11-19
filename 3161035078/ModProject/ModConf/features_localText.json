@@ -10,9 +10,9 @@
   {
     "id": -1000006001,
     "key": "log_line",
-    "en": "Y{0} M{1}: {2}",
-    "ch": "{0}年{1}月：{2}",
-    "tc": "{0}年{1}月：{2}",
+    "en": "Year {0}, Month {1}: {2}",
+    "ch": "第{0}年{1}月：{2}",
+    "tc": "第{0}年{1}月：{2}",
     "kr": "{0}년 {1}월: {2}"
   },
   {
@@ -1934,5 +1934,117 @@
     "ch": "梨树之下，四季如呼吸般流过。",
     "tc": "梨樹之下，四季如呼吸般流過。",
     "kr": "배나무 아래서, 계절이 숨결처럼 흘러갔다."
+  },
+  {
+    "id": -1000006286,
+    "key": "log_score_start",
+    "en": "S&M score {0:#,##0} P: the journey starts with +{1} ability points and +{2:#,##0} [icon:zm_lingshi].",
+    "ch": "S&M积分 {0:#,##0} P：起步获得能力点 +{1}、+{2:#,##0} [icon:zm_lingshi]。",
+    "tc": "S&M積分 {0:#,##0} P：起步獲得能力點 +{1}、+{2:#,##0} [icon:zm_lingshi]。",
+    "kr": "S&M 점수 {0:#,##0} P: 능력 포인트 +{1}, +{2:#,##0} [icon:zm_lingshi]로 시작합니다."
+  },
+  {
+    "id": -1000006287,
+    "key": "log_score_inherit",
+    "en": "Easy settings ({1:#,##0} P): the descendant lost {0:#,##0} [icon:zm_lingshi] of the inheritance.",
+    "ch": "设定较简单（{1:#,##0} P）：后人失去了遗产中的 {0:#,##0} [icon:zm_lingshi]。",
+    "tc": "設定較簡單（{1:#,##0} P）：後人失去了遺產中的 {0:#,##0} [icon:zm_lingshi]。",
+    "kr": "쉬운 설정 ({1:#,##0} P): 후손이 유산 중 {0:#,##0} [icon:zm_lingshi]을 잃었습니다."
+  },
+  {
+    "id": -1000006288,
+    "key": "enc_heaven",
+    "en": "A white-haired immortal steps out of the clouds: \"Few walk the hard road you chose. Will you take my trial?\"",
+    "ch": "一位白发仙人踏云而出：“走你这条难路的人不多。可愿接受我的试炼？”",
+    "tc": "一位白髮仙人踏雲而出：「走你這條難路的人不多。可願接受我的試煉？」",
+    "kr": "백발의 선인이 구름에서 걸어 나온다: \"네가 고른 험한 길을 걷는 자는 드물다. 내 시련을 받겠느냐?\""
+  },
+  {
+    "id": -1000006289,
+    "key": "enc_heaven_o1",
+    "en": "Accept the trial",
+    "ch": "接受试炼",
+    "tc": "接受試煉",
+    "kr": "시련을 받는다"
+  },
+  {
+    "id": -1000006290,
+    "key": "enc_heaven_o2",
+    "en": "Bow and decline",
+    "ch": "行礼婉拒",
+    "tc": "行禮婉拒",
+    "kr": "예를 갖추고 사양한다"
+  },
+  {
+    "id": -1000006291,
+    "key": "enc_heaven_win",
+    "en": "You passed the heavenly trial: +{0:#,##0} exp and {1}.",
+    "ch": "你通过了天之试炼：经验 +{0:#,##0}，获得{1}。",
+    "tc": "你通過了天之試煉：經驗 +{0:#,##0}，獲得{1}。",
+    "kr": "하늘의 시련을 통과했습니다: 경험 +{0:#,##0}, {1} 획득."
+  },
+  {
+    "id": -1000006292,
+    "key": "enc_heaven_lose",
+    "en": "The trial was too hard: you lost {0:#,##0} HP.",
+    "ch": "试炼太过艰难：你失去了 {0:#,##0} 点生命。",
+    "tc": "試煉太過艱難：你失去了 {0:#,##0} 點生命。",
+    "kr": "시련이 너무 가혹했습니다: 체력 {0:#,##0} 감소."
+  },
+  {
+    "id": -1000006293,
+    "key": "log_date",
+    "en": "Year {0}, Month {1}",
+    "ch": "第{0}年{1}月",
+    "tc": "第{0}年{1}月",
+    "kr": "{0}년 {1}월"
+  },
+  {
+    "id": -1000006294,
+    "key": "market_bo_h_item",
+    "en": "Item",
+    "ch": "物品",
+    "tc": "物品",
+    "kr": "물품"
+  },
+  {
+    "id": -1000006295,
+    "key": "market_bo_h_count",
+    "en": "Quantity",
+    "ch": "数量",
+    "tc": "數量",
+    "kr": "수량"
+  },
+  {
+    "id": -1000006296,
+    "key": "market_bo_h_price",
+    "en": "Price each",
+    "ch": "单价",
+    "tc": "單價",
+    "kr": "개당 가격"
+  },
+  {
+    "id": -1000006297,
+    "key": "market_bo_h_town",
+    "en": "Town",
+    "ch": "城镇",
+    "tc": "城鎮",
+    "kr": "마을"
+  },
+  {
+    "id": -1000006298,
+    "key": "market_bo_h_left",
+    "en": "Time left",
+    "ch": "剩余时间",
+    "tc": "剩餘時間",
+    "kr": "남은 기간"
+  },
+  {
+    "id": -1000006299,
+    "key": "market_bo_left",
+    "en": "{0} months",
+    "ch": "{0}个月",
+    "tc": "{0}個月",
+    "kr": "{0}개월"
   }
 ]

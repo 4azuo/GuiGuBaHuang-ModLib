@@ -1,0 +1,103 @@
+{
+  "$comment": "Timing and chapters of the marketing videos, read by src/data.ts and scripts/prepare-assets.mjs (music cut to the same timeline). 30 fps at 120 BPM = 15 frames a beat: every cut lands on a beat.",
+  "fps": 30,
+  "bpm": 120,
+  "introBeats": 8,
+  "chapterBeats": 4,
+  "slideBeats": 4,
+  "outroBeats": 12,
+  "chapters": [
+    {
+      "title": "Shape your world",
+      "subtitle": "Difficulty, rules and tools - your way",
+      "pictures": [
+        "sm-configs-1",
+        "sm-configs-2",
+        "sm-configs-3",
+        "trainer",
+        "taoist-settings",
+        "taoist-log"
+      ],
+      "short": [
+        "sm-configs-3",
+        "trainer"
+      ]
+    },
+    {
+      "title": "Master your cultivator",
+      "subtitle": "Mastery, refining and every number explained",
+      "pictures": [
+        "player-info",
+        "skills",
+        "technique-attack",
+        "technique-ultimate",
+        "technique-movement",
+        "technique-passive",
+        "items",
+        "weapon-detail",
+        "ring-detail",
+        "outfit-detail",
+        "damage-calc",
+        "damage-calc-foes"
+      ],
+      "short": [
+        "technique-attack",
+        "weapon-detail",
+        "damage-calc",
+        "damage-calc-foes"
+      ]
+    },
+    {
+      "title": "A living economy",
+      "subtitle": "Banks, loans, markets and a town of your own",
+      "pictures": [
+        "bank",
+        "bank-loan",
+        "market",
+        "market-buy-orders",
+        "shop",
+        "town-master"
+      ],
+      "short": [
+        "bank-loan",
+        "market-buy-orders",
+        "town-master"
+      ]
+    },
+    {
+      "title": "Family, allies and enemies",
+      "subtitle": "Raise a family, hire a team, post bounties",
+      "pictures": [
+        "family-tree",
+        "family-heir",
+        "family-fund",
+        "seclusion",
+        "npc-hire",
+        "team",
+        "wanted"
+      ],
+      "short": [
+        "family-tree",
+        "family-heir",
+        "team",
+        "wanted"
+      ]
+    },
+    {
+      "title": "Living stories",
+      "subtitle": "NPC storylines where your choices matter",
+      "pictures": [
+        "story-cold-sword",
+        "story-furnace",
+        "story-sworn-brothers",
+        "story-herb-garden",
+        "story-wager"
+      ],
+      "short": [
+        "story-sworn-brothers",
+        "story-herb-garden",
+        "story-wager"
+      ]
+    }
+  ]
+}

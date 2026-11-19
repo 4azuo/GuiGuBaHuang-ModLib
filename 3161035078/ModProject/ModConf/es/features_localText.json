@@ -7,7 +7,7 @@
 	{
 		"id": "-1000006001",
 		"key": "log_line",
-		"en|ch|tc|kr": "A{0} M{1}: {2}"
+		"en|ch|tc|kr": "Año {0}, mes {1}: {2}"
 	},
 	{
 		"id": "-1000006002",
@@ -1208,5 +1208,75 @@
 		"id": "-1000006285",
 		"key": "secl_res_Garden",
 		"en|ch|tc|kr": "Bajo el peral, las estaciones pasaron como respiraciones."
+	},
+	{
+		"id": -1000006286,
+		"key": "log_score_start",
+		"en|ch|tc|kr": "Puntuación S&M {0:#,##0} P: empiezas con +{1} puntos de habilidad y +{2:#,##0} [icon:zm_lingshi]."
+	},
+	{
+		"id": -1000006287,
+		"key": "log_score_inherit",
+		"en|ch|tc|kr": "Ajustes fáciles ({1:#,##0} P): el descendiente perdió {0:#,##0} [icon:zm_lingshi] de la herencia."
+	},
+	{
+		"id": -1000006288,
+		"key": "enc_heaven",
+		"en|ch|tc|kr": "Un inmortal de cabello blanco sale de las nubes: «Pocos recorren el duro camino que elegiste. ¿Aceptas mi prueba?»"
+	},
+	{
+		"id": -1000006289,
+		"key": "enc_heaven_o1",
+		"en|ch|tc|kr": "Aceptar la prueba"
+	},
+	{
+		"id": -1000006290,
+		"key": "enc_heaven_o2",
+		"en|ch|tc|kr": "Inclinarse y declinar"
+	},
+	{
+		"id": -1000006291,
+		"key": "enc_heaven_win",
+		"en|ch|tc|kr": "Superaste la prueba celestial: +{0:#,##0} exp y {1}."
+	},
+	{
+		"id": -1000006292,
+		"key": "enc_heaven_lose",
+		"en|ch|tc|kr": "La prueba fue demasiado dura: pierdes {0:#,##0} PV."
+	},
+	{
+		"id": -1000006293,
+		"key": "log_date",
+		"en|ch|tc|kr": "Año {0}, mes {1}"
+	},
+	{
+		"id": -1000006294,
+		"key": "market_bo_h_item",
+		"en|ch|tc|kr": "Objeto"
+	},
+	{
+		"id": -1000006295,
+		"key": "market_bo_h_count",
+		"en|ch|tc|kr": "Cantidad"
+	},
+	{
+		"id": -1000006296,
+		"key": "market_bo_h_price",
+		"en|ch|tc|kr": "Precio unidad"
+	},
+	{
+		"id": -1000006297,
+		"key": "market_bo_h_town",
+		"en|ch|tc|kr": "Ciudad"
+	},
+	{
+		"id": -1000006298,
+		"key": "market_bo_h_left",
+		"en|ch|tc|kr": "Tiempo restante"
+	},
+	{
+		"id": -1000006299,
+		"key": "market_bo_left",
+		"en|ch|tc|kr": "{0} meses"
 	}
 ]

@@ -842,10 +842,10 @@
 	{
 		"id": -1000001155,
 		"key": "smcfgs155",
-		"en": "These features are on by default and do not change the difficulty score. Turning one off keeps what is already running (a loan can still be repaid, existing orders are still filled).",
-		"ch": "这些功能默认开启，不影响难度分数。关闭后，进行中的内容仍会处理（借款仍可偿还，已有求购仍会成交）。",
-		"tc": "這些功能預設開啟，不影響難度分數。關閉後，進行中的內容仍會處理（借款仍可償還，已有求購仍會成交）。",
-		"kr": "이 기능들은 기본으로 켜져 있으며 난이도 점수에 영향을 주지 않습니다. 꺼도 진행 중인 내용은 유지됩니다 (대출 상환 가능, 기존 주문 체결)."
+		"en": "These features are on by default. Turning one off changes the difficulty score: harder without a feature that helps (loans, encounters, family), easier without one that hurts (bounties, forced seclusion). Turning one off keeps what is already running (a loan can still be repaid, existing orders are still filled).",
+		"ch": "这些功能默认开启。关闭会改变难度分数：关闭有利的功能（借款、奇遇、家族）更难，关闭不利的功能（悬赏、强制闭关）更易。关闭后，进行中的内容仍会处理（借款仍可偿还，已有求购仍会成交）。",
+		"tc": "這些功能預設開啟。關閉會改變難度分數：關閉有利的功能（借款、奇遇、家族）更難，關閉不利的功能（懸賞、強制閉關）更易。關閉後，進行中的內容仍會處理（借款仍可償還，已有求購仍會成交）。",
+		"kr": "이 기능들은 기본으로 켜져 있습니다. 끄면 난이도 점수가 바뀝니다: 도움이 되는 기능(대출, 기연, 가족)을 끄면 어려워지고, 불리한 기능(현상금, 강제 폐관)을 끄면 쉬워집니다. 꺼도 진행 중인 내용은 유지됩니다 (대출 상환 가능, 기존 주문 체결)."
 	},
 	{
 		"id": -1000001156,
@@ -998,5 +998,141 @@
 		"ch": "红莲：其他故事背后的女人；与盟友一同攻打她的莲花阁。",
 		"tc": "紅蓮：其他故事背後的女人；與盟友一同攻打她的蓮花閣。",
 		"kr": "홍련: 다른 이야기들 뒤에 있는 여인. 동료들과 함께 그녀의 누각에 맞서라."
+	},
+	{
+		"id": -1000001175,
+		"key": "sm_title_0",
+		"en": "Leisurely Wanderer",
+		"ch": "逍遥散人",
+		"tc": "逍遙散人",
+		"kr": "소요산인"
+	},
+	{
+		"id": -1000001176,
+		"key": "sm_title_1",
+		"en": "Mortal Path",
+		"ch": "凡尘求道",
+		"tc": "凡塵求道",
+		"kr": "범진구도"
+	},
+	{
+		"id": -1000001177,
+		"key": "sm_title_2",
+		"en": "Seeker of the Dao",
+		"ch": "问道者",
+		"tc": "問道者",
+		"kr": "문도자"
+	},
+	{
+		"id": -1000001178,
+		"key": "sm_title_3",
+		"en": "Ascetic",
+		"ch": "苦修者",
+		"tc": "苦修者",
+		"kr": "고수자"
+	},
+	{
+		"id": -1000001179,
+		"key": "sm_title_4",
+		"en": "Asura",
+		"ch": "修罗",
+		"tc": "修羅",
+		"kr": "수라"
+	},
+	{
+		"id": -1000001180,
+		"key": "sm_title_5",
+		"en": "Heaven Defier",
+		"ch": "逆天者",
+		"tc": "逆天者",
+		"kr": "역천자"
+	},
+	{
+		"id": -1000001181,
+		"key": "sm_title_line",
+		"en": "{0} · {1:#,##0} P · rewards {2}%",
+		"ch": "{0} · {1:#,##0} P · 奖励 {2}%",
+		"tc": "{0} · {1:#,##0} P · 獎勵 {2}%",
+		"kr": "{0} · {1:#,##0} P · 보상 {2}%"
+	},
+	{
+		"id": -1000001182,
+		"key": "sm_records_title",
+		"en": "Score records",
+		"ch": "积分记录",
+		"tc": "積分記錄",
+		"kr": "점수 기록"
+	},
+	{
+		"id": -1000001183,
+		"key": "sm_records_desc",
+		"en": "Every character of every save: the S&M score (P) of its settings, its title, best realm, years and generations.",
+		"ch": "每个存档的每位角色：其设定的S&M积分（P）、称号、最高境界、年数与传承代数。",
+		"tc": "每個存檔的每位角色：其設定的S&M積分（P）、稱號、最高境界、年數與傳承代數。",
+		"kr": "모든 세이브의 모든 캐릭터: 설정의 S&M 점수(P), 칭호, 최고 경지, 햇수, 세대."
+	},
+	{
+		"id": -1000001184,
+		"key": "sm_records_none",
+		"en": "No record yet: play a save to see it here.",
+		"ch": "尚无记录：进行游戏后会显示在这里。",
+		"tc": "尚無記錄：進行遊戲後會顯示在這裡。",
+		"kr": "아직 기록 없음: 플레이하면 여기에 표시됩니다."
+	},
+	{
+		"id": -1000001185,
+		"key": "sm_records_line",
+		"en": "{0}. {1} — {2} · {3:#,##0} P · grade {4} · year {5} · generation {6} · {7}",
+		"ch": "{0}. {1} — {2} · {3:#,##0} P · {4}阶 · 第{5}年 · 第{6}代 · {7}",
+		"tc": "{0}. {1} — {2} · {3:#,##0} P · {4}階 · 第{5}年 · 第{6}代 · {7}",
+		"kr": "{0}. {1} — {2} · {3:#,##0} P · {4}단계 · {5}년 · {6}대 · {7}"
+	},
+	{
+		"id": -1000001186,
+		"key": "smcfgs186",
+		"en": "Hundred-Year Wager: a proud rival who bets on everything; a lifetime of wagers, debts of life and a last bet.",
+		"ch": "百年赌约：凡事都要打赌的骄傲对手；一生的赌约、救命之恩与最后一局。",
+		"tc": "百年賭約：凡事都要打賭的驕傲對手；一生的賭約、救命之恩與最後一局。",
+		"kr": "백년 내기: 무엇이든 내기를 거는 자존심 강한 라이벌. 평생의 내기, 목숨의 빚, 그리고 마지막 내기."
+	},
+	{
+		"id": -1000001187,
+		"key": "smcfgs187",
+		"en": "Roadside Inn: a widow's inn in your first town; a loan shark, a son, a grandchild, three generations to protect.",
+		"ch": "路边客栈：你第一座城里寡妇开的客栈；放贷的恶霸、她的儿子与孙子，守护三代人。",
+		"tc": "路邊客棧：你第一座城裡寡婦開的客棧；放貸的惡霸、她的兒子與孫子，守護三代人。",
+		"kr": "길가 객잔: 첫 마을에 있는 과부의 객잔. 고리대금업자, 아들, 손자, 지켜야 할 삼대."
+	},
+	{
+		"id": -1000001188,
+		"key": "smcfgs188",
+		"en": "Sealed Tomb: a polite scholar, half a map and a tomb sealed for nine thousand years; partners, until the treasure.",
+		"ch": "封印古墓：彬彬有礼的学者、半张地图和一座封印九千年的古墓；合作到宝物出现为止。",
+		"tc": "封印古墓：彬彬有禮的學者、半張地圖和一座封印九千年的古墓；合作到寶物出現為止。",
+		"kr": "봉인된 무덤: 예의 바른 학자, 지도 반쪽, 구천 년 동안 봉인된 무덤. 보물이 나올 때까지는 동료."
+	},
+	{
+		"id": -1000001189,
+		"key": "smcfgs189",
+		"en": "Cursed Disciple: a boy with a demon mark; raise him with mercy, strength or freedom, and he becomes what you teach.",
+		"ch": "被诅咒的弟子：身负魔印的少年；以仁慈、力量或自由教他，他就成为你教出的人。",
+		"tc": "被詛咒的弟子：身負魔印的少年；以仁慈、力量或自由教他，他就成為你教出的人。",
+		"kr": "저주받은 제자: 마의 낙인이 찍힌 소년. 자비, 힘, 자유 중 무엇으로 키우든 가르친 대로 자란다."
+	},
+	{
+		"id": -1000001190,
+		"key": "smcfgs190",
+		"en": "Thunder Remnant: an ancient voice in the lightning; a fallen immortal who wants a second chance.",
+		"ch": "雷劫残魂：雷劫中一个古老的声音；一位陨落的仙人想要第二次机会。",
+		"tc": "雷劫殘魂：雷劫中一個古老的聲音；一位隕落的仙人想要第二次機會。",
+		"kr": "뇌겁의 잔혼: 번개 속의 오래된 목소리. 두 번째 기회를 원하는 몰락한 선인."
+	},
+	{
+		"id": -1000001191,
+		"key": "smcfgs191",
+		"en": "Heart Demon: your own past comes back in dreams; face what every other story made of you.",
+		"ch": "心魔：往事在梦中归来；直面其他故事在你身上留下的一切。",
+		"tc": "心魔：往事在夢中歸來；直面其他故事在你身上留下的一切。",
+		"kr": "심마: 꿈속에서 돌아오는 당신의 과거. 다른 이야기들이 당신에게 남긴 것과 마주하라."
 	}
 ]

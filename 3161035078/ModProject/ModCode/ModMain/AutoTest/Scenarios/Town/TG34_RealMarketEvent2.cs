@@ -28,7 +28,7 @@ namespace MOD_nE7UL2.AutoTest.Scenarios.Town
                 .Step("texts", c =>
                 {
                     if (!g.ui.HasUI(UIType.TownMarketBuy)) { c.Skip("shop not opened"); return; }
-                    var texts = UIHelper.GetUICustomBase(UIType.TownMarketBuy).SelectMany(x => x.Items).OfType<UIItemText>().Select(x => x.InnerText?.text ?? string.Empty).ToList();
+                    var texts = UIHelper.GetUICustomBase(UIType.TownMarketBuy).SelectMany(x => x.Items).OfType<UIItemText>().Select(x => TextIconHelper.GetShownText(x.InnerText)).ToList();
                     c.Assert(texts.Any(x => x.StartsWith("Market:")), $"budget text: {texts.FirstOrDefault(x => x.StartsWith("Market:"))}");
                     c.Assert(texts.Any(x => x.StartsWith("Price rate:")), $"rate text: {texts.FirstOrDefault(x => x.StartsWith("Price rate:"))}");
                     c.AssertBetween(RealMarketEvent2.GetBuyRate(CurrentTown, Player), 1, 1000, "buy rate (%)");
