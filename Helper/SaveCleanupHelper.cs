@@ -20,8 +20,27 @@ namespace ModLib.Helper
         public const string INDEX_FILE = "save-index.json";
         private static readonly Regex ID_FILE = new Regex(@"^(?<id>[A-Za-z0-9]{6})_(configs\.json|debug-\d{8}\.log)$");
 
-        /// <summary>Game data folder (LocalLow\guigugame\guigubahuang).</summary>
-        public static string GameDataPath => $"{Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData)}Low\\guigugame\\guigubahuang";
+        /// <summary>
+        /// Game data folder: Unity's persistentDataPath (LocalLow\guigugame\guigubahuang; a game slot of the autotest
+        /// moves it: tools/SlotDataPath). Outside the game (unit tests): the usual folder. Every data path of ModLib
+        /// (mod caches, logs, settings) is under it.
+        /// </summary>
+        public static string GameDataPath
+        {
+            get
+            {
+                if (_gameDataPath == null)
+                {
+                    string p = null;
+                    try { p = UnityEngine.Application.persistentDataPath; } catch { }
+                    _gameDataPath = string.IsNullOrEmpty(p)
+                        ? $"{Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData)}Low\\guigugame\\guigubahuang"
+                        : p.Replace('/', '\\').TrimEnd('\\');
+                }
+                return _gameDataPath;
+            }
+        }
+        private static string _gameDataPath;
 
         public static string IndexPath(string gameDataPath, string modLibId = "flQrxq") => Path.Combine(gameDataPath, "mod", modLibId, INDEX_FILE);
 

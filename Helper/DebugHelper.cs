@@ -54,7 +54,7 @@ namespace ModLib.Helper
         /// <returns>Path to the debug log folder</returns>
         public static string GetDebugFolderName()
         {
-            var p = $"{Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData)}Low\\guigugame\\guigubahuang\\mod\\{ModMaster.ModObj.ModId}\\";
+            var p = $"{SaveCleanupHelper.GameDataPath}\\mod\\{ModMaster.ModObj.ModId}\\";
             if (!Directory.Exists(p))
                 Directory.CreateDirectory(p);
             return p;

@@ -69,6 +69,10 @@
     <Compile Include="Helper\ActionHelper_TracedWrapper.cs" />
     <Compile Include="Helper\TextIconHelper.cs" />
     <Compile Include="Helper\PortraitHelper.cs" />
+    <Compile Include="Helper\BattleSceneHelper.cs" />
+    <Compile Include="Helper\BattleEffectHelper.cs" />
+    <Compile Include="Helper\BattleHelper.cs" />
+    <Compile Include="Helper\UIClickHelper.cs" />
     <Compile Include="Helper\ActionHelper.cs" />
     <Compile Include="Helper\ActionHelper_TracedIl2Action.cs" />
     <Compile Include="Helper\ActionHelper_TracedUnityAction.cs" />

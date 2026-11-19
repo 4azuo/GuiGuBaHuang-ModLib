@@ -65,6 +65,14 @@ namespace ModLib.Helper
             return tr == null ? null : tr.GetComponent<TextMeshProUGUI>();
         }
 
+        /// <summary>The text shown by a Text: its TextMeshPro twin's when the twin shows it (a text with an icon), else its own.</summary>
+        public static string GetShownText(Text t)
+        {
+            if (t == null) return string.Empty;
+            var tw = GetTwin(t);
+            return tw != null && tw.gameObject.activeSelf && string.IsNullOrEmpty(t.text) ? tw.text ?? string.Empty : t.text ?? string.Empty;
+        }
+
         /// <summary>
         /// Sets the text of a Text: with a sprite, shown by its TextMeshPro twin (created once, same rect, font size,
         /// color, alignment and wrapping) and the Text itself left empty; without, the Text as usual (twin hidden).
