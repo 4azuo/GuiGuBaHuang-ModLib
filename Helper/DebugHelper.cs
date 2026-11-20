@@ -164,10 +164,10 @@ namespace ModLib.Helper
             Save();
 
             //sent only when the player allowed it (ModTitleEvent.CrashReportConsent)
-            CrashReportHelper.Report(e, $"{Path.GetFileName(filePath)}:{memberName}:(line {lineNumber})");
+            var reported = CrashReportHelper.Report(e, $"{Path.GetFileName(filePath)}:{memberName}:(line {lineNumber})");
 
             if (IsDebugMode)
-                ModMaster.ShowException(e, GetDebugFilePath());
+                ModMaster.ShowException(e, GetDebugFilePath(), CrashReportHelper.GetReportNotice(reported));
         }
 
         /// <summary>

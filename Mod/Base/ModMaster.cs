@@ -525,8 +525,10 @@ namespace ModLib.Mod
 
         /// <summary>
         /// Shows an exception in a long text dialog with a button opening the log.
+        /// notice: note in red at the bottom of the dialog, centered above the buttons (error report sent or not, as the
+        /// note of the S&amp;M configs), none when empty.
         /// </summary>
-        public static void ShowException(Exception ex, string log)
+        public static void ShowException(Exception ex, string log, string notice = null)
         {
             if (g.ui.HasUI(UIType.TextInfoLong))
             {
@@ -536,6 +538,22 @@ namespace ModLib.Mod
             var ui = g.ui.OpenUISafe<UITextInfoLong>(UIType.TextInfoLong);
             ui.InitData(GameTool.LS("libtxt999990017"), ex.GetAllInnnerExceptionStr(), GameTool.LS("libtxt999990018"), ActionHelper.TracedIl2Action(() => Process.Start("notepad.exe", log)), true);
             ui.ptextInfo.fontSize = 14;
+
+            if (!string.IsNullOrEmpty(notice))
+            {
+                try
+                {
+                    var cover = new UICoverTextInfoLong(ui);
+                    //last row, half a row up: the buttons of this dialog are lower than the ones of the S&M configs
+                    cover.AddText(cover.Columns[cover.MidCol], cover.Rows[cover.LastRow] + UIHelper.GetUIDeltaY() / 2, notice).Format(Color.red, 17);
+                }
+                catch (Exception e)
+                {
+                    //never an error from the error dialog itself (it would show the dialog again): the note goes in the text
+                    ui.ptextInfo.text = $"{notice}\n\n{ui.ptextInfo.text}";
+                    MelonLoader.MelonLogger.Warning($"exception dialog note: {e.Message}");
+                }
+            }
         }
 
         /// <summary>
