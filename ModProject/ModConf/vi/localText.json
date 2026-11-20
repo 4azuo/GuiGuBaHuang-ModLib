@@ -113,5 +113,15 @@
 		"id": "999990022",
 		"key": "libtxt999990022",
 		"en|ch|tc|kr": "Không cho phép: không gửi gì cả."
+	},
+	{
+		"id": "999990023",
+		"key": "libtxt999990023",
+		"en|ch|tc|kr": "Lỗi này đã được báo cho tác giả mod (BugSplat). Cảm ơn bạn!"
+	},
+	{
+		"id": "999990024",
+		"key": "libtxt999990024",
+		"en|ch|tc|kr": "Lỗi này chưa được gửi cho tác giả mod. Vui lòng báo lỗi (kèm log) cho tác giả của mod."
 	}
 ]

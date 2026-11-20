@@ -178,22 +178,27 @@ namespace ModLib.Helper
         /// <summary>
         /// Sends the exception in the background when allowed; each distinct error once per session, at most
         /// MAX_REPORTS_PER_SESSION. Never throws.
+        /// Returns true when the error goes to BugSplat: sent now (in the background) or already sent this session.
         /// </summary>
-        public static void Report(Exception e, string callerInfo)
+        public static bool Report(Exception e, string callerInfo)
         {
             try
             {
                 if (e == null || !IsAllowed)
-                    return;
+                    return false;
                 //the mod of the error: its database receives the report (no mod with a database: not sent)
                 var modId = FindModOfAssemblies(GetStackAssemblies(e), Mods.Keys)
                     ?? (Mods.ContainsKey(ModMaster.ModObj.ModId) ? ModMaster.ModObj.ModId : null);
                 if (modId == null)
-                    return;
+                    return false;
+                var key = DebugHelper.GetErrorKey(e);
                 lock (_reported)
                 {
-                    if (_reported.Count >= MAX_REPORTS_PER_SESSION || !_reported.Add(DebugHelper.GetErrorKey(e)))
-                        return;
+                    if (_reported.Contains(key))
+                        return true;
+                    if (_reported.Count >= MAX_REPORTS_PER_SESSION)
+                        return false;
+                    _reported.Add(key);
                 }
                 var settings = Mods[modId];
                 //game data is read here, on the main thread: the upload thread must not touch Il2Cpp objects
@@ -224,12 +229,23 @@ namespace ModLib.Helper
                     else
                         MelonLogger.Warning($"[CrashReport] not sent: {LastResult}");
                 });
+                return true;
             }
             catch (Exception ex)
             {
                 LastResult = $"error: {ex.Message}";
                 MelonLogger.Warning($"[CrashReport] not sent: {ex.Message}");
+                return false;
             }
+        }
+
+        /// <summary>
+        /// Line shown above the exception in the error dialog: reported to BugSplat, or not sent (the player reports it
+        /// to the mod author: ModLib is used by many authors, no fixed page).
+        /// </summary>
+        public static string GetReportNotice(bool reported)
+        {
+            return GameTool.LS(reported ? "libtxt999990023" : "libtxt999990024");
         }
 
         private static IEnumerable<string> GetLoadedModIds()

@@ -113,5 +113,15 @@
 		"id": "999990022",
 		"key": "libtxt999990022",
 		"en|ch|tc|kr": "Non permissum: nihil mittitur."
+	},
+	{
+		"id": "999990023",
+		"key": "libtxt999990023",
+		"en|ch|tc|kr": "Hic error auctori mod nuntiatus est (BugSplat). Gratias!"
+	},
+	{
+		"id": "999990024",
+		"key": "libtxt999990024",
+		"en|ch|tc|kr": "Hic error auctori mod missus non est. Quaeso eum (cum actis) auctori mod nuntia."
 	}
 ]

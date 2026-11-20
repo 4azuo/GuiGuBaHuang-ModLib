@@ -63,4 +63,20 @@ namespace ModLib.Object
             Clear();
         }
     }
+
+    /// <summary>
+    /// Cover of an opened UITextInfoLong with the grid of UICustom1 (the dialog area, not the whole screen): items
+    /// placed by column/row land where they would in a UICustom1 window (e.g. a note at MidCol / LastRow, above the
+    /// buttons, as in the S&amp;M configs).
+    /// </summary>
+    public class UICoverTextInfoLong : UICover<UITextInfoLong>
+    {
+        public override float MinWidth => -(UIHelper.GetUIScreenWidth() / 2) * 0.630f;
+        public override float MaxWidth => +(UIHelper.GetUIScreenWidth() / 2) * 0.660f;
+        public override float MinHeight => +(UIHelper.GetUIScreenHeight() / 2) * 0.640f;
+        public override float MaxHeight => -(UIHelper.GetUIScreenHeight() / 2) * 0.660f;
+
+        /// <summary>Covers the opened UITextInfoLong.</summary>
+        public UICoverTextInfoLong(UIBase ui) : base(ui) { }
+    }
 }

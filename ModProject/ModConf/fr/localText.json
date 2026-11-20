@@ -113,5 +113,15 @@
 		"id": "999990022",
 		"key": "libtxt999990022",
 		"en|ch|tc|kr": "Non autorisé : rien n'est envoyé."
+	},
+	{
+		"id": "999990023",
+		"key": "libtxt999990023",
+		"en|ch|tc|kr": "Cette erreur a été signalée à l'auteur du mod (BugSplat). Merci !"
+	},
+	{
+		"id": "999990024",
+		"key": "libtxt999990024",
+		"en|ch|tc|kr": "Cette erreur n'a pas été envoyée à l'auteur du mod. Merci de la signaler (avec le journal) à l'auteur du mod."
 	}
 ]
