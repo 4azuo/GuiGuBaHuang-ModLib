@@ -111,6 +111,8 @@ DebugHelper.IsDebugMode = false;  // Silent mode
 
 `DebugHelper.WriteLine(Exception)` also hands the exception to `CrashReportHelper` (ModLib), which sends it to [BugSplat](https://www.bugsplat.com), to the database **of the mod where the error happened**, only when the player allowed it.
 
+The exception dialog says what happened to the error in a red note at the bottom, centered above the buttons like the note of the S&M configs (`CrashReportHelper.GetReportNotice`, placed with `UICoverTextInfoLong` = the grid of `UICustom1`): sent to BugSplat (`libtxt999990023`, also when the same error was already sent this session), or not sent (not allowed, mod without a database, `MAX_REPORTS_PER_SESSION` reached): the player is asked to report it with the log to the author of the mod (`libtxt999990024`; no link: ModLib is used by many authors).
+
 **Each mod sets its own database** in its `ModConf/crash_reports.json` (not a game config: `ConfHelper` skips it). No file / invalid database: the errors of that mod are never sent. Taoist: `3161035078/ModProject/ModConf/crash_reports.json`.
 
 ```json

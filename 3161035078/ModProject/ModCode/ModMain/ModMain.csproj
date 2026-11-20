@@ -183,6 +183,7 @@
     <Compile Include="AutoTest\Scenarios\Title\TP01_NewCharacter.cs" />
     <Compile Include="AutoTest\Scenarios\Title\TT05_SMConfigsOk.cs" />
     <Compile Include="AutoTest\Scenarios\Title\TT06_CrashReports.cs" />
+    <Compile Include="AutoTest\Scenarios\Title\TT07_ErrorDialogNotice.cs" />
     <Compile Include="AutoTest\MockBugSplatServer.cs" />
     <Compile Include="AutoTest\Scenarios\Time\TX06_Yearly.cs" />
     <Compile Include="AutoTest\Scenarios\Economy\TG54_TownTax.cs" />

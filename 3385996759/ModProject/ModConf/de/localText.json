@@ -113,5 +113,15 @@
 		"id": "999990022",
 		"key": "libtxt999990022",
 		"en|ch|tc|kr": "Nicht erlaubt: es wird nichts gesendet."
+	},
+	{
+		"id": "999990023",
+		"key": "libtxt999990023",
+		"en|ch|tc|kr": "Dieser Fehler wurde dem Mod-Autor gemeldet (BugSplat). Danke!"
+	},
+	{
+		"id": "999990024",
+		"key": "libtxt999990024",
+		"en|ch|tc|kr": "Dieser Fehler wurde nicht an den Mod-Autor gesendet. Bitte melde ihn (mit dem Log) dem Autor des Mods."
 	}
 ]

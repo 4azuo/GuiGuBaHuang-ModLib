@@ -129,6 +129,28 @@
       ]
     },
     {
+      "id": "TT-07",
+      "kind": "auto",
+      "exclusive": true,
+      "feature": "CrashReportHelper (ModLib)",
+      "title": "Exception dialog says whether the error was sent to BugSplat",
+      "description": "When an error opens the exception dialog, a red note at the bottom of the dialog, centered above the buttons (as the note of the S&M configs), tells the player what happened to it: sent to the mod author (BugSplat) when the player allowed error reports (also for the same error again, already sent this session), otherwise 'not sent, report it with the log to the author of the mod' without any link (ModLib is used by many mod authors). Uploads go to the local stand-in BugSplat server of TT-06. The player's answer and the settings are restored.",
+      "preconditions": "Title screen",
+      "steps": [
+        "Player answered No: log an error with the exception dialog on",
+        "Player answered Yes: log an error, wait for the upload",
+        "Log the same error again",
+        "No mod with a BugSplat database: log an error"
+      ],
+      "expected": [
+        "No: red note 'not sent' at the bottom (centered, above the buttons), no link, nothing uploaded",
+        "Yes: red note 'reported' at the bottom, the error is uploaded",
+        "Same error: 'reported' note, no new upload",
+        "Mod without database: 'not sent' note",
+        "Answer and settings restored"
+      ]
+    },
+    {
       "id": "TP-01",
       "kind": "auto",
       "feature": "Pre-test (new character)",

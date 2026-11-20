@@ -7,6 +7,7 @@
 | Class | Base game UI | Use |
 |---|---|---|
 | `UICover<T>` | the UI you cover (`T : UIBase`) | Add items on top of an existing game UI (grid = whole screen). Create it in `OnOpenUIEnd` for that UI |
+| `UICoverTextInfoLong` | an opened `UITextInfoLong` | `UICover` with the grid of `UICustom1` (the dialog area): items land where they would in a `UICustom1` window. Used by the exception dialog for its red note at the bottom |
 | `UICustom1` | `UITextInfoLong` | Big custom window (title, OK button, optional Cancel) |
 | `UICustom2` | `UITextInfo` | Small custom window |
 

@@ -20,7 +20,7 @@ Automatic scenario code: `3161035078/ModProject/ModCode/ModMain/AutoTest/Scenari
 
 **Test data**: use a dedicated copy of a save (mid game, in or near a town, a few NPCs around, some items in storage). The scenarios call mod functions on it (most changes are reverted, NPC exp is not).
 
-## Automatic scenarios (106)
+## Automatic scenarios (107)
 
 Field `replaces`: former manual ids now covered by the scenario.
 
@@ -32,6 +32,7 @@ Field `replaces`: former manual ids now covered by the scenario.
 | TT-04 | ModLib title tools | ModLib title: language selector and tools | Title screen | 1. Language selector shown<br>2. Tools window opens<br>3. Duplicated ids window opens | `Title/TT04_ModLibTitle.cs` |
 | TT-05 | SMGlobalConfigsEvent | S&M configs: OK without change keeps every value | Title screen | 1. Every config value unchanged<br>2. Global config file written | `Title/TT05_SMConfigsOk.cs` |
 | TT-06 | CrashReportHelper (ModLib) | Error reports to BugSplat only with the player's consent | Title screen | 1. No request before the answer and after No<br>2. An answer for another consent key is not used (asked again)<br>3. After Yes: GET upload url (Taoist name and version), PUT zip (Callstack.txt + log.txt without private values), POST commit with crashTypeId 18, md5 = ETag, anonymous user id, attributes with modId of Taoist<br>4. Nothing private sent; the same error sent once<br>5. ModCreator window shows 'Error reports' with the answer<br>6. Real upload accepted (when BUGSPLAT_TEST_DB is set)<br>7. Answer and settings restored | `Title/TT06_CrashReports.cs` |
+| TT-07 | CrashReportHelper (ModLib) | Exception dialog says whether the error was sent to BugSplat | Title screen | 1. No: red note 'not sent' at the bottom (centered, above the buttons), no link, nothing uploaded<br>2. Yes: red note 'reported' at the bottom, the error is uploaded<br>3. Same error: 'reported' note, no new upload<br>4. Mod without database: 'not sent' note<br>5. Answer and settings restored | `Title/TT07_ErrorDialogNotice.cs` |
 | TP-01 | Pre-test (new character) | Create a new character (trainer on, CrueltyShura, 3 artifacts, intro skipped) | Title screen, a free save slot | 1. New save loaded on the map<br>2. Grade 1, CrueltyShura<br>3. Trainer on in the save configs, TrainerEvent loaded<br>4. Bagua Jade, God Eye and Devil Demon pot active; no intro screen and no first battle | `Title/TP01_NewCharacter.cs` |
 | TG-01 | ModMain | Taoist settings and events are loaded in the save | Test save loaded (map screen) | 1. mod_configs.json deserialized<br>2. Core events loaded<br>3. Optional events (Trainer, QiCul, UpgradeNaturally, RepairShinki) loaded only when enabled in S&M configs | `Core/TG01_ModMain.cs` |
 | TG-02 | SMLocalConfigsEvent | Per-save S&M configs exist and Calculate applies rates | Save loaded | 1. 150 / 100 / 50 | `Core/TG02_SMLocalConfigsEvent.cs` |
