@@ -107,8 +107,9 @@ namespace ModLib.Helper
                 var i = (int)confObj.GetItemIndex(id);
                 var loadedIdKey = $"{confName}:{id}";
                 var loadedIdValue = $"[{modId}:{Path.GetFileName(filePath)}];";
-                if (LoadedIDs.ContainsKey(loadedIdKey) && LoadedIDs[loadedIdKey].Contains(loadedIdValue))
-                    continue;
+                //a reload (language change: a translation file has the same name as the main file, or back to the
+                //default texts) must still apply the values: only the LoadedIDs bookkeeping is skipped
+                var alreadyLoaded = LoadedIDs.ContainsKey(loadedIdKey) && LoadedIDs[loadedIdKey].Contains(loadedIdValue);
                 if (i >= 0 && confList[i].id == id)
                 {
                     //delete
@@ -141,9 +142,10 @@ namespace ModLib.Helper
                     if (g.conf.localText.GetType() == confObj.GetType())
                         g.conf.localText.allText.Add(confItem.key, confItem);
                 }
-                LoadedIDs[loadedIdKey] =
-                    (LoadedIDs.ContainsKey(loadedIdKey) ? LoadedIDs[loadedIdKey] : string.Empty) +
-                    loadedIdValue;
+                if (!alreadyLoaded)
+                    LoadedIDs[loadedIdKey] =
+                        (LoadedIDs.ContainsKey(loadedIdKey) ? LoadedIDs[loadedIdKey] : string.Empty) +
+                        loadedIdValue;
                 if (confItem != null)
                 {
                     foreach (var p in item)
