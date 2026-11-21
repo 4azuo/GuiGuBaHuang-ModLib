@@ -20,11 +20,17 @@ namespace ModLib.Helper
         /// <summary>True when tracing.</summary>
         public static bool Enabled => _file != null;
 
-        /// <summary>Starts the background writer (once).</summary>
+        /// <summary>Starts the background writer (once); already started: writes to this file from now on (a new run of a game that stays open).</summary>
         public static void Start(string file)
         {
-            if (_thread != null || string.IsNullOrEmpty(file))
+            if (string.IsNullOrEmpty(file))
                 return;
+            if (_thread != null)
+            {
+                _file = file;
+                try { File.AppendAllText(_file, $"{DateTime.Now:HH:mm:ss.fff} trace continued{Environment.NewLine}"); } catch { }
+                return;
+            }
             _file = file;
             try { File.AppendAllText(_file, $"{DateTime.Now:HH:mm:ss.fff} trace started{Environment.NewLine}"); } catch { }
             _thread = new Thread(Loop) { IsBackground = true, Name = "ModLib.EventTrace" };

@@ -15,12 +15,12 @@ namespace ModLib.Helper
     {
         private const int DEFAULT_OPT_ID = 999790000;
         /// <summary>
-        /// Dialogue with exactly n options (999890011-14 type 1, 999890021-24 type 2) for 1 to 4 options: the default
-        /// dialogues list 10 options that the game does not hide reliably, and with one option left the game shows no
-        /// button: a click closes the drama without calling onOptionsClickCall. 0 option and more than 4: the default
-        /// dialogue (no option shown, a click closes it).
+        /// Dialogue with exactly n options (999890011-19 type 1, 999890021-29 type 2) for 1 to 9 options: the default
+        /// dialogues list 10 options that the game does not hide reliably (with options hidden it showed none at all,
+        /// 2026-11-20), and with one option left the game shows no button: a click closes the drama without calling
+        /// onOptionsClickCall. 0 option and 10: the default dialogue.
         /// </summary>
-        private static bool IsExact(int n) => n >= 1 && n <= 4;
+        private static bool IsExact(int n) => n >= 1 && n <= 9;
 
         private static int DialogueId(int defaultId, int n)
         {
@@ -59,7 +59,7 @@ namespace ModLib.Helper
                 // exact dialogue: its own options, texts replaced (dialogueOptions would add them a second time)
                 dialogueOptions = (IsExact(opts.Length) ? opts.Take(0) : opts).ToIl2CppDictionary(x => DEFAULT_OPT_ID + x.Index, x => x.Value),
                 dialogueOptionsText = (IsExact(opts.Length) ? opts : opts.Take(0)).ToIl2CppDictionary(x => DEFAULT_OPT_ID + x.Index, x => x.Value),
-                hideDialogueOptions = (IsExact(opts.Length) ? new int[0] : DEFAULT_OPTS.Except(opts.Select((x, i) => i))).ToIl2CppList(),
+                hideDialogueOptions = (IsExact(opts.Length) ? new int[0] : DEFAULT_OPTS.Except(opts.Select((x, i) => DEFAULT_OPT_ID + i))).ToIl2CppList(),
                 onOptionsClickCall = optClickCall,
             });
         }
@@ -85,7 +85,7 @@ namespace ModLib.Helper
                 // exact dialogue: its own options, texts replaced (dialogueOptions would add them a second time)
                 dialogueOptions = (IsExact(opts.Length) ? opts.Take(0) : opts).ToIl2CppDictionary(x => DEFAULT_OPT_ID + x.Index, x => x.Value),
                 dialogueOptionsText = (IsExact(opts.Length) ? opts : opts.Take(0)).ToIl2CppDictionary(x => DEFAULT_OPT_ID + x.Index, x => x.Value),
-                hideDialogueOptions = (IsExact(opts.Length) ? new int[0] : DEFAULT_OPTS.Except(opts.Select((x, i) => i))).ToIl2CppList(),
+                hideDialogueOptions = (IsExact(opts.Length) ? new int[0] : DEFAULT_OPTS.Except(opts.Select((x, i) => DEFAULT_OPT_ID + i))).ToIl2CppList(),
                 onOptionsClickCall = optClickCall,
                 unitLeft = wunitLeft,
                 unitRight = wunitRight,
@@ -109,7 +109,7 @@ namespace ModLib.Helper
                 // exact dialogue: its own options, texts replaced (dialogueOptions would add them a second time)
                 dialogueOptions = (IsExact(opts.Length) ? opts.Take(0) : opts).ToIl2CppDictionary(x => DEFAULT_OPT_ID + x.Index, x => x.Value),
                 dialogueOptionsText = (IsExact(opts.Length) ? opts : opts.Take(0)).ToIl2CppDictionary(x => DEFAULT_OPT_ID + x.Index, x => x.Value),
-                hideDialogueOptions = (IsExact(opts.Length) ? new int[0] : DEFAULT_OPTS.Except(opts.Select((x, i) => i))).ToIl2CppList(),
+                hideDialogueOptions = (IsExact(opts.Length) ? new int[0] : DEFAULT_OPTS.Except(opts.Select((x, i) => DEFAULT_OPT_ID + i))).ToIl2CppList(),
                 onOptionsClickCall = optClickCall,
                 backgroud = { [dramaId] = background },
             });
