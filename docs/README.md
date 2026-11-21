@@ -48,6 +48,7 @@ docs/
 │   ├── 04-Autotest.md            the autotest runner, evidence, unit tests, viewers, promo, marketing video
 │   ├── 05-Backlog.md             open work and former TODO notes
 │   ├── 06-Storylines-Draft.md    design of the NPC storylines A-L and the links between them
+│   ├── 07-Paths-Feasibility.md   feasibility of the side cultivation paths (Artisan Dao, spirit sense, Dao heart, merit)
 │   ├── Features/                 one page per class of ModMain/Mod (saved data, switches, flow, formulas, UI)
 │   │   └── README.md             index by group + points found while documenting
 │   └── Storylines/               dialogue of every line
@@ -63,6 +64,7 @@ docs/
     ├── index.json                names and sizes
     ├── TextIcons/<name>.png      icons of the TextMeshPro sprite asset: "[icon:NAME]" in localTexts
     ├── ItemIcons/<icon>.png      item icons ("icon" of ItemProps / DLCItemProps) + items.json (icon -> item ids)
+    ├── Buildings/<atlas>/<name>.png  sprites of the atlases TownCommon, CommonMapGrid, VillageCommon (buildings, places)
     └── DramaBackgrounds/<name>.webp   drama backgrounds: DramaHelper.OpenDrama2 / StoryLine.Tell background
 ```
 

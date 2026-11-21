@@ -9,7 +9,7 @@
                   set: (k, v) => { try { localStorage.setItem("pv." + k, v); } catch { /* no storage */ } } };
   const STEAM = "../3161035078/ModProject/SteamImg/";
   const RUNS = "../logs/autotest/";
-  const VIDEO = "../marketing/video/out/";
+  const VIDEO = "../marketing/video-6.0.0/out/";
   const kb = (n) => (n > 1048576 ? (n / 1048576).toFixed(1) + " MB" : Math.round(n / 1024) + " KB");
 
   if (!DATA) { $("empty").classList.remove("hidden"); return; }
@@ -116,7 +116,7 @@
       ${/\.png$/i.test(v.file) ? `<img src="${VIDEO}${esc(v.file)}">` : `<video controls preload="metadata" src="${VIDEO}${esc(v.file)}"></video>`}
       <div class="body"><div class="caption mono">${esc(v.file)}</div><div class="meta">${esc(v.time)} &middot; ${kb(v.size)}</div></div>
       </article>`).join("")}</div>`
-      : '<div class="empty">No video yet: <code>cd marketing/video; npm run render</code> (VS Code task "Marketing: Render Video").</div>';
+      : '<div class="empty">No video yet: <code>cd marketing/video-6.0.0; npm run render</code> (VS Code task "Marketing: Render Video").</div>';
     return DATA.videos.length;
   }
 

@@ -2,7 +2,7 @@
 - the pictures of 3161035078/ModProject/SteamImg (promo_*.jpg with the captions of scenarios.json, the other pictures);
 - the promo entries of 3161035078/tests/scenarios.json (taken or not);
 - the promotion screenshots ("promo-<name>") of every autotest run still in logs/autotest, to compare the takes;
-- the rendered videos of marketing/video/out.
+- the rendered videos of marketing/video-6.0.0/out.
 Run by collect-promo.ps1 after a promotion run (scripts/game/run-promo.ps1); can be run alone.
 
 usage: python scripts/update-promo-viewer.py [--open]
@@ -59,7 +59,7 @@ if os.path.isdir(auto):
             runs.append({"run": r, "takes": takes})
 
 videos = []
-out = os.path.join(repo, "marketing", "video", "out")
+out = os.path.join(repo, "marketing", "video-6.0.0", "out")
 if os.path.isdir(out):
     for f in sorted(os.listdir(out)):
         if f.lower().endswith((".mp4", ".webm", ".png")):

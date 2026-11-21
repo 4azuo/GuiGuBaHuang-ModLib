@@ -2888,5 +2888,605 @@
 		"id": -1000007577,
 		"key": "story_L_nightmare",
 		"en|ch|tc|kr": "einen Albtraum"
+	},
+	{
+		"id": "-1000007579",
+		"key": "story_task_desc_M",
+		"en|ch|tc|kr": "{0}"
+	},
+	{
+		"id": "-1000007610",
+		"key": "story_end_M_Heir",
+		"en|ch|tc|kr": "Der Erbe"
+	},
+	{
+		"id": "-1000007614",
+		"key": "story_task_desc_N",
+		"en|ch|tc|kr": "{0}"
+	},
+	{
+		"id": "-1000007643",
+		"key": "story_task_desc_O",
+		"en|ch|tc|kr": "{0}"
+	},
+	{
+		"id": "-1000007653",
+		"key": "story_O1_1_o1",
+		"en|ch|tc|kr": "Die Wahrheit sagen"
+	},
+	{
+		"id": "-1000007661",
+		"key": "story_O3_r_o2",
+		"en|ch|tc|kr": "Kämpfen"
+	},
+	{
+		"id": "-1000007673",
+		"key": "story_task_desc_P",
+		"en|ch|tc|kr": "{0}"
+	},
+	{
+		"id": "-1000007680",
+		"key": "story_P0_1_o2",
+		"en|ch|tc|kr": "Weitergehen"
+	},
+	{
+		"id": "-1000007578",
+		"key": "story_name_M",
+		"en|ch|tc|kr": "Der alte Tie und seine Schmiede"
+	},
+	{
+		"id": "-1000007580",
+		"key": "story_task_M0",
+		"en|ch|tc|kr": "Der alte Schmied {F} aus {T} hat sich die Hand verbrannt. Er bittet dich um Hilfe."
+	},
+	{
+		"id": "-1000007581",
+		"key": "story_task_M1",
+		"en|ch|tc|kr": "{F} braucht Erz aus einer Erzader für seine letzte Klinge."
+	},
+	{
+		"id": "-1000007582",
+		"key": "story_task_M2",
+		"en|ch|tc|kr": "{F} muss wählen, wer die Geheimnisse seiner Schmiede bewahrt."
+	},
+	{
+		"id": "-1000007583",
+		"key": "story_task_M3",
+		"en|ch|tc|kr": "Die Schmiedegilde von {T} will die Schmiede von {F} schließen (2 Jahre)."
+	},
+	{
+		"id": "-1000007584",
+		"key": "story_task_M4",
+		"en|ch|tc|kr": "Das letzte Feuer der Schmiede von {F}."
+	},
+	{
+		"id": "-1000007585",
+		"key": "story_M0_1",
+		"en|ch|tc|kr": "Die Schmiede von {T} riecht nach verbranntem Fleisch. Ein alter Schmied wickelt seine rechte Hand in einen nassen Lappen.\n{F}: \"Der Ofen hat mich angespuckt. Vierzig Jahre, und jetzt spuckt er mich an.\"\n{F}: \"In drei Tagen ist die Prüfung der Gilde. Besteht keiner meiner Schmiede, nehmen sie mir die Lizenz. Kannst du einen Hammer schwingen?\""
+	},
+	{
+		"id": "-1000007586",
+		"key": "story_M0_1_o1",
+		"en|ch|tc|kr": "Die Prüfung für ihn ablegen"
+	},
+	{
+		"id": "-1000007587",
+		"key": "story_M0_1_o2",
+		"en|ch|tc|kr": "Ihm eine Heilpille geben"
+	},
+	{
+		"id": "-1000007588",
+		"key": "story_M0_1_o3",
+		"en|ch|tc|kr": "Nicht meine Sache"
+	},
+	{
+		"id": "-1000007589",
+		"key": "story_M0_exam",
+		"en|ch|tc|kr": "Drei Tage voller Funken. Die Gildenmeister runzeln die Stirn, dann nicken sie.\n{F}: \"Ha! Krumm, aber die Schneide hält. Du hast die Hände dafür.\""
+	},
+	{
+		"id": "-1000007590",
+		"key": "story_M0_2",
+		"en|ch|tc|kr": "Die Pille schließt die Verbrennung über Nacht. Staunend bewegt er die Finger.\n{F}: \"Ich stehe in deiner Schuld, Kultivierender. Ein Schmied zahlt seine Schulden in Stahl.\""
+	},
+	{
+		"id": "-1000007591",
+		"key": "story_M1_1",
+		"en|ch|tc|kr": "{F}: \"Noch eine Klinge, bevor ich sterbe. Keine hübsche - eine wahre. Dafür brauche ich Erz aus {0}, der reichen Ader hinter der Stadt.\"\n{F}: \"Bring mir Erz oder das Geld dafür ({1:#,##0} [icon:zm_lingshi]). Oder steig selbst hinab - etwas bewacht die Ader.\""
+	},
+	{
+		"id": "-1000007592",
+		"key": "story_M1_1_o1",
+		"en|ch|tc|kr": "Ihm Erz geben"
+	},
+	{
+		"id": "-1000007593",
+		"key": "story_M1_1_o2",
+		"en|ch|tc|kr": "Das Erz bezahlen ({1:#,##0} [icon:zm_lingshi])"
+	},
+	{
+		"id": "-1000007594",
+		"key": "story_M1_1_o3",
+		"en|ch|tc|kr": "In die Ader hinabsteigen"
+	},
+	{
+		"id": "-1000007595",
+		"key": "story_M1_2",
+		"en|ch|tc|kr": "Das Erz glüht rot in seinem Ofen. Er schmiedet mit der linken Hand, während du die Zange hältst.\n{F}: \"Achte auf die Farbe, nicht auf den Hammer. Der Stahl sagt dir, wann.\""
+	},
+	{
+		"id": "-1000007596",
+		"key": "story_M2_1",
+		"en|ch|tc|kr": "Ein Junge fegt den Boden der Schmiede und schielt zum Amboss.\n{F}: \"Der Freund meines Enkels. Ungeschickt, stur. Wie ich damals.\"\n{F}: \"Meine Geheimnisse sollen nicht mit mir sterben. Lehre ihn mit mir - oder nimm sie selbst und geh weit fort.\""
+	},
+	{
+		"id": "-1000007597",
+		"key": "story_M2_1_o1",
+		"en|ch|tc|kr": "Den Jungen gemeinsam lehren"
+	},
+	{
+		"id": "-1000007598",
+		"key": "story_M2_1_o2",
+		"en|ch|tc|kr": "Die Geheimnisse selbst lernen"
+	},
+	{
+		"id": "-1000007599",
+		"key": "story_M3_1",
+		"en|ch|tc|kr": "Männer in Gildenschürzen stehen mit Fackeln vor der Schmiede.\nEin Gildenmeister: \"Ein alter Narr mit verkrüppelter Hand und ein Fremder an seinem Amboss. Schließt, oder wir schließen.\"\n{F}: \"Nur über meine Knochen.\""
+	},
+	{
+		"id": "-1000007600",
+		"key": "story_M3_1_o1",
+		"en|ch|tc|kr": "Sie vertreiben"
+	},
+	{
+		"id": "-1000007601",
+		"key": "story_M3_1_o2",
+		"en|ch|tc|kr": "Den Frieden der Gilde erkaufen ({0:#,##0} [icon:zm_lingshi])"
+	},
+	{
+		"id": "-1000007602",
+		"key": "story_M4_burned",
+		"en|ch|tc|kr": "Die Schmiede ist Asche. {F} sitzt auf dem kalten Amboss, die verbrannte Hand auf dem Knie.\n{F}: \"Das Feuer nimmt zurück, was es gab. Nimm, was ich dich lehrte, und lass es anderswo brennen.\""
+	},
+	{
+		"id": "-1000007603",
+		"key": "story_M4_1",
+		"en|ch|tc|kr": "Das letzte Feuer der Schmiede. {F} ist nun mager, sein Bart weiß wie Asche.\n{F}: \"Eine Klinge bleibt diesen Händen. Lass sie werden, was sie will - oder bring mir Erz der Stufe {0}, und ich mache ein Meisterwerk daraus.\""
+	},
+	{
+		"id": "-1000007604",
+		"key": "story_M4_1_o1",
+		"en|ch|tc|kr": "Die Schmiede entscheiden lassen"
+	},
+	{
+		"id": "-1000007605",
+		"key": "story_M4_1_o2",
+		"en|ch|tc|kr": "Erz der Stufe {0} für ein Meisterwerk bringen"
+	},
+	{
+		"id": "-1000007606",
+		"key": "story_endM_Heir",
+		"en|ch|tc|kr": "Jetzt hält der Junge die Zange, und seine Schläge sitzen.\n{F}: \"Siehst du? Ungeschickt und stur. Ein Schmied.\" Er legt dir eine Klinge in die Hände. \"Seine erste. Meine letzte. Behalte sie.\""
+	},
+	{
+		"id": "-1000007607",
+		"key": "story_endM_Secret",
+		"en|ch|tc|kr": "Du trägst seine Geheimnisse davon: die Farbe des Stahls, den Atem des Blasebalgs, die Geduld im Hammer eines alten Mannes."
+	},
+	{
+		"id": "-1000007608",
+		"key": "story_endM_Masterwork",
+		"en|ch|tc|kr": "Das Erz singt im Feuer. Drei Tage und Nächte schläft er nicht.\n{F}: \"Da. Das ist die Klinge, für die ich geboren wurde.\" Er lächelt und legt den Hammer für immer nieder."
+	},
+	{
+		"id": "-1000007609",
+		"key": "story_end_M_Masterwork",
+		"en|ch|tc|kr": "Meisterwerk"
+	},
+	{
+		"id": "-1000007611",
+		"key": "story_end_M_Secret",
+		"en|ch|tc|kr": "Das Geheimnis"
+	},
+	{
+		"id": "-1000007612",
+		"key": "story_no_ore",
+		"en|ch|tc|kr": "Du hast kein Erz der Stufe {0} oder höher."
+	},
+	{
+		"id": "-1000007613",
+		"key": "story_name_N",
+		"en|ch|tc|kr": "Das Haus in der alten Straße"
+	},
+	{
+		"id": "-1000007615",
+		"key": "story_task_N0",
+		"en|ch|tc|kr": "Unter dem Boden deines Hauses in {T} ist etwas."
+	},
+	{
+		"id": "-1000007616",
+		"key": "story_task_N1",
+		"en|ch|tc|kr": "Banditen bedrohen die alte Straße von {T}; deine Nachbarin {N} bittet um Hilfe."
+	},
+	{
+		"id": "-1000007617",
+		"key": "story_task_N2",
+		"en|ch|tc|kr": "Die Aufzeichnungen im Keller erzählen, wie das Haus gebaut wurde."
+	},
+	{
+		"id": "-1000007618",
+		"key": "story_task_N3",
+		"en|ch|tc|kr": "{T} wird angegriffen; die Straße wartet auf dich (1 Jahr)."
+	},
+	{
+		"id": "-1000007619",
+		"key": "story_task_N4",
+		"en|ch|tc|kr": "Die Straße von {T} urteilt über ihren Kultivierenden."
+	},
+	{
+		"id": "-1000007620",
+		"key": "story_N0_1",
+		"en|ch|tc|kr": "Dein Haus in {T}. Ein loses Brett unter dem Bett, darunter Steinstufen und eine Tür, versiegelt mit einem vor Alter grauen Talisman.\nLange vor dir lebte hier ein Kultivierender."
+	},
+	{
+		"id": "-1000007621",
+		"key": "story_N0_1_o1",
+		"en|ch|tc|kr": "Das Siegel brechen"
+	},
+	{
+		"id": "-1000007622",
+		"key": "story_N0_1_o2",
+		"en|ch|tc|kr": "Wieder versiegeln"
+	},
+	{
+		"id": "-1000007623",
+		"key": "story_N0_2",
+		"en|ch|tc|kr": "Hinter dem Siegel liegt eine Steinpuppe in Trümmern zwischen Pillenflaschen und Notizbüchern.\nDeine Nachbarin klopft an, bleich.\n{N}: \"Der Lärm... der Keller des alten Meisters? Großmutter sagte, man dürfe ihn nie öffnen.\""
+	},
+	{
+		"id": "-1000007624",
+		"key": "story_N0_sealed",
+		"en|ch|tc|kr": "Du drückst einen neuen Talisman über den alten. Das Brett kommt zurück.\nDeine Nachbarin winkt von ihrer Türschwelle.\n{N}: \"Guten Abend, Unsterblicher! Die Straße freut sich, wieder einen Kultivierenden zu haben.\""
+	},
+	{
+		"id": "-1000007625",
+		"key": "story_N1_1",
+		"en|ch|tc|kr": "{N}: \"Jetzt kommen sie jeden Monat - Männer mit Messern, ein dämonischer Kultivierender bei ihnen. Sie nehmen Reis, Stoff, die Armreifen der Mädchen.\"\n{N}: \"Wir sind nur Sterbliche. Du wohnst doch in unserer Straße...\""
+	},
+	{
+		"id": "-1000007626",
+		"key": "story_N1_1_o1",
+		"en|ch|tc|kr": "Auf sie warten und kämpfen"
+	},
+	{
+		"id": "-1000007627",
+		"key": "story_N1_1_o2",
+		"en|ch|tc|kr": "Wachen für die Straße anheuern ({0:#,##0} [icon:zm_lingshi])"
+	},
+	{
+		"id": "-1000007628",
+		"key": "story_N1_1_o3",
+		"en|ch|tc|kr": "Die Sorgen der Sterblichen gehen mich nichts an"
+	},
+	{
+		"id": "-1000007629",
+		"key": "story_N2_1",
+		"en|ch|tc|kr": "Die Notizen des alten Meisters, in sauberer Schrift: Einst kaufte er die ganze Straße, riss die Häuser für ein Anwesen ab und wurde reich durch den Schatz darunter. Die Sterblichen verfluchten ihn bis zu seinem Tod.\nEine Seite markiert einen zweiten Hort - unter den Häusern neben deinem."
+	},
+	{
+		"id": "-1000007630",
+		"key": "story_N2_1_o1",
+		"en|ch|tc|kr": "Sie auskaufen und graben"
+	},
+	{
+		"id": "-1000007631",
+		"key": "story_N2_1_o2",
+		"en|ch|tc|kr": "Die Seite verbrennen"
+	},
+	{
+		"id": "-1000007632",
+		"key": "story_N3_1",
+		"en|ch|tc|kr": "Rauch über der Mauer von {T}. Plünderer am Tor, und die alte Straße direkt dahinter.\n{N}: \"Man sagt, die Mauer hält nicht. Wohin sollen wir gehen?\""
+	},
+	{
+		"id": "-1000007633",
+		"key": "story_N3_1_o1",
+		"en|ch|tc|kr": "Das Tor halten"
+	},
+	{
+		"id": "-1000007634",
+		"key": "story_N3_1_o2",
+		"en|ch|tc|kr": "Die Mauer bezahlen ({0:#,##0} [icon:zm_lingshi] an die Stadt)"
+	},
+	{
+		"id": "-1000007635",
+		"key": "story_N3_1_o3",
+		"en|ch|tc|kr": "Die Stadt ihrem Schicksal überlassen"
+	},
+	{
+		"id": "-1000007636",
+		"key": "story_endN_Manor",
+		"en|ch|tc|kr": "Die Häuser der Nachbarn fallen eins nach dem anderen; darunter ein Hort des alten Meisters. Die Straße ist jetzt still - niemand wohnt mehr dort außer dir."
+	},
+	{
+		"id": "-1000007637",
+		"key": "story_endN_Home",
+		"en|ch|tc|kr": "Laternen an jeder Tür der alten Straße. {N} bringt eine Schüssel Teigtaschen.\n{N}: \"Die Kinder nennen sie jetzt die Straße des Unsterblichen. An unserem Tisch ist immer ein Platz für dich.\""
+	},
+	{
+		"id": "-1000007638",
+		"key": "story_endN_Empty",
+		"en|ch|tc|kr": "Türen schließen sich, wenn du vorbeigehst. Eine Familie nach der anderen verkauft und zieht fort."
+	},
+	{
+		"id": "-1000007639",
+		"key": "story_end_N_Home",
+		"en|ch|tc|kr": "Zuhause"
+	},
+	{
+		"id": "-1000007640",
+		"key": "story_end_N_Manor",
+		"en|ch|tc|kr": "Das Anwesen"
+	},
+	{
+		"id": "-1000007641",
+		"key": "story_end_N_Empty",
+		"en|ch|tc|kr": "Eine leere Straße"
+	},
+	{
+		"id": "-1000007642",
+		"key": "story_name_O",
+		"en|ch|tc|kr": "Asche der Stadt"
+	},
+	{
+		"id": "-1000007644",
+		"key": "story_task_O0",
+		"en|ch|tc|kr": "Ein Kind überlebte den Fall von {T}."
+	},
+	{
+		"id": "-1000007645",
+		"key": "story_task_O1",
+		"en|ch|tc|kr": "{O} will wissen, wer {T} niedergebrannt hat (2 Jahre)."
+	},
+	{
+		"id": "-1000007646",
+		"key": "story_task_O2",
+		"en|ch|tc|kr": "{O} trainiert, um Kultivierender zu werden (4 Jahre)."
+	},
+	{
+		"id": "-1000007647",
+		"key": "story_task_O3",
+		"en|ch|tc|kr": "{O} ist erwachsen geworden (7 Jahre)."
+	},
+	{
+		"id": "-1000007648",
+		"key": "story_O0_1",
+		"en|ch|tc|kr": "{T}. Schwarze Balken, kalte Asche, der Geruch eines alten Feuers. In den Ruinen eines Hauses sitzt ein Kind neben einer zerbrochenen Puppe und weint nicht."
+	},
+	{
+		"id": "-1000007649",
+		"key": "story_O0_butcher",
+		"en|ch|tc|kr": "{T}. Du kennst diesen Ort. Du weißt, wessen Schwert diese Asche schuf.\nIn den Ruinen eines Hauses sitzt ein Kind neben einer zerbrochenen Puppe und sieht dich ohne Furcht an - es kennt dein Gesicht nicht."
+	},
+	{
+		"id": "-1000007650",
+		"key": "story_O0_1_o1",
+		"en|ch|tc|kr": "Das Kind mitnehmen"
+	},
+	{
+		"id": "-1000007651",
+		"key": "story_O0_1_o2",
+		"en|ch|tc|kr": "Einem Bauern Geld für das Kind dalassen"
+	},
+	{
+		"id": "-1000007652",
+		"key": "story_O1_1",
+		"en|ch|tc|kr": "{O} ist jetzt größer und auf eine Weise still, wie Kinder es nicht sein sollten.\n{O}: \"Jede Nacht sehe ich das Feuer. Jemand hat es gelegt. Wer? Du bist Kultivierender - du weißt es.\""
+	},
+	{
+		"id": "-1000007654",
+		"key": "story_O1_1_o2",
+		"en|ch|tc|kr": "Lügen: \"Banditen, längst tot\""
+	},
+	{
+		"id": "-1000007655",
+		"key": "story_O1_1_o3",
+		"en|ch|tc|kr": "\"Hass ist ein schlechter Lehrer\""
+	},
+	{
+		"id": "-1000007656",
+		"key": "story_O2_1",
+		"en|ch|tc|kr": "{O} schwingt ab der Morgendämmerung ein Holzschwert, immer wieder, bis die Hände bluten.\n{O}: \"Lehre mich. Diesmal werde ich stark genug sein.\""
+	},
+	{
+		"id": "-1000007657",
+		"key": "story_O2_1_o1",
+		"en|ch|tc|kr": "Mit {O} üben"
+	},
+	{
+		"id": "-1000007658",
+		"key": "story_O2_1_o2",
+		"en|ch|tc|kr": "Stattdessen Geduld lehren"
+	},
+	{
+		"id": "-1000007659",
+		"key": "story_O3_reckoning",
+		"en|ch|tc|kr": "{O} steht auf der Straße, nun mit echtem Schwert und den Augen eines erwachsenen Kultivierenden.\n{O}: \"Ich habe die alten Aufzeichnungen von {T} gefunden. Ich weiß, wessen Schwert es war. Ich weiß, wessen Brot ich jahrelang aß.\"\n{O}: \"Zieh.\""
+	},
+	{
+		"id": "-1000007660",
+		"key": "story_O3_r_o1",
+		"en|ch|tc|kr": "Das Schwert senken"
+	},
+	{
+		"id": "-1000007662",
+		"key": "story_O3_rebuild",
+		"en|ch|tc|kr": "{O}: \"Ich war wieder in {T}. Unkraut in den Straßen, aber der Brunnen ist noch süß.\"\n{O}: \"Familien kämen zurück, gäbe es Mauern und Häuser. Es braucht {0:#,##0} [icon:zm_lingshi]. Baust du es mit mir auf?\""
+	},
+	{
+		"id": "-1000007663",
+		"key": "story_O3_lie",
+		"en|ch|tc|kr": "{O}: \"Ich habe diese Banditen nie gefunden. Vielleicht ist es jetzt egal.\"\n{O}: \"Ich war wieder in {T}. Familien kämen zurück, gäbe es Mauern und Häuser. Es braucht {0:#,##0} [icon:zm_lingshi]. Hilfst du mir?\""
+	},
+	{
+		"id": "-1000007664",
+		"key": "story_O3_b_o1",
+		"en|ch|tc|kr": "{T} wieder aufbauen ({0:#,##0} [icon:zm_lingshi])"
+	},
+	{
+		"id": "-1000007665",
+		"key": "story_O3_b_o2",
+		"en|ch|tc|kr": "Die tote Stadt ruhen lassen"
+	},
+	{
+		"id": "-1000007666",
+		"key": "story_endO_Atonement",
+		"en|ch|tc|kr": "Dein Schwert fällt in den Staub. Die Klinge von {O} hält einen Finger vor deiner Kehle - zittert und senkt sich.\n{O}: \"Ich kann nicht. Du hast mich großgezogen.\" Das Kind der Asche geht fort. Etwas in deinem Herzen, lange gefroren, bricht auf."
+	},
+	{
+		"id": "-1000007667",
+		"key": "story_endO_Ashes",
+		"en|ch|tc|kr": "{T} bleibt eine Ruine. Gras wächst darüber, und niemand erinnert sich an das Kind der Asche."
+	},
+	{
+		"id": "-1000007668",
+		"key": "story_endO_Rebuilt",
+		"en|ch|tc|kr": "Neue Mauern für {T}, neue Dächer. Rauch aus Küchen, nicht aus Bränden.\n{O}: \"Sie baten mich, Wächter der Stadt zu sein. Ich sagte ja - wenn du uns besuchst.\""
+	},
+	{
+		"id": "-1000007669",
+		"key": "story_end_O_Atonement",
+		"en|ch|tc|kr": "Sühne"
+	},
+	{
+		"id": "-1000007670",
+		"key": "story_end_O_Ashes",
+		"en|ch|tc|kr": "Asche"
+	},
+	{
+		"id": "-1000007671",
+		"key": "story_end_O_Rebuilt",
+		"en|ch|tc|kr": "Wiederaufgebaut"
+	},
+	{
+		"id": "-1000007672",
+		"key": "story_name_P",
+		"en|ch|tc|kr": "Ein Herzschlag im Stein"
+	},
+	{
+		"id": "-1000007674",
+		"key": "story_task_P0",
+		"en|ch|tc|kr": "Dein Geistessinn hat einen Herzschlag gespürt, wo niemand sein sollte."
+	},
+	{
+		"id": "-1000007675",
+		"key": "story_task_P1",
+		"en|ch|tc|kr": "Ein Körperveredler, {B}, steckt halb versteinert in seiner Trübsal fest."
+	},
+	{
+		"id": "-1000007676",
+		"key": "story_task_P2",
+		"en|ch|tc|kr": "{B} zeigt dir den Weg des Körpers."
+	},
+	{
+		"id": "-1000007677",
+		"key": "story_task_P3",
+		"en|ch|tc|kr": "Die zweite Trübsal von {B}."
+	},
+	{
+		"id": "-1000007678",
+		"key": "story_P0_1",
+		"en|ch|tc|kr": "Im Gehen lässt du deinen Geistessinn sich ausbreiten. Bäume, Tiere, der langsame Puls der Erde...\nUnd unter dem fallenden Wasser vor dir, im Felsen selbst - ein Herzschlag. Langsam. Menschlich."
+	},
+	{
+		"id": "-1000007679",
+		"key": "story_P0_1_o1",
+		"en|ch|tc|kr": "Dem Herzschlag folgen"
+	},
+	{
+		"id": "-1000007681",
+		"key": "story_P1_1",
+		"en|ch|tc|kr": "Unter dem Wasserfall ist ein Mann halb aus Stein - Beine, Bauch, ein Arm grau und rissig. Seine Augen öffnen sich, als dein Sinn ihn berührt.\n{B}: \"Meine Körpertrübsal... sie scheiterte auf halbem Weg. Zehn Jahre so. Eine Pille, ein Kraut - alles mit Leben darin.\"\n{B}: \"Oder nimm, was von mir übrig ist. Die Essenz meines Körpers würde dich stark machen.\""
+	},
+	{
+		"id": "-1000007682",
+		"key": "story_P1_1_o1",
+		"en|ch|tc|kr": "Ihm eine Pille geben"
+	},
+	{
+		"id": "-1000007683",
+		"key": "story_P1_1_o2",
+		"en|ch|tc|kr": "Ihm ein Kraut geben"
+	},
+	{
+		"id": "-1000007684",
+		"key": "story_P1_1_o3",
+		"en|ch|tc|kr": "Seine Essenz nehmen"
+	},
+	{
+		"id": "-1000007685",
+		"key": "story_P1_2",
+		"en|ch|tc|kr": "Der Stein bricht und fällt von ihm wie alte Rinde. Er steht auf, zitternd, lebendig.\n{B}: \"Zehn Jahre habe ich diesem Wasser gelauscht. Ich zahle es dir zurück - mit dem Einzigen, was ich habe: einem Körper, der nicht bricht.\""
+	},
+	{
+		"id": "-1000007686",
+		"key": "story_P2_1",
+		"en|ch|tc|kr": "{B}: \"Der Körper erinnert sich an jeden Schlag. Lass ihn lernen.\" Er lässt die Knöchel knacken. \"Schlag mich. Dann schlage ich dich. Oder stell dich unters Wasser wie ich - einen Tag für jedes Jahr, das ich verlor.\""
+	},
+	{
+		"id": "-1000007687",
+		"key": "story_P2_1_o1",
+		"en|ch|tc|kr": "Mit {B} Schläge tauschen"
+	},
+	{
+		"id": "-1000007688",
+		"key": "story_P2_1_o2",
+		"en|ch|tc|kr": "Unter den Wasserfall stellen"
+	},
+	{
+		"id": "-1000007689",
+		"key": "story_P3_1",
+		"en|ch|tc|kr": "Der Himmel über dem Wasserfall wird eisengrau. {B} zieht sein Hemd aus.\n{B}: \"Der Himmel schuldet mir eine halbe Trübsal. Jetzt holt er sie sich.\"\n{B}: \"Steh mir bei - oder schau aus der Ferne zu. Ich nehme es dir nicht übel.\""
+	},
+	{
+		"id": "-1000007690",
+		"key": "story_P3_1_o1",
+		"en|ch|tc|kr": "Ihm beistehen"
+	},
+	{
+		"id": "-1000007691",
+		"key": "story_P3_1_o2",
+		"en|ch|tc|kr": "Aus der Ferne zusehen"
+	},
+	{
+		"id": "-1000007692",
+		"key": "story_endP_Brothers",
+		"en|ch|tc|kr": "Der letzte Blitz bricht auf zwei Rücken statt auf einem. {B} lacht, blutend, heil.\n{B}: \"Bruder. Was dich von nun an trifft, trifft auch mich.\""
+	},
+	{
+		"id": "-1000007693",
+		"key": "story_endP_Alone",
+		"en|ch|tc|kr": "Vom Hügel siehst du, wie der Sturm auf den Wasserfall hämmert. Als er abzieht, ist der Fels leer. Was immer er wurde, er schaffte es allein - und so wirst du es auch."
+	},
+	{
+		"id": "-1000007694",
+		"key": "story_endP_Devourer",
+		"en|ch|tc|kr": "Seine Essenz flutet in dich, schwer wie ein Berg. Deine Knochen werden hart. Das Wasser fällt weiter auf einen leeren Fels, und dein Herz wird ein wenig kälter."
+	},
+	{
+		"id": "-1000007695",
+		"key": "story_end_P_Brothers",
+		"en|ch|tc|kr": "Brüder des Körpers"
+	},
+	{
+		"id": "-1000007696",
+		"key": "story_end_P_Alone",
+		"en|ch|tc|kr": "Allein"
+	},
+	{
+		"id": "-1000007697",
+		"key": "story_end_P_Devourer",
+		"en|ch|tc|kr": "Verschlinger"
 	}
 ]

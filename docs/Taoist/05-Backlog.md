@@ -1,4 +1,4 @@
-﻿# Taoist - Backlog
+# Taoist - Backlog
 
 Open work collected from the TODO notes of the code (the notes were removed, this file replaces them) and from the
 features not finished yet. Remove an item once it is done.
@@ -43,8 +43,62 @@ Test: extend TG-46 (register a hidden item, NPC buys it, check the drama has no 
 
 ## Ideas for later (to discuss before coding)
 
-- **Custom skills**: let the player create / edit skills (`CustomSkillEvent` is a start).
+- **Custom skills**: let the player create / edit skills.
 - **Demonic possession (đoạt xá)**: a demonic art to take over the body of another cultivator; usable by the player and by NPCs; can be discovered, then the whole world hunts the possessor (bounties in every town, sects and families hostile). Conditions to use it (art, realm, target weaker / dying, cost...) to be discussed. Technically close to "continue as a descendant" (`FamilyEvent.Inherit` copies the base properties of a unit onto the player).
+
+## Cultivation paths (decided 2026-11-20: body refining first, the rest later)
+
+- **Body refining** (`BodyCulEvent`, done: realms, exp from hits / training / bath (treasures and herbs, doses),
+  breakthrough by chance or by the body tribulation battle, tempering places (waterfall / lava / thunder pool encounters of the world map, then a seclusion),
+  sects that teach it, S&M `NoBodyCultivation`, the training ground room, NPCs). NPCs use the tempering places and the
+  tribulation; the body refining sects are chosen by their style every year.
+- **Merit** (`MeritEvent`, done 2026-11-20: 6 levels + 3 of karma, essence, flat bonuses, encounters, NPC intimacy,
+  lightning, karma bounty, gifts / revenge, town wars, town growth, the massacre of a town).
+- **Artisan Dao** (`ArtisanEvent`, done 2026-11-20: the 6 crafts (herbs and ores gathered on the map); craft exp, 5 ranks by exam,
+  masterpieces, furnace accidents, NPC crafters, a Saint's essence and the return to simplicity, NPC commissions,
+  apprentices, market price of the title, a return-to-simplicity destiny a craft). A masterpiece used at a breakthrough of
+  the game: dropped (2026-11-20).
+- **Dao heart** (`DaoHeartEvent`) and **spirit sense** (`SpiritSenseEvent`), done 2026-11-20: mainly max SP / MP. Left: the
+  game's own breakthrough chance from the Dao heart and a wider map view from the spirit sense (both need a Harmony patch).
+- Feasibility of the paths below: `07-Paths-Feasibility.md` (merit first, then Artisan Dao, Dao heart, spirit sense).
+- **Artisan Dao (luyện kỹ nghệ)**: the 6 crafts of the game as a path: crafting a masterpiece gives cultivation exp (a
+  breakthrough by a masterpiece: dropped); craft titles (Apprentice -> Master -> Grandmaster) by a yearly exam in a
+  city, with price bonuses at the market; named masterpieces (maker, fame) and NPC commissions (`MissionDeclareEvent` the
+  other way round); furnace accidents above one's level; apprentices who craft for the player; a craft passed down to the
+  heirs (`FamilyEvent.Inherit`).
+- **Other paths**: spirit sense (map view, ambushes of hunters seen, heart demon resistance), Dao heart (up with kept
+  promises and beaten heart demons, down with betrayal; breakthrough chance), merit (helping mortals, killing beasts that
+  harm them; lowers the tribulation), beast taming, formations (protect the estate).
+- A shared "Paths" frame (levels, exp sources, bottleneck, bonuses) and at most 1-2 side paths a character.
+
+## Town estates, mortals and the clan (decided 2026-11-20, step by step with autotests)
+
+- **B1 town mortals and plots**: done (`EstateEvent`, TG-63): town map with districts and roads, the town master's palace
+  (5 levels, TG-64). To extend: NPCs buying houses too, selling / renting the house, the town master setting plot
+  prices, a house upgrade taking months (building time) instead of at once.
+- **District effects** (proposed 2026-11-20, to decide): market - a house there earns rent / shop income, more NPC
+  visitors, thieves; noble quarter - reputation every month, NPC nobles visit with gifts / marriage proposals, higher
+  NPC grades nearby; residential - neutral, cheap upkeep of the family living there; craftsmen - discounts at the forge
+  / alchemy of the town, crafting exp (Artisan Dao); outskirts - cheap, beast and bandit raids (B3), quiet seclusion
+  bonus. District events: a market fire, a festival in the market, the noble quarter's banquet.
+- **B2 house interior**: done (`EstateEvent.Rooms.cs`, TG-64): quiet room, training ground, herb garden, spirit
+  gathering array, ancestral hall. Still to add: alchemy / forge room, guest rooms (team), protective formation (B3
+  raids) and:
+  - Private storage (decided 2026-11-20): its own items, kept apart from the bank storage (not a bank without fees:
+    the bank always takes its fee).
+  - Other ideas: exp bonus of a seclusion at home by house level, reputation per house level, the family living there
+    (lower upkeep), friends visiting with gifts, auction priority / market discount in that town, a big house helps to
+    become town master, renting the house out.
+- **B3 mortals of the estate**: groups (farmers, craftsmen, servants, guards, merchants) with loyalty, wages and food;
+  output (food, herbs, ores, rent, building speed); events: a child with spiritual roots (a new NPC, disciple / adopted
+  child), bandits, famine, plague, too high taxes (they leave or rise up), merit when treated well; generations over time
+  skips.
+- **B4 clan**: clan rank (small clan -> notable family -> great family) by assets, members and grades; clan rules
+  (buffs / maluses); descendants managing estates; NPC clans buying land, land disputes (bounties), marriages for
+  alliances; the heir inherits the estates.
+- **Land outside towns**: a big tract in the wilds (map point), cleared by battles, roads / wells / walls / formation
+  raise its price, cut into plots sold to NPCs; risks: beast tides, confiscation for unpaid taxes, mortgage at the bank
+  (`BankLoanEvent`).
 
 ## Autotest: effect galleries (TE-xx)
 

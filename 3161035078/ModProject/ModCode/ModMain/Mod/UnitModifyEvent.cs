@@ -232,6 +232,12 @@ namespace MOD_nE7UL2.Mod
 
                 rs += UnitModifyHelper.GetQiAdjAtk(wunit);
 
+                rs += BodyCulEvent.AdjAtk(wunit);
+
+                rs += MeritEvent.AdjAtk(wunit, atk);
+
+                rs += ArtisanEvent.AdjAtk(wunit, atk);
+
                 Instance.CachedValues[k] = rs;
             }
 
@@ -282,6 +288,12 @@ namespace MOD_nE7UL2.Mod
                 rs += UnitModifyHelper.GetRefineOutfitAdjDef(def, outfit, CustomRefineEvent.GetRefineLvl(outfit));
 
                 rs += Convert.ToInt32(CustomRefineEvent.GetCustomAdjValue(wunit, AdjTypeEnum.Def));
+
+                rs += BodyCulEvent.AdjDef(wunit, def);
+
+                rs += MeritEvent.AdjDef(wunit, def);
+
+                rs += ArtisanEvent.AdjDef(wunit, def);
 
                 Instance.CachedValues[k] = rs;
             }
@@ -337,6 +349,10 @@ namespace MOD_nE7UL2.Mod
 
                 rs += UnitModifyHelper.GetQiAdjHp(wunit);
 
+                rs += BodyCulEvent.AdjHp(wunit, hpMax);
+
+                rs += ArtisanEvent.AdjHp(wunit, hpMax);
+
                 Instance.CachedValues[k] = rs;
             }
 
@@ -379,6 +395,10 @@ namespace MOD_nE7UL2.Mod
 
                 rs += UnitModifyHelper.GetQiAdjMp(wunit);
 
+                rs += DaoHeartEvent.AdjMp(wunit, mpMax);
+
+                rs += SpiritSenseEvent.AdjMp(wunit, mpMax);
+
                 Instance.CachedValues[k] = rs;
             }
 
@@ -413,6 +433,10 @@ namespace MOD_nE7UL2.Mod
                 rs += UnitModifyHelper.GetArtisanshipAdjSp(wunit);
 
                 rs += Convert.ToInt32(CustomRefineEvent.GetCustomAdjValue(wunit, AdjTypeEnum.MSp));
+
+                rs += DaoHeartEvent.AdjSp(wunit, spMax);
+
+                rs += SpiritSenseEvent.AdjSp(wunit, spMax);
 
                 Instance.CachedValues[k] = rs;
             }
@@ -531,6 +555,8 @@ namespace MOD_nE7UL2.Mod
 
                 rs += Convert.ToInt32(CustomRefineEvent.GetCustomAdjValue(wunit, AdjTypeEnum.BasisFinger));
 
+                rs += BodyCulEvent.AdjBasis(wunit);
+
                 Instance.CachedValues[k] = rs;
             }
 
@@ -573,6 +599,8 @@ namespace MOD_nE7UL2.Mod
 
                 rs += Convert.ToInt32(CustomRefineEvent.GetCustomAdjValue(wunit, AdjTypeEnum.BasisFist));
 
+                rs += BodyCulEvent.AdjBasis(wunit);
+
                 Instance.CachedValues[k] = rs;
             }
 
@@ -614,6 +642,8 @@ namespace MOD_nE7UL2.Mod
                 var rs = 0;
 
                 rs += Convert.ToInt32(CustomRefineEvent.GetCustomAdjValue(wunit, AdjTypeEnum.BasisPalm));
+
+                rs += BodyCulEvent.AdjBasis(wunit);
 
                 Instance.CachedValues[k] = rs;
             }

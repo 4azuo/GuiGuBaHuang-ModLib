@@ -178,6 +178,18 @@ namespace MOD_nE7UL2.AutoTest.Scenarios.Time
                     c.Assert(TimeSkipEvent.Instance.Done > 0 && TimeSkipEvent.Instance.Total == 12, $"progress {TimeSkipEvent.Instance.Done} / {TimeSkipEvent.Instance.Total}");
                 }, 2500)
                 .Wait("a year passes", c => !SeclusionEvent.IsSecluded && !TimeSkipEvent.Instance.IsProcessing, 300000, 1000)
+                // the dramas of the game that came with the year (an NPC asking for guidance...) answered until the
+                // summary drama of the seclusion shows
+                .Wait("the summary drama", c =>
+                {
+                    var t = DramaText() ?? string.Empty;
+                    if (t.Contains(string.Format(GameTool.LS("secl_summary").Split('\n')[0], 1).Split(':')[0])) { c.Bag["summary"] = t; return true; }
+                    if (DramaUI() == null) return false;
+                    c.Info($"a drama of the game first: {(t.Length > 80 ? t.Substring(0, 80) + "..." : t)}");
+                    var opts = DramaOptions();
+                    if (opts.Count > 0) ChooseOption(opts[0].Item2); else DramaNext();
+                    return false;
+                }, 60000, 1500)
                 .Step("summary", c =>
                 {
                     TimeSkipEvent.HidePlayer = false; TimeSkipEvent.NoInterrupt = false;
@@ -187,7 +199,9 @@ namespace MOD_nE7UL2.AutoTest.Scenarios.Time
                         c.Assert(probe.isDie || probe.GetProperty<int>(UnitPropertyEnum.Age) - (int)c.Bag["probeAge"] >= 12, $"NPC {probe.GetName()} aged with the skip: age {(int)c.Bag["probeAge"]} -> {probe.GetProperty<int>(UnitPropertyEnum.Age)} months, exp {(int)c.Bag["probeExp"]} -> {probe.GetExp()}, dead {probe.isDie}");
                     c.Assert(GameHelper.GetGameTotalMonth() - (int)c.Bag["month"] >= 12, $"12 months passed ({(int)c.Bag["month"]} -> {GameHelper.GetGameTotalMonth()})");
                     c.Assert(Player.GetExp() > exp, $"exp {exp} -> {Player.GetExp()}");
-                    c.Assert(DramaText().Contains(string.Format(GameTool.LS("secl_summary").Split('\n')[0], 1).Split(':')[0]), $"summary drama: {DramaText()}");
+                    // the text read by the wait above (the runner closes a drama left open for 5 s)
+                    var summary = c.Bag.TryGetValue("summary", out var st) ? (string)st : DramaText() ?? string.Empty;
+                    c.Assert(summary.Contains(string.Format(GameTool.LS("secl_summary").Split('\n')[0], 1).Split(':')[0]), $"summary drama: {summary}");
                     var keys = TaoistLogEvent.Instance.Entries.Select(x => x.Key).ToList();
                     c.Assert(new[] { "log_family_married", "log_family_inherit", "log_secl_start", "log_secl_end" }.All(keys.Contains), "family and seclusion in the Taoist log");
                     DismissDramas();

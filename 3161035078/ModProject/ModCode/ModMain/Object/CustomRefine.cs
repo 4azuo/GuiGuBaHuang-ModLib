@@ -3,7 +3,6 @@ using MOD_nE7UL2.Mod;
 using System.Linq;
 using UnityEngine;
 using ModLib.Helper;
-using static MOD_nE7UL2.Object.ModStts;
 
 namespace MOD_nE7UL2.Object
 {
@@ -12,7 +11,26 @@ namespace MOD_nE7UL2.Object
     /// </summary>
     public class CustomRefine
     {
-        public static _CustomRefineConfigs Configs => ModMain.ModObj.ModSettings.CustomRefineConfigs;
+        public static CustomRefineConfig Configs => CustomRefineConfig.Conf;
+
+        /// <summary>
+        /// Random adjustment quality from CustomRefineConfig.LevelRates (r: 0-100).
+        /// </summary>
+        public static AdjLevelEnum RandomRefineLevel(float r)
+        {
+            var min = 0.00f;
+            var max = min;
+            foreach (var ut in Configs.LevelRates)
+            {
+                min = max;
+                max = min + ut.Value;
+                if (ValueHelper.IsBetween(r, min, max))
+                {
+                    return AdjLevelEnum.GetEnumByName<AdjLevelEnum>(ut.Key);
+                }
+            }
+            return AdjLevelEnum.None;
+        }
 
         #region AdjTypeSeeder
         public static AdjTypeEnum[] RingAdjTypes = new AdjTypeEnum[]
@@ -103,7 +121,7 @@ namespace MOD_nE7UL2.Object
             Index = index;
             var seeder = GetCustomAdjSeeder(props);
             AdjType = RandomCustomAdj(seeder, props.propsInfoBase.grade);
-            AdjLevel = Configs.RandomRefineLevel(CommonTool.Random(0.00f, 100.00f));
+            AdjLevel = RandomRefineLevel(CommonTool.Random(0.00f, 100.00f));
             RandomMultiplier = CommonTool.Random(0.60f, 1.40f);
         }
 

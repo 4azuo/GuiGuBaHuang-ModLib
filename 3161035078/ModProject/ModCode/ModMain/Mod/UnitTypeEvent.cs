@@ -138,11 +138,30 @@ namespace MOD_nE7UL2.Mod
         }
 
         /// <summary>
+        /// Random role from the chances of UnitTypeConfig (r: 0-100; outside them: Default).
+        /// </summary>
+        public static UnitTypeEnum RandomUnitType(float r)
+        {
+            var min = 0.00f;
+            var max = min;
+            foreach (var ut in UnitTypeConfig.Conf.UnitTypes)
+            {
+                min = max;
+                max = min + ut.Value;
+                if (ValueHelper.IsBetween(r, min, max))
+                {
+                    return UnitTypeEnum.GetEnumByName<UnitTypeEnum>(ut.Key);
+                }
+            }
+            return UnitTypeEnum.Default;
+        }
+
+        /// <summary>
         /// Random role (+ its luck).
         /// </summary>
         public static UnitTypeEnum AddRandomUnitType(WorldUnitBase wunit)
         {
-            var t = ModMain.ModObj.ModSettings.UnitTypeConfigs.RandomUnitType(CommonTool.Random(0.00f, 100.00f));
+            var t = RandomUnitType(CommonTool.Random(0.00f, 100.00f));
             if (t.CustomLuck != null)
                 wunit.AddLuck(t.Value.Parse<int>());
             return t;

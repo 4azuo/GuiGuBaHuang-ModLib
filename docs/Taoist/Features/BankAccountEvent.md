@@ -12,7 +12,7 @@ The storage of a town can only be used with a bank account in that town. Opening
 
 ## Switches
 
-- `mod_configs.json` > `BankAccountConfigs.OpenFee`: base fee per area: 1: 100, 2-3: 1,000, 4-5: 10,000, 6-7: 100,000, 8-9: 1,000,000, 10: 10M, 11: 20M, 12: 40M, 13: 100M.
+- `bank_account_configs.json` > `OpenFee` (`BankAccountConfig`; an area left out: its default): base fee per area: 1: 100, 2-3: 1,000, 4-5: 10,000, 6-7: 100,000, 8-9: 1,000,000, 10: 10M, 11: 20M, 12: 40M, 13: 100M.
 - `AddBankAccountCostRate` (S&M).
 
 ## Flow

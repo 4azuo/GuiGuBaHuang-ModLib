@@ -11,7 +11,8 @@
     (works from file://). Called automatically by run-autotest.ps1 and run-unittests.ps1.
     Only the newest -Keep runs (default 10) of logs\autotest, logs\unittests and logs\game-runs are kept:
     older run folders (screenshots, save backups, logs) are deleted to save disk space. Pinned runs (pinned.json in
-    the folder: scripts\pin-test-run.ps1) are never deleted and do not count in -Keep.
+    the folder: scripts\pin-test-run.ps1) are never deleted and do not count in -Keep. An autotest run that holds
+    the latest result of a scenario is kept too (the games side by side make one run per scenario).
     Keep ASCII-only (Windows PowerShell 5.1 reads BOM-less scripts as ANSI).
 .PARAMETER Keep
     Number of runs kept per folder (0 = keep everything).
@@ -38,12 +39,32 @@ function Get-RunTime([string]$Id) {
 }
 
 # ------------------------------------------------------------------ retention: newest $Keep runs per folder
+# + (autotest) every run holding the latest result of a scenario: the games side by side make a run of every scenario
+# (~130 runs a full run), a count alone deleted the full run and "latest result of every scenario" lost a third of them
+function Get-LatestRunOfEveryScenario([string]$Root) {
+    $keep = @{}
+    $seen = @{}
+    foreach ($dir in @(Get-ChildItem -LiteralPath $Root -Directory -ErrorAction SilentlyContinue | Where-Object { $_.Name -match '^\d{8}-\d{6}(-s\d+)?$' } | Sort-Object Name -Descending)) {
+        $res = Read-Json (Join-Path $dir.FullName 'results.json')
+        if (-not $res) { continue }
+        foreach ($sc in @($res.scenarios)) {
+            if (-not $sc -or -not $sc.id -or $sc.status -eq 'RUNNING') { continue }
+            if ($sc.id -like 'TP-*' -and $sc.status -eq 'SKIP') { continue }   # the pre-test of a slot that had its character
+            $id = ($sc.id -split '#')[0]
+            if ($seen.ContainsKey($id)) { continue }
+            $seen[$id] = $true
+            $keep[$dir.Name] = $true
+        }
+    }
+    return $keep
+}
 if ($Keep -gt 0) {
     foreach ($sub in 'logs\autotest', 'logs\unittests', 'logs\game-runs') {
         $root = Join-Path $repo $sub
+        $latest = if ($sub -eq 'logs\autotest') { Get-LatestRunOfEveryScenario $root } else { @{} }
         $old = @(Get-ChildItem -LiteralPath $root -Directory -ErrorAction SilentlyContinue |
             Where-Object { $_.Name -match '^\d{8}-\d{6}(-s\d+)?' -and -not (Test-Path -LiteralPath (Join-Path $_.FullName 'pinned.json')) } |
-            Sort-Object Name -Descending | Select-Object -Skip $Keep)
+            Sort-Object Name -Descending | Select-Object -Skip $Keep | Where-Object { -not $latest.ContainsKey($_.Name) })
         foreach ($d in $old) {
             try { Remove-Item -LiteralPath $d.FullName -Recurse -Force -ErrorAction Stop; Write-Host "Removed old run $sub\$($d.Name)" -ForegroundColor DarkGray }
             catch { Write-Warning "Cannot remove $($d.FullName): $($_.Exception.Message)" }

@@ -13,7 +13,7 @@ A sect member can give items to the sect in exchange for sect contribution, at a
 ## Switches
 
 - `SectNoExchange` (S&M): no button.
-- `mod_configs.json` > `ContributionExchangeConfigs.ExchangeRatio` = 40.
+- `contribution_exchange_configs.json` > `ExchangeRatio` = 40.
 - `AddSectExchangeRate` (S&M).
 
 ## Flow

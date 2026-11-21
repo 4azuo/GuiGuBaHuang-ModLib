@@ -1,0 +1,15 @@
+{
+	"__name": "Bounty commissions (MissionDeclareEvent)",
+	"__help": [
+		"A value left out (or a broken file): the default of the mod.",
+		"Fee (spirit stones) = total value x FeeRate + FeeMinCost. Reputation cost = total value x DegreeCostRate + DegreeMinCost.",
+		"CostTime: months per item, by item level 1-6 (the items add up). SuccessRate: chance in %, by item level 1-6 (the lowest of the items, + luck / 100).",
+		"CostTime and SuccessRate: 6 values; missing ones: the defaults."
+	],
+	"FeeRate": 0.2,
+	"FeeMinCost": 100,
+	"DegreeCostRate": 0.001,
+	"DegreeMinCost": 1,
+	"CostTime": [ 1, 2, 3, 5, 8, 12 ],
+	"SuccessRate": [ 100.0, 99.0, 98.0, 96.0, 94.0, 91.0 ]
+}

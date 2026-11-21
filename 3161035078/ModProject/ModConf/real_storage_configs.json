@@ -1,0 +1,8 @@
+{
+	"__name": "Storage fee (RealStorageEvent)",
+	"__help": [
+		"A value left out (or a broken file): the default of the mod.",
+		"FeeRate: monthly fee = FeeRate x value of the stored items (0.001 = 0.1 %; S&M AddBankFee on top; 0-1)."
+	],
+	"FeeRate": 0.001
+}

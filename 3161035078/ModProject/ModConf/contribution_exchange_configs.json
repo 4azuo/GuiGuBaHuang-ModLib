@@ -1,0 +1,8 @@
+{
+	"__name": "Sect contribution exchange (ContributionExchangeEvent)",
+	"__help": [
+		"A value left out (or a broken file): the default of the mod.",
+		"ExchangeRatio: contribution of an item = item sell value / ExchangeRatio (before inflation and S&M AddSectExchangeRate; at least 1). Changes by -20 % to +30 % every month."
+	],
+	"ExchangeRatio": 40
+}

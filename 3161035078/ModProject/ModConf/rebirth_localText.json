@@ -206,5 +206,29 @@
 		"ch": "重新开始",
 		"tc": "重新開始",
 		"kr": "다시 시작한다"
+	},
+	{
+		"id": "420103104",
+		"key": "rebirth_off",
+		"en": "Rebirth is off (S&M settings).",
+		"ch": "重生已关闭（S&M设置）。",
+		"tc": "重生已關閉（S&M設置）。",
+		"kr": "환생이 꺼져 있다 (S&M 설정)."
+	},
+	{
+		"id": "420103105",
+		"key": "rebirth_need_grade",
+		"en": "Your grade must be above the grade of your last rebirth ({0}).",
+		"ch": "你的境界必须高于上次重生时的境界（{0}）。",
+		"tc": "你的境界必須高於上次重生時的境界（{0}）。",
+		"kr": "경지가 지난 환생 때의 경지({0})보다 높아야 한다."
+	},
+	{
+		"id": "420103106",
+		"key": "rebirth_need_town",
+		"en": "Rebirth is done in a town of area {1} or more (above your last rebirth, {0}, and at least your grade).",
+		"ch": "需在{1}区及以上的城镇重生（高于上次重生的{0}，且不低于你的境界）。",
+		"tc": "需在{1}區及以上的城鎮重生（高於上次重生的{0}，且不低於你的境界）。",
+		"kr": "{1}구역 이상의 마을에서 환생할 수 있다 (지난 환생 {0}보다 높고, 자신의 경지 이상)."
 	}
 ]

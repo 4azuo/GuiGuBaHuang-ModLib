@@ -2,7 +2,9 @@
 using MOD_nE7UL2.Enum;
 using ModLib.Attributes;
 using ModLib.Mod;
+using System;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using ModLib.Helper;
 
@@ -122,6 +124,22 @@ namespace MOD_nE7UL2.Mod
         }
 
         /// <summary>
+        /// The game's picture of a sub-building: TownCommon "Build&lt;type id&gt;" for a town, SchoolCommon "BuildUp&lt;id&gt;"
+        /// (or one of its levels "_1".."_4") for a sect; null when the game has none.
+        /// </summary>
+        public static string[] Sprite(MapBuildSubType type)
+        {
+            var id = (int)type;
+            var names = id >= 2000 && id < 3000
+                ? new[] { ("TownCommon", "Build" + id) }
+                : new[] { "", "_4", "_3", "_2", "_1" }.Select(s => ("SchoolCommon", "BuildUp" + id + s)).ToArray();
+            foreach (var (atlas, name) in names)
+                if (EstateEvent.GameSprite(atlas, name) != null)
+                    return new[] { atlas, name };
+            return null;
+        }
+
+        /// <summary>
         /// True when the sub-building is not managed.
         /// </summary>
         public static bool IsIgnored(BuildingCostEnum e)
@@ -185,13 +203,16 @@ namespace MOD_nE7UL2.Mod
         }
 
         /// <summary>
-        /// Cost by area (inflation and S&amp;M rate applied).
+        /// Cost by area (inflation and S&amp;M rate applied); a town's sub-building x Prices.TownBuildingCost of
+        /// ModConf/estate_configs.json (they serve the game, draw mortals and taxes: dearer than the houses, EstateEvent).
         /// </summary>
         public static long GetBuildingCost(MapBuildBase build, BuildingCostEnum e)
         {
             if (build == null || e == null)
                 return 0;
             var cost = InflationaryEvent.CalculateInflationary(e.BuildCosts[build.gridData.areaBaseID - 1]);
+            if (!e.IsSchool)
+                cost = (long)Math.Round(cost * (double)EstateEvent.Conf.Prices.TownBuildingCost);
             return SMLocalConfigsEvent.Instance.Calculate(cost, SMLocalConfigsEvent.Instance.Configs.AddBuildingCostRate).Parse<long>();
         }
     }

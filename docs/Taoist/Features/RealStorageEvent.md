@@ -14,7 +14,7 @@ Storage is not free: every month a fee on the worth of everything stored is char
 
 ## Switches
 
-- `mod_configs.json` > `RealStorageConfigs.FeeRate` = 0.001 (0.1 % a month).
+- `real_storage_configs.json` > `FeeRate` = 0.001 (0.1 % a month).
 - `AddBankFee` (S&M): `FeeRate() = Calculate(FeeRate, AddBankFee)`.
 
 ## Free storage

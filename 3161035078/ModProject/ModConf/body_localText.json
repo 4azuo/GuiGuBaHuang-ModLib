@@ -1,0 +1,682 @@
+[
+	{
+		"id": "-1000010000",
+		"key": "body_button",
+		"en": "Body Refining",
+		"ch": "炼体",
+		"tc": "煉體",
+		"kr": "연체"
+	},
+	{
+		"id": "-1000010001",
+		"key": "body_title",
+		"en": "Body Refining",
+		"ch": "炼体",
+		"tc": "煉體",
+		"kr": "연체"
+	},
+	{
+		"id": "-1000010002",
+		"key": "body_none",
+		"en": "Not a body refiner",
+		"ch": "未修炼体",
+		"tc": "未修煉體",
+		"kr": "연체 수련 안 함"
+	},
+	{
+		"id": "-1000010003",
+		"key": "body_realm_layer",
+		"en": "{0} - {1}",
+		"ch": "{0}·{1}",
+		"tc": "{0}·{1}",
+		"kr": "{0} - {1}"
+	},
+	{
+		"id": "-1000010004",
+		"key": "body_realm_1",
+		"en": "Copper Skin",
+		"ch": "铜皮",
+		"tc": "銅皮",
+		"kr": "동피"
+	},
+	{
+		"id": "-1000010005",
+		"key": "body_realm_2",
+		"en": "Iron Bone",
+		"ch": "铁骨",
+		"tc": "鐵骨",
+		"kr": "철골"
+	},
+	{
+		"id": "-1000010006",
+		"key": "body_realm_3",
+		"en": "Jade Marrow",
+		"ch": "玉髓",
+		"tc": "玉髓",
+		"kr": "옥수"
+	},
+	{
+		"id": "-1000010007",
+		"key": "body_realm_4",
+		"en": "Golden Body",
+		"ch": "金身",
+		"tc": "金身",
+		"kr": "금신"
+	},
+	{
+		"id": "-1000010008",
+		"key": "body_realm_5",
+		"en": "Undying Body",
+		"ch": "不灭体",
+		"tc": "不滅體",
+		"kr": "불멸체"
+	},
+	{
+		"id": "-1000010009",
+		"key": "body_layer_1",
+		"en": "Early",
+		"ch": "初期",
+		"tc": "初期",
+		"kr": "초기"
+	},
+	{
+		"id": "-1000010010",
+		"key": "body_layer_2",
+		"en": "Middle",
+		"ch": "中期",
+		"tc": "中期",
+		"kr": "중기"
+	},
+	{
+		"id": "-1000010011",
+		"key": "body_layer_3",
+		"en": "Late",
+		"ch": "后期",
+		"tc": "後期",
+		"kr": "후기"
+	},
+	{
+		"id": "-1000010012",
+		"key": "body_npc",
+		"en": "Body: {0}",
+		"ch": "炼体：{0}",
+		"tc": "煉體：{0}",
+		"kr": "연체: {0}"
+	},
+	{
+		"id": "-1000010013",
+		"key": "body_intro",
+		"en": "Temper the flesh as others temper their Qi: blows taken in battle, daily training and medicinal baths harden skin, bone and marrow.\nFive realms: Copper Skin, Iron Bone, Jade Marrow, Golden Body, Undying Body (3 layers each).\nBonuses: max HP, defense, fist / palm / finger basis, and more HP / defense / attack at every breakthrough of the cultivation.",
+		"ch": "如他人炼气般锤炼肉身：战斗中所受之伤、日常操练与药浴，皆可淬炼皮、骨、髓。\n五境：铜皮、铁骨、玉髓、金身、不灭体（各三层）。\n加成：生命上限、防御、拳/掌/指资质，且每次修为突破获得更多生命/防御/攻击。",
+		"tc": "如他人煉氣般錘煉肉身：戰鬥中所受之傷、日常操練與藥浴，皆可淬煉皮、骨、髓。\n五境：銅皮、鐵骨、玉髓、金身、不滅體（各三層）。\n加成：生命上限、防禦、拳/掌/指資質，且每次修為突破獲得更多生命/防禦/攻擊。",
+		"kr": "남들이 기를 단련하듯 육신을 단련한다: 전투에서 받은 타격, 매일의 수련과 약욕이 피부, 뼈, 골수를 단단하게 한다.\n5경지: 동피, 철골, 옥수, 금신, 불멸체 (각 3층).\n보너스: 최대 생명, 방어, 권/장/지 자질, 그리고 수련 돌파마다 더 많은 생명/방어/공격."
+	},
+	{
+		"id": "-1000010014",
+		"key": "body_start",
+		"en": "Take up body refining",
+		"ch": "开始炼体",
+		"tc": "開始煉體",
+		"kr": "연체 시작"
+	},
+	{
+		"id": "-1000010015",
+		"key": "body_start_confirm",
+		"en": "A strong body drinks the spiritual energy: by its realm, a body refiner needs x1.1 to x1.5 cultivation exp and gathers 10 % to 30 % less Qi, but gains more at every breakthrough. Take up body refining?",
+		"ch": "强健的肉身会吞噬灵气：依境界不同，炼体者修为经验需求为1.1至1.5倍，凝聚真气减少10%至30%，但每次突破获得更多。确定开始炼体？",
+		"tc": "強健的肉身會吞噬靈氣：依境界不同，煉體者修為經驗需求為1.1至1.5倍，凝聚真氣減少10%至30%，但每次突破獲得更多。確定開始煉體？",
+		"kr": "강한 육신은 영기를 삼킨다: 경지에 따라 연체 수련자는 수련 경험이 1.1~1.5배 필요하고 기를 10~30% 덜 모으지만, 돌파할 때마다 더 많이 얻는다. 연체를 시작하겠습니까?"
+	},
+	{
+		"id": "-1000010016",
+		"key": "body_top",
+		"en": "[icon:daodian] The body is at its peak: what it gains now becomes its essence",
+		"ch": "[icon:daodian] 肉身已至巅峰：此后所得皆化为肉身精华",
+		"tc": "[icon:daodian] 肉身已至巔峰：此後所得皆化為肉身精華",
+		"kr": "[icon:daodian] 육신이 정점에 이르렀다: 이제 얻는 것은 육신의 정수가 된다"
+	},
+	{
+		"id": "-1000010017",
+		"key": "body_bottleneck",
+		"en": "Bottleneck: break into the next realm",
+		"ch": "瓶颈：需突破至下一境界",
+		"tc": "瓶頸：需突破至下一境界",
+		"kr": "병목: 다음 경지로 돌파해야 한다"
+	},
+	{
+		"id": "-1000010018",
+		"key": "body_exp",
+		"en": "[icon:jingli] Tempering: {0:#,##0} / {1:#,##0}",
+		"ch": "[icon:jingli] 淬炼：{0:#,##0} / {1:#,##0}",
+		"tc": "[icon:jingli] 淬煉：{0:#,##0} / {1:#,##0}",
+		"kr": "[icon:jingli] 단련: {0:#,##0} / {1:#,##0}"
+	},
+	{
+		"id": "-1000010019",
+		"key": "body_injured",
+		"en": "Injured body: {0} month(s) (bonuses halved, no training)",
+		"ch": "肉身受损：{0}个月（加成减半，无法操练）",
+		"tc": "肉身受損：{0}個月（加成減半，無法操練）",
+		"kr": "육신 부상: {0}개월 (보너스 절반, 수련 불가)"
+	},
+	{
+		"id": "-1000010020",
+		"key": "body_bonus_hp",
+		"en": "[icon:jiankang] Max HP +{0:#,##0}",
+		"ch": "[icon:jiankang] 生命上限 +{0:#,##0}",
+		"tc": "[icon:jiankang] 生命上限 +{0:#,##0}",
+		"kr": "[icon:jiankang] 최대 생명 +{0:#,##0}"
+	},
+	{
+		"id": "-1000010021",
+		"key": "body_bonus_def",
+		"en": "[icon:fangyu] Defense +{0:#,##0}",
+		"ch": "[icon:fangyu] 防御 +{0:#,##0}",
+		"tc": "[icon:fangyu] 防禦 +{0:#,##0}",
+		"kr": "[icon:fangyu] 방어 +{0:#,##0}"
+	},
+	{
+		"id": "-1000010022",
+		"key": "body_bonus_basis",
+		"en": "[icon:quanfa] Fist / [icon:zhangfa] Palm / [icon:zhifa] Finger +{0}",
+		"ch": "[icon:quanfa] 拳/[icon:zhangfa] 掌/[icon:zhifa] 指 +{0}",
+		"tc": "[icon:quanfa] 拳/[icon:zhangfa] 掌/[icon:zhifa] 指 +{0}",
+		"kr": "[icon:quanfa] 권/[icon:zhangfa] 장/[icon:zhifa] 지 +{0}"
+	},
+	{
+		"id": "-1000010023",
+		"key": "body_bonus_qi",
+		"en": "[icon:jianyidu] Qi gathered -{0}%",
+		"ch": "[icon:jianyidu] 真气凝聚 -{0}%",
+		"tc": "[icon:jianyidu] 真氣凝聚 -{0}%",
+		"kr": "[icon:jianyidu] 기 축적 -{0}%"
+	},
+	{
+		"id": "-1000010024",
+		"key": "body_bath",
+		"en": "Medicinal bath (+{0:#,##0} tempering)",
+		"ch": "药浴（淬体 +{0:#,##0}）",
+		"tc": "藥浴（淬體 +{0:#,##0}）",
+		"kr": "약욕 (단련 +{0:#,##0})"
+	},
+	{
+		"id": "-1000010025",
+		"key": "body_bath_done",
+		"en": "One medicinal bath a month: the body needs time to absorb it.",
+		"ch": "每月仅可药浴一次：肉身需要时间吸收药力。",
+		"tc": "每月僅可藥浴一次：肉身需要時間吸收藥力。",
+		"kr": "약욕은 한 달에 한 번: 육신이 약력을 흡수할 시간이 필요하다."
+	},
+	{
+		"id": "-1000010026",
+		"key": "body_bath_bottleneck",
+		"en": "The body is at a bottleneck: a bath does nothing until it breaks through.",
+		"ch": "肉身处于瓶颈：突破之前药浴无用。",
+		"tc": "肉身處於瓶頸：突破之前藥浴無用。",
+		"kr": "육신이 병목에 있다: 돌파하기 전에는 약욕이 소용없다."
+	},
+	{
+		"id": "-1000010027",
+		"key": "body_break",
+		"en": "Break through ({0:0}%)",
+		"ch": "突破（{0:0}%）",
+		"tc": "突破（{0:0}%）",
+		"kr": "돌파 ({0:0}%)"
+	},
+	{
+		"id": "-1000010028",
+		"key": "body_break_grade",
+		"en": "{0} needs a cultivation grade of at least {1}.",
+		"ch": "{0}需要修为境界至少为第{1}境。",
+		"tc": "{0}需要修為境界至少為第{1}境。",
+		"kr": "{0}에는 최소 {1}단계의 수련 경지가 필요하다."
+	},
+	{
+		"id": "-1000010029",
+		"key": "body_break_ok",
+		"en": "The body breaks through: {0}!",
+		"ch": "肉身突破：{0}！",
+		"tc": "肉身突破：{0}！",
+		"kr": "육신 돌파: {0}!"
+	},
+	{
+		"id": "-1000010030",
+		"key": "body_break_fail",
+		"en": "The breakthrough fails: half of the tempering is lost and the body is injured for {0} months.",
+		"ch": "突破失败：淬炼损失一半，肉身受损{0}个月。",
+		"tc": "突破失敗：淬煉損失一半，肉身受損{0}個月。",
+		"kr": "돌파 실패: 단련의 절반을 잃고 육신이 {0}개월 동안 부상당했다."
+	},
+	{
+		"id": "-1000010031",
+		"key": "body_help",
+		"en": "Exp: damage taken in battle, training every month, one medicinal bath a month. The last layer of a realm needs a breakthrough.",
+		"ch": "经验：战斗中所受伤害、每月操练、每月一次药浴。每境最后一层需突破。",
+		"tc": "經驗：戰鬥中所受傷害、每月操練、每月一次藥浴。每境最後一層需突破。",
+		"kr": "경험: 전투에서 받은 피해, 매월 수련, 월 1회 약욕. 각 경지의 마지막 층은 돌파가 필요하다."
+	},
+	{
+		"id": "-1000010032",
+		"key": "log_body_start",
+		"en": "Took up body refining.",
+		"ch": "开始修炼肉身。",
+		"tc": "開始修煉肉身。",
+		"kr": "연체 수련을 시작했다."
+	},
+	{
+		"id": "-1000010033",
+		"key": "log_body_layer",
+		"en": "Body refining: {0}.",
+		"ch": "炼体：{0}。",
+		"tc": "煉體：{0}。",
+		"kr": "연체: {0}."
+	},
+	{
+		"id": "-1000010034",
+		"key": "log_body_realm",
+		"en": "The body broke through: {0}.",
+		"ch": "肉身突破：{0}。",
+		"tc": "肉身突破：{0}。",
+		"kr": "육신 돌파: {0}."
+	},
+	{
+		"id": "-1000010035",
+		"key": "log_body_fail",
+		"en": "A body breakthrough failed: injured for {0} months.",
+		"ch": "肉身突破失败：受损{0}个月。",
+		"tc": "肉身突破失敗：受損{0}個月。",
+		"kr": "육신 돌파 실패: {0}개월 부상."
+	},
+	{
+		"id": "-1000010036",
+		"key": "body_bonus_break",
+		"en": "From breakthroughs: [icon:jiankang] HP +{0:#,##0}, [icon:fangyu] defense +{1:#,##0}, [icon:gongji] attack +{2:#,##0}",
+		"ch": "来自突破：[icon:jiankang] 生命 +{0:#,##0}，[icon:fangyu] 防御 +{1:#,##0}，[icon:gongji] 攻击 +{2:#,##0}",
+		"tc": "來自突破：[icon:jiankang] 生命 +{0:#,##0}，[icon:fangyu] 防禦 +{1:#,##0}，[icon:gongji] 攻擊 +{2:#,##0}",
+		"kr": "돌파로 얻음: [icon:jiankang] 생명 +{0:#,##0}, [icon:fangyu] 방어 +{1:#,##0}, [icon:gongji] 공격 +{2:#,##0}"
+	},
+	{
+		"id": "-1000010037",
+		"key": "body_break_rates",
+		"en": "Every breakthrough of the cultivation: [icon:jiankang] +{0}% HP, [icon:fangyu] +{1}% defense, [icon:gongji] +{2}% attack of what it gives",
+		"ch": "每次修为突破：[icon:jiankang] 额外获得其提升的 {0}% 生命、[icon:fangyu] {1}% 防御、[icon:gongji] {2}% 攻击",
+		"tc": "每次修為突破：[icon:jiankang] 額外獲得其提升的 {0}% 生命、[icon:fangyu] {1}% 防禦、[icon:gongji] {2}% 攻擊",
+		"kr": "수련 돌파마다: [icon:jiankang] 오른 수치의 생명 {0}%, [icon:fangyu] 방어 {1}%, [icon:gongji] 공격 {2}% 추가"
+	},
+	{
+		"id": "-1000010038",
+		"key": "body_exp_rate",
+		"en": "[icon:wuxing] Cultivation exp needed x{0:0.00} (absorbed by the body: {1:#,##0})",
+		"ch": "[icon:wuxing] 修为经验需求 x{0:0.00}（被肉身吸收：{1:#,##0}）",
+		"tc": "[icon:wuxing] 修為經驗需求 x{0:0.00}（被肉身吸收：{1:#,##0}）",
+		"kr": "[icon:wuxing] 수련 경험 필요 x{0:0.00} (육신이 흡수: {1:#,##0})"
+	},
+	{
+		"id": "-1000010039",
+		"key": "log_body_breakbonus",
+		"en": "The body drew strength from the breakthrough: in all HP +{0:#,##0}, defense +{1:#,##0}, attack +{2:#,##0}.",
+		"ch": "肉身借突破之力淬炼：累计生命 +{0:#,##0}，防御 +{1:#,##0}，攻击 +{2:#,##0}。",
+		"tc": "肉身借突破之力淬煉：累計生命 +{0:#,##0}，防禦 +{1:#,##0}，攻擊 +{2:#,##0}。",
+		"kr": "육신이 돌파의 힘을 흡수했다: 누적 생명 +{0:#,##0}, 방어 +{1:#,##0}, 공격 +{2:#,##0}."
+	},
+	{
+		"id": "-1000010040",
+		"key": "body_bath_need",
+		"en": "A medicinal bath needs the natural treasures and herbs shown under the button, in the bag.",
+		"ch": "药浴需要背包中有按钮下方所示的天材地宝与药材。",
+		"tc": "藥浴需要背包中有按鈕下方所示的天材地寶與藥材。",
+		"kr": "약욕에는 버튼 아래에 표시된 천재지보와 약재가 가방에 있어야 한다."
+	},
+	{
+		"id": "-1000010041",
+		"key": "body_bath_have",
+		"en": "Natural treasures like {0} or rarer: {1} / {2}",
+		"ch": "天材地宝，如{0}或更稀有：{1} / {2}",
+		"tc": "天材地寶，如{0}或更稀有：{1} / {2}",
+		"kr": "{0} 같은 천재지보 이상: {1} / {2}"
+	},
+	{
+		"id": "-1000010042",
+		"key": "body_herbs_have",
+		"en": "Herbs or pills (an elixir counts 10, a dew 5): {0} / {1}",
+		"ch": "药材或丹药（一枚丹药算10，一瓶灵露算5）：{0} / {1}",
+		"tc": "藥材或丹藥（一枚丹藥算10，一瓶靈露算5）：{0} / {1}",
+		"kr": "약재 또는 단약 (단약 1개 = 10, 이슬 1개 = 5): {0} / {1}"
+	},
+	{
+		"id": "-1000010043",
+		"key": "body_break_need",
+		"en": "A breakthrough of the body needs the natural treasures and herbs shown under the button, in the bag; they are used even if it fails.",
+		"ch": "肉身突破需要背包中有按钮下方所示的天材地宝与药材；即使失败也会消耗。",
+		"tc": "肉身突破需要背包中有按鈕下方所示的天材地寶與藥材；即使失敗也會消耗。",
+		"kr": "육신 돌파에는 버튼 아래에 표시된 천재지보와 약재가 가방에 있어야 하며, 실패해도 소모된다."
+	},
+	{
+		"id": "-1000010044",
+		"key": "body_essence",
+		"en": "[icon:daodian] Body essence: {0:#,##0} ([icon:jiankang] max HP +{1}%, [icon:fangyu] defense +{2}%, [icon:quanfa] fist / palm / finger +{3})",
+		"ch": "[icon:daodian] 肉身精华：{0:#,##0}（[icon:jiankang] 生命上限 +{1}%，[icon:fangyu] 防御 +{2}%，[icon:quanfa] 拳 / 掌 / 指 +{3}）",
+		"tc": "[icon:daodian] 肉身精華：{0:#,##0}（[icon:jiankang] 生命上限 +{1}%，[icon:fangyu] 防禦 +{2}%，[icon:quanfa] 拳 / 掌 / 指 +{3}）",
+		"kr": "[icon:daodian] 육신 정수: {0:#,##0} ([icon:jiankang] 최대 HP +{1}%, [icon:fangyu] 방어 +{2}%, [icon:quanfa] 권 / 장 / 지 +{3})"
+	},
+	{
+		"id": "-1000010045",
+		"key": "body_bath_dose",
+		"en": "Bath x{0}: +{1:#,##0}",
+		"ch": "药浴 x{0}：+{1:#,##0}",
+		"tc": "藥浴 x{0}：+{1:#,##0}",
+		"kr": "약욕 x{0}: +{1:#,##0}"
+	},
+	{
+		"id": "-1000010046",
+		"key": "body_break_dose",
+		"en": "Break x{0}: {1:0}% (+{2}% bonus)",
+		"ch": "突破 x{0}：{1:0}%（加成 +{2}%）",
+		"tc": "突破 x{0}：{1:0}%（加成 +{2}%）",
+		"kr": "돌파 x{0}: {1:0}% (보너스 +{2}%)"
+	},
+	{
+		"id": "-1000010047",
+		"key": "body_dose_hint",
+		"en": "Warning: x2 / x3 give +20% / +50% but risk more. A backlash or a failed breakthrough costs lifespan: when none is left, the cultivator dies. A tough body (max HP, defense, fist / palm / finger) lowers the risks a little.",
+		"ch": "警告：x2 / x3 加成 +20% / +50%，风险也更大。反噬或突破失败会折损寿元：寿元耗尽，修士即陨落。肉身越强（生命、防御、拳 / 掌 / 指），风险略低。",
+		"tc": "警告：x2 / x3 加成 +20% / +50%，風險也更大。反噬或突破失敗會折損壽元：壽元耗盡，修士即隕落。肉身越強（生命、防禦、拳 / 掌 / 指），風險略低。",
+		"kr": "경고: x2 / x3는 +20% / +50%이지만 위험도 크다. 반동이나 돌파 실패는 수명을 깎고, 수명이 다하면 수사는 죽는다. 강한 육신(HP, 방어, 권 / 장 / 지)은 위험을 조금 낮춘다."
+	},
+	{
+		"id": "-1000010048",
+		"key": "body_backlash",
+		"en": "Backlash: no tempering, the body is injured for a month, {0} month(s) of lifespan are lost.",
+		"ch": "反噬：未得淬炼，肉身受伤一月，折损寿元{0}月。",
+		"tc": "反噬：未得淬煉，肉身受傷一月，折損壽元{0}月。",
+		"kr": "반동: 단련 없음, 한 달간 부상, 수명 {0}개월 감소."
+	},
+	{
+		"id": "-1000010049",
+		"key": "body_life_lost",
+		"en": "The strong dose cost {0} month(s) of lifespan.",
+		"ch": "猛药折损寿元{0}月。",
+		"tc": "猛藥折損壽元{0}月。",
+		"kr": "강한 약으로 수명 {0}개월을 잃었다."
+	},
+	{
+		"id": "-1000010050",
+		"key": "body_temper",
+		"en": "[icon:hudun] Tempered body: [icon:jiankang] max HP +{0}%, [icon:fangyu] defense +{1}%",
+		"ch": "[icon:hudun] 淬体：[icon:jiankang] 生命上限 +{0}%，[icon:fangyu] 防御 +{1}%",
+		"tc": "[icon:hudun] 淬體：[icon:jiankang] 生命上限 +{0}%，[icon:fangyu] 防禦 +{1}%",
+		"kr": "[icon:hudun] 단련된 육신: [icon:jiankang] 최대 HP +{0}%, [icon:fangyu] 방어 +{1}%"
+	},
+	{
+		"id": "-1000010051",
+		"key": "body_risk",
+		"en": "[icon:shouming] Backlash {0:0.#}% (about {1} months of lifespan)",
+		"ch": "[icon:shouming] 反噬 {0:0.#}%（约折寿{1}月）",
+		"tc": "[icon:shouming] 反噬 {0:0.#}%（約折壽{1}月）",
+		"kr": "[icon:shouming] 반동 {0:0.#}% (수명 약 {1}개월)"
+	},
+	{
+		"id": "-1000010052",
+		"key": "body_break_risk",
+		"en": "[icon:shouming] Failure: about {0} months of lifespan",
+		"ch": "[icon:shouming] 失败：约折寿{0}月",
+		"tc": "[icon:shouming] 失敗：約折壽{0}月",
+		"kr": "[icon:shouming] 실패: 수명 약 {0}개월"
+	},
+	{
+		"id": "-1000010053",
+		"key": "body_need_treasure",
+		"en": "{0}+: {1} / {2}",
+		"ch": "{0}+：{1} / {2}",
+		"tc": "{0}+：{1} / {2}",
+		"kr": "{0}+: {1} / {2}"
+	},
+	{
+		"id": "-1000010054",
+		"key": "body_need_herbs",
+		"en": "Herbs {0}%: {1} high, {2} middle or {3} low",
+		"ch": "药材 {0}%：高阶{1}、中阶{2}或低阶{3}",
+		"tc": "藥材 {0}%：高階{1}、中階{2}或低階{3}",
+		"kr": "약재 {0}%: 상급 {1}, 중급 {2} 또는 하급 {3}"
+	},
+	{
+		"id": "-1000010055",
+		"key": "body_materials_hint",
+		"en": "Natural treasures: 天材地宝, divine stones, immortal dews, orbs (or rarer). Herbs and spirit materials of item level {0}+ for your grade (lower ones are useless): low = your floor, middle = +1, high = +2 or more; an elixir counts double.",
+		"ch": "天材地宝：天材地宝、神石、仙露、宝珠（或更稀有）。药材与灵材须为你境界可用的{0}级以上（更低的无用）：低阶=下限，中阶=+1，高阶=+2及以上；丹药算双倍。",
+		"tc": "天材地寶：天材地寶、神石、仙露、寶珠（或更稀有）。藥材與靈材須為你境界可用的{0}級以上（更低的無用）：低階=下限，中階=+1，高階=+2及以上；丹藥算雙倍。",
+		"kr": "천재지보: 천재지보, 신석, 선로, 보주(또는 더 희귀한 것). 약재와 영재는 경지에 맞는 {0}급 이상(더 낮으면 무용): 하급=하한, 중급=+1, 상급=+2 이상; 단약은 두 배."
+	},
+	{
+		"id": "-1000010056",
+		"key": "body_deadly",
+		"en": "[icon:shouming] No lifespan is left: the cultivator will die.",
+		"ch": "[icon:shouming] 寿元已尽：修士即将陨落。",
+		"tc": "[icon:shouming] 壽元已盡：修士即將隕落。",
+		"kr": "[icon:shouming] 수명이 다했다: 수사가 곧 죽는다."
+	},
+	{
+		"id": "-1000010057",
+		"key": "log_body_deadly",
+		"en": "Body refining cost {0} months of lifespan: none is left.",
+		"ch": "炼体折损寿元{0}月：寿元已尽。",
+		"tc": "煉體折損壽元{0}月：壽元已盡。",
+		"kr": "연체로 수명 {0}개월을 잃었다: 수명이 다했다."
+	},
+	{
+		"id": "-1000010058",
+		"key": "body_life_left",
+		"en": "[icon:shouming] Lifespan left: {0} y {1} m",
+		"ch": "[icon:shouming] 剩余寿元：{0}年{1}月",
+		"tc": "[icon:shouming] 剩餘壽元：{0}年{1}月",
+		"kr": "[icon:shouming] 남은 수명: {0}년 {1}개월"
+	},
+	{
+		"id": "-1000010059",
+		"key": "body_place_1",
+		"en": "Waterfall",
+		"ch": "瀑布",
+		"tc": "瀑布",
+		"kr": "폭포"
+	},
+	{
+		"id": "-1000010060",
+		"key": "body_place_2",
+		"en": "Lava pool",
+		"ch": "熔岩池",
+		"tc": "熔岩池",
+		"kr": "용암지"
+	},
+	{
+		"id": "-1000010061",
+		"key": "body_place_3",
+		"en": "Thunder pool",
+		"ch": "雷池",
+		"tc": "雷池",
+		"kr": "뇌지"
+	},
+	{
+		"id": "-1000010064",
+		"key": "body_place_o",
+		"en": "Stay {0} year(s) (about {1} body exp)",
+		"ch": "停留{0}年（约{1}炼体经验）",
+		"tc": "停留{0}年（約{1}煉體經驗）",
+		"kr": "{0}년 머문다 (연체 경험 약 {1})"
+	},
+	{
+		"id": "-1000010065",
+		"key": "body_place_no",
+		"en": "Leave",
+		"ch": "离开",
+		"tc": "離開",
+		"kr": "떠난다"
+	},
+	{
+		"id": "-1000010066",
+		"key": "body_place_text_1",
+		"en": "On the way you hear a roar: a waterfall falls from a cliff, its water beating the rocks like ten thousand fists. A body refiner could stand under it for years, until the skin no longer feels it. (Lifespan left: {0} years)",
+		"ch": "途中忽闻轰鸣：一道瀑布自悬崖坠落，水如万拳捶击山石。炼体修士可在其下一站数年，直至皮肉再无知觉。（剩余寿元：{0}年）",
+		"tc": "途中忽聞轟鳴：一道瀑布自懸崖墜落，水如萬拳捶擊山石。煉體修士可在其下一站數年，直至皮肉再無知覺。（剩餘壽元：{0}年）",
+		"kr": "길을 가다 굉음이 들린다: 절벽에서 폭포가 떨어지며 만 개의 주먹처럼 바위를 내리친다. 연체 수사라면 피부가 더는 느끼지 못할 때까지 그 아래서 수년을 버틸 수 있다. (남은 수명: {0}년)"
+	},
+	{
+		"id": "-1000010067",
+		"key": "body_place_text_2",
+		"en": "The ground grows hot: in a hollow of the mountain a lava pool boils red. Only a body of iron bones could sit in it, and let the fire burn the impurities out of the marrow. (Lifespan left: {0} years)",
+		"ch": "地面渐渐灼热：山坳之中，一池熔岩赤浪翻滚。唯有铁骨之躯方能坐于其中，任烈火焚尽骨髓杂质。（剩余寿元：{0}年）",
+		"tc": "地面漸漸灼熱：山坳之中，一池熔岩赤浪翻滾。唯有鐵骨之軀方能坐於其中，任烈火焚盡骨髓雜質。（剩餘壽元：{0}年）",
+		"kr": "땅이 뜨거워진다: 산골짜기에 용암지가 붉게 끓고 있다. 철골의 몸만이 그 속에 앉아 불길로 골수의 잡질을 태울 수 있다. (남은 수명: {0}년)"
+	},
+	{
+		"id": "-1000010068",
+		"key": "body_place_text_3",
+		"en": "Clouds gather over a dark pool and lightning falls into it without end: a thunder pool. A golden body could bathe in it, struck a thousand times a day. (Lifespan left: {0} years)",
+		"ch": "乌云聚于一汪黑水之上，天雷落入其中永无休止：是一方雷池。金身可沐于其中，一日受雷千击。（剩余寿元：{0}年）",
+		"tc": "烏雲聚於一汪黑水之上，天雷落入其中永無休止：是一方雷池。金身可沐於其中，一日受雷千擊。（剩餘壽元：{0}年）",
+		"kr": "검은 물 위로 구름이 모이고 번개가 끝없이 떨어진다: 뇌지다. 금신이라면 그 속에 몸을 담그고 하루에 천 번 벼락을 맞을 수 있다. (남은 수명: {0}년)"
+	},
+	{
+		"id": "-1000010069",
+		"key": "body_trib_button",
+		"en": "Body tribulation (battle)",
+		"ch": "炼体雷劫（战斗）",
+		"tc": "煉體雷劫（戰鬥）",
+		"kr": "체겁 (전투)"
+	},
+	{
+		"id": "-1000010070",
+		"key": "body_trib_hint",
+		"en": "Survive the lightning with at most {0} % MP: sure success, tempering +{1} %; fall: as a failure",
+		"ch": "以至多{0}%真元撑过天雷：必定成功，淬炼+{1}%；倒下：视为失败",
+		"tc": "以至多{0}%真元撐過天雷：必定成功，淬鍊+{1}%；倒下：視為失敗",
+		"kr": "영력 최대 {0}%로 번개를 버티면: 반드시 성공, 단련 +{1}%; 쓰러지면: 실패"
+	},
+	{
+		"id": "-1000010071",
+		"key": "body_trib_ok",
+		"en": "The flesh held under the lightning. The body breaks into {0}.",
+		"ch": "肉身于天雷之下屹立不倒，突破至{0}。",
+		"tc": "肉身於天雷之下屹立不倒，突破至{0}。",
+		"kr": "육신이 번개 아래 버텼다. {0}에 돌파했다."
+	},
+	{
+		"id": "-1000010072",
+		"key": "body_trib_fail",
+		"en": "The body fell under the lightning: injured for {0} months, half the exp lost.",
+		"ch": "肉身倒于天雷之下：受伤{0}个月，经验折半。",
+		"tc": "肉身倒於天雷之下：受傷{0}個月，經驗折半。",
+		"kr": "육신이 번개 아래 쓰러졌다: {0}개월 부상, 경험 절반 손실."
+	},
+	{
+		"id": "-1000010073",
+		"key": "log_body_trib_start",
+		"en": "The body faced the tribulation of lightning to enter {0}.",
+		"ch": "迎接炼体雷劫，欲入{0}。",
+		"tc": "迎接煉體雷劫，欲入{0}。",
+		"kr": "{0}에 들기 위해 체겁에 맞섰다."
+	},
+	{
+		"id": "-1000010074",
+		"key": "body_sect",
+		"en": "Your sect {0} teaches body refining: training x{1}.",
+		"ch": "你的宗门{0}传授炼体之法：修炼x{1}。",
+		"tc": "你的宗門{0}傳授煉體之法：修煉x{1}。",
+		"kr": "당신의 종문 {0}은(는) 연체를 가르친다: 수련 x{1}."
+	},
+	{
+		"id": "-1000010075",
+		"key": "body_sect_ui",
+		"en": "This sect fights with bare hands and teaches body refining (members train x{0}).",
+		"ch": "本宗擅长徒手搏击，传授炼体之法（门人修炼x{0}）。",
+		"tc": "本宗擅長徒手搏擊，傳授煉體之法（門人修煉x{0}）。",
+		"kr": "이 종문은 맨손 격투에 능하며 연체를 가르친다 (문인 수련 x{0})."
+	},
+	{
+		"id": "-1000010076",
+		"key": "secl_name_Waterfall",
+		"en": "Waterfall",
+		"ch": "瀑布",
+		"tc": "瀑布",
+		"kr": "폭포"
+	},
+	{
+		"id": "-1000010077",
+		"key": "secl_name_Lava",
+		"en": "Lava pool",
+		"ch": "熔岩池",
+		"tc": "熔岩池",
+		"kr": "용암지"
+	},
+	{
+		"id": "-1000010078",
+		"key": "secl_name_Thunder",
+		"en": "Thunder pool",
+		"ch": "雷池",
+		"tc": "雷池",
+		"kr": "뇌지"
+	},
+	{
+		"id": "-1000010079",
+		"key": "secl_res_Waterfall",
+		"en": "The water no longer hurts. Body: {0} (+{1} layers).",
+		"ch": "流水再不能伤你分毫。肉身：{0}（+{1}层）。",
+		"tc": "流水再不能傷你分毫。肉身：{0}（+{1}層）。",
+		"kr": "물은 더 이상 아프지 않다. 육신: {0} (+{1}층)."
+	},
+	{
+		"id": "-1000010080",
+		"key": "secl_res_Lava",
+		"en": "The fire went through the marrow and left it clean. Body: {0} (+{1} layers).",
+		"ch": "烈火贯穿骨髓，留下一片澄净。肉身：{0}（+{1}层）。",
+		"tc": "烈火貫穿骨髓，留下一片澄淨。肉身：{0}（+{1}層）。",
+		"kr": "불길이 골수를 꿰뚫고 깨끗이 남겼다. 육신: {0} (+{1}층)."
+	},
+	{
+		"id": "-1000010081",
+		"key": "secl_res_Thunder",
+		"en": "A thousand strikes a day, for years: the body hums like a bell. Body: {0} (+{1} layers).",
+		"ch": "一日千雷，经年不辍：肉身鸣如洪钟。肉身：{0}（+{1}层）。",
+		"tc": "一日千雷，經年不輟：肉身鳴如洪鐘。肉身：{0}（+{1}層）。",
+		"kr": "하루 천 번의 벼락이 수년간: 육신이 종처럼 울린다. 육신: {0} (+{1}층)."
+	},
+	{
+		"id": "-1000010082",
+		"key": "log_body_place_left",
+		"en": "Found a {0} and walked on.",
+		"ch": "遇见{0}，未作停留。",
+		"tc": "遇見{0}，未作停留。",
+		"kr": "{0}을(를) 발견했지만 그냥 지나쳤다."
+	},
+	{
+		"id": "-1000010083",
+		"key": "log_npc_body_place",
+		"en": "{0} went to temper the body at a {1} for {2} years.",
+		"ch": "{0}前往{1}淬炼肉身，为期{2}年。",
+		"tc": "{0}前往{1}淬鍊肉身，為期{2}年。",
+		"kr": "{0}이(가) {1}에서 {2}년간 육신을 단련하러 떠났다."
+	},
+	{
+		"id": "-1000010084",
+		"key": "log_npc_body_place_end",
+		"en": "{0} came back from the {1}: {2}.",
+		"ch": "{0}自{1}归来：{2}。",
+		"tc": "{0}自{1}歸來：{2}。",
+		"kr": "{0}이(가) {1}에서 돌아왔다: {2}."
+	},
+	{
+		"id": "-1000010085",
+		"key": "log_npc_body_trib_ok",
+		"en": "{0} survived the body tribulation: {1}.",
+		"ch": "{0}渡过炼体雷劫：{1}。",
+		"tc": "{0}渡過煉體雷劫：{1}。",
+		"kr": "{0}이(가) 체겁을 견뎌냈다: {1}."
+	},
+	{
+		"id": "-1000010086",
+		"key": "log_npc_body_trib_fail",
+		"en": "{0} fell in the body tribulation ({1}).",
+		"ch": "{0}倒于炼体雷劫之下（{1}）。",
+		"tc": "{0}倒於煉體雷劫之下（{1}）。",
+		"kr": "{0}이(가) 체겁에 쓰러졌다 ({1})."
+	}
+]

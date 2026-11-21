@@ -290,10 +290,10 @@
         },
         {
             "label": "Marketing: Render Video",
-            "detail": "Remotion video from SteamImg (marketing/video): out/taoist-promo.mp4 and out/taoist-promo-short.mp4",
+            "detail": "Remotion video from SteamImg (marketing/video-6.0.0): out/taoist-promo.mp4 and out/taoist-promo-short.mp4",
             "type": "shell",
             "command": "npm install --no-audit --no-fund && npm run render && npm run render:short",
-            "options": { "cwd": "${workspaceFolder}/marketing/video" },
+            "options": { "cwd": "${workspaceFolder}/marketing/video-6.0.0" },
             "problemMatcher": [],
             "presentation": { "panel": "dedicated", "clear": true }
         },
@@ -302,7 +302,7 @@
             "detail": "Remotion studio (preview / edit the marketing video) - stop it with the terminal",
             "type": "shell",
             "command": "npm install --no-audit --no-fund && npm run studio",
-            "options": { "cwd": "${workspaceFolder}/marketing/video" },
+            "options": { "cwd": "${workspaceFolder}/marketing/video-6.0.0" },
             "isBackground": true,
             "problemMatcher": [],
             "presentation": { "panel": "dedicated" }

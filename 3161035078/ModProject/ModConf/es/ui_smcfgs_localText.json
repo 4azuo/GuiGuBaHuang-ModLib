@@ -708,5 +708,105 @@
 		"id": -1000001191,
 		"key": "smcfgs191",
 		"en|ch|tc|kr": "El demonio del corazón: tu pasado vuelve en sueños; enfréntate a lo que las demás historias hicieron de ti."
+	},
+	{
+		"id": "-1000001193",
+		"key": "smcfgs193",
+		"en|ch|tc|kr": "Sin mérito"
+	},
+	{
+		"id": "-1000001192",
+		"key": "smcfgs192",
+		"en|ch|tc|kr": "Sin cultivo corporal"
+	},
+	{
+		"id": "-1000001194",
+		"key": "smcfgs194",
+		"en|ch|tc|kr": "Sin Dao del artesano"
+	},
+	{
+		"id": "-1000001195",
+		"key": "smcfgs195",
+		"en|ch|tc|kr": "Sin Corazón del Dao"
+	},
+	{
+		"id": "-1000001196",
+		"key": "smcfgs196",
+		"en|ch|tc|kr": "Sin sentido espiritual"
+	},
+	{
+		"id": "-1000001197",
+		"key": "smcfgs197",
+		"en|ch|tc|kr": "Caminos de cultivo"
+	},
+	{
+		"id": "-1000001198",
+		"key": "smcfgs198",
+		"en|ch|tc|kr": "Propiedades"
+	},
+	{
+		"id": "-1000001199",
+		"key": "smcfgs199",
+		"en|ch|tc|kr": "EXP de refinamiento corporal"
+	},
+	{
+		"id": "-1000001200",
+		"key": "smcfgs200",
+		"en|ch|tc|kr": "Mérito obtenido"
+	},
+	{
+		"id": "-1000001201",
+		"key": "smcfgs201",
+		"en|ch|tc|kr": "EXP del Dao artesano"
+	},
+	{
+		"id": "-1000001202",
+		"key": "smcfgs202",
+		"en|ch|tc|kr": "Corazón del Dao obtenido"
+	},
+	{
+		"id": "-1000001203",
+		"key": "smcfgs203",
+		"en|ch|tc|kr": "EXP de sentido espiritual"
+	},
+	{
+		"id": "-1000001204",
+		"key": "smcfgs204",
+		"en|ch|tc|kr": "Sin propiedades (no se compran parcelas)"
+	},
+	{
+		"id": "-1000001205",
+		"key": "smcfgs205",
+		"en|ch|tc|kr": "Los PNJ no compran casas"
+	},
+	{
+		"id": "-1000001206",
+		"key": "smcfgs206",
+		"en|ch|tc|kr": "Precios de casas y terrenos"
+	},
+	{
+		"id": "-1000001207",
+		"key": "smcfgs207",
+		"en|ch|tc|kr": "Impuesto de vivienda"
+	},
+	{
+		"id": "-1000001208",
+		"key": "smcfgs208",
+		"en|ch|tc|kr": "La forja del viejo Tie: un viejo herrero se quemó la mano; haz su examen, trae mineral de una veta, mantén viva su forja (Dao artesano)."
+	},
+	{
+		"id": "-1000001209",
+		"key": "smcfgs209",
+		"en|ch|tc|kr": "La casa de la calle vieja: un sótano bajo tu casa, los vecinos de tu calle y lo que haces de ellos (propiedades)."
+	},
+	{
+		"id": "-1000001210",
+		"key": "smcfgs210",
+		"en|ch|tc|kr": "Cenizas de la ciudad: un niño sobrevivió a una ciudad pasada a cuchillo y crece preguntando quién fue (mérito y karma)."
+	},
+	{
+		"id": "-1000001211",
+		"key": "smcfgs211",
+		"en|ch|tc|kr": "Un latido en la piedra: tu sentido espiritual encuentra a un refinador corporal medio petrificado por su tribulación (sentido espiritual, refinamiento corporal)."
 	}
 ]

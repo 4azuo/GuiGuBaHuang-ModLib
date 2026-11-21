@@ -10,7 +10,7 @@ Battles are not closed rooms: cultivators near the player may join during the fi
 
 ## Switch
 
-`mod_configs.json` > `BattleConfigs` (rates in % **per second**):
+`battle_configs.json` (`BattleConfig`) (rates in % **per second**):
 
 | Key | Value |
 |---|---|

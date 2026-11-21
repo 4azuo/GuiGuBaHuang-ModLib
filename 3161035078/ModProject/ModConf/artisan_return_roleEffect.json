@@ -1,0 +1,182 @@
+[
+	{
+		"__name": "Artisan-Return-Alchemy",
+		"id": "420203011",
+		"effectType": "1",
+		"value": "basPil_1_50"
+	},
+	{
+		"__name": "Artisan-Return-Alchemy",
+		"id": "420203012",
+		"effectType": "1",
+		"value": "atk_0_15"
+	},
+	{
+		"__name": "Artisan-Return-Alchemy",
+		"id": "420203013",
+		"effectType": "1",
+		"value": "def_0_15"
+	},
+	{
+		"__name": "Artisan-Return-Alchemy",
+		"id": "420203014",
+		"effectType": "1",
+		"value": "hpMax_0_15"
+	},
+	{
+		"__name": "Artisan-Return-Alchemy",
+		"id": "420203015",
+		"effectType": "1",
+		"value": "luck_1_3"
+	},
+	{
+		"__name": "Artisan-Return-Artifact forging",
+		"id": "420203021",
+		"effectType": "1",
+		"value": "basEqp_1_50"
+	},
+	{
+		"__name": "Artisan-Return-Artifact forging",
+		"id": "420203022",
+		"effectType": "1",
+		"value": "atk_0_15"
+	},
+	{
+		"__name": "Artisan-Return-Artifact forging",
+		"id": "420203023",
+		"effectType": "1",
+		"value": "def_0_15"
+	},
+	{
+		"__name": "Artisan-Return-Artifact forging",
+		"id": "420203024",
+		"effectType": "1",
+		"value": "hpMax_0_15"
+	},
+	{
+		"__name": "Artisan-Return-Artifact forging",
+		"id": "420203025",
+		"effectType": "1",
+		"value": "luck_1_3"
+	},
+	{
+		"__name": "Artisan-Return-Talismans",
+		"id": "420203031",
+		"effectType": "1",
+		"value": "basSym_1_50"
+	},
+	{
+		"__name": "Artisan-Return-Talismans",
+		"id": "420203032",
+		"effectType": "1",
+		"value": "atk_0_15"
+	},
+	{
+		"__name": "Artisan-Return-Talismans",
+		"id": "420203033",
+		"effectType": "1",
+		"value": "def_0_15"
+	},
+	{
+		"__name": "Artisan-Return-Talismans",
+		"id": "420203034",
+		"effectType": "1",
+		"value": "hpMax_0_15"
+	},
+	{
+		"__name": "Artisan-Return-Talismans",
+		"id": "420203035",
+		"effectType": "1",
+		"value": "luck_1_3"
+	},
+	{
+		"__name": "Artisan-Return-Feng shui",
+		"id": "420203041",
+		"effectType": "1",
+		"value": "basGeo_1_50"
+	},
+	{
+		"__name": "Artisan-Return-Feng shui",
+		"id": "420203042",
+		"effectType": "1",
+		"value": "atk_0_15"
+	},
+	{
+		"__name": "Artisan-Return-Feng shui",
+		"id": "420203043",
+		"effectType": "1",
+		"value": "def_0_15"
+	},
+	{
+		"__name": "Artisan-Return-Feng shui",
+		"id": "420203044",
+		"effectType": "1",
+		"value": "hpMax_0_15"
+	},
+	{
+		"__name": "Artisan-Return-Feng shui",
+		"id": "420203045",
+		"effectType": "1",
+		"value": "luck_1_3"
+	},
+	{
+		"__name": "Artisan-Return-Herbs",
+		"id": "420203051",
+		"effectType": "1",
+		"value": "basHerb_1_50"
+	},
+	{
+		"__name": "Artisan-Return-Herbs",
+		"id": "420203052",
+		"effectType": "1",
+		"value": "atk_0_15"
+	},
+	{
+		"__name": "Artisan-Return-Herbs",
+		"id": "420203053",
+		"effectType": "1",
+		"value": "def_0_15"
+	},
+	{
+		"__name": "Artisan-Return-Herbs",
+		"id": "420203054",
+		"effectType": "1",
+		"value": "hpMax_0_15"
+	},
+	{
+		"__name": "Artisan-Return-Herbs",
+		"id": "420203055",
+		"effectType": "1",
+		"value": "luck_1_3"
+	},
+	{
+		"__name": "Artisan-Return-Mining",
+		"id": "420203061",
+		"effectType": "1",
+		"value": "basMine_1_50"
+	},
+	{
+		"__name": "Artisan-Return-Mining",
+		"id": "420203062",
+		"effectType": "1",
+		"value": "atk_0_15"
+	},
+	{
+		"__name": "Artisan-Return-Mining",
+		"id": "420203063",
+		"effectType": "1",
+		"value": "def_0_15"
+	},
+	{
+		"__name": "Artisan-Return-Mining",
+		"id": "420203064",
+		"effectType": "1",
+		"value": "hpMax_0_15"
+	},
+	{
+		"__name": "Artisan-Return-Mining",
+		"id": "420203065",
+		"effectType": "1",
+		"value": "luck_1_3"
+	}
+]

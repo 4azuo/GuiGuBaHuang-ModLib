@@ -708,5 +708,105 @@
 		"id": -1000001191,
 		"key": "smcfgs191",
 		"en|ch|tc|kr": "Der Herzdämon: deine Vergangenheit kehrt in Träumen zurück; stelle dich dem, was alle anderen Geschichten aus dir gemacht haben."
+	},
+	{
+		"id": "-1000001193",
+		"key": "smcfgs193",
+		"en|ch|tc|kr": "Kein Verdienst"
+	},
+	{
+		"id": "-1000001192",
+		"key": "smcfgs192",
+		"en|ch|tc|kr": "Keine Körperkultivierung"
+	},
+	{
+		"id": "-1000001194",
+		"key": "smcfgs194",
+		"en|ch|tc|kr": "Kein Dao des Handwerks"
+	},
+	{
+		"id": "-1000001195",
+		"key": "smcfgs195",
+		"en|ch|tc|kr": "Kein Dao-Herz"
+	},
+	{
+		"id": "-1000001196",
+		"key": "smcfgs196",
+		"en|ch|tc|kr": "Kein Geistessinn"
+	},
+	{
+		"id": "-1000001197",
+		"key": "smcfgs197",
+		"en|ch|tc|kr": "Wege der Kultivierung"
+	},
+	{
+		"id": "-1000001198",
+		"key": "smcfgs198",
+		"en|ch|tc|kr": "Anwesen"
+	},
+	{
+		"id": "-1000001199",
+		"key": "smcfgs199",
+		"en|ch|tc|kr": "Körperveredelung-EP"
+	},
+	{
+		"id": "-1000001200",
+		"key": "smcfgs200",
+		"en|ch|tc|kr": "Erworbene Verdienste"
+	},
+	{
+		"id": "-1000001201",
+		"key": "smcfgs201",
+		"en|ch|tc|kr": "Handwerksdao-EP"
+	},
+	{
+		"id": "-1000001202",
+		"key": "smcfgs202",
+		"en|ch|tc|kr": "Erworbenes Dao-Herz"
+	},
+	{
+		"id": "-1000001203",
+		"key": "smcfgs203",
+		"en|ch|tc|kr": "Geistessinn-EP"
+	},
+	{
+		"id": "-1000001204",
+		"key": "smcfgs204",
+		"en|ch|tc|kr": "Keine Anwesen (keine Grundstücke kaufen)"
+	},
+	{
+		"id": "-1000001205",
+		"key": "smcfgs205",
+		"en|ch|tc|kr": "NPCs kaufen keine Häuser"
+	},
+	{
+		"id": "-1000001206",
+		"key": "smcfgs206",
+		"en|ch|tc|kr": "Haus- und Grundstückspreise"
+	},
+	{
+		"id": "-1000001207",
+		"key": "smcfgs207",
+		"en|ch|tc|kr": "Haussteuer"
+	},
+	{
+		"id": "-1000001208",
+		"key": "smcfgs208",
+		"en|ch|tc|kr": "Der alte Tie und seine Schmiede: Ein alter Schmied verbrannte sich die Hand; lege seine Prüfung ab, bring Erz aus einer Erzader, halte seine Schmiede am Leben (Handwerksdao)."
+	},
+	{
+		"id": "-1000001209",
+		"key": "smcfgs209",
+		"en|ch|tc|kr": "Das Haus in der alten Straße: ein Keller unter deinem Haus, die Nachbarn deiner Straße und was du aus ihnen machst (Anwesen)."
+	},
+	{
+		"id": "-1000001210",
+		"key": "smcfgs210",
+		"en|ch|tc|kr": "Asche der Stadt: Ein Kind überlebte eine niedergemetzelte Stadt und wächst mit der Frage auf, wer es war (Verdienst und Karma)."
+	},
+	{
+		"id": "-1000001211",
+		"key": "smcfgs211",
+		"en|ch|tc|kr": "Ein Herzschlag im Stein: Dein Geistessinn findet einen Körperveredler, den seine Trübsal halb versteinert hat (Geistessinn, Körperveredelung)."
 	}
 ]

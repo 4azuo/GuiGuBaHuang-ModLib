@@ -1,0 +1,946 @@
+[
+	{
+		"id": "-1000011000",
+		"key": "estate_button",
+		"en": "Plots",
+		"ch": "地块",
+		"tc": "地塊",
+		"kr": "부지"
+	},
+	{
+		"id": "-1000011001",
+		"key": "estate_title",
+		"en": "{0} - plots",
+		"ch": "{0}·地块",
+		"tc": "{0}·地塊",
+		"kr": "{0} - 부지"
+	},
+	{
+		"id": "-1000011002",
+		"key": "estate_population",
+		"en": "Mortals: {0:#,##0} (heading to {1:#,##0}) · mortal tax {2:#,##0}/month · built plots {3}/{4}",
+		"ch": "凡人：{0:#,##0}（趋向 {1:#,##0}）· 凡人税 {2:#,##0}/月 · 已建地块 {3}/{4}",
+		"tc": "凡人：{0:#,##0}（趨向 {1:#,##0}）· 凡人稅 {2:#,##0}/月 · 已建地塊 {3}/{4}",
+		"kr": "범인: {0:#,##0} (목표 {1:#,##0}) · 범인세 {2:#,##0}/월 · 건설된 부지 {3}/{4}"
+	},
+	{
+		"id": "-1000011003",
+		"key": "estate_hint",
+		"en": "Click a free plot to buy it and build your house (one house per town).",
+		"ch": "点击空地购买并建造你的房屋（每城一座）。",
+		"tc": "點擊空地購買並建造你的房屋（每城一座）。",
+		"kr": "빈 부지를 눌러 구입하고 집을 지으세요 (마을당 한 채)."
+	},
+	{
+		"id": "-1000011004",
+		"key": "estate_mine",
+		"en": "Your house: {0} in the {1} · tax {2:#,##0}/month · click it to go in",
+		"ch": "你的房屋：{1}的{0} · 税 {2:#,##0}/月 · 点击进入",
+		"tc": "你的房屋：{1}的{0} · 稅 {2:#,##0}/月 · 點擊進入",
+		"kr": "내 집: {1}의 {0} · 세금 {2:#,##0}/월 · 눌러서 들어가기"
+	},
+	{
+		"id": "-1000011005",
+		"key": "estate_legend",
+		"en": "Land price and house tax by district: {0}. Gold: your house; blue: a cultivator's house.",
+		"ch": "各区地价与房屋税：{0}。金色：你的房屋；蓝色：修士的房屋。",
+		"tc": "各區地價與房屋稅：{0}。金色：你的房屋；藍色：修士的房屋。",
+		"kr": "구역별 땅값과 주택세: {0}. 금색: 당신의 집; 파란색: 수사의 집."
+	},
+	{
+		"id": "-1000011006",
+		"key": "estate_one_house",
+		"en": "You already have a house in this town (one house per town).",
+		"ch": "你在此城已有房屋（每城一座）。",
+		"tc": "你在此城已有房屋（每城一座）。",
+		"kr": "이 마을에 이미 집이 있습니다 (마을당 한 채)."
+	},
+	{
+		"id": "-1000011007",
+		"key": "estate_buy_confirm",
+		"en": "A plot in the {0} (prosperity {1}).\nLand and a thatched hut: {2:#,##0} spirit banknotes (= {3:#,##0} [icon:zm_lingshi]); you have {4:#,##0}.\nHouse tax {5:#,##0}/month instead of the entry tax. Buy it?",
+		"ch": "{0}的地块（繁华度 {1}）。\n地价与茅屋：{2:#,##0}张灵票（= {3:#,##0} [icon:zm_lingshi]）；你有{4:#,##0}张。\n房屋税 {5:#,##0}/月，代替入城税。购买？",
+		"tc": "{0}的地塊（繁華度 {1}）。\n地價與茅屋：{2:#,##0}張靈票（= {3:#,##0} [icon:zm_lingshi]）；你有{4:#,##0}張。\n房屋稅 {5:#,##0}/月，代替入城稅。購買？",
+		"kr": "{0}의 부지 (번화도 {1}).\n땅과 초가집: 영표 {2:#,##0}장 (= {3:#,##0} [icon:zm_lingshi]); 보유 {4:#,##0}장.\n입성세 대신 주택세 {5:#,##0}/월. 구입하시겠습니까?"
+	},
+	{
+		"id": "-1000011008",
+		"key": "estate_info_shop",
+		"en": "A mortal shop in the {0} (prosperity {1}, land worth {2:#,##0}): the busy street brings trade.",
+		"ch": "{0}的凡人商铺（繁华度 {1}，地价 {2:#,##0}）：繁华街道带来生意。",
+		"tc": "{0}的凡人商鋪（繁華度 {1}，地價 {2:#,##0}）：繁華街道帶來生意。",
+		"kr": "{0}의 범인 상점 (번화도 {1}, 땅값 {2:#,##0}): 번화한 거리에 장사가 잘 된다."
+	},
+	{
+		"id": "-1000011009",
+		"key": "estate_info_mortal",
+		"en": "Mortals live here, in the {0} (prosperity {1}, land worth {2:#,##0}).",
+		"ch": "凡人居住于{0}（繁华度 {1}，地价 {2:#,##0}）。",
+		"tc": "凡人居住於{0}（繁華度 {1}，地價 {2:#,##0}）。",
+		"kr": "{0}에 범인들이 산다 (번화도 {1}, 땅값 {2:#,##0})."
+	},
+	{
+		"id": "-1000011010",
+		"key": "estate_done",
+		"en": "Built: {0}!",
+		"ch": "建成：{0}！",
+		"tc": "建成：{0}！",
+		"kr": "완공: {0}!"
+	},
+	{
+		"id": "-1000011011",
+		"key": "estate_grade",
+		"en": "A {0} needs cultivation grade {1}.",
+		"ch": "{0}需要修为第{1}境。",
+		"tc": "{0}需要修為第{1}境。",
+		"kr": "{0}에는 수련 {1}단계가 필요하다."
+	},
+	{
+		"id": "-1000011012",
+		"key": "estate_not_free",
+		"en": "This plot is not free.",
+		"ch": "此地块已被占用。",
+		"tc": "此地塊已被佔用。",
+		"kr": "이 부지는 비어 있지 않다."
+	},
+	{
+		"id": "-1000011013",
+		"key": "estate_manage_line",
+		"en": "Mortals: {0:#,##0} -> {1:#,##0}, mortal tax {2:#,##0}/month",
+		"ch": "凡人：{0:#,##0} -> {1:#,##0}，凡人税 {2:#,##0}/月",
+		"tc": "凡人：{0:#,##0} -> {1:#,##0}，凡人稅 {2:#,##0}/月",
+		"kr": "범인: {0:#,##0} -> {1:#,##0}, 범인세 {2:#,##0}/월"
+	},
+	{
+		"id": "-1000011014",
+		"key": "estate_house_1",
+		"en": "Thatched Hut",
+		"ch": "茅屋",
+		"tc": "茅屋",
+		"kr": "초가집"
+	},
+	{
+		"id": "-1000011015",
+		"key": "estate_house_2",
+		"en": "Tiled House",
+		"ch": "瓦房",
+		"tc": "瓦房",
+		"kr": "기와집"
+	},
+	{
+		"id": "-1000011016",
+		"key": "estate_house_3",
+		"en": "Courtyard House",
+		"ch": "四合院",
+		"tc": "四合院",
+		"kr": "사합원"
+	},
+	{
+		"id": "-1000011017",
+		"key": "estate_house_4",
+		"en": "Mansion",
+		"ch": "宅邸",
+		"tc": "宅邸",
+		"kr": "저택"
+	},
+	{
+		"id": "-1000011018",
+		"key": "estate_house_5",
+		"en": "Manor",
+		"ch": "府邸",
+		"tc": "府邸",
+		"kr": "부저"
+	},
+	{
+		"id": "-1000011019",
+		"key": "estate_house_6",
+		"en": "Immortal Palace",
+		"ch": "仙府",
+		"tc": "仙府",
+		"kr": "선부"
+	},
+	{
+		"id": "-1000011020",
+		"key": "log_estate_buy",
+		"en": "Bought a plot in {0} and built a thatched hut ({1:#,##0} spirit stones).",
+		"ch": "在{0}购得地块并建起茅屋（{1:#,##0}灵石）。",
+		"tc": "在{0}購得地塊並建起茅屋（{1:#,##0}靈石）。",
+		"kr": "{0}에서 부지를 사서 초가집을 지었다 ({1:#,##0} 영석)."
+	},
+	{
+		"id": "-1000011021",
+		"key": "log_estate_upgrade",
+		"en": "{0}: the house became a {1} ({2:#,##0} spirit stones).",
+		"ch": "{0}：房屋升级为{1}（{2:#,##0}灵石）。",
+		"tc": "{0}：房屋升級為{1}（{2:#,##0}靈石）。",
+		"kr": "{0}: 집이 {1}(으)로 바뀌었다 ({2:#,##0} 영석)."
+	},
+	{
+		"id": "-1000011022",
+		"key": "log_estate_seized",
+		"en": "{0}: the {1} was taken back for unpaid taxes.",
+		"ch": "{0}：因欠税，{1}被收回。",
+		"tc": "{0}：因欠稅，{1}被收回。",
+		"kr": "{0}: 세금 체납으로 {1}이(가) 몰수되었다."
+	},
+	{
+		"id": "-1000011023",
+		"key": "log_estate_unpaid",
+		"en": "{0}: house tax of {1:#,##0} unpaid ({2} month(s) before the house is taken back).",
+		"ch": "{0}：未缴房屋税 {1:#,##0}（再过{2}个月房屋将被收回）。",
+		"tc": "{0}：未繳房屋稅 {1:#,##0}（再過{2}個月房屋將被收回）。",
+		"kr": "{0}: 주택세 {1:#,##0} 미납 ({2}개월 후 집이 몰수된다)."
+	},
+	{
+		"id": "-1000011024",
+		"key": "estate_district_M",
+		"en": "Market",
+		"ch": "商市",
+		"tc": "商市",
+		"kr": "시장 구역"
+	},
+	{
+		"id": "-1000011025",
+		"key": "estate_district_N",
+		"en": "Noble Quarter",
+		"ch": "富户区",
+		"tc": "富戶區",
+		"kr": "부호 구역"
+	},
+	{
+		"id": "-1000011026",
+		"key": "estate_district_R",
+		"en": "Residential Quarter",
+		"ch": "民居区",
+		"tc": "民居區",
+		"kr": "주거 구역"
+	},
+	{
+		"id": "-1000011027",
+		"key": "estate_district_C",
+		"en": "Craftsmen Quarter",
+		"ch": "工匠区",
+		"tc": "工匠區",
+		"kr": "장인 구역"
+	},
+	{
+		"id": "-1000011028",
+		"key": "estate_district_O",
+		"en": "Outskirts",
+		"ch": "城郊",
+		"tc": "城郊",
+		"kr": "성 밖"
+	},
+	{
+		"id": "-1000011029",
+		"key": "estate_palace_1",
+		"en": "Town Hall",
+		"ch": "城主府",
+		"tc": "城主府",
+		"kr": "성주부"
+	},
+	{
+		"id": "-1000011030",
+		"key": "estate_palace_2",
+		"en": "Grand Town Hall",
+		"ch": "大城主府",
+		"tc": "大城主府",
+		"kr": "대성주부"
+	},
+	{
+		"id": "-1000011031",
+		"key": "estate_palace_3",
+		"en": "Lord's Palace",
+		"ch": "城主宫",
+		"tc": "城主宮",
+		"kr": "성주궁"
+	},
+	{
+		"id": "-1000011032",
+		"key": "estate_palace_4",
+		"en": "Jade Palace",
+		"ch": "琼楼",
+		"tc": "瓊樓",
+		"kr": "경루"
+	},
+	{
+		"id": "-1000011033",
+		"key": "estate_palace_5",
+		"en": "Heavenly Pavilion",
+		"ch": "天阁",
+		"tc": "天閣",
+		"kr": "천각"
+	},
+	{
+		"id": "-1000011034",
+		"key": "estate_palace_label",
+		"en": "Town master (level {0})",
+		"ch": "城主府（{0}级）",
+		"tc": "城主府（{0}級）",
+		"kr": "성주 ({0}레벨)"
+	},
+	{
+		"id": "-1000011035",
+		"key": "estate_palace_confirm",
+		"en": "Palace level {0}: +{1}% mortals, yearly budget +{6}%.\nExpand it to a {2} for {3:#,##0} [icon:zm_lingshi] from the town budget ({4:#,##0})? Then +{5}% mortals, yearly budget +{7}%.",
+		"ch": "城主府{0}级：凡人 +{1}%，年度预算 +{6}%。\n从城镇预算（{4:#,##0}）中花费 {3:#,##0} [icon:zm_lingshi] 扩建为{2}？之后凡人 +{5}%，年度预算 +{7}%。",
+		"tc": "城主府{0}級：凡人 +{1}%，年度預算 +{6}%。\n從城鎮預算（{4:#,##0}）中花費 {3:#,##0} [icon:zm_lingshi] 擴建為{2}？之後凡人 +{5}%，年度預算 +{7}%。",
+		"kr": "성주부 {0}레벨: 범인 +{1}%, 연간 예산 +{6}%.\n마을 예산({4:#,##0})에서 {3:#,##0} [icon:zm_lingshi]를 들여 {2}(으)로 확장하겠습니까? 이후 범인 +{5}%, 연간 예산 +{7}%."
+	},
+	{
+		"id": "-1000011036",
+		"key": "estate_palace_budget",
+		"en": "The town budget cannot pay {0:#,##0} [icon:zm_lingshi].",
+		"ch": "城镇预算不足以支付 {0:#,##0} [icon:zm_lingshi]。",
+		"tc": "城鎮預算不足以支付 {0:#,##0} [icon:zm_lingshi]。",
+		"kr": "마을 예산으로 {0:#,##0} [icon:zm_lingshi]를 낼 수 없다."
+	},
+	{
+		"id": "-1000011037",
+		"key": "estate_palace_info",
+		"en": "Town master: {0}. Palace level {1}: +{2}% mortals, yearly budget +{3}%.",
+		"ch": "城主：{0}。城主府{1}级：凡人 +{2}%，年度预算 +{3}%。",
+		"tc": "城主：{0}。城主府{1}級：凡人 +{2}%，年度預算 +{3}%。",
+		"kr": "성주: {0}. 성주부 {1}레벨: 범인 +{2}%, 연간 예산 +{3}%."
+	},
+	{
+		"id": "-1000011038",
+		"key": "log_estate_palace",
+		"en": "{0}: the palace was expanded into a {1} ({2:#,##0} from the town budget).",
+		"ch": "{0}：城主府扩建为{1}（城镇预算 {2:#,##0}）。",
+		"tc": "{0}：城主府擴建為{1}（城鎮預算 {2:#,##0}）。",
+		"kr": "{0}: 성주부가 {1}(으)로 확장되었다 (마을 예산 {2:#,##0})."
+	},
+	{
+		"id": "-1000011039",
+		"key": "estate_tax_free",
+		"en": "Tax: free (your house)\nView the town guardians",
+		"ch": "税：免（你的房屋）\n查看城镇守卫",
+		"tc": "稅：免（你的房屋）\n查看城鎮守衛",
+		"kr": "세금: 면제 (내 집)\n마을 수호자 보기"
+	},
+	{
+		"id": "-1000011040",
+		"key": "estate_house_title",
+		"en": "{0} - {1}",
+		"ch": "{1}·{0}",
+		"tc": "{1}·{0}",
+		"kr": "{0} - {1}"
+	},
+	{
+		"id": "-1000011041",
+		"key": "estate_house_facts",
+		"en": "{0} · prosperity {1} · house level {2} · tax {3:#,##0}/month",
+		"ch": "{0} · 繁华度 {1} · 房屋 {2} 级 · 税 {3:#,##0}/月",
+		"tc": "{0} · 繁華度 {1} · 房屋 {2} 級 · 稅 {3:#,##0}/月",
+		"kr": "{0} · 번화도 {1} · 집 {2}레벨 · 세금 {3:#,##0}/월"
+	},
+	{
+		"id": "-1000011042",
+		"key": "estate_house_rooms",
+		"en": "Rooms: {0}/{1} (one a house level)",
+		"ch": "房间：{0}/{1}（房屋每级一间）",
+		"tc": "房間：{0}/{1}（房屋每級一間）",
+		"kr": "방: {0}/{1} (집 레벨당 하나)"
+	},
+	{
+		"id": "-1000011043",
+		"key": "estate_upgrade_btn",
+		"en": "Upgrade to {0} (grade {2}): {1:#,##0}",
+		"ch": "升级为{0}（境界 {2}）：{1:#,##0}",
+		"tc": "升級為{0}（境界 {2}）：{1:#,##0}",
+		"kr": "{0}(으)로 업그레이드 (경지 {2}): {1:#,##0}"
+	},
+	{
+		"id": "-1000011044",
+		"key": "estate_herbs_btn",
+		"en": "Collect the herbs ({0})",
+		"ch": "收取药草（{0}）",
+		"tc": "收取藥草（{0}）",
+		"kr": "약초 수확 ({0})"
+	},
+	{
+		"id": "-1000011045",
+		"key": "estate_herbs_done",
+		"en": "{0} herb(s) put in the bag.",
+		"ch": "{0} 株药草已放入背包。",
+		"tc": "{0} 株藥草已放入背包。",
+		"kr": "약초 {0}개를 가방에 넣었다."
+	},
+	{
+		"id": "-1000011046",
+		"key": "estate_back_map",
+		"en": "Town map",
+		"ch": "城镇地图",
+		"tc": "城鎮地圖",
+		"kr": "마을 지도"
+	},
+	{
+		"id": "-1000011047",
+		"key": "estate_back_house",
+		"en": "Back to the house",
+		"ch": "返回房屋",
+		"tc": "返回房屋",
+		"kr": "집으로 돌아가기"
+	},
+	{
+		"id": "-1000011048",
+		"key": "estate_rooms_title",
+		"en": "Rooms",
+		"ch": "房间",
+		"tc": "房間",
+		"kr": "방"
+	},
+	{
+		"id": "-1000011049",
+		"key": "estate_room_1",
+		"en": "Quiet Room",
+		"ch": "静室",
+		"tc": "靜室",
+		"kr": "정실"
+	},
+	{
+		"id": "-1000011050",
+		"key": "estate_room_2",
+		"en": "Training Ground",
+		"ch": "演武场",
+		"tc": "演武場",
+		"kr": "연무장"
+	},
+	{
+		"id": "-1000011051",
+		"key": "estate_room_3",
+		"en": "Herb Garden",
+		"ch": "药园",
+		"tc": "藥園",
+		"kr": "약초원"
+	},
+	{
+		"id": "-1000011052",
+		"key": "estate_room_4",
+		"en": "Spirit Gathering Array",
+		"ch": "聚灵阵",
+		"tc": "聚靈陣",
+		"kr": "취령진"
+	},
+	{
+		"id": "-1000011053",
+		"key": "estate_room_5",
+		"en": "Ancestral Hall",
+		"ch": "祠堂",
+		"tc": "祠堂",
+		"kr": "사당"
+	},
+	{
+		"id": "-1000011054",
+		"key": "estate_room_eff_1",
+		"en": "a month spent in the town: cultivation exp +{0}% of the phase",
+		"ch": "在城中度过一月：修为经验 +本阶段的{0}%",
+		"tc": "在城中度過一月：修為經驗 +本階段的{0}%",
+		"kr": "마을에서 한 달: 수련 경험 +단계의 {0}%"
+	},
+	{
+		"id": "-1000011055",
+		"key": "estate_room_eff_2",
+		"en": "a month spent in the town: body refining +{0}",
+		"ch": "在城中度过一月：炼体 +{0}",
+		"tc": "在城中度過一月：煉體 +{0}",
+		"kr": "마을에서 한 달: 연체 +{0}"
+	},
+	{
+		"id": "-1000011056",
+		"key": "estate_room_eff_3",
+		"en": "{0} herb(s) a month (up to {1})",
+		"ch": "每月 {0} 株药草（最多 {1}）",
+		"tc": "每月 {0} 株藥草（最多 {1}）",
+		"kr": "매월 약초 {0}개 (최대 {1})"
+	},
+	{
+		"id": "-1000011057",
+		"key": "estate_room_eff_4",
+		"en": "Qi gathered in the town +{0}%",
+		"ch": "在城中凝聚真气 +{0}%",
+		"tc": "在城中凝聚真氣 +{0}%",
+		"kr": "마을에서 기 축적 +{0}%"
+	},
+	{
+		"id": "-1000011058",
+		"key": "estate_room_eff_5",
+		"en": "household upkeep -{0}%",
+		"ch": "家族开销 -{0}%",
+		"tc": "家族開銷 -{0}%",
+		"kr": "가문 유지비 -{0}%"
+	},
+	{
+		"id": "-1000011059",
+		"key": "estate_room_up",
+		"en": "Raise: {0:#,##0}",
+		"ch": "提升：{0:#,##0}",
+		"tc": "提升：{0:#,##0}",
+		"kr": "강화: {0:#,##0}"
+	},
+	{
+		"id": "-1000011060",
+		"key": "estate_room_empty",
+		"en": "Empty room",
+		"ch": "空房间",
+		"tc": "空房間",
+		"kr": "빈 방"
+	},
+	{
+		"id": "-1000011061",
+		"key": "estate_room_build",
+		"en": "Build a room",
+		"ch": "建造房间",
+		"tc": "建造房間",
+		"kr": "방 짓기"
+	},
+	{
+		"id": "-1000011062",
+		"key": "estate_room_more",
+		"en": "A bigger house has more rooms.",
+		"ch": "房屋越大，房间越多。",
+		"tc": "房屋越大，房間越多。",
+		"kr": "집이 클수록 방이 많다."
+	},
+	{
+		"id": "-1000011063",
+		"key": "estate_room_new",
+		"en": "Build: {0:#,##0}",
+		"ch": "建造：{0:#,##0}",
+		"tc": "建造：{0:#,##0}",
+		"kr": "짓기: {0:#,##0}"
+	},
+	{
+		"id": "-1000011064",
+		"key": "estate_room_hint",
+		"en": "Every room has 3 levels; the quiet room, the training ground and the array work when you spend the month in the town.",
+		"ch": "每个房间有3级；静室、演武场与聚灵阵在你于城中度过一月时生效。",
+		"tc": "每個房間有3級；靜室、演武場與聚靈陣在你於城中度過一月時生效。",
+		"kr": "방마다 3레벨이 있다; 정실, 연무장, 취령진은 마을에서 한 달을 보낼 때 효과가 있다."
+	},
+	{
+		"id": "-1000011065",
+		"key": "estate_room_noslot",
+		"en": "No empty room: upgrade the house first.",
+		"ch": "没有空房间：请先升级房屋。",
+		"tc": "沒有空房間：請先升級房屋。",
+		"kr": "빈 방이 없다: 먼저 집을 업그레이드하라."
+	},
+	{
+		"id": "-1000011066",
+		"key": "estate_room_max",
+		"en": "This room is at its highest level.",
+		"ch": "此房间已达最高等级。",
+		"tc": "此房間已達最高等級。",
+		"kr": "이 방은 최고 레벨이다."
+	},
+	{
+		"id": "-1000011067",
+		"key": "log_estate_room",
+		"en": "{0}: {1} level {2} built ({3:#,##0} spirit stones).",
+		"ch": "{0}：建成{1}{2}级（{3:#,##0}灵石）。",
+		"tc": "{0}：建成{1}{2}級（{3:#,##0}靈石）。",
+		"kr": "{0}: {1} {2}레벨 완공 ({3:#,##0} 영석)."
+	},
+	{
+		"id": "-1000011068",
+		"key": "estate_buy_room",
+		"en": "Room on this plot for up to a {0} (a bigger house takes the plots around it).",
+		"ch": "此地块最多可建至{0}（房屋越大，占用周围地块越多）。",
+		"tc": "此地塊最多可建至{0}（房屋越大，佔用周圍地塊越多）。",
+		"kr": "이 부지는 최대 {0}까지 지을 수 있다 (큰 집은 주변 부지를 차지한다)."
+	},
+	{
+		"id": "-1000011069",
+		"key": "estate_noroom",
+		"en": "No room for a {0} here: it needs a block of {1} x {2} plots around the house, free or of mortals (no road, water or other owner).",
+		"ch": "此处容不下{0}：需要房屋周围 {1} x {2} 的地块，须为空地或凡人房屋（不能有道路、水或他人房产）。",
+		"tc": "此處容不下{0}：需要房屋周圍 {1} x {2} 的地塊，須為空地或凡人房屋（不能有道路、水或他人房產）。",
+		"kr": "여기에는 {0}을(를) 지을 자리가 없다: 집 주변에 {1} x {2} 부지가 필요하며, 빈 땅이나 범인의 집이어야 한다 (길, 물, 다른 주인 불가)."
+	},
+	{
+		"id": "-1000011070",
+		"key": "estate_upgrade_land",
+		"en": "Takes {0} more plot(s) around the house (land and mortals bought out: {1:#,##0} banknotes, in the cost)",
+		"ch": "占用房屋周围 {0} 块地（地价与凡人搬迁费：{1:#,##0}张灵票，已含在费用中）",
+		"tc": "佔用房屋周圍 {0} 塊地（地價與凡人搬遷費：{1:#,##0}張靈票，已含在費用中）",
+		"kr": "집 주변 부지 {0}개를 더 차지한다 (땅값과 범인 이주비: 영표 {1:#,##0}장, 비용에 포함)"
+	},
+	{
+		"id": "-1000011071",
+		"key": "estate_terrain_0",
+		"en": "Plain",
+		"ch": "平原",
+		"tc": "平原",
+		"kr": "평원"
+	},
+	{
+		"id": "-1000011072",
+		"key": "estate_terrain_1",
+		"en": "River",
+		"ch": "临河",
+		"tc": "臨河",
+		"kr": "강"
+	},
+	{
+		"id": "-1000011073",
+		"key": "estate_terrain_2",
+		"en": "Lake",
+		"ch": "湖畔",
+		"tc": "湖畔",
+		"kr": "호수"
+	},
+	{
+		"id": "-1000011074",
+		"key": "estate_terrain_3",
+		"en": "Woods",
+		"ch": "山林",
+		"tc": "山林",
+		"kr": "숲"
+	},
+	{
+		"id": "-1000011075",
+		"key": "estate_wall_line",
+		"en": "Wall level {0}: defense +{1}%",
+		"ch": "城墙{0}级：防御 +{1}%",
+		"tc": "城牆{0}級：防禦 +{1}%",
+		"kr": "성벽 {0}레벨: 방어 +{1}%"
+	},
+	{
+		"id": "-1000011076",
+		"key": "estate_wall_btn",
+		"en": "Wall level {0} (+{1}%): strengthen",
+		"ch": "城墙{0}级（+{1}%）：加固",
+		"tc": "城牆{0}級（+{1}%）：加固",
+		"kr": "성벽 {0}레벨 (+{1}%): 강화"
+	},
+	{
+		"id": "-1000011077",
+		"key": "estate_wall_confirm",
+		"en": "Strengthen the city wall to level {0} for {1:#,##0} [icon:zm_lingshi] from the town budget ({2:#,##0})?\nThe city defends itself against attacks +{3}%.",
+		"ch": "以城镇预算（{2:#,##0}）中的 {1:#,##0} [icon:zm_lingshi] 将城墙加固至{0}级？\n城池遭受攻击时防御 +{3}%。",
+		"tc": "以城鎮預算（{2:#,##0}）中的 {1:#,##0} [icon:zm_lingshi] 將城牆加固至{0}級？\n城池遭受攻擊時防禦 +{3}%。",
+		"kr": "마을 예산({2:#,##0})에서 {1:#,##0} [icon:zm_lingshi]를 들여 성벽을 {0}레벨로 강화하겠습니까?\n공격받을 때 방어 +{3}%."
+	},
+	{
+		"id": "-1000011078",
+		"key": "log_estate_wall",
+		"en": "{0}: the city wall was strengthened to level {1} ({2:#,##0} from the town budget).",
+		"ch": "{0}：城墙加固至{1}级（城镇预算 {2:#,##0}）。",
+		"tc": "{0}：城牆加固至{1}級（城鎮預算 {2:#,##0}）。",
+		"kr": "{0}: 성벽이 {1}레벨로 강화되었다 (마을 예산 {2:#,##0})."
+	},
+	{
+		"id": "-1000011079",
+		"key": "estate_roads_0",
+		"en": "crossroads",
+		"ch": "十字街",
+		"tc": "十字街",
+		"kr": "사거리"
+	},
+	{
+		"id": "-1000011080",
+		"key": "estate_roads_1",
+		"en": "T crossing",
+		"ch": "丁字街",
+		"tc": "丁字街",
+		"kr": "삼거리"
+	},
+	{
+		"id": "-1000011081",
+		"key": "estate_roads_2",
+		"en": "ring road",
+		"ch": "环街",
+		"tc": "環街",
+		"kr": "순환로"
+	},
+	{
+		"id": "-1000011082",
+		"key": "estate_roads_3",
+		"en": "two streets",
+		"ch": "双街",
+		"tc": "雙街",
+		"kr": "두 거리"
+	},
+	{
+		"id": "-1000011083",
+		"key": "estate_no_notes",
+		"en": "Houses, land and rooms are paid in spirit banknotes: {0:#,##0} needed, {1:#,##0} in the bag. Change spirit stones at the bank of a town.",
+		"ch": "房屋、地块与房间以灵票支付：需要{0:#,##0}张，背包中有{1:#,##0}张。可在城镇钱庄以灵石兑换。",
+		"tc": "房屋、地塊與房間以靈票支付：需要{0:#,##0}張，背包中有{1:#,##0}張。可在城鎮錢莊以靈石兌換。",
+		"kr": "집, 땅, 방은 영표로 지불한다: {0:#,##0}장 필요, 가방에 {1:#,##0}장. 마을 은행에서 영석을 환전하라."
+	},
+	{
+		"id": "-1000011084",
+		"key": "estate_building_built",
+		"en": "Built",
+		"ch": "已建",
+		"tc": "已建",
+		"kr": "건설됨"
+	},
+	{
+		"id": "-1000011085",
+		"key": "estate_building_none",
+		"en": "Not in this town",
+		"ch": "此城没有",
+		"tc": "此城沒有",
+		"kr": "이 마을에 없음"
+	},
+	{
+		"id": "-1000011086",
+		"key": "estate_city_btn",
+		"en": "Upgrade to City: {0:#,##0}",
+		"ch": "升级为城市：{0:#,##0}",
+		"tc": "升級為城市：{0:#,##0}",
+		"kr": "도시로 승격: {0:#,##0}"
+	},
+	{
+		"id": "-1000011087",
+		"key": "estate_info_owner",
+		"en": "The {1} of the cultivator {0}, in the {2} (prosperity {3}); house tax {4:#,##0}/month to the town.",
+		"ch": "修士{0}的{1}，位于{2}（繁华度 {3}）；每月向城镇缴纳房屋税 {4:#,##0}。",
+		"tc": "修士{0}的{1}，位於{2}（繁華度 {3}）；每月向城鎮繳納房屋稅 {4:#,##0}。",
+		"kr": "수사 {0}의 {1}, {2} 위치 (번화도 {3}); 매달 마을에 주택세 {4:#,##0}."
+	},
+	{
+		"id": "-1000011088",
+		"key": "estate_info_grown",
+		"en": "The mortals here prospered: their house grew into a {0}.",
+		"ch": "此处凡人日渐富足：房屋已扩建为{0}。",
+		"tc": "此處凡人日漸富足：房屋已擴建為{0}。",
+		"kr": "이곳 범인들이 번창하여 집이 {0}(으)로 커졌다."
+	},
+	{
+		"id": "-1000011089",
+		"key": "clan_name",
+		"en": "the {0} clan",
+		"ch": "{0}一族",
+		"tc": "{0}一族",
+		"kr": "{0} 가문"
+	},
+	{
+		"id": "-1000011090",
+		"key": "clan_button",
+		"en": "Clans ({0})",
+		"ch": "世家（{0}）",
+		"tc": "世家（{0}）",
+		"kr": "세가 ({0})"
+	},
+	{
+		"id": "-1000011091",
+		"key": "clan_title",
+		"en": "{0} - cultivator clans",
+		"ch": "{0} - 修仙世家",
+		"tc": "{0} - 修仙世家",
+		"kr": "{0} - 수선 세가"
+	},
+	{
+		"id": "-1000011092",
+		"key": "clan_none",
+		"en": "No cultivator clan has settled here yet: a cultivator with a house in the town and a family.",
+		"ch": "此城尚无修仙世家：需有在城中置宅且有家眷的修士。",
+		"tc": "此城尚無修仙世家：需有在城中置宅且有家眷的修士。",
+		"kr": "아직 이곳에 정착한 수선 세가가 없다: 마을에 집과 가족이 있는 수사가 필요하다."
+	},
+	{
+		"id": "-1000011093",
+		"key": "clan_line",
+		"en": "{0}: {1} member(s), {2}",
+		"ch": "{0}：{1}名成员，{2}",
+		"tc": "{0}：{1}名成員，{2}",
+		"kr": "{0}: 구성원 {1}명, {2}"
+	},
+	{
+		"id": "-1000011094",
+		"key": "clan_relation",
+		"en": "{0} - {1}: {2} ({3})",
+		"ch": "{0} - {1}：{2}（{3}）",
+		"tc": "{0} - {1}：{2}（{3}）",
+		"kr": "{0} - {1}: {2} ({3})"
+	},
+	{
+		"id": "-1000011095",
+		"key": "clan_rel_feud",
+		"en": "blood feud",
+		"ch": "血仇",
+		"tc": "血仇",
+		"kr": "피의 원한"
+	},
+	{
+		"id": "-1000011096",
+		"key": "clan_rel_hostile",
+		"en": "hostile",
+		"ch": "敌对",
+		"tc": "敵對",
+		"kr": "적대"
+	},
+	{
+		"id": "-1000011097",
+		"key": "clan_rel_neutral",
+		"en": "neutral",
+		"ch": "中立",
+		"tc": "中立",
+		"kr": "중립"
+	},
+	{
+		"id": "-1000011098",
+		"key": "clan_rel_allied",
+		"en": "allied",
+		"ch": "交好",
+		"tc": "交好",
+		"kr": "우호"
+	},
+	{
+		"id": "-1000011099",
+		"key": "clan_hint",
+		"en": "Relations follow the friendship of their members, marriages and fights. Hostile clans may brawl; a blood feud may end in a war.",
+		"ch": "世家关系随成员间的好感、联姻与争斗而变。敌对世家可能发生斗殴；血仇可能引发灭族之战。",
+		"tc": "世家關係隨成員間的好感、聯姻與爭鬥而變。敵對世家可能發生鬥毆；血仇可能引發滅族之戰。",
+		"kr": "가문 관계는 구성원 간의 호감, 혼인, 싸움에 따라 변한다. 적대 가문은 싸움을 벌이고, 피의 원한은 전쟁으로 번질 수 있다."
+	},
+	{
+		"id": "-1000011100",
+		"key": "clan_brawl_ask",
+		"en": "{0}: {2} of {1} picks a fight with {4} of {3}. Will you step in?",
+		"ch": "{0}：{1}的{2}向{3}的{4}寻衅。你要出手吗？",
+		"tc": "{0}：{1}的{2}向{3}的{4}尋釁。你要出手嗎？",
+		"kr": "{0}: {1}의 {2}이(가) {3}의 {4}에게 싸움을 건다. 나서겠는가?"
+	},
+	{
+		"id": "-1000011101",
+		"key": "clan_war_ask",
+		"en": "{0}: {1} marches on {3}! {2} leads them; {4} stands for your side. Will you step in?",
+		"ch": "{0}：{1}大举进攻{3}！由{2}领头，{4}代表你方迎战。你要出手吗？",
+		"tc": "{0}：{1}大舉進攻{3}！由{2}領頭，{4}代表你方迎戰。你要出手嗎？",
+		"kr": "{0}: {1}이(가) {3}을(를) 공격한다! {2}이(가) 이끌고, {4}이(가) 당신 편에 섰다. 나서겠는가?"
+	},
+	{
+		"id": "-1000011102",
+		"key": "clan_step_in",
+		"en": "Step in",
+		"ch": "出手",
+		"tc": "出手",
+		"kr": "나선다"
+	},
+	{
+		"id": "-1000011103",
+		"key": "clan_stay_out",
+		"en": "Stay out",
+		"ch": "袖手旁观",
+		"tc": "袖手旁觀",
+		"kr": "지켜본다"
+	},
+	{
+		"id": "-1000011104",
+		"key": "clan_won",
+		"en": "Victory: {0} prevails over {1}.",
+		"ch": "胜利：{0}压过了{1}。",
+		"tc": "勝利：{0}壓過了{1}。",
+		"kr": "승리: {0}이(가) {1}을(를) 꺾었다."
+	},
+	{
+		"id": "-1000011105",
+		"key": "clan_lost",
+		"en": "Defeat: {0} prevails over {1}.",
+		"ch": "落败：{0}压过了{1}。",
+		"tc": "落敗：{0}壓過了{1}。",
+		"kr": "패배: {0}이(가) {1}을(를) 꺾었다."
+	},
+	{
+		"id": "-1000011106",
+		"key": "log_clan_brawl",
+		"en": "{0}: {1} ({2}) beat {3} ({4}) in a brawl.",
+		"ch": "{0}：{1}（{2}）在斗殴中击败了{3}（{4}）。",
+		"tc": "{0}：{1}（{2}）在鬥毆中擊敗了{3}（{4}）。",
+		"kr": "{0}: {1}({2})이(가) 싸움에서 {3}({4})을(를) 이겼다."
+	},
+	{
+		"id": "-1000011107",
+		"key": "log_clan_brawl_death",
+		"en": "{0}: {1} ({2}) killed {3} ({4}) in a brawl.",
+		"ch": "{0}：{1}（{2}）在斗殴中杀死了{3}（{4}）。",
+		"tc": "{0}：{1}（{2}）在鬥毆中殺死了{3}（{4}）。",
+		"kr": "{0}: {1}({2})이(가) 싸움에서 {3}({4})을(를) 죽였다."
+	},
+	{
+		"id": "-1000011108",
+		"key": "log_clan_war",
+		"en": "{0}: {1} defeated {2} in a clan war; {3} fell, the losers lost their house.",
+		"ch": "{0}：{1}在世家之战中击败了{2}；{3}人陨落，败者失去宅邸。",
+		"tc": "{0}：{1}在世家之戰中擊敗了{2}；{3}人隕落，敗者失去宅邸。",
+		"kr": "{0}: {1}이(가) 가문 전쟁에서 {2}을(를) 이겼다; {3}명이 쓰러졌고 패자는 집을 잃었다."
+	},
+	{
+		"id": "-1000011109",
+		"key": "log_clan_extinct",
+		"en": "{0}: {1} was wiped out.",
+		"ch": "{0}：{1}惨遭灭族。",
+		"tc": "{0}：{1}慘遭滅族。",
+		"kr": "{0}: {1}이(가) 멸문당했다."
+	},
+	{
+		"id": "-1000011110",
+		"key": "estate_plot_where",
+		"en": "Plot no. {0} (column {1}, row {2} of the town map)",
+		"ch": "第{0}号地块（城镇地图第{1}列第{2}行）",
+		"tc": "第{0}號地塊（城鎮地圖第{1}列第{2}行）",
+		"kr": "{0}번 부지 (마을 지도 {1}열 {2}행)"
+	},
+	{
+		"id": "-1000011111",
+		"key": "estate_mortal_buy_info",
+		"en": "The mortals would sell their house: a {0} for {1:#,##0} spirit banknotes (= {2:#,##0} [icon:zm_lingshi], the land and the whole house); you have {3:#,##0}.\nHouse tax {4:#,##0}/month instead of the entry tax; it needs grade {5}.\nA bigger house later takes the plots around it: they are bought with the upgrade (free land, or mortal houses at their land and half their house).",
+		"ch": "凡人愿意卖掉房屋：{0}，价格{1:#,##0}张灵票（={2:#,##0}[icon:zm_lingshi]，含地皮与整座房屋）；你有{3:#,##0}张。\n以每月{4:#,##0}房屋税代替入城税；需要境界{5}。\n日后扩建大宅会占用周围地块：升级时一并购入（空地，或凡人房屋按地价加半价房屋）。",
+		"tc": "凡人願意賣掉房屋：{0}，價格{1:#,##0}張靈票（={2:#,##0}[icon:zm_lingshi]，含地皮與整座房屋）；你有{3:#,##0}張。\n以每月{4:#,##0}房屋稅代替入城稅；需要境界{5}。\n日後擴建大宅會佔用周圍地塊：升級時一併購入（空地，或凡人房屋按地價加半價房屋）。",
+		"kr": "범인들이 집을 팔려 한다: {0}, 영표 {1:#,##0}장 (= {2:#,##0}[icon:zm_lingshi], 땅과 집 전체); 보유 {3:#,##0}장.\n입성세 대신 월 {4:#,##0} 주택세; 경지 {5} 필요.\n나중에 더 큰 집은 주변 부지를 차지한다: 확장할 때 함께 구입 (빈 땅, 또는 범인 집은 땅값과 집값 절반)."
+	},
+	{
+		"id": "-1000011112",
+		"key": "estate_mortal_buy",
+		"en": "Buy this house ({0:#,##0} banknotes)",
+		"ch": "买下此屋（{0:#,##0}张灵票）",
+		"tc": "買下此屋（{0:#,##0}張靈票）",
+		"kr": "이 집 구입 (영표 {0:#,##0}장)"
+	},
+	{
+		"id": "-1000011113",
+		"key": "log_estate_buy_mortal",
+		"en": "Bought a mortal house in {0}: a {1} ({2:#,##0} spirit stones).",
+		"ch": "在{0}买下一座凡人房屋：{1}（{2:#,##0}灵石）。",
+		"tc": "在{0}買下一座凡人房屋：{1}（{2:#,##0}靈石）。",
+		"kr": "{0}에서 범인의 집을 샀다: {1} (영석 {2:#,##0})."
+	},
+	{
+		"id": "-1000011114",
+		"key": "dlg_yes",
+		"en": "Yes",
+		"ch": "是",
+		"tc": "是",
+		"kr": "예"
+	},
+	{
+		"id": "-1000011115",
+		"key": "dlg_no",
+		"en": "No",
+		"ch": "否",
+		"tc": "否",
+		"kr": "아니오"
+	},
+	{
+		"id": "-1000011116",
+		"key": "dlg_ok",
+		"en": "OK",
+		"ch": "确定",
+		"tc": "確定",
+		"kr": "확인"
+	},
+	{
+		"id": "-1000011117",
+		"key": "dlg_close",
+		"en": "Close",
+		"ch": "关闭",
+		"tc": "關閉",
+		"kr": "닫기"
+	}
+]

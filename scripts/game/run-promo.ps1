@@ -8,7 +8,7 @@
     weapon details, team, town master...; AutoTest/Scenarios/Tool/TR_PromoShots.cs), with no check panel over the
     screenshots, in a 1600x900 window by default. They are tools: confirmed at the prompt, or -ConfirmTools. collect-promo.ps1 then copies the marked
     screenshots (without the window frame) to SteamImg/promo_<name>.jpg (under 2 MB, the Steam limit); the captions stay in scenarios.json,
-    read by the marketing video (marketing/video, Remotion) and the promo viewer (promo-viewer/index.html).
+    read by the marketing video (marketing/video-6.0.0, Remotion) and the promo viewer (promo-viewer/index.html).
     The test runs no longer write SteamImg, and a promotion run does not write scenario-status.json (not a test run).
 
     To add a picture: a "promo" entry on the scenario ({ "step", "nth", "name", "caption" }, docs/Taoist/04-Autotest.md).

@@ -1,0 +1,9 @@
+{
+	"__name": "Mana shield (BattleManashieldEvent)",
+	"__help": [
+		"A value left out (or a broken file): the default of the mod.",
+		"Shield = cur MP x ManaShieldRate1 + max MP x ManaShieldRate2 + cur HP x 0.05 x {Blood Energy} level."
+	],
+	"ManaShieldRate1": 0.15,
+	"ManaShieldRate2": 0.05
+}

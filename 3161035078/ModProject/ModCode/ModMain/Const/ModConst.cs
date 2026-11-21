@@ -5,12 +5,19 @@
     /// </summary>
     public static class ModConst
     {
-        public const string TAOIST_VERSION = "5.5.47";
-        public const string MODLIB_REQUIRED_VERSION = "2.2.33";
+        public const string TAOIST_VERSION = "6.0.00";
+        public const string MODLIB_REQUIRED_VERSION = "2.2.34";
 
         //Events
-        public const string DEBUG_EVENT = "DEBUG";
         public const string QI_CUL_EVENT = "QiCulEvent";
+        public const string BODY_CUL_EVENT = "BodyCulEvent";
+        public const string MERIT_EVENT = "MeritEvent";
+        public const string ARTISAN_EVENT = "ArtisanEvent";
+        public const string DAO_HEART_EVENT = "DaoHeartEvent";
+        public const string SPIRIT_SENSE_EVENT = "SpiritSenseEvent";
+        public const string ESTATE_EVENT = "EstateEvent";
+        public const string SPIRIT_NOTE_EVENT = "SpiritNoteEvent";
+        public const string CLAN_EVENT = "ClanEvent";
         public const string UNIT_TYPE_EVENT = "UnitTypeEvent";
         public const string BATTLE_REWARD_EVENT_V2 = "BattleRewardEventV2";
         public const string NPC_UPGRADE_SKILL_EVENT = "NpcUpgradeSkillEvent";
@@ -67,7 +74,6 @@
         public const string SPECIAL_MONST_EVENT = "SpecialMonsterEvent";
         public const string TIME_SKIP_EVENT = "TimeSkipEvent";
         public const string USE_SPIRIT_STONE_CUL_EVENT = "UseSpiritStoneCulEvent";
-        public const string CUSTOM_SKILL_EVENT = "CustomSkillEvent";
         public const string REPAIR_SHINKI_EVENT = "RepairShinkiEvent";
         public const string AUTOTEST_EVENT = "AutoTestEvent";
 

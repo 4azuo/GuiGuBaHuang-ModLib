@@ -4,7 +4,6 @@ using ModLib.Const;
 using ModLib.Mod;
 using ModLib.Helper;
 using System;
-using static MOD_nE7UL2.Object.ModStts;
 
 namespace MOD_nE7UL2.Mod
 {
@@ -20,7 +19,7 @@ namespace MOD_nE7UL2.Mod
         public const int REACH_LIMIT_DRAMA = 499919998;
         public const int LIMIT = 10000;
 
-        public static _InflationaryConfigs Configs => ModMain.ModObj.ModSettings.InflationaryConfigs;
+        public static InflationaryConfig Configs => InflationaryConfig.Conf;
 
         public int Corruption { get; set; } = 0;
         public int WorldPrice { get; set; } = -1;
@@ -74,6 +73,7 @@ namespace MOD_nE7UL2.Mod
                 var player = g.world.playerUnit;
                 player.SetUnitMoney(player.GetUnitMoney() / 10000);
                 player.RemoveStorageItem(ModLibConst.MONEY_PROP_ID);
+                SpiritNoteEvent.Reform(player);
                 DramaTool.OpenDrama(REACH_LIMIT_DRAMA);
 
                 //affect to npc
@@ -83,6 +83,7 @@ namespace MOD_nE7UL2.Mod
                     if (wunit != null && !wunit.isDie && !wunit.IsPlayer())
                     {
                         wunit.SetUnitMoney(wunit.GetUnitMoney() / 10000);
+                        SpiritNoteEvent.Reform(wunit);
                     }
                 }
 

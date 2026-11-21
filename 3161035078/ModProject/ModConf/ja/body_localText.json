@@ -1,0 +1,427 @@
+[
+	{
+		"id": "-1000010000",
+		"key": "body_button",
+		"en|ch|tc|kr": "錬体"
+	},
+	{
+		"id": "-1000010001",
+		"key": "body_title",
+		"en|ch|tc|kr": "錬体"
+	},
+	{
+		"id": "-1000010002",
+		"key": "body_none",
+		"en|ch|tc|kr": "錬体していない"
+	},
+	{
+		"id": "-1000010003",
+		"key": "body_realm_layer",
+		"en|ch|tc|kr": "{0}・{1}"
+	},
+	{
+		"id": "-1000010004",
+		"key": "body_realm_1",
+		"en|ch|tc|kr": "銅皮"
+	},
+	{
+		"id": "-1000010005",
+		"key": "body_realm_2",
+		"en|ch|tc|kr": "鉄骨"
+	},
+	{
+		"id": "-1000010006",
+		"key": "body_realm_3",
+		"en|ch|tc|kr": "玉髄"
+	},
+	{
+		"id": "-1000010007",
+		"key": "body_realm_4",
+		"en|ch|tc|kr": "金身"
+	},
+	{
+		"id": "-1000010008",
+		"key": "body_realm_5",
+		"en|ch|tc|kr": "不滅体"
+	},
+	{
+		"id": "-1000010009",
+		"key": "body_layer_1",
+		"en|ch|tc|kr": "初期"
+	},
+	{
+		"id": "-1000010010",
+		"key": "body_layer_2",
+		"en|ch|tc|kr": "中期"
+	},
+	{
+		"id": "-1000010011",
+		"key": "body_layer_3",
+		"en|ch|tc|kr": "後期"
+	},
+	{
+		"id": "-1000010012",
+		"key": "body_npc",
+		"en|ch|tc|kr": "錬体：{0}"
+	},
+	{
+		"id": "-1000010014",
+		"key": "body_start",
+		"en|ch|tc|kr": "錬体を始める"
+	},
+	{
+		"id": "-1000010017",
+		"key": "body_bottleneck",
+		"en|ch|tc|kr": "瓶頸：次の境地へ突破が必要"
+	},
+	{
+		"id": "-1000010018",
+		"key": "body_exp",
+		"en|ch|tc|kr": "[icon:jingli] 鍛錬：{0:#,##0} / {1:#,##0}"
+	},
+	{
+		"id": "-1000010019",
+		"key": "body_injured",
+		"en|ch|tc|kr": "肉体負傷：{0}か月（ボーナス半減、鍛錬不可）"
+	},
+	{
+		"id": "-1000010020",
+		"key": "body_bonus_hp",
+		"en|ch|tc|kr": "[icon:jiankang] 最大HP +{0:#,##0}"
+	},
+	{
+		"id": "-1000010021",
+		"key": "body_bonus_def",
+		"en|ch|tc|kr": "[icon:fangyu] 防御 +{0:#,##0}"
+	},
+	{
+		"id": "-1000010022",
+		"key": "body_bonus_basis",
+		"en|ch|tc|kr": "[icon:quanfa] 拳／[icon:zhangfa] 掌／[icon:zhifa] 指 +{0}"
+	},
+	{
+		"id": "-1000010023",
+		"key": "body_bonus_qi",
+		"en|ch|tc|kr": "[icon:jianyidu] 気の蓄積 -{0}%"
+	},
+	{
+		"id": "-1000010025",
+		"key": "body_bath_done",
+		"en|ch|tc|kr": "薬湯は月に一度：肉体が薬効を吸収する時間が要る。"
+	},
+	{
+		"id": "-1000010026",
+		"key": "body_bath_bottleneck",
+		"en|ch|tc|kr": "肉体は瓶頸にある：突破するまで薬湯は効かない。"
+	},
+	{
+		"id": "-1000010027",
+		"key": "body_break",
+		"en|ch|tc|kr": "突破（{0:0}%）"
+	},
+	{
+		"id": "-1000010028",
+		"key": "body_break_grade",
+		"en|ch|tc|kr": "{0}には少なくとも第{1}境の修為が必要。"
+	},
+	{
+		"id": "-1000010029",
+		"key": "body_break_ok",
+		"en|ch|tc|kr": "肉体突破：{0}！"
+	},
+	{
+		"id": "-1000010030",
+		"key": "body_break_fail",
+		"en|ch|tc|kr": "突破失敗：鍛錬の半分を失い、肉体は{0}か月負傷した。"
+	},
+	{
+		"id": "-1000010031",
+		"key": "body_help",
+		"en|ch|tc|kr": "経験：戦闘で受けたダメージ、毎月の鍛錬、月一回の薬湯。各境地の最終層は突破が必要。"
+	},
+	{
+		"id": "-1000010032",
+		"key": "log_body_start",
+		"en|ch|tc|kr": "錬体を始めた。"
+	},
+	{
+		"id": "-1000010033",
+		"key": "log_body_layer",
+		"en|ch|tc|kr": "錬体：{0}。"
+	},
+	{
+		"id": "-1000010034",
+		"key": "log_body_realm",
+		"en|ch|tc|kr": "肉体が突破した：{0}。"
+	},
+	{
+		"id": "-1000010035",
+		"key": "log_body_fail",
+		"en|ch|tc|kr": "肉体の突破に失敗：{0}か月負傷。"
+	},
+	{
+		"id": "-1000010013",
+		"key": "body_intro",
+		"en|ch|tc|kr": "他者が気を練るように肉体を鍛える：戦いで受けた傷、日々の鍛錬、薬湯が皮・骨・髄を硬くする。\n五つの境地：銅皮、鉄骨、玉髄、金身、不滅体（各3層）。\nボーナス：最大HP、防御、拳／掌／指の資質、さらに修為の突破ごとにHP／防御／攻撃が多く伸びる。"
+	},
+	{
+		"id": "-1000010015",
+		"key": "body_start_confirm",
+		"en|ch|tc|kr": "強い肉体は霊気を飲み込む：境地に応じて、錬体者は修為の経験が1.1〜1.5倍必要になり、気の蓄積が10〜30%減るが、突破のたびにより多くを得る。錬体を始めますか？"
+	},
+	{
+		"id": "-1000010036",
+		"key": "body_bonus_break",
+		"en|ch|tc|kr": "突破による上昇：[icon:jiankang] HP +{0:#,##0}、[icon:fangyu] 防御 +{1:#,##0}、[icon:gongji] 攻撃 +{2:#,##0}"
+	},
+	{
+		"id": "-1000010037",
+		"key": "body_break_rates",
+		"en|ch|tc|kr": "修為の突破ごと：[icon:jiankang] 上昇分のHP {0}%、[icon:fangyu] 防御 {1}%、[icon:gongji] 攻撃 {2}% を追加"
+	},
+	{
+		"id": "-1000010038",
+		"key": "body_exp_rate",
+		"en|ch|tc|kr": "[icon:wuxing] 必要な修為経験 x{0:0.00}（肉体が吸収：{1:#,##0}）"
+	},
+	{
+		"id": "-1000010039",
+		"key": "log_body_breakbonus",
+		"en|ch|tc|kr": "肉体が突破の力を取り込んだ：累計 HP +{0:#,##0}、防御 +{1:#,##0}、攻撃 +{2:#,##0}。"
+	},
+	{
+		"id": "-1000010024",
+		"key": "body_bath",
+		"en|ch|tc|kr": "薬浴（鍛錬 +{0:#,##0}）"
+	},
+	{
+		"id": "-1000010040",
+		"key": "body_bath_need",
+		"en|ch|tc|kr": "薬浴にはボタンの下に示す天材地宝と薬材が袋に必要です。"
+	},
+	{
+		"id": "-1000010043",
+		"key": "body_break_need",
+		"en|ch|tc|kr": "肉体の突破にはボタンの下に示す天材地宝と薬材が袋に必要です。失敗しても消費されます。"
+	},
+	{
+		"id": "-1000010016",
+		"key": "body_top",
+		"en|ch|tc|kr": "[icon:daodian] 肉体は頂点に達した：これから得るものは肉体の精華となる"
+	},
+	{
+		"id": "-1000010044",
+		"key": "body_essence",
+		"en|ch|tc|kr": "[icon:daodian] 肉体の精華：{0:#,##0}（[icon:jiankang] 最大HP +{1}%、[icon:fangyu] 防御 +{2}%、[icon:quanfa] 拳 / 掌 / 指 +{3}）"
+	},
+	{
+		"id": "-1000010041",
+		"key": "body_bath_have",
+		"en|ch|tc|kr": "{0}のような天材地宝（またはより希少）：{1} / {2}"
+	},
+	{
+		"id": "-1000010042",
+		"key": "body_herbs_have",
+		"en|ch|tc|kr": "薬材または丹薬（丹薬1つ=10、霊露1つ=5）：{0} / {1}"
+	},
+	{
+		"id": "-1000010049",
+		"key": "body_life_lost",
+		"en|ch|tc|kr": "強い薬で寿命が{0}か月失われた。"
+	},
+	{
+		"id": "-1000010045",
+		"key": "body_bath_dose",
+		"en|ch|tc|kr": "薬浴 x{0}：+{1:#,##0}"
+	},
+	{
+		"id": "-1000010046",
+		"key": "body_break_dose",
+		"en|ch|tc|kr": "突破 x{0}：{1:0}%（加成 +{2}%）"
+	},
+	{
+		"id": "-1000010048",
+		"key": "body_backlash",
+		"en|ch|tc|kr": "反動：鍛錬なし、肉体は1か月負傷し、寿命が{0}か月失われた。"
+	},
+	{
+		"id": "-1000010050",
+		"key": "body_temper",
+		"en|ch|tc|kr": "[icon:hudun] 鍛体：[icon:jiankang] 最大HP +{0}%、[icon:fangyu] 防御 +{1}%"
+	},
+	{
+		"id": "-1000010053",
+		"key": "body_need_treasure",
+		"en|ch|tc|kr": "{0}+：{1} / {2}"
+	},
+	{
+		"id": "-1000010054",
+		"key": "body_need_herbs",
+		"en|ch|tc|kr": "薬材 {0}%：高級{1}、中級{2}、または低級{3}"
+	},
+	{
+		"id": "-1000010055",
+		"key": "body_materials_hint",
+		"en|ch|tc|kr": "天材地宝：天材地宝、神石、仙露、宝珠（またはより希少）。薬材と霊材は境地に応じたアイテムレベル{0}以上（それ未満は無用）：低級=下限、中級=+1、高級=+2以上。丹薬は2倍に数える。"
+	},
+	{
+		"id": "-1000010047",
+		"key": "body_dose_hint",
+		"en|ch|tc|kr": "警告：x2 / x3 は +20% / +50% だが危険も大きい。反動や突破の失敗で寿命が減り、尽きれば修士は死ぬ。強い肉体（最大HP、防御、拳 / 掌 / 指）は危険を少し下げる。"
+	},
+	{
+		"id": "-1000010051",
+		"key": "body_risk",
+		"en|ch|tc|kr": "[icon:shouming] 反動 {0:0.#}%（寿命約{1}か月）"
+	},
+	{
+		"id": "-1000010052",
+		"key": "body_break_risk",
+		"en|ch|tc|kr": "[icon:shouming] 失敗：寿命約{0}か月"
+	},
+	{
+		"id": "-1000010056",
+		"key": "body_deadly",
+		"en|ch|tc|kr": "[icon:shouming] 寿命が尽きた：修士はまもなく死ぬ。"
+	},
+	{
+		"id": "-1000010057",
+		"key": "log_body_deadly",
+		"en|ch|tc|kr": "煉体で寿命{0}か月を失った：寿命が尽きた。"
+	},
+	{
+		"id": "-1000010058",
+		"key": "body_life_left",
+		"en|ch|tc|kr": "[icon:shouming] 残り寿命：{0}年{1}か月"
+	},
+	{
+		"id": "-1000010065",
+		"key": "body_place_no",
+		"en|ch|tc|kr": "休暇を取る"
+	},
+	{
+		"id": "-1000010059",
+		"key": "body_place_1",
+		"en|ch|tc|kr": "滝"
+	},
+	{
+		"id": "-1000010076",
+		"key": "secl_name_Waterfall",
+		"en|ch|tc|kr": "滝"
+	},
+	{
+		"id": "-1000010060",
+		"key": "body_place_2",
+		"en|ch|tc|kr": "溶岩の池"
+	},
+	{
+		"id": "-1000010077",
+		"key": "secl_name_Lava",
+		"en|ch|tc|kr": "溶岩の池"
+	},
+	{
+		"id": "-1000010061",
+		"key": "body_place_3",
+		"en|ch|tc|kr": "雷池"
+	},
+	{
+		"id": "-1000010078",
+		"key": "secl_name_Thunder",
+		"en|ch|tc|kr": "雷池"
+	},
+	{
+		"id": "-1000010064",
+		"key": "body_place_o",
+		"en|ch|tc|kr": "{0}年留まる（体修経験 約{1}）"
+	},
+	{
+		"id": "-1000010066",
+		"key": "body_place_text_1",
+		"en|ch|tc|kr": "道中、轟音が聞こえる。崖から滝が落ち、その水は万の拳のように岩を打つ。体修ならば肌が何も感じなくなるまで、何年もその下に立てるだろう。（残り寿命：{0}年）"
+	},
+	{
+		"id": "-1000010067",
+		"key": "body_place_text_2",
+		"en|ch|tc|kr": "地面が熱を帯びる。山の窪みで溶岩の池が赤く煮えたぎっている。鉄の骨を持つ体だけがその中に座し、炎で骨髄の不純物を焼き尽くせる。（残り寿命：{0}年）"
+	},
+	{
+		"id": "-1000010068",
+		"key": "body_place_text_3",
+		"en|ch|tc|kr": "暗い池の上に雲が集まり、雷が絶え間なく落ちる。雷池だ。金身ならばその中で身を清め、一日に千回打たれることができる。（残り寿命：{0}年）"
+	},
+	{
+		"id": "-1000010069",
+		"key": "body_trib_button",
+		"en|ch|tc|kr": "体劫（戦闘）"
+	},
+	{
+		"id": "-1000010070",
+		"key": "body_trib_hint",
+		"en|ch|tc|kr": "MP最大{0}%で雷に耐える：成功確定、鍛錬+{1}%。倒れれば失敗扱い"
+	},
+	{
+		"id": "-1000010071",
+		"key": "body_trib_ok",
+		"en|ch|tc|kr": "肉体は雷の下で持ちこたえた。体は{0}へ突破する。"
+	},
+	{
+		"id": "-1000010072",
+		"key": "body_trib_fail",
+		"en|ch|tc|kr": "肉体は雷の下に倒れた：{0}か月負傷、経験の半分を失った。"
+	},
+	{
+		"id": "-1000010073",
+		"key": "log_body_trib_start",
+		"en|ch|tc|kr": "{0}に入るため、肉体が雷劫に臨んだ。"
+	},
+	{
+		"id": "-1000010074",
+		"key": "body_sect",
+		"en|ch|tc|kr": "あなたの宗門{0}は体修を教えている：修練x{1}。"
+	},
+	{
+		"id": "-1000010075",
+		"key": "body_sect_ui",
+		"en|ch|tc|kr": "この宗門は素手で戦い、体修を教えている（門人の修練x{0}）。"
+	},
+	{
+		"id": "-1000010079",
+		"key": "secl_res_Waterfall",
+		"en|ch|tc|kr": "水はもう痛くない。体：{0}（+{1}層）。"
+	},
+	{
+		"id": "-1000010080",
+		"key": "secl_res_Lava",
+		"en|ch|tc|kr": "炎が骨髄を貫き、清らかにした。体：{0}（+{1}層）。"
+	},
+	{
+		"id": "-1000010081",
+		"key": "secl_res_Thunder",
+		"en|ch|tc|kr": "一日千の雷を何年も：体は鐘のように鳴り響く。体：{0}（+{1}層）。"
+	},
+	{
+		"id": "-1000010082",
+		"key": "log_body_place_left",
+		"en|ch|tc|kr": "{0}を見つけたが、通り過ぎた。"
+	},
+	{
+		"id": "-1000010083",
+		"key": "log_npc_body_place",
+		"en|ch|tc|kr": "{0}は{1}で{2}年間、体を鍛えに行った。"
+	},
+	{
+		"id": "-1000010084",
+		"key": "log_npc_body_place_end",
+		"en|ch|tc|kr": "{0}が{1}から戻った：{2}。"
+	},
+	{
+		"id": "-1000010085",
+		"key": "log_npc_body_trib_ok",
+		"en|ch|tc|kr": "{0}は体劫を乗り越えた：{1}。"
+	},
+	{
+		"id": "-1000010086",
+		"key": "log_npc_body_trib_fail",
+		"en|ch|tc|kr": "{0}は体劫に倒れた（{1}）。"
+	}
+]

@@ -128,5 +128,20 @@
 		"id": "420109998",
 		"key": "rebirth420109998",
 		"en|ch|tc|kr": "Bắt đầu lại"
+	},
+	{
+		"id": "420103104",
+		"key": "rebirth_off",
+		"en|ch|tc|kr": "Tái sinh đang tắt (cài đặt S&M)."
+	},
+	{
+		"id": "420103105",
+		"key": "rebirth_need_grade",
+		"en|ch|tc|kr": "Cảnh giới phải cao hơn cảnh giới lần tái sinh trước ({0})."
+	},
+	{
+		"id": "420103106",
+		"key": "rebirth_need_town",
+		"en|ch|tc|kr": "Tái sinh tại thành có vùng {1} trở lên (cao hơn lần tái sinh trước, {0}, và không thấp hơn cảnh giới của bạn)."
 	}
 ]

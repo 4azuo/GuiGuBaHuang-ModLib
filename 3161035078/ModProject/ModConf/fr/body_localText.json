@@ -1,0 +1,427 @@
+[
+	{
+		"id": "-1000010000",
+		"key": "body_button",
+		"en|ch|tc|kr": "Raffinement corporel"
+	},
+	{
+		"id": "-1000010001",
+		"key": "body_title",
+		"en|ch|tc|kr": "Raffinement corporel"
+	},
+	{
+		"id": "-1000010002",
+		"key": "body_none",
+		"en|ch|tc|kr": "Ne raffine pas son corps"
+	},
+	{
+		"id": "-1000010003",
+		"key": "body_realm_layer",
+		"en|ch|tc|kr": "{0} - {1}"
+	},
+	{
+		"id": "-1000010004",
+		"key": "body_realm_1",
+		"en|ch|tc|kr": "Peau de Cuivre"
+	},
+	{
+		"id": "-1000010005",
+		"key": "body_realm_2",
+		"en|ch|tc|kr": "Os de Fer"
+	},
+	{
+		"id": "-1000010006",
+		"key": "body_realm_3",
+		"en|ch|tc|kr": "Moelle de Jade"
+	},
+	{
+		"id": "-1000010007",
+		"key": "body_realm_4",
+		"en|ch|tc|kr": "Corps d'Or"
+	},
+	{
+		"id": "-1000010008",
+		"key": "body_realm_5",
+		"en|ch|tc|kr": "Corps Impérissable"
+	},
+	{
+		"id": "-1000010009",
+		"key": "body_layer_1",
+		"en|ch|tc|kr": "Début"
+	},
+	{
+		"id": "-1000010010",
+		"key": "body_layer_2",
+		"en|ch|tc|kr": "Milieu"
+	},
+	{
+		"id": "-1000010011",
+		"key": "body_layer_3",
+		"en|ch|tc|kr": "Fin"
+	},
+	{
+		"id": "-1000010012",
+		"key": "body_npc",
+		"en|ch|tc|kr": "Corps : {0}"
+	},
+	{
+		"id": "-1000010014",
+		"key": "body_start",
+		"en|ch|tc|kr": "Commencer le raffinement corporel"
+	},
+	{
+		"id": "-1000010017",
+		"key": "body_bottleneck",
+		"en|ch|tc|kr": "Goulot : percer vers le royaume suivant"
+	},
+	{
+		"id": "-1000010018",
+		"key": "body_exp",
+		"en|ch|tc|kr": "[icon:jingli] Trempe : {0:#,##0} / {1:#,##0}"
+	},
+	{
+		"id": "-1000010019",
+		"key": "body_injured",
+		"en|ch|tc|kr": "Corps blessé : {0} mois (bonus réduits de moitié, pas d'entraînement)"
+	},
+	{
+		"id": "-1000010020",
+		"key": "body_bonus_hp",
+		"en|ch|tc|kr": "[icon:jiankang] PV max +{0:#,##0}"
+	},
+	{
+		"id": "-1000010021",
+		"key": "body_bonus_def",
+		"en|ch|tc|kr": "[icon:fangyu] Défense +{0:#,##0}"
+	},
+	{
+		"id": "-1000010022",
+		"key": "body_bonus_basis",
+		"en|ch|tc|kr": "[icon:quanfa] Poing / [icon:zhangfa] Paume / [icon:zhifa] Doigt +{0}"
+	},
+	{
+		"id": "-1000010023",
+		"key": "body_bonus_qi",
+		"en|ch|tc|kr": "[icon:jianyidu] Qi rassemblé -{0}%"
+	},
+	{
+		"id": "-1000010025",
+		"key": "body_bath_done",
+		"en|ch|tc|kr": "Un bain médicinal par mois : le corps a besoin de temps pour l'absorber."
+	},
+	{
+		"id": "-1000010026",
+		"key": "body_bath_bottleneck",
+		"en|ch|tc|kr": "Le corps est à un goulot : un bain ne sert à rien avant la percée."
+	},
+	{
+		"id": "-1000010027",
+		"key": "body_break",
+		"en|ch|tc|kr": "Percer ({0:0}%)"
+	},
+	{
+		"id": "-1000010028",
+		"key": "body_break_grade",
+		"en|ch|tc|kr": "{0} exige au moins le rang de cultivation {1}."
+	},
+	{
+		"id": "-1000010029",
+		"key": "body_break_ok",
+		"en|ch|tc|kr": "Le corps perce : {0} !"
+	},
+	{
+		"id": "-1000010030",
+		"key": "body_break_fail",
+		"en|ch|tc|kr": "La percée échoue : la moitié de la trempe est perdue et le corps est blessé pendant {0} mois."
+	},
+	{
+		"id": "-1000010031",
+		"key": "body_help",
+		"en|ch|tc|kr": "Exp : dégâts subis au combat, entraînement chaque mois, un bain médicinal par mois. La dernière couche d'un royaume demande une percée."
+	},
+	{
+		"id": "-1000010032",
+		"key": "log_body_start",
+		"en|ch|tc|kr": "A commencé le raffinement corporel."
+	},
+	{
+		"id": "-1000010033",
+		"key": "log_body_layer",
+		"en|ch|tc|kr": "Raffinement corporel : {0}."
+	},
+	{
+		"id": "-1000010034",
+		"key": "log_body_realm",
+		"en|ch|tc|kr": "Le corps a percé : {0}."
+	},
+	{
+		"id": "-1000010035",
+		"key": "log_body_fail",
+		"en|ch|tc|kr": "Une percée corporelle a échoué : blessé {0} mois."
+	},
+	{
+		"id": "-1000010013",
+		"key": "body_intro",
+		"en|ch|tc|kr": "Trempe la chair comme d'autres trempent leur Qi : les coups reçus au combat, l'entraînement quotidien et les bains médicinaux durcissent peau, os et moelle.\nCinq royaumes : Peau de Cuivre, Os de Fer, Moelle de Jade, Corps d'Or, Corps Impérissable (3 couches chacun).\nBonus : PV max, défense, base poing / paume / doigt, et plus de PV / défense / attaque à chaque percée de la cultivation."
+	},
+	{
+		"id": "-1000010015",
+		"key": "body_start_confirm",
+		"en|ch|tc|kr": "Un corps robuste boit l'énergie spirituelle : selon son royaume, qui raffine son corps a besoin de x1,1 à x1,5 d'exp de cultivation et rassemble 10 % à 30 % de Qi en moins, mais gagne plus à chaque percée. Commencer le raffinement corporel ?"
+	},
+	{
+		"id": "-1000010036",
+		"key": "body_bonus_break",
+		"en|ch|tc|kr": "Des percées : [icon:jiankang] PV +{0:#,##0}, [icon:fangyu] défense +{1:#,##0}, [icon:gongji] attaque +{2:#,##0}"
+	},
+	{
+		"id": "-1000010037",
+		"key": "body_break_rates",
+		"en|ch|tc|kr": "Chaque percée de la cultivation : [icon:jiankang] +{0}% PV, [icon:fangyu] +{1}% défense, [icon:gongji] +{2}% attaque de ce qu'elle apporte"
+	},
+	{
+		"id": "-1000010038",
+		"key": "body_exp_rate",
+		"en|ch|tc|kr": "[icon:wuxing] Exp de cultivation requise x{0:0.00} (absorbée par le corps : {1:#,##0})"
+	},
+	{
+		"id": "-1000010039",
+		"key": "log_body_breakbonus",
+		"en|ch|tc|kr": "Le corps a puisé sa force dans la percée : au total PV +{0:#,##0}, défense +{1:#,##0}, attaque +{2:#,##0}."
+	},
+	{
+		"id": "-1000010024",
+		"key": "body_bath",
+		"en|ch|tc|kr": "Bain médicinal (+{0:#,##0} de trempe)"
+	},
+	{
+		"id": "-1000010040",
+		"key": "body_bath_need",
+		"en|ch|tc|kr": "Un bain médicinal demande dans le sac les trésors naturels et les herbes montrés sous le bouton."
+	},
+	{
+		"id": "-1000010043",
+		"key": "body_break_need",
+		"en|ch|tc|kr": "Une percée du corps demande dans le sac les trésors naturels et les herbes montrés sous le bouton ; ils sont consommés même en cas d'échec."
+	},
+	{
+		"id": "-1000010016",
+		"key": "body_top",
+		"en|ch|tc|kr": "[icon:daodian] Le corps est à son sommet : ce qu'il gagne devient désormais son essence"
+	},
+	{
+		"id": "-1000010044",
+		"key": "body_essence",
+		"en|ch|tc|kr": "[icon:daodian] Essence du corps : {0:#,##0} ([icon:jiankang] PV max +{1}%, [icon:fangyu] défense +{2}%, [icon:quanfa] poing / paume / doigt +{3})"
+	},
+	{
+		"id": "-1000010041",
+		"key": "body_bath_have",
+		"en|ch|tc|kr": "Trésors naturels comme {0} ou plus rares : {1} / {2}"
+	},
+	{
+		"id": "-1000010042",
+		"key": "body_herbs_have",
+		"en|ch|tc|kr": "Herbes ou pilules (un élixir compte 10, une rosée 5) : {0} / {1}"
+	},
+	{
+		"id": "-1000010049",
+		"key": "body_life_lost",
+		"en|ch|tc|kr": "La forte dose a coûté {0} mois de vie."
+	},
+	{
+		"id": "-1000010045",
+		"key": "body_bath_dose",
+		"en|ch|tc|kr": "Bain x{0} : +{1:#,##0}"
+	},
+	{
+		"id": "-1000010046",
+		"key": "body_break_dose",
+		"en|ch|tc|kr": "Percée x{0} : {1:0}% (+{2}% de bonus)"
+	},
+	{
+		"id": "-1000010048",
+		"key": "body_backlash",
+		"en|ch|tc|kr": "Contrecoup : aucune trempe, le corps est blessé un mois, {0} mois de vie sont perdus."
+	},
+	{
+		"id": "-1000010050",
+		"key": "body_temper",
+		"en|ch|tc|kr": "[icon:hudun] Corps trempé : [icon:jiankang] PV max +{0}%, [icon:fangyu] défense +{1}%"
+	},
+	{
+		"id": "-1000010053",
+		"key": "body_need_treasure",
+		"en|ch|tc|kr": "{0}+ : {1} / {2}"
+	},
+	{
+		"id": "-1000010054",
+		"key": "body_need_herbs",
+		"en|ch|tc|kr": "Herbes {0}% : {1} hautes, {2} moyennes ou {3} basses"
+	},
+	{
+		"id": "-1000010055",
+		"key": "body_materials_hint",
+		"en|ch|tc|kr": "Trésors naturels : 天材地宝, pierres divines, rosées immortelles, orbes (ou plus rares). Herbes et matériaux spirituels de niveau d'objet {0}+ pour ton grade (les inférieurs sont inutiles) : bas = ton minimum, moyen = +1, haut = +2 ou plus ; un élixir compte double."
+	},
+	{
+		"id": "-1000010047",
+		"key": "body_dose_hint",
+		"en|ch|tc|kr": "Attention : x2 / x3 donnent +20% / +50% mais risquent plus. Un contrecoup ou une percée ratée coûte de la vie : quand il n'en reste plus, le cultivateur meurt. Un corps robuste (PV max, défense, poing / paume / doigt) réduit un peu les risques."
+	},
+	{
+		"id": "-1000010051",
+		"key": "body_risk",
+		"en|ch|tc|kr": "[icon:shouming] Contrecoup {0:0.#}% (environ {1} mois de vie)"
+	},
+	{
+		"id": "-1000010052",
+		"key": "body_break_risk",
+		"en|ch|tc|kr": "[icon:shouming] Échec : environ {0} mois de vie"
+	},
+	{
+		"id": "-1000010056",
+		"key": "body_deadly",
+		"en|ch|tc|kr": "[icon:shouming] Il ne reste plus de vie : le cultivateur va mourir."
+	},
+	{
+		"id": "-1000010057",
+		"key": "log_body_deadly",
+		"en|ch|tc|kr": "Le raffinement corporel a coûté {0} mois de vie : il n'en reste plus."
+	},
+	{
+		"id": "-1000010058",
+		"key": "body_life_left",
+		"en|ch|tc|kr": "[icon:shouming] Vie restante : {0} a {1} m"
+	},
+	{
+		"id": "-1000010065",
+		"key": "body_place_no",
+		"en|ch|tc|kr": "Partir"
+	},
+	{
+		"id": "-1000010059",
+		"key": "body_place_1",
+		"en|ch|tc|kr": "Cascade"
+	},
+	{
+		"id": "-1000010076",
+		"key": "secl_name_Waterfall",
+		"en|ch|tc|kr": "Cascade"
+	},
+	{
+		"id": "-1000010060",
+		"key": "body_place_2",
+		"en|ch|tc|kr": "Lac de lave"
+	},
+	{
+		"id": "-1000010077",
+		"key": "secl_name_Lava",
+		"en|ch|tc|kr": "Lac de lave"
+	},
+	{
+		"id": "-1000010061",
+		"key": "body_place_3",
+		"en|ch|tc|kr": "Bassin du tonnerre"
+	},
+	{
+		"id": "-1000010078",
+		"key": "secl_name_Thunder",
+		"en|ch|tc|kr": "Bassin du tonnerre"
+	},
+	{
+		"id": "-1000010064",
+		"key": "body_place_o",
+		"en|ch|tc|kr": "Rester {0} an(s) (environ {1} d'exp. corporelle)"
+	},
+	{
+		"id": "-1000010066",
+		"key": "body_place_text_1",
+		"en|ch|tc|kr": "En chemin, vous entendez un grondement : une cascade tombe d'une falaise, son eau frappe les rochers comme dix mille poings. Un raffineur du corps pourrait se tenir dessous des années, jusqu'à ce que la peau ne sente plus rien. (Durée de vie restante : {0} ans)"
+	},
+	{
+		"id": "-1000010067",
+		"key": "body_place_text_2",
+		"en|ch|tc|kr": "Le sol devient brûlant : dans un creux de la montagne bouillonne un lac de lave rouge. Seul un corps aux os de fer pourrait s'y asseoir et laisser le feu brûler les impuretés de la moelle. (Durée de vie restante : {0} ans)"
+	},
+	{
+		"id": "-1000010068",
+		"key": "body_place_text_3",
+		"en|ch|tc|kr": "Les nuages s'amassent au-dessus d'un bassin sombre et la foudre y tombe sans fin : un bassin du tonnerre. Un corps doré pourrait s'y baigner, frappé mille fois par jour. (Durée de vie restante : {0} ans)"
+	},
+	{
+		"id": "-1000010069",
+		"key": "body_trib_button",
+		"en|ch|tc|kr": "Tribulation du corps (combat)"
+	},
+	{
+		"id": "-1000010070",
+		"key": "body_trib_hint",
+		"en|ch|tc|kr": "Survivez à la foudre avec au plus {0} % de PM : succès assuré, trempe +{1} % ; chute : comme un échec"
+	},
+	{
+		"id": "-1000010071",
+		"key": "body_trib_ok",
+		"en|ch|tc|kr": "La chair a tenu sous la foudre. Le corps franchit le cap de {0}."
+	},
+	{
+		"id": "-1000010072",
+		"key": "body_trib_fail",
+		"en|ch|tc|kr": "Le corps est tombé sous la foudre : blessé pendant {0} mois, la moitié de l'exp perdue."
+	},
+	{
+		"id": "-1000010073",
+		"key": "log_body_trib_start",
+		"en|ch|tc|kr": "Le corps a affronté la tribulation de la foudre pour entrer dans {0}."
+	},
+	{
+		"id": "-1000010074",
+		"key": "body_sect",
+		"en|ch|tc|kr": "Votre secte {0} enseigne le raffinement du corps : entraînement x{1}."
+	},
+	{
+		"id": "-1000010075",
+		"key": "body_sect_ui",
+		"en|ch|tc|kr": "Cette secte combat à mains nues et enseigne le raffinement du corps (ses membres s'entraînent x{0})."
+	},
+	{
+		"id": "-1000010079",
+		"key": "secl_res_Waterfall",
+		"en|ch|tc|kr": "L'eau ne fait plus mal. Corps : {0} (+{1} couches)."
+	},
+	{
+		"id": "-1000010080",
+		"key": "secl_res_Lava",
+		"en|ch|tc|kr": "Le feu a traversé la moelle et l'a laissée pure. Corps : {0} (+{1} couches)."
+	},
+	{
+		"id": "-1000010081",
+		"key": "secl_res_Thunder",
+		"en|ch|tc|kr": "Mille coups par jour, pendant des années : le corps résonne comme une cloche. Corps : {0} (+{1} couches)."
+	},
+	{
+		"id": "-1000010082",
+		"key": "log_body_place_left",
+		"en|ch|tc|kr": "Trouvé un(e) {0} et passé son chemin."
+	},
+	{
+		"id": "-1000010083",
+		"key": "log_npc_body_place",
+		"en|ch|tc|kr": "{0} est parti(e) tremper son corps à un(e) {1} pour {2} ans."
+	},
+	{
+		"id": "-1000010084",
+		"key": "log_npc_body_place_end",
+		"en|ch|tc|kr": "{0} est revenu(e) de {1} : {2}."
+	},
+	{
+		"id": "-1000010085",
+		"key": "log_npc_body_trib_ok",
+		"en|ch|tc|kr": "{0} a survécu à la tribulation du corps : {1}."
+	},
+	{
+		"id": "-1000010086",
+		"key": "log_npc_body_trib_fail",
+		"en|ch|tc|kr": "{0} est tombé(e) dans la tribulation du corps ({1})."
+	}
+]

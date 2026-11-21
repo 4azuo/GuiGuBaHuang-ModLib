@@ -1,0 +1,377 @@
+[
+	{
+		"id": "-1000013043",
+		"key": "enc_flood_o2",
+		"en|ch|tc|kr": "Bước tiếp"
+	},
+	{
+		"id": "-1000013047",
+		"key": "enc_plague_o2",
+		"en|ch|tc|kr": "Bước tiếp"
+	},
+	{
+		"id": "-1000013052",
+		"key": "enc_raid_o2",
+		"en|ch|tc|kr": "Bỏ đi"
+	},
+	{
+		"id": "-1000013000",
+		"key": "merit_button",
+		"en|ch|tc|kr": "Công đức"
+	},
+	{
+		"id": "-1000013001",
+		"key": "merit_title",
+		"en|ch|tc|kr": "Công đức"
+	},
+	{
+		"id": "-1000013002",
+		"key": "merit_npc",
+		"en|ch|tc|kr": "Công đức: {0}"
+	},
+	{
+		"id": "-1000013003",
+		"key": "merit_lvl_0",
+		"en|ch|tc|kr": "Chưa có công đức"
+	},
+	{
+		"id": "-1000013004",
+		"key": "merit_lvl_1",
+		"en|ch|tc|kr": "Thiện duyên"
+	},
+	{
+		"id": "-1000013005",
+		"key": "merit_lvl_2",
+		"en|ch|tc|kr": "Tích đức"
+	},
+	{
+		"id": "-1000013006",
+		"key": "merit_lvl_3",
+		"en|ch|tc|kr": "Phúc trạch"
+	},
+	{
+		"id": "-1000013007",
+		"key": "merit_lvl_4",
+		"en|ch|tc|kr": "Công đức kim quang"
+	},
+	{
+		"id": "-1000013008",
+		"key": "merit_lvl_5",
+		"en|ch|tc|kr": "Công đức thánh giả"
+	},
+	{
+		"id": "-1000013009",
+		"key": "merit_lvl_6",
+		"en|ch|tc|kr": "Vô lượng công đức"
+	},
+	{
+		"id": "-1000013010",
+		"key": "merit_lvl_m1",
+		"en|ch|tc|kr": "Tội nghiệp"
+	},
+	{
+		"id": "-1000013011",
+		"key": "merit_lvl_m2",
+		"en|ch|tc|kr": "Ác nghiệp"
+	},
+	{
+		"id": "-1000013012",
+		"key": "merit_lvl_m3",
+		"en|ch|tc|kr": "Nghiệp chướng"
+	},
+	{
+		"id": "-1000013013",
+		"key": "merit_points",
+		"en|ch|tc|kr": "[icon:zm_mingyu] Công đức {0:#,##0} / {1:#,##0}"
+	},
+	{
+		"id": "-1000013014",
+		"key": "merit_points_top",
+		"en|ch|tc|kr": "[icon:zm_mingyu] Công đức {0:#,##0} (cảnh giới cao nhất: công đức thêm sẽ thành tinh hoa)"
+	},
+	{
+		"id": "-1000013015",
+		"key": "merit_essence",
+		"en|ch|tc|kr": "[icon:daodian] Tinh hoa công đức {0:#,##0} ({1} bậc): [icon:gongji] công +{2} %, [icon:fangyu] thủ +{3} %"
+	},
+	{
+		"id": "-1000013016",
+		"key": "merit_bonus",
+		"en|ch|tc|kr": "[icon:gongji] Công {0:+0.#;-0.#;0} %, [icon:fangyu] thủ {1:+0.#;-0.#;0} %, [icon:xingyun] vận khí {2:+0;-0;0}"
+	},
+	{
+		"id": "-1000013017",
+		"key": "merit_lightning",
+		"en|ch|tc|kr": "[icon:leilinggen] Sét của thử luyện và thể kiếp: sát thương {0:+0;-0;0} %"
+	},
+	{
+		"id": "-1000013018",
+		"key": "merit_intim",
+		"en|ch|tc|kr": "[icon:shengwang] Mỗi tháng, tu sĩ quanh bạn: chính đạo {0:+0;-0;0}, tà đạo {1:+0;-0;0} (hảo cảm; dưới 0: thù hận)"
+	},
+	{
+		"id": "-1000013019",
+		"key": "merit_bounty_warn",
+		"en|ch|tc|kr": "[icon:zhandouxiaoguo] Nghiệp chướng của bạn nặng nề: mỗi năm một tu sĩ chính đạo treo thưởng truy nã bạn."
+	},
+	{
+		"id": "-1000013020",
+		"key": "merit_level_line",
+		"en|ch|tc|kr": "{0}: {1:#,##0} - [icon:gongji] công {2:+0.#;-0.#;0} %, [icon:fangyu] thủ {3:+0.#;-0.#;0} %, [icon:xingyun] vận khí {4:+0;-0;0}"
+	},
+	{
+		"id": "-1000013021",
+		"key": "merit_donate",
+		"en|ch|tc|kr": "Quyên {1:#,##0} [icon:zm_lingshi] cho dân {0} (+{2} công đức, mỗi tháng một lần)"
+	},
+	{
+		"id": "-1000013022",
+		"key": "merit_donate_done",
+		"en|ch|tc|kr": "Tháng này bạn đã quyên góp rồi."
+	},
+	{
+		"id": "-1000013023",
+		"key": "merit_help",
+		"en|ch|tc|kr": "Công đức: diệt yêu thú và tà tu, giúp người (kỳ ngộ, quyên góp). Nghiệp chướng: giết người chính đạo, cướp bóc, bỏ mặc."
+	},
+	{
+		"id": "-1000013024",
+		"key": "log_merit_gain",
+		"en|ch|tc|kr": "Công đức +{0}: {1}."
+	},
+	{
+		"id": "-1000013025",
+		"key": "log_merit_loss",
+		"en|ch|tc|kr": "Nghiệp chướng +{0}: {1}."
+	},
+	{
+		"id": "-1000013026",
+		"key": "log_merit_level",
+		"en|ch|tc|kr": "Công đức: {0}."
+	},
+	{
+		"id": "-1000013027",
+		"key": "log_merit_bounty",
+		"en|ch|tc|kr": "{0} treo thưởng {2:#,##0} truy nã bạn ở {1} vì nghiệp chướng của bạn."
+	},
+	{
+		"id": "-1000013028",
+		"key": "merit_src_beast",
+		"en|ch|tc|kr": "diệt một yêu thú"
+	},
+	{
+		"id": "-1000013029",
+		"key": "merit_src_kill_good",
+		"en|ch|tc|kr": "giết một tu sĩ chính đạo"
+	},
+	{
+		"id": "-1000013030",
+		"key": "merit_src_kill_evil",
+		"en|ch|tc|kr": "trừ một tà tu"
+	},
+	{
+		"id": "-1000013031",
+		"key": "merit_src_kill",
+		"en|ch|tc|kr": "giết một tu sĩ"
+	},
+	{
+		"id": "-1000013032",
+		"key": "merit_src_donate",
+		"en|ch|tc|kr": "quyên góp cho dân"
+	},
+	{
+		"id": "-1000013033",
+		"key": "merit_src_wounded",
+		"en|ch|tc|kr": "cứu chữa một tu sĩ bị thương"
+	},
+	{
+		"id": "-1000013034",
+		"key": "merit_src_rob",
+		"en|ch|tc|kr": "cướp của một tu sĩ bị thương"
+	},
+	{
+		"id": "-1000013035",
+		"key": "merit_src_cub",
+		"en|ch|tc|kr": "cho thú con ăn"
+	},
+	{
+		"id": "-1000013036",
+		"key": "merit_src_festival",
+		"en|ch|tc|kr": "lễ hội trong thành"
+	},
+	{
+		"id": "-1000013037",
+		"key": "merit_src_flood",
+		"en|ch|tc|kr": "cứu trợ lũ lụt"
+	},
+	{
+		"id": "-1000013038",
+		"key": "merit_src_plague",
+		"en|ch|tc|kr": "chữa bệnh ôn dịch"
+	},
+	{
+		"id": "-1000013039",
+		"key": "merit_src_raid",
+		"en|ch|tc|kr": "cứu một ngôi làng khỏi yêu thú"
+	},
+	{
+		"id": "-1000013040",
+		"key": "merit_src_flee",
+		"en|ch|tc|kr": "bỏ mặc một ngôi làng cho yêu thú"
+	},
+	{
+		"id": "-1000013041",
+		"key": "enc_flood",
+		"en|ch|tc|kr": "Sông vỡ đê gần {0}: nhà cửa trôi hết, các gia đình ngủ trên mái nhà. Thành kêu gọi tu sĩ quyên {1:#,##0} [icon:zm_lingshi] để xây lại."
+	},
+	{
+		"id": "-1000013042",
+		"key": "enc_flood_o1",
+		"en|ch|tc|kr": "Quyên góp"
+	},
+	{
+		"id": "-1000013044",
+		"key": "enc_flood_r",
+		"en|ch|tc|kr": "Dân trong thành sẽ nhớ tên bạn. Công đức +{0}."
+	},
+	{
+		"id": "-1000013045",
+		"key": "enc_plague",
+		"en|ch|tc|kr": "Ôn dịch lan khắp {0}; thầy thuốc đã hết thảo dược. {1} thảo dược trong túi bạn có thể cứu nhiều người."
+	},
+	{
+		"id": "-1000013046",
+		"key": "enc_plague_o1",
+		"en|ch|tc|kr": "Tặng thảo dược"
+	},
+	{
+		"id": "-1000013048",
+		"key": "enc_plague_r",
+		"en|ch|tc|kr": "Cơn sốt lần lượt lui đi. Công đức +{0}."
+	},
+	{
+		"id": "-1000013049",
+		"key": "enc_plague_noherb",
+		"en|ch|tc|kr": "Bạn không đủ thảo dược."
+	},
+	{
+		"id": "-1000013050",
+		"key": "enc_raid",
+		"en|ch|tc|kr": "Yêu thú từ núi kéo xuống một ngôi làng; phàm nhân bỏ chạy. Bạn có thể đứng ra chặn chúng ({0:0} % đẩy lùi được)."
+	},
+	{
+		"id": "-1000013051",
+		"key": "enc_raid_o1",
+		"en|ch|tc|kr": "Đánh lui chúng"
+	},
+	{
+		"id": "-1000013053",
+		"key": "enc_raid_win",
+		"en|ch|tc|kr": "Yêu thú chạy trốn vào núi. Công đức +{0}, mất {1:#,##0} HP."
+	},
+	{
+		"id": "-1000013054",
+		"key": "enc_raid_lose",
+		"en|ch|tc|kr": "Yêu thú quá đông, nhưng dân làng đã thoát trong lúc bạn chiến đấu. Công đức +{0}, mất {1:#,##0} HP."
+	},
+	{
+		"id": "-1000013055",
+		"key": "enc_raid_flee",
+		"en|ch|tc|kr": "Sau lưng bạn, ngôi làng bốc cháy."
+	},
+	{
+		"id": "-1000013066",
+		"key": "merit_massacre_o2",
+		"en|ch|tc|kr": "Rời khỏi"
+	},
+	{
+		"id": "-1000013056",
+		"key": "merit_flat",
+		"en|ch|tc|kr": "Cố định: [icon:gongji] công {0:+0;-0;0}, [icon:fangyu] thủ {1:+0;-0;0}"
+	},
+	{
+		"id": "-1000013057",
+		"key": "merit_src_defend",
+		"en|ch|tc|kr": "giết địch khi thủ thành"
+	},
+	{
+		"id": "-1000013058",
+		"key": "merit_src_attack",
+		"en|ch|tc|kr": "giết quân thủ thành khi công thành"
+	},
+	{
+		"id": "-1000013059",
+		"key": "merit_gift",
+		"en|ch|tc|kr": "Những người bạn từng giúp tìm đến bạn trên đường và dúi vào tay bạn một món quà: {0}."
+	},
+	{
+		"id": "-1000013060",
+		"key": "merit_revenge",
+		"en|ch|tc|kr": "Thân nhân của một nạn nhân của bạn chờ sẵn trong bóng tối. Lưỡi đao đã chạm tới trước khi bạn kịp thấy hắn: mất {0:#,##0} HP, và lời nguyền của hắn đeo bám bạn."
+	},
+	{
+		"id": "-1000013061",
+		"key": "log_merit_gift",
+		"en|ch|tc|kr": "Người mang ơn mang quà đến: {0}."
+	},
+	{
+		"id": "-1000013062",
+		"key": "log_merit_revenge",
+		"en|ch|tc|kr": "Thân nhân nạn nhân báo thù: mất {0:#,##0} HP."
+	},
+	{
+		"id": "-1000013063",
+		"key": "merit_massacre_button",
+		"en|ch|tc|kr": "Đồ sát {0} (tà đạo)"
+	},
+	{
+		"id": "-1000013064",
+		"key": "merit_massacre_text",
+		"en|ch|tc|kr": "Bạn nhìn xuống {0}. Thành chủ {1}, {2} tu sĩ trong thành và {3} hộ vệ sẽ chống lại bạn; {4} người khác sẽ bỏ chạy. Nếu thắng, thành chủ cùng những kẻ ngã xuống sẽ chết, cùng gần như toàn bộ {5:#,##0} phàm nhân. Nghiệp chướng +{6:#,##0}; lệnh truy nã sẽ bám theo bạn. Đây là trận chiến thật: bạn có thể chết."
+	},
+	{
+		"id": "-1000013065",
+		"key": "merit_massacre_o1",
+		"en|ch|tc|kr": "Đồ thành"
+	},
+	{
+		"id": "-1000013067",
+		"key": "merit_massacre_ok",
+		"en|ch|tc|kr": "{0} đã thất thủ. {1} tu sĩ chết cùng thành chủ, {2:#,##0} phàm nhân bỏ mạng, cướp được {3:#,##0} linh thạch."
+	},
+	{
+		"id": "-1000013068",
+		"key": "merit_massacre_fail",
+		"en|ch|tc|kr": "{0} trụ vững. Bạn thoát thân với nghiệp chướng nặng hơn."
+	},
+	{
+		"id": "-1000013069",
+		"key": "merit_ruin",
+		"en|ch|tc|kr": "{0} đã thành phế tích: nay chỉ còn lác đác phàm nhân."
+	},
+	{
+		"id": "-1000013070",
+		"key": "merit_src_massacre",
+		"en|ch|tc|kr": "đồ sát một tòa thành"
+	},
+	{
+		"id": "-1000013071",
+		"key": "merit_src_massacre_fail",
+		"en|ch|tc|kr": "đồ thành bất thành"
+	},
+	{
+		"id": "-1000013072",
+		"key": "log_merit_massacre_start",
+		"en|ch|tc|kr": "Bạn quay đao vào {0}: {1} người thủ thành, {2} người bỏ chạy."
+	},
+	{
+		"id": "-1000013073",
+		"key": "log_merit_massacre",
+		"en|ch|tc|kr": "Đồ sát {0}: {1} tu sĩ và {2:#,##0} phàm nhân chết, cướp được {3:#,##0} linh thạch."
+	},
+	{
+		"id": "-1000013074",
+		"key": "merit_story",
+		"en|ch|tc|kr": "một tuyến truyện"
+	}
+]

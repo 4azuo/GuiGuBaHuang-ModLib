@@ -13,7 +13,7 @@ Inflation: the world price index (the game's difficulty price, `g.conf.gameDiffi
 
 ## Switches
 
-- `mod_configs.json` > `InflationaryConfigs.InflationaryRate` = 1.02 (+2 % a year).
+- `inflationary_configs.json` > `InflationaryRate` = 1.02 (+2 % a year).
 - `AddInflationRate` (S&M): `rate' = rate + rate x AddInflationRate`.
 - `AddItemValueRate` (S&M): raises the starting index.
 
@@ -46,3 +46,7 @@ Used by: bank account fee, repair costs, storage fees, bank loans, family upkeep
 ## Tests
 
 TG-04, TM-20, TX-02.
+
+## Spirit banknotes
+
+The reform converts the spirit banknotes too: 1 stone each in the bags, lost in the storage ([SpiritNoteEvent](SpiritNoteEvent.md)).

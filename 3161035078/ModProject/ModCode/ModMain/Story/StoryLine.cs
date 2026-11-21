@@ -159,6 +159,25 @@ namespace MOD_nE7UL2.Story
             ["endL_ClearHeart"] = "lianhua2",
             ["endL_Embraced"] = "mingzhongkuangnu",
             ["endL_Scarred"] = "mengjingguodu",
+            ["M0_1"] = "baozha",
+            ["M1_1"] = "dixiamushi",
+            ["M3_1"] = "shanzei",
+            ["M4_burned"] = "faqigongji",
+            ["endM_Secret"] = "baojuanziji",
+            ["N0_1"] = "zongmenmijing1",
+            ["N2_1"] = "baojuanziji",
+            ["N3_1"] = "faqigongji",
+            ["endN_Manor"] = "zongmenbaozang1",
+            ["endN_Empty"] = "shibei2",
+            ["O0_1"] = "shanzei2",
+            ["O0_butcher"] = "shanzei2",
+            ["endO_Ashes"] = "shibei2",
+            ["endO_Atonement"] = "zhanshengwuluo",
+            ["P0_1"] = "ayuluoshui1",
+            ["P1_1"] = "ayuluoshui1",
+            ["P3_1"] = "dengxianleijie",
+            ["endP_Alone"] = "dengxianleijie",
+            ["endP_Devourer"] = "ayuluoshui1",
         };
 
         /// <summary>The background of a text key.</summary>
@@ -189,9 +208,10 @@ namespace MOD_nE7UL2.Story
         /// <summary>Place tokens ({S} sect, {T} / {T2} towns) by line.</summary>
         protected static readonly Dictionary<string, Func<StoryState, string>> Places = new Dictionary<string, Func<StoryState, string>>
         {
-            ["S"] = s => s.Roles.TryGetValue("S", out var id) ? (g.world.build.GetBuild<MapBuildSchool>(id)?.name ?? "?") : "?",
-            ["T"] = s => s.Roles.TryGetValue("T", out var id) ? (g.world.build.GetBuild(id)?.name ?? "?") : "?",
-            ["T2"] = s => s.Roles.TryGetValue("T2", out var id) ? (g.world.build.GetBuild(id)?.name ?? "?") : "?",
+            // a place not set (null id: the game's GetBuild throws on it) is "?"
+            ["S"] = s => s.Roles.TryGetValue("S", out var id) && !string.IsNullOrEmpty(id) ? (g.world.build.GetBuild<MapBuildSchool>(id)?.name ?? "?") : "?",
+            ["T"] = s => s.Roles.TryGetValue("T", out var id) && !string.IsNullOrEmpty(id) ? (g.world.build.GetBuild(id)?.name ?? "?") : "?",
+            ["T2"] = s => s.Roles.TryGetValue("T2", out var id) && !string.IsNullOrEmpty(id) ? (g.world.build.GetBuild(id)?.name ?? "?") : "?",
         };
 
         /// <summary>A role speaks (portrait of the role and of the player). opts: text keys; pick(index from 0).

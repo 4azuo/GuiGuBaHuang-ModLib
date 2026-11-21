@@ -1,4 +1,4 @@
-﻿using MOD_nE7UL2.Const;
+using MOD_nE7UL2.Const;
 using MOD_nE7UL2.Enum;
 using MOD_nE7UL2.Object;
 using ModLib.Attributes;
@@ -34,6 +34,24 @@ namespace MOD_nE7UL2
             base.OnLoadClass(isNew, modId, attr);
             ModObj = this;
             ModSettings = JsonConvert.DeserializeObject<ModStts>(ConfHelper.ReadConfData(modId, "mod_configs.json"));
+            //settings of the features in their own files (defaults in the code)
+            MOD_nE7UL2.Mod.BattleConfig.Load(modId);
+            MOD_nE7UL2.Mod.MarketItemConfig.Load(modId);
+            MOD_nE7UL2.Mod.MapBuildBattleConfig.Load(modId);
+            MOD_nE7UL2.Mod.InflationaryConfig.Load(modId);
+            MOD_nE7UL2.Mod.BankAccountConfig.Load(modId);
+            MOD_nE7UL2.Mod.CustomRefineConfig.Load(modId);
+            MOD_nE7UL2.Mod.ContributionExchangeConfig.Load(modId);
+            MOD_nE7UL2.Mod.MissionDeclareConfig.Load(modId);
+            MOD_nE7UL2.Mod.BattleManashieldConfig.Load(modId);
+            MOD_nE7UL2.Mod.UnitTypeConfig.Load(modId);
+            MOD_nE7UL2.Mod.RealTrialConfig.Load(modId);
+            MOD_nE7UL2.Mod.RealStorageConfig.Load(modId);
+            MOD_nE7UL2.Mod.RealMarketConfig.Load(modId);
+            MOD_nE7UL2.Mod.MonstStrongerConfig.Load(modId);
+            MOD_nE7UL2.Mod.NpcUpgradeSkillConfig.Load(modId);
+            MOD_nE7UL2.Mod.ExpertConfig.Load(modId);
+            MOD_nE7UL2.Mod.BattleRewardConfig.Load(modId);
             DebugHelper.WriteLine($"Taoist-Version: {ModConst.TAOIST_VERSION}");
             //version of the error reports of Taoist (database: ModConf/crash_reports.json)
             CrashReportHelper.SetModVersion(modId, ModConst.TAOIST_VERSION);

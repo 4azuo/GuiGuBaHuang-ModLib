@@ -2,7 +2,6 @@
 using MOD_nE7UL2.Mod;
 using ModLib.Enum;
 using System;
-using static MOD_nE7UL2.Object.ModStts;
 using ModLib.Helper;
 
 /// <summary>
@@ -10,7 +9,7 @@ using ModLib.Helper;
 /// </summary>
 public static class UnitModifyHelper
 {
-    public static _ExpertConfigs ExpertConfigs => ModMain.ModObj.ModSettings.ExpertConfigs;
+    public static ExpertConfig ExpertConfigs => ExpertConfig.Conf;
 
     #region Artifact
     /// <summary>

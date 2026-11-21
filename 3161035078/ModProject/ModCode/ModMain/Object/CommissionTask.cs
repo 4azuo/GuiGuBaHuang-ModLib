@@ -2,7 +2,6 @@
 using ModLib.Enum;
 using System;
 using System.Linq;
-using static MOD_nE7UL2.Object.ModStts;
 using ModLib.Helper;
 
 namespace MOD_nE7UL2.Object
@@ -21,7 +20,7 @@ namespace MOD_nE7UL2.Object
             Success,
             Failed
         }
-        public static _MissionDeclareConfigs Configs => ModMain.ModObj.ModSettings.MissionDeclareConfigs;
+        public static MOD_nE7UL2.Mod.MissionDeclareConfig Configs => MOD_nE7UL2.Mod.MissionDeclareConfig.Conf;
 
         public System.Collections.Generic.Dictionary<int, int> CommisionItems { get; set; }
         public int Total { get; set; }

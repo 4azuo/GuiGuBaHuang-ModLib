@@ -47,6 +47,13 @@ namespace MOD_nE7UL2.AutoTest
         /// scenarios.json, copied to ModProject/SteamImg): no check panels over the screenshots.
         /// </summary>
         public bool Promo { get; set; } = false;
+        /// <summary>
+        /// Games side by side that stay open (run-autotest-parallel.ps1): after its scenarios the game waits in the save
+        /// for the next request (a request.json with another RunId, run-autotest.ps1 -Attach) instead of being closed;
+        /// every game scenario starts from the player state recorded when the save was loaded (AutoTestEvent baseline)
+        /// and its own Scenario.Precondition.
+        /// </summary>
+        public bool KeepAlive { get; set; } = false;
     }
 
     /// <summary>Execution kind of a scenario.</summary>
@@ -119,6 +126,19 @@ namespace MOD_nE7UL2.AutoTest
         public bool SnapSteps { get; set; } = true;
         /// <summary>Steps executed in order.</summary>
         public List<ScenarioStep> Steps { get; } = new List<ScenarioStep>();
+        /// <summary>
+        /// Set-up run before the first step of a game scenario, after the common reset of the player to the state of
+        /// the loaded save (grade, exp, money, lifespan, place, HP / MP / SP, S&amp;M settings): what the scenario needs
+        /// besides (a grade, a town, items...). The games that stay open run many scenarios in a row in one save.
+        /// </summary>
+        public Action<AutoTestContext> Precondition { get; set; }
+
+        /// <summary>Sets the precondition (fluent).</summary>
+        public Scenario Pre(Action<AutoTestContext> precondition)
+        {
+            Precondition = precondition;
+            return this;
+        }
 
         /// <summary>Appends a step (fluent).</summary>
         public Scenario Step(string label, Action<AutoTestContext> action, int delayMs = -1)

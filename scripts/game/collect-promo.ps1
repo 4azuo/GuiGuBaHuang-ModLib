@@ -8,7 +8,7 @@
     The other pictures of SteamImg (1.jpg...) are not touched.
     Called by run-autotest.ps1 -Promo (scripts/game/run-promo.ps1) only: the test runs never write SteamImg.
     Only pictures go to SteamImg (it is deployed with the mod): the captions stay in scenarios.json, read by the
-    marketing video (marketing/video) and the promo viewer.
+    marketing video (marketing/video-6.0.0) and the promo viewer.
 
 .PARAMETER Run
     Folder of the autotest run (logs/autotest/<time>); default: the latest.

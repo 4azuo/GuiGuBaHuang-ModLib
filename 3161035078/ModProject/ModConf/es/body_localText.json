@@ -1,0 +1,427 @@
+[
+	{
+		"id": "-1000010000",
+		"key": "body_button",
+		"en|ch|tc|kr": "Refinamiento corporal"
+	},
+	{
+		"id": "-1000010001",
+		"key": "body_title",
+		"en|ch|tc|kr": "Refinamiento corporal"
+	},
+	{
+		"id": "-1000010002",
+		"key": "body_none",
+		"en|ch|tc|kr": "No refina el cuerpo"
+	},
+	{
+		"id": "-1000010003",
+		"key": "body_realm_layer",
+		"en|ch|tc|kr": "{0} - {1}"
+	},
+	{
+		"id": "-1000010004",
+		"key": "body_realm_1",
+		"en|ch|tc|kr": "Piel de Cobre"
+	},
+	{
+		"id": "-1000010005",
+		"key": "body_realm_2",
+		"en|ch|tc|kr": "Hueso de Hierro"
+	},
+	{
+		"id": "-1000010006",
+		"key": "body_realm_3",
+		"en|ch|tc|kr": "Médula de Jade"
+	},
+	{
+		"id": "-1000010007",
+		"key": "body_realm_4",
+		"en|ch|tc|kr": "Cuerpo Dorado"
+	},
+	{
+		"id": "-1000010008",
+		"key": "body_realm_5",
+		"en|ch|tc|kr": "Cuerpo Imperecedero"
+	},
+	{
+		"id": "-1000010009",
+		"key": "body_layer_1",
+		"en|ch|tc|kr": "Inicial"
+	},
+	{
+		"id": "-1000010010",
+		"key": "body_layer_2",
+		"en|ch|tc|kr": "Media"
+	},
+	{
+		"id": "-1000010011",
+		"key": "body_layer_3",
+		"en|ch|tc|kr": "Final"
+	},
+	{
+		"id": "-1000010012",
+		"key": "body_npc",
+		"en|ch|tc|kr": "Cuerpo: {0}"
+	},
+	{
+		"id": "-1000010014",
+		"key": "body_start",
+		"en|ch|tc|kr": "Empezar a refinar el cuerpo"
+	},
+	{
+		"id": "-1000010017",
+		"key": "body_bottleneck",
+		"en|ch|tc|kr": "Cuello de botella: atraviesa al siguiente reino"
+	},
+	{
+		"id": "-1000010018",
+		"key": "body_exp",
+		"en|ch|tc|kr": "[icon:jingli] Temple: {0:#,##0} / {1:#,##0}"
+	},
+	{
+		"id": "-1000010019",
+		"key": "body_injured",
+		"en|ch|tc|kr": "Cuerpo herido: {0} mes(es) (bonificaciones a la mitad, sin entrenamiento)"
+	},
+	{
+		"id": "-1000010020",
+		"key": "body_bonus_hp",
+		"en|ch|tc|kr": "[icon:jiankang] PV máx. +{0:#,##0}"
+	},
+	{
+		"id": "-1000010021",
+		"key": "body_bonus_def",
+		"en|ch|tc|kr": "[icon:fangyu] Defensa +{0:#,##0}"
+	},
+	{
+		"id": "-1000010022",
+		"key": "body_bonus_basis",
+		"en|ch|tc|kr": "[icon:quanfa] Puño / [icon:zhangfa] Palma / [icon:zhifa] Dedo +{0}"
+	},
+	{
+		"id": "-1000010023",
+		"key": "body_bonus_qi",
+		"en|ch|tc|kr": "[icon:jianyidu] Qi reunido -{0}%"
+	},
+	{
+		"id": "-1000010025",
+		"key": "body_bath_done",
+		"en|ch|tc|kr": "Un baño medicinal al mes: el cuerpo necesita tiempo para absorberlo."
+	},
+	{
+		"id": "-1000010026",
+		"key": "body_bath_bottleneck",
+		"en|ch|tc|kr": "El cuerpo está en un cuello de botella: un baño no sirve hasta el avance."
+	},
+	{
+		"id": "-1000010027",
+		"key": "body_break",
+		"en|ch|tc|kr": "Avanzar ({0:0}%)"
+	},
+	{
+		"id": "-1000010028",
+		"key": "body_break_grade",
+		"en|ch|tc|kr": "{0} requiere al menos el grado de cultivo {1}."
+	},
+	{
+		"id": "-1000010029",
+		"key": "body_break_ok",
+		"en|ch|tc|kr": "¡El cuerpo avanza: {0}!"
+	},
+	{
+		"id": "-1000010030",
+		"key": "body_break_fail",
+		"en|ch|tc|kr": "El avance fracasa: se pierde la mitad del temple y el cuerpo queda herido {0} meses."
+	},
+	{
+		"id": "-1000010031",
+		"key": "body_help",
+		"en|ch|tc|kr": "Exp.: daño recibido en combate, entrenamiento cada mes, un baño medicinal al mes. La última capa de un reino requiere un avance."
+	},
+	{
+		"id": "-1000010032",
+		"key": "log_body_start",
+		"en|ch|tc|kr": "Empezó a refinar el cuerpo."
+	},
+	{
+		"id": "-1000010033",
+		"key": "log_body_layer",
+		"en|ch|tc|kr": "Refinamiento corporal: {0}."
+	},
+	{
+		"id": "-1000010034",
+		"key": "log_body_realm",
+		"en|ch|tc|kr": "El cuerpo avanzó: {0}."
+	},
+	{
+		"id": "-1000010035",
+		"key": "log_body_fail",
+		"en|ch|tc|kr": "Falló un avance corporal: herido {0} meses."
+	},
+	{
+		"id": "-1000010013",
+		"key": "body_intro",
+		"en|ch|tc|kr": "Templa la carne como otros templan su Qi: los golpes recibidos en combate, el entrenamiento diario y los baños medicinales endurecen piel, hueso y médula.\nCinco reinos: Piel de Cobre, Hueso de Hierro, Médula de Jade, Cuerpo Dorado, Cuerpo Imperecedero (3 capas cada uno).\nBonificaciones: PV máx., defensa, base de puño / palma / dedo, y más PV / defensa / ataque en cada avance del cultivo."
+	},
+	{
+		"id": "-1000010015",
+		"key": "body_start_confirm",
+		"en|ch|tc|kr": "Un cuerpo fuerte bebe la energía espiritual: según su reino, quien refina el cuerpo necesita x1,1 a x1,5 de exp. de cultivo y reúne entre un 10 % y un 30 % menos de Qi, pero gana más en cada avance. ¿Empezar a refinar el cuerpo?"
+	},
+	{
+		"id": "-1000010036",
+		"key": "body_bonus_break",
+		"en|ch|tc|kr": "De los avances: [icon:jiankang] PV +{0:#,##0}, [icon:fangyu] defensa +{1:#,##0}, [icon:gongji] ataque +{2:#,##0}"
+	},
+	{
+		"id": "-1000010037",
+		"key": "body_break_rates",
+		"en|ch|tc|kr": "Cada avance del cultivo: [icon:jiankang] +{0}% PV, [icon:fangyu] +{1}% defensa, [icon:gongji] +{2}% ataque de lo que otorga"
+	},
+	{
+		"id": "-1000010038",
+		"key": "body_exp_rate",
+		"en|ch|tc|kr": "[icon:wuxing] Exp. de cultivo necesaria x{0:0.00} (absorbida por el cuerpo: {1:#,##0})"
+	},
+	{
+		"id": "-1000010039",
+		"key": "log_body_breakbonus",
+		"en|ch|tc|kr": "El cuerpo sacó fuerza del avance: en total PV +{0:#,##0}, defensa +{1:#,##0}, ataque +{2:#,##0}."
+	},
+	{
+		"id": "-1000010024",
+		"key": "body_bath",
+		"en|ch|tc|kr": "Baño medicinal (+{0:#,##0} de temple)"
+	},
+	{
+		"id": "-1000010040",
+		"key": "body_bath_need",
+		"en|ch|tc|kr": "Un baño medicinal necesita en la bolsa los tesoros naturales y hierbas mostrados bajo el botón."
+	},
+	{
+		"id": "-1000010043",
+		"key": "body_break_need",
+		"en|ch|tc|kr": "Un avance del cuerpo necesita en la bolsa los tesoros naturales y hierbas mostrados bajo el botón; se gastan aunque falle."
+	},
+	{
+		"id": "-1000010016",
+		"key": "body_top",
+		"en|ch|tc|kr": "[icon:daodian] El cuerpo está en su cima: lo que gana ahora se vuelve su esencia"
+	},
+	{
+		"id": "-1000010044",
+		"key": "body_essence",
+		"en|ch|tc|kr": "[icon:daodian] Esencia corporal: {0:#,##0} ([icon:jiankang] PV máx. +{1}%, [icon:fangyu] defensa +{2}%, [icon:quanfa] puño / palma / dedo +{3})"
+	},
+	{
+		"id": "-1000010041",
+		"key": "body_bath_have",
+		"en|ch|tc|kr": "Tesoros naturales como {0} o más raros: {1} / {2}"
+	},
+	{
+		"id": "-1000010042",
+		"key": "body_herbs_have",
+		"en|ch|tc|kr": "Hierbas o píldoras (un elixir cuenta 10, un rocío 5): {0} / {1}"
+	},
+	{
+		"id": "-1000010049",
+		"key": "body_life_lost",
+		"en|ch|tc|kr": "La dosis fuerte costó {0} mes(es) de vida."
+	},
+	{
+		"id": "-1000010045",
+		"key": "body_bath_dose",
+		"en|ch|tc|kr": "Baño x{0}: +{1:#,##0}"
+	},
+	{
+		"id": "-1000010046",
+		"key": "body_break_dose",
+		"en|ch|tc|kr": "Avance x{0}: {1:0}% (+{2}% de bono)"
+	},
+	{
+		"id": "-1000010048",
+		"key": "body_backlash",
+		"en|ch|tc|kr": "Contragolpe: sin temple, el cuerpo queda herido un mes, se pierden {0} mes(es) de vida."
+	},
+	{
+		"id": "-1000010050",
+		"key": "body_temper",
+		"en|ch|tc|kr": "[icon:hudun] Cuerpo templado: [icon:jiankang] PV máx. +{0}%, [icon:fangyu] defensa +{1}%"
+	},
+	{
+		"id": "-1000010053",
+		"key": "body_need_treasure",
+		"en|ch|tc|kr": "{0}+: {1} / {2}"
+	},
+	{
+		"id": "-1000010054",
+		"key": "body_need_herbs",
+		"en|ch|tc|kr": "Hierbas {0}%: {1} altas, {2} medias o {3} bajas"
+	},
+	{
+		"id": "-1000010055",
+		"key": "body_materials_hint",
+		"en|ch|tc|kr": "Tesoros naturales: 天材地宝, piedras divinas, rocíos inmortales, orbes (o más raros). Hierbas y materiales espirituales de nivel de objeto {0}+ para tu grado (los inferiores no sirven): bajo = tu mínimo, medio = +1, alto = +2 o más; un elixir cuenta doble."
+	},
+	{
+		"id": "-1000010047",
+		"key": "body_dose_hint",
+		"en|ch|tc|kr": "Aviso: x2 / x3 dan +20% / +50% pero con más riesgo. Un contragolpe o un avance fallido cuesta vida: si no queda, el cultivador muere. Un cuerpo resistente (PV máx., defensa, puño / palma / dedo) reduce un poco el riesgo."
+	},
+	{
+		"id": "-1000010051",
+		"key": "body_risk",
+		"en|ch|tc|kr": "[icon:shouming] Contragolpe {0:0.#}% (unos {1} meses de vida)"
+	},
+	{
+		"id": "-1000010052",
+		"key": "body_break_risk",
+		"en|ch|tc|kr": "[icon:shouming] Fallo: unos {0} meses de vida"
+	},
+	{
+		"id": "-1000010056",
+		"key": "body_deadly",
+		"en|ch|tc|kr": "[icon:shouming] No queda vida: el cultivador morirá."
+	},
+	{
+		"id": "-1000010057",
+		"key": "log_body_deadly",
+		"en|ch|tc|kr": "El refinamiento corporal costó {0} meses de vida: no queda nada."
+	},
+	{
+		"id": "-1000010058",
+		"key": "body_life_left",
+		"en|ch|tc|kr": "[icon:shouming] Vida restante: {0} a {1} m"
+	},
+	{
+		"id": "-1000010065",
+		"key": "body_place_no",
+		"en|ch|tc|kr": "salir"
+	},
+	{
+		"id": "-1000010059",
+		"key": "body_place_1",
+		"en|ch|tc|kr": "Cascada"
+	},
+	{
+		"id": "-1000010076",
+		"key": "secl_name_Waterfall",
+		"en|ch|tc|kr": "Cascada"
+	},
+	{
+		"id": "-1000010060",
+		"key": "body_place_2",
+		"en|ch|tc|kr": "Lago de lava"
+	},
+	{
+		"id": "-1000010077",
+		"key": "secl_name_Lava",
+		"en|ch|tc|kr": "Lago de lava"
+	},
+	{
+		"id": "-1000010061",
+		"key": "body_place_3",
+		"en|ch|tc|kr": "Estanque del trueno"
+	},
+	{
+		"id": "-1000010078",
+		"key": "secl_name_Thunder",
+		"en|ch|tc|kr": "Estanque del trueno"
+	},
+	{
+		"id": "-1000010064",
+		"key": "body_place_o",
+		"en|ch|tc|kr": "Quedarse {0} año(s) (unos {1} de exp. corporal)"
+	},
+	{
+		"id": "-1000010066",
+		"key": "body_place_text_1",
+		"en|ch|tc|kr": "En el camino oyes un rugido: una cascada cae desde un acantilado y su agua golpea las rocas como diez mil puños. Un refinador corporal podría quedarse debajo durante años, hasta que la piel ya no sienta nada. (Vida restante: {0} años)"
+	},
+	{
+		"id": "-1000010067",
+		"key": "body_place_text_2",
+		"en|ch|tc|kr": "El suelo se calienta: en una hondonada de la montaña hierve un lago de lava rojo. Solo un cuerpo de huesos de hierro podría sentarse en él y dejar que el fuego queme las impurezas de la médula. (Vida restante: {0} años)"
+	},
+	{
+		"id": "-1000010068",
+		"key": "body_place_text_3",
+		"en|ch|tc|kr": "Las nubes se reúnen sobre un estanque oscuro y los rayos caen en él sin fin: un estanque del trueno. Un cuerpo dorado podría bañarse en él, golpeado mil veces al día. (Vida restante: {0} años)"
+	},
+	{
+		"id": "-1000010069",
+		"key": "body_trib_button",
+		"en|ch|tc|kr": "Tribulación corporal (combate)"
+	},
+	{
+		"id": "-1000010070",
+		"key": "body_trib_hint",
+		"en|ch|tc|kr": "Resiste los rayos con como máximo {0} % de PM: éxito seguro, templado +{1} %; si caes: cuenta como fracaso"
+	},
+	{
+		"id": "-1000010071",
+		"key": "body_trib_ok",
+		"en|ch|tc|kr": "La carne resistió bajo los rayos. El cuerpo asciende a {0}."
+	},
+	{
+		"id": "-1000010072",
+		"key": "body_trib_fail",
+		"en|ch|tc|kr": "El cuerpo cayó bajo los rayos: herido durante {0} meses, se pierde la mitad de la exp."
+	},
+	{
+		"id": "-1000010073",
+		"key": "log_body_trib_start",
+		"en|ch|tc|kr": "El cuerpo afrontó la tribulación del rayo para entrar en {0}."
+	},
+	{
+		"id": "-1000010074",
+		"key": "body_sect",
+		"en|ch|tc|kr": "Tu secta {0} enseña refinamiento corporal: entrenamiento x{1}."
+	},
+	{
+		"id": "-1000010075",
+		"key": "body_sect_ui",
+		"en|ch|tc|kr": "Esta secta lucha a mano desnuda y enseña refinamiento corporal (sus miembros entrenan x{0})."
+	},
+	{
+		"id": "-1000010079",
+		"key": "secl_res_Waterfall",
+		"en|ch|tc|kr": "El agua ya no duele. Cuerpo: {0} (+{1} capas)."
+	},
+	{
+		"id": "-1000010080",
+		"key": "secl_res_Lava",
+		"en|ch|tc|kr": "El fuego atravesó la médula y la dejó limpia. Cuerpo: {0} (+{1} capas)."
+	},
+	{
+		"id": "-1000010081",
+		"key": "secl_res_Thunder",
+		"en|ch|tc|kr": "Mil golpes al día, durante años: el cuerpo resuena como una campana. Cuerpo: {0} (+{1} capas)."
+	},
+	{
+		"id": "-1000010082",
+		"key": "log_body_place_left",
+		"en|ch|tc|kr": "Encontraste un(a) {0} y seguiste tu camino."
+	},
+	{
+		"id": "-1000010083",
+		"key": "log_npc_body_place",
+		"en|ch|tc|kr": "{0} fue a templar el cuerpo en un(a) {1} durante {2} años."
+	},
+	{
+		"id": "-1000010084",
+		"key": "log_npc_body_place_end",
+		"en|ch|tc|kr": "{0} volvió de {1}: {2}."
+	},
+	{
+		"id": "-1000010085",
+		"key": "log_npc_body_trib_ok",
+		"en|ch|tc|kr": "{0} sobrevivió a la tribulación corporal: {1}."
+	},
+	{
+		"id": "-1000010086",
+		"key": "log_npc_body_trib_fail",
+		"en|ch|tc|kr": "{0} cayó en la tribulación corporal ({1})."
+	}
+]

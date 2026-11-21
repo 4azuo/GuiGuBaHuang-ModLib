@@ -708,5 +708,105 @@
 		"id": -1000001191,
 		"key": "smcfgs191",
 		"en|ch|tc|kr": "Le démon du cœur : votre passé revient en rêve ; affrontez ce que toutes les autres histoires ont fait de vous."
+	},
+	{
+		"id": "-1000001193",
+		"key": "smcfgs193",
+		"en|ch|tc|kr": "Aucun mérite"
+	},
+	{
+		"id": "-1000001192",
+		"key": "smcfgs192",
+		"en|ch|tc|kr": "Pas de culture du corps"
+	},
+	{
+		"id": "-1000001194",
+		"key": "smcfgs194",
+		"en|ch|tc|kr": "Pas de Dao de l'artisan"
+	},
+	{
+		"id": "-1000001195",
+		"key": "smcfgs195",
+		"en|ch|tc|kr": "Pas de Cœur du Dao"
+	},
+	{
+		"id": "-1000001196",
+		"key": "smcfgs196",
+		"en|ch|tc|kr": "Pas de sens spirituel"
+	},
+	{
+		"id": "-1000001197",
+		"key": "smcfgs197",
+		"en|ch|tc|kr": "Voies de cultivation"
+	},
+	{
+		"id": "-1000001198",
+		"key": "smcfgs198",
+		"en|ch|tc|kr": "Domaines"
+	},
+	{
+		"id": "-1000001199",
+		"key": "smcfgs199",
+		"en|ch|tc|kr": "EXP de raffinement corporel"
+	},
+	{
+		"id": "-1000001200",
+		"key": "smcfgs200",
+		"en|ch|tc|kr": "Mérite gagné"
+	},
+	{
+		"id": "-1000001201",
+		"key": "smcfgs201",
+		"en|ch|tc|kr": "EXP du Dao artisan"
+	},
+	{
+		"id": "-1000001202",
+		"key": "smcfgs202",
+		"en|ch|tc|kr": "Cœur du Dao gagné"
+	},
+	{
+		"id": "-1000001203",
+		"key": "smcfgs203",
+		"en|ch|tc|kr": "EXP du sens spirituel"
+	},
+	{
+		"id": "-1000001204",
+		"key": "smcfgs204",
+		"en|ch|tc|kr": "Pas de domaines (aucune parcelle à acheter)"
+	},
+	{
+		"id": "-1000001205",
+		"key": "smcfgs205",
+		"en|ch|tc|kr": "Les PNJ n'achètent pas de maisons"
+	},
+	{
+		"id": "-1000001206",
+		"key": "smcfgs206",
+		"en|ch|tc|kr": "Prix des maisons et terrains"
+	},
+	{
+		"id": "-1000001207",
+		"key": "smcfgs207",
+		"en|ch|tc|kr": "Taxe d'habitation"
+	},
+	{
+		"id": "-1000001208",
+		"key": "smcfgs208",
+		"en|ch|tc|kr": "La forge du vieux Tie : un vieux forgeron s'est brûlé la main ; passe son examen, rapporte le minerai d'un filon, garde sa forge en vie (Dao artisan)."
+	},
+	{
+		"id": "-1000001209",
+		"key": "smcfgs209",
+		"en|ch|tc|kr": "La maison de la vieille rue : une cave sous ta maison, les voisins de ta rue et ce que tu en fais (domaines)."
+	},
+	{
+		"id": "-1000001210",
+		"key": "smcfgs210",
+		"en|ch|tc|kr": "Cendres de la ville : un enfant a survécu à une ville passée au fil de l'épée et grandit en demandant qui l'a fait (mérite et karma)."
+	},
+	{
+		"id": "-1000001211",
+		"key": "smcfgs211",
+		"en|ch|tc|kr": "Un battement dans la pierre : ton sens spirituel trouve un raffineur corporel à moitié pétrifié par sa tribulation (sens spirituel, raffinement corporel)."
 	}
 ]

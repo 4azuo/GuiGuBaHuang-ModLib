@@ -49,7 +49,7 @@ upgrade to city        = 3^area x 1,000,000
 | Hook | What happens |
 |---|---|
 | `OnLoadGame` | every town: TaxRate 1, first budget, a council with a master (the most famous suitable unit within 4 of the town); every sect: TaxRate 1 |
-| `OnOpenUIEnd(Town)` | player not paid this month and not a guardian: `CheckIn` with a random guardian |
+| `OnOpenUIEnd(Town)` | player not paid this month, not a guardian and without a house in the town ([EstateEvent](EstateEvent.md): the house tax replaces it): `CheckIn` with a random guardian |
 | `OnOpenUIEnd(School)` | player not a member: `CheckIn` with a random sect member nearby |
 | `OnMonthly` | `PayTaxTown` cleared |
 | `OnMonthlyForEachWUnit` | repairs role lucks out of sync with `TownMasters`; in a town: council members are fully healed; other NPCs pay `tax x MonthsPassed` (healed: the inn; tax > 1 % of their money: +1 hate for the master, < 0.1 %: +1 intimacy) or, unable, leave the town (+5 hate, moved); `RecordTax`. NPCs in a sect they are not part of pay its tax to the sect |
@@ -65,7 +65,7 @@ Enough money: pays the town / sect, `PayTaxTown`, log `log_tax_paid`. Otherwise 
 
 Buttons from [UIEvent](UIEvent.md) on the town window:
 
-- **Guardian / master**: "Manage town" -> `OpenUITownManage`: NPC search with the council; town and master, budget, monthly salaries, tax rate slider 0.4-20 (live base tax, help `town_tax_help`), tax statistics of last month (`TaxStatText`); a "Build" button per missing sub-building it may rebuild ([BuildingArrangeEvent](BuildingArrangeEvent.md)); "Upgrade to city" (master, not yet a city; budget > cost), "Deposit", "Withdraw" (`UIPropSelectCount`), "Hire guardians" (NPC search with suitable units in the town within 4, grade < player + 2), "Leave".
+- **Guardian / master**: "Manage town" -> `OpenUITownManage`: NPC search with the council; town and master, budget, monthly salaries, tax rate slider 0.4-20 (live base tax, help `town_tax_help`), tax statistics of last month (`TaxStatText`), the mortals (population -> target, mortal tax) and a "Plots" button ([EstateEvent](EstateEvent.md)); a "Build" button per missing sub-building it may rebuild ([BuildingArrangeEvent](BuildingArrangeEvent.md)); "Upgrade to city" (master, not yet a city; budget > cost), "Deposit", "Withdraw" (`UIPropSelectCount`), "Hire guardians" (NPC search with suitable units in the town within 4, grade < player + 2), "Leave".
 - **Others**: "Tax: N" -> `OpenUITownGuardians`: the council; a town master of another town gets "Declare war" -> `MapBuildBattleEvent.TownWar(town, own town, true)` ([MapBuildBattleEvent](MapBuildBattleEvent.md)).
 
 NPC info of a council member: salary (shown to the master), town; "Dismiss" in the manage window. NPC info from the hire window: salary, reputation, "Hire" (paid from the town budget).
@@ -77,3 +77,11 @@ NPC info of a council member: salary (shown to the master), town; "Dismiss" in t
 ## Tests
 
 TG-10, TM-11, TG-40, TG-58.
+
+## Town management: buildings and banknotes (2026-11-20)
+
+The management window lists the buildings of the town (`BuildingCostEnum`, not the sects'): the game's picture of each
+(`BuildingArrangeEvent.Sprite`: TownCommon `Build<sub type id>`, e.g. Build2003 the portal, Build2008 the factory), its
+cost from the budget (spirit stones: the budget is a long), then "Built", a "Build" button, or "Not in this town" (no
+such building at the start of the world). The buttons on the right are one column of the same size.
+Test: TG-40 (screenshot of the window, a building taken down for its "Build" button).

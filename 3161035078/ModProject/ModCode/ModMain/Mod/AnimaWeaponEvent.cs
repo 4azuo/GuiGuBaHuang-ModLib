@@ -1,3 +1,4 @@
+using MOD_nE7UL2.Helper;
 using EGameTypeData;
 using MOD_nE7UL2.Const;
 using ModLib.Attributes;
@@ -282,7 +283,7 @@ namespace MOD_nE7UL2.Mod
             var usedBy = GameKeyUsing(key);
             if (usedBy != null)
             {
-                g.ui.MsgBox(GameTool.LS("setting005"), string.Format(GameTool.LS("setting008"), KeyName(key)));
+                InfoDialog.Msg(GameTool.LS("setting005"), string.Format(GameTool.LS("setting008"), KeyName(key)));
                 RefreshUI();
                 return;
             }

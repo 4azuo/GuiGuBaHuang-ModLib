@@ -1,4 +1,4 @@
-using MOD_nE7UL2.Const;
+﻿using MOD_nE7UL2.Const;
 using ModLib.Attributes;
 using ModLib.Helper;
 using ModLib.Mod;
@@ -47,7 +47,7 @@ namespace MOD_nE7UL2.Mod
             new[] { "log_tax", "zm_fanrongdu" }, new[] { "log_storage", "zm_lingshi" }, new[] { "log_loan", "zm_lingshi" },
             new[] { "log_stalker", "shanbiD" }, new[] { "log_buyorder", "yaocai" }, new[] { "log_market", "zm_lingshi" },
             new[] { "market_", "zm_lingshi" }, new[] { "log_family", "zm_renshu" }, new[] { "log_secl", "wuxing" },
-            new[] { "log_story", "daodian" }, new[] { "log_wanted", "gongji" }, new[] { "log_town", "zm_andingdu" },
+            new[] { "log_story", "daodian" }, new[] { "log_wanted", "gongji" }, new[] { "log_clan", "zhandouxiaoguo" }, new[] { "log_town", "zm_andingdu" },
             new[] { "log_team", "shengwang" }, new[] { "log_refine", "lianqi" }, new[] { "log_score", "daoli" }, new[] { "enc_", "xingyun" },
         };
 

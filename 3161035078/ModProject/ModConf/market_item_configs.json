@@ -1,0 +1,21 @@
+{
+	"__name": "Player market (RealMarketEvent3)",
+	"__help": [
+		"A value left out (or a broken file): the default of the mod.",
+		"JoinRange: cells around a town where NPCs come to its market.",
+		"SellerJoinMarketRate / BuyerJoinMarketRate: chances in % a month (S&M MarketItemNpcJoinRate on top).",
+		"SellRateDependOnGrade: chance in % that a seller puts up an item = (7 - item level) x this. BuyRateDependOnGrade: chance in % of a bid = item level x this.",
+		"GetDealRate: chance in % a month of a deal = this x best bid / price. CancelDealOnMonth: chance in % a month that the seller takes the item back = this x months on sale.",
+		"CancelDealLastMinuteRate, HiddenRate (seller hides the name), GetStalkedRate (S&M MarketItemGetAttackedRate on top): chances in %."
+	],
+	"JoinRange": 3,
+	"SellerJoinMarketRate": 8.00,
+	"SellRateDependOnGrade": 3.00,
+	"BuyerJoinMarketRate": 12.00,
+	"BuyRateDependOnGrade": 4.00,
+	"GetDealRate": 24.00,
+	"CancelDealOnMonth": 3.00,
+	"CancelDealLastMinuteRate": 8.00,
+	"HiddenRate": 20.00,
+	"GetStalkedRate": 10.00
+}

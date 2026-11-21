@@ -27,7 +27,7 @@ namespace MOD_nE7UL2.Mod
         /// </summary>
         public static double FeeRate()
         {
-            return SMLocalConfigsEvent.Instance.Calculate(ModMain.ModObj.ModSettings.RealStorageConfigs.FeeRate, SMLocalConfigsEvent.Instance.Configs.AddBankFee);
+            return SMLocalConfigsEvent.Instance.Calculate(RealStorageConfig.Conf.FeeRate, SMLocalConfigsEvent.Instance.Configs.AddBankFee);
         }
 
         private Text txtStorageMoney;

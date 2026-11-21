@@ -1,4 +1,5 @@
-﻿using MOD_nE7UL2.Const;
+﻿using MOD_nE7UL2.Helper;
+using MOD_nE7UL2.Const;
 using ModLib.Attributes;
 using ModLib.Enum;
 using ModLib.Helper;
@@ -101,7 +102,7 @@ namespace MOD_nE7UL2.Mod
         {
             if (!g.ui.HasUI(UIType.MapMain))
             {
-                g.ui.MsgBox(GameTool.LS("trainer_title"), GameTool.LS("trainer044"));
+                InfoDialog.Msg(GameTool.LS("trainer_title"), GameTool.LS("trainer044"));
                 return;
             }
 
@@ -454,7 +455,7 @@ namespace MOD_nE7UL2.Mod
                     g.world.playerUnit.AddUnitProp(itemId.Parse<int>(), 1);
                 }
             }
-            g.ui.MsgBox(GameTool.LS("ui_info"), GameTool.LS("trainer046"));
+            InfoDialog.Msg(GameTool.LS("ui_info"), GameTool.LS("trainer046"));
         }
 
         /// <summary>
@@ -829,11 +830,11 @@ namespace MOD_nE7UL2.Mod
                 }
                 player.AddLuck(MapBuildPropertyEvent.TOWN_MASTER_LUCK_ID);
                 MapBuildPropertyEvent.Instance.TownMasters[town.buildData.id] = new List<string> { player.GetUnitId() };
-                g.ui.MsgBox(GameTool.LS("other500020011"), GameTool.LS("townmaster420041113drama"));
+                InfoDialog.Msg(GameTool.LS("other500020011"), GameTool.LS("townmaster420041113drama"));
             }
             else
             {
-                g.ui.MsgBox(GameTool.LS("other500020022"), GameTool.LS("other500020065"));
+                InfoDialog.Msg(GameTool.LS("other500020022"), GameTool.LS("other500020065"));
             }
         }
     }

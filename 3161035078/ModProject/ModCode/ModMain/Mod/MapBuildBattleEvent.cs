@@ -8,7 +8,6 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
-using static MOD_nE7UL2.Object.ModStts;
 using ModLib.Helper;
 
 namespace MOD_nE7UL2.Mod
@@ -53,7 +52,7 @@ namespace MOD_nE7UL2.Mod
         }
 
         public static MapBuildBattleEvent Instance { get; set; }
-        public static _MapBuildBattleConfigs Configs => ModMain.ModObj.ModSettings.MapBuildBattleConfigs;
+        public static MapBuildBattleConfig Configs => MapBuildBattleConfig.Conf;
 
         public const int JOIN_RANGE = 4;
         public const float MONST_WAVE_RATE = 0.5f;
@@ -454,7 +453,7 @@ namespace MOD_nE7UL2.Mod
             CalTownWarInfo(townA_def, townB_atk);
             //auto battle
             var teamAPoint = UnitPowerCalHelper.CalWUnitBattlePower(TeamAWUnits);
-            var teamATotalPoint = teamAPoint * TeamAUnitCount * /*def point*/1.5;
+            var teamATotalPoint = teamAPoint * TeamAUnitCount * /*def point*/1.5 * /*city wall, EstateEvent*/EstateEvent.WallDefenseRate(BuildBaseA);
             var teamBPoint = UnitPowerCalHelper.CalWUnitBattlePower(TeamBWUnits);
             var teamBTotalPoint = teamBPoint * TeamBUnitCount;
             //battle end
@@ -757,7 +756,7 @@ namespace MOD_nE7UL2.Mod
             CalMonstWaveInfo(teamAbuildBase);
             //auto battle
             var teamAPoint = UnitPowerCalHelper.CalWUnitBattlePower(TeamAWUnits);
-            var teamATotalPoint = teamAPoint * TeamAUnitCount * /*def point*/1.5;
+            var teamATotalPoint = teamAPoint * TeamAUnitCount * /*def point*/1.5 * /*city wall, EstateEvent*/EstateEvent.WallDefenseRate(BuildBaseA);
             var gameLvl = GameHelper.GetGameLevel().Parse<int>();
             var areaId = teamAbuildBase.gridData.areaBaseID;
             var teamBPoint = UnitPowerCalHelper.CalMonstBattlePower(gameLvl, areaId);
@@ -875,6 +874,7 @@ namespace MOD_nE7UL2.Mod
                     var utA = PlayerSide == TeamSideEnum.TeamA ? UnitType.PlayerNPC : UnitType.Monst;
                     TeamACUnits.AddRange(TeamAWUnits.Select(x => ModBattleEvent.SceneBattle.unit.CreateUnitHuman<UnitCtrlHumanNPC>(x.data, utA)).Cast<UnitCtrlBase>());
                     TeamACUnits.ForEach(x => InitUnit(x));
+                    ApplyWallDefense();
                     //team B
                     var utB = PlayerSide == TeamSideEnum.TeamB ? UnitType.PlayerNPC : UnitType.Monst;
                     TeamBCUnits.AddRange(TeamBWUnits.Select(x => ModBattleEvent.SceneBattle.unit.CreateUnitHuman<UnitCtrlHumanNPC>(x.data, utB)).Cast<UnitCtrlBase>());
@@ -885,6 +885,7 @@ namespace MOD_nE7UL2.Mod
                     //team A
                     TeamACUnits.AddRange(TeamAWUnits.Select(x => ModBattleEvent.SceneBattle.unit.CreateUnitHuman<UnitCtrlHumanNPC>(x.data, UnitType.PlayerNPC)).Cast<UnitCtrlBase>());
                     TeamACUnits.ForEach(x => InitUnit(x));
+                    ApplyWallDefense();
                     //team B
                     try
                     {
@@ -1195,6 +1196,23 @@ namespace MOD_nE7UL2.Mod
         /// <summary>
         /// Places and sets a unit.
         /// </summary>
+        /// <summary>
+        /// The wall of a defended city (EstateEvent): the defense of every defender, the player too when he defends, x
+        /// the wall rate (+15 % a level) for the battle.
+        /// </summary>
+        public static void ApplyWallDefense()
+        {
+            var rate = EstateEvent.WallDefenseRate(BuildBaseA);
+            if (rate <= 1f)
+                return;
+            var defenders = TeamACUnits.ToList();
+            if (PlayerSide == TeamSideEnum.TeamA && ModBattleEvent.PlayerUnit != null)
+                defenders.Add(ModBattleEvent.PlayerUnit);
+            foreach (var u in defenders.Where(x => x?.data != null))
+                u.data.defense.baseValue = ValueHelper.SafeAddInt(u.data.defense.baseValue, u.data.defense.baseValue * (double)(rate - 1f));
+            DebugHelper.WriteLine($"{BuildBaseA?.name}: city wall, defenders' defense x{rate:0.00} ({defenders.Count})");
+        }
+
         public static void InitUnit(UnitCtrlBase cunit)
         {
             cunit.AddState(UnitStateType.NotDie, float.MaxValue);

@@ -19,6 +19,10 @@ namespace MOD_nE7UL2.Mod
     /// - Collapsed cave (outside towns): explore (materials / spirit stones / injury) / leave.
     /// - Spirit beast cub (outside towns): feed it a herb (+Luck) / leave it.
     /// - Town festival (in a town): join (Mood, the townspeople like the player more) / skip.
+    /// - Merit (MeritEvent): flood relief / plague (in a town: donate stones / herbs), beast raid on a village (outside towns:
+    ///   fight it off with a chance, or walk away); the old ones give or take merit too (wounded, cub, festival).
+    /// - Waterfall / lava pool / thunder pool (outside towns, body refiners of Copper Skin / Iron Bone / Golden Body and
+    ///   above, BodyCulEvent): stay 1, 3 or 5 years to temper the body (a seclusion) / leave.
     /// Every result is written in the Taoist log.
     /// </summary>
     [Cache(ModConst.ENCOUNTER_EVENT)]
@@ -26,7 +30,11 @@ namespace MOD_nE7UL2.Mod
     {
         public static EncounterEvent Instance { get; set; }
 
-        public enum Encounter { Wounded, Chess, Peddler, Cave, Cub, Festival, Heaven }
+        public enum Encounter { Wounded, Chess, Peddler, Cave, Cub, Festival, Heaven, Waterfall, Lava, Thunder, Flood, Plague, BeastRaid }
+
+        /// <summary>The tempering place of the body (BodyCulEvent) of a place encounter, null for the others.</summary>
+        public static BodyCulEvent.Place? PlaceOf(Encounter e) => e == Encounter.Waterfall ? BodyCulEvent.Place.Waterfall : e == Encounter.Lava ? BodyCulEvent.Place.Lava : e == Encounter.Thunder ? BodyCulEvent.Place.Thunder : (BodyCulEvent.Place?)null;
+        public static Encounter EncounterOf(BodyCulEvent.Place p) => p == BodyCulEvent.Place.Waterfall ? Encounter.Waterfall : p == BodyCulEvent.Place.Lava ? Encounter.Lava : Encounter.Thunder;
 
         /// <summary>Encounters on/off (Taoist Settings).</summary>
         public bool Enabled { get; set; } = true;
@@ -114,12 +122,16 @@ namespace MOD_nE7UL2.Mod
             {
                 rs.Add(Encounter.Peddler);
                 rs.Add(Encounter.Festival);
+                if (MeritEvent.Enabled) { rs.Add(Encounter.Flood); rs.Add(Encounter.Plague); }
             }
             else
             {
                 rs.Add(Encounter.Cave);
                 rs.Add(Encounter.Cub);
                 if (WoundedNpc() != null) rs.Add(Encounter.Wounded);
+                // tempering places of the body: only for a body refiner who can stand them
+                rs.AddRange(BodyCulEvent.PlacesFor(Player).Select(EncounterOf));
+                if (MeritEvent.Enabled) rs.Add(Encounter.BeastRaid);
             }
             // rare: a heavenly trial, only for the hard settings (S&M score tier Ascetic and above)
             if (SMScoreEvent.HeavenUnlocked(SMScoreEvent.P)) rs.Add(Encounter.Heaven);
@@ -170,6 +182,23 @@ namespace MOD_nE7UL2.Mod
                     DramaHelper.OpenDrama2(string.Format(GameTool.LS("enc_festival"), Town?.name, Cost()), new List<string> { GameTool.LS("enc_festival_o1"), GameTool.LS("enc_festival_o2") },
                         x => Resolve(e, Opt(x)), Background(Encounter.Festival));
                     break;
+                case Encounter.Waterfall:
+                case Encounter.Lava:
+                case Encounter.Thunder:
+                    BodyCulEvent.OfferPlace(PlaceOf(e).Value);
+                    break;
+                case Encounter.Flood:
+                    DramaHelper.OpenDrama2(string.Format(GameTool.LS("enc_flood"), Town?.name, Cost(FLOOD_COST)), new List<string> { GameTool.LS("enc_flood_o1"), GameTool.LS("enc_flood_o2") },
+                        x => Resolve(e, Opt(x)), Background(Encounter.Flood));
+                    break;
+                case Encounter.Plague:
+                    DramaHelper.OpenDrama2(string.Format(GameTool.LS("enc_plague"), Town?.name, PLAGUE_HERBS), new List<string> { GameTool.LS("enc_plague_o1"), GameTool.LS("enc_plague_o2") },
+                        x => Resolve(e, Opt(x)), Background(Encounter.Plague));
+                    break;
+                case Encounter.BeastRaid:
+                    DramaHelper.OpenDrama2(string.Format(GameTool.LS("enc_raid"), RAID_WIN_CHANCE), new List<string> { GameTool.LS("enc_raid_o1"), GameTool.LS("enc_raid_o2") },
+                        x => Resolve(e, Opt(x)), Background(Encounter.BeastRaid));
+                    break;
                 case Encounter.Heaven:
                     DramaHelper.OpenDrama2(GameTool.LS("enc_heaven"), new List<string> { GameTool.LS("enc_heaven_o1"), GameTool.LS("enc_heaven_o2") },
                         x => Resolve(e, Opt(x)), Background(Encounter.Heaven));
@@ -188,9 +217,30 @@ namespace MOD_nE7UL2.Mod
                 case Encounter.Cub: return "xingxingqiyu";          // small beast lying under a tree
                 case Encounter.Festival: return "shimengzhai_denglong"; // house with lanterns at night
                 case Encounter.Heaven: return "xianrencijiu";       // an immortal in a bamboo grove
+                case Encounter.Waterfall:
+                case Encounter.Lava:
+                case Encounter.Thunder: return BodyCulEvent.PlaceBackground(PlaceOf(e).Value);
+                case Encounter.Flood: return "ayuluoshui1";         // water rushing
+                case Encounter.Plague: return "hundengshangren";    // hooded figure with a lantern
+                case Encounter.BeastRaid: return "xingxingqiyu";    // a beast under a tree
                 default: return "huapaonanziganxie";                // cultivator bowing
             }
         }
+
+        // ------------------------------------------------------------------ merit encounters (MeritEvent)
+
+        public const int FLOOD_COST = 8;           // x Cost(): the donation
+        public const int FLOOD_MERIT = 20;         // x grade
+        public const int PLAGUE_HERBS = 5;
+        public const int PLAGUE_MERIT = 15;        // x grade
+        public const float RAID_WIN_CHANCE = 60f;
+        public const int RAID_MERIT = 25;          // x grade, a win
+        public const int RAID_LOSE_MERIT = 5;      // x grade, a loss (fought anyway)
+        public const int RAID_FLEE_MERIT = -5;     // x grade, walked away
+        public const int WOUNDED_HELP_MERIT = 30;
+        public const int WOUNDED_ROB_MERIT = -60;
+        public const int CUB_MERIT = 10;
+        public const int FESTIVAL_MERIT = 5;
 
         // option index from the default option ids of DramaHelper (999790000 + index)
         private static int Opt(ConfDramaOptionsItem x) => x.id % 10;
@@ -216,6 +266,7 @@ namespace MOD_nE7UL2.Mod
                         if (npc != null) Player.data.unitData.relationData.AddIntim(npc.GetUnitId(), 100);
                         var herb = GiveItem(x => x.IsHerbItem() != null, Grade);
                         key = "enc_wounded_r1"; args = new object[] { herb };
+                        MeritEvent.Add(Player, WOUNDED_HELP_MERIT, "merit_src_wounded");
                     }
                     else if (opt == 1 && npc != null)
                     {
@@ -224,6 +275,7 @@ namespace MOD_nE7UL2.Mod
                         Player.AddUnitMoney(take);
                         npc.data.unitData.relationData.AddHate(Player.GetUnitId(), 300);
                         key = "enc_wounded_r2"; args = new object[] { take };
+                        MeritEvent.Add(Player, WOUNDED_ROB_MERIT, "merit_src_rob");
                     }
                     break;
                 case Encounter.Chess:
@@ -297,6 +349,7 @@ namespace MOD_nE7UL2.Mod
                         var luck = roll < 10f ? 2 : 1;
                         Player.AddProperty<int>(UnitPropertyEnum.Luck, luck);
                         key = "enc_cub_r"; args = new object[] { luck };
+                        MeritEvent.Add(Player, CUB_MERIT, "merit_src_cub");
                     }
                     break;
                 case Encounter.Festival:
@@ -312,6 +365,54 @@ namespace MOD_nE7UL2.Mod
                             foreach (var w in g.world.unit.GetUnitExact(town.GetOrigiPoint(), 6).ToArray().Where(x => !x.IsPlayer()).Take(5))
                                 w.data.unitData.relationData.AddIntim(Player.GetUnitId(), 20);
                         key = "enc_festival_r"; args = new object[] { add };
+                        MeritEvent.Add(Player, FESTIVAL_MERIT, "merit_src_festival");
+                    }
+                    break;
+                case Encounter.Flood:
+                    // flood relief: the donation goes to the town budget
+                    if (opt == 0)
+                    {
+                        if (!Pay(Cost(FLOOD_COST), Town)) { key = "enc_nomoney"; break; }
+                        var merit = FLOOD_MERIT * Grade;
+                        MeritEvent.Add(Player, merit, "merit_src_flood");
+                        key = "enc_flood_r"; args = new object[] { merit };
+                    }
+                    break;
+                case Encounter.Plague:
+                    // plague: herbs of the bag, the cheapest first
+                    if (opt == 0)
+                    {
+                        var herbs = Player.GetUnitProps().Where(x => x.propsItem?.IsHerbItem() != null).OrderBy(x => x.propsItem.worth).ToList();
+                        if (herbs.Sum(x => x.propsCount) < PLAGUE_HERBS) { key = "enc_plague_noherb"; break; }
+                        var left = PLAGUE_HERBS;
+                        foreach (var h in herbs)
+                        {
+                            if (left <= 0) break;
+                            var k = Math.Min(left, h.propsCount);
+                            Player.RemoveUnitProp(h.soleID, k);
+                            left -= k;
+                        }
+                        var merit = PLAGUE_MERIT * Grade;
+                        MeritEvent.Add(Player, merit, "merit_src_plague");
+                        key = "enc_plague_r"; args = new object[] { merit };
+                    }
+                    break;
+                case Encounter.BeastRaid:
+                    // a beast raid on a village: fight it off (a wound either way, merit), or walk away (a little karma)
+                    if (opt == 0)
+                    {
+                        var hp = Player.GetDynProperty(UnitDynPropertyEnum.Hp).value;
+                        var win = roll < RAID_WIN_CHANCE;
+                        var lost = Math.Max(1, hp * (win ? 2 : 4) / 10);
+                        Player.AddProperty<int>(UnitPropertyEnum.Hp, -Math.Min(lost, hp - 1));
+                        var merit = (win ? RAID_MERIT : RAID_LOSE_MERIT) * Grade;
+                        MeritEvent.Add(Player, merit, "merit_src_raid");
+                        key = win ? "enc_raid_win" : "enc_raid_lose"; args = new object[] { merit, lost };
+                    }
+                    else
+                    {
+                        MeritEvent.Add(Player, RAID_FLEE_MERIT * Grade, "merit_src_flee");
+                        key = "enc_raid_flee";
                     }
                     break;
                 case Encounter.Heaven:
@@ -371,6 +472,7 @@ namespace MOD_nE7UL2.Mod
             if (conf == null)
                 return string.Empty;
             Player.AddUnitProp(conf.id, 1);
+            ArtisanEvent.RefreshBag();   // a gift, not gathered (ArtisanEvent counts the herbs and ores found on the map)
             return GameTool.LS(conf.name);
         }
 

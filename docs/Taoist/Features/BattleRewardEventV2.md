@@ -16,7 +16,7 @@ Static (not saved): `PendingOneLifeDeath`, `PendingLossMonth`.
 
 `NoGrowupFromBattles`, `NoExpFromBattles`, `GrowUpSpeed` (scales the threshold steps), `Onelife`, `AutoSaveAfterLostInBattle`, `LostLifespanWhenDie`, `LostItemWhenDie`, `LostMoneyWhenDie`.
 
-`mod_configs.json` > `BattleRewardConfigs`: `ExpPerDmgDealt` 0.001, `ExpPerDmgRecv` 0.01.
+`battle_reward_configs.json` (`BattleRewardConfig`): `ExpPerDmgDealt` 0.001, `ExpPerDmgRecv` 0.01.
 
 ## Training by damage (`OnBattleUnitHit`)
 

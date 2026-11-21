@@ -2,7 +2,7 @@
 
 `3161035078/ModProject/ModCode/ModMain/Mod/RebirthEvent.cs` - cache key `ModConst.REBIRTH_EVENT` - group: World and NPCs
 
-Rebirth at the pub: the player goes back to grade 1 and loses exp and reputation, and gets a permanent luck that grows with each rebirth. Monsters get stronger with the total of the grades given up.
+Rebirth (a button of the player info, beside the damage calculation; until 6.0 at the pub): the player goes back to grade 1 and loses exp and reputation, and gets a permanent luck that grows with each rebirth. Monsters get stronger with the total of the grades given up.
 
 ## Saved data
 
@@ -20,7 +20,7 @@ Rebirth at the pub: the player goes back to grade 1 and loses exp and reputation
 
 | Hook | What happens |
 |---|---|
-| `OnOpenUIEnd(TownPub)` (in game, not in battle) | Button above the pub button when `town level (areaBaseID) > RebirthLevel`, `player grade > RebirthLevel` and `town level >= player grade`. Label `rebirth{420101001 + RebirthCount}`, tooltip `rebirth420103103`. |
+| Player info (UIEvent, the player's own) | Button `RebirthEvent.ButtonText` (`rebirth{420101001 + RebirthCount}`) left of "Damage Calc", tooltip `rebirth420103103`; shown unless NoRebirth. A click: `RebirthEvent.Open` - `Missing(player)` tells what is missing (`rebirth_need_grade`: grade above RebirthLevel; `rebirth_need_town`: in a town with `areaBaseID > RebirthLevel` and `>= grade`; `rebirth420103100`: no sect), else the confirmation, the rebirth, the player info closed. |
 
 Click:
 

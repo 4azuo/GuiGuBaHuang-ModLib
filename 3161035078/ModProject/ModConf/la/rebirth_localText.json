@@ -128,5 +128,20 @@
 		"id": "420109998",
 		"key": "rebirth420109998",
 		"en|ch|tc|kr": "Denuo incipere"
+	},
+	{
+		"id": "420103104",
+		"key": "rebirth_off",
+		"en|ch|tc|kr": "Renascentia exstincta est (optiones S&M)."
+	},
+	{
+		"id": "420103105",
+		"key": "rebirth_need_grade",
+		"en|ch|tc|kr": "Gradus tuus superior esse debet gradu ultimae renascentiae ({0})."
+	},
+	{
+		"id": "420103106",
+		"key": "rebirth_need_town",
+		"en|ch|tc|kr": "Renascentia fit in oppido regionis {1} vel superioris (super ultimam renascentiam, {0}, et saltem gradum tuum)."
 	}
 ]

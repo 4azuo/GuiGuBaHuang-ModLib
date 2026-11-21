@@ -1,7 +1,8 @@
-using ModLib.Helper;
+﻿using ModLib.Helper;
 using MOD_nE7UL2.Const;
 using MOD_nE7UL2.Mod;
 using System;
+using System.Collections.Generic;
 using System.Linq;
 using static MOD_nE7UL2.AutoTest.AutoTestHelper;
 using static MOD_nE7UL2.AutoTest.TownTestHelper;
@@ -525,6 +526,126 @@ namespace MOD_nE7UL2.AutoTest.Scenarios.Tool
             return s.Step("cleanup", c =>
             {
                 CloseAll(UIType.NPCSearch, UIType.TextInfoLong, UIType.TextInfo, UIType.NPCInfo);
+                c.Info("done (the save is restored by run-autotest.ps1)");
+            });
+        }
+    }
+    /// <summary>
+    /// TR-03 (in the game): houses and the city. A city (or a town) of the player: master, palace level 4, wall level 3,
+    /// the player's immortal palace with its rooms, NPC cultivators' houses, grown mortal houses, three clans (a blood feud,
+    /// an alliance); the town map, the house, the town management with its buildings, the clans, a clan war asking the
+    /// player, the banknote bank. The save is restored after the run.
+    /// </summary>
+    public class TR03_PromoCity : IScenarioDefinition
+    {
+        public string Id => "TR-03";
+
+        public Scenario Create()
+        {
+            MapBuildTown town = null;
+            EstateEvent.Plot house = null;
+            var heads = new List<WorldUnitBase>();
+            var s = new Scenario { Id = "TR-03", Feature = "Promo", Title = "Promotion pictures: houses and the city", Kind = ScenarioKind.Tool, Overlay = false, SnapSteps = false }
+                .Step("travel", c =>
+                {
+                    TravelTo(c, FindTown(x => x.IsCity()) ?? FindTown(x => true));
+                    town = BagTown(c);
+                    c.Info($"town: {town?.name} (city {town?.IsCity()})");
+                    var trainer = FeatureEvent<TrainerEvent>(ModConst.TRAINER_EVENT);
+                    for (var i = 0; i < 40 && Player.GetGradeLvl() < TR02_PromoGame.PROMO_GRADE; i++) trainer.Levelup();
+                    if (Player.GetUnitMoney() < 1000000) Player.AddUnitMoney(1000000);
+                    Player.AddUnitProp(SpiritNoteEvent.NOTE_ID, 120);
+                    if (town != null && !MapBuildPropertyEvent.IsTownMaster(town, Player)) trainer.BecomeTownMaster();
+                }, 1500).Confirm()
+                .Step("the city lives", c =>
+                {
+                    if (town == null) return;
+                    var e = EstateEvent.Get(town);
+                    MapBuildPropertyEvent.AddBuildProperty(town, 50000000);
+                    e.PalaceLevel = 4;
+                    e.WallLevel = 3;
+                    // the player's immortal palace with its rooms
+                    foreach (var p in e.Plots.Where(x => x.OwnerId == Player.GetUnitId() && x.Level > 0).ToList()) EstateEvent.Release(e, p);
+                    house = e.Plots.Where(x => x.OwnerId == null).OrderByDescending(x => EstateEvent.MaxLevelAt(e, x)).ThenByDescending(x => x.Prosperity).First();
+                    var level = EstateEvent.MaxLevelAt(e, house);
+                    var add = EstateEvent.Expansion(e, house, level, _ => 0) ?? new List<EstateEvent.Plot>();
+                    house.OwnerId = Player.GetUnitId(); house.Level = level; house.MainIndex = null;
+                    foreach (var a in add) EstateEvent.Take(a, house);
+                    house.Rooms = new Dictionary<int, int> { [1] = 3, [2] = 2, [3] = 2, [4] = 1, [5] = 1 };
+                    house.Herbs = new List<int>();
+                    // grown mortal houses (years of a busy city)
+                    e.Population = EstateEvent.BasePopulation(town) * 3 / 2;
+                    var k = 0;
+                    EstateEvent.GrowMortals(town, e, 120, () => k++ % 3 == 0 ? 0 : 0.99);
+                    // NPC cultivators: families first (clans), then others
+                    var families = Npcs.Where(x => !HirePeopleEvent.IsHired(x) && !EstateEvent.HousesOf(x).Any() && ClanEvent.Members(x).Count >= 2 && ClanEvent.Members(x).All(m => !m.IsPlayer()))
+                        .OrderByDescending(x => x.GetGradeLvl()).ToList();
+                    foreach (var h in families)
+                    {
+                        if (heads.Count == 3) break;
+                        var ids = ClanEvent.Members(h).Select(x => x.GetUnitId()).ToList();
+                        if (heads.Any(o => ClanEvent.Members(o).Any(m => ids.Contains(m.GetUnitId())))) continue;
+                        heads.Add(h);
+                    }
+                    var others = Npcs.Where(x => !HirePeopleEvent.IsHired(x) && !EstateEvent.HousesOf(x).Any() && !heads.Contains(x)).OrderByDescending(x => x.GetGradeLvl()).Take(5);
+                    foreach (var u in heads.Concat(others))
+                    {
+                        u.SetUnitPos(town.GetOrigiPoint());
+                        u.SetUnitMoney(int.MaxValue / 2);
+                        EstateEvent.NpcHouse(u, 1, () => 0, town);
+                        for (var i = 0; i < EstateEvent.MAX_LEVEL; i++) EstateEvent.NpcHouse(u, 1, () => 0);
+                        var h = EstateEvent.HouseOf(town, u);
+                        if (h != null)
+                        {
+                            var next = Math.Min(EstateEvent.MAX_LEVEL, h.Level + 1);
+                            var (more, _, price) = EstateEvent.UpgradeCost(town, h);
+                            c.Info($"{u.GetName()} grade {u.GetGradeLvl()}: {EstateEvent.HouseName(h.Level)}; next: grade {EstateEvent.RequiredGrade(next)}, room {more != null}, price {price:#,##0} / half {u.GetUnitMoney() / 2:#,##0}");
+                        }
+                    }
+                    // a blood feud and an alliance
+                    if (heads.Count >= 3)
+                    {
+                        ClanEvent.Instance.Bases[ClanEvent.Key(town.buildData.id, heads[0].GetUnitId(), heads[1].GetUnitId())] = -100;
+                        ClanEvent.Instance.Bases[ClanEvent.Key(town.buildData.id, heads[0].GetUnitId(), heads[2].GetUnitId())] = 80;
+                        ClanEvent.Instance.Bases[ClanEvent.Key(town.buildData.id, heads[1].GetUnitId(), heads[2].GetUnitId())] = -45;
+                    }
+                    c.Info($"clans {ClanEvent.Heads(town).Count}, NPC houses {e.Plots.Count(x => x.OwnerId != null && x.OwnerId != Player.GetUnitId() && x.MainIndex == null)}, grown {EstateEvent.GrownLevels(e)}, house level {house.Level}");
+                }, PromoShot.RENDER_MS);
+
+            s.Shot("estate-town-map", c => { if (town == null) return false; EstateEvent.OpenPlots(town); return g.ui.HasUI(UIType.TextInfoLong); })
+                .Close(() => CloseAll(UIType.TextInfoLong));
+            s.Shot("estate-house", c => { if (town == null || house == null) return false; EstateEvent.OpenHouse(town, house); return g.ui.HasUI(UIType.TextInfoLong); })
+                .Close(() => CloseAll(UIType.TextInfoLong));
+            s.Shot("town-buildings", c =>
+            {
+                if (town == null || !MapBuildPropertyEvent.IsTownMaster(town, Player)) return false;
+                // a building taken down: its "Build" button shows (the save is restored after the run)
+                var down = MOD_nE7UL2.Enum.BuildingCostEnum.GetAllEnums<MOD_nE7UL2.Enum.BuildingCostEnum>().FirstOrDefault(x => !x.IsSchool && BuildingArrangeEvent.IsDestroyable(town, x));
+                if (down != null) BuildingArrangeEvent.Destroy(town, down);
+                MapBuildPropertyEvent.OpenUITownManage(town);
+                return g.ui.HasUI(UIType.NPCSearch);
+            }).Close(() => CloseAll(UIType.NPCSearch, UIType.TextInfoLong, UIType.TextInfo));
+            s.Shot("clans", c => { if (town == null || ClanEvent.Heads(town).Count < 2) return false; ClanEvent.OpenClans(town); return g.ui.HasUI(UIType.TextInfoLong); })
+                .Close(() => CloseAll(UIType.TextInfoLong));
+            s.Shot("clan-war", c =>
+            {
+                if (town == null || heads.Count < 3) return false;
+                // the feuding clan marches on the player's ally
+                ClanEvent.Instance.Pending = null;
+                ClanEvent.Ask(town, new ClanEvent.Fight
+                {
+                    TownId = town.buildData.id, War = true, Ours = heads[0].GetUnitId(), Theirs = heads[1].GetUnitId(),
+                    OurFighter = ClanEvent.Fighter(heads[0], true).GetUnitId(), TheirFighter = ClanEvent.Fighter(heads[1], true).GetUnitId(),
+                });
+                return true;
+            }, () => DramaUI() != null).Close(() => { DismissDramas(); ClanEvent.Instance.Pending = null; });
+            s.Shot("spirit-banknotes", c => { if (town == null) return false; SpiritNoteEvent.OpenBank(town); return g.ui.HasUI(UIType.TextInfoLong); })
+                .Close(() => CloseAll(UIType.TextInfoLong));
+
+            return s.Step("cleanup", c =>
+            {
+                DismissDramas();
+                CloseAll(UIType.NPCSearch, UIType.TextInfoLong, UIType.TextInfo);
                 c.Info("done (the save is restored by run-autotest.ps1)");
             });
         }

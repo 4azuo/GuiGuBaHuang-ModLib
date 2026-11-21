@@ -717,15 +717,17 @@
       "id": "TG-35",
       "kind": "auto",
       "feature": "RebirthEvent/CustomRefineEvent",
-      "title": "Pub rebirth button and forge custom refine",
-      "description": "Pub and forge: the pub shows a Rebirth button only when town level and player grade allow it; a small-town forge opens the custom refine item selector. The test checks both (rebirth is not clicked here, see TX-03).",
+      "title": "Rebirth button on the player info and forge custom refine",
+      "description": "Player info and forge: the Rebirth button is on the player info beside the damage calculation (shown unless NoRebirth); RebirthEvent.Missing tells whether the rebirth is possible here (town level, grade, sect). A small-town forge opens the custom refine item selector. The rebirth is not done here (TX-03).",
       "preconditions": "Test save in a town",
       "steps": [
-        "Open the pub",
+        "Travel to a town, open the player info",
+        "Rebirth button and its conditions",
         "Open the forge, click refine"
       ],
       "expected": [
-        "Rebirth button shown exactly when the town/grade conditions allow it",
+        "Player info opened",
+        "Rebirth button shown; possible exactly when the town/grade/sect conditions allow it",
         "Small town forge opens the custom refine item selector"
       ]
     },
@@ -820,17 +822,21 @@
       "kind": "auto",
       "feature": "MapBuildPropertyEvent/RealMarketEvent2",
       "title": "Become town master (trainer) and manage the town",
-      "description": "Town master: the player can become master of a town (here via the trainer) and gets a 'manage town' window plus a shop discount. The test makes the player master, opens the management window and checks the discount.",
+      "description": "Town master: the player can become master of a town (here via the trainer) and gets a 'manage town' window plus a shop discount. The window lists the buildings of the town with the game's picture of each, its cost from the budget and its state (built, a 'Build' button, not in this town; one building is taken down for the test and put back). The test makes the player master, checks the discount, the window and its buildings; the masters are restored.",
       "preconditions": "Save loaded",
       "steps": [
         "Travel to a town with a shop",
-        "Trainer: become town master",
-        "Open the town management"
+        "Trainer: become town master, take a building down",
+        "Open the town management",
+        "Check the window",
+        "Restore"
       ],
       "expected": [
         "Player is master and guardian",
         "Master shop discount",
-        "Town management window"
+        "Town management window",
+        "Each town building with its picture, cost and state (built / Build button / not in this town)",
+        "Masters and the building restored"
       ],
       "replaces": [
         "TM-11"
@@ -1442,7 +1448,8 @@
       ],
       "replaces": [
         "TM-16"
-      ]
+      ],
+      "freshGameAfter": true
     },
     {
       "id": "TX-02",
@@ -1469,12 +1476,12 @@
       "id": "TX-03",
       "kind": "auto",
       "feature": "RebirthEvent",
-      "title": "Rebirth in the pub",
-      "description": "Rebirth (the action, see TG-22/TG-35): in the pub of a high-level town the player is reborn: grade reset to 1, rebirth counted, rebirth luck added. Changes the save (restored after the run).",
+      "title": "Rebirth from the player info",
+      "description": "Rebirth (the action, see TG-22/TG-35): in a town of a high enough level the player is reborn from the Rebirth button of the player info (beside the damage calculation): grade reset to 1, rebirth counted, rebirth luck added. Changes the save (restored after the run).",
       "preconditions": "Grade above the rebirth level, no sect (changes the save)",
       "steps": [
-        "Travel to a town of a high enough level, open the pub",
-        "Click rebirth, confirm"
+        "Travel to a town of a high enough level, open the player info",
+        "Click Rebirth, confirm"
       ],
       "expected": [
         "Rebirth counted",
@@ -1795,6 +1802,694 @@
       ]
     },
     {
+      "id": "TG-62",
+      "kind": "auto",
+      "feature": "BodyCulEvent",
+      "title": "Body refining: realms, breakthrough, bath, bonuses",
+      "description": "Body refining is a second path beside the Qi: 5 realms of 3 layers, exp from damage taken, monthly training and a medicinal bath; layers go up by themselves, the end of a realm is a bottleneck broken with a chance from the grade the next realm needs; a failure halves the exp and injures the body. A strong body absorbs part of the cultivation exp (x1.1 to x1.5 needed by realm) and gathers less Qi, but every breakthrough of the cultivation gives more HP / defense / attack. The test takes up the path from the cultivation screen and checks every rule and that the bonuses reach the unit.",
+      "preconditions": "Save loaded (body data and money restored)",
+      "steps": [
+        "Open the cultivation screen",
+        "Click Body Refining",
+        "Take up body refining, open the window",
+        "Add cultivation exp",
+        "Hit exp, add exp past two layers",
+        "Grade gate, a failed then a successful breakthrough",
+        "Medicinal bath twice, open the window",
+        "Restore"
+      ],
+      "expected": [
+        "Cultivation screen open",
+        "Window with the 'Take up body refining' button",
+        "Level 1, Qi gain 90 %, realm shown",
+        "Copper Skin needs x1.10 exp: gain / 1.1 kept, the rest absorbed by the body",
+        "A hit counts at most one max HP; Copper Skin - Late, bottleneck, exp capped, no bath; HP / fist bonuses reach the unit",
+        "Grade too low refused; failure: half exp, injured, bonuses halved; success: Iron Bone - Early; Taoist log entries",
+        "Stones paid, exp added, second bath refused; the window shows Iron Bone",
+        "Body data restored"
+      ],
+      "promo": [
+        {
+          "step": "breakthrough",
+          "nth": 1,
+          "name": "body-refining",
+          "caption": "Body refining: a second path beside the Qi, from Copper Skin to the body essence"
+        }
+      ]
+    },
+    {
+      "id": "TG-63",
+      "kind": "auto",
+      "feature": "EstateEvent",
+      "title": "Town mortals, plots and the player's house",
+      "description": "Every town has mortals (10,000 - 100,000 by size and area, more with the budget, fewer with high taxes) who pay a monthly tax to the budget, and a map of plots in districts (market, noble, residential, craftsmen, outskirts) between roads, the town master's palace in the middle; the district sets the land price and the house tax. The player buys a free plot and builds a house of 6 levels (pictures of the game's buildings), pays a fixed monthly house tax and in exchange enters the town without the entry tax (the tax button reads 'free') and rests fully every month spent there; 6 unpaid months take the house back. The test drives every rule and opens the town map from the town window.",
+      "preconditions": "Save loaded (estate, budget, tax rate and money of the town restored)",
+      "steps": [
+        "Travel to a town",
+        "Check the mortals and plots; tax rate 10 for a month",
+        "Buy a plot without and with money; a second plot",
+        "Upgrade to a tiled house; courtyard house with a low grade",
+        "A month without money, then with money",
+        "HP 1 and a month in the town; enter the town",
+        "Check the entry tax",
+        "Click Plots on the town window",
+        "6 unpaid months",
+        "Restore"
+      ],
+      "expected": [
+        "Player in the town",
+        "The plots of the map, a population near its base, mortal houses, busy and quiet plots; fewer mortals, the mortal tax in the budget",
+        "Market land > 3 x outskirts land; refused without money; bought: money paid to the budget, the player has a house; a second house refused",
+        "Level 2; grade gate; Taoist log entries",
+        "Unpaid month counted; then paid",
+        "Full HP; town UI opened",
+        "Money unchanged, no entry tax recorded, the tax button reads 'free'",
+        "The town map names every district, draws the palace and the price legend; the game pictures load",
+        "The house is taken back, Taoist log",
+        "Budget restored"
+      ]
+    },
+    {
+      "id": "TG-64",
+      "kind": "auto",
+      "feature": "EstateEvent",
+      "title": "House rooms and the town master's palace",
+      "description": "The player's house has one room a house level (quiet room, training ground, herb garden, spirit gathering array, ancestral hall), 3 levels each, built and raised from the house window. The quiet room and the training ground work in a month spent in the town, the garden grows herbs to collect, the array raises the Qi gathered in the town, the hall lowers the household upkeep. The town master expands the palace (5 levels) from the town budget for more mortals.",
+      "preconditions": "Save loaded (estate, budget, money, exp and body data restored; the player may stay town master)",
+      "steps": [
+        "Travel to a town, a tiled house, open it",
+        "Check the interior, click 'Build a room'",
+        "Build rooms: quiet room, garden, a third one, raise the quiet room to 3 and past it, 3 more in a manor",
+        "A month of the rooms, the garden for 2 months, collect",
+        "Open the house window",
+        "Become master, expand the palace without and with the budget",
+        "Check the town map",
+        "Restore"
+      ],
+      "expected": [
+        "House window opened",
+        "2 empty rooms, 2 'Build a room' buttons",
+        "The room choice lists the quiet room; built; no third room; levels 2 and 3, then refused; 3 more rooms; Taoist log",
+        "Cultivation exp and body exp up, 2 herbs collected, Qi +15 %, upkeep -10 %",
+        "The quiet room 3/3 and the hall 1/3 listed",
+        "Refused, then expanded: level +1, paid from the budget, more mortals",
+        "The expanded palace on the map",
+        "Budget restored"
+      ]
+    },
+    {
+      "id": "TG-65",
+      "kind": "auto",
+      "feature": "BodyCulEvent",
+      "title": "Body refining: bonuses of a real breakthrough",
+      "description": "A body refiner gains less cultivation exp (the body absorbs a part: x1.3 exp needed in the Jade Marrow realm) but gets more from every breakthrough. The player, a Jade Marrow body refiner, fills the exp of the phase gain by gain and breaks through with the game's own action (UnitActionRoleUpGrade: attributes and life of the new phase; the raised attributes stay for the rest of the run); the new phase adds 15 % of the base max HP gained, 9 % of the defense and 3 % of the attack to the body bonuses, which reach the unit.",
+      "preconditions": "Save loaded (grade, exp and body data restored)",
+      "steps": [
+        "Take up body refining at Jade Marrow - Early, fill the exp of the phase",
+        "Break through (UnitActionRoleUpGrade)",
+        "Restore"
+      ],
+      "expected": [
+        "Exp full; a part absorbed by the body; a next phase exists",
+        "Next phase; base max HP up; HP / defense / attack bonuses = 15 % / 9 % / 3 % of the gains; the bonuses reach the unit; Taoist log",
+        "Grade restored"
+      ]
+    },
+    {
+      "id": "TG-66",
+      "kind": "auto",
+      "feature": "SpiritNoteEvent",
+      "title": "Spirit notes: bank exchange and payments",
+      "description": "The spirit stones of a unit are an int (at most 2,147,483,647), so big sums are kept in spirit notes, an item worth 10,000 stones. The bank (town storage with an account) has a 'Spirit notes' button: its window changes stones into notes and back, always for a fee that goes to the town budget. Prices (house, land, rooms, house tax) are paid with the notes of the bag first, the rest (or the change) in stones, also prices above the int limit.",
+      "preconditions": "Save loaded (money, notes, budget and bank account restored)",
+      "steps": [
+        "Travel to a town with a storage, open an account, open the storage",
+        "Click 'Spirit notes'",
+        "Buy 10 notes, change 4 back, change back near the int limit",
+        "Pay 25,000 with 3 notes and 500 stones; pay too much; pay 2,500,000,000 with notes",
+        "Restore"
+      ],
+      "expected": [
+        "Storage opened",
+        "The exchange window with the int limit hint",
+        "Fee taken both ways, to the town budget; refused past the limit",
+        "Notes first, the change back in stones; nothing paid when short; the big price paid",
+        "Notes restored"
+      ]
+    },
+    {
+      "id": "TG-67",
+      "kind": "auto",
+      "feature": "EstateEvent",
+      "title": "Town maps of every landscape, a town grown into a city",
+      "description": "Every town gets its own map, made once and different in every save: a landscape (any mix of a river, a lake with an islet when big enough, woods outside the town), main roads (crossroads, T crossing, ring road, two streets) and the palace in the middle or off it: 64 kinds, details at random. A town of each landscape is drawn (bridges with rails on straight pieces, trees, people walking elsewhere every time, district names not over each other; a city wall along the streets, none on the water). A town grown into a city keeps its map in the middle of a bigger one, the player's house and rooms with it.",
+      "preconditions": "Save loaded (estates of the towns made; the grown town restored)",
+      "steps": [
+        "Maps of all the towns",
+        "Plain, River, Lake, River+Lake, Woods, River+Woods, Lake+Woods, River+Lake+Woods town maps",
+        "A small town with a house grown into a city",
+        "Restore"
+      ],
+      "expected": [
+        "Different maps",
+        "Water where there is a river or a lake, woods, the style named, 4+ district names",
+        "A bigger map, the old one unchanged in the middle, the house and its rooms kept, more plots",
+        "A town again"
+      ]
+    },
+    {
+      "id": "TG-68",
+      "kind": "auto",
+      "feature": "BodyCulEvent",
+      "title": "Body refining levels and their materials",
+      "description": "A gallery of the body refining window at the start and at the bottleneck of every realm (Copper Skin to Undying Body) and at the top level: the three doses (x1 / x2 / x3) of the medicinal bath and of the breakthrough, each with its risk and the icons and counts of its materials (natural treasures; herbs, spirit materials or pills). The info of every step names the items a dose of x1 takes.",
+      "preconditions": "Save loaded (body data restored)",
+      "steps": [
+        "Save the body",
+        "Every realm: its first layer, then its bottleneck (the last one: the top level)",
+        "Restore"
+      ],
+      "expected": [
+        "Saved",
+        "The realm shown, three bath doses, three breakthrough doses at a bottleneck; a screenshot each",
+        "Body restored"
+      ]
+    },
+    {
+      "id": "TG-69",
+      "kind": "auto",
+      "feature": "EstateEvent",
+      "title": "City master: the wall, a house paid with banknotes",
+      "description": "Only a city has a wall: its master strengthens it from the town budget, +10 % defense at level 1, +5 % a level above, for the defenders of the city (the simulated battles and the real ones, the player too when he defends). The player becomes master of a city: the town map shows the wall and the 'strengthen' button; the wall goes to level 2. Then a house of the city is bought with spirit banknotes (100 spirit stones only): the banknotes of the bag pay first, the rest or the change in stones.",
+      "preconditions": "Save loaded (estate, budget, masters, money and banknotes restored)",
+      "steps": [
+        "Travel to a city, become its master, open the town map",
+        "Check the wall button, strengthen the wall",
+        "Buy a house with banknotes",
+        "Restore"
+      ],
+      "expected": [
+        "Master of the city",
+        "The button; defense x1.10 then x1.15; paid from the budget; Taoist log",
+        "Bought; banknotes used; no spirit stone used",
+        "Budget restored"
+      ]
+    },
+    {
+      "id": "TG-70",
+      "kind": "auto",
+      "feature": "EstateEvent",
+      "title": "Town map grows: mortal houses, NPC houses",
+      "description": "The town map lives. The mortal houses grow up to 2 levels above their district's (a population at its base or more, a prosperous plot) and shrink back when the population falls; grown levels draw residents. NPC cultivators staying in a town buy a free plot with their spirit stones (at most half of them, one house each, at most a quarter of the plots) and upgrade it as far as their grade allows; the town gets the price and the house tax. The map shows their houses in blue; a click tells whose house it is; when the cultivator dies the mortals move in.",
+      "preconditions": "Save loaded (estate, budget, the NPC's money and place restored)",
+      "steps": [
+        "Travel to a town; grow the mortal houses (big population), then a small population",
+        "Move an NPC into the town; it buys a house, upgrades it; open the town map",
+        "Click the NPC's house",
+        "Check the text; release the house",
+        "Restore"
+      ],
+      "expected": [
+        "Grown levels above the districts', none above the cap, a higher target; shrink back with a small population; nothing without the monthly chance",
+        "Too poor or no chance: nothing; bought with stones (at most half), paid to the budget; upgraded on the plots of its level",
+        "The info window",
+        "The NPC's name; the released house goes to the mortals",
+        "Budget restored"
+      ]
+    },
+    {
+      "id": "TG-71",
+      "kind": "auto",
+      "feature": "BodyCulEvent",
+      "title": "Body refining: tempering place and body tribulation",
+      "description": "Tempering places are seclusions of 1-5 years for body refiners (waterfall from Copper Skin, lava pool from Iron Bone, thunder pool from Golden Body): every month gives the exp of the current level / 24, 14 or 8. The body tribulation is a breakthrough by battle: the materials of a x1 breakthrough are used, the player enters the trial of lightning with the MP held under 20 %; surviving breaks into the next realm for sure with the tempering of a x2 dose (no trial of lightning properties), falling counts as a failed breakthrough.",
+      "preconditions": "Save loaded (grade and body data restored)",
+      "steps": [
+        "Take up body refining; the reward of a year at the waterfall",
+        "Copper Skin - Late at the bottleneck, grade 3, materials; start the tribulation",
+        "In the battle: MP",
+        "Survive (end the battle won), back to the map",
+        "Restore"
+      ],
+      "expected": [
+        "Body exp of a year at the waterfall; the result text",
+        "Materials used; tribulation under way; the trial battle loads",
+        "MP at most 20 % of the max",
+        "Iron Bone - Early; tempering 0.2; Taoist log; no trial properties",
+        "Grade and body restored"
+      ]
+    },
+    {
+      "id": "TG-72",
+      "kind": "auto",
+      "feature": "ClanEvent",
+      "title": "Cultivator clans: relations, brawls, clan war",
+      "description": "Cultivator clans: a cultivator with a house in a town and a family is a clan. Two clans have a relation (a base moved by their fights, the intimacy of their members, marriages). Rarely, hostile clans brawl (a descendant against another: the loser hurt, sometimes dead) and bitter enemies go to war (the losers may die, lose their house; a clan left without members is wiped out). The player is asked to step in when its family or an ally is in a fight. Two married NPCs settle in a town; the map has a Clans button; the window lists the clans and their blood feud (set for the test); a brawl; the player's question (drama, stays out); a war that wipes a clan out.",
+      "preconditions": "Save loaded (NPCs die: the save is restored by run-autotest.ps1; estate, relations, money and places restored)",
+      "steps": [
+        "Travel to a town; two married NPCs buy a house there; a blood feud; open the town map",
+        "Open the clans window",
+        "A brawl (A wins, nobody dies)",
+        "Ask the player to step in",
+        "Check the drama, stay out",
+        "A clan war (the losers all fall); open the Taoist log",
+        "Restore"
+      ],
+      "expected": [
+        "Two clans; the relation is a blood feud; a Clans button",
+        "Both clans and their feud listed",
+        "The loser's fighter hurt; the base relation -15; the fighters' intimacy falls",
+        "The drama",
+        "Step in / stay out options",
+        "The losers dead, their house to the mortals, the clan wiped out; war and extinction in the Taoist log",
+        "Budget restored"
+      ]
+    },
+    {
+      "id": "TR-03",
+      "kind": "tool",
+      "feature": "Promo",
+      "title": "Promotion pictures: houses and the city",
+      "description": "Promotion pictures of the town estates: a city of the player (master, palace, wall), its own immortal palace with rooms, NPC cultivators' houses, grown mortal houses and three clans (a blood feud, an alliance); the town map, the house, the town management with its buildings, the clans, a clan war asking the player, the banknote bank. The save is restored after the run.",
+      "preconditions": "An existing save",
+      "steps": [
+        "Travel to a city, master, the city developed",
+        "Open each window and capture it"
+      ],
+      "expected": [
+        "promo_<name>.jpg in SteamImg for every picture"
+      ],
+      "promo": [
+        {
+          "step": "promo-estate-town-map",
+          "nth": 1,
+          "name": "estate-town-map",
+          "caption": "A living town map: districts, roads, mortal houses that grow, cultivators' houses"
+        },
+        {
+          "step": "promo-estate-house",
+          "nth": 1,
+          "name": "estate-house",
+          "caption": "Your own house, from a thatched hut to an immortal palace, with its rooms"
+        },
+        {
+          "step": "promo-town-buildings",
+          "nth": 1,
+          "name": "town-buildings",
+          "caption": "Town master: build the town's shops, portal and auction house"
+        },
+        {
+          "step": "promo-clans",
+          "nth": 1,
+          "name": "clans",
+          "caption": "Cultivator clans of the city: alliances and blood feuds"
+        },
+        {
+          "step": "promo-clan-war",
+          "nth": 1,
+          "name": "clan-war",
+          "caption": "A clan war breaks out: step in for your allies"
+        },
+        {
+          "step": "promo-spirit-banknotes",
+          "nth": 1,
+          "name": "spirit-banknotes",
+          "caption": "Spirit banknotes: big prices beyond the spirit stones' limit"
+        }
+      ]
+    },
+    {
+      "id": "TG-73",
+      "kind": "auto",
+      "feature": "EstateEvent",
+      "title": "NPC houses in depth: rules, tax, seizure, death",
+      "description": "NPC cultivators' houses in depth. The monthly hook of the mod buys a house for an NPC staying in the town (sure chance for the test). Rules: nothing when the feature is off, when NpcShare leaves no plot or without the monthly chance; one house in the world; upgrades stop at the grade of the next level, the room around or half of the stones; a poor NPC buys nothing. The NPC pays the house tax every month to the town; without money the unpaid months are counted and the house is taken back after MaxUnpaidMonths (the mortals move in). The house of a dead cultivator goes to the mortals. The mortal houses grow one level a monthly chance hit.",
+      "preconditions": "Save loaded (an NPC dies: the save is restored by run-autotest.ps1; estate, budget, settings, money and places restored)",
+      "steps": [
+        "Travel to a town, two NPCs moved there",
+        "The rules; the monthly hook buys a house; upgrades; a poor NPC; another buys; open the town map",
+        "House tax; unpaid months; the house taken back",
+        "The other NPC dies; a month",
+        "Mortal houses over 24 months; open the town map",
+        "Restore"
+      ],
+      "expected": [
+        "Two NPCs",
+        "Off / no share / no chance: nothing; bought with at most half of the stones; one house; stops for a reason; on the plots of its level; poor: nothing",
+        "Tax paid to the budget; unpaid months counted; taken back after the limit",
+        "The house to the mortals",
+        "One level a hit",
+        "Budget and settings restored"
+      ]
+    },
+    {
+      "id": "TG-74",
+      "kind": "auto",
+      "feature": "ClanEvent",
+      "title": "Clans in depth: relations, yearly fights, the player steps in",
+      "description": "Clans in depth. Three NPC families settle in a town. The relation of two clans rises with the intimacy of their members and with a marriage between them. A year of the town with a sure roll: allied and neutral clans do not fight, hostile clans brawl (no war, no house lost), nothing without the yearly chance. The player with a house and a spouse is a clan; an allied clan is on its side; the feuding clan picks a fight with the ally: the player is asked, steps in, the real battle against the enemy's fighter is won and the fight is decided for the player's side. In a lost war every other member of the player's clan falls and the house is lost, never the player.",
+      "preconditions": "Save loaded (marriages and deaths: the save is restored by run-autotest.ps1; estate, relations, money and places restored)",
+      "steps": [
+        "Travel to a town; three NPC families buy a house",
+        "Members' intimacy +60; a marriage between the clans",
+        "A year of the town (allied, neutral, hostile pairs)",
+        "The player's clan, an ally, the foe picks a fight",
+        "Step in",
+        "Battle: defeat the fighter, win, back to the map",
+        "The fight decided",
+        "A lost war of the player's clan",
+        "Restore"
+      ],
+      "expected": [
+        "Three clans",
+        "The relation rises; the marriage adds about MarriageBonus",
+        "Only the hostile pair brawls; nothing without the chance",
+        "Asked to help the ally",
+        "The battle starts against the enemy's fighter",
+        "Won",
+        "Decided after the battle; the foe's fighter hurt or dead",
+        "The player stands; the others fell; the house lost",
+        "Budget restored"
+      ]
+    },
+    {
+      "id": "TG-80",
+      "kind": "auto",
+      "feature": "MeritEvent",
+      "title": "Merit: levels, bonuses, encounters, karma",
+      "description": "Merit is a path of good deeds. 6 levels (100 / 500 / 2,000 / 6,000 / 15,000 / 40,000 points) give attack +1 %, defense +1.5 % a level and Luck +1 every 2 levels; above the top the points become essence (+0.5 % attack and defense a step of 10,000, Luck +1 every 5 steps). Karma (below -100 / -500 / -2,000) gives attack +2 %, defense -2 % and Luck -1 a level, and a yearly bounty from a righteous cultivator from karma -2. The merit encounters: flood relief and plague in a town, beast raid outside towns.",
+      "preconditions": "Save loaded (merit, Luck, money and bounties restored)",
+      "steps": [
+        "Merit 2,000, then above the top",
+        "Open the merit window",
+        "Flood relief, plague, a beast raid walked away",
+        "Karma -600; a karma bounty",
+        "Restore"
+      ],
+      "expected": [
+        "Level 3: Luck +1, attack +3 %, defense +4.5 %, reaching the unit; Taoist log; top: essence 2,000, Luck +3, lightning -30 %",
+        "The window",
+        "Merit +20 x grade, +15 x grade, -5 x grade; the encounter possible where the player is",
+        "Karma -2: Luck -2, lightning +20 %; a bounty on the player",
+        "Merit, Luck, money, bounties restored"
+      ],
+      "promo": [
+        {
+          "step": "merit-window",
+          "nth": 1,
+          "name": "merit",
+          "caption": "Merit and karma: kill evil, help people - or walk the dark road"
+        }
+      ]
+    },
+    {
+      "id": "TG-81",
+      "kind": "auto",
+      "feature": "BodyCulEvent",
+      "title": "Body refining of the NPCs: sects by style, tribulation, tempering place",
+      "description": "The sects that teach body refining are chosen every year by their style: the third of the sects (3 members or more) whose members fight the most with bare hands (fist + palm + finger in their basis). NPC body refiners go to the best tempering place they can stand for 1, 3 or 5 years (1 % a month) and break through by a tribulation (45 + 40 x toughness + 3 x merit level %) or by chance.",
+      "preconditions": "Save loaded (the NPC's body data restored)",
+      "steps": [
+        "Choose the body refining sects",
+        "An NPC of grade 3+ at the Copper Skin bottleneck: a tribulation with a good roll, then a bad roll",
+        "The NPC at Iron Bone goes to a tempering place for a year",
+        "Restore"
+      ],
+      "expected": [
+        "Some sects; their hand share is the highest; a member is in a body sect",
+        "Iron Bone, tempering 0.2; then a failure: injured 3 months",
+        "The lava pool, 12 months; the exp of a year of lava; back, no place",
+        "Body data restored"
+      ]
+    },
+    {
+      "id": "TG-82",
+      "kind": "auto",
+      "feature": "MeritEvent",
+      "title": "Merit: the massacre of a town (the evil way)",
+      "description": "With karma (-1 or below) the merit window offers the massacre of the town the player stands in; two real battles. The defenders: the town master, the cultivators of the town who stand (not evil, not family, grade at least the player's - 1, at most 8) and the town guards (2 + 2 a palace level); the others flee. Battle 1 ends with the town master alive: a failed massacre (karma -300). Battle 2: the player kills the town master and every defender and wins: the mod's battle end handler kills the town master and the fallen, leaves 1 % of the mortals, makes the town a ruin for 10 years (population target x0.2), loots half of the town budget, karma -3,000 and a bounty; the result shows on the map.",
+      "preconditions": "Save loaded, the player in a town (the save is restored after the run: the town master's death stays in the run only)",
+      "steps": [
+        "Karma -600 in a small town; the merit window",
+        "Click 'Massacre': the drama; who defends, who flees",
+        "Battle 1: start",
+        "Battle 1 loads and starts",
+        "Count the foes",
+        "End battle 1 with the town master alive, back to the map",
+        "A failed massacre",
+        "Battle 2: start",
+        "Battle 2 loads and starts",
+        "Kill every foe",
+        "Win battle 2, back to the map",
+        "The result on the map",
+        "The massacre won",
+        "Restore"
+      ],
+      "expected": [
+        "Karma -2; the massacre possible; the button",
+        "Defenders not evil, strong enough, not family; the others flee",
+        "Massacre under way",
+        "",
+        "Defenders + guards + the town master, all in the battle",
+        "",
+        "Karma -300 more; the town master lives; the town stands",
+        "Massacre under way",
+        "",
+        "No foe left",
+        "",
+        "The message",
+        "The town master dead, 1 % of the mortals, a ruin (x0.2), half of the budget looted, Damned, a bounty, Taoist log; no second massacre",
+        "Merit and ruins restored"
+      ],
+      "promo": [
+        {
+          "step": "the-massacre-drama",
+          "nth": 1,
+          "name": "massacre-drama",
+          "caption": "The demonic road: put a whole town to the sword"
+        },
+        {
+          "step": "defenders-and-guards",
+          "nth": 1,
+          "name": "massacre-battle",
+          "caption": "Its master, his guards and every cultivator of the town stand against you"
+        }
+      ],
+      "freshGameAfter": true
+    },
+    {
+      "id": "TG-83",
+      "kind": "auto",
+      "feature": "ArtisanEvent",
+      "title": "Artisan Dao: crafting, ranks, masterpieces, exam",
+      "description": "Artisan Dao makes the crafts of the game (alchemy, artifact forging, talismans) a path: what a craft window of the game puts in the bag gives craft exp (10 x item level² x √count); 5 ranks a craft, the first by itself, the others by a yearly exam in a city (fee, chance from the craft value); every rank adds +15 to the craft value of the game. An item above the usual level of the grade is a masterpiece (cultivation exp, the maker's name kept); two levels above, the furnace may blow up (HP and lifespan). NPCs with a craft value raise their craft and pass their exams.",
+      "preconditions": "Save loaded (artisan data, craft values, exp and masterpieces restored)",
+      "steps": [
+        "Open the alchemy window of the game",
+        "Put 16 pills of the usual level in the bag, close the window",
+        "Craft exp; up to the first rank",
+        "A pill two levels above the usual one",
+        "The exam (player, an NPC)",
+        "Open the cultivation screen",
+        "Open the Artisan Dao window",
+        "Restore"
+      ],
+      "expected": [
+        "The window open",
+        "",
+        "Craft exp of the pills; Apprentice, alchemy value +15, Taoist log",
+        "A masterpiece, cultivation exp, the maker's name; a furnace accident",
+        "Outside a city: refused (in a city: passed); the NPC passed",
+        "",
+        "The button; the window",
+        "Data, values, exp restored"
+      ],
+      "promo": [
+        {
+          "step": "artisan-window",
+          "nth": 1,
+          "name": "artisan",
+          "caption": "The Artisan Dao: six crafts, exams, masterpieces, apprentices"
+        }
+      ]
+    },
+    {
+      "id": "TG-75",
+      "kind": "auto",
+      "feature": "EstateEvent",
+      "title": "Where NPCs live: town of the area, family house, going home",
+      "description": "Where NPCs live. (a) An NPC buys a house in a town of the area where it is: from NpcCityGrade a city first, below it a small town first. (b) A family lives together: the spouse and the unmarried children of a house owner buy nothing (they live in the family house); a married child moves out, in the family's town wherever it stands. (c) With NpcHomeChance a month an NPC away goes back to its home town (its own house or its family's); not without the chance, not when already home.",
+      "preconditions": "Save loaded (a marriage: the save is restored by run-autotest.ps1; estates, money and places restored)",
+      "steps": [
+        "A strong and a weak NPC in the small town of an area with a city: the towns they choose, they buy",
+        "A married NPC with a child: the head buys; the spouse; the unmarried child; the child married moves out; open the town map",
+        "The head and the spouse away: going home",
+        "Restore"
+      ],
+      "expected": [
+        "Only the towns of the area; a city first for the strong, a small town first for the weak; the houses there",
+        "The spouse and the unmarried child buy nothing; the married child buys in the family's town",
+        "Back home with the chance hit; the spouse too; nothing without the chance or at home",
+        "Estates restored"
+      ]
+    },
+    {
+      "id": "TG-84",
+      "kind": "auto",
+      "feature": "ArtisanEvent",
+      "title": "Artisan Dao with the game's own gathering, alchemy and craft windows",
+      "description": "The crafts are counted from what the game does, not from the mod's own calls. The player stands on a map cell outside towns and gathers with the game's actions (UnitUnitActionGridHerb, UnitActionGridMine): the herbs and ores that come into the bag count for Herbs and Mining. With the alchemy window open, the game's alchemy action (UnitActionRefineElixir: herbs in, pills out) counts for Alchemy when the window closes. The craft windows of forging (ArtifactShapeMade), talismans (RuneSelectDraw, RefineRuneFormula) and feng shui (Geomancy) opened by their UI types are seen as the windows of their crafts, and an item that comes into the bag while one is open counts for that craft.",
+      "preconditions": "Save loaded (artisan data, craft values, exp, the cell and the place restored)",
+      "steps": [
+        "Stand on a free cell outside towns",
+        "Gather herbs with the game's action",
+        "Herbs counted",
+        "Mine ores with the game's action",
+        "Ores counted",
+        "Open the alchemy window, the game's alchemy action",
+        "Alchemy counted, the window closed",
+        "Forging window",
+        "Talisman window",
+        "Rune formula window",
+        "Feng shui window",
+        "Restore"
+      ],
+      "expected": [
+        "Outside towns",
+        "",
+        "An herb in the bag; Herbs exp up",
+        "",
+        "An ore in the bag; Mining exp up",
+        "The window is a window of Alchemy",
+        "Pills made by the game; Alchemy exp up",
+        "Opened, a window of Forging; an item counted",
+        "Opened, a window of Talismans; an item counted",
+        "Opened, a window of Talismans; an item counted",
+        "Opened, a window of Feng shui; an item counted",
+        "Values restored"
+      ]
+    },
+    {
+      "id": "TG-85",
+      "kind": "auto",
+      "feature": "DaoHeartEvent",
+      "title": "Dao heart and spirit sense: max SP / MP, heart demon, betrayal, ambush, scan",
+      "description": "The Dao heart (5 levels, up with heart demons beaten, promises kept, seclusions, breakthroughs, a good mood; down with betrayal, broken promises, failures, a bad mood) gives mainly max SP +4 % and max MP +2 % a level, and a little: heart demons beaten more often, body breakthroughs, fewer backlashes and furnace accidents. The spirit sense (5 levels of exp: every month by Talent, seclusions, heart demons, a scan once a month) gives mainly max MP +4 % and max SP +2 % a level, and a little: bounty hunter ambushes sensed and avoided, heart demons less often, the scan of the surroundings.",
+      "preconditions": "Save loaded (Dao heart, spirit sense, exp, bounties restored; the save is restored after the run)",
+      "steps": [
+        "Dao heart to the top",
+        "A heart demon seclusion",
+        "A friend for a real duel",
+        "Duel loads and starts",
+        "Kill the friend",
+        "Betrayal; end the duel",
+        "Back to the map",
+        "Spirit sense to the top",
+        "A bounty hunter comes (fixed roll 10)",
+        "Open the cultivation screen",
+        "Open the spirit sense window",
+        "Scan",
+        "Open the Dao heart window",
+        "Restore"
+      ],
+      "expected": [
+        "Heart of Heaven: SP +20 %, MP +10 %, reaching the unit",
+        "Beaten (roll 80 < 90); heart essence +100; spirit sense +200; the heart demons no more often",
+        "A bond (intimacy 400)",
+        "",
+        "",
+        "Dao heart -150; Taoist log",
+        "",
+        "Sense of Heaven: MP +20 %, SP +10 %; MP of both together",
+        "Sensed and avoided; Taoist log; no ambush",
+        "",
+        "The button; the window",
+        "A scan; once a month",
+        "The button; the window",
+        "Restored"
+      ],
+      "promo": [
+        {
+          "step": "spirit-sense-window",
+          "nth": 1,
+          "name": "spirit-sense",
+          "caption": "Spirit sense: more SP and MP, ambushes sensed before they strike"
+        },
+        {
+          "step": "scan",
+          "nth": 1,
+          "name": "spirit-scan",
+          "caption": "Scan the land: every cultivator around and the places in reach"
+        },
+        {
+          "step": "Dao-heart-window",
+          "nth": 1,
+          "name": "dao-heart",
+          "caption": "Dao heart: a steady heart beats its demons"
+        }
+      ]
+    },
+    {
+      "id": "TG-86",
+      "kind": "auto",
+      "feature": "ArtisanEvent",
+      "title": "Mine veins and herb valleys of every area",
+      "description": "Every area with towns has 2 mine veins and 2 herb valleys, on free cells of the area 4-12 cells from its towns, fixed for the save and made rich in ores / herbs every year (the game's own gathering finds more there). When the player stands on one, a drama offers to stay 1, 3, 5 or 10 years (a seclusion); at the end come the ores / herbs of the area's grade (2 a month, +25 % a rank of the craft) and their Mining / Herbs exp. The spirit sense's scan tells the nearest one, its distance and direction.",
+      "preconditions": "Save loaded (artisan data and the place restored)",
+      "steps": [
+        "Check the spots of the areas",
+        "Scan with the spirit sense",
+        "Stand on a mine vein",
+        "The drama of the stay",
+        "The reward of a year in the vein and in a herb valley",
+        "Restore"
+      ],
+      "expected": [
+        "2 + 2 an area, on free cells of their area, rich",
+        "The nearest spot and its direction",
+        "The player on it",
+        "The drama: 4 stays and walk on; offered once",
+        "24 ores of the area for a new miner, Mining exp; herbs and Herbs exp",
+        "Restored"
+      ],
+      "promo": [
+        {
+          "step": "the-drama-of-the-stay",
+          "nth": 1,
+          "name": "mine-vein",
+          "caption": "Mine veins and herb valleys: stay for years and dig the earth"
+        }
+      ]
+    },
+    {
+      "id": "TG-87",
+      "kind": "auto",
+      "feature": "EstateEvent",
+      "title": "Estate: buy back a mortal house (text window)",
+      "description": "A click on a mortal house of a town where the player has no house opens a text window (UITextInfo, not a message box) telling which plot it is (number, column and row of the town map), what it is, the price to buy it back (land + whole house) and that a bigger house later buys the plots around it; the button 'Buy this house' buys it with banknotes: the house is the player's, of the level of the mortal house, the town budget gets the price. A shop of the market cannot be bought.",
+      "preconditions": "Save loaded (the house released after)",
+      "steps": [
+        "Travel to a town without a house, click the cheapest mortal house",
+        "The window of the plot: click 'Buy this house'",
+        "Check the purchase",
+        "Restore"
+      ],
+      "expected": [
+        "Banknotes enough",
+        "Text window with the plot number and place; the buy button",
+        "The player's house of the same level; budget up; banknotes paid; Taoist log; a shop refused",
+        "Restored"
+      ],
+      "promo": [
+        {
+          "step": "the-window-of-the-plot",
+          "nth": 1,
+          "name": "estate-buy-mortal",
+          "caption": "Buy back a mortal house and make it your home"
+        }
+      ]
+    },
+    {
       "id": "TX-07",
       "kind": "auto",
       "feature": "TaoistLogEvent",
@@ -1834,7 +2529,8 @@
         "The player has the name, age, reputation and techniques of the heir; the heir NPC is gone; next generation; a friendship of the old player halved, an enmity in full; its town seat and the bounty on it ended",
         "Secluded",
         "12 months passed, more exp, summary drama, family and seclusion entries in the Taoist log"
-      ]
+      ],
+      "freshGameAfter": true
     },
     {
       "id": "TX-09",
@@ -1852,7 +2548,8 @@
         "3 months passed, 3 month runs of the game; timing in the infos",
         "120 months passed, 4 month runs of the game; timing in the infos; loading window closed",
         "The skip stops before 24 months, interrupted, loading window closed"
-      ]
+      ],
+      "freshGameAfter": true
     },
     {
       "id": "TX-10",
@@ -2132,6 +2829,110 @@
         "Roles cast, quest with the guide of the act",
         "Every drama shown and answered",
         "One of L_ClearHeart / L_Scarred / L_Embraced, logged, quest removed"
+      ]
+    },
+    {
+      "id": "TS-13",
+      "kind": "auto",
+      "feature": "StoryEvent",
+      "title": "Story M Old Tie's Forge",
+      "description": "The Artisan Dao line: the old smith of a town burned his hand; the player takes the guild exam for him (forge learned) or gives a pill, brings ore of a mine vein (or pays, or fights its guardian), chooses the apprentice or the secret, faces the smiths' guild (2 years) and lights the last fire. Endings Masterwork / Heir / Secret.",
+      "preconditions": "Save loaded (battles won at once, acts open without waiting)",
+      "steps": [
+        "Open the line, its quest in the Mission window",
+        "Every act of line M: read and answer each drama",
+        "The ending"
+      ],
+      "expected": [
+        "Roles cast, quest shown",
+        "Dramas of M0..M4",
+        "An ending of the line, Taoist log, quest removed"
+      ],
+      "promo": [
+        {
+          "step": "09-drama",
+          "nth": 2,
+          "name": "story-forge",
+          "caption": "New stories: an old smith's last blade"
+        }
+      ]
+    },
+    {
+      "id": "TS-14",
+      "kind": "auto",
+      "feature": "StoryEvent",
+      "title": "Story N House on the Old Street",
+      "description": "The estates line: the cellar under the player's house (its puppet), the bandits of the street and the neighbour, the old master's notes (buy the street out or burn the page), the attack on the town (hold the gate / pay for the wall), the street's verdict. Endings Home / Manor / Empty. A house is lent to the player for the test.",
+      "preconditions": "Save loaded (battles won at once, acts open without waiting)",
+      "steps": [
+        "Open the line, its quest in the Mission window",
+        "Every act of line N: read and answer each drama",
+        "The ending"
+      ],
+      "expected": [
+        "Roles cast, quest shown",
+        "Dramas of N0..N4",
+        "An ending of the line, Taoist log, quest removed"
+      ],
+      "promo": [
+        {
+          "step": "05-drama",
+          "nth": 1,
+          "name": "story-old-street",
+          "caption": "New stories: a cellar under your own house"
+        }
+      ]
+    },
+    {
+      "id": "TS-15",
+      "kind": "auto",
+      "feature": "StoryEvent",
+      "title": "Story O Ashes of the Town",
+      "description": "The merit line: a child survived a town put to the sword (a ruin of a massacre; the player under karma is the butcher); taken in, the question of who burned it (truth / lie), training, then the reckoning (atonement or the duel) or the rebuilding (town budget, the ruin lifted). Endings Atonement / Ashes / Rebuilt.",
+      "preconditions": "Save loaded (battles won at once, acts open without waiting)",
+      "steps": [
+        "Open the line, its quest in the Mission window",
+        "Every act of line O: read and answer each drama",
+        "The ending"
+      ],
+      "expected": [
+        "Roles cast, quest shown",
+        "Dramas of O0..O3",
+        "An ending of the line, Taoist log, quest removed"
+      ],
+      "promo": [
+        {
+          "step": "05-drama",
+          "nth": 1,
+          "name": "story-ashes",
+          "caption": "New stories: a child survived the fall of a town"
+        }
+      ]
+    },
+    {
+      "id": "TS-16",
+      "kind": "auto",
+      "feature": "StoryEvent",
+      "title": "Story P Heartbeat in the Stone",
+      "description": "The spirit sense and body refining line: the sense finds a heartbeat in a waterfall; a body refiner half-stone after a failed tribulation (a pill / a herb, or take his essence in battle), training of the body (body exp), his second tribulation. Endings Brothers / Alone / Devourer.",
+      "preconditions": "Save loaded (battles won at once, acts open without waiting)",
+      "steps": [
+        "Open the line, its quest in the Mission window",
+        "Every act of line P: read and answer each drama",
+        "The ending"
+      ],
+      "expected": [
+        "Roles cast, quest shown",
+        "Dramas of P0..P3",
+        "An ending of the line, Taoist log, quest removed"
+      ],
+      "promo": [
+        {
+          "step": "06-drama",
+          "nth": 3,
+          "name": "story-stone-heart",
+          "caption": "New stories: a body refiner turned half to stone"
+        }
       ]
     },
     {

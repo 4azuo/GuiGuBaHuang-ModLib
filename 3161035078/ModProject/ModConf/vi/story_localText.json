@@ -2888,5 +2888,605 @@
 		"id": -1000007577,
 		"key": "story_L_nightmare",
 		"en|ch|tc|kr": "một cơn ác mộng"
+	},
+	{
+		"id": "-1000007579",
+		"key": "story_task_desc_M",
+		"en|ch|tc|kr": "{0}"
+	},
+	{
+		"id": "-1000007610",
+		"key": "story_end_M_Heir",
+		"en|ch|tc|kr": "Người thừa kế"
+	},
+	{
+		"id": "-1000007614",
+		"key": "story_task_desc_N",
+		"en|ch|tc|kr": "{0}"
+	},
+	{
+		"id": "-1000007643",
+		"key": "story_task_desc_O",
+		"en|ch|tc|kr": "{0}"
+	},
+	{
+		"id": "-1000007653",
+		"key": "story_O1_1_o1",
+		"en|ch|tc|kr": "Nói sự thật"
+	},
+	{
+		"id": "-1000007661",
+		"key": "story_O3_r_o2",
+		"en|ch|tc|kr": "Đánh"
+	},
+	{
+		"id": "-1000007673",
+		"key": "story_task_desc_P",
+		"en|ch|tc|kr": "{0}"
+	},
+	{
+		"id": "-1000007680",
+		"key": "story_P0_1_o2",
+		"en|ch|tc|kr": "Bước tiếp"
+	},
+	{
+		"id": "-1000007578",
+		"key": "story_name_M",
+		"en|ch|tc|kr": "Lò rèn của Lão Thiết"
+	},
+	{
+		"id": "-1000007580",
+		"key": "story_task_M0",
+		"en|ch|tc|kr": "Lão thợ rèn {F} ở {T} bị bỏng tay. Ông nhờ bạn giúp đỡ."
+	},
+	{
+		"id": "-1000007581",
+		"key": "story_task_M1",
+		"en|ch|tc|kr": "{F} cần quặng từ một mạch khoáng để rèn thanh đao cuối cùng."
+	},
+	{
+		"id": "-1000007582",
+		"key": "story_task_M2",
+		"en|ch|tc|kr": "{F} phải chọn người giữ bí quyết của lò rèn."
+	},
+	{
+		"id": "-1000007583",
+		"key": "story_task_M3",
+		"en|ch|tc|kr": "Phường thợ rèn ở {T} muốn đóng cửa lò rèn của {F} (2 năm)."
+	},
+	{
+		"id": "-1000007584",
+		"key": "story_task_M4",
+		"en|ch|tc|kr": "Ngọn lửa cuối cùng của lò rèn {F}."
+	},
+	{
+		"id": "-1000007585",
+		"key": "story_M0_1",
+		"en|ch|tc|kr": "Lò rèn ở {T} nồng mùi thịt cháy. Một lão thợ rèn quấn bàn tay phải bằng miếng giẻ ướt.\n{F}: \"Cái lò phun lửa vào ta. Bốn mươi năm, giờ nó lại phun vào ta.\"\n{F}: \"Ba ngày nữa phường thi tay nghề. Lò của ta không ai đỗ thì họ thu giấy phép. Ngươi biết vung búa không?\""
+	},
+	{
+		"id": "-1000007586",
+		"key": "story_M0_1_o1",
+		"en|ch|tc|kr": "Thi thay cho ông"
+	},
+	{
+		"id": "-1000007587",
+		"key": "story_M0_1_o2",
+		"en|ch|tc|kr": "Cho ông một viên đan trị thương"
+	},
+	{
+		"id": "-1000007588",
+		"key": "story_M0_1_o3",
+		"en|ch|tc|kr": "Không phải việc của ta"
+	},
+	{
+		"id": "-1000007589",
+		"key": "story_M0_exam",
+		"en|ch|tc|kr": "Ba ngày tóe lửa. Các sư phụ của phường cau mày, rồi gật đầu.\n{F}: \"Ha! Cong một chút, nhưng lưỡi bén đấy. Ngươi có đôi tay của nghề này.\""
+	},
+	{
+		"id": "-1000007590",
+		"key": "story_M0_2",
+		"en|ch|tc|kr": "Viên đan làm vết bỏng lành sau một đêm. Ông co duỗi ngón tay, kinh ngạc.\n{F}: \"Ta nợ ngươi, tu sĩ. Thợ rèn trả nợ bằng thép.\""
+	},
+	{
+		"id": "-1000007591",
+		"key": "story_M1_1",
+		"en|ch|tc|kr": "{F}: \"Trước khi chết ta muốn rèn thêm một thanh đao. Không cần đẹp - phải thật. Muốn thế ta cần quặng của {0}, mạch giàu ngoài thành.\"\n{F}: \"Mang quặng đến, hoặc tiền mua quặng ({1:#,##0} [icon:zm_lingshi]). Hoặc tự mình xuống - có thứ gì đó canh giữ mạch khoáng.\""
+	},
+	{
+		"id": "-1000007592",
+		"key": "story_M1_1_o1",
+		"en|ch|tc|kr": "Đưa ông quặng"
+	},
+	{
+		"id": "-1000007593",
+		"key": "story_M1_1_o2",
+		"en|ch|tc|kr": "Trả tiền quặng ({1:#,##0} [icon:zm_lingshi])"
+	},
+	{
+		"id": "-1000007594",
+		"key": "story_M1_1_o3",
+		"en|ch|tc|kr": "Xuống mạch khoáng"
+	},
+	{
+		"id": "-1000007595",
+		"key": "story_M1_2",
+		"en|ch|tc|kr": "Quặng đỏ rực trong lò. Ông rèn bằng tay trái trong khi bạn giữ kìm.\n{F}: \"Nhìn màu thép, đừng nhìn búa. Thép sẽ báo cho ngươi biết khi nào.\""
+	},
+	{
+		"id": "-1000007596",
+		"key": "story_M2_1",
+		"en|ch|tc|kr": "Một cậu bé quét nền lò rèn, lén nhìn cái đe.\n{F}: \"Bạn của cháu ta. Vụng về, bướng bỉnh. Giống ta hồi trước.\"\n{F}: \"Bí quyết của ta không nên chết theo ta. Cùng ta dạy nó - hoặc ngươi tự học lấy rồi đi thật xa.\""
+	},
+	{
+		"id": "-1000007597",
+		"key": "story_M2_1_o1",
+		"en|ch|tc|kr": "Cùng dạy cậu bé"
+	},
+	{
+		"id": "-1000007598",
+		"key": "story_M2_1_o2",
+		"en|ch|tc|kr": "Tự học lấy bí quyết"
+	},
+	{
+		"id": "-1000007599",
+		"key": "story_M3_1",
+		"en|ch|tc|kr": "Mấy gã đeo tạp dề của phường đứng trước cửa lò rèn, tay cầm đuốc.\nMột sư phụ của phường: \"Lão già tàn tay cùng một kẻ lạ đứng bên đe. Đóng cửa, không thì bọn ta đóng giúp.\"\n{F}: \"Bước qua xác ta đã.\""
+	},
+	{
+		"id": "-1000007600",
+		"key": "story_M3_1_o1",
+		"en|ch|tc|kr": "Đuổi bọn chúng đi"
+	},
+	{
+		"id": "-1000007601",
+		"key": "story_M3_1_o2",
+		"en|ch|tc|kr": "Mua sự yên ổn với phường ({0:#,##0} [icon:zm_lingshi])"
+	},
+	{
+		"id": "-1000007602",
+		"key": "story_M4_burned",
+		"en|ch|tc|kr": "Lò rèn đã thành tro. {F} ngồi trên cái đe nguội, bàn tay bỏng đặt trên gối.\n{F}: \"Lửa lấy lại những gì nó đã cho. Mang theo những gì ta dạy, và giữ nó cháy ở nơi khác.\""
+	},
+	{
+		"id": "-1000007603",
+		"key": "story_M4_1",
+		"en|ch|tc|kr": "Ngọn lửa cuối cùng của lò rèn. {F} giờ gầy guộc, râu trắng như tro.\n{F}: \"Đôi tay này chỉ còn một thanh đao. Cứ để nó thành gì thì thành - hoặc mang cho ta quặng phẩm {0}, ta sẽ rèn thành kiệt tác.\""
+	},
+	{
+		"id": "-1000007604",
+		"key": "story_M4_1_o1",
+		"en|ch|tc|kr": "Để lò lửa quyết định"
+	},
+	{
+		"id": "-1000007605",
+		"key": "story_M4_1_o2",
+		"en|ch|tc|kr": "Mang quặng phẩm {0} để rèn kiệt tác"
+	},
+	{
+		"id": "-1000007606",
+		"key": "story_endM_Heir",
+		"en|ch|tc|kr": "Giờ cậu bé cầm kìm, và từng nhát búa đều chuẩn.\n{F}: \"Thấy chưa? Vụng về và bướng bỉnh. Một thợ rèn.\" Ông đặt một thanh đao vào tay bạn. \"Thanh đầu tiên của nó. Thanh cuối cùng của ta. Giữ lấy.\""
+	},
+	{
+		"id": "-1000007607",
+		"key": "story_endM_Secret",
+		"en|ch|tc|kr": "Bạn mang bí quyết của ông đi: màu của thép, hơi thở của ống bễ, sự nhẫn nại trong nhát búa của một ông lão."
+	},
+	{
+		"id": "-1000007608",
+		"key": "story_endM_Masterwork",
+		"en|ch|tc|kr": "Quặng ngân lên trong lửa. Ba ngày ba đêm ông không ngủ.\n{F}: \"Xong rồi. Đó là thanh đao ta sinh ra để rèn.\" Ông mỉm cười, và đặt búa xuống mãi mãi."
+	},
+	{
+		"id": "-1000007609",
+		"key": "story_end_M_Masterwork",
+		"en|ch|tc|kr": "Kiệt tác"
+	},
+	{
+		"id": "-1000007611",
+		"key": "story_end_M_Secret",
+		"en|ch|tc|kr": "Bí quyết"
+	},
+	{
+		"id": "-1000007612",
+		"key": "story_no_ore",
+		"en|ch|tc|kr": "Bạn không có quặng phẩm {0} trở lên."
+	},
+	{
+		"id": "-1000007613",
+		"key": "story_name_N",
+		"en|ch|tc|kr": "Ngôi nhà trên phố cũ"
+	},
+	{
+		"id": "-1000007615",
+		"key": "story_task_N0",
+		"en|ch|tc|kr": "Có thứ gì đó dưới sàn nhà của bạn ở {T}."
+	},
+	{
+		"id": "-1000007616",
+		"key": "story_task_N1",
+		"en|ch|tc|kr": "Thổ phỉ uy hiếp phố cũ ở {T}; hàng xóm {N} nhờ bạn giúp."
+	},
+	{
+		"id": "-1000007617",
+		"key": "story_task_N2",
+		"en|ch|tc|kr": "Những ghi chép trong hầm kể lại ngôi nhà đã được xây thế nào."
+	},
+	{
+		"id": "-1000007618",
+		"key": "story_task_N3",
+		"en|ch|tc|kr": "{T} bị tấn công; cả phố chờ bạn (1 năm)."
+	},
+	{
+		"id": "-1000007619",
+		"key": "story_task_N4",
+		"en|ch|tc|kr": "Phố cũ ở {T} phán xét vị tu sĩ của nó."
+	},
+	{
+		"id": "-1000007620",
+		"key": "story_N0_1",
+		"en|ch|tc|kr": "Ngôi nhà của bạn ở {T}. Một tấm ván lỏng dưới giường, bên dưới là bậc đá và một cánh cửa dán lá bùa đã xám màu năm tháng.\nTừ lâu trước bạn, một tu sĩ đã sống ở đây."
+	},
+	{
+		"id": "-1000007621",
+		"key": "story_N0_1_o1",
+		"en|ch|tc|kr": "Phá phong ấn"
+	},
+	{
+		"id": "-1000007622",
+		"key": "story_N0_1_o2",
+		"en|ch|tc|kr": "Phong ấn lại"
+	},
+	{
+		"id": "-1000007623",
+		"key": "story_N0_2",
+		"en|ch|tc|kr": "Sau phong ấn, một con khôi lỗi đá nằm vỡ vụn giữa các bình đan và sổ ghi chép.\nHàng xóm gõ cửa, mặt tái mét.\n{N}: \"Tiếng động đó... là hầm của lão tiên sư? Bà tôi dặn tuyệt đối đừng mở.\""
+	},
+	{
+		"id": "-1000007624",
+		"key": "story_N0_sealed",
+		"en|ch|tc|kr": "Bạn dán một lá bùa mới đè lên lá cũ. Tấm ván trở về chỗ cũ.\nHàng xóm vẫy tay từ bậc cửa.\n{N}: \"Chào buổi tối, tiên nhân! Cả phố mừng vì lại có tu sĩ ở.\""
+	},
+	{
+		"id": "-1000007625",
+		"key": "story_N1_1",
+		"en|ch|tc|kr": "{N}: \"Giờ tháng nào chúng cũng đến - bọn cầm dao, đi cùng một tên ma tu. Chúng lấy gạo, lấy vải, lấy cả vòng tay của các cô gái.\"\n{N}: \"Chúng tôi chỉ là phàm nhân. Ngài cũng sống trên phố này mà...\""
+	},
+	{
+		"id": "-1000007626",
+		"key": "story_N1_1_o1",
+		"en|ch|tc|kr": "Chờ chúng đến rồi đánh"
+	},
+	{
+		"id": "-1000007627",
+		"key": "story_N1_1_o2",
+		"en|ch|tc|kr": "Thuê hộ vệ cho cả phố ({0:#,##0} [icon:zm_lingshi])"
+	},
+	{
+		"id": "-1000007628",
+		"key": "story_N1_1_o3",
+		"en|ch|tc|kr": "Chuyện của phàm nhân không phải việc của ta"
+	},
+	{
+		"id": "-1000007629",
+		"key": "story_N2_1",
+		"en|ch|tc|kr": "Ghi chép của lão tiên sư, nét chữ ngay ngắn: lão từng mua cả con phố, phá nhà để xây đại trạch, rồi giàu lên nhờ kho báu bên dưới. Phàm nhân nguyền rủa lão đến tận lúc chết.\nMột trang đánh dấu kho báu thứ hai - dưới những ngôi nhà cạnh nhà bạn."
+	},
+	{
+		"id": "-1000007630",
+		"key": "story_N2_1_o1",
+		"en|ch|tc|kr": "Mua lại nhà họ rồi đào"
+	},
+	{
+		"id": "-1000007631",
+		"key": "story_N2_1_o2",
+		"en|ch|tc|kr": "Đốt trang giấy"
+	},
+	{
+		"id": "-1000007632",
+		"key": "story_N3_1",
+		"en|ch|tc|kr": "Khói bốc trên tường thành {T}. Giặc ở cổng thành, và phố cũ ngay phía sau.\n{N}: \"Người ta bảo tường thành không trụ nổi. Chúng tôi biết đi đâu?\""
+	},
+	{
+		"id": "-1000007633",
+		"key": "story_N3_1_o1",
+		"en|ch|tc|kr": "Giữ cổng thành"
+	},
+	{
+		"id": "-1000007634",
+		"key": "story_N3_1_o2",
+		"en|ch|tc|kr": "Trả tiền xây tường ({0:#,##0} [icon:zm_lingshi] cho thành)"
+	},
+	{
+		"id": "-1000007635",
+		"key": "story_N3_1_o3",
+		"en|ch|tc|kr": "Mặc thành trấn tự lo liệu"
+	},
+	{
+		"id": "-1000007636",
+		"key": "story_endN_Manor",
+		"en|ch|tc|kr": "Nhà hàng xóm lần lượt bị phá; bên dưới là kho báu của lão tiên sư. Giờ phố yên ắng - không ai sống ở đây ngoài bạn."
+	},
+	{
+		"id": "-1000007637",
+		"key": "story_endN_Home",
+		"en|ch|tc|kr": "Đèn lồng treo trên mọi cửa nhà phố cũ. {N} mang tới một bát sủi cảo.\n{N}: \"Bọn trẻ giờ gọi đây là phố tiên nhân. Mâm cơm nhà chúng tôi lúc nào cũng có chỗ cho ngài.\""
+	},
+	{
+		"id": "-1000007638",
+		"key": "story_endN_Empty",
+		"en|ch|tc|kr": "Cửa đóng lại khi bạn đi qua. Từng nhà trên phố cũ bán nhà rồi dọn đi."
+	},
+	{
+		"id": "-1000007639",
+		"key": "story_end_N_Home",
+		"en|ch|tc|kr": "Mái ấm"
+	},
+	{
+		"id": "-1000007640",
+		"key": "story_end_N_Manor",
+		"en|ch|tc|kr": "Đại trạch"
+	},
+	{
+		"id": "-1000007641",
+		"key": "story_end_N_Empty",
+		"en|ch|tc|kr": "Con phố trống"
+	},
+	{
+		"id": "-1000007642",
+		"key": "story_name_O",
+		"en|ch|tc|kr": "Tro tàn thành cũ"
+	},
+	{
+		"id": "-1000007644",
+		"key": "story_task_O0",
+		"en|ch|tc|kr": "Một đứa trẻ sống sót khi {T} thất thủ."
+	},
+	{
+		"id": "-1000007645",
+		"key": "story_task_O1",
+		"en|ch|tc|kr": "{O} muốn biết ai đã đốt {T} (2 năm)."
+	},
+	{
+		"id": "-1000007646",
+		"key": "story_task_O2",
+		"en|ch|tc|kr": "{O} khổ luyện để thành tu sĩ (4 năm)."
+	},
+	{
+		"id": "-1000007647",
+		"key": "story_task_O3",
+		"en|ch|tc|kr": "{O} đã trưởng thành (7 năm)."
+	},
+	{
+		"id": "-1000007648",
+		"key": "story_O0_1",
+		"en|ch|tc|kr": "{T}. Xà nhà cháy đen, tro lạnh, mùi của một trận hỏa hoạn cũ. Trong đống đổ nát của một ngôi nhà, một đứa trẻ ngồi cạnh con búp bê vỡ, không khóc."
+	},
+	{
+		"id": "-1000007649",
+		"key": "story_O0_butcher",
+		"en|ch|tc|kr": "{T}. Bạn biết nơi này. Bạn biết thanh kiếm của ai đã tạo nên đống tro này.\nTrong đống đổ nát của một ngôi nhà, một đứa trẻ ngồi cạnh con búp bê vỡ, nhìn bạn không chút sợ hãi - nó không biết mặt bạn."
+	},
+	{
+		"id": "-1000007650",
+		"key": "story_O0_1_o1",
+		"en|ch|tc|kr": "Mang đứa trẻ theo"
+	},
+	{
+		"id": "-1000007651",
+		"key": "story_O0_1_o2",
+		"en|ch|tc|kr": "Gửi tiền cho một nhà nông nuôi đứa trẻ"
+	},
+	{
+		"id": "-1000007652",
+		"key": "story_O1_1",
+		"en|ch|tc|kr": "{O} giờ đã cao lớn, và lặng lẽ theo cách trẻ con không nên có.\n{O}: \"Đêm nào con cũng thấy ngọn lửa. Có người đã làm. Là ai? Ngài là tu sĩ - ngài biết mà.\""
+	},
+	{
+		"id": "-1000007654",
+		"key": "story_O1_1_o2",
+		"en|ch|tc|kr": "Nói dối: \"thổ phỉ, chết lâu rồi\""
+	},
+	{
+		"id": "-1000007655",
+		"key": "story_O1_1_o3",
+		"en|ch|tc|kr": "\"Thù hận là một người thầy tồi\""
+	},
+	{
+		"id": "-1000007656",
+		"key": "story_O2_1",
+		"en|ch|tc|kr": "{O} vung kiếm gỗ từ lúc rạng đông, hết lần này đến lần khác, đến khi tay rớm máu.\n{O}: \"Dạy con đi. Lần này con sẽ đủ mạnh.\""
+	},
+	{
+		"id": "-1000007657",
+		"key": "story_O2_1_o1",
+		"en|ch|tc|kr": "Luận bàn với {O}"
+	},
+	{
+		"id": "-1000007658",
+		"key": "story_O2_1_o2",
+		"en|ch|tc|kr": "Dạy sự nhẫn nại"
+	},
+	{
+		"id": "-1000007659",
+		"key": "story_O3_reckoning",
+		"en|ch|tc|kr": "{O} đứng trên đường, giờ cầm kiếm thật, ánh mắt của một tu sĩ trưởng thành.\n{O}: \"Con đã tìm thấy hồ sơ cũ của {T}. Con biết đó là kiếm của ai. Con biết mình đã ăn cơm của ai bao năm.\"\n{O}: \"Rút kiếm đi.\""
+	},
+	{
+		"id": "-1000007660",
+		"key": "story_O3_r_o1",
+		"en|ch|tc|kr": "Hạ kiếm xuống"
+	},
+	{
+		"id": "-1000007662",
+		"key": "story_O3_rebuild",
+		"en|ch|tc|kr": "{O}: \"Con đã quay về {T}. Cỏ dại mọc đầy phố, nhưng nước giếng vẫn ngọt.\"\n{O}: \"Có tường thành và nhà cửa thì người ta sẽ quay về. Cần {0:#,##0} [icon:zm_lingshi]. Ngài cùng con xây lại nhé?\""
+	},
+	{
+		"id": "-1000007663",
+		"key": "story_O3_lie",
+		"en|ch|tc|kr": "{O}: \"Con chưa bao giờ tìm thấy bọn thổ phỉ đó. Có lẽ giờ không còn quan trọng nữa.\"\n{O}: \"Con đã quay về {T}. Có tường thành và nhà cửa thì người ta sẽ quay về. Cần {0:#,##0} [icon:zm_lingshi]. Giúp con nhé?\""
+	},
+	{
+		"id": "-1000007664",
+		"key": "story_O3_b_o1",
+		"en|ch|tc|kr": "Xây lại {T} ({0:#,##0} [icon:zm_lingshi])"
+	},
+	{
+		"id": "-1000007665",
+		"key": "story_O3_b_o2",
+		"en|ch|tc|kr": "Để thành chết được yên nghỉ"
+	},
+	{
+		"id": "-1000007666",
+		"key": "story_endO_Atonement",
+		"en|ch|tc|kr": "Kiếm của bạn rơi xuống bụi đất. Lưỡi kiếm của {O} dừng cách cổ bạn một ngón tay - run rẩy, rồi hạ xuống.\n{O}: \"Con không làm được. Ngài đã nuôi con lớn.\" Đứa trẻ của tro tàn bỏ đi. Có thứ gì đó trong lòng bạn, đóng băng đã lâu, nứt vỡ."
+	},
+	{
+		"id": "-1000007667",
+		"key": "story_endO_Ashes",
+		"en|ch|tc|kr": "{T} vẫn là phế tích. Cỏ mọc phủ kín, và không ai còn nhớ đứa trẻ của tro tàn."
+	},
+	{
+		"id": "-1000007668",
+		"key": "story_endO_Rebuilt",
+		"en|ch|tc|kr": "{T} có tường thành mới, mái nhà mới. Khói bếp, không còn là khói lửa.\n{O}: \"Họ mời con làm người bảo hộ thành trấn. Con đồng ý - nếu ngài thường ghé thăm.\""
+	},
+	{
+		"id": "-1000007669",
+		"key": "story_end_O_Atonement",
+		"en|ch|tc|kr": "Chuộc tội"
+	},
+	{
+		"id": "-1000007670",
+		"key": "story_end_O_Ashes",
+		"en|ch|tc|kr": "Tro tàn"
+	},
+	{
+		"id": "-1000007671",
+		"key": "story_end_O_Rebuilt",
+		"en|ch|tc|kr": "Tái thiết"
+	},
+	{
+		"id": "-1000007672",
+		"key": "story_name_P",
+		"en|ch|tc|kr": "Nhịp tim trong đá"
+	},
+	{
+		"id": "-1000007674",
+		"key": "story_task_P0",
+		"en|ch|tc|kr": "Thần thức của bạn bắt được một nhịp tim ở nơi không ai nên có mặt."
+	},
+	{
+		"id": "-1000007675",
+		"key": "story_task_P1",
+		"en|ch|tc|kr": "Một luyện thể sư, {B}, bị kẹt nửa người hóa đá trong thể kiếp."
+	},
+	{
+		"id": "-1000007676",
+		"key": "story_task_P2",
+		"en|ch|tc|kr": "{B} chỉ cho bạn con đường luyện thể."
+	},
+	{
+		"id": "-1000007677",
+		"key": "story_task_P3",
+		"en|ch|tc|kr": "Thể kiếp lần hai của {B}."
+	},
+	{
+		"id": "-1000007678",
+		"key": "story_P0_1",
+		"en|ch|tc|kr": "Bạn thả thần thức lan ra khi bước đi. Cây cối, thú dữ, nhịp đập chậm rãi của đất...\nVà dưới dòng thác phía trước, ngay trong lòng đá - một nhịp tim. Chậm rãi. Của con người."
+	},
+	{
+		"id": "-1000007679",
+		"key": "story_P0_1_o1",
+		"en|ch|tc|kr": "Lần theo nhịp tim"
+	},
+	{
+		"id": "-1000007681",
+		"key": "story_P1_1",
+		"en|ch|tc|kr": "Dưới thác nước, một người đàn ông nửa thân hóa đá - chân, bụng, một cánh tay xám xịt nứt nẻ. Mắt ông mở ra khi thần thức bạn chạm tới.\n{B}: \"Thể kiếp của ta... thất bại giữa chừng. Mười năm như thế này rồi. Một viên đan, một cây thuốc - bất cứ thứ gì có sinh khí.\"\n{B}: \"Hoặc lấy phần còn lại của ta. Tinh hoa nhục thân của ta sẽ khiến ngươi mạnh lên.\""
+	},
+	{
+		"id": "-1000007682",
+		"key": "story_P1_1_o1",
+		"en|ch|tc|kr": "Cho ông một viên đan"
+	},
+	{
+		"id": "-1000007683",
+		"key": "story_P1_1_o2",
+		"en|ch|tc|kr": "Cho ông một cây thuốc"
+	},
+	{
+		"id": "-1000007684",
+		"key": "story_P1_1_o3",
+		"en|ch|tc|kr": "Đoạt lấy tinh hoa của ông"
+	},
+	{
+		"id": "-1000007685",
+		"key": "story_P1_2",
+		"en|ch|tc|kr": "Lớp đá nứt ra và rơi khỏi người ông như vỏ cây già. Ông đứng dậy, run rẩy, sống sót.\n{B}: \"Mười năm ta nghe tiếng nước đó. Ta sẽ báo đáp ngươi - bằng thứ duy nhất ta có: một thân thể không gì phá nổi.\""
+	},
+	{
+		"id": "-1000007686",
+		"key": "story_P2_1",
+		"en|ch|tc|kr": "{B}: \"Thân thể nhớ mọi đòn đánh. Hãy để nó học.\" Ông bẻ khớp ngón tay. \"Đánh ta. Rồi ta đánh ngươi. Hoặc đứng dưới thác như ta từng đứng - mỗi năm ta mất là một ngày.\""
+	},
+	{
+		"id": "-1000007687",
+		"key": "story_P2_1_o1",
+		"en|ch|tc|kr": "Đối quyền với {B}"
+	},
+	{
+		"id": "-1000007688",
+		"key": "story_P2_1_o2",
+		"en|ch|tc|kr": "Đứng dưới thác nước"
+	},
+	{
+		"id": "-1000007689",
+		"key": "story_P3_1",
+		"en|ch|tc|kr": "Bầu trời trên thác chuyển màu xám sắt. {B} cởi áo.\n{B}: \"Trời còn nợ ta nửa trận kiếp. Giờ nó đến đòi đây.\"\n{B}: \"Đứng cùng ta - hoặc đứng xa mà xem. Ta không trách ngươi.\""
+	},
+	{
+		"id": "-1000007690",
+		"key": "story_P3_1_o1",
+		"en|ch|tc|kr": "Sát cánh cùng ông"
+	},
+	{
+		"id": "-1000007691",
+		"key": "story_P3_1_o2",
+		"en|ch|tc|kr": "Đứng xa quan sát"
+	},
+	{
+		"id": "-1000007692",
+		"key": "story_endP_Brothers",
+		"en|ch|tc|kr": "Tia sét cuối cùng vỡ trên hai tấm lưng thay vì một. {B} cười lớn, máu me đầy mình, nhưng nguyên vẹn.\n{B}: \"Huynh đệ. Từ nay ai đánh ngươi là đánh ta.\""
+	},
+	{
+		"id": "-1000007693",
+		"key": "story_endP_Alone",
+		"en|ch|tc|kr": "Từ trên đồi bạn nhìn cơn bão nện xuống thác nước. Khi trời quang, tảng đá trống không. Dù ông đã thành thứ gì, ông đã tự mình làm được - và bạn cũng sẽ thế."
+	},
+	{
+		"id": "-1000007694",
+		"key": "story_endP_Devourer",
+		"en|ch|tc|kr": "Tinh hoa của ông tràn vào người bạn, nặng như núi. Xương cốt bạn trở nên cứng rắn. Nước vẫn đổ xuống tảng đá trống, và lòng bạn lạnh thêm một chút."
+	},
+	{
+		"id": "-1000007695",
+		"key": "story_end_P_Brothers",
+		"en|ch|tc|kr": "Huynh đệ luyện thể"
+	},
+	{
+		"id": "-1000007696",
+		"key": "story_end_P_Alone",
+		"en|ch|tc|kr": "Một mình"
+	},
+	{
+		"id": "-1000007697",
+		"key": "story_end_P_Devourer",
+		"en|ch|tc|kr": "Kẻ thôn phệ"
 	}
 ]

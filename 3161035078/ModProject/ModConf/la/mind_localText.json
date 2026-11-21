@@ -1,0 +1,357 @@
+[
+	{
+		"id": "-1000015000",
+		"key": "heart_button",
+		"en|ch|tc|kr": "Cor Dao"
+	},
+	{
+		"id": "-1000015001",
+		"key": "heart_title",
+		"en|ch|tc|kr": "Cor Dao"
+	},
+	{
+		"id": "-1000015002",
+		"key": "heart_npc",
+		"en|ch|tc|kr": "Cor Dao: {0}"
+	},
+	{
+		"id": "-1000015003",
+		"key": "heart_lvl_0",
+		"en|ch|tc|kr": "Fluctuans"
+	},
+	{
+		"id": "-1000015004",
+		"key": "heart_lvl_1",
+		"en|ch|tc|kr": "Stabile"
+	},
+	{
+		"id": "-1000015005",
+		"key": "heart_lvl_2",
+		"en|ch|tc|kr": "Firmum"
+	},
+	{
+		"id": "-1000015006",
+		"key": "heart_lvl_3",
+		"en|ch|tc|kr": "Immotum"
+	},
+	{
+		"id": "-1000015007",
+		"key": "heart_lvl_4",
+		"en|ch|tc|kr": "Cor adamantinum"
+	},
+	{
+		"id": "-1000015008",
+		"key": "heart_lvl_5",
+		"en|ch|tc|kr": "Cor Caeli"
+	},
+	{
+		"id": "-1000015009",
+		"key": "heart_value",
+		"en|ch|tc|kr": "[icon:xinqing] Cor Dao {0:#,##0} / {1:#,##0}"
+	},
+	{
+		"id": "-1000015010",
+		"key": "heart_value_top",
+		"en|ch|tc|kr": "[icon:xinqing] Cor Dao {0:#,##0} (gradus summus: plus fit essentia)"
+	},
+	{
+		"id": "-1000015011",
+		"key": "heart_essence",
+		"en|ch|tc|kr": "[icon:daodian] Essentia cordis {0:#,##0} ({1} gradus): [icon:nianli] SP max. +{2} %"
+	},
+	{
+		"id": "-1000015012",
+		"key": "heart_effects",
+		"en|ch|tc|kr": "[icon:nianli] SP max. +{0} %, [icon:lingli] MP max. +{1} %; [icon:huxin] daemon cordis victus {2:0} %, [icon:jingli] perruptio corporis +{3:0}, [icon:hudun] repercussus et casus -{4:0} %"
+	},
+	{
+		"id": "-1000015013",
+		"key": "heart_level_line",
+		"en|ch|tc|kr": "{0}: {1:#,##0} - [icon:nianli] SP +{2} %, [icon:lingli] MP +{3} %, [icon:huxin] daemon cordis {4:0} %"
+	},
+	{
+		"id": "-1000015014",
+		"key": "heart_help",
+		"en|ch|tc|kr": "Crescit: daemones victi, promissa servata, secessus, perruptiones, animus laetus. Decrescit: daemones amissi, proditio, promissa fracta, defectus, animus tristis."
+	},
+	{
+		"id": "-1000015015",
+		"key": "log_heart_up",
+		"en|ch|tc|kr": "Cor Dao +{0}: {1}."
+	},
+	{
+		"id": "-1000015016",
+		"key": "log_heart_down",
+		"en|ch|tc|kr": "Cor Dao -{0}: {1}."
+	},
+	{
+		"id": "-1000015017",
+		"key": "log_heart_level",
+		"en|ch|tc|kr": "Cor Dao: {0}."
+	},
+	{
+		"id": "-1000015018",
+		"key": "heart_src_betrayal",
+		"en|ch|tc|kr": "vinculum proditum"
+	},
+	{
+		"id": "-1000015019",
+		"key": "heart_src_demon_win",
+		"en|ch|tc|kr": "daemon cordis victus"
+	},
+	{
+		"id": "-1000015020",
+		"key": "heart_src_demon_lose",
+		"en|ch|tc|kr": "a daemone cordis victus"
+	},
+	{
+		"id": "-1000015021",
+		"key": "heart_src_seclusion",
+		"en|ch|tc|kr": "secessus"
+	},
+	{
+		"id": "-1000015022",
+		"key": "heart_src_break_ok",
+		"en|ch|tc|kr": "perruptio corporis"
+	},
+	{
+		"id": "-1000015023",
+		"key": "heart_src_break_fail",
+		"en|ch|tc|kr": "perruptio irrita"
+	},
+	{
+		"id": "-1000015024",
+		"key": "heart_src_promise_kept",
+		"en|ch|tc|kr": "promissum servatum"
+	},
+	{
+		"id": "-1000015025",
+		"key": "heart_src_promise_broken",
+		"en|ch|tc|kr": "promissum fractum"
+	},
+	{
+		"id": "-1000015026",
+		"key": "sense_button",
+		"en|ch|tc|kr": "Sensus spiritualis"
+	},
+	{
+		"id": "-1000015027",
+		"key": "sense_title",
+		"en|ch|tc|kr": "Sensus spiritualis"
+	},
+	{
+		"id": "-1000015028",
+		"key": "sense_npc",
+		"en|ch|tc|kr": "Sensus spiritualis: {0}"
+	},
+	{
+		"id": "-1000015029",
+		"key": "sense_lvl_0",
+		"en|ch|tc|kr": "Sopitus"
+	},
+	{
+		"id": "-1000015030",
+		"key": "sense_lvl_1",
+		"en|ch|tc|kr": "Perceptio spiritualis"
+	},
+	{
+		"id": "-1000015031",
+		"key": "sense_lvl_2",
+		"en|ch|tc|kr": "Cogitatio divina"
+	},
+	{
+		"id": "-1000015032",
+		"key": "sense_lvl_3",
+		"en|ch|tc|kr": "Sensus extra corpus"
+	},
+	{
+		"id": "-1000015033",
+		"key": "sense_lvl_4",
+		"en|ch|tc|kr": "Regnum sensus"
+	},
+	{
+		"id": "-1000015034",
+		"key": "sense_lvl_5",
+		"en|ch|tc|kr": "Sensus Caeli"
+	},
+	{
+		"id": "-1000015035",
+		"key": "sense_exp",
+		"en|ch|tc|kr": "[icon:nianli] Sensus spiritualis {0:#,##0} / {1:#,##0}"
+	},
+	{
+		"id": "-1000015036",
+		"key": "sense_exp_top",
+		"en|ch|tc|kr": "[icon:nianli] Sensus spiritualis {0:#,##0} (gradus summus: plus fit essentia)"
+	},
+	{
+		"id": "-1000015039",
+		"key": "sense_scan_done",
+		"en|ch|tc|kr": "Hoc mense iam circumiecta explorasti."
+	},
+	{
+		"id": "-1000015040",
+		"key": "sense_scan_button",
+		"en|ch|tc|kr": "[icon:fanwei] Circumiecta explora ({0} cellae, +{1} exp., semel in mense)"
+	},
+	{
+		"id": "-1000015041",
+		"key": "sense_scan_result",
+		"en|ch|tc|kr": "Sensus tuus se diffundit: {0} cultores circa, {1} infesti; fortissimus est {2} (gradus {3}). Herbae cellarum: {4:#,##0}, metalla: {5:#,##0}."
+	},
+	{
+		"id": "-1000015043",
+		"key": "sense_help",
+		"en|ch|tc|kr": "Exp. quoque mense (ex ingenio), in secessu, a daemonibus victis et ab exploratione semel in mense."
+	},
+	{
+		"id": "-1000015044",
+		"key": "log_sense_level",
+		"en|ch|tc|kr": "Sensus spiritualis: {0}."
+	},
+	{
+		"id": "-1000015045",
+		"key": "log_sense_ambush",
+		"en|ch|tc|kr": "Sensus spiritualis tuus {0} venientem sensit: elapsus es."
+	},
+	{
+		"id": "-1000015046",
+		"key": "sense_ambush",
+		"en|ch|tc|kr": "In margine sensus tui animus necandi movetur: {0}, venator praemiorum, ante insidiatur. Viam mutas priusquam te videat."
+	},
+	{
+		"id": "-1000015047",
+		"key": "sense_scan_spot",
+		"en|ch|tc|kr": "{0} proxima: {1} cellae ad {2}."
+	},
+	{
+		"id": "-1000015048",
+		"key": "sense_dir_0",
+		"en|ch|tc|kr": "septentrionem"
+	},
+	{
+		"id": "-1000015049",
+		"key": "sense_dir_1",
+		"en|ch|tc|kr": "aquilonem"
+	},
+	{
+		"id": "-1000015050",
+		"key": "sense_dir_2",
+		"en|ch|tc|kr": "orientem"
+	},
+	{
+		"id": "-1000015051",
+		"key": "sense_dir_3",
+		"en|ch|tc|kr": "eurum"
+	},
+	{
+		"id": "-1000015052",
+		"key": "sense_dir_4",
+		"en|ch|tc|kr": "meridiem"
+	},
+	{
+		"id": "-1000015053",
+		"key": "sense_dir_5",
+		"en|ch|tc|kr": "africum"
+	},
+	{
+		"id": "-1000015054",
+		"key": "sense_dir_6",
+		"en|ch|tc|kr": "occidentem"
+	},
+	{
+		"id": "-1000015055",
+		"key": "sense_dir_7",
+		"en|ch|tc|kr": "caurum"
+	},
+	{
+		"id": "-1000015037",
+		"key": "sense_essence",
+		"en|ch|tc|kr": "[icon:daodian] Essentia sensus {0:#,##0} ({1} gradus): [icon:nianli] SP max. +{2} %"
+	},
+	{
+		"id": "-1000015038",
+		"key": "sense_effects",
+		"en|ch|tc|kr": "[icon:nianli] SP max. +{0} %, [icon:lingli] MP max. +{1} %; [icon:shanbiD] insidiae sensae {2:0} %, [icon:huxin] daemones cordis -{3:0} %, [icon:fanwei] exploratio {4} cellae; [icon:hudun] insidiae vitatae: {5}"
+	},
+	{
+		"id": "-1000015042",
+		"key": "sense_level_line",
+		"en|ch|tc|kr": "{0}: {1:#,##0} - [icon:nianli] SP +{2} %, [icon:lingli] MP +{3} %, [icon:shanbiD] insidiae sensae {4:0} %"
+	},
+	{
+		"id": "-1000015056",
+		"key": "sense_scan_title",
+		"en|ch|tc|kr": "Sensus spiritalis - Exploratio"
+	},
+	{
+		"id": "-1000015057",
+		"key": "sense_scan_summary",
+		"en|ch|tc|kr": "{0} cultores circum, {1} infesti · herbae cellarum {2:#,##0} · metalla {3:#,##0}"
+	},
+	{
+		"id": "-1000015058",
+		"key": "sense_scan_people",
+		"en|ch|tc|kr": "Cultores circum"
+	},
+	{
+		"id": "-1000015059",
+		"key": "sense_scan_nobody",
+		"en|ch|tc|kr": "Nemo intra spatium."
+	},
+	{
+		"id": "-1000015060",
+		"key": "sense_scan_unit",
+		"en|ch|tc|kr": "Gradus {0} · {1}"
+	},
+	{
+		"id": "-1000015061",
+		"key": "sense_scan_hostile",
+		"en|ch|tc|kr": "infestus"
+	},
+	{
+		"id": "-1000015062",
+		"key": "sense_scan_neutral",
+		"en|ch|tc|kr": "placidus"
+	},
+	{
+		"id": "-1000015063",
+		"key": "sense_scan_more",
+		"en|ch|tc|kr": "... et {0} alii"
+	},
+	{
+		"id": "-1000015064",
+		"key": "sense_scan_places",
+		"en|ch|tc|kr": "Loca"
+	},
+	{
+		"id": "-1000015065",
+		"key": "sense_scan_noplace",
+		"en|ch|tc|kr": "Nullus locus insignis intra spatium."
+	},
+	{
+		"id": "-1000015066",
+		"key": "sense_scan_place",
+		"en|ch|tc|kr": "Regio {0} · {1} cellae ad {2}"
+	},
+	{
+		"id": "-1000015067",
+		"key": "sense_scan_place_far",
+		"en|ch|tc|kr": "Regio {0} · {1} cellae ad {2} (extra spatium: proximus)"
+	},
+	{
+		"id": "-1000015068",
+		"key": "sense_scan_hint",
+		"en|ch|tc|kr": "Nomen preme ut cultorem videas."
+	},
+	{
+		"id": "-1000015069",
+		"key": "heart_story",
+		"en|ch|tc|kr": "fabula"
+	},
+	{
+		"id": "-1000015070",
+		"key": "sense_story",
+		"en|ch|tc|kr": "fabula"
+	}
+]

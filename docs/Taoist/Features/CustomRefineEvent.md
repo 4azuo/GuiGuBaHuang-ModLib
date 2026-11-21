@@ -1,4 +1,4 @@
-# CustomRefineEvent
+﻿# CustomRefineEvent
 
 `3161035078/ModProject/ModCode/ModMain/Mod/CustomRefineEvent.cs` - cache key `ModConst.CUSTOM_REFINE_EVENT` - group: Unit properties
 
@@ -19,20 +19,31 @@ Related object: `Object/CustomRefine.cs` (one slot), enums `AdjTypeEnum` (what a
 
 - `AddRefineCost` (S&M): raises the exp per level.
 - `GrowUpSpeed` (S&M): NPC refining runs every `GrowUpSpeed` months.
-- `mod_configs.json` > `CustomRefineConfigs.LevelRates`: slot quality chance (%): Common 30, Uncommon 20, Rare 20, Myst 16, Lgendary 8, Beast 4, Antique 2.
+- `custom_refine_configs.json` > `LevelRates` (`CustomRefineConfig`): slot quality chance (%): Common 30, Uncommon 20, Rare 20, Myst 16, Lgendary 8, Beast 4, Antique 2.
 
 ## Flow
 
 | Hook | What happens |
 |---|---|
 | `OnMonthly` | Clears `CachedValues`. |
-| `OnMonthlyForEachWUnit` | NPCs in a **small town** (not a main town) with money > 3 x the town tax: for each equipped refinable item, spends `sqrt(money)` (to the town budget) for `spend x RefineWeapon / 40` exp. |
+| `OnMonthlyForEachWUnit` | NPCs in a **small town** (not a main town) with money > 3 x the town tax: for each equipped refinable item, spends `sqrt(money)` (to the town budget) for `spend x RefineSkill / 40` exp. |
 | `OnOpenUIEnd(TownFactoryShapeOption)` | Forge of a **small town**: the upgrade button is replaced by the custom refine. |
 
 ## Player refine (forge)
 
 1. **Item selector** (`other500020001`): the refinable items of the bag, one at a time. Under OK: progress text (`refine_progress`: level, exp / exp of next level, next slot at N or all slots) and a "Reroll" button (`refine_reroll`).
-2. OK -> **material selector** (`other500020002`): spirit stones only. OK: `value = worth x count`, `exp = value x RefineWeapon / 40` (long), money - value, town budget + value, message `other500020051` (old level, new level, exp).
+2. OK -> **material selector** (`other500020002`): spirit stones only. OK: `value = worth x count`, `exp = value x RefineSkill / 40` (long), money - value, town budget + value, message `other500020051` (old level, new level, exp).
+
+## Refine skill
+
+`RefineSkill(wunit, item)`: the skill that turns spirit stones into exp.
+
+| Item | Skill |
+|---|---|
+| ring, outfit, artifact | `RefineWeapon + (Symbol + Geomancy) / 2` (forge + half of talismans and formations, `NpcAutoCraftArtifact.CraftSkill`) |
+| mount | `Herbal + RefineElixir` (herbs + alchemy: beasts are raised on herbs and pills, `NpcAutoCraftArtifact.MountSkill`) |
+
+Before 2026-11-20 every item used RefineWeapon alone.
 
 ## Refine level
 
@@ -42,7 +53,7 @@ level = sqrt(exp / L1)                                          (GetRefineLvl)
 exp for level n = L1 x (n - 0.5)^2                              (ExpForLevel, rounded the same way)
 ```
 
-Example: grade 4 item level 3 (L1 = 460): level 100 needs about 4.55M exp; with RefineWeapon 200 that is about 910k spirit stones.
+Example: grade 4 item level 3 (L1 = 460): level 100 needs about 4.55M exp; with a refine skill of 200 that is about 910k spirit stones.
 
 The refine level also feeds the equipment formulas of [UnitModifyEvent](UnitModifyEvent.md) (artifact Atk/Def, outfit HP/Def, ring HP, mount MP).
 

@@ -1,0 +1,602 @@
+[
+	{
+		"id": "-1000013000",
+		"key": "merit_button",
+		"en": "Merit",
+		"ch": "功德",
+		"tc": "功德",
+		"kr": "공덕"
+	},
+	{
+		"id": "-1000013001",
+		"key": "merit_title",
+		"en": "Merit",
+		"ch": "功德",
+		"tc": "功德",
+		"kr": "공덕"
+	},
+	{
+		"id": "-1000013002",
+		"key": "merit_npc",
+		"en": "Merit: {0}",
+		"ch": "功德：{0}",
+		"tc": "功德：{0}",
+		"kr": "공덕: {0}"
+	},
+	{
+		"id": "-1000013003",
+		"key": "merit_lvl_0",
+		"en": "No merit",
+		"ch": "无功德",
+		"tc": "無功德",
+		"kr": "공덕 없음"
+	},
+	{
+		"id": "-1000013004",
+		"key": "merit_lvl_1",
+		"en": "Good Karma",
+		"ch": "善缘",
+		"tc": "善緣",
+		"kr": "선연"
+	},
+	{
+		"id": "-1000013005",
+		"key": "merit_lvl_2",
+		"en": "Accumulated Virtue",
+		"ch": "积德",
+		"tc": "積德",
+		"kr": "적덕"
+	},
+	{
+		"id": "-1000013006",
+		"key": "merit_lvl_3",
+		"en": "Blessed Virtue",
+		"ch": "福泽",
+		"tc": "福澤",
+		"kr": "복택"
+	},
+	{
+		"id": "-1000013007",
+		"key": "merit_lvl_4",
+		"en": "Golden Light",
+		"ch": "功德金光",
+		"tc": "功德金光",
+		"kr": "공덕금광"
+	},
+	{
+		"id": "-1000013008",
+		"key": "merit_lvl_5",
+		"en": "Merit Saint",
+		"ch": "功德圣者",
+		"tc": "功德聖者",
+		"kr": "공덕성자"
+	},
+	{
+		"id": "-1000013009",
+		"key": "merit_lvl_6",
+		"en": "Boundless Merit",
+		"ch": "无量功德",
+		"tc": "無量功德",
+		"kr": "무량공덕"
+	},
+	{
+		"id": "-1000013010",
+		"key": "merit_lvl_m1",
+		"en": "Sinful",
+		"ch": "罪业",
+		"tc": "罪業",
+		"kr": "죄업"
+	},
+	{
+		"id": "-1000013011",
+		"key": "merit_lvl_m2",
+		"en": "Wicked",
+		"ch": "恶业",
+		"tc": "惡業",
+		"kr": "악업"
+	},
+	{
+		"id": "-1000013012",
+		"key": "merit_lvl_m3",
+		"en": "Damned",
+		"ch": "业障缠身",
+		"tc": "業障纏身",
+		"kr": "업장"
+	},
+	{
+		"id": "-1000013013",
+		"key": "merit_points",
+		"en": "[icon:zm_mingyu] Merit {0:#,##0} / {1:#,##0}",
+		"ch": "[icon:zm_mingyu] 功德 {0:#,##0} / {1:#,##0}",
+		"tc": "[icon:zm_mingyu] 功德 {0:#,##0} / {1:#,##0}",
+		"kr": "[icon:zm_mingyu] 공덕 {0:#,##0} / {1:#,##0}"
+	},
+	{
+		"id": "-1000013014",
+		"key": "merit_points_top",
+		"en": "[icon:zm_mingyu] Merit {0:#,##0} (top level: more merit becomes essence)",
+		"ch": "[icon:zm_mingyu] 功德 {0:#,##0}（已至极境：余下功德化为功德精华）",
+		"tc": "[icon:zm_mingyu] 功德 {0:#,##0}（已至極境：餘下功德化為功德精華）",
+		"kr": "[icon:zm_mingyu] 공덕 {0:#,##0} (최고 경지: 남는 공덕은 정화가 된다)"
+	},
+	{
+		"id": "-1000013015",
+		"key": "merit_essence",
+		"en": "[icon:daodian] Essence of merit {0:#,##0} ({1} steps): [icon:gongji] attack +{2} %, [icon:fangyu] defense +{3} %",
+		"ch": "[icon:daodian] 功德精华 {0:#,##0}（{1}重）：[icon:gongji] 攻击+{2}%，[icon:fangyu] 防御+{3}%",
+		"tc": "[icon:daodian] 功德精華 {0:#,##0}（{1}重）：[icon:gongji] 攻擊+{2}%，[icon:fangyu] 防禦+{3}%",
+		"kr": "[icon:daodian] 공덕 정화 {0:#,##0} ({1}단계): [icon:gongji] 공격 +{2}%, [icon:fangyu] 방어 +{3}%"
+	},
+	{
+		"id": "-1000013016",
+		"key": "merit_bonus",
+		"en": "[icon:gongji] Attack {0:+0.#;-0.#;0} %, [icon:fangyu] defense {1:+0.#;-0.#;0} %, [icon:xingyun] Luck {2:+0;-0;0}",
+		"ch": "[icon:gongji] 攻击{0:+0.#;-0.#;0}%，[icon:fangyu] 防御{1:+0.#;-0.#;0}%，[icon:xingyun] 气运{2:+0;-0;0}",
+		"tc": "[icon:gongji] 攻擊{0:+0.#;-0.#;0}%，[icon:fangyu] 防禦{1:+0.#;-0.#;0}%，[icon:xingyun] 氣運{2:+0;-0;0}",
+		"kr": "[icon:gongji] 공격 {0:+0.#;-0.#;0}%, [icon:fangyu] 방어 {1:+0.#;-0.#;0}%, [icon:xingyun] 기운 {2:+0;-0;0}"
+	},
+	{
+		"id": "-1000013017",
+		"key": "merit_lightning",
+		"en": "[icon:leilinggen] Lightning of the trials and body tribulations: {0:+0;-0;0} % damage",
+		"ch": "[icon:leilinggen] 试炼与炼体雷劫之雷：伤害{0:+0;-0;0}%",
+		"tc": "[icon:leilinggen] 試煉與煉體雷劫之雷：傷害{0:+0;-0;0}%",
+		"kr": "[icon:leilinggen] 시련과 체겁의 번개: 피해 {0:+0;-0;0}%"
+	},
+	{
+		"id": "-1000013018",
+		"key": "merit_intim",
+		"en": "[icon:shengwang] Every month, the cultivators near you: righteous {0:+0;-0;0}, evil {1:+0;-0;0} (friendship; below zero: hatred)",
+		"ch": "[icon:shengwang] 每月身边修士：正道{0:+0;-0;0}，邪道{1:+0;-0;0}（好感；负数为仇恨）",
+		"tc": "[icon:shengwang] 每月身邊修士：正道{0:+0;-0;0}，邪道{1:+0;-0;0}（好感；負數為仇恨）",
+		"kr": "[icon:shengwang] 매달 주변 수사: 정파 {0:+0;-0;0}, 사파 {1:+0;-0;0} (호감; 음수는 원한)"
+	},
+	{
+		"id": "-1000013019",
+		"key": "merit_bounty_warn",
+		"en": "[icon:zhandouxiaoguo] Your karma is heavy: every year a righteous cultivator puts a bounty on you.",
+		"ch": "[icon:zhandouxiaoguo] 业障深重：每年都有正道修士悬赏于你。",
+		"tc": "[icon:zhandouxiaoguo] 業障深重：每年都有正道修士懸賞於你。",
+		"kr": "[icon:zhandouxiaoguo] 업장이 무겁다: 매년 정파 수사가 당신에게 현상금을 건다."
+	},
+	{
+		"id": "-1000013020",
+		"key": "merit_level_line",
+		"en": "{0}: {1:#,##0} - [icon:gongji] attack {2:+0.#;-0.#;0} %, [icon:fangyu] defense {3:+0.#;-0.#;0} %, [icon:xingyun] Luck {4:+0;-0;0}",
+		"ch": "{0}：{1:#,##0} - [icon:gongji] 攻击{2:+0.#;-0.#;0}%，[icon:fangyu] 防御{3:+0.#;-0.#;0}%，[icon:xingyun] 气运{4:+0;-0;0}",
+		"tc": "{0}：{1:#,##0} - [icon:gongji] 攻擊{2:+0.#;-0.#;0}%，[icon:fangyu] 防禦{3:+0.#;-0.#;0}%，[icon:xingyun] 氣運{4:+0;-0;0}",
+		"kr": "{0}: {1:#,##0} - [icon:gongji] 공격 {2:+0.#;-0.#;0}%, [icon:fangyu] 방어 {3:+0.#;-0.#;0}%, [icon:xingyun] 기운 {4:+0;-0;0}"
+	},
+	{
+		"id": "-1000013021",
+		"key": "merit_donate",
+		"en": "Donate {1:#,##0} [icon:zm_lingshi] to the people of {0} (+{2} merit, once a month)",
+		"ch": "向{0}百姓捐赠{1:#,##0}[icon:zm_lingshi]（功德+{2}，每月一次）",
+		"tc": "向{0}百姓捐贈{1:#,##0}[icon:zm_lingshi]（功德+{2}，每月一次）",
+		"kr": "{0} 백성에게 {1:#,##0}[icon:zm_lingshi] 기부 (공덕 +{2}, 매달 한 번)"
+	},
+	{
+		"id": "-1000013022",
+		"key": "merit_donate_done",
+		"en": "You have already donated this month.",
+		"ch": "本月已捐赠过。",
+		"tc": "本月已捐贈過。",
+		"kr": "이번 달에는 이미 기부했다."
+	},
+	{
+		"id": "-1000013023",
+		"key": "merit_help",
+		"en": "Merit: kill beasts and evil cultivators, help people (encounters, donations). Karma: kill righteous ones, rob, walk away.",
+		"ch": "功德：斩妖除魔、诛杀邪修、济世救人（奇遇、捐赠）。业障：杀害正道、劫掠、见死不救。",
+		"tc": "功德：斬妖除魔、誅殺邪修、濟世救人（奇遇、捐贈）。業障：殺害正道、劫掠、見死不救。",
+		"kr": "공덕: 요수와 사파 수사를 베고, 사람을 돕는다 (기연, 기부). 업장: 정파를 죽이고, 약탈하고, 외면한다."
+	},
+	{
+		"id": "-1000013024",
+		"key": "log_merit_gain",
+		"en": "Merit +{0}: {1}.",
+		"ch": "功德+{0}：{1}。",
+		"tc": "功德+{0}：{1}。",
+		"kr": "공덕 +{0}: {1}."
+	},
+	{
+		"id": "-1000013025",
+		"key": "log_merit_loss",
+		"en": "Karma +{0}: {1}.",
+		"ch": "业障+{0}：{1}。",
+		"tc": "業障+{0}：{1}。",
+		"kr": "업장 +{0}: {1}."
+	},
+	{
+		"id": "-1000013026",
+		"key": "log_merit_level",
+		"en": "Merit: {0}.",
+		"ch": "功德：{0}。",
+		"tc": "功德：{0}。",
+		"kr": "공덕: {0}."
+	},
+	{
+		"id": "-1000013027",
+		"key": "log_merit_bounty",
+		"en": "{0} put a bounty of {2:#,##0} on you in {1} for your karma.",
+		"ch": "{0}因你的业障在{1}悬赏{2:#,##0}。",
+		"tc": "{0}因你的業障在{1}懸賞{2:#,##0}。",
+		"kr": "{0}이(가) 당신의 업장 때문에 {1}에 {2:#,##0}의 현상금을 걸었다."
+	},
+	{
+		"id": "-1000013028",
+		"key": "merit_src_beast",
+		"en": "a beast slain",
+		"ch": "斩杀妖兽",
+		"tc": "斬殺妖獸",
+		"kr": "요수 처치"
+	},
+	{
+		"id": "-1000013029",
+		"key": "merit_src_kill_good",
+		"en": "a righteous cultivator killed",
+		"ch": "杀害正道修士",
+		"tc": "殺害正道修士",
+		"kr": "정파 수사 살해"
+	},
+	{
+		"id": "-1000013030",
+		"key": "merit_src_kill_evil",
+		"en": "an evil cultivator slain",
+		"ch": "诛杀邪道修士",
+		"tc": "誅殺邪道修士",
+		"kr": "사파 수사 처단"
+	},
+	{
+		"id": "-1000013031",
+		"key": "merit_src_kill",
+		"en": "a cultivator killed",
+		"ch": "杀害修士",
+		"tc": "殺害修士",
+		"kr": "수사 살해"
+	},
+	{
+		"id": "-1000013032",
+		"key": "merit_src_donate",
+		"en": "a donation to the people",
+		"ch": "捐赠百姓",
+		"tc": "捐贈百姓",
+		"kr": "백성에게 기부"
+	},
+	{
+		"id": "-1000013033",
+		"key": "merit_src_wounded",
+		"en": "a wounded cultivator healed",
+		"ch": "救治伤者",
+		"tc": "救治傷者",
+		"kr": "부상자 치료"
+	},
+	{
+		"id": "-1000013034",
+		"key": "merit_src_rob",
+		"en": "a wounded cultivator robbed",
+		"ch": "劫掠伤者",
+		"tc": "劫掠傷者",
+		"kr": "부상자 약탈"
+	},
+	{
+		"id": "-1000013035",
+		"key": "merit_src_cub",
+		"en": "a beast cub fed",
+		"ch": "喂养幼兽",
+		"tc": "餵養幼獸",
+		"kr": "새끼 짐승 먹이기"
+	},
+	{
+		"id": "-1000013036",
+		"key": "merit_src_festival",
+		"en": "a town festival",
+		"ch": "城镇庆典",
+		"tc": "城鎮慶典",
+		"kr": "마을 축제"
+	},
+	{
+		"id": "-1000013037",
+		"key": "merit_src_flood",
+		"en": "flood relief",
+		"ch": "赈济水灾",
+		"tc": "賑濟水災",
+		"kr": "수재 구휼"
+	},
+	{
+		"id": "-1000013038",
+		"key": "merit_src_plague",
+		"en": "the sick of a plague healed",
+		"ch": "救治瘟疫",
+		"tc": "救治瘟疫",
+		"kr": "역병 치료"
+	},
+	{
+		"id": "-1000013039",
+		"key": "merit_src_raid",
+		"en": "a village saved from beasts",
+		"ch": "击退兽潮护村",
+		"tc": "擊退獸潮護村",
+		"kr": "요수로부터 마을 수호"
+	},
+	{
+		"id": "-1000013040",
+		"key": "merit_src_flee",
+		"en": "a village left to the beasts",
+		"ch": "弃村而逃",
+		"tc": "棄村而逃",
+		"kr": "마을을 버리고 도망"
+	},
+	{
+		"id": "-1000013041",
+		"key": "enc_flood",
+		"en": "The river broke its banks near {0}: houses are gone, families sleep on the roofs. The town asks the cultivators for {1:#,##0} [icon:zm_lingshi] to rebuild.",
+		"ch": "{0}附近河水决堤：房屋尽毁，百姓露宿屋顶。城中请修士捐出{1:#,##0}[icon:zm_lingshi]以助重建。",
+		"tc": "{0}附近河水決堤：房屋盡毀，百姓露宿屋頂。城中請修士捐出{1:#,##0}[icon:zm_lingshi]以助重建。",
+		"kr": "{0} 근처에서 강이 범람했다: 집이 무너지고 가족들이 지붕 위에서 잔다. 마을은 재건을 위해 수사들에게 {1:#,##0}[icon:zm_lingshi]을(를) 청한다."
+	},
+	{
+		"id": "-1000013042",
+		"key": "enc_flood_o1",
+		"en": "Donate",
+		"ch": "捐赠",
+		"tc": "捐贈",
+		"kr": "기부한다"
+	},
+	{
+		"id": "-1000013043",
+		"key": "enc_flood_o2",
+		"en": "Walk on",
+		"ch": "离开",
+		"tc": "離開",
+		"kr": "지나간다"
+	},
+	{
+		"id": "-1000013044",
+		"key": "enc_flood_r",
+		"en": "The people of the town will remember your name. Merit +{0}.",
+		"ch": "城中百姓将铭记你的名字。功德+{0}。",
+		"tc": "城中百姓將銘記你的名字。功德+{0}。",
+		"kr": "마을 백성들이 당신의 이름을 기억할 것이다. 공덕 +{0}."
+	},
+	{
+		"id": "-1000013045",
+		"key": "enc_plague",
+		"en": "A plague spreads in {0}; the healers have run out of herbs. {1} herbs from your bag could save many.",
+		"ch": "{0}瘟疫蔓延，医者药材已尽。你行囊中的{1}株药材可救许多人。",
+		"tc": "{0}瘟疫蔓延，醫者藥材已盡。你行囊中的{1}株藥材可救許多人。",
+		"kr": "{0}에 역병이 퍼지고 의원들의 약재가 바닥났다. 당신 가방의 약재 {1}개로 많은 이를 살릴 수 있다."
+	},
+	{
+		"id": "-1000013046",
+		"key": "enc_plague_o1",
+		"en": "Give the herbs",
+		"ch": "赠予药材",
+		"tc": "贈予藥材",
+		"kr": "약재를 준다"
+	},
+	{
+		"id": "-1000013047",
+		"key": "enc_plague_o2",
+		"en": "Walk on",
+		"ch": "离开",
+		"tc": "離開",
+		"kr": "지나간다"
+	},
+	{
+		"id": "-1000013048",
+		"key": "enc_plague_r",
+		"en": "The fevers break one after another. Merit +{0}.",
+		"ch": "病人的高热相继退去。功德+{0}。",
+		"tc": "病人的高熱相繼退去。功德+{0}。",
+		"kr": "열병이 차례로 내린다. 공덕 +{0}."
+	},
+	{
+		"id": "-1000013049",
+		"key": "enc_plague_noherb",
+		"en": "You do not have enough herbs.",
+		"ch": "你的药材不够。",
+		"tc": "你的藥材不夠。",
+		"kr": "약재가 부족하다."
+	},
+	{
+		"id": "-1000013050",
+		"key": "enc_raid",
+		"en": "Beasts come down from the mountain on a village; the mortals run. You could stand between them ({0:0} % to drive them off).",
+		"ch": "妖兽下山袭击村庄，凡人四散奔逃。你可挺身而出（{0:0}%击退它们）。",
+		"tc": "妖獸下山襲擊村莊，凡人四散奔逃。你可挺身而出（{0:0}%擊退牠們）。",
+		"kr": "요수들이 산에서 내려와 마을을 덮친다. 범인들이 도망친다. 당신이 막아설 수 있다 (격퇴 확률 {0:0}%)."
+	},
+	{
+		"id": "-1000013051",
+		"key": "enc_raid_o1",
+		"en": "Fight them off",
+		"ch": "迎战",
+		"tc": "迎戰",
+		"kr": "맞서 싸운다"
+	},
+	{
+		"id": "-1000013052",
+		"key": "enc_raid_o2",
+		"en": "Walk away",
+		"ch": "离开",
+		"tc": "離開",
+		"kr": "떠난다"
+	},
+	{
+		"id": "-1000013053",
+		"key": "enc_raid_win",
+		"en": "The beasts flee into the mountain. Merit +{0}, {1:#,##0} HP lost.",
+		"ch": "妖兽逃回山中。功德+{0}，损失{1:#,##0}气血。",
+		"tc": "妖獸逃回山中。功德+{0}，損失{1:#,##0}氣血。",
+		"kr": "요수들이 산으로 달아났다. 공덕 +{0}, 체력 {1:#,##0} 손실."
+	},
+	{
+		"id": "-1000013054",
+		"key": "enc_raid_lose",
+		"en": "The beasts were too many, but the villagers escaped while you fought. Merit +{0}, {1:#,##0} HP lost.",
+		"ch": "妖兽太多，但村民趁你苦战逃出生天。功德+{0}，损失{1:#,##0}气血。",
+		"tc": "妖獸太多，但村民趁你苦戰逃出生天。功德+{0}，損失{1:#,##0}氣血。",
+		"kr": "요수가 너무 많았지만 당신이 싸우는 사이 마을 사람들이 도망쳤다. 공덕 +{0}, 체력 {1:#,##0} 손실."
+	},
+	{
+		"id": "-1000013055",
+		"key": "enc_raid_flee",
+		"en": "Behind you the village burns.",
+		"ch": "身后村庄火光冲天。",
+		"tc": "身後村莊火光沖天。",
+		"kr": "등 뒤에서 마을이 불탄다."
+	},
+	{
+		"id": "-1000013056",
+		"key": "merit_flat",
+		"en": "Flat: [icon:gongji] attack {0:+0;-0;0}, [icon:fangyu] defense {1:+0;-0;0}",
+		"ch": "固定：[icon:gongji] 攻击{0:+0;-0;0}，[icon:fangyu] 防御{1:+0;-0;0}",
+		"tc": "固定：[icon:gongji] 攻擊{0:+0;-0;0}，[icon:fangyu] 防禦{1:+0;-0;0}",
+		"kr": "고정: [icon:gongji] 공격 {0:+0;-0;0}, [icon:fangyu] 방어 {1:+0;-0;0}"
+	},
+	{
+		"id": "-1000013057",
+		"key": "merit_src_defend",
+		"en": "a foe slain defending a town",
+		"ch": "守城斩敌",
+		"tc": "守城斬敵",
+		"kr": "성을 지키며 적 처치"
+	},
+	{
+		"id": "-1000013058",
+		"key": "merit_src_attack",
+		"en": "a defender slain attacking a town",
+		"ch": "攻城杀害守军",
+		"tc": "攻城殺害守軍",
+		"kr": "성을 공격하며 수비군 살해"
+	},
+	{
+		"id": "-1000013059",
+		"key": "merit_gift",
+		"en": "People you once helped found you on the road and pressed a gift into your hands: {0}.",
+		"ch": "曾受你恩惠的百姓在路上找到你，硬塞给你一份谢礼：{0}。",
+		"tc": "曾受你恩惠的百姓在路上找到你，硬塞給你一份謝禮：{0}。",
+		"kr": "당신이 도왔던 사람들이 길에서 당신을 찾아 선물을 쥐여 주었다: {0}."
+	},
+	{
+		"id": "-1000013060",
+		"key": "merit_revenge",
+		"en": "A kinsman of one of your victims waited in the shadows. The blade found you before you saw him: {0:#,##0} HP lost, and his curse stays with you.",
+		"ch": "你所害之人的亲族埋伏在暗处。你还未看清，刀已及身：损失{0:#,##0}气血，他的诅咒挥之不去。",
+		"tc": "你所害之人的親族埋伏在暗處。你還未看清，刀已及身：損失{0:#,##0}氣血，他的詛咒揮之不去。",
+		"kr": "당신에게 희생된 자의 친족이 어둠 속에서 기다렸다. 보기도 전에 칼날이 닿았다: 체력 {0:#,##0} 손실, 그의 저주가 따라붙는다."
+	},
+	{
+		"id": "-1000013061",
+		"key": "log_merit_gift",
+		"en": "Grateful people brought a gift: {0}.",
+		"ch": "受恩百姓送来谢礼：{0}。",
+		"tc": "受恩百姓送來謝禮：{0}。",
+		"kr": "은혜를 입은 사람들이 선물을 가져왔다: {0}."
+	},
+	{
+		"id": "-1000013062",
+		"key": "log_merit_revenge",
+		"en": "The kin of a victim took revenge: {0:#,##0} HP lost.",
+		"ch": "受害者亲族前来复仇：损失{0:#,##0}气血。",
+		"tc": "受害者親族前來復仇：損失{0:#,##0}氣血。",
+		"kr": "희생자의 친족이 복수했다: 체력 {0:#,##0} 손실."
+	},
+	{
+		"id": "-1000013063",
+		"key": "merit_massacre_button",
+		"en": "Massacre {0} (the evil way)",
+		"ch": "屠城：{0}（邪道）",
+		"tc": "屠城：{0}（邪道）",
+		"kr": "{0} 도성 (사도)"
+	},
+	{
+		"id": "-1000013064",
+		"key": "merit_massacre_text",
+		"en": "You look down on {0}. Its master {1}, {2} cultivators of the town and {3} guards would stand against you; {4} others would flee. Win, and the town master dies with the fallen, and nearly all of its {5:#,##0} mortals with them. Karma +{6:#,##0}; a bounty will follow you. It is a real battle: you can die.",
+		"ch": "你俯视着{0}。城主{1}、城中{2}名修士与{3}名守卫将与你为敌，另有{4}人会逃走。若胜，城主与倒下的守城者皆亡，城中{5:#,##0}凡人几乎尽灭。业障+{6:#,##0}，悬赏将如影随形。此为真实战斗：你可能身死。",
+		"tc": "你俯視著{0}。城主{1}、城中{2}名修士與{3}名守衛將與你為敵，另有{4}人會逃走。若勝，城主與倒下的守城者皆亡，城中{5:#,##0}凡人幾乎盡滅。業障+{6:#,##0}，懸賞將如影隨形。此為真實戰鬥：你可能身死。",
+		"kr": "당신은 {0}을(를) 내려다본다. 성주 {1}, 성의 수사 {2}명과 수비병 {3}명이 맞설 것이고, {4}명은 도망칠 것이다. 이기면 성주와 쓰러진 수비자들이 죽고, {5:#,##0}명의 범인도 거의 모두 죽는다. 업장 +{6:#,##0}; 현상금이 뒤따른다. 실제 전투다: 죽을 수도 있다."
+	},
+	{
+		"id": "-1000013065",
+		"key": "merit_massacre_o1",
+		"en": "Massacre the town",
+		"ch": "屠城",
+		"tc": "屠城",
+		"kr": "도성한다"
+	},
+	{
+		"id": "-1000013066",
+		"key": "merit_massacre_o2",
+		"en": "Leave",
+		"ch": "离开",
+		"tc": "離開",
+		"kr": "떠난다"
+	},
+	{
+		"id": "-1000013067",
+		"key": "merit_massacre_ok",
+		"en": "{0} has fallen. {1} cultivators died with its master, {2:#,##0} mortals perished, {3:#,##0} spirit stones looted.",
+		"ch": "{0}已陷落。{1}名修士随城主殒命，{2:#,##0}凡人罹难，掠得灵石{3:#,##0}。",
+		"tc": "{0}已陷落。{1}名修士隨城主殞命，{2:#,##0}凡人罹難，掠得靈石{3:#,##0}。",
+		"kr": "{0}이(가) 함락되었다. 수사 {1}명이 성주와 함께 죽었고, 범인 {2:#,##0}명이 죽었으며, 영석 {3:#,##0}을(를) 약탈했다."
+	},
+	{
+		"id": "-1000013068",
+		"key": "merit_massacre_fail",
+		"en": "{0} stood. You fled with your life and a heavier karma.",
+		"ch": "{0}守住了。你捡回一命，业障更重。",
+		"tc": "{0}守住了。你撿回一命，業障更重。",
+		"kr": "{0}은(는) 버텼다. 당신은 목숨만 건져 도망쳤고 업장은 더 무거워졌다."
+	},
+	{
+		"id": "-1000013069",
+		"key": "merit_ruin",
+		"en": "{0} is a ruin: few mortals live there now.",
+		"ch": "{0}已成废墟：如今只剩寥寥凡人。",
+		"tc": "{0}已成廢墟：如今只剩寥寥凡人。",
+		"kr": "{0}은(는) 폐허다: 지금은 범인이 거의 살지 않는다."
+	},
+	{
+		"id": "-1000013070",
+		"key": "merit_src_massacre",
+		"en": "the massacre of a town",
+		"ch": "屠城",
+		"tc": "屠城",
+		"kr": "도성"
+	},
+	{
+		"id": "-1000013071",
+		"key": "merit_src_massacre_fail",
+		"en": "a failed massacre",
+		"ch": "屠城未遂",
+		"tc": "屠城未遂",
+		"kr": "도성 실패"
+	},
+	{
+		"id": "-1000013072",
+		"key": "log_merit_massacre_start",
+		"en": "You turned on {0}: {1} defenders, {2} fled.",
+		"ch": "你向{0}举起屠刀：{1}人守城，{2}人逃走。",
+		"tc": "你向{0}舉起屠刀：{1}人守城，{2}人逃走。",
+		"kr": "{0}에 칼을 들었다: 수비 {1}명, 도망 {2}명."
+	},
+	{
+		"id": "-1000013073",
+		"key": "log_merit_massacre",
+		"en": "Massacre of {0}: {1} cultivators and {2:#,##0} mortals died, {3:#,##0} spirit stones looted.",
+		"ch": "屠{0}：{1}名修士与{2:#,##0}凡人身死，掠得灵石{3:#,##0}。",
+		"tc": "屠{0}：{1}名修士與{2:#,##0}凡人身死，掠得靈石{3:#,##0}。",
+		"kr": "{0} 도성: 수사 {1}명과 범인 {2:#,##0}명 사망, 영석 {3:#,##0} 약탈."
+	},
+	{
+		"id": "-1000013074",
+		"key": "merit_story",
+		"en": "a storyline",
+		"ch": "剧情",
+		"tc": "劇情",
+		"kr": "이야기"
+	}
+]

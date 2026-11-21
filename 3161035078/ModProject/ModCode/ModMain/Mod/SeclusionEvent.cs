@@ -1,4 +1,4 @@
-using MOD_nE7UL2.Const;
+﻿using MOD_nE7UL2.Const;
 using ModLib.Attributes;
 using ModLib.Enum;
 using ModLib.Helper;
@@ -28,11 +28,15 @@ namespace MOD_nE7UL2.Mod
     {
         public static SeclusionEvent Instance { get; set; }
 
-        public enum Kind { SpiritVein, Inheritance, OldTree, HeartDemon, TimeRealm, Garden }
+        public enum Kind { SpiritVein, Inheritance, OldTree, HeartDemon, TimeRealm, Garden, Waterfall, Lava, Thunder, MineVein, HerbValley }
+
+        /// <summary>The seclusion of a tempering place of the body (BodyCulEvent), chosen in the body refining window.</summary>
+        public static Kind KindOf(BodyCulEvent.Place p) => p == BodyCulEvent.Place.Waterfall ? Kind.Waterfall : p == BodyCulEvent.Place.Lava ? Kind.Lava : Kind.Thunder;
+        public static BodyCulEvent.Place? PlaceOf(Kind k) => k == Kind.Waterfall ? BodyCulEvent.Place.Waterfall : k == Kind.Lava ? BodyCulEvent.Place.Lava : k == Kind.Thunder ? BodyCulEvent.Place.Thunder : (BodyCulEvent.Place?)null;
 
         public static float OfferRate => SMLocalConfigsEvent.Instance?.Configs?.SeclusionRate ?? 0.5f; // % a month (S&M)
         public const float INHERITANCE_SHARE = 15f;  // % of the offers
-        public static float HeartDemonRate => OfferRate * 0.3f;  // % a month (grade 3+)
+        public static float HeartDemonRate => OfferRate * 0.3f * SpiritSenseEvent.HeartDemonRate(g.world.playerUnit);  // % a month (grade 3+), less with the spirit sense
         public static float TimeRealmRate => OfferRate * 0.1f;   // % a month
         public const int OFFER_COOLDOWN = 120;       // months, per kind
         public const int FORCED_COOLDOWN = 180;      // months, any forced one
@@ -56,6 +60,8 @@ namespace MOD_nE7UL2.Mod
             public List<string> Friends { get; set; } = new List<string>();
             public int StartPrice { get; set; }
             public int Roll { get; set; }
+            /// <summary>Area of a mine vein / herb valley (ArtisanEvent spots): the grade of the items.</summary>
+            public int Area { get; set; }
         }
 
         private static WorldUnitBase Player => g.world.playerUnit;
@@ -80,6 +86,11 @@ namespace MOD_nE7UL2.Mod
                 case Kind.OldTree: return Tuple.Create(5, 5);
                 case Kind.HeartDemon: return Tuple.Create(2, 5);
                 case Kind.Garden: return Tuple.Create(1, 20);
+                case Kind.Waterfall:
+                case Kind.Lava:
+                case Kind.Thunder: return Tuple.Create(1, 5);
+                case Kind.MineVein:
+                case Kind.HerbValley: return Tuple.Create(1, 10);
                 default: return Tuple.Create(10, 20);
             }
         }
@@ -102,6 +113,11 @@ namespace MOD_nE7UL2.Mod
                 case Kind.OldTree: return "xingxingqiyu";
                 case Kind.HeartDemon: return "hundengshangren";
                 case Kind.Garden: return "xingxingqiyu";
+                case Kind.Waterfall:
+                case Kind.Lava:
+                case Kind.Thunder: return BodyCulEvent.PlaceBackground(PlaceOf(k).Value);
+                case Kind.MineVein: return "dixiamushi";
+                case Kind.HerbValley: return "xingxingqiyu";
                 default: return "xianrencijiu";
             }
         }
@@ -160,6 +176,12 @@ namespace MOD_nE7UL2.Mod
         // ------------------------------------------------------------------ run
 
         /// <summary>Starts the time skip of a seclusion.</summary>
+        public void Start(Kind k, int months, int area)
+        {
+            Start(k, months);
+            if (Current != null) Current.Area = area;
+        }
+
         public void Start(Kind k, int months)
         {
             Count++;
@@ -191,6 +213,16 @@ namespace MOD_nE7UL2.Mod
                 case Kind.Garden: // manual seclusion in Granny Shi's garden (story line E): paid, a bit less than a spirit vein
                     Player.AddExp(YearExp() * r.Months * 3 / 48);
                     return GameTool.LS("secl_res_Garden");
+                case Kind.Waterfall: // tempering places of the body (BodyCulEvent): body exp, no cultivation exp
+                case Kind.Lava:
+                case Kind.Thunder:
+                    var lvl0 = BodyCulEvent.GetLevel(Player);
+                    BodyCulEvent.Temper(Player, PlaceOf(r.Kind).Value, r.Months);
+                    return string.Format(GameTool.LS($"secl_res_{r.Kind}"), BodyCulEvent.RealmName(BodyCulEvent.GetLevel(Player)), BodyCulEvent.GetLevel(Player) - lvl0);
+                case Kind.MineVein: // a mine vein / herb valley (ArtisanEvent spots): ores / herbs of the area, Mining / Herbs exp
+                    return ArtisanEvent.SpotReward(ArtisanEvent.SpotKind.Mine, r.Area, r.Months);
+                case Kind.HerbValley:
+                    return ArtisanEvent.SpotReward(ArtisanEvent.SpotKind.Herb, r.Area, r.Months);
                 case Kind.Inheritance:
                     Player.AddExp(YearExp() * r.Months * 3 / 24);
                     Player.AddProperty<int>(UnitPropertyEnum.Talent, 2 + years / 10);
@@ -204,12 +236,16 @@ namespace MOD_nE7UL2.Mod
                     Player.AddProperty<int>(b, add);
                     return string.Format(GameTool.LS("secl_res_OldTree"), add, GameTool.LS($"secl_basis_{bi}"));
                 case Kind.HeartDemon:
-                    if (r.Roll < 50)
+                    // the Dao heart decides (50 % + 8 a level); the spirit sense and the Dao heart grow from it
+                    if (r.Roll < DaoHeartEvent.HeartDemonWin(Player))
                     {
+                        DaoHeartEvent.Add(Player, DaoHeartEvent.HEART_DEMON_WIN, "heart_src_demon_win");
+                        SpiritSenseEvent.AddExp(Player, SpiritSenseEvent.HEART_DEMON_WIN);
                         Player.AddProperty<int>(UnitPropertyEnum.Talent, 3);
                         Player.AddProperty<int>(UnitPropertyEnum.Luck, 1);
                         return GameTool.LS("secl_res_HeartDemon_win");
                     }
+                    DaoHeartEvent.Add(Player, DaoHeartEvent.HEART_DEMON_LOSE, "heart_src_demon_lose");
                     var lost = Math.Max(0, Player.GetExp() - Player.GetMinExpCurrentPhase()) / 5;
                     Player.AddExp(-lost);
                     return string.Format(GameTool.LS("secl_res_HeartDemon_lose"), lost);
@@ -232,6 +268,9 @@ namespace MOD_nE7UL2.Mod
             var interrupted = passed < r.Months;
             r.Months = Math.Min(r.Months, passed);
             var result = (interrupted ? string.Format(GameTool.LS("secl_interrupted"), passed) + "\n\n" : string.Empty) + Reward(r);
+            // a seclusion steadies the heart and widens the spirit sense
+            DaoHeartEvent.Add(Player, DaoHeartEvent.SECLUSION_YEAR * Math.Max(1, r.Months / 12), "heart_src_seclusion");
+            SpiritSenseEvent.AddExp(Player, SpiritSenseEvent.SECLUSION_MONTH * r.Months);
             var years = (GameHelper.GetGameTotalMonth() - r.StartMonth + 11) / 12;
             var exp = Player.GetExp() - r.StartExp;
             var prices = (InflationaryEvent.CalculateInflationary(10000) - r.StartPrice) * 100 / Math.Max(1, r.StartPrice);

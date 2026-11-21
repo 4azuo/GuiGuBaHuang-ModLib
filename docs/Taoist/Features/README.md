@@ -1,20 +1,20 @@
 # Taoist - one page per feature class
 
-Detailed documentation of every class in `3161035078/ModProject/ModCode/ModMain/Mod/`: what it does, saved data, switches (S&M options, `mod_configs.json`), hooks and flow, formulas and numbers, UI, API, notes and tests. The summary table is [01-Features](../01-Features.md); S&M options with their scores are in [SMGlobalConfigsEvent](SMGlobalConfigsEvent.md).
+Detailed documentation of every class in `3161035078/ModProject/ModCode/ModMain/Mod/`: what it does, saved data, switches (S&M options, `ModConf/<feature>_configs.json`), hooks and flow, formulas and numbers, UI, API, notes and tests. The summary table is [01-Features](../01-Features.md); S&M options with their scores are in [SMGlobalConfigsEvent](SMGlobalConfigsEvent.md).
 
-Each page follows the same order: file and cache key, summary, **Saved data**, **Switches**, **Flow** (hooks), formulas / rules, **UI**, **API**, **Notes**, **Tests**. Keep it in sync when the code changes (numbers come straight from the code and `ModConf/mod_configs.json`).
+Each page follows the same order: file and cache key, summary, **Saved data**, **Switches**, **Flow** (hooks), formulas / rules, **UI**, **API**, **Notes**, **Tests**. Keep it in sync when the code changes (numbers come straight from the code and the `ModConf/*_configs.json` files).
 
 ## Core / configuration
 
-[PrepareEvent](PrepareEvent.md) - [SMGlobalConfigsEvent](SMGlobalConfigsEvent.md) - [SMLocalConfigsEvent](SMLocalConfigsEvent.md) - [TrainerEvent](TrainerEvent.md) - [AutoTestEvent](AutoTestEvent.md) - [DebugEvent](DebugEvent.md) (disabled)
+[PrepareEvent](PrepareEvent.md) - [SMGlobalConfigsEvent](SMGlobalConfigsEvent.md) - [SMLocalConfigsEvent](SMLocalConfigsEvent.md) - [TrainerEvent](TrainerEvent.md) - [AutoTestEvent](AutoTestEvent.md)
 
 ## World and NPCs
 
-[NpcAutoEvent](NpcAutoEvent.md) - [NpcUpgradeSkillEvent](NpcUpgradeSkillEvent.md) - [NpcAutoCraftArtifact](NpcAutoCraftArtifact.md) - [UnitTypeEvent](UnitTypeEvent.md) - [QiCulEvent](QiCulEvent.md) - [UpgradeNaturallyEvent](UpgradeNaturallyEvent.md) - [UseSpiritStoneCulEvent](UseSpiritStoneCulEvent.md) - [TimeSkipEvent](TimeSkipEvent.md) - [HirePeopleEvent](HirePeopleEvent.md) - [RebirthEvent](RebirthEvent.md) - [SliceLifeQuestEvent](SliceLifeQuestEvent.md) - [ChallengeQuestEvent](ChallengeQuestEvent.md) - [MissionDeclareEvent](MissionDeclareEvent.md) - [RepairShinkiEvent](RepairShinkiEvent.md) - [EncounterEvent](EncounterEvent.md) - [SeclusionEvent](SeclusionEvent.md) - [FamilyEvent](FamilyEvent.md)
+[NpcAutoEvent](NpcAutoEvent.md) - [NpcUpgradeSkillEvent](NpcUpgradeSkillEvent.md) - [NpcAutoCraftArtifact](NpcAutoCraftArtifact.md) - [UnitTypeEvent](UnitTypeEvent.md) - [QiCulEvent](QiCulEvent.md) - [BodyCulEvent](BodyCulEvent.md) - [MeritEvent](MeritEvent.md) - [ArtisanEvent](ArtisanEvent.md) - [DaoHeartEvent](DaoHeartEvent.md) - [SpiritSenseEvent](SpiritSenseEvent.md) - [UpgradeNaturallyEvent](UpgradeNaturallyEvent.md) - [UseSpiritStoneCulEvent](UseSpiritStoneCulEvent.md) - [TimeSkipEvent](TimeSkipEvent.md) - [HirePeopleEvent](HirePeopleEvent.md) - [RebirthEvent](RebirthEvent.md) - [SliceLifeQuestEvent](SliceLifeQuestEvent.md) - [ChallengeQuestEvent](ChallengeQuestEvent.md) - [MissionDeclareEvent](MissionDeclareEvent.md) - [RepairShinkiEvent](RepairShinkiEvent.md) - [EncounterEvent](EncounterEvent.md) - [SeclusionEvent](SeclusionEvent.md) - [FamilyEvent](FamilyEvent.md)
 
 ## Economy
 
-[InflationaryEvent](InflationaryEvent.md) - [MapBuildPropertyEvent](MapBuildPropertyEvent.md) - [BankAccountEvent](BankAccountEvent.md) - [BankLoanEvent](BankLoanEvent.md) - [WantedEvent](WantedEvent.md) - [FamilyFundEvent](FamilyFundEvent.md) - [RealStorageEvent](RealStorageEvent.md) - [BuildingArrangeEvent](BuildingArrangeEvent.md) - [RealMarketEvent](RealMarketEvent.md) - [RealMarketEvent2](RealMarketEvent2.md) - [RealMarketEvent3](RealMarketEvent3.md) - [ContributionExchangeEvent](ContributionExchangeEvent.md)
+[InflationaryEvent](InflationaryEvent.md) - [MapBuildPropertyEvent](MapBuildPropertyEvent.md) - [EstateEvent](EstateEvent.md) - [SpiritNoteEvent](SpiritNoteEvent.md) - [BankAccountEvent](BankAccountEvent.md) - [BankLoanEvent](BankLoanEvent.md) - [WantedEvent](WantedEvent.md) - [ClanEvent](ClanEvent.md) - [FamilyFundEvent](FamilyFundEvent.md) - [RealStorageEvent](RealStorageEvent.md) - [BuildingArrangeEvent](BuildingArrangeEvent.md) - [RealMarketEvent](RealMarketEvent.md) - [RealMarketEvent2](RealMarketEvent2.md) - [RealMarketEvent3](RealMarketEvent3.md) - [ContributionExchangeEvent](ContributionExchangeEvent.md)
 
 ## Unit properties
 
@@ -22,7 +22,7 @@ Each page follows the same order: file and cache key, summary, **Saved data**, *
 
 ## Battle
 
-[BattleEvent](BattleEvent.md) - [BattleAfterEvent](BattleAfterEvent.md) - [MapBuildBattleEvent](MapBuildBattleEvent.md) - [MonstStrongerEvent](MonstStrongerEvent.md) - [SpecialMonsterEvent](SpecialMonsterEvent.md) - [SpiritlockEvent](SpiritlockEvent.md) - [RealTrialEvent](RealTrialEvent.md) - [BattleModifyEvent](BattleModifyEvent.md) - [DamageInfo](DamageInfo.md) - [SMScoreEvent](SMScoreEvent.md) - [BattleManashieldEvent](BattleManashieldEvent.md) - [BattleRewardEventV2](BattleRewardEventV2.md) - [CustomSkillEvent](CustomSkillEvent.md) (disabled)
+[BattleEvent](BattleEvent.md) - [BattleAfterEvent](BattleAfterEvent.md) - [MapBuildBattleEvent](MapBuildBattleEvent.md) - [MonstStrongerEvent](MonstStrongerEvent.md) - [SpecialMonsterEvent](SpecialMonsterEvent.md) - [SpiritlockEvent](SpiritlockEvent.md) - [RealTrialEvent](RealTrialEvent.md) - [BattleModifyEvent](BattleModifyEvent.md) - [DamageInfo](DamageInfo.md) - [SMScoreEvent](SMScoreEvent.md) - [BattleManashieldEvent](BattleManashieldEvent.md) - [BattleRewardEventV2](BattleRewardEventV2.md)
 
 ## UI
 

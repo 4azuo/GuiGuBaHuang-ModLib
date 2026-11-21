@@ -30,15 +30,17 @@ namespace MOD_nE7UL2.AutoTest.Scenarios.Time
                     if (!string.IsNullOrEmpty(Player.data.unitData.schoolID)) { c.Skip("player is in a sect (rebirth refused)"); return; }
                     ready = TravelTo(c, FindTown(t => Has(t, MapBuildSubType.TownPub) && t.gridData.areaBaseID >= grade && t.gridData.areaBaseID > r.RebirthLevel));
                 })
-                .Step("pub", c => { if (ready) OpenTownUI<UITownPub>(UIType.TownPub, ui => ui.InitData(BagTown(c))); })
+                // the rebirth button is on the player info, beside the damage calculation (until 6.0 at the pub)
+                .Step("player info", c => { if (ready) g.ui.OpenUISafe<UIPlayerInfo>(UIType.PlayerInfo); }, 1500)
                 .Step("rebirth button", c =>
                 {
                     if (!ready) return;
                     var r = RebirthEvent.Instance;
                     c.Bag["count"] = r.RebirthCount;
                     c.Bag["grade"] = Player.GetGradeLvl();
-                    var btn = FindButtons(UIType.TownPub, GameTool.LS($"rebirth{420101001 + r.RebirthCount}")).FirstOrDefault();
-                    if (!c.Assert(btn != null, "rebirth button in the pub")) { ready = false; return; }
+                    c.AssertEqual(null, RebirthEvent.Missing(Player), "nothing missing for the rebirth");
+                    var btn = FindButtons(UIType.PlayerInfo, RebirthEvent.ButtonText).FirstOrDefault();
+                    if (!c.Assert(btn != null, "rebirth button on the player info")) { ready = false; return; }
                     btn.Item.onClick.Invoke();
                 }, 1000)
                 .Step("confirm", c => { if (ready) c.Info($"clicked '{ClickButton("Yes", "是", "OK")}' in the confirmation"); }, 1500)
@@ -51,7 +53,7 @@ namespace MOD_nE7UL2.AutoTest.Scenarios.Time
                     c.AssertEqual(1, Player.GetGradeLvl(), "grade reset");
                     c.Assert(Player.GetLuck(RebirthEvent.LUCK_BASE_ID + r.RebirthCount) != null || r.RebirthCount > RebirthEvent.MAX_LUCK_LVL, "rebirth luck added");
                 }, 1500)
-                .Step("close", c => CloseAll(UIType.DramaDialogue, UIType.TownPub, UIType.Town), 500);
+                .Step("close", c => CloseAll(UIType.DramaDialogue, UIType.PlayerInfo, UIType.Town), 500);
         }
     }
 }

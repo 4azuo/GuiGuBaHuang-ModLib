@@ -39,7 +39,7 @@ namespace MOD_nE7UL2.AutoTest.Scenarios.Title
                 .Step("page 1", c =>
                 {
                     c.Assert(g.ui.HasUI(UIType.TextInfoLong) && Window != null, "S&M window is open");
-                    c.Assert(Window?.Pages.Count == 3, $"3 pages ({Window?.Pages.Count})");
+                    c.Assert(Window?.Pages.Count == 4, $"4 pages ({Window?.Pages.Count}): the storylines on their own page");
                     c.AssertEqual(0, Window?.CurrentPageIndex ?? -1, "page 1 shown first");
                     c.Bag["score"] = SMGlobalConfigsEvent.CalSMTotalScore();
                     c.Info($"total score: {c.Bag["score"]}");
@@ -74,8 +74,31 @@ namespace MOD_nE7UL2.AutoTest.Scenarios.Title
                     bounty.MainComponent.Set(false);
                     c.AssertEqual(off, SMGlobalConfigsEvent.CalSMTotalScore(), "all off again: the score of before");
                     c.Info($"score {score} with the saved toggles, {off} with all off");
+                    // the cultivation paths and the estates (6.0): on / off, gains, prices
+                    var paths = new[] { "smcfgs192", "smcfgs193", "smcfgs194", "smcfgs195", "smcfgs196", "smcfgs199", "smcfgs200", "smcfgs201", "smcfgs202", "smcfgs203",
+                        "smcfgs204", "smcfgs205", "smcfgs206", "smcfgs207" }.Select(k => GameTool.LS(k)).ToList();
+                    var items = Window.Items.OfType<ModLib.Object.UIItemText>().Where(x => paths.Contains(x.GetFormat() ?? string.Empty)).ToList();
+                    c.AssertEqual(14, items.Count, "cultivation paths (5 toggles, 5 gain sliders) and estates (2 toggles, price and tax sliders)");
+                    var body = (ModLib.Object.UIItemComposite)items.First(x => x.GetFormat() == GameTool.LS("smcfgs199")).Parent;
+                    var before = SMGlobalConfigsEvent.CalSMTotalScore();
+                    body.MainComponent.Set(1f);
+                    c.AssertEqual(before - 300, SMGlobalConfigsEvent.CalSMTotalScore(), "body exp +100 %: -300 P (easier)");
+                    body.MainComponent.Set(0f);
+                    var price = (ModLib.Object.UIItemComposite)items.First(x => x.GetFormat() == GameTool.LS("smcfgs206")).Parent;
+                    price.MainComponent.Set(1f);
+                    c.AssertEqual(before + 500, SMGlobalConfigsEvent.CalSMTotalScore(), "house prices +100 %: +500 P (harder)");
+                    price.MainComponent.Set(0f);
                 })
                 .Step("page 3 shown", c => c.Info($"page {Window.CurrentPageIndex + 1}"), 1000) // screenshot of page 3
+                .Step("page 4", c =>
+                {
+                    Window.NextPage();
+                    c.AssertEqual(3, Window.CurrentPageIndex, "page 4: NPC storylines");
+                    var lines = new[] { "smcfgs169", "smcfgs191", "smcfgs208", "smcfgs211" }.Select(k => GameTool.LS(k)).ToList();
+                    c.Assert(Window.Items.OfType<ModLib.Object.UIItemText>().Count(x => lines.Any(l => (x.GetFormat() ?? string.Empty).Contains(l.Substring(0, System.Math.Min(20, l.Length))))) >= 4,
+                        "the lines A..P described");
+                }, 1000)
+                .Step("back to page 3", c => Window.PrevPage())
                 .Step("back to page 2", c => Window.PrevPage())
                 .Step("preset level 3", c =>
                 {

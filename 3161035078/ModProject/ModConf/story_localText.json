@@ -4622,5 +4622,965 @@
     "ch": "一场噩梦",
     "tc": "一場噩夢",
     "kr": "악몽"
+  },
+  {
+    "id": "-1000007578",
+    "key": "story_name_M",
+    "en": "Old Tie's Forge",
+    "ch": "老铁的铁匠铺",
+    "tc": "老鐵的鐵匠鋪",
+    "kr": "라오톄의 대장간"
+  },
+  {
+    "id": "-1000007579",
+    "key": "story_task_desc_M",
+    "en": "{0}",
+    "ch": "{0}",
+    "tc": "{0}",
+    "kr": "{0}"
+  },
+  {
+    "id": "-1000007580",
+    "key": "story_task_M0",
+    "en": "Old smith {F} of {T} burned his hand. He asked you for help.",
+    "ch": "{T}的老铁匠{F}烧伤了手，向你求助。",
+    "tc": "{T}的老鐵匠{F}燒傷了手，向你求助。",
+    "kr": "{T}의 늙은 대장장이 {F}가 손을 데어 도움을 청했다."
+  },
+  {
+    "id": "-1000007581",
+    "key": "story_task_M1",
+    "en": "{F} needs ore from a mine vein for his last blade.",
+    "ch": "{F}需要矿脉中的矿石来打造最后一把刀。",
+    "tc": "{F}需要礦脈中的礦石來打造最後一把刀。",
+    "kr": "{F}는 마지막 칼을 위해 광맥의 광석이 필요하다."
+  },
+  {
+    "id": "-1000007582",
+    "key": "story_task_M2",
+    "en": "{F} must choose who keeps the secrets of his forge.",
+    "ch": "{F}要决定由谁继承铁匠铺的秘诀。",
+    "tc": "{F}要決定由誰繼承鐵匠鋪的秘訣。",
+    "kr": "{F}는 대장간의 비결을 누구에게 남길지 정해야 한다."
+  },
+  {
+    "id": "-1000007583",
+    "key": "story_task_M3",
+    "en": "The smiths' guild of {T} wants the forge of {F} closed (2 years).",
+    "ch": "{T}的铁匠行会想让{F}的铺子关门（2年）。",
+    "tc": "{T}的鐵匠行會想讓{F}的鋪子關門（2年）。",
+    "kr": "{T}의 대장장이 길드가 {F}의 대장간을 닫게 하려 한다 (2년)."
+  },
+  {
+    "id": "-1000007584",
+    "key": "story_task_M4",
+    "en": "The last fire of the forge of {F}.",
+    "ch": "{F}铁匠铺的最后一炉火。",
+    "tc": "{F}鐵匠鋪的最後一爐火。",
+    "kr": "{F} 대장간의 마지막 불."
+  },
+  {
+    "id": "-1000007585",
+    "key": "story_M0_1",
+    "en": "The smithy of {T} smells of burned flesh. An old smith wraps his right hand in a wet rag.\n{F}: \"The furnace spat at me. Forty years, and it spat at me.\"\n{F}: \"The guild's exam is in three days. If nobody of my forge passes it, they take my license. Can you swing a hammer?\"",
+    "ch": "{T}的铁匠铺里有一股焦肉味。一位老铁匠用湿布裹着右手。\n{F}：“炉子喷了我一脸火。四十年了，它竟然喷我。”\n{F}：“行会三天后考核。我铺里若没人通过，他们就要收回我的执照。你会抡锤子吗？”",
+    "tc": "{T}的鐵匠鋪裡有一股焦肉味。一位老鐵匠用濕布裹著右手。\n{F}：“爐子噴了我一臉火。四十年了，它竟然噴我。”\n{F}：“行會三天後考核。我鋪裡若沒人通過，他們就要收回我的執照。你會掄錘子嗎？”",
+    "kr": "{T}의 대장간에서 살 타는 냄새가 난다. 늙은 대장장이가 젖은 천으로 오른손을 감싸고 있다.\n{F}: \"화로가 나한테 불을 뱉었어. 사십 년 만에 처음이야.\"\n{F}: \"길드 시험이 사흘 뒤야. 우리 대장간에서 아무도 못 붙으면 면허를 빼앗겨. 망치 좀 휘두를 줄 아나?\""
+  },
+  {
+    "id": "-1000007586",
+    "key": "story_M0_1_o1",
+    "en": "Take the exam for him",
+    "ch": "替他去考核",
+    "tc": "替他去考核",
+    "kr": "대신 시험을 본다"
+  },
+  {
+    "id": "-1000007587",
+    "key": "story_M0_1_o2",
+    "en": "Give him a healing pill",
+    "ch": "给他一颗疗伤丹",
+    "tc": "給他一顆療傷丹",
+    "kr": "치료 단약을 준다"
+  },
+  {
+    "id": "-1000007588",
+    "key": "story_M0_1_o3",
+    "en": "Not my business",
+    "ch": "与我无关",
+    "tc": "與我無關",
+    "kr": "내 일이 아니다"
+  },
+  {
+    "id": "-1000007589",
+    "key": "story_M0_exam",
+    "en": "Three days of sparks. The guild masters frown, then nod.\n{F}: \"Ha! Crooked, but it holds an edge. You have the hands for it.\"",
+    "ch": "三天火星四溅。行会的师傅们先是皱眉，然后点头。\n{F}：“哈！歪是歪了点，可刃口够利。你有这双手。”",
+    "tc": "三天火星四濺。行會的師傅們先是皺眉，然後點頭。\n{F}：“哈！歪是歪了點，可刃口夠利。你有這雙手。”",
+    "kr": "사흘 동안 불꽃이 튄다. 길드 장인들이 얼굴을 찌푸리다가 고개를 끄덕인다.\n{F}: \"하! 삐뚤지만 날은 서 있군. 자네 손은 쓸 만해.\""
+  },
+  {
+    "id": "-1000007590",
+    "key": "story_M0_2",
+    "en": "The pill closes the burn overnight. He flexes his fingers, amazed.\n{F}: \"I owe you, cultivator. A smith pays his debts in steel.\"",
+    "ch": "丹药一夜便治好了烧伤。他活动着手指，满脸惊讶。\n{F}：“我欠你一个人情，修士。铁匠用钢来还债。”",
+    "tc": "丹藥一夜便治好了燒傷。他活動著手指，滿臉驚訝。\n{F}：“我欠你一個人情，修士。鐵匠用鋼來還債。”",
+    "kr": "단약이 하룻밤 만에 화상을 낫게 한다. 그는 손가락을 움직이며 놀란다.\n{F}: \"신세를 졌군, 수사. 대장장이는 빚을 강철로 갚지.\""
+  },
+  {
+    "id": "-1000007591",
+    "key": "story_M1_1",
+    "en": "{F}: \"One more blade before I die. Not a pretty one - a true one. For that I need ore from the {0}, the rich one past the town.\"\n{F}: \"Bring me ore, or the money to buy it ({1:#,##0} [icon:zm_lingshi]). Or go down yourself - something guards the vein.\"",
+    "ch": "{F}：“死前我还想再打一把刀。不求好看，只求真。为此我需要城外那条富矿——{0}的矿石。”\n{F}：“给我带矿石来，或者买矿的钱（{1:#,##0}[icon:zm_lingshi]）。要么你亲自下去——矿脉里有东西守着。”",
+    "tc": "{F}：“死前我還想再打一把刀。不求好看，只求真。為此我需要城外那條富礦——{0}的礦石。”\n{F}：“給我帶礦石來，或者買礦的錢（{1:#,##0}[icon:zm_lingshi]）。要麼你親自下去——礦脈裡有東西守著。”",
+    "kr": "{F}: \"죽기 전에 칼 하나만 더 만들고 싶어. 예쁜 칼 말고 진짜 칼. 그러려면 마을 밖 부유한 {0}의 광석이 필요해.\"\n{F}: \"광석을 가져오든지, 살 돈({1:#,##0}[icon:zm_lingshi])을 주든지. 아니면 직접 내려가 봐. 광맥을 지키는 게 있어.\""
+  },
+  {
+    "id": "-1000007592",
+    "key": "story_M1_1_o1",
+    "en": "Give him ore",
+    "ch": "给他矿石",
+    "tc": "給他礦石",
+    "kr": "광석을 준다"
+  },
+  {
+    "id": "-1000007593",
+    "key": "story_M1_1_o2",
+    "en": "Pay for the ore ({1:#,##0} [icon:zm_lingshi])",
+    "ch": "出钱买矿（{1:#,##0}[icon:zm_lingshi]）",
+    "tc": "出錢買礦（{1:#,##0}[icon:zm_lingshi]）",
+    "kr": "광석 값을 낸다 ({1:#,##0}[icon:zm_lingshi])"
+  },
+  {
+    "id": "-1000007594",
+    "key": "story_M1_1_o3",
+    "en": "Go down into the vein",
+    "ch": "亲自下矿",
+    "tc": "親自下礦",
+    "kr": "광맥으로 내려간다"
+  },
+  {
+    "id": "-1000007595",
+    "key": "story_M1_2",
+    "en": "The ore glows red in his furnace. He works it with his left hand while you hold the tongs.\n{F}: \"Watch the color, not the hammer. The steel tells you when.\"",
+    "ch": "矿石在他的炉中烧得通红。他用左手锻打，你帮他夹着钳子。\n{F}：“看颜色，别看锤子。钢会告诉你时候到了。”",
+    "tc": "礦石在他的爐中燒得通紅。他用左手鍛打，你幫他夾著鉗子。\n{F}：“看顏色，別看錘子。鋼會告訴你時候到了。”",
+    "kr": "광석이 화로 속에서 붉게 달아오른다. 당신이 집게를 잡고 그는 왼손으로 두드린다.\n{F}: \"망치 말고 색을 봐. 때가 되면 강철이 알려줘.\""
+  },
+  {
+    "id": "-1000007596",
+    "key": "story_M2_1",
+    "en": "A boy sweeps the smithy floor and steals glances at the anvil.\n{F}: \"My grandson's friend. Clumsy, stubborn. Like I was.\"\n{F}: \"My secrets should not die with me. Teach him with me - or take them yourself and go far.\"",
+    "ch": "一个少年在扫铺子的地，时不时偷看铁砧。\n{F}：“我孙子的朋友。笨手笨脚，又倔。跟我当年一样。”\n{F}：“我的秘诀不该跟我一起入土。跟我一起教他——或者你自己学去，走得远远的。”",
+    "tc": "一個少年在掃鋪子的地，時不時偷看鐵砧。\n{F}：“我孫子的朋友。笨手笨腳，又倔。跟我當年一樣。”\n{F}：“我的秘訣不該跟我一起入土。跟我一起教他——或者你自己學去，走得遠遠的。”",
+    "kr": "소년 하나가 대장간 바닥을 쓸며 모루를 힐끔거린다.\n{F}: \"손자 친구야. 서툴고 고집이 세. 나 어릴 때처럼.\"\n{F}: \"내 비결이 나와 함께 묻혀선 안 돼. 나와 함께 저 애를 가르치든지, 자네가 가져가서 멀리 가든지.\""
+  },
+  {
+    "id": "-1000007597",
+    "key": "story_M2_1_o1",
+    "en": "Teach the boy together",
+    "ch": "一起教那孩子",
+    "tc": "一起教那孩子",
+    "kr": "함께 소년을 가르친다"
+  },
+  {
+    "id": "-1000007598",
+    "key": "story_M2_1_o2",
+    "en": "Learn the secrets yourself",
+    "ch": "自己学下秘诀",
+    "tc": "自己學下秘訣",
+    "kr": "비결을 직접 배운다"
+  },
+  {
+    "id": "-1000007599",
+    "key": "story_M3_1",
+    "en": "Men in guild aprons stand at the door of the smithy, torches in hand.\nA guild master: \"An old fool with a cripple's hand, and a stranger at his anvil. Close it, or we close it.\"\n{F}: \"Over my bones.\"",
+    "ch": "几个系着行会围裙的人举着火把站在铺子门口。\n行会师傅：“一个手残的老糊涂，再加一个外人站他铁砧前。关门，否则我们替你关。”\n{F}：“除非踏过我的骨头。”",
+    "tc": "幾個繫著行會圍裙的人舉著火把站在鋪子門口。\n行會師傅：“一個手殘的老糊塗，再加一個外人站他鐵砧前。關門，否則我們替你關。”\n{F}：“除非踏過我的骨頭。”",
+    "kr": "길드 앞치마를 두른 사내들이 횃불을 들고 대장간 문 앞에 서 있다.\n길드 장인: \"손 병신 늙은이에 낯선 놈이 모루 앞에 서다니. 닫아라, 아니면 우리가 닫는다.\"\n{F}: \"내 뼈를 밟고 가라.\""
+  },
+  {
+    "id": "-1000007600",
+    "key": "story_M3_1_o1",
+    "en": "Drive them off",
+    "ch": "把他们赶走",
+    "tc": "把他們趕走",
+    "kr": "쫓아낸다"
+  },
+  {
+    "id": "-1000007601",
+    "key": "story_M3_1_o2",
+    "en": "Buy the guild's peace ({0:#,##0} [icon:zm_lingshi])",
+    "ch": "花钱买行会的安宁（{0:#,##0}[icon:zm_lingshi]）",
+    "tc": "花錢買行會的安寧（{0:#,##0}[icon:zm_lingshi]）",
+    "kr": "길드의 평화를 산다 ({0:#,##0}[icon:zm_lingshi])"
+  },
+  {
+    "id": "-1000007602",
+    "key": "story_M4_burned",
+    "en": "The smithy is ashes. {F} sits on the cold anvil, his burned hand on his knee.\n{F}: \"The fire takes back what it gave. Take what I taught you, and keep it burning somewhere else.\"",
+    "ch": "铁匠铺已成灰烬。{F}坐在冰冷的铁砧上，烧伤的手搁在膝头。\n{F}：“火把它给的又收回去了。带上我教你的，到别处让它继续烧吧。”",
+    "tc": "鐵匠鋪已成灰燼。{F}坐在冰冷的鐵砧上，燒傷的手擱在膝頭。\n{F}：“火把它給的又收回去了。帶上我教你的，到別處讓它繼續燒吧。”",
+    "kr": "대장간은 잿더미가 되었다. {F}가 식은 모루에 앉아 덴 손을 무릎에 올려놓고 있다.\n{F}: \"불은 준 걸 도로 가져가. 내가 가르친 걸 가지고 다른 데서 계속 타오르게 해.\""
+  },
+  {
+    "id": "-1000007603",
+    "key": "story_M4_1",
+    "en": "The last fire of the forge. {F} is thin now, his beard white as ash.\n{F}: \"One blade left in these hands. Let it be what it will - or bring me ore of grade {0} and I'll make it a masterwork.\"",
+    "ch": "铁匠铺的最后一炉火。{F}已经消瘦，胡子白得像灰。\n{F}：“这双手只剩一把刀了。顺其自然吧——或者给我带{0}阶的矿石来，我把它打成传世之作。”",
+    "tc": "鐵匠鋪的最後一爐火。{F}已經消瘦，鬍子白得像灰。\n{F}：“這雙手只剩一把刀了。順其自然吧——或者給我帶{0}階的礦石來，我把它打成傳世之作。”",
+    "kr": "대장간의 마지막 불. {F}는 이제 야위었고 수염은 재처럼 하얗다.\n{F}: \"이 손에 남은 칼은 하나뿐이야. 되는 대로 두든지, {0}급 광석을 가져와. 그럼 걸작으로 만들어 주지.\""
+  },
+  {
+    "id": "-1000007604",
+    "key": "story_M4_1_o1",
+    "en": "Let the forge decide",
+    "ch": "让炉火决定",
+    "tc": "讓爐火決定",
+    "kr": "화로에 맡긴다"
+  },
+  {
+    "id": "-1000007605",
+    "key": "story_M4_1_o2",
+    "en": "Bring ore of grade {0} for a masterwork",
+    "ch": "带{0}阶矿石来打传世之作",
+    "tc": "帶{0}階礦石來打傳世之作",
+    "kr": "걸작을 위해 {0}급 광석을 준다"
+  },
+  {
+    "id": "-1000007606",
+    "key": "story_endM_Heir",
+    "en": "The boy holds the tongs now, and his strokes are true.\n{F}: \"See? Clumsy and stubborn. A smith.\" He puts a blade in your hands. \"His first. My last. Keep it.\"",
+    "ch": "如今是那少年握着钳子，锤落得又稳又准。\n{F}：“看见没？笨手笨脚，又倔。是个铁匠。”他把一把刀放进你手里。“他的第一把，我的最后一把。收着吧。”",
+    "tc": "如今是那少年握著鉗子，錘落得又穩又準。\n{F}：“看見沒？笨手笨腳，又倔。是個鐵匠。”他把一把刀放進你手裡。“他的第一把，我的最後一把。收著吧。”",
+    "kr": "이제 소년이 집게를 잡고, 망치질이 정확하다.\n{F}: \"봤지? 서툴고 고집 센 놈. 대장장이야.\" 그가 칼 한 자루를 당신 손에 쥐여준다. \"저 애의 첫 칼, 나의 마지막 칼이야. 가져가.\""
+  },
+  {
+    "id": "-1000007607",
+    "key": "story_endM_Secret",
+    "en": "You carry his secrets away: the color of the steel, the breath of the bellows, the patience of an old man's hammer.",
+    "ch": "你带走了他的秘诀：钢的颜色，风箱的呼吸，老人锤下的耐心。",
+    "tc": "你帶走了他的秘訣：鋼的顏色，風箱的呼吸，老人錘下的耐心。",
+    "kr": "당신은 그의 비결을 가지고 떠난다. 강철의 색, 풀무의 숨결, 노인의 망치에 담긴 인내."
+  },
+  {
+    "id": "-1000007608",
+    "key": "story_endM_Masterwork",
+    "en": "The ore sings in the fire. For three days and nights he does not sleep.\n{F}: \"There. That is the blade I was born to make.\" He smiles, and puts down the hammer for good.",
+    "ch": "矿石在火中鸣响。他三天三夜没有合眼。\n{F}：“成了。这就是我生来要打的那把刀。”他笑了，从此放下了锤子。",
+    "tc": "礦石在火中鳴響。他三天三夜沒有合眼。\n{F}：“成了。這就是我生來要打的那把刀。”他笑了，從此放下了錘子。",
+    "kr": "광석이 불 속에서 노래한다. 그는 사흘 밤낮을 자지 않는다.\n{F}: \"됐다. 이게 내가 만들려고 태어난 칼이야.\" 그는 웃으며 망치를 영영 내려놓는다."
+  },
+  {
+    "id": "-1000007609",
+    "key": "story_end_M_Masterwork",
+    "en": "Masterwork",
+    "ch": "传世之作",
+    "tc": "傳世之作",
+    "kr": "걸작"
+  },
+  {
+    "id": "-1000007610",
+    "key": "story_end_M_Heir",
+    "en": "The Heir",
+    "ch": "传人",
+    "tc": "傳人",
+    "kr": "후계자"
+  },
+  {
+    "id": "-1000007611",
+    "key": "story_end_M_Secret",
+    "en": "The Secret",
+    "ch": "秘诀",
+    "tc": "秘訣",
+    "kr": "비결"
+  },
+  {
+    "id": "-1000007612",
+    "key": "story_no_ore",
+    "en": "You have no ore of grade {0} or higher.",
+    "ch": "你没有{0}阶及以上的矿石。",
+    "tc": "你沒有{0}階及以上的礦石。",
+    "kr": "{0}급 이상의 광석이 없다."
+  },
+  {
+    "id": "-1000007613",
+    "key": "story_name_N",
+    "en": "The House on the Old Street",
+    "ch": "老街上的房子",
+    "tc": "老街上的房子",
+    "kr": "옛 거리의 집"
+  },
+  {
+    "id": "-1000007614",
+    "key": "story_task_desc_N",
+    "en": "{0}",
+    "ch": "{0}",
+    "tc": "{0}",
+    "kr": "{0}"
+  },
+  {
+    "id": "-1000007615",
+    "key": "story_task_N0",
+    "en": "Something is under the floor of your house in {T}.",
+    "ch": "你在{T}的房子地板下有东西。",
+    "tc": "你在{T}的房子地板下有東西。",
+    "kr": "{T}에 있는 당신 집 바닥 밑에 무언가가 있다."
+  },
+  {
+    "id": "-1000007616",
+    "key": "story_task_N1",
+    "en": "Bandits threaten the old street of {T}; your neighbour {N} asks for help.",
+    "ch": "盗匪威胁着{T}的老街，邻居{N}向你求助。",
+    "tc": "盜匪威脅著{T}的老街，鄰居{N}向你求助。",
+    "kr": "도적들이 {T}의 옛 거리를 위협한다. 이웃 {N}가 도움을 청한다."
+  },
+  {
+    "id": "-1000007617",
+    "key": "story_task_N2",
+    "en": "The notes of the cellar tell how the house was built.",
+    "ch": "地窖里的手记讲述了这座房子的来历。",
+    "tc": "地窖裡的手記講述了這座房子的來歷。",
+    "kr": "지하실의 기록이 집이 지어진 내력을 말해준다."
+  },
+  {
+    "id": "-1000007618",
+    "key": "story_task_N3",
+    "en": "{T} is attacked; the street waits for you (1 year).",
+    "ch": "{T}遭到攻击，老街在等你（1年）。",
+    "tc": "{T}遭到攻擊，老街在等你（1年）。",
+    "kr": "{T}가 공격받는다. 거리가 당신을 기다린다 (1년)."
+  },
+  {
+    "id": "-1000007619",
+    "key": "story_task_N4",
+    "en": "The street of {T} judges its cultivator.",
+    "ch": "{T}的老街在评判它的修士。",
+    "tc": "{T}的老街在評判它的修士。",
+    "kr": "{T}의 거리가 그 수사를 평가한다."
+  },
+  {
+    "id": "-1000007620",
+    "key": "story_N0_1",
+    "en": "Your house in {T}. A loose board under the bed, and under it, stone steps and a door sealed with a talisman gone grey with age.\nA cultivator lived here long before you.",
+    "ch": "你在{T}的房子。床下有块松动的木板，木板下是石阶，还有一扇贴着发灰旧符的门。\n很久以前，有位修士住在这里。",
+    "tc": "你在{T}的房子。床下有塊鬆動的木板，木板下是石階，還有一扇貼著發灰舊符的門。\n很久以前，有位修士住在這裡。",
+    "kr": "{T}에 있는 당신의 집. 침대 밑 헐거운 마루판 아래로 돌계단과, 오래되어 잿빛이 된 부적으로 봉인된 문이 있다.\n아주 오래전, 한 수사가 여기 살았다."
+  },
+  {
+    "id": "-1000007621",
+    "key": "story_N0_1_o1",
+    "en": "Break the seal",
+    "ch": "破开封印",
+    "tc": "破開封印",
+    "kr": "봉인을 깬다"
+  },
+  {
+    "id": "-1000007622",
+    "key": "story_N0_1_o2",
+    "en": "Seal it again",
+    "ch": "重新封好",
+    "tc": "重新封好",
+    "kr": "다시 봉인한다"
+  },
+  {
+    "id": "-1000007623",
+    "key": "story_N0_2",
+    "en": "Behind the seal, a stone puppet lies in pieces among pill bottles and notebooks.\nYour neighbour knocks at the door, pale.\n{N}: \"That noise... the old master's cellar? Grandmother said never to open it.\"",
+    "ch": "封印后面，一具石傀儡碎在丹瓶和手记之间。\n邻居敲门，脸色发白。\n{N}：“那声音……是老仙师的地窖？奶奶说过千万别打开。”",
+    "tc": "封印後面，一具石傀儡碎在丹瓶和手記之間。\n鄰居敲門，臉色發白。\n{N}：“那聲音……是老仙師的地窖？奶奶說過千萬別打開。”",
+    "kr": "봉인 너머, 돌 인형이 단약병과 수첩들 사이에 부서져 있다.\n이웃이 창백한 얼굴로 문을 두드린다.\n{N}: \"그 소리... 옛 선사의 지하실인가요? 할머니가 절대 열지 말라고 하셨어요.\""
+  },
+  {
+    "id": "-1000007624",
+    "key": "story_N0_sealed",
+    "en": "You press a new talisman over the old one. The board goes back.\nYour neighbour waves from her doorstep.\n{N}: \"Good evening, immortal! The street is glad to have a cultivator again.\"",
+    "ch": "你在旧符上又贴了一道新符，把木板放回原处。\n邻居在门口向你招手。\n{N}：“晚上好，仙人！老街又有修士住了，大家都高兴。”",
+    "tc": "你在舊符上又貼了一道新符，把木板放回原處。\n鄰居在門口向你招手。\n{N}：“晚上好，仙人！老街又有修士住了，大家都高興。”",
+    "kr": "옛 부적 위에 새 부적을 붙이고 마루판을 덮는다.\n이웃이 문간에서 손을 흔든다.\n{N}: \"안녕하세요, 선인님! 거리에 다시 수사님이 사셔서 다들 기뻐해요.\""
+  },
+  {
+    "id": "-1000007625",
+    "key": "story_N1_1",
+    "en": "{N}: \"They come every month now - men with knives, a demonic cultivator with them. They take the rice, the cloth, the girls' bracelets.\"\n{N}: \"We are only mortals. You live on our street...\"",
+    "ch": "{N}：“他们现在每个月都来——拿刀的人，还跟着一个魔修。抢米，抢布，抢姑娘们的镯子。”\n{N}：“我们只是凡人。你也住在这条街上……”",
+    "tc": "{N}：“他們現在每個月都來——拿刀的人，還跟著一個魔修。搶米，搶布，搶姑娘們的鐲子。”\n{N}：“我們只是凡人。你也住在這條街上……”",
+    "kr": "{N}: \"요즘은 매달 와요. 칼 든 사내들이랑 마수 하나가요. 쌀이며 옷감이며 처녀들 팔찌까지 빼앗아 가요.\"\n{N}: \"우린 그저 범인이에요. 당신도 이 거리에 사시잖아요...\""
+  },
+  {
+    "id": "-1000007626",
+    "key": "story_N1_1_o1",
+    "en": "Wait for them and fight",
+    "ch": "守株待兔，与他们一战",
+    "tc": "守株待兔，與他們一戰",
+    "kr": "기다렸다가 싸운다"
+  },
+  {
+    "id": "-1000007627",
+    "key": "story_N1_1_o2",
+    "en": "Hire guards for the street ({0:#,##0} [icon:zm_lingshi])",
+    "ch": "为老街雇护卫（{0:#,##0}[icon:zm_lingshi]）",
+    "tc": "為老街雇護衛（{0:#,##0}[icon:zm_lingshi]）",
+    "kr": "거리에 호위를 고용한다 ({0:#,##0}[icon:zm_lingshi])"
+  },
+  {
+    "id": "-1000007628",
+    "key": "story_N1_1_o3",
+    "en": "Mortals' troubles are not mine",
+    "ch": "凡人的麻烦与我无关",
+    "tc": "凡人的麻煩與我無關",
+    "kr": "범인의 일은 내 일이 아니다"
+  },
+  {
+    "id": "-1000007629",
+    "key": "story_N2_1",
+    "en": "The old master's notes, written in a tidy hand: he bought the whole street once, pulled the houses down for a manor, and grew rich on the treasure under it. The mortals cursed him until he died.\nOne page marks a second hoard - under the houses next to yours.",
+    "ch": "老仙师的手记字迹工整：他曾买下整条街，拆了房子建大宅，靠宅下的宝藏发了财。凡人们一直咒他到死。\n有一页标着第二处宝藏——就在你隔壁的房子底下。",
+    "tc": "老仙師的手記字跡工整：他曾買下整條街，拆了房子建大宅，靠宅下的寶藏發了財。凡人們一直咒他到死。\n有一頁標著第二處寶藏——就在你隔壁的房子底下。",
+    "kr": "옛 선사의 단정한 글씨로 된 기록: 그는 한때 거리 전체를 사서 집들을 허물고 저택을 지었고, 그 아래 보물로 부자가 되었다. 범인들은 그가 죽을 때까지 그를 저주했다.\n한 페이지에 두 번째 보물이 표시되어 있다. 당신 옆집들 밑이다."
+  },
+  {
+    "id": "-1000007630",
+    "key": "story_N2_1_o1",
+    "en": "Buy them out and dig",
+    "ch": "买下邻居的房子去挖",
+    "tc": "買下鄰居的房子去挖",
+    "kr": "이웃집을 사들여 판다"
+  },
+  {
+    "id": "-1000007631",
+    "key": "story_N2_1_o2",
+    "en": "Burn the page",
+    "ch": "烧掉这一页",
+    "tc": "燒掉這一頁",
+    "kr": "그 페이지를 태운다"
+  },
+  {
+    "id": "-1000007632",
+    "key": "story_N3_1",
+    "en": "Smoke over the wall of {T}. Raiders at the gate, and the old street right behind it.\n{N}: \"They say the wall won't hold. Where will we go?\"",
+    "ch": "{T}城墙上浓烟滚滚。袭击者就在城门外，老街就在门后。\n{N}：“都说城墙撑不住了。我们能去哪儿？”",
+    "tc": "{T}城牆上濃煙滾滾。襲擊者就在城門外，老街就在門後。\n{N}：“都說城牆撐不住了。我們能去哪兒？”",
+    "kr": "{T}의 성벽 위로 연기가 피어오른다. 습격자들이 성문에 있고, 옛 거리는 바로 그 뒤다.\n{N}: \"성벽이 못 버틴대요. 우린 어디로 가죠?\""
+  },
+  {
+    "id": "-1000007633",
+    "key": "story_N3_1_o1",
+    "en": "Hold the gate",
+    "ch": "守住城门",
+    "tc": "守住城門",
+    "kr": "성문을 지킨다"
+  },
+  {
+    "id": "-1000007634",
+    "key": "story_N3_1_o2",
+    "en": "Pay for the wall ({0:#,##0} [icon:zm_lingshi] to the town)",
+    "ch": "出钱修城墙（{0:#,##0}[icon:zm_lingshi]给城镇）",
+    "tc": "出錢修城牆（{0:#,##0}[icon:zm_lingshi]給城鎮）",
+    "kr": "성벽 비용을 낸다 (마을에 {0:#,##0}[icon:zm_lingshi])"
+  },
+  {
+    "id": "-1000007635",
+    "key": "story_N3_1_o3",
+    "en": "Leave the town to its fate",
+    "ch": "任由城镇听天由命",
+    "tc": "任由城鎮聽天由命",
+    "kr": "마을을 운명에 맡긴다"
+  },
+  {
+    "id": "-1000007636",
+    "key": "story_endN_Manor",
+    "en": "The neighbours' houses come down one by one; under them, a hoard of the old master. The street is quiet now - nobody lives on it but you.",
+    "ch": "邻居的房子一座座被拆掉；底下是老仙师的宝藏。如今老街很安静——除了你，没人住在这里了。",
+    "tc": "鄰居的房子一座座被拆掉；底下是老仙師的寶藏。如今老街很安靜——除了你，沒人住在這裡了。",
+    "kr": "이웃집들이 하나씩 허물어지고, 그 밑에서 옛 선사의 보물이 나온다. 이제 거리는 조용하다. 당신 말고는 아무도 살지 않는다."
+  },
+  {
+    "id": "-1000007637",
+    "key": "story_endN_Home",
+    "en": "Lanterns on every door of the old street. {N} brings a bowl of dumplings.\n{N}: \"The children call it the immortal's street now. You'll always have a seat at our table.\"",
+    "ch": "老街家家门口挂起灯笼。{N}端来一碗饺子。\n{N}：“孩子们现在都管这儿叫仙人街。我们的饭桌永远有你一个位子。”",
+    "tc": "老街家家門口掛起燈籠。{N}端來一碗餃子。\n{N}：“孩子們現在都管這兒叫仙人街。我們的飯桌永遠有你一個位子。”",
+    "kr": "옛 거리의 집집마다 등불이 걸린다. {N}가 만두 한 그릇을 가져온다.\n{N}: \"아이들이 이제 여길 선인 거리라고 불러요. 우리 밥상엔 언제나 당신 자리가 있어요.\""
+  },
+  {
+    "id": "-1000007638",
+    "key": "story_endN_Empty",
+    "en": "Doors shut when you walk by. One by one, the families of the old street sell and move away.",
+    "ch": "你走过时，家家关门。老街上的人家一户户卖了房子搬走了。",
+    "tc": "你走過時，家家關門。老街上的人家一戶戶賣了房子搬走了。",
+    "kr": "당신이 지나가면 문이 닫힌다. 옛 거리의 가족들이 하나둘 집을 팔고 떠난다."
+  },
+  {
+    "id": "-1000007639",
+    "key": "story_end_N_Home",
+    "en": "Home",
+    "ch": "家",
+    "tc": "家",
+    "kr": "보금자리"
+  },
+  {
+    "id": "-1000007640",
+    "key": "story_end_N_Manor",
+    "en": "The Manor",
+    "ch": "大宅",
+    "tc": "大宅",
+    "kr": "저택"
+  },
+  {
+    "id": "-1000007641",
+    "key": "story_end_N_Empty",
+    "en": "An Empty Street",
+    "ch": "空街",
+    "tc": "空街",
+    "kr": "빈 거리"
+  },
+  {
+    "id": "-1000007642",
+    "key": "story_name_O",
+    "en": "Ashes of the Town",
+    "ch": "城之余烬",
+    "tc": "城之餘燼",
+    "kr": "잿더미 마을"
+  },
+  {
+    "id": "-1000007643",
+    "key": "story_task_desc_O",
+    "en": "{0}",
+    "ch": "{0}",
+    "tc": "{0}",
+    "kr": "{0}"
+  },
+  {
+    "id": "-1000007644",
+    "key": "story_task_O0",
+    "en": "A child survived the fall of {T}.",
+    "ch": "{T}陷落后有个孩子活了下来。",
+    "tc": "{T}陷落後有個孩子活了下來。",
+    "kr": "{T}가 무너진 뒤 한 아이가 살아남았다."
+  },
+  {
+    "id": "-1000007645",
+    "key": "story_task_O1",
+    "en": "{O} wants to know who burned {T} (2 years).",
+    "ch": "{O}想知道是谁烧了{T}（2年）。",
+    "tc": "{O}想知道是誰燒了{T}（2年）。",
+    "kr": "{O}는 누가 {T}를 불태웠는지 알고 싶어 한다 (2년)."
+  },
+  {
+    "id": "-1000007646",
+    "key": "story_task_O2",
+    "en": "{O} trains to become a cultivator (4 years).",
+    "ch": "{O}在修炼，想成为修士（4年）。",
+    "tc": "{O}在修煉，想成為修士（4年）。",
+    "kr": "{O}는 수사가 되려고 수련한다 (4년)."
+  },
+  {
+    "id": "-1000007647",
+    "key": "story_task_O3",
+    "en": "{O} has grown up (7 years).",
+    "ch": "{O}长大了（7年）。",
+    "tc": "{O}長大了（7年）。",
+    "kr": "{O}가 자랐다 (7년)."
+  },
+  {
+    "id": "-1000007648",
+    "key": "story_O0_1",
+    "en": "{T}. Black beams, cold ash, the smell of an old fire. In the ruins of a house, a child sits by a broken doll and does not cry.",
+    "ch": "{T}。焦黑的房梁，冰冷的灰烬，旧火的气味。一座房子的废墟里，一个孩子坐在破娃娃旁边，没有哭。",
+    "tc": "{T}。焦黑的房樑，冰冷的灰燼，舊火的氣味。一座房子的廢墟裡，一個孩子坐在破娃娃旁邊，沒有哭。",
+    "kr": "{T}. 검게 탄 들보, 차가운 재, 오래된 불의 냄새. 무너진 집터에서 한 아이가 부서진 인형 곁에 앉아 울지도 않는다."
+  },
+  {
+    "id": "-1000007649",
+    "key": "story_O0_butcher",
+    "en": "{T}. You know this place. You know whose sword made these ashes.\nIn the ruins of a house, a child sits by a broken doll and looks at you without fear - it does not know your face.",
+    "ch": "{T}。你认得这里。你知道这些灰烬是谁的剑造成的。\n一座房子的废墟里，一个孩子坐在破娃娃旁边，毫无惧色地看着你——它不认得你的脸。",
+    "tc": "{T}。你認得這裡。你知道這些灰燼是誰的劍造成的。\n一座房子的廢墟裡，一個孩子坐在破娃娃旁邊，毫無懼色地看著你——它不認得你的臉。",
+    "kr": "{T}. 당신은 이곳을 안다. 누구의 검이 이 잿더미를 만들었는지 안다.\n무너진 집터에서 한 아이가 부서진 인형 곁에 앉아 두려움 없이 당신을 본다. 아이는 당신 얼굴을 모른다."
+  },
+  {
+    "id": "-1000007650",
+    "key": "story_O0_1_o1",
+    "en": "Take the child with you",
+    "ch": "带走这个孩子",
+    "tc": "帶走這個孩子",
+    "kr": "아이를 데려간다"
+  },
+  {
+    "id": "-1000007651",
+    "key": "story_O0_1_o2",
+    "en": "Leave money with a farmer for the child",
+    "ch": "给农家留些钱照顾孩子",
+    "tc": "給農家留些錢照顧孩子",
+    "kr": "농가에 아이 몫의 돈을 맡긴다"
+  },
+  {
+    "id": "-1000007652",
+    "key": "story_O1_1",
+    "en": "{O} is taller now, and quiet in a way children should not be.\n{O}: \"Every night I see the fire. Someone did it. Who? You're a cultivator - you know.\"",
+    "ch": "{O}长高了，安静得不像个孩子。\n{O}：“我每晚都梦见那场火。是有人干的。是谁？你是修士——你知道的。”",
+    "tc": "{O}長高了，安靜得不像個孩子。\n{O}：“我每晚都夢見那場火。是有人幹的。是誰？你是修士——你知道的。”",
+    "kr": "{O}는 키가 컸고, 아이답지 않게 조용하다.\n{O}: \"매일 밤 불이 보여요. 누군가 그랬어요. 누구죠? 수사님이니까 아시잖아요.\""
+  },
+  {
+    "id": "-1000007653",
+    "key": "story_O1_1_o1",
+    "en": "Tell the truth",
+    "ch": "说出真相",
+    "tc": "說出真相",
+    "kr": "진실을 말한다"
+  },
+  {
+    "id": "-1000007654",
+    "key": "story_O1_1_o2",
+    "en": "Lie: \"bandits, long dead\"",
+    "ch": "撒谎：“是盗匪，早死了”",
+    "tc": "撒謊：“是盜匪，早死了”",
+    "kr": "거짓말: \"도적들이야, 오래전에 죽었어\""
+  },
+  {
+    "id": "-1000007655",
+    "key": "story_O1_1_o3",
+    "en": "\"Hatred is a poor teacher\"",
+    "ch": "“仇恨是个糟糕的老师”",
+    "tc": "“仇恨是個糟糕的老師”",
+    "kr": "\"증오는 나쁜 스승이란다\""
+  },
+  {
+    "id": "-1000007656",
+    "key": "story_O2_1",
+    "en": "{O} swings a wooden sword at dawn, again and again, until the hands bleed.\n{O}: \"Teach me. I'll be strong enough this time.\"",
+    "ch": "{O}天一亮就挥着木剑，一遍又一遍，直到手掌流血。\n{O}：“教我。这次我要够强。”",
+    "tc": "{O}天一亮就揮著木劍，一遍又一遍，直到手掌流血。\n{O}：“教我。這次我要夠強。”",
+    "kr": "{O}는 새벽부터 목검을 휘두른다. 손이 피투성이가 될 때까지.\n{O}: \"가르쳐 주세요. 이번엔 강해질 거예요.\""
+  },
+  {
+    "id": "-1000007657",
+    "key": "story_O2_1_o1",
+    "en": "Spar with {O}",
+    "ch": "与{O}切磋",
+    "tc": "與{O}切磋",
+    "kr": "{O}와 대련한다"
+  },
+  {
+    "id": "-1000007658",
+    "key": "story_O2_1_o2",
+    "en": "Teach patience instead",
+    "ch": "教导忍耐",
+    "tc": "教導忍耐",
+    "kr": "대신 인내를 가르친다"
+  },
+  {
+    "id": "-1000007659",
+    "key": "story_O3_reckoning",
+    "en": "{O} stands on the road, a real sword now, the eyes of a grown cultivator.\n{O}: \"I found the old records of {T}. I know whose sword it was. I know whose bread I ate for years.\"\n{O}: \"Draw.\"",
+    "ch": "{O}站在路上，手中已是真剑，眼神是成年修士的眼神。\n{O}：“我找到了{T}的旧档。我知道是谁的剑。我也知道这些年我吃的是谁的饭。”\n{O}：“拔剑。”",
+    "tc": "{O}站在路上，手中已是真劍，眼神是成年修士的眼神。\n{O}：“我找到了{T}的舊檔。我知道是誰的劍。我也知道這些年我吃的是誰的飯。”\n{O}：“拔劍。”",
+    "kr": "{O}가 길 위에 서 있다. 이제 진짜 검을 들었고, 눈빛은 어른 수사의 것이다.\n{O}: \"{T}의 옛 기록을 찾았어요. 누구의 검이었는지 알아요. 몇 년 동안 누구의 밥을 먹었는지도.\"\n{O}: \"검을 뽑아요.\""
+  },
+  {
+    "id": "-1000007660",
+    "key": "story_O3_r_o1",
+    "en": "Lower your sword",
+    "ch": "放下你的剑",
+    "tc": "放下你的劍",
+    "kr": "검을 내린다"
+  },
+  {
+    "id": "-1000007661",
+    "key": "story_O3_r_o2",
+    "en": "Fight",
+    "ch": "应战",
+    "tc": "應戰",
+    "kr": "싸운다"
+  },
+  {
+    "id": "-1000007662",
+    "key": "story_O3_rebuild",
+    "en": "{O}: \"I went back to {T}. Weeds in the streets, but the well is still sweet.\"\n{O}: \"Families would come back if there were walls and houses. It needs {0:#,##0} [icon:zm_lingshi]. Will you build it with me?\"",
+    "ch": "{O}：“我回了{T}。街上长满了草，可那口井还是甜的。”\n{O}：“若有城墙和房子，人家会回来的。需要{0:#,##0}[icon:zm_lingshi]。你愿意和我一起重建吗？”",
+    "tc": "{O}：“我回了{T}。街上長滿了草，可那口井還是甜的。”\n{O}：“若有城牆和房子，人家會回來的。需要{0:#,##0}[icon:zm_lingshi]。你願意和我一起重建嗎？”",
+    "kr": "{O}: \"{T}에 다녀왔어요. 거리엔 잡초가 무성한데 우물물은 여전히 달아요.\"\n{O}: \"성벽과 집이 있으면 사람들이 돌아올 거예요. {0:#,##0}[icon:zm_lingshi]이 필요해요. 저와 함께 다시 세워 주실래요?\""
+  },
+  {
+    "id": "-1000007663",
+    "key": "story_O3_lie",
+    "en": "{O}: \"I never found those bandits. Maybe it doesn't matter now.\"\n{O}: \"I went back to {T}. Families would come back if there were walls and houses. It needs {0:#,##0} [icon:zm_lingshi]. Help me?\"",
+    "ch": "{O}：“我始终没找到那些盗匪。也许现在已经不重要了。”\n{O}：“我回了{T}。若有城墙和房子，人家会回来的。需要{0:#,##0}[icon:zm_lingshi]。帮帮我？”",
+    "tc": "{O}：“我始終沒找到那些盜匪。也許現在已經不重要了。”\n{O}：“我回了{T}。若有城牆和房子，人家會回來的。需要{0:#,##0}[icon:zm_lingshi]。幫幫我？”",
+    "kr": "{O}: \"그 도적들은 끝내 못 찾았어요. 이젠 상관없는지도 몰라요.\"\n{O}: \"{T}에 다녀왔어요. 성벽과 집이 있으면 사람들이 돌아올 거예요. {0:#,##0}[icon:zm_lingshi]이 필요해요. 도와주실래요?\""
+  },
+  {
+    "id": "-1000007664",
+    "key": "story_O3_b_o1",
+    "en": "Rebuild {T} ({0:#,##0} [icon:zm_lingshi])",
+    "ch": "重建{T}（{0:#,##0}[icon:zm_lingshi]）",
+    "tc": "重建{T}（{0:#,##0}[icon:zm_lingshi]）",
+    "kr": "{T}를 재건한다 ({0:#,##0}[icon:zm_lingshi])"
+  },
+  {
+    "id": "-1000007665",
+    "key": "story_O3_b_o2",
+    "en": "Let the dead town rest",
+    "ch": "让死去的城安息",
+    "tc": "讓死去的城安息",
+    "kr": "죽은 마을을 쉬게 둔다"
+  },
+  {
+    "id": "-1000007666",
+    "key": "story_endO_Atonement",
+    "en": "Your sword falls in the dust. {O}'s blade stops a finger from your throat - and trembles, and is lowered.\n{O}: \"I can't. You raised me.\" The child of the ashes walks away. Something in your heart, long frozen, cracks open.",
+    "ch": "你的剑落进尘土。{O}的剑停在你喉前一指——颤抖着，垂了下去。\n{O}：“我下不了手。是你把我养大的。”灰烬里的孩子转身离去。你心中冰封已久的什么，裂开了。",
+    "tc": "你的劍落進塵土。{O}的劍停在你喉前一指——顫抖著，垂了下去。\n{O}：“我下不了手。是你把我養大的。”灰燼裡的孩子轉身離去。你心中冰封已久的什麼，裂開了。",
+    "kr": "당신의 검이 흙먼지에 떨어진다. {O}의 칼날이 당신 목 앞 한 치에서 멈추고, 떨리다가, 내려간다.\n{O}: \"못 하겠어요. 당신이 절 키웠잖아요.\" 잿더미의 아이가 떠나간다. 오래 얼어 있던 당신 마음속 무언가가 갈라진다."
+  },
+  {
+    "id": "-1000007667",
+    "key": "story_endO_Ashes",
+    "en": "{T} stays a ruin. Grass grows over it, and nobody remembers the child of the ashes.",
+    "ch": "{T}依旧是一片废墟。荒草漫过，再没人记得那个灰烬里的孩子。",
+    "tc": "{T}依舊是一片廢墟。荒草漫過，再沒人記得那個灰燼裡的孩子。",
+    "kr": "{T}는 폐허로 남는다. 풀이 덮이고, 아무도 잿더미의 아이를 기억하지 않는다."
+  },
+  {
+    "id": "-1000007668",
+    "key": "story_endO_Rebuilt",
+    "en": "New walls of {T}, new roofs. Smoke from kitchens, not from fires.\n{O}: \"They asked me to be the town's guardian. I said yes - if you visit.\"",
+    "ch": "{T}有了新城墙，新屋顶。炊烟袅袅，不再是火烟。\n{O}：“他们请我做城镇的守护者。我答应了——条件是你要常来看看。”",
+    "tc": "{T}有了新城牆，新屋頂。炊煙裊裊，不再是火煙。\n{O}：“他們請我做城鎮的守護者。我答應了——條件是你要常來看看。”",
+    "kr": "{T}에 새 성벽과 새 지붕이 생겼다. 화재가 아닌 부엌에서 연기가 오른다.\n{O}: \"마을 수호자가 되어 달래요. 그러겠다고 했어요. 당신이 자주 와 준다면요.\""
+  },
+  {
+    "id": "-1000007669",
+    "key": "story_end_O_Atonement",
+    "en": "Atonement",
+    "ch": "赎罪",
+    "tc": "贖罪",
+    "kr": "속죄"
+  },
+  {
+    "id": "-1000007670",
+    "key": "story_end_O_Ashes",
+    "en": "Ashes",
+    "ch": "余烬",
+    "tc": "餘燼",
+    "kr": "잿더미"
+  },
+  {
+    "id": "-1000007671",
+    "key": "story_end_O_Rebuilt",
+    "en": "Rebuilt",
+    "ch": "重建",
+    "tc": "重建",
+    "kr": "재건"
+  },
+  {
+    "id": "-1000007672",
+    "key": "story_name_P",
+    "en": "A Heartbeat in the Stone",
+    "ch": "石中心跳",
+    "tc": "石中心跳",
+    "kr": "돌 속의 심장 소리"
+  },
+  {
+    "id": "-1000007673",
+    "key": "story_task_desc_P",
+    "en": "{0}",
+    "ch": "{0}",
+    "tc": "{0}",
+    "kr": "{0}"
+  },
+  {
+    "id": "-1000007674",
+    "key": "story_task_P0",
+    "en": "Your spirit sense caught a heartbeat where no one should be.",
+    "ch": "你的神识捕捉到一个不该有人的地方传来心跳。",
+    "tc": "你的神識捕捉到一個不該有人的地方傳來心跳。",
+    "kr": "신식이 아무도 없어야 할 곳에서 심장 소리를 잡았다."
+  },
+  {
+    "id": "-1000007675",
+    "key": "story_task_P1",
+    "en": "A body refiner, {B}, is stuck half-stone in his tribulation.",
+    "ch": "炼体修士{B}在体劫中半身化石，动弹不得。",
+    "tc": "煉體修士{B}在體劫中半身化石，動彈不得。",
+    "kr": "연체 수사 {B}가 체겁 중에 반쯤 돌이 되어 갇혀 있다."
+  },
+  {
+    "id": "-1000007676",
+    "key": "story_task_P2",
+    "en": "{B} shows you the way of the body.",
+    "ch": "{B}向你传授炼体之道。",
+    "tc": "{B}向你傳授煉體之道。",
+    "kr": "{B}가 연체의 길을 보여준다."
+  },
+  {
+    "id": "-1000007677",
+    "key": "story_task_P3",
+    "en": "The second tribulation of {B}.",
+    "ch": "{B}的第二次体劫。",
+    "tc": "{B}的第二次體劫。",
+    "kr": "{B}의 두 번째 체겁."
+  },
+  {
+    "id": "-1000007678",
+    "key": "story_P0_1",
+    "en": "You let your spirit sense spread as you walk. Trees, beasts, the slow pulse of the earth...\nAnd under the falling water ahead, inside the rock itself - a heartbeat. Slow. Human.",
+    "ch": "你边走边放开神识。树木，野兽，大地缓慢的脉动……\n而前方瀑布之下，岩石之中——一声心跳。缓慢。是人的。",
+    "tc": "你邊走邊放開神識。樹木，野獸，大地緩慢的脈動……\n而前方瀑布之下，岩石之中——一聲心跳。緩慢。是人的。",
+    "kr": "걸으며 신식을 펼친다. 나무, 짐승, 대지의 느린 맥박...\n그리고 앞쪽 폭포 아래, 바위 속에서 심장 소리가 들린다. 느리다. 사람의 것이다."
+  },
+  {
+    "id": "-1000007679",
+    "key": "story_P0_1_o1",
+    "en": "Follow the heartbeat",
+    "ch": "循着心跳而去",
+    "tc": "循著心跳而去",
+    "kr": "심장 소리를 따라간다"
+  },
+  {
+    "id": "-1000007680",
+    "key": "story_P0_1_o2",
+    "en": "Walk on",
+    "ch": "继续赶路",
+    "tc": "繼續趕路",
+    "kr": "그냥 지나간다"
+  },
+  {
+    "id": "-1000007681",
+    "key": "story_P1_1",
+    "en": "Under the waterfall, a man is half stone - legs, belly, one arm grey and cracked. His eyes open when your sense touches him.\n{B}: \"My body tribulation... it failed halfway. Ten years like this. A pill, a herb - anything with life in it.\"\n{B}: \"Or take what's left of me. My body's essence would make you strong.\"",
+    "ch": "瀑布下，一个人半身成石——双腿、腹部、一只手臂灰白龟裂。你的神识一触到他，他便睁开了眼。\n{B}：“我的体劫……渡到一半失败了。这样已经十年了。一颗丹药，一株草药——随便什么有生气的东西。”\n{B}：“或者拿走我剩下的。我肉身的精华能让你变强。”",
+    "tc": "瀑布下，一個人半身成石——雙腿、腹部、一隻手臂灰白龜裂。你的神識一觸到他，他便睜開了眼。\n{B}：“我的體劫……渡到一半失敗了。這樣已經十年了。一顆丹藥，一株草藥——隨便什麼有生氣的東西。”\n{B}：“或者拿走我剩下的。我肉身的精華能讓你變強。”",
+    "kr": "폭포 아래, 한 사내가 반쯤 돌이 되어 있다. 다리, 배, 한쪽 팔이 잿빛으로 갈라져 있다. 신식이 닿자 그가 눈을 뜬다.\n{B}: \"체겁이... 반쯤에서 실패했소. 이렇게 십 년이오. 단약이든 약초든, 생기 있는 거라면 뭐든.\"\n{B}: \"아니면 남은 나를 가져가시오. 내 육신의 정수면 당신은 강해질 거요.\""
+  },
+  {
+    "id": "-1000007682",
+    "key": "story_P1_1_o1",
+    "en": "Give him a pill",
+    "ch": "给他一颗丹药",
+    "tc": "給他一顆丹藥",
+    "kr": "단약을 준다"
+  },
+  {
+    "id": "-1000007683",
+    "key": "story_P1_1_o2",
+    "en": "Give him a herb",
+    "ch": "给他一株草药",
+    "tc": "給他一株草藥",
+    "kr": "약초를 준다"
+  },
+  {
+    "id": "-1000007684",
+    "key": "story_P1_1_o3",
+    "en": "Take his essence",
+    "ch": "夺取他的精华",
+    "tc": "奪取他的精華",
+    "kr": "그의 정수를 빼앗는다"
+  },
+  {
+    "id": "-1000007685",
+    "key": "story_P1_2",
+    "en": "The stone cracks and falls from him like old bark. He stands, shaking, alive.\n{B}: \"Ten years I listened to that water. I'll pay you back - with the only thing I have: a body that doesn't break.\"",
+    "ch": "石壳像老树皮一样从他身上裂开脱落。他颤抖着站起来，活了过来。\n{B}：“这水声我听了十年。我会报答你——用我唯一有的东西：一副打不碎的身体。”",
+    "tc": "石殼像老樹皮一樣從他身上裂開脫落。他顫抖著站起來，活了過來。\n{B}：“這水聲我聽了十年。我會報答你——用我唯一有的東西：一副打不碎的身體。”",
+    "kr": "돌이 낡은 나무껍질처럼 갈라져 떨어진다. 그가 떨며 일어선다. 살아 있다.\n{B}: \"십 년 동안 저 물소리를 들었소. 갚겠소. 내가 가진 유일한 것으로. 부서지지 않는 몸으로.\""
+  },
+  {
+    "id": "-1000007686",
+    "key": "story_P2_1",
+    "en": "{B}: \"The body remembers every blow. Let it learn.\" He cracks his knuckles. \"Hit me. Then I hit you. Or stand under the water as I did - one day for each year I lost.\"",
+    "ch": "{B}：“身体记得每一击。让它去学。”他捏响指节。“打我。然后我打你。或者像我当年那样站在水下——我失去一年，你就站一天。”",
+    "tc": "{B}：“身體記得每一擊。讓它去學。”他捏響指節。“打我。然後我打你。或者像我當年那樣站在水下——我失去一年，你就站一天。”",
+    "kr": "{B}: \"몸은 모든 일격을 기억하오. 배우게 두시오.\" 그가 손가락 마디를 꺾는다. \"날 치시오. 그다음 내가 치겠소. 아니면 나처럼 물 아래 서 보시오. 내가 잃은 한 해마다 하루씩.\""
+  },
+  {
+    "id": "-1000007687",
+    "key": "story_P2_1_o1",
+    "en": "Trade blows with {B}",
+    "ch": "与{B}对拳",
+    "tc": "與{B}對拳",
+    "kr": "{B}와 주먹을 주고받는다"
+  },
+  {
+    "id": "-1000007688",
+    "key": "story_P2_1_o2",
+    "en": "Stand under the waterfall",
+    "ch": "站到瀑布下",
+    "tc": "站到瀑布下",
+    "kr": "폭포 아래 선다"
+  },
+  {
+    "id": "-1000007689",
+    "key": "story_P3_1",
+    "en": "The sky over the waterfall turns iron grey. {B} takes off his shirt.\n{B}: \"The heavens owe me half a tribulation. They're coming to collect.\"\n{B}: \"Stand with me - or watch from far away. I won't blame you.\"",
+    "ch": "瀑布上空变成铁灰色。{B}脱下上衣。\n{B}：“天还欠我半场劫。它来讨了。”\n{B}：“和我一起扛——或者站远点看。我不怪你。”",
+    "tc": "瀑布上空變成鐵灰色。{B}脫下上衣。\n{B}：“天還欠我半場劫。它來討了。”\n{B}：“和我一起扛——或者站遠點看。我不怪你。”",
+    "kr": "폭포 위 하늘이 쇳빛으로 변한다. {B}가 웃옷을 벗는다.\n{B}: \"하늘이 내게 반쪽 겁을 빚졌소. 받으러 오는 거요.\"\n{B}: \"나와 함께 서든지, 멀리서 지켜보시오. 원망하지 않겠소.\""
+  },
+  {
+    "id": "-1000007690",
+    "key": "story_P3_1_o1",
+    "en": "Stand with him",
+    "ch": "与他并肩",
+    "tc": "與他並肩",
+    "kr": "그와 나란히 선다"
+  },
+  {
+    "id": "-1000007691",
+    "key": "story_P3_1_o2",
+    "en": "Watch from afar",
+    "ch": "远远观望",
+    "tc": "遠遠觀望",
+    "kr": "멀리서 지켜본다"
+  },
+  {
+    "id": "-1000007692",
+    "key": "story_endP_Brothers",
+    "en": "The last bolt breaks on two backs instead of one. {B} laughs, bleeding, whole.\n{B}: \"Brother. Whatever hits you from now on hits me too.\"",
+    "ch": "最后一道雷劈在两副脊背上，而不是一副。{B}大笑，满身是血，却完好无损。\n{B}：“兄弟。从今往后，打你的就是打我。”",
+    "tc": "最後一道雷劈在兩副脊背上，而不是一副。{B}大笑，滿身是血，卻完好無損。\n{B}：“兄弟。從今往後，打你的就是打我。”",
+    "kr": "마지막 벼락이 한 등이 아닌 두 등에 부서진다. {B}가 피투성이로, 온전하게 웃는다.\n{B}: \"형제여. 이제부터 당신을 치는 건 나를 치는 거요.\""
+  },
+  {
+    "id": "-1000007693",
+    "key": "story_endP_Alone",
+    "en": "From the hill you watch the storm hammer the waterfall. When it clears, the rock is empty. Whatever he became, he did it alone - and so will you.",
+    "ch": "你在山丘上看着雷暴轰击瀑布。云散之后，岩石上空无一人。无论他成了什么，他都是独自做到的——你也将如此。",
+    "tc": "你在山丘上看著雷暴轟擊瀑布。雲散之後，岩石上空無一人。無論他成了什麼，他都是獨自做到的——你也將如此。",
+    "kr": "언덕에서 폭풍이 폭포를 두드리는 것을 본다. 걷히고 나니 바위는 비어 있다. 그가 무엇이 되었든 혼자 해냈다. 당신도 그럴 것이다."
+  },
+  {
+    "id": "-1000007694",
+    "key": "story_endP_Devourer",
+    "en": "His essence floods into you, heavy as a mountain. Your bones grow hard. The water keeps falling on an empty rock, and your heart grows a little colder.",
+    "ch": "他的精华涌入你体内，重如山岳。你的骨骼变得坚硬。水依旧落在空荡荡的岩石上，你的心冷了几分。",
+    "tc": "他的精華湧入你體內，重如山嶽。你的骨骼變得堅硬。水依舊落在空蕩蕩的岩石上，你的心冷了幾分。",
+    "kr": "그의 정수가 산처럼 무겁게 당신 안으로 쏟아진다. 뼈가 단단해진다. 물은 빈 바위 위로 계속 떨어지고, 당신의 마음은 조금 더 차가워진다."
+  },
+  {
+    "id": "-1000007695",
+    "key": "story_end_P_Brothers",
+    "en": "Brothers of the Body",
+    "ch": "体修兄弟",
+    "tc": "體修兄弟",
+    "kr": "몸의 형제"
+  },
+  {
+    "id": "-1000007696",
+    "key": "story_end_P_Alone",
+    "en": "Alone",
+    "ch": "独行",
+    "tc": "獨行",
+    "kr": "홀로"
+  },
+  {
+    "id": "-1000007697",
+    "key": "story_end_P_Devourer",
+    "en": "Devourer",
+    "ch": "吞噬者",
+    "tc": "吞噬者",
+    "kr": "포식자"
   }
 ]

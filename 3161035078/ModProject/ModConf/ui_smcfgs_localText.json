@@ -1134,5 +1134,165 @@
 		"ch": "心魔：往事在梦中归来；直面其他故事在你身上留下的一切。",
 		"tc": "心魔：往事在夢中歸來；直面其他故事在你身上留下的一切。",
 		"kr": "심마: 꿈속에서 돌아오는 당신의 과거. 다른 이야기들이 당신에게 남긴 것과 마주하라."
+	},
+	{
+		"id": -1000001192,
+		"key": "smcfgs192",
+		"en": "No body cultivation",
+		"ch": "无炼体",
+		"tc": "無煉體",
+		"kr": "연체 없음"
+	},
+	{
+		"id": -1000001193,
+		"key": "smcfgs193",
+		"en": "No merit",
+		"ch": "无功德",
+		"tc": "無功德",
+		"kr": "공덕 없음"
+	},
+	{
+		"id": -1000001194,
+		"key": "smcfgs194",
+		"en": "No Artisan Dao",
+		"ch": "无技艺之道",
+		"tc": "無技藝之道",
+		"kr": "기예지도 없음"
+	},
+	{
+		"id": -1000001195,
+		"key": "smcfgs195",
+		"en": "No Dao heart",
+		"ch": "无道心",
+		"tc": "無道心",
+		"kr": "도심 없음"
+	},
+	{
+		"id": -1000001196,
+		"key": "smcfgs196",
+		"en": "No spirit sense",
+		"ch": "无神识",
+		"tc": "無神識",
+		"kr": "신식 없음"
+	},
+	{
+		"id": "-1000001197",
+		"key": "smcfgs197",
+		"en": "Cultivation paths",
+		"ch": "修炼之道",
+		"tc": "修煉之道",
+		"kr": "수련의 길"
+	},
+	{
+		"id": "-1000001198",
+		"key": "smcfgs198",
+		"en": "Estates",
+		"ch": "房产",
+		"tc": "房產",
+		"kr": "부동산"
+	},
+	{
+		"id": "-1000001199",
+		"key": "smcfgs199",
+		"en": "Body refining exp",
+		"ch": "炼体经验",
+		"tc": "煉體經驗",
+		"kr": "연체 경험"
+	},
+	{
+		"id": "-1000001200",
+		"key": "smcfgs200",
+		"en": "Merit gained",
+		"ch": "功德获取",
+		"tc": "功德獲取",
+		"kr": "공덕 획득"
+	},
+	{
+		"id": "-1000001201",
+		"key": "smcfgs201",
+		"en": "Artisan Dao exp",
+		"ch": "艺道经验",
+		"tc": "藝道經驗",
+		"kr": "예도 경험"
+	},
+	{
+		"id": "-1000001202",
+		"key": "smcfgs202",
+		"en": "Dao heart gained",
+		"ch": "道心提升",
+		"tc": "道心提升",
+		"kr": "도심 상승"
+	},
+	{
+		"id": "-1000001203",
+		"key": "smcfgs203",
+		"en": "Spirit sense exp",
+		"ch": "神识经验",
+		"tc": "神識經驗",
+		"kr": "신식 경험"
+	},
+	{
+		"id": "-1000001204",
+		"key": "smcfgs204",
+		"en": "No estates (no plots to buy)",
+		"ch": "关闭房产（不能买地）",
+		"tc": "關閉房產（不能買地）",
+		"kr": "부동산 끄기 (부지 구매 불가)"
+	},
+	{
+		"id": "-1000001205",
+		"key": "smcfgs205",
+		"en": "NPCs buy no houses",
+		"ch": "NPC不买房",
+		"tc": "NPC不買房",
+		"kr": "NPC가 집을 사지 않음"
+	},
+	{
+		"id": "-1000001206",
+		"key": "smcfgs206",
+		"en": "House and land prices",
+		"ch": "房屋与地价",
+		"tc": "房屋與地價",
+		"kr": "집과 땅 가격"
+	},
+	{
+		"id": "-1000001207",
+		"key": "smcfgs207",
+		"en": "House tax",
+		"ch": "房屋税",
+		"tc": "房屋稅",
+		"kr": "주택세"
+	},
+	{
+		"id": "-1000001208",
+		"key": "smcfgs208",
+		"en": "Old Tie's Forge: an old smith burned his hand; take his exam, bring ore from a mine vein, keep his forge alive (Artisan Dao).",
+		"ch": "老铁的铁匠铺：老铁匠烧伤了手；替他考核，从矿脉带回矿石，让铁匠铺的火不灭（艺道）。",
+		"tc": "老鐵的鐵匠鋪：老鐵匠燒傷了手；替他考核，從礦脈帶回礦石，讓鐵匠鋪的火不滅（藝道）。",
+		"kr": "라오톄의 대장간: 손을 덴 늙은 대장장이; 대신 시험을 보고 광맥의 광석을 가져와 대장간의 불을 지킨다 (예도)."
+	},
+	{
+		"id": "-1000001209",
+		"key": "smcfgs209",
+		"en": "The House on the Old Street: a cellar under your house, the neighbours of your street, and what you make of them (estates).",
+		"ch": "老街上的房子：你房子下的地窖，街坊邻居，以及你如何对待他们（房产）。",
+		"tc": "老街上的房子：你房子下的地窖，街坊鄰居，以及你如何對待他們（房產）。",
+		"kr": "옛 거리의 집: 당신 집 밑의 지하실, 거리의 이웃들, 그리고 그들을 어떻게 대하는가 (부동산)."
+	},
+	{
+		"id": "-1000001210",
+		"key": "smcfgs210",
+		"en": "Ashes of the Town: a child survived a town put to the sword, and grows up asking who did it (merit and karma).",
+		"ch": "城之余烬：一个孩子在屠城中幸存，长大后追问凶手是谁（功德与业力）。",
+		"tc": "城之餘燼：一個孩子在屠城中倖存，長大後追問兇手是誰（功德與業力）。",
+		"kr": "잿더미 마을: 학살된 마을에서 살아남은 아이가 자라며 누가 그랬는지 묻는다 (공덕과 업보)."
+	},
+	{
+		"id": "-1000001211",
+		"key": "smcfgs211",
+		"en": "A Heartbeat in the Stone: your spirit sense finds a body refiner turned half to stone by his tribulation (spirit sense, body refining).",
+		"ch": "石中心跳：你的神识发现一位在体劫中半身化石的炼体修士（神识、炼体）。",
+		"tc": "石中心跳：你的神識發現一位在體劫中半身化石的煉體修士（神識、煉體）。",
+		"kr": "돌 속의 심장 소리: 신식이 체겁으로 반쯤 돌이 된 연체 수사를 찾아낸다 (신식, 연체)."
 	}
 ]

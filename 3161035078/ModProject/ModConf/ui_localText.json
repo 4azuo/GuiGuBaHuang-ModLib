@@ -130,10 +130,10 @@
   {
     "id": -1000008016,
     "key": "ui_qi",
-    "en": "Qi: {0}",
-    "ch": "真气：{0}",
-    "tc": "真氣：{0}",
-    "kr": "진기: {0}"
+    "en": "[icon:jianyidu] Qi: {0}",
+    "ch": "[icon:jianyidu] 真气：{0}",
+    "tc": "[icon:jianyidu] 真氣：{0}",
+    "kr": "[icon:jianyidu] 진기: {0}"
   },
   {
     "id": -1000008017,
@@ -146,18 +146,18 @@
   {
     "id": -1000008018,
     "key": "ui_hp",
-    "en": "Hp: {0}",
-    "ch": "生命：{0}",
-    "tc": "生命：{0}",
-    "kr": "체력: {0}"
+    "en": "[icon:jiankang] Hp: {0}",
+    "ch": "[icon:jiankang] 生命：{0}",
+    "tc": "[icon:jiankang] 生命：{0}",
+    "kr": "[icon:jiankang] 체력: {0}"
   },
   {
     "id": -1000008019,
     "key": "ui_mp",
-    "en": "Mp: {0}",
-    "ch": "灵力：{0}",
-    "tc": "靈力：{0}",
-    "kr": "영력: {0}"
+    "en": "[icon:lingli] Mp: {0}",
+    "ch": "[icon:lingli] 灵力：{0}",
+    "tc": "[icon:lingli] 靈力：{0}",
+    "kr": "[icon:lingli] 영력: {0}"
   },
   {
     "id": -1000008020,

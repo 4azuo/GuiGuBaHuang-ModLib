@@ -1,0 +1,17 @@
+{
+	"__name": "Unit roles (UnitTypeEvent)",
+	"__help": [
+		"A value left out (or a broken file): the default of the mod.",
+		"UnitTypes: chance in % that a unit gets the role (the rest: no role). Roles: PowerUnit, SpeedUnit, TaoistUnit, AtkUnit, DefUnit, Angel, Evil, Merchant. The list given replaces the default one."
+	],
+	"UnitTypes": {
+		"PowerUnit": 8.0,
+		"SpeedUnit": 8.0,
+		"TaoistUnit": 8.0,
+		"AtkUnit": 12.0,
+		"DefUnit": 12.0,
+		"Angel": 2.0,
+		"Evil": 4.0,
+		"Merchant": 16.0
+	}
+}

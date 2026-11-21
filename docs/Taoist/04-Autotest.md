@@ -83,7 +83,8 @@ Automatic save loading clicks the title screen "Continue/Into" button and the sa
    * Clicking a thumbnail opens the **image viewer**: mouse wheel / `+` `-` zoom (around the cursor), drag to move, double click or `0` = fit, `1` = 100 %, `<-` `->` previous/next screenshot of the scenario, strip of all its screenshots, `Esc` to close.
    * **Unit tests** tab: every unit test run (latest by default), grouped by class, failures expand to message and stack.
    * **Scenario status** tab: the latest OK/NG of every id with its history over the last autotest runs; every id expands to its description, preconditions, steps and expected. The header buttons **Expand all / Collapse all** work on the Autotest, Unit tests and Scenario status tabs (after filters).
-   * Deep links: `index.html#tab=auto&run=<run id>&sc=<scenario id>&img=<n>&q=<search>&logs=1`, `#tab=unit`, `#tab=status`.
+   * Long lists (Autotest, Unit tests, Scenario status): the toolbar and the table header stay at the top while scrolling. Autotest and Scenario status also filter by **group** (id prefix: TT title, TP pre-test, TG game, TB battles, TX time, TS storylines, TZ end, TE/TI/TR tools; chips with counts) and by **feature** (event class list of the group). A **Sort** list orders the rows: scenario order (scenarios.json), id, newest test first, oldest test first (kept in the URL hash `sort=`).
+   * Deep links: `index.html#tab=auto&run=<run id>&sc=<scenario id>&img=<n>&q=<search>&logs=1&group=<TG>&feat=<feature>`, `#tab=unit`, `#tab=status`.
 3. **Run folder** `logs/autotest/<yyyyMMdd-HHmmss>/` (git-ignored) - the raw evidence:
 
    | File | Content |
@@ -215,11 +216,25 @@ windows until the end of the scenario (TG-32, TG-33, TG-40, TG-43, TG-59, TS-05)
     settings of the mods (`mod\<id>\globals`), and sets the games windowed (`-Window 1600x900`, kept after the run: the
     mod sets the game's own settings `g.data.globle.gameSetting` at the title screen - the game applies them at start,
     over Unity's command line and the registry keys, which are set too).
-  - **All the tests on 4 games**: `.\scripts\game\run-autotest-parallel.ps1 -Deploy` (`-Failed`, `-Scenario`, `-Slots`,
-    `-GroupSeconds`). The scenarios are cut into groups of ~5 min (the longest first, durations of the latest runs) taken
-    by the free games from one queue. Every slot plays its test character; its save is snapshot when created
-    (`mod\nE7UL2\autotest-shared\snapshots\slot<n>`) and restored before every run: every group starts from the same
-    fresh character, like a single run with a new character. TP-01 runs only when a slot creates its character.
+  - **All the tests on 4 games** (`-Slots 1..8`, default 4; 6 ran out of memory on 32 GB with other apps open; `-NoMerge`: no merge at the end): `.\scripts\game\run-autotest-parallel.ps1 -Deploy` (`-Failed`, `-Scenario`, `-Slots`,
+    `-GroupSeconds`). One queue, the longest scenarios first (durations of the latest runs); by default a free game takes
+    **one scenario at a time** (`-GroupSeconds N`: groups of ~N s instead). The **games stay open** (2026-11-20): the
+    first run of a slot starts its game (`run-autotest.ps1 -KeepAlive`), loads or creates its test character
+    ("AutoTest Slot<n>", snapshot `mod\nE7UL2\autotest-shared\snapshots\slot<n>` of the slot's data folder) and leaves
+    the game waiting in the save (AutoTestEvent phase Idle); every next scenario is given to that game
+    (`run-autotest.ps1 -Attach`: a new request.json, read by the game within a second, no restart). Before every game
+    scenario the player goes back to the state recorded when the save was loaded (grade, exp, money, lifespan, age,
+    place, HP / MP / SP full, S&M settings; `Mod/AutoTestEvent.KeepAlive.cs`), then the scenario's own set-up
+    (`Scenario.Pre(c => ...)`: a grade, a town, items...). A game that closed or stalled starts again from the snapshot.
+    The save list of a slot game is waited for up to ~30 s (an empty list read too early made every group create a new
+    character). TP-01 runs only when a slot creates its character. At the end the run of every scenario is merged
+    into **one run** of the test viewer, `logs\autotest\<parallel time>` (`scripts/game/merge-parallel-run.ps1`: the
+    latest result of every scenario, the screenshots renumbered, the logs one after the other; report.json and
+    scenario-status.json by `run-autotest.ps1 -ReportFrom`; the part runs deleted; the merged run pinned). The
+    retention of the viewer keeps every run holding the latest result of a scenario besides the newest 10. Some
+    scenarios run again later into the same history: `run-autotest-parallel.ps1 -Scenario <ids> -NoMerge`, then
+    `merge-parallel-run.ps1 -Base logs\autotest\<merged run> -Batch logs\autotest-parallel\<new>` (their new results
+    replace the old ones, the screenshots of the replaced results are removed, the run keeps its name).
     `"exclusive": true` scenarios (scenarios.json: they change the global settings every game reads - TT-02, TT-03,
     TT-05, TB-16) run after the others, alone, on slot 1. Every run updates scenario-status.json under a lock (named
     mutex); the "errors in the game log" check reads only the log of the slot's character (`<player id>_debug-*.log`);
@@ -227,14 +242,15 @@ windows until the end of the scenario (TG-32, TG-33, TG-40, TG-43, TG-59, TS-05)
     every game did). One parallel script at a time (`logs\parallel.lock`); to stop one, stop its process tree
     (`taskkill /F /T /PID <pid>`): its children (jobs, runs, games) are cleaned at the next
     start or by its `finally`. Shared code: `scripts/game/_parallel.ps1`.
-  - Memory: ~3 GB a game in a battle (4 games ~12 GB on 32 GB). Shared logs (Player.log, the mod logs) mix the lines
+  - Memory: ~3 GB a game in a battle (4 games ~12 GB on 32 GB; 6 games ran out of memory with other apps open). Shared logs (Player.log, the mod logs) mix the lines
     of every game: the "errors in the game log" check of a scenario may then count the errors of another game.
 - **Promotion pictures**: `"promo"` of a scenario in `tests/scenarios.json` marks its best screenshots
   (`{ "step": "NPCs-joined", "nth": 1, "name": "battle_npcs_join", "caption": "..." }`; step = the step part of the screenshot name,
   nth = which one when the step has several). They are taken in a **promotion run** of their own, not picked from the test
   runs, by the tools **TR-01** (title screen: S&M configs pages) and **TR-02** (in the game: trainer, Taoist settings,
   bank account / loan, weapon details, player market / buy orders, shop, NPC hiring / team, town master, bounties,
-  family accounts, Taoist log; `AutoTest/Scenarios/Tool/TR_PromoShots.cs`: `Shot(name, open)` opens a window and
+  family accounts, Taoist log) and **TR-03** (a developed city: the town map, the player's immortal palace, the town
+  management with its buildings, the clans, a clan war asking the player, the banknote bank; `AutoTest/Scenarios/Tool/TR_PromoShots.cs`: `Shot(name, open)` opens a window and
   captures `promo-<name>`, the mouse first moved out of the game window so that no hover tooltip shows; a feature
   missing in the save only skips its picture; trainer pages, town guardians to hire and the town with its guardians
   too), and the steps of test scenarios with a promo entry: TP-01 `destinies-and-artifacts` (character creation, the 3
@@ -249,9 +265,15 @@ windows until the end of the scenario (TG-32, TG-33, TG-40, TG-43, TG-59, TS-05)
   deployed with the mod), the captions stay in scenarios.json; promo pictures without an entry anymore are removed. **Promo viewer**
   (`promo-viewer/index.html`, data from `python scripts/update-promo-viewer.py [--open]`, run by collect-promo; VS Code
   task "Test: Open Promo Viewer"): the SteamImg pictures with their captions (taken / not taken / no entry anymore),
-  the takes of every promotion run still in logs/autotest (to compare and pick), and the videos of marketing/video/out. The test runs never write SteamImg; the
+  the takes of every promotion run still in logs/autotest (to compare and pick), and the videos of marketing/video-6.0.0/out. The test runs never write SteamImg; the
   other pictures there (1.jpg...) are kept.
-- **Marketing video** (`marketing/video`, Remotion, Node.js, Python + numpy): a calm xianxia-styled video from the
+- **Marketing videos by version**: `marketing/video-6.0.0` is the video of the current version (6.0: only the features new
+  in 6.0, `chapters.json` with `"extras": false` - the promo pictures of no chapter are not added -, its own
+  `tagline` of the intro and `endline` of the end card); `marketing/video-5.5.45` is the frozen video of every feature
+  up to 5.5.45 (the same project copied; `node_modules` a junction to `../video-6.0.0/node_modules`, so `npm run render`
+  works there without an install; its `out/taoist-promo.mp4` the video rendered then). A later version: copy
+  `marketing/video-6.0.0` to `marketing/video-<version>` the same way before changing it.
+- **Marketing video** (`marketing/video-6.0.0`, Remotion, Node.js, Python + numpy): a calm xianxia-styled video from the
   SteamImg pictures and the captions of the promo entries of scenarios.json, by chapter (`src/chapters.json`: Shape your
   world, Master your cultivator, A living economy, Family allies and enemies, Living stories). Intro: the game's name, a
   brush 道, TAOIST slams with its red seal; a card per chapter over its first picture, blurred (brush character of the
@@ -313,7 +335,7 @@ Results: console + `logs/unittests/unittests.trx`. The tests reference the mods'
 | `ModLib/ValueParseHelperTests.cs` | `ValueHelper` (IsBetween, FixValue, Is, NearlyEqual, SafeSumInt), `ParseHelper` (Parse, defaults, ParseJson) |
 | `ModLib/ObjectTests.cs` | `EnumObject` lookups, `EnumObjectConverter` round trip, `MultiValue`, `MathLogicOptions`, `EncryptionHelper`, `PngEncodeHelper` chunks, `ModBattleEvent` damage keys/types |
 | `Taoist/FormulaTests.cs` | `ExpertEvent.GetExpertNeedExp`, `SMLocalConfigsEvent.Calculate`, `PriceHelper.UpPrice` and ratio tables, `BattleModifyEvent.BlockRatio` |
-| `Taoist/ConfigTests.cs` | every ModConf JSON parses, `mod_configs.json` sections/keys match `ModStts`, bank fees, unique CacheIds, `_EventOrderIndex.json` vs events, every `GameTool.LS("key")` exists in LocalText, unique LocalText ids/keys, `scenarios.json` vs scenario classes |
+| `Taoist/ConfigTests.cs` | every ModConf JSON parses, `mod_configs.json` sections/keys match `ModStts`, feature config files match their classes and defaults (`FeatureConfigs_MatchDefaults`), unique CacheIds, `_EventOrderIndex.json` vs events, every `GameTool.LS("key")` exists in LocalText, unique LocalText ids/keys, `scenarios.json` vs scenario classes |
 | `KnownIssues.cs` | `[TestCategory("KnownIssue")]` tests reproducing the open issues of [../Known-Issues.md](../Known-Issues.md) (none at the moment), excluded by default |
 
 What can / cannot be unit tested:

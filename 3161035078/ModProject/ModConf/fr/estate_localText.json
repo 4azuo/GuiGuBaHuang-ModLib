@@ -1,0 +1,592 @@
+[
+	{
+		"id": "-1000011000",
+		"key": "estate_button",
+		"en|ch|tc|kr": "Parcelles"
+	},
+	{
+		"id": "-1000011001",
+		"key": "estate_title",
+		"en|ch|tc|kr": "{0} - parcelles"
+	},
+	{
+		"id": "-1000011002",
+		"key": "estate_population",
+		"en|ch|tc|kr": "Mortels : {0:#,##0} (vers {1:#,##0}) · impôt des mortels {2:#,##0}/mois · parcelles bâties {3}/{4}"
+	},
+	{
+		"id": "-1000011003",
+		"key": "estate_hint",
+		"en|ch|tc|kr": "Clique sur une parcelle libre pour l'acheter et bâtir ta maison (une maison par ville)."
+	},
+	{
+		"id": "-1000011004",
+		"key": "estate_mine",
+		"en|ch|tc|kr": "Ta maison : {0} dans le {1} · impôt {2:#,##0}/mois · clique dessus pour entrer"
+	},
+	{
+		"id": "-1000011006",
+		"key": "estate_one_house",
+		"en|ch|tc|kr": "Tu as déjà une maison dans cette ville (une maison par ville)."
+	},
+	{
+		"id": "-1000011008",
+		"key": "estate_info_shop",
+		"en|ch|tc|kr": "Une boutique de mortels dans le {0} (prospérité {1}, terrain valant {2:#,##0}) : la rue animée amène le commerce."
+	},
+	{
+		"id": "-1000011009",
+		"key": "estate_info_mortal",
+		"en|ch|tc|kr": "Des mortels vivent ici, dans le {0} (prospérité {1}, terrain valant {2:#,##0})."
+	},
+	{
+		"id": "-1000011010",
+		"key": "estate_done",
+		"en|ch|tc|kr": "Bâti : {0} !"
+	},
+	{
+		"id": "-1000011011",
+		"key": "estate_grade",
+		"en|ch|tc|kr": "{0} exige le rang de cultivation {1}."
+	},
+	{
+		"id": "-1000011012",
+		"key": "estate_not_free",
+		"en|ch|tc|kr": "Cette parcelle n'est pas libre."
+	},
+	{
+		"id": "-1000011013",
+		"key": "estate_manage_line",
+		"en|ch|tc|kr": "Mortels : {0:#,##0} -> {1:#,##0}, impôt des mortels {2:#,##0}/mois"
+	},
+	{
+		"id": "-1000011014",
+		"key": "estate_house_1",
+		"en|ch|tc|kr": "Chaumière"
+	},
+	{
+		"id": "-1000011015",
+		"key": "estate_house_2",
+		"en|ch|tc|kr": "Maison à tuiles"
+	},
+	{
+		"id": "-1000011016",
+		"key": "estate_house_3",
+		"en|ch|tc|kr": "Maison à cour"
+	},
+	{
+		"id": "-1000011017",
+		"key": "estate_house_4",
+		"en|ch|tc|kr": "Demeure"
+	},
+	{
+		"id": "-1000011018",
+		"key": "estate_house_5",
+		"en|ch|tc|kr": "Manoir"
+	},
+	{
+		"id": "-1000011019",
+		"key": "estate_house_6",
+		"en|ch|tc|kr": "Palais immortel"
+	},
+	{
+		"id": "-1000011020",
+		"key": "log_estate_buy",
+		"en|ch|tc|kr": "A acheté une parcelle à {0} et bâti une chaumière ({1:#,##0} pierres spirituelles)."
+	},
+	{
+		"id": "-1000011021",
+		"key": "log_estate_upgrade",
+		"en|ch|tc|kr": "{0} : la maison est devenue {1} ({2:#,##0} pierres spirituelles)."
+	},
+	{
+		"id": "-1000011022",
+		"key": "log_estate_seized",
+		"en|ch|tc|kr": "{0} : {1} a été saisie pour impôts impayés."
+	},
+	{
+		"id": "-1000011023",
+		"key": "log_estate_unpaid",
+		"en|ch|tc|kr": "{0} : impôt de la maison de {1:#,##0} impayé ({2} mois avant la saisie)."
+	},
+	{
+		"id": "-1000011024",
+		"key": "estate_district_M",
+		"en|ch|tc|kr": "Marché"
+	},
+	{
+		"id": "-1000011025",
+		"key": "estate_district_N",
+		"en|ch|tc|kr": "Quartier noble"
+	},
+	{
+		"id": "-1000011026",
+		"key": "estate_district_R",
+		"en|ch|tc|kr": "Quartier résidentiel"
+	},
+	{
+		"id": "-1000011027",
+		"key": "estate_district_C",
+		"en|ch|tc|kr": "Quartier des artisans"
+	},
+	{
+		"id": "-1000011028",
+		"key": "estate_district_O",
+		"en|ch|tc|kr": "Faubourgs"
+	},
+	{
+		"id": "-1000011029",
+		"key": "estate_palace_1",
+		"en|ch|tc|kr": "Hôtel de ville"
+	},
+	{
+		"id": "-1000011030",
+		"key": "estate_palace_2",
+		"en|ch|tc|kr": "Grand hôtel de ville"
+	},
+	{
+		"id": "-1000011031",
+		"key": "estate_palace_3",
+		"en|ch|tc|kr": "Palais du seigneur"
+	},
+	{
+		"id": "-1000011032",
+		"key": "estate_palace_4",
+		"en|ch|tc|kr": "Palais de jade"
+	},
+	{
+		"id": "-1000011033",
+		"key": "estate_palace_5",
+		"en|ch|tc|kr": "Pavillon céleste"
+	},
+	{
+		"id": "-1000011034",
+		"key": "estate_palace_label",
+		"en|ch|tc|kr": "Maître de la ville (niveau {0})"
+	},
+	{
+		"id": "-1000011036",
+		"key": "estate_palace_budget",
+		"en|ch|tc|kr": "Le budget de la ville ne peut pas payer {0:#,##0} [icon:zm_lingshi]."
+	},
+	{
+		"id": "-1000011038",
+		"key": "log_estate_palace",
+		"en|ch|tc|kr": "{0} : le palais a été agrandi en {1} ({2:#,##0} du budget de la ville)."
+	},
+	{
+		"id": "-1000011039",
+		"key": "estate_tax_free",
+		"en|ch|tc|kr": "Impôt : gratuit (ta maison)\nVoir les gardiens de la ville"
+	},
+	{
+		"id": "-1000011040",
+		"key": "estate_house_title",
+		"en|ch|tc|kr": "{0} - {1}"
+	},
+	{
+		"id": "-1000011041",
+		"key": "estate_house_facts",
+		"en|ch|tc|kr": "{0} · prospérité {1} · maison niveau {2} · impôt {3:#,##0}/mois"
+	},
+	{
+		"id": "-1000011042",
+		"key": "estate_house_rooms",
+		"en|ch|tc|kr": "Pièces : {0}/{1} (une par niveau de maison)"
+	},
+	{
+		"id": "-1000011044",
+		"key": "estate_herbs_btn",
+		"en|ch|tc|kr": "Récolter les herbes ({0})"
+	},
+	{
+		"id": "-1000011045",
+		"key": "estate_herbs_done",
+		"en|ch|tc|kr": "{0} herbe(s) mise(s) dans le sac."
+	},
+	{
+		"id": "-1000011046",
+		"key": "estate_back_map",
+		"en|ch|tc|kr": "Carte de la ville"
+	},
+	{
+		"id": "-1000011047",
+		"key": "estate_back_house",
+		"en|ch|tc|kr": "Retour à la maison"
+	},
+	{
+		"id": "-1000011048",
+		"key": "estate_rooms_title",
+		"en|ch|tc|kr": "Pièces"
+	},
+	{
+		"id": "-1000011049",
+		"key": "estate_room_1",
+		"en|ch|tc|kr": "Chambre de quiétude"
+	},
+	{
+		"id": "-1000011050",
+		"key": "estate_room_2",
+		"en|ch|tc|kr": "Terrain d'entraînement"
+	},
+	{
+		"id": "-1000011051",
+		"key": "estate_room_3",
+		"en|ch|tc|kr": "Jardin d'herbes"
+	},
+	{
+		"id": "-1000011052",
+		"key": "estate_room_4",
+		"en|ch|tc|kr": "Formation de rassemblement spirituel"
+	},
+	{
+		"id": "-1000011053",
+		"key": "estate_room_5",
+		"en|ch|tc|kr": "Salle des ancêtres"
+	},
+	{
+		"id": "-1000011054",
+		"key": "estate_room_eff_1",
+		"en|ch|tc|kr": "un mois passé en ville : exp de cultivation +{0}% de la phase"
+	},
+	{
+		"id": "-1000011055",
+		"key": "estate_room_eff_2",
+		"en|ch|tc|kr": "un mois passé en ville : raffinement corporel +{0}"
+	},
+	{
+		"id": "-1000011056",
+		"key": "estate_room_eff_3",
+		"en|ch|tc|kr": "{0} herbe(s) par mois (jusqu'à {1})"
+	},
+	{
+		"id": "-1000011057",
+		"key": "estate_room_eff_4",
+		"en|ch|tc|kr": "Qi rassemblé en ville +{0}%"
+	},
+	{
+		"id": "-1000011058",
+		"key": "estate_room_eff_5",
+		"en|ch|tc|kr": "frais du foyer -{0}%"
+	},
+	{
+		"id": "-1000011060",
+		"key": "estate_room_empty",
+		"en|ch|tc|kr": "Pièce vide"
+	},
+	{
+		"id": "-1000011061",
+		"key": "estate_room_build",
+		"en|ch|tc|kr": "Bâtir une pièce"
+	},
+	{
+		"id": "-1000011062",
+		"key": "estate_room_more",
+		"en|ch|tc|kr": "Une maison plus grande a plus de pièces."
+	},
+	{
+		"id": "-1000011064",
+		"key": "estate_room_hint",
+		"en|ch|tc|kr": "Chaque pièce a 3 niveaux ; la chambre de quiétude, le terrain d'entraînement et la formation agissent quand tu passes le mois en ville."
+	},
+	{
+		"id": "-1000011065",
+		"key": "estate_room_noslot",
+		"en|ch|tc|kr": "Aucune pièce vide : améliore d'abord la maison."
+	},
+	{
+		"id": "-1000011066",
+		"key": "estate_room_max",
+		"en|ch|tc|kr": "Cette pièce est à son niveau maximal."
+	},
+	{
+		"id": "-1000011067",
+		"key": "log_estate_room",
+		"en|ch|tc|kr": "{0} : {1} niveau {2} bâtie ({3:#,##0} pierres spirituelles)."
+	},
+	{
+		"id": "-1000011005",
+		"key": "estate_legend",
+		"en|ch|tc|kr": "Prix du terrain et taxe d'habitation par quartier : {0}. Or : ta maison ; bleu : la maison d'un cultivateur."
+	},
+	{
+		"id": "-1000011007",
+		"key": "estate_buy_confirm",
+		"en|ch|tc|kr": "Une parcelle dans {0} (prospérité {1}).\nTerrain et chaumière : {2:#,##0} billets spirituels (= {3:#,##0} [icon:zm_lingshi]) ; tu en as {4:#,##0}.\nTaxe d'habitation {5:#,##0}/mois au lieu du droit d'entrée. L'acheter ?"
+	},
+	{
+		"id": "-1000011035",
+		"key": "estate_palace_confirm",
+		"en|ch|tc|kr": "Palais niveau {0} : +{1}% de mortels, budget annuel +{6}%.\nL'agrandir en {2} pour {3:#,##0} [icon:zm_lingshi] du budget de la ville ({4:#,##0}) ? Ensuite +{5}% de mortels, budget annuel +{7}%."
+	},
+	{
+		"id": "-1000011037",
+		"key": "estate_palace_info",
+		"en|ch|tc|kr": "Maître de la ville : {0}. Palais niveau {1} : +{2}% de mortels, budget annuel +{3}%."
+	},
+	{
+		"id": "-1000011043",
+		"key": "estate_upgrade_btn",
+		"en|ch|tc|kr": "Améliorer en {0} (grade {2}) : {1:#,##0}"
+	},
+	{
+		"id": "-1000011059",
+		"key": "estate_room_up",
+		"en|ch|tc|kr": "Améliorer : {0:#,##0}"
+	},
+	{
+		"id": "-1000011063",
+		"key": "estate_room_new",
+		"en|ch|tc|kr": "Construire : {0:#,##0}"
+	},
+	{
+		"id": "-1000011068",
+		"key": "estate_buy_room",
+		"en|ch|tc|kr": "Place sur cette parcelle jusqu'à : {0} (une maison plus grande prend les parcelles voisines)."
+	},
+	{
+		"id": "-1000011069",
+		"key": "estate_noroom",
+		"en|ch|tc|kr": "Pas de place pour {0} ici : il faut un bloc de {1} x {2} parcelles autour de la maison, libres ou à des mortels (ni rue, ni eau, ni autre propriétaire)."
+	},
+	{
+		"id": "-1000011070",
+		"key": "estate_upgrade_land",
+		"en|ch|tc|kr": "Prend {0} parcelle(s) de plus autour de la maison (terrain et rachat aux mortels : {1:#,##0} billets, compris dans le coût)"
+	},
+	{
+		"id": "-1000011071",
+		"key": "estate_terrain_0",
+		"en|ch|tc|kr": "Plaine"
+	},
+	{
+		"id": "-1000011072",
+		"key": "estate_terrain_1",
+		"en|ch|tc|kr": "Rivière"
+	},
+	{
+		"id": "-1000011073",
+		"key": "estate_terrain_2",
+		"en|ch|tc|kr": "Lac"
+	},
+	{
+		"id": "-1000011074",
+		"key": "estate_terrain_3",
+		"en|ch|tc|kr": "Forêt"
+	},
+	{
+		"id": "-1000011075",
+		"key": "estate_wall_line",
+		"en|ch|tc|kr": "Rempart niveau {0} : défense +{1}%"
+	},
+	{
+		"id": "-1000011076",
+		"key": "estate_wall_btn",
+		"en|ch|tc|kr": "Rempart niveau {0} (+{1}%) : renforcer"
+	},
+	{
+		"id": "-1000011077",
+		"key": "estate_wall_confirm",
+		"en|ch|tc|kr": "Renforcer le rempart au niveau {0} pour {1:#,##0} [icon:zm_lingshi] du budget de la ville ({2:#,##0}) ?\nLa ville se défend contre les attaques +{3}%."
+	},
+	{
+		"id": "-1000011078",
+		"key": "log_estate_wall",
+		"en|ch|tc|kr": "{0} : le rempart a été renforcé au niveau {1} ({2:#,##0} du budget de la ville)."
+	},
+	{
+		"id": "-1000011079",
+		"key": "estate_roads_0",
+		"en|ch|tc|kr": "carrefour"
+	},
+	{
+		"id": "-1000011080",
+		"key": "estate_roads_1",
+		"en|ch|tc|kr": "carrefour en T"
+	},
+	{
+		"id": "-1000011081",
+		"key": "estate_roads_2",
+		"en|ch|tc|kr": "boulevard circulaire"
+	},
+	{
+		"id": "-1000011082",
+		"key": "estate_roads_3",
+		"en|ch|tc|kr": "deux rues"
+	},
+	{
+		"id": "-1000011083",
+		"key": "estate_no_notes",
+		"en|ch|tc|kr": "Maisons, terrains et pièces se paient en billets spirituels : {0:#,##0} nécessaires, {1:#,##0} dans le sac. Change des pierres spirituelles à la banque d'une ville."
+	},
+	{
+		"id": "-1000011084",
+		"key": "estate_building_built",
+		"en|ch|tc|kr": "Construit"
+	},
+	{
+		"id": "-1000011085",
+		"key": "estate_building_none",
+		"en|ch|tc|kr": "Pas dans cette ville"
+	},
+	{
+		"id": "-1000011086",
+		"key": "estate_city_btn",
+		"en|ch|tc|kr": "Élever en cité : {0:#,##0}"
+	},
+	{
+		"id": "-1000011087",
+		"key": "estate_info_owner",
+		"en|ch|tc|kr": "La {1} du cultivateur {0}, dans {2} (prospérité {3}) ; taxe d'habitation {4:#,##0}/mois pour la ville."
+	},
+	{
+		"id": "-1000011088",
+		"key": "estate_info_grown",
+		"en|ch|tc|kr": "Les mortels d'ici ont prospéré : leur maison est devenue une {0}."
+	},
+	{
+		"id": "-1000011089",
+		"key": "clan_name",
+		"en|ch|tc|kr": "le clan {0}"
+	},
+	{
+		"id": "-1000011090",
+		"key": "clan_button",
+		"en|ch|tc|kr": "Clans ({0})"
+	},
+	{
+		"id": "-1000011091",
+		"key": "clan_title",
+		"en|ch|tc|kr": "{0} - clans de cultivateurs"
+	},
+	{
+		"id": "-1000011092",
+		"key": "clan_none",
+		"en|ch|tc|kr": "Aucun clan de cultivateurs ne s'est encore installé ici : un cultivateur avec une maison en ville et une famille."
+	},
+	{
+		"id": "-1000011093",
+		"key": "clan_line",
+		"en|ch|tc|kr": "{0} : {1} membre(s), {2}"
+	},
+	{
+		"id": "-1000011094",
+		"key": "clan_relation",
+		"en|ch|tc|kr": "{0} - {1} : {2} ({3})"
+	},
+	{
+		"id": "-1000011095",
+		"key": "clan_rel_feud",
+		"en|ch|tc|kr": "vendetta"
+	},
+	{
+		"id": "-1000011096",
+		"key": "clan_rel_hostile",
+		"en|ch|tc|kr": "hostile"
+	},
+	{
+		"id": "-1000011097",
+		"key": "clan_rel_neutral",
+		"en|ch|tc|kr": "neutre"
+	},
+	{
+		"id": "-1000011098",
+		"key": "clan_rel_allied",
+		"en|ch|tc|kr": "allié"
+	},
+	{
+		"id": "-1000011099",
+		"key": "clan_hint",
+		"en|ch|tc|kr": "Les relations suivent l'amitié de leurs membres, les mariages et les combats. Des clans hostiles peuvent se battre ; une vendetta peut finir en guerre."
+	},
+	{
+		"id": "-1000011100",
+		"key": "clan_brawl_ask",
+		"en|ch|tc|kr": "{0} : {2} du {1} cherche querelle à {4} du {3}. Interviens-tu ?"
+	},
+	{
+		"id": "-1000011101",
+		"key": "clan_war_ask",
+		"en|ch|tc|kr": "{0} : {1} marche sur {3} ! {2} les mène ; {4} défend ton camp. Interviens-tu ?"
+	},
+	{
+		"id": "-1000011102",
+		"key": "clan_step_in",
+		"en|ch|tc|kr": "Intervenir"
+	},
+	{
+		"id": "-1000011103",
+		"key": "clan_stay_out",
+		"en|ch|tc|kr": "Rester à l'écart"
+	},
+	{
+		"id": "-1000011104",
+		"key": "clan_won",
+		"en|ch|tc|kr": "Victoire : {0} l'emporte sur {1}."
+	},
+	{
+		"id": "-1000011105",
+		"key": "clan_lost",
+		"en|ch|tc|kr": "Défaite : {0} l'emporte sur {1}."
+	},
+	{
+		"id": "-1000011106",
+		"key": "log_clan_brawl",
+		"en|ch|tc|kr": "{0} : {1} ({2}) a battu {3} ({4}) dans une rixe."
+	},
+	{
+		"id": "-1000011107",
+		"key": "log_clan_brawl_death",
+		"en|ch|tc|kr": "{0} : {1} ({2}) a tué {3} ({4}) dans une rixe."
+	},
+	{
+		"id": "-1000011108",
+		"key": "log_clan_war",
+		"en|ch|tc|kr": "{0} : {1} a vaincu {2} dans une guerre de clans ; {3} sont tombés, les vaincus ont perdu leur maison."
+	},
+	{
+		"id": "-1000011109",
+		"key": "log_clan_extinct",
+		"en|ch|tc|kr": "{0} : {1} a été anéanti."
+	},
+	{
+		"id": "-1000011110",
+		"key": "estate_plot_where",
+		"en|ch|tc|kr": "Parcelle n° {0} (colonne {1}, rangée {2} du plan de la ville)"
+	},
+	{
+		"id": "-1000011111",
+		"key": "estate_mortal_buy_info",
+		"en|ch|tc|kr": "Les mortels vendraient leur maison : un(e) {0} pour {1:#,##0} billets spirituels (= {2:#,##0} [icon:zm_lingshi], le terrain et toute la maison) ; tu en as {3:#,##0}.\nTaxe d'habitation {4:#,##0}/mois au lieu de la taxe d'entrée ; requiert le rang {5}.\nUne maison plus grande prendra plus tard les parcelles voisines : elles s'achètent avec l'agrandissement (terrain libre, ou maisons de mortels au prix du terrain plus la moitié de la maison)."
+	},
+	{
+		"id": "-1000011112",
+		"key": "estate_mortal_buy",
+		"en|ch|tc|kr": "Acheter cette maison ({0:#,##0} billets)"
+	},
+	{
+		"id": "-1000011113",
+		"key": "log_estate_buy_mortal",
+		"en|ch|tc|kr": "Maison de mortels achetée à {0} : {1} ({2:#,##0} pierres spirituelles)."
+	},
+	{
+		"id": "-1000011114",
+		"key": "dlg_yes",
+		"en|ch|tc|kr": "Oui"
+	},
+	{
+		"id": "-1000011115",
+		"key": "dlg_no",
+		"en|ch|tc|kr": "Non"
+	},
+	{
+		"id": "-1000011116",
+		"key": "dlg_ok",
+		"en|ch|tc|kr": "OK"
+	},
+	{
+		"id": "-1000011117",
+		"key": "dlg_close",
+		"en|ch|tc|kr": "Fermer"
+	}
+]

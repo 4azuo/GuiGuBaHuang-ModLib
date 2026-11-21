@@ -1,0 +1,55 @@
+{
+	"__name": "Monster growth (MonstStrongerEvent)",
+	"__help": [
+		"A value left out (or a broken file): the default of the mod.",
+		"Every growth is shared out: attack x AtkR, defense x DefR, max HP x MHpR.",
+		"GrowRate: growth a month, KillGrowRate: growth per monster of the type killed, by type (Common, Elite, BOSS, NPC); x grade x game level.",
+		"PlayerAtk2Hp (S&M MonsterPropertiesDependOnPlayerProperties): HP from the attack of the player, by type.",
+		"AreaBonus: growth by area 1-13. RebirthAffect: growth per total grade of the rebirths.",
+		"PlayerAffectSummon: summons of the player get this share of the player's Atk, Def, MHp and basis (Bas)."
+	],
+	"AtkR": 1.05,
+	"DefR": 0.5,
+	"MHpR": 1.5,
+	"Additionnal": 0.02,
+	"RebirthAffect": 0.04,
+	"GrowRate": {
+		"Common": 0.004,
+		"Elite": 0.002,
+		"BOSS": 0.001,
+		"NPC": 0.002
+	},
+	"KillGrowRate": {
+		"Common": 0.000005,
+		"Elite": 0.00005,
+		"BOSS": 0.0001,
+		"NPC": 0.00005
+	},
+	"PlayerAtk2Hp": {
+		"Common": 1.0,
+		"Elite": 10.0,
+		"BOSS": 100.0,
+		"NPC": 50.0
+	},
+	"AreaBonus": {
+		"1": 0.001,
+		"2": 0.005,
+		"3": 0.01,
+		"4": 0.015,
+		"5": 0.02,
+		"6": 0.03,
+		"7": 0.045,
+		"8": 0.06,
+		"9": 0.08,
+		"10": 0.10,
+		"11": 0.13,
+		"12": 0.16,
+		"13": 0.20
+	},
+	"PlayerAffectSummon": {
+		"Atk": 0.05,
+		"Def": 0.01,
+		"MHp": 0.10,
+		"Bas": 0.01
+	}
+}

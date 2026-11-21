@@ -294,9 +294,16 @@ Create a folder **ModConf** in **ModProject**, copy samples from below folder to
    | Taoist | `features_localText.json` | `log_`, `secl_`, `enc_`, `loan_`, `wanted_`, `family_`… (features of `Mod/`) | `-1000006000`… |
    | Taoist | `story_localText.json` | `story_` (storylines) | `-1000007000`… |
    | Taoist | `ui_localText.json` | `ui_` (labels of the UIs: market, storage, team, town, stats…) | `-1000008000`… |
+   | Taoist | `dmginfo_localText.json` | `dmginfo_` (damage calculation window) | `-1000009000`… |
+   | Taoist | `body_localText.json` | `body_`, `log_body_` (body refining) | `-1000010000`… |
+   | Taoist | `estate_localText.json` | `estate_`, `log_estate_` (town estates) | `-1000011000`… |
+   | Taoist | `note_localText.json` | `note_` (spirit banknotes) | `-1000012000`… |
+   | Taoist | `merit_localText.json` | `merit_`, `log_merit_`, merit encounters `enc_flood/plague/raid` | `-1000013000`… |
+   | Taoist | `artisan_localText.json` | `artisan_`, `log_artisan_` (Artisan Dao) | `-1000014000`… |
+   | Taoist | `mind_localText.json` | `heart_`, `sense_`, `log_heart_`, `log_sense_` (Dao heart, spirit sense) | `-1000015000`… |
    | Taoist | older files (`other_`, `team_`, `townmaster_`…) | their prefix | positive ids of the game's style |
 
-   A new feature with many texts gets a new file and the next free block (`-1000009000`…); the ids of a block go down (-1000008000, -1000008001…).
+   A new feature with many texts gets a new file and the next free block (`-1000016000`…); the ids of a block go down (-1000008000, -1000008001…).
 3. **Languages**: the main file has `en`, `ch`, `tc`, `kr`; each of the 8 folders `de es fr ja la ru th vi` has the same file with every key
    (`"en|ch|tc|kr"`). Add a key to the 9 files at once (see `docs/04-LocalText.md` for the translation tools).
 4. **Numbers**: `{0:#,##0}` for amounts (`{0:0.00}` for rates).

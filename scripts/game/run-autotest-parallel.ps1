@@ -27,12 +27,16 @@
 param(
     [string[]]$Scenario,
     [switch]$Failed,
-    [ValidateRange(1, 4)][int]$Slots = 4,
-    [int]$GroupSeconds = 300,
+    # 4 games by default (~3 GB each in a battle; 6 games ran out of memory on 32 GB with other apps open)
+    [ValidateRange(1, 8)][int]$Slots = 4,
+    # 0: one scenario at a time (a free game takes the next one); > 0: groups of ~GroupSeconds of work
+    [int]$GroupSeconds = 0,
     [int]$Timeout = 1800,
     [int]$StallSeconds = 300,
     [string]$Window = '1600x900',
-    [switch]$Deploy
+    [switch]$Deploy,
+    # the runs are not merged at the end (merge-parallel-run.ps1 -Batch <first>,<this one> merges several parallel runs)
+    [switch]$NoMerge
 )
 
 $ErrorActionPreference = 'Stop'
@@ -72,8 +76,13 @@ foreach ($f in @(Get-ChildItem (Join-Path $repo 'logs\autotest') -Directory -Err
 function Get-Duration([string]$Id) { if ($durations.ContainsKey($Id)) { return [Math]::Max(5, $durations[$Id]) } else { return 60 } }
 
 # groups: the longest first, ~GroupSeconds each
-$normal = @($chosen | Where-Object { -not $_.exclusive } | Sort-Object { Get-Duration $_.id } -Descending)
-$exclusive = @($chosen | Where-Object { $_.exclusive } | ForEach-Object { $_.id })
+# the title-screen scenarios (TT-xx) run with the exclusive ones: the games of the queue stay open inside their save
+function Test-Exclusive($s) { return [bool]$s.exclusive -or $s.id -like 'TT-*' }
+$normal = @($chosen | Where-Object { -not (Test-Exclusive $_) } | Sort-Object { Get-Duration $_.id } -Descending)
+$exclusive = @($chosen | Where-Object { Test-Exclusive $_ } | ForEach-Object { $_.id })
+# "freshGameAfter": what the scenario changes cannot be undone by the reset of the player (NPCs killed, years passed):
+# the game of the slot is closed after it, the next scenario starts from the snapshot
+$freshAfter = @($chosen | Where-Object { $_.freshGameAfter } | ForEach-Object { $_.id })
 $groups = New-Object System.Collections.Generic.List[object]
 $cur = @(); $sum = 0
 foreach ($s in $normal) {
@@ -116,17 +125,20 @@ try {
 
     # ------------------------------------------------------------------ workers
     $worker = {
-        param($Slot, $Repo, $QueueFile, $LogFile, $RunsFile, $StallSeconds, $Timeout, $GameArgs, $Delay, $Window)
+        param($Slot, $Repo, $QueueFile, $LogFile, $RunsFile, $StallSeconds, $Timeout, $GameArgs, $Delay, $Window, $FreshAfter)
         $ErrorActionPreference = 'Continue'
         . (Join-Path $Repo 'scripts\game\_game.ps1')
         . (Join-Path $Repo 'scripts\game\_parallel.ps1')
         $env:GGBH_SLOT = if ($Slot -ge 2) { "$Slot" } else { $null }
         $paths = Get-GamePaths
         function Log([string]$t) { Write-ParallelLog $LogFile "[slot $Slot] $t" }
-        function Invoke-Run([string[]]$Ids) {
+        # -Attach: the scenarios given to the game of the slot that waits in its save (no restart); else the game is
+        # started (-KeepAlive: it stays open after the run, waiting for the next scenarios)
+        function Invoke-Run([string[]]$Ids, [switch]$Attach) {
+            $mode = if ($Attach) { '-Attach' } else { '-KeepAlive' }
             $out = & powershell -NoProfile -ExecutionPolicy Bypass -File (Join-Path $Repo 'scripts\game\run-autotest.ps1') `
                 -Scenario ($Ids -join ',') -Slot $Slot -SlotCharacter -NoSaveBackup -NoViewerUpdate -Timeout $Timeout `
-                -StallSeconds $StallSeconds -GameArgs $GameArgs -Window $Window 2>&1 | ForEach-Object { "$_" }
+                -StallSeconds $StallSeconds -GameArgs $GameArgs -Window $Window $mode 2>&1 | ForEach-Object { "$_" }
             $line = $out | Where-Object { $_ -match 'Run:\s+(\S+)' } | Select-Object -First 1
             $runId = if ($line -match 'Run:\s+(\S+)') { $Matches[1] } else { $null }
             if ($runId) { for ($k = 0; $k -lt 20; $k++) { try { [IO.File]::AppendAllText($RunsFile, "$runId`r`n"); break } catch { Start-Sleep -Milliseconds 100 } } }
@@ -163,10 +175,17 @@ try {
         while ($true) {
             $item = Use-Queue $QueueFile { param($l) if ($l.Count -eq 0) { return $null }; $x = $l[0]; $l.RemoveAt(0); return $x }
             if (-not $item) { break }
-            [void](Restore-SlotSnapshot $paths $Slot)
-            Log "start $($item.ids -join ',') (~$($item.seconds) s)"
-            $r = Invoke-Run @($item.ids)
+            # the game stays open between the scenarios (each one resets the player to the loaded save and sets its
+            # precondition); a game that closed starts again from the slot's snapshot
+            $alive = [bool](Get-GameProcess)
+            if (-not $alive) { [void](Restore-SlotSnapshot $paths $Slot) }
+            Log "start $($item.ids -join ',') (~$($item.seconds) s)$(if (-not $alive) { ' - game started' })"
+            $r = Invoke-Run @($item.ids) -Attach:$alive
             Log "done $($item.ids -join ','): run $($r.RunId) $($r.Counts)$(if ($r.Stalled) { ' - STALLED' })"
+            if (@($item.ids | Where-Object { @($FreshAfter) -contains $_ }).Count -gt 0 -and (Get-GameProcess)) {
+                Stop-Game
+                Log "fresh game after $($item.ids -join ','): closed, the next scenario starts from the snapshot"
+            }
             # the game closed / stopped in the middle: the scenarios without a result back to the queue (twice at most;
             # a stalled one is not run again - it would stop the game again)
             $left = @($item.ids | Where-Object { $r.Done -notcontains $_ })
@@ -181,11 +200,13 @@ try {
                 }
             }
         }
+        # the game of the slot closed at the end, then its character back to the snapshot
+        Stop-Game
         [void](Restore-SlotSnapshot $paths $Slot)
         Log 'queue empty: done'
     }
     $jobs = foreach ($s in $slotIds) {
-        Start-Job -Name "autotest-slot$s" -ScriptBlock $worker -ArgumentList $s, $repo, $queueFile, $logFile, $runsFile, $StallSeconds, $Timeout, $gameArgs, (($s - 2) * 45), $Window
+        Start-Job -Name "autotest-slot$s" -ScriptBlock $worker -ArgumentList $s, $repo, $queueFile, $logFile, $runsFile, $StallSeconds, $Timeout, $gameArgs, (($s - 2) * 45), $Window, $freshAfter
     }
     while (@($jobs | Where-Object { $_.State -eq 'Running' }).Count -gt 0) {
         $jobs | Receive-Job -ErrorAction Continue 2>&1 | Out-Null
@@ -198,6 +219,7 @@ try {
         $first = $slotIds[0]
         $env:GGBH_SLOT = "$first"
         $slotPaths = Get-GamePaths
+        Stop-Game
         [void](Restore-SlotSnapshot $slotPaths $first)
         Write-ParallelLog $logFile "[slot $first] exclusive: $($exclusive -join ',')"
         $out = & powershell -NoProfile -ExecutionPolicy Bypass -File (Join-Path $PSScriptRoot 'run-autotest.ps1') -Scenario ($exclusive -join ',') `
@@ -244,4 +266,7 @@ Write-ParallelLog $logFile ("OK {0}  NG {1}  SKIP {2}  NOT RUN {3}" -f $summary.
 if ($ng.Count -gt 0) { Write-ParallelLog $logFile "NG: $(($ng | ForEach-Object { "$($_.id) ($($_.run))" }) -join ', ')"; $exitCode = 3 }
 if ($missing.Count -gt 0) { Write-ParallelLog $logFile "NOT RUN: $($missing -join ', ')"; if ($exitCode -eq 0) { $exitCode = 2 } }
 Write-ParallelLog $logFile "summary: $(Join-Path $work 'summary.json')"
+# the runs of every scenario as ONE run of the test viewer (logs\autotest\<this time>), pinned
+if (-not $NoMerge) { try { & (Join-Path $PSScriptRoot 'merge-parallel-run.ps1') -Batch $work | Out-Host; Write-ParallelLog $logFile "merged into one run: logs\autotest\$stamp (pinned)" }
+catch { Write-ParallelLog $logFile "!!! merge of the runs failed: $($_.Exception.Message)" } }
 exit $exitCode

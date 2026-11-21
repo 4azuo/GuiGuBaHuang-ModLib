@@ -6,7 +6,6 @@ using ModLib.Mod;
 using System;
 using ModLib.Helper;
 using System.Collections.Generic;
-using static MOD_nE7UL2.Object.ModStts;
 
 namespace MOD_nE7UL2.Mod
 {
@@ -17,7 +16,7 @@ namespace MOD_nE7UL2.Mod
     public class ExpertEvent : ModEvent
     {
         public static ExpertEvent Instance { get; set; }
-        public static _ExpertConfigs Configs => ModMain.ModObj.ModSettings.ExpertConfigs;
+        public static ExpertConfig Configs => ExpertConfig.Conf;
 
         public IDictionary<string, int> ExpertExps { get; set; } = new Dictionary<string, int>();
 

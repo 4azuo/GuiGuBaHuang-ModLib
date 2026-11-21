@@ -84,6 +84,10 @@ param(
     [int]$StepDelayMs = 1500,
     [switch]$Deploy,
     [switch]$KeepGame,
+    # games side by side that stay open (run-autotest-parallel.ps1): -KeepAlive starts the game, runs the scenarios and
+    # leaves it waiting in the save; -Attach gives the next scenarios to that game (no start, no restart)
+    [switch]$KeepAlive,
+    [switch]$Attach,
     [switch]$NoRestore,
     [switch]$ListScenarios,
     [switch]$Promo,
@@ -98,6 +102,7 @@ $ErrorActionPreference = 'Stop'
 # game slot, locked for the whole run (released when this process ends): several runs at the same time each get their
 # own game; a slot used by another run is never restarted
 if ($ListScenarios -or $ReportFrom) { if ($Slot -lt 1) { $Slot = 1 } }
+if ($KeepAlive -or $Attach) { $KeepGame = $true; $NoSaveBackup = $true }
 else {
     $autoSlot = $Slot -eq 0
     # a named save / manual load: the saves of the normal game (slot 1); a slot copy has its own game data folder
@@ -305,7 +310,11 @@ else {
     }
 
     # ------------------------------------------------------------------ deploy
-    if ($Deploy) {
+    if ($Attach -and -not (Get-GameProcess)) {
+        Write-Err "-Attach: no game of slot $Slot is running"
+        exit 4
+    }
+    if ($Deploy -and -not $Attach) {
         # ModLib first: Taoist is compiled against it. One deploy at a time; the copy waits until no game runs and is
         # skipped when the Workshop folder already has this build (_slots.ps1)
         Write-Title 'Rebuild and deploy'
@@ -343,6 +352,7 @@ else {
         StepDelayMs  = $StepDelayMs
         WatchBattles = [bool]$WatchBattles
         Promo        = [bool]$Promo
+        KeepAlive    = [bool]($KeepAlive -or $Attach)
     }
     $utf8 = New-Object Text.UTF8Encoding($false)
     Write-Json2File $requestFile $request
@@ -389,7 +399,7 @@ else {
     if ($GameArgs) { $runGameArgs += @('-GameArgs', "`"$GameArgs`"") }
 
     # another run copying the mods to the Workshop folder: start the game after it
-    try { Wait-DeployFree } catch { Write-Err $_.Exception.Message; exit 1 }
+    if (-not $Attach) { try { Wait-DeployFree } catch { Write-Err $_.Exception.Message; exit 1 } }
 
     $startTime = Get-Date
     $exitCode = 0
@@ -397,12 +407,14 @@ else {
     $printed = @{}
     $watchStart = $null
     try {
-        $runner = Start-Process -FilePath 'powershell.exe' -ArgumentList $runGameArgs -NoNewWindow -PassThru
+        # -Attach: the game waiting in its save (request.KeepAlive) reads the new request.json by itself
+        $runner = if ($Attach) { $null } else { Start-Process -FilePath 'powershell.exe' -ArgumentList $runGameArgs -NoNewWindow -PassThru }
+        if ($Attach) { Write-Info "Attached to the running game of slot $Slot (no restart)" }
         $finishedAt = $null
         $tick = 0
         $lastUpdate = $null
         $lastUpdateAt = Get-Date
-        while (-not $runner.HasExited) {
+        while (($runner -and -not $runner.HasExited) -or ($Attach -and (Get-GameProcess))) {
             Start-Sleep -Milliseconds 250
             Invoke-SnapRequests $snapDir
             if (-not $Foreground -and ((Get-Date) - $startTime).TotalMinutes -lt 4) { Push-GameBehind }
@@ -440,7 +452,7 @@ else {
                 [IO.File]::WriteAllText($resultsFile, ($res | ConvertTo-Json -Depth 30), $utf8)
                 $status = 'ERROR'
                 Stop-Game
-                if (-not $runner.WaitForExit(30000)) { Stop-Process -Id $runner.Id -Force -ErrorAction SilentlyContinue }
+                if ($runner -and -not $runner.WaitForExit(30000)) { Stop-Process -Id $runner.Id -Force -ErrorAction SilentlyContinue }
                 break
             }
             if ($res.phase -eq 'Watch') {
@@ -455,6 +467,7 @@ else {
             if ($res.status -ne 'RUNNING') {
                 $status = $res.status
                 if (-not $finishedAt) { $finishedAt = Get-Date; Write-Info "Runner finished: $status" }
+                if ($Attach) { break }   # the game stays, waiting for the next request
                 # run-game.ps1 stops on the "[AUTOTEST] finished" log line; make sure it does
                 if (((Get-Date) - $finishedAt).TotalSeconds -gt 45) {
                     if (-not $KeepGame) { Stop-Game }
@@ -462,7 +475,10 @@ else {
                     break
                 }
             }
+            # -Attach: a whole run without progress (the game not reading the request, a hang) - Timeout seconds
+            if ($Attach -and ((Get-Date) - $startTime).TotalSeconds -gt $Timeout) { Write-Err "attached run: no end within $Timeout s"; Stop-Game; break }
         }
+        if ($Attach -and -not $status -and -not (Get-GameProcess)) { Write-Err 'the game of the slot closed during the attached run' }
     }
     finally {
         Remove-Item -LiteralPath $requestFile -ErrorAction SilentlyContinue
@@ -496,7 +512,8 @@ if (-not $ReportFrom -and $saveDirs.Count -gt 0) {
 }
 
 # ------------------------------------------------------------------ collect
-$gameRun = if ($ReportFrom) { $null } else { Get-ChildItem -LiteralPath $paths.GameRuns -Directory -ErrorAction SilentlyContinue |
+# an attached run has no game run of its own (the game was started by an earlier run of the slot)
+$gameRun = if ($ReportFrom -or $Attach) { $null } else { Get-ChildItem -LiteralPath $paths.GameRuns -Directory -ErrorAction SilentlyContinue |
     Where-Object { $_.CreationTime -ge $startTime.AddSeconds(-5) } | Sort-Object CreationTime | Select-Object -Last 1 }
 $gameSummary = $null
 if ($gameRun) {

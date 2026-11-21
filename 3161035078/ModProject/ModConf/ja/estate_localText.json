@@ -1,0 +1,592 @@
+[
+	{
+		"id": "-1000011000",
+		"key": "estate_button",
+		"en|ch|tc|kr": "土地"
+	},
+	{
+		"id": "-1000011001",
+		"key": "estate_title",
+		"en|ch|tc|kr": "{0}・土地"
+	},
+	{
+		"id": "-1000011002",
+		"key": "estate_population",
+		"en|ch|tc|kr": "凡人：{0:#,##0}（目標 {1:#,##0}）・凡人税 {2:#,##0}/月・建設済み区画 {3}/{4}"
+	},
+	{
+		"id": "-1000011003",
+		"key": "estate_hint",
+		"en|ch|tc|kr": "空き区画をクリックして購入し、家を建てる（一つの町に一軒）。"
+	},
+	{
+		"id": "-1000011004",
+		"key": "estate_mine",
+		"en|ch|tc|kr": "あなたの家：{1}の{0}・税 {2:#,##0}/月・クリックで入る"
+	},
+	{
+		"id": "-1000011006",
+		"key": "estate_one_house",
+		"en|ch|tc|kr": "この町には既に家がある（一つの町に一軒）。"
+	},
+	{
+		"id": "-1000011008",
+		"key": "estate_info_shop",
+		"en|ch|tc|kr": "{0}の凡人の商店（繁華度{1}、地価{2:#,##0}）：にぎやかな通りに商売が集まる。"
+	},
+	{
+		"id": "-1000011009",
+		"key": "estate_info_mortal",
+		"en|ch|tc|kr": "{0}に凡人が住んでいる（繁華度{1}、地価{2:#,##0}）。"
+	},
+	{
+		"id": "-1000011010",
+		"key": "estate_done",
+		"en|ch|tc|kr": "完成：{0}！"
+	},
+	{
+		"id": "-1000011011",
+		"key": "estate_grade",
+		"en|ch|tc|kr": "{0}には修為第{1}境が必要。"
+	},
+	{
+		"id": "-1000011012",
+		"key": "estate_not_free",
+		"en|ch|tc|kr": "この区画は空いていない。"
+	},
+	{
+		"id": "-1000011013",
+		"key": "estate_manage_line",
+		"en|ch|tc|kr": "凡人：{0:#,##0} -> {1:#,##0}、凡人税 {2:#,##0}/月"
+	},
+	{
+		"id": "-1000011014",
+		"key": "estate_house_1",
+		"en|ch|tc|kr": "茅屋"
+	},
+	{
+		"id": "-1000011015",
+		"key": "estate_house_2",
+		"en|ch|tc|kr": "瓦屋"
+	},
+	{
+		"id": "-1000011016",
+		"key": "estate_house_3",
+		"en|ch|tc|kr": "四合院"
+	},
+	{
+		"id": "-1000011017",
+		"key": "estate_house_4",
+		"en|ch|tc|kr": "邸宅"
+	},
+	{
+		"id": "-1000011018",
+		"key": "estate_house_5",
+		"en|ch|tc|kr": "府邸"
+	},
+	{
+		"id": "-1000011019",
+		"key": "estate_house_6",
+		"en|ch|tc|kr": "仙府"
+	},
+	{
+		"id": "-1000011020",
+		"key": "log_estate_buy",
+		"en|ch|tc|kr": "{0}で区画を買い、茅屋を建てた（霊石{1:#,##0}）。"
+	},
+	{
+		"id": "-1000011021",
+		"key": "log_estate_upgrade",
+		"en|ch|tc|kr": "{0}：家が{1}になった（霊石{2:#,##0}）。"
+	},
+	{
+		"id": "-1000011022",
+		"key": "log_estate_seized",
+		"en|ch|tc|kr": "{0}：税の滞納で{1}が没収された。"
+	},
+	{
+		"id": "-1000011023",
+		"key": "log_estate_unpaid",
+		"en|ch|tc|kr": "{0}：家屋税 {1:#,##0} 未納（没収まであと{2}か月）。"
+	},
+	{
+		"id": "-1000011024",
+		"key": "estate_district_M",
+		"en|ch|tc|kr": "市場"
+	},
+	{
+		"id": "-1000011025",
+		"key": "estate_district_N",
+		"en|ch|tc|kr": "富裕区"
+	},
+	{
+		"id": "-1000011026",
+		"key": "estate_district_R",
+		"en|ch|tc|kr": "住宅区"
+	},
+	{
+		"id": "-1000011027",
+		"key": "estate_district_C",
+		"en|ch|tc|kr": "職人区"
+	},
+	{
+		"id": "-1000011028",
+		"key": "estate_district_O",
+		"en|ch|tc|kr": "城外"
+	},
+	{
+		"id": "-1000011029",
+		"key": "estate_palace_1",
+		"en|ch|tc|kr": "城主府"
+	},
+	{
+		"id": "-1000011030",
+		"key": "estate_palace_2",
+		"en|ch|tc|kr": "大城主府"
+	},
+	{
+		"id": "-1000011031",
+		"key": "estate_palace_3",
+		"en|ch|tc|kr": "城主宮"
+	},
+	{
+		"id": "-1000011032",
+		"key": "estate_palace_4",
+		"en|ch|tc|kr": "瓊楼"
+	},
+	{
+		"id": "-1000011033",
+		"key": "estate_palace_5",
+		"en|ch|tc|kr": "天閣"
+	},
+	{
+		"id": "-1000011034",
+		"key": "estate_palace_label",
+		"en|ch|tc|kr": "城主府（レベル{0}）"
+	},
+	{
+		"id": "-1000011036",
+		"key": "estate_palace_budget",
+		"en|ch|tc|kr": "町の予算では {0:#,##0} [icon:zm_lingshi] を払えない。"
+	},
+	{
+		"id": "-1000011038",
+		"key": "log_estate_palace",
+		"en|ch|tc|kr": "{0}：城主府が{1}に拡張された（町の予算 {2:#,##0}）。"
+	},
+	{
+		"id": "-1000011039",
+		"key": "estate_tax_free",
+		"en|ch|tc|kr": "税：免除（あなたの家）\n町の守衛を見る"
+	},
+	{
+		"id": "-1000011040",
+		"key": "estate_house_title",
+		"en|ch|tc|kr": "{0}・{1}"
+	},
+	{
+		"id": "-1000011041",
+		"key": "estate_house_facts",
+		"en|ch|tc|kr": "{0}・繁華度{1}・家レベル{2}・税 {3:#,##0}/月"
+	},
+	{
+		"id": "-1000011042",
+		"key": "estate_house_rooms",
+		"en|ch|tc|kr": "部屋：{0}/{1}（家のレベルごとに一室）"
+	},
+	{
+		"id": "-1000011044",
+		"key": "estate_herbs_btn",
+		"en|ch|tc|kr": "薬草を収穫（{0}）"
+	},
+	{
+		"id": "-1000011045",
+		"key": "estate_herbs_done",
+		"en|ch|tc|kr": "薬草{0}株を袋に入れた。"
+	},
+	{
+		"id": "-1000011046",
+		"key": "estate_back_map",
+		"en|ch|tc|kr": "町の地図"
+	},
+	{
+		"id": "-1000011047",
+		"key": "estate_back_house",
+		"en|ch|tc|kr": "家に戻る"
+	},
+	{
+		"id": "-1000011048",
+		"key": "estate_rooms_title",
+		"en|ch|tc|kr": "部屋"
+	},
+	{
+		"id": "-1000011049",
+		"key": "estate_room_1",
+		"en|ch|tc|kr": "静室"
+	},
+	{
+		"id": "-1000011050",
+		"key": "estate_room_2",
+		"en|ch|tc|kr": "演武場"
+	},
+	{
+		"id": "-1000011051",
+		"key": "estate_room_3",
+		"en|ch|tc|kr": "薬園"
+	},
+	{
+		"id": "-1000011052",
+		"key": "estate_room_4",
+		"en|ch|tc|kr": "聚霊陣"
+	},
+	{
+		"id": "-1000011053",
+		"key": "estate_room_5",
+		"en|ch|tc|kr": "祠堂"
+	},
+	{
+		"id": "-1000011054",
+		"key": "estate_room_eff_1",
+		"en|ch|tc|kr": "町で一か月過ごす：修為経験 +段階の{0}%"
+	},
+	{
+		"id": "-1000011055",
+		"key": "estate_room_eff_2",
+		"en|ch|tc|kr": "町で一か月過ごす：錬体 +{0}"
+	},
+	{
+		"id": "-1000011056",
+		"key": "estate_room_eff_3",
+		"en|ch|tc|kr": "毎月薬草{0}株（最大{1}）"
+	},
+	{
+		"id": "-1000011057",
+		"key": "estate_room_eff_4",
+		"en|ch|tc|kr": "町で集める気 +{0}%"
+	},
+	{
+		"id": "-1000011058",
+		"key": "estate_room_eff_5",
+		"en|ch|tc|kr": "家族の生活費 -{0}%"
+	},
+	{
+		"id": "-1000011060",
+		"key": "estate_room_empty",
+		"en|ch|tc|kr": "空き部屋"
+	},
+	{
+		"id": "-1000011061",
+		"key": "estate_room_build",
+		"en|ch|tc|kr": "部屋を建てる"
+	},
+	{
+		"id": "-1000011062",
+		"key": "estate_room_more",
+		"en|ch|tc|kr": "家が大きいほど部屋が多い。"
+	},
+	{
+		"id": "-1000011064",
+		"key": "estate_room_hint",
+		"en|ch|tc|kr": "各部屋は3レベル；静室、演武場、聚霊陣は町で一か月過ごすと効果がある。"
+	},
+	{
+		"id": "-1000011065",
+		"key": "estate_room_noslot",
+		"en|ch|tc|kr": "空き部屋がない：先に家を改築しよう。"
+	},
+	{
+		"id": "-1000011066",
+		"key": "estate_room_max",
+		"en|ch|tc|kr": "この部屋は最高レベルだ。"
+	},
+	{
+		"id": "-1000011067",
+		"key": "log_estate_room",
+		"en|ch|tc|kr": "{0}：{1}レベル{2}が完成（霊石{3:#,##0}）。"
+	},
+	{
+		"id": "-1000011005",
+		"key": "estate_legend",
+		"en|ch|tc|kr": "区ごとの地価と家屋税：{0}。金色：あなたの家、青：修士の家。"
+	},
+	{
+		"id": "-1000011007",
+		"key": "estate_buy_confirm",
+		"en|ch|tc|kr": "{0}の区画（繁栄度 {1}）。\n土地と茅屋：霊票{2:#,##0}枚（= {3:#,##0} [icon:zm_lingshi]）；所持{4:#,##0}枚。\n入城税の代わりに家屋税 {5:#,##0}/月。購入しますか？"
+	},
+	{
+		"id": "-1000011035",
+		"key": "estate_palace_confirm",
+		"en|ch|tc|kr": "城主府レベル{0}：凡人+{1}%、年間予算+{6}%。\n町の予算（{4:#,##0}）から{3:#,##0} [icon:zm_lingshi]で{2}に拡張しますか？その後、凡人+{5}%、年間予算+{7}%。"
+	},
+	{
+		"id": "-1000011037",
+		"key": "estate_palace_info",
+		"en|ch|tc|kr": "城主：{0}。城主府レベル{1}：凡人+{2}%、年間予算+{3}%。"
+	},
+	{
+		"id": "-1000011043",
+		"key": "estate_upgrade_btn",
+		"en|ch|tc|kr": "{0}に改築（境地 {2}）：{1:#,##0}"
+	},
+	{
+		"id": "-1000011059",
+		"key": "estate_room_up",
+		"en|ch|tc|kr": "強化：{0:#,##0}"
+	},
+	{
+		"id": "-1000011063",
+		"key": "estate_room_new",
+		"en|ch|tc|kr": "建造：{0:#,##0}"
+	},
+	{
+		"id": "-1000011068",
+		"key": "estate_buy_room",
+		"en|ch|tc|kr": "この区画には{0}まで建てられる（大きな家ほど周りの区画を使う）。"
+	},
+	{
+		"id": "-1000011069",
+		"key": "estate_noroom",
+		"en|ch|tc|kr": "ここには{0}を建てる余地がない：家の周りに{1} x {2}の区画が必要で、空き地か凡人の家でなければならない（道・水・他人の所有地は不可）。"
+	},
+	{
+		"id": "-1000011070",
+		"key": "estate_upgrade_land",
+		"en|ch|tc|kr": "家の周りの区画を{0}つ追加で使う（地価と凡人の立ち退き料：霊票{1:#,##0}枚、費用に含む）"
+	},
+	{
+		"id": "-1000011071",
+		"key": "estate_terrain_0",
+		"en|ch|tc|kr": "平原"
+	},
+	{
+		"id": "-1000011072",
+		"key": "estate_terrain_1",
+		"en|ch|tc|kr": "川"
+	},
+	{
+		"id": "-1000011073",
+		"key": "estate_terrain_2",
+		"en|ch|tc|kr": "湖"
+	},
+	{
+		"id": "-1000011074",
+		"key": "estate_terrain_3",
+		"en|ch|tc|kr": "森"
+	},
+	{
+		"id": "-1000011075",
+		"key": "estate_wall_line",
+		"en|ch|tc|kr": "城壁レベル{0}：防御 +{1}%"
+	},
+	{
+		"id": "-1000011076",
+		"key": "estate_wall_btn",
+		"en|ch|tc|kr": "城壁レベル{0}（+{1}%）：補強"
+	},
+	{
+		"id": "-1000011077",
+		"key": "estate_wall_confirm",
+		"en|ch|tc|kr": "町の予算（{2:#,##0}）から{1:#,##0} [icon:zm_lingshi]で城壁をレベル{0}に補強しますか？\n攻撃を受けた時の防御 +{3}%。"
+	},
+	{
+		"id": "-1000011078",
+		"key": "log_estate_wall",
+		"en|ch|tc|kr": "{0}：城壁がレベル{1}に補強された（町の予算 {2:#,##0}）。"
+	},
+	{
+		"id": "-1000011079",
+		"key": "estate_roads_0",
+		"en|ch|tc|kr": "十字路"
+	},
+	{
+		"id": "-1000011080",
+		"key": "estate_roads_1",
+		"en|ch|tc|kr": "丁字路"
+	},
+	{
+		"id": "-1000011081",
+		"key": "estate_roads_2",
+		"en|ch|tc|kr": "環状路"
+	},
+	{
+		"id": "-1000011082",
+		"key": "estate_roads_3",
+		"en|ch|tc|kr": "二本の通り"
+	},
+	{
+		"id": "-1000011083",
+		"key": "estate_no_notes",
+		"en|ch|tc|kr": "家・土地・部屋は霊票で支払う：{0:#,##0}枚必要、袋に{1:#,##0}枚。町の銭荘で霊石を両替しよう。"
+	},
+	{
+		"id": "-1000011084",
+		"key": "estate_building_built",
+		"en|ch|tc|kr": "建設済み"
+	},
+	{
+		"id": "-1000011085",
+		"key": "estate_building_none",
+		"en|ch|tc|kr": "この町にはない"
+	},
+	{
+		"id": "-1000011086",
+		"key": "estate_city_btn",
+		"en|ch|tc|kr": "都市に昇格：{0:#,##0}"
+	},
+	{
+		"id": "-1000011087",
+		"key": "estate_info_owner",
+		"en|ch|tc|kr": "修士{0}の{1}、{2}にある（繁栄度 {3}）。毎月町へ家屋税 {4:#,##0}。"
+	},
+	{
+		"id": "-1000011088",
+		"key": "estate_info_grown",
+		"en|ch|tc|kr": "ここの凡人は栄えた：家は{0}に建て替えられた。"
+	},
+	{
+		"id": "-1000011089",
+		"key": "clan_name",
+		"en|ch|tc|kr": "{0}一族"
+	},
+	{
+		"id": "-1000011090",
+		"key": "clan_button",
+		"en|ch|tc|kr": "世家（{0}）"
+	},
+	{
+		"id": "-1000011091",
+		"key": "clan_title",
+		"en|ch|tc|kr": "{0} - 修仙世家"
+	},
+	{
+		"id": "-1000011092",
+		"key": "clan_none",
+		"en|ch|tc|kr": "まだここに根を下ろした修仙世家はない：町に家を持ち家族のいる修士が必要。"
+	},
+	{
+		"id": "-1000011093",
+		"key": "clan_line",
+		"en|ch|tc|kr": "{0}：{1}人、{2}"
+	},
+	{
+		"id": "-1000011094",
+		"key": "clan_relation",
+		"en|ch|tc|kr": "{0} - {1}：{2}（{3}）"
+	},
+	{
+		"id": "-1000011095",
+		"key": "clan_rel_feud",
+		"en|ch|tc|kr": "血の仇"
+	},
+	{
+		"id": "-1000011096",
+		"key": "clan_rel_hostile",
+		"en|ch|tc|kr": "敵対"
+	},
+	{
+		"id": "-1000011097",
+		"key": "clan_rel_neutral",
+		"en|ch|tc|kr": "中立"
+	},
+	{
+		"id": "-1000011098",
+		"key": "clan_rel_allied",
+		"en|ch|tc|kr": "友好"
+	},
+	{
+		"id": "-1000011099",
+		"key": "clan_hint",
+		"en|ch|tc|kr": "関係は一族同士の好感、婚姻、争いで変わる。敵対する世家は喧嘩をし、血の仇は滅族の戦になりうる。"
+	},
+	{
+		"id": "-1000011100",
+		"key": "clan_brawl_ask",
+		"en|ch|tc|kr": "{0}：{1}の{2}が{3}の{4}に喧嘩を売った。助太刀するか？"
+	},
+	{
+		"id": "-1000011101",
+		"key": "clan_war_ask",
+		"en|ch|tc|kr": "{0}：{1}が{3}に攻め込んだ！率いるのは{2}、味方は{4}が迎え撃つ。助太刀するか？"
+	},
+	{
+		"id": "-1000011102",
+		"key": "clan_step_in",
+		"en|ch|tc|kr": "助太刀する"
+	},
+	{
+		"id": "-1000011103",
+		"key": "clan_stay_out",
+		"en|ch|tc|kr": "手を出さない"
+	},
+	{
+		"id": "-1000011104",
+		"key": "clan_won",
+		"en|ch|tc|kr": "勝利：{0}が{1}を制した。"
+	},
+	{
+		"id": "-1000011105",
+		"key": "clan_lost",
+		"en|ch|tc|kr": "敗北：{0}が{1}を制した。"
+	},
+	{
+		"id": "-1000011106",
+		"key": "log_clan_brawl",
+		"en|ch|tc|kr": "{0}：{1}（{2}）が喧嘩で{3}（{4}）を打ち負かした。"
+	},
+	{
+		"id": "-1000011107",
+		"key": "log_clan_brawl_death",
+		"en|ch|tc|kr": "{0}：{1}（{2}）が喧嘩で{3}（{4}）を殺した。"
+	},
+	{
+		"id": "-1000011108",
+		"key": "log_clan_war",
+		"en|ch|tc|kr": "{0}：{1}が世家の戦で{2}を破った。{3}人が倒れ、敗者は屋敷を失った。"
+	},
+	{
+		"id": "-1000011109",
+		"key": "log_clan_extinct",
+		"en|ch|tc|kr": "{0}：{1}は滅ぼされた。"
+	},
+	{
+		"id": "-1000011110",
+		"key": "estate_plot_where",
+		"en|ch|tc|kr": "{0}番の区画（町の地図 {1}列 {2}行）"
+	},
+	{
+		"id": "-1000011111",
+		"key": "estate_mortal_buy_info",
+		"en|ch|tc|kr": "凡人が家を売ってくれる：{0}、霊票{1:#,##0}枚（={2:#,##0}[icon:zm_lingshi]、土地と家屋すべて）；所持{3:#,##0}枚。\n入城税の代わりに毎月家屋税{4:#,##0}；境界{5}が必要。\n後で大きな家にすると周りの区画を使う：拡張の時に一緒に買う（空き地、または凡人の家は地価と家屋の半額）。"
+	},
+	{
+		"id": "-1000011112",
+		"key": "estate_mortal_buy",
+		"en|ch|tc|kr": "この家を買う（霊票{0:#,##0}枚）"
+	},
+	{
+		"id": "-1000011113",
+		"key": "log_estate_buy_mortal",
+		"en|ch|tc|kr": "{0}で凡人の家を購入：{1}（霊石{2:#,##0}）。"
+	},
+	{
+		"id": "-1000011114",
+		"key": "dlg_yes",
+		"en|ch|tc|kr": "はい"
+	},
+	{
+		"id": "-1000011115",
+		"key": "dlg_no",
+		"en|ch|tc|kr": "いいえ"
+	},
+	{
+		"id": "-1000011116",
+		"key": "dlg_ok",
+		"en|ch|tc|kr": "OK"
+	},
+	{
+		"id": "-1000011117",
+		"key": "dlg_close",
+		"en|ch|tc|kr": "閉じる"
+	}
+]

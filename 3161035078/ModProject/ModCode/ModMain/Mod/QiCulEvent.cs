@@ -1,4 +1,5 @@
-﻿using EGameTypeData;
+﻿using MOD_nE7UL2.Helper;
+using EGameTypeData;
 using MOD_nE7UL2.Const;
 using ModLib.Helper;
 using ModLib.Attributes;
@@ -43,7 +44,8 @@ namespace MOD_nE7UL2.Mod
                 var unitId = wunit.GetUnitId();
                 if (!Qi.ContainsKey(unitId))
                     Qi.Add(unitId, 0);
-                Qi[unitId] += (wunit.GetDynProperty(UnitDynPropertyEnum.Sp).value * CommonTool.Random(0.8f, 1.2f) * ticks).Parse<int>();
+                // body refiners (BodyCulEvent) gather less Qi; a spirit gathering array at home (EstateEvent) more
+                Qi[unitId] += (wunit.GetDynProperty(UnitDynPropertyEnum.Sp).value * CommonTool.Random(0.8f, 1.2f) * ticks * BodyCulEvent.QiRate(wunit) * EstateEvent.QiRate(wunit)).Parse<int>();
             }
         }
 
@@ -116,7 +118,7 @@ namespace MOD_nE7UL2.Mod
             Instance.Qi[twunitId] += tqi.Parse<long>();
 
             DramaTool.OpenDrama(QI_TRANSFER_DRAMA);
-            g.ui.MsgBox(GameTool.LS("ui_qi_transfer"), ModTextHelper.LSF("ui_qi_change", oldFqi, Instance.Qi[fwunitId]));
+            InfoDialog.Msg(GameTool.LS("ui_qi_transfer"), ModTextHelper.LSF("ui_qi_change", oldFqi, Instance.Qi[fwunitId]));
         }
     }
 }

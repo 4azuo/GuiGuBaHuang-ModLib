@@ -128,5 +128,20 @@
 		"id": "420109998",
 		"key": "rebirth420109998",
 		"en|ch|tc|kr": "Neu beginnen"
+	},
+	{
+		"id": "420103104",
+		"key": "rebirth_off",
+		"en|ch|tc|kr": "Wiedergeburt ist aus (S&M-Einstellungen)."
+	},
+	{
+		"id": "420103105",
+		"key": "rebirth_need_grade",
+		"en|ch|tc|kr": "Deine Stufe muss über der Stufe deiner letzten Wiedergeburt ({0}) liegen."
+	},
+	{
+		"id": "420103106",
+		"key": "rebirth_need_town",
+		"en|ch|tc|kr": "Die Wiedergeburt geschieht in einer Stadt ab Gebiet {1} (über deiner letzten Wiedergeburt, {0}, und mindestens deine Stufe)."
 	}
 ]

@@ -34,7 +34,7 @@ namespace MOD_nE7UL2.AutoTest.Scenarios.Town
             var lvl1 = SMLocalConfigsEvent.Instance.Calculate(item.propsInfoBase.grade * 100 + item.propsInfoBase.level * 20, SMLocalConfigsEvent.Instance.Configs.AddRefineCost);
             // level = sqrt(exp / lvl1) (CustomRefineEvent.GetRefineLvl): exp = lvl1 x level^2, with a margin
             var needExp = (long)Math.Ceiling(lvl1 * level * level * 1.05) - CustomRefineEvent.GetRefineExp(item);
-            var refine = Math.Max(1, Player.GetDynProperty(UnitDynPropertyEnum.RefineWeapon).value);
+            var refine = Math.Max(1, CustomRefineEvent.RefineSkill(Player, item));
             return Math.Max(1, (long)Math.Ceiling(needExp * (double)CustomRefineEvent.REFINE_EXP_RATE / refine));
         }
 
@@ -99,8 +99,8 @@ namespace MOD_nE7UL2.AutoTest.Scenarios.Town
                     var exp = CustomRefineEvent.GetRefineExp(it);
                     var lvl = CustomRefineEvent.GetRefineLvl(it);
                     var gained = exp - oldExp;
-                    var expected = (long)value * Player.GetDynProperty(UnitDynPropertyEnum.RefineWeapon).value / CustomRefineEvent.REFINE_EXP_RATE;
-                    c.AssertEqual(expected, gained, $"refine exp {oldExp:#,##0} -> {exp:#,##0} (stones x refine weapon / {CustomRefineEvent.REFINE_EXP_RATE})");
+                    var expected = (long)value * CustomRefineEvent.RefineSkill(Player, it) / CustomRefineEvent.REFINE_EXP_RATE;
+                    c.AssertEqual(expected, gained, $"refine exp {oldExp:#,##0} -> {exp:#,##0} (stones x refine skill / {CustomRefineEvent.REFINE_EXP_RATE})");
                     c.Assert(lvl >= oldLvl, $"refine level {oldLvl} -> {lvl}");
                     c.AssertEqual((int)c.Bag["money"] - value, Player.GetUnitMoney(), $"{value:#,##0} spirit stones paid");
                     c.AssertEqual((long)c.Bag["budget"] + value, MapBuildPropertyEvent.GetBuildProperty(BagTown(c)), "paid to the town budget");
@@ -132,7 +132,7 @@ namespace MOD_nE7UL2.AutoTest.Scenarios.Town
                     c.AssertEqual(0L, CustomRefineEvent.GetRefineExp(item), "a new artifact has no refine exp");
                     c.Bag["atk0"] = UnitModifyHelper.GetRefineArtifactAdjAtk(item, 0);
                     c.Bag["def0"] = UnitModifyHelper.GetRefineArtifactAdjDef(item, 0);
-                    c.Assert(Player.GetDynProperty(UnitDynPropertyEnum.RefineWeapon).value > 0, $"player refine weapon skill {Player.GetDynProperty(UnitDynPropertyEnum.RefineWeapon).value} > 0 (else stones give no exp)");
+                    c.Assert(CustomRefineEvent.RefineSkill(Player, item) > 0, $"player refine skill {CustomRefineEvent.RefineSkill(Player, item)} (forge + (talismans + formations) / 2) > 0 (else stones give no exp)");
                 });
             s = Refine(s, "small", () => item, it => STONES);
             s = Refine(s, $"to level {TARGET_LVL}", () => item, it => StonesFor(it, TARGET_LVL));

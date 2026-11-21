@@ -12,7 +12,7 @@ Expertise: every martial art, step, ability and artifact (each item instance, by
 
 ## Switch
 
-`mod_configs.json` > `ExpertConfigs`:
+`expert_configs.json` (`ExpertConfig`; a type left out: its default):
 
 | Key | SkillLeft | SkillRight | Step | Ability | Ultimate |
 |---|---|---|---|---|---|

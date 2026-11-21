@@ -128,5 +128,20 @@
 		"id": "420109998",
 		"key": "rebirth420109998",
 		"en|ch|tc|kr": "Recommencer"
+	},
+	{
+		"id": "420103104",
+		"key": "rebirth_off",
+		"en|ch|tc|kr": "La renaissance est désactivée (réglages S&M)."
+	},
+	{
+		"id": "420103105",
+		"key": "rebirth_need_grade",
+		"en|ch|tc|kr": "Ton rang doit dépasser celui de ta dernière renaissance ({0})."
+	},
+	{
+		"id": "420103106",
+		"key": "rebirth_need_town",
+		"en|ch|tc|kr": "La renaissance se fait dans une ville de zone {1} ou plus (au-dessus de ta dernière renaissance, {0}, et au moins ton rang)."
 	}
 ]

@@ -1,0 +1,357 @@
+[
+	{
+		"id": "-1000015000",
+		"key": "heart_button",
+		"en|ch|tc|kr": "Corazón del Dao"
+	},
+	{
+		"id": "-1000015001",
+		"key": "heart_title",
+		"en|ch|tc|kr": "Corazón del Dao"
+	},
+	{
+		"id": "-1000015002",
+		"key": "heart_npc",
+		"en|ch|tc|kr": "Corazón del Dao: {0}"
+	},
+	{
+		"id": "-1000015003",
+		"key": "heart_lvl_0",
+		"en|ch|tc|kr": "Vacilante"
+	},
+	{
+		"id": "-1000015004",
+		"key": "heart_lvl_1",
+		"en|ch|tc|kr": "Firme"
+	},
+	{
+		"id": "-1000015005",
+		"key": "heart_lvl_2",
+		"en|ch|tc|kr": "Sólido"
+	},
+	{
+		"id": "-1000015006",
+		"key": "heart_lvl_3",
+		"en|ch|tc|kr": "Inquebrantable"
+	},
+	{
+		"id": "-1000015007",
+		"key": "heart_lvl_4",
+		"en|ch|tc|kr": "Corazón de diamante"
+	},
+	{
+		"id": "-1000015008",
+		"key": "heart_lvl_5",
+		"en|ch|tc|kr": "Corazón del Cielo"
+	},
+	{
+		"id": "-1000015009",
+		"key": "heart_value",
+		"en|ch|tc|kr": "[icon:xinqing] Corazón del Dao {0:#,##0} / {1:#,##0}"
+	},
+	{
+		"id": "-1000015010",
+		"key": "heart_value_top",
+		"en|ch|tc|kr": "[icon:xinqing] Corazón del Dao {0:#,##0} (nivel máximo: el resto se vuelve esencia)"
+	},
+	{
+		"id": "-1000015011",
+		"key": "heart_essence",
+		"en|ch|tc|kr": "[icon:daodian] Esencia del corazón {0:#,##0} ({1} pasos): [icon:nianli] PE máx. +{2} %"
+	},
+	{
+		"id": "-1000015012",
+		"key": "heart_effects",
+		"en|ch|tc|kr": "[icon:nianli] PE máx. +{0} %, [icon:lingli] PM máx. +{1} %; [icon:huxin] demonio interior vencido {2:0} %, [icon:jingli] avance corporal +{3:0}, [icon:hudun] contragolpes y accidentes -{4:0} %"
+	},
+	{
+		"id": "-1000015013",
+		"key": "heart_level_line",
+		"en|ch|tc|kr": "{0}: {1:#,##0} - [icon:nianli] PE +{2} %, [icon:lingli] PM +{3} %, [icon:huxin] demonio interior {4:0} %"
+	},
+	{
+		"id": "-1000015014",
+		"key": "heart_help",
+		"en|ch|tc|kr": "Sube: demonios interiores vencidos, promesas cumplidas, retiros, avances, buen ánimo. Baja: demonios perdidos, traición, promesas rotas, fracasos, mal ánimo."
+	},
+	{
+		"id": "-1000015015",
+		"key": "log_heart_up",
+		"en|ch|tc|kr": "Corazón del Dao +{0}: {1}."
+	},
+	{
+		"id": "-1000015016",
+		"key": "log_heart_down",
+		"en|ch|tc|kr": "Corazón del Dao -{0}: {1}."
+	},
+	{
+		"id": "-1000015017",
+		"key": "log_heart_level",
+		"en|ch|tc|kr": "Corazón del Dao: {0}."
+	},
+	{
+		"id": "-1000015018",
+		"key": "heart_src_betrayal",
+		"en|ch|tc|kr": "un lazo traicionado"
+	},
+	{
+		"id": "-1000015019",
+		"key": "heart_src_demon_win",
+		"en|ch|tc|kr": "un demonio interior vencido"
+	},
+	{
+		"id": "-1000015020",
+		"key": "heart_src_demon_lose",
+		"en|ch|tc|kr": "vencido por un demonio interior"
+	},
+	{
+		"id": "-1000015021",
+		"key": "heart_src_seclusion",
+		"en|ch|tc|kr": "un retiro"
+	},
+	{
+		"id": "-1000015022",
+		"key": "heart_src_break_ok",
+		"en|ch|tc|kr": "un avance corporal"
+	},
+	{
+		"id": "-1000015023",
+		"key": "heart_src_break_fail",
+		"en|ch|tc|kr": "un avance fallido"
+	},
+	{
+		"id": "-1000015024",
+		"key": "heart_src_promise_kept",
+		"en|ch|tc|kr": "una promesa cumplida"
+	},
+	{
+		"id": "-1000015025",
+		"key": "heart_src_promise_broken",
+		"en|ch|tc|kr": "una promesa rota"
+	},
+	{
+		"id": "-1000015026",
+		"key": "sense_button",
+		"en|ch|tc|kr": "Sentido espiritual"
+	},
+	{
+		"id": "-1000015027",
+		"key": "sense_title",
+		"en|ch|tc|kr": "Sentido espiritual"
+	},
+	{
+		"id": "-1000015028",
+		"key": "sense_npc",
+		"en|ch|tc|kr": "Sentido espiritual: {0}"
+	},
+	{
+		"id": "-1000015029",
+		"key": "sense_lvl_0",
+		"en|ch|tc|kr": "Latente"
+	},
+	{
+		"id": "-1000015030",
+		"key": "sense_lvl_1",
+		"en|ch|tc|kr": "Percepción espiritual"
+	},
+	{
+		"id": "-1000015031",
+		"key": "sense_lvl_2",
+		"en|ch|tc|kr": "Pensamiento divino"
+	},
+	{
+		"id": "-1000015032",
+		"key": "sense_lvl_3",
+		"en|ch|tc|kr": "Sentido más allá del cuerpo"
+	},
+	{
+		"id": "-1000015033",
+		"key": "sense_lvl_4",
+		"en|ch|tc|kr": "Dominio del sentido"
+	},
+	{
+		"id": "-1000015034",
+		"key": "sense_lvl_5",
+		"en|ch|tc|kr": "Sentido del Cielo"
+	},
+	{
+		"id": "-1000015035",
+		"key": "sense_exp",
+		"en|ch|tc|kr": "[icon:nianli] Sentido espiritual {0:#,##0} / {1:#,##0}"
+	},
+	{
+		"id": "-1000015036",
+		"key": "sense_exp_top",
+		"en|ch|tc|kr": "[icon:nianli] Sentido espiritual {0:#,##0} (nivel máximo: el resto se vuelve esencia)"
+	},
+	{
+		"id": "-1000015039",
+		"key": "sense_scan_done",
+		"en|ch|tc|kr": "Ya rastreaste los alrededores este mes."
+	},
+	{
+		"id": "-1000015040",
+		"key": "sense_scan_button",
+		"en|ch|tc|kr": "[icon:fanwei] Rastrear los alrededores ({0} casillas, +{1} exp., una vez al mes)"
+	},
+	{
+		"id": "-1000015041",
+		"key": "sense_scan_result",
+		"en|ch|tc|kr": "Tu sentido se extiende: {0} cultivadores cerca, {1} hostiles; el más fuerte es {2} (grado {3}). Hierbas de las casillas: {4:#,##0}, minerales: {5:#,##0}."
+	},
+	{
+		"id": "-1000015043",
+		"key": "sense_help",
+		"en|ch|tc|kr": "Exp. cada mes (según el talento), en retiro, por demonios vencidos y por un rastreo al mes."
+	},
+	{
+		"id": "-1000015044",
+		"key": "log_sense_level",
+		"en|ch|tc|kr": "Sentido espiritual: {0}."
+	},
+	{
+		"id": "-1000015045",
+		"key": "log_sense_ambush",
+		"en|ch|tc|kr": "Tu sentido espiritual notó que {0} se acercaba: te escabulliste."
+	},
+	{
+		"id": "-1000015046",
+		"key": "sense_ambush",
+		"en|ch|tc|kr": "En el borde de tu sentido espiritual se agita una intención asesina: {0}, un cazarrecompensas, acecha más adelante. Te desvías antes de que te vea."
+	},
+	{
+		"id": "-1000015047",
+		"key": "sense_scan_spot",
+		"en|ch|tc|kr": "El/la {0} más cercano/a: {1} casillas al {2}."
+	},
+	{
+		"id": "-1000015048",
+		"key": "sense_dir_0",
+		"en|ch|tc|kr": "norte"
+	},
+	{
+		"id": "-1000015049",
+		"key": "sense_dir_1",
+		"en|ch|tc|kr": "noreste"
+	},
+	{
+		"id": "-1000015050",
+		"key": "sense_dir_2",
+		"en|ch|tc|kr": "este"
+	},
+	{
+		"id": "-1000015051",
+		"key": "sense_dir_3",
+		"en|ch|tc|kr": "sureste"
+	},
+	{
+		"id": "-1000015052",
+		"key": "sense_dir_4",
+		"en|ch|tc|kr": "sur"
+	},
+	{
+		"id": "-1000015053",
+		"key": "sense_dir_5",
+		"en|ch|tc|kr": "suroeste"
+	},
+	{
+		"id": "-1000015054",
+		"key": "sense_dir_6",
+		"en|ch|tc|kr": "oeste"
+	},
+	{
+		"id": "-1000015055",
+		"key": "sense_dir_7",
+		"en|ch|tc|kr": "noroeste"
+	},
+	{
+		"id": "-1000015037",
+		"key": "sense_essence",
+		"en|ch|tc|kr": "[icon:daodian] Esencia del sentido {0:#,##0} ({1} pasos): [icon:nianli] PE máx. +{2} %"
+	},
+	{
+		"id": "-1000015038",
+		"key": "sense_effects",
+		"en|ch|tc|kr": "[icon:nianli] PE máx. +{0} %, [icon:lingli] PM máx. +{1} %; [icon:shanbiD] emboscadas percibidas {2:0} %, [icon:huxin] demonios interiores -{3:0} %, [icon:fanwei] rastreo {4} casillas; [icon:hudun] emboscadas evitadas: {5}"
+	},
+	{
+		"id": "-1000015042",
+		"key": "sense_level_line",
+		"en|ch|tc|kr": "{0}: {1:#,##0} - [icon:nianli] PE +{2} %, [icon:lingli] PM +{3} %, [icon:shanbiD] emboscada percibida {4:0} %"
+	},
+	{
+		"id": "-1000015056",
+		"key": "sense_scan_title",
+		"en|ch|tc|kr": "Sentido espiritual - Exploración"
+	},
+	{
+		"id": "-1000015057",
+		"key": "sense_scan_summary",
+		"en|ch|tc|kr": "{0} cultivadores cerca, {1} hostiles · hierbas de las casillas {2:#,##0} · minerales {3:#,##0}"
+	},
+	{
+		"id": "-1000015058",
+		"key": "sense_scan_people",
+		"en|ch|tc|kr": "Cultivadores cercanos"
+	},
+	{
+		"id": "-1000015059",
+		"key": "sense_scan_nobody",
+		"en|ch|tc|kr": "Nadie al alcance."
+	},
+	{
+		"id": "-1000015060",
+		"key": "sense_scan_unit",
+		"en|ch|tc|kr": "Grado {0} · {1}"
+	},
+	{
+		"id": "-1000015061",
+		"key": "sense_scan_hostile",
+		"en|ch|tc|kr": "hostil"
+	},
+	{
+		"id": "-1000015062",
+		"key": "sense_scan_neutral",
+		"en|ch|tc|kr": "tranquilo"
+	},
+	{
+		"id": "-1000015063",
+		"key": "sense_scan_more",
+		"en|ch|tc|kr": "... y {0} más"
+	},
+	{
+		"id": "-1000015064",
+		"key": "sense_scan_places",
+		"en|ch|tc|kr": "Lugares"
+	},
+	{
+		"id": "-1000015065",
+		"key": "sense_scan_noplace",
+		"en|ch|tc|kr": "Ningún lugar notable al alcance."
+	},
+	{
+		"id": "-1000015066",
+		"key": "sense_scan_place",
+		"en|ch|tc|kr": "Zona {0} · {1} casillas al {2}"
+	},
+	{
+		"id": "-1000015067",
+		"key": "sense_scan_place_far",
+		"en|ch|tc|kr": "Zona {0} · {1} casillas al {2} (fuera de alcance: el más cercano)"
+	},
+	{
+		"id": "-1000015068",
+		"key": "sense_scan_hint",
+		"en|ch|tc|kr": "Haz clic en un nombre para ver al cultivador."
+	},
+	{
+		"id": "-1000015069",
+		"key": "heart_story",
+		"en|ch|tc|kr": "una historia"
+	},
+	{
+		"id": "-1000015070",
+		"key": "sense_story",
+		"en|ch|tc|kr": "una historia"
+	}
+]

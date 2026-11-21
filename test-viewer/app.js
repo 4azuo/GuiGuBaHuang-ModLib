@@ -25,7 +25,52 @@
   const fmtTime = t => t ? t.replace('T', ' ').slice(0, 16) : '';
   const runTitle = r => `${fmtTime(r.time) || r.id}  -  ${r.id}${r.pin ? '  -  pinned' + (r.pin.note ? ': ' + r.pin.note : '') : ''}`;
 
-  const state = { tab: 'auto', run: {}, filter: 'all', query: '', open: new Set() };
+  const state = { tab: 'auto', run: {}, filter: 'all', query: '', group: 'all', feat: '', sort: 'order', open: new Set() };
+
+  // ------------------------------------------------------------------ sort of the scenario lists
+  const SORTS = [['order', 'Run order'], ['id', 'Id'], ['new', 'Time: newest first'], ['old', 'Time: oldest first']];
+  /** Id compared by its prefix then its number (TG-9 before TG-10). */
+  const idKey = id => { const m = String(id || '').match(/^([A-Z]+)-(\d+)(.*)$/); return m ? [m[1], +m[2], m[3]] : [String(id), 0, '']; };
+  const byId = (a, b) => { const x = idKey(a), y = idKey(b); return x[0].localeCompare(y[0]) || x[1] - y[1] || String(x[2]).localeCompare(String(y[2])); };
+  /** Time of a scenario result: when it started, else the time of its run. */
+  const timeOf = s => s.startedAt || s._time || '';
+  function sortScenarios(list, timeFn) {
+    const l = list.slice();
+    if (state.sort === 'id') l.sort((a, b) => byId(a.id, b.id));
+    else if (state.sort === 'new') l.sort((a, b) => String(timeFn(b)).localeCompare(String(timeFn(a))) || byId(a.id, b.id));
+    else if (state.sort === 'old') l.sort((a, b) => String(timeFn(a)).localeCompare(String(timeFn(b))) || byId(a.id, b.id));
+    return l;
+  }
+  const sortSelect = () => `<select id="sortSelect" class="feat-select" title="Sort of the list">${SORTS.map(([v, t]) => `<option value="${v}" ${state.sort === v ? 'selected' : ''}>${t}</option>`).join('')}</select>`;
+
+  // ------------------------------------------------------------------ groups of scenarios (id prefix) and features
+  const GROUPS = {
+    TT: 'Title screen', TP: 'Pre-test (new character)', TG: 'Game features', TB: 'Battles', TX: 'Time (skips, reform, rebirth)',
+    TS: 'Storylines', TZ: 'End of the character', TE: 'Effect galleries (tool)', TI: 'Icons (tool)', TR: 'Promotion (tool)',
+  };
+  const groupOf = id => String(id || '').split('-')[0];
+  /** Group + feature filters shared by the autotest and status tabs. */
+  function groupMatches(id, feature) {
+    if (state.group !== 'all' && groupOf(id) !== state.group) return false;
+    if (state.feat && String(feature || '') !== state.feat) return false;
+    return true;
+  }
+  /** Group chips (with counts) and the feature list for a list of {id, feature}. */
+  function groupBar(items) {
+    const counts = {}, feats = {};
+    items.forEach(x => {
+      const g = groupOf(x.id); counts[g] = (counts[g] || 0) + 1;
+      if (state.group === 'all' || g === state.group) feats[x.feature || '-'] = (feats[x.feature || '-'] || 0) + 1;
+    });
+    const order = Object.keys(GROUPS).concat(Object.keys(counts).filter(g => !(g in GROUPS)).sort()).filter(g => counts[g]);
+    const chips = [`<button class="chip ${state.group === 'all' ? 'on' : ''}" data-group="all">All groups <small>${items.length}</small></button>`]
+      .concat(order.map(g => `<button class="chip ${state.group === g ? 'on' : ''}" data-group="${esc(g)}" title="${esc(GROUPS[g] || g)}">${esc(g)} <small>${counts[g]}</small></button>`));
+    const opts = Object.keys(feats).sort((a, b) => a.localeCompare(b)).map(f =>
+      `<option value="${esc(f)}" ${state.feat === f ? 'selected' : ''}>${esc(f)} (${feats[f]})</option>`).join('');
+    return `<div class="toolbar groupbar"><span class="glabel">Group</span>${chips.join('')}
+      <select id="featSelect" class="feat-select" title="Feature (event class) of the scenarios"><option value="">All features</option>${opts}</select>
+      ${state.group !== 'all' || state.feat ? '<button class="link" data-act="clearGroup">&times; clear</button>' : ''}</div>`;
+  }
 
   // scenario definitions (3161035078/tests/scenarios.json) by id; run ids may carry a suffix ("TB-01#2")
   const DEFS = {};
@@ -52,6 +97,9 @@
     if (p.get('run')) state.run[state.tab] = p.get('run');
     if (p.get('sc')) state.open.add(p.get('sc'));
     if (p.get('q')) state.query = p.get('q');
+    if (p.get('group')) state.group = p.get('group');
+    if (p.get('feat')) state.feat = p.get('feat');
+    if (p.get('sort')) state.sort = p.get('sort');
     if (p.get('logs')) state.logsOpen = true;
     if (p.get('sc') && p.get('img') != null) state.openImg = { sc: p.get('sc'), i: +p.get('img') };
   }
@@ -59,6 +107,9 @@
     const p = new URLSearchParams();
     p.set('tab', state.tab);
     if (state.run[state.tab]) p.set('run', state.run[state.tab]);
+    if (state.group !== 'all') p.set('group', state.group);
+    if (state.feat) p.set('feat', state.feat);
+    if (state.sort !== 'order') p.set('sort', state.sort);
     history.replaceState(null, '', '#' + p.toString());
   }
 
@@ -127,6 +178,7 @@
   function scenarioMatches(s) {
     const st = label(s.status);
     if (state.filter !== 'all' && st !== state.filter) return false;
+    if (!groupMatches(s.id, s.feature)) return false;
     if (!state.query) return true;
     const q = state.query.toLowerCase();
     return [s.id, s.feature, s.title, (defOf(s.id) || {}).description].some(x => String(x || '').toLowerCase().includes(q)) ||
@@ -143,7 +195,7 @@
     const defs = (DATA.definitions || []);
     const executed = new Set((r.scenarios || []).map(s => s.id.split('#')[0]));
     const notRun = defs.filter(d => d.kind === 'auto' && !executed.has(d.id));
-    const rows = (r.scenarios || []).filter(scenarioMatches).map(renderScenarioRow).join('');
+    const rows = sortScenarios((r.scenarios || []).filter(scenarioMatches), timeOf).map(renderScenarioRow).join('');
     return `
       <div class="card">
         <div class="summary">
@@ -170,15 +222,17 @@
         </div>
       </div>
       <div class="card">
-        <div class="card-head">
-          <h2>Scenarios</h2>
+        <div class="card-head sticky-head">
+          <h2>Scenarios <small class="count">${(r.scenarios || []).filter(scenarioMatches).length} / ${(r.scenarios || []).length}</small></h2>
           <div class="toolbar">
             ${['all', 'NG', 'OK', 'SKIP'].map(f => `<button class="chip ${state.filter === f ? 'on' : ''}" data-filter="${f}">${f === 'all' ? 'All' : f}</button>`).join('')}
             <input class="search" id="search" placeholder="Search id, feature, description, check..." value="${esc(state.query)}">
+            ${sortSelect()}
             ${listActs()}
           </div>
+          ${groupBar((r.scenarios || []).map(s => ({ id: s.id, feature: s.feature })))}
         </div>
-        <table class="rows">
+        <table class="rows sticky-rows">
           <thead><tr><th></th><th>Id</th><th>Result</th><th>Feature / scenario</th><th class="num">Checks</th><th class="cam">Evidence</th></tr></thead>
           <tbody>${rows || '<tr><td colspan="6" class="noshot">No scenario matches.</td></tr>'}</tbody>
         </table>
@@ -348,7 +402,7 @@
           <div class="toolbar">${['all', 'NG', 'OK', 'SKIP'].map(f => `<button class="chip ${state.filter === f ? 'on' : ''}" data-filter="${f}">${f === 'all' ? 'All' : f}</button>`).join('')}
           <input class="search" id="search" placeholder="Search test, description, values..." value="${esc(state.query)}">${listActs()}</div>
           </div>
-        <table class="rows"><thead><tr><th></th><th>Result</th><th>Test</th><th>Category</th><th class="num">Time</th></tr></thead>
+        <table class="rows sticky-rows"><thead><tr><th></th><th>Result</th><th>Test</th><th>Category</th><th class="num">Time</th></tr></thead>
         <tbody>${body || '<tr><td colspan="5" class="noshot">No test matches.</td></tr>'}</tbody></table>
       </div>`;
   }
@@ -386,6 +440,7 @@
     return (DATA.definitions || []).filter(d => {
       const st = (status[d.id] || {}).result || '-';
       if (state.filter !== 'all' && !(state.filter === '-' ? st === '-' : st === state.filter)) return false;
+      if (!groupMatches(d.id, d.feature)) return false;
       return !q || [d.id, d.feature, d.title, d.description].some(x => String(x || '').toLowerCase().includes(q));
     });
   }
@@ -400,7 +455,7 @@
       const st = sc.some(s => ['FAIL', 'ERROR', 'RUNNING'].includes(s.status)) ? 'NG' : sc.some(s => s.status === 'PASS') ? 'OK' : 'SKIP';
       return `<i class="c-${st}" title="${esc(r.id)}: ${st}"></i>`;
     }).join('');
-    const list = statusDefs();
+    const list = sortScenarios(statusDefs(), d => (status[d.id] || {}).lastRun || '');
     const counts = { OK: 0, NG: 0, SKIP: 0, '-': 0 };
     defs.forEach(d => { const st = (status[d.id] || {}).result || '-'; counts[st in counts ? st : '-']++; });
     const body = list.map(d => {
@@ -423,10 +478,10 @@
         <div class="bar"><small>Latest result of every scenario id (<code>3161035078/tests/scenario-status.json</code>).
           Result by hand: <code>scripts\\game\\set-scenario-status.ps1 -Id TG-45 -Result OK</code>. History: last ${runs.length} autotest runs.</small></div>
       </div></div>
-      <div class="card"><div class="card-head"><h2>Scenarios (${list.length})</h2>
+      <div class="card"><div class="card-head sticky-head"><h2>Scenarios <small class="count">${list.length} / ${defs.length}</small></h2>
         <div class="toolbar">${[['all', 'All'], ['NG', 'NG'], ['OK', 'OK'], ['SKIP', 'SKIP'], ['-', 'Not tested']].map(([f, t]) => `<button class="chip ${state.filter === f ? 'on' : ''}" data-filter="${f}">${t}</button>`).join('')}
-        <input class="search" id="search" placeholder="Search..." value="${esc(state.query)}">${listActs()}</div></div>
-        <table class="rows"><thead><tr><th></th><th>Id</th><th>Latest</th><th>Scenario</th><th>History</th><th>Last run</th></tr></thead><tbody>${body}</tbody></table>
+        <input class="search" id="search" placeholder="Search..." value="${esc(state.query)}">${sortSelect()}${listActs()}</div>${groupBar(defs)}</div>
+        <table class="rows sticky-rows"><thead><tr><th></th><th>Id</th><th>Latest</th><th>Scenario</th><th>History</th><th>Last run</th></tr></thead><tbody>${body}</tbody></table>
       </div>`;
   }
 
@@ -443,8 +498,17 @@
     $('#generated').textContent = 'Data generated ' + fmtTime(DATA.generatedAt);
     renderRunPicker();
     $('#view').innerHTML = state.tab === 'unit' ? renderUnit() : state.tab === 'status' ? renderStatus() : state.tab === 'modlog' ? renderModLogs() : renderAuto();
+    stickyOffsets();
     writeHash();
   }
+
+  /** The list toolbar sticks under the page header, the table header under the toolbar: their heights as CSS variables. */
+  function stickyOffsets() {
+    const top = $('.top'), head = $('.sticky-head');
+    document.documentElement.style.setProperty('--top-h', (top ? top.offsetHeight : 0) + 'px');
+    document.documentElement.style.setProperty('--head-h', (head ? head.offsetHeight : 0) + 'px');
+  }
+  window.addEventListener('resize', stickyOffsets);
 
   function keepSearchFocus(fn) {
     const el = $('#search'), pos = el ? el.selectionStart : null, had = document.activeElement === el;
@@ -456,13 +520,15 @@
   document.addEventListener('click', e => {
     const t = e.target;
     const tabBtn = t.closest('#tabs button');
-    if (tabBtn) { state.tab = tabBtn.dataset.tab; state.filter = 'all'; state.query = ''; render(); return; }
+    if (tabBtn) { state.tab = tabBtn.dataset.tab; state.filter = 'all'; state.query = ''; state.group = 'all'; state.feat = ''; render(); return; }
     const go = t.closest('[data-gorun]');
     if (go) { e.stopPropagation(); state.run.auto = go.dataset.gorun; state.open.clear(); render(); window.scrollTo(0, 0); return; }
     const hist = t.closest('#history span');
     if (hist) { state.run[state.tab] = hist.dataset.run; state.open.clear(); render(); return; }
     const chip = t.closest('[data-filter]');
     if (chip) { state.filter = chip.dataset.filter; render(); return; }
+    const gchip = t.closest('[data-group]');
+    if (gchip) { state.group = gchip.dataset.group; state.feat = ''; render(); return; }
     const act = t.closest('[data-act]');
     if (act) {
       if (act.dataset.act === 'expandAll') {
@@ -470,6 +536,7 @@
         else if (state.tab === 'unit') { const u = currentRun('unit'); if (u) u.tests.filter(t => unitTestMatches(t) && (t.message || t.output || t.description)).forEach(x => state.open.add('u:' + x.className + '.' + x.name)); }
         else if (state.tab === 'status') statusDefs().forEach(d => state.open.add('s:' + d.id));
       }
+      else if (act.dataset.act === 'clearGroup') { state.group = 'all'; state.feat = ''; }
       else state.open.clear();
       const y = window.scrollY; render(); window.scrollTo(0, y); return;
     }
@@ -484,6 +551,10 @@
     if (row) { const k = row.dataset.sc; state.open.has(k) ? state.open.delete(k) : state.open.add(k); render(); }
   });
   $('#runSelect').addEventListener('change', e => { state.run[state.tab] = e.target.value; state.open.clear(); render(); });
+  document.addEventListener('change', e => {
+    if (e.target.id === 'featSelect') { state.feat = e.target.value; render(); }
+    if (e.target.id === 'sortSelect') { state.sort = e.target.value; render(); }
+  });
   document.addEventListener('input', e => {
     if (e.target.id === 'search') { state.query = e.target.value; keepSearchFocus(render); }
     if (e.target.id === 'mlSearch' || e.target.id === 'mlErrOnly') {

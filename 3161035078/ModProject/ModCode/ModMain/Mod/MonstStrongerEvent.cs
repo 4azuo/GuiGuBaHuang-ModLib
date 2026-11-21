@@ -7,7 +7,6 @@ using ModLib.Mod;
 using System.Collections.Generic;
 using UnityEngine;
 using ModLib.Helper;
-using static MOD_nE7UL2.Object.ModStts;
 
 namespace MOD_nE7UL2.Mod
 {
@@ -18,7 +17,7 @@ namespace MOD_nE7UL2.Mod
     public class MonstStrongerEvent : ModEvent
     {
         public static MonstStrongerEvent Instance { get; set; }
-        public static _MonstStrongerConfigs Configs => ModMain.ModObj.ModSettings.MonstStrongerConfigs;
+        public static MonstStrongerConfig Configs => MonstStrongerConfig.Conf;
         //public static IDictionary<MonstType, float> AdditionalStts { get; set; } = new Dictionary<MonstType, float>
         //{
         //    [MonstType.Common] = 2.00f,

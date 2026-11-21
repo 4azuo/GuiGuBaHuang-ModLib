@@ -32,7 +32,7 @@ The S&M ("sadism & masochism") difficulty configs, edited in the "S&M Configs" w
 | `EnableTrainer` | off | -1,000,000 | [TrainerEvent](TrainerEvent.md) |
 | `AllFunctionsApplyToNearestUnits` | off | -1,000 | [PrepareEvent](PrepareEvent.md) |
 
-Buttons: Export (save dialog, copies the global cache file), Import (open dialog, replaces and reloads; unreadable file -> `ui_file_errors`), open the save data folder, open `mod_configs.json` in Notepad.
+Buttons: Export (save dialog, copies the global cache file), Import (open dialog, replaces and reloads; unreadable file -> `ui_file_errors`), open the save data folder, open the ModConf folder (Explorer: `mod_configs.json` and the `*_configs.json` settings files of the features).
 
 ### Page 2 (economy, market, systems)
 
@@ -81,9 +81,41 @@ Turning off a feature that helps the player costs points; turning off one that h
 | `NoFamily` | +2,000 | [FamilyEvent](FamilyEvent.md), [FamilyFundEvent](FamilyFundEvent.md) |
 | `AllowSameSexCouple`, `ChildSurname` (father / mother / random) | 0 | FamilyEvent |
 | `ContinueAsDescendant` | -10,000 (family on) | FamilyEvent |
+
+**Cultivation paths** (section `smcfgs197`, 6.0): on / off on the left, how fast each path grows on the right. A gain
+rate is added to x1 (-0.5 .. +2: half .. three times) and applied where the path gains (`SMGlobalConfigsEvent.Rate`):
+`BodyCulEvent.AddExp`, `MeritEvent.Add` (merit only, not karma), `ArtisanEvent.AddExp`, `DaoHeartEvent.Add` (gains
+only), `SpiritSenseEvent.AddExp`.
+
+| Option | Score | Used by |
+|---|---|---|
+| `NoBodyCultivation` | +1,000 | [BodyCulEvent](BodyCulEvent.md) |
+| `NoMerit` | +500 | [MeritEvent](MeritEvent.md) |
+| `NoArtisan` | +500 | [ArtisanEvent](ArtisanEvent.md) |
+| `NoDaoHeart` | +500 | [DaoHeartEvent](DaoHeartEvent.md) |
+| `NoSpiritSense` | +500 | [SpiritSenseEvent](SpiritSenseEvent.md) |
+| `BodyExpRate`, `MeritRate`, `ArtisanExpRate`, `DaoHeartRate`, `SpiritSenseRate` (-0.5 .. 2, default 0) | `-rate x 300` each (its path on) | the path |
+
+**Estates** (section `smcfgs198`, 6.0):
+
+| Option | Score | Used by |
+|---|---|---|
+| `NoEstate` | +500 | [EstateEvent](EstateEvent.md): no "Plots" button (town window, town management), NPCs buy no house (`EstateEvent.Enabled`); houses already owned stay |
+| `NoNpcHouses` | 0 | EstateEvent: NPCs buy and upgrade no house (`EstateEvent.NpcHouses`) |
+| `EstatePriceRate` (-0.5 .. 3, default 0) | `rate x 500` (estates on) | EstateEvent: land and building prices x (1 + rate) (`LandPrice`, `BuildCost`: also the upgrades and the mortal houses bought back) |
+| `EstateTaxRate` (-1 .. 3, default 0) | `rate x 500` (estates on) | EstateEvent: house tax x (1 + rate) |
+
+Page 3 shows a hint of the features under the sliders, wrapped by `WrapText` (about 80 Latin characters; a CJK
+character counts as 2 and may be split between two CJK characters).
+
+### Page 4 (NPC storylines)
+
+| Option | Score | Used by |
+|---|---|---|
 | `NoStory` | +1,000 | StoryEvent (`ModMain/Story/`) |
 
-Page 3 shows a hint of the features under the sliders and one line per storyline A-L under "No NPC storylines" (`smcfgs169-174`, `smcfgs186-191`), wrapped by `WrapText` (about 140 / 80 Latin characters; a CJK character counts as 2 and may be split between two CJK characters).
+One line per storyline A-P under "No NPC storylines" (`smcfgs169-174`, `smcfgs186-191`, `smcfgs208-211`), wrapped
+by `WrapText` (about 140 Latin characters).
 
 ## Presets (right column)
 

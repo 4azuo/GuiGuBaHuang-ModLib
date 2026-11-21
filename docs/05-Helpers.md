@@ -40,7 +40,7 @@ Reusable utility functions in `Helper/` folder.
 - **TranslateHelper** - Translation and localization
 
 **Drama & Dialogue:**
-- **DramaHelper** - Dialogue and drama system (read and drive an open drama: `GetOpenDrama()`, `GetDramaText()`, `GetDramaOptions()`, `ChooseDramaOption(label)`, `NextDramaLine()`, `DismissDramas()`; `OpenDrama1(text, options, callback, left, right, speaker)`: `speaker` 1 or 2 lights the left or right portrait and dims the other, 0 both lit; 1 to 4 options use dialogues with exactly that many options, so a single "Continue" is a real button that calls the callback)
+- **DramaHelper** - Dialogue and drama system (read and drive an open drama: `GetOpenDrama()`, `GetDramaText()`, `GetDramaOptions()`, `ChooseDramaOption(label)`, `NextDramaLine()`, `DismissDramas()`; `OpenDrama1(text, options, callback, left, right, speaker)`: `speaker` 1 or 2 lights the left or right portrait and dims the other, 0 both lit; 1 to 9 options use dialogues with exactly that many options (ModLib `dramaDialogue.json` 999890011-19 type 1, 999890021-29 type 2; 5-9 added in 2.2.34: the default dialogue showed no option at all), so a single "Continue" is a real button that calls the callback)
 - **PortraitHelper** - Characters drawn with the game's portrait model into a RawImage (`Draw(parent, looks or unit, size, pos)`, `DrawOnScreen(looks, heightShare)` on its own overlay canvas, `RandomModelData(sex)` random looks without a world); the art goes from the head to the thighs; the texture takes the size of the RawImage when drawing
 - **TextIconHelper** - Icons in texts: `[icon:NAME]` tokens of the localTexts become `<sprite name=NAME>` at load; `Text.Set` shows a text with a sprite through a TextMeshPro twin of the Text (rules in README, "LocalText - Rules")
 
@@ -59,3 +59,11 @@ Reusable utility functions in `Helper/` folder.
 **Development:**
 - **TraceHelper** - Execution tracing
 - **ExceptionHelper** - Exception handling utilities
+
+## Taoist: `InfoDialog` (`3161035078/.../Helper/InfoDialog.cs`)
+
+Message windows of the Taoist mod; every `g.ui.MsgBox` of `Mod/` goes through it. `InfoDialog.Msg(title, text)` and
+`Msg(title, text, MsgBoxButtonEnum.YesNo, yes)` keep the game's message box for a short text (90 characters or less, one
+line) and open a text window (UITextInfo, `UICustom2`) for a longer one: the text wrapped by words (by characters in
+Chinese / Japanese / Thai), the buttons under it (Yes / No, OK). `InfoDialog.Show(title, text, (label, action)...)` opens
+the text window with any buttons (a button closes the window then runs its action). `LastText` for tests.

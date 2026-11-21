@@ -1,0 +1,16 @@
+{
+	"__name": "Custom refine (CustomRefineEvent)",
+	"__help": [
+		"A value left out (or a broken file): the default of the mod.",
+		"LevelRates: chance in % of the quality of a refine slot; total = 100. Names: Common, Uncommon, Rare, Myst, Lgendary, Beast, Antique."
+	],
+	"LevelRates": {
+		"Common": 30.0,
+		"Uncommon": 20.0,
+		"Rare": 20.0,
+		"Myst": 16.0,
+		"Lgendary": 8.0,
+		"Beast": 4.0,
+		"Antique": 2.0
+	}
+}

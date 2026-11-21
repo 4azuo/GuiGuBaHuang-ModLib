@@ -1,0 +1,106 @@
+[
+	{
+		"id": "484410200",
+		"key": "item_name484410200",
+		"en": "Spirit Banknote",
+		"ch": "灵票",
+		"tc": "靈票",
+		"kr": "영표"
+	},
+	{
+		"id": "-1000012001",
+		"key": "item_desc484410200",
+		"en": "A banknote of the banks worth 10,000 spirit stones. Changed at the bank of a town (for a fee); house, land and rooms are paid with the banknotes in the bag first.",
+		"ch": "钱庄发行的票据，值一万灵石。可在城镇钱庄兑换（需手续费）；购买房屋、地块与房间时优先使用背包中的灵票。",
+		"tc": "錢莊發行的票據，值一萬靈石。可在城鎮錢莊兌換（需手續費）；購買房屋、地塊與房間時優先使用背包中的靈票。",
+		"kr": "은행이 발행한 어음으로 영석 10,000개의 가치가 있다. 마을 은행에서 환전한다(수수료 있음). 집, 땅, 방은 가방 속 영표로 먼저 지불한다."
+	},
+	{
+		"id": "-1000012002",
+		"key": "note_button",
+		"en": "Spirit banknotes",
+		"ch": "灵票",
+		"tc": "靈票",
+		"kr": "영표"
+	},
+	{
+		"id": "-1000012003",
+		"key": "note_title",
+		"en": "Spirit banknotes",
+		"ch": "灵票兑换",
+		"tc": "靈票兌換",
+		"kr": "영표 환전"
+	},
+	{
+		"id": "-1000012004",
+		"key": "note_have",
+		"en": "Spirit stones: {0:#,##0} [icon:zm_lingshi] · Spirit banknotes: {1:#,##0} (1 banknote = {2:#,##0} [icon:zm_lingshi])",
+		"ch": "灵石：{0:#,##0} [icon:zm_lingshi] · 灵票：{1:#,##0}（1张 = {2:#,##0} [icon:zm_lingshi]）",
+		"tc": "靈石：{0:#,##0} [icon:zm_lingshi] · 靈票：{1:#,##0}（1張 = {2:#,##0} [icon:zm_lingshi]）",
+		"kr": "영석: {0:#,##0} [icon:zm_lingshi] · 영표: {1:#,##0} (1장 = {2:#,##0} [icon:zm_lingshi])"
+	},
+	{
+		"id": "-1000012005",
+		"key": "note_fee",
+		"en": "Bank fee {0}%: a banknote costs {1:#,##0} [icon:zm_lingshi], gives back {2:#,##0} [icon:zm_lingshi]",
+		"ch": "钱庄手续费 {0}%：买一张 {1:#,##0} [icon:zm_lingshi]，换回 {2:#,##0} [icon:zm_lingshi]",
+		"tc": "錢莊手續費 {0}%：買一張 {1:#,##0} [icon:zm_lingshi]，換回 {2:#,##0} [icon:zm_lingshi]",
+		"kr": "은행 수수료 {0}%: 1장 구매 {1:#,##0} [icon:zm_lingshi], 환급 {2:#,##0} [icon:zm_lingshi]"
+	},
+	{
+		"id": "-1000012006",
+		"key": "note_hint",
+		"en": "Spirit stones are limited to 2,147,483,647; keep big sums in banknotes (in the bag or the storage).",
+		"ch": "灵石上限为 2,147,483,647；大额财富请以灵票保存（背包或仓库）。",
+		"tc": "靈石上限為 2,147,483,647；大額財富請以靈票保存（背包或倉庫）。",
+		"kr": "영석은 최대 2,147,483,647개까지다. 큰 돈은 영표로 보관하라(가방 또는 창고)."
+	},
+	{
+		"id": "-1000012007",
+		"key": "note_buy",
+		"en": "Buy {0}",
+		"ch": "买 {0} 张",
+		"tc": "買 {0} 張",
+		"kr": "{0}장 구매"
+	},
+	{
+		"id": "-1000012008",
+		"key": "note_sell",
+		"en": "Change back {0}",
+		"ch": "兑回 {0} 张",
+		"tc": "兌回 {0} 張",
+		"kr": "{0}장 환전"
+	},
+	{
+		"id": "-1000012009",
+		"key": "note_buy_max",
+		"en": "Buy all I can",
+		"ch": "尽量购买",
+		"tc": "盡量購買",
+		"kr": "최대 구매"
+	},
+	{
+		"id": "-1000012010",
+		"key": "note_sell_all",
+		"en": "Change back all",
+		"ch": "全部兑回",
+		"tc": "全部兌回",
+		"kr": "전부 환전"
+	},
+	{
+		"id": "-1000012011",
+		"key": "note_buy_fail",
+		"en": "Not enough spirit stones.",
+		"ch": "灵石不足。",
+		"tc": "靈石不足。",
+		"kr": "영석이 부족하다."
+	},
+	{
+		"id": "-1000012012",
+		"key": "note_sell_fail",
+		"en": "Not enough banknotes, or the spirit stones would pass their limit.",
+		"ch": "灵票不足，或灵石将超过上限。",
+		"tc": "靈票不足，或靈石將超過上限。",
+		"kr": "영표가 부족하거나 영석이 한도를 넘는다."
+	}
+]

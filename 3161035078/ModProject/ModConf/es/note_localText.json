@@ -1,0 +1,67 @@
+[
+	{
+		"id": "484410200",
+		"key": "item_name484410200",
+		"en|ch|tc|kr": "Billete espiritual"
+	},
+	{
+		"id": "-1000012001",
+		"key": "item_desc484410200",
+		"en|ch|tc|kr": "Un billete de los bancos que vale 10.000 piedras espirituales. Se cambia en el banco de un pueblo (con comisión); casa, terreno y salas se pagan primero con los billetes de la bolsa."
+	},
+	{
+		"id": "-1000012002",
+		"key": "note_button",
+		"en|ch|tc|kr": "Billetes espirituales"
+	},
+	{
+		"id": "-1000012003",
+		"key": "note_title",
+		"en|ch|tc|kr": "Billetes espirituales"
+	},
+	{
+		"id": "-1000012004",
+		"key": "note_have",
+		"en|ch|tc|kr": "Piedras espirituales: {0:#,##0} [icon:zm_lingshi] · Billetes: {1:#,##0} (1 billete = {2:#,##0} [icon:zm_lingshi])"
+	},
+	{
+		"id": "-1000012005",
+		"key": "note_fee",
+		"en|ch|tc|kr": "Comisión del banco {0}%: un billete cuesta {1:#,##0} [icon:zm_lingshi], devuelve {2:#,##0} [icon:zm_lingshi]"
+	},
+	{
+		"id": "-1000012006",
+		"key": "note_hint",
+		"en|ch|tc|kr": "Las piedras espirituales tienen un límite de 2.147.483.647; guarda las grandes sumas en billetes (bolsa o almacén)."
+	},
+	{
+		"id": "-1000012007",
+		"key": "note_buy",
+		"en|ch|tc|kr": "Comprar {0}"
+	},
+	{
+		"id": "-1000012008",
+		"key": "note_sell",
+		"en|ch|tc|kr": "Cambiar {0}"
+	},
+	{
+		"id": "-1000012009",
+		"key": "note_buy_max",
+		"en|ch|tc|kr": "Comprar todo lo posible"
+	},
+	{
+		"id": "-1000012010",
+		"key": "note_sell_all",
+		"en|ch|tc|kr": "Cambiar todos"
+	},
+	{
+		"id": "-1000012011",
+		"key": "note_buy_fail",
+		"en|ch|tc|kr": "No hay suficientes piedras espirituales."
+	},
+	{
+		"id": "-1000012012",
+		"key": "note_sell_fail",
+		"en|ch|tc|kr": "No hay suficientes billetes, o las piedras espirituales superarían su límite."
+	}
+]

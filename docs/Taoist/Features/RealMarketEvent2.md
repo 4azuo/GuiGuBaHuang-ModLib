@@ -12,7 +12,7 @@ Buying in a town shop: unit prices follow a monthly buy rate; the money paid goe
 
 ## Switch
 
-`mod_configs.json` > `RealMarketConfigs`: `MinBuyRate` 90, `MaxBuyRate` 115, `TownGReduceBuyRate` -5, `TownMReduceBuyRate` -10, and the market events (HappyNewYear buy +20 in month 1, HappyMidYear buy -25 in month 6).
+`real_market_configs.json` (`RealMarketConfig`): `MinBuyRate` 90, `MaxBuyRate` 115, `TownGReduceBuyRate` -5, `TownMReduceBuyRate` -10, and the market events (HappyNewYear buy +20 in month 1, HappyMidYear buy -25 in month 6).
 
 ## Flow
 

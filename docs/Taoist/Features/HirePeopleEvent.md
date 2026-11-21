@@ -14,7 +14,7 @@ Membership is also marked by the luck `TEAM_LUCK_ID` 420041121 on every member a
 
 ## Switch
 
-`mod_configs.json` > `BattleConfigs.DifferenceRighteous` (80, team-up rule 3).
+`battle_configs.json` > `DifferenceRighteous` (80, team-up rule 3).
 
 ## Constants
 

@@ -1,4 +1,5 @@
-﻿using EGameTypeData;
+﻿using MOD_nE7UL2.Helper;
+using EGameTypeData;
 using MOD_nE7UL2.Const;
 using MOD_nE7UL2.Enum;
 using MOD_nE7UL2.Object;
@@ -18,7 +19,7 @@ using ModLib.Object;
 namespace MOD_nE7UL2.Mod
 {
     /// <summary>
-    /// Custom refine: spend spirit stones on rings/outfits/artifacts/mounts to gain refine exp, refine levels and random adjustment slots.
+    /// Custom refine: spend spirit stones (x refine skill, see RefineSkill) on rings/outfits/artifacts/mounts to gain refine exp, refine levels and random adjustment slots.
     /// </summary>
     [Cache(ModConst.CUSTOM_REFINE_EVENT)]
     public class CustomRefineEvent : ModEvent
@@ -72,7 +73,7 @@ namespace MOD_nE7UL2.Mod
                 return;
             var money = wunit.GetUnitMoney();
             var spend = Convert.ToInt32(Math.Sqrt(money));
-            var exp = spend * wunit.GetDynProperty(UnitDynPropertyEnum.RefineWeapon).value / REFINE_EXP_RATE;
+            var exp = (long)spend * RefineSkill(wunit, item) / REFINE_EXP_RATE;
             AddRefineExp(item, exp);
             wunit.AddUnitMoney(-spend);
             MapBuildPropertyEvent.AddBuildProperty(wunit.GetMapBuild<MapBuildBase>(), spend);
@@ -218,7 +219,7 @@ namespace MOD_nE7UL2.Mod
                     ui.AddButton(ui.MidCol + 8, row, () =>
                     {
                         if (!Reroll(props, index))
-                            g.ui.MsgBox(GameTool.LS("refine_reroll"), GameTool.LS("other500020087"));
+                            InfoDialog.Msg(GameTool.LS("refine_reroll"), GameTool.LS("other500020087"));
                         OpenReroll(props);
                     }, string.Format(GameTool.LS("refine_reroll_btn"), RerollCost(props, index))).Size(200, 32);
                 }
@@ -258,7 +259,7 @@ namespace MOD_nE7UL2.Mod
 
                 var value = UIPropSelect.allSlectDataProps.allProps.ToArray().Sum(x => x.propsInfoBase.worth * x.propsCount);
                 // long: many stones x a high refine skill overflow an int
-                var exp = (long)value * g.world.playerUnit.GetDynProperty(UnitDynPropertyEnum.RefineWeapon).value / REFINE_EXP_RATE;
+                var exp = (long)value * RefineSkill(g.world.playerUnit, refineItem) / REFINE_EXP_RATE;
 
                 AddRefineExp(refineItem, exp);
 
@@ -267,10 +268,19 @@ namespace MOD_nE7UL2.Mod
 
                 g.ui.CloseUI(ui);
 
-                g.ui.MsgBox(GameTool.LS("other500020050"), string.Format(GameTool.LS("other500020051"), oldLvl, GetRefineLvl(refineItem), exp));
+                InfoDialog.Msg(GameTool.LS("other500020050"), string.Format(GameTool.LS("other500020051"), oldLvl, GetRefineLvl(refineItem), exp));
                 CachedValues.RemoveKeysStartWith(refineItem.soleID);
             }));
             ui.UpdateUI();
+        }
+
+        /// <summary>
+        /// Skill that turns spirit stones into refine exp: mount = herbs + alchemy,
+        /// ring/outfit/artifact = forge + (talismans + formations) / 2.
+        /// </summary>
+        public static int RefineSkill(WorldUnitBase wunit, DataProps.PropsData item)
+        {
+            return item?.propsItem?.IsMount() != null ? NpcAutoCraftArtifact.MountSkill(wunit) : NpcAutoCraftArtifact.CraftSkill(wunit);
         }
 
         /// <summary>

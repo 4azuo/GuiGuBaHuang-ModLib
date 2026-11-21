@@ -1,0 +1,8 @@
+{
+	"__name": "Inflation (InflationaryEvent)",
+	"__help": [
+		"A value left out (or a broken file): the default of the mod.",
+		"InflationaryRate: world price x this every year (1.02 = +2 % a year; S&M AddInflationRate on top). Must be > 0."
+	],
+	"InflationaryRate": 1.02
+}

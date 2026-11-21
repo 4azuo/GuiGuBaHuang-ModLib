@@ -10,7 +10,7 @@ None.
 
 ## Switch
 
-`mod_configs.json` > `NpcUpgradeSkillConfigs.UpgradeRates` (`ModStts._NpcUpgradeSkillConfigs`): chance (%) per martial type: SkillLeft 7, SkillRight 7, Step 12, Ultimate 8, Ability 16 (each multiplied by Luck / 100). See [02-Configs](../02-Configs.md).
+`npc_upgrade_skill_configs.json` > `UpgradeRates` (`NpcUpgradeSkillConfig`): chance (%) per martial type: SkillLeft 7, SkillRight 7, Step 12, Ultimate 8, Ability 16 (each multiplied by Luck / 100). See [02-Configs](../02-Configs.md).
 
 ## Flow
 

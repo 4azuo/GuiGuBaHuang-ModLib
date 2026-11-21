@@ -39,6 +39,7 @@ namespace MOD_nE7UL2.Story
             new LineD_SwornBrothers(), new LineE_HerbGarden(), new LineF_RedLotus(),
             new LineG_HundredYearWager(), new LineH_RoadsideInn(), new LineI_SealedTomb(),
             new LineJ_CursedDisciple(), new LineK_ThunderRemnant(), new LineL_HeartDemon(),
+            new LineM_OldTieForge(), new LineN_HouseSeven(), new LineO_AshesOfTown(), new LineP_SenseVoice(),
         };
 
         public Dictionary<string, StoryState> Lines { get; set; } = new Dictionary<string, StoryState>();

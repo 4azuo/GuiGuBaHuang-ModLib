@@ -1,0 +1,21 @@
+[
+	{
+		"id": "484410200",
+		"name": "item_name484410200",
+		"type": "6",
+		"className": "610",
+		"hide": "0",
+		"playerShow": "1",
+		"npcShow": "0",
+		"icon": "jiashu",
+		"level": "4",
+		"desc": "item_desc484410200",
+		"isOverlay": "1",
+		"drop": "0",
+		"dieDrop": "0",
+		"auction": "0",
+		"sale": "-1",
+		"worth": "10000",
+		"isMultiDrop": "0"
+	}
+]

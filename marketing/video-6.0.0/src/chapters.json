@@ -1,0 +1,156 @@
+{
+  "$comment": "Timing, music and chapters of the marketing videos, read by src/data.ts and scripts/prepare-assets.mjs (music cut to the same timeline). Lengths in beats of the song (112 BPM: 16.07 frames a beat at 30 fps; every cut lands on the nearest frame of a beat). glyph: the brush character of a chapter card (simplified Chinese: the brush font has no traditional forms). pictures / short: a name is a scene of one picture, a list of names a scene of several pictures of one feature (cards coming to the front in turn).",
+  "fps": 30,
+  "chapterBeats": 4,
+  "slideBeats": 4,
+  "music": {
+    "$comment": "Song beats counted from firstBeat (seconds; a downbeat of a phrase, found by onset analysis). sections: [start, end) beats. A video plays intro, then its body sections (cut to fit: each drop starts on a chapter card), then outro.",
+    "file": "ebunny-samurai-354083.mp3",
+    "credit": "Music: \"Samurai\" by eBunny (Pixabay)",
+    "bpm": 112,
+    "firstBeat": 1.367,
+    "sections": {
+      "intro": [
+        0,
+        16
+      ],
+      "build": [
+        16,
+        44
+      ],
+      "drop1": [
+        44,
+        88
+      ],
+      "break": [
+        88,
+        136
+      ],
+      "drop2": [
+        136,
+        232
+      ],
+      "end": [
+        232,
+        248
+      ]
+    },
+    "long": {
+      "intro": [
+        0,
+        16
+      ],
+      "body": [
+        "build",
+        "drop1",
+        "break",
+        "drop2"
+      ],
+      "outro": [
+        232,
+        248
+      ]
+    },
+    "short": {
+      "intro": [
+        36,
+        44
+      ],
+      "body": [
+        "drop1",
+        "drop2"
+      ],
+      "outro": [
+        240,
+        248
+      ]
+    }
+  },
+  "chapters": [
+    {
+      "title": "New paths of cultivation",
+      "subtitle": "Body, merit, craft, Dao heart and spirit sense",
+      "glyph": "道",
+      "pictures": [
+        "body-refining",
+        "merit",
+        [
+          "dao-heart",
+          "spirit-sense"
+        ],
+        "spirit-scan"
+      ],
+      "short": [
+        "body-refining",
+        "spirit-scan"
+      ]
+    },
+    {
+      "title": "The Artisan Dao",
+      "subtitle": "Six crafts, from novice to Return to Simplicity",
+      "glyph": "艺",
+      "pictures": [
+        "artisan",
+        "mine-vein"
+      ],
+      "short": [
+        "artisan",
+        "mine-vein"
+      ]
+    },
+    {
+      "title": "Righteous or ruthless",
+      "subtitle": "Merit and karma - and towns put to the sword",
+      "glyph": "劫",
+      "pictures": [
+        "massacre-drama",
+        "massacre-battle"
+      ],
+      "short": [
+        "massacre-battle"
+      ]
+    },
+    {
+      "title": "A home among mortals",
+      "subtitle": "Buy back a mortal house, grow an estate",
+      "glyph": "家",
+      "pictures": [
+        "estate-buy-mortal",
+        [
+          "estate-town-map",
+          "estate-house"
+        ]
+      ],
+      "short": [
+        "estate-buy-mortal"
+      ]
+    },
+    {
+      "title": "New stories",
+      "subtitle": "A smith, a street, a child of ashes, a heart in the stone",
+      "glyph": "命",
+      "pictures": [
+        [
+          "story-forge",
+          "story-old-street",
+          "story-ashes",
+          "story-stone-heart"
+        ]
+      ],
+      "short": [
+        [
+          "story-forge",
+          "story-ashes",
+          "story-stone-heart"
+        ]
+      ]
+    }
+  ],
+  "$version": "Taoist 6.0: the new features only (the video of 5.5.45: marketing/video-5.5.45).",
+  "extras": false,
+  "tagline": [
+    "Taoist 6.0:",
+    "new paths of the Dao."
+  ],
+  "endline": "THE 6.0 UPDATE"
+}

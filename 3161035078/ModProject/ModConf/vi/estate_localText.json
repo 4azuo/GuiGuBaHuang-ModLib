@@ -1,0 +1,592 @@
+[
+	{
+		"id": "-1000011000",
+		"key": "estate_button",
+		"en|ch|tc|kr": "Đất đai"
+	},
+	{
+		"id": "-1000011001",
+		"key": "estate_title",
+		"en|ch|tc|kr": "{0} - đất đai"
+	},
+	{
+		"id": "-1000011002",
+		"key": "estate_population",
+		"en|ch|tc|kr": "Phàm nhân: {0:#,##0} (hướng tới {1:#,##0}) · thuế phàm nhân {2:#,##0}/tháng · lô đã xây {3}/{4}"
+	},
+	{
+		"id": "-1000011003",
+		"key": "estate_hint",
+		"en|ch|tc|kr": "Bấm vào lô trống để mua và xây nhà (mỗi thành một căn)."
+	},
+	{
+		"id": "-1000011004",
+		"key": "estate_mine",
+		"en|ch|tc|kr": "Nhà của bạn: {0} ở {1} · thuế {2:#,##0}/tháng · bấm vào để vào nhà"
+	},
+	{
+		"id": "-1000011005",
+		"key": "estate_legend",
+		"en|ch|tc|kr": "Giá đất và thuế nhà theo khu: {0}. Vàng: nhà của bạn; xanh: nhà của tu sĩ."
+	},
+	{
+		"id": "-1000011006",
+		"key": "estate_one_house",
+		"en|ch|tc|kr": "Bạn đã có nhà trong thành này (mỗi thành một căn)."
+	},
+	{
+		"id": "-1000011007",
+		"key": "estate_buy_confirm",
+		"en|ch|tc|kr": "Lô đất ở {0} (phồn hoa {1}).\nĐất và nhà tranh: {2:#,##0} linh phiếu (= {3:#,##0} [icon:zm_lingshi]); bạn có {4:#,##0}.\nThuế nhà {5:#,##0}/tháng thay cho phí vào thành. Mua?"
+	},
+	{
+		"id": "-1000011008",
+		"key": "estate_info_shop",
+		"en|ch|tc|kr": "Cửa hàng phàm nhân ở {0} (phồn hoa {1}, đất trị giá {2:#,##0}): phố đông kéo theo buôn bán."
+	},
+	{
+		"id": "-1000011009",
+		"key": "estate_info_mortal",
+		"en|ch|tc|kr": "Phàm nhân sống ở {0} (phồn hoa {1}, đất trị giá {2:#,##0})."
+	},
+	{
+		"id": "-1000011010",
+		"key": "estate_done",
+		"en|ch|tc|kr": "Đã xây: {0}!"
+	},
+	{
+		"id": "-1000011011",
+		"key": "estate_grade",
+		"en|ch|tc|kr": "{0} cần tu vi bậc {1}."
+	},
+	{
+		"id": "-1000011012",
+		"key": "estate_not_free",
+		"en|ch|tc|kr": "Lô đất này không trống."
+	},
+	{
+		"id": "-1000011013",
+		"key": "estate_manage_line",
+		"en|ch|tc|kr": "Phàm nhân: {0:#,##0} -> {1:#,##0}, thuế phàm nhân {2:#,##0}/tháng"
+	},
+	{
+		"id": "-1000011014",
+		"key": "estate_house_1",
+		"en|ch|tc|kr": "Nhà tranh"
+	},
+	{
+		"id": "-1000011015",
+		"key": "estate_house_2",
+		"en|ch|tc|kr": "Nhà ngói"
+	},
+	{
+		"id": "-1000011016",
+		"key": "estate_house_3",
+		"en|ch|tc|kr": "Tứ hợp viện"
+	},
+	{
+		"id": "-1000011017",
+		"key": "estate_house_4",
+		"en|ch|tc|kr": "Dinh thự"
+	},
+	{
+		"id": "-1000011018",
+		"key": "estate_house_5",
+		"en|ch|tc|kr": "Phủ đệ"
+	},
+	{
+		"id": "-1000011019",
+		"key": "estate_house_6",
+		"en|ch|tc|kr": "Tiên phủ"
+	},
+	{
+		"id": "-1000011020",
+		"key": "log_estate_buy",
+		"en|ch|tc|kr": "Mua đất ở {0} và dựng nhà tranh ({1:#,##0} linh thạch)."
+	},
+	{
+		"id": "-1000011021",
+		"key": "log_estate_upgrade",
+		"en|ch|tc|kr": "{0}: nhà được nâng thành {1} ({2:#,##0} linh thạch)."
+	},
+	{
+		"id": "-1000011022",
+		"key": "log_estate_seized",
+		"en|ch|tc|kr": "{0}: {1} bị thu hồi vì nợ thuế."
+	},
+	{
+		"id": "-1000011023",
+		"key": "log_estate_unpaid",
+		"en|ch|tc|kr": "{0}: chưa nộp thuế nhà {1:#,##0} (còn {2} tháng trước khi bị thu hồi)."
+	},
+	{
+		"id": "-1000011024",
+		"key": "estate_district_M",
+		"en|ch|tc|kr": "Thương khu"
+	},
+	{
+		"id": "-1000011025",
+		"key": "estate_district_N",
+		"en|ch|tc|kr": "Khu phú hộ"
+	},
+	{
+		"id": "-1000011026",
+		"key": "estate_district_R",
+		"en|ch|tc|kr": "Khu dân cư"
+	},
+	{
+		"id": "-1000011027",
+		"key": "estate_district_C",
+		"en|ch|tc|kr": "Khu thợ thủ công"
+	},
+	{
+		"id": "-1000011028",
+		"key": "estate_district_O",
+		"en|ch|tc|kr": "Ngoại ô"
+	},
+	{
+		"id": "-1000011029",
+		"key": "estate_palace_1",
+		"en|ch|tc|kr": "Phủ thành chủ"
+	},
+	{
+		"id": "-1000011030",
+		"key": "estate_palace_2",
+		"en|ch|tc|kr": "Đại phủ thành chủ"
+	},
+	{
+		"id": "-1000011031",
+		"key": "estate_palace_3",
+		"en|ch|tc|kr": "Cung thành chủ"
+	},
+	{
+		"id": "-1000011032",
+		"key": "estate_palace_4",
+		"en|ch|tc|kr": "Quỳnh lâu"
+	},
+	{
+		"id": "-1000011033",
+		"key": "estate_palace_5",
+		"en|ch|tc|kr": "Thiên các"
+	},
+	{
+		"id": "-1000011034",
+		"key": "estate_palace_label",
+		"en|ch|tc|kr": "Thành chủ (cấp {0})"
+	},
+	{
+		"id": "-1000011035",
+		"key": "estate_palace_confirm",
+		"en|ch|tc|kr": "Phủ cấp {0}: phàm nhân +{1}%, ngân sách hằng năm +{6}%.\nMở rộng thành {2} với {3:#,##0} [icon:zm_lingshi] từ ngân sách thành ({4:#,##0})? Sau đó phàm nhân +{5}%, ngân sách hằng năm +{7}%."
+	},
+	{
+		"id": "-1000011036",
+		"key": "estate_palace_budget",
+		"en|ch|tc|kr": "Ngân sách thành không đủ {0:#,##0} [icon:zm_lingshi]."
+	},
+	{
+		"id": "-1000011037",
+		"key": "estate_palace_info",
+		"en|ch|tc|kr": "Thành chủ: {0}. Phủ cấp {1}: phàm nhân +{2}%, ngân sách hằng năm +{3}%."
+	},
+	{
+		"id": "-1000011038",
+		"key": "log_estate_palace",
+		"en|ch|tc|kr": "{0}: phủ thành chủ được mở rộng thành {1} ({2:#,##0} từ ngân sách thành)."
+	},
+	{
+		"id": "-1000011039",
+		"key": "estate_tax_free",
+		"en|ch|tc|kr": "Thuế: miễn (nhà của bạn)\nXem hộ vệ thành"
+	},
+	{
+		"id": "-1000011040",
+		"key": "estate_house_title",
+		"en|ch|tc|kr": "{0} - {1}"
+	},
+	{
+		"id": "-1000011041",
+		"key": "estate_house_facts",
+		"en|ch|tc|kr": "{0} · phồn hoa {1} · nhà cấp {2} · thuế {3:#,##0}/tháng"
+	},
+	{
+		"id": "-1000011042",
+		"key": "estate_house_rooms",
+		"en|ch|tc|kr": "Phòng: {0}/{1} (mỗi cấp nhà một phòng)"
+	},
+	{
+		"id": "-1000011043",
+		"key": "estate_upgrade_btn",
+		"en|ch|tc|kr": "Nâng lên {0} (cảnh giới {2}): {1:#,##0}"
+	},
+	{
+		"id": "-1000011044",
+		"key": "estate_herbs_btn",
+		"en|ch|tc|kr": "Thu hoạch dược thảo ({0})"
+	},
+	{
+		"id": "-1000011045",
+		"key": "estate_herbs_done",
+		"en|ch|tc|kr": "Đã cho {0} dược thảo vào túi."
+	},
+	{
+		"id": "-1000011046",
+		"key": "estate_back_map",
+		"en|ch|tc|kr": "Bản đồ nội thành"
+	},
+	{
+		"id": "-1000011047",
+		"key": "estate_back_house",
+		"en|ch|tc|kr": "Quay lại nhà"
+	},
+	{
+		"id": "-1000011048",
+		"key": "estate_rooms_title",
+		"en|ch|tc|kr": "Các phòng"
+	},
+	{
+		"id": "-1000011049",
+		"key": "estate_room_1",
+		"en|ch|tc|kr": "Tĩnh thất"
+	},
+	{
+		"id": "-1000011050",
+		"key": "estate_room_2",
+		"en|ch|tc|kr": "Luyện võ trường"
+	},
+	{
+		"id": "-1000011051",
+		"key": "estate_room_3",
+		"en|ch|tc|kr": "Dược viên"
+	},
+	{
+		"id": "-1000011052",
+		"key": "estate_room_4",
+		"en|ch|tc|kr": "Tụ linh trận"
+	},
+	{
+		"id": "-1000011053",
+		"key": "estate_room_5",
+		"en|ch|tc|kr": "Từ đường"
+	},
+	{
+		"id": "-1000011054",
+		"key": "estate_room_eff_1",
+		"en|ch|tc|kr": "mỗi tháng ở trong thành: exp tu vi +{0}% của tiểu cảnh"
+	},
+	{
+		"id": "-1000011055",
+		"key": "estate_room_eff_2",
+		"en|ch|tc|kr": "mỗi tháng ở trong thành: luyện thể +{0}"
+	},
+	{
+		"id": "-1000011056",
+		"key": "estate_room_eff_3",
+		"en|ch|tc|kr": "{0} dược thảo mỗi tháng (tối đa {1})"
+	},
+	{
+		"id": "-1000011057",
+		"key": "estate_room_eff_4",
+		"en|ch|tc|kr": "Qi tích tụ trong thành +{0}%"
+	},
+	{
+		"id": "-1000011058",
+		"key": "estate_room_eff_5",
+		"en|ch|tc|kr": "phí nuôi gia đình -{0}%"
+	},
+	{
+		"id": "-1000011059",
+		"key": "estate_room_up",
+		"en|ch|tc|kr": "Nâng: {0:#,##0}"
+	},
+	{
+		"id": "-1000011060",
+		"key": "estate_room_empty",
+		"en|ch|tc|kr": "Phòng trống"
+	},
+	{
+		"id": "-1000011061",
+		"key": "estate_room_build",
+		"en|ch|tc|kr": "Xây phòng"
+	},
+	{
+		"id": "-1000011062",
+		"key": "estate_room_more",
+		"en|ch|tc|kr": "Nhà càng lớn càng nhiều phòng."
+	},
+	{
+		"id": "-1000011063",
+		"key": "estate_room_new",
+		"en|ch|tc|kr": "Xây: {0:#,##0}"
+	},
+	{
+		"id": "-1000011064",
+		"key": "estate_room_hint",
+		"en|ch|tc|kr": "Mỗi phòng có 3 cấp; tĩnh thất, luyện võ trường và tụ linh trận có tác dụng khi bạn ở trong thành qua tháng."
+	},
+	{
+		"id": "-1000011065",
+		"key": "estate_room_noslot",
+		"en|ch|tc|kr": "Không còn phòng trống: hãy nâng cấp nhà trước."
+	},
+	{
+		"id": "-1000011066",
+		"key": "estate_room_max",
+		"en|ch|tc|kr": "Phòng này đã ở cấp cao nhất."
+	},
+	{
+		"id": "-1000011067",
+		"key": "log_estate_room",
+		"en|ch|tc|kr": "{0}: xây xong {1} cấp {2} ({3:#,##0} linh thạch)."
+	},
+	{
+		"id": "-1000011068",
+		"key": "estate_buy_room",
+		"en|ch|tc|kr": "Lô này đủ chỗ xây tới {0} (nhà càng lớn càng chiếm thêm lô xung quanh)."
+	},
+	{
+		"id": "-1000011069",
+		"key": "estate_noroom",
+		"en|ch|tc|kr": "Không đủ chỗ cho {0} ở đây: cần khối {1} x {2} lô quanh nhà, là đất trống hoặc nhà phàm nhân (không có đường, nước hay chủ khác)."
+	},
+	{
+		"id": "-1000011070",
+		"key": "estate_upgrade_land",
+		"en|ch|tc|kr": "Lấy thêm {0} lô quanh nhà (tiền đất và đền bù phàm nhân: {1:#,##0} linh phiếu, đã gồm trong giá)"
+	},
+	{
+		"id": "-1000011071",
+		"key": "estate_terrain_0",
+		"en|ch|tc|kr": "Đồng bằng"
+	},
+	{
+		"id": "-1000011072",
+		"key": "estate_terrain_1",
+		"en|ch|tc|kr": "Sông"
+	},
+	{
+		"id": "-1000011073",
+		"key": "estate_terrain_2",
+		"en|ch|tc|kr": "Hồ"
+	},
+	{
+		"id": "-1000011074",
+		"key": "estate_terrain_3",
+		"en|ch|tc|kr": "Rừng"
+	},
+	{
+		"id": "-1000011075",
+		"key": "estate_wall_line",
+		"en|ch|tc|kr": "Tường thành cấp {0}: phòng thủ +{1}%"
+	},
+	{
+		"id": "-1000011076",
+		"key": "estate_wall_btn",
+		"en|ch|tc|kr": "Tường cấp {0} (+{1}%): gia cố"
+	},
+	{
+		"id": "-1000011077",
+		"key": "estate_wall_confirm",
+		"en|ch|tc|kr": "Gia cố tường thành lên cấp {0} với {1:#,##0} [icon:zm_lingshi] từ ngân sách thành ({2:#,##0})?\nThành phòng thủ khi bị tấn công +{3}%."
+	},
+	{
+		"id": "-1000011078",
+		"key": "log_estate_wall",
+		"en|ch|tc|kr": "{0}: tường thành được gia cố lên cấp {1} ({2:#,##0} từ ngân sách thành)."
+	},
+	{
+		"id": "-1000011079",
+		"key": "estate_roads_0",
+		"en|ch|tc|kr": "ngã tư"
+	},
+	{
+		"id": "-1000011080",
+		"key": "estate_roads_1",
+		"en|ch|tc|kr": "ngã ba"
+	},
+	{
+		"id": "-1000011081",
+		"key": "estate_roads_2",
+		"en|ch|tc|kr": "đường vòng"
+	},
+	{
+		"id": "-1000011082",
+		"key": "estate_roads_3",
+		"en|ch|tc|kr": "hai phố"
+	},
+	{
+		"id": "-1000011083",
+		"key": "estate_no_notes",
+		"en|ch|tc|kr": "Nhà, đất và phòng trả bằng linh phiếu: cần {0:#,##0}, trong túi có {1:#,##0}. Đổi linh thạch ở tiền trang trong thành."
+	},
+	{
+		"id": "-1000011084",
+		"key": "estate_building_built",
+		"en|ch|tc|kr": "Đã xây"
+	},
+	{
+		"id": "-1000011085",
+		"key": "estate_building_none",
+		"en|ch|tc|kr": "Thành này không có"
+	},
+	{
+		"id": "-1000011086",
+		"key": "estate_city_btn",
+		"en|ch|tc|kr": "Nâng lên thành phố: {0:#,##0}"
+	},
+	{
+		"id": "-1000011087",
+		"key": "estate_info_owner",
+		"en|ch|tc|kr": "{1} của tu sĩ {0}, ở {2} (phồn hoa {3}); thuế nhà {4:#,##0}/tháng cho thành."
+	},
+	{
+		"id": "-1000011088",
+		"key": "estate_info_grown",
+		"en|ch|tc|kr": "Phàm nhân ở đây làm ăn khấm khá: nhà đã lớn thành {0}."
+	},
+	{
+		"id": "-1000011089",
+		"key": "clan_name",
+		"en|ch|tc|kr": "gia tộc {0}"
+	},
+	{
+		"id": "-1000011090",
+		"key": "clan_button",
+		"en|ch|tc|kr": "Thế gia ({0})"
+	},
+	{
+		"id": "-1000011091",
+		"key": "clan_title",
+		"en|ch|tc|kr": "{0} - thế gia tu tiên"
+	},
+	{
+		"id": "-1000011092",
+		"key": "clan_none",
+		"en|ch|tc|kr": "Chưa có thế gia tu tiên nào ở đây: cần một tu sĩ có nhà trong thành và có gia đình."
+	},
+	{
+		"id": "-1000011093",
+		"key": "clan_line",
+		"en|ch|tc|kr": "{0}: {1} thành viên, {2}"
+	},
+	{
+		"id": "-1000011094",
+		"key": "clan_relation",
+		"en|ch|tc|kr": "{0} - {1}: {2} ({3})"
+	},
+	{
+		"id": "-1000011095",
+		"key": "clan_rel_feud",
+		"en|ch|tc|kr": "huyết thù"
+	},
+	{
+		"id": "-1000011096",
+		"key": "clan_rel_hostile",
+		"en|ch|tc|kr": "thù địch"
+	},
+	{
+		"id": "-1000011097",
+		"key": "clan_rel_neutral",
+		"en|ch|tc|kr": "trung lập"
+	},
+	{
+		"id": "-1000011098",
+		"key": "clan_rel_allied",
+		"en|ch|tc|kr": "giao hảo"
+	},
+	{
+		"id": "-1000011099",
+		"key": "clan_hint",
+		"en|ch|tc|kr": "Quan hệ thay đổi theo thiện cảm giữa các thành viên, hôn nhân và tranh đấu. Thế gia thù địch có thể ẩu đả; huyết thù có thể dẫn tới chiến tranh diệt tộc."
+	},
+	{
+		"id": "-1000011100",
+		"key": "clan_brawl_ask",
+		"en|ch|tc|kr": "{0}: {2} của {1} gây sự với {4} của {3}. Bạn có ra tay không?"
+	},
+	{
+		"id": "-1000011101",
+		"key": "clan_war_ask",
+		"en|ch|tc|kr": "{0}: {1} tấn công {3}! {2} dẫn đầu; {4} đứng ra cho phe bạn. Bạn có ra tay không?"
+	},
+	{
+		"id": "-1000011102",
+		"key": "clan_step_in",
+		"en|ch|tc|kr": "Ra tay"
+	},
+	{
+		"id": "-1000011103",
+		"key": "clan_stay_out",
+		"en|ch|tc|kr": "Đứng ngoài"
+	},
+	{
+		"id": "-1000011104",
+		"key": "clan_won",
+		"en|ch|tc|kr": "Thắng: {0} áp đảo {1}."
+	},
+	{
+		"id": "-1000011105",
+		"key": "clan_lost",
+		"en|ch|tc|kr": "Thua: {0} áp đảo {1}."
+	},
+	{
+		"id": "-1000011106",
+		"key": "log_clan_brawl",
+		"en|ch|tc|kr": "{0}: {1} ({2}) đánh bại {3} ({4}) trong một trận ẩu đả."
+	},
+	{
+		"id": "-1000011107",
+		"key": "log_clan_brawl_death",
+		"en|ch|tc|kr": "{0}: {1} ({2}) giết chết {3} ({4}) trong một trận ẩu đả."
+	},
+	{
+		"id": "-1000011108",
+		"key": "log_clan_war",
+		"en|ch|tc|kr": "{0}: {1} đánh bại {2} trong chiến tranh gia tộc; {3} người ngã xuống, bên thua mất nhà."
+	},
+	{
+		"id": "-1000011109",
+		"key": "log_clan_extinct",
+		"en|ch|tc|kr": "{0}: {1} bị diệt tộc."
+	},
+	{
+		"id": "-1000011110",
+		"key": "estate_plot_where",
+		"en|ch|tc|kr": "Ô đất số {0} (cột {1}, hàng {2} trên bản đồ thành)"
+	},
+	{
+		"id": "-1000011111",
+		"key": "estate_mortal_buy_info",
+		"en|ch|tc|kr": "Phàm nhân chịu bán nhà: {0} giá {1:#,##0} linh phiếu (= {2:#,##0} [icon:zm_lingshi], gồm đất và cả căn nhà); bạn có {3:#,##0}.\nThuế nhà {4:#,##0}/tháng thay cho thuế vào thành; cần cảnh giới {5}.\nSau này nâng nhà to hơn sẽ chiếm các ô xung quanh: mua kèm khi nâng cấp (đất trống, hoặc nhà phàm nhân theo giá đất cộng nửa giá nhà)."
+	},
+	{
+		"id": "-1000011112",
+		"key": "estate_mortal_buy",
+		"en|ch|tc|kr": "Mua căn nhà này ({0:#,##0} linh phiếu)"
+	},
+	{
+		"id": "-1000011113",
+		"key": "log_estate_buy_mortal",
+		"en|ch|tc|kr": "Đã mua nhà của phàm nhân ở {0}: {1} ({2:#,##0} linh thạch)."
+	},
+	{
+		"id": "-1000011114",
+		"key": "dlg_yes",
+		"en|ch|tc|kr": "Có"
+	},
+	{
+		"id": "-1000011115",
+		"key": "dlg_no",
+		"en|ch|tc|kr": "Không"
+	},
+	{
+		"id": "-1000011116",
+		"key": "dlg_ok",
+		"en|ch|tc|kr": "Đồng ý"
+	},
+	{
+		"id": "-1000011117",
+		"key": "dlg_close",
+		"en|ch|tc|kr": "Đóng"
+	}
+]

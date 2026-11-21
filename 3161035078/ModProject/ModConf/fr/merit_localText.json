@@ -1,0 +1,377 @@
+[
+	{
+		"id": "-1000013043",
+		"key": "enc_flood_o2",
+		"en|ch|tc|kr": "Passer son chemin"
+	},
+	{
+		"id": "-1000013047",
+		"key": "enc_plague_o2",
+		"en|ch|tc|kr": "Passer son chemin"
+	},
+	{
+		"id": "-1000013052",
+		"key": "enc_raid_o2",
+		"en|ch|tc|kr": "S'en aller"
+	},
+	{
+		"id": "-1000013000",
+		"key": "merit_button",
+		"en|ch|tc|kr": "Mérite"
+	},
+	{
+		"id": "-1000013001",
+		"key": "merit_title",
+		"en|ch|tc|kr": "Mérite"
+	},
+	{
+		"id": "-1000013002",
+		"key": "merit_npc",
+		"en|ch|tc|kr": "Mérite : {0}"
+	},
+	{
+		"id": "-1000013003",
+		"key": "merit_lvl_0",
+		"en|ch|tc|kr": "Aucun mérite"
+	},
+	{
+		"id": "-1000013004",
+		"key": "merit_lvl_1",
+		"en|ch|tc|kr": "Bon karma"
+	},
+	{
+		"id": "-1000013005",
+		"key": "merit_lvl_2",
+		"en|ch|tc|kr": "Vertu accumulée"
+	},
+	{
+		"id": "-1000013006",
+		"key": "merit_lvl_3",
+		"en|ch|tc|kr": "Vertu bénie"
+	},
+	{
+		"id": "-1000013007",
+		"key": "merit_lvl_4",
+		"en|ch|tc|kr": "Lumière dorée"
+	},
+	{
+		"id": "-1000013008",
+		"key": "merit_lvl_5",
+		"en|ch|tc|kr": "Saint du mérite"
+	},
+	{
+		"id": "-1000013009",
+		"key": "merit_lvl_6",
+		"en|ch|tc|kr": "Mérite infini"
+	},
+	{
+		"id": "-1000013010",
+		"key": "merit_lvl_m1",
+		"en|ch|tc|kr": "Pécheur"
+	},
+	{
+		"id": "-1000013011",
+		"key": "merit_lvl_m2",
+		"en|ch|tc|kr": "Malfaisant"
+	},
+	{
+		"id": "-1000013012",
+		"key": "merit_lvl_m3",
+		"en|ch|tc|kr": "Damné"
+	},
+	{
+		"id": "-1000013013",
+		"key": "merit_points",
+		"en|ch|tc|kr": "[icon:zm_mingyu] Mérite {0:#,##0} / {1:#,##0}"
+	},
+	{
+		"id": "-1000013014",
+		"key": "merit_points_top",
+		"en|ch|tc|kr": "[icon:zm_mingyu] Mérite {0:#,##0} (niveau maximal : le mérite en plus devient essence)"
+	},
+	{
+		"id": "-1000013015",
+		"key": "merit_essence",
+		"en|ch|tc|kr": "[icon:daodian] Essence de mérite {0:#,##0} ({1} paliers) : [icon:gongji] attaque +{2} %, [icon:fangyu] défense +{3} %"
+	},
+	{
+		"id": "-1000013016",
+		"key": "merit_bonus",
+		"en|ch|tc|kr": "[icon:gongji] Attaque {0:+0.#;-0.#;0} %, [icon:fangyu] défense {1:+0.#;-0.#;0} %, [icon:xingyun] Chance {2:+0;-0;0}"
+	},
+	{
+		"id": "-1000013017",
+		"key": "merit_lightning",
+		"en|ch|tc|kr": "[icon:leilinggen] Foudre des épreuves et des tribulations du corps : {0:+0;-0;0} % de dégâts"
+	},
+	{
+		"id": "-1000013018",
+		"key": "merit_intim",
+		"en|ch|tc|kr": "[icon:shengwang] Chaque mois, les cultivateurs proches : justes {0:+0;-0;0}, maléfiques {1:+0;-0;0} (amitié ; sous zéro : haine)"
+	},
+	{
+		"id": "-1000013019",
+		"key": "merit_bounty_warn",
+		"en|ch|tc|kr": "[icon:zhandouxiaoguo] Votre karma est lourd : chaque année un cultivateur juste met votre tête à prix."
+	},
+	{
+		"id": "-1000013020",
+		"key": "merit_level_line",
+		"en|ch|tc|kr": "{0} : {1:#,##0} - [icon:gongji] attaque {2:+0.#;-0.#;0} %, [icon:fangyu] défense {3:+0.#;-0.#;0} %, [icon:xingyun] Chance {4:+0;-0;0}"
+	},
+	{
+		"id": "-1000013021",
+		"key": "merit_donate",
+		"en|ch|tc|kr": "Donner {1:#,##0} [icon:zm_lingshi] aux habitants de {0} (+{2} mérite, une fois par mois)"
+	},
+	{
+		"id": "-1000013022",
+		"key": "merit_donate_done",
+		"en|ch|tc|kr": "Vous avez déjà fait un don ce mois-ci."
+	},
+	{
+		"id": "-1000013023",
+		"key": "merit_help",
+		"en|ch|tc|kr": "Mérite : tuer des bêtes et des cultivateurs maléfiques, aider les gens (rencontres, dons). Karma : tuer des justes, voler, passer son chemin."
+	},
+	{
+		"id": "-1000013024",
+		"key": "log_merit_gain",
+		"en|ch|tc|kr": "Mérite +{0} : {1}."
+	},
+	{
+		"id": "-1000013025",
+		"key": "log_merit_loss",
+		"en|ch|tc|kr": "Karma +{0} : {1}."
+	},
+	{
+		"id": "-1000013026",
+		"key": "log_merit_level",
+		"en|ch|tc|kr": "Mérite : {0}."
+	},
+	{
+		"id": "-1000013027",
+		"key": "log_merit_bounty",
+		"en|ch|tc|kr": "{0} a mis votre tête à prix pour {2:#,##0} à {1} à cause de votre karma."
+	},
+	{
+		"id": "-1000013028",
+		"key": "merit_src_beast",
+		"en|ch|tc|kr": "une bête abattue"
+	},
+	{
+		"id": "-1000013029",
+		"key": "merit_src_kill_good",
+		"en|ch|tc|kr": "un cultivateur juste tué"
+	},
+	{
+		"id": "-1000013030",
+		"key": "merit_src_kill_evil",
+		"en|ch|tc|kr": "un cultivateur maléfique abattu"
+	},
+	{
+		"id": "-1000013031",
+		"key": "merit_src_kill",
+		"en|ch|tc|kr": "un cultivateur tué"
+	},
+	{
+		"id": "-1000013032",
+		"key": "merit_src_donate",
+		"en|ch|tc|kr": "un don au peuple"
+	},
+	{
+		"id": "-1000013033",
+		"key": "merit_src_wounded",
+		"en|ch|tc|kr": "un cultivateur blessé soigné"
+	},
+	{
+		"id": "-1000013034",
+		"key": "merit_src_rob",
+		"en|ch|tc|kr": "un cultivateur blessé dépouillé"
+	},
+	{
+		"id": "-1000013035",
+		"key": "merit_src_cub",
+		"en|ch|tc|kr": "un petit animal nourri"
+	},
+	{
+		"id": "-1000013036",
+		"key": "merit_src_festival",
+		"en|ch|tc|kr": "une fête en ville"
+	},
+	{
+		"id": "-1000013037",
+		"key": "merit_src_flood",
+		"en|ch|tc|kr": "secours aux inondés"
+	},
+	{
+		"id": "-1000013038",
+		"key": "merit_src_plague",
+		"en|ch|tc|kr": "les malades de la peste soignés"
+	},
+	{
+		"id": "-1000013039",
+		"key": "merit_src_raid",
+		"en|ch|tc|kr": "un village sauvé des bêtes"
+	},
+	{
+		"id": "-1000013040",
+		"key": "merit_src_flee",
+		"en|ch|tc|kr": "un village abandonné aux bêtes"
+	},
+	{
+		"id": "-1000013041",
+		"key": "enc_flood",
+		"en|ch|tc|kr": "La rivière a débordé près de {0} : les maisons ont disparu, des familles dorment sur les toits. La ville demande {1:#,##0} [icon:zm_lingshi] aux cultivateurs pour reconstruire."
+	},
+	{
+		"id": "-1000013042",
+		"key": "enc_flood_o1",
+		"en|ch|tc|kr": "Donner"
+	},
+	{
+		"id": "-1000013044",
+		"key": "enc_flood_r",
+		"en|ch|tc|kr": "Les habitants de la ville se souviendront de votre nom. Mérite +{0}."
+	},
+	{
+		"id": "-1000013045",
+		"key": "enc_plague",
+		"en|ch|tc|kr": "La peste se répand à {0} ; les guérisseurs n'ont plus d'herbes. {1} herbes de votre sac pourraient en sauver beaucoup."
+	},
+	{
+		"id": "-1000013046",
+		"key": "enc_plague_o1",
+		"en|ch|tc|kr": "Donner les herbes"
+	},
+	{
+		"id": "-1000013048",
+		"key": "enc_plague_r",
+		"en|ch|tc|kr": "Les fièvres tombent l'une après l'autre. Mérite +{0}."
+	},
+	{
+		"id": "-1000013049",
+		"key": "enc_plague_noherb",
+		"en|ch|tc|kr": "Vous n'avez pas assez d'herbes."
+	},
+	{
+		"id": "-1000013050",
+		"key": "enc_raid",
+		"en|ch|tc|kr": "Des bêtes descendent de la montagne sur un village ; les mortels fuient. Vous pourriez vous interposer ({0:0} % de les repousser)."
+	},
+	{
+		"id": "-1000013051",
+		"key": "enc_raid_o1",
+		"en|ch|tc|kr": "Les repousser"
+	},
+	{
+		"id": "-1000013053",
+		"key": "enc_raid_win",
+		"en|ch|tc|kr": "Les bêtes s'enfuient dans la montagne. Mérite +{0}, {1:#,##0} PV perdus."
+	},
+	{
+		"id": "-1000013054",
+		"key": "enc_raid_lose",
+		"en|ch|tc|kr": "Les bêtes étaient trop nombreuses, mais les villageois ont fui pendant que vous combattiez. Mérite +{0}, {1:#,##0} PV perdus."
+	},
+	{
+		"id": "-1000013055",
+		"key": "enc_raid_flee",
+		"en|ch|tc|kr": "Derrière vous, le village brûle."
+	},
+	{
+		"id": "-1000013066",
+		"key": "merit_massacre_o2",
+		"en|ch|tc|kr": "Partir"
+	},
+	{
+		"id": "-1000013056",
+		"key": "merit_flat",
+		"en|ch|tc|kr": "Fixe : [icon:gongji] attaque {0:+0;-0;0}, [icon:fangyu] défense {1:+0;-0;0}"
+	},
+	{
+		"id": "-1000013057",
+		"key": "merit_src_defend",
+		"en|ch|tc|kr": "un ennemi abattu en défendant une ville"
+	},
+	{
+		"id": "-1000013058",
+		"key": "merit_src_attack",
+		"en|ch|tc|kr": "un défenseur abattu en attaquant une ville"
+	},
+	{
+		"id": "-1000013059",
+		"key": "merit_gift",
+		"en|ch|tc|kr": "Des gens que vous aviez aidés vous ont trouvé en chemin et vous ont mis un présent dans les mains : {0}."
+	},
+	{
+		"id": "-1000013060",
+		"key": "merit_revenge",
+		"en|ch|tc|kr": "Un proche d'une de vos victimes attendait dans l'ombre. La lame vous a atteint avant que vous ne le voyiez : {0:#,##0} PV perdus, et sa malédiction vous suit."
+	},
+	{
+		"id": "-1000013061",
+		"key": "log_merit_gift",
+		"en|ch|tc|kr": "Des gens reconnaissants ont apporté un présent : {0}."
+	},
+	{
+		"id": "-1000013062",
+		"key": "log_merit_revenge",
+		"en|ch|tc|kr": "Les proches d'une victime se sont vengés : {0:#,##0} PV perdus."
+	},
+	{
+		"id": "-1000013063",
+		"key": "merit_massacre_button",
+		"en|ch|tc|kr": "Massacrer {0} (la voie maléfique)"
+	},
+	{
+		"id": "-1000013064",
+		"key": "merit_massacre_text",
+		"en|ch|tc|kr": "Vous dominez {0} du regard. Son seigneur {1}, {2} cultivateurs de la ville et {3} gardes se dresseraient contre vous ; {4} autres fuiraient. Si vous gagnez, le seigneur meurt avec les tombés, et presque tous ses {5:#,##0} mortels avec eux. Karma +{6:#,##0} ; une prime vous suivra. C'est un vrai combat : vous pouvez mourir."
+	},
+	{
+		"id": "-1000013065",
+		"key": "merit_massacre_o1",
+		"en|ch|tc|kr": "Massacrer la ville"
+	},
+	{
+		"id": "-1000013067",
+		"key": "merit_massacre_ok",
+		"en|ch|tc|kr": "{0} est tombée. {1} cultivateurs sont morts avec leur seigneur, {2:#,##0} mortels ont péri, {3:#,##0} pierres spirituelles pillées."
+	},
+	{
+		"id": "-1000013068",
+		"key": "merit_massacre_fail",
+		"en|ch|tc|kr": "{0} a tenu. Vous avez fui avec la vie sauve et un karma plus lourd."
+	},
+	{
+		"id": "-1000013069",
+		"key": "merit_ruin",
+		"en|ch|tc|kr": "{0} est en ruine : peu de mortels y vivent désormais."
+	},
+	{
+		"id": "-1000013070",
+		"key": "merit_src_massacre",
+		"en|ch|tc|kr": "le massacre d'une ville"
+	},
+	{
+		"id": "-1000013071",
+		"key": "merit_src_massacre_fail",
+		"en|ch|tc|kr": "un massacre manqué"
+	},
+	{
+		"id": "-1000013072",
+		"key": "log_merit_massacre_start",
+		"en|ch|tc|kr": "Vous vous êtes retourné contre {0} : {1} défenseurs, {2} ont fui."
+	},
+	{
+		"id": "-1000013073",
+		"key": "log_merit_massacre",
+		"en|ch|tc|kr": "Massacre de {0} : {1} cultivateurs et {2:#,##0} mortels sont morts, {3:#,##0} pierres spirituelles pillées."
+	},
+	{
+		"id": "-1000013074",
+		"key": "merit_story",
+		"en|ch|tc|kr": "une histoire"
+	}
+]

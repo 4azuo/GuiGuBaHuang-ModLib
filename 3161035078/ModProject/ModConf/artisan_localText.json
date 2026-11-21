@@ -1,0 +1,690 @@
+[
+	{
+		"id": "-1000014000",
+		"key": "artisan_button",
+		"en": "Artisan Dao",
+		"ch": "技艺之道",
+		"tc": "技藝之道",
+		"kr": "기예지도"
+	},
+	{
+		"id": "-1000014001",
+		"key": "artisan_title_window",
+		"en": "Artisan Dao",
+		"ch": "技艺之道",
+		"tc": "技藝之道",
+		"kr": "기예지도"
+	},
+	{
+		"id": "-1000014002",
+		"key": "artisan_craft_1",
+		"en": "Alchemy",
+		"ch": "炼丹",
+		"tc": "煉丹",
+		"kr": "연단"
+	},
+	{
+		"id": "-1000014003",
+		"key": "artisan_craft_2",
+		"en": "Artifact forging",
+		"ch": "炼器",
+		"tc": "煉器",
+		"kr": "연기"
+	},
+	{
+		"id": "-1000014004",
+		"key": "artisan_craft_3",
+		"en": "Talismans",
+		"ch": "制符",
+		"tc": "製符",
+		"kr": "제부"
+	},
+	{
+		"id": "-1000014005",
+		"key": "artisan_rank_0",
+		"en": "Novice",
+		"ch": "门外汉",
+		"tc": "門外漢",
+		"kr": "문외한"
+	},
+	{
+		"id": "-1000014006",
+		"key": "artisan_rank_1",
+		"en": "Apprentice",
+		"ch": "学徒",
+		"tc": "學徒",
+		"kr": "도제"
+	},
+	{
+		"id": "-1000014007",
+		"key": "artisan_rank_2",
+		"en": "Craftsman",
+		"ch": "匠师",
+		"tc": "匠師",
+		"kr": "장인"
+	},
+	{
+		"id": "-1000014008",
+		"key": "artisan_rank_3",
+		"en": "Master",
+		"ch": "大师",
+		"tc": "大師",
+		"kr": "대가"
+	},
+	{
+		"id": "-1000014009",
+		"key": "artisan_rank_4",
+		"en": "Grandmaster",
+		"ch": "宗师",
+		"tc": "宗師",
+		"kr": "종사"
+	},
+	{
+		"id": "-1000014010",
+		"key": "artisan_rank_5",
+		"en": "Saint",
+		"ch": "圣手",
+		"tc": "聖手",
+		"kr": "성수"
+	},
+	{
+		"id": "-1000014011",
+		"key": "artisan_none",
+		"en": "No craft",
+		"ch": "无技艺",
+		"tc": "無技藝",
+		"kr": "기예 없음"
+	},
+	{
+		"id": "-1000014012",
+		"key": "artisan_title",
+		"en": "{1} of {0}",
+		"ch": "{0}{1}",
+		"tc": "{0}{1}",
+		"kr": "{0} {1}"
+	},
+	{
+		"id": "-1000014013",
+		"key": "artisan_npc",
+		"en": "Craft: {0}",
+		"ch": "技艺：{0}",
+		"tc": "技藝：{0}",
+		"kr": "기예: {0}"
+	},
+	{
+		"id": "-1000014014",
+		"key": "artisan_line",
+		"en": "{0}: {1} - value {2:#,##0} (rank +{3}), masterpieces {4}",
+		"ch": "{0}：{1} - 造诣{2:#,##0}（品阶+{3}），杰作{4}",
+		"tc": "{0}：{1} - 造詣{2:#,##0}（品階+{3}），傑作{4}",
+		"kr": "{0}: {1} - 수준 {2:#,##0} (등급 +{3}), 걸작 {4}"
+	},
+	{
+		"id": "-1000014015",
+		"key": "artisan_exp",
+		"en": "[icon:wuxing] Craft exp {0:#,##0} / {1:#,##0}",
+		"ch": "[icon:wuxing] 技艺经验 {0:#,##0} / {1:#,##0}",
+		"tc": "[icon:wuxing] 技藝經驗 {0:#,##0} / {1:#,##0}",
+		"kr": "[icon:wuxing] 기예 경험 {0:#,##0} / {1:#,##0}"
+	},
+	{
+		"id": "-1000014016",
+		"key": "artisan_exam_ready",
+		"en": "Ready for the exam of {0} ({1:0} %): held in the cities, once a year",
+		"ch": "可参加{0}考核（{1:0}%）：于大城举行，每年一次",
+		"tc": "可參加{0}考核（{1:0}%）：於大城舉行，每年一次",
+		"kr": "{0} 시험 준비 완료 ({1:0}%): 대도시에서 매년 한 번"
+	},
+	{
+		"id": "-1000014017",
+		"key": "artisan_exam_button",
+		"en": "Take the exam of {0} (fee {1:#,##0} [icon:zm_lingshi])",
+		"ch": "参加{0}考核（报名费{1:#,##0}[icon:zm_lingshi]）",
+		"tc": "參加{0}考核（報名費{1:#,##0}[icon:zm_lingshi]）",
+		"kr": "{0} 시험 응시 (수수료 {1:#,##0}[icon:zm_lingshi])"
+	},
+	{
+		"id": "-1000014018",
+		"key": "artisan_top",
+		"en": "The highest rank of the craft.",
+		"ch": "已至此道巅峰。",
+		"tc": "已至此道巔峰。",
+		"kr": "이 기예의 최고 등급이다."
+	},
+	{
+		"id": "-1000014019",
+		"key": "artisan_exam_NotReady",
+		"en": "Not ready for the exam yet.",
+		"ch": "尚不能参加考核。",
+		"tc": "尚不能參加考核。",
+		"kr": "아직 시험을 볼 수 없다."
+	},
+	{
+		"id": "-1000014020",
+		"key": "artisan_exam_NotInCity",
+		"en": "The exams of the crafts are held in the cities.",
+		"ch": "技艺考核只在大城举行。",
+		"tc": "技藝考核只在大城舉行。",
+		"kr": "기예 시험은 대도시에서만 열린다."
+	},
+	{
+		"id": "-1000014021",
+		"key": "artisan_exam_AlreadyThisYear",
+		"en": "You already took an exam of {0} this year.",
+		"ch": "今年已参加过{0}考核。",
+		"tc": "今年已參加過{0}考核。",
+		"kr": "올해 이미 {0} 시험을 보았다."
+	},
+	{
+		"id": "-1000014022",
+		"key": "artisan_exam_NoMoney",
+		"en": "The fee is {2:#,##0} spirit stones.",
+		"ch": "报名费为{2:#,##0}灵石。",
+		"tc": "報名費為{2:#,##0}靈石。",
+		"kr": "수수료는 영석 {2:#,##0}이다."
+	},
+	{
+		"id": "-1000014023",
+		"key": "artisan_exam_Passed",
+		"en": "The examiners bow: you are now {1} of {0}.",
+		"ch": "考官们躬身致意：你如今是{0}{1}。",
+		"tc": "考官們躬身致意：你如今是{0}{1}。",
+		"kr": "시험관들이 고개를 숙인다: 이제 당신은 {0} {1}이다."
+	},
+	{
+		"id": "-1000014024",
+		"key": "artisan_exam_Failed",
+		"en": "The examiners shake their heads. Come back next year.",
+		"ch": "考官们摇了摇头。明年再来吧。",
+		"tc": "考官們搖了搖頭。明年再來吧。",
+		"kr": "시험관들이 고개를 젓는다. 내년에 다시 오라."
+	},
+	{
+		"id": "-1000014025",
+		"key": "artisan_masterpieces",
+		"en": "Masterpieces of the world",
+		"ch": "天下杰作",
+		"tc": "天下傑作",
+		"kr": "천하의 걸작"
+	},
+	{
+		"id": "-1000014026",
+		"key": "artisan_masterpiece_line",
+		"en": "{0} - made by {1} ({2})",
+		"ch": "{0} - {1}所作（{2}）",
+		"tc": "{0} - {1}所作（{2}）",
+		"kr": "{0} - {1} 제작 ({2})"
+	},
+	{
+		"id": "-1000014027",
+		"key": "artisan_usual",
+		"en": "Items above level {0} are masterpieces for your grade (two levels above: the furnace may blow up).",
+		"ch": "高于{0}阶的成品对你的境界而言即是杰作（高出两阶：可能炸炉）。",
+		"tc": "高於{0}階的成品對你的境界而言即是傑作（高出兩階：可能炸爐）。",
+		"kr": "{0}급보다 높은 물건은 당신의 경지에서 걸작이다 (두 급 위: 화로가 터질 수 있다)."
+	},
+	{
+		"id": "-1000014028",
+		"key": "artisan_help",
+		"en": "Craft in the game's windows (alchemy, forging, talismans, feng shui) or gather herbs and ores on the map: every item gives craft exp, a masterpiece cultivation exp. NPCs commission items; Masters take apprentices.",
+		"ch": "在游戏的炼丹、炼器、制符、风水界面中制作，或在地图上采药挖矿：每件成品给技艺经验，杰作给修为。NPC会委托制作；大师可收徒。",
+		"tc": "在遊戲的煉丹、煉器、製符、風水介面中製作，或在地圖上採藥挖礦：每件成品給技藝經驗，傑作給修為。NPC會委託製作；大師可收徒。",
+		"kr": "게임의 연단·연기·제부·풍수 창에서 제작하거나 지도에서 약초와 광석을 채집: 모든 물건이 기예 경험을, 걸작은 수행 경험을 준다. NPC가 의뢰하고, 대가는 제자를 받는다."
+	},
+	{
+		"id": "-1000014029",
+		"key": "log_artisan_rank",
+		"en": "{0}: you are now {1}.",
+		"ch": "{0}：你如今是{1}。",
+		"tc": "{0}：你如今是{1}。",
+		"kr": "{0}: 이제 {1}이다."
+	},
+	{
+		"id": "-1000014030",
+		"key": "log_artisan_masterpiece",
+		"en": "A masterpiece: {0} (+{1:#,##0} cultivation exp).",
+		"ch": "杰作：{0}（修为+{1:#,##0}）。",
+		"tc": "傑作：{0}（修為+{1:#,##0}）。",
+		"kr": "걸작: {0} (수행 경험 +{1:#,##0})."
+	},
+	{
+		"id": "-1000014031",
+		"key": "log_npc_artisan_masterpiece",
+		"en": "{0} made a masterpiece: {1}.",
+		"ch": "{0}制成杰作：{1}。",
+		"tc": "{0}製成傑作：{1}。",
+		"kr": "{0}이(가) 걸작을 만들었다: {1}."
+	},
+	{
+		"id": "-1000014032",
+		"key": "log_npc_artisan_rank",
+		"en": "{0} passed the exam of {1}: {2}.",
+		"ch": "{0}通过{1}考核：{2}。",
+		"tc": "{0}通過{1}考核：{2}。",
+		"kr": "{0}이(가) {1} 시험에 합격했다: {2}."
+	},
+	{
+		"id": "-1000014033",
+		"key": "log_artisan_accident",
+		"en": "{0}: the furnace blew up ({1:#,##0} HP and {2} months of lifespan lost).",
+		"ch": "{0}：炸炉了（损失{1:#,##0}气血与{2}个月寿元）。",
+		"tc": "{0}：炸爐了（損失{1:#,##0}氣血與{2}個月壽元）。",
+		"kr": "{0}: 화로가 터졌다 (체력 {1:#,##0}, 수명 {2}개월 손실)."
+	},
+	{
+		"id": "-1000014034",
+		"key": "artisan_craft_4",
+		"en": "Feng shui",
+		"ch": "风水",
+		"tc": "風水",
+		"kr": "풍수"
+	},
+	{
+		"id": "-1000014035",
+		"key": "artisan_essence",
+		"en": "[icon:daodian] Essence of the craft {0:#,##0} ({1} / {2} steps to return to simplicity)",
+		"ch": "[icon:daodian] 技艺精华 {0:#,##0}（{1} / {2}重可返璞归真）",
+		"tc": "[icon:daodian] 技藝精華 {0:#,##0}（{1} / {2}重可返璞歸真）",
+		"kr": "[icon:daodian] 기예 정화 {0:#,##0} (반박귀진까지 {1} / {2}단계)"
+	},
+	{
+		"id": "-1000014036",
+		"key": "artisan_essence_bonus",
+		"en": "[icon:gongji] Essence of the crafts: attack, defense and max HP +{0} %",
+		"ch": "[icon:gongji] 技艺精华：攻击、防御与气血上限+{0}%",
+		"tc": "[icon:gongji] 技藝精華：攻擊、防禦與氣血上限+{0}%",
+		"kr": "[icon:gongji] 기예 정화: 공격, 방어, 최대 체력 +{0}%"
+	},
+	{
+		"id": "-1000014037",
+		"key": "artisan_returned",
+		"en": "[icon:daodian] Returned to simplicity: {0} (a destiny each)",
+		"ch": "[icon:daodian] 已返璞归真：{0}（各得一项天命）",
+		"tc": "[icon:daodian] 已返璞歸真：{0}（各得一項天命）",
+		"kr": "[icon:daodian] 반박귀진: {0} (각각 천명 하나)"
+	},
+	{
+		"id": "-1000014038",
+		"key": "artisan_return",
+		"en": "The hands stop. For years every work of {0} was a struggle of fire and will; now it makes itself, plain as water. You have returned to simplicity.",
+		"ch": "双手停下。多年来每一次{0}都是火与意志的较量；如今自然而成，平淡如水。你已返璞归真。",
+		"tc": "雙手停下。多年來每一次{0}都是火與意志的較量；如今自然而成，平淡如水。你已返璞歸真。",
+		"kr": "손이 멈춘다. 수년간 모든 {0}은(는) 불과 의지의 싸움이었으나, 이제 물처럼 담담하게 스스로 이루어진다. 당신은 반박귀진에 이르렀다."
+	},
+	{
+		"id": "-1000014039",
+		"key": "log_artisan_return",
+		"en": "{0}: you returned to simplicity (a destiny).",
+		"ch": "{0}：你已返璞归真（获得天命）。",
+		"tc": "{0}：你已返璞歸真（獲得天命）。",
+		"kr": "{0}: 반박귀진에 이르렀다 (천명)."
+	},
+	{
+		"id": "-1000014040",
+		"key": "log_npc_artisan_return",
+		"en": "{0} returned to simplicity in {1}.",
+		"ch": "{0}在{1}上返璞归真。",
+		"tc": "{0}在{1}上返璞歸真。",
+		"kr": "{0}이(가) {1}에서 반박귀진에 이르렀다."
+	},
+	{
+		"id": "-1000014041",
+		"key": "artisan_sell",
+		"en": "[icon:zm_lingshi] Your title raises your sell price at the markets: +{0:0} %",
+		"ch": "[icon:zm_lingshi] 你的名号让市集售价提高：+{0:0}%",
+		"tc": "[icon:zm_lingshi] 你的名號讓市集售價提高：+{0:0}%",
+		"kr": "[icon:zm_lingshi] 당신의 명성으로 시장 판매가 상승: +{0:0}%"
+	},
+	{
+		"id": "-1000014042",
+		"key": "artisan_commission_line",
+		"en": "Commission of {0}: {1}, level {2}+ for {3:#,##0} [icon:zm_lingshi] ({4} months left)",
+		"ch": "{0}的委托：{1}，{2}阶以上，酬金{3:#,##0}[icon:zm_lingshi]（剩{4}个月）",
+		"tc": "{0}的委託：{1}，{2}階以上，酬金{3:#,##0}[icon:zm_lingshi]（剩{4}個月）",
+		"kr": "{0}의 의뢰: {1}, {2}급 이상, 보수 {3:#,##0}[icon:zm_lingshi] ({4}개월 남음)"
+	},
+	{
+		"id": "-1000014043",
+		"key": "artisan_deliver",
+		"en": "Deliver",
+		"ch": "交付",
+		"tc": "交付",
+		"kr": "납품"
+	},
+	{
+		"id": "-1000014044",
+		"key": "artisan_no_item",
+		"en": "You have no item of that craft and level that you made yourself.",
+		"ch": "你没有亲手制作的该类、该阶物品。",
+		"tc": "你沒有親手製作的該類、該階物品。",
+		"kr": "직접 만든 해당 종류와 등급의 물건이 없다."
+	},
+	{
+		"id": "-1000014045",
+		"key": "artisan_apprentice_line",
+		"en": "Apprentice {0} ({1}: {2})",
+		"ch": "学徒{0}（{1}：{2}）",
+		"tc": "學徒{0}（{1}：{2}）",
+		"kr": "제자 {0} ({1}: {2})"
+	},
+	{
+		"id": "-1000014046",
+		"key": "artisan_dismiss",
+		"en": "Dismiss",
+		"ch": "遣散",
+		"tc": "遣散",
+		"kr": "내보낸다"
+	},
+	{
+		"id": "-1000014047",
+		"key": "artisan_take_apprentice",
+		"en": "Take an apprentice",
+		"ch": "收徒",
+		"tc": "收徒",
+		"kr": "제자를 받는다"
+	},
+	{
+		"id": "-1000014048",
+		"key": "artisan_no_apprentice",
+		"en": "Nobody around wants to learn from you.",
+		"ch": "附近无人愿意拜你为师。",
+		"tc": "附近無人願意拜你為師。",
+		"kr": "근처에 당신에게 배우려는 사람이 없다."
+	},
+	{
+		"id": "-1000014049",
+		"key": "log_artisan_commission",
+		"en": "{0} commissions {1} of level {2} for {3:#,##0} spirit stones.",
+		"ch": "{0}委托制作{2}阶{1}，酬金{3:#,##0}灵石。",
+		"tc": "{0}委託製作{2}階{1}，酬金{3:#,##0}靈石。",
+		"kr": "{0}이(가) {2}급 {1}을(를) 영석 {3:#,##0}에 의뢰했다."
+	},
+	{
+		"id": "-1000014050",
+		"key": "log_artisan_commission_late",
+		"en": "The commission of {0} expired; they are disappointed.",
+		"ch": "{0}的委托已过期，对方很失望。",
+		"tc": "{0}的委託已過期，對方很失望。",
+		"kr": "{0}의 의뢰가 만료되었다. 실망한 모양이다."
+	},
+	{
+		"id": "-1000014051",
+		"key": "log_artisan_delivered",
+		"en": "Delivered to {0}: {1:#,##0} spirit stones.",
+		"ch": "交付给{0}：获得{1:#,##0}灵石。",
+		"tc": "交付給{0}：獲得{1:#,##0}靈石。",
+		"kr": "{0}에게 납품: 영석 {1:#,##0}."
+	},
+	{
+		"id": "-1000014052",
+		"key": "log_artisan_apprentice",
+		"en": "{0} became your apprentice in {1}.",
+		"ch": "{0}拜你为师，学习{1}。",
+		"tc": "{0}拜你為師，學習{1}。",
+		"kr": "{0}이(가) {1}을(를) 배우는 제자가 되었다."
+	},
+	{
+		"id": "-1000014053",
+		"key": "log_artisan_apprentice_gift",
+		"en": "Your apprentice {0} brought {1}.",
+		"ch": "你的学徒{0}送来了{1}。",
+		"tc": "你的學徒{0}送來了{1}。",
+		"kr": "제자 {0}이(가) {1}을(를) 가져왔다."
+	},
+	{
+		"id": "-1000014054",
+		"key": "artisan_craft_5",
+		"en": "Herbs",
+		"ch": "药道",
+		"tc": "藥道",
+		"kr": "약도"
+	},
+	{
+		"id": "-1000014055",
+		"key": "artisan_craft_6",
+		"en": "Mining",
+		"ch": "矿道",
+		"tc": "礦道",
+		"kr": "광도"
+	},
+	{
+		"id": "-1000014056",
+		"key": "artisan420201001",
+		"en": "Return to Simplicity: Alchemy",
+		"ch": "返璞归真·炼丹",
+		"tc": "返璞歸真·煉丹",
+		"kr": "반박귀진·연단"
+	},
+	{
+		"id": "-1000014057",
+		"key": "artisan420201001desc",
+		"en": "Alchemy returned to simplicity: +50 alchemy, +15% ATK, +15% DEF, +15% max HP, +3 Luck",
+		"ch": "炼丹返璞归真：炼丹+50，攻击+15%，防御+15%，气血上限+15%，气运+3",
+		"tc": "煉丹返璞歸真：煉丹+50，攻擊+15%，防禦+15%，氣血上限+15%，氣運+3",
+		"kr": "연단 반박귀진: 연단 +50, 공격 +15%, 방어 +15%, 최대 체력 +15%, 기운 +3"
+	},
+	{
+		"id": "-1000014058",
+		"key": "artisan420201002",
+		"en": "Return to Simplicity: Artifact forging",
+		"ch": "返璞归真·炼器",
+		"tc": "返璞歸真·煉器",
+		"kr": "반박귀진·연기"
+	},
+	{
+		"id": "-1000014059",
+		"key": "artisan420201002desc",
+		"en": "Artifact forging returned to simplicity: +50 artifact forging, +15% ATK, +15% DEF, +15% max HP, +3 Luck",
+		"ch": "炼器返璞归真：炼器+50，攻击+15%，防御+15%，气血上限+15%，气运+3",
+		"tc": "煉器返璞歸真：煉器+50，攻擊+15%，防禦+15%，氣血上限+15%，氣運+3",
+		"kr": "연기 반박귀진: 연기 +50, 공격 +15%, 방어 +15%, 최대 체력 +15%, 기운 +3"
+	},
+	{
+		"id": "-1000014060",
+		"key": "artisan420201003",
+		"en": "Return to Simplicity: Talismans",
+		"ch": "返璞归真·制符",
+		"tc": "返璞歸真·製符",
+		"kr": "반박귀진·제부"
+	},
+	{
+		"id": "-1000014061",
+		"key": "artisan420201003desc",
+		"en": "Talismans returned to simplicity: +50 talismans, +15% ATK, +15% DEF, +15% max HP, +3 Luck",
+		"ch": "制符返璞归真：制符+50，攻击+15%，防御+15%，气血上限+15%，气运+3",
+		"tc": "製符返璞歸真：製符+50，攻擊+15%，防禦+15%，氣血上限+15%，氣運+3",
+		"kr": "제부 반박귀진: 제부 +50, 공격 +15%, 방어 +15%, 최대 체력 +15%, 기운 +3"
+	},
+	{
+		"id": "-1000014062",
+		"key": "artisan420201004",
+		"en": "Return to Simplicity: Feng shui",
+		"ch": "返璞归真·风水",
+		"tc": "返璞歸真·風水",
+		"kr": "반박귀진·풍수"
+	},
+	{
+		"id": "-1000014063",
+		"key": "artisan420201004desc",
+		"en": "Feng shui returned to simplicity: +50 feng shui, +15% ATK, +15% DEF, +15% max HP, +3 Luck",
+		"ch": "风水返璞归真：风水+50，攻击+15%，防御+15%，气血上限+15%，气运+3",
+		"tc": "風水返璞歸真：風水+50，攻擊+15%，防禦+15%，氣血上限+15%，氣運+3",
+		"kr": "풍수 반박귀진: 풍수 +50, 공격 +15%, 방어 +15%, 최대 체력 +15%, 기운 +3"
+	},
+	{
+		"id": "-1000014064",
+		"key": "artisan420201005",
+		"en": "Return to Simplicity: Herbs",
+		"ch": "返璞归真·药道",
+		"tc": "返璞歸真·藥道",
+		"kr": "반박귀진·약도"
+	},
+	{
+		"id": "-1000014065",
+		"key": "artisan420201005desc",
+		"en": "Herbs returned to simplicity: +50 herbs, +15% ATK, +15% DEF, +15% max HP, +3 Luck",
+		"ch": "药道返璞归真：药道+50，攻击+15%，防御+15%，气血上限+15%，气运+3",
+		"tc": "藥道返璞歸真：藥道+50，攻擊+15%，防禦+15%，氣血上限+15%，氣運+3",
+		"kr": "약도 반박귀진: 약도 +50, 공격 +15%, 방어 +15%, 최대 체력 +15%, 기운 +3"
+	},
+	{
+		"id": "-1000014066",
+		"key": "artisan420201006",
+		"en": "Return to Simplicity: Mining",
+		"ch": "返璞归真·矿道",
+		"tc": "返璞歸真·礦道",
+		"kr": "반박귀진·광도"
+	},
+	{
+		"id": "-1000014067",
+		"key": "artisan420201006desc",
+		"en": "Mining returned to simplicity: +50 mining, +15% ATK, +15% DEF, +15% max HP, +3 Luck",
+		"ch": "矿道返璞归真：矿道+50，攻击+15%，防御+15%，气血上限+15%，气运+3",
+		"tc": "礦道返璞歸真：礦道+50，攻擊+15%，防禦+15%，氣血上限+15%，氣運+3",
+		"kr": "광도 반박귀진: 광도 +50, 공격 +15%, 방어 +15%, 최대 체력 +15%, 기운 +3"
+	},
+	{
+		"id": "-1000014068",
+		"key": "artisan_spot_mine",
+		"en": "Mine vein",
+		"ch": "矿脉",
+		"tc": "礦脈",
+		"kr": "광맥"
+	},
+	{
+		"id": "-1000014069",
+		"key": "artisan_spot_herb",
+		"en": "Herb valley",
+		"ch": "药谷",
+		"tc": "藥谷",
+		"kr": "약초 골짜기"
+	},
+	{
+		"id": "-1000014070",
+		"key": "artisan_spot_o",
+		"en": "Stay {0} year(s) (about {1} items)",
+		"ch": "停留{0}年（约{1}件）",
+		"tc": "停留{0}年（約{1}件）",
+		"kr": "{0}년 머문다 (약 {1}개)"
+	},
+	{
+		"id": "-1000014071",
+		"key": "artisan_spot_no",
+		"en": "Walk on",
+		"ch": "离开",
+		"tc": "離開",
+		"kr": "지나간다"
+	},
+	{
+		"id": "-1000014072",
+		"key": "artisan_spot_mine_text",
+		"en": "The rock here glitters: a rich mine vein of area {0}. A cultivator could stay for years, dig the ores out and learn the ways of the earth. (Lifespan left: {1} years)",
+		"ch": "此处岩石闪烁：是{0}区的一条富矿脉。修士可在此停留数年，开采矿石，参悟地脉之道。（剩余寿元：{1}年）",
+		"tc": "此處岩石閃爍：是{0}區的一條富礦脈。修士可在此停留數年，開採礦石，參悟地脈之道。（剩餘壽元：{1}年）",
+		"kr": "이곳의 바위가 반짝인다: {0}구역의 풍부한 광맥이다. 수사는 수년간 머물며 광석을 캐고 땅의 이치를 깨달을 수 있다. (남은 수명: {1}년)"
+	},
+	{
+		"id": "-1000014073",
+		"key": "artisan_spot_herb_text",
+		"en": "A sheltered valley of area {0}, the soil dark and full of spirit: herbs would grow well here. A cultivator could stay for years, plant and tend them. (Lifespan left: {1} years)",
+		"ch": "{0}区一处幽静山谷，土壤黝黑、灵气充沛：药材在此必长得好。修士可在此停留数年，种植照料。（剩余寿元：{1}年）",
+		"tc": "{0}區一處幽靜山谷，土壤黝黑、靈氣充沛：藥材在此必長得好。修士可在此停留數年，種植照料。（剩餘壽元：{1}年）",
+		"kr": "{0}구역의 아늑한 골짜기, 흙이 검고 영기가 가득하다: 약초가 잘 자랄 것이다. 수사는 수년간 머물며 심고 돌볼 수 있다. (남은 수명: {1}년)"
+	},
+	{
+		"id": "-1000014074",
+		"key": "secl_name_MineVein",
+		"en": "Mine vein",
+		"ch": "矿脉",
+		"tc": "礦脈",
+		"kr": "광맥"
+	},
+	{
+		"id": "-1000014075",
+		"key": "secl_name_HerbValley",
+		"en": "Herb valley",
+		"ch": "药谷",
+		"tc": "藥谷",
+		"kr": "약초 골짜기"
+	},
+	{
+		"id": "-1000014076",
+		"key": "secl_res_MineVein",
+		"en": "The years in the vein gave {0} ores: {1}. Mining +{2:#,##0} exp.",
+		"ch": "矿脉中的岁月带来{0}块矿石：{1}。矿道经验+{2:#,##0}。",
+		"tc": "礦脈中的歲月帶來{0}塊礦石：{1}。礦道經驗+{2:#,##0}。",
+		"kr": "광맥에서의 세월이 광석 {0}개를 주었다: {1}. 광도 경험 +{2:#,##0}."
+	},
+	{
+		"id": "-1000014077",
+		"key": "secl_res_HerbValley",
+		"en": "The valley's harvest: {0} herbs: {1}. Herbs +{2:#,##0} exp.",
+		"ch": "药谷的收获：{0}株药材：{1}。药道经验+{2:#,##0}。",
+		"tc": "藥谷的收穫：{0}株藥材：{1}。藥道經驗+{2:#,##0}。",
+		"kr": "골짜기의 수확: 약초 {0}개: {1}. 약도 경험 +{2:#,##0}."
+	},
+	{
+		"id": "-1000014078",
+		"key": "log_artisan_spot",
+		"en": "{0}: {1} items, +{2:#,##0} craft exp.",
+		"ch": "{0}：{1}件，技艺经验+{2:#,##0}。",
+		"tc": "{0}：{1}件，技藝經驗+{2:#,##0}。",
+		"kr": "{0}: {1}개, 기예 경험 +{2:#,##0}."
+	},
+	{
+		"id": "-1000014079",
+		"key": "artisan_card_rank",
+		"en": "[icon:jineng] {0} · [icon:wuxing] value {1:#,##0} (rank +{2}) · [icon:shanghaiweili] masterpieces {3}",
+		"ch": "[icon:jineng] {0} · [icon:wuxing] 数值{1:#,##0}（等级+{2}）· [icon:shanghaiweili] 杰作{3}",
+		"tc": "[icon:jineng] {0} · [icon:wuxing] 數值{1:#,##0}（等級+{2}）· [icon:shanghaiweili] 傑作{3}",
+		"kr": "[icon:jineng] {0} · [icon:wuxing] 수치 {1:#,##0} (등급 +{2}) · [icon:shanghaiweili] 걸작 {3}"
+	},
+	{
+		"id": "-1000014080",
+		"key": "artisan_section_commissions",
+		"en": "Commissions",
+		"ch": "委托",
+		"tc": "委託",
+		"kr": "의뢰"
+	},
+	{
+		"id": "-1000014081",
+		"key": "artisan_section_apprentices",
+		"en": "Apprentices",
+		"ch": "弟子",
+		"tc": "弟子",
+		"kr": "제자"
+	},
+	{
+		"id": "-1000014082",
+		"key": "artisan_take_apprentice_n",
+		"en": "Take an apprentice ({0} / {1})",
+		"ch": "收徒（{0}/{1}）",
+		"tc": "收徒（{0}/{1}）",
+		"kr": "제자 받기 ({0} / {1})"
+	},
+	{
+		"id": "-1000014083",
+		"key": "artisan_hint_apprentice",
+		"en": "Apprentices: from {0}",
+		"ch": "弟子：{0}起",
+		"tc": "弟子：{0}起",
+		"kr": "제자: {0}부터"
+	},
+	{
+		"id": "-1000014084",
+		"key": "artisan_hint_apprentice_full",
+		"en": "Apprentices: {0} / {1}",
+		"ch": "弟子：{0}/{1}",
+		"tc": "弟子：{0}/{1}",
+		"kr": "제자: {0} / {1}"
+	},
+	{
+		"id": "-1000014085",
+		"key": "artisan_hint_essence",
+		"en": "Essence of the craft: once {0}",
+		"ch": "技艺精华：达到{0}后",
+		"tc": "技藝精華：達到{0}後",
+		"kr": "기예 정수: {0} 이후"
+	}
+]

@@ -7,7 +7,7 @@ namespace MOD_nE7UL2.AutoTest.Scenarios.Time
 {
     /// <summary>
     /// TX-02 (InflationaryEvent): when the yearly price index passes LIMIT a currency reform happens: index reset,
-    /// money divided by 10000, town budgets cut by 80 %, drama shown. Changes the save (restored by run-autotest.ps1).
+    /// money divided by 10000 (spirit banknotes too: 1 stone each), town budgets cut by 80 %, drama shown. Changes the save (restored by run-autotest.ps1).
     /// </summary>
     public class TX02_CurrencyReform : IScenarioDefinition
     {
@@ -23,6 +23,10 @@ namespace MOD_nE7UL2.AutoTest.Scenarios.Time
                     var ev = InflationaryEvent.Instance;
                     var town = AnyTown;
                     Player.SetUnitMoney(12340000);
+                    // 7 spirit banknotes in the bag (10,000 stones each): they follow the stones, 1 stone each
+                    var have = SpiritNoteEvent.Notes(Player);
+                    if (have > 0) Player.RemoveUnitProp(SpiritNoteEvent.NOTE_ID, have);
+                    Player.AddUnitProp(SpiritNoteEvent.NOTE_ID, 7);
                     var budget = MapBuildPropertyEvent.GetBuildProperty(town);
                     var corruption = ev.Corruption;
                     EconomyHelper.SetWorldPrice(InflationaryEvent.LIMIT);
@@ -30,7 +34,8 @@ namespace MOD_nE7UL2.AutoTest.Scenarios.Time
                     ev.OnYearly();
                     c.AssertEqual(corruption + 1, ev.Corruption, "reform counted");
                     c.Assert(EconomyHelper.GetWorldPrice() <= InflationaryEvent.LIMIT, $"index reset to {EconomyHelper.GetWorldPrice()}");
-                    c.AssertEqual(1234, Player.GetUnitMoney(), "money divided by 10000");
+                    c.AssertEqual(1234 + 7, Player.GetUnitMoney(), "money divided by 10000 (7 banknotes -> 7 stones)");
+                    c.AssertEqual(0, SpiritNoteEvent.Notes(Player), "no banknote left in the bag");
                     var cut = MapBuildPropertyEvent.GetBuildProperty(town);
                     c.Assert(System.Math.Abs(budget - (long)System.Math.Round(budget * 0.8) - cut) <= 1, $"town budget cut by 80 % ({budget} -> {cut}, rounded)");
                     c.AssertEqual(0, RealMarketEvent3.Instance.MarketStack.Count, "market cleared");

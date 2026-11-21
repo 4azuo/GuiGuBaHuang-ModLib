@@ -1,3 +1,4 @@
+using MOD_nE7UL2.Helper;
 using MOD_nE7UL2.Const;
 using MOD_nE7UL2.Object;
 using ModLib.Helper;
@@ -104,7 +105,7 @@ namespace MOD_nE7UL2.Mod
                 TaoistLogEvent.Log("market_offer_line", name, best.Buyer?.GetName(), best.TotalValue, buyers);
             }
             if (lines.Count > 0 && (UISettingScreenEvent.Instance?.NotifyMarketOffers ?? true))
-                g.ui.MsgBox(GameTool.LS("market_offer_title"), string.Join("\n", lines));
+                InfoDialog.Msg(GameTool.LS("market_offer_title"), string.Join("\n", lines));
             return lines;
         }
 
@@ -209,7 +210,7 @@ namespace MOD_nE7UL2.Mod
                     BuyOrders.Remove(order);
             }
             if (filled.Count > 0 && (UISettingScreenEvent.Instance?.NotifyMarketOffers ?? true))
-                g.ui.MsgBox(GameTool.LS("market_buyorders"), string.Join("\n", filled));
+                InfoDialog.Msg(GameTool.LS("market_buyorders"), string.Join("\n", filled));
         }
 
         // ------------------------------------------------------------------ buy orders UI
@@ -357,7 +358,7 @@ namespace MOD_nE7UL2.Mod
                 var order = AddBuyOrder(town, propId, count.MainComponent.Get().Parse<int>(), price.MainComponent.Get().Parse<int>());
                 if (order == null)
                 {
-                    g.ui.MsgBox(GameTool.LS("other500020102"), string.Format(GameTool.LS("market_buyorder_fail"), MAX_BUY_ORDERS));
+                    InfoDialog.Msg(GameTool.LS("other500020102"), string.Format(GameTool.LS("market_buyorder_fail"), MAX_BUY_ORDERS));
                     return;
                 }
                 OpenBuyOrders(town);

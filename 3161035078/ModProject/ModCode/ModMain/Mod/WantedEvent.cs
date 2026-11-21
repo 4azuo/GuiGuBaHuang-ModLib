@@ -1,3 +1,4 @@
+using MOD_nE7UL2.Helper;
 using EBattleTypeData;
 using EGameTypeData;
 using MOD_nE7UL2.Const;
@@ -182,7 +183,7 @@ namespace MOD_nE7UL2.Mod
                 target.Die();
                 Claim(b, hunter);
                 if (b.PosterId == Player.GetUnitId())
-                    g.ui.MsgBox(GameTool.LS("wanted_title"), string.Format(GameTool.LS("wanted_done"), hunter.GetName(), target.GetName(), b.Reward));
+                    InfoDialog.Msg(GameTool.LS("wanted_title"), string.Format(GameTool.LS("wanted_done"), hunter.GetName(), target.GetName(), b.Reward));
             }
             else
             {
@@ -195,6 +196,9 @@ namespace MOD_nE7UL2.Mod
         public void Ambush(Bounty b, WorldUnitBase hunter)
         {
             if (GameHelper.IsInBattlle() || (TimeSkipEvent.Instance?.IsProcessing ?? false))
+                return;
+            // the spirit sense feels the hunter coming: the player slips away
+            if (SpiritSenseEvent.SenseAmbush(hunter))
                 return;
             var price = ClearNamePrice(b);
             hunter.SetUnitPos(Player.GetUnitPos());
@@ -321,7 +325,7 @@ namespace MOD_nE7UL2.Mod
             ui.AddButton(ui.MidCol, row, () =>
             {
                 var err = Post(town, Player, target, reward.MainComponent.Get().Parse<int>());
-                g.ui.MsgBox(GameTool.LS("wanted_title"), err == null ? string.Format(GameTool.LS("wanted_posted"), target.GetName()) : GameTool.LS(err));
+                InfoDialog.Msg(GameTool.LS("wanted_title"), err == null ? string.Format(GameTool.LS("wanted_posted"), target.GetName()) : GameTool.LS(err));
                 if (err == null) g.ui.CloseUI(UIType.TextInfoLong);
             }, GameTool.LS("wanted_post")).Size(200, 40);
         }

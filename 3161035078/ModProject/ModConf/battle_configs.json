@@ -1,0 +1,20 @@
+{
+	"__name": "NPCs joining the battles of the player (BattleEvent) and teaming up (HirePeopleEvent)",
+	"__help": [
+		"A value left out (or a broken file): the default of the mod.",
+		"JoinRange: cells around the player where NPCs may join.",
+		"...JoinRate / TeamMemberBetrayRate: chances in %, checked every second of the battle (0-100).",
+		"FriendlyIntim / EnemyIntim: intimacy (250 to -250) from which an NPC helps / attacks the player.",
+		"DifferenceRighteous: difference of righteousness (NPC vs player) from which an NPC takes the other side; also the most a friend may differ to team up."
+	],
+	"JoinRange": 6,
+	"RandomNpcJoinRate": 0.10,
+	"SectNpcJoinRate": 1.00,
+	"TownGuardNpcJoinRate": 3.00,
+	"TeamMemberJoinRate": 5.00,
+	"TeamMemberBetrayRate": 0.20,
+	"StalkerJoinRate": 1.00,
+	"FriendlyIntim": 160,
+	"EnemyIntim": -160,
+	"DifferenceRighteous": 80
+}

@@ -10,7 +10,7 @@ None.
 
 ## Switch
 
-`mod_configs.json` > `RealTrialConfigs`: `PowerUpOnGameLevel` 0.64, `PowerUpOnGradeLevel` 0.08.
+`real_trial_configs.json` (`RealTrialConfig`): `PowerUpOnGameLevel` 0.64, `PowerUpOnGradeLevel` 0.08.
 
 ## Flow
 

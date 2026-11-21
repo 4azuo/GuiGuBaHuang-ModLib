@@ -1,0 +1,357 @@
+[
+	{
+		"id": "-1000015000",
+		"key": "heart_button",
+		"en|ch|tc|kr": "Dao-Herz"
+	},
+	{
+		"id": "-1000015001",
+		"key": "heart_title",
+		"en|ch|tc|kr": "Dao-Herz"
+	},
+	{
+		"id": "-1000015002",
+		"key": "heart_npc",
+		"en|ch|tc|kr": "Dao-Herz: {0}"
+	},
+	{
+		"id": "-1000015003",
+		"key": "heart_lvl_0",
+		"en|ch|tc|kr": "Schwankend"
+	},
+	{
+		"id": "-1000015004",
+		"key": "heart_lvl_1",
+		"en|ch|tc|kr": "Standhaft"
+	},
+	{
+		"id": "-1000015005",
+		"key": "heart_lvl_2",
+		"en|ch|tc|kr": "Fest"
+	},
+	{
+		"id": "-1000015006",
+		"key": "heart_lvl_3",
+		"en|ch|tc|kr": "Unerschütterlich"
+	},
+	{
+		"id": "-1000015007",
+		"key": "heart_lvl_4",
+		"en|ch|tc|kr": "Diamantherz"
+	},
+	{
+		"id": "-1000015008",
+		"key": "heart_lvl_5",
+		"en|ch|tc|kr": "Herz des Himmels"
+	},
+	{
+		"id": "-1000015009",
+		"key": "heart_value",
+		"en|ch|tc|kr": "[icon:xinqing] Dao-Herz {0:#,##0} / {1:#,##0}"
+	},
+	{
+		"id": "-1000015010",
+		"key": "heart_value_top",
+		"en|ch|tc|kr": "[icon:xinqing] Dao-Herz {0:#,##0} (höchste Stufe: mehr wird zur Essenz)"
+	},
+	{
+		"id": "-1000015011",
+		"key": "heart_essence",
+		"en|ch|tc|kr": "[icon:daodian] Essenz des Herzens {0:#,##0} ({1} Stufen): [icon:nianli] max. SP +{2} %"
+	},
+	{
+		"id": "-1000015012",
+		"key": "heart_effects",
+		"en|ch|tc|kr": "[icon:nianli] Max. SP +{0} %, [icon:lingli] max. MP +{1} %; [icon:huxin] Herzdämon besiegt {2:0} %, [icon:jingli] Körperdurchbruch +{3:0}, [icon:hudun] Rückschlag und Unfälle -{4:0} %"
+	},
+	{
+		"id": "-1000015013",
+		"key": "heart_level_line",
+		"en|ch|tc|kr": "{0}: {1:#,##0} - [icon:nianli] SP +{2} %, [icon:lingli] MP +{3} %, [icon:huxin] Herzdämon {4:0} %"
+	},
+	{
+		"id": "-1000015014",
+		"key": "heart_help",
+		"en|ch|tc|kr": "Steigt: besiegte Herzdämonen, gehaltene Versprechen, Abgeschiedenheit, Durchbrüche, gute Laune. Sinkt: verlorene Herzdämonen, Verrat, gebrochene Versprechen, Fehlschläge, schlechte Laune."
+	},
+	{
+		"id": "-1000015015",
+		"key": "log_heart_up",
+		"en|ch|tc|kr": "Dao-Herz +{0}: {1}."
+	},
+	{
+		"id": "-1000015016",
+		"key": "log_heart_down",
+		"en|ch|tc|kr": "Dao-Herz -{0}: {1}."
+	},
+	{
+		"id": "-1000015017",
+		"key": "log_heart_level",
+		"en|ch|tc|kr": "Dao-Herz: {0}."
+	},
+	{
+		"id": "-1000015018",
+		"key": "heart_src_betrayal",
+		"en|ch|tc|kr": "ein verratenes Band"
+	},
+	{
+		"id": "-1000015019",
+		"key": "heart_src_demon_win",
+		"en|ch|tc|kr": "ein besiegter Herzdämon"
+	},
+	{
+		"id": "-1000015020",
+		"key": "heart_src_demon_lose",
+		"en|ch|tc|kr": "einem Herzdämon unterlegen"
+	},
+	{
+		"id": "-1000015021",
+		"key": "heart_src_seclusion",
+		"en|ch|tc|kr": "eine Abgeschiedenheit"
+	},
+	{
+		"id": "-1000015022",
+		"key": "heart_src_break_ok",
+		"en|ch|tc|kr": "ein Körperdurchbruch"
+	},
+	{
+		"id": "-1000015023",
+		"key": "heart_src_break_fail",
+		"en|ch|tc|kr": "ein gescheiterter Durchbruch"
+	},
+	{
+		"id": "-1000015024",
+		"key": "heart_src_promise_kept",
+		"en|ch|tc|kr": "ein gehaltenes Versprechen"
+	},
+	{
+		"id": "-1000015025",
+		"key": "heart_src_promise_broken",
+		"en|ch|tc|kr": "ein gebrochenes Versprechen"
+	},
+	{
+		"id": "-1000015026",
+		"key": "sense_button",
+		"en|ch|tc|kr": "Geistessinn"
+	},
+	{
+		"id": "-1000015027",
+		"key": "sense_title",
+		"en|ch|tc|kr": "Geistessinn"
+	},
+	{
+		"id": "-1000015028",
+		"key": "sense_npc",
+		"en|ch|tc|kr": "Geistessinn: {0}"
+	},
+	{
+		"id": "-1000015029",
+		"key": "sense_lvl_0",
+		"en|ch|tc|kr": "Schlummernd"
+	},
+	{
+		"id": "-1000015030",
+		"key": "sense_lvl_1",
+		"en|ch|tc|kr": "Geistwahrnehmung"
+	},
+	{
+		"id": "-1000015031",
+		"key": "sense_lvl_2",
+		"en|ch|tc|kr": "Göttlicher Gedanke"
+	},
+	{
+		"id": "-1000015032",
+		"key": "sense_lvl_3",
+		"en|ch|tc|kr": "Sinn jenseits des Körpers"
+	},
+	{
+		"id": "-1000015033",
+		"key": "sense_lvl_4",
+		"en|ch|tc|kr": "Sinnesdomäne"
+	},
+	{
+		"id": "-1000015034",
+		"key": "sense_lvl_5",
+		"en|ch|tc|kr": "Sinn des Himmels"
+	},
+	{
+		"id": "-1000015035",
+		"key": "sense_exp",
+		"en|ch|tc|kr": "[icon:nianli] Geistessinn {0:#,##0} / {1:#,##0}"
+	},
+	{
+		"id": "-1000015036",
+		"key": "sense_exp_top",
+		"en|ch|tc|kr": "[icon:nianli] Geistessinn {0:#,##0} (höchste Stufe: mehr wird zur Essenz)"
+	},
+	{
+		"id": "-1000015039",
+		"key": "sense_scan_done",
+		"en|ch|tc|kr": "Du hast die Umgebung diesen Monat bereits abgetastet."
+	},
+	{
+		"id": "-1000015040",
+		"key": "sense_scan_button",
+		"en|ch|tc|kr": "[icon:fanwei] Umgebung abtasten ({0} Felder, +{1} EP, einmal im Monat)"
+	},
+	{
+		"id": "-1000015041",
+		"key": "sense_scan_result",
+		"en|ch|tc|kr": "Dein Sinn breitet sich aus: {0} Kultivierende in der Nähe, {1} feindlich; der stärkste ist {2} (Rang {3}). Kräuter der Felder: {4:#,##0}, Erze: {5:#,##0}."
+	},
+	{
+		"id": "-1000015043",
+		"key": "sense_help",
+		"en|ch|tc|kr": "EP jeden Monat (nach Talent), in Abgeschiedenheit, durch besiegte Herzdämonen und eine Abtastung im Monat."
+	},
+	{
+		"id": "-1000015044",
+		"key": "log_sense_level",
+		"en|ch|tc|kr": "Geistessinn: {0}."
+	},
+	{
+		"id": "-1000015045",
+		"key": "log_sense_ambush",
+		"en|ch|tc|kr": "Dein Geistessinn spürte {0} kommen: du bist entwischt."
+	},
+	{
+		"id": "-1000015046",
+		"key": "sense_ambush",
+		"en|ch|tc|kr": "Am Rand deines Geistessinns regt sich Mordlust: {0}, ein Kopfgeldjäger, lauert voraus. Du biegst ab, bevor er dich sieht."
+	},
+	{
+		"id": "-1000015047",
+		"key": "sense_scan_spot",
+		"en|ch|tc|kr": "Das nächste {0}: {1} Felder nach {2}."
+	},
+	{
+		"id": "-1000015048",
+		"key": "sense_dir_0",
+		"en|ch|tc|kr": "Norden"
+	},
+	{
+		"id": "-1000015049",
+		"key": "sense_dir_1",
+		"en|ch|tc|kr": "Nordosten"
+	},
+	{
+		"id": "-1000015050",
+		"key": "sense_dir_2",
+		"en|ch|tc|kr": "Osten"
+	},
+	{
+		"id": "-1000015051",
+		"key": "sense_dir_3",
+		"en|ch|tc|kr": "Südosten"
+	},
+	{
+		"id": "-1000015052",
+		"key": "sense_dir_4",
+		"en|ch|tc|kr": "Süden"
+	},
+	{
+		"id": "-1000015053",
+		"key": "sense_dir_5",
+		"en|ch|tc|kr": "Südwesten"
+	},
+	{
+		"id": "-1000015054",
+		"key": "sense_dir_6",
+		"en|ch|tc|kr": "Westen"
+	},
+	{
+		"id": "-1000015055",
+		"key": "sense_dir_7",
+		"en|ch|tc|kr": "Nordwesten"
+	},
+	{
+		"id": "-1000015037",
+		"key": "sense_essence",
+		"en|ch|tc|kr": "[icon:daodian] Essenz des Sinns {0:#,##0} ({1} Stufen): [icon:nianli] max. SP +{2} %"
+	},
+	{
+		"id": "-1000015038",
+		"key": "sense_effects",
+		"en|ch|tc|kr": "[icon:nianli] Max. SP +{0} %, [icon:lingli] max. MP +{1} %; [icon:shanbiD] Hinterhalte gespürt {2:0} %, [icon:huxin] Herzdämonen -{3:0} %, [icon:fanwei] Abtastung {4} Felder; [icon:hudun] vermiedene Hinterhalte: {5}"
+	},
+	{
+		"id": "-1000015042",
+		"key": "sense_level_line",
+		"en|ch|tc|kr": "{0}: {1:#,##0} - [icon:nianli] SP +{2} %, [icon:lingli] MP +{3} %, [icon:shanbiD] Hinterhalt gespürt {4:0} %"
+	},
+	{
+		"id": "-1000015056",
+		"key": "sense_scan_title",
+		"en|ch|tc|kr": "Geistessinn - Erkundung"
+	},
+	{
+		"id": "-1000015057",
+		"key": "sense_scan_summary",
+		"en|ch|tc|kr": "{0} Kultivierende ringsum, {1} feindlich · Kräuter der Felder {2:#,##0} · Erze {3:#,##0}"
+	},
+	{
+		"id": "-1000015058",
+		"key": "sense_scan_people",
+		"en|ch|tc|kr": "Kultivierende ringsum"
+	},
+	{
+		"id": "-1000015059",
+		"key": "sense_scan_nobody",
+		"en|ch|tc|kr": "Niemand in Reichweite."
+	},
+	{
+		"id": "-1000015060",
+		"key": "sense_scan_unit",
+		"en|ch|tc|kr": "Stufe {0} · {1}"
+	},
+	{
+		"id": "-1000015061",
+		"key": "sense_scan_hostile",
+		"en|ch|tc|kr": "feindlich"
+	},
+	{
+		"id": "-1000015062",
+		"key": "sense_scan_neutral",
+		"en|ch|tc|kr": "ruhig"
+	},
+	{
+		"id": "-1000015063",
+		"key": "sense_scan_more",
+		"en|ch|tc|kr": "... und {0} weitere"
+	},
+	{
+		"id": "-1000015064",
+		"key": "sense_scan_places",
+		"en|ch|tc|kr": "Orte"
+	},
+	{
+		"id": "-1000015065",
+		"key": "sense_scan_noplace",
+		"en|ch|tc|kr": "Kein besonderer Ort in Reichweite."
+	},
+	{
+		"id": "-1000015066",
+		"key": "sense_scan_place",
+		"en|ch|tc|kr": "Gebiet {0} · {1} Felder nach {2}"
+	},
+	{
+		"id": "-1000015067",
+		"key": "sense_scan_place_far",
+		"en|ch|tc|kr": "Gebiet {0} · {1} Felder nach {2} (außer Reichweite: der nächste)"
+	},
+	{
+		"id": "-1000015068",
+		"key": "sense_scan_hint",
+		"en|ch|tc|kr": "Klicke auf einen Namen, um den Kultivierenden zu sehen."
+	},
+	{
+		"id": "-1000015069",
+		"key": "heart_story",
+		"en|ch|tc|kr": "eine Geschichte"
+	},
+	{
+		"id": "-1000015070",
+		"key": "sense_story",
+		"en|ch|tc|kr": "eine Geschichte"
+	}
+]

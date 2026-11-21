@@ -5,7 +5,6 @@ using ModLib.Attributes;
 using ModLib.Enum;
 using ModLib.Mod;
 using System;
-using static MOD_nE7UL2.Object.ModStts;
 using ModLib.Helper;
 
 namespace MOD_nE7UL2.Mod
@@ -21,7 +20,7 @@ namespace MOD_nE7UL2.Mod
         public const int MANASHIELD_EFFECT_MAIN_ID = 903151120;
         public const int MANASHIELD_EFFECT_EFX_ID = 903151121;
 
-        public static _BattleManashieldConfigs ManashieldConfigs => ModMain.ModObj.ModSettings.BattleManashieldConfigs;
+        public static BattleManashieldConfig ManashieldConfigs => BattleManashieldConfig.Conf;
 
         /// <summary>
         /// Shields every human.

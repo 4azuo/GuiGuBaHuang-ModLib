@@ -1,0 +1,26 @@
+{
+	"__name": "Expertise (ExpertEvent)",
+	"__help": [
+		"A value left out (or a broken file): the default of the mod; a type left out: its default.",
+		"SkillDmgRatios: damage bonus per expertise level, SkillExpRatios: expertise exp per use in a battle / a month of practice, by type (None, SkillLeft, SkillRight, Step, Ability, Ultimate).",
+		"AutoArtifactExpRate: artifact expertise exp a month; BattleArtifactExpRate: per use in a battle."
+	],
+	"SkillDmgRatios": {
+		"None": 0.0,
+		"SkillLeft": 0.1,
+		"SkillRight": 1.0,
+		"Step": 1.0,
+		"Ability": 0.4,
+		"Ultimate": 5.0
+	},
+	"SkillExpRatios": {
+		"None": 0.0,
+		"SkillLeft": 0.02,
+		"SkillRight": 0.8,
+		"Step": 0.1,
+		"Ability": 1.0,
+		"Ultimate": 0.6
+	},
+	"AutoArtifactExpRate": 1.0,
+	"BattleArtifactExpRate": 0.02
+}

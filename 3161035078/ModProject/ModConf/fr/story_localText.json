@@ -2888,5 +2888,605 @@
 		"id": -1000007577,
 		"key": "story_L_nightmare",
 		"en|ch|tc|kr": "un cauchemar"
+	},
+	{
+		"id": "-1000007579",
+		"key": "story_task_desc_M",
+		"en|ch|tc|kr": "{0}"
+	},
+	{
+		"id": "-1000007610",
+		"key": "story_end_M_Heir",
+		"en|ch|tc|kr": "L'héritier"
+	},
+	{
+		"id": "-1000007614",
+		"key": "story_task_desc_N",
+		"en|ch|tc|kr": "{0}"
+	},
+	{
+		"id": "-1000007643",
+		"key": "story_task_desc_O",
+		"en|ch|tc|kr": "{0}"
+	},
+	{
+		"id": "-1000007653",
+		"key": "story_O1_1_o1",
+		"en|ch|tc|kr": "Dire la vérité"
+	},
+	{
+		"id": "-1000007661",
+		"key": "story_O3_r_o2",
+		"en|ch|tc|kr": "Se battre"
+	},
+	{
+		"id": "-1000007673",
+		"key": "story_task_desc_P",
+		"en|ch|tc|kr": "{0}"
+	},
+	{
+		"id": "-1000007680",
+		"key": "story_P0_1_o2",
+		"en|ch|tc|kr": "Passer son chemin"
+	},
+	{
+		"id": "-1000007578",
+		"key": "story_name_M",
+		"en|ch|tc|kr": "La forge du vieux Tie"
+	},
+	{
+		"id": "-1000007580",
+		"key": "story_task_M0",
+		"en|ch|tc|kr": "Le vieux forgeron {F} de {T} s'est brûlé la main. Il t'a demandé de l'aide."
+	},
+	{
+		"id": "-1000007581",
+		"key": "story_task_M1",
+		"en|ch|tc|kr": "{F} a besoin du minerai d'un filon pour sa dernière lame."
+	},
+	{
+		"id": "-1000007582",
+		"key": "story_task_M2",
+		"en|ch|tc|kr": "{F} doit choisir qui gardera les secrets de sa forge."
+	},
+	{
+		"id": "-1000007583",
+		"key": "story_task_M3",
+		"en|ch|tc|kr": "La guilde des forgerons de {T} veut fermer la forge de {F} (2 ans)."
+	},
+	{
+		"id": "-1000007584",
+		"key": "story_task_M4",
+		"en|ch|tc|kr": "Le dernier feu de la forge de {F}."
+	},
+	{
+		"id": "-1000007585",
+		"key": "story_M0_1",
+		"en|ch|tc|kr": "La forge de {T} sent la chair brûlée. Un vieux forgeron enveloppe sa main droite dans un chiffon mouillé.\n{F} : « Le four m'a craché dessus. Quarante ans, et il m'a craché dessus. »\n{F} : « L'examen de la guilde est dans trois jours. Si personne de ma forge ne le réussit, ils me retirent ma licence. Sais-tu manier un marteau ? »"
+	},
+	{
+		"id": "-1000007586",
+		"key": "story_M0_1_o1",
+		"en|ch|tc|kr": "Passer l'examen à sa place"
+	},
+	{
+		"id": "-1000007587",
+		"key": "story_M0_1_o2",
+		"en|ch|tc|kr": "Lui donner une pilule de soin"
+	},
+	{
+		"id": "-1000007588",
+		"key": "story_M0_1_o3",
+		"en|ch|tc|kr": "Ce n'est pas mon affaire"
+	},
+	{
+		"id": "-1000007589",
+		"key": "story_M0_exam",
+		"en|ch|tc|kr": "Trois jours d'étincelles. Les maîtres de la guilde froncent les sourcils, puis hochent la tête.\n{F} : « Ha ! Tordue, mais elle tient le fil. Tu as les mains pour ça. »"
+	},
+	{
+		"id": "-1000007590",
+		"key": "story_M0_2",
+		"en|ch|tc|kr": "La pilule referme la brûlure en une nuit. Il plie les doigts, émerveillé.\n{F} : « Je te dois une dette, cultivateur. Un forgeron paie ses dettes en acier. »"
+	},
+	{
+		"id": "-1000007591",
+		"key": "story_M1_1",
+		"en|ch|tc|kr": "{F} : « Une lame de plus avant de mourir. Pas une jolie - une vraie. Pour ça il me faut le minerai de {0}, le riche filon après la ville. »\n{F} : « Apporte-moi du minerai, ou l'argent pour l'acheter ({1:#,##0} [icon:zm_lingshi]). Ou descends toi-même - quelque chose garde le filon. »"
+	},
+	{
+		"id": "-1000007592",
+		"key": "story_M1_1_o1",
+		"en|ch|tc|kr": "Lui donner du minerai"
+	},
+	{
+		"id": "-1000007593",
+		"key": "story_M1_1_o2",
+		"en|ch|tc|kr": "Payer le minerai ({1:#,##0} [icon:zm_lingshi])"
+	},
+	{
+		"id": "-1000007594",
+		"key": "story_M1_1_o3",
+		"en|ch|tc|kr": "Descendre dans le filon"
+	},
+	{
+		"id": "-1000007595",
+		"key": "story_M1_2",
+		"en|ch|tc|kr": "Le minerai rougeoie dans son four. Il le travaille de la main gauche pendant que tu tiens les pinces.\n{F} : « Regarde la couleur, pas le marteau. L'acier te dit quand. »"
+	},
+	{
+		"id": "-1000007596",
+		"key": "story_M2_1",
+		"en|ch|tc|kr": "Un garçon balaie le sol de la forge et lorgne l'enclume.\n{F} : « L'ami de mon petit-fils. Maladroit, têtu. Comme moi. »\n{F} : « Mes secrets ne doivent pas mourir avec moi. Enseigne-lui avec moi - ou prends-les et va loin. »"
+	},
+	{
+		"id": "-1000007597",
+		"key": "story_M2_1_o1",
+		"en|ch|tc|kr": "Enseigner au garçon ensemble"
+	},
+	{
+		"id": "-1000007598",
+		"key": "story_M2_1_o2",
+		"en|ch|tc|kr": "Apprendre toi-même les secrets"
+	},
+	{
+		"id": "-1000007599",
+		"key": "story_M3_1",
+		"en|ch|tc|kr": "Des hommes en tablier de la guilde se tiennent à la porte de la forge, torches à la main.\nUn maître de la guilde : « Un vieux fou à la main estropiée et un étranger à son enclume. Fermez, ou nous fermons. »\n{F} : « Sur mes os. »"
+	},
+	{
+		"id": "-1000007600",
+		"key": "story_M3_1_o1",
+		"en|ch|tc|kr": "Les chasser"
+	},
+	{
+		"id": "-1000007601",
+		"key": "story_M3_1_o2",
+		"en|ch|tc|kr": "Acheter la paix de la guilde ({0:#,##0} [icon:zm_lingshi])"
+	},
+	{
+		"id": "-1000007602",
+		"key": "story_M4_burned",
+		"en|ch|tc|kr": "La forge n'est que cendres. {F} est assis sur l'enclume froide, la main brûlée sur le genou.\n{F} : « Le feu reprend ce qu'il a donné. Emporte ce que je t'ai appris, et fais-le brûler ailleurs. »"
+	},
+	{
+		"id": "-1000007603",
+		"key": "story_M4_1",
+		"en|ch|tc|kr": "Le dernier feu de la forge. {F} est maigre maintenant, la barbe blanche comme la cendre.\n{F} : « Il reste une lame dans ces mains. Qu'elle soit ce qu'elle sera - ou apporte-moi du minerai de rang {0} et j'en ferai un chef-d'œuvre. »"
+	},
+	{
+		"id": "-1000007604",
+		"key": "story_M4_1_o1",
+		"en|ch|tc|kr": "Laisser la forge décider"
+	},
+	{
+		"id": "-1000007605",
+		"key": "story_M4_1_o2",
+		"en|ch|tc|kr": "Apporter du minerai de rang {0} pour un chef-d'œuvre"
+	},
+	{
+		"id": "-1000007606",
+		"key": "story_endM_Heir",
+		"en|ch|tc|kr": "Le garçon tient les pinces maintenant, et ses coups sont justes.\n{F} : « Tu vois ? Maladroit et têtu. Un forgeron. » Il te met une lame dans les mains. « Sa première. Ma dernière. Garde-la. »"
+	},
+	{
+		"id": "-1000007607",
+		"key": "story_endM_Secret",
+		"en|ch|tc|kr": "Tu emportes ses secrets : la couleur de l'acier, le souffle du soufflet, la patience du marteau d'un vieil homme."
+	},
+	{
+		"id": "-1000007608",
+		"key": "story_endM_Masterwork",
+		"en|ch|tc|kr": "Le minerai chante dans le feu. Trois jours et trois nuits, il ne dort pas.\n{F} : « Voilà. C'est la lame que je suis né pour forger. » Il sourit et pose le marteau pour de bon."
+	},
+	{
+		"id": "-1000007609",
+		"key": "story_end_M_Masterwork",
+		"en|ch|tc|kr": "Chef-d'œuvre"
+	},
+	{
+		"id": "-1000007611",
+		"key": "story_end_M_Secret",
+		"en|ch|tc|kr": "Le secret"
+	},
+	{
+		"id": "-1000007612",
+		"key": "story_no_ore",
+		"en|ch|tc|kr": "Tu n'as pas de minerai de rang {0} ou plus."
+	},
+	{
+		"id": "-1000007613",
+		"key": "story_name_N",
+		"en|ch|tc|kr": "La maison de la vieille rue"
+	},
+	{
+		"id": "-1000007615",
+		"key": "story_task_N0",
+		"en|ch|tc|kr": "Il y a quelque chose sous le plancher de ta maison à {T}."
+	},
+	{
+		"id": "-1000007616",
+		"key": "story_task_N1",
+		"en|ch|tc|kr": "Des bandits menacent la vieille rue de {T} ; ta voisine {N} demande de l'aide."
+	},
+	{
+		"id": "-1000007617",
+		"key": "story_task_N2",
+		"en|ch|tc|kr": "Les notes de la cave racontent comment la maison fut bâtie."
+	},
+	{
+		"id": "-1000007618",
+		"key": "story_task_N3",
+		"en|ch|tc|kr": "{T} est attaquée ; la rue t'attend (1 an)."
+	},
+	{
+		"id": "-1000007619",
+		"key": "story_task_N4",
+		"en|ch|tc|kr": "La rue de {T} juge son cultivateur."
+	},
+	{
+		"id": "-1000007620",
+		"key": "story_N0_1",
+		"en|ch|tc|kr": "Ta maison à {T}. Une planche branlante sous le lit, et dessous, des marches de pierre et une porte scellée par un talisman gris de vieillesse.\nUn cultivateur vivait ici bien avant toi."
+	},
+	{
+		"id": "-1000007621",
+		"key": "story_N0_1_o1",
+		"en|ch|tc|kr": "Briser le sceau"
+	},
+	{
+		"id": "-1000007622",
+		"key": "story_N0_1_o2",
+		"en|ch|tc|kr": "Le resceller"
+	},
+	{
+		"id": "-1000007623",
+		"key": "story_N0_2",
+		"en|ch|tc|kr": "Derrière le sceau, une marionnette de pierre gît en morceaux parmi des flacons de pilules et des carnets.\nTa voisine frappe à la porte, pâle.\n{N} : « Ce bruit... la cave du vieux maître ? Grand-mère disait de ne jamais l'ouvrir. »"
+	},
+	{
+		"id": "-1000007624",
+		"key": "story_N0_sealed",
+		"en|ch|tc|kr": "Tu appliques un nouveau talisman sur l'ancien. La planche reprend sa place.\nTa voisine te salue depuis son seuil.\n{N} : « Bonsoir, immortel ! La rue est heureuse d'avoir de nouveau un cultivateur. »"
+	},
+	{
+		"id": "-1000007625",
+		"key": "story_N1_1",
+		"en|ch|tc|kr": "{N} : « Ils viennent chaque mois maintenant - des hommes avec des couteaux, et un cultivateur démoniaque avec eux. Ils prennent le riz, le tissu, les bracelets des filles. »\n{N} : « Nous ne sommes que des mortels. Tu vis dans notre rue... »"
+	},
+	{
+		"id": "-1000007626",
+		"key": "story_N1_1_o1",
+		"en|ch|tc|kr": "Les attendre et combattre"
+	},
+	{
+		"id": "-1000007627",
+		"key": "story_N1_1_o2",
+		"en|ch|tc|kr": "Engager des gardes pour la rue ({0:#,##0} [icon:zm_lingshi])"
+	},
+	{
+		"id": "-1000007628",
+		"key": "story_N1_1_o3",
+		"en|ch|tc|kr": "Les soucis des mortels ne me regardent pas"
+	},
+	{
+		"id": "-1000007629",
+		"key": "story_N2_1",
+		"en|ch|tc|kr": "Les notes du vieux maître, d'une écriture soignée : il acheta jadis toute la rue, rasa les maisons pour un manoir et s'enrichit du trésor en dessous. Les mortels le maudirent jusqu'à sa mort.\nUne page marque un second trésor - sous les maisons voisines de la tienne."
+	},
+	{
+		"id": "-1000007630",
+		"key": "story_N2_1_o1",
+		"en|ch|tc|kr": "Les racheter et creuser"
+	},
+	{
+		"id": "-1000007631",
+		"key": "story_N2_1_o2",
+		"en|ch|tc|kr": "Brûler la page"
+	},
+	{
+		"id": "-1000007632",
+		"key": "story_N3_1",
+		"en|ch|tc|kr": "De la fumée au-dessus du rempart de {T}. Des pillards à la porte, et la vieille rue juste derrière.\n{N} : « On dit que le rempart ne tiendra pas. Où irons-nous ? »"
+	},
+	{
+		"id": "-1000007633",
+		"key": "story_N3_1_o1",
+		"en|ch|tc|kr": "Tenir la porte"
+	},
+	{
+		"id": "-1000007634",
+		"key": "story_N3_1_o2",
+		"en|ch|tc|kr": "Payer le rempart ({0:#,##0} [icon:zm_lingshi] pour la ville)"
+	},
+	{
+		"id": "-1000007635",
+		"key": "story_N3_1_o3",
+		"en|ch|tc|kr": "Laisser la ville à son sort"
+	},
+	{
+		"id": "-1000007636",
+		"key": "story_endN_Manor",
+		"en|ch|tc|kr": "Les maisons des voisins tombent une à une ; dessous, un trésor du vieux maître. La rue est silencieuse maintenant - personne n'y vit à part toi."
+	},
+	{
+		"id": "-1000007637",
+		"key": "story_endN_Home",
+		"en|ch|tc|kr": "Des lanternes à chaque porte de la vieille rue. {N} apporte un bol de raviolis.\n{N} : « Les enfants l'appellent maintenant la rue de l'immortel. Il y aura toujours une place pour toi à notre table. »"
+	},
+	{
+		"id": "-1000007638",
+		"key": "story_endN_Empty",
+		"en|ch|tc|kr": "Les portes se ferment sur ton passage. Une à une, les familles de la vieille rue vendent et s'en vont."
+	},
+	{
+		"id": "-1000007639",
+		"key": "story_end_N_Home",
+		"en|ch|tc|kr": "Foyer"
+	},
+	{
+		"id": "-1000007640",
+		"key": "story_end_N_Manor",
+		"en|ch|tc|kr": "Le manoir"
+	},
+	{
+		"id": "-1000007641",
+		"key": "story_end_N_Empty",
+		"en|ch|tc|kr": "Une rue vide"
+	},
+	{
+		"id": "-1000007642",
+		"key": "story_name_O",
+		"en|ch|tc|kr": "Cendres de la ville"
+	},
+	{
+		"id": "-1000007644",
+		"key": "story_task_O0",
+		"en|ch|tc|kr": "Un enfant a survécu à la chute de {T}."
+	},
+	{
+		"id": "-1000007645",
+		"key": "story_task_O1",
+		"en|ch|tc|kr": "{O} veut savoir qui a brûlé {T} (2 ans)."
+	},
+	{
+		"id": "-1000007646",
+		"key": "story_task_O2",
+		"en|ch|tc|kr": "{O} s'entraîne pour devenir cultivateur (4 ans)."
+	},
+	{
+		"id": "-1000007647",
+		"key": "story_task_O3",
+		"en|ch|tc|kr": "{O} a grandi (7 ans)."
+	},
+	{
+		"id": "-1000007648",
+		"key": "story_O0_1",
+		"en|ch|tc|kr": "{T}. Poutres noircies, cendre froide, l'odeur d'un vieil incendie. Dans les ruines d'une maison, un enfant est assis près d'une poupée cassée et ne pleure pas."
+	},
+	{
+		"id": "-1000007649",
+		"key": "story_O0_butcher",
+		"en|ch|tc|kr": "{T}. Tu connais cet endroit. Tu sais quelle épée a fait ces cendres.\nDans les ruines d'une maison, un enfant est assis près d'une poupée cassée et te regarde sans peur - il ne connaît pas ton visage."
+	},
+	{
+		"id": "-1000007650",
+		"key": "story_O0_1_o1",
+		"en|ch|tc|kr": "Emmener l'enfant"
+	},
+	{
+		"id": "-1000007651",
+		"key": "story_O0_1_o2",
+		"en|ch|tc|kr": "Laisser de l'argent à un fermier pour l'enfant"
+	},
+	{
+		"id": "-1000007652",
+		"key": "story_O1_1",
+		"en|ch|tc|kr": "{O} a grandi, et se tait comme un enfant ne devrait pas.\n{O} : « Chaque nuit je vois le feu. Quelqu'un l'a fait. Qui ? Tu es cultivateur - tu le sais. »"
+	},
+	{
+		"id": "-1000007654",
+		"key": "story_O1_1_o2",
+		"en|ch|tc|kr": "Mentir : « des bandits, morts depuis longtemps »"
+	},
+	{
+		"id": "-1000007655",
+		"key": "story_O1_1_o3",
+		"en|ch|tc|kr": "« La haine est un piètre maître »"
+	},
+	{
+		"id": "-1000007656",
+		"key": "story_O2_1",
+		"en|ch|tc|kr": "{O} manie une épée de bois dès l'aube, encore et encore, jusqu'à ce que ses mains saignent.\n{O} : « Apprends-moi. Cette fois je serai assez fort. »"
+	},
+	{
+		"id": "-1000007657",
+		"key": "story_O2_1_o1",
+		"en|ch|tc|kr": "S'entraîner avec {O}"
+	},
+	{
+		"id": "-1000007658",
+		"key": "story_O2_1_o2",
+		"en|ch|tc|kr": "Enseigner plutôt la patience"
+	},
+	{
+		"id": "-1000007659",
+		"key": "story_O3_reckoning",
+		"en|ch|tc|kr": "{O} se tient sur la route, une vraie épée à présent, le regard d'un cultivateur adulte.\n{O} : « J'ai trouvé les vieux registres de {T}. Je sais à qui était l'épée. Je sais de qui j'ai mangé le pain pendant des années. »\n{O} : « Dégaine. »"
+	},
+	{
+		"id": "-1000007660",
+		"key": "story_O3_r_o1",
+		"en|ch|tc|kr": "Baisser ton épée"
+	},
+	{
+		"id": "-1000007662",
+		"key": "story_O3_rebuild",
+		"en|ch|tc|kr": "{O} : « Je suis retourné à {T}. Des herbes folles dans les rues, mais le puits est toujours doux. »\n{O} : « Les familles reviendraient s'il y avait des murs et des maisons. Il faut {0:#,##0} [icon:zm_lingshi]. La rebâtiras-tu avec moi ? »"
+	},
+	{
+		"id": "-1000007663",
+		"key": "story_O3_lie",
+		"en|ch|tc|kr": "{O} : « Je n'ai jamais trouvé ces bandits. Peut-être que ça n'a plus d'importance. »\n{O} : « Je suis retourné à {T}. Les familles reviendraient s'il y avait des murs et des maisons. Il faut {0:#,##0} [icon:zm_lingshi]. Tu m'aides ? »"
+	},
+	{
+		"id": "-1000007664",
+		"key": "story_O3_b_o1",
+		"en|ch|tc|kr": "Rebâtir {T} ({0:#,##0} [icon:zm_lingshi])"
+	},
+	{
+		"id": "-1000007665",
+		"key": "story_O3_b_o2",
+		"en|ch|tc|kr": "Laisser la ville morte en paix"
+	},
+	{
+		"id": "-1000007666",
+		"key": "story_endO_Atonement",
+		"en|ch|tc|kr": "Ton épée tombe dans la poussière. La lame de {O} s'arrête à un doigt de ta gorge - tremble, et s'abaisse.\n{O} : « Je ne peux pas. Tu m'as élevé. » L'enfant des cendres s'en va. Quelque chose dans ton cœur, gelé depuis longtemps, se fissure."
+	},
+	{
+		"id": "-1000007667",
+		"key": "story_endO_Ashes",
+		"en|ch|tc|kr": "{T} reste une ruine. L'herbe la recouvre, et personne ne se souvient de l'enfant des cendres."
+	},
+	{
+		"id": "-1000007668",
+		"key": "story_endO_Rebuilt",
+		"en|ch|tc|kr": "De nouveaux murs pour {T}, de nouveaux toits. De la fumée de cuisines, pas d'incendies.\n{O} : « Ils m'ont demandé d'être le gardien de la ville. J'ai dit oui - si tu viens nous voir. »"
+	},
+	{
+		"id": "-1000007669",
+		"key": "story_end_O_Atonement",
+		"en|ch|tc|kr": "Expiation"
+	},
+	{
+		"id": "-1000007670",
+		"key": "story_end_O_Ashes",
+		"en|ch|tc|kr": "Cendres"
+	},
+	{
+		"id": "-1000007671",
+		"key": "story_end_O_Rebuilt",
+		"en|ch|tc|kr": "Rebâtie"
+	},
+	{
+		"id": "-1000007672",
+		"key": "story_name_P",
+		"en|ch|tc|kr": "Un battement dans la pierre"
+	},
+	{
+		"id": "-1000007674",
+		"key": "story_task_P0",
+		"en|ch|tc|kr": "Ton sens spirituel a capté un battement de cœur là où personne ne devrait être."
+	},
+	{
+		"id": "-1000007675",
+		"key": "story_task_P1",
+		"en|ch|tc|kr": "Un raffineur corporel, {B}, est pris à moitié pétrifié dans sa tribulation."
+	},
+	{
+		"id": "-1000007676",
+		"key": "story_task_P2",
+		"en|ch|tc|kr": "{B} te montre la voie du corps."
+	},
+	{
+		"id": "-1000007677",
+		"key": "story_task_P3",
+		"en|ch|tc|kr": "La seconde tribulation de {B}."
+	},
+	{
+		"id": "-1000007678",
+		"key": "story_P0_1",
+		"en|ch|tc|kr": "Tu laisses ton sens spirituel s'étendre en marchant. Arbres, bêtes, le pouls lent de la terre...\nEt sous l'eau qui tombe devant toi, dans la roche même - un battement de cœur. Lent. Humain."
+	},
+	{
+		"id": "-1000007679",
+		"key": "story_P0_1_o1",
+		"en|ch|tc|kr": "Suivre le battement"
+	},
+	{
+		"id": "-1000007681",
+		"key": "story_P1_1",
+		"en|ch|tc|kr": "Sous la cascade, un homme est à moitié de pierre - jambes, ventre, un bras gris et fendillé. Ses yeux s'ouvrent quand ton sens le touche.\n{B} : « Ma tribulation corporelle... elle a échoué à mi-chemin. Dix ans ainsi. Une pilule, une herbe - n'importe quoi de vivant. »\n{B} : « Ou prends ce qui reste de moi. L'essence de mon corps te rendrait fort. »"
+	},
+	{
+		"id": "-1000007682",
+		"key": "story_P1_1_o1",
+		"en|ch|tc|kr": "Lui donner une pilule"
+	},
+	{
+		"id": "-1000007683",
+		"key": "story_P1_1_o2",
+		"en|ch|tc|kr": "Lui donner une herbe"
+	},
+	{
+		"id": "-1000007684",
+		"key": "story_P1_1_o3",
+		"en|ch|tc|kr": "Prendre son essence"
+	},
+	{
+		"id": "-1000007685",
+		"key": "story_P1_2",
+		"en|ch|tc|kr": "La pierre se fend et tombe de lui comme une vieille écorce. Il se lève, tremblant, vivant.\n{B} : « Dix ans j'ai écouté cette eau. Je te le rendrai - avec la seule chose que j'ai : un corps qui ne se brise pas. »"
+	},
+	{
+		"id": "-1000007686",
+		"key": "story_P2_1",
+		"en|ch|tc|kr": "{B} : « Le corps se souvient de chaque coup. Laisse-le apprendre. » Il fait craquer ses jointures. « Frappe-moi. Puis je te frappe. Ou tiens-toi sous l'eau comme moi - un jour pour chaque année que j'ai perdue. »"
+	},
+	{
+		"id": "-1000007687",
+		"key": "story_P2_1_o1",
+		"en|ch|tc|kr": "Échanger des coups avec {B}"
+	},
+	{
+		"id": "-1000007688",
+		"key": "story_P2_1_o2",
+		"en|ch|tc|kr": "Se tenir sous la cascade"
+	},
+	{
+		"id": "-1000007689",
+		"key": "story_P3_1",
+		"en|ch|tc|kr": "Le ciel au-dessus de la cascade devient gris fer. {B} ôte sa chemise.\n{B} : « Le ciel me doit une demi-tribulation. Il vient la réclamer. »\n{B} : « Tiens-toi avec moi - ou regarde de loin. Je ne t'en voudrai pas. »"
+	},
+	{
+		"id": "-1000007690",
+		"key": "story_P3_1_o1",
+		"en|ch|tc|kr": "Se tenir à ses côtés"
+	},
+	{
+		"id": "-1000007691",
+		"key": "story_P3_1_o2",
+		"en|ch|tc|kr": "Regarder de loin"
+	},
+	{
+		"id": "-1000007692",
+		"key": "story_endP_Brothers",
+		"en|ch|tc|kr": "Le dernier éclair se brise sur deux dos au lieu d'un. {B} rit, ensanglanté, entier.\n{B} : « Frère. Ce qui te frappe désormais me frappe aussi. »"
+	},
+	{
+		"id": "-1000007693",
+		"key": "story_endP_Alone",
+		"en|ch|tc|kr": "Depuis la colline, tu regardes l'orage marteler la cascade. Quand il se dissipe, le rocher est vide. Quoi qu'il soit devenu, il l'a fait seul - et toi aussi."
+	},
+	{
+		"id": "-1000007694",
+		"key": "story_endP_Devourer",
+		"en|ch|tc|kr": "Son essence t'envahit, lourde comme une montagne. Tes os durcissent. L'eau continue de tomber sur un rocher vide, et ton cœur se refroidit un peu."
+	},
+	{
+		"id": "-1000007695",
+		"key": "story_end_P_Brothers",
+		"en|ch|tc|kr": "Frères du corps"
+	},
+	{
+		"id": "-1000007696",
+		"key": "story_end_P_Alone",
+		"en|ch|tc|kr": "Seul"
+	},
+	{
+		"id": "-1000007697",
+		"key": "story_end_P_Devourer",
+		"en|ch|tc|kr": "Dévoreur"
 	}
 ]

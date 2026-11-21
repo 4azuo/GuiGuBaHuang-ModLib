@@ -7,7 +7,6 @@ using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using static MOD_nE7UL2.Object.ModStts;
 using ModLib.Helper;
 
 namespace MOD_nE7UL2.Mod
@@ -19,7 +18,7 @@ namespace MOD_nE7UL2.Mod
     public class BattleEvent : ModEvent
     {
         public static BattleEvent Instance { get; set; }
-        public static _BattleConfigs Configs => ModMain.ModObj.ModSettings.BattleConfigs;
+        public static BattleConfig Configs => BattleConfig.Conf;
 
         public const int ENEMY_JOIN_DRAMA = 480110100;
         public const int FRIENDLY_JOIN_DRAMA = 480110200;

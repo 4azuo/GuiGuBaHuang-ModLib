@@ -10,7 +10,6 @@ using System;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-using static MOD_nE7UL2.Object.ModStts;
 using ModLib.Helper;
 
 namespace MOD_nE7UL2.Mod
@@ -36,7 +35,7 @@ namespace MOD_nE7UL2.Mod
         public static Text TextCustomMonstCount2 { get; private set; }
         public static UIItemText TextDamageMultiplier { get; private set; }
 
-        public static _MonstStrongerConfigs MonstStrongerConfigs => ModMain.ModObj.ModSettings.MonstStrongerConfigs;
+        public static MonstStrongerConfig MonstStrongerConfigs => MonstStrongerConfig.Conf;
 
         private static readonly IDictionary<string, int> _nullify = new Dictionary<string, int>();
 

@@ -1,0 +1,427 @@
+[
+	{
+		"id": "-1000010000",
+		"key": "body_button",
+		"en|ch|tc|kr": "Corporis Refinatio"
+	},
+	{
+		"id": "-1000010001",
+		"key": "body_title",
+		"en|ch|tc|kr": "Corporis Refinatio"
+	},
+	{
+		"id": "-1000010002",
+		"key": "body_none",
+		"en|ch|tc|kr": "Corpus non refinat"
+	},
+	{
+		"id": "-1000010003",
+		"key": "body_realm_layer",
+		"en|ch|tc|kr": "{0} - {1}"
+	},
+	{
+		"id": "-1000010004",
+		"key": "body_realm_1",
+		"en|ch|tc|kr": "Cutis Aenea"
+	},
+	{
+		"id": "-1000010005",
+		"key": "body_realm_2",
+		"en|ch|tc|kr": "Os Ferreum"
+	},
+	{
+		"id": "-1000010006",
+		"key": "body_realm_3",
+		"en|ch|tc|kr": "Medulla Iadea"
+	},
+	{
+		"id": "-1000010007",
+		"key": "body_realm_4",
+		"en|ch|tc|kr": "Corpus Aureum"
+	},
+	{
+		"id": "-1000010008",
+		"key": "body_realm_5",
+		"en|ch|tc|kr": "Corpus Immortale"
+	},
+	{
+		"id": "-1000010009",
+		"key": "body_layer_1",
+		"en|ch|tc|kr": "Primus"
+	},
+	{
+		"id": "-1000010010",
+		"key": "body_layer_2",
+		"en|ch|tc|kr": "Medius"
+	},
+	{
+		"id": "-1000010011",
+		"key": "body_layer_3",
+		"en|ch|tc|kr": "Postremus"
+	},
+	{
+		"id": "-1000010012",
+		"key": "body_npc",
+		"en|ch|tc|kr": "Corpus: {0}"
+	},
+	{
+		"id": "-1000010014",
+		"key": "body_start",
+		"en|ch|tc|kr": "Corporis refinationem incipere"
+	},
+	{
+		"id": "-1000010017",
+		"key": "body_bottleneck",
+		"en|ch|tc|kr": "Angustiae: in regnum proximum perrumpe"
+	},
+	{
+		"id": "-1000010018",
+		"key": "body_exp",
+		"en|ch|tc|kr": "[icon:jingli] Temperatio: {0:#,##0} / {1:#,##0}"
+	},
+	{
+		"id": "-1000010019",
+		"key": "body_injured",
+		"en|ch|tc|kr": "Corpus vulneratum: {0} mens(es) (praemia dimidiata, nulla exercitatio)"
+	},
+	{
+		"id": "-1000010020",
+		"key": "body_bonus_hp",
+		"en|ch|tc|kr": "[icon:jiankang] VS max. +{0:#,##0}"
+	},
+	{
+		"id": "-1000010021",
+		"key": "body_bonus_def",
+		"en|ch|tc|kr": "[icon:fangyu] Defensio +{0:#,##0}"
+	},
+	{
+		"id": "-1000010022",
+		"key": "body_bonus_basis",
+		"en|ch|tc|kr": "[icon:quanfa] Pugnus / [icon:zhangfa] Palma / [icon:zhifa] Digitus +{0}"
+	},
+	{
+		"id": "-1000010023",
+		"key": "body_bonus_qi",
+		"en|ch|tc|kr": "[icon:jianyidu] Qi collectum -{0}%"
+	},
+	{
+		"id": "-1000010025",
+		"key": "body_bath_done",
+		"en|ch|tc|kr": "Unum balneum medicatum in mense: corpus tempore eget ut id hauriat."
+	},
+	{
+		"id": "-1000010026",
+		"key": "body_bath_bottleneck",
+		"en|ch|tc|kr": "Corpus in angustiis est: balneum nihil prodest donec perrumpat."
+	},
+	{
+		"id": "-1000010027",
+		"key": "body_break",
+		"en|ch|tc|kr": "Perrumpere ({0:0}%)"
+	},
+	{
+		"id": "-1000010028",
+		"key": "body_break_grade",
+		"en|ch|tc|kr": "{0} gradum cultivationis saltem {1} requirit."
+	},
+	{
+		"id": "-1000010029",
+		"key": "body_break_ok",
+		"en|ch|tc|kr": "Corpus perrumpit: {0}!"
+	},
+	{
+		"id": "-1000010030",
+		"key": "body_break_fail",
+		"en|ch|tc|kr": "Perruptio deficit: dimidium temperationis amittitur et corpus {0} menses vulneratum est."
+	},
+	{
+		"id": "-1000010031",
+		"key": "body_help",
+		"en|ch|tc|kr": "Exp.: damnum in proelio acceptum, exercitatio cotidie mensibus, unum balneum medicatum in mense. Ultimus gradus regni perruptionem requirit."
+	},
+	{
+		"id": "-1000010032",
+		"key": "log_body_start",
+		"en|ch|tc|kr": "Corporis refinationem incepit."
+	},
+	{
+		"id": "-1000010033",
+		"key": "log_body_layer",
+		"en|ch|tc|kr": "Corporis refinatio: {0}."
+	},
+	{
+		"id": "-1000010034",
+		"key": "log_body_realm",
+		"en|ch|tc|kr": "Corpus perrupit: {0}."
+	},
+	{
+		"id": "-1000010035",
+		"key": "log_body_fail",
+		"en|ch|tc|kr": "Perruptio corporis defecit: {0} menses vulneratum."
+	},
+	{
+		"id": "-1000010013",
+		"key": "body_intro",
+		"en|ch|tc|kr": "Carnem tempera ut alii Qi suum temperant: ictus in proelio accepti, exercitatio cotidiana et balnea medicata cutem, os et medullam indurant.\nQuinque regna: Cutis Aenea, Os Ferreum, Medulla Iadea, Corpus Aureum, Corpus Immortale (terni gradus).\nPraemia: VS max., defensio, basis pugni / palmae / digiti, atque plus VS / defensionis / impetus in omni perruptione cultivationis."
+	},
+	{
+		"id": "-1000010015",
+		"key": "body_start_confirm",
+		"en|ch|tc|kr": "Corpus validum energiam spiritalem bibit: pro regno suo qui corpus refinat x1,1 ad x1,5 experientiae cultivationis eget et 10 % ad 30 % minus Qi colligit, sed in omni perruptione plus lucratur. Corporis refinationem incipere?"
+	},
+	{
+		"id": "-1000010036",
+		"key": "body_bonus_break",
+		"en|ch|tc|kr": "Ex perruptionibus: [icon:jiankang] VS +{0:#,##0}, [icon:fangyu] defensio +{1:#,##0}, [icon:gongji] impetus +{2:#,##0}"
+	},
+	{
+		"id": "-1000010037",
+		"key": "body_break_rates",
+		"en|ch|tc|kr": "Omnis perruptio cultivationis: [icon:jiankang] +{0}% VS, [icon:fangyu] +{1}% defensionis, [icon:gongji] +{2}% impetus eius quod dat"
+	},
+	{
+		"id": "-1000010038",
+		"key": "body_exp_rate",
+		"en|ch|tc|kr": "[icon:wuxing] Experientia cultivationis requisita x{0:0.00} (a corpore hausta: {1:#,##0})"
+	},
+	{
+		"id": "-1000010039",
+		"key": "log_body_breakbonus",
+		"en|ch|tc|kr": "Corpus vim ex perruptione hausit: in summa VS +{0:#,##0}, defensio +{1:#,##0}, impetus +{2:#,##0}."
+	},
+	{
+		"id": "-1000010024",
+		"key": "body_bath",
+		"en|ch|tc|kr": "Balneum medicinale (+{0:#,##0} temperationis)"
+	},
+	{
+		"id": "-1000010040",
+		"key": "body_bath_need",
+		"en|ch|tc|kr": "Balneum medicinale requirit in sacco thesauros naturales et herbas sub pulsabulo monstratos."
+	},
+	{
+		"id": "-1000010043",
+		"key": "body_break_need",
+		"en|ch|tc|kr": "Perruptio corporis requirit in sacco thesauros naturales et herbas sub pulsabulo monstratos; consumuntur etiam si deficit."
+	},
+	{
+		"id": "-1000010016",
+		"key": "body_top",
+		"en|ch|tc|kr": "[icon:daodian] Corpus in summo est: quod nunc acquirit fit eius essentia"
+	},
+	{
+		"id": "-1000010044",
+		"key": "body_essence",
+		"en|ch|tc|kr": "[icon:daodian] Essentia corporis: {0:#,##0} ([icon:jiankang] vita maxima +{1}%, [icon:fangyu] defensio +{2}%, [icon:quanfa] pugnus / palma / digitus +{3})"
+	},
+	{
+		"id": "-1000010041",
+		"key": "body_bath_have",
+		"en|ch|tc|kr": "Thesauri naturales ut {0} vel rariores: {1} / {2}"
+	},
+	{
+		"id": "-1000010042",
+		"key": "body_herbs_have",
+		"en|ch|tc|kr": "Herbae vel pilulae (elixir pro 10, ros pro 5): {0} / {1}"
+	},
+	{
+		"id": "-1000010049",
+		"key": "body_life_lost",
+		"en|ch|tc|kr": "Fortis dosis {0} menses vitae constitit."
+	},
+	{
+		"id": "-1000010045",
+		"key": "body_bath_dose",
+		"en|ch|tc|kr": "Balneum x{0}: +{1:#,##0}"
+	},
+	{
+		"id": "-1000010046",
+		"key": "body_break_dose",
+		"en|ch|tc|kr": "Perruptio x{0}: {1:0}% (+{2}% praemium)"
+	},
+	{
+		"id": "-1000010048",
+		"key": "body_backlash",
+		"en|ch|tc|kr": "Repercussio: nulla temperatio, corpus mensem vulneratum est, {0} menses vitae amissi sunt."
+	},
+	{
+		"id": "-1000010050",
+		"key": "body_temper",
+		"en|ch|tc|kr": "[icon:hudun] Corpus temperatum: [icon:jiankang] vita maxima +{0}%, [icon:fangyu] defensio +{1}%"
+	},
+	{
+		"id": "-1000010053",
+		"key": "body_need_treasure",
+		"en|ch|tc|kr": "{0}+: {1} / {2}"
+	},
+	{
+		"id": "-1000010054",
+		"key": "body_need_herbs",
+		"en|ch|tc|kr": "Herbae {0}%: {1} altae, {2} mediae vel {3} humiles"
+	},
+	{
+		"id": "-1000010055",
+		"key": "body_materials_hint",
+		"en|ch|tc|kr": "Thesauri naturales: 天材地宝, lapides divini, rores immortales, gemmae (vel rariores). Herbae et materiae spiritales gradus rei {0}+ pro gradu tuo (inferiores inutiles): humilis = finis tuus, media = +1, alta = +2 vel plus; elixir duplex numeratur."
+	},
+	{
+		"id": "-1000010047",
+		"key": "body_dose_hint",
+		"en|ch|tc|kr": "Cave: x2 / x3 dant +20% / +50% sed plus periculi. Repercussio vel perruptio irrita vitam consumit: cum nulla superest, cultor moritur. Corpus durum (vita maxima, defensio, pugnus / palma / digitus) pericula paulum minuit."
+	},
+	{
+		"id": "-1000010051",
+		"key": "body_risk",
+		"en|ch|tc|kr": "[icon:shouming] Repercussio {0:0.#}% (circa {1} menses vitae)"
+	},
+	{
+		"id": "-1000010052",
+		"key": "body_break_risk",
+		"en|ch|tc|kr": "[icon:shouming] Defectus: circa {0} menses vitae"
+	},
+	{
+		"id": "-1000010056",
+		"key": "body_deadly",
+		"en|ch|tc|kr": "[icon:shouming] Nulla vita superest: cultor morietur."
+	},
+	{
+		"id": "-1000010057",
+		"key": "log_body_deadly",
+		"en|ch|tc|kr": "Corporis temperatio {0} menses vitae constitit: nulla superest."
+	},
+	{
+		"id": "-1000010058",
+		"key": "body_life_left",
+		"en|ch|tc|kr": "[icon:shouming] Vita reliqua: {0} a {1} m"
+	},
+	{
+		"id": "-1000010065",
+		"key": "body_place_no",
+		"en|ch|tc|kr": "Relinquere"
+	},
+	{
+		"id": "-1000010059",
+		"key": "body_place_1",
+		"en|ch|tc|kr": "Cataracta"
+	},
+	{
+		"id": "-1000010076",
+		"key": "secl_name_Waterfall",
+		"en|ch|tc|kr": "Cataracta"
+	},
+	{
+		"id": "-1000010060",
+		"key": "body_place_2",
+		"en|ch|tc|kr": "Lacus lavae"
+	},
+	{
+		"id": "-1000010077",
+		"key": "secl_name_Lava",
+		"en|ch|tc|kr": "Lacus lavae"
+	},
+	{
+		"id": "-1000010061",
+		"key": "body_place_3",
+		"en|ch|tc|kr": "Stagnum tonitrus"
+	},
+	{
+		"id": "-1000010078",
+		"key": "secl_name_Thunder",
+		"en|ch|tc|kr": "Stagnum tonitrus"
+	},
+	{
+		"id": "-1000010064",
+		"key": "body_place_o",
+		"en|ch|tc|kr": "Mane {0} annos (circa {1} exp. corporis)"
+	},
+	{
+		"id": "-1000010066",
+		"key": "body_place_text_1",
+		"en|ch|tc|kr": "In itinere fragorem audis: cataracta e rupe cadit, aqua saxa quasi decem milia pugnorum pulsat. Corporis purgator sub ea per annos stare posset, donec cutis nihil iam sentiat. (Vita reliqua: {0} anni)"
+	},
+	{
+		"id": "-1000010067",
+		"key": "body_place_text_2",
+		"en|ch|tc|kr": "Terra calescit: in cavo montis lacus lavae rubens fervet. Solum corpus ossium ferreorum in eo sedere posset, et ignem sordes e medulla urere sinere. (Vita reliqua: {0} anni)"
+	},
+	{
+		"id": "-1000010068",
+		"key": "body_place_text_3",
+		"en|ch|tc|kr": "Nubes super stagnum obscurum conveniunt et fulmina sine fine in id cadunt: stagnum tonitrus. Corpus aureum in eo lavari posset, milies in die ictum. (Vita reliqua: {0} anni)"
+	},
+	{
+		"id": "-1000010069",
+		"key": "body_trib_button",
+		"en|ch|tc|kr": "Tribulatio corporis (pugna)"
+	},
+	{
+		"id": "-1000010070",
+		"key": "body_trib_hint",
+		"en|ch|tc|kr": "Fulmina sustine cum {0} % MP ad summum: successus certus, temperatio +{1} %; si cadis: ut defectus"
+	},
+	{
+		"id": "-1000010071",
+		"key": "body_trib_ok",
+		"en|ch|tc|kr": "Caro sub fulminibus stetit. Corpus in {0} perrumpit."
+	},
+	{
+		"id": "-1000010072",
+		"key": "body_trib_fail",
+		"en|ch|tc|kr": "Corpus sub fulminibus cecidit: {0} menses vulneratum, dimidium exp. amissum."
+	},
+	{
+		"id": "-1000010073",
+		"key": "log_body_trib_start",
+		"en|ch|tc|kr": "Corpus tribulationem fulminis subiit ut in {0} intraret."
+	},
+	{
+		"id": "-1000010074",
+		"key": "body_sect",
+		"en|ch|tc|kr": "Secta tua {0} purgationem corporis docet: exercitatio x{1}."
+	},
+	{
+		"id": "-1000010075",
+		"key": "body_sect_ui",
+		"en|ch|tc|kr": "Haec secta nudis manibus pugnat et purgationem corporis docet (sodales exercentur x{0})."
+	},
+	{
+		"id": "-1000010079",
+		"key": "secl_res_Waterfall",
+		"en|ch|tc|kr": "Aqua iam non dolet. Corpus: {0} (+{1} strata)."
+	},
+	{
+		"id": "-1000010080",
+		"key": "secl_res_Lava",
+		"en|ch|tc|kr": "Ignis per medullam transiit eamque puram reliquit. Corpus: {0} (+{1} strata)."
+	},
+	{
+		"id": "-1000010081",
+		"key": "secl_res_Thunder",
+		"en|ch|tc|kr": "Mille ictus in die, per annos: corpus ut campana sonat. Corpus: {0} (+{1} strata)."
+	},
+	{
+		"id": "-1000010082",
+		"key": "log_body_place_left",
+		"en|ch|tc|kr": "{0} inventum, sed praeteriisti."
+	},
+	{
+		"id": "-1000010083",
+		"key": "log_npc_body_place",
+		"en|ch|tc|kr": "{0} ad {1} profectus est ut corpus per {2} annos temperaret."
+	},
+	{
+		"id": "-1000010084",
+		"key": "log_npc_body_place_end",
+		"en|ch|tc|kr": "{0} ex {1} rediit: {2}."
+	},
+	{
+		"id": "-1000010085",
+		"key": "log_npc_body_trib_ok",
+		"en|ch|tc|kr": "{0} tribulationem corporis superavit: {1}."
+	},
+	{
+		"id": "-1000010086",
+		"key": "log_npc_body_trib_fail",
+		"en|ch|tc|kr": "{0} in tribulatione corporis cecidit ({1})."
+	}
+]

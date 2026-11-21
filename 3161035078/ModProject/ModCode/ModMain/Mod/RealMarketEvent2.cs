@@ -22,13 +22,13 @@ namespace MOD_nE7UL2.Mod
     {
         public static RealMarketEvent2 Instance { get; set; }
 
-        public static float MinRate => ModMain.ModObj.ModSettings.RealMarketConfigs.MinBuyRate;
+        public static float MinRate => RealMarketConfig.Conf.MinBuyRate;
 
-        public static float MaxRate => ModMain.ModObj.ModSettings.RealMarketConfigs.MaxBuyRate;
+        public static float MaxRate => RealMarketConfig.Conf.MaxBuyRate;
 
-        public static float TownGReduceBuyRate => ModMain.ModObj.ModSettings.RealMarketConfigs.TownGReduceBuyRate;
+        public static float TownGReduceBuyRate => RealMarketConfig.Conf.TownGReduceBuyRate;
 
-        public static float TownMReduceBuyRate => ModMain.ModObj.ModSettings.RealMarketConfigs.TownMReduceBuyRate;
+        public static float TownMReduceBuyRate => RealMarketConfig.Conf.TownMReduceBuyRate;
 
         public IDictionary<string, float> MarketPriceRate { get; set; } = new Dictionary<string, float>();
 
@@ -53,7 +53,7 @@ namespace MOD_nE7UL2.Mod
         public override void OnMonthly()
         {
             base.OnMonthly();
-            var eventBuyRate = ModMain.ModObj.ModSettings.RealMarketConfigs.GetAddBuyRate();
+            var eventBuyRate = RealMarketConfig.Conf.GetAddBuyRate();
             foreach (var town in ModMain.Store.Buildings.Where(x => x.allBuildSub.ContainsKey(MapBuildSubType.TownMarketPill)))
             {
                 MarketPriceRate[town.buildData.id] = CommonTool.Random(MinRate + eventBuyRate, MaxRate + eventBuyRate);

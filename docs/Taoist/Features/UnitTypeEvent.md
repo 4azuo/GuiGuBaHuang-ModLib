@@ -12,7 +12,7 @@ Every unit gets a role (`UnitTypeEnum`) the first month it is seen. The role dec
 
 ## Switches
 
-- `mod_configs.json` > `UnitTypeConfigs.UnitTypes`: chance (%) of each random role (`RandomUnitType`): PowerUnit 8, SpeedUnit 8, TaoistUnit 8, AtkUnit 12, DefUnit 12, Angel 2, Evil 4, Merchant 16; the remaining 30 % get `Default`.
+- `unit_type_configs.json` > `UnitTypes` (`UnitTypeConfig`): chance (%) of each random role (`RandomUnitType`): PowerUnit 8, SpeedUnit 8, TaoistUnit 8, AtkUnit 12, DefUnit 12, Angel 2, Evil 4, Merchant 16; the remaining 30 % get `Default`.
 - `StartupPlayerRole` (S&M, > 0): fixed role of the player, taken from `SMGlobalConfigsEvent.StartupPlayerRoles`.
 - `GrowUpSpeed` (S&M): property growth runs every `GrowUpSpeed` months (`ModMaster.Ticks`).
 - `AddNpcGrowRate` (S&M): multiplies NPC property growth.
@@ -44,7 +44,7 @@ Every unit gets a role (`UnitTypeEnum`) the first month it is seen. The role dec
 | Evil | 420010700 | 0.7 %, 1 | 0.2 % | 0.7 %, 3 | min 1 |
 | Merchant | 420010800 | 0.1 %, 1 | 0.1 %, 1 | 0.1 %, 2 | 0.1 %, 1 |
 
-`CalType` adds the role row only for roles with a luck (`Value != null`). Default, Player, Hero and Trial have none: Default is always added, Hero is added for hero NPCs, Player is used by `AddPlayerProp`, Trial only by the trial of lightning reward ([RealTrialEvent](RealTrialEvent.md), `CalProp` directly). No unit is ever given the Trial role (it is neither in `UnitTypeConfigs` nor in the startup roles).
+`CalType` adds the role row only for roles with a luck (`Value != null`). Default, Player, Hero and Trial have none: Default is always added, Hero is added for hero NPCs, Player is used by `AddPlayerProp`, Trial only by the trial of lightning reward ([RealTrialEvent](RealTrialEvent.md), `CalProp` directly). No unit is ever given the Trial role (it is neither in `unit_type_configs.json` nor in the startup roles).
 
 Merchant luck effects (`UnitTypeLuckEnum.Merchant.CustomEffects`): free storage, buy cost -10 %, sell value +10 %, passive income +3 % of money / month. These are read by the market and storage features.
 

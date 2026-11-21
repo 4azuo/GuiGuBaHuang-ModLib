@@ -1,4 +1,5 @@
-﻿using EGameTypeData;
+﻿using MOD_nE7UL2.Helper;
+using EGameTypeData;
 using MOD_nE7UL2.Const;
 using ModLib.Attributes;
 using ModLib.Enum;
@@ -9,7 +10,7 @@ using ModLib.Object;
 namespace MOD_nE7UL2.Mod
 {
     /// <summary>
-    /// Rebirth at the pub: reset grade/exp/reputation (must leave sect) for a permanent luck; monsters scale with total rebirth grades.
+    /// Rebirth (player info screen, beside the damage calculation): reset grade/exp/reputation (must leave sect) for a permanent luck; monsters scale with total rebirth grades.
     /// </summary>
     [Cache(ModConst.REBIRTH_EVENT)]
     public class RebirthEvent : ModEvent
@@ -25,63 +26,57 @@ namespace MOD_nE7UL2.Mod
         public int TotalGradeLvl { get; set; } = 0;
 
         /// <summary>
-        /// TownPub of a high enough town: adds the rebirth button.
+        /// The rebirth is offered on the player info screen, beside the damage calculation (UIEvent; until 6.0 at the
+        /// pub). Null when the player can be reborn now, else the text key of what is missing: off (S&amp;M), a grade above the
+        /// last rebirth, in a town whose area is above the last rebirth and at least the player's grade, no sect.
         /// </summary>
-        [EventCondition(IsInGame = HandleEnum.True, IsInBattle = HandleEnum.False)]
-        public override void OnOpenUIEnd(OpenUIEnd e)
+        public static string Missing(WorldUnitBase player)
         {
-            base.OnOpenUIEnd(e);
+            if (Instance == null || SMLocalConfigsEvent.Instance.Configs.NoRebirth) return "rebirth_off";
+            var grade = player.GetGradeLvl();
+            if (grade <= Instance.RebirthLevel) return "rebirth_need_grade";
+            var town = player.GetMapBuild<MapBuildTown>();
+            var area = town?.gridData.areaBaseID ?? 0;
+            if (town == null || area <= Instance.RebirthLevel || area < grade) return "rebirth_need_town";
+            if (!string.IsNullOrEmpty(player.data.unitData.schoolID)) return "rebirth420103100";
+            return null;
+        }
 
-            if (!SMLocalConfigsEvent.Instance.Configs.NoRebirth)
+        /// <summary>The button label: the next rebirth ("Rebirth 1"...).</summary>
+        public static string ButtonText => GameTool.LS($"rebirth{420101001 + (Instance?.RebirthCount ?? 0)}");
+
+        /// <summary>The rebirth (button of the player info): what is missing, or the confirmation, then the rebirth.</summary>
+        public static void Open(System.Action after = null)
+        {
+            var player = g.world.playerUnit;
+            var title = GameTool.LS("rebirth420103102");
+            var missing = Missing(player);
+            if (missing != null)
             {
-                if (e.uiType.uiName == UIType.TownPub.uiName)
-                {
-                    var player = g.world.playerUnit;
-                    var playerGradeLvl = player.GetGradeLvl();
-                    var curTown = g.world.build.GetBuild(new UnityEngine.Vector2Int(player.data.unitData.pointX, player.data.unitData.pointY));
-                    var townLevel = curTown.gridData.areaBaseID;
-
-                    if (townLevel > RebirthLevel &&
-                        playerGradeLvl > RebirthLevel &&
-                        townLevel >= playerGradeLvl)
-                    {
-                        var ui = new UICover<UITownPub>(e.ui);
-                        {
-                            ui.AddButton(0, 0, () =>
-                            {
-                                if (!string.IsNullOrEmpty(player.data.unitData.schoolID))
-                                {
-                                    g.ui.MsgBox(GameTool.LS("rebirth420103102"), GameTool.LS("rebirth420103100"));
-                                    return;
-                                }
-
-                                g.ui.MsgBox(GameTool.LS("rebirth420103102"), GameTool.LS("rebirth420103101"), MsgBoxButtonEnum.YesNo, () =>
-                                {
-                                    //var
-                                    RebirthCount++;
-                                    RebirthLevel = playerGradeLvl;
-                                    TotalGradeLvl += playerGradeLvl;
-
-                                    //reset grade & exp
-                                    player.ResetGradeLevel();
-                                    player.ClearExp();
-
-                                    //reset items
-                                    player.SetProperty(UnitPropertyEnum.Reputation, 0);
-
-                                    //close rebirth ui
-                                    ui.Dispose();
-
-                                    //add luck & open drama
-                                    AddLuck();
-                                    DramaTool.OpenDrama(REBIRTH_DRAMA);
-                                });
-                            }, GameTool.LS($"rebirth{420101001 + RebirthCount}"), ui.UI.btnPub).Pos(ui.UI.btnPub.gameObject, 0, 100);
-                            ui.AddToolTipButton(GameTool.LS("rebirth420103103")).Pos(ui.UI.btnPub.gameObject, -100, 100);
-                        }
-                    }
-                }
+                var grade = player.GetGradeLvl();
+                InfoDialog.Msg(title, string.Format(GameTool.LS(missing), Instance?.RebirthLevel ?? 0, System.Math.Max(grade, (Instance?.RebirthLevel ?? 0) + 1)));
+                return;
             }
+            InfoDialog.Msg(title, GameTool.LS("rebirth420103101") + "\n" + GameTool.LS("rebirth420103103"), MsgBoxButtonEnum.YesNo, () =>
+            {
+                var playerGradeLvl = player.GetGradeLvl();
+                Instance.RebirthCount++;
+                Instance.RebirthLevel = playerGradeLvl;
+                Instance.TotalGradeLvl += playerGradeLvl;
+
+                //reset grade & exp
+                player.ResetGradeLevel();
+                player.ClearExp();
+
+                //reset items
+                player.SetProperty(UnitPropertyEnum.Reputation, 0);
+
+                after?.Invoke();
+
+                //add luck & open drama
+                Instance.AddLuck();
+                DramaTool.OpenDrama(REBIRTH_DRAMA);
+            });
         }
 
         /// <summary>
@@ -99,7 +94,7 @@ namespace MOD_nE7UL2.Mod
         /// <summary>
         /// Gives the luck of the rebirth count.
         /// </summary>
-        private void AddLuck()
+        internal void AddLuck()
         {
             RemoveLuck();
             g.world.playerUnit.AddLuck(LUCK_BASE_ID + RebirthCount);

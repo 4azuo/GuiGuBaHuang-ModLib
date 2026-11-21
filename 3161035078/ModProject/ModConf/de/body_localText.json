@@ -1,0 +1,427 @@
+[
+	{
+		"id": "-1000010000",
+		"key": "body_button",
+		"en|ch|tc|kr": "Körperveredelung"
+	},
+	{
+		"id": "-1000010001",
+		"key": "body_title",
+		"en|ch|tc|kr": "Körperveredelung"
+	},
+	{
+		"id": "-1000010002",
+		"key": "body_none",
+		"en|ch|tc|kr": "Kein Körperveredler"
+	},
+	{
+		"id": "-1000010003",
+		"key": "body_realm_layer",
+		"en|ch|tc|kr": "{0} - {1}"
+	},
+	{
+		"id": "-1000010004",
+		"key": "body_realm_1",
+		"en|ch|tc|kr": "Kupferhaut"
+	},
+	{
+		"id": "-1000010005",
+		"key": "body_realm_2",
+		"en|ch|tc|kr": "Eisenknochen"
+	},
+	{
+		"id": "-1000010006",
+		"key": "body_realm_3",
+		"en|ch|tc|kr": "Jademark"
+	},
+	{
+		"id": "-1000010007",
+		"key": "body_realm_4",
+		"en|ch|tc|kr": "Goldener Körper"
+	},
+	{
+		"id": "-1000010008",
+		"key": "body_realm_5",
+		"en|ch|tc|kr": "Unsterblicher Körper"
+	},
+	{
+		"id": "-1000010009",
+		"key": "body_layer_1",
+		"en|ch|tc|kr": "Früh"
+	},
+	{
+		"id": "-1000010010",
+		"key": "body_layer_2",
+		"en|ch|tc|kr": "Mitte"
+	},
+	{
+		"id": "-1000010011",
+		"key": "body_layer_3",
+		"en|ch|tc|kr": "Spät"
+	},
+	{
+		"id": "-1000010012",
+		"key": "body_npc",
+		"en|ch|tc|kr": "Körper: {0}"
+	},
+	{
+		"id": "-1000010014",
+		"key": "body_start",
+		"en|ch|tc|kr": "Körperveredelung beginnen"
+	},
+	{
+		"id": "-1000010017",
+		"key": "body_bottleneck",
+		"en|ch|tc|kr": "Engpass: in das nächste Reich durchbrechen"
+	},
+	{
+		"id": "-1000010018",
+		"key": "body_exp",
+		"en|ch|tc|kr": "[icon:jingli] Stählung: {0:#,##0} / {1:#,##0}"
+	},
+	{
+		"id": "-1000010019",
+		"key": "body_injured",
+		"en|ch|tc|kr": "Verletzter Körper: {0} Monat(e) (Boni halbiert, kein Training)"
+	},
+	{
+		"id": "-1000010020",
+		"key": "body_bonus_hp",
+		"en|ch|tc|kr": "[icon:jiankang] Max. LP +{0:#,##0}"
+	},
+	{
+		"id": "-1000010021",
+		"key": "body_bonus_def",
+		"en|ch|tc|kr": "[icon:fangyu] Verteidigung +{0:#,##0}"
+	},
+	{
+		"id": "-1000010022",
+		"key": "body_bonus_basis",
+		"en|ch|tc|kr": "[icon:quanfa] Faust / [icon:zhangfa] Handfläche / [icon:zhifa] Finger +{0}"
+	},
+	{
+		"id": "-1000010023",
+		"key": "body_bonus_qi",
+		"en|ch|tc|kr": "[icon:jianyidu] Gesammeltes Qi -{0}%"
+	},
+	{
+		"id": "-1000010025",
+		"key": "body_bath_done",
+		"en|ch|tc|kr": "Ein Heilbad pro Monat: Der Körper braucht Zeit, es aufzunehmen."
+	},
+	{
+		"id": "-1000010026",
+		"key": "body_bath_bottleneck",
+		"en|ch|tc|kr": "Der Körper steckt in einem Engpass: Ein Bad bewirkt nichts bis zum Durchbruch."
+	},
+	{
+		"id": "-1000010027",
+		"key": "body_break",
+		"en|ch|tc|kr": "Durchbrechen ({0:0}%)"
+	},
+	{
+		"id": "-1000010028",
+		"key": "body_break_grade",
+		"en|ch|tc|kr": "{0} erfordert mindestens Kultivierungsstufe {1}."
+	},
+	{
+		"id": "-1000010029",
+		"key": "body_break_ok",
+		"en|ch|tc|kr": "Der Körper bricht durch: {0}!"
+	},
+	{
+		"id": "-1000010030",
+		"key": "body_break_fail",
+		"en|ch|tc|kr": "Der Durchbruch scheitert: Die Hälfte der Stählung ist verloren, der Körper ist {0} Monate verletzt."
+	},
+	{
+		"id": "-1000010031",
+		"key": "body_help",
+		"en|ch|tc|kr": "Erfahrung: im Kampf erlittener Schaden, monatliches Training, ein Heilbad pro Monat. Die letzte Stufe eines Reichs braucht einen Durchbruch."
+	},
+	{
+		"id": "-1000010032",
+		"key": "log_body_start",
+		"en|ch|tc|kr": "Körperveredelung begonnen."
+	},
+	{
+		"id": "-1000010033",
+		"key": "log_body_layer",
+		"en|ch|tc|kr": "Körperveredelung: {0}."
+	},
+	{
+		"id": "-1000010034",
+		"key": "log_body_realm",
+		"en|ch|tc|kr": "Der Körper brach durch: {0}."
+	},
+	{
+		"id": "-1000010035",
+		"key": "log_body_fail",
+		"en|ch|tc|kr": "Ein Körperdurchbruch scheiterte: {0} Monate verletzt."
+	},
+	{
+		"id": "-1000010013",
+		"key": "body_intro",
+		"en|ch|tc|kr": "Stähle das Fleisch, wie andere ihr Qi stählen: Treffer im Kampf, tägliches Training und Heilbäder härten Haut, Knochen und Mark.\nFünf Reiche: Kupferhaut, Eisenknochen, Jademark, Goldener Körper, Unsterblicher Körper (je 3 Stufen).\nBoni: max. LP, Verteidigung, Faust- / Handflächen- / Fingerbasis und mehr LP / Verteidigung / Angriff bei jedem Durchbruch der Kultivierung."
+	},
+	{
+		"id": "-1000010015",
+		"key": "body_start_confirm",
+		"en|ch|tc|kr": "Ein starker Körper trinkt die spirituelle Energie: Je nach Reich braucht ein Körperveredler x1,1 bis x1,5 Kultivierungserfahrung und sammelt 10 % bis 30 % weniger Qi, gewinnt aber bei jedem Durchbruch mehr. Körperveredelung beginnen?"
+	},
+	{
+		"id": "-1000010036",
+		"key": "body_bonus_break",
+		"en|ch|tc|kr": "Aus Durchbrüchen: [icon:jiankang] LP +{0:#,##0}, [icon:fangyu] Verteidigung +{1:#,##0}, [icon:gongji] Angriff +{2:#,##0}"
+	},
+	{
+		"id": "-1000010037",
+		"key": "body_break_rates",
+		"en|ch|tc|kr": "Jeder Durchbruch der Kultivierung: [icon:jiankang] +{0}% LP, [icon:fangyu] +{1}% Verteidigung, [icon:gongji] +{2}% Angriff des Zuwachses"
+	},
+	{
+		"id": "-1000010038",
+		"key": "body_exp_rate",
+		"en|ch|tc|kr": "[icon:wuxing] Benötigte Kultivierungserfahrung x{0:0.00} (vom Körper aufgenommen: {1:#,##0})"
+	},
+	{
+		"id": "-1000010039",
+		"key": "log_body_breakbonus",
+		"en|ch|tc|kr": "Der Körper schöpfte Kraft aus dem Durchbruch: insgesamt LP +{0:#,##0}, Verteidigung +{1:#,##0}, Angriff +{2:#,##0}."
+	},
+	{
+		"id": "-1000010024",
+		"key": "body_bath",
+		"en|ch|tc|kr": "Heilbad (+{0:#,##0} Härtung)"
+	},
+	{
+		"id": "-1000010040",
+		"key": "body_bath_need",
+		"en|ch|tc|kr": "Ein Heilbad braucht die unter dem Knopf gezeigten Naturschätze und Kräuter in der Tasche."
+	},
+	{
+		"id": "-1000010043",
+		"key": "body_break_need",
+		"en|ch|tc|kr": "Ein Durchbruch des Körpers braucht die unter dem Knopf gezeigten Naturschätze und Kräuter in der Tasche; sie werden auch bei einem Fehlschlag verbraucht."
+	},
+	{
+		"id": "-1000010016",
+		"key": "body_top",
+		"en|ch|tc|kr": "[icon:daodian] Der Körper ist auf seinem Gipfel: was er jetzt gewinnt, wird zu seiner Essenz"
+	},
+	{
+		"id": "-1000010044",
+		"key": "body_essence",
+		"en|ch|tc|kr": "[icon:daodian] Körperessenz: {0:#,##0} ([icon:jiankang] max. LP +{1}%, [icon:fangyu] Verteidigung +{2}%, [icon:quanfa] Faust / Handfläche / Finger +{3})"
+	},
+	{
+		"id": "-1000010041",
+		"key": "body_bath_have",
+		"en|ch|tc|kr": "Naturschätze wie {0} oder seltener: {1} / {2}"
+	},
+	{
+		"id": "-1000010042",
+		"key": "body_herbs_have",
+		"en|ch|tc|kr": "Kräuter oder Pillen (ein Elixier zählt 10, ein Tau 5): {0} / {1}"
+	},
+	{
+		"id": "-1000010049",
+		"key": "body_life_lost",
+		"en|ch|tc|kr": "Die starke Dosis kostete {0} Monat(e) Lebenszeit."
+	},
+	{
+		"id": "-1000010045",
+		"key": "body_bath_dose",
+		"en|ch|tc|kr": "Bad x{0}: +{1:#,##0}"
+	},
+	{
+		"id": "-1000010046",
+		"key": "body_break_dose",
+		"en|ch|tc|kr": "Durchbruch x{0}: {1:0}% (+{2}% Bonus)"
+	},
+	{
+		"id": "-1000010048",
+		"key": "body_backlash",
+		"en|ch|tc|kr": "Rückschlag: keine Härtung, der Körper ist einen Monat verletzt, {0} Monat(e) Lebenszeit gehen verloren."
+	},
+	{
+		"id": "-1000010050",
+		"key": "body_temper",
+		"en|ch|tc|kr": "[icon:hudun] Gehärteter Körper: [icon:jiankang] max. LP +{0}%, [icon:fangyu] Verteidigung +{1}%"
+	},
+	{
+		"id": "-1000010053",
+		"key": "body_need_treasure",
+		"en|ch|tc|kr": "{0}+: {1} / {2}"
+	},
+	{
+		"id": "-1000010054",
+		"key": "body_need_herbs",
+		"en|ch|tc|kr": "Kräuter {0}%: {1} hohe, {2} mittlere oder {3} niedrige"
+	},
+	{
+		"id": "-1000010055",
+		"key": "body_materials_hint",
+		"en|ch|tc|kr": "Naturschätze: 天材地宝, Göttersteine, Unsterblichentau, Perlen (oder seltener). Kräuter und Geistmaterialien ab Gegenstandsstufe {0} für deine Stufe (niedrigere sind nutzlos): niedrig = deine Untergrenze, mittel = +1, hoch = +2 oder mehr; ein Elixier zählt doppelt."
+	},
+	{
+		"id": "-1000010047",
+		"key": "body_dose_hint",
+		"en|ch|tc|kr": "Warnung: x2 / x3 geben +20% / +50%, aber mit mehr Risiko. Ein Rückschlag oder ein gescheiterter Durchbruch kostet Lebenszeit: ist keine mehr übrig, stirbt der Kultivator. Ein zäher Körper (max. LP, Verteidigung, Faust / Handfläche / Finger) senkt das Risiko etwas."
+	},
+	{
+		"id": "-1000010051",
+		"key": "body_risk",
+		"en|ch|tc|kr": "[icon:shouming] Rückschlag {0:0.#}% (etwa {1} Monate Lebenszeit)"
+	},
+	{
+		"id": "-1000010052",
+		"key": "body_break_risk",
+		"en|ch|tc|kr": "[icon:shouming] Fehlschlag: etwa {0} Monate Lebenszeit"
+	},
+	{
+		"id": "-1000010056",
+		"key": "body_deadly",
+		"en|ch|tc|kr": "[icon:shouming] Keine Lebenszeit mehr übrig: der Kultivator wird sterben."
+	},
+	{
+		"id": "-1000010057",
+		"key": "log_body_deadly",
+		"en|ch|tc|kr": "Die Körperveredelung kostete {0} Monate Lebenszeit: keine ist mehr übrig."
+	},
+	{
+		"id": "-1000010058",
+		"key": "body_life_left",
+		"en|ch|tc|kr": "[icon:shouming] Verbleibende Lebenszeit: {0} J. {1} M."
+	},
+	{
+		"id": "-1000010065",
+		"key": "body_place_no",
+		"en|ch|tc|kr": "Geh"
+	},
+	{
+		"id": "-1000010059",
+		"key": "body_place_1",
+		"en|ch|tc|kr": "Wasserfall"
+	},
+	{
+		"id": "-1000010076",
+		"key": "secl_name_Waterfall",
+		"en|ch|tc|kr": "Wasserfall"
+	},
+	{
+		"id": "-1000010060",
+		"key": "body_place_2",
+		"en|ch|tc|kr": "Lavasee"
+	},
+	{
+		"id": "-1000010077",
+		"key": "secl_name_Lava",
+		"en|ch|tc|kr": "Lavasee"
+	},
+	{
+		"id": "-1000010061",
+		"key": "body_place_3",
+		"en|ch|tc|kr": "Donnerteich"
+	},
+	{
+		"id": "-1000010078",
+		"key": "secl_name_Thunder",
+		"en|ch|tc|kr": "Donnerteich"
+	},
+	{
+		"id": "-1000010064",
+		"key": "body_place_o",
+		"en|ch|tc|kr": "{0} Jahr(e) bleiben (etwa {1} Körper-EP)"
+	},
+	{
+		"id": "-1000010066",
+		"key": "body_place_text_1",
+		"en|ch|tc|kr": "Unterwegs hörst du ein Tosen: ein Wasserfall stürzt von einer Klippe, sein Wasser schlägt auf die Felsen wie zehntausend Fäuste. Ein Körperveredler könnte jahrelang darunter stehen, bis die Haut nichts mehr spürt. (Verbleibende Lebenszeit: {0} Jahre)"
+	},
+	{
+		"id": "-1000010067",
+		"key": "body_place_text_2",
+		"en|ch|tc|kr": "Der Boden wird heiß: in einer Senke des Berges brodelt ein roter Lavasee. Nur ein Körper mit eisernen Knochen könnte darin sitzen und das Feuer die Unreinheiten aus dem Mark brennen lassen. (Verbleibende Lebenszeit: {0} Jahre)"
+	},
+	{
+		"id": "-1000010068",
+		"key": "body_place_text_3",
+		"en|ch|tc|kr": "Wolken ballen sich über einem dunklen Teich, und Blitze schlagen ohne Ende hinein: ein Donnerteich. Ein goldener Körper könnte darin baden, tausendmal am Tag getroffen. (Verbleibende Lebenszeit: {0} Jahre)"
+	},
+	{
+		"id": "-1000010069",
+		"key": "body_trib_button",
+		"en|ch|tc|kr": "Körper-Trübsal (Kampf)"
+	},
+	{
+		"id": "-1000010070",
+		"key": "body_trib_hint",
+		"en|ch|tc|kr": "Überstehe die Blitze mit höchstens {0} % MP: sicherer Erfolg, Härtung +{1} %; fällst du: wie ein Fehlschlag"
+	},
+	{
+		"id": "-1000010071",
+		"key": "body_trib_ok",
+		"en|ch|tc|kr": "Das Fleisch hielt den Blitzen stand. Der Körper bricht durch zu {0}."
+	},
+	{
+		"id": "-1000010072",
+		"key": "body_trib_fail",
+		"en|ch|tc|kr": "Der Körper fiel unter den Blitzen: {0} Monate verletzt, die Hälfte der EP verloren."
+	},
+	{
+		"id": "-1000010073",
+		"key": "log_body_trib_start",
+		"en|ch|tc|kr": "Der Körper stellte sich der Blitztrübsal, um {0} zu erreichen."
+	},
+	{
+		"id": "-1000010074",
+		"key": "body_sect",
+		"en|ch|tc|kr": "Deine Sekte {0} lehrt Körperveredelung: Training x{1}."
+	},
+	{
+		"id": "-1000010075",
+		"key": "body_sect_ui",
+		"en|ch|tc|kr": "Diese Sekte kämpft mit bloßen Händen und lehrt Körperveredelung (Mitglieder trainieren x{0})."
+	},
+	{
+		"id": "-1000010079",
+		"key": "secl_res_Waterfall",
+		"en|ch|tc|kr": "Das Wasser tut nicht mehr weh. Körper: {0} (+{1} Stufen)."
+	},
+	{
+		"id": "-1000010080",
+		"key": "secl_res_Lava",
+		"en|ch|tc|kr": "Das Feuer ging durch das Mark und ließ es rein zurück. Körper: {0} (+{1} Stufen)."
+	},
+	{
+		"id": "-1000010081",
+		"key": "secl_res_Thunder",
+		"en|ch|tc|kr": "Tausend Schläge am Tag, jahrelang: der Körper klingt wie eine Glocke. Körper: {0} (+{1} Stufen)."
+	},
+	{
+		"id": "-1000010082",
+		"key": "log_body_place_left",
+		"en|ch|tc|kr": "Einen {0} gefunden und weitergezogen."
+	},
+	{
+		"id": "-1000010083",
+		"key": "log_npc_body_place",
+		"en|ch|tc|kr": "{0} ging für {2} Jahre zu einem {1}, um den Körper zu härten."
+	},
+	{
+		"id": "-1000010084",
+		"key": "log_npc_body_place_end",
+		"en|ch|tc|kr": "{0} kehrte vom {1} zurück: {2}."
+	},
+	{
+		"id": "-1000010085",
+		"key": "log_npc_body_trib_ok",
+		"en|ch|tc|kr": "{0} hat die Körper-Trübsal überstanden: {1}."
+	},
+	{
+		"id": "-1000010086",
+		"key": "log_npc_body_trib_fail",
+		"en|ch|tc|kr": "{0} fiel in der Körper-Trübsal ({1})."
+	}
+]

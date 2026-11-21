@@ -92,7 +92,8 @@ namespace MOD_nE7UL2.Mod
 
         public static long Upkeep(WorldUnitBase u) => InflationaryEvent.CalculateInflationary(BaseUpkeep(u.GetGradeLvl(), false));
         public static long MinorUpkeep() => InflationaryEvent.CalculateInflationary(BaseUpkeep(1, true));
-        public static long MonthlyUpkeep() => Members().Sum(Upkeep) + Minors().Count * MinorUpkeep();
+        /// <summary>Monthly upkeep of the household, lowered by an ancestral hall in one of the player's houses (EstateEvent).</summary>
+        public static long MonthlyUpkeep() => (long)Math.Round((Members().Sum(Upkeep) + Minors().Count * MinorUpkeep()) * EstateEvent.UpkeepRate());
 
         private static int StorageStones() => RealStorageEvent.GetStorageSpiritStones();
 

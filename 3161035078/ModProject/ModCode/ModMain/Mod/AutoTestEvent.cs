@@ -22,10 +22,11 @@ namespace MOD_nE7UL2.Mod
     /// The runner never saves the game; use a throwaway test save anyway.
     /// </summary>
     [Cache(ModConst.AUTOTEST_EVENT, CacheType = CacheAttribute.CType.Global, WorkOn = CacheAttribute.WType.All)]
-    public class AutoTestEvent : ModEvent
+    public partial class AutoTestEvent : ModEvent
     {
         /// <summary>Runner phases.</summary>
-        public enum PhaseEnum { WaitTitle, Title, Loading, WaitGame, Game, Watch, Done }
+        /// <summary>Idle: a game that stays open (request.KeepAlive) waits in the save for its next request.</summary>
+        public enum PhaseEnum { WaitTitle, Title, Loading, WaitGame, Game, Watch, Idle, Done }
 
         public static AutoTestEvent Instance { get; set; }
 
@@ -41,7 +42,7 @@ namespace MOD_nE7UL2.Mod
         private int _loadStep;
         private int _snapIndex;
         private int _battleCount;
-        private readonly DateTime _startedAt = DateTime.Now;
+        private DateTime _startedAt = DateTime.Now;
         private readonly Queue<Scenario> _queue = new Queue<Scenario>();
         private readonly List<ScenarioResult> _results = new List<ScenarioResult>();
         private readonly List<string> _log = new List<string>();
@@ -157,6 +158,13 @@ namespace MOD_nE7UL2.Mod
             {
                 try { if (BattleHelper.ResumeIfPaused()) Log("battle pause menu closed (Resume)"); } catch { }
             }
+            // heartbeat: a long wait (a 10-year time skip with 4 games side by side: ~40 s a month) writes no step result;
+            // results.json rewritten every 30 s while the mod's ticks run, so the runner's stall watchdog only stops a
+            // game whose main thread really stopped
+            if (_request != null && (_phase == PhaseEnum.Game || _phase == PhaseEnum.Watch) && (DateTime.Now - _lastWrite).TotalSeconds >= HEARTBEAT_SEC)
+            {
+                try { WriteResults(); } catch { }
+            }
             if (_request == null || _phase == PhaseEnum.Done || DateTime.Now < _nextAt)
                 return;
             try
@@ -246,6 +254,7 @@ namespace MOD_nE7UL2.Mod
                         if (_request.SlotCharacter)
                             Log($"slot character: slot={Slot} folder={g.cache.curCache?.data?.folder} id={g.world.playerUnit.GetUnitId()} created={created}");
                         Log($"save loaded: {g.world.playerUnit.GetName()} ({g.world.playerUnit.GetUnitId()}), {GameHelper.GetGameYear()}/{GameHelper.GetGameMonth()}");
+                        CaptureBaseline();
                         Enqueue(ScenarioScope.Game, null);
                         SetPhase(PhaseEnum.Game, 5000); //let OnLoadGame/OnLoadGameAfter of all events finish
                     }
@@ -276,6 +285,9 @@ namespace MOD_nE7UL2.Mod
                     break;
                 case PhaseEnum.Watch:
                     RunNextStep();
+                    break;
+                case PhaseEnum.Idle:
+                    CheckNextRequest();
                     break;
             }
         }
@@ -331,7 +343,9 @@ namespace MOD_nE7UL2.Mod
                         item = FindSlotSave(items);
                         if (item == null)
                         {
-                            if (_loadStep < 3)   // the list may still be filling
+                            // the list may still be filling: an empty list is waited for longer (~30 s: many saves load
+                            // slowly; a slot game that saw none created a new character for every group, 2026-11-20)
+                            if (_loadStep < 3 || (items.Count == 0 && _loadStep < 16))
                             {
                                 _nextAt = DateTime.Now.AddMilliseconds(2000);
                                 return;
@@ -467,6 +481,10 @@ namespace MOD_nE7UL2.Mod
             }
             var onDisk = !string.IsNullOrEmpty(folder) && Directory.Exists(Path.Combine(SaveCleanupHelper.GameDataPath, "Steam", "CacheData", folder));
             if (!onDisk && (DateTime.Now - _savedAt).TotalSeconds < 60) return false;
+            // the game's global data (its list of saves) is written only when the game quits normally; the test games are
+            // closed by force: without this the next start of the slot sees no save and creates a new character again
+            try { g.data.dataGloble.Save(); }
+            catch (Exception ex) { Log($"global data of the game not saved: {ex.Message}"); }
             Log($"test character of slot {Slot}: {g.world.playerUnit.GetName()}, save {folder} {(onDisk ? "written" : "NOT seen on the disk")}; creation lock freed");
             try { File.Delete(Path.Combine(SharedFolder, CREATING_LOCK)); } catch { }
             _creating = false;
@@ -509,7 +527,9 @@ namespace MOD_nE7UL2.Mod
         /// <summary>A save is needed after the title screen: a full run, battle watching or a selected game / battle scenario.</summary>
         private bool NeedsSave()
         {
+            // TP-01 on a slot (run-autotest-parallel.ps1): the slot's test character is loaded or created
             return _request.WatchBattles || _request.Scenarios.Count == 0 ||
+                (_request.SlotCharacter && _request.Scenarios.Contains("TP-01")) ||
                 AutoTestScenarios.Create().Any(x => x.Scope != ScenarioScope.Title && _request.Scenarios.Contains(x.Id));
         }
 
@@ -557,8 +577,23 @@ namespace MOD_nE7UL2.Mod
                     Log($"[{result.Id}] before: closing {UIType.StartGameTip.uiName}");
                     g.ui.CloseUI(UIType.StartGameTip);
                 }
+                // the save list ("Enter World") is a panel of the title screen itself, not a UI of its own: left open by
+                // an earlier scenario or the loading of a save it covers the title screen (TT-04's language selector)
+                try
+                {
+                    var login = GameHelper.IsLoginScreen() ? g.ui.GetUI<UILogin>(UIType.Login) : null;
+                    if (login != null && login.goCacheRoot != null && login.goCacheRoot.activeSelf)
+                    {
+                        Log($"[{result.Id}] before: closing the save list");
+                        if (login.btnCloseCache != null) login.btnCloseCache.onClick.Invoke();
+                        else login.goCacheRoot.SetActive(false);
+                    }
+                }
+                catch (Exception ex) { Log($"[{result.Id}] cannot close the save list: {ex.Message}"); }
                 _uisBefore = new HashSet<int>(OpenUIs().Select(x => x.GetInstanceID()));
                 Log($"[{result.Id}] start: {result.Title}");
+                if (_current.Scope == ScenarioScope.Game && _current.Kind != ScenarioKind.Watch)
+                    Prepare(_current, _ctx);
             }
             // evidence: the screen before the first step and after every step (taken just before the next action,
             // once the previous step had StepDelayMs to render); the capture itself needs ~0.3 s (run-autotest.ps1)
@@ -786,7 +821,7 @@ namespace MOD_nE7UL2.Mod
 
         private void Finish(string status)
         {
-            _phase = PhaseEnum.Done;
+            _phase = KeepsWaiting(status) ? PhaseEnum.Idle : PhaseEnum.Done;
             // the mod logs are shared by the games of every slot: run-game.ps1 of slot N waits for its own line
             Log(Slot > 1 ? $"finished [slot {Slot}]: {status}" : $"finished: {status}");
             WriteResults(status);
@@ -846,10 +881,15 @@ namespace MOD_nE7UL2.Mod
             DebugHelper.WriteLine($"[AUTOTEST] {msg}");
         }
 
+        private DateTime _lastWrite = DateTime.MinValue;
+        /// <summary>Seconds between two writes of results.json while a scenario waits (heartbeat of the stall watchdog).</summary>
+        public const int HEARTBEAT_SEC = 30;
+
         private void WriteResults(string status = null)
         {
             if (_request == null)
                 return;
+            _lastWrite = DateTime.Now;
             var data = new
             {
                 runId = _request.RunId,

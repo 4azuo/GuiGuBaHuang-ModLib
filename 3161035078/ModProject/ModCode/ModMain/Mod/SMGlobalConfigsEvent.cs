@@ -1,4 +1,5 @@
-﻿using EGameTypeData;
+﻿using MOD_nE7UL2.Helper;
+using EGameTypeData;
 using MOD_nE7UL2.Const;
 using MOD_nE7UL2.Enum;
 using MOD_nE7UL2.Object;
@@ -85,6 +86,27 @@ namespace MOD_nE7UL2.Mod
         public bool NoStalker { get; set; } = false;
         public bool NoTaxing { get; set; } = false;
         public bool NoQiCultivation { get; set; } = false;
+        public bool NoBodyCultivation { get; set; } = false;
+        public bool NoMerit { get; set; } = false;
+        public bool NoArtisan { get; set; } = false;
+        public bool NoDaoHeart { get; set; } = false;
+        public bool NoSpiritSense { get; set; } = false;
+        /// <summary>Gains of the cultivation paths, added to x1 (0: as designed; -0.5 half, 2 three times).</summary>
+        public float BodyExpRate { get; set; } = 0f;
+        public float MeritRate { get; set; } = 0f;
+        public float ArtisanExpRate { get; set; } = 0f;
+        public float DaoHeartRate { get; set; } = 0f;
+        public float SpiritSenseRate { get; set; } = 0f;
+        /// <summary>Estates (EstateEvent): no plots to buy; NPCs buy no houses; prices and house tax added to x1.</summary>
+        public bool NoEstate { get; set; } = false;
+        public bool NoNpcHouses { get; set; } = false;
+        public float EstatePriceRate { get; set; } = 0f;
+        public float EstateTaxRate { get; set; } = 0f;
+
+        /// <summary>The configs of the game in progress (null outside a game: the defaults).</summary>
+        public static SMGlobalConfigsEvent Current => SMLocalConfigsEvent.Instance?.Configs;
+        /// <summary>A gain of a path x (1 + its rate), the rate read from the configs (0 without).</summary>
+        public static double Rate(System.Func<SMGlobalConfigsEvent, float> rate) => Math.Max(0, 1 + (Current == null ? 0f : rate(Current)));
         // page 3 (features added later; "No..." so that saves made before keep them on)
         public bool NoEncounter { get; set; } = false;
         public bool NoBankLoan { get; set; } = false;
@@ -160,6 +182,13 @@ namespace MOD_nE7UL2.Mod
         private UIItemComposite tglNoStalker;
         private UIItemComposite tglNoTaxing;
         private UIItemComposite tglNoQiCultivation;
+        private UIItemComposite tglNoBodyCultivation;
+        private UIItemComposite tglNoMerit;
+        private UIItemComposite tglNoArtisan;
+        private UIItemComposite tglNoDaoHeart;
+        private UIItemComposite tglNoSpiritSense;
+        private UIItemComposite slBodyExpRate, slMeritRate, slArtisanExpRate, slDaoHeartRate, slSpiritSenseRate;
+        private UIItemComposite tglNoEstate, tglNoNpcHouses, slEstatePriceRate, slEstateTaxRate;
         private UIItemComposite tglNoEncounter;
         private UIItemComposite tglNoBankLoan;
         private UIItemComposite tglNoBuyOrder;
@@ -173,7 +202,8 @@ namespace MOD_nE7UL2.Mod
         private UIItemComposite tglNoStory;
         /// <summary>One line per NPC storyline under the "No NPC storylines" toggle (lines A-L).</summary>
         private static readonly string[] STORY_DESCRIPTIONS = { "smcfgs169", "smcfgs170", "smcfgs171", "smcfgs172", "smcfgs173", "smcfgs174",
-            "smcfgs186", "smcfgs187", "smcfgs188", "smcfgs189", "smcfgs190", "smcfgs191" };
+            "smcfgs186", "smcfgs187", "smcfgs188", "smcfgs189", "smcfgs190", "smcfgs191",
+            "smcfgs208", "smcfgs209", "smcfgs210", "smcfgs211" };
         /// <summary>
         /// Widths of the lines of page 3, in Latin characters: a storyline (a text box wraps itself at ~150 and the
         /// overflow covers the next row), the hint of the features (right of the toggles, left of the level buttons).
@@ -378,6 +408,24 @@ namespace MOD_nE7UL2.Mod
             Register(() => tglNoQiCultivation,
                 funcCal: s => 2000,
                 funcCond: s => s.Get().Parse<bool>());
+            Register(() => tglNoBodyCultivation,
+                funcCal: s => 1000,
+                funcCond: s => s.Get().Parse<bool>());
+            Register(() => tglNoMerit, funcCal: s => 500, funcCond: s => s.Get().Parse<bool>());               // merit helps more than karma hurts
+            Register(() => tglNoArtisan, funcCal: s => 500, funcCond: s => s.Get().Parse<bool>());             // craft ranks and masterpieces help
+            Register(() => tglNoDaoHeart, funcCal: s => 500, funcCond: s => s.Get().Parse<bool>());            // max SP / MP, heart demons
+            Register(() => tglNoSpiritSense, funcCal: s => 500, funcCond: s => s.Get().Parse<bool>());         // max MP / SP, ambushes avoided
+            // gains of the paths: faster is easier (-300 P a +100 %), slower harder; nothing when the path is off
+            Register(() => slBodyExpRate, funcCal: s => (-s.Get().Parse<float>() * 300).Parse<int>(), funcCond: s => !tglNoBodyCultivation.Get().Parse<bool>());
+            Register(() => slMeritRate, funcCal: s => (-s.Get().Parse<float>() * 300).Parse<int>(), funcCond: s => !tglNoMerit.Get().Parse<bool>());
+            Register(() => slArtisanExpRate, funcCal: s => (-s.Get().Parse<float>() * 300).Parse<int>(), funcCond: s => !tglNoArtisan.Get().Parse<bool>());
+            Register(() => slDaoHeartRate, funcCal: s => (-s.Get().Parse<float>() * 300).Parse<int>(), funcCond: s => !tglNoDaoHeart.Get().Parse<bool>());
+            Register(() => slSpiritSenseRate, funcCal: s => (-s.Get().Parse<float>() * 300).Parse<int>(), funcCond: s => !tglNoSpiritSense.Get().Parse<bool>());
+            // estates: no house (its rooms and bonuses) is harder; dearer houses and taxes harder
+            Register(() => tglNoEstate, funcCal: s => 500, funcCond: s => s.Get().Parse<bool>());
+            Register(() => tglNoNpcHouses, funcCal: s => 0, funcCond: s => s.Get().Parse<bool>());
+            Register(() => slEstatePriceRate, funcCal: s => (s.Get().Parse<float>() * 500).Parse<int>(), funcCond: s => !tglNoEstate.Get().Parse<bool>());
+            Register(() => slEstateTaxRate, funcCal: s => (s.Get().Parse<float>() * 500).Parse<int>(), funcCond: s => !tglNoEstate.Get().Parse<bool>());
             // additional features (page 3): turning off a feature that helps the player costs points (harder), turning
             // off one that hurts the player gives points back (easier); the rates count from their defaults
             Register(() => tglNoEncounter, funcCal: s => 1000, funcCond: s => s.Get().Parse<bool>());          // encounters reward more than they hurt
@@ -512,6 +560,9 @@ namespace MOD_nE7UL2.Mod
         /// <summary>
         /// Adds the "S&amp;M Configs" button to the title screen.
         /// </summary>
+        /// <summary>The S&amp;M button of the title screen (tests, label refresh).</summary>
+        public static UIItemButton TitleButton { get; private set; }
+
         public override void OnOpenUIEnd(OpenUIEnd e)
         {
             base.OnOpenUIEnd(e);
@@ -520,10 +571,11 @@ namespace MOD_nE7UL2.Mod
                 var ui = new UICover<UILogin>(e.ui);
                 {
                     var parentTransform = ui.UI.btnSet.transform.parent;
-                    ui.AddButton(ui.MidCol, ui.FirstRow + 5, OpenSMConfigs, TITLE, ui.UI.btnSet)
-                        .Align(TextAnchor.MiddleCenter)
+                    TitleButton = ui.AddButton(ui.MidCol, ui.FirstRow + 5, OpenSMConfigs, TITLE, ui.UI.btnSet);
+                    TitleButton.Align(TextAnchor.MiddleCenter)
                         .Format(Color.black, 24)
                         .SetParentTransform(parentTransform);
+                    UITitleScreenEvent.StripGameText(TitleButton);
                 }
                 ui.UpdateUI();
             }
@@ -686,7 +738,6 @@ namespace MOD_nE7UL2.Mod
                 uiCustom.AddText(col, row++, GameTool.LS("smcfgs128")).Format(null, 13).Align(TextAnchor.MiddleLeft);
                 tglNoStalker = uiCustom.AddCompositeToggle(col, row++, GameTool.LS("smcfgs124"), NoStalker, GameTool.LS("smcfgs102"));
                 tglNoQiCultivation = uiCustom.AddCompositeToggle(col, row++, GameTool.LS("smcfgs125"), NoQiCultivation, GameTool.LS("smcfgs102"));
-                row++;
                 tglAllowRepairGodWeapon = uiCustom.AddCompositeToggle(col, row++, GameTool.LS("smcfgs137"), AllowRepairGodWeapon, GameTool.LS("smcfgs102"));
                 tglAllowUpgradeNaturally = uiCustom.AddCompositeToggle(col, row++, GameTool.LS("smcfgs036"), AllowUpgradeNaturally, GameTool.LS("smcfgs102"));
                 uiCustom.AddText(col - 1, row++, GameTool.LS("smcfgs037")).Format(null, 13).Align(TextAnchor.MiddleLeft);
@@ -716,15 +767,47 @@ namespace MOD_nE7UL2.Mod
                 // rates of the random events (second column)
                 slEncounterRate = uiCustom.AddCompositeSlider(16, 1, GameTool.LS("smcfgs165"), 0f, 10f, EncounterRate, GameTool.LS("smcfgs103"));
                 slSeclusionRate = uiCustom.AddCompositeSlider(16, 2, GameTool.LS("smcfgs166"), 0f, 3f, SeclusionRate, GameTool.LS("smcfgs103"));
-                // the hint in the free space under the sliders (below the toggles it took 3 rows and the storylines went off the page)
+                // the hint in the free space under the sliders
                 var hintRow = 4;
                 foreach (var line in WrapText(GameTool.LS("smcfgs155"), WRAP_HINT))
                     uiCustom.AddText(Math.Min(13, uiCustom.Columns.Count - 1), hintRow++, line).Format(null, 13).Align(TextAnchor.MiddleLeft);
 
-                // NPC storylines: one toggle for all, a line per story
+                // the cultivation paths: on / off (left), how fast they grow (right)
                 row++;
+                var pathRow = row;
+                uiCustom.AddText(col, row++, SectionTitle("smcfgs197")).Format(SECTION_COLOR, 18, FontStyle.Bold).Align(TextAnchor.MiddleRight);
+                tglNoBodyCultivation = uiCustom.AddCompositeToggle(col, row++, GameTool.LS("smcfgs192"), NoBodyCultivation, GameTool.LS("smcfgs102"));
+                tglNoMerit = uiCustom.AddCompositeToggle(col, row++, GameTool.LS("smcfgs193"), NoMerit, GameTool.LS("smcfgs102"));
+                tglNoArtisan = uiCustom.AddCompositeToggle(col, row++, GameTool.LS("smcfgs194"), NoArtisan, GameTool.LS("smcfgs102"));
+                tglNoDaoHeart = uiCustom.AddCompositeToggle(col, row++, GameTool.LS("smcfgs195"), NoDaoHeart, GameTool.LS("smcfgs102"));
+                tglNoSpiritSense = uiCustom.AddCompositeToggle(col, row++, GameTool.LS("smcfgs196"), NoSpiritSense, GameTool.LS("smcfgs102"));
+                var r2 = pathRow + 1;
+                slBodyExpRate = uiCustom.AddCompositeSlider(16, r2++, GameTool.LS("smcfgs199"), -0.5f, 2f, BodyExpRate, GameTool.LS("smcfgs101"));
+                slMeritRate = uiCustom.AddCompositeSlider(16, r2++, GameTool.LS("smcfgs200"), -0.5f, 2f, MeritRate, GameTool.LS("smcfgs101"));
+                slArtisanExpRate = uiCustom.AddCompositeSlider(16, r2++, GameTool.LS("smcfgs201"), -0.5f, 2f, ArtisanExpRate, GameTool.LS("smcfgs101"));
+                slDaoHeartRate = uiCustom.AddCompositeSlider(16, r2++, GameTool.LS("smcfgs202"), -0.5f, 2f, DaoHeartRate, GameTool.LS("smcfgs101"));
+                slSpiritSenseRate = uiCustom.AddCompositeSlider(16, r2++, GameTool.LS("smcfgs203"), -0.5f, 2f, SpiritSenseRate, GameTool.LS("smcfgs101"));
+
+                // estates: on / off and the NPCs (left), prices and taxes (right)
+                row++;
+                var estateRow = row;
+                uiCustom.AddText(col, row++, SectionTitle("smcfgs198")).Format(SECTION_COLOR, 18, FontStyle.Bold).Align(TextAnchor.MiddleRight);
+                tglNoEstate = uiCustom.AddCompositeToggle(col, row++, GameTool.LS("smcfgs204"), NoEstate, GameTool.LS("smcfgs102"));
+                tglNoNpcHouses = uiCustom.AddCompositeToggle(col, row++, GameTool.LS("smcfgs205"), NoNpcHouses, GameTool.LS("smcfgs102"));
+                slEstatePriceRate = uiCustom.AddCompositeSlider(16, estateRow + 1, GameTool.LS("smcfgs206"), -0.5f, 3f, EstatePriceRate, GameTool.LS("smcfgs101"));
+                slEstateTaxRate = uiCustom.AddCompositeSlider(16, estateRow + 2, GameTool.LS("smcfgs207"), -1f, 3f, EstateTaxRate, GameTool.LS("smcfgs101"));
+
+                AddDifButtons();
+            }
+
+            //page 4: NPC storylines, one toggle for all, a line per story
+            uiCustom.AddPage();
+            {
+                int col = 2, row = 0;
+                uiCustom.AddToolTipButton(GameTool.LS("other500020039")).Pos(uiCustom.Columns[0], uiCustom.Rows[0] + UIHelper.GetUIDeltaY());
                 uiCustom.AddText(col, row++, SectionTitle("smcfgs168")).Format(SECTION_COLOR, 18, FontStyle.Bold).Align(TextAnchor.MiddleRight);
                 tglNoStory = uiCustom.AddCompositeToggle(col, row++, GameTool.LS("smcfgs167"), NoStory, GameTool.LS("smcfgs102"));
+                row++;
                 foreach (var key in STORY_DESCRIPTIONS)
                     foreach (var line in WrapText("- " + GameTool.LS(key), WRAP_STORY))
                         uiCustom.AddText(col - 1, row++, line).Format(null, 13).Align(TextAnchor.MiddleLeft);
@@ -814,7 +897,7 @@ namespace MOD_nE7UL2.Mod
                     }
                     else
                     {
-                        g.ui.MsgBox(GameTool.LS("ui_error"), GameTool.LS("ui_file_errors"));
+                        InfoDialog.Msg(GameTool.LS("ui_error"), GameTool.LS("ui_file_errors"));
                     }
                 }
             }
@@ -829,11 +912,11 @@ namespace MOD_nE7UL2.Mod
         }
 
         /// <summary>
-        /// Opens mod_configs.json.
+        /// Opens the ModConf folder (mod_configs.json and the settings files of the features, *_configs.json).
         /// </summary>
         private void OpenModConfigs()
         {
-            Process.Start("notepad.exe", ConfHelper.GetConfFilePath(ModId, "mod_configs.json"));
+            Process.Start("explorer.exe", ConfHelper.GetConfFolderPath(ModId));
         }
 
         /// <summary>
@@ -943,6 +1026,13 @@ namespace MOD_nE7UL2.Mod
             tglNoStalker.Set(false);
             tglNoTaxing.Set(false);
             tglNoQiCultivation.Set(false);
+            tglNoBodyCultivation.Set(false);
+            tglNoMerit.Set(false);
+            tglNoArtisan.Set(false);
+            tglNoDaoHeart.Set(false);
+            tglNoSpiritSense.Set(false);
+            slBodyExpRate.Set(0f); slMeritRate.Set(0f); slArtisanExpRate.Set(0f); slDaoHeartRate.Set(0f); slSpiritSenseRate.Set(0f);
+            tglNoEstate.Set(false); tglNoNpcHouses.Set(false); slEstatePriceRate.Set(0f); slEstateTaxRate.Set(0f);
             tglNoEncounter.Set(false);
             tglNoBankLoan.Set(false);
             tglNoBuyOrder.Set(false);
@@ -1014,6 +1104,13 @@ namespace MOD_nE7UL2.Mod
             tglNoStalker.Set(false);
             tglNoTaxing.Set(false);
             tglNoQiCultivation.Set(false);
+            tglNoBodyCultivation.Set(false);
+            tglNoMerit.Set(false);
+            tglNoArtisan.Set(false);
+            tglNoDaoHeart.Set(false);
+            tglNoSpiritSense.Set(false);
+            slBodyExpRate.Set(0f); slMeritRate.Set(0f); slArtisanExpRate.Set(0f); slDaoHeartRate.Set(0f); slSpiritSenseRate.Set(0f);
+            tglNoEstate.Set(false); tglNoNpcHouses.Set(false); slEstatePriceRate.Set(0f); slEstateTaxRate.Set(0f);
             tglNoEncounter.Set(false);
             tglNoBankLoan.Set(false);
             tglNoBuyOrder.Set(false);
@@ -1086,6 +1183,20 @@ namespace MOD_nE7UL2.Mod
             NoStalker = tglNoStalker.Get().Parse<bool>();
             NoTaxing = tglNoTaxing.Get().Parse<bool>();
             NoQiCultivation = tglNoQiCultivation.Get().Parse<bool>();
+            NoBodyCultivation = tglNoBodyCultivation.Get().Parse<bool>();
+            NoMerit = tglNoMerit.Get().Parse<bool>();
+            NoArtisan = tglNoArtisan.Get().Parse<bool>();
+            NoDaoHeart = tglNoDaoHeart.Get().Parse<bool>();
+            NoSpiritSense = tglNoSpiritSense.Get().Parse<bool>();
+            BodyExpRate = slBodyExpRate.Get().Parse<float>();
+            MeritRate = slMeritRate.Get().Parse<float>();
+            ArtisanExpRate = slArtisanExpRate.Get().Parse<float>();
+            DaoHeartRate = slDaoHeartRate.Get().Parse<float>();
+            SpiritSenseRate = slSpiritSenseRate.Get().Parse<float>();
+            NoEstate = tglNoEstate.Get().Parse<bool>();
+            NoNpcHouses = tglNoNpcHouses.Get().Parse<bool>();
+            EstatePriceRate = slEstatePriceRate.Get().Parse<float>();
+            EstateTaxRate = slEstateTaxRate.Get().Parse<float>();
             NoEncounter = tglNoEncounter.Get().Parse<bool>();
             NoBankLoan = tglNoBankLoan.Get().Parse<bool>();
             NoBuyOrder = tglNoBuyOrder.Get().Parse<bool>();

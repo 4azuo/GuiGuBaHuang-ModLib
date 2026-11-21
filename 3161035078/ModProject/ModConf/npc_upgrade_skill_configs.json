@@ -1,0 +1,14 @@
+{
+	"__name": "NPC skill upgrade (NpcUpgradeSkillEvent)",
+	"__help": [
+		"A value left out (or a broken file): the default of the mod.",
+		"UpgradeRates: chance in % a month that an NPC upgrades a skill of the type (x luck / 100). Types: SkillLeft, SkillRight, Step, Ultimate, Ability. The list given replaces the default one."
+	],
+	"UpgradeRates": {
+		"SkillLeft": 7.0,
+		"SkillRight": 7.0,
+		"Step": 12.0,
+		"Ultimate": 8.0,
+		"Ability": 16.0
+	}
+}

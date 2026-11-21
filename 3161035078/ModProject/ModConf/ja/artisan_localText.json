@@ -1,0 +1,432 @@
+[
+	{
+		"id": "-1000014000",
+		"key": "artisan_button",
+		"en|ch|tc|kr": "技芸の道"
+	},
+	{
+		"id": "-1000014001",
+		"key": "artisan_title_window",
+		"en|ch|tc|kr": "技芸の道"
+	},
+	{
+		"id": "-1000014002",
+		"key": "artisan_craft_1",
+		"en|ch|tc|kr": "錬丹"
+	},
+	{
+		"id": "-1000014003",
+		"key": "artisan_craft_2",
+		"en|ch|tc|kr": "錬器"
+	},
+	{
+		"id": "-1000014004",
+		"key": "artisan_craft_3",
+		"en|ch|tc|kr": "製符"
+	},
+	{
+		"id": "-1000014005",
+		"key": "artisan_rank_0",
+		"en|ch|tc|kr": "素人"
+	},
+	{
+		"id": "-1000014006",
+		"key": "artisan_rank_1",
+		"en|ch|tc|kr": "見習い"
+	},
+	{
+		"id": "-1000014007",
+		"key": "artisan_rank_2",
+		"en|ch|tc|kr": "職人"
+	},
+	{
+		"id": "-1000014008",
+		"key": "artisan_rank_3",
+		"en|ch|tc|kr": "大師"
+	},
+	{
+		"id": "-1000014009",
+		"key": "artisan_rank_4",
+		"en|ch|tc|kr": "宗師"
+	},
+	{
+		"id": "-1000014010",
+		"key": "artisan_rank_5",
+		"en|ch|tc|kr": "聖手"
+	},
+	{
+		"id": "-1000014011",
+		"key": "artisan_none",
+		"en|ch|tc|kr": "技芸なし"
+	},
+	{
+		"id": "-1000014012",
+		"key": "artisan_title",
+		"en|ch|tc|kr": "{0}{1}"
+	},
+	{
+		"id": "-1000014013",
+		"key": "artisan_npc",
+		"en|ch|tc|kr": "技芸：{0}"
+	},
+	{
+		"id": "-1000014014",
+		"key": "artisan_line",
+		"en|ch|tc|kr": "{0}：{1} - 造詣{2:#,##0}（位階+{3}）、傑作{4}"
+	},
+	{
+		"id": "-1000014015",
+		"key": "artisan_exp",
+		"en|ch|tc|kr": "[icon:wuxing] 技芸経験 {0:#,##0} / {1:#,##0}"
+	},
+	{
+		"id": "-1000014016",
+		"key": "artisan_exam_ready",
+		"en|ch|tc|kr": "{0}の試験を受けられる（{1:0}%）：大都市で年に一度"
+	},
+	{
+		"id": "-1000014017",
+		"key": "artisan_exam_button",
+		"en|ch|tc|kr": "{0}の試験を受ける（受験料{1:#,##0}[icon:zm_lingshi]）"
+	},
+	{
+		"id": "-1000014018",
+		"key": "artisan_top",
+		"en|ch|tc|kr": "この道の最高位だ。"
+	},
+	{
+		"id": "-1000014019",
+		"key": "artisan_exam_NotReady",
+		"en|ch|tc|kr": "まだ試験を受けられない。"
+	},
+	{
+		"id": "-1000014020",
+		"key": "artisan_exam_NotInCity",
+		"en|ch|tc|kr": "技芸の試験は大都市でのみ行われる。"
+	},
+	{
+		"id": "-1000014021",
+		"key": "artisan_exam_AlreadyThisYear",
+		"en|ch|tc|kr": "今年はすでに{0}の試験を受けた。"
+	},
+	{
+		"id": "-1000014022",
+		"key": "artisan_exam_NoMoney",
+		"en|ch|tc|kr": "受験料は霊石{2:#,##0}だ。"
+	},
+	{
+		"id": "-1000014023",
+		"key": "artisan_exam_Passed",
+		"en|ch|tc|kr": "試験官たちが頭を下げる：あなたは今や{0}{1}だ。"
+	},
+	{
+		"id": "-1000014024",
+		"key": "artisan_exam_Failed",
+		"en|ch|tc|kr": "試験官たちは首を振った。来年また来なさい。"
+	},
+	{
+		"id": "-1000014025",
+		"key": "artisan_masterpieces",
+		"en|ch|tc|kr": "天下の傑作"
+	},
+	{
+		"id": "-1000014026",
+		"key": "artisan_masterpiece_line",
+		"en|ch|tc|kr": "{0} - {1}作（{2}）"
+	},
+	{
+		"id": "-1000014027",
+		"key": "artisan_usual",
+		"en|ch|tc|kr": "{0}段を超える品はあなたの境界では傑作となる（二段上：炉が爆発することがある）。"
+	},
+	{
+		"id": "-1000014029",
+		"key": "log_artisan_rank",
+		"en|ch|tc|kr": "{0}：あなたは今や{1}だ。"
+	},
+	{
+		"id": "-1000014030",
+		"key": "log_artisan_masterpiece",
+		"en|ch|tc|kr": "傑作：{0}（修為+{1:#,##0}）。"
+	},
+	{
+		"id": "-1000014031",
+		"key": "log_npc_artisan_masterpiece",
+		"en|ch|tc|kr": "{0}が傑作を作り上げた：{1}。"
+	},
+	{
+		"id": "-1000014032",
+		"key": "log_npc_artisan_rank",
+		"en|ch|tc|kr": "{0}が{1}の試験に合格した：{2}。"
+	},
+	{
+		"id": "-1000014033",
+		"key": "log_artisan_accident",
+		"en|ch|tc|kr": "{0}：炉が爆発した（HP{1:#,##0}と寿命{2}か月を失った）。"
+	},
+	{
+		"id": "-1000014046",
+		"key": "artisan_dismiss",
+		"en|ch|tc|kr": "解雇する"
+	},
+	{
+		"id": "-1000014034",
+		"key": "artisan_craft_4",
+		"en|ch|tc|kr": "風水"
+	},
+	{
+		"id": "-1000014035",
+		"key": "artisan_essence",
+		"en|ch|tc|kr": "[icon:daodian] 技芸の精華 {0:#,##0}（返璞帰真まで {1} / {2}段）"
+	},
+	{
+		"id": "-1000014036",
+		"key": "artisan_essence_bonus",
+		"en|ch|tc|kr": "[icon:gongji] 技芸の精華：攻撃・防御・最大HP+{0}%"
+	},
+	{
+		"id": "-1000014041",
+		"key": "artisan_sell",
+		"en|ch|tc|kr": "[icon:zm_lingshi] 名声により市場での売値が上がる：+{0:0}%"
+	},
+	{
+		"id": "-1000014042",
+		"key": "artisan_commission_line",
+		"en|ch|tc|kr": "{0}の依頼：{1}、{2}段以上、報酬{3:#,##0}[icon:zm_lingshi]（残り{4}か月）"
+	},
+	{
+		"id": "-1000014043",
+		"key": "artisan_deliver",
+		"en|ch|tc|kr": "納品する"
+	},
+	{
+		"id": "-1000014044",
+		"key": "artisan_no_item",
+		"en|ch|tc|kr": "自ら作った、その技芸と段の品を持っていない。"
+	},
+	{
+		"id": "-1000014045",
+		"key": "artisan_apprentice_line",
+		"en|ch|tc|kr": "弟子{0}（{1}：{2}）"
+	},
+	{
+		"id": "-1000014047",
+		"key": "artisan_take_apprentice",
+		"en|ch|tc|kr": "弟子を取る"
+	},
+	{
+		"id": "-1000014048",
+		"key": "artisan_no_apprentice",
+		"en|ch|tc|kr": "近くにあなたに学びたい者はいない。"
+	},
+	{
+		"id": "-1000014049",
+		"key": "log_artisan_commission",
+		"en|ch|tc|kr": "{0}が{2}段の{1}を霊石{3:#,##0}で依頼した。"
+	},
+	{
+		"id": "-1000014050",
+		"key": "log_artisan_commission_late",
+		"en|ch|tc|kr": "{0}の依頼が期限切れになり、相手は落胆している。"
+	},
+	{
+		"id": "-1000014051",
+		"key": "log_artisan_delivered",
+		"en|ch|tc|kr": "{0}に納品した：霊石{1:#,##0}。"
+	},
+	{
+		"id": "-1000014052",
+		"key": "log_artisan_apprentice",
+		"en|ch|tc|kr": "{0}があなたに弟子入りし、{1}を学ぶ。"
+	},
+	{
+		"id": "-1000014053",
+		"key": "log_artisan_apprentice_gift",
+		"en|ch|tc|kr": "弟子の{0}が{1}を持ってきた。"
+	},
+	{
+		"id": "-1000014028",
+		"key": "artisan_help",
+		"en|ch|tc|kr": "ゲームの錬丹・錬器・製符・風水の画面で作るか、地図で薬草や鉱石を採る：物ごとに技芸経験、傑作なら修為も得る。NPCが依頼をし、大師は弟子を取れる。"
+	},
+	{
+		"id": "-1000014037",
+		"key": "artisan_returned",
+		"en|ch|tc|kr": "[icon:daodian] 返璞帰真：{0}（それぞれ天命一つ）"
+	},
+	{
+		"id": "-1000014038",
+		"key": "artisan_return",
+		"en|ch|tc|kr": "手が止まる。何年もの間、あらゆる{0}は炎と意志の戦いだった。今や自ずと成り、水のように淡い。あなたは返璞帰真に至った。"
+	},
+	{
+		"id": "-1000014039",
+		"key": "log_artisan_return",
+		"en|ch|tc|kr": "{0}：返璞帰真に至った（天命）。"
+	},
+	{
+		"id": "-1000014040",
+		"key": "log_npc_artisan_return",
+		"en|ch|tc|kr": "{0}は{1}において返璞帰真に至った。"
+	},
+	{
+		"id": "-1000014054",
+		"key": "artisan_craft_5",
+		"en|ch|tc|kr": "薬道"
+	},
+	{
+		"id": "-1000014055",
+		"key": "artisan_craft_6",
+		"en|ch|tc|kr": "鉱道"
+	},
+	{
+		"id": "-1000014056",
+		"key": "artisan420201001",
+		"en|ch|tc|kr": "返璞帰真・錬丹"
+	},
+	{
+		"id": "-1000014057",
+		"key": "artisan420201001desc",
+		"en|ch|tc|kr": "錬丹返璞帰真：錬丹+50、攻撃+15%、防御+15%、最大HP+15%、気運+3"
+	},
+	{
+		"id": "-1000014058",
+		"key": "artisan420201002",
+		"en|ch|tc|kr": "返璞帰真・錬器"
+	},
+	{
+		"id": "-1000014059",
+		"key": "artisan420201002desc",
+		"en|ch|tc|kr": "錬器返璞帰真：錬器+50、攻撃+15%、防御+15%、最大HP+15%、気運+3"
+	},
+	{
+		"id": "-1000014060",
+		"key": "artisan420201003",
+		"en|ch|tc|kr": "返璞帰真・製符"
+	},
+	{
+		"id": "-1000014061",
+		"key": "artisan420201003desc",
+		"en|ch|tc|kr": "製符返璞帰真：製符+50、攻撃+15%、防御+15%、最大HP+15%、気運+3"
+	},
+	{
+		"id": "-1000014062",
+		"key": "artisan420201004",
+		"en|ch|tc|kr": "返璞帰真・風水"
+	},
+	{
+		"id": "-1000014063",
+		"key": "artisan420201004desc",
+		"en|ch|tc|kr": "風水返璞帰真：風水+50、攻撃+15%、防御+15%、最大HP+15%、気運+3"
+	},
+	{
+		"id": "-1000014064",
+		"key": "artisan420201005",
+		"en|ch|tc|kr": "返璞帰真・薬道"
+	},
+	{
+		"id": "-1000014065",
+		"key": "artisan420201005desc",
+		"en|ch|tc|kr": "薬道返璞帰真：薬道+50、攻撃+15%、防御+15%、最大HP+15%、気運+3"
+	},
+	{
+		"id": "-1000014066",
+		"key": "artisan420201006",
+		"en|ch|tc|kr": "返璞帰真・鉱道"
+	},
+	{
+		"id": "-1000014067",
+		"key": "artisan420201006desc",
+		"en|ch|tc|kr": "鉱道返璞帰真：鉱道+50、攻撃+15%、防御+15%、最大HP+15%、気運+3"
+	},
+	{
+		"id": "-1000014071",
+		"key": "artisan_spot_no",
+		"en|ch|tc|kr": "通り過ぎる"
+	},
+	{
+		"id": "-1000014068",
+		"key": "artisan_spot_mine",
+		"en|ch|tc|kr": "鉱脈"
+	},
+	{
+		"id": "-1000014074",
+		"key": "secl_name_MineVein",
+		"en|ch|tc|kr": "鉱脈"
+	},
+	{
+		"id": "-1000014069",
+		"key": "artisan_spot_herb",
+		"en|ch|tc|kr": "薬谷"
+	},
+	{
+		"id": "-1000014075",
+		"key": "secl_name_HerbValley",
+		"en|ch|tc|kr": "薬谷"
+	},
+	{
+		"id": "-1000014070",
+		"key": "artisan_spot_o",
+		"en|ch|tc|kr": "{0}年留まる（約{1}個）"
+	},
+	{
+		"id": "-1000014072",
+		"key": "artisan_spot_mine_text",
+		"en|ch|tc|kr": "ここの岩がきらめく：{0}区の豊かな鉱脈だ。修士は何年も留まり、鉱石を掘り、地の理を悟ることができる。（残り寿命：{1}年）"
+	},
+	{
+		"id": "-1000014073",
+		"key": "artisan_spot_herb_text",
+		"en|ch|tc|kr": "{0}区の風の穏やかな谷、土は黒く霊気に満ちている：薬草がよく育つだろう。修士は何年も留まり、植えて世話をすることができる。（残り寿命：{1}年）"
+	},
+	{
+		"id": "-1000014076",
+		"key": "secl_res_MineVein",
+		"en|ch|tc|kr": "鉱脈での歳月で鉱石{0}個を得た：{1}。鉱道経験+{2:#,##0}。"
+	},
+	{
+		"id": "-1000014077",
+		"key": "secl_res_HerbValley",
+		"en|ch|tc|kr": "薬谷の収穫：薬草{0}株：{1}。薬道経験+{2:#,##0}。"
+	},
+	{
+		"id": "-1000014078",
+		"key": "log_artisan_spot",
+		"en|ch|tc|kr": "{0}：{1}個、技芸経験+{2:#,##0}。"
+	},
+	{
+		"id": "-1000014079",
+		"key": "artisan_card_rank",
+		"en|ch|tc|kr": "[icon:jineng] {0} · [icon:wuxing] 数値{1:#,##0}（等級+{2}）· [icon:shanghaiweili] 傑作{3}"
+	},
+	{
+		"id": "-1000014080",
+		"key": "artisan_section_commissions",
+		"en|ch|tc|kr": "依頼"
+	},
+	{
+		"id": "-1000014081",
+		"key": "artisan_section_apprentices",
+		"en|ch|tc|kr": "弟子"
+	},
+	{
+		"id": "-1000014082",
+		"key": "artisan_take_apprentice_n",
+		"en|ch|tc|kr": "弟子を取る（{0}/{1}）"
+	},
+	{
+		"id": "-1000014083",
+		"key": "artisan_hint_apprentice",
+		"en|ch|tc|kr": "弟子：{0}から"
+	},
+	{
+		"id": "-1000014084",
+		"key": "artisan_hint_apprentice_full",
+		"en|ch|tc|kr": "弟子：{0}/{1}"
+	},
+	{
+		"id": "-1000014085",
+		"key": "artisan_hint_essence",
+		"en|ch|tc|kr": "技芸の精華：{0}になってから"
+	}
+]

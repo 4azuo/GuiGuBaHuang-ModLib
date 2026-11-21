@@ -1,4 +1,4 @@
-﻿{
+{
 	"$PrepareEvent$": 1000,
 	
 	//common
@@ -24,14 +24,22 @@
 	"UnitTypeEvent": 2060,
 	"UpgradeNaturallyEvent": 2070,
 	"QiCulEvent": 2080,
+	"BodyCulEvent": 2082,
+	"MeritEvent": 2083,
+	"ArtisanEvent": 2084,
+	"DaoHeartEvent": 2086,
+	"SpiritSenseEvent": 2087,
 	"UseSpiritStoneCulEvent": 2085,
 	"HirePeopleEvent": 2090,
 
 	//eco
 	"MapBuildPropertyEvent": 3000,
+	"EstateEvent": 3005,
 	"BankAccountEvent": 3010,
+	"SpiritNoteEvent": 3012,
 	"BankLoanEvent": 3015,
 	"WantedEvent": 3020,
+	"ClanEvent": 3022,
 	"SeclusionEvent": 3022,
 	"FamilyEvent": 3024,
 	"FamilyFundEvent": 3025,
@@ -73,6 +81,5 @@
 	"TimeSkipEvent": 7000,
 
 	//debug
-	"AutoTestEvent": 9990,
-	"DebugEvent": 9999
+	"AutoTestEvent": 9990
 }

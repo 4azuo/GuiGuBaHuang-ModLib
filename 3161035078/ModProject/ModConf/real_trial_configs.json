@@ -1,0 +1,9 @@
+{
+	"__name": "Trial of lightning (RealTrialEvent)",
+	"__help": [
+		"A value left out (or a broken file): the default of the mod.",
+		"Lightning power-up = game level x PowerUpOnGameLevel + player grade x PowerUpOnGradeLevel."
+	],
+	"PowerUpOnGameLevel": 0.64,
+	"PowerUpOnGradeLevel": 0.08
+}

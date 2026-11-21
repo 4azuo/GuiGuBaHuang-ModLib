@@ -15,7 +15,7 @@ Related object: `Object/CommissionTask.cs`.
 
 ## Switch
 
-`mod_configs.json` > `MissionDeclareConfigs`:
+`mission_declare_configs.json` (`MissionDeclareConfig`):
 
 | Key | Value |
 |---|---|

@@ -18,27 +18,25 @@ namespace MOD_nE7UL2.AutoTest.Scenarios.Town
         /// <summary>Builds the scenario and its steps.</summary>
         public Scenario Create()
         {
-            return new Scenario { Id = "TG-35", Feature = "RebirthEvent/CustomRefineEvent", Title = "Pub rebirth button and forge custom refine", Overlay = false }
+            return new Scenario { Id = "TG-35", Feature = "RebirthEvent/CustomRefineEvent", Title = "Rebirth button on the player info and forge custom refine", Overlay = false }
                 .Step("travel", c => TravelTo(c, FindTown(t => Has(t, MapBuildSubType.TownPub) && Has(t, MapBuildSubType.TownFactory) && !t.buildTownData.isMainTown)))
-                .Step("open pub", c =>
-                {
-                    var town = CurrentTown;
-                    if (town == null) { c.Skip("player is not in a town"); return; }
-                    OpenTownUI<UITownPub>(UIType.TownPub, ui => ui.InitData(town));
-                })
+                .Step("open player info", c => g.ui.OpenUISafe<UIPlayerInfo>(UIType.PlayerInfo), 1500)
                 .Step("rebirth button", c =>
                 {
                     var town = CurrentTown;
-                    if (town == null || !g.ui.HasUI(UIType.TownPub)) { c.Skip("pub not opened"); return; }
+                    if (town == null) { c.Skip("player is not in a town"); return; }
                     var r = RebirthEvent.Instance;
                     var grade = Player.GetGradeLvl();
-                    var expected = !SMLocalConfigsEvent.Instance.Configs.NoRebirth && town.gridData.areaBaseID > r.RebirthLevel && grade > r.RebirthLevel && town.gridData.areaBaseID >= grade;
-                    var shown = FindButtons(UIType.TownPub, GameTool.LS($"rebirth{420101001 + r.RebirthCount}")).Any();
-                    c.AssertEqual(expected, shown, $"rebirth button shown (town level {town.gridData.areaBaseID}, grade {grade}, rebirth level {r.RebirthLevel})");
+                    // the button is always on the player info (rebirth on); a click tells what is missing
+                    var shown = FindButtons(UIType.PlayerInfo, RebirthEvent.ButtonText).Any();
+                    c.AssertEqual(!SMLocalConfigsEvent.Instance.Configs.NoRebirth, shown, "rebirth button on the player info, beside the damage calculation");
+                    var ok = town.gridData.areaBaseID > r.RebirthLevel && grade > r.RebirthLevel && town.gridData.areaBaseID >= grade && string.IsNullOrEmpty(Player.data.unitData.schoolID);
+                    var missing = RebirthEvent.Missing(Player);
+                    c.AssertEqual(ok, missing == null, $"rebirth possible here: {missing ?? "yes"} (town level {town.gridData.areaBaseID}, grade {grade}, rebirth level {r.RebirthLevel})");
                 })
                 .Step("open forge", c =>
                 {
-                    CloseAll(UIType.TownPub);
+                    CloseAll(UIType.PlayerInfo);
                     var town = CurrentTown;
                     if (town == null) { c.Skip("player is not in a town"); return; }
                     OpenTownUI<UITownFactoryShapeOption>(UIType.TownFactoryShapeOption, ui => ui.InitData(town));

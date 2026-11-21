@@ -1,4 +1,5 @@
-﻿using EGameTypeData;
+﻿using MOD_nE7UL2.Helper;
+using EGameTypeData;
 using MOD_nE7UL2.Const;
 using ModLib.Attributes;
 using ModLib.Mod;
@@ -61,7 +62,7 @@ namespace MOD_nE7UL2.Mod
         {
             var cost = (g.world.playerUnit.GetGradeLvl() + RebirthEvent.Instance.TotalGradeLvl) * 100 * Math.Pow(2, g.world.playerUnit.GetGradeLvl()).Parse<int>();
             cost = InflationaryEvent.CalculateInflationary(cost);
-            g.ui.MsgBox(string.Empty, string.Format(GameTool.LS("other500020115"), cost), ModLib.Enum.MsgBoxButtonEnum.YesNo, () =>
+            InfoDialog.Msg(string.Empty, string.Format(GameTool.LS("other500020115"), cost), ModLib.Enum.MsgBoxButtonEnum.YesNo, () =>
             {
                 if (g.world.playerUnit.GetUnitMoney() >= cost)
                 {
@@ -71,7 +72,7 @@ namespace MOD_nE7UL2.Mod
                 }
                 else
                 {
-                    g.ui.MsgBox(string.Empty, GameTool.LS("other500020116"));
+                    InfoDialog.Msg(string.Empty, GameTool.LS("other500020116"));
                 }
             });
         }
@@ -83,7 +84,7 @@ namespace MOD_nE7UL2.Mod
         {
             var cost = (g.world.playerUnit.GetGradeLvl() + RebirthEvent.Instance.TotalGradeLvl) * 100 * Math.Pow(2, g.world.playerUnit.GetGradeLvl()).Parse<int>();
             cost = InflationaryEvent.CalculateInflationary(cost);
-            g.ui.MsgBox(string.Empty, string.Format(GameTool.LS("other500020115"), cost), ModLib.Enum.MsgBoxButtonEnum.YesNo, () =>
+            InfoDialog.Msg(string.Empty, string.Format(GameTool.LS("other500020115"), cost), ModLib.Enum.MsgBoxButtonEnum.YesNo, () =>
             {
                 if (g.world.playerUnit.GetUnitMoney() >= cost)
                 {
@@ -93,7 +94,7 @@ namespace MOD_nE7UL2.Mod
                 }
                 else
                 {
-                    g.ui.MsgBox(string.Empty, GameTool.LS("other500020116"));
+                    InfoDialog.Msg(string.Empty, GameTool.LS("other500020116"));
                 }
             });
         }
@@ -105,7 +106,7 @@ namespace MOD_nE7UL2.Mod
         {
             var cost = (g.world.playerUnit.GetGradeLvl() + (g.world.unit.GetUnit(GodArtifactHelper.GetPiscesPendantNpcId())?.GetGradeLvl() ?? 0)) * 100 * Math.Pow(2, g.world.playerUnit.GetGradeLvl()).Parse<int>();
             cost = InflationaryEvent.CalculateInflationary(cost);
-            g.ui.MsgBox(string.Empty, string.Format(GameTool.LS("other500020115"), cost), ModLib.Enum.MsgBoxButtonEnum.YesNo, () =>
+            InfoDialog.Msg(string.Empty, string.Format(GameTool.LS("other500020115"), cost), ModLib.Enum.MsgBoxButtonEnum.YesNo, () =>
             {
                 if (g.world.playerUnit.GetUnitMoney() >= cost)
                 {
@@ -115,7 +116,7 @@ namespace MOD_nE7UL2.Mod
                 }
                 else
                 {
-                    g.ui.MsgBox(string.Empty, GameTool.LS("other500020116"));
+                    InfoDialog.Msg(string.Empty, GameTool.LS("other500020116"));
                 }
             });
         }

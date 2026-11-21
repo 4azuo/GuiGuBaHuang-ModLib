@@ -618,8 +618,8 @@ namespace MOD_nE7UL2.Mod
                 //player +exp
                 if (!SMLocalConfigsEvent.Instance.Configs.NoExpFromBattles)
                 {
-                    var rewardExp1 = Math.Max((double)localDmgDealt * ModMain.ModObj.ModSettings.BattleRewardConfigs.ExpPerDmgDealt, 1).ToIntClamp();
-                    var rewardExp2 = Math.Max((double)localDmgRecv * ModMain.ModObj.ModSettings.BattleRewardConfigs.ExpPerDmgRecv, 1).ToIntClamp();
+                    var rewardExp1 = Math.Max((double)localDmgDealt * BattleRewardConfig.Conf.ExpPerDmgDealt, 1).ToIntClamp();
+                    var rewardExp2 = Math.Max((double)localDmgRecv * BattleRewardConfig.Conf.ExpPerDmgRecv, 1).ToIntClamp();
                     var rewardExp = ValueHelper.SafeAddInt(rewardExp1, rewardExp2);
 
                     var myRewardExp = SMScoreEvent.ScaleExp(((double)rewardExp * (insight / 100d)).ToIntClamp());

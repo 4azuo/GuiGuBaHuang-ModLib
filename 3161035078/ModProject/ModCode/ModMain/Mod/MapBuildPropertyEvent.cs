@@ -1,4 +1,5 @@
-﻿using EBattleTypeData;
+﻿using MOD_nE7UL2.Helper;
+using EBattleTypeData;
 using EGameTypeData;
 using MOD_nE7UL2.Const;
 using MOD_nE7UL2.Enum;
@@ -146,9 +147,9 @@ namespace MOD_nE7UL2.Mod
 
             if (e.uiType.uiName == UIType.Town.uiName)
             {
-                //pay town tax
+                //pay town tax (a house owner pays the fixed tax of the house instead, EstateEvent)
                 var town = player.GetMapBuild<MapBuildTown>();
-                if (town != null && !PayTaxTown.Contains(town.buildData.id) && !IsTownGuardian(town, player))
+                if (town != null && !PayTaxTown.Contains(town.buildData.id) && !IsTownGuardian(town, player) && !EstateEvent.HasHouse(town, player))
                 {
                     var guard = GetTownGuardians(town).Random();
                     CheckIn(guard, town, e.ui);
@@ -195,7 +196,7 @@ namespace MOD_nE7UL2.Mod
                         {
                             uiCover.AddButton(200f, 90f, () =>
                             {
-                                g.ui.MsgBox(GameTool.LS("other500020011"), GameTool.LS("other500020007"), MsgBoxButtonEnum.YesNo, () =>
+                                InfoDialog.Msg(GameTool.LS("other500020011"), GameTool.LS("other500020007"), MsgBoxButtonEnum.YesNo, () =>
                                 {
                                     Leave(uiCover.UI.unit);
                                     g.ui.CloseUI(e.ui);
@@ -217,18 +218,18 @@ namespace MOD_nE7UL2.Mod
                             var requiredSpiritStones = GetRequiredSpiritStones(town, uiCover.UI.unit);
                             if (player.GetUnitMoney() < requiredSpiritStones)
                             {
-                                g.ui.MsgBox(GameTool.LS("other500020011"), ModTextHelper.LSF("ui_require_stones", requiredSpiritStones));
+                                InfoDialog.Msg(GameTool.LS("other500020011"), ModTextHelper.LSF("ui_require_stones", requiredSpiritStones));
                                 return;
                             }
 
                             var requiredReputations = GetRequiredReputations(town, uiCover.UI.unit);
                             if (player.GetDynProperty(UnitDynPropertyEnum.Reputation).value < requiredReputations)
                             {
-                                g.ui.MsgBox(GameTool.LS("other500020011"), ModTextHelper.LSF("ui_require_reputations", requiredReputations));
+                                InfoDialog.Msg(GameTool.LS("other500020011"), ModTextHelper.LSF("ui_require_reputations", requiredReputations));
                                 return;
                             }
 
-                            g.ui.MsgBox(GameTool.LS("other500020011"), GameTool.LS("other500020008"), MsgBoxButtonEnum.YesNo, () =>
+                            InfoDialog.Msg(GameTool.LS("other500020011"), GameTool.LS("other500020008"), MsgBoxButtonEnum.YesNo, () =>
                             {
                                 Hire(town, uiCover.UI.unit, TOWN_GUARDIAN_LUCK_ID);
                                 AddBuildProperty(town, -requiredSpiritStones);
@@ -326,7 +327,10 @@ namespace MOD_nE7UL2.Mod
                         RecordTax(town, tax, false);
                         if (townMaster != null)
                             wunit.data.unitData.relationData.AddHate(townMaster.GetUnitId(), 5);
-                        wunit.SetUnitRandomPos(wunit.GetUnitPos());
+                        // a random cell near may still be in the town (a town has several cells): further until out
+                        var from = wunit.GetUnitPos();
+                        for (var r = 3; r <= 12 && wunit.GetMapBuild<MapBuildTown>() != null; r++)
+                            wunit.SetUnitRandomPos(from, r);
                     }
                 }
             }
@@ -378,7 +382,9 @@ namespace MOD_nE7UL2.Mod
                 if (master != null && !master.IsPlayer())
                 {
                     //random tax rate
-                    TaxRate[town.buildData.id] = CommonTool.Random(0.50f, 10.00f);
+                    //(range: estate_configs.json Population.NpcTaxRate; a high rate drives the mortals away, EstateEvent.TaxFactor)
+                    var npcRate = EstateEvent.Conf.Population.NpcTaxRate;
+                    TaxRate[town.buildData.id] = CommonTool.Random(npcRate[0], npcRate[1]);
 
                     //hire more people
                     if (GetBuildProperty(town) > GetRequiredSpiritStones(town, master.GetGradeLvl()) * 1.5)
@@ -416,7 +422,8 @@ namespace MOD_nE7UL2.Mod
                 }
 
                 //budget inc yearly
-                AddBuildProperty(town, GetBaseTax(town) * TOWN_YEARLY_BUDGET * years);
+                //(the town master's palace raises it, EstateEvent)
+                AddBuildProperty(town, (long)Math.Round((double)GetBaseTax(town) * TOWN_YEARLY_BUDGET * years * EstateEvent.PalaceBudgetRate(town)));
                 
                 //budget inc by auction
                 var auction = town.GetBuildSub<MapBuildTownAuction>();
@@ -713,7 +720,7 @@ namespace MOD_nE7UL2.Mod
             }
             else
             {
-                g.ui.MsgBox(GameTool.LS("other500020011"), GameTool.LS("other500020025"));
+                InfoDialog.Msg(GameTool.LS("other500020011"), GameTool.LS("other500020025"));
             }
         }
 
@@ -832,46 +839,78 @@ namespace MOD_nE7UL2.Mod
                 {
                     Formatter = ActionHelper.WTracedFunc<UIItemBase, object[]>((ibase) => new object[] { TaxStatText(town) }),
                 });
+                //mortals of the town (EstateEvent)
+                uiCover.AddText(col, row + i++, "{0}").Format().Align().SetWork(new UIItemWork
+                {
+                    Formatter = ActionHelper.WTracedFunc<UIItemBase, object[]>((ibase) =>
+                    {
+                        var e = EstateEvent.Get(town);
+                        return new object[] { e == null ? string.Empty : string.Format(GameTool.LS("estate_manage_line"), e.Population, EstateEvent.Target(town, e), e.LastMortalTax) };
+                    }),
+                });
 
                 i++;
+                // the buildings of the town: picture, name and cost, then built / a "build" button / not in this town
                 var c = 0;
-                foreach (var em in BuildingCostEnum.GetAllEnums<BuildingCostEnum>())
+                foreach (var em in BuildingCostEnum.GetAllEnums<BuildingCostEnum>().Where(x => !x.IsSchool && x.IsMatchBuildConds(town) && !BuildingArrangeEvent.IsIgnored(x)))
                 {
-                    if (BuildingArrangeEvent.IsBuildable(town, em))
+                    // a cell: the picture, the state (or the "build" button), the name, the cost from the budget (own column)
+                    var ex = uiCover.Columns[col - 4] + (c % 2) * 480f;
+                    var ey = uiCover.Rows[uiCover.MidRow + i + (c / 2 * 3)];
+                    var cost = BuildingArrangeEvent.GetBuildingCost(town, em);
+                    EstateEvent.Picture(uiCover, BuildingArrangeEvent.Sprite(em.BuildType), ex, ey, 60f, 48f);
+                    var label = uiCover.AddText(ex + 125f, ey, GameTool.LS(em.BuildingName)).Format().Align(TextAnchor.MiddleLeft);
+                    label.Pos(ex + 125f + label.Item.rectTransform.rect.width / 2f, ey);
+                    var price = uiCover.AddText(ex + 390f, ey, TextIconHelper.ToSprites($"{cost:#,##0} [icon:zm_lingshi]")).Format().Align(TextAnchor.MiddleRight);
+                    price.Pos(ex + 390f - price.Item.rectTransform.rect.width / 2f, ey);
+                    if (BuildingArrangeEvent.IsBuilt(town, em))
+                        uiCover.AddText(ex + 75f, ey, GameTool.LS("estate_building_built")).Format(new Color(0.1f, 0.45f, 0.1f), 15).Align(TextAnchor.MiddleCenter);
+                    else if (!BuildingArrangeEvent.IsBuildable(town, em))
+                        uiCover.AddText(ex + 75f, ey, GameTool.LS("estate_building_none")).Format(Color.gray, 12).Align(TextAnchor.MiddleCenter);
+                    else
                     {
-                        var cost = BuildingArrangeEvent.GetBuildingCost(town, em);
-                        uiCover.AddText(col + (c % 2 * 11), uiCover.MidRow + i + (c / 2 * 2), ModTextHelper.LSF("ui_building_cost", GameTool.LS(em.BuildingName), cost)).Format().Align();
-                        uiCover.AddButton(col - 3 + (c % 2 * 11), uiCover.MidRow + i + (c / 2 * 2), () =>
+                        uiCover.AddButton(ex + 75f, ey, () =>
                         {
                             if (GetBuildProperty(town) > cost)
                             {
                                 BuildingArrangeEvent.Build(town, em);
                                 g.ui.CloseUI(ui);
-                                g.ui.MsgBox(GameTool.LS("other500020011"), ModTextHelper.LSF("ui_building_built", GameTool.LS(em.BuildingName)));
+                                InfoDialog.Msg(GameTool.LS("other500020011"), ModTextHelper.LSF("ui_building_built", GameTool.LS(em.BuildingName)));
                             }
                             else
                             {
-                                g.ui.MsgBox(GameTool.LS("other500020011"), ModTextHelper.LSF("ui_building_no_budget", GetBuildProperty(town)));
+                                InfoDialog.Msg(GameTool.LS("other500020011"), ModTextHelper.LSF("ui_building_no_budget", GetBuildProperty(town)));
                             }
                         }, GameTool.LS("other500020017")).Format().Align(TextAnchor.MiddleCenter);
-                        c++;
                     }
+                    c++;
                 }
 
+                // one column of buttons, same size, evenly spaced from the "Plots" row to the "Dismiss" row
+                var buttons = new List<(Action act, string text)>();
+                if (EstateEvent.Enabled) buttons.Add((() => EstateEvent.OpenPlots(town), GameTool.LS("estate_button")));
                 if (IsTownMaster(town, g.world.playerUnit) && !town.buildTownData.isMainTown)
-                    uiCover.AddButton(uiCover.LastCol - 7, uiCover.LastRow - 20, () => Upgrade2City(town), ModTextHelper.LSF("ui_upgrade_city", GetUpgrade2CityCost(town))).Format(Color.black, 17).Align(TextAnchor.MiddleCenter).Size(300, 64);
-                uiCover.AddButton(uiCover.LastCol - 7, uiCover.LastRow - 17, Deposit, GameTool.LS("other500020015")).Format(Color.black, 17).Align(TextAnchor.MiddleCenter).Size(300, 64);
-                uiCover.AddButton(uiCover.LastCol - 7, uiCover.LastRow - 14, Withdraw, GameTool.LS("other500020016")).Format(Color.black, 17).Align(TextAnchor.MiddleCenter).Size(300, 64);
-                uiCover.AddButton(uiCover.LastCol - 7, uiCover.LastRow - 11, OpenUIHirePeople, GameTool.LS("other500020054")).Format(Color.black, 17).Align(TextAnchor.MiddleCenter).Size(300, 64);
-                uiCover.AddButton(uiCover.LastCol - 7, uiCover.LastRow - 8, () =>
+                    buttons.Add((() => Upgrade2City(town), TextIconHelper.ToSprites(string.Format(GameTool.LS("estate_city_btn"), GetUpgrade2CityCost(town)) + " [icon:zm_lingshi]")));
+                buttons.Add((Deposit, GameTool.LS("other500020015")));
+                buttons.Add((Withdraw, GameTool.LS("other500020016")));
+                buttons.Add((OpenUIHirePeople, GameTool.LS("other500020054")));
+                buttons.Add((() =>
                 {
-                    g.ui.MsgBox(GameTool.LS("other500020011"), GameTool.LS("other500020009"), MsgBoxButtonEnum.YesNo, () =>
+                    InfoDialog.Msg(GameTool.LS("other500020011"), GameTool.LS("other500020009"), MsgBoxButtonEnum.YesNo, () =>
                     {
                         Leave(g.world.playerUnit);
                         g.ui.CloseUI(UIType.NPCSearch);
                         g.ui.CloseUI(UIType.Town);
                     });
-                }, GameTool.LS("other500020012")).Format(Color.black, 17).Align(TextAnchor.MiddleCenter).Size(300, 64);
+                }, GameTool.LS("other500020012")));
+                var bx0 = uiCover.Columns[uiCover.LastCol - 7];
+                var top = uiCover.Rows[uiCover.LastRow - 23];
+                var step = (uiCover.Rows[uiCover.LastRow - 8] - top) / (buttons.Count - 1);
+                for (var k = 0; k < buttons.Count; k++)
+                {
+                    var (act, text) = buttons[k];
+                    uiCover.AddButton(bx0, top + k * step, act, text).Format(Color.black, 15).Align(TextAnchor.MiddleCenter).Size(300, 48);
+                }
             }
             uiCover.UpdateUI();
         }
@@ -893,7 +932,7 @@ namespace MOD_nE7UL2.Mod
                 {
                     uiCover.AddButton(uiCover.LastCol - 10, uiCover.LastRow - 8, () =>
                     {
-                        g.ui.MsgBox(GameTool.LS("other500020011"), GameTool.LS("other500020010"), MsgBoxButtonEnum.YesNo, () =>
+                        InfoDialog.Msg(GameTool.LS("other500020011"), GameTool.LS("other500020010"), MsgBoxButtonEnum.YesNo, () =>
                         {
                             MapBuildBattleEvent.TownWar(town, GetGuardTown(g.world.playerUnit), true);
                         });

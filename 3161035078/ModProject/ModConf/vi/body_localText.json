@@ -1,0 +1,427 @@
+[
+	{
+		"id": "-1000010000",
+		"key": "body_button",
+		"en|ch|tc|kr": "Luyện thể"
+	},
+	{
+		"id": "-1000010001",
+		"key": "body_title",
+		"en|ch|tc|kr": "Luyện thể"
+	},
+	{
+		"id": "-1000010002",
+		"key": "body_none",
+		"en|ch|tc|kr": "Chưa luyện thể"
+	},
+	{
+		"id": "-1000010003",
+		"key": "body_realm_layer",
+		"en|ch|tc|kr": "{0} - {1}"
+	},
+	{
+		"id": "-1000010004",
+		"key": "body_realm_1",
+		"en|ch|tc|kr": "Đồng Bì"
+	},
+	{
+		"id": "-1000010005",
+		"key": "body_realm_2",
+		"en|ch|tc|kr": "Thiết Cốt"
+	},
+	{
+		"id": "-1000010006",
+		"key": "body_realm_3",
+		"en|ch|tc|kr": "Ngọc Tủy"
+	},
+	{
+		"id": "-1000010007",
+		"key": "body_realm_4",
+		"en|ch|tc|kr": "Kim Thân"
+	},
+	{
+		"id": "-1000010008",
+		"key": "body_realm_5",
+		"en|ch|tc|kr": "Bất Diệt Thể"
+	},
+	{
+		"id": "-1000010009",
+		"key": "body_layer_1",
+		"en|ch|tc|kr": "Sơ kỳ"
+	},
+	{
+		"id": "-1000010010",
+		"key": "body_layer_2",
+		"en|ch|tc|kr": "Trung kỳ"
+	},
+	{
+		"id": "-1000010011",
+		"key": "body_layer_3",
+		"en|ch|tc|kr": "Hậu kỳ"
+	},
+	{
+		"id": "-1000010012",
+		"key": "body_npc",
+		"en|ch|tc|kr": "Luyện thể: {0}"
+	},
+	{
+		"id": "-1000010013",
+		"key": "body_intro",
+		"en|ch|tc|kr": "Tôi luyện nhục thân như người khác luyện khí: đòn đánh chịu trong chiến đấu, rèn luyện mỗi ngày và dược dục làm cứng da, xương và tủy.\nNăm cảnh giới: Đồng Bì, Thiết Cốt, Ngọc Tủy, Kim Thân, Bất Diệt Thể (mỗi cảnh 3 tầng).\nThưởng: máu tối đa, phòng thủ, tư chất quyền / chưởng / chỉ, và thêm máu / phòng thủ / tấn công mỗi lần đột phá tu vi."
+	},
+	{
+		"id": "-1000010014",
+		"key": "body_start",
+		"en|ch|tc|kr": "Bắt đầu luyện thể"
+	},
+	{
+		"id": "-1000010015",
+		"key": "body_start_confirm",
+		"en|ch|tc|kr": "Nhục thân càng mạnh càng hút nhiều linh khí: tùy cảnh giới, người luyện thể cần ×1.1 đến ×1.5 exp tu vi và tích tụ Qi ít hơn 10% đến 30%, bù lại mỗi lần đột phá được nhiều chỉ số hơn. Bắt đầu luyện thể?"
+	},
+	{
+		"id": "-1000010016",
+		"key": "body_top",
+		"en|ch|tc|kr": "[icon:daodian] Nhục thân đã đạt đỉnh: từ nay mọi tôi luyện hóa thành tinh hoa"
+	},
+	{
+		"id": "-1000010017",
+		"key": "body_bottleneck",
+		"en|ch|tc|kr": "Bình cảnh: cần đột phá lên cảnh giới sau"
+	},
+	{
+		"id": "-1000010018",
+		"key": "body_exp",
+		"en|ch|tc|kr": "[icon:jingli] Tôi luyện: {0:#,##0} / {1:#,##0}"
+	},
+	{
+		"id": "-1000010019",
+		"key": "body_injured",
+		"en|ch|tc|kr": "Nhục thân bị thương: {0} tháng (thưởng giảm nửa, không thể rèn luyện)"
+	},
+	{
+		"id": "-1000010020",
+		"key": "body_bonus_hp",
+		"en|ch|tc|kr": "[icon:jiankang] Máu tối đa +{0:#,##0}"
+	},
+	{
+		"id": "-1000010021",
+		"key": "body_bonus_def",
+		"en|ch|tc|kr": "[icon:fangyu] Phòng thủ +{0:#,##0}"
+	},
+	{
+		"id": "-1000010022",
+		"key": "body_bonus_basis",
+		"en|ch|tc|kr": "[icon:quanfa] Quyền / [icon:zhangfa] Chưởng / [icon:zhifa] Chỉ +{0}"
+	},
+	{
+		"id": "-1000010023",
+		"key": "body_bonus_qi",
+		"en|ch|tc|kr": "[icon:jianyidu] Tích tụ Qi -{0}%"
+	},
+	{
+		"id": "-1000010024",
+		"key": "body_bath",
+		"en|ch|tc|kr": "Dược dục (+{0:#,##0} tôi luyện)"
+	},
+	{
+		"id": "-1000010025",
+		"key": "body_bath_done",
+		"en|ch|tc|kr": "Mỗi tháng chỉ dược dục một lần: nhục thân cần thời gian hấp thu dược lực."
+	},
+	{
+		"id": "-1000010026",
+		"key": "body_bath_bottleneck",
+		"en|ch|tc|kr": "Nhục thân đang ở bình cảnh: dược dục vô dụng cho đến khi đột phá."
+	},
+	{
+		"id": "-1000010027",
+		"key": "body_break",
+		"en|ch|tc|kr": "Đột phá ({0:0}%)"
+	},
+	{
+		"id": "-1000010028",
+		"key": "body_break_grade",
+		"en|ch|tc|kr": "{0} cần cảnh giới tu luyện ít nhất bậc {1}."
+	},
+	{
+		"id": "-1000010029",
+		"key": "body_break_ok",
+		"en|ch|tc|kr": "Nhục thân đột phá: {0}!"
+	},
+	{
+		"id": "-1000010030",
+		"key": "body_break_fail",
+		"en|ch|tc|kr": "Đột phá thất bại: mất một nửa tôi luyện, nhục thân bị thương {0} tháng."
+	},
+	{
+		"id": "-1000010031",
+		"key": "body_help",
+		"en|ch|tc|kr": "Kinh nghiệm: sát thương phải chịu trong chiến đấu, rèn luyện mỗi tháng, một lần dược dục mỗi tháng. Tầng cuối của mỗi cảnh giới cần đột phá."
+	},
+	{
+		"id": "-1000010032",
+		"key": "log_body_start",
+		"en|ch|tc|kr": "Bắt đầu luyện thể."
+	},
+	{
+		"id": "-1000010033",
+		"key": "log_body_layer",
+		"en|ch|tc|kr": "Luyện thể: {0}."
+	},
+	{
+		"id": "-1000010034",
+		"key": "log_body_realm",
+		"en|ch|tc|kr": "Nhục thân đột phá: {0}."
+	},
+	{
+		"id": "-1000010035",
+		"key": "log_body_fail",
+		"en|ch|tc|kr": "Đột phá nhục thân thất bại: bị thương {0} tháng."
+	},
+	{
+		"id": "-1000010036",
+		"key": "body_bonus_break",
+		"en|ch|tc|kr": "Từ các lần đột phá: [icon:jiankang] máu +{0:#,##0}, [icon:fangyu] phòng thủ +{1:#,##0}, [icon:gongji] tấn công +{2:#,##0}"
+	},
+	{
+		"id": "-1000010037",
+		"key": "body_break_rates",
+		"en|ch|tc|kr": "Mỗi lần đột phá tu vi: [icon:jiankang] thêm {0}% máu, [icon:fangyu] {1}% phòng thủ, [icon:gongji] {2}% tấn công của phần tăng"
+	},
+	{
+		"id": "-1000010038",
+		"key": "body_exp_rate",
+		"en|ch|tc|kr": "[icon:wuxing] Exp tu vi cần ×{0:0.00} (nhục thân đã hấp thụ: {1:#,##0})"
+	},
+	{
+		"id": "-1000010039",
+		"key": "log_body_breakbonus",
+		"en|ch|tc|kr": "Nhục thân hấp thu sức mạnh đột phá: tổng máu +{0:#,##0}, phòng thủ +{1:#,##0}, tấn công +{2:#,##0}."
+	},
+	{
+		"id": "-1000010040",
+		"key": "body_bath_need",
+		"en|ch|tc|kr": "Dược dục cần thiên tài địa bảo và dược liệu như dưới nút, có sẵn trong túi."
+	},
+	{
+		"id": "-1000010041",
+		"key": "body_bath_have",
+		"en|ch|tc|kr": "Thiên tài địa bảo như {0} hoặc quý hơn: {1} / {2}"
+	},
+	{
+		"id": "-1000010042",
+		"key": "body_herbs_have",
+		"en|ch|tc|kr": "Dược liệu hoặc đan dược (1 viên đan = 10, 1 bình lộ = 5): {0} / {1}"
+	},
+	{
+		"id": "-1000010043",
+		"key": "body_break_need",
+		"en|ch|tc|kr": "Đột phá nhục thân cần thiên tài địa bảo và dược liệu như dưới nút, có sẵn trong túi; thất bại vẫn mất."
+	},
+	{
+		"id": "-1000010044",
+		"key": "body_essence",
+		"en|ch|tc|kr": "[icon:daodian] Tinh hoa nhục thân: {0:#,##0} ([icon:jiankang] máu tối đa +{1}%, [icon:fangyu] phòng thủ +{2}%, [icon:quanfa] quyền / chưởng / chỉ +{3})"
+	},
+	{
+		"id": "-1000010045",
+		"key": "body_bath_dose",
+		"en|ch|tc|kr": "Dược dục x{0}: +{1:#,##0}"
+	},
+	{
+		"id": "-1000010046",
+		"key": "body_break_dose",
+		"en|ch|tc|kr": "Đột phá x{0}: {1:0}% (+{2}% thưởng)"
+	},
+	{
+		"id": "-1000010047",
+		"key": "body_dose_hint",
+		"en|ch|tc|kr": "Cảnh báo: x2 / x3 tăng +20% / +50% nhưng rủi ro cao hơn. Phản phệ hoặc đột phá thất bại sẽ mất thọ nguyên: hết thọ nguyên thì tu sĩ tọa hóa. Nhục thân càng mạnh (máu, phòng thủ, quyền / chưởng / chỉ) rủi ro càng giảm chút ít."
+	},
+	{
+		"id": "-1000010048",
+		"key": "body_backlash",
+		"en|ch|tc|kr": "Phản phệ: không được tôi luyện, nhục thân bị thương 1 tháng, mất {0} tháng thọ nguyên."
+	},
+	{
+		"id": "-1000010049",
+		"key": "body_life_lost",
+		"en|ch|tc|kr": "Liều mạnh khiến mất {0} tháng thọ nguyên."
+	},
+	{
+		"id": "-1000010050",
+		"key": "body_temper",
+		"en|ch|tc|kr": "[icon:hudun] Tôi thể: [icon:jiankang] máu tối đa +{0}%, [icon:fangyu] phòng thủ +{1}%"
+	},
+	{
+		"id": "-1000010051",
+		"key": "body_risk",
+		"en|ch|tc|kr": "[icon:shouming] Phản phệ {0:0.#}% (mất khoảng {1} tháng thọ)"
+	},
+	{
+		"id": "-1000010052",
+		"key": "body_break_risk",
+		"en|ch|tc|kr": "[icon:shouming] Thất bại: mất khoảng {0} tháng thọ"
+	},
+	{
+		"id": "-1000010053",
+		"key": "body_need_treasure",
+		"en|ch|tc|kr": "{0}+: {1} / {2}"
+	},
+	{
+		"id": "-1000010054",
+		"key": "body_need_herbs",
+		"en|ch|tc|kr": "Dược liệu {0}%: {1} cao, {2} trung hoặc {3} thấp"
+	},
+	{
+		"id": "-1000010055",
+		"key": "body_materials_hint",
+		"en|ch|tc|kr": "Thiên tài địa bảo: thiên tài địa bảo, thần thạch, tiên lộ, bảo châu (hoặc quý hơn). Dược liệu và linh tài phải từ cấp {0} trở lên theo cảnh giới của bạn (thấp hơn vô dụng): thấp = mức tối thiểu, trung = +1, cao = +2 trở lên; đan dược tính gấp đôi."
+	},
+	{
+		"id": "-1000010056",
+		"key": "body_deadly",
+		"en|ch|tc|kr": "[icon:shouming] Thọ nguyên đã cạn: tu sĩ sắp tọa hóa."
+	},
+	{
+		"id": "-1000010057",
+		"key": "log_body_deadly",
+		"en|ch|tc|kr": "Luyện thể mất {0} tháng thọ nguyên: thọ nguyên đã cạn."
+	},
+	{
+		"id": "-1000010058",
+		"key": "body_life_left",
+		"en|ch|tc|kr": "[icon:shouming] Thọ nguyên còn: {0} năm {1} tháng"
+	},
+	{
+		"id": "-1000010065",
+		"key": "body_place_no",
+		"en|ch|tc|kr": "Rời khỏi"
+	},
+	{
+		"id": "-1000010059",
+		"key": "body_place_1",
+		"en|ch|tc|kr": "Thác nước"
+	},
+	{
+		"id": "-1000010076",
+		"key": "secl_name_Waterfall",
+		"en|ch|tc|kr": "Thác nước"
+	},
+	{
+		"id": "-1000010060",
+		"key": "body_place_2",
+		"en|ch|tc|kr": "Hồ dung nham"
+	},
+	{
+		"id": "-1000010077",
+		"key": "secl_name_Lava",
+		"en|ch|tc|kr": "Hồ dung nham"
+	},
+	{
+		"id": "-1000010061",
+		"key": "body_place_3",
+		"en|ch|tc|kr": "Lôi trì"
+	},
+	{
+		"id": "-1000010078",
+		"key": "secl_name_Thunder",
+		"en|ch|tc|kr": "Lôi trì"
+	},
+	{
+		"id": "-1000010064",
+		"key": "body_place_o",
+		"en|ch|tc|kr": "Ở lại {0} năm (khoảng {1} kinh nghiệm luyện thể)"
+	},
+	{
+		"id": "-1000010066",
+		"key": "body_place_text_1",
+		"en|ch|tc|kr": "Trên đường đi bạn nghe tiếng gầm: một thác nước đổ xuống từ vách đá, nước đập vào đá như vạn nắm đấm. Thể tu có thể đứng dưới đó nhiều năm, đến khi da thịt không còn cảm giác. (Thọ nguyên còn: {0} năm)"
+	},
+	{
+		"id": "-1000010067",
+		"key": "body_place_text_2",
+		"en|ch|tc|kr": "Mặt đất nóng dần: trong hõm núi, một hồ dung nham sôi đỏ. Chỉ thân thiết cốt mới ngồi được trong đó, để lửa thiêu sạch tạp chất trong tủy. (Thọ nguyên còn: {0} năm)"
+	},
+	{
+		"id": "-1000010068",
+		"key": "body_place_text_3",
+		"en|ch|tc|kr": "Mây tụ trên một vũng nước đen, sấm sét giáng xuống không ngừng: một lôi trì. Kim thân có thể tắm trong đó, mỗi ngày chịu nghìn đạo sét. (Thọ nguyên còn: {0} năm)"
+	},
+	{
+		"id": "-1000010069",
+		"key": "body_trib_button",
+		"en|ch|tc|kr": "Thể kiếp (chiến đấu)"
+	},
+	{
+		"id": "-1000010070",
+		"key": "body_trib_hint",
+		"en|ch|tc|kr": "Chịu sét với tối đa {0} % MP: chắc chắn thành công, tôi luyện +{1} %; gục ngã: tính là thất bại"
+	},
+	{
+		"id": "-1000010071",
+		"key": "body_trib_ok",
+		"en|ch|tc|kr": "Nhục thân trụ vững dưới thiên lôi. Thân thể đột phá lên {0}."
+	},
+	{
+		"id": "-1000010072",
+		"key": "body_trib_fail",
+		"en|ch|tc|kr": "Nhục thân gục dưới thiên lôi: bị thương {0} tháng, mất một nửa kinh nghiệm."
+	},
+	{
+		"id": "-1000010073",
+		"key": "log_body_trib_start",
+		"en|ch|tc|kr": "Nhục thân đối mặt lôi kiếp để bước vào {0}."
+	},
+	{
+		"id": "-1000010074",
+		"key": "body_sect",
+		"en|ch|tc|kr": "Tông môn {0} của bạn truyền dạy luyện thể: tu luyện x{1}."
+	},
+	{
+		"id": "-1000010075",
+		"key": "body_sect_ui",
+		"en|ch|tc|kr": "Tông môn này giỏi tay không và truyền dạy luyện thể (đệ tử tu luyện x{0})."
+	},
+	{
+		"id": "-1000010079",
+		"key": "secl_res_Waterfall",
+		"en|ch|tc|kr": "Nước không còn làm đau nữa. Thân thể: {0} (+{1} tầng)."
+	},
+	{
+		"id": "-1000010080",
+		"key": "secl_res_Lava",
+		"en|ch|tc|kr": "Lửa xuyên qua tủy và để lại sự tinh khiết. Thân thể: {0} (+{1} tầng)."
+	},
+	{
+		"id": "-1000010081",
+		"key": "secl_res_Thunder",
+		"en|ch|tc|kr": "Mỗi ngày nghìn đạo sét, suốt nhiều năm: thân thể ngân vang như chuông. Thân thể: {0} (+{1} tầng)."
+	},
+	{
+		"id": "-1000010082",
+		"key": "log_body_place_left",
+		"en|ch|tc|kr": "Gặp {0} nhưng đi tiếp."
+	},
+	{
+		"id": "-1000010083",
+		"key": "log_npc_body_place",
+		"en|ch|tc|kr": "{0} đã đến {1} rèn luyện nhục thân trong {2} năm."
+	},
+	{
+		"id": "-1000010084",
+		"key": "log_npc_body_place_end",
+		"en|ch|tc|kr": "{0} trở về từ {1}: {2}."
+	},
+	{
+		"id": "-1000010085",
+		"key": "log_npc_body_trib_ok",
+		"en|ch|tc|kr": "{0} đã vượt qua thể kiếp: {1}."
+	},
+	{
+		"id": "-1000010086",
+		"key": "log_npc_body_trib_fail",
+		"en|ch|tc|kr": "{0} gục ngã trong thể kiếp ({1})."
+	}
+]

@@ -1,0 +1,377 @@
+[
+	{
+		"id": "-1000013043",
+		"key": "enc_flood_o2",
+		"en|ch|tc|kr": "Praeterire"
+	},
+	{
+		"id": "-1000013047",
+		"key": "enc_plague_o2",
+		"en|ch|tc|kr": "Praeterire"
+	},
+	{
+		"id": "-1000013052",
+		"key": "enc_raid_o2",
+		"en|ch|tc|kr": "Abire"
+	},
+	{
+		"id": "-1000013000",
+		"key": "merit_button",
+		"en|ch|tc|kr": "Meritum"
+	},
+	{
+		"id": "-1000013001",
+		"key": "merit_title",
+		"en|ch|tc|kr": "Meritum"
+	},
+	{
+		"id": "-1000013002",
+		"key": "merit_npc",
+		"en|ch|tc|kr": "Meritum: {0}"
+	},
+	{
+		"id": "-1000013003",
+		"key": "merit_lvl_0",
+		"en|ch|tc|kr": "Nullum meritum"
+	},
+	{
+		"id": "-1000013004",
+		"key": "merit_lvl_1",
+		"en|ch|tc|kr": "Bona karma"
+	},
+	{
+		"id": "-1000013005",
+		"key": "merit_lvl_2",
+		"en|ch|tc|kr": "Virtus collecta"
+	},
+	{
+		"id": "-1000013006",
+		"key": "merit_lvl_3",
+		"en|ch|tc|kr": "Virtus beata"
+	},
+	{
+		"id": "-1000013007",
+		"key": "merit_lvl_4",
+		"en|ch|tc|kr": "Lux aurea"
+	},
+	{
+		"id": "-1000013008",
+		"key": "merit_lvl_5",
+		"en|ch|tc|kr": "Sanctus meriti"
+	},
+	{
+		"id": "-1000013009",
+		"key": "merit_lvl_6",
+		"en|ch|tc|kr": "Meritum infinitum"
+	},
+	{
+		"id": "-1000013010",
+		"key": "merit_lvl_m1",
+		"en|ch|tc|kr": "Peccator"
+	},
+	{
+		"id": "-1000013011",
+		"key": "merit_lvl_m2",
+		"en|ch|tc|kr": "Nequam"
+	},
+	{
+		"id": "-1000013012",
+		"key": "merit_lvl_m3",
+		"en|ch|tc|kr": "Damnatus"
+	},
+	{
+		"id": "-1000013013",
+		"key": "merit_points",
+		"en|ch|tc|kr": "[icon:zm_mingyu] Meritum {0:#,##0} / {1:#,##0}"
+	},
+	{
+		"id": "-1000013014",
+		"key": "merit_points_top",
+		"en|ch|tc|kr": "[icon:zm_mingyu] Meritum {0:#,##0} (gradus summus: plus meriti fit essentia)"
+	},
+	{
+		"id": "-1000013015",
+		"key": "merit_essence",
+		"en|ch|tc|kr": "[icon:daodian] Essentia meriti {0:#,##0} ({1} gradus): [icon:gongji] impetus +{2} %, [icon:fangyu] defensio +{3} %"
+	},
+	{
+		"id": "-1000013016",
+		"key": "merit_bonus",
+		"en|ch|tc|kr": "[icon:gongji] Impetus {0:+0.#;-0.#;0} %, [icon:fangyu] defensio {1:+0.#;-0.#;0} %, [icon:xingyun] Fortuna {2:+0;-0;0}"
+	},
+	{
+		"id": "-1000013017",
+		"key": "merit_lightning",
+		"en|ch|tc|kr": "[icon:leilinggen] Fulmina probationum et tribulationum corporis: {0:+0;-0;0} % damni"
+	},
+	{
+		"id": "-1000013018",
+		"key": "merit_intim",
+		"en|ch|tc|kr": "[icon:shengwang] Quoque mense, cultores prope te: iusti {0:+0;-0;0}, mali {1:+0;-0;0} (amicitia; infra nihil: odium)"
+	},
+	{
+		"id": "-1000013019",
+		"key": "merit_bounty_warn",
+		"en|ch|tc|kr": "[icon:zhandouxiaoguo] Karma tua gravis est: quoque anno cultor iustus pretium capiti tuo imponit."
+	},
+	{
+		"id": "-1000013020",
+		"key": "merit_level_line",
+		"en|ch|tc|kr": "{0}: {1:#,##0} - [icon:gongji] impetus {2:+0.#;-0.#;0} %, [icon:fangyu] defensio {3:+0.#;-0.#;0} %, [icon:xingyun] Fortuna {4:+0;-0;0}"
+	},
+	{
+		"id": "-1000013021",
+		"key": "merit_donate",
+		"en|ch|tc|kr": "Dona {1:#,##0} [icon:zm_lingshi] populo {0} (+{2} meritum, semel in mense)"
+	},
+	{
+		"id": "-1000013022",
+		"key": "merit_donate_done",
+		"en|ch|tc|kr": "Hoc mense iam donavisti."
+	},
+	{
+		"id": "-1000013023",
+		"key": "merit_help",
+		"en|ch|tc|kr": "Meritum: bestias et cultores malos occide, homines adiuva (occursus, dona). Karma: iustos occide, rape, abi."
+	},
+	{
+		"id": "-1000013024",
+		"key": "log_merit_gain",
+		"en|ch|tc|kr": "Meritum +{0}: {1}."
+	},
+	{
+		"id": "-1000013025",
+		"key": "log_merit_loss",
+		"en|ch|tc|kr": "Karma +{0}: {1}."
+	},
+	{
+		"id": "-1000013026",
+		"key": "log_merit_level",
+		"en|ch|tc|kr": "Meritum: {0}."
+	},
+	{
+		"id": "-1000013027",
+		"key": "log_merit_bounty",
+		"en|ch|tc|kr": "{0} pretium {2:#,##0} capiti tuo in {1} propter karmam tuam imposuit."
+	},
+	{
+		"id": "-1000013028",
+		"key": "merit_src_beast",
+		"en|ch|tc|kr": "bestia occisa"
+	},
+	{
+		"id": "-1000013029",
+		"key": "merit_src_kill_good",
+		"en|ch|tc|kr": "cultor iustus occisus"
+	},
+	{
+		"id": "-1000013030",
+		"key": "merit_src_kill_evil",
+		"en|ch|tc|kr": "cultor malus occisus"
+	},
+	{
+		"id": "-1000013031",
+		"key": "merit_src_kill",
+		"en|ch|tc|kr": "cultor occisus"
+	},
+	{
+		"id": "-1000013032",
+		"key": "merit_src_donate",
+		"en|ch|tc|kr": "donum populo"
+	},
+	{
+		"id": "-1000013033",
+		"key": "merit_src_wounded",
+		"en|ch|tc|kr": "cultor vulneratus sanatus"
+	},
+	{
+		"id": "-1000013034",
+		"key": "merit_src_rob",
+		"en|ch|tc|kr": "cultor vulneratus spoliatus"
+	},
+	{
+		"id": "-1000013035",
+		"key": "merit_src_cub",
+		"en|ch|tc|kr": "catulus bestiae pastus"
+	},
+	{
+		"id": "-1000013036",
+		"key": "merit_src_festival",
+		"en|ch|tc|kr": "festum oppidi"
+	},
+	{
+		"id": "-1000013037",
+		"key": "merit_src_flood",
+		"en|ch|tc|kr": "auxilium inundationis"
+	},
+	{
+		"id": "-1000013038",
+		"key": "merit_src_plague",
+		"en|ch|tc|kr": "aegri pestilentiae sanati"
+	},
+	{
+		"id": "-1000013039",
+		"key": "merit_src_raid",
+		"en|ch|tc|kr": "vicus a bestiis servatus"
+	},
+	{
+		"id": "-1000013040",
+		"key": "merit_src_flee",
+		"en|ch|tc|kr": "vicus bestiis relictus"
+	},
+	{
+		"id": "-1000013041",
+		"key": "enc_flood",
+		"en|ch|tc|kr": "Flumen prope {0} ripas rupit: domus abierunt, familiae in tectis dormiunt. Oppidum a cultoribus {1:#,##0} [icon:zm_lingshi] ad reaedificandum petit."
+	},
+	{
+		"id": "-1000013042",
+		"key": "enc_flood_o1",
+		"en|ch|tc|kr": "Dona"
+	},
+	{
+		"id": "-1000013044",
+		"key": "enc_flood_r",
+		"en|ch|tc|kr": "Populus oppidi nomen tuum meminerit. Meritum +{0}."
+	},
+	{
+		"id": "-1000013045",
+		"key": "enc_plague",
+		"en|ch|tc|kr": "Pestilentia in {0} serpit; medicis herbae defecerunt. {1} herbae e sacco tuo multos servare possunt."
+	},
+	{
+		"id": "-1000013046",
+		"key": "enc_plague_o1",
+		"en|ch|tc|kr": "Herbas da"
+	},
+	{
+		"id": "-1000013048",
+		"key": "enc_plague_r",
+		"en|ch|tc|kr": "Febres alia post aliam cedunt. Meritum +{0}."
+	},
+	{
+		"id": "-1000013049",
+		"key": "enc_plague_noherb",
+		"en|ch|tc|kr": "Herbas satis non habes."
+	},
+	{
+		"id": "-1000013050",
+		"key": "enc_raid",
+		"en|ch|tc|kr": "Bestiae e monte in vicum descendunt; mortales fugiunt. Inter eos stare posses ({0:0} % eas repellendi)."
+	},
+	{
+		"id": "-1000013051",
+		"key": "enc_raid_o1",
+		"en|ch|tc|kr": "Repelle eas"
+	},
+	{
+		"id": "-1000013053",
+		"key": "enc_raid_win",
+		"en|ch|tc|kr": "Bestiae in montem fugiunt. Meritum +{0}, {1:#,##0} PV amissae."
+	},
+	{
+		"id": "-1000013054",
+		"key": "enc_raid_lose",
+		"en|ch|tc|kr": "Bestiae nimis multae erant, sed vicani effugerunt dum pugnabas. Meritum +{0}, {1:#,##0} PV amissae."
+	},
+	{
+		"id": "-1000013055",
+		"key": "enc_raid_flee",
+		"en|ch|tc|kr": "Post te vicus ardet."
+	},
+	{
+		"id": "-1000013066",
+		"key": "merit_massacre_o2",
+		"en|ch|tc|kr": "Relinquere"
+	},
+	{
+		"id": "-1000013056",
+		"key": "merit_flat",
+		"en|ch|tc|kr": "Fixum: [icon:gongji] impetus {0:+0;-0;0}, [icon:fangyu] defensio {1:+0;-0;0}"
+	},
+	{
+		"id": "-1000013057",
+		"key": "merit_src_defend",
+		"en|ch|tc|kr": "hostis in defensione oppidi occisus"
+	},
+	{
+		"id": "-1000013058",
+		"key": "merit_src_attack",
+		"en|ch|tc|kr": "defensor in oppugnatione oppidi occisus"
+	},
+	{
+		"id": "-1000013059",
+		"key": "merit_gift",
+		"en|ch|tc|kr": "Homines quos olim adiuvisti te in via invenerunt et donum in manus tuas impresserunt: {0}."
+	},
+	{
+		"id": "-1000013060",
+		"key": "merit_revenge",
+		"en|ch|tc|kr": "Propinquus unius e victimis tuis in umbris exspectabat. Ferrum te attigit priusquam eum videres: {0:#,##0} PV amissae, et exsecratio eius te sequitur."
+	},
+	{
+		"id": "-1000013061",
+		"key": "log_merit_gift",
+		"en|ch|tc|kr": "Homines grati donum attulerunt: {0}."
+	},
+	{
+		"id": "-1000013062",
+		"key": "log_merit_revenge",
+		"en|ch|tc|kr": "Propinqui victimae ulti sunt: {0:#,##0} PV amissae."
+	},
+	{
+		"id": "-1000013063",
+		"key": "merit_massacre_button",
+		"en|ch|tc|kr": "{0} trucida (via mala)"
+	},
+	{
+		"id": "-1000013064",
+		"key": "merit_massacre_text",
+		"en|ch|tc|kr": "{0} despicis. Dominus eius {1}, {2} cultores oppidi et {3} custodes tibi obsistent; {4} alii fugient. Si vincis, dominus oppidi cum caesis moritur, et paene omnes {5:#,##0} mortales cum eis. Karma +{6:#,##0}; pretium capitis te sequetur. Pugna vera est: mori potes."
+	},
+	{
+		"id": "-1000013065",
+		"key": "merit_massacre_o1",
+		"en|ch|tc|kr": "Oppidum trucida"
+	},
+	{
+		"id": "-1000013067",
+		"key": "merit_massacre_ok",
+		"en|ch|tc|kr": "{0} cecidit. {1} cultores cum domino perierunt, {2:#,##0} mortales interierunt, {3:#,##0} lapides spirituales rapti."
+	},
+	{
+		"id": "-1000013068",
+		"key": "merit_massacre_fail",
+		"en|ch|tc|kr": "{0} stetit. Cum vita et graviore karma effugisti."
+	},
+	{
+		"id": "-1000013069",
+		"key": "merit_ruin",
+		"en|ch|tc|kr": "{0} ruina est: pauci mortales nunc ibi habitant."
+	},
+	{
+		"id": "-1000013070",
+		"key": "merit_src_massacre",
+		"en|ch|tc|kr": "caedes oppidi"
+	},
+	{
+		"id": "-1000013071",
+		"key": "merit_src_massacre_fail",
+		"en|ch|tc|kr": "caedes irrita"
+	},
+	{
+		"id": "-1000013072",
+		"key": "log_merit_massacre_start",
+		"en|ch|tc|kr": "In {0} te convertisti: {1} defensores, {2} fugerunt."
+	},
+	{
+		"id": "-1000013073",
+		"key": "log_merit_massacre",
+		"en|ch|tc|kr": "Caedes {0}: {1} cultores et {2:#,##0} mortales perierunt, {3:#,##0} lapides spirituales rapti."
+	},
+	{
+		"id": "-1000013074",
+		"key": "merit_story",
+		"en|ch|tc|kr": "fabula"
+	}
+]

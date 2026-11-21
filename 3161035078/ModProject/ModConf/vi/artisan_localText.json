@@ -1,0 +1,432 @@
+[
+	{
+		"id": "-1000014000",
+		"key": "artisan_button",
+		"en|ch|tc|kr": "Nghệ đạo"
+	},
+	{
+		"id": "-1000014001",
+		"key": "artisan_title_window",
+		"en|ch|tc|kr": "Nghệ đạo"
+	},
+	{
+		"id": "-1000014002",
+		"key": "artisan_craft_1",
+		"en|ch|tc|kr": "Luyện đan"
+	},
+	{
+		"id": "-1000014003",
+		"key": "artisan_craft_2",
+		"en|ch|tc|kr": "Luyện khí"
+	},
+	{
+		"id": "-1000014004",
+		"key": "artisan_craft_3",
+		"en|ch|tc|kr": "Chế phù"
+	},
+	{
+		"id": "-1000014005",
+		"key": "artisan_rank_0",
+		"en|ch|tc|kr": "Ngoại môn"
+	},
+	{
+		"id": "-1000014006",
+		"key": "artisan_rank_1",
+		"en|ch|tc|kr": "Học đồ"
+	},
+	{
+		"id": "-1000014007",
+		"key": "artisan_rank_2",
+		"en|ch|tc|kr": "Thợ lành nghề"
+	},
+	{
+		"id": "-1000014008",
+		"key": "artisan_rank_3",
+		"en|ch|tc|kr": "Đại sư"
+	},
+	{
+		"id": "-1000014009",
+		"key": "artisan_rank_4",
+		"en|ch|tc|kr": "Tông sư"
+	},
+	{
+		"id": "-1000014010",
+		"key": "artisan_rank_5",
+		"en|ch|tc|kr": "Thánh thủ"
+	},
+	{
+		"id": "-1000014011",
+		"key": "artisan_none",
+		"en|ch|tc|kr": "Chưa có nghề"
+	},
+	{
+		"id": "-1000014012",
+		"key": "artisan_title",
+		"en|ch|tc|kr": "{1} {0}"
+	},
+	{
+		"id": "-1000014013",
+		"key": "artisan_npc",
+		"en|ch|tc|kr": "Nghề: {0}"
+	},
+	{
+		"id": "-1000014014",
+		"key": "artisan_line",
+		"en|ch|tc|kr": "{0}: {1} - tạo nghệ {2:#,##0} (cấp bậc +{3}), tuyệt phẩm {4}"
+	},
+	{
+		"id": "-1000014015",
+		"key": "artisan_exp",
+		"en|ch|tc|kr": "[icon:wuxing] Kinh nghiệm nghề {0:#,##0} / {1:#,##0}"
+	},
+	{
+		"id": "-1000014016",
+		"key": "artisan_exam_ready",
+		"en|ch|tc|kr": "Đủ điều kiện thi {0} ({1:0} %): tổ chức ở thành lớn, mỗi năm một lần"
+	},
+	{
+		"id": "-1000014017",
+		"key": "artisan_exam_button",
+		"en|ch|tc|kr": "Thi {0} (lệ phí {1:#,##0} [icon:zm_lingshi])"
+	},
+	{
+		"id": "-1000014018",
+		"key": "artisan_top",
+		"en|ch|tc|kr": "Đã đạt cấp cao nhất của nghề."
+	},
+	{
+		"id": "-1000014019",
+		"key": "artisan_exam_NotReady",
+		"en|ch|tc|kr": "Chưa đủ điều kiện dự thi."
+	},
+	{
+		"id": "-1000014020",
+		"key": "artisan_exam_NotInCity",
+		"en|ch|tc|kr": "Kỳ thi nghề chỉ tổ chức ở thành lớn."
+	},
+	{
+		"id": "-1000014021",
+		"key": "artisan_exam_AlreadyThisYear",
+		"en|ch|tc|kr": "Năm nay bạn đã thi {0} rồi."
+	},
+	{
+		"id": "-1000014022",
+		"key": "artisan_exam_NoMoney",
+		"en|ch|tc|kr": "Lệ phí là {2:#,##0} linh thạch."
+	},
+	{
+		"id": "-1000014023",
+		"key": "artisan_exam_Passed",
+		"en|ch|tc|kr": "Giám khảo cúi chào: bạn giờ là {1} {0}."
+	},
+	{
+		"id": "-1000014024",
+		"key": "artisan_exam_Failed",
+		"en|ch|tc|kr": "Giám khảo lắc đầu. Năm sau hãy quay lại."
+	},
+	{
+		"id": "-1000014025",
+		"key": "artisan_masterpieces",
+		"en|ch|tc|kr": "Tuyệt phẩm thiên hạ"
+	},
+	{
+		"id": "-1000014026",
+		"key": "artisan_masterpiece_line",
+		"en|ch|tc|kr": "{0} - do {1} chế tác ({2})"
+	},
+	{
+		"id": "-1000014027",
+		"key": "artisan_usual",
+		"en|ch|tc|kr": "Vật phẩm trên bậc {0} là tuyệt phẩm với cảnh giới của bạn (cao hơn hai bậc: có thể nổ lò)."
+	},
+	{
+		"id": "-1000014029",
+		"key": "log_artisan_rank",
+		"en|ch|tc|kr": "{0}: bạn giờ là {1}."
+	},
+	{
+		"id": "-1000014030",
+		"key": "log_artisan_masterpiece",
+		"en|ch|tc|kr": "Tuyệt phẩm: {0} (+{1:#,##0} tu vi)."
+	},
+	{
+		"id": "-1000014031",
+		"key": "log_npc_artisan_masterpiece",
+		"en|ch|tc|kr": "{0} chế tác được tuyệt phẩm: {1}."
+	},
+	{
+		"id": "-1000014032",
+		"key": "log_npc_artisan_rank",
+		"en|ch|tc|kr": "{0} đỗ kỳ thi {1}: {2}."
+	},
+	{
+		"id": "-1000014033",
+		"key": "log_artisan_accident",
+		"en|ch|tc|kr": "{0}: nổ lò (mất {1:#,##0} HP và {2} tháng thọ nguyên)."
+	},
+	{
+		"id": "-1000014046",
+		"key": "artisan_dismiss",
+		"en|ch|tc|kr": "Loại bỏ"
+	},
+	{
+		"id": "-1000014034",
+		"key": "artisan_craft_4",
+		"en|ch|tc|kr": "Phong thủy"
+	},
+	{
+		"id": "-1000014035",
+		"key": "artisan_essence",
+		"en|ch|tc|kr": "[icon:daodian] Tinh hoa nghề {0:#,##0} ({1} / {2} bậc để phản phác quy chân)"
+	},
+	{
+		"id": "-1000014036",
+		"key": "artisan_essence_bonus",
+		"en|ch|tc|kr": "[icon:gongji] Tinh hoa các nghề: công, thủ và HP tối đa +{0} %"
+	},
+	{
+		"id": "-1000014041",
+		"key": "artisan_sell",
+		"en|ch|tc|kr": "[icon:zm_lingshi] Danh hiệu giúp bạn bán giá cao hơn ở chợ: +{0:0} %"
+	},
+	{
+		"id": "-1000014042",
+		"key": "artisan_commission_line",
+		"en|ch|tc|kr": "Đơn đặt hàng của {0}: {1}, bậc {2}+ giá {3:#,##0} [icon:zm_lingshi] (còn {4} tháng)"
+	},
+	{
+		"id": "-1000014043",
+		"key": "artisan_deliver",
+		"en|ch|tc|kr": "Giao hàng"
+	},
+	{
+		"id": "-1000014044",
+		"key": "artisan_no_item",
+		"en|ch|tc|kr": "Bạn không có vật phẩm tự tay chế tác đúng loại và bậc đó."
+	},
+	{
+		"id": "-1000014045",
+		"key": "artisan_apprentice_line",
+		"en|ch|tc|kr": "Đồ đệ {0} ({1}: {2})"
+	},
+	{
+		"id": "-1000014047",
+		"key": "artisan_take_apprentice",
+		"en|ch|tc|kr": "Nhận đồ đệ"
+	},
+	{
+		"id": "-1000014048",
+		"key": "artisan_no_apprentice",
+		"en|ch|tc|kr": "Quanh đây không ai muốn bái bạn làm thầy."
+	},
+	{
+		"id": "-1000014049",
+		"key": "log_artisan_commission",
+		"en|ch|tc|kr": "{0} đặt làm {1} bậc {2} với giá {3:#,##0} linh thạch."
+	},
+	{
+		"id": "-1000014050",
+		"key": "log_artisan_commission_late",
+		"en|ch|tc|kr": "Đơn hàng của {0} đã quá hạn; người ấy rất thất vọng."
+	},
+	{
+		"id": "-1000014051",
+		"key": "log_artisan_delivered",
+		"en|ch|tc|kr": "Đã giao cho {0}: nhận {1:#,##0} linh thạch."
+	},
+	{
+		"id": "-1000014052",
+		"key": "log_artisan_apprentice",
+		"en|ch|tc|kr": "{0} bái bạn làm thầy, học {1}."
+	},
+	{
+		"id": "-1000014053",
+		"key": "log_artisan_apprentice_gift",
+		"en|ch|tc|kr": "Đồ đệ {0} mang đến {1}."
+	},
+	{
+		"id": "-1000014028",
+		"key": "artisan_help",
+		"en|ch|tc|kr": "Chế tác trong các cửa sổ của game (luyện đan, luyện khí, chế phù, phong thủy) hoặc hái thuốc, đào khoáng trên bản đồ: mỗi vật phẩm cho kinh nghiệm nghề, tuyệt phẩm cho tu vi. NPC đặt hàng; Đại sư nhận đồ đệ."
+	},
+	{
+		"id": "-1000014037",
+		"key": "artisan_returned",
+		"en|ch|tc|kr": "[icon:daodian] Phản phác quy chân: {0} (mỗi nghề một thiên mệnh)"
+	},
+	{
+		"id": "-1000014038",
+		"key": "artisan_return",
+		"en|ch|tc|kr": "Đôi tay dừng lại. Bao năm, mỗi lần {0} là cuộc giằng co giữa lửa và ý chí; nay tự nhiên mà thành, nhạt như nước. Bạn đã phản phác quy chân."
+	},
+	{
+		"id": "-1000014039",
+		"key": "log_artisan_return",
+		"en|ch|tc|kr": "{0}: bạn đã phản phác quy chân (thiên mệnh)."
+	},
+	{
+		"id": "-1000014040",
+		"key": "log_npc_artisan_return",
+		"en|ch|tc|kr": "{0} đã phản phác quy chân trong {1}."
+	},
+	{
+		"id": "-1000014054",
+		"key": "artisan_craft_5",
+		"en|ch|tc|kr": "Thảo dược"
+	},
+	{
+		"id": "-1000014055",
+		"key": "artisan_craft_6",
+		"en|ch|tc|kr": "Khoáng mạch"
+	},
+	{
+		"id": "-1000014056",
+		"key": "artisan420201001",
+		"en|ch|tc|kr": "Phản phác quy chân: Luyện đan"
+	},
+	{
+		"id": "-1000014057",
+		"key": "artisan420201001desc",
+		"en|ch|tc|kr": "Luyện đan phản phác quy chân: Luyện đan +50, công +15%, thủ +15%, HP tối đa +15%, vận khí +3"
+	},
+	{
+		"id": "-1000014058",
+		"key": "artisan420201002",
+		"en|ch|tc|kr": "Phản phác quy chân: Luyện khí"
+	},
+	{
+		"id": "-1000014059",
+		"key": "artisan420201002desc",
+		"en|ch|tc|kr": "Luyện khí phản phác quy chân: Luyện khí +50, công +15%, thủ +15%, HP tối đa +15%, vận khí +3"
+	},
+	{
+		"id": "-1000014060",
+		"key": "artisan420201003",
+		"en|ch|tc|kr": "Phản phác quy chân: Chế phù"
+	},
+	{
+		"id": "-1000014061",
+		"key": "artisan420201003desc",
+		"en|ch|tc|kr": "Chế phù phản phác quy chân: Chế phù +50, công +15%, thủ +15%, HP tối đa +15%, vận khí +3"
+	},
+	{
+		"id": "-1000014062",
+		"key": "artisan420201004",
+		"en|ch|tc|kr": "Phản phác quy chân: Phong thủy"
+	},
+	{
+		"id": "-1000014063",
+		"key": "artisan420201004desc",
+		"en|ch|tc|kr": "Phong thủy phản phác quy chân: Phong thủy +50, công +15%, thủ +15%, HP tối đa +15%, vận khí +3"
+	},
+	{
+		"id": "-1000014064",
+		"key": "artisan420201005",
+		"en|ch|tc|kr": "Phản phác quy chân: Thảo dược"
+	},
+	{
+		"id": "-1000014065",
+		"key": "artisan420201005desc",
+		"en|ch|tc|kr": "Thảo dược phản phác quy chân: Thảo dược +50, công +15%, thủ +15%, HP tối đa +15%, vận khí +3"
+	},
+	{
+		"id": "-1000014066",
+		"key": "artisan420201006",
+		"en|ch|tc|kr": "Phản phác quy chân: Khoáng mạch"
+	},
+	{
+		"id": "-1000014067",
+		"key": "artisan420201006desc",
+		"en|ch|tc|kr": "Khoáng mạch phản phác quy chân: Khoáng mạch +50, công +15%, thủ +15%, HP tối đa +15%, vận khí +3"
+	},
+	{
+		"id": "-1000014071",
+		"key": "artisan_spot_no",
+		"en|ch|tc|kr": "Bước tiếp"
+	},
+	{
+		"id": "-1000014068",
+		"key": "artisan_spot_mine",
+		"en|ch|tc|kr": "Mỏ khoáng"
+	},
+	{
+		"id": "-1000014074",
+		"key": "secl_name_MineVein",
+		"en|ch|tc|kr": "Mỏ khoáng"
+	},
+	{
+		"id": "-1000014069",
+		"key": "artisan_spot_herb",
+		"en|ch|tc|kr": "Thung lũng dược liệu"
+	},
+	{
+		"id": "-1000014075",
+		"key": "secl_name_HerbValley",
+		"en|ch|tc|kr": "Thung lũng dược liệu"
+	},
+	{
+		"id": "-1000014070",
+		"key": "artisan_spot_o",
+		"en|ch|tc|kr": "Ở lại {0} năm (khoảng {1} vật phẩm)"
+	},
+	{
+		"id": "-1000014072",
+		"key": "artisan_spot_mine_text",
+		"en|ch|tc|kr": "Đá nơi đây lấp lánh: một mỏ khoáng giàu của khu vực {0}. Tu sĩ có thể ở lại nhiều năm, đào khoáng và lĩnh ngộ đạo của đất. (Thọ nguyên còn: {1} năm)"
+	},
+	{
+		"id": "-1000014073",
+		"key": "artisan_spot_herb_text",
+		"en|ch|tc|kr": "Một thung lũng kín gió của khu vực {0}, đất đen giàu linh khí: dược liệu ở đây hẳn mọc tốt. Tu sĩ có thể ở lại nhiều năm để trồng và chăm sóc. (Thọ nguyên còn: {1} năm)"
+	},
+	{
+		"id": "-1000014076",
+		"key": "secl_res_MineVein",
+		"en|ch|tc|kr": "Những năm trong mỏ cho {0} khoáng thạch: {1}. Khoáng mạch +{2:#,##0} kinh nghiệm."
+	},
+	{
+		"id": "-1000014077",
+		"key": "secl_res_HerbValley",
+		"en|ch|tc|kr": "Thu hoạch của thung lũng: {0} dược liệu: {1}. Thảo dược +{2:#,##0} kinh nghiệm."
+	},
+	{
+		"id": "-1000014078",
+		"key": "log_artisan_spot",
+		"en|ch|tc|kr": "{0}: {1} vật phẩm, +{2:#,##0} kinh nghiệm nghề."
+	},
+	{
+		"id": "-1000014079",
+		"key": "artisan_card_rank",
+		"en|ch|tc|kr": "[icon:jineng] {0} · [icon:wuxing] giá trị {1:#,##0} (bậc +{2}) · [icon:shanghaiweili] kiệt tác {3}"
+	},
+	{
+		"id": "-1000014080",
+		"key": "artisan_section_commissions",
+		"en|ch|tc|kr": "Ủy thác"
+	},
+	{
+		"id": "-1000014081",
+		"key": "artisan_section_apprentices",
+		"en|ch|tc|kr": "Đệ tử"
+	},
+	{
+		"id": "-1000014082",
+		"key": "artisan_take_apprentice_n",
+		"en|ch|tc|kr": "Nhận đệ tử ({0} / {1})"
+	},
+	{
+		"id": "-1000014083",
+		"key": "artisan_hint_apprentice",
+		"en|ch|tc|kr": "Đệ tử: từ bậc {0}"
+	},
+	{
+		"id": "-1000014084",
+		"key": "artisan_hint_apprentice_full",
+		"en|ch|tc|kr": "Đệ tử: {0} / {1}"
+	},
+	{
+		"id": "-1000014085",
+		"key": "artisan_hint_essence",
+		"en|ch|tc|kr": "Tinh hoa nghề: khi đạt {0}"
+	}
+]

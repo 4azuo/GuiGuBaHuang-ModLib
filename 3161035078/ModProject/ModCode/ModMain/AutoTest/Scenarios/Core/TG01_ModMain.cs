@@ -34,6 +34,7 @@ namespace MOD_nE7UL2.AutoTest.Scenarios.Core
                     var cfg = SMLocalConfigsEvent.Instance.Configs;
                     c.AssertEqual(cfg.EnableTrainer, events.Contains(ModConst.TRAINER_EVENT), "TrainerEvent loaded only when EnableTrainer");
                     c.AssertEqual(!cfg.NoQiCultivation, events.Contains(ModConst.QI_CUL_EVENT), "QiCulEvent loaded only when Qi cultivation is on");
+                    c.AssertEqual(!cfg.NoBodyCultivation, events.Contains(ModConst.BODY_CUL_EVENT), "BodyCulEvent loaded only when body cultivation is on");
                     c.AssertEqual(cfg.AllowUpgradeNaturally, events.Contains(ModConst.UPGRADE_NATURALLY_EVENT), "UpgradeNaturallyEvent loaded only when allowed");
                     c.AssertEqual(cfg.AllowRepairGodWeapon, events.Contains(ModConst.REPAIR_SHINKI_EVENT), "RepairShinkiEvent loaded only when allowed");
                 });

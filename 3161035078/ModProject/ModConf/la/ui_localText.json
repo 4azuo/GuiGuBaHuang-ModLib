@@ -82,7 +82,7 @@
 	{
 		"id": "-1000008016",
 		"key": "ui_qi",
-		"en|ch|tc|kr": "Qi: {0}"
+		"en|ch|tc|kr": "[icon:jianyidu] Qi: {0}"
 	},
 	{
 		"id": "-1000008017",
@@ -92,12 +92,12 @@
 	{
 		"id": "-1000008018",
 		"key": "ui_hp",
-		"en|ch|tc|kr": "Vita: {0}"
+		"en|ch|tc|kr": "[icon:jiankang] Vita: {0}"
 	},
 	{
 		"id": "-1000008019",
 		"key": "ui_mp",
-		"en|ch|tc|kr": "Mana: {0}"
+		"en|ch|tc|kr": "[icon:lingli] Mana: {0}"
 	},
 	{
 		"id": "-1000008020",

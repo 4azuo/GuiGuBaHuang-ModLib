@@ -17,5 +17,5 @@ Status: `Open` (to check) · `Confirmed` · `Fixed` · `Won't fix`. Severity: Hi
   2026-11-18 the slots shared the save index and lost saves). Left: a slot game reads the usual save index once at start
   and writes it back unchanged, before the plugin moves the game's paths (first frame) - harmless while no normal game
   runs at the same time.
-* `ModStts` (and every type using Il2Cpp enums such as `MartialType`, `MonstType`) cannot be loaded outside the game (`TypeLoadException: Method in an Enum`), so `mod_configs.json` is validated by structure in unit tests and by `TG-01` in the in-game autotest.
+* `ModStts` (and every type using Il2Cpp enums such as `MartialType`, `MonstType`) cannot be loaded outside the game (`TypeLoadException: Method in an Enum`), so `mod_configs.json` and the feature config files with such enums (`monst_stronger_configs.json`, `npc_upgrade_skill_configs.json`, `expert_configs.json`) are validated by structure in unit tests and by `TG-01` in the in-game autotest.
 * Battle behaviour (damage pipeline, NPCs joining battles) can only be verified in game: manual scenarios TM-21/TM-27 and the battle watch scenarios (`-WatchBattles`).

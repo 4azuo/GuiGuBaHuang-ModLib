@@ -16,7 +16,7 @@ Monsters scale up: with the S&M rates, the area, time, the number of kills, the 
 
 S&M: `AddAtkRate`, `AddDefRate`, `AddHpRate`, `AddBasisRate`, `MonsterPropertiesDependOnPlayerProperties`, `GrowUpSpeed`.
 
-`mod_configs.json` > `MonstStrongerConfigs`:
+`monst_stronger_configs.json` (`MonstStrongerConfig`):
 
 | Key | Value |
 |---|---|

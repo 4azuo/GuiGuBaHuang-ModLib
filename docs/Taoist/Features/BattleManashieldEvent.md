@@ -10,7 +10,7 @@ None.
 
 ## Switch
 
-`mod_configs.json` > `BattleManashieldConfigs`: `ManaShieldRate1` 0.15, `ManaShieldRate2` 0.05.
+`battle_manashield_configs.json` (`BattleManashieldConfig`): `ManaShieldRate1` 0.15, `ManaShieldRate2` 0.05.
 
 ## Flow
 

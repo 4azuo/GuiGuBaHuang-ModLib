@@ -2888,5 +2888,605 @@
 		"id": -1000007577,
 		"key": "story_L_nightmare",
 		"en|ch|tc|kr": "somnium malum"
+	},
+	{
+		"id": "-1000007579",
+		"key": "story_task_desc_M",
+		"en|ch|tc|kr": "{0}"
+	},
+	{
+		"id": "-1000007610",
+		"key": "story_end_M_Heir",
+		"en|ch|tc|kr": "Heres"
+	},
+	{
+		"id": "-1000007614",
+		"key": "story_task_desc_N",
+		"en|ch|tc|kr": "{0}"
+	},
+	{
+		"id": "-1000007643",
+		"key": "story_task_desc_O",
+		"en|ch|tc|kr": "{0}"
+	},
+	{
+		"id": "-1000007653",
+		"key": "story_O1_1_o1",
+		"en|ch|tc|kr": "Verum dicere"
+	},
+	{
+		"id": "-1000007661",
+		"key": "story_O3_r_o2",
+		"en|ch|tc|kr": "Pugnare"
+	},
+	{
+		"id": "-1000007673",
+		"key": "story_task_desc_P",
+		"en|ch|tc|kr": "{0}"
+	},
+	{
+		"id": "-1000007680",
+		"key": "story_P0_1_o2",
+		"en|ch|tc|kr": "Praeterire"
+	},
+	{
+		"id": "-1000007578",
+		"key": "story_name_M",
+		"en|ch|tc|kr": "Officina Senis Tie"
+	},
+	{
+		"id": "-1000007580",
+		"key": "story_task_M0",
+		"en|ch|tc|kr": "Faber senex {F} oppidi {T} manum ussit. Auxilium a te petit."
+	},
+	{
+		"id": "-1000007581",
+		"key": "story_task_M1",
+		"en|ch|tc|kr": "{F} metallum e vena eget ad ultimum gladium."
+	},
+	{
+		"id": "-1000007582",
+		"key": "story_task_M2",
+		"en|ch|tc|kr": "{F} eligere debet quis arcana officinae servet."
+	},
+	{
+		"id": "-1000007583",
+		"key": "story_task_M3",
+		"en|ch|tc|kr": "Collegium fabrorum {T} officinam {F} claudere vult (2 anni)."
+	},
+	{
+		"id": "-1000007584",
+		"key": "story_task_M4",
+		"en|ch|tc|kr": "Ultimus ignis officinae {F}."
+	},
+	{
+		"id": "-1000007585",
+		"key": "story_M0_1",
+		"en|ch|tc|kr": "Officina {T} carnem ustam olet. Faber senex dextram panno umido involvit.\n{F}: \"Fornax in me ignem spuit. Quadraginta annos, et in me spuit.\"\n{F}: \"Examen collegii post triduum est. Si nemo officinae meae id superat, licentiam auferunt. Malleum vibrare potes?\""
+	},
+	{
+		"id": "-1000007586",
+		"key": "story_M0_1_o1",
+		"en|ch|tc|kr": "Pro eo examen subi"
+	},
+	{
+		"id": "-1000007587",
+		"key": "story_M0_1_o2",
+		"en|ch|tc|kr": "Da ei pilulam medicam"
+	},
+	{
+		"id": "-1000007588",
+		"key": "story_M0_1_o3",
+		"en|ch|tc|kr": "Non mea res est"
+	},
+	{
+		"id": "-1000007589",
+		"key": "story_M0_exam",
+		"en|ch|tc|kr": "Triduum scintillarum. Magistri collegii frontem contrahunt, deinde annuunt.\n{F}: \"Ha! Curvus, sed aciem tenet. Manus huic arti habes.\""
+	},
+	{
+		"id": "-1000007590",
+		"key": "story_M0_2",
+		"en|ch|tc|kr": "Pilula ustionem una nocte claudit. Digitos flectit, attonitus.\n{F}: \"Tibi debeo, cultor. Faber debita ferro solvit.\""
+	},
+	{
+		"id": "-1000007591",
+		"key": "story_M1_1",
+		"en|ch|tc|kr": "{F}: \"Unus gladius ante mortem. Non pulcher - verus. Ad hoc metallum ex {0} egeo, vena divite ultra oppidum.\"\n{F}: \"Affer metallum, aut pecuniam ad emendum ({1:#,##0} [icon:zm_lingshi]). Aut ipse descende - aliquid venam custodit.\""
+	},
+	{
+		"id": "-1000007592",
+		"key": "story_M1_1_o1",
+		"en|ch|tc|kr": "Da ei metallum"
+	},
+	{
+		"id": "-1000007593",
+		"key": "story_M1_1_o2",
+		"en|ch|tc|kr": "Solve pro metallo ({1:#,##0} [icon:zm_lingshi])"
+	},
+	{
+		"id": "-1000007594",
+		"key": "story_M1_1_o3",
+		"en|ch|tc|kr": "In venam descende"
+	},
+	{
+		"id": "-1000007595",
+		"key": "story_M1_2",
+		"en|ch|tc|kr": "Metallum in fornace rubet. Sinistra laborat dum tu forcipem tenes.\n{F}: \"Colorem specta, non malleum. Ferrum tibi dicit quando.\""
+	},
+	{
+		"id": "-1000007596",
+		"key": "story_M2_1",
+		"en|ch|tc|kr": "Puer pavimentum officinae verrit et incudem furtim aspicit.\n{F}: \"Amicus nepotis mei. Inhabilis, pertinax. Qualis ego fui.\"\n{F}: \"Arcana mea mecum mori non debent. Doce eum mecum - aut ipse ea cape et procul abi.\""
+	},
+	{
+		"id": "-1000007597",
+		"key": "story_M2_1_o1",
+		"en|ch|tc|kr": "Puerum una doce"
+	},
+	{
+		"id": "-1000007598",
+		"key": "story_M2_1_o2",
+		"en|ch|tc|kr": "Ipse arcana disce"
+	},
+	{
+		"id": "-1000007599",
+		"key": "story_M3_1",
+		"en|ch|tc|kr": "Viri praecinctoriis collegii ante ianuam officinae stant, faces manu tenentes.\nMagister collegii: \"Senex stultus manu mutila et peregrinus ad incudem eius. Claude, aut nos claudemus.\"\n{F}: \"Super ossa mea.\""
+	},
+	{
+		"id": "-1000007600",
+		"key": "story_M3_1_o1",
+		"en|ch|tc|kr": "Eos expelle"
+	},
+	{
+		"id": "-1000007601",
+		"key": "story_M3_1_o2",
+		"en|ch|tc|kr": "Pacem collegii eme ({0:#,##0} [icon:zm_lingshi])"
+	},
+	{
+		"id": "-1000007602",
+		"key": "story_M4_burned",
+		"en|ch|tc|kr": "Officina cinis est. {F} in frigida incude sedet, manu usta in genu.\n{F}: \"Ignis recipit quod dedit. Cape quod te docui, et alibi ardere fac.\""
+	},
+	{
+		"id": "-1000007603",
+		"key": "story_M4_1",
+		"en|ch|tc|kr": "Ultimus ignis officinae. {F} nunc macer est, barba alba ut cinis.\n{F}: \"Unus gladius his manibus restat. Sit quod erit - aut affer metallum gradus {0}, et opus summum faciam.\""
+	},
+	{
+		"id": "-1000007604",
+		"key": "story_M4_1_o1",
+		"en|ch|tc|kr": "Fornax decernat"
+	},
+	{
+		"id": "-1000007605",
+		"key": "story_M4_1_o2",
+		"en|ch|tc|kr": "Affer metallum gradus {0} ad opus summum"
+	},
+	{
+		"id": "-1000007606",
+		"key": "story_endM_Heir",
+		"en|ch|tc|kr": "Nunc puer forcipem tenet, et ictus eius recti sunt.\n{F}: \"Vides? Inhabilis et pertinax. Faber.\" Gladium in manus tuas ponit. \"Primus eius. Ultimus meus. Serva.\""
+	},
+	{
+		"id": "-1000007607",
+		"key": "story_endM_Secret",
+		"en|ch|tc|kr": "Arcana eius aufers: colorem ferri, spiritum follis, patientiam mallei senis."
+	},
+	{
+		"id": "-1000007608",
+		"key": "story_endM_Masterwork",
+		"en|ch|tc|kr": "Metallum in igne canit. Tres dies noctesque non dormit.\n{F}: \"Ecce. Hic est gladius ad quem faciendum natus sum.\" Subridet, et malleum in perpetuum deponit."
+	},
+	{
+		"id": "-1000007609",
+		"key": "story_end_M_Masterwork",
+		"en|ch|tc|kr": "Opus summum"
+	},
+	{
+		"id": "-1000007611",
+		"key": "story_end_M_Secret",
+		"en|ch|tc|kr": "Arcanum"
+	},
+	{
+		"id": "-1000007612",
+		"key": "story_no_ore",
+		"en|ch|tc|kr": "Metallum gradus {0} vel superioris non habes."
+	},
+	{
+		"id": "-1000007613",
+		"key": "story_name_N",
+		"en|ch|tc|kr": "Domus in Via Vetere"
+	},
+	{
+		"id": "-1000007615",
+		"key": "story_task_N0",
+		"en|ch|tc|kr": "Aliquid sub pavimento domus tuae in {T} est."
+	},
+	{
+		"id": "-1000007616",
+		"key": "story_task_N1",
+		"en|ch|tc|kr": "Latrones viam veterem {T} minantur; vicina tua {N} auxilium petit."
+	},
+	{
+		"id": "-1000007617",
+		"key": "story_task_N2",
+		"en|ch|tc|kr": "Commentarii cellae narrant quomodo domus aedificata sit."
+	},
+	{
+		"id": "-1000007618",
+		"key": "story_task_N3",
+		"en|ch|tc|kr": "{T} oppugnatur; via te exspectat (1 annus)."
+	},
+	{
+		"id": "-1000007619",
+		"key": "story_task_N4",
+		"en|ch|tc|kr": "Via {T} de cultore suo iudicat."
+	},
+	{
+		"id": "-1000007620",
+		"key": "story_N0_1",
+		"en|ch|tc|kr": "Domus tua in {T}. Tabula laxa sub lecto, et sub ea gradus lapidei et ianua talismane vetustate cano obsignata.\nCultor hic diu ante te habitavit."
+	},
+	{
+		"id": "-1000007621",
+		"key": "story_N0_1_o1",
+		"en|ch|tc|kr": "Sigillum frange"
+	},
+	{
+		"id": "-1000007622",
+		"key": "story_N0_1_o2",
+		"en|ch|tc|kr": "Iterum obsigna"
+	},
+	{
+		"id": "-1000007623",
+		"key": "story_N0_2",
+		"en|ch|tc|kr": "Post sigillum pupa lapidea fracta iacet inter ampullas pilularum et libellos.\nVicina pallida ianuam pulsat.\n{N}: \"Ille strepitus... cella magistri veteris? Avia dicebat numquam eam aperiendam esse.\""
+	},
+	{
+		"id": "-1000007624",
+		"key": "story_N0_sealed",
+		"en|ch|tc|kr": "Novum talisma super vetus imprimis. Tabula redit.\nVicina a limine manum agitat.\n{N}: \"Bonum vesperum, immortalis! Via gaudet rursus cultorem habere.\""
+	},
+	{
+		"id": "-1000007625",
+		"key": "story_N1_1",
+		"en|ch|tc|kr": "{N}: \"Nunc singulis mensibus veniunt - viri cum cultris, et cultor daemonicus cum eis. Oryzam, pannum, armillas puellarum auferunt.\"\n{N}: \"Mortales tantum sumus. Tu in via nostra habitas...\""
+	},
+	{
+		"id": "-1000007626",
+		"key": "story_N1_1_o1",
+		"en|ch|tc|kr": "Eos exspecta et pugna"
+	},
+	{
+		"id": "-1000007627",
+		"key": "story_N1_1_o2",
+		"en|ch|tc|kr": "Custodes viae conduc ({0:#,##0} [icon:zm_lingshi])"
+	},
+	{
+		"id": "-1000007628",
+		"key": "story_N1_1_o3",
+		"en|ch|tc|kr": "Curae mortalium meae non sunt"
+	},
+	{
+		"id": "-1000007629",
+		"key": "story_N2_1",
+		"en|ch|tc|kr": "Commentarii magistri veteris, manu nitida: olim totam viam emit, domos pro villa diruit, et thesauro subter dives factus est. Mortales eum usque ad mortem exsecrati sunt.\nUna pagina alterum thesaurum notat - sub domibus iuxta tuam."
+	},
+	{
+		"id": "-1000007630",
+		"key": "story_N2_1_o1",
+		"en|ch|tc|kr": "Eas eme et fode"
+	},
+	{
+		"id": "-1000007631",
+		"key": "story_N2_1_o2",
+		"en|ch|tc|kr": "Paginam ure"
+	},
+	{
+		"id": "-1000007632",
+		"key": "story_N3_1",
+		"en|ch|tc|kr": "Fumus super murum {T}. Praedones ad portam, et via vetus statim post eam.\n{N}: \"Dicunt murum non duraturum. Quo ibimus?\""
+	},
+	{
+		"id": "-1000007633",
+		"key": "story_N3_1_o1",
+		"en|ch|tc|kr": "Portam tene"
+	},
+	{
+		"id": "-1000007634",
+		"key": "story_N3_1_o2",
+		"en|ch|tc|kr": "Murum solve ({0:#,##0} [icon:zm_lingshi] oppido)"
+	},
+	{
+		"id": "-1000007635",
+		"key": "story_N3_1_o3",
+		"en|ch|tc|kr": "Oppidum fato relinque"
+	},
+	{
+		"id": "-1000007636",
+		"key": "story_endN_Manor",
+		"en|ch|tc|kr": "Domus vicinorum singulae cadunt; sub eis thesaurus magistri veteris. Via nunc tacet - nemo ibi praeter te habitat."
+	},
+	{
+		"id": "-1000007637",
+		"key": "story_endN_Home",
+		"en|ch|tc|kr": "Laternae in omni ianua viae veteris. {N} catinum pastillorum affert.\n{N}: \"Pueri eam nunc viam immortalis vocant. Semper locus tibi ad mensam nostram erit.\""
+	},
+	{
+		"id": "-1000007638",
+		"key": "story_endN_Empty",
+		"en|ch|tc|kr": "Ianuae clauduntur cum praeteris. Familiae viae veteris singulae vendunt et abeunt."
+	},
+	{
+		"id": "-1000007639",
+		"key": "story_end_N_Home",
+		"en|ch|tc|kr": "Domus"
+	},
+	{
+		"id": "-1000007640",
+		"key": "story_end_N_Manor",
+		"en|ch|tc|kr": "Villa"
+	},
+	{
+		"id": "-1000007641",
+		"key": "story_end_N_Empty",
+		"en|ch|tc|kr": "Via Vacua"
+	},
+	{
+		"id": "-1000007642",
+		"key": "story_name_O",
+		"en|ch|tc|kr": "Cineres Oppidi"
+	},
+	{
+		"id": "-1000007644",
+		"key": "story_task_O0",
+		"en|ch|tc|kr": "Puer casum {T} superavit."
+	},
+	{
+		"id": "-1000007645",
+		"key": "story_task_O1",
+		"en|ch|tc|kr": "{O} scire vult quis {T} incenderit (2 anni)."
+	},
+	{
+		"id": "-1000007646",
+		"key": "story_task_O2",
+		"en|ch|tc|kr": "{O} exercetur ut cultor fiat (4 anni)."
+	},
+	{
+		"id": "-1000007647",
+		"key": "story_task_O3",
+		"en|ch|tc|kr": "{O} adolevit (7 anni)."
+	},
+	{
+		"id": "-1000007648",
+		"key": "story_O0_1",
+		"en|ch|tc|kr": "{T}. Trabes nigrae, cinis frigidus, odor incendii veteris. In ruinis domus puer iuxta pupam fractam sedet nec flet."
+	},
+	{
+		"id": "-1000007649",
+		"key": "story_O0_butcher",
+		"en|ch|tc|kr": "{T}. Hunc locum nosti. Scis cuius gladius hos cineres fecerit.\nIn ruinis domus puer iuxta pupam fractam sedet et te sine metu aspicit - vultum tuum non novit."
+	},
+	{
+		"id": "-1000007650",
+		"key": "story_O0_1_o1",
+		"en|ch|tc|kr": "Puerum tecum duc"
+	},
+	{
+		"id": "-1000007651",
+		"key": "story_O0_1_o2",
+		"en|ch|tc|kr": "Pecuniam agricolae pro puero relinque"
+	},
+	{
+		"id": "-1000007652",
+		"key": "story_O1_1",
+		"en|ch|tc|kr": "{O} nunc altior est, et tacitus modo quo pueri esse non debent.\n{O}: \"Omni nocte ignem video. Aliquis id fecit. Quis? Cultor es - scis.\""
+	},
+	{
+		"id": "-1000007654",
+		"key": "story_O1_1_o2",
+		"en|ch|tc|kr": "Mentire: \"latrones, diu mortui\""
+	},
+	{
+		"id": "-1000007655",
+		"key": "story_O1_1_o3",
+		"en|ch|tc|kr": "\"Odium malus magister est\""
+	},
+	{
+		"id": "-1000007656",
+		"key": "story_O2_1",
+		"en|ch|tc|kr": "{O} ab aurora gladium ligneum vibrat, iterum atque iterum, donec manus sanguinent.\n{O}: \"Doce me. Hac vice satis fortis ero.\""
+	},
+	{
+		"id": "-1000007657",
+		"key": "story_O2_1_o1",
+		"en|ch|tc|kr": "Cum {O} exercere"
+	},
+	{
+		"id": "-1000007658",
+		"key": "story_O2_1_o2",
+		"en|ch|tc|kr": "Patientiam potius doce"
+	},
+	{
+		"id": "-1000007659",
+		"key": "story_O3_reckoning",
+		"en|ch|tc|kr": "{O} in via stat, nunc gladio vero, oculis cultoris adulti.\n{O}: \"Tabulas veteres {T} inveni. Scio cuius gladius fuerit. Scio cuius panem per annos ederim.\"\n{O}: \"Stringe.\""
+	},
+	{
+		"id": "-1000007660",
+		"key": "story_O3_r_o1",
+		"en|ch|tc|kr": "Gladium demitte"
+	},
+	{
+		"id": "-1000007662",
+		"key": "story_O3_rebuild",
+		"en|ch|tc|kr": "{O}: \"In {T} redii. Herbae in viis, sed puteus adhuc dulcis est.\"\n{O}: \"Familiae redirent si muri et domus essent. {0:#,##0} [icon:zm_lingshi] opus est. Mecum id reaedificabis?\""
+	},
+	{
+		"id": "-1000007663",
+		"key": "story_O3_lie",
+		"en|ch|tc|kr": "{O}: \"Illos latrones numquam inveni. Fortasse nunc nihil refert.\"\n{O}: \"In {T} redii. Familiae redirent si muri et domus essent. {0:#,##0} [icon:zm_lingshi] opus est. Me adiuvabis?\""
+	},
+	{
+		"id": "-1000007664",
+		"key": "story_O3_b_o1",
+		"en|ch|tc|kr": "{T} reaedifica ({0:#,##0} [icon:zm_lingshi])"
+	},
+	{
+		"id": "-1000007665",
+		"key": "story_O3_b_o2",
+		"en|ch|tc|kr": "Oppidum mortuum quiescere sine"
+	},
+	{
+		"id": "-1000007666",
+		"key": "story_endO_Atonement",
+		"en|ch|tc|kr": "Gladius tuus in pulverem cadit. Ferrum {O} digito a gutture tuo consistit - tremit, et demittitur.\n{O}: \"Non possum. Tu me educavisti.\" Puer cinerum abit. Aliquid in corde tuo, diu gelatum, finditur."
+	},
+	{
+		"id": "-1000007667",
+		"key": "story_endO_Ashes",
+		"en|ch|tc|kr": "{T} ruina manet. Herba eam operit, et nemo puerum cinerum meminit."
+	},
+	{
+		"id": "-1000007668",
+		"key": "story_endO_Rebuilt",
+		"en|ch|tc|kr": "Novi muri {T}, nova tecta. Fumus e culinis, non ex incendiis.\n{O}: \"Me custodem oppidi esse rogaverunt. Annui - si nos visitabis.\""
+	},
+	{
+		"id": "-1000007669",
+		"key": "story_end_O_Atonement",
+		"en|ch|tc|kr": "Expiatio"
+	},
+	{
+		"id": "-1000007670",
+		"key": "story_end_O_Ashes",
+		"en|ch|tc|kr": "Cineres"
+	},
+	{
+		"id": "-1000007671",
+		"key": "story_end_O_Rebuilt",
+		"en|ch|tc|kr": "Reaedificatum"
+	},
+	{
+		"id": "-1000007672",
+		"key": "story_name_P",
+		"en|ch|tc|kr": "Pulsus in Lapide"
+	},
+	{
+		"id": "-1000007674",
+		"key": "story_task_P0",
+		"en|ch|tc|kr": "Sensus spiritalis tuus pulsum cordis cepit ubi nemo esse debet."
+	},
+	{
+		"id": "-1000007675",
+		"key": "story_task_P1",
+		"en|ch|tc|kr": "Purificator corporis, {B}, dimidius lapideus in tribulatione sua haeret."
+	},
+	{
+		"id": "-1000007676",
+		"key": "story_task_P2",
+		"en|ch|tc|kr": "{B} tibi viam corporis ostendit."
+	},
+	{
+		"id": "-1000007677",
+		"key": "story_task_P3",
+		"en|ch|tc|kr": "Altera tribulatio {B}."
+	},
+	{
+		"id": "-1000007678",
+		"key": "story_P0_1",
+		"en|ch|tc|kr": "Ambulans sensum spiritalem diffundis. Arbores, bestiae, lentus pulsus terrae...\nEt sub aqua cadente ante te, in ipso saxo - pulsus cordis. Lentus. Humanus."
+	},
+	{
+		"id": "-1000007679",
+		"key": "story_P0_1_o1",
+		"en|ch|tc|kr": "Pulsum sequere"
+	},
+	{
+		"id": "-1000007681",
+		"key": "story_P1_1",
+		"en|ch|tc|kr": "Sub cataracta vir dimidius lapideus est - crura, venter, bracchium unum cana et fissa. Oculos aperit cum sensus tuus eum tangit.\n{B}: \"Tribulatio corporis mei... media defecit. Decem annos sic. Pilulam, herbam - quidquid vitam habet.\"\n{B}: \"Aut cape quod mei restat. Essentia corporis mei te fortem faceret.\""
+	},
+	{
+		"id": "-1000007682",
+		"key": "story_P1_1_o1",
+		"en|ch|tc|kr": "Da ei pilulam"
+	},
+	{
+		"id": "-1000007683",
+		"key": "story_P1_1_o2",
+		"en|ch|tc|kr": "Da ei herbam"
+	},
+	{
+		"id": "-1000007684",
+		"key": "story_P1_1_o3",
+		"en|ch|tc|kr": "Essentiam eius cape"
+	},
+	{
+		"id": "-1000007685",
+		"key": "story_P1_2",
+		"en|ch|tc|kr": "Lapis finditur et ab eo ut cortex vetus cadit. Surgit, tremens, vivus.\n{B}: \"Decem annos illam aquam audivi. Tibi reddam - eo solo quod habeo: corpore quod non frangitur.\""
+	},
+	{
+		"id": "-1000007686",
+		"key": "story_P2_1",
+		"en|ch|tc|kr": "{B}: \"Corpus omnem ictum meminit. Sine id discere.\" Articulos crepare facit. \"Feri me. Deinde ego te. Aut sub aqua sta ut ego - diem pro quoque anno quem amisi.\""
+	},
+	{
+		"id": "-1000007687",
+		"key": "story_P2_1_o1",
+		"en|ch|tc|kr": "Ictus cum {B} commuta"
+	},
+	{
+		"id": "-1000007688",
+		"key": "story_P2_1_o2",
+		"en|ch|tc|kr": "Sub cataracta sta"
+	},
+	{
+		"id": "-1000007689",
+		"key": "story_P3_1",
+		"en|ch|tc|kr": "Caelum super cataractam ferreum fit. {B} tunicam exuit.\n{B}: \"Caelum mihi dimidiam tribulationem debet. Exigere venit.\"\n{B}: \"Mecum sta - aut procul specta. Te non culpabo.\""
+	},
+	{
+		"id": "-1000007690",
+		"key": "story_P3_1_o1",
+		"en|ch|tc|kr": "Cum eo sta"
+	},
+	{
+		"id": "-1000007691",
+		"key": "story_P3_1_o2",
+		"en|ch|tc|kr": "Procul specta"
+	},
+	{
+		"id": "-1000007692",
+		"key": "story_endP_Brothers",
+		"en|ch|tc|kr": "Ultimum fulmen in duobus tergis frangitur pro uno. {B} ridet, cruentus, integer.\n{B}: \"Frater. Quidquid te posthac ferit, me quoque ferit.\""
+	},
+	{
+		"id": "-1000007693",
+		"key": "story_endP_Alone",
+		"en|ch|tc|kr": "E colle tempestatem cataractam tundentem spectas. Cum serenat, saxum vacuum est. Quidquid factus est, solus id fecit - et tu quoque."
+	},
+	{
+		"id": "-1000007694",
+		"key": "story_endP_Devourer",
+		"en|ch|tc|kr": "Essentia eius in te influit, gravis ut mons. Ossa tua durescunt. Aqua in saxum vacuum cadere pergit, et cor tuum paulo frigidius fit."
+	},
+	{
+		"id": "-1000007695",
+		"key": "story_end_P_Brothers",
+		"en|ch|tc|kr": "Fratres Corporis"
+	},
+	{
+		"id": "-1000007696",
+		"key": "story_end_P_Alone",
+		"en|ch|tc|kr": "Solus"
+	},
+	{
+		"id": "-1000007697",
+		"key": "story_end_P_Devourer",
+		"en|ch|tc|kr": "Devorator"
 	}
 ]

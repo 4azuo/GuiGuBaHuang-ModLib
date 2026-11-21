@@ -1,3 +1,4 @@
+﻿using MOD_nE7UL2.Helper;
 using EBattleTypeData;
 using EGameTypeData;
 using MOD_nE7UL2.Const;
@@ -281,7 +282,7 @@ namespace MOD_nE7UL2.Mod
             if (e.uiType.uiName != UIType.TownStorage.uiName)
                 return;
             // off in the S&M configs: only to repay a running loan
-            if ((SMLocalConfigsEvent.Instance?.Configs?.NoBankLoan ?? false) && !HasLoan)
+            if (!LoanButtonShown())
                 return;
             var town = Player.GetMapBuild<MapBuildTown>();
             if (town == null || (!BankAccountEvent.Instance.RegisterdTown.Contains(town.buildData.id) && !MapBuildPropertyEvent.IsTownGuardian(town, Player)))
@@ -293,8 +294,11 @@ namespace MOD_nE7UL2.Mod
             PlaceBelow(btn.Item, cover.UI.btnProps, 8f);
         }
 
+        /// <summary>True when the town storage shows the "Bank loan" button (SpiritNoteEvent puts its button below it).</summary>
+        public static bool LoanButtonShown() => Instance != null && (!(SMLocalConfigsEvent.Instance?.Configs?.NoBankLoan ?? false) || Instance.HasLoan);
+
         /// <summary>Moves a button just below another one: same parent and anchors, centered, gap in local units.</summary>
-        private static void PlaceBelow(Component item, Component anchor, float gap)
+        public static void PlaceBelow(Component item, Component anchor, float gap)
         {
             if (item == null || anchor == null)
                 return;
@@ -369,7 +373,7 @@ namespace MOD_nE7UL2.Mod
                 var err = Borrow(town, amount.MainComponent.Get().Parse<int>());
                 if (err != null)
                 {
-                    g.ui.MsgBox(GameTool.LS("loan_title"), GameTool.LS(err));
+                    InfoDialog.Msg(GameTool.LS("loan_title"), GameTool.LS(err));
                     return;
                 }
                 OpenLoan(town);

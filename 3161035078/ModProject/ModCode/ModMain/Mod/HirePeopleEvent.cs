@@ -1,4 +1,5 @@
-﻿using EGameTypeData;
+﻿using MOD_nE7UL2.Helper;
+using EGameTypeData;
 using MOD_nE7UL2.Const;
 using ModLib.Attributes;
 using ModLib.Enum;
@@ -9,7 +10,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Numerics;
 using UnityEngine;
-using static MOD_nE7UL2.Object.ModStts;
 using ModLib.Helper;
 
 namespace MOD_nE7UL2.Mod
@@ -34,7 +34,7 @@ namespace MOD_nE7UL2.Mod
         public static bool isShowHirePeopleUI = false;
         public static bool isShowManageTeamUI = false;
 
-        public static _BattleConfigs BattleConfigs => ModMain.ModObj.ModSettings.BattleConfigs;
+        public static BattleConfig BattleConfigs => BattleConfig.Conf;
 
         public Dictionary<string, List<string>> TeamData { get; set; } = new Dictionary<string, List<string>>();
 
@@ -72,7 +72,7 @@ namespace MOD_nE7UL2.Mod
                         {
                             uiCover.AddButton(200f, 90f, () =>
                             {
-                                g.ui.MsgBox(GameTool.LS("team420041121"), GameTool.LS("team420041130"), MsgBoxButtonEnum.YesNo, () =>
+                                InfoDialog.Msg(GameTool.LS("team420041121"), GameTool.LS("team420041130"), MsgBoxButtonEnum.YesNo, () =>
                                 {
                                     Dismiss(g.world.playerUnit, uiCover.UI.unit);
                                     g.ui.CloseUI(e.ui);
@@ -107,25 +107,25 @@ namespace MOD_nE7UL2.Mod
 
                                 if (IsHired(player) && !IsTeamMaster(player))
                                 {
-                                    g.ui.MsgBox(GameTool.LS("team420041121"), GameTool.LS("team420041129"));
+                                    InfoDialog.Msg(GameTool.LS("team420041121"), GameTool.LS("team420041129"));
                                     return;
                                 }
 
                                 var requiredSpiritStones = GetRequiredSpiritStones(player, uiCover.UI.unit);
                                 if (!isFriend && player.GetUnitMoney() < requiredSpiritStones)
                                 {
-                                    g.ui.MsgBox(GameTool.LS("team420041121"), ModTextHelper.LSF("ui_require_stones", requiredSpiritStones));
+                                    InfoDialog.Msg(GameTool.LS("team420041121"), ModTextHelper.LSF("ui_require_stones", requiredSpiritStones));
                                     return;
                                 }
 
                                 var requiredReputations = GetRequiredReputations(player, uiCover.UI.unit);
                                 if (player.GetDynProperty(UnitDynPropertyEnum.Reputation).value < requiredReputations)
                                 {
-                                    g.ui.MsgBox(GameTool.LS("team420041121"), ModTextHelper.LSF("ui_require_reputations", requiredReputations));
+                                    InfoDialog.Msg(GameTool.LS("team420041121"), ModTextHelper.LSF("ui_require_reputations", requiredReputations));
                                     return;
                                 }
 
-                                g.ui.MsgBox(GameTool.LS("team420041121"), GameTool.LS("team420041128"), MsgBoxButtonEnum.YesNo, () =>
+                                InfoDialog.Msg(GameTool.LS("team420041121"), GameTool.LS("team420041128"), MsgBoxButtonEnum.YesNo, () =>
                                 {
                                     Hire(g.world.playerUnit, uiCover.UI.unit);
                                     if (!isFriend)
@@ -152,7 +152,7 @@ namespace MOD_nE7UL2.Mod
                         {
                             uiCover.AddButton(0, 0, () =>
                             {
-                                g.ui.MsgBox(GameTool.LS("team420041121"), GameTool.LS("team420041134"), MsgBoxButtonEnum.YesNo, () =>
+                                InfoDialog.Msg(GameTool.LS("team420041121"), GameTool.LS("team420041134"), MsgBoxButtonEnum.YesNo, () =>
                                 {
                                     DismissTeam(g.world.playerUnit);
                                     g.ui.CloseUI(e.ui);

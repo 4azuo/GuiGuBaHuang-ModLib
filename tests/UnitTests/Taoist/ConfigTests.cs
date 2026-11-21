@@ -1,6 +1,7 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using MOD_nE7UL2;
 using MOD_nE7UL2.AutoTest;
+using MOD_nE7UL2.Mod;
 using MOD_nE7UL2.Object;
 using ModLib.Attributes;
 using ModLib.Helper;
@@ -60,7 +61,7 @@ namespace UnitTests.Taoist
             Check.None(errors, "invalid JSON files", Directory.GetFiles(ModConf, "*.json", SearchOption.AllDirectories).Length);
         }
 
-        [TestMethod, Description("mod_configs.json sections/keys = ModStts properties (no typo, nothing missing); bank fees valid")]
+        [TestMethod, Description("mod_configs.json sections/keys = ModStts properties (no typo, nothing missing)")]
         public void ModConfigs_SectionsMatchModStts()
         {
             // ModStts cannot be deserialized outside the game: it uses Il2Cpp enums (MartialType, MonstType...)
@@ -79,9 +80,71 @@ namespace UnitTests.Taoist
                 errors.AddRange(((JObject)section.Value).Properties().Where(p => !p.Name.StartsWith("__") && !names.Contains(p.Name)).Select(p => $"{section.Name}.{p.Name}"));
             }
             Check.None(errors, "keys ignored by ModStts (typo?)");
-            var fees = (JObject)json["BankAccountConfigs"]["OpenFee"];
-            Check.True(fees.Count >= 10, "bank fee for every area (>= 10)", fees.Count);
-            Check.True(fees.Properties().All(p => (int)p.Value >= 100), "bank fees >= 100 (BankAccountEvent.Cost divides by OpenFee / 100)", fees.Properties().Select(p => (int)p.Value).ToList());
+        }
+
+        /// <summary>Keys of the file = properties of the class (no typo, nothing missing); with <paramref name="defaults"/>: the file holds the defaults of the code.</summary>
+        private static void CheckJsonConfig<T>(string file, bool defaults = true) where T : JsonConfig<T>, new()
+        {
+            var path = Path.Combine(ModConf, file);
+            Check.True(File.Exists(path), $"{file} exists", path);
+            var json = JObject.Parse(File.ReadAllText(path));
+            var names = typeof(T).GetProperties(BindingFlags.Public | BindingFlags.Instance).Where(p => p.CanWrite).Select(p => p.Name).ToList();
+            Check.None(json.Properties().Select(p => p.Name).Where(n => !n.StartsWith("__") && !names.Contains(n)).ToList(), $"{file}: keys ignored by {typeof(T).Name} (typo?)");
+            Check.None(names.Where(n => json[n] == null).ToList(), $"{file}: settings of {typeof(T).Name} missing in the file");
+            if (defaults)
+                Check.True(JsonConvert.SerializeObject(JsonConfig<T>.Parse(File.ReadAllText(path))) == JsonConvert.SerializeObject(JsonConfig<T>.Parse(null)),
+                    $"{file} holds the defaults of the code (change both)", null);
+        }
+
+        [TestMethod, Description("Own config files of the features (JsonConfig): valid, no unknown key, the same as the defaults in the code; broken values fixed")]
+        public void FeatureConfigs_MatchDefaults()
+        {
+            CheckJsonConfig<BattleConfig>(BattleConfig.FILE);
+            CheckJsonConfig<MarketItemConfig>(MarketItemConfig.FILE);
+            CheckJsonConfig<MapBuildBattleConfig>(MapBuildBattleConfig.FILE);
+            CheckJsonConfig<InflationaryConfig>(InflationaryConfig.FILE);
+            CheckJsonConfig<BankAccountConfig>(BankAccountConfig.FILE);
+            CheckJsonConfig<CustomRefineConfig>(CustomRefineConfig.FILE);
+            CheckJsonConfig<ContributionExchangeConfig>(ContributionExchangeConfig.FILE);
+            CheckJsonConfig<MissionDeclareConfig>(MissionDeclareConfig.FILE);
+            CheckJsonConfig<BattleManashieldConfig>(BattleManashieldConfig.FILE);
+            CheckJsonConfig<UnitTypeConfig>(UnitTypeConfig.FILE);
+            CheckJsonConfig<RealTrialConfig>(RealTrialConfig.FILE);
+            CheckJsonConfig<RealStorageConfig>(RealStorageConfig.FILE);
+            CheckJsonConfig<RealMarketConfig>(RealMarketConfig.FILE);
+            CheckJsonConfig<BattleRewardConfig>(BattleRewardConfig.FILE);
+            // game enums (MonstType, MartialType) cannot be read outside the game: keys only
+            CheckJsonConfig<MonstStrongerConfig>(MonstStrongerConfig.FILE, false);
+            CheckJsonConfig<NpcUpgradeSkillConfig>(NpcUpgradeSkillConfig.FILE, false);
+            CheckJsonConfig<ExpertConfig>(ExpertConfig.FILE, false);
+            var monstAreas = (JObject)JObject.Parse(File.ReadAllText(Path.Combine(ModConf, MonstStrongerConfig.FILE)))["AreaBonus"];
+            Check.True(monstAreas.Count >= 13, "monster growth for every area (>= 13)", monstAreas.Count);
+
+            var mission = MissionDeclareConfig.Parse("{ \"CostTime\": [ 2 ], \"SuccessRate\": [ 150, 50 ] }");
+            Check.Eq(MissionDeclareConfig.LEVELS, mission.CostTime.Length, "commission months: one a level (missing: the defaults)");
+            Check.Eq(12, mission.CostTime[5], "commission months: the default of level 6");
+            Check.Eq(100f, mission.SuccessRate[0], "commission success at most 100 %");
+            var market = RealMarketConfig.Parse("{ \"MinSellRate\": 120, \"MaxSellRate\": 100, \"Events\": { \"X\": { \"Start\": 3, \"Period\": 0 } } }");
+            Check.Eq(120f, market.MaxSellRate, "max sell rate >= min sell rate");
+            Check.Eq(1, market.Events.Count, "market events given: replace the defaults");
+            Check.Eq(1, market.Events["X"].Period, "market event period >= 1 (IsRunningEvent loops on it)");
+            Check.Eq(0, RealMarketConfig.Parse("{ \"Events\": { } }").Events.Count, "no market event: {}");
+            Check.Eq(8, UnitTypeConfig.Parse("{ \"UnitTypes\": null }").UnitTypes.Count, "no role chances: the defaults");
+            Check.Eq(1, ContributionExchangeConfig.Parse("{ \"ExchangeRatio\": 0 }").ExchangeRatio, "exchange ratio >= 1 (divides)");
+
+            var fees = BankAccountConfig.Parse(File.ReadAllText(Path.Combine(ModConf, BankAccountConfig.FILE))).OpenFee;
+            Check.True(fees.Count >= 13, "bank fee for every area (>= 13)", fees.Count);
+            Check.True(fees.Values.All(v => v >= 100), "bank fees >= 100 (BankAccountEvent.Cost divides by OpenFee / 100)", fees.Values.ToList());
+
+            var partFees = BankAccountConfig.Parse("{ \"OpenFee\": { \"1\": 5 } }").OpenFee;
+            Check.Eq(13, partFees.Count, "an area left out: its default fee");
+            Check.Eq(5, partFees[1], "a fee given: kept");
+            Check.Eq(10.00f, MapBuildBattleConfig.Parse("{ }").EscapeChance, "a value left out: the default");
+            Check.Eq(100f, MapBuildBattleConfig.Parse("{ \"EscapeChance\": 500 }").EscapeChance, "a chance at most 100 %");
+            Check.Eq(1.02f, InflationaryConfig.Parse("{ \"InflationaryRate\": 0 }").InflationaryRate, "inflation <= 0: the default");
+            Check.Eq(7, CustomRefineConfig.Parse("{ \"LevelRates\": { } }").LevelRates.Count, "no refine rates: the defaults");
+            Check.Eq(2, CustomRefineConfig.Parse("{ \"LevelRates\": { \"Common\": 50, \"Rare\": 50 } }").LevelRates.Count, "refine rates given: replace the defaults");
+            Check.Eq(6, BattleConfig.Parse("{ \"FriendlyIntim\": 200 }").JoinRange, "other values: the defaults");
         }
 
         [TestMethod, Description("Every [Cache] id of the Taoist events is unique")]

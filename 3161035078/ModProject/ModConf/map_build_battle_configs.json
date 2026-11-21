@@ -1,0 +1,8 @@
+{
+	"__name": "Town wars and monster waves (MapBuildBattleEvent)",
+	"__help": [
+		"A value left out (or a broken file): the default of the mod.",
+		"EscapeChance: chance in % that the player escapes (0-100)."
+	],
+	"EscapeChance": 10.00
+}

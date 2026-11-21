@@ -1,0 +1,33 @@
+{
+	"__name": "Market sell rates (RealMarketEvent) and buy rates (RealMarketEvent2)",
+	"__help": [
+		"A value left out (or a broken file): the default of the mod.",
+		"Rates in % of the item value: the sell rate moves between MinSellRate and MaxSellRate, the buy rate between MinBuyRate and MaxBuyRate.",
+		"TownGReduceBuyRate / TownMReduceBuyRate: buy rate change (%) for the town guardian / the town master.",
+		"Events: market events. Start (month 1-12), Dur (months), Period (months between two); AddSellRate, AddBuyRate (%) while it runs. {} = no event; the list given replaces the default one."
+	],
+	"MinSellRate": 85.0,
+	"MaxSellRate": 110.0,
+	"MinBuyRate": 90.0,
+	"MaxBuyRate": 115.0,
+	"TownGReduceBuyRate": -5.0,
+	"TownMReduceBuyRate": -10.0,
+	"Events": {
+		"HappyNewYear": {
+			"Name": "Happy New Year",
+			"Start": 1,
+			"Dur": 1,
+			"Period": 12,
+			"AddSellRate": 25.0,
+			"AddBuyRate": 20.0
+		},
+		"HappyMidYear": {
+			"Name": "Happy Middle Year",
+			"Start": 6,
+			"Dur": 1,
+			"Period": 12,
+			"AddSellRate": -20.0,
+			"AddBuyRate": -25.0
+		}
+	}
+}

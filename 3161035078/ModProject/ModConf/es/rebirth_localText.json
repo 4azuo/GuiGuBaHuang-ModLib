@@ -128,5 +128,20 @@
 		"id": "420109998",
 		"key": "rebirth420109998",
 		"en|ch|tc|kr": "Empezar de nuevo"
+	},
+	{
+		"id": "420103104",
+		"key": "rebirth_off",
+		"en|ch|tc|kr": "El renacimiento está desactivado (ajustes S&M)."
+	},
+	{
+		"id": "420103105",
+		"key": "rebirth_need_grade",
+		"en|ch|tc|kr": "Tu grado debe superar el de tu último renacimiento ({0})."
+	},
+	{
+		"id": "420103106",
+		"key": "rebirth_need_town",
+		"en|ch|tc|kr": "El renacimiento se hace en una ciudad de zona {1} o más (sobre tu último renacimiento, {0}, y al menos tu grado)."
 	}
 ]

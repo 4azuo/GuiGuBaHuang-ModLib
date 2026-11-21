@@ -20,7 +20,7 @@ namespace MOD_nE7UL2.Mod
         public static UIEvent Instance { get; set; }
 
         /// <summary>Player info: the "Damage Calc" button and the S&amp;M score line on the top edge, offsets from the close button (canvas units).</summary>
-        public const float DMG_BUTTON_DX = -190f, SCORE_DX = -1150f;
+        public const float DMG_BUTTON_DX = -190f, SCORE_DX = -1150f, REBIRTH_BUTTON_DX = -185f;
 
         private Text uiArtifactInfo_textBasicTitle;
         private Text uiArtifactInfo_textBasicAdj1;
@@ -77,9 +77,17 @@ namespace MOD_nE7UL2.Mod
                             }
                             else
                             {
-                                ui.AddButton(ui.LastCol - 5, ui.FirstRow + 3, () => MapBuildPropertyEvent.OpenUITownGuardians(ui.UI.town), ModTextHelper.LSF("ui_tax_town", MapBuildPropertyEvent.GetTax(ui.UI.town, g.world.playerUnit))).Size(300, 80);
+                                // a house in the town: its fixed tax replaces the entry tax (EstateEvent)
+                                var taxLabel = EstateEvent.HasHouse(ui.UI.town, g.world.playerUnit)
+                                    ? GameTool.LS("estate_tax_free")
+                                    : ModTextHelper.LSF("ui_tax_town", MapBuildPropertyEvent.GetTax(ui.UI.town, g.world.playerUnit));
+                                ui.AddButton(ui.LastCol - 5, ui.FirstRow + 3, () => MapBuildPropertyEvent.OpenUITownGuardians(ui.UI.town), taxLabel).Size(300, 80);
                             }
                             ui.AddToolTipButton(ui.LastCol - 8, ui.FirstRow + 3, GameTool.LS("other500020020"));
+                            //plots of the town (EstateEvent)
+                            // right under the tax button, above the game's task panel ("Newest")
+                            if (EstateEvent.Enabled)
+                                ui.AddButton(ui.LastCol - 5, ui.FirstRow + 5, () => EstateEvent.OpenPlots(ui.UI.town), GameTool.LS("estate_button")).Size(300, 36);
                         }
                     }
                 }, 1);
@@ -183,6 +191,15 @@ namespace MOD_nE7UL2.Mod
                         var close = ui.UI.btnClose;
                         ui.AddButton(0, 0, () => DamageInfo.Open(), GameTool.LS("dmginfo_button")).Size(170, 32)
                             .SetParentTransform(close.transform.parent).Pos(close, DMG_BUTTON_DX, 0);
+                        // the rebirth (RebirthEvent; until 6.0 at the pub), left of the damage calculation: the player info
+                        // closes when it is done
+                        if (!SMLocalConfigsEvent.Instance.Configs.NoRebirth && RebirthEvent.Instance != null)
+                        {
+                            var info = e.ui;
+                            ui.AddButton(0, 0, () => RebirthEvent.Open(() => g.ui.CloseUI(info)), RebirthEvent.ButtonText).Size(170, 32)
+                                .SetParentTransform(close.transform.parent).Pos(close, DMG_BUTTON_DX + REBIRTH_BUTTON_DX, 0);
+                            ui.AddToolTipButton(GameTool.LS("rebirth420103103")).SetParentTransform(close.transform.parent).Pos(close, DMG_BUTTON_DX + REBIRTH_BUTTON_DX - 105f, 0);
+                        }
                         // S&M score of the save: title of its tier, P, reward bonus (SMScoreEvent)
                         ui.AddText(0, 0, SMScoreEvent.TitleLine(SMScoreEvent.P)).Format(new Color(0.45f, 0.12f, 0.08f), 16).Align(TextAnchor.MiddleCenter)
                             .SetParentTransform(close.transform.parent).Pos(close, SCORE_DX, 0);

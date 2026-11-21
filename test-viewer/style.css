@@ -102,6 +102,19 @@ main { padding: 14px 20px 40px; max-width: 2400px; margin: 0 auto; }
 .card-head { display: flex; align-items: center; gap: 10px; padding: 10px 12px; border-bottom: 1px solid var(--line); flex-wrap: wrap; }
 .card-head h2 { font-size: 14px; margin: 0; }
 .card-head .spacer { flex: 1; }
+.card-head h2 .count { color: var(--muted); font-weight: 400; font-size: 12px; margin-left: 4px; }
+
+/* the toolbar of a long list sticks under the page header, the table header under the toolbar */
+.sticky-head {
+  position: sticky; top: var(--top-h, 0px); z-index: 6;
+  background: var(--panel); border-radius: var(--radius) var(--radius) 0 0;
+}
+.sticky-rows thead th { position: sticky; top: calc(var(--top-h, 0px) + var(--head-h, 0px)); z-index: 5; }
+.groupbar { flex-basis: 100%; }
+.groupbar .glabel { color: var(--muted); font-size: 11px; text-transform: uppercase; letter-spacing: .03em; margin-right: 2px; }
+.groupbar .chip small { color: var(--muted); margin-left: 2px; }
+.groupbar .chip.on small { color: inherit; opacity: .7; }
+.feat-select { border: 1px solid var(--line); background: var(--panel-2); border-radius: 6px; padding: 2px 6px; font-size: 12px; max-width: 260px; }
 
 .summary { display: flex; gap: 10px; flex-wrap: wrap; padding: 12px; align-items: stretch; }
 .stat {

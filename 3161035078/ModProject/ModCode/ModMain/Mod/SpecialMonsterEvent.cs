@@ -28,6 +28,15 @@ namespace MOD_nE7UL2.Mod
 
         [JsonIgnore]
         public List<UnitCtrlBase> MultipliedUnits { get; } = new List<UnitCtrlBase>();
+        /// <summary>The battle has ended: the monsters dying while it closes split no more (they stayed in the list after it was cleared).</summary>
+        private bool _ended;
+
+        public override void OnBattleStart(ETypeData e)
+        {
+            base.OnBattleStart(e);
+            _ended = false;
+            MultipliedUnits.Clear();
+        }
 
         /// <summary>
         /// Common/elite may get a shield; bosses too when BossHasShield.
@@ -61,6 +70,7 @@ namespace MOD_nE7UL2.Mod
         public override void OnBattleUnitDie(UnitDie e)
         {
             base.OnBattleUnitDie(e);
+            if (_ended) return;
 
             var dieUnit = e.unit;
             if (dieUnit.IsMonster() && !dieUnit.IsPotmon() && !dieUnit.IsSummoned())
@@ -97,6 +107,7 @@ namespace MOD_nE7UL2.Mod
         public override void OnBattleEnd(BattleEnd e)
         {
             base.OnBattleEnd(e);
+            _ended = true;
             MultipliedUnits.Clear();
         }
     }

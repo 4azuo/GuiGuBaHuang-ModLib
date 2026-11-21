@@ -1,4 +1,5 @@
-﻿using EGameTypeData;
+﻿using MOD_nE7UL2.Helper;
+using EGameTypeData;
 using MOD_nE7UL2.Const;
 using ModLib.Attributes;
 using ModLib.Enum;
@@ -94,14 +95,14 @@ namespace MOD_nE7UL2.Mod
                 {
                     uiMain.AddButton(uiMain.FirstCol + 12, uiMain.LastRow - 4, () =>
                     {
-                        g.ui.MsgBox(GameTool.LS("other500020022"), string.Format(GameTool.LS("other500020029"), 1), MsgBoxButtonEnum.YesNo, () =>
+                        InfoDialog.Msg(GameTool.LS("other500020022"), string.Format(GameTool.LS("other500020029"), 1), MsgBoxButtonEnum.YesNo, () =>
                         {
                             SkipTime(12);
                         });
                     }, string.Format(GameTool.LS("other500020030"), 1)).Size(140, 40);
                     uiMain.AddButton(uiMain.FirstCol + 15, uiMain.LastRow - 4, () =>
                     {
-                        g.ui.MsgBox(GameTool.LS("other500020022"), string.Format(GameTool.LS("other500020029"), 10), MsgBoxButtonEnum.YesNo, () =>
+                        InfoDialog.Msg(GameTool.LS("other500020022"), string.Format(GameTool.LS("other500020029"), 10), MsgBoxButtonEnum.YesNo, () =>
                         {
                             SkipTime(120);
                         });

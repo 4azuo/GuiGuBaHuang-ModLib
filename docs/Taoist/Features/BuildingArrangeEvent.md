@@ -39,7 +39,7 @@ Storage buildings are commented out (not managed). `IsMatchBuildConds`: any town
 | `OnMonthly` | Every building except towns where the player is town master: for each managed sub-building that existed at creation and is missing, if `budget > cost` and `Random(0,100) < rate` -> built, budget - cost. |
 
 ```
-cost = Calculate(CalculateInflationary(BuildCosts[area - 1]), AddBuildingCostRate)
+cost = Calculate(CalculateInflationary(BuildCosts[area - 1]) x TownBuildingCost (towns only, 10: Prices of ModConf/estate_configs.json), AddBuildingCostRate)
 ```
 
 ## Notes
@@ -50,3 +50,5 @@ cost = Calculate(CalculateInflationary(BuildCosts[area - 1]), AddBuildingCostRat
 ## Tests
 
 TG-16, TM-12.
+
+The sub-buildings of a town also draw mortals: every one adds 8 % to the target population and 1 % to its monthly move ([EstateEvent](EstateEvent.md)).

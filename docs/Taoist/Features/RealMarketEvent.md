@@ -12,7 +12,7 @@ Selling items to a town shop: the price depends on a sell rate that changes ever
 
 ## Switch
 
-`mod_configs.json` > `RealMarketConfigs`:
+`real_market_configs.json` (`RealMarketConfig`):
 
 | Key | Value | Meaning |
 |---|---|---|

@@ -54,6 +54,14 @@ namespace MOD_nE7UL2.AutoTest.Scenarios.Title
                     if (g.ui.HasUI(UIType.CreatePlayer)) g.ui.CloseUI(UIType.CreatePlayer);
                     SMGlobalConfigsEvent.Instance.PriorityDestinyLevel = (int)c.Bag["priority"];
                     c.Assert(g.ui.HasUI(UIType.Login), "back on the title screen, setting restored");
+                }, 2500)
+                .Step("title buttons after the creation", c =>
+                {
+                    // the mod's buttons copied from game buttons went blank after the character creation
+                    var v = UITitleScreenEvent.VersionButton?.ButtonLabel;
+                    var s = SMGlobalConfigsEvent.TitleButton?.ButtonLabel;
+                    c.Assert(v != null && v.text.StartsWith("Taoist "), $"the version button: '{v?.text}'");
+                    c.Assert(s != null && !string.IsNullOrEmpty(s.text), $"the S&M button: '{s?.text}'");
                 });
         }
     }

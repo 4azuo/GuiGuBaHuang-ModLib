@@ -20,7 +20,7 @@ Related objects: `Object/MarketItem.cs` (listing), `NegotiatingDeal.cs` (an offe
 
 S&M: `NoMarketItem` (all off), `MarketItemNpcJoinRate`, `OnlyActiveOnCurOrNearArea` (only towns within 2 areas of the player), `MaxSellersEachTown`, `MaxItemsOnSeller`, `MaxBuyersOnSellingItem`, `MarketItemGetAttackedRate`, `NoStalker`, `NoBuyOrder`. Taoist Settings: `NotifyMarketOffers`.
 
-`mod_configs.json` > `MarketItemConfigs`:
+`market_item_configs.json` (`MarketItemConfig`):
 
 | Key | Value | Use |
 |---|---|---|

@@ -21,9 +21,9 @@ namespace MOD_nE7UL2.Mod
     {
         public static RealMarketEvent Instance { get; set; }
 
-        public static float MinRate => ModMain.ModObj.ModSettings.RealMarketConfigs.MinSellRate;
+        public static float MinRate => RealMarketConfig.Conf.MinSellRate;
 
-        public static float MaxRate => ModMain.ModObj.ModSettings.RealMarketConfigs.MaxSellRate;
+        public static float MaxRate => RealMarketConfig.Conf.MaxSellRate;
 
         private Text txtMarketST;
         private Text txtPrice2;
@@ -52,7 +52,7 @@ namespace MOD_nE7UL2.Mod
         public override void OnMonthly()
         {
             base.OnMonthly();
-            var eventSellRate = ModMain.ModObj.ModSettings.RealMarketConfigs.GetAddSellRate();
+            var eventSellRate = RealMarketConfig.Conf.GetAddSellRate();
             foreach (var town in ModMain.Store.Buildings.Where(x => x.allBuildSub.ContainsKey(MapBuildSubType.TownMarketPill)))
             {
                 MarketPriceRate[town.buildData.id] = CommonTool.Random(MinRate + eventSellRate, MaxRate + eventSellRate);
@@ -155,6 +155,8 @@ namespace MOD_nE7UL2.Mod
             if (UnitTypeEvent.GetUnitTypeEnum(wunit) == UnitTypeEnum.Merchant)
                 r += UnitTypeEnum.Merchant.CustomLuck.CustomEffects[ModConst.UTYPE_LUCK_EFX_SELL_VALUE].Value0.Parse<float>() * 100f;
             r += MerchantLuckEnum.Merchant.GetCurLevel(wunit) * MerchantLuckEnum.Merchant.IncSellValueEachLvl * 100f;
+            // the title of the best craft (ArtisanEvent): +2 % a rank
+            r += ArtisanEvent.SellRate(wunit);
             return r;
         }
     }

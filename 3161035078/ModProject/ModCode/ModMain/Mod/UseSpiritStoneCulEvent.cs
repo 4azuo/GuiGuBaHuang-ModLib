@@ -1,4 +1,5 @@
-﻿using EGameTypeData;
+﻿using MOD_nE7UL2.Helper;
+using EGameTypeData;
 using MOD_nE7UL2.Const;
 using ModLib.Attributes;
 using ModLib.Helper;
@@ -44,11 +45,11 @@ namespace MOD_nE7UL2.Mod
                                 // UIFateFeature.UpdateUI throws NRE when no grade is selected (lastSelect == null)
                                 if (ui.UI.lastSelect != null)
                                     ui.UI.UpdateUI();
-                                g.ui.MsgBox(string.Empty, string.Format(GameTool.LS("other500020070"), requiringMoney, exp));
+                                InfoDialog.Msg(string.Empty, string.Format(GameTool.LS("other500020070"), requiringMoney, exp));
                             }
                             else
                             {
-                                g.ui.MsgBox(GameTool.LS("other500020022"), string.Format(GameTool.LS("other500020069"), requiringMoney));
+                                InfoDialog.Msg(GameTool.LS("other500020022"), string.Format(GameTool.LS("other500020069"), requiringMoney));
                             }
                         }, GameTool.LS("other500020068")).Size(200f, 40f);
                     }

@@ -1,0 +1,357 @@
+[
+	{
+		"id": "-1000015000",
+		"key": "heart_button",
+		"en|ch|tc|kr": "Đạo tâm"
+	},
+	{
+		"id": "-1000015001",
+		"key": "heart_title",
+		"en|ch|tc|kr": "Đạo tâm"
+	},
+	{
+		"id": "-1000015002",
+		"key": "heart_npc",
+		"en|ch|tc|kr": "Đạo tâm: {0}"
+	},
+	{
+		"id": "-1000015003",
+		"key": "heart_lvl_0",
+		"en|ch|tc|kr": "Dao động"
+	},
+	{
+		"id": "-1000015004",
+		"key": "heart_lvl_1",
+		"en|ch|tc|kr": "Kiên định"
+	},
+	{
+		"id": "-1000015005",
+		"key": "heart_lvl_2",
+		"en|ch|tc|kr": "Kiên cố"
+	},
+	{
+		"id": "-1000015006",
+		"key": "heart_lvl_3",
+		"en|ch|tc|kr": "Bất động"
+	},
+	{
+		"id": "-1000015007",
+		"key": "heart_lvl_4",
+		"en|ch|tc|kr": "Kim cương đạo tâm"
+	},
+	{
+		"id": "-1000015008",
+		"key": "heart_lvl_5",
+		"en|ch|tc|kr": "Thiên tâm"
+	},
+	{
+		"id": "-1000015009",
+		"key": "heart_value",
+		"en|ch|tc|kr": "[icon:xinqing] Đạo tâm {0:#,##0} / {1:#,##0}"
+	},
+	{
+		"id": "-1000015010",
+		"key": "heart_value_top",
+		"en|ch|tc|kr": "[icon:xinqing] Đạo tâm {0:#,##0} (cảnh giới cao nhất: phần dư thành tinh hoa)"
+	},
+	{
+		"id": "-1000015011",
+		"key": "heart_essence",
+		"en|ch|tc|kr": "[icon:daodian] Tinh hoa đạo tâm {0:#,##0} ({1} bậc): [icon:nianli] SP tối đa +{2} %"
+	},
+	{
+		"id": "-1000015012",
+		"key": "heart_effects",
+		"en|ch|tc|kr": "[icon:nianli] SP tối đa +{0} %, [icon:lingli] MP tối đa +{1} %; [icon:huxin] thắng tâm ma {2:0} %, [icon:jingli] đột phá luyện thể +{3:0}, [icon:hudun] phản phệ và nổ lò -{4:0} %"
+	},
+	{
+		"id": "-1000015013",
+		"key": "heart_level_line",
+		"en|ch|tc|kr": "{0}: {1:#,##0} - [icon:nianli] SP +{2} %, [icon:lingli] MP +{3} %, [icon:huxin] tâm ma {4:0} %"
+	},
+	{
+		"id": "-1000015014",
+		"key": "heart_help",
+		"en|ch|tc|kr": "Tăng: thắng tâm ma, giữ lời hứa, bế quan, đột phá, tâm trạng tốt. Giảm: thua tâm ma, phản bội, thất hứa, thất bại, tâm trạng xấu."
+	},
+	{
+		"id": "-1000015015",
+		"key": "log_heart_up",
+		"en|ch|tc|kr": "Đạo tâm +{0}: {1}."
+	},
+	{
+		"id": "-1000015016",
+		"key": "log_heart_down",
+		"en|ch|tc|kr": "Đạo tâm -{0}: {1}."
+	},
+	{
+		"id": "-1000015017",
+		"key": "log_heart_level",
+		"en|ch|tc|kr": "Đạo tâm: {0}."
+	},
+	{
+		"id": "-1000015018",
+		"key": "heart_src_betrayal",
+		"en|ch|tc|kr": "phản bội ân tình"
+	},
+	{
+		"id": "-1000015019",
+		"key": "heart_src_demon_win",
+		"en|ch|tc|kr": "thắng tâm ma"
+	},
+	{
+		"id": "-1000015020",
+		"key": "heart_src_demon_lose",
+		"en|ch|tc|kr": "thua tâm ma"
+	},
+	{
+		"id": "-1000015021",
+		"key": "heart_src_seclusion",
+		"en|ch|tc|kr": "bế quan"
+	},
+	{
+		"id": "-1000015022",
+		"key": "heart_src_break_ok",
+		"en|ch|tc|kr": "đột phá luyện thể"
+	},
+	{
+		"id": "-1000015023",
+		"key": "heart_src_break_fail",
+		"en|ch|tc|kr": "đột phá thất bại"
+	},
+	{
+		"id": "-1000015024",
+		"key": "heart_src_promise_kept",
+		"en|ch|tc|kr": "giữ lời hứa"
+	},
+	{
+		"id": "-1000015025",
+		"key": "heart_src_promise_broken",
+		"en|ch|tc|kr": "thất hứa"
+	},
+	{
+		"id": "-1000015026",
+		"key": "sense_button",
+		"en|ch|tc|kr": "Thần thức"
+	},
+	{
+		"id": "-1000015027",
+		"key": "sense_title",
+		"en|ch|tc|kr": "Thần thức"
+	},
+	{
+		"id": "-1000015028",
+		"key": "sense_npc",
+		"en|ch|tc|kr": "Thần thức: {0}"
+	},
+	{
+		"id": "-1000015029",
+		"key": "sense_lvl_0",
+		"en|ch|tc|kr": "Chưa khai mở"
+	},
+	{
+		"id": "-1000015030",
+		"key": "sense_lvl_1",
+		"en|ch|tc|kr": "Linh giác"
+	},
+	{
+		"id": "-1000015031",
+		"key": "sense_lvl_2",
+		"en|ch|tc|kr": "Thần niệm"
+	},
+	{
+		"id": "-1000015032",
+		"key": "sense_lvl_3",
+		"en|ch|tc|kr": "Thần thức ly thể"
+	},
+	{
+		"id": "-1000015033",
+		"key": "sense_lvl_4",
+		"en|ch|tc|kr": "Thần vực"
+	},
+	{
+		"id": "-1000015034",
+		"key": "sense_lvl_5",
+		"en|ch|tc|kr": "Thông thiên thần thức"
+	},
+	{
+		"id": "-1000015035",
+		"key": "sense_exp",
+		"en|ch|tc|kr": "[icon:nianli] Thần thức {0:#,##0} / {1:#,##0}"
+	},
+	{
+		"id": "-1000015036",
+		"key": "sense_exp_top",
+		"en|ch|tc|kr": "[icon:nianli] Thần thức {0:#,##0} (cảnh giới cao nhất: phần dư thành tinh hoa)"
+	},
+	{
+		"id": "-1000015039",
+		"key": "sense_scan_done",
+		"en|ch|tc|kr": "Tháng này bạn đã quét xung quanh rồi."
+	},
+	{
+		"id": "-1000015040",
+		"key": "sense_scan_button",
+		"en|ch|tc|kr": "[icon:fanwei] Quét xung quanh ({0} ô, +{1} kinh nghiệm, mỗi tháng một lần)"
+	},
+	{
+		"id": "-1000015041",
+		"key": "sense_scan_result",
+		"en|ch|tc|kr": "Thần thức lan tỏa: quanh đây có {0} tu sĩ, {1} kẻ thù địch; mạnh nhất là {2} (cảnh giới {3}). Thảo dược trong các ô: {4:#,##0}, khoáng: {5:#,##0}."
+	},
+	{
+		"id": "-1000015043",
+		"key": "sense_help",
+		"en|ch|tc|kr": "Tăng mỗi tháng (theo ngộ tính), khi bế quan, khi thắng tâm ma và khi quét mỗi tháng một lần."
+	},
+	{
+		"id": "-1000015044",
+		"key": "log_sense_level",
+		"en|ch|tc|kr": "Thần thức: {0}."
+	},
+	{
+		"id": "-1000015045",
+		"key": "log_sense_ambush",
+		"en|ch|tc|kr": "Thần thức cảm nhận {0} đang tới: bạn lặng lẽ tránh đi."
+	},
+	{
+		"id": "-1000015046",
+		"key": "sense_ambush",
+		"en|ch|tc|kr": "Ở rìa thần thức, sát ý khẽ động: thợ săn tiền thưởng {0} đang mai phục phía trước. Bạn rẽ hướng trước khi hắn nhìn thấy."
+	},
+	{
+		"id": "-1000015047",
+		"key": "sense_scan_spot",
+		"en|ch|tc|kr": "{0} gần nhất: cách {1} ô về phía {2}."
+	},
+	{
+		"id": "-1000015048",
+		"key": "sense_dir_0",
+		"en|ch|tc|kr": "bắc"
+	},
+	{
+		"id": "-1000015049",
+		"key": "sense_dir_1",
+		"en|ch|tc|kr": "đông bắc"
+	},
+	{
+		"id": "-1000015050",
+		"key": "sense_dir_2",
+		"en|ch|tc|kr": "đông"
+	},
+	{
+		"id": "-1000015051",
+		"key": "sense_dir_3",
+		"en|ch|tc|kr": "đông nam"
+	},
+	{
+		"id": "-1000015052",
+		"key": "sense_dir_4",
+		"en|ch|tc|kr": "nam"
+	},
+	{
+		"id": "-1000015053",
+		"key": "sense_dir_5",
+		"en|ch|tc|kr": "tây nam"
+	},
+	{
+		"id": "-1000015054",
+		"key": "sense_dir_6",
+		"en|ch|tc|kr": "tây"
+	},
+	{
+		"id": "-1000015055",
+		"key": "sense_dir_7",
+		"en|ch|tc|kr": "tây bắc"
+	},
+	{
+		"id": "-1000015037",
+		"key": "sense_essence",
+		"en|ch|tc|kr": "[icon:daodian] Tinh hoa thần thức {0:#,##0} ({1} bậc): [icon:nianli] SP tối đa +{2} %"
+	},
+	{
+		"id": "-1000015038",
+		"key": "sense_effects",
+		"en|ch|tc|kr": "[icon:nianli] SP tối đa +{0} %, [icon:lingli] MP tối đa +{1} %; [icon:shanbiD] phát hiện phục kích {2:0} %, [icon:huxin] tâm ma -{3:0} %, [icon:fanwei] quét {4} ô; [icon:hudun] đã tránh phục kích: {5}"
+	},
+	{
+		"id": "-1000015042",
+		"key": "sense_level_line",
+		"en|ch|tc|kr": "{0}: {1:#,##0} - [icon:nianli] SP +{2} %, [icon:lingli] MP +{3} %, [icon:shanbiD] phát hiện phục kích {4:0} %"
+	},
+	{
+		"id": "-1000015056",
+		"key": "sense_scan_title",
+		"en|ch|tc|kr": "Thần thức - Dò xét"
+	},
+	{
+		"id": "-1000015057",
+		"key": "sense_scan_summary",
+		"en|ch|tc|kr": "Quanh đây {0} tu sĩ, {1} thù địch · dược liệu các ô {2:#,##0} · khoáng {3:#,##0}"
+	},
+	{
+		"id": "-1000015058",
+		"key": "sense_scan_people",
+		"en|ch|tc|kr": "Tu sĩ quanh đây"
+	},
+	{
+		"id": "-1000015059",
+		"key": "sense_scan_nobody",
+		"en|ch|tc|kr": "Không có ai trong tầm."
+	},
+	{
+		"id": "-1000015060",
+		"key": "sense_scan_unit",
+		"en|ch|tc|kr": "Cảnh giới {0} · {1}"
+	},
+	{
+		"id": "-1000015061",
+		"key": "sense_scan_hostile",
+		"en|ch|tc|kr": "thù địch"
+	},
+	{
+		"id": "-1000015062",
+		"key": "sense_scan_neutral",
+		"en|ch|tc|kr": "bình thản"
+	},
+	{
+		"id": "-1000015063",
+		"key": "sense_scan_more",
+		"en|ch|tc|kr": "... và {0} người khác"
+	},
+	{
+		"id": "-1000015064",
+		"key": "sense_scan_places",
+		"en|ch|tc|kr": "Địa điểm"
+	},
+	{
+		"id": "-1000015065",
+		"key": "sense_scan_noplace",
+		"en|ch|tc|kr": "Không có nơi đặc biệt trong tầm."
+	},
+	{
+		"id": "-1000015066",
+		"key": "sense_scan_place",
+		"en|ch|tc|kr": "Vùng {0} · {1} ô về phía {2}"
+	},
+	{
+		"id": "-1000015067",
+		"key": "sense_scan_place_far",
+		"en|ch|tc|kr": "Vùng {0} · {1} ô về phía {2} (ngoài tầm: gần nhất)"
+	},
+	{
+		"id": "-1000015068",
+		"key": "sense_scan_hint",
+		"en|ch|tc|kr": "Nhấn vào tên để xem tu sĩ."
+	},
+	{
+		"id": "-1000015069",
+		"key": "heart_story",
+		"en|ch|tc|kr": "một tuyến truyện"
+	},
+	{
+		"id": "-1000015070",
+		"key": "sense_story",
+		"en|ch|tc|kr": "một tuyến truyện"
+	}
+]

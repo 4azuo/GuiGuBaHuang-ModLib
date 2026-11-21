@@ -15,7 +15,7 @@ Runtime statics: `JoinBattleFlg` (month the player joined one), `InitBattleFlg`,
 ## Switches
 
 - `DestroyBuildingAfterTownWar` (S&M): losses destroy sub-buildings ([BuildingArrangeEvent](BuildingArrangeEvent.md)).
-- `mod_configs.json` > `MapBuildBattleConfigs.EscapeChance` = 10 %.
+- `map_build_battle_configs.json` > `EscapeChance` = 10 %.
 
 ## Constants
 

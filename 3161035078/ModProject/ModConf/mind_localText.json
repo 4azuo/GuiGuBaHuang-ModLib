@@ -1,0 +1,570 @@
+[
+	{
+		"id": "-1000015000",
+		"key": "heart_button",
+		"en": "Dao Heart",
+		"ch": "道心",
+		"tc": "道心",
+		"kr": "도심"
+	},
+	{
+		"id": "-1000015001",
+		"key": "heart_title",
+		"en": "Dao Heart",
+		"ch": "道心",
+		"tc": "道心",
+		"kr": "도심"
+	},
+	{
+		"id": "-1000015002",
+		"key": "heart_npc",
+		"en": "Dao heart: {0}",
+		"ch": "道心：{0}",
+		"tc": "道心：{0}",
+		"kr": "도심: {0}"
+	},
+	{
+		"id": "-1000015003",
+		"key": "heart_lvl_0",
+		"en": "Wavering",
+		"ch": "道心动摇",
+		"tc": "道心動搖",
+		"kr": "흔들리는 도심"
+	},
+	{
+		"id": "-1000015004",
+		"key": "heart_lvl_1",
+		"en": "Steady",
+		"ch": "坚定",
+		"tc": "堅定",
+		"kr": "굳건함"
+	},
+	{
+		"id": "-1000015005",
+		"key": "heart_lvl_2",
+		"en": "Firm",
+		"ch": "坚固",
+		"tc": "堅固",
+		"kr": "견고함"
+	},
+	{
+		"id": "-1000015006",
+		"key": "heart_lvl_3",
+		"en": "Unshaken",
+		"ch": "不动",
+		"tc": "不動",
+		"kr": "부동"
+	},
+	{
+		"id": "-1000015007",
+		"key": "heart_lvl_4",
+		"en": "Diamond Heart",
+		"ch": "金刚道心",
+		"tc": "金剛道心",
+		"kr": "금강도심"
+	},
+	{
+		"id": "-1000015008",
+		"key": "heart_lvl_5",
+		"en": "Heart of Heaven",
+		"ch": "天心",
+		"tc": "天心",
+		"kr": "천심"
+	},
+	{
+		"id": "-1000015009",
+		"key": "heart_value",
+		"en": "[icon:xinqing] Dao heart {0:#,##0} / {1:#,##0}",
+		"ch": "[icon:xinqing] 道心 {0:#,##0} / {1:#,##0}",
+		"tc": "[icon:xinqing] 道心 {0:#,##0} / {1:#,##0}",
+		"kr": "[icon:xinqing] 도심 {0:#,##0} / {1:#,##0}"
+	},
+	{
+		"id": "-1000015010",
+		"key": "heart_value_top",
+		"en": "[icon:xinqing] Dao heart {0:#,##0} (top level: more becomes essence)",
+		"ch": "[icon:xinqing] 道心 {0:#,##0}（已至极境：余下化为精华）",
+		"tc": "[icon:xinqing] 道心 {0:#,##0}（已至極境：餘下化為精華）",
+		"kr": "[icon:xinqing] 도심 {0:#,##0} (최고 경지: 남는 것은 정화가 된다)"
+	},
+	{
+		"id": "-1000015011",
+		"key": "heart_essence",
+		"en": "[icon:daodian] Essence of the heart {0:#,##0} ({1} steps): [icon:nianli] max SP +{2} %",
+		"ch": "[icon:daodian] 道心精华 {0:#,##0}（{1}重）：[icon:nianli] 神识上限+{2}%",
+		"tc": "[icon:daodian] 道心精華 {0:#,##0}（{1}重）：[icon:nianli] 神識上限+{2}%",
+		"kr": "[icon:daodian] 도심 정화 {0:#,##0} ({1}단계): [icon:nianli] 최대 SP +{2}%"
+	},
+	{
+		"id": "-1000015012",
+		"key": "heart_effects",
+		"en": "[icon:nianli] Max SP +{0} %, [icon:lingli] max MP +{1} %; [icon:huxin] heart demon beaten {2:0} %, [icon:jingli] body breakthrough +{3:0}, [icon:hudun] backlash and accidents -{4:0} %",
+		"ch": "[icon:nianli] 神识上限+{0}%，[icon:lingli] 真元上限+{1}%；[icon:huxin] 战胜心魔{2:0}%，[icon:jingli] 炼体突破+{3:0}，[icon:hudun] 反噬与炸炉-{4:0}%",
+		"tc": "[icon:nianli] 神識上限+{0}%，[icon:lingli] 真元上限+{1}%；[icon:huxin] 戰勝心魔{2:0}%，[icon:jingli] 煉體突破+{3:0}，[icon:hudun] 反噬與炸爐-{4:0}%",
+		"kr": "[icon:nianli] 최대 SP +{0}%, [icon:lingli] 최대 MP +{1}%; [icon:huxin] 심마 극복 {2:0}%, [icon:jingli] 연체 돌파 +{3:0}, [icon:hudun] 반동과 사고 -{4:0}%"
+	},
+	{
+		"id": "-1000015013",
+		"key": "heart_level_line",
+		"en": "{0}: {1:#,##0} - [icon:nianli] SP +{2} %, [icon:lingli] MP +{3} %, [icon:huxin] heart demon {4:0} %",
+		"ch": "{0}：{1:#,##0} - [icon:nianli] 神识+{2}%，[icon:lingli] 真元+{3}%，[icon:huxin] 心魔{4:0}%",
+		"tc": "{0}：{1:#,##0} - [icon:nianli] 神識+{2}%，[icon:lingli] 真元+{3}%，[icon:huxin] 心魔{4:0}%",
+		"kr": "{0}: {1:#,##0} - [icon:nianli] SP +{2}%, [icon:lingli] MP +{3}%, [icon:huxin] 심마 {4:0}%"
+	},
+	{
+		"id": "-1000015014",
+		"key": "heart_help",
+		"en": "Up: heart demons beaten, promises kept, seclusions, breakthroughs, a good mood. Down: heart demons lost, betrayal, promises broken, failures, a bad mood.",
+		"ch": "提升：战胜心魔、信守承诺、闭关、突破、心境愉悦。下降：败于心魔、背叛、失信、失败、心境低落。",
+		"tc": "提升：戰勝心魔、信守承諾、閉關、突破、心境愉悅。下降：敗於心魔、背叛、失信、失敗、心境低落。",
+		"kr": "상승: 심마 극복, 약속 이행, 폐관, 돌파, 좋은 기분. 하락: 심마 패배, 배신, 약속 파기, 실패, 나쁜 기분."
+	},
+	{
+		"id": "-1000015015",
+		"key": "log_heart_up",
+		"en": "Dao heart +{0}: {1}.",
+		"ch": "道心+{0}：{1}。",
+		"tc": "道心+{0}：{1}。",
+		"kr": "도심 +{0}: {1}."
+	},
+	{
+		"id": "-1000015016",
+		"key": "log_heart_down",
+		"en": "Dao heart -{0}: {1}.",
+		"ch": "道心-{0}：{1}。",
+		"tc": "道心-{0}：{1}。",
+		"kr": "도심 -{0}: {1}."
+	},
+	{
+		"id": "-1000015017",
+		"key": "log_heart_level",
+		"en": "Dao heart: {0}.",
+		"ch": "道心：{0}。",
+		"tc": "道心：{0}。",
+		"kr": "도심: {0}."
+	},
+	{
+		"id": "-1000015018",
+		"key": "heart_src_betrayal",
+		"en": "a bond betrayed",
+		"ch": "背叛羁绊",
+		"tc": "背叛羈絆",
+		"kr": "인연을 배신함"
+	},
+	{
+		"id": "-1000015019",
+		"key": "heart_src_demon_win",
+		"en": "a heart demon beaten",
+		"ch": "战胜心魔",
+		"tc": "戰勝心魔",
+		"kr": "심마 극복"
+	},
+	{
+		"id": "-1000015020",
+		"key": "heart_src_demon_lose",
+		"en": "a heart demon lost to",
+		"ch": "败于心魔",
+		"tc": "敗於心魔",
+		"kr": "심마에 패배"
+	},
+	{
+		"id": "-1000015021",
+		"key": "heart_src_seclusion",
+		"en": "a seclusion",
+		"ch": "闭关",
+		"tc": "閉關",
+		"kr": "폐관"
+	},
+	{
+		"id": "-1000015022",
+		"key": "heart_src_break_ok",
+		"en": "a body breakthrough",
+		"ch": "炼体突破",
+		"tc": "煉體突破",
+		"kr": "연체 돌파"
+	},
+	{
+		"id": "-1000015023",
+		"key": "heart_src_break_fail",
+		"en": "a failed breakthrough",
+		"ch": "突破失败",
+		"tc": "突破失敗",
+		"kr": "돌파 실패"
+	},
+	{
+		"id": "-1000015024",
+		"key": "heart_src_promise_kept",
+		"en": "a promise kept",
+		"ch": "信守承诺",
+		"tc": "信守承諾",
+		"kr": "약속 이행"
+	},
+	{
+		"id": "-1000015025",
+		"key": "heart_src_promise_broken",
+		"en": "a promise broken",
+		"ch": "失信",
+		"tc": "失信",
+		"kr": "약속 파기"
+	},
+	{
+		"id": "-1000015026",
+		"key": "sense_button",
+		"en": "Spirit Sense",
+		"ch": "神识",
+		"tc": "神識",
+		"kr": "신식"
+	},
+	{
+		"id": "-1000015027",
+		"key": "sense_title",
+		"en": "Spirit Sense",
+		"ch": "神识",
+		"tc": "神識",
+		"kr": "신식"
+	},
+	{
+		"id": "-1000015028",
+		"key": "sense_npc",
+		"en": "Spirit sense: {0}",
+		"ch": "神识：{0}",
+		"tc": "神識：{0}",
+		"kr": "신식: {0}"
+	},
+	{
+		"id": "-1000015029",
+		"key": "sense_lvl_0",
+		"en": "Dormant",
+		"ch": "神识未开",
+		"tc": "神識未開",
+		"kr": "신식 미개"
+	},
+	{
+		"id": "-1000015030",
+		"key": "sense_lvl_1",
+		"en": "Spirit Perception",
+		"ch": "灵觉",
+		"tc": "靈覺",
+		"kr": "영각"
+	},
+	{
+		"id": "-1000015031",
+		"key": "sense_lvl_2",
+		"en": "Divine Thought",
+		"ch": "神念",
+		"tc": "神念",
+		"kr": "신념"
+	},
+	{
+		"id": "-1000015032",
+		"key": "sense_lvl_3",
+		"en": "Sense Beyond the Body",
+		"ch": "神识离体",
+		"tc": "神識離體",
+		"kr": "신식이체"
+	},
+	{
+		"id": "-1000015033",
+		"key": "sense_lvl_4",
+		"en": "Sense Domain",
+		"ch": "神域",
+		"tc": "神域",
+		"kr": "신역"
+	},
+	{
+		"id": "-1000015034",
+		"key": "sense_lvl_5",
+		"en": "Sense of Heaven",
+		"ch": "通天神识",
+		"tc": "通天神識",
+		"kr": "통천신식"
+	},
+	{
+		"id": "-1000015035",
+		"key": "sense_exp",
+		"en": "[icon:nianli] Spirit sense {0:#,##0} / {1:#,##0}",
+		"ch": "[icon:nianli] 神识 {0:#,##0} / {1:#,##0}",
+		"tc": "[icon:nianli] 神識 {0:#,##0} / {1:#,##0}",
+		"kr": "[icon:nianli] 신식 {0:#,##0} / {1:#,##0}"
+	},
+	{
+		"id": "-1000015036",
+		"key": "sense_exp_top",
+		"en": "[icon:nianli] Spirit sense {0:#,##0} (top level: more becomes essence)",
+		"ch": "[icon:nianli] 神识 {0:#,##0}（已至极境：余下化为精华）",
+		"tc": "[icon:nianli] 神識 {0:#,##0}（已至極境：餘下化為精華）",
+		"kr": "[icon:nianli] 신식 {0:#,##0} (최고 경지: 남는 것은 정화가 된다)"
+	},
+	{
+		"id": "-1000015037",
+		"key": "sense_essence",
+		"en": "[icon:daodian] Essence of the sense {0:#,##0} ({1} steps): [icon:nianli] max SP +{2} %",
+		"ch": "[icon:daodian] 神识精华 {0:#,##0}（{1}重）：[icon:nianli] 神识上限+{2}%",
+		"tc": "[icon:daodian] 神識精華 {0:#,##0}（{1}重）：[icon:nianli] 神識上限+{2}%",
+		"kr": "[icon:daodian] 신식 정화 {0:#,##0} ({1}단계): [icon:nianli] 최대 SP +{2}%"
+	},
+	{
+		"id": "-1000015038",
+		"key": "sense_effects",
+		"en": "[icon:nianli] Max SP +{0} %, [icon:lingli] max MP +{1} %; [icon:shanbiD] ambushes sensed {2:0} %, [icon:huxin] heart demons -{3:0} %, [icon:fanwei] scan {4} cells; [icon:hudun] ambushes avoided: {5}",
+		"ch": "[icon:nianli] 神识上限+{0}%，[icon:lingli] 真元上限+{1}%；[icon:shanbiD] 察觉伏击{2:0}%，[icon:huxin] 心魔-{3:0}%，[icon:fanwei] 探查{4}格；[icon:hudun] 已避开伏击：{5}",
+		"tc": "[icon:nianli] 神識上限+{0}%，[icon:lingli] 真元上限+{1}%；[icon:shanbiD] 察覺伏擊{2:0}%，[icon:huxin] 心魔-{3:0}%，[icon:fanwei] 探查{4}格；[icon:hudun] 已避開伏擊：{5}",
+		"kr": "[icon:nianli] 최대 SP +{0}%, [icon:lingli] 최대 MP +{1}%; [icon:shanbiD] 매복 감지 {2:0}%, [icon:huxin] 심마 -{3:0}%, [icon:fanwei] 탐지 {4}칸; [icon:hudun] 피한 매복: {5}"
+	},
+	{
+		"id": "-1000015039",
+		"key": "sense_scan_done",
+		"en": "You already scanned the surroundings this month.",
+		"ch": "本月已探查过四周。",
+		"tc": "本月已探查過四周。",
+		"kr": "이번 달에는 이미 주변을 탐지했다."
+	},
+	{
+		"id": "-1000015040",
+		"key": "sense_scan_button",
+		"en": "[icon:fanwei] Scan the surroundings ({0} cells, +{1} exp, once a month)",
+		"ch": "[icon:fanwei] 探查四周（{0}格，经验+{1}，每月一次）",
+		"tc": "[icon:fanwei] 探查四周（{0}格，經驗+{1}，每月一次）",
+		"kr": "[icon:fanwei] 주변 탐지 ({0}칸, 경험 +{1}, 매달 한 번)"
+	},
+	{
+		"id": "-1000015041",
+		"key": "sense_scan_result",
+		"en": "Your sense spreads out: {0} cultivators around, {1} hostile; the strongest is {2} (grade {3}). Herbs of the cells: {4:#,##0}, ores: {5:#,##0}.",
+		"ch": "神识铺开：周围修士{0}人，敌意者{1}人；最强者为{2}（境界{3}）。地块药材：{4:#,##0}，矿产：{5:#,##0}。",
+		"tc": "神識鋪開：周圍修士{0}人，敵意者{1}人；最強者為{2}（境界{3}）。地塊藥材：{4:#,##0}，礦產：{5:#,##0}。",
+		"kr": "신식이 퍼진다: 주변 수사 {0}명, 적의 {1}명; 가장 강한 자는 {2} (경지 {3}). 칸의 약초: {4:#,##0}, 광석: {5:#,##0}."
+	},
+	{
+		"id": "-1000015042",
+		"key": "sense_level_line",
+		"en": "{0}: {1:#,##0} - [icon:nianli] SP +{2} %, [icon:lingli] MP +{3} %, [icon:shanbiD] ambush sensed {4:0} %",
+		"ch": "{0}：{1:#,##0} - [icon:nianli] 神识+{2}%，[icon:lingli] 真元+{3}%，[icon:shanbiD] 察觉伏击{4:0}%",
+		"tc": "{0}：{1:#,##0} - [icon:nianli] 神識+{2}%，[icon:lingli] 真元+{3}%，[icon:shanbiD] 察覺伏擊{4:0}%",
+		"kr": "{0}: {1:#,##0} - [icon:nianli] SP +{2}%, [icon:lingli] MP +{3}%, [icon:shanbiD] 매복 감지 {4:0}%"
+	},
+	{
+		"id": "-1000015043",
+		"key": "sense_help",
+		"en": "Exp every month (by Talent), in seclusion, from heart demons beaten and from a scan once a month.",
+		"ch": "每月依悟性增长，闭关、战胜心魔与每月一次探查亦可增长。",
+		"tc": "每月依悟性增長，閉關、戰勝心魔與每月一次探查亦可增長。",
+		"kr": "매달 오성에 따라, 폐관, 심마 극복, 매달 한 번의 탐지로 성장한다."
+	},
+	{
+		"id": "-1000015044",
+		"key": "log_sense_level",
+		"en": "Spirit sense: {0}.",
+		"ch": "神识：{0}。",
+		"tc": "神識：{0}。",
+		"kr": "신식: {0}."
+	},
+	{
+		"id": "-1000015045",
+		"key": "log_sense_ambush",
+		"en": "Your spirit sense felt {0} coming: you slipped away.",
+		"ch": "神识察觉{0}来袭：你悄然避开。",
+		"tc": "神識察覺{0}來襲：你悄然避開。",
+		"kr": "신식이 {0}의 접근을 느꼈다: 몰래 피했다."
+	},
+	{
+		"id": "-1000015046",
+		"key": "sense_ambush",
+		"en": "At the edge of your spirit sense a killing intent stirs: {0}, a bounty hunter, lies in wait ahead. You turn aside before he sees you.",
+		"ch": "神识边缘杀意涌动：赏金猎人{0}埋伏在前方。你在他察觉之前悄然绕开。",
+		"tc": "神識邊緣殺意湧動：賞金獵人{0}埋伏在前方。你在他察覺之前悄然繞開。",
+		"kr": "신식 끝자락에서 살의가 일렁인다: 현상금 사냥꾼 {0}이(가) 앞에 매복해 있다. 그가 보기 전에 당신은 길을 돌린다."
+	},
+	{
+		"id": "-1000015047",
+		"key": "sense_scan_spot",
+		"en": "The nearest {0}: {1} cells to the {2}.",
+		"ch": "最近的{0}：在{2}方{1}格处。",
+		"tc": "最近的{0}：在{2}方{1}格處。",
+		"kr": "가장 가까운 {0}: {2}쪽으로 {1}칸."
+	},
+	{
+		"id": "-1000015048",
+		"key": "sense_dir_0",
+		"en": "north",
+		"ch": "北",
+		"tc": "北",
+		"kr": "북"
+	},
+	{
+		"id": "-1000015049",
+		"key": "sense_dir_1",
+		"en": "north-east",
+		"ch": "东北",
+		"tc": "東北",
+		"kr": "북동"
+	},
+	{
+		"id": "-1000015050",
+		"key": "sense_dir_2",
+		"en": "east",
+		"ch": "东",
+		"tc": "東",
+		"kr": "동"
+	},
+	{
+		"id": "-1000015051",
+		"key": "sense_dir_3",
+		"en": "south-east",
+		"ch": "东南",
+		"tc": "東南",
+		"kr": "남동"
+	},
+	{
+		"id": "-1000015052",
+		"key": "sense_dir_4",
+		"en": "south",
+		"ch": "南",
+		"tc": "南",
+		"kr": "남"
+	},
+	{
+		"id": "-1000015053",
+		"key": "sense_dir_5",
+		"en": "south-west",
+		"ch": "西南",
+		"tc": "西南",
+		"kr": "남서"
+	},
+	{
+		"id": "-1000015054",
+		"key": "sense_dir_6",
+		"en": "west",
+		"ch": "西",
+		"tc": "西",
+		"kr": "서"
+	},
+	{
+		"id": "-1000015055",
+		"key": "sense_dir_7",
+		"en": "north-west",
+		"ch": "西北",
+		"tc": "西北",
+		"kr": "북서"
+	},
+	{
+		"id": "-1000015056",
+		"key": "sense_scan_title",
+		"en": "Spirit Sense - Scan",
+		"ch": "神识探查",
+		"tc": "神識探查",
+		"kr": "신식 탐지"
+	},
+	{
+		"id": "-1000015057",
+		"key": "sense_scan_summary",
+		"en": "{0} cultivators around, {1} hostile · herbs of the cells {2:#,##0} · ores {3:#,##0}",
+		"ch": "周围修士{0}人，敌意{1}人 · 地块药材{2:#,##0} · 矿产{3:#,##0}",
+		"tc": "周圍修士{0}人，敵意{1}人 · 地塊藥材{2:#,##0} · 礦產{3:#,##0}",
+		"kr": "주변 수사 {0}명, 적의 {1}명 · 칸의 약초 {2:#,##0} · 광석 {3:#,##0}"
+	},
+	{
+		"id": "-1000015058",
+		"key": "sense_scan_people",
+		"en": "Cultivators around",
+		"ch": "周围修士",
+		"tc": "周圍修士",
+		"kr": "주변 수사"
+	},
+	{
+		"id": "-1000015059",
+		"key": "sense_scan_nobody",
+		"en": "Nobody in reach.",
+		"ch": "探查范围内无人。",
+		"tc": "探查範圍內無人。",
+		"kr": "탐지 범위에 아무도 없다."
+	},
+	{
+		"id": "-1000015060",
+		"key": "sense_scan_unit",
+		"en": "Grade {0} · {1}",
+		"ch": "境界{0} · {1}",
+		"tc": "境界{0} · {1}",
+		"kr": "경지 {0} · {1}"
+	},
+	{
+		"id": "-1000015061",
+		"key": "sense_scan_hostile",
+		"en": "hostile",
+		"ch": "敌意",
+		"tc": "敵意",
+		"kr": "적의"
+	},
+	{
+		"id": "-1000015062",
+		"key": "sense_scan_neutral",
+		"en": "calm",
+		"ch": "平和",
+		"tc": "平和",
+		"kr": "평온"
+	},
+	{
+		"id": "-1000015063",
+		"key": "sense_scan_more",
+		"en": "... and {0} more",
+		"ch": "……另有{0}人",
+		"tc": "……另有{0}人",
+		"kr": "... 그 외 {0}명"
+	},
+	{
+		"id": "-1000015064",
+		"key": "sense_scan_places",
+		"en": "Places",
+		"ch": "地点",
+		"tc": "地點",
+		"kr": "장소"
+	},
+	{
+		"id": "-1000015065",
+		"key": "sense_scan_noplace",
+		"en": "No place of note in reach.",
+		"ch": "探查范围内无特别地点。",
+		"tc": "探查範圍內無特別地點。",
+		"kr": "탐지 범위에 특별한 장소가 없다."
+	},
+	{
+		"id": "-1000015066",
+		"key": "sense_scan_place",
+		"en": "Area {0} · {1} cells to the {2}",
+		"ch": "{0}区 · {2}方{1}格",
+		"tc": "{0}區 · {2}方{1}格",
+		"kr": "{0}구역 · {2}쪽 {1}칸"
+	},
+	{
+		"id": "-1000015067",
+		"key": "sense_scan_place_far",
+		"en": "Area {0} · {1} cells to the {2} (out of reach: the nearest)",
+		"ch": "{0}区 · {2}方{1}格（范围外：最近者）",
+		"tc": "{0}區 · {2}方{1}格（範圍外：最近者）",
+		"kr": "{0}구역 · {2}쪽 {1}칸 (범위 밖: 가장 가까운 곳)"
+	},
+	{
+		"id": "-1000015068",
+		"key": "sense_scan_hint",
+		"en": "Click a name to see the cultivator.",
+		"ch": "点击名字查看该修士。",
+		"tc": "點擊名字查看該修士。",
+		"kr": "이름을 눌러 수사를 본다."
+	},
+	{
+		"id": "-1000015069",
+		"key": "heart_story",
+		"en": "a storyline",
+		"ch": "剧情",
+		"tc": "劇情",
+		"kr": "이야기"
+	},
+	{
+		"id": "-1000015070",
+		"key": "sense_story",
+		"en": "a storyline",
+		"ch": "剧情",
+		"tc": "劇情",
+		"kr": "이야기"
+	}
+]

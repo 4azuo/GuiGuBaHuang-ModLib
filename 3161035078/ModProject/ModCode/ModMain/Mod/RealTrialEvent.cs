@@ -5,7 +5,7 @@ using ModLib.Attributes;
 using ModLib.Enum;
 using ModLib.Mod;
 using ModLib.Helper;
-using static MOD_nE7UL2.Object.ModStts;
+using System;
 
 namespace MOD_nE7UL2.Mod
 {
@@ -16,7 +16,7 @@ namespace MOD_nE7UL2.Mod
     public class RealTrialEvent : ModEvent
     {
         public static RealTrialEvent Instance { get; set; }
-        public static _RealTrialConfigs RealTrialConfigs => ModMain.ModObj.ModSettings.RealTrialConfigs;
+        public static RealTrialConfig RealTrialConfigs => RealTrialConfig.Conf;
         public static bool IsInTrial => DungeonHelper.IsTrailOfLightning();
 
         /// <summary>
@@ -37,7 +37,8 @@ namespace MOD_nE7UL2.Mod
                         + g.world.playerUnit.GetGradeLvl() * RealTrialConfigs.PowerUpOnGradeLevel
                     )).ToIntClamp()
                     - (int)((long)def * basisThunder / 100);
-                data.attack.baseValue = baseDmg;
+                // merit weakens the lightning, karma strengthens it (MeritEvent)
+                data.attack.baseValue = (int)Math.Round(baseDmg * (double)MeritEvent.LightningRate(g.world.playerUnit));
             }
         }
 
@@ -48,7 +49,8 @@ namespace MOD_nE7UL2.Mod
         {
             base.OnBattleEndHandler(e);
 
-            if (IsInTrial && !ModBattleEvent.PlayerUnit.isDie)
+            // a body tribulation (BodyCulEvent) is a breakthrough, not the trial: no trial properties
+            if (IsInTrial && !ModBattleEvent.PlayerUnit.isDie && !BodyCulEvent.InTribulation && !BodyCulEvent.TribulationEnded)
             {
                 foreach (var p in UnitTypeEnum.Trial.PropIncRatio)
                 {

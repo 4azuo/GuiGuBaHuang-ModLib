@@ -708,5 +708,105 @@
 		"id": -1000001191,
 		"key": "smcfgs191",
 		"en|ch|tc|kr": "Tâm ma: quá khứ trở về trong giấc mơ; đối mặt với những gì các câu chuyện khác đã tạo nên ở bạn."
+	},
+	{
+		"id": "-1000001193",
+		"key": "smcfgs193",
+		"en|ch|tc|kr": "Chưa có công đức"
+	},
+	{
+		"id": "-1000001192",
+		"key": "smcfgs192",
+		"en|ch|tc|kr": "Không luyện thể"
+	},
+	{
+		"id": "-1000001194",
+		"key": "smcfgs194",
+		"en|ch|tc|kr": "Không nghệ đạo"
+	},
+	{
+		"id": "-1000001195",
+		"key": "smcfgs195",
+		"en|ch|tc|kr": "Không đạo tâm"
+	},
+	{
+		"id": "-1000001196",
+		"key": "smcfgs196",
+		"en|ch|tc|kr": "Không thần thức"
+	},
+	{
+		"id": "-1000001197",
+		"key": "smcfgs197",
+		"en|ch|tc|kr": "Các hướng tu luyện"
+	},
+	{
+		"id": "-1000001198",
+		"key": "smcfgs198",
+		"en|ch|tc|kr": "Nhà đất"
+	},
+	{
+		"id": "-1000001199",
+		"key": "smcfgs199",
+		"en|ch|tc|kr": "Exp luyện thể"
+	},
+	{
+		"id": "-1000001200",
+		"key": "smcfgs200",
+		"en|ch|tc|kr": "Công đức nhận được"
+	},
+	{
+		"id": "-1000001201",
+		"key": "smcfgs201",
+		"en|ch|tc|kr": "Exp nghệ đạo"
+	},
+	{
+		"id": "-1000001202",
+		"key": "smcfgs202",
+		"en|ch|tc|kr": "Đạo tâm nhận được"
+	},
+	{
+		"id": "-1000001203",
+		"key": "smcfgs203",
+		"en|ch|tc|kr": "Exp thần thức"
+	},
+	{
+		"id": "-1000001204",
+		"key": "smcfgs204",
+		"en|ch|tc|kr": "Tắt nhà đất (không mua đất)"
+	},
+	{
+		"id": "-1000001205",
+		"key": "smcfgs205",
+		"en|ch|tc|kr": "NPC không mua nhà"
+	},
+	{
+		"id": "-1000001206",
+		"key": "smcfgs206",
+		"en|ch|tc|kr": "Giá nhà và đất"
+	},
+	{
+		"id": "-1000001207",
+		"key": "smcfgs207",
+		"en|ch|tc|kr": "Thuế nhà"
+	},
+	{
+		"id": "-1000001208",
+		"key": "smcfgs208",
+		"en|ch|tc|kr": "Lò rèn của Lão Thiết: lão thợ rèn bị bỏng tay; thi thay ông, mang quặng từ mạch khoáng về, giữ lửa lò rèn (nghệ đạo)."
+	},
+	{
+		"id": "-1000001209",
+		"key": "smcfgs209",
+		"en|ch|tc|kr": "Ngôi nhà trên phố cũ: căn hầm dưới nhà bạn, hàng xóm trên phố, và cách bạn đối xử với họ (nhà đất)."
+	},
+	{
+		"id": "-1000001210",
+		"key": "smcfgs210",
+		"en|ch|tc|kr": "Tro tàn thành cũ: một đứa trẻ sống sót sau khi thành bị đồ sát, lớn lên truy hỏi ai đã gây ra (công đức và nghiệp lực)."
+	},
+	{
+		"id": "-1000001211",
+		"key": "smcfgs211",
+		"en|ch|tc|kr": "Nhịp tim trong đá: thần thức tìm thấy một luyện thể sư nửa thân hóa đá vì thể kiếp (thần thức, luyện thể)."
 	}
 ]

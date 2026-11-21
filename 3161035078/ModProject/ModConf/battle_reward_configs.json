@@ -1,0 +1,9 @@
+{
+	"__name": "Battle exp rewards (BattleRewardEventV2)",
+	"__help": [
+		"A value left out (or a broken file): the default of the mod.",
+		"Cultivation exp after a battle = damage dealt x ExpPerDmgDealt + damage received x ExpPerDmgRecv (each at least 1)."
+	],
+	"ExpPerDmgDealt": 0.001,
+	"ExpPerDmgRecv": 0.01
+}

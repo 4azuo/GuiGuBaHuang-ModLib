@@ -347,4 +347,52 @@ namespace MOD_nE7UL2.AutoTest.Scenarios.Story
             new[] { "L_ClearHeart", "L_Scarred", "L_Embraced" }, null, (c, s) =>
                 c.Assert(!string.IsNullOrEmpty(LineL_HeartDemon.Dreams()), $"dreams of the other lines: {LineL_HeartDemon.Dreams()}"));
     }
+
+    // ---- the lines of 6.0 (the new cultivation paths and the estates)
+
+    public class TS13_OldTieForge : IScenarioDefinition
+    {
+        public string Id => "TS-13";
+        public Scenario Create() => StoryDriver.Build(Id, "M", "Story M Old Tie's Forge: the burned hand, the ore of the vein, the apprentice, the guild, the last blade", c => StoryDriver.GoToTown(), null,
+            new[] { "M_Masterwork", "M_Heir", "M_Secret" }, null, (c, s) =>
+                c.Assert(!ArtisanEvent.Enabled || ArtisanEvent.Rank(Player, ArtisanEvent.Craft.Forge) >= 1, $"the player learned the forge (rank {ArtisanEvent.Rank(Player, ArtisanEvent.Craft.Forge)})"));
+    }
+
+    public class TS14_HouseSeven : IScenarioDefinition
+    {
+        public string Id => "TS-14";
+        // the player needs a house: one is bought in the town of the test (released after)
+        public Scenario Create() => StoryDriver.Build(Id, "N", "Story N House on the Old Street: the cellar, the bandits, the notes, the attack, the street's verdict", c =>
+            {
+                StoryDriver.GoToTown();
+                var town = Player.GetMapBuild<MapBuildTown>();
+                if (town != null && !EstateEvent.HasHouse(town, Player))
+                {
+                    // a free plot, else a mortal house (a town grown for years has no free plot): lent, given back after
+                    var plots = EstateEvent.Get(town)?.Plots;
+                    var p = plots?.FirstOrDefault(x => x.Level <= 0 && x.OwnerId == null && x.MainIndex == null) ?? plots?.FirstOrDefault(EstateEvent.IsMortalHome);
+                    if (p != null) { c.Bag["ts14_level"] = p.Level; p.OwnerId = Player.GetUnitId(); p.Level = System.Math.Max(1, p.Level); c.Bag["ts14_plot"] = p; }
+                }
+                c.Assert(LineN_HouseSeven.HouseTown() != null, $"a house of the player ({LineN_HouseSeven.HouseTown()?.name})");
+            }, null,
+            new[] { "N_Home", "N_Manor", "N_Empty" }, null, (c, s) =>
+            {
+                if (c.Bag.TryGetValue("ts14_plot", out var o)) { var p = (EstateEvent.Plot)o; p.OwnerId = null; p.Level = (int)c.Bag["ts14_level"]; }
+            });
+    }
+
+    public class TS15_AshesOfTown : IScenarioDefinition
+    {
+        public string Id => "TS-15";
+        public Scenario Create() => StoryDriver.Build(Id, "O", "Story O Ashes of the Town: the child in the ashes, the question, the training, the new town", null, null,
+            new[] { "O_Atonement", "O_Ashes", "O_Rebuilt" });
+    }
+
+    public class TS16_SenseVoice : IScenarioDefinition
+    {
+        public string Id => "TS-16";
+        public Scenario Create() => StoryDriver.Build(Id, "P", "Story P Heartbeat in the Stone: the sense finds him, the stone man, the body, his tribulation", c => StoryDriver.LeaveTown(), null,
+            new[] { "P_Brothers", "P_Alone", "P_Devourer" }, null, (c, s) =>
+                c.Assert(!BodyCulEvent.Enabled || BodyCulEvent.GetLevel(Player) >= 1, $"the player refines the body (level {BodyCulEvent.GetLevel(Player)})"));
+    }
 }

@@ -1,4 +1,5 @@
-﻿using System.Linq;
+﻿using MOD_nE7UL2.Helper;
+using System.Linq;
 using EGameTypeData;
 using MOD_nE7UL2.Const;
 using ModLib.Mod;
@@ -9,7 +10,6 @@ using ModLib.Const;
 using MOD_nE7UL2.Object;
 using System;
 using ModLib.Enum;
-using static MOD_nE7UL2.Object.ModStts;
 using MOD_nE7UL2.Enum;
 using ModLib.Helper;
 using ModLib.Attributes;
@@ -48,7 +48,7 @@ namespace MOD_nE7UL2.Mod
         public Dictionary<string, int> BoughtItems { get; set; } = new Dictionary<string, int>();
 
         //configs
-        public static _MarketItemConfigs Configs => ModMain.ModObj.ModSettings.MarketItemConfigs;
+        public static MarketItemConfig Configs => MarketItemConfig.Conf;
 
         /// <summary>
         /// True while one of the market windows is open.
@@ -715,7 +715,7 @@ namespace MOD_nE7UL2.Mod
                             // the town of the market open now (the cover could hold the UI object of an earlier opening)
                             var town = g.ui.GetUI<UITownMarket>(UIType.TownMarket)?.town ?? ui.UI.town;
                             var vipPrice = VIPCost(town.gridData.areaBaseID);
-                            g.ui.MsgBox(GameTool.LS("other500020040"), string.Format(GameTool.LS("other500020086"), vipPrice), ModLib.Enum.MsgBoxButtonEnum.YesNo, () =>
+                            InfoDialog.Msg(GameTool.LS("other500020040"), string.Format(GameTool.LS("other500020086"), vipPrice), ModLib.Enum.MsgBoxButtonEnum.YesNo, () =>
                             {
                                 if (g.world.playerUnit.GetUnitMoney() >= vipPrice)
                                 {
@@ -726,7 +726,7 @@ namespace MOD_nE7UL2.Mod
                                 }
                                 else
                                 {
-                                    g.ui.MsgBox(GameTool.LS("other500020040"), GameTool.LS("other500020087"));
+                                    InfoDialog.Msg(GameTool.LS("other500020040"), GameTool.LS("other500020087"));
                                 }
                             });
                         }, GameTool.LS("other500020085")).Size(200, 40);
@@ -977,7 +977,7 @@ namespace MOD_nE7UL2.Mod
         {
             if (seller == null || selectedProp == null || selectedMarketItem == null)
             {
-                g.ui.MsgBox(GameTool.LS("other500020067"), GameTool.LS("other500020084"));
+                InfoDialog.Msg(GameTool.LS("other500020067"), GameTool.LS("other500020084"));
                 return;
             }
             var curPrice = GetNegotiatingPrice(selectedMarketItem, g.world.playerUnit);
@@ -993,7 +993,7 @@ namespace MOD_nE7UL2.Mod
         {
             if (seller == null || selectedProp == null || selectedMarketItem == null)
             {
-                g.ui.MsgBox(GameTool.LS("other500020067"), GameTool.LS("other500020084"));
+                InfoDialog.Msg(GameTool.LS("other500020067"), GameTool.LS("other500020084"));
                 return;
             }
             var curPrice = GetNegotiatingPrice(selectedMarketItem, g.world.playerUnit);
@@ -1020,7 +1020,7 @@ namespace MOD_nE7UL2.Mod
         {
             if (seller == null || selectedProp == null || selectedMarketItem == null)
             {
-                g.ui.MsgBox(GameTool.LS("other500020067"), GameTool.LS("other500020084"));
+                InfoDialog.Msg(GameTool.LS("other500020067"), GameTool.LS("other500020084"));
                 return;
             }
             g.ui.CloseUI(UIType.PropSelect);
@@ -1095,7 +1095,7 @@ namespace MOD_nE7UL2.Mod
         {
             if (seller == null || selectedProp == null || selectedMarketItem == null)
             {
-                g.ui.MsgBox(GameTool.LS("other500020067"), GameTool.LS("other500020084"));
+                InfoDialog.Msg(GameTool.LS("other500020067"), GameTool.LS("other500020084"));
                 return;
             }
 
@@ -1115,7 +1115,7 @@ namespace MOD_nE7UL2.Mod
         {
             if (seller == null || selectedProp == null || selectedMarketItem == null)
             {
-                g.ui.MsgBox(GameTool.LS("other500020067"), GameTool.LS("other500020084"));
+                InfoDialog.Msg(GameTool.LS("other500020067"), GameTool.LS("other500020084"));
                 return;
             }
             if (selectedMarketItem.SellerPrice <= MIN_PRICE)
@@ -1130,7 +1130,7 @@ namespace MOD_nE7UL2.Mod
         {
             if (seller == null || selectedProp == null || selectedMarketItem == null)
             {
-                g.ui.MsgBox(GameTool.LS("other500020067"), GameTool.LS("other500020084"));
+                InfoDialog.Msg(GameTool.LS("other500020067"), GameTool.LS("other500020084"));
                 return;
             }
             if (selectedMarketItem.SellerPrice >= MAX_PRICE)
@@ -1145,7 +1145,7 @@ namespace MOD_nE7UL2.Mod
         {
             if (seller == null || selectedProp == null || selectedMarketItem == null)
             {
-                g.ui.MsgBox(GameTool.LS("other500020067"), GameTool.LS("other500020084"));
+                InfoDialog.Msg(GameTool.LS("other500020067"), GameTool.LS("other500020084"));
                 return;
             }
 
@@ -1167,7 +1167,7 @@ namespace MOD_nE7UL2.Mod
         {
             if (seller == null || selectedProp == null || selectedMarketItem == null)
             {
-                g.ui.MsgBox(GameTool.LS("other500020092"), GameTool.LS("other500020084"));
+                InfoDialog.Msg(GameTool.LS("other500020092"), GameTool.LS("other500020084"));
                 return;
             }
 
@@ -1175,7 +1175,7 @@ namespace MOD_nE7UL2.Mod
             var deals = selectedMarketItem.Deals;
             if (deals == null || deals.Count == 0)
             {
-                g.ui.MsgBox(GameTool.LS("other500020092"), GameTool.LS("other500020109"));
+                InfoDialog.Msg(GameTool.LS("other500020092"), GameTool.LS("other500020109"));
                 return;
             }
 
@@ -1188,7 +1188,7 @@ namespace MOD_nE7UL2.Mod
 
             if (buyers.Count == 0)
             {
-                g.ui.MsgBox(GameTool.LS("other500020092"), GameTool.LS("other500020110"));
+                InfoDialog.Msg(GameTool.LS("other500020092"), GameTool.LS("other500020110"));
                 return;
             }
 
@@ -1368,21 +1368,21 @@ namespace MOD_nE7UL2.Mod
             {
                 if (selectedProp == null)
                 {
-                    g.ui.MsgBox(GameTool.LS("other500020102"), GameTool.LS("other500020098")); // "Error", "Please select an item"
+                    InfoDialog.Msg(GameTool.LS("other500020102"), GameTool.LS("other500020098")); // "Error", "Please select an item"
                     return;
                 }
 
                 var town = seller.GetMapBuild<MapBuildTown>();
                 if (town == null)
                 {
-                    g.ui.MsgBox(GameTool.LS("other500020102"), GameTool.LS("other500020101")); // "Error", "You must be in a town to sell items"
+                    InfoDialog.Msg(GameTool.LS("other500020102"), GameTool.LS("other500020101")); // "Error", "You must be in a town to sell items"
                     return;
                 }
 
                 var sellingItem = GetMarketItem(g.world.playerUnit, selectedProp);
                 if (sellingItem != null)
                 {
-                    g.ui.MsgBox(GameTool.LS("other500020102"), string.Format(GameTool.LS("other500020112"), sellingItem.Town.name)); // "Error", "You are selling this item at {0}!"
+                    InfoDialog.Msg(GameTool.LS("other500020102"), string.Format(GameTool.LS("other500020112"), sellingItem.Town.name)); // "Error", "You are selling this item at {0}!"
                     return;
                 }
 
@@ -1393,13 +1393,13 @@ namespace MOD_nE7UL2.Mod
                 // Validate
                 if (!currentCount.IsBetween(1, Math.Max(selectedProp.propsCount, 1)))
                 {
-                    g.ui.MsgBox(GameTool.LS("other500020102"), GameTool.LS("other500020099")); // "Error", "Invalid quantity"
+                    InfoDialog.Msg(GameTool.LS("other500020102"), GameTool.LS("other500020099")); // "Error", "Invalid quantity"
                     return;
                 }
 
                 if (!currentPrice.IsBetween(MIN_PRICE, MAX_PRICE))
                 {
-                    g.ui.MsgBox(GameTool.LS("other500020102"), GameTool.LS("other500020100")); // "Error", "Invalid price"
+                    InfoDialog.Msg(GameTool.LS("other500020102"), GameTool.LS("other500020100")); // "Error", "Invalid price"
                     return;
                 }
 
@@ -1411,7 +1411,7 @@ namespace MOD_nE7UL2.Mod
 
                     if (seller.GetUnitMoney() < hiddenFee)
                     {
-                        g.ui.MsgBox(GameTool.LS("other500020100"), GameTool.LS("other500020104")); // "Error", "Not enough money for anonymous fee"
+                        InfoDialog.Msg(GameTool.LS("other500020100"), GameTool.LS("other500020104")); // "Error", "Not enough money for anonymous fee"
                         return;
                     }
                 }
@@ -1441,7 +1441,7 @@ namespace MOD_nE7UL2.Mod
                     // Trừ phí ẩn danh
                     seller.AddUnitMoney(-hiddenFee);
                     MapBuildPropertyEvent.AddBuildProperty(town, hiddenFee);
-                    g.ui.MsgBox(GameTool.LS("other500020105"), // "Success"
+                    InfoDialog.Msg(GameTool.LS("other500020105"), // "Success"
                         string.Format(GameTool.LS("other500020106"), // "Registered anonymous sale: {0} x{1} for {2} (fee: {3})"
                             selectedProp.propsInfoBase.name,
                             currentCount,
@@ -1450,7 +1450,7 @@ namespace MOD_nE7UL2.Mod
                 }
                 else
                 {
-                    g.ui.MsgBox(GameTool.LS("other500020105"), // "Success"
+                    InfoDialog.Msg(GameTool.LS("other500020105"), // "Success"
                         string.Format(GameTool.LS("other500020103"), // "Registered sale: {0} x{1} for {2}"
                             selectedProp.propsInfoBase.name,
                             currentCount,
