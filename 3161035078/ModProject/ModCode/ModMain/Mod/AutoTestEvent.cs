@@ -89,20 +89,47 @@ namespace MOD_nE7UL2.Mod
             return Path.Combine(CacheHelper.GetCacheFolderName(modId), Slot > 1 ? $"autotest-slot{Slot}" : "autotest");
         }
 
-        /// <summary>Loads the runner only when a request file exists.</summary>
+        /// <summary>A request whose script no longer runs is moved to this file (kept for a look, never read).</summary>
+        public const string STALE_REQUEST_FILE = "request.stale.json";
+
+        /// <summary>Loads the runner only when a request file of a running run-autotest.ps1 exists.</summary>
         public override bool OnCacheHandler()
         {
-            return File.Exists(Path.Combine(GetAutoTestFolder(ModId), REQUEST_FILE));
+            return ReadActiveRequest(GetAutoTestFolder(ModId)) != null;
+        }
+
+        /// <summary>
+        /// The request of <paramref name="folder"/>, null when there is none, it cannot be read (being written) or the
+        /// run-autotest.ps1 that wrote it no longer runs (AutoTestRequest.OwnerPid): such a stale request is moved to
+        /// request.stale.json, so a game started normally later plays without the runner.
+        /// </summary>
+        public static AutoTestRequest ReadActiveRequest(string folder)
+        {
+            var file = Path.Combine(folder, REQUEST_FILE);
+            if (!File.Exists(file)) return null;
+            AutoTestRequest request;
+            try { request = JsonConvert.DeserializeObject<AutoTestRequest>(File.ReadAllText(file)); }
+            catch { return null; }
+            if (request == null) return null;
+            if (request.IsOwnerAlive()) return request;
+            try
+            {
+                var stale = Path.Combine(folder, STALE_REQUEST_FILE);
+                if (File.Exists(stale)) File.Delete(stale);
+                File.Move(file, stale);
+                DebugHelper.WriteLine($"AutoTestEvent: request {request.RunId} ignored, its run-autotest.ps1 (pid {request.OwnerPid}) does not run any more: moved to {STALE_REQUEST_FILE}");
+            }
+            catch (Exception ex) { DebugHelper.WriteIgnoredError("AutoTestEvent stale request", ex); }
+            return null;
         }
 
         /// <summary>Reads the request and prepares the output folder.</summary>
         public override void OnLoadClass(bool isNew, string modId, CacheAttribute attr)
         {
             base.OnLoadClass(isNew, modId, attr);
-            var requestFile = Path.Combine(GetAutoTestFolder(modId), REQUEST_FILE);
-            if (!File.Exists(requestFile))
+            _request = ReadActiveRequest(GetAutoTestFolder(modId));
+            if (_request == null)
                 return;
-            _request = JsonConvert.DeserializeObject<AutoTestRequest>(File.ReadAllText(requestFile));
             Scenarios_NewCharacter(_request.NewCharacter);
             if (string.IsNullOrEmpty(_request.OutDir))
                 _request.OutDir = Path.Combine(GetAutoTestFolder(modId), _request.RunId ?? DateTime.Now.ToString("yyyyMMdd-HHmmss"));

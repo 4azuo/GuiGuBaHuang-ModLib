@@ -159,11 +159,8 @@ namespace MOD_nE7UL2.Mod
         {
             if ((DateTime.Now - _lastRequestCheck).TotalMilliseconds < 1000) return;
             _lastRequestCheck = DateTime.Now;
-            var file = Path.Combine(GetAutoTestFolder(ModId), REQUEST_FILE);
-            if (!File.Exists(file)) return;
-            AutoTestRequest next;
-            try { next = JsonConvert.DeserializeObject<AutoTestRequest>(File.ReadAllText(file)); }
-            catch { return; }   // being written
+            // null: none, being written, or its run-autotest.ps1 no longer runs (moved to request.stale.json)
+            var next = ReadActiveRequest(GetAutoTestFolder(ModId));
             if (next == null || string.IsNullOrEmpty(next.RunId) || next.RunId == _request.RunId) return;
             if (!GameHelper.IsInGame())
             {

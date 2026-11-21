@@ -353,6 +353,10 @@ else {
         WatchBattles = [bool]$WatchBattles
         Promo        = [bool]$Promo
         KeepAlive    = [bool]($KeepAlive -or $Attach)
+        # the game runs the request only while this script runs: killed or closed with its terminal, the finally below
+        # never removes request.json, and the game (AutoTestEvent.ReadActiveRequest) then ignores it
+        OwnerPid     = $PID
+        OwnerStart   = (Get-Process -Id $PID).StartTime.ToString('o')
     }
     $utf8 = New-Object Text.UTF8Encoding($false)
     Write-Json2File $requestFile $request

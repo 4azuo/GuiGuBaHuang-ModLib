@@ -54,6 +54,48 @@ namespace MOD_nE7UL2.AutoTest
         /// and its own Scenario.Precondition.
         /// </summary>
         public bool KeepAlive { get; set; } = false;
+        /// <summary>
+        /// Process id of the run-autotest.ps1 that wrote the request (0: none, a request of an older script). The request
+        /// counts only while that process runs: a script killed or closed with its terminal never removes request.json
+        /// (its finally does not run), and a game started normally afterwards must not run the tests.
+        /// </summary>
+        public int OwnerPid { get; set; }
+        /// <summary>Start time of the OwnerPid process (a reused process id is another process); null: not checked.</summary>
+        public DateTime? OwnerStart { get; set; }
+
+        /// <summary>Largest difference between OwnerStart and the start time of the running process.</summary>
+        public const double OWNER_START_TOLERANCE_SEC = 2;
+
+        /// <summary>True while the run-autotest.ps1 that wrote the request still runs.</summary>
+        public bool IsOwnerAlive() => IsOwnerAlive(OwnerPid, OwnerStart, GetProcessStart);
+
+        /// <summary>
+        /// Owner check without the process list: <paramref name="processStart"/> returns the start time of a running
+        /// process, null when no process has that id, DateTime.MinValue when it runs but its start time cannot be read.
+        /// </summary>
+        public static bool IsOwnerAlive(int pid, DateTime? start, Func<int, DateTime?> processStart)
+        {
+            if (pid <= 0) return false;
+            DateTime? actual;
+            try { actual = processStart(pid); }
+            catch { return false; }
+            if (actual == null) return false;
+            if (start == null || actual.Value == DateTime.MinValue) return true;
+            return Math.Abs((actual.Value.ToUniversalTime() - start.Value.ToUniversalTime()).TotalSeconds) <= OWNER_START_TOLERANCE_SEC;
+        }
+
+        private static DateTime? GetProcessStart(int pid)
+        {
+            System.Diagnostics.Process p;
+            try { p = System.Diagnostics.Process.GetProcessById(pid); }
+            catch (ArgumentException) { return null; }   // no process with this id
+            using (p)
+            {
+                try { if (p.HasExited) return null; } catch { }
+                try { return p.StartTime; }
+                catch { return DateTime.MinValue; }
+            }
+        }
     }
 
     /// <summary>Execution kind of a scenario.</summary>

@@ -7,7 +7,7 @@ The scenarios of [03-Test-Scenarios](03-Test-Scenarios.md) run **inside the real
 | Piece | Location | Role |
 |---|---|---|
 | Orchestrator | `scripts/game/run-autotest.ps1` | Writes the request, starts the game (`run-game.ps1`), shows progress, collects evidence, writes the report and the OK/NG status |
-| In-game runner | `ModMain/Mod/AutoTestEvent.cs` | Loaded **only** while `<game data>\mod\nE7UL2\autotest\request.json` exists. State machine: title scenarios -> load save -> game scenarios -> battle watch -> done |
+| In-game runner | `ModMain/Mod/AutoTestEvent.cs` | Loaded **only** while `<game data>\mod\nE7UL2\autotest\request.json` exists **and** the `run-autotest.ps1` that wrote it still runs (`OwnerPid` + `OwnerStart` of the request): a request left by a killed script (closed terminal: its `finally` never removes the file) is moved to `request.stale.json` and the game plays normally. State machine: title scenarios -> load save -> game scenarios -> battle watch -> done |
 | Framework | `ModMain/AutoTest/AutoTestContext.cs`, `AutoTestHelper.cs`, `AutoTestScenarios.cs` | Request/result models, `Assert/AssertEqual/AssertBetween/Info/Skip/Snap`, registry that finds every scenario class by reflection |
 | Scenarios | `ModMain/AutoTest/Scenarios/<Group>/<Id>_<Feature>.cs` | One class (`IScenarioDefinition`) per scenario id. Groups: Title, Core, Economy, Unit, BattleRule, Progression, UI, Battle |
 | Definitions | `3161035078/tests/scenarios.json` | All ids (auto, watch) with description/preconditions/steps/expected; there are no manual scenarios any more (every former `TM-nn` id is covered by an automatic one, see `replaces`) |

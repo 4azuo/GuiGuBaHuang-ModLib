@@ -2,13 +2,14 @@
 
 `3161035078/ModProject/ModCode/ModMain/Mod/AutoTestEvent.cs` - cache key `ModConst.AUTOTEST_EVENT` (Global cache, works everywhere) - group: Core (tests)
 
-The in-game test runner driven by `scripts/game/run-autotest.ps1`. It is **never loaded for players**: `OnCacheHandler` loads it only when `<mod cache>\autotest\request.json` exists (slot N: `autotest-slotN\`). The full guide (requests, scenarios, evidence, slots, viewers) is [04-Autotest](../04-Autotest.md); the scenarios are in `ModMain/AutoTest/Scenarios/` and listed in [03-Test-Scenarios](../03-Test-Scenarios.md).
+The in-game test runner driven by `scripts/game/run-autotest.ps1`. It is **never loaded for players**: `OnCacheHandler` loads it only when `<mod cache>\autotest\request.json` exists (slot N: `autotest-slotN\`) and the `run-autotest.ps1` that wrote it still runs (`ReadActiveRequest`: `OwnerPid` / `OwnerStart`; a stale request is moved to `request.stale.json`, also when a game waiting in its save reads the next one). The full guide (requests, scenarios, evidence, slots, viewers) is [04-Autotest](../04-Autotest.md); the scenarios are in `ModMain/AutoTest/Scenarios/` and listed in [03-Test-Scenarios](../03-Test-Scenarios.md).
 
 ## Files
 
 | File | Meaning |
 |---|---|
-| `request.json` | `AutoTestRequest`: RunId, Save, AutoLoad, Scenarios (empty = all), NewCharacter, OutDir, window size... |
+| `request.json` | `AutoTestRequest`: RunId, Save, AutoLoad, Scenarios (empty = all), NewCharacter, OutDir, window size, OwnerPid / OwnerStart (the writing script)... |
+| `request.stale.json` | a request whose script no longer ran when the game read it (never read again) |
 | `stop.flag` | asks the runner to stop |
 | `results.json` | results written to `OutDir` (with `screens\`, `event-trace.log`) |
 
