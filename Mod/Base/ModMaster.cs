@@ -483,6 +483,9 @@ namespace ModLib.Mod
         /// <summary>
         /// Invokes a ModMaster method by name via reflection, casting the Il2Cpp event data to T; logs duration and errors.
         /// </summary>
+        private readonly System.Collections.Generic.Dictionary<string, (MethodInfo method, int paramCount, string trace)> callEventsMethods =
+            new System.Collections.Generic.Dictionary<string, (MethodInfo method, int paramCount, string trace)>();
+
         private void CallEvents(string methodName)
         {
             CallEvents<Il2CppObjectBase>(methodName, null);
@@ -495,27 +498,34 @@ namespace ModLib.Mod
         {
             try
             {
-                if (ModLibConfigs.DebugMode >= Enum.DebugModeEnum.Fine)
+                var fine = ModLibConfigs.DebugMode >= Enum.DebugModeEnum.Fine;
+                if (fine)
                     DebugHelper.WriteLine($"【Start】CallEvents<{typeof(T).Name}>({methodName})");
-                var timeStart = DateTime.Now;
-                var method = this.GetType().GetMethod(methodName, BindingFlags.Public | BindingFlags.Instance | BindingFlags.FlattenHierarchy);
-                var trace = Helper.EventTraceHelper.Enter($"game:{methodName}");
+                var timeStart = fine ? Stopwatch.GetTimestamp() : 0L;
+                // found once per name (the timers call this every 10 ms)
+                if (!callEventsMethods.TryGetValue(methodName, out var m))
+                {
+                    var mi = this.GetType().GetMethod(methodName, BindingFlags.Public | BindingFlags.Instance | BindingFlags.FlattenHierarchy);
+                    callEventsMethods[methodName] = m = (mi, mi.GetParameters().Length, $"game:{methodName}");
+                }
+                var trace = Helper.EventTraceHelper.Enter(m.trace);
                 try
                 {
-                    if (method.GetParameters().Length == 0)
+                    if (m.paramCount == 0)
                     {
-                        method.Invoke(this, null);
+                        m.method.Invoke(this, null);
                     }
                     else
                     {
-                        method.Invoke(this, new object[] { e?.TryCast<T>()/* ?? e*/ });
+                        m.method.Invoke(this, new object[] { e?.TryCast<T>()/* ?? e*/ });
                     }
                 }
                 finally { Helper.EventTraceHelper.Exit(trace); }
-                var timeEnd = DateTime.Now;
-                var processTime = timeEnd - timeStart;
                 if (ModLibConfigs.DebugMode >= Enum.DebugModeEnum.Finest)
+                {
+                    var processTime = TimeSpan.FromSeconds((double)(Stopwatch.GetTimestamp() - timeStart) / Stopwatch.Frequency);
                     DebugHelper.WriteLine($"【{processTime.ToString(@"ss\.ff")}】CallEvents<{typeof(T).Name}>({methodName})");
+                }
             }
             catch (Exception ex)
             {
