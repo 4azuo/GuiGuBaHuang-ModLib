@@ -33,7 +33,9 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
-    <DocumentationFile>C:\git\GuiGuBaHuang-ModLib\GuiGuBaHuang-ModCreator\ModCreator\Resources\ModLib.xml</DocumentationFile>
+    <DocumentationFile>bin\Release\ModLib.xml</DocumentationFile>
+    <!-- as the submodule of GuiGuBaHuang-Taoist: the IntelliSense docs of the ModCreator tool (sibling submodule) -->
+    <DocumentationFile Condition="Exists('$(MSBuildProjectDirectory)\..\GuiGuBaHuang-ModCreator\ModCreator\Resources')">$(MSBuildProjectDirectory)\..\GuiGuBaHuang-ModCreator\ModCreator\Resources\ModLib.xml</DocumentationFile>
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="Attribute\EventCatIgnAttribute.cs" />
@@ -206,10 +208,6 @@
       <HintPath>C:\Program Files (x86)\Steam\steamapps\common\鬼谷八荒\MelonLoader\Managed\Boo.Lang.Useful.dll</HintPath>
       <Private>False</Private>
     </Reference>
-    <Reference Include="com.unity.multiplayer-hlapi.Runtime">
-      <HintPath>dll\com.unity.multiplayer-hlapi.Runtime.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
     <Reference Include="Commons.Xml.Relaxng">
       <HintPath>C:\Program Files (x86)\Steam\steamapps\common\鬼谷八荒\MelonLoader\Managed\Commons.Xml.Relaxng.dll</HintPath>
       <Private>False</Private>
@@ -356,7 +354,7 @@
     <Reference Include="netstandard" />
     <Reference Include="Newtonsoft.Json, Version=13.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\CodeArtifacts\Newtonsoft.Json.dll</HintPath>
+      <HintPath>lib\Newtonsoft.Json.dll</HintPath>
     </Reference>
     <Reference Include="Novell.Directory.Ldap">
       <HintPath>C:\Program Files (x86)\Steam\steamapps\common\鬼谷八荒\MelonLoader\Managed\Novell.Directory.Ldap.dll</HintPath>
@@ -791,7 +789,4 @@
     <None Include="app.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
-  <PropertyGroup>
-    <PostBuildEvent>xcopy "$(ProjectDir)\bin\Release\*.dll" "$(ProjectDir)\..\ModMain\bin\Release\" /y</PostBuildEvent>
-  </PropertyGroup>
 </Project>
