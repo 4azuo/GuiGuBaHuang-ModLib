@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Effect Viewer</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="top">
+    <div class="brand">
+      <span class="logo">&#10022;</span>
+      <div>
+        <div class="title">Effect Viewer</div>
+        <div class="sub" id="generated"></div>
+      </div>
+    </div>
+    <nav class="tabs" id="tabs"></nav>
+    <nav class="viewers" aria-label="Viewers"><a href="../../test-viewer/index.html" title="Results of the autotest and the unit tests">Tests</a><a class="on" aria-current="page" href="index.html" title="Effects recorded by the galleries (TE-xx)">Effects</a><a href="../../promo-viewer/index.html" title="Steam Workshop pictures, promotion takes, marketing videos">Promo</a><a href="../docs/GameAssets/index.html" title="Pictures extracted from the game: text icons, drama backgrounds, item icons, buildings">Assets</a></nav>
+  </header>
+
+  <section class="filters">
+    <input id="q" type="search" placeholder="Search name, note, tags, scripts...">
+    <select id="fElement"><option value="">Element: all</option></select>
+    <select id="fUsage"><option value="">Usage: all</option></select>
+    <select id="fMotion"><option value="">Motion: all</option></select>
+    <select id="fColor"><option value="">Colour: all</option></select>
+    <select id="fLoop">
+      <option value="">Loop: all</option><option value="1">Looping</option><option value="0">Ends by itself</option>
+    </select>
+    <select id="fState">
+      <option value="shown">Recorded (webp)</option><option value="">Every effect</option>
+      <option value="labelled">Labelled by the AI</option><option value="unlabelled">Not labelled by the AI</option>
+      <option value="userlabelled">Assessed by you</option><option value="usernot">Not assessed by you</option>
+      <option value="hidden">Not visible / no webp</option>
+    </select>
+    <select id="sort">
+      <option value="index">Sort: index</option><option value="name">Sort: name</option>
+      <option value="duration">Sort: duration</option><option value="size">Sort: size</option>
+      <option value="coverage">Sort: screen coverage</option>
+    </select>
+    <span class="count" id="count"></span>
+  </section>
+
+  <main id="grid" class="grid"></main>
+
+  <aside id="detail" class="detail hidden">
+    <button class="close" id="close" title="Close (Esc)">&#10005;</button>
+    <div id="detailBody"></div>
+  </aside>
+
+  <div id="empty" class="empty hidden">
+    No data: run <code>python effect-viewer/update-data.py</code> (after a gallery: <code>run-effect-gallery.ps1</code> of the main repository).
+  </div>
+
+  <script src="data/effects.js" onerror="window.EFFECT_DATA = null"></script>
+  <script src="app.js"></script>
+</body>
+</html>

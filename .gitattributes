@@ -1,0 +1,4 @@
+# Pictures of the game in docs/ (recorded effects, extracted assets): Git LFS
+docs/Effects/**/*.webp filter=lfs diff=lfs merge=lfs -text
+docs/GameAssets/**/*.webp filter=lfs diff=lfs merge=lfs -text
+docs/GameAssets/**/*.png filter=lfs diff=lfs merge=lfs -text
