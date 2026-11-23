@@ -654,7 +654,7 @@
     <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\ModLib\ModLib.csproj">
+    <ProjectReference Include="..\..\..\..\GuiGuBaHuang-ModLib\ModLib.csproj">
       <Project>{981071a5-cc5c-4828-b4d0-0bba4aa24ebd}</Project>
       <Name>ModLib</Name>
     </ProjectReference>

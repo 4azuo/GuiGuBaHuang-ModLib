@@ -5,7 +5,7 @@ VisualStudioVersion = 17.1.32328.378
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ModMain", "ModMain.csproj", "{3591496F-6A4C-477A-A04C-177FB616E439}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ModLib", "..\ModLib\ModLib.csproj", "{981071A5-CC5C-4828-B4D0-0BBA4AA24EBD}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ModLib", "..\..\..\..\GuiGuBaHuang-ModLib\ModLib.csproj", "{981071A5-CC5C-4828-B4D0-0BBA4AA24EBD}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
