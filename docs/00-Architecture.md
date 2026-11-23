@@ -6,13 +6,13 @@ Related docs: [01-Event-Reference](01-Event-Reference.md) · [02-Cache-Persisten
 
 ## Source layout
 
-| Folder (`ModMain/`: `3385996759/ModProject/ModCode/`; `ModLib/`: the submodule `GuiGuBaHuang-ModLib/` at the root, public repo [4azuo/GuiGuBaHuang-ModLib](https://github.com/4azuo/GuiGuBaHuang-ModLib)) | Content |
+| Folder (`ModLib/`: the root of this repository, the `GuiGuBaHuang-ModLib` submodule of the main repository; `ModMain/`: `3385996759/ModProject/ModCode/` of the [main repository](https://github.com/4azuo/GuiGuBaHuang-Taoist)) | Content |
 |---|---|
 | `ModMain/ModMain.cs` | `MOD_flQrxq.ModMain : ModMaster` - the concrete core object (name, id, version) |
 | `ModLib/Mod/Base/` | `ModMaster` (partial: `ModMaster.cs`, `_GameEvent`, `_CommonEvent`, `_BattleEvent`, `_MapEvent`, `_TimerEvent`), `ModEvent`, `ModChild`, `ModSkill`, marker bases `BattleEvent`, `SkillEvent` |
 | `ModLib/Mod/` | Built-in events: `ModDelayEvent`, `ModUIEvent`, `ModSkillEvent`, `ModTitleEvent`, `ModBattleEvent` |
 | `ModLib/Object/` | `CachableObject`, `EnumObject`, `Gamevar`, `ParameterStore`, `ModConfigs`, `MultiValue`, `DelayInfo`, `MonoUpdater`, `UI/*` |
-| `ModLib/Helper/` | Extension/helper classes (units, items, configs, cache, UI, debug...) - see `05-Helpers.md` |
+| `ModLib/Helper/` | Extension/helper classes (units, items, configs, cache, UI, debug...) - see [05-Helpers](https://github.com/4azuo/GuiGuBaHuang-Taoist/blob/main/docs/05-Helpers.md) |
 | `ModLib/Attribute/` | `Cache`, `ModOrder`, `EventCondition`, `ErrorIgnore`, `Skill`, `EventCat`/`ActionCat` (+ `Ign`) |
 | `ModLib/Enum/` | `EnumObject` based enums (`UnitPropertyEnum`, `UnitDynPropertyEnum`, `GradePhaseEnum`...) and plain enums |
 | `ModLib/Converter/` | `EnumObjectConverter` (Json.NET) |

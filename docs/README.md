@@ -65,5 +65,5 @@ are kept, so run it only after a game update (`--force`) or when new background 
 Effects are not extracted this way: an effect is a prefab of particle systems (10-16 per skill), and UnityPy only gives
 their raw textures (glows, noise, masks, a fist, a heart), not the composed, animated effect, which only the game
 draws. So `Effects/` keeps the recordings of the galleries TE-xx (`scripts/game/run-effect-gallery.ps1`,
-`collect-effects.ps1`; details: `docs/Taoist/04-Autotest.md` of the main repository); the textures can still help to
+`collect-effects.ps1`; details: [docs/Taoist/04-Autotest.md](https://github.com/4azuo/GuiGuBaHuang-Taoist/blob/main/docs/Taoist/04-Autotest.md) of the main repository); the textures can still help to
 recognize an effect.
