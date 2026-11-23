@@ -103,6 +103,7 @@
     <Compile Include="Helper\EffectHelper.cs" />
     <Compile Include="Helper\TranslateHelper.cs" />
     <Compile Include="Helper\FileHelper.cs" />
+    <Compile Include="Helper\FileWriteQueue.cs" />
     <Compile Include="Helper\CUnitHelper.cs" />
     <Compile Include="Helper\VectorHelper.cs" />
     <Compile Include="Helper\ValueHelper.cs" />

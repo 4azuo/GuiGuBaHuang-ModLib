@@ -211,26 +211,49 @@ namespace ModLib.Mod
                     MonthsPassed = TimeScaleHelper.MonthsBetween(prev, cur);
                     YearsPassed = TimeScaleHelper.YearsBetween(prev, cur);
                     Gamevars.CurMonth = cur;
+                    // DebugMode Fine: the time of each phase and of each handler, written after the month (WriteProfile)
+                    var profiling = ModLibConfigs.DebugMode >= Enum.DebugModeEnum.Fine;
+                    var t = profiling ? System.Diagnostics.Stopwatch.GetTimestamp() : 0L;
+                    void Phase(string name)
+                    {
+                        if (!profiling) return;
+                        var now = System.Diagnostics.Stopwatch.GetTimestamp();
+                        EventHelper.AddProfile($"month:{name}", now - t);
+                        t = now;
+                    }
 
                     RefreshParameterStore();
+                    Phase("RefreshParameterStore");
                     CallEvents("OnRefreshParameterStoreOnMonthly");
+                    Phase("OnRefreshParameterStoreOnMonthly");
 
                     //first month
                     if (Gamevars.LoadFirstMonth)
                     {
                         CallEvents("OnFirstMonth");
                         Gamevars.LoadFirstMonth = false;
+                        Phase("OnFirstMonth");
                     }
                     //monthly
                     CallEvents("OnMonthly");
+                    Phase("OnMonthly");
                     CallEvents("OnMonthlyForEachWUnit");
+                    Phase($"OnMonthlyForEachWUnit ({ParameterStore?.WUnits?.Length ?? 0} units)");
                     //yearly (once even when several years passed: YearsPassed)
                     if (YearsPassed > 0)
                     {
                         CallEvents("OnYearly");
+                        Phase("OnYearly");
                     }
                     MonthsPassed = 1;
                     YearsPassed = 0;
+
+                    //end run (+ save)
+                    CallEvents<WorldRunEnd>("OnWorldRunEnd", e);
+                    Phase("OnWorldRunEnd + save");
+                    if (profiling)
+                        EventHelper.WriteProfile($"month {GameHelper.GetGameYear()}/{GameHelper.GetGameMonth()}");
+                    return;
                 }
 
                 //end run
@@ -447,14 +470,12 @@ namespace ModLib.Mod
         }
 
         /// <summary>
-        /// Dispatches OnMonthlyForEachWUnit once for every unit of the ParameterStore.
+        /// Dispatches OnMonthlyForEachWUnit once for every unit of the ParameterStore; the handlers of a mod that set
+        /// its own ParameterStore this month (ModChild.SetParameterStore) get only the units of that store.
         /// </summary>
         public virtual void OnMonthlyForEachWUnit()
         {
-            foreach (var wunit in ParameterStore.WUnits)
-            {
-                EventHelper.RunMinorEvents("OnMonthlyForEachWUnit", wunit);
-            }
+            EventHelper.RunMinorEventsForEachWUnit(ParameterStore.WUnits);
         }
 
         /// <summary>

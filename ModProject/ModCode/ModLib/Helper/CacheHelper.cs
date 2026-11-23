@@ -47,6 +47,12 @@ namespace ModLib.Helper
         public static Dictionary<string, CachableObject> CacheData { get; private set; } = new Dictionary<string, CachableObject>();
 
         /// <summary>
+        /// Raised every time CacheData changes (object added or removed, caches cleared, re-ordered): EventHelper keeps
+        /// the handlers of each event method until it changes.
+        /// </summary>
+        public static int Version { get; private set; }
+
+        /// <summary>
         /// Gets the filename for a skill-level cache. Requires an active game.
         /// </summary>
         /// <param name="cacheId">The cache identifier</param>
@@ -178,6 +184,7 @@ namespace ModLib.Helper
             {
                 DebugHelper.WriteLine($"Load Cache: Mod={c.ModId}, Type={c.GetType().FullName}, Id={c.CacheId}, CacheType={c.CacheType}, WorkOn={c.WorkOn}");
                 CacheData.Add(c.CacheId, c);
+                Version++;
             }
         }
 
@@ -190,6 +197,7 @@ namespace ModLib.Helper
         {
             DebugHelper.WriteLine($"Unload Cache: Mod={c.ModId}, Type={c.GetType().FullName}, Id={c.CacheId}, CacheType={c.CacheType}, WorkOn={c.WorkOn}");
             CacheData.Remove(c.CacheId);
+            Version++;
         }
 
         /// <summary>
@@ -307,6 +315,7 @@ namespace ModLib.Helper
             var attr = typeof(T).GetCustomAttributes<CacheAttribute>().FirstOrDefault(x => x.CacheId == cacheId && x.CacheType == CacheAttribute.CType.Global);
             if (attr == null)
                 return null;
+            FlushWrites();
             var cacheFile = GetGlobalCacheFilePath(modId, attr.CacheId);
             if (!File.Exists(cacheFile))
                 return null;
@@ -325,6 +334,7 @@ namespace ModLib.Helper
             var attr = typeof(T).GetCustomAttributes<CacheAttribute>().FirstOrDefault(x => x.CacheId == cacheId && x.CacheType == CacheAttribute.CType.Local);
             if (attr == null)
                 return null;
+            FlushWrites();
             var cacheFile = GetGameCacheFilePath(modId, attr.CacheId);
             if (!File.Exists(cacheFile))
                 return null;
@@ -353,6 +363,7 @@ namespace ModLib.Helper
         /// </summary>
         public static void LoadGlobalCaches()
         {
+            FlushWrites();
             foreach (var t in GetCacheTypes())
             {
                 if (t.Item2.CacheType == CacheAttribute.CType.Global || t.Item3.IsSubclassOf(typeof(ModChild)))
@@ -383,6 +394,8 @@ namespace ModLib.Helper
         /// </summary>
         public static void LoadGameCaches()
         {
+            FlushWrites();
+            Writer.Forget(); // another save: its files are compared from scratch
             foreach (var t in GetCacheTypes())
             {
                 if (t.Item2.CacheType == CacheAttribute.CType.Local)
@@ -458,55 +471,84 @@ namespace ModLib.Helper
         }
 
         /// <summary>
-        /// Saves a single global cache object to disk.
+        /// Writer of the cache files: a file whose JSON did not change since its last write is skipped, the others are
+        /// written on a worker thread (serialization stays on the game thread). See FileWriteQueue.
+        /// </summary>
+        public static FileWriteQueue Writer { get; } = new FileWriteQueue
+        {
+            OnError = (path, ex) => DebugHelper.WriteLine($"Save cache failed: {path}: {ex.Message} (written again at the next save)"),
+        };
+
+        /// <summary>Waits until every queued cache file is written (done before reading the files).</summary>
+        public static bool FlushWrites(int timeoutMs = 30000)
+        {
+            var rs = Writer.Flush(timeoutMs);
+            if (!rs)
+                DebugHelper.WriteLine($"Save cache: files still being written after {timeoutMs} ms");
+            return rs;
+        }
+
+        /// <summary>
+        /// Saves a single global cache object to disk now (always written, waits for the write).
         /// </summary>
         /// <param name="c">The cache object to save</param>
         public static void SaveGlobalCache(CachableObject c)
         {
             DebugHelper.WriteLine($"Save global-caches: Mod={c.ModId}, Type={c.GetType().FullName}, Id={c.CacheId}, OrderIndex={c.OrderIndex}, CacheType={c.CacheType}, WorkOn={c.WorkOn}");
-            File.WriteAllText(GetGlobalCacheFilePath(c.ModId, c.CacheId), JsonConvert.SerializeObject(c, JSON_SETTINGS));
+            WriteNow(GetGlobalCacheFilePath(c.ModId, c.CacheId), JsonConvert.SerializeObject(c, JSON_SETTINGS));
         }
 
         /// <summary>
-        /// Saves all global cache objects to disk.
+        /// Saves all global cache objects (only the changed ones, written in the background).
         /// </summary>
         public static void SaveGlobalCaches()
         {
             foreach (var item in GetGlobalCaches())
             {
-                SaveGlobalCache(item);
+                Writer.Write(GetGlobalCacheFilePath(item.ModId, item.CacheId), JsonConvert.SerializeObject(item, JSON_SETTINGS));
             }
         }
 
         /// <summary>
-        /// Saves a single game-level cache object to disk.
+        /// Saves a single game-level cache object to disk now (always written, waits for the write).
         /// </summary>
         /// <param name="c">The cache object to save</param>
         public static void SaveGameCache(CachableObject c)
         {
             DebugHelper.WriteLine($"Save game-caches: Mod={c.ModId}, Type={c.GetType().FullName}, Id={c.CacheId}, OrderIndex={c.OrderIndex}, CacheType={c.CacheType}, WorkOn={c.WorkOn}");
-            File.WriteAllText(GetGameCacheFilePath(c.ModId, c.CacheId), JsonConvert.SerializeObject(c, JSON_SETTINGS));
+            WriteNow(GetGameCacheFilePath(c.ModId, c.CacheId), JsonConvert.SerializeObject(c, JSON_SETTINGS));
         }
 
         /// <summary>
-        /// Saves all game-level cache objects to disk.
+        /// Saves all game-level cache objects (only the changed ones, written in the background).
         /// </summary>
         public static void SaveGameCaches()
         {
             foreach (var item in GetGameCaches())
             {
-                SaveGameCache(item);
+                Writer.Write(GetGameCacheFilePath(item.ModId, item.CacheId), JsonConvert.SerializeObject(item, JSON_SETTINGS));
             }
         }
 
         /// <summary>
-        /// Saves all cache objects (both global and game-level) to disk.
+        /// Saves all cache objects (both global and game-level): each object is serialized now, the files whose JSON
+        /// changed since their last write are written in the background (FileWriteQueue), the others are skipped.
         /// </summary>
         public static void Save()
         {
+            var queued = Writer.QueuedCount;
+            var skipped = Writer.SkippedCount;
             SaveGlobalCaches();
             if (GameHelper.IsInGame())
                 SaveGameCaches();
+            DebugHelper.WriteLine($"Save caches: {Writer.QueuedCount - queued} changed (written in the background), {Writer.SkippedCount - skipped} unchanged");
+        }
+
+        /// <summary>A write waited for: the queue first (an older content of the file must not land after it).</summary>
+        private static void WriteNow(string path, string json)
+        {
+            Writer.Write(path, json, force: true);
+            FlushWrites();
         }
 
         /// <summary>
@@ -520,6 +562,7 @@ namespace ModLib.Helper
                 e.OnUnloadClass();
                 CacheData.Remove(e.CacheId);
             }
+            Version++;
         }
 
         /// <summary>
@@ -533,6 +576,7 @@ namespace ModLib.Helper
                 e.OnUnloadClass();
                 CacheData.Remove(e.CacheId);
             }
+            Version++;
         }
 
         /// <summary>
@@ -544,6 +588,7 @@ namespace ModLib.Helper
             ClearGameCaches();
             CacheData.Clear();
             CacheTypes = null;
+            Version++;
         }
 
         /// <summary>
@@ -669,6 +714,7 @@ namespace ModLib.Helper
             {
                 return orderList.IndexOf(y => y.Item1 == x.Key && y.Item2.CacheId == x.Value.CacheId);
             }).ToDictionary(x => x.Key, x => x.Value);
+            Version++;
         }
     }
 }
