@@ -135,10 +135,12 @@ try {
 
     # ------------------------------------------------------------------ workers (one per slot)
     $worker = {
-        param($Slot, $Repo, $QueueFile, $LogFile, $StallSeconds, $AutotestDir, $GameArgs, $Delay, $Window)
+        param($Slot, $Repo, $QueueFile, $LogFile, $StallSeconds, $AutotestDir, $GameArgs, $Delay, $Window, $ScriptDir)
         $ErrorActionPreference = 'Continue'
-        . (Join-Path $Repo 'scripts\game\_game.ps1')
-        . (Join-Path $Repo 'scripts\game\_parallel.ps1')
+        # the shared scripts of ModLib ($PSScriptRoot of the caller: a job has none), the mod repository given
+        $env:MOD_REPO = $Repo
+        . (Join-Path $ScriptDir '_game.ps1')
+        . (Join-Path $ScriptDir '_parallel.ps1')
         function Log([string]$t) { Write-ParallelLog $LogFile "[slot $Slot] $t" }
         # slots start apart: the game start (assemblies, Workshop) is the heaviest part
         Start-Sleep -Seconds $Delay
@@ -148,7 +150,7 @@ try {
             New-Item -ItemType Directory -Path $AutotestDir -Force | Out-Null
             [IO.File]::WriteAllText((Join-Path $AutotestDir 'efx-range.txt'), "$($item.start) $($item.count)")
             Log "$($item.id) from $($item.start) ($($item.count))"
-            $out = & powershell -NoProfile -ExecutionPolicy Bypass -File (Join-Path $Repo 'scripts\game\run-autotest.ps1') `
+            $out = & powershell -NoProfile -ExecutionPolicy Bypass -File (Join-Path $ScriptDir 'run-autotest.ps1') `
                 -Scenario $item.id -Slot $Slot -NoSaveBackup -SlotCharacter -NoViewerUpdate -ConfirmTools -Timeout 7200 -StallSeconds $StallSeconds -GameArgs $GameArgs -Window $Window 2>&1 | ForEach-Object { "$_" }
             $runLine = $out | Where-Object { $_ -match 'Run:\s+(\S+)' } | Select-Object -First 1
             $runId = if ($runLine -match 'Run:\s+(\S+)') { $Matches[1] } else { $null }
@@ -193,10 +195,11 @@ try {
         $env:GGBH_SLOT = "$s"
         $atDir = Join-Path (Get-GamePaths).ModLogs "$($paths.Mod.Id)\autotest-slot$s"
         $env:GGBH_SLOT = $null
-        Start-Job -Name "gallery-slot$s" -ScriptBlock $worker -ArgumentList $s, $repo, $queueFile, $logFile, $StallSeconds, $atDir, $gameArgs, (($s - 2) * 45), $Window
+        Start-Job -Name "gallery-slot$s" -ScriptBlock $worker -ArgumentList $s, $repo, $queueFile, $logFile, $StallSeconds, $atDir, $gameArgs, (($s - 2) * 45), $Window, $PSScriptRoot
     }
     while (@($jobs | Where-Object { $_.State -eq 'Running' }).Count -gt 0) {
-        $jobs | Receive-Job -ErrorAction Continue 2>&1 | Out-Null
+        # an error of a worker (e.g. a script not found) in the log: else the slot just does nothing
+        $jobs | Receive-Job -ErrorAction Continue 2>&1 | Where-Object { $_ -is [System.Management.Automation.ErrorRecord] } | ForEach-Object { Write-ParallelLog $logFile "!!! worker error: $_" }
         Start-Sleep -Seconds 5
     }
     $jobs | Remove-Job -Force -ErrorAction SilentlyContinue

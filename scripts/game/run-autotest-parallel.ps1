@@ -125,10 +125,12 @@ try {
 
     # ------------------------------------------------------------------ workers
     $worker = {
-        param($Slot, $Repo, $QueueFile, $LogFile, $RunsFile, $StallSeconds, $Timeout, $GameArgs, $Delay, $Window, $FreshAfter)
+        param($Slot, $Repo, $QueueFile, $LogFile, $RunsFile, $StallSeconds, $Timeout, $GameArgs, $Delay, $Window, $FreshAfter, $ScriptDir)
         $ErrorActionPreference = 'Continue'
-        . (Join-Path $Repo 'scripts\game\_game.ps1')
-        . (Join-Path $Repo 'scripts\game\_parallel.ps1')
+        # the shared scripts of ModLib ($PSScriptRoot of the caller: a job has none), the mod repository given
+        $env:MOD_REPO = $Repo
+        . (Join-Path $ScriptDir '_game.ps1')
+        . (Join-Path $ScriptDir '_parallel.ps1')
         $env:GGBH_SLOT = if ($Slot -ge 2) { "$Slot" } else { $null }
         $paths = Get-GamePaths
         function Log([string]$t) { Write-ParallelLog $LogFile "[slot $Slot] $t" }
@@ -136,7 +138,7 @@ try {
         # started (-KeepAlive: it stays open after the run, waiting for the next scenarios)
         function Invoke-Run([string[]]$Ids, [switch]$Attach) {
             $mode = if ($Attach) { '-Attach' } else { '-KeepAlive' }
-            $out = & powershell -NoProfile -ExecutionPolicy Bypass -File (Join-Path $Repo 'scripts\game\run-autotest.ps1') `
+            $out = & powershell -NoProfile -ExecutionPolicy Bypass -File (Join-Path $ScriptDir 'run-autotest.ps1') `
                 -Scenario ($Ids -join ',') -Slot $Slot -SlotCharacter -NoSaveBackup -NoViewerUpdate -Timeout $Timeout `
                 -StallSeconds $StallSeconds -GameArgs $GameArgs -Window $Window $mode 2>&1 | ForEach-Object { "$_" }
             $line = $out | Where-Object { $_ -match 'Run:\s+(\S+)' } | Select-Object -First 1
@@ -206,10 +208,11 @@ try {
         Log 'queue empty: done'
     }
     $jobs = foreach ($s in $slotIds) {
-        Start-Job -Name "autotest-slot$s" -ScriptBlock $worker -ArgumentList $s, $repo, $queueFile, $logFile, $runsFile, $StallSeconds, $Timeout, $gameArgs, (($s - 2) * 45), $Window, $freshAfter
+        Start-Job -Name "autotest-slot$s" -ScriptBlock $worker -ArgumentList $s, $repo, $queueFile, $logFile, $runsFile, $StallSeconds, $Timeout, $gameArgs, (($s - 2) * 45), $Window, $freshAfter, $PSScriptRoot
     }
     while (@($jobs | Where-Object { $_.State -eq 'Running' }).Count -gt 0) {
-        $jobs | Receive-Job -ErrorAction Continue 2>&1 | Out-Null
+        # an error of a worker (e.g. a script not found) in the log: else the slot just does nothing
+        $jobs | Receive-Job -ErrorAction Continue 2>&1 | Where-Object { $_ -is [System.Management.Automation.ErrorRecord] } | ForEach-Object { Write-ParallelLog $logFile "!!! worker error: $_" }
         Start-Sleep -Seconds 5
     }
     $jobs | Remove-Job -Force -ErrorAction SilentlyContinue
