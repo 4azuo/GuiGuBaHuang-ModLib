@@ -164,6 +164,16 @@
             "problemMatcher": []
         },
 
+        // ===== Repository =====
+        {
+            "label": "Repo: Update",
+            "detail": "Pull the latest changes (scripts/update-repo.ps1; -Force stashes local changes first)",
+            "type": "process",
+            "command": "powershell.exe",
+            "args": ["-NoProfile", "-ExecutionPolicy", "Bypass", "-File", "${workspaceFolder}/scripts/update-repo.ps1", "-RepoRoot", "${workspaceFolder}"],
+            "problemMatcher": []
+        },
+
         // ===== Setup (scripts/setup/) =====
         {
             "label": "Setup: Install (all)",
