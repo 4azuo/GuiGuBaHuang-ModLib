@@ -34,8 +34,8 @@
     <WarningLevel>4</WarningLevel>
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
     <DocumentationFile>bin\Release\ModLib.xml</DocumentationFile>
-    <!-- as the submodule of GuiGuBaHuang-Taoist: the IntelliSense docs of the ModCreator tool (sibling submodule) -->
-    <DocumentationFile Condition="Exists('$(MSBuildProjectDirectory)\..\GuiGuBaHuang-ModCreator\ModCreator\Resources')">$(MSBuildProjectDirectory)\..\GuiGuBaHuang-ModCreator\ModCreator\Resources\ModLib.xml</DocumentationFile>
+    <!-- as a submodule of a mod repository that also holds ModCreator (sibling submodule): the IntelliSense docs of the ModCreator tool -->
+    <DocumentationFile Condition="Exists('$(MSBuildProjectDirectory)\..\..\GuiGuBaHuang-ModCreator\ModCreator\Resources')">$(MSBuildProjectDirectory)\..\..\GuiGuBaHuang-ModCreator\ModCreator\Resources\ModLib.xml</DocumentationFile>
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="Attribute\EventCatIgnAttribute.cs" />
