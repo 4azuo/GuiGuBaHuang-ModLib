@@ -82,4 +82,5 @@ Nexus first:
 ## VS Code tasks
 
 `.vscode/tasks.json` of each repository (**Terminal → Run Task...**): this repository has the tasks of ModLib alone;
-a mod repository has its own (build, deploy, release, tests, setup, game, viewers), with the ModLib project too.
+a mod repository has its own (build, deploy, release, tests, setup, game, viewers) for its mod only: ModLib is built and
+released from this repository.
