@@ -2,3 +2,11 @@
 docs/Effects/**/*.webp filter=lfs diff=lfs merge=lfs -text
 docs/GameAssets/**/*.webp filter=lfs diff=lfs merge=lfs -text
 docs/GameAssets/**/*.png filter=lfs diff=lfs merge=lfs -text
+
+# Workshop project of ModLib (3385996759): binaries and Steam pictures, Git LFS
+3385996759/**/SteamImg/**/*.png filter=lfs diff=lfs merge=lfs -text
+3385996759/**/SteamImg/**/*.jpg filter=lfs diff=lfs merge=lfs -text
+3385996759/**/SteamImg/**/*.webp filter=lfs diff=lfs merge=lfs -text
+3385996759/CodeArtifacts/*.dll filter=lfs diff=lfs merge=lfs -text
+3385996759/debug/*/ModCode/dll/*.dll filter=lfs diff=lfs merge=lfs -text
+3385996759/**/ModCode/ModMain/dll/*.dll filter=lfs diff=lfs merge=lfs -text
