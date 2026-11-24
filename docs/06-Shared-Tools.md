@@ -39,7 +39,7 @@ find it as the parent folder of ModLib (or `$env:MOD_REPO`).
 ## ModLib alone
 
 A clone of this repository alone has its own `scripts/settings.json` (`"projects": ["3385996759"]`), setup
-(`scripts/setup/install.ps1`), tests and VS Code tasks (`.vscode/tasks.json`: build / deploy / compress / auto-build of
+(`scripts/setup/install.ps1`, guide: `INSTALLATION.md`), tests and VS Code tasks (`.vscode/tasks.json`: build / deploy / compress / auto-build of
 3385996759, release, unit tests, viewers, game pictures, Translate with its cache `.translate-cache/`, setup, Nexus).
 As a submodule, use the tasks of the mod repository: they offer the ModLib project too.
 

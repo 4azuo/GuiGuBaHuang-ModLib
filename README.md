@@ -141,6 +141,9 @@ pictures are kept with Git LFS: run `git lfs install` before cloning.
 
 ## Build
 
+Setup of a machine, build, tests and release of ModLib: [INSTALLATION.md](INSTALLATION.md) (VS Code tasks in
+`.vscode/tasks.json`).
+
 - Visual Studio 2022 / `dotnet build ModLib/ModLib.csproj -c Release` (.NET Framework 4.7.2 targeting pack).
 - The game references point to `C:\Program Files (x86)\Steam\steamapps\common\鬼谷八荒\MelonLoader\...`: change the
   paths in `ModLib/ModLib.csproj` if the game is installed elsewhere (the game must have been started once with MelonLoader).
