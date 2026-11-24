@@ -8,3 +8,6 @@ docs/Effects/**/review/
 
 # Generated data of the effect viewer (effect-viewer/update-data.py)
 effect-viewer/data/
+
+# Python cache of the shared scripts (scripts/, Translate/)
+__pycache__/

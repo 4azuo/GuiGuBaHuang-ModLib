@@ -1,0 +1,26 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <!--
+    MelonLoader plugin for the game slots (GuiGuBaHuang-ModLib scripts/game/new-game-slot.ps1): a game started from %LOCALAPPDATA%\ggbh-slotN
+    gets its own game data folder (Application.persistentDataPath = ...\LocalLow\guigugame\guigubahuang-slotN), so games
+    side by side do not share the save index. Only the slot folders get it (their own Plugins folder); the normal game
+    never loads it.
+  -->
+  <PropertyGroup>
+    <TargetFramework>net472</TargetFramework>
+    <LangVersion>latest</LangVersion>
+    <AssemblyName>SlotDataPath</AssemblyName>
+    <RootNamespace>SlotDataPath</RootNamespace>
+    <GameDir>C:\Program Files (x86)\Steam\steamapps\common\鬼谷八荒</GameDir>
+    <OutputPath>bin\</OutputPath>
+    <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
+    <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="MelonLoader"><HintPath>$(GameDir)\MelonLoader\MelonLoader.dll</HintPath><Private>false</Private></Reference>
+    <Reference Include="0Harmony"><HintPath>$(GameDir)\MelonLoader\0Harmony.dll</HintPath><Private>false</Private></Reference>
+    <Reference Include="UnhollowerBaseLib"><HintPath>$(GameDir)\MelonLoader\Managed\UnhollowerBaseLib.dll</HintPath><Private>false</Private></Reference>
+    <Reference Include="Il2Cppmscorlib"><HintPath>$(GameDir)\MelonLoader\Managed\Il2Cppmscorlib.dll</HintPath><Private>false</Private></Reference>
+    <Reference Include="Assembly-CSharp"><HintPath>$(GameDir)\MelonLoader\Managed\Assembly-CSharp.dll</HintPath><Private>false</Private></Reference>
+    <Reference Include="UnityEngine.CoreModule"><HintPath>$(GameDir)\MelonLoader\Managed\UnityEngine.CoreModule.dll</HintPath><Private>false</Private></Reference>
+  </ItemGroup>
+</Project>

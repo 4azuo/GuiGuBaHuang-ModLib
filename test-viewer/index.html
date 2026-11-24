@@ -1,0 +1,67 @@
+<!doctype html>
+<!-- Template (ModLib test-viewer/): test-viewer/update-data writes it to <mod repository>/logs/test-viewer/index.html,
+     {{MODLIB}} = path of ModLib from there, {{MOD_NAME}} = "modName" of scripts/settings.json -->
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{{MOD_NAME}} Test Results</title>
+  <link rel="stylesheet" href="{{MODLIB}}/test-viewer/style.css">
+</head>
+<body>
+  <header class="top">
+    <div class="brand">
+      <span class="logo">&#9775;</span>
+      <div>
+        <div class="title">{{MOD_NAME}} Test Results</div>
+        <div class="sub" id="generated"></div>
+      </div>
+    </div>
+    <nav class="tabs" id="tabs">
+      <button data-tab="auto" class="active">Autotest</button>
+      <button data-tab="unit">Unit tests</button>
+      <button data-tab="status">Scenario status</button>
+      <button data-tab="modlog">Mod logs</button>
+    </nav>
+    <div class="runpick" id="runpick">
+      <label for="runSelect">Run</label>
+      <select id="runSelect"></select>
+      <button class="pinbtn" id="pinBtn" hidden></button>
+      <div class="history" id="history" title="Runs (oldest to latest): click to open"></div>
+    </div>
+    <nav class="viewers" aria-label="Viewers"><a class="on" aria-current="page" href="../test-viewer/index.html" title="Results of the autotest and the unit tests">Tests</a><a href="{{MODLIB}}/effect-viewer/index.html" title="Effects recorded by the galleries (TE-xx)">Effects</a><a href="../promo-viewer/index.html" title="Steam Workshop pictures, promotion takes, marketing videos">Promo</a><a href="{{MODLIB}}/docs/GameAssets/index.html" title="Pictures extracted from the game: text icons, drama backgrounds, item icons, buildings">Assets</a></nav>
+  </header>
+
+  <main id="main">
+    <div class="empty" id="empty" hidden>
+      No data. Run <code>GuiGuBaHuang-ModLib\scripts\game\run-autotest.ps1</code> or <code>scripts\run-unittests.ps1</code>
+      (or <code>GuiGuBaHuang-ModLib\test-viewer\update-data.ps1</code>) to generate <code>logs/test-viewer/data/runs.js</code>.
+    </div>
+    <section id="view"></section>
+  </main>
+
+  <div class="modal" id="modal" hidden>
+    <div class="modal-bar">
+      <div class="modal-caption" id="modalCaption"></div>
+      <div class="modal-tools">
+        <button id="zoomOut" title="Zoom out (-)">&minus;</button>
+        <span id="zoomLevel">100%</span>
+        <button id="zoomIn" title="Zoom in (+)">+</button>
+        <button id="zoomFit" title="Fit (0)">Fit</button>
+        <button id="zoom100" title="Actual size (1)">1:1</button>
+        <a id="openRaw" target="_blank" title="Open the file">&#8599;</a>
+        <button id="modalClose" title="Close (Esc)">&times;</button>
+      </div>
+    </div>
+    <div class="modal-stage" id="stage">
+      <img id="modalImg" alt="">
+      <button class="nav prev" id="prevImg" title="Previous (&larr;)">&#8249;</button>
+      <button class="nav next" id="nextImg" title="Next (&rarr;)">&#8250;</button>
+    </div>
+    <div class="modal-strip" id="strip"></div>
+  </div>
+
+  <script src="data/runs.js" onerror="window.TEST_DATA = null"></script>
+  <script src="{{MODLIB}}/test-viewer/app.js"></script>
+</body>
+</html>

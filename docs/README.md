@@ -16,6 +16,7 @@ docs/
 ├── 03-Builtin-Events.md          the events ModLib ships
 ├── 04-UI-Framework.md            UICustom1 / UICustom2 / UICover, UI items, pages
 ├── 05-Attributes-Objects.md      attributes, objects and enums
+├── 06-Shared-Tools.md            tools shared by the mod repositories (build, game runs, autotest, viewers, Translate, unit tests)
 │
 ├── ModConf/                      the game's config samples (3385996759/SampleConfs of the main repository)
 │   ├── 00-SampleConfs-List.md    index of every config type
@@ -39,7 +40,7 @@ docs/
 The effect viewer (`effect-viewer/` at the root of this repository) shows `Effects/` with search and filters: run
 `python effect-viewer/update-data.py` (writes `effect-viewer/data/effects.js`, not in git), then open
 `effect-viewer/index.html`. To save your own assessment of an effect (`user-*` fields of index.json), open it through
-the viewer server of the main repository: `python scripts/effect-viewer-server.py --open`.
+the viewer server: `python GuiGuBaHuang-ModLib/scripts/effect-viewer-server.py --open` (from the mod repository).
 
 ## Where to look
 
@@ -51,14 +52,15 @@ the viewer server of the main repository: `python scripts/effect-viewer-server.p
 | build a window or cover a game window | `04-UI-Framework.md` |
 | find a config type of the game and its fields | `ModConf/00-SampleConfs-List.md` |
 | pick an icon for a text, an item icon or a background for a drama | `GameAssets/index.html` |
+| build, run the game, run the autotest, view the results, translate (any mod repository) | `06-Shared-Tools.md` |
 | find a battle / skill effect for a custom skill | `../effect-viewer/index.html` (data: `python effect-viewer/update-data.py`; pictures and measures in `Effects/<kind>/`) |
 
 ## Pictures extracted from the game
 
-The scripts live in the main repository and write into this submodule (commit the pictures here, then the new
-submodule commit in the main repository).
+The scripts live in `scripts/` of this repository and write into it (commit the pictures here, then the new
+submodule commit in the mod repository).
 
-`python scripts/extract-game-assets.py` (needs `pip install UnityPy Pillow`; `--icons`, `--backgrounds`, `--items`,
+`python GuiGuBaHuang-ModLib/scripts/extract-game-assets.py` (needs `pip install UnityPy Pillow`; `--icons`, `--backgrounds`, `--items`,
 `--buildings`, `--force`) reads `guigubahuang_Data/resources.assets` and writes `GameAssets/`; pictures already there
 are kept, so run it only after a game update (`--force`) or when new background names appear in the configs.
 

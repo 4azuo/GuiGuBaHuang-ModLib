@@ -1,0 +1,56 @@
+<Project>
+
+  <!--
+    Shared unit test setup of the mods using ModLib: imported by <mod repository>\tests\UnitTests\UnitTests.csproj
+    (<Import Project="..\..\GuiGuBaHuang-ModLib\tests\UnitTests.props" />), which adds the references to its own build
+    output (ModLib.dll, the mod dll, Newtonsoft.Json.dll) and its own tests.
+    Il2Cpp game types can only be used in the game: they are referenced for compilation only and resolved
+    from <game>\MelonLoader\Managed at runtime (Shared\TestSetup.cs).
+    Gives: Shared\*.cs (TestSetup: game assembly resolution, RepoRoot of the mod repository; Check: assertions written
+    to the output shown by the test viewer). IncludeModLibTests=true also compiles the tests of ModLib (ModLib\*.cs):
+    set by the repository that builds ModLib.dll.
+  -->
+
+  <PropertyGroup>
+    <TargetFramework>net472</TargetFramework>
+    <LangVersion>latest</LangVersion>
+    <IsPackable>false</IsPackable>
+    <IsTestProject>true</IsTestProject>
+    <RootNamespace>UnitTests</RootNamespace>
+    <GameFolder Condition="'$(GameFolder)' == ''">C:\Program Files (x86)\Steam\steamapps\common\鬼谷八荒</GameFolder>
+    <GameManaged>$(GameFolder)\MelonLoader\Managed</GameManaged>
+    <RepoRoot Condition="'$(RepoRoot)' == ''">$([System.IO.Path]::GetFullPath('$(MSBuildProjectDirectory)\..\..'))</RepoRoot>
+    <NoWarn>$(NoWarn);MSB3270;MSB3277</NoWarn>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.11.1" />
+    <PackageReference Include="MSTest.TestAdapter" Version="3.6.1" />
+    <PackageReference Include="MSTest.TestFramework" Version="3.6.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Reference Include="System.IO.Compression" />
+    <!-- game assemblies: compile-time only, resolved from the game folder at runtime -->
+    <Reference Include="$(GameManaged)\Assembly-CSharp.dll;$(GameManaged)\UnhollowerBaseLib.dll;$(GameManaged)\Il2Cppmscorlib.dll;$(GameManaged)\Il2CppSystem.dll;$(GameManaged)\UnityEngine.CoreModule.dll;$(GameManaged)\UnityEngine.UI.dll;$(GameManaged)\UnityEngine.UIModule.dll;$(GameManaged)\UnityEngine.TextRenderingModule.dll">
+      <Private>false</Private>
+    </Reference>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Include="$(MSBuildThisFileDirectory)Shared\*.cs" Link="Shared\%(Filename)%(Extension)" />
+    <Compile Include="$(MSBuildThisFileDirectory)ModLib\*.cs" Link="ModLib\%(Filename)%(Extension)" Condition="'$(IncludeModLibTests)' == 'true'" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <AssemblyAttribute Include="System.Reflection.AssemblyMetadataAttribute">
+      <_Parameter1>GameManaged</_Parameter1>
+      <_Parameter2>$(GameManaged)</_Parameter2>
+    </AssemblyAttribute>
+    <AssemblyAttribute Include="System.Reflection.AssemblyMetadataAttribute">
+      <_Parameter1>RepoRoot</_Parameter1>
+      <_Parameter2>$(RepoRoot)</_Parameter2>
+    </AssemblyAttribute>
+  </ItemGroup>
+
+</Project>

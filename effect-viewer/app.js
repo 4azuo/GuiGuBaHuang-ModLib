@@ -212,7 +212,7 @@
   function userForm(e) {
     const rating = e["user-rating"] || 0;
     return `<form class="uform" id="uform">
-      ${canSave ? "" : `<div class="sub warn">Read only: open the viewer with the VS Code task "Test: Open Effect Viewer" of the main repository (python scripts/effect-viewer-server.py --open) to save.</div>`}
+      ${canSave ? "" : `<div class="sub warn">Read only: open the viewer with the VS Code task "Test: Open Effect Viewer" of the mod repository (python GuiGuBaHuang-ModLib/scripts/effect-viewer-server.py --open) to save.</div>`}
       <div class="row"><span>rating</span><span class="stars" id="uStars">${[1, 2, 3, 4, 5].map((i) => `<button type="button" data-v="${i}" class="${i <= rating ? "on" : ""}">&#9733;</button>`).join("")}</span></div>
       <div class="row"><span>element</span>${checks("uElement", ELEMENTS, arr(e["user-element"]))}</div>
       <div class="row"><span>usage</span>${checks("uUsage", USAGES, arr(e["user-usage"]))}</div>
