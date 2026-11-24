@@ -34,7 +34,7 @@ import _modrepo  # noqa: E402
 ROOT = _modrepo.repo()   # the mod repository (shared script: GuiGuBaHuang-ModLib/scripts)
 OUT = os.path.join(_modrepo.MODLIB, 'docs', 'GameAssets')
 GAME_DATA = r'C:\Program Files (x86)\Steam\steamapps\common\鬼谷八荒\guigubahuang_Data'
-SAMPLE_CONFS = os.path.join(ROOT, '3385996759', 'SampleConfs')
+SAMPLE_CONFS = os.path.join(_modrepo.MODLIB, '3385996759', 'SampleConfs')
 BG_WIDTH = 960
 
 

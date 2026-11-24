@@ -329,7 +329,7 @@ else {
         # "projects" of settings.json in order (ModLib first when the repository builds it). One deploy at a time; the copy waits until no game runs and is
         # skipped when the Workshop folder already has this build (_slots.ps1)
         Write-Title 'Rebuild and deploy'
-        try { Invoke-SafeDeploy $paths.Repo $paths.Workshop $Mod.Projects }
+        try { Invoke-SafeDeploy $paths.Repo $paths.Workshop $Mod.Projects $Mod.Dependencies }
         catch { Write-Err "Build/deploy failed: $($_.Exception.Message)"; exit 1 }
     }
 

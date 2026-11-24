@@ -5,7 +5,7 @@
     The game tools (GuiGuBaHuang-ModLib/scripts/game) are shared by the mods using ModLib; they work on the mod
     repository holding ModLib as a submodule (Get-ModRepo). The mod repository provides scripts/settings.json
     ("modProject", "modName", "modId" = folder of the mod in <game data>/mod, "projects" = built/deployed in this
-    order) and scripts/setup/_common.ps1 (setup helpers: Read-JsonFile, Find-GameInstall, Write-Info...).
+    order, "dependencies" = projects of other repositories deployed, not built, before them: the ModLib of the submodule) and scripts/setup/_common.ps1 (setup helpers: Read-JsonFile, Find-GameInstall, Write-Info...).
     Keep ASCII-only (Windows PowerShell 5.1 reads BOM-less scripts as ANSI).
 #>
 
@@ -29,6 +29,7 @@ function Get-ModInfo {
         Name     = if ($s.modName) { [string]$s.modName } else { $project }
         Id       = [string]$s.modId
         Projects = @($s.projects)
+        Dependencies = @($s.dependencies | Where-Object { $_ })
         Tests    = Join-Path $repo "$project\tests"
     }
 }

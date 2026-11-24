@@ -121,7 +121,7 @@ try {
     # ------------------------------------------------------------------ deploy, slots, window, backup
     if ($Deploy) {
         # one deploy at a time, the copy only when no game runs (or skipped: same build) - _slots.ps1
-        Invoke-SafeDeploy $repo $paths.Workshop $paths.Mod.Projects | Out-Null
+        Invoke-SafeDeploy $repo $paths.Workshop $paths.Mod.Projects $paths.Mod.Dependencies | Out-Null
         Write-Log 'built and deployed'
     }
     # the slots of this run, locked until it ends (children: GGBH_LOCK_PARENT)

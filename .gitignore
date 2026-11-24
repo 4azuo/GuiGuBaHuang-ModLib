@@ -1,5 +1,13 @@
 bin/
 obj/
+
+# Build output copied from 3385996759/ModProject/ by build-project.ps1 (ModCode/dll and ModExportData.cache stay tracked)
+3385996759/debug/*/ModConf/
+3385996759/debug/*/ModImg/
+3385996759/debug/*/SteamImg/
+# Auto-build watcher errors, release zips
+**/scripts/auto-built-errors.log
+dist/
 .vs/
 *.user
 

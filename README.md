@@ -43,8 +43,9 @@ entirely on it.
 ## Create a mod with ModLib
 
 The complete example is the main repository [GuiGuBaHuang-Taoist](https://github.com/4azuo/GuiGuBaHuang-Taoist)
-(this repository is its `GuiGuBaHuang-ModLib` submodule): the ModLib mod project (`3385996759/`), the Taoist mod
-(`3161035078/`), build / deploy / test scripts, and a step-by-step guide:
+(this repository is its `GuiGuBaHuang-ModLib` submodule): the Taoist mod (`3161035078/`) and a step-by-step guide.
+This repository holds the ModLib sources (`ModLib/`), the ModLib Workshop project (`3385996759/`: ModMain, configs,
+SampleConfs, build output) and the tools shared by the mod repositories (`docs/06-Shared-Tools.md`):
 [Getting started](https://github.com/4azuo/GuiGuBaHuang-Taoist/blob/main/docs/00-Getting-Started.md) →
 [ModMain](https://github.com/4azuo/GuiGuBaHuang-Taoist/blob/main/docs/01-ModMain.md) →
 [Events](https://github.com/4azuo/GuiGuBaHuang-Taoist/blob/main/docs/02-Events.md) →

@@ -1,0 +1,61 @@
+# Release of ModLib for direct download: runs only on a release tag ModLib-<ver>, made by
+# scripts/release/create-release-tag.ps1 (version read from the source code: 3385996759/ModProject/ModCode/ModMain/ModMain.cs;
+# VS Code task "Release: Tag ModLib" of a mod repository).
+#   ModLib-<ver>  -> ModLib-<ver>.zip
+# The zip is the folder 3385996759/debug/Mod_flQrxq (scripts/release/package-release.ps1). The CI cannot build (no game
+# DLLs): the DLLs of debug/ are the committed ones, ModConf/ModImg/SteamImg are copied by build-project.ps1 -ResourcesOnly.
+# Then a GitHub Release, and a new file version on Nexus Mods when the repository has the secret NEXUSMODS_API_KEY and
+# the variables NEXUS_MODLIB_FILE_ID / NEXUS_MODLIB_URL.
+name: Release
+
+on:
+  push:
+    tags:
+      - "ModLib-*"
+
+permissions:
+  contents: write
+
+concurrency:
+  group: release-${{ github.ref_name }}
+  cancel-in-progress: false
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          lfs: true   # DLLs and SteamImg pictures (Git LFS) are part of debug/<mod>
+
+      - name: Zip debug/<mod>
+        id: pkg
+        shell: pwsh
+        env:
+          NEXUS_MODLIB_URL: ${{ vars.NEXUS_MODLIB_URL }}
+        run: ./scripts/release/package-release.ps1 -Tag "${{ github.ref_name }}" -RepoRoot . -PrepareResources -OutDir dist -GitHubOutput
+
+      - name: GitHub Release
+        env:
+          GH_TOKEN: ${{ github.token }}
+          TAG: ${{ github.ref_name }}
+          TITLE: ${{ steps.pkg.outputs.title }}
+        run: |
+          if gh release view "$TAG" > /dev/null 2>&1; then
+            gh release upload "$TAG" dist/*.zip --clobber
+          else
+            gh release create "$TAG" dist/*.zip --verify-tag --title "$TITLE" --notes-file dist/release-notes.md
+          fi
+
+      - name: Nexus Mods - ModLib
+        if: steps.pkg.outputs.modlib_zip != '' && vars.NEXUS_MODLIB_FILE_ID != ''
+        uses: Nexus-Mods/upload-action@v1.0.0-beta.11
+        with:
+          api_key: ${{ secrets.NEXUSMODS_API_KEY }}
+          file_id: ${{ vars.NEXUS_MODLIB_FILE_ID }}
+          filename: dist/${{ steps.pkg.outputs.modlib_zip }}
+          version: ${{ steps.pkg.outputs.modlib_version }}
+          display_name: ModLib ${{ steps.pkg.outputs.modlib_version }}
+          description: "ModLib ${{ steps.pkg.outputs.modlib_version }}: ${{ github.server_url }}/${{ github.repository }}/releases/tag/${{ github.ref_name }}"
+          archive_existing_version: "true"
+          update_mod_version: "true"

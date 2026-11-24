@@ -1,7 +1,7 @@
 # SampleConfs - Available Config Files
 
 Complete reference for all config template files in the `SampleConfs/` folder of the ModLib mod project
-(`3385996759/SampleConfs/` of the main repository [GuiGuBaHuang-Taoist](https://github.com/4azuo/GuiGuBaHuang-Taoist/tree/main/3385996759/SampleConfs)).
+([`3385996759/SampleConfs/`](../../3385996759/SampleConfs) of this repository).
 
 This documentation has been organized into category-based files for easier navigation. Click on any category below to view detailed file listings.
 
@@ -69,7 +69,7 @@ Each category file contains:
 
 1. **Browse by category** - Click on category links above
 2. **Search within categories** - Use Ctrl+F in individual category files
-3. **Check file locations** - All configs are in `3385996759/SampleConfs/` (main repository)
+3. **Check file locations** - All configs are in `3385996759/SampleConfs/` (this repository)
 
 ## 💡 Tips
 

@@ -141,11 +141,12 @@ function Wait-DeployFree([int]$WaitMinutes = 30) {
     }
 }
 
-# True when every file of <repo>\<project>\debug is in <workshop>\<project>\debug with the same content
+# True when every file of <repo>\<project>\debug is in <workshop>\<project id>\debug with the same content
+# (<project>: a project id, or a path in the repository such as GuiGuBaHuang-ModLib/3385996759)
 function Test-WorkshopUpToDate([string]$Repo, [string]$Workshop, [string[]]$Projects) {
     foreach ($p in $Projects) {
         $src = Join-Path $Repo "$p\debug"
-        $dst = Join-Path $Workshop "$p\debug"
+        $dst = Join-Path $Workshop "$(Split-Path $p -Leaf)\debug"
         if (-not (Test-Path -LiteralPath $dst)) { return $false }
         foreach ($f in Get-ChildItem -LiteralPath $src -Recurse -File) {
             $rel = $f.FullName.Substring($src.Length)
@@ -158,10 +159,12 @@ function Test-WorkshopUpToDate([string]$Repo, [string]$Workshop, [string[]]$Proj
 }
 
 <#
-  Rebuilds the projects and copies them to the Workshop folder, one run at a time (deploy lock). The copy is skipped
-  when the Workshop folder already has this build; otherwise it waits until no game runs (any slot).
+  Rebuilds the projects and copies them to the Workshop folder, one run at a time (deploy lock), after the dependencies
+  (copied as built by their own repository: the ModLib DLL of the submodule). The copy is skipped when the Workshop
+  folder already has this build; otherwise it waits until no game runs (any slot).
 #>
-function Invoke-SafeDeploy([string]$Repo, [string]$Workshop, [string[]]$Projects, [int]$WaitMinutes = 120) {
+function Invoke-SafeDeploy([string]$Repo, [string]$Workshop, [string[]]$Projects, [string[]]$Dependencies = @(), [int]$WaitMinutes = 120) {
+    $deployed = @($Dependencies | Where-Object { $_ }) + @($Projects)
     $deadline = (Get-Date).AddMinutes($WaitMinutes)
     $lock = $null
     $said = $false
@@ -176,7 +179,7 @@ function Invoke-SafeDeploy([string]$Repo, [string]$Workshop, [string[]]$Projects
             & powershell -NoProfile -ExecutionPolicy Bypass -File (Join-Path $Repo "$p\scripts\rebuild-project.ps1")
             if ($LASTEXITCODE -ne 0) { throw "Build of $p failed" }
         }
-        if (Test-WorkshopUpToDate $Repo $Workshop $Projects) {
+        if (Test-WorkshopUpToDate $Repo $Workshop $deployed) {
             Write-Host 'Workshop folder already has this build: not copied (running games are not disturbed)' -ForegroundColor Green
             return
         }
@@ -190,12 +193,12 @@ function Invoke-SafeDeploy([string]$Repo, [string]$Workshop, [string[]]$Projects
             if ((Get-Date) -gt $deadline) { throw "Games still running after $WaitMinutes min: build not deployed" }
             Start-Sleep -Seconds 10
         }
-        foreach ($p in $Projects) {
+        foreach ($p in $deployed) {
             Write-Host "Copy $p to the Workshop folder" -ForegroundColor Cyan
             & powershell -NoProfile -ExecutionPolicy Bypass -File (Join-Path $Repo "$p\scripts\copy-to-steam.ps1") | Out-Null
             if ($LASTEXITCODE -ne 0) { throw "Copy of $p failed" }
         }
-        if (-not (Test-WorkshopUpToDate $Repo $Workshop $Projects)) { throw 'Workshop folder differs from the build after the copy' }
+        if (-not (Test-WorkshopUpToDate $Repo $Workshop $deployed)) { throw 'Workshop folder differs from the build after the copy' }
         Write-Host 'Deployed' -ForegroundColor Green
     }
     finally { $lock.Dispose() }

@@ -18,7 +18,7 @@ docs/
 ├── 05-Attributes-Objects.md      attributes, objects and enums
 ├── 06-Shared-Tools.md            tools shared by the mod repositories (build, game runs, autotest, viewers, Translate, unit tests)
 │
-├── ModConf/                      the game's config samples (3385996759/SampleConfs of the main repository)
+├── ModConf/                      the game's config samples (samples: 3385996759/SampleConfs of this repository)
 │   ├── 00-SampleConfs-List.md    index of every config type
 │   └── 01..12-SampleConfs-*.md   by category: character, items, battle, world, schools, NPCs,
 │                                 tasks, towns, advanced, DLC, system, mod

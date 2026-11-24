@@ -6,19 +6,29 @@ translation cache live in the mod repository).
 
 The mod repository is the first of:
   1. the environment variable MOD_REPO;
-  2. the current folder or one of its parents holding scripts/settings.json;
-  3. a parent of this folder holding scripts/settings.json (ModLib as a submodule of the mod repository).
+  2. the current folder or one of its parents holding scripts/settings.json with "projects";
+  3. a parent of this folder holding it (ModLib as a submodule of the mod repository).
+A project id is looked up in the mod repository, then in ModLib (3385996759: the ModLib project).
 """
 
+import json
 import os
 
 HERE = os.path.dirname(os.path.abspath(__file__))
 
 
+def _is_repo(d):
+    p = os.path.join(d, 'scripts', 'settings.json')
+    try:
+        return os.path.isfile(p) and 'projects' in json.load(open(p, encoding='utf-8-sig'))
+    except (OSError, ValueError):
+        return False
+
+
 def _find_up(start):
     d = os.path.abspath(start)
     while True:
-        if os.path.isfile(os.path.join(d, 'scripts', 'settings.json')):
+        if _is_repo(d):
             return d
         parent = os.path.dirname(d)
         if parent == d:
@@ -34,8 +44,12 @@ def repo_root():
 
 
 def project_path(project):
-    """A project folder: a path as is, a project id in the mod repository."""
-    return project if os.path.isdir(project) else os.path.join(repo_root(), project)
+    """A project folder: a path as is, a project id in the mod repository, else in ModLib."""
+    if os.path.isdir(project):
+        return project
+    p = os.path.join(repo_root(), project)
+    modlib = os.path.join(os.path.dirname(HERE), project)
+    return p if os.path.isdir(p) or not os.path.isdir(modlib) else modlib
 
 
 def cache_dir(name=None):
