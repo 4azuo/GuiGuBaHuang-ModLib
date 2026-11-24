@@ -1,0 +1,1382 @@
+[
+  {
+    "id": "102",
+    "type": "1",
+    "name": "storePropNameS102",
+    "icon": "22111",
+    "stageRange": "0",
+    "tag": "1|13|14",
+    "weight": "100",
+    "price": "30"
+  },
+  {
+    "id": "103",
+    "type": "1",
+    "name": "storePropNameS103",
+    "icon": "22114",
+    "stageRange": "0",
+    "tag": "1|40|15|16",
+    "weight": "100",
+    "price": "30"
+  },
+  {
+    "id": "104",
+    "type": "1",
+    "name": "storePropNameS104",
+    "icon": "22115",
+    "stageRange": "0",
+    "tag": "1|13|15",
+    "weight": "100",
+    "price": "30"
+  },
+  {
+    "id": "201",
+    "type": "1",
+    "name": "storePropNameS201",
+    "icon": "23111",
+    "stageRange": "0",
+    "tag": "2|21|50",
+    "weight": "100",
+    "price": "30"
+  },
+  {
+    "id": "202",
+    "type": "1",
+    "name": "storePropNameS202",
+    "icon": "23112",
+    "stageRange": "0",
+    "tag": "2|41|20|19|51",
+    "weight": "100",
+    "price": "30"
+  },
+  {
+    "id": "203",
+    "type": "1",
+    "name": "storePropNameS203",
+    "icon": "13113",
+    "stageRange": "0",
+    "tag": "2|21|50",
+    "weight": "100",
+    "price": "30"
+  },
+  {
+    "id": "302",
+    "type": "1",
+    "name": "storePropNameS302",
+    "icon": "24111",
+    "stageRange": "0",
+    "tag": "3|22|24|23|50",
+    "weight": "100",
+    "price": "30"
+  },
+  {
+    "id": "303",
+    "type": "1",
+    "name": "storePropNameS303",
+    "icon": "24114",
+    "stageRange": "0",
+    "tag": "3|25",
+    "weight": "100",
+    "price": "30"
+  },
+  {
+    "id": "304",
+    "type": "1",
+    "name": "storePropNameS304",
+    "icon": "zhudongxf_44",
+    "stageRange": "0",
+    "tag": "3|22|24|23",
+    "weight": "100",
+    "price": "30"
+  },
+  {
+    "id": "401",
+    "type": "1",
+    "name": "storePropNameS401",
+    "icon": "15111",
+    "stageRange": "0",
+    "tag": "4|26|16|50",
+    "weight": "100",
+    "price": "30"
+  },
+  {
+    "id": "402",
+    "type": "1",
+    "name": "storePropNameS402",
+    "icon": "25114",
+    "stageRange": "0",
+    "tag": "4|26|15",
+    "weight": "100",
+    "price": "30"
+  },
+  {
+    "id": "403",
+    "type": "1",
+    "name": "storePropNameS403",
+    "icon": "25115",
+    "stageRange": "0",
+    "tag": "4",
+    "weight": "100",
+    "price": "30"
+  },
+  {
+    "id": "501",
+    "type": "1",
+    "name": "storePropNameS501",
+    "icon": "16111",
+    "stageRange": "0",
+    "tag": "5|27",
+    "weight": "100",
+    "price": "30"
+  },
+  {
+    "id": "502",
+    "type": "1",
+    "name": "storePropNameS502",
+    "icon": "26113",
+    "stageRange": "0",
+    "tag": "5|35|28|50",
+    "weight": "100",
+    "price": "30"
+  },
+  {
+    "id": "503",
+    "type": "1",
+    "name": "storePropNameS503",
+    "icon": "26116",
+    "stageRange": "0",
+    "tag": "5|35|27|28",
+    "weight": "100",
+    "price": "30"
+  },
+  {
+    "id": "601",
+    "type": "1",
+    "name": "storePropNameS601",
+    "icon": "27111",
+    "stageRange": "0",
+    "tag": "6|19|14|50",
+    "weight": "100",
+    "price": "30"
+  },
+  {
+    "id": "602",
+    "type": "1",
+    "name": "storePropNameS602",
+    "icon": "27115",
+    "stageRange": "0",
+    "tag": "6|19",
+    "weight": "100",
+    "price": "30"
+  },
+  {
+    "id": "603",
+    "type": "1",
+    "name": "storePropNameS603",
+    "icon": "27116",
+    "stageRange": "0",
+    "tag": "6|34",
+    "weight": "100",
+    "price": "30"
+  },
+  {
+    "id": "1101",
+    "type": "1",
+    "name": "storePropNameS1101",
+    "icon": "41113",
+    "stageRange": "0",
+    "tag": "7|29|15|50",
+    "weight": "100",
+    "price": "30"
+  },
+  {
+    "id": "1102",
+    "type": "1",
+    "name": "storePropNameS1102",
+    "icon": "51114",
+    "stageRange": "0",
+    "tag": "7|29|34|15",
+    "weight": "100",
+    "price": "30"
+  },
+  {
+    "id": "1103",
+    "type": "1",
+    "name": "storePropNameS1103",
+    "icon": "51116",
+    "stageRange": "0",
+    "tag": "7|29|15",
+    "weight": "100",
+    "price": "30"
+  },
+  {
+    "id": "1201",
+    "type": "1",
+    "name": "storePropNameS1201",
+    "icon": "42112",
+    "stageRange": "0",
+    "tag": "8|20|30|19",
+    "weight": "100",
+    "price": "30"
+  },
+  {
+    "id": "1202",
+    "type": "1",
+    "name": "storePropNameS1202",
+    "icon": "42113",
+    "stageRange": "0",
+    "tag": "8|35|30",
+    "weight": "100",
+    "price": "30"
+  },
+  {
+    "id": "1203",
+    "type": "1",
+    "name": "storePropNameS1203",
+    "icon": "52116",
+    "stageRange": "0",
+    "tag": "8",
+    "weight": "100",
+    "price": "30"
+  },
+  {
+    "id": "1301",
+    "type": "1",
+    "name": "storePropNameS1301",
+    "icon": "43113",
+    "stageRange": "0",
+    "tag": "9",
+    "weight": "100",
+    "price": "30"
+  },
+  {
+    "id": "1302",
+    "type": "1",
+    "name": "storePropNameS1302",
+    "icon": "53113",
+    "stageRange": "0",
+    "tag": "9",
+    "weight": "100",
+    "price": "30"
+  },
+  {
+    "id": "1303",
+    "type": "1",
+    "name": "storePropNameS1303",
+    "icon": "53116",
+    "stageRange": "0",
+    "tag": "9|42|50",
+    "weight": "100",
+    "price": "30"
+  },
+  {
+    "id": "1304",
+    "type": "1",
+    "name": "storePropNameS1304",
+    "icon": "43112",
+    "stageRange": "0",
+    "tag": "0",
+    "weight": "0",
+    "price": "30"
+  },
+  {
+    "id": "1401",
+    "type": "1",
+    "name": "storePropNameS1401",
+    "icon": "54111",
+    "stageRange": "0",
+    "tag": "10|32|42|33",
+    "weight": "100",
+    "price": "30"
+  },
+  {
+    "id": "1402",
+    "type": "1",
+    "name": "storePropNameS1402",
+    "icon": "54113",
+    "stageRange": "0",
+    "tag": "10|34|32",
+    "weight": "100",
+    "price": "30"
+  },
+  {
+    "id": "1403",
+    "type": "1",
+    "name": "storePropNameS1403",
+    "icon": "54114",
+    "stageRange": "0",
+    "tag": "10|33",
+    "weight": "100",
+    "price": "30"
+  },
+  {
+    "id": "1501",
+    "type": "1",
+    "name": "storePropNameS1501",
+    "icon": "45113",
+    "stageRange": "0",
+    "tag": "11|26",
+    "weight": "100",
+    "price": "30"
+  },
+  {
+    "id": "1502",
+    "type": "1",
+    "name": "storePropNameS1502",
+    "icon": "55112",
+    "stageRange": "0",
+    "tag": "11|36|37",
+    "weight": "100",
+    "price": "30"
+  },
+  {
+    "id": "1503",
+    "type": "1",
+    "name": "storePropNameS1503",
+    "icon": "55114",
+    "stageRange": "0",
+    "tag": "11|36|37",
+    "weight": "100",
+    "price": "30"
+  },
+  {
+    "id": "1601",
+    "type": "1",
+    "name": "storePropNameS1601",
+    "icon": "56112",
+    "stageRange": "0",
+    "tag": "12|36|38",
+    "weight": "100",
+    "price": "30"
+  },
+  {
+    "id": "1602",
+    "type": "1",
+    "name": "storePropNameS1602",
+    "icon": "56113",
+    "stageRange": "0",
+    "tag": "0",
+    "weight": "0",
+    "price": "30"
+  },
+  {
+    "id": "1603",
+    "type": "1",
+    "name": "storePropNameS1603",
+    "icon": "56115",
+    "stageRange": "0",
+    "tag": "12|36|39",
+    "weight": "100",
+    "price": "30"
+  },
+  {
+    "id": "1604",
+    "type": "1",
+    "name": "storePropNameS1604",
+    "icon": "56116",
+    "stageRange": "0",
+    "tag": "12|36|38",
+    "weight": "100",
+    "price": "30"
+  },
+  {
+    "id": "10001",
+    "type": "2",
+    "name": "storePropNameS10001",
+    "icon": "type_1",
+    "stageRange": "0",
+    "tag": "0",
+    "weight": "0",
+    "price": "0"
+  },
+  {
+    "id": "20001",
+    "type": "2",
+    "name": "storePropNameS20001",
+    "icon": "type_2",
+    "stageRange": "0",
+    "tag": "0",
+    "weight": "0",
+    "price": "0"
+  },
+  {
+    "id": "30001",
+    "type": "2",
+    "name": "storePropNameS30001",
+    "icon": "type_3",
+    "stageRange": "0",
+    "tag": "0",
+    "weight": "0",
+    "price": "0"
+  },
+  {
+    "id": "40001",
+    "type": "2",
+    "name": "storePropNameS40001",
+    "icon": "type_4",
+    "stageRange": "0",
+    "tag": "0",
+    "weight": "0",
+    "price": "0"
+  },
+  {
+    "id": "50001",
+    "type": "2",
+    "name": "storePropNameS50001",
+    "icon": "type_5",
+    "stageRange": "0",
+    "tag": "0",
+    "weight": "0",
+    "price": "0"
+  },
+  {
+    "id": "60001",
+    "type": "2",
+    "name": "storePropNameS60001",
+    "icon": "type_6",
+    "stageRange": "0",
+    "tag": "0",
+    "weight": "0",
+    "price": "0"
+  },
+  {
+    "id": "70001",
+    "type": "2",
+    "name": "storePropNameS70001",
+    "icon": "type_7",
+    "stageRange": "0",
+    "tag": "0",
+    "weight": "0",
+    "price": "0"
+  },
+  {
+    "id": "80001",
+    "type": "2",
+    "name": "storePropNameS80001",
+    "icon": "type_8",
+    "stageRange": "0",
+    "tag": "0",
+    "weight": "0",
+    "price": "0"
+  },
+  {
+    "id": "400001",
+    "type": "3",
+    "name": "storePropNameS400001",
+    "icon": "lingyuxiaoguai3",
+    "stageRange": "0",
+    "tag": "0",
+    "weight": "0",
+    "price": "0"
+  },
+  {
+    "id": "400002",
+    "type": "3",
+    "name": "storePropNameS400002",
+    "icon": "chiling",
+    "stageRange": "0",
+    "tag": "0",
+    "weight": "0",
+    "price": "0"
+  },
+  {
+    "id": "400003",
+    "type": "3",
+    "name": "storePropNameS400003",
+    "icon": "jingweiyumao",
+    "stageRange": "0",
+    "tag": "0",
+    "weight": "0",
+    "price": "0"
+  },
+  {
+    "id": "400004",
+    "type": "3",
+    "name": "storePropNameS400004",
+    "icon": "zhenlingfeidao",
+    "stageRange": "0",
+    "tag": "0",
+    "weight": "0",
+    "price": "0"
+  },
+  {
+    "id": "400005",
+    "type": "3",
+    "name": "storePropNameS400005",
+    "icon": "dangkangyalian",
+    "stageRange": "0",
+    "tag": "0",
+    "weight": "0",
+    "price": "0"
+  },
+  {
+    "id": "400006",
+    "type": "3",
+    "name": "storePropNameS400006",
+    "icon": "dengxianjian",
+    "stageRange": "0",
+    "tag": "0",
+    "weight": "0",
+    "price": "0"
+  },
+  {
+    "id": "400007",
+    "type": "3",
+    "name": "storePropNameS400007",
+    "icon": "shenmuguo",
+    "stageRange": "0",
+    "tag": "0",
+    "weight": "0",
+    "price": "0"
+  },
+  {
+    "id": "400008",
+    "type": "3",
+    "name": "storePropNameS400008",
+    "icon": "yumao",
+    "stageRange": "0",
+    "tag": "0",
+    "weight": "0",
+    "price": "0"
+  },
+  {
+    "id": "400009",
+    "type": "3",
+    "name": "storePropNameS400009",
+    "icon": "yinjie_3",
+    "stageRange": "0",
+    "tag": "0",
+    "weight": "0",
+    "price": "0"
+  },
+  {
+    "id": "400010",
+    "type": "3",
+    "name": "storePropNameS400010",
+    "icon": "wudaozhu",
+    "stageRange": "0",
+    "tag": "0",
+    "weight": "0",
+    "price": "0"
+  },
+  {
+    "id": "400011",
+    "type": "3",
+    "name": "storePropNameS400011",
+    "icon": "yingzhaoxiaoguaisucai3",
+    "stageRange": "0",
+    "tag": "0",
+    "weight": "0",
+    "price": "0"
+  },
+  {
+    "id": "400012",
+    "type": "3",
+    "name": "storePropNameS400012",
+    "icon": "yuanjicizhen",
+    "stageRange": "0",
+    "tag": "0",
+    "weight": "0",
+    "price": "0"
+  },
+  {
+    "id": "400013",
+    "type": "3",
+    "name": "storePropNameS400013",
+    "icon": "zijideguo_2",
+    "stageRange": "0",
+    "tag": "0",
+    "weight": "0",
+    "price": "0"
+  },
+  {
+    "id": "400014",
+    "type": "3",
+    "name": "storePropNameS400014",
+    "icon": "cexiandehua",
+    "stageRange": "0",
+    "tag": "0",
+    "weight": "0",
+    "price": "0"
+  },
+  {
+    "id": "400015",
+    "type": "3",
+    "name": "storePropNameS400015",
+    "icon": "fengshuijinengshu",
+    "stageRange": "0",
+    "tag": "0",
+    "weight": "0",
+    "price": "0"
+  },
+  {
+    "id": "400016",
+    "type": "3",
+    "name": "storePropNameS400016",
+    "icon": "hongyinyanghuo",
+    "stageRange": "0",
+    "tag": "0",
+    "weight": "0",
+    "price": "0"
+  },
+  {
+    "id": "400017",
+    "type": "3",
+    "name": "storePropNameS400017",
+    "icon": "xiantianrenshui",
+    "stageRange": "0",
+    "tag": "0",
+    "weight": "0",
+    "price": "0"
+  },
+  {
+    "id": "400018",
+    "type": "3",
+    "name": "storePropNameS400018",
+    "icon": "fb_chui",
+    "stageRange": "0",
+    "tag": "0",
+    "weight": "0",
+    "price": "0"
+  },
+  {
+    "id": "400019",
+    "type": "3",
+    "name": "storePropNameS400019",
+    "icon": "fenglinglanjinianpin",
+    "stageRange": "0",
+    "tag": "0",
+    "weight": "0",
+    "price": "0"
+  },
+  {
+    "id": "400020",
+    "type": "3",
+    "name": "storePropNameS400020",
+    "icon": "namingping",
+    "stageRange": "0",
+    "tag": "0",
+    "weight": "0",
+    "price": "0"
+  },
+  {
+    "id": "400021",
+    "type": "3",
+    "name": "storePropNameS400021",
+    "icon": "mulingdouqi",
+    "stageRange": "0",
+    "tag": "0",
+    "weight": "0",
+    "price": "0"
+  },
+  {
+    "id": "400022",
+    "type": "3",
+    "name": "storePropNameS400022",
+    "icon": "luoxuefurong",
+    "stageRange": "0",
+    "tag": "0",
+    "weight": "0",
+    "price": "0"
+  },
+  {
+    "id": "400023",
+    "type": "3",
+    "name": "storePropNameS400023",
+    "icon": "liuguangxuanjin",
+    "stageRange": "0",
+    "tag": "0",
+    "weight": "0",
+    "price": "0"
+  },
+  {
+    "id": "400024",
+    "type": "3",
+    "name": "storePropNameS400024",
+    "icon": "zhuyanguo",
+    "stageRange": "0",
+    "tag": "0",
+    "weight": "0",
+    "price": "0"
+  },
+  {
+    "id": "400025",
+    "type": "3",
+    "name": "storePropNameS400025",
+    "icon": "shenmiyuren",
+    "stageRange": "0",
+    "tag": "0",
+    "weight": "0",
+    "price": "0"
+  },
+  {
+    "id": "400026",
+    "type": "3",
+    "name": "storePropNameS400026",
+    "icon": "sherigong",
+    "stageRange": "0",
+    "tag": "0",
+    "weight": "0",
+    "price": "0"
+  },
+  {
+    "id": "400027",
+    "type": "3",
+    "name": "storePropNameS400027",
+    "icon": "bahuanglu",
+    "stageRange": "0",
+    "tag": "0",
+    "weight": "0",
+    "price": "0"
+  },
+  {
+    "id": "400028",
+    "type": "3",
+    "name": "storePropNameS400028",
+    "icon": "dan1",
+    "stageRange": "0",
+    "tag": "0",
+    "weight": "0",
+    "price": "0"
+  },
+  {
+    "id": "400029",
+    "type": "3",
+    "name": "storePropNameS400029",
+    "icon": "fb_doupeng",
+    "stageRange": "0",
+    "tag": "0",
+    "weight": "0",
+    "price": "0"
+  },
+  {
+    "id": "400030",
+    "type": "3",
+    "name": "storePropNameS400030",
+    "icon": "feiluodi",
+    "stageRange": "0",
+    "tag": "0",
+    "weight": "0",
+    "price": "0"
+  },
+  {
+    "id": "400031",
+    "type": "3",
+    "name": "storePropNameS400031",
+    "icon": "fb_baozhu",
+    "stageRange": "0",
+    "tag": "0",
+    "weight": "0",
+    "price": "0"
+  },
+  {
+    "id": "400032",
+    "type": "3",
+    "name": "storePropNameS400032",
+    "icon": "hanguangcangercao",
+    "stageRange": "0",
+    "tag": "0",
+    "weight": "0",
+    "price": "0"
+  },
+  {
+    "id": "400033",
+    "type": "3",
+    "name": "storePropNameS400033",
+    "icon": "wannianbaifushen",
+    "stageRange": "0",
+    "tag": "0",
+    "weight": "0",
+    "price": "0"
+  },
+  {
+    "id": "400034",
+    "type": "3",
+    "name": "storePropNameS400034",
+    "icon": "qiyuzouwu",
+    "stageRange": "0",
+    "tag": "0",
+    "weight": "0",
+    "price": "0"
+  },
+  {
+    "id": "400035",
+    "type": "3",
+    "name": "storePropNameS400035",
+    "icon": "xunlinfu",
+    "stageRange": "0",
+    "tag": "0",
+    "weight": "0",
+    "price": "0"
+  },
+  {
+    "id": "400036",
+    "type": "3",
+    "name": "storePropNameS400036",
+    "icon": "mulingdouzhu",
+    "stageRange": "0",
+    "tag": "0",
+    "weight": "0",
+    "price": "0"
+  },
+  {
+    "id": "400037",
+    "type": "3",
+    "name": "storePropNameS400037",
+    "icon": "yuzhuo",
+    "stageRange": "0",
+    "tag": "0",
+    "weight": "0",
+    "price": "0"
+  },
+  {
+    "id": "400038",
+    "type": "3",
+    "name": "storePropNameS400038",
+    "icon": "yun",
+    "stageRange": "0",
+    "tag": "0",
+    "weight": "0",
+    "price": "0"
+  },
+  {
+    "id": "400039",
+    "type": "3",
+    "name": "storePropNameS400039",
+    "icon": "maorongrongdebaiweiba1",
+    "stageRange": "0",
+    "tag": "0",
+    "weight": "0",
+    "price": "0"
+  },
+  {
+    "id": "400040",
+    "type": "3",
+    "name": "storePropNameS400040",
+    "icon": "lingguibujia",
+    "stageRange": "0",
+    "tag": "0",
+    "weight": "0",
+    "price": "0"
+  },
+  {
+    "id": "400041",
+    "type": "3",
+    "name": "storePropNameS400041",
+    "icon": "zhangyousucai",
+    "stageRange": "0",
+    "tag": "0",
+    "weight": "0",
+    "price": "0"
+  },
+  {
+    "id": "400042",
+    "type": "3",
+    "name": "storePropNameS400042",
+    "icon": "heipaomianzhao",
+    "stageRange": "0",
+    "tag": "0",
+    "weight": "0",
+    "price": "0"
+  },
+  {
+    "id": "400043",
+    "type": "3",
+    "name": "storePropNameS400043",
+    "icon": "biyun",
+    "stageRange": "0",
+    "tag": "0",
+    "weight": "0",
+    "price": "0"
+  },
+  {
+    "id": "400044",
+    "type": "3",
+    "name": "storePropNameS400044",
+    "icon": "yinquqin",
+    "stageRange": "0",
+    "tag": "0",
+    "weight": "0",
+    "price": "0"
+  },
+  {
+    "id": "400045",
+    "type": "3",
+    "name": "storePropNameS400045",
+    "icon": "fabaotongjing",
+    "stageRange": "0",
+    "tag": "0",
+    "weight": "0",
+    "price": "0"
+  },
+  {
+    "id": "400046",
+    "type": "3",
+    "name": "storePropNameS400046",
+    "icon": "longguqingjin",
+    "stageRange": "0",
+    "tag": "0",
+    "weight": "0",
+    "price": "0"
+  },
+  {
+    "id": "400047",
+    "type": "3",
+    "name": "storePropNameS400047",
+    "icon": "zhengdaozhiqi",
+    "stageRange": "0",
+    "tag": "0",
+    "weight": "0",
+    "price": "0"
+  },
+  {
+    "id": "400048",
+    "type": "3",
+    "name": "storePropNameS400048",
+    "icon": "renmianyuwencaitaopen",
+    "stageRange": "0",
+    "tag": "0",
+    "weight": "0",
+    "price": "0"
+  },
+  {
+    "id": "400049",
+    "type": "3",
+    "name": "storePropNameS400049",
+    "icon": "jimengxiaoguaisucai2",
+    "stageRange": "0",
+    "tag": "0",
+    "weight": "0",
+    "price": "0"
+  },
+  {
+    "id": "400050",
+    "type": "3",
+    "name": "storePropNameS400050",
+    "icon": "dangkanghaojiao",
+    "stageRange": "0",
+    "tag": "0",
+    "weight": "0",
+    "price": "0"
+  },
+  {
+    "id": "400051",
+    "type": "3",
+    "name": "storePropNameS400051",
+    "icon": "dingyueqi",
+    "stageRange": "0",
+    "tag": "0",
+    "weight": "0",
+    "price": "0"
+  },
+  {
+    "id": "400052",
+    "type": "3",
+    "name": "storePropNameS400052",
+    "icon": "taoyingding",
+    "stageRange": "0",
+    "tag": "0",
+    "weight": "0",
+    "price": "0"
+  },
+  {
+    "id": "400053",
+    "type": "3",
+    "name": "storePropNameS400053",
+    "icon": "yingzhaosucai",
+    "stageRange": "0",
+    "tag": "0",
+    "weight": "0",
+    "price": "0"
+  },
+  {
+    "id": "400054",
+    "type": "3",
+    "name": "storePropNameS400054",
+    "icon": "jipinchentanshui",
+    "stageRange": "0",
+    "tag": "0",
+    "weight": "0",
+    "price": "0"
+  },
+  {
+    "id": "400055",
+    "type": "3",
+    "name": "storePropNameS400055",
+    "icon": "xiangwenbishou",
+    "stageRange": "0",
+    "tag": "0",
+    "weight": "0",
+    "price": "0"
+  },
+  {
+    "id": "400056",
+    "type": "3",
+    "name": "storePropNameS400056",
+    "icon": "jiliang",
+    "stageRange": "0",
+    "tag": "0",
+    "weight": "0",
+    "price": "0"
+  },
+  {
+    "id": "400057",
+    "type": "3",
+    "name": "storePropNameS400057",
+    "icon": "fb_yuxi",
+    "stageRange": "0",
+    "tag": "0",
+    "weight": "0",
+    "price": "0"
+  },
+  {
+    "id": "400058",
+    "type": "3",
+    "name": "storePropNameS400058",
+    "icon": "mutongqiyelian",
+    "stageRange": "0",
+    "tag": "0",
+    "weight": "0",
+    "price": "0"
+  },
+  {
+    "id": "400059",
+    "type": "3",
+    "name": "storePropNameS400059",
+    "icon": "xianlu_yuehualu",
+    "stageRange": "0",
+    "tag": "0",
+    "weight": "0",
+    "price": "0"
+  },
+  {
+    "id": "400060",
+    "type": "3",
+    "name": "storePropNameS400060",
+    "icon": "yulongjue",
+    "stageRange": "0",
+    "tag": "0",
+    "weight": "0",
+    "price": "0"
+  },
+  {
+    "id": "400061",
+    "type": "3",
+    "name": "storePropNameS400061",
+    "icon": "yulongshuang",
+    "stageRange": "0",
+    "tag": "0",
+    "weight": "0",
+    "price": "0"
+  },
+  {
+    "id": "400062",
+    "type": "3",
+    "name": "storePropNameS400062",
+    "icon": "xuanyu",
+    "stageRange": "0",
+    "tag": "0",
+    "weight": "0",
+    "price": "0"
+  },
+  {
+    "id": "400063",
+    "type": "3",
+    "name": "storePropNameS400063",
+    "icon": "baituitiancansi",
+    "stageRange": "0",
+    "tag": "0",
+    "weight": "0",
+    "price": "0"
+  },
+  {
+    "id": "400064",
+    "type": "3",
+    "name": "storePropNameS400064",
+    "icon": "yanghunlu",
+    "stageRange": "0",
+    "tag": "0",
+    "weight": "0",
+    "price": "0"
+  },
+  {
+    "id": "400065",
+    "type": "3",
+    "name": "storePropNameS400065",
+    "icon": "xianjiyumao",
+    "stageRange": "0",
+    "tag": "0",
+    "weight": "0",
+    "price": "0"
+  },
+  {
+    "id": "400066",
+    "type": "3",
+    "name": "storePropNameS400066",
+    "icon": "mulingguo",
+    "stageRange": "0",
+    "tag": "0",
+    "weight": "0",
+    "price": "0"
+  },
+  {
+    "id": "400067",
+    "type": "3",
+    "name": "storePropNameS400067",
+    "icon": "danzongqingjian",
+    "stageRange": "0",
+    "tag": "0",
+    "weight": "0",
+    "price": "0"
+  },
+  {
+    "id": "400068",
+    "type": "3",
+    "name": "storePropNameS400068",
+    "icon": "daoshifangyu",
+    "stageRange": "0",
+    "tag": "0",
+    "weight": "0",
+    "price": "0"
+  },
+  {
+    "id": "400069",
+    "type": "3",
+    "name": "storePropNameS400069",
+    "icon": "fengxuansi",
+    "stageRange": "0",
+    "tag": "0",
+    "weight": "0",
+    "price": "0"
+  },
+  {
+    "id": "400070",
+    "type": "3",
+    "name": "storePropNameS400070",
+    "icon": "lingye",
+    "stageRange": "0",
+    "tag": "0",
+    "weight": "0",
+    "price": "0"
+  },
+  {
+    "id": "400071",
+    "type": "3",
+    "name": "storePropNameS400071",
+    "icon": "kumujian",
+    "stageRange": "0",
+    "tag": "0",
+    "weight": "0",
+    "price": "0"
+  },
+  {
+    "id": "400072",
+    "type": "3",
+    "name": "storePropNameS400072",
+    "icon": "bengshanyan",
+    "stageRange": "0",
+    "tag": "0",
+    "weight": "0",
+    "price": "0"
+  },
+  {
+    "id": "400073",
+    "type": "3",
+    "name": "storePropNameS400073",
+    "icon": "baixiongxiangxitu",
+    "stageRange": "0",
+    "tag": "0",
+    "weight": "0",
+    "price": "0"
+  },
+  {
+    "id": "400074",
+    "type": "3",
+    "name": "storePropNameS400074",
+    "icon": "zhuchai",
+    "stageRange": "0",
+    "tag": "0",
+    "weight": "0",
+    "price": "0"
+  },
+  {
+    "id": "400075",
+    "type": "3",
+    "name": "storePropNameS400075",
+    "icon": "pohunfeijian",
+    "stageRange": "0",
+    "tag": "0",
+    "weight": "0",
+    "price": "0"
+  },
+  {
+    "id": "400076",
+    "type": "3",
+    "name": "storePropNameS400076",
+    "icon": "dijiangjinianpin",
+    "stageRange": "0",
+    "tag": "0",
+    "weight": "0",
+    "price": "0"
+  },
+  {
+    "id": "400077",
+    "type": "3",
+    "name": "storePropNameS400077",
+    "icon": "tianyuanbi",
+    "stageRange": "0",
+    "tag": "0",
+    "weight": "0",
+    "price": "0"
+  },
+  {
+    "id": "400078",
+    "type": "3",
+    "name": "storePropNameS400078",
+    "icon": "donghuangzhong",
+    "stageRange": "0",
+    "tag": "0",
+    "weight": "0",
+    "price": "0"
+  },
+  {
+    "id": "400079",
+    "type": "3",
+    "name": "storePropNameS400079",
+    "icon": "laohujinianpin",
+    "stageRange": "0",
+    "tag": "0",
+    "weight": "0",
+    "price": "0"
+  },
+  {
+    "id": "400080",
+    "type": "3",
+    "name": "storePropNameS400080",
+    "icon": "jingjixueteng",
+    "stageRange": "0",
+    "tag": "0",
+    "weight": "0",
+    "price": "0"
+  },
+  {
+    "id": "410001",
+    "type": "3",
+    "name": "storePropNameS410001",
+    "icon": "dlc_carrot1",
+    "stageRange": "0",
+    "tag": "0",
+    "weight": "0",
+    "price": "0"
+  },
+  {
+    "id": "410002",
+    "type": "3",
+    "name": "storePropNameS410002",
+    "icon": "dlc_carrot2",
+    "stageRange": "0",
+    "tag": "0",
+    "weight": "0",
+    "price": "0"
+  },
+  {
+    "id": "410003",
+    "type": "3",
+    "name": "storePropNameS410003",
+    "icon": "dlc_carrot3",
+    "stageRange": "0",
+    "tag": "0",
+    "weight": "0",
+    "price": "0"
+  },
+  {
+    "id": "410004",
+    "type": "3",
+    "name": "storePropNameS410004",
+    "icon": "dlc_lisilingdan",
+    "stageRange": "0",
+    "tag": "0",
+    "weight": "0",
+    "price": "0"
+  },
+  {
+    "id": "410005",
+    "type": "3",
+    "name": "storePropNameS410005",
+    "icon": "dlc_lisilingdan",
+    "stageRange": "0",
+    "tag": "0",
+    "weight": "0",
+    "price": "0"
+  },
+  {
+    "id": "410006",
+    "type": "3",
+    "name": "storePropNameS410006",
+    "icon": "dlc_lisilingdan",
+    "stageRange": "0",
+    "tag": "0",
+    "weight": "0",
+    "price": "0"
+  },
+  {
+    "id": "410007",
+    "type": "3",
+    "name": "storePropNameS410007",
+    "icon": "dlc_mingguangzhu",
+    "stageRange": "0",
+    "tag": "0",
+    "weight": "0",
+    "price": "0"
+  },
+  {
+    "id": "410008",
+    "type": "3",
+    "name": "storePropNameS410008",
+    "icon": "dlc_dadbaodun",
+    "stageRange": "0",
+    "tag": "0",
+    "weight": "0",
+    "price": "0"
+  },
+  {
+    "id": "41111",
+    "type": "1",
+    "name": "storePropNameS41111",
+    "icon": "haotianyan_87",
+    "stageRange": "0",
+    "tag": "0",
+    "weight": "0",
+    "price": "0"
+  },
+  {
+    "id": "43111",
+    "type": "1",
+    "name": "storePropNameS43111",
+    "icon": "zhudongxf_50",
+    "stageRange": "0",
+    "tag": "18",
+    "weight": "0",
+    "price": "0"
+  },
+  {
+    "id": "210112",
+    "type": "1",
+    "name": "storePropNameS210112",
+    "icon": "haotianyan_71",
+    "stageRange": "0",
+    "tag": "36",
+    "weight": "0",
+    "price": "0"
+  },
+  {
+    "id": "210122",
+    "type": "1",
+    "name": "storePropNameS210122",
+    "icon": "quan_001",
+    "stageRange": "0",
+    "tag": "4",
+    "weight": "0",
+    "price": "0"
+  }
+]

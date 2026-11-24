@@ -1,0 +1,82 @@
+[
+  {
+    "id": "1",
+    "luck": "8000001",
+    "model": "maozi_10004",
+    "grade": "1",
+    "level": "1",
+    "heroesProb": "333"
+  },
+  {
+    "id": "2",
+    "luck": "8000001",
+    "model": "maozi_10004",
+    "grade": "2",
+    "level": "1",
+    "heroesProb": "424"
+  },
+  {
+    "id": "3",
+    "luck": "8000001",
+    "model": "maozi_10004",
+    "grade": "3",
+    "level": "1",
+    "heroesProb": "529"
+  },
+  {
+    "id": "4",
+    "luck": "8000001",
+    "model": "maozi_10004",
+    "grade": "4",
+    "level": "1",
+    "heroesProb": "601"
+  },
+  {
+    "id": "5",
+    "luck": "8000001",
+    "model": "maozi_10004",
+    "grade": "5",
+    "level": "1",
+    "heroesProb": "686"
+  },
+  {
+    "id": "6",
+    "luck": "8000001",
+    "model": "maozi_10004",
+    "grade": "6",
+    "level": "1",
+    "heroesProb": "790"
+  },
+  {
+    "id": "7",
+    "luck": "8000001",
+    "model": "maozi_10004",
+    "grade": "7",
+    "level": "1",
+    "heroesProb": "863"
+  },
+  {
+    "id": "8",
+    "luck": "8000001",
+    "model": "maozi_10004",
+    "grade": "8",
+    "level": "1",
+    "heroesProb": "1058"
+  },
+  {
+    "id": "9",
+    "luck": "8000001",
+    "model": "maozi_10004",
+    "grade": "9",
+    "level": "1",
+    "heroesProb": "1682"
+  },
+  {
+    "id": "10",
+    "luck": "8000001",
+    "model": "maozi_10004",
+    "grade": "10",
+    "level": "1",
+    "heroesProb": "2016"
+  }
+]

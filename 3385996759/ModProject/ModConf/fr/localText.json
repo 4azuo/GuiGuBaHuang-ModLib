@@ -1,0 +1,127 @@
+[
+	{
+		"id": "999990000",
+		"key": "libtxt999990000",
+		"en|ch|tc|kr": "Avertissement"
+	},
+	{
+		"id": "999990001",
+		"key": "libtxt999990001",
+		"en|ch|tc|kr": "Le UI de ModLib est optimisé pour le format d'écran 16:9."
+	},
+	{
+		"id": "999990002",
+		"key": "libtxt999990002",
+		"en|ch|tc|kr": "Il exécutera un benchmark pour initialiser RAM pour le jeu."
+	},
+	{
+		"id": "999990003",
+		"key": "libtxt999990003",
+		"en|ch|tc|kr": "Vous devez réinitialiser le jeu !"
+	},
+	{
+		"id": "999990004",
+		"key": "libtxt999990004",
+		"en|ch|tc|kr": "C'est la première fois. Voulez-vous exécuter un benchmark pour initialiser RAM pour le jeu ?"
+	},
+	{
+		"id": "999990005",
+		"key": "libtxt999990005",
+		"en|ch|tc|kr": "DEFAULT_DRAMA_OPT"
+	},
+	{
+		"id": "999990006",
+		"key": "libtxt999990006",
+		"en|ch|tc|kr": "Masquer les exceptions"
+	},
+	{
+		"id": "999990007",
+		"key": "libtxt999990007",
+		"en|ch|tc|kr": "(Veuillez activer si vous souhaitez signaler des bugs)"
+	},
+	{
+		"id": "999990008",
+		"key": "libtxt999990008",
+		"en|ch|tc|kr": "Page {0}"
+	},
+	{
+		"id": "999990009",
+		"key": "libtxt999990009",
+		"en|ch|tc|kr": "ModCreator"
+	},
+	{
+		"id": "999990010",
+		"key": "libtxt999990010",
+		"en|ch|tc|kr": "Vérifier les ID"
+	},
+	{
+		"id": "999990011",
+		"key": "libtxt999990011",
+		"en|ch|tc|kr": "Vérifier les ID en double chargés par ModLib."
+	},
+	{
+		"id": "999990012",
+		"key": "libtxt999990012",
+		"en|ch|tc|kr": "Exporter"
+	},
+	{
+		"id": "999990013",
+		"key": "libtxt999990013",
+		"en|ch|tc|kr": "Exporter toutes les ressources du jeu."
+	},
+	{
+		"id": "999990014",
+		"key": "libtxt999990014",
+		"en|ch|tc|kr": "Propulsé par\nModLib de Fouru {0}"
+	},
+	{
+		"id": "999990015",
+		"key": "libtxt999990015",
+		"en|ch|tc|kr": "Langue :"
+	},
+	{
+		"id": "999990016",
+		"key": "libtxt999990016",
+		"en|ch|tc|kr": "Par défaut"
+	},
+	{
+		"id": "999990017",
+		"key": "libtxt999990017",
+		"en|ch|tc|kr": "Exception"
+	},
+	{
+		"id": "999990018",
+		"key": "libtxt999990018",
+		"en|ch|tc|kr": "Ouvrir le journal"
+	},
+	{
+		"id": "999990019",
+		"key": "libtxt999990019",
+		"en|ch|tc|kr": "Rapports d'erreurs"
+	},
+	{
+		"id": "999990020",
+		"key": "libtxt999990020",
+		"en|ch|tc|kr": "Quand un de ces mods rencontre une erreur, ModLib peut-il envoyer un rapport d'erreur à son auteur (service BugSplat) ?\n{2}\n\nEnvoyé : le message d'erreur et l'endroit du code où elle s'est produite, les dernières lignes du journal du mod (sans votre dossier utilisateur, votre compte Windows ni votre identifiant de joueur), les versions du jeu, de ModLib et des mods, les identifiants des mods chargés, la langue et un identifiant aléatoire anonyme.\nJamais envoyé : vos sauvegardes ou votre compte Steam.\n\nVous pouvez changer votre réponse à tout moment : écran titre > {0} > {1}."
+	},
+	{
+		"id": "999990021",
+		"key": "libtxt999990021",
+		"en|ch|tc|kr": "Autorisé : les erreurs sont envoyées à l'auteur du mod."
+	},
+	{
+		"id": "999990022",
+		"key": "libtxt999990022",
+		"en|ch|tc|kr": "Non autorisé : rien n'est envoyé."
+	},
+	{
+		"id": "999990023",
+		"key": "libtxt999990023",
+		"en|ch|tc|kr": "Cette erreur a été signalée à l'auteur du mod (BugSplat). Merci !"
+	},
+	{
+		"id": "999990024",
+		"key": "libtxt999990024",
+		"en|ch|tc|kr": "Cette erreur n'a pas été envoyée à l'auteur du mod. Merci de la signaler (avec le journal) à l'auteur du mod."
+	}
+]

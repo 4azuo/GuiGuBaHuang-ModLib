@@ -1,0 +1,24 @@
+[
+  {
+    "id": "600601",
+    "type": "1",
+    "name": "npc_name6006",
+    "avatar": "6006",
+    "unitID": "0",
+    "modelID": "0",
+    "isHpUI": "0",
+    "dramaId": "0",
+    "repatDialogue": "0"
+  },
+  {
+    "id": "600701",
+    "type": "1",
+    "name": "npc_name6007",
+    "avatar": "6007",
+    "unitID": "0",
+    "modelID": "0",
+    "isHpUI": "0",
+    "dramaId": "0",
+    "repatDialogue": "0"
+  }
+]

@@ -1,0 +1,2272 @@
+[
+  {
+    "id": "50011",
+    "effectType": "4",
+    "value": "hpMax_1_1_1"
+  },
+  {
+    "id": "50012",
+    "effectType": "4",
+    "value": "hpMax_1_1_1"
+  },
+  {
+    "id": "50013",
+    "effectType": "4",
+    "value": "hpMax_1_2_2"
+  },
+  {
+    "id": "50021",
+    "effectType": "4",
+    "value": "hpMax_1_1_1"
+  },
+  {
+    "id": "50022",
+    "effectType": "4",
+    "value": "hpMax_1_1_1"
+  },
+  {
+    "id": "50023",
+    "effectType": "4",
+    "value": "hpMax_1_3_3"
+  },
+  {
+    "id": "50031",
+    "effectType": "4",
+    "value": "hpMax_1_1_1"
+  },
+  {
+    "id": "50032",
+    "effectType": "4",
+    "value": "hpMax_1_1_1"
+  },
+  {
+    "id": "50033",
+    "effectType": "4",
+    "value": "hpMax_1_4_4"
+  },
+  {
+    "id": "50041",
+    "effectType": "4",
+    "value": "hpMax_1_2_2"
+  },
+  {
+    "id": "50042",
+    "effectType": "4",
+    "value": "hpMax_1_2_2"
+  },
+  {
+    "id": "50043",
+    "effectType": "4",
+    "value": "hpMax_1_5_5"
+  },
+  {
+    "id": "50051",
+    "effectType": "4",
+    "value": "hpMax_1_2_2"
+  },
+  {
+    "id": "50052",
+    "effectType": "4",
+    "value": "hpMax_1_2_2"
+  },
+  {
+    "id": "50053",
+    "effectType": "4",
+    "value": "hpMax_1_5_5"
+  },
+  {
+    "id": "50061",
+    "effectType": "4",
+    "value": "hpMax_1_3_3"
+  },
+  {
+    "id": "50062",
+    "effectType": "4",
+    "value": "hpMax_1_3_3"
+  },
+  {
+    "id": "50063",
+    "effectType": "4",
+    "value": "hpMax_1_6_6"
+  },
+  {
+    "id": "50071",
+    "effectType": "4",
+    "value": "hpMax_1_3_3"
+  },
+  {
+    "id": "50072",
+    "effectType": "4",
+    "value": "hpMax_1_3_3"
+  },
+  {
+    "id": "50073",
+    "effectType": "4",
+    "value": "hpMax_1_6_6"
+  },
+  {
+    "id": "50081",
+    "effectType": "4",
+    "value": "hpMax_1_3_3"
+  },
+  {
+    "id": "50082",
+    "effectType": "4",
+    "value": "hpMax_1_3_3"
+  },
+  {
+    "id": "50083",
+    "effectType": "4",
+    "value": "hpMax_1_8_8"
+  },
+  {
+    "id": "50091",
+    "effectType": "4",
+    "value": "hpMax_1_3_3"
+  },
+  {
+    "id": "50092",
+    "effectType": "4",
+    "value": "hpMax_1_3_3"
+  },
+  {
+    "id": "50093",
+    "effectType": "4",
+    "value": "hpMax_1_9_9"
+  },
+  {
+    "id": "50101",
+    "effectType": "4",
+    "value": "hpMax_1_4_4"
+  },
+  {
+    "id": "50102",
+    "effectType": "4",
+    "value": "hpMax_1_4_4"
+  },
+  {
+    "id": "50103",
+    "effectType": "4",
+    "value": "hpMax_1_10_10"
+  },
+  {
+    "id": "50201",
+    "effectType": "4",
+    "value": "hpMax_1_8_14"
+  },
+  {
+    "id": "50202",
+    "effectType": "4",
+    "value": "hpMax_1_15_19"
+  },
+  {
+    "id": "50203",
+    "effectType": "4",
+    "value": "hpMax_1_20_24"
+  },
+  {
+    "id": "50204",
+    "effectType": "4",
+    "value": "hpMax_1_25_25"
+  },
+  {
+    "id": "50205",
+    "effectType": "4",
+    "value": "hpRestore_1_1_1"
+  },
+  {
+    "id": "50206",
+    "effectType": "4",
+    "value": "hpRestore_1_2_2"
+  },
+  {
+    "id": "50207",
+    "effectType": "4",
+    "value": "agile_1_1_2"
+  },
+  {
+    "id": "50208",
+    "effectType": "4",
+    "value": "agile_1_3_4"
+  },
+  {
+    "id": "50209",
+    "effectType": "4",
+    "value": "agile_1_5_7"
+  },
+  {
+    "id": "50210",
+    "effectType": "4",
+    "value": "agile_1_8_8"
+  },
+  {
+    "id": "50211",
+    "effectType": "4",
+    "value": "crit_1_1_2"
+  },
+  {
+    "id": "50212",
+    "effectType": "4",
+    "value": "crit_1_3_4"
+  },
+  {
+    "id": "50213",
+    "effectType": "4",
+    "value": "crit_1_5_7"
+  },
+  {
+    "id": "50214",
+    "effectType": "4",
+    "value": "crit_1_8_8"
+  },
+  {
+    "id": "50215",
+    "effectType": "4",
+    "value": "evade_1_3_4"
+  },
+  {
+    "id": "50216",
+    "effectType": "4",
+    "value": "evade_1_5_7"
+  },
+  {
+    "id": "50217",
+    "effectType": "4",
+    "value": "evade_1_8_9"
+  },
+  {
+    "id": "50218",
+    "effectType": "4",
+    "value": "evade_1_10_10"
+  },
+  {
+    "id": "50219",
+    "effectType": "4",
+    "value": "power_1_2_3"
+  },
+  {
+    "id": "50220",
+    "effectType": "4",
+    "value": "power_1_4_5"
+  },
+  {
+    "id": "50221",
+    "effectType": "4",
+    "value": "power_1_6_7"
+  },
+  {
+    "id": "50222",
+    "effectType": "4",
+    "value": "power_1_8_8"
+  },
+  {
+    "id": "50223",
+    "effectType": "4",
+    "value": "msp_1_15_19"
+  },
+  {
+    "id": "50224",
+    "effectType": "4",
+    "value": "msp_1_20_25"
+  },
+  {
+    "id": "50225",
+    "effectType": "4",
+    "value": "msp_1_26_29"
+  },
+  {
+    "id": "50226",
+    "effectType": "4",
+    "value": "msp_1_30_30"
+  },
+  {
+    "id": "50227",
+    "effectType": "4",
+    "value": "luck_1_6_8"
+  },
+  {
+    "id": "50228",
+    "effectType": "4",
+    "value": "luck_1_9_11"
+  },
+  {
+    "id": "50229",
+    "effectType": "4",
+    "value": "luck_1_12_14"
+  },
+  {
+    "id": "50230",
+    "effectType": "4",
+    "value": "luck_1_15_15"
+  },
+  {
+    "id": "10101",
+    "effectType": "6",
+    "value": "hpMax_1_&10101_hpMaxUp&|pfr_1_&10101_prfDown&"
+  },
+  {
+    "id": "10102",
+    "effectType": "6",
+    "value": "power_1_&10102_powerUp&|msp_1_&10102_luckDown&"
+  },
+  {
+    "id": "10103",
+    "effectType": "6",
+    "value": "hpSuck_1_&1001_leechProb%1&|hpRestore_1_&10103_hpRestoreDown&"
+  },
+  {
+    "id": "101041",
+    "effectType": "2",
+    "value": "attach_basBlade_critV_&10104_bladeToCritV&_99999"
+  },
+  {
+    "id": "101042",
+    "effectType": "6",
+    "value": "basBlade_1_&10104_bladeBasUp&"
+  },
+  {
+    "id": "10105",
+    "effectType": "2",
+    "value": "attach_hpMax_critV_&10105_hpToCritV&_99999"
+  },
+  {
+    "id": "10106",
+    "effectType": "6",
+    "value": "0"
+  },
+  {
+    "id": "10107",
+    "effectType": "6",
+    "value": "critV_1_&10107_critUp&"
+  },
+  {
+    "id": "10108",
+    "effectType": "6",
+    "value": "basBlade_1_&10108_basUp&|basSpear_1_&10108_basUp&|basSword_1_&10108_basUp&"
+  },
+  {
+    "id": "10109",
+    "effectType": "2",
+    "value": "attach_hpMax_crit_&10109_hpMaxToCrit&_999"
+  },
+  {
+    "id": "10113",
+    "effectType": "5",
+    "value": "actToStatus_3_&10112_leechNum&_hpMax_1_&10112_hpMaxUp&_&10112_hpUpMax&"
+  },
+  {
+    "id": "10114",
+    "effectType": "2",
+    "value": "attach_hpMax_jnfw_&10113_hpMaxToJnfw&_999"
+  },
+  {
+    "id": "10201",
+    "effectType": "6",
+    "value": "jnsc_1_&10201_rangeUp&|evade_1_&10201_evadeDown&"
+  },
+  {
+    "id": "10202",
+    "effectType": "6",
+    "value": "ddsl_1_&10202_bulletUp&|power_1_&10202_powerDown&"
+  },
+  {
+    "id": "10203",
+    "effectType": "6",
+    "value": "0"
+  },
+  {
+    "id": "102041",
+    "effectType": "2",
+    "value": "attach_basSpear_jnsc_&10204_spearToRange&_99999"
+  },
+  {
+    "id": "102042",
+    "effectType": "6",
+    "value": "basSpear_1_&10204_spearBasUp&"
+  },
+  {
+    "id": "10205",
+    "effectType": "6",
+    "value": "0"
+  },
+  {
+    "id": "10206",
+    "effectType": "6",
+    "value": "0"
+  },
+  {
+    "id": "102071",
+    "effectType": "6",
+    "value": "power_1_&10207_powerDown&"
+  },
+  {
+    "id": "102072",
+    "effectType": "2",
+    "value": "attach_jnsc_power_&10207_rangeToDmg&_99999"
+  },
+  {
+    "id": "10208",
+    "effectType": "6",
+    "value": "basWpAll_1_&10208_wpBasUp&"
+  },
+  {
+    "id": "10209",
+    "effectType": "6",
+    "value": "basSpear_1_&10209_basSpearUp&"
+  },
+  {
+    "id": "10301",
+    "effectType": "6",
+    "value": "evade_1_&10301_prfDown&|msp_1_&10301_mspUp&"
+  },
+  {
+    "id": "10302",
+    "effectType": "6",
+    "value": "power_1_&10302_powerDown&|ddct_1_&10302_ddctUp&"
+  },
+  {
+    "id": "10303",
+    "effectType": "6",
+    "value": "power_1_&10303_powerDown&|evade_1_&10303_evadeUp&"
+  },
+  {
+    "id": "103041",
+    "effectType": "2",
+    "value": "attach_basSword_msp_&10304_swordToSpeed&_99999"
+  },
+  {
+    "id": "103042",
+    "effectType": "6",
+    "value": "basSword_1_&10304_swordBasUp&"
+  },
+  {
+    "id": "10305",
+    "effectType": "6",
+    "value": "0"
+  },
+  {
+    "id": "10306",
+    "effectType": "6",
+    "value": "0"
+  },
+  {
+    "id": "10307",
+    "effectType": "6",
+    "value": "0"
+  },
+  {
+    "id": "10308",
+    "effectType": "6",
+    "value": "basSword_1_&10308_swordUp&"
+  },
+  {
+    "id": "10401",
+    "effectType": "6",
+    "value": "pfr_1_&10401_prfUp&|critV_1_&10401_evadeDown&"
+  },
+  {
+    "id": "10402",
+    "effectType": "6",
+    "value": "crit_1_&10402_critUp&|msp_1_&10402_mspDown&"
+  },
+  {
+    "id": "10403",
+    "effectType": "6",
+    "value": "hpMax_1_&10403_hpMaxUp&|jnsc_1_&10403_rangeDown&"
+  },
+  {
+    "id": "104041",
+    "effectType": "2",
+    "value": "attach_basFist_crit_&10404_fistToCrit&_99999"
+  },
+  {
+    "id": "104042",
+    "effectType": "6",
+    "value": "basFist_1_&10404_fistBasUp&"
+  },
+  {
+    "id": "10405",
+    "effectType": "6",
+    "value": "0"
+  },
+  {
+    "id": "10406",
+    "effectType": "6",
+    "value": "0"
+  },
+  {
+    "id": "10407",
+    "effectType": "6",
+    "value": "msp_1_&10407_mspDown&"
+  },
+  {
+    "id": "10408",
+    "effectType": "6",
+    "value": "basFist_1_&10408_basUp&|basPalm_1_&10408_basUp&|basFinger_1_&10408_basUp&"
+  },
+  {
+    "id": "10409",
+    "effectType": "6",
+    "value": "hpRestore_1_&10409_hpRestoreDown&|hpSuckV_1_&10409_hpSuckVDown&"
+  },
+  {
+    "id": "10411",
+    "effectType": "5",
+    "value": "everyEndStageStatus_1_&10411_shieldC&_shield_&10411_manaStoneMax&_&10411_maxUp&"
+  },
+  {
+    "id": "10501",
+    "effectType": "6",
+    "value": "evade_1_&10501_evadeUp&|hpMax_1_&10501_agileDown&"
+  },
+  {
+    "id": "10502",
+    "effectType": "6",
+    "value": "msp_1_&10502_mspUp&|crit_1_&10502_critDown&"
+  },
+  {
+    "id": "10503",
+    "effectType": "6",
+    "value": "jncx_1_&10503_jncxDown&"
+  },
+  {
+    "id": "10504",
+    "effectType": "6",
+    "value": "basPalm_1_&10504_palmBasUp&"
+  },
+  {
+    "id": "10505",
+    "effectType": "6",
+    "value": "0"
+  },
+  {
+    "id": "10506",
+    "effectType": "6",
+    "value": "0"
+  },
+  {
+    "id": "10507",
+    "effectType": "6",
+    "value": "0"
+  },
+  {
+    "id": "10508",
+    "effectType": "6",
+    "value": "basPalm_1_&10508_palmUp&"
+  },
+  {
+    "id": "10601",
+    "effectType": "6",
+    "value": "critV_1_&10601_critVUp&|power_1_&10601_powerDown&"
+  },
+  {
+    "id": "10602",
+    "effectType": "6",
+    "value": "power_1_&10602_powerUp&|exp_1_&10602_jnfwDown&"
+  },
+  {
+    "id": "10603",
+    "effectType": "6",
+    "value": "0"
+  },
+  {
+    "id": "106041",
+    "effectType": "2",
+    "value": "attach_basFinger_power_&10604_fingerToPower&_99999"
+  },
+  {
+    "id": "106042",
+    "effectType": "6",
+    "value": "basFinger_1_&10604_fingerBasUp&"
+  },
+  {
+    "id": "10605",
+    "effectType": "6",
+    "value": "0"
+  },
+  {
+    "id": "10606",
+    "effectType": "6",
+    "value": "0"
+  },
+  {
+    "id": "10607",
+    "effectType": "2",
+    "value": "attach_luck_power_&10607_luckToPower&_99999"
+  },
+  {
+    "id": "10608",
+    "effectType": "6",
+    "value": "basFinger_1_&10608_fingerUp&|luck_1_&10608_luckUp&"
+  },
+  {
+    "id": "11101",
+    "effectType": "6",
+    "value": "power_1_&11101_dmgSum&"
+  },
+  {
+    "id": "111011",
+    "effectType": "5",
+    "value": "nextStageTime_10"
+  },
+  {
+    "id": "11102",
+    "effectType": "6",
+    "value": "hpMax_1_&11102_hpSum&|zhgjsd_1_&11102_attSpeedSum&"
+  },
+  {
+    "id": "11103",
+    "effectType": "5",
+    "value": "nextStageStatus_enemyPow_1_&11103_dmgUpSum&"
+  },
+  {
+    "id": "11104",
+    "effectType": "6",
+    "value": "basFire_1_&11104_fireBasUp&"
+  },
+  {
+    "id": "11105",
+    "effectType": "6",
+    "value": "0"
+  },
+  {
+    "id": "11106",
+    "effectType": "6",
+    "value": "agile_1_&11106_speedSum&"
+  },
+  {
+    "id": "11107",
+    "effectType": "6",
+    "value": "power_1_&11107_lostDmg&"
+  },
+  {
+    "id": "11108",
+    "effectType": "6",
+    "value": "basFire_1_&11108_fire&|basFroze_1_&11108_water&"
+  },
+  {
+    "id": "11109",
+    "effectType": "6",
+    "value": "0"
+  },
+  {
+    "id": "11110",
+    "effectType": "6",
+    "value": "0"
+  },
+  {
+    "id": "11111",
+    "effectType": "6",
+    "value": "power_1_&11111_power&|luck_1_&11111_luck&"
+  },
+  {
+    "id": "11112",
+    "effectType": "6",
+    "value": "power_1_&11112_power&|evade_1_&11112_evade&"
+  },
+  {
+    "id": "11113",
+    "effectType": "6",
+    "value": "jncx_1_&11113_jncx&|power_1_&11113_power&"
+  },
+  {
+    "id": "11114",
+    "effectType": "6",
+    "value": "power_1_&11114_power&|pfr_1_&11114_pfr&"
+  },
+  {
+    "id": "11115",
+    "effectType": "6",
+    "value": "hpMax_1_&11115_hp&"
+  },
+  {
+    "id": "11116",
+    "effectType": "6",
+    "value": "hpMax_1_&11116_hp&"
+  },
+  {
+    "id": "11201",
+    "effectType": "6",
+    "value": "0"
+  },
+  {
+    "id": "11202",
+    "effectType": "6",
+    "value": "hpRestore_1_&11202_hpBack&|evade_1_&11202_mspSum&"
+  },
+  {
+    "id": "11203",
+    "effectType": "6",
+    "value": "0"
+  },
+  {
+    "id": "112041",
+    "effectType": "2",
+    "value": "attach_basFroze_hpRestore_&11204_hpBack|/11204_water|f2&_99999"
+  },
+  {
+    "id": "112042",
+    "effectType": "6",
+    "value": "basFroze_1_&11204_frozeBasUp&"
+  },
+  {
+    "id": "11205",
+    "effectType": "6",
+    "value": "pfr_1_&11205_pfr&"
+  },
+  {
+    "id": "11206",
+    "effectType": "6",
+    "value": "0"
+  },
+  {
+    "id": "11207",
+    "effectType": "2",
+    "value": "attach_hpMax_hpRestore_&11207_hpBack|/11207_hpMax|f2&_99999"
+  },
+  {
+    "id": "11208",
+    "effectType": "6",
+    "value": "basMgAll_1_&11208_allSum&"
+  },
+  {
+    "id": "11209",
+    "effectType": "6",
+    "value": "0"
+  },
+  {
+    "id": "11210",
+    "effectType": "6",
+    "value": "0"
+  },
+  {
+    "id": "11211",
+    "effectType": "6",
+    "value": "0"
+  },
+  {
+    "id": "11212",
+    "effectType": "6",
+    "value": "0"
+  },
+  {
+    "id": "11213",
+    "effectType": "6",
+    "value": "jnfw_1_&11213_one&|power_1_&11213_two&"
+  },
+  {
+    "id": "11214",
+    "effectType": "6",
+    "value": "jncx_1_&11214_one&|crit_1_&11214_two&"
+  },
+  {
+    "id": "11215",
+    "effectType": "6",
+    "value": "power_1_&11215_one&|hpMax_1_&11215_two&"
+  },
+  {
+    "id": "11301",
+    "effectType": "6",
+    "value": "pfr_1_&11301_pfr&"
+  },
+  {
+    "id": "11302",
+    "effectType": "6",
+    "value": "agile_1_&11302_msp&|pfr_1_&11302_pfr&"
+  },
+  {
+    "id": "11303",
+    "effectType": "6",
+    "value": "0"
+  },
+  {
+    "id": "113041",
+    "effectType": "2",
+    "value": "attach_basThunder_agile_&11304_mspUp|/11304_lighting|f2&_99999"
+  },
+  {
+    "id": "113042",
+    "effectType": "6",
+    "value": "basThunder_1_&11304_thunderBasUp&"
+  },
+  {
+    "id": "11305",
+    "effectType": "6",
+    "value": "0"
+  },
+  {
+    "id": "11306",
+    "effectType": "6",
+    "value": "0"
+  },
+  {
+    "id": "11307",
+    "effectType": "6",
+    "value": "agile_1_&11307_agile&"
+  },
+  {
+    "id": "113071",
+    "effectType": "2",
+    "value": "attach_msp_agile_0.1_99999"
+  },
+  {
+    "id": "11309",
+    "effectType": "6",
+    "value": "crit_1_&11309_crit&|power_1_&11309_power&"
+  },
+  {
+    "id": "11310",
+    "effectType": "6",
+    "value": "crit_1_&11310_crit&|pfr_1_&11310_power&"
+  },
+  {
+    "id": "11311",
+    "effectType": "6",
+    "value": "power_1_&11311_power&|jnfw_1_&11311_jnfw&"
+  },
+  {
+    "id": "11312",
+    "effectType": "6",
+    "value": "power_1_&11312_power&|jnsc_1_&11312_jnsc&"
+  },
+  {
+    "id": "11313",
+    "effectType": "6",
+    "value": "jnsc_1_&11313_power&|enemyMsp_1_&11313_enemyMsp&"
+  },
+  {
+    "id": "11314",
+    "effectType": "6",
+    "value": "power_1_&11314_power&|enemyPow_1_&11314_enemyPow&"
+  },
+  {
+    "id": "11315",
+    "effectType": "6",
+    "value": "jnfw_1_&11315_power&|agile_1_&11315_agile&"
+  },
+  {
+    "id": "11316",
+    "effectType": "6",
+    "value": "msp_1_&11316_hpSuck&|hpRestore_1_&11316_hpRestore&"
+  },
+  {
+    "id": "11317",
+    "effectType": "6",
+    "value": "agile_1_&11317_power&|pfr_1_&11317_pfr&"
+  },
+  {
+    "id": "11318",
+    "effectType": "6",
+    "value": "power_1_&11318_power&|evade_1_&11318_evade&"
+  },
+  {
+    "id": "11319",
+    "effectType": "6",
+    "value": "0"
+  },
+  {
+    "id": "11320",
+    "effectType": "6",
+    "value": "0"
+  },
+  {
+    "id": "11321",
+    "effectType": "6",
+    "value": "0"
+  },
+  {
+    "id": "11322",
+    "effectType": "6",
+    "value": "0"
+  },
+  {
+    "id": "11323",
+    "effectType": "6",
+    "value": "critV_1_&11323_critV&"
+  },
+  {
+    "id": "113231",
+    "effectType": "5",
+    "value": "actToStatus_6_1_crit_1_&11323_critUp&_100&"
+  },
+  {
+    "id": "11308",
+    "effectType": "6",
+    "value": "basThunder_1_&11308_lighting&"
+  },
+  {
+    "id": "11401",
+    "effectType": "6",
+    "value": "evade_1_&11401_evade&|crit_1_&11401_pfr&"
+  },
+  {
+    "id": "11402",
+    "effectType": "6",
+    "value": "0"
+  },
+  {
+    "id": "11403",
+    "effectType": "6",
+    "value": "jncx_1_&11403_jncx&"
+  },
+  {
+    "id": "114041",
+    "effectType": "2",
+    "value": "attach_basWind_evade_&11404_jncx|/11404_wind|f2&_99999"
+  },
+  {
+    "id": "114042",
+    "effectType": "6",
+    "value": "basWind_1_&11405_windBasUp&"
+  },
+  {
+    "id": "11405",
+    "effectType": "6",
+    "value": "power_1_&11405_dmg&"
+  },
+  {
+    "id": "114051",
+    "effectType": "2",
+    "value": "attach_pfr_power_-1_99999"
+  },
+  {
+    "id": "114052",
+    "effectType": "2",
+    "value": "attachRe_pfr_power_1_99999"
+  },
+  {
+    "id": "11406",
+    "effectType": "6",
+    "value": "0"
+  },
+  {
+    "id": "11407",
+    "effectType": "6",
+    "value": "0"
+  },
+  {
+    "id": "11408",
+    "effectType": "6",
+    "value": "basWind_1_&11408_wind&|basThunder_1_&11408_lighting&|basFire_1_&11408_fire&"
+  },
+  {
+    "id": "11409",
+    "effectType": "6",
+    "value": "hpMax_1_&11409_hpMax&|evade_1_&11409_evade&"
+  },
+  {
+    "id": "11410",
+    "effectType": "6",
+    "value": "evade_1_&11410_evade&|pfr_1_&11410_pfr&"
+  },
+  {
+    "id": "11411",
+    "effectType": "2",
+    "value": "attach_evade_zhsh_1_99999"
+  },
+  {
+    "id": "11412",
+    "effectType": "6",
+    "value": "msp_1_&11412_agile&|zhgjsd_1_&11412_zhgjsd&"
+  },
+  {
+    "id": "11413",
+    "effectType": "6",
+    "value": "msp_1_&11413_agile&|zhgjsd_1_&11413_zhgjsd&"
+  },
+  {
+    "id": "11414",
+    "effectType": "6",
+    "value": "exp_1_&11414_agile&|zhgjsd_1_&11414_zhgjsd&"
+  },
+  {
+    "id": "11415",
+    "effectType": "6",
+    "value": "agile_1_&11415_agile&|msp_1_&11415_msp&"
+  },
+  {
+    "id": "11416",
+    "effectType": "6",
+    "value": "hpRestore_1_&11416_hpMax&|evade_1_&11416_evade&"
+  },
+  {
+    "id": "11417",
+    "effectType": "6",
+    "value": "0"
+  },
+  {
+    "id": "11418",
+    "effectType": "6",
+    "value": "0"
+  },
+  {
+    "id": "11419",
+    "effectType": "6",
+    "value": "0"
+  },
+  {
+    "id": "11420",
+    "effectType": "6",
+    "value": "0"
+  },
+  {
+    "id": "11421",
+    "effectType": "5",
+    "value": "actToStatus_2_1_hpMax_1_&11421_hpMax&_&11421_hpMaxEnd&"
+  },
+  {
+    "id": "11422",
+    "effectType": "6",
+    "value": "0"
+  },
+  {
+    "id": "11423",
+    "effectType": "6",
+    "value": "0"
+  },
+  {
+    "id": "11424",
+    "effectType": "6",
+    "value": "0"
+  },
+  {
+    "id": "11425",
+    "effectType": "6",
+    "value": "luck_1_&11425_agile&|msp_1_&11425_msp&"
+  },
+  {
+    "id": "11426",
+    "effectType": "6",
+    "value": "pfr_1_&11426_agile&|msp_1_&11426_msp&"
+  },
+  {
+    "id": "11501",
+    "effectType": "6",
+    "value": "power_1_&11501_dmg&|zhsj_1_&11501_zhsj&"
+  },
+  {
+    "id": "11502",
+    "effectType": "6",
+    "value": "pfr_1_&11502_pfr&|msp_1_&11502_msp&"
+  },
+  {
+    "id": "11503",
+    "effectType": "6",
+    "value": "0"
+  },
+  {
+    "id": "115041",
+    "effectType": "2",
+    "value": "attach_basEarth_pfr_&11504_pfr|/11504_stone|f1&_999"
+  },
+  {
+    "id": "115042",
+    "effectType": "6",
+    "value": "basEarth_1_&11504_earthBasUp&"
+  },
+  {
+    "id": "11505",
+    "effectType": "6",
+    "value": "jnfw_1_&11505_msp&"
+  },
+  {
+    "id": "11506",
+    "effectType": "6",
+    "value": "0"
+  },
+  {
+    "id": "11507",
+    "effectType": "6",
+    "value": "0"
+  },
+  {
+    "id": "11508",
+    "effectType": "6",
+    "value": "basEarth_1_&11508_stone&|basWood_1_&11508_green&|basFroze_1_&11508_water&"
+  },
+  {
+    "id": "11601",
+    "effectType": "6",
+    "value": "power_1_&11601_dmg&"
+  },
+  {
+    "id": "11602",
+    "effectType": "6",
+    "value": "0"
+  },
+  {
+    "id": "11603",
+    "effectType": "6",
+    "value": "crit_1_&11603_crit&|zhsh_1_&11603_zhsh&"
+  },
+  {
+    "id": "116041",
+    "effectType": "2",
+    "value": "attach_basWood_hpMax_&11604_hpMax|/11604_green|f2&_99999"
+  },
+  {
+    "id": "116042",
+    "effectType": "6",
+    "value": "basWood_1_&11604_woodBasUp&"
+  },
+  {
+    "id": "11605",
+    "effectType": "6",
+    "value": "0"
+  },
+  {
+    "id": "11606",
+    "effectType": "6",
+    "value": "0"
+  },
+  {
+    "id": "11607",
+    "effectType": "6",
+    "value": "0"
+  },
+  {
+    "id": "11608",
+    "effectType": "6",
+    "value": "basMgAll_1_&11608_allTwo&"
+  },
+  {
+    "id": "11609",
+    "effectType": "6",
+    "value": "0"
+  },
+  {
+    "id": "11612",
+    "effectType": "6",
+    "value": "msp_1_&11612_one&"
+  },
+  {
+    "id": "20101",
+    "effectType": "6",
+    "value": "basBlade_1_&20101_bladeUp&"
+  },
+  {
+    "id": "20102",
+    "effectType": "6",
+    "value": "hpRestore_1_&20102_hpRestoreDown&"
+  },
+  {
+    "id": "20201",
+    "effectType": "6",
+    "value": "basSpear_1_&20201_spearUp&"
+  },
+  {
+    "id": "20203",
+    "effectType": "6",
+    "value": "basSpear_1_&20202_mgBasDown&"
+  },
+  {
+    "id": "20301",
+    "effectType": "6",
+    "value": "basSword_1_&20301_swordUp&"
+  },
+  {
+    "id": "20302",
+    "effectType": "6",
+    "value": "0"
+  },
+  {
+    "id": "20401",
+    "effectType": "6",
+    "value": "basFist_1_&20401_fistUp&"
+  },
+  {
+    "id": "20402",
+    "effectType": "6",
+    "value": "0"
+  },
+  {
+    "id": "20501",
+    "effectType": "6",
+    "value": "basPalm_1_&20501_palmUp&"
+  },
+  {
+    "id": "20502",
+    "effectType": "6",
+    "value": "0"
+  },
+  {
+    "id": "20601",
+    "effectType": "6",
+    "value": "basFinger_1_&20501_palmUp&"
+  },
+  {
+    "id": "20602",
+    "effectType": "6",
+    "value": "0"
+  },
+  {
+    "id": "20604",
+    "effectType": "6",
+    "value": "jncx_1_&20604_jncx&"
+  },
+  {
+    "id": "21101",
+    "effectType": "6",
+    "value": "basFire_1_&21101_fire&"
+  },
+  {
+    "id": "21102",
+    "effectType": "6",
+    "value": "0"
+  },
+  {
+    "id": "21201",
+    "effectType": "6",
+    "value": "basFroze_1_&21201_water&"
+  },
+  {
+    "id": "21202",
+    "effectType": "6",
+    "value": "0"
+  },
+  {
+    "id": "21301",
+    "effectType": "6",
+    "value": "basThunder_1_&21301_lighting&"
+  },
+  {
+    "id": "21302",
+    "effectType": "6",
+    "value": "0"
+  },
+  {
+    "id": "21401",
+    "effectType": "6",
+    "value": "basWind_1_&21401_wind&"
+  },
+  {
+    "id": "21402",
+    "effectType": "6",
+    "value": "0"
+  },
+  {
+    "id": "21501",
+    "effectType": "6",
+    "value": "basEarth_1_&21501_stone&"
+  },
+  {
+    "id": "21502",
+    "effectType": "6",
+    "value": "0"
+  },
+  {
+    "id": "21601",
+    "effectType": "6",
+    "value": "basWood_1_&21601_wood&"
+  },
+  {
+    "id": "21602",
+    "effectType": "6",
+    "value": "0"
+  },
+  {
+    "id": "30101",
+    "effectType": "6",
+    "value": "exp_1_&30101_expUp&|hpMax_1_&30101_luckDown&"
+  },
+  {
+    "id": "30102",
+    "effectType": "6",
+    "value": "exp_1_&30102_expUp&"
+  },
+  {
+    "id": "30103",
+    "effectType": "6",
+    "value": "luck_1_&30103_luckUp&"
+  },
+  {
+    "id": "30104",
+    "effectType": "6",
+    "value": "luck_1_&30104_luckUp&|power_1_&30104_powerDown&"
+  },
+  {
+    "id": "30105",
+    "effectType": "6",
+    "value": "luck_1_&30105_luckUp&|hpMax_1_&30105_mspDown&"
+  },
+  {
+    "id": "30106",
+    "effectType": "6",
+    "value": "prg_1_&30106_prgUp&"
+  },
+  {
+    "id": "30107",
+    "effectType": "6",
+    "value": "prg_1_&30107_prgUp&"
+  },
+  {
+    "id": "30108",
+    "effectType": "6",
+    "value": "prg_1_&30108_prgUp&|evade_1_&30108_evadeDown&"
+  },
+  {
+    "id": "30109",
+    "effectType": "6",
+    "value": "prg_1_&30109_prgUp&|msp_1_&30109_mspUp&"
+  },
+  {
+    "id": "30110",
+    "effectType": "6",
+    "value": "storeRefresh_1_&30110_storeRefreshUp&"
+  },
+  {
+    "id": "301101",
+    "effectType": "5",
+    "value": "nextStoreRefreshFree"
+  },
+  {
+    "id": "30111",
+    "effectType": "6",
+    "value": "jarRefresh_1_&30111_jarRefreshUp&"
+  },
+  {
+    "id": "30112",
+    "effectType": "6",
+    "value": "enemyCount_1_&30112_enemyCountUp&|power_1_&30112_powerUp&"
+  },
+  {
+    "id": "30113",
+    "effectType": "6",
+    "value": "enemyMsp_1_&30113_enemyMspUp&|msp_1_&30113_mspUp&"
+  },
+  {
+    "id": "30114",
+    "effectType": "6",
+    "value": "enemyPow_1_&30114_enemyPowUp&|enemyMaxhpFix_1_&30114_enemyMaxhpFixDown&"
+  },
+  {
+    "id": "30115",
+    "effectType": "6",
+    "value": "enemyPow_1_&30115_enemyPowUp&|luck_1_&30115_luckUp&"
+  },
+  {
+    "id": "30116",
+    "effectType": "5",
+    "value": "exp_0_&30116_expGain&_&30116_expGain&"
+  },
+  {
+    "id": "301171",
+    "effectType": "6",
+    "value": "hpMax_1_&30117_hpMaxUp&"
+  },
+  {
+    "id": "301172",
+    "effectType": "5",
+    "value": "bonusMonst_10501_10502_10503_10505_10507_10508_10509_10510_10511_&30117_extraEliteEnemy&"
+  },
+  {
+    "id": "301181",
+    "effectType": "5",
+    "value": "money_1_&30118_manaStone&_&30118_manaStone&"
+  },
+  {
+    "id": "301182",
+    "effectType": "5",
+    "value": "nextStageStatus_hp_1_&30118_hpLeft&"
+  },
+  {
+    "id": "30119",
+    "effectType": "5",
+    "value": "everyEndStageCharaStatus_1_0_&30119_manaStoneUp&"
+  },
+  {
+    "id": "30120",
+    "effectType": "5",
+    "value": "everyEndStageCharaStatus_2_0_&30120_expUp&"
+  },
+  {
+    "id": "301211",
+    "effectType": "5",
+    "value": "everyEndStageCharaStatus_power_1_&30121_poweUp&"
+  },
+  {
+    "id": "301212",
+    "effectType": "5",
+    "value": "everyEndStageCharaStatus_msp_1_&30121_mspUp&"
+  },
+  {
+    "id": "30122",
+    "effectType": "6",
+    "value": "hpMax_1_&30122_hpMaxUp&"
+  },
+  {
+    "id": "30123",
+    "effectType": "6",
+    "value": "power_1_&30123_powerUp&"
+  },
+  {
+    "id": "30124",
+    "effectType": "6",
+    "value": "power_1_&30124_powerUp&"
+  },
+  {
+    "id": "30125",
+    "effectType": "6",
+    "value": "pfr_1_&30125_prfUp&"
+  },
+  {
+    "id": "30126",
+    "effectType": "6",
+    "value": "agile_1_&30126_agileUp&"
+  },
+  {
+    "id": "30127",
+    "effectType": "6",
+    "value": "crit_1_&30127_critUp&"
+  },
+  {
+    "id": "30128",
+    "effectType": "6",
+    "value": "critV_1_&30128_critVUp&"
+  },
+  {
+    "id": "30129",
+    "effectType": "6",
+    "value": "msp_1_&30129_mspUp&"
+  },
+  {
+    "id": "30130",
+    "effectType": "6",
+    "value": "luck_1_&30130_luckUp&"
+  },
+  {
+    "id": "30131",
+    "effectType": "6",
+    "value": "zhsh_1_&30131_zhshUp&"
+  },
+  {
+    "id": "30132",
+    "effectType": "6",
+    "value": "zhsj_1_&30132_zhsjUp&"
+  },
+  {
+    "id": "30133",
+    "effectType": "6",
+    "value": "jnfw_1_&30133_jnfwUp&"
+  },
+  {
+    "id": "30134",
+    "effectType": "6",
+    "value": "jncx_1_&30134_jncxUp&"
+  },
+  {
+    "id": "30135",
+    "effectType": "6",
+    "value": "basBlade_1_&30135_basBladeUp&"
+  },
+  {
+    "id": "30136",
+    "effectType": "6",
+    "value": "basBlade_1_&30136_basBladeUp&"
+  },
+  {
+    "id": "30137",
+    "effectType": "6",
+    "value": "basSpear_1_&30137_basSpearUp&"
+  },
+  {
+    "id": "30138",
+    "effectType": "6",
+    "value": "basSpear_1_&30138_basSpearUp&"
+  },
+  {
+    "id": "30139",
+    "effectType": "6",
+    "value": "basSword_1_&30139_basSwordUp&"
+  },
+  {
+    "id": "30140",
+    "effectType": "6",
+    "value": "basSword_1_&30140_basSwordUp&"
+  },
+  {
+    "id": "30141",
+    "effectType": "6",
+    "value": "basFist_1_&30141_basFistUp&"
+  },
+  {
+    "id": "30142",
+    "effectType": "6",
+    "value": "basFist_1_&30142_basFistUp&"
+  },
+  {
+    "id": "30143",
+    "effectType": "6",
+    "value": "basPalm_1_&30143_basPalmUp&"
+  },
+  {
+    "id": "30144",
+    "effectType": "6",
+    "value": "basPalm_1_&30144_basPalmUp&"
+  },
+  {
+    "id": "30145",
+    "effectType": "6",
+    "value": "basFinger_1_&30145_basFingerUp&"
+  },
+  {
+    "id": "30146",
+    "effectType": "6",
+    "value": "basFinger_1_&30146_basFingerUp&"
+  },
+  {
+    "id": "30147",
+    "effectType": "6",
+    "value": "basFire_1_&30147_basFireUp&"
+  },
+  {
+    "id": "30148",
+    "effectType": "6",
+    "value": "basFire_1_&30148_basFireUp&"
+  },
+  {
+    "id": "30149",
+    "effectType": "6",
+    "value": "basFroze_1_&30149_basFrozeUp&"
+  },
+  {
+    "id": "30150",
+    "effectType": "6",
+    "value": "basFroze_1_&30150_basFrozeUp&"
+  },
+  {
+    "id": "30151",
+    "effectType": "6",
+    "value": "basThunder_1_&30151_basThunderUp&"
+  },
+  {
+    "id": "30152",
+    "effectType": "6",
+    "value": "basThunder_1_&30152_basThunderUp&"
+  },
+  {
+    "id": "30153",
+    "effectType": "6",
+    "value": "basWind_1_&30153_basWindUp&"
+  },
+  {
+    "id": "30154",
+    "effectType": "6",
+    "value": "basWind_1_&30154_basWindUp&"
+  },
+  {
+    "id": "30155",
+    "effectType": "6",
+    "value": "basEarth_1_&30155_basEarthUp&"
+  },
+  {
+    "id": "30156",
+    "effectType": "6",
+    "value": "basEarth_1_&30156_basEarthUp&"
+  },
+  {
+    "id": "30157",
+    "effectType": "6",
+    "value": "basWood_1_&30157_basWoodUp&"
+  },
+  {
+    "id": "30158",
+    "effectType": "6",
+    "value": "basWood_1_&30158_basWoodUp&"
+  },
+  {
+    "id": "30159",
+    "effectType": "6",
+    "value": "hpMax_1_&30159_hpMaxUp&|power_1_&30159_mspDonw&"
+  },
+  {
+    "id": "30160",
+    "effectType": "6",
+    "value": "hpMax_1_&30160_hpMaxUp&|luck_1_&30160_luckDonw&"
+  },
+  {
+    "id": "30161",
+    "effectType": "6",
+    "value": "hpMax_1_&30161_hpMaxUp&|jnfw_1_&30161_jnfwUp&"
+  },
+  {
+    "id": "30162",
+    "effectType": "6",
+    "value": "hpMax_1_&30162_hpMaxUp&|luck_1_&30162_zhshDown&"
+  },
+  {
+    "id": "30163",
+    "effectType": "6",
+    "value": "hpMax_1_&30163_hpMaxUp&"
+  },
+  {
+    "id": "30164",
+    "effectType": "6",
+    "value": "hpMax_1_&30164_hpMaxUp&|crit_1_&30164_pfrDown&"
+  },
+  {
+    "id": "30165",
+    "effectType": "6",
+    "value": "hpMax_1_&30165_hpMaxUp&|evade_1_&30165_evadeUp&"
+  },
+  {
+    "id": "30166",
+    "effectType": "6",
+    "value": "hpMax_1_&30166_hpMaxUp&|jncx_1_&30166_jncxUp&"
+  },
+  {
+    "id": "30167",
+    "effectType": "6",
+    "value": "hpMax_1_&30167_hpMaxUp&"
+  },
+  {
+    "id": "30168",
+    "effectType": "6",
+    "value": "hpMax_1_&30168_hpMaxUp&|evade_1_&30168_evadeDown&"
+  },
+  {
+    "id": "30169",
+    "effectType": "6",
+    "value": "hpMax_1_&30169_hpMaxUp&|critV_1_&30169_hpRestoreDown&"
+  },
+  {
+    "id": "30170",
+    "effectType": "6",
+    "value": "hpMax_1_&30170_hpMaxUp&|agile_1_&30170_agileUp&"
+  },
+  {
+    "id": "100010",
+    "effectType": "6",
+    "value": "basFist_1_&100010_basUp&_basPalm_1_&100010_basUp&|basFinger_1_&100010_basUp&"
+  },
+  {
+    "id": "100011",
+    "effectType": "6",
+    "value": "basBlade_1_&100011_basUp&|basSword_1_&100011_basUp&|basSpear_1_&100011_basUp&"
+  },
+  {
+    "id": "100012",
+    "effectType": "6",
+    "value": "basWind_1_&100012_basUp&|basThunder_1_&100012_basUp&"
+  },
+  {
+    "id": "100013",
+    "effectType": "6",
+    "value": "basEarth_1_&100013_basUp&|basFire_1_&100013_basUp&"
+  },
+  {
+    "id": "100014",
+    "effectType": "6",
+    "value": "basFroze_1_&100014_basUp&|basWood_1_&100014_basUp&"
+  },
+  {
+    "id": "100016",
+    "effectType": "6",
+    "value": "power_1_&700050_powerDown&"
+  },
+  {
+    "id": "100019",
+    "effectType": "6",
+    "value": "basEarth_1_&100019_basUp&|basWood_1_&100019_basUp&"
+  },
+  {
+    "id": "100022",
+    "effectType": "6",
+    "value": "msp_0_&100022_mspUp&"
+  },
+  {
+    "id": "100030",
+    "effectType": "6",
+    "value": "basSword_1_&100030_basUp&"
+  },
+  {
+    "id": "100031",
+    "effectType": "6",
+    "value": "jnfw_1_&100031_jnfwUp&"
+  },
+  {
+    "id": "400001",
+    "effectType": "6",
+    "value": "basBlade_1_&400001_basUp&|basSpear_1_&400001_basUp2&"
+  },
+  {
+    "id": "400002",
+    "effectType": "6",
+    "value": "basBlade_1_&400002_basUp&|basSword_1_&400002_basUp3&"
+  },
+  {
+    "id": "400003",
+    "effectType": "6",
+    "value": "basSpear_1_&400003_basUp2&|basSword_1_&400003_basUp3&"
+  },
+  {
+    "id": "400004",
+    "effectType": "6",
+    "value": "basBlade_1_&400004_basUp&"
+  },
+  {
+    "id": "400005",
+    "effectType": "6",
+    "value": "basSpear_1_&400005_basUp2&"
+  },
+  {
+    "id": "400006",
+    "effectType": "6",
+    "value": "basSword_1_&400006_basUp3&"
+  },
+  {
+    "id": "400007",
+    "effectType": "6",
+    "value": "basFist_1_&400007_basUp&|basPalm_1_&400007_basUp2&"
+  },
+  {
+    "id": "400008",
+    "effectType": "6",
+    "value": "basFist_1_&400008_basUp&|basFinger_1_&400008_basUp2&"
+  },
+  {
+    "id": "400009",
+    "effectType": "6",
+    "value": "basFinger_1_&400009_basUp3&|basPalm_1_&400009_basUp2&"
+  },
+  {
+    "id": "400010",
+    "effectType": "6",
+    "value": "basFist_1_&400010_basUp&"
+  },
+  {
+    "id": "400011",
+    "effectType": "6",
+    "value": "basPalm_1_&400011_basUp2&"
+  },
+  {
+    "id": "400012",
+    "effectType": "6",
+    "value": "basFinger_1_&400012_basUp3&"
+  },
+  {
+    "id": "400013",
+    "effectType": "6",
+    "value": "basFire_1_&400013_basUp&|basFroze_1_&400013_basUp2&"
+  },
+  {
+    "id": "400014",
+    "effectType": "6",
+    "value": "basThunder_1_&400014_basUp3&|basFire_1_&400014_basUp&"
+  },
+  {
+    "id": "400015",
+    "effectType": "6",
+    "value": "basThunder_1_&400015_basUp3&|basFroze_1_&400015_basUp2&"
+  },
+  {
+    "id": "400016",
+    "effectType": "6",
+    "value": "basFire_1_&400016_basUp&"
+  },
+  {
+    "id": "400017",
+    "effectType": "6",
+    "value": "basFroze_1_&400017_basUp2&"
+  },
+  {
+    "id": "400018",
+    "effectType": "6",
+    "value": "basThunder_1_&400018_basUp3&"
+  },
+  {
+    "id": "400019",
+    "effectType": "6",
+    "value": "basWind_1_&400019_basUp&|basEarth_1_&400019_basUp2&"
+  },
+  {
+    "id": "400020",
+    "effectType": "6",
+    "value": "basWind_1_&400020_basUp&|basWood_1_&400020_basUp3&"
+  },
+  {
+    "id": "400021",
+    "effectType": "6",
+    "value": "basWood_1_&400021_basUp3&|basEarth_1_&400021_basUp2&"
+  },
+  {
+    "id": "400022",
+    "effectType": "6",
+    "value": "basWind_1_&400022_basUp&"
+  },
+  {
+    "id": "400023",
+    "effectType": "6",
+    "value": "basEarth_1_&400023_basUp2&"
+  },
+  {
+    "id": "400024",
+    "effectType": "6",
+    "value": "basWood_1_&400024_basUp3&"
+  },
+  {
+    "id": "400025",
+    "effectType": "6",
+    "value": "luck_1_&400025_luckUp&"
+  },
+  {
+    "id": "400026",
+    "effectType": "6",
+    "value": "jnsc_1_&400026_jnsc&"
+  },
+  {
+    "id": "400027",
+    "effectType": "6",
+    "value": "agile_1_&400027_agile&"
+  },
+  {
+    "id": "400029",
+    "effectType": "6",
+    "value": "hpMax_1_&400029_hpMaxUp&|hpRestore_1_&400029_hpRestoreUp&|pfr_1_&400029_pfrUp&"
+  },
+  {
+    "id": "400030",
+    "effectType": "6",
+    "value": "power_1_&400030_powerUp&|agile_1_&400030_agileUp&|msp_1_&400030_mspUp&"
+  },
+  {
+    "id": "400031",
+    "effectType": "6",
+    "value": "crit_1_&400031_critUp&|critV_1_&400031_critVUp&|evade_1_&400031_evadeUp&"
+  },
+  {
+    "id": "400032",
+    "effectType": "6",
+    "value": "luck_1_&400032_luckUp&"
+  },
+  {
+    "id": "400033",
+    "effectType": "6",
+    "value": "hpMax_1_&400033_hpMaxUp&|power_1_&400033_powerUp&"
+  },
+  {
+    "id": "400034",
+    "effectType": "6",
+    "value": "hpMax_1_&400034_hpMaxUp&|msp_1_&400034_mspUp&"
+  },
+  {
+    "id": "400035",
+    "effectType": "6",
+    "value": "power_1_&400035_powerUp&|msp_1_&400035_mspUp&"
+  },
+  {
+    "id": "400036",
+    "effectType": "6",
+    "value": "hpMax_1_&400036_hpMaxUp&"
+  },
+  {
+    "id": "400037",
+    "effectType": "6",
+    "value": "power_1_&400037_powerUp&"
+  },
+  {
+    "id": "400038",
+    "effectType": "6",
+    "value": "msp_1_&400038_mspUp&"
+  },
+  {
+    "id": "400039",
+    "effectType": "6",
+    "value": "hpRestore_1_&400039_hpRestoreUp&|agile_1_&400039_agileUp&"
+  },
+  {
+    "id": "400040",
+    "effectType": "6",
+    "value": "hpRestore_1_&400040_hpRestoreUp&|critV_1_&400040_critVUp&"
+  },
+  {
+    "id": "400041",
+    "effectType": "6",
+    "value": "agile_1_&400041_agileUp&|critV_1_&400041_critVUp&"
+  },
+  {
+    "id": "400042",
+    "effectType": "6",
+    "value": "hpRestore_1_&400042_hpRestoreUp&"
+  },
+  {
+    "id": "400043",
+    "effectType": "6",
+    "value": "agile_1_&400043_agileUp&"
+  },
+  {
+    "id": "400044",
+    "effectType": "6",
+    "value": "critV_1_&400044_critVUp&"
+  },
+  {
+    "id": "400045",
+    "effectType": "6",
+    "value": "pfr_1_&400045_pfrUp&|evade_1_&400045_evadeUp&"
+  },
+  {
+    "id": "400046",
+    "effectType": "6",
+    "value": "pfr_1_&400046_pfrUp&|crit_1_&400046_critUp&"
+  },
+  {
+    "id": "400047",
+    "effectType": "6",
+    "value": "evade_1_&400047_evadeUp&|crit_1_&400047_critUp&"
+  },
+  {
+    "id": "400048",
+    "effectType": "6",
+    "value": "pfr_1_&400048_pfrUp&"
+  },
+  {
+    "id": "400049",
+    "effectType": "6",
+    "value": "evade_1_&400049_evadeUp&"
+  },
+  {
+    "id": "400050",
+    "effectType": "6",
+    "value": "crit_1_&400050_critUp&"
+  },
+  {
+    "id": "400051",
+    "effectType": "6",
+    "value": "hpMax_1_&400051_hpMaxUp&"
+  },
+  {
+    "id": "400052",
+    "effectType": "6",
+    "value": "hpRestore_1_&400052_hpRestoreUp&"
+  },
+  {
+    "id": "400053",
+    "effectType": "6",
+    "value": "pfr_1_&400053_pfrUp&"
+  },
+  {
+    "id": "400054",
+    "effectType": "6",
+    "value": "power_1_&400054_powerUp&"
+  },
+  {
+    "id": "400055",
+    "effectType": "6",
+    "value": "agile_1_&400055_agileUp&"
+  },
+  {
+    "id": "400056",
+    "effectType": "6",
+    "value": "msp_1_&400056_mspUp&"
+  },
+  {
+    "id": "400057",
+    "effectType": "6",
+    "value": "crit_1_&400057_critUp&"
+  },
+  {
+    "id": "400058",
+    "effectType": "6",
+    "value": "critV_1_&400058_critVUp&"
+  },
+  {
+    "id": "400059",
+    "effectType": "6",
+    "value": "evade_1_&400059_evadeUp&"
+  },
+  {
+    "id": "400060",
+    "effectType": "6",
+    "value": "hpMax_1_&400060_hpMaxUp&|hpRestore_1_&400060_hpRestoreUp&|pfr_1_&400060_pfrUp&"
+  },
+  {
+    "id": "400061",
+    "effectType": "6",
+    "value": "power_1_&400061_powerUp&|agile_1_&400061_agileUp&|msp_1_&400061_mspUp&"
+  },
+  {
+    "id": "400062",
+    "effectType": "6",
+    "value": "crit_1_&400062_critUp&|critV_1_&400062_critVUp&|evade_1_&400062_evadeUp&"
+  },
+  {
+    "id": "400063",
+    "effectType": "6",
+    "value": "jnfw_1_&400063_jnfwUp&"
+  },
+  {
+    "id": "400064",
+    "effectType": "6",
+    "value": "jncx_1_&400064_jncxUp&"
+  },
+  {
+    "id": "400065",
+    "effectType": "6",
+    "value": "jnsc_1_&400065_jnscUp&"
+  },
+  {
+    "id": "400066",
+    "effectType": "6",
+    "value": "zhsh_1_&400066_zhshUp&"
+  },
+  {
+    "id": "400067",
+    "effectType": "6",
+    "value": "zhsj_1_&400067_zhsjUp&"
+  },
+  {
+    "id": "400068",
+    "effectType": "6",
+    "value": "zhgjsd_1_&400068_zhgjsdUp&"
+  },
+  {
+    "id": "400069",
+    "effectType": "6",
+    "value": "jnfw_1_&400069_jnfwUp&"
+  },
+  {
+    "id": "400070",
+    "effectType": "6",
+    "value": "jncx_1_&400070_jncxUp&"
+  },
+  {
+    "id": "400071",
+    "effectType": "6",
+    "value": "jnsc_1_&400071_jnscUp&"
+  },
+  {
+    "id": "400072",
+    "effectType": "6",
+    "value": "zhsh_1_&400072_zhshUp&"
+  },
+  {
+    "id": "400073",
+    "effectType": "6",
+    "value": "zhsj_1_&400073_zhsjUp&"
+  },
+  {
+    "id": "400074",
+    "effectType": "6",
+    "value": "zhgjsd_1_&400074_zhgjsdUp&"
+  },
+  {
+    "id": "400075",
+    "effectType": "6",
+    "value": "jnfw_1_&400075_jnfwUp&|jncx_1_&400075_jncxUp&"
+  },
+  {
+    "id": "400076",
+    "effectType": "6",
+    "value": "jnfw_1_&400076_jnfwUp&|jnsc_1_&400076_jnscUp&"
+  },
+  {
+    "id": "400077",
+    "effectType": "6",
+    "value": "jncx_1_&400077_jncxUp&|jnsc_1_&400077_jnscUp&"
+  },
+  {
+    "id": "400078",
+    "effectType": "6",
+    "value": "zhsh_1_&400078_zhshUp&|zhsj_1_&400078_zhsjUp&"
+  },
+  {
+    "id": "400079",
+    "effectType": "6",
+    "value": "zhsh_1_&400079_zhshUp&|zhgjsd_1_&400079_zhgjsdUp&"
+  },
+  {
+    "id": "400080",
+    "effectType": "6",
+    "value": "zhsj_1_&400080_zhsjUp&|zhgjsd_1_&400080_zhgjsdUp&"
+  },
+  {
+    "id": "410001",
+    "effectType": "6",
+    "value": "hpMax_1_&410001_carrotHp&"
+  },
+  {
+    "id": "410004",
+    "effectType": "6",
+    "value": "agile_1_&410004_agileUp&"
+  },
+  {
+    "id": "410006",
+    "effectType": "6",
+    "value": "exp_1_&410006_expUp&"
+  },
+  {
+    "id": "410007",
+    "effectType": "5",
+    "value": "nextStageEffectItem_4100071_4100072"
+  },
+  {
+    "id": "2010001",
+    "effectType": "6",
+    "value": "luck_1_&41201_luckUp&|hpSuckV_1_&41201_hpSuckVDown&"
+  },
+  {
+    "id": "20100021",
+    "effectType": "5",
+    "value": "attrEffectiveRate_luck_&41202_luckFix&"
+  },
+  {
+    "id": "20100022",
+    "effectType": "5",
+    "value": "attrEffectiveRate_hpRestore_&41202_hpRestoreFix&"
+  },
+  {
+    "id": "20200011",
+    "effectType": "6",
+    "value": "power_1_&42201_powerDown&"
+  },
+  {
+    "id": "20200012",
+    "effectType": "5",
+    "value": "attach_basMg_zhsh_&42201_basToZhsh&_99999"
+  },
+  {
+    "id": "2020002",
+    "effectType": "6",
+    "value": "basWood_1_&42202_basUp&|basEarth_1_&42202_basUp&"
+  },
+  {
+    "id": "20200031",
+    "effectType": "5",
+    "value": "attrEffectiveRate_zhsh_&42102_zhshFix&"
+  },
+  {
+    "id": "20200032",
+    "effectType": "5",
+    "value": "attrEffectiveRate_power_&42102_powerFix&"
+  },
+  {
+    "id": "2020004",
+    "effectType": "6",
+    "value": "hpRestore_1_&42102_hpRestoreUp&|luck_1_&42102_luckDown&"
+  },
+  {
+    "id": "20300011",
+    "effectType": "6",
+    "value": "jnsc_1_&43201_rangeUp&"
+  },
+  {
+    "id": "20300012",
+    "effectType": "5",
+    "value": "attrEffectiveRate_jnsc_&43201_jnscFix&"
+  },
+  {
+    "id": "20300013",
+    "effectType": "6",
+    "value": "exp_1_&43201_expDown&"
+  },
+  {
+    "id": "2040001",
+    "effectType": "6",
+    "value": "basAll_1_&44101_basAllUp&|zhsj_1_&44101_zhsjDown&"
+  },
+  {
+    "id": "20400021",
+    "effectType": "5",
+    "value": "attrEffectiveRate_jncx_&44101_jncxFix&"
+  },
+  {
+    "id": "20400022",
+    "effectType": "6",
+    "value": "exp_1_&44101_expUp&"
+  },
+  {
+    "id": "2050001",
+    "effectType": "6",
+    "value": "0"
+  },
+  {
+    "id": "2050002",
+    "effectType": "5",
+    "value": "attrEffectiveRate_power_&45101_powerFix&"
+  },
+  {
+    "id": "2060001",
+    "effectType": "5",
+    "value": "attrEffectiveRate_msp_&46101_mspFix&"
+  },
+  {
+    "id": "211001",
+    "effectType": "6",
+    "value": "evade_1_&21011_evadeSumTwo&|msp_1_&21011_speedSum&"
+  },
+  {
+    "id": "211002",
+    "effectType": "5",
+    "value": "attrEffectiveRate_pfr_&21011_hpMaxProb&"
+  },
+  {
+    "id": "2110021",
+    "effectType": "6",
+    "value": "zhsh_1_&21011_zhshSum&"
+  },
+  {
+    "id": "212001",
+    "effectType": "6",
+    "value": "0"
+  },
+  {
+    "id": "212002",
+    "effectType": "5",
+    "value": "attrEffectiveRate_evade_&21012_evadeProb&"
+  },
+  {
+    "id": "213001",
+    "effectType": "6",
+    "value": "msp_1_&210131_speed&|basMgAll_1_&210131_bas&"
+  },
+  {
+    "id": "213002",
+    "effectType": "6",
+    "value": "storeDiscount_1_&210132_price&|storeRefreshDiscount_1_&210132_price&"
+  },
+  {
+    "id": "214001",
+    "effectType": "6",
+    "value": "0"
+  },
+  {
+    "id": "214002",
+    "effectType": "6",
+    "value": "hpMax_1_&210142_hpMax&"
+  },
+  {
+    "id": "2140021",
+    "effectType": "5",
+    "value": "attrEffectiveRate_basAll_&210142_efficiency&"
+  },
+  {
+    "id": "215001",
+    "effectType": "6",
+    "value": "msp_1_&215001_speed&"
+  },
+  {
+    "id": "215002",
+    "effectType": "6",
+    "value": "0"
+  },
+  {
+    "id": "216001",
+    "effectType": "6",
+    "value": "exp_1_&216001_exp&"
+  },
+  {
+    "id": "216002",
+    "effectType": "5",
+    "value": "attrMaxValue_critV_&216001_critVBig&"
+  },
+  {
+    "id": "217001",
+    "effectType": "5",
+    "value": "attrEffectiveRate_agile_&21017_xiuzhenglv&"
+  },
+  {
+    "id": "217002",
+    "effectType": "6",
+    "value": "evade_1_&21017_evade&"
+  }
+]

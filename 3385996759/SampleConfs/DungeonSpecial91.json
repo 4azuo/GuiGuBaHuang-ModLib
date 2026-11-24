@@ -1,0 +1,92 @@
+[
+  {
+    "id": "1",
+    "dungeonID": "7702",
+    "buildId": "9181",
+    "dramaText": "drama_dungeon91BuildText",
+    "optionId": "28106611",
+    "effectName": "0",
+    "effectText": "yuehui_duiyizhong",
+    "endDrama": "0"
+  },
+  {
+    "id": "2",
+    "dungeonID": "7702",
+    "buildId": "9181",
+    "dramaText": "drama_dungeon91BuildText",
+    "optionId": "28106612",
+    "effectName": "0",
+    "effectText": "yuehui_lundaozhong",
+    "endDrama": "0"
+  },
+  {
+    "id": "3",
+    "dungeonID": "7702",
+    "buildId": "9181",
+    "dramaText": "drama_dungeon91BuildText",
+    "optionId": "28106613",
+    "effectName": "0",
+    "effectText": "yuehui_pinmingzhong",
+    "endDrama": "0"
+  },
+  {
+    "id": "4",
+    "dungeonID": "7702",
+    "buildId": "9191",
+    "dramaText": "drama_dungeon91BuildText",
+    "optionId": "811111",
+    "effectName": "0",
+    "effectText": "yuehui_weiyuzhong",
+    "endDrama": "0"
+  },
+  {
+    "id": "5",
+    "dungeonID": "7702",
+    "buildId": "9191",
+    "dramaText": "drama_dungeon91BuildText",
+    "optionId": "811112",
+    "effectName": "0",
+    "effectText": "yuehui_yinjiuzhong",
+    "endDrama": "0"
+  },
+  {
+    "id": "6",
+    "dungeonID": "7702",
+    "buildId": "9201",
+    "dramaText": "drama_dungeon91BuildText",
+    "optionId": "28107911",
+    "effectName": "0",
+    "effectText": "yuehui_shanghuazhong",
+    "endDrama": "0"
+  },
+  {
+    "id": "7",
+    "dungeonID": "7702",
+    "buildId": "9201",
+    "dramaText": "drama_dungeon91BuildText",
+    "optionId": "28107912",
+    "effectName": "0",
+    "effectText": "yuehui_qiecuozhong",
+    "endDrama": "0"
+  },
+  {
+    "id": "8",
+    "dungeonID": "7702",
+    "buildId": "9201",
+    "dramaText": "drama_dungeon91BuildText",
+    "optionId": "28107913",
+    "effectName": "0",
+    "effectText": "0",
+    "endDrama": "0"
+  },
+  {
+    "id": "9",
+    "dungeonID": "7702",
+    "buildId": "9201",
+    "dramaText": "drama_dungeon91BuildText",
+    "optionId": "28107914",
+    "effectName": "0",
+    "effectText": "yuehui_shuangxiuzhong",
+    "endDrama": "0"
+  }
+]

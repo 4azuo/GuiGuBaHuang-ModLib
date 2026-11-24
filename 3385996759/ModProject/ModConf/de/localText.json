@@ -1,0 +1,127 @@
+[
+	{
+		"id": "999990000",
+		"key": "libtxt999990000",
+		"en|ch|tc|kr": "Warnung"
+	},
+	{
+		"id": "999990001",
+		"key": "libtxt999990001",
+		"en|ch|tc|kr": "UI von ModLib ist für das Bildschirmverhältnis 16:9 optimiert."
+	},
+	{
+		"id": "999990002",
+		"key": "libtxt999990002",
+		"en|ch|tc|kr": "Es wird ein Benchmark ausgeführt, um RAM für das Spiel zu initialisieren."
+	},
+	{
+		"id": "999990003",
+		"key": "libtxt999990003",
+		"en|ch|tc|kr": "Du musst das Spiel zurücksetzen!"
+	},
+	{
+		"id": "999990004",
+		"key": "libtxt999990004",
+		"en|ch|tc|kr": "Dies ist das erste Mal. Möchten Sie einen Benchmark ausführen, um RAM für das Spiel zu initialisieren?"
+	},
+	{
+		"id": "999990005",
+		"key": "libtxt999990005",
+		"en|ch|tc|kr": "DEFAULT_DRAMA_OPT"
+	},
+	{
+		"id": "999990006",
+		"key": "libtxt999990006",
+		"en|ch|tc|kr": "Ausnahmen ausblenden"
+	},
+	{
+		"id": "999990007",
+		"key": "libtxt999990007",
+		"en|ch|tc|kr": "(Bitte aktivieren Sie diese Option, wenn Sie Feedback zu Fehlern geben möchten.)"
+	},
+	{
+		"id": "999990008",
+		"key": "libtxt999990008",
+		"en|ch|tc|kr": "Seite {0}"
+	},
+	{
+		"id": "999990009",
+		"key": "libtxt999990009",
+		"en|ch|tc|kr": "ModCreator"
+	},
+	{
+		"id": "999990010",
+		"key": "libtxt999990010",
+		"en|ch|tc|kr": "IDs prüfen"
+	},
+	{
+		"id": "999990011",
+		"key": "libtxt999990011",
+		"en|ch|tc|kr": "Von ModLib geladene doppelte IDs prüfen."
+	},
+	{
+		"id": "999990012",
+		"key": "libtxt999990012",
+		"en|ch|tc|kr": "Exportieren"
+	},
+	{
+		"id": "999990013",
+		"key": "libtxt999990013",
+		"en|ch|tc|kr": "Alle Spielressourcen exportieren."
+	},
+	{
+		"id": "999990014",
+		"key": "libtxt999990014",
+		"en|ch|tc|kr": "Unterstützt von\nFourus ModLib {0}"
+	},
+	{
+		"id": "999990015",
+		"key": "libtxt999990015",
+		"en|ch|tc|kr": "Sprache:"
+	},
+	{
+		"id": "999990016",
+		"key": "libtxt999990016",
+		"en|ch|tc|kr": "Standard"
+	},
+	{
+		"id": "999990017",
+		"key": "libtxt999990017",
+		"en|ch|tc|kr": "Ausnahme"
+	},
+	{
+		"id": "999990018",
+		"key": "libtxt999990018",
+		"en|ch|tc|kr": "Log öffnen"
+	},
+	{
+		"id": "999990019",
+		"key": "libtxt999990019",
+		"en|ch|tc|kr": "Fehlerberichte"
+	},
+	{
+		"id": "999990020",
+		"key": "libtxt999990020",
+		"en|ch|tc|kr": "Darf ModLib bei einem Fehler in einem dieser Mods einen Fehlerbericht an dessen Autor senden (Dienst BugSplat)?\n{2}\n\nGesendet: die Fehlermeldung und die Stelle im Code, die letzten Zeilen des Mod-Logs (ohne deinen Benutzerordner, dein Windows-Konto und deine Spieler-ID), die Versionen von Spiel, ModLib und Mods, die IDs der geladenen Mods, die Sprache und eine anonyme Zufalls-ID.\nNie gesendet: deine Spielstände oder dein Steam-Konto.\n\nDu kannst die Antwort jederzeit ändern: Titelbildschirm > {0} > {1}."
+	},
+	{
+		"id": "999990021",
+		"key": "libtxt999990021",
+		"en|ch|tc|kr": "Erlaubt: Fehler werden an den Mod-Autor gesendet."
+	},
+	{
+		"id": "999990022",
+		"key": "libtxt999990022",
+		"en|ch|tc|kr": "Nicht erlaubt: es wird nichts gesendet."
+	},
+	{
+		"id": "999990023",
+		"key": "libtxt999990023",
+		"en|ch|tc|kr": "Dieser Fehler wurde dem Mod-Autor gemeldet (BugSplat). Danke!"
+	},
+	{
+		"id": "999990024",
+		"key": "libtxt999990024",
+		"en|ch|tc|kr": "Dieser Fehler wurde nicht an den Mod-Autor gesendet. Bitte melde ihn (mit dem Log) dem Autor des Mods."
+	}
+]

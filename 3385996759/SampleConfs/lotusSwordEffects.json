@@ -1,0 +1,34 @@
+[
+  {
+    "id": "1",
+    "unitEffects": "280631|280642",
+    "isHide": "0",
+    "desc": "lotusSwordEffect1",
+    "unlockDesc": "lotusSwordEffect11",
+    "unlockGrade": "2"
+  },
+  {
+    "id": "2",
+    "unitEffects": "280611",
+    "isHide": "0",
+    "desc": "lotusSwordEffect2",
+    "unlockDesc": "lotusSwordEffect21",
+    "unlockGrade": "3"
+  },
+  {
+    "id": "3",
+    "unitEffects": "280641",
+    "isHide": "0",
+    "desc": "lotusSwordEffect3",
+    "unlockDesc": "lotusSwordEffect31",
+    "unlockGrade": "4"
+  },
+  {
+    "id": "4",
+    "unitEffects": "280621",
+    "isHide": "0",
+    "desc": "lotusSwordEffect4",
+    "unlockDesc": "lotusSwordEffect41",
+    "unlockGrade": "5"
+  }
+]

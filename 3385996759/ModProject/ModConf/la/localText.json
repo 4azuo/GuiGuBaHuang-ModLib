@@ -1,0 +1,127 @@
+[
+	{
+		"id": "999990000",
+		"key": "libtxt999990000",
+		"en|ch|tc|kr": "Monitum"
+	},
+	{
+		"id": "999990001",
+		"key": "libtxt999990001",
+		"en|ch|tc|kr": "ModLib's UI optimized pro 16:9 screen ratio."
+	},
+	{
+		"id": "999990002",
+		"key": "libtxt999990002",
+		"en|ch|tc|kr": "Probatio curret ad {}0{/①⑪} initialize ad ludum."
+	},
+	{
+		"id": "999990003",
+		"key": "libtxt999990003",
+		"en|ch|tc|kr": "Vos have ut ludum retexere!"
+	},
+	{
+		"id": "999990004",
+		"key": "libtxt999990004",
+		"en|ch|tc|kr": "Hoc primum. Visne currere tribunal ad initialize RAM ad ludum?"
+	},
+	{
+		"id": "999990005",
+		"key": "libtxt999990005",
+		"en|ch|tc|kr": "DEFAULT_DRAMA_OPT"
+	},
+	{
+		"id": "999990006",
+		"key": "libtxt999990006",
+		"en|ch|tc|kr": "Celare exceptiones"
+	},
+	{
+		"id": "999990007",
+		"key": "libtxt999990007",
+		"en|ch|tc|kr": "(Quaeso conversus si habes feedback bugs)"
+	},
+	{
+		"id": "999990008",
+		"key": "libtxt999990008",
+		"en|ch|tc|kr": "Pagina {0}"
+	},
+	{
+		"id": "999990009",
+		"key": "libtxt999990009",
+		"en|ch|tc|kr": "ModCreator"
+	},
+	{
+		"id": "999990010",
+		"key": "libtxt999990010",
+		"en|ch|tc|kr": "ID inspicere"
+	},
+	{
+		"id": "999990011",
+		"key": "libtxt999990011",
+		"en|ch|tc|kr": "ID duplicata a ModLib onerata inspicere."
+	},
+	{
+		"id": "999990012",
+		"key": "libtxt999990012",
+		"en|ch|tc|kr": "Exportare"
+	},
+	{
+		"id": "999990013",
+		"key": "libtxt999990013",
+		"en|ch|tc|kr": "Omnes opes ludi exportare."
+	},
+	{
+		"id": "999990014",
+		"key": "libtxt999990014",
+		"en|ch|tc|kr": "Fultum a\nModLib Fourui {0}"
+	},
+	{
+		"id": "999990015",
+		"key": "libtxt999990015",
+		"en|ch|tc|kr": "Lingua:"
+	},
+	{
+		"id": "999990016",
+		"key": "libtxt999990016",
+		"en|ch|tc|kr": "Praedefinita"
+	},
+	{
+		"id": "999990017",
+		"key": "libtxt999990017",
+		"en|ch|tc|kr": "Exceptio"
+	},
+	{
+		"id": "999990018",
+		"key": "libtxt999990018",
+		"en|ch|tc|kr": "Acta aperire"
+	},
+	{
+		"id": "999990019",
+		"key": "libtxt999990019",
+		"en|ch|tc|kr": "Relationes errorum"
+	},
+	{
+		"id": "999990020",
+		"key": "libtxt999990020",
+		"en|ch|tc|kr": "Cum error in uno ex his modis accidit, licetne ModLib relationem erroris auctori eius mittere (servitium BugSplat)?\n{2}\n\nMittitur: nuntius erroris et locus eius in codice, ultimae lineae actorum modi (sine tuo folle usoris, ratione Windows et ID lusoris), versiones ludi, ModLib et modorum, ID modorum oneratorum, lingua et ID fortuitum anonymum.\nNumquam mittitur: tua servata aut ratio Steam.\n\nResponsum tuum quovis tempore mutare potes: tabula tituli > {0} > {1}."
+	},
+	{
+		"id": "999990021",
+		"key": "libtxt999990021",
+		"en|ch|tc|kr": "Permissum: errores auctori modi mittuntur."
+	},
+	{
+		"id": "999990022",
+		"key": "libtxt999990022",
+		"en|ch|tc|kr": "Non permissum: nihil mittitur."
+	},
+	{
+		"id": "999990023",
+		"key": "libtxt999990023",
+		"en|ch|tc|kr": "Hic error auctori mod nuntiatus est (BugSplat). Gratias!"
+	},
+	{
+		"id": "999990024",
+		"key": "libtxt999990024",
+		"en|ch|tc|kr": "Hic error auctori mod missus non est. Quaeso eum (cum actis) auctori mod nuntia."
+	}
+]

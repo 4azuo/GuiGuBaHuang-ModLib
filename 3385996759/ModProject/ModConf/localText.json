@@ -1,0 +1,187 @@
+[
+	{
+		"id": "999990000",
+		"key": "libtxt999990000",
+		"en": "Warning",
+		"ch": "警告",
+		"tc": "警告",
+		"kr": "경고"
+	},
+	{
+		"id": "999990001",
+		"key": "libtxt999990001",
+		"en": "ModLib's UI is optimized for 16:9 screen ratio.",
+		"ch": "ModLib 的 UI 针对 16:9 屏幕比例进行了优化。",
+		"tc": "ModLib 的 UI 針對 16:9 屏幕比例進行了優化。",
+		"kr": "ModLib의 UI은 16:9 화면 비율에 최적화되어 있습니다."
+	},
+	{
+		"id": "999990002",
+		"key": "libtxt999990002",
+		"en": "It will run a benchmark to initialize RAM for the game.",
+		"ch": "它将运行基准测试来初始化游戏的 RAM。",
+		"tc": "它將運行基準測試來初始化遊戲的 RAM。",
+		"kr": "벤치마크를 실행하여 게임의 RAM을 초기화합니다."
+	},
+	{
+		"id": "999990003",
+		"key": "libtxt999990003",
+		"en": "You have to reset the game!",
+		"ch": "你必须重置游戏！",
+		"tc": "你必須重置遊戲！",
+		"kr": "게임을 재설정해야 합니다!"
+	},
+	{
+		"id": "999990004",
+		"key": "libtxt999990004",
+		"en": "This is the first time. Do you wanna run a benchmark to initialize RAM for the game?",
+		"ch": "这是第一次。您想运行基准测试来初始化游戏的 RAM 吗？",
+		"tc": "這是第一次。您想運行基準測試來初始化遊戲的 RAM 嗎？",
+		"kr": "이번이 처음입니다. 벤치마크를 실행하여 게임의 RAM을 초기화하시겠습니까?"
+	},
+	{
+		"id": "999990005",
+		"key": "libtxt999990005",
+		"en": "DEFAULT_DRAMA_OPT",
+		"ch": "DEFAULT_DRAMA_OPT",
+		"tc": "DEFAULT_DRAMA_OPT",
+		"kr": "DEFAULT_DRAMA_OPT"
+	},
+	{
+		"id": "999990006",
+		"key": "libtxt999990006",
+		"en": "Hide Exceptions",
+		"ch": "隐藏异常",
+		"tc": "隱藏異常",
+		"kr": "예외 숨기기"
+	},
+	{
+		"id": "999990007",
+		"key": "libtxt999990007",
+		"en": "(Please turn on if you wanna feedback bugs)",
+		"ch": "（如果您想反馈Bug，请开启）",
+		"tc": "（如果您想反饋Bug，請開啟）",
+		"kr": "(버그 피드백을 원하시면 켜주세요)"
+	},
+	{
+		"id": "999990008",
+		"key": "libtxt999990008",
+		"en": "Page {0}",
+		"ch": "第{0}页",
+		"tc": "第{0}頁",
+		"kr": "페이지 {0}"
+	},
+	{
+		"id": "999990009",
+		"key": "libtxt999990009",
+		"en": "ModCreator"
+	},
+	{
+		"id": "999990010",
+		"key": "libtxt999990010",
+		"en": "Check IDs"
+	},
+	{
+		"id": "999990011",
+		"key": "libtxt999990011",
+		"en": "Check duplicated IDs which loaded by ModLib."
+	},
+	{
+		"id": "999990012",
+		"key": "libtxt999990012",
+		"en": "Export"
+	},
+	{
+		"id": "999990013",
+		"key": "libtxt999990013",
+		"en": "Export all game assets."
+	},
+	{
+		"id": "999990014",
+		"key": "libtxt999990014",
+		"en": "Powered by\nFouru's ModLib {0}",
+		"ch": "技术支持\nFouru 的 ModLib {0}",
+		"tc": "技術支援\nFouru 的 ModLib {0}",
+		"kr": "제공\nFouru의 ModLib {0}"
+	},
+	{
+		"id": "999990015",
+		"key": "libtxt999990015",
+		"en": "Language:",
+		"ch": "语言：",
+		"tc": "語言：",
+		"kr": "언어:"
+	},
+	{
+		"id": "999990016",
+		"key": "libtxt999990016",
+		"en": "Default",
+		"ch": "默认",
+		"tc": "預設",
+		"kr": "기본"
+	},
+	{
+		"id": "999990017",
+		"key": "libtxt999990017",
+		"en": "Exception",
+		"ch": "异常",
+		"tc": "例外",
+		"kr": "예외"
+	},
+	{
+		"id": "999990018",
+		"key": "libtxt999990018",
+		"en": "Open log",
+		"ch": "打开日志",
+		"tc": "開啟日誌",
+		"kr": "로그 열기"
+	},
+	{
+		"id": "999990019",
+		"key": "libtxt999990019",
+		"en": "Error reports",
+		"ch": "错误报告",
+		"tc": "錯誤報告",
+		"kr": "오류 보고"
+	},
+	{
+		"id": "999990020",
+		"key": "libtxt999990020",
+		"en": "When an error happens in one of these mods, may ModLib send an error report to its author (BugSplat service)?\n{2}\n\nSent: the error message and where it happened in the code, the last lines of the mod log (your user folder, Windows account and player id removed), the versions of the game, ModLib and the mods, the ids of the loaded mods, the language and an anonymous random id.\nNever sent: your saves or Steam account.\n\nYou can change your answer at any time: title screen > {0} > {1}.",
+		"ch": "当以下模组出错时，是否允许 ModLib 向其作者发送错误报告（BugSplat 服务）？\n{2}\n\n发送内容：错误信息及其在代码中的位置、模组日志的最后几行（已去除你的用户文件夹、Windows 账户和玩家 ID）、游戏/ModLib/模组的版本、已加载模组的 ID、语言和一个匿名随机 ID。\n绝不发送：存档或 Steam 账号。\n\n随时可以更改：标题画面 > {0} > {1}。",
+		"tc": "當以下模組出錯時，是否允許 ModLib 向其作者傳送錯誤報告（BugSplat 服務）？\n{2}\n\n傳送內容：錯誤訊息及其在程式碼中的位置、模組日誌的最後幾行（已去除你的使用者資料夾、Windows 帳戶和玩家 ID）、遊戲/ModLib/模組的版本、已載入模組的 ID、語言和一個匿名隨機 ID。\n絕不傳送：存檔或 Steam 帳號。\n\n隨時可以更改：標題畫面 > {0} > {1}。",
+		"kr": "아래 모드에서 오류가 발생하면 ModLib가 제작자에게 오류 보고서를 보내도 될까요? (BugSplat 서비스)\n{2}\n\n보내는 내용: 오류 메시지와 코드상의 위치, 모드 로그의 마지막 줄들(사용자 폴더, Windows 계정, 플레이어 ID는 제거됨), 게임/ModLib/모드 버전, 로드된 모드 ID, 언어, 익명 무작위 ID.\n절대 보내지 않음: 세이브, Steam 계정.\n\n언제든지 변경 가능: 타이틀 화면 > {0} > {1}."
+	},
+	{
+		"id": "999990021",
+		"key": "libtxt999990021",
+		"en": "Allowed: errors are sent to the mod author.",
+		"ch": "已允许：错误会发送给模组作者。",
+		"tc": "已允許：錯誤會傳送給模組作者。",
+		"kr": "허용됨: 오류가 모드 제작자에게 전송됩니다."
+	},
+	{
+		"id": "999990022",
+		"key": "libtxt999990022",
+		"en": "Not allowed: nothing is sent.",
+		"ch": "未允许：不会发送任何内容。",
+		"tc": "未允許：不會傳送任何內容。",
+		"kr": "허용 안 됨: 아무것도 전송되지 않습니다."
+	},
+	{
+		"id": "999990023",
+		"key": "libtxt999990023",
+		"en": "This error has been reported to the mod author (BugSplat). Thank you!",
+		"ch": "此错误已报告给模组作者（BugSplat）。谢谢！",
+		"tc": "此錯誤已回報給模組作者（BugSplat）。謝謝！",
+		"kr": "이 오류는 모드 제작자에게 보고되었습니다 (BugSplat). 감사합니다!"
+	},
+	{
+		"id": "999990024",
+		"key": "libtxt999990024",
+		"en": "This error was not sent to the mod author. Please report it (with the log) to the author of the mod.",
+		"ch": "此错误未发送给模组作者。请将其（附上日志）报告给该模组的作者。",
+		"tc": "此錯誤未傳送給模組作者。請將其（附上日誌）回報給該模組的作者。",
+		"kr": "이 오류는 모드 제작자에게 전송되지 않았습니다. 해당 모드의 제작자에게 (로그와 함께) 알려 주세요."
+	}
+]
