@@ -36,6 +36,6 @@ Always build in Release. Run scripts with `powershell -NoProfile -ExecutionPolic
 ## Documentation
 
 Read the relevant doc before answering questions or making non-trivial changes: `docs/README.md` (map), `docs/guide/`
-(`00-Getting-Started` … `07-Build-Deploy`), `docs/00-Architecture.md` (dispatch, load sequence, monthly tick; `01` event
+(`00-Getting-Started` … `07-Build-Deploy`, `08-Wallpapers`), `docs/00-Architecture.md` (dispatch, load sequence, monthly tick; `01` event
 reference, `02` cache/persistence, `03` built-in events, `04` UI framework, `05` attributes/objects/enums),
 `docs/06-Shared-Tools.md` (what a mod repository provides), `docs/ModConf/00-SampleConfs-List.md`.

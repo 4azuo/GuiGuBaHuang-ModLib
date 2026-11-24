@@ -10,8 +10,8 @@ using System.Diagnostics;
 using System.Drawing.Imaging;
 using System.IO;
 using System.Linq;
-using System.Windows.Forms;
 using UnityEngine;
+using UnityEngine.UI;
 
 namespace ModLib.Mod
 {
@@ -51,6 +51,15 @@ namespace ModLib.Mod
         /// <summary>Anonymous random id sent with the error reports (groups the reports of one player).</summary>
         public string CrashReportUserId { get; set; }
 
+        /// <summary>Mod wallpaper chosen in the Change Theme window ("modId/file", WallpaperHelper); null = the game's.</summary>
+        public string Wallpaper { get; set; }
+
+        /// <summary>
+        /// The player's choice: the game's title (logo) hidden on the title screen while a mod wallpaper is shown (its own
+        /// title); null = the setting of the wallpaper's pack (hideGameTitle of its "*wallpaper.json").
+        /// </summary>
+        public bool? HideGameTitle { get; set; }
+
         /// <summary>
         /// Loads the LocalText of the saved translation language.
         /// </summary>
@@ -66,6 +75,17 @@ namespace ModLib.Mod
         public override void OnOpenUIEnd(OpenUIEnd e)
         {
             base.OnOpenUIEnd(e);
+            if (e.uiType.uiName == UIType.WallPaper.uiName)
+            {
+                //the items of the game are made by InitData, after the opening: the mod wallpapers one frame later
+                g.timer.Frame(ActionHelper.TracedIl2Action(() =>
+                {
+                    var n = WallpaperHelper.AddToThemeWindow(g.ui.GetUI<UIWallPaper>(UIType.WallPaper));
+                    DebugHelper.WriteLine($"Change Theme: {n} mod wallpaper(s) added");
+                    if (n > 0)
+                        AddHideTitleToggle();
+                }), 1, false);
+            }
             if (e.uiType.uiName == UIType.Login.uiName)
             {
                 if (!ValueHelper.NearlyEqual(g.data.globle.gameSetting.screenWidth.Parse<float>() / g.data.globle.gameSetting.screenHeight.Parse<float>(), ModLibConst.SUPPORT_SCREEN_RATIO, 0.001))
@@ -77,13 +97,15 @@ namespace ModLib.Mod
                 var ui = new UICover<UILogin>(UIType.Login);
                 {
                     var parentTransform = ui.UI.btnSet.transform.parent;
-                    ui.AddButton(ui.LastCol - 3, ui.FirstRow + 2, () => Process.Start(ModLibConst.MODLIB_WEBSITE), string.Format(GameTool.LS("libtxt999990014"), ModMaster.ModObj.Version))
+                    //the frame of the game's DLC buttons (without the DLC icon and the "Claimed" mark); the old frame when missing
+                    var frame = GetTitleFrameButton(ui.UI);
+                    ui.AddButton(ui.LastCol - 3, ui.FirstRow + 2, () => Process.Start(ModLibConst.MODLIB_WEBSITE), string.Format(GameTool.LS("libtxt999990014"), ModMaster.ModObj.Version), frame)
                         .Align(TextAnchor.MiddleCenter)
                         .Format(Color.black, 18)
                         .Size(300, 80)
                         .SetParentTransform(parentTransform);
 
-                    var panelLangInit = ui.AddButton(ui.LastCol - 10, ui.FirstRow + 2, null, string.Empty)
+                    var panelLangInit = ui.AddButton(ui.LastCol - 10, ui.FirstRow + 2, null, string.Empty, frame)
                         .Size(330, 80)
                         .SetParentTransform(parentTransform);
                     var slLang = ui.AddCompositeSelect(ui.Columns[ui.LastCol - 12], ui.Rows[ui.FirstRow + 2] + UIHelper.GetUIDeltaY() / 2, GameTool.LS("libtxt999990015"), new string[] { GameTool.LS("libtxt999990016"), "Deutsch", "Español", "Français", "日本語", "Latina", "Русский", "Tiếng Việt", "ไทย" }, TranslateIndex)
@@ -129,10 +151,191 @@ namespace ModLib.Mod
                 }
                 ui.UpdateUI();
 
+                //the mod wallpaper of the session (startup draw of the packs, first title screen) or chosen by the player
+                //(WallpaperHelper), after the game's own one
+                WallpaperHelper.ShowStartupWallpaper();
+                var wallpaper = WallpaperHelper.GetCurrentKey();
+                if (wallpaper != null)
+                {
+                    WallpaperHelper.ShowOnTitle(wallpaper);
+                    g.timer.Frame(ActionHelper.TracedIl2Action(() => WallpaperHelper.ShowOnTitle(WallpaperHelper.GetCurrentKey())), 1, false);
+                }
+
                 //error reports: ask once per consent key (the answer can be changed in the ModCreator window)
                 if (CrashReportHelper.NeedsAsking)
                     AskCrashReportConsent(null);
             }
+        }
+
+        /// <summary>The toggle "hide the game's title on mod wallpapers" of the Change Theme window (tests).</summary>
+        public static UIItemToggle HideTitleToggle { get; private set; }
+
+        /// <summary>
+        /// Change Theme window: the toggle "hide the game's title on mod wallpapers" (HideGameTitle, saved, applied at once),
+        /// checkbox then its text, small, right above the top-left corner of the list.
+        /// </summary>
+        private void AddHideTitleToggle()
+        {
+            var ui = new UICover<UIWallPaper>(UIType.WallPaper);
+            UIItemComposite tg;
+            {
+                var value = WallpaperHelper.ShouldHideGameTitle(WallpaperHelper.Find(WallpaperHelper.GetCurrentKey()));
+                tg = ui.AddCompositeToggle(ui.MidCol, ui.FirstRow, string.Empty, value, GameTool.LS("libtxt999990033"));
+                //white on the dark blurred background of the window
+                tg.Postfix?.Format(Color.white, 15);
+                HideTitleToggle = tg.MainComponent as UIItemToggle;
+                HideTitleToggle.SetWork(new UIItemWork
+                {
+                    ChangeAct = ActionHelper.WTracedAction<UIItemBase, object>((a, b) =>
+                    {
+                        HideGameTitle = b.Parse<bool>();
+                        CacheHelper.SaveGlobalCache(this);
+                        WallpaperHelper.UpdateGameTitle();
+                    })
+                });
+            }
+            ui.UpdateUI();
+            PlaceOverList(ui.UI, tg);
+        }
+
+        //the toggle and its text right above the top-left corner of the list of the Change Theme window
+        private static void PlaceOverList(UIWallPaper w, UIItemComposite tg)
+        {
+            var scroll = w?.goItemRoot?.GetComponentInParent<ScrollRect>();
+            var area = scroll?.viewport ?? scroll?.GetComponent<RectTransform>() ?? w?.goItemRoot?.transform?.parent?.GetComponent<RectTransform>();
+            var box = tg.MainComponent.Component.GetComponent<RectTransform>();
+            var txt = tg.Postfix?.Component?.GetComponent<RectTransform>();
+            if (area == null || box == null)
+                return;
+            var r = area.rect;
+            //left edge of the first item of the list (the list is narrower than its viewport), else of the viewport
+            var left = r.xMin;
+            RectTransform first = null;
+            for (var i = 0; first == null && i < w.goItemRoot.transform.childCount; i++)
+            {
+                var c = w.goItemRoot.transform.GetChild(i);
+                if (c.gameObject.activeSelf)
+                    first = c.GetComponent<RectTransform>();
+            }
+            if (first != null)
+                left = area.InverseTransformPoint(first.TransformPoint(new Vector3(first.rect.xMin, 0, 0))).x;
+            var bw = box.rect.width;
+            var bh = box.rect.height;
+            var y = r.yMax + bh / 2 + 6;
+            box.position = area.TransformPoint(new Vector3(left + bw * box.pivot.x, y + bh * (box.pivot.y - 0.5f), 0));
+            if (txt != null)
+            {
+                txt.pivot = new Vector2(0f, 0.5f);
+                tg.Postfix.Item.Align(TextAnchor.MiddleLeft);
+                tg.Postfix.Item.horizontalOverflow = HorizontalWrapMode.Overflow;
+                txt.position = area.TransformPoint(new Vector3(left + bw + 6, y, 0));
+            }
+            tg.Prefix?.Component?.gameObject?.SetActive(false);
+        }
+
+        //the components kept on the copy of a game button (the others are the game's own scripts)
+        private static readonly HashSet<string> UNITY_UI_COMPONENTS = new HashSet<string>
+        {
+            "Transform", "RectTransform", "CanvasRenderer", "Image", "RawImage", "Text", "Button", "Outline", "Shadow",
+            "LayoutElement", "ContentSizeFitter", "HorizontalLayoutGroup", "VerticalLayoutGroup", "CanvasGroup", "Mask", "RectMask2D"
+        };
+
+        /// <summary>
+        /// A hidden copy of the frame of the game's DLC buttons on the title screen (the first one shown: DLC, Five Blooms,
+        /// Archive) for the ModLib buttons: only its frame and its label are kept (no DLC icon, no "Claimed" mark: the
+        /// small pictures), every part centered so that UIItemButton.Size sizes it like the default button. Null when the
+        /// game has none (the default button is used).
+        /// </summary>
+        public static Button GetTitleFrameButton(UILogin login)
+        {
+            try
+            {
+                var buttons = new Button[] { login.btnDLC, login.btnDLC_En, login.btnFiveFlower, login.btnFiveFlower_En, login.btnArtBook, login.btnArtBook_En };
+                var texts = new Text[] { login.textDLC, login.textDLC_En, login.textFiveFlower, login.textFiveFlower_En, login.textArtBook, login.textArtBook_En };
+                var i = System.Array.FindIndex(buttons, x => x != null && x.gameObject.activeInHierarchy);
+                if (i < 0)
+                    i = System.Array.FindIndex(buttons, x => x != null);
+                if (i < 0)
+                    return null;
+                var srcBtn = buttons[i];
+                var srcTxt = texts[i];
+                DebugHelper.WriteLine($"Title frame from {srcBtn.name}:\n{BattleSceneHelper.DumpHierarchy(srcBtn.transform, 4)}");
+
+                //the path of the label in the button (its text: the label of the copy)
+                var labelPath = srcTxt != null && srcTxt.transform.IsChildOf(srcBtn.transform) ? GetPath(srcBtn.transform, srcTxt.transform) : null;
+                var frame = srcBtn.Create(login.canvas.transform);
+                var root = frame.GetComponent<RectTransform>();
+                var size = root.rect.size;
+                var label = labelPath != null ? frame.transform.Find(labelPath) : frame.GetComponentInChildren<Text>(true)?.transform;
+                //the frame of the game's buttons is a sprite ("Normal" {SpriteRenderer}: LoginButton_normal_DLC), drawn by
+                //the button's SortingGroup: made a UI image of the size of the button
+                //(the copy is inactive: the sprites shown are the ones of active objects)
+                foreach (var sr in frame.GetComponentsInChildren<SpriteRenderer>(true))
+                {
+                    var go = sr.gameObject;
+                    var sprite = sr.sprite;
+                    if (sprite == null || go == frame.gameObject || !go.activeSelf || !sr.enabled)
+                        continue;
+                    UnityEngine.Object.DestroyImmediate(sr);
+                    var img = go.AddComponent<Image>();
+                    img.sprite = sprite;
+                    img.raycastTarget = false;
+                    img.type = sprite.border != Vector4.zero ? Image.Type.Sliced : Image.Type.Simple;
+                    var rt = go.GetComponent<RectTransform>();
+                    rt.localScale = Vector3.one;
+                    rt.sizeDelta = size;
+                    go.transform.SetAsFirstSibling();
+                    DebugHelper.WriteLine($"Title frame: {sprite.name} ({sprite.rect.width}x{sprite.rect.height}, border {sprite.border}) as an image");
+                }
+                foreach (var rect in frame.GetComponentsInChildren<RectTransform>(true))
+                {
+                    if (rect == root)
+                        continue;
+                    var keep = label != null && (rect == label || label.IsChildOf(rect));
+                    //the frame: a picture nearly as big as the button
+                    var r = rect.rect.size;
+                    if (!keep && rect.GetComponent<Image>() != null && r.x >= size.x * 0.8f && r.y >= size.y * 0.6f)
+                        keep = true;
+                    if (!keep)
+                    {
+                        rect.gameObject.SetActive(false);
+                        continue;
+                    }
+                    rect.anchorMin = new Vector2(0.5f, 0.5f);
+                    rect.anchorMax = new Vector2(0.5f, 0.5f);
+                    rect.pivot = new Vector2(0.5f, 0.5f);
+                    rect.anchoredPosition = Vector2.zero;
+                }
+                //the game's own components (localized text, DLC state: they set the text / show the marks again) removed
+                foreach (var comp in frame.GetComponentsInChildren<Component>(true))
+                {
+                    var name = comp.GetIl2CppType().Name;
+                    if (!UNITY_UI_COMPONENTS.Contains(name) && !name.StartsWith("TextMeshPro"))
+                    {
+                        DebugHelper.WriteLine($"Title frame: {name} removed from {comp.gameObject.name}");
+                        UnityEngine.Object.DestroyImmediate(comp);
+                    }
+                }
+                if (label != null)
+                {
+                    label.gameObject.SetActive(true);
+                    label.SetAsLastSibling();
+                }
+                return frame;
+            }
+            catch (System.Exception ex)
+            {
+                DebugHelper.WriteLine($"Title frame: {ex.Message}");
+                return null;
+            }
+        }
+
+        private static string GetPath(Transform root, Transform t)
+        {
+            var names = new List<string>();
+            for (var c = t; c != null && c != root; c = c.parent)
+                names.Insert(0, c.name);
+            return string.Join("/", names);
         }
 
         /// <summary>

@@ -158,5 +158,15 @@
 		"id": "999990031",
 		"key": "libtxt999990031",
 		"en|ch|tc|kr": "File cấu hình của mod bị hỏng:\n{0}\n\n{1}\n\nHãy cài lại mod (Steam Workshop: hủy đăng ký rồi đăng ký lại; cài thủ công: copy lại toàn bộ thư mục Mod_xxx trong file zip). Nếu bạn tự sửa file này, hãy sửa lại cho đúng hoặc bỏ các thay đổi của mình."
+	},
+	{
+		"id": "999990032",
+		"key": "libtxt999990032",
+		"en|ch|tc|kr": "Hình nền mod {0}"
+	},
+	{
+		"id": "999990033",
+		"key": "libtxt999990033",
+		"en|ch|tc|kr": "Ẩn tiêu đề game trên hình nền mod"
 	}
 ]

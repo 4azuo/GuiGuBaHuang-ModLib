@@ -158,5 +158,15 @@
 		"id": "999990031",
 		"key": "libtxt999990031",
 		"en|ch|tc|kr": "Un archivo de configuración de un mod está dañado:\n{0}\n\n{1}\n\nReinstala el mod (Steam Workshop: cancela la suscripción y vuelve a suscribirte; instalación manual: copia de nuevo la carpeta Mod_xxx completa del zip). Si editaste este archivo tú mismo, corrígelo o deshaz tus cambios."
+	},
+	{
+		"id": "999990032",
+		"key": "libtxt999990032",
+		"en|ch|tc|kr": "Fondo del mod {0}"
+	},
+	{
+		"id": "999990033",
+		"key": "libtxt999990033",
+		"en|ch|tc|kr": "Ocultar el título del juego en los fondos de mods"
 	}
 ]

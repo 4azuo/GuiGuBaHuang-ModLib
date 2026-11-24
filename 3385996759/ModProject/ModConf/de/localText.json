@@ -158,5 +158,15 @@
 		"id": "999990031",
 		"key": "libtxt999990031",
 		"en|ch|tc|kr": "Eine Konfigurationsdatei einer Mod ist beschädigt:\n{0}\n\n{1}\n\nInstalliere die Mod neu (Steam Workshop: Abonnement beenden und erneut abonnieren; manuelle Installation: den ganzen Mod_xxx-Ordner der Zip-Datei erneut kopieren). Wenn du diese Datei selbst bearbeitet hast, korrigiere sie oder verwirf deine Änderungen."
+	},
+	{
+		"id": "999990032",
+		"key": "libtxt999990032",
+		"en|ch|tc|kr": "Mod-Hintergrund {0}"
+	},
+	{
+		"id": "999990033",
+		"key": "libtxt999990033",
+		"en|ch|tc|kr": "Spieltitel auf Mod-Hintergründen ausblenden"
 	}
 ]

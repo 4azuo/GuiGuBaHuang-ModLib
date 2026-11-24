@@ -18,7 +18,8 @@ docs/
 │   ├── 04-LocalText.md           localization: *_localText.json, locale folders, icon tokens, Translate
 │   ├── 05-Helpers.md             the helpers of ModLib
 │   ├── 06-Debug.md               debugging, game / mod log locations, error reports
-│   └── 07-Build-Deploy.md        build, deploy and release scripts
+│   ├── 07-Build-Deploy.md        build, deploy and release scripts
+│   └── 08-Wallpapers.md          wallpapers of a mod on the title screen (ModConf/*_wallpaper.json)
 ├── 00-Architecture.md            dispatch, load sequence, monthly tick
 ├── 01-Event-Reference.md         every event of ModEvent
 ├── 02-Cache-Persistence.md       [Cache] events, global / save caches, CacheHelper
@@ -60,6 +61,7 @@ the viewer server: `python GuiGuBaHuang-ModLib/scripts/effect-viewer-server.py -
 | find an event and when it is called | `01-Event-Reference.md`, `03-Builtin-Events.md` |
 | keep data of a mod (global / per save) | `02-Cache-Persistence.md` |
 | build a window or cover a game window | `04-UI-Framework.md` |
+| add wallpapers of a mod to the title screen | `guide/08-Wallpapers.md` |
 | find a config type of the game and its fields | `ModConf/00-SampleConfs-List.md` |
 | pick an icon for a text, an item icon or a background for a drama | `GameAssets/index.html` |
 | build, run the game, run the autotest, view the results, translate (any mod repository) | `06-Shared-Tools.md` |

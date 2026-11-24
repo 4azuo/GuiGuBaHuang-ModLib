@@ -37,6 +37,7 @@ Reusable utility functions in `Helper/` folder.
 - **UISampleHelper** - UI sample components
 - **CompHelper** - Component utilities
 - **SpriteHelper** - Sprite and image handling
+- **WallpaperHelper** - Wallpapers of the mods on the title screen, one file `ModConf/*_wallpaper.json` per wallpaper (its image of ModImg, order, hide the game's title, chance to start on it): added to the game's Change Theme window and shown over the game's wallpaper when chosen (saved in `ModTitleEvent.Wallpaper`, key `modId/file`). No code needed in the mod: see [08-Wallpapers](08-Wallpapers.md)
 - **TranslateHelper** - Translation and localization
 
 **Drama & Dialogue:**

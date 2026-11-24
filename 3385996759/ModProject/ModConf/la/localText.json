@@ -158,5 +158,15 @@
 		"id": "999990031",
 		"key": "libtxt999990031",
 		"en|ch|tc|kr": "Fasciculus configurationis modi corruptus est:\n{0}\n\n{1}\n\nModum iterum institue (Steam Workshop: subscriptionem remove, deinde iterum subscribe; institutio manualis: totam capsam Mod_xxx ex zip iterum exscribe). Si hunc fasciculum ipse mutavisti, eum corrige aut mutationes tuas dele."
+	},
+	{
+		"id": "999990032",
+		"key": "libtxt999990032",
+		"en|ch|tc|kr": "Tabula fundi modi {0}"
+	},
+	{
+		"id": "999990033",
+		"key": "libtxt999990033",
+		"en|ch|tc|kr": "Titulum ludi in tabulis fundi modorum cela"
 	}
 ]
