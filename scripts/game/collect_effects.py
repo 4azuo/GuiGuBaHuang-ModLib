@@ -122,8 +122,8 @@ def write_index(idx_file, items, made_files):
 
 
 def update_lists(repo, run):
-    """The fresh lists of the game (<run>/_Def_Res_Efx_Battle_*.txt) -> ModConf."""
-    conf = os.path.join(repo, _modrepo.project(), "ModProject", "ModConf")
+    """The fresh lists of the game (<run>/_Def_Res_Efx_Battle_*.txt) -> ModConf of ModLib (3385996759)."""
+    conf = os.path.join(_modrepo.MODLIB, "3385996759", "ModProject", "ModConf")   # the lists of the galleries (ModLib)
     for name in LISTS.values():
         fresh = os.path.join(run, name)
         if not os.path.exists(fresh):

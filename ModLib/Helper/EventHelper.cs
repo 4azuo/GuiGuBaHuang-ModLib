@@ -55,7 +55,9 @@ namespace ModLib.Helper
                     foreach (var ev in GetEvents())
                     {
                         var method = ev.GetType().GetMethod(methodName);
-                        if (method == null || method.DeclaringType != ev.GetType())
+                        // the empty default of ModEvent is skipped; an override counts whether it is declared by the event
+                        // itself or by a base class of it (e.g. ModLib.AutoTest.AutoTestRunner under a mod's AutoTestEvent)
+                        if (method == null || (method.DeclaringType != ev.GetType() && method.GetBaseDefinition().DeclaringType == method.DeclaringType))
                             continue;
                         list.Add(new Handler
                         {

@@ -81,7 +81,7 @@ if (-not (Confirm-ToolRun $Id -Confirmed:$ConfirmTools)) { exit 0 }
 $kinds = @{ 'TE-01' = 'Skill'; 'TE-02' = 'Unit'; 'TE-03' = 'Scenes' }
 $queue = New-Object System.Collections.Generic.List[object]
 foreach ($g in $Id) {
-    $total = @(Get-Content -LiteralPath (Join-Path $repo "$($paths.Mod.Project)\ModProject\ModConf\$($lists[$g])") | Where-Object { $_.Trim() }).Count
+    $total = @(Get-Content -LiteralPath (Join-Path $paths.ModLib "3385996759\ModProject\ModConf\$($lists[$g])") | Where-Object { $_.Trim() }).Count
     $to = if ($End -ge 0) { [Math]::Min($End, $total) } else { $total }
     if (-not $Resume) {
         for ($i = $Start; $i -lt $to; $i += $Batch) {

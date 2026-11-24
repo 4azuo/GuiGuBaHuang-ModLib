@@ -38,7 +38,7 @@ flowchart LR
 ## Two-layer dispatch
 
 1. Native callback `ModMaster._OnXxx(ETypeData e)` (registered in `Init`) calls `CallEvents<T>("OnXxx", e)`: reflection call of `ModMaster.OnXxx` (its `MethodInfo` found once per name), casting the Il2Cpp event data to the concrete type `T`, measuring time (`DebugMode >= Finest`) and logging exceptions.
-2. `ModMaster.OnXxx` does framework work when needed (load sequence, save, monthly tick...) and then calls `EventHelper.RunMinorEvents("OnXxx", e)`, which iterates the cached `ModEvent`s **that declare** the method, in cache order, and for each:
+2. `ModMaster.OnXxx` does framework work when needed (load sequence, save, monthly tick...) and then calls `EventHelper.RunMinorEvents("OnXxx", e)`, which iterates the cached `ModEvent`s **that override** the method (in the event class or in a base class of it, e.g. `ModLib.AutoTest.AutoTestRunner` under a mod's `AutoTestEvent`; the empty default of `ModEvent` is skipped), in cache order, and for each:
 
    The handlers of a method name (event, `MethodInfo`, `[EventCondition]`, `[ErrorIgnore]`, a delegate calling the method) are found **once** and kept until `CacheHelper.Version` changes (an object added or removed, caches cleared, re-ordered). Before 2.2.36 the lookup (reflection on every loaded object) ran at every call, i.e. once for every unit of `OnMonthlyForEachWUnit`. An exception thrown by a handler is the handler's own (no `TargetInvocationException`), so `[ErrorIgnore]` on the method that threw applies.
    * checks `[EventCondition(IsInGame, IsInBattle)]`,

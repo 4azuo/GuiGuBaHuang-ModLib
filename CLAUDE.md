@@ -6,7 +6,7 @@ hold it as their `GuiGuBaHuang-ModLib` submodule.
 
 ## Layout
 
-- **ModLib/** - C# sources (`ModLib.csproj`): `Attribute/`, `Const/`, `Converter/`, `Enum/`, `Example/`, `Helper/`, `Mod/` (`Mod/Base/`: `ModMaster`, `ModChild`, `ModEvent`), `Object/`, `lib/` (Newtonsoft.Json)
+- **ModLib/** - C# sources (`ModLib.csproj`): `Attribute/`, `Const/`, `Converter/`, `Enum/`, `AutoTest/` (the in-game autotest runner of the mods: `AutoTestRunner`, scenarios model, registry, effect galleries), `Example/`, `Helper/`, `Mod/` (`Mod/Base/`: `ModMaster`, `ModChild`, `ModEvent`), `Object/`, `lib/` (Newtonsoft.Json)
 - **3385996759/** - the ModLib Workshop project: `ModProject/ModCode/ModMain/` (ModMain of ModLib, builds `ModLib/ModLib.csproj`), `ModProject/ModConf/` (configs, `localText.json`: keys `libtxt<id>`, ids `999990000`+), `SampleConfs/` (templates of every game config type), `debug/Mod_flQrxq/` (build output; `ModCode/dll` committed: the mods build against it), `scripts/` (settings + wrappers)
 - **scripts/** - shared tools: `project/` (build / deploy), `game/` (game runs, autotest, game slots, promo, effect galleries), `release/`, `setup/`, `run-unittests.ps1`, repository scripts; `settings.json` of this repository
 - **tests/** - `UnitTests.props` (shared test setup), `Shared/`, `ModLib/` (tests of ModLib), `ModLibTests.csproj`

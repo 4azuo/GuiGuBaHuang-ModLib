@@ -28,7 +28,7 @@ find it as the parent folder of ModLib (or `$env:MOD_REPO`).
 | `scripts/run-unittests.ps1` | builds the projects and runs `tests/UnitTests/UnitTests.csproj` of the repository (ModLib alone: `tests/ModLibTests.csproj`) | `logs/unittests/` |
 | `scripts/release/` | `create-release-tag`, `package-release` (+ `_release.ps1`): each repository releases its own projects (repository: `-RepoRoot` or the git repository of the current folder) | `dist/` |
 | `scripts/project/` | `build-project`, `clean-project`, `rebuild-project`, `rebuild-and-deploy`, `copy-to-steam`, `copy-from-steam`, `compress`, `start-auto-build` (+ `auto-build-and-deploy.py`) | `<ProjectId>/debug/`, `<ProjectId>/scripts/auto-built-errors.log` |
-| `scripts/game/` | `run-game`, `run-autotest` (+ `-parallel`, `merge-parallel-run`), `new-game-slot`, `set-scenario-status`, `run-promo` / `collect-promo`, effect galleries (`run-effect-gallery`, `collect-effects`, `*_effects.py`) | `logs/game-runs/`, `logs/autotest/`, `<modProject>/tests/scenario-status.json`, `<modProject>/ModProject/SteamImg/promo-*/` (effects go to `docs/Effects/` here) |
+| `scripts/game/` | `run-game`, `run-autotest` (+ `-parallel`, `merge-parallel-run`), `new-game-slot`, `set-scenario-status`, `run-promo` / `collect-promo`, effect galleries (`run-effect-gallery`, `collect-effects`, `*_effects.py`) | `logs/game-runs/`, `logs/autotest/`, `<modProject>/tests/scenario-status.json`, `<modProject>/ModProject/SteamImg/promo-*/` (effects go to `docs/Effects/` here, their lists to `3385996759/ModProject/ModConf/_Def_Res_Efx_*.txt`) |
 | `scripts/` | `pin-test-run.ps1`, `effect-viewer-server.py` (viewer server with saving), `extract-game-assets.py` (writes `docs/GameAssets/` here) | `logs/*/<run>/pinned.json` |
 | `test-viewer/` | page template, `app.js`, `style.css`, `update-data.ps1 [-RepoRoot]` | `logs/test-viewer/index.html` + `data/runs.js` (git-ignored with `logs/`) |
 | `promo-viewer/` | page template, `app.js`, `style.css`, `update-data.py [--repo]` | `logs/promo-viewer/index.html` + `data/promo.js` (git-ignored with `logs/`) |
@@ -43,4 +43,17 @@ A clone of this repository alone has its own `scripts/settings.json` (`"projects
 3385996759, release, unit tests, viewers, game pictures, Translate with its cache `.translate-cache/`, setup, Nexus).
 As a submodule, use the tasks of the mod repository: they offer the ModLib project too.
 
-The in-game side of the autotest (the runner `AutoTestEvent` and the scenarios) is still code of each mod.
+## Autotest in the game
+
+The runner is ModLib's: `ModLib/AutoTest/` (`AutoTestRunner`: request, phases, steps, screenshots, game slots, the player
+put back between scenarios; `AutoTestContext` / `Scenario` / `AutoTestRequest`; `ScenarioRegistry`; `MockBugSplatServer`;
+`Scenarios/EffectGallery.cs`: the effect galleries TE-01..03, tools run only when asked by id). A mod adds:
+
+- its runner, a subclass with a Cache attribute (`[Cache("AutoTestEvent", CacheType = CacheAttribute.CType.Global, WorkOn =
+  CacheAttribute.WType.All)] public class AutoTestEvent : AutoTestRunner`) and its hooks: `ModVersion`, `OnRequestLoaded`,
+  `OnNewCharacterRequested`, `CaptureModState` / `RestoreModState` (its data put back between scenarios), `CanFightInTests`;
+- its scenarios: `IScenarioDefinition` classes of its assembly (`CreateScenarios` finds them with ModLib's), their ids in
+  `<modProject>/tests/scenarios.json` (the TE-xx ids too when the mod checks that every scenario class has an entry);
+- `modId` in `scripts/settings.json` (the folder of the requests: `<game data>\mod\<modId>\autotest\`).
+
+The reference: `3161035078/ModProject/ModCode/ModMain/Mod/AutoTestEvent.cs` and `AutoTest/` of GuiGuBaHuang-Taoist.

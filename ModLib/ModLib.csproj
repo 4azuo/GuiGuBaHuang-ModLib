@@ -38,6 +38,12 @@
     <DocumentationFile Condition="Exists('$(MSBuildProjectDirectory)\..\..\GuiGuBaHuang-ModCreator\ModCreator\Resources')">$(MSBuildProjectDirectory)\..\..\GuiGuBaHuang-ModCreator\ModCreator\Resources\ModLib.xml</DocumentationFile>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="AutoTest\AutoTestContext.cs" />
+    <Compile Include="AutoTest\AutoTestRunner.cs" />
+    <Compile Include="AutoTest\AutoTestRunner.KeepAlive.cs" />
+    <Compile Include="AutoTest\MockBugSplatServer.cs" />
+    <Compile Include="AutoTest\ScenarioRegistry.cs" />
+    <Compile Include="AutoTest\Scenarios\EffectGallery.cs" />
     <Compile Include="Attribute\EventCatIgnAttribute.cs" />
     <Compile Include="Attribute\ActionCatIgnAttribute.cs" />
     <Compile Include="Attribute\ActionCatAttribute.cs" />
