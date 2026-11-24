@@ -123,5 +123,40 @@
 		"id": "999990024",
 		"key": "libtxt999990024",
 		"en|ch|tc|kr": "Cette erreur n'a pas été envoyée à l'auteur du mod. Merci de la signaler (avec le journal) à l'auteur du mod."
+	},
+	{
+		"id": "999990025",
+		"key": "libtxt999990025",
+		"en|ch|tc|kr": "Erreur"
+	},
+	{
+		"id": "999990026",
+		"key": "libtxt999990026",
+		"en|ch|tc|kr": "Des fichiers d'un mod sont manquants :\n{0}\n\nLe dossier de ce mod est incomplet :\n{1}\n\nRéinstallez le mod :\n- Steam Workshop : désabonnez-vous, puis abonnez-vous à nouveau.\n- Installation manuelle : fermez le jeu, supprimez ce dossier et copiez à nouveau le dossier Mod_xxx complet du zip (avec ModCode, ModConf et ModImg)."
+	},
+	{
+		"id": "999990027",
+		"key": "libtxt999990027",
+		"en|ch|tc|kr": "Une configuration d'un mod n'a pas été chargée : {0} {1}.\n\nLe dossier ModConf du mod est manquant ou le jeu ne l'a pas chargé.\nRéinstallez le mod (Steam Workshop : désabonnez-vous puis abonnez-vous à nouveau ; installation manuelle : copiez à nouveau le dossier Mod_xxx complet du zip) et vérifiez que votre version du jeu est prise en charge par le mod."
+	},
+	{
+		"id": "999990028",
+		"key": "libtxt999990028",
+		"en|ch|tc|kr": "Les détails techniques sont dans le journal du mod :\n{0}"
+	},
+	{
+		"id": "999990029",
+		"key": "libtxt999990029",
+		"en|ch|tc|kr": "La version du jeu ne correspond pas aux mods : {0} est manquant.\n\n- Si le jeu vient d'être mis à jour : relancez le jeu (MelonLoader reconstruit ses fichiers), puis mettez à jour les mods (Steam Workshop les met à jour tout seul ; installation manuelle : téléchargez les dernières versions). Si l'erreur persiste, attendez une mise à jour du mod.\n- Sinon : mettez le jeu et les mods à jour vers leurs dernières versions."
+	},
+	{
+		"id": "999990030",
+		"key": "libtxt999990030",
+		"en|ch|tc|kr": "ModLib est trop ancien pour un mod : {0} est manquant (ModLib installé : {1}).\n\nMettez ModLib à jour :\n- Steam Workshop : désabonnez-vous de ModLib, puis abonnez-vous à nouveau.\n- Installation manuelle : fermez le jeu, supprimez l'ancien dossier Mod_flQrxq et copiez celui de la dernière version de ModLib."
+	},
+	{
+		"id": "999990031",
+		"key": "libtxt999990031",
+		"en|ch|tc|kr": "Un fichier de configuration d'un mod est endommagé :\n{0}\n\n{1}\n\nRéinstallez le mod (Steam Workshop : désabonnez-vous puis abonnez-vous à nouveau ; installation manuelle : copiez à nouveau le dossier Mod_xxx complet du zip). Si vous avez modifié ce fichier vous-même, corrigez-le ou annulez vos changements."
 	}
 ]

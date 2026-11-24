@@ -123,5 +123,40 @@
 		"id": "999990024",
 		"key": "libtxt999990024",
 		"en|ch|tc|kr": "Lỗi này chưa được gửi cho tác giả mod. Vui lòng báo lỗi (kèm log) cho tác giả của mod."
+	},
+	{
+		"id": "999990025",
+		"key": "libtxt999990025",
+		"en|ch|tc|kr": "Lỗi"
+	},
+	{
+		"id": "999990026",
+		"key": "libtxt999990026",
+		"en|ch|tc|kr": "Thiếu file của mod:\n{0}\n\nThư mục của mod này không đầy đủ:\n{1}\n\nHãy cài lại mod:\n- Steam Workshop: hủy đăng ký rồi đăng ký lại.\n- Cài thủ công: tắt game, xóa thư mục này rồi copy lại toàn bộ thư mục Mod_xxx trong file zip (gồm ModCode, ModConf và ModImg)."
+	},
+	{
+		"id": "999990027",
+		"key": "libtxt999990027",
+		"en|ch|tc|kr": "Một cấu hình của mod chưa được nạp: {0} {1}.\n\nThư mục ModConf của mod bị thiếu hoặc game không nạp nó.\nHãy cài lại mod (Steam Workshop: hủy đăng ký rồi đăng ký lại; cài thủ công: copy lại toàn bộ thư mục Mod_xxx trong file zip) và kiểm tra phiên bản game có được mod hỗ trợ không."
+	},
+	{
+		"id": "999990028",
+		"key": "libtxt999990028",
+		"en|ch|tc|kr": "Chi tiết kỹ thuật nằm trong log của mod:\n{0}"
+	},
+	{
+		"id": "999990029",
+		"key": "libtxt999990029",
+		"en|ch|tc|kr": "Phiên bản game không khớp với mod: thiếu {0}.\n\n- Nếu game vừa cập nhật: mở lại game (MelonLoader sẽ tạo lại file của nó), rồi cập nhật các mod (Steam Workshop tự cập nhật; cài thủ công: tải bản mới nhất). Nếu vẫn lỗi, hãy chờ bản cập nhật của mod.\n- Trường hợp khác: cập nhật game và các mod lên bản mới nhất."
+	},
+	{
+		"id": "999990030",
+		"key": "libtxt999990030",
+		"en|ch|tc|kr": "ModLib quá cũ so với mod: thiếu {0} (ModLib đang cài: {1}).\n\nHãy cập nhật ModLib:\n- Steam Workshop: hủy đăng ký ModLib rồi đăng ký lại.\n- Cài thủ công: tắt game, xóa thư mục Mod_flQrxq cũ rồi copy thư mục của bản ModLib mới nhất."
+	},
+	{
+		"id": "999990031",
+		"key": "libtxt999990031",
+		"en|ch|tc|kr": "File cấu hình của mod bị hỏng:\n{0}\n\n{1}\n\nHãy cài lại mod (Steam Workshop: hủy đăng ký rồi đăng ký lại; cài thủ công: copy lại toàn bộ thư mục Mod_xxx trong file zip). Nếu bạn tự sửa file này, hãy sửa lại cho đúng hoặc bỏ các thay đổi của mình."
 	}
 ]

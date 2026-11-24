@@ -161,6 +161,18 @@ namespace ModLib.Helper
             WriteLine($"ModLib-Version: {ModMaster.ModObj.Version}");
             WriteLine($"Caller-Info: {filePath}:{memberName}:(line {lineNumber})");
             WriteLine($"{e.GetAllInnnerExceptionStr()}");
+
+            //known cause (bad install...): the player gets the reason and what to do, no error report (not a bug)
+            var known = KnownErrorHelper.Find(e);
+            if (known != null)
+            {
+                var reason = KnownErrorHelper.GetReason(known);
+                WriteLine($"【Known error】{known.Kind}: {reason}");
+                Save();
+                if (IsDebugMode)
+                    ModMaster.ShowKnownError(reason, GetDebugFilePath());
+                return;
+            }
             Save();
 
             //sent only when the player allowed it (ModTitleEvent.CrashReportConsent)

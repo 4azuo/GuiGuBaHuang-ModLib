@@ -123,5 +123,40 @@
 		"id": "999990024",
 		"key": "libtxt999990024",
 		"en|ch|tc|kr": "Este error no se envió al autor del mod. Infórmalo (con el registro) al autor del mod."
+	},
+	{
+		"id": "999990025",
+		"key": "libtxt999990025",
+		"en|ch|tc|kr": "Error"
+	},
+	{
+		"id": "999990026",
+		"key": "libtxt999990026",
+		"en|ch|tc|kr": "Faltan archivos de un mod:\n{0}\n\nLa carpeta de este mod está incompleta:\n{1}\n\nReinstala el mod:\n- Steam Workshop: cancela la suscripción y vuelve a suscribirte.\n- Instalación manual: cierra el juego, borra esta carpeta y copia de nuevo la carpeta Mod_xxx completa del zip (con ModCode, ModConf y ModImg)."
+	},
+	{
+		"id": "999990027",
+		"key": "libtxt999990027",
+		"en|ch|tc|kr": "No se cargó una configuración de un mod: {0} {1}.\n\nFalta la carpeta ModConf del mod o el juego no la cargó.\nReinstala el mod (Steam Workshop: cancela la suscripción y vuelve a suscribirte; instalación manual: copia de nuevo la carpeta Mod_xxx completa del zip) y comprueba que tu versión del juego es compatible con el mod."
+	},
+	{
+		"id": "999990028",
+		"key": "libtxt999990028",
+		"en|ch|tc|kr": "Los detalles técnicos están en el registro del mod:\n{0}"
+	},
+	{
+		"id": "999990029",
+		"key": "libtxt999990029",
+		"en|ch|tc|kr": "La versión del juego no coincide con los mods: falta {0}.\n\n- Si el juego se acaba de actualizar: reinicia el juego (MelonLoader regenera sus archivos) y actualiza los mods (Steam Workshop los actualiza solo; instalación manual: descarga las últimas versiones). Si el error continúa, espera una actualización del mod.\n- Si no: actualiza el juego y los mods a sus últimas versiones."
+	},
+	{
+		"id": "999990030",
+		"key": "libtxt999990030",
+		"en|ch|tc|kr": "ModLib es demasiado antiguo para un mod: falta {0} (ModLib instalado: {1}).\n\nActualiza ModLib:\n- Steam Workshop: cancela la suscripción a ModLib y vuelve a suscribirte.\n- Instalación manual: cierra el juego, borra la carpeta antigua Mod_flQrxq y copia la de la última versión de ModLib."
+	},
+	{
+		"id": "999990031",
+		"key": "libtxt999990031",
+		"en|ch|tc|kr": "Un archivo de configuración de un mod está dañado:\n{0}\n\n{1}\n\nReinstala el mod (Steam Workshop: cancela la suscripción y vuelve a suscribirte; instalación manual: copia de nuevo la carpeta Mod_xxx completa del zip). Si editaste este archivo tú mismo, corrígelo o deshaz tus cambios."
 	}
 ]

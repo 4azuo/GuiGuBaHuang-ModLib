@@ -231,7 +231,8 @@ namespace ModLib.Helper
                         {
                             // one broken file must not stop the other files (a mod would lose all its later configs)
                             DebugHelper.WriteLine($"Failed to load conf file: {filePath}");
-                            DebugHelper.WriteLine(ex);
+                            //with the file: a broken JSON is shown to the player as a damaged file (KnownErrorHelper)
+                            DebugHelper.WriteLine(KnownErrorHelper.InConfFile(filePath, ex));
                         }
                     }
                 }

@@ -123,5 +123,40 @@
 		"id": "999990024",
 		"key": "libtxt999990024",
 		"en|ch|tc|kr": "Dieser Fehler wurde nicht an den Mod-Autor gesendet. Bitte melde ihn (mit dem Log) dem Autor des Mods."
+	},
+	{
+		"id": "999990025",
+		"key": "libtxt999990025",
+		"en|ch|tc|kr": "Fehler"
+	},
+	{
+		"id": "999990026",
+		"key": "libtxt999990026",
+		"en|ch|tc|kr": "Dateien einer Mod fehlen:\n{0}\n\nDer Ordner dieser Mod ist unvollständig:\n{1}\n\nInstalliere die Mod neu:\n- Steam Workshop: Abonnement beenden und erneut abonnieren.\n- Manuelle Installation: Spiel schließen, diesen Ordner löschen und den ganzen Mod_xxx-Ordner der Zip-Datei erneut kopieren (mit ModCode, ModConf und ModImg)."
+	},
+	{
+		"id": "999990027",
+		"key": "libtxt999990027",
+		"en|ch|tc|kr": "Eine Konfiguration einer Mod wurde nicht geladen: {0} {1}.\n\nDer ModConf-Ordner der Mod fehlt oder das Spiel hat ihn nicht geladen.\nInstalliere die Mod neu (Steam Workshop: Abonnement beenden und erneut abonnieren; manuelle Installation: den ganzen Mod_xxx-Ordner der Zip-Datei erneut kopieren) und prüfe, ob deine Spielversion von der Mod unterstützt wird."
+	},
+	{
+		"id": "999990028",
+		"key": "libtxt999990028",
+		"en|ch|tc|kr": "Technische Details stehen im Mod-Log:\n{0}"
+	},
+	{
+		"id": "999990029",
+		"key": "libtxt999990029",
+		"en|ch|tc|kr": "Die Spielversion passt nicht zu den Mods: {0} fehlt.\n\n- Wenn das Spiel gerade aktualisiert wurde: Spiel neu starten (MelonLoader erstellt seine Dateien neu), dann die Mods aktualisieren (Steam Workshop aktualisiert sie selbst; manuelle Installation: neueste Versionen herunterladen). Bleibt der Fehler, warte auf ein Update der Mod.\n- Sonst: Spiel und Mods auf die neuesten Versionen aktualisieren."
+	},
+	{
+		"id": "999990030",
+		"key": "libtxt999990030",
+		"en|ch|tc|kr": "ModLib ist zu alt für eine Mod: {0} fehlt (installierte ModLib: {1}).\n\nAktualisiere ModLib:\n- Steam Workshop: ModLib-Abonnement beenden und erneut abonnieren.\n- Manuelle Installation: Spiel schließen, den alten Ordner Mod_flQrxq löschen und den der neuesten ModLib-Version kopieren."
+	},
+	{
+		"id": "999990031",
+		"key": "libtxt999990031",
+		"en|ch|tc|kr": "Eine Konfigurationsdatei einer Mod ist beschädigt:\n{0}\n\n{1}\n\nInstalliere die Mod neu (Steam Workshop: Abonnement beenden und erneut abonnieren; manuelle Installation: den ganzen Mod_xxx-Ordner der Zip-Datei erneut kopieren). Wenn du diese Datei selbst bearbeitet hast, korrigiere sie oder verwirf deine Änderungen."
 	}
 ]

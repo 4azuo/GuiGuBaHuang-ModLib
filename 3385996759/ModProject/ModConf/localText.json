@@ -183,5 +183,61 @@
 		"ch": "此错误未发送给模组作者。请将其（附上日志）报告给该模组的作者。",
 		"tc": "此錯誤未傳送給模組作者。請將其（附上日誌）回報給該模組的作者。",
 		"kr": "이 오류는 모드 제작자에게 전송되지 않았습니다. 해당 모드의 제작자에게 (로그와 함께) 알려 주세요."
+	},
+	{
+		"id": "999990025",
+		"key": "libtxt999990025",
+		"en": "Error",
+		"ch": "错误",
+		"tc": "錯誤",
+		"kr": "오류"
+	},
+	{
+		"id": "999990026",
+		"key": "libtxt999990026",
+		"en": "Files of a mod are missing:\n{0}\n\nThe folder of this mod is incomplete:\n{1}\n\nReinstall the mod:\n- Steam Workshop: unsubscribe, then subscribe again.\n- Manual install: close the game, delete this folder and copy again the whole Mod_xxx folder of the zip (with ModCode, ModConf and ModImg).",
+		"ch": "模组的文件缺失：\n{0}\n\n该模组的文件夹不完整：\n{1}\n\n请重新安装模组：\n- Steam 创意工坊：取消订阅后重新订阅。\n- 手动安装：关闭游戏，删除该文件夹，然后重新复制压缩包中完整的 Mod_xxx 文件夹（包含 ModCode、ModConf 和 ModImg）。",
+		"tc": "模組的檔案缺失：\n{0}\n\n該模組的資料夾不完整：\n{1}\n\n請重新安裝模組：\n- Steam 工作坊：取消訂閱後重新訂閱。\n- 手動安裝：關閉遊戲，刪除該資料夾，然後重新複製壓縮檔中完整的 Mod_xxx 資料夾（包含 ModCode、ModConf 和 ModImg）。",
+		"kr": "모드 파일이 없습니다:\n{0}\n\n이 모드의 폴더가 불완전합니다:\n{1}\n\n모드를 다시 설치하세요:\n- Steam 창작마당: 구독 취소 후 다시 구독하세요.\n- 수동 설치: 게임을 닫고 이 폴더를 삭제한 뒤 zip의 Mod_xxx 폴더 전체(ModCode, ModConf, ModImg 포함)를 다시 복사하세요."
+	},
+	{
+		"id": "999990027",
+		"key": "libtxt999990027",
+		"en": "A config of a mod was not loaded: {0} {1}.\n\nThe ModConf folder of the mod is missing or the game did not load it.\nReinstall the mod (Steam Workshop: unsubscribe, then subscribe again; manual install: copy again the whole Mod_xxx folder of the zip) and check that your game version is supported by the mod.",
+		"ch": "模组的配置未加载：{0} {1}。\n\n该模组的 ModConf 文件夹缺失，或游戏未加载它。\n请重新安装模组（Steam 创意工坊：取消订阅后重新订阅；手动安装：重新复制压缩包中完整的 Mod_xxx 文件夹），并确认你的游戏版本受该模组支持。",
+		"tc": "模組的設定未載入：{0} {1}。\n\n該模組的 ModConf 資料夾缺失，或遊戲未載入它。\n請重新安裝模組（Steam 工作坊：取消訂閱後重新訂閱；手動安裝：重新複製壓縮檔中完整的 Mod_xxx 資料夾），並確認你的遊戲版本受該模組支援。",
+		"kr": "모드 설정이 로드되지 않았습니다: {0} {1}.\n\n모드의 ModConf 폴더가 없거나 게임이 로드하지 않았습니다.\n모드를 다시 설치하고(Steam 창작마당: 구독 취소 후 다시 구독; 수동 설치: zip의 Mod_xxx 폴더 전체를 다시 복사) 게임 버전이 모드에서 지원되는지 확인하세요."
+	},
+	{
+		"id": "999990028",
+		"key": "libtxt999990028",
+		"en": "Technical details are in the mod log:\n{0}",
+		"ch": "技术细节见模组日志：\n{0}",
+		"tc": "技術細節見模組日誌：\n{0}",
+		"kr": "기술 세부 정보는 모드 로그에 있습니다:\n{0}"
+	},
+	{
+		"id": "999990029",
+		"key": "libtxt999990029",
+		"en": "The game version does not match the mods: {0} is missing.\n\n- If the game was just updated: start the game again (MelonLoader rebuilds its files), then update the mods (Steam Workshop updates them by itself; manual install: download the latest versions). If the error stays, wait for an update of the mod.\n- Otherwise: update the game and the mods to their latest versions.",
+		"ch": "游戏版本与模组不匹配：缺少 {0}。\n\n- 如果游戏刚刚更新：请重新启动游戏（MelonLoader 会重建其文件），然后更新模组（Steam 创意工坊会自动更新；手动安装：下载最新版本）。如果错误仍然存在，请等待模组更新。\n- 否则：请将游戏和模组更新到最新版本。",
+		"tc": "遊戲版本與模組不相符：缺少 {0}。\n\n- 如果遊戲剛剛更新：請重新啟動遊戲（MelonLoader 會重建其檔案），然後更新模組（Steam 工作坊會自動更新；手動安裝：下載最新版本）。如果錯誤仍然存在，請等待模組更新。\n- 否則：請將遊戲和模組更新到最新版本。",
+		"kr": "게임 버전이 모드와 맞지 않습니다: {0}이(가) 없습니다.\n\n- 게임이 방금 업데이트된 경우: 게임을 다시 시작한 뒤(MelonLoader가 파일을 다시 만듭니다) 모드를 업데이트하세요(Steam 창작마당은 자동 업데이트; 수동 설치: 최신 버전 다운로드). 오류가 계속되면 모드 업데이트를 기다려 주세요.\n- 그 외: 게임과 모드를 최신 버전으로 업데이트하세요."
+	},
+	{
+		"id": "999990030",
+		"key": "libtxt999990030",
+		"en": "ModLib is too old for a mod: {0} is missing (installed ModLib: {1}).\n\nUpdate ModLib:\n- Steam Workshop: unsubscribe from ModLib, then subscribe again.\n- Manual install: close the game, delete the old Mod_flQrxq folder and copy the one of the latest ModLib release.",
+		"ch": "ModLib 版本过旧，无法支持某个模组：缺少 {0}（已安装的 ModLib：{1}）。\n\n请更新 ModLib：\n- Steam 创意工坊：取消订阅 ModLib 后重新订阅。\n- 手动安装：关闭游戏，删除旧的 Mod_flQrxq 文件夹，并复制最新 ModLib 发布版中的该文件夹。",
+		"tc": "ModLib 版本過舊，無法支援某個模組：缺少 {0}（已安裝的 ModLib：{1}）。\n\n請更新 ModLib：\n- Steam 工作坊：取消訂閱 ModLib 後重新訂閱。\n- 手動安裝：關閉遊戲，刪除舊的 Mod_flQrxq 資料夾，並複製最新 ModLib 發佈版中的該資料夾。",
+		"kr": "ModLib가 모드에 비해 너무 오래되었습니다: {0}이(가) 없습니다 (설치된 ModLib: {1}).\n\nModLib를 업데이트하세요:\n- Steam 창작마당: ModLib 구독 취소 후 다시 구독하세요.\n- 수동 설치: 게임을 닫고 기존 Mod_flQrxq 폴더를 삭제한 뒤 최신 ModLib 릴리스의 폴더를 복사하세요."
+	},
+	{
+		"id": "999990031",
+		"key": "libtxt999990031",
+		"en": "A config file of a mod is damaged:\n{0}\n\n{1}\n\nReinstall the mod (Steam Workshop: unsubscribe, then subscribe again; manual install: copy again the whole Mod_xxx folder of the zip). If you edited this file yourself, fix it or delete your changes.",
+		"ch": "模组的配置文件已损坏：\n{0}\n\n{1}\n\n请重新安装模组（Steam 创意工坊：取消订阅后重新订阅；手动安装：重新复制压缩包中完整的 Mod_xxx 文件夹）。如果你自己修改过这个文件，请修正它或撤销你的修改。",
+		"tc": "模組的設定檔已損壞：\n{0}\n\n{1}\n\n請重新安裝模組（Steam 工作坊：取消訂閱後重新訂閱；手動安裝：重新複製壓縮檔中完整的 Mod_xxx 資料夾）。如果你自己修改過這個檔案，請修正它或撤銷你的修改。",
+		"kr": "모드의 설정 파일이 손상되었습니다:\n{0}\n\n{1}\n\n모드를 다시 설치하세요(Steam 창작마당: 구독 취소 후 다시 구독; 수동 설치: zip의 Mod_xxx 폴더 전체를 다시 복사). 이 파일을 직접 수정했다면 고치거나 변경 내용을 지우세요."
 	}
 ]

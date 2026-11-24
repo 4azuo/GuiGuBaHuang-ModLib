@@ -123,5 +123,40 @@
 		"id": "999990024",
 		"key": "libtxt999990024",
 		"en|ch|tc|kr": "Hic error auctori mod missus non est. Quaeso eum (cum actis) auctori mod nuntia."
+	},
+	{
+		"id": "999990025",
+		"key": "libtxt999990025",
+		"en|ch|tc|kr": "Error"
+	},
+	{
+		"id": "999990026",
+		"key": "libtxt999990026",
+		"en|ch|tc|kr": "Fasciculi modi desunt:\n{0}\n\nCapsa huius modi imperfecta est:\n{1}\n\nModum iterum institue:\n- Steam Workshop: subscriptionem remove, deinde iterum subscribe.\n- Institutio manualis: ludum claude, hanc capsam dele et totam capsam Mod_xxx ex zip iterum exscribe (cum ModCode, ModConf et ModImg)."
+	},
+	{
+		"id": "999990027",
+		"key": "libtxt999990027",
+		"en|ch|tc|kr": "Configuratio modi non onerata est: {0} {1}.\n\nCapsa ModConf modi deest aut ludus eam non oneravit.\nModum iterum institue (Steam Workshop: subscriptionem remove, deinde iterum subscribe; institutio manualis: totam capsam Mod_xxx ex zip iterum exscribe) et inspice num versio ludi tui a modo sustineatur."
+	},
+	{
+		"id": "999990028",
+		"key": "libtxt999990028",
+		"en|ch|tc|kr": "Singula technica in commentario modi sunt:\n{0}"
+	},
+	{
+		"id": "999990029",
+		"key": "libtxt999990029",
+		"en|ch|tc|kr": "Versio ludi cum modis non congruit: {0} deest.\n\n- Si ludus modo renovatus est: ludum iterum incipe (MelonLoader fasciculos suos reficit), deinde modos renova (Steam Workshop eos sponte renovat; institutio manualis: novissimas versiones depone). Si error manet, renovationem modi exspecta.\n- Aliter: ludum et modos ad novissimas versiones renova."
+	},
+	{
+		"id": "999990030",
+		"key": "libtxt999990030",
+		"en|ch|tc|kr": "ModLib nimis vetus est pro modo: {0} deest (ModLib institutum: {1}).\n\nModLib renova:\n- Steam Workshop: subscriptionem ModLib remove, deinde iterum subscribe.\n- Institutio manualis: ludum claude, veterem capsam Mod_flQrxq dele et eam novissimae editionis ModLib exscribe."
+	},
+	{
+		"id": "999990031",
+		"key": "libtxt999990031",
+		"en|ch|tc|kr": "Fasciculus configurationis modi corruptus est:\n{0}\n\n{1}\n\nModum iterum institue (Steam Workshop: subscriptionem remove, deinde iterum subscribe; institutio manualis: totam capsam Mod_xxx ex zip iterum exscribe). Si hunc fasciculum ipse mutavisti, eum corrige aut mutationes tuas dele."
 	}
 ]

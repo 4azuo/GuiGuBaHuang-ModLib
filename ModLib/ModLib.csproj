@@ -139,6 +139,7 @@
     <Compile Include="Helper\DebugHelper.cs" />
     <Compile Include="Helper\CrashReportHelper.cs" />
     <Compile Include="Helper\ExceptionHelper.cs" />
+    <Compile Include="Helper\KnownErrorHelper.cs" />
     <Compile Include="Helper\ObjectHelper.cs" />
     <Compile Include="Helper\ParseHelper.cs" />
     <Compile Include="Helper\WUnitHelper.cs" />
@@ -150,6 +151,8 @@
     <Compile Include="Object\Gamevar.cs" />
     <Compile Include="Object\Base\MonoUpdater.cs" />
     <Compile Include="Object\DelayInfo.cs" />
+    <Compile Include="Object\ModConfFileException.cs" />
+    <Compile Include="Object\ModUserException.cs" />
     <Compile Include="Object\MultiValue.cs" />
     <Compile Include="Object\UI\ITextFormat.cs" />
     <Compile Include="Object\UI\UIItemData.cs" />

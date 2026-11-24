@@ -534,6 +534,21 @@ namespace ModLib.Mod
         }
 
         /// <summary>
+        /// Shows the reason of a known error (KnownErrorHelper: what is wrong and what to do) instead of the stack trace,
+        /// in the small text dialog (TextInfo); the stack stays in the log, whose path ends the text.
+        /// </summary>
+        public static void ShowKnownError(string reason, string log)
+        {
+            if (g.ui.HasUI(UIType.TextInfo))
+            {
+                g.ui.CloseUI(UIType.TextInfo);
+            }
+
+            var ui = g.ui.OpenUISafe<UITextInfo>(UIType.TextInfo);
+            ui.InitData(KnownErrorHelper.GetTitle(), $"{reason}\n\n{KnownErrorHelper.GetDetailsNote(log)}");
+        }
+
+        /// <summary>
         /// Shows an exception in a long text dialog with a button opening the log.
         /// notice: note in red at the bottom of the dialog, centered above the buttons (error report sent or not, as the
         /// note of the S&amp;M configs), none when empty.

@@ -59,3 +59,4 @@ Reusable utility functions in `Helper/` folder.
 **Development:**
 - **TraceHelper** - Execution tracing
 - **ExceptionHelper** - Exception handling utilities
+- **KnownErrorHelper** - Errors the player can fix himself: the error dialog (small TextInfo) shows the reason and what to do instead of the stack trace (stack kept in the log, no error report). Known: a `ModUserException` (thrown by a mod, e.g. `throw KnownErrorHelper.ConfigMissing("roleCreateFeature", id)` for a config id of the mod's ModConf that is not loaded), a missing file of the ModConf / ModImg / ModCode folder of a mod (incomplete install), a JSON error of a config file wrapped with `KnownErrorHelper.InConfFile(path, ex)` (damaged file; done by ConfHelper for the game configs of the mods), a missing member / type at run time ("Method not found", "Could not load type"...: of ModLib = ModLib too old, else game version not matching the mods)
