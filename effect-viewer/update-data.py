@@ -1,5 +1,5 @@
 """Data of the effect viewer (effect-viewer/index.html): docs/Effects/<kind>/index.json -> effect-viewer/data/effects.js.
-Run after a gallery, an extraction or an assessment of the effects (scripts/game/ of the main repository GuiGuBaHuang-Taoist).
+Run after a gallery, an extraction or an assessment of the effects (scripts/game/: the galleries TE-xx run from a mod repository).
 
 usage: python effect-viewer/update-data.py [--open]
 """

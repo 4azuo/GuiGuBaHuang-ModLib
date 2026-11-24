@@ -11,7 +11,7 @@ dist/
 .vs/
 *.user
 
-# Review sheets of the recorded effects (scripts/game/assess_effects.py of the main repository)
+# Review sheets of the recorded effects (scripts/game/assess_effects.py)
 docs/Effects/**/review/
 
 # Generated data of the effect viewer (effect-viewer/update-data.py)
