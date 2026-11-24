@@ -62,8 +62,9 @@ as its `GuiGuBaHuang-ModLib` submodule). Step-by-step guide:
 - Build ModLib (see [Build](#build)) or take `ModLib.dll` from the ModLib Workshop folder (`ModCode/dll/`), and
   reference it in your mod project together with the game DLLs of `<game>\MelonLoader\Managed\`.
 - Change the MelonLoader folder in the `.csproj` files if the game is installed elsewhere. Build in **Release**.
-- The output of your mod (`Mod_<your mod id>/ModCode/dll/`) holds your dll and `ModLib.dll`; the main repository's
-  scripts (`build-project.ps1`, `rebuild-and-deploy.ps1`) copy it, with `ModConf/` and `ModImg/`, to the Workshop folder.
+- The output of your mod (`Mod_<your mod id>/ModCode/dll/`) holds your dll and `ModLib.dll`; the shared scripts of this
+  repository (`scripts/project/`: `build-project.ps1`, `rebuild-and-deploy.ps1`, see [docs/guide/07-Build-Deploy.md](docs/guide/07-Build-Deploy.md))
+  copy it, with `ModConf/` and `ModImg/`, to the Workshop folder.
 
 ![image](https://github.com/user-attachments/assets/9554b89d-61c6-4ef5-9bad-97c3c62107ab)
 
@@ -88,7 +89,7 @@ as its `GuiGuBaHuang-ModLib` submodule). Step-by-step guide:
    ![image](https://github.com/user-attachments/assets/4b338668-a2a0-4a1c-8fcf-fb261e5de7e7)
 
 Every event and when it is called: [docs/01-Event-Reference.md](docs/01-Event-Reference.md); the events ModLib ships:
-[docs/03-Builtin-Events.md](docs/03-Builtin-Events.md); examples of the game's API (timers, events, world, battle, resources): [Example/Example.cs](Example/Example.cs).
+[docs/03-Builtin-Events.md](docs/03-Builtin-Events.md); examples of the game's API (timers, events, world, battle, resources): [ModLib/Example/Example.cs](ModLib/Example/Example.cs).
 
 ### 3. Game configs as JSON
 

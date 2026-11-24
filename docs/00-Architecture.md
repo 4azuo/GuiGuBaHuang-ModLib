@@ -2,7 +2,7 @@
 
 ModLib (Workshop `3385996759`, mod id `flQrxq`, namespace `ModLib` + `MOD_flQrxq`) is a framework that sits between the game (Unity Il2Cpp + MelonLoader/Harmony) and content mods such as Taoist. It turns the game's native timers and events into a single, ordered, persisted event model.
 
-Related docs: [01-Event-Reference](01-Event-Reference.md) · [02-Cache-Persistence](02-Cache-Persistence.md) · [03-Builtin-Events](03-Builtin-Events.md) · [04-UI-Framework](04-UI-Framework.md) · [05-Attributes-Objects](05-Attributes-Objects.md) · [05-Helpers (main repository)](guide/05-Helpers.md)
+Related docs: [01-Event-Reference](01-Event-Reference.md) · [02-Cache-Persistence](02-Cache-Persistence.md) · [03-Builtin-Events](03-Builtin-Events.md) · [04-UI-Framework](04-UI-Framework.md) · [05-Attributes-Objects](05-Attributes-Objects.md) · [guide/05-Helpers](guide/05-Helpers.md)
 
 ## Source layout
 

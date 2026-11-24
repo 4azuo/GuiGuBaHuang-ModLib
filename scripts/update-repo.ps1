@@ -2,7 +2,8 @@
 .SYNOPSIS
     Update a repository (ModLib or a mod repository) and all its submodules (shared: GuiGuBaHuang-ModLib/scripts)
 .DESCRIPTION
-    This script fetches and pulls the latest changes from the main repository
+    This script fetches and pulls the latest changes of the repository (-RepoRoot, else the git repository of the
+    current folder)
     and all its submodules.
 .PARAMETER Force
     Force update even if there are local changes (stash them first)
