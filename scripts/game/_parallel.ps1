@@ -5,6 +5,7 @@
 # - the games windowed (kept after the run);
 # - saves backed up once, the global settings of the mods restored after (the saves are kept: test characters);
 # - a queue (JSON file under an exclusive lock) the workers take items from;
+# - no game started without the memory for it (~4 GB a game, Wait-GameMemory): the slot waits, else stops;
 # - a snapshot of the test character of every slot ("AutoTest Slot<n>") restored before every run: each run starts from
 #   the same fresh character, like a single run does with a new character.
 
@@ -152,6 +153,70 @@ function Get-SlotCharacterOfRun([string]$Repo, [string]$RunId) {
         }
     }
     return $null
+}
+
+# ------------------------------------------------------------------ memory
+
+# ~4 GB a game in a battle (4 games + other apps on 32 GB: the run was stopped for low memory).
+$script:GameMemoryBytes = 4GB
+
+# Memory left for one more game: the available memory less what the games of the machine may still take (each one grows
+# to ~4 GB; a game just started is still small) and the games reserved by Wait-GameMemory that do not run yet.
+function Get-GameMemoryRoom {
+    $avail = [double](Get-CimInstance Win32_OperatingSystem).FreePhysicalMemory * 1KB
+    $still = 0.0
+    foreach ($p in @(Get-Process -Name 'guigubahuang' -ErrorAction SilentlyContinue)) {
+        $used = [double][Math]::Max($p.WorkingSet64, $p.PrivateMemorySize64)
+        $still += [Math]::Max([double]0, [double]$script:GameMemoryBytes - $used)
+    }
+    foreach ($f in @(Get-ChildItem -LiteralPath (Get-GameLockDir) -Filter 'memory-slot*.txt' -ErrorAction SilentlyContinue)) {
+        # a reservation ends when the game of its slot runs (counted above) or after 5 minutes
+        $s = [int]($f.BaseName -replace '\D', '')
+        if ((Get-SlotGameProcess $s) -or $f.LastWriteTime -lt (Get-Date).AddMinutes(-5)) {
+            Remove-Item -LiteralPath $f.FullName -Force -ErrorAction SilentlyContinue; continue
+        }
+        $still += $script:GameMemoryBytes
+    }
+    return ($avail - $still)
+}
+
+# Before a game of $Slot is started: waits (checked every 15 s) until there is room for one more game, then reserves it
+# (so that two slots never take the same free memory). False - no game may be started - when $Cancel returns true (e.g.
+# the queue is empty) or after $TimeoutMinutes. $Log gets the lines to log.
+function Wait-GameMemory([int]$Slot, [scriptblock]$Log, [scriptblock]$Cancel, [int]$TimeoutMinutes = 30) {
+    $mutex = New-Object Threading.Mutex($false, 'Global\ggbh-game-memory')
+    $deadline = (Get-Date).AddMinutes($TimeoutMinutes)
+    $waiting = $false
+    try {
+        while ($true) {
+            try { [void]$mutex.WaitOne() } catch [Threading.AbandonedMutexException] { }
+            try {
+                $room = Get-GameMemoryRoom
+                if ($room -ge $script:GameMemoryBytes) {
+                    [IO.File]::WriteAllText((Join-Path (Get-GameLockDir) "memory-slot$Slot.txt"), "$PID")
+                    if ($waiting -and $Log) { & $Log ("memory free again ({0:N1} GB): the game starts" -f ($room / 1GB)) }
+                    return $true
+                }
+            }
+            finally { $mutex.ReleaseMutex() }
+            if (-not $waiting -and $Log) {
+                & $Log ("not enough memory for one more game ({0:N1} GB left, a game takes {1} GB): waiting" -f ([Math]::Max([double]0, $room) / 1GB), ($script:GameMemoryBytes / 1GB))
+                $waiting = $true
+            }
+            if ($Cancel -and (& $Cancel)) { return $false }
+            if ((Get-Date) -gt $deadline) {
+                if ($Log) { & $Log "!!! still not enough memory after $TimeoutMinutes min: no game started" }
+                return $false
+            }
+            Start-Sleep -Seconds 15
+        }
+    }
+    finally { $mutex.Dispose() }
+}
+
+# The reservation of Wait-GameMemory dropped (no game started after all).
+function Clear-GameMemoryReservation([int]$Slot) {
+    Remove-Item -LiteralPath (Join-Path (Get-GameLockDir) "memory-slot$Slot.txt") -Force -ErrorAction SilentlyContinue
 }
 
 # ------------------------------------------------------------------ queue

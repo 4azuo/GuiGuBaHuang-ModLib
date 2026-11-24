@@ -13,13 +13,14 @@
     before (logs\effect-gallery\<time>\save-backup, to restore by hand when needed); only the global settings of the
     mods (mod\<id>\globals: S&M, new game options set by the character creation) are restored after.
 
-    Memory: ~3 GB per game in a battle (4 games: ~12 GB).
+    Memory: ~4 GB per game in a battle (4 games: ~16 GB). A game is started only when the memory for it is free
+    (Wait-GameMemory, _parallel.ps1): else the slot waits (30 min at most) and stops; the other slots go on.
 
 .PARAMETER Id
     Galleries to run: TE-01, TE-02, TE-03 (default: TE-01).
 
 .PARAMETER Slots
-    Number of games side by side (1 to 4, default 4; ~3 GB of memory each).
+    Number of games side by side (1 to 4, default 4; ~4 GB of memory each).
 
 .EXAMPLE
     .\scripts\game\run-effect-gallery.ps1 -Id TE-01 -Slots 3 -Deploy
@@ -144,9 +145,17 @@ try {
         function Log([string]$t) { Write-ParallelLog $LogFile "[slot $Slot] $t" }
         # slots start apart: the game start (assemblies, Workshop) is the heaviest part
         Start-Sleep -Seconds $Delay
+        $queueEmpty = { (Use-Queue $QueueFile { param($l) return $l.Count }) -eq 0 }
+        $logMem = { param($t) Log $t }
         while ($true) {
+            # every batch starts a game: only once there is memory for it (~4 GB, _parallel.ps1), else the slot waits
+            # while the queue has batches, then stops (the other slots run them)
+            if (-not (Wait-GameMemory $Slot $logMem $queueEmpty)) {
+                if (& $queueEmpty) { Log 'queue empty: done' } else { Log 'no game started (memory): this slot stops, the other slots run the queue' }
+                break
+            }
             $item = Use-Queue $QueueFile { param($l) if ($l.Count -eq 0) { return $null }; $x = $l[0]; $l.RemoveAt(0); return $x }
-            if (-not $item) { Log 'queue empty: done'; break }
+            if (-not $item) { Clear-GameMemoryReservation $Slot; Log 'queue empty: done'; break }
             New-Item -ItemType Directory -Path $AutotestDir -Force | Out-Null
             [IO.File]::WriteAllText((Join-Path $AutotestDir 'efx-range.txt'), "$($item.start) $($item.count)")
             Log "$($item.id) from $($item.start) ($($item.count))"

@@ -12,6 +12,8 @@
       creates its character.
     - "exclusive" scenarios (scenarios.json: they change the global settings of the mods, which every game reads) run
       after the others, alone, on the first slot.
+    - Memory: a game is started only when ~4 GB are free for it (the games running counted at 4 GB each): else the slot
+      waits (while the queue has scenarios, 30 min at most) and stops; the others go on.
     - Only the log of the slot's character counts for the "errors in the game log" check (the mod logs are shared).
     - scenario-status.json is updated by every run under a lock; the test viewer once at the end; a merged summary in
       logs\autotest-parallel\<time>\summary.json.
@@ -27,7 +29,8 @@
 param(
     [string[]]$Scenario,
     [switch]$Failed,
-    # 4 games by default (~3 GB each in a battle; 6 games ran out of memory on 32 GB with other apps open)
+    # 4 games at most by default (~4 GB each in a battle): a game is started only when the memory for it is free
+    # (Wait-GameMemory, _parallel.ps1), else the slot waits for it, or stops after 30 min (the other slots run the queue)
     [ValidateRange(1, 8)][int]$Slots = 4,
     # 0: one scenario at a time (a free game takes the next one); > 0: groups of ~GroupSeconds of work
     [int]$GroupSeconds = 0,
@@ -158,11 +161,16 @@ try {
             }
         }
         Start-Sleep -Seconds $Delay
+        # no game started without the memory for it (~4 GB, _parallel.ps1): the slot waits while the queue has
+        # scenarios, then stops (the other slots run them)
+        $queueEmpty = { (Use-Queue $QueueFile { param($l) return $l.Count }) -eq 0 }
+        $logMem = { param($t) Log $t }
         # the slot's character: found or created (TP-01), then its snapshot; the game of the slot started again (twice
         # at most) when it was closed in the middle
         $snap = Get-SlotSnapshotInfo $paths $Slot
         $ch = $null
         for ($try = 1; $try -le 3 -and -not $ch; $try++) {
+            if (-not (Wait-GameMemory $Slot $logMem $queueEmpty)) { Log 'no game started (memory): this slot stops'; return }
             if ($snap) { [void](Restore-SlotSnapshot $paths $Slot) }
             $r = Invoke-Run @('TP-01')
             $ch = Get-SlotCharacterOfRun $Repo $r.RunId
@@ -175,11 +183,15 @@ try {
         }
         else { Log "test character $($ch.PlayerId) [$($ch.Folder)]" }
         while ($true) {
-            $item = Use-Queue $QueueFile { param($l) if ($l.Count -eq 0) { return $null }; $x = $l[0]; $l.RemoveAt(0); return $x }
-            if (-not $item) { break }
             # the game stays open between the scenarios (each one resets the player to the loaded save and sets its
-            # precondition); a game that closed starts again from the slot's snapshot
+            # precondition); a game that closed starts again from the slot's snapshot, once there is memory for it
             $alive = [bool](Get-GameProcess)
+            if (-not $alive -and -not (Wait-GameMemory $Slot $logMem $queueEmpty)) {
+                if (-not (& $queueEmpty)) { Log 'no game started (memory): this slot stops, the other slots run the queue' }
+                break
+            }
+            $item = Use-Queue $QueueFile { param($l) if ($l.Count -eq 0) { return $null }; $x = $l[0]; $l.RemoveAt(0); return $x }
+            if (-not $item) { Clear-GameMemoryReservation $Slot; break }
             if (-not $alive) { [void](Restore-SlotSnapshot $paths $Slot) }
             Log "start $($item.ids -join ',') (~$($item.seconds) s)$(if (-not $alive) { ' - game started' })"
             $r = Invoke-Run @($item.ids) -Attach:$alive
@@ -225,8 +237,11 @@ try {
         Stop-Game
         [void](Restore-SlotSnapshot $slotPaths $first)
         Write-ParallelLog $logFile "[slot $first] exclusive: $($exclusive -join ',')"
-        $out = & powershell -NoProfile -ExecutionPolicy Bypass -File (Join-Path $PSScriptRoot 'run-autotest.ps1') -Scenario ($exclusive -join ',') `
+        $out = @()
+        if (Wait-GameMemory $first { param($t) Write-ParallelLog $logFile "[slot $first] $t" }) {
+            $out =& powershell -NoProfile -ExecutionPolicy Bypass -File (Join-Path $PSScriptRoot 'run-autotest.ps1') -Scenario ($exclusive -join ',') `
             -Slot $first -SlotCharacter -NoSaveBackup -NoViewerUpdate -Timeout $Timeout -StallSeconds $StallSeconds -GameArgs $gameArgs -Window $Window 2>&1 | ForEach-Object { "$_" }
+        }
         $line = $out | Where-Object { $_ -match 'Run:\s+(\S+)' } | Select-Object -First 1
         if ($line -match 'Run:\s+(\S+)') { Add-Content -LiteralPath $runsFile -Value $Matches[1] }
         [void](Restore-SlotSnapshot $slotPaths $first)
