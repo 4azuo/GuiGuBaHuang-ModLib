@@ -33,9 +33,8 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+    <!-- XML docs of the API (IntelliSense; ModCreator takes them from here when it is built next to ModLib) -->
     <DocumentationFile>bin\Release\ModLib.xml</DocumentationFile>
-    <!-- as a submodule of a mod repository that also holds ModCreator (sibling submodule): the IntelliSense docs of the ModCreator tool -->
-    <DocumentationFile Condition="Exists('$(MSBuildProjectDirectory)\..\..\GuiGuBaHuang-ModCreator\ModCreator\Resources')">$(MSBuildProjectDirectory)\..\..\GuiGuBaHuang-ModCreator\ModCreator\Resources\ModLib.xml</DocumentationFile>
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="AutoTest\AutoTestContext.cs" />
