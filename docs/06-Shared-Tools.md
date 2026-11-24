@@ -14,7 +14,7 @@ find it as the parent folder of ModLib (or `$env:MOD_REPO`).
 | File | Content |
 |---|---|
 | `scripts/settings.json` | `"projects"` (built / deployed / released by this repository, in this order), `"dependencies"` (projects of other repositories copied to the Workshop folder, not built, before them: `GuiGuBaHuang-ModLib/3385996759`, the ModLib build committed in the submodule), `"modProject"` (project id of the mod), `"modName"` (shown by the viewers and the autotest), `"modId"` (folder of the mod in `<game data>\mod`, e.g. `nE7UL2`: autotest requests and snapshots), `"steamWorkshopPath"`, `"repositoryPath"` |
-| `scripts/setup/_common.ps1` | setup helpers dot-sourced by the game tools (`Read-JsonFile`, `Find-GameInstall`, `Write-Info`...) |
+| `scripts/setup/install.ps1`, `01-clone-repository.ps1` | the setup of a new machine: clones the repository with this submodule, then runs the shared steps of `scripts/setup/` here (downloaded from GitHub before the clone) |
 | `<ProjectId>/scripts/settings.json` | `projectId`, `modName` (`Mod_<id>`), `releaseName`, `releaseRequires` (e.g. `ModLib`, in the release notes), version file, auto-build delays |
 | `<ProjectId>/scripts/*.ps1` | 2-line wrappers of `scripts/project/*.ps1` (`-ProjectScripts $PSScriptRoot @args`) |
 | `<modProject>/tests/scenarios.json`, `scenario-status.json` | autotest scenarios and the latest OK/NG per id |
@@ -24,6 +24,8 @@ find it as the parent folder of ModLib (or `$env:MOD_REPO`).
 
 | Folder | Tools | Writes into the mod repository |
 |---|---|---|
+| `scripts/setup/` | `install` (ModLib alone), `00-install-dependencies`, `02-configure-settings`, `04-verify-environment`, `setup-nexus` (`-RepoPath`: ModLib or a mod repository), `_common.ps1` (helpers, also of the game tools) | the paths of `scripts/settings.json` and `<ProjectId>/scripts/settings.json` |
+| `scripts/run-unittests.ps1` | builds the projects and runs `tests/UnitTests/UnitTests.csproj` of the repository (ModLib alone: `tests/ModLibTests.csproj`) | `logs/unittests/` |
 | `scripts/release/` | `create-release-tag`, `package-release` (+ `_release.ps1`): each repository releases its own projects (repository: `-RepoRoot` or the git repository of the current folder) | `dist/` |
 | `scripts/project/` | `build-project`, `clean-project`, `rebuild-project`, `rebuild-and-deploy`, `copy-to-steam`, `copy-from-steam`, `compress`, `start-auto-build` (+ `auto-build-and-deploy.py`) | `<ProjectId>/debug/`, `<ProjectId>/scripts/auto-built-errors.log` |
 | `scripts/game/` | `run-game`, `run-autotest` (+ `-parallel`, `merge-parallel-run`), `new-game-slot`, `set-scenario-status`, `run-promo` / `collect-promo`, effect galleries (`run-effect-gallery`, `collect-effects`, `*_effects.py`) | `logs/game-runs/`, `logs/autotest/`, `<modProject>/tests/scenario-status.json`, `<modProject>/ModProject/SteamImg/promo-*/` (effects go to `docs/Effects/` here) |
@@ -31,7 +33,14 @@ find it as the parent folder of ModLib (or `$env:MOD_REPO`).
 | `test-viewer/` | page template, `app.js`, `style.css`, `update-data.ps1 [-RepoRoot]` | `logs/test-viewer/index.html` + `data/runs.js` (git-ignored with `logs/`) |
 | `promo-viewer/` | page template, `app.js`, `style.css`, `update-data.py [--repo]` | `logs/promo-viewer/index.html` + `data/promo.js` (git-ignored with `logs/`) |
 | `Translate/` | `run.py`, `ai_bridge.py` (see `Translate/README.md`) | `<ProjectId>/ModProject/ModConf/**`, `.translate-cache/` (in git: a text is never translated twice) |
-| `tests/` | `UnitTests.props` (framework, MSTest, game assemblies), `Shared/` (`TestSetup`, `Check`), `ModLib/` (tests of ModLib, `IncludeModLibTests=true`) | - |
+| `tests/` | `UnitTests.props` (framework, MSTest, game assemblies), `Shared/` (`TestSetup`, `Check`), `ModLib/` (tests of ModLib, `IncludeModLibTests=true`), `ModLibTests.csproj` (ModLib alone) | - |
 | `tools/SlotDataPath/` | MelonLoader plugin of the game slots (installed by `new-game-slot.ps1`) | - |
+
+## ModLib alone
+
+A clone of this repository alone has its own `scripts/settings.json` (`"projects": ["3385996759"]`), setup
+(`scripts/setup/install.ps1`), tests and VS Code tasks (`.vscode/tasks.json`: build / deploy / compress / auto-build of
+3385996759, release, unit tests, viewers, game pictures, Translate with its cache `.translate-cache/`, setup, Nexus).
+As a submodule, use the tasks of the mod repository: they offer the ModLib project too.
 
 The in-game side of the autotest (the runner `AutoTestEvent` and the scenarios) is still code of each mod.

@@ -1,0 +1,29 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <!--
+    Unit tests of ModLib alone (this repository): the tests of ModLib\*.cs against the ModLib.dll built in
+    3385996759\debug\Mod_flQrxq. A mod repository runs them in its own test project instead (IncludeModLibTests).
+    Run: scripts\run-unittests.ps1 (VS Code task "Test: Unit Tests").
+  -->
+
+  <PropertyGroup>
+    <IncludeModLibTests>true</IncludeModLibTests>
+    <RepoRoot>$([System.IO.Path]::GetFullPath('$(MSBuildProjectDirectory)\..'))</RepoRoot>
+    <!-- the sources come from UnitTests.props (Shared\, ModLib\), not from the folder -->
+    <EnableDefaultCompileItems>false</EnableDefaultCompileItems>
+  </PropertyGroup>
+
+  <Import Project="UnitTests.props" />
+
+  <ItemGroup>
+    <Reference Include="ModLib">
+      <HintPath>$(RepoRoot)\3385996759\debug\Mod_flQrxq\ModCode\dll\ModLib.dll</HintPath>
+      <Private>true</Private>
+    </Reference>
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>$(RepoRoot)\3385996759\debug\Mod_flQrxq\ModCode\dll\Newtonsoft.Json.dll</HintPath>
+      <Private>true</Private>
+    </Reference>
+  </ItemGroup>
+
+</Project>

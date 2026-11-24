@@ -1,0 +1,210 @@
+{
+    // Tasks of GuiGuBaHuang-ModLib opened alone (as a mod repository's submodule, use the tasks of the mod repository:
+    // they offer the ModLib project too). Scripts: 3385996759/scripts (wrappers of scripts/project), scripts/, docs/06-Shared-Tools.md
+    "version": "2.0.0",
+    "options": {
+        "cwd": "${workspaceFolder}"
+    },
+    "presentation": {
+        "reveal": "always",
+        "panel": "shared",
+        "clear": true
+    },
+    "tasks": [
+        // ===== ModLib project (3385996759/scripts/) =====
+        {
+            "label": "ModLib: Build",
+            "detail": "dotnet build (Release) of 3385996759 (builds ModLib/ModLib.csproj) + copy ModConf/ModImg/SteamImg to debug/Mod_flQrxq",
+            "type": "process",
+            "command": "powershell.exe",
+            "args": ["-NoProfile", "-ExecutionPolicy", "Bypass", "-File", "${workspaceFolder}/3385996759/scripts/build-project.ps1"],
+            "problemMatcher": "$msCompile",
+            "group": { "kind": "build", "isDefault": true }
+        },
+        {
+            "label": "ModLib: Clean",
+            "detail": "dotnet clean (Release)",
+            "type": "process",
+            "command": "powershell.exe",
+            "args": ["-NoProfile", "-ExecutionPolicy", "Bypass", "-File", "${workspaceFolder}/3385996759/scripts/clean-project.ps1"],
+            "problemMatcher": []
+        },
+        {
+            "label": "ModLib: Rebuild",
+            "detail": "Clean + Build",
+            "type": "process",
+            "command": "powershell.exe",
+            "args": ["-NoProfile", "-ExecutionPolicy", "Bypass", "-File", "${workspaceFolder}/3385996759/scripts/rebuild-project.ps1"],
+            "problemMatcher": "$msCompile",
+            "group": "build"
+        },
+        {
+            "label": "ModLib: Rebuild & Deploy",
+            "detail": "Clean + Build + copy 3385996759 to the Steam Workshop folder",
+            "type": "process",
+            "command": "powershell.exe",
+            "args": ["-NoProfile", "-ExecutionPolicy", "Bypass", "-File", "${workspaceFolder}/3385996759/scripts/rebuild-and-deploy.ps1"],
+            "problemMatcher": "$msCompile",
+            "group": "build"
+        },
+        {
+            "label": "ModLib: Copy to Steam",
+            "detail": "Copy 3385996759 to the Steam Workshop folder",
+            "type": "process",
+            "command": "powershell.exe",
+            "args": ["-NoProfile", "-ExecutionPolicy", "Bypass", "-File", "${workspaceFolder}/3385996759/scripts/copy-to-steam.ps1"],
+            "problemMatcher": []
+        },
+        {
+            "label": "ModLib: Copy from Steam",
+            "detail": "Copy 3385996759 from the Steam Workshop folder back to the repository",
+            "type": "process",
+            "command": "powershell.exe",
+            "args": ["-NoProfile", "-ExecutionPolicy", "Bypass", "-File", "${workspaceFolder}/3385996759/scripts/copy-from-steam.ps1"],
+            "problemMatcher": []
+        },
+        {
+            "label": "ModLib: Compress",
+            "detail": "Compress debug/Mod_flQrxq to .rar (WinRAR)",
+            "type": "process",
+            "command": "powershell.exe",
+            "args": ["-NoProfile", "-ExecutionPolicy", "Bypass", "-File", "${workspaceFolder}/3385996759/scripts/compress.ps1"],
+            "problemMatcher": []
+        },
+        {
+            "label": "ModLib: Start Auto Build",
+            "detail": "Watch ModCode/ModConf/ModImg and rebuild & deploy on change (Python + watchdog). Errors -> 3385996759/scripts/auto-built-errors.log",
+            "type": "process",
+            "command": "powershell.exe",
+            "args": ["-NoProfile", "-ExecutionPolicy", "Bypass", "-File", "${workspaceFolder}/3385996759/scripts/start-auto-build.ps1"],
+            "isBackground": true,
+            "problemMatcher": []
+        },
+
+        // ===== Release (tag -> CI .github/workflows/release.yml: zip debug/Mod_flQrxq, GitHub Release, Nexus Mods) =====
+        {
+            "label": "Release: Tag ModLib",
+            "detail": "Tag ModLib-<version in 3385996759 ModMain.cs> on HEAD and push it: the CI zips debug/Mod_flQrxq and publishes the release",
+            "type": "process",
+            "command": "powershell.exe",
+            "args": ["-NoProfile", "-ExecutionPolicy", "Bypass", "-File", "${workspaceFolder}/scripts/release/create-release-tag.ps1", "-RepoRoot", "${workspaceFolder}"],
+            "presentation": { "focus": true },
+            "problemMatcher": []
+        },
+        {
+            "label": "Release: Package Zip (local)",
+            "detail": "Zip debug/Mod_flQrxq into dist/ like the CI (no tag, nothing published)",
+            "type": "process",
+            "command": "powershell.exe",
+            "args": ["-NoProfile", "-ExecutionPolicy", "Bypass", "-File", "${workspaceFolder}/scripts/release/package-release.ps1", "-RepoRoot", "${workspaceFolder}"],
+            "problemMatcher": []
+        },
+
+        // ===== Tests and viewers =====
+        {
+            "label": "Test: Unit Tests",
+            "detail": "Build ModLib (Release) and run the ModLib tests (tests/ModLibTests.csproj); results in logs/test-viewer/index.html",
+            "type": "process",
+            "command": "powershell.exe",
+            "args": ["-NoProfile", "-ExecutionPolicy", "Bypass", "-File", "${workspaceFolder}/scripts/run-unittests.ps1", "-RepoRoot", "${workspaceFolder}"],
+            "problemMatcher": [],
+            "group": "test"
+        },
+        {
+            "label": "Test: Open Test Viewer",
+            "detail": "Regenerate logs/test-viewer (page + data/runs.js) and open it",
+            "type": "process",
+            "command": "powershell.exe",
+            "args": ["-NoProfile", "-ExecutionPolicy", "Bypass", "-File", "${workspaceFolder}/test-viewer/update-data.ps1", "-RepoRoot", "${workspaceFolder}", "-Open"],
+            "problemMatcher": []
+        },
+        {
+            "label": "Effects: Open Effect Viewer",
+            "detail": "Regenerate effect-viewer/data/effects.js from docs/Effects and open effect-viewer/index.html (read only)",
+            "type": "process",
+            "command": "python",
+            "args": ["${workspaceFolder}/effect-viewer/update-data.py", "--open"],
+            "problemMatcher": []
+        },
+        {
+            "label": "Effects: Open Effect Viewer (server)",
+            "detail": "Effect viewer with saving (user-* fields of docs/Effects/*/index.json): local server http://localhost:8765/ - stop it with the terminal",
+            "type": "process",
+            "command": "python",
+            "args": ["${workspaceFolder}/scripts/effect-viewer-server.py", "--open"],
+            "isBackground": true,
+            "problemMatcher": []
+        },
+        {
+            "label": "Assets: Extract Game Pictures",
+            "detail": "Extract icons, item icons, buildings and drama backgrounds of the game into docs/GameAssets (pip install UnityPy Pillow)",
+            "type": "process",
+            "command": "python",
+            "args": ["${workspaceFolder}/scripts/extract-game-assets.py"],
+            "problemMatcher": []
+        },
+
+        // ===== Translate (Translate/, cache: .translate-cache/) =====
+        {
+            "label": "Translate: Missing Texts",
+            "detail": "Missing entries per language in the localText files of 3385996759",
+            "type": "process",
+            "command": "python",
+            "args": ["${workspaceFolder}/Translate/ai_bridge.py", "status", "--projects", "3385996759"],
+            "options": { "env": { "MOD_REPO": "${workspaceFolder}", "PYTHONIOENCODING": "utf-8" } },
+            "problemMatcher": []
+        },
+        {
+            "label": "Translate: Locale Files (Google)",
+            "detail": "Create / complete the locale files of 3385996759 (keeps the existing translations, cache in .translate-cache)",
+            "type": "process",
+            "command": "python",
+            "args": ["${workspaceFolder}/Translate/run.py", "--project", "3385996759", "--path", ".", "--file-type", "both", "--preserve-translations", "--create-locales", "all"],
+            "options": { "env": { "MOD_REPO": "${workspaceFolder}", "PYTHONIOENCODING": "utf-8" } },
+            "problemMatcher": []
+        },
+
+        // ===== Setup (scripts/setup/) =====
+        {
+            "label": "Setup: Install (all)",
+            "detail": "Install dependencies (Admin), configure the settings, verify the environment",
+            "type": "process",
+            "command": "powershell.exe",
+            "args": ["-NoProfile", "-ExecutionPolicy", "Bypass", "-File", "${workspaceFolder}/scripts/setup/install.ps1", "-RepoPath", "${workspaceFolder}"],
+            "problemMatcher": []
+        },
+        {
+            "label": "Setup: Install Dependencies (Admin)",
+            "detail": "Install missing tools (.NET 4.7.2 DevPack, .NET 9 SDK, Git, Python, GitHub CLI, Notepad++, 7-Zip) via Chocolatey. VS Code must run as Administrator",
+            "type": "process",
+            "command": "powershell.exe",
+            "args": ["-NoProfile", "-ExecutionPolicy", "Bypass", "-File", "${workspaceFolder}/scripts/setup/00-install-dependencies.ps1"],
+            "problemMatcher": []
+        },
+        {
+            "label": "Setup: Configure Settings",
+            "detail": "Detect the Steam Workshop folder and write it into scripts/settings.json and 3385996759/scripts/settings.json",
+            "type": "process",
+            "command": "powershell.exe",
+            "args": ["-NoProfile", "-ExecutionPolicy", "Bypass", "-File", "${workspaceFolder}/scripts/setup/02-configure-settings.ps1", "-RepoPath", "${workspaceFolder}"],
+            "problemMatcher": []
+        },
+        {
+            "label": "Setup: Verify Environment",
+            "detail": "Check tools, Git LFS, ModLib.dll, settings paths, game + MelonLoader and .csproj references (read-only)",
+            "type": "process",
+            "command": "powershell.exe",
+            "args": ["-NoProfile", "-ExecutionPolicy", "Bypass", "-File", "${workspaceFolder}/scripts/setup/04-verify-environment.ps1", "-RepoPath", "${workspaceFolder}"],
+            "problemMatcher": []
+        },
+        {
+            "label": "Setup: Nexus Mods (CI)",
+            "detail": "Set the GitHub secret NEXUSMODS_API_KEY and variables NEXUS_MODLIB_FILE_ID / _URL used by the release CI of this repository (needs gh)",
+            "type": "process",
+            "command": "powershell.exe",
+            "args": ["-NoProfile", "-ExecutionPolicy", "Bypass", "-File", "${workspaceFolder}/scripts/setup/setup-nexus.ps1", "-RepoPath", "${workspaceFolder}"],
+            "presentation": { "focus": true },
+            "problemMatcher": []
+        }
+    ]
+}

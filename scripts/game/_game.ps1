@@ -5,7 +5,7 @@
     The game tools (GuiGuBaHuang-ModLib/scripts/game) are shared by the mods using ModLib; they work on the mod
     repository holding ModLib as a submodule (Get-ModRepo). The mod repository provides scripts/settings.json
     ("modProject", "modName", "modId" = folder of the mod in <game data>/mod, "projects" = built/deployed in this
-    order, "dependencies" = projects of other repositories deployed, not built, before them: the ModLib of the submodule) and scripts/setup/_common.ps1 (setup helpers: Read-JsonFile, Find-GameInstall, Write-Info...).
+    order, "dependencies" = projects of other repositories deployed, not built, before them: the ModLib of the submodule) ; helpers: ../setup/_common.ps1 of ModLib (Read-JsonFile, Find-GameInstall, Write-Info...).
     Keep ASCII-only (Windows PowerShell 5.1 reads BOM-less scripts as ANSI).
 #>
 
@@ -14,9 +14,12 @@ $script:ModLibDir = (Resolve-Path (Join-Path $PSScriptRoot '..\..')).Path
 # The mod repository: $env:MOD_REPO, else the folder holding the ModLib submodule.
 function Get-ModRepo {
     if ($env:MOD_REPO -and (Test-Path -LiteralPath $env:MOD_REPO)) { return (Resolve-Path -LiteralPath $env:MOD_REPO).Path }
-    return (Split-Path $script:ModLibDir -Parent)
+    # ModLib as a submodule: the mod repository around it; ModLib alone: ModLib itself
+    $parent = Split-Path $script:ModLibDir -Parent
+    if (Test-Path -LiteralPath (Join-Path $parent 'scripts\settings.json')) { return $parent }
+    return $script:ModLibDir
 }
-. (Join-Path (Get-ModRepo) 'scripts\setup\_common.ps1')
+. (Join-Path $PSScriptRoot '..\setup\_common.ps1')
 
 # The mod of the repository (scripts\settings.json): project id, name, folder in <game data>\mod, deployed projects.
 function Get-ModInfo {

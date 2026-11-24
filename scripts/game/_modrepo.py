@@ -14,7 +14,8 @@ def repo():
     env = os.environ.get("MOD_REPO")
     if env and os.path.isdir(env):
         return os.path.abspath(env)
-    return os.path.dirname(MODLIB)
+    parent = os.path.dirname(MODLIB)   # ModLib as a submodule: the mod repository around it; alone: ModLib itself
+    return parent if os.path.isfile(os.path.join(parent, "scripts", "settings.json")) else MODLIB
 
 
 def settings():
