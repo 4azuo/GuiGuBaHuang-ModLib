@@ -2,7 +2,7 @@
 
 ModLib (Workshop `3385996759`, mod id `flQrxq`, namespace `ModLib` + `MOD_flQrxq`) is a framework that sits between the game (Unity Il2Cpp + MelonLoader/Harmony) and content mods such as Taoist. It turns the game's native timers and events into a single, ordered, persisted event model.
 
-Related docs: [01-Event-Reference](01-Event-Reference.md) · [02-Cache-Persistence](02-Cache-Persistence.md) · [03-Builtin-Events](03-Builtin-Events.md) · [04-UI-Framework](04-UI-Framework.md) · [05-Attributes-Objects](05-Attributes-Objects.md) · [05-Helpers (main repository)](https://github.com/4azuo/GuiGuBaHuang-Taoist/blob/main/docs/05-Helpers.md)
+Related docs: [01-Event-Reference](01-Event-Reference.md) · [02-Cache-Persistence](02-Cache-Persistence.md) · [03-Builtin-Events](03-Builtin-Events.md) · [04-UI-Framework](04-UI-Framework.md) · [05-Attributes-Objects](05-Attributes-Objects.md) · [05-Helpers (main repository)](guide/05-Helpers.md)
 
 ## Source layout
 
@@ -12,7 +12,7 @@ Related docs: [01-Event-Reference](01-Event-Reference.md) · [02-Cache-Persisten
 | `ModLib/Mod/Base/` | `ModMaster` (partial: `ModMaster.cs`, `_GameEvent`, `_CommonEvent`, `_BattleEvent`, `_MapEvent`, `_TimerEvent`), `ModEvent`, `ModChild`, `ModSkill`, marker bases `BattleEvent`, `SkillEvent` |
 | `ModLib/Mod/` | Built-in events: `ModDelayEvent`, `ModUIEvent`, `ModSkillEvent`, `ModTitleEvent`, `ModBattleEvent` |
 | `ModLib/Object/` | `CachableObject`, `EnumObject`, `Gamevar`, `ParameterStore`, `ModConfigs`, `MultiValue`, `DelayInfo`, `MonoUpdater`, `UI/*` |
-| `ModLib/Helper/` | Extension/helper classes (units, items, configs, cache, UI, debug...) - see [05-Helpers](https://github.com/4azuo/GuiGuBaHuang-Taoist/blob/main/docs/05-Helpers.md) |
+| `ModLib/Helper/` | Extension/helper classes (units, items, configs, cache, UI, debug...) - see [05-Helpers](guide/05-Helpers.md) |
 | `ModLib/Attribute/` | `Cache`, `ModOrder`, `EventCondition`, `ErrorIgnore`, `Skill`, `EventCat`/`ActionCat` (+ `Ign`) |
 | `ModLib/Enum/` | `EnumObject` based enums (`UnitPropertyEnum`, `UnitDynPropertyEnum`, `GradePhaseEnum`...) and plain enums |
 | `ModLib/Converter/` | `EnumObjectConverter` (Json.NET) |
@@ -89,7 +89,7 @@ One dispatch can stand for several months: when the calendar moved N months sinc
 
 ## Logs and files
 
-* Logs: `%USERPROFILE%\AppData\LocalLow\guigugame\guigubahuang\mod\flQrxq\debug-YYYYMMDD.log` and `<playerId>_debug-YYYYMMDD.log` (see [06-Debug](https://github.com/4azuo/GuiGuBaHuang-Taoist/blob/main/docs/06-Debug.md)).
+* Logs: `%USERPROFILE%\AppData\LocalLow\guigugame\guigubahuang\mod\flQrxq\debug-YYYYMMDD.log` and `<playerId>_debug-YYYYMMDD.log` (see [06-Debug](guide/06-Debug.md)).
 * Cache files: `mod\<modId>\globals\<CacheId>.json` (Global) and `mod\<modId>\saves\<playerId>\<CacheId>.json` (Local); skills in the skill cache folder.
 * `ModConf/mod_configs.json` of ModLib: `{ "DebugMode": "Info" }` (`Info`, `Fine` = log each event start and a monthly profile, `Finest` = also the duration of each call).
 * **Monthly profile** (`DebugMode` `Fine` or `Finest`): after each month the log gets `【Profile】month <year>/<month>`: the time of each phase of the month (`month:RefreshParameterStore`, `month:OnMonthly`, `month:OnMonthlyForEachWUnit (<n> units)`, `month:OnYearly`, `month:OnWorldRunEnd + save`), then the 20 slowest handlers since the previous report with calls, total and average (`EventHelper.WriteProfile`; also `AddProfile` / `TakeProfile`). The per-unit handlers (`OnMonthlyForEachWUnit`) have no "Start" / duration line per call (one per unit and handler: far too many lines), only their total in the profile.

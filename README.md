@@ -42,18 +42,18 @@ entirely on it.
 
 ## Create a mod with ModLib
 
-The complete example is the main repository [GuiGuBaHuang-Taoist](https://github.com/4azuo/GuiGuBaHuang-Taoist)
-(this repository is its `GuiGuBaHuang-ModLib` submodule): the Taoist mod (`3161035078/`) and a step-by-step guide.
 This repository holds the ModLib sources (`ModLib/`), the ModLib Workshop project (`3385996759/`: ModMain, configs,
-SampleConfs, build output) and the tools shared by the mod repositories (`docs/06-Shared-Tools.md`):
-[Getting started](https://github.com/4azuo/GuiGuBaHuang-Taoist/blob/main/docs/00-Getting-Started.md) →
-[ModMain](https://github.com/4azuo/GuiGuBaHuang-Taoist/blob/main/docs/01-ModMain.md) →
-[Events](https://github.com/4azuo/GuiGuBaHuang-Taoist/blob/main/docs/02-Events.md) →
-[Configs](https://github.com/4azuo/GuiGuBaHuang-Taoist/blob/main/docs/03-Configs.md) →
-[LocalText](https://github.com/4azuo/GuiGuBaHuang-Taoist/blob/main/docs/04-LocalText.md) →
-[Helpers](https://github.com/4azuo/GuiGuBaHuang-Taoist/blob/main/docs/05-Helpers.md) →
-[Debug](https://github.com/4azuo/GuiGuBaHuang-Taoist/blob/main/docs/06-Debug.md) →
-[Build and deploy](https://github.com/4azuo/GuiGuBaHuang-Taoist/blob/main/docs/07-Build-Deploy.md).
+SampleConfs, build output) and the tools shared by the mod repositories ([docs/06-Shared-Tools.md](docs/06-Shared-Tools.md)).
+The complete example mod is [GuiGuBaHuang-Taoist](https://github.com/4azuo/GuiGuBaHuang-Taoist) (it holds this repository
+as its `GuiGuBaHuang-ModLib` submodule). Step-by-step guide:
+[Getting started](docs/guide/00-Getting-Started.md) →
+[ModMain](docs/guide/01-ModMain.md) →
+[Events](docs/guide/02-Events.md) →
+[Configs](docs/guide/03-Configs.md) →
+[LocalText](docs/guide/04-LocalText.md) →
+[Helpers](docs/guide/05-Helpers.md) →
+[Debug](docs/guide/06-Debug.md) →
+[Build and deploy](docs/guide/07-Build-Deploy.md).
 
 ![image](https://github.com/4azuo/GuiGuBaHuang-Taoist/assets/11677054/91921f05-251a-4f1e-a2e9-d1e5bdd853d3)
 
@@ -128,7 +128,7 @@ Every config type and its fields: [docs/ModConf/00-SampleConfs-List.md](docs/Mod
   Every `DebugHelper.WriteLine(exception)` (also the errors ModLib catches in your events) goes to the database of the
   mod found in the stack trace, once per error and at most 5 per game session, and only if the player allowed it. Set
   the version of the reports with `CrashReportHelper.SetModVersion(modId, "1.0.0")` in `OnLoadClass`. Details:
-  [docs/06-Debug.md](https://github.com/4azuo/GuiGuBaHuang-Taoist/blob/main/docs/06-Debug.md#error-reports-bugsplat).
+  [docs/06-Debug.md](docs/guide/06-Debug.md#error-reports-bugsplat).
 
 ## Documentation
 

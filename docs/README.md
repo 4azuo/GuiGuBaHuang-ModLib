@@ -1,15 +1,24 @@
 # ModLib documentation
 
-The internals of ModLib, the game's config samples and pictures / effects of the game, reused by the mods.
-How to write a mod with ModLib (setup, ModMain, events, configs, texts, helpers, debug, build) and the Taoist mod are
-documented in the main repository: [GuiGuBaHuang-Taoist/docs](https://github.com/4azuo/GuiGuBaHuang-Taoist/tree/main/docs),
-where this repository is the `GuiGuBaHuang-ModLib` submodule.
+How to write a mod with ModLib (`guide/`: setup, ModMain, events, configs, texts, helpers, debug, build / deploy /
+release), the internals of ModLib, the tools shared by the mod repositories, the game's config samples and pictures /
+effects of the game. The reference example mod is [GuiGuBaHuang-Taoist](https://github.com/4azuo/GuiGuBaHuang-Taoist)
+(its own docs: `docs/Taoist/` there), where this repository is the `GuiGuBaHuang-ModLib` submodule.
 
 ## Tree
 
 ```
 docs/
 ├── README.md                     this file
+├── guide/                        writing a mod with ModLib
+│   ├── 00-Getting-Started.md     requirements, project structure, a new mod
+│   ├── 01-ModMain.md             the ModMain class and the initialization
+│   ├── 02-Events.md              mod events (ModEvent): creating them, their hooks
+│   ├── 03-Configs.md             config files (ModConf/*.json)
+│   ├── 04-LocalText.md           localization: *_localText.json, locale folders, icon tokens, Translate
+│   ├── 05-Helpers.md             the helpers of ModLib
+│   ├── 06-Debug.md               debugging, game / mod log locations, error reports
+│   └── 07-Build-Deploy.md        build, deploy and release scripts
 ├── 00-Architecture.md            dispatch, load sequence, monthly tick
 ├── 01-Event-Reference.md         every event of ModEvent
 ├── 02-Cache-Persistence.md       [Cache] events, global / save caches, CacheHelper
@@ -46,6 +55,7 @@ the viewer server: `python GuiGuBaHuang-ModLib/scripts/effect-viewer-server.py -
 
 | I want to... | Read |
 |---|---|
+| write a mod with ModLib | `guide/00-Getting-Started.md` → `01` … `07` |
 | understand the dispatch of the events, the load sequence, the monthly tick | `00-Architecture.md` |
 | find an event and when it is called | `01-Event-Reference.md`, `03-Builtin-Events.md` |
 | keep data of a mod (global / per save) | `02-Cache-Persistence.md` |
