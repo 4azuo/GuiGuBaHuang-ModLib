@@ -104,6 +104,7 @@
     <Compile Include="Helper\WallpaperHelper.cs" />
     <Compile Include="Helper\SkillHelper.cs" />
     <Compile Include="Helper\UISampleHelper.cs" />
+    <Compile Include="Helper\UIGlowHelper.cs" />
     <Compile Include="Helper\UIHelper.cs" />
     <Compile Include="Helper\GameHelper.cs" />
     <Compile Include="Helper\SaveCleanupHelper.cs" />

@@ -1,6 +1,11 @@
 ﻿<#
 .SYNOPSIS
     Run the test scenarios of the mod (scripts\settings.json: modProject, modName, modId) in the game and collect evidence.
+    RECOMMENDED: run-autotest-parallel.ps1 whenever possible (a full run, -Failed, or more than a few scenarios): it
+    shares the scenarios between several games (4 by default), starts a game only when its memory is free, and restores
+    a fresh test character before every group. One game running a long list here gets slower as its memory grows and
+    may run out of memory (the game closes, the scenarios after are NOT RUN). Use this script for one or a few
+    scenarios, a run on a given save (-Save / -ManualLoad) or -WatchBattles.
 .DESCRIPTION
     1. Writes <game-data>\mod\<modId>\autotest\request.json. Only while this file exists the
        in-game runner (AutoTestEvent of the mod) is loaded, so normal play is never affected.
@@ -381,6 +386,11 @@ else {
     Write-Info "Request:   $requestFile"
     Write-Info ("Save:      " + $(if ($ManualLoad) { 'load it yourself in the game' } elseif ($Save) { $Save } elseif (-not $useNewCharacter) { '(first save in the list)' } else { 'new character created by the pre-test TP-01 (removed by the restore)' }))
     Write-Warn 'Use a throwaway copy of a save: scenarios run mod functions on it.'
+
+    # a long list on one game: the parallel runner is recommended (memory)
+    if (-not $Slot -and (-not $Scenario -or @($Scenario).Count -gt 8)) {
+        Write-Warn 'Many scenarios on one game: run-autotest-parallel.ps1 is recommended (several games, memory checked, a fresh character for every group)'
+    }
 
     # ------------------------------------------------------------------ backup saves
     # game saves (<game data>\<platform>\CacheData) and the ModLib caches of every mod (mod\<id>\globals|saves)

@@ -15,6 +15,8 @@ All containers derive from `UICustomBase` and register themselves in `UIHelper.U
 
 **One window of a type at a time**: `UICustom1` / `UICustom2` are the game's `UITextInfoLong` / `UITextInfo`, and the game keeps one of each. A `new UICustom1(...)` while another `UITextInfoLong` is open (a notice of a mod on the title screen...) writes its items over that window. Open them with `UICustom1.WhenFree(() => { var ui = new UICustom1(...); ...fill... })` (`UICustom2.WhenFree` likewise): opened now when the UI is free, else queued (`UICustomQueue`) and opened once the window before it is closed, one at a time, in order (`ModMaster.OnMonoUpdate`). Code that needs the window goes inside the lambda; a test waits for it.
 
+**Chosen item**: `UIGlowHelper.Add(ui, w, h)` adds a pulsing gold frame (hidden; add it after the items it frames), `UIGlowHelper.Place(glow, button, show)` puts it around the chosen button (a tab, a row, an icon). It pulses while the window updates (`IsAutoUpdate`).
+
 Grid: `Columns`/`Rows` are coordinates built from the bounds and `UIHelper.GetUIDeltaX/Y()`; use `FirstCol/MidCol/LastCol`, `FirstRow/MidRow/LastRow`. Every `AddXxx` has an absolute `(float x, float y)` and a grid `(int col, int row)` overload.
 
 ## Items
