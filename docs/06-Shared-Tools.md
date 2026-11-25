@@ -15,7 +15,7 @@ find it as the parent folder of ModLib (or `$env:MOD_REPO`).
 |---|---|
 | `scripts/settings.json` | `"projects"` (built / deployed / released by this repository, in this order), `"dependencies"` (projects of other repositories copied to the Workshop folder, not built, before them: `GuiGuBaHuang-ModLib/3385996759`, the ModLib build committed in the submodule), `"modProject"` (project id of the mod), `"modName"` (shown by the viewers and the autotest), `"modId"` (folder of the mod in `<game data>\mod`, e.g. `nE7UL2`: autotest requests and snapshots), `"steamWorkshopPath"`, `"repositoryPath"` |
 | `scripts/setup/install.ps1`, `01-clone-repository.ps1` | the setup of a new machine: clones the repository with this submodule, then runs the shared steps of `scripts/setup/` here (downloaded from GitHub before the clone) |
-| `<ProjectId>/scripts/settings.json` | `projectId`, `modName` (`Mod_<id>`), `releaseName`, `releaseRequires` (e.g. `ModLib`, in the release notes), version file, auto-build delays |
+| `<ProjectId>/scripts/settings.json` | `projectId`, `modName` (`Mod_<id>`), `releaseName`, `releaseRequires` (e.g. `ModLib`: the release notes link to the release of the version in the submodule, `ModLib-<version>`, and `create-release-tag.ps1` stops while it is not released), version file, auto-build delays |
 | `<ProjectId>/scripts/*.ps1` | 2-line wrappers of `scripts/project/*.ps1` (`-ProjectScripts $PSScriptRoot @args`) |
 | `<modProject>/tests/scenarios.json`, `scenario-status.json` | autotest scenarios and the latest OK/NG per id |
 | `tests/UnitTests/UnitTests.csproj` | imports `GuiGuBaHuang-ModLib/tests/UnitTests.props`, references its build output, holds the mod tests |

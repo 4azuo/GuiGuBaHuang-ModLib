@@ -94,7 +94,15 @@ $lines += @(
 )
 $lines += $packages | ForEach-Object { "- ``$($_.Zip)``: ``$($_.Sha256)``" }
 # "releaseRequires" of the project settings, e.g. "ModLib": the mods it needs
-$requires = @($packages | Where-Object { $_.Project.Requires } | ForEach-Object { "- $($_.Project.Name) needs $($_.Project.Requires)." })
+# with the release of that version (the build shipped in the submodule) and its Workshop page
+$requires = @($packages | Where-Object { $_.Project.Requires } | ForEach-Object {
+    $r = Get-RequiredRelease $_.Project.Requires
+    if (-not $r) { "- $($_.Project.Name) needs $($_.Project.Requires)." }
+    else {
+        $name = if ($r.Url) { "[$($r.Name) $($r.Version)]($($r.Url))" } else { "$($r.Name) $($r.Version)" }
+        "- $($_.Project.Name) needs $name or newer ([Steam Workshop](https://steamcommunity.com/sharedfiles/filedetails/?id=$($r.ProjectId))), at the top of the mod list."
+    }
+})
 if ($requires.Count -gt 0) { $at = [array]::IndexOf($lines, "### SHA-256"); $lines = $lines[0..($at - 2)] + $requires + $lines[($at - 1)..($lines.Count - 1)] }
 $lines | Set-Content (Join-Path $OutDir "release-notes.md") -Encoding UTF8
 

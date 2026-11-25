@@ -38,6 +38,30 @@ function Get-ReleaseProjects {
     }
 }
 
+# A release this repository needs ("releaseRequires", e.g. ModLib): the project of that name in a submodule
+# (<root>/<submodule>/<ProjectId>/scripts/settings.json), its version (the build shipped with the mod), tag and the URL of
+# its release on the repository of the submodule. $null when no submodule holds it.
+function Get-RequiredRelease([string]$Name) {
+    foreach ($sub in Get-ChildItem -LiteralPath $script:ReleaseRoot -Directory) {
+        if (-not (Test-Path (Join-Path $sub.FullName ".git"))) { continue }
+        foreach ($proj in Get-ChildItem -LiteralPath $sub.FullName -Directory) {
+            $file = Join-Path $proj.FullName "scripts/settings.json"
+            if (-not (Test-Path -LiteralPath $file)) { continue }
+            $s = Get-Content -LiteralPath $file -Raw | ConvertFrom-Json
+            if ($s.releaseName -ne $Name) { continue }
+            $m = [regex]::Match((Get-Content (Join-Path $proj.FullName $s.versionFile) -Raw), $s.versionPattern)
+            if (-not $m.Success) { return $null }
+            $remote = "$(git -C $sub.FullName remote get-url origin 2>$null)".Trim() -replace '\.git$', '' -replace '^git@github\.com:', 'https://github.com/'
+            $tag = "$Name-$($m.Groups[1].Value)"
+            return [pscustomobject]@{
+                Name = $Name; Version = $m.Groups[1].Value; Tag = $tag; ProjectId = $s.projectId; Dir = $sub.FullName; Remote = $remote
+                Url = $(if ($remote) { "$remote/releases/tag/$tag" } else { $null })
+            }
+        }
+    }
+    return $null
+}
+
 # Target (releaseName; empty = the only project of the repository) -> Projects, Tag, Title
 function Get-ReleaseTarget([string]$Target) {
     $all = @(Get-ReleaseProjects)

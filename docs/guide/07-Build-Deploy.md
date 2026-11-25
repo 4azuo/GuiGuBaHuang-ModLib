@@ -48,7 +48,7 @@ Each repository releases its own projects (`<ModLib>/scripts/release/`):
   and pushes it, which starts the CI of the repository. Checks: tag not existing yet (local + origin), uncommitted
   changes of the mod (asks), HEAD pushed (offers to push the branch); `-Yes` skips the questions, `-NoPush` only tags.
 - `package-release.ps1` - zips `<ProjectId>/debug/<modName>` into `dist/<releaseName>-<version>.zip` +
-  `release-notes.md` (downloads, install, `releaseRequires` of the project settings such as "needs ModLib", SHA-256).
+  `release-notes.md` (downloads, install, `releaseRequires` of the project settings such as "needs ModLib 2.2.40 or newer" with a link to that release of the submodule, SHA-256). `create-release-tag.ps1` stops when that release does not exist yet: release ModLib first.
   `-Tag <tag>` (the CI) fails when the tag does not match the version of the source code; `-PrepareResources` (the
   CI) first runs `build-project.ps1 -ResourcesOnly`.
 

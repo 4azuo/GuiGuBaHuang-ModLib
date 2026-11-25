@@ -119,6 +119,15 @@
             "problemMatcher": []
         },
         {
+            "label": "Open: Folder...",
+            "detail": "Open a game / Workshop / build output / mod data / log folder in Explorer",
+            "type": "process",
+            "command": "powershell.exe",
+            "args": ["-NoProfile", "-ExecutionPolicy", "Bypass", "-File", "${workspaceFolder}/scripts/open-folder.ps1", "-RepoRoot", "${workspaceFolder}", "${input:folder}"],
+            "problemMatcher": [],
+            "presentation": { "reveal": "silent" }
+        },
+        {
             "label": "Effects: Open Effect Viewer",
             "detail": "Regenerate effect-viewer/data/effects.js from docs/Effects and open effect-viewer/index.html (read only)",
             "type": "process",
@@ -215,6 +224,60 @@
             "args": ["-NoProfile", "-ExecutionPolicy", "Bypass", "-File", "${workspaceFolder}/scripts/setup/setup-nexus.ps1", "-RepoPath", "${workspaceFolder}"],
             "presentation": { "focus": true },
             "problemMatcher": []
+        }
+    ],
+    "inputs": [
+        {
+            "id": "folder",
+            "type": "pickString",
+            "description": "Folder to open",
+            "options": [
+                {
+                    "label": "Game install folder",
+                    "value": "game"
+                },
+                {
+                    "label": "Game: MelonLoader",
+                    "value": "melonloader"
+                },
+                {
+                    "label": "Game: MelonLoader logs",
+                    "value": "melon-logs"
+                },
+                {
+                    "label": "Steam Workshop (all subscribed mods)",
+                    "value": "workshop"
+                },
+                {
+                    "label": "Steam Workshop: 3385996759 - ModLib",
+                    "value": "workshop-3385996759"
+                },
+                {
+                    "label": "Build output: 3385996759 - ModLib (debug/)",
+                    "value": "debug-3385996759"
+                },
+                {
+                    "label": "Mod data: 3385996759 - ModLib (logs, settings, options, saves)",
+                    "value": "data-3385996759"
+                },
+                {
+                    "label": "Game data (Player.log, LocalLow)",
+                    "value": "game-data"
+                },
+                {
+                    "label": "Data of every mod (LocalLow\\...\\mod)",
+                    "value": "mod-logs"
+                },
+                {
+                    "label": "Game run logs (run-game.ps1 output)",
+                    "value": "game-runs"
+                },
+                {
+                    "label": "Autotest evidence (logs/autotest)",
+                    "value": "autotest"
+                }
+            ],
+            "default": "workshop"
         }
     ]
 }

@@ -11,7 +11,9 @@
   The tag is put on HEAD. Checks before tagging:
     - the tag does not exist yet (local and origin): bump the version first;
     - uncommitted changes of the mods (debug/, ModProject/): they would not be in the release;
-    - HEAD pushed to origin (asks to push the branch).
+    - HEAD pushed to origin (asks to push the branch);
+    - the release it needs ("releaseRequires", e.g. ModLib, in a submodule) is tagged on its repository: the release
+      notes link to it.
   Asks for a confirmation unless -Yes.
 
 .EXAMPLE
@@ -81,6 +83,17 @@ if ($onRemote.Count -eq 0 -and -not $NoPush) {
         git -C $root push origin $branch
         if ($LASTEXITCODE -ne 0) { Write-Host "Push failed." -ForegroundColor Red; exit 1 }
     } elseif (-not (Confirm-Step "Tag a commit that is not on a branch of origin?")) { exit 1 }
+}
+
+# 4. the release it needs exists (the release notes link to it)
+foreach ($p in $release.Projects | Where-Object { $_.Requires }) {
+    $r = Get-RequiredRelease $p.Requires
+    if (-not $r) { continue }
+    git -C $r.Dir ls-remote --exit-code --tags origin "refs/tags/$($r.Tag)" *> $null
+    if ($LASTEXITCODE -ne 0) {
+        Write-Host "$($p.Name) needs $($r.Name) $($r.Version) (submodule), but $($r.Tag) is not released yet: release it from its repository first." -ForegroundColor Red
+        if (-not (Confirm-Step "Tag anyway (the release notes will link to a release that does not exist)?")) { exit 1 }
+    } else { Write-Host "Needs $($r.Tag): $($r.Url)" -ForegroundColor Green }
 }
 
 if (-not (Confirm-Step "Create tag $tag on $head$(if (-not $NoPush) { ' and push it (starts the release CI)' })?")) {

@@ -12,10 +12,14 @@
     melon-logs      <game>\MelonLoader\Logs
     workshop        Steam Workshop folder of the game (all subscribed mods)
     workshop-<id>   Workshop folder of a project, e.g. workshop-3385996759
-    debug-<id>      <repo>\<id>\debug (build output), e.g. debug-3161035078
+    debug-<id>      build output of a project (<repo>\<id>\debug, or in a submodule), e.g. debug-3161035078
+    data-<id>       data of a mod: <game-data>\mod\<modId> (its logs, globals\ = settings and options, saves\)
     game-data       %USERPROFILE%\AppData\LocalLow\guigugame\guigubahuang (Player.log)
-    mod-logs        <game-data>\mod (ModLib debug logs, per save game)
+    mod-logs        <game-data>\mod (the data of every mod)
     game-runs       <repo>\logs\game-runs (output of GuiGuBaHuang-ModLib\scripts\game\run-game.ps1)
+    autotest        <repo>\logs\autotest (evidence of the autotest runs)
+    Projects: those of scripts\settings.json of the repository ("projects", "dependencies") and every project of
+    its submodules (<submodule>\<id>\scripts\settings.json, e.g. ModLib, or another mod held as a submodule).
 .PARAMETER Print
     Only print the path, do not open Explorer.
 .EXAMPLE
@@ -40,16 +44,35 @@ $targets = [ordered]@{
     'melon-logs'  = if ($p.MelonDir) { Join-Path $p.MelonDir 'Logs' } else { $null }
     'workshop'    = $p.Workshop
 }
-foreach ($dir in @($p.Mod.Dependencies) + @($p.Projects)) {
+# projects: id -> folder (relative to the repository) and mod id (modName "Mod_<modId>")
+$projects = [ordered]@{}
+function Add-Project([string]$dir) {
     $id = Split-Path $dir -Leaf
-    $targets["workshop-$id"] = if ($p.Workshop) { Join-Path $p.Workshop $id } else { $null }
+    if ($projects.Contains($id)) { return }
+    $file = Join-Path $p.Repo "$dir\scripts\settings.json"
+    $modId = $null
+    if (Test-Path -LiteralPath $file) {
+        $s = Get-Content -LiteralPath $file -Raw | ConvertFrom-Json
+        if ($s.modName -match '^Mod_(.+)$') { $modId = $Matches[1] }
+    }
+    $projects[$id] = [pscustomobject]@{ Dir = $dir; ModId = $modId }
 }
-foreach ($dir in @($p.Mod.Dependencies) + @($p.Projects)) {
-    $targets["debug-$(Split-Path $dir -Leaf)"] = Join-Path $p.Repo "$dir\debug"
+foreach ($dir in @($p.Mod.Dependencies) + @($p.Projects)) { if ($dir) { Add-Project $dir } }
+foreach ($sub in Get-ChildItem -LiteralPath $p.Repo -Directory) {
+    if (-not (Test-Path (Join-Path $sub.FullName '.git'))) { continue }
+    foreach ($proj in Get-ChildItem -LiteralPath $sub.FullName -Directory) {
+        if ($proj.Name -match '^\d+$' -and (Test-Path (Join-Path $proj.FullName 'scripts\settings.json'))) { Add-Project "$($sub.Name)\$($proj.Name)" }
+    }
+}
+foreach ($id in $projects.Keys) { $targets["workshop-$id"] = if ($p.Workshop) { Join-Path $p.Workshop $id } else { $null } }
+foreach ($id in $projects.Keys) { $targets["debug-$id"] = Join-Path $p.Repo "$($projects[$id].Dir)\debug" }
+foreach ($id in $projects.Keys) {
+    if ($projects[$id].ModId -and $p.ModLogs) { $targets["data-$id"] = Join-Path $p.ModLogs $projects[$id].ModId }
 }
 $targets['game-data'] = $p.GameData
 $targets['mod-logs'] = $p.ModLogs
 $targets['game-runs'] = $p.GameRuns
+$targets['autotest'] = Join-Path $p.Repo 'logs\autotest'
 
 if (-not $Target) {
     $keys = @($targets.Keys)
