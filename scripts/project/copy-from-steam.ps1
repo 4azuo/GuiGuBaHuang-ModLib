@@ -13,7 +13,8 @@ if (!(Test-Path $settingsPath)) {
 $settings = Get-Content -Path $settingsPath -Raw | ConvertFrom-Json
 $projectId = $settings.projectId
 $steamWorkshopPath = $settings.steamWorkshopPath
-$repositoryPath = $settings.repositoryPath
+# The repository is the one holding <ProjectId>/scripts (same as copy-to-steam.ps1)
+$repositoryPath = Split-Path (Split-Path $ProjectScripts -Parent) -Parent
 
 Write-Host "========================================" -ForegroundColor Cyan
 Write-Host "Copy Project $projectId from Steam Workshop to Git" -ForegroundColor Cyan
@@ -31,6 +32,9 @@ if (!(Test-Path $sourcePath)) {
     Write-Host "❌ Source folder not found: $sourcePath" -ForegroundColor Red
     exit 1
 }
+
+# Same spelling as the FullName of its items (short 8.3 names, slashes): relative paths are cut from it
+$sourcePath = (Get-ChildItem -LiteralPath $steamWorkshopPath -Directory -Filter $projectId).FullName
 
 # Function to copy with error handling
 function Copy-WithErrorHandling {
@@ -54,7 +58,8 @@ function Copy-WithErrorHandling {
             try {
                 Copy-Item -Path $_.FullName -Destination $targetPath -Force -ErrorAction Stop
             } catch {
-                Write-Host "⚠️  Skipped (in use): $($_.Name)" -ForegroundColor Yellow
+                $script:failedCount++
+                Write-Host "⚠️  Skipped: $relativePath ($($_.Exception.Message))" -ForegroundColor Yellow
             }
         }
     }
@@ -62,9 +67,16 @@ function Copy-WithErrorHandling {
 
 # Copy folder from Steam to Git
 Write-Host "`nCopying project $projectId folder from Steam Workshop to Git..." -ForegroundColor Yellow
+$script:failedCount = 0
 Copy-WithErrorHandling -Source $sourcePath -Destination $destinationPath
+
+if ($script:failedCount -gt 0) {
+    Write-Host "`n❌ COPY INCOMPLETE: $($script:failedCount) file(s) not copied" -ForegroundColor Red
+    exit 1
+}
 
 Write-Host "`n========================================" -ForegroundColor Green
 Write-Host "✅ COPY COMPLETED SUCCESSFULLY!" -ForegroundColor Green
 Write-Host "========================================" -ForegroundColor Green
 Write-Host "Project $projectId has been copied from Steam Workshop to Git!" -ForegroundColor White
+exit 0
