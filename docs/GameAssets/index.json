@@ -25785,5 +25785,8166 @@
    "w": 206,
    "h": 362
   }
+ ],
+ "skills": [
+  {
+   "name": "11412",
+   "file": "SkillIcons/11412.png",
+   "kinds": [],
+   "basis": [],
+   "bases": 0,
+   "tags": []
+  },
+  {
+   "name": "11413",
+   "file": "SkillIcons/11413.png",
+   "kinds": [],
+   "basis": [],
+   "bases": 0,
+   "tags": []
+  },
+  {
+   "name": "11422",
+   "file": "SkillIcons/11422.png",
+   "kinds": [],
+   "basis": [],
+   "bases": 0,
+   "tags": []
+  },
+  {
+   "name": "11423",
+   "file": "SkillIcons/11423.png",
+   "kinds": [],
+   "basis": [],
+   "bases": 0,
+   "tags": []
+  },
+  {
+   "name": "11432",
+   "file": "SkillIcons/11432.png",
+   "kinds": [],
+   "basis": [],
+   "bases": 0,
+   "tags": []
+  },
+  {
+   "name": "11433",
+   "file": "SkillIcons/11433.png",
+   "kinds": [],
+   "basis": [],
+   "bases": 0,
+   "tags": []
+  },
+  {
+   "name": "11442",
+   "file": "SkillIcons/11442.png",
+   "kinds": [],
+   "basis": [],
+   "bases": 0,
+   "tags": []
+  },
+  {
+   "name": "11443",
+   "file": "SkillIcons/11443.png",
+   "kinds": [],
+   "basis": [],
+   "bases": 0,
+   "tags": []
+  },
+  {
+   "name": "11452",
+   "file": "SkillIcons/11452.png",
+   "kinds": [],
+   "basis": [],
+   "bases": 0,
+   "tags": []
+  },
+  {
+   "name": "11453",
+   "file": "SkillIcons/11453.png",
+   "kinds": [],
+   "basis": [],
+   "bases": 0,
+   "tags": []
+  },
+  {
+   "name": "11462",
+   "file": "SkillIcons/11462.png",
+   "kinds": [],
+   "basis": [],
+   "bases": 0,
+   "tags": []
+  },
+  {
+   "name": "11463",
+   "file": "SkillIcons/11463.png",
+   "kinds": [],
+   "basis": [],
+   "bases": 0,
+   "tags": []
+  },
+  {
+   "name": "12111",
+   "file": "SkillIcons/12111.png",
+   "kinds": [
+    "attack"
+   ],
+   "basis": [
+    "basBlade"
+   ],
+   "bases": 1,
+   "tags": [
+    "blade",
+    "fire"
+   ]
+  },
+  {
+   "name": "12112",
+   "file": "SkillIcons/12112.png",
+   "kinds": [
+    "attack"
+   ],
+   "basis": [
+    "basBlade"
+   ],
+   "bases": 1,
+   "tags": [
+    "blade",
+    "fire",
+    "blood"
+   ]
+  },
+  {
+   "name": "12113",
+   "file": "SkillIcons/12113.png",
+   "kinds": [
+    "attack"
+   ],
+   "basis": [
+    "basBlade"
+   ],
+   "bases": 1,
+   "tags": [
+    "blade",
+    "light"
+   ]
+  },
+  {
+   "name": "13111",
+   "file": "SkillIcons/13111.png",
+   "kinds": [
+    "attack"
+   ],
+   "basis": [
+    "basSpear"
+   ],
+   "bases": 1,
+   "tags": [
+    "spear",
+    "water"
+   ]
+  },
+  {
+   "name": "13112",
+   "file": "SkillIcons/13112.png",
+   "kinds": [
+    "attack"
+   ],
+   "basis": [
+    "basSpear"
+   ],
+   "bases": 1,
+   "tags": [
+    "spear",
+    "water"
+   ]
+  },
+  {
+   "name": "13113",
+   "file": "SkillIcons/13113.png",
+   "kinds": [
+    "attack"
+   ],
+   "basis": [
+    "basSpear"
+   ],
+   "bases": 2,
+   "tags": [
+    "spear",
+    "water"
+   ]
+  },
+  {
+   "name": "14111",
+   "file": "SkillIcons/14111.png",
+   "kinds": [
+    "attack"
+   ],
+   "basis": [
+    "basSword"
+   ],
+   "bases": 1,
+   "tags": [
+    "sword",
+    "dark"
+   ]
+  },
+  {
+   "name": "14112",
+   "file": "SkillIcons/14112.png",
+   "kinds": [
+    "attack"
+   ],
+   "basis": [
+    "basSword"
+   ],
+   "bases": 1,
+   "tags": [
+    "sword",
+    "frost"
+   ]
+  },
+  {
+   "name": "14113",
+   "file": "SkillIcons/14113.png",
+   "kinds": [
+    "attack"
+   ],
+   "basis": [
+    "basSword"
+   ],
+   "bases": 1,
+   "tags": [
+    "sword",
+    "dark"
+   ]
+  },
+  {
+   "name": "15111",
+   "file": "SkillIcons/15111.png",
+   "kinds": [
+    "attack"
+   ],
+   "basis": [
+    "basFist"
+   ],
+   "bases": 2,
+   "tags": [
+    "fist"
+   ]
+  },
+  {
+   "name": "15112",
+   "file": "SkillIcons/15112.png",
+   "kinds": [
+    "attack"
+   ],
+   "basis": [
+    "basFist"
+   ],
+   "bases": 1,
+   "tags": [
+    "fist",
+    "light"
+   ]
+  },
+  {
+   "name": "15113",
+   "file": "SkillIcons/15113.png",
+   "kinds": [
+    "attack"
+   ],
+   "basis": [
+    "basFist"
+   ],
+   "bases": 1,
+   "tags": [
+    "fist",
+    "light"
+   ]
+  },
+  {
+   "name": "16111",
+   "file": "SkillIcons/16111.png",
+   "kinds": [
+    "attack"
+   ],
+   "basis": [
+    "basPalm"
+   ],
+   "bases": 2,
+   "tags": [
+    "palm",
+    "water"
+   ]
+  },
+  {
+   "name": "16112",
+   "file": "SkillIcons/16112.png",
+   "kinds": [
+    "attack"
+   ],
+   "basis": [
+    "basPalm"
+   ],
+   "bases": 1,
+   "tags": [
+    "palm",
+    "water"
+   ]
+  },
+  {
+   "name": "16113",
+   "file": "SkillIcons/16113.png",
+   "kinds": [
+    "attack"
+   ],
+   "basis": [
+    "basPalm"
+   ],
+   "bases": 1,
+   "tags": [
+    "palm",
+    "water"
+   ]
+  },
+  {
+   "name": "17111",
+   "file": "SkillIcons/17111.png",
+   "kinds": [
+    "attack"
+   ],
+   "basis": [
+    "basFinger"
+   ],
+   "bases": 2,
+   "tags": [
+    "finger"
+   ]
+  },
+  {
+   "name": "17112",
+   "file": "SkillIcons/17112.png",
+   "kinds": [
+    "attack"
+   ],
+   "basis": [
+    "basFinger"
+   ],
+   "bases": 2,
+   "tags": [
+    "finger",
+    "light"
+   ]
+  },
+  {
+   "name": "17113",
+   "file": "SkillIcons/17113.png",
+   "kinds": [
+    "attack"
+   ],
+   "basis": [
+    "basFinger"
+   ],
+   "bases": 1,
+   "tags": [
+    "finger",
+    "thunder"
+   ]
+  },
+  {
+   "name": "22111",
+   "file": "SkillIcons/22111.png",
+   "kinds": [
+    "attack",
+    "spell"
+   ],
+   "basis": [
+    "basBlade"
+   ],
+   "bases": 2,
+   "tags": [
+    "blade",
+    "fire"
+   ]
+  },
+  {
+   "name": "22112",
+   "file": "SkillIcons/22112.png",
+   "kinds": [
+    "spell"
+   ],
+   "basis": [
+    "basBlade"
+   ],
+   "bases": 1,
+   "tags": [
+    "blade",
+    "fire",
+    "earth"
+   ]
+  },
+  {
+   "name": "22113",
+   "file": "SkillIcons/22113.png",
+   "kinds": [
+    "spell"
+   ],
+   "basis": [
+    "basBlade"
+   ],
+   "bases": 1,
+   "tags": [
+    "blade",
+    "fire",
+    "light"
+   ]
+  },
+  {
+   "name": "22114",
+   "file": "SkillIcons/22114.png",
+   "kinds": [
+    "attack",
+    "spell"
+   ],
+   "basis": [
+    "basBlade"
+   ],
+   "bases": 2,
+   "tags": [
+    "blade",
+    "fire"
+   ]
+  },
+  {
+   "name": "22115",
+   "file": "SkillIcons/22115.png",
+   "kinds": [
+    "attack",
+    "spell"
+   ],
+   "basis": [
+    "basBlade"
+   ],
+   "bases": 2,
+   "tags": [
+    "blade",
+    "fire"
+   ]
+  },
+  {
+   "name": "22116",
+   "file": "SkillIcons/22116.png",
+   "kinds": [
+    "spell"
+   ],
+   "basis": [
+    "basBlade"
+   ],
+   "bases": 1,
+   "tags": [
+    "blade",
+    "fire"
+   ]
+  },
+  {
+   "name": "23111",
+   "file": "SkillIcons/23111.png",
+   "kinds": [
+    "attack",
+    "spell"
+   ],
+   "basis": [
+    "basSpear"
+   ],
+   "bases": 2,
+   "tags": [
+    "spear",
+    "water",
+    "wood"
+   ]
+  },
+  {
+   "name": "23112",
+   "file": "SkillIcons/23112.png",
+   "kinds": [
+    "attack",
+    "spell"
+   ],
+   "basis": [
+    "basSpear"
+   ],
+   "bases": 2,
+   "tags": [
+    "spear",
+    "water"
+   ]
+  },
+  {
+   "name": "231125",
+   "file": "SkillIcons/231125.png",
+   "kinds": [],
+   "basis": [],
+   "bases": 0,
+   "tags": []
+  },
+  {
+   "name": "23113",
+   "file": "SkillIcons/23113.png",
+   "kinds": [
+    "spell"
+   ],
+   "basis": [
+    "basSpear"
+   ],
+   "bases": 1,
+   "tags": [
+    "spear",
+    "frost"
+   ]
+  },
+  {
+   "name": "23114",
+   "file": "SkillIcons/23114.png",
+   "kinds": [
+    "spell"
+   ],
+   "basis": [
+    "basSpear"
+   ],
+   "bases": 1,
+   "tags": [
+    "spear",
+    "water"
+   ]
+  },
+  {
+   "name": "231145",
+   "file": "SkillIcons/231145.png",
+   "kinds": [],
+   "basis": [],
+   "bases": 0,
+   "tags": []
+  },
+  {
+   "name": "23115",
+   "file": "SkillIcons/23115.png",
+   "kinds": [
+    "spell"
+   ],
+   "basis": [
+    "basSpear"
+   ],
+   "bases": 1,
+   "tags": [
+    "spear",
+    "water",
+    "wind"
+   ]
+  },
+  {
+   "name": "231155",
+   "file": "SkillIcons/231155.png",
+   "kinds": [],
+   "basis": [],
+   "bases": 0,
+   "tags": []
+  },
+  {
+   "name": "23116",
+   "file": "SkillIcons/23116.png",
+   "kinds": [
+    "spell"
+   ],
+   "basis": [
+    "basSpear"
+   ],
+   "bases": 1,
+   "tags": [
+    "spear",
+    "thunder"
+   ]
+  },
+  {
+   "name": "231165",
+   "file": "SkillIcons/231165.png",
+   "kinds": [],
+   "basis": [],
+   "bases": 0,
+   "tags": []
+  },
+  {
+   "name": "24111",
+   "file": "SkillIcons/24111.png",
+   "kinds": [
+    "attack",
+    "spell"
+   ],
+   "basis": [
+    "basSword"
+   ],
+   "bases": 2,
+   "tags": [
+    "sword",
+    "spirit"
+   ]
+  },
+  {
+   "name": "24112",
+   "file": "SkillIcons/24112.png",
+   "kinds": [
+    "spell"
+   ],
+   "basis": [
+    "basSword"
+   ],
+   "bases": 1,
+   "tags": [
+    "sword",
+    "dark"
+   ]
+  },
+  {
+   "name": "24113",
+   "file": "SkillIcons/24113.png",
+   "kinds": [
+    "spell"
+   ],
+   "basis": [
+    "basSword"
+   ],
+   "bases": 1,
+   "tags": [
+    "sword",
+    "dark"
+   ]
+  },
+  {
+   "name": "24114",
+   "file": "SkillIcons/24114.png",
+   "kinds": [
+    "attack",
+    "spell"
+   ],
+   "basis": [
+    "basSword"
+   ],
+   "bases": 2,
+   "tags": [
+    "sword",
+    "dark"
+   ]
+  },
+  {
+   "name": "24115",
+   "file": "SkillIcons/24115.png",
+   "kinds": [
+    "spell"
+   ],
+   "basis": [
+    "basSword"
+   ],
+   "bases": 1,
+   "tags": [
+    "sword",
+    "thunder"
+   ]
+  },
+  {
+   "name": "24116",
+   "file": "SkillIcons/24116.png",
+   "kinds": [
+    "spell"
+   ],
+   "basis": [
+    "basSword"
+   ],
+   "bases": 1,
+   "tags": [
+    "sword",
+    "light"
+   ]
+  },
+  {
+   "name": "25111",
+   "file": "SkillIcons/25111.png",
+   "kinds": [
+    "spell"
+   ],
+   "basis": [
+    "basFist"
+   ],
+   "bases": 1,
+   "tags": [
+    "fist",
+    "light"
+   ]
+  },
+  {
+   "name": "25112",
+   "file": "SkillIcons/25112.png",
+   "kinds": [
+    "spell"
+   ],
+   "basis": [
+    "basFist"
+   ],
+   "bases": 1,
+   "tags": [
+    "fist",
+    "light"
+   ]
+  },
+  {
+   "name": "251125",
+   "file": "SkillIcons/251125.png",
+   "kinds": [],
+   "basis": [],
+   "bases": 0,
+   "tags": []
+  },
+  {
+   "name": "25113",
+   "file": "SkillIcons/25113.png",
+   "kinds": [
+    "spell"
+   ],
+   "basis": [
+    "basFist"
+   ],
+   "bases": 1,
+   "tags": [
+    "fist",
+    "light",
+    "thunder"
+   ]
+  },
+  {
+   "name": "25114",
+   "file": "SkillIcons/25114.png",
+   "kinds": [
+    "attack",
+    "spell"
+   ],
+   "basis": [
+    "basFist"
+   ],
+   "bases": 2,
+   "tags": [
+    "fist",
+    "light"
+   ]
+  },
+  {
+   "name": "25115",
+   "file": "SkillIcons/25115.png",
+   "kinds": [
+    "spell"
+   ],
+   "basis": [
+    "basFist"
+   ],
+   "bases": 1,
+   "tags": [
+    "fist",
+    "light"
+   ]
+  },
+  {
+   "name": "25116",
+   "file": "SkillIcons/25116.png",
+   "kinds": [
+    "spell"
+   ],
+   "basis": [
+    "basFist"
+   ],
+   "bases": 1,
+   "tags": [
+    "fist",
+    "light"
+   ]
+  },
+  {
+   "name": "26111",
+   "file": "SkillIcons/26111.png",
+   "kinds": [
+    "spell"
+   ],
+   "basis": [
+    "basPalm"
+   ],
+   "bases": 1,
+   "tags": [
+    "palm",
+    "frost",
+    "wind"
+   ]
+  },
+  {
+   "name": "26112",
+   "file": "SkillIcons/26112.png",
+   "kinds": [
+    "spell"
+   ],
+   "basis": [
+    "basPalm"
+   ],
+   "bases": 1,
+   "tags": [
+    "palm",
+    "frost"
+   ]
+  },
+  {
+   "name": "26113",
+   "file": "SkillIcons/26113.png",
+   "kinds": [
+    "attack",
+    "spell"
+   ],
+   "basis": [
+    "basPalm"
+   ],
+   "bases": 2,
+   "tags": [
+    "palm",
+    "light",
+    "fire"
+   ]
+  },
+  {
+   "name": "26114",
+   "file": "SkillIcons/26114.png",
+   "kinds": [
+    "spell"
+   ],
+   "basis": [
+    "basPalm"
+   ],
+   "bases": 1,
+   "tags": [
+    "palm",
+    "fire"
+   ]
+  },
+  {
+   "name": "26115",
+   "file": "SkillIcons/26115.png",
+   "kinds": [
+    "spell"
+   ],
+   "basis": [
+    "basPalm"
+   ],
+   "bases": 1,
+   "tags": [
+    "palm",
+    "water"
+   ]
+  },
+  {
+   "name": "26116",
+   "file": "SkillIcons/26116.png",
+   "kinds": [
+    "attack",
+    "spell"
+   ],
+   "basis": [
+    "basPalm"
+   ],
+   "bases": 2,
+   "tags": [
+    "palm",
+    "dark",
+    "water"
+   ]
+  },
+  {
+   "name": "27111",
+   "file": "SkillIcons/27111.png",
+   "kinds": [
+    "attack",
+    "spell"
+   ],
+   "basis": [
+    "basFinger"
+   ],
+   "bases": 2,
+   "tags": [
+    "finger",
+    "water"
+   ]
+  },
+  {
+   "name": "27112",
+   "file": "SkillIcons/27112.png",
+   "kinds": [
+    "spell"
+   ],
+   "basis": [
+    "basFinger"
+   ],
+   "bases": 1,
+   "tags": [
+    "finger",
+    "spirit"
+   ]
+  },
+  {
+   "name": "27113",
+   "file": "SkillIcons/27113.png",
+   "kinds": [
+    "spell"
+   ],
+   "basis": [
+    "basFinger"
+   ],
+   "bases": 1,
+   "tags": [
+    "finger",
+    "wood",
+    "wind"
+   ]
+  },
+  {
+   "name": "27114",
+   "file": "SkillIcons/27114.png",
+   "kinds": [
+    "spell"
+   ],
+   "basis": [
+    "basFinger"
+   ],
+   "bases": 1,
+   "tags": [
+    "finger",
+    "wood"
+   ]
+  },
+  {
+   "name": "27115",
+   "file": "SkillIcons/27115.png",
+   "kinds": [
+    "attack",
+    "spell"
+   ],
+   "basis": [
+    "basFinger"
+   ],
+   "bases": 2,
+   "tags": [
+    "finger",
+    "water",
+    "spirit"
+   ]
+  },
+  {
+   "name": "27116",
+   "file": "SkillIcons/27116.png",
+   "kinds": [
+    "spell"
+   ],
+   "basis": [
+    "basFinger"
+   ],
+   "bases": 1,
+   "tags": [
+    "finger",
+    "thunder"
+   ]
+  },
+  {
+   "name": "32111",
+   "file": "SkillIcons/32111.png",
+   "kinds": [
+    "ultimate"
+   ],
+   "basis": [
+    "basBlade"
+   ],
+   "bases": 1,
+   "tags": [
+    "blade",
+    "fire",
+    "blood"
+   ]
+  },
+  {
+   "name": "32112",
+   "file": "SkillIcons/32112.png",
+   "kinds": [
+    "ultimate"
+   ],
+   "basis": [
+    "basBlade"
+   ],
+   "bases": 1,
+   "tags": [
+    "blade",
+    "blood"
+   ]
+  },
+  {
+   "name": "33111",
+   "file": "SkillIcons/33111.png",
+   "kinds": [
+    "ultimate"
+   ],
+   "basis": [
+    "basSpear"
+   ],
+   "bases": 1,
+   "tags": [
+    "spear",
+    "water"
+   ]
+  },
+  {
+   "name": "33112",
+   "file": "SkillIcons/33112.png",
+   "kinds": [
+    "ultimate"
+   ],
+   "basis": [
+    "basSpear"
+   ],
+   "bases": 1,
+   "tags": [
+    "spear",
+    "water"
+   ]
+  },
+  {
+   "name": "34111",
+   "file": "SkillIcons/34111.png",
+   "kinds": [
+    "ultimate"
+   ],
+   "basis": [
+    "basSword"
+   ],
+   "bases": 1,
+   "tags": [
+    "sword",
+    "light",
+    "dark"
+   ]
+  },
+  {
+   "name": "34112",
+   "file": "SkillIcons/34112.png",
+   "kinds": [
+    "ultimate"
+   ],
+   "basis": [
+    "basSword"
+   ],
+   "bases": 1,
+   "tags": [
+    "sword",
+    "light"
+   ]
+  },
+  {
+   "name": "35111",
+   "file": "SkillIcons/35111.png",
+   "kinds": [
+    "ultimate"
+   ],
+   "basis": [
+    "basFist"
+   ],
+   "bases": 1,
+   "tags": [
+    "fist",
+    "earth",
+    "light"
+   ]
+  },
+  {
+   "name": "35112",
+   "file": "SkillIcons/35112.png",
+   "kinds": [
+    "ultimate"
+   ],
+   "basis": [
+    "basFist"
+   ],
+   "bases": 1,
+   "tags": [
+    "fist",
+    "light"
+   ]
+  },
+  {
+   "name": "36111",
+   "file": "SkillIcons/36111.png",
+   "kinds": [
+    "ultimate"
+   ],
+   "basis": [
+    "basPalm"
+   ],
+   "bases": 1,
+   "tags": [
+    "palm",
+    "earth"
+   ]
+  },
+  {
+   "name": "36112",
+   "file": "SkillIcons/36112.png",
+   "kinds": [
+    "ultimate"
+   ],
+   "basis": [
+    "basPalm"
+   ],
+   "bases": 1,
+   "tags": [
+    "palm",
+    "fire",
+    "blood"
+   ]
+  },
+  {
+   "name": "37111",
+   "file": "SkillIcons/37111.png",
+   "kinds": [
+    "ultimate"
+   ],
+   "basis": [
+    "basFinger"
+   ],
+   "bases": 1,
+   "tags": [
+    "finger",
+    "spirit",
+    "water"
+   ]
+  },
+  {
+   "name": "37112",
+   "file": "SkillIcons/37112.png",
+   "kinds": [
+    "ultimate"
+   ],
+   "basis": [
+    "basFinger"
+   ],
+   "bases": 1,
+   "tags": [
+    "finger",
+    "light"
+   ]
+  },
+  {
+   "name": "41111",
+   "file": "SkillIcons/41111.png",
+   "kinds": [
+    "attack"
+   ],
+   "basis": [
+    "basFire"
+   ],
+   "bases": 1,
+   "tags": [
+    "fire"
+   ]
+  },
+  {
+   "name": "41112",
+   "file": "SkillIcons/41112.png",
+   "kinds": [
+    "attack"
+   ],
+   "basis": [
+    "basFire"
+   ],
+   "bases": 1,
+   "tags": [
+    "fire"
+   ]
+  },
+  {
+   "name": "41113",
+   "file": "SkillIcons/41113.png",
+   "kinds": [
+    "attack"
+   ],
+   "basis": [
+    "basFire",
+    "basPalm"
+   ],
+   "bases": 2,
+   "tags": [
+    "fire",
+    "palm"
+   ]
+  },
+  {
+   "name": "42111",
+   "file": "SkillIcons/42111.png",
+   "kinds": [
+    "attack"
+   ],
+   "basis": [
+    "basFroze"
+   ],
+   "bases": 1,
+   "tags": [
+    "frost",
+    "water"
+   ]
+  },
+  {
+   "name": "42112",
+   "file": "SkillIcons/42112.png",
+   "kinds": [
+    "attack"
+   ],
+   "basis": [
+    "basFroze",
+    "basPalm"
+   ],
+   "bases": 2,
+   "tags": [
+    "frost",
+    "palm",
+    "water"
+   ]
+  },
+  {
+   "name": "42113",
+   "file": "SkillIcons/42113.png",
+   "kinds": [
+    "attack"
+   ],
+   "basis": [
+    "basFroze",
+    "basPalm"
+   ],
+   "bases": 2,
+   "tags": [
+    "frost",
+    "palm",
+    "water"
+   ]
+  },
+  {
+   "name": "43111",
+   "file": "SkillIcons/43111.png",
+   "kinds": [
+    "attack"
+   ],
+   "basis": [
+    "basThunder"
+   ],
+   "bases": 1,
+   "tags": [
+    "thunder",
+    "dark",
+    "spirit"
+   ]
+  },
+  {
+   "name": "43112",
+   "file": "SkillIcons/43112.png",
+   "kinds": [
+    "attack"
+   ],
+   "basis": [
+    "basThunder"
+   ],
+   "bases": 1,
+   "tags": [
+    "thunder",
+    "dark"
+   ]
+  },
+  {
+   "name": "43113",
+   "file": "SkillIcons/43113.png",
+   "kinds": [
+    "attack"
+   ],
+   "basis": [
+    "basPalm",
+    "basThunder"
+   ],
+   "bases": 3,
+   "tags": [
+    "thunder",
+    "palm"
+   ]
+  },
+  {
+   "name": "44111",
+   "file": "SkillIcons/44111.png",
+   "kinds": [
+    "attack"
+   ],
+   "basis": [
+    "basWind"
+   ],
+   "bases": 1,
+   "tags": [
+    "wind",
+    "wood",
+    "light"
+   ]
+  },
+  {
+   "name": "44112",
+   "file": "SkillIcons/44112.png",
+   "kinds": [
+    "attack"
+   ],
+   "basis": [
+    "basWind"
+   ],
+   "bases": 1,
+   "tags": [
+    "wind",
+    "frost"
+   ]
+  },
+  {
+   "name": "44113",
+   "file": "SkillIcons/44113.png",
+   "kinds": [
+    "attack"
+   ],
+   "basis": [
+    "basWind"
+   ],
+   "bases": 1,
+   "tags": [
+    "wind",
+    "water"
+   ]
+  },
+  {
+   "name": "45111",
+   "file": "SkillIcons/45111.png",
+   "kinds": [
+    "attack"
+   ],
+   "basis": [
+    "basEarth"
+   ],
+   "bases": 1,
+   "tags": [
+    "earth"
+   ]
+  },
+  {
+   "name": "45112",
+   "file": "SkillIcons/45112.png",
+   "kinds": [
+    "attack"
+   ],
+   "basis": [
+    "basEarth"
+   ],
+   "bases": 1,
+   "tags": [
+    "earth"
+   ]
+  },
+  {
+   "name": "45113",
+   "file": "SkillIcons/45113.png",
+   "kinds": [
+    "attack"
+   ],
+   "basis": [
+    "basEarth",
+    "basPalm"
+   ],
+   "bases": 2,
+   "tags": [
+    "earth",
+    "palm",
+    "light"
+   ]
+  },
+  {
+   "name": "46111",
+   "file": "SkillIcons/46111.png",
+   "kinds": [
+    "attack"
+   ],
+   "basis": [
+    "basWood"
+   ],
+   "bases": 1,
+   "tags": [
+    "wood"
+   ]
+  },
+  {
+   "name": "46112",
+   "file": "SkillIcons/46112.png",
+   "kinds": [
+    "attack"
+   ],
+   "basis": [
+    "basWood"
+   ],
+   "bases": 1,
+   "tags": [
+    "wood",
+    "spirit",
+    "poison"
+   ]
+  },
+  {
+   "name": "46113",
+   "file": "SkillIcons/46113.png",
+   "kinds": [
+    "attack"
+   ],
+   "basis": [
+    "basWood"
+   ],
+   "bases": 1,
+   "tags": [
+    "wood",
+    "spirit"
+   ]
+  },
+  {
+   "name": "51111",
+   "file": "SkillIcons/51111.png",
+   "kinds": [
+    "spell"
+   ],
+   "basis": [
+    "basFire"
+   ],
+   "bases": 1,
+   "tags": [
+    "fire"
+   ]
+  },
+  {
+   "name": "51112",
+   "file": "SkillIcons/51112.png",
+   "kinds": [
+    "spell"
+   ],
+   "basis": [
+    "basFire"
+   ],
+   "bases": 1,
+   "tags": [
+    "fire"
+   ]
+  },
+  {
+   "name": "51113",
+   "file": "SkillIcons/51113.png",
+   "kinds": [
+    "spell"
+   ],
+   "basis": [
+    "basFire"
+   ],
+   "bases": 1,
+   "tags": [
+    "fire"
+   ]
+  },
+  {
+   "name": "51114",
+   "file": "SkillIcons/51114.png",
+   "kinds": [
+    "spell"
+   ],
+   "basis": [
+    "basFire"
+   ],
+   "bases": 1,
+   "tags": [
+    "fire"
+   ]
+  },
+  {
+   "name": "51115",
+   "file": "SkillIcons/51115.png",
+   "kinds": [
+    "spell"
+   ],
+   "basis": [
+    "basFire"
+   ],
+   "bases": 1,
+   "tags": [
+    "fire"
+   ]
+  },
+  {
+   "name": "51116",
+   "file": "SkillIcons/51116.png",
+   "kinds": [
+    "spell"
+   ],
+   "basis": [
+    "basFire"
+   ],
+   "bases": 1,
+   "tags": [
+    "fire"
+   ]
+  },
+  {
+   "name": "52111",
+   "file": "SkillIcons/52111.png",
+   "kinds": [
+    "spell"
+   ],
+   "basis": [
+    "basFroze"
+   ],
+   "bases": 1,
+   "tags": [
+    "frost",
+    "water"
+   ]
+  },
+  {
+   "name": "52112",
+   "file": "SkillIcons/52112.png",
+   "kinds": [
+    "spell"
+   ],
+   "basis": [
+    "basFroze"
+   ],
+   "bases": 1,
+   "tags": [
+    "frost",
+    "water"
+   ]
+  },
+  {
+   "name": "521125",
+   "file": "SkillIcons/521125.png",
+   "kinds": [],
+   "basis": [],
+   "bases": 0,
+   "tags": []
+  },
+  {
+   "name": "52113",
+   "file": "SkillIcons/52113.png",
+   "kinds": [
+    "spell"
+   ],
+   "basis": [
+    "basFroze"
+   ],
+   "bases": 1,
+   "tags": [
+    "frost"
+   ]
+  },
+  {
+   "name": "52114",
+   "file": "SkillIcons/52114.png",
+   "kinds": [
+    "spell"
+   ],
+   "basis": [
+    "basFroze"
+   ],
+   "bases": 1,
+   "tags": [
+    "frost",
+    "wind"
+   ]
+  },
+  {
+   "name": "52115",
+   "file": "SkillIcons/52115.png",
+   "kinds": [
+    "spell"
+   ],
+   "basis": [
+    "basFroze"
+   ],
+   "bases": 1,
+   "tags": [
+    "frost",
+    "light"
+   ]
+  },
+  {
+   "name": "52116",
+   "file": "SkillIcons/52116.png",
+   "kinds": [
+    "attack",
+    "spell"
+   ],
+   "basis": [
+    "basFroze",
+    "basPalm"
+   ],
+   "bases": 2,
+   "tags": [
+    "frost",
+    "palm",
+    "spirit"
+   ]
+  },
+  {
+   "name": "53111",
+   "file": "SkillIcons/53111.png",
+   "kinds": [
+    "spell"
+   ],
+   "basis": [
+    "basThunder"
+   ],
+   "bases": 1,
+   "tags": [
+    "thunder",
+    "dark",
+    "light"
+   ]
+  },
+  {
+   "name": "53112",
+   "file": "SkillIcons/53112.png",
+   "kinds": [
+    "spell"
+   ],
+   "basis": [
+    "basThunder"
+   ],
+   "bases": 1,
+   "tags": [
+    "thunder"
+   ]
+  },
+  {
+   "name": "53113",
+   "file": "SkillIcons/53113.png",
+   "kinds": [
+    "attack",
+    "spell"
+   ],
+   "basis": [
+    "basPalm",
+    "basThunder"
+   ],
+   "bases": 2,
+   "tags": [
+    "thunder",
+    "palm"
+   ]
+  },
+  {
+   "name": "53114",
+   "file": "SkillIcons/53114.png",
+   "kinds": [
+    "spell"
+   ],
+   "basis": [
+    "basThunder"
+   ],
+   "bases": 1,
+   "tags": [
+    "thunder"
+   ]
+  },
+  {
+   "name": "531145",
+   "file": "SkillIcons/531145.png",
+   "kinds": [],
+   "basis": [],
+   "bases": 0,
+   "tags": []
+  },
+  {
+   "name": "53115",
+   "file": "SkillIcons/53115.png",
+   "kinds": [
+    "spell"
+   ],
+   "basis": [
+    "basThunder"
+   ],
+   "bases": 1,
+   "tags": [
+    "thunder"
+   ]
+  },
+  {
+   "name": "53116",
+   "file": "SkillIcons/53116.png",
+   "kinds": [
+    "attack",
+    "spell"
+   ],
+   "basis": [
+    "basPalm",
+    "basThunder"
+   ],
+   "bases": 2,
+   "tags": [
+    "thunder",
+    "palm",
+    "dark",
+    "spirit"
+   ]
+  },
+  {
+   "name": "54111",
+   "file": "SkillIcons/54111.png",
+   "kinds": [
+    "spell"
+   ],
+   "basis": [
+    "basWind"
+   ],
+   "bases": 1,
+   "tags": [
+    "wind",
+    "earth"
+   ]
+  },
+  {
+   "name": "54112",
+   "file": "SkillIcons/54112.png",
+   "kinds": [
+    "spell"
+   ],
+   "basis": [
+    "basWind"
+   ],
+   "bases": 1,
+   "tags": [
+    "wind",
+    "water"
+   ]
+  },
+  {
+   "name": "54113",
+   "file": "SkillIcons/54113.png",
+   "kinds": [
+    "spell"
+   ],
+   "basis": [
+    "basWind"
+   ],
+   "bases": 1,
+   "tags": [
+    "wind",
+    "water"
+   ]
+  },
+  {
+   "name": "54114",
+   "file": "SkillIcons/54114.png",
+   "kinds": [
+    "attack",
+    "spell"
+   ],
+   "basis": [
+    "basPalm",
+    "basWind"
+   ],
+   "bases": 2,
+   "tags": [
+    "wind",
+    "palm"
+   ]
+  },
+  {
+   "name": "54115",
+   "file": "SkillIcons/54115.png",
+   "kinds": [
+    "spell"
+   ],
+   "basis": [
+    "basWind"
+   ],
+   "bases": 1,
+   "tags": [
+    "wind"
+   ]
+  },
+  {
+   "name": "541155",
+   "file": "SkillIcons/541155.png",
+   "kinds": [],
+   "basis": [],
+   "bases": 0,
+   "tags": []
+  },
+  {
+   "name": "54116",
+   "file": "SkillIcons/54116.png",
+   "kinds": [
+    "spell"
+   ],
+   "basis": [
+    "basWind"
+   ],
+   "bases": 1,
+   "tags": [
+    "wind",
+    "light"
+   ]
+  },
+  {
+   "name": "55111",
+   "file": "SkillIcons/55111.png",
+   "kinds": [
+    "spell"
+   ],
+   "basis": [
+    "basEarth"
+   ],
+   "bases": 1,
+   "tags": [
+    "earth",
+    "light"
+   ]
+  },
+  {
+   "name": "55112",
+   "file": "SkillIcons/55112.png",
+   "kinds": [
+    "attack",
+    "spell"
+   ],
+   "basis": [
+    "basEarth",
+    "basPalm"
+   ],
+   "bases": 2,
+   "tags": [
+    "earth",
+    "palm"
+   ]
+  },
+  {
+   "name": "55113",
+   "file": "SkillIcons/55113.png",
+   "kinds": [
+    "spell"
+   ],
+   "basis": [
+    "basEarth"
+   ],
+   "bases": 1,
+   "tags": [
+    "earth"
+   ]
+  },
+  {
+   "name": "55114",
+   "file": "SkillIcons/55114.png",
+   "kinds": [
+    "attack",
+    "spell"
+   ],
+   "basis": [
+    "basEarth",
+    "basPalm"
+   ],
+   "bases": 2,
+   "tags": [
+    "earth",
+    "palm",
+    "spirit"
+   ]
+  },
+  {
+   "name": "55115",
+   "file": "SkillIcons/55115.png",
+   "kinds": [
+    "spell"
+   ],
+   "basis": [
+    "basEarth"
+   ],
+   "bases": 1,
+   "tags": [
+    "earth"
+   ]
+  },
+  {
+   "name": "55116",
+   "file": "SkillIcons/55116.png",
+   "kinds": [
+    "spell"
+   ],
+   "basis": [
+    "basEarth"
+   ],
+   "bases": 1,
+   "tags": [
+    "earth"
+   ]
+  },
+  {
+   "name": "56111",
+   "file": "SkillIcons/56111.png",
+   "kinds": [
+    "spell"
+   ],
+   "basis": [
+    "basWood"
+   ],
+   "bases": 1,
+   "tags": [
+    "wood",
+    "poison"
+   ]
+  },
+  {
+   "name": "56112",
+   "file": "SkillIcons/56112.png",
+   "kinds": [
+    "attack",
+    "spell"
+   ],
+   "basis": [
+    "basPalm",
+    "basWood"
+   ],
+   "bases": 2,
+   "tags": [
+    "wood",
+    "palm",
+    "spirit"
+   ]
+  },
+  {
+   "name": "56113",
+   "file": "SkillIcons/56113.png",
+   "kinds": [
+    "spell"
+   ],
+   "basis": [
+    "basWood"
+   ],
+   "bases": 1,
+   "tags": [
+    "wood",
+    "poison",
+    "dark"
+   ]
+  },
+  {
+   "name": "56114",
+   "file": "SkillIcons/56114.png",
+   "kinds": [
+    "spell"
+   ],
+   "basis": [
+    "basWood"
+   ],
+   "bases": 1,
+   "tags": [
+    "wood",
+    "light"
+   ]
+  },
+  {
+   "name": "56115",
+   "file": "SkillIcons/56115.png",
+   "kinds": [
+    "attack",
+    "spell"
+   ],
+   "basis": [
+    "basPalm",
+    "basWood"
+   ],
+   "bases": 2,
+   "tags": [
+    "wood",
+    "palm",
+    "poison"
+   ]
+  },
+  {
+   "name": "56116",
+   "file": "SkillIcons/56116.png",
+   "kinds": [
+    "attack",
+    "spell"
+   ],
+   "basis": [
+    "basPalm",
+    "basWood"
+   ],
+   "bases": 2,
+   "tags": [
+    "wood",
+    "palm"
+   ]
+  },
+  {
+   "name": "61111",
+   "file": "SkillIcons/61111.png",
+   "kinds": [
+    "ultimate"
+   ],
+   "basis": [
+    "basFire"
+   ],
+   "bases": 1,
+   "tags": [
+    "fire"
+   ]
+  },
+  {
+   "name": "61112",
+   "file": "SkillIcons/61112.png",
+   "kinds": [
+    "ultimate"
+   ],
+   "basis": [
+    "basFire"
+   ],
+   "bases": 1,
+   "tags": [
+    "fire",
+    "light"
+   ]
+  },
+  {
+   "name": "62111",
+   "file": "SkillIcons/62111.png",
+   "kinds": [
+    "ultimate"
+   ],
+   "basis": [
+    "basFroze"
+   ],
+   "bases": 1,
+   "tags": [
+    "frost",
+    "spirit",
+    "water"
+   ]
+  },
+  {
+   "name": "62112",
+   "file": "SkillIcons/62112.png",
+   "kinds": [
+    "ultimate"
+   ],
+   "basis": [
+    "basFroze"
+   ],
+   "bases": 1,
+   "tags": [
+    "frost",
+    "water"
+   ]
+  },
+  {
+   "name": "63111",
+   "file": "SkillIcons/63111.png",
+   "kinds": [
+    "ultimate"
+   ],
+   "basis": [
+    "basThunder"
+   ],
+   "bases": 1,
+   "tags": [
+    "thunder",
+    "dark"
+   ]
+  },
+  {
+   "name": "63112",
+   "file": "SkillIcons/63112.png",
+   "kinds": [
+    "ultimate"
+   ],
+   "basis": [
+    "basThunder"
+   ],
+   "bases": 1,
+   "tags": [
+    "thunder",
+    "light"
+   ]
+  },
+  {
+   "name": "64111",
+   "file": "SkillIcons/64111.png",
+   "kinds": [
+    "ultimate"
+   ],
+   "basis": [
+    "basWind"
+   ],
+   "bases": 1,
+   "tags": [
+    "wind",
+    "earth"
+   ]
+  },
+  {
+   "name": "64112",
+   "file": "SkillIcons/64112.png",
+   "kinds": [
+    "ultimate"
+   ],
+   "basis": [
+    "basWind"
+   ],
+   "bases": 1,
+   "tags": [
+    "wind",
+    "dark",
+    "spirit"
+   ]
+  },
+  {
+   "name": "65111",
+   "file": "SkillIcons/65111.png",
+   "kinds": [
+    "ultimate"
+   ],
+   "basis": [
+    "basEarth"
+   ],
+   "bases": 1,
+   "tags": [
+    "earth"
+   ]
+  },
+  {
+   "name": "65112",
+   "file": "SkillIcons/65112.png",
+   "kinds": [
+    "ultimate"
+   ],
+   "basis": [
+    "basEarth"
+   ],
+   "bases": 1,
+   "tags": [
+    "earth",
+    "dark"
+   ]
+  },
+  {
+   "name": "66111",
+   "file": "SkillIcons/66111.png",
+   "kinds": [
+    "ultimate"
+   ],
+   "basis": [
+    "basWood"
+   ],
+   "bases": 1,
+   "tags": [
+    "wood",
+    "poison",
+    "dark"
+   ]
+  },
+  {
+   "name": "66112",
+   "file": "SkillIcons/66112.png",
+   "kinds": [
+    "ultimate"
+   ],
+   "basis": [
+    "basWood"
+   ],
+   "bases": 1,
+   "tags": [
+    "wood",
+    "spirit"
+   ]
+  },
+  {
+   "name": "beidongxf_1",
+   "file": "SkillIcons/beidongxf_1.png",
+   "kinds": [],
+   "basis": [],
+   "bases": 0,
+   "tags": []
+  },
+  {
+   "name": "beidongxf_10",
+   "file": "SkillIcons/beidongxf_10.png",
+   "kinds": [],
+   "basis": [],
+   "bases": 0,
+   "tags": []
+  },
+  {
+   "name": "beidongxf_11",
+   "file": "SkillIcons/beidongxf_11.png",
+   "kinds": [],
+   "basis": [],
+   "bases": 0,
+   "tags": []
+  },
+  {
+   "name": "beidongxf_12",
+   "file": "SkillIcons/beidongxf_12.png",
+   "kinds": [],
+   "basis": [],
+   "bases": 0,
+   "tags": []
+  },
+  {
+   "name": "beidongxf_13",
+   "file": "SkillIcons/beidongxf_13.png",
+   "kinds": [],
+   "basis": [],
+   "bases": 0,
+   "tags": []
+  },
+  {
+   "name": "beidongxf_14",
+   "file": "SkillIcons/beidongxf_14.png",
+   "kinds": [],
+   "basis": [],
+   "bases": 0,
+   "tags": []
+  },
+  {
+   "name": "beidongxf_15",
+   "file": "SkillIcons/beidongxf_15.png",
+   "kinds": [],
+   "basis": [],
+   "bases": 0,
+   "tags": []
+  },
+  {
+   "name": "beidongxf_16",
+   "file": "SkillIcons/beidongxf_16.png",
+   "kinds": [],
+   "basis": [],
+   "bases": 0,
+   "tags": []
+  },
+  {
+   "name": "beidongxf_17",
+   "file": "SkillIcons/beidongxf_17.png",
+   "kinds": [],
+   "basis": [],
+   "bases": 0,
+   "tags": []
+  },
+  {
+   "name": "beidongxf_2",
+   "file": "SkillIcons/beidongxf_2.png",
+   "kinds": [],
+   "basis": [],
+   "bases": 0,
+   "tags": []
+  },
+  {
+   "name": "beidongxf_3",
+   "file": "SkillIcons/beidongxf_3.png",
+   "kinds": [],
+   "basis": [],
+   "bases": 0,
+   "tags": []
+  },
+  {
+   "name": "beidongxf_4",
+   "file": "SkillIcons/beidongxf_4.png",
+   "kinds": [],
+   "basis": [],
+   "bases": 0,
+   "tags": []
+  },
+  {
+   "name": "beidongxf_5",
+   "file": "SkillIcons/beidongxf_5.png",
+   "kinds": [],
+   "basis": [],
+   "bases": 0,
+   "tags": []
+  },
+  {
+   "name": "beidongxf_6",
+   "file": "SkillIcons/beidongxf_6.png",
+   "kinds": [],
+   "basis": [],
+   "bases": 0,
+   "tags": []
+  },
+  {
+   "name": "beidongxf_7",
+   "file": "SkillIcons/beidongxf_7.png",
+   "kinds": [],
+   "basis": [],
+   "bases": 0,
+   "tags": []
+  },
+  {
+   "name": "beidongxf_8",
+   "file": "SkillIcons/beidongxf_8.png",
+   "kinds": [],
+   "basis": [],
+   "bases": 0,
+   "tags": []
+  },
+  {
+   "name": "beidongxf_9",
+   "file": "SkillIcons/beidongxf_9.png",
+   "kinds": [],
+   "basis": [],
+   "bases": 0,
+   "tags": []
+  },
+  {
+   "name": "boss_01",
+   "file": "SkillIcons/boss_01.png",
+   "kinds": [],
+   "basis": [],
+   "bases": 0,
+   "tags": []
+  },
+  {
+   "name": "boss_02 ",
+   "file": "SkillIcons/boss_02 .png",
+   "kinds": [],
+   "basis": [],
+   "bases": 0,
+   "tags": []
+  },
+  {
+   "name": "boss_03",
+   "file": "SkillIcons/boss_03.png",
+   "kinds": [],
+   "basis": [],
+   "bases": 0,
+   "tags": []
+  },
+  {
+   "name": "boss_04",
+   "file": "SkillIcons/boss_04.png",
+   "kinds": [],
+   "basis": [],
+   "bases": 0,
+   "tags": []
+  },
+  {
+   "name": "boss_05",
+   "file": "SkillIcons/boss_05.png",
+   "kinds": [],
+   "basis": [],
+   "bases": 0,
+   "tags": []
+  },
+  {
+   "name": "boss_06",
+   "file": "SkillIcons/boss_06.png",
+   "kinds": [],
+   "basis": [],
+   "bases": 0,
+   "tags": []
+  },
+  {
+   "name": "boss_07",
+   "file": "SkillIcons/boss_07.png",
+   "kinds": [],
+   "basis": [],
+   "bases": 0,
+   "tags": []
+  },
+  {
+   "name": "boss_08",
+   "file": "SkillIcons/boss_08.png",
+   "kinds": [],
+   "basis": [],
+   "bases": 0,
+   "tags": []
+  },
+  {
+   "name": "boss_09",
+   "file": "SkillIcons/boss_09.png",
+   "kinds": [],
+   "basis": [],
+   "bases": 0,
+   "tags": []
+  },
+  {
+   "name": "boss_10",
+   "file": "SkillIcons/boss_10.png",
+   "kinds": [],
+   "basis": [],
+   "bases": 0,
+   "tags": []
+  },
+  {
+   "name": "boss_11",
+   "file": "SkillIcons/boss_11.png",
+   "kinds": [],
+   "basis": [],
+   "bases": 0,
+   "tags": []
+  },
+  {
+   "name": "boss_12",
+   "file": "SkillIcons/boss_12.png",
+   "kinds": [],
+   "basis": [],
+   "bases": 0,
+   "tags": []
+  },
+  {
+   "name": "boss_13 ",
+   "file": "SkillIcons/boss_13 .png",
+   "kinds": [],
+   "basis": [],
+   "bases": 0,
+   "tags": []
+  },
+  {
+   "name": "boss_14",
+   "file": "SkillIcons/boss_14.png",
+   "kinds": [],
+   "basis": [],
+   "bases": 0,
+   "tags": []
+  },
+  {
+   "name": "boss_15",
+   "file": "SkillIcons/boss_15.png",
+   "kinds": [],
+   "basis": [],
+   "bases": 0,
+   "tags": []
+  },
+  {
+   "name": "boss_16",
+   "file": "SkillIcons/boss_16.png",
+   "kinds": [],
+   "basis": [],
+   "bases": 0,
+   "tags": []
+  },
+  {
+   "name": "changqu1",
+   "file": "SkillIcons/changqu1.png",
+   "kinds": [],
+   "basis": [],
+   "bases": 0,
+   "tags": []
+  },
+  {
+   "name": "chenrequtie1",
+   "file": "SkillIcons/chenrequtie1.png",
+   "kinds": [],
+   "basis": [],
+   "bases": 0,
+   "tags": []
+  },
+  {
+   "name": "chushi1",
+   "file": "SkillIcons/chushi1.png",
+   "kinds": [],
+   "basis": [],
+   "bases": 0,
+   "tags": []
+  },
+  {
+   "name": "D_1",
+   "file": "SkillIcons/D_1.png",
+   "kinds": [],
+   "basis": [],
+   "bases": 0,
+   "tags": []
+  },
+  {
+   "name": "D_10",
+   "file": "SkillIcons/D_10.png",
+   "kinds": [],
+   "basis": [],
+   "bases": 0,
+   "tags": []
+  },
+  {
+   "name": "D_100",
+   "file": "SkillIcons/D_100.png",
+   "kinds": [],
+   "basis": [],
+   "bases": 0,
+   "tags": []
+  },
+  {
+   "name": "D_101",
+   "file": "SkillIcons/D_101.png",
+   "kinds": [],
+   "basis": [],
+   "bases": 0,
+   "tags": []
+  },
+  {
+   "name": "D_102",
+   "file": "SkillIcons/D_102.png",
+   "kinds": [],
+   "basis": [],
+   "bases": 0,
+   "tags": []
+  },
+  {
+   "name": "D_103",
+   "file": "SkillIcons/D_103.png",
+   "kinds": [],
+   "basis": [],
+   "bases": 0,
+   "tags": []
+  },
+  {
+   "name": "D_104",
+   "file": "SkillIcons/D_104.png",
+   "kinds": [],
+   "basis": [],
+   "bases": 0,
+   "tags": []
+  },
+  {
+   "name": "D_105",
+   "file": "SkillIcons/D_105.png",
+   "kinds": [],
+   "basis": [],
+   "bases": 0,
+   "tags": []
+  },
+  {
+   "name": "D_106",
+   "file": "SkillIcons/D_106.png",
+   "kinds": [],
+   "basis": [],
+   "bases": 0,
+   "tags": []
+  },
+  {
+   "name": "D_107",
+   "file": "SkillIcons/D_107.png",
+   "kinds": [],
+   "basis": [],
+   "bases": 0,
+   "tags": []
+  },
+  {
+   "name": "D_108",
+   "file": "SkillIcons/D_108.png",
+   "kinds": [],
+   "basis": [],
+   "bases": 0,
+   "tags": []
+  },
+  {
+   "name": "D_109",
+   "file": "SkillIcons/D_109.png",
+   "kinds": [],
+   "basis": [],
+   "bases": 0,
+   "tags": []
+  },
+  {
+   "name": "D_11",
+   "file": "SkillIcons/D_11.png",
+   "kinds": [],
+   "basis": [],
+   "bases": 0,
+   "tags": []
+  },
+  {
+   "name": "D_110",
+   "file": "SkillIcons/D_110.png",
+   "kinds": [],
+   "basis": [],
+   "bases": 0,
+   "tags": []
+  },
+  {
+   "name": "D_111",
+   "file": "SkillIcons/D_111.png",
+   "kinds": [],
+   "basis": [],
+   "bases": 0,
+   "tags": []
+  },
+  {
+   "name": "D_112",
+   "file": "SkillIcons/D_112.png",
+   "kinds": [],
+   "basis": [],
+   "bases": 0,
+   "tags": []
+  },
+  {
+   "name": "D_113",
+   "file": "SkillIcons/D_113.png",
+   "kinds": [],
+   "basis": [],
+   "bases": 0,
+   "tags": []
+  },
+  {
+   "name": "D_114",
+   "file": "SkillIcons/D_114.png",
+   "kinds": [],
+   "basis": [],
+   "bases": 0,
+   "tags": []
+  },
+  {
+   "name": "D_115",
+   "file": "SkillIcons/D_115.png",
+   "kinds": [],
+   "basis": [],
+   "bases": 0,
+   "tags": []
+  },
+  {
+   "name": "D_116",
+   "file": "SkillIcons/D_116.png",
+   "kinds": [],
+   "basis": [],
+   "bases": 0,
+   "tags": []
+  },
+  {
+   "name": "D_117",
+   "file": "SkillIcons/D_117.png",
+   "kinds": [],
+   "basis": [],
+   "bases": 0,
+   "tags": []
+  },
+  {
+   "name": "D_118",
+   "file": "SkillIcons/D_118.png",
+   "kinds": [],
+   "basis": [],
+   "bases": 0,
+   "tags": []
+  },
+  {
+   "name": "D_119",
+   "file": "SkillIcons/D_119.png",
+   "kinds": [],
+   "basis": [],
+   "bases": 0,
+   "tags": []
+  },
+  {
+   "name": "D_12",
+   "file": "SkillIcons/D_12.png",
+   "kinds": [],
+   "basis": [],
+   "bases": 0,
+   "tags": []
+  },
+  {
+   "name": "D_120",
+   "file": "SkillIcons/D_120.png",
+   "kinds": [],
+   "basis": [],
+   "bases": 0,
+   "tags": []
+  },
+  {
+   "name": "D_121",
+   "file": "SkillIcons/D_121.png",
+   "kinds": [],
+   "basis": [],
+   "bases": 0,
+   "tags": []
+  },
+  {
+   "name": "D_122",
+   "file": "SkillIcons/D_122.png",
+   "kinds": [],
+   "basis": [],
+   "bases": 0,
+   "tags": []
+  },
+  {
+   "name": "D_123",
+   "file": "SkillIcons/D_123.png",
+   "kinds": [],
+   "basis": [],
+   "bases": 0,
+   "tags": []
+  },
+  {
+   "name": "D_124",
+   "file": "SkillIcons/D_124.png",
+   "kinds": [],
+   "basis": [],
+   "bases": 0,
+   "tags": []
+  },
+  {
+   "name": "D_125",
+   "file": "SkillIcons/D_125.png",
+   "kinds": [],
+   "basis": [],
+   "bases": 0,
+   "tags": []
+  },
+  {
+   "name": "D_126",
+   "file": "SkillIcons/D_126.png",
+   "kinds": [],
+   "basis": [],
+   "bases": 0,
+   "tags": []
+  },
+  {
+   "name": "D_127",
+   "file": "SkillIcons/D_127.png",
+   "kinds": [],
+   "basis": [],
+   "bases": 0,
+   "tags": []
+  },
+  {
+   "name": "D_128",
+   "file": "SkillIcons/D_128.png",
+   "kinds": [],
+   "basis": [],
+   "bases": 0,
+   "tags": []
+  },
+  {
+   "name": "D_129",
+   "file": "SkillIcons/D_129.png",
+   "kinds": [],
+   "basis": [],
+   "bases": 0,
+   "tags": []
+  },
+  {
+   "name": "D_13",
+   "file": "SkillIcons/D_13.png",
+   "kinds": [],
+   "basis": [],
+   "bases": 0,
+   "tags": []
+  },
+  {
+   "name": "D_130",
+   "file": "SkillIcons/D_130.png",
+   "kinds": [],
+   "basis": [],
+   "bases": 0,
+   "tags": []
+  },
+  {
+   "name": "D_131",
+   "file": "SkillIcons/D_131.png",
+   "kinds": [],
+   "basis": [],
+   "bases": 0,
+   "tags": []
+  },
+  {
+   "name": "D_132",
+   "file": "SkillIcons/D_132.png",
+   "kinds": [],
+   "basis": [],
+   "bases": 0,
+   "tags": []
+  },
+  {
+   "name": "D_133",
+   "file": "SkillIcons/D_133.png",
+   "kinds": [],
+   "basis": [],
+   "bases": 0,
+   "tags": []
+  },
+  {
+   "name": "D_134",
+   "file": "SkillIcons/D_134.png",
+   "kinds": [],
+   "basis": [],
+   "bases": 0,
+   "tags": []
+  },
+  {
+   "name": "D_135",
+   "file": "SkillIcons/D_135.png",
+   "kinds": [],
+   "basis": [],
+   "bases": 0,
+   "tags": []
+  },
+  {
+   "name": "D_136",
+   "file": "SkillIcons/D_136.png",
+   "kinds": [],
+   "basis": [],
+   "bases": 0,
+   "tags": []
+  },
+  {
+   "name": "D_137",
+   "file": "SkillIcons/D_137.png",
+   "kinds": [],
+   "basis": [],
+   "bases": 0,
+   "tags": []
+  },
+  {
+   "name": "D_138",
+   "file": "SkillIcons/D_138.png",
+   "kinds": [],
+   "basis": [],
+   "bases": 0,
+   "tags": []
+  },
+  {
+   "name": "D_139",
+   "file": "SkillIcons/D_139.png",
+   "kinds": [],
+   "basis": [],
+   "bases": 0,
+   "tags": []
+  },
+  {
+   "name": "D_14",
+   "file": "SkillIcons/D_14.png",
+   "kinds": [],
+   "basis": [],
+   "bases": 0,
+   "tags": []
+  },
+  {
+   "name": "D_140",
+   "file": "SkillIcons/D_140.png",
+   "kinds": [],
+   "basis": [],
+   "bases": 0,
+   "tags": []
+  },
+  {
+   "name": "D_141",
+   "file": "SkillIcons/D_141.png",
+   "kinds": [],
+   "basis": [],
+   "bases": 0,
+   "tags": []
+  },
+  {
+   "name": "D_142",
+   "file": "SkillIcons/D_142.png",
+   "kinds": [],
+   "basis": [],
+   "bases": 0,
+   "tags": []
+  },
+  {
+   "name": "D_143",
+   "file": "SkillIcons/D_143.png",
+   "kinds": [],
+   "basis": [],
+   "bases": 0,
+   "tags": []
+  },
+  {
+   "name": "D_144",
+   "file": "SkillIcons/D_144.png",
+   "kinds": [],
+   "basis": [],
+   "bases": 0,
+   "tags": []
+  },
+  {
+   "name": "D_145",
+   "file": "SkillIcons/D_145.png",
+   "kinds": [],
+   "basis": [],
+   "bases": 0,
+   "tags": []
+  },
+  {
+   "name": "D_146",
+   "file": "SkillIcons/D_146.png",
+   "kinds": [],
+   "basis": [],
+   "bases": 0,
+   "tags": []
+  },
+  {
+   "name": "D_147",
+   "file": "SkillIcons/D_147.png",
+   "kinds": [],
+   "basis": [],
+   "bases": 0,
+   "tags": []
+  },
+  {
+   "name": "D_148",
+   "file": "SkillIcons/D_148.png",
+   "kinds": [],
+   "basis": [],
+   "bases": 0,
+   "tags": []
+  },
+  {
+   "name": "D_149",
+   "file": "SkillIcons/D_149.png",
+   "kinds": [],
+   "basis": [],
+   "bases": 0,
+   "tags": []
+  },
+  {
+   "name": "D_15",
+   "file": "SkillIcons/D_15.png",
+   "kinds": [],
+   "basis": [],
+   "bases": 0,
+   "tags": []
+  },
+  {
+   "name": "D_150",
+   "file": "SkillIcons/D_150.png",
+   "kinds": [],
+   "basis": [],
+   "bases": 0,
+   "tags": []
+  },
+  {
+   "name": "D_151",
+   "file": "SkillIcons/D_151.png",
+   "kinds": [],
+   "basis": [],
+   "bases": 0,
+   "tags": []
+  },
+  {
+   "name": "D_152",
+   "file": "SkillIcons/D_152.png",
+   "kinds": [],
+   "basis": [],
+   "bases": 0,
+   "tags": []
+  },
+  {
+   "name": "D_153",
+   "file": "SkillIcons/D_153.png",
+   "kinds": [],
+   "basis": [],
+   "bases": 0,
+   "tags": []
+  },
+  {
+   "name": "D_154",
+   "file": "SkillIcons/D_154.png",
+   "kinds": [],
+   "basis": [],
+   "bases": 0,
+   "tags": []
+  },
+  {
+   "name": "D_155",
+   "file": "SkillIcons/D_155.png",
+   "kinds": [],
+   "basis": [],
+   "bases": 0,
+   "tags": []
+  },
+  {
+   "name": "D_156",
+   "file": "SkillIcons/D_156.png",
+   "kinds": [],
+   "basis": [],
+   "bases": 0,
+   "tags": []
+  },
+  {
+   "name": "D_157",
+   "file": "SkillIcons/D_157.png",
+   "kinds": [],
+   "basis": [],
+   "bases": 0,
+   "tags": []
+  },
+  {
+   "name": "D_158",
+   "file": "SkillIcons/D_158.png",
+   "kinds": [],
+   "basis": [],
+   "bases": 0,
+   "tags": []
+  },
+  {
+   "name": "D_159",
+   "file": "SkillIcons/D_159.png",
+   "kinds": [],
+   "basis": [],
+   "bases": 0,
+   "tags": []
+  },
+  {
+   "name": "D_16",
+   "file": "SkillIcons/D_16.png",
+   "kinds": [],
+   "basis": [],
+   "bases": 0,
+   "tags": []
+  },
+  {
+   "name": "D_160",
+   "file": "SkillIcons/D_160.png",
+   "kinds": [],
+   "basis": [],
+   "bases": 0,
+   "tags": []
+  },
+  {
+   "name": "D_161",
+   "file": "SkillIcons/D_161.png",
+   "kinds": [],
+   "basis": [],
+   "bases": 0,
+   "tags": []
+  },
+  {
+   "name": "D_162",
+   "file": "SkillIcons/D_162.png",
+   "kinds": [],
+   "basis": [],
+   "bases": 0,
+   "tags": []
+  },
+  {
+   "name": "D_163",
+   "file": "SkillIcons/D_163.png",
+   "kinds": [],
+   "basis": [],
+   "bases": 0,
+   "tags": []
+  },
+  {
+   "name": "D_164",
+   "file": "SkillIcons/D_164.png",
+   "kinds": [],
+   "basis": [],
+   "bases": 0,
+   "tags": []
+  },
+  {
+   "name": "D_165",
+   "file": "SkillIcons/D_165.png",
+   "kinds": [],
+   "basis": [],
+   "bases": 0,
+   "tags": []
+  },
+  {
+   "name": "D_166",
+   "file": "SkillIcons/D_166.png",
+   "kinds": [],
+   "basis": [],
+   "bases": 0,
+   "tags": []
+  },
+  {
+   "name": "D_167",
+   "file": "SkillIcons/D_167.png",
+   "kinds": [],
+   "basis": [],
+   "bases": 0,
+   "tags": []
+  },
+  {
+   "name": "D_168",
+   "file": "SkillIcons/D_168.png",
+   "kinds": [],
+   "basis": [],
+   "bases": 0,
+   "tags": []
+  },
+  {
+   "name": "D_169",
+   "file": "SkillIcons/D_169.png",
+   "kinds": [],
+   "basis": [],
+   "bases": 0,
+   "tags": []
+  },
+  {
+   "name": "D_17",
+   "file": "SkillIcons/D_17.png",
+   "kinds": [],
+   "basis": [],
+   "bases": 0,
+   "tags": []
+  },
+  {
+   "name": "D_170",
+   "file": "SkillIcons/D_170.png",
+   "kinds": [],
+   "basis": [],
+   "bases": 0,
+   "tags": []
+  },
+  {
+   "name": "D_171",
+   "file": "SkillIcons/D_171.png",
+   "kinds": [],
+   "basis": [],
+   "bases": 0,
+   "tags": []
+  },
+  {
+   "name": "D_172",
+   "file": "SkillIcons/D_172.png",
+   "kinds": [],
+   "basis": [],
+   "bases": 0,
+   "tags": []
+  },
+  {
+   "name": "D_173",
+   "file": "SkillIcons/D_173.png",
+   "kinds": [],
+   "basis": [],
+   "bases": 0,
+   "tags": []
+  },
+  {
+   "name": "D_174",
+   "file": "SkillIcons/D_174.png",
+   "kinds": [],
+   "basis": [],
+   "bases": 0,
+   "tags": []
+  },
+  {
+   "name": "D_175",
+   "file": "SkillIcons/D_175.png",
+   "kinds": [],
+   "basis": [],
+   "bases": 0,
+   "tags": []
+  },
+  {
+   "name": "D_176",
+   "file": "SkillIcons/D_176.png",
+   "kinds": [],
+   "basis": [],
+   "bases": 0,
+   "tags": []
+  },
+  {
+   "name": "D_177",
+   "file": "SkillIcons/D_177.png",
+   "kinds": [],
+   "basis": [],
+   "bases": 0,
+   "tags": []
+  },
+  {
+   "name": "D_178",
+   "file": "SkillIcons/D_178.png",
+   "kinds": [],
+   "basis": [],
+   "bases": 0,
+   "tags": []
+  },
+  {
+   "name": "D_179",
+   "file": "SkillIcons/D_179.png",
+   "kinds": [],
+   "basis": [],
+   "bases": 0,
+   "tags": []
+  },
+  {
+   "name": "D_18",
+   "file": "SkillIcons/D_18.png",
+   "kinds": [],
+   "basis": [],
+   "bases": 0,
+   "tags": []
+  },
+  {
+   "name": "D_180",
+   "file": "SkillIcons/D_180.png",
+   "kinds": [],
+   "basis": [],
+   "bases": 0,
+   "tags": []
+  },
+  {
+   "name": "D_181",
+   "file": "SkillIcons/D_181.png",
+   "kinds": [],
+   "basis": [],
+   "bases": 0,
+   "tags": []
+  },
+  {
+   "name": "D_182",
+   "file": "SkillIcons/D_182.png",
+   "kinds": [],
+   "basis": [],
+   "bases": 0,
+   "tags": []
+  },
+  {
+   "name": "D_183",
+   "file": "SkillIcons/D_183.png",
+   "kinds": [],
+   "basis": [],
+   "bases": 0,
+   "tags": []
+  },
+  {
+   "name": "D_184",
+   "file": "SkillIcons/D_184.png",
+   "kinds": [],
+   "basis": [],
+   "bases": 0,
+   "tags": []
+  },
+  {
+   "name": "D_185",
+   "file": "SkillIcons/D_185.png",
+   "kinds": [],
+   "basis": [],
+   "bases": 0,
+   "tags": []
+  },
+  {
+   "name": "D_186",
+   "file": "SkillIcons/D_186.png",
+   "kinds": [],
+   "basis": [],
+   "bases": 0,
+   "tags": []
+  },
+  {
+   "name": "D_187",
+   "file": "SkillIcons/D_187.png",
+   "kinds": [],
+   "basis": [],
+   "bases": 0,
+   "tags": []
+  },
+  {
+   "name": "D_188",
+   "file": "SkillIcons/D_188.png",
+   "kinds": [],
+   "basis": [],
+   "bases": 0,
+   "tags": []
+  },
+  {
+   "name": "D_189",
+   "file": "SkillIcons/D_189.png",
+   "kinds": [],
+   "basis": [],
+   "bases": 0,
+   "tags": []
+  },
+  {
+   "name": "D_19",
+   "file": "SkillIcons/D_19.png",
+   "kinds": [],
+   "basis": [],
+   "bases": 0,
+   "tags": []
+  },
+  {
+   "name": "D_190",
+   "file": "SkillIcons/D_190.png",
+   "kinds": [],
+   "basis": [],
+   "bases": 0,
+   "tags": []
+  },
+  {
+   "name": "D_191",
+   "file": "SkillIcons/D_191.png",
+   "kinds": [],
+   "basis": [],
+   "bases": 0,
+   "tags": []
+  },
+  {
+   "name": "D_192",
+   "file": "SkillIcons/D_192.png",
+   "kinds": [],
+   "basis": [],
+   "bases": 0,
+   "tags": []
+  },
+  {
+   "name": "D_193",
+   "file": "SkillIcons/D_193.png",
+   "kinds": [],
+   "basis": [],
+   "bases": 0,
+   "tags": []
+  },
+  {
+   "name": "D_194",
+   "file": "SkillIcons/D_194.png",
+   "kinds": [],
+   "basis": [],
+   "bases": 0,
+   "tags": []
+  },
+  {
+   "name": "D_195",
+   "file": "SkillIcons/D_195.png",
+   "kinds": [],
+   "basis": [],
+   "bases": 0,
+   "tags": []
+  },
+  {
+   "name": "D_196",
+   "file": "SkillIcons/D_196.png",
+   "kinds": [],
+   "basis": [],
+   "bases": 0,
+   "tags": []
+  },
+  {
+   "name": "D_197",
+   "file": "SkillIcons/D_197.png",
+   "kinds": [],
+   "basis": [],
+   "bases": 0,
+   "tags": []
+  },
+  {
+   "name": "D_198",
+   "file": "SkillIcons/D_198.png",
+   "kinds": [],
+   "basis": [],
+   "bases": 0,
+   "tags": []
+  },
+  {
+   "name": "D_199",
+   "file": "SkillIcons/D_199.png",
+   "kinds": [],
+   "basis": [],
+   "bases": 0,
+   "tags": []
+  },
+  {
+   "name": "D_2",
+   "file": "SkillIcons/D_2.png",
+   "kinds": [],
+   "basis": [],
+   "bases": 0,
+   "tags": []
+  },
+  {
+   "name": "D_20",
+   "file": "SkillIcons/D_20.png",
+   "kinds": [],
+   "basis": [],
+   "bases": 0,
+   "tags": []
+  },
+  {
+   "name": "D_200",
+   "file": "SkillIcons/D_200.png",
+   "kinds": [],
+   "basis": [],
+   "bases": 0,
+   "tags": []
+  },
+  {
+   "name": "D_201",
+   "file": "SkillIcons/D_201.png",
+   "kinds": [],
+   "basis": [],
+   "bases": 0,
+   "tags": []
+  },
+  {
+   "name": "D_202",
+   "file": "SkillIcons/D_202.png",
+   "kinds": [],
+   "basis": [],
+   "bases": 0,
+   "tags": []
+  },
+  {
+   "name": "D_203",
+   "file": "SkillIcons/D_203.png",
+   "kinds": [],
+   "basis": [],
+   "bases": 0,
+   "tags": []
+  },
+  {
+   "name": "D_204",
+   "file": "SkillIcons/D_204.png",
+   "kinds": [],
+   "basis": [],
+   "bases": 0,
+   "tags": []
+  },
+  {
+   "name": "D_205",
+   "file": "SkillIcons/D_205.png",
+   "kinds": [],
+   "basis": [],
+   "bases": 0,
+   "tags": []
+  },
+  {
+   "name": "D_206",
+   "file": "SkillIcons/D_206.png",
+   "kinds": [],
+   "basis": [],
+   "bases": 0,
+   "tags": []
+  },
+  {
+   "name": "D_207",
+   "file": "SkillIcons/D_207.png",
+   "kinds": [],
+   "basis": [],
+   "bases": 0,
+   "tags": []
+  },
+  {
+   "name": "D_208",
+   "file": "SkillIcons/D_208.png",
+   "kinds": [],
+   "basis": [],
+   "bases": 0,
+   "tags": []
+  },
+  {
+   "name": "D_209",
+   "file": "SkillIcons/D_209.png",
+   "kinds": [],
+   "basis": [],
+   "bases": 0,
+   "tags": []
+  },
+  {
+   "name": "D_21",
+   "file": "SkillIcons/D_21.png",
+   "kinds": [],
+   "basis": [],
+   "bases": 0,
+   "tags": []
+  },
+  {
+   "name": "D_210",
+   "file": "SkillIcons/D_210.png",
+   "kinds": [],
+   "basis": [],
+   "bases": 0,
+   "tags": []
+  },
+  {
+   "name": "D_211",
+   "file": "SkillIcons/D_211.png",
+   "kinds": [],
+   "basis": [],
+   "bases": 0,
+   "tags": []
+  },
+  {
+   "name": "D_212",
+   "file": "SkillIcons/D_212.png",
+   "kinds": [],
+   "basis": [],
+   "bases": 0,
+   "tags": []
+  },
+  {
+   "name": "D_213",
+   "file": "SkillIcons/D_213.png",
+   "kinds": [],
+   "basis": [],
+   "bases": 0,
+   "tags": []
+  },
+  {
+   "name": "D_214",
+   "file": "SkillIcons/D_214.png",
+   "kinds": [],
+   "basis": [],
+   "bases": 0,
+   "tags": []
+  },
+  {
+   "name": "D_215",
+   "file": "SkillIcons/D_215.png",
+   "kinds": [],
+   "basis": [],
+   "bases": 0,
+   "tags": []
+  },
+  {
+   "name": "D_216",
+   "file": "SkillIcons/D_216.png",
+   "kinds": [],
+   "basis": [],
+   "bases": 0,
+   "tags": []
+  },
+  {
+   "name": "D_217",
+   "file": "SkillIcons/D_217.png",
+   "kinds": [],
+   "basis": [],
+   "bases": 0,
+   "tags": []
+  },
+  {
+   "name": "D_218",
+   "file": "SkillIcons/D_218.png",
+   "kinds": [],
+   "basis": [],
+   "bases": 0,
+   "tags": []
+  },
+  {
+   "name": "D_219",
+   "file": "SkillIcons/D_219.png",
+   "kinds": [],
+   "basis": [],
+   "bases": 0,
+   "tags": []
+  },
+  {
+   "name": "D_22",
+   "file": "SkillIcons/D_22.png",
+   "kinds": [],
+   "basis": [],
+   "bases": 0,
+   "tags": []
+  },
+  {
+   "name": "D_220",
+   "file": "SkillIcons/D_220.png",
+   "kinds": [],
+   "basis": [],
+   "bases": 0,
+   "tags": []
+  },
+  {
+   "name": "D_221",
+   "file": "SkillIcons/D_221.png",
+   "kinds": [],
+   "basis": [],
+   "bases": 0,
+   "tags": []
+  },
+  {
+   "name": "D_222",
+   "file": "SkillIcons/D_222.png",
+   "kinds": [],
+   "basis": [],
+   "bases": 0,
+   "tags": []
+  },
+  {
+   "name": "D_223",
+   "file": "SkillIcons/D_223.png",
+   "kinds": [],
+   "basis": [],
+   "bases": 0,
+   "tags": []
+  },
+  {
+   "name": "D_224",
+   "file": "SkillIcons/D_224.png",
+   "kinds": [],
+   "basis": [],
+   "bases": 0,
+   "tags": []
+  },
+  {
+   "name": "D_225",
+   "file": "SkillIcons/D_225.png",
+   "kinds": [],
+   "basis": [],
+   "bases": 0,
+   "tags": []
+  },
+  {
+   "name": "D_226",
+   "file": "SkillIcons/D_226.png",
+   "kinds": [],
+   "basis": [],
+   "bases": 0,
+   "tags": []
+  },
+  {
+   "name": "D_227",
+   "file": "SkillIcons/D_227.png",
+   "kinds": [],
+   "basis": [],
+   "bases": 0,
+   "tags": []
+  },
+  {
+   "name": "D_228",
+   "file": "SkillIcons/D_228.png",
+   "kinds": [],
+   "basis": [],
+   "bases": 0,
+   "tags": []
+  },
+  {
+   "name": "D_23",
+   "file": "SkillIcons/D_23.png",
+   "kinds": [],
+   "basis": [],
+   "bases": 0,
+   "tags": []
+  },
+  {
+   "name": "D_24",
+   "file": "SkillIcons/D_24.png",
+   "kinds": [],
+   "basis": [],
+   "bases": 0,
+   "tags": []
+  },
+  {
+   "name": "D_25",
+   "file": "SkillIcons/D_25.png",
+   "kinds": [],
+   "basis": [],
+   "bases": 0,
+   "tags": []
+  },
+  {
+   "name": "D_26",
+   "file": "SkillIcons/D_26.png",
+   "kinds": [],
+   "basis": [],
+   "bases": 0,
+   "tags": []
+  },
+  {
+   "name": "D_27",
+   "file": "SkillIcons/D_27.png",
+   "kinds": [],
+   "basis": [],
+   "bases": 0,
+   "tags": []
+  },
+  {
+   "name": "D_28",
+   "file": "SkillIcons/D_28.png",
+   "kinds": [],
+   "basis": [],
+   "bases": 0,
+   "tags": []
+  },
+  {
+   "name": "D_29",
+   "file": "SkillIcons/D_29.png",
+   "kinds": [],
+   "basis": [],
+   "bases": 0,
+   "tags": []
+  },
+  {
+   "name": "D_3",
+   "file": "SkillIcons/D_3.png",
+   "kinds": [],
+   "basis": [],
+   "bases": 0,
+   "tags": []
+  },
+  {
+   "name": "D_30",
+   "file": "SkillIcons/D_30.png",
+   "kinds": [],
+   "basis": [],
+   "bases": 0,
+   "tags": []
+  },
+  {
+   "name": "D_31",
+   "file": "SkillIcons/D_31.png",
+   "kinds": [],
+   "basis": [],
+   "bases": 0,
+   "tags": []
+  },
+  {
+   "name": "D_32",
+   "file": "SkillIcons/D_32.png",
+   "kinds": [],
+   "basis": [],
+   "bases": 0,
+   "tags": []
+  },
+  {
+   "name": "D_33",
+   "file": "SkillIcons/D_33.png",
+   "kinds": [],
+   "basis": [],
+   "bases": 0,
+   "tags": []
+  },
+  {
+   "name": "D_34",
+   "file": "SkillIcons/D_34.png",
+   "kinds": [],
+   "basis": [],
+   "bases": 0,
+   "tags": []
+  },
+  {
+   "name": "D_35",
+   "file": "SkillIcons/D_35.png",
+   "kinds": [],
+   "basis": [],
+   "bases": 0,
+   "tags": []
+  },
+  {
+   "name": "D_36",
+   "file": "SkillIcons/D_36.png",
+   "kinds": [],
+   "basis": [],
+   "bases": 0,
+   "tags": []
+  },
+  {
+   "name": "D_37",
+   "file": "SkillIcons/D_37.png",
+   "kinds": [],
+   "basis": [],
+   "bases": 0,
+   "tags": []
+  },
+  {
+   "name": "D_38",
+   "file": "SkillIcons/D_38.png",
+   "kinds": [],
+   "basis": [],
+   "bases": 0,
+   "tags": []
+  },
+  {
+   "name": "D_39",
+   "file": "SkillIcons/D_39.png",
+   "kinds": [],
+   "basis": [],
+   "bases": 0,
+   "tags": []
+  },
+  {
+   "name": "D_4",
+   "file": "SkillIcons/D_4.png",
+   "kinds": [],
+   "basis": [],
+   "bases": 0,
+   "tags": []
+  },
+  {
+   "name": "D_40",
+   "file": "SkillIcons/D_40.png",
+   "kinds": [],
+   "basis": [],
+   "bases": 0,
+   "tags": []
+  },
+  {
+   "name": "D_41",
+   "file": "SkillIcons/D_41.png",
+   "kinds": [],
+   "basis": [],
+   "bases": 0,
+   "tags": []
+  },
+  {
+   "name": "D_42",
+   "file": "SkillIcons/D_42.png",
+   "kinds": [],
+   "basis": [],
+   "bases": 0,
+   "tags": []
+  },
+  {
+   "name": "D_43",
+   "file": "SkillIcons/D_43.png",
+   "kinds": [],
+   "basis": [],
+   "bases": 0,
+   "tags": []
+  },
+  {
+   "name": "D_44",
+   "file": "SkillIcons/D_44.png",
+   "kinds": [],
+   "basis": [],
+   "bases": 0,
+   "tags": []
+  },
+  {
+   "name": "D_45",
+   "file": "SkillIcons/D_45.png",
+   "kinds": [],
+   "basis": [],
+   "bases": 0,
+   "tags": []
+  },
+  {
+   "name": "D_46",
+   "file": "SkillIcons/D_46.png",
+   "kinds": [],
+   "basis": [],
+   "bases": 0,
+   "tags": []
+  },
+  {
+   "name": "D_47",
+   "file": "SkillIcons/D_47.png",
+   "kinds": [],
+   "basis": [],
+   "bases": 0,
+   "tags": []
+  },
+  {
+   "name": "D_48",
+   "file": "SkillIcons/D_48.png",
+   "kinds": [],
+   "basis": [],
+   "bases": 0,
+   "tags": []
+  },
+  {
+   "name": "D_49",
+   "file": "SkillIcons/D_49.png",
+   "kinds": [],
+   "basis": [],
+   "bases": 0,
+   "tags": []
+  },
+  {
+   "name": "D_5",
+   "file": "SkillIcons/D_5.png",
+   "kinds": [],
+   "basis": [],
+   "bases": 0,
+   "tags": []
+  },
+  {
+   "name": "D_50",
+   "file": "SkillIcons/D_50.png",
+   "kinds": [],
+   "basis": [],
+   "bases": 0,
+   "tags": []
+  },
+  {
+   "name": "D_51",
+   "file": "SkillIcons/D_51.png",
+   "kinds": [],
+   "basis": [],
+   "bases": 0,
+   "tags": []
+  },
+  {
+   "name": "D_52",
+   "file": "SkillIcons/D_52.png",
+   "kinds": [],
+   "basis": [],
+   "bases": 0,
+   "tags": []
+  },
+  {
+   "name": "D_53",
+   "file": "SkillIcons/D_53.png",
+   "kinds": [],
+   "basis": [],
+   "bases": 0,
+   "tags": []
+  },
+  {
+   "name": "D_54",
+   "file": "SkillIcons/D_54.png",
+   "kinds": [],
+   "basis": [],
+   "bases": 0,
+   "tags": []
+  },
+  {
+   "name": "D_55",
+   "file": "SkillIcons/D_55.png",
+   "kinds": [],
+   "basis": [],
+   "bases": 0,
+   "tags": []
+  },
+  {
+   "name": "D_56",
+   "file": "SkillIcons/D_56.png",
+   "kinds": [],
+   "basis": [],
+   "bases": 0,
+   "tags": []
+  },
+  {
+   "name": "D_57",
+   "file": "SkillIcons/D_57.png",
+   "kinds": [],
+   "basis": [],
+   "bases": 0,
+   "tags": []
+  },
+  {
+   "name": "D_58",
+   "file": "SkillIcons/D_58.png",
+   "kinds": [],
+   "basis": [],
+   "bases": 0,
+   "tags": []
+  },
+  {
+   "name": "D_59",
+   "file": "SkillIcons/D_59.png",
+   "kinds": [],
+   "basis": [],
+   "bases": 0,
+   "tags": []
+  },
+  {
+   "name": "D_6",
+   "file": "SkillIcons/D_6.png",
+   "kinds": [],
+   "basis": [],
+   "bases": 0,
+   "tags": []
+  },
+  {
+   "name": "D_60",
+   "file": "SkillIcons/D_60.png",
+   "kinds": [],
+   "basis": [],
+   "bases": 0,
+   "tags": []
+  },
+  {
+   "name": "D_61",
+   "file": "SkillIcons/D_61.png",
+   "kinds": [],
+   "basis": [],
+   "bases": 0,
+   "tags": []
+  },
+  {
+   "name": "D_62",
+   "file": "SkillIcons/D_62.png",
+   "kinds": [],
+   "basis": [],
+   "bases": 0,
+   "tags": []
+  },
+  {
+   "name": "D_63",
+   "file": "SkillIcons/D_63.png",
+   "kinds": [],
+   "basis": [],
+   "bases": 0,
+   "tags": []
+  },
+  {
+   "name": "D_64",
+   "file": "SkillIcons/D_64.png",
+   "kinds": [],
+   "basis": [],
+   "bases": 0,
+   "tags": []
+  },
+  {
+   "name": "D_65",
+   "file": "SkillIcons/D_65.png",
+   "kinds": [],
+   "basis": [],
+   "bases": 0,
+   "tags": []
+  },
+  {
+   "name": "D_66",
+   "file": "SkillIcons/D_66.png",
+   "kinds": [],
+   "basis": [],
+   "bases": 0,
+   "tags": []
+  },
+  {
+   "name": "D_67",
+   "file": "SkillIcons/D_67.png",
+   "kinds": [],
+   "basis": [],
+   "bases": 0,
+   "tags": []
+  },
+  {
+   "name": "D_68",
+   "file": "SkillIcons/D_68.png",
+   "kinds": [],
+   "basis": [],
+   "bases": 0,
+   "tags": []
+  },
+  {
+   "name": "D_69",
+   "file": "SkillIcons/D_69.png",
+   "kinds": [],
+   "basis": [],
+   "bases": 0,
+   "tags": []
+  },
+  {
+   "name": "D_7",
+   "file": "SkillIcons/D_7.png",
+   "kinds": [],
+   "basis": [],
+   "bases": 0,
+   "tags": []
+  },
+  {
+   "name": "D_70",
+   "file": "SkillIcons/D_70.png",
+   "kinds": [],
+   "basis": [],
+   "bases": 0,
+   "tags": []
+  },
+  {
+   "name": "D_71",
+   "file": "SkillIcons/D_71.png",
+   "kinds": [],
+   "basis": [],
+   "bases": 0,
+   "tags": []
+  },
+  {
+   "name": "D_72",
+   "file": "SkillIcons/D_72.png",
+   "kinds": [],
+   "basis": [],
+   "bases": 0,
+   "tags": []
+  },
+  {
+   "name": "D_73",
+   "file": "SkillIcons/D_73.png",
+   "kinds": [],
+   "basis": [],
+   "bases": 0,
+   "tags": []
+  },
+  {
+   "name": "D_74",
+   "file": "SkillIcons/D_74.png",
+   "kinds": [],
+   "basis": [],
+   "bases": 0,
+   "tags": []
+  },
+  {
+   "name": "D_75",
+   "file": "SkillIcons/D_75.png",
+   "kinds": [],
+   "basis": [],
+   "bases": 0,
+   "tags": []
+  },
+  {
+   "name": "D_76",
+   "file": "SkillIcons/D_76.png",
+   "kinds": [],
+   "basis": [],
+   "bases": 0,
+   "tags": []
+  },
+  {
+   "name": "D_77",
+   "file": "SkillIcons/D_77.png",
+   "kinds": [],
+   "basis": [],
+   "bases": 0,
+   "tags": []
+  },
+  {
+   "name": "D_78",
+   "file": "SkillIcons/D_78.png",
+   "kinds": [],
+   "basis": [],
+   "bases": 0,
+   "tags": []
+  },
+  {
+   "name": "D_79",
+   "file": "SkillIcons/D_79.png",
+   "kinds": [],
+   "basis": [],
+   "bases": 0,
+   "tags": []
+  },
+  {
+   "name": "D_8",
+   "file": "SkillIcons/D_8.png",
+   "kinds": [],
+   "basis": [],
+   "bases": 0,
+   "tags": []
+  },
+  {
+   "name": "D_80",
+   "file": "SkillIcons/D_80.png",
+   "kinds": [],
+   "basis": [],
+   "bases": 0,
+   "tags": []
+  },
+  {
+   "name": "D_81",
+   "file": "SkillIcons/D_81.png",
+   "kinds": [],
+   "basis": [],
+   "bases": 0,
+   "tags": []
+  },
+  {
+   "name": "D_82",
+   "file": "SkillIcons/D_82.png",
+   "kinds": [],
+   "basis": [],
+   "bases": 0,
+   "tags": []
+  },
+  {
+   "name": "D_83",
+   "file": "SkillIcons/D_83.png",
+   "kinds": [],
+   "basis": [],
+   "bases": 0,
+   "tags": []
+  },
+  {
+   "name": "D_84",
+   "file": "SkillIcons/D_84.png",
+   "kinds": [],
+   "basis": [],
+   "bases": 0,
+   "tags": []
+  },
+  {
+   "name": "D_85",
+   "file": "SkillIcons/D_85.png",
+   "kinds": [],
+   "basis": [],
+   "bases": 0,
+   "tags": []
+  },
+  {
+   "name": "D_86",
+   "file": "SkillIcons/D_86.png",
+   "kinds": [],
+   "basis": [],
+   "bases": 0,
+   "tags": []
+  },
+  {
+   "name": "D_87",
+   "file": "SkillIcons/D_87.png",
+   "kinds": [],
+   "basis": [],
+   "bases": 0,
+   "tags": []
+  },
+  {
+   "name": "D_88",
+   "file": "SkillIcons/D_88.png",
+   "kinds": [],
+   "basis": [],
+   "bases": 0,
+   "tags": []
+  },
+  {
+   "name": "D_89",
+   "file": "SkillIcons/D_89.png",
+   "kinds": [],
+   "basis": [],
+   "bases": 0,
+   "tags": []
+  },
+  {
+   "name": "D_9",
+   "file": "SkillIcons/D_9.png",
+   "kinds": [],
+   "basis": [],
+   "bases": 0,
+   "tags": []
+  },
+  {
+   "name": "D_90",
+   "file": "SkillIcons/D_90.png",
+   "kinds": [],
+   "basis": [],
+   "bases": 0,
+   "tags": []
+  },
+  {
+   "name": "D_91",
+   "file": "SkillIcons/D_91.png",
+   "kinds": [],
+   "basis": [],
+   "bases": 0,
+   "tags": []
+  },
+  {
+   "name": "D_92",
+   "file": "SkillIcons/D_92.png",
+   "kinds": [],
+   "basis": [],
+   "bases": 0,
+   "tags": []
+  },
+  {
+   "name": "D_93",
+   "file": "SkillIcons/D_93.png",
+   "kinds": [],
+   "basis": [],
+   "bases": 0,
+   "tags": []
+  },
+  {
+   "name": "D_94",
+   "file": "SkillIcons/D_94.png",
+   "kinds": [],
+   "basis": [],
+   "bases": 0,
+   "tags": []
+  },
+  {
+   "name": "D_95",
+   "file": "SkillIcons/D_95.png",
+   "kinds": [],
+   "basis": [],
+   "bases": 0,
+   "tags": []
+  },
+  {
+   "name": "D_96",
+   "file": "SkillIcons/D_96.png",
+   "kinds": [],
+   "basis": [],
+   "bases": 0,
+   "tags": []
+  },
+  {
+   "name": "D_97",
+   "file": "SkillIcons/D_97.png",
+   "kinds": [],
+   "basis": [],
+   "bases": 0,
+   "tags": []
+  },
+  {
+   "name": "D_98",
+   "file": "SkillIcons/D_98.png",
+   "kinds": [],
+   "basis": [],
+   "bases": 0,
+   "tags": []
+  },
+  {
+   "name": "D_99",
+   "file": "SkillIcons/D_99.png",
+   "kinds": [],
+   "basis": [],
+   "bases": 0,
+   "tags": []
+  },
+  {
+   "name": "dao_001",
+   "file": "SkillIcons/dao_001.png",
+   "kinds": [],
+   "basis": [],
+   "bases": 0,
+   "tags": []
+  },
+  {
+   "name": "dao_002",
+   "file": "SkillIcons/dao_002.png",
+   "kinds": [],
+   "basis": [],
+   "bases": 0,
+   "tags": []
+  },
+  {
+   "name": "daoxinganwu1",
+   "file": "SkillIcons/daoxinganwu1.png",
+   "kinds": [],
+   "basis": [],
+   "bases": 0,
+   "tags": []
+  },
+  {
+   "name": "dazhao_001",
+   "file": "SkillIcons/dazhao_001.png",
+   "kinds": [],
+   "basis": [],
+   "bases": 0,
+   "tags": []
+  },
+  {
+   "name": "dazhao_002",
+   "file": "SkillIcons/dazhao_002.png",
+   "kinds": [],
+   "basis": [],
+   "bases": 0,
+   "tags": []
+  },
+  {
+   "name": "faxianbaoxiang",
+   "file": "SkillIcons/faxianbaoxiang.png",
+   "kinds": [],
+   "basis": [],
+   "bases": 0,
+   "tags": []
+  },
+  {
+   "name": "faxianguaiwu",
+   "file": "SkillIcons/faxianguaiwu.png",
+   "kinds": [],
+   "basis": [],
+   "bases": 0,
+   "tags": []
+  },
+  {
+   "name": "fenyuandihuo",
+   "file": "SkillIcons/fenyuandihuo.png",
+   "kinds": [],
+   "basis": [],
+   "bases": 0,
+   "tags": []
+  },
+  {
+   "name": "guichun1",
+   "file": "SkillIcons/guichun1.png",
+   "kinds": [],
+   "basis": [],
+   "bases": 0,
+   "tags": []
+  },
+  {
+   "name": "gz_huli1",
+   "file": "SkillIcons/gz_huli1.png",
+   "kinds": [],
+   "basis": [],
+   "bases": 0,
+   "tags": []
+  },
+  {
+   "name": "gz_huli2",
+   "file": "SkillIcons/gz_huli2.png",
+   "kinds": [],
+   "basis": [],
+   "bases": 0,
+   "tags": []
+  },
+  {
+   "name": "gz_huli3",
+   "file": "SkillIcons/gz_huli3.png",
+   "kinds": [],
+   "basis": [],
+   "bases": 0,
+   "tags": []
+  },
+  {
+   "name": "gz_laohu1",
+   "file": "SkillIcons/gz_laohu1.png",
+   "kinds": [],
+   "basis": [],
+   "bases": 0,
+   "tags": []
+  },
+  {
+   "name": "gz_laohu2",
+   "file": "SkillIcons/gz_laohu2.png",
+   "kinds": [],
+   "basis": [],
+   "bases": 0,
+   "tags": []
+  },
+  {
+   "name": "gz_laohu3",
+   "file": "SkillIcons/gz_laohu3.png",
+   "kinds": [],
+   "basis": [],
+   "bases": 0,
+   "tags": []
+  },
+  {
+   "name": "gz_niao1",
+   "file": "SkillIcons/gz_niao1.png",
+   "kinds": [],
+   "basis": [],
+   "bases": 0,
+   "tags": []
+  },
+  {
+   "name": "gz_niao2",
+   "file": "SkillIcons/gz_niao2.png",
+   "kinds": [],
+   "basis": [],
+   "bases": 0,
+   "tags": []
+  },
+  {
+   "name": "gz_niao3",
+   "file": "SkillIcons/gz_niao3.png",
+   "kinds": [],
+   "basis": [],
+   "bases": 0,
+   "tags": []
+  },
+  {
+   "name": "gz_niu1",
+   "file": "SkillIcons/gz_niu1.png",
+   "kinds": [],
+   "basis": [],
+   "bases": 0,
+   "tags": []
+  },
+  {
+   "name": "gz_niu2",
+   "file": "SkillIcons/gz_niu2.png",
+   "kinds": [],
+   "basis": [],
+   "bases": 0,
+   "tags": []
+  },
+  {
+   "name": "gz_niu3",
+   "file": "SkillIcons/gz_niu3.png",
+   "kinds": [],
+   "basis": [],
+   "bases": 0,
+   "tags": []
+  },
+  {
+   "name": "gz_xiong1",
+   "file": "SkillIcons/gz_xiong1.png",
+   "kinds": [],
+   "basis": [],
+   "bases": 0,
+   "tags": []
+  },
+  {
+   "name": "gz_xiong2",
+   "file": "SkillIcons/gz_xiong2.png",
+   "kinds": [],
+   "basis": [],
+   "bases": 0,
+   "tags": []
+  },
+  {
+   "name": "gz_xiong3",
+   "file": "SkillIcons/gz_xiong3.png",
+   "kinds": [],
+   "basis": [],
+   "bases": 0,
+   "tags": []
+  },
+  {
+   "name": "gz_zhu1",
+   "file": "SkillIcons/gz_zhu1.png",
+   "kinds": [],
+   "basis": [],
+   "bases": 0,
+   "tags": []
+  },
+  {
+   "name": "gz_zhu2",
+   "file": "SkillIcons/gz_zhu2.png",
+   "kinds": [],
+   "basis": [],
+   "bases": 0,
+   "tags": []
+  },
+  {
+   "name": "gz_zhu3",
+   "file": "SkillIcons/gz_zhu3.png",
+   "kinds": [],
+   "basis": [],
+   "bases": 0,
+   "tags": []
+  },
+  {
+   "name": "haotianyan_1",
+   "file": "SkillIcons/haotianyan_1.png",
+   "kinds": [],
+   "basis": [],
+   "bases": 0,
+   "tags": []
+  },
+  {
+   "name": "haotianyan_10",
+   "file": "SkillIcons/haotianyan_10.png",
+   "kinds": [],
+   "basis": [],
+   "bases": 0,
+   "tags": []
+  },
+  {
+   "name": "haotianyan_100",
+   "file": "SkillIcons/haotianyan_100.png",
+   "kinds": [],
+   "basis": [],
+   "bases": 0,
+   "tags": []
+  },
+  {
+   "name": "haotianyan_1001",
+   "file": "SkillIcons/haotianyan_1001.png",
+   "kinds": [],
+   "basis": [],
+   "bases": 0,
+   "tags": []
+  },
+  {
+   "name": "haotianyan_1002",
+   "file": "SkillIcons/haotianyan_1002.png",
+   "kinds": [],
+   "basis": [],
+   "bases": 0,
+   "tags": []
+  },
+  {
+   "name": "haotianyan_1003",
+   "file": "SkillIcons/haotianyan_1003.png",
+   "kinds": [],
+   "basis": [],
+   "bases": 0,
+   "tags": []
+  },
+  {
+   "name": "haotianyan_1004",
+   "file": "SkillIcons/haotianyan_1004.png",
+   "kinds": [],
+   "basis": [],
+   "bases": 0,
+   "tags": []
+  },
+  {
+   "name": "haotianyan_1005",
+   "file": "SkillIcons/haotianyan_1005.png",
+   "kinds": [],
+   "basis": [],
+   "bases": 0,
+   "tags": []
+  },
+  {
+   "name": "haotianyan_1006",
+   "file": "SkillIcons/haotianyan_1006.png",
+   "kinds": [],
+   "basis": [],
+   "bases": 0,
+   "tags": []
+  },
+  {
+   "name": "haotianyan_1007",
+   "file": "SkillIcons/haotianyan_1007.png",
+   "kinds": [],
+   "basis": [],
+   "bases": 0,
+   "tags": []
+  },
+  {
+   "name": "haotianyan_101",
+   "file": "SkillIcons/haotianyan_101.png",
+   "kinds": [],
+   "basis": [],
+   "bases": 0,
+   "tags": []
+  },
+  {
+   "name": "haotianyan_102",
+   "file": "SkillIcons/haotianyan_102.png",
+   "kinds": [],
+   "basis": [],
+   "bases": 0,
+   "tags": []
+  },
+  {
+   "name": "haotianyan_11",
+   "file": "SkillIcons/haotianyan_11.png",
+   "kinds": [],
+   "basis": [],
+   "bases": 0,
+   "tags": []
+  },
+  {
+   "name": "haotianyan_14",
+   "file": "SkillIcons/haotianyan_14.png",
+   "kinds": [],
+   "basis": [],
+   "bases": 0,
+   "tags": []
+  },
+  {
+   "name": "haotianyan_15",
+   "file": "SkillIcons/haotianyan_15.png",
+   "kinds": [],
+   "basis": [],
+   "bases": 0,
+   "tags": []
+  },
+  {
+   "name": "haotianyan_16",
+   "file": "SkillIcons/haotianyan_16.png",
+   "kinds": [],
+   "basis": [],
+   "bases": 0,
+   "tags": []
+  },
+  {
+   "name": "haotianyan_17",
+   "file": "SkillIcons/haotianyan_17.png",
+   "kinds": [],
+   "basis": [],
+   "bases": 0,
+   "tags": []
+  },
+  {
+   "name": "haotianyan_18",
+   "file": "SkillIcons/haotianyan_18.png",
+   "kinds": [],
+   "basis": [],
+   "bases": 0,
+   "tags": []
+  },
+  {
+   "name": "haotianyan_19",
+   "file": "SkillIcons/haotianyan_19.png",
+   "kinds": [],
+   "basis": [],
+   "bases": 0,
+   "tags": []
+  },
+  {
+   "name": "haotianyan_2",
+   "file": "SkillIcons/haotianyan_2.png",
+   "kinds": [],
+   "basis": [],
+   "bases": 0,
+   "tags": []
+  },
+  {
+   "name": "haotianyan_20",
+   "file": "SkillIcons/haotianyan_20.png",
+   "kinds": [],
+   "basis": [],
+   "bases": 0,
+   "tags": []
+  },
+  {
+   "name": "haotianyan_21",
+   "file": "SkillIcons/haotianyan_21.png",
+   "kinds": [],
+   "basis": [],
+   "bases": 0,
+   "tags": []
+  },
+  {
+   "name": "haotianyan_22",
+   "file": "SkillIcons/haotianyan_22.png",
+   "kinds": [],
+   "basis": [],
+   "bases": 0,
+   "tags": []
+  },
+  {
+   "name": "haotianyan_23",
+   "file": "SkillIcons/haotianyan_23.png",
+   "kinds": [],
+   "basis": [],
+   "bases": 0,
+   "tags": []
+  },
+  {
+   "name": "haotianyan_24",
+   "file": "SkillIcons/haotianyan_24.png",
+   "kinds": [],
+   "basis": [],
+   "bases": 0,
+   "tags": []
+  },
+  {
+   "name": "haotianyan_25",
+   "file": "SkillIcons/haotianyan_25.png",
+   "kinds": [],
+   "basis": [],
+   "bases": 0,
+   "tags": []
+  },
+  {
+   "name": "haotianyan_26",
+   "file": "SkillIcons/haotianyan_26.png",
+   "kinds": [],
+   "basis": [],
+   "bases": 0,
+   "tags": []
+  },
+  {
+   "name": "haotianyan_27",
+   "file": "SkillIcons/haotianyan_27.png",
+   "kinds": [],
+   "basis": [],
+   "bases": 0,
+   "tags": []
+  },
+  {
+   "name": "haotianyan_28",
+   "file": "SkillIcons/haotianyan_28.png",
+   "kinds": [],
+   "basis": [],
+   "bases": 0,
+   "tags": []
+  },
+  {
+   "name": "haotianyan_29",
+   "file": "SkillIcons/haotianyan_29.png",
+   "kinds": [],
+   "basis": [],
+   "bases": 0,
+   "tags": []
+  },
+  {
+   "name": "haotianyan_3",
+   "file": "SkillIcons/haotianyan_3.png",
+   "kinds": [],
+   "basis": [],
+   "bases": 0,
+   "tags": []
+  },
+  {
+   "name": "haotianyan_30",
+   "file": "SkillIcons/haotianyan_30.png",
+   "kinds": [],
+   "basis": [],
+   "bases": 0,
+   "tags": []
+  },
+  {
+   "name": "haotianyan_31",
+   "file": "SkillIcons/haotianyan_31.png",
+   "kinds": [],
+   "basis": [],
+   "bases": 0,
+   "tags": []
+  },
+  {
+   "name": "haotianyan_32",
+   "file": "SkillIcons/haotianyan_32.png",
+   "kinds": [],
+   "basis": [],
+   "bases": 0,
+   "tags": []
+  },
+  {
+   "name": "haotianyan_33",
+   "file": "SkillIcons/haotianyan_33.png",
+   "kinds": [],
+   "basis": [],
+   "bases": 0,
+   "tags": []
+  },
+  {
+   "name": "haotianyan_35",
+   "file": "SkillIcons/haotianyan_35.png",
+   "kinds": [],
+   "basis": [],
+   "bases": 0,
+   "tags": []
+  },
+  {
+   "name": "haotianyan_36",
+   "file": "SkillIcons/haotianyan_36.png",
+   "kinds": [],
+   "basis": [],
+   "bases": 0,
+   "tags": []
+  },
+  {
+   "name": "haotianyan_37",
+   "file": "SkillIcons/haotianyan_37.png",
+   "kinds": [],
+   "basis": [],
+   "bases": 0,
+   "tags": []
+  },
+  {
+   "name": "haotianyan_38",
+   "file": "SkillIcons/haotianyan_38.png",
+   "kinds": [],
+   "basis": [],
+   "bases": 0,
+   "tags": []
+  },
+  {
+   "name": "haotianyan_39",
+   "file": "SkillIcons/haotianyan_39.png",
+   "kinds": [],
+   "basis": [],
+   "bases": 0,
+   "tags": []
+  },
+  {
+   "name": "haotianyan_4",
+   "file": "SkillIcons/haotianyan_4.png",
+   "kinds": [],
+   "basis": [],
+   "bases": 0,
+   "tags": []
+  },
+  {
+   "name": "haotianyan_40",
+   "file": "SkillIcons/haotianyan_40.png",
+   "kinds": [],
+   "basis": [],
+   "bases": 0,
+   "tags": []
+  },
+  {
+   "name": "haotianyan_41",
+   "file": "SkillIcons/haotianyan_41.png",
+   "kinds": [],
+   "basis": [],
+   "bases": 0,
+   "tags": []
+  },
+  {
+   "name": "haotianyan_42",
+   "file": "SkillIcons/haotianyan_42.png",
+   "kinds": [],
+   "basis": [],
+   "bases": 0,
+   "tags": []
+  },
+  {
+   "name": "haotianyan_43",
+   "file": "SkillIcons/haotianyan_43.png",
+   "kinds": [],
+   "basis": [],
+   "bases": 0,
+   "tags": []
+  },
+  {
+   "name": "haotianyan_44",
+   "file": "SkillIcons/haotianyan_44.png",
+   "kinds": [],
+   "basis": [],
+   "bases": 0,
+   "tags": []
+  },
+  {
+   "name": "haotianyan_45",
+   "file": "SkillIcons/haotianyan_45.png",
+   "kinds": [],
+   "basis": [],
+   "bases": 0,
+   "tags": []
+  },
+  {
+   "name": "haotianyan_46",
+   "file": "SkillIcons/haotianyan_46.png",
+   "kinds": [],
+   "basis": [],
+   "bases": 0,
+   "tags": []
+  },
+  {
+   "name": "haotianyan_47",
+   "file": "SkillIcons/haotianyan_47.png",
+   "kinds": [],
+   "basis": [],
+   "bases": 0,
+   "tags": []
+  },
+  {
+   "name": "haotianyan_48",
+   "file": "SkillIcons/haotianyan_48.png",
+   "kinds": [],
+   "basis": [],
+   "bases": 0,
+   "tags": []
+  },
+  {
+   "name": "haotianyan_49",
+   "file": "SkillIcons/haotianyan_49.png",
+   "kinds": [],
+   "basis": [],
+   "bases": 0,
+   "tags": []
+  },
+  {
+   "name": "haotianyan_5",
+   "file": "SkillIcons/haotianyan_5.png",
+   "kinds": [],
+   "basis": [],
+   "bases": 0,
+   "tags": []
+  },
+  {
+   "name": "haotianyan_50",
+   "file": "SkillIcons/haotianyan_50.png",
+   "kinds": [],
+   "basis": [],
+   "bases": 0,
+   "tags": []
+  },
+  {
+   "name": "haotianyan_51",
+   "file": "SkillIcons/haotianyan_51.png",
+   "kinds": [],
+   "basis": [],
+   "bases": 0,
+   "tags": []
+  },
+  {
+   "name": "haotianyan_52",
+   "file": "SkillIcons/haotianyan_52.png",
+   "kinds": [],
+   "basis": [],
+   "bases": 0,
+   "tags": []
+  },
+  {
+   "name": "haotianyan_53",
+   "file": "SkillIcons/haotianyan_53.png",
+   "kinds": [],
+   "basis": [],
+   "bases": 0,
+   "tags": []
+  },
+  {
+   "name": "haotianyan_54",
+   "file": "SkillIcons/haotianyan_54.png",
+   "kinds": [],
+   "basis": [],
+   "bases": 0,
+   "tags": []
+  },
+  {
+   "name": "haotianyan_55",
+   "file": "SkillIcons/haotianyan_55.png",
+   "kinds": [],
+   "basis": [],
+   "bases": 0,
+   "tags": []
+  },
+  {
+   "name": "haotianyan_56",
+   "file": "SkillIcons/haotianyan_56.png",
+   "kinds": [],
+   "basis": [],
+   "bases": 0,
+   "tags": []
+  },
+  {
+   "name": "haotianyan_57",
+   "file": "SkillIcons/haotianyan_57.png",
+   "kinds": [],
+   "basis": [],
+   "bases": 0,
+   "tags": []
+  },
+  {
+   "name": "haotianyan_58",
+   "file": "SkillIcons/haotianyan_58.png",
+   "kinds": [],
+   "basis": [],
+   "bases": 0,
+   "tags": []
+  },
+  {
+   "name": "haotianyan_59",
+   "file": "SkillIcons/haotianyan_59.png",
+   "kinds": [],
+   "basis": [],
+   "bases": 0,
+   "tags": []
+  },
+  {
+   "name": "haotianyan_6",
+   "file": "SkillIcons/haotianyan_6.png",
+   "kinds": [],
+   "basis": [],
+   "bases": 0,
+   "tags": []
+  },
+  {
+   "name": "haotianyan_60",
+   "file": "SkillIcons/haotianyan_60.png",
+   "kinds": [],
+   "basis": [],
+   "bases": 0,
+   "tags": []
+  },
+  {
+   "name": "haotianyan_61",
+   "file": "SkillIcons/haotianyan_61.png",
+   "kinds": [],
+   "basis": [],
+   "bases": 0,
+   "tags": []
+  },
+  {
+   "name": "haotianyan_62",
+   "file": "SkillIcons/haotianyan_62.png",
+   "kinds": [],
+   "basis": [],
+   "bases": 0,
+   "tags": []
+  },
+  {
+   "name": "haotianyan_63",
+   "file": "SkillIcons/haotianyan_63.png",
+   "kinds": [],
+   "basis": [],
+   "bases": 0,
+   "tags": []
+  },
+  {
+   "name": "haotianyan_64",
+   "file": "SkillIcons/haotianyan_64.png",
+   "kinds": [],
+   "basis": [],
+   "bases": 0,
+   "tags": []
+  },
+  {
+   "name": "haotianyan_65_",
+   "file": "SkillIcons/haotianyan_65_.png",
+   "kinds": [],
+   "basis": [],
+   "bases": 0,
+   "tags": []
+  },
+  {
+   "name": "haotianyan_66",
+   "file": "SkillIcons/haotianyan_66.png",
+   "kinds": [],
+   "basis": [],
+   "bases": 0,
+   "tags": []
+  },
+  {
+   "name": "haotianyan_67",
+   "file": "SkillIcons/haotianyan_67.png",
+   "kinds": [],
+   "basis": [],
+   "bases": 0,
+   "tags": []
+  },
+  {
+   "name": "haotianyan_68",
+   "file": "SkillIcons/haotianyan_68.png",
+   "kinds": [],
+   "basis": [],
+   "bases": 0,
+   "tags": []
+  },
+  {
+   "name": "haotianyan_69",
+   "file": "SkillIcons/haotianyan_69.png",
+   "kinds": [],
+   "basis": [],
+   "bases": 0,
+   "tags": []
+  },
+  {
+   "name": "haotianyan_7",
+   "file": "SkillIcons/haotianyan_7.png",
+   "kinds": [],
+   "basis": [],
+   "bases": 0,
+   "tags": []
+  },
+  {
+   "name": "haotianyan_70",
+   "file": "SkillIcons/haotianyan_70.png",
+   "kinds": [],
+   "basis": [],
+   "bases": 0,
+   "tags": []
+  },
+  {
+   "name": "haotianyan_71",
+   "file": "SkillIcons/haotianyan_71.png",
+   "kinds": [],
+   "basis": [],
+   "bases": 0,
+   "tags": []
+  },
+  {
+   "name": "haotianyan_72",
+   "file": "SkillIcons/haotianyan_72.png",
+   "kinds": [],
+   "basis": [],
+   "bases": 0,
+   "tags": []
+  },
+  {
+   "name": "haotianyan_73",
+   "file": "SkillIcons/haotianyan_73.png",
+   "kinds": [],
+   "basis": [],
+   "bases": 0,
+   "tags": []
+  },
+  {
+   "name": "haotianyan_74",
+   "file": "SkillIcons/haotianyan_74.png",
+   "kinds": [],
+   "basis": [],
+   "bases": 0,
+   "tags": []
+  },
+  {
+   "name": "haotianyan_75",
+   "file": "SkillIcons/haotianyan_75.png",
+   "kinds": [],
+   "basis": [],
+   "bases": 0,
+   "tags": []
+  },
+  {
+   "name": "haotianyan_76",
+   "file": "SkillIcons/haotianyan_76.png",
+   "kinds": [],
+   "basis": [],
+   "bases": 0,
+   "tags": []
+  },
+  {
+   "name": "haotianyan_77",
+   "file": "SkillIcons/haotianyan_77.png",
+   "kinds": [],
+   "basis": [],
+   "bases": 0,
+   "tags": []
+  },
+  {
+   "name": "haotianyan_78",
+   "file": "SkillIcons/haotianyan_78.png",
+   "kinds": [],
+   "basis": [],
+   "bases": 0,
+   "tags": []
+  },
+  {
+   "name": "haotianyan_79",
+   "file": "SkillIcons/haotianyan_79.png",
+   "kinds": [],
+   "basis": [],
+   "bases": 0,
+   "tags": []
+  },
+  {
+   "name": "haotianyan_8",
+   "file": "SkillIcons/haotianyan_8.png",
+   "kinds": [],
+   "basis": [],
+   "bases": 0,
+   "tags": []
+  },
+  {
+   "name": "haotianyan_80",
+   "file": "SkillIcons/haotianyan_80.png",
+   "kinds": [],
+   "basis": [],
+   "bases": 0,
+   "tags": []
+  },
+  {
+   "name": "haotianyan_81",
+   "file": "SkillIcons/haotianyan_81.png",
+   "kinds": [],
+   "basis": [],
+   "bases": 0,
+   "tags": []
+  },
+  {
+   "name": "haotianyan_82",
+   "file": "SkillIcons/haotianyan_82.png",
+   "kinds": [],
+   "basis": [],
+   "bases": 0,
+   "tags": []
+  },
+  {
+   "name": "haotianyan_83",
+   "file": "SkillIcons/haotianyan_83.png",
+   "kinds": [],
+   "basis": [],
+   "bases": 0,
+   "tags": []
+  },
+  {
+   "name": "haotianyan_84",
+   "file": "SkillIcons/haotianyan_84.png",
+   "kinds": [],
+   "basis": [],
+   "bases": 0,
+   "tags": []
+  },
+  {
+   "name": "haotianyan_85",
+   "file": "SkillIcons/haotianyan_85.png",
+   "kinds": [],
+   "basis": [],
+   "bases": 0,
+   "tags": []
+  },
+  {
+   "name": "haotianyan_86",
+   "file": "SkillIcons/haotianyan_86.png",
+   "kinds": [],
+   "basis": [],
+   "bases": 0,
+   "tags": []
+  },
+  {
+   "name": "haotianyan_87",
+   "file": "SkillIcons/haotianyan_87.png",
+   "kinds": [],
+   "basis": [],
+   "bases": 0,
+   "tags": []
+  },
+  {
+   "name": "haotianyan_88",
+   "file": "SkillIcons/haotianyan_88.png",
+   "kinds": [],
+   "basis": [],
+   "bases": 0,
+   "tags": []
+  },
+  {
+   "name": "haotianyan_89",
+   "file": "SkillIcons/haotianyan_89.png",
+   "kinds": [],
+   "basis": [],
+   "bases": 0,
+   "tags": []
+  },
+  {
+   "name": "haotianyan_9",
+   "file": "SkillIcons/haotianyan_9.png",
+   "kinds": [],
+   "basis": [],
+   "bases": 0,
+   "tags": []
+  },
+  {
+   "name": "haotianyan_90",
+   "file": "SkillIcons/haotianyan_90.png",
+   "kinds": [],
+   "basis": [],
+   "bases": 0,
+   "tags": []
+  },
+  {
+   "name": "haotianyan_91",
+   "file": "SkillIcons/haotianyan_91.png",
+   "kinds": [],
+   "basis": [],
+   "bases": 0,
+   "tags": []
+  },
+  {
+   "name": "haotianyan_97",
+   "file": "SkillIcons/haotianyan_97.png",
+   "kinds": [],
+   "basis": [],
+   "bases": 0,
+   "tags": []
+  },
+  {
+   "name": "haotianyan_98",
+   "file": "SkillIcons/haotianyan_98.png",
+   "kinds": [],
+   "basis": [],
+   "bases": 0,
+   "tags": []
+  },
+  {
+   "name": "haotianyan_99",
+   "file": "SkillIcons/haotianyan_99.png",
+   "kinds": [],
+   "basis": [],
+   "bases": 0,
+   "tags": []
+  },
+  {
+   "name": "jian_001",
+   "file": "SkillIcons/jian_001.png",
+   "kinds": [],
+   "basis": [],
+   "bases": 0,
+   "tags": []
+  },
+  {
+   "name": "jian_002",
+   "file": "SkillIcons/jian_002.png",
+   "kinds": [],
+   "basis": [],
+   "bases": 0,
+   "tags": []
+  },
+  {
+   "name": "jianqizongheng",
+   "file": "SkillIcons/jianqizongheng.png",
+   "kinds": [],
+   "basis": [],
+   "bases": 0,
+   "tags": []
+  },
+  {
+   "name": "jibeidong_1",
+   "file": "SkillIcons/jibeidong_1.png",
+   "kinds": [],
+   "basis": [],
+   "bases": 0,
+   "tags": []
+  },
+  {
+   "name": "jibeidong_2",
+   "file": "SkillIcons/jibeidong_2.png",
+   "kinds": [],
+   "basis": [],
+   "bases": 0,
+   "tags": []
+  },
+  {
+   "name": "jibeidong_3",
+   "file": "SkillIcons/jibeidong_3.png",
+   "kinds": [],
+   "basis": [],
+   "bases": 0,
+   "tags": []
+  },
+  {
+   "name": "jibeidong_4",
+   "file": "SkillIcons/jibeidong_4.png",
+   "kinds": [],
+   "basis": [],
+   "bases": 0,
+   "tags": []
+  },
+  {
+   "name": "jibeidong_5",
+   "file": "SkillIcons/jibeidong_5.png",
+   "kinds": [],
+   "basis": [],
+   "bases": 0,
+   "tags": []
+  },
+  {
+   "name": "jibisha_1",
+   "file": "SkillIcons/jibisha_1.png",
+   "kinds": [],
+   "basis": [],
+   "bases": 0,
+   "tags": []
+  },
+  {
+   "name": "jibisha_2",
+   "file": "SkillIcons/jibisha_2.png",
+   "kinds": [],
+   "basis": [],
+   "bases": 0,
+   "tags": []
+  },
+  {
+   "name": "jibisha_3",
+   "file": "SkillIcons/jibisha_3.png",
+   "kinds": [],
+   "basis": [],
+   "bases": 0,
+   "tags": []
+  },
+  {
+   "name": "jibisha_4",
+   "file": "SkillIcons/jibisha_4.png",
+   "kinds": [],
+   "basis": [],
+   "bases": 0,
+   "tags": []
+  },
+  {
+   "name": "jibisha_5",
+   "file": "SkillIcons/jibisha_5.png",
+   "kinds": [],
+   "basis": [],
+   "bases": 0,
+   "tags": []
+  },
+  {
+   "name": "jidandao_1",
+   "file": "SkillIcons/jidandao_1.png",
+   "kinds": [],
+   "basis": [],
+   "bases": 0,
+   "tags": []
+  },
+  {
+   "name": "jidandao_10",
+   "file": "SkillIcons/jidandao_10.png",
+   "kinds": [],
+   "basis": [],
+   "bases": 0,
+   "tags": []
+  },
+  {
+   "name": "jidandao_11",
+   "file": "SkillIcons/jidandao_11.png",
+   "kinds": [],
+   "basis": [],
+   "bases": 0,
+   "tags": []
+  },
+  {
+   "name": "jidandao_12",
+   "file": "SkillIcons/jidandao_12.png",
+   "kinds": [],
+   "basis": [],
+   "bases": 0,
+   "tags": []
+  },
+  {
+   "name": "jidandao_13",
+   "file": "SkillIcons/jidandao_13.png",
+   "kinds": [],
+   "basis": [],
+   "bases": 0,
+   "tags": []
+  },
+  {
+   "name": "jidandao_14",
+   "file": "SkillIcons/jidandao_14.png",
+   "kinds": [],
+   "basis": [],
+   "bases": 0,
+   "tags": []
+  },
+  {
+   "name": "jidandao_15",
+   "file": "SkillIcons/jidandao_15.png",
+   "kinds": [],
+   "basis": [],
+   "bases": 0,
+   "tags": []
+  },
+  {
+   "name": "jidandao_16",
+   "file": "SkillIcons/jidandao_16.png",
+   "kinds": [],
+   "basis": [],
+   "bases": 0,
+   "tags": []
+  },
+  {
+   "name": "jidandao_17",
+   "file": "SkillIcons/jidandao_17.png",
+   "kinds": [],
+   "basis": [],
+   "bases": 0,
+   "tags": []
+  },
+  {
+   "name": "jidandao_18",
+   "file": "SkillIcons/jidandao_18.png",
+   "kinds": [],
+   "basis": [],
+   "bases": 0,
+   "tags": []
+  },
+  {
+   "name": "jidandao_19",
+   "file": "SkillIcons/jidandao_19.png",
+   "kinds": [],
+   "basis": [],
+   "bases": 0,
+   "tags": []
+  },
+  {
+   "name": "jidandao_2",
+   "file": "SkillIcons/jidandao_2.png",
+   "kinds": [],
+   "basis": [],
+   "bases": 0,
+   "tags": []
+  },
+  {
+   "name": "jidandao_20",
+   "file": "SkillIcons/jidandao_20.png",
+   "kinds": [],
+   "basis": [],
+   "bases": 0,
+   "tags": []
+  },
+  {
+   "name": "jidandao_21",
+   "file": "SkillIcons/jidandao_21.png",
+   "kinds": [],
+   "basis": [],
+   "bases": 0,
+   "tags": []
+  },
+  {
+   "name": "jidandao_22",
+   "file": "SkillIcons/jidandao_22.png",
+   "kinds": [],
+   "basis": [],
+   "bases": 0,
+   "tags": []
+  },
+  {
+   "name": "jidandao_23",
+   "file": "SkillIcons/jidandao_23.png",
+   "kinds": [],
+   "basis": [],
+   "bases": 0,
+   "tags": []
+  },
+  {
+   "name": "jidandao_24",
+   "file": "SkillIcons/jidandao_24.png",
+   "kinds": [],
+   "basis": [],
+   "bases": 0,
+   "tags": []
+  },
+  {
+   "name": "jidandao_25",
+   "file": "SkillIcons/jidandao_25.png",
+   "kinds": [],
+   "basis": [],
+   "bases": 0,
+   "tags": []
+  },
+  {
+   "name": "jidandao_26",
+   "file": "SkillIcons/jidandao_26.png",
+   "kinds": [],
+   "basis": [],
+   "bases": 0,
+   "tags": []
+  },
+  {
+   "name": "jidandao_27",
+   "file": "SkillIcons/jidandao_27.png",
+   "kinds": [],
+   "basis": [],
+   "bases": 0,
+   "tags": []
+  },
+  {
+   "name": "jidandao_28",
+   "file": "SkillIcons/jidandao_28.png",
+   "kinds": [],
+   "basis": [],
+   "bases": 0,
+   "tags": []
+  },
+  {
+   "name": "jidandao_29",
+   "file": "SkillIcons/jidandao_29.png",
+   "kinds": [],
+   "basis": [],
+   "bases": 0,
+   "tags": []
+  },
+  {
+   "name": "jidandao_3",
+   "file": "SkillIcons/jidandao_3.png",
+   "kinds": [],
+   "basis": [],
+   "bases": 0,
+   "tags": []
+  },
+  {
+   "name": "jidandao_30",
+   "file": "SkillIcons/jidandao_30.png",
+   "kinds": [],
+   "basis": [],
+   "bases": 0,
+   "tags": []
+  },
+  {
+   "name": "jidandao_31",
+   "file": "SkillIcons/jidandao_31.png",
+   "kinds": [],
+   "basis": [],
+   "bases": 0,
+   "tags": []
+  },
+  {
+   "name": "jidandao_32",
+   "file": "SkillIcons/jidandao_32.png",
+   "kinds": [],
+   "basis": [],
+   "bases": 0,
+   "tags": []
+  },
+  {
+   "name": "jidandao_33",
+   "file": "SkillIcons/jidandao_33.png",
+   "kinds": [],
+   "basis": [],
+   "bases": 0,
+   "tags": []
+  },
+  {
+   "name": "jidandao_34",
+   "file": "SkillIcons/jidandao_34.png",
+   "kinds": [],
+   "basis": [],
+   "bases": 0,
+   "tags": []
+  },
+  {
+   "name": "jidandao_35",
+   "file": "SkillIcons/jidandao_35.png",
+   "kinds": [],
+   "basis": [],
+   "bases": 0,
+   "tags": []
+  },
+  {
+   "name": "jidandao_36",
+   "file": "SkillIcons/jidandao_36.png",
+   "kinds": [],
+   "basis": [],
+   "bases": 0,
+   "tags": []
+  },
+  {
+   "name": "jidandao_37",
+   "file": "SkillIcons/jidandao_37.png",
+   "kinds": [],
+   "basis": [],
+   "bases": 0,
+   "tags": []
+  },
+  {
+   "name": "jidandao_38",
+   "file": "SkillIcons/jidandao_38.png",
+   "kinds": [],
+   "basis": [],
+   "bases": 0,
+   "tags": []
+  },
+  {
+   "name": "jidandao_39",
+   "file": "SkillIcons/jidandao_39.png",
+   "kinds": [],
+   "basis": [],
+   "bases": 0,
+   "tags": []
+  },
+  {
+   "name": "jidandao_4",
+   "file": "SkillIcons/jidandao_4.png",
+   "kinds": [],
+   "basis": [],
+   "bases": 0,
+   "tags": []
+  },
+  {
+   "name": "jidandao_40",
+   "file": "SkillIcons/jidandao_40.png",
+   "kinds": [],
+   "basis": [],
+   "bases": 0,
+   "tags": []
+  },
+  {
+   "name": "jidandao_41",
+   "file": "SkillIcons/jidandao_41.png",
+   "kinds": [],
+   "basis": [],
+   "bases": 0,
+   "tags": []
+  },
+  {
+   "name": "jidandao_42",
+   "file": "SkillIcons/jidandao_42.png",
+   "kinds": [],
+   "basis": [],
+   "bases": 0,
+   "tags": []
+  },
+  {
+   "name": "jidandao_43",
+   "file": "SkillIcons/jidandao_43.png",
+   "kinds": [],
+   "basis": [],
+   "bases": 0,
+   "tags": []
+  },
+  {
+   "name": "jidandao_44",
+   "file": "SkillIcons/jidandao_44.png",
+   "kinds": [],
+   "basis": [],
+   "bases": 0,
+   "tags": []
+  },
+  {
+   "name": "jidandao_45",
+   "file": "SkillIcons/jidandao_45.png",
+   "kinds": [],
+   "basis": [],
+   "bases": 0,
+   "tags": []
+  },
+  {
+   "name": "jidandao_46",
+   "file": "SkillIcons/jidandao_46.png",
+   "kinds": [],
+   "basis": [],
+   "bases": 0,
+   "tags": []
+  },
+  {
+   "name": "jidandao_47",
+   "file": "SkillIcons/jidandao_47.png",
+   "kinds": [],
+   "basis": [],
+   "bases": 0,
+   "tags": []
+  },
+  {
+   "name": "jidandao_48",
+   "file": "SkillIcons/jidandao_48.png",
+   "kinds": [],
+   "basis": [],
+   "bases": 0,
+   "tags": []
+  },
+  {
+   "name": "jidandao_49",
+   "file": "SkillIcons/jidandao_49.png",
+   "kinds": [],
+   "basis": [],
+   "bases": 0,
+   "tags": []
+  },
+  {
+   "name": "jidandao_5",
+   "file": "SkillIcons/jidandao_5.png",
+   "kinds": [],
+   "basis": [],
+   "bases": 0,
+   "tags": []
+  },
+  {
+   "name": "jidandao_50",
+   "file": "SkillIcons/jidandao_50.png",
+   "kinds": [],
+   "basis": [],
+   "bases": 0,
+   "tags": []
+  },
+  {
+   "name": "jidandao_51",
+   "file": "SkillIcons/jidandao_51.png",
+   "kinds": [],
+   "basis": [],
+   "bases": 0,
+   "tags": []
+  },
+  {
+   "name": "jidandao_52",
+   "file": "SkillIcons/jidandao_52.png",
+   "kinds": [],
+   "basis": [],
+   "bases": 0,
+   "tags": []
+  },
+  {
+   "name": "jidandao_53",
+   "file": "SkillIcons/jidandao_53.png",
+   "kinds": [],
+   "basis": [],
+   "bases": 0,
+   "tags": []
+  },
+  {
+   "name": "jidandao_54",
+   "file": "SkillIcons/jidandao_54.png",
+   "kinds": [],
+   "basis": [],
+   "bases": 0,
+   "tags": []
+  },
+  {
+   "name": "jidandao_55",
+   "file": "SkillIcons/jidandao_55.png",
+   "kinds": [],
+   "basis": [],
+   "bases": 0,
+   "tags": []
+  },
+  {
+   "name": "jidandao_56",
+   "file": "SkillIcons/jidandao_56.png",
+   "kinds": [],
+   "basis": [],
+   "bases": 0,
+   "tags": []
+  },
+  {
+   "name": "jidandao_57",
+   "file": "SkillIcons/jidandao_57.png",
+   "kinds": [],
+   "basis": [],
+   "bases": 0,
+   "tags": []
+  },
+  {
+   "name": "jidandao_58",
+   "file": "SkillIcons/jidandao_58.png",
+   "kinds": [],
+   "basis": [],
+   "bases": 0,
+   "tags": []
+  },
+  {
+   "name": "jidandao_59",
+   "file": "SkillIcons/jidandao_59.png",
+   "kinds": [],
+   "basis": [],
+   "bases": 0,
+   "tags": []
+  },
+  {
+   "name": "jidandao_6",
+   "file": "SkillIcons/jidandao_6.png",
+   "kinds": [],
+   "basis": [],
+   "bases": 0,
+   "tags": []
+  },
+  {
+   "name": "jidandao_60",
+   "file": "SkillIcons/jidandao_60.png",
+   "kinds": [],
+   "basis": [],
+   "bases": 0,
+   "tags": []
+  },
+  {
+   "name": "jidandao_61",
+   "file": "SkillIcons/jidandao_61.png",
+   "kinds": [],
+   "basis": [],
+   "bases": 0,
+   "tags": []
+  },
+  {
+   "name": "jidandao_62",
+   "file": "SkillIcons/jidandao_62.png",
+   "kinds": [],
+   "basis": [],
+   "bases": 0,
+   "tags": []
+  },
+  {
+   "name": "jidandao_63",
+   "file": "SkillIcons/jidandao_63.png",
+   "kinds": [],
+   "basis": [],
+   "bases": 0,
+   "tags": []
+  },
+  {
+   "name": "jidandao_64",
+   "file": "SkillIcons/jidandao_64.png",
+   "kinds": [],
+   "basis": [],
+   "bases": 0,
+   "tags": []
+  },
+  {
+   "name": "jidandao_65",
+   "file": "SkillIcons/jidandao_65.png",
+   "kinds": [],
+   "basis": [],
+   "bases": 0,
+   "tags": []
+  },
+  {
+   "name": "jidandao_7",
+   "file": "SkillIcons/jidandao_7.png",
+   "kinds": [],
+   "basis": [],
+   "bases": 0,
+   "tags": []
+  },
+  {
+   "name": "jidandao_8",
+   "file": "SkillIcons/jidandao_8.png",
+   "kinds": [],
+   "basis": [],
+   "bases": 0,
+   "tags": []
+  },
+  {
+   "name": "jidandao_9",
+   "file": "SkillIcons/jidandao_9.png",
+   "kinds": [],
+   "basis": [],
+   "bases": 0,
+   "tags": []
+  },
+  {
+   "name": "jiruchang_1",
+   "file": "SkillIcons/jiruchang_1.png",
+   "kinds": [],
+   "basis": [],
+   "bases": 0,
+   "tags": []
+  },
+  {
+   "name": "jiruchang_2",
+   "file": "SkillIcons/jiruchang_2.png",
+   "kinds": [],
+   "basis": [],
+   "bases": 0,
+   "tags": []
+  },
+  {
+   "name": "jiruchang_3",
+   "file": "SkillIcons/jiruchang_3.png",
+   "kinds": [],
+   "basis": [],
+   "bases": 0,
+   "tags": []
+  },
+  {
+   "name": "jiruchang_4",
+   "file": "SkillIcons/jiruchang_4.png",
+   "kinds": [],
+   "basis": [],
+   "bases": 0,
+   "tags": []
+  },
+  {
+   "name": "jiruchang_5",
+   "file": "SkillIcons/jiruchang_5.png",
+   "kinds": [],
+   "basis": [],
+   "bases": 0,
+   "tags": []
+  },
+  {
+   "name": "jituichang_1",
+   "file": "SkillIcons/jituichang_1.png",
+   "kinds": [],
+   "basis": [],
+   "bases": 0,
+   "tags": []
+  },
+  {
+   "name": "jituichang_2",
+   "file": "SkillIcons/jituichang_2.png",
+   "kinds": [],
+   "basis": [],
+   "bases": 0,
+   "tags": []
+  },
+  {
+   "name": "jituichang_3",
+   "file": "SkillIcons/jituichang_3.png",
+   "kinds": [],
+   "basis": [],
+   "bases": 0,
+   "tags": []
+  },
+  {
+   "name": "jituichang_4",
+   "file": "SkillIcons/jituichang_4.png",
+   "kinds": [],
+   "basis": [],
+   "bases": 0,
+   "tags": []
+  },
+  {
+   "name": "jituichang_5",
+   "file": "SkillIcons/jituichang_5.png",
+   "kinds": [],
+   "basis": [],
+   "bases": 0,
+   "tags": []
+  },
+  {
+   "name": "julingzhiming1",
+   "file": "SkillIcons/julingzhiming1.png",
+   "kinds": [],
+   "basis": [],
+   "bases": 0,
+   "tags": []
+  },
+  {
+   "name": "jy_huli1",
+   "file": "SkillIcons/jy_huli1.png",
+   "kinds": [],
+   "basis": [],
+   "bases": 0,
+   "tags": []
+  },
+  {
+   "name": "jy_huli2",
+   "file": "SkillIcons/jy_huli2.png",
+   "kinds": [],
+   "basis": [],
+   "bases": 0,
+   "tags": []
+  },
+  {
+   "name": "jy_huli3",
+   "file": "SkillIcons/jy_huli3.png",
+   "kinds": [],
+   "basis": [],
+   "bases": 0,
+   "tags": []
+  },
+  {
+   "name": "jy_laohu1",
+   "file": "SkillIcons/jy_laohu1.png",
+   "kinds": [],
+   "basis": [],
+   "bases": 0,
+   "tags": []
+  },
+  {
+   "name": "jy_laohu2",
+   "file": "SkillIcons/jy_laohu2.png",
+   "kinds": [],
+   "basis": [],
+   "bases": 0,
+   "tags": []
+  },
+  {
+   "name": "jy_laohu3",
+   "file": "SkillIcons/jy_laohu3.png",
+   "kinds": [],
+   "basis": [],
+   "bases": 0,
+   "tags": []
+  },
+  {
+   "name": "jy_niao1",
+   "file": "SkillIcons/jy_niao1.png",
+   "kinds": [],
+   "basis": [],
+   "bases": 0,
+   "tags": []
+  },
+  {
+   "name": "jy_niao2",
+   "file": "SkillIcons/jy_niao2.png",
+   "kinds": [],
+   "basis": [],
+   "bases": 0,
+   "tags": []
+  },
+  {
+   "name": "jy_niao3",
+   "file": "SkillIcons/jy_niao3.png",
+   "kinds": [],
+   "basis": [],
+   "bases": 0,
+   "tags": []
+  },
+  {
+   "name": "jy_niu1",
+   "file": "SkillIcons/jy_niu1.png",
+   "kinds": [],
+   "basis": [],
+   "bases": 0,
+   "tags": []
+  },
+  {
+   "name": "jy_niu2",
+   "file": "SkillIcons/jy_niu2.png",
+   "kinds": [],
+   "basis": [],
+   "bases": 0,
+   "tags": []
+  },
+  {
+   "name": "jy_niu3",
+   "file": "SkillIcons/jy_niu3.png",
+   "kinds": [],
+   "basis": [],
+   "bases": 0,
+   "tags": []
+  },
+  {
+   "name": "jy_xiong1",
+   "file": "SkillIcons/jy_xiong1.png",
+   "kinds": [],
+   "basis": [],
+   "bases": 0,
+   "tags": []
+  },
+  {
+   "name": "jy_xiong2",
+   "file": "SkillIcons/jy_xiong2.png",
+   "kinds": [],
+   "basis": [],
+   "bases": 0,
+   "tags": []
+  },
+  {
+   "name": "jy_xiong3",
+   "file": "SkillIcons/jy_xiong3.png",
+   "kinds": [],
+   "basis": [],
+   "bases": 0,
+   "tags": []
+  },
+  {
+   "name": "jy_zhu1",
+   "file": "SkillIcons/jy_zhu1.png",
+   "kinds": [],
+   "basis": [],
+   "bases": 0,
+   "tags": []
+  },
+  {
+   "name": "jy_zhu2",
+   "file": "SkillIcons/jy_zhu2.png",
+   "kinds": [],
+   "basis": [],
+   "bases": 0,
+   "tags": []
+  },
+  {
+   "name": "jy_zhu3",
+   "file": "SkillIcons/jy_zhu3.png",
+   "kinds": [],
+   "basis": [],
+   "bases": 0,
+   "tags": []
+  },
+  {
+   "name": "liaojicitiao1",
+   "file": "SkillIcons/liaojicitiao1.png",
+   "kinds": [],
+   "basis": [],
+   "bases": 0,
+   "tags": []
+  },
+  {
+   "name": "liaojicitiao2",
+   "file": "SkillIcons/liaojicitiao2.png",
+   "kinds": [],
+   "basis": [],
+   "bases": 0,
+   "tags": []
+  },
+  {
+   "name": "liaojicitiao3",
+   "file": "SkillIcons/liaojicitiao3.png",
+   "kinds": [],
+   "basis": [],
+   "bases": 0,
+   "tags": []
+  },
+  {
+   "name": "liaojicitiao4",
+   "file": "SkillIcons/liaojicitiao4.png",
+   "kinds": [],
+   "basis": [],
+   "bases": 0,
+   "tags": []
+  },
+  {
+   "name": "liaojicitiao5",
+   "file": "SkillIcons/liaojicitiao5.png",
+   "kinds": [],
+   "basis": [],
+   "bases": 0,
+   "tags": []
+  },
+  {
+   "name": "liaojicitiao6",
+   "file": "SkillIcons/liaojicitiao6.png",
+   "kinds": [],
+   "basis": [],
+   "bases": 0,
+   "tags": []
+  },
+  {
+   "name": "liaojicitiao7",
+   "file": "SkillIcons/liaojicitiao7.png",
+   "kinds": [],
+   "basis": [],
+   "bases": 0,
+   "tags": []
+  },
+  {
+   "name": "liaojicitiao8",
+   "file": "SkillIcons/liaojicitiao8.png",
+   "kinds": [],
+   "basis": [],
+   "bases": 0,
+   "tags": []
+  },
+  {
+   "name": "liaojijichu1",
+   "file": "SkillIcons/liaojijichu1.png",
+   "kinds": [],
+   "basis": [],
+   "bases": 0,
+   "tags": []
+  },
+  {
+   "name": "liaojijichu2",
+   "file": "SkillIcons/liaojijichu2.png",
+   "kinds": [],
+   "basis": [],
+   "bases": 0,
+   "tags": []
+  },
+  {
+   "name": "liaojijichu3",
+   "file": "SkillIcons/liaojijichu3.png",
+   "kinds": [],
+   "basis": [],
+   "bases": 0,
+   "tags": []
+  },
+  {
+   "name": "liaojijichu4",
+   "file": "SkillIcons/liaojijichu4.png",
+   "kinds": [],
+   "basis": [],
+   "bases": 0,
+   "tags": []
+  },
+  {
+   "name": "liaojijichu5",
+   "file": "SkillIcons/liaojijichu5.png",
+   "kinds": [],
+   "basis": [],
+   "bases": 0,
+   "tags": []
+  },
+  {
+   "name": "liaojijichu6",
+   "file": "SkillIcons/liaojijichu6.png",
+   "kinds": [],
+   "basis": [],
+   "bases": 0,
+   "tags": []
+  },
+  {
+   "name": "liaojijichu7",
+   "file": "SkillIcons/liaojijichu7.png",
+   "kinds": [],
+   "basis": [],
+   "bases": 0,
+   "tags": []
+  },
+  {
+   "name": "lingdanwudu1",
+   "file": "SkillIcons/lingdanwudu1.png",
+   "kinds": [],
+   "basis": [],
+   "bases": 0,
+   "tags": []
+  },
+  {
+   "name": "lingfaquancai1",
+   "file": "SkillIcons/lingfaquancai1.png",
+   "kinds": [],
+   "basis": [],
+   "bases": 0,
+   "tags": []
+  },
+  {
+   "name": "miaoshou1",
+   "file": "SkillIcons/miaoshou1.png",
+   "kinds": [],
+   "basis": [],
+   "bases": 0,
+   "tags": []
+  },
+  {
+   "name": "miaoyingongshang1",
+   "file": "SkillIcons/miaoyingongshang1.png",
+   "kinds": [],
+   "basis": [],
+   "bases": 0,
+   "tags": []
+  },
+  {
+   "name": "mizong1",
+   "file": "SkillIcons/mizong1.png",
+   "kinds": [],
+   "basis": [],
+   "bases": 0,
+   "tags": []
+  },
+  {
+   "name": "qiang_001",
+   "file": "SkillIcons/qiang_001.png",
+   "kinds": [],
+   "basis": [],
+   "bases": 0,
+   "tags": []
+  },
+  {
+   "name": "qiang_002",
+   "file": "SkillIcons/qiang_002.png",
+   "kinds": [],
+   "basis": [],
+   "bases": 0,
+   "tags": []
+  },
+  {
+   "name": "qianzongkuisi1",
+   "file": "SkillIcons/qianzongkuisi1.png",
+   "kinds": [],
+   "basis": [],
+   "bases": 0,
+   "tags": []
+  },
+  {
+   "name": "qingjunrukeng1",
+   "file": "SkillIcons/qingjunrukeng1.png",
+   "kinds": [],
+   "basis": [],
+   "bases": 0,
+   "tags": []
+  },
+  {
+   "name": "qinxiu1",
+   "file": "SkillIcons/qinxiu1.png",
+   "kinds": [],
+   "basis": [],
+   "bases": 0,
+   "tags": []
+  },
+  {
+   "name": "ql1_cangya1",
+   "file": "SkillIcons/ql1_cangya1.png",
+   "kinds": [],
+   "basis": [],
+   "bases": 0,
+   "tags": []
+  },
+  {
+   "name": "ql1_cangya2",
+   "file": "SkillIcons/ql1_cangya2.png",
+   "kinds": [],
+   "basis": [],
+   "bases": 0,
+   "tags": []
+  },
+  {
+   "name": "ql1_cangya3",
+   "file": "SkillIcons/ql1_cangya3.png",
+   "kinds": [
+    "attack"
+   ],
+   "basis": [],
+   "bases": 1,
+   "tags": [
+    "wind",
+    "wood"
+   ]
+  },
+  {
+   "name": "ql1_dongfangmuqin1",
+   "file": "SkillIcons/ql1_dongfangmuqin1.png",
+   "kinds": [],
+   "basis": [],
+   "bases": 0,
+   "tags": []
+  },
+  {
+   "name": "ql1_dongfangmuqin2",
+   "file": "SkillIcons/ql1_dongfangmuqin2.png",
+   "kinds": [],
+   "basis": [],
+   "bases": 0,
+   "tags": []
+  },
+  {
+   "name": "ql1_dongfangmuqin3",
+   "file": "SkillIcons/ql1_dongfangmuqin3.png",
+   "kinds": [
+    "attack"
+   ],
+   "basis": [],
+   "bases": 1,
+   "tags": [
+    "fire",
+    "blood"
+   ]
+  },
+  {
+   "name": "ql1_jianglingge1",
+   "file": "SkillIcons/ql1_jianglingge1.png",
+   "kinds": [],
+   "basis": [],
+   "bases": 0,
+   "tags": []
+  },
+  {
+   "name": "ql1_jianglingge2",
+   "file": "SkillIcons/ql1_jianglingge2.png",
+   "kinds": [],
+   "basis": [],
+   "bases": 0,
+   "tags": []
+  },
+  {
+   "name": "ql1_jianglingge3",
+   "file": "SkillIcons/ql1_jianglingge3.png",
+   "kinds": [
+    "attack"
+   ],
+   "basis": [],
+   "bases": 1,
+   "tags": [
+    "earth"
+   ]
+  },
+  {
+   "name": "ql1_jiuchen1",
+   "file": "SkillIcons/ql1_jiuchen1.png",
+   "kinds": [],
+   "basis": [],
+   "bases": 0,
+   "tags": []
+  },
+  {
+   "name": "ql1_jiuchen2",
+   "file": "SkillIcons/ql1_jiuchen2.png",
+   "kinds": [],
+   "basis": [],
+   "bases": 0,
+   "tags": []
+  },
+  {
+   "name": "ql1_jiuchen3",
+   "file": "SkillIcons/ql1_jiuchen3.png",
+   "kinds": [
+    "attack"
+   ],
+   "basis": [],
+   "bases": 1,
+   "tags": [
+    "wind",
+    "earth"
+   ]
+  },
+  {
+   "name": "ql1_liningshuang1",
+   "file": "SkillIcons/ql1_liningshuang1.png",
+   "kinds": [],
+   "basis": [],
+   "bases": 0,
+   "tags": []
+  },
+  {
+   "name": "ql1_liningshuang2",
+   "file": "SkillIcons/ql1_liningshuang2.png",
+   "kinds": [],
+   "basis": [],
+   "bases": 0,
+   "tags": []
+  },
+  {
+   "name": "ql1_liningshuang3",
+   "file": "SkillIcons/ql1_liningshuang3.png",
+   "kinds": [
+    "attack"
+   ],
+   "basis": [],
+   "bases": 1,
+   "tags": [
+    "blood",
+    "blade"
+   ]
+  },
+  {
+   "name": "ql1_shihui1",
+   "file": "SkillIcons/ql1_shihui1.png",
+   "kinds": [],
+   "basis": [],
+   "bases": 0,
+   "tags": []
+  },
+  {
+   "name": "ql1_shihui10",
+   "file": "SkillIcons/ql1_shihui10.png",
+   "kinds": [],
+   "basis": [],
+   "bases": 0,
+   "tags": []
+  },
+  {
+   "name": "ql1_shihui2",
+   "file": "SkillIcons/ql1_shihui2.png",
+   "kinds": [],
+   "basis": [],
+   "bases": 0,
+   "tags": []
+  },
+  {
+   "name": "ql1_shihui3",
+   "file": "SkillIcons/ql1_shihui3.png",
+   "kinds": [],
+   "basis": [],
+   "bases": 0,
+   "tags": []
+  },
+  {
+   "name": "ql1_shihui4",
+   "file": "SkillIcons/ql1_shihui4.png",
+   "kinds": [],
+   "basis": [],
+   "bases": 0,
+   "tags": []
+  },
+  {
+   "name": "ql1_shihui5",
+   "file": "SkillIcons/ql1_shihui5.png",
+   "kinds": [],
+   "basis": [],
+   "bases": 0,
+   "tags": []
+  },
+  {
+   "name": "ql1_shihui6",
+   "file": "SkillIcons/ql1_shihui6.png",
+   "kinds": [
+    "attack"
+   ],
+   "basis": [],
+   "bases": 1,
+   "tags": [
+    "poison",
+    "wood"
+   ]
+  },
+  {
+   "name": "ql1_shihui7",
+   "file": "SkillIcons/ql1_shihui7.png",
+   "kinds": [],
+   "basis": [],
+   "bases": 0,
+   "tags": []
+  },
+  {
+   "name": "ql1_shihui8",
+   "file": "SkillIcons/ql1_shihui8.png",
+   "kinds": [],
+   "basis": [],
+   "bases": 0,
+   "tags": []
+  },
+  {
+   "name": "ql1_shihui9",
+   "file": "SkillIcons/ql1_shihui9.png",
+   "kinds": [],
+   "basis": [],
+   "bases": 0,
+   "tags": []
+  },
+  {
+   "name": "ql1_yunmengyi1",
+   "file": "SkillIcons/ql1_yunmengyi1.png",
+   "kinds": [],
+   "basis": [],
+   "bases": 0,
+   "tags": []
+  },
+  {
+   "name": "ql1_yunmengyi2",
+   "file": "SkillIcons/ql1_yunmengyi2.png",
+   "kinds": [],
+   "basis": [],
+   "bases": 0,
+   "tags": []
+  },
+  {
+   "name": "ql1_yunmengyi3",
+   "file": "SkillIcons/ql1_yunmengyi3.png",
+   "kinds": [
+    "attack"
+   ],
+   "basis": [],
+   "bases": 1,
+   "tags": [
+    "spirit",
+    "water"
+   ]
+  },
+  {
+   "name": "ql1_zhuyaoyue1",
+   "file": "SkillIcons/ql1_zhuyaoyue1.png",
+   "kinds": [],
+   "basis": [],
+   "bases": 0,
+   "tags": []
+  },
+  {
+   "name": "ql1_zhuyaoyue10",
+   "file": "SkillIcons/ql1_zhuyaoyue10.png",
+   "kinds": [],
+   "basis": [],
+   "bases": 0,
+   "tags": []
+  },
+  {
+   "name": "ql1_zhuyaoyue2",
+   "file": "SkillIcons/ql1_zhuyaoyue2.png",
+   "kinds": [],
+   "basis": [],
+   "bases": 0,
+   "tags": []
+  },
+  {
+   "name": "ql1_zhuyaoyue3",
+   "file": "SkillIcons/ql1_zhuyaoyue3.png",
+   "kinds": [],
+   "basis": [],
+   "bases": 0,
+   "tags": []
+  },
+  {
+   "name": "ql1_zhuyaoyue4",
+   "file": "SkillIcons/ql1_zhuyaoyue4.png",
+   "kinds": [],
+   "basis": [],
+   "bases": 0,
+   "tags": []
+  },
+  {
+   "name": "ql1_zhuyaoyue5",
+   "file": "SkillIcons/ql1_zhuyaoyue5.png",
+   "kinds": [],
+   "basis": [],
+   "bases": 0,
+   "tags": []
+  },
+  {
+   "name": "ql1_zhuyaoyue6",
+   "file": "SkillIcons/ql1_zhuyaoyue6.png",
+   "kinds": [
+    "attack"
+   ],
+   "basis": [],
+   "bases": 1,
+   "tags": [
+    "thunder",
+    "light"
+   ]
+  },
+  {
+   "name": "ql1_zhuyaoyue7",
+   "file": "SkillIcons/ql1_zhuyaoyue7.png",
+   "kinds": [],
+   "basis": [],
+   "bases": 0,
+   "tags": []
+  },
+  {
+   "name": "ql1_zhuyaoyue8",
+   "file": "SkillIcons/ql1_zhuyaoyue8.png",
+   "kinds": [],
+   "basis": [],
+   "bases": 0,
+   "tags": []
+  },
+  {
+   "name": "ql1_zhuyaoyue9",
+   "file": "SkillIcons/ql1_zhuyaoyue9.png",
+   "kinds": [],
+   "basis": [],
+   "bases": 0,
+   "tags": []
+  },
+  {
+   "name": "ql3_anya1",
+   "file": "SkillIcons/ql3_anya1.png",
+   "kinds": [],
+   "basis": [],
+   "bases": 0,
+   "tags": []
+  },
+  {
+   "name": "ql3_anya2",
+   "file": "SkillIcons/ql3_anya2.png",
+   "kinds": [],
+   "basis": [],
+   "bases": 0,
+   "tags": []
+  },
+  {
+   "name": "ql3_bajiao1",
+   "file": "SkillIcons/ql3_bajiao1.png",
+   "kinds": [],
+   "basis": [],
+   "bases": 0,
+   "tags": []
+  },
+  {
+   "name": "ql3_bajiao2",
+   "file": "SkillIcons/ql3_bajiao2.png",
+   "kinds": [],
+   "basis": [],
+   "bases": 0,
+   "tags": []
+  },
+  {
+   "name": "ql3_buwu1",
+   "file": "SkillIcons/ql3_buwu1.png",
+   "kinds": [],
+   "basis": [],
+   "bases": 0,
+   "tags": []
+  },
+  {
+   "name": "ql3_buwu2",
+   "file": "SkillIcons/ql3_buwu2.png",
+   "kinds": [],
+   "basis": [],
+   "bases": 0,
+   "tags": []
+  },
+  {
+   "name": "ql3_chiyu1",
+   "file": "SkillIcons/ql3_chiyu1.png",
+   "kinds": [],
+   "basis": [],
+   "bases": 0,
+   "tags": []
+  },
+  {
+   "name": "ql3_chiyu2",
+   "file": "SkillIcons/ql3_chiyu2.png",
+   "kinds": [],
+   "basis": [],
+   "bases": 0,
+   "tags": []
+  },
+  {
+   "name": "ql3_duchi1",
+   "file": "SkillIcons/ql3_duchi1.png",
+   "kinds": [],
+   "basis": [],
+   "bases": 0,
+   "tags": []
+  },
+  {
+   "name": "ql3_duchi2",
+   "file": "SkillIcons/ql3_duchi2.png",
+   "kinds": [],
+   "basis": [],
+   "bases": 0,
+   "tags": []
+  },
+  {
+   "name": "ql3_duchi3",
+   "file": "SkillIcons/ql3_duchi3.png",
+   "kinds": [],
+   "basis": [],
+   "bases": 0,
+   "tags": []
+  },
+  {
+   "name": "ql3_duhun1",
+   "file": "SkillIcons/ql3_duhun1.png",
+   "kinds": [],
+   "basis": [],
+   "bases": 0,
+   "tags": []
+  },
+  {
+   "name": "ql3_duhun2",
+   "file": "SkillIcons/ql3_duhun2.png",
+   "kinds": [],
+   "basis": [],
+   "bases": 0,
+   "tags": []
+  },
+  {
+   "name": "ql3_feiming1",
+   "file": "SkillIcons/ql3_feiming1.png",
+   "kinds": [],
+   "basis": [],
+   "bases": 0,
+   "tags": []
+  },
+  {
+   "name": "ql3_feiming2",
+   "file": "SkillIcons/ql3_feiming2.png",
+   "kinds": [],
+   "basis": [],
+   "bases": 0,
+   "tags": []
+  },
+  {
+   "name": "ql3_huofa1",
+   "file": "SkillIcons/ql3_huofa1.png",
+   "kinds": [],
+   "basis": [],
+   "bases": 0,
+   "tags": []
+  },
+  {
+   "name": "ql3_huofa2",
+   "file": "SkillIcons/ql3_huofa2.png",
+   "kinds": [],
+   "basis": [],
+   "bases": 0,
+   "tags": []
+  },
+  {
+   "name": "ql3_jiuzhu1",
+   "file": "SkillIcons/ql3_jiuzhu1.png",
+   "kinds": [],
+   "basis": [],
+   "bases": 0,
+   "tags": []
+  },
+  {
+   "name": "ql3_jiuzhu2",
+   "file": "SkillIcons/ql3_jiuzhu2.png",
+   "kinds": [],
+   "basis": [],
+   "bases": 0,
+   "tags": []
+  },
+  {
+   "name": "ql3_lidao1",
+   "file": "SkillIcons/ql3_lidao1.png",
+   "kinds": [],
+   "basis": [],
+   "bases": 0,
+   "tags": []
+  },
+  {
+   "name": "ql3_lidao2",
+   "file": "SkillIcons/ql3_lidao2.png",
+   "kinds": [],
+   "basis": [],
+   "bases": 0,
+   "tags": []
+  },
+  {
+   "name": "ql3_muke1",
+   "file": "SkillIcons/ql3_muke1.png",
+   "kinds": [],
+   "basis": [],
+   "bases": 0,
+   "tags": []
+  },
+  {
+   "name": "ql3_muke2",
+   "file": "SkillIcons/ql3_muke2.png",
+   "kinds": [],
+   "basis": [],
+   "bases": 0,
+   "tags": []
+  },
+  {
+   "name": "ql3_panyun1",
+   "file": "SkillIcons/ql3_panyun1.png",
+   "kinds": [],
+   "basis": [],
+   "bases": 0,
+   "tags": []
+  },
+  {
+   "name": "ql3_panyun2",
+   "file": "SkillIcons/ql3_panyun2.png",
+   "kinds": [],
+   "basis": [],
+   "bases": 0,
+   "tags": []
+  },
+  {
+   "name": "ql3_qinling1",
+   "file": "SkillIcons/ql3_qinling1.png",
+   "kinds": [],
+   "basis": [],
+   "bases": 0,
+   "tags": []
+  },
+  {
+   "name": "ql3_qinling2",
+   "file": "SkillIcons/ql3_qinling2.png",
+   "kinds": [],
+   "basis": [],
+   "bases": 0,
+   "tags": []
+  },
+  {
+   "name": "ql3_renwei1",
+   "file": "SkillIcons/ql3_renwei1.png",
+   "kinds": [],
+   "basis": [],
+   "bases": 0,
+   "tags": []
+  },
+  {
+   "name": "ql3_renwei2",
+   "file": "SkillIcons/ql3_renwei2.png",
+   "kinds": [],
+   "basis": [],
+   "bases": 0,
+   "tags": []
+  },
+  {
+   "name": "ql3_ruizhua1",
+   "file": "SkillIcons/ql3_ruizhua1.png",
+   "kinds": [],
+   "basis": [],
+   "bases": 0,
+   "tags": []
+  },
+  {
+   "name": "ql3_ruizhua2",
+   "file": "SkillIcons/ql3_ruizhua2.png",
+   "kinds": [],
+   "basis": [],
+   "bases": 0,
+   "tags": []
+  },
+  {
+   "name": "ql3_shenyuan1",
+   "file": "SkillIcons/ql3_shenyuan1.png",
+   "kinds": [],
+   "basis": [],
+   "bases": 0,
+   "tags": []
+  },
+  {
+   "name": "ql3_shenyuan2",
+   "file": "SkillIcons/ql3_shenyuan2.png",
+   "kinds": [],
+   "basis": [],
+   "bases": 0,
+   "tags": []
+  },
+  {
+   "name": "ql3_shenyuan3",
+   "file": "SkillIcons/ql3_shenyuan3.png",
+   "kinds": [],
+   "basis": [],
+   "bases": 0,
+   "tags": []
+  },
+  {
+   "name": "ql3_wuxi1",
+   "file": "SkillIcons/ql3_wuxi1.png",
+   "kinds": [],
+   "basis": [],
+   "bases": 0,
+   "tags": []
+  },
+  {
+   "name": "ql3_wuxi2",
+   "file": "SkillIcons/ql3_wuxi2.png",
+   "kinds": [],
+   "basis": [],
+   "bases": 0,
+   "tags": []
+  },
+  {
+   "name": "ql3_xuanti1",
+   "file": "SkillIcons/ql3_xuanti1.png",
+   "kinds": [],
+   "basis": [],
+   "bases": 0,
+   "tags": []
+  },
+  {
+   "name": "ql3_xuanti2",
+   "file": "SkillIcons/ql3_xuanti2.png",
+   "kinds": [],
+   "basis": [],
+   "bases": 0,
+   "tags": []
+  },
+  {
+   "name": "ql3_yinfeng1",
+   "file": "SkillIcons/ql3_yinfeng1.png",
+   "kinds": [],
+   "basis": [],
+   "bases": 0,
+   "tags": []
+  },
+  {
+   "name": "ql3_yinfeng2",
+   "file": "SkillIcons/ql3_yinfeng2.png",
+   "kinds": [],
+   "basis": [],
+   "bases": 0,
+   "tags": []
+  },
+  {
+   "name": "ql3_youling1",
+   "file": "SkillIcons/ql3_youling1.png",
+   "kinds": [],
+   "basis": [],
+   "bases": 0,
+   "tags": []
+  },
+  {
+   "name": "ql3_youling2",
+   "file": "SkillIcons/ql3_youling2.png",
+   "kinds": [],
+   "basis": [],
+   "bases": 0,
+   "tags": []
+  },
+  {
+   "name": "ql3_yunling1",
+   "file": "SkillIcons/ql3_yunling1.png",
+   "kinds": [],
+   "basis": [],
+   "bases": 0,
+   "tags": []
+  },
+  {
+   "name": "ql3_yunling2",
+   "file": "SkillIcons/ql3_yunling2.png",
+   "kinds": [],
+   "basis": [],
+   "bases": 0,
+   "tags": []
+  },
+  {
+   "name": "ql3_yushi1",
+   "file": "SkillIcons/ql3_yushi1.png",
+   "kinds": [],
+   "basis": [],
+   "bases": 0,
+   "tags": []
+  },
+  {
+   "name": "ql3_yushi2",
+   "file": "SkillIcons/ql3_yushi2.png",
+   "kinds": [],
+   "basis": [],
+   "bases": 0,
+   "tags": []
+  },
+  {
+   "name": "ql3_zhenxin1",
+   "file": "SkillIcons/ql3_zhenxin1.png",
+   "kinds": [],
+   "basis": [],
+   "bases": 0,
+   "tags": []
+  },
+  {
+   "name": "ql3_zhenxin2",
+   "file": "SkillIcons/ql3_zhenxin2.png",
+   "kinds": [],
+   "basis": [],
+   "bases": 0,
+   "tags": []
+  },
+  {
+   "name": "ql_beidong",
+   "file": "SkillIcons/ql_beidong.png",
+   "kinds": [],
+   "basis": [],
+   "bases": 0,
+   "tags": []
+  },
+  {
+   "name": "ql_chimou1",
+   "file": "SkillIcons/ql_chimou1.png",
+   "kinds": [],
+   "basis": [],
+   "bases": 0,
+   "tags": []
+  },
+  {
+   "name": "ql_chimou2",
+   "file": "SkillIcons/ql_chimou2.png",
+   "kinds": [],
+   "basis": [],
+   "bases": 0,
+   "tags": []
+  },
+  {
+   "name": "quan_001",
+   "file": "SkillIcons/quan_001.png",
+   "kinds": [],
+   "basis": [],
+   "bases": 0,
+   "tags": []
+  },
+  {
+   "name": "quan_002",
+   "file": "SkillIcons/quan_002.png",
+   "kinds": [],
+   "basis": [],
+   "bases": 0,
+   "tags": []
+  },
+  {
+   "name": "shengchengziyuan",
+   "file": "SkillIcons/shengchengziyuan.png",
+   "kinds": [],
+   "basis": [],
+   "bases": 0,
+   "tags": []
+  },
+  {
+   "name": "shuangyupei",
+   "file": "SkillIcons/shuangyupei.png",
+   "kinds": [],
+   "basis": [],
+   "bases": 0,
+   "tags": []
+  },
+  {
+   "name": "taozhuangxf_1",
+   "file": "SkillIcons/taozhuangxf_1.png",
+   "kinds": [],
+   "basis": [],
+   "bases": 0,
+   "tags": []
+  },
+  {
+   "name": "taozhuangxf_10",
+   "file": "SkillIcons/taozhuangxf_10.png",
+   "kinds": [],
+   "basis": [],
+   "bases": 0,
+   "tags": []
+  },
+  {
+   "name": "taozhuangxf_11",
+   "file": "SkillIcons/taozhuangxf_11.png",
+   "kinds": [],
+   "basis": [],
+   "bases": 0,
+   "tags": []
+  },
+  {
+   "name": "taozhuangxf_12",
+   "file": "SkillIcons/taozhuangxf_12.png",
+   "kinds": [],
+   "basis": [],
+   "bases": 0,
+   "tags": []
+  },
+  {
+   "name": "taozhuangxf_13",
+   "file": "SkillIcons/taozhuangxf_13.png",
+   "kinds": [],
+   "basis": [],
+   "bases": 0,
+   "tags": []
+  },
+  {
+   "name": "taozhuangxf_14",
+   "file": "SkillIcons/taozhuangxf_14.png",
+   "kinds": [],
+   "basis": [],
+   "bases": 0,
+   "tags": []
+  },
+  {
+   "name": "taozhuangxf_15",
+   "file": "SkillIcons/taozhuangxf_15.png",
+   "kinds": [],
+   "basis": [],
+   "bases": 0,
+   "tags": []
+  },
+  {
+   "name": "taozhuangxf_16",
+   "file": "SkillIcons/taozhuangxf_16.png",
+   "kinds": [],
+   "basis": [],
+   "bases": 0,
+   "tags": []
+  },
+  {
+   "name": "taozhuangxf_17",
+   "file": "SkillIcons/taozhuangxf_17.png",
+   "kinds": [],
+   "basis": [],
+   "bases": 0,
+   "tags": []
+  },
+  {
+   "name": "taozhuangxf_18",
+   "file": "SkillIcons/taozhuangxf_18.png",
+   "kinds": [],
+   "basis": [],
+   "bases": 0,
+   "tags": []
+  },
+  {
+   "name": "taozhuangxf_19",
+   "file": "SkillIcons/taozhuangxf_19.png",
+   "kinds": [],
+   "basis": [],
+   "bases": 0,
+   "tags": []
+  },
+  {
+   "name": "taozhuangxf_2",
+   "file": "SkillIcons/taozhuangxf_2.png",
+   "kinds": [],
+   "basis": [],
+   "bases": 0,
+   "tags": []
+  },
+  {
+   "name": "taozhuangxf_20",
+   "file": "SkillIcons/taozhuangxf_20.png",
+   "kinds": [],
+   "basis": [],
+   "bases": 0,
+   "tags": []
+  },
+  {
+   "name": "taozhuangxf_21",
+   "file": "SkillIcons/taozhuangxf_21.png",
+   "kinds": [],
+   "basis": [],
+   "bases": 0,
+   "tags": []
+  },
+  {
+   "name": "taozhuangxf_22",
+   "file": "SkillIcons/taozhuangxf_22.png",
+   "kinds": [],
+   "basis": [],
+   "bases": 0,
+   "tags": []
+  },
+  {
+   "name": "taozhuangxf_23",
+   "file": "SkillIcons/taozhuangxf_23.png",
+   "kinds": [],
+   "basis": [],
+   "bases": 0,
+   "tags": []
+  },
+  {
+   "name": "taozhuangxf_24",
+   "file": "SkillIcons/taozhuangxf_24.png",
+   "kinds": [],
+   "basis": [],
+   "bases": 0,
+   "tags": []
+  },
+  {
+   "name": "taozhuangxf_3",
+   "file": "SkillIcons/taozhuangxf_3.png",
+   "kinds": [],
+   "basis": [],
+   "bases": 0,
+   "tags": []
+  },
+  {
+   "name": "taozhuangxf_4",
+   "file": "SkillIcons/taozhuangxf_4.png",
+   "kinds": [],
+   "basis": [],
+   "bases": 0,
+   "tags": []
+  },
+  {
+   "name": "taozhuangxf_5",
+   "file": "SkillIcons/taozhuangxf_5.png",
+   "kinds": [],
+   "basis": [],
+   "bases": 0,
+   "tags": []
+  },
+  {
+   "name": "taozhuangxf_6",
+   "file": "SkillIcons/taozhuangxf_6.png",
+   "kinds": [],
+   "basis": [],
+   "bases": 0,
+   "tags": []
+  },
+  {
+   "name": "taozhuangxf_7",
+   "file": "SkillIcons/taozhuangxf_7.png",
+   "kinds": [],
+   "basis": [],
+   "bases": 0,
+   "tags": []
+  },
+  {
+   "name": "taozhuangxf_8",
+   "file": "SkillIcons/taozhuangxf_8.png",
+   "kinds": [],
+   "basis": [],
+   "bases": 0,
+   "tags": []
+  },
+  {
+   "name": "taozhuangxf_9",
+   "file": "SkillIcons/taozhuangxf_9.png",
+   "kinds": [],
+   "basis": [],
+   "bases": 0,
+   "tags": []
+  },
+  {
+   "name": "tf_fabaochixushijian",
+   "file": "SkillIcons/tf_fabaochixushijian.png",
+   "kinds": [],
+   "basis": [],
+   "bases": 0,
+   "tags": []
+  },
+  {
+   "name": "tf_fabaolengqueshijian",
+   "file": "SkillIcons/tf_fabaolengqueshijian.png",
+   "kinds": [],
+   "basis": [],
+   "bases": 0,
+   "tags": []
+  },
+  {
+   "name": "tf_fangyu",
+   "file": "SkillIcons/tf_fangyu.png",
+   "kinds": [],
+   "basis": [],
+   "bases": 0,
+   "tags": []
+  },
+  {
+   "name": "tf_gongji",
+   "file": "SkillIcons/tf_gongji.png",
+   "kinds": [],
+   "basis": [],
+   "bases": 0,
+   "tags": []
+  },
+  {
+   "name": "tf_huixin",
+   "file": "SkillIcons/tf_huixin.png",
+   "kinds": [],
+   "basis": [],
+   "bases": 0,
+   "tags": []
+  },
+  {
+   "name": "tf_huixinbeilv",
+   "file": "SkillIcons/tf_huixinbeilv.png",
+   "kinds": [],
+   "basis": [],
+   "bases": 0,
+   "tags": []
+  },
+  {
+   "name": "tf_hunli",
+   "file": "SkillIcons/tf_hunli.png",
+   "kinds": [],
+   "basis": [],
+   "bases": 0,
+   "tags": []
+  },
+  {
+   "name": "tf_huxin",
+   "file": "SkillIcons/tf_huxin.png",
+   "kinds": [],
+   "basis": [],
+   "bases": 0,
+   "tags": []
+  },
+  {
+   "name": "tf_huxinbeilv",
+   "file": "SkillIcons/tf_huxinbeilv.png",
+   "kinds": [],
+   "basis": [],
+   "bases": 0,
+   "tags": []
+  },
+  {
+   "name": "tf_shengming",
+   "file": "SkillIcons/tf_shengming.png",
+   "kinds": [],
+   "basis": [],
+   "bases": 0,
+   "tags": []
+  },
+  {
+   "name": "tf_xiaohaolianli",
+   "file": "SkillIcons/tf_xiaohaolianli.png",
+   "kinds": [],
+   "basis": [],
+   "bases": 0,
+   "tags": []
+  },
+  {
+   "name": "tf_zhanyongnianli",
+   "file": "SkillIcons/tf_zhanyongnianli.png",
+   "kinds": [],
+   "basis": [],
+   "bases": 0,
+   "tags": []
+  },
+  {
+   "name": "tianlingjianyi",
+   "file": "SkillIcons/tianlingjianyi.png",
+   "kinds": [],
+   "basis": [],
+   "bases": 0,
+   "tags": []
+  },
+  {
+   "name": "tianlingjianyijueyingshi",
+   "file": "SkillIcons/tianlingjianyijueyingshi.png",
+   "kinds": [],
+   "basis": [],
+   "bases": 0,
+   "tags": []
+  },
+  {
+   "name": "tianyuliuguang",
+   "file": "SkillIcons/tianyuliuguang.png",
+   "kinds": [],
+   "basis": [],
+   "bases": 0,
+   "tags": []
+  },
+  {
+   "name": "tiejiang1",
+   "file": "SkillIcons/tiejiang1.png",
+   "kinds": [],
+   "basis": [],
+   "bases": 0,
+   "tags": []
+  },
+  {
+   "name": "tishengfanwei",
+   "file": "SkillIcons/tishengfanwei.png",
+   "kinds": [],
+   "basis": [],
+   "bases": 0,
+   "tags": []
+  },
+  {
+   "name": "tishengjingquedu",
+   "file": "SkillIcons/tishengjingquedu.png",
+   "kinds": [],
+   "basis": [],
+   "bases": 0,
+   "tags": []
+  },
+  {
+   "name": "tishengziyuanshuzhi",
+   "file": "SkillIcons/tishengziyuanshuzhi.png",
+   "kinds": [],
+   "basis": [],
+   "bases": 0,
+   "tags": []
+  },
+  {
+   "name": "type_1",
+   "file": "SkillIcons/type_1.png",
+   "kinds": [],
+   "basis": [],
+   "bases": 0,
+   "tags": []
+  },
+  {
+   "name": "type_2",
+   "file": "SkillIcons/type_2.png",
+   "kinds": [],
+   "basis": [],
+   "bases": 0,
+   "tags": []
+  },
+  {
+   "name": "type_3",
+   "file": "SkillIcons/type_3.png",
+   "kinds": [],
+   "basis": [],
+   "bases": 0,
+   "tags": []
+  },
+  {
+   "name": "type_4",
+   "file": "SkillIcons/type_4.png",
+   "kinds": [],
+   "basis": [],
+   "bases": 0,
+   "tags": []
+  },
+  {
+   "name": "type_5",
+   "file": "SkillIcons/type_5.png",
+   "kinds": [],
+   "basis": [],
+   "bases": 0,
+   "tags": []
+  },
+  {
+   "name": "type_6",
+   "file": "SkillIcons/type_6.png",
+   "kinds": [],
+   "basis": [],
+   "bases": 0,
+   "tags": []
+  },
+  {
+   "name": "type_7",
+   "file": "SkillIcons/type_7.png",
+   "kinds": [],
+   "basis": [],
+   "bases": 0,
+   "tags": []
+  },
+  {
+   "name": "type_8",
+   "file": "SkillIcons/type_8.png",
+   "kinds": [],
+   "basis": [],
+   "bases": 0,
+   "tags": []
+  },
+  {
+   "name": "wafen",
+   "file": "SkillIcons/wafen.png",
+   "kinds": [],
+   "basis": [],
+   "bases": 0,
+   "tags": []
+  },
+  {
+   "name": "xianzi1",
+   "file": "SkillIcons/xianzi1.png",
+   "kinds": [],
+   "basis": [],
+   "bases": 0,
+   "tags": []
+  },
+  {
+   "name": "xingtaishentong_1",
+   "file": "SkillIcons/xingtaishentong_1.png",
+   "kinds": [],
+   "basis": [],
+   "bases": 0,
+   "tags": []
+  },
+  {
+   "name": "xingtaishentong_2",
+   "file": "SkillIcons/xingtaishentong_2.png",
+   "kinds": [],
+   "basis": [],
+   "bases": 0,
+   "tags": []
+  },
+  {
+   "name": "xingtaishentong_3",
+   "file": "SkillIcons/xingtaishentong_3.png",
+   "kinds": [],
+   "basis": [],
+   "bases": 0,
+   "tags": []
+  },
+  {
+   "name": "xueying1",
+   "file": "SkillIcons/xueying1.png",
+   "kinds": [],
+   "basis": [],
+   "bases": 0,
+   "tags": []
+  },
+  {
+   "name": "xunchou1",
+   "file": "SkillIcons/xunchou1.png",
+   "kinds": [],
+   "basis": [],
+   "bases": 0,
+   "tags": []
+  },
+  {
+   "name": "yimu1",
+   "file": "SkillIcons/yimu1.png",
+   "kinds": [],
+   "basis": [],
+   "bases": 0,
+   "tags": []
+  },
+  {
+   "name": "yindeyuanman1",
+   "file": "SkillIcons/yindeyuanman1.png",
+   "kinds": [],
+   "basis": [],
+   "bases": 0,
+   "tags": []
+  },
+  {
+   "name": "yiriqianli1",
+   "file": "SkillIcons/yiriqianli1.png",
+   "kinds": [],
+   "basis": [],
+   "bases": 0,
+   "tags": []
+  },
+  {
+   "name": "youhaoqiecuo1",
+   "file": "SkillIcons/youhaoqiecuo1.png",
+   "kinds": [],
+   "basis": [],
+   "bases": 0,
+   "tags": []
+  },
+  {
+   "name": "youyingbiyu",
+   "file": "SkillIcons/youyingbiyu.png",
+   "kinds": [],
+   "basis": [],
+   "bases": 0,
+   "tags": []
+  },
+  {
+   "name": "yunmengwuhen1",
+   "file": "SkillIcons/yunmengwuhen1.png",
+   "kinds": [],
+   "basis": [],
+   "bases": 0,
+   "tags": []
+  },
+  {
+   "name": "zhang_001",
+   "file": "SkillIcons/zhang_001.png",
+   "kinds": [],
+   "basis": [],
+   "bases": 0,
+   "tags": []
+  },
+  {
+   "name": "zhang_002",
+   "file": "SkillIcons/zhang_002.png",
+   "kinds": [],
+   "basis": [],
+   "bases": 0,
+   "tags": []
+  },
+  {
+   "name": "zhenyuliusha",
+   "file": "SkillIcons/zhenyuliusha.png",
+   "kinds": [],
+   "basis": [],
+   "bases": 0,
+   "tags": []
+  },
+  {
+   "name": "zhi_001",
+   "file": "SkillIcons/zhi_001.png",
+   "kinds": [],
+   "basis": [],
+   "bases": 0,
+   "tags": []
+  },
+  {
+   "name": "zhi_002",
+   "file": "SkillIcons/zhi_002.png",
+   "kinds": [],
+   "basis": [],
+   "bases": 0,
+   "tags": []
+  },
+  {
+   "name": "zhudongxf_1",
+   "file": "SkillIcons/zhudongxf_1.png",
+   "kinds": [],
+   "basis": [],
+   "bases": 0,
+   "tags": []
+  },
+  {
+   "name": "zhudongxf_10",
+   "file": "SkillIcons/zhudongxf_10.png",
+   "kinds": [],
+   "basis": [],
+   "bases": 0,
+   "tags": []
+  },
+  {
+   "name": "zhudongxf_11",
+   "file": "SkillIcons/zhudongxf_11.png",
+   "kinds": [],
+   "basis": [],
+   "bases": 0,
+   "tags": []
+  },
+  {
+   "name": "zhudongxf_12",
+   "file": "SkillIcons/zhudongxf_12.png",
+   "kinds": [],
+   "basis": [],
+   "bases": 0,
+   "tags": []
+  },
+  {
+   "name": "zhudongxf_13",
+   "file": "SkillIcons/zhudongxf_13.png",
+   "kinds": [],
+   "basis": [],
+   "bases": 0,
+   "tags": []
+  },
+  {
+   "name": "zhudongxf_14",
+   "file": "SkillIcons/zhudongxf_14.png",
+   "kinds": [],
+   "basis": [],
+   "bases": 0,
+   "tags": []
+  },
+  {
+   "name": "zhudongxf_15",
+   "file": "SkillIcons/zhudongxf_15.png",
+   "kinds": [],
+   "basis": [],
+   "bases": 0,
+   "tags": []
+  },
+  {
+   "name": "zhudongxf_16",
+   "file": "SkillIcons/zhudongxf_16.png",
+   "kinds": [],
+   "basis": [],
+   "bases": 0,
+   "tags": []
+  },
+  {
+   "name": "zhudongxf_17",
+   "file": "SkillIcons/zhudongxf_17.png",
+   "kinds": [],
+   "basis": [],
+   "bases": 0,
+   "tags": []
+  },
+  {
+   "name": "zhudongxf_18",
+   "file": "SkillIcons/zhudongxf_18.png",
+   "kinds": [],
+   "basis": [],
+   "bases": 0,
+   "tags": []
+  },
+  {
+   "name": "zhudongxf_19",
+   "file": "SkillIcons/zhudongxf_19.png",
+   "kinds": [],
+   "basis": [],
+   "bases": 0,
+   "tags": []
+  },
+  {
+   "name": "zhudongxf_2",
+   "file": "SkillIcons/zhudongxf_2.png",
+   "kinds": [],
+   "basis": [],
+   "bases": 0,
+   "tags": []
+  },
+  {
+   "name": "zhudongxf_20",
+   "file": "SkillIcons/zhudongxf_20.png",
+   "kinds": [],
+   "basis": [],
+   "bases": 0,
+   "tags": []
+  },
+  {
+   "name": "zhudongxf_21",
+   "file": "SkillIcons/zhudongxf_21.png",
+   "kinds": [],
+   "basis": [],
+   "bases": 0,
+   "tags": []
+  },
+  {
+   "name": "zhudongxf_22",
+   "file": "SkillIcons/zhudongxf_22.png",
+   "kinds": [],
+   "basis": [],
+   "bases": 0,
+   "tags": []
+  },
+  {
+   "name": "zhudongxf_23",
+   "file": "SkillIcons/zhudongxf_23.png",
+   "kinds": [],
+   "basis": [],
+   "bases": 0,
+   "tags": []
+  },
+  {
+   "name": "zhudongxf_24",
+   "file": "SkillIcons/zhudongxf_24.png",
+   "kinds": [],
+   "basis": [],
+   "bases": 0,
+   "tags": []
+  },
+  {
+   "name": "zhudongxf_25",
+   "file": "SkillIcons/zhudongxf_25.png",
+   "kinds": [],
+   "basis": [],
+   "bases": 0,
+   "tags": []
+  },
+  {
+   "name": "zhudongxf_26",
+   "file": "SkillIcons/zhudongxf_26.png",
+   "kinds": [],
+   "basis": [],
+   "bases": 0,
+   "tags": []
+  },
+  {
+   "name": "zhudongxf_27",
+   "file": "SkillIcons/zhudongxf_27.png",
+   "kinds": [],
+   "basis": [],
+   "bases": 0,
+   "tags": []
+  },
+  {
+   "name": "zhudongxf_28",
+   "file": "SkillIcons/zhudongxf_28.png",
+   "kinds": [],
+   "basis": [],
+   "bases": 0,
+   "tags": []
+  },
+  {
+   "name": "zhudongxf_29",
+   "file": "SkillIcons/zhudongxf_29.png",
+   "kinds": [],
+   "basis": [],
+   "bases": 0,
+   "tags": []
+  },
+  {
+   "name": "zhudongxf_3",
+   "file": "SkillIcons/zhudongxf_3.png",
+   "kinds": [],
+   "basis": [],
+   "bases": 0,
+   "tags": []
+  },
+  {
+   "name": "zhudongxf_30",
+   "file": "SkillIcons/zhudongxf_30.png",
+   "kinds": [],
+   "basis": [],
+   "bases": 0,
+   "tags": []
+  },
+  {
+   "name": "zhudongxf_31",
+   "file": "SkillIcons/zhudongxf_31.png",
+   "kinds": [],
+   "basis": [],
+   "bases": 0,
+   "tags": []
+  },
+  {
+   "name": "zhudongxf_32",
+   "file": "SkillIcons/zhudongxf_32.png",
+   "kinds": [],
+   "basis": [],
+   "bases": 0,
+   "tags": []
+  },
+  {
+   "name": "zhudongxf_33",
+   "file": "SkillIcons/zhudongxf_33.png",
+   "kinds": [],
+   "basis": [],
+   "bases": 0,
+   "tags": []
+  },
+  {
+   "name": "zhudongxf_34",
+   "file": "SkillIcons/zhudongxf_34.png",
+   "kinds": [],
+   "basis": [],
+   "bases": 0,
+   "tags": []
+  },
+  {
+   "name": "zhudongxf_35",
+   "file": "SkillIcons/zhudongxf_35.png",
+   "kinds": [],
+   "basis": [],
+   "bases": 0,
+   "tags": []
+  },
+  {
+   "name": "zhudongxf_36",
+   "file": "SkillIcons/zhudongxf_36.png",
+   "kinds": [],
+   "basis": [],
+   "bases": 0,
+   "tags": []
+  },
+  {
+   "name": "zhudongxf_37",
+   "file": "SkillIcons/zhudongxf_37.png",
+   "kinds": [],
+   "basis": [],
+   "bases": 0,
+   "tags": []
+  },
+  {
+   "name": "zhudongxf_38",
+   "file": "SkillIcons/zhudongxf_38.png",
+   "kinds": [],
+   "basis": [],
+   "bases": 0,
+   "tags": []
+  },
+  {
+   "name": "zhudongxf_39",
+   "file": "SkillIcons/zhudongxf_39.png",
+   "kinds": [],
+   "basis": [],
+   "bases": 0,
+   "tags": []
+  },
+  {
+   "name": "zhudongxf_4",
+   "file": "SkillIcons/zhudongxf_4.png",
+   "kinds": [],
+   "basis": [],
+   "bases": 0,
+   "tags": []
+  },
+  {
+   "name": "zhudongxf_40",
+   "file": "SkillIcons/zhudongxf_40.png",
+   "kinds": [],
+   "basis": [],
+   "bases": 0,
+   "tags": []
+  },
+  {
+   "name": "zhudongxf_41",
+   "file": "SkillIcons/zhudongxf_41.png",
+   "kinds": [],
+   "basis": [],
+   "bases": 0,
+   "tags": []
+  },
+  {
+   "name": "zhudongxf_42",
+   "file": "SkillIcons/zhudongxf_42.png",
+   "kinds": [],
+   "basis": [],
+   "bases": 0,
+   "tags": []
+  },
+  {
+   "name": "zhudongxf_43",
+   "file": "SkillIcons/zhudongxf_43.png",
+   "kinds": [],
+   "basis": [],
+   "bases": 0,
+   "tags": []
+  },
+  {
+   "name": "zhudongxf_44",
+   "file": "SkillIcons/zhudongxf_44.png",
+   "kinds": [
+    "attack"
+   ],
+   "basis": [
+    "basSword"
+   ],
+   "bases": 1,
+   "tags": [
+    "sword",
+    "frost"
+   ]
+  },
+  {
+   "name": "zhudongxf_45",
+   "file": "SkillIcons/zhudongxf_45.png",
+   "kinds": [],
+   "basis": [],
+   "bases": 0,
+   "tags": []
+  },
+  {
+   "name": "zhudongxf_46",
+   "file": "SkillIcons/zhudongxf_46.png",
+   "kinds": [],
+   "basis": [],
+   "bases": 0,
+   "tags": []
+  },
+  {
+   "name": "zhudongxf_47",
+   "file": "SkillIcons/zhudongxf_47.png",
+   "kinds": [],
+   "basis": [],
+   "bases": 0,
+   "tags": []
+  },
+  {
+   "name": "zhudongxf_48",
+   "file": "SkillIcons/zhudongxf_48.png",
+   "kinds": [],
+   "basis": [],
+   "bases": 0,
+   "tags": []
+  },
+  {
+   "name": "zhudongxf_49",
+   "file": "SkillIcons/zhudongxf_49.png",
+   "kinds": [],
+   "basis": [],
+   "bases": 0,
+   "tags": []
+  },
+  {
+   "name": "zhudongxf_5",
+   "file": "SkillIcons/zhudongxf_5.png",
+   "kinds": [],
+   "basis": [],
+   "bases": 0,
+   "tags": []
+  },
+  {
+   "name": "zhudongxf_50",
+   "file": "SkillIcons/zhudongxf_50.png",
+   "kinds": [],
+   "basis": [],
+   "bases": 0,
+   "tags": []
+  },
+  {
+   "name": "zhudongxf_51",
+   "file": "SkillIcons/zhudongxf_51.png",
+   "kinds": [],
+   "basis": [],
+   "bases": 0,
+   "tags": []
+  },
+  {
+   "name": "zhudongxf_52",
+   "file": "SkillIcons/zhudongxf_52.png",
+   "kinds": [],
+   "basis": [],
+   "bases": 0,
+   "tags": []
+  },
+  {
+   "name": "zhudongxf_53",
+   "file": "SkillIcons/zhudongxf_53.png",
+   "kinds": [],
+   "basis": [],
+   "bases": 0,
+   "tags": []
+  },
+  {
+   "name": "zhudongxf_54",
+   "file": "SkillIcons/zhudongxf_54.png",
+   "kinds": [],
+   "basis": [],
+   "bases": 0,
+   "tags": []
+  },
+  {
+   "name": "zhudongxf_6",
+   "file": "SkillIcons/zhudongxf_6.png",
+   "kinds": [],
+   "basis": [],
+   "bases": 0,
+   "tags": []
+  },
+  {
+   "name": "zhudongxf_7",
+   "file": "SkillIcons/zhudongxf_7.png",
+   "kinds": [],
+   "basis": [],
+   "bases": 0,
+   "tags": []
+  },
+  {
+   "name": "zhudongxf_8",
+   "file": "SkillIcons/zhudongxf_8.png",
+   "kinds": [],
+   "basis": [],
+   "bases": 0,
+   "tags": []
+  },
+  {
+   "name": "zhudongxf_9",
+   "file": "SkillIcons/zhudongxf_9.png",
+   "kinds": [],
+   "basis": [],
+   "bases": 0,
+   "tags": []
+  },
+  {
+   "name": "zongmu1",
+   "file": "SkillIcons/zongmu1.png",
+   "kinds": [],
+   "basis": [],
+   "bases": 0,
+   "tags": []
+  }
  ]
 }

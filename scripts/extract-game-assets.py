@@ -12,11 +12,15 @@ extracted again:
   - Buildings/<atlas>/<name>.png: the sprites of the atlases TownCommon (buildings of the towns), CommonMapGrid
     (buildings and places of the world map), VillageCommon, SchoolCommon (the Build* sprites: halls of the sects)
     (SpriteTool.GetSprite(atlas, name), EstateEvent);
+  - SkillIcons/<name>.png: the sprites of the atlas CommonSkillIcon (the "icon" of BattleSkillAttack / BattleStepBase:
+    the icons of the martial arts in battle, SpriteTool.GetSprite("CommonSkillIcon", icon)), with skills.json: icon ->
+    the martial arts a player can learn that use it (id, kind, basis "basType" of the config, MP cost); tags.json
+    (kept, written by hand after a review of the pictures: basis + what the picture shows) is shown in the gallery;
   - index.json (names, sizes) and index.html (gallery with a search box).
 Files already extracted are kept (--force to extract again).
 
 usage:
-  python GuiGuBaHuang-ModLib/scripts/extract-game-assets.py [--icons] [--backgrounds] [--items] [--buildings] [--force]      (none: all)
+  python GuiGuBaHuang-ModLib/scripts/extract-game-assets.py [--icons] [--backgrounds] [--items] [--buildings] [--skills] [--force]      (none: all)
 needs: pip install UnityPy Pillow
 """
 import argparse
@@ -202,6 +206,56 @@ def buildings(out_dir, force):
     return done
 
 
+# kind of a martial art: BattleSkillAttack type (1/2 attack, 3 spell, 4 ultimate), BattleStepBase: step
+SKILL_KINDS = {'1': 'attack', '2': 'attack', '3': 'spell', '4': 'ultimate'}
+
+
+def skill_icons(out_dir, force):
+    """The sprites of the atlas CommonSkillIcon: SkillIcons/<name>.png, and skills.json (icon -> martial arts a player
+    can learn that use it: those with a class, as SkillForgeEvent.GetBaseIds)."""
+    uses = {}
+    for f, step in [('BattleSkillAttack.json', False), ('DLCBattleSkillAttack.json', False), ('BattleStepBase.json', True)]:
+        p = os.path.join(SAMPLE_CONFS, f)
+        if not os.path.exists(p):
+            continue
+        for x in json.load(open(p, encoding='utf-8-sig')):
+            icon = x.get('icon')
+            if icon in (None, '', '0') or x.get('className') in (None, '', '0') or x.get('name') in (None, '', '0'):
+                continue
+            uses.setdefault(icon, []).append({'id': int(x['id']), 'kind': 'step' if step else SKILL_KINDS.get(x.get('type'), x.get('type')),
+                                              'basis': x.get('basType') or '0', 'mp': x.get('mpCost')})
+    data = game_data()
+    env = UnityPy.load(os.path.join(data, 'globalgamemanagers'), os.path.join(data, 'resources.assets'))
+    files = {os.path.basename(k).lower(): f for k, f in env.files.items()}
+    rm = next(o for o in files['globalgamemanagers'].objects.values() if o.type.name == 'ResourceManager').read_typetree()
+    res = files['resources.assets']
+    cat = {c[0]: c[1]['m_PathID'] for c in rm['m_Container']}
+    key = 'spriteatlas/commonskillicon'
+    if key not in cat:
+        print('  atlas not found: CommonSkillIcon')
+        return []
+    os.makedirs(out_dir, exist_ok=True)
+    tags_path = os.path.join(out_dir, 'tags.json')
+    tags = json.load(open(tags_path, encoding='utf-8')).get('tags', {}) if os.path.exists(tags_path) else {}
+    done = []
+    for ptr in res.objects[cat[key]].read().m_PackedSprites:
+        try:
+            sp = ptr.read()
+            path = os.path.join(out_dir, f'{sp.m_Name}.png')
+            if force or not os.path.exists(path):
+                sp.image.save(path)
+            u = uses.get(sp.m_Name, [])
+            done.append({'name': sp.m_Name, 'file': f'SkillIcons/{sp.m_Name}.png',
+                         'kinds': sorted({x['kind'] for x in u}), 'basis': sorted({x['basis'] for x in u if x['basis'] != '0'}), 'bases': len(u),
+                         'tags': tags.get(sp.m_Name, [])})
+        except Exception as e:
+            print('  sprite', e)
+    done.sort(key=lambda x: x['name'].lower())
+    json.dump({k: v for k, v in sorted(uses.items())}, open(os.path.join(out_dir, 'skills.json'), 'w', encoding='utf-8', newline='\n'), indent=0)
+    print(f'skill icons: {len(done)} ({sum(1 for x in done if x["bases"])} used by martial arts of the player) -> {out_dir}')
+    return done
+
+
 GALLERY = """<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Game Assets</title><style>
 :root{--bg:#f6f7f9;--panel:#fff;--line:#e2e6eb;--text:#1d2330;--muted:#6b7380}
@@ -217,6 +271,8 @@ main.items{grid-template-columns:repeat(auto-fill,minmax(120px,1fr))}
 .items figure img{height:64px}
 main.bgs{grid-template-columns:repeat(auto-fill,minmax(240px,1fr))}
 main.builds{grid-template-columns:repeat(auto-fill,minmax(170px,1fr))}
+main.skills{grid-template-columns:repeat(auto-fill,minmax(120px,1fr))}
+.skills figure img{height:64px}
 .builds figure img{height:130px;object-fit:contain;background:repeating-conic-gradient(#0001 0 25%,#0000 0 50%) 0 0/16px 16px}
 figure{margin:0;background:var(--panel);border:1px solid var(--line);border-radius:8px;padding:8px;text-align:center;cursor:copy}
 figure img{max-width:100%;image-rendering:auto}
@@ -228,16 +284,17 @@ figcaption{font-family:ui-monospace,Consolas,monospace;font-size:12px;color:var(
 .viewers a+a{border-left:1px solid var(--line)}
 .viewers a:hover{color:var(--text);background:var(--bg)}
 .viewers a.on{background:#3b6fd8;color:#fff;font-weight:600}
-</style></head><body><header><b>Game Assets</b><span class="tabs"><button data-k="icons" class="on">Text icons</button><button data-k="bgs">Drama backgrounds</button><button data-k="items">Item icons</button><button data-k="builds">Buildings</button></span>
+</style></head><body><header><b>Game Assets</b><span class="tabs"><button data-k="icons" class="on">Text icons</button><button data-k="bgs">Drama backgrounds</button><button data-k="items">Item icons</button><button data-k="builds">Buildings</button><button data-k="skills">Skill icons</button></span>
 <input id="q" type="search" placeholder="Filter by name..."><span class="count" id="count"></span>
-<nav class="viewers" aria-label="Viewers"><a href="../../../logs/test-viewer/index.html" title="Results of the autotest and the unit tests">Tests</a><a href="../../effect-viewer/index.html" title="Effects recorded by the galleries (TE-xx)">Effects</a><a href="../../../logs/promo-viewer/index.html" title="Steam Workshop pictures, promotion takes, marketing videos">Promo</a><a class="on" aria-current="page" href="index.html" title="Pictures extracted from the game">Assets</a></nav></header><main id="main"></main>
-<script>const DATA=__DATA__;let kind='icons';const L=()=>DATA[{icons:'icons',bgs:'backgrounds',items:'items',builds:'buildings'}[kind]]||[];
-function show(){const q=document.getElementById('q').value.toLowerCase();const list=L().filter(x=>x.name.toLowerCase().includes(q));
-const m=document.getElementById('main');m.className=kind;m.innerHTML=list.map(x=>`<figure title="click: copy the name" data-n="${x.name}"><img loading="lazy" src="${x.file}" alt=""><figcaption>${x.name}${x.items?' ('+x.items.join(', ')+')':''}${x.w&&kind==='builds'?' '+x.w+'x'+x.h:''}</figcaption></figure>`).join('');
+<nav class="viewers" aria-label="Viewers"><a href="../../../logs/test-viewer/index.html" title="Results of the autotest and the unit tests">Tests</a><a href="../../effect-viewer/index.html" title="Effects recorded by the galleries (TE-xx)">Effects</a><a href="../../../logs/promo-viewer/index.html" title="Steam Workshop pictures, promotion takes, marketing videos">Promo</a><a class="on" aria-current="page" href="index.html" title="Pictures extracted from the game: text icons, drama backgrounds, item icons, buildings, skill icons">Assets</a></nav></header><main id="main"></main>
+<script>const DATA=__DATA__;let kind='icons';const L=()=>DATA[{icons:'icons',bgs:'backgrounds',items:'items',builds:'buildings',skills:'skills'}[kind]]||[];
+const info=x=>x.kinds?` [${x.kinds.join(', ')}${x.tags&&x.tags.length?' · '+x.tags.join(', '):''}]`:'';
+function show(){const q=document.getElementById('q').value.toLowerCase();const list=L().filter(x=>(x.name+info(x)).toLowerCase().includes(q));
+const m=document.getElementById('main');m.className=kind;m.innerHTML=list.map(x=>`<figure title="click: copy the name" data-n="${x.name}"><img loading="lazy" src="${x.file}" alt=""><figcaption>${x.name}${x.items?' ('+x.items.join(', ')+')':''}${x.w&&kind==='builds'?' '+x.w+'x'+x.h:''}${kind==='skills'?info(x):''}</figcaption></figure>`).join('');
 document.getElementById('count').textContent=list.length+' / '+L().length;}
 function pick(k){kind=k;document.querySelectorAll('.tabs button').forEach(x=>x.classList.toggle('on',x.dataset.k===k));history.replaceState(null,'','#'+k);show();}
 document.querySelectorAll('.tabs button').forEach(b=>b.onclick=()=>pick(b.dataset.k));
-if(['icons','bgs','items','builds'].includes(location.hash.slice(1)))kind=location.hash.slice(1),document.querySelectorAll('.tabs button').forEach(x=>x.classList.toggle('on',x.dataset.k===kind));
+if(['icons','bgs','items','builds','skills'].includes(location.hash.slice(1)))kind=location.hash.slice(1),document.querySelectorAll('.tabs button').forEach(x=>x.classList.toggle('on',x.dataset.k===kind));
 document.getElementById('q').oninput=show;document.getElementById('main').onclick=e=>{const f=e.target.closest('figure');if(f)navigator.clipboard&&navigator.clipboard.writeText(f.dataset.n);};show();</script></body></html>
 """
 
@@ -248,9 +305,10 @@ def main():
     ap.add_argument('--backgrounds', action='store_true')
     ap.add_argument('--items', action='store_true')
     ap.add_argument('--buildings', action='store_true')
+    ap.add_argument('--skills', action='store_true')
     ap.add_argument('--force', action='store_true')
     a = ap.parse_args()
-    both = not a.icons and not a.backgrounds and not a.items and not a.buildings
+    both = not a.icons and not a.backgrounds and not a.items and not a.buildings and not a.skills
     env = UnityPy.load(os.path.join(game_data(), 'resources.assets'))
     index_path = os.path.join(OUT, 'index.json')
     index = json.load(open(index_path, encoding='utf-8')) if os.path.exists(index_path) else {'icons': [], 'backgrounds': []}
@@ -262,6 +320,8 @@ def main():
         index['items'] = item_icons(env, os.path.join(OUT, 'ItemIcons'), a.force)
     if a.buildings or both:
         index['buildings'] = buildings(os.path.join(OUT, 'Buildings'), a.force)
+    if a.skills or both:
+        index['skills'] = skill_icons(os.path.join(OUT, 'SkillIcons'), a.force)
     os.makedirs(OUT, exist_ok=True)
     json.dump(index, open(index_path, 'w', encoding='utf-8', newline='\n'), ensure_ascii=False, indent=1)
     open(os.path.join(OUT, 'index.html'), 'w', encoding='utf-8', newline='\n').write(GALLERY.replace('__DATA__', json.dumps(index, ensure_ascii=False)))

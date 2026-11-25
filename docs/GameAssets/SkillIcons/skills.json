@@ -1,0 +1,1436 @@
+{
+"12111": [
+{
+"id": 12111,
+"kind": "attack",
+"basis": "basBlade",
+"mp": "0"
+}
+],
+"12112": [
+{
+"id": 12112,
+"kind": "attack",
+"basis": "basBlade",
+"mp": "0"
+}
+],
+"12113": [
+{
+"id": 12113,
+"kind": "attack",
+"basis": "basBlade",
+"mp": "0"
+}
+],
+"13111": [
+{
+"id": 13111,
+"kind": "attack",
+"basis": "basSpear",
+"mp": "0"
+}
+],
+"13112": [
+{
+"id": 13112,
+"kind": "attack",
+"basis": "basSpear",
+"mp": "0"
+}
+],
+"13113": [
+{
+"id": 13113,
+"kind": "attack",
+"basis": "basSpear",
+"mp": "0"
+},
+{
+"id": 203,
+"kind": "attack",
+"basis": "basSpear",
+"mp": "0"
+}
+],
+"14111": [
+{
+"id": 14111,
+"kind": "attack",
+"basis": "basSword",
+"mp": "0"
+}
+],
+"14112": [
+{
+"id": 14112,
+"kind": "attack",
+"basis": "basSword",
+"mp": "0"
+}
+],
+"14113": [
+{
+"id": 14113,
+"kind": "attack",
+"basis": "basSword",
+"mp": "0"
+}
+],
+"15111": [
+{
+"id": 15111,
+"kind": "attack",
+"basis": "basFist",
+"mp": "0"
+},
+{
+"id": 401,
+"kind": "attack",
+"basis": "basFist",
+"mp": "0"
+}
+],
+"15112": [
+{
+"id": 15112,
+"kind": "attack",
+"basis": "basFist",
+"mp": "0"
+}
+],
+"15113": [
+{
+"id": 15113,
+"kind": "attack",
+"basis": "basFist",
+"mp": "0"
+}
+],
+"16111": [
+{
+"id": 16111,
+"kind": "attack",
+"basis": "basPalm",
+"mp": "0"
+},
+{
+"id": 501,
+"kind": "attack",
+"basis": "basPalm",
+"mp": "0"
+}
+],
+"16112": [
+{
+"id": 16112,
+"kind": "attack",
+"basis": "basPalm",
+"mp": "0"
+}
+],
+"16113": [
+{
+"id": 16113,
+"kind": "attack",
+"basis": "basPalm",
+"mp": "0"
+}
+],
+"17111": [
+{
+"id": 17111,
+"kind": "attack",
+"basis": "basFinger",
+"mp": "0"
+},
+{
+"id": 82050,
+"kind": "attack",
+"basis": "basFinger",
+"mp": "0"
+}
+],
+"17112": [
+{
+"id": 17112,
+"kind": "attack",
+"basis": "basFinger",
+"mp": "0"
+},
+{
+"id": 82060,
+"kind": "attack",
+"basis": "basFinger",
+"mp": "0"
+}
+],
+"17113": [
+{
+"id": 17113,
+"kind": "attack",
+"basis": "basFinger",
+"mp": "0"
+}
+],
+"22111": [
+{
+"id": 22111,
+"kind": "spell",
+"basis": "basBlade",
+"mp": "&22111_mpCost"
+},
+{
+"id": 102,
+"kind": "attack",
+"basis": "basBlade",
+"mp": "0"
+}
+],
+"22112": [
+{
+"id": 22112,
+"kind": "spell",
+"basis": "basBlade",
+"mp": "&22112_mpCost"
+}
+],
+"22113": [
+{
+"id": 22113,
+"kind": "spell",
+"basis": "basBlade",
+"mp": "&22113_mpCost"
+}
+],
+"22114": [
+{
+"id": 22114,
+"kind": "spell",
+"basis": "basBlade",
+"mp": "&22114_mpCost"
+},
+{
+"id": 103,
+"kind": "attack",
+"basis": "basBlade",
+"mp": "0"
+}
+],
+"22115": [
+{
+"id": 22115,
+"kind": "spell",
+"basis": "basBlade",
+"mp": "&22115_mpCost"
+},
+{
+"id": 104,
+"kind": "attack",
+"basis": "basBlade",
+"mp": "0"
+}
+],
+"22116": [
+{
+"id": 22116,
+"kind": "spell",
+"basis": "basBlade",
+"mp": "&22116_mpCost"
+}
+],
+"23111": [
+{
+"id": 23111,
+"kind": "spell",
+"basis": "basSpear",
+"mp": "&23111_mpCost"
+},
+{
+"id": 201,
+"kind": "attack",
+"basis": "basSpear",
+"mp": "0"
+}
+],
+"23112": [
+{
+"id": 23112,
+"kind": "spell",
+"basis": "basSpear",
+"mp": "&23112_mpCost"
+},
+{
+"id": 202,
+"kind": "attack",
+"basis": "basSpear",
+"mp": "0"
+}
+],
+"23113": [
+{
+"id": 23113,
+"kind": "spell",
+"basis": "basSpear",
+"mp": "&23113_mpCost"
+}
+],
+"23114": [
+{
+"id": 23114,
+"kind": "spell",
+"basis": "basSpear",
+"mp": "&23114_mpCost"
+}
+],
+"23115": [
+{
+"id": 23115,
+"kind": "spell",
+"basis": "basSpear",
+"mp": "&23115_mpCost"
+}
+],
+"23116": [
+{
+"id": 23116,
+"kind": "spell",
+"basis": "basSpear",
+"mp": "&23116_mpCost"
+}
+],
+"24111": [
+{
+"id": 24111,
+"kind": "spell",
+"basis": "basSword",
+"mp": "&24111_mpCost"
+},
+{
+"id": 302,
+"kind": "attack",
+"basis": "basSword",
+"mp": "0"
+}
+],
+"24112": [
+{
+"id": 24112,
+"kind": "spell",
+"basis": "basSword",
+"mp": "&24112_mpCost"
+}
+],
+"24113": [
+{
+"id": 24113,
+"kind": "spell",
+"basis": "basSword",
+"mp": "&24113_mpCost"
+}
+],
+"24114": [
+{
+"id": 24114,
+"kind": "spell",
+"basis": "basSword",
+"mp": "&24114_mpCost"
+},
+{
+"id": 303,
+"kind": "attack",
+"basis": "basSword",
+"mp": "0"
+}
+],
+"24115": [
+{
+"id": 24115,
+"kind": "spell",
+"basis": "basSword",
+"mp": "&24115_mpCost"
+}
+],
+"24116": [
+{
+"id": 24116,
+"kind": "spell",
+"basis": "basSword",
+"mp": "&24116_mpCost"
+}
+],
+"25111": [
+{
+"id": 25111,
+"kind": "spell",
+"basis": "basFist",
+"mp": "&25111_mpCost"
+}
+],
+"25112": [
+{
+"id": 25112,
+"kind": "spell",
+"basis": "basFist",
+"mp": "&25112_mpCost"
+}
+],
+"25113": [
+{
+"id": 25113,
+"kind": "spell",
+"basis": "basFist",
+"mp": "&25113_mpCost"
+}
+],
+"25114": [
+{
+"id": 25114,
+"kind": "spell",
+"basis": "basFist",
+"mp": "&25114_mpCost"
+},
+{
+"id": 402,
+"kind": "attack",
+"basis": "basFist",
+"mp": "0"
+}
+],
+"25115": [
+{
+"id": 25115,
+"kind": "spell",
+"basis": "basFist",
+"mp": "&25115_mpCost"
+}
+],
+"25116": [
+{
+"id": 25116,
+"kind": "spell",
+"basis": "basFist",
+"mp": "&25116_mpCost"
+}
+],
+"26111": [
+{
+"id": 26111,
+"kind": "spell",
+"basis": "basPalm",
+"mp": "&26111_mpCost"
+}
+],
+"26112": [
+{
+"id": 26112,
+"kind": "spell",
+"basis": "basPalm",
+"mp": "&26112_mpCost"
+}
+],
+"26113": [
+{
+"id": 26113,
+"kind": "spell",
+"basis": "basPalm",
+"mp": "&26113_mpCost"
+},
+{
+"id": 502,
+"kind": "attack",
+"basis": "basPalm",
+"mp": "0"
+}
+],
+"26114": [
+{
+"id": 26114,
+"kind": "spell",
+"basis": "basPalm",
+"mp": "&26114_mpCost"
+}
+],
+"26115": [
+{
+"id": 26115,
+"kind": "spell",
+"basis": "basPalm",
+"mp": "&26115_mpCost"
+}
+],
+"26116": [
+{
+"id": 26116,
+"kind": "spell",
+"basis": "basPalm",
+"mp": "&26116_mpCost"
+},
+{
+"id": 503,
+"kind": "attack",
+"basis": "basPalm",
+"mp": "0"
+}
+],
+"27111": [
+{
+"id": 27111,
+"kind": "spell",
+"basis": "basFinger",
+"mp": "&27111_mpCost"
+},
+{
+"id": 601,
+"kind": "attack",
+"basis": "basFinger",
+"mp": "0"
+}
+],
+"27112": [
+{
+"id": 27112,
+"kind": "spell",
+"basis": "basFinger",
+"mp": "&27112_mpCost"
+}
+],
+"27113": [
+{
+"id": 27113,
+"kind": "spell",
+"basis": "basFinger",
+"mp": "&27113_mpCost"
+}
+],
+"27114": [
+{
+"id": 27114,
+"kind": "spell",
+"basis": "basFinger",
+"mp": "&27114_mpCost"
+}
+],
+"27115": [
+{
+"id": 27115,
+"kind": "spell",
+"basis": "basFinger",
+"mp": "&27115_mpCost"
+},
+{
+"id": 602,
+"kind": "attack",
+"basis": "basFinger",
+"mp": "0"
+}
+],
+"27116": [
+{
+"id": 27116,
+"kind": "spell",
+"basis": "basFinger",
+"mp": "&27116_mpCost"
+}
+],
+"32111": [
+{
+"id": 32111,
+"kind": "ultimate",
+"basis": "basBlade",
+"mp": "&32111_mpCost"
+}
+],
+"32112": [
+{
+"id": 32112,
+"kind": "ultimate",
+"basis": "basBlade",
+"mp": "&32112_mpCost"
+}
+],
+"33111": [
+{
+"id": 33111,
+"kind": "ultimate",
+"basis": "basSpear",
+"mp": "&33111_mpCost"
+}
+],
+"33112": [
+{
+"id": 33112,
+"kind": "ultimate",
+"basis": "basSpear",
+"mp": "&33112_mpCost"
+}
+],
+"34111": [
+{
+"id": 34111,
+"kind": "ultimate",
+"basis": "basSword",
+"mp": "&34111_mpCost"
+}
+],
+"34112": [
+{
+"id": 34112,
+"kind": "ultimate",
+"basis": "basSword",
+"mp": "&34112_mpCost"
+}
+],
+"35111": [
+{
+"id": 35111,
+"kind": "ultimate",
+"basis": "basFist",
+"mp": "&35111_mpCost"
+}
+],
+"35112": [
+{
+"id": 35112,
+"kind": "ultimate",
+"basis": "basFist",
+"mp": "&35112_mpCost"
+}
+],
+"36111": [
+{
+"id": 36111,
+"kind": "ultimate",
+"basis": "basPalm",
+"mp": "&36111_mpCost"
+}
+],
+"36112": [
+{
+"id": 36112,
+"kind": "ultimate",
+"basis": "basPalm",
+"mp": "&36112_mpCost"
+}
+],
+"37111": [
+{
+"id": 37111,
+"kind": "ultimate",
+"basis": "basFinger",
+"mp": "&37111_mpCost"
+}
+],
+"37112": [
+{
+"id": 37112,
+"kind": "ultimate",
+"basis": "basFinger",
+"mp": "&37112_mpCost"
+}
+],
+"41111": [
+{
+"id": 41111,
+"kind": "attack",
+"basis": "basFire",
+"mp": "&41111_mpCost"
+}
+],
+"41112": [
+{
+"id": 41112,
+"kind": "attack",
+"basis": "basFire",
+"mp": "&41112_mpCost"
+}
+],
+"41113": [
+{
+"id": 41113,
+"kind": "attack",
+"basis": "basFire",
+"mp": "&41113_mpCost"
+},
+{
+"id": 1101,
+"kind": "attack",
+"basis": "basPalm",
+"mp": "0"
+}
+],
+"42111": [
+{
+"id": 42111,
+"kind": "attack",
+"basis": "basFroze",
+"mp": "&42111_mpCost"
+}
+],
+"42112": [
+{
+"id": 42112,
+"kind": "attack",
+"basis": "basFroze",
+"mp": "&42112_mpCost"
+},
+{
+"id": 1201,
+"kind": "attack",
+"basis": "basPalm",
+"mp": "0"
+}
+],
+"42113": [
+{
+"id": 42113,
+"kind": "attack",
+"basis": "basFroze",
+"mp": "&42113_mpCost"
+},
+{
+"id": 1202,
+"kind": "attack",
+"basis": "basPalm",
+"mp": "0"
+}
+],
+"43111": [
+{
+"id": 43111,
+"kind": "attack",
+"basis": "basThunder",
+"mp": "&43111_mpCost"
+}
+],
+"43112": [
+{
+"id": 43112,
+"kind": "attack",
+"basis": "basThunder",
+"mp": "&43112_mpCost"
+}
+],
+"43113": [
+{
+"id": 43113,
+"kind": "attack",
+"basis": "basThunder",
+"mp": "&43113_mpCost"
+},
+{
+"id": 82020,
+"kind": "attack",
+"basis": "0",
+"mp": "&43113_mpCost"
+},
+{
+"id": 1301,
+"kind": "attack",
+"basis": "basPalm",
+"mp": "0"
+}
+],
+"44111": [
+{
+"id": 44111,
+"kind": "attack",
+"basis": "basWind",
+"mp": "&44111_mpCost"
+}
+],
+"44112": [
+{
+"id": 44112,
+"kind": "attack",
+"basis": "basWind",
+"mp": "&44112_mpCost"
+}
+],
+"44113": [
+{
+"id": 44113,
+"kind": "attack",
+"basis": "basWind",
+"mp": "&44113_mpCost"
+}
+],
+"45111": [
+{
+"id": 45111,
+"kind": "attack",
+"basis": "basEarth",
+"mp": "&45111_mpCost"
+}
+],
+"45112": [
+{
+"id": 45112,
+"kind": "attack",
+"basis": "basEarth",
+"mp": "&45112_mpCost"
+}
+],
+"45113": [
+{
+"id": 45113,
+"kind": "attack",
+"basis": "basEarth",
+"mp": "&45113_mpCost"
+},
+{
+"id": 1501,
+"kind": "attack",
+"basis": "basPalm",
+"mp": "0"
+}
+],
+"46111": [
+{
+"id": 46111,
+"kind": "attack",
+"basis": "basWood",
+"mp": "&46111_mpCost"
+}
+],
+"46112": [
+{
+"id": 46112,
+"kind": "attack",
+"basis": "basWood",
+"mp": "&46112_mpCost"
+}
+],
+"46113": [
+{
+"id": 46113,
+"kind": "attack",
+"basis": "basWood",
+"mp": "&46113_mpCost"
+}
+],
+"51111": [
+{
+"id": 51111,
+"kind": "spell",
+"basis": "basFire",
+"mp": "&51111_mpCost"
+}
+],
+"51112": [
+{
+"id": 51112,
+"kind": "spell",
+"basis": "basFire",
+"mp": "&51112_mpCost"
+}
+],
+"51113": [
+{
+"id": 51113,
+"kind": "spell",
+"basis": "basFire",
+"mp": "&51113_mpCost"
+}
+],
+"51114": [
+{
+"id": 51114,
+"kind": "spell",
+"basis": "basFire",
+"mp": "&51114_mpCost"
+}
+],
+"51115": [
+{
+"id": 51115,
+"kind": "spell",
+"basis": "basFire",
+"mp": "&51115_mpCost"
+}
+],
+"51116": [
+{
+"id": 51116,
+"kind": "spell",
+"basis": "basFire",
+"mp": "&51116_mpCost"
+}
+],
+"52111": [
+{
+"id": 52111,
+"kind": "spell",
+"basis": "basFroze",
+"mp": "&52111_mpCost"
+}
+],
+"52112": [
+{
+"id": 52112,
+"kind": "spell",
+"basis": "basFroze",
+"mp": "&52112_mpCost"
+}
+],
+"52113": [
+{
+"id": 52113,
+"kind": "spell",
+"basis": "basFroze",
+"mp": "&52113_mpCost"
+}
+],
+"52114": [
+{
+"id": 52114,
+"kind": "spell",
+"basis": "basFroze",
+"mp": "&52114_mpCost"
+}
+],
+"52115": [
+{
+"id": 52115,
+"kind": "spell",
+"basis": "basFroze",
+"mp": "&52115_mpCost"
+}
+],
+"52116": [
+{
+"id": 52116,
+"kind": "spell",
+"basis": "basFroze",
+"mp": "&52116_mpCost"
+},
+{
+"id": 1203,
+"kind": "attack",
+"basis": "basPalm",
+"mp": "0"
+}
+],
+"53111": [
+{
+"id": 53111,
+"kind": "spell",
+"basis": "basThunder",
+"mp": "&53111_mpCost"
+}
+],
+"53112": [
+{
+"id": 53112,
+"kind": "spell",
+"basis": "basThunder",
+"mp": "&53112_mpCost"
+}
+],
+"53113": [
+{
+"id": 53113,
+"kind": "spell",
+"basis": "basThunder",
+"mp": "&53113_mpCost"
+},
+{
+"id": 1302,
+"kind": "attack",
+"basis": "basPalm",
+"mp": "0"
+}
+],
+"53114": [
+{
+"id": 53114,
+"kind": "spell",
+"basis": "basThunder",
+"mp": "&53114_mpCost"
+}
+],
+"53115": [
+{
+"id": 53115,
+"kind": "spell",
+"basis": "basThunder",
+"mp": "&53115_mpCost"
+}
+],
+"53116": [
+{
+"id": 53116,
+"kind": "spell",
+"basis": "basThunder",
+"mp": "&53116_mpCost"
+},
+{
+"id": 1303,
+"kind": "attack",
+"basis": "basPalm",
+"mp": "0"
+}
+],
+"54111": [
+{
+"id": 54111,
+"kind": "spell",
+"basis": "basWind",
+"mp": "&54111_mpCost"
+}
+],
+"54112": [
+{
+"id": 54112,
+"kind": "spell",
+"basis": "basWind",
+"mp": "&54112_mpCost"
+}
+],
+"54113": [
+{
+"id": 54113,
+"kind": "spell",
+"basis": "basWind",
+"mp": "&54113_mpCost"
+}
+],
+"54114": [
+{
+"id": 54114,
+"kind": "spell",
+"basis": "basWind",
+"mp": "&54114_mpCost"
+},
+{
+"id": 1403,
+"kind": "attack",
+"basis": "basPalm",
+"mp": "0"
+}
+],
+"54115": [
+{
+"id": 54115,
+"kind": "spell",
+"basis": "basWind",
+"mp": "&54115_mpCost"
+}
+],
+"54116": [
+{
+"id": 54116,
+"kind": "spell",
+"basis": "basWind",
+"mp": "&54116_mpCost"
+}
+],
+"55111": [
+{
+"id": 55111,
+"kind": "spell",
+"basis": "basEarth",
+"mp": "&55111_mpCost"
+}
+],
+"55112": [
+{
+"id": 55112,
+"kind": "spell",
+"basis": "basEarth",
+"mp": "&55112_mpCost"
+},
+{
+"id": 1502,
+"kind": "attack",
+"basis": "basPalm",
+"mp": "0"
+}
+],
+"55113": [
+{
+"id": 55113,
+"kind": "spell",
+"basis": "basEarth",
+"mp": "&55113_mpCost"
+}
+],
+"55114": [
+{
+"id": 55114,
+"kind": "spell",
+"basis": "basEarth",
+"mp": "&55114_mpCost"
+},
+{
+"id": 1503,
+"kind": "attack",
+"basis": "basPalm",
+"mp": "0"
+}
+],
+"55115": [
+{
+"id": 55115,
+"kind": "spell",
+"basis": "basEarth",
+"mp": "&55115_mpCost"
+}
+],
+"55116": [
+{
+"id": 55116,
+"kind": "spell",
+"basis": "basEarth",
+"mp": "&55116_mpCost"
+}
+],
+"56111": [
+{
+"id": 56111,
+"kind": "spell",
+"basis": "basWood",
+"mp": "&56111_mpCost"
+}
+],
+"56112": [
+{
+"id": 56112,
+"kind": "spell",
+"basis": "basWood",
+"mp": "&56112_mpCost"
+},
+{
+"id": 1601,
+"kind": "attack",
+"basis": "basPalm",
+"mp": "0"
+}
+],
+"56113": [
+{
+"id": 56113,
+"kind": "spell",
+"basis": "basWood",
+"mp": "&56113_mpCost"
+}
+],
+"56114": [
+{
+"id": 56114,
+"kind": "spell",
+"basis": "basWood",
+"mp": "&56114_mpCost"
+}
+],
+"56115": [
+{
+"id": 56115,
+"kind": "spell",
+"basis": "basWood",
+"mp": "&56115_mpCost"
+},
+{
+"id": 1603,
+"kind": "attack",
+"basis": "basPalm",
+"mp": "0"
+}
+],
+"56116": [
+{
+"id": 56116,
+"kind": "spell",
+"basis": "basWood",
+"mp": "&56116_mpCost"
+},
+{
+"id": 1604,
+"kind": "attack",
+"basis": "basPalm",
+"mp": "0"
+}
+],
+"61111": [
+{
+"id": 61111,
+"kind": "ultimate",
+"basis": "basFire",
+"mp": "&61111_mpCost"
+}
+],
+"61112": [
+{
+"id": 61112,
+"kind": "ultimate",
+"basis": "basFire",
+"mp": "&61112_mpCost"
+}
+],
+"62111": [
+{
+"id": 62111,
+"kind": "ultimate",
+"basis": "basFroze",
+"mp": "&62111_mpCost"
+}
+],
+"62112": [
+{
+"id": 62112,
+"kind": "ultimate",
+"basis": "basFroze",
+"mp": "&62112_mpCost"
+}
+],
+"63111": [
+{
+"id": 63111,
+"kind": "ultimate",
+"basis": "basThunder",
+"mp": "&63111_mpCost"
+}
+],
+"63112": [
+{
+"id": 63112,
+"kind": "ultimate",
+"basis": "basThunder",
+"mp": "&63112_mpCost"
+}
+],
+"64111": [
+{
+"id": 64111,
+"kind": "ultimate",
+"basis": "basWind",
+"mp": "&64111_mpCost"
+}
+],
+"64112": [
+{
+"id": 64112,
+"kind": "ultimate",
+"basis": "basWind",
+"mp": "&64112_mpCost"
+}
+],
+"65111": [
+{
+"id": 65111,
+"kind": "ultimate",
+"basis": "basEarth",
+"mp": "&65111_mpCost"
+}
+],
+"65112": [
+{
+"id": 65112,
+"kind": "ultimate",
+"basis": "basEarth",
+"mp": "&65112_mpCost"
+}
+],
+"66111": [
+{
+"id": 66111,
+"kind": "ultimate",
+"basis": "basWood",
+"mp": "&66111_mpCost"
+}
+],
+"66112": [
+{
+"id": 66112,
+"kind": "ultimate",
+"basis": "basWood",
+"mp": "&66112_mpCost"
+}
+],
+"chongci": [
+{
+"id": 510051,
+"kind": "step",
+"basis": "basPalm",
+"mp": "&510051_mpCost"
+}
+],
+"chongquan": [
+{
+"id": 510041,
+"kind": "step",
+"basis": "basFist",
+"mp": "&510041_mpCost"
+}
+],
+"diewu": [
+{
+"id": 510161,
+"kind": "step",
+"basis": "basWood",
+"mp": "&510161_mpCost"
+}
+],
+"dundi": [
+{
+"id": 510151,
+"kind": "step",
+"basis": "basEarth",
+"mp": "&510151_mpCost"
+}
+],
+"huanying": [
+{
+"id": 510121,
+"kind": "step",
+"basis": "basFroze",
+"mp": "&510121_mpCost"
+}
+],
+"huohu": [
+{
+"id": 510111,
+"kind": "step",
+"basis": "basFire",
+"mp": "&510111_mpCost"
+}
+],
+"jifengbu": [
+{
+"id": 510061,
+"kind": "step",
+"basis": "basFinger",
+"mp": "&510061_mpCost"
+}
+],
+"longjuanfeng": [
+{
+"id": 510141,
+"kind": "step",
+"basis": "basWind",
+"mp": "&510141_mpCost"
+}
+],
+"qiangci": [
+{
+"id": 510021,
+"kind": "step",
+"basis": "basSpear",
+"mp": "&510021_mpCost"
+},
+{
+"id": 710506,
+"kind": "step",
+"basis": "basSpear",
+"mp": "&710006_ccllxh"
+}
+],
+"ql1_cangya3": [
+{
+"id": 91063,
+"kind": "attack",
+"basis": "0",
+"mp": "0"
+}
+],
+"ql1_dongfangmuqin3": [
+{
+"id": 91033,
+"kind": "attack",
+"basis": "0",
+"mp": "0"
+}
+],
+"ql1_jianglingge3": [
+{
+"id": 91053,
+"kind": "attack",
+"basis": "0",
+"mp": "0"
+}
+],
+"ql1_jiuchen3": [
+{
+"id": 91023,
+"kind": "attack",
+"basis": "0",
+"mp": "0"
+}
+],
+"ql1_liningshuang3": [
+{
+"id": 91043,
+"kind": "attack",
+"basis": "0",
+"mp": "0"
+}
+],
+"ql1_shihui6": [
+{
+"id": 91083,
+"kind": "attack",
+"basis": "0",
+"mp": "0"
+}
+],
+"ql1_yunmengyi3": [
+{
+"id": 91015,
+"kind": "attack",
+"basis": "0",
+"mp": "0"
+}
+],
+"ql1_zhuyaoyue6": [
+{
+"id": 91073,
+"kind": "attack",
+"basis": "0",
+"mp": "0"
+}
+],
+"shanxian": [
+{
+"id": 510131,
+"kind": "step",
+"basis": "basThunder",
+"mp": "&510131_mpCost"
+}
+],
+"tiaozhan": [
+{
+"id": 510011,
+"kind": "step",
+"basis": "basBlade",
+"mp": "&510011_mpCost"
+},
+{
+"id": 710508,
+"kind": "step",
+"basis": "basSpear",
+"mp": "&710006_ztzjll"
+}
+],
+"yujian": [
+{
+"id": 510031,
+"kind": "step",
+"basis": "basSword",
+"mp": "&510031_mpCost"
+},
+{
+"id": 700117,
+"kind": "step",
+"basis": "basSword",
+"mp": "0"
+}
+],
+"zhudongxf_44": [
+{
+"id": 304,
+"kind": "attack",
+"basis": "basSword",
+"mp": "0"
+}
+]
+}

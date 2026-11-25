@@ -94,3 +94,9 @@ table.sys th { color: var(--muted); font-weight: 600; }
 .viewers a + a { border-left: 1px solid var(--line); }
 .viewers a:hover { color: var(--text); background: var(--panel); }
 .viewers a.on { background: var(--accent); color: #fff; font-weight: 600; cursor: default; }
+
+/* skill icons of the game that suit the effect (detail) */
+.skillicons { display: flex; flex-wrap: wrap; gap: 6px; }
+.skillicons figure { margin: 0; width: 64px; text-align: center; }
+.skillicons img { width: 52px; height: 52px; border-radius: 50%; background: #2a2e35; }
+.skillicons figcaption { font-size: 10px; color: var(--muted); word-break: break-all; }

@@ -1,0 +1,615 @@
+{
+ "$comment": "Skill icons of the atlas CommonSkillIcon used by the martial arts of the player: tags = basis of the config (basType) + what the picture shows (reviewed on contact sheets). Vocabulary of the effect catalog elements (fire, frost, water, thunder, wind, earth, wood, sword, blade, spear, fist, palm, finger, light, dark, spirit, blood, poison).",
+ "tags": {
+  "ql1_cangya3": [
+   "wind",
+   "wood"
+  ],
+  "ql1_dongfangmuqin3": [
+   "fire",
+   "blood"
+  ],
+  "ql1_jianglingge3": [
+   "earth"
+  ],
+  "ql1_jiuchen3": [
+   "wind",
+   "earth"
+  ],
+  "ql1_liningshuang3": [
+   "blood",
+   "blade"
+  ],
+  "ql1_shihui6": [
+   "poison",
+   "wood"
+  ],
+  "ql1_yunmengyi3": [
+   "spirit",
+   "water"
+  ],
+  "ql1_zhuyaoyue6": [
+   "thunder",
+   "light"
+  ],
+  "12111": [
+   "blade",
+   "fire"
+  ],
+  "12112": [
+   "blade",
+   "fire",
+   "blood"
+  ],
+  "12113": [
+   "blade",
+   "light"
+  ],
+  "45111": [
+   "earth"
+  ],
+  "45112": [
+   "earth"
+  ],
+  "45113": [
+   "earth",
+   "palm",
+   "light"
+  ],
+  "17111": [
+   "finger"
+  ],
+  "17112": [
+   "finger",
+   "light"
+  ],
+  "17113": [
+   "finger",
+   "thunder"
+  ],
+  "41111": [
+   "fire"
+  ],
+  "41112": [
+   "fire"
+  ],
+  "41113": [
+   "fire",
+   "palm"
+  ],
+  "15111": [
+   "fist"
+  ],
+  "15112": [
+   "fist",
+   "light"
+  ],
+  "15113": [
+   "fist",
+   "light"
+  ],
+  "42111": [
+   "frost",
+   "water"
+  ],
+  "42112": [
+   "frost",
+   "palm",
+   "water"
+  ],
+  "42113": [
+   "frost",
+   "palm",
+   "water"
+  ],
+  "16111": [
+   "palm",
+   "water"
+  ],
+  "16112": [
+   "palm",
+   "water"
+  ],
+  "16113": [
+   "palm",
+   "water"
+  ],
+  "13111": [
+   "spear",
+   "water"
+  ],
+  "13112": [
+   "spear",
+   "water"
+  ],
+  "13113": [
+   "spear",
+   "water"
+  ],
+  "14111": [
+   "sword",
+   "dark"
+  ],
+  "14112": [
+   "sword",
+   "frost"
+  ],
+  "14113": [
+   "sword",
+   "dark"
+  ],
+  "zhudongxf_44": [
+   "sword",
+   "frost"
+  ],
+  "43111": [
+   "thunder",
+   "dark",
+   "spirit"
+  ],
+  "43112": [
+   "thunder",
+   "dark"
+  ],
+  "43113": [
+   "thunder",
+   "palm"
+  ],
+  "44111": [
+   "wind",
+   "wood",
+   "light"
+  ],
+  "44112": [
+   "wind",
+   "frost"
+  ],
+  "44113": [
+   "wind",
+   "water"
+  ],
+  "46111": [
+   "wood"
+  ],
+  "46112": [
+   "wood",
+   "spirit",
+   "poison"
+  ],
+  "46113": [
+   "wood",
+   "spirit"
+  ],
+  "22111": [
+   "blade",
+   "fire"
+  ],
+  "22112": [
+   "blade",
+   "fire",
+   "earth"
+  ],
+  "22113": [
+   "blade",
+   "fire",
+   "light"
+  ],
+  "22114": [
+   "blade",
+   "fire"
+  ],
+  "22115": [
+   "blade",
+   "fire"
+  ],
+  "22116": [
+   "blade",
+   "fire"
+  ],
+  "55111": [
+   "earth",
+   "light"
+  ],
+  "55112": [
+   "earth",
+   "palm"
+  ],
+  "55113": [
+   "earth"
+  ],
+  "55114": [
+   "earth",
+   "palm",
+   "spirit"
+  ],
+  "55115": [
+   "earth"
+  ],
+  "55116": [
+   "earth"
+  ],
+  "27111": [
+   "finger",
+   "water"
+  ],
+  "27112": [
+   "finger",
+   "spirit"
+  ],
+  "27113": [
+   "finger",
+   "wood",
+   "wind"
+  ],
+  "27114": [
+   "finger",
+   "wood"
+  ],
+  "27115": [
+   "finger",
+   "water",
+   "spirit"
+  ],
+  "27116": [
+   "finger",
+   "thunder"
+  ],
+  "51111": [
+   "fire"
+  ],
+  "51112": [
+   "fire"
+  ],
+  "51113": [
+   "fire"
+  ],
+  "51114": [
+   "fire"
+  ],
+  "51115": [
+   "fire"
+  ],
+  "51116": [
+   "fire"
+  ],
+  "25111": [
+   "fist",
+   "light"
+  ],
+  "25112": [
+   "fist",
+   "light"
+  ],
+  "25113": [
+   "fist",
+   "light",
+   "thunder"
+  ],
+  "25114": [
+   "fist",
+   "light"
+  ],
+  "25115": [
+   "fist",
+   "light"
+  ],
+  "25116": [
+   "fist",
+   "light"
+  ],
+  "52111": [
+   "frost",
+   "water"
+  ],
+  "52112": [
+   "frost",
+   "water"
+  ],
+  "52113": [
+   "frost"
+  ],
+  "52114": [
+   "frost",
+   "wind"
+  ],
+  "52115": [
+   "frost",
+   "light"
+  ],
+  "52116": [
+   "frost",
+   "palm",
+   "spirit"
+  ],
+  "26111": [
+   "palm",
+   "frost",
+   "wind"
+  ],
+  "26112": [
+   "palm",
+   "frost"
+  ],
+  "26113": [
+   "palm",
+   "light",
+   "fire"
+  ],
+  "26114": [
+   "palm",
+   "fire"
+  ],
+  "26115": [
+   "palm",
+   "water"
+  ],
+  "26116": [
+   "palm",
+   "dark",
+   "water"
+  ],
+  "23111": [
+   "spear",
+   "water",
+   "wood"
+  ],
+  "23112": [
+   "spear",
+   "water"
+  ],
+  "23113": [
+   "spear",
+   "frost"
+  ],
+  "23114": [
+   "spear",
+   "water"
+  ],
+  "23115": [
+   "spear",
+   "water",
+   "wind"
+  ],
+  "23116": [
+   "spear",
+   "thunder"
+  ],
+  "24111": [
+   "sword",
+   "spirit"
+  ],
+  "24112": [
+   "sword",
+   "dark"
+  ],
+  "24113": [
+   "sword",
+   "dark"
+  ],
+  "24114": [
+   "sword",
+   "dark"
+  ],
+  "24115": [
+   "sword",
+   "thunder"
+  ],
+  "24116": [
+   "sword",
+   "light"
+  ],
+  "53111": [
+   "thunder",
+   "dark",
+   "light"
+  ],
+  "53112": [
+   "thunder"
+  ],
+  "53113": [
+   "thunder",
+   "palm"
+  ],
+  "53114": [
+   "thunder"
+  ],
+  "53115": [
+   "thunder"
+  ],
+  "53116": [
+   "thunder",
+   "palm",
+   "dark",
+   "spirit"
+  ],
+  "54111": [
+   "wind",
+   "earth"
+  ],
+  "54112": [
+   "wind",
+   "water"
+  ],
+  "54113": [
+   "wind",
+   "water"
+  ],
+  "54114": [
+   "wind",
+   "palm"
+  ],
+  "54115": [
+   "wind"
+  ],
+  "54116": [
+   "wind",
+   "light"
+  ],
+  "56111": [
+   "wood",
+   "poison"
+  ],
+  "56112": [
+   "wood",
+   "palm",
+   "spirit"
+  ],
+  "56113": [
+   "wood",
+   "poison",
+   "dark"
+  ],
+  "56114": [
+   "wood",
+   "light"
+  ],
+  "56115": [
+   "wood",
+   "palm",
+   "poison"
+  ],
+  "56116": [
+   "wood",
+   "palm"
+  ],
+  "tiaozhan": [
+   "blade",
+   "spear"
+  ],
+  "dundi": [
+   "earth"
+  ],
+  "jifengbu": [
+   "finger"
+  ],
+  "huohu": [
+   "fire"
+  ],
+  "chongquan": [
+   "fist"
+  ],
+  "huanying": [
+   "frost"
+  ],
+  "chongci": [
+   "palm"
+  ],
+  "qiangci": [
+   "spear"
+  ],
+  "yujian": [
+   "sword"
+  ],
+  "shanxian": [
+   "thunder"
+  ],
+  "longjuanfeng": [
+   "wind"
+  ],
+  "diewu": [
+   "wood"
+  ],
+  "32111": [
+   "blade",
+   "fire",
+   "blood"
+  ],
+  "32112": [
+   "blade",
+   "blood"
+  ],
+  "65111": [
+   "earth"
+  ],
+  "65112": [
+   "earth",
+   "dark"
+  ],
+  "37111": [
+   "finger",
+   "spirit",
+   "water"
+  ],
+  "37112": [
+   "finger",
+   "light"
+  ],
+  "61111": [
+   "fire"
+  ],
+  "61112": [
+   "fire",
+   "light"
+  ],
+  "35111": [
+   "fist",
+   "earth",
+   "light"
+  ],
+  "35112": [
+   "fist",
+   "light"
+  ],
+  "62111": [
+   "frost",
+   "spirit",
+   "water"
+  ],
+  "62112": [
+   "frost",
+   "water"
+  ],
+  "36111": [
+   "palm",
+   "earth"
+  ],
+  "36112": [
+   "palm",
+   "fire",
+   "blood"
+  ],
+  "33111": [
+   "spear",
+   "water"
+  ],
+  "33112": [
+   "spear",
+   "water"
+  ],
+  "34111": [
+   "sword",
+   "light",
+   "dark"
+  ],
+  "34112": [
+   "sword",
+   "light"
+  ],
+  "63111": [
+   "thunder",
+   "dark"
+  ],
+  "63112": [
+   "thunder",
+   "light"
+  ],
+  "64111": [
+   "wind",
+   "earth"
+  ],
+  "64112": [
+   "wind",
+   "dark",
+   "spirit"
+  ],
+  "66111": [
+   "wood",
+   "poison",
+   "dark"
+  ],
+  "66112": [
+   "wood",
+   "spirit"
+  ]
+ }
+}

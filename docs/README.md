@@ -42,6 +42,9 @@ docs/
     ├── TextIcons/<name>.png      icons of the TextMeshPro sprite asset: "[icon:NAME]" in localTexts
     ├── ItemIcons/<icon>.png      item icons ("icon" of ItemProps / DLCItemProps) + items.json (icon -> item ids)
     ├── Buildings/<atlas>/<name>.png  sprites of the atlases TownCommon, CommonMapGrid, VillageCommon (buildings, places)
+    ├── SkillIcons/<icon>.png     sprites of the atlas CommonSkillIcon (icons of the martial arts in battle) + skills.json
+    │                             (icon -> martial arts of the player: kind, basType, MP cost), tags.json (elements / weapons
+    │                             each icon shows, reviewed by hand; the effect viewer shows the icons that suit an effect)
     └── DramaBackgrounds/<name>.webp   drama backgrounds: DramaHelper.OpenDrama2 / StoryLine.Tell background
 ```
 

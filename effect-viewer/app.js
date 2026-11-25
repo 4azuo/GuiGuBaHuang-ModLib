@@ -101,6 +101,25 @@
       .map(([k, v, ai]) => `<div>${esc(k)}</div><div class="${ai ? "ai" : ""}">${esc(Array.isArray(v) ? v.join(", ") : v)}</div>`).join("")}</div>`;
   }
 
+  // the skill icons of the game whose tags share an element of the effect (docs/GameAssets/SkillIcons/tags.json), the best first
+  function suitedIcons(e) {
+    const els = arr(e["user-element"]).length ? arr(e["user-element"]) : arr(e["ai-element"]);
+    const icons = (DATA && DATA.skillIcons) || {};
+    if (!els.length) return [];
+    return Object.entries(icons)
+      .map(([n, x]) => ({ n, tags: arr(x.tags), kinds: arr(x.kinds), score: arr(x.tags).filter((t) => els.includes(t)).length }))
+      .filter((x) => x.score > 0)
+      .sort((a, b) => b.score - a.score || a.n.localeCompare(b.n));
+  }
+
+  function iconsHtml(e) {
+    const list = suitedIcons(e);
+    if (!list.length) return "";
+    return `<h3>Skill icons that suit it <span class="sub">(${list.length}; elements of the effect vs tags of the icons)</span></h3>
+      <div class="skillicons">${list.map((x) => `<figure title="${esc(x.n)}: ${esc(x.tags.join(", "))} (${esc(x.kinds.join(", "))})">
+        <img loading="lazy" src="../docs/GameAssets/SkillIcons/${encodeURIComponent(x.n)}.png" alt=""><figcaption>${esc(x.n)}</figcaption></figure>`).join("")}</div>`;
+  }
+
   function openDetail(name) {
     const e = DATA.kinds[kind].find((x) => x.name === name);
     if (!e) return;
@@ -120,6 +139,7 @@
       ${kv([["element", e["ai-element"], 1], ["usage", e["ai-usage"], 1], ["shape", e["ai-shape"], 1], ["size", e["ai-size"], 1],
             ["motion", e["ai-motion"], 1], ["colours", e["ai-colors"], 1], ["screen coverage", e["ai-coverage"], 1], ["tags", e["ai-tags"], 1], ["note", e["ai-note"], 1]])}
       ${arr(e["ai-skill-ideas"]).length ? `<div class="kv"><div>skill ideas</div><div class="ai"><ul class="ideas">${arr(e["ai-skill-ideas"]).map((x) => `<li>${esc(x)}</li>`).join("")}</ul></div></div>` : ""}
+      ${iconsHtml(e)}
       <h3>Your assessment ${e["user-updated"] ? `<span class="sub">(saved ${esc(e["user-updated"])})</span>` : ""}</h3>
       ${userForm(e)}
       <h3>Recorded (in game)</h3>
