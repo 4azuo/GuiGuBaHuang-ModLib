@@ -12,6 +12,7 @@ hold it as their `GuiGuBaHuang-ModLib` submodule.
 - **tests/** - `UnitTests.props` (shared test setup), `Shared/`, `ModLib/` (tests of ModLib), `ModLibTests.csproj`
 - **test-viewer/**, **promo-viewer/**, **effect-viewer/**, **Translate/**, **tools/SlotDataPath/** - shared viewers and tools (the data stays in the mod repository)
 - **docs/** - `guide/` (writing a mod with ModLib), internals `00`-`05`, `06-Shared-Tools.md`, `ModConf/` (config samples), `Effects/`, `GameAssets/` (Git LFS)
+- **marketing/** - Steam Workshop description of ModLib (`workshop-description-modlib.bbcode`)
 
 ## Guidelines
 
