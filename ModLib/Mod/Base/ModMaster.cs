@@ -539,13 +539,12 @@ namespace ModLib.Mod
         /// </summary>
         public static void ShowKnownError(string reason, string log)
         {
-            if (g.ui.HasUI(UIType.TextInfo))
+            // after the window of its type open now (another mod's notice, the error reports consent): never over it
+            UICustom2.WhenFree(() =>
             {
-                g.ui.CloseUI(UIType.TextInfo);
-            }
-
-            var ui = g.ui.OpenUISafe<UITextInfo>(UIType.TextInfo);
-            ui.InitData(KnownErrorHelper.GetTitle(), $"{reason}\n\n{KnownErrorHelper.GetDetailsNote(log)}");
+                var ui = g.ui.OpenUISafe<UITextInfo>(UIType.TextInfo);
+                ui.InitData(KnownErrorHelper.GetTitle(), $"{reason}\n\n{KnownErrorHelper.GetDetailsNote(log)}");
+            });
         }
 
         /// <summary>
@@ -555,11 +554,12 @@ namespace ModLib.Mod
         /// </summary>
         public static void ShowException(Exception ex, string log, string notice = null)
         {
-            if (g.ui.HasUI(UIType.TextInfoLong))
-            {
-                g.ui.CloseUI(UIType.TextInfoLong);
-            }
+            // after the window of its type open now (another mod's window, the error reports consent): never over it
+            UICustom1.WhenFree(() => OpenException(ex, log, notice));
+        }
 
+        private static void OpenException(Exception ex, string log, string notice)
+        {
             var ui = g.ui.OpenUISafe<UITextInfoLong>(UIType.TextInfoLong);
             ui.InitData(GameTool.LS("libtxt999990017"), ex.GetAllInnnerExceptionStr(), GameTool.LS("libtxt999990018"), ActionHelper.TracedIl2Action(() => Process.Start("notepad.exe", log)), true);
             ui.ptextInfo.fontSize = 14;

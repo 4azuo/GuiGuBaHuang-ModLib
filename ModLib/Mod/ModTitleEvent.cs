@@ -90,8 +90,7 @@ namespace ModLib.Mod
             {
                 if (!ValueHelper.NearlyEqual(g.data.globle.gameSetting.screenWidth.Parse<float>() / g.data.globle.gameSetting.screenHeight.Parse<float>(), ModLibConst.SUPPORT_SCREEN_RATIO, 0.001))
                 {
-                    var uiWarning = g.ui.OpenUISafe<UITextInfo>(UIType.TextInfo);
-                    uiWarning.InitData(GameTool.LS("libtxt999990000"), GameTool.LS("libtxt999990001"));
+                    UICustom2.WhenFree(() => g.ui.OpenUISafe<UITextInfo>(UIType.TextInfo).InitData(GameTool.LS("libtxt999990000"), GameTool.LS("libtxt999990001")));
                 }
 
                 var ui = new UICover<UILogin>(UIType.Login);
