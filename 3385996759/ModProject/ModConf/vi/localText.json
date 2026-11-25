@@ -168,5 +168,50 @@
 		"id": "999990033",
 		"key": "libtxt999990033",
 		"en|ch|tc|kr": "Ẩn tiêu đề game trên hình nền mod"
+	},
+	{
+		"id": "999990034",
+		"key": "libtxt999990034",
+		"en|ch|tc|kr": "Khi một trong các mod này gặp lỗi, ModLib có được gửi báo cáo lỗi cho tác giả của nó không (dịch vụ BugSplat)?"
+	},
+	{
+		"id": "999990035",
+		"key": "libtxt999990035",
+		"en|ch|tc|kr": "Các mod gửi báo cáo"
+	},
+	{
+		"id": "999990036",
+		"key": "libtxt999990036",
+		"en|ch|tc|kr": "Được gửi"
+	},
+	{
+		"id": "999990037",
+		"key": "libtxt999990037",
+		"en|ch|tc|kr": "• thông báo lỗi và vị trí lỗi trong code\n• những dòng cuối của log mod (đã bỏ thư mục người dùng, tài khoản Windows và id người chơi)\n• phiên bản game, ModLib và các mod, id các mod đang nạp, ngôn ngữ\n• một id ngẫu nhiên ẩn danh"
+	},
+	{
+		"id": "999990038",
+		"key": "libtxt999990038",
+		"en|ch|tc|kr": "Không bao giờ gửi"
+	},
+	{
+		"id": "999990039",
+		"key": "libtxt999990039",
+		"en|ch|tc|kr": "• các bản lưu của bạn\n• tài khoản Steam của bạn"
+	},
+	{
+		"id": "999990040",
+		"key": "libtxt999990040",
+		"en|ch|tc|kr": "Bạn có thể đổi lựa chọn bất cứ lúc nào: màn hình chính > {0} > {1}."
+	},
+	{
+		"id": "999990041",
+		"key": "libtxt999990041",
+		"en|ch|tc|kr": "Cho phép"
+	},
+	{
+		"id": "999990042",
+		"key": "libtxt999990042",
+		"en|ch|tc|kr": "Không gửi"
 	}
 ]

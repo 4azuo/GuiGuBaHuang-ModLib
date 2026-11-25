@@ -168,5 +168,50 @@
 		"id": "999990033",
 		"key": "libtxt999990033",
 		"en|ch|tc|kr": "Spieltitel auf Mod-Hintergründen ausblenden"
+	},
+	{
+		"id": "999990034",
+		"key": "libtxt999990034",
+		"en|ch|tc|kr": "Darf ModLib dem Autor eines dieser Mods einen Fehlerbericht senden, wenn darin ein Fehler auftritt (Dienst BugSplat)?"
+	},
+	{
+		"id": "999990035",
+		"key": "libtxt999990035",
+		"en|ch|tc|kr": "Mods mit Fehlerberichten"
+	},
+	{
+		"id": "999990036",
+		"key": "libtxt999990036",
+		"en|ch|tc|kr": "Gesendet"
+	},
+	{
+		"id": "999990037",
+		"key": "libtxt999990037",
+		"en|ch|tc|kr": "• die Fehlermeldung und wo sie im Code auftrat\n• die letzten Zeilen des Mod-Logs (Benutzerordner, Windows-Konto und Spieler-ID entfernt)\n• die Versionen von Spiel, ModLib und Mods, die IDs der geladenen Mods, die Sprache\n• eine anonyme Zufalls-ID"
+	},
+	{
+		"id": "999990038",
+		"key": "libtxt999990038",
+		"en|ch|tc|kr": "Nie gesendet"
+	},
+	{
+		"id": "999990039",
+		"key": "libtxt999990039",
+		"en|ch|tc|kr": "• deine Spielstände\n• dein Steam-Konto"
+	},
+	{
+		"id": "999990040",
+		"key": "libtxt999990040",
+		"en|ch|tc|kr": "Du kannst deine Antwort jederzeit ändern: Titelbildschirm > {0} > {1}."
+	},
+	{
+		"id": "999990041",
+		"key": "libtxt999990041",
+		"en|ch|tc|kr": "Erlauben"
+	},
+	{
+		"id": "999990042",
+		"key": "libtxt999990042",
+		"en|ch|tc|kr": "Nicht senden"
 	}
 ]

@@ -168,5 +168,50 @@
 		"id": "999990033",
 		"key": "libtxt999990033",
 		"en|ch|tc|kr": "Ocultar el título del juego en los fondos de mods"
+	},
+	{
+		"id": "999990034",
+		"key": "libtxt999990034",
+		"en|ch|tc|kr": "Cuando ocurra un error en uno de estos mods, ¿puede ModLib enviar un informe de error a su autor (servicio BugSplat)?"
+	},
+	{
+		"id": "999990035",
+		"key": "libtxt999990035",
+		"en|ch|tc|kr": "Mods que envían informes"
+	},
+	{
+		"id": "999990036",
+		"key": "libtxt999990036",
+		"en|ch|tc|kr": "Se envía"
+	},
+	{
+		"id": "999990037",
+		"key": "libtxt999990037",
+		"en|ch|tc|kr": "• el mensaje de error y dónde ocurrió en el código\n• las últimas líneas del registro del mod (sin tu carpeta de usuario, cuenta de Windows ni id de jugador)\n• las versiones del juego, ModLib y los mods, los ids de los mods cargados, el idioma\n• un id aleatorio anónimo"
+	},
+	{
+		"id": "999990038",
+		"key": "libtxt999990038",
+		"en|ch|tc|kr": "Nunca se envía"
+	},
+	{
+		"id": "999990039",
+		"key": "libtxt999990039",
+		"en|ch|tc|kr": "• tus partidas guardadas\n• tu cuenta de Steam"
+	},
+	{
+		"id": "999990040",
+		"key": "libtxt999990040",
+		"en|ch|tc|kr": "Puedes cambiar tu respuesta en cualquier momento: pantalla de título > {0} > {1}."
+	},
+	{
+		"id": "999990041",
+		"key": "libtxt999990041",
+		"en|ch|tc|kr": "Permitir"
+	},
+	{
+		"id": "999990042",
+		"key": "libtxt999990042",
+		"en|ch|tc|kr": "No enviar"
 	}
 ]

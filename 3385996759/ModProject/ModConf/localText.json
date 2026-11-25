@@ -255,5 +255,77 @@
 		"ch": "模组壁纸上隐藏游戏标题",
 		"tc": "模組桌布上隱藏遊戲標題",
 		"kr": "모드 배경화면에서 게임 제목 숨기기"
+	},
+	{
+		"id": "999990034",
+		"key": "libtxt999990034",
+		"en": "When an error happens in one of these mods, may ModLib send an error report to its author (BugSplat service)?",
+		"ch": "当以下模组出错时，是否允许 ModLib 向其作者发送错误报告（BugSplat 服务）？",
+		"tc": "當以下模組出錯時，是否允許 ModLib 向其作者發送錯誤報告（BugSplat 服務）？",
+		"kr": "아래 모드에서 오류가 발생하면 ModLib가 작성자에게 오류 보고서를 보내도 될까요? (BugSplat 서비스)"
+	},
+	{
+		"id": "999990035",
+		"key": "libtxt999990035",
+		"en": "Mods sending reports",
+		"ch": "发送报告的模组",
+		"tc": "發送報告的模組",
+		"kr": "보고서를 보내는 모드"
+	},
+	{
+		"id": "999990036",
+		"key": "libtxt999990036",
+		"en": "Sent",
+		"ch": "发送内容",
+		"tc": "發送內容",
+		"kr": "보내는 내용"
+	},
+	{
+		"id": "999990037",
+		"key": "libtxt999990037",
+		"en": "• the error message and where it happened in the code\n• the last lines of the mod log (your user folder, Windows account and player id removed)\n• the versions of the game, ModLib and the mods, the ids of the loaded mods, the language\n• an anonymous random id",
+		"ch": "• 错误信息及其在代码中的位置\n• 模组日志的最后几行（已移除你的用户文件夹、Windows 账户和玩家 ID）\n• 游戏、ModLib 和各模组的版本、已加载模组的 ID、语言\n• 一个匿名随机 ID",
+		"tc": "• 錯誤訊息及其在程式碼中的位置\n• 模組日誌的最後幾行（已移除你的使用者資料夾、Windows 帳戶和玩家 ID）\n• 遊戲、ModLib 和各模組的版本、已載入模組的 ID、語言\n• 一個匿名隨機 ID",
+		"kr": "• 오류 메시지와 코드에서 발생한 위치\n• 모드 로그의 마지막 줄들 (사용자 폴더, Windows 계정, 플레이어 ID 제거)\n• 게임, ModLib, 모드 버전, 로드된 모드 ID, 언어\n• 익명 무작위 ID"
+	},
+	{
+		"id": "999990038",
+		"key": "libtxt999990038",
+		"en": "Never sent",
+		"ch": "绝不发送",
+		"tc": "絕不發送",
+		"kr": "절대 보내지 않음"
+	},
+	{
+		"id": "999990039",
+		"key": "libtxt999990039",
+		"en": "• your saves\n• your Steam account",
+		"ch": "• 你的存档\n• 你的 Steam 账户",
+		"tc": "• 你的存檔\n• 你的 Steam 帳戶",
+		"kr": "• 저장 파일\n• Steam 계정"
+	},
+	{
+		"id": "999990040",
+		"key": "libtxt999990040",
+		"en": "You can change your answer at any time: title screen > {0} > {1}.",
+		"ch": "你可以随时更改：标题画面 > {0} > {1}。",
+		"tc": "你可以隨時更改：標題畫面 > {0} > {1}。",
+		"kr": "언제든지 바꿀 수 있습니다: 타이틀 화면 > {0} > {1}."
+	},
+	{
+		"id": "999990041",
+		"key": "libtxt999990041",
+		"en": "Allow",
+		"ch": "允许",
+		"tc": "允許",
+		"kr": "허용"
+	},
+	{
+		"id": "999990042",
+		"key": "libtxt999990042",
+		"en": "Do not send",
+		"ch": "不发送",
+		"tc": "不發送",
+		"kr": "보내지 않음"
 	}
 ]

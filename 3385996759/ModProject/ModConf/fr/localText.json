@@ -168,5 +168,50 @@
 		"id": "999990033",
 		"key": "libtxt999990033",
 		"en|ch|tc|kr": "Masquer le titre du jeu sur les fonds d'écran de mods"
+	},
+	{
+		"id": "999990034",
+		"key": "libtxt999990034",
+		"en|ch|tc|kr": "Quand une erreur survient dans l'un de ces mods, ModLib peut-il envoyer un rapport d'erreur à son auteur (service BugSplat) ?"
+	},
+	{
+		"id": "999990035",
+		"key": "libtxt999990035",
+		"en|ch|tc|kr": "Mods qui envoient des rapports"
+	},
+	{
+		"id": "999990036",
+		"key": "libtxt999990036",
+		"en|ch|tc|kr": "Envoyé"
+	},
+	{
+		"id": "999990037",
+		"key": "libtxt999990037",
+		"en|ch|tc|kr": "• le message d'erreur et l'endroit du code où elle est survenue\n• les dernières lignes du journal du mod (sans ton dossier utilisateur, ton compte Windows ni ton id de joueur)\n• les versions du jeu, de ModLib et des mods, les ids des mods chargés, la langue\n• un id aléatoire anonyme"
+	},
+	{
+		"id": "999990038",
+		"key": "libtxt999990038",
+		"en|ch|tc|kr": "Jamais envoyé"
+	},
+	{
+		"id": "999990039",
+		"key": "libtxt999990039",
+		"en|ch|tc|kr": "• tes sauvegardes\n• ton compte Steam"
+	},
+	{
+		"id": "999990040",
+		"key": "libtxt999990040",
+		"en|ch|tc|kr": "Tu peux changer ta réponse à tout moment : écran titre > {0} > {1}."
+	},
+	{
+		"id": "999990041",
+		"key": "libtxt999990041",
+		"en|ch|tc|kr": "Autoriser"
+	},
+	{
+		"id": "999990042",
+		"key": "libtxt999990042",
+		"en|ch|tc|kr": "Ne pas envoyer"
 	}
 ]

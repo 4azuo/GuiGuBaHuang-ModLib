@@ -168,5 +168,50 @@
 		"id": "999990033",
 		"key": "libtxt999990033",
 		"en|ch|tc|kr": "Titulum ludi in tabulis fundi modorum cela"
+	},
+	{
+		"id": "999990034",
+		"key": "libtxt999990034",
+		"en|ch|tc|kr": "Cum error in uno ex his modis accidit, licetne ModLib relationem erroris ad auctorem mittere (BugSplat)?"
+	},
+	{
+		"id": "999990035",
+		"key": "libtxt999990035",
+		"en|ch|tc|kr": "Modi qui relationes mittunt"
+	},
+	{
+		"id": "999990036",
+		"key": "libtxt999990036",
+		"en|ch|tc|kr": "Mittitur"
+	},
+	{
+		"id": "999990037",
+		"key": "libtxt999990037",
+		"en|ch|tc|kr": "• nuntius erroris et locus eius in codice\n• ultimae lineae acti modi (sine tuo folle usoris, ratione Windows et id lusoris)\n• versiones ludi, ModLib et modorum, id modorum oneratorum, lingua\n• id fortuitum anonymum"
+	},
+	{
+		"id": "999990038",
+		"key": "libtxt999990038",
+		"en|ch|tc|kr": "Numquam mittitur"
+	},
+	{
+		"id": "999990039",
+		"key": "libtxt999990039",
+		"en|ch|tc|kr": "• tua servata\n• tua ratio Steam"
+	},
+	{
+		"id": "999990040",
+		"key": "libtxt999990040",
+		"en|ch|tc|kr": "Responsum quovis tempore mutare potes: titulus > {0} > {1}."
+	},
+	{
+		"id": "999990041",
+		"key": "libtxt999990041",
+		"en|ch|tc|kr": "Permittere"
+	},
+	{
+		"id": "999990042",
+		"key": "libtxt999990042",
+		"en|ch|tc|kr": "Ne mittas"
 	}
 ]

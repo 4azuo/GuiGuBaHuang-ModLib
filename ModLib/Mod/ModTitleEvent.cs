@@ -353,12 +353,64 @@ namespace ModLib.Mod
                 DebugHelper.Save();
                 onAnswer?.Invoke();
             };
-            g.ui.MsgBox(GameTool.LS("libtxt999990019"),
-                string.Format(GameTool.LS("libtxt999990020"), GameTool.LS("libtxt999990009"), GameTool.LS("libtxt999990019"),
-                    string.Join("\n", CrashReportHelper.ModNames.Select(x => $"  • {x}"))),
-                MsgBoxButtonEnum.YesNo,
-                () => answer(CrashReportConsentEnum.Allowed),
-                () => answer(CrashReportConsentEnum.Denied));
+            ConsentWindow = new UICustom1(GameTool.LS("libtxt999990019"), GameTool.LS("libtxt999990041"),
+                () => answer(CrashReportConsentEnum.Allowed), true, () => answer(CrashReportConsentEnum.Denied));
+            try { BuildConsentWindow(ConsentWindow); }
+            catch (System.Exception ex) { DebugHelper.WriteLine(ex); }
+        }
+
+        /// <summary>The window asking for the error reports (null: not open). Tests: its texts, AnswerConsent.</summary>
+        public static UICustom1 ConsentWindow { get; private set; }
+
+        /// <summary>The texts of the consent window, for tests (question, mods, what is sent / never sent, where to change it).</summary>
+        public static string ConsentText { get; private set; } = string.Empty;
+
+        /// <summary>
+        /// The consent window: the question over the whole width, the mods sending reports on the left, what is sent and
+        /// what is never sent on the right, where the answer can be changed at the bottom; buttons Allow / Do not send.
+        /// </summary>
+        private static void BuildConsentWindow(UICustom1 ui)
+        {
+            var cancelLabel = ui.UI.btnCancel?.GetComponentInChildren<UnityEngine.UI.Text>(true);
+            if (cancelLabel != null) cancelLabel.text = GameTool.LS("libtxt999990042");
+            float left = ui.MinWidth + 30f, right = ui.MaxWidth - 30f, top = ui.MinHeight - 20f;
+            var width = right - left;
+            var leftWidth = width * 0.34f;
+            var rightLeft = left + leftWidth + 30f;
+            var rightWidth = right - rightLeft;
+            var title = new Color(0.45f, 0.12f, 0.08f);
+            var texts = new List<string>();
+            UIItemText Block(float x, float top0, float w, float h, string text, int size, Color color, FontStyle style = FontStyle.Normal)
+            {
+                var t = ui.AddText(x + w / 2f, top0 - h / 2f, text);
+                t.Align(TextAnchor.UpperLeft, VerticalWrapMode.Overflow, HorizontalWrapMode.Wrap).Format(color, size, style);
+                t.Item.rectTransform.sizeDelta = new Vector2(w, h);
+                texts.Add(text);
+                return t;
+            }
+            var question = GameTool.LS("libtxt999990034");
+            Block(left, top, width, 60f, question, 18, Color.black, FontStyle.Bold);
+            var y = top - 75f;
+            Block(left, y, leftWidth, 30f, GameTool.LS("libtxt999990035"), 17, title, FontStyle.Bold);
+            var mods = CrashReportHelper.ModNames;
+            Block(left, y - 34f, leftWidth, 28f * System.Math.Max(1, mods.Count) + 10f, string.Join("\n", mods.Select(x => $"• {x}")), 16, Color.black);
+            Block(rightLeft, y, rightWidth, 30f, GameTool.LS("libtxt999990036"), 17, title, FontStyle.Bold);
+            Block(rightLeft, y - 34f, rightWidth, 150f, GameTool.LS("libtxt999990037"), 15, Color.black);
+            Block(rightLeft, y - 200f, rightWidth, 30f, GameTool.LS("libtxt999990038"), 17, title, FontStyle.Bold);
+            Block(rightLeft, y - 234f, rightWidth, 60f, GameTool.LS("libtxt999990039"), 15, Color.black);
+            Block(left, ui.MaxHeight + 70f, width, 30f, string.Format(GameTool.LS("libtxt999990040"), GameTool.LS("libtxt999990009"), GameTool.LS("libtxt999990019")), 14, new Color(0.35f, 0.24f, 0.13f));
+            ConsentText = string.Join("\n", texts);
+        }
+
+        /// <summary>The consent window answered (tests): Allow / Do not send, as its buttons.</summary>
+        public static bool AnswerConsent(bool allow)
+        {
+            var ui = ConsentWindow;
+            if (ui?.UI == null) return false;
+            var btn = allow ? ui.UI.btnOK : ui.UI.btnCancel;
+            if (btn == null) return false;
+            btn.onClick.Invoke();
+            return true;
         }
 
         private string GetCrashReportConsentText()
