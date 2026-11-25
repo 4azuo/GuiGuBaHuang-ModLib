@@ -32,6 +32,36 @@ namespace ModLib.Helper
             return TOKEN.Replace(text, SPRITE);
         }
 
+        /// <summary>An icon of the game in a text (a sprite tag: shown by the TextMeshPro twin), e.g. Icon("huolinggen").</summary>
+        public static string Icon(string name) => string.IsNullOrEmpty(name) ? string.Empty : ToSprites(TOKEN_PREFIX + name + "]");
+
+        /// <summary>A text in a colour ("#7a1f1f", "red").</summary>
+        public static string Paint(string color, string text) => string.IsNullOrEmpty(color) ? text : $"<color={color}>{text}</color>";
+
+        /// <summary>
+        /// The text icon of one of the 12 attributes of the game (spiritual roots fire..wood, weapon arts blade..finger: see
+        /// HitHelper.ATTRIBUTES; "froze" = frost), <paramref name="fallback"/> (spirit power) for another.
+        /// </summary>
+        public static string AttributeIcon(string attribute, string fallback = "lingli")
+        {
+            switch (attribute?.ToLowerInvariant())
+            {
+                case "fire": return "huolinggen";
+                case "frost": case "froze": return "shuilinggen";
+                case "thunder": return "leilinggen";
+                case "wind": return "fenglinggen";
+                case "earth": return "tulinggen";
+                case "wood": return "mulinggen";
+                case "sword": return "jianfa";
+                case "blade": return "daofa";
+                case "spear": return "qiangfa";
+                case "fist": return "quanfa";
+                case "palm": return "zhangfa";
+                case "finger": return "zhifa";
+                default: return fallback;
+            }
+        }
+
         /// <summary>The text has a sprite tag (needs TextMeshPro).</summary>
         public static bool HasSprite(string text) => !string.IsNullOrEmpty(text) && text.IndexOf("<sprite", StringComparison.Ordinal) >= 0;
 

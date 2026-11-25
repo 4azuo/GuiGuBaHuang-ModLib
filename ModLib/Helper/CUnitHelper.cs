@@ -128,6 +128,32 @@ namespace ModLib.Helper
         }
 
         /// <summary>
+        /// The realm of a combat unit: its world unit's (GetGradeLvl), else the grade of its data (monsters, summons);
+        /// <paramref name="fallback"/> when neither can be read.
+        /// </summary>
+        public static int GetGradeLvl(this UnitCtrlBase cunit, int fallback = 1)
+        {
+            try { return cunit.IsWorldUnit() ? cunit.GetWorldUnit().GetGradeLvl() : cunit.data.grade.value; }
+            catch { return fallback; }
+        }
+
+        /// <summary>
+        /// +<paramref name="percent"/> (or -) of a battle value (attack, defense... a DynInt of UnitCtrlBase.data) until
+        /// Time.time reaches <paramref name="untilTime"/>: an add handler of the DynInt, named <paramref name="key"/> (a
+        /// prefix of the mod). The value shown is the base x its scale (the attack of a battle unit: x100), so the handler
+        /// adds percent of the base. Returns the value added (as shown), 0 when nothing is added.
+        /// </summary>
+        public static int AddPercentUntil(DynInt value, int percent, float untilTime, string key)
+        {
+            if (value == null || percent == 0) return 0;
+            var scale = System.Math.Max(1, value.scaleGetValue);
+            var add = (int)System.Math.Round(value.value / (double)scale * percent / 100.0);
+            if (add == 0) return 0;
+            value.AddValue((DynInt.DynObjectAddHandler)(() => UnityEngine.Time.time < untilTime ? add : 0), key ?? "ModLib");
+            return add * scale;
+        }
+
+        /// <summary>
         /// Finds all combat units within a specified radius of this unit.
         /// </summary>
         /// <param name="cunit">The center unit</param>

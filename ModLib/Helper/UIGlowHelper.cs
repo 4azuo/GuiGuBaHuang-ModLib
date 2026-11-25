@@ -59,6 +59,24 @@ namespace ModLib.Helper
             return glow;
         }
 
+        /// <summary>
+        /// The index of the button the frame is around (-1: hidden, or around none of them): centered on it, PAD larger on
+        /// every side (tests: which item is chosen).
+        /// </summary>
+        public static int FramedIndex<T>(UIItemImage glow, IList<T> buttons) where T : UIItemBase
+        {
+            if (glow == null || buttons == null || !glow.Item.gameObject.activeInHierarchy) return -1;
+            var g = glow.Item.rectTransform;
+            for (var i = 0; i < buttons.Count; i++)
+            {
+                var b = ((Component)buttons[i].Component).GetComponent<RectTransform>();
+                var center = b.anchoredPosition + Vector2.Scale(new Vector2(0.5f, 0.5f) - b.pivot, b.rect.size);
+                if ((g.anchoredPosition - center).magnitude < 0.5f && Mathf.Abs(g.rect.width - b.rect.width - 2f * PAD) < 0.5f
+                    && Mathf.Abs(g.rect.height - b.rect.height - 2f * PAD) < 0.5f) return i;
+            }
+            return -1;
+        }
+
         /// <summary>Frames a button (centered on it, PAD larger on every side); hidden when show is false or no button.</summary>
         public static void Place(UIItemImage glow, UIItemBase button, bool show = true)
         {

@@ -29,7 +29,7 @@
 
 ## Enums
 
-* Unit data: `UnitPropertyEnum` (saved properties: `GradeID`, `Exp`, `Age`, `Talent`, basis...), `UnitDynPropertyEnum` (final DynInt values: `Attack`, `Defense`, `HpMax`, `BasisFire`...), conversion `GetPropertyEnum()` / `GetDynPropertyEnum()`. Read/write with `wunit.GetProperty<T>(e)`, `SetProperty`, `AddProperty`, `GetDynProperty(e).value`.
+* Unit data: `UnitPropertyEnum` (saved properties: `GradeID`, `Exp`, `Age`, `Talent`, basis...), `UnitDynPropertyEnum` (final DynInt values: `Attack`, `Defense`, `HpMax`, `BasisFire`...), conversion `GetPropertyEnum()` / `GetDynPropertyEnum()`; both are found by their property name: `GetEnumByVal<UnitDynPropertyEnum>("basisFire")` (`UnitDynPropertyEnum` since 2.3.00). Read/write with `wunit.GetProperty<T>(e)`, `SetProperty`, `AddProperty`, `GetDynProperty(e).value`.
 * Grades: `GradeEnum`, `GradePhaseEnum`, `GradePhaseUpEnum`, `BottleneckEnum`.
 * Lucks: `LuckTypeEnum`, `LuckRarityEnum`, `LuckConcealEnum`, `LuckDurStackTypeEnum`, `AddLuckOptions`.
 * Misc: `UnitTraitEnum`, `PillTypeEnum`, `EffectChangeTypeEnum`, `MathLogicOptions` (+ - * / as data), `MsgBoxButtonEnum`, `HandleEnum`, `CheckEnum`, `DebugModeEnum`.

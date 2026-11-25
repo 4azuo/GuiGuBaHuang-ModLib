@@ -124,7 +124,8 @@ namespace ModLib.Enum
         /// <summary>
         /// Creates an entry bound to a property name of UnitDynData.
         /// </summary>
-        private UnitDynPropertyEnum(string propName, IntPtr? propAddr = null) : base()
+        /// <remarks>Its Value is the property name: GetEnumByVal&lt;UnitDynPropertyEnum&gt;("basisFire") finds it.</remarks>
+        private UnitDynPropertyEnum(string propName, IntPtr? propAddr = null) : base(propName)
         {
             PropName = propName;
             PropAddr = propAddr == null ?
