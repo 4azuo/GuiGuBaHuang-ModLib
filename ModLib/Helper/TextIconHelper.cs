@@ -127,6 +127,9 @@ namespace ModLib.Helper
         {
             var tw = UnityEngine.Object.Instantiate(UISampleHelper.TmpSample, t.transform, false);
             tw.gameObject.name = TWIN_NAME;
+            // the sample (tooltip text of UITextInfo) fits its size to its lines: the twin would shrink around the middle of
+            // the Text and a long block would not start at its top; the twin keeps the rect of the Text instead
+            foreach (var f in tw.GetComponents<ContentSizeFitter>()) f.enabled = false;
             var rt = tw.rectTransform;
             rt.anchorMin = Vector2.zero;
             rt.anchorMax = Vector2.one;

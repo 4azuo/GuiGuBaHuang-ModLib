@@ -93,6 +93,7 @@
     <Compile Include="Helper\AssemblyHelper.cs" />
     <Compile Include="Helper\GamevarHelper.cs" />
     <Compile Include="Helper\ConfHelper.cs" />
+    <Compile Include="Helper\ModOptionsHelper.cs" />
     <Compile Include="Helper\EnumerableHelper.cs" />
     <Compile Include="Helper\EventHelper.cs" />
     <Compile Include="Helper\EventTraceHelper.cs" />
@@ -148,6 +149,7 @@
     <Compile Include="Mod\Base\ModMaster.cs" />
     <Compile Include="Helper\ActionHelper_TracedFunc.cs" />
     <Compile Include="Object\ModConfigs.cs" />
+    <Compile Include="Object\ModOptions.cs" />
     <Compile Include="Object\ParameterStore.cs" />
     <Compile Include="Object\Gamevar.cs" />
     <Compile Include="Object\Base\MonoUpdater.cs" />
@@ -163,6 +165,7 @@
     <Compile Include="Object\UI\UISample.cs" />
     <Compile Include="Object\UI\UICover.cs" />
     <Compile Include="Object\UI\UICustomBase.cs" />
+    <Compile Include="Object\UI\ModOptionsPage.cs" />
     <Compile Include="Object\UI\UICustom.cs" />
     <Compile Include="Object\UI\UIItemInput.cs" />
     <Compile Include="Object\UI\UIItemImage.cs" />
