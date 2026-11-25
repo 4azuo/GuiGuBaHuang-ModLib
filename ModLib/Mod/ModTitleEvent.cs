@@ -121,7 +121,7 @@ namespace ModLib.Mod
                                 LoadLocalTexts(GetTranslateLanguage());
                             })
                         });
-                    var modCreatorBtn = ui.AddButton(ui.Columns[ui.LastCol - 10], ui.Rows[ui.FirstRow + 2] - UIHelper.GetUIDeltaY() / 2, () =>
+                    var modCreatorBtn = ui.AddButton(ui.Columns[ui.LastCol - 10], ui.Rows[ui.FirstRow + 2] - UIHelper.GetUIDeltaY() / 2, () => UICustom2.WhenFree(() =>
                     {
                         var miniWindow = new UICustom2(GameTool.LS("libtxt999990009"));
                         {
@@ -144,7 +144,7 @@ namespace ModLib.Mod
                             //miniWindow.AddButton(col, row, ExportAssets, GameTool.LS("libtxt999990012"));
                             //miniWindow.AddText(txtCol, row, GameTool.LS("libtxt999990013")).Align();
                         }
-                    }, GameTool.LS("libtxt999990009"))
+                    }), GameTool.LS("libtxt999990009"))
                         .Align(TextAnchor.MiddleCenter)
                         .Size(200, 24)
                         .SetParentTransform(panelLangInit.Component.transform);
@@ -344,8 +344,16 @@ namespace ModLib.Mod
         /// </summary>
         public void AskCrashReportConsent(System.Action onAnswer)
         {
+            // the window is a UITextInfoLong of the game: one at a time (another one open, a mod's notice on the title
+            // screen, would get these texts over its own): opened once it is closed (UICustomQueue)
+            UICustom1.WhenFree(() => OpenConsentWindow(onAnswer));
+        }
+
+        private void OpenConsentWindow(System.Action onAnswer)
+        {
             System.Action<CrashReportConsentEnum> answer = (v) =>
             {
+                ConsentWindow = null;
                 CrashReportConsent = v;
                 CrashReportConsentKey = CrashReportHelper.ConsentKey;
                 CacheHelper.SaveGlobalCache(this);
@@ -391,14 +399,14 @@ namespace ModLib.Mod
             var question = GameTool.LS("libtxt999990034");
             Block(left, top, width, 60f, question, 18, Color.black, FontStyle.Bold);
             var y = top - 75f;
-            Block(left, y, leftWidth, 30f, GameTool.LS("libtxt999990035"), 17, title, FontStyle.Bold);
+            Block(left, y, leftWidth, 30f, GameTool.LS("libtxt999990035"), 18, title, FontStyle.Bold);
             var mods = CrashReportHelper.ModNames;
-            Block(left, y - 34f, leftWidth, 28f * System.Math.Max(1, mods.Count) + 10f, string.Join("\n", mods.Select(x => $"• {x}")), 16, Color.black);
-            Block(rightLeft, y, rightWidth, 30f, GameTool.LS("libtxt999990036"), 17, title, FontStyle.Bold);
-            Block(rightLeft, y - 34f, rightWidth, 150f, GameTool.LS("libtxt999990037"), 15, Color.black);
-            Block(rightLeft, y - 200f, rightWidth, 30f, GameTool.LS("libtxt999990038"), 17, title, FontStyle.Bold);
-            Block(rightLeft, y - 234f, rightWidth, 60f, GameTool.LS("libtxt999990039"), 15, Color.black);
-            Block(left, ui.MaxHeight + 70f, width, 30f, string.Format(GameTool.LS("libtxt999990040"), GameTool.LS("libtxt999990009"), GameTool.LS("libtxt999990019")), 14, new Color(0.35f, 0.24f, 0.13f));
+            Block(left, y - 36f, leftWidth, 30f * System.Math.Max(1, mods.Count) + 10f, string.Join("\n", mods.Select(x => $"• {x}")), 17, Color.black);
+            Block(rightLeft, y, rightWidth, 30f, GameTool.LS("libtxt999990036"), 18, title, FontStyle.Bold);
+            Block(rightLeft, y - 36f, rightWidth, 130f, GameTool.LS("libtxt999990037"), 16, Color.black);
+            Block(rightLeft, y - 175f, rightWidth, 30f, GameTool.LS("libtxt999990038"), 18, title, FontStyle.Bold);
+            Block(rightLeft, y - 211f, rightWidth, 60f, GameTool.LS("libtxt999990039"), 16, Color.black);
+            Block(left, ui.MaxHeight + 70f, width, 30f, string.Format(GameTool.LS("libtxt999990040"), GameTool.LS("libtxt999990009"), GameTool.LS("libtxt999990019")), 15, new Color(0.35f, 0.24f, 0.13f));
             ConsentText = string.Join("\n", texts);
         }
 
@@ -421,7 +429,9 @@ namespace ModLib.Mod
         /// <summary>
         /// Lists config ids loaded by several mods (red) or replacing base game ids (blue).
         /// </summary>
-        private void ShowCheckedIDs()
+        private void ShowCheckedIDs() => UICustom1.WhenFree(ShowCheckedIDsNow);
+
+        private void ShowCheckedIDsNow()
         {
             var listWindow = new UICustom1(GameTool.LS("libtxt999990010"));
             {

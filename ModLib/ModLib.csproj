@@ -166,6 +166,7 @@
     <Compile Include="Object\UI\UICover.cs" />
     <Compile Include="Object\UI\UICustomBase.cs" />
     <Compile Include="Object\UI\ModOptionsPage.cs" />
+    <Compile Include="Object\UI\UICustomQueue.cs" />
     <Compile Include="Object\UI\UICustom.cs" />
     <Compile Include="Object\UI\UIItemInput.cs" />
     <Compile Include="Object\UI\UIItemImage.cs" />

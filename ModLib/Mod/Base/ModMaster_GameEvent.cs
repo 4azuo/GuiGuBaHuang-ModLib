@@ -591,6 +591,8 @@ namespace ModLib.Mod
         /// </summary>
         public virtual void OnMonoUpdate()
         {
+            // windows waiting for their UI of the game (UICustom1.WhenFree / UICustom2.WhenFree)
+            ModLib.Object.UICustomQueue.Update();
             EventHelper.RunMinorEvents("OnMonoUpdate");
         }
         #endregion

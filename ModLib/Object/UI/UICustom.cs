@@ -107,6 +107,13 @@ namespace ModLib.Object
     public class UICustom1 : UICustom<UITextInfoLong>
     {
         /// <summary>
+        /// Opens a UICustom1 when no UITextInfoLong is open (another one - a notice of a mod - would get its texts): now,
+        /// or once the windows open / waiting before it are closed (UICustomQueue). <paramref name="open"/> makes the
+        /// window and fills it. Returns true when opened now.
+        /// </summary>
+        public static bool WhenFree(Action open) => UICustomQueue.Open(UIType.TextInfoLong.uiName, open);
+
+        /// <summary>
         /// Gets the display name of the UI type associated with this object.
         /// </summary>
         public override string UITypeName => UIType.TextInfoLong.uiName;
@@ -157,6 +164,12 @@ namespace ModLib.Object
     /// dynamically calculated based on the current screen size, ensuring responsive layout behavior. </para></remarks>
     public class UICustom2 : UICustom<UITextInfo>
     {
+        /// <summary>
+        /// Opens a UICustom2 when no UITextInfo is open (another one would get its texts): now, or once the windows open /
+        /// waiting before it are closed (UICustomQueue). <paramref name="open"/> makes the window and fills it.
+        /// </summary>
+        public static bool WhenFree(Action open) => UICustomQueue.Open(UIType.TextInfo.uiName, open);
+
         /// <summary>
         /// Gets the display name of the UI type associated with this object.
         /// </summary>
