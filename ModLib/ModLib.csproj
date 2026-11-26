@@ -151,6 +151,7 @@
     <Compile Include="Helper\ObjectHelper.cs" />
     <Compile Include="Helper\ParseHelper.cs" />
     <Compile Include="Helper\PrivateModHelper.cs" />
+    <Compile Include="Helper\LicenseHelper.cs" />
     <Compile Include="Helper\WUnitHelper.cs" />
     <Compile Include="Object\Base\CachableObject.cs" />
     <Compile Include="Mod\Base\ModMaster.cs" />

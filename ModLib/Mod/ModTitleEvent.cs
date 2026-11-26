@@ -150,6 +150,9 @@ namespace ModLib.Mod
                 }
                 ui.UpdateUI();
 
+                //licensed mods without a valid key: a button each in the row of the mods (LicenseHelper)
+                LicenseHelper.AddTitleButtons();
+
                 //the mod wallpaper of the session (startup draw of the packs, first title screen) or chosen by the player
                 //(WallpaperHelper), after the game's own one
                 WallpaperHelper.ShowStartupWallpaper();

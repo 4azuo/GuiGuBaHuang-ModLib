@@ -223,5 +223,90 @@
 		"id": "999990044",
 		"key": "libtxt999990044",
 		"en|ch|tc|kr": "Este mod es privado: no se sube al Steam Workshop."
+	},
+	{
+		"id": "999990045",
+		"key": "libtxt999990045",
+		"en|ch|tc|kr": "{0} - Clave de colaborador"
+	},
+	{
+		"id": "999990046",
+		"key": "libtxt999990046",
+		"en|ch|tc|kr": "Guardar"
+	},
+	{
+		"id": "999990047",
+		"key": "libtxt999990047",
+		"en|ch|tc|kr": "{0} es un mod para colaboradores: funciona con una clave. Pega abajo la clave que recibiste (Ctrl+V o Pegar) y guarda."
+	},
+	{
+		"id": "999990048",
+		"key": "libtxt999990048",
+		"en|ch|tc|kr": "Pega la clave aquí"
+	},
+	{
+		"id": "999990049",
+		"key": "libtxt999990049",
+		"en|ch|tc|kr": "Clave válida - {0}, hasta {1}."
+	},
+	{
+		"id": "999990050",
+		"key": "libtxt999990050",
+		"en|ch|tc|kr": "Aún no hay clave: el mod no se carga."
+	},
+	{
+		"id": "999990051",
+		"key": "libtxt999990051",
+		"en|ch|tc|kr": "Esta clave ha caducado ({1}): el mod no se carga. Consigue una clave nueva."
+	},
+	{
+		"id": "999990052",
+		"key": "libtxt999990052",
+		"en|ch|tc|kr": "Esta clave es de otro mod."
+	},
+	{
+		"id": "999990053",
+		"key": "libtxt999990053",
+		"en|ch|tc|kr": "La clave pública de este mod no es válida (consulta a su autor)."
+	},
+	{
+		"id": "999990054",
+		"key": "libtxt999990054",
+		"en|ch|tc|kr": "Esta clave no es válida (mal copiada o no firmada por el autor)."
+	},
+	{
+		"id": "999990055",
+		"key": "libtxt999990055",
+		"en|ch|tc|kr": "sin caducidad"
+	},
+	{
+		"id": "999990056",
+		"key": "libtxt999990056",
+		"en|ch|tc|kr": "Pegar"
+	},
+	{
+		"id": "999990057",
+		"key": "libtxt999990057",
+		"en|ch|tc|kr": "Conseguir clave"
+	},
+	{
+		"id": "999990058",
+		"key": "libtxt999990058",
+		"en|ch|tc|kr": "Archivo de clave: {0}"
+	},
+	{
+		"id": "999990059",
+		"key": "libtxt999990059",
+		"en|ch|tc|kr": "Reinicia el juego para cargar el mod."
+	},
+	{
+		"id": "999990060",
+		"key": "libtxt999990060",
+		"en|ch|tc|kr": "{0}: introducir clave"
+	},
+	{
+		"id": "999990061",
+		"key": "libtxt999990061",
+		"en|ch|tc|kr": "Apoyar"
 	}
 ]

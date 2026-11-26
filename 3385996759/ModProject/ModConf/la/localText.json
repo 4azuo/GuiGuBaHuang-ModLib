@@ -223,5 +223,90 @@
 		"id": "999990044",
 		"key": "libtxt999990044",
 		"en|ch|tc|kr": "Hic mod privatus est: in Steam Workshop non mittitur."
+	},
+	{
+		"id": "999990045",
+		"key": "libtxt999990045",
+		"en|ch|tc|kr": "{0} - Clavis fautoris"
+	},
+	{
+		"id": "999990046",
+		"key": "libtxt999990046",
+		"en|ch|tc|kr": "Serva"
+	},
+	{
+		"id": "999990047",
+		"key": "libtxt999990047",
+		"en|ch|tc|kr": "{0} mod fautorum est: clave opus est. Clavem acceptam infra insere (Ctrl+V vel Insere), deinde serva."
+	},
+	{
+		"id": "999990048",
+		"key": "libtxt999990048",
+		"en|ch|tc|kr": "Clavem hic insere"
+	},
+	{
+		"id": "999990049",
+		"key": "libtxt999990049",
+		"en|ch|tc|kr": "Clavis valida - {0}, usque ad {1}."
+	},
+	{
+		"id": "999990050",
+		"key": "libtxt999990050",
+		"en|ch|tc|kr": "Nulla clavis adhuc: mod non oneratur."
+	},
+	{
+		"id": "999990051",
+		"key": "libtxt999990051",
+		"en|ch|tc|kr": "Haec clavis exspiravit ({1}): mod non oneratur. Novam clavem pete."
+	},
+	{
+		"id": "999990052",
+		"key": "libtxt999990052",
+		"en|ch|tc|kr": "Haec clavis alterius mod est."
+	},
+	{
+		"id": "999990053",
+		"key": "libtxt999990053",
+		"en|ch|tc|kr": "Clavis publica huius mod invalida est (auctorem roga)."
+	},
+	{
+		"id": "999990054",
+		"key": "libtxt999990054",
+		"en|ch|tc|kr": "Haec clavis non valet (male scripta, vel ab auctore non signata)."
+	},
+	{
+		"id": "999990055",
+		"key": "libtxt999990055",
+		"en|ch|tc|kr": "sine fine"
+	},
+	{
+		"id": "999990056",
+		"key": "libtxt999990056",
+		"en|ch|tc|kr": "Insere"
+	},
+	{
+		"id": "999990057",
+		"key": "libtxt999990057",
+		"en|ch|tc|kr": "Clavem pete"
+	},
+	{
+		"id": "999990058",
+		"key": "libtxt999990058",
+		"en|ch|tc|kr": "Fasciculus clavis: {0}"
+	},
+	{
+		"id": "999990059",
+		"key": "libtxt999990059",
+		"en|ch|tc|kr": "Ludum iterum incipe ut mod oneretur."
+	},
+	{
+		"id": "999990060",
+		"key": "libtxt999990060",
+		"en|ch|tc|kr": "{0}: clavem insere"
+	},
+	{
+		"id": "999990061",
+		"key": "libtxt999990061",
+		"en|ch|tc|kr": "Fave"
 	}
 ]

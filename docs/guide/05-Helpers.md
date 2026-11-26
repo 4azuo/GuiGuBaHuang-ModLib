@@ -11,6 +11,7 @@ Reusable utility functions in `Helper/` folder.
 - **CacheHelper** - Data caching and retrieval
 - **ConfHelper** - Config file loading and error handling; `ReadConfJson<T>(modId, file, fallback)` (a JSON data file of the ModConf of a mod: the fallback when missing or broken, logged)
 - **PrivateModHelper** - Private mods (`public const bool PRIVATE_MOD = true` in `MOD_<id>.ModMain`: no Steam Workshop upload in the mod editor, see [07-Build-Deploy](07-Build-Deploy.md#private-mods)): `IsPrivate(modProject)`, `ReadPrivateConst(type)`, `FindEntryType(modId, dlls)`
+- **LicenseHelper** - Licensed mods (`LICENSE_PUBLIC_KEY` / `LICENSE_NAME` / `LICENSE_URL` constants of `MOD_<id>.ModMain`: loaded only with a signed key, see [07-Build-Deploy](07-Build-Deploy.md#licensed-mods-supporter-keys)): `Verify(key, modId, publicKey, utcNow)`, `VerifyRsaSha256`, `IsUnlocked(modId, entryType)`, `LockedMods()`, `KeyFilePath` / `ReadKey` / `WriteKey`, `OpenKeyWindow`, `SubmitKey` (2.3.05)
 - **LocalTextHelper** - `LSF(key, args)` (a localText with its format items), `HasText(key)`, `RandomLS(key)` / `Variants(key)` (random variants `key_1`, `key_2`...)
 - **DebugHelper** - Logging, debug mode, exception tracking
 - **EventHelper** - Event system and lifecycle (`IsLoaded(cacheId)`: the event was accepted by its OnCacheHandler)

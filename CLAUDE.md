@@ -10,7 +10,7 @@ hold it as their `GuiGuBaHuang-ModLib` submodule.
 - **3385996759/** - the ModLib Workshop project: `ModProject/ModCode/ModMain/` (ModMain of ModLib, builds `ModLib/ModLib.csproj`), `ModProject/ModConf/` (configs, `localText.json`: keys `libtxt<id>`, ids `999990000`+), `SampleConfs/` (templates of every game config type), `debug/Mod_flQrxq/` (build output; `ModCode/dll` committed: the mods build against it), `scripts/` (settings + wrappers)
 - **scripts/** - shared tools: `project/` (build / deploy), `game/` (game runs, autotest, game slots, promo, effect galleries), `release/`, `setup/`, `run-unittests.ps1`, repository scripts; `settings.json` of this repository
 - **tests/** - `UnitTests.props` (shared test setup), `Shared/`, `ModLib/` (tests of ModLib), `ModLibTests.csproj`
-- **test-viewer/**, **promo-viewer/**, **effect-viewer/**, **Translate/**, **tools/SlotDataPath/** - shared viewers and tools (the data stays in the mod repository)
+- **test-viewer/**, **promo-viewer/**, **effect-viewer/**, **Translate/**, **tools/SlotDataPath/**, **tools/LicenseWorker/** (Cloudflare Worker of the supporter keys) - shared viewers and tools (the data stays in the mod repository)
 - **docs/** - `guide/` (writing a mod with ModLib), internals `00`-`05`, `06-Shared-Tools.md`, `ModConf/` (config samples), `Effects/`, `GameAssets/` (Git LFS)
 - **marketing/** - Steam Workshop description of ModLib (`workshop-description-modlib.bbcode`)
 

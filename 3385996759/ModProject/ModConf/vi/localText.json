@@ -223,5 +223,90 @@
 		"id": "999990044",
 		"key": "libtxt999990044",
 		"en|ch|tc|kr": "Mod này là mod riêng tư: không được tải lên Steam Workshop."
+	},
+	{
+		"id": "999990045",
+		"key": "libtxt999990045",
+		"en|ch|tc|kr": "{0} - Key ủng hộ"
+	},
+	{
+		"id": "999990046",
+		"key": "libtxt999990046",
+		"en|ch|tc|kr": "Lưu"
+	},
+	{
+		"id": "999990047",
+		"key": "libtxt999990047",
+		"en|ch|tc|kr": "{0} là mod dành cho người ủng hộ: cần key để chạy. Dán key bạn nhận được vào bên dưới (Ctrl+V hoặc Dán), rồi bấm Lưu."
+	},
+	{
+		"id": "999990048",
+		"key": "libtxt999990048",
+		"en|ch|tc|kr": "Dán key vào đây"
+	},
+	{
+		"id": "999990049",
+		"key": "libtxt999990049",
+		"en|ch|tc|kr": "Key hợp lệ - {0}, đến {1}."
+	},
+	{
+		"id": "999990050",
+		"key": "libtxt999990050",
+		"en|ch|tc|kr": "Chưa có key: mod không được nạp."
+	},
+	{
+		"id": "999990051",
+		"key": "libtxt999990051",
+		"en|ch|tc|kr": "Key đã hết hạn ({1}): mod không được nạp. Hãy lấy key mới."
+	},
+	{
+		"id": "999990052",
+		"key": "libtxt999990052",
+		"en|ch|tc|kr": "Key này dành cho mod khác."
+	},
+	{
+		"id": "999990053",
+		"key": "libtxt999990053",
+		"en|ch|tc|kr": "Public key của mod này không hợp lệ (hãy báo tác giả)."
+	},
+	{
+		"id": "999990054",
+		"key": "libtxt999990054",
+		"en|ch|tc|kr": "Key không hợp lệ (dán sai, hoặc không phải do tác giả ký)."
+	},
+	{
+		"id": "999990055",
+		"key": "libtxt999990055",
+		"en|ch|tc|kr": "vĩnh viễn"
+	},
+	{
+		"id": "999990056",
+		"key": "libtxt999990056",
+		"en|ch|tc|kr": "Dán"
+	},
+	{
+		"id": "999990057",
+		"key": "libtxt999990057",
+		"en|ch|tc|kr": "Lấy key"
+	},
+	{
+		"id": "999990058",
+		"key": "libtxt999990058",
+		"en|ch|tc|kr": "File key: {0}"
+	},
+	{
+		"id": "999990059",
+		"key": "libtxt999990059",
+		"en|ch|tc|kr": "Khởi động lại game để nạp mod."
+	},
+	{
+		"id": "999990060",
+		"key": "libtxt999990060",
+		"en|ch|tc|kr": "{0}: nhập key"
+	},
+	{
+		"id": "999990061",
+		"key": "libtxt999990061",
+		"en|ch|tc|kr": "Ủng hộ"
 	}
 ]

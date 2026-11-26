@@ -223,5 +223,90 @@
 		"id": "999990044",
 		"key": "libtxt999990044",
 		"en|ch|tc|kr": "Ce mod est privé : il n'est pas envoyé sur le Steam Workshop."
+	},
+	{
+		"id": "999990045",
+		"key": "libtxt999990045",
+		"en|ch|tc|kr": "{0} - Clé de soutien"
+	},
+	{
+		"id": "999990046",
+		"key": "libtxt999990046",
+		"en|ch|tc|kr": "Enregistrer"
+	},
+	{
+		"id": "999990047",
+		"key": "libtxt999990047",
+		"en|ch|tc|kr": "{0} est un mod réservé aux soutiens : il fonctionne avec une clé. Collez ci-dessous la clé reçue (Ctrl+V ou Coller), puis enregistrez."
+	},
+	{
+		"id": "999990048",
+		"key": "libtxt999990048",
+		"en|ch|tc|kr": "Collez la clé ici"
+	},
+	{
+		"id": "999990049",
+		"key": "libtxt999990049",
+		"en|ch|tc|kr": "Clé valide - {0}, jusqu'au {1}."
+	},
+	{
+		"id": "999990050",
+		"key": "libtxt999990050",
+		"en|ch|tc|kr": "Pas encore de clé : le mod n'est pas chargé."
+	},
+	{
+		"id": "999990051",
+		"key": "libtxt999990051",
+		"en|ch|tc|kr": "Cette clé a expiré ({1}) : le mod n'est pas chargé. Obtenez une nouvelle clé."
+	},
+	{
+		"id": "999990052",
+		"key": "libtxt999990052",
+		"en|ch|tc|kr": "Cette clé est destinée à un autre mod."
+	},
+	{
+		"id": "999990053",
+		"key": "libtxt999990053",
+		"en|ch|tc|kr": "La clé publique de ce mod est invalide (contactez son auteur)."
+	},
+	{
+		"id": "999990054",
+		"key": "libtxt999990054",
+		"en|ch|tc|kr": "Cette clé n'est pas valide (mal saisie, ou non signée par l'auteur)."
+	},
+	{
+		"id": "999990055",
+		"key": "libtxt999990055",
+		"en|ch|tc|kr": "sans expiration"
+	},
+	{
+		"id": "999990056",
+		"key": "libtxt999990056",
+		"en|ch|tc|kr": "Coller"
+	},
+	{
+		"id": "999990057",
+		"key": "libtxt999990057",
+		"en|ch|tc|kr": "Obtenir une clé"
+	},
+	{
+		"id": "999990058",
+		"key": "libtxt999990058",
+		"en|ch|tc|kr": "Fichier de clé : {0}"
+	},
+	{
+		"id": "999990059",
+		"key": "libtxt999990059",
+		"en|ch|tc|kr": "Redémarrez le jeu pour charger le mod."
+	},
+	{
+		"id": "999990060",
+		"key": "libtxt999990060",
+		"en|ch|tc|kr": "{0} : saisir la clé"
+	},
+	{
+		"id": "999990061",
+		"key": "libtxt999990061",
+		"en|ch|tc|kr": "Soutenir"
 	}
 ]

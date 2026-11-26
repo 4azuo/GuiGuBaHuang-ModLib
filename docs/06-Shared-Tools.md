@@ -35,6 +35,7 @@ find it as the parent folder of ModLib (or `$env:MOD_REPO`).
 | `Translate/` | `run.py`, `ai_bridge.py` (see `Translate/README.md`) | `<ProjectId>/ModProject/ModConf/**`, `.translate-cache/` (in git: a text is never translated twice) |
 | `tests/` | `UnitTests.props` (framework, MSTest, game assemblies), `Shared/` (`TestSetup`, `Check`), `ModLib/` (tests of ModLib, `IncludeModLibTests=true`), `ModLibTests.csproj` (ModLib alone) | - |
 | `tools/SlotDataPath/` | MelonLoader plugin of the game slots (installed by `new-game-slot.ps1`) | - |
+| `tools/LicenseWorker/` | Cloudflare Worker of the supporter keys of a licensed mod (Ko-fi webhook, claim page), key pair and key scripts (Node) | `wrangler.toml` (from `wrangler.example.toml`), its secrets |
 
 ## ModLib alone
 

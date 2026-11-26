@@ -673,6 +673,9 @@ namespace ModLib.Helper
                 DebugHelper.WriteLine($"{modId}: ModChild's CacheId must be same ModId!!! ({child.Item1})");
                 return EMPTY;
             }
+            //licensed mod without a valid key: nothing of it is loaded (LicenseHelper; the title screen asks for a key)
+            if (!LicenseHelper.IsUnlocked(modId, child.Item3))
+                return EMPTY;
             var dupCheck = rs.FirstOrDefault(x => rs.Any(y => x != y && x.Item2.CacheId == y.Item2.CacheId));
             if (dupCheck != null)
             {

@@ -223,5 +223,90 @@
 		"id": "999990044",
 		"key": "libtxt999990044",
 		"en|ch|tc|kr": "Dieser Mod ist privat: er wird nicht in den Steam Workshop hochgeladen."
+	},
+	{
+		"id": "999990045",
+		"key": "libtxt999990045",
+		"en|ch|tc|kr": "{0} - Unterstützer-Schlüssel"
+	},
+	{
+		"id": "999990046",
+		"key": "libtxt999990046",
+		"en|ch|tc|kr": "Speichern"
+	},
+	{
+		"id": "999990047",
+		"key": "libtxt999990047",
+		"en|ch|tc|kr": "{0} ist eine Unterstützer-Mod: Sie läuft mit einem Schlüssel. Füge den erhaltenen Schlüssel unten ein (Strg+V oder Einfügen) und speichere."
+	},
+	{
+		"id": "999990048",
+		"key": "libtxt999990048",
+		"en|ch|tc|kr": "Schlüssel hier einfügen"
+	},
+	{
+		"id": "999990049",
+		"key": "libtxt999990049",
+		"en|ch|tc|kr": "Gültiger Schlüssel - {0}, bis {1}."
+	},
+	{
+		"id": "999990050",
+		"key": "libtxt999990050",
+		"en|ch|tc|kr": "Noch kein Schlüssel: Die Mod wird nicht geladen."
+	},
+	{
+		"id": "999990051",
+		"key": "libtxt999990051",
+		"en|ch|tc|kr": "Dieser Schlüssel ist abgelaufen ({1}): Die Mod wird nicht geladen. Hol dir einen neuen Schlüssel."
+	},
+	{
+		"id": "999990052",
+		"key": "libtxt999990052",
+		"en|ch|tc|kr": "Dieser Schlüssel gehört zu einer anderen Mod."
+	},
+	{
+		"id": "999990053",
+		"key": "libtxt999990053",
+		"en|ch|tc|kr": "Der öffentliche Schlüssel dieser Mod ist ungültig (frag den Autor)."
+	},
+	{
+		"id": "999990054",
+		"key": "libtxt999990054",
+		"en|ch|tc|kr": "Dieser Schlüssel ist ungültig (vertippt oder nicht vom Autor signiert)."
+	},
+	{
+		"id": "999990055",
+		"key": "libtxt999990055",
+		"en|ch|tc|kr": "unbegrenzt"
+	},
+	{
+		"id": "999990056",
+		"key": "libtxt999990056",
+		"en|ch|tc|kr": "Einfügen"
+	},
+	{
+		"id": "999990057",
+		"key": "libtxt999990057",
+		"en|ch|tc|kr": "Schlüssel holen"
+	},
+	{
+		"id": "999990058",
+		"key": "libtxt999990058",
+		"en|ch|tc|kr": "Schlüsseldatei: {0}"
+	},
+	{
+		"id": "999990059",
+		"key": "libtxt999990059",
+		"en|ch|tc|kr": "Starte das Spiel neu, um die Mod zu laden."
+	},
+	{
+		"id": "999990060",
+		"key": "libtxt999990060",
+		"en|ch|tc|kr": "{0}: Schlüssel eingeben"
+	},
+	{
+		"id": "999990061",
+		"key": "libtxt999990061",
+		"en|ch|tc|kr": "Unterstützen"
 	}
 ]

@@ -1,0 +1,5 @@
+# the private key of the mods (Worker secret LICENSE_PRIVATE_JWK)
+*.jwk.json
+.wrangler/
+node_modules/
+.dev.vars

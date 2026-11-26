@@ -1,0 +1,24 @@
+# Cloudflare Worker of the keys of a licensed mod (README.md). Copy it into the mod repository as wrangler.toml:
+# name, main (path to src/worker.js of the ModLib submodule), MOD_ID, MOD_NAME, the KV id.
+name = "mymod-license"
+main = "GuiGuBaHuang-ModLib/tools/LicenseWorker/src/worker.js"
+compatibility_date = "2026-11-01"
+
+[vars]
+# id of the mod (soleID): the key works only for it (payload "m")
+MOD_ID = "abcdef"
+MOD_NAME = "My Mod"
+# the Ko-fi page, linked from the claim page
+KOFI_URL = "https://ko-fi.com/me"
+# Ko-fi membership: days of the key of each monthly payment (a month and a few days of margin)
+SUBSCRIPTION_DAYS = "35"
+# one-off donation / shop order: days of the key (0 = never expires), and the lowest amount that gets a key
+DONATION_DAYS = "0"
+MIN_AMOUNT = "3"
+# membership tiers that get a key, comma separated (empty = every tier)
+TIERS = ""
+
+# npx wrangler kv namespace create KEYS  -> paste its id here
+[[kv_namespaces]]
+binding = "KEYS"
+id = "PASTE_THE_KV_NAMESPACE_ID"

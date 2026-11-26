@@ -58,6 +58,23 @@ In the mod editor (title screen → Mod → project), ModLib (`PrivateModHelper`
 
 It guards against an upload by mistake, not against a copy: the DLL can be changed by anyone. What is shipped holds no source code: the release zip (CI) is `debug/<mod>`, and `copy-to-steam` puts only the content of `debug/<mod>` and the 3 project files of `ModProject` in the Workshop folder (the editor uploads that whole folder). Only the editor's upload is blocked: the deploy scripts of the repository copy files, they upload nothing.
 
+## Licensed mods (supporter keys)
+
+A mod that runs only with a key its author signed (Ko-fi supporters...) sets constants in its entry class (ModLib 2.3.05+):
+
+```csharp
+public const string LICENSE_PUBLIC_KEY = "<base64url RSA-2048 modulus>"; // node tools/LicenseWorker/scripts/generate-keys.mjs
+public const string LICENSE_NAME = "My Mod";                             // optional: name on the title screen
+public const string LICENSE_URL = "https://.../claim";                   // optional: "Get a key" of the key window
+public const string LICENSE_SUPPORT_URL = "https://ko-fi.com/me";         // optional: "Support" of the key window
+public const string LICENSE_INFO = "mymod_license_info";                // optional: localText key of the mod: what support gets a key
+public const string LICENSE_QR = "kofi-qr.png";                         // optional: image of ModImg: QR code of the support page
+```
+
+`LicenseHelper` checks the key file `mod/<id>/globals/license.key` (game data, outside the Workshop folder) when ModLib lists the objects of the mods (`CacheHelper.GetModChildCacheTypes`): the RSASSA-PKCS1-v1_5 SHA-256 signature (BigInteger only, offline), the mod id and the expiry of the payload. Without a valid key **nothing of the mod is loaded** (no ModChild, no event, no ModSkill (`ModSkillEvent`), so no Harmony patch made by the mod; its ModConf is still loaded by the game) and the title screen gets a button "<name>: enter key" (`ModTitleEvent` → `LicenseHelper.AddTitleButtons`; the window also opens by itself the first time the title screen shows in a game start): the state of the key, `LICENSE_INFO`, an input to paste the key (Ctrl+V or Paste), buttons Get a key (`LICENSE_URL`) and Support (`LICENSE_SUPPORT_URL`), the QR code `LICENSE_QR` on the right (with the support address under it); Save keeps a valid key and asks for a restart. The ModConf (localText) and ModImg of a locked mod are loaded as usual. A key: `<payload>.<signature>` (base64url), payload `{"m": mod id, "n": supporter, "i": payment id, "t": tier, "iat", "exp" (0 = never)}`.
+
+The keys are signed by a Cloudflare Worker from the Ko-fi webhook (`tools/LicenseWorker/README.md`: keys, secrets, Ko-fi settings, claim page) or by hand (`scripts/sign-key.mjs`). An older ModLib (before 2.3.05) knows no key and loads the whole mod: the mod checks its key itself too (Dao of Creation: `ModMain.CheckLicense` calls `LicenseHelper.IsUnlocked` by reflection, not active without it; its events refuse to load in `OnCacheHandler`). Like `PRIVATE_MOD`, it keeps the honest players honest: the check can be removed from a DLL.
+
 ## Release
 
 Each repository releases its own projects (`<ModLib>/scripts/release/`):
