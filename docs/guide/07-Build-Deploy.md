@@ -39,6 +39,16 @@ tools), `"steamWorkshopPath"`.
 | `run-unittests.ps1`, `run-all-tests.ps1` | unit tests, unit tests + autotest (see [06-Shared-Tools](../06-Shared-Tools.md)) |
 | `setup/` | setup of a machine: `install.ps1` (ModLib alone), `00-install-dependencies`, `02-configure-settings`, `04-verify-environment`, `setup-nexus` (a mod repository has its own `install.ps1` that clones it with the submodule, then runs these steps) |
 
+## Private mods
+
+A mod that must never go to the Steam Workshop (personal, test or in-house mod) gets a `ModProject/ModConf/private_mod.json`:
+
+```json
+{ "Private": true, "Reason": "test mod of the team" }
+```
+
+In the game's mod editor (title screen → Mod → project), ModLib (`PrivateModHelper`, `ModUIEvent`) hides the **Workshop** button of that project and closes the upload window if it opens anyway, with a message (the `Reason` under it). The file is looked for in the project folder the editor opens (`ModProject/ModConf`) and in the installed mod of the same id (`debug/Mod_<id>/ModConf`, copied by the build); `"Private": false` or no file: public. It is not a game config (no `mod` config in the game: `ConfHelper` ignores it). Only the editor's upload is blocked: the deploy scripts of the repository copy files, they upload nothing.
+
 ## Release
 
 Each repository releases its own projects (`<ModLib>/scripts/release/`):

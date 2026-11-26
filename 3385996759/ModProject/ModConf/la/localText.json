@@ -213,5 +213,15 @@
 		"id": "999990042",
 		"key": "libtxt999990042",
 		"en|ch|tc|kr": "Ne mittas"
+	},
+	{
+		"id": "999990043",
+		"key": "libtxt999990043",
+		"en|ch|tc|kr": "Mod privatus"
+	},
+	{
+		"id": "999990044",
+		"key": "libtxt999990044",
+		"en|ch|tc|kr": "Hic mod privatus est (ModConf/private_mod.json): in Steam Workshop non mittitur."
 	}
 ]

@@ -213,5 +213,15 @@
 		"id": "999990042",
 		"key": "libtxt999990042",
 		"en|ch|tc|kr": "Không gửi"
+	},
+	{
+		"id": "999990043",
+		"key": "libtxt999990043",
+		"en|ch|tc|kr": "Mod riêng tư"
+	},
+	{
+		"id": "999990044",
+		"key": "libtxt999990044",
+		"en|ch|tc|kr": "Mod này là mod riêng tư (ModConf/private_mod.json): không được tải lên Steam Workshop."
 	}
 ]

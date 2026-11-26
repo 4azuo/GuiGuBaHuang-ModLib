@@ -213,5 +213,15 @@
 		"id": "999990042",
 		"key": "libtxt999990042",
 		"en|ch|tc|kr": "No enviar"
+	},
+	{
+		"id": "999990043",
+		"key": "libtxt999990043",
+		"en|ch|tc|kr": "Mod privado"
+	},
+	{
+		"id": "999990044",
+		"key": "libtxt999990044",
+		"en|ch|tc|kr": "Este mod es privado (ModConf/private_mod.json): no se sube al Steam Workshop."
 	}
 ]
