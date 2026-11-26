@@ -40,8 +40,8 @@ foreach ($projectPath in @($settings.dependencies | Where-Object { $_ }) + @($se
     $projectDir = Join-Path $repositoryPath $projectPath
     $dest = Join-Path $steamWorkshopPath $projectId
 
-    # The build output (debug) and the 3 project files of ModProject: no source, scripts or tests (project\_workshop.ps1)
-    Write-Host "Copying to Steam Workshop (debug + ModProject files)..." -ForegroundColor Cyan
+    # The content of debug\Mod_<id> and the 3 project files of ModProject: no source, scripts or tests (project\_workshop.ps1)
+    Write-Host "Copying to Steam Workshop (debug\Mod_<id> + ModProject files)..." -ForegroundColor Cyan
     try { $failed = Copy-ToWorkshop $projectDir $dest }
     catch { Write-Host "❌ $($_.Exception.Message)" -ForegroundColor Red; continue }
     if ($failed -gt 0) { Write-Host "⚠️  $failed file(s) not copied (in use)" -ForegroundColor Yellow }

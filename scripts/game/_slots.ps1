@@ -141,12 +141,15 @@ function Wait-DeployFree([int]$WaitMinutes = 30) {
     }
 }
 
-# True when every file of <repo>\<project>\debug is in <workshop>\<project id>\debug with the same content
-# (<project>: a project id, or a path in the repository such as GuiGuBaHuang-ModLib/3385996759)
+# True when every file of <repo>\<project>\debug\Mod_<id> is in <workshop>\<project id> with the same content
+# (<project>: a project id, or a path in the repository such as GuiGuBaHuang-ModLib/3385996759; layout:
+# scripts\project\_workshop.ps1)
 function Test-WorkshopUpToDate([string]$Repo, [string]$Workshop, [string[]]$Projects) {
     foreach ($p in $Projects) {
-        $src = Join-Path $Repo "$p\debug"
-        $dst = Join-Path $Workshop "$(Split-Path $p -Leaf)\debug"
+        $src = @(Get-ChildItem -LiteralPath (Join-Path $Repo "$p\debug") -Directory -Filter 'Mod_*' -ErrorAction SilentlyContinue)
+        if ($src.Count -ne 1) { return $false }
+        $src = $src[0].FullName
+        $dst = Join-Path $Workshop (Split-Path $p -Leaf)
         if (-not (Test-Path -LiteralPath $dst)) { return $false }
         foreach ($f in Get-ChildItem -LiteralPath $src -Recurse -File) {
             $rel = $f.FullName.Substring($src.Length)

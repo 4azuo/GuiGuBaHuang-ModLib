@@ -33,42 +33,11 @@ if (!(Test-Path $sourcePath)) {
     exit 1
 }
 
-# Same spelling as the FullName of its items (short 8.3 names, slashes): relative paths are cut from it
-$sourcePath = (Get-ChildItem -LiteralPath $steamWorkshopPath -Directory -Filter $projectId).FullName
-
-# Function to copy with error handling
-function Copy-WithErrorHandling {
-    param (
-        [string]$Source,
-        [string]$Destination
-    )
-    
-    # Get all items recursively
-    Get-ChildItem -Path $Source -Recurse | ForEach-Object {
-        $relativePath = $_.FullName.Substring($Source.Length)
-        $targetPath = Join-Path $Destination $relativePath
-        
-        if ($_.PSIsContainer) {
-            # Create directory if it doesn't exist
-            if (!(Test-Path $targetPath)) {
-                New-Item -ItemType Directory -Path $targetPath -Force | Out-Null
-            }
-        } else {
-            # Copy file with error handling
-            try {
-                Copy-Item -Path $_.FullName -Destination $targetPath -Force -ErrorAction Stop
-            } catch {
-                $script:failedCount++
-                Write-Host "⚠️  Skipped: $relativePath ($($_.Exception.Message))" -ForegroundColor Yellow
-            }
-        }
-    }
-}
-
-# Copy folder from Steam to Git
+# The 3 project files into ModProject, the rest into debug\Mod_<id> (layout: _workshop.ps1)
+. (Join-Path $PSScriptRoot '_workshop.ps1')
 Write-Host "`nCopying project $projectId folder from Steam Workshop to Git..." -ForegroundColor Yellow
-$script:failedCount = 0
-Copy-WithErrorHandling -Source $sourcePath -Destination $destinationPath
+try { $script:failedCount = Copy-FromWorkshop $sourcePath $destinationPath }
+catch { Write-Host "ERROR: $($_.Exception.Message)" -ForegroundColor Red; exit 1 }
 
 if ($script:failedCount -gt 0) {
     Write-Host "`n❌ COPY INCOMPLETE: $($script:failedCount) file(s) not copied" -ForegroundColor Red

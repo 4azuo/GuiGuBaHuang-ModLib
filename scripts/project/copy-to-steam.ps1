@@ -32,9 +32,9 @@ if (!(Test-Path $steamWorkshopPath)) {
 $rootDir = Split-Path (Split-Path $ProjectScripts -Parent) -Parent
 $sourcePath = Join-Path $rootDir $projectId
 
-# The build output (debug) and the 3 project files of ModProject: no source, scripts or tests (_workshop.ps1)
+# The content of debug\Mod_<id> and the 3 project files of ModProject: no source, scripts or tests (_workshop.ps1)
 . (Join-Path $PSScriptRoot '_workshop.ps1')
-Write-Host "`nCopying $projectId (debug + ModProject files) to Steam Workshop..." -ForegroundColor Yellow
+Write-Host "`nCopying $projectId (debug\Mod_<id> + ModProject files) to Steam Workshop..." -ForegroundColor Yellow
 $destination = Join-Path $steamWorkshopPath $projectId
 try { $failed = Copy-ToWorkshop $sourcePath $destination }
 catch { Write-Host "❌ $($_.Exception.Message)" -ForegroundColor Red; exit 1 }

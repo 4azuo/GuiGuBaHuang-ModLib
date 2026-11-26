@@ -19,6 +19,7 @@ if (!(Test-Path $settingsPath)) {
 $settings = Get-Content -Path $settingsPath -Raw | ConvertFrom-Json
 $steamWorkshopPath = $settings.steamWorkshopPath
 $repositoryPath = $RepoRoot
+. (Join-Path $PSScriptRoot 'project\_workshop.ps1')
 
 Write-Host "Steam Workshop Path: $steamWorkshopPath" -ForegroundColor Cyan
 Write-Host "Git Repository Path: $repositoryPath" -ForegroundColor Cyan
@@ -36,36 +37,11 @@ foreach ($projectId in $settings.projects) {
         continue
     }
 
-    # Function to copy with error handling
-    function Copy-WithErrorHandling {
-        param (
-            [string]$Source,
-            [string]$Destination
-        )
-        
-        # Get all items recursively
-        Get-ChildItem -Path $Source -Recurse | ForEach-Object {
-            $relativePath = $_.FullName.Substring($Source.Length)
-            $targetPath = Join-Path $Destination $relativePath
-            
-            if ($_.PSIsContainer) {
-                # Create directory if it doesn't exist
-                if (!(Test-Path $targetPath)) {
-                    New-Item -ItemType Directory -Path $targetPath -Force | Out-Null
-                }
-            } else {
-                # Copy file with error handling
-                try {
-                    Copy-Item -Path $_.FullName -Destination $targetPath -Force -ErrorAction Stop
-                } catch {
-                    Write-Host "⚠️  Skipped (in use): $($_.Name)" -ForegroundColor Yellow
-                }
-            }
-        }
-    }
-    
+    # The 3 project files into ModProject, the rest into debug\Mod_<id> (layout: project\_workshop.ps1)
     Write-Host "Copying from Steam Workshop to Git..." -ForegroundColor Cyan
-    Copy-WithErrorHandling -Source $source -Destination $dest
+    try { $failed = Copy-FromWorkshop $source $dest }
+    catch { Write-Host "ERROR: $($_.Exception.Message)" -ForegroundColor Red; continue }
+    if ($failed -gt 0) { Write-Host "$failed file(s) not copied (in use)" -ForegroundColor Yellow }
     Write-Host "✅ $projectId copied successfully" -ForegroundColor Green
 }
 
