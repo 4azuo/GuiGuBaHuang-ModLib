@@ -15,7 +15,7 @@ here. Every script works on a repository: `-RepoRoot`, else the git repository o
 | `build-project.ps1` | compiles the project (Release), copies `CodeArtifacts` and the DLLs to `debug/Mod_xxxxx/ModCode/dll/`, then ModConf/ModImg/SteamImg to `debug/Mod_xxxxx/`; `-ResourcesOnly`: only the copy (the CI) |
 | `rebuild-project.ps1` | clean + build |
 | `start-auto-build.ps1` | watches ModCode/ModConf/ModImg and rebuilds + deploys on change (Python + watchdog); errors in `scripts/auto-built-errors.log` |
-| `copy-to-steam.ps1` / `copy-from-steam.ps1` | copies the project folder to / from the Steam Workshop folder |
+| `copy-to-steam.ps1` / `copy-from-steam.ps1` | copies the build output (`debug/Mod_<id>`: `ModCode/dll`, `ModConf`, `ModImg`, `SteamImg`, `ModExportData.cache`, preview) to the Steam Workshop folder of the project, as a Workshop download (no source, scripts or tests: `_workshop.ps1`) / back into `debug/Mod_<id>` (a former copy of the whole project, with `ModProject`, back to the project folder) |
 | `rebuild-and-deploy.ps1` | rebuild + copy to Steam |
 | `compress.ps1` | `debug/Mod_xxxxx/` to `debug/Mod_xxxxx.rar` (WinRAR) |
 
@@ -32,7 +32,7 @@ tools), `"steamWorkshopPath"`.
 | Script | Does |
 |---|---|
 | `rebuild-and-deploy-all.ps1` | rebuilds every project, then copies the dependencies and the projects to Steam Workshop |
-| `copy-both-to-steam.ps1` / `copy-both-from-steam.ps1` | copies the dependencies + projects to Steam / the projects back |
+| `copy-both-to-steam.ps1` / `copy-both-from-steam.ps1` | copies the build output of the dependencies + projects to Steam / the projects back (as `copy-to-steam` / `copy-from-steam`) |
 | `compress-mods.ps1` | runs `compress.ps1` of every project |
 | `update-repo.ps1` | pulls and updates the submodules (`-Force` stashes first, `-NoSubmodules`) |
 | `open-folder.ps1` | opens (or `-Print`s) a game / Workshop / build / log folder |
@@ -41,13 +41,22 @@ tools), `"steamWorkshopPath"`.
 
 ## Private mods
 
-A mod that must never go to the Steam Workshop (personal, test or in-house mod) gets a `ModProject/ModConf/private_mod.json`:
+A mod that must not be uploaded from the game's mod editor (personal, test or in-house mod, or a mod released by its repository) sets a constant in its entry class:
 
-```json
-{ "Private": true, "Reason": "test mod of the team" }
+```csharp
+namespace MOD_<id>
+{
+    public class ModMain : ModChild
+    {
+        /// <summary>No Steam Workshop upload from the game's mod editor (ModLib PrivateModHelper).</summary>
+        public const bool PRIVATE_MOD = true;
+    }
+}
 ```
 
-In the game's mod editor (title screen → Mod → project), ModLib (`PrivateModHelper`, `ModUIEvent`) hides the **Workshop** button of that project and closes the upload window if it opens anyway, with a message (the `Reason` under it). The file is looked for in the project folder the editor opens (`ModProject/ModConf`) and in the installed mod of the same id (`debug/Mod_<id>/ModConf`, copied by the build); `"Private": false` or no file: public. It is not a game config (no `mod` config in the game: `ConfHelper` ignores it). Only the editor's upload is blocked: the deploy scripts of the repository copy files, they upload nothing.
+In the mod editor (title screen → Mod → project), ModLib (`PrivateModHelper`, `ModUIEvent`) hides the **Workshop** button of that project and closes the upload window if it opens anyway, with a message. The constant is read from the loaded assembly `MOD_<id>`, else from its DLL (the installed mod, then `debug/Mod_<id>/ModCode/dll` of the project): a constant is metadata, no code of the mod runs. No constant or `false`: public. Rebuild the mod after changing it.
+
+It guards against an upload by mistake, not against a copy: the DLL can be changed by anyone. What is shipped holds no source code: the release zip (CI) is `debug/<mod>`, and `copy-to-steam` puts only the build output in the Workshop folder (the editor uploads that whole folder). Only the editor's upload is blocked: the deploy scripts of the repository copy files, they upload nothing.
 
 ## Release
 

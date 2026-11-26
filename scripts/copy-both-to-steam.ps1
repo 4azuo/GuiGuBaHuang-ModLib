@@ -18,6 +18,7 @@ if (!(Test-Path $settingsPath)) {
 
 $settings = Get-Content -Path $settingsPath -Raw | ConvertFrom-Json
 $steamWorkshopPath = $settings.steamWorkshopPath
+. (Join-Path $PSScriptRoot 'project\_workshop.ps1')
 $repositoryPath = $RepoRoot
 
 Write-Host "Steam Workshop Path: $steamWorkshopPath" -ForegroundColor Cyan
@@ -64,12 +65,13 @@ foreach ($projectPath in @($settings.dependencies | Where-Object { $_ }) + @($se
     $projectId = Split-Path $projectPath -Leaf
     Write-Host "`n[Project $projectPath]" -ForegroundColor Yellow
     
-    $source = Join-Path $repositoryPath $projectPath
+    $projectDir = Join-Path $repositoryPath $projectPath
     $dest = Join-Path $steamWorkshopPath $projectId
-    
-    # Check if source exists
-    if (!(Test-Path $source)) {
-        Write-Host "❌ Source folder not found: $source" -ForegroundColor Red
+
+    # Only the build output (debug\Mod_<id>), as a Workshop download (project\_workshop.ps1)
+    $source = Get-ModBuildFolder $projectDir
+    if (-not $source) {
+        Write-Host "❌ No build output: $projectDir\debug\Mod_* (build the project first)" -ForegroundColor Red
         continue
     }
     

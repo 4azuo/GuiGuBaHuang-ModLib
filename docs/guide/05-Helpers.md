@@ -10,7 +10,7 @@ Reusable utility functions in `Helper/` folder.
 - **AttributeHelper** - Custom attribute processing and reflection
 - **CacheHelper** - Data caching and retrieval
 - **ConfHelper** - Config file loading and error handling; `ReadConfJson<T>(modId, file, fallback)` (a JSON data file of the ModConf of a mod: the fallback when missing or broken, logged)
-- **PrivateModHelper** - Private mods (`ModConf/private_mod.json`: no Steam Workshop upload in the mod editor, see [07-Build-Deploy](07-Build-Deploy.md#private-mods)): `IsPrivate(modProject)`, `ParseSettings(json)`, `CandidateFiles(projectPath, installedConfFolder)`
+- **PrivateModHelper** - Private mods (`public const bool PRIVATE_MOD = true` in `MOD_<id>.ModMain`: no Steam Workshop upload in the mod editor, see [07-Build-Deploy](07-Build-Deploy.md#private-mods)): `IsPrivate(modProject)`, `ReadPrivateConst(type)`, `FindEntryType(modId, dlls)`
 - **LocalTextHelper** - `LSF(key, args)` (a localText with its format items), `HasText(key)`, `RandomLS(key)` / `Variants(key)` (random variants `key_1`, `key_2`...)
 - **DebugHelper** - Logging, debug mode, exception tracking
 - **EventHelper** - Event system and lifecycle (`IsLoaded(cacheId)`: the event was accepted by its OnCacheHandler)

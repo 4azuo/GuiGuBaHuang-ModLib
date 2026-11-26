@@ -36,6 +36,17 @@ if (!(Test-Path $sourcePath)) {
 # Same spelling as the FullName of its items (short 8.3 names, slashes): relative paths are cut from it
 $sourcePath = (Get-ChildItem -LiteralPath $steamWorkshopPath -Directory -Filter $projectId).FullName
 
+# The Workshop folder holds the build output only (copy-to-steam, _workshop.ps1): back into debug\Mod_<id>.
+# A former copy of the whole project (with ModProject) goes back to the project folder, as before.
+if (-not (Test-Path -LiteralPath (Join-Path $sourcePath 'ModProject'))) {
+    . (Join-Path $PSScriptRoot '_workshop.ps1')
+    $destinationPath = Get-ModBuildFolder $destinationPath
+    if (-not $destinationPath) {
+        Write-Host "❌ No build output in $repositoryPath\$projectId\debug\Mod_* to copy the Workshop folder into" -ForegroundColor Red
+        exit 1
+    }
+}
+
 # Function to copy with error handling
 function Copy-WithErrorHandling {
     param (

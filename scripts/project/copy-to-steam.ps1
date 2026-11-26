@@ -32,6 +32,14 @@ if (!(Test-Path $steamWorkshopPath)) {
 $rootDir = Split-Path (Split-Path $ProjectScripts -Parent) -Parent
 $sourcePath = Join-Path $rootDir $projectId
 
+# Only the build output (debug\Mod_<id>), as a Workshop download: no source, scripts or tests (_workshop.ps1)
+. (Join-Path $PSScriptRoot '_workshop.ps1')
+$buildPath = Get-ModBuildFolder $sourcePath
+if (-not $buildPath) {
+    Write-Host "❌ No build output: $sourcePath\debug\Mod_* (build the project first)" -ForegroundColor Red
+    exit 1
+}
+
 # Function to copy with error handling
 function Copy-WithErrorHandling {
     param (
@@ -60,13 +68,13 @@ function Copy-WithErrorHandling {
     }
 }
 
-# Copy only project folder
-Write-Host "`nCopying $projectId folder to Steam Workshop..." -ForegroundColor Yellow
+# Copy the content of the build output (the former copy, with the whole project, is removed first)
+Write-Host "`nCopying $buildPath to Steam Workshop..." -ForegroundColor Yellow
 $destination = Join-Path $steamWorkshopPath $projectId
 if (Test-Path $destination) {
     Remove-Item -Path $destination -Recurse -Force -ErrorAction SilentlyContinue
 }
-Copy-WithErrorHandling -Source $sourcePath -Destination $destination
+Copy-WithErrorHandling -Source $buildPath -Destination $destination
 
 Write-Host "`n========================================" -ForegroundColor Green
 Write-Host "✅ COPY COMPLETED SUCCESSFULLY!" -ForegroundColor Green

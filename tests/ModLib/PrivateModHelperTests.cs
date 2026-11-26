@@ -1,57 +1,46 @@
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using ModLib.Helper;
-using System;
-using System.IO;
 
 namespace UnitTests.ModLib
 {
-    /// <summary>PrivateModHelper: ModConf/private_mod.json of a project (no Steam Workshop upload).</summary>
+    /// <summary>PrivateModHelper: the PRIVATE_MOD constant of the entry class of a mod (no Steam Workshop upload).</summary>
     [TestClass]
     public class PrivateModHelperTests
     {
-        [TestMethod, Description("ParseSettings: private unless empty or \"Private\": false; the reason trimmed")]
-        public void ParseSettings_PrivateFlagAndReason()
+        private class PrivateEntry { public const bool PRIVATE_MOD = true; }
+        private class PublicEntry { public const bool PRIVATE_MOD = false; }
+        private class NoConstEntry { }
+        private class WrongTypeEntry { public const int PRIVATE_MOD = 1; }
+        private class StaticNotConstEntry { public static bool PRIVATE_MOD = true; }
+
+        [TestMethod, Description("ReadPrivateConst: true only for a bool constant set to true")]
+        public void ReadPrivateConst_BoolConstantOnly()
         {
-            Check.Eq(true, PrivateModHelper.ParseSettings("{}") != null, "no field: private");
-            Check.Eq("team mod", PrivateModHelper.ParseSettings("{ \"Private\": true, \"Reason\": \"  team mod \" }")?.Reason, "reason trimmed");
-            Check.Eq(null, PrivateModHelper.ParseSettings("{ \"Reason\": \" \" }").Reason, "blank reason: none");
-            Check.Eq(null, PrivateModHelper.ParseSettings("{ \"Private\": false }"), "Private false: public");
-            Check.Eq(null, PrivateModHelper.ParseSettings(""), "empty file: public");
-            Check.Eq(null, PrivateModHelper.ParseSettings(null), "null: public");
+            Check.Eq(true, PrivateModHelper.ReadPrivateConst(typeof(PrivateEntry)), "const true");
+            Check.Eq(false, PrivateModHelper.ReadPrivateConst(typeof(PublicEntry)), "const false");
+            Check.Eq(false, PrivateModHelper.ReadPrivateConst(typeof(NoConstEntry)), "no constant");
+            Check.Eq(false, PrivateModHelper.ReadPrivateConst(typeof(WrongTypeEntry)), "not a bool");
+            Check.Eq(false, PrivateModHelper.ReadPrivateConst(typeof(StaticNotConstEntry)), "a field, not a constant");
+            Check.Eq(false, PrivateModHelper.ReadPrivateConst(null), "no type");
         }
 
-        [TestMethod, Description("CandidateFiles: the project's ModConf, its ModProject/ModConf, then the installed mod's ModConf")]
-        public void CandidateFiles_Order()
+        [TestMethod, Description("CandidateDlls: the installed mod, then debug/Mod_<id> in the project folder and next to it")]
+        public void CandidateDlls_Order()
         {
-            var rs = PrivateModHelper.CandidateFiles(@"C:\p\ModProject", @"C:\m\ModConf");
+            var rs = PrivateModHelper.CandidateDlls("abc", @"C:\w\123\ModProject", @"C:\m\MOD_abc.dll");
             Check.Eq(3, rs.Count, "3 places");
-            Check.Eq(@"C:\p\ModProject\ModConf\private_mod.json", rs[0], "project ModConf");
-            Check.Eq(@"C:\p\ModProject\ModProject\ModConf\private_mod.json", rs[1], "parent folder of a project");
-            Check.Eq(@"C:\m\ModConf\private_mod.json", rs[2], "installed mod");
-            Check.Eq(1, PrivateModHelper.CandidateFiles(null, @"C:\m\ModConf").Count, "no project path");
-            Check.Eq(0, PrivateModHelper.CandidateFiles(null, null).Count, "nothing");
+            Check.Eq(@"C:\m\MOD_abc.dll", rs[0], "installed mod");
+            Check.Eq(@"C:\w\123\ModProject\debug\Mod_abc\ModCode\dll\MOD_abc.dll", rs[1], "in the project folder");
+            Check.Eq(@"C:\w\123\debug\Mod_abc\ModCode\dll\MOD_abc.dll", rs[2], "next to ModProject (repository layout)");
+            Check.Eq(1, PrivateModHelper.CandidateDlls("abc", null, @"C:\m\MOD_abc.dll").Count, "no project");
+            Check.Eq(0, PrivateModHelper.CandidateDlls(null, null, null).Count, "nothing");
+            Check.Eq("MOD_abc.ModMain", PrivateModHelper.EntryTypeName("abc"), "entry class");
         }
 
-        [TestMethod, Description("ReadFirst: the first existing file decides (a public one stops the search); none: public")]
-        public void ReadFirst_FirstFileDecides()
+        [TestMethod, Description("FindEntryType: no loaded assembly and no DLL: null (public)")]
+        public void FindEntryType_NothingFound()
         {
-            var dir = Path.Combine(Path.GetTempPath(), "privmod-" + Guid.NewGuid().ToString("N"));
-            Directory.CreateDirectory(dir);
-            try
-            {
-                var a = Path.Combine(dir, "a.json");
-                var b = Path.Combine(dir, "b.json");
-                var missing = Path.Combine(dir, "missing.json");
-                File.WriteAllText(b, "{ \"Reason\": \"b\" }");
-                Check.Eq("b", PrivateModHelper.ReadFirst(new[] { missing, b })?.Reason, "missing skipped");
-                File.WriteAllText(a, "{ \"Private\": false }");
-                Check.Eq(null, PrivateModHelper.ReadFirst(new[] { a, b }), "first file public");
-                Check.Eq(null, PrivateModHelper.ReadFirst(new[] { missing }), "no file");
-            }
-            finally
-            {
-                Directory.Delete(dir, true);
-            }
+            Check.Eq(null, PrivateModHelper.FindEntryType("zzNoSuchMod", new[] { @"C:\no\such\MOD_zzNoSuchMod.dll" }), "missing");
         }
     }
 }

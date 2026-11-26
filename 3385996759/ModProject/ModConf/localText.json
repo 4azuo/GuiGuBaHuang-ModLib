@@ -339,9 +339,9 @@
 	{
 		"id": "999990044",
 		"key": "libtxt999990044",
-		"en": "This mod is private (ModConf/private_mod.json): it is not uploaded to the Steam Workshop.",
-		"ch": "此模组为私有模组（ModConf/private_mod.json）：不会上传到 Steam 创意工坊。",
-		"tc": "此模組為私有模組（ModConf/private_mod.json）：不會上傳到 Steam 工作坊。",
-		"kr": "이 모드는 비공개 모드입니다 (ModConf/private_mod.json): Steam 창작마당에 업로드되지 않습니다."
+		"en": "This mod is private: it is not uploaded to the Steam Workshop.",
+		"ch": "此模组为私有模组：不会上传到 Steam 创意工坊。",
+		"tc": "此模組為私有模組：不會上傳到 Steam 工作坊。",
+		"kr": "이 모드는 비공개 모드입니다: Steam 창작마당에 업로드되지 않습니다."
 	}
 ]
