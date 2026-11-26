@@ -26,6 +26,9 @@ namespace ModLib.Object
         public double Max { get; set; } = 1;
         public double Step { get; set; }
         public object Default { get; set; }
+        /// <summary>Defaults of earlier versions: a values file written before ModLib 2.3.01 holds every value, one equal to
+        /// a former default was never chosen (ModOptionsHelper.Migrate).</summary>
+        public List<object> FormerDefaults { get; set; }
         public List<string> Choices { get; set; }
         /// <summary>localText keys: the label, a hint after the value, the group (a title over the options of a group).</summary>
         public string Label { get; set; }

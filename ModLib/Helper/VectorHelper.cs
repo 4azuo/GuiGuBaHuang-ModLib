@@ -36,5 +36,17 @@ namespace ModLib.Helper
             var a = (float)(Math.Atan2(move.y, move.x) * 180.0 / Math.PI);
             return DIRECTIONS8[(int)Mathf.Repeat(Mathf.Round(a / 45f), 8)];
         }
+
+        /// <summary>The vector turned by <paramref name="deg"/> degrees (counterclockwise: screen, y up).</summary>
+        public static Vector2 Rotate(this Vector2 v, float deg)
+        {
+            var r = deg * (float)(Math.PI / 180.0);
+            var c = Mathf.Cos(r);
+            var s = Mathf.Sin(r);
+            return new Vector2(v.x * c - v.y * s, v.x * s + v.y * c);
+        }
+
+        /// <summary>Angle of the vector in degrees (-180..180, 0: right, 90: up).</summary>
+        public static float AngleDeg(this Vector2 v) => Mathf.Atan2(v.y, v.x) * (float)(180.0 / Math.PI);
     }
 }

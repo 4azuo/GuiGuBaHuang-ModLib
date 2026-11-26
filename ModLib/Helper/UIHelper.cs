@@ -17,6 +17,15 @@ namespace ModLib.Helper
     {
         public static List<UICustomBase> UIs { get; } = new List<UICustomBase>();
 
+        /// <summary>A small "?" button of a window: a message box with a title and a text (read when clicked: the language, the numbers now).</summary>
+        public static UIItemButton AddHelpButton(this UICustomBase ui, float x, float y, Func<string> title, Func<string> content, float size = 26f)
+        {
+            var b = ui.AddButton(x, y, () => g.ui.MsgBox(title?.Invoke() ?? string.Empty, content?.Invoke() ?? string.Empty), "?");
+            b.Size(size, size);
+            b.Align(TextAnchor.MiddleCenter);
+            return b;
+        }
+
         private const float UI_DELTA_X_RATE = 0.0240f;
         private const float UI_DELTA_Y_RATE = 0.0240f;
 
@@ -218,6 +227,14 @@ namespace ModLib.Helper
             {
                 ui.Dispose();
             }
+        }
+
+        /// <summary>The 4 corners of a rect in world space (bottom-left, top-left, top-right, bottom-right).</summary>
+        public static Vector3[] GetWorldCorners(this RectTransform rt)
+        {
+            var c = new UnhollowerBaseLib.Il2CppStructArray<Vector3>(4);
+            rt.GetWorldCorners(c);
+            return new[] { c[0], c[1], c[2], c[3] };
         }
     }
 }

@@ -47,5 +47,25 @@ namespace UnitTests.ModLib
             Check.True(!current.ContainsKey("Unknown"), "only the options of the schema");
             Check.Eq(0, ModOptionsHelper.Apply(null, schema, new Dictionary<string, object>()), 0, "no settings: nothing");
         }
+
+        [TestMethod, Description("Values file: only the values that differ from the defaults are written (with the format); a file of the first format loses the values equal to a former default, a newer one keeps them")]
+        public void ValuesFile_OnlyChangedValues()
+        {
+            var schema = ModOptionsHelper.ParseSchema(SCHEMA);
+            schema.Options[0].FormerDefaults = new List<object> { 0.8, 1 };
+            var defaults = ModOptionsHelper.Current(new Settings(), schema);
+            var old = ModOptionsHelper.ParseValues(@"{ ""Battle.Rate"": 0.8, ""Battle.Count"": 3, ""Battle.On"": true, ""Mode"": 0, ""Unknown"": 7 }");
+            var chosen = ModOptionsHelper.Changed(ModOptionsHelper.Migrate(schema, old), defaults);
+            Check.True(!chosen.ContainsKey("Battle.Rate"), "equal to a former default: never chosen");
+            Check.True(!chosen.ContainsKey("Battle.Count") && !chosen.ContainsKey("Mode"), "equal to the default: left out");
+            Check.True(chosen.ContainsKey("Battle.On") && chosen.ContainsKey("Unknown"), "changed values and unknown keys kept");
+            var text = ModOptionsHelper.FormatValues(chosen, defaults);
+            Check.True(text.Contains(ModOptionsHelper.FORMAT_KEY), "the format is written");
+            var again = ModOptionsHelper.ParseValues(text);
+            Check.Eq(text, ModOptionsHelper.FormatValues(ModOptionsHelper.Migrate(schema, again), defaults), "read and written again: the same");
+            var picked = ModOptionsHelper.ParseValues(@"{ ""$format"": 2, ""Battle.Rate"": 0.8 }");
+            Check.True(ModOptionsHelper.Migrate(schema, picked).ContainsKey("Battle.Rate"), "format 2: a former default chosen by the player is kept");
+            Check.True(!ModOptionsHelper.Migrate(schema, picked).ContainsKey(ModOptionsHelper.FORMAT_KEY), "the format is no value");
+        }
     }
 }

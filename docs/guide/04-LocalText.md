@@ -29,7 +29,7 @@ Multi-language support for mods.
 ## Rules
 
 1. **No hardcoded text** in the code: every text shown to the player is a localText key.
-   - Code: `GameTool.LS(key)`; with format items `string.Format(GameTool.LS(key), args)` (e.g. Taoist: `ModTextHelper.LSF(key, args)`).
+   - Code: `GameTool.LS(key)`; with format items `LocalTextHelper.LSF(key, args)` (= `string.Format(GameTool.LS(key), args)`); `LocalTextHelper.HasText(key)`, `RandomLS(key)` (the key or one of its variants `key_1`, `key_2`... at random), `Variants(key)`.
    - Never read a language field directly (`allText[key].en`): it shows English whatever the language.
 2. **Which file**: one `<feature>_localText.json` per feature, key prefix = feature, one block of ids per file.
 

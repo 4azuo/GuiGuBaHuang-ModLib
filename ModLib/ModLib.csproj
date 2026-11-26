@@ -170,6 +170,11 @@
     <Compile Include="Object\UI\UICover.cs" />
     <Compile Include="Object\UI\UICustomBase.cs" />
     <Compile Include="Object\UI\ModOptionsPage.cs" />
+    <Compile Include="Object\UI\EffectStage.cs" />
+    <Compile Include="Object\EffectCatalog.cs" />
+    <Compile Include="Object\EffectCatalogItem.cs" />
+    <Compile Include="Object\SkillIconTags.cs" />
+    <Compile Include="Helper\LocalTextHelper.cs" />
     <Compile Include="Object\UI\UICustomQueue.cs" />
     <Compile Include="Object\UI\UICustom.cs" />
     <Compile Include="Object\UI\UIItemInput.cs" />

@@ -1297,5 +1297,19 @@ namespace ModLib.Helper
         {
             return wunit?.data?.unitData?.propertyData?.GetName() ?? string.Empty;
         }
+
+        /// <summary>The martial arts of a unit, learnt (allActionMartial) and carried (bag), by soleID.</summary>
+        public static Dictionary<string, DataProps.PropsData> GetAllMartialProps(this WorldUnitBase wunit)
+        {
+            var rs = new Dictionary<string, DataProps.PropsData>();
+            var learnt = wunit?.data?.unitData?.allActionMartial;
+            if (learnt != null)
+                foreach (var x in learnt)
+                    if (x.Value?.data != null) rs[x.Key] = x.Value.data;
+            if (wunit != null)
+                foreach (var p in wunit.GetUnitProps())
+                    if (p != null && p.propsType == DataProps.PropsDataType.Martial) rs[p.soleID] = p;
+            return rs;
+        }
     }
 }

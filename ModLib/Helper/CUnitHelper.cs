@@ -245,5 +245,18 @@ namespace ModLib.Helper
             var enemyTypes = MartialTool.GetEnemyType(cunit);
             return ModBattleEvent.SceneBattle.unit.GetRangeUnit(cunit.transform.position, radius).ToArray().Where(x => enemyTypes.Contains(x.data.unitType)).ToList();
         }
+
+        /// <summary>A boss of the game (a monster of MonstType.BOSS).</summary>
+        public static bool IsBoss(this UnitCtrlBase cunit)
+        {
+            try { return cunit?.data?.TryCast<UnitDataMonst>()?.monstType == MonstType.BOSS; } catch { return false; }
+        }
+
+        /// <summary>The unit refuses for now the states that take its control (Stoic, StrongStoic, Invincible).</summary>
+        public static bool IsControlImmune(this UnitCtrlBase cunit)
+        {
+            try { return cunit != null && (cunit.IsState(UnitStateType.Stoic) || cunit.IsState(UnitStateType.StrongStoic) || cunit.IsState(UnitStateType.Invincible)); }
+            catch { return false; }
+        }
     }
 }

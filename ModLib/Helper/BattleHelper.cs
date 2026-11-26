@@ -134,5 +134,17 @@ namespace ModLib.Helper
         /// <summary>The battle unit of a world unit (dead ones included), null when it is not in the battle.</summary>
         public static UnitCtrlBase GetBattleUnit(this WorldUnitBase w) => w == null || !InBattle ? null :
             ModBattleEvent.BattleUnitsIncludeDie.ToArray().FirstOrDefault(x => x.IsWorldUnit() && x.GetWorldUnit().GetUnitId() == w.GetUnitId());
+
+        /// <summary>Name of a monster (BattleUnitAttr id) in the language of the game; null when it has none.</summary>
+        public static string GetMonsterName(int attrId)
+        {
+            try
+            {
+                var key = g.conf.battleUnitAttr.GetItem(attrId)?.name;
+                if (!string.IsNullOrEmpty(key) && key != "0") return GameTool.LS(key);
+            }
+            catch { }
+            return null;
+        }
     }
 }

@@ -45,10 +45,18 @@ namespace ModLib.Object
                 return row++;
             }
             NewPage();
+            // the row first: Next() may move to the next column (columns[ci] read before it put the text in the column before)
+            int row0;
             if (!string.IsNullOrEmpty(schema.Title))
-                ui.AddText(columns[ci], Next(), GameTool.LS(schema.Title)).Format(TitleColor, 20, FontStyle.Bold).Align(TextAnchor.MiddleRight);
+            {
+                row0 = Next();
+                ui.AddText(columns[ci], row0, GameTool.LS(schema.Title)).Format(TitleColor, 20, FontStyle.Bold).Align(TextAnchor.MiddleRight);
+            }
             if (!string.IsNullOrEmpty(schema.Note))
-                ui.AddText(columns[ci], Next(), GameTool.LS(schema.Note)).Format(Color.black, 14).Align(TextAnchor.MiddleRight);
+            {
+                row0 = Next();
+                ui.AddText(columns[ci], row0, GameTool.LS(schema.Note)).Format(Color.black, 14).Align(TextAnchor.MiddleRight);
+            }
             string group = null;
             foreach (var o in schema.Options.Where(x => x?.Key != null))
             {
@@ -57,7 +65,8 @@ namespace ModLib.Object
                     if (!string.IsNullOrEmpty(o.Group) && o.Group != group)
                     {
                         group = o.Group;
-                        ui.AddText(columns[ci], Next(), GameTool.LS(group)).Format(TitleColor, 17, FontStyle.Bold).Align(TextAnchor.MiddleRight);
+                        var gr = Next();
+                        ui.AddText(columns[ci], gr, GameTool.LS(group)).Format(TitleColor, 17, FontStyle.Bold).Align(TextAnchor.MiddleRight);
                     }
                     var v = ModOptionsHelper.Clamp(o, values.TryGetValue(o.Key, out var raw) ? raw : null);
                     var label = string.IsNullOrEmpty(o.Label) ? o.Key : GameTool.LS(o.Label);

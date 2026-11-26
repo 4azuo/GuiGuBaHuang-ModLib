@@ -181,5 +181,30 @@ namespace ModLib.Helper
             var prefix = folder.Replace('/', '\\') + "\\";
             return names.OrderBy(x => x, StringComparer.OrdinalIgnoreCase).Select(x => prefix + x).ToList();
         }
+
+        /// <summary>
+        /// An effect created at once, safe alone (no damage of its own, no camera control): disarmed, its unit parts taken
+        /// out (an effect that had a unit mono is noted: NoteUnitEffect - <paramref name="unitParts"/> &gt; 0), its camera
+        /// controls removed; removed by the game after <paramref name="lifeSec"/>. <paramref name="onCreated"/>: the effect as the
+        /// game made it (before it is disarmed); <paramref name="firstNoted"/>: the effect noted now for the first time (the
+        /// caller may report it). Null outside a battle or on an error (logged).
+        /// </summary>
+        public static GameObject CreateEffectSafe(string path, Vector2 pos, float lifeSec, out int unitParts, out bool firstNoted, Action<GameObject> onCreated = null)
+        {
+            unitParts = 0;
+            firstNoted = false;
+            var scene = ModBattleEvent.SceneBattle;
+            if (scene == null || string.IsNullOrEmpty(path)) return null;
+            GameObject go = null;
+            try { go = scene.effect.CreateSync(path, new Vector3(pos.x, pos.y, 0f), lifeSec, true, true); }
+            catch (Exception ex) { DebugHelper.WriteLine($"BattleEffectHelper: effect {path}: {ex.Message}"); }
+            if (go == null) return null;
+            try { onCreated?.Invoke(go); } catch (Exception ex) { DebugHelper.WriteLine(ex); }
+            Disarm(go);
+            unitParts = RemoveUnitParts(go, true);
+            if (unitParts > 0) firstNoted = NoteUnitEffect(path);
+            RemoveCameraControls(go);
+            return go;
+        }
     }
 }

@@ -83,6 +83,24 @@ namespace ModLib.Helper
             return File.ReadAllText(GetConfFilePath(modId, fileName, subFolder));
         }
 
+        /// <summary>
+        /// A JSON file of the ModConf of a mod read as <typeparamref name="T"/> (a list, a dictionary...);
+        /// <paramref name="fallback"/> when it is missing, empty or broken (logged).
+        /// </summary>
+        public static T ReadConfJson<T>(string modId, string fileName, T fallback = default, string subFolder = "")
+        {
+            try
+            {
+                var rs = JsonConvert.DeserializeObject<T>(ReadConfData(modId, fileName, subFolder));
+                return rs == null ? fallback : rs;
+            }
+            catch (Exception ex)
+            {
+                DebugHelper.WriteLine($"ConfHelper: cannot read {fileName} of {modId}: {ex.Message}");
+                return fallback;
+            }
+        }
+
         // [Trace]
         /// <summary>
         /// Loads a configuration file and merges it with the game's configuration.
