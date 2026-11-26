@@ -235,3 +235,219 @@ Check them in the effect viewer; a fix goes in `ai-element` of `docs/Effects/<Ki
 | Skill | zhuzhao_gongji3 | dark, light | wind | color | Black orb with a white ring core, about 1.2 s |
 | Skill | zhuzhao_gongji3_wanjia_xiao | dark | wind | color | Black orb growing jagged, continuous (player version) |
 | Skill | zhuzhao_gongji4 | dark | wind | keyword | Red ring then a dark vortex, about 1.2 s |
+| Unit | baoxiangxiaoshi | light | wind | keyword | Cloud of golden sparkles over a unit, looping |
+| Unit | bati | none | fire | color | Tiny red mark over a unit (super armor state), barely visible |
+| Unit | beiji2baise | none | thunder | keyword | Small white impact puff turning into smoke, about 1 s |
+| Unit | beijibaise | none | thunder | keyword | White star-shaped impact flash on a unit, about 0.4 s |
+| Unit | beijibaisexiao | none | thunder | keyword | Small white impact flash on a unit, about 0.3 s |
+| Unit | beijibaobaise | light | wind | color | Bright white flash ball on a unit shrinking in about 0.3 s |
+| Unit | beishuyaofushendexiuxianzhe_chanrao2 | dark | thunder | color | Faint purple wisp on a unit's body, barely visible, looping |
+| Unit | benmingkeshifang | none | wind | color | Small white emblem appearing on a unit then fading, barely visible |
+| Unit | bianshen1 | dark | wind | keyword | Dark smoke ring swirling on a unit for about 3 s |
+| Unit | bianshen3 | dark | wind | keyword | Dark smoke ring swirling on a unit, about 1.3 s |
+| Unit | bianshenyujing | none | fire | color | Red glow on a unit for about 0.5 s (warning of a transformation) |
+| Unit | boss_chujian_moqi | dark | wind | keyword | Faint dark smoke wisps on a unit for about 1 s, barely visible |
+| Unit | boss_zheng_zhaohuan | blood, dark | wind | keyword | Red flash then dark-red smoke spot on the ground, about 0.9 s |
+| Unit | boss_zheng_zui | blood | fire | color | Faint dark-red drip on a unit, about 0.8 s |
+| Unit | canglong_ripple | none | wind | default | Nearly invisible ripple |
+| Unit | chaofeng | none | sword | keyword | White crossed-swords icon over a unit, looping (taunt state) |
+| Unit | chenshui | none | wind | color | Small white-blue sleep symbols over a unit, looping |
+| Unit | chuanchengzheshou1 | light | thunder | color | Tiny yellow glint on a unit, very short |
+| Unit | dameihuo | dark, spirit | thunder | color | Huge pink-violet mist ring around the area, fading in about 0.5 s |
+| Unit | dangdao_bjwl | none | blade | keyword | Nearly invisible (battle map position marker) |
+| Unit | dangkang_D_yujing | light | frost | color | Blue rectangle line marking a direction, then a golden streak along it |
+| Unit | danzongjuding_shouji | none | wind | color | White radial burst on a unit fading in about 0.2 s |
+| Unit | daoju_tuowei_xiaoshi | light | wind | color | Scattered white sparkles fading in about 0.5 s |
+| Unit | daoju_xilinggu | blood, dark | fire | color | Dark-red blot growing on a unit, looping |
+| Unit | daomo | blood, dark | blade | keyword | Red smudge on a unit, looping |
+| Unit | daoxin_juexing | dark, spirit | wind | keyword | Dark clouds cover the whole screen, then a pale meditating figure appe |
+| Unit | daoxin_juexing_qiu | spirit, light | thunder | color | Pink streaks across the screen converging into a small glowing dot, ab |
+| Unit | daoxin_shenghua | light, spirit | wind | keyword | Darkness, a meditating figure lights up in rainbow radiance, then a pu |
+| Unit | dengxianfazhen | light | wind | color | Thin white ellipse on the ground for about 1.3 s |
+| Unit | douji_die | blood | fire | color | Faint red sprite on the ground, barely visible |
+| Unit | douji_gegege | none | frost | keyword | Small speech label with text over a unit for about 0.3 s |
+| Unit | douji_jiqiao_gongji1fashe | light | thunder | keyword | White spark then a thin oval ring, about 0.2 s |
+| Unit | douji_zhaohuan | light | wind | color | Tiny white glint, barely visible |
+| Unit | fabaoshouhuifei | light | thunder | color | Small golden dot shrinking away in about 1 s |
+| Unit | fabaoshouhuilfei2 | light | thunder | color | Golden star glint flying and fading in about 0.4 s |
+| Unit | Fashe | light | wind | color | Small white flash fading in about 0.3 s |
+| Unit | fengzi | none | wind | color | Small white icon over a unit for about 0.6 s |
+| Unit | fuwen_all_shang | none | frost | color | Nearly invisible rune (upper) |
+| Unit | fuwen_all_xia | none | frost | color | Nearly invisible rune (lower) |
+| Unit | guaiwusiwang | blood | fire | color | Small red splotch on a unit for about 0.3 s |
+| Unit | guaiwusiwangdonghua | dark | wind | color | Dark shadow smear on the ground for about 1 s |
+| Unit | guichutu | spirit, dark | wind | keyword | White ghostly puff on a unit fading in about 0.9 s |
+| Unit | haixinyanqiuhongbaisiwang | none | fire | keyword | Nearly invisible death effect of a sea-heart flame ball |
+| Unit | haixinyanqiuhongheisiwang | none | fire | keyword | Nearly invisible death effect of a sea-heart flame ball |
+| Unit | haixinyanqiuhonghongsiwang | none | fire | keyword | Nearly invisible death effect of a sea-heart flame ball |
+| Unit | haixinyanqiuhonghuangsiwang | none | fire | keyword | Nearly invisible death effect of a sea-heart flame ball |
+| Unit | haixinyanqiuhonglansiwang | none | fire | keyword | Nearly invisible death effect of a sea-heart flame ball |
+| Unit | haixinyanqiuhonglvsiwang | none | fire | keyword | Nearly invisible death effect of a sea-heart flame ball |
+| Unit | haojiaochui | none | frost | color | Faint small ring on the ground, about 0.4 s |
+| Unit | haojiaozhuchuchang | none | wind | keyword | Faint smoke on a unit, barely visible |
+| Unit | Hit | light | wind | color | Tiny white flash on a unit, about 0.1 s |
+| Unit | Hit2 | light | wind | color | Tiny white flash on a unit, about 0.2 s |
+| Unit | HitJinzhan | none | earth | keyword | Tiny pale flash and dust on a unit, about 0.3 s |
+| Unit | hl_fuhuo_chuxian | none | wind | default | Nothing visible (one frame) |
+| Unit | hl_fuhuo_siwang | none | wind | default | Faint pale wisps on the ground, looping |
+| Unit | houyiyanwu | none | finger | keyword | White smoke puff ring on the ground, about 0.7 s |
+| Unit | huangou_siwang | dark | frost | color | Faint dark ring on the ground, looping |
+| Unit | huayaogongjibao | light | thunder | keyword | Tiny yellow spark on a unit, very short |
+| Unit | huijing | none | wind | keyword | A painted scene picture (dragon-like tree over clouds) shown across th |
+| Unit | hundunzhilingbao | dark | wind | color | Black oval void on a unit fading in about 0.8 s |
+| Unit | huoyuanshu | dark, spirit | fire | keyword | Faint purple sparkles on a unit for about 2 s |
+| Unit | huyao_jiuweihu_xixue | blood | finger | keyword | Red energy tether stretching between two points, looping |
+| Unit | ji4_provoke | none | wind | color | White starburst on a unit, about 0.3 s |
+| Unit | jiaoyin_you | none | wind | color | Small white footprint (right) on the ground |
+| Unit | jiaoyin_zuo | none | wind | color | Small white footprint (left) on the ground |
+| Unit | jiuweihu1feidanbao | spirit, dark | fire | keyword | Pink-white spark burst on a unit fading in about 0.5 s |
+| Unit | jiuweihu1xuli | spirit, dark | fire | keyword | Pink-white glow bursting into swirling purple smoke, about 0.3 s |
+| Unit | jiuweihuGongji1fen | spirit, dark | fire | keyword | Small pink fox-fire orb fading in about 0.4 s |
+| Unit | jiuweihuGongji2 | spirit, blood | fire | color | Red heart growing on a unit then fading, about 0.8 s |
+| Unit | jiuweihuGongji3fen | spirit, dark | fire | keyword | Ring of purple fox-fire on the ground, looping |
+| Unit | jiuwei_meihuo | spirit, blood | thunder | color | Large pink ring of hearts with crimson mist covering the area, about 1 |
+| Unit | jiuying_XueTiao | none | fire | color | Red health bar shown over a unit |
+| Unit | jixian_douji_buff | none | frost | color | Nothing visible |
+| Unit | JueseShengji | light | finger | keyword | Golden rings on the ground with a thin golden beam rising, about 1.5 s |
+| Unit | juzhu_attack2wang_yujing | none | wood | keyword | White cloudy blob on the ground for about 1.3 s |
+| Unit | juzhu_attack2wang_yujingDlc | none | wood | keyword | Red circle outline turning into a grey cloudy disc, about 3 s |
+| Unit | kaimingshougongji2chi | light | wind | color | Small white emotion mark on a unit, about 3 s |
+| Unit | kaimingshougongji2le | spirit | thunder | color | Small pink emotion mark on a unit, about 3 s |
+| Unit | kanyushi_qiehuanchangjing2 | none | frost | color | Nothing visible |
+| Unit | leijie_nengliangqiu | none | wind | default | Nothing visible (one frame) |
+| Unit | leijie_nengliangqiu2 | none | wind | default | Nothing visible (one frame) |
+| Unit | lianyaohu_chuxian | light | thunder | color | Tiny yellow glint, barely visible |
+| Unit | liaoji_youying_zhenfa | dark | wind | color | Grey-black light shafts flood the area, then a huge grey-black array w |
+| Unit | liaoji_zhuzhao_zhenfa | light, spirit | wind | color | White light shafts flood the area, then a huge white array with purple |
+| Unit | lingyushifang | light, spirit | finger | keyword | Black screen with a white swirling taiji emblem and rays, then the emb |
+| Unit | lisi_beijing | dark | frost | color | The whole screen turns dark blue for about 1.1 s |
+| Unit | lisi_takeOffCloth | none | wind | color | Black silhouette sprite for one frame |
+| Unit | liuweihuyan | spirit, light | fire | keyword | Faint white glow on the ground, fading in about 1 s |
+| Unit | liuxue | blood | fire | color | Tiny red drip on a unit, very short |
+| Unit | liuxueda | blood | fire | color | Tiny red drip on a unit, very short |
+| Unit | lizhu3 | none | wind | color | Small white-robed figure with a weapon standing, looping |
+| Unit | long_didongshanyao | none | earth | keyword | Nothing visible |
+| Unit | mengjipifengjiaqiang | light | wind | color | Faint white ring at a unit's feet, looping |
+| Unit | miemeng_daidian | light | wind | color | Tiny white flicker, about 0.6 s |
+| Unit | mingqichangjing_lianyi | none | wind | default | Nothing visible |
+| Unit | mingqijingying_gongji1beiji | dark, spirit | thunder | color | Magenta puff on a unit fading in about 0.4 s |
+| Unit | mingqimingshou1_houjiao | spirit, dark | thunder | color | Pink haze pulsing around a unit, about 1 s |
+| Unit | mingqimingshou1_mingqidun | spirit, dark | frost | keyword | Pink-purple bubble around a unit for about 1 s |
+| Unit | mingqimingshou2_gongji4xiaoshi | dark, spirit | thunder | color | Small magenta glow fading in about 0.6 s |
+| Unit | mingqimingshou2_gongji4yujing | dark, spirit | thunder | color | Purple haze then a bright magenta flare, about 0.6 s |
+| Unit | mingqiqinshi | spirit, dark | thunder | color | Small magenta glow on a unit for about 0.4 s |
+| Unit | mingqi_baozha | spirit, dark | fire | keyword | Pink sparkles bursting then a glowing pink dot, about 0.9 s |
+| Unit | mingqi_xiaoguo | spirit | thunder | color | Faint pink glow on a unit, about 1 s |
+| Unit | mingshou1_fengyin | dark | thunder | color | Small dark purple dot on a unit, looping |
+| Unit | mingshou1_jiansu | spirit, blood | thunder | color | Faint pink smudge on a unit, looping |
+| Unit | mingshou1_jinzu | spirit, blood | thunder | color | Faint pink smudge on a unit for about 1 s |
+| Unit | mingshou1_liuxue | spirit, blood | thunder | keyword | Magenta spark burst on a unit, about 0.3 s |
+| Unit | moguxian_rengmogumihuo_xiaoshi | spirit | thunder | color | Small pink glow fading in about 0.4 s |
+| Unit | mohuashuyao_baozi | spirit, dark | wood | keyword | Small magenta ring dot on a unit for about 0.8 s |
+| Unit | mohuashuyao_kongzhi | spirit, dark | thunder | color | Small magenta flicker over a unit for about 1.3 s |
+| Unit | mojianjizhong | spirit, dark | sword | keyword | Magenta star burst on a unit fading in about 0.3 s |
+| Unit | mozhu_moqi | dark, spirit | thunder | color | Small violet speck for about 0.9 s |
+| Unit | mozu_buff | dark | thunder | color | Faint violet speck, about 0.5 s |
+| Unit | mqms4lingyu | light, spirit | wind | color | Small white symbol flashing then a white blob, about 1 s |
+| Unit | nanguihunqiubao | dark, spirit | wind | color | White dot turning into a dark ring puff, about 0.3 s |
+| Unit | niuxian_xianlijiejie | none | frost | color | Nothing visible |
+| Unit | ntgm_huanyingmizong | dark, spirit | thunder | color | Faint violet wisp on a unit, about 0.5 s |
+| Unit | ntgm_weirenweiji1 | spirit, dark | thunder | color | Magenta burst scattering sparkles, about 0.4 s |
+| Unit | nvwa_chuchang_yan | none | wind | keyword | White smoke rising from the bottom edge, about 1.2 s |
+| Unit | pigubeiji | none | frost | color | Nothing visible |
+| Unit | qinyuan_tuxue | blood | fire | color | Red blood drops falling, about 0.9 s |
+| Unit | ql_anya | dark | frost | color | Faint dark speck, about 0.5 s |
+| Unit | ql_buwu | spirit, dark | thunder | color | Faint figure with a small pink mark for about 1 s |
+| Unit | ql_buwu_feidan | spirit, dark | thunder | color | Magenta glowing orb with a ring, looping |
+| Unit | ql_chimou | none | frost | color | Character sprite: small brownish creature, standing |
+| Unit | ql_duchi | none | wind | color | Character sprite: small pale creature, standing |
+| Unit | ql_huofazhe | none | thunder | color | Character sprite: small pink figure, standing |
+| Unit | ql_jianglingge | none | fire | color | Character sprite: red-orange robed figure, standing |
+| Unit | ql_liegongshou | none | wind | color | Character sprite: pale robed figure, standing |
+| Unit | ql_liningshuang | none | wind | color | Character sprite: dark figure fading to pale, standing |
+| Unit | ql_luwu_zhuajibao | dark | blade | keyword | Faint dark claw mark, about 0.2 s |
+| Unit | ql_mandaoshou | none | frost | color | Character sprite: faint reddish creature, standing |
+| Unit | ql_muke | none | wind | color | Character sprite: small white robed figure, standing |
+| Unit | ql_panyun | none | wind | color | Character sprite: white robed figure with a pink ribbon, standing |
+| Unit | ql_qinglin | none | wind | color | Character sprite: white robed figure with a staff, standing |
+| Unit | ql_renwei | none | frost | color | Character sprite: small brownish creature, standing |
+| Unit | ql_ruizhua | none | wind | default | Character sprite: faint pale creature, standing |
+| Unit | ql_shenyuan | none | frost | color | Character sprite: tiny pale creature, standing |
+| Unit | ql_shihui | none | wind | color | Character sprite: dark robed figure, standing |
+| Unit | ql_wuxi | none | wind | color | Character sprite: tiny pale figure, standing |
+| Unit | ql_yonglingzhe | none | frost | color | Character sprite: pale blue spirit figure, standing |
+| Unit | ql_yunmengyi | none | wind | color | Character sprite: white-haired robed lady, standing |
+| Unit | ql_yushi | none | wind | color | Character sprite: small figure with a white orb, standing |
+| Unit | ql_zhenxin_jiaqiang | spirit, blood | thunder | color | Faint pink glow on a unit for about 0.7 s |
+| Unit | rumo | blood, dark | fire | color | Tiny red mark on a unit, looping |
+| Unit | rumo2 | blood, dark | fire | color | Tiny dark red mark growing, about 0.7 s |
+| Unit | rumo3 | blood | fire | color | Faint red speck, barely visible |
+| Unit | shanguang | light | wind | color | Tiny white glowing dot, looping |
+| Unit | shanguangbao | light | wind | color | White star twinkle, about 0.6 s |
+| Unit | shenfashan2 | none | wind | default | Nothing visible (one frame) |
+| Unit | shenfatuoqiao2 | none | wind | default | Nothing visible (one frame) |
+| Unit | shuyaojingyingguai_gongji2qianyao | spirit, dark | wind | keyword | Magenta glowing orb growing for about 0.5 s |
+| Unit | siwang | blood | thunder | keyword | Small red spark fading in about 0.3 s |
+| Unit | suanyu_attack4baozha | spirit, dark | fire | keyword | Magenta ring burst fading in about 0.6 s |
+| Unit | suirenshixiaoguai7tiao | dark | wind | color | Black blob fading in about 0.3 s |
+| Unit | Taopao | dark | wind | keyword | Small black smoke plume, about 1.2 s |
+| Unit | taowu_chuxue | blood | fire | color | Small red blood splash, about 0.3 s |
+| Unit | taowu_gongji3_shifa | blood, dark | fire | color | Red glowing circle under a dark pillar, fading into dark red, about 1. |
+| Unit | taowu_mingqi | blood, dark | fire | color | Faint dark red smudge for about 0.5 s |
+| Unit | taowu_shanghaitisheng | blood | fire | color | Faint red speck for about 1 s |
+| Unit | tuoweishiwang | blood | fire | color | Tiny red streak, about 1.2 s |
+| Unit | tuoweizise | spirit | thunder | color | Nearly invisible trail |
+| Unit | UltimateShifa2 | light | finger | keyword | Golden glow on the caster with golden rays streaking inward, about 0.7 |
+| Unit | UltimateShifa2Dlc | light | finger | keyword | Golden glow on the caster with golden rays streaking inward, about 0.7 |
+| Unit | UnitDie | dark | wind | color | Faint dark specks, about 1 s |
+| Unit | UnitDieDlc | none | wind | default | Nothing visible |
+| Unit | UnitDieHit | dark | wind | color | Small black shape for about 0.2 s |
+| Unit | WanjiaSiwang | dark | wind | color | Small black shape then faint shadow, about 1 s |
+| Unit | wulutishengsudu | none | wind | color | Small white text label for about 1.2 s (speed up) |
+| Unit | xianfa_moguxian_cjg | spirit | thunder | color | Small pink glowing dot, looping |
+| Unit | xianfa_moguxian_hyg | none | wind | default | Nearly invisible |
+| Unit | xierenchixu | blood, dark | blade | keyword | Red crescent blades spinning, about 1 s |
+| Unit | xierenjianxue | blood | blade | keyword | Red horizontal streak turning dark, about 0.4 s |
+| Unit | XingtianBianshen | blood, dark | fire | color | Dark ring with red streaks gathering into a dark red blot, about 2.5 s |
+| Unit | XingtianRengdun | blood, dark | fire | color | Dark ring then a dark red blot, about 2.4 s |
+| Unit | XingtianSiwang | blood, dark | fire | color | Dark red blot with a faint ring, about 2.4 s |
+| Unit | XingtianXiqi | blood, dark | fire | color | Small red glow and dark ring, about 1.2 s |
+| Unit | xuanguishentishitou | none | frost | color | Nothing visible |
+| Unit | xuemolaozu_mad | blood, spirit | thunder | color | Pink oval flash spreading into a red haze, about 1 s |
+| Unit | xuezhuaningju | none | frost | color | Nearly invisible |
+| Unit | yemian_longyan | none | wind | default | Nothing visible (one frame) |
+| Unit | youyingxiaoguai_tw | dark | thunder | keyword | Dark and white comet streak, looping |
+| Unit | youying_buff | light, spirit | wind | color | White glowing puff for about 0.8 s |
+| Unit | youying_cixu | dark | wind | keyword | Black smoky burst pulsing, looping |
+| Unit | youying_gongji3qianyao | light, spirit | wind | keyword | White ripples and smoke converging into a bright white orb, about 2.5  |
+| Unit | youying_gongji3_wanjia | light, dark | wind | color | Small dark ring turning into a white ring, looping |
+| Unit | youying_ptgj_bao | light | wind | color | Tiny white flash, about 0.1 s |
+| Unit | youying_yinyan | light | wind | color | Tiny white glint, about 0.3 s |
+| Unit | yuanzhi_haojiao | light, spirit | wind | color | Faint white ring pulsing for about 2 s |
+| Unit | yuanzhi_kuangbao2 | none | wind | color | Nearly invisible |
+| Unit | yuanzhi_kuangbao2guihun | dark | wind | color | Small dark mark, looping |
+| Unit | yuanzhi_siwang | light | thunder | color | Faint yellow sparkle, about 1 s |
+| Unit | yuanzhi_tiaoyue | dark | wind | default | Faint dark shadow, about 0.3 s |
+| Unit | yuhuayun | light | wind | keyword | Small white glowing cloud, looping |
+| Unit | zhandou_shenmizuzhi_jianbian | dark | wind | color | Small dark mark for about 1 s |
+| Unit | zhandou_shenmizuzhi_jianbian2 | dark | wind | color | Small dark splash, about 1 s |
+| Unit | zhangsan_fenshen | light, spirit | frost | keyword | White bubble ring breaking apart, about 0.4 s |
+| Unit | zhaohuansuanyu | blood, dark | thunder | keyword | Red sparks converge into a dark hole with a big red ring, about 2 s |
+| Unit | zhaohuanwusiwang | light, spirit | wind | color | White puff burst, about 0.8 s |
+| Unit | zhubieyuwang_gongji2_maopao | blood | frost | keyword | Red bubbly stream spreading horizontally, about 1 s |
+| Unit | zhubieyuwang_tuxue | blood | fire | color | Red blood splash, about 0.4 s |
+| Unit | zhubieyuwang_xieqiu | blood | fire | color | Red blood orb, looping |
+| Unit | zhubieyuwang_xieqiu_zha | blood | fire | color | Small red blot shrinking, about 0.5 s |
+| Unit | zhubieyuwang_yidong | blood, dark | fire | color | Red and black horizontal streak, looping |
+| Unit | zhudangdandao | light | blade | keyword | Tiny yellow glint, about 0.2 s |
+| Unit | zhuyankuanghua | blood, dark | fire | color | Faint dark red smudge for about 1 s |
+| Unit | zhuyaozhuzisiwang | none | frost | color | Nothing visible |
+| Unit | zhuzhaoshouwei_kuangbao | dark | wind | color | Tiny black mark for about 0.6 s |
+| Unit | zhuzhaoshouwei_siwang | light, spirit | wind | color | White puff burst fading in about 0.3 s |
+| Unit | zhuzhaoxiaoguai_tw | light, spirit | thunder | keyword | White comet streak, about 1 s |
+| Unit | zhuzhao_cixu | light, dark | wind | color | White and dark smoky burst pulsing, looping |
+| Unit | zhuzhao_ct_bao | dark, light | wind | keyword | Black orb with a white rim, then dark smoke, about 0.4 s |
+| Unit | zhuzhao_gongji3qianyao | light, dark | wind | color | Grey orb growing white, flashing, then collapsing into a black hole, a |
+| Unit | zhuzhao_gongji3_wanjia | light, dark | wind | color | Small white dot turning into a dark ring, about 1.2 s |
+| Unit | zhuzhao_jianshang | dark | frost | color | Faint dark ring for about 1 s |
+| Unit | zhuzhao_ptgj_bao | none | frost | color | Nearly invisible |
