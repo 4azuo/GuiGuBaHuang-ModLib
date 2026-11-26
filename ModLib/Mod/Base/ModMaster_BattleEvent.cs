@@ -147,6 +147,7 @@ namespace ModLib.Mod
         {
             CallEvents<BattleEnd>("OnBattleEnd", e);
             battleCheckList.Clear();
+            BalanceStatsHelper.FlushAll();
         }
 
         /// <summary>

@@ -13,7 +13,9 @@ namespace ModLib.Object
     /// their own layer and filmed by a camera of their own into a RenderTexture, shown by a framed RawImage, on a background
     /// picture. The scripts of an effect are removed before they wake up (they need a battle: units, battle camera, sort
     /// order); the parts its EffectCmdCtrl shows one after the other (DelayActiveSubobject "child|delay|duration") are timed
-    /// here. Show plays one effect (again when it ends: Tick); Spawn puts any number of them on the stage, for a moving scene
+    /// here, a random direction (EffectRandomDireCtrl) is drawn here. The other scripts have nothing to replay without a
+    /// battle (EffectTraceTargetCtrl follows a unit given by the battle, EffectActivedCallCtrl calls back the battle code):
+    /// their parts are shown at once, where the prefab puts them; the scripts removed are counted (RemovedScripts). Show plays one effect (again when it ends: Tick); Spawn puts any number of them on the stage, for a moving scene
     /// (a subclass overrides Update). Update(dt) every frame, Dispose when the window closes.
     /// </summary>
     public class EffectStage : IDisposable
@@ -225,6 +227,7 @@ namespace ModLib.Object
             }
             var go = UnityEngine.Object.Instantiate(prefab, _holder.transform, false);
             var parts = ReadParts(go);
+            RandomDirections(go);
             RemoveScripts(go);
             // the parts no command times (other scripts would have shown them) are shown at once
             foreach (var t in go.GetComponentsInChildren<Transform>(true))
@@ -282,6 +285,27 @@ namespace ModLib.Object
             }
             catch (Exception ex) { DebugHelper.WriteLine($"EffectStage: parts: {ex.Message}"); }
             return rs;
+        }
+
+        /// <summary>Scripts removed from the effects of every stage, by type (what the preview does not replay).</summary>
+        public static readonly Dictionary<string, int> RemovedScripts = new Dictionary<string, int>();
+
+        /// <summary>The random direction of an EffectRandomDireCtrl (a rotation drawn on its axes at its Start), before the scripts go.</summary>
+        private static void RandomDirections(GameObject go)
+        {
+            try
+            {
+                foreach (var r in go.GetComponentsInChildren<EffectRandomDireCtrl>(true))
+                {
+                    if (r == null) continue;
+                    var e = r.transform.localEulerAngles;
+                    r.transform.localEulerAngles = new Vector3(
+                        r.randomX ? UnityEngine.Random.Range(0f, 360f) : e.x,
+                        r.randomY ? UnityEngine.Random.Range(0f, 360f) : e.y,
+                        r.randomZ ? UnityEngine.Random.Range(0f, 360f) : e.z);
+                }
+            }
+            catch (Exception ex) { DebugHelper.WriteLine($"EffectStage: random direction: {ex.Message}"); }
         }
 
         /// <summary>The argument of a part command: "child|delay|duration" (seconds; the child by name, path or index).</summary>
@@ -457,7 +481,13 @@ namespace ModLib.Object
         {
             foreach (var comp in go.GetComponentsInChildren<MonoBehaviour>(true))
                 if (comp != null)
+                {
+                    var name = "?";
+                    try { name = comp.GetIl2CppType()?.Name ?? comp.GetType().Name; } catch { }
+                    RemovedScripts.TryGetValue(name, out var n);
+                    RemovedScripts[name] = n + 1;
                     UnityEngine.Object.DestroyImmediate(comp);
+                }
         }
 
         private static void SetLayer(GameObject go, int layer)

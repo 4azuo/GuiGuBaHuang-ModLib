@@ -91,6 +91,7 @@ namespace ModLib.Mod
             {
                 CallEvents<ETypeData>("OnSave", e);
             }
+            BalanceStatsHelper.FlushAll();
         }
 
         /// <summary>

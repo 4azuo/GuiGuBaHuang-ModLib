@@ -78,6 +78,7 @@
     <Compile Include="Helper\TextIconHelper.cs" />
     <Compile Include="Helper\PortraitHelper.cs" />
     <Compile Include="Helper\BattleSceneHelper.cs" />
+    <Compile Include="Helper\BalanceStatsHelper.cs" />
     <Compile Include="Helper\BattleEffectHelper.cs" />
     <Compile Include="Helper\BattleHelper.cs" />
     <Compile Include="Helper\UIClickHelper.cs" />
