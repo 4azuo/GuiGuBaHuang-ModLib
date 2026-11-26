@@ -35,16 +35,6 @@ foreach ($projectId in $settings.projects) {
         Write-Host "❌ Source folder not found: $source" -ForegroundColor Red
         continue
     }
-    # The Workshop folder holds the build output only (project\_workshop.ps1): back into debug\Mod_<id>; a former
-    # copy of the whole project (with ModProject) goes back to the project folder, as before
-    if (-not (Test-Path -LiteralPath (Join-Path $source 'ModProject'))) {
-        . (Join-Path $PSScriptRoot 'project\_workshop.ps1')
-        $dest = Get-ModBuildFolder $dest
-        if (-not $dest) {
-            Write-Host "❌ No build output in $repositoryPath\$projectId\debug\Mod_*" -ForegroundColor Red
-            continue
-        }
-    }
 
     # Function to copy with error handling
     function Copy-WithErrorHandling {

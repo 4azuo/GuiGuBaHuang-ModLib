@@ -32,49 +32,13 @@ if (!(Test-Path $steamWorkshopPath)) {
 $rootDir = Split-Path (Split-Path $ProjectScripts -Parent) -Parent
 $sourcePath = Join-Path $rootDir $projectId
 
-# Only the build output (debug\Mod_<id>), as a Workshop download: no source, scripts or tests (_workshop.ps1)
+# The build output (debug) and the 3 project files of ModProject: no source, scripts or tests (_workshop.ps1)
 . (Join-Path $PSScriptRoot '_workshop.ps1')
-$buildPath = Get-ModBuildFolder $sourcePath
-if (-not $buildPath) {
-    Write-Host "❌ No build output: $sourcePath\debug\Mod_* (build the project first)" -ForegroundColor Red
-    exit 1
-}
-
-# Function to copy with error handling
-function Copy-WithErrorHandling {
-    param (
-        [string]$Source,
-        [string]$Destination
-    )
-    
-    # Get all items recursively
-    Get-ChildItem -Path $Source -Recurse -ErrorAction SilentlyContinue | ForEach-Object {
-        $relativePath = $_.FullName.Substring($Source.Length)
-        $targetPath = Join-Path $Destination $relativePath
-        
-        if ($_.PSIsContainer) {
-            # Create directory if it doesn't exist
-            if (!(Test-Path $targetPath)) {
-                New-Item -ItemType Directory -Path $targetPath -Force | Out-Null
-            }
-        } else {
-            # Copy file with error handling
-            try {
-                Copy-Item -Path $_.FullName -Destination $targetPath -Force -ErrorAction Stop
-            } catch {
-                Write-Host "⚠️  Skipped (in use): $relativePath" -ForegroundColor Yellow
-            }
-        }
-    }
-}
-
-# Copy the content of the build output (the former copy, with the whole project, is removed first)
-Write-Host "`nCopying $buildPath to Steam Workshop..." -ForegroundColor Yellow
+Write-Host "`nCopying $projectId (debug + ModProject files) to Steam Workshop..." -ForegroundColor Yellow
 $destination = Join-Path $steamWorkshopPath $projectId
-if (Test-Path $destination) {
-    Remove-Item -Path $destination -Recurse -Force -ErrorAction SilentlyContinue
-}
-Copy-WithErrorHandling -Source $buildPath -Destination $destination
+try { $failed = Copy-ToWorkshop $sourcePath $destination }
+catch { Write-Host "❌ $($_.Exception.Message)" -ForegroundColor Red; exit 1 }
+if ($failed -gt 0) { Write-Host "⚠️  $failed file(s) not copied (in use)" -ForegroundColor Yellow }
 
 Write-Host "`n========================================" -ForegroundColor Green
 Write-Host "✅ COPY COMPLETED SUCCESSFULLY!" -ForegroundColor Green

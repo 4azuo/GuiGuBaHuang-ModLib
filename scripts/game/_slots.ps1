@@ -141,17 +141,13 @@ function Wait-DeployFree([int]$WaitMinutes = 30) {
     }
 }
 
-# True when every file of the build output <repo>\<project>\debug\Mod_<id> is in <workshop>\<project id> with the same
-# content (<project>: a project id, or a path in the repository such as GuiGuBaHuang-ModLib/3385996759); the Workshop
-# folder holds the build output only (project\_workshop.ps1, copy-to-steam)
-. (Join-Path $PSScriptRoot '..\project\_workshop.ps1')
+# True when every file of <repo>\<project>\debug is in <workshop>\<project id>\debug with the same content
+# (<project>: a project id, or a path in the repository such as GuiGuBaHuang-ModLib/3385996759)
 function Test-WorkshopUpToDate([string]$Repo, [string]$Workshop, [string[]]$Projects) {
     foreach ($p in $Projects) {
-        $src = Get-ModBuildFolder (Join-Path $Repo $p)
-        $dst = Join-Path $Workshop (Split-Path $p -Leaf)
-        if (-not $src -or -not (Test-Path -LiteralPath $dst)) { return $false }
-        # a former copy of the whole project: not this layout
-        if (Test-Path -LiteralPath (Join-Path $dst 'ModProject')) { return $false }
+        $src = Join-Path $Repo "$p\debug"
+        $dst = Join-Path $Workshop "$(Split-Path $p -Leaf)\debug"
+        if (-not (Test-Path -LiteralPath $dst)) { return $false }
         foreach ($f in Get-ChildItem -LiteralPath $src -Recurse -File) {
             $rel = $f.FullName.Substring($src.Length)
             $o = Get-Item -LiteralPath (Join-Path $dst $rel) -ErrorAction SilentlyContinue

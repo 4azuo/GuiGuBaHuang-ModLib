@@ -32,34 +32,6 @@ if (!(Test-Path $steamWorkshopPath)) {
     Write-Host "Directory already exists: $steamWorkshopPath" -ForegroundColor Green
 }
 
-# Function to copy with exclusions
-function Copy-WithExclusions {
-    param (
-        [string]$Source,
-        [string]$Destination
-    )
-    
-    # Get all items recursively
-    Get-ChildItem -Path $Source -Recurse | ForEach-Object {
-        $relativePath = $_.FullName.Substring($Source.Length)
-        $targetPath = Join-Path $Destination $relativePath
-        
-        if ($_.PSIsContainer) {
-            # Create directory if it doesn't exist
-            if (!(Test-Path $targetPath)) {
-                New-Item -ItemType Directory -Path $targetPath -Force | Out-Null
-            }
-        } else {
-            # Copy file with error handling
-            try {
-                Copy-Item -Path $_.FullName -Destination $targetPath -Force -ErrorAction Stop
-            } catch {
-                Write-Host "⚠️  Skipped (in use): $($_.Name)" -ForegroundColor Yellow
-            }
-        }
-    }
-}
-
 # Process each project: the dependencies (the ModLib build of the submodule) first
 foreach ($projectPath in @($settings.dependencies | Where-Object { $_ }) + @($settings.projects)) {
     $projectId = Split-Path $projectPath -Leaf
@@ -68,18 +40,11 @@ foreach ($projectPath in @($settings.dependencies | Where-Object { $_ }) + @($se
     $projectDir = Join-Path $repositoryPath $projectPath
     $dest = Join-Path $steamWorkshopPath $projectId
 
-    # Only the build output (debug\Mod_<id>), as a Workshop download (project\_workshop.ps1)
-    $source = Get-ModBuildFolder $projectDir
-    if (-not $source) {
-        Write-Host "❌ No build output: $projectDir\debug\Mod_* (build the project first)" -ForegroundColor Red
-        continue
-    }
-    
-    Write-Host "Copying to Steam Workshop..." -ForegroundColor Cyan
-    if (Test-Path $dest) {
-        Remove-Item -Path $dest -Recurse -Force -ErrorAction SilentlyContinue
-    }
-    Copy-WithExclusions -Source $source -Destination $dest
+    # The build output (debug) and the 3 project files of ModProject: no source, scripts or tests (project\_workshop.ps1)
+    Write-Host "Copying to Steam Workshop (debug + ModProject files)..." -ForegroundColor Cyan
+    try { $failed = Copy-ToWorkshop $projectDir $dest }
+    catch { Write-Host "❌ $($_.Exception.Message)" -ForegroundColor Red; continue }
+    if ($failed -gt 0) { Write-Host "⚠️  $failed file(s) not copied (in use)" -ForegroundColor Yellow }
     Write-Host "✅ $projectId copied successfully" -ForegroundColor Green
 }
 

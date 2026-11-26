@@ -81,6 +81,28 @@ if ($LASTEXITCODE -eq 0) {
     }
     
     Write-Host "✅ Resources copied successfully!" -ForegroundColor Green
+
+    # The version of the mod editor's project (ModProject.cache "ver" and "curUpdateDesc", sent with an upload)
+    # follows the version of the source code (versionFile / versionPattern of settings.json, as the release tag).
+    # Not in the CI (-ResourcesOnly): it changes a file of the repository.
+    if (-not $ResourcesOnly -and $settings.versionFile -and $settings.versionPattern) {
+        $versionFile = Join-Path $rootDir (Join-Path $projectId $settings.versionFile)
+        $cacheFile = Join-Path $projectPath 'ModProject.cache'
+        $m = if (Test-Path -LiteralPath $versionFile) { [regex]::Match((Get-Content -LiteralPath $versionFile -Raw), $settings.versionPattern) } else { $null }
+        if (-not $m -or -not $m.Success) {
+            Write-Host "⚠️  Version not found in ${versionFile}: ModProject.cache not updated" -ForegroundColor Yellow
+        } elseif (Test-Path -LiteralPath $cacheFile) {
+            $ver = "v$($m.Groups[1].Value)"
+            $text = [IO.File]::ReadAllText($cacheFile)
+            # only the values of "ver" and "curUpdateDesc" (the update note of an upload): the rest of the file is kept
+            # byte for byte (written by the game)
+            $new = [regex]::Replace($text, '("(?:ver|curUpdateDesc)"\s*:\s*")[^"]*(")', '${1}' + $ver + '$2')
+            if ($new -ne $text) {
+                [IO.File]::WriteAllText($cacheFile, $new, (New-Object System.Text.UTF8Encoding $false))
+                Write-Host "  ✓ ModProject.cache version: $ver" -ForegroundColor Green
+            }
+        }
+    }
 } else {
     Write-Host "❌ Failed to build project!" -ForegroundColor Red
     exit $LASTEXITCODE
