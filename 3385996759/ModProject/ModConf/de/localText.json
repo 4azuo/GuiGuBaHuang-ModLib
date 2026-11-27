@@ -308,5 +308,20 @@
 		"id": "999990061",
 		"key": "libtxt999990061",
 		"en|ch|tc|kr": "Unterstützen"
+	},
+	{
+		"id": "999990062",
+		"key": "libtxt999990062",
+		"en|ch|tc|kr": "Der Schlüssel von {0} wurde in den letzten {2} Tagen aus {1} verschiedenen Netzwerken benutzt.\nEin Schlüssel gehört einem Unterstützer: bitte nicht teilen. Ein VPN oder ein Mobilfunknetz kann als mehrere Netzwerke zählen.\nAb mehr als {3} Netzwerken wird der Schlüssel nicht mehr verlängert."
+	},
+	{
+		"id": "999990063",
+		"key": "libtxt999990063",
+		"en|ch|tc|kr": "Der Schlüssel von {0} wurde in den letzten {2} Tagen aus {1} verschiedenen Netzwerken benutzt: er wird nicht mehr verlängert.\nDie Mod läuft, bis der Schlüssel abläuft; hol deinen nächsten Schlüssel auf der Abholseite. Schreib dem Autor, falls das ein Irrtum ist."
+	},
+	{
+		"id": "999990064",
+		"key": "libtxt999990064",
+		"en|ch|tc|kr": "Dieser Schlüssel wurde vom Autor widerrufen: Ab dem nächsten Start wird die Mod nicht geladen. Schreib dem Autor, falls das ein Irrtum ist."
 	}
 ]

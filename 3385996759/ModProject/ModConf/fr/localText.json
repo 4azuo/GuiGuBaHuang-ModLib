@@ -308,5 +308,20 @@
 		"id": "999990061",
 		"key": "libtxt999990061",
 		"en|ch|tc|kr": "Soutenir"
+	},
+	{
+		"id": "999990062",
+		"key": "libtxt999990062",
+		"en|ch|tc|kr": "La clé de {0} a été utilisée depuis {1} réseaux différents ces {2} derniers jours.\nUne clé est pour un seul soutien : ne la partagez pas. Un VPN ou un réseau mobile peut compter comme plusieurs réseaux.\nAu-delà de {3} réseaux, la clé n'est plus renouvelée."
+	},
+	{
+		"id": "999990063",
+		"key": "libtxt999990063",
+		"en|ch|tc|kr": "La clé de {0} a été utilisée depuis {1} réseaux différents ces {2} derniers jours : elle n'est plus renouvelée.\nLe mod fonctionne jusqu'à l'expiration de la clé ; obtenez la suivante sur la page de récupération. Écrivez à l'auteur s'il s'agit d'une erreur."
+	},
+	{
+		"id": "999990064",
+		"key": "libtxt999990064",
+		"en|ch|tc|kr": "Cette clé a été révoquée par l'auteur : le mod ne sera plus chargé au prochain démarrage. Écrivez à l'auteur s'il s'agit d'une erreur."
 	}
 ]

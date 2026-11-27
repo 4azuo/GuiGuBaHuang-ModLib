@@ -308,5 +308,20 @@
 		"id": "999990061",
 		"key": "libtxt999990061",
 		"en|ch|tc|kr": "Apoyar"
+	},
+	{
+		"id": "999990062",
+		"key": "libtxt999990062",
+		"en|ch|tc|kr": "La clave de {0} se usó desde {1} redes distintas en los últimos {2} días.\nUna clave es para un solo colaborador: no la compartas. Una VPN o una red móvil pueden contar como varias redes.\nCon más de {3} redes la clave ya no se renueva."
+	},
+	{
+		"id": "999990063",
+		"key": "libtxt999990063",
+		"en|ch|tc|kr": "La clave de {0} se usó desde {1} redes distintas en los últimos {2} días: ya no se renueva.\nEl mod funciona hasta que la clave caduque; consigue la siguiente en la página de reclamo. Escribe al autor si es un error."
+	},
+	{
+		"id": "999990064",
+		"key": "libtxt999990064",
+		"en|ch|tc|kr": "El autor revocó esta clave: el mod no se cargará desde el próximo inicio. Escribe al autor si es un error."
 	}
 ]

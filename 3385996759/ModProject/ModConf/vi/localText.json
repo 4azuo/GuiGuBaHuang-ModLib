@@ -308,5 +308,20 @@
 		"id": "999990061",
 		"key": "libtxt999990061",
 		"en|ch|tc|kr": "Ủng hộ"
+	},
+	{
+		"id": "999990062",
+		"key": "libtxt999990062",
+		"en|ch|tc|kr": "Key của {0} đã được dùng từ {1} mạng khác nhau trong {2} ngày qua.\nMỗi key dành cho một người ủng hộ: vui lòng không chia sẻ. VPN hoặc mạng di động có thể bị tính thành nhiều mạng.\nQuá {3} mạng, key sẽ không được tự gia hạn nữa."
+	},
+	{
+		"id": "999990063",
+		"key": "libtxt999990063",
+		"en|ch|tc|kr": "Key của {0} đã được dùng từ {1} mạng khác nhau trong {2} ngày qua: key sẽ không được tự gia hạn nữa.\nMod vẫn chạy tới khi key hết hạn; hãy lấy key tiếp theo ở trang nhận key. Nếu nhầm lẫn, hãy liên hệ tác giả."
+	},
+	{
+		"id": "999990064",
+		"key": "libtxt999990064",
+		"en|ch|tc|kr": "Key này đã bị tác giả thu hồi: từ lần mở game sau, mod sẽ không được nạp. Nếu nhầm lẫn, hãy liên hệ tác giả."
 	}
 ]

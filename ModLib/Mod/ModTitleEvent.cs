@@ -70,6 +70,18 @@ namespace ModLib.Mod
         }
 
         /// <summary>
+        /// Title screen: the share notices of the licensed mods (LicenseHelper: the server of the mod answers in the background, after
+        /// the title screen opened).
+        /// </summary>
+        [ErrorIgnore]
+        public override void OnTimeUpdate1000ms()
+        {
+            base.OnTimeUpdate1000ms();
+            if (g.ui.HasUI(UIType.Login))
+                LicenseHelper.ShowShareNotices();
+        }
+
+        /// <summary>
         /// On the Login UI: warns about unsupported screen ratio and adds the ModLib/language/tools buttons.
         /// </summary>
         public override void OnOpenUIEnd(OpenUIEnd e)
@@ -539,8 +551,12 @@ namespace ModLib.Mod
             {
                 if (g.mod.IsLoadMod(mod.t1))
                 {
-                    //load configs
-                    ConfHelper.LoadCustomConf(mod.t1, transCode);
+                    //load configs (transCode empty: all the configs of the mod again); a licensed mod without a valid key:
+                    //its texts only (LicenseHelper, as OnInitConf)
+                    if (mod.t1 == ModMaster.ModObj.ModId || LicenseHelper.IsModUnlocked(mod.t1))
+                        ConfHelper.LoadCustomConf(mod.t1, transCode);
+                    else
+                        ConfHelper.LoadCustomConf(mod.t1, transCode, "*localText.json");
                 }
             }
             //icons of the localTexts, after every load of the mod texts (the mod's and its translations): [icon:NAME] -> <sprite name=NAME>

@@ -53,8 +53,15 @@ namespace ModLib.Mod
                     SpriteHelper.CopyImgs(mod.t1);
                     //copy new configs to debug folder
                     ConfHelper.CopyConfs(mod.t1);
-                    //load configs
-                    ConfHelper.LoadCustomConf(mod.t1);
+                    //load configs; a licensed mod without a valid key (LicenseHelper): its texts only (its key window
+                    //shows them), none of its game data (items, skills... without the code of the mod)
+                    if (mod.t1 == ModMaster.ModObj.ModId || LicenseHelper.IsModUnlocked(mod.t1))
+                        ConfHelper.LoadCustomConf(mod.t1);
+                    else
+                    {
+                        DebugHelper.WriteLine($"{mod.t1}: locked (no valid key): its localText only");
+                        ConfHelper.LoadCustomConf(mod.t1, string.Empty, "*localText.json");
+                    }
                 }
             }
 

@@ -479,5 +479,29 @@
 		"ch": "支持作者",
 		"tc": "支持作者",
 		"kr": "후원하기"
+	},
+	{
+		"id": "999990062",
+		"key": "libtxt999990062",
+		"en": "The key of {0} was used from {1} different networks in the last {2} days.\nA key is for one supporter: please do not share it. A VPN or a mobile network can count as several networks.\nAbove {3} networks the key is not renewed any more.",
+		"ch": "{0} 的密钥在最近 {2} 天内被 {1} 个不同网络使用。\n一个密钥只属于一位支持者：请不要分享。VPN 或移动网络可能被计为多个网络。\n超过 {3} 个网络后，密钥将不再自动续期。",
+		"tc": "{0} 的金鑰在最近 {2} 天內被 {1} 個不同網路使用。\n一個金鑰只屬於一位支持者：請不要分享。VPN 或行動網路可能被計為多個網路。\n超過 {3} 個網路後，金鑰將不再自動續期。",
+		"kr": "{0}의 키가 최근 {2}일 동안 {1}개의 서로 다른 네트워크에서 사용되었습니다.\n키는 후원자 한 명을 위한 것입니다: 공유하지 마세요. VPN이나 모바일 네트워크는 여러 네트워크로 계산될 수 있습니다.\n{3}개를 넘으면 키가 더 이상 갱신되지 않습니다."
+	},
+	{
+		"id": "999990063",
+		"key": "libtxt999990063",
+		"en": "The key of {0} was used from {1} different networks in the last {2} days: it is not renewed any more.\nThe mod runs until the key ends; get your next key on the claim page. Write to the author if this is a mistake.",
+		"ch": "{0} 的密钥在最近 {2} 天内被 {1} 个不同网络使用：将不再自动续期。\n模组可使用至密钥到期；请在领取页面获取下一个密钥。如有误会请联系作者。",
+		"tc": "{0} 的金鑰在最近 {2} 天內被 {1} 個不同網路使用：將不再自動續期。\n模組可使用至金鑰到期；請在領取頁面取得下一個金鑰。如有誤會請聯絡作者。",
+		"kr": "{0}의 키가 최근 {2}일 동안 {1}개의 서로 다른 네트워크에서 사용되어 더 이상 갱신되지 않습니다.\n키가 만료될 때까지 모드는 작동합니다. 다음 키는 수령 페이지에서 받으세요. 오류라면 제작자에게 연락하세요."
+	},
+	{
+		"id": "999990064",
+		"key": "libtxt999990064",
+		"en": "This key was revoked by the author: the mod is not loaded from the next start. Write to the author if this is a mistake.",
+		"ch": "此密钥已被作者撤销：从下次启动起模组将不再加载。如有误会请联系作者。",
+		"tc": "此金鑰已被作者撤銷：從下次啟動起模組將不再載入。如有誤會請聯絡作者。",
+		"kr": "이 키는 제작자에 의해 취소되었습니다: 다음 실행부터 모드가 로드되지 않습니다. 오류라면 제작자에게 연락하세요."
 	}
 ]

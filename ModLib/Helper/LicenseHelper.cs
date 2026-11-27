@@ -22,10 +22,14 @@ namespace ModLib.Helper
     ///       public const string LICENSE_SUPPORT_URL = "https://ko-fi.com/me"; //optional: where to support ("Support")
     ///       public const string LICENSE_INFO = "mymod_license_info";  //optional: localText key of the mod: what support gets a key
     ///       public const string LICENSE_QR = "kofi-qr.png";           //optional: image of ModImg of the mod (QR code of the support page)
+    ///       public const string LICENSE_RENEW_URL = "https://.../renew"; //optional: renewal of the key (RENEW_DAYS before its end)
     ///   } }
     /// Key: "&lt;payload&gt;.&lt;signature&gt;" (base64url, like a JWT without header): payload = JSON
-    /// {"m": mod id, "n": supporter name, "i": id of the payment, "t": tier, "iat": issued (unix s), "exp": expiry (unix s, 0 = never)},
+    /// {"m": mod id, "n": supporter name, "e": e-mail, "i": id of the payment, "t": tier, "iat": issued (unix s), "exp": expiry (unix s, 0 = never)},
     /// signature = RSASSA-PKCS1-v1_5 SHA-256 of the ASCII payload part. The check is offline: only the public key is in the mod.
+    /// Renewal (LICENSE_RENEW_URL): a key that ends within RENEW_DAYS (in the background) or has ended (at once, RENEW_TIMEOUT_MS
+    /// at most) is sent to the server of the mod, which answers the newest key of the same e-mail when a newer payment came (a membership
+    /// still paid); it is checked here like any key and kept. No network, no newer key: the key stays as it is.
     /// Without a valid key (file <see cref="KEY_FILE"/> of the global cache folder of the mod) ModLib loads no object of the mod
     /// (CacheHelper: no ModChild, no event, so no Harmony patch of the mod either) and the title screen gets a button to enter
     /// a key (ModTitleEvent); a new key works after a restart of the game.
@@ -36,11 +40,23 @@ namespace ModLib.Helper
     {
         /// <summary>Constants (string) of the entry class MOD_&lt;id&gt;.ModMain.</summary>
         public const string CONST_PUBLIC_KEY = "LICENSE_PUBLIC_KEY", CONST_NAME = "LICENSE_NAME", CONST_URL = "LICENSE_URL",
-            CONST_SUPPORT_URL = "LICENSE_SUPPORT_URL", CONST_INFO = "LICENSE_INFO", CONST_QR = "LICENSE_QR";
+            CONST_SUPPORT_URL = "LICENSE_SUPPORT_URL", CONST_INFO = "LICENSE_INFO", CONST_QR = "LICENSE_QR", CONST_RENEW_URL = "LICENSE_RENEW_URL";
         /// <summary>The key of a mod, in its global cache folder (outside the Workshop folder: an update keeps it).</summary>
         public const string KEY_FILE = "license.key";
+        /// <summary>
+        /// The latest time seen for a mod (unix seconds, next to its key): the clock of the machine, the Date of the answers
+        /// of the server, the issue time of the key. The end of a key is checked against the latest of them, never an earlier
+        /// time: a clock set back does not bring an ended key back.
+        /// </summary>
+        public const string TIME_FILE = "license.time";
+        /// <summary>A key is renewed when it ends within this many days (or has ended).</summary>
+        public const int RENEW_DAYS = 7;
+        /// <summary>The longest wait for the renewal of an ended key, at the start of the game.</summary>
+        public const int RENEW_TIMEOUT_MS = 5000;
 
-        public enum Status { NotRequired, Valid, Missing, Malformed, BadSignature, WrongMod, Expired, BadPublicKey }
+        public enum Renewal { None, Background, Now }
+
+        public enum Status { NotRequired, Valid, Missing, Malformed, BadSignature, WrongMod, Expired, BadPublicKey, Revoked }
 
         /// <summary>What the check of a key found.</summary>
         public class Result
@@ -49,6 +65,8 @@ namespace ModLib.Helper
             public Status Status { get; set; }
             /// <summary>The supporter (payload "n").</summary>
             public string Name { get; set; }
+            /// <summary>The e-mail of the supporter (payload "e"; null in the keys made before it).</summary>
+            public string Email { get; set; }
             /// <summary>Id of the payment (payload "i").</summary>
             public string PaymentId { get; set; }
             public string Tier { get; set; }
@@ -73,6 +91,8 @@ namespace ModLib.Helper
             public string InfoKey { get; set; }
             /// <summary>Image of ModImg of the mod: QR code of the support page.</summary>
             public string QrImage { get; set; }
+            /// <summary>Renewal of the key (server of the mod); null: none.</summary>
+            public string RenewUrl { get; set; }
             public Result Result { get; set; }
         }
 
@@ -81,6 +101,9 @@ namespace ModLib.Helper
 
         /// <summary>The licensed mods found (valid or not).</summary>
         public static IReadOnlyCollection<Info> Mods => _mods.Values;
+
+        /// <summary>A licensed mod (its key: supporter, expiry); null: not licensed, or not read yet.</summary>
+        public static Info Get(string modId) => modId != null && _mods.TryGetValue(modId, out var i) ? i : null;
 
         /// <summary>The licensed mods without a valid key (their objects are not loaded).</summary>
         public static List<Info> LockedMods() => _mods.Values.Where(x => !x.Result.IsUnlocked).ToList();
@@ -193,6 +216,7 @@ namespace ModLib.Helper
             if (!VerifyRsaSha256(Encoding.ASCII.GetBytes(parts[0]), sig, modulus)) { rs.Status = Status.BadSignature; return rs; }
 
             rs.Name = (string)payload["n"];
+            rs.Email = (string)payload["e"];
             rs.PaymentId = (string)payload["i"];
             rs.Tier = (string)payload["t"];
             rs.Issued = FromUnix((long?)payload["iat"] ?? 0);
@@ -202,9 +226,105 @@ namespace ModLib.Helper
             return rs;
         }
 
+        /// <summary>The time the end of a key is checked against: the latest of the clock, the latest time seen, the issue time of the key.</summary>
+        public static DateTime EffectiveNow(DateTime utcNow, DateTime latestSeen, DateTime? issued)
+        {
+            var t = utcNow > latestSeen ? utcNow : latestSeen;
+            return issued.HasValue && issued.Value > t ? issued.Value : t;
+        }
+
+        /// <summary>
+        /// When a key is renewed: an ended key at once (the mod may then load), a key ending within RENEW_DAYS in the
+        /// background (the new one counts from the next start); never without an e-mail (the server of the mod finds the payments by
+        /// it) or for a key without end.
+        /// </summary>
+        public static Renewal NeedsRenewal(Result r, DateTime utcNow)
+        {
+            if (r == null || string.IsNullOrEmpty(r.Email) || !r.Expires.HasValue) return Renewal.None;
+            if (r.Status == Status.Expired) return Renewal.Now;
+            if (r.Status == Status.Valid && r.Expires.Value - utcNow <= TimeSpan.FromDays(RENEW_DAYS)) return Renewal.Background;
+            return Renewal.None;
+        }
+
+        /// <summary>
+        /// The key answered by the renewal is kept only when it is valid for the mod and ends later than the current one
+        /// (a key of another mod, an older one, a forged one: refused).
+        /// </summary>
+        public static bool IsBetterKey(Result current, Result renewed)
+        {
+            if (renewed == null || renewed.Status != Status.Valid) return false;
+            if (current == null || (current.Status != Status.Valid && current.Status != Status.Expired)) return true;
+            if (!current.Expires.HasValue) return false; //the current key never ends
+            return !renewed.Expires.HasValue || renewed.Expires.Value > current.Expires.Value;
+        }
+
         #endregion
 
         #region game
+
+        /// <summary>The ModChild class of a loaded mod (the class that may hold the LICENSE_* constants); null: none.</summary>
+        public static Type EntryType(string modId)
+        {
+            var ass = AssemblyHelper.GetModRootAssembly(modId);
+            return ass?.GetLoadableTypes().FirstOrDefault(x => x.IsClass && x.IsSubclassOf(typeof(ModLib.Mod.ModChild)));
+        }
+
+        /// <summary>
+        /// A mod may run (IsUnlocked of its ModChild class); a mod without ModChild (not made with ModLib) or that cannot be
+        /// read runs. For the parts of ModLib that load something of every mod (configs, skills).
+        /// </summary>
+        public static bool IsModUnlocked(string modId)
+        {
+            try { return IsUnlocked(modId, EntryType(modId)); }
+            catch (Exception ex) { DebugHelper.WriteLine($"License: {modId} not read: {ex.Message}"); return true; }
+        }
+
+        public static string TimeFilePath(string modId) => Path.Combine(CacheHelper.GetGlobalCacheFolderName(modId), TIME_FILE);
+
+        /// <summary>The latest time seen for a mod (TIME_FILE); MinValue: none.</summary>
+        public static DateTime LatestSeen(string modId)
+        {
+            try
+            {
+                var f = TimeFilePath(modId);
+                if (File.Exists(f) && long.TryParse(File.ReadAllText(f).Trim(), out var sec) && sec > 0)
+                    return new DateTime(1970, 1, 1, 0, 0, 0, DateTimeKind.Utc).AddSeconds(sec);
+            }
+            catch (Exception ex) { DebugHelper.WriteLine($"License: time of {modId} not read: {ex.Message}"); }
+            return DateTime.MinValue;
+        }
+
+        private static readonly object _timeLock = new object();
+
+        /// <summary>Keeps a time seen for a mod when it is later than the kept one (never goes back).</summary>
+        public static void NoteTime(string modId, DateTime utc)
+        {
+            try
+            {
+                lock (_timeLock)
+                {
+                    if (utc <= LatestSeen(modId)) return;
+                    var sec = (long)(utc - new DateTime(1970, 1, 1, 0, 0, 0, DateTimeKind.Utc)).TotalSeconds;
+                    File.WriteAllText(TimeFilePath(modId), sec.ToString());
+                }
+            }
+            catch (Exception ex) { try { DebugHelper.WriteLine($"License: time of {modId} not kept: {ex.Message}"); } catch { } }
+        }
+
+        /// <summary>The time the keys of a mod are checked against now (EffectiveNow with the latest time seen).</summary>
+        public static DateTime Now(string modId) => EffectiveNow(DateTime.UtcNow, LatestSeen(modId), null);
+
+        //the mods whose key was revoked in this game start (notice: ShowShareNotices)
+        private static readonly HashSet<string> _revoked = new HashSet<string>(StringComparer.OrdinalIgnoreCase);
+
+        /// <summary>A key taken back by the author (the server answered revoked): removed; the mod is locked from the next start.</summary>
+        public static void Revoke(Info info)
+        {
+            try { var f = KeyFilePath(info.ModId); if (File.Exists(f)) File.Delete(f); }
+            catch (Exception ex) { try { DebugHelper.WriteLine($"License: key of {info.ModId} not removed: {ex.Message}"); } catch { } }
+            info.Result = new Result { ModId = info.ModId, Status = Status.Revoked, Name = info.Result?.Name, Email = info.Result?.Email };
+            lock (_share) _revoked.Add(info.ModId);
+        }
 
         /// <summary>Where the key of a mod is kept.</summary>
         public static string KeyFilePath(string modId) => Path.Combine(CacheHelper.GetGlobalCacheFolderName(modId), KEY_FILE);
@@ -236,16 +356,156 @@ namespace ModLib.Helper
                 SupportUrl = ReadStringConst(entry, CONST_SUPPORT_URL),
                 InfoKey = ReadStringConst(entry, CONST_INFO),
                 QrImage = ReadStringConst(entry, CONST_QR),
+                RenewUrl = ReadStringConst(entry, CONST_RENEW_URL),
             };
-            try { info.Result = Verify(ReadKey(modId), modId, publicKey, DateTime.UtcNow); }
+            string key = null;
+            try
+            {
+                key = ReadKey(modId);
+                var now = Now(modId);
+                info.Result = Verify(key, modId, publicKey, now);
+                //a clock earlier than the issue of the key: checked at its issue time (EffectiveNow)
+                if (info.Result.Issued.HasValue && info.Result.Issued.Value > now)
+                    info.Result = Verify(key, modId, publicKey, EffectiveNow(now, DateTime.MinValue, info.Result.Issued));
+                NoteTime(modId, EffectiveNow(DateTime.UtcNow, DateTime.MinValue, info.Result.Issued));
+            }
             catch (Exception ex)
             {
                 DebugHelper.WriteLine($"License: {modId} not checked: {ex.Message}");
                 info.Result = new Result { ModId = modId, Status = Status.Malformed };
             }
             _mods[modId] = info;
-            DebugHelper.WriteLine($"License: {info.Result}" + (info.Result.IsUnlocked ? string.Empty : " - the mod is not loaded"));
+            DebugHelper.WriteLine($"License: {info.Result}");
+
+            //check by the server of the mod (share detection) at each start, in the background; renewal: an ended key at once (the mod
+            //may load), a key ending soon in the background (next start)
+            if (!string.IsNullOrEmpty(info.RenewUrl) && (info.Result.Status == Status.Valid || info.Result.Status == Status.Expired))
+            {
+                var renewal = NeedsRenewal(info.Result, Now(modId));
+                if (renewal == Renewal.Now)
+                {
+                    try { RenewAsync(info, key, true).Wait(RENEW_TIMEOUT_MS); }
+                    catch (Exception ex) { DebugHelper.WriteLine($"License: {modId} renewal failed: {ex.GetBaseException().Message}"); }
+                }
+                else
+                    System.Threading.Tasks.Task.Run(() => RenewAsync(info, key, renewal == Renewal.Background));
+            }
+
+            if (!info.Result.IsUnlocked)
+                DebugHelper.WriteLine($"License: {modId} - the mod is not loaded");
             return info.Result.IsUnlocked;
+        }
+
+        /// <summary>Renewals done (tests, logs): mod id -> what the last one did.</summary>
+        public static Dictionary<string, string> LastRenewal { get; } = new Dictionary<string, string>(StringComparer.OrdinalIgnoreCase);
+
+        /// <summary>
+        /// Share detection answered by the server of the mod for a mod (networks the key was used from over its window): above its
+        /// warning threshold the player is told (ShowShareNotices), above its block threshold the key is not renewed.
+        /// </summary>
+        public class ShareInfo
+        {
+            public int Ips { get; set; }
+            public bool Warn { get; set; }
+            public bool Blocked { get; set; }
+            /// <summary>Window (days) and block threshold (networks) of the server, for the texts (30 / 10 when not sent).</summary>
+            public int Days { get; set; } = 30;
+            public int BlockAt { get; set; } = 10;
+        }
+
+        //mod id -> the last answer of the server of the mod; the mods whose notice is to show (main thread: ShowShareNotices)
+        private static readonly Dictionary<string, ShareInfo> _share = new Dictionary<string, ShareInfo>(StringComparer.OrdinalIgnoreCase);
+        private static readonly HashSet<string> _noticeShown = new HashSet<string>(StringComparer.OrdinalIgnoreCase);
+
+        /// <summary>The share detection of a mod (null: no answer yet).</summary>
+        public static ShareInfo GetShare(string modId) { lock (_share) return modId != null && _share.TryGetValue(modId, out var s) ? s : null; }
+
+        /// <summary>Reads the share detection of an answer of the server of the mod ({ips, warn, blocked}); null without it.</summary>
+        public static ShareInfo ParseShare(JObject answer) =>
+            answer?["ips"] == null ? null : new ShareInfo
+            {
+                Ips = (int?)answer["ips"] ?? 0, Warn = (bool?)answer["warn"] ?? false, Blocked = (bool?)answer["blocked"] ?? false,
+                Days = (int?)answer["days"] ?? 30, BlockAt = (int?)answer["blockAt"] ?? 10,
+            };
+
+        /// <summary>
+        /// The check of the key by the server of the mod (LICENSE_RENEW_URL, POST {"key": the current key, "renew": renew}): its share
+        /// detection is kept (GetShare); with <paramref name="renew"/>, a newer key of the same supporter is kept (KEY_FILE,
+        /// Info.Result) when it is valid for the mod and ends later. Never throws; true when a key was kept.
+        /// </summary>
+        public static async System.Threading.Tasks.Task<bool> RenewAsync(Info info, string currentKey, bool renew = true)
+        {
+            string what;
+            var rs = false;
+            try
+            {
+                System.Net.ServicePointManager.SecurityProtocol |= System.Net.SecurityProtocolType.Tls12;
+                using (var client = new System.Net.Http.HttpClient { Timeout = TimeSpan.FromMilliseconds(RENEW_TIMEOUT_MS * 2) })
+                {
+                    var body = new JObject { ["key"] = CleanKey(currentKey), ["renew"] = renew }.ToString(Newtonsoft.Json.Formatting.None);
+                    var res = await client.PostAsync(info.RenewUrl, new System.Net.Http.StringContent(body, Encoding.UTF8, "application/json")).ConfigureAwait(false);
+                    var text = await res.Content.ReadAsStringAsync().ConfigureAwait(false);
+                    //the clock of the server (Cloudflare), not the one of the machine
+                    if (res.Headers.Date.HasValue) NoteTime(info.ModId, res.Headers.Date.Value.UtcDateTime);
+                    if (!res.IsSuccessStatusCode)
+                        what = $"{(int)res.StatusCode} {text}";
+                    else
+                    {
+                        var answer = JObject.Parse(text);
+                        var share = ParseShare(answer);
+                        if (share != null) lock (_share) _share[info.ModId] = share;
+                        var newKey = (string)answer["key"];
+                        var renewed = string.IsNullOrEmpty(newKey) ? null : Verify(newKey, info.ModId, info.PublicKey, Now(info.ModId));
+                        if ((bool?)answer["revoked"] == true)
+                        {
+                            Revoke(info);
+                            what = "revoked by the author: key removed";
+                        }
+                        else if (IsBetterKey(info.Result, renewed))
+                        {
+                            WriteKey(info.ModId, newKey);
+                            info.Result = renewed;
+                            rs = true;
+                            what = $"renewed: {renewed}";
+                        }
+                        else
+                            what = !renew ? "checked" : renewed == null ? $"no newer key ({(string)answer["reason"] ?? "no new payment"})" : $"answer not kept: {renewed}";
+                        if (share != null) what += $", networks {share.Ips}{(share.Blocked ? " (blocked)" : share.Warn ? " (warning)" : string.Empty)}";
+                    }
+                }
+            }
+            catch (Exception ex) { what = $"failed: {ex.GetBaseException().Message}"; }
+            lock (LastRenewal) LastRenewal[info.ModId] = what;
+            try { DebugHelper.WriteLine($"License: {info.ModId} check: {what}"); } catch { /*a log from a worker thread*/ }
+            return rs;
+        }
+
+        /// <summary>
+        /// The share notices to show (main thread; ModTitleEvent, on the title screen): once per mod and game start, a small
+        /// message when the server of the mod found the key used from too many networks: a warning (VPN, mobile network), or the key
+        /// no longer renewed. Nothing is blocked: the mod runs on.
+        /// </summary>
+        public static void ShowShareNotices()
+        {
+            List<string> revoked;
+            lock (_share) revoked = _revoked.Where(x => !_noticeShown.Contains(x)).ToList();
+            foreach (var modId in revoked)
+            {
+                _noticeShown.Add(modId);
+                var rname = Get(modId)?.Name ?? modId;
+                UICustom2.WhenFree(() => g.ui.OpenUISafe<UITextInfo>(UIType.TextInfo).InitData(string.Format(GameTool.LS("libtxt999990045"), rname), string.Format(GameTool.LS("libtxt999990064"), rname)));
+                DebugHelper.WriteLine($"License: {modId} revoked notice");
+            }
+            List<KeyValuePair<string, ShareInfo>> todo;
+            lock (_share) todo = _share.Where(x => x.Value.Warn && !_noticeShown.Contains(x.Key)).ToList();
+            foreach (var x in todo)
+            {
+                _noticeShown.Add(x.Key);
+                var name = Get(x.Key)?.Name ?? x.Key;
+                var text = string.Format(GameTool.LS(x.Value.Blocked ? "libtxt999990063" : "libtxt999990062"), name, x.Value.Ips, x.Value.Days, x.Value.BlockAt);
+                UICustom2.WhenFree(() => g.ui.OpenUISafe<UITextInfo>(UIType.TextInfo).InitData(string.Format(GameTool.LS("libtxt999990045"), name), text));
+                DebugHelper.WriteLine($"License: {x.Key} share notice: {x.Value.Ips} networks{(x.Value.Blocked ? ", not renewed" : string.Empty)}");
+            }
         }
 
         /// <summary>The localText key of the message of a status.</summary>
@@ -258,6 +518,7 @@ namespace ModLib.Helper
                 case Status.Expired: return "libtxt999990051";
                 case Status.WrongMod: return "libtxt999990052";
                 case Status.BadPublicKey: return "libtxt999990053";
+                case Status.Revoked: return "libtxt999990064";
                 default: return "libtxt999990054";
             }
         }
@@ -373,7 +634,7 @@ namespace ModLib.Helper
         /// </summary>
         public static Result SubmitKey(Info info, string key)
         {
-            var r = Verify(key, info.ModId, info.PublicKey, DateTime.UtcNow);
+            var r = Verify(key, info.ModId, info.PublicKey, Now(info.ModId));
             DebugHelper.WriteLine($"License: key entered: {r}");
             if (r.Status == Status.Valid)
                 WriteKey(info.ModId, key);

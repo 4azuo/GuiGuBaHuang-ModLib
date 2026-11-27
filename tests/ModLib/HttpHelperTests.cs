@@ -38,5 +38,19 @@ namespace UnitTests.ModLib
             Check.Eq(false, text.Contains("\n\n\n"), "at most one empty line");
             Check.Eq(string.Empty, HttpHelper.WorkshopRichText(null), "null");
         }
+
+        [TestMethod, Description("HttpHelper.BBCodeRichText: a Workshop description in BBCode -> the same rich text as WorkshopRichText")]
+        public void BBCodeRichText_ConvertsBBCode()
+        {
+            var bb = "[h1]Mod — v1.0[/h1]\r\n[b]Bold[/b] and [i]italic[/i], [url=https://ko-fi.com/x]Ko-fi[/url], [strike]old[/strike]\n\n" +
+                     "[h2]⚠ Requirements[/h2]\n[list]\n[*][url=https://a]ModLib[/url] v2.3\n[*][b]Move ModLib[/b] up\n[/list]\n\n\n\n[h3]End[/h3]\n[img]https://x/y.png[/img]last";
+            var text = HttpHelper.BBCodeRichText(bb);
+            Check.Info(text);
+            Check.Eq(true, text.StartsWith("<size=140%><b>Mod — v1.0</b></size>\n<b>Bold</b> and <i>italic</i>, Ko-fi, <s>old</s>"), "h1, b, i, link text, strike");
+            Check.Eq(true, text.Contains("<size=120%><b>Requirements</b></size>\n  • ModLib v2.3\n  • <b>Move ModLib</b> up\n"), "h2 without the missing symbol, list items");
+            Check.Eq(true, text.EndsWith("<b>End</b>\nlast"), "h3, image dropped");
+            Check.Eq(false, text.Contains("[") || text.Contains("\r") || text.Contains("\n\n\n"), "no tag, no CR, at most one empty line");
+            Check.Eq(string.Empty, HttpHelper.BBCodeRichText(null), "null");
+        }
     }
 }

@@ -7,8 +7,9 @@ using System.Text;
 namespace UnitTests.ModLib
 {
     /// <summary>
-    /// LicenseHelper: the keys of the licensed mods. The keys below were made by tools/LicenseWorker (src/license.mjs, the
-    /// code of the Cloudflare Worker) with a key pair made for these tests only: the C# check reads what the Worker signs.
+    /// LicenseHelper: the keys of the licensed mods. The keys below were signed with Web Crypto (RSASSA-PKCS1-v1_5, SHA-256,
+    /// as the Cloudflare Worker of Dao of Creation signs them) with a key pair made for these tests only: the C# check reads
+    /// what such a server signs.
     /// </summary>
     [TestClass]
     public class LicenseHelperTests
@@ -23,13 +24,90 @@ namespace UnitTests.ModLib
         //mod testmd, "Month", tier Gold, 30 days from 2030-01-01
         private const string KEY_2030 = "eyJtIjoidGVzdG1kIiwibiI6Ik1vbnRoIiwiaSI6ImMzZDY4MTExLTYzNGItNGVmOS05NDlmLTA1YjcyYWNkMWIzZiIsInQiOiJHb2xkIiwiaWF0IjoxODkzNDU2MDAwLCJleHAiOjE4OTYwNDgwMDB9.E7VxKbkW7yOZdfnb8SqD_PfgNW9Fe3vsFRmpFxED2LDHmhMi78lgbYIuDP7fVr2BWxV3bpW70-tkdY3G-nxXRyYpOEaFTTuHff59WKaznW0F9Ges6ic5u9nFJ8aXsBNNgOD_KS0r5LdjlK1u2LF-VwzMZ0t3RKYTgDdSkqJIu6IzZoN_m83ydHUUyBS-70qmA8O3anK0QOT1va7qIByjHZ8uUpKRFjBJhPHuRdeT-c0ZEJ7jKEDemGVyAwuMIyE03w80IDg_2ocjUZK7PPiM-S3Mq60K_h6gA1jBKBN0MnInZN23si1qSzP9sBybpBY5NHiIWKNfuyMEii4jZwhg5g";
 
+        //mod testmd, "Ann", e-mail ann@example.com, tier "Tale of Immortal", 40 days from 2030-01-01
+        private const string KEY_EMAIL = "eyJtIjoidGVzdG1kIiwibiI6IkFubiIsImUiOiJhbm5AZXhhbXBsZS5jb20iLCJpIjoiM2RlZTgxNmItZTJjYS00ZjdmLWIxY2EtNTQ1YmRkYjA0OWNhIiwidCI6IlRhbGUgb2YgSW1tb3J0YWwiLCJpYXQiOjE4OTM0NTYwMDAsImV4cCI6MTg5NjkxMjAwMH0.F30LjFO9BURX5-zCAqQEL-RFD3nxlEjeLK88H9kJ7XwiNZen8grgwJOJgVtoWq1ioob-S8s71TMQWMlZoco-TEjy-YasgFPXlIAFUOiDIlrG0UIwj5ZkpgNNwk62gsI2K8PY9CU4OUvQzAPDMDihOTPo77vcMMwdP_G_jz12HuELxG9QYoThIN9w3uiJU2AJVZJtMuY-Naz-Awkx81_NxCGULkM5xrtdhhH1eoMAs4qxYiiv-LlpF_2vGKKBQfrWxuGn3lP5gUIkjA1zmPr9y2osQneGN_Eg3MJPXyDM4EmwL6-w5-BYMIlSmKfAGeomha1qPzLPV4s68xGac87fYQ";
+
         private static readonly DateTime NOW = new DateTime(2030, 1, 10, 0, 0, 0, DateTimeKind.Utc);
+
+        [TestMethod, Description("Verify: the e-mail of a key (lower case), none in an older key")]
+        public void Verify_Email()
+        {
+            var r = LicenseHelper.Verify(KEY_EMAIL, "testmd", PUB, NOW);
+            Check.Eq(LicenseHelper.Status.Valid, r.Status, "status");
+            Check.Eq("ann@example.com", r.Email, "e-mail");
+            Check.Eq("Tale of Immortal", r.Tier, "tier");
+            Check.Eq(new DateTime(2030, 2, 10, 0, 0, 0, DateTimeKind.Utc), r.Expires.Value, "40 days");
+            Check.Eq(null, LicenseHelper.Verify(KEY_FOREVER, "testmd", PUB, NOW).Email, "no e-mail");
+        }
+
+        [TestMethod, Description("NeedsRenewal: an ended key at once, within 7 days in the background, never without e-mail or end")]
+        public void NeedsRenewal_Days()
+        {
+            var r = LicenseHelper.Verify(KEY_EMAIL, "testmd", PUB, NOW); //ends 2030-02-10
+            Check.Eq(LicenseHelper.Renewal.None, LicenseHelper.NeedsRenewal(r, new DateTime(2030, 2, 2, 23, 0, 0, DateTimeKind.Utc)), "8 days left");
+            Check.Eq(LicenseHelper.Renewal.Background, LicenseHelper.NeedsRenewal(r, new DateTime(2030, 2, 3, 0, 0, 0, DateTimeKind.Utc)), "7 days left");
+            Check.Eq(LicenseHelper.Renewal.Background, LicenseHelper.NeedsRenewal(r, new DateTime(2030, 2, 9, 0, 0, 0, DateTimeKind.Utc)), "1 day left");
+            var ended = LicenseHelper.Verify(KEY_EMAIL, "testmd", PUB, new DateTime(2030, 3, 1, 0, 0, 0, DateTimeKind.Utc));
+            Check.Eq(LicenseHelper.Renewal.Now, LicenseHelper.NeedsRenewal(ended, new DateTime(2030, 3, 1, 0, 0, 0, DateTimeKind.Utc)), "ended");
+            Check.Eq(LicenseHelper.Renewal.None, LicenseHelper.NeedsRenewal(LicenseHelper.Verify(KEY_EXPIRED, "testmd", PUB, NOW), NOW), "ended, no e-mail");
+            Check.Eq(LicenseHelper.Renewal.None, LicenseHelper.NeedsRenewal(LicenseHelper.Verify(KEY_FOREVER, "testmd", PUB, NOW), NOW), "never ends");
+            Check.Eq(LicenseHelper.Renewal.None, LicenseHelper.NeedsRenewal(LicenseHelper.Verify(null, "testmd", PUB, NOW), NOW), "no key");
+            Check.Eq(LicenseHelper.Renewal.None, LicenseHelper.NeedsRenewal(null, NOW), "null");
+        }
+
+        [TestMethod, Description("EffectiveNow: the latest of the clock, the latest time seen, the issue time: a clock set back changes nothing")]
+        public void EffectiveNow_NeverGoesBack()
+        {
+            var clock = new DateTime(2030, 1, 10, 0, 0, 0, DateTimeKind.Utc);
+            var seen = new DateTime(2030, 3, 1, 0, 0, 0, DateTimeKind.Utc);
+            Check.Eq(clock, LicenseHelper.EffectiveNow(clock, DateTime.MinValue, null), "nothing seen: the clock");
+            Check.Eq(seen, LicenseHelper.EffectiveNow(clock, seen, null), "clock set back: the latest time seen");
+            Check.Eq(clock, LicenseHelper.EffectiveNow(clock, seen.AddYears(-1), null), "clock ahead: the clock");
+            Check.Eq(new DateTime(2030, 1, 1, 0, 0, 0, DateTimeKind.Utc), LicenseHelper.EffectiveNow(new DateTime(2020, 1, 1, 0, 0, 0, DateTimeKind.Utc), DateTime.MinValue, new DateTime(2030, 1, 1, 0, 0, 0, DateTimeKind.Utc)), "clock before the issue of the key: its issue time");
+            // the 40-day key of 2030-01-01, the clock set back to 2030-01-10 after 2030-03-01 was seen: ended
+            Check.Eq(LicenseHelper.Status.Expired, LicenseHelper.Verify(KEY_EMAIL, "testmd", PUB, LicenseHelper.EffectiveNow(clock, seen, null)).Status, "ended key stays ended");
+        }
+
+        [TestMethod, Description("ParseShare: the share detection of an answer of the renewal server")]
+        public void ParseShare_Answer()
+        {
+            var s = LicenseHelper.ParseShare(Newtonsoft.Json.Linq.JObject.Parse("{\"key\":null,\"ips\":7,\"warn\":true,\"blocked\":false}"));
+            Check.Eq(7, s.Ips, "networks");
+            Check.Eq(true, s.Warn, "warning");
+            Check.Eq(false, s.Blocked, "not blocked");
+            Check.Eq(30, s.Days, "no window sent: 30 days");
+            var w = LicenseHelper.ParseShare(Newtonsoft.Json.Linq.JObject.Parse("{\"ips\":3,\"warn\":false,\"blocked\":false,\"days\":14,\"blockAt\":8}"));
+            Check.Eq(14, w.Days, "window of the server");
+            Check.Eq(8, w.BlockAt, "threshold of the server");
+            var b = LicenseHelper.ParseShare(Newtonsoft.Json.Linq.JObject.Parse("{\"key\":null,\"ips\":11,\"warn\":true,\"blocked\":true,\"reason\":\"x\"}"));
+            Check.Eq(true, b.Blocked, "blocked");
+            Check.Eq(null, LicenseHelper.ParseShare(Newtonsoft.Json.Linq.JObject.Parse("{\"key\":null}")), "an older Worker: none");
+            Check.Eq(null, LicenseHelper.ParseShare(null), "no answer");
+        }
+
+        [TestMethod, Description("IsBetterKey: a renewed key is kept only when valid for the mod and ending later")]
+        public void IsBetterKey_Rules()
+        {
+            var feb = LicenseHelper.Verify(KEY_EMAIL, "testmd", PUB, NOW);              //ends 2030-02-10
+            var jan = LicenseHelper.Verify(KEY_2030, "testmd", PUB, NOW);               //ends 2030-01-31
+            var forever = LicenseHelper.Verify(KEY_FOREVER, "testmd", PUB, NOW);
+            Check.Eq(true, LicenseHelper.IsBetterKey(jan, feb), "later end");
+            Check.Eq(false, LicenseHelper.IsBetterKey(feb, jan), "earlier end");
+            Check.Eq(false, LicenseHelper.IsBetterKey(feb, feb), "same end");
+            Check.Eq(true, LicenseHelper.IsBetterKey(feb, forever), "never ends");
+            Check.Eq(false, LicenseHelper.IsBetterKey(forever, feb), "the current one never ends");
+            Check.Eq(true, LicenseHelper.IsBetterKey(LicenseHelper.Verify(KEY_EXPIRED, "testmd", PUB, NOW), feb), "after an ended key");
+            Check.Eq(true, LicenseHelper.IsBetterKey(LicenseHelper.Verify(null, "testmd", PUB, NOW), feb), "after no key");
+            Check.Eq(false, LicenseHelper.IsBetterKey(jan, LicenseHelper.Verify(KEY_OTHER_MOD, "testmd", PUB, NOW)), "another mod");
+            Check.Eq(false, LicenseHelper.IsBetterKey(jan, LicenseHelper.Verify(KEY_EMAIL, "testmd", PUB, new DateTime(2031, 1, 1, 0, 0, 0, DateTimeKind.Utc))), "ended answer");
+            Check.Eq(false, LicenseHelper.IsBetterKey(jan, null), "no answer");
+        }
 
         private class LicensedEntry { public const string LICENSE_PUBLIC_KEY = PUB; public const string LICENSE_NAME = "Test Mod"; }
         private class FreeEntry { }
         private class WrongTypeEntry { public const int LICENSE_PUBLIC_KEY = 1; }
 
-        [TestMethod, Description("Verify: a key of the Worker that never expires is valid, with its supporter")]
+        [TestMethod, Description("Verify: a key signed with Web Crypto that never expires is valid, with its supporter")]
         public void Verify_WorkerKey_Valid()
         {
             var r = LicenseHelper.Verify(KEY_FOREVER, "testmd", PUB, NOW);

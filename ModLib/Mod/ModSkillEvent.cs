@@ -49,12 +49,10 @@ namespace ModLib.Mod
             {
                 if (g.mod.IsLoadMod(mod.t1) && mod.t1 != ModMaster.ModObj.ModId)
                 {
-                    var ass = AssemblyHelper.GetModRootAssembly(mod.t1);
                     //licensed mod without a valid key: its skills are not loaded either (LicenseHelper)
-                    var child = ass?.GetLoadableTypes().FirstOrDefault(x => x.IsClass && x.IsSubclassOf(typeof(ModChild)));
-                    if (child != null && !LicenseHelper.IsUnlocked(mod.t1, child))
+                    if (!LicenseHelper.IsModUnlocked(mod.t1))
                         continue;
-                    rs.AddRange(GetSkillTypes(mod.t1, ass));
+                    rs.AddRange(GetSkillTypes(mod.t1, AssemblyHelper.GetModRootAssembly(mod.t1)));
                 }
             }
             return rs;

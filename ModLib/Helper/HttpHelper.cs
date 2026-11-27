@@ -108,6 +108,39 @@ namespace ModLib.Helper
             System.Tuple.Create(new Regex(@"<(?!/?(?:b|i|u|s)>|size=|/size>)[^>]+>", RegexOptions.IgnoreCase), string.Empty), // other tags (div, ul, a, img, span...); the rich text tags above kept
         };
 
+        private static readonly System.Tuple<Regex, string>[] BBCODE_TO_RICH =
+        {
+            System.Tuple.Create(new Regex(@"\r\n?"), "\n"),
+            System.Tuple.Create(new Regex(@"\[img\].*?\[/img\]", RegexOptions.IgnoreCase | RegexOptions.Singleline), string.Empty),
+            System.Tuple.Create(new Regex(@"\[h1\](.*?)\[/h1\]\n?", RegexOptions.IgnoreCase), "<size=140%><b>$1</b></size>\n"),
+            System.Tuple.Create(new Regex(@"\[h2\](.*?)\[/h2\]\n?", RegexOptions.IgnoreCase), "\n<size=120%><b>$1</b></size>\n"),
+            System.Tuple.Create(new Regex(@"\[h3\](.*?)\[/h3\]\n?", RegexOptions.IgnoreCase), "\n<b>$1</b>\n"),
+            System.Tuple.Create(new Regex(@"\[url=[^\]]*\](.*?)\[/url\]", RegexOptions.IgnoreCase), "$1"),
+            System.Tuple.Create(new Regex(@"\[url\](.*?)\[/url\]", RegexOptions.IgnoreCase), "$1"),
+            System.Tuple.Create(new Regex(@"\[(/?)(?:strike|s)\]", RegexOptions.IgnoreCase), "<$1s>"),
+            System.Tuple.Create(new Regex(@"\[(/?)(b|i|u)\]", RegexOptions.IgnoreCase), "<$1$2>"),
+            System.Tuple.Create(new Regex(@"\[\*\]\s*", RegexOptions.IgnoreCase), "  • "),
+            System.Tuple.Create(new Regex(@"\[/?(?:list|olist|quote|code|noparse|spoiler|hr)\]\n?", RegexOptions.IgnoreCase), string.Empty),
+        };
+
+        /// <summary>
+        /// Steam BBCode (a Workshop description kept in the mod: ModAssets) -> TextMeshPro rich text, as WorkshopRichText
+        /// shows a downloaded one: headings bold and bigger, list items "•", b/i/u/s kept, links reduced to their text,
+        /// images and the other tags dropped.
+        /// </summary>
+        public static string BBCodeRichText(string bbcode)
+        {
+            if (string.IsNullOrEmpty(bbcode)) return string.Empty;
+            var s = bbcode;
+            foreach (var r in BBCODE_TO_RICH)
+                s = r.Item1.Replace(s, r.Item2);
+            // symbols the game's font does not have (shown as a box)
+            s = Regex.Replace(s, @"[⚠️]\s*", string.Empty);
+            s = Regex.Replace(s, @"[ \t]+\n", "\n");
+            s = Regex.Replace(s, @"\n{3,}", "\n\n");
+            return s.Trim();
+        }
+
         /// <summary>
         /// Workshop description HTML (Steam's rendering of the BBCode) -> TextMeshPro rich text: headings bold and
         /// bigger, list items "•", line breaks, b/i/u/s kept, links reduced to their text, entities decoded.

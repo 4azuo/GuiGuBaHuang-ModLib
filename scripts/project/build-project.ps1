@@ -1,7 +1,7 @@
 ﻿# Shared by the mods using ModLib (GuiGuBaHuang-ModLib/scripts/project): run through the wrapper of the same name in
 # <ProjectId>/scripts (-ProjectScripts = that folder: settings.json of the project, auto-built-errors.log).
 # Build Project - Release
-# -ResourcesOnly: no dotnet build, only the copy of ModConf/ModImg/SteamImg to debug/ (the CI, which cannot build:
+# -ResourcesOnly: no dotnet build, only the copy of ModConf/ModImg/ModAssets/SteamImg to debug/ (the CI, which cannot build:
 # debug/<mod>/ModCode/dll is committed, the copied folders are git-ignored)
 param([Parameter(Mandatory = $true)][string]$ProjectScripts, [switch]$ResourcesOnly)
 
@@ -69,6 +69,17 @@ if ($LASTEXITCODE -eq 0) {
         Write-Host "  ✓ Copied ModImg" -ForegroundColor Green
     }
     
+    # Copy ModAssets folder (files the mod reads itself: g.mod.GetModPathRoot(id)\ModAssets, e.g. a description)
+    $modAssetsSource = Join-Path $projectPath "ModAssets"
+    $modAssetsDest = Join-Path $debugPath "ModAssets"
+    if (Test-Path $modAssetsSource) {
+        if (Test-Path $modAssetsDest) {
+            Remove-Item -Path $modAssetsDest -Recurse -Force
+        }
+        Copy-Item -Path $modAssetsSource -Destination $modAssetsDest -Recurse -Force
+        Write-Host "  Copied ModAssets" -ForegroundColor Green
+    }
+
     # Copy SteamImg folder
     $steamImgSource = Join-Path $projectPath "SteamImg"
     $steamImgDest = Join-Path $debugPath "SteamImg"
