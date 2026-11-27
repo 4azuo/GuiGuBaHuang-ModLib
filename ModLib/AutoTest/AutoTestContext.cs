@@ -316,6 +316,23 @@ namespace ModLib.AutoTest
         /// </summary>
         public void Snap(string label) => AddScreenshot(label, CurrentStepNo, "extra");
 
+        /// <summary>
+        /// Records a video clip of the game window (~30 frames a second for <paramref name="ms"/> ms) into
+        /// &lt;run&gt;\clips\&lt;scenario&gt;_&lt;name&gt;\ (f###.jpg + frames.txt); collect-promo.ps1 encodes the clips
+        /// marked in scenarios.json ("promo" entries with "clip": true) to mp4. Returns the frame folder (null outside
+        /// a run): "started" appears in it when the capture begins, frames.txt when it is done.
+        /// </summary>
+        public string Clip(string name, int ms, int intervalMs = 33)
+        {
+            if (AutoTestRunner.OutDir == null) return null;
+            var safe = new string(name.Select(ch => char.IsLetterOrDigit(ch) || ch == '-' || ch == '_' ? ch : '-').ToArray());
+            var dir = System.IO.Path.Combine(AutoTestRunner.OutDir, "clips", $"{Result.Id.Split('#')[0]}_{safe}");
+            if (System.IO.Directory.Exists(dir)) System.IO.Directory.Delete(dir, true);
+            if (AutoTestRunner.Record(dir, ms, intervalMs) == null) return null;
+            Info($"clip {name}: {ms} ms");
+            return dir;
+        }
+
         /// <summary>Requests a screenshot and records it (used by the runner for before/after shots).</summary>
         public void AddScreenshot(string label, int stepNo, string kind)
         {

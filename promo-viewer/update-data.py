@@ -43,6 +43,9 @@ defs = load(os.path.join(repo, project, "tests", "scenarios.json"), {"scenarios"
 entries = []
 for d in defs:
     for p in d.get("promo", []):
+        # a video clip ("clip": true, logs/promo-clips/...mp4): not a picture of SteamImg
+        if p.get("clip"):
+            continue
         # promo-<version>/promo_<scenario>_<name>.jpg (collect-promo.ps1): one folder per version of the mod
         ver = d.get("promoVersion") or "other"
         entries.append({"name": p["name"], "caption": p.get("caption", ""), "scenario": d["id"], "step": p["step"],

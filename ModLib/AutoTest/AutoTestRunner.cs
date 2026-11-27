@@ -906,14 +906,20 @@ namespace ModLib.AutoTest
         /// milliseconds; the request file (&lt;autotest&gt;\snaps\&lt;n&gt;.rec) is deleted when the recording is done.
         /// Returns the request file (null when it could not be written).
         /// </summary>
-        public static string Record(string frameDir, int ms)
+        public static string Record(string frameDir, int ms) => Record(frameDir, ms, 100);
+
+        /// <summary>
+        /// Requests a recording of the game window with one frame every <paramref name="intervalMs"/> ms (33: the ~30
+        /// frames a second of a video clip, AutoTestContext.Clip).
+        /// </summary>
+        public static string Record(string frameDir, int ms, int intervalMs)
         {
             try
             {
                 var snapDir = Path.Combine(GetAutoTestFolder(Instance.ModId), "snaps");
                 Directory.CreateDirectory(snapDir);
                 var file = Path.Combine(snapDir, $"rec-{DateTime.Now:HHmmssfff}.rec");
-                File.WriteAllText(file, $"{frameDir}|{ms}");
+                File.WriteAllText(file, $"{frameDir}|{ms}|{Math.Max(20, intervalMs)}");
                 return file;
             }
             catch { return null; }

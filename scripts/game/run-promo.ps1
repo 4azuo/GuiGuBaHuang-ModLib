@@ -75,7 +75,7 @@ $pictures = foreach ($d in $defs | Where-Object { $_.PSObject.Properties['promo'
         if ($versions.Count -gt 0 -and $versions -notcontains $ver) { continue }
         $file = "promo-$ver\promo_$($d.id)_$($p.name).jpg"
         [pscustomobject]@{ Scenario = $d.id; Version = $ver; Kind = $d.kind; Name = $p.name; File = $file; Step = $p.step; Nth = $p.nth
-            InSteamImg = Test-Path (Join-Path $steamImg $file); Caption = $p.caption }
+            InSteamImg = Test-Path (Join-Path $steamImg $file); Caption = $p.caption; Clip = [bool]($p.PSObject.Properties['clip'] -and $p.clip) }
     }
 }
 if (-not $pictures) { throw "No promo picture$(if ($versions) { " of version $($versions -join ', ')" })$(if ($scenarioIds) { " of $($scenarioIds -join ', ')" })$(if ($names) { " named $($names -join ', ')" }) in scenarios.json" }
@@ -102,7 +102,8 @@ foreach ($k in $PassThru.Keys) { $args2[$k] = $PassThru[$k] }
 & (Join-Path $PSScriptRoot 'run-autotest.ps1') @args2
 $code = $LASTEXITCODE
 
-$missing = @($pictures | Where-Object { -not (Test-Path (Join-Path $steamImg $_.File)) })
+# video clips ("clip": true): mp4 files of logs/promo-clips (collect-promo.ps1), not pictures of SteamImg
+$missing = @($pictures | Where-Object { -not $_.Clip -and -not (Test-Path (Join-Path $steamImg $_.File)) })
 if ($missing) { Write-Host "Not taken: $(($missing | ForEach-Object File) -join ', ')" -ForegroundColor Yellow }
 Write-Host "SteamImg: $steamImg (promo viewer: logs/promo-viewer/index.html)"
 exit $code

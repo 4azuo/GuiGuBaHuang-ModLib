@@ -231,15 +231,86 @@ function Push-GameBehind {
     }
 }
 
-# A recording request of the game (<n>.rec = "<frame folder>|<ms>"): frames of the game window (jpg, ~10 a second) and
-# frames.txt (time of each frame in ms) for the duration; the request is deleted when done (the game waits for it).
+# A recording request of the game (<n>.rec = "<frame folder>|<ms>[|<interval ms>]"): frames of the game window (jpg,
+# one every 100 ms by default, 33 for the video clips of AutoTestContext.Clip) and frames.txt (time of each frame in
+# ms) for the duration; the request is deleted when done (the game waits for it).
 $jpegCodec = [Drawing.Imaging.ImageCodecInfo]::GetImageEncoders() | Where-Object { $_.MimeType -eq 'image/jpeg' }
 $jpegParams = New-Object Drawing.Imaging.EncoderParameters 1
 $jpegParams.Param[0] = New-Object Drawing.Imaging.EncoderParameter ([Drawing.Imaging.Encoder]::Quality), 85L
+# The fast recorder of the video clips (an interval under 100 ms): the loop in compiled code, the window handle read
+# once, the frames captured on this thread and written as jpg by another one (the PowerShell loop reached ~10 a second).
+if (-not ('AutoTestClipRecorder' -as [type])) {
+    Add-Type -ReferencedAssemblies System.Drawing -TypeDefinition @'
+using System;
+using System.Collections.Concurrent;
+using System.Collections.Generic;
+using System.Diagnostics;
+using System.Drawing;
+using System.Drawing.Imaging;
+using System.IO;
+using System.Linq;
+using System.Runtime.InteropServices;
+using System.Threading;
+public static class AutoTestClipRecorder {
+    [StructLayout(LayoutKind.Sequential)] struct RECT { public int Left, Top, Right, Bottom; }
+    [DllImport("user32.dll")] static extern bool GetWindowRect(IntPtr h, out RECT r);
+    [DllImport("user32.dll")] static extern bool PrintWindow(IntPtr h, IntPtr hdc, uint flags);
+    [DllImport("winmm.dll")] static extern uint timeBeginPeriod(uint ms);
+    [DllImport("winmm.dll")] static extern uint timeEndPeriod(uint ms);
+    /// Frames of the window every intervalMs for ms into dir (f000.jpg...); returns the time of each frame (ms).
+    public static List<long> Record(IntPtr hwnd, string dir, int ms, int intervalMs, long quality) {
+        var codec = ImageCodecInfo.GetImageEncoders().First(c => c.MimeType == "image/jpeg");
+        var queue = new BlockingCollection<KeyValuePair<int, Bitmap>>(120);
+        var writer = new Thread(() => {
+            var p = new EncoderParameters(1);
+            p.Param[0] = new EncoderParameter(System.Drawing.Imaging.Encoder.Quality, quality);
+            foreach (var kv in queue.GetConsumingEnumerable()) {
+                try { kv.Value.Save(Path.Combine(dir, string.Format("f{0:000}.jpg", kv.Key)), codec, p); } catch { }
+                kv.Value.Dispose();
+            }
+        });
+        writer.Start();
+        var times = new List<long>();
+        // 1 ms timer: Thread.Sleep sleeps 15.6 ms steps otherwise; each frame at its time (start + n x interval)
+        timeBeginPeriod(1);
+        var sw = Stopwatch.StartNew();
+        long next = 0;
+        while (sw.ElapsedMilliseconds < ms) {
+            long t = sw.ElapsedMilliseconds;
+            RECT r;
+            if (GetWindowRect(hwnd, out r) && r.Right - r.Left > 100) {
+                var bmp = new Bitmap(r.Right - r.Left, r.Bottom - r.Top, PixelFormat.Format32bppRgb);
+                bool ok;
+                using (var g = Graphics.FromImage(bmp)) { var hdc = g.GetHdc(); try { ok = PrintWindow(hwnd, hdc, 2); } finally { g.ReleaseHdc(hdc); } }
+                if (ok) { queue.Add(new KeyValuePair<int, Bitmap>(times.Count, bmp)); times.Add(t); } else bmp.Dispose();
+            }
+            next += intervalMs;
+            if (next < sw.ElapsedMilliseconds) next = sw.ElapsedMilliseconds;
+            long wait = next - sw.ElapsedMilliseconds;
+            if (wait > 0) Thread.Sleep((int)wait);
+        }
+        timeEndPeriod(1);
+        queue.CompleteAdding();
+        writer.Join();
+        return times;
+    }
+}
+'@
+}
 function Invoke-Recording([IO.FileInfo]$Req) {
     $spec = (Get-Content -LiteralPath $Req.FullName -Raw).Trim() -split '\|'
     $dir = $spec[0]; $ms = [int]$spec[1]
+    $interval = if ($spec.Count -gt 2) { [Math]::Max(20, [int]$spec[2]) } else { 100 }
     New-Item -ItemType Directory -Path $dir -Force | Out-Null
+    if ($interval -lt 100) {
+        $p = Get-GameProcess
+        if ($p -and $p.MainWindowHandle -ne [IntPtr]::Zero -and -not [AutoTestWin32b]::IsIconic($p.MainWindowHandle)) {
+            [IO.File]::WriteAllText((Join-Path $dir 'started'), '')
+            $clipTimes = [AutoTestClipRecorder]::Record($p.MainWindowHandle, $dir, $ms, $interval, 93L)
+            [IO.File]::WriteAllLines((Join-Path $dir 'frames.txt'), [string[]]@($clipTimes | ForEach-Object { "$_" }))
+            return
+        }
+    }
     # the game waits for it before it plays the effect: the recording has its whole start
     [IO.File]::WriteAllText((Join-Path $dir 'started'), '')
     $times = New-Object System.Collections.Generic.List[string]
@@ -252,7 +323,7 @@ function Invoke-Recording([IO.FileInfo]$Req) {
             try { $bmp.Save((Join-Path $dir ('f{0:000}.jpg' -f $n)), $jpegCodec, $jpegParams) } finally { $bmp.Dispose() }
             $times.Add("$t"); $n++
         }
-        $wait = 100 - ($sw.ElapsedMilliseconds - $t)
+        $wait = $interval - ($sw.ElapsedMilliseconds - $t)
         if ($wait -gt 0) { Start-Sleep -Milliseconds $wait }
     }
     [IO.File]::WriteAllLines((Join-Path $dir 'frames.txt'), $times)

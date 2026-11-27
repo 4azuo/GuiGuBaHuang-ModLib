@@ -94,10 +94,55 @@ function Get-PromoFile($d, $p) {
     $ver = if ($d.PSObject.Properties['promoVersion'] -and $d.promoVersion) { $d.promoVersion } else { 'other' }
     return "promo-$ver\promo_$($d.id)_$($p.name).jpg"
 }
+# Video clips ("promo" entries with "clip": true, recorded by AutoTestContext.Clip into <run>/clips/<scenario>_<name>):
+# the game area of the frames encoded at 30 frames a second (the time of each frame from frames.txt) to
+# <repo>/logs/promo-clips/promo-<version>/promo_<scenario>_<name>.mp4 (videos of the marketing video, not deployed
+# with the mod). ffmpeg: on the PATH, else the one of Remotion in a marketing video (npm install).
+$clipOut = Join-Path $repo 'logs\promo-clips'
+$ffmpeg = (Get-Command ffmpeg -ErrorAction SilentlyContinue | Select-Object -First 1 -ExpandProperty Source)
+if (-not $ffmpeg) {
+    $ffmpeg = Get-ChildItem (Join-Path $repo 'marketing') -Directory -ErrorAction SilentlyContinue |
+        ForEach-Object { Join-Path $_.FullName 'node_modules\@remotion\compositor-win32-x64-msvc\ffmpeg.exe' } |
+        Where-Object { Test-Path $_ } | Select-Object -First 1
+}
+function Save-Clip([string]$frames, [string]$dst) {
+    $times = @(Get-Content (Join-Path $frames 'frames.txt') | Where-Object { $_ } | ForEach-Object { [int]$_ })
+    if ($times.Count -lt 2) { Write-Host "clip without frames: $frames" -ForegroundColor Yellow; return $false }
+    $first = [System.Drawing.Image]::FromFile((Join-Path $frames 'f000.jpg'))
+    try {
+        $border = 8
+        $w = $first.Width - 2 * $border; $h = [int]($w * 9 / 16); $top = $first.Height - $border - $h
+        if ($w -le 0 -or $top -lt 0) { $w = $first.Width; $h = $first.Height; $top = 0; $border = 0 }
+    } finally { $first.Dispose() }
+    $w -= $w % 2; $h -= $h % 2
+    # concat list: each frame for the time until the next one (the last one: the mean interval)
+    $list = Join-Path $frames 'frames.ffconcat'
+    $lines = New-Object System.Collections.Generic.List[string]
+    $lines.Add('ffconcat version 1.0')
+    $mean = ($times[-1] - $times[0]) / ($times.Count - 1)
+    for ($i = 0; $i -lt $times.Count; $i++) {
+        $dur = if ($i -lt $times.Count - 1) { $times[$i + 1] - $times[$i] } else { $mean }
+        $lines.Add(('file f{0:000}.jpg' -f $i)); $lines.Add(('duration {0}' -f ([double]$dur / 1000).ToString([Globalization.CultureInfo]::InvariantCulture)))
+    }
+    $lines.Add(('file f{0:000}.jpg' -f ($times.Count - 1)))
+    [IO.File]::WriteAllLines($list, $lines)
+    New-Item -ItemType Directory -Force -Path (Split-Path $dst) | Out-Null
+    & $ffmpeg -y -loglevel error -f concat -safe 0 -i $list -vf "crop=$($w):$($h):$($border):$($top)" -fps_mode cfr -r 30 -c:v libx264 -preset slow -crf 15 -pix_fmt yuv420p -movflags +faststart $dst
+    return ($LASTEXITCODE -eq 0 -and (Test-Path $dst))
+}
+$clips = 0
 $copied = 0
 foreach ($d in $defs | Where-Object { $_.PSObject.Properties['promo'] }) {
     if ($skipped -contains $d.id) { continue }
     foreach ($p in $d.promo) {
+        if ($p.PSObject.Properties['clip'] -and $p.clip) {
+            $frames = Join-Path $Run "clips\$($d.id)_$($p.name)"
+            if (-not (Test-Path (Join-Path $frames 'frames.txt'))) { continue }
+            if (-not $ffmpeg) { Write-Host "clip $($p.name): no ffmpeg (PATH, or npm install in marketing/<video>)" -ForegroundColor Yellow; continue }
+            $dst = Join-Path $clipOut ((Get-PromoFile $d $p) -replace '\.jpg$', '.mp4')
+            if (Save-Clip $frames $dst) { $clips++ } else { Write-Host "clip $($p.name): not encoded" -ForegroundColor Yellow }
+            continue
+        }
         $file = Get-PromoFile $d $p
         # step "drama" = any step of that name; "07-drama" = step 07 only
         $pattern = if ($p.step -match '^\d+-') { "^\d+_$([regex]::Escape($d.id))_$([regex]::Escape($p.step))\.png$" }
@@ -119,7 +164,7 @@ foreach ($d in $defs | Where-Object { $_.PSObject.Properties['promo'] }) {
 }
 # pictures no longer in scenarios.json removed (renamed / dropped promo entries, a scenario moved to another
 # version), also the promo pictures of the former formats at the root of SteamImg; empty version folders removed
-$known = @($defs | Where-Object { $_.PSObject.Properties['promo'] } | ForEach-Object { $d = $_; $_.promo | ForEach-Object { Get-PromoFile $d $_ } })
+$known = @($defs | Where-Object { $_.PSObject.Properties['promo'] } | ForEach-Object { $d = $_; $_.promo | Where-Object { -not ($_.PSObject.Properties['clip'] -and $_.clip) } | ForEach-Object { Get-PromoFile $d $_ } })
 foreach ($f in Get-ChildItem $out -Recurse -File -Filter 'promo_*.*' | Where-Object { $_.Extension -in '.png', '.jpg' }) {
     $rel = $f.FullName.Substring($out.Length).TrimStart('\', '/')
     if ($known -notcontains $rel) { Remove-Item -LiteralPath $f.FullName; Write-Host "removed (no promo entry): $rel" }
@@ -128,3 +173,4 @@ Get-ChildItem $out -Directory -Filter 'promo-*' | Where-Object { -not (Get-Child
 # promo viewer (logs/promo-viewer/index.html)
 try { & python (Join-Path $PSScriptRoot '..\..\promo-viewer\update-data.py') --repo $repo } catch { Write-Host "update-promo-viewer: $_" -ForegroundColor Yellow }
 Write-Host "Promotion pictures: $copied -> $out"
+if ($clips -gt 0) { Write-Host "Promotion clips: $clips -> $clipOut" }
