@@ -52,13 +52,22 @@ function Copy-ToWorkshop([string]$ProjectDir, [string]$Destination) {
 }
 
 # Copies a Workshop folder back into its project: ModProject\<3 files> into ModProject, the rest into debug\Mod_<id>;
-# returns the number of files not copied (in use)
+# returns the number of files not copied (in use).
+# The game's mod editor takes the Workshop folder for the project folder: an export / upload writes its files
+# (ModExportData.cache, ModProjectPreview.png) into <workshop>\debug\Mod_<id>. Those are the newest ones: they go to
+# debug\Mod_<id> itself (not to debug\Mod_<id>\debug\Mod_<id>), copied last so that they replace the former ones.
 function Copy-FromWorkshop([string]$Source, [string]$ProjectDir) {
     $failed = 0
     $build = Get-ModBuildFolder $ProjectDir
     $Source = (Get-Item -LiteralPath $Source).FullName
-    foreach ($item in Get-ChildItem -LiteralPath $Source -Recurse) {
+    $exportRe = '^debug\\Mod_[^\\]+(\\|$)'
+    $items = @(Get-ChildItem -LiteralPath $Source -Recurse | Sort-Object { $_.FullName.Substring($Source.Length).TrimStart('\') -match $exportRe })
+    foreach ($item in $items) {
         $rel = $item.FullName.Substring($Source.Length).TrimStart('\')
+        if ($rel -eq 'debug' -or $rel -match $exportRe) {
+            if ($item.PSIsContainer) { continue }
+            $rel = $rel -replace $exportRe, ''
+        }
         if ($item.PSIsContainer) {
             if ($rel -eq 'ModProject') { continue }
             $target = Join-Path $build $rel
