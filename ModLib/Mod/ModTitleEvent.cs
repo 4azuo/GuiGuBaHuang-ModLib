@@ -164,6 +164,8 @@ namespace ModLib.Mod
 
                 //licensed mods without a valid key: a button each in the row of the mods (LicenseHelper)
                 LicenseHelper.AddTitleButtons();
+                //the support pages of the mods: one "Support" button (SupportHelper)
+                SupportHelper.AddTitleButton();
 
                 //the mod wallpaper of the session (startup draw of the packs, first title screen) or chosen by the player
                 //(WallpaperHelper), after the game's own one

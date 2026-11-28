@@ -58,6 +58,18 @@ In the mod editor (title screen → Mod → project), ModLib (`PrivateModHelper`
 
 It guards against an upload by mistake, not against a copy: the DLL can be changed by anyone. What is shipped holds no source code: the release zip (CI) is `debug/<mod>`, and `copy-to-steam` puts only the content of `debug/<mod>` and the 3 project files of `ModProject` in the Workshop folder (the editor uploads that whole folder). Only the editor's upload is blocked: the deploy scripts of the repository copy files, they upload nothing.
 
+## Support page (Ko-fi...)
+
+A mod gives its support page with constants of its entry class (ModLib 2.3.07+):
+
+```csharp
+public const string SUPPORT_URL = "https://ko-fi.com/me";   // the page
+public const string SUPPORT_QR = "kofi-qr.png";             // optional: image of ModImg of the mod: QR code of the page
+public const string SUPPORT_NAME = "My Mod";                // optional: name shown (else LICENSE_NAME, else the mod id)
+```
+
+`SupportHelper` reads them when ModLib lists the objects of the mods (`CacheHelper.GetModChildCacheTypes`, locked mods too). When at least one mod gives a page, the title screen gets one **Support** button in the row of the mods (`ModTitleEvent` → `SupportHelper.AddTitleButton`); its window shows **one QR code at a time** (side by side they are hard to scan): the mods on the left (only when several), the name, QR code, address and a button to the page of the chosen one on the right. Nothing opens by itself. A licensed mod without `LICENSE_SUPPORT_URL` / `LICENSE_QR` shows `SUPPORT_URL` / `SUPPORT_QR` in its key window. Each mod keeps its own QR image in its own ModImg.
+
 ## Licensed mods (supporter keys)
 
 A mod that runs only with a key its author signed (Ko-fi supporters...) sets constants in its entry class (ModLib 2.3.05+):

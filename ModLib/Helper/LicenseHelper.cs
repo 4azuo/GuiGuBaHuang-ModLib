@@ -19,9 +19,9 @@ namespace ModLib.Helper
     ///       public const string LICENSE_PUBLIC_KEY = "&lt;base64url of the RSA-2048 modulus, exponent 65537&gt;";
     ///       public const string LICENSE_NAME = "My Mod";              //optional: the name shown on the title screen
     ///       public const string LICENSE_URL = "https://.../claim";    //optional: where a key is got ("Get a key")
-    ///       public const string LICENSE_SUPPORT_URL = "https://ko-fi.com/me"; //optional: where to support ("Support")
+    ///       public const string LICENSE_SUPPORT_URL = "https://ko-fi.com/me"; //optional: where to support ("Support"; else SUPPORT_URL, SupportHelper)
     ///       public const string LICENSE_INFO = "mymod_license_info";  //optional: localText key of the mod: what support gets a key
-    ///       public const string LICENSE_QR = "kofi-qr.png";           //optional: image of ModImg of the mod (QR code of the support page)
+    ///       public const string LICENSE_QR = "kofi-qr.png";           //optional: image of ModImg of the mod (QR code of the support page; else SUPPORT_QR)
     ///       public const string LICENSE_RENEW_URL = "https://.../renew"; //optional: renewal of the key (RENEW_DAYS before its end)
     ///   } }
     /// Key: "&lt;payload&gt;.&lt;signature&gt;" (base64url, like a JWT without header): payload = JSON
@@ -353,9 +353,10 @@ namespace ModLib.Helper
                 PublicKey = publicKey,
                 Name = ReadStringConst(entry, CONST_NAME) ?? modId,
                 Url = ReadStringConst(entry, CONST_URL),
-                SupportUrl = ReadStringConst(entry, CONST_SUPPORT_URL),
+                //the support page of the mod (SupportHelper) when the license gives none
+                SupportUrl = ReadStringConst(entry, CONST_SUPPORT_URL) ?? ReadStringConst(entry, SupportHelper.CONST_URL),
                 InfoKey = ReadStringConst(entry, CONST_INFO),
-                QrImage = ReadStringConst(entry, CONST_QR),
+                QrImage = ReadStringConst(entry, CONST_QR) ?? ReadStringConst(entry, SupportHelper.CONST_QR),
                 RenewUrl = ReadStringConst(entry, CONST_RENEW_URL),
             };
             string key = null;

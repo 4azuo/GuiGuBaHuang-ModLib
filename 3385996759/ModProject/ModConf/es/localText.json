@@ -323,5 +323,15 @@
 		"id": "999990064",
 		"key": "libtxt999990064",
 		"en|ch|tc|kr": "El autor revocó esta clave: el mod no se cargará desde el próximo inicio. Escribe al autor si es un error."
+	},
+	{
+		"id": "999990065",
+		"key": "libtxt999990065",
+		"en|ch|tc|kr": "Apoya a los autores de mods"
+	},
+	{
+		"id": "999990066",
+		"key": "libtxt999990066",
+		"en|ch|tc|kr": "Escanea el código QR con tu móvil o abre la página. ¡Gracias!"
 	}
 ]
