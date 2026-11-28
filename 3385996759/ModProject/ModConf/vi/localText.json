@@ -333,5 +333,10 @@
 		"id": "999990066",
 		"key": "libtxt999990066",
 		"en|ch|tc|kr": "Quét mã QR bằng điện thoại, hoặc mở trang. Cảm ơn bạn!"
+	},
+	{
+		"id": "999990067",
+		"key": "libtxt999990067",
+		"en|ch|tc|kr": "Bộ khung đứng sau các mod: sự kiện, cửa sổ, cấu hình, bản dịch, hình nền, kiểm thử tự động... miễn phí cho mọi tác giả mod. Sự ủng hộ của bạn giúp nó theo kịp mỗi lần game cập nhật."
 	}
 ]

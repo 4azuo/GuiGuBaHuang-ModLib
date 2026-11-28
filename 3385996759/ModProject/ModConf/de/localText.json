@@ -333,5 +333,10 @@
 		"id": "999990066",
 		"key": "libtxt999990066",
 		"en|ch|tc|kr": "Scanne den QR-Code mit deinem Handy oder öffne die Seite. Danke!"
+	},
+	{
+		"id": "999990067",
+		"key": "libtxt999990067",
+		"en|ch|tc|kr": "Das Framework hinter den Mods: Ereignisse, Fenster, Konfigurationen, Übersetzungen, Hintergründe, Autotests... kostenlos für jeden Mod-Autor. Deine Unterstützung hält es bei jedem Spiel-Update aktuell."
 	}
 ]

@@ -602,6 +602,9 @@ namespace ModLib.Helper
             {
                 var rs = new List<Tuple<string, CacheAttribute, Type>>();
                 rs.AddRange(GetModLibCacheTypes(ModMaster.ModObj.ModId, AssemblyHelper.GetModLibAssembly()));
+                //the support page of ModLib (SUPPORT_* of its entry class MOD_<id>.ModMain)
+                try { SupportHelper.Read(ModMaster.ModObj.ModId, ModMaster.ModObj.GetType()); }
+                catch (Exception ex) { DebugHelper.WriteLine($"Support: {ModMaster.ModObj.ModId} not read: {ex.Message}"); }
 
                 foreach (var mod in g.mod.allModPaths)
                 {

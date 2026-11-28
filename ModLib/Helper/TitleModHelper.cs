@@ -46,6 +46,40 @@ namespace ModLib.Helper
         }
 
         /// <summary>
+        /// A button in the bottom-right corner of the title screen (not in the row of the mods): under the column of the
+        /// game's buttons on the right (Change Theme...), at the height of the row (BOTTOM_SHARE); the frame of those
+        /// buttons, white text. Null when the title screen is not open.
+        /// </summary>
+        public static UIItemButton AddCornerButton(string text, Action onClick, int fontSize = 18, float minWidth = 160f)
+        {
+            if (!g.ui.HasUI(UIType.Login)) return null;
+            var ui = new UICover<UILogin>(UIType.Login);
+            var btn = (UIItemButton)ui.AddButton(0f, 0f, onClick, text, ui.UI.btnPaperChange);
+            btn.Align(TextAnchor.MiddleCenter).Format(Color.white, fontSize);
+            btn.SetParentTransform(ui.UI.btnSet.transform.parent);
+            btn.Size(Math.Max(minWidth, text.Length * fontSize * 0.55f + 40f), HEIGHT);
+            var rt = ((Component)btn.Component).GetComponent<RectTransform>();
+            var parent = rt.parent == null ? null : rt.parent.GetComponent<RectTransform>();
+            var canvas = rt.GetComponentInParent<Canvas>();
+            var cam = canvas == null || canvas.renderMode == RenderMode.ScreenSpaceOverlay ? null : canvas.worldCamera;
+            var width = rt.rect.width * rt.lossyScale.x;
+            //right edge 2 % of the screen width from its right side, else the centre of the column of the game's buttons
+            var screenX = Screen.width * 0.98f;
+            if (parent == null || !RectTransformUtility.ScreenPointToWorldPointInRectangle(parent, new Vector2(screenX, Screen.height * BOTTOM_SHARE), cam, out var point))
+            {
+                DebugHelper.WriteLine($"Title corner button: no point of the screen in the parent ({parent?.name})");
+                return btn;
+            }
+            var x = point.x - width / 2f;
+            var column = ui.UI.btnPaperChange;
+            if (column != null && column.gameObject.activeInHierarchy)
+                x = Math.Min(x, column.transform.position.x);
+            rt.position = new Vector3(x, point.y, rt.position.z);
+            DebugHelper.WriteLine($"Title corner button: {text} at {x:0.##},{point.y:0.##} w {rt.rect.width:0}");
+            return btn;
+        }
+
+        /// <summary>
         /// The row laid out again: centered, BOTTOM_SHARE of the screen height above its bottom (screen point -> world point
         /// of the parent of the buttons: whatever the canvas and its scale).
         /// </summary>

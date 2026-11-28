@@ -519,5 +519,13 @@
 		"ch": "用手机扫描二维码，或打开页面。谢谢！",
 		"tc": "用手機掃描 QR 碼，或打開頁面。謝謝！",
 		"kr": "휴대폰으로 QR 코드를 스캔하거나 페이지를 여세요. 감사합니다!"
+	},
+	{
+		"id": "999990067",
+		"key": "libtxt999990067",
+		"en": "The framework behind the mods: events, windows, configs, translations, wallpapers, autotests... free for every mod author. Your support keeps it up to date with every game update.",
+		"ch": "模组背后的框架：事件、窗口、配置、翻译、壁纸、自动测试……对所有模组作者免费。您的支持让它跟上每一次游戏更新。",
+		"tc": "模組背後的框架：事件、視窗、配置、翻譯、桌布、自動測試……對所有模組作者免費。您的支持讓它跟上每一次遊戲更新。",
+		"kr": "모드를 받쳐 주는 프레임워크: 이벤트, 창, 설정, 번역, 배경화면, 자동 테스트... 모든 모드 제작자에게 무료입니다. 여러분의 후원으로 게임 업데이트마다 최신 상태를 유지합니다."
 	}
 ]
