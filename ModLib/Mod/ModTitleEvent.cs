@@ -61,6 +61,12 @@ namespace ModLib.Mod
         public bool? HideGameTitle { get; set; }
 
         /// <summary>
+        /// The day (yyyy-MM-dd, local time) the support window last opened by itself on the title screen
+        /// (SupportHelper.ShowDaily: once a day, at the first title screen of the day).
+        /// </summary>
+        public string SupportShownDate { get; set; }
+
+        /// <summary>
         /// Loads the LocalText of the saved translation language.
         /// </summary>
         public override void OnLoadClass(bool isNew, string modId, CacheAttribute attr)
@@ -180,6 +186,9 @@ namespace ModLib.Mod
                 //error reports: ask once per consent key (the answer can be changed in the ModCreator window)
                 if (CrashReportHelper.NeedsAsking)
                     AskCrashReportConsent(null);
+
+                //the support window: opened by itself at the first title screen of the day (after the questions above)
+                SupportHelper.ShowDaily();
             }
         }
 

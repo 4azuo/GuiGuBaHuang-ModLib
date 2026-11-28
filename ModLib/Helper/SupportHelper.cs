@@ -1,4 +1,5 @@
 using ModLib.Attributes;
+using ModLib.Mod;
 using ModLib.Object;
 using System;
 using System.Collections.Generic;
@@ -18,7 +19,7 @@ namespace ModLib.Helper
     /// ModLib gives its own too (entry class of ModLib). The title screen gets one "Support" button in its bottom-right corner
     /// when a mod gives one; its window shows one QR code at a time (QR codes side by side are hard to scan: the phone reads
     /// the wrong one): the mods listed on the left in the order of the mod list of the game, the name, the words, the QR code
-    /// and the page of the chosen one on the right. LicenseHelper uses them too when LICENSE_SUPPORT_URL / LICENSE_QR are not set.
+    /// and the page of the chosen one on the right. The window opens by itself once a day (the first title screen of the day). LicenseHelper uses them too when LICENSE_SUPPORT_URL / LICENSE_QR are not set.
     /// </summary>
     [ActionCat("Support")]
     public static class SupportHelper
@@ -113,6 +114,23 @@ namespace ModLib.Helper
             TitleButton = null;
             if (_mods.Count == 0) return;
             TitleButton = TitleModHelper.AddCornerButton(GameTool.LS("libtxt999990061"), () => OpenWindow(0));
+        }
+
+        /// <summary>
+        /// Title screen: opens the support window once a day (the first title screen of the day, local date saved in the
+        /// global cache: ModTitleEvent.SupportShownDate), when a mod gives a support page. True: opened.
+        /// </summary>
+        public static bool ShowDaily()
+        {
+            var cache = ModTitleEvent.Instance;
+            if (_mods.Count == 0 || cache == null) return false;
+            var today = DateTime.Now.ToString("yyyy-MM-dd");
+            if (cache.SupportShownDate == today) return false;
+            cache.SupportShownDate = today;
+            CacheHelper.SaveGlobalCache(cache);
+            DebugHelper.WriteLine($"Support: window of the day ({today})");
+            OpenWindow(0);
+            return true;
         }
 
         /// <summary>The support window, on the mod of index <paramref name="selected"/> (of <see cref="Mods"/>).</summary>
